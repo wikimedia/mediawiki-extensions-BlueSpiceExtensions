@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_whoisonline MODIFY wo_timestamp NUMBER;

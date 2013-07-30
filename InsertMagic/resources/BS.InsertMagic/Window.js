@@ -1,0 +1,209 @@
+
+Ext4.define( 'BS.InsertMagic.Window', {
+	extend: 'BS.Window',
+	requires:[
+		'Ext4.Button'
+	],
+	id: 'bs-InsertMagic-dlg-window',
+	modal: true,
+	width: 600,
+	height: 400,
+	layout: 'border',
+	singleton: true,
+
+	afterInitComponent: function() {
+		this.setTitle( mw.message('bs-insertmagic-dlg_title').plain() );
+
+		this.btnPreview = Ext4.create( 'Ext4.Button', {
+			id: 'bs-InsertMagic-btn-preview',
+			text: mw.message('bs-insertmagic-btn_preview').plain(),
+			handler: this.onBtnPreviewClicked,
+			scope: this
+		});
+		/*
+		this.buttons = [
+			//this.btnPreview,
+			this.btnSave,
+			this.btnCancel
+		];*/
+		
+		var typesArray = [
+			[ 'tag',      mw.message('bs-insertmagic-type_tags').plain() ],
+			[ 'switch',   mw.message('bs-insertmagic-type_switches').plain() ],
+			[ 'variable', mw.message('bs-insertmagic-type_variables').plain() ]/*,
+			[ 'redirect', mw.message('bs-insertmagic-type_redirect').plain() ]*/
+		];
+		//TODO: Make hook?
+		
+		//HINT: http://stackoverflow.com/questions/4834285/extjs-combobox-acting-like-regular-select
+		this.cmbType = Ext4.create( 'Ext4.form.ComboBox', {
+			id: 'bs-InsertMagic-cmb-type',
+			mode: 'local',
+			triggerAction: 'all',
+			editable: false,
+			readonly: true,
+			allowBlank: false,
+			forceSelection: true,
+			value:'tag', //default selection
+			store: typesArray
+		});
+		this.cmbType.on( 'select', this.onTypeSelected, this );
+		
+		this.tagsStore = Ext4.create( 'Ext4.data.JsonStore', {
+			proxy: {
+				type: 'ajax',
+				url: bs.util.getAjaxDispatcherUrl('InsertMagic::ajaxGetData'),
+				reader: {
+					type: 'json',
+					root: 'result',
+					idProperty: 'id'
+				}
+			},
+			autoLoad: true,
+			fields: ['id', 'type', 'name', 'desc', 'code' ],
+			sortInfo: {
+				field: 'id',
+				direction: 'ASC'
+			}
+		});
+		this.tagsStore.on( 'load',this.onStoreLoad, this );
+		
+		this.tagsGrid = Ext4.create('Ext4.grid.Panel', {
+			title: '',
+			id: 'bs-InsertMagic-grid-tag',
+			sm: Ext4.create( 'Ext4.selection.RowModel', { singleSelect: true }),
+			store: this.tagsStore,layout: 'fit',
+			loadMask: true,
+			columns: [
+				{
+					id: 'name',
+					sortable: true,
+					dataIndex: 'name'
+				}],
+			forceFit: true, //HINT: http://stackoverflow.com/questions/6545719/extjs-grid-how-to-make-column-width-100
+			border: true,
+			columnLines: false,
+			enableHdMenu: false,
+			stripeRows: true,
+			hideHeaders: true,
+			flex: 1,
+			style: 'padding-top: 5px'
+		});
+		this.tagsGrid.on( 'select', this.onRowSelect, this );
+		
+		this.syntaxTextArea = Ext4.create( 'Ext4.form.TextArea', {
+			id: 'bs-InsertMagic-textarea-syntax',
+			hideLabel: true,
+			name: 'syntaxTextArea',
+			flex: 1,
+			style: 'background-color: #EFF4FF;' //TODO: move to CSS
+		});
+		
+		this.previewPanel = Ext4.create('Ext4.Panel', {
+			id: 'bs-InsertMagic-panel-preview',
+			border: true,
+			flex: 1,
+			bodyStyle: 'padding:5px;',
+			autoScroll: true
+		});
+		
+		this.descPanel = Ext4.create('Ext4.Panel', {
+			id: 'bs-InsertMagic-panel-desc',
+			border: true,
+			flex: 1,
+			bodyStyle: 'padding:5px; background-color: #F4F4F4;', //TODO: move to CSS
+			autoScroll: true
+		});
+		
+		this.pnlWest = Ext4.create('Ext4.Container', {
+			region: 'west',
+			width: 250,
+			padding: 5,
+			layout: {
+				//HINT: http://dev.sencha.com/deploy/ext-3.3.1/examples/form/vbox-form.js
+				type: 'vbox',
+				align: 'stretch' // Child items are stretched to full width
+			},
+			items: [
+				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_first').plain() }),
+				this.cmbType,
+				this.tagsGrid,
+				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_desc').plain(), style: 'padding-top: 10px' }),
+				this.descPanel
+			]
+		});
+		
+		this.pnlCenter = Ext4.create('Ext4.Container', {
+			region: 'center',
+			border: false,
+			padding: 5,
+			layout: {
+				type: 'vbox',
+				align: 'stretch'
+			},
+			items:[
+				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_second').plain() }),
+				this.syntaxTextArea/*,
+				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_third, style: 'padding-top: 10px' }),
+				this.previewPanel*/
+			]
+		});
+		
+		this.items = [
+			this.pnlWest,
+			this.pnlCenter
+		]
+		
+		this.callParent(arguments);
+	},
+	
+	getData: function() {
+		this.currentData.code = this.syntaxTextArea.getValue();
+		return this.currentData;
+	},
+	
+	setData: function( obj ) {
+		this.syntaxTextArea.setValue( obj.code );
+		this.callParent( arguments );
+	},
+	
+	onStoreLoad: function( store, records, options ) {
+		this.tagsStore.filter( 'type', 'tag'); //just initial
+	},
+	
+	onTypeSelected: function( combo, record, index ){
+		this.tagsStore.removeFilter();
+		//record[0] because of single select
+		//field1 is because of ArrayStore. Could be optimized.
+		this.tagsStore.filter( 'type', record[0].get('field1') );
+	},
+
+	onBtnPreviewClicked: function( oSender, oEvent ) {
+		//this.previewPanel;
+	},
+	
+	onRowSelect: function( grid, record, index, eOpts ) {
+		var data = {
+			desc : record.get('desc'),
+			type : record.get('type')
+		};
+		this.currentData.type = data.type;
+		this.currentData.name = record.get('name');
+
+		this.setCommonFields( record.get('code'), data )
+	},
+
+	setCommonFields: function( text, data ) {
+		this.descPanel.update(data.desc);
+		this.syntaxTextArea.setValue( text );
+		this.syntaxTextArea.focus();
+		
+		var start = text.indexOf('"') + 1;
+		var end   = text.indexOf('"', start );
+		if( data.type != 'tag' ) {
+			start = start - 1;
+			end = end + 1;
+		}
+		this.syntaxTextArea.selectText(start, end);
+	}
+});

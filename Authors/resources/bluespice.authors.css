@@ -1,0 +1,46 @@
+/**
+ * Stylesheet for Authors
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @version    $Id: bluespice.authors.css 9881 2013-06-24 13:40:56Z pwirth $
+ * @package    BlueSpice_Extensions
+ * @subpackage Authors
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+#bs-authors-imageform fieldset {
+	margin: 0px;
+	padding-bottom: 5px;
+}
+
+#bs-authors-imageform > fieldset > img{
+	margin-bottom: 3px;
+}
+
+.bs-authors .bs-userminiprofile {
+	float:left;
+	margin: 5px 5px 0px 0px;
+	padding: 2px 0 0 0;
+}
+
+.bs-authors-originator {
+	padding-right: 16px !important;
+	margin-right: 12px !important;
+	/* @embed */
+	background: url("../resources/images/bs-author-orig-bg.png") repeat-y  right top;
+	height: 44px;
+}
+
+/*
+.bs-authors-originator img {
+    border: 2px #FFAE00 solid;
+}
+*/
+
+.bs-authors-lasteditor {
+	margin-left: 5px;
+}

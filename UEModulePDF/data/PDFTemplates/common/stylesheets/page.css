@@ -1,0 +1,173 @@
+/**
+ * This files defines the basic settings for pages and defines the available 
+ * areas (marginboxes) for content placement. It also sets up the most 
+ * important components for Paged Media, like page breaks, page counters, etc.
+ * 
+ * Additional Information about CSS for Paged Media can be found at:
+ *  - http://www.w3.org/TR/2003/WD-css3-page-20030909/
+ *  - http://www.w3.org/TR/css3-page/
+ *  - http://www.w3.org/TR/CSS2/page.html
+ *  - http://www.w3.org/TR/CSS2/generate.html
+ */
+
+ /**
+  * The default page definition.
+  */
+@page {
+	size: A4 portrait;
+	margin: 3.5cm 1cm 2.5cm 2.5cm;
+	background: url('../images/bs-page-background.png') repeat-x bottom;
+	background-size: 21cm 2.3cm;
+
+	@top-left {
+		content: element( topleft );
+	}
+
+	@top-center {
+		content: element( topcenter );
+	}
+
+	@top-right {
+		content: element( topright );
+	}
+
+	@bottom-left {
+		content: element( bottomleft );
+	}
+
+	@bottom-center {
+		content: element( bottomcenter );
+	}
+
+	@bottom-right {
+		content: element( bottomright );
+	}
+}
+
+/**
+ * The "coverpage" overrides the default marginbox settings of the normal page.
+ * See "named pages" in CSS specification for more information.
+ */
+@page coverpage {
+	margin: 0cm 0cm 0cm 0cm;
+	background: url('../images/bs-cover.jpg') no-repeat top left;
+	background-size: 21cm;
+
+	@top-left {
+		content: none;
+	}
+
+	@top-center {
+		content: none;
+	}
+
+	@top-right {
+		content: none;
+	}
+
+	@bottom-left {
+		content: none;
+	}
+
+	@bottom-center {
+		content: none;
+	}
+
+	@bottom-right {
+		content: none;
+	}
+}
+
+@page rotated { size: landscape }
+@page narrow { size: 9cm 18cm }
+@page ultrawide { size: 58.4cm 21cm; }
+
+.bs-rotated, .rotated {
+    page: rotated;
+    page-break-before: right;
+    page-break-after: always;
+}
+		
+.bs-narrow, .narrow {
+    page: narrow;
+    page-break-before: always;
+    page-break-after: always;
+}
+
+.bs-ultrawide, .ultrawide {
+    page: ultrawide;
+    page-break-before: always;
+    page-break-after: always;
+}
+
+/* Generated content elements */
+.bs-currentpagenumber:after,
+.currentpagenumber:after {
+    content: counter( page );
+}
+
+.bs-totalpagescount:after,
+.totalpagescount:after {
+    content: counter( pages );
+}
+
+.bs-universalexport-pagebreak,
+.bs-pagebreak,
+.pagebreak {
+    page-break-after: always;
+    visibility: hidden;
+}
+
+.bs-section,
+.bs-custompage,
+.bs-page-content {
+    page-break-after: always;
+    clear: both;
+}
+
+.bs-section:last-child,
+.bs-custompage:last-child,
+.bs-page-content:last-child {
+    page-break-after: avoid;
+}
+
+/* Common Elements */
+body {
+    margin: 0; 
+    padding: 0; 
+    border: 0;
+}
+
+div, p, ul, ol, dl {
+    orphans: 3 !important;
+    widows: 5 !important;
+    page-break-inside: avoid;
+}
+
+img, ul, ol, dl {
+    page-break-before: avoid;
+}
+
+/* MediaWiki specific? --> mediawiki.css */
+div.thumb {
+    page-break-before: avoid;
+    page-break-inside: avoid;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+}
+
+table {
+    clear: both; /* Is this wise? Prevents floating thumbs from overlapping into tables and TOC table */
+    -fs-table-paginate: paginate; /* special xhtmlrenderer (flying saucer -> fs) property */
+    page-break-inside: avoid;
+}
+
+thead {
+    page-break-after: avoid;
+}
+
+tbody {
+    inside: avoid;
+}

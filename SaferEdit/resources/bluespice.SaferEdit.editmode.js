@@ -1,0 +1,481 @@
+/**
+ * SaferEdit extension
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @version    $Id: SaferEdit.editmode.js 9581 2013-06-04 12:14:31Z rvogel $
+ * @package    Bluespice_Extensions
+ * @subpackage SaferEdit
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+/**
+ * Base class for all safer edit related methods and properties
+ */
+BsSaferEditEditMode = {
+	/**
+	 * Time between two intermediate saves
+	 * @var integer time in seconds
+	 */
+	interval: bsSaferEditInterval * 1000,
+	/**
+	 * Pointer to javascript timeout callback, needed to cancel timeout when changes are saved
+	 * @var pointer javascript timeout callback
+	 */
+	timeout: false,
+	/**
+	 * Store for older text before safer edit saving in order to compare it to current text to see if any changes were made
+	 * @var string text at time of page call or last safer edit saving
+	 */
+	oldText: '',
+	/**
+	 * Store for initial text before saving in order to compare it to current text to see if any changes were made
+	 * @var string text at time of page call or last saving
+	 */
+	origText: '',
+	/**
+	 * Indicates if text was changed client side since the last safer edit saving
+	 * @var bool true if text was changed
+	 */
+	isDirty: false,
+	/**
+	 * Indicates if text was changed client side since the last user saving
+	 * @var bool true if text was changed
+	 */
+	isUnsaved: false,
+	/**
+	 * Indicates if the editform is submitted
+	 * @var bool
+	 */
+	isSubmit: false,
+	/**
+	 * Indicates whether page is in edit mode and saving of texts should be started
+	 * @var bool true if page is in edit mode
+	 */
+	editMode: false,
+	/**
+	 * Window object that stores the SaferEdit dialogue
+	 * @var Ext.Window Instance of a window object
+	 */
+	win: false,
+	/**
+	 * Timestamp of saved version in restore dialogue
+	 * @var string Rendered timestamp, currently age of stored release
+	 */
+	savedTS: '',
+	/**
+	 * Rendered HTML of saved version that is displayed in restore dialogue
+	 * @var string Rendered HTML
+	 */
+	savedHTML: '',
+	/**
+	 * Wiki code of saved version that is inserted on OK in restore dialogue
+	 * @var string Wiki code
+	 */
+	savedWikiCode: '',
+	/**
+	 * URL of section edit of page that is used if page is called in edit mode, but a saved part of a section is present
+	 * @var string Redirect url
+	 */
+	redirect: '',
+	/**
+	 * Boolean if a backup is created
+	 * @var bool backup created
+	 */
+	bBackupCreated: false,
+	/**
+	 * Boolean if oldtext should be reseted
+	 * @var bool backup oldtext should be reseted
+	 */
+	bResetOldText: true,
+	/**
+	 * Used to display the SaferEdit restore dialogue. Calls getLostTexts with some delay to fix a sttrange IE bug.
+	 */
+	toggleDialog: function() {
+		/* this is to fix a strange IE bug */
+		setTimeout('BsSaferEditEditMode.getLostTexts()', 10);
+	},
+	/**
+	 * Renders SaferEdit restore dialogue. Data (HTML and WikiCode) is expected to be loaded already
+	 */
+	show: function() {
+		BsSaferEditEditMode.win = new Ext.Window({
+			id: 'winSaferEdit',
+			width:600,
+			title:'SaferEdit',
+			closeAction: 'close',
+			items: [{
+				xtype: "container",
+				items: [{
+					xtype: 'toolbar',
+					autoHeight: true,
+					items: [
+						{
+							xtype: 'tbtext',
+							text: mw.message('bs-saferedit-lastSavedVersion').plain() + BsSaferEditEditMode.savedTS
+						}
+					]
+				}, {
+					xtype: "container",
+					html: BsSaferEditEditMode.savedHTML,
+					height: 400,
+					style: 'background-color: #FFFFFF;padding:5px;',
+					autoScroll: true
+				}]
+			}],
+			buttons: [{
+				id: 'ok-btn',
+				text: mw.message('bs-saferedit-restore').plain(),
+				handler: function(e) {
+					BsSaferEditEditMode.restore();
+					BsSaferEditEditMode.hide();
+				},
+				scope: this
+			},{
+				text: mw.message('bs-saferedit-cancel').plain(),
+				handler: function(){
+					BsSaferEditEditMode.cancelSaferEdit();
+					BsSaferEditEditMode.canceledByUser = false;
+					BsSaferEditEditMode.hide();
+				},
+				scope: this
+			}],
+			layout: 'fit'
+		});
+		BsSaferEditEditMode.win.show();
+	},
+	/**
+	 * Hides the SaferEdit restore dialogue
+	 */
+	hide: function() {
+		BsSaferEditEditMode.startSaving();
+		BsSaferEditEditMode.win.close();
+		// MRG (25.02.11 01:28): Dependency to StateBar
+		if ( document.getElementById('sb-SaferEdit') ) {
+			document.getElementById('sb-SaferEdit').style.display = 'none';
+		}
+	},
+	/**
+	 * Initiates saving of edited text in certain intervals
+	 */
+	startSaving: function() {
+		BsSaferEditEditMode.oldText = BsSaferEditEditMode.getText()
+		BsSaferEditEditMode.origText = BsSaferEditEditMode.oldText;
+		BSPing.registerListener( 
+			'SaferEditSave', 
+			0, 
+			[{
+				text: BsSaferEditEditMode.oldText,
+				section: bsSaferEditEditSection
+			}], 
+			BsSaferEditEditMode.saveTextListener 
+		);
+	},
+
+	saveTextListener: function(result, Listener) {
+		var text = BsSaferEditEditMode.getText();
+		
+		if( BsSaferEditEditMode.canceledByUser ) return;
+
+		if( BsSaferEditEditMode.oldText != text ) {
+			BsSaferEditEditMode.isDirty = true;
+			BsSaferEditEditMode.oldText = text;
+			BsSaferEditEditMode.bBackupCreated = true;
+		} else {
+			if( BsSaferEditEditMode.bBackupCreated === true ) {
+				text = '';
+			}
+		}
+		BSPing.registerListener( 
+			'SaferEditSave', 
+			BsSaferEditEditMode.interval, 
+			[{
+				text: text,
+				section: bsSaferEditEditSection
+			}], 
+			BsSaferEditEditMode.saveTextListener 
+		);
+	},
+
+	/**
+	 * Renders the redirection dialogue if a whole page is edited but a saved text for a section is available
+	 */
+	showRedirect: function() {
+		// Show a dialog using config options:
+		Ext.Msg.show({
+			title: mw.message('bs-saferedit-othersectiontitle').plain(),
+			msg: mw.message('bs-saferedit-othersectiontext1').plain() + '<br/>' + mw.message('bs-saferedit-othersectiontext2').plain() + BsSaferEditEditMode.savedTS + '<br />' + mw.message('bs-saferedit-othersectiontext3').plain(),
+			buttons: Ext.Msg.YESNO,
+			fn: BsSaferEditEditMode.processRedirect,
+			animEl: 'elId',
+			icon: Ext.MessageBox.QUESTION
+		});
+	},
+	/**
+	 * Callback function called in showRedirect that redirects to target page
+	 */
+	processRedirect: function(buttonId, text, opt) {
+		if ( buttonId == 'yes' ) {
+			window.location.href = BsSaferEditEditMode.redirect;
+		} else {
+			BsSaferEditEditMode.cancelSaferEdit();
+			BsSaferEditEditMode.startSaving();
+		}
+	},
+	
+	getText: function( mode ) {
+		var text = '';
+
+		switch (mode) {
+			case "VisualEditor":
+				text = document.getElementById('wpTextbox1').value; 
+				break;
+			case "MW":
+				text = tinyMCE.activeEditor.getContent({save:true}); 
+				break;
+			default: //detect
+				if( VisualEditorMode ) {
+					text = tinyMCE.activeEditor.getContent({save:true});
+					break;
+				}
+				text = document.getElementById('wpTextbox1').value;	
+		}
+
+		return text;
+	},
+	/**
+	 * Retrieves a saved intermediate text if present
+	 */
+	getLostTexts: function() {
+		if ( typeof( bsSaferEditUseSE ) != "undefined" && bsSaferEditUseSE ) {
+			var url = BlueSpice.buildRemoteString(
+				'SaferEdit',
+				'getLostTexts',
+				{
+					"pageName": wgPageName,
+					"nsnumber": wgNamespaceNumber,
+					"uname":wgUserName,
+					"section": bsSaferEditEditSection
+				}
+			);
+			$.get(
+				url,
+				null,
+				function ( sResponseData ){
+					var oResponse = eval( '(' + sResponseData + ')' ); // TODO RBV (19.05.11 09:33): Abstraktion verwenden?
+
+					if ( oResponse.notexts == "1" ) return;
+					if ( oResponse.savedOtherSection == "1" ) {
+						BsSaferEditEditMode.savedTS = oResponse.ts;
+						BsSaferEditEditMode.redirect = oResponse.redirect;
+						BsSaferEditEditMode.showRedirect();
+						return;
+					}
+					BsSaferEditEditMode.savedTS = oResponse.ts;
+					BsSaferEditEditMode.savedHTML = unescape(oResponse.html);
+					BsSaferEditEditMode.savedWikiCode = unescape(oResponse.wiki);
+
+					setTimeout('BsSaferEditEditMode.show()', 10);
+				}
+			);
+		} else {
+			this.startSaving();
+			//BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval);
+		}
+	},
+	/**
+	 * Conducts neccessary preparations of edit form and starts intermediate saving
+	 */
+	init: function() {
+		if ( wgAction=="edit" || wgAction=="submit" ) BsSaferEditEditMode.editMode = true;
+		if ( wgCanonicalNamespace=="Special" ) BsSaferEditEditMode.editMode = false;
+
+		if( !BsSaferEditEditMode.editMode ) return;
+		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText();
+		var links = document.getElementsByTagName("a");
+		for ( i = 0; i < links.length; i++ ) {
+			if ( links[i].innerHTML == mw.message('bs-saferedit-cancel').plain() || links[i].innerHTML == "Cancel" ) {
+				links[i].onclick = BsSaferEditEditMode.cancelSaferEdit;
+			}
+		}
+
+		//some browsers do not support ajax calls after submit
+		//document.getElementById('editform').onsubmit=BsSaferEditEditMode.cancelSaferEdit;
+		//btnSave.onclick="alert('test');";
+
+		if( bsSaferEditHasTexts ) return;
+
+		BsSaferEditEditMode.startSaving();
+	},
+	/** DEPRECATED
+	 * Retrieves edited text from textfield or editor and sends it to server
+	 */
+	saveText: function() {
+		var text = BsSaferEditEditMode.getText();
+		
+		if( BsSaferEditEditMode.canceledByUser ) return;
+
+		if( BsSaferEditEditMode.oldText != text ) {
+			BsSaferEditEditMode.isDirty = true;
+			BsSaferEditEditMode.oldText = text;
+			BsSaferEditEditMode.sendText(text);
+			BsSaferEditEditMode.bBackupCreated = true;
+		} else {
+			if( BsSaferEditEditMode.bBackupCreated === true ) {
+				BsSaferEditEditMode.sendText( false );
+			}
+			else {
+				BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval);
+			}
+		}
+	},
+	/** DEPRECATED
+	 * Sends a changed text to the server.
+	 * @param string text the text that sould be sent to server
+	 */
+	sendText: function(text) {
+		var bPingOnly = false;
+		if ( text === false ) bPingOnly = true;
+		$.post(
+			BlueSpice.buildRemoteString('SaferEdit', 'doSaveText'),
+			$.param({
+				text: encodeURIComponent(text),
+				uname: wgUserName,
+				pageName: wgPageName,
+				nsnumber: wgNamespaceNumber,
+				section: bsSaferEditEditSection,
+				pingOnly : bPingOnly
+			}),
+			function ( sResponseData ){
+				if ( sResponseData == "OK" ) {
+					//setTimeout('document.getElementById("hw_se_icon").style.display="none"', 200);
+					BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval); // TODO RBV (19.05.11 09:41): XHRResponse Abstraktion?
+				}
+			}
+		);
+	},
+	/**
+	 * Resets "dirty"-state if all changes are saved.
+	 */
+	clearDirty: function() {
+		BsSaferEditEditMode.isDirty = false;
+	},
+	// flag gesetzt um zu verhindern, dass doSaferEdit nach submit ausgeführt wird
+	canceledByUser: false,
+	/**
+	 * All saved texts for the current article are deleted.
+	 */
+	cancelSaferEdit: function() {
+		// flag gesetzt um zu verhindern, dass doSaferEdit nach submit ausgeführt wird
+		BsSaferEditEditMode.canceledByUser = true;
+		BsSaferEditEditMode.clearDirty();
+
+		$.post(
+			BlueSpice.buildRemoteString('SaferEdit', 'doCancelSaferEdit'),
+			$.param({
+				uname: escape(wgUserName),
+				pageName: wgPageName,
+				nsnumber: wgNamespaceNumber
+			}),
+			function ( sResponseData ){
+				//BsSaferEditEditMode.clearIcon();
+				// TODO RBV (19.05.11 09:42): Implement
+			}
+		);
+	},
+	/**
+	 * Writes text that is to be restored into the text field or editor
+	 */
+	restore: function() {
+		var text = BsSaferEditEditMode.savedWikiCode;
+		//text = text.replace(/^<textarea.*?>/i, '');
+		//text = text.replace(/<\/textarea>$/i, '');
+		if ( bsVisualEditorUse ) {
+			tinyMCE.execCommand('mceSetContent', false, text);
+		} else {
+			document.getElementById('wpTextbox1').value = text;
+		}
+
+		$.post(
+			BlueSpice.buildRemoteString('SaferEdit', 'doCancelSaferEdit'),
+			$.param({
+				uname: escape(wgUserName),
+				pageName: wgPageName,
+				nsnumber: wgNamespaceNumber
+			}),
+			function ( sResponseData ){
+				//BsSaferEditEditMode.clearIcon();
+				// TODO RBV (19.05.11 09:42): Implement
+			}
+		);
+	},
+
+	hasUnsavedChanges: function(mode) {
+		var text = BsSaferEditEditMode.getText( mode );
+		
+		if ( text.trim() != BsSaferEditEditMode.origText.trim() ) {
+			BsSaferEditEditMode.isUnsaved = true;
+			return true;
+		} else {
+			BsSaferEditEditMode.isUnsaved = false;
+			return false;
+		}
+	},
+	/**
+	 * Called when edit page is left and there are unsaved changes.
+	 */
+	checkSaved: function() {
+		if ( !BsSaferEditEditMode.isSubmit && BsSaferEditEditMode.hasUnsavedChanges("-") ) {
+			if(/chrome/.test(navigator.userAgent.toLowerCase())) { //chrome compatibility
+				return mw.message('bs-saferedit-unsavedChanges').plain();
+			}
+			if(window.event) {
+				window.event.returnValue = mw.message('bs-saferedit-unsavedChanges').plain();
+			}
+			else {
+				return mw.message('bs-saferedit-unsavedChanges').plain();
+			}
+		}
+		// do not return anything, not even null. otherwise IE will display the dialogue
+	},
+
+	onToggleEditor: function(name, data) {
+		if( BsSaferEditEditMode.isUnsaved ) return;
+
+		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText( data );
+	},
+
+	onBeforeToggleEditor: function(name, data) {
+		BsSaferEditEditMode.hasUnsavedChanges(data);
+	},
+
+	onSavedText: function(name) {
+		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText( 'VisualEditor' );
+		BsSaferEditEditMode.isUnsaved = false;
+	}
+}
+
+$(document).ready( function() { 
+	BsSaferEditEditMode.init();
+	if( bsSaferEditHasTexts ) {
+		BsSaferEditEditMode.toggleDialog();
+	}
+	if( bsSaferEditWarnOnLeave && (typeof(alreadyBound) == 'undefined' || alreadyBound == false) ) {
+		$(window).bind( 'beforeunload', function() {
+			alreadyBound = true;
+			// if a string is returned, a dialog is displayed.
+			// if null is returned, nothing happenes and the page is left.
+			return BsSaferEditEditMode.checkSaved();
+		});
+		$('#editform').submit( function(){
+			BsSaferEditEditMode.isSubmit = true;
+		});
+	}
+});
+
+$(document).bind('BSVisualEditorBeforeToggleEditor', BsSaferEditEditMode.onBeforeToggleEditor );
+$(document).bind('BSVisualEditorToggleEditor', BsSaferEditEditMode.onToggleEditor );
+$(document).bind('BSVisualEditorSavedText', BsSaferEditEditMode.onSavedText );

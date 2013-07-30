@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review CHANGE `mode` `rev_mode` VARBINARY( 20 ) NOT NULL;

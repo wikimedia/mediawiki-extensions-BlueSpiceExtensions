@@ -1,0 +1,18 @@
+.bs-userpreferences-body fieldset {
+    border: none;
+    border-top: 1px solid;
+}
+
+.bs-userpreferences-body fieldset fieldset {
+    border: 1px solid;
+}
+
+.bs-userpreferences-body label, .bs-userpreferences-body input:not([type="checkbox"]), .bs-userpreferences-body9 select {
+  display: block;
+  float: left;
+  width: 300px;
+}
+
+.bs-userpreferences-body fieldset br {
+  clear: left;
+}

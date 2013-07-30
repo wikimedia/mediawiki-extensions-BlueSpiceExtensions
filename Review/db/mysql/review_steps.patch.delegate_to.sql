@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review_steps CHANGE `delegate_to` `revs_delegate_to` SMALLINT( 6 ) NOT NULL DEFAULT '0';

@@ -1,0 +1,20 @@
+pmI18n = {
+	save: 'Speichern',
+	cancel: 'Zurücksetzen',
+	state: 'Status',
+	error: 'Fehler',
+	allChangesSaved: 'Alle Änderungen wurden erfolgreich gespeichert.',
+	allChangesCanceled: 'Alle Änderungen wurden rückgängig gemacht.',
+	templateNameIsEmpty: 'Der Vorlagenname darf nicht leer sein.',
+	templateNameExists: 'Der Vorlagenname existiert bereits.',
+	labelGroup: 'Gruppe',
+	labelNamespace: 'Namespace',
+	labelRight: 'Recht',
+	labelTemplateEditor: 'Vorlageneditor',
+	labelPermissions: 'Rechte',
+	labelAdd: 'Hinzufügen',
+	labelTitle: 'Titel:',
+	labelEdit: 'Bearbeiten',
+	labelRemove: 'Löschen',
+	labelDescription: 'Beschreibung'
+}

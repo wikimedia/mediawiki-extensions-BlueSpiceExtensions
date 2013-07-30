@@ -1,0 +1,15 @@
+There are additional MW hooks available:
+
+'BSStateBarAddSortTopVars': Use this hook to add sortkeys for statebar top elements.
+$aSortTopVars: Array of existing sortkeys (sorkey => sortkeyI18N)
+
+'BSStateBarAddSortBodyVars': Use this hook to add sortkeys for statebar body elements.
+$aSortBodyVars: Array of existing sortkeys (sorkey => sortkeyI18N)
+
+'BSStateBarBeforeTopViewAdd': Use this hook to add additional elements to the statebar top area.
+$statebar: StateBar object from BlueSpice MW
+&$topviews: Array of ViewStateBarTopElement objects
+
+'BSStateBarBeforeBodyViewAdd': Use this hook to add additional elements to the statebar body area.
+$statebar: StateBar object from BlueSpice MW
+&$bodyviews: Array of ViewStateBarBodyElement objects

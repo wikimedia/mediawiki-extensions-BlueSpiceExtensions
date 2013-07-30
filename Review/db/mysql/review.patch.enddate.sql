@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review CHANGE `enddate` `rev_enddate` DATE NOT NULL DEFAULT '2000-01-01';

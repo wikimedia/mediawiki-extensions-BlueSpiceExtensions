@@ -1,0 +1,2 @@
+'MW:WikiAdminUserManagerBeforeUserListSend': Before JSON output is created
+'data' => &$data: The dataset to be sent

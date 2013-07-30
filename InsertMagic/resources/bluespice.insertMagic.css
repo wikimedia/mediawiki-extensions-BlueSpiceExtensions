@@ -1,0 +1,21 @@
+span.mceIcon.mce_hwmagic {
+	/* @embed */
+	background: url('images/btn_insertmagic.png');
+}
+
+#bs-InsertMagic-textarea-syntax textarea.x4-form-textarea {
+	background: none repeat scroll 0 0 #FFFFFF;
+	color: #656565;
+	font-family: 'Courier New',monospace;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 3px;
+}
+
+#bs-InsertMagic-panel-desc ol{
+	list-style: decimal outside none;
+} 
+
+#bs-InsertMagic-panel-desc ul{
+	list-style-type: square;
+}

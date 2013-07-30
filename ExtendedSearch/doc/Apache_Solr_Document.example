@@ -1,0 +1,404 @@
+array (
+	'searchString' => '(titleWord:("test") OR titleWord:(test) OR titleWord:(test) OR titleReverse:(*test*) OR redirects:(*test*) OR textWord:("test") OR textWord:(test) OR textReverse:(*test*) OR titleWord:(test)) AND redirect:0',
+	'offset' => 0,
+	'searchLimit' => '25',
+	'searchOptions' => 
+	array (
+		'fl' => 'wiki,uid,hwid,type,title,overall_type,path,namespace,cat,score,ts,redirect,redirects',
+		'fq' => 
+		array (
+			0 => '+wiki:(d385579d1cfb37ce04cc65915e8326e4)',
+			1 => '{!tag=na}+namespace:(0 104 106 108)',
+		),
+		'sort' => 'score desc',
+		'hl' => 'on',
+		'hl.fl' => 'textWord, textReverse',
+		'hl.snippets' => '3',
+		'facet' => 'on',
+		'facet.sort' => 'false',
+		'facet.field' => 
+		array (
+			0 => '{!ex=na}namespace',
+			1 => '{!ex=ca}cat',
+			2 => '{!ex=ov}overall_type',
+			3 => '{!ex=ty}type',
+			4 => '{!ex=ed}editor',
+		),
+		'facet.mincount' => '1',
+		'facet.missing' => 'true',
+	),
+	'isMltQuery' => false,
+)
+
+
+Apache_Solr_Document::__set_state(array(
+	 '_documentBoost' => false,
+	 '_fields' => 
+	array (
+		'wiki' => '071f74439fbdd6b66445693ef5b9c346',
+		'overall_type' => 'wiki',
+		'type' => 'wiki',
+		'title' => 'Filetest',
+		'titleWord' => 'Filetest',
+		'text' => '	WEITERLEITUNG	TEST:Filetest 
+	
+',
+		'textWord' => '	WEITERLEITUNG	TEST:Filetest 
+	
+',
+		'hwid' => '42',
+		'namespace' => 0,
+		'path' => '',
+		'uid' => '071f74439fbdd6b66445693ef5b9c346-42',
+		'ts' => '2012-02-03T13:21:44Z',
+		'editor' => 'Admin',
+		'cat' => 'notcategorized',
+	),
+	 '_fieldBoosts' => 
+	array (
+		'wiki' => false,
+		'overall_type' => false,
+		'type' => false,
+		'title' => false,
+		'titleWord' => false,
+		'text' => false,
+		'textWord' => false,
+		'hwid' => false,
+		'namespace' => false,
+		'path' => false,
+		'uid' => false,
+		'ts' => false,
+		'editor' => false,
+		'cat' => false,
+	),
+))
+Apache_Solr_Document::__set_state(array(
+	 '_documentBoost' => false,
+	 '_fields' => 
+	array (
+		'wiki' => '071f74439fbdd6b66445693ef5b9c346',
+		'overall_type' => 'wiki',
+		'type' => 'wiki',
+		'title' => 'TestResponsibleEditor',
+		'titleWord' => 'TestResponsibleEditor',
+		'text' => ' Test ResponsibleEditor
+cvbc
+ ',
+		'textWord' => ' Test ResponsibleEditor
+cvbc
+ ',
+		'hwid' => '103',
+		'namespace' => 0,
+		'path' => '',
+		'uid' => '071f74439fbdd6b66445693ef5b9c346-103',
+		'ts' => '2012-02-24T08:39:46Z',
+		'editor' => 'WikiSysop',
+		'cat' => 'notcategorized',
+	),
+	 '_fieldBoosts' => 
+	array (
+		'wiki' => false,
+		'overall_type' => false,
+		'type' => false,
+		'title' => false,
+		'titleWord' => false,
+		'text' => false,
+		'textWord' => false,
+		'hwid' => false,
+		'namespace' => false,
+		'path' => false,
+		'uid' => false,
+		'ts' => false,
+		'editor' => false,
+		'cat' => false,
+	),
+))
+Apache_Solr_Document::__set_state(array(
+	 '_documentBoost' => false,
+	 '_fields' => 
+	array (
+		'wiki' => '071f74439fbdd6b66445693ef5b9c346',
+		'overall_type' => 'wiki',
+		'type' => 'wiki',
+		'title' => 'Wiki',
+		'titleWord' => 'Wiki',
+		'text' => ' Safer test case
+ ',
+		'textWord' => ' Safer test case
+ ',
+		'hwid' => '231',
+		'namespace' => 0,
+		'path' => '',
+		'uid' => '071f74439fbdd6b66445693ef5b9c346-231',
+		'ts' => '2012-03-06T15:06:58Z',
+		'editor' => 'WikiSysop',
+		'cat' => 'Kkk',
+	),
+	 '_fieldBoosts' => 
+	array (
+		'wiki' => false,
+		'overall_type' => false,
+		'type' => false,
+		'title' => false,
+		'titleWord' => false,
+		'text' => false,
+		'textWord' => false,
+		'hwid' => false,
+		'namespace' => false,
+		'path' => false,
+		'uid' => false,
+		'ts' => false,
+		'editor' => false,
+		'cat' => false,
+	),
+))
+Apache_Solr_Document::__set_state(array(
+	 '_documentBoost' => false,
+	 '_fields' => 
+	array (
+		'wiki' => '071f74439fbdd6b66445693ef5b9c346',
+		'overall_type' => 'wiki',
+		'type' => 'wiki',
+		'title' => 'WikiTagCloud',
+		'titleWord' => 'WikiTagCloud',
+		'text' => '	Hello again		Kkk		New category		Test		TestCategory		Testing1		Testing2		Testing3		Testing4		Testing5		UngelÃ¶st		
+ __NOAUTHORS__
+ ',
+		'textWord' => '	Hello again		Kkk		New category		Test		TestCategory		Testing1		Testing2		Testing3		Testing4		Testing5		UngelÃ¶st		
+ __NOAUTHORS__
+ ',
+		'hwid' => '280',
+		'namespace' => 0,
+		'path' => '',
+		'uid' => '071f74439fbdd6b66445693ef5b9c346-280',
+		'ts' => '2012-09-04T14:06:16Z',
+		'editor' => 'WikiSysop',
+		'cat' => 
+		array (
+			0 => 'Testing1',
+			1 => 'Testing2',
+			2 => 'Testing3',
+			3 => 'Testing4',
+			4 => 'Testing5',
+		),
+	),
+	 '_fieldBoosts' => 
+	array (
+		'wiki' => false,
+		'overall_type' => false,
+		'type' => false,
+		'title' => false,
+		'titleWord' => false,
+		'text' => false,
+		'textWord' => false,
+		'hwid' => false,
+		'namespace' => false,
+		'path' => false,
+		'uid' => false,
+		'ts' => false,
+		'editor' => false,
+		'cat' => false,
+	),
+))
+Apache_Solr_Document::__set_state(array(
+	 '_documentBoost' => false,
+	 '_fields' => 
+	array (
+		'wiki' => '071f74439fbdd6b66445693ef5b9c346',
+		'overall_type' => 'wiki',
+		'type' => 'wiki',
+		'title' => 'Saferedit',
+		'titleWord' => 'Saferedit',
+		'text' => '		 Inhaltsverzeichnis	
+ 
+	 1	 Test Abschnitt 1	 
+	 2	 Test Abschnitt 2	 
+	 3	 Test Abschnitt 3	 
+	 4	 Test Abschnitt 4	 
+ 
+	 
+	[ Bearbeiten ]		Test Abschnitt 1	 
+ consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+---Lorem ipsum dolor sit amet,
+ 
+	[ Bearbeiten ]		Test Abschnitt 2	 
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	Helloooo und nomal der selbe kÃ¤Ã¤Ã¤Ã¤Ã¤sss
+ 
+	[ Bearbeiten ]		Test Abschnitt 3	 
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ 
+	[ Bearbeiten ]		Test Abschnitt 4	 
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ISISISISI
+ ',
+		'textWord' => '		 Inhaltsverzeichnis	
+ 
+	 1	 Test Abschnitt 1	 
+	 2	 Test Abschnitt 2	 
+	 3	 Test Abschnitt 3	 
+	 4	 Test Abschnitt 4	 
+ 
+	 
+	[ Bearbeiten ]		Test Abschnitt 1	 
+ consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+---Lorem ipsum dolor sit amet,
+ 
+	[ Bearbeiten ]		Test Abschnitt 2	 
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	Helloooo und nomal der selbe kÃ¤Ã¤Ã¤Ã¤Ã¤sss
+ 
+	[ Bearbeiten ]		Test Abschnitt 3	 
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ 
+	[ Bearbeiten ]		Test Abschnitt 4	 
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ISISISISI
+ ',
+		'hwid' => '257',
+		'namespace' => 0,
+		'path' => '',
+		'uid' => '071f74439fbdd6b66445693ef5b9c346-257',
+		'ts' => '2012-03-14T12:21:04Z',
+		'editor' => 'WikiSysop',
+		'cat' => 'notcategorized',
+	),
+	 '_fieldBoosts' => 
+	array (
+		'wiki' => false,
+		'overall_type' => false,
+		'type' => false,
+		'title' => false,
+		'titleWord' => false,
+		'text' => false,
+		'textWord' => false,
+		'hwid' => false,
+		'namespace' => false,
+		'path' => false,
+		'uid' => false,
+		'ts' => false,
+		'editor' => false,
+		'cat' => false,
+	),
+))
+Apache_Solr_Document::__set_state(array(
+	 '_documentBoost' => false,
+	 '_fields' => 
+	array (
+		'wiki' => '071f74439fbdd6b66445693ef5b9c346',
+		'overall_type' => 'wiki',
+		'type' => 'wiki',
+		'title' => 'NextBestTest',
+		'titleWord' => 'NextBestTest',
+		'text' => '		 Inhaltsverzeichnis	
+ 
+	 1	 test1	 
+	 2	 test2	 
+	 3	 test3	 
+	 4	 test4	 
+	 5	 test5	 
+	 6	 test 6	 
+	 7	 test7	 
+ 
+	 
+	[ Bearbeiten ]	 test1	
+ dsafasdf
+asdfadfads
+ 
+	[ Bearbeiten ]	 test2	
+ sdfasfasdf
+asdfasdfaf
+ 
+	[ Bearbeiten ]	 test3	
+ asdfasdf
+asdfadsf
+sadfasdf
+asdfas
+ 
+	[ Bearbeiten ]	 test4	
+ asdfasdfadsf
+sadfasdfdfasdfadsfasdfasdfadf
+ 
+	[ Bearbeiten ]	 test5	
+ sdfadsfasdfaf
+asdfadsfadsf
+asdfadsfadsfasdfasdfadsf
+ 
+	[ Bearbeiten ]	 test 6	
+ asdfasdfasd
+asdfasdfdasfasdfasdfadsfadsf
+ 
+	[ Bearbeiten ]	 test7	
+ sadfadsfasdf
+asdfasdfadsf
+sdafadsfasdfasdf
+sadffasdfasdfdasfasdfasdfasdfs
+ ',
+		'textWord' => '		 Inhaltsverzeichnis	
+ 
+	 1	 test1	 
+	 2	 test2	 
+	 3	 test3	 
+	 4	 test4	 
+	 5	 test5	 
+	 6	 test 6	 
+	 7	 test7	 
+ 
+	 
+	[ Bearbeiten ]	 test1	
+ dsafasdf
+asdfadfads
+ 
+	[ Bearbeiten ]	 test2	
+ sdfasfasdf
+asdfasdfaf
+ 
+	[ Bearbeiten ]	 test3	
+ asdfasdf
+asdfadsf
+sadfasdf
+asdfas
+ 
+	[ Bearbeiten ]	 test4	
+ asdfasdfadsf
+sadfasdfdfasdfadsfasdfasdfadf
+ 
+	[ Bearbeiten ]	 test5	
+ sdfadsfasdfaf
+asdfadsfadsf
+asdfadsfadsfasdfasdfadsf
+ 
+	[ Bearbeiten ]	 test 6	
+ asdfasdfasd
+asdfasdfdasfasdfasdfadsfadsf
+ 
+	[ Bearbeiten ]	 test7	
+ sadfadsfasdf
+asdfasdfadsf
+sdafadsfasdfasdf
+sadffasdfasdfdasfasdfasdfasdfs
+ ',
+		'hwid' => '265',
+		'namespace' => 0,
+		'path' => '',
+		'uid' => '071f74439fbdd6b66445693ef5b9c346-265',
+		'ts' => '2012-04-12T15:43:32Z',
+		'editor' => 'WikiSysop',
+		'cat' => 'notcategorized',
+	),
+	 '_fieldBoosts' => 
+	array (
+		'wiki' => false,
+		'overall_type' => false,
+		'type' => false,
+		'title' => false,
+		'titleWord' => false,
+		'text' => false,
+		'textWord' => false,
+		'hwid' => false,
+		'namespace' => false,
+		'path' => false,
+		'uid' => false,
+		'ts' => false,
+		'editor' => false,
+		'cat' => false,
+	),
+))

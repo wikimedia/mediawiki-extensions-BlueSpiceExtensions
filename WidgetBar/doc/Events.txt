@@ -1,0 +1,5 @@
+'MW'
+    'MW::Widgetbar::DefaultWidgets': Fired if the widgets article does not exists
+	params: 'user'  -  The current MediaWiki User object
+		'sidebar-title'  -  The users Widgetbar-Title (MediaWiki Title object)
+	filter: $aKeywords  -  array( 'KEYWORD' => $callable );

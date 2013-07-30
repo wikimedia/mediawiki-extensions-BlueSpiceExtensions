@@ -1,0 +1,34 @@
+#il_main_top {
+	background-image:url(il_top.png);
+	background-repeat:no-repeat;
+	background-position:bottom -6px;
+	height:6px;
+	font-size:0px;
+}
+
+#il_main_mid {
+	background-color:#EEEEEE;
+}
+
+#il_main_bot {
+	background-image:url(il_bot.png);
+	background-repeat:no-repeat;
+	height:6px;
+	font-size:0px;
+}
+
+#il_main {
+	background:none;
+/*	border-top: 1px solid #D9DbDc;*/
+}
+
+.hwButton {
+	height:22px !important;
+	/* width:24px !important; */
+}
+.bs_description_class {
+	background-color: #DFEDFF;
+}
+.bs_description_class p {
+	margin: 0.2em 0.5em 0.5em;
+}

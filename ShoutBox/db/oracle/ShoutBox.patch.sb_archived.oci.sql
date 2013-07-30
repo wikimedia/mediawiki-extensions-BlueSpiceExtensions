@@ -1,0 +1,1 @@
+ALTER TABLE  /*$wgDBprefix*/bs_shoutbox ADD sb_archived number DEFAULT 0 NULL;

@@ -1,0 +1,59 @@
+/**
+ * Stylesheet for WantedArticle
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @version    $Id: WantedArticle.css 9508 2013-05-27 08:32:49Z smuggli $
+ * @package    BlueSpice_Extensions
+ * @subpackage WantedArticle
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+.bs-wantedarticle-container {
+	margin : 0px 19px;
+	padding: 0px;
+}
+
+.bs-wantedarticle-suggestbutton {
+	float: right;
+}
+.bs-wantedarticle-suggestbutton.bs-wantedarticle-tag-suggestbutton {
+	float: none;
+}
+
+.bs-wantedarticle-form input[type="text"] {
+	/* @embed */
+	background    : url("../images/textfield-suggest-background.png") no-repeat scroll 0 0 transparent;
+	border        : 0px none;
+	color         : #2F477F;
+	font-size     : 10px;
+	height        : 18px;
+	line-height   : 16px;
+	padding       : 0 4px;
+	vertical-align: middle;
+	width         : 155px;
+}
+.bs-wantedarticle-form.bs-wanted-article-tag input[type="text"] {
+	background    : none;
+	border        : 0px none;
+	color         : #2F477F;
+	font-size     : 13px;
+	height        : 24px;
+	line-height   : 16px;
+	vertical-align: left;
+	width         : 155px;
+}
+
+.bs-linkbutton { /* TODO RBV (06.10.10 11:23): Maybe this should go to the main.css of BlueSpice skin */
+	background : none !important;
+	margin     : 0;
+	padding    : 0;
+	border     : none;
+	cursor     : pointer;
+	color      : #AEC8E8;
+	font-size  : 10px;
+}

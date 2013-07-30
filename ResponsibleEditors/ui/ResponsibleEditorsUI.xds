@@ -1,0 +1,263 @@
+{
+	"name": "ResponsibleEditorsUI.xds",
+	"projectId": "015994FB-66CB-434B-A41C-4BEFA4CABB27",
+	"settings": {
+		"urlPrefix": "http://localhost/",
+		"spacesToIndent": 4,
+		"codeGenFormat": "Class",
+		"extPath": "http://extjs.cachefly.net/ext-3.2.1/",
+		"exportPath": ".",
+		"lineEnding": "CRLF"
+	},
+	"xdsVersion": "xds-1.0.2.14",
+	"components": [
+		{
+			"id": "MyGrid",
+			"cid": "grid",
+			"jsClass": "MyGrid",
+			"snapToGrid": 10,
+			"userConfig": {
+				"title": "-ext-undefined-",
+				"store": "BsResponsibleEditorsGridStore",
+				"width": 600,
+				"height": 600,
+				"viewConfig": "{ forceFit: true }",
+				"loadMask": true,
+				"hideHeaders": "-ext-undefined-",
+				"style": "",
+				"bodyStyle": "-ext-undefined-"
+			},
+			"cn": [
+				{
+					"id": "MyColumn",
+					"cid": "gridcolumn",
+					"jsClass": "MyColumn",
+					"snapToGrid": 10,
+					"userConfig": {
+						"dataIndex": "string",
+						"header": "Article",
+						"sortable": true,
+						"resizable": "-ext-undefined-",
+						"width": 100
+					}
+				},
+				{
+					"id": "MyColumn1",
+					"cid": "templatecolumn",
+					"jsClass": "MyColumn1",
+					"snapToGrid": 10,
+					"userConfig": {
+						"header": "Responsible editors",
+						"sortable": true,
+						"resizable": "-ext-undefined-",
+						"width": 100,
+						"emptyGroupText": "-ext-undefined-",
+						"tpl": "{string}"
+					}
+				},
+				{
+					"id": "MyColumn2",
+					"cid": "gridcolumn",
+					"jsClass": "MyColumn2",
+					"snapToGrid": 10,
+					"userConfig": {
+						"header": "Actions",
+						"sortable": true,
+						"resizable": "-ext-undefined-",
+						"width": 100
+					}
+				},
+				{
+					"id": "MyToolbar",
+					"cid": "toolbar",
+					"jsClass": "MyToolbar",
+					"dock": "tbar",
+					"snapToGrid": 10,
+					"userConfig": {
+						"defaults": "{ style: \"padding: 5px\" }"
+					},
+					"cn": [
+						{
+							"id": "MyDisplayField",
+							"cid": "displayfield",
+							"jsClass": "MyDisplayField",
+							"snapToGrid": 10,
+							"userConfig": {
+								"value": "Show"
+							}
+						},
+						{
+							"id": "MyCombo",
+							"cid": "combobox",
+							"jsClass": "MyCombo",
+							"snapToGrid": 10,
+							"userConfig": {
+								"store": "BsResponsibleEditorsFilterComboboxStore",
+								"autoRef": "-ext-undefined-",
+								"displayField": "text",
+								"mode": "local",
+								"forceSelection": true,
+								"typeAhead": "-ext-undefined-",
+								"triggerAction": "all",
+								"width": 214
+							}
+						},
+						{
+							"id": "MyDisplayField1",
+							"cid": "displayfield",
+							"jsClass": "MyDisplayField1",
+							"snapToGrid": 10,
+							"userConfig": {
+								"value": "from namespace"
+							}
+						},
+						{
+							"id": "MyCombo1",
+							"cid": "combobox",
+							"jsClass": "MyCombo1",
+							"snapToGrid": 10
+						}
+					]
+				},
+				{
+					"id": "MyPagingToolbar",
+					"cid": "pagingtoolbar",
+					"jsClass": "MyPagingToolbar",
+					"dock": "bbar",
+					"snapToGrid": 10,
+					"userConfig": {
+						"store": "(none)"
+					}
+				}
+			]
+		},
+		{
+			"id": "MyWindow",
+			"cid": "window",
+			"jsClass": "MyWindow",
+			"snapToGrid": 10,
+			"userConfig": {
+				"title": "Change responsible editors",
+				"width": 400,
+				"height": 250,
+				"autoHeight": true
+			},
+			"cn": [
+				{
+					"id": "MyToolbar1",
+					"cid": "toolbar",
+					"jsClass": "MyToolbar1",
+					"dock": "fbar",
+					"snapToGrid": 10,
+					"cn": [
+						{
+							"id": "MyButton1",
+							"cid": "button",
+							"jsClass": "MyButton1",
+							"snapToGrid": 10,
+							"userConfig": {
+								"text": "Ok"
+							}
+						},
+						{
+							"id": "MyButton2",
+							"cid": "button",
+							"jsClass": "MyButton2",
+							"snapToGrid": 10,
+							"userConfig": {
+								"text": "Cancel"
+							}
+						}
+					]
+				},
+				{
+					"id": "MyForm",
+					"cid": "form",
+					"jsClass": "MyPanel",
+					"snapToGrid": 10,
+					"userConfig": {
+						"title": "-ext-undefined-",
+						"labelWidth": 150,
+						"labelAlign": "right",
+						"autoHeight": true
+					},
+					"cn": [
+						{
+							"id": "MyPanel",
+							"cid": "panel",
+							"jsClass": "MyPanel",
+							"snapToGrid": 10,
+							"userConfig": {
+								"title": "-ext-undefined-",
+								"html": "lorem ipsum...",
+								"style": "font-size: 12px; padding: 5px;",
+								"border": false,
+								"hideBorders": "-ext-undefined-",
+								"autoHeight": true
+							}
+						},
+						{
+							"id": "MyCombo2",
+							"cid": "combobox",
+							"jsClass": "MyCombo2",
+							"snapToGrid": 10,
+							"userConfig": {
+								"fieldLabel": "Responsible editor"
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"stores": [
+		{
+			"id": "MyStore",
+			"cid": "jsonstore",
+			"jsClass": "BsResponsibleEditorsNamespaceComboboxStore",
+			"snapToGrid": 10,
+			"userConfig": {
+				"storeId": "BsResponsibleEditorsNamespaceComboboxStore"
+			}
+		},
+		{
+			"id": "MyStore1",
+			"cid": "jsonstore",
+			"jsClass": "BsResponsibleEditorsGridStore",
+			"snapToGrid": 10,
+			"userConfig": {
+				"storeId": "BsResponsibleEditorsGridStore"
+			}
+		},
+		{
+			"id": "MyStore2",
+			"cid": "arraystore",
+			"jsClass": "BsResponsibleEditorsFilterComboboxStore",
+			"snapToGrid": 10,
+			"userConfig": {
+				"storeId": "BsResponsibleEditorsFilterComboboxStore",
+				"data": "[[0, 'all articles with responsible editor'], [1, 'all articles without responsible editor'], [2, 'all articles']]"
+			},
+			"cn": [
+				{
+					"id": "MyField",
+					"cid": "datafield",
+					"jsClass": "MyField",
+					"snapToGrid": 10,
+					"userConfig": {
+						"name": "filter_id"
+					}
+				},
+				{
+					"id": "MyField1",
+					"cid": "datafield",
+					"jsClass": "MyField1",
+					"snapToGrid": 10,
+					"userConfig": {
+						"name": "text"
+					}
+				}
+			]
+		}
+	]
+}

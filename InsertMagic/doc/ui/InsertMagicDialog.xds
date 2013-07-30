@@ -1,0 +1,301 @@
+{
+    "name": "InsertMagicDialog.xds",
+    "settings": {
+        "urlPrefix": "http://localhost/",
+        "directAPI": "",
+        "spacesToIndent": 4,
+        "codeGenFormat": "Class",
+        "exportPath": ".",
+        "extPath": "http://extjs.cachefly.net/ext-3.4.0/",
+        "lineEnding": "CRLF",
+        "instantiateStore": true,
+        "exportXDSFiles": true,
+        "genTimestamps": true,
+        "appName": "MyApp"
+    },
+    "xdsVersion": "1.2.3",
+    "components": [
+        {
+            "id": "ExtBox1-ext-gen1562",
+            "type": "window",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 400,
+                "width": 600,
+                "layout": "border",
+                "title": "InsertMagic",
+                "designer|userClassName": "BsInsertMagicDialog"
+            },
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen4780",
+                    "type": "toolbar",
+                    "reference": {
+                        "name": "fbar",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "tbButtons",
+                        "designer|userClassName": "MyToolbar",
+                        "dock": "fbar",
+                        "layout|region": "center"
+                    },
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen16171",
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "id": "bs-InsertMagic-btn-preview",
+                                "text": "Preview",
+                                "designer|userClassName": "MyButton2"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen4940",
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "bs-InsertMagic-btn-ok",
+                                "text": "Ok",
+                                "designer|userClassName": "MyButton"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen5059",
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "bs-InsertMagic-btn-cancel",
+                                "text": "Cancel",
+                                "designer|userClassName": "MyButton1"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen7680",
+                    "type": "panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "bs-InsertMagic-west",
+                        "width": 256,
+                        "layout": "vbox",
+                        "border": false,
+                        "padding": 5,
+                        "title": null,
+                        "designer|userClassName": "MyPanel2",
+                        "layout|columnWidth": null,
+                        "layout|cmargins": null,
+                        "layout|margins": null,
+                        "layout|minWidth": 300,
+                        "layout|region": "west",
+                        "container|align": "stretch",
+                        "container|padding": null
+                    },
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen16981",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "bs-InsertMagic-label-first",
+                                "text": "1. Choose Magic Word",
+                                "designer|userClassName": "MyLabel1",
+                                "layout|flex": null
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen5287",
+                            "type": "combobox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "bs-InsertMagic-combo",
+                                "store": "storeMagic",
+                                "designer|userClassName": "MyCombo",
+                                "layout|flex": null
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen5674",
+                            "type": "grid",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "bs-InsertMagic-grid",
+                                "height": 128,
+                                "width": null,
+                                "border": false,
+                                "padding": null,
+                                "title": null,
+                                "hideHeaders": true,
+                                "store": "storeMagic",
+                                "viewConfig": "{ forceFit: true }",
+                                "designer|userClassName": "MyGrid",
+                                "layout|flex": null
+                            },
+                            "cn": [
+                                {
+                                    "id": "ExtBox1-ext-gen5688",
+                                    "type": "gridcolumn",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "string",
+                                        "header": "String",
+                                        "sortable": true,
+                                        "width": 100,
+                                        "designer|userClassName": "MyColumn"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen6846",
+                            "type": "panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>\n\n<dl>\n\t<dt>Donec quam felis</dt>\n\t<dd>ultricies nec, pellentesque eu, pretium quis, sem.</dd>\n\t<dt>Nulla consequat massa quis enim</dt>\n\t<dd>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu</dd>\n</dl>\n\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,</p>",
+                                "id": "bs-InsertMagic-panel-desc",
+                                "style": "\"background-color: #CCC\"\n",
+                                "autoScroll": true,
+                                "padding": 5,
+                                "title": null,
+                                "designer|userClassName": "MyPanel1",
+                                "layout|flex": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen6569",
+                    "type": "panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "bs-InsertMagic-panel-center",
+                        "width": null,
+                        "layout": "vbox",
+                        "border": false,
+                        "padding": 5,
+                        "title": null,
+                        "designer|userClassName": "MyPanel",
+                        "layout|columnWidth": 0.5,
+                        "layout|cmargins": null,
+                        "layout|margins": null,
+                        "layout|region": "center",
+                        "container|align": "stretch",
+                        "container|padding": null
+                    },
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen15110",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "bs-InsertMagic-label-second",
+                                "text": "2. Modify the code",
+                                "designer|userClassName": "MyLabel",
+                                "layout|flex": null
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen6716",
+                            "type": "textarea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "bs-InsertMagic-textarea",
+                                "designer|userClassName": "MyTextArea",
+                                "layout|hideLabel": true,
+                                "layout|flex": 1
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen15749",
+                            "type": "panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "id": "bs-InsertMagic-panel-preview",
+                                "title": null,
+                                "designer|userClassName": "MyPanel3",
+                                "layout|flex": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "stores": [
+        {
+            "id": "ExtBox1-ext-gen3926",
+            "type": "jsonstore",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "storeId": "storeMagic",
+                "designer|userClassName": "storeMagic"
+            }
+        }
+    ],
+    "framework": "ext33"
+}

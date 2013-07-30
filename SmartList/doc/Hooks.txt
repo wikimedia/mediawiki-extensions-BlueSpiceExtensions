@@ -1,0 +1,11 @@
+==SmartList.class.php==
+
+'BSSmartListCustomMode':
+&$aObjectList:
+ $aArgs:
+
+'BSSmartListBeforeEntryViewAddData':
+&$aData:
+ $aArgs:
+ $oSmartListListEntryView:
+ $row:

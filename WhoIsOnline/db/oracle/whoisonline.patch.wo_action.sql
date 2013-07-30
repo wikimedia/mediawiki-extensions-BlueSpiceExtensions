@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_whoisonline ADD wo_action VARCHAR2( 32 ) DEFAULT 'view' NOT NULL ;

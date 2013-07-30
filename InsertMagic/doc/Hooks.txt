@@ -1,0 +1,13 @@
+==InsertMagic.class.php==
+
+'BSInsertMagicAjaxGetData':
+&$oResponse:
+'tags':
+
+'BSInsertMagicAjaxGetData':
+&$oResponse:
+'variables'.
+
+'BSInsertMagicAjaxGetData':
+ &$oResponse:
+ 'switches':

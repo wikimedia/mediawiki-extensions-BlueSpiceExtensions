@@ -1,0 +1,86 @@
+/**
+ * Stylesheet for StateBar
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @version    $Id: StateBar.css 9618 2013-06-05 14:44:43Z smuggli $
+ * @package    BlueSpice_Extensions
+ * @subpackage StateBar
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+#bs-statebar {
+    background: #f3f3f3;
+    padding: 3px 8px 3px 8px;
+    min-height: 24px;
+    width: auto;
+}
+
+.bs-statebar-viewtoggler {
+    cursor: pointer;
+}
+
+#bs-statebar-viewtoggler {
+    font-size: 8px;
+    color: #999;
+    float: right;
+    margin-top: 6px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+#bs-statebar-view {
+    margin-top: 3px;
+    background: #fff;
+    display: none;
+    border-top: 1px solid #D1D1D1;
+    border-bottom: 1px solid #D1D1D1;
+    margin-bottom: 5px;
+}
+
+#bs-statebar-body-heading {
+    background: #fff;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 2px 6px 2px 6px;
+}
+
+.bs-statebar-body-item {
+    padding: 4px 6px;
+    /*float: left;*/
+}
+
+.bs-statebarbody-itemheading {
+    color: #999;
+    font-weight: bold;
+    font-size:11px;
+}
+
+.bs-statebar-top-item {
+    margin-right: 5px;
+	display: inline;
+}
+
+.bs-statebar-top-text {
+    color: #888;
+    font-size: 11px;
+}
+
+.bs-statebar-body-itembody {
+    color: #060606;
+    font-size: 11px;
+    line-height: 14px;
+    padding: 2px 0 4px 0;
+}
+
+.bs-statebar-top-icon {
+    display: inline-block;
+}
+
+#bs-statebar-view h4 {
+    color: #aaa;
+}

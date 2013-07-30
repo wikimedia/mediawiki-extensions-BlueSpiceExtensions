@@ -1,0 +1,92 @@
+==ExtendedSearch.class==
+
+'ExtendedSearchBeforeAjaxResponse':
+ null:
+&$oDummy :
+
+
+==ExtendedSearchAdmin.class==
+
+'BSExtendedSearchAdminButtons':
+$this:
+&$aSearchAdminButtons:
+
+
+==ExtendedSearchBase.class==
+
+'BS::ExtendedSearch::UpdateIndexWiki':
+&$oTitle:
+&$oRevision:
+
+'BSExtendedSearchAutocomplete'.
+ &$aResults:
+ $sSearchString:
+ &$iID:
+ $bTitleExists:
+
+
+==BuildIndexMainControl.class==
+'BS:ExtendedSearch:AddDocumentLog':
+$oSolrDocument:
+
+'BSExtendedSearchBuildIndex':
+$this:
+
+
+==BuildIndexMwArticles.class==
+
+'BS::ExtendedSearch::IndexCrawlDocuments':
+&$oDocument:
+
+'BSExtendedSearchBuildIndexAfterAddArticle':
+$oTitle:
+$oSolrDocument:
+
+
+==BuildIndexMCExternalRespository.class==
+
+'BSExtendedSearchBeforeAddExternalFile':
+ $this:
+ $oRepoFile:
+ &$doc:
+
+
+==SearchIndex.class==
+
+'BSExtendedSearchFormatLink':
+&$sSearchLink
+$document:
+$oSkin:
+&$sLinkIcon:
+
+
+==SearchOptions.class==
+
+'BSExtendedSearchGetCustomerId':
+&$sCustomerId:
+
+'BSExtendedSearchEmptyNamespacesElse':
+&$this:
+$oSearchRequest:
+
+
+==SearchRequest.class==
+
+'BSExtendedSearchRequestProcessInputs':
+&$this:
+
+
+==view.ExtendedSearchFormPage.php==
+
+'FormDefaults':
+ $this:
+&$aSearchBoxKeyValues:
+
+
+==view.SearchSuggest.php==
+
+'BSExtendedSearchAdditionalActions':
+&$sCreatesuggest:
+ &$sSearchUrlencoded:
+ &$sSearchHtmlEntities:
+ &$oTitle

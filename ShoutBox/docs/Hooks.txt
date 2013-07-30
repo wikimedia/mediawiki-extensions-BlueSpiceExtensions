@@ -1,0 +1,15 @@
+'BSShoutBoxAfterInsertShout': After a entry was added to the shoutbox database table.
+$iArticleId: The page_id of the article the shout belongs to.
+$iUserId: The user_id of the shouting user.
+$sNick: The "display name" of the shouting user.
+$sMessage: The shout message.
+$sTimestamp: The timestamp.
+
+'BSShoutBoxBeforeAddViewAfterArticleContent' After ViewShoutBox got initialized.
+$oShoutBoxView: ViewShoutBox object
+
+'BSShoutBoxGetShoutsBeforeQuery' Before entrys get loaded from the shoutbox table.
+&$sOutput: Html output.
+$iArticleId: The page_id of the article the shout belongs to.
+&$iLimit: The limit option.
+return bool false to break the following query.

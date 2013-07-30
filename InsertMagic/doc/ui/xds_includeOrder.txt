@@ -1,0 +1,3 @@
+<script type="text/javascript" src="BsInsertMagicDialog.ui.js"></script>
+<script type="text/javascript" src="BsInsertMagicDialog.js"></script>
+<script type="text/javascript" src="storeMagic.js"></script>

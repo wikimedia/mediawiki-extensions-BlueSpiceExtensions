@@ -1,0 +1,6 @@
+==UserSidebar.class.php==
+
+'BSUserSidebarDefaultWidgets':
+ &$aViews:
+ $oUser:
+$oTitle:

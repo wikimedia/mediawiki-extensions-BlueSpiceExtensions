@@ -1,0 +1,6 @@
+==WidgetBar.class.php==
+
+'BSWidgetBarGetDefaultWidgets':
+&$aViews:
+ $oUser:
+ $oTitle:

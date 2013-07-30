@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review_steps CHANGE `id` `revs_id` SMALLINT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT;

@@ -1,0 +1,8 @@
+==TopMenuBarCustomizer.class.php==
+
+'BSBlueSpiceSkin:ApplicationList':
+&$aApplications.
+ &$sCurrentApplicationContext:
+ $wgUser:
+ &$aOut:
+ $this:

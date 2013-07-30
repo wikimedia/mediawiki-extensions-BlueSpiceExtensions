@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_whoisonline ADD wo_action VARBINARY( 32 ) NOT NULL;

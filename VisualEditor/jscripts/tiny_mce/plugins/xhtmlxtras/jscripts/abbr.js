@@ -1,0 +1,29 @@
+ /**
+ * $Id: abbr.js 6574 2012-09-24 08:16:23Z smuggli $
+ *
+ * @author Moxiecode - based on work by Andrew Tetlaw
+ * @copyright Copyright © 2004-2007, Moxiecode Systems AB, All rights reserved.
+ */
+
+function preinit() {
+	// Initialize
+	tinyMCE.setWindowArg('mce_windowresize', false);
+}
+
+function init() {
+	tinyMCEPopup.resizeToInnerSize();
+	SXE.initElementDialog('abbr');
+	if (SXE.currentAction == "update") {
+		SXE.showRemoveButton();
+	}
+}
+
+function insertAbbr() {
+	SXE.insertElement(tinyMCE.isIE && !tinyMCE.isOpera ? 'html:ABBR' : 'abbr');
+	tinyMCEPopup.close();
+}
+
+function removeAbbr() {
+	SXE.removeElement('abbr');
+	tinyMCEPopup.close();
+}

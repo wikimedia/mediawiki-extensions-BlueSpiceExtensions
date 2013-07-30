@@ -1,0 +1,52 @@
+/**
+ * Stylesheet for ExtensionInfo
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @version    $Id: ShoutBox.class.php 1284 2011-02-16 11:50:18Z mglaser $
+ * @package    BlueSpice_Extensions
+ * @subpackage ExtensionInfo
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+ 
+ .alpha {
+	color: #B73A3A;
+	font-weight: bold;
+}
+
+.beta {
+	color: #FFAE00 ;
+	font-weight: bold;
+}
+
+.stable {
+	color: #3E5389;
+	font-weight: bold;
+}
+
+#bs-extensioninfo-grid a[href^="https://"], .link-https {
+	background-image: none !important;
+}
+
+.x-grid3-cell-inner, .x-grid3-hd-inner {
+	white-space: normal !important;
+}
+/*
+für Ganzzeilige Markierungen würde ich folgende Farben verwenden:
+alpha #faf3f2
+beta #fbf9f2
+stable #f6faf2
+Padding oben/unten: 2px
+
+bei Markern am Ende der Zeile (border-right: 5px):
+
+alpha #e4f4d6
+beta #fcefd6
+stable #e4f4d6
+
+Der Tabellenkopf: #ededed
+Beschriftung im Tabellenkopf: #7b7b7b
+*/

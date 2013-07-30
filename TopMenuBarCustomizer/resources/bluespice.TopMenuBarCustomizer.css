@@ -1,0 +1,47 @@
+/**
+ * Stylesheet for TopMenuBarCustomizer
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @version    $Id: TopMenuBarCustomizer.css 8305 2013-01-24 14:53:20Z pwirth $
+ * @package    BlueSpice_Extensions
+ * @subpackage TopMenuBarCustomizer
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+.bs-apps-child.level-3 {
+	left: 130px;
+	top: 0px;
+}
+.bs-apps-child.level-4 {
+	left: 130px;
+	top: 0px;
+}
+.bs-apps-child.level-5 {
+	left: 130px;
+	top: 0px;
+}
+
+ul .bs-apps-child {
+	display:none;
+	position: absolute;
+	background-color: #B1B9CF;
+	height: auto;
+	margin: 7px 0 0 -130px;
+	padding: 5px;
+	text-align: left;
+	width: 130px;
+	z-index: 1000;
+	border: 3px solid #B1B9CF;
+}
+.bs-apps-child  li {
+	width:130px
+}
+.bs-apps-child  li:hover{
+	background-color: #C8CDD2;
+}
+.bs-apps-child a:hover{
+	background: none;
+}

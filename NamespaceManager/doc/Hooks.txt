@@ -1,0 +1,45 @@
+==NamespaceManager.class.php==
+
+'NamespaceManager::getMetaFields':
+&$aMetaFields.
+
+'NamespaceManager::getNamespaceData':
+&$aResults:
+
+'NamespaceManager::namespaceManagerRemoteSort'.
+$this:
+ $value1:
+ $value2:
+ $aSortConditions:
+
+'BSNamespaceManagerBeforeSetUsernamespaces':
+$this:
+&$bsSystemNamespaces:
+
+'NamespaceManager::editNamespace':
+&$aUserNamespaces[ $iNS ]:
+
+'NamespaceManager::editNamespace':
+&$aUserNamespaces[ $iNS ]:
+
+'BSNamespaceManagerBeforeSetUsernamespaces':
+$this:
+&$bsSystemNamespaces:
+
+'NamespaceManager::editNamespace':
+&$aUserNamespaces[ $iNS ]:
+
+'BSNamespaceManagerBeforeSetUsernamespaces':
+ $this:
+ &$bsSystemNamespaces:
+
+'NamespaceManager::writeNamespaceConfiguration':
+&$sSaveContent:
+ $sConstName:
+ $aDefinition:
+
+
+
+
+
+

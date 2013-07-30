@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review_steps CHANGE `sort_id` `revs_sort_id` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0';

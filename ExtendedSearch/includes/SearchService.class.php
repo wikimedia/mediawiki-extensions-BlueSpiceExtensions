@@ -1,0 +1,410 @@
+<?php
+/**
+ * Abstraction layer for search service for ExtendedSearch
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @package    BlueSpice_Core
+ * @subpackage ExtendedSearch
+ * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+/* Changelog
+ * v0.1
+ * FIRST CHANGES
+ */
+/**
+ * BsSolrService is the ONLY api between blue spice and a search server.
+ * There may be more than one solr server so it is used as n-gleton
+ */
+/**
+ * Abstraction layer for search service for ExtendedSearch
+ * @package BlueSpice_Core
+ * @subpackage ExtendedSearch
+ */
+
+class SearchService extends SolrServiceAdapter {
+
+	/**
+	 * Curl handle for text extraction
+	 * @var resource
+	 */
+	protected $oGetFileTextCurlHandle = null;
+	/**
+	 * Counts number of connections to text extraction
+	 * @var int
+	 */
+	protected $iGetFileTextConnectionCounter;
+	/**
+	 * Age of text extraction curl handler
+	 * @var int miiliseconds.
+	 */
+	protected $iGetFileTextCurlAge;
+	/**
+	 * Instance of search service
+	 * @var object of search service.
+	 */
+	protected static $oInstance = null;
+
+	/**
+	 * Constructor for BsSearchService class
+	 * @param string $protocol Protocol of Solr service URL
+	 * @param string $host Host of Solr service URL
+	 * @param string $port Port of Solr service URL
+	 * @param string $path Path of Solr service URL
+	 */
+	public function __construct( $sProtocol, $sHost, $sPort, $sPath ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		parent::__construct( $sProtocol, $sHost, $sPort, $sPath );
+		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Return a instance of SearchService.
+	 * @return SearchService Instance of SearchService
+	 */
+	public static function getInstance() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		if ( self::$oInstance === null ) {
+			if ( PHP_SAPI === 'cli' ) {
+				BsConfig::loadSettings();
+			}
+			$aUrl = parse_url( BsConfig::get( 'MW::ExtendedSearch::SolrServiceUrl' ) );
+
+			if ( empty( $aUrl['host'] ) || empty( $aUrl['port'] ) || empty( $aUrl['path'] ) ) {
+				wfProfileOut( 'BS::'.__METHOD__ );
+				throw new BsException( 'Creating instance of '.__CLASS__.' not possible with these params:'
+					.', $host='.( isset( $aUrl['host'] ) ? $aUrl['host'] : '' )
+					.', $port='.( isset( $aUrl['port'] ) ? $aUrl['port'] : '' )
+					.', $path='.( isset( $aUrl['path'] ) ? $aUrl['path'] : '' )
+				);
+			}
+
+			$oServer = new self( $aUrl['scheme'], $aUrl['host'], $aUrl['port'], $aUrl['path'] );
+
+			self::$oInstance = $oServer;
+			wfProfileOut( 'BS::'.__METHOD__ );
+
+			return $oServer;
+		}
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return self::$oInstance;
+	}
+
+	/**
+	 * Sanitze search input to prevent XSS
+	 * @param string $searchString Raw search string.
+	 * @return string sanitized search string.
+	 */
+	public static function sanitzeSearchString( $sSearchString ) {
+		$sSearchString = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
+		$sSearchString = trim( $sSearchString );
+
+		return $sSearchString;
+	}
+
+	/**
+	 * Normalize search string in order to be processed by search service.
+	 * @param string $searchString Raw search string.
+	 * @return string Normalized search string.
+	 */
+	public static function preprocessSearchInput( $sSearchString ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		// Uppercase reserved words for the lovely lucene
+		$sSearchString = mb_strtolower( $sSearchString );
+		$sSearchString = str_ireplace( array( ' and ', ' or ', ' not ' ), array( ' AND ', ' OR ', ' NOT ' ), ' '.$sSearchString.' ' );
+
+		/*
+		 * Underscore should be replaced by solr, however, it is not
+		 * Replace slash in order to look for subpages
+		 */
+		if ( ( substr_count( $sSearchString, '"' ) % 2 ) != 0 ) {
+			$sSearchString = str_replace( '"', '\\"', $sSearchString );
+		}
+		$sSearchString = str_replace( array( '_', '/' ), ' ', $sSearchString );
+		$sSearchString = str_replace( array( ':', '{', '}', '(', ')', '[', ']' ), array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]' ), $sSearchString );
+		$sSearchString = str_replace( array( '\\\\{', '\\\\}' ), array( '\\{', '\\}' ), $sSearchString );
+		$sSearchString = trim( $sSearchString );
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $sSearchString;
+	}
+
+	/**
+	 * Check for unescaped characters
+	 * @param string $sString String to check
+	 * @param string $sChar Character to look for
+	 * @param string $sEscapeChar Character that escapes the character in question
+	 * @return bool True if there are unescaped instances.
+	 */
+	protected static function containsStringUnescapedCharsOf( $sString, $sChar, $sEscapeChar = '\\' ) {
+		// at $pos the $char occurs in $sString.
+		$pos = stripos( $sString, $sChar );
+		//  If $sChar not comprised in $sString
+		if ( $pos === false ) {
+			return false;
+		}
+		// So, $sChar ist comprised in $sString, but where?
+		// ... at first position?
+		if ( $pos === 0 ) {
+			return true;
+		}
+		// Ok, comprised but somewhere inside. Escape chars get important.
+		// Is the character before $pos an $sEscapeChar?
+		if ( $sString[$pos - 1] !== $sEscapeChar ) {
+			return true;
+		}
+		// $pos-1 IS a $sEscapeChar
+		// But the $sEscapeChar might have been escaped itself, if preceded with a second $sEscapeChar
+		if ( ( $pos > 1 ) && ( $sString[$pos - 2] === $sEscapeChar ) ) {
+			return true;
+		}
+
+		// Finally! $sChar contained in $sString, with single $sEscapeChar directly
+		// preceded that is not escaped by another $sEscapeChar itself.
+		// Use recursion to see, if there is a second $sChar after first occurrence
+		return self::containsStringUnescapedCharsOf( substr( $sString, $pos + 1 ), $sChar );
+	}
+
+	/**
+	 * Append wildcard character to search string if possible
+	 * @param string $sSearchString Raw search string
+	 * @return string (Possibly) wildcarded search string.
+	 */
+	public static function wildcardSearchstringOfOnlyOneWord( $sSearchString ) {
+		// remove beginning
+		$sSearchString = trim( $sSearchString ); 
+		if ( empty( $sSearchString ) ) {
+			return $sSearchString;
+		}
+		// in case of two terms nothing shall be wildcarded
+		if ( strpos( $sSearchString, ' ' ) !== false ) {
+			return $sSearchString;
+		}
+		if ( self::containsStringUnescapedCharsOf( $sSearchString, '~' ) ) {
+			return $sSearchString;
+		}
+		if ( self::containsStringUnescapedCharsOf( $sSearchString, '"' ) ) {
+			return $sSearchString;
+		}
+		if ( self::containsStringUnescapedCharsOf( $sSearchString, '^' ) ) {
+			return $sSearchString;
+		}
+		if ( self::containsStringUnescapedCharsOf( $sSearchString, '*' ) ) {
+			return $sSearchString;
+		}
+
+		return '*' . $sSearchString . '*';
+	}
+
+	/**
+	 * Simple Search interface for more like this query
+	 *
+	 * @param string $query The raw query string
+	 * @param int $offset The starting offset for result documents
+	 * @param int $limit The maximum number of result documents to return
+	 * @param array $params key / value pairs for other query parameters (see Solr documentation), use arrays for parameter keys used more than once (e.g. facet.field)
+	 * @return Apache_Solr_Response
+	 */
+	public function mlt( $query, $offset = 0, $limit = 10, $params = array() ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		if ( !is_array( $params ) ) {
+			$params = array();
+		}
+
+		// common parameters in this interface
+		$params['wt']      = self::SOLR_WRITER;
+		$params['json.nl'] = $this->_namedListTreatment;
+		$params['q']       = $query;
+		$params['rows']    = $limit;
+
+		// use http_build_query to encode our arguments because its faster
+		// than urlencoding all the parts ourselves in a loop
+		$queryString = http_build_query( $params, null, $this->_queryStringDelimiter );
+
+		// because http_build_query treats arrays differently than we want to, correct the query
+		// string by changing foo[#]=bar (# being an actual number) parameter strings to just
+		// multiple foo=bar strings. This regex should always work since '=' will be urlencoded
+		// anywhere else the regex isn't expecting it
+		$queryString = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $queryString );
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $this->_sendRawGet( $this->_morelikethisUrl.$this->_queryDelimiter.$queryString );
+	}
+
+	/**
+	 * Simple Search interface for spellcheck query
+	 *
+	 * @param string $sQuery The raw query string
+	 * @param int $offset The starting offset for result documents
+	 * @param int $limit The maximum number of result documents to return
+	 * @param array $params key / value pairs for other query parameters (see Solr documentation), use arrays for parameter keys used more than once (e.g. facet.field)
+	 * @return Apache_Solr_Response
+	 */
+	public function spellcheck( $sQuery, $iOffset = 0, $iLimit = 10, $aParams = array(), $bIndexing ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		if ( !is_array( $aParams ) ) {
+			$aParams = array();
+		}
+
+		$aParams['spellcheck']   = 'true';
+		$aParams['q']            = $sQuery;
+		$aParams['spellcheck.q'] = $sQuery;
+
+		if ( $bIndexing === false ) {
+			$aParams['wt']      = self::SOLR_WRITER;
+			$aParams['json.nl'] = $this->_namedListTreatment;
+		}
+
+		// use http_build_query to encode our arguments because its faster
+		// than urlencoding all the parts ourselves in a loop
+		$sQueryString = http_build_query( $aParams, null, $this->_queryStringDelimiter );
+
+		// because http_build_query treats arrays differently than we want to, correct the query
+		// string by changing foo[#]=bar (# being an actual number) parameter strings to just
+		// multiple foo=bar strings. This regex should always work since '=' will be urlencoded
+		// anywhere else the regex isn't expecting it
+		$sQueryString = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $sQueryString );
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $this->_sendRawGet( $this->_spellcheckUrl.$this->_queryDelimiter.$sQueryString );
+	}
+
+	/**
+	 * Queries service with spellchecker
+	 * @param string $search Search string
+	 * @param array $searchoptions key / value pairs for other query parameters (see Solr documentation), use arrays for parameter keys used more than once (e.g. facet.field)
+	 * @return array List of spell check suggestions
+	 */
+	public function getSpellcheck( $sSearch, $aSearchOptions, $bIndexing = false ) {
+		try {
+			$oHits = $this->spellcheck( $sSearch, 0, 3, $aSearchOptions, $bIndexing );
+		} catch ( Exception $e ) {
+			return false;
+		}
+
+		$aResult = array();
+		if ( !isset( $oHits->spellcheck->suggestions ) ) return $aResult;
+
+		foreach ( $oHits->spellcheck->suggestions as $vTerm ) {
+			if ( is_object( $vTerm ) ) {
+				if ( isset( $vTerm->suggestion ) ) {
+					foreach ( $vTerm->suggestion as $oSuggestion ) {
+						$aResult[$oSuggestion->freq] = $oSuggestion->word;
+					}
+				}
+			}
+		}
+		krsort( $aResult );
+
+		return array_unique( $aResult );
+	}
+
+	/**
+	 * Prepare curl handle for text extraction
+	 */
+	public function initGetFileTextCurlHandle() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		/* extractFormat=text|xml
+		 *    - text: xml-formatted, but whole body embraced by only one tag
+		 *    - xml:  xml-formatted, each entity of the document (headings,
+		 *            body, paragraphs, ...) embraced by it's own tag
+		 */
+		$url = $this->sUrl.'update/extract?extractOnly=true&extractFormat=text';
+		if ( $this->oGetFileTextCurlHandle === null
+			|| $this->iGetFileTextConnectionCounter > 30
+			|| $this->iGetFileTextCurlAge + 75 < microtime( true ) ) {
+			if ( $this->oGetFileTextCurlHandle !== null ) {
+				curl_close( $this->oGetFileTextCurlHandle );
+			}
+			$this->oGetFileTextCurlHandle = curl_init(); // todo: function_exists('curl_init') not true on every installation => handle Exception
+			$this->iGetFileTextConnectionCounter = 0;
+			$this->iGetFileTextCurlAge = microtime( true );
+
+			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_HEADER, false ); // do not include http-header in returned transfer (remains accessible via curl_getinfo)
+			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_HTTPHEADER, array( "Content-Type: text/xml; charset=utf-8", "Expect:" ) );
+			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_RETURNTRANSFER, 1 );
+			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_URL, $url );
+			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_POST, 1 );
+
+			if ( stripos( $url, 'https' ) === 0 ) {
+				curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_SSL_VERIFYPEER, false ); // Allow self-signed certs
+				curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_SSL_VERIFYHOST, false ); // Allow certs that do not match the hostname
+			}
+		}
+		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Sends a file to the Solr-Server to be disassembled there
+	 * transfer is done by cUrl, not by
+	 * @param string $filepath The filepath of the local file
+	 * @return mixed The result of the cURL-Request to the Solr-Server or '' if errors occurred
+	 */
+	public function &getFileText( $filepath, $timeLimit = null ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		if ( $timeLimit === null ) $timeLimit = 60;
+
+		$this->initGetFileTextCurlHandle();
+
+		set_time_limit( $timeLimit );
+
+		// @todo: $rawPost = file_get_contents(urldecode($filepath));
+		$vText = file_get_contents( $filepath );
+		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_POSTFIELDS, $vText );
+
+		$curlTimeLimit = $timeLimit - 10;
+		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_TIMEOUT, $curlTimeLimit ); // 290 did not work! Error: Fatal error: Maximum execution time of 60 seconds exceeded in ...
+
+		$vText = curl_exec( $this->oGetFileTextCurlHandle );
+		$vText = simplexml_load_string( $vText );
+		$vText = trim( $vText->str );
+		$vText = strip_tags( $vText );
+
+		$this->iGetFileTextConnectionCounter++;
+
+		if ( intval( curl_getinfo( $this->oGetFileTextCurlHandle, CURLINFO_HTTP_CODE ) ) != 200 ) {
+			$cuGI = curl_getinfo( $this->oGetFileTextCurlHandle );
+			wfProfileOut( 'BS::'.__METHOD__ );
+			throw new BsException( "Error extracting document {$filepath}, cUrl returns http_code: {$cuGI['http_code']} and upload_content_length: {$cuGI['upload_content_length']}" );
+		}
+		if ( curl_errno( $this->oGetFileTextCurlHandle ) != 0 ) {
+			wfProfileOut( 'BS::'.__METHOD__ );
+			throw new BsException( 'Search::getFileText - curl_error '.curl_error( $this->oGetFileTextCurlHandle ).' for file: '.$filepath );
+		}
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return $vText;
+	}
+
+	/**
+	 * If server does not answer with http-status 200 an Exception is thrown
+	 * @param string $sParams Param to specify delete query
+	 * @return integer status of connect to server 
+	 */
+	public function deleteIndex( $sParams = '' ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$customerId = BsConfig::get( 'MW::ExtendedSearch::CustomerID' );
+		if ( empty( $customerId )
+			|| ( strpos( $customerId, '?' ) !== false )
+			|| ( strpos( $customerId, '*' ) !== false ) ) return false;
+
+		$sQuery = "uid:$customerId-*";
+		if( !empty( $sParams ) ) {
+			$sQuery = "($sQuery)AND($sParams)";
+		}
+
+		$response = $this->deleteByQuery( $sQuery );
+		$status = $response->getHttpStatus();
+		$this->commit();
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $status;
+	}
+
+}

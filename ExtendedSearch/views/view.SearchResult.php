@@ -1,0 +1,331 @@
+<?php
+/**
+ * Renders the ExtendedSearch results page.
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @package    BlueSpice_Extensions
+ * @subpackage ExtendedSearch
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+/**
+ * <div style:"display: none"> mit Hilfen
+ */
+/**
+ * This view renders the ExtendedSearch results page.
+ * @package    BlueSpice_Extensions
+ * @subpackage ExtendedSearch 
+ */
+class ViewSearchResult extends ViewBaseElement {
+
+	/**
+	 * Contains the page output.
+	 * @var string HTML output.
+	 */
+	protected $sOut = '';
+	/**
+	 * List of messages to be rendered.
+	 * @var array List of strings.
+	 */
+	protected $aMessages = array();
+	/**
+	 * Contain view for search entry.
+	 * @var ViewExtendedSearchResultEntry View for search entry.
+	 */
+	protected $aResultEntryView = array();
+	/**
+	 * List of facet boxes.
+	 * @var array List of ViewExtendedSearchFacetBox.
+	 */
+	protected $aFacetBoxes = array();
+
+	/**
+	 * Adds data to the current result entry view.
+	 * @param array $aDataSet List of result items.
+	 */
+	public function addResultEntry( $aDataSet ) {
+		$vResultEntry = new ViewExtendedSearchResultEntry();
+		$vResultEntry->setOptions( $aDataSet );
+		$this->aResultEntryView[] = $vResultEntry->execute();
+	}
+
+	/**
+	 * Adds a ceate/suggest section.
+	 * @param array $aOptions Parameters for this section.
+	 */
+	public function addSuggest( $aOptions ) {
+		$vSuggest = new ViewSearchSuggest();
+		$vSuggest->setOptions( $aOptions );
+		$this->addItem( $vSuggest );
+	}
+
+	/**
+	 * Adds a ceate/suggest section.
+	 * @param array $aOptions Parameters for this section.
+	 */
+	public function addSpell( $aOptions ) {
+		$vSpell = new ViewSpell();
+		$vSpell->setOptions( $aOptions );
+		$this->addItem( $vSpell );
+	}
+
+	/**
+	 * Adds a message to be displayed.
+	 * @param string $key Key for the message.
+	 * @param string $message The message in HTML.
+	 */
+	public function addMessage( $key, $message ) {
+		$this->aMessages[$key] = $message;
+	}
+
+	/**
+	 * Adds additional output to page.
+	 * @param string $aOutputToAdd HTML that shall be displayed.
+	 */
+	public function addOutput( $aOutputToAdd ) {
+		$this->out .= $aOutputToAdd;
+	}
+
+	/**
+	 * Prepares a message for direct output.
+	 * @param string $message The message that should be prepared.
+	 * @return string The modified message.
+	 */
+	protected function secureMessage( $message ) {
+		$search = array( "&lt;b&gt;", "&lt;/b&gt;", "&lt;i&gt;", "&lt;/i&gt;" );
+		$replace = array( "<b>", "</b>", "<i>", "</i>" ); // these tags may be contained in i18n messages
+		$secure = htmlentities( $message, ENT_QUOTES, 'UTF-8' );
+
+		return str_replace( $search, $replace, $secure ); // primitive whitelisting
+	}
+
+	/**
+	 * This method actually generates the output
+	 * @return string HTML output
+	 */
+	public function execute( $param = false ) {
+		$aOut = array();
+		$aOut[] = parent::execute();
+		foreach ( $this->aMessages as $message )
+			$aOut[] = '<p>'.$this->secureMessage( $message )."</p>\n"; // primitive whitelisting
+
+		$aOut[] = $this->sOut;
+		if ( !empty( $this->aResultEntryView ) ) {
+			$sResults = implode( "\n", $this->aResultEntryView );
+			$aOut[] = '<div id="bs-extendedsearch-spinner"></div>';
+			$aOut[] = '<hr /><br />';
+			if ( $this->getOption( 'siteUri' ) ) {
+				$aOut[] = Xml::element(
+					'div',
+					array(
+						'id'=> 'bs-extendedsearch-siteuri',
+						'siteuri' => $this->getOption( 'siteUri' )
+					),
+					'',
+					false
+				);
+			}
+			$aOut[] = '<div id="bs-extendedsearch-filters-results-paging">';
+			if ( $this->getOption( 'showfacets' ) ) {
+
+				$sFilterBoxes = '';
+				foreach ( $this->aFacetBoxes as $box ) {
+					$sFilterBoxes .= $box->execute();
+				}
+				$sFilterBoxes = Xml::openElement( 'div', array( 'id' => 'bs-extendedsearch-all-filter-boxes' ) ).
+								$sFilterBoxes.
+								Xml::closeElement( 'div' );
+				$aOut[] = Xml::openElement( 'div', array( 'id' => 'bs-extendedsearch-filters' ) ).
+						$sFilterBoxes.
+						Xml::closeElement( 'div' );
+			}
+
+			$cachePaging = $this->getPaging();
+			$upperPaging = Xml::openElement(
+					'div',
+					array(
+						'class' => 'bs-extendedsearch-default-line bs-extendedsearch-paging',
+						'id' => 'bs-extendedsearch-paging-upper'
+					)
+			);
+			$upperPaging .= $cachePaging;
+			$upperPaging .= Xml::closeElement( 'div' );
+
+			$lowerPaging = Xml::openElement(
+					'div',
+					array(
+						'class' => 'bs-extendedsearch-default-line bs-extendedsearch-paging',
+						'id' => 'bs-extendedsearch-paging-lower'
+					)
+			);
+			$lowerPaging .= $cachePaging;
+			$lowerPaging .= Xml::closeElement( 'div' );
+
+			$sortingBar = Xml::openElement(
+					'div',
+					array( 'class' => 'bs-extendedsearch-sorting-bar bs-extendedsearch-default-textspacing' )
+			);
+			$sortingBar .= $this->getSortingBar();
+			$sortingBar .= Xml::closeElement( 'div' );
+
+			$results = Xml::openElement(
+					'div',
+					array(
+						'id'=>'bs-extendedsearch-results'
+					)
+				);
+			$results .= $sResults;
+			$results .= Xml::closeElement( 'div' );
+
+			$aOut[] = ( $this->getOption( 'showfacets' ) )
+					? '<div id="bs-extendedsearch-results-paging" class="bs-extendedsearch-results-with-facets">'
+					: '<div id="bs-extendedsearch-results-paging">';
+			$aOut[] = $upperPaging.$sortingBar.$results.$lowerPaging;
+			$aOut[] = '  </div>'; // bs-extendedsearch-results-paging
+			$aOut[] = '</div>'; // bs-extendedsearch-filters-results-paging
+			$aOut[] = '<div id="bs-extendedsearch-results-finalizer"></div>';
+			$aOut[] = '<br /><br />';
+		}
+		// Placeholder for SearchUsers, SearchProfiles, SearchHelpdesk etc
+		$sOut = implode( "\n", $aOut );
+
+		return $sOut;
+	}
+
+	/**
+	 * Displays a single paging box, either with page number or with prev/next arrows.
+	 * @param string $pageNo Label of the page. Number or prev/next arrows.
+	 * @param string $url Link to be followed when clicked.
+	 * @param bool $active Is this box currently selected?
+	 * @param bool $arrows Is it an arrow box?
+	 * @return string HTML of paging box.
+	 */
+	protected function makePagingDiv( $pageNo, $url = '', $active = false, $arrows = false ) {
+		$aStyleClasses = array(
+			'bs-extendedsearch-paging-no',
+			'bs-extendedsearch-default-textspacing'
+		);
+		if ( $arrows ) $aStyleClasses[] = 'bs-extendedsearch-paging-arrows';
+		if ( $active ) $aStyleClasses[] = 'bs-extendedsearch-paging-no-active';
+		$aOut = $pageNo;
+		if ( $active ) $aOut = "<b>{$aOut}</b>";
+		$aOut = '<div class="'.implode( ' ', $aStyleClasses ).'">'.$aOut.'</div>';
+		if ( !$active && $url !== '' ) $aOut = "<a href=\"{$url}\">{$aOut}</a>";
+
+		return $aOut;
+	}
+
+	/**
+	 * Renders the paging bar.
+	 * @return string HTML of paging bar.
+	 */
+	protected function getPaging() {
+		$aOut = array();
+		$aPaging = $this->getOption( 'pages' );
+		$pageActive = (int) $this->getOption( 'activePage' );
+		$firstPageToDisplay = ( $pageActive > 5 ) ? $pageActive - 5 : 1;
+		end( $aPaging );
+		$lastPage = key( $aPaging );
+		$lastPageToDisplay = ( $lastPage - $pageActive > 5 ) ? $pageActive + 5 : $lastPage;
+		$aOut[] = ( $pageActive > 1 )
+			? $this->makePagingDiv( htmlspecialchars( '<' ), $aPaging[$pageActive - 1], false, true )
+			: $this->makePagingDiv( htmlspecialchars( '<' ), '', false, true );
+		if ( $firstPageToDisplay > 1 )
+				$aOut[] = $this->makePagingDiv( 1, $aPaging[1] );
+		if ( $firstPageToDisplay > 2 )
+				$aOut[] = '<div class="bs-extendedsearch-paging-dots bs-extendedsearch-default-textspacing">...</div>';
+		foreach ( $aPaging as $page => $url ) {
+			if ( $firstPageToDisplay > $page ) continue;
+			if ( $lastPageToDisplay < $page ) break;
+			$aOut[] = $this->makePagingDiv( $page, $url, ( $page == $pageActive ) ); // (($page == $lastKeyInAPaging) || $page == 1)
+		}
+		if ( $lastPageToDisplay + 1 < $lastPage )
+				$aOut[] = '<div class="bs-extendedsearch-paging-dots bs-extendedsearch-default-textspacing">...</div>';
+		if ( $lastPageToDisplay < $lastPage )
+				$aOut[] = $this->makePagingDiv( $lastPage, $aPaging[$lastPage] );
+		$aOut[] = ( $pageActive < $lastPage )
+				? $this->makePagingDiv( htmlspecialchars( '>' ), $aPaging[$pageActive + 1], false, true )
+				: $this->makePagingDiv( htmlspecialchars( '>' ), '', false, true );
+		$aOut = implode( '<div class="bs-extendedsearch-paging-spacer"></div>', $aOut );
+
+		return $aOut;
+	}
+
+	/**
+	 * Renders the sorting bar.
+	 * @return string HTML of sorting bar.
+	 */
+	protected function getSortingBar() {
+		// compact('sortTypes', 'sortActive', 'sortDirection', 'sortUrl')
+		extract( $this->getOption( 'sorting' ) );
+		$aOut = '<span style="float: left;">';
+		$aOut .= $this->getNumberOfPageItems() . ' ';
+		$aOut .= wfMessage( 'bs-extendedsearch-sort-by' )->plain();
+		$aOut .= '&nbsp;';
+		// 'titleSort', 'score', 'type', 'ts'
+		$iItems = count( $sortTypes );
+		$iNum = 1;
+		foreach ( $sortTypes as $sort => $i18nKey ) {
+			$active = ( $sort == $sortActive );
+			if ( $active ) {
+				$direction = ( $sortDirection == 'asc' ) ? 'desc' : 'asc';
+				$sI18nDirection = ( $sortDirection == 'asc' ) ? wfMessage( 'bs-extendedsearch-asc' )->plain() : wfMessage( 'bs-extendedsearch-desc' )->plain();
+
+				$icon = '<img src="' . BsConfig::get( 'MW::ScriptPath' ) . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
+				$icon .= ( $sortDirection == 'asc' ) ? 'arrow_up.png' : 'arrow_down.png';
+				$icon .= '" title="' . $sI18nDirection . '" alt="' . $sI18nDirection . '" />&nbsp;';
+			} else {
+				// $direction = $sortDirection todo: think it over: if sort order is changed from score to time, the order should be reset!
+				$direction = ( in_array( $sort, array( 'titleSort', 'type' ) ) ) ? 'asc' : 'desc';
+				$icon = '';
+			}
+			if ( $active ) $aOut .= '<b>';
+			$aOut .= '<a href="'.$sortUrl.'&search_asc='.$direction.'&search_order='.$sort.'">';
+			$aOut .= wfMessage( 'bs-extendedsearch-' . $i18nKey )->plain() . '</a>';
+			$aOut .= '&nbsp;' . $icon;
+			if ( $active ) $aOut .= '</b>';
+			if ( $iNum < $iItems ) {
+				$aOut .= '|&nbsp;';
+			}
+			$iNum++;
+		}
+
+		$aOut .= '</span>';
+
+		return $aOut;
+	}
+
+	/**
+	 * Generates a facet box view.
+	 * @return ViewExtendedSearchFacetBox Generated facet box view.
+	 */
+	public function generateViewFacetBox() {
+		$oNewBox = new ViewExtendedSearchFacetBox();
+		$this->aFacetBoxes[] = $oNewBox;
+
+		return $oNewBox;
+	}
+
+	/**
+	 * Returns the range of numbers which articles are displayed
+	 * @return string range.
+	 */
+	public function getNumberOfPageItems() {
+		$iNumOfResults = BsConfig::get( 'MW::ExtendedSearch::LimitResultDef' );
+		$iBegin        = ( ( $this->getOption( 'activePage' ) - 1 ) * $iNumOfResults ) + 1;
+		$iEnd          = $this->getOption( 'activePage' ) * $iNumOfResults;
+
+		if ( $this->getOption( 'numFound' ) < $iEnd ) {
+			$iEnd = $this->getOption( 'numFound' );
+		}
+
+		return $iBegin .' - ' . $iEnd . ' ' . wfMessage( 'bs-extendedsearch-outof' )->plain()
+				. ' ' . $this->getOption( 'numFound' ) . ' ' . wfMessage( 'bs-extendedsearch-result-caption' )->plain() . ' ';
+	}
+
+}

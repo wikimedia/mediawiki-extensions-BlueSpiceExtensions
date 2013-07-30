@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS Document */
+#treeNS {
+	float: left;
+}
+#treeNS ul {
+	margin: 0px;
+	padding: 0px;
+}
+#treeNS li {
+	list-style-type: none;
+	list-style-position: inside;
+	list-style-image: none;
+}
+#infoNS {
+	margin-left: 185px;
+}
+#infoNS li {
+    width: 120px;
+    float: left;
+	list-style-position: inside;
+}
+#infoNS hr {
+    clear: left;
+}
+#infoNS p {
+    font-weight: bold;
+    clear: left;
+    padding-top: 15px;
+}
+#infoNS .x-btn-text {
+    width: 24px;
+    height: 22px;
+}
+#infoNS .x-tree-node-leaf .x-tree-node-icon {
+    background-image:url(../images/iconGroup.png);
+}
+#infoNS .x-tree-node-expanded .x-tree-node-icon {
+    background-image:url(../images/iconGroup.png);
+}
+.locked {
+	background-color: #FF0000;
+}
+.implicite {
+	background-color: #FFFF00;
+}
+.nonexcl {
+	background-color: #669900;
+}
+.exclusive {
+	background-color: #00FF00;
+}
+input[readonly]{
+	color: grey;
+}

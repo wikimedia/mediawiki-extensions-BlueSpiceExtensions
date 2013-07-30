@@ -1,0 +1,128 @@
+==UEModulePDF.class.php==
+
+'BSUEModulePDFBeforeCreateWidget'.
+$this:
+ $oSpecialPage:
+ &$aLinks:
+ $aCurrentQueryParams:
+
+==ExportModulePDF.class.pdf==
+
+ 'BSUEModulePDFBeforeAddingContent':
+&$aTemplate:
+ &$aContents:
+
+'BSUEModulePDFBeforeCreatePDF':
+$this:
+ $oDOM:
+ $oCaller:
+
+
+==PDFPageProvider.class.php==
+
+'BSUEModulePDFbeforeGetPage':
+ &$aParams:
+
+'BSUEModulePDFgetPage':
+$oTitle:
+ &$aPage:
+ &$aParams:
+ $oDOMXPath:
+
+ 'BSUEModulePDFcollectMetaData':
+$oTitle:
+ $oPageDOM:
+ &$aParams:
+ $oDOMXPath:
+ &$aMeta:
+
+'BSUEModulePDFcleanUpDOM':
+$oTitle:
+ $oPageDOM:
+ &$aParams:
+ $oDOMXPath:
+ &$aClassesToRemove:
+
+
+==PDFServlet.class.php==
+
+'BSUEModulePDFCreatePDFBeforeSend':
+$this:
+ &$aOptions:
+ $oHtmlDOM:
+
+ 'BSUEModulePDFUploadFilesBeforeSend':
+$this:
+ &$aPostData:
+ $sType:
+
+'BSUEModulePDFFindFiles':
+$this:
+ $oImageElement:
+ $sAbsoluteFileSystemPath:
+ $sFileName:
+ 'images':
+
+'BSUEModulePDFWebserviceFindFiles':
+$this:
+ $oImageElement:
+ $sAbsoluteFileSystemPath:
+ $sFileName:
+ 'images':
+
+'BSUEModulePDFAfterFindFiles':
+$this:
+ $oHtml:
+ &$aFiles:
+ $aParams:
+ $oDOMXPath:
+
+
+==PDFTemplateProvider.class.php==
+
+'BSUEModulePDFBeforeAddingStyleBlocks':
+ &$aTemplate.
+ &$aStyleBlocks:
+
+
+==PDFWebService.class.php==
+
+'BSUEModulePDFCreatePDFBeforeSend':
+ $this:
+ &$aOptions:
+ $oHtmlDOM:
+
+'BSUEModulePDFWebserviceFindFiles':
+$this:
+ $oImageElement:
+ $sAbsoluteFileSystemPath:
+ $sFileName:
+ 'IMAGE':
+
+'BSUEModulePDFWebserviceFindFiles':
+ $this:
+ $oFileAnchorElement:
+ $sAbsoluteFileSystemPath:
+ $sHrefFilename:
+ 'ATTACHMENT':
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

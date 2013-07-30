@@ -1,0 +1,72 @@
+.x-pivotgrid .x-grid3-row-headers table td {
+	height: 28px !important;
+	font-size: 10px;
+	text-align: right;
+	/* text-indent: 5px; */  
+	padding-left: 4px;
+	overflow: hidden;
+	/* white-space: nowrap; */
+}
+.ext-gecko .x-pivotgrid .x-grid3-row-headers table td {
+	height: 28px !important;
+	font-size: 10px;
+	text-align: right;
+	/* text-indent: 5px; */
+	padding-left: 4px;  
+	overflow: hidden;
+	/* white-space: nowrap; */
+}
+
+.ext-strict .x-grid3-cell-inner, .ext-strict .x-grid3-hd-inner {
+	text-align: center;
+	padding: 3px;
+	height: 23px;
+}
+.pmTemplateEditorDataView > div {
+	padding: 5px 10px
+}
+
+div.x-grid3-row:nth-child(even) {
+	background-color: #EEE;
+}
+
+div.lastTemplateRow {
+	border-top-color: #666;
+	border-bottom-color: #666;
+}
+
+div.lastTemplateRow td {
+	background-color: #CCC;
+}
+
+td.clsPermissionAvailable {
+	background-color: #d3f0d6;
+}
+
+td.clsPermissionSet {
+	background-color: #80c194;
+}
+
+div.x-grid3-row:nth-child(even) td.clsPermissionAvailable {
+	background-color: #c1eac5;
+}
+
+div.x-grid3-row:nth-child(even) td.clsPermissionSet {
+	background-color: #4aa666;
+}
+
+
+/* Webkit Browser Hack for cell-height */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	.x-grid3-row {
+		height: 29px;
+	}
+}
+
+.ext-ie .x-pivotgrid div.x-grid3-row-headers table tr {
+	height: 31px !important;
+}
+
+.ext-ie .x-pivotgrid .x-grid3-row-headers table td {
+	padding-left: 0;
+}

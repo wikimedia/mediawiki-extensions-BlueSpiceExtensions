@@ -1,0 +1,19 @@
+.icon-user_respedit {
+	background-image: url('../resources/images/bs-infobar-responsibleeditor.png');
+}
+
+.icon-user_add {
+	background-image: url('../resources/images/user_add.png') !important;
+}
+
+.icon-user_delete {
+	background-image: url('../resources/images/user_delete.png') !important;
+}
+
+.icon-user_edit {
+	background-image: url('../resources/images/user_edit.png') !important;
+}
+
+.icon-user {
+	background-image: url('../resources/images/user.png') !important;
+}

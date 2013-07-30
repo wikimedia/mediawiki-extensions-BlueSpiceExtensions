@@ -1,0 +1,33 @@
+#bs-bluespiceprojectfeedbackhelperpanel {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #FFAE00;
+    border-top: 1px solid #b73a3a;
+    font-weight: bold;
+    background-image: url('images/icon-info.gif');
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    display: none;
+    z-index: 999;
+}
+
+#bs-bluespiceprojectfeedbackhelperpanel>div {
+    margin: 13px;
+}
+
+#bs-bluespiceprojectfeedbackhelperpanel-text {
+    float: left;
+    width: 80%;
+    padding-left: 30px;
+}
+
+#bs-bluespiceprojectfeedbackhelperpanel-closebutton {
+    float:right;
+    background-image: url('images/close.gif');
+    width: 15px;
+    height: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+}

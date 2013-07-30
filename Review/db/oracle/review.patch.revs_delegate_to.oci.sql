@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review_steps ADD revs_delegate_to NUMBER DEFAULT 0 NULL;

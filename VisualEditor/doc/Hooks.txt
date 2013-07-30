@@ -1,0 +1,5 @@
+==VisualEditor.class.php==
+
+'VisualEditorConfig'.
+&$aConfigStandard:
+ &$aConfigOverwrite:

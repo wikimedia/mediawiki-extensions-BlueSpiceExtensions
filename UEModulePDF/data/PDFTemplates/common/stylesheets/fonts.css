@@ -1,0 +1,78 @@
+@font-face {
+	font-family: "DejaVuSans";
+	src: url("DejaVuSans.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+@font-face {
+	font-family: "DejaVuSans-Bold";
+	src: url("DejaVuSans-Bold.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+@font-face {
+	font-family: "DejaVuSans-Oblique";
+	src: url("DejaVuSans-Oblique.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+@font-face {
+	font-family: "DejaVuSans-BoldOblique";
+	src: url("DejaVuSans-BoldOblique.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+@font-face {
+	font-family: "DejaVuSansMono";
+	src: url("DejaVuSansMono.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+@font-face {
+	font-family: "DejaVuSansMono-Bold";
+	src: url("DejaVuSansMono-Bold.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+@font-face {
+	font-family: "DejaVuSansMono-Oblique";
+	src: url("DejaVuSansMono-Oblique.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+@font-face {
+	font-family: "DejaVuSansMono-BoldOblique";
+	src: url("DejaVuSansMono-BoldOblique.ttf");
+	-fs-pdf-font-embed: embed;
+	-fs-pdf-font-encoding: Identity-H; 
+}
+
+ 
+body {
+	font-size: 9pt;
+	font-family: "DejaVuSans";
+}
+
+strong, b {
+	font-family: "DejaVuSans-Bold";
+}
+
+em, i {
+	font-family: "DejaVuSans-Oblique";
+}
+
+em > strong, strong > em, b > i, i > b,
+em > b, b > em, strong > i, i > strong {
+	font-family: "DejaVuSans-BoldOblique";
+}
+
+pre, code {
+	font-family: "DejaVuSansMono";
+}

@@ -1,0 +1,14 @@
+==UserManager.class.php==
+
+'BSWikiAdminUserManagerBeforeUserListSend':
+$this:
+ &$data:
+
+'BSUserManagerAfterAddUser':
+$this:
+$oNewUser:
+
+'BSUserManagerAfterEditUser':
+$this:
+$oUser:
+

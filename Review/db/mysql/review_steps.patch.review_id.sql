@@ -1,0 +1,2 @@
+ALTER TABLE /*$wgDBprefix*/bs_review_steps CHANGE `review_id` `revs_review_id` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+CREATE INDEX /*i*/revs_review_id ON /*$wgDBprefix*/bs_review_steps (revs_review_id);

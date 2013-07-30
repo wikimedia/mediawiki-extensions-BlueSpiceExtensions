@@ -1,0 +1,1071 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+	<ShortName>BlueSpice ExtendedSearch Feed API</ShortName>
+	<Description>The ExtendedSearch Extension of BlueSpice provides a RSS/Atom compliant feed interface for search queries.</Description>
+	<InternalName xmlns="http://schemas.microsoft.com/Search/2007/location">BlueSpiceExtendedSearchFeedAPI</InternalName>
+	<LocationType xmlns="http://schemas.microsoft.com/Search/2007/location">OpenSearch</LocationType>
+	<Version xmlns="http://schemas.microsoft.com/Search/2007/location">1.0.0.0</Version>
+	<Trigger type="Regex" xmlns="http://schemas.microsoft.com/Search/2007/location">
+	</Trigger>
+	<ConnectionUrlTemplate xmlns="http://schemas.microsoft.com/Search/2007/location">http://hwsharepoint:10280/api.php?action=feedextendedsearch&amp;q={searchTerms}</ConnectionUrlTemplate>
+	<MoreLinkTemplate xmlns="http://schemas.microsoft.com/Search/2007/location">http://hwsharepoint:10280/index.php?title=Special%3AExtendedSearch&amp;search_origin=titlebar&amp;search_go=true&amp;search_scope=text&amp;search_input={searchTerms}</MoreLinkTemplate>
+	<CreationDate xmlns="http://schemas.microsoft.com/Search/2007/location">5/17/2013 12:57:38 PM</CreationDate>
+	<LastModifiedDate xmlns="http://schemas.microsoft.com/Search/2007/location">5/22/2013 12:57:34 PM</LastModifiedDate>
+	<ExpirationDate xmlns="http://schemas.microsoft.com/Search/2007/location">1/1/0001 12:00:00 AM</ExpirationDate>
+	<Visualization name="full" xmlns="http://schemas.microsoft.com/Search/2007/location">
+		<Xsl>
+			<xsl:stylesheet xmlns:x="http://www.w3.org/2001/XMLSchema" version="1.0" exclude-result-prefixes="xsl ddwrt msxsl srwrt" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:srwrt="http://schemas.microsoft.com/WebParts/v3/searchresults/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rss1="http://purl.org/rss/1.0/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom2="http://purl.org/atom/ns#">
+				<xsl:output method="xml" indent="no" />
+
+				<xsl:param name="ResultsPerPage">10</xsl:param>
+				<xsl:param name="IsDesignMode">True</xsl:param>
+				<xsl:param name="UrlMaxLength">50</xsl:param>
+				<xsl:param name="SummaryMaxLength">300</xsl:param>
+				<xsl:param name="ShowMoreLink">true</xsl:param>
+				<xsl:param name="MoreLink"></xsl:param>
+				<xsl:param name="MoreLinkLabel"></xsl:param>
+				<xsl:param name="IdPrefix"></xsl:param>
+				<xsl:param name="WebpartTitle"></xsl:param>
+				<xsl:param name="DefaultIconDescription"></xsl:param>
+				<xsl:param name="BrandingIcon">/_layouts/images/blank.gif</xsl:param>
+				<xsl:param name="IsFirstPage">true</xsl:param>
+				<xsl:param name="RecommendationText"></xsl:param>
+				<xsl:param name="ShowSeperationLine">False</xsl:param>
+
+				<xsl:template match="rss">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'rss'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="rdf:RDF">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'rdf'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="atom:feed">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'atom'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="atom2:feed">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'atom2'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template name="GetLink">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="link" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:link" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:link/@href" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:link/@href" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="link" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetTitle">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:title" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="title" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetDescription">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="description" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:description" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:summary" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:summary" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="description" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetItemIconDescription">
+					<xsl:choose>
+						<xsl:when test="$ShowSeperationLine= 'True'">
+							<xsl:value-of select="$RecommendationText" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$DefaultIconDescription" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+
+				<xsl:template name="GetItemIcon">
+					<xsl:value-of select="string('/_layouts/images/html16.gif')" />
+				</xsl:template>
+
+				<xsl:template name="MainTemplate">
+					<xsl:variable name="Rows" select="channel/item" />
+					<xsl:variable name="RowCount" select="count($Rows)" />
+					<xsl:if test="($RowCount &gt; 0)">
+						<div class="srch-results" xmlns="">
+							<xsl:call-template name="MainTemplate.body">
+								<xsl:with-param name="Rows" select="$Rows" />
+								<xsl:with-param name="RowCount" select="count($Rows)" />
+								<xsl:with-param name="ShowIcon" select="true()" />
+								<xsl:with-param name="StyleClassPrefix" select="string('ms-searchsummary')" />
+							</xsl:call-template>
+							<xsl:call-template name="MoreLinkTemplate" />
+							<xsl:call-template name="SeperationLineTemplate">
+							</xsl:call-template>
+						</div>
+					</xsl:if>
+				</xsl:template>
+
+				<xsl:template name="MainTemplate.body">
+					<xsl:param name="Rows" />
+					<xsl:param name="RowCount" />
+					<xsl:param name="ShowIcon" />
+					<xsl:param name="ShowUrl" />
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:param name="Type" />
+					<xsl:variable name="BodyClass" select="concat($StyleClassPrefix,'body')" />
+					<div class="{$BodyClass}" xmlns="">
+						<xsl:for-each select="$Rows">
+							<xsl:variable name="CurPosition" select="position()" />
+							<xsl:variable name="CurrentId" select="concat($IdPrefix,$CurPosition)" />
+							<xsl:variable name="link">
+								<xsl:call-template name="GetLink">
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="title">
+								<xsl:call-template name="GetTitle">
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:if test="($CurPosition &lt;= $ResultsPerPage)">
+								<xsl:variable name="TitleClass" select="concat($StyleClassPrefix,'Title')" />
+								<div class="{$TitleClass}">
+									<xsl:variable name="SafeHtml">
+										<xsl:call-template name="GetSafeHtml">
+											<xsl:with-param name="Html" select="$title" />
+										</xsl:call-template>
+									</xsl:variable>
+									<xsl:if test="$ShowIcon = true()">
+										<xsl:variable name="itemIconUrl">
+											<xsl:call-template name="GetItemIcon" />
+										</xsl:variable>
+										<xsl:variable name="itemIconDescription">
+											<xsl:call-template name="GetItemIconDescription" />
+										</xsl:variable>
+										<img src="{$itemIconUrl}" title="{$itemIconDescription}" />
+									</xsl:if>
+									<xsl:choose>
+										<xsl:when test="substring($link,1,5) = 'file:' and $IsDesignMode = 'False'">
+											<xsl:text disable-output-escaping="yes">&lt;a href="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode($link)" />
+											<xsl:text disable-output-escaping="yes">" id="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode(concat($CurrentId, '_Title'))" />
+											<xsl:text disable-output-escaping="yes">" class="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode($TitleClass)" />
+											<xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="$SafeHtml" />
+											<xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<a id="{concat($CurrentId, '_Title')}" class="{$TitleClass}" href="{ddwrt:EnsureAllowedProtocol(string($link))}">
+												<xsl:value-of select="$SafeHtml" disable-output-escaping="yes" />
+											</a> 
+										</xsl:otherwise>
+									</xsl:choose>  
+								</div>
+								<xsl:call-template name="MainTemplate.description">
+									<xsl:with-param name="CurrentId" select="$CurrentId" />
+									<xsl:with-param name="Link" select="$link" />
+									<xsl:with-param name="ShowUrl" select="$ShowUrl" />
+									<xsl:with-param name="StyleClassPrefix" select="$StyleClassPrefix" />
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:if>
+						</xsl:for-each>
+					</div>
+				</xsl:template>
+				<xsl:template name="SeperationLineTemplate">
+					<xsl:if test="$ShowSeperationLine= 'True'">
+						<div class="ms-topanswerseperation" xmlns="">
+							<div class="ms-topanswerseperation2">
+								<img src="/_layouts/images/blank.gif" />
+							</div>
+						</div>   
+					</xsl:if>    
+				</xsl:template>
+				<xsl:template name="MainTemplate.description">
+					<xsl:param name="CurrentId" />
+					<xsl:param name="Link" />
+					<xsl:param name="ShowUrl" />
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:param name="Type" />
+
+					<xsl:variable name="DivId" select="concat($CurrentId,'_d')" />
+					<xsl:variable name="LinkId" select="concat($CurrentId,'_Url')" />
+					<xsl:variable name="DescOuterClass" select="concat($StyleClassPrefix,'descouter')" />
+					<xsl:variable name="description">
+						<xsl:call-template name="GetDescription">
+							<xsl:with-param name="Type" select="$Type" />
+						</xsl:call-template>
+					</xsl:variable>
+					<xsl:if test="string-length($description) &gt; 0">
+						<div id="{$DivId}" class="{$DescOuterClass}" xmlns="">
+							<xsl:variable name="DescLongText">
+								<xsl:call-template name="GetPlainTextFromHtml">
+									<xsl:with-param name="Html" select="$description" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="DescText">
+								<xsl:call-template name="TrimIfGreaterThanMax">
+									<xsl:with-param name="Source" select="$DescLongText" />
+									<xsl:with-param name="MaxLength" select="$SummaryMaxLength" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="DescClass" select="concat($StyleClassPrefix,'desc')" />
+							<div class="{$DescClass}">
+								<xsl:value-of select="$DescText" />
+							</div>
+							<xsl:if test="$ShowUrl = true()">
+								<xsl:variable name="UrlClass" select="concat($StyleClassPrefix,'Url')" />
+
+								<div class="{$UrlClass}" id="{LinkId}">
+
+									<xsl:variable name="ShortLink">
+										<xsl:call-template name="TrimIfGreaterThanMax">
+											<xsl:with-param name="Source" select="$Link" />
+											<xsl:with-param name="MaxLength" select="$UrlMaxLength" />
+										</xsl:call-template>
+									</xsl:variable>
+									<xsl:value-of select="$ShortLink" />
+								</div>
+							</xsl:if>
+						</div>
+					</xsl:if>
+				</xsl:template>
+				<xsl:template name="MoreLinkTemplate">
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:variable name="MoreLinkClass" select="concat($StyleClassPrefix,'morelink')" />
+					<xsl:if test="$ShowMoreLink = true() and string-length($MoreLink) &gt; 0">
+						<div class="{$MoreLinkClass}" xmlns="">
+							<a href="{ddwrt:EnsureAllowedProtocol(string($MoreLink))}">
+								<xsl:value-of select="$MoreLinkLabel" />
+							</a>
+						</div>
+					</xsl:if>
+				</xsl:template>
+				<xsl:template name="GetSafeHtml">
+					<xsl:param name="Html" />
+					<xsl:choose>
+						<xsl:when test="$IsDesignMode = 'True'">
+							<xsl:value-of select="$Html" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="srwrt:MakeSafe($Html)" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetPlainTextFromHtml">
+					<xsl:param name="Html" />
+					<xsl:choose>
+						<xsl:when test="$IsDesignMode = 'True'">
+							<xsl:value-of select="$Html" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="srwrt:GetPlainTextFromHtml($Html)" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="TrimIfGreaterThanMax">
+					<xsl:param name="Source" />
+					<xsl:param name="MaxLength" />
+					<xsl:choose>
+						<xsl:when test="string-length($Source) &gt; $MaxLength">
+							<xsl:value-of select="substring($Source, 1, $MaxLength)" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$Source" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+
+			</xsl:stylesheet>
+		</Xsl>
+		<Properties>
+    &lt;Columns&gt;
+        &lt;Column Name="title"/&gt;
+        &lt;Column Name="link"/&gt;
+        &lt;Column Name="description"/&gt;
+    &lt;/Columns&gt;
+		</Properties>
+		<SampleData>
+			<rss version="2.0" xmlns="">
+				<channel>
+					<title></title>
+					<link>http://www.sample.com/</link>
+					<description></description>
+					<item>
+						<title>Title of document or web page</title>
+						<link></link>
+						<description>This is the summary of the document or web page. The summary is generated from the original document based on matches with query terms. In some cases, the summary is a description provided by the author.</description>
+					</item>
+				</channel>
+			</rss>
+		</SampleData>
+	</Visualization>
+	<Visualization name="summary" xmlns="http://schemas.microsoft.com/Search/2007/location">
+		<Xsl>
+			<xsl:stylesheet xmlns:x="http://www.w3.org/2001/XMLSchema" version="1.0" exclude-result-prefixes="xsl ddwrt msxsl srwrt" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:srwrt="http://schemas.microsoft.com/WebParts/v3/searchresults/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rss1="http://purl.org/rss/1.0/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom2="http://purl.org/atom/ns#">
+				<xsl:output method="xml" indent="no" />
+
+				<xsl:param name="ResultsPerPage">10</xsl:param>
+				<xsl:param name="IsDesignMode">True</xsl:param>
+				<xsl:param name="UrlMaxLength">50</xsl:param>
+				<xsl:param name="SummaryMaxLength">300</xsl:param>
+				<xsl:param name="ShowMoreLink">true</xsl:param>
+				<xsl:param name="MoreLink"></xsl:param>
+				<xsl:param name="MoreLinkLabel"></xsl:param>
+				<xsl:param name="IdPrefix"></xsl:param>
+				<xsl:param name="WebpartTitle"></xsl:param>
+				<xsl:param name="DefaultIconDescription"></xsl:param>
+				<xsl:param name="BrandingIcon">/_layouts/images/blank.gif</xsl:param>
+				<xsl:param name="IsFirstPage">true</xsl:param>
+				<xsl:param name="RecommendationText"></xsl:param>
+				<xsl:param name="ShowSeperationLine">False</xsl:param>
+
+				<xsl:template match="rss">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'rss'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="rdf:RDF">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'rdf'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="atom:feed">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'atom'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="atom2:feed">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'atom2'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template name="GetLink">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="link" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:link" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:link/@href" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:link/@href" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="link" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetTitle">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:title" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="title" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetDescription">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="description" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:description" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:summary" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:summary" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="description" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetItemIconDescription">
+					<xsl:choose>
+						<xsl:when test="$ShowSeperationLine= 'True'">
+							<xsl:value-of select="$RecommendationText" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$DefaultIconDescription" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+
+				<xsl:template name="GetItemIcon">
+					<xsl:value-of select="string('/_layouts/images/results_bullet.png')" />
+				</xsl:template>
+
+				<xsl:template name="MainTemplate">
+					<xsl:param name="Type" />
+					<xsl:variable name="Rows" select="channel/item|rss1:item|atom:entry|atom2:entry" />
+					<xsl:variable name="RowCount" select="count($Rows)" />
+					<xsl:variable name="ChannelTitle">
+						<xsl:choose>
+							<xsl:when test="$Type = 'rss'">
+								<xsl:value-of select="channel/title" />
+							</xsl:when>
+							<xsl:when test="$Type = 'rdf'">
+								<xsl:value-of select="rss1:channel/rss1:title" />
+							</xsl:when>
+							<xsl:when test="$Type = 'atom'">
+								<xsl:value-of select="atom:title" />
+							</xsl:when>
+							<xsl:when test="$Type = 'atom2'">
+								<xsl:value-of select="atom2:title" />
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="channel/title" />
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+					<xsl:if test="($RowCount &gt; 0)">
+						<div class="ms-searchsummarymain" xmlns="">
+							<div class="ms-searchChannelTitle" accesskey="W">
+								<span class="ms-searchChannelTitle">
+									<xsl:call-template name="GetBrandingImage" />
+									<xsl:value-of select="$ChannelTitle" />
+								</span>
+							</div>
+							<xsl:call-template name="MainTemplate.body">
+								<xsl:with-param name="Rows" select="$Rows" />
+								<xsl:with-param name="RowCount" select="count($Rows)" />
+								<xsl:with-param name="ShowIcon" select="false()" />
+								<xsl:with-param name="ShowUrl" select="true()" />
+								<xsl:with-param name="StyleClassPrefix" select="string('ms-searchsummary')" />
+								<xsl:with-param name="Type" select="$Type" />
+							</xsl:call-template>
+							<xsl:call-template name="MoreLinkTemplate">
+								<xsl:with-param name="StyleClassPrefix" select="string('ms-searchsummary')" />
+							</xsl:call-template>
+							<xsl:call-template name="SeperationLineTemplate">
+							</xsl:call-template>
+						</div>
+					</xsl:if>
+				</xsl:template>
+
+				<xsl:template name="MainTemplate.body">
+					<xsl:param name="Rows" />
+					<xsl:param name="RowCount" />
+					<xsl:param name="ShowIcon" />
+					<xsl:param name="ShowUrl" />
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:param name="Type" />
+					<xsl:variable name="BodyClass" select="concat($StyleClassPrefix,'body')" />
+					<div class="{$BodyClass}" xmlns="">
+						<xsl:for-each select="$Rows">
+							<xsl:variable name="CurPosition" select="position()" />
+							<xsl:variable name="CurrentId" select="concat($IdPrefix,$CurPosition)" />
+							<xsl:variable name="link">
+								<xsl:call-template name="GetLink">
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="title">
+								<xsl:call-template name="GetTitle">
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:if test="($CurPosition &lt;= $ResultsPerPage)">
+								<xsl:variable name="TitleClass" select="concat($StyleClassPrefix,'Title')" />
+								<div class="{$TitleClass}">
+									<xsl:variable name="SafeHtml">
+										<xsl:call-template name="GetSafeHtml">
+											<xsl:with-param name="Html" select="$title" />
+										</xsl:call-template>
+									</xsl:variable>
+									<xsl:if test="$ShowIcon = true()">
+										<xsl:variable name="itemIconUrl">
+											<xsl:call-template name="GetItemIcon" />
+										</xsl:variable>
+										<xsl:variable name="itemIconDescription">
+											<xsl:call-template name="GetItemIconDescription" />
+										</xsl:variable>
+										<img src="{$itemIconUrl}" title="{$itemIconDescription}" />
+									</xsl:if>
+									<xsl:choose>
+										<xsl:when test="substring($link,1,5) = 'file:' and $IsDesignMode = 'False'">
+											<xsl:text disable-output-escaping="yes">&lt;a href="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode($link)" />
+											<xsl:text disable-output-escaping="yes">" id="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode(concat($CurrentId, '_Title'))" />
+											<xsl:text disable-output-escaping="yes">" class="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode($TitleClass)" />
+											<xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="$SafeHtml" />
+											<xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<a id="{concat($CurrentId, '_Title')}" class="{$TitleClass}" href="{ddwrt:EnsureAllowedProtocol(string($link))}">
+												<xsl:value-of select="$SafeHtml" disable-output-escaping="yes" />
+											</a> 
+										</xsl:otherwise>
+									</xsl:choose>  
+								</div>
+								<xsl:call-template name="MainTemplate.description">
+									<xsl:with-param name="CurrentId" select="$CurrentId" />
+									<xsl:with-param name="Link" select="$link" />
+									<xsl:with-param name="ShowUrl" select="$ShowUrl" />
+									<xsl:with-param name="StyleClassPrefix" select="$StyleClassPrefix" />
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:if>
+						</xsl:for-each>
+					</div>
+				</xsl:template>
+				<xsl:template name="SeperationLineTemplate">
+					<xsl:if test="$ShowSeperationLine= 'True'">
+						<div class="ms-topanswerseperation" xmlns="">
+							<div class="ms-topanswerseperation2">
+								<img src="/_layouts/images/blank.gif" />
+							</div>
+						</div>   
+					</xsl:if>    
+				</xsl:template>
+				<xsl:template name="MainTemplate.description">
+					<xsl:param name="CurrentId" />
+					<xsl:param name="Link" />
+					<xsl:param name="ShowUrl" />
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:param name="Type" />
+
+					<xsl:variable name="DivId" select="concat($CurrentId,'_d')" />
+					<xsl:variable name="LinkId" select="concat($CurrentId,'_Url')" />
+					<xsl:variable name="DescOuterClass" select="concat($StyleClassPrefix,'descouter')" />
+					<xsl:variable name="description">
+						<xsl:call-template name="GetDescription">
+							<xsl:with-param name="Type" select="$Type" />
+						</xsl:call-template>
+					</xsl:variable>
+					<xsl:if test="string-length($description) &gt; 0">
+						<div id="{$DivId}" class="{$DescOuterClass}" xmlns="">
+							<xsl:variable name="DescLongText">
+								<xsl:call-template name="GetPlainTextFromHtml">
+									<xsl:with-param name="Html" select="$description" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="DescText">
+								<xsl:call-template name="TrimIfGreaterThanMax">
+									<xsl:with-param name="Source" select="$DescLongText" />
+									<xsl:with-param name="MaxLength" select="$SummaryMaxLength" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="DescClass" select="concat($StyleClassPrefix,'desc')" />
+							<div class="{$DescClass}">
+								<xsl:value-of select="$DescText" />
+							</div>
+							<xsl:if test="$ShowUrl = true()">
+								<xsl:variable name="UrlClass" select="concat($StyleClassPrefix,'Url')" />
+
+								<div class="{$UrlClass}" id="{LinkId}">
+
+									<xsl:variable name="ShortLink">
+										<xsl:call-template name="TrimIfGreaterThanMax">
+											<xsl:with-param name="Source" select="$Link" />
+											<xsl:with-param name="MaxLength" select="$UrlMaxLength" />
+										</xsl:call-template>
+									</xsl:variable>
+									<xsl:value-of select="$ShortLink" />
+								</div>
+							</xsl:if>
+						</div>
+					</xsl:if>
+				</xsl:template>
+				<xsl:template name="MoreLinkTemplate">
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:variable name="MoreLinkClass" select="concat($StyleClassPrefix,'morelink')" />
+					<xsl:if test="$ShowMoreLink = true() and string-length($MoreLink) &gt; 0">
+						<div class="{$MoreLinkClass}" xmlns="">
+							<a href="{ddwrt:EnsureAllowedProtocol(string($MoreLink))}">
+								<xsl:value-of select="$MoreLinkLabel" />
+							</a>
+						</div>
+					</xsl:if>
+				</xsl:template>
+				<xsl:template name="GetSafeHtml">
+					<xsl:param name="Html" />
+					<xsl:choose>
+						<xsl:when test="$IsDesignMode = 'True'">
+							<xsl:value-of select="$Html" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="srwrt:MakeSafe($Html)" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetPlainTextFromHtml">
+					<xsl:param name="Html" />
+					<xsl:choose>
+						<xsl:when test="$IsDesignMode = 'True'">
+							<xsl:value-of select="$Html" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="srwrt:GetPlainTextFromHtml($Html)" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="TrimIfGreaterThanMax">
+					<xsl:param name="Source" />
+					<xsl:param name="MaxLength" />
+					<xsl:choose>
+						<xsl:when test="string-length($Source) &gt; $MaxLength">
+							<xsl:value-of select="substring($Source, 1, $MaxLength)" />...
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$Source" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+
+				<xsl:template name="GetBrandingImage">
+					<xsl:if test="string-length($BrandingIcon) &gt; 0 and $BrandingIcon != '/_layouts/images/blank.gif'">
+						<img src="{$BrandingIcon}" xmlns="" />
+					</xsl:if>
+				</xsl:template>
+
+			</xsl:stylesheet>
+		</Xsl>
+		<Properties>
+    &lt;Columns&gt;
+        &lt;Column Name="title"/&gt;
+        &lt;Column Name="link"/&gt;
+        &lt;Column Name="description"/&gt;
+    &lt;/Columns&gt;
+		</Properties>
+		<SampleData>
+			<rss version="2.0" xmlns="">
+				<channel>
+					<title></title>
+					<link>http://www.sample.com/</link>
+					<description></description>
+					<item>
+						<title>Title of document or web page</title>
+						<link></link>
+						<description>This is the summary of the document or web page. The summary is generated from the original document based on matches with query terms. In some cases, the summary is a description provided by the author.</description>
+					</item>
+				</channel>
+			</rss>
+		</SampleData>
+	</Visualization>
+	<Visualization name="topanswer" xmlns="http://schemas.microsoft.com/Search/2007/location">
+		<Xsl>
+			<xsl:stylesheet xmlns:x="http://www.w3.org/2001/XMLSchema" version="1.0" exclude-result-prefixes="xsl ddwrt msxsl srwrt" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:srwrt="http://schemas.microsoft.com/WebParts/v3/searchresults/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rss1="http://purl.org/rss/1.0/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom2="http://purl.org/atom/ns#">
+				<xsl:output method="xml" indent="no" />
+
+				<xsl:param name="ResultsPerPage">10</xsl:param>
+				<xsl:param name="IsDesignMode">True</xsl:param>
+				<xsl:param name="UrlMaxLength">50</xsl:param>
+				<xsl:param name="SummaryMaxLength">300</xsl:param>
+				<xsl:param name="ShowMoreLink">true</xsl:param>
+				<xsl:param name="MoreLink"></xsl:param>
+				<xsl:param name="MoreLinkLabel"></xsl:param>
+				<xsl:param name="IdPrefix"></xsl:param>
+				<xsl:param name="WebpartTitle"></xsl:param>
+				<xsl:param name="DefaultIconDescription"></xsl:param>
+				<xsl:param name="BrandingIcon">/_layouts/images/blank.gif</xsl:param>
+				<xsl:param name="IsFirstPage">true</xsl:param>
+				<xsl:param name="RecommendationText"></xsl:param>
+				<xsl:param name="ShowSeperationLine">True</xsl:param>
+
+				<xsl:template match="rss">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'rss'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="rdf:RDF">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'rdf'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="atom:feed">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'atom'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template match="atom2:feed">
+					<xsl:call-template name="MainTemplate">
+						<xsl:with-param name="Type" select="'atom2'" />
+					</xsl:call-template>
+				</xsl:template>
+				<xsl:template name="GetLink">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="link" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:link" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:link/@href" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:link/@href" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="link" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetTitle">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:title" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:title" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="title" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetDescription">
+					<xsl:param name="Type" />
+					<xsl:choose>
+						<xsl:when test="$Type = 'rss'">
+							<xsl:value-of select="description" />
+						</xsl:when>
+						<xsl:when test="$Type = 'rdf'">
+							<xsl:value-of select="rss1:description" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom'">
+							<xsl:value-of select="atom:summary" />
+						</xsl:when>
+						<xsl:when test="$Type = 'atom2'">
+							<xsl:value-of select="atom2:summary" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="description" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetItemIconDescription">
+					<xsl:choose>
+						<xsl:when test="$ShowSeperationLine= 'True'">
+							<xsl:value-of select="$RecommendationText" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$DefaultIconDescription" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+
+				<xsl:template name="GetItemIcon">
+					<xsl:value-of select="string('/_layouts/images/star.png')" />
+				</xsl:template>
+
+				<xsl:template name="MainTemplate">
+					<xsl:param name="Type" />
+					<xsl:if test="$IsFirstPage = true()">
+						<xsl:variable name="Rows" select="channel/item" />
+						<xsl:variable name="RowCount" select="count($Rows)" />
+						<xsl:variable name="ChannelTitle">
+							<xsl:choose>
+								<xsl:when test="$Type = 'rss'">
+									<xsl:value-of select="channel/title" />
+								</xsl:when>
+								<xsl:when test="$Type = 'rdf'">
+									<xsl:value-of select="rss1:channel/rss1:title" />
+								</xsl:when>
+								<xsl:when test="$Type = 'atom'">
+									<xsl:value-of select="atom:title" />
+								</xsl:when>
+								<xsl:when test="$Type = 'atom2'">
+									<xsl:value-of select="atom2:title" />
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="channel/title" />
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:if test="($RowCount &gt; 0)">
+							<div class="ms-searchtamain" accesskey="W" xmlns="">
+								<xsl:call-template name="MainTemplate.body">
+									<xsl:with-param name="Rows" select="$Rows" />
+									<xsl:with-param name="RowCount" select="count($Rows)" />
+									<xsl:with-param name="ShowIcon" select="true()" />
+									<xsl:with-param name="ShowUrl" select="true()" />
+									<xsl:with-param name="StyleClassPrefix" select="string('ms-searchta')" />
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+								<xsl:call-template name="MoreLinkTemplate">
+									<xsl:with-param name="StyleClassPrefix" select="string('ms-searchta')" />
+								</xsl:call-template>
+								<xsl:call-template name="SeperationLineTemplate">
+								</xsl:call-template>
+							</div>
+						</xsl:if>
+					</xsl:if>
+				</xsl:template>
+
+				<xsl:template name="MainTemplate.body">
+					<xsl:param name="Rows" />
+					<xsl:param name="RowCount" />
+					<xsl:param name="ShowIcon" />
+					<xsl:param name="ShowUrl" />
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:param name="Type" />
+					<xsl:variable name="BodyClass" select="concat($StyleClassPrefix,'body')" />
+					<div class="{$BodyClass}" xmlns="">
+						<xsl:for-each select="$Rows">
+							<xsl:variable name="CurPosition" select="position()" />
+							<xsl:variable name="CurrentId" select="concat($IdPrefix,$CurPosition)" />
+							<xsl:variable name="link">
+								<xsl:call-template name="GetLink">
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="title">
+								<xsl:call-template name="GetTitle">
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:if test="($CurPosition &lt;= $ResultsPerPage)">
+								<xsl:variable name="TitleClass" select="concat($StyleClassPrefix,'Title')" />
+								<div class="{$TitleClass}">
+									<xsl:variable name="SafeHtml">
+										<xsl:call-template name="GetSafeHtml">
+											<xsl:with-param name="Html" select="$title" />
+										</xsl:call-template>
+									</xsl:variable>
+									<xsl:if test="$ShowIcon = true()">
+										<xsl:variable name="itemIconUrl">
+											<xsl:call-template name="GetItemIcon" />
+										</xsl:variable>
+										<xsl:variable name="itemIconDescription">
+											<xsl:call-template name="GetItemIconDescription" />
+										</xsl:variable>
+										<img src="{$itemIconUrl}" title="{$itemIconDescription}" />
+									</xsl:if>
+									<xsl:choose>
+										<xsl:when test="substring($link,1,5) = 'file:' and $IsDesignMode = 'False'">
+											<xsl:text disable-output-escaping="yes">&lt;a href="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode($link)" />
+											<xsl:text disable-output-escaping="yes">" id="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode(concat($CurrentId, '_Title'))" />
+											<xsl:text disable-output-escaping="yes">" class="</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="srwrt:HtmlAttributeEncode($TitleClass)" />
+											<xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
+											<xsl:value-of disable-output-escaping="yes" select="$SafeHtml" />
+											<xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<a id="{concat($CurrentId, '_Title')}" class="{$TitleClass}" href="{ddwrt:EnsureAllowedProtocol(string($link))}">
+												<xsl:value-of select="$SafeHtml" disable-output-escaping="yes" />
+											</a> 
+										</xsl:otherwise>
+									</xsl:choose>  
+								</div>
+								<xsl:call-template name="MainTemplate.description">
+									<xsl:with-param name="CurrentId" select="$CurrentId" />
+									<xsl:with-param name="Link" select="$link" />
+									<xsl:with-param name="ShowUrl" select="$ShowUrl" />
+									<xsl:with-param name="StyleClassPrefix" select="$StyleClassPrefix" />
+									<xsl:with-param name="Type" select="$Type" />
+								</xsl:call-template>
+							</xsl:if>
+						</xsl:for-each>
+					</div>
+				</xsl:template>
+				<xsl:template name="SeperationLineTemplate">
+					<xsl:if test="$ShowSeperationLine= 'True'">
+						<div class="ms-topanswerseperation" xmlns="">
+							<div class="ms-topanswerseperation2">
+								<img src="/_layouts/images/blank.gif" />
+							</div>
+						</div>   
+					</xsl:if>    
+				</xsl:template>
+				<xsl:template name="MainTemplate.description">
+					<xsl:param name="CurrentId" />
+					<xsl:param name="Link" />
+					<xsl:param name="ShowUrl" />
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:param name="Type" />
+
+					<xsl:variable name="DivId" select="concat($CurrentId,'_d')" />
+					<xsl:variable name="LinkId" select="concat($CurrentId,'_Url')" />
+					<xsl:variable name="DescOuterClass" select="concat($StyleClassPrefix,'descouter')" />
+					<xsl:variable name="description">
+						<xsl:call-template name="GetDescription">
+							<xsl:with-param name="Type" select="$Type" />
+						</xsl:call-template>
+					</xsl:variable>
+					<xsl:if test="string-length($description) &gt; 0">
+						<div id="{$DivId}" class="{$DescOuterClass}" xmlns="">
+							<xsl:variable name="DescLongText">
+								<xsl:call-template name="GetPlainTextFromHtml">
+									<xsl:with-param name="Html" select="$description" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="DescText">
+								<xsl:call-template name="TrimIfGreaterThanMax">
+									<xsl:with-param name="Source" select="$DescLongText" />
+									<xsl:with-param name="MaxLength" select="$SummaryMaxLength" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="DescClass" select="concat($StyleClassPrefix,'desc')" />
+							<div class="{$DescClass}">
+								<xsl:value-of select="$DescText" />
+							</div>
+							<xsl:if test="$ShowUrl = true()">
+								<xsl:variable name="UrlClass" select="concat($StyleClassPrefix,'Url')" />
+
+								<div class="{$UrlClass}" id="{LinkId}">
+
+									<xsl:variable name="ShortLink">
+										<xsl:call-template name="TrimIfGreaterThanMax">
+											<xsl:with-param name="Source" select="$Link" />
+											<xsl:with-param name="MaxLength" select="$UrlMaxLength" />
+										</xsl:call-template>
+									</xsl:variable>
+									<xsl:value-of select="$ShortLink" />
+								</div>
+							</xsl:if>
+						</div>
+					</xsl:if>
+				</xsl:template>
+				<xsl:template name="MoreLinkTemplate">
+					<xsl:param name="StyleClassPrefix" />
+					<xsl:variable name="MoreLinkClass" select="concat($StyleClassPrefix,'morelink')" />
+					<xsl:if test="$ShowMoreLink = true() and string-length($MoreLink) &gt; 0">
+						<div class="{$MoreLinkClass}" xmlns="">
+							<a href="{ddwrt:EnsureAllowedProtocol(string($MoreLink))}">
+								<xsl:value-of select="$MoreLinkLabel" />
+							</a>
+						</div>
+					</xsl:if>
+				</xsl:template>
+				<xsl:template name="GetSafeHtml">
+					<xsl:param name="Html" />
+					<xsl:choose>
+						<xsl:when test="$IsDesignMode = 'True'">
+							<xsl:value-of select="$Html" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="srwrt:MakeSafe($Html)" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="GetPlainTextFromHtml">
+					<xsl:param name="Html" />
+					<xsl:choose>
+						<xsl:when test="$IsDesignMode = 'True'">
+							<xsl:value-of select="$Html" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="srwrt:GetPlainTextFromHtml($Html)" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+				<xsl:template name="TrimIfGreaterThanMax">
+					<xsl:param name="Source" />
+					<xsl:param name="MaxLength" />
+					<xsl:choose>
+						<xsl:when test="string-length($Source) &gt; $MaxLength">
+							<xsl:value-of select="substring($Source, 1, $MaxLength)" />...
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$Source" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:template>
+
+				<xsl:template name="GetBrandingImage">
+					<xsl:if test="string-length($BrandingIcon) &gt; 0 and $BrandingIcon != '/_layouts/images/blank.gif'">
+						<img src="{$BrandingIcon}" xmlns="" />
+					</xsl:if>
+				</xsl:template>
+			</xsl:stylesheet>
+		</Xsl>
+		<Properties>
+    &lt;Columns&gt;
+        &lt;Column Name="title"/&gt;
+        &lt;Column Name="link"/&gt;
+        &lt;Column Name="description"/&gt;
+    &lt;/Columns&gt;
+		</Properties>
+		<SampleData>
+			<rss version="2.0" xmlns="">
+				<channel>
+					<title></title>
+					<link>http://www.sample.com/</link>
+					<description></description>
+					<item>
+						<title>Title of document or web page</title>
+						<link></link>
+						<description>This is the summary of the document or web page. The summary is generated from the original document based on matches with query terms. In some cases, the summary is a description provided by the author.</description>
+					</item>
+				</channel>
+			</rss>
+		</SampleData>
+	</Visualization>
+</OpenSearchDescription>
