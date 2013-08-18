@@ -741,6 +741,8 @@ class SearchIndex {
 	protected function createErrorMessageView( $message ) {
 		$res = new ViewBaseElement();
 		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
+		// Give grep a chance to find the usages:
+		// bs-extendedsearch-no_search_term, bs-extendedsearch-invalid-query
 		$res->addData( array( 'message' => wfMessage( 'bs-extendedsearch-' . $message )->plain() ) );
 		return $res;
 	}

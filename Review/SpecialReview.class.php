@@ -156,6 +156,8 @@ class SpecialReview extends BsSpecialPage {
 				$sOutput.= '<tr' . $class . '>';
 				$sOutput.= '<td valign="top">' . $oLinker->makeLinkObj($title, $row['page_title']) . '</td>';
 				$sOutput.= '<td valign="top">' . $row['owner_name'] . '</td>';
+				// Give grep a chance to find the usages:
+				// bs-review-vote, bs-review-sign, bs-review-comment, bs-review-workflow
 				$sOutput.= '<td valign="top">' . wfMsg( 'bs-review-' . $row['rev_mode']) . '</td>';
 
 				if ($bShowAssessor) {
@@ -194,6 +196,8 @@ class SpecialReview extends BsSpecialPage {
 				if( $arrValue['revs_status'] == '' ) {
 					$arrValue['revs_status'] = 'pending';
 				}
+				// Give grep a chance to find the usages:
+				// bs-review-pending, bs-review-denied, bs-review-nothing
 				$sOutput.= wfMsg( 'bs-review-' . $arrValue['revs_status']);
 
 				$sOutput.= '</td>';

@@ -205,12 +205,31 @@ class InsertMagic extends BsExtensionMW {
 			$oDescriptor->id = $sTag;
 			$oDescriptor->type = 'tag';
 			$oDescriptor->name = $sTag;
+			// Give grep a chance to find the usages:
+			// bs-insertmagic-gallery-code, bs-insertmagic-nowiki-code, bs-insertmagic-noinclude-code,
+			// bs-insertmagic-includeonly-code, bs-insertmagic-redirect-code,bs-insertmagic-gallery,
+			// bs-insertmagic-nowiki, bs-insertmagic-noinclude, bs-insertmagic-includeonly,
+			// bs-insertmagic-redirect
 			$oDescriptor->desc = wfMessage( 'bs-insertmagic-'.$sTag )->parse();
 			$oDescriptor->code = wfMessage( 'bs-insertmagic-'.$sTag.'-code' )->plain();
 			$oDescriptor->previewable = true;
 			$oResponse->result[] = $oDescriptor;
 		}
 
+		// Give grep a chance to find the usages:
+		// bs-insertmagic-{{CURRENTYEAR}}, bs-insertmagic-{{CURRENTMONTH}},bs-insertmagic-{{CURRENTMONTHNAME}},
+		// bs-insertmagic-{{CURRENTMONTHNAMEGEN}}, bs-insertmagic-{{CURRENTMONTHABBREV}},
+		// bs-insertmagic-{{CURRENTDAY}}, bs-insertmagic-{{CURRENTDAY2}}, bs-insertmagic-{{CURRENTDOW}},
+		// bs-insertmagic-{{CURRENTDAYNAME}}, bs-insertmagic-{{CURRENTTIME}}, bs-insertmagic-{{CURRENTHOUR}},
+		// bs-insertmagic-{{CURRENTWEEK}}, bs-insertmagic-{{CURRENTTIMESTAMP}}, bs-insertmagic-{{SITENAME}},
+		// bs-insertmagic-{{SERVER}}, bs-insertmagic-{{SERVERNAME}}, bs-insertmagic-{{SCRIPTPATH}},
+		// bs-insertmagic-{{STYLEPATH}}, bs-insertmagic-{{CURRENTVERSION}}, bs-insertmagic-{{CONTENTLANGUAGE}},
+		// bs-insertmagic-{{PAGEID}}, bs-insertmagic-{{PAGESIZE:"page name"}},
+		// bs-insertmagic-{{PROTECTIONLEVEL:"action"}}, bs-insertmagic-{{REVISIONID}},
+		// bs-insertmagic-{{REVISIONDAY}}, bs-insertmagic-{{REVISIONDAY2}}, bs-insertmagic-{{REVISIONMONTH}},
+		// bs-insertmagic-{{REVISIONMONTH1}}, bs-insertmagic-{{REVISIONYEAR}},
+		// bs-insertmagic-{{REVISIONTIMESTAMP}}, bs-insertmagic-{{REVISIONUSER}},
+		// bs-insertmagic-{{DISPLAYTITLE:"title"}}, bs-insertmagic-{{DEFAULTSORT:"sortkey"}}
 		foreach( self::$aMagicWords['variables'] as $sVariable ) {
 			$oDescriptor = new stdClass();
 			$oDescriptor->id = $sVariable;
@@ -227,6 +246,12 @@ class InsertMagic extends BsExtensionMW {
 			$oDescriptor->id = $sSwitch;
 			$oDescriptor->type = 'switch';
 			$oDescriptor->name = substr( $sSwitch, 2, -2 );
+			// Give grep a chance to find the usages:
+			// bs-insertmagic-__NOTOC__, bs-insertmagic-__FORCETOC__, bs-insertmagic-__TOC__,
+			// bs-insertmagic-__NOEDITSECTION__, bs-insertmagic-__NEWSECTIONLINK__,
+			// bs-insertmagic-__NONEWSECTIONLINK__, bs-insertmagic-__NOGALLERY__, bs-insertmagic-__HIDDENCAT__,
+			// bs-insertmagic-__NOCONTENTCONVERT__, bs-insertmagic-__NOTITLECONVERT__, bs-insertmagic-__END__,
+			// bs-insertmagic-__INDEX__, bs-insertmagic-__NOINDEX__, bs-insertmagic-__STATICREDIRECT__
 			$oDescriptor->desc = wfMessage( 'bs-insertmagic-'.$sSwitch )->parse();
 			$oDescriptor->code = $sSwitch;
 			$oDescriptor->previewable = false;

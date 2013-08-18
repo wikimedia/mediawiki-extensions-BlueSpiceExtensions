@@ -30,6 +30,11 @@ class SpecialWikiAdmin extends BsSpecialPage {
 				$wa_mode_Instance = $moduleInstance;
 
 				$moduleNameLower = strtolower( $moduleName );
+				// Give grep a chance to find the usages:
+				// bs-extendedsearch-label, bs-extendedsearchadmin-label, bs-extendedsearch-label,
+				// bs-extendedsearchadmin-label, bs-extensioninfo-label, bs-groupmanager-label,
+				// bs-interwikilinks-label, bs-namespacemanager-label, bs-pagetemplatesadmin-label,
+				// bs-permissionmanager-label, bs-preferences-label, bs-usermanager-label
 				$wgOut->setPagetitle( 'WikiAdmin - ' . wfMsg( 'bs-' . $moduleNameLower.'-label' ) );
 			}
 		}
@@ -56,6 +61,11 @@ class SpecialWikiAdmin extends BsSpecialPage {
 			$form .= '<a href="'.$url.'">';
 			$form .= '<img src="'.BsConfig::get( 'MW::ScriptPath' ).$params['image'].'" alt="'.$module.'" title="'.$module.'">';
 			$form .= '<div class="bs-admin-label">';
+			// Give grep a chance to find the usages:
+			// bs-extendedsearch-label, bs-extendedsearchadmin-label, bs-extendedsearch-label,
+			// bs-extendedsearchadmin-label, bs-extensioninfo-label, bs-groupmanager-label,
+			// bs-interwikilinks-label, bs-namespacemanager-label, bs-pagetemplatesadmin-label,
+			// bs-permissionmanager-label, bs-preferences-label, bs-usermanager-label
 			$form .= wfMsg( 'bs-' . $moduleNameLower . '-label' );
 			$form .= '</div>';
 			$form .= '</a>';

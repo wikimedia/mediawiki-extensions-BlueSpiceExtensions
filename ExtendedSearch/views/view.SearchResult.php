@@ -286,6 +286,8 @@ class ViewSearchResult extends ViewBaseElement {
 			}
 			if ( $active ) $aOut .= '<b>';
 			$aOut .= '<a href="'.$sortUrl.'&search_asc='.$direction.'&search_order='.$sort.'">';
+			// Give grep a chance to find the usages: bs-extendedsearch-sort-relevance,
+			// bs-extendedsearch-sort-title, bs-extendedsearch-sort-ts, bs-extendedsearch-sort-type
 			$aOut .= wfMessage( 'bs-extendedsearch-' . $i18nKey )->plain() . '</a>';
 			$aOut .= '&nbsp;' . $icon;
 			if ( $active ) $aOut .= '</b>';

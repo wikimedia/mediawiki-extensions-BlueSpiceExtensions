@@ -212,6 +212,8 @@ class ViewDiagramStepII extends ViewBaseElement {
 			$sTempOut = '';
 			$sTempOut .= '          <option value="'.$sGrain.'"';
 			if ( $sGrain == $this->sActiveGrain ) $sTempOut .= ' selected="selected"';
+			// Give grep a chance to find the usages:
+			// bs-statistics-Y, bs-statistics-m, bs-statistics-W, bs-statistics-d
 			$sTempOut .= '>'.wfMsg( 'bs-statistics-' . $sGrain ).'</option>';
 			$aOut[] = $sTempOut;
 		}

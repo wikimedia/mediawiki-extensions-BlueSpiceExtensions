@@ -55,6 +55,8 @@ class BsCharting {
 		$intervals = Interval::getIntervalsFromDiagram( $oDiagram );
 		$oDiagram->addFilterText( wfMsg( 'bs-statistics-from-to', $oDiagram->getStartTime(), $oDiagram->getEndTime() ) );
 		// TODO MRG (20.12.10 00:19): This should be getModeText
+		// Give grep a chance to find the usages:
+		// bs-statistics-aggregated, bs-statistics-grouped, bs-statistics-normal, bs-statistics-absolute
 		$oDiagram->addFilterText( "\n".wfMsg( 'bs-statistics-mode' ).": ".wfMsg( 'bs-statistics-'.$oDiagram->getMode() ) );
 		// PostgreSQL-Check (uses mwuser instead of user)
 		global $wgDBtype;
@@ -89,6 +91,8 @@ class BsCharting {
 		set_time_limit(120);
 		$intervals = Interval::getIntervalsFromDiagram( $oDiagram );
 		$oDiagram->addFilterText( wfMsg( 'bs-statistics-from-to', $oDiagram->getStartTime(), $oDiagram->getEndTime() ) );
+		// Give grep a chance to find the usages:
+		// bs-statistics-aggregated, bs-statistics-grouped, bs-statistics-normal, bs-statistics-absolute
 		$oDiagram->addFilterText( "<br/>".wfMsg( 'bs-statistics-mode' ).": ".wfMsg( 'bs-statistics-'.$oDiagram->getMode() ) );
 		// PostgreSQL-Check (uses mwuser instead of user)
 		global $wgDBtype;
