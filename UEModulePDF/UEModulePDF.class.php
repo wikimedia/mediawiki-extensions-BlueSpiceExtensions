@@ -55,9 +55,6 @@ class UEModulePDF extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['UEModulePDF'] = __DIR__ . '/UEModulePDF.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
@@ -203,7 +200,7 @@ class UEModulePDF extends BsExtensionMW {
 			'URL'     => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
 			'TITLE'   => wfMsg( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' ),
 			'CLASSES' => 'bs-uemodulepdf-single',
-			'TEXT'    => wfMsg( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' ),
+			'TEXT'    => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
 		);
 
 		wfRunHooks( 'BSUEModulePDFBeforeCreateWidget', array( $this, $oSpecialPage, &$aLinks, $aCurrentQueryParams ) );
@@ -212,27 +209,32 @@ class UEModulePDF extends BsExtensionMW {
 		$oPdfView->setAutoWrap( '<ul>###CONTENT###</ul>' );
 		$oPdfView->setTemplate( '<li><a href="{URL}" rel="nofollow" title="{TITLE}" class="{CLASSES}">{TEXT}</a></li>' );#
 
-		foreach( $aLinks as $sKey => $aData ) {
+		foreach ( $aLinks as $sKey => $aData ) {
 			$oPdfView->addData( $aData );
 		}
 
 		$aModules[] = $oPdfView;
 		return true;
 	}
-	
+
 	public function onSkinTemplateOutputPageBeforeExec(&$skin, &$template){
 		$aCurrentQueryParams = $this->getRequest()->getValues();
-		$sSpecialPageParameter = BsCore::sanitize( $aCurrentQueryParams['title'], '', BsPARAMTYPE::STRING );
-		$oSpecialPage = SpecialPage::getTitleFor( 'UniversalExport',$sSpecialPageParameter );
-		if( isset( $aCurrentQueryParams['title'] ) ) unset( $aCurrentQueryParams['title'] );
+		if ( isset( $aCurrentQueryParams['title'] ) ) {
+			$sTitle = $aCurrentQueryParams['title'];
+		} else {
+			$sTitle = '';
+		}
+		$sSpecialPageParameter = BsCore::sanitize( $sTitle, '', BsPARAMTYPE::STRING );
+		$oSpecialPage = SpecialPage::getTitleFor( 'UniversalExport', $sSpecialPageParameter );
+		if ( isset( $aCurrentQueryParams['title'] ) ) unset( $aCurrentQueryParams['title'] );
 		$aCurrentQueryParams['ue[module]'] = 'pdf';
 		$aContentActions = array(
 			'id' => 'pdf',
 			'href' => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
-			'title' => wfMessage('bs-uemodulepdf-widgetlink-single-no-attachments-text')->plain(),
+			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
 			'text' => ''
 		);
-			
+
 		$template->data['bs_title_actions'][] = $aContentActions;
 		return true;
 	}

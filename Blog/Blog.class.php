@@ -106,31 +106,29 @@ class Blog extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 
 		// Trackback is not fully functional in MW and thus disabled.
-		BsConfig::registerVar('MW::Blog::ShowTrackback',	false,		BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTrackback');
+		BsConfig::registerVar('MW::Blog::ShowTrackback', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTrackback');
 		// Show permalink link at end of a blog entry
-		BsConfig::registerVar('MW::Blog::ShowPermalink',	true,		BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowPermalink', 'toggle');
+		BsConfig::registerVar('MW::Blog::ShowPermalink', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowPermalink', 'toggle');
 		// Show info line below blog entry heading
-		BsConfig::registerVar('MW::Blog::ShowInfo',			true,		BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowInfo', 'toggle');
+		BsConfig::registerVar('MW::Blog::ShowInfo', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowInfo', 'toggle');
 		// Open more link in new window
-		BsConfig::registerVar('MW::Blog::MoreInNewWindow',	false,		BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreInNewWindow', 'toggle');
+		BsConfig::registerVar('MW::Blog::MoreInNewWindow', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreInNewWindow', 'toggle');
 		// Should a link to complete list of blog entries be rendered?
-		BsConfig::registerVar('MW::Blog::ShowAll',			true,		BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowAll', 'toggle');
+		BsConfig::registerVar('MW::Blog::ShowAll', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowAll', 'toggle');
 		// Place more link at end of blog entry instead of next line
-		BsConfig::registerVar('MW::Blog::MoreAtEndOfEntry',	true,		BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreAtEndOfEntry', 'toggle');
+		BsConfig::registerVar('MW::Blog::MoreAtEndOfEntry', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreAtEndOfEntry', 'toggle');
 		// Possible values are "creation" and "title"
 		//BsConfig::registerVar('MW::Blog::SortBy',			'creation',	BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, $this->mI18N);
 		BsConfig::registerVar( 'MW::Blog::SortBy', 'creation', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-SortBy', 'select' );
 		// Number of blog entries that shall be displayed initially
-		BsConfig::registerVar('MW::Blog::ShowLimit',		10,			BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-blog-pref-ShowLimit', 'int');
-		// Namespace blog entries are taken from
-		BsConfig::registerVar('MW::Blog::Ns',				102,		BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-blog-pref-Ns', 'int');
+		BsConfig::registerVar('MW::Blog::ShowLimit', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-blog-pref-ShowLimit', 'int');
 		// Show form that allows to create a new blog entry
-		BsConfig::registerVar('MW::Blog::ShowNewEntryField',	true,	BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowNewEntryField', 'toggle');
+		BsConfig::registerVar('MW::Blog::ShowNewEntryField', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowNewEntryField', 'toggle');
 		// Position of new entry field. Possible values are "top" and "bottom"
 		//BsConfig::registerVar('MW::Blog::NewEntryFieldPosition',	'top',	BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, $this->mI18N);
 		BsConfig::registerVar( 'MW::Blog::NewEntryFieldPosition', 'top', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-NewEntryFieldPosition', 'select' );
 		// Maximum number of characters befor an entry is automatically cut
-		BsConfig::registerVar('MW::Blog::MaxEntryCharacters', 1000,	BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-blog-pref-MaxEntryCharacters', 'int');
+		BsConfig::registerVar('MW::Blog::MaxEntryCharacters', 1000, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-blog-pref-MaxEntryCharacters', 'int');
 		// Defines how images should be rendered. Possible values: full|thumb|none
 		//BsConfig::registerVar('MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, $this->mI18N);
 		BsConfig::registerVar( 'MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-ImageRenderMode', 'select' );
@@ -331,11 +329,11 @@ class Blog extends BsExtensionMW {
 		$bMoreInNewWindow       = BsConfig::get( 'MW::Blog::MoreInNewWindow' );
 		$bShowAll               = BsConfig::get( 'MW::Blog::ShowAll' );
 		$bMoreAtEndOfEntry      = BsConfig::get( 'MW::Blog::MoreAtEndOfEntry' );
-		$iNamespace             = BsConfig::get( 'MW::Blog::Ns' );
 		$bShowNewEntryField     = BsConfig::get( 'MW::Blog::ShowNewEntryField' );
 		$bNewEntryFieldPosition = BsConfig::get( 'MW::Blog::NewEntryFieldPosition' );
 		$sImageRenderMode       = BsConfig::get( 'MW::Blog::ImageRenderMode' );
 		$iMaxEntryCharacters    = BsConfig::get( 'MW::Blog::MaxEntryCharacters' );
+		$iNamespace = NS_BLOG;
 
 		// Trackbacks are not supported the way we intend it to be. From http://www.mediawiki.org/wiki/Manual:$wgUseTrackbacks
 		// When MediaWiki receives a trackback ping, a box will show up at the bottom of the article containing a link to the originating page
