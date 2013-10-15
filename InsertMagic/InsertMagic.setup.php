@@ -7,15 +7,16 @@ $wgExtensionMessagesFiles['InsertMagic'] = __DIR__ . '/languages/InsertMagic.i18
 $wgAutoloadClasses['InsertMagic'] = __DIR__ . '/InsertMagic.class.php';
 $wgAjaxExportList[] = 'InsertMagic::ajaxGetData';
 
+$aResourceModuleTemplate = array(
+	'localBasePath' => __DIR__.'/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/InsertMagic/resources',
+);
+
 $wgResourceModules['ext.bluespice.insertMagic'] = array(
-	'scripts' => array(
-		'extensions/BlueSpiceExtensions/InsertMagic/resources/bluespice.insertMagic.js',
-	),
-	'styles' => array(
-		'extensions/BlueSpiceExtensions/InsertMagic/resources/bluespice.insertMagic.css',
-	),
+	'scripts' => 'bluespice.insertMagic.js',
 	'dependencies' => array(
-		'ext.bluespice.extjs'
+		'ext.bluespice.extjs',
+		'jquery.textSelection'
 	),
 	'messages' => array(
 		'bs-insertmagic-dlg_title',
@@ -28,7 +29,11 @@ $wgResourceModules['ext.bluespice.insertMagic'] = array(
 		'bs-insertmagic-label_second',
 		'bs-insertmagic-label_third',
 		'bs-insertmagic-label_desc'
-	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
-);
+	)
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.insertMagic.styles'] = array(
+	'styles' => 'bluespice.insertMagic.css',
+) + $aResourceModuleTemplate;
+
+unset( $aResourceModuleTemplate );

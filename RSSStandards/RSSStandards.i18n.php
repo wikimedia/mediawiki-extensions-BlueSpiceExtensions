@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: HideTitle.i18n.php 6401 2012-09-06 11:03:08Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage HideTitle
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -33,9 +33,7 @@ $messages['en'] = array(
 	'bs-rssstandards-description_watch'     => 'Feed with an overview of your own watched pages.',
 	'bs-rssstandards-link_text_watch'       => 'Recent changes of the last %d days',
 	'bs-rssstandards-title_ns'              => 'Namespace',
-	'bs-rssstandards-field_title_ns'        => 'Namespace',
 	'bs-rssstandards-description_ns'        => 'Feed with an overview of the recent changes in a namespace.',
-	'bs-rssstandards-submit_title'          => 'Show',
 	'bs-rssstandards-changes_from'          => 'Changes from '
 );
 
@@ -57,9 +55,7 @@ $messages['de'] = array(
 	'bs-rssstandards-description_watch'     => 'Feed mit einem Überblick ihrer beobachteten Seiten.',
 	'bs-rssstandards-link_text_watch'       => 'Änderungen der letzten %d Tage',
 	'bs-rssstandards-title_ns'              => 'Namensraum',
-	'bs-rssstandards-field_title_ns'        => 'Namensraum',
 	'bs-rssstandards-description_ns'        => 'Feed mit einem Überblick der letzten Änderungen in einem Namespace.',
-	'bs-rssstandards-submit_title'          => 'Anzeigen',
 	'bs-rssstandards-changes_from'          => 'Änderung durch '
 );
 

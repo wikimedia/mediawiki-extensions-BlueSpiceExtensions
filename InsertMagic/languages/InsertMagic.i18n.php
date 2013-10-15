@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: InsertMagic.i18n.php 9209 2013-04-19 13:44:02Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage InsertMagic
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

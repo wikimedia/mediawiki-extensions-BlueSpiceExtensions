@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: SaferEdit.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage SaferEdit
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -64,8 +64,8 @@ class SaferEdit extends BsExtensionMW {
 			EXTINFO::NAME        => 'SaferEdit',
 			EXTINFO::DESCRIPTION => 'Intermediate saving of wiki edits.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice'   => '1.22.0',
@@ -84,16 +84,15 @@ class SaferEdit extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		BsConfig::registerVar( 'MW::SaferEdit::UseSE', false, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-UseSE', 'toggle' );
-		BsConfig::registerVar( 'MW::SaferEdit::HasTexts', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-HasTexts', 'toggle' );
+		//BsConfig::registerVar( 'MW::SaferEdit::HasTexts', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-HasTexts', 'toggle' );
 		BsConfig::registerVar( 'MW::SaferEdit::EditSection', -1, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_INT|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-EditSection', 'int' );
 		BsConfig::registerVar( 'MW::SaferEdit::Interval', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-Interval', 'int' );
 		BsConfig::registerVar( 'MW::SaferEdit::ShowNameOfEditingUser', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-ShowNameOfEditingUser', 'toggle' );
 		BsConfig::registerVar( 'MW::SaferEdit::WarnOnLeave', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-WarnOnLeave', 'toggle' );
 
 		$this->setHook( 'LoadExtensionSchemaUpdates' );
-
 		$this->setHook( 'ArticleSaveComplete', 'clearSaferEdit' );
-		$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'parseSaferEdit' );
+		//$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'parseSaferEdit' );
 		$this->setHook( 'EditPage::showEditForm:initial', 'setEditSection' );
 		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
@@ -101,10 +100,7 @@ class SaferEdit extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BsAdapterAjaxPingResult' );
 
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'SaferEdit', $this, 'doCancelSaferEdit', 'edit' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'SaferEdit', $this, 'getLostTexts', 'edit' );
-
-		$this->mAdapter->registerBehaviorSwitch( 'NOSAFEREDIT', array( $this, 'noSaferEditCallback' ) ) ;
+		$this->mCore->registerBehaviorSwitch( 'NOSAFEREDIT', array( $this, 'noSaferEditCallback' ) ) ;
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -118,9 +114,11 @@ class SaferEdit extends BsExtensionMW {
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if ( BsExtensionManager::isContextActive( 'MW::SaferEdit' ) === false ) return true;
 		$oOutputPage->addModules('ext.bluespice.saferedit.general');
-		
+
 		if ( BsExtensionManager::isContextActive( 'MW::SaferEditEditMode' ) === false ) return true;
 		$oOutputPage->addModules('ext.bluespice.saferedit.editmode');
+
+		$this->parseSaferEdit( $oOutputPage->getTitle() );
 		return true;
 	}
 
@@ -131,7 +129,7 @@ class SaferEdit extends BsExtensionMW {
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtNewIndexes;
-		$sDir = dirname( __FILE__ ).DS.'db'.DS.$wgDBtype.DS;
+		$sDir = __DIR__.DS.'db'.DS.$wgDBtype.DS;
 
 		if( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[]  = array( 'bs_saferedit', $sDir . 'SaferEdit.sql' );
@@ -255,20 +253,12 @@ class SaferEdit extends BsExtensionMW {
 		return $this->aIntermediateEditsForCurrentTitle;
 	}
 
-	/**
-	 * Checks if there are any saved intermediate edits. Callback for SkinTemplateOutputPageBeforeExec hook
-	 * @param SkinTemplate $oSkinTemplate MediaWiki SkinTemplate object
-	 * @param QuickTemplate $tpl Template fille with data that is about to be rendered
-	 * @return bool true do let other hooked methods be executed
-	 */
-	function parseSaferEdit( &$oSkinTemplate, &$tpl ) {
-		$oTitle = Title::newFromID( $tpl->data['articleid'] );
-		if ( is_null( $oTitle ) ) {
-			return true;
-		}
+	
+	function parseSaferEdit( $oTitle ) {
+		global $wgUser;
 
 		$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle( $oTitle );
-		if ( empty($aIntermediateEdits) ) return true;
+		if ( empty($aIntermediateEdits) ) return false;
 
 		$oArticle = Article::newFromID( $oTitle->getArticleID() );
 		foreach ( $aIntermediateEdits as $oEdit ) {
@@ -283,19 +273,19 @@ class SaferEdit extends BsExtensionMW {
 			}
 
 			if ( strcmp( $sOrigText, trim($oEdit->se_text) ) == 0 ) {
-				$this->doClearSaferEdit( $oSkinTemplate->username, $oTitle->getPrefixedDBkey(), $oTitle->getNamespace() );
+				$this->doClearSaferEdit( $wgUser->getName(), $oTitle->getPrefixedDBkey(), $oTitle->getNamespace() );
 				$this->aIntermediateEditsForCurrentTitle = null; //force reload
-				return true;
+				return false;
 			}
 
-			if ( $oEdit->se_user_name == $oSkinTemplate->username ) {
+			if ( $oEdit->se_user_name == $wgUser->getName() ) {
 				if ( $this->getRequest()->getVal( 'action', 'view' ) == 'edit' ) {
-					BsConfig::set( 'MW::SaferEdit::HasTexts', true );
+					$this->getOutput()->addJsConfigVars('bsSaferEditHasTexts', true );
 				}
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 	/**
@@ -316,7 +306,8 @@ class SaferEdit extends BsExtensionMW {
 	 * @param integer $iSection
 	 * @return boolean
 	 */
-	public function saveText( $sText, $sUsername, $oTitle, $iSection = -1 ) {
+	public static function saveText( $sText, $sUsername, $oTitle, $iSection = -1 ) {
+		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
 		$db = wfGetDB( DB_MASTER );
 
 		$sTable = 'bs_saferedit';
@@ -345,27 +336,23 @@ class SaferEdit extends BsExtensionMW {
 				array( "se_id" => $oRow->se_id)
 			);
 		}
-		
+
 		$oTitle->invalidateCache();
 		return $db->insert($sTable, $aConditions + $aFields);
 	}
 
-	// TODO RBV (19.05.11 08:56): Use XHRResponse
 	/**
 	 * User decided not to use saved texts, so they are dismissed. Called as AJAX function
 	 * @return bool true do let other hooked methods be executed
 	 */
-	public function doCancelSaferEdit( &$sOutput ) {
-		$sUserName      = $this->getRequest()->getVal( 'uname', '' );
-		$sPageTitle     = $this->getRequest()->getVal( 'pageName', '' );
-		$iPageNamespace = $this->getRequest()->getInt( 'nsnumber', 0 );
+	public static function doCancelSaferEdit( $sUserName, $sPageTitle, $iPageNamespace ) {
+		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
 
-		if ( $this->doClearSaferEdit( $sUserName, $sPageTitle, $iPageNamespace ) ) {
-			$sOutput = 'OK';
+		if ( BsExtensionManager::getExtension( 'SaferEdit' )->doClearSaferEdit( $sUserName, $sPageTitle, $iPageNamespace ) ) {
+			return 'OK';
 		} else {
-			$sOutput = 'ERR';
+			return 'ERR';
 		}
-		return true;
 	}
 
 	/**
@@ -399,12 +386,8 @@ class SaferEdit extends BsExtensionMW {
 	 * @param string $sOutput JSON encoded string with the renderd HTML and wiki text of a intermedia saving
 	 * @return bool true do let other hooked methods be executed
 	 */
-	public function getLostTexts( &$sOutput ) {
-		$sUname         = $this->getRequest()->getVal( 'uname', '' );
-		$sPageTitle     = $this->getRequest()->getVal( 'pageName', '' );
-		$iPageNamespace = $this->getRequest()->getInt( 'nsnumber', 0 );
-		$iSection       = $this->getRequest()->getInt( 'section', -1 );
-
+	public static function getLostTexts( $sUname, $sPageTitle, $iPageNamespace, $iSection ) {
+		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
 		$oTitle = Title::newFromText( $sPageTitle, $iPageNamespace );
 		$oDbw = wfGetDB( DB_SLAVE );
 
@@ -424,7 +407,7 @@ class SaferEdit extends BsExtensionMW {
 
 			//$oTitle   = Title::newFromText( $sPageTitle );
 			$oArticle = Article::newFromID( $oTitle->getArticleID() );
-			if( is_object( $oArticle ) ) {
+			if ( is_object( $oArticle ) ) {
 				$sOrigText = $oArticle->getRawText();
 				if ( $iSection != -1 ) {
 					global $wgParser;
@@ -450,7 +433,7 @@ class SaferEdit extends BsExtensionMW {
 				$str = urldecode($row['se_text']);
 				$aData = array(
 					"ts" => BsFormatConverter::mwTimestampToAgeString( $row['se_timestamp'] ),
-					"html" => $this->mAdapter->parseWikiText( $str ), //breaks on Mainpage
+					"html" => BsCore::getInstance()->parseWikiText( $str ), //breaks on Mainpage
 					"wiki" => $str,
 					"section" => $row['se_edit_section'],
 					"notexts" => 0
@@ -462,9 +445,7 @@ class SaferEdit extends BsExtensionMW {
 			$aData = array( "notexts" => "1" );
 		}
 
-		$sOutput = json_encode( $aData ); // TODO RBV (19.05.11 09:05): XHRResponse. Or MediaWiki AjaxResponse...
-
-		return true;
+		return json_encode( $aData ); // TODO RBV (19.05.11 09:05): XHRResponse. Or MediaWiki AjaxResponse...
 	}
 
 	/**
@@ -535,7 +516,7 @@ class SaferEdit extends BsExtensionMW {
 		$sAction = $oRequest->getVal( 'action', 'view' );
 
 		if( !in_array($sAction, array( 'edit', 'submit', 'view', ))) return true;
-		
+
 		BsExtensionManager::setContext( 'MW::SaferEdit' );
 
 		if( !$oTitle->userCan('edit')) return true;
@@ -562,7 +543,7 @@ class SaferEdit extends BsExtensionMW {
 		if( is_null($oTitle) || !$oTitle->userCan('read') ) return true;
 
 		global $wgUser;
-	
+
 		switch( $sRef ) {
 			case 'SaferEditIsSomeoneEditing':
 				$aSingleResult['success'] = true;
@@ -597,7 +578,6 @@ class SaferEdit extends BsExtensionMW {
 
 				break;
 		}
-		
 
 		return true;
 	}

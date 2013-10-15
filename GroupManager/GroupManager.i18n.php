@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: ArticleInfo.i18n.php 6401 2012-09-06 11:03:08Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage ArticleInfo
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -41,6 +41,9 @@ $messages['de'] = array(
 	'bs-groupmanager-grp_2long'             => 'Der Gruppenname ist zu lang. Gib maximal 16 Zeichen an!',
 	'bs-groupmanager-grp_exists'            => 'Die Gruppe ist bereits vorhanden.',
 	'bs-groupmanager-grp_not_exists'        => 'Die Gruppe existiert nicht',
+	'bs-groupmanager-grpadded'              => 'Die Gruppe wurde erfolgreich hinzugefügt',
+	'bs-groupmanager-grpedited'             => 'Die Gruppe wurde erfolgreich bearbeitet',
+	'bs-groupmanager-grpremoved'            => 'Die Gruppe wurde erfolgreich gelöscht',
 	'bs-groupmanager-import'                => 'Seiten importieren',
 	'bs-groupmanager-invalid_grp'           => 'Der Gruppenname ist ungültig.',
 	'bs-groupmanager-invalid_grp_esc'       => 'Der Gruppenname ist ungültig. Verwende keine Hochkommas oder Backslashes.',
@@ -66,7 +69,20 @@ $messages['de'] = array(
 	'bs-groupmanager-workflowview'          => 'Workflow ansehen',
 	'bs-groupmanager-invalid_name'          => 'Der eingegebene Gruppenname enthält nicht erlaubte Zeichen: $1',
 	'bs-groupmanager-invalid_name_length'   => 'Der eingegebene Gruppenname darf nicht länger als 16 Zeichen lang sein.',
-	'bs-groupmanager-invalid_name_numeric'  => 'Der eingegebene Gruppenname darf nicht zur aus Zahlen bestehen.'
+	'bs-groupmanager-invalid_name_numeric'  => 'Der eingegebene Gruppenname darf nicht zur aus Zahlen bestehen.',
+
+	//Javascript
+	'bs-groupmanager-headerGroupname' => 'Gruppen',
+	'bs-groupmanager-headerActions' => 'Aktionen',
+	'bs-groupmanager-btnAddGroup' => 'Gruppe hinzufügen',
+	'bs-groupmanager-tipEdit' => 'Gruppe umbennen',
+	'bs-groupmanager-tipRemove' => 'Gruppe löschen',
+	'bs-groupmanager-titleNewGroup' => 'Gruppe hinzufügen',
+	'bs-groupmanager-titleEditGroup' => 'Gruppe bearbeiten',
+	'bs-groupmanager-titleError' => 'Fehler',
+	'bs-groupmanager-removeGroup' => 'Willst du die Gruppe wirklich löschen?',
+	'bs-groupmanager-lableName' => 'Gruppenname:',
+	'bs-groupmanager-msgNotEditable' => 'Dies ist eine Systemgruppe und kann nicht umbenannt werden.'
 );
 
 $messages['de-formal'] = array(
@@ -78,6 +94,9 @@ $messages['de-formal'] = array(
 	'bs-groupmanager-invalid_rights_spc'    => 'Mindestens eines der Rechte ist ungültig. Verwenden Sie keine Leerzeichen.',
 	'bs-groupmanager-no_grp'                => 'Bitte geben Sie einen Gruppennamen ein.',
 	'bs-groupmanager-not_allowed'           => 'Sie sind leider nicht berechtigt, diese Seite zu benutzen.',
+
+	//Javascript
+	'bs-groupmanager-removeGroup' => 'Wollen Sie die Gruppe wirklich löschen?'
 );
 
 $messages['en'] = array(
@@ -106,6 +125,7 @@ $messages['en'] = array(
 	'bs-groupmanager-grp_2long'             => 'The group name is too long. Do not use more than 16 characters.',
 	'bs-groupmanager-grp_exists'            => 'The group already exists.',
 	'bs-groupmanager-grp_not_exists'        => 'The group does not exist.',
+	'bs-groupmanager-grpadded'              => 'The group has been added successfully',
 	'bs-groupmanager-import'                => 'import articles',
 	'bs-groupmanager-invalid_grp'           => 'The group name is invalid.',
 	'bs-groupmanager-invalid_grp_esc'       => 'The group name is invalid. Please do not use apostrophes or backslashes.',
@@ -131,7 +151,20 @@ $messages['en'] = array(
 	'bs-groupmanager-workflowview'          => 'view workflow',
 	'bs-groupmanager-invalid_name'          => 'The group name you have entered contains chars that are not allowed: $1',
 	'bs-groupmanager-invalid_name_length'   => 'The group name you have entered can not be longer than 16 chars.',
-	'bs-groupmanager-invalid_name_numeric'  => 'The group name you have entered can not contains only numbers.'
+	'bs-groupmanager-invalid_name_numeric'  => 'The group name you have entered can not contains only numbers.',
+
+	//Javascript
+	'bs-groupmanager-headerGroupname' => 'Groups',
+	'bs-groupmanager-headerActions' => 'Actions',
+	'bs-groupmanager-btnAddGroup' => 'Add group',
+	'bs-groupmanager-tipEdit' => 'Rename group',
+	'bs-groupmanager-tipRemove' => 'Remove group',
+	'bs-groupmanager-titleNewGroup' => 'New group',
+	'bs-groupmanager-titleEditGroup' => 'Edit group',
+	'bs-groupmanager-titleError' => 'Error',
+	'bs-groupmanager-removeGroup' => 'Are you sure you want to remove this group?',
+	'bs-groupmanager-lableName' => 'Group name:',
+	'bs-groupmanager-msgNotEditable' => 'This group is a system group and cannot be renamed.'
 );
 
 $messages['qqq'] = array();

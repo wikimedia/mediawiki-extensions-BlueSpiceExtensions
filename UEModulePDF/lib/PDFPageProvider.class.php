@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: PDFPageProvider.class.php 7392 2012-11-19 14:19:49Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -132,12 +132,12 @@ class BsPDFPageProvider {
 		$aMeta['DC.date']  = wfTimestamp( TS_ISO_8601 ); // TODO RBV (14.12.10 14:01): Check for conformity. Maybe there is a better way to acquire than wfTimestamp()?
 
 		//Custom
-		$oLang = BsCore::getInstance( 'MW' )->getAdapter()->get( 'Lang' );
-		$sCurrentTS = $oLang->userAdjust( wfTimestampNow() );
+		global $wgLang;
+		$sCurrentTS = $wgLang->userAdjust( wfTimestampNow() );
 		$aMeta['title']           = $oTitle->getPrefixedText();
-		$aMeta['exportdate']      = $oLang->sprintfDate( 'd.m.Y', $sCurrentTS );
-		$aMeta['exporttime']      = $oLang->sprintfDate( 'H:i', $sCurrentTS );
-		$aMeta['exporttimeexact'] = $oLang->sprintfDate( 'H:i:s', $sCurrentTS );
+		$aMeta['exportdate']      = $wgLang->sprintfDate( 'd.m.Y', $sCurrentTS );
+		$aMeta['exporttime']      = $wgLang->sprintfDate( 'H:i', $sCurrentTS );
+		$aMeta['exporttimeexact'] = $wgLang->sprintfDate( 'H:i:s', $sCurrentTS );
 		
 		//Custom - Categories->Keywords
 		$aMeta['keywords'] = implode( ', ', $aCategories );
@@ -159,7 +159,7 @@ class BsPDFPageProvider {
 		if( !in_array( $oTitle->getNamespace(), array( NS_SPECIAL, NS_IMAGE, NS_CATEGORY ) ) ) {
 			$oArticle = new Article($oTitle);
 			$aMeta['author'] = $oArticle->getUserText(); // TODO RBV (14.12.10 12:19): Realname/Username -> DisplayName
-			$aMeta['date']   = $oLang->sprintfDate( 'd.m.Y', $oArticle->getTouched() );
+			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oArticle->getTouched() );
 		}
 
 		wfRunHooks( 'BSUEModulePDFcollectMetaData', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ) );
@@ -181,6 +181,7 @@ class BsPDFPageProvider {
 	 * @param array $aParams 
 	 */
 	private static function cleanUpDOM( $oTitle, $oPageDOM, $aParams ) {
+		global $wgServer;
 		$aClassesToRemove = array( 'editsection', 'bs-universalexport-exportexclude' );
 		$oDOMXPath = new DOMXPath($oPageDOM );
 		wfRunHooks( 'BSUEModulePDFcleanUpDOM', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aClassesToRemove ) );
@@ -208,7 +209,7 @@ class BsPDFPageProvider {
 			$sRelativePath = $oInternalAnchorElement->getAttribute( 'href' );
 			$oInternalAnchorElement->setAttribute(
 				'href',
-				BsCore::getInstance( 'MW' )->getAdapter()->get( 'Server' ).$sRelativePath
+				$wgServer.$sRelativePath
 			);
 		}
 		

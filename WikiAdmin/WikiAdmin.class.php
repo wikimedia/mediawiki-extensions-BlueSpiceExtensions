@@ -29,7 +29,7 @@
   * $LastChangedDate: 2013-06-25 11:17:54 +0200 (Di, 25 Jun 2013) $
   * $LastChangedBy: rvogel $
   * $Rev: 9912 $
-  * $Id: WikiAdmin.class.php 9912 2013-06-25 09:17:54Z rvogel $
+
   */
 
 /* Changelog
@@ -43,8 +43,6 @@
 
 class WikiAdmin extends BsExtensionMW {
 
-	protected static $prCalledAsSpecialpage;
-	protected static $prActionIsAjax;
 	protected static $prLoadModulesAndScripts;
 	protected static $prRegisteredModules = array();
 	protected static $prRegisteredModuleClasses = array();
@@ -149,8 +147,6 @@ class WikiAdmin extends BsExtensionMW {
 		return self::$prRunningModules;
 	}
 
-	protected static function registerScripts() {}
-
 	/**
 	 * @param $params expects an array with keys 'image' and 'level'
 	 */
@@ -174,9 +170,6 @@ class WikiAdmin extends BsExtensionMW {
 
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['WikiAdmin'] = dirname( __FILE__ ) . '/WikiAdmin.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
@@ -184,8 +177,8 @@ class WikiAdmin extends BsExtensionMW {
 			EXTINFO::NAME        => 'WikiAdmin',
 			EXTINFO::DESCRIPTION => 'Central point of administration for BlueSpice',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Mathias Scheer',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9912 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
@@ -196,25 +189,9 @@ class WikiAdmin extends BsExtensionMW {
 
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		self::$prCalledAsSpecialpage = strtolower( BsCore::getInstance( 'MW' )->getAdapter()->isSpecial() ) == 'wiki_admin'; // bool
-		self::$prActionIsAjax = strtolower( BsCore::getInstance( 'MW' )->getAdapter()->getAction() ) == 'remote'; // bool
-		self::$prLoadModulesAndScripts = self::$prCalledAsSpecialpage || self::$prActionIsAjax;
+
 		self::$prLoadModulesAndScripts = true;
 
-		if ( self::$prLoadModulesAndScripts ) {
-			//require('WikiAdminConfigurationHandler.class.php');
-			self::registerScripts();
-		}
-
-//		$this->mAdapter->registerSpecialPage( 'SpecialWikiAdmin', dirname( __FILE__ ), 'WikiAdminAlias' );
-
-		$this->setHook( 'SpecialPage_initList' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-
-	public function onSpecialPage_initList( &$aList ) {
-		$aList['WikiAdmin'] = 'SpecialWikiAdmin';
-		return true;
-	}
-
 }

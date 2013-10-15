@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: Preferences.i18n.php 9543 2013-05-31 09:32:13Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage Preferences
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -49,8 +49,7 @@ $messages['de'] = array(
 	'toc-FileExtensions-title'             => 'Dateiendung hinzufügen',
 	'toc-FileExtensions-message'           => 'Welche Dateiendung möchtest du hinzufügen?',
 	'bs-pref-RekursionBreakLevel'          => 'max. rekursive Verschachtelung von Datenbäumen (z.Bsp. Kategorien)',
-	'bs-pref-BlueSpiceScriptPath'          => 'ScriptPath',
-	'bs-pref-MinifyPath'                   => 'MinifyPath',
+	'bs-pref-BlueSpiceScriptPath'          => 'Skriptpfad',
 	'bs-pref-UseMinify'                    => 'Minifier verwenden',
 	'bs-pref-ImageExtensions'              => 'Erlaubte Bilddateitypen',
 	'bs-pref-ImageExtensions-title'        => 'Bilddateiendung hinzufügen', //deprecated!?
@@ -134,7 +133,6 @@ $messages['en'] = array(
 	'toc-FileExtensions-message'           => 'Which file extension do you want to add to the list?',
 	'bs-pref-RekursionBreakLevel'          => 'Max. recursive nesting of data trees (e.g. categories)',
 	'bs-pref-BlueSpiceScriptPath'          => 'ScriptPath',
-	'bs-pref-MinifyPath'                   => 'MinifyPath',
 	'bs-pref-UseMinify'                    => 'Use minifier',
 	'bs-pref-ImageExtensions'              => 'Allowed image file extensions',
 	'bs-pref-ImageExtensions-title'        => 'Add image file extension', //deprecated!?

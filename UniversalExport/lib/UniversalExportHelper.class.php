@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: UniversalExportHelper.class.php 7044 2012-10-29 13:21:04Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UniversalExport
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -25,32 +25,32 @@ class BsUniversalExportHelper {
 	 * @param array $aParams
 	 */
 	public static function getParamsFromQueryString( &$aParams ) {
-		$oWebRequest = BsCore::getInstance( 'MW' )->getAdapter()->get( 'Request' );
+		global $wgRequest;
 		$aParamsOverrides = BsConfig::get( 'MW::UniversalExport::ParamsOverrides' );
-		$aParams = array_merge( $aParams, $oWebRequest->getArray( 'ue', array() ) );
+		$aParams = array_merge( $aParams, $wgRequest->getArray( 'ue', array() ) );
 		$aParams = array_merge( $aParams, $aParamsOverrides );
-		$aParams['oldid']  = $oWebRequest->getVal( 'oldid', 0 );
-		$sDirection = $oWebRequest->getVal( 'direction', '' );
+		$aParams['oldid']  = $wgRequest->getVal( 'oldid', 0 );
+		$sDirection = $wgRequest->getVal( 'direction', '' );
 		if( !empty ( $sDirection ) ){
 			$aParams['direction'] = $sDirection;
 		}
 	}
 
 	public static function checkPermissionForTitle( $oTitle, &$aParams ) {
-		$oCurrentUser = BsCore::getInstance( 'MW' )->getAdapter()->get( 'User' );
-		
+		global $wgUser;
+
 		$bErrorOccured = false;
 		foreach( $aParams as $sValue ) {
 			if ( $oTitle->getNamespace() == NS_SPECIAL ) {
 				switch( $sValue ) {
 					case 'recursive':
-						if( !$oCurrentUser->isAllowed( 'universalexport-export-recursive' ) ) $bErrorOccured = true;
+						if( !$wgUser->isAllowed( 'universalexport-export-recursive' ) ) $bErrorOccured = true;
 						break;
 					case 'with-attachments':
-						if( !$oCurrentUser->isAllowed( 'universalexport-export-with-attachments' ) ) $bErrorOccured = true;
+						if( !$wgUser->isAllowed( 'universalexport-export-with-attachments' ) ) $bErrorOccured = true;
 						break;
 					case 'unfiltered':
-						if( !$oCurrentUser->isAllowed( 'universalexport-export-unfiltered' ) ) $bErrorOccured = true;
+						if( !$wgUser->isAllowed( 'universalexport-export-unfiltered' ) ) $bErrorOccured = true;
 						break;
 				}
 			}

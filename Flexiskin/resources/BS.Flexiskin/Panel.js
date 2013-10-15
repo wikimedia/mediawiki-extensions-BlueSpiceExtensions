@@ -1,0 +1,274 @@
+/**
+ * Flexiskin Panel
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage Flexiskin
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+Ext.define('BS.Flexiskin.Panel', {
+	extend: 'BS.CRUDGridPanel',
+	id: 'bs-flexiskin-panel',
+	initComponent: function() {
+		//this.gpMainConf = { cls: 'bs-extjs-flexiskin-grid' };
+		this.strMain = Ext.create('Ext.data.JsonStore', {
+			proxy: {
+				type: 'ajax',
+				url: bs.util.getAjaxDispatcherUrl('Flexiskin::getFlexiskins'),
+				reader: {
+					type: 'json',
+					root: 'flexiskin',
+					idProperty: 'flexiskin_id',
+					totalProperty: 'totalCount'
+				}
+			},
+			autoLoad: true,
+			remoteSort: true,
+			fields: ['flexiskin_id', 'flexiskin_name', 'flexiskin_desc', 'flexiskin_active'],
+			sortInfo: {
+				field: 'flexiskin_id',
+				direction: 'ASC'
+			}
+		});
+
+		this.colName = Ext.create('Ext.grid.column.Template', {
+			id: 'flexiskin_name',
+			header: mw.message('bs-flexiskin-headerName').plain(),
+			sortable: true,
+			dataIndex: 'flexiskin_name',
+			tpl: '{flexiskin_name}'
+		});
+		this.colDesc = Ext.create('Ext.grid.column.Template', {
+			id: 'flexiskin_desc',
+			header: mw.message('bs-flexiskin-headerDesc').plain(),
+			sortable: true,
+			dataIndex: 'flexiskin_desc',
+			tpl: '{flexiskin_desc}'
+		});
+		this.colActive = Ext.create('Ext.grid.column.CheckColumn', {
+			id: 'flexiskin_active',
+			header: mw.message('bs-flexiskin-headerActive').plain(),
+			sortable: true,
+			dataIndex: 'flexiskin_active'
+		});
+		this.colMainConf.columns = [
+		this.colName,
+		this.colDesc,
+		this.colActive
+		];
+		this.colActive.on('checkchange', this.onCheckActiveChange, this);
+		this.callParent(arguments);
+	},
+	onCheckActiveChange: function(oCheckBox, rowindex, checked) {
+		Ext.Ajax.request({
+			url: bs.util.getAjaxDispatcherUrl('Flexiskin::activateFlexiskin'),
+			params: {
+				id: checked ? this.grdMain.getStore().getAt(rowindex).getData().flexiskin_id : ""
+			},
+			success: function(response) {
+				this.reloadStore();
+			},
+			scope: this
+		});
+	},
+	onBtnAddClick: function(oButton, oEvent) {
+		if (!this.dlgSkinAdd) {
+			this.dlgSkinAdd = Ext.create('BS.Flexiskin.AddSkin');
+			this.dlgSkinAdd.on('ok', this.onDlgSkinAdd, this);
+		}
+
+		this.dlgSkinAdd.setTitle(mw.message('bs-flexiskin-titleAddSkin').plain());
+		this.dlgSkinAdd.tfName.enable();
+		this.dlgSkinAdd.show();
+		this.callParent(arguments);
+	},
+	onBtnEditClick: function(oButton, oEvent) {
+		this.selectedRow = this.grdMain.getSelectionModel().getSelection();
+		Ext.Ajax.request({
+			url: bs.util.getAjaxDispatcherUrl('Flexiskin::getFlexiskinConfig'),
+			params: {
+				id: this.selectedRow[0].getData().flexiskin_id
+			},
+			success: function(response) {
+				var responseObj = Ext.decode(response.responseText);
+				if (responseObj.success === false) {
+					bs.util.alert('bs-flexiskin-get-config-error',
+					{
+						text: responseObj.msg,
+						titleMsg: 'bs-extjs-error'
+					}, {
+						ok: function() {
+						},
+						cancel: function() {
+						},
+						scope: this
+					}
+					);
+					return;
+				}
+				Ext.require('BS.Flexiskin.PreviewWindow', function(){
+					var config = Ext.decode(responseObj.config);
+					BS.Flexiskin.PreviewWindow.setData({
+						skinId: this.selectedRow[0].get('flexiskin_id'),
+						config: config
+					});
+					BS.Flexiskin.PreviewWindow.show();
+				}, this);
+			},
+			scope: this
+		});
+		this.callParent(arguments);
+	},
+	onBtnRemoveClick: function(oButton, oEvent) {
+		bs.util.confirm(
+			'UMremove',
+			{
+				text: mw.message('bs-flexiskin-confirmDeleteSkin').plain(),
+				title: mw.message('bs-extjs-delete').plain()
+			},
+			{
+				ok: this.onRemoveSkinOk,
+				cancel: function() {
+				},
+				scope: this
+			}
+			);
+	},
+	onRemoveSkinOk: function() {
+		var selectedRow = this.grdMain.getSelectionModel().getSelection();
+		var skinId = selectedRow[0].get('flexiskin_id');
+
+		Ext.Ajax.request({
+			url: bs.util.getAjaxDispatcherUrl('Flexiskin::deleteFlexiskin'),
+			params: {
+				skinId: skinId
+			},
+			scope: this,
+			success: function(response, opts) {
+				var responseObj = Ext.decode(response.responseText);
+				if (responseObj.success === false) {
+					bs.util.alert('bs-flexiskin-deleteskin-error',
+					{
+						text: responseObj.msg,
+						titleMsg: 'bs-extjs-error'
+					}, {
+						ok: function() {
+						},
+						cancel: function() {
+						},
+						scope: this
+					}
+					);
+				}
+				this.reloadStore();
+			}
+		});
+	},
+	reloadStore: function() {
+		this.strMain.reload();
+	},
+	onDlgSkinAdd: function(data, user) {
+		var datas = this.getAddSkinData();
+		Ext.Ajax.request({
+			url: bs.util.getAjaxDispatcherUrl('Flexiskin::addFlexiskin'),
+			params: {
+				data: Ext.encode(datas)
+			},
+			scope: this,
+			success: function(response, opts) {
+				var responseObj = Ext.decode(response.responseText);
+				if (responseObj.success === true) {
+					this.dlgSkinAdd.resetData()
+					this.reloadStore();
+				} else {
+					bs.util.alert('bs-flexiskin-addskin-error',
+					{
+						text: responseObj.msg,
+						titleMsg: 'bs-extjs-error'
+					}, {
+						ok: function() {
+							this.dlgSkinAdd.show();
+						},
+						cancel: function() {
+						},
+						scope: this
+					}
+					);
+				}
+			},
+			failure: function(response, opts) {
+			}
+		});
+	},
+	getAddSkinData: function() {
+		var data = [];
+		data.push({
+			name: this.dlgSkinAdd.tfName.getValue(),
+			desc: this.dlgSkinAdd.tfDesc.getValue(),
+			template: this.dlgSkinAdd.cbSkins.getRawValue()
+		});
+		return data;
+	}/*,
+	 onDlgUserEditOk: function( data, user ) {
+	 Ext.Ajax.request( {
+	 url: bs.util.getAjaxDispatcherUrl(
+	 'Flexiskin::editUser',
+	 [
+	 user.user_name,
+	 user.user_password,
+	 user.user_repassword,
+	 user.user_email,
+	 user.user_real_name,
+	 user.groups
+	 ]
+	 ),
+	 scope: this,
+	 success: function( response, opts ) {
+	 var responseObj = Ext.decode( response.responseText );
+	 if ( responseObj.success === true ) {
+	 this.renderMsgSuccess( responseObj );
+	 this.dlgUserEdit.resetData();
+	 } else {
+	 this.renderMsgFailure( responseObj );
+	 }
+	 },
+	 failure: function( response, opts ) {}
+	 });
+	 },
+	 reloadStore: function() {
+	 this.strMain.reload();
+	 },
+	 showDlgAgain: function() {
+	 if ( this.active === 'add' ) {
+	 this.dlgUserAdd.show();
+	 } else {
+	 this.dlgUserEdit.show();
+	 }
+	 },
+	 renderMsgSuccess: function( responseObj ) {
+	 if ( responseObj.message.length ) {
+	 var message = '';
+	 for ( var i in responseObj.message ) {
+	 if ( typeof( responseObj.message[i] ) !== 'string' ) continue;
+
+	 message = message + responseObj.message[i] + '<br />';
+	 }
+	 bs.util.alert( 'UMsuc', { text: message, title: 'Status' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+	 }
+	 },
+	 renderMsgFailure: function( responseObj ) {
+	 if ( responseObj.errors ) {
+	 var message = '';
+	 for ( i in responseObj.errors ) {
+	 if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
+	 message = message + responseObj.errors[i].message + '<br />';
+	 }
+	 bs.util.alert( 'UMfail', { text: message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+	 }
+	 }*/
+});

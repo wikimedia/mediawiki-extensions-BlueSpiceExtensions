@@ -11,35 +11,24 @@
  * @filesource
  */
 
-$( document ).ready( function() {
+$(document).ready( function() {
 	var cache = {};
 	var lastXhr = {};
 
-	$.ui.autocomplete.prototype._renderItem = function( ul, item ) {
-		return $( "<li class='" + item.attr + "'></li>" )
-			.data( "item.autocomplete", item )
-			.append( "<a>" + item.label + "</a>" )
-			.appendTo( ul );
-	};
-
 	$( ".bs-autocomplete-field" ).autocomplete( {
-		position: { my : "right top",
+		position: { my: "right top",
 					at: "right bottom",
 					of: "#bs-searchbar",
-					offset: "0 -1"
+					offset: "-12 -1"
 		},
 		source: function( req, setList ) {
 			if ( req.term in cache ) {
 				setList( cache[ req.term ] );
 			} else {
-				var url = BlueSpice.buildRemoteString(
-					'ExtendedSearch',
-					'getRequestJson',
-					{
-						"mode": "autocomplete",
-						"searchstring": encodeURIComponent( req.term )
-					}
-				);
+					var url = bs.util.getAjaxDispatcherUrl(
+						'ExtendedSearch::getAutocompleteData',
+						[ encodeURIComponent( req.term ) ]
+					);
 				var lastXhr = $.ajax( {
 					url: url,
 					dataType: 'json',
@@ -73,4 +62,11 @@ $( document ).ready( function() {
 				self._renderItem( ul, item );
 			});
 		};
+
+	$.ui.autocomplete.prototype._renderItem = function( ul, item ) {
+		return $( "<li class='" + item.attr + "'></li>" )
+			.data( "item.autocomplete", item )
+			.append( "<a>" + item.label + "</a>" )
+			.appendTo( ul );
+	};
 } );

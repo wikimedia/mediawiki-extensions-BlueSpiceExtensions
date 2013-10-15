@@ -1,6 +1,6 @@
 <?php
 
-BsExtensionManager::registerExtension('UniversalExport', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension( 'UniversalExport', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
 $wgExtensionMessagesFiles['UniversalExport']      = __DIR__ . '/UniversalExport.i18n.php';
 $wgExtensionMessagesFiles['UniversalExportAlias'] = __DIR__ . '/specialpages/SpecialUniversalExport.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
@@ -9,3 +9,9 @@ $wgAutoloadClasses['SpecialUniversalExport'] = __DIR__ . '/specialpages/SpecialU
 
 $wgSpecialPageGroups['UniversalExport'] = 'bluespice';
 $wgSpecialPages['UniversalExport'] = 'SpecialUniversalExport'; # Tell MediaWiki about the new special page and its class name
+
+$wgAutoloadClasses['ViewExportModuleOverview'] = __DIR__ . '/views/view.ExportModuleOverview.php';
+
+$wgAutoloadClasses['BsUniversalExportModule'] = __DIR__ . '/lib/UniversalExportModule.interface.php';
+$wgAutoloadClasses['BsUniversalExportHelper'] = __DIR__ . '/lib/UniversalExportHelper.class.php';
+$wgAutoloadClasses['BsUniversalExportTagLibrary'] = __DIR__ . '/lib/UniversalExportTagLibrary.class.php';

@@ -122,7 +122,7 @@ class ExtendedSearchBase {
 		$iPageTimestamp  = $oTitle->getTouched();
 		$aPageCategories = $this->getCategoriesFromDbForCertainPageId( $iPageID );
 		$aPageEditors    = $this->getEditorsFromDbForCertainPageId( $iPageID );
-		$bRedirect       = (int) $oTitle->isRedirect();
+		$bRedirect       = (int)$oTitle->isRedirect();
 
 		$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
 
@@ -145,12 +145,14 @@ class ExtendedSearchBase {
 		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument( $sPageTitle, $sPageContent, $iPageID, $iPageNamespace, $iPageTimestamp, $aPageCategories, $aPageEditors, $aRedirects, $bRedirect, $aSections );
 		try {
 			$this->oSearchService->addDocument( $oSolrDocument );
-		} catch ( Exception $ex ) {}
+		} catch ( Exception $e ) {
+			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
 
 		try {
 			// Indexing file links 
 			$oBuildIndexMainControl->buildIndexLinked( '', $iPageID );
-		} catch ( Exception $ex ) {}
+		} catch ( Exception $e ) {}
 		// commit reopens the IndexReaders in Solr-Server. Document might not be findable otherwise.
 		$this->oSearchService->commit( true, true, true, 60 );
 	}
@@ -267,12 +269,12 @@ class ExtendedSearchBase {
 			return false;
 		}
 
-		if ( substr_count( $sSearchString, ':' ) == 0 ) {
+		if ( substr_count( $sSearchString, ':' ) === 0 ) {
 			return false;
 		}
 
 		$aParts = explode( ':', $sSearchString );
-		if ( count( $aParts ) != 2 ) {
+		if ( count( $aParts ) !== 2 ) {
 			return false;
 		}
 
@@ -285,6 +287,11 @@ class ExtendedSearchBase {
 			return false;
 		}
 
+		// Check for special namespace
+		if ( $iNamespace === NS_SPECIAL ) {
+			$iNamespace = 1000;
+		}
+
 		$sSolrSearchString = $aParts[1];
 
 		return $iNamespace;
@@ -295,7 +302,7 @@ class ExtendedSearchBase {
 	 * @param array $aMonitor Set of options.
 	 * @return ViewBaseElement View for search results.
 	 */
-	public function &search( &$aMonitor ) {
+	public function search( &$aMonitor ) {
 		try {
 			$vItem = SearchIndex::getInstance()->search( $this->oSearchService, $aMonitor );
 		} catch ( BsException $e ) {
@@ -339,22 +346,29 @@ class ExtendedSearchBase {
 			$aQuery['searchOptions']['fq'][$i] = '{!tag=na}+namespace:(' . $vNamespace . ')';
 		}
 
-		$oHits = $this->oSearchService->search(
-			$aQuery['searchString'],
-			$aQuery['offset'],
-			$aQuery['searchLimit'],
-			$aQuery['searchOptions']
-		);
+		try {
+			$oHits = $this->oSearchService->search(
+				$aQuery['searchString'],
+				$aQuery['offset'],
+				$aQuery['searchLimit'],
+				$aQuery['searchOptions']
+			);
+		} catch ( Exception $e ) {
+			return '';
+		}
 
 		$oDocuments = $oHits->response->docs;
 
 		$bEscalateToFuzzy = ( $oHits->response->numFound == 0 ); // boolean!
 		// Escalate to fuzzy
 		if ( $bEscalateToFuzzy ) {
+			$oSearchOptions->setOption( 'scope', 'title' );
+
 			$aFuzzyQuery = $oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
 			$aFuzzyQuery['searchLimit']            = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 			$aFuzzyQuery['searchOptions']['facet'] = 'off';
 			$aFuzzyQuery['searchOptions']['hl']    = 'off';
+
 			try {
 				$oHits = $this->oSearchService->search(
 					$aFuzzyQuery['searchString'],
@@ -365,6 +379,7 @@ class ExtendedSearchBase {
 			} catch ( Exception $e ) {
 				return '';
 			}
+
 			$oDocuments = $oHits->response->docs;
 		}
 
@@ -382,7 +397,8 @@ class ExtendedSearchBase {
 
 			foreach ( $oDocuments as $oDoc ) {
 				if ( $oDoc->namespace != '999' ) {
-					$oTitle = Title::makeTitle( $oDoc->namespace, $oDoc->title );
+					$iNamespace = ( $oDoc->namespace == '1000' ) ? NS_SPECIAL : $oDoc->namespace;
+					$oTitle = Title::makeTitle( $iNamespace, $oDoc->title );
 				} else {
 					continue;
 				}
@@ -392,8 +408,8 @@ class ExtendedSearchBase {
 				$sModifiedSearchString = str_replace( '/', ' ', $sSearchString );
 				$aSearchStringParts    = explode( ' ', $sModifiedSearchString );
 				$sLabelText            = BsStringHelper::shorten(
-					$oTitle->getPrefixedText(),
-					array( 'max-length' => '48', 'position' => 'middle', 'ellipsis-characters' => '...' ) 
+					$oTitle->getText(),
+					array( 'max-length' => '54', 'position' => 'middle', 'ellipsis-characters' => '...' )
 				);
 
 				$iPosition = stripos( $sLabelText, $sSearchString );
@@ -427,6 +443,9 @@ class ExtendedSearchBase {
 					$sLabelText = str_replace( array( '[', ']' ), array( '<b>', '</b>' ), $sLabelText );
 				}
 
+				// Adding namespace
+				$sLabelText = BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ) . ':' .$sLabelText;
+
 				if ( $vNamespace == $oTitle->getNamespace() ) {
 					$sNamespace = BsNamespaceHelper::getNamespaceName( $vNamespace );
 					$sLabelText = str_replace( $sNamespace.':', '', $sLabelText );
@@ -450,24 +469,24 @@ class ExtendedSearchBase {
 
 		$iSearchfiles = ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) ? '1' : '0' ;
 
-		$sLabel = wfMessage( 'bs-extendedsearch-searchfulltext' )->plain() . '<br /><b>' 
-				. BsStringHelper::shorten(
+		$sLabel = wfMessage( 'bs-extendedsearch-searchfulltext' )->plain() . '<br /><b>' .
+					BsStringHelper::shorten(
 						$sSearchString,
-						array( 'max-length' => '46', 'position' => 'middle', 'ellipsis-characters' => '...' ) 
-				)
-				. '</b>';
+						array( 'max-length' => '60', 'position' => 'middle', 'ellipsis-characters' => '...' ) 
+					) .
+					'</b>';
+
 		$aLinkParams = array(
-			'search_origin' => 'titlebar', 
-			'search_go'     => 'true', 
-			'search_scope'  => 'text', 
-			'search_input'  => $sSearchString, 
+			'search_origin' => 'titlebar',
+			'search_scope'  => 'text',
+			'search_input'  => $sSearchString,
 			'search_files'  => $iSearchfiles,
 			'autocomplete'  => true
 		);
 
 		$oItem        = new stdClass();
 		$oItem->id    = ++$iID;
-		$oItem->value = htmlspecialchars( $sSearchString );
+		$oItem->value = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
 		$oItem->label = $sLabel;
 		$oItem->type  = '';
 		$oItem->link  = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getFullUrl( $aLinkParams );
@@ -476,6 +495,112 @@ class ExtendedSearchBase {
 		$aResults[] = $oItem;
 
 		return json_encode( $aResults );
+	}
+
+	/**
+	 * Creates MoreLinkThis View
+	 * @param Title $oTitle Current title object
+	 * @param string $sOrigin origin of request
+	 * @return View $oViewMlt MoreLikeThis view
+	 */
+	public function getViewMoreLikeThis( $oTitle, $sOrigin ) {
+		$oViewMlt = new ViewMoreLikeThis;
+		if ( $oTitle->isSpecialPage() ) return $oViewMlt;
+
+		if ( $sOrigin === 'widgetbar' ) {
+			global $wgTitle;
+			$oTitle = $wgTitle;
+		}
+
+		$oViewMlt->setOption( 'origin', $sOrigin );
+		$aMltQuery = SearchOptions::getInstance()->getSolrMltQuery( $oTitle );
+		try {
+			$oResults = SearchService::getInstance()->mlt( $aMltQuery['searchString'], $aMltQuery['offset'], $aMltQuery['searchLimit'], $aMltQuery['searchOptions'] );
+		} catch ( Exception $e ) {
+			return $oViewMlt;
+		}
+
+		$aMlt = array();
+		//$aMlt[] = implode( ', ', $oResults->interestingTerms );
+		foreach ( $oResults->response->docs as $oRes ) {
+			if ( $oRes->namespace != 999 ) {
+				$oMltTitle = Title::makeTitle( $oRes->namespace, $oRes->title );
+			} else {
+				$oMltTitle = Title::makeTitle( NS_FILE, $oRes->title );
+			}
+
+			if ( !$oMltTitle->userCan( 'read' ) ) continue;
+			if ( $oMltTitle->getArticleID() == $oTitle->getArticleID() ) continue;
+
+			$sHtml = $oMltTitle->getPrefixedText();
+			if ( $sOrigin === 'widgetbar' ) {
+				$sHtml = BsStringHelper::shorten( $oMltTitle->getPrefixedText(), array( 'max-length' => 18, 'position' => 'middle' ) );
+			}
+			$aMlt[] = BsLinkProvider::makeLink( $oMltTitle, $sHtml );
+		}
+
+		if ( !empty( $aMlt ) ) {
+			$oViewMlt->setOption( 'mlt', $aMlt );
+		}
+
+		return $oViewMlt;
+	}
+
+	/**
+	 * Generates list of most searched terms
+	 * @return string list of most searched terms
+	 */
+	public function recentSearchTerms( $iCount, $sTime ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+
+		$aConditions = array();
+		if ( $sTime === 'month' ) {
+			$iMonth = 30 * 24 * 60 * 60;
+			$iTimeStamp = wfTimestamp( TS_UNIX ) - $iMonth;
+			$iTimeStamp = wfTimestamp( TS_MW, $iTimeStamp );
+			$aConditions = array( 'stats_ts >= '.$iTimeStamp );
+		}
+
+		$res = $oDbr->select(
+				'bs_searchstats',
+				'stats_term',
+				$aConditions
+		);
+
+		$aResults = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			$aTerms = array();
+
+			foreach ( $res as $row ) {
+				$sTerm = str_replace( array( '*', '\\' ), '', $row->stats_term );
+				if ( substr_count( $sTerm, '~' ) > 0 ) {
+					$aTermParts = explode( '~', $sTerm );
+					$sFuzzy = array_pop( $aTermParts );
+					$sTerm = implode( '', $aTermParts );
+				}
+
+				$sTerm = mb_strtolower( $sTerm );
+				if ( array_key_exists( $sTerm, $aTerms ) ) {
+					$aTerms[$sTerm] = $aTerms[$sTerm] + 1;
+				} else {
+					$aTerms[$sTerm] = 1;
+				}
+			}
+
+			arsort( $aTerms );
+			$aResults[] = '<ol>';
+			$i = 1;
+
+			foreach ( $aTerms as $key => $value ) {
+				if ( $i > $iCount ) break;
+				$aResults[] = '<li>' . htmlspecialchars( $key, ENT_QUOTES, 'UTF-8' ) . ' (' . $value . ')</li>';
+				$i++;
+			}
+
+			$aResults[] = '</ol>';
+		}
+
+		return implode( "\n", $aResults );
 	}
 
 }

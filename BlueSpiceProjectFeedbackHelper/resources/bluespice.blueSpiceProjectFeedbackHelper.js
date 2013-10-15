@@ -17,7 +17,7 @@ $(document).ready(function(){
 	else{
 		$('#bs-bluespiceprojectfeedbackhelperpanel-closebutton').click(function(){
 			if( confirm( $(this).attr('data-confirm-msg') ) ) {
-				$.get( BlueSpice.buildRemoteString( "BlueSpiceProjectFeedbackHelper", "disableFeedback" ) );
+				$.get( bs.util.getAjaxDispatcherUrl('BlueSpiceProjectFeedbackHelper::disableFeedback') );
 			}
 			$('#bs-bluespiceprojectfeedbackhelperpanel').fadeOut( 'fast' );
 			$.cookie('bs-bluespiceprojectfeedbackhelperpanel-hide', 'true', {

@@ -24,7 +24,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     MediaWiki Extension
  * @version    1.22.0 stable
- * @version    $Id: ExtendedEditBar.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedEditBar
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -53,8 +53,6 @@ class ExtendedEditBar extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['ExtendedEditBar'] = dirname( __FILE__ ) . '/ExtendedEditBar.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -63,8 +61,8 @@ class ExtendedEditBar extends BsExtensionMW {
 			EXTINFO::NAME        => 'ExtendedEditBar',
 			EXTINFO::DESCRIPTION => 'Provides additional buttons to the wiki edit field.',
 			EXTINFO::AUTHOR      => 'MediaWiki Extension, packaging by Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0 ',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.blue-spice.org',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
@@ -77,24 +75,239 @@ class ExtendedEditBar extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->setHook('BeforePageDisplay');
-
-		BsConfig::registerVar( 'MW::ExtendedEditBar::ImagePath', 
-			$this->getImagePath(), 
-			BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::RENDER_AS_JAVASCRIPT 
-		);
+		$this->setHook('EditPageBeforeEditToolbar');
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
 	/**
-	 * Adds the 'ext.bluespice.extendededitbar' module to the OutputPage
-	 * @param OutputPage $out
-	 * @param Skin $skin
+	 * 
+	 * @global type $wgStylePath
+	 * @global type $wgContLang
+	 * @global type $wgLang
+	 * @global OutputPage $wgOut
+	 * @global type $wgUseTeX
+	 * @global type $wgEnableUploads
+	 * @global type $wgForeignFileRepos
+	 * @param string $toolbar
 	 * @return boolean
 	 */
-	function onBeforePageDisplay( $out, $skin) {
-		if( $out->getRequest()->getVal( 'action' ) != 'edit') return true; 
-		$out->addModules('ext.bluespice.extendededitbar');
+	function onEditPageBeforeEditToolbar( &$toolbar ) {
+		$this->getOutput()->addModuleStyles( 'ext.bluespice.extendeditbar.styles' );
+		$this->getOutput()->addModules( 'ext.bluespice.extendeditbar' );
+		
+		//This is copy-code from EditPage::getEditToolbar(). Sad but neccesary
+		//until we suppot WikiEditor and this get's obsolete.
+		global $wgContLang;
+		global $wgUseTeX, $wgEnableUploads, $wgForeignFileRepos;
+
+		$imagesAvailable = $wgEnableUploads || count( $wgForeignFileRepos );
+		
+		$aMWButtonCfgs = array(
+			'mw-editbutton-bold' => array(
+				'open'   => '\'\'\'',
+				'close'  => '\'\'\'',
+				'sample' => wfMessage( 'bold_sample' )->text(),
+				'tip'    => wfMessage( 'bold_tip' )->text(),
+				'key'    => 'B'
+			),
+			'mw-editbutton-italic' => array(
+				'open'   => '\'\'',
+				'close'  => '\'\'',
+				'sample' => wfMessage( 'italic_sample' )->text(),
+				'tip'    => wfMessage( 'italic_tip' )->text(),
+				'key'    => 'I'
+			),
+			'mw-editbutton-link' => array(
+				'open'   => '[[',
+				'close'  => ']]',
+				'sample' => wfMessage( 'link_sample' )->text(),
+				'tip'    => wfMessage( 'link_tip' )->text(),
+				'key'    => 'L'
+			),
+			'mw-editbutton-extlink' => array(
+				'open'   => '[',
+				'close'  => ']',
+				'sample' => wfMessage( 'extlink_sample' )->text(),
+				'tip'    => wfMessage( 'extlink_tip' )->text(),
+				'key'    => 'X'
+			),
+			'mw-editbutton-headline' => array(
+				'open'   => "\n== ",
+				'close'  => " ==\n",
+				'sample' => wfMessage( 'headline_sample' )->text(),
+				'tip'    => wfMessage( 'headline_tip' )->text(),
+				'key'    => 'H'
+			),
+			'mw-editbutton-image' => $imagesAvailable ? array(
+				'open'   => '[[' . $wgContLang->getNsText( NS_FILE ) . ':',
+				'close'  => ']]',
+				'sample' => wfMessage( 'image_sample' )->text(),
+				'tip'    => wfMessage( 'image_tip' )->text(),
+				'key'    => 'D',
+			) : false,
+			'mw-editbutton-media' => $imagesAvailable ? array(
+				'open'   => '[[' . $wgContLang->getNsText( NS_MEDIA ) . ':',
+				'close'  => ']]',
+				'sample' => wfMessage( 'media_sample' )->text(),
+				'tip'    => wfMessage( 'media_tip' )->text(),
+				'key'    => 'M'
+			) : false,
+			'mw-editbutton-math' => $wgUseTeX ? array(
+				'open'   => "<math>",
+				'close'  => "</math>",
+				'sample' => wfMessage( 'math_sample' )->text(),
+				'tip'    => wfMessage( 'math_tip' )->text(),
+				'key'    => 'C'
+			) : false,
+			'mw-editbutton-signature' => array(
+				'open'   => '--~~~~',
+				'close'  => '',
+				'sample' => '',
+				'tip'    => wfMessage( 'sig_tip' )->text(),
+				'key'    => 'Y'
+			),
+		);
+		
+		$aBSButtonCfgs = array(
+			'bs-editbutton-redirect' => array(
+				'tip' => wfMessage('bs-extendededitbar-redirect_tip')->plain(),
+				'open' => "#REDIRECT [[",
+				'close' => "]]",
+				'sample' => wfMessage('bs-extendededitbar-redirect_sample')->plain()
+			),
+			'bs-editbutton-strike' => array(
+				'tip' => wfMessage('bs-extendededitbar-strike_tip')->plain(),
+				'open' => "<s>",
+				'close' => "</s>",
+				'sample' => wfMessage('bs-extendededitbar-strike_sample')->plain()
+			),
+			'bs-editbutton-linebreak' => array(
+				'tip' => wfMessage('bs-extendededitbar-enter_tip')->plain(),
+				'open' => "<br />\n",
+				'close' => "",
+				'sample' => wfMessage('bs-extendededitbar-enter_sample')->plain()
+			),
+			'bs-editbutton-sup' => array(
+				'tip' => wfMessage('bs-extendededitbar-upper_tip')->plain(),
+				'open' => "<sup>",
+				'close' => "</sup>",
+				'sample' => wfMessage('bs-extendededitbar-upper_sample')->plain()
+			),
+			'bs-editbutton-sub' => array(
+				'tip' => wfMessage('bs-extendededitbar-lower_tip')->plain(),
+				'open' => "<sub>",
+				'close' => "</sub>",
+				'sample' => wfMessage('bs-extendededitbar-lower_sample')->plain()
+			),
+			'bs-editbutton-small' => array(
+				'tip' => wfMessage('bs-extendededitbar-small_tip')->plain(),
+				'open' => "<small>",
+				'close' => "</small>",
+				'sample' => wfMessage('bs-extendededitbar-small_sample')->plain()
+			),
+			'bs-editbutton-comment' => array(
+				'tip' => wfMessage('bs-extendededitbar-comment_tip')->plain(),
+				'open' => "<!-- ",
+				'close' => " -->",
+				'sample' => wfMessage('bs-extendededitbar-comment_sample')->plain()
+			),
+			'bs-editbutton-gallery' => array(
+				'tip' => wfMessage('bs-extendededitbar-gallery_tip')->plain(),
+				'open' => "\n<gallery>\n",
+				'close' => "\n</gallery>",
+				'sample' => wfMessage('bs-extendededitbar-gallery_sample')->plain()
+			),
+			'bs-editbutton-blockquote' => array(
+				'tip' => wfMessage('bs-extendededitbar-quote_tip')->plain(),
+				'open' => "\n<blockquote>\n",
+				'close' => "\n</blockquote>",
+				'sample' => wfMessage('bs-extendededitbar-quote_sample')->plain()
+			),
+			'bs-editbutton-table' => array(
+				'tip' => wfMessage('bs-extendededitbar-table_tip')->plain(),
+				'open' => "{| class=\"wikitable\"\n|-\n",
+				'close' => "\n|}",
+				'sample' => wfMessage('bs-extendededitbar-table_sample')->plain()
+			),
+		);
+		
+		$aButtonCfgs = $aMWButtonCfgs + $aBSButtonCfgs;
+		
+		$aRows = array(
+			array(), //this is reserverd for BlueSpice dialogs
+			array(
+				'formatting' => array(
+					10 => 'mw-editbutton-bold',
+					20 => 'mw-editbutton-italic',
+					30 => 'bs-editbutton-strike',
+					40 => 'mw-editbutton-headline',
+					50 => 'bs-editbutton-linebreak',
+					60 => 'bs-editbutton-table',
+				),
+				'content' => array(
+					10 => 'mw-editbutton-link',
+					20 => 'mw-editbutton-extlink',
+					30 => 'mw-editbutton-strike',
+					40 => 'mw-editbutton-image',
+					50 => 'mw-editbutton-media',
+					60 => 'bs-editbutton-gallery',
+				),
+				'misc' => array(
+					10 => 'mw-editbutton-signature',
+					20 => 'bs-editbutton-redirect',
+					30 => 'bs-editbutton-comment',
+				)
+			)
+		);
+		
+		wfRunHooks( 'BSExtendedEditBarBeforeEditToolbar', array( &$aRows, &$aButtonCfgs ));
+		
+		$aContent = array();
+		foreach( $aRows as $aRow ) {
+			$sRow = Html::openElement( 'div', array( 'class' => 'row' ) );
+			foreach( $aRow as $sGroupId => $aButtons ) {
+				$sGroup = Html::openElement( 'div', array( 'class' => 'group' ) );
+				ksort( $aButtons );
+				foreach ( $aButtons as $iButtonSort => $sButtonId ) {
+					if( !isset( $aButtonCfgs[$sButtonId] ) ) continue;
+					$aButtonCfg = $aButtonCfgs[$sButtonId];
+					if( !is_array( $aButtonCfg ) ) continue;
+					
+					$aDefaultAttributes = array(
+						'href' => '#',
+						'class' => 'bs-button-32 mw-toolbar-editbutton'
+					);
+					
+					$aAttributes = array(
+						'title' => $aButtonCfg['tip'],
+						'id' => $sButtonId
+					) + $aDefaultAttributes;
+					
+					if( isset( $aButtonCfg['open'] ) )   $aAttributes['data-open']   = $aButtonCfg['open'];
+					if( isset( $aButtonCfg['close'] ) )  $aAttributes['data-close']  = $aButtonCfg['close'];
+					if( isset( $aButtonCfg['sample'] ) ) $aAttributes['data-sample'] = $aButtonCfg['sample'];
+					
+					$sButton = Html::element( 
+						'a',
+						$aAttributes,
+						$aButtonCfg['tip']
+					);
+					$sGroup .= $sButton;
+				}
+				$sGroup .= Html::closeElement('div');
+				$sRow.= $sGroup;
+			}
+			$sRow.= Html::closeElement('div');
+			$aContent[] = $sRow;
+		}
+		
+		//We completely replace the old toolbar (the one with ugly icons)
+		$toolbar = Html::rawElement( 
+			'div', 
+			array( 'id' => 'bs-extendededitbar' ),
+			implode( '', $aContent)
+		);
+
 		return true;
 	}
 }

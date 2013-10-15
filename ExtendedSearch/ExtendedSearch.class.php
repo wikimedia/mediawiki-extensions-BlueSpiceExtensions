@@ -21,9 +21,9 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @version    1.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
@@ -72,10 +72,10 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'ExtendedSearch',
-			EXTINFO::DESCRIPTION => 'Apache Solr based search plugin for BlueSpice',
+			EXTINFO::DESCRIPTION => 'Apache Solr (http://lucene.apache.org/solr/) based search plugin to extend the search functionality',
 			EXTINFO::AUTHOR => 'Stephan Muggli, Mathias Scheer, Markus Glaser',
-			EXTINFO::VERSION => '1.22.0 ($Rev: 9903 $)',
-			EXTINFO::STATUS => 'stable',
+			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
 		);
@@ -83,11 +83,10 @@ class ExtendedSearch extends BsExtensionMW {
 
 		$this->registerExtensionSchemaUpdate( 'bs_searchstats', __DIR__ . DS . 'db' . DS . 'ExtendedSearch.sql' );
 
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'ExtendedSearch', $this, 'getRequestJson', 'read' );
-
 		WikiAdmin::registerModuleClass( 'ExtendedSearchAdmin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_suche_v1.png',
-			'level' => 'editadmin'
+			'level' => 'wikiadmin',
+			'message' => 'bs-extendedsearchadmin-label'
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -102,7 +101,7 @@ class ExtendedSearch extends BsExtensionMW {
 
 		// max 32 chars with userlevel! 123 456789012345678 90123456789012 '::' counts as one char :-)
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefFuzziness', '0.5', BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-defduzziness' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::ShowPercent', true, BsConfig::TYPE_BOOL, 'bs-extendedsearch-pref-showpercent', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::ShowPercent', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showpercent', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResultDef', 25, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC,  'bs-extendedsearch-pref-limitresultdef', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SearchFiles', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-searchfiles', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::JumpToTitle', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-jumptotitle', 'toggle' );
@@ -115,6 +114,7 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTyLinked', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextylinked', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesRepo', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypesrepo', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesWiki', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypeswiki', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesSpecial', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypeswiki', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ExternalRepo', '', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-externalrepo' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefScopeUser', 'text', BsConfig::TYPE_STRING|BsConfig::LEVEL_USER|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-defscopeuser', 'select' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::FormMethod', 'get', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-formmethod' );
@@ -133,7 +133,6 @@ class ExtendedSearch extends BsExtensionMW {
 
 		// Hooks
 		$this->setHook( 'FormDefaults' );
-		$this->setHook( 'SpecialPage_initList' );
 		$this->setHook( 'ArticleSaveComplete' );
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'ArticleUndelete' );
@@ -142,7 +141,12 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'FileDeleteComplete' );
 		$this->setHook( 'FileUndeleteComplete' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
+		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
+		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
+		$this->setHook( 'BSStateBarBeforeBodyViewAdd' );
+		$this->setHook( 'BSStateBarAddSortBodyVars' );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 
 		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance();
 
@@ -161,12 +165,71 @@ class ExtendedSearch extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook handler for SpecialPage_initList
-	 * @param Array $aList reference list of core special pages
-	 * @return true Always ture to keep hook alive
+	 * Event-Handler for 'MW::Utility::WidgetListHelper::InitKeywords'. Registers a callback for the WHOISONLINE Keyword.
+	 * @param BsEvent $oEvent The Event object
+	 * @param array $aKeywords An array of Keywords array( 'KEYWORD' => $callable )
+	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
 	 */
-	public function onSpecialPage_initList( &$aList ) {
-		$aList['ExtendedSearch'] = 'SpecialExtendedSearch';
+	public function onBSWidgetListHelperInitKeyWords( &$aKeywords, $oTitle ) {
+		$aKeywords[ 'MORELIKETHIS' ] = array( $this, 'onWidgetListKeyword' );
+		return true;
+	}
+
+	/**
+	 * Renders the ExtendedSearch widget
+	 * @param array $aViews List of widgets. Add to this list.
+	 * @param object $oUser current user object
+	 * @param object $oTitle current title object
+	 * @return boolean Always true
+	 */
+	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
+		$aViews[] = $this->onWidgetListKeyword( $oTitle );
+		return true;
+	}
+
+	/**
+	 * Callback for WidgetListHelper. Adds the WhoIsOnline Widget to the list if Keyword is found.
+	 * @return ViewWidget.
+	 */
+	public function onWidgetListKeyword( $oTitle ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$oWidgetView = new ViewWidget();
+		$oWidgetView
+			->setId( 'bs-extendedsearch-mlt' )
+			->setTitle( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() )
+			->setBody( $this->oExtendedSearchBase->getViewMoreLikeThis( $oTitle, 'widgetbar' )->execute() )
+			->setTooltip( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() )
+			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-extendedsearch-portlet' ) ); //For correct margin and fontsize
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return $oWidgetView;
+	}
+
+	/**
+	 * Hook-Handler for Hook 'BSStatebarAddSortBodyVars'
+	 * @param array $aSortBodyVars
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onBSStateBarAddSortBodyVars( &$aSortBodyVars ) {
+		$aSortBodyVars['statebarbodymorelikethis'] = wfMessage( 'bs-articleinfo-statebarbodymorelikethis' )->plain();
+		return true;
+	}
+
+	/**
+	 * Hook-Handler for Hook 'BSStateBarBeforeBodyViewAdd'
+	 * @param StateBar $oStateBar
+	 * @param array $aBodyViews
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onBSStateBarBeforeBodyViewAdd( $oStateBar, &$aBodyViews, $oUser, $oTitle ) {
+		if ( $oTitle->exists() == false ) return true;
+
+		$oMltListView = new ViewStateBarBodyElement();
+		$oMltListView->setKey( 'MoreLikeThis' );
+		$oMltListView->setHeading( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() );
+		$oMltListView->setBodyText( ExtendedSearchBase::getInstance()->getViewMoreLikeThis( $oTitle, 'statebar' )->execute() );
+
+		$aBodyViews['statebarbodymorelikethis'] = $oMltListView;
 		return true;
 	}
 
@@ -193,69 +256,73 @@ class ExtendedSearch extends BsExtensionMW {
 	}
 
 	/**
+	 * Returns results for autocomplete. AJAX function.
+	 * @param string $sSearchString string to search for
+	 * @return string JSON encoded results
+	 */
+	public static function getAutocompleteData( $sSearchString ) {
+		return ExtendedSearchBase::getInstance()->searchAutocomplete( $sSearchString );
+	}
+
+	/**
 	 * Returns rendered inner part of search results page. Used for faceting and paging. AJAX function.
 	 * @return string JSON encoded HTML of search results page.
 	 */
-	public function getRequestJson() {
-		$sParamMode    = BsCore::getParam( 'mode', false, BsPARAM::GET | BsPARAMTYPE::STRING );
-		$sSearchString = BsCore::getParam( 'searchstring', false, BsPARAM::GET | BsPARAMTYPE::STRING );
-
-		if ( $sParamMode == 'autocomplete' ) {
-			$aResults = $this->oExtendedSearchBase->searchAutocomplete( $sSearchString );
-			exit( $aResults );
-		}
-
-		$viewContentsSpecialPage = $this->oExtendedSearchBase->renderSpecialpage();
+	public static function getRequestJson() {
+		$viewContentsSpecialPage = ExtendedSearchBase::getInstance()->renderSpecialpage();
 
 		$oDummy = new StdClass();
 		$oDummy->data = array( 'bodytext' => $viewContentsSpecialPage->execute() );
 
 		wfRunHooks( 'ExtendedSearchBeforeAjaxResponse', array( null, &$oDummy ) );
 
-		exit( json_encode( array( 'contents' => $oDummy->data['bodytext'] ) ) );
+		return json_encode( array( 'contents' => $oDummy->data['bodytext'] ) );
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinAfterArticleContent'. Creates the authors list below an article.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return Boolean Always true to keep hook running.
+	 * Returns list of recent search terms called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sTime timespan
+	 * @return string recent search terms
 	 */
-	public function onBSBlueSpiceSkinAfterArticleContent( &$aViews, $oUser, $oTitle ) {
-		if ( BsConfig::get( 'MW::ExtendedSearch::ShowMlt' ) === false ) return true;
-		if ( !$oTitle->exists() || $oTitle->isSpecialPage() ) return true;
-		global $wgRequest;
-		if ( $wgRequest->getVal( 'action', 'view' ) != 'view' ) return true;
+	public static function getRecentSearchTerms( $iCount, $sTime ) {
+		return ExtendedSearchBase::getInstance()->recentSearchTerms( $iCount, $sTime );
+	}
 
-		$aMltQuery = SearchOptions::getInstance()->getSolrMltQuery();
-		try {
-			$oResults = SearchService::getInstance()->mlt( $aMltQuery['searchString'], $aMltQuery['offset'], $aMltQuery['searchLimit'], $aMltQuery['searchOptions'] );
-		} catch ( Exception $e ) {
-			return true;
-		}
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
+	 * 
+	 * @param array &$aPortlets reference to array portlets
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
+		$aPortlets[] = array(
+						'type'  => 'BS.ExtendedSearch.RecentSearchTermsPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain()
+						),
+						'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain(),
+						'description' => wfMessage( 'bs-extendedsearch-recentsearchtermsdesc' )->plain()
+		);
 
-		$aMlt = array();
-		$aMlt[] = implode( ', ', $oResults->interestingTerms );
-		foreach ( $oResults->response->docs as $oRes ) {
-			if ( $oRes->namespace != 999 ) {
-				$oMltTitle = Title::makeTitle( $oRes->namespace, $oRes->title );
-			} else {
-				$oMltTitle = Title::makeTitle( NS_FILE, $oRes->title );
-			}
+		return true;
+	}
 
-			if ( !$oMltTitle->userCan( 'read' ) ) continue;
-			if ( $oMltTitle->getArticleID() == $oTitle->getArticleID() ) continue;
-
-			$aMlt[] = BsLinkProvider::makeLink( $oMltTitle );
-		}
-
-		if ( !empty( $aMlt ) ) {
-			$oViewMlt = new ViewMoreLikeThis;
-			$oViewMlt->setOption( 'mlt', $aMlt );
-
-			array_unshift( $aViews, $oViewMlt );
-		}
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
+	 * 
+	 * @param object $oCaller caller instance
+	 * @param array &$aPortalConfig reference to array portlet configs
+	 * @param boolean $bIsDefault default
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$aPortalConfig[0][] = array(
+						'type'  => 'BS.ExtendedSearch.RecentSearchTermsPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain()
+						)
+		);
 
 		return true;
 	}
@@ -273,7 +340,6 @@ class ExtendedSearch extends BsExtensionMW {
 		$aLocalUrl = explode( '?', $aLocalUrl );
 		$aSearchBoxKeyValues['SearchDestination'] = $aLocalUrl[0];
 
-		$aSearchBoxKeyValues['HiddenFields']['search_go'] = 'true';
 		if ( isset( $aLocalUrl[1] ) && strpos( $aLocalUrl[1], '=' ) !== false ) {
 			$aTitle = explode( '=', $aLocalUrl[1] );
 			$aSearchBoxKeyValues['HiddenFields']['title'] = urldecode( $aTitle[1] );

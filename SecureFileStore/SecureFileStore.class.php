@@ -24,7 +24,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Marc Reymann
  * @version    1.22.0 stable
- * @version    $Id: SecureFileStore.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage SecureFileStore
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -53,15 +53,13 @@ class SecureFileStore extends BsExtensionMW {
 	/**
 	 * Path to file dispatcher that replaces the standard image path.
 	 */
-	const PATHTOFILEDISPATCHER = 'index.php?action=remote&amp;title=-&amp;mod=SecureFileStore&amp;rf=getFile';
+	const PATHTOFILEDISPATCHER = 'index.php?action=ajax&amp;title=-&amp;rs=SecureFileStore::getFile';
 
 	/**
 	 * Constructor of SecureFileStore class
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['SecureFileStore'] = dirname( __FILE__ ) . '/SecureFileStore.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -70,8 +68,8 @@ class SecureFileStore extends BsExtensionMW {
 			EXTINFO::NAME        => 'SecureFileStore',
 			EXTINFO::DESCRIPTION => 'Prevent unauthorized access to files and images.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Marc Reymann',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 							'bluespice'   => '1.22.0'
@@ -86,26 +84,19 @@ class SecureFileStore extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		BsConfig::registerVar( 'MW::SecureFileStore::Active', true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-Active' );
-		BsConfig::registerVar( 'MW::SecureFileStore::ActiveJS', true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-ActiveJS' );
 		BsExtensionManager::setContext( 'MW::SecureFileStore::Active' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition', 'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-DefaultDisposition', 'select' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline', array( 'pdf' ),
-					BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionInline', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DispositionAttachment', array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ),
-					BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionAttachment', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::SecureFileStore::FileExtensionWhitelist', array('jpg', 'jpeg', 'png', 'gif', 'swf'),
-					BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-FileExtensionWhitelist', 'multiselectplusadd' );
+		
+		BsConfig::registerVar( 'MW::SecureFileStore::Active',                 true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-Active' );
+		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition',     'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-DefaultDisposition', 'select' );
+		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline',      array( 'pdf' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionInline', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::SecureFileStore::DispositionAttachment',  array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionAttachment', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::SecureFileStore::FileExtensionWhitelist', array('jpg', 'jpeg', 'png', 'gif', 'swf'), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-FileExtensionWhitelist', 'multiselectplusadd' );
 
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'secureImages' );
 		$this->setHook( 'ExtendedSearchBeforeAjaxResponse', 'secureImages' );
 		$this->setHook( 'SiteNoticeAfter', 'onSiteNoticeAfter' );
 
-		//if ( BsAdapterMW::getAction() == 'edit' || BsAdapterMW::getAction() == 'submit' ) BsExtensionManager::setContext('MW::SaferEdit');
-		// "*" overrides permission check in Adapter.class.php
-		BsCore::getInstance('MW')->getAdapter()->addRemoteHandler( 'SecureFileStore', $this, 'getFile', '*' );
-
-		$this->mAdapter->registerPermission( 'viewfiles', array( 'user' ) );
+		$this->mCore->registerPermission( 'viewfiles', array( 'user' ) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -166,11 +157,10 @@ class SecureFileStore extends BsExtensionMW {
 
 	/**
 	 * Send file via HTTP.
-	 * @param unused &$output unused
 	 */
-	public function getFile( &$output ) {
+	public static function getFile() {
 		global $wgUploadDirectory;
-		$sRawFilePath     = $this->getRequest()->getVal( 'f' );
+		$sRawFilePath     = RequestContext::getMain()->getRequest()->getVal( 'f' );
 		// Some extensions (e.g. Social Profile) add params with ? to filename
 		$aRawFilePathPcs  = preg_split( "/\?.*=/", $sRawFilePath );
 		$sRawFilePath     = $aRawFilePathPcs[0];
@@ -180,22 +170,12 @@ class SecureFileStore extends BsExtensionMW {
 		// Switch between f=File:Foo.png and f=/3/33/Foo.png style requests
 		$aFileNamespaceNames = BsNamespaceHelper::getNamespaceNamesAndAliases( NS_FILE );
 		if ( preg_match( '#^(.*?):(.*)$#', $sRawFilePath, $aMatch ) && in_array( $aMatch[1], $aFileNamespaceNames ) ) {
-			global $wgVersion;
-			if ( $wgVersion < '1.18.0' ) {
-				$oImg = Image::newFromName( $aMatch[2] );
-				if ( $oImg ) {
-					$oImg->load();
-					$sFilePath = realpath( $oImg->getFullPath() );
-				}
-			}
-			else {
-				$oTitle = Title::newFromText( $aMatch[2], NS_FILE );
-				$oImg = wfLocalFile( $oTitle );
-				if ( !is_null( $oImg ) ) {
-					$oImgRepoLocalRef = $oImg->getRepo()->getLocalReference( $oImg->getPath() );
-					if ( !is_null( $oImgRepoLocalRef ) ) {
-						$sFilePath = realpath( $oImgRepoLocalRef->getPath() );
-					}
+			$oTitle = Title::newFromText( $aMatch[2], NS_FILE );
+			$oImg = wfLocalFile( $oTitle );
+			if ( !is_null( $oImg ) ) {
+				$oImgRepoLocalRef = $oImg->getRepo()->getLocalReference( $oImg->getPath() );
+				if ( !is_null( $oImgRepoLocalRef ) ) {
+					$sFilePath = realpath( $oImgRepoLocalRef->getPath() );
 				}
 			}
 		}
@@ -237,8 +217,8 @@ class SecureFileStore extends BsExtensionMW {
 		if ( !in_array( $sFileExt, BsConfig::get( 'MW::SecureFileStore::FileExtensionWhitelist' ) ) ) {
 
 			// Check for MediaWiki right 'viewfiles'
-			$oUser = $this->mAdapter->User;
-			if ( !$oUser->isAllowed( 'viewfiles' ) ) {
+			global $wgUser;
+			if ( !$wgUser->isAllowed( 'viewfiles' ) ) {
 				header ( 'HTTP/1.0 403 Forbidden' );
 				exit;
 			}
@@ -277,7 +257,6 @@ class SecureFileStore extends BsExtensionMW {
 
 		// IE6/IE7 cannot handle download of zip-files that are aditionally gzipped by the Apache
 		// just put it in the header and tell apache to immediately flush => and gzip is disabled
-
 		if ( $sFileMime == 'application/zip' ) {
 			header( 'Content-Length: ' . $aFileStat['size'] );
 			flush();

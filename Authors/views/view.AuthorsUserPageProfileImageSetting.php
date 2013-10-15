@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: view.AuthorsUserPageProfileImageSetting.php 9596 2013-06-05 07:05:24Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage Authors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -49,7 +49,6 @@ class ViewAuthorsUserPageProfileImageSetting extends ViewBaseElement {
 		// CR RBV (03.06.11 08:39): Hook/Event!
 		if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) )
 			$this->sImagePath = SecureFileStore::secureStuff( $this->sImagePath, true );
-
 		$aOut = array();
 		$aOut[] = '<div id="bs-authors-imageform" class="bs-userpagesettings-item">';
 		$aOut[] = $this->renderLink(
@@ -87,7 +86,7 @@ class ViewAuthorsUserPageProfileImageSetting extends ViewBaseElement {
 	private function initFields() {
 		if ( $this->oUser === null ) throw new BsException( __METHOD__.' - No user specified.' );
 
-		$this->sUserDisplayName = BsAdapterMW::getUserDisplayName( $this->oUser );
+		$this->sUserDisplayName = BsCore::getInstance()->getUserDisplayName( $this->oUser );
 		$sUserImage             = $this->oUser->getOption( 'MW::UserImage', '' ); //BsConfig::get() won't work on first call
 
 		//Is it a URL? Some external image?
@@ -122,6 +121,9 @@ class ViewAuthorsUserPageProfileImageSetting extends ViewBaseElement {
 					$this->sImagePath = $oUserImageFile->getUrl();
 				}
 			}
+		}
+		else {
+			$this->sImagePath = BsConfig::get( 'MW::DefaultUserImage' );
 		}
 	}
 }

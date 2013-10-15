@@ -22,8 +22,8 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: ArticleInfo.class.php 9871 2013-06-24 13:03:07Z pwirth $
  * @package    BlueSpice_Extensions
  * @subpackage ArticleInfo
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -62,15 +62,14 @@ class ArticleInfo extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'ArticleInfo',
 			EXTINFO::DESCRIPTION => 'Provides information about an article for status bar.',
-			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9871 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice' => '1.22.0',
@@ -91,10 +90,9 @@ class ArticleInfo extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ArticleInfo::ImageCategories',    'bs-infobar-category.png',    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageCategories' );
 		BsConfig::registerVar( 'MW::ArticleInfo::ImageSubpages',      'bs-infobar-subpages.png',    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageSubpages' );
 		BsConfig::registerVar( 'MW::ArticleInfo::ImageCheckRevision', 'bs-infobar-revision.png',    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageRevision' );
-
 		BsConfig::registerVar( 'MW::ArticleInfo::CheckRevisionInterval', 10, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_INT, 'bs-articleinfo-pref-CheckRevisionInterval', 'int' );
 
-		$this->mAdapter->registerBehaviorSwitch( 'NOARTICLEINFO', array( $this, 'noArticleInfoCallback' ) );
+		$this->mCore->registerBehaviorSwitch( 'NOARTICLEINFO', array( $this, 'noArticleInfoCallback' ) );
 
 		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
@@ -106,17 +104,17 @@ class ArticleInfo extends BsExtensionMW {
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'BeforePageDisplay');
 
-		$this->setHook( 'BSBlueSpiceSkinBeforePrintFooterLinks' );
+		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
+		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 
-		$this->registerView( 'ViewStateBarTopElementCategoryShortList' );
-
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
 	public function noArticleInfoCallback() {
 		BsExtensionManager::setContext( 'MW::ArticleInfo::Hide' );
 	}
-	
+
 	/**
 	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
 	 * @param OutputPage $oOutputPage
@@ -126,6 +124,71 @@ class ArticleInfo extends BsExtensionMW {
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		$oOutputPage->addModules('ext.bluespice.articleinfo');
 		return true;
+	}
+
+		/**
+	 * Event-Handler for 'MW::Utility::WidgetListHelper::InitKeywords'. Registers a callback for the WHOISONLINE Keyword.
+	 * @param BsEvent $oEvent The Event object
+	 * @param array $aKeywords An array of Keywords array( 'KEYWORD' => $callable )
+	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
+	 */
+	public function onBSWidgetListHelperInitKeyWords( &$aKeywords, $oTitle ) {
+		$aKeywords[ 'TEMPLATES' ] = array( $this, 'onWidgetListKeyword' );
+		return true;
+	}
+
+	/**
+	 * Renders the widget
+	 * @param array $aViews List of widgets. Add to this list.
+	 * @param object $oUser current user object
+	 * @param object $oTitle current title object
+	 * @return boolean Always true
+	 */
+	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
+		$aViews[] = $this->onWidgetListKeyword( $oTitle );
+		return true;
+	}
+
+	/**
+	 * Callback for WidgetListHelper. Adds the WhoIsOnline Widget to the list if Keyword is found.
+	 * @return ViewWidget.
+	 */
+	public function onWidgetListKeyword( $oTitle ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$oWidgetView = new ViewWidget();
+		$oWidgetView
+			->setId( 'bs-articleinfo-templates' )
+			->setTitle( wfMessage( 'bs-articleinfo-templates' )->plain() )
+			->setBody( $this->getPortlet() )
+			->setTooltip( wfMessage( 'bs-articleinfo-templates' )->plain() )
+			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-articleinfo-portlet' ) ); //For correct margin and fontsize
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return $oWidgetView;
+	}
+
+	
+	/**
+	 * Generates list of templates
+	 * @return string list of edits
+	 */
+	public function getPortlet() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$aTemplatesTitles = $this->getTitle()->getTemplateLinksFrom();
+
+		$aTemplates = array();
+		foreach ( $aTemplatesTitles as $oTitle ) {
+			$sLink = Linker::link( $oTitle, BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) ) );
+			$aTemplates[] = '<li>' . $sLink . '</li>';
+		}
+
+		if ( empty( $aTemplates ) ) {
+			$aTemplates[] = '<li>' . wfMessage( 'bs-articleinfo-notemplates' ) . '</li>';
+		}
+
+		$sEdits = '<ul>' . implode( '', $aTemplates ) .'</ul>';
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return $sEdits;
 	}
 
 	/**
@@ -150,9 +213,9 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStatebarAddSortBodyVars( &$aSortBodyVars ) {
-		$aSortBodyVars['statebarbodycategories']  = wfMessage( 'bs-articleinfo-statebarbodycategories' )->plain();
-		$aSortBodyVars['statebarbodyeditsummary'] = wfMessage( 'bs-articleinfo-statebarbodyeditsummary' )->plain();
-		$aSortBodyVars['statebarbodysubpages']    = wfMessage( 'bs-articleinfo-statebarbodysubpages' )->plain();
+		$aSortBodyVars['statebarbodycategories']   = wfMessage( 'bs-articleinfo-statebarbodycategories' )->plain();
+		$aSortBodyVars['statebarbodyeditsummary']  = wfMessage( 'bs-articleinfo-statebarbodyeditsummary' )->plain();
+		$aSortBodyVars['statebarbodysubpages']     = wfMessage( 'bs-articleinfo-statebarbodysubpages' )->plain();
 		return true;
 	}
 	
@@ -165,8 +228,7 @@ class ArticleInfo extends BsExtensionMW {
 	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
 		if ( BsExtensionManager::isContextActive( 'MW::ArticleInfo::Hide' ) ) return true;
 		wfProfileIn( 'BS::'.__METHOD__ );
-
-		foreach(array( 
+		$aTopElements = array(
 			'statebartoplastedited' => $this->makeStateBarTopLastEdited( $oTitle ),
 			'statebartoplasteditor' => $this->makeStateBarTopLastEditor( $oTitle ),
 			'statebartopcategories' => $this->makeStateBarTopCategories( $oTitle ),
@@ -174,7 +236,9 @@ class ArticleInfo extends BsExtensionMW {
 			//postponed
 			//HINT: http://84.16.252.165/otrs24/index.pl?Action=AgentTicketZoom;TicketID=3980;ArticleID=22500#22173
 			//'statebartoparticleviews'		=> $this->makeStateBarTopArticleViews	( $oTitle ),
-		) as $sKey => $oTopView) {
+		);
+
+		foreach( $aTopElements as $sKey => $oTopView) {
 			if(!$oTopView) continue;
 			$aTopViews[$sKey] = $oTopView;
 		}
@@ -192,12 +256,13 @@ class ArticleInfo extends BsExtensionMW {
 	public function onStateBarBeforeBodyViewAdd( $oStateBar, &$aBodyViews, $oUser, $oTitle ) {
 		if ( BsExtensionManager::isContextActive( 'MW::ArticleInfo::Hide' ) ) return true;
 		wfProfileIn( 'BS::'.__METHOD__ );
-
-		foreach(array( 
+		$aBodyElements = array(
 			'statebarbodyeditsummary' => $this->makeStateBarBodyEditSummary( $oTitle ),
 			'statebarbodysubpages' => $this->makeStateBarBodySubPages( $oTitle ),
 			'statebarbodycategories' => $this->makeStateBarBodyCategories( $oTitle )
-		) as $sKey => $oBodyView) {
+		);
+
+		foreach( $aBodyElements as $sKey => $oBodyView) {
 			if(!$oBodyView) continue;
 			$aBodyViews[$sKey] = $oBodyView;
 		}
@@ -250,13 +315,12 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for BlueSpice hook BSBlueSpiceSkinBeforePrintFooterLinks - Remove footer links
-	 * @param Array $aFooterLinks
-	 * @param Object $sSkinTemplate - Current skin template (default: BlueSpiceTemplate)
-	 * @param String $sOption
+	 * Hook-Handler for BlueSpice hook SkinTemplateOutputPageBeforeExec - Remove footer links
+	 * @param SkinTemplate $sktemplate
+	 * @param Template $tpl
 	 * @return boolean - always true
 	 */
-	public function onBSBlueSpiceSkinBeforePrintFooterLinks( &$aFooterLinks, $sSkinTemplate, $sOption ) {
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
 		$aRMLinks = array(
 			'info' => array(
 				'lastmod',
@@ -267,10 +331,10 @@ class ArticleInfo extends BsExtensionMW {
 		);
 
 		foreach($aRMLinks as $sKey => $aLinks) {
-			if( !isset($aFooterLinks[$sKey]) ) continue;
-			foreach( $aFooterLinks[$sKey] as $sLnkKey => $sLink ) {
+			if( !isset($tpl->data['footerlinks'][$sKey]) ) continue;
+			foreach( $tpl->data['footerlinks'][$sKey] as $sLnkKey => $sLink ) {
 				if( !in_array($sLink, $aLinks) ) continue;
-				unset($aFooterLinks[$sKey][$sLnkKey]);
+				unset($tpl->data['footerlinks'][$sKey][$sLnkKey]);
 			}
 		}
 
@@ -283,13 +347,15 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return false|\ViewStateBarTopElement
 	 */
 	private function makeStateBarTopLastEdited( $oTitle ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
 		$oLastEditView = new ViewStateBarTopElement();
 		$oArticle = Article::newFromID( $oTitle->getArticleID() );
-		$iOldId = BsCore::getParam( 'oldid', 0, BsPARAM::REQUEST|BsPARAMTYPE::INT|BsPARAMOPTION::DEFAULT_ON_ERROR );
-		if( $oArticle instanceof Article == false ) {
+		$iOldId = $this->getRequest()->getInt( 'oldid', 0 );
+
+		if ( $oArticle instanceof Article == false ) {
 			return false;
 		}
-		wfProfileIn( 'BS::'.__METHOD__ );
+
 		if ( $iOldId != 0 ) {
 			$sTimestamp = Revision::getTimestampFromId( $oArticle->getTitle(), $iOldId );
 		} else {
@@ -298,8 +364,8 @@ class ArticleInfo extends BsExtensionMW {
 
 		$sFormattedTimestamp = BsFormatConverter::mwTimestampToAgeString( $sTimestamp, true );
 		$sArticleHistoryPageLink = $oArticle->getTitle()->getLinkURL( 
-			array( 
-				'diff'   => 0, 
+			array(
+				'diff'   => 0,
 				'action' => 'historysubmit'
 			)
 		);
@@ -333,7 +399,7 @@ class ArticleInfo extends BsExtensionMW {
 		if( is_object( $oLastEditor ) === false || $oLastEditor === null ) return false;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$sLastEditorName = $this->mAdapter->getUserDisplayName( $oLastEditor );
+		$sLastEditorName = $this->mCore->getUserDisplayName( $oLastEditor );
 		$sLastEditorUserPageUrl = $oLastEditor->getUserPage()->getFullURL();
 
 		$oLastEditorView->setKey( 'LastEditor' );
@@ -457,7 +523,7 @@ class ArticleInfo extends BsExtensionMW {
 
 		$oCategoriesLinkBodyElement = new ViewStateBarBodyElement();
 		$oCategoriesLinkBodyElement->setKey( 'AllCategories' );
-		$oCategoriesLinkBodyElement->setHeading(wfMessage( 'bs-articleinfo-all-categories-heading' )->plain() );
+		$oCategoriesLinkBodyElement->setHeading( wfMessage( 'bs-articleinfo-all-categories-heading' )->plain() );
 		$oCategoriesLinkBodyElement->setBodyText( $sCategories );
 
 		wfRunHooks( 'BSArticleInfoBeforeAddCategoryBodyView', array( $this, &$oCategoriesLinkBodyElement ) );

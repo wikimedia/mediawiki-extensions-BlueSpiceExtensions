@@ -24,7 +24,6 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @version    1.22.0 stable
- * @version    $Id: PageTemplates.class.php 9798 2013-06-19 10:05:36Z rvogel $
  * @package    BlueSpice_Extensions
  * @subpackage PageTemplates
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -54,9 +53,6 @@ class PageTemplates extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['PageTemplates'] = dirname( __FILE__ ) . '/PageTemplates.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::VARIABLE;
@@ -64,21 +60,20 @@ class PageTemplates extends BsExtensionMW {
 			EXTINFO::NAME        => 'PageTemplates',
 			EXTINFO::DESCRIPTION => 'Displays a list of templates marked as page templates.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9798 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice'   => '1.22.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::PageTemplates';
-		$this->registerExtensionSchemaUpdate( 'bs_pagetemplate', dirname( __FILE__ ).DS.'PageTemplates.sql' );
-
-		BsCore::registerClass( 'PageTemplatesAdmin', dirname( __FILE__ ), 'PageTemplatesAdmin.class.php' );
+		$this->registerExtensionSchemaUpdate( 'bs_pagetemplate', __DIR__.DS.'PageTemplates.sql' );
 
 		WikiAdmin::registerModuleClass( 'PageTemplatesAdmin', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/images/bs-btn_templates_v1.png',
-			'level' => 'editadmin'
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_templates_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-pagetemplatesadmin-label'
 		) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -111,11 +106,11 @@ class PageTemplates extends BsExtensionMW {
 
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aNamespaces = array();
-		$contLang = BsCore::getInstance( 'MW' )->getAdapter()->get( 'ContLang' );
+		global $wgContLang;
 
-		foreach ( $contLang->getNamespaces() as $ns ) {
-			$nsIndex = $contLang->getNsIndex( $ns );
-			$aNamespaces[$nsIndex] = BsAdapterMW::getNamespaceName( $nsIndex );
+		foreach ( $wgContLang->getNamespaces() as $ns ) {
+			$nsIndex = $wgContLang->getNsIndex( $ns );
+			$aNamespaces[$nsIndex] = BsNamespaceHelper::getNamespaceName( $nsIndex );
 		}
 
 		$aPrefs = array(
@@ -131,28 +126,26 @@ class PageTemplates extends BsExtensionMW {
 	 * @param string $sMessage This variable is called by reference and modified.
 	 * @return bool Success marker for MediaWiki Hooks. The message itself is returned in referenced variable $sMessage. Note that it cannot contain pure HTML.
 	 */
-	// TODO MRG (29.04.11 14:21): Put in Adapter
 	public function onMessagesPreLoad( $sKey, &$sMessage ) {
 		if ( strstr( $sKey, 'Noarticletext' ) === false ) {
 			return true;
 		}
 		global $wgTitle, $wgOut;
-		if( !is_object( $wgTitle ) ) {
+		if ( !is_object( $wgTitle ) ) {
 			return true;
 		}
-		if( !$wgTitle->userCan( 'edit' ) ) {
+		if ( !$wgTitle->userCan( 'edit' ) ) {
 			$wgOut->permissionRequired( 'edit' );
 			$sMessage = null;
 			return false;
-		}
-		else if( !$wgTitle->userCan( 'createpage' ) ) {
+		} else if( !$wgTitle->userCan( 'createpage' ) ) {
 			$wgOut->permissionRequired( 'createpage' );
 			$sMessage = null;
 			return false;
-		}
-		else {
+		} else {
 			$sMessage = '<bs:pagetemplates />';
 		}
+
 		return true;
 	}
 
@@ -175,8 +168,7 @@ class PageTemplates extends BsExtensionMW {
 	 * @return string replacement HTML for the tag
 	 */
 	public function onTagPageTemplates( $input, $args, $parser ) {
-		$sOut = $this->renderPageTemplates();
-		return $sOut;
+		return $this->renderPageTemplates();
 	}
 
 	/**
@@ -185,10 +177,10 @@ class PageTemplates extends BsExtensionMW {
 	 * @return string The rendered output
 	 */
 	protected function renderPageTemplates() {
-		global $wgDBtype;
+		global $wgDBtype, $wgTitle;
 
 		// if we are not on a wiki page, return. This is important when calling import scripts that try to create nonexistent pages, e.g. importImages
-		if ( !is_object( $this->mAdapter->Title ) ) return true;
+		if ( !is_object( $wgTitle ) ) return true;
 
 		// TODO RBV (18.05.11 08:53): Coding Conventions bei Variablen. View? BaseView mit Template?
 		$sOut = wfMessage( 'bs-pagetemplates-choose-template' )->plain();
@@ -201,15 +193,15 @@ class PageTemplates extends BsExtensionMW {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$sOut .= '<br /><br /><ul><li>';
-		$sOut .= BsLinkProvider::makeLink( $this->mAdapter->Title, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), $aCostumAttr = array(), array( 'preload' => '' ) );
+		$sOut .= BsLinkProvider::makeLink( $wgTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), $aCostumAttr = array(), array( 'preload' => '' ) );
 		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
 		$sOut .= '</li></ul>';
 
 		if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
-			if( $wgDBtype == 'postgres' ) {
-				$aConds = array( "pt_target_namespace IN ('".$this->mAdapter->Title->getNamespace()."', '-99')" );
+			if ( $wgDBtype == 'postgres' ) {
+				$aConds = array( "pt_target_namespace IN ('" . $wgTitle->getNamespace() . "', '-99')" );
 			} else {
-				$aConds = array( 'pt_target_namespace IN ('.$this->mAdapter->Title->getNamespace().', -99)' );
+				$aConds = array( 'pt_target_namespace IN (' . $wgTitle->getNamespace() . ', -99)' );
 			}
 		} else {
 			$aConds = array();
@@ -238,24 +230,24 @@ class PageTemplates extends BsExtensionMW {
 				$oTitle = Title::makeTitle( $row->pt_template_namespace, $row->pt_template_title );
 				// TODO MRG (06.09.11 12:53): -99 is "all namespaces". Pls use a more telling constant
 				if ( ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) && $row->pt_target_namespace != "-99" )
-						|| $row->pt_target_namespace == $this->mAdapter->Title->getNamespace() || BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
+						|| $row->pt_target_namespace == $wgTitle->getNamespace() || BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
 					if ( !isset( $aOutNs[$row->pt_target_namespace] ) ) {
 						$aOutNs[$row->pt_target_namespace] = '';
 					}
 
 					if ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) ) {
-						$sTargetNamespace = BsAdapterMW::getNamespaceName( $row->pt_target_namespace, false );
-						$oTargetNsTitle = Title::makeTitle( $row->pt_target_namespace,$this->mAdapter->Title->getText() );
+						$sTargetNamespace = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace, false );
+						$oTargetNsTitle = Title::makeTitle( $row->pt_target_namespace, $wgTitle->getText() );
 					} else {
 						$sTargetNamespace = '';
-						$oTargetNsTitle = $this->mAdapter->Title;
+						$oTargetNsTitle = $wgTitle;
 					}
 
 					$aOutNs[$row->pt_target_namespace] .= '<li>' . BsLinkProvider::makeLink( $oTargetNsTitle, $row->pt_label, $aCostumAttr = array(), array( 'preload' => $oTitle->getPrefixedText() ) );
 					if ( $row->pt_desc ) $aOutNs[$row->pt_target_namespace] .= "<br/>".$row->pt_desc;
 					$aOutNs[$row->pt_target_namespace] .= '</li>';
 				} else if ( $row->pt_target_namespace == "-99" ) {
-					$sOutAll .= '<li>' . BsLinkProvider::makeLink( $this->mAdapter->Title, $row->pt_label, $aCostumAttr = array(), array( 'preload' => $oTitle->getPrefixedText() ) );
+					$sOutAll .= '<li>' . BsLinkProvider::makeLink( $wgTitle, $row->pt_label, $aCostumAttr = array(), array( 'preload' => $oTitle->getPrefixedText() ) );
 					if ( $row->pt_desc ) $sOutAll .= "<br />" . $row->pt_desc;
 					$sOutAll .= '</li>';
 				}
@@ -263,9 +255,9 @@ class PageTemplates extends BsExtensionMW {
 			$dbr->freeResult( $res );
 		}
 
-		foreach( $aOutNs as $iNs => $sTmpOut ) {
+		foreach ( $aOutNs as $iNs => $sTmpOut ) {
 			if ( !BsConfig::get( 'MW::PageTemplates::HideLinesAfterEmptyPage' ) ) $sDivNs .= "<br />";
-			$sDivNs .= "<br /><h3>" . BsAdapterMW::getNamespaceName( $iNs ) . '</h3>';
+			$sDivNs .= "<br /><h3>" . BsNamespaceHelper::getNamespaceName( $iNs ) . '</h3>';
 			$sDivNs .= '<ul>' . $sTmpOut . '</ul>';
 		}
 
@@ -294,9 +286,9 @@ class PageTemplates extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onLinkBegin( $oLinker, $oTarget, &$sHtml, &$aCustomAttribs, &$aQuery, &$aOptions, &$sRet ) {
-		if( in_array( 'known', $aOptions ) ) return true;
-		if( !in_array( 'broken', $aOptions ) ){ //It's not marked as "known" and not as "broken" so we have to check
-			if( $oTarget->isKnown() ) return true;
+		if ( in_array( 'known', $aOptions ) ) return true;
+		if ( !in_array( 'broken', $aOptions ) ){ //It's not marked as "known" and not as "broken" so we have to check
+			if ( $oTarget->isKnown() ) return true;
 		}
 
 		$aExNs = BsConfig::get( 'MW::PageTemplates::ExcludeNs' );
@@ -317,7 +309,7 @@ class PageTemplates extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	function onEditPageShowEditFormInitial( &$oEdit ) {
-		if ( BsCore::getParam( 'preload', false, BsPARAMTYPE::STRING|BsPARAM::REQUEST ) ) {
+		if ( RequestContext::getMain()->getRequest()->getVal( 'preload', '' ) ) {
 			// TODO MRG (27.09.11 10:28): Put replacement of noinclude into core
 			$oEdit->textbox1 = preg_replace( '/<noinclude>.*?<\/noinclude>/s', '',  $oEdit->textbox1 );
 		}

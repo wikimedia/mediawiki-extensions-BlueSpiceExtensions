@@ -1,7 +1,7 @@
 <?php
 BsExtensionManager::registerExtension('InterWikiLinks',                  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['InterWikiLinks'] = dirname( __FILE__ ) . '/languages/InterWikiLinks.i18n.php';
+$wgExtensionMessagesFiles['InterWikiLinks'] = __DIR__ . '/languages/InterWikiLinks.i18n.php';
 
 $wgResourceModules['ext.bluespice.interWikiLinks'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/InterWikiLinks/resources/bluespice.interWikiLinks.js',
@@ -27,3 +27,17 @@ $wgResourceModules['ext.bluespice.interWikiLinks'] = array(
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
+$wgResourceModules['bluespice.insertLink.interWikiLinks'] = array(
+	'scripts' => 'extensions/BlueSpiceExtensions/InterWikiLinks/resources/bluespice.insertLink.interWikiLinks.js',
+	'dependencies' => 'ext.bluespice.extjs',
+	'messages' => array(
+		'bs-interwikilinks-insertlink-tabtitle',
+		'bs-interwikilinks-insertlink-labelprefix',
+	),
+	'localBasePath' => $IP,
+	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+);
+
+$wgAjaxExportList[] = 'InterWikiLinks::getInterWikiLinks';
+$wgAjaxExportList[] = 'InterWikiLinks::doEditInterWikiLink';
+$wgAjaxExportList[] = 'InterWikiLinks::doDeleteInterWikiLink';

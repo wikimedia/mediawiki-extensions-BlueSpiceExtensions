@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: PDFWebService.class.php 7765 2012-12-18 13:45:55Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -211,7 +211,7 @@ class BsPDFWebService {
 		if ( $this->aParams['pdf-merging'] == '1'
 			|| $this->aParams['attachments'] == '1' ) {
 
-			$sUploadPath = BsCore::getInstance( 'MW' )->getAdapter()->get( 'UploadPath' );
+			$sUploadPath = BsCore::getInstance()->getAdapter()->get( 'UploadPath' );
 			
 			// TODO RBV (08.02.11 15:15): Necessary to exclude images?
 			$oFileAnchorElements = $oDOMXPath->query( "//a[contains(@class,'internal') and not(contains(@class, 'image'))]" );

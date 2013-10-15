@@ -25,14 +25,28 @@
 class ExtendedSearchAdmin {
 
 	/**
+	 * Instance of ExtendedSearchAdmin
+	 * @var Object
+	 */
+	protected static $oInstance = null;
+
+	/**
 	 * Constructor of ExtendedSearchAdmin class
 	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
+	public function __construct() {}
 
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'ExtendedSearchAdmin', $this, 'getProgressBar', 'editadmin' );
+	/**
+	 * Return a instance of ExtendedSearchAdmin.
+	 * @return ExtendedSearchAdmin Instance of ExtendedSearchAdmin
+	 */
+	public static function getInstance() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		if ( self::$oInstance === null ) {
+			self::$oInstance = new self();
+		}
 
 		wfProfileOut( 'BS::'.__METHOD__ );
+		return self::$oInstance;
 	}
 
 	/**
@@ -40,23 +54,24 @@ class ExtendedSearchAdmin {
 	 * called with action=remote&mod=ExtendedSearchAdmin&rf=getProgressBar
 	 * @param string $sOutput Ready rendered output
 	 */
-	public function getProgressBar( &$sOutput ) {
+	public function getProgressBar( $sParamMode ) {
 		// todo: add new mechanism
-		$sParamMode = BsCore::getParam( 'mode', false, BsPARAM::GET | BsPARAMTYPE::STRING );
 		switch ( $sParamMode ) {
 			case 'createForm' :
-				$sOutput = $this->getCreateForm();
+				$sOutput = ExtendedSearchAdmin::getInstance()->getCreateForm();
 				break;
 			case 'create':
-				$sOutput = $this->getCreateFeedback();
+				$sOutput = ExtendedSearchAdmin::getInstance()->getCreateFeedback();
 				break;
 			case 'delete':
-				$sOutput = $this->getDeleteFeedback();
+				$sOutput = ExtendedSearchAdmin::getInstance()->getDeleteFeedback();
 				break;
 			case 'deleteLock':
-				$sOutput = $this->checkLockExistence( $sParamMode );
+				$sOutput = ExtendedSearchAdmin::getInstance()->checkLockExistence( $sParamMode );
 				break;
 		}
+
+		return ''.$sOutput;
 	}
 
 	/**
@@ -87,19 +102,19 @@ class ExtendedSearchAdmin {
 			$aSearchAdminButtons = array(
 				'create' => array(
 					'href'    => '#',
-					'onclick' => 'BsCore.toggleMessage(\'' . $sScriptPath . '/index.php?action=remote&mod=ExtendedSearchAdmin&rf=getProgressBar&mode=createForm\', \'' . addslashes( wfMessage( 'bs-extendedsearch-create-index' )->plain() ) . '\', 400, 300);setTimeout(\'bsExtendedSearchStartCreate()\', 1000);',
+					'onclick' => 'bs.util.toggleMessage( bs.util.getAjaxDispatcherUrl( \'ExtendedSearchAdmin::getProgressBar\', [\'createForm\'] ), \'' . addslashes( wfMessage( 'bs-extendedsearch-create-index' )->plain() ) . '\', 400, 300);setTimeout(\'bsExtendedSearchStartCreate()\', 1000);',
 					'label'   => wfMessage( 'bs-extendedsearch-create-index' )->plain(),
 					'image'   => "$sScriptPath/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/bs-searchindex-rebuild.png"
 				),
 				'delete' => array(
 					'href'    => '#',
-					'onclick' => 'BsCore.toggleMessage(\'' . $sScriptPath . '/index.php?action=remote&mod=ExtendedSearchAdmin&rf=getProgressBar&mode=delete\', \'' . addslashes( wfMessage( 'bs-extendedsearch-delete-index' )->plain() ) . '\', 400, 300);',
+					'onclick' => 'bs.util.toggleMessage( bs.util.getAjaxDispatcherUrl( \'ExtendedSearchAdmin::getProgressBar\', [\'delete\'] ), \'' . addslashes( wfMessage( 'bs-extendedsearch-delete-index' )->plain() ) . '\', 400, 300);',
 					'label'   => wfMessage( 'bs-extendedsearch-delete-index' )->plain(),
 					'image'   => "$sScriptPath/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/bs-searchindex-delete.png"
 				),
 				'overwrite' => array(
 					'href'    => '#',
-					'onclick' => 'BsCore.toggleMessage(\'' . $sScriptPath . '/index.php?action=remote&mod=ExtendedSearchAdmin&rf=getProgressBar&mode=createForm\', \'' . addslashes( wfMessage( 'bs-extendedsearch-overwrite-index' )->plain() ) . '\', 400, 300);setTimeout(\'bsExtendedSearchStartCreate()\', 1000);',
+					'onclick' => 'bs.util.toggleMessage( bs.util.getAjaxDispatcherUrl( \'ExtendedSearchAdmin::getProgressBar\', [\'createForm\'] ), \'' . addslashes( wfMessage( 'bs-extendedsearch-overwrite-index' )->plain() ) . '\', 400, 300);setTimeout(\'bsExtendedSearchStartCreate()\', 1000);',
 					'label'   => wfMessage( 'bs-extendedsearch-overwrite-index' )->plain(),
 					'image'   => "$sScriptPath/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/bs-searchindex-optimization.png"
 				)
@@ -151,6 +166,8 @@ class ExtendedSearchAdmin {
 		} else {
 			return false;
 		}
+
+		return true;
 	}
 
 	/**

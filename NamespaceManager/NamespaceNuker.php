@@ -64,7 +64,7 @@ class NamespaceNuker {
 		global $wgDBtype;
 		if (!$idNS)
 			return false;
-		$bnUser = BsCore::getInstance('MW')->getAdapter()->User;
+		$bnUser = RequestContext::getMain()->getUser();
 		$idUser = $bnUser->getId();
 		$nameUser = $bnUser->getName();
 

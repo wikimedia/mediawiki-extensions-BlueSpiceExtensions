@@ -1,18 +1,24 @@
 <?php
 
-BsExtensionManager::registerExtension('WantedArticle',                   BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension('WantedArticle', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['WantedArticle'] = dirname( __FILE__ ) . '/WantedArticle.i18n.php';
+$wgExtensionMessagesFiles['WantedArticle'] = __DIR__ . '/WantedArticle.i18n.php';
 
 $wgResourceModules['ext.bluespice.wantedarticle'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/WantedArticle/js/WantedArticle.js',
-	'styles'  => 'extensions/BlueSpiceExtensions/WantedArticle/css/WantedArticle.css',
+	'scripts' => 'bluespice.wantedArticle.js',
+	'styles'  => 'bluespice.wantedArticle.css',
 	'messages' => array(
 		'bs-wantedarticle-info_dialog_title',
 		'bs-wantedarticle-info_nothing_entered',
 		'bs-wantedarticle-info_title_contains_invalid_characters'
 	),
 	'position' => 'top',
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/WantedArticle/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/WantedArticle/resources'
 );
+
+$wgAjaxExportList[] = 'WantedArticle::ajaxAddWantedArticle';
+$wgAjaxExportList[] = 'WantedArticle::ajaxGetWantedArticles';
+
+$wgAutoloadClasses['ViewWantedArticleForm'] = __DIR__ . '/includes/ViewWantedArticleForm.php';
+$wgAutoloadClasses['ViewWantedArticleTag']  = __DIR__ . '/includes/ViewWantedArticleTag.php';

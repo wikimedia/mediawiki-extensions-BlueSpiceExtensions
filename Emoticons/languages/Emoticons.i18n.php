@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: Emoticons.i18n.php 9897 2013-06-25 05:32:31Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage Emoticons
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

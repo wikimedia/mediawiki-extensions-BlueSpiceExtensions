@@ -3,7 +3,7 @@
 -- Part of BlueSpice for MediaWiki
 --
 -- @author     Markus Glaser <glaser@hallowelt.biz>
--- @version    $Id: PageTemplates.pg.sql 5632 2012-06-29 09:30:09Z smuggli $
+
 -- @package    BlueSpice_Extensions
 -- @subpackage PageTemplates
 -- @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

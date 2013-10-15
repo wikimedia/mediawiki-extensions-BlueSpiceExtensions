@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: BlueSpiceProjectFeedbackHelper.i18n.php 9885 2013-06-24 13:50:27Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage BlueSpiceProjectFeedbackHelper
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

@@ -101,13 +101,8 @@ BsExtendedSearchAjaxManager.prototype = {
 	 */
 	ajaxifyUri: function( uriIn ) {
 		var uriParts = uriIn.split( '?' );
-		var uriOut = BlueSpice.buildRemoteString(
-			'ExtendedSearch',
-			'getRequestJson',
-			{
-				"search_origin": "ajax"
-			}
-		);
+		var uriOut = bs.util.getAjaxDispatcherUrl( 'ExtendedSearch::getRequestJson' );
+		uriOut += '&search_origin=ajax';
 
 		if ( 1 in uriParts ) {
 			var uriParams = uriParts[1].split( '&' );
@@ -200,9 +195,8 @@ BsExtendedSearchAjaxManager.prototype = {
 				ExtendedSearchAjaxManager.addParamToUrl( aKeyValue[0], aKeyValue[1] );
 			}
 		}
-		ExtendedSearchAjaxManager.addParamToUrl( 'action', 'remote' );
-		ExtendedSearchAjaxManager.addParamToUrl( 'mod', 'ExtendedSearch' );
-		ExtendedSearchAjaxManager.addParamToUrl( 'rf', 'getRequestJson' );
+		ExtendedSearchAjaxManager.addParamToUrl( 'action', 'ajax' );
+		ExtendedSearchAjaxManager.addParamToUrl( 'rs', 'ExtendedSearch::getRequestJson' );
 		ExtendedSearchAjaxManager.addParamToUrl( 'search_origin', 'ajax' );
 	},
 
@@ -380,7 +374,8 @@ BsExtendedSearchAjaxManager.prototype = {
 			clearTimeout( thread );
 			if ( $.inArray( event.which, keys ) > 0 ) return false;
 			if ( inputField.val() == '' ) return false;
-			url = wgServer + wgScriptPath + '?search_scope=text&search_submit=1&searchasyoutype=1&search_input=' + encodeURIComponent( inputField.val() );
+			url = wgServer + wgScriptPath +
+					'?search_origin=search_form_body&search_scope=text&search_submit=1&searchasyoutype=1&search_input=' + encodeURIComponent( inputField.val() );
 			thread = setTimeout( function() { ExtendedSearchAjaxManager.ajaxMeANewResultsPlz( url ) }, 300 );
 		} );
 	}

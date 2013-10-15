@@ -28,7 +28,7 @@
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: Emoticons.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage Emoticons
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -73,7 +73,7 @@ class Emoticons extends BsExtensionMW {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['Emoticons'] = dirname( __FILE__ ) . '/Emoticons.i18n.php';
+		//$wgExtensionMessagesFiles['Emoticons'] = __DIR__ . '/Emoticons.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -82,8 +82,8 @@ class Emoticons extends BsExtensionMW {
 			EXTINFO::NAME        => 'Emoticons',
 			EXTINFO::DESCRIPTION => 'Renders emoticons in a text as images.',
 			EXTINFO::AUTHOR      => 'Alex Wollangk, Marc Reymann, Sebastian Ulbricht, Mathias Scheer, Robert Vogel, Patric Wirth',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
@@ -113,8 +113,8 @@ class Emoticons extends BsExtensionMW {
 	public function onOutputPageBeforeHTML( &$oParserOutput, &$sText) {
 		global $wgMemc; //http://www.mediawiki.org/wiki/Memcached
 
-		$sCurrentAction = BsCore::getParam('action', 'view', BsPARAM::REQUEST|BsPARAMTYPE::STRING|BsPARAMOPTION::DEFAULT_ON_ERROR);
-		$oCurrentTitle  = BsCore::getInstance('MW')->getAdapter()->get('Title');
+		$sCurrentAction = $this->getRequest()->getVal( 'action', 'view' );
+		$oCurrentTitle  = $this->getTitle();
 
 		if( in_array( $sCurrentAction, array('edit', 'history', 'delete', 'watch') ) ) return true;
 		if( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;

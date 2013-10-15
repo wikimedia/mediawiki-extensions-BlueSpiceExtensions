@@ -2,16 +2,16 @@
 
 BsExtensionManager::registerExtension('SaferEdit',                       BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['SaferEdit'] = dirname( __FILE__ ) . '/languages/SaferEdit.i18n.php';
+$wgExtensionMessagesFiles['SaferEdit'] = __DIR__ . '/languages/SaferEdit.i18n.php';
 
 $wgResourceModules['ext.bluespice.saferedit.general'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/SaferEdit/resources/bluespice.SaferEdit.general.js',
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'scripts' => 'bluespice.SaferEdit.general.js',
+	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/SaferEdit/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/SaferEdit/resources',
 );
 
 $wgResourceModules['ext.bluespice.saferedit.editmode'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/SaferEdit/resources/bluespice.SaferEdit.editmode.js',
+	'scripts' => 'bluespice.SaferEdit.editmode.js',
 	'messages' => array(
 		'bs-saferedit-lastSavedVersion',
 		'bs-saferedit-editFormOk',
@@ -27,6 +27,10 @@ $wgResourceModules['ext.bluespice.saferedit.editmode'] = array(
 	'dependencies' => array(
 		'ext.bluespice.saferedit.general'
 	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/SaferEdit/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/SaferEdit/resources',
 );
+
+$wgAjaxExportList[] = 'SaferEdit::doCancelSaferEdit';
+$wgAjaxExportList[] = 'SaferEdit::getLostTexts';
+$wgAjaxExportList[] = 'SaferEdit::saveText';

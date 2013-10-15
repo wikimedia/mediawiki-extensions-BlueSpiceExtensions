@@ -23,7 +23,6 @@
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    1.22.0
- * @version    $Id: RSSFeeder.class.php 9834 2013-06-20 14:29:28Z rvogel $
  * @package    Bluespice_Extensions
  * @subpackage RSSFeeder
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -43,8 +42,6 @@ class RSSFeeder extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['RSSFeeder'] = dirname( __FILE__ ) . '/RSSFeeder.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -53,8 +50,8 @@ class RSSFeeder extends BsExtensionMW {
 			EXTINFO::NAME        => 'RSSFeeder',
 			EXTINFO::DESCRIPTION => 'A extension to put out valid rss for every extension, which has a buildRss-function',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9834 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
@@ -65,11 +62,7 @@ class RSSFeeder extends BsExtensionMW {
 	/**
 	 * initialise the extension
 	 */
-	protected function initExt() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		BsCore::registerClass('RSSCreator', dirname(__FILE__));
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
+	protected function initExt() {}
 
 	/**
 	 * an array which holds the informations of all registered feed plugins

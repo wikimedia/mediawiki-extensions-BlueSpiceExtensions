@@ -2,7 +2,7 @@
  * Js for TopMenuBarCustomizer extension
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    $Id: TopMenuBarCustomizer.js 8305 2013-01-24 14:53:20Z pwirth $
+
  * @package    Bluespice_Extensions
  * @subpackage TopMenuBarCustomizer
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

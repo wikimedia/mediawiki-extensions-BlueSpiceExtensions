@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: CountThings.i18n.php 9887 2013-06-24 13:53:14Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage CountThings
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

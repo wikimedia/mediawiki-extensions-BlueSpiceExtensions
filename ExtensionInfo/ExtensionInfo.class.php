@@ -24,7 +24,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    1.22.0
- * @version    $Id: ExtensionInfo.class.php 9832 2013-06-20 13:32:47Z rvogel $
+
  * @package    Bluespice_Extensions
  * @subpackage ExtensionInfo
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -55,9 +55,6 @@ class ExtensionInfo extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['ExtensionInfo'] = dirname( __FILE__ ) . '/ExtensionInfo.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
@@ -65,18 +62,17 @@ class ExtensionInfo extends BsExtensionMW {
 			EXTINFO::NAME        => 'ExtensionInfo',
 			EXTINFO::DESCRIPTION => 'Information about active Hallo Welt! extensions.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9832 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
 
 		WikiAdmin::registerModule( 'ExtensionInfo', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/images/bs-btn_information_v1.png',
-			'level' => 'wikiadmin'
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_information_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-extensioninfo-label'
 		) );
-
-		$this->registerView( 'ViewExtensionInfoTable' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -96,7 +92,7 @@ class ExtensionInfo extends BsExtensionMW {
 		BsExtensionManager::setContext( 'MW::ExtensionInfoShow' );
 		$oViewExtensionInfoTable = new ViewExtensionInfoTable();
 
-		$aInfos = BsExtensionManager::getExtensionInformations();
+		$aInfos = BsExtensionManager::getExtensionInformation();
 		ksort($aInfos);
 
 		$oViewExtensionInfoTable->setExtensions( $aInfos );

@@ -4,9 +4,9 @@ BsExtensionManager::registerExtension('WikiAdmin', BsRUNLEVEL::FULL|BsRUNLEVEL::
 
 $wgExtensionFunctions[] = 'WikiAdmin::loadModules';
 
-$wgExtensionMessagesFiles['WikiAdmin'] = dirname( __FILE__ ) . '/WikiAdmin.i18n.php';
+$wgExtensionMessagesFiles['WikiAdmin'] = __DIR__ . '/WikiAdmin.i18n.php';
 
-$dir = dirname(__FILE__) . '/';
+$dir = __DIR__ . '/';
 // Specialpage and messages
 $wgAutoloadClasses['SpecialWikiAdmin'] = $dir . 'SpecialWikiAdmin.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
 $wgSpecialPageGroups['SpecialWikiAdmin'] = 'bluespice';

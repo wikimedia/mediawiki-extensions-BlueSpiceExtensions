@@ -1,12 +1,17 @@
 <?php
 
-BsExtensionManager::registerExtension('InsertCategory',                  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension('InsertCategory', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['InsertCategory'] = dirname( __FILE__ ) . '/InsertCategory.i18n.php';
+$wgExtensionMessagesFiles['InsertCategory'] = __DIR__ . '/languages/InsertCategory.i18n.php';
+
+$aResourceModuleTemplate = array(
+	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/InsertCategory/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/InsertCategory/resources'
+);
 
 $wgResourceModules['ext.bluespice.insertcategory'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/InsertCategory/InsertCategory.js',
-	'styles'  => 'extensions/BlueSpiceExtensions/InsertCategory/InsertCategory.css',
+	'scripts' => 'bluespice.insertCategory.js',
+	'styles'  => 'bluespice.insertCategory.css',
 	'messages' => array(
 		'bs-insertcategory-button_title',
 		'bs-insertcategory-title',
@@ -23,8 +28,15 @@ $wgResourceModules['ext.bluespice.insertcategory'] = array(
 		'bs-insertcategory-new_category_btn',
 		'bs-insertcategory-tb_2',
 		'bs-insertcategory-success',
-		'bs-insertcategory-failure'
-	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
-);
+		'bs-insertcategory-failure',
+		'bs-insertcategory-hint',
+	)
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.insertcategory.styles'] = array(
+	'styles' => 'bluespice.insertCategory.css'
+) + $aResourceModuleTemplate;
+
+unset( $aResourceModuleTemplate );
+
+$wgAjaxExportList[] = 'InsertCategory::addCategoriesToArticle';

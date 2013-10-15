@@ -1,0 +1,358 @@
+/**
+ * Js for ArticleInfo extension
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+
+ * @package    Bluespice_Extensions
+ * @subpackage ArticleInfo
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+/**
+ * Base class for all ArticleInfo related methods and properties
+ */
+BsChecklist = {
+
+	checkboxImage: 'extensions/BlueSpiceExtensions/Checklist/resources/images/checkbox.png',
+	checkboxImageChecked: 'extensions/BlueSpiceExtensions/Checklist/resources/images/checked.png',
+	checkboxStyle: 'color:transparent;width:12px;height:12px;border:0px;background-color:transparent;background-repeat:no-repeat;',
+	optionsLists: [],
+	menuButton: false,
+	
+	init: function () {
+		/*alert('check');*/
+	},
+			
+	click: function(elem) {
+		$.ajax({
+			type: "GET",
+			url: bs.util.getAjaxDispatcherUrl( 'Checklist::doChangeCheckItem' ),
+			data: {
+				pos:elem.id,
+				value:elem.checked,
+				articleId:mw.config.get('wgArticleId')
+			},
+			//dataType: 'html',
+			success: function(result){ // the returned value is passed back as a _result_
+				//alert(result);
+			}
+		});
+	},
+	
+	change: function(elem) {
+		elem.style.color=elem.options[elem.selectedIndex].style.color;
+		$.ajax({
+			type: "GET",
+			url: bs.util.getAjaxDispatcherUrl( 'Checklist::doChangeCheckItem' ),
+			data: {
+				pos:elem.id,
+				value:$('#'+elem.id).find(":selected").text(),
+				articleId:mw.config.get('wgArticleId')
+			},
+			//dataType: 'html',
+			success: function(result){ // the returned value is passed back as a _result_
+				//alert(result);
+			}
+		});
+	},
+	
+	getOptionsList: function(listId) {
+		if ( listId in BsChecklist.optionsLists ) {
+			return BsChecklist.optionsLists[listId];
+		}
+		
+		$.ajax({
+			type: "GET",
+			url: bs.util.getAjaxDispatcherUrl( 'Checklist::getOptionsList' ),
+			async: false,
+			data: {
+				listId:listId
+			},
+			//dataType: 'html',
+			success: function(result){ // the returned value is passed back as a _result_
+				BsChecklist.optionsLists[listId] = eval(result);
+			}
+		});
+		
+		return BsChecklist.optionsLists[listId];
+	},
+	
+	changeSelect: function(elem) {
+		var value = $(elem).find(":selected").text();
+		tinymce.activeEditor.dom.setAttrib(elem.parentNode, 'data-bs-value', value);
+	},
+	
+	makeCheckbox: function(checked) {
+		var innerText;
+		innerText = '<button contentEditable="false" class="bsClickableElement" ';
+		innerText += 'style="'+BsChecklist.checkboxStyle+'background-image:url(\'';
+		if (checked) {
+			innerText += BsChecklist.checkboxImageChecked;
+		} else {
+			innerText += BsChecklist.checkboxImage;
+		}
+		innerText += '\');" />';
+		return innerText;
+	},
+
+	makeSelectbox: function(listname, valueText) {
+		var options = BsChecklist.getOptionsList(listname);
+		var innerText = '<select contenteditable="false" class="bsClickableElement" onchange="this.style.color=this.options[this.selectedIndex].style.color;parent.BsChecklist.changeSelect(this);" {color}>';
+		var selectedColor = '';
+		for (var i = 0; i<options.length; i++) {
+			var optionSet = options[i].split("|");
+			var optionValue = optionSet[0];
+			var optionColor = optionSet[1];
+			
+			if ( !selectedColor && optionColor ) selectedColor = 'style="color:'+optionColor+';" ';
+			
+			innerText += '<option ';
+			if ( optionColor ) innerText += 'style="color:'+optionColor+';" ';
+			if ( optionValue == valueText ) {
+				if ( optionColor ) selectedColor = 'style="color:'+optionColor+';" '
+				innerText += 'selected="selected"'
+			}
+			innerText += '>'+optionValue+'</option>';
+		}
+		innerText += '</select>';
+		innerText = innerText.replace("{color}", selectedColor);
+		return innerText;
+	},
+	
+	makeAndRegisterCheckboxSpecialTag: function(ed, checked) {
+		var id = ed.plugins.bswikicode.getSpecialTagList().length;
+		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist value="" />');
+		var node = ed.dom.create(
+				'span', 
+				{
+					'id'              : "bs_specialtag:@@@ST"+id+"@@@",
+					'class'           : "mceNonEditable tag",
+					'data-bs-name'    : "bs:checklist",
+					'data-bs-type'    : "tag",
+					'data-bs-id'      : id,
+					'data-bs-value'   : "false",
+					'data-bs-cbtype'  : "checkbox"
+				}, 
+				BsChecklist.makeCheckbox(checked));
+		return node;
+	},
+	
+	makeAndRegisterSelectboxSpecialTag: function(ed, listname, value) {
+		var id = ed.plugins.bswikicode.getSpecialTagList().length;
+		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist type="list" value="" list="'+listname+'"/>');
+		var node = ed.dom.create(
+				'span', 
+				{
+					'id'              : "bs_specialtag:@@@ST"+id+"@@@",
+					'class'           : "mceNonEditable tag",
+					'data-bs-name'    : "bs:checklist",
+					'data-bs-type'    : "tag",
+					'data-bs-id'      : id,
+					'data-bs-value'   : "false",
+					'data-bs-cbtype'  : "list"
+				}, 
+				BsChecklist.makeSelectbox(listname, value));
+		return node;
+	}
+}
+
+$(document).ready(function() {
+	BsChecklist.init();
+});
+
+$(document).on( "BSVisualEditorRenderSpecialTag", function( event, sender, type, st){
+	if ( type != 'bs:checklist' ) return false;
+	var ed = tinymce.activeEditor;
+	var specialtag = ed.dom.createFragment(st[0]).childNodes[0];
+	
+	var cbt = ed.dom.getAttrib(specialtag, 'type', 'checkbox');
+	var valueText = ed.dom.getAttrib(specialtag, 'value', 'false');
+	var listText = ed.dom.getAttrib(specialtag, 'list', '');
+
+	var innerText;
+	if (cbt == 'checkbox' ) {
+		if (valueText == 'checked') {
+			innerText = BsChecklist.makeCheckbox(true);
+		} else {
+			innerText = BsChecklist.makeCheckbox(false);
+		}
+	} else if (cbt == 'list' ) {
+		innerText = BsChecklist.makeSelectbox(listText, valueText);
+	}
+	
+	var moreAttribs = 'data-bs-value="'+valueText+'"';
+	moreAttribs += ' data-bs-cbtype="'+cbt+'"';
+	
+	return {
+		"innerText":innerText, 
+		"moreAttribs":moreAttribs
+	};
+});
+
+$(document).on( "BSVisualEditorRecoverSpecialTag", function( event, sender, specialTagMatch, innerText){
+	if( specialTagMatch == null ) return false;
+	var valueregex = '<.*?data-bs-value="(.*?)"[^>]*?>';
+	var valueMatcher = new RegExp(valueregex, '');
+	var value = valueMatcher.exec(specialTagMatch[1]);
+	var valueText;
+	if (value) {
+		valueText = value[1];
+	} else {
+		valueText = '';
+	}
+	var newInnerText = innerText.replace(/value="(.*?)"/, 'value="'+valueText+'"');
+	return {
+		"innerText":newInnerText
+	}
+});
+
+$(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e, dataname){
+	if ( dataname == 'bs:checklist' ) {
+		var cbtype = ed.dom.getAttrib(e.target.parentNode, 'data-bs-cbtype');
+		
+		if ( !cbtype ) {
+			cbtype = 'checkbox';
+		}
+		
+		var value = ed.dom.getAttrib(e.target.parentNode, 'data-bs-value');
+
+		if (cbtype == 'checkbox' ) {
+			if (value == 'checked') {
+				value = 'false';
+				ed.dom.setStyle(e.target, 'background-image', "url('"+BsChecklist.checkboxImage+"')");
+			} else {
+				value = 'checked';
+				ed.dom.setStyle(e.target, 'background-image', "url('"+BsChecklist.checkboxImageChecked+"')");
+			}
+		}
+		
+		ed.dom.setAttrib(e.target.parentNode, 'data-bs-value', value);
+	}
+});
+
+$(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, commands) {
+	var t = plugin;
+	var ed = t.getEditor();
+	
+	var menuItems = [];
+	
+	menuItems.push({text: '-'});
+	
+	menuItems.push({
+		text: mw.message('bs-checklist-menu_insert_checkbox').plain(),
+		value: 'Checkbox',
+		onclick:function(){
+			ed.execCommand('mceBsCheckbox', false);
+		}
+	});
+	
+	menuItems.push({
+		text: mw.message('bs-checklist-menu_insert_list_title').plain(),
+		onclick: function() {
+			// Open window
+			ed.windowManager.open({
+				title: mw.message('bs-checklist-dlg_insert_list_title').plain(),
+				body: [{
+						type: 'textbox',
+						name: 'title',
+						label: mw.message('bs-checklist-dlg_insert_list_value_list').plain()
+				}],
+				onsubmit: function(e) {
+					// Insert content when the window form is submitted
+					ed.execCommand('mceBsSelectbox', false, e.data.title);
+				}
+			})
+		}
+	});
+	
+	ed.addButton('bscheckbox', {
+		title: mw.message('bs-checklist-button_checkbox_title').plain(),
+		cmd: 'mceBsCheckbox',
+		type: 'splitbutton',
+		//icon: 'image',
+		menu: menuItems,
+		onPostRender: function() {
+			var self = this;
+			BsChecklist.menuButton = this;
+			ed.on('NodeChange', function(evt) {
+				//this is experimental
+				$("#wpTextbox1_ifr").contents().find(".tag:not([id])").each(function(index, value) {
+					var node = BsChecklist.makeAndRegisterCheckboxSpecialTag(ed, false);
+					$(value).replaceWith(node);
+					//evt.target.selection.collapse(false);
+				});
+				
+				if ( evt.target.selection.isCollapsed() ) {
+					self.disabled(false);
+				} else {
+					self.disabled(true);
+				}
+			});
+		},
+		
+		onShow: function(e) {
+			var listKeys = [];
+			e.control.items().each(function(index,value) {
+				listKeys.push(index.text());
+			});
+			for ( var thekey in BsChecklist.optionsLists ) {
+				if ( typeof BsChecklist.optionsLists[thekey] === 'function' ) continue;
+				if ( $.inArray( thekey, listKeys ) == -1 ) {
+					var menuItem = new tinymce.ui.MenuItem({
+							text: thekey,
+							value : thekey,
+							onclick:function(e){
+								ed.execCommand('mceBsSelectbox', false, this.value());
+							}
+						});
+					e.control.prepend(menuItem);
+				}
+			}
+		}
+
+	});
+
+	ed.addCommand('mceBsCheckbox', function(ui, value) {
+		//needed in FF, apparently to init selection
+		ed.selection.getBookmark();
+		//only insert if selection is collapsed
+		if ( ed.selection.isCollapsed() ) {
+			var node = BsChecklist.makeAndRegisterCheckboxSpecialTag(ed, false);
+			ed.dom.insertAfter(node, ed.selection.getNode());
+			//Place cursor to end
+			ed.selection.select(node, false);
+			ed.selection.collapse(false);
+		}
+		return;
+	});
+	
+	commands.push({
+		commandId: 'checkbox',
+		commandCallback: function(ui, v) {
+			this.execCommand('mceBsCheckbox', ui, v);
+		}
+	});
+	
+	ed.addCommand('mceBsSelectbox', function(ui, value) {
+		//needed in FF, apparently to init selection
+		ed.selection.getBookmark();
+		//only insert if selection is collapsed
+		if ( ed.selection.isCollapsed() ) {
+			var node = BsChecklist.makeAndRegisterSelectboxSpecialTag(ed, value, '');
+			ed.dom.insertAfter(node, ed.selection.getNode());
+			//Place cursor to end
+			ed.selection.select(node, false);
+			ed.selection.collapse(false);
+		}
+		return;
+	});
+
+	commands.push({
+		commandId: 'selectbox',
+		commandCallback: function(ui, v) {
+			this.execCommand('mceBsSelectbox', ui, v);
+		}
+	});
+});

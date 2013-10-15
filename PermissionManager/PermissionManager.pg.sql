@@ -3,7 +3,7 @@
 -- Part of BlueSpice for MediaWiki
 --
 -- @author     Thomas Lorenz <lorenz@hallowelt.biz>
--- @version    $Id: PermissionManager.pg.sql 7453 2012-11-22 14:42:00Z pwirth $
+
 -- @package    BlueSpice_Extensions
 -- @subpackage PermissionManager
 -- @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

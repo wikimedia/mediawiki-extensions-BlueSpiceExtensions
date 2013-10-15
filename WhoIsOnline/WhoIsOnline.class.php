@@ -24,7 +24,6 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: WhoIsOnline.class.php 9745 2013-06-14 12:09:29Z pwirth $
  * @package    BlueSpice_Extensions
  * @subpackage WhoIsOnline
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -79,9 +78,6 @@ class WhoIsOnline extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['WhoIsOnline'] = dirname( __FILE__ ) . '/WhoIsOnline.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
@@ -89,8 +85,8 @@ class WhoIsOnline extends BsExtensionMW {
 			EXTINFO::NAME        => 'WhoIsOnline',
 			EXTINFO::DESCRIPTION => 'Displays a list of users who are currently online.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice' => '1.22.0'
@@ -98,10 +94,6 @@ class WhoIsOnline extends BsExtensionMW {
 		);
 
 		$this->mExtensionKey = 'MW::WhoIsOnline';
-
-		$this->registerView( 'ViewWhoIsOnlineTag' );
-		$this->registerView( 'ViewWhoIsOnlineItemWidget' );
-		$this->registerView( 'ViewWhoIsOnlineWidget' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -140,7 +132,7 @@ class WhoIsOnline extends BsExtensionMW {
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtModifiedFields, $wgExtNewIndexes, $wgExtNewFields;
-		$sDir = dirname( __FILE__ ) . DS;
+		$sDir = __DIR__ . DS;
 
 		if( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[] = array( 'bs_whoisonline', $sDir . 'whoisonline.sql' );
@@ -194,8 +186,8 @@ class WhoIsOnline extends BsExtensionMW {
 		$oTitle = $oSkin->getTitle();
 		if( !$oTitle->userCan('read') ) return true;
 
-		BsExtensionManager::setContext('MW::WhoIsOnline::Show');
-		$oOutputPage->addModules('ext.bluespice.whoisonline');
+		BsExtensionManager::setContext( 'MW::WhoIsOnline::Show' );
+		$oOutputPage->addModules( 'ext.bluespice.whoisonline' );
 		return true;
 	}
 
@@ -206,15 +198,15 @@ class WhoIsOnline extends BsExtensionMW {
 			'id' => 'bs:whoisonlinecount',
 			'type' => 'tag',
 			'name' => 'whoisonlinecount',
-			'desc' => wfMsgExt( 'bs-whoisonline-tag-whoisonlinecount-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinecount-desc' )->plain(),
 			'code' => '<bs:whoisonlinecount />',
 		);
-		
+
 		$oResponse->result[] = array(
 			'id' => 'bs:whoisonlinepopup',
 			'type' => 'tag',
 			'name' => 'whoisonlinepopup',
-			'desc' => wfMsgExt( 'bs-whoisonline-tag-whoisonlinepopup-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinepopup-desc' )->plain(),
 			'code' => '<bs:whoisonlinepopup />',
 		);
 		
@@ -232,8 +224,8 @@ class WhoIsOnline extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array(
 			'options' => array(
-				wfMsg( 'bs-whoisonline-pref-sort-name' ) => 'name',
-				wfMsg( 'bs-whoisonline-pref-sort-time' ) => 'onlinetime',
+				wfMessage( 'bs-whoisonline-pref-sort-name' )->plain() => 'name',
+				wfMessage( 'bs-whoisonline-pref-sort-time' )->plain() => 'onlinetime',
 			)
 		);
 		return $aPrefs;
@@ -260,9 +252,9 @@ class WhoIsOnline extends BsExtensionMW {
 		$oWidgetView = new ViewWidget();
 		$oWidgetView
 			->setId( 'bs-whoisonline' )
-			->setTitle( wfMsg( 'bs-whoisonline-widget-title' ) )
+			->setTitle( wfMessage( 'bs-whoisonline-widget-title' )->plain() )
 			->setBody( $this->getPortlet(false, BsConfig::get('MW::WhoIsOnline::LimitCount') )->execute() )
-			->setTooltip( wfMsg( 'bs-whoisonline-widget-title' ) )
+			->setTooltip( wfMessage( 'bs-whoisonline-widget-title' )->plain() )
 			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-whoisonline-portlet' ) ); //For correct margin and fontsize
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -409,7 +401,7 @@ class WhoIsOnline extends BsExtensionMW {
 			$oWhoIsOnlineItemWidgetView = new ViewWhoIsOnlineItemWidget();
 			$oWhoIsOnlineItemWidgetView->setOption( 'renderLink', BsConfig::get( 'MW::WhoIsOnline::LinkUsers' ) );
 			$oWhoIsOnlineItemWidgetView->setUserName( $oUser->getName() );
-			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mAdapter->getUserDisplayName( $oUser ) );
+			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mCore->getUserDisplayName( $oUser ) );
 			$oWhoIsOnlineWidgetView->addItem( $oWhoIsOnlineItemWidgetView );
 			$iCount++;
 		}
@@ -436,7 +428,7 @@ class WhoIsOnline extends BsExtensionMW {
 
 		global $wgUser, $wgRequest;
 		$this->insertTrace( $oTitle, $wgUser, $wgRequest );
-		
+
 		$aWhoIsOnline = $this->getWhoIsOnline();
 		$aSingleResult['count'] = count( $aWhoIsOnline );
 
@@ -446,7 +438,7 @@ class WhoIsOnline extends BsExtensionMW {
 			$oWhoIsOnlineItemWidgetView = new ViewWhoIsOnlineItemWidget();
 			$oWhoIsOnlineItemWidgetView->setOption( 'renderLink', BsConfig::get( 'MW::WhoIsOnline::LinkUsers' ) );
 			$oWhoIsOnlineItemWidgetView->setUserName( $oUser->getName() );
-			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mAdapter->getUserDisplayName( $oUser ) );
+			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mCore->getUserDisplayName( $oUser ) );
 			$aSingleResult['portletItems'][] = $oWhoIsOnlineItemWidgetView->execute();
 		}
 
@@ -565,4 +557,5 @@ class WhoIsOnline extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
 	}
+
 }

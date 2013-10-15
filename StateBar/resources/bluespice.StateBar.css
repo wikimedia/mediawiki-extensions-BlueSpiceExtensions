@@ -4,7 +4,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: StateBar.css 9618 2013-06-05 14:44:43Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage StateBar
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -14,11 +14,9 @@
 
 #bs-statebar {
     background: #f3f3f3;
-    padding: 3px 8px 3px 8px;
-    min-height: 24px;
+    min-height: 35px;
     width: auto;
 }
-
 .bs-statebar-viewtoggler {
     cursor: pointer;
 }
@@ -50,6 +48,8 @@
 }
 
 .bs-statebar-body-item {
+	display: inline-block !important;
+	vertical-align: top;
     padding: 4px 6px;
     /*float: left;*/
 }

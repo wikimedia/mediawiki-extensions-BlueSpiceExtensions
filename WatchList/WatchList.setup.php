@@ -1,5 +1,5 @@
 <?php
 
-BsExtensionManager::registerExtension('WatchList',                       BsRUNLEVEL::FULL);
+BsExtensionManager::registerExtension('WatchList',                       BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['WatchList'] = dirname( __FILE__ ) . '/WatchList.i18n.php';
+$wgExtensionMessagesFiles['WatchList'] = __DIR__ . '/WatchList.i18n.php';

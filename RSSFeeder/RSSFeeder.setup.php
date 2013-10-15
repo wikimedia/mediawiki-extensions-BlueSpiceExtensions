@@ -1,13 +1,18 @@
 <?php
 
-BsExtensionManager::registerExtension('RSSFeeder',                       BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension('RSSFeeder', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$dir = dirname( __FILE__ );
-$wgExtensionMessagesFiles['RSSFeeder']      = $dir . '/RSSFeeder.i18n.php';
-$wgExtensionMessagesFiles['RSSFeederAlias'] = $dir . '/SpecialRSSFeeder.alias.php';
+$wgExtensionMessagesFiles['RSSFeeder']      = __DIR__ . '/languages/RSSFeeder.i18n.php';
+$wgExtensionMessagesFiles['RSSFeederAlias'] = __DIR__ . '/languages/SpecialRSSFeeder.alias.php';
 
-$wgAutoloadClasses['SpecialRSSFeeder'] = $dir . '/SpecialRSSFeeder.class.php';
+$wgAutoloadClasses['SpecialRSSFeeder'] = __DIR__ . '/includes/specials/SpecialRSSFeeder.class.php';
+$wgAutoloadClasses['RSSCreator']       = __DIR__ . '/includes/RSSCreator.php';
 
 $wgSpecialPageGroups['RSSFeeder'] = 'bluespice';
-
 $wgSpecialPages['RSSFeeder'] = 'SpecialRSSFeeder';
+
+$wgResourceModules['ext.bluespice.rssFeeder'] = array(
+	'styles' => 'bluespice.rssFeeder.css',
+	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/RSSFeeder/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/RSSFeeder/resources',
+);

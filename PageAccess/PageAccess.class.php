@@ -29,7 +29,7 @@
  * $LastChangedDate: 2013-06-21 15:41:20 +0200 (Fr, 21 Jun 2013) $
  * $LastChangedBy: mreymann $
  * $Rev: 9848 $
- * $Id: PageAccess.class.php 9848 2013-06-21 13:41:20Z mreymann $
+
  */
 /* Changelog
  * v1.20.0
@@ -45,8 +45,6 @@ class PageAccess extends BsExtensionMW {
 
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['PageAccess'] = dirname( __FILE__ ) . '/PageAccess.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -55,8 +53,8 @@ class PageAccess extends BsExtensionMW {
 			EXTINFO::NAME => 'PageAccess',
 			EXTINFO::DESCRIPTION => 'Controls access on page level.',
 			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION => '1.22.0 ($Rev: 9848 $)',
-			EXTINFO::STATUS => 'stable',
+			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
 		);
@@ -80,17 +78,11 @@ class PageAccess extends BsExtensionMW {
 		$oEditInfo = $article->prepareTextForEdit( $text, null, $user ); 
 		$sAccessGroups = $oEditInfo->output->getProperty( 'bs-page-access' );
 		if ( !$this->checkAccessGroups( $user, $sAccessGroups ) ) {
-			if ( version_compare( $wgVersion, '1.18.0', '<' ) ) {
-				throw new MWException( "Lockout prevented in " . __METHOD__ );
-				return false;
-			}
-			else {
-				$err[0] = 'bs-pageaccess-error-not-member-of-given-groups';
-				throw new PermissionsError( 'edit', array( $err ) ); # since MW 1.18
-				return false;
-			}
+			$err[0] = 'bs-pageaccess-error-not-member-of-given-groups';
+			throw new PermissionsError( 'edit', array( $err ) ); # since MW 1.18
+			return false;
 		}
-		
+
 		# Also check if user includes forbidden templates
 		$aTemplateTitles = $this->getTemplateTitles( $text );
 		foreach ( $aTemplateTitles as $oTemplateTitle ) {
@@ -107,7 +99,7 @@ class PageAccess extends BsExtensionMW {
 				}
 			}
 		}
-		
+
 		# All seems good. Let user save.
 		return true;
 	}
@@ -115,7 +107,7 @@ class PageAccess extends BsExtensionMW {
 	/**
 	 * Returns an array of title objects that are used as templates in the given Wikitext.
 	 * @param string $sWikitext Wiki markup
-	 * @return array Title objects 
+	 * @return array Title objects
 	 */
 	public function getTemplateTitles( $sWikitext ) {
 		$sRegex = '|{{:(.*?)}}|'; # not very sophisticated but only used for lockout prevention
@@ -142,8 +134,8 @@ class PageAccess extends BsExtensionMW {
 		return (bool) array_intersect( $aAccessGroups, $aUserGroups );
 	}
 
-	
 	private static $aAllowedPairs = array(); // <page_id>-<user_id>
+
 	/**
 	 * Checks if user is allowed to view page
 	 * @param Title $oPage title or article object
@@ -167,7 +159,7 @@ class PageAccess extends BsExtensionMW {
 		self::$aAllowedPairs[$sPair] = $bHasAccess;
 		return $bHasAccess;
 	}
-	
+
 	public function onParserFirstCallInit( &$parser ) {
 		$parser->setHook( 'bs:pageaccess', array( &$this, 'onTagBsPageAccess' ) );
 		return true;
@@ -179,9 +171,9 @@ class PageAccess extends BsExtensionMW {
 		$result = false;
 		return false;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param type $input
 	 * @param string $args
 	 * @param Parser $parser
@@ -214,7 +206,7 @@ class PageAccess extends BsExtensionMW {
 			'desc' => wfMessage( 'bs-pageaccess-tag-groups-desc' )->plain(),
 			'code' => '<bs:pageaccess groups="" />',
 		);
-		
+
 		return true;
 	}
 }

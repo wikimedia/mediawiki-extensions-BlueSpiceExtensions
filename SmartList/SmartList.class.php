@@ -26,7 +26,7 @@
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: SmartList.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage SmartList
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -67,8 +67,8 @@ class SmartList extends BsExtensionMW {
 			EXTINFO::NAME        => 'SmartList',
 			EXTINFO::DESCRIPTION => 'Displays the last five changes of the wiki in a list.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel, Patric Wirth, Stephan Muggli',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
 				'bluespice' => '1.22.0'
@@ -88,6 +88,10 @@ class SmartList extends BsExtensionMW {
 		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
+		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
+		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
 		BsConfig::registerVar('MW::SmartList::Count', 5, BsConfig::LEVEL_USER | BsConfig::TYPE_INT, 'bs-smartlist-pref-Count', 'int');
 		BsConfig::registerVar('MW::SmartList::Namespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Namespaces', 'multiselectex');
@@ -151,12 +155,176 @@ class SmartList extends BsExtensionMW {
 			case 'ExcludeNamespaces' :
 				$aPrefs = array(
 					'type' => 'multiselectex',
-					'options' => BsAdapterMW::getNamespacesForSelectOptions( array( NS_SPECIAL ) ),
+					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL ) ),
 				);
 				break;
 		}
 
 		return $aPrefs;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
+	 * 
+	 * @param array &$aPortlets reference to array portlets
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
+		$aPortlets[] = array(
+						'type'  => 'BS.SmartList.MostEditedPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
+						),
+						'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain(),
+						'description' => wfMessage( 'bs-smartlist-mosteditedpagesdesc' )->plain()
+		);
+		$aPortlets[] = array(
+						'type'  => 'BS.SmartList.MostVisitedPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
+						),
+						'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain(),
+						'description' => wfMessage( 'bs-smartlist-mostvisitedpagesdesc' )->plain()
+		);
+		$aPortlets[] = array(
+						'type'  => 'BS.SmartList.MostActivePortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
+						),
+						'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain(),
+						'description' => wfMessage( 'bs-smartlist-mostactiveusersdesc' )->plain()
+		);
+
+		return true;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
+	 * 
+	 * @param object $oCaller caller instance
+	 * @param array &$aPortalConfig reference to array portlet configs
+	 * @param boolean $bIsDefault default
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$aPortalConfig[0][] = array(
+						'type'  => 'BS.SmartList.MostVisitedPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
+						)
+		);
+		$aPortalConfig[1][] = array(
+						'type'  => 'BS.SmartList.MostEditedPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
+						)
+		);
+		$aPortalConfig[2][] = array(
+						'type'  => 'BS.SmartList.MostActivePortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
+						)
+		);
+
+		return true;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsUserDashboardPortalPortlets
+	 * 
+	 * @param array &$aPortlets reference to array portlets
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsUserDashboardPortalPortlets( &$aPortlets ) {
+		$aPortlets[] = array(
+						'type'  => 'BS.SmartList.YourEditsPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-lastedits' )->plain()
+						),
+						'title' => wfMessage( 'bs-smartlist-lastedits' )->plain(),
+						'description' => wfMessage( 'bs-smartlist-lasteditsdesc' )->plain()
+		);
+
+		return true;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsUserDashboardPortalConfig
+	 * 
+	 * @param object $oCaller caller instance
+	 * @param array &$aPortalConfig reference to array portlet configs
+	 * @param boolean $bIsDefault default
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsUserDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$aPortalConfig[0][] = array(
+						'type'  => 'BS.SmartList.YourEditsPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-smartlist-lastedits' )->plain()
+						)
+		);
+
+		return true;
+	}
+
+	/**
+	 * Callback for WidgetListHelper. Adds the WhoIsOnline Widget to the list if Keyword is found.
+	 * @return ViewWidget.
+	 */
+	public function onWidgetListKeywordLastEdits() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$oWidgetView = new ViewWidget();
+		$oWidgetView
+			->setId( 'bs-smartlist-edits' )
+			->setTitle( wfMessage( 'bs-smartlist-lastedits' )->plain() )
+			->setBody( $this->getYourEdits( 5, 'widget' ) )
+			->setTooltip( wfMessage( 'bs-smartlist-lastedits' )->plain() )
+			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-widgetbar-portlet' ) ); //For correct margin and fontsize
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return $oWidgetView;
+	}
+
+	
+	/**
+	 * Generates list of your edits
+	 * @return string list of edits
+	 */
+	public function getYourEdits( $iCount, $sCaller ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$iCount = intval( $iCount );
+		$oDbr = wfGetDB( DB_SLAVE );
+		$res = $oDbr->select(
+			'revision',
+			'rev_page',
+			array( 'rev_user' => $this->getUser()->getId() ),
+			__METHOD__,
+			array(
+				'GROUP BY' => 'rev_page',
+				'ORDER BY' => 'MAX(rev_timestamp) DESC',
+				'LIMIT' => $iCount
+			)
+		);
+
+		$aEdits = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			foreach ( $res as $row ) {
+				$oTitle = Title::newFromID( $row->rev_page );
+				$sLink = Linker::link( $oTitle, BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) ) );
+				$aEdits[] = '<li>' . $sLink . '</li>';
+			}
+		} else {
+			 return wfMessage( 'bs-smartlist-noedits' )->plain();
+		}
+
+		if ( $sCaller == 'widget' ) {
+			$sEdits = '<ul>' . implode( '', $aEdits ) .'</ul>';
+		} else {
+			$sEdits = '<ol>' . implode( '', $aEdits ) .'</ol>';
+		}
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $sEdits;
 	}
 
 	/**
@@ -243,6 +411,8 @@ class SmartList extends BsExtensionMW {
 
 		$aViews[] = $oWidgetView;
 
+		$aViews[] = $this->onWidgetListKeywordLastEdits();
+
 		return true;
 	}
 
@@ -253,8 +423,10 @@ class SmartList extends BsExtensionMW {
 	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
 	 */
 	public function onBSWidgetListHelperInitKeyWords( &$aKeywords, $oTitle ) {
+		$aKeywords['YOUREDITS'] = array( $this, 'onWidgetListKeywordLastEdits' );
 		$aKeywords['INFOBOX']   = array( $this, 'onWidgetListKeyword' );
 		$aKeywords['SMARTLIST'] = array( $this, 'onWidgetListKeyword' );
+
 		return true;
 	}
 
@@ -265,7 +437,8 @@ class SmartList extends BsExtensionMW {
 	public function onWidgetListKeyword() {
 		$aTmpViews = array();
 		$this->onBSWidgetBarGetDefaultWidgets( $aTmpViews, null, null );
-		return $aTmpViews[0];
+
+		return $aTmpViews;
 	}
 
 	/**
@@ -333,6 +506,7 @@ class SmartList extends BsExtensionMW {
 		$aArgs['showns']              = BsCore::sanitizeArrayEntry( $aArgs, 'showns',      true,            BsPARAMTYPE::BOOL );
 		$aArgs['numwithtext']         = BsCore::sanitizeArrayEntry( $aArgs, 'numwithtext', 100,             BsPARAMTYPE::INT );
 		$aArgs['meta']                = BsCore::sanitizeArrayEntry( $aArgs, 'meta', false,                  BsPARAMTYPE::BOOL );
+		$aArgs['new']                 = BsCore::sanitizeArrayEntry( $aArgs, 'new',         true,            BsPARAMTYPE::BOOL );
 
 		$oSmartListView = new ViewBaseElement();
 		if ( !empty( $aArgs['heading'] ) ) {
@@ -391,23 +565,23 @@ class SmartList extends BsExtensionMW {
 		 * Validation of namespaces and categories
 		 */
 		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['categoryMode'], array( 'fullResponse' => true, 'setname' => 'catmode', 'set' => array( 'AND', 'OR' ) ) );
-		if ($oValidationResult->getErrorCode()) {
+		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
 		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['period'], array( 'fullResponse' => true, 'setname' => 'period', 'set' => array('-', 'day', 'week', 'month') ) );
-		if ($oValidationResult->getErrorCode()) {
+		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
 		$oValidationResult = BsValidator::isValid( 'PositiveInteger', $aArgs['trim'], array( 'fullResponse' => true) );
-		if ($oValidationResult->getErrorCode()) {
+		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
 		$oValidationResult = BsValidator::isValid( 'PositiveInteger', $aArgs['trimtext'], array( 'fullResponse' => true ) );
-		if ($oValidationResult->getErrorCode()) {
+		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
 		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['order'], array( 'fullResponse' => true, 'setname' => 'order', 'set' => array('time', 'title') ) );
-		if ($oValidationResult->getErrorCode()) {
+		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
 
@@ -445,7 +619,7 @@ class SmartList extends BsExtensionMW {
 			}
 
 			try {
-				$aNamespaceIds = BsAdapterMW::getNamespaceIdsFromAmbiguousCSVString( $aArgs['namespaces'] );
+				$aNamespaceIds = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $aArgs['namespaces'] );
 				$aConditions[] = 'rc_namespace IN (' . implode( ',', $aNamespaceIds ) . ')';
 			} catch ( BsInvalidNamespaceException $ex ) {
 				$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
@@ -454,7 +628,7 @@ class SmartList extends BsExtensionMW {
 
 			if ( $aArgs['excludeNamespaces'] != '' ) {
 				try {
-					$aNamespaceIds = BsAdapterMW::getNamespaceIdsFromAmbiguousCSVString( $aArgs['excludeNamespaces'] );
+					$aNamespaceIds = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $aArgs['excludeNamespaces'] );
 					$aConditions[] = 'rc_namespace NOT IN (' . implode( ',', $aNamespaceIds ) . ')';
 				} catch ( BsInvalidNamespaceException $ex ) {
 					$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
@@ -516,10 +690,17 @@ class SmartList extends BsExtensionMW {
 					array( 'GROUP BY' => 'rc_title, rc_namespace', 'ORDER BY' => $sOrderSQL )
 			);
 			$iCount = 0;
-			while ( $row = $dbr->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				if ( $iCount == $aArgs['count'] ) break;
+
 				$oTitle = Title::makeTitleSafe( $row->namespace, $row->title );
+
+				if ( $aArgs['new'] == false ) {
+					if ( $oTitle->isNewPage() == true ) continue;
+				}
+
 				if ( !$oTitle->quickUserCan( 'read' ) ) continue;
+
 				$aObjectList[] = $row;
 				$iCount++;
 			}
@@ -559,8 +740,7 @@ class SmartList extends BsExtensionMW {
 				$oSmartListListEntryView = new ViewBaseElement();
 				if ( $aArgs['showtext'] && ( $iItems <= $aArgs['numwithtext'] ) ) {
 					$oSmartListListEntryView->setTemplate( '*[[:{NAMESPACE}:{TITLE}|{DISPLAYTITLE}]]{META}<br/>{TEXT}' . "\n" );
-					$oArticle = Article::newFromID( $oTitle->getArticleID() );
-					$sText = $oArticle->fetchContent();
+					$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 					$sText = BsStringHelper::shorten( $sText, array( 'max-length' => $aArgs['trimtext'], 'position' => 'end' ) );
 					$sText = '<nowiki>' . $sText . '</nowiki>';
 				} else {
@@ -595,7 +775,7 @@ class SmartList extends BsExtensionMW {
 		} else {
 			return '';
 		}
-		return $this->mAdapter->parseWikiText( $oSmartListListView->execute() );
+		return $this->mCore->parseWikiText( $oSmartListListView->execute() );
 	}
 
 	/**
@@ -625,7 +805,7 @@ class SmartList extends BsExtensionMW {
 		foreach ( $res as $row ) {
 			$oCurrentUser = User::newFromId( $row->user_id );
 			$sLink = $wgUser->getSkin()->link(
-					$oCurrentUser->getUserPage(), BsAdapterMW::getUserDisplayName( $oCurrentUser )
+					$oCurrentUser->getUserPage(), $this->mCore->getUserDisplayName( $oCurrentUser )
 			);
 			$aOut[] = $sLink;
 		}
@@ -643,6 +823,17 @@ class SmartList extends BsExtensionMW {
 	public function onTagToplist( $sInput, $aArgs, $oParser ) {
 		$oParser->disableCache();
 
+		return $this->getToplist( $sInput, $aArgs, $oParser );
+	}
+
+	/**
+	 * Generates a list of the most visisted pages
+	 * @param string $sInput Inner HTML of BsTagMToplist tag. Not used.
+	 * @param array $aArgs List of tag attributes.
+	 * @param Parser $oParser MediaWiki parser object
+	 * @return string HTML output that is to be displayed.
+	 */
+	public function getToplist( $sInput, $aArgs, $oParser ) {
 		$sCat    = BsCore::sanitizeArrayEntry( $aArgs, 'cat',           '', BsPARAMTYPE::STRING );
 		$sNs     = BsCore::sanitizeArrayEntry( $aArgs, 'ns',            '', BsPARAMTYPE::STRING );
 		$iCount  = BsCore::sanitizeArrayEntry( $aArgs, 'count',         10, BsPARAMTYPE::INT );
@@ -685,7 +876,7 @@ class SmartList extends BsExtensionMW {
 		}
 
 		if ( !empty( $sNs ) ) {
-			$iNamespaces = BsAdapterMW::getNamespaceIdsFromAmbiguousCSVString( $sNs );
+			$iNamespaces = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $sNs );
 			if ( is_array( $iNamespaces ) ) {
 				foreach ( $iNamespaces as $iNamespace ) {
 					if ( $sPeriod === 'month' ) {
@@ -742,12 +933,15 @@ class SmartList extends BsExtensionMW {
 					);
 					if ( $oViews->page_counter == '0' ) continue;
 
-					$aList['#[[:'.$oTitle->getFullText().']] (' . $oViews->page_counter . ')'] = (int)$oViews->page_counter;
+					$sLink = BsLinkProvider::makeLink( $oTitle );
+					$aList['<li>'. $sLink . ' (' . $oViews->page_counter . ')</li>'] = (int)$oViews->page_counter;
 					$iCurrCount++;
 				}
 				arsort( $aList );
 				$aList = array_keys( $aList );
+				array_unshift( $aList, '<ol>');
 			} else {
+				$aList[] = '<ol>';
 				foreach ( $res as $row ) {
 					if ( $iCurrCount == $iCount ) break;
 					if ( $row->page_counter == '0' ) continue;
@@ -758,21 +952,172 @@ class SmartList extends BsExtensionMW {
 					if ( $bCategories === true ) {
 						$aParents = array_keys( $oTitle->getParentCategories() );
 						$aResult  = array_diff( $aPrefixedCategories, $aParents );
-						if ( !empty( $aResult ) ) {
-							continue;
-						}
+						if ( !empty( $aResult ) ) continue;
 					}
 
-					$aList[] = '#[[:'.$oTitle->getFullText().']] (' . $row->page_counter . ')';
+					$sLink = BsLinkProvider::makeLink( $oTitle );
+					$aList[] = '<li>' . $sLink . ' (' . $row->page_counter . ')</li>';
 					$iCurrCount++;
 				}
 			}
+			$aList[] = '</ol>';
 
 			$oDbr->freeResult( $res );
-			return "\n" . $oParser->recursiveTagParse( implode( "\n", $aList ) );
+			return "\n" . implode( "\n", $aList );
 		}
 
 		$oDbr->freeResult( $res );
 		return wfMessage( 'bs-smartlist-toplist-noresults' )->plain();
 	}
+
+	/**
+	 * Generates list of most edited pages
+	 * @return String list of pages or empty
+	 */
+	public function getEditedPages( $iCount, $sTime ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+		$iCount = intval( $iCount );
+
+		$aConditions = array();
+		if ( $sTime === 'month' ) {
+			$this->getTimestampForQuery( $aConditions );
+		}
+
+		$res = $oDbr->select(
+				'revision',
+				array(
+					'COUNT(rev_page) as page_counter',
+					'rev_page'
+				),
+				$aConditions,
+				__METHOD__,
+				array(
+					'GROUP BY' => 'rev_page',
+					'ORDER BY' => 'page_counter DESC',
+					'LIMIT' => $iCount
+				)
+		);
+
+		$aList = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			$aList[] = '<ol>';
+
+			foreach ( $res as $row ) {
+				$oTitle = Title::newFromID( $row->rev_page );
+				$sLink = BsLinkProvider::makeLink( $oTitle );
+				$aList[] = '<li>' . $sLink . ' (' . $row->page_counter . ')</li>';
+			}
+
+			$aList[] = '</ol>';
+		}
+
+		$oDbr->freeResult( $res );
+		return implode( "\n", $aList );
+	}
+
+	/**
+	 * Generates list of most edited pages
+	 * @return String list of pages or empty
+	 */
+	public function getActivePortlet( $iCount, $sTime ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+		$iCount = intval( $iCount );
+
+		$aConditions = array();
+		if ( $sTime === 'month' ) {
+			$this->getTimestampForQuery( $aConditions );
+		}
+
+		$res = $oDbr->select(
+				'revision',
+				array(
+					'COUNT(rev_user) as edit_count',
+					'rev_user'
+				),
+				$aConditions,
+				__METHOD__,
+				array(
+					'GROUP BY' => 'rev_user',
+					'ORDER BY' => 'edit_count DESC'
+				)
+		);
+
+		$aList = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			$aList[] = '<ol>';
+
+			$i = 1;
+			foreach ( $res as $row ) {
+				if ( $i > $iCount ) break;
+				$oUser = User::newFromId( $row->rev_user );
+				if ( $oUser->isIP( $oUser->getName() ) ) continue;
+
+				$oTitle = Title::makeTitle( NS_USER, $oUser->getName() );
+				$sLink = BsLinkProvider::makeLink( $oTitle );
+				$aList[] = '<li>' . $sLink . ' (' . $row->edit_count . ')</li>';
+				$i++;
+			}
+
+			$aList[] = '</ol>';
+		}
+
+		$oDbr->freeResult( $res );
+		return implode( "\n", $aList );
+	}
+
+	/**
+	 * Returns timestamp for portlet queries, at at moment just for month
+	 *
+	 * @param aray &$aConditions reference to array of conditions
+	 * @return boolean always true
+	 */
+	public function getTimestampForQuery( &$aConditions ) {
+		$iMonth = 30 * 24 * 60 * 60;
+		$iTimeStamp = wfTimestamp( TS_UNIX ) - $iMonth;
+		$iTimeStamp = wfTimestamp( TS_MW, $iTimeStamp );
+		$aConditions = array( 'rev_timestamp >= '.$iTimeStamp );
+
+		return true;
+	}
+
+	/**
+	 * Returns list of most visited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sTime timespan
+	 * @return string most visited pages
+	 */
+	public static function getMostVisitedPages( $iCount, $sTime ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'period' => $sTime ), null );
+	}
+
+	/**
+	 * Returns list of most edited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sTime timespan
+	 * @return string most edited pages
+	 */
+	public static function getMostEditedPages( $iCount, $sTime ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getEditedPages( $iCount, $sTime );
+	}
+
+	/**
+	 * Returns list of most edited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sTime timespan
+	 * @return string most edited pages
+	 */
+	public static function getMostActivePortlet( $iCount, $sTime ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getActivePortlet( $iCount, $sTime );
+	}
+
+	/**
+	 * Returns list of most edited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sCaller caller
+	 * @return string most edited pages
+	 */
+	public static function getYourEditsPortlet( $iCount, $sCaller ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getYourEdits( $iCount, $sCaller );
+	}
+
 }

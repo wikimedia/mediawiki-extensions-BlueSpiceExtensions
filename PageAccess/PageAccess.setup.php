@@ -3,7 +3,7 @@
 BsExtensionManager::registerExtension('PageAccess',                      BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
 // Messages
-$wgExtensionMessagesFiles['PageAccess'] = dirname( __FILE__ ) . '/PageAccess.i18n.php';
+$wgExtensionMessagesFiles['PageAccess'] = __DIR__ . '/PageAccess.i18n.php';
 
 // Specialpage
 $wgAutoloadClasses['SpecialPageAccess'] = __DIR__ . '/includes/specials/SpecialPageAccess.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)

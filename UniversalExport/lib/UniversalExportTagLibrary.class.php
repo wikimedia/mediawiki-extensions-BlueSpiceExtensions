@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: UniversalExportTagLibrary.class.php 7401 2012-11-20 10:12:48Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UniversalExport
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

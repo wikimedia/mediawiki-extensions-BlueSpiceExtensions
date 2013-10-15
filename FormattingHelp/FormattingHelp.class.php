@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    1.22.0 stable
- * @version    $Id: FormattingHelp.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage FormattingHelp
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -53,21 +53,20 @@ class FormattingHelp extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['FormattingHelp'] = dirname( __FILE__ ) . '/FormattingHelp.i18n.php';
-		// Base settings
+
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'FormattingHelp',
 			EXTINFO::DESCRIPTION => 'Displays a help screen in the wiki edit view.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
 		$this->mExtensionKey = 'MW::FormattingHelp';
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -76,31 +75,19 @@ class FormattingHelp extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->setHook('AlternateEdit');
-
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler('FormattingHelp', $this, 'getFormattingHelp', 'edit');
-		$this->registerScriptFiles(
-			BsConfig::get('MW::ScriptPath').'/extensions/BlueSpiceExtensions/FormattingHelp', 'FormattingHelp', true, false, true, 'MW::FormattingHelp::Show' 
-		);
-		$this->registerStyleSheet(
-			BsConfig::get('MW::ScriptPath').'/extensions/BlueSpiceExtensions/FormattingHelp/FormattingHelp.css', false, 'MW::FormattingHelp::Show'
-		);
+		$this->setHook('BSExtendedEditBarBeforeEditToolbar');
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
+	
+	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
+		$this->getOutput()->addModuleStyles('ext.bluespice.formattinghelp.styles');
+		$this->getOutput()->addModules('ext.bluespice.formattinghelp');
 
-	/**
-	 * Registers edit button in wiki code view. Called by MediaWiki AlternateEdit hook
-	 * @return bool allow other hooked methods to be executed. Always true. 
-	 */
-	public function onAlternateEdit() {
-		BsExtensionManager::setContext( 'MW::FormattingHelp::Show' );
-		$this->mAdapter->addEditButton( 'FormattingHelp', array(
-			'id'	=> 'fh_button',
-			'msg'	=> wfMsg( 'bs-formattinghelp-formatting' ),
-			'image' => '/extensions/BlueSpiceExtensions/FormattingHelp/images/btn_format-help.gif',
-			'onclick' => "FormattingHelp.toggle();"
-		));
+		$aRows[0]['editing'][20] = 'bs-editbutton-formattinghelp';
 
+		$aButtonCfgs['bs-editbutton-formattinghelp'] = array(
+			'tip' => wfMessage( 'bs-formattinghelp-formatting' )->plain()
+		);
 		return true;
 	}
 
@@ -109,24 +96,30 @@ class FormattingHelp extends BsExtensionMW {
 	 * @param string $sOutput rendered HTML output that is to be displayed.
 	 * @return bool allow other hooked methods to be executed. Always true. 
 	 */
-	public function getFormattingHelp( &$sOutput ) {
-		if ( isset( $this->mAdapter->get( 'User' )->mOptions['language'] ) ) $lang = $this->mAdapter->get( 'User' )->mOptions['language'];
+	public static function getFormattingHelp() {
+		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
 
-		$oTitle = Title::makeTitle( 8, 'FormattingHelp/'.$lang );
+		global $wgUser;
+		$lang = $wgUser->getOption( 'language' );
+		if ( empty( $lang ) ) {
+			global $wgContLang;
+			$lang = $wgContLang;
+		}
+
+		$oTitle = Title::makeTitle( NS_MEDIAWIKI, 'FormattingHelp/'.$lang );
 		if ( !$oTitle->exists() ) {
-			$oTitle = Title::makeTitle( 8, 'FormattingHelp' );
+			$oTitle = Title::makeTitle( NS_MEDIAWIKI, 'FormattingHelp' );
 		}
 
 		$oFormattinghelpArticle = new Article( $oTitle );
 		$sOutput = $oFormattinghelpArticle->getContent();
 
 		if ( $sOutput ) {
-			$sOutput = $this->mAdapter->parseWikiText( $sOutput );
+			$sOutput = $this->mCore->parseWikiText( $sOutput );
 		} else {
-			$sOutput = wfMsg( 'bs-formattinghelp-help-text' );
+			$sOutput = wfMessage( 'bs-formattinghelp-help-text' )->plain();
 		}
 
-		return true;
+		return $sOutput;
 	}
-
 }

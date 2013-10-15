@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('PageTemplates',                   BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['PageTemplates'] = dirname( __FILE__ ) . '/PageTemplates.i18n.php';
+$wgExtensionMessagesFiles['PageTemplates'] = __DIR__ . '/PageTemplates.i18n.php';
 
 $wgResourceModules['ext.bluespice.pageTemplates'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/PageTemplates/resources/bluespice.pageTemplates.js',
@@ -34,3 +34,10 @@ $wgResourceModules['ext.bluespice.pageTemplates'] = array(
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
+
+$wgAutoloadClasses['PageTemplatesAdmin'] = __DIR__ . '/PageTemplatesAdmin.class.php';
+
+$wgAjaxExportList[] = 'PageTemplatesAdmin::getTemplates';
+$wgAjaxExportList[] = 'PageTemplatesAdmin::getNamespaces';
+$wgAjaxExportList[] = 'PageTemplatesAdmin::doEditTemplate';
+$wgAjaxExportList[] = 'PageTemplatesAdmin::doDeleteTemplate';

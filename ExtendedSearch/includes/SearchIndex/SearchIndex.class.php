@@ -50,11 +50,6 @@ class SearchIndex {
 	 */
 	protected $vSearchResult;
 	/**
-	 * Mirror of wgScriptPath.
-	 * @var string wgScriptPath
-	 */
-	protected $sScriptPath;
-	/**
 	 * Maximum number of facet items
 	 * @var int Number
 	 */
@@ -74,9 +69,7 @@ class SearchIndex {
 	 * Constructor for SearchIndexMW class
 	 * @param BsSearchService $searchServiceObject Current search service
 	 */
-	public function __construct() {
-		$this->sScriptPath = BsConfig::get( 'MW::ScriptPath' );
-	}
+	public function __construct() {}
 
 	/**
 	 * Return a instance of SearchIndex.
@@ -133,6 +126,7 @@ class SearchIndex {
 		$this->oSearchOptions = SearchOptions::getInstance();
 		$this->oUriBuilder = SearchUriBuilder::getInstance();
 		$this->oRequestContext = RequestContext::getMain();
+		global $wgScriptPath;
 
 		/* Jump to page */
 		if ( BsConfig::get( 'MW::ExtendedSearch::JumpToTitle' )
@@ -147,7 +141,7 @@ class SearchIndex {
 
 		if ( !$this->oSearchRequest->isSearchable() ) {
 			if ( $this->oSearchRequest->sOrigin != '' && $this->oSearchOptions->getOption( 'searchStringOrig' ) == '' ) {
-				return $this->createErrorMessageView( 'no_search_term' );
+				return $this->createErrorMessageView( 'bs-extendedsearch-no_search_term' );
 			} else {
 				$vbe = new ViewBaseElement();
 				$vbe->setAutoElement( false );
@@ -158,7 +152,7 @@ class SearchIndex {
 		$query = $this->oSearchOptions->getSolrQuery();
 		try {
 			// signature of BsSearchService, member function searchs($query, $offset = 0, $limit = 10, $params = array())
-			$hits = $this->oSearchService->search( $query['searchString'], $query['offset'], $query['searchLimit'], $query['searchOptions'] );
+			$oHits = $this->oSearchService->search( $query['searchString'], $query['offset'], $query['searchLimit'], $query['searchOptions'] );
 		} catch ( Exception $e ) {
 			// bs-extendedsearch-invalid-query
 			if ( $e->getMessage() == '"0" Status: Communication Error' ) {
@@ -174,29 +168,29 @@ class SearchIndex {
 				return $this->oRequestContext->getOutput()->redirect( $sUrl, '404' );
 			}
 
-			return $this->createErrorMessageView( 'invalid-query' );
+			return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 		}
 
-		$hit_count = $hits->response->numFound;
-		$max_score = $hits->response->maxScore;
+		$iNumFound = $oHits->response->numFound;
+		$iMaxScore = $oHits->response->maxScore;
 
-		$bEscalateToFuzzy = ( $hit_count == 0 ); // boolean!
+		$bEscalateToFuzzy = ( $iNumFound == 0 ); // boolean!
 		// escalate to fuzzy
 		if ( $bEscalateToFuzzy ) {
 			$aFuzzyQuery = $this->oSearchOptions->getSolrFuzzyQuery();
 			try {
-				$hits = $this->oSearchService->search( $aFuzzyQuery['searchString'], $aFuzzyQuery['offset'], $aFuzzyQuery['searchLimit'], $aFuzzyQuery['searchOptions'] );
+				$oHits = $this->oSearchService->search( $aFuzzyQuery['searchString'], $aFuzzyQuery['offset'], $aFuzzyQuery['searchLimit'], $aFuzzyQuery['searchOptions'] );
 			} catch ( Exception $e ) {
-				return $this->createErrorMessageView( 'invalid-query' );
+				return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 			}
 
-			$hit_count = $hits->response->numFound;
-			$max_score = $hits->response->maxScore;
+			$iNumFound = $oHits->response->numFound;
+			$iMaxScore = $oHits->response->maxScore;
 		}
 
 		$this->logSearch(
 			$this->oSearchOptions->getOption( 'searchStringForStatistics' ),
-			$hit_count,
+			$iNumFound,
 			$this->oSearchOptions->getOption( 'scope' ),
 			$this->oSearchOptions->getOptionBool( 'files' )
 		);
@@ -206,10 +200,10 @@ class SearchIndex {
 		$this->vSearchResult->setOption( 'siteUri', $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::MLT ) );
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowSpell' ) ) {
-			if ( $hit_count == 0 || $bEscalateToFuzzy ) {
-				$this->vSearchResult->addSpell( 
+			if ( $iNumFound == 0 || $bEscalateToFuzzy ) {
+				$this->vSearchResult->addSpell(
 					array(
-						'script_path' => $this->sScriptPath,
+						'script_path' => $wgScriptPath,
 						'sim' => $this->oSearchService->getSpellcheck( $this->oSearchOptions->getOption( 'searchStringRaw' ), $this->oSearchOptions->getSearchOptionsSim() ),
 						'url' => $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::INPUT | SearchUriBuilder::MLT | SearchUriBuilder::ORDER_ASC_OFFSET )
 					)
@@ -218,23 +212,21 @@ class SearchIndex {
 		}
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowCreateSugg' ) ) {
-			if ( $hit_count == 0 || $bEscalateToFuzzy || !$this->oSearchOptions->getOption( 'titleExists' ) ) {
-				$this->vSearchResult->addSuggest( 
+			if ( $iNumFound == 0 || $bEscalateToFuzzy || !$this->oSearchOptions->getOption( 'titleExists' ) ) {
+				$this->vSearchResult->addSuggest(
 					array(
 						'search' => $this->oSearchOptions->getOption( 'searchStringRaw' ),
-						'script_path' => $this->sScriptPath
+						'script_path' => $wgScriptPath
 					)
 				);
 			}
 		}
 
-
-		$aMonitor['NoOfResultsFound'] = $hit_count;
+		$aMonitor['NoOfResultsFound'] = $iNumFound;
 		$aMonitor['SearchTerm']       = $this->oSearchOptions->getOption( 'searchStringRaw' );
 		$aMonitor['EscalatedToFuzzy'] = $bEscalateToFuzzy;
 
-
-		if ( $hit_count == 0 ) return $this->vSearchResult;
+		if ( $iNumFound == 0 ) return $this->vSearchResult;
 
 		//--------- Navigation
 
@@ -242,9 +234,10 @@ class SearchIndex {
 
 		$searchLimit = $this->oSearchOptions->getOption( 'searchLimit' );
 
-		$loopsCalculated = ( $hit_count / $searchLimit ) + 1;
+		$loopsCalculated = ( $iNumFound / $searchLimit ) + 1;
 		$this->vSearchResult->setOption( 'activePage', 1 );
-		$url_offset = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET );
+		$url_offset = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET|SearchUriBuilder::NO_ENCODE );
+
 		for ( $i = 1; $i < $loopsCalculated; $i++ ) {
 			$offset_step = ( ( $i - 1 ) * $searchLimit );
 			if ( $offset_step == $this->oSearchOptions->getOption( 'offset' ) ) {
@@ -255,25 +248,31 @@ class SearchIndex {
 
 		$this->vSearchResult->setOption( 'pages', $aPaging );
 
-		$sortTypes = array(
-			'titleSort' => 'sort-title',
-			'score'     => 'sort-relevance',
-			'type'      => 'sort-type',
-			'ts'        => 'sort-ts'
+		$aSortTypes = array(
+			'titleSort' => 'bs-extendedsearch-sort-title',
+			'score'     => 'bs-extendedsearch-sort-relevance',
+			'type'      => 'bs-extendedsearch-sort-type',
+			'ts'        => 'bs-extendedsearch-sort-ts'
 		);
 
-		$sortActive = isset( $sortTypes[$this->oSearchOptions->getOption( 'order' )] ) ? $this->oSearchOptions->getOption( 'order' ) : 'score';
-		$sortDirection = ( $this->oSearchOptions->getOption( 'asc' ) == 'asc' ) ? 'asc' : 'desc';
-		$sortUrl = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET );
+		$aSorting = array(
+			'sorttypes' => $aSortTypes,
+			'sortactive' => isset( $aSortTypes[$this->oSearchOptions->getOption( 'order' )] )
+					? $this->oSearchOptions->getOption( 'order' )
+					: 'score',
+			'sortdirection' => ( $this->oSearchOptions->getOption( 'asc' ) == 'asc' ) ? 'asc' : 'desc',
+			'sorturl' => $this->oUriBuilder->buildUri(
+					SearchUriBuilder::ALL,
+					SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET|SearchUriBuilder::NO_ENCODE
+				)
+			);
 
-		$this->vSearchResult->setOption( 'numFound', $hit_count );
-		$this->vSearchResult->setOption( 'sorting', compact( 'sortTypes', 'sortActive', 'sortDirection', 'sortUrl' ) );
+		$this->vSearchResult->setOption( 'numFound', $iNumFound );
+		$this->vSearchResult->setOption( 'sorting', $aSorting );
 
 		//---------- end navigation
 
 		//---------- begin facets
-
-
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) {
 			$this->vSearchResult->setOption( 'showfacets', true );
@@ -287,7 +286,8 @@ class SearchIndex {
 			}
 
 			// --------------- begin facet namespace
-			if ( !is_null( $hits->facet_counts->facet_fields->namespace ) ) {
+
+			if ( !is_null( $oHits->facet_counts->facet_fields->namespace ) ) {
 				$vFacetBoxNamespaces = $this->vSearchResult->generateViewFacetBox();
 				$vFacetBoxNamespaces->setOption( 'i18n-key-facet-title', 'bs-extendedsearch-facet-namespace' );
 				$vFacetBoxNamespaces->setOption( 'uri-facet-delete', $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES|SearchUriBuilder::FILES ) );
@@ -303,7 +303,7 @@ class SearchIndex {
 					unset( $aNamespaces );
 				}
 
-				$aFacetsNamespaceInHits = $hits->facet_counts->facet_fields->namespace; // stdClass object { 0 => (int)6, 999 => (int)1, _empty_ => (int)0 }
+				$aFacetsNamespaceInHits = $oHits->facet_counts->facet_fields->namespace; // stdClass object { 0 => (int)6, 999 => (int)1, _empty_ => (int)0 }
 				foreach ( $aFacetsNamespaceInHits as $namespace => $count ) {
 					if ( BsNamespaceHelper::checkNamespacePermission( $namespace, 'read' ) === false ) {
 						unset( $facetNamespaceAll[$namespace] );
@@ -315,13 +315,13 @@ class SearchIndex {
 
 				foreach ( $facetNamespaceAll as $namespace => $attributes ) {
 					$facetNamespaceAll[$namespace]['title'] = '';
-					if ( $namespace == '999' )
-							$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-files' )->plain();
-					elseif ( $namespace == '998' )
-							$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-extfiles' )->plain();
-					elseif ( $namespace == '0' )
-							$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-main' )->plain();
-					else {
+					if ( $namespace == '999' ) {
+						$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-files' )->plain();
+					} elseif ( $namespace == '998' ) {
+						$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-extfiles' )->plain();
+					} elseif ( $namespace == '0' ) {
+						$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-main' )->plain();
+					} else {
 						$namespaceTitle = BsNamespaceHelper::getNamespaceName( $namespace, false );
 						$facetNamespaceAll[$namespace]['title'] = $this->getFacetTitle( $namespaceTitle );
 						if ( empty( $namespaceTitle ) ) {
@@ -339,27 +339,32 @@ class SearchIndex {
 				$allNamespacesAvailableParamsOnly = array();
 				foreach ( $facetNamespaceAll as $namespace => $attributes ) {
 					if ( !isset( $attributes['count'] ) ) continue;
-					$dataSet = array();
-					if ( isset( $attributes['checked'] ) ) $dataSet['checked'] = true;
+
+					$aDataSet = array();
+					if ( isset( $attributes['checked'] ) ) $aDataSet['checked'] = true;
+
 					if ( $namespace == '999' ) {
 						$uri = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES | SearchUriBuilder::FILES );
 						$uri .= ( isset( $attributes['checked'] ) ) ? '&search_files=0' : '&search_files=1';
 					} else {
 						$uri = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES );
 					}
+
 					foreach ( $facetNamespaceAll as $namespaceUrl => $attributesUrl ) {
-						$bOwnUrlAndNotAlreadyChecked = ( ($namespace == $namespaceUrl) && !isset( $attributesUrl['checked'] ) );
-						$bOtherUrlAndAlreadyChecked = ( ($namespace != $namespaceUrl) && isset( $attributesUrl['checked'] ) );
+						$bOwnUrlAndNotAlreadyChecked = ( ( $namespace == $namespaceUrl ) && !isset( $attributesUrl['checked'] ) );
+						$bOtherUrlAndAlreadyChecked = ( ( $namespace != $namespaceUrl ) && isset( $attributesUrl['checked'] ) );
 						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked ) {
 							$uri .= '&na[]='.$namespaceUrl;
 						}
 					}
-					$dataSet['uri'] = $uri;
-					$dataSet['diff'] = 'na[]='.$namespace;
-					$dataSet['name'] = $attributes['name'];
-					$dataSet['title'] = $attributes['title'];
-					$dataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
-					$vFacetBoxNamespaces->addData( $dataSet );
+
+					$aDataSet['uri'] = $uri;
+					$aDataSet['diff'] = 'na[]='.$namespace;
+					$aDataSet['name'] = $attributes['name'];
+					$aDataSet['title'] = $attributes['title'];
+					$aDataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
+
+					$vFacetBoxNamespaces->addData( $aDataSet );
 					$allNamespacesAvailableParamsOnly[] = 'na[]='.$namespace;
 				}
 
@@ -372,7 +377,8 @@ class SearchIndex {
 			// --------------- end facet namespaces
 
 			// --------------- begin facet categories
-			if ( !is_null( $hits->facet_counts->facet_fields->cat ) ) {
+
+			if ( !is_null( $oHits->facet_counts->facet_fields->cat ) ) {
 				$vFacetBoxCategories = $this->vSearchResult->generateViewFacetBox();
 				$vFacetBoxCategories->setOption( 'i18n-key-facet-title', 'bs-extendedsearch-facet-category' );
 				$vFacetBoxCategories->setOption( 'uri-facet-delete', $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::CATS ) );
@@ -387,7 +393,7 @@ class SearchIndex {
 					unset( $aCats );
 				}
 
-				$aFacetsCategoriesInHits = $hits->facet_counts->facet_fields->cat; // stdClass object { catName => (int)1, anotherCatName => (int)6, _empty_ => (int)1 }
+				$aFacetsCategoriesInHits = $oHits->facet_counts->facet_fields->cat; // stdClass object { catName => (int)1, anotherCatName => (int)6, _empty_ => (int)1 }
 				foreach ( $aFacetsCategoriesInHits as $cat => $count ) {
 					if ( $cat == '_empty_' ) continue;
 					$facetCategoriesAll[$cat]['count'] = $count;
@@ -407,8 +413,9 @@ class SearchIndex {
 
 				$allCategoriesAvailableParamsOnly = array();
 				foreach ( $facetCategoriesAll as $cat => $attributes ) {
-					$dataSet = array();
-					if ( isset( $attributes['checked'] ) ) $dataSet['checked'] = true;
+					$aDataSet = array();
+					if ( isset( $attributes['checked'] ) ) $aDataSet['checked'] = true;
+
 					$uri = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::CATS );
 					foreach ( $facetCategoriesAll as $catUrl => $attributesUrl ) {
 						$bOwnUrlAndNotAlreadyChecked = ( ( $cat == $catUrl ) && !isset( $attributesUrl['checked'] ) );
@@ -416,12 +423,14 @@ class SearchIndex {
 						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked )
 							$uri .= '&ca[]='.$catUrl;
 					}
-					$dataSet['uri'] = $uri;
-					$dataSet['diff'] = 'ca[]='.$cat;
-					$dataSet['name'] = $attributes['name'];
-					$dataSet['title'] = $attributes['title'];
-					$dataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
-					$vFacetBoxCategories->addData( $dataSet );
+
+					$aDataSet['uri'] = $uri;
+					$aDataSet['diff'] = 'ca[]='.$cat;
+					$aDataSet['name'] = $attributes['name'];
+					$aDataSet['title'] = $attributes['title'];
+					$aDataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
+
+					$vFacetBoxCategories->addData( $aDataSet );
 					$allCategoriesAvailableParamsOnly[] = 'ca[]='.$cat;
 				}
 
@@ -432,7 +441,8 @@ class SearchIndex {
 			// --------------- end facet categories
 
 			// --------------- begin facet type
-			if ( !is_null( $hits->facet_counts->facet_fields->type ) ) {
+
+			if ( !is_null( $oHits->facet_counts->facet_fields->type ) ) {
 				$vFacetBoxTypes = $this->vSearchResult->generateViewFacetBox();
 				$vFacetBoxTypes->setOption( 'i18n-key-facet-title', 'bs-extendedsearch-facet-type' );
 				$vFacetBoxTypes->setOption( 'uri-facet-delete', $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::TYPE ) );
@@ -447,11 +457,10 @@ class SearchIndex {
 					unset( $aTypes );
 				}
 
-				global $wgUser;
-				$aFacetsTypeInHits = $hits->facet_counts->facet_fields->type;
+				$aFacetsTypeInHits = $oHits->facet_counts->facet_fields->type;
 				foreach ( $aFacetsTypeInHits as $type => $count ) {
 					if ( $type == '_empty_' ) continue;
-					if ( $type != 'wiki' && !$wgUser->isAllowed( 'searchfiles' ) ) {
+					if ( $type != 'wiki' && !$this->oRequestContext->getUser()->isAllowed( 'searchfiles' ) ) {
 						continue;
 					}
 					$facetTypeAll[$type]['count'] = $count;
@@ -466,21 +475,25 @@ class SearchIndex {
 
 				$allTypesAvailableParamsOnly = array();
 				foreach ( $facetTypeAll as $type => $attributes ) {
-					$dataSet = array();
-					if ( isset( $attributes['checked'] ) ) $dataSet['checked'] = true;
+					$aDataSet = array();
+					if ( isset( $attributes['checked'] ) ) $aDataSet['checked'] = true;
+
 					$uri = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::TYPE );
+
 					foreach ( $facetTypeAll as $typeUrl => $attributesUrl ) {
 						$bOwnUrlAndNotAlreadyChecked = ( ( $type == $typeUrl ) && !isset( $attributesUrl['checked'] ) );
 						$bOtherUrlAndAlreadyChecked = ( ( $type != $typeUrl ) && isset( $attributesUrl['checked'] ) );
 						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked )
 							$uri .= '&ty[]='.$typeUrl;
 					}
-					$dataSet['uri'] = $uri;
-					$dataSet['diff'] = 'ty[]='.$type;
-					$dataSet['name'] = $attributes['name'];
-					$dataSet['title'] = $attributes['title'];
-					$dataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
-					$vFacetBoxTypes->addData($dataSet);
+
+					$aDataSet['uri'] = $uri;
+					$aDataSet['diff'] = 'ty[]='.$type;
+					$aDataSet['name'] = $attributes['name'];
+					$aDataSet['title'] = $attributes['title'];
+					$aDataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
+
+					$vFacetBoxTypes->addData($aDataSet);
 					$allTypesAvailableParamsOnly[] = 'ty[]='.$type;
 				}
 
@@ -491,7 +504,8 @@ class SearchIndex {
 			// --------------- end facet type
 
 			// --------------- begin facet editor
-			if ( !is_null( $hits->facet_counts->facet_fields->editor ) ) {
+
+			if ( !is_null( $oHits->facet_counts->facet_fields->editor ) ) {
 				$vFacetBoxEditors = $this->vSearchResult->generateViewFacetBox();
 				$vFacetBoxEditors->setOption( 'i18n-key-facet-title', 'bs-extendedsearch-facet-editors' );
 				$vFacetBoxEditors->setOption( 'uri-facet-delete', $this->oUriBuilder->buildUri(SearchUriBuilder::ALL, SearchUriBuilder::EDITOR ) );
@@ -506,7 +520,7 @@ class SearchIndex {
 					unset( $aEditors );
 				}
 
-				$aFacetsEditorInHits = $hits->facet_counts->facet_fields->editor;
+				$aFacetsEditorInHits = $oHits->facet_counts->facet_fields->editor;
 				foreach ( $aFacetsEditorInHits as $editor => $count ) {
 					// todo: previously for _empty_ entry wfMessage( 'facet-noeditors' )
 					// was displayed with count and without link
@@ -524,23 +538,28 @@ class SearchIndex {
 
 				$allEditorsAvailableParamsOnly = array();
 				foreach ( $facetEditorAll as $editor => $attributes ) {
-					$dataSet = array();
 					if ( $editor == 'unknown' ) $attributes['name'] = wfMessage( 'bs-extendedsearch-unknown' )->plain();
 
-					if ( isset( $attributes['checked'] ) ) $dataSet['checked'] = true;
+					$aDataSet = array();
+					if ( isset( $attributes['checked'] ) ) $aDataSet['checked'] = true;
+
 					$uri = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::EDITOR );
 					foreach ( $facetEditorAll as $editorUrl => $attributesUrl ) {
 						$bOwnUrlAndNotAlreadyChecked = ( ( $editor == $editorUrl ) && !isset( $attributesUrl['checked'] ) );
 						$bOtherUrlAndAlreadyChecked = ( ( $editor != $editorUrl ) && isset( $attributesUrl['checked'] ) );
-						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked )
+
+						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked ) {
 							$uri .= '&ed[]='.$editorUrl;
+						}
 					}
-					$dataSet['uri']   = $uri;
-					$dataSet['diff']  = 'ed[]='.$editor;
-					$dataSet['name']  = $attributes['name'];
-					$dataSet['title'] = $attributes['title'];
-					$dataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
-					$vFacetBoxEditors->addData( $dataSet );
+
+					$aDataSet['uri']   = $uri;
+					$aDataSet['diff']  = 'ed[]='.$editor;
+					$aDataSet['name']  = $attributes['name'];
+					$aDataSet['title'] = $attributes['title'];
+					$aDataSet['count'] = ( isset( $attributes['count'] ) ) ? (int)$attributes['count'] : 0;
+
+					$vFacetBoxEditors->addData( $aDataSet );
 					$allEditorsAvailableParamsOnly[] = 'ed[]='.$editor;
 				}
 
@@ -555,78 +574,64 @@ class SearchIndex {
 
 		//---------- begin results
 
-		$hitlist = $hits->response->docs;
+		$oDocuments = $oHits->response->docs;
 
-		if ( $this->oSearchOptions->getOption( 'format' ) == 'json' ) {
-			$hits = array();
-			foreach ( $hitlist as $hit ) {
-				$hitjson = '';
-				$hitjson .= '{';
-				$ns = $this->oRequestContext->getLang()->namespaceNames[$hit->namespace];
-				$hitjson .= '"title":'.json_encode( ( $ns ? $ns.':' : '' ).$hit->title );
-				$hitjson .= ', ';
-				$hitjson .= '"cat":'.json_encode( $hit->cat );
-				$hitjson .= ', ';
-				$hitjson .= '"namespace":'.json_encode( $hit->namespace );
-				$hitjson .= '}';
-				$hits[] = $hitjson;
-			}
-			echo '['.implode( $hits, ', ' ).']';
-			exit;
-		}
-
-		$sScriptPath = BsConfig::get( 'MW::ScriptPath' );
+		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
 
 		$aImageLinks = array(
-			'doc'     => '<img src="' . $sScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/word.gif" alt="doc ' . wfMessage( 'bs-extendedsearch-file' )->plain() . '" /> ',
-			'ppt'     => '<img src="' . $sScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/ppt.gif" alt="ppt ' . wfMessage( 'bs-extendedsearch-file' )->plain() . '" /> ',
-			'xls'     => '<img src="' . $sScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/xls.gif" alt="xls ' . wfMessage( 'bs-extendedsearch-file' )->plain() . '" /> ',
-			'pdf'     => '<img src="' . $sScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/pdf.gif" alt="pdf ' . wfMessage( 'bs-extendedsearch-file' )->plain() . '" /> ',
-			'txt'     => '<img src="' . $sScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/txt.gif" alt="txt ' . wfMessage( 'bs-extendedsearch-file' )->plain() . '" /> ',
-			'default' => '<img src="' . $sScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/page.gif" alt="page" /> '
+			'doc'     => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
+			'ppt'     => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
+			'xls'     => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
+			'pdf'     => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
+			'txt'     => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
+			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
 		);
 
-		foreach ( $hitlist as $document ) {
-			$score_percent = 100 * ( sprintf( '%.2f', $document->score / $max_score ) );
+		foreach ( $oDocuments as $oDocument ) {
+			$sPercent = 100 * ( sprintf( '%.2f', $oDocument->score / $iMaxScore ) );
 
 			//Show Page Title and link it
 			$sLinkIcon = $aImageLinks['default'];
 
-			if ( $document->namespace == '999' ) {
+			if ( $oDocument->namespace == '999' ) {
 				$iNamespace = NS_FILE;
 			} else {
-				$iNamespace = $document->namespace;
+				$iNamespace = $oDocument->namespace;
 			}
-			$oTitle = Title::makeTitle( $iNamespace, $document->title );
+			$oTitle = Title::makeTitle( $iNamespace, $oDocument->title );
 
 			// external files will never exist for mediawiki
-			if ( $document->namespace != '998' ) {
+			if ( $oDocument->namespace != '998' ) {
 				if ( !$oTitle->exists() ) continue;
 			}
 			$oSkin = RequestContext::getMain()->getSkin();
 			$sSearchLink = false;
 
-			wfRunHooks( 'BSExtendedSearchFormatLink', array( &$sSearchLink, $document, $oSkin, &$sLinkIcon ) );
+			wfRunHooks( 'BSExtendedSearchFormatLink', array( &$sSearchLink, $oDocument, $oSkin, &$sLinkIcon ) );
 
 			if ( !$sSearchLink ) {
-				if ( $document->type == 'wiki' ) {
-
+				if ( $oDocument->type == 'wiki' ) {
 					if ( !$oTitle->userCan( 'read' ) ) continue;
 
 					$sHtml = null;
-					if ( isset( $hits->highlighting->{$document->uid}->titleWord ) ) {
-						$sHtml = $hits->highlighting->{$document->uid}->titleWord[0];
-					} elseif(  isset( $hits->highlighting->{$document->uid}->titleReverse ) ) {
-						$sHtml = $hits->highlighting->{$document->uid}->titleReverse[0];
+					if ( isset( $oHits->highlighting->{$oDocument->uid}->titleWord ) ) {
+						$sHtml = $oHits->highlighting->{$oDocument->uid}->titleWord[0];
+					} elseif(  isset( $oHits->highlighting->{$oDocument->uid}->titleReverse ) ) {
+						$sHtml = $oHits->highlighting->{$oDocument->uid}->titleReverse[0];
 					}
 
-					if ( !is_null( $sHtml ) ) $sHtml = str_replace ( '_', ' ', $sHtml );
+					if ( !is_null( $sHtml ) ) {
+						if ( $oDocument->namespace != '0' && $oDocument->namespace != '998' && $oDocument->namespace != '999' ) {
+							$sHtml = BsNamespaceHelper::getNamespaceName( $oDocument->namespace ). ':' . $sHtml;
+						}
+						$sHtml = str_replace ( '_', ' ', $sHtml );
+					}
 
 					$sSearchLink = BsLinkProvider::makeLink( $oTitle, $sHtml, $aCustomAttribs = array(), $aQuery = array(), $aOptions = array( 'known' ) );
 
-					if ( isset( $hits->highlighting->{$document->uid}->sections ) ) {
+					if ( isset( $oHits->highlighting->{$oDocument->uid}->sections ) ) {
 						$oParser = new Parser();
-						$sSection = strip_tags( $hits->highlighting->{$document->uid}->sections[0] );
+						$sSection = strip_tags( $oHits->highlighting->{$oDocument->uid}->sections[0] );
 						$sSectionAnchor = $oParser->guessSectionNameFromWikiText( $sSection );
 						$sSectionLink = BsLinkProvider::makeLink( $oTitle, $sSection, $aCustomAttribs = array(), $aQuery = array(), $aOptions = array( 'known' ) );
 
@@ -638,35 +643,36 @@ class SearchIndex {
 						}
 						$sSearchLink .= ' <span class="bs-extendedsearch-sectionresult">('. wfMessage( 'bs-extendedsearch-section' )->plain() . $sSectionLink . ')</span>';
 					}
-				} else if ( $this->oRequestContext->getUser()->isAllowed( 'searchfiles' ) ) {
-					$sLinkIcon = ( isset( $aImageLinks[$document->type] ) )
-						? $aImageLinks[$document->type]
+				} elseif ( $this->oRequestContext->getUser()->isAllowed( 'searchfiles' ) ) {
+					$sLinkIcon = ( isset( $aImageLinks[$oDocument->type] ) )
+						? $aImageLinks[$oDocument->type]
 						: $aImageLinks['default'];
 
-					if ( $document->overall_type == 'repo' ) {
+					if ( $oDocument->overall_type == 'repo' ) {
 						$sSearchLink = Linker::makeMediaLinkObj( $oTitle );
-					} else if ( $document->overall_type == 'special-linked' ) {
-						$si_title = $document->title;
-						$si_link  = $document->path;
+					} elseif ( $oDocument->overall_type == 'special-linked' ) {
+						$si_title = $oDocument->title;
+						$si_link  = $oDocument->path;
 
 						$sLink = Linker::makeExternalLink( $si_link, $si_title, '' );
 
 						$sSearchLink = str_replace( '<a', '<a target="_blank"', $sLink );
 					} else {
-						$si_title = $document->title;
-						$si_link  = $document->path;
+						$si_title = $oDocument->title;
+						$si_link  = $oDocument->path;
 
 						$sSearchLink = '<a target="_blank" href="file:///' . $si_link . '">' . $si_title . '</a>';
 					}
+				} else {
+					continue;
 				}
-				else continue;
 			}
 
 			$catstr = '';
-			if ( isset( $document->cat ) ) {
-				if ( is_array( $document->cat ) ) {
+			if ( isset( $oDocument->cat ) ) {
+				if ( is_array( $oDocument->cat ) ) {
 					$catlinks = array();
-					foreach ( $document->cat as $c ) {
+					foreach ( $oDocument->cat as $c ) {
 						if ( $c == 'notcategorized' ) continue;
 						$oTitle = Title::makeTitle( NS_CATEGORY, $c );
 						$catstr = BsLinkProvider::makeLink( $oTitle, $oTitle->getText() );
@@ -674,8 +680,8 @@ class SearchIndex {
 					}
 					$catstr = implode( ', ', $catlinks );
 				} else {
-					if ( $document->cat != 'notcategorized' ) {
-						$oTitle = Title::makeTitle( NS_CATEGORY, $document->cat );
+					if ( $oDocument->cat != 'notcategorized' ) {
+						$oTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
 						$catstr = BsLinkProvider::makeLink( $oTitle, $oTitle->getText() );
 					}
 				}
@@ -684,39 +690,39 @@ class SearchIndex {
 			// If text is empty no Notice will be thrown
 			$aHighlightsnippets = null;
 			if ( $this->oSearchOptions->getOption( 'scope' ) != 'title' ) {
-				$oHighlightData = $hits->highlighting->{$document->uid};
+				$oHighlightData = $oHits->highlighting->{$oDocument->uid};
 				if ( isset( $oHighlightData->textWord ) ) { 
 					$aHighlightsnippets = $oHighlightData->textWord; 
-				} else if ( isset( $oHighlightData->textReverse ) ) {
+				} elseif ( isset( $oHighlightData->textReverse ) ) {
 					$aHighlightsnippets = $oHighlightData->textReverse;
 				}
 			}
 
 			$sRedirect = '';
-			if ( isset( $document->redirects ) ) {
-				if ( is_array( $document->redirects ) ) {
+			if ( isset( $oDocument->redirects ) ) {
+				if ( is_array( $oDocument->redirects ) ) {
 					$aRedirects = array();
-					foreach( $document->redirects as $sRedirect ) {
+					foreach ( $oDocument->redirects as $sRedirect ) {
 						$oTitle = Title::newFromText( $sRedirect );
 						$aRedirects[] = BsLinkProvider::makeLink( $oTitle );
 					}
 					$sRedirect = ' | Redirect from ' . implode( ', ', $aRedirects );
 				} else {
-					$oTitle = Title::newFromText( $document->redirects );
+					$oTitle = Title::newFromText( $oDocument->redirects );
 					$sRedirect = ' | Redirect from ' . BsLinkProvider::makeLink( $oTitle );
 				}
 			}
 
 			$sTimestamp = sprintf(
 				'%s - %s',
-				$this->oRequestContext->getLang()->date( $document->ts, true ),
-				$this->oRequestContext->getLang()->time( $document->ts, true )
+				$this->oRequestContext->getLang()->date( $oDocument->ts, true ),
+				$this->oRequestContext->getLang()->time( $oDocument->ts, true )
 			);
 
 			$aResultEntryDataSet = array(
 				'searchicon'        => $sLinkIcon,
 				'searchlink'        => $sSearchLink,
-				'scorepercent'      => $score_percent,
+				'scorepercent'      => $sPercent,
 				'timestamp'         => $sTimestamp,
 				'catstr'            => $catstr,
 				'redirect'          => $sRedirect,
@@ -726,7 +732,7 @@ class SearchIndex {
 
 			$this->vSearchResult->addResultEntry( $aResultEntryDataSet );
 
-		} // foreach $hitlist as $document
+		} // foreach $oDocuments as $oDocument
 
 		// ----------end results ---------------
 
@@ -738,12 +744,10 @@ class SearchIndex {
 	 * @param string $message I18N key of error message
 	 * @return ViewBaseElement Renders error message.
 	 */
-	protected function createErrorMessageView( $message ) {
+	protected function createErrorMessageView( $sMessage ) {
 		$res = new ViewBaseElement();
 		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
-		// Give grep a chance to find the usages:
-		// bs-extendedsearch-no_search_term, bs-extendedsearch-invalid-query
-		$res->addData( array( 'message' => wfMessage( 'bs-extendedsearch-' . $message )->plain() ) );
+		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
 		return $res;
 	}
 
@@ -759,13 +763,14 @@ class SearchIndex {
 			if ( !isset( $array1[$key] ) && !isset( $array2[$key] ) ) return 0;
 			if ( isset( $array1[$key] ) && !isset( $array2[$key] ) ) return -1;
 			if ( !isset( $array1[$key] ) && isset( $array2[$key] ) ) return 1;
-			if ( is_int( $array1[$key] ) && is_int( $array2[$key] ) )
+			if ( is_int( $array1[$key] ) && is_int( $array2[$key] ) ) {
 				return ( ( (int)$array2[$key] ) - ( (int)$array1[$key] ) );
+			}
 			return strcasecmp( (string)$array2[$key], (string)$array1[$key] );
 		} else {
-			foreach ( $this->sortorder as $sortkey => $asc ){
+			foreach ( $this->sortorder as $sortkey => $asc ) {
 				$res = $this->compareEntries( $array1, $array2, $sortkey );
-				if ( $res !== 0 ) return $res*$asc;
+				if ( $res !== 0 ) return $res * $asc;
 			}
 		}
 		return 0;
@@ -773,38 +778,40 @@ class SearchIndex {
 
 	/**
 	 * Writes a given search request to database log.
-	 * @global User $wgUser Currently authenticated user.
 	 * @param string $term Search term
-	 * @param int $hit_count Number of hits
+	 * @param int $iNumFound Number of hits
 	 * @param string $scope What was the scope of the search?
 	 * @param string $files Were files searched as well?
 	 * @return bool always false.
 	 */
-	public function logSearch( $term, $hit_count, $scope, $files ) {
+	public function logSearch( $term, $iNumFound, $scope, $files ) {
 		if ( !BsConfig::get( 'MW::ExtendedSearch::Logging' ) ) return false;
-		global $wgUser, $wgDBtype;
+		global $wgDBtype;
 
-		$oDbr = wfGetDB( DB_MASTER );
+		$oDbw = wfGetDB( DB_MASTER );
 
 		if ( $wgDBtype == 'postgres' ) {
 			$term = pg_escape_string( $term );
-		} else if ( $wgDBtype == 'oracle' ) {
+		} elseif ( $wgDBtype == 'oracle' ) {
 			$term = addslashes( $term );
 		} else {
 			$term = mysql_real_escape_string( $term );
 		}
 
-		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) ) ? $wgUser->getId() : '';
+		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) )
+			? $this->oRequestContext->getUser()->getId()
+			: '';
+
 		$effectiveScope = ( $files ) ? $scope.'-files' : $scope;
 		$data = array(
 			'stats_term'  => $term,
 			'stats_ts'    => date( 'YmdHis' ),
 			'stats_user'  => $user,
-			'stats_hits'  => $hit_count,
+			'stats_hits'  => $iNumFound,
 			'stats_scope' => $effectiveScope
 		);
 
-		$oDbr->insert( 'bs_searchstats', $data );
+		$oDbw->insert( 'bs_searchstats', $data );
 
 		return true;
 	}

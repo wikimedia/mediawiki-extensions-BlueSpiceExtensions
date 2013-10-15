@@ -22,9 +22,10 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Tobias Weichart <glaser@hallowelt.biz>
+ * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    1.22.0 stable
- * @version    $Id: Statistics.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -70,18 +71,15 @@ class Statistics extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['Statistcs'] = dirname( __FILE__ ) . '/Statistics.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Statistics',
 			EXTINFO::DESCRIPTION => 'Statistics module for BlueSpice.',
-			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::AUTHOR      => 'Markus Glaser, Patric Wirth',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
@@ -94,57 +92,43 @@ class Statistics extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::Statistics::initExt' );
-		$this->setHook( 'ParserFirstCallInit', 'onParserFirstCallInit' );
+		$this->setHook( 'ParserFirstCallInit' );
+		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSExtendedSearchAdminButtons' );
-		$this->setHook( 'SpecialPage_initList' );
-		$this->mAdapter->registerSpecialPage( 'SpecialExtendedStatistics', dirname( __FILE__ ), 'StatisticsAlias' );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 
-		BsConfig::registerVar( 'MW::Statistics::DiagramDir',           'images/statistics',   BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING,       'bs-statistics-pref-DiagramDir' );
-		BsConfig::registerVar( 'MW::Statistics::DiagramWidth',         700,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramWidth', 'int' );
-		BsConfig::registerVar( 'MW::Statistics::DiagramHeight',        500,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramHeight', 'int' );
+		//BsConfig::registerVar( 'MW::Statistics::DiagramDir',           'images/statistics',   BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING,       'bs-statistics-pref-DiagramDir' );
+		//BsConfig::registerVar( 'MW::Statistics::DiagramWidth',         700,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramWidth', 'int' );
+		//BsConfig::registerVar( 'MW::Statistics::DiagramHeight',        500,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramHeight', 'int' );
 		//BsConfig::registerVar( 'MW::Statistics::DiagramType',          'line',                BsConfig::LEVEL_USER|BsConfig::TYPE_STRING,         $this->mI18N );
-		BsConfig::registerVar( 'MW::Statistics::DiagramType',          'line',                BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-statistics-pref-DiagramType', 'select' );
-		BsConfig::registerVar( 'MW::Statistics::DefaultFrom',          '01 January 2010',     BsConfig::LEVEL_USER|BsConfig::TYPE_STRING,         'bs-statistics-pref-DefaultFrom' );
-		BsConfig::registerVar( 'MW::Statistics::DisableCache',         true,                  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,         'bs-statistics-pref-DisableCache', 'toggle' );
+		//BsConfig::registerVar( 'MW::Statistics::DiagramType',          'line',                BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-statistics-pref-DiagramType', 'select' );
+		//BsConfig::registerVar( 'MW::Statistics::DefaultFrom',          '01 January 2010',     BsConfig::LEVEL_USER|BsConfig::TYPE_STRING,         'bs-statistics-pref-DefaultFrom' );
+		//BsConfig::registerVar( 'MW::Statistics::DisableCache',         true,                  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,         'bs-statistics-pref-DisableCache', 'toggle' );
 
 		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers',         array( 'WikiSysop' ),  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-ExcludeUsers', 'multiselectplusadd' );
-		// default value equals 3 years in months
 		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 36,                    BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,          'bs-statistics-pref-MaxNumberOfIntervals', 'int' );
-
-		$this->registerScriptFiles( BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/Statistics/js', 'statistics', true, true, true, 'MW::Statistics' );
-		$this->registerStyleSheet( BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/Statistics/Statistics.css', true, 'MW::Statistics::ShowSpecialPage' );
-
-		BsCore::registerClass( 'BsStatisticsFilter', dirname(__FILE__).DS.'lib', 'StatisticsFilter.class.php' );
-		BsCore::registerClass( 'BsSelectFilter', dirname(__FILE__).DS.'lib', 'SelectFilter.class.php' );
-		BsCore::registerClass( 'BsMultiSelectFilter', dirname(__FILE__).DS.'lib', 'MultiSelectFilter.class.php' );
+		$aAvailableGrains = array(
+			'Y' => 'bs-statistics-Y',
+			'm' => 'bs-statistics-m',
+			'W' => 'bs-statistics-W',
+			'd' => 'bs-statistics-d',
+		);
+		BsConfig::registerVar( 'MW::Statistics::AvailableGrains', $aAvailableGrains, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED, 'bs-statistics-pref-AvailableGrains');
 
 		Statistics::addAvailableFilter( 'FilterUsers' );
 		Statistics::addAvailableFilter( 'FilterNamespace' );
 		Statistics::addAvailableFilter( 'FilterCategory' );
-		// TODO MRG (21.12.10 11:44): Dependency on Search stats not resolved
-		//if ( BsExtensionManager::isContextActive( 'MW::ExtendedSearch::Active' ) ) 
-				Statistics::addAvailableFilter( 'FilterSearchScope' );
+		Statistics::addAvailableFilter( 'FilterSearchScope' );
 
-		BsCore::registerClass( 'BsDiagram', dirname(__FILE__).DS.'lib', 'Diagram.class.php' );
-		Statistics::addAvailableDiagramClass( 'DiagramNumberOfUsers' );
-		Statistics::addAvailableDiagramClass( 'DiagramNumberOfPages' );
-		Statistics::addAvailableDiagramClass( 'DiagramNumberOfArticles' );
-		Statistics::addAvailableDiagramClass( 'DiagramNumberOfEdits' );
-		Statistics::addAvailableDiagramClass( 'DiagramEditsPerUser' );
-		//if ( BsExtensionManager::isContextActive( 'MW::ExtendedSearch::Active' ) ) 
-		Statistics::addAvailableDiagramClass( 'DiagramSearches' );
+		Statistics::addAvailableDiagramClass( 'BsDiagramNumberOfUsers' );
+		Statistics::addAvailableDiagramClass( 'BsDiagramNumberOfPages' );
+		Statistics::addAvailableDiagramClass( 'BsDiagramNumberOfArticles' );
+		Statistics::addAvailableDiagramClass( 'BsDiagramNumberOfEdits' );
+		Statistics::addAvailableDiagramClass( 'BsDiagramEditsPerUser' );
+		Statistics::addAvailableDiagramClass( 'BsDiagramSearches' );
 
 		wfProfileOut( 'BS::Statistics::initExt' );
-	}
-
-	public function onSpecialPage_initList( &$aList ) {
-		$aList['Statistics'] = 'SpecialExtendedStatistics';
-		return true;
-	}
-
-	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
-		$aPrefs = array( 'options' => array( 'line' => 'line', 'bar' => 'bar' ) );
-		return $aPrefs;
 	}
 
 	/**
@@ -157,7 +141,7 @@ class Statistics extends BsExtensionMW {
 		} else {
 			$sDiagramClassName =  $sDiagramClass;
 		}
-		BsCore::registerClass( $sDiagramClassName, dirname(__FILE__).DS.'lib', $sDiagramClass.'.class.php' );
+
 		Statistics::$aAvailableDiagramClasses[$sDiagramClassName] = $sDiagramClassName;
 	}
 
@@ -205,7 +189,6 @@ class Statistics extends BsExtensionMW {
 		} else {
 			$sFilterClassName =  $sFilterClass;
 		}
-		BsCore::registerClass( $sFilterClassName, dirname(__FILE__).DS.'lib', $sFilterClass.'.class.php' );
 	}
 
 	/**
@@ -222,7 +205,7 @@ class Statistics extends BsExtensionMW {
 	 * @return BsStatisticsFilter Filter object
 	 */
 	public static function getFilter( $sFilterClass ) {
-		if (isset(Statistics::$aFilterDiagrams[$sFilterClass])) {
+		if ( isset( Statistics::$aFilterDiagrams[$sFilterClass] ) ) {
 			return Statistics::$aFilterDiagrams[$sFilterClass];
 		} else {
 			return null;
@@ -236,7 +219,21 @@ class Statistics extends BsExtensionMW {
 	 */
 	public function onParserFirstCallInit( &$parser ) {
 		// for legacy reasons
-		$parser->setHook('bs:statistics:progress', array( &$this, 'onTagProgress' ) );
+		$parser->setHook( 'bs:statistics:progress', array( &$this, 'onTagProgress' ) );
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param OutputPage $oOutputPage
+	 * @param Skin $oSkin
+	 */
+	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
+		if( !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('AdminDashboard'))
+			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('Wiki_Admin')) 
+		) return true;
+
+		$oOutputPage->addModules('ext.bluespice.statisticsPortlets');
 		return true;
 	}
 
@@ -248,18 +245,27 @@ class Statistics extends BsExtensionMW {
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function onTagProgress( $input, $args, $parser ) {
-		$iBase =     BsCore::sanitizeArrayEntry( $args, 'basecount'     , 100              , BsPARAMTYPE::INT );
-		$sFraction = BsCore::sanitizeArrayEntry( $args, 'progressitem'  , 'OK'             , BsPARAMTYPE::STRING );
-		$iWidth =    BsCore::sanitizeArrayEntry( $args, 'width'         , 100              , BsPARAMTYPE::INT );
+		$iBaseCount = BsCore::sanitizeArrayEntry( $args, 'basecount'     , 100  , BsPARAMTYPE::INT );
+		$sBaseItem  = BsCore::sanitizeArrayEntry( $args, 'baseitem'      , '' , BsPARAMTYPE::STRING );
+		$sFraction  = BsCore::sanitizeArrayEntry( $args, 'progressitem'  , 'OK' , BsPARAMTYPE::STRING );
+		$iWidth     = BsCore::sanitizeArrayEntry( $args, 'width'         , 100  , BsPARAMTYPE::INT );
 
 		// no Article when in cli mode
-		if ( !is_object( $this->mAdapter->get( 'Article' ) ) ) {
+		if ( !is_object( $this->getTitle() ) ) {
 			return '';
 		}
 
-		$sText = BsAdapterMW::get( 'Article' )->fetchContent();
+		$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $this->getTitle() );
+
 		// substract 1 because one item is in the progressitem attribute
 		$iFraction = substr_count( $sText, $sFraction ) - 1;
+		
+		if ( $sBaseItem ) {
+			$iBase = substr_count( $sText, $sBaseItem ) - 1;
+		} else {
+			$iBase = $iBaseCount;
+		}
+		
 		$fPercent = $iFraction / $iBase;
 
 		$iWidthGreen = floor($iWidth * $fPercent);
@@ -278,10 +284,206 @@ class Statistics extends BsExtensionMW {
 		$aSearchAdminButtons['Statistics'] = array(
 			'href' => SpecialPage::getTitleFor( 'SpecialExtendedStatistics' )->getLinkUrl(),
 			'onclick' => '',
-			'label' => wfMsg( 'bs-extendedsearch-statistics' ),
-			'image' => "$sScriptPath/extensions/BlueSpiceExtensions/Statistics/images/bs-searchstatistics.png"
+			'label' => wfMessage( 'bs-extendedsearch-statistics' )->plain(),
+			'image' => "$sScriptPath/extensions/BlueSpiceExtensions/Statistics/resources/images/bs-searchstatistics.png"
 		);
+
 		return true;
 	}
 
+	public static function ajaxGetAvalableDiagrams() {
+		$aResult = array(
+			"success" => false,
+			"errors" => array(),
+			"message" => '',
+			"data" => array(),
+		);
+
+		global $wgUser;
+		if( !$wgUser->isAllowed('read') ) {
+			$aResult["message"] = wfMessage('bs-statistics-not-allowed')->plain();
+			return json_encode($aResult);
+		}
+
+		foreach ( self::getAvailableDiagrams() as $oDiagram ) {
+			$aFilterKeys = array();
+			foreach( $oDiagram->getFilters() as $key => $oFilter ) $aFilterKeys[] = $key;
+
+			$aResult['data'][] = array(
+				'key' => $oDiagram->getDiagramKey(), 
+				'displaytitle' => $oDiagram->getTitle(),
+				'listable' => $oDiagram->isListable(),
+				'filters' => $aFilterKeys,
+			);
+		}
+
+		$aResult['success'] = true;
+		return json_encode($aResult);
+	}
+
+	public static function ajaxGetUserFilter() {
+		$aResult = array(
+			"success" => false,
+			"errors" => array(),
+			"message" => '',
+			"data" => array(),
+		);
+
+		global $wgUser;
+		if( !$wgUser->isAllowed('read') ) {
+			$aResult["message"] = wfMessage('bs-statistics-not-allowed')->plain();
+			return json_encode($aResult);
+		}
+
+		$oDbr = wfGetDB( DB_SLAVE );
+		$rRes = $oDbr->select('user', array('user_id', 'user_name'), '', '', array('ORDER BY' => 'user_name ASC') );
+		while ( $oRow = $rRes->fetchObject() ) {
+			$aResult['data'][] = array(
+				'key' => $oRow->user_name,
+				'displaytitle' => $oRow->user_name,
+			);
+		}
+
+		$aResult['success'] = true;
+		return json_encode($aResult);
+	}
+
+	public static function ajaxGetNamespaceFilter() {
+		$aResult = array(
+			"success" => false,
+			"errors" => array(),
+			"message" => '',
+			"data" => array(),
+		);
+
+		global $wgUser;
+		if( !$wgUser->isAllowed('read') ) {
+			$aResult["message"] = wfMessage('bs-statistics-not-allowed')->plain();
+			return json_encode($aResult);
+		}
+
+		foreach( BsNamespaceHelper::getNamespacesForSelectOptions( array( -2,-1 ) ) as $key => $name ) 
+			$aResult['data'][] = array( 'key' => $key, 'displaytitle' => $name );
+
+		$aResult['success'] = true;
+		return json_encode($aResult);
+	}
+
+	public static function ajaxGetCategoryFilter() {
+		$aResult = array(
+			"success" => false,
+			"errors" => array(),
+			"message" => '',
+			"data" => array(),
+		);
+
+		global $wgUser;
+		if( !$wgUser->isAllowed('read') ) {
+			$aResult["message"] = wfMessage('bs-statistics-not-allowed')->plain();
+			return json_encode($aResult);
+		}
+
+		//$aCategories[wfMsg( 'bs-statistics-all-categories' )] = '(all)';
+		$oDbr = wfGetDB( DB_SLAVE );
+		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );
+		while ( $oRow = $rRes->fetchObject() ) {
+			$aResult['data'][] = array( 'key' => $oRow->cl_to, 'displaytitle' => $oRow->cl_to );
+		}
+
+		$aResult['success'] = true;
+		return json_encode($aResult);
+	}
+
+	public static function ajaxGetSearchscopeFilter() {
+		$aResult = array(
+			"success" => false,
+			"errors" => array(),
+			"message" => '',
+			"data" => array(),
+		);
+
+		global $wgUser;
+		if( !$wgUser->isAllowed('read') ) {
+			$aResult["message"] = wfMessage('bs-statistics-not-allowed')->plain();
+			return json_encode($aResult);
+		}
+
+		foreach( array( 'title', 'text', 'files', 'all' ) as $value )
+			$aResult['data'][] = array( 'key' => $value, 'displaytitle' => $value );
+
+		$aResult['success'] = true;
+		return json_encode($aResult);
+	}
+
+	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$aPortalConfig[0] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain()
+			)
+		);
+		$aPortalConfig[0] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain()
+			)
+		);
+		$aPortalConfig[0] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain()
+			)
+		);
+		$aPortalConfig[0] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain()
+			)
+		);
+
+		return true;
+	}
+
+	/**
+	 * 
+	 * @global OutputPage $wgOut
+	 * @param type $aPortlets
+	 * @return boolean
+	 */
+	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
+		$aPortlets[] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+			),
+			'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-NumberOfUsersdesc' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain()
+			),
+			'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-NumberOfEditsdesc' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain()
+			),
+			'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-NumberOfArticlesdesc' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
+			'config' => array(
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain()
+			),
+			'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-NumberOfPagesdesc' )->plain()
+		);
+
+		return true;
+	}
 }

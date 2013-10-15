@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: view.Blog.php 9615 2013-06-05 13:56:16Z swidmann $
+
  * @package    BlueSpice_Extensions
  * @subpackage Blog
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -56,13 +56,14 @@ class ViewBlog extends ViewBaseElement {
 	public function renderShowAll() {
 		if ( !$this->getOption( 'showall' ) )
 			return '';
-		$sOut = $this->renderLink( array(
-					'href'   => BsAdapterMW::getRequestURI(),
+		$sOut = $this->renderLink(
+				array(
+					'href'   => BsCore::getRequestURI(),
 					'query'  => 'showall=true',
-					'title'  => wfMsg( 'bs-blog-show-all' )
-					),
-					wfMsg( 'bs-blog-show-all' )
-				);
+					'title'  => wfMessage( 'bs-blog-show-all' )->plain()
+				),
+				wfMessage( 'bs-blog-show-all' )->plain()
+		);
 		return $sOut;
 	}
 
@@ -96,10 +97,10 @@ class ViewBlog extends ViewBaseElement {
 		$aOut[] = '    <div class="bs-blog-form-left"></div>';
 		$aOut[] = '    <div class="bs-blog-form-right"></div>';  
 		$aOut[] = '    <div class="bs-blog-form-center">';
-		$aOut[] = '      <h2 class="bs-blog-header">'.wfMsg( 'bs-blog-form-title-text' ).'</h2>';
-		$aOut[] = '      <input id="'.$sId.'Input" class="bs-blog-newentry-input" name="newpage" type="text" value="'.wfMsg( 'bs-blog-form-inline-text' ).'" onfocus="if (this.value==\''.wfMsg( 'bs-blog-form-inline-text' ).'\') this.value=\'\';" />';
+		$aOut[] = '      <h2 class="bs-blog-header">'.wfMessage( 'bs-blog-form-title-text' )->plain().'</h2>';
+		$aOut[] = '      <input id="'.$sId.'Input" class="bs-blog-newentry-input" name="newpage" type="text" value="'.wfMessage( 'bs-blog-form-inline-text' )->plain().'" onfocus="if (this.value==\''.wfMessage( 'bs-blog-form-inline-text' )->plain().'\') this.value=\'\';" />';
 		$aOut[] = '      <input type="hidden" name="blogcat" value="'.$this->getOption('blogcat').'" />';
-		$aOut[] = '      <input type="submit" name="go" class="bs-blog-newentry-submit" id="'.$sId.'Button" value="'.wfMsg( 'bs-blog-form-button-text' ).'" onclick="hw_'.$sId.'_submit(); return false;"/>&nbsp;';
+		$aOut[] = '      <input type="submit" name="go" class="bs-blog-newentry-submit" id="'.$sId.'Button" value="'.wfMessage( 'bs-blog-form-button-text' )->plain().'" onclick="hw_'.$sId.'_submit(); return false;"/>&nbsp;';
 		$aOut[] = '    </div>';
 		$aOut[] = '  </form>';
 		$aOut[] = '</div>';

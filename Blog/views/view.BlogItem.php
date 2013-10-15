@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: view.BlogItem.php 8596 2013-02-15 08:25:13Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage Blog
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -89,11 +89,10 @@ class ViewBlogItem extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $params = false ) {
-
-		$sOut  = $this->renderArticle();
+		$sOut = $this->renderArticle();
 		$sOut .= $this->renderActions();
-		$sOut  = $this->itemWrap( $sOut );
 
+		$sOut  = $this->itemWrap( $sOut );
 		return $sOut;
 	}
 
@@ -224,18 +223,18 @@ class ViewBlogItem extends ViewBaseElement {
 		if ( $this->getOption( 'moreAtEndOfEntry' ) ) $sOut .= '&nbsp;';
 		else $sOut .= "\n";
 
-		$sParsedOut = BsCore::getInstance( 'MW' )->getAdapter()->parseWikiText( $sOut );
+		$sParsedOut = BsCore::getInstance()->parseWikiText( $sOut );
 
 		$sOut = $sParsedOut;
 
 		if ( $this->getOption( 'more' ) ) {
 			$aLinkOptions = array(
 			    'href'   => $this->mUrl,
-			    'title'  => wfMsg( 'bs-blog-read-more' )
+			    'title'  => wfMessage( 'bs-blog-read-more' )->plain()
 			);
 			if ( $this->getOption( 'moreInNewWindow' ) )
 			    $aLinkOptions['openInNewWindow'] = true;
-			$sContent = wfMsg( 'bs-blog-read-more' );
+			$sContent = wfMessage( 'bs-blog-read-more' )->plain();
 			if ( $this->getOption( 'moreAtEndOfEntry' ) )
 			    $sContent .= '...';
 			$sOut .= $this->renderLink( $aLinkOptions, $sContent );
@@ -259,8 +258,8 @@ class ViewBlogItem extends ViewBaseElement {
 		// Comments
 		$sOut .= $this->renderLink( array(
 										'href'   => $this->mTalkUrl,
-										'title'  => wfMsg( 'bs-blog-comments' ) ),
-									wfMsg( 'bs-blog-comments' ) )
+										'title'  => wfMessage( 'bs-blog-comments' )->plain() ),
+									wfMessage( 'bs-blog-comments' )->plain() )
 			.' ('.$this->mTalkCount.')';
 
 		// Trackback
@@ -269,9 +268,9 @@ class ViewBlogItem extends ViewBaseElement {
 			$sOut .= $this->renderLink(
 				array(
 					'href'   => $this->mTrackbackURL,
-					'title'  => wfMsg( 'bs-blog-trackback' )
+					'title'  => wfMessage( 'bs-blog-trackback' )->plain()
 				),
-				wfMsg( 'bs-blog-trackback' )
+				wfMessage( 'bs-blog-trackback' )->plain()
 			);
 		}
 
@@ -282,9 +281,9 @@ class ViewBlogItem extends ViewBaseElement {
 				array(
 					'href'   => $this->mUrl,
 					'query'  => 'oldid='.$this->mRevId,
-					'title'  => wfMsg( 'bs-blog-permalink' )
+					'title'  => wfMessage( 'bs-blog-permalink' )->plain()
 				),
-				wfMsg( 'bs-blog-permalink' )
+				wfMessage( 'bs-blog-permalink' )->plain()
 			);
 		}
 		$sOut .= '</div>';

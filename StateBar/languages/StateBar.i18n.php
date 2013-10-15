@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: StateBar.i18n.php 9334 2013-05-07 14:56:14Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage StateBar
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

@@ -1,5 +1,5 @@
 <?php
 
-BsExtensionManager::registerExtension('PagesVisited',                    BsRUNLEVEL::FULL);
+BsExtensionManager::registerExtension('PagesVisited',                    BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['PagesVisited'] = dirname( __FILE__ ) . '/PagesVisited.i18n.php';
+$wgExtensionMessagesFiles['PagesVisited'] = __DIR__ . '/PagesVisited.i18n.php';

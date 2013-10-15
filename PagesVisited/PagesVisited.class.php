@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: PagesVisited.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage PagesVisited
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -61,7 +61,7 @@ class PagesVisited extends BsExtensionMW {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['PagesVisited'] = dirname( __FILE__ ) . '/PagesVisited.i18n.php';
+		//$wgExtensionMessagesFiles['PagesVisited'] = __DIR__ . '/PagesVisited.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -70,8 +70,8 @@ class PagesVisited extends BsExtensionMW {
 			EXTINFO::NAME        => 'PagesVisited',
 			EXTINFO::DESCRIPTION => 'Provides a personalized list of last visited pages.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice'   => '1.22.0',
@@ -110,7 +110,7 @@ class PagesVisited extends BsExtensionMW {
 			case 'WidgetNS':
 				$aPrefs = array(
 					'type'    => 'multiselectex',
-					'options' => BsAdapterMW::getNamespacesForSelectOptions( array( -2, NS_MEDIA, NS_MEDIAWIKI, NS_MEDIAWIKI_TALK, NS_SPECIAL ) )
+					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( -2, NS_MEDIA, NS_MEDIAWIKI, NS_MEDIAWIKI_TALK, NS_SPECIAL ) )
 				);
 				break;
 			case 'WidgetSortOdr':
@@ -187,7 +187,7 @@ class PagesVisited extends BsExtensionMW {
 			return $sOut;
 		}
 		else {
-			return $this->mAdapter->parseWikiText( $sOut );
+			return $this->mCore->parseWikiText( $sOut );
 		}
 	}
 
@@ -231,8 +231,8 @@ class PagesVisited extends BsExtensionMW {
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array( 'fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30 ) );
 		if ( $oValidationICount->getErrorCode() ) $iCount = 10;
 
-		if( $this->mAdapter->get( 'Title' ) !== null  ) { // TODO RBV (15.04.11 13:05): Necessary?
-			$iCurrentNamespaceId = $this->mAdapter->get( 'Title' )->getNamespace();
+		if( $this->getTitle() !== null  ) { // TODO RBV (15.04.11 13:05): Necessary?
+			$iCurrentNamespaceId = $this->getTitle()->getNamespace();
 		}
 
 		// TODO RBV (04.07.11 15:02): Rework method -> implode() is a workaround for legacy code.
@@ -240,7 +240,7 @@ class PagesVisited extends BsExtensionMW {
 		$sOut      = $oListView->execute();
 
 		if ( !( $oListView instanceof ViewTagError ) ) {
-			$sOut = $this->mAdapter->parseWikiText( $sOut );
+			$sOut = $this->mCore->parseWikiText( $sOut );
 		}
 
 		$oWidgetView = new ViewWidget();
@@ -260,7 +260,7 @@ class PagesVisited extends BsExtensionMW {
 	 * @return ViewBaseElement Contains the list in its _data member. The predefined template is '*[[{LINK}|{TITLE}]]\n'
 	 */
 	private function makePagesVisitedWikiList( $iCount = 5, $sNamespaces = 'all', $iCurrentNamespaceId = 0, $iMaxTitleLength = 20, $sSortOrder = 'time' ) {
-		$oCurrentUser = $this->mAdapter->get('User');
+		$oCurrentUser = $this->getUser();
 		if( is_null( $oCurrentUser ) ) return null; // in CLI
 
 		//$sCacheKey = md5( $oCurrentUser->getName().$iCount.$sNamespaces.$iCurrentNamespaceId.$iMaxTitleLength );
@@ -271,7 +271,7 @@ class PagesVisited extends BsExtensionMW {
 		$aNamespaceIndexes = array( 0 );
 
 		try {
-			$aNamespaceIndexes = BsAdapterMW::getNamespaceIdsFromAmbiguousCSVString( $sNamespaces ); //Returns array of integer indexes
+			$aNamespaceIndexes = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $sNamespaces ); //Returns array of integer indexes
 		}
 		catch ( BsInvalidNamespaceException $oException ) {
 			$aInvalidNamespaces = $oException->getListOfInvalidNamespaces();

@@ -929,12 +929,11 @@ class Apache_Solr_Service
 	 *
 	 * @throws Exception If an error occurs during the service call
 	 */
-	public function optimize($waitFlush = true, $waitSearcher = true, $timeout = 3600)
+	public function optimize($waitSearcher = true, $timeout = 3600)
 	{
-		$flushValue = $waitFlush ? 'true' : 'false';
 		$searcherValue = $waitSearcher ? 'true' : 'false';
 
-		$rawPost = '<optimize waitFlush="' . $flushValue . '" waitSearcher="' . $searcherValue . '" />';
+		$rawPost = '<optimize waitSearcher="' . $searcherValue . '" />';
 
 		return $this->_sendRawPost($this->_updateUrl, $rawPost, $timeout);
 	}

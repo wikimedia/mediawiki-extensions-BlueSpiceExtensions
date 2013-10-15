@@ -367,7 +367,7 @@
       -->
      <autoCommit> 
        <maxTime>15000</maxTime> 
-       <openSearcher>false</openSearcher> 
+       <openSearcher>true</openSearcher> 
      </autoCommit>
 
     <!-- softAutoCommit is like autoCommit except it causes a
@@ -1343,7 +1343,7 @@
       <str name="spellcheck.dictionary">default</str>
       <str name="spellcheck">on</str>
       <str name="spellcheck.extendedResults">true</str>       
-      <str name="spellcheck.count">3</str>
+      <str name="spellcheck.count">10</str>
       <str name="spellcheck.alternativeTermCount">5</str>
       <str name="spellcheck.maxResultsForSuggest">5</str>       
       <str name="spellcheck.collate">true</str>

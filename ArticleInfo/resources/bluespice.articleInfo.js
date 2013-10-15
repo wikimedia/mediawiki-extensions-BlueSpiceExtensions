@@ -2,7 +2,7 @@
  * Js for ArticleInfo extension
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    $Id: ArticleInfo.js 9459 2013-05-21 15:45:05Z pwirth $
+
  * @package    Bluespice_Extensions
  * @subpackage ArticleInfo
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -36,7 +36,7 @@ BsArticleInfo = {
 	},
 
 	updateLastEdited: function() {
-		var sDateTimeOut = BlueSpice.timestampToAgeString(BsArticleInfo.lastEditTimestamp);
+		var sDateTimeOut = bs.util.timestampToAgeString(BsArticleInfo.lastEditTimestamp);
 		$('#sb-LastEdited-link').text(sDateTimeOut);
 		BsArticleInfo.timeout = setTimeout("BsArticleInfo.updateLastEdited()", BsArticleInfo.lastEditInterval);
 	},
@@ -52,6 +52,6 @@ BsArticleInfo = {
 	}
 }
 
-$(document).ready(function() {
+mw.loader.using('ext.bluespice', function() {
 	BsArticleInfo.init()
 });

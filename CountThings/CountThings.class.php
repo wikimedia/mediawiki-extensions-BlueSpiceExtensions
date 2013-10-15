@@ -29,7 +29,7 @@
  * $LastChangedDate: 2013-06-14 14:09:29 +0200 (Fr, 14 Jun 2013) $
  * $LastChangedBy: pwirth $
  * $Rev: 9745 $
- * $Id: CountThings.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  */
 /* Changelog
  * v1.20.0
@@ -49,7 +49,7 @@ class CountThings extends BsExtensionMW {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['CountThings'] = dirname( __FILE__ ) . '/CountThings.i18n.php';
+		//$wgExtensionMessagesFiles['CountThings'] = __DIR__ . '/CountThings.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -58,8 +58,8 @@ class CountThings extends BsExtensionMW {
 			EXTINFO::NAME => 'CountThings',
 			EXTINFO::DESCRIPTION => 'Counts all kinds of things.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
-			EXTINFO::VERSION => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS => 'stable',
+			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
 		);
@@ -72,7 +72,6 @@ class CountThings extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
-		$this->registerView( 'ViewCountCharacters' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 	
@@ -195,8 +194,7 @@ class CountThings extends BsExtensionMW {
 				continue;
 			}
 
-			$oArticle = new Article( $oTitle, 0 ); //New: last revision
-			$sContent = $oArticle->fetchContent( 0 ); //Old: last revision
+			$sContent = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ); //Old: last revision
 
 			$oCountView = new ViewCountCharacters();
 			$oCountView->setTitle( $oTitle );

@@ -8,7 +8,7 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-require_once( dirname(dirname(dirname(dirname(dirname( __FILE__ ))))) . '/maintenance/Maintenance.php' );
+require_once( dirname(dirname(dirname(dirname(__DIR__)))) . '/maintenance/Maintenance.php' );
 
 class SearchDeleteIndex extends Maintenance {
 	protected $sType = array();

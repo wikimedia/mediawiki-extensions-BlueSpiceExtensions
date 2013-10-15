@@ -5,11 +5,9 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @author     Mathias Scheer <scheer@hallowelt.biz>
- * @author     Markus Glaser <glaser@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -32,16 +30,20 @@ class ViewMoreLikeThis extends ViewBaseElement {
 	public function execute( $aParam = false ) {
 		$sResult       = '';
 		$vMoreLikeThis = $this->getOption( 'mlt' );
+		$sOrigin = $this->getOption( 'origin' );
 
 		if ( is_array( $vMoreLikeThis ) && !empty( $vMoreLikeThis ) ) {
-			$aMlt = array();
-			$sResult .= '<div class="bs-extendedsearch-mlt">';
-			foreach ( $vMoreLikeThis as $sMlt ) {
-				$aMlt[] = $sMlt;
+			if ( $sOrigin === 'widgetbar' ) {
+				$sResult .= '<ul>';
+				foreach ( $vMoreLikeThis as $sMlt ) {
+					$sResult .= '<li>'. $sMlt .'</li>';
+				}
+				$sResult .= '</ul>';
+			} else {
+				foreach ( $vMoreLikeThis as $sMlt ) {
+					$sResult .= $sMlt .'<br />';
+				}
 			}
-			$sResult .= '<h4>' . wfMessage( 'bs-extendedsearch-morelikethis' )->plain() . '</h4>';
-			$sResult .= implode( '<br />', $aMlt );
-			$sResult .= '<br /></div>';
 		}
 
 		return $sResult;

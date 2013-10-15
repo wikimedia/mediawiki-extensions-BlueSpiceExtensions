@@ -5,7 +5,8 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: PageTemplatesAdmin.class.php 9900 2013-06-25 06:38:06Z rvogel $
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
+
  * @package    BlueSpice_Extensions
  * @subpackage PageTemplates
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -32,13 +33,7 @@ class PageTemplatesAdmin {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'PageTemplatesAdmin', $this, 'getTemplates', 'editadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'PageTemplatesAdmin', $this, 'getLanguages', 'editadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'PageTemplatesAdmin', $this, 'getNamespaces', 'editadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'PageTemplatesAdmin', $this, 'doEditTemplate', 'editadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'PageTemplatesAdmin', $this, 'doDeleteTemplate', 'editadmin' );
-
-		$this->oExtension = BsExtensionMW::getInstanceFor( 'MW::PageTemplates' ); 
+		$this->oExtension = BsExtensionManager::getExtension( 'PageTemplates' ); 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -49,50 +44,51 @@ class PageTemplatesAdmin {
 	public function getForm() {
 		global $wgOut;
 		$wgOut->addModules('ext.bluespice.pageTemplates');
-		$sForm = '<div id="bs-pagetemplates-admingrid"></div>';
+		$sForm = '<div id="bs-pagetemplates-grid"></div>';
 		return $sForm;
 	}
 
-	// TODO RBV (18.05.11 09:13): Move to adapter
 	/**
 	 * Returns a json encoded list of available namespaces
-	 * @param string $sOutput json encoded list
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public function getNamespaces( &$sOutput ) {
-		$aNamespaces = $this->oExtension->mAdapter->CanonicalNamespaceNames;
-		$bShowAll    = BsCore::getParam( 'showAll', false, BsPARAM::REQUEST|BsPARAMTYPE::BOOL );
-		$bShowPseudo = BsCore::getParam( 'showPseudo', false, BsPARAM::REQUEST|BsPARAMTYPE::BOOL );
+	public static function getNamespaces( $bShowAll ) {
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
+
+		global $wgCanonicalNamespaceNames, $wgRequest;
+		$bShowPseudo = $wgRequest->getFuzzyBool( 'showPseudo', false );
+
 		if ( $bShowAll ) {
-			$aNamespaces[-99] = 'all';
+			$wgCanonicalNamespaceNames[-99] = 'all';
 		}
-		$aNamespaces[0] = 'main';
-		ksort( $aNamespaces );
+		$wgCanonicalNamespaceNames[0] = 'main';
+		ksort( $wgCanonicalNamespaceNames );
 
 		$aData = array();
 		$aData['items'] = array();
-		foreach ( $aNamespaces as $iNsIndex => $sNsCanonicalName ) {
-			if ( !$bShowPseudo && ($iNsIndex == -1 || $iNsIndex == -2) ) continue;
-			$nsName = BsAdapterMW::getNamespaceName( $iNsIndex, true );
+		foreach ( $wgCanonicalNamespaceNames as $iNsIndex => $sNsCanonicalName ) {
+			if ( !$bShowPseudo && ( $iNsIndex == -1 || $iNsIndex == -2 ) ) continue;
+			$nsName = BsNamespaceHelper::getNamespaceName( $iNsIndex, true );
 			$aData['items'][] = array( "name"=>$nsName, "id"=>$iNsIndex );
 		}
 
-		$sOutput = json_encode($aData);
-		return true;
-	}	
+		return json_encode( $aData );
+	}
 
 	/**
 	 * Returns a json encoded list of available templates
-	 * @param string $output json encoded list
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public function getTemplates( &$output ) {
-		$iLimit     = BsCore::getParam( 'limit', 25, BsPARAM::REQUEST|BsPARAMTYPE::INT);
-		$iStart     = BsCore::getParam( 'start', 0, BsPARAM::REQUEST|BsPARAMTYPE::INT);
-		$sSort      = BsCore::getParam( 'sort',  'user_name', BsPARAM::POST|BsPARAMTYPE::SQL_STRING );
-		$sDirection = BsCore::getParam( 'dir',   'ASC', BsPARAM::POST|BsPARAMTYPE::SQL_STRING );
+	public static function getTemplates() {
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
-		switch( $sSort ) {
+		global $wgRequest;
+		$iLimit     = $wgRequest->getInt( 'limit', 25 );
+		$iStart     = $wgRequest->getInt( 'start', 0 );
+		$sSort      = $wgRequest->getVal( 'sort', 'user_name' );
+		$sDirection = $wgRequest->getVal( 'dir', 'ASC' );
+
+		switch ( $sSort ) {
 			case 'label':
 				$sSortField = 'pt_label';
 				break;
@@ -127,7 +123,7 @@ class PageTemplatesAdmin {
 				$tmp['id']       = $row->pt_id;
 				$tmp['label']    = $row->pt_label;
 				$tmp['desc']     = $row->pt_desc;
-				$tmp['targetns'] = BsAdapterMW::getNamespaceName( $row->pt_target_namespace, true );
+				$tmp['targetns'] = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace, true );
 				$tmp['targetnsid'] = $row->pt_target_namespace;
 				$oTitle = Title::newFromText( $row->pt_template_title, $row->pt_template_namespace );
 				$tmp['template']  = '<a href="'.$oTitle->getFullURL().'" target="_blank" '.($oTitle->exists()?'':'class="new"').'>'.$oTitle->getFullText().'</a>';
@@ -139,101 +135,73 @@ class PageTemplatesAdmin {
 		$rescount = $dbr->selectRow( 'bs_pagetemplate', 'COUNT( pt_id ) AS cnt', array() );
 		$aData['totalCount'] = $rescount->cnt;
 
-		$output = json_encode($aData);
+		return json_encode( $aData );
 	}
-	
+
 	/**
 	 * Creates or changes a template 
-	 * @param string $sOutput json encoded answer array with success status
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public function doEditTemplate( &$sOutput ) {
-		// TODO RBV (18.05.11 09:15): Use XHRResponse Abstraction from Core.
+	public static function doEditTemplate( $iOldId, $sTemplateName, $sLabel, $sDesc, $iTargetNs, $iTemplateNs ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			$sOutput = json_encode( array(
+			return json_encode( array(
 				'success' => false,
 				'errors' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() ) // errors not messages otherwise no message will be displayed
-				) );
-			return;
+			) );
 		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'messages' => array()
+			'message' => array()
 		);
-
-		$iOldId = BsCore::getParam( 'oldId', 0, BsPARAM::REQUEST|BsPARAMTYPE::INT );
-		$sTemplateName = BsCore::getParam( 'templateName', '', BsPARAM::REQUEST|BsPARAMTYPE::STRING );
-		$sLabel = BsCore::getParam( 'label', '', BsPARAM::REQUEST|BsPARAMTYPE::STRING );
-		$sDesc = BsCore::getParam( 'desc', '', BsPARAM::REQUEST|BsPARAMTYPE::STRING );
-		$iTargetNs = BsCore::getParam( 'targetNs', -99, BsPARAM::REQUEST|BsPARAMTYPE::INT );
-		$iTemplateNs = BsCore::getParam( 'templateNs', -99, BsPARAM::REQUEST|BsPARAMTYPE::INT );
 
 		if ( empty( $sDesc ) ) $sDesc = ' ';
 
 		// TODO RBV (18.05.11 09:19): Use validators
 		if ( strlen( $sDesc ) >= 255 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['desc'] = wfMsg( 'bs-pagetemplates-desc_2long' );
+			$aAnswer['errors']['desc'] = wfMessage( 'bs-pagetemplates-desc_2long' )->plain();
 		}
 
 		if ( strlen( $sLabel ) >= 255 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['label'] = wfMsg( 'bs-pagetemplates-label_2long' );
+			$aAnswer['errors']['label'] = wfMessage( 'bs-pagetemplates-label_2long' )->plain();
 		}
 
 		if ( strlen( $sLabel ) == 0 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['label'] = wfMsg( 'bs-pagetemplates-label_empty' );
+			$aAnswer['errors']['label'] = wfMessage( 'bs-pagetemplates-label_empty' )->plain();
 		}
 
 		if ( strlen( $sTemplateName ) >= 255 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['templateName'] = wfMsg( 'bs-pagetemplates-templatename_2long' );
+			$aAnswer['errors']['templateName'] = wfMessage( 'bs-pagetemplates-templatename_2long' )->plain();
 		}
 
 		if ( strlen( $sTemplateName ) == 0 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['templateName'] = wfMsg( 'bs-pagetemplates-templatename_empty' );
-		}
-
-		$aNamespaces = $this->oExtension->mAdapter->CanonicalNamespaceNames;
-		$aNamespaces[0] = 'main';
-
-		if ( !in_array( $iTemplateNs, array_keys($aNamespaces) ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors']['templateNamespace'] = wfMsg( 'bs-pagetemplates-template_namespace_doesnt_exist' );
-		}
-
-		$aNamespaces[-99] = 'all';
-		if ( !in_array( $iTargetNs, array_keys($aNamespaces) ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors']['target'] = wfMsg( 'bs-pagetemplates-target_namespace_doesnt_exist' );
-		}
-
-		if ( $sLabel == '' ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = wfMsg( 'bs-pagetemplates-no_label' );
+			$aAnswer['errors']['templateName'] = wfMessage( 'bs-pagetemplates-templatename_empty' )->plain();
 		}
 
 		$oDbw = wfGetDB( DB_MASTER );
 
 		// This is the add template part
-		if ( $iOldId == 0 ) {
+		if ( empty( $iOldId ) ) {
 			if ( $aAnswer['success'] === true ) {
-				//$oDbw = wfGetDB( DB_MASTER );
-				$oDbw->insert( 'bs_pagetemplate',
-						array( 
+				$oDbw->insert(
+						'bs_pagetemplate',
+						array(
 							'pt_label' => $sLabel,
 							'pt_desc' => $sDesc,
 							'pt_template_title' => $sTemplateName,
 							'pt_template_namespace' => $iTemplateNs,
 							'pt_target_namespace' => $iTargetNs,
 							'pt_sid' => 0,
-							));
-				$aAnswer['messages'][] = wfMsg( 'bs-pagetemplates-tpl_added' );
+						));
+				$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl_added' )->plain();
 			}
 		// and here we have edit template
 		} else {
@@ -241,7 +209,7 @@ class PageTemplatesAdmin {
 			$iNumRow = $oDbw->numRows( $rRes );
 			if ( !$iNumRow ) {
 				$aAnswer['success'] = false;
-				$aAnswer['errors'][] = wfMsg( 'bs-pagetemplates-no_old_tpl' );
+				$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-no_old_tpl' )->plain();
 			}
 
 			if ( $aAnswer['success'] === true ) {
@@ -259,46 +227,41 @@ class PageTemplatesAdmin {
 
 				if ( $rRes === false ) {
 					$aAnswer['success'] = false;
-					$aAnswer['errors'][] = wfMsg( 'bs-pagetemplates-db_error' );
+					$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-db_error' )->plain();
 				}
 			}
 
 			if ( $aAnswer['success'] ) {
-				$aAnswer['messages'][] = wfMsg( 'bs-pagetemplates-tpl_edited' );
+				$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl_edited' )->plain();
 			}
 		}
 
-		$sOutput = json_encode( $aAnswer ); // TODO RBV (18.05.11 09:23): Core XHRResponse Abstraction
-		return;
+		return json_encode( $aAnswer );
 	}
 
 	/**
 	 * Deletes a template 
-	 * @param string $sOutput json encoded answer array with success status
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	function doDeleteTemplate( &$sOutput ) {
-		// TODO RBV (18.05.11 09:25): XHRResponse Abstraction
+	public static function doDeleteTemplate( $iId ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			$sOutput = json_encode( array(
+			return json_encode( array(
 				'success' => false,
-				'messages' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
+				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
-			return;
 		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'messages' => array()
+			'message' => array()
 		);
 
-		$iId = BsCore::getParam( 'id', null, BsPARAM::REQUEST|BsPARAMTYPE::INT );
-
-		if ( $iId === null ) {
+		if ( empty( $iId ) ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = wfMsg( 'bs-pagetemplates-no_id' );
+			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-no_id' )->plain();
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -306,15 +269,14 @@ class PageTemplatesAdmin {
 
 		if ( $res === false ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = wfMsg( 'bs-pagetemplates-db_error' );
+			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-db_error' )->plain();
 		}
 
 		if ( $aAnswer['success'] ) {
-			$aAnswer['messages'][] = wfMsg( 'bs-pagetemplates-tpl_deleted' );
+			$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl_deleted' )->plain();
 		}
 
-		$sOutput = json_encode( $aAnswer );
-		return;
+		return json_encode( $aAnswer );
 	}
 
 }

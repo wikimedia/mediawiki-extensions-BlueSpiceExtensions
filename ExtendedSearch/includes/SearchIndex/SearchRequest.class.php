@@ -26,9 +26,9 @@ class SearchRequest {
 
 	/**
 	 * Request Context
-	 * @var RequestContext RequestContext object
+	 * @var $oRequest WebRequest object
 	 */
-	protected $oRequestContext;
+	protected $oRequest;
 	/**
 	 * Instance of search service
 	 * @var object of search service
@@ -41,7 +41,7 @@ class SearchRequest {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->oRequestContext = RequestContext::getMain();
+		$this->oRequest = RequestContext::getMain()->getRequest();
 		$this->setDefaults();
 		$this->processSettings();
 		$this->processInputs();
@@ -92,30 +92,28 @@ class SearchRequest {
 	 * Get values from url parameters
 	 */
 	protected function processInputs() {
-		$this->sScope           = $this->oRequestContext->getRequest()->getVal( 'search_scope' );
-		$this->sOrigin          = $this->oRequestContext->getRequest()->getVal( 'search_origin' );
-		$this->sOperator        = $this->oRequestContext->getRequest()->getVal( 'op' );
-		$this->sAsc             = $this->oRequestContext->getRequest()->getVal( 'search_asc', $this->sAsc );
-		$this->iOffset          = $this->oRequestContext->getRequest()->getVal( 'search_offset', $this->iOffset ); // todo: type is int??
-		$this->sOrder           = $this->oRequestContext->getRequest()->getVal( 'search_order', $this->sOrder );
-		$this->sFormat          = $this->oRequestContext->getRequest()->getVal( 'search_format', $this->sFormat );
-		$this->sCategories      = $this->oRequestContext->getRequest()->getArray( 'ca', array() );
-		$this->aNamespaces      = $this->oRequestContext->getRequest()->getArray( 'na', array() );
-		$this->sType            = $this->oRequestContext->getRequest()->getVal( 'ty', false );
-		$this->sId              = $this->oRequestContext->getRequest()->getVal( 'search_id', false );
-		$this->bExtendedForm    = $this->oRequestContext->getRequest()->getFuzzyBool( 'search_extended', false );
-		$this->sSubmit          = $this->oRequestContext->getRequest()->getFuzzyBool( 'search_submit' );
-		$this->sGo              = $this->oRequestContext->getRequest()->getFuzzyBool( 'search_go' );
-		$this->bAutocomplete    = $this->oRequestContext->getRequest()->getFuzzyBool( 'autocomplete', false );
-		$this->sInput           = $this->oRequestContext->getRequest()->getVal( 'search_input', false );
-		$this->sHidden          = $this->oRequestContext->getRequest()->getVal( 'search_hidden' );
-		$this->sRequestOrigin   = $this->oRequestContext->getRequest()->getVal( 'search_origin' );
-		$this->sEditor          = $this->oRequestContext->getRequest()->getArray( 'ed', array() );
-		$this->sSearchAsYouType = $this->oRequestContext->getRequest()->getVal( 'searchasyoutype' );
+		$this->sScope           = $this->oRequest->getVal( 'search_scope' );
+		$this->sOrigin          = $this->oRequest->getVal( 'search_origin' );
+		$this->sOperator        = $this->oRequest->getVal( 'op' );
+		$this->sAsc             = $this->oRequest->getVal( 'search_asc', $this->sAsc );
+		$this->iOffset          = $this->oRequest->getVal( 'search_offset', $this->iOffset ); // todo: type is int??
+		$this->sOrder           = $this->oRequest->getVal( 'search_order', $this->sOrder );
+		$this->sFormat          = $this->oRequest->getVal( 'search_format', $this->sFormat );
+		$this->sId              = $this->oRequest->getVal( 'search_id', false );
+		$this->sInput           = $this->oRequest->getVal( 'search_input', false );
+		$this->sHidden          = $this->oRequest->getVal( 'search_hidden' );
+		$this->sRequestOrigin   = $this->oRequest->getVal( 'search_origin' );
+		$this->sSearchAsYouType = $this->oRequest->getVal( 'searchasyoutype' );
+		$this->bExtendedForm    = $this->oRequest->getFuzzyBool( 'search_extended', false );
+		$this->bAutocomplete    = $this->oRequest->getFuzzyBool( 'autocomplete', false );
+		$this->sEditor          = $this->oRequest->getArray( 'ed', array() );
+		$this->sCategories      = $this->oRequest->getArray( 'ca', array() );
+		$this->aNamespaces      = $this->oRequest->getArray( 'na', array() );
+		$this->sType            = $this->oRequest->getArray( 'ty', array() );
 
-		if ( $this->oRequestContext->getRequest()->getFuzzyBool( 'search_files' ) !== false ) {
-			if ( $this->sOrigin != 'ajax' ) {
-				if ( $this->oRequestContext->getRequest()->getFuzzyBool( 'search_files' ) == 1 ) {
+		if ( $this->oRequest->getFuzzyBool( 'search_files' ) !== false ) {
+			if ( $this->sOrigin !== 'ajax' ) {
+				if ( $this->oRequest->getFuzzyBool( 'search_files' ) == 1 ) {
 					$this->bSearchFiles = true;
 				} else {
 					$this->bSearchFiles = false;
@@ -135,10 +133,8 @@ class SearchRequest {
 	 * @return bool True if yes.
 	 */
 	public function isSearchable() {
-		$submit = $this->sSubmit;
-		$go     = $this->sGo;
 		$input  = $this->sInput; // take care:  empty( $this->sInput ) does not work 'cause of getter magic method
-		return (bool) ( ( $submit !== false || $go !== false ) && !empty( $input ) );
+		return (bool)( !empty( $input ) );
 	}
 
 }

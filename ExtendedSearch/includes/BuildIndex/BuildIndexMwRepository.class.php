@@ -99,16 +99,17 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	 * Indexes all documents that were found in crawl() method.
 	 */
 	public function indexCrawledDocuments() {
-		global $wgVersion;
 		while ( $document = $this->oDbr->fetchObject( $this->documentsDb ) ) {
 			$this->count++;
+			set_time_limit( $this->iTimeLimit );
+
+			$this->writeLog( $document->img_name );
+
 			$docType = $this->mimeDecoding( $document->img_minor_mime, $document->img_name );
 			if ( !isset( $this->aFileTypes[$docType] ) || ( $this->aFileTypes[$docType] !== true ) ) {
 				$this->writeLog( ( 'Filetype not allowed: '.$docType.' ('.$document->img_name.')' ) );
 				continue;
 			}
-
-			set_time_limit( $this->iTimeLimit );
 
 			$oTitle = Title::newFromText( $document->img_name, NS_FILE );
 			$oFile = wfLocalFile( $oTitle );
@@ -124,6 +125,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 				$this->writeLog( ( 'File does not exist: '.$document->img_name ) );
 				continue;
 			}
+
 			if ( $this->sizeExceedsMaxDocSize( $repoFileSize ) ){
 				$this->writeLog( ('File exceeds max doc size and will not be indexed: '.$document->img_name) );
 				continue;
@@ -154,14 +156,13 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 			$text = '';
 			try {
 				$text = $this->oMainControl->oSearchService->getFileText( $repoFileRealPath, $this->iTimeLimit );
-			}
-			catch ( Exception $e ) { // Exception can be of type Exception OR BsException
+			} catch ( Exception $e ) { // Exception can be of type Exception OR BsException
 				$this->writeLog( ( 'Unable to extract document '.$document->img_name.', errormessage: '.$e->getMessage() ) );
 				error_log( $e->getMessage() );
 			}
 
 			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage );
-			$this->writeLog( $document->img_name );
+
 			if ( $doc ) {
 				// mode and ERROR_MSG_KEY are only passed for the case when addDocument fails
 				$this->oMainControl->addDocument( $doc, $this->mode, self::S_ERROR_MSG_KEY );
@@ -173,8 +174,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	 * Descructor for BuildIndexMwArticles class
 	 */
 	public function __destruct() {
-		if ( $this->documentsDb !== null )
-			$this->oDbr->freeResult( $this->documentsDb );
+		if ( $this->documentsDb !== null ) $this->oDbr->freeResult( $this->documentsDb );
 	}
 
 }

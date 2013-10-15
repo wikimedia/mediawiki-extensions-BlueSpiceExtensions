@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    $Id: view.TopMenuItemMain.php 8536 2013-02-12 08:24:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage TopMenuBarCustomizer
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

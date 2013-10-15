@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: SpecialUniversalExport.class.php 9826 2013-06-20 12:39:37Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage Review
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -70,11 +70,11 @@ class SpecialUniversalExport extends BsSpecialPage {
 	function  __construct() {
 		parent::__construct( 'UniversalExport', 'universalexport-export', true );
 
-		$this->oOutputPage = BsCore::getInstance( 'MW' )->getAdapter()->get( 'Out' );
+		$this->oOutputPage = $this->getOutput();
 
 		//Set up default parameters and metadata
 		$this->aParams = BsConfig::get( 'MW::UniversalExport::ParamsDefaults' );
-		$this->aParams['webroot-filesystempath'] = BsAdapterMW::getMediaWikiWebrootPath();
+		$this->aParams['webroot-filesystempath'] = BsCore::getMediaWikiWebrootPath();
 		$this->aMetadata = json_decode( BsConfig::get( 'MW::UniversalExport::MetadataDefaults' ), true );
 
 		//Set up Black- and Whitelists
@@ -192,7 +192,6 @@ class SpecialUniversalExport extends BsSpecialPage {
 
 	// TODO RBV (03.02.11 10:54): Promote to Adapter interface?
 	private function returnFile( &$aFile ) {
-		BsOutputHandler::processRawOutput();
 		$this->oOutputPage->disable();
 		header( 'Pragma: public' );
 		header( 'Expires: 0' );

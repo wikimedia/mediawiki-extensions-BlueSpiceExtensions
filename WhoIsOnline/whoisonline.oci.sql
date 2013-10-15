@@ -3,7 +3,7 @@
 -- Part of BlueSpice for MediaWiki
 --
 -- @author     Markus Glaser <glaser@hallowelt.biz>
--- @version    $Id: whoisonline.oci.sql 5555 2012-06-22 11:42:51Z smuggli $
+
 -- @package    BlueSpice_Extensions
 -- @subpackage WhoIsOnline
 -- @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

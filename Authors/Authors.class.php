@@ -24,7 +24,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: Authors.class.php 9931 2013-06-25 15:39:28Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage Authors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -72,8 +72,8 @@ class Authors extends BsExtensionMW {
 			EXTINFO::NAME        => 'Authors',
 			EXTINFO::DESCRIPTION => 'Displays authors of an article with image.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9931 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.20.0' )
 		);
@@ -99,10 +99,7 @@ class Authors extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Authors::MoreImage',   'more-users_v2.png',          BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-authors-pref-moreimage' );
 		BsConfig::registerVar( 'MW::Authors::Show',        true,                         BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-authors-pref-show', 'toggle' );
 
-		$this->registerView( 'ViewAuthors' );
-		$this->registerView( 'ViewAuthorsUserPageProfileImageSetting' );
-
-		$this->mAdapter->registerBehaviorSwitch( 'NOAUTHORS', array( $this, 'noAuthorsCallback' ) );
+		$this->mCore->registerBehaviorSwitch( 'NOAUTHORS', array( $this, 'noAuthorsCallback' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -155,35 +152,6 @@ class Authors extends BsExtensionMW {
 	 * @return array The SettingsViews array with an andditional View object
 	 */
 	public function onUserPageSettings( $oUser, $oTitle, &$aSettingViews ){
-		$sUserImage = BsConfig::get( 'MW::UserImage' );
-
-		//This seems too late for the -AuthorsUserPageProfileImageSetting-View. 
-		//Therefore something similar is implemented there too...
-		if ( empty( $sUserImage ) ) {
-			$sUserImage = $oUser->getName().'.jpg';
-
-			$dbw = wfGetDB( DB_MASTER );
-			$dbw->delete(
-				'user_properties',
-				array(
-					'up_user' => $oUser->getId(),
-					'up_property' => 'MW::UserImage'
-				)
-			);
-			$dbw->insert( 
-					'user_properties', 
-					array(
-						'up_user' => $oUser->getId(),
-						'up_property' => 'MW::UserImage',
-						'up_value' => serialize( $sUserImage )
-					),
-					__METHOD__,
-					'IGNORE'
-			);
-			$oUser->setOption( 'MW::UserImage', $sUserImage );
-			//$oUser->saveSettings();
-		}
-
 		$oUserPageSettingsView = new ViewAuthorsUserPageProfileImageSetting();
 		$oUserPageSettingsView->setCurrentUser( $oUser );
 		$aSettingViews[] = $oUserPageSettingsView;
@@ -209,7 +177,7 @@ class Authors extends BsExtensionMW {
 		$aParams['width']  = BsConfig::get( 'MW::Authors::ImageWidth' );
 		$aParams['height'] = BsConfig::get( 'MW::Authors::ImageHeight' );
 
-		$sPrintable = BsCore::getParam( 'printable', 'no', BsPARAM::REQUEST|BsPARAMTYPE::STRING|BsPARAMOPTION::DEFAULT_ON_ERROR );
+		$sPrintable = $this->getRequest()->getVal( 'printable', 'no' );
 		$iArticleId = $oTitle->getArticleID();
 
 		//HINT: Maybe we want to use MW interface Article::getContributors() to have better caching
@@ -254,7 +222,7 @@ class Authors extends BsExtensionMW {
 		for ( $i = 0; $i < $iCount; $i++ ) {
 			$sUserName = $aUserNames[$i];
 			if ( $sUserName == '//--MORE--//' ) {
-				$oMoreAuthorsView = $this->mAdapter->getUserMiniProfile( new User(), $aParams );
+				$oMoreAuthorsView = $this->mCore->getUserMiniProfile( new User(), $aParams );
 				$oMoreAuthorsView->setOption( 'userdisplayname', wfMsg( 'bs-authors-show-all-authors' ) );
 				$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
 				$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array('action' => 'edit') ) );
@@ -270,7 +238,7 @@ class Authors extends BsExtensionMW {
 			if ( !is_object( $oAuthorUser ) ) continue; // If the username was invalid... Should never happen, because the value comes from the DB.
 			if ( in_array( $oAuthorUser->getName(), $aBlacklist ) ) continue; // Check for blacklisting
 
-			$oUserMiniProfileView = $this->mAdapter->getUserMiniProfile( $oAuthorUser, $aParams );
+			$oUserMiniProfileView = $this->mCore->getUserMiniProfile( $oAuthorUser, $aParams );
 			if ( $sPrintable   == 'yes' )  $oUserMiniProfileView->setOption( 'print', true );
 
 			$oAuthorsView->addItem( $oUserMiniProfileView );
@@ -306,14 +274,14 @@ class Authors extends BsExtensionMW {
 	private function checkContext() {
 		if ( BsConfig::get( 'MW::Authors::Show' ) === false ) return false;
 
-		$oTitle = $this->mAdapter->get( 'Title' );
+		$oTitle = $this->getTitle();
 		if ( !is_object( $oTitle ) ) return false;
-		
+
 		// Do only display when user is allowed to read
 		if ( !$oTitle->userCan( 'read' ) ) return false;
 
 		// Do only display in view mode
-		if ( BsCore::getParam( 'action', 'view', BsPARAM::REQUEST | BsPARAMTYPE::STRING | BsPARAMOPTION::DEFAULT_ON_ERROR ) != 'view' ) {
+		if ( $this->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
 			return false;
 		}
 

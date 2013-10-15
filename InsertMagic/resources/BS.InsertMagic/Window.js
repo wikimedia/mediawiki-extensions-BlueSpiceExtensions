@@ -1,8 +1,8 @@
 
-Ext4.define( 'BS.InsertMagic.Window', {
+Ext.define( 'BS.InsertMagic.Window', {
 	extend: 'BS.Window',
 	requires:[
-		'Ext4.Button'
+		'Ext.Button'
 	],
 	id: 'bs-InsertMagic-dlg-window',
 	modal: true,
@@ -14,7 +14,7 @@ Ext4.define( 'BS.InsertMagic.Window', {
 	afterInitComponent: function() {
 		this.setTitle( mw.message('bs-insertmagic-dlg_title').plain() );
 
-		this.btnPreview = Ext4.create( 'Ext4.Button', {
+		this.btnPreview = Ext.create( 'Ext.Button', {
 			id: 'bs-InsertMagic-btn-preview',
 			text: mw.message('bs-insertmagic-btn_preview').plain(),
 			handler: this.onBtnPreviewClicked,
@@ -36,7 +36,7 @@ Ext4.define( 'BS.InsertMagic.Window', {
 		//TODO: Make hook?
 		
 		//HINT: http://stackoverflow.com/questions/4834285/extjs-combobox-acting-like-regular-select
-		this.cmbType = Ext4.create( 'Ext4.form.ComboBox', {
+		this.cmbType = Ext.create( 'Ext.form.ComboBox', {
 			id: 'bs-InsertMagic-cmb-type',
 			mode: 'local',
 			triggerAction: 'all',
@@ -49,7 +49,7 @@ Ext4.define( 'BS.InsertMagic.Window', {
 		});
 		this.cmbType.on( 'select', this.onTypeSelected, this );
 		
-		this.tagsStore = Ext4.create( 'Ext4.data.JsonStore', {
+		this.tagsStore = Ext.create( 'Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
 				url: bs.util.getAjaxDispatcherUrl('InsertMagic::ajaxGetData'),
@@ -68,10 +68,10 @@ Ext4.define( 'BS.InsertMagic.Window', {
 		});
 		this.tagsStore.on( 'load',this.onStoreLoad, this );
 		
-		this.tagsGrid = Ext4.create('Ext4.grid.Panel', {
+		this.tagsGrid = Ext.create('Ext.grid.Panel', {
 			title: '',
 			id: 'bs-InsertMagic-grid-tag',
-			sm: Ext4.create( 'Ext4.selection.RowModel', { singleSelect: true }),
+			sm: Ext.create( 'Ext.selection.RowModel', { singleSelect: true }),
 			store: this.tagsStore,layout: 'fit',
 			loadMask: true,
 			columns: [
@@ -91,15 +91,15 @@ Ext4.define( 'BS.InsertMagic.Window', {
 		});
 		this.tagsGrid.on( 'select', this.onRowSelect, this );
 		
-		this.syntaxTextArea = Ext4.create( 'Ext4.form.TextArea', {
+		this.syntaxTextArea = Ext.create( 'Ext.form.TextArea', {
 			id: 'bs-InsertMagic-textarea-syntax',
 			hideLabel: true,
 			name: 'syntaxTextArea',
 			flex: 1,
-			style: 'background-color: #EFF4FF;' //TODO: move to CSS
+			bodyPadding: 5
 		});
 		
-		this.previewPanel = Ext4.create('Ext4.Panel', {
+		this.previewPanel = Ext.create('Ext.Panel', {
 			id: 'bs-InsertMagic-panel-preview',
 			border: true,
 			flex: 1,
@@ -107,15 +107,15 @@ Ext4.define( 'BS.InsertMagic.Window', {
 			autoScroll: true
 		});
 		
-		this.descPanel = Ext4.create('Ext4.Panel', {
+		this.descPanel = Ext.create('Ext.Panel', {
 			id: 'bs-InsertMagic-panel-desc',
 			border: true,
 			flex: 1,
-			bodyStyle: 'padding:5px; background-color: #F4F4F4;', //TODO: move to CSS
-			autoScroll: true
+			autoScroll: true,
+			bodyPadding: 5
 		});
 		
-		this.pnlWest = Ext4.create('Ext4.Container', {
+		this.pnlWest = Ext.create('Ext.Container', {
 			region: 'west',
 			width: 250,
 			padding: 5,
@@ -125,15 +125,15 @@ Ext4.define( 'BS.InsertMagic.Window', {
 				align: 'stretch' // Child items are stretched to full width
 			},
 			items: [
-				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_first').plain() }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_first').plain() }),
 				this.cmbType,
 				this.tagsGrid,
-				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_desc').plain(), style: 'padding-top: 10px' }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_desc').plain(), style: 'padding-top: 10px' }),
 				this.descPanel
 			]
 		});
 		
-		this.pnlCenter = Ext4.create('Ext4.Container', {
+		this.pnlCenter = Ext.create('Ext.Container', {
 			region: 'center',
 			border: false,
 			padding: 5,
@@ -142,9 +142,9 @@ Ext4.define( 'BS.InsertMagic.Window', {
 				align: 'stretch'
 			},
 			items:[
-				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_second').plain() }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_second').plain() }),
 				this.syntaxTextArea/*,
-				Ext4.create( 'Ext4.form.Label', { text: mw.message('bs-insertmagic-label_third, style: 'padding-top: 10px' }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_third, style: 'padding-top: 10px' }),
 				this.previewPanel*/
 			]
 		});

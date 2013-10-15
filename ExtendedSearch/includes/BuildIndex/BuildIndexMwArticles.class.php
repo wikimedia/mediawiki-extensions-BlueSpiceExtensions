@@ -104,6 +104,8 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 			if ( $oDocument === null ) continue;
 
+			$this->writeLog( $oDocument->page_title );
+
 			$iPageID        = $oDocument->page_id;
 			$sPageTitle     = $oDocument->page_title;
 			$sPageNamespace = $oDocument->page_namespace;
@@ -126,8 +128,6 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 			$this->oMainControl->addDocument( $oSolrDocument, $this->mode, self::S_ERROR_MSG_KEY );
 
 			wfRunHooks( 'BSExtendedSearchBuildIndexAfterAddArticle', array( $oTitle, $oSolrDocument ) );
-
-			$this->writeLog( $sPageTitle );
 		}
 	}
 

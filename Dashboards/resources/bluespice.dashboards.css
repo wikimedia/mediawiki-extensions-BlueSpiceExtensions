@@ -1,0 +1,12 @@
+#bs-dashboard-add { 
+	float: right;
+	margin-right: 20px;
+}
+
+.bs-portlets-desc {
+	font-size: 11px;
+	font-style: italic;
+	margin: 3px 0 0 5px;
+	width: 350px;
+	white-space: normal !important;
+}

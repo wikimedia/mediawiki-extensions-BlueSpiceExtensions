@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('BlueSpiceProjectFeedbackHelper',  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['BlueSpiceProjectFeedbackHelper'] = dirname( __FILE__ ) . '/languages/BlueSpiceProjectFeedbackHelper.i18n.php';
+$wgExtensionMessagesFiles['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/languages/BlueSpiceProjectFeedbackHelper.i18n.php';
 
 $wgResourceModules['ext.bluespice.blueSpiceprojectfeedbackhelper'] = array(
 	'styles' => 'extensions/BlueSpiceExtensions/BlueSpiceProjectFeedbackHelper/resources/bluespice.blueSpiceProjectFeedbackHelper.css',
@@ -10,3 +10,7 @@ $wgResourceModules['ext.bluespice.blueSpiceprojectfeedbackhelper'] = array(
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
+
+$wgAjaxExportList[] = 'BlueSpiceProjectFeedbackHelper::disableFeedback';
+
+$wgAutoloadClasses['ViewBlueSpiceProjectFeedbackHelperPanel'] = __DIR__ . '/views/view.BlueSpiceProjectFeedbackHelperPanel.php';

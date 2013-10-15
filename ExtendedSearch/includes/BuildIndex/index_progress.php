@@ -18,7 +18,7 @@
  * initial commit
  */
 // todo: breaks if constant BSDATADIR points to different directory in some special installation.
-$sFileName = dirname( dirname( dirname( dirname( dirname(__DIR__ ) ) ) ) ) . '/BlueSpiceFoundation/data/index_prog.txt';
+$sFileName = dirname( dirname( dirname( dirname(__DIR__ ) ) ) ) . '/BlueSpiceFoundation/data/index_prog.txt';
 
 if ( file_exists( $sFileName ) ) {
 	$lines = file( $sFileName );

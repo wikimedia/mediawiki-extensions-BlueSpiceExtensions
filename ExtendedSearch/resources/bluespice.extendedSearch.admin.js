@@ -16,34 +16,20 @@
  * Triggers Re-indexing of search index.
  */
 bsExtendedSearchConfirm = function( warning, msg ) {
-	Ext.Msg.show({
-		title: warning,
-		msg: msg,
-		buttons: Ext.Msg.OKCANCEL,
-		fn: processConfirm
-	});
-}
+	bs.util.confirm( 'ESAdmin', { text: msg, title: warning }, { ok: processConfirm, cancel: function() {}, scope: this } );
+};
 
-processConfirm = function( buttonId, text, opt ) {
-	if ( buttonId == 'ok' ) {
-		var url = BlueSpice.buildRemoteString(
-			'ExtendedSearchAdmin',
-			'getProgressBar',
-			{
-				"mode": "deleteLock"
-			}
-		);
-		Ext.Ajax.request( {
-			url: url,
-			success: function( response, opts ) {
-				window.location.reload();
-			}
-		} );
-	}
-	else {
-		return false;
-	}
-}
+processConfirm = function() {
+	Ext.Ajax.request( {
+		url: bs.util.getAjaxDispatcherUrl( 'ExtendedSearchAdmin::getProgressBar', [ "deleteLock" ] ),
+		method: 'post',
+		scope: this,
+		success: function( response, opts ) {
+			var x = true;
+			window.location.reload();
+		}
+	} );
+};
 
 bsExtendedSearchStartCreate = function() {
 	try {
@@ -51,15 +37,15 @@ bsExtendedSearchStartCreate = function() {
 			setTimeout( 'bsExtendedSearchStartCreate()', 100 );
 			return;
 		}
-	} catch(e) { }
+	} catch(e) {}
 
 	progBar = new Ext.ProgressBar({
 		renderTo:'BsExtendedSearchProgress'
 	});
 
-	Ext.Ajax.request( { url: wgScriptPath+'/index.php?action=remote&mod=ExtendedSearchAdmin&rf=getProgressBar&mode=create', timeout: 60000 } );
-	bsExtendedSearchRequestProgress(0);
-}
+	Ext.Ajax.request( { url: bs.util.getAjaxDispatcherUrl( 'ExtendedSearchAdmin::getProgressBar', [ "create" ] ), timeout: 60000 } );
+	setTimeout( 'bsExtendedSearchRequestProgress(0)', 500 );
+};
 
 /**
  * Updates progress bar.
@@ -68,22 +54,22 @@ bsExtendedSearchStartCreate = function() {
 bsExtendedSearchRequestProgress = function( count ) {
 	Ext.Ajax.request({
 		url: wgScriptPath + '/extensions/BlueSpiceExtensions/ExtendedSearch/includes/BuildIndex/index_progress.php',
-		success: function(response, opts) {
-			res = Ext.decode(response.responseText);
+		success: function( response, opts ) {
+			res = Ext.decode( response.responseText );
 			finished = false;
-			if(typeof(res) == 'object') {
-				if (res[0]=="__FINISHED__") finished = true;
+			if ( typeof( res ) === 'object' ) {
+				if ( res[0] === "__FINISHED__" ) finished = true;
 				else {
 					if (res[0]) document.getElementById('BsExtendedSearchMode').innerHTML = res[0];
 					if (res[1]) document.getElementById('BsExtendedSearchMessage').innerHTML = res[1];
 					if (res[2]) progBar.updateProgress(res[2]/100);
 				}
 			}
-			if (!finished) {
+			if ( !finished ) {
 				newcount = count + 1;
-				setTimeout('bsExtendedSearchRequestProgress('+newcount+')', 100);
+				setTimeout('bsExtendedSearchRequestProgress('+newcount+')', 300);
 			}
 		},
 		failure: function(response, opts) {}
 	});
-}
+};

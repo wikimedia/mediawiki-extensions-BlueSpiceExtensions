@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: TopMenuBarCustomizer.i18n.php 8293 2013-01-24 10:28:24Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage TopMenuBarCustomizer
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

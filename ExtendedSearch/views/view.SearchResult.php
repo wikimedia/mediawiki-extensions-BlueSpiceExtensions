@@ -201,21 +201,21 @@ class ViewSearchResult extends ViewBaseElement {
 	 * Displays a single paging box, either with page number or with prev/next arrows.
 	 * @param string $pageNo Label of the page. Number or prev/next arrows.
 	 * @param string $url Link to be followed when clicked.
-	 * @param bool $active Is this box currently selected?
+	 * @param bool $bActive Is this box currently selected?
 	 * @param bool $arrows Is it an arrow box?
 	 * @return string HTML of paging box.
 	 */
-	protected function makePagingDiv( $pageNo, $url = '', $active = false, $arrows = false ) {
+	protected function makePagingDiv( $pageNo, $url = '', $bActive = false, $arrows = false ) {
 		$aStyleClasses = array(
 			'bs-extendedsearch-paging-no',
 			'bs-extendedsearch-default-textspacing'
 		);
 		if ( $arrows ) $aStyleClasses[] = 'bs-extendedsearch-paging-arrows';
-		if ( $active ) $aStyleClasses[] = 'bs-extendedsearch-paging-no-active';
+		if ( $bActive ) $aStyleClasses[] = 'bs-extendedsearch-paging-no-active';
 		$aOut = $pageNo;
-		if ( $active ) $aOut = "<b>{$aOut}</b>";
+		if ( $bActive ) $aOut = "<b>{$aOut}</b>";
 		$aOut = '<div class="'.implode( ' ', $aStyleClasses ).'">'.$aOut.'</div>';
-		if ( !$active && $url !== '' ) $aOut = "<a href=\"{$url}\">{$aOut}</a>";
+		if ( !$bActive && $url !== '' ) $aOut = "<a href=\"{$url}\">{$aOut}</a>";
 
 		return $aOut;
 	}
@@ -232,25 +232,33 @@ class ViewSearchResult extends ViewBaseElement {
 		end( $aPaging );
 		$lastPage = key( $aPaging );
 		$lastPageToDisplay = ( $lastPage - $pageActive > 5 ) ? $pageActive + 5 : $lastPage;
+
 		$aOut[] = ( $pageActive > 1 )
 			? $this->makePagingDiv( htmlspecialchars( '<' ), $aPaging[$pageActive - 1], false, true )
 			: $this->makePagingDiv( htmlspecialchars( '<' ), '', false, true );
+
 		if ( $firstPageToDisplay > 1 )
 				$aOut[] = $this->makePagingDiv( 1, $aPaging[1] );
+
 		if ( $firstPageToDisplay > 2 )
 				$aOut[] = '<div class="bs-extendedsearch-paging-dots bs-extendedsearch-default-textspacing">...</div>';
+
 		foreach ( $aPaging as $page => $url ) {
 			if ( $firstPageToDisplay > $page ) continue;
 			if ( $lastPageToDisplay < $page ) break;
 			$aOut[] = $this->makePagingDiv( $page, $url, ( $page == $pageActive ) ); // (($page == $lastKeyInAPaging) || $page == 1)
 		}
+
 		if ( $lastPageToDisplay + 1 < $lastPage )
 				$aOut[] = '<div class="bs-extendedsearch-paging-dots bs-extendedsearch-default-textspacing">...</div>';
+
 		if ( $lastPageToDisplay < $lastPage )
 				$aOut[] = $this->makePagingDiv( $lastPage, $aPaging[$lastPage] );
+
 		$aOut[] = ( $pageActive < $lastPage )
 				? $this->makePagingDiv( htmlspecialchars( '>' ), $aPaging[$pageActive + 1], false, true )
 				: $this->makePagingDiv( htmlspecialchars( '>' ), '', false, true );
+
 		$aOut = implode( '<div class="bs-extendedsearch-paging-spacer"></div>', $aOut );
 
 		return $aOut;
@@ -261,36 +269,44 @@ class ViewSearchResult extends ViewBaseElement {
 	 * @return string HTML of sorting bar.
 	 */
 	protected function getSortingBar() {
-		// compact('sortTypes', 'sortActive', 'sortDirection', 'sortUrl')
-		extract( $this->getOption( 'sorting' ) );
+		$aSorting = $this->getOption( 'sorting' );
 		$aOut = '<span style="float: left;">';
 		$aOut .= $this->getNumberOfPageItems() . ' ';
 		$aOut .= wfMessage( 'bs-extendedsearch-sort-by' )->plain();
 		$aOut .= '&nbsp;';
 		// 'titleSort', 'score', 'type', 'ts'
-		$iItems = count( $sortTypes );
+		$iItems = count( $aSorting['sorttypes'] );
 		$iNum = 1;
-		foreach ( $sortTypes as $sort => $i18nKey ) {
-			$active = ( $sort == $sortActive );
-			if ( $active ) {
-				$direction = ( $sortDirection == 'asc' ) ? 'desc' : 'asc';
-				$sI18nDirection = ( $sortDirection == 'asc' ) ? wfMessage( 'bs-extendedsearch-asc' )->plain() : wfMessage( 'bs-extendedsearch-desc' )->plain();
 
-				$icon = '<img src="' . BsConfig::get( 'MW::ScriptPath' ) . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
-				$icon .= ( $sortDirection == 'asc' ) ? 'arrow_up.png' : 'arrow_down.png';
-				$icon .= '" title="' . $sI18nDirection . '" alt="' . $sI18nDirection . '" />&nbsp;';
+		foreach ( $aSorting['sorttypes'] as $sort => $sMessage ) {
+			$bActive = ( $sort == $aSorting['sortactive'] );
+			if ( $bActive ) {
+				$sDirection = ( $aSorting['sortdirection'] == 'asc' ) ? 'desc' : 'asc';
+				$sDirectionMessage = ( $aSorting['sortdirection'] == 'asc' )
+					? wfMessage( 'bs-extendedsearch-asc' )->plain()
+					: wfMessage( 'bs-extendedsearch-desc' )->plain();
+
+				global $wgScriptPath;
+				$sIcon = '<img src="' . $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
+				$sIcon .= ( $aSorting['sortdirection'] == 'asc' ) ? 'arrow_up.png' : 'arrow_down.png';
+				$sIcon .= '" title="' . $sDirectionMessage . '" alt="' . $sDirectionMessage . '" />&nbsp;';
 			} else {
 				// $direction = $sortDirection todo: think it over: if sort order is changed from score to time, the order should be reset!
-				$direction = ( in_array( $sort, array( 'titleSort', 'type' ) ) ) ? 'asc' : 'desc';
-				$icon = '';
+				$sDirection = ( in_array( $sort, array( 'titleSort', 'type' ) ) ) ? 'asc' : 'desc';
+				$sIcon = '';
 			}
-			if ( $active ) $aOut .= '<b>';
-			$aOut .= '<a href="'.$sortUrl.'&search_asc='.$direction.'&search_order='.$sort.'">';
-			// Give grep a chance to find the usages: bs-extendedsearch-sort-relevance,
-			// bs-extendedsearch-sort-title, bs-extendedsearch-sort-ts, bs-extendedsearch-sort-type
-			$aOut .= wfMessage( 'bs-extendedsearch-' . $i18nKey )->plain() . '</a>';
-			$aOut .= '&nbsp;' . $icon;
-			if ( $active ) $aOut .= '</b>';
+
+			if ( $bActive ) $aOut .= '<b>';
+
+			$aOut .= Html::element(
+					'a',
+					array( 'href' => $aSorting['sorturl'].'&search_asc='.$sDirection.'&search_order='.$sort.'&search_origin=search_form_body' ),
+					wfMessage( $sMessage )->plain()
+			);
+
+			$aOut .= '&nbsp;' . $sIcon;
+
+			if ( $bActive ) $aOut .= '</b>';
 			if ( $iNum < $iItems ) {
 				$aOut .= '|&nbsp;';
 			}

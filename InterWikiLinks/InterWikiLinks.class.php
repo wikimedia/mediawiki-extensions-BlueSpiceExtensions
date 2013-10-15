@@ -24,7 +24,6 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    1.22.0 stable
- * @version    $Id: InterWikiLinks.class.php 9907 2013-06-25 08:52:25Z rvogel $
  * @package    BlueSpice_Extensions
  * @subpackage InterWikiLinks
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -40,13 +39,10 @@
 class InterWikiLinks extends BsExtensionMW {
 
 	/**
-	 * Constructor of ShoutBox class
+	 * Constructor of InterWikiLinks class
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['InterWikiLinks'] = dirname( __FILE__ ) . '/InterWikiLinks.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
@@ -54,43 +50,76 @@ class InterWikiLinks extends BsExtensionMW {
 			EXTINFO::NAME        => 'InterWikiLinks',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting interwiki links',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9907 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
 
 		WikiAdmin::registerModule('InterWikiLinks', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/images/bs-btn_interwikilinks_v1.png',
-			'level' => 'editadmin'
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_interwikilinks_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-interwikilinks-label'
 			)
 		);
-
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'InterWikiLinks', $this, 'getInterWikiLinks', 'wikiadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'InterWikiLinks', $this, 'doEditInterWikiLink', 'wikiadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'InterWikiLinks', $this, 'doDeleteInterWikiLink', 'wikiadmin' );
-
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
+	protected function initExt() {
+		wfProfileIn('BS::InterWikiLinks::initExt');
+
+		$this->setHook( 'BeforePageDisplay' );
+
+		wfProfileOut('BS::InterWikiLinks::initExt');
+	}
+
+	/**
+	 * 
+	 * @param OutputPage $oOutputPage
+	 * @param Skin $oSkin
+	 * @return boolean - always true
+	 */
+	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
+		if( !in_array($oOutputPage->getRequest()->getVal('action', 'view'), array('edit', 'submit')) ) return true;
+		$oOutputPage->addModules('bluespice.insertLink.interWikiLinks');
+		//TODO implement ow
+		$oOutputPage->addJsConfigVars( 'BSInterWikiPrefixes', $this->getInterWikiLinkPrefixes() );
+		return true;
+	}
+
+	public function getInterWikiLinkPrefixes() {
+		$oDbr = wfGetDB( DB_SLAVE );
+		$rRes = $oDbr->select( 
+				'interwiki', 
+				'iw_prefix', 
+				'', 
+				'', 
+				array( "ORDER BY" => "iw_prefix" )
+		);
+		
+		$aInterWikiPrefixes = array();
+		while( $o = $oDbr->fetchObject($rRes) ) $aInterWikiPrefixes[] = $o->iw_prefix;
+		
+		return $aInterWikiPrefixes;
+	}
 	/*
 	 * Returns the HTML of the inner InterwikiLinks area
 	 * @return string HTML that is to be rendered
 	 */
 	public function getForm() {
-		global $wgOut;
-		$wgOut->addModules('ext.bluespice.interWikiLinks');
-		return '<div id="InterWikiManagerGrid"></div>';
+		$this->getOutput()->addModules( 'ext.bluespice.interWikiLinks' );
+		return '<div id="InterWikiLinksGrid"></div>';
 	}
 
 	/**
 	 * Provides a list of current interwiki links. This function is called via AJAX
-	 * @param string $sOutput JSON encoded list of interwiki links
 	 * @return bool allow other hooked methods to be executed. always true.
 	 */
-	public function getInterWikiLinks( &$sOutput ) {
-		$iLimit = BsCore::getParam('limit', 25, BsPARAM::REQUEST|BsPARAMTYPE::NUMERIC);
-		$iStart = BsCore::getParam('start', 0, BsPARAM::REQUEST|BsPARAMTYPE::NUMERIC);
+	public static function getInterWikiLinks() {
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
+		global $wgRequest;
+		$iLimit = $wgRequest->getInt( 'limit', 25 );
+		$iStart = $wgRequest->getInt( 'start', 0 );
 
 		$data = array();
 
@@ -102,13 +131,13 @@ class InterWikiLinks extends BsExtensionMW {
 				'', 
 				array( "ORDER BY" => "iw_prefix" )
 		);
-		$data['totalCount'] = $dbr->numRows($res);
+		$data['totalCount'] = $dbr->numRows( $res );
 
 		global $wgDBtype, $wgDBprefix;
-		if( $wgDBtype == 'oracle' ) {
+		if ( $wgDBtype == 'oracle' ) {
 			$res = $dbr->query( "SELECT * FROM 
 									(SELECT iw_prefix,iw_url,iw_api,iw_wikiid,iw_local,iw_trans,row_number() over (order by iw_prefix ASC) rnk  
-										FROM \"".strtoupper($wgDBprefix)."INTERWIKI\"  
+										FROM \"".strtoupper( $wgDBprefix )."INTERWIKI\"  
 									) 
 									where rnk BETWEEN ".($iStart+1)." AND ".($iLimit + $iStart)
 						);
@@ -127,111 +156,101 @@ class InterWikiLinks extends BsExtensionMW {
 		}
 
 		$data['iwlinks'] = array();
+		$tmp = array();
 		while ( $row = $dbr->fetchObject( $res )) {
-			$tmp = array();
-			$tmp['prefix'] = $row->iw_prefix;
-			$tmp['url'] = $row->iw_url;
+			$tmp['iwl_prefix'] = $row->iw_prefix;
+			$tmp['iwl_url'] = $row->iw_url;
 			$data['iwlinks'][] = $tmp;
 		}
 		$dbr->freeResult( $res );
 
-		//$oEvent = new BsEvent( $this, 'MW:InterWikiManagerBeforeUserListSend', array( 'data' => &$data ) );
-		//BsEventDispatcher::getInstance('MW')->notify( $oEvent );
-
-		$sOutput = json_encode($data);
-		return true;
+		return json_encode( $data );
 	}
 
 	/**
 	 * Creates or edits an interwiki link. Called via AJAX function
-	 * @param string $sOutput JSON encoded notice of failure or success. Interpreted by ExtJS
 	 * @return bool allow other hooked methods to be executed. always true.
 	 */
-	public function doEditInterWikiLink( &$sOutput ) {
+	public static function doEditInterWikiLink( $bEditMode, $iw_prefix, $iw_url, $iw_old_prefix = '' ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			$sOutput = json_encode( array(
+			return json_encode( array(
 				'success' => false,
-				'messages' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
+				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
-			return;
 		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'messages' => array()
+			'message' => array()
 		);
 
-		$iw_prefix     = trim(BsCore::getParam('iweditprefix')); // $iw_prefix = addslashes($_REQUEST['iw_prefix']);
-		$iw_old_prefix = trim(BsCore::getParam('iweditoldprefix')); // $iw_prefix = addslashes($_REQUEST['iw_prefix']);
-		$iw_url        = trim(BsCore::getParam('iwediturl')); // $iw_url = addslashes($_REQUEST['iw_url']);
-		$bEditMode     = BsCore::getParam('iweditmode', false, BsPARAM::REQUEST|BsPARAMOPTION::DEFAULT_ON_ERROR|BsPARAMTYPE::BOOL);
-
-		if (strlen($iw_prefix) > 32) {
+		if ( strlen( $iw_prefix ) > 32 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'msg' => wfMsg( 'bs-interwikilinks-pfx_2long' ) );
+			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-pfx_2long' )->plain() );
 		}
 
-		if ($iw_prefix == '') {
+		if ( $iw_prefix == '' ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'msg' => wfMsg( 'bs-interwikilinks-no_pfx' ) );
+			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-no_pfx' )->plain() );
 		}
 
-		if ($iw_url == '') {
+		if ( $iw_url == '' ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iwediturl', 'msg' => wfMsg( 'bs-interwikilinks-no_url' ) );
+			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => wfMessage( 'bs-interwikilinks-no_url' )->plain() );
 		}
 
-		$oValidationResult = BsValidator::isValid( 'Url', $iw_url, array('fullResponse' => true) );
+		$oValidationResult = BsValidator::isValid( 'Url', $iw_url, array( 'fullResponse' => true ) );
 		if ( $oValidationResult->getErrorCode() ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iwediturl', 'msg' => $oValidationResult->getI18N() );
+			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => $oValidationResult->getI18N() );
 		}
 
 		if ( substr_count( $iw_prefix, ' ' ) 
-				|| substr_count( $iw_prefix, '"' ) 
-				|| substr_count( $iw_prefix, '&' )
-				|| substr_count( $iw_prefix, ':' ) ) {
+			|| substr_count( $iw_prefix, '"' ) 
+			|| substr_count( $iw_prefix, '&' )
+			|| substr_count( $iw_prefix, ':' ) ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'msg' => wfMsg( 'bs-interwikilinks-invalid_pfx_spc' ) );
+			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-invalid_pfx_spc' )->plain() );
 		}
 
-		if (strpos($iw_url, ' ')) {
+		if ( strpos( $iw_url, ' ' ) ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iwediturl', 'msg' => wfMsg( 'bs-interwikilinks-invalid_url_spc' ) );
+			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => wfMessage( 'bs-interwikilinks-invalid_url_spc' )->plain() );
 		}
 
-		if ( $bEditMode ) {
+		if ( $bEditMode == 'true' ) {
 			$sSearchPrefix = $iw_old_prefix;
 		} else {
 			$sSearchPrefix = $iw_prefix;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-			$res = $dbr->select('interwiki', 'iw_prefix', array("iw_prefix"=>$sSearchPrefix));
-			$num_row = $dbr->numRows( $res );
+		$res = $dbr->select( 'interwiki', 'iw_prefix', array( "iw_prefix" => $sSearchPrefix ) );
+		$num_row = $dbr->numRows( $res );
 
-		if (!$bEditMode) {
-			if ($num_row >= 1) {
+		if ( $bEditMode == 'false' ) {
+			if ( $num_row >= 1 ) {
 				$aAnswer['success'] = false;
-				$aAnswer['errors'][] = array( 'msg' => wfMsg( 'bs-interwikilinks-pfx_exists' ) );
+				$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-pfx_exists' )->plain() );
 			}
 		} else {
-			if ($num_row < 1) {
+			if ( $num_row < 1 ) {
 				$aAnswer['success'] = false;
-				$aAnswer['errors'][] = array( 'msg' => wfMsg( 'bs-interwikilinks-no_old_pfx' ) );
+				$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-no_old_pfx' )->plain() );
 			}
 		}
-		
-		if ($aAnswer['success']) {
+
+		if ( $aAnswer['success'] ) {
 			$dbw = wfGetDB( DB_MASTER );
-			if (!$bEditMode) {
+			if ( $bEditMode == 'false' ) {
 				$dbw->insert( 'interwiki',
-						array(  
-								'iw_prefix' => $iw_prefix,
-								'iw_url' => $iw_url,
-								'iw_local' => '0'
+						array(
+							'iw_prefix' => $iw_prefix,
+							'iw_url' => $iw_url,
+							'iw_local' => '0'
 						)
 				);
 			} else {
@@ -240,54 +259,49 @@ class InterWikiLinks extends BsExtensionMW {
 					array( 'iw_prefix' => $iw_old_prefix )
 				);
 			}
-			$aAnswer['messages'][] = $bEditMode? wfMsg( 'bs-interwikilinks-link_added' ) : wfMsg( 'bs-interwikilinks-link_created' );
+			$aAnswer['message'][] = $bEditMode ? wfMessage( 'bs-interwikilinks-link_added' )->plain() : wfMessage( 'bs-interwikilinks-link_created' )->plain();
 		}
 
-		$sOutput = json_encode( $aAnswer );
-		return true;
+		return json_encode( $aAnswer );
 	}
 
 
 
 	/**
 	 * Deletes an interwiki link. Called via AJAX function
-	 * @param string $sOutput JSON encoded notice of failure or success. Interpreted by ExtJS
 	 * @return bool allow other hooked methods to be executed. always true.
 	 */
-	public function doDeleteInterWikiLink( &$sOutput ) {
+	public static function doDeleteInterWikiLink( $iw_prefix ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			$sOutput = json_encode( array(
+			return json_encode( array(
 				'success' => false,
-				'messages' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
+				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
-			return;
 		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'messages' => array()
+			'message' => array()
 		);
-
-		$iw_prefix = BsCore::getParam('deleteprefix'); // $iw_prefix = addslashes($_REQUEST['iw_prefix']);
 
 		if ( $aAnswer['success'] ) {
 			$dbw = wfGetDB( DB_MASTER );
-			$res1 = $dbw->delete('interwiki', array('iw_prefix' => $iw_prefix));
+			$res1 = $dbw->delete( 'interwiki', array( 'iw_prefix' => $iw_prefix ) );
 		}
 
-		if ($res1 === false) {
+		if ( $res1 === false ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('msg' => wfMsg( 'bs-interwikilinks-no_url' ) );
+			$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-no_url' )->plain() );
 		}
 
-		if ($aAnswer['success']) {
-			$aAnswer['messages'][] = wfMsg( 'bs-interwikilinks-link_deleted' );
+		if ( $aAnswer['success'] ) {
+			$aAnswer['message'][] = wfMessage( 'bs-interwikilinks-link_deleted' )->plain();
 		}
 
-		$sOutput = json_encode( $aAnswer );
-		return true;
+		return json_encode( $aAnswer );
 	}
 
 }

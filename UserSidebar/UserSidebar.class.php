@@ -24,7 +24,7 @@
  * @author     Sebastian Ulbricht
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: UserSidebar.class.php 9758 2013-06-17 08:58:01Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage UserSidebar
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -59,7 +59,7 @@ class UserSidebar extends BsExtensionMW {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['UserSidebar'] = dirname( __FILE__ ) . '/UserSidebar.i18n.php';
+		//$wgExtensionMessagesFiles['UserSidebar'] = __DIR__ . '/UserSidebar.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -68,8 +68,8 @@ class UserSidebar extends BsExtensionMW {
 			EXTINFO::NAME        => 'UserSidebar',
 			EXTINFO::DESCRIPTION => 'Adds the focus tab to sidebar.',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht, Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9758 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
@@ -82,7 +82,7 @@ class UserSidebar extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-        global $wgAPIModules;
+		global $wgAPIModules;
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
 		$this->setHook( 'BSBlueSpiceSkinFocusSidebar' );
 		$this->setHook( 'userCan', 'onUserCan' );
@@ -90,9 +90,8 @@ class UserSidebar extends BsExtensionMW {
 
 		BsConfig::registerVar( 'MW::UserSidebar::UserPageSubPageTitle', 'Sidebar', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-usersidebar-pref-UserPageSubPageTitle' );
 		BsConfig::registerVar( 'MW::UserSidebar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-usersidebar-userpagesettings-link-title', 'link' );
-        
-        $wgAPIModules['sidebar'] = 'ApiSidebar';
-		BsCore::registerClass( 'ApiSidebar', __DIR__ . '/api', 'ApiSidebar.php' );
+
+		$wgAPIModules['sidebar'] = 'ApiSidebar';
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

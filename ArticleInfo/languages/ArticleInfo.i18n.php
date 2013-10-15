@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: ArticleInfo.i18n.php 9877 2013-06-24 13:25:49Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage ArticleInfo
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -47,7 +47,9 @@ $messages['de'] = array(
 	'bs-articleinfo-statebarbodycategories'  => 'Kategorien',
 	'bs-articleinfo-statebarbodyeditsummary' => 'Zusammenfassung',
 	'bs-articleinfo-statebarbodysubpages'    => 'Unterseiten',
-	'bs-articleinfo-hiddencats'              => 'Versteckte Kategorien'
+	'bs-articleinfo-hiddencats'              => 'Versteckte Kategorien',
+	'bs-articleinfo-notemplates'             => 'Keine Vorlagen für diesen Artikel gefunden',
+	'bs-articleinfo-templates'               => 'Vorlagen'
 );
 
 $messages['de-formal'] = array(
@@ -86,7 +88,9 @@ $messages['en'] = array(
 	'bs-articleinfo-statebarbodycategories'  => 'Categories',
 	'bs-articleinfo-statebarbodyeditsummary' => 'Summary',
 	'bs-articleinfo-statebarbodysubpages'    => 'Subpages',
-	'bs-articleinfo-hiddencats'              => 'Hidden Categories'
+	'bs-articleinfo-hiddencats'              => 'Hidden Categories',
+	'bs-articleinfo-notemplates'             => 'No templates found for this article',
+	'bs-articleinfo-templates'               => 'Templates'
 );
 
 $messages['qqq'] = array();

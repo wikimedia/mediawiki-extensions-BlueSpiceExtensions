@@ -10,7 +10,7 @@
  * $LastChangedDate: 2010-10-21 00:40:58 +0200 (Do, 21 Okt 2010) $
  * $LastChangedBy: mglaser $
  * $Rev: 748 $
- * $Id: view.WidgetError.php 748 2010-10-20 22:40:58Z mglaser $
+
  */
 
 class ViewWidgetError extends ViewTagError {

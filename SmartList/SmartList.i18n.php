@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: SmartList.i18n.php 8985 2013-03-21 09:37:19Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage SmartList
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -56,11 +56,21 @@ $messages['de'] = array(
 	'bs-smartlist-toplist-noresults'              => 'Es wurden keine Ergebnisse gefunden.',
 	'bs-smartlist-tag-smartlist-desc'             => 'Dieser Tag stellt die Funktionalität bereit, sich auf jeder Seite Informationen über das Wiki anzeigen zu lassen.',
 	'bs-smartlist-tag-newbies-desc'               => 'Dieser Tag stellt die Funktionalität bereit, sich auf jeder Seite die neuesten Mitglieder dieses Wikis anzeigen zu lassen.',
-	'bs-smartlist-tag-toplist-desc'               => 'Dieser Tag stellt die Funktionalität bereit, sich auf jeder Seite die meistgeklickten Seiten dieses Wikis anzeigen zu lassen'
+	'bs-smartlist-tag-toplist-desc'               => 'Dieser Tag stellt die Funktionalität bereit, sich auf jeder Seite die meistgeklickten Seiten dieses Wikis anzeigen zu lassen',
+	'bs-smartlist-mostvisitedpages'               => 'Meist besuchte Artikel',
+	'bs-smartlist-mosteditedpages'                => 'Meist editierte Artikel',
+	'bs-smartlist-mostactiveusers'                => 'Aktivste Benutzer (Bearbeitungen)',
+	'bs-smartlist-lastedits'                      => 'Deine Änderungen',
+	'bs-smartlist-noedits'                        => 'Keine Änderungen gefunden',
+	'bs-smartlist-mostactiveusersdesc'            => 'Liste der aktivsten Benutzer dieses Wikis, sortiert nach der Anzahl der Bearbeitungen',
+	'bs-smartlist-mosteditedpagesdesc'            => 'Liste der meisten editierten Artikel dieses Wikis, sortiert nach der Anzahl der Bearbeitungen',
+	'bs-smartlist-mostvisitedpagesdesc'           => 'Liste der meisten besuchten Artikel dieses Wikis, sortiert nach der Anzahl der Besuche',
+	'bs-smartlist-lasteditsdesc'                  => 'Liste der von dir zuletzt bearbeiteten Artikel'
 );
 
 $messages['de-formal'] = array(
 	'invalid-namespaces'                          => 'Bitte überprüfen Sie diese Namespaces: $1.',
+	'bs-smartlist-lasteditsdesc'                  => 'Liste der von Ihnen zuletzt bearbeiteten Artikel'
 );
 
 $messages['en'] = array(
@@ -104,7 +114,16 @@ $messages['en'] = array(
 	'bs-smartlist-toplist-noresults'              => 'No results were found.',
 	'bs-smartlist-tag-smartlist-desc'             => 'This tag provides you the opportunity to display informations about this wiki on every page.',
 	'bs-smartlist-tag-newbies-desc'               => 'This tag provides you the opportunity to display the latest members of this wiki on every page.',
-	'bs-smartlist-tag-toplist-desc'               => 'This tag provides you the opportunity to display a list of the most clicked pages of this wiki on every page.'
+	'bs-smartlist-tag-toplist-desc'               => 'This tag provides you the opportunity to display a list of the most clicked pages of this wiki on every page.',
+	'bs-smartlist-mostvisitedpages'               => 'Most visited pages',
+	'bs-smartlist-mosteditedpages'                => 'Most edited pages',
+	'bs-smartlist-mostactiveusers'                => 'Most active users (edits)',
+	'bs-smartlist-lastedits'                      => 'Your edits',
+	'bs-smartlist-noedits'                        => 'No edits found',
+	'bs-smartlist-mostactiveusersdesc'            => 'List of most active users of this wiki sorted by number of edits',
+	'bs-smartlist-mosteditedpagesdesc'            => 'List of most edited articles of this wiki sorted by number of edits',
+	'bs-smartlist-mostvisitedpagesdesc'           => 'List of most visited articles of this wiki sorted by number of visits',
+	'bs-smartlist-lasteditsdesc'                  => 'List of articles which have been edited by you'
 );
 
 $messages['qqq'] = array();

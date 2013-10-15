@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: PDFTemplateProvider.class.php 9588 2013-06-04 13:52:38Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

@@ -23,7 +23,7 @@
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: NamespaceCss.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    Bluespice_Extensions
  * @subpackage NamespaceCss
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -45,8 +45,8 @@ class NamespaceCss extends BsExtensionMW {
 			EXTINFO::NAME        => 'NamespaceCss',
 			EXTINFO::DESCRIPTION => 'Diff styles for namespaces in MW.',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Tobias Weichart, Patric Wirth',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);

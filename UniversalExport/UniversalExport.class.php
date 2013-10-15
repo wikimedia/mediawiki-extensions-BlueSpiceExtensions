@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: UniversalExport.class.php 9826 2013-06-20 12:39:37Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UniversalExport
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -76,9 +76,6 @@ class UniversalExport extends BsExtensionMW {
 
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['UniversalExport'] = dirname( __FILE__ ) . '/UniversalExport.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
@@ -86,8 +83,8 @@ class UniversalExport extends BsExtensionMW {
 			EXTINFO::NAME        => 'UniversalExport',
 			EXTINFO::DESCRIPTION => 'Enables MediaWiki to export pages into different formats.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9826 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice' => '1.22.0',
@@ -111,7 +108,6 @@ class UniversalExport extends BsExtensionMW {
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd' );
-		$this->setHook( 'SpecialPage_initList' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 
 		//Configuration variables
@@ -129,28 +125,10 @@ class UniversalExport extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsDefaults',    $this->aParamsDefaults,     BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsOverrides',   $this->aParamsOverrides,    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 
-		//Register interfaces and classes
-		$sDir = dirname( __FILE__ );
-		BsCore::registerInterface( 'BsUniversalExportModule', $sDir.'/lib' );
-		BsCore::registerClass( 'BsUniversalExportHelper',     $sDir.'/lib' );
-		BsCore::registerClass( 'BsUniversalExportTagLibrary', $sDir.'/lib' );
-
 		//Permissions
-		$this->mAdapter->registerPermission( 'universalexport-export' );
-		//$this->mAdapter->registerPermission( 'universalexport-export-unfiltered' );
-		//$this->mAdapter->registerPermission( 'universalexport-export-recursive' );
-
-		//SpecialPage
-//		$this->mAdapter->registerSpecialPage( 'SpecialUniversalExport', $sDir.'/specialpages/', 'UniversalExportAlias' );
-
-		$this->registerView( 'ViewExportModuleOverview' );
+		$this->mCore->registerPermission( 'universalexport-export' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	public function onSpecialPage_initList( &$aList ) {
-		$aList['UniversalExport'] = 'SpecialUniversalExport';
-		return true;
 	}
 
 	/**
@@ -273,13 +251,13 @@ class UniversalExport extends BsExtensionMW {
 	 * @return ViewWidget 
 	 */
 	public function getWidget() {
-		$sAction = BsCore::getParam( 'action', 'view', BsPARAM::REQUEST|BsPARAMTYPE::STRING );
-		if( !in_array($sAction, array( 'view', 'historysubmit' ) ) ) return null;
+		$sAction = $this->getRequest()->getVal( 'action', 'view' );
+		if( !in_array( $sAction, array( 'view', 'historysubmit' ) ) ) return null;
 
-		$oCurrentTitle = $this->mAdapter->get('Title');
+		$oCurrentTitle = $this->getTitle();
 		if( $oCurrentTitle->quickUserCan( 'universalexport-export' ) === false ) return null;
 
-		$aCurrentQueryParams = BsCore::getParams( BsPARAM::GET );
+		$aCurrentQueryParams = $this->getRequest()->getValues();
 		$sSpecialPageParameter = BsCore::sanitize( $aCurrentQueryParams['title'], '', BsPARAMTYPE::STRING );
 		$oSpecialPage = SpecialPage::getTitleFor( 'UniversalExport',$sSpecialPageParameter );
 		if( isset( $aCurrentQueryParams['title'] ) ) unset( $aCurrentQueryParams['title'] );

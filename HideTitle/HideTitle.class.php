@@ -28,7 +28,7 @@
   * $LastChangedDate: 2013-06-14 14:09:29 +0200 (Fr, 14 Jun 2013) $
   * $LastChangedBy: pwirth $
   * $Rev: 9745 $
-  * $Id: HideTitle.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
   */
 
 /* Changelog
@@ -52,8 +52,8 @@ class HideTitle extends BsExtensionMW {
 			EXTINFO::NAME        => 'HideTitle',
 			EXTINFO::DESCRIPTION => 'Tag to hide the title of an article.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
@@ -66,7 +66,7 @@ class HideTitle extends BsExtensionMW {
 		// Hooks
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
-		$this->mAdapter->registerBehaviorSwitch( 'bs_hidetitle' );
+		$this->mCore->registerBehaviorSwitch( 'bs_hidetitle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 	

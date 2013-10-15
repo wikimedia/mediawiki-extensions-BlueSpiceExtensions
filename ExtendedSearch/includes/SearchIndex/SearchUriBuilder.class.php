@@ -88,6 +88,10 @@ class SearchUriBuilder {
 	 * Everything
 	 */
 	const ALL = 8191; // all but EXTENDED
+	/**
+	 * Other params (?)
+	 */
+	const NO_ENCODE = 16384;
 
 	/**
 	 * Currently determined search options.
@@ -124,7 +128,7 @@ class SearchUriBuilder {
 		$this->oSearchRequest = SearchRequest::getInstance();
 
 		$this->aUri[self::BASE] = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getLocalUrl();
-		$this->aUri[self::INPUT] = 'search_input='.$this->oSearchOptions->getOption( 'searchStringOrig' );
+		$this->aUri[self::INPUT] = 'search_input='.$this->oSearchOptions->getOption( 'searchStringRaw' );
 		$this->aUri[self::SCOPE] = 'search_scope='.$this->oSearchOptions->getOption( 'scope' );
 		$this->aUri[self::FILES] = 'search_files='
 				.( ( $this->oSearchOptions->getOption( 'files' ) === true ) ? '1' : '0' );
@@ -203,9 +207,14 @@ class SearchUriBuilder {
 				$uri .= ( strpos( $this->aUri[self::BASE], '?' ) === false ) ? '?' : '&';
 				$uri .= $sParams;
 			}
+		} else $uri = $sParams;
+
+		if ( $iExclude & self::NO_ENCODE ) {
+			$uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
 		}
-		else $uri = $sParams;
+
 		$this->aCache[$components] = $uri;
+
 		return $uri;
 	}
 

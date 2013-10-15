@@ -1,5 +1,5 @@
 <?php
 
-BsExtensionManager::registerExtension('Emoticons',                       BsRUNLEVEL::FULL);
+BsExtensionManager::registerExtension('Emoticons',                       BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['Emoticons'] = dirname( __FILE__ ) . '/languages/Emoticons.i18n.php';
+$wgExtensionMessagesFiles['Emoticons'] = __DIR__ . '/languages/Emoticons.i18n.php';

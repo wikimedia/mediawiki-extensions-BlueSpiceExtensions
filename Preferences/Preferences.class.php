@@ -23,7 +23,7 @@
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    1.22.0
- * @version    $Id: Preferences.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    Bluespice_Extensions
  * @subpackage Preferences
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -56,17 +56,18 @@ class BsPreferences extends BsExtensionMW {
 			EXTINFO::NAME => 'Preferences',
 			EXTINFO::DESCRIPTION => 'Offers the possibility to admins, to configurate the whole wiki from a single SpecialPage',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS => 'stable',
+			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array('bluespice' => '1.22.0')
 		);
 
 		WikiAdmin::registerModule( 'Preferences', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/images/bs-btn_einstellungen_v1.png',
-			'level' => 'wikiadmin'
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-preferences-label'
 		) );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'WikiAdmin::Preferences', $this, 'validate', 'wikiadmin' );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -79,6 +80,8 @@ class BsPreferences extends BsExtensionMW {
 			throw new ReadOnlyError;
 		}
 
+		$this->getOutput()->addHTML( '<br />' );
+
 		$oRequest = $this->getRequest();
 		if ( $this->getRequest()->getVal( 'success' ) == true ) {
 			$this->getOutput()->wrapWikiMsg(
@@ -90,7 +93,7 @@ class BsPreferences extends BsExtensionMW {
 		$orig_deliver = BsConfig::deliverUsersSettings( false );
 
 		BsConfig::loadSettings();
-		BsExtensionManager::getExtensionInformations();
+		BsExtensionManager::getExtensionInformation();
 
 		$vars = BsConfig::getRegisteredVars();
 
@@ -98,8 +101,13 @@ class BsPreferences extends BsExtensionMW {
 		if ( $bShowall ) {
 			$out = '';
 			foreach ( $vars as $var ) {
-				$out .= $var->getAdapter() . "::" . $var->getExtension() . "::" . $var->getName() . "<br>";
+				$out .= $var->getAdapter() . "::";
+				if ( $var->getExtension() !== null ) {
+					$out .= $var->getExtension() . "::";
+				}
+				$out .= $var->getName() . "<br>";
 			}
+
 			return $out;
 		}
 
@@ -171,6 +179,8 @@ class BsPreferences extends BsExtensionMW {
 		$oForm->setSubmitCallback( array( $this, 'savePreferences' ) );
 
 		$oForm->show();
+
+		$this->getOutput()->addHTML( '<br />' );
 
 		BsConfig::loadUserSettings( $this->getUser()->getName() );
 

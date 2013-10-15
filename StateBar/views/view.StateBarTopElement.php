@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: view.StateBarTopElement.php 7432 2012-11-21 13:03:27Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage StateBar
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

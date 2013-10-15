@@ -23,7 +23,7 @@
 *
 * @author     Patric Wirth <wirth@hallowelt.biz>
 * @version    1.22.0
-* @version    $Id: TopMenuBarCustomizer.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
 * @package    Bluespice_Extensions
 * @subpackage TopMenuBarCustomizer
 * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -51,8 +51,8 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			EXTINFO::NAME        => 'TopMenuBarCustomizer',
 			EXTINFO::DESCRIPTION => 'Customize the Top Menu Links.',
 			EXTINFO::AUTHOR      => 'Patric Wirth',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
@@ -101,11 +101,10 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		wfRunHooks( 'BSBlueSpiceSkin:ApplicationList', array( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $this ) );
 
 		$sSourceTitle = BsConfig::get('MW::TopMenuBarCustomizer::DataSourceTitle');
-		$oTopBarMenuTitle = Title::newFromText( $sSourceTitle, NS_MEDIAWIKI );
+		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, $sSourceTitle );
 		if( is_null($oTopBarMenuTitle ) || !$oTopBarMenuTitle->exists() ) return true;
-		
-		$oArticle = new Article ( $oTopBarMenuTitle, 0);
-		$newAppList = $oArticle->fetchContent( 0 );
+
+		$newAppList = BsPageContentProvider::getInstance()->getContentFromTitle( $oTopBarMenuTitle );
 
 		// force unset Applications by create an empty page
 		if( $newAppList === "" ) {

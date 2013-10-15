@@ -97,22 +97,20 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 		$oFileMinorDocType = $this->oDbr->selectRow(
 			'image',
 			'img_minor_mime',
-			array( 'img_name' => $sFileName, 'img_major_mime' => 'application' )
+			array(
+				'img_name' => $sFileName,
+				'img_major_mime' => 'application'
+			)
 		);
-		if ( $oFileMinorDocType === false ) {
-			return;
-		}
+		if ( $oFileMinorDocType === false ) return;
 
 		$sFileDocType = $this->mimeDecoding( $oFileMinorDocType->img_minor_mime, $sFileName );
-		$sFilePath = $this->oFile->getPath();
 		$sFileTimestamp = $this->oFile->getTimestamp();
 
-		global $wgVersion;
-		if ( $wgVersion >= '1.18.0' ) {
-			$oFileRepoLocalRef = $this->oFile->getRepo()->getLocalReference( $sFilePath );
-			if ( !is_null( $oFileRepoLocalRef ) ) {
-				$sFilePath = $oFileRepoLocalRef->getPath();
-			}
+		$sFilePath = $this->oFile->getPath();
+		$oFileRepoLocalRef = $this->oFile->getRepo()->getLocalReference( $sFilePath );
+		if ( !is_null( $oFileRepoLocalRef ) ) {
+			$sFilePath = $oFileRepoLocalRef->getPath();
 		}
 
 		try {
@@ -145,8 +143,7 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 	 * Descructor for BuildIndexMwSingleFile class
 	 */
 	public function __destruct() {
-		if ( $this->documentsDb !== null )
-			$this->oDbr->freeResult( $this->documentsDb );
+		if ( $this->documentsDb !== null ) $this->oDbr->freeResult( $this->documentsDb );
 	}
 
 }

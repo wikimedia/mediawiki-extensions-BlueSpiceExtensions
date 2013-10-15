@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: NamespaceManager.i18n.php 6401 2012-09-06 11:03:08Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage NamespaceManager
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -33,9 +33,9 @@ $messages['de'] = array(
 	'bs-interwikilinks-invalid_url_spc'       => 'Die URL ist ung&uuml;ltig. Verwende keine Leerzeichen.',
 	'bs-interwikilinks-label'                 => 'Interwikilinks',
 	'bs-interwikilinks-link_created'          => 'Der InterWiki Link wurde erstellt.',
-	'bs-interwikilinks-link_added'            => 'Der InterWiki Link wurde hinzugef&uuml;gt.',
-	'bs-interwikilinks-link_deleted'          => 'Der InterWiki-Link wurde gel&ouml;scht.',
-	'bs-interwikilinks-link_renamed'          => 'Der InterWiki-Link wurde umbenannt.',
+	'bs-interwikilinks-link_added'            => 'Der InterWiki Link wurde geändert.',
+	'bs-interwikilinks-link_deleted'          => 'Der InterWiki Link wurde gel&ouml;scht.',
+	'bs-interwikilinks-link_renamed'          => 'Der InterWiki Link wurde umbenannt.',
 	'bs-interwikilinks-new_prefix'            => 'Neues Pr&auml;fix',
 	'bs-interwikilinks-new_url'               => 'Neue URL',
 	'bs-interwikilinks-no_old_pfx'            => 'Das urspr&uuml;ngliche Pr&auml;fix wurde nicht gefunden.',
@@ -66,7 +66,11 @@ $messages['de'] = array(
 	'bs-interwikilinks-labelUrl' => 'Url',
 	'bs-interwikilinks-titleDeleteInterWikiLink' => 'Interwiki-Link löschen',
 	'bs-interwikilinks-confirmDeleteInterWikiLink' => 'Bist du sicher, dass du diesen Interwiki-Link löschen willst?',
-	'bs-interwikilinks-showEntries' => 'Angezeigte Einträge {0} - {1} von {2}'
+	'bs-interwikilinks-showEntries' => 'Angezeigte Einträge {0} - {1} von {2}',
+
+	//JavaScript InsertLink
+	'bs-interwikilinks-insertlink-tabtitle' => 'Link in anderes Wiki',
+	'bs-interwikilinks-insertlink-labelprefix' => 'Prefix',
 );
 
 $messages['de-formal'] = array(
@@ -80,7 +84,7 @@ $messages['de-formal'] = array(
 	'bs-interwikilinks-not_allowed'           => 'Sie sind nicht berechtigt, diese Aktion auszuf&uuml;hren.',
 	'bs-interwikilinks-pfx_2long'             => 'Das Pr&auml;fix ist zu lang. Geben Sie maximal 32 Zeichen an!',
 	'bs-interwikilinks-url_2long'             => 'Die URL ist zu lang. Geben Sie maximal 127 Zeichen an!',
-	
+
 	//JavaScript
 	'bs-interwikilinks-confirmDeleteInterWikiLink' => 'Sind Sie sicher, dass Sie diesen Interwiki-Link löschen wollen?',
 );
@@ -119,7 +123,7 @@ $messages['en'] = array(
 	'bs-interwikilinks-rename'                => 'Rename',
 	'bs-interwikilinks-url'                   => 'URL',
 	'bs-interwikilinks-url_2long'             => 'The URL is too long. Please use a maximum of 127 characters!',
-	
+
 	//JavaScript
 	'bs-interwikilinks-headerPrefix'               => 'Prefix',
 	'bs-interwikilinks-headerUrl'                  => 'Url',
@@ -136,7 +140,11 @@ $messages['en'] = array(
 	'bs-interwikilinks-labelUrl'                   => 'Url',
 	'bs-interwikilinks-titleDeleteInterWikiLink'   => 'Delete interwiki link',
 	'bs-interwikilinks-confirmDeleteInterWikiLink' => 'Are you sure, you want delete this interwiki link?',
-	'bs-interwikilinks-showEntries'                => 'Displaying {0} - {1} of {2}'
+	'bs-interwikilinks-showEntries'                => 'Displaying {0} - {1} of {2}',
+
+	//JavaScript InsertLink
+	'bs-interwikilinks-insertlink-tabtitle' => 'Link in another wiki',
+	'bs-interwikilinks-insertlink-labelprefix' => 'Prefix',
 );
 
 $messages['qqq'] = array();

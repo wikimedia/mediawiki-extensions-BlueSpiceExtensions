@@ -1,24 +1,42 @@
 <?php
 
-BsExtensionManager::registerExtension('ResponsibleEditors',              BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension('ResponsibleEditors', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$dir = dirname(__FILE__);
-
-$wgExtensionMessagesFiles['ResponsibleEditors']      = $dir . '/ResponsibleEditors.i18n.php';
-$wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = $dir . '/includes/specials/SpecialResponsibleEditors.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
+$wgExtensionMessagesFiles['ResponsibleEditors']      = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
+$wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages
-$wgAutoloadClasses['SpecialResponsibleEditors'] = $dir . '/includes/specials/SpecialResponsibleEditors.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
+$wgAutoloadClasses['BsResponsibleEditor']       = __DIR__ . '/includes/BsResponsibleEditor.php';
+$wgAutoloadClasses['SpecialResponsibleEditors'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.class.php';
+
 $wgSpecialPageGroups['ResponsibleEditors'] = 'bluespice';
-$wgSpecialPages['ResponsibleEditors'] = 'SpecialResponsibleEditors'; # Tell MediaWiki about the new special page and its class name
+$wgSpecialPages['ResponsibleEditors'] = 'SpecialResponsibleEditors';
+
+$aResourceModuleTemplate = array(
+	'dependencies' => 'ext.bluespice',
+	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/ResponsibleEditors/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/ResponsibleEditors/resources'
+);
 
 $wgResourceModules['ext.bluespice.responsibleEditors'] = array(
-	'scripts' => array(
-		'extensions/BlueSpiceExtensions/ResponsibleEditors/resources/bluespice.responsibleEditors.js',
-	),
-	'dependencies' => 'ext.bluespice.responsibleEditors.specialAssignmentWindow',
-	'styles' => 'extensions/BlueSpiceExtensions/ResponsibleEditors/resources/bluespice.responsibleEditors.css',
+	'scripts' => 'bluespice.responsibleEditors.js',
 	'messages' => array(
+		'bs-responsibleeditors-availableEditors',
+		'bs-responsibleeditors-assignedEditors',
+		'bs-responsibleeditors-title',
+	),
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.responsibleEditors.manager'] = array(
+	'scripts' => 'bluespice.responsibleEditors.manager.js',
+	'dependencies' => 'ext.bluespice.responsibleEditors',
+	'messages' => array(
+		'bs-responsibleeditors-pnlDescriptionText',
+		'bs-responsibleeditors-pnlSucessText',
+		'bs-responsibleeditors-pnlFailureText',
+		'bs-responsibleeditors-cbLabelEditorList',
+		'bs-responsibleeditors-cbEmptyText',
+		'bs-responsibleeditors-loadMaskMessage',
 		'bs-responsibleeditors-columnHeaderArticle',
 		'bs-responsibleeditors-columnHeaderResponsibleEditor',
 		'bs-responsibleeditors-columnHeaderNamespace',
@@ -37,66 +55,30 @@ $wgResourceModules['ext.bluespice.responsibleEditors'] = array(
 		'bs-responsibleeditors-cbNamespacesLable',
 		'bs-responsibleeditors-confirmNavigationTitle',
 		'bs-responsibleeditors-confirmNavigationText',
-		'bs-responsibleeditors-columnResponsibleEditorNotSet',
-		'bs-responsibleeditors-pageSize',
-	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath'],
-);
-
-$wgResourceModules['ext.bluespice.responsibleEditors.assignmentPanel'] = array(
-	'scripts' => array(
-		'extensions/BlueSpiceExtensions/ResponsibleEditors/resources/bluespice.responsibleEditors.lib.AssignmentPanel.js',		
-	),
-	'messages' => array(
-		'bs-responsibleeditors-availableEditors',
-		'bs-responsibleeditors-assignedEditors',
-		'bs-responsibleeditors-save',
-		'bs-responsibleeditors-cancel',
-		'bs-responsibleeditors-title',
-	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath'],
-);
-
-$wgResourceModules['ext.bluespice.responsibleEditors.specialAssignmentDialog'] = array(
-	'scripts' => array(
-		'extensions/BlueSpiceExtensions/ResponsibleEditors/resources/bluespice.responsibleEditors.SpecialPage.AssignmentDialog.js',		
-	),
-	'dependencies' => 'ext.bluespice.responsibleEditors.assignmentPanel',
-	'messages' => array(
-		'bs-responsibleeditors-dialogTitle',
-		'bs-responsibleeditors-btnOK',
-		'bs-responsibleeditors-btnCancel',
-		'bs-responsibleeditors-pnlDescriptionText',
-		'bs-responsibleeditors-pnlSucessText',
-		'bs-responsibleeditors-pnlFailureText',
-		'bs-responsibleeditors-cbLabelEditorList',
-		'bs-responsibleeditors-cbEmptyText',
-		'bs-responsibleeditors-loadMaskMessage',
-	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath'],
-);
-
-$wgResourceModules['ext.bluespice.responsibleEditors.specialAssignmentWindow'] = array(
-	'scripts' => array(
-		'extensions/BlueSpiceExtensions/ResponsibleEditors/resources/bluespice.responsibleEditors.SpecialPage.AssignmentWindow.js',		
-	),
-	'dependencies' => 'ext.bluespice.responsibleEditors.assignmentPanel',
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath'],
-);
+		'bs-responsibleeditors-columnResponsibleEditorNotSet'
+	)
+) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.responsibleEditors.bookshelfPlugin'] = array(
 	'scripts' => array(
-		'extensions/BlueSpiceExtensions/ResponsibleEditors/resources/bluespice.responsibleEditors.BookshelfPlugin.js',		
+		'bluespice.responsibleEditors.BookshelfPlugin.js',		
 	),
 	'dependencies' => 'ext.bluespice.responsibleEditors',
 	'messages' => array(
 		'bs-responsibleeditors-titleEditors',
 		'bs-responsibleeditors-cmChangeRespEditors',
-	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath'],
-);
+	)
+) + $aResourceModuleTemplate;
+
+$wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxGetResponsibleEditors';
+$wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxSetResponsibleEditors';
+$wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxGetPossibleEditors';
+$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetActivatedNamespacesForCombobox';
+$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetResponsibleEditorsByArticleId';
+$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetArticlesByNamespaceId';
+$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetListOfResponsibleEditorsForArticle';
+$wgAjaxExportList[] = 'ResponsibleEditors::ajaxDeleteResponsibleEditorsForArticle';
+
+$wgLogTypes[] = 'bs-responsibleeditors';
+
+unset( $aResourceModuleTemplate );

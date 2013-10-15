@@ -5,7 +5,7 @@
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    1.0.0 stable
- * @version    $Id: StateBar.js 9757 2013-06-17 08:18:53Z pwirth $
+
  * @package    Bluespice_Extensions
  * @subpackage StateBar
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -19,6 +19,8 @@ BsStateBar = {
 	bAjaxCallComplete: false,
 	sStateBarBodyLoadView: '<div id="sStateBarBodyLoadView"><center><img src="' + wgScriptPath + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" /></center></div>',
 	aRegisteredToggleClickElements: new Array(),
+	imagePathActive:  wgScriptPath+'/extensions/BlueSpiceExtensions/StateBar/resources/images/bs-statebar-viewtoggler_less.png',
+	imagePathInctive:  wgScriptPath+'/extensions/BlueSpiceExtensions/StateBar/resources/images/bs-statebar-viewtoggler_more.png',
 
 	getStateBarBody: function(){
 		if( BsStateBar.bAjaxCallComplete === true ) return;
@@ -82,8 +84,8 @@ BsStateBar = {
 			BsStateBar.oStateBarView.slideToggle( 'fast' );
 			var sCurImg = $('#bs-statebar-viewtoggler-image').attr( 'src' );
 			sCurImg.match('_more')
-				? $('#bs-statebar-viewtoggler-image').attr( 'src', wgScriptPath+'/extensions/BlueSpiceExtensions/StateBar/resources/images/bs-statebar-viewtoggler_less.png')
-				: $('#bs-statebar-viewtoggler-image').attr( 'src', wgScriptPath+'/extensions/BlueSpiceExtensions/StateBar/resources/images/bs-statebar-viewtoggler_more.png');
+				? $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathActive)
+				: $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathInactive);
 
 			BsStateBar.getStateBarBody()
 		});

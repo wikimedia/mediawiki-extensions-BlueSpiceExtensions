@@ -1,0 +1,9 @@
+#bs-editbutton-checklist {
+	/*@embed*/
+	background-image: url(images/button_format-checkbox.png);
+}
+
+i.mce-i-bscheckbox {
+	/*@embed*/
+	background-image: url(images/checkbox-checked.png);
+}

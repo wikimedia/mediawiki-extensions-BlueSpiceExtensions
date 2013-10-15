@@ -4,7 +4,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: SaferEdit.editmode.js 9581 2013-06-04 12:14:31Z rvogel $
+
  * @package    Bluespice_Extensions
  * @subpackage SaferEdit
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -102,7 +102,7 @@ BsSaferEditEditMode = {
 	 * Renders SaferEdit restore dialogue. Data (HTML and WikiCode) is expected to be loaded already
 	 */
 	show: function() {
-		BsSaferEditEditMode.win = new Ext.Window({
+		BsSaferEditEditMode.win = Ext.create( 'Ext.Window', {
 			id: 'winSaferEdit',
 			width:600,
 			title:'SaferEdit',
@@ -205,25 +205,27 @@ BsSaferEditEditMode = {
 	 */
 	showRedirect: function() {
 		// Show a dialog using config options:
-		Ext.Msg.show({
-			title: mw.message('bs-saferedit-othersectiontitle').plain(),
-			msg: mw.message('bs-saferedit-othersectiontext1').plain() + '<br/>' + mw.message('bs-saferedit-othersectiontext2').plain() + BsSaferEditEditMode.savedTS + '<br />' + mw.message('bs-saferedit-othersectiontext3').plain(),
-			buttons: Ext.Msg.YESNO,
-			fn: BsSaferEditEditMode.processRedirect,
-			animEl: 'elId',
-			icon: Ext.MessageBox.QUESTION
-		});
-	},
-	/**
-	 * Callback function called in showRedirect that redirects to target page
-	 */
-	processRedirect: function(buttonId, text, opt) {
-		if ( buttonId == 'yes' ) {
-			window.location.href = BsSaferEditEditMode.redirect;
-		} else {
-			BsSaferEditEditMode.cancelSaferEdit();
-			BsSaferEditEditMode.startSaving();
-		}
+		bs.util.confirm(
+			'bs-saferedit',
+			{
+				titleMsg: 'bs-saferedit-othersectiontitle',
+				text: mw.message('bs-saferedit-othersectiontext1').plain() + 
+					'<br/>' + 
+					mw.message('bs-saferedit-othersectiontext2').plain() + 
+					BsSaferEditEditMode.savedTS + 
+					'<br />' + 
+					mw.message('bs-saferedit-othersectiontext3').plain()
+			},
+			{
+				ok: function() {
+					window.location.href = BsSaferEditEditMode.redirect;
+				},
+				cancel: function() {
+					BsSaferEditEditMode.cancelSaferEdit();
+					BsSaferEditEditMode.startSaving();
+				}
+			}
+		);
 	},
 	
 	getText: function( mode ) {
@@ -237,7 +239,7 @@ BsSaferEditEditMode = {
 				text = tinyMCE.activeEditor.getContent({save:true}); 
 				break;
 			default: //detect
-				if( VisualEditorMode ) {
+				if( typeof VisualEditorMode != 'undefined' && VisualEditorMode ) {
 					text = tinyMCE.activeEditor.getContent({save:true});
 					break;
 				}
@@ -251,21 +253,16 @@ BsSaferEditEditMode = {
 	 */
 	getLostTexts: function() {
 		if ( typeof( bsSaferEditUseSE ) != "undefined" && bsSaferEditUseSE ) {
-			var url = BlueSpice.buildRemoteString(
-				'SaferEdit',
-				'getLostTexts',
-				{
-					"pageName": wgPageName,
-					"nsnumber": wgNamespaceNumber,
-					"uname":wgUserName,
-					"section": bsSaferEditEditSection
-				}
+			var url = bs.util.getAjaxDispatcherUrl(
+				'SaferEdit::getLostTexts',
+				[ wgUserName, wgPageName, wgNamespaceNumber, bsSaferEditEditSection ]
 			);
+
 			$.get(
 				url,
 				null,
 				function ( sResponseData ){
-					var oResponse = eval( '(' + sResponseData + ')' ); // TODO RBV (19.05.11 09:33): Abstraktion verwenden?
+					var oResponse = JSON.parse(sResponseData)
 
 					if ( oResponse.notexts == "1" ) return;
 					if ( oResponse.savedOtherSection == "1" ) {
@@ -306,7 +303,7 @@ BsSaferEditEditMode = {
 		//document.getElementById('editform').onsubmit=BsSaferEditEditMode.cancelSaferEdit;
 		//btnSave.onclick="alert('test');";
 
-		if( bsSaferEditHasTexts ) return;
+		if( mw.config.get('bsSaferEditHasTexts', false )) return;
 
 		BsSaferEditEditMode.startSaving();
 	},
@@ -340,15 +337,10 @@ BsSaferEditEditMode = {
 		var bPingOnly = false;
 		if ( text === false ) bPingOnly = true;
 		$.post(
-			BlueSpice.buildRemoteString('SaferEdit', 'doSaveText'),
-			$.param({
-				text: encodeURIComponent(text),
-				uname: wgUserName,
-				pageName: wgPageName,
-				nsnumber: wgNamespaceNumber,
-				section: bsSaferEditEditSection,
-				pingOnly : bPingOnly
-			}),
+			bs.util.getAjaxDispatcherUrl(
+				'SaferEdit::saveText',
+				[ encodeURIComponent(text), wgUserName, wgPageName, wgNamespaceNumber, bsSaferEditEditSection, bPingOnly ]
+			),
 			function ( sResponseData ){
 				if ( sResponseData == "OK" ) {
 					//setTimeout('document.getElementById("hw_se_icon").style.display="none"', 200);
@@ -374,12 +366,10 @@ BsSaferEditEditMode = {
 		BsSaferEditEditMode.clearDirty();
 
 		$.post(
-			BlueSpice.buildRemoteString('SaferEdit', 'doCancelSaferEdit'),
-			$.param({
-				uname: escape(wgUserName),
-				pageName: wgPageName,
-				nsnumber: wgNamespaceNumber
-			}),
+			bs.util.getAjaxDispatcherUrl(
+				'SaferEdit::doCancelSaferEdit',
+				[ escape(wgUserName), wgPageName, wgNamespaceNumber ]
+			),
 			function ( sResponseData ){
 				//BsSaferEditEditMode.clearIcon();
 				// TODO RBV (19.05.11 09:42): Implement
@@ -400,12 +390,10 @@ BsSaferEditEditMode = {
 		}
 
 		$.post(
-			BlueSpice.buildRemoteString('SaferEdit', 'doCancelSaferEdit'),
-			$.param({
-				uname: escape(wgUserName),
-				pageName: wgPageName,
-				nsnumber: wgNamespaceNumber
-			}),
+			bs.util.getAjaxDispatcherUrl(
+				'SaferEdit::doCancelSaferEdit',
+				[ escape(wgUserName), wgPageName, wgNamespaceNumber ]
+			),
 			function ( sResponseData ){
 				//BsSaferEditEditMode.clearIcon();
 				// TODO RBV (19.05.11 09:42): Implement
@@ -460,7 +448,7 @@ BsSaferEditEditMode = {
 
 $(document).ready( function() { 
 	BsSaferEditEditMode.init();
-	if( bsSaferEditHasTexts ) {
+	if( mw.config.get('bsSaferEditHasTexts', false ) ) {
 		BsSaferEditEditMode.toggleDialog();
 	}
 	if( bsSaferEditWarnOnLeave && (typeof(alreadyBound) == 'undefined' || alreadyBound == false) ) {

@@ -1,19 +1,18 @@
 <?php
-BsExtensionManager::registerExtension('ExtensionInfo',                   BsRUNLEVEL::FULL, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension('ExtensionInfo',  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$dir = dirname( __FILE__ );
-$wgExtensionMessagesFiles['ExtensionInfo']      = $dir . '/ExtensionInfo.i18n.php';
-$wgExtensionMessagesFiles['ExtensionInfoAlias'] = $dir . '/SpecialExtensionInfo.alias.php';
+$wgExtensionMessagesFiles['ExtensionInfo']      = __DIR__ . '/languages/ExtensionInfo.i18n.php';
+$wgExtensionMessagesFiles['ExtensionInfoAlias'] = __DIR__ . '/languages/SpecialExtensionInfo.alias.php';
 
-$wgAutoloadClasses['SpecialExtensionInfo'] = $dir . '/SpecialExtensionInfo.class.php';
+$wgAutoloadClasses['SpecialExtensionInfo']   = __DIR__ . '/includes/specials/SpecialExtensionInfo.class.php';
+$wgAutoloadClasses['ViewExtensionInfoTable'] = __DIR__ . '/includes/ViewExtensionInfoTable.php';
 
 $wgSpecialPageGroups['ExtensionInfo'] = 'bluespice';
-
 $wgSpecialPages['ExtensionInfo'] = 'SpecialExtensionInfo';
 
 $wgResourceModules['ext.bluespice.extensioninfo'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/ExtensionInfo/js/ExtensionInfo.js',
-	'styles'  => 'extensions/BlueSpiceExtensions/ExtensionInfo/css/ExtensionInfo.css',
+	'scripts' => 'bluespice.extensionInfo.js',
+	'styles'  => 'bluespice.extensionInfo.css',
 	'messages' => array(
 		'bs-extensioninfo-headerExtensionname',
 		'bs-extensioninfo-headerVersion',
@@ -23,6 +22,6 @@ $wgResourceModules['ext.bluespice.extensioninfo'] = array(
 		'bs-extensioninfo-groupingTemplateViewTextSingular',
 		'bs-extensioninfo-groupingTemplateViewTextPlural'
 	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/ExtensionInfo/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/ExtensionInfo/resources',
 );

@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: ExtensionInfo.i18n.php 6401 2012-09-06 11:03:08Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage PageTemplates
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -75,7 +75,7 @@ $messages['de'] = array(
 	'bs-pagetemplates-headerTargetNamespace'	=> 'Namensraum',
 	'bs-pagetemplates-headerTemplate'			=> 'Vorlage',
 	'bs-pagetemplates-headerActions'			=> 'Aktionen',
-	'bs-pagetemplates-tipEditDetails'			=> 'Details bearbeiten',
+	'bs-pagetemplates-tipEditDetails'			=> 'Vorlage bearbeiten',
 	'bs-pagetemplates-tipDeleteTemplate'		=> 'Vorlage löschen',
 	'bs-pagetemplates-tipAddTemplate'			=> 'Vorlage hinzufügen',
 	'bs-pagetemplates-btnOk'					=> 'Ok',
@@ -87,11 +87,11 @@ $messages['de'] = array(
 	'bs-pagetemplates-labelLabel'				=> 'Name',
 	'bs-pagetemplates-labelDescription'			=> 'Beschreibung',
 	'bs-pagetemplates-labelTargetNamespace'		=> 'Namensraum',
-	'bs-pagetemplates-labelTemplateNamespace'	=> 'Namensraum der Vorlage',
+	'bs-pagetemplates-labelTemplateNamespace'	=> 'Vorlagen Namensraum',
 	'bs-pagetemplates-labelArticle'				=> 'Vorlage',
 	'bs-pagetemplates-titleDeleteTemplate'		=> 'Vorlage löschen',
 	'bs-pagetemplates-confirmDeleteTemplate'	=> 'Bist du sicher, dass du diese Vorlage löschen willst?',
-	'bs-pagetemplates-showEntries'				=> 'Angezeigte Einträge {0} - {1} von {2}',
+	'bs-pagetemplates-showEntries'				=> 'Angezeigte Einträge {0} - {1} von {2}'
 );
 
 $messages['de-formal'] = array(
@@ -176,7 +176,7 @@ $messages['en'] = array(
 	'bs-pagetemplates-headerTargetNamespace'	=> 'Namespace',
 	'bs-pagetemplates-headerTemplate'			=> 'Template',
 	'bs-pagetemplates-headerActions'			=> 'Actions',
-	'bs-pagetemplates-tipEditDetails'			=> 'Edit details',
+	'bs-pagetemplates-tipEditDetails'			=> 'Edit template',
 	'bs-pagetemplates-tipDeleteTemplate'		=> 'Delete template',
 	'bs-pagetemplates-tipAddTemplate'			=> 'Add template',
 	'bs-pagetemplates-btnOk'					=> 'Ok',
@@ -185,14 +185,14 @@ $messages['en'] = array(
 	'bs-pagetemplates-unknownError'				=> 'An unknown error occurred.',
 	'bs-pagetemplates-titleAddTemplate'			=> 'Add template',
 	'bs-pagetemplates-titleEditDetails'			=> 'Edit details',
-	'bs-pagetemplates-labelLabel'				=> 'Label',
+	'bs-pagetemplates-labelLabel'				=> 'Template name',
 	'bs-pagetemplates-labelDescription'			=> 'Description',
-	'bs-pagetemplates-labelTargetNamespace'		=> 'Target namespace',
+	'bs-pagetemplates-labelTargetNamespace'		=> 'Namespace',
 	'bs-pagetemplates-labelTemplateNamespace'	=> 'Template namespace',
 	'bs-pagetemplates-labelArticle'				=> 'Template',
 	'bs-pagetemplates-titleDeleteTemplate'		=> 'Delete template',
 	'bs-pagetemplates-confirmDeleteTemplate'	=> 'Are you sure, you want delete this template?',
-	'bs-pagetemplates-showEntries'				=> 'Displaying {0} - {1} of {2}',
+	'bs-pagetemplates-showEntries'				=> 'Displaying {0} - {1} of {2}'
 );
 
 $messages['qqq'] = array();

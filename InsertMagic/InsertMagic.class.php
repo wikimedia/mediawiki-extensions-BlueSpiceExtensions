@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: InsertMagic.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage InsertMagic
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -112,7 +112,7 @@ class InsertMagic extends BsExtensionMW {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['InsertMagic'] = dirname( __FILE__ ) . '/InsertMagic.i18n.php';
+		//$wgExtensionMessagesFiles['InsertMagic'] = __DIR__ . '/InsertMagic.i18n.php';
 
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
@@ -120,8 +120,8 @@ class InsertMagic extends BsExtensionMW {
 			EXTINFO::NAME        => 'InsertMagic',
 			EXTINFO::DESCRIPTION => 'Provides a dialog box to add magicwords and tags to an articles content in edit mode.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice'    => '1.22.0',
@@ -138,22 +138,21 @@ class InsertMagic extends BsExtensionMW {
 	public function  initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		$this->setHook( 'VisualEditorConfig', 'onVisualEditorConfig' );
-		$this->setHook( 'AlternateEdit', 'onAlternateEdit' );
-		$this->setHook( 'BeforePageDisplay', 'onBeforePageDisplay' );
+		$this->setHook( 'VisualEditorConfig' );
+		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	/*
-	 * Adds module
-	 * @param OutputPage $out
-	 * @param Skin $skin
-	 * @return boolean
-	*/
-	public static function onBeforePageDisplay( $out, $skin) {
-		$sAction = $out->getRequest()->getVal('action', 'view');
-		if( $sAction != 'edit' && $sAction != 'preview' ) return true;
-		$out->addModules('ext.bluespice.insertMagic');
+	
+	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
+		$this->getOutput()->addModuleStyles('ext.bluespice.insertMagic.styles');
+		$this->getOutput()->addModules('ext.bluespice.insertMagic');
+		
+		$aRows[0]['dialogs'][50] = 'bs-editbutton-insertmagic';
+
+		$aButtonCfgs['bs-editbutton-insertmagic'] = array(
+			'tip' => wfMessage( 'bs-insertmagic' )->plain()
+		);
 		return true;
 	}
 
@@ -164,30 +163,11 @@ class InsertMagic extends BsExtensionMW {
 	 * @return boolean always true to keep hook alife
 	 */
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'unlink',$aConfigStandard["theme_advanced_buttons2"] );
-		array_splice( $aConfigStandard["theme_advanced_buttons2"], $iIndexStandard + 1, 0, "hwmagic" );
+		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar2"] );
+		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bsmagic" );
 
-		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["theme_advanced_buttons1"] );
-		array_splice( $aConfigOverwrite["theme_advanced_buttons1"], $iIndexOverwrite + 1, 0, "hwmagic" );
-		return true;
-	}
-
-	/**
-	 * Add the action button to MediaWiki editor.
-	 * @param EditPage $EditPage
-	 * @return type bool
-	 */
-	public function onAlternateEdit( $EditPage ) {
-		$this->mAdapter->addEditButton(
-			'InsertMagic',
-			array(
-				'id'      => 'im_button',
-				'msg'     => wfMsg( 'bs-insertmagic' ),
-				'image'   => '/extensions/BlueSpiceExtensions/InsertMagic/resources/images/btn_insertmagic_ed.png',
-				'onclick' => 'return false;'
-			)
-		);
-
+		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar1"] );
+		array_splice( $aConfigOverwrite["toolbar1"], $iIndexOverwrite + 1, 0, "bsmagic" );
 		return true;
 	}
 
@@ -205,31 +185,12 @@ class InsertMagic extends BsExtensionMW {
 			$oDescriptor->id = $sTag;
 			$oDescriptor->type = 'tag';
 			$oDescriptor->name = $sTag;
-			// Give grep a chance to find the usages:
-			// bs-insertmagic-gallery-code, bs-insertmagic-nowiki-code, bs-insertmagic-noinclude-code,
-			// bs-insertmagic-includeonly-code, bs-insertmagic-redirect-code,bs-insertmagic-gallery,
-			// bs-insertmagic-nowiki, bs-insertmagic-noinclude, bs-insertmagic-includeonly,
-			// bs-insertmagic-redirect
 			$oDescriptor->desc = wfMessage( 'bs-insertmagic-'.$sTag )->parse();
 			$oDescriptor->code = wfMessage( 'bs-insertmagic-'.$sTag.'-code' )->plain();
 			$oDescriptor->previewable = true;
 			$oResponse->result[] = $oDescriptor;
 		}
 
-		// Give grep a chance to find the usages:
-		// bs-insertmagic-{{CURRENTYEAR}}, bs-insertmagic-{{CURRENTMONTH}},bs-insertmagic-{{CURRENTMONTHNAME}},
-		// bs-insertmagic-{{CURRENTMONTHNAMEGEN}}, bs-insertmagic-{{CURRENTMONTHABBREV}},
-		// bs-insertmagic-{{CURRENTDAY}}, bs-insertmagic-{{CURRENTDAY2}}, bs-insertmagic-{{CURRENTDOW}},
-		// bs-insertmagic-{{CURRENTDAYNAME}}, bs-insertmagic-{{CURRENTTIME}}, bs-insertmagic-{{CURRENTHOUR}},
-		// bs-insertmagic-{{CURRENTWEEK}}, bs-insertmagic-{{CURRENTTIMESTAMP}}, bs-insertmagic-{{SITENAME}},
-		// bs-insertmagic-{{SERVER}}, bs-insertmagic-{{SERVERNAME}}, bs-insertmagic-{{SCRIPTPATH}},
-		// bs-insertmagic-{{STYLEPATH}}, bs-insertmagic-{{CURRENTVERSION}}, bs-insertmagic-{{CONTENTLANGUAGE}},
-		// bs-insertmagic-{{PAGEID}}, bs-insertmagic-{{PAGESIZE:"page name"}},
-		// bs-insertmagic-{{PROTECTIONLEVEL:"action"}}, bs-insertmagic-{{REVISIONID}},
-		// bs-insertmagic-{{REVISIONDAY}}, bs-insertmagic-{{REVISIONDAY2}}, bs-insertmagic-{{REVISIONMONTH}},
-		// bs-insertmagic-{{REVISIONMONTH1}}, bs-insertmagic-{{REVISIONYEAR}},
-		// bs-insertmagic-{{REVISIONTIMESTAMP}}, bs-insertmagic-{{REVISIONUSER}},
-		// bs-insertmagic-{{DISPLAYTITLE:"title"}}, bs-insertmagic-{{DEFAULTSORT:"sortkey"}}
 		foreach( self::$aMagicWords['variables'] as $sVariable ) {
 			$oDescriptor = new stdClass();
 			$oDescriptor->id = $sVariable;
@@ -246,12 +207,6 @@ class InsertMagic extends BsExtensionMW {
 			$oDescriptor->id = $sSwitch;
 			$oDescriptor->type = 'switch';
 			$oDescriptor->name = substr( $sSwitch, 2, -2 );
-			// Give grep a chance to find the usages:
-			// bs-insertmagic-__NOTOC__, bs-insertmagic-__FORCETOC__, bs-insertmagic-__TOC__,
-			// bs-insertmagic-__NOEDITSECTION__, bs-insertmagic-__NEWSECTIONLINK__,
-			// bs-insertmagic-__NONEWSECTIONLINK__, bs-insertmagic-__NOGALLERY__, bs-insertmagic-__HIDDENCAT__,
-			// bs-insertmagic-__NOCONTENTCONVERT__, bs-insertmagic-__NOTITLECONVERT__, bs-insertmagic-__END__,
-			// bs-insertmagic-__INDEX__, bs-insertmagic-__NOINDEX__, bs-insertmagic-__STATICREDIRECT__
 			$oDescriptor->desc = wfMessage( 'bs-insertmagic-'.$sSwitch )->parse();
 			$oDescriptor->code = $sSwitch;
 			$oDescriptor->previewable = false;

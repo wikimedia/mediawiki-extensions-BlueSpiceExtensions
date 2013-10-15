@@ -1,0 +1,114 @@
+/**
+ * Stylesheet for Review
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @package    BlueSpice_Extensions
+ * @subpackage Review
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+#rv {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#3E3E3E;
+}
+
+#rv_steps_top {
+	/*background-image:url(images/steps_top.png);*/
+	background-repeat:no-repeat;
+	background-position:bottom -6px;
+	height:6px;
+	font-size:0px;
+}
+
+#rv_steps_mid {
+	background-color:#EEEEEE;
+}
+
+#rv_steps_bot {
+	/*background-image:url(images/steps_bot.png);*/
+	background-repeat:no-repeat;
+	height:6px;
+	font-size:0px;
+}
+
+#rv_steps {
+	background:none;
+	border-top: 1px solid #D9DbDc;
+}
+
+.rv_no {
+	background-repeat:no-repeat;
+	/*@embed*/
+	background-image:url(images/bs-infobar-workflow-dismissed.png);
+	width:24px;
+	height:24px;
+}
+
+.rv_yes {
+	background-repeat:no-repeat;
+	/*@embed*/
+	background-image:url(images/bs-infobar-workflow-ok.png);
+	width:24px;
+	height:24px;
+}
+
+.rv_unknown {
+	background-repeat:no-repeat;
+	/*@embed*/
+	background-image:url(images/bs-infobar-workflow-open.png);
+	width:24px;
+	height:24px;
+}
+
+.rv_steps_colhd {
+	color:#D9DbDc;
+	font-size:11px;
+}
+
+#review-userbar-element {
+	float: right;
+	margin-right: 10px;
+	margin-top: 8px;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#sb-Review {
+	cursor:pointer;
+}
+.red {
+	color: #ff0000;
+}
+
+.green {
+	color: #008000;
+}
+
+.orange {
+	color: #0099FF;
+}
+
+/*TODO: this is generic. Move to BSF or leave it to the skin. */
+a.bs-icon-accept {
+	/*@embed*/
+	background-image: url(images/bs-statebar-review-accept-btn.png);
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+
+a.bs-icon-decline {
+	/*@embed*/
+	background-image: url(images/bs-statebar-review-decline-btn.png);
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	text-indent: -9999px;
+	overflow: hidden;
+}

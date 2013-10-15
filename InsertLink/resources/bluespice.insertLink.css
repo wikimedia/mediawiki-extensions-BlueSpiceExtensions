@@ -30,3 +30,8 @@
 #link_chooser_tab_panel > div > div > ul > li:nth-child(2) {
 	margin-left: 12px !important;
 }
+
+a#bs-editbutton-insertlink {
+	/*@embed*/
+	background-image: url(images/button_insert-link.png);
+}

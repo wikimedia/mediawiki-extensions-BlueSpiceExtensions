@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('UserManager',                     BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['UserManager'] = dirname( __FILE__ ) . '/languages/UserManager.i18n.php';
+$wgExtensionMessagesFiles['UserManager'] = __DIR__ . '/languages/UserManager.i18n.php';
 
 $wgResourceModules['ext.bluespice.userManager'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/UserManager/resources/bluespice.userManager.js',
@@ -30,13 +30,18 @@ $wgResourceModules['ext.bluespice.userManager'] = array(
 		'bs-usermanager-titleEditPassword',
 		'bs-usermanager-labelNewPassword',
 		'bs-usermanager-labelPasswordCheck',
+		'bs-usermanager-labelgroups',
 		'bs-usermanager-titleEditGroups',
 		'bs-usermanager-titleDeleteUser',
 		'bs-usermanager-confirmDeleteUser',
 		'bs-usermanager-showEntries',
 		'bs-usermanager-textCannotEditOwn',
-		'bs-usermanager-pageSize',
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
+
+$wgAjaxExportList[] = 'UserManager::getUsers';
+$wgAjaxExportList[] = 'UserManager::addUser';
+$wgAjaxExportList[] = 'UserManager::editUser';
+$wgAjaxExportList[] = 'UserManager::deleteUser';

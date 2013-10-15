@@ -1,0 +1,120 @@
+Ext.define('BS.Dashboards.DashboardPanel', {
+	extend: 'BS.portal.PortalPanel',
+
+	//Custom Settings
+	saveConfigBackend: {
+		rs: bsPortalConfigSavebackend,
+		additionalArgs: []
+	},
+	cmPortlets: false,
+
+	initComponent: function() {
+		this.items = [];
+
+		for ( var i = 0; i < this.portalConfig.length; i++ ) {
+			var columnConfig = this.portalConfig[i];
+			var portlets = [];
+
+			for ( var j = 0; j < columnConfig.length; j++ ) {
+				var portletConfig = columnConfig[j];
+				var portlet = Ext.create( 
+					portletConfig.type,
+					portletConfig.config
+				);
+				//Listen to config changes to persist them
+				portlet.on( 'configchange', this.onPortletConfigChange, this );
+				portlets.push(portlet);
+			}
+
+			var column = Ext.create('BS.portal.PortalColumn', {
+				items: portlets
+			});
+			this.items.push( column );
+		}
+
+		//Listen to changes ot the arrangement to persist them
+		this.on( 'drop', this.onDrop, this );
+
+		//For event handler that need the rendered DOM Elements
+		this.on( 'afterrender', this.onAfterRender, this );
+
+		Ext.require( 'BS.Dashboards.PortletCatalog', function() {
+			BS.Dashboards.PortletCatalog.on( 'ok', this.onPortletCatalogOk, this );
+		}, this );
+
+		this.callParent(arguments);
+	},
+
+	onPortletCatalogOk: function ( data, portlet ) {
+		var portlet = Ext.create( portlet.type, portlet.config );
+		this.items.getAt(0).insert( 0, portlet );
+		this.savePortalConfig();
+	},
+
+	onPortletConfigChange: function( portlet, cfg ) {
+		this.savePortalConfig();
+	},
+
+	onDrop: function() {
+		this.savePortalConfig();
+	},
+
+	onAfterRender: function( panel, layout, eOpts ) {
+		//Allow context menu
+		this.getEl().on( 'contextmenu', this.onContextMenu, this );
+	},
+
+	onContextMenu: function( event, element, eOpts ) {
+		if ( this.cmPortlets == false ) {
+			this.cmPortlets = Ext.create('Ext.menu.Menu', {
+				items: {
+					text: 'test',
+					handler: function() {
+						this.wdPortletCatalog = Ext.create( 'BS.Dashboards.PortletCatalog', {
+							title: 'Hallo'
+						});
+						this.wdPortletCatalog.show();
+					}
+				}
+			});
+		}
+		event.preventDefault();
+		this.cmPortlets.showAt( event.getXY() );
+	},
+
+	getPortalConfig: function() {
+		var portletConfig = [];
+		var numberOfColumns = this.items.length;
+		for ( var i = 0; i < numberOfColumns; i++ ) {
+			var column = this.items.getAt(i);
+			var columnConfig = [];
+			var numberOfPortlets = column.items.length;
+			for( var j = 0; j < numberOfPortlets; j++ ) {
+				var portlet = column.items.getAt(j);
+				var className = Ext.getClassName( portlet );
+				var cfg = {
+					type: className,
+					config: portlet.getPortletConfig()
+				};
+				columnConfig.push( cfg );
+			}
+			portletConfig.push(columnConfig);
+		}
+
+		return portletConfig;
+	},
+
+	savePortalConfig: function() {
+		var portletConfig = this.getPortalConfig();
+
+		Ext.Ajax.request({
+			url: bs.util.getAjaxDispatcherUrl( 
+				this.saveConfigBackend.rs, 
+				Ext.Array.merge(
+					[ Ext.encode(portletConfig) ],
+					this.saveConfigBackend.additionalArgs
+				)
+			)
+		});
+	}
+});

@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: SaferEdit.i18n.php 6401 2012-09-06 11:03:08Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage SaferEdit
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

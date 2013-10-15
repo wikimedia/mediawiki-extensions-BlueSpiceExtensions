@@ -29,7 +29,7 @@
  * $LastChangedDate: 2013-06-14 14:09:29 +0200 (Fr, 14 Jun 2013) $
  * $LastChangedBy: pwirth $
  * $Rev: 9745 $
- * $Id: UserPreferences.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  */
 /* Changelog
  * v1.20.0
@@ -59,8 +59,8 @@ class UserPreferences extends BsExtensionMW {
 			EXTINFO::NAME => 'UserPreferences',
 			EXTINFO::DESCRIPTION => 'Renders the BlueSpice tab in preferences.',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS => 'stable',
+			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
 		);
@@ -70,14 +70,26 @@ class UserPreferences extends BsExtensionMW {
 
 	protected function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
-		//Styles
-		$this->registerStyleSheet( BsConfig::get( 'MW::ScriptPath' ) . '/extensions/BlueSpiceExtensions/UserPreferences/styles/bs-userpreferences.css', true, 'MW::UserPreferences::Form' );
 
-		//Hooks
 		$this->setHook( 'GetPreferences' );
 		$this->setHook( 'UserLoadOptions' );
 		$this->setHook( 'UserSaveOptions' );
+		$this->setHook( 'BeforePageDisplay' );
+
 		wfProfileOut( 'BS::' . __METHOD__ );
+	}
+
+	/**
+	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
+	 * @param OutputPage $oOutputPage
+	 * @param Skin $oSkin
+	 * @return bool
+	 */
+	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
+		if( !SpecialPage::getTitleFor('Preferences') ->equals( $oOutputPage->getTitle() ) ) return true;
+		$oOutputPage->addModules('ext.bluespice.userpreferences');
+
+		return true;
 	}
 
 	/**

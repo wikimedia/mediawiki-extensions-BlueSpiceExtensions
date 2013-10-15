@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('StateBar',                        BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['StateBar'] = dirname( __FILE__ ).'/languages/StateBar.i18n.php';
+$wgExtensionMessagesFiles['StateBar'] = __DIR__.'/languages/StateBar.i18n.php';
 
 $wgResourceModules['ext.bluespice.statebar'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/StateBar/resources/bluespice.StateBar.js',
@@ -12,6 +12,8 @@ $wgResourceModules['ext.bluespice.statebar'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$wgAutoloadClasses['ViewStateBar'] = dirname( __FILE__ ).'/views/view.StateBar.php';
-$wgAutoloadClasses['ViewStateBarTopElement'] = dirname( __FILE__ ).'/views/view.StateBarTopElement.php';
-$wgAutoloadClasses['ViewStateBarBodyElement'] = dirname( __FILE__ ).'/views/view.StateBarBodyElement.php';
+$wgAutoloadClasses['ViewStateBar'] = __DIR__.'/views/view.StateBar.php';
+$wgAutoloadClasses['ViewStateBarTopElement'] = __DIR__.'/views/view.StateBarTopElement.php';
+$wgAutoloadClasses['ViewStateBarBodyElement'] = __DIR__.'/views/view.StateBarBodyElement.php';
+
+$wgAjaxExportList[] = 'StateBar::ajaxCollectBodyViews';

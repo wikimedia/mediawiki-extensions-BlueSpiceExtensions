@@ -179,6 +179,7 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 		}
 
 		if ( $response->getHttpStatus() != 200 ) {
+			BuildIndexMainControl::getInstance()->logFile( 'write', 'Error in _sendRawPost ' . var_export( $response, true ) );
 			wfProfileOut( 'BS::'.__METHOD__ );
 			throw new Exception( '"' . $response->getHttpStatus() . '" Status: ' . $response->getHttpStatusMessage(), $response->getHttpStatus() );
 		}

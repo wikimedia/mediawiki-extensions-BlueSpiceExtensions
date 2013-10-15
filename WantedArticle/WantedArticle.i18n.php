@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: WantedArticle.i18n.php 9415 2013-05-16 13:01:38Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage WantedArticle
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -76,6 +76,7 @@ Verfügbare Parameter:
 
 $messages['de-formal'] = array(
 	'bs-wantedarticle-info_nothing_entered'                   => 'Bitte geben Sie einen zulässigen Titel ein.',
+	'bs-wantedarticle-success-suggestion-entered'                   => 'Ihr Vorschlag wurde eingetragen',
 );
 
 $messages['en'] = array(

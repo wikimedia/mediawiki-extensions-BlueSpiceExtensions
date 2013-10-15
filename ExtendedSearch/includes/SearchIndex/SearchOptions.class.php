@@ -35,7 +35,7 @@ class SearchOptions {
 	 * Stores the original search string as entered into the form.
 	 * @var string The original search string
 	 */
-	public static $searchStringRaw;
+	public static $searchStringRaw = '';
 	/**
 	 * Unique ID in order to distinguish this wiki in the index from others.
 	 * @var string A unique ID
@@ -227,16 +227,14 @@ class SearchOptions {
 	 * Creates an array that can be used as a autocomplete search query to Solr.
 	 * @return array List of url parameters.
 	 */
-	public function getSolrMltQuery() {
-		global $wgTitle;
+	public function getSolrMltQuery( $oTitle ) {
+		global $wgContentNamespaces;
 		$aSearchOptions = array();
 		$aNamespaces = array();
 
-		$sFqNamespaces = '{!tag=na}+namespace:( 0 ';
-		foreach ( $wgCanonicalNamespaceNames as $key => $value ) {
-			if ( $key == NS_MEDIAWIKI || $key == NS_FILE 
-				|| $key == NS_USER || $key == NS_TEMPLATE ) continue;
-			$aNamespaces[] = '' . $key . '';
+		$sFqNamespaces = '{!tag=na}+namespace:( ';
+		foreach ( $wgContentNamespaces as $key => $value ) {
+			$aNamespaces[] = '' . $value . '';
 		}
 
 		$sFqNamespaces = $sFqNamespaces . implode( ' ', $aNamespaces ) . ' )';
@@ -250,22 +248,19 @@ class SearchOptions {
 		$aSearchOptions['fq'][] = $sFqNamespaces;
 
 		$aSearchOptions['mlt']       = 'true';
-		$aSearchOptions['mlt.fl']    = 'title,titleWord,text,textWord'; // todo: titleWord, textWord
+		$aSearchOptions['mlt.fl']    = 'titleMlt,textMlt'; // todo: titleWord, textWord
 		$aSearchOptions['mlt.boost'] = 'true';
-		$aSearchOptions['mlt.qf']    = 'title^10.0 titleWord^10.0 text^0.1 textWord^0.1';
+		$aSearchOptions['mlt.qf']    = 'titleMlt^10.0 textMlt^0.1';
 		$aSearchOptions['mlt.mindf'] = '5';
 		$aSearchOptions['mlt.mintf'] = '3';
 		$aSearchOptions['mlt.maxqt'] = '15';
 		$aSearchOptions['mlt.count'] = '10';
 
-
-		$aSearchOptions['mlt.interestingTerms'] = 'list';
-
+		//$aSearchOptions['mlt.interestingTerms'] = 'list';
 			//http://localhost:8080/solr/mlt?q=hwid:2084&start=0&rows=10&fl=title,score&mlt.fl=title,text&mlt.boost=true&mlt.qf=title%5E10.0&mlt.mindf=1&mlt.mintf=1&mlt.interestingTerms=details&mlt.maxqt=10&mlt.minwl=5
 			//mlt.maxqt=10&mlt.minwl=5
-
 		$aSolrMltQuery = array(
-			'searchString'  => 'hwid:' . $wgTitle->getArticleID() . '',
+			'searchString'  => 'hwid:' . $oTitle->getArticleID() . '',
 			'offset'        => 0,
 			'searchLimit'   => 5,
 			'searchOptions' => $aSearchOptions
@@ -308,8 +303,7 @@ class SearchOptions {
 		$this->aOptions['bExtendedForm']             = $oSearchRequest->bExtendedForm;
 
 		$scope = BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' ? 'title' : 'text';
-		if ( $oSearchRequest->sGo ) $scope = 'title';
-		if ( $oSearchRequest->sSubmit ) $scope = 'text';
+
 		if ( $oSearchRequest->sScope == 'title' ) $scope = 'title';
 		if ( $oSearchRequest->sScope == 'text' ) $scope = 'text';
 		$this->aOptions['scope'] = $scope;
@@ -317,23 +311,59 @@ class SearchOptions {
 		// titleWord, titleReverse, textWord, textReverse sind "analyzed" (u.a. gestemmt)
 		// Wird ein Query mit Wilcards ausgeführt, wird darauf vom Solr kein Analyzer angewendet => der Treffer liegt dann also wahrscheinlicher im Feld *Reverse
 
-		// Not nice but if titleWord occurs several times it is scored much higher
-		$this->aOptions['searchStrComp']['searchStrInTitle']    = '(titleWord:("' . $this->aOptions['searchStringOrig'] . '")'.
-																' OR titleWord:(' . $this->aOptions['searchStringOrig'] . ')'.
-																' OR titleWord:(' . $this->aOptions['searchStringOrig'] . ')'.
-																' OR titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')'.
-																' OR sections:("' . $this->aOptions['searchStringOrig'] . '")'.
-																' OR sections:(' . $this->aOptions['searchStringOrig'] . ')'.
-																' OR redirects:(' . $this->aOptions['searchStringWildcarded'] . ')';
-		$this->aOptions['searchStrComp']['searchStrInFulltext'] = 'textWord:("' . $this->aOptions['searchStringOrig'].'")'.
-																' OR textWord:(' . $this->aOptions['searchStringOrig'].')'.
-																' OR textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')'.
-																' OR titleWord:(' . $this->aOptions['searchStringOrig'] . ')';
+		global $wgContLang;
+		$sLanguage = $wgContLang->getCode();
+		if ( $sLanguage === 'de' || $sLanguage === 'de-formal' ) {
+			$sLang = 'de';
+		} else {
+			$sLang = 'en';
+		}
 
-		$this->aOptions['searchStringFinal'] = ( $this->aOptions['scope'] == 'title' )
+		// require stopword lists for sentence recognation
+		require( 'Stopwords_'.$sLang.'.php' );
+
+		$aSerachTerms = explode( ' ', $this->aOptions['searchStringRaw'] );
+		$sChar = '';
+
+		// If entered search term has more than 4 words it will be checked for real sentence
+		if ( count( $aSerachTerms ) > 3 ) {
+			$iOccurences = 0;
+			foreach ( $aSerachTerms as $sTerm ) {
+				$sTerm = mb_strtolower( $sTerm );
+
+				if ( in_array( $sTerm, $aStopwords ) ) {
+					$iOccurences++;
+				}
+			}
+
+			// More than two words of the search term are on the stopword list
+			// it is handeled as as a sentence ans will be a phrasequery
+			if ( $iOccurences >= 2 ) {
+				$sChar = '"';
+			}
+		}
+
+		// Not nice but if titleWord occurs several times it is scored much higher
+		$sSearchStringTitle   = '(titleWord:("' . $this->aOptions['searchStringOrig'] . '")^50'.
+								' OR titleWord:("' . $this->aOptions['searchStringOrig'] . '")^50'.
+								' OR titleWord:(' . $sChar . $this->aOptions['searchStringOrig'] . $sChar . ')^20'.
+								' OR titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')'.
+								' OR redirects:(' . $sChar . $this->aOptions['searchStringOrig'] . $sChar . ')';
+
+		$sSearchStringText    = 'textWord:(' . $sChar . $this->aOptions['searchStringOrig'] . $sChar .')^0.1'.
+								' OR textWord:(' . $sChar . $this->aOptions['searchStringOrig'] . $sChar . ')^0.1'.
+								' OR textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')'.
+								' OR sections:('. $sChar . $this->aOptions['searchStringOrig'] . $sChar . ')';
+
+		$this->aOptions['searchStrComp']['searchStrInTitle'] = $sSearchStringTitle;
+		$this->aOptions['searchStrComp']['searchStrInFulltext'] = $sSearchStringText;
+
+		$this->aOptions['searchStringFinal'] = ( $this->aOptions['scope'] === 'title' )
 			? $this->aOptions['searchStrComp']['searchStrInTitle']
 			: implode( ' OR ', $this->aOptions['searchStrComp'] );
-		$this->aOptions['searchStringFinal'] .= ') AND redirect:0'; // Do not show redircets
+
+		// Do not show redircets and specialpages
+		$this->aOptions['searchStringFinal'] .= ') AND redirect:0  AND special:0';
 
 		$sCustomerId = $this->getCustomerId();
 
@@ -349,12 +379,17 @@ class SearchOptions {
 		if ( empty( $this->aOptions['namespaces'] ) && $vNamespace === false ) {
 			$this->aOptions['namespaces'] = array();
 			// Main
-			if ( BsNamespaceHelper::checkNamespacePermission( NS_MAIN, 'read' ) !== false ) $this->aOptions['namespaces'][] = '' . NS_MAIN . '';
+			if ( BsNamespaceHelper::checkNamespacePermission( NS_MAIN, 'read' ) !== false )
+					$this->aOptions['namespaces'][] = '' . NS_MAIN . '';
+
+			// Namespace 1000 are specialpages
+			$this->aOptions['namespaces'][] = '1000';
 
 			if ( in_array( $oSearchRequest->sRequestOrigin, array( 'search_form_body', 'uri_builder', 'ajax' ) )
 				|| $wgUser->getOption( 'searcheverything' ) == 1 ) {
 				// Blog
-				if ( BsNamespaceHelper::checkNamespacePermission( NS_BLOG, 'read' ) !== false ) $this->aOptions['namespaces'][] = '' . NS_BLOG . '';
+				if ( BsNamespaceHelper::checkNamespacePermission( NS_BLOG, 'read' ) !== false )
+						$this->aOptions['namespaces'][] = '' . NS_BLOG . '';
 
 				foreach ( $wgCanonicalNamespaceNames as $key => $value ) {
 					if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false ) continue;
@@ -362,7 +397,7 @@ class SearchOptions {
 					$this->aOptions['namespaces'][] = '' . $key . '';
 				}
 			} else {
-				wfRunHooks( 'BSExtendedSearchEmptyNamespacesElse', array( &$this, $oSearchRequest ) );
+				wfRunHooks( 'BSExtendedSearchEmptyNamespacesElse', array( $this, $oSearchRequest ) );
 
 				foreach ( $wgCanonicalNamespaceNames as $key => $value ) {
 					if ( $this->oRequestContext->getUser()->getBoolOption( 'searchNs'.$key, false )
@@ -372,7 +407,8 @@ class SearchOptions {
 				}
 			}
 
-			if ( $oSearchRequest->bSearchFiles === true && $wgUser->isAllowed( 'searchfiles' ) ) {
+			if ( ( $oSearchRequest->bSearchFiles === true && $wgUser->isAllowed( 'searchfiles' ) )
+				|| $this->aOptions['sayt'] == 1 ) {
 				$this->aOptions['namespaces'][] = '998';
 				$this->aOptions['namespaces'][] = '999';
 			}
@@ -508,7 +544,7 @@ class SearchOptions {
 	/**
 	 * For a given SearchInput (by the user) the Existence of an article with exactly this title is evaluated.
 	 * @param String $sParamSearchInput
-	 * @return Title
+	 * @return boolean
 	 */
 	public function titleExists( $sParamSearchInput ) {
 		$sParamSearchInput = trim( $sParamSearchInput );

@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Marc Reymann <reymann@hallowelt.biz>
- * @version    $Id: PageAccess.i18n.php 9848 2013-06-21 13:41:20Z mreymann $
+
  * @package    BlueSpice_Extensions
  * @subpackage CountThings
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

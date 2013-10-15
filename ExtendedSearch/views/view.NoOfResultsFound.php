@@ -53,9 +53,9 @@ class ViewNoOfResultsFound extends ViewBaseElement {
 		$searchTerm = $this->getOption( 'SearchTerm' );
 
 		if ( $this->getOption( 'EscalatedToFuzzy' ) && $noOfResultsFound > 0 ) {
-			$sOut = wfMessage( 'bs-extendedsearch-fuzzy', $searchTerm, $noOfResultsFound )->parse();
+			$sOut = wfMessage( 'bs-extendedsearch-fuzzy', $searchTerm, $noOfResultsFound )->text();
 		} else {
-			$sOut = wfMessage( 'bs-extendedsearch-result', $searchTerm, $noOfResultsFound )->parse();
+			$sOut = wfMessage( 'bs-extendedsearch-result', $searchTerm, $noOfResultsFound )->text();
 		}
 
 		$sOut = preg_replace_callback( '|<b>(.*?)</b>|', array( &$this, 'makeSpan' ), $sOut );

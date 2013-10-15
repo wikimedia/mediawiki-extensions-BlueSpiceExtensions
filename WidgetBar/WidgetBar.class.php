@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: WidgetBar.class.php 9758 2013-06-17 08:58:01Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage WidgetBar
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -54,9 +54,6 @@ class WidgetBar extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['WidgetBar'] = dirname( __FILE__ ) . '/WidgetBar.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::OTHER;
@@ -64,8 +61,8 @@ class WidgetBar extends BsExtensionMW {
 			EXTINFO::NAME        => 'WidgetBar',
 			EXTINFO::DESCRIPTION => 'Adds the widget flyout to the skin.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9758 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
@@ -86,12 +83,6 @@ class WidgetBar extends BsExtensionMW {
 
 		BsConfig::registerVar( 'MW::WidgetBar::UserPageSubPageTitle', 'Widgetbar', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-widgetbar-pref-UserPageSubPageTitle' );
 		BsConfig::registerVar( 'MW::WidgetBar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-widgetbar-userpagesettings-link-title', 'link' );
-		BsConfig::registerVar('MW::WidgetBar::SkinWidgetDirection', 'left', BsConfig::LEVEL_USER | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS , 'bs-pref-SkinWidgetDirection', 'select');
-		
-		$this->registerView( 'ViewWidget' );
-		$this->registerView( 'ViewWidgetError' );
-		$this->registerView( 'ViewWidgetErrorList' );
-		$this->registerView( 'ViewWidgetList' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -103,7 +94,7 @@ class WidgetBar extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBeforePageDisplay( $oOutputPage, $oSkinTemplate ) {
-		$oOutputPage->addModules('ext.bluespice.widgetbar');
+		$oOutputPage->addModules( 'ext.bluespice.widgetbar' );
 		return true;
 	}
 
@@ -116,11 +107,11 @@ class WidgetBar extends BsExtensionMW {
 	 * @return bool false if the user accesses a UserSidebar Title of another user, true in all other cases.
 	 */
 	public function onUserCan( $oTitle, $oUser, $sAction, $bResult ){
-		if( $sAction != 'edit' ) return true;
-		if( $oTitle->getNamespace() != NS_USER || !$oTitle->isSubpage() ) return true;
-		if( strcasecmp( $oTitle->getSubpageText(), BsConfig::get( 'MW::WidgetBar::UserPageSubPageTitle' ) ) == 0 ) {
+		if ( $sAction != 'edit' ) return true;
+		if ( $oTitle->getNamespace() != NS_USER || !$oTitle->isSubpage() ) return true;
+		if ( strcasecmp( $oTitle->getSubpageText(), BsConfig::get( 'MW::WidgetBar::UserPageSubPageTitle' ) ) == 0 ) {
 			$oBasePage = Title::newFromText( $oTitle->getBaseText(), NS_USER );
-			if( !$oBasePage->equals( $oUser->getUserPage() ) ) {
+			if ( !$oBasePage->equals( $oUser->getUserPage() ) ) {
 				$bResult = false;
 				return false;
 			}
@@ -129,12 +120,12 @@ class WidgetBar extends BsExtensionMW {
 	}
 
 	// TODO STM 08.10.12: Docblock
-	public function onGetPreferences ( $user, &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ) {
 		$sUserPageSubPageTitle  = BsConfig::get( 'MW::WidgetBar::UserPageSubPageTitle' );
 		$oWidgetBarArticleTitle = Title::makeTitle( NS_USER, $user->getName().'/'.$sUserPageSubPageTitle );
 		$preferences['MW_WidgetBar_LinkToEdit']['default'] = array( 
 			'href' => $oWidgetBarArticleTitle->getEditURL(), 
-			'content' => wfMsg( 'bs-widgetbar-userpagesettings-link-text' )
+			'content' => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->plain()
 		);
 		return true;
 	}
@@ -158,12 +149,12 @@ class WidgetBar extends BsExtensionMW {
 		);
 		$oUserPageSettingsView->addData(
 			array(
-				'HEADLINE' => wfMsg( 'bs-widgetbar-userpagesettings-headline' ),
+				'HEADLINE' => wfMessage( 'bs-widgetbar-userpagesettings-headline' )->plain(),
 				'URL'      => htmlspecialchars( $oWidgetBarArticleTitle->getEditURL() ),
-				'TITLE'    => wfMsg( 'bs-widgetbar-userpagesettings-link-title' ),
-				'TEXT'     => wfMsg( 'bs-widgetbar-userpagesettings-link-text' ),
-				'IMGALT'   => wfMsg( 'bs-widgetbar-userpagesettings-headline' ),
-				'IMGSRC'   => $this->getImagePath().'bs-userpage-widgets.png',
+				'TITLE'    => wfMessage( 'bs-widgetbar-userpagesettings-link-title' )->plain(),
+				'TEXT'     => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->plain(),
+				'IMGALT'   => wfMessage( 'bs-widgetbar-userpagesettings-headline' )->plain(),
+				'IMGSRC'   => $this->getImagePath( true ).'bs-userpage-widgets.png',
 			)
 		);
 
@@ -182,8 +173,8 @@ class WidgetBar extends BsExtensionMW {
 		global $wgTitle;
 		$oWidgetListView = new ViewWidgetList();
 		$aWidgetViews = array();
-		if( $wgTitle->userCan('read') == false) {
-			if( $wgTitle->getNamespace() == -1 && $oUser->isLoggedIn() ) {
+		if ( $wgTitle->userCan( 'read' ) == false ) {
+			if ( $wgTitle->getNamespace() == -1 && $oUser->isLoggedIn() ) {
 				$aViews[] = $oWidgetListView->setWidgets( $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle ) );
 				return $aViews;
 			}
@@ -193,12 +184,12 @@ class WidgetBar extends BsExtensionMW {
 		$sTitle = BsConfig::get('MW::WidgetBar::UserPageSubPageTitle');
 		$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/'.$sTitle );
 
-		if($oTitle->exists() === false ) {
+		if ( $oTitle->exists() === false ) {
 			$aViews[] = $oWidgetListView->setWidgets( $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle ) );
 			return $aViews;
 		}
 
-		$oWidgetListView->setWidgets( 
+		$oWidgetListView->setWidgets(
 			BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets()
 		);
 		$aViews[] = $oWidgetListView;
@@ -214,15 +205,6 @@ class WidgetBar extends BsExtensionMW {
 	 */
 	private function getDefaultWidgets( &$aViews, $oUser, $oTitle) {
 		wfRunHooks( 'BSWidgetBarGetDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
-		/*$oEvent = new BsEvent(
-			$this,
-			'MW::WidgetBar::DefaultWidgets',
-			array(
-				'user'          => $oUser,
-				'sidebar-title' => $oTitle
-				)
-			);
-		BsEventDispatcher::getInstance( 'MW' )->filter( $oEvent, $aViews );*/
 		return $aViews;
 	}
 	
@@ -235,8 +217,8 @@ class WidgetBar extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array(
 			'options' => array(
-				wfMsg( 'bs-pref-SkinWidgetDirection-left' ) => 'left',
-				wfMsg( 'bs-pref-SkinWidgetDirection-right' ) => 'right',
+				wfMessage( 'bs-pref-SkinWidgetDirection-left' )->plain() => 'left',
+				wfMessage( 'bs-pref-SkinWidgetDirection-right' )->plain() => 'right',
 			)
 		);
 		return $aPrefs;

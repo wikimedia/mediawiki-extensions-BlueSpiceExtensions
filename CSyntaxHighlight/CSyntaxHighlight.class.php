@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: CSyntaxHighlight.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage CSyntaxHighlight
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -90,9 +90,6 @@ class CSyntaxHighlight extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['CSyntaxHighlight'] = dirname( __FILE__ ) . '/CSyntaxHighlight.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::OTHER;
@@ -100,8 +97,8 @@ class CSyntaxHighlight extends BsExtensionMW {
 			EXTINFO::NAME        => 'CSyntaxHighlight',
 			EXTINFO::DESCRIPTION => 'Adds customizable syntax highlighting functionality to BlueSpice. Based on SyntaxHighlighter by Alex Gorbatchev (http://alexgorbatchev.com/SyntaxHighlighter/)',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice' => '1.22.0'
@@ -117,6 +114,7 @@ class CSyntaxHighlight extends BsExtensionMW {
 	public function  initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'OutputPageBeforeHTML' );
+		$this->setHook( 'SkinAfterBottomScripts' );
 
 		// TODO RBV (12.04.11 15:47): Provide all config possibilities of SyntaxHighlighter...
 		//User variables
@@ -126,11 +124,6 @@ class CSyntaxHighlight extends BsExtensionMW {
 
 		//Admin variables
 		BsConfig::registerVar( 'MW::CSyntaxHighlight::Toolbar',   false,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-Toolbar', 'toggle' );
-
-		//Scripts
-		$this->registerScriptFiles( BsConfig::get('MW::ScriptPath').'/extensions/BlueSpiceExtensions/CSyntaxHighlight/scripts', 'shCore', false, false , true, 'MW::CSyntaxHighlight');
-		$this->registerScriptFiles( BsConfig::get('MW::ScriptPath').'/extensions/BlueSpiceExtensions/CSyntaxHighlight/scripts', 'shAutoloader', false, false , true, 'MW::CSyntaxHighlight');
-		$this->registerStyleSheet(  BsConfig::get('MW::ScriptPath').'/extensions/BlueSpiceExtensions/CSyntaxHighlight/styles/shCore.css', false, 'MW::CSyntaxHighlight' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -157,7 +150,20 @@ class CSyntaxHighlight extends BsExtensionMW {
 
 		BsExtensionManager::setContext( 'MW::CSyntaxHighlight' );
 
-		$sBrushScriptPath = BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/CSyntaxHighlight/scripts';
+		$sBrushScriptPath = BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
+
+		$sTheme = BsConfig::get('MW::CSyntaxHighlight::Theme');
+		$sStyleBlock = '<link rel="stylesheet" href="' . $sBrushScriptPath .
+				'/shTheme'. $sTheme .'.css" />';
+		$sStyleBlock .= '<link rel="stylesheet" href="' . $sBrushScriptPath .
+				'/shCore.css" />';
+
+		$this->getOutput()->addHeadItem( 'BrushTheme', $sStyleBlock );
+		return true;
+	}
+
+	public function onSkinAfterBottomScripts( $oSkin, &$bottomScriptText ) {
+		$sBrushScriptPath = BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
 
 		$aAutoloaderParams = array();
 		foreach( $this->aBrushes as $sBrushName => $aAliases ) {
@@ -166,6 +172,10 @@ class CSyntaxHighlight extends BsExtensionMW {
 		}
 
 		$aScriptBlock = array();
+		$aScriptBlock[] = '<script type="text/javascript" src="' . $sBrushScriptPath . '/shCore.js"></script>';
+		$aScriptBlock[] = '<script type="text/javascript" src="' . $sBrushScriptPath . '/shAutoloader.js"></script>';
+		$aScriptBlock[] = '<script type="text/javascript">';
+		$aScriptBlock[] = 'mw.loader.using("ext.bluespice", function(){';
 		$aScriptBlock[] = 'SyntaxHighlighter.autoloader( ';
 		$aScriptBlock[] = implode( ",\n", $aAutoloaderParams );
 		$aScriptBlock[] = ');';
@@ -173,12 +183,10 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$aScriptBlock[] = 'SyntaxHighlighter.defaults["auto-links"] = bsCSyntaxHighlightAutoLinks;';
 		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"]     = bsCSyntaxHighlightGutter;';
 		$aScriptBlock[] = 'SyntaxHighlighter.all();';
+		$aScriptBlock[] = '});';
+		$aScriptBlock[] = '</script>';
 
-		BsScriptManager::registerClientScriptBlock( $this->mExtensionKey, implode( "\n", $aScriptBlock ) );
-
-		$sTheme = BsConfig::get('MW::CSyntaxHighlight::Theme');
-		$this->registerStyleSheet(  BsConfig::get('MW::ScriptPath').'/extensions/BlueSpiceExtensions/CSyntaxHighlight/styles/shTheme'.$sTheme.'.css', false, 'MW::CSyntaxHighlight' );
-
+		$bottomScriptText .= implode( "\n", $aScriptBlock );
 		return true;
 	}
 

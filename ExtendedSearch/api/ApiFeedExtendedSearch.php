@@ -151,6 +151,6 @@ class ApiFeedExtendedSearch extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFeedExtendedSearch.php 9559 2013-06-03 14:13:46Z rvogel $';
+		return __CLASS__;
 	}
 }

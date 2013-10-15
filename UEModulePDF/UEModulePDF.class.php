@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: UEModulePDF.class.php 9825 2013-06-20 12:38:45Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -56,7 +56,7 @@ class UEModulePDF extends BsExtensionMW {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['UEModulePDF'] = dirname( __FILE__ ) . '/UEModulePDF.i18n.php';
+		//$wgExtensionMessagesFiles['UEModulePDF'] = __DIR__ . '/UEModulePDF.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -66,8 +66,8 @@ class UEModulePDF extends BsExtensionMW {
 			EXTINFO::NAME        => 'UEModulePDF',
 			EXTINFO::DESCRIPTION => 'Enables MediaWiki to export pages into PDF format.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9825 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice'       => '1.22.0',
@@ -94,15 +94,7 @@ class UEModulePDF extends BsExtensionMW {
 		$this->setHook('BSUniversalExportGetWidget');
 		$this->setHook('BSUniversalExportSpecialPageExecute');
 		$this->setHook('LoadExtensionSchemaUpdates');
-
-		//Classes
-		$sExtensionLibDir = dirname(__FILE__) . DS . 'lib';
-		BsCore::registerClass( 'BsPDFPageProvider',     $sExtensionLibDir );
-		BsCore::registerClass( 'BsPDFTemplateProvider', $sExtensionLibDir );
-		BsCore::registerClass( 'BsPDFWebService',       $sExtensionLibDir );
-		BsCore::registerClass( 'BsPDFServlet',          $sExtensionLibDir );
-		BsCore::registerClass( 'BsExportModulePDF',     $sExtensionLibDir );
-
+		$this->setHook('SkinTemplateOutputPageBeforeExec');
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -119,7 +111,7 @@ class UEModulePDF extends BsExtensionMW {
 			case 'PDFwithATTenNS':
 				$aPrefs = array(
 					'type'    => 'multiselectex',
-					'options' => BsAdapterMW::getNamespacesForSelectOptions( array( -2, NS_MEDIA, NS_MEDIAWIKI, NS_MEDIAWIKI_TALK ) )
+					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( -2, NS_MEDIA, NS_MEDIAWIKI, NS_MEDIAWIKI_TALK ) )
 				);
 
 				break;
@@ -225,6 +217,23 @@ class UEModulePDF extends BsExtensionMW {
 		}
 
 		$aModules[] = $oPdfView;
+		return true;
+	}
+	
+	public function onSkinTemplateOutputPageBeforeExec(&$skin, &$template){
+		$aCurrentQueryParams = $this->getRequest()->getValues();
+		$sSpecialPageParameter = BsCore::sanitize( $aCurrentQueryParams['title'], '', BsPARAMTYPE::STRING );
+		$oSpecialPage = SpecialPage::getTitleFor( 'UniversalExport',$sSpecialPageParameter );
+		if( isset( $aCurrentQueryParams['title'] ) ) unset( $aCurrentQueryParams['title'] );
+		$aCurrentQueryParams['ue[module]'] = 'pdf';
+		$aContentActions = array(
+			'id' => 'pdf',
+			'href' => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
+			'title' => wfMessage('bs-uemodulepdf-widgetlink-single-no-attachments-text')->plain(),
+			'text' => ''
+		);
+			
+		$template->data['bs_title_actions'][] = $aContentActions;
 		return true;
 	}
 }

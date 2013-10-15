@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: SecureFileStore.i18n.php 9656 2013-06-10 13:51:12Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage SecureFileStore
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

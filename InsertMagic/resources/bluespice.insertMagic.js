@@ -1,46 +1,46 @@
 $(document).ready(function(){
-	Ext4.Loader.setPath( 'BS.InsertMagic', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertMagic/resources/BS.InsertMagic');
+	Ext.Loader.setPath( 'BS.InsertMagic', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertMagic/resources/BS.InsertMagic');
 
-	$('#im_button').on('click', function(){
-		Ext4.require('BS.InsertMagic.Window', function(){
+	$('a#bs-editbutton-insertmagic').on('click', function(){
+		var me = this;
+		Ext.require('BS.InsertMagic.Window', function(){
 			BS.InsertMagic.Window.clearListeners();
-			BS.InsertMagic.Window.on( 'ok', BsInserMagicWikTextConnector.applyData );
+			BS.InsertMagic.Window.on( 'ok', BsInsertMagicWikiTextConnector.applyData );
 
 			BS.InsertMagic.Window.setData(
-				BsInserMagicWikTextConnector.getData()
+				BsInsertMagicWikiTextConnector.getData()
 			);
-			BS.InsertMagic.Window.show( 'im_button' );
+			BS.InsertMagic.Window.show( me );
 		});
 	});
 });
 
-$(document).bind('hwactions-init', function( event, plugin, buttons, commands ){
+$(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, commands ){
 	buttons.push({
-		buttonId: 'hwmagic',
+		buttonId: 'bsmagic',
 		buttonConfig: {
 			title : mw.message('bs-insertmagic-dlg_title').plain(),
-			cmd : 'mceHwMagic',
-			image : wgScriptPath+'/extensions/BlueSpiceExtensions/InsertMagic/resources/images/btn_insertmagic.png'
+			cmd : 'mceBsMagic'
 		}
 	});
 	commands.push({
-		commandId: 'mceHwMagic',
+		commandId: 'mceBsMagic',
 		commandCallback: function() {
-			Ext4.require('BS.InsertMagic.Window', function(){
+			Ext.require('BS.InsertMagic.Window', function(){
 				BS.InsertMagic.Window.clearListeners();
-				BsInserMagicVisualEditorConnector.caller = this;
-				BS.InsertMagic.Window.on( 'ok', BsInserMagicVisualEditorConnector.applyData );
+				BsInsertMagicVisualEditorConnector.caller = this;
+				BS.InsertMagic.Window.on( 'ok', BsInsertMagicVisualEditorConnector.applyData );
 
 				BS.InsertMagic.Window.setData(
-					BsInserMagicVisualEditorConnector.getData()
+					BsInsertMagicVisualEditorConnector.getData()
 				);
-				BS.InsertMagic.Window.show( 'im_button' );
+				BS.InsertMagic.Window.show( 'bsmagic' );
 			}, this);
 		}
 	});
 });
 
-$(document).bind('hwbehavior-_setDisabled', function( event, plugin, setValue, leaveEnabledIds, selectedNode ){
+$(document).bind('hwbehavior-_setDisabled', function( event, plugin, setValue, leaveEnabledIds ){
 	leaveEnabledIds.push( plugin.editor.editorId+'_'+'hwmagic');
 });
 
@@ -63,11 +63,10 @@ var BsInsertMagicHelper = {
 	}
 }
 
-var BsInserMagicWikTextConnector = {
+var BsInsertMagicWikiTextConnector = {
 	
 	getData: function() {
-		BsCore.saveScrollPosition();
-		var currentCode = BsCore.saveSelection();
+		var currentCode = $('#wpTextbox1').textSelection('getSelection');
 		var data = {
 			code: currentCode
 		}
@@ -75,18 +74,18 @@ var BsInserMagicWikTextConnector = {
 	},
 
 	applyData: function( sender, data ) {
-		BsCore.restoreSelection( data.code );
-		BsCore.restoreScrollPosition();
+		//TODO: not very nice. Maybe use $('#wpTextbox1').textSelection('encapsulateSelection')
+		mw.toolbar.insertTags( data.code, '', '', '' );
 	}
 }
 
-var BsInserMagicVisualEditorConnector = {
+var BsInsertMagicVisualEditorConnector = {
 	data: {},
 	getData: function() {
-		var me = BsInserMagicVisualEditorConnector;
+		var me = BsInsertMagicVisualEditorConnector;
 		var node = me.caller.selection.getNode();
 		me.selection = me.caller.selection.getBookmark();
-		me.data.id    = node.getAttribute('data-bs-id');
+		me.data.id   = node.getAttribute('data-bs-id');
 		me.data.type = node.getAttribute('data-bs-type');
 		me.data.name = node.getAttribute('data-bs-name');
 		var currentCode = '';
@@ -108,7 +107,7 @@ var BsInserMagicVisualEditorConnector = {
 	},
 	
 	applyData: function(  sender, data ) {
-		var me = BsInserMagicVisualEditorConnector;
+		var me = BsInsertMagicVisualEditorConnector;
 		me.caller.selection.moveToBookmark(me.selection);
 		var code = data.code;
 		var html = '<span id="{0}" class="mceNonEditable {1}" data-bs-name="{2}" data-bs-type="{3}" data-bs-id="{4}">{5}</span>';
@@ -165,8 +164,7 @@ var BsInserMagicVisualEditorConnector = {
 				'&lt; '+me.data.name+' &gt;'
 			);
 		}
-		//me.caller.activeEditor.dom.setOuterHTML(me.data.link, ""); //This is important for IE
-		//me.caller.dom.remove( me.caller.selection.getNode() );
+
 		me.caller.dom.remove(me.caller.selection.getNode()); // remove old node to ensure that new one is not place within
 		me.caller.execCommand('mceInsertRawHTML', false, code );
 	}

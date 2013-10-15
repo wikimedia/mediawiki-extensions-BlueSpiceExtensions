@@ -1,0 +1,9 @@
+#bs-flexiskin-config-window{
+	border-color: white;
+	border-radius: 0;
+	border-width: 0;
+	overflow: hidden;
+}
+#bs-flexiskin-config-settings{
+	border-right: 1px solid black;
+}

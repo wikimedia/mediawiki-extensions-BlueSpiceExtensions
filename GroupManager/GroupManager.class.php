@@ -24,7 +24,6 @@
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: GroupManager.class.php 9932 2013-06-25 15:46:48Z mreymann $
  * @package    Bluespice_Extensions
  * @subpackage GroupManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -44,9 +43,6 @@ class GroupManager extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['GroupManager'] = dirname( __FILE__ ) . '/GroupManager.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
@@ -54,26 +50,19 @@ class GroupManager extends BsExtensionMW {
 			EXTINFO::NAME        => 'GroupManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deletig user groups and their rights',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9932 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
 		$this->mExtensionKey = 'MW::GroupManager';
 
 		WikiAdmin::registerModule('GroupManager', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/images/bs-btn_gruppe_v1.png',
-			'level' => 'useradmin'
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_gruppe_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-groupmanager-label'
 			)
 		);
-
-		$this->registerScriptFiles( BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/GroupManager/js', 'GroupManager', false, true, false, 'MW::GroupManagerShow' );
-
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'GroupManager', $this, 'getData', 'wikiadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'GroupManager', $this, 'addGroup', 'wikiadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'GroupManager', $this, 'editGroup', 'wikiadmin' );
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler( 'GroupManager', $this, 'removeGroup', 'wikiadmin' );
-
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -82,6 +71,7 @@ class GroupManager extends BsExtensionMW {
 	 * @return string the formular code
 	 */
 	public function getForm() {
+		$this->getOutput()->addModules( 'ext.bluespice.groupManager' );
 		BsExtensionManager::setContext( 'MW::GroupManagerShow' );
 		$sForm = '<div id="bs-groupmanager-grid"></div>';
 		return $sForm;
@@ -91,52 +81,83 @@ class GroupManager extends BsExtensionMW {
 	 * returns a json object which hold the data of all existing usergroups
 	 * @param string $output the ajax output string 
 	 */
-	public function getData( &$output ) {
-		$wgGroupPermissions = $this->mAdapter->get( 'GroupPermissions' );
-		$wgAdditionalGroups = $this->mAdapter->get( 'AdditionalGroups' );
+	public static function getData() {
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
+		global $wgGroupPermissions, $wgAdditionalGroups;
 
 		$aGroups = array();
-		foreach ( $wgGroupPermissions as $sGroup => $aPermissions ) {
-			$aGroups[] = array( $sGroup, ( isset( $wgAdditionalGroups[$sGroup] ) ) );
+		foreach ( BsGroupHelper::getAvailableGroups() as $sGroup ) {
+			$aGroups['groups'][] = array(
+				'group_name' => $sGroup,
+				'additional_group' => ( isset( $wgAdditionalGroups[$sGroup] ) )
+			);
 		}
 
-		$output = json_encode($aGroups);
+		return json_encode( $aGroups );
+	}
+
+	/**
+	 * returns a json object which hold the data of all existing usergroups
+	 * @param string $output the ajax output string 
+	 */
+	public static function getGroups() {
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
+		global $wgGroupPermissions;
+
+		$aGroups = array();
+		foreach ( BsGroupHelper::getAvailableGroups() as $sGroup ) {
+			if ( in_array( $sGroup, array( '*', 'user', 'autoconfirmed', 'emailconfirmed' ) ) ) continue;
+			if ( !wfMessage( 'group-' . $sGroup )->inContentLanguage()->isBlank() ) {
+				$sDisplayName = wfMessage( 'group-' . $sGroup )->plain() . " (" . $sGroup . ")";
+			} else {
+				$sDisplayName = $sGroup;
+			}
+
+			$aGroups[] = array(
+				'group' => $sGroup,
+				'displayname' => $sDisplayName
+			);
+		}
+
+		return json_encode( array( 'groups' => $aGroups ) );
 	}
 
 	/**
 	 * adds an usergroup to the wiki
 	 * @param string $output the ajax output string 
 	 */
-	public function addGroup( &$output ) {
+	public static function addGroup( $sGroup ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			$output = json_encode( array(
+			return json_encode( array(
 				'success' => false,
-				'msg' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
+				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
 				) );
-			return;
 		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		// TODO SU (04.07.11 11:40): global sind leider hier noch nötig, da werte in den globals geändert werden müssen.
 		global $wgGroupPermissions, $wgAdditionalGroups;
 
-		$output = json_encode( array( 'success' => true ) );
-		$sGroup = BsCore::getParam( 'group', false );
+		$output = json_encode( array( 
+			'success' => true,
+			'message' => wfMessage( 'bs-groupmanager-grpadded' )->plain() )
+		);
 
-		if( array_key_exists( $sGroup, $wgAdditionalGroups ) ) {
-			$output = json_encode( array( 
-										'success' => false, 
-										'msg' => wfMsg( 'bs-groupmanager-grp_exists' ) 
-									) 
+		if ( array_key_exists( $sGroup, $wgAdditionalGroups ) ) {
+			return json_encode( array(
+					'success' => false, 
+					'msg' => wfMessage( 'bs-groupmanager-grp_exists' )->plain()
+				)
 			);
-			return;
 		}
-		if ( $sGroup ) {
-			if( isset( $wgGroupPermissions[$sGroup] ) ) {
-				return;
+
+		if ( !empty( $sGroup ) ) {
+			if ( isset( $wgGroupPermissions[$sGroup] ) ) {
+				return $output;
 			}
 			$wgAdditionalGroups[$sGroup] = true;
-			$output = json_encode( $this->saveData() );
+			return json_encode( BsExtensionManager::getExtension( 'GroupManager' )->saveData() );
 		}
 	}
 
@@ -144,36 +165,42 @@ class GroupManager extends BsExtensionMW {
 	 * changes the name of a given usergroup.
 	 * @param string $output the ajax output string 
 	 */
-	public function editGroup( &$output ) {
+	public static function editGroup( $sNewGroup, $sGroup ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			$output = json_encode( array(
+			return json_encode( array(
 				'success' => false,
-				'msg' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
+				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
 				) );
-			return;
 		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
-		// TODO SU (03.07.11 15:08): global sind leider hier noch nötig, da werte in den globals geändert werden müssen.
 		global $wgGroupPermissions, $wgAdditionalGroups, $wgNamespacePermissionLockdown;
-		// TODO SU (04.07.11 12:11): Bitte checken, ob es die Gruppe schon gibt und ggf. Fehlermeldung schicken
-		$output = json_encode( array( 'success' => true ) );
-		$sGroup = BsCore::getParam( 'group', false );
-		$sNewGroup = BsCore::getParam( 'newgroup', false );
 
-		if ( $sGroup && $sNewGroup ) {
+		$output = json_encode( array(
+				'success' => true,
+				'message' => wfMessage( 'bs-groupmanager-grpedited' )->plain()
+			)
+		);
+
+		if ( !empty( $sGroup ) && !empty( $sNewGroup ) ) {
 			if ( !isset( $wgAdditionalGroups[$sGroup] ) ) {
 				// If group is not in $wgAdditionalGroups, it's a system group and mustn't be renamed.
-				return;
+				return json_encode( array(
+						'success' => true,
+						'message' => wfMessage( 'bs-groupmanager-grpedited' )->plain()
+					)
+				);
 			}
 			// Copy the data of the old group to the group with the new name and then delete the old group
 			$wgAdditionalGroups[$sGroup] = false;
 			$wgAdditionalGroups[$sNewGroup] = true;
-			$result = $this->saveData();
-			if($result['success'] == false) {
-				$output = json_encode( $result );
-				return;
+
+			$result = BsExtensionManager::getExtension( 'GroupManager' )->saveData();
+			if ( $result['success'] === false ) {
+				return json_encode( $result );
 			}
+
 			$wgGroupPermissions[$sNewGroup] = $wgGroupPermissions[$sGroup];
 			unset( $wgGroupPermissions[$sGroup] );
 			foreach ( $wgNamespacePermissionLockdown as $iNs => $aPermissions ) {
@@ -190,33 +217,47 @@ class GroupManager extends BsExtensionMW {
 			);
 			BsExtensionManager::getExtension( 'PermissionManager' )->setData( $output );
 		}
+
+		return $output;
 	}
 
 	/**
 	 * removes a usergroup
 	 * @param string $output the ajax output string  
 	 */
-	public function removeGroup( &$output ) {
-		// TODO SU (04.07.11 11:43): global sind leider hier noch nötig, da werte in den globals geändert werden müssen.
+	public static function removeGroup( $sGroup ) {
+		if ( wfReadOnly() ) {
+			global $wgReadOnly;
+			return json_encode( array(
+				'success' => false,
+				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
+				) );
+		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 		global $wgGroupPermissions, $wgAdditionalGroups, $wgNamespacePermissionLockdown;
 
-		$output = json_encode( array( 'success' => true ) );
-		$sGroup = BsCore::getParam( 'group', false );
+		$output = json_encode( array(
+				'success' => true,
+				'message' => wfMessage( 'bs-groupmanager-grpremoved' )->plain()
+			)
+		);
+
 		if ( $sGroup ) {
-			if( !isset( $wgAdditionalGroups[$sGroup] ) ) {
-				return;
+			if ( !isset( $wgAdditionalGroups[$sGroup] ) ) {
+				return $output;
 			}
+
 			$wgAdditionalGroups[$sGroup] = false;
-			$this->saveData();
+			BsExtensionManager::getExtension( 'GroupManager' )->saveData();
 			unset( $wgGroupPermissions[$sGroup] );
+
 			foreach ( $wgNamespacePermissionLockdown as $iNS => $aPermissions ) {
 				foreach ( $aPermissions as $sPermission => $aGroups ) {
 					$iIndex = array_search( $sGroup, $aGroups );
 					if ( $iIndex !== false ) {
 						if ( count( $aGroups ) == 1 ) {
 							unset( $wgNamespacePermissionLockdown[$iNS][$sPermission] );
-						}
-						else {
+						} else {
 							array_splice( $wgNamespacePermissionLockdown[$iNS][$sPermission], $iIndex, 1 );
 						}
 					}
@@ -228,6 +269,8 @@ class GroupManager extends BsExtensionMW {
 			);
 			BsExtensionManager::getExtension( 'PermissionManager' )->setData( $output );
 		}
+
+		return $output;
 	}
 
 	/**
@@ -235,38 +278,34 @@ class GroupManager extends BsExtensionMW {
 	 * @return array the json answer 
 	 */
 	protected function saveData() {
-		$wgAdditionalGroups = $this->mAdapter->get( 'AdditionalGroups' );
+		global $wgAdditionalGroups;
 
 		$sSaveContent = "<?php\nglobal \$wgAdditionalGroups;\n\$wgAdditionalGroups = array();\n\n";
 		foreach ( $wgAdditionalGroups as $sGroup => $mValue ) {
 			$aInvalidChars = array();
 			$sGroup = trim( $sGroup );
-			if( substr_count( $sGroup, '\'' ) > 0 ) $aInvalidChars[] = '\'';
-			if( substr_count( $sGroup, '"' ) > 0 ) $aInvalidChars[] = '"';
-			if( !empty( $aInvalidChars ) ) {
+			if ( substr_count( $sGroup, '\'' ) > 0 ) $aInvalidChars[] = '\'';
+			if ( substr_count( $sGroup, '"' ) > 0 ) $aInvalidChars[] = '"';
+			if ( !empty( $aInvalidChars ) ) {
 				return array(
 					'success' => false,
-					'msg' => wfMsg( 'bs-groupmanager-invalid_name', implode( ',', $aInvalidChars ) )
+					'message' => wfMessage( 'bs-groupmanager-invalid_name', implode( ',', $aInvalidChars ) )->plain()
 				);
-			}
-			else if( preg_match( "/^[0-9]+$/", $sGroup ) ) {
+			} elseif ( preg_match( "/^[0-9]+$/", $sGroup ) ) {
 				return array(
 					'success' => false,
-					'msg' => wfMsg( 'bs-groupmanager-invalid_name_numeric' )
+					'message' => wfMessage( 'bs-groupmanager-invalid_name_numeric' )->plain()
 				);
-			}
-			else if( strlen( $sGroup ) > 16 ) {
+			} elseif ( strlen( $sGroup ) > 16 ) {
 				return array(
 					'success' => false,
-					'msg' => wfMsg( 'bs-groupmanager-invalid_name_length' )
+					'message' => wfMessage( 'bs-groupmanager-invalid_name_length' )->plain()
 				);
-			}
-			else {
+			} else {
 				if ( $mValue !== false ) {
 					$sSaveContent .= "\$wgAdditionalGroups['{$sGroup}'] = array();\n";
 					$this->checkI18N( $sGroup );
-				}
-				else {
+				} else {
 					$this->checkI18N( $sGroup, $mValue );
 				}
 			}
@@ -277,14 +316,14 @@ class GroupManager extends BsExtensionMW {
 		$res = file_put_contents( BSROOTDIR.DS.'config'.DS.'gm-settings.php', $sSaveContent );
 		if ( $res ) {
 			return array(
-				'success' => true
+				'success' => true,
+				'message' => wfMessage( 'bs-groupmanager-grpadded' )->plain()
 			);
-		}
-		else {
+		} else {
 			return array(
 				'success' => false,
 				// TODO SU (04.07.11 11:44): i18n
-				'msg' => 'Not able to create or write file "'.BSROOTDIR.DS.'config'.DS.'gm-settings.php".'
+				'message' => 'Not able to create or write file "'.BSROOTDIR.DS.'config'.DS.'gm-settings.php".'
 			);
 		}
 	}
@@ -298,12 +337,12 @@ class GroupManager extends BsExtensionMW {
 				$oArticle = new Article( $oTitle );
 				$oArticle->doDeleteArticle( 'Group does no more exist' );
 			}
-		}
-		else {
+		} else {
 			if ( !$oTitle->exists() ) {
 				$oArticle = new Article( $oTitle );
 				$oArticle->doEdit( $sGroup, '', EDIT_NEW );
 			}
 		}
 	}
+
 }

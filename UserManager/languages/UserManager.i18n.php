@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: UserManager.i18n.php 9910 2013-06-25 09:04:52Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UserManager
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -68,7 +68,7 @@ $messages['en'] = array(
 	'bs-usermanager-users-left'               => 'You can create <b>$1</b> more users',
 	'bs-usermanager-users_left'               => 'You have $1 users left',
 	'bs-usermanager-users_max'                => 'You have reached the maximum of $1 users',
-	'bs-usermanager-save_successful'          => 'changes have saved successfully',
+	'bs-usermanager-save_successful'          => 'Changes have saved successfully',
 
 	'UserManager'                             => 'User manager',
 	'prefs-UserManager'                       => 'User manager',
@@ -84,6 +84,7 @@ $messages['en'] = array(
 	//JavaScript
 	'bs-usermanager-headerUsername' => 'User name',
 	'bs-usermanager-headerRealname' => 'Real name',
+	'bs-usermanager-labelgroups' => 'Groups',
 	'bs-usermanager-headerEmail' => 'Email',
 	'bs-usermanager-headerGroups' => 'Groups',
 	'bs-usermanager-headerActions' => 'Actions',
@@ -96,7 +97,7 @@ $messages['en'] = array(
 	'bs-usermanager-titleError' => 'Error',
 	'bs-usermanager-unknownError' => 'An unknown error occurred.',
 	'bs-usermanager-titleAddUser' => 'Add user',
-	'bs-usermanager-titleEditDetails' => 'Edit details',
+	'bs-usermanager-titleEditDetails' => 'Edit user',
 	'bs-usermanager-labelUsername' => 'User name',
 	'bs-usermanager-labelRealname' => 'Real name',
 	'bs-usermanager-labelEmail' => 'Email',
@@ -109,7 +110,6 @@ $messages['en'] = array(
 	'bs-usermanager-confirmDeleteUser' => 'Are you sure, you want delete this user?',
 	'bs-usermanager-showEntries' => 'Displaying {0} - {1} of {2}',
 	'bs-usermanager-textCannotEditOwn' => 'You cannot change or delete your own account.',
-	'bs-usermanager-pageSize' => 'Page size '
 );
 
 $messages['de'] = array(
@@ -182,6 +182,7 @@ $messages['de'] = array(
 	//JavaScript
 	'bs-usermanager-headerUsername' => 'Benutzername',
 	'bs-usermanager-headerRealname' => 'Echter Name',
+	'bs-usermanager-labelgroups' => 'Gruppen',
 	'bs-usermanager-headerEmail' => 'E-Mail',
 	'bs-usermanager-headerGroups' => 'Gruppen',
 	'bs-usermanager-headerActions' => 'Aktionen',
@@ -194,7 +195,7 @@ $messages['de'] = array(
 	'bs-usermanager-titleError' => 'Fehler',
 	'bs-usermanager-unknownError' => 'Ein unbekannter Fehler ist aufgetreten.',
 	'bs-usermanager-titleAddUser' => 'Benutzer hinzufügen',
-	'bs-usermanager-titleEditDetails' => 'Details bearbeiten',
+	'bs-usermanager-titleEditDetails' => 'Benutzer bearbeiten',
 	'bs-usermanager-labelUsername' => 'Benutzername',
 	'bs-usermanager-labelRealname' => 'Echter Name',
 	'bs-usermanager-labelEmail' => 'E-Mail',
@@ -207,7 +208,6 @@ $messages['de'] = array(
 	'bs-usermanager-confirmDeleteUser' => 'Bist du sicher, dass du diesen Benutzer löschen willst?',
 	'bs-usermanager-showEntries' => 'Angezeigte Einträge {0} - {1} von {2}',
 	'bs-usermanager-textCannotEditOwn' => 'Du kannst dein eigenes Benutzerkonto nicht bearbeiten oder löschen.',
-	'bs-usermanager-pageSize ' => 'Seitengröße'
 );
 
 $messages['de-formal'] = array(

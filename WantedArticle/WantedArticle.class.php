@@ -26,7 +26,7 @@
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: WantedArticle.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage WantedArticle
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -73,15 +73,12 @@ class WantedArticle extends BsExtensionMW {
 			EXTINFO::NAME        => 'WantedArticle',
 			EXTINFO::DESCRIPTION => 'Add an article to the wanted article list.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
 		$this->mExtensionKey = 'MW::WantedArticle';
-
-		$this->registerView( 'ViewWantedArticleForm' );
-		$this->registerView( 'ViewWantedArticleTag' );
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
@@ -100,20 +97,17 @@ class WantedArticle extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BeforePageDisplay' );
 
-		$this->mAdapter->registerPermission( 'wantedarticle-suggest' );
-		$this->mAdapter->addRemoteHandler( 'WantedArticle', $this, 'ajaxAddWantedArticle', 'wantedarticle-suggest' );
-		$this->mAdapter->addRemoteHandler( 'WantedArticle', $this, 'ajaxGetWantedArticles', 'read' );
+		$this->mCore->registerPermission( 'wantedarticle-suggest' );
 
-		BsConfig::registerVar('MW::WantedArticle::DataSourceTemplateTitle', 'WantedArticles', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-wantedarticle-pref-DataSourceTemplateTitle' );
-		BsConfig::registerVar('MW::WantedArticle::IncludeLimit',            10,               BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-wantedarticle-pref-IncludeLimit', 'int' );
-		BsConfig::registerVar('MW::WantedArticle::Sort',                   'time',            BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-wantedarticle-pref-Sort', 'select' ); // 'time' | 'title'
-		BsConfig::registerVar('MW::WantedArticle::Order',                  'DESC',             BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-wantedarticle-pref-Order', 'select' ); // 'ASC' | 'DESC'
-		BsConfig::registerVar('MW::WantedArticle::DeleteExisting',          true,             BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-wantedarticle-pref-DeleteExisting', 'toggle' );
-		BsConfig::registerVar('MW::WantedArticle::DeleteOnCreation',        true,             BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-wantedarticle-pref-DeleteOnCreation', 'toggle' );
-		BsConfig::registerVar('MW::WantedArticle::ShowCreate',              true,             BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-wantedarticle-pref-ShowCreate', 'toggle' );
+		BsConfig::registerVar( 'MW::WantedArticle::DataSourceTemplateTitle', 'WantedArticles', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-wantedarticle-pref-DataSourceTemplateTitle' );
+		BsConfig::registerVar( 'MW::WantedArticle::IncludeLimit',            10,               BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-wantedarticle-pref-IncludeLimit', 'int' );
+		BsConfig::registerVar( 'MW::WantedArticle::Sort',                   'time',            BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-wantedarticle-pref-Sort', 'select' ); // 'time' | 'title'
+		BsConfig::registerVar( 'MW::WantedArticle::Order',                  'DESC',            BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-wantedarticle-pref-Order', 'select' ); // 'ASC' | 'DESC'
+		BsConfig::registerVar( 'MW::WantedArticle::DeleteExisting',          true,             BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-wantedarticle-pref-DeleteExisting', 'toggle' );
+		BsConfig::registerVar( 'MW::WantedArticle::DeleteOnCreation',        true,             BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-wantedarticle-pref-DeleteOnCreation', 'toggle' );
+		BsConfig::registerVar( 'MW::WantedArticle::ShowCreate',              true,             BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-wantedarticle-pref-ShowCreate', 'toggle' );
 
-		$aForbiddenChars = BsAdapterMW::getForbiddenCharsInArticleTitle();
-		BsConfig::registerVar( 'MW::ForbiddenCharsInArticleTitle', $aForbiddenChars, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-wantedarticle-pref-ForbiddenCharsInArticleTitle' );
+		BsConfig::registerVar( 'MW::ForbiddenCharsInArticleTitle', BsCore::getForbiddenCharsInArticleTitle(), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-wantedarticle-pref-ForbiddenCharsInArticleTitle' );
 		wfProfileOut( 'BS::WantedArticle::initExt' );
 	}
 	
@@ -139,16 +133,16 @@ class WantedArticle extends BsExtensionMW {
 			case 'MW::WantedArticle::Sort': 
 				return array(
 					'options' => array(
-						wfMsg( 'bs-wantedarticle-pref-sort-time' )  => 'time',
-						wfMsg( 'bs-wantedarticle-pref-sort-title' ) => 'title',
+						wfMessage( 'bs-wantedarticle-pref-sort-time' )->plain() => 'time',
+						wfMessage( 'bs-wantedarticle-pref-sort-title' )->plain() => 'title',
 					)
 				);
 				break;
 			case 'MW::WantedArticle::Order':
 				return array(
 					'options' => array(
-						wfMsg( 'bs-wantedarticle-pref-order-asc' )  => 'ASC',
-						wfMsg( 'bs-wantedarticle-pref-order-desc' ) => 'DESC',
+						wfMessage( 'bs-wantedarticle-pref-order-asc' )->plain() => 'ASC',
+						wfMessage( 'bs-wantedarticle-pref-order-desc' )->plain() => 'DESC',
 					)
 				);
 				break;
@@ -192,7 +186,7 @@ class WantedArticle extends BsExtensionMW {
 	 * @return ViewWidget
 	 */
 	public function onWidgetListKeyword() {
-		$sTitle = wfMsg( 'bs-wantedarticle-tag-default-title' );
+		$sTitle = wfMessage( 'bs-wantedarticle-tag-default-title' )->plain();
 		$aWishList = $this->getTitleListFromTitle( 
 			$this->getDataSourceTemplateArticle()->getTitle() 
 		);
@@ -225,7 +219,7 @@ class WantedArticle extends BsExtensionMW {
 			$aWikiCodeList[] = '*'.BsLinkProvider::makeEscapedWikiLinkForTitle( $oTitle, $sWishTitle );
 		}
 
-		$sBody = $this->mAdapter->parseWikiText( implode( "\n", $aWikiCodeList ) );
+		$sBody = $this->mCore->parseWikiText( implode( "\n", $aWikiCodeList ) );
 
 		$oWidgetView = new ViewWidget();
 		$oWidgetView
@@ -282,7 +276,7 @@ class WantedArticle extends BsExtensionMW {
 			$this->saveTitleListToTitle( 
 				$aWishList,
 				$oWantedArticleListTitle,
-				wfMsg( 'bs-wantedarticle-article-removed', $oNewTitle->getPrefixedText() )
+				wfMessage( 'bs-wantedarticle-article-removed', $oNewTitle->getPrefixedText() )->plain()
 			);
 		}
 		return true;
@@ -300,10 +294,10 @@ class WantedArticle extends BsExtensionMW {
 		if ( !( $oTitle instanceof Title ) ) return true;
 
 		if ( $oTitle->userCan( 'createpage' ) && $oTitle->userCan( 'edit' ) ) {
-			$sCreatesuggest .= '<li><a href="' . $oTitle->getLinkURL() . '" >' . wfMsg( 'bs-wantedarticle-create-page', $searchHtmlEntities ) . '</a></li>';
+			$sCreatesuggest .= '<li><a href="' . $oTitle->getLinkURL() . '" >' . wfMessage( 'bs-wantedarticle-create-page', $searchHtmlEntities )->plain() . '</a></li>';
 		}
 		if ( $oTitle->userCan( 'wantedarticle-suggest' ) ) {
-			$sCreatesuggest .= '<li><a id="bs-extendedsearch-suggest" href="#'.$searchUrlencoded.'" >'.wfMsg( 'bs-wantedarticle-suggest-page', $searchHtmlEntities ).'</a></li>';
+			$sCreatesuggest .= '<li><a id="bs-extendedsearch-suggest" href="#'.$searchUrlencoded.'" >'.wfMessage( 'bs-wantedarticle-suggest-page', $searchHtmlEntities )->plain().'</a></li>';
 		}
 
 		return true;
@@ -328,7 +322,7 @@ class WantedArticle extends BsExtensionMW {
 				$oItemCreate        = new stdClass();
 				$oItemCreate->id    = ++$iID;
 				$oItemCreate->value = $sSearchString;
-				$oItemCreate->label = wfMsg( 'bs-wantedarticle-create-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' ) . '';
+				$oItemCreate->label = wfMessage( 'bs-wantedarticle-create-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' )->plain() . '';
 				$oItemCreate->type  = '';
 				$oItemCreate->link  = $oTitle->getFullURL();
 				$oItemCreate->attr  = 'bs-extendedsearch-ac-noresults';
@@ -339,7 +333,7 @@ class WantedArticle extends BsExtensionMW {
 				$oItemSuggest = new stdClass();
 				$oItemSuggest->id = ++$iID;
 				$oItemSuggest->value = $sSearchString;
-				$oItemSuggest->label = wfMsg( 'bs-wantedarticle-suggest-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' ) . '';
+				$oItemSuggest->label = wfMessage( 'bs-wantedarticle-suggest-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' )->plain() . '';
 				$oItemSuggest->type = '';
 				$oItemSuggest->link = '#' . $sSearchString;
 				$oItemSuggest->attr = 'bs-extendedsearch-suggest';
@@ -395,7 +389,7 @@ class WantedArticle extends BsExtensionMW {
 		$oParser->disableCache();
 		$oErrorListView = new ViewTagErrorList( $this );
 
-		$sDefaultTitle = wfMsg( 'bs-wantedarticle-tag-default-title' );
+		$sDefaultTitle = wfMessage( 'bs-wantedarticle-tag-default-title' )->plain();
 		
 		$iCount = BsCore::sanitizeArrayEntry( $aAttributes, 'count', 5,              BsPARAMTYPE::INT );
 		$sSort  = BsCore::sanitizeArrayEntry( $aAttributes, 'sort',  'time',         BsPARAMTYPE::STRING );
@@ -410,11 +404,11 @@ class WantedArticle extends BsExtensionMW {
 		}
 
 		if ( !in_array( $sSort, array( '', 'time', 'title' ) ) ) {
-			$oErrorListView->addItem( new ViewTagError( 'sort: '.wfMsg( 'bs-wantedarticle-sort-value-unknown' ) ) );
+			$oErrorListView->addItem( new ViewTagError( 'sort: '.wfMessage( 'bs-wantedarticle-sort-value-unknown' )->plain() ) );
 		}
 
 		if ( !in_array( $sOrder, array( '', 'ASC', 'DESC' ) ) ) {
-			$oErrorListView->addItem( new ViewTagError( 'order: '.wfMsg( 'bs-wantedarticle-order-value-unknown' ) ) );
+			$oErrorListView->addItem( new ViewTagError( 'order: '.wfMessage( 'bs-wantedarticle-order-value-unknown' )->plain() ) );
 		}
 
 		if ( $oErrorListView->hasItems() ) {
@@ -470,56 +464,54 @@ class WantedArticle extends BsExtensionMW {
 	 * @param string $sOut The server response string.
 	 * @return bool true on correct processing. JSON answer is in $sOut parameter.
 	 */
-	public function ajaxAddWantedArticle( &$sOut ) {
-		// Get request data
-		$sSuggestedArticleWikiLink = BsCore::getParam( 'suggestion', '' );
+	public static function ajaxAddWantedArticle( $sSuggestedArticleWikiLink ) {
+		if ( BsCore::checkAccessAdmission( 'wantedarticle-suggest' ) === false )
+				return json_encode( array( 'success' => false, 'message' => wfMessage( 'bs-permissionerror' )->plain() ) );
+
 		if ( empty( $sSuggestedArticleWikiLink ) ) {
-			$sErrorMsg = wfMsg( 'bs-wantedarticle-ajax-error-no-parameter' );
-			$sOut = json_encode( array( 'success' => false, 'message' => $sErrorMsg ) ); // TODO RBV (01.07.11 09:07): XHRRequest object.
-			return true;
+			$sErrorMsg = wfMessage( 'bs-wantedarticle-ajax-error-no-parameter' )->plain();
+			return json_encode( array( 'success' => false, 'message' => $sErrorMsg ) ); // TODO RBV (01.07.11 09:07): XHRRequest object.
 		}
 
 		//Check suggestion for invalid characters (clientside validation is not enough)
 		$aFoundChars = array();
-		foreach ( BsAdapterMW::getForbiddenCharsInArticleTitle() as $sChar ) {
+		foreach ( BsCore::getForbiddenCharsInArticleTitle() as $sChar ) {
 			if ( strpos( $sSuggestedArticleWikiLink, $sChar ) ) {
 				$aFoundChars[] = '"'.$sChar.'"';
 			}
 		}
 
 		if ( count( $aFoundChars ) > 0 ) {
-			$sErrorMsg  = wfMsg( 'bs-wantedarticle-ajax-error-invalid-chars' );
+			$sErrorMsg  = wfMessage( 'bs-wantedarticle-ajax-error-invalid-chars' )->plain();
 			$sErrorMsg .= implode( ', ', $aFoundChars );
-			$sOut = json_encode( array('success' => false, 'message' => $sErrorMsg ) );
-			return true;
+			return json_encode( array('success' => false, 'message' => $sErrorMsg ) );
 		}
 
 		//Check if suggested page already exists
 		$oSuggestedTitle = Title::newFromText( $sSuggestedArticleWikiLink );
 		if ( $oSuggestedTitle->exists() ) {
-			$sErrorMsg = wfMsg(
+			$sErrorMsg = wfMessage(
 				'bs-wantedarticle-ajax-error-suggested-article-already-exists',
 				$oSuggestedTitle->getPrefixedText()
-			);
-			$sOut = json_encode(  array('success' => false, 'message' => $sErrorMsg ) );
-			return true;
+			)->plain();
+			return json_encode(  array('success' => false, 'message' => $sErrorMsg ) );
 		}
 
-		$oDataSourceArticle = $this->getDataSourceTemplateArticle();
-		$aWishList = $this->getTitleListFromTitle( $oDataSourceArticle->getTitle() );
+		$oWantedArticle = BsExtensionManager::getExtension( 'WantedArticle' );
+		$oDataSourceArticle = $oWantedArticle->getDataSourceTemplateArticle();
+		$aWishList = $oWantedArticle->getTitleListFromTitle( $oDataSourceArticle->getTitle() );
 
 		$bDeleteExisting = BsConfig::get( 'MW::WantedArticle::DeleteExisting' );
 
-		foreach( $aWishList as $key => $aWish ) {
-			if( $oSuggestedTitle->equals( $aWish['title'] ) ){
-				$sErrorMsg = wfMsg(
+		foreach ( $aWishList as $key => $aWish ) {
+			if ( $oSuggestedTitle->equals( $aWish['title'] ) ){
+				$sErrorMsg = wfMessage(
 					'bs-wantedarticle-ajax-error-suggested-article-already-on-list',
 					$oSuggestedTitle->getPrefixedText()
-				);
-				$sOut = json_encode( array('success' => true, 'message' => $sErrorMsg ) );
-				return true;
+				)->plain();
+				return json_encode( array('success' => true, 'message' => $sErrorMsg ) );
 			}
-			if( $bDeleteExisting && $aWish['title']->exists() === true ){
+			if ( $bDeleteExisting && $aWish['title']->exists() === true ){
 				unset($aWishList[$key]);
 				continue;
 			}
@@ -533,19 +525,18 @@ class WantedArticle extends BsExtensionMW {
 		);
 
 		// Write new content
-		$oEditStatus = $this->saveTitleListToTitle(
+		$oEditStatus = $oWantedArticle->saveTitleListToTitle(
 			$aWishList,
 			$oDataSourceArticle->getTitle(),
-			wfMsg( 'bs-wantedarticle-edit-comment-suggestion-added', $oSuggestedTitle->getPrefixedText() )
+			wfMessage( 'bs-wantedarticle-edit-comment-suggestion-added', $oSuggestedTitle->getPrefixedText() )->plain()
 		);
 
 		if ( $oEditStatus->isGood() ) {
-			$sOut = json_encode(  array('success' => true, 'message' => wfMsg( 'bs-wantedarticle-success-suggestion-entered' )) );
+			return json_encode(  array( 'success' => true, 'message' => wfMessage( 'bs-wantedarticle-success-suggestion-entered' )->plain() ) );
 		} else {
-			$sErrorMsg = $this->mAdapter->parseWikiText( $oEditStatus->getWikiText() );
-			$sOut = json_encode(  array('success' => false, 'message' => $sErrorMsg) );
+			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText() );
+			return json_encode(  array( 'success' => false, 'message' => $sErrorMsg ) );
 		}
-		return true;
 	}
 
 	/**
@@ -553,20 +544,15 @@ class WantedArticle extends BsExtensionMW {
 	 * @param string $sOut The server response string.
 	 * @return bool true on correct processing. JSON answer is in $sOut parameter.
 	 */
-	public function ajaxGetWantedArticles( &$sOut ) {
+	public static function ajaxGetWantedArticles( $iCount, $sSort, $sOrder, $sType, $sTitle ) {
+		if ( BsCore::checkAccessAdmission( 'read' ) === false ) return true;
 		$aResult = array(
-			'success' => false, 
+			'success' => false,
 			'view' => '', 
 			'message' => ''
 		);
 
-		$sDefaultTitle = wfMsg( 'bs-wantedarticle-tag-default-title' );
-
-		$iCount = BsCore::getParam('count', 5,              BsPARAM::REQUEST | BsPARAMTYPE::INT );
-		$sSort  = BsCore::getParam('sort',  'time',         BsPARAM::REQUEST | BsPARAMTYPE::STRING );
-		$sOrder = BsCore::getParam('order', 'DESC',          BsPARAM::REQUEST | BsPARAMTYPE::STRING );
-		$sType  = BsCore::getParam('type',  'list',         BsPARAM::REQUEST | BsPARAMTYPE::STRING );
-		$sTitle = BsCore::getParam('title', $sDefaultTitle, BsPARAM::REQUEST | BsPARAMTYPE::STRING );
+		$sDefaultTitle = wfMessage( 'bs-wantedarticle-tag-default-title' )->plain();
 
 		//Validation
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30) );
@@ -580,20 +566,21 @@ class WantedArticle extends BsExtensionMW {
 			return false;
 		}
 
+		$oWantedArticle = BsExtensionManager::getExtension( 'WantedArticle' );
 		//Create list
-		$aWishList = $this->getTitleListFromTitle(
-			$this->getDataSourceTemplateArticle()->getTitle()
+		$aWishList = $oWantedArticle->getTitleListFromTitle(
+			$oWantedArticle->getDataSourceTemplateArticle()->getTitle()
 		);
 
 		switch( $sSort ) {
 			case 'title':
-				$aTitleList = $this->sortWishListByTitle( $aWishList );
+				$aTitleList = $oWantedArticle->sortWishListByTitle( $aWishList );
 				break;
 			case 'time':
 			default:
-				$aTitleList = $this->getDefaultTitleList( $aWishList );
+				$aTitleList = $oWantedArticle->getDefaultTitleList( $aWishList );
 		}
-		if( $sOrder == 'ASC' ) {
+		if ( $sOrder == 'ASC' ) {
 			$aTitleList = array_reverse( $aTitleList );
 		}
 
@@ -610,8 +597,7 @@ class WantedArticle extends BsExtensionMW {
 		$aResult['success'] = true;
 		$aResult['view'] = $oWishListView->execute();
 
-		$sOut = json_encode( $aResult );
-		return true;
+		return json_encode( $aResult );
 	}
 
 	/**
@@ -620,15 +606,7 @@ class WantedArticle extends BsExtensionMW {
 	 * @return array An Array of Title objects
 	 */
 	public function getTitleListFromTitle( $oTitle ) {
-		global $wgVersion;
-		$oArticle = new Article( $oTitle, 0 );
-		// 1.20.99 is needed because mediawiki forgot to remove "rc5" from the first 1.21.0 release
-		// and this breakes the comparision
-		if ( version_compare( $wgVersion, '1.20.99', '<' ) ) {
-			$oArticleContent = $oArticle->fetchContent( 0 ); //TODO: newer Versions (>1.17) may not allow the parameter $oldid
-		} else {
-			$oArticleContent = $oArticle->getContent();
-		}
+		$oArticleContent = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 
 		$aTitleList = array();
 		$aLines = explode( "\n", $oArticleContent );

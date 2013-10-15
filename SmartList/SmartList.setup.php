@@ -1,5 +1,10 @@
 <?php
 
-BsExtensionManager::registerExtension('SmartList',                       BsRUNLEVEL::FULL);
+BsExtensionManager::registerExtension('SmartList', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['SmartList'] = dirname( __FILE__ ) . '/SmartList.i18n.php';
+$wgExtensionMessagesFiles['SmartList'] = __DIR__ . '/SmartList.i18n.php';
+
+$wgAjaxExportList[] = 'SmartList::getMostVisitedPages';
+$wgAjaxExportList[] = 'SmartList::getMostEditedPages';
+$wgAjaxExportList[] = 'SmartList::getMostActivePortlet';
+$wgAjaxExportList[] = 'SmartList::getYourEditsPortlet';

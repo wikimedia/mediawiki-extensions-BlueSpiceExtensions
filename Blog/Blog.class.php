@@ -24,7 +24,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
  * @version    1.22.0 stable
- * @version    $Id: Blog.class.php 9752 2013-06-14 14:02:26Z tweichart $
+
  * @package    BlueSpice_Extensions
  * @subpackage Blog
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -63,19 +63,6 @@
 
 // Last Code Review RBV (30.06.2011)
 
-// TODO: Wir brauchen eine Namespace-Range für BlueSpice. Ich würde sagen, 100-199
-if ( !defined( 'NS_BLOG' ) ) {
-	define( 'NS_BLOG', 102 );
-	global $wgExtraNamespaces;
-	$wgExtraNamespaces[102] = 'Blog';
-}
-
-if ( !defined( 'NS_BLOG_TALK' ) ) {
-	define( 'NS_BLOG_TALK', 103 );
-	global $wgExtraNamespaces;
-	$wgExtraNamespaces[103] = 'Blog_talk';
-}
-
 /**
  * Base class for page template extension
  * @package BlueSpice_Extensions
@@ -88,9 +75,6 @@ class Blog extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['Blog'] = dirname( __FILE__ ) . '/Blog.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::VARIABLE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
@@ -98,15 +82,12 @@ class Blog extends BsExtensionMW {
 			EXTINFO::NAME        => 'Blog',
 			EXTINFO::DESCRIPTION => 'Display a blog style list of pages.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9752 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
 		);
 		$this->mExtensionKey = 'MW::Blog';
-
-		$this->registerView( 'ViewBlog' );
-		$this->registerView( 'ViewBlogItem' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -122,7 +103,7 @@ class Blog extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		$this->setHook( 'BSNamespaceManagerBeforeSetUsernamespaces', 'onBSNamespaceManagerBeforeSetUsernamespaces');
 		$this->setHook( 'BSRSSFeederGetRegisteredFeeds' );
-		$this->setHook('BeforePageDisplay');
+		$this->setHook( 'BeforePageDisplay' );
 
 		// Trackback is not fully functional in MW and thus disabled.
 		BsConfig::registerVar('MW::Blog::ShowTrackback',	false,		BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTrackback');
@@ -155,18 +136,19 @@ class Blog extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-ImageRenderMode', 'select' );
 		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTagFormWhenNotLoggedIn', 'toggle');
 
+		global $wgServer, $wgScriptPath;
 		//Register Application for ApplicationBar in BlueSpice-Skin
-		$arRegisteredApplications = BsConfig::get('Core::Applications');
+		$arRegisteredApplications = BsConfig::get( 'MW::Applications' );
 		$arRegisteredApplications[] = array(
 			'name'         => 'Blog',
 			'displaytitle' => 'Blog',
-			'url'          =>  $this->mAdapter->get( 'Server' ).$this->mAdapter->get( 'ScriptPath' ).'/index.php?action=blog'
+			'url'          => $wgServer.$wgScriptPath.'/index.php?action=blog'
 		);
-		BsConfig::set( 'Core::Applications', $arRegisteredApplications );
+		BsConfig::set( 'MW::Applications', $arRegisteredApplications );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	
+
 	/**
 	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
 	 * @param OutputPage $oOutputPage
@@ -174,7 +156,7 @@ class Blog extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		$oOutputPage->addModules('ext.bluespice.blog');
+		$oOutputPage->addModules( 'ext.bluespice.blog' );
 
 		return true;
 	}
@@ -190,33 +172,32 @@ class Blog extends BsExtensionMW {
 		switch ( $oVariable->getName() ) {
 			case 'ImageRenderMode' :
 				$aPrefs = array( 
-						'options' => array( 
-								'thumb' => 'thumb', 
-								'full'  => 'full',
-								'none'  => 'none'	
-						)
+					'options' => array( 
+						'thumb' => 'thumb', 
+						'full'  => 'full',
+						'none'  => 'none'	
+					)
 				);
 				break;
 			case 'NewEntryFieldPosition' :
 				$aPrefs = array( 
-						'options' => array( 
-								'top' => 'top', 
-								'bottom' => 'bottom'
-						) 
+					'options' => array( 
+						'top' => 'top', 
+						'bottom' => 'bottom'
+					)
 				);
 				break;
 			case 'SortBy' :
 				$aPrefs = array( 
-						'options' => array( 
-								'creation' => 'creation', 
-								'title' => 'title' 
-						)
+					'options' => array( 
+						'creation' => 'creation', 
+						'title' => 'title' 
+					)
 				);
 				break;
 		}
 		return $aPrefs;
 	}
-	
 
 	public function onBSNamespaceManagerBeforeSetUsernamespaces( $classInstance, &$bsSystemNamespaces ) {
 		$bsSystemNamespaces[102] = 'NS_BLOG';
@@ -231,16 +212,13 @@ class Blog extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always false in order to prevent any content actions to be implemented. 
 	 */
 	public function onSkinTemplateContentActions( &$content_actions ) {
-		$sAction = BsCore::getParam( 'action', '' );
-		if ( ( $sAction != 'blog' )
-			//	&& !in_array( $this->mAdapter->get('Title')->getNamespace(), array( NS_BLOG, NS_BLOG_TALK ) ) 
-			) {
+		$sAction = $this->getRequest()->getVal( 'action', '' );
+		if ( ( $sAction != 'blog' ) ) {
 			return true;
-		}
-		if ($sAction == 'blog') {
+		} else {
 			$content_actions = array();
 		}
-		BsConfig::set( 'Core::ApplicationContext', 'Blog' );
+		BsConfig::set( 'MW::ApplicationContext', 'Blog' );
 		return false;
 	}
 
@@ -300,9 +278,9 @@ class Blog extends BsExtensionMW {
 		if ( $action != 'blog' ) return true;
 
 		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
-		BsConfig::set( 'Core::ApplicationContext', 'Blog' );
+		BsConfig::set( 'MW::ApplicationContext', 'Blog' );
 
-		$oMwOut = $this->mAdapter->get( 'Out' );
+		$oMwOut = $this->getOutput();
 		$oMwOut->setPageTitle( 'Blog' ); // set page content
 		$oMwOut->addHTML( $this->onBlog( '', array(), null ) );
 
@@ -316,10 +294,11 @@ class Blog extends BsExtensionMW {
 	 * @return bool true to allow other hooked methods to be executed.
 	 */
 	public function onEditFormPreloadText( &$sText, &$oTitle ) {
-		$sBlogCat = BsCore::getParam( 'blogcat', false, BsPARAM::REQUEST|BsPARAMTYPE::STRING|BsPARAMOPTION::DEFAULT_ON_ERROR );
+		$sBlogCat =  $this->getRequest()->getVal( 'blogcat', '' );
 		if ( $sBlogCat ) {
-			$sText = wfMsg( 'bs-blog-preload-cat', $sBlogCat );
+			$sText = wfMessage( 'bs-blog-preload-cat', $sBlogCat )->plain();
 		}
+
 		return true;
 	}
 
@@ -336,8 +315,7 @@ class Blog extends BsExtensionMW {
 			$oTitle = $parser->getTitle();
 			$parser->disableCache();
 		} else {
-			global $wgTitle;
-			$oTitle = $wgTitle;
+			$oTitle = $this->getTitle();
 		}
 		// initialize local variables
 		$sOut = '';
@@ -367,7 +345,7 @@ class Blog extends BsExtensionMW {
 		// get tag attributes
 		$argsIShowLimit              = BsCore::sanitizeArrayEntry( $args, 'count', $iShowLimit, BsPARAMTYPE::NUMERIC|BsPARAMOPTION::DEFAULT_ON_ERROR );
 		$argsSCategory               = BsCore::sanitizeArrayEntry( $args, 'cat',   false,          BsPARAMTYPE::STRING );
-		$argsINamespace              = BsAdapterMW::getNamespaceIndex( BsCore::sanitizeArrayEntry( $args, 'ns',   $iNamespace, BsPARAMTYPE::STRING ));
+		$argsINamespace              = BsNamespaceHelper::getNamespaceIndex( BsCore::sanitizeArrayEntry( $args, 'ns',   $iNamespace, BsPARAMTYPE::STRING ));
 		$argsBNewEntryField          = BsCore::sanitizeArrayEntry( $args, 'newentryfield',         $bShowNewEntryField,     BsPARAMTYPE::BOOL );
 		$argsSNewEntryFieldPosition  = BsCore::sanitizeArrayEntry( $args, 'newentryfieldposition', $bNewEntryFieldPosition, BsPARAMTYPE::STRING );
 		$argsSImageRenderMode        = BsCore::sanitizeArrayEntry( $args, 'imagerendermode',       $sImageRenderMode,       BsPARAMTYPE::STRING );
@@ -381,8 +359,7 @@ class Blog extends BsExtensionMW {
 		if( $argsModeNamespace === 'ns' && is_object( $oTitle ) ) {
 			$argsINamespace = $oTitle->getNamespace();
 		}
-		
-		
+
 		// validate tag attributes
 		$validateIShowLimit = BsValidator::isValid( 'ArgCount', $argsIShowLimit, array('fullResponse' => true) );
 		if ( $validateIShowLimit->getErrorCode() ) {
@@ -417,19 +394,19 @@ class Blog extends BsExtensionMW {
 				$argsBNewEntryField = false;
 			}
 		}
-		
+
 		// get array of article ids from Blog/subpages
 		$oBlogTitle = Title::makeTitleSafe( $oTitle->getNamespace(), 'Blog' );
 
 		$aSubpages = $oBlogTitle->getSubpages();
 		$iLimit = 0; // for later use
-		
+
 		$aArticleIds = array();
 		foreach( $aSubpages as $oSubpage ) {
 			$aArticleIds[] = $oSubpage->getArticleID();
 			$iLimit++;  // for later use
 		}
-		
+
 		if( count( $aArticleIds ) < 1 ) {
 			$aArticleIds = 0;
 		}
@@ -455,7 +432,7 @@ class Blog extends BsExtensionMW {
 			$aConditions[] = 'cl_from = page_id';
 		} else {
 			$sFiels = 'page_id AS entry_page_id';
-			if( $argsModeNamespace === 'ns' ) {
+			if ( $argsModeNamespace === 'ns' ) {
 				$aConditions['page_id'] = $aArticleIds;
 			}
 			$aConditions['page_namespace'] = $argsINamespace;
@@ -472,7 +449,7 @@ class Blog extends BsExtensionMW {
 		$iNumberOfEntries = $dbr->numRows( $res );
 		$iLimit = $iNumberOfEntries; //All
 		// Sole importance is the existence of param 'showall'
-		$paramBShowAll = BsCore::getParam( 'showall', false, BsPARAM::GET|BsPARAMTYPE::BOOL );
+		$paramBShowAll = $this->getRequest()->getFuzzyBool( 'showall', false );
 		if ( $paramBShowAll == false ) $iLimit = $argsIShowLimit;
 
 		// abort if there are no entries
@@ -483,11 +460,11 @@ class Blog extends BsExtensionMW {
 			if ( $argsSCategory ) {
 				$oBlogView->setOption( 'blogcat', $argsSCategory );
 			} else {
-				$oBlogView->setOption( 'namespace', BsAdapterMW::getNamespaceName( $argsINamespace ) );
+				$oBlogView->setOption( 'namespace', BsNamespaceHelper::getNamespaceName( $argsINamespace ) );
 			}
 			// actually create blog output
 			$sOut = $oBlogView->execute();
-			$sOut .= wfMsg( 'bs-blog-no-entries' );
+			$sOut .= wfMessage( 'bs-blog-no-entries' )->plain();
 			return $sOut;
 		}
 
@@ -508,7 +485,7 @@ class Blog extends BsExtensionMW {
 			// Prevent recursive rendering of blog tag
 			$aContent = preg_replace( '/<(bs:)blog[^>]*?>/', '', $aContent );
 			// Thumbnail images
-			$sNamespaceRegEx = implode( '|', BsAdapterMW::getNamespaceNamesAndAliases( NS_IMAGE ) );
+			$sNamespaceRegEx = implode( '|', BsNamespaceHelper::getNamespaceNamesAndAliases( NS_IMAGE ) );
 			switch ( $argsSImageRenderMode ) {
 				case 'none':
 					$aContent = preg_replace( '/(\[\[('.$sNamespaceRegEx.'):[^\|\]]*)(\|)?(.*?)(\]\])/', '', $aContent );
@@ -565,16 +542,16 @@ class Blog extends BsExtensionMW {
 			$oBlogItemView->setTrackbackUrl( $oTitle->getFullURL() );
 
 			if ( $bShowInfo ) {
-				global $wgLang;
 				$oFirstRevision = $oTitle->getFirstRevision();
 				$sTimestamp = $oFirstRevision->getTimestamp();
 				$sLocalDateTimeString = BsFormatConverter::timestampToAgeString( wfTimestamp( TS_UNIX,$sTimestamp ) );
 				$oBlogItemView->setEntryDate( $sLocalDateTimeString );
 				$iUserId = $oFirstRevision->getUser();
+
 				if ( $iUserId != 0 ) {
 					$oAuthorUser = User::newFromId( $iUserId );
 					$oBlogItemView->setAuthorPage( $oAuthorUser->getUserPage()->getFullText() );
-					$oBlogItemView->setAuthorName( BsAdapterMW::getUserDisplayName( $oAuthorUser ) );
+					$oBlogItemView->setAuthorName( $this->mCore->getUserDisplayName( $oAuthorUser ) );
 				} else {
 					$oBlogItemView->setAuthorName( $oFirstRevision->getUserText() );
 				}
@@ -593,9 +570,9 @@ class Blog extends BsExtensionMW {
 		}
 		$oBlogView->setOption( 'shownewentryfield', $argsBNewEntryField );
 		$oBlogView->setOption( 'newentryfieldposition', $argsSNewEntryFieldPosition );
-		$oBlogView->setOption( 'namespace', BsAdapterMW::getNamespaceName( $argsINamespace, false ) );
+		$oBlogView->setOption( 'namespace', BsNamespaceHelper::getNamespaceName( $argsINamespace, false ) );
 		$oBlogView->setOption( 'blogcat', $argsSCategory );
-		if( $argsModeNamespace === 'ns' ) {
+		if ( $argsModeNamespace === 'ns' ) {
 			$oBlogView->setOption( 'parentpage', 'Blog/' );
 		}
 
@@ -603,11 +580,11 @@ class Blog extends BsExtensionMW {
 		$sOut = $oBlogView->execute();
 		return $sOut;
 	}
-	
+
 	public function onBSRSSFeederGetRegisteredFeeds( $aFeeds ) {
 		RSSFeeder::registerFeed('blog',
-			wfMsg( 'bs-blog-Blog' ),
-			wfMsg( 'bs-blog-extension-description' ),
+			wfMessage( 'bs-blog-Blog' )->plain(),
+			wfMessage( 'bs-blog-extension-description' )->plain(),
 			$this,
 			'buildRssNsBlog',
 			null,
@@ -615,21 +592,18 @@ class Blog extends BsExtensionMW {
 		);
 		return true;
 	}
-	
-	public function buildRssNsBlog() {
-		global $wgSitename, $wgRequest;
-		$wgContLang = $this->mAdapter->get('ContLang');
-		$sTitle = BsCore::getParam('p', NULL, BsPARAMTYPE::SQL_STRING|BsPARAM::REQUEST);
-		$iNSid   = $wgRequest->getInt( 'ns', 0 );
-		if( $wgContLang instanceof Language ) {}
-		$aNamespaces = $wgContLang->getNamespaces();
-		//$aNamespaces = array();
 
-		
+	public function buildRssNsBlog() {
+		global $wgSitename, $wgContLang;
+
+		$oRequest = $this->getRequest();
+		$sTitle = $oRequest->getVal( 'p', '' );
+		$iNSid = $oRequest->getInt( 'ns', 0 );
+		$aNamespaces = $wgContLang->getNamespaces();
+
 		if( $iNSid != 0 ) {
 			$sPageName = $aNamespaces[$iNSid].':'.$sTitle;
-		}
-		else {
+		} else {
 			$sPageName = $sTitle;
 		}
 
@@ -650,49 +624,48 @@ class Blog extends BsExtensionMW {
 		);
 
 		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_page' ) );
-		
+
 		$oTitle = Title::makeTitle( $iNSid , 'Blog' );
 		$aSubpages = $oTitle->getSubpages();
-		
+
 		foreach( $aSubpages as $oSubpage ) {
-			$oArticle = new Article( $oSubpage );
 //			$oPageCP = new BsPageContentProvider(); 
 			if( $oSubpage instanceof Title ) {}
 			$entry = RSSItemCreator::createItem(
 				$oSubpage->getText(),
 				$oSubpage->getFullURL(),
-				$oArticle->fetchContent()	
+				BsPageContentProvider::getInstance()->getContentFromTitle( $oSubpage )
 //				$oPageCP->getHTMLContentFor( $oSubpage )
 			);
-			$entry->setPubDate(wfTimestamp(TS_UNIX, $oSubpage->getTouched()));
+			$entry->setPubDate( wfTimestamp( TS_UNIX, $oSubpage->getTouched() ) );
 			$oChannel->addItem($entry);
 		}
 		return $oChannel->buildOutput();
 	}
-	
+
 	// TODO: make RSSStandards methods more generic
 	public function buildLinksNs() {
-		global $wgUser;
+		$oUser = $this->getUser();
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMsg( 'bs-blog-Blog' ) );
+		$set->setLabel( wfMessage( 'bs-blog-Blog' )->plain() );
 
 		$select = new ViewFormElementSelectbox();
-		$select->setId('selFeedNsBlog');
-		$select->setName('selFeedNsBlog');
-		$select->setLabel( wfMsg( 'bs-rssstandards-field_title_ns' ) );
+		$select->setId( 'selFeedNsBlog' );
+		$select->setName( 'selFeedNsBlog' );
+		$select->setLabel( wfMessage( 'bs-rssfeeder-field_title_ns' )->plain() );
 
-		$aNamespacesTemp = BsAdapterMW::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA, NS_BLOG, NS_BLOG_TALK, NS_FILE ) );
+		$aNamespacesTemp = BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA, NS_BLOG, NS_BLOG_TALK, NS_FILE ) );
 		$aNamespaces = array();
 		foreach( $aNamespacesTemp as $index => $name ) {
-			if( $index % 2 == 0 ) {
+			if ( $index % 2 == 0 ) {
 				$aNamespaces[$index] = $name;
 			}
 		}
-		
+
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
-		$sUserName   = $wgUser->getName();
-		$sUserToken  = $wgUser->getToken();
-		
+		$sUserName   = $oUser->getName();
+		$sUserToken  = $oUser->getToken();
+
 		foreach( $aNamespaces as $key => $name ) {
 			$select->addData(
 				array(
@@ -710,13 +683,14 @@ class Blog extends BsExtensionMW {
 		}
 
 		$btn = new ViewFormElementButton();
-		$btn->setId('btnFeedNsBlog');
-		$btn->setName('btnFeedNsBlog');
-		$btn->setType('button');
-		$btn->setLabel( wfMsg( 'bs-rssstandards-submit_title' ) );
+		$btn->setId( 'btnFeedNsBlog' );
+		$btn->setName( 'btnFeedNsBlog' );
+		$btn->setType( 'button' );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
 
-		$set->addItem($select);
-		$set->addItem($btn);
+		$set->addItem( $select );
+		$set->addItem( $btn );
+
 		return $set;
 	}
 

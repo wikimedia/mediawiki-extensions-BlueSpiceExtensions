@@ -20,6 +20,12 @@ $wgResourceModules['ext.bluespice.extendedsearch'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
+$wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
+$wgAjaxExportList[] = 'ExtendedSearch::getAutocompleteData';
+$wgAjaxExportList[] = 'ExtendedSearch::getRecentSearchTerms';
+
+$wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
+
 $sDir = __DIR__;
 
 $wgAPIModules['feedextendedsearch'] = 'ApiFeedExtendedSearch';
@@ -35,6 +41,7 @@ $wgAutoloadClasses['AbstractBuildIndexFile'] = $sDir . '/includes/BuildIndex/Abs
 $wgAutoloadClasses['AbstractBuildIndexLinked'] = $sDir . '/includes/BuildIndex/AbstractBuildIndexLinked.class.php';
 $wgAutoloadClasses['BuildIndexMainControl'] = $sDir . '/includes/BuildIndex/BuildIndexMainControl.class.php';
 $wgAutoloadClasses['BuildIndexMwArticles'] = $sDir . '/includes/BuildIndex/BuildIndexMwArticles.class.php';
+$wgAutoloadClasses['BuildIndexMwSpecial'] = $sDir . '/includes/BuildIndex/BuildIndexMwSpecial.class.php';
 $wgAutoloadClasses['BuildIndexMwRepository'] = $sDir . '/includes/BuildIndex/BuildIndexMwRepository.class.php';
 $wgAutoloadClasses['BuildIndexMwExternalRepository'] = $sDir . '/includes/BuildIndex/BuildIndexMwExternalRepository.class.php';
 $wgAutoloadClasses['BuildIndexMwSingleFile'] = $sDir . '/includes/BuildIndex/BuildIndexMwSingleFile.class.php';

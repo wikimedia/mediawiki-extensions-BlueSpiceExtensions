@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    1.22.0
- * @version    $Id: WatchList.class.php 9745 2013-06-14 12:09:29Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage WatchList
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -56,7 +56,7 @@ class WatchList extends BsExtensionMW {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['WatchList'] = dirname( __FILE__ ) . '/WatchList.i18n.php';
+		//$wgExtensionMessagesFiles['WatchList'] = __DIR__ . '/WatchList.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -65,8 +65,8 @@ class WatchList extends BsExtensionMW {
 			EXTINFO::NAME        => 'WatchList',
 			EXTINFO::DESCRIPTION => 'Adds a watchlist widget',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 									'bluespice' => '1.22.0',
@@ -170,8 +170,8 @@ class WatchList extends BsExtensionMW {
 			return $oErrorListView->execute();
 		}
 
-		$oWatchList = $this->fetchWatchlist( $this->mAdapter->get( 'User' ), $iCount, $iMaxTitleLength, $sOrder );
-		return $this->mAdapter->parseWikiText( $oWatchList->execute() );
+		$oWatchList = $this->fetchWatchlist( $this->getUser(), $iCount, $iMaxTitleLength, $sOrder );
+		return $this->mCore->parseWikiText( $oWatchList->execute() );
 	}
 
 	/**
@@ -190,7 +190,7 @@ class WatchList extends BsExtensionMW {
 	 * @return ViewWidget
 	 */
 	public function onWidgetListKeyword() {
-		$oCurrentUser = $this->mAdapter->get('User');
+		$oCurrentUser = $this->getUser();
 		if( $oCurrentUser->isAnon() ) return null;
 
 		$iCount = BsConfig::get('MW::WatchList::WidgetLimit');
@@ -214,7 +214,7 @@ class WatchList extends BsExtensionMW {
 		$sWatchListWikiText = $oWatchList->execute();
 		if (  empty( $sWatchListWikiText ) ) return $oUserSidebarView;
 
-		$oUserSidebarView->setBody( $this->mAdapter->parseWikiText( $sWatchListWikiText ) );
+		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText ) );
 
 		return $oUserSidebarView;
 	}

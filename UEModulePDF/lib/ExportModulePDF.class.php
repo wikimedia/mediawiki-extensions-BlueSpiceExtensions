@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    $Id: ExportModulePDF.class.php 8412 2013-02-01 13:19:38Z rvogel $
+
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -114,7 +114,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			'content'   => ''
 		);
 
-		if ( BsCore::getParam( 'debugformat', null, BsPARAM::REQUEST|BsPARAMTYPE::STRING ) == 'html' ) {
+		if ( RequestContext::getMain()->getRequest()->getVal( 'debugformat', '' ) == 'html' ) {
 			$aResponse['content'] = $oDOM->saveXML( $oDOM->documentElement );
 			$aResponse['mime-type'] = 'text/html'; 
 			$aResponse['filename'] = sprintf(

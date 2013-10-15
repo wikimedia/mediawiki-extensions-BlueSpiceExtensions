@@ -7,12 +7,6 @@
  * Copyright (C) 2010 Hallo Welt! � Medienwerkstatt GmbH, All rights reserved.
  *
  * For further information visit http://www.blue-spice.org
- *
- * Version information
- * $LastChangedDate: 2013-06-14 14:09:29 +0200 (Fr, 14 Jun 2013) $
- * $LastChangedBy: pwirth $
- * $Rev: 9745 $
- * $Id: RSSStandards.class.php 9745 2013-06-14 12:09:29Z pwirth $
  */
 
 /* Changelog
@@ -32,8 +26,6 @@ class RSSStandards extends BsExtensionMW {
 
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['RSSStandards'] = dirname( __FILE__ ) . '/RSSStandards.i18n.php';
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
@@ -42,25 +34,32 @@ class RSSStandards extends BsExtensionMW {
 			EXTINFO::NAME        => 'RSSStandards',
 			EXTINFO::DESCRIPTION => 'builds rss feeds based on different options',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0 ($Rev: 9745 $)',
-			EXTINFO::STATUS      => 'stable',
+			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
 		);
 		$this->mExtensionKey = 'MW::RSSStandards';
-		$this->registerScriptFiles( BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/RSSStandards', 'RSSStandards', false, true, true, 'MW::RSSFeeder::loadScripts' );
-		$this->registerStyleSheet( BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/RSSStandards/RSSStandards.css', true, 'MW::RSSFeeder::loadScripts' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-
-		BsCore::getInstance( 'MW' )->getAdapter()->addRemoteHandler('RSSStandards', $this, 'getPages', 'read');
-
 		$this->setHook( 'BSRSSFeederGetRegisteredFeeds' );
-
+		$this->setHook( 'BeforePageDisplay' );
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+	
+	/**
+	 * 
+	 * @param OutputPage $oOutputPage
+	 * @param SkinTemplate $oSkinTemplate
+	 * @return boolean
+	 */
+	public function onBeforePageDisplay( $oOutputPage, $oSkinTemplate ) {
+		if( !SpecialPage::getTitleFor('RSSFeeder')->equals( $this->getTitle() )) return true;
+		$oOutputPage->addModules('ext.bluespice.rssStandards');
+		return true;
 	}
 
 	/**
@@ -75,8 +74,8 @@ class RSSStandards extends BsExtensionMW {
 	 */
 	public function onBSRSSFeederGetRegisteredFeeds( $aFeeds ) {
 		RSSFeeder::registerFeed('recentchanges',
-			wfMsg( 'bs-rssfeeder-recent_changes' ),
-			wfMsg( 'bs-rssstandards-description_rc' ),
+			wfMessage( 'bs-rssfeeder-recent_changes' )->plain(),
+			wfMessage( 'bs-rssstandards-description_rc' )->plain(),
 			$this,
 			NULL,
 			NULL,
@@ -84,8 +83,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('followOwn',
-			wfMsg( 'bs-rssstandards-title_own' ),
-			wfMsg( 'bs-rssstandards-description_own' ),
+			wfMessage( 'bs-rssstandards-title_own' )->plain(),
+			wfMessage( 'bs-rssstandards-description_own' )->plain(),
 			$this,
 			'buildRssOwn',
 			array('u'),
@@ -93,8 +92,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('followPage',
-			wfMsg( 'bs-rssstandards-title_page' ),
-			wfMsg( 'bs-rssstandards-description_page' ),
+			wfMessage( 'bs-rssstandards-title_page' )->plain(),
+			wfMessage( 'bs-rssstandards-description_page' )->plain(),
 			$this,
 			'buildRssPage',
 			array('p', 'ns'),
@@ -102,8 +101,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('namespace',
-			wfMsg( 'bs-rssstandards-title_ns' ),
-			wfMsg( 'bs-rssstandards-description_ns' ),
+			wfMessage( 'bs-rssstandards-title_ns' )->plain(),
+			wfMessage( 'bs-rssstandards-description_ns' )->plain(),
 			$this,
 			'buildRssNs',
 			array('ns'),
@@ -111,8 +110,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed( 'category',
-			wfMsg( 'bs-rssstandards-title_cat' ),
-			wfMsg( 'bs-rssstandards-description_cat' ),
+			wfMessage( 'bs-rssstandards-title_cat' )->plain(),
+			wfMessage( 'bs-rssstandards-description_cat' )->plain(),
 			$this,
 			'buildRssCat',
 			array('cat'),
@@ -120,27 +119,26 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('watchlist',
-			wfMsg( 'bs-rssstandards-title_watch' ),
-			wfMsg( 'bs-rssstandards-description_watch' ),
+			wfMessage( 'bs-rssstandards-title_watch' )->plain(),
+			wfMessage( 'bs-rssstandards-description_watch' )->plain(),
 			$this,
 			'buildRssWatch',
 			array('days'),
 			'buildLinksWatch'
 		);
+
 		return true;
 	}
 
 	public function buildRssPage() {
-		global $wgSitename, $wgRequest;
-		$wgContLang = $this->mAdapter->get('ContLang');
-		$sTitle = BsCore::getParam('p', NULL, BsPARAMTYPE::SQL_STRING|BsPARAM::REQUEST);
-		$iNSid   = $wgRequest->getInt( 'ns', 0 );
+		global $wgSitename, $wgRequest, $wgContLang;
+		$sTitle = $wgRequest->getVal( 'p', '' );
+		$iNSid = $wgRequest->getInt( 'ns', 0 );
 
 		$aNamespaces = $wgContLang->getNamespaces();
-		if($iNSid != 0 ) {
+		if ( $iNSid != 0 ) {
 			$sPageName = $aNamespaces[$iNSid].':'.$sTitle;
-		}
-		else {
+		} else {
 			$sPageName = $sTitle;
 		}
 
@@ -162,14 +160,14 @@ class RSSStandards extends BsExtensionMW {
 
 		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_page' ) );
 		while( $row = $res->fetchObject() ) {
-			$title = Title::newFromText($row->rc_title, $row->rc_namespace);
+			$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 			$entry = RSSItemCreator::createItem(
-				wfMsg( 'bs-rssstandards-changes_from' ).$row->rc_user_text,
-				$title->getFullURL('diff=' . $row->rc_this_oldid . '&oldid=prev'),
-				FeedUtils::formatDiff($row)
+				wfMessage( 'bs-rssstandards-changes_from' )->plain().$row->rc_user_text,
+				$title->getFullURL( 'diff=' . $row->rc_this_oldid . '&oldid=prev' ),
+				FeedUtils::formatDiff( $row )
 			);
-			$entry->setPubDate(wfTimestamp(TS_UNIX,$row->rc_timestamp));
-			$oChannel->addItem($entry);
+			$entry->setPubDate( wfTimestamp( TS_UNIX,$row->rc_timestamp ) );
+			$oChannel->addItem( $entry );
 		}
 		$dbr->freeResult( $res );
 
@@ -177,46 +175,42 @@ class RSSStandards extends BsExtensionMW {
 	}
 
 	public function buildRssOwn() {
-		global $wgSitename;
-		$wgContLang = $this->mAdapter->get('ContLang');
-		$user   = BsCore::getParam('u', 0, BsPARAMTYPE::INT);
+		global $wgSitename, $wgRequest;
+		$user = $wgRequest->getInt( 'u', 0 );
 
 		$dbr = wfGetDB( DB_SLAVE );
+		$tbl_rc = $dbr->tableName( 'recentchanges' );
 
-		$tbl_page = $dbr->tableName('page');
-		$tbl_rc = $dbr->tableName('recentchanges');
-
-		$res = $dbr->query("SELECT rc_id
+		$res = $dbr->query( "SELECT rc_id
 						FROM {$tbl_rc}
 						WHERE rc_user = {$user}
-						  AND rc_timestamp > '".$dbr->timestamp( time() - intval( 7 * 86400 ) )."'");
+						  AND rc_timestamp > '".$dbr->timestamp( time() - intval( 7 * 86400 ) )."'" );
 		$ids = array();
-		while($row = $res->fetchObject()) {
+		while ( $row = $res->fetchObject() ) {
 			$ids[] = $row->rc_id;
 		}
 
-		if(count($ids)) {
-			$res = $dbr->query("SELECT *
+		if ( count( $ids ) ) {
+			$res = $dbr->query( "SELECT *
 							FROM {$tbl_rc}
-							WHERE rc_id IN (".join(',', $ids).")
+							WHERE rc_id IN (".implode(',', $ids).")
 							  AND rc_timestamp > '".$dbr->timestamp( time() - intval( 7 * 86400 ) )."'
-							ORDER BY rc_timestamp DESC");
-		}
-		else {
+							ORDER BY rc_timestamp DESC" );
+		} else {
 			$res = false;
 		}
 
-		$channel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . wfMsg( 'bs-rssstandards-title_own' ) ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_own' ) );
-		if($res) {
-			while($obj = $res->fetchObject()) {
-				$title = Title::newFromText($obj->rc_title, $obj->rc_namespace);
+		$channel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title_own' )->plain() ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_own' )->plain() );
+		if ( $res ) {
+			while ( $obj = $res->fetchObject() ) {
+				$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 				$entry = RSSItemCreator::createItem(
-					wfMsg( 'bs-rssstandards-changes_from' ).$obj->rc_user_text,
-					$title->getFullURL('diff=' . $obj->rc_this_oldid . '&oldid=prev'),
+					wfMessage( 'bs-rssstandards-changes_from' )->plain().$obj->rc_user_text,
+					$title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ),
 					FeedUtils::formatDiff($obj)
 				);
-				$entry->setPubDate(wfTimestamp(TS_UNIX,$obj->rc_timestamp));
-				$channel->addItem($entry);
+				$entry->setPubDate( wfTimestamp( TS_UNIX,$obj->rc_timestamp ) );
+				$channel->addItem( $entry );
 			}
 			$dbr->freeResult( $res );
 		}
@@ -225,164 +219,152 @@ class RSSStandards extends BsExtensionMW {
 	}
 	
 	public function buildRssCat() {
-		global $wgOut, $wgSitename;
-		$wgTitle = $this->mAdapter->get('Title');
-		$wgUser = $this->mAdapter->get('User');
-		$wgDBprefix = $this->mAdapter->get('DBprefix');
+		global $wgRequest, $wgSitename, $wgDBprefix;
 
-		$dbr = &wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$_showLimit = 10;
 
-		$cat = BsCore::getParam('cat', '');
+		$cat = $wgRequest->getVal( 'cat', '' );
 
-		$channel = RSSCreator::createChannel($wgSitename . ' - ' . wfMsg( 'bs-rssstandards-title_cat' ) . ' ' . addslashes($cat), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_cat' ) );
+		$channel = RSSCreator::createChannel($wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title_cat' )->plain() . ' ' . addslashes( $cat ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_cat' )->plain() );
 
-		$res = $dbr->query("select cl_from FROM ".$wgDBprefix."categorylinks WHERE cl_to = '".addslashes($cat)."'");
+		$res = $dbr->query( "select cl_from FROM ".$wgDBprefix."categorylinks WHERE cl_to = '".addslashes( $cat )."'" );
 
 		$entryIds = Array();
-		while ($row = $dbr->fetchRow($res)) {
+		while ( $row = $dbr->fetchRow( $res ) ) {
 			$entryIds[] = $row['cl_from'];
 		}
 
-		if(count($entryIds)) {
-			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM ".$wgDBprefix."revision as r WHERE r.rev_page In (".join(",",$entryIds).") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
-			$res = $dbr->query($query);
-			$numberOfEntries = $dbr->numRows($res);
+		if ( count( $entryIds ) ) {
+			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM ".$wgDBprefix."revision as r WHERE r.rev_page In (".implode(",",$entryIds).") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
+			$res = $dbr->query( $query );
+			$numberOfEntries = $dbr->numRows( $res );
 
-			$paramShowAll = BsCore::getParam('showall'); // Sole importance is the existence of param 'showall'
-			if (!$paramShowAll) $query .= ' LIMIT '.$_showLimit; // if (!$_REQUEST['showall']) $query .= ' LIMIT '.$_showLimit;
+			$paramShowAll = $wgRequest->getFuzzyBool( 'showall', false ); // Sole importance is the existence of param 'showall'
+			if ( !$paramShowAll ) $query .= ' LIMIT '.$_showLimit; // if (!$_REQUEST['showall']) $query .= ' LIMIT '.$_showLimit;
 
-			$res = $dbr->query($query);
+			$res = $dbr->query( $query );
 
-
-			while ($row = $dbr->fetchRow($res)) {
-				$title = Title::newFromID($row['rev_page']);
-				$article = new Article($title);
-				if (!$title->userCan( 'read' )) {
+			while ( $row = $dbr->fetchRow( $res ) ) {
+				$title = Title::newFromID( $row['rev_page'] );
+				$article = new Article( $title );
+				if ( !$title->userCan( 'read' ) ) {
 					$numberOfEntries--;
 					continue;
 				}
-				$more = false;
 
-				$_title = str_replace("_", " ", $title->getText());
+				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_description = SecureFileStore::secureFilesInText(preg_replace("#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mAdapter->parseWikiText($article->getContent())));
-				$item = RSSItemCreator::createItem($_title, $_link, $_description);
+				$_description = SecureFileStore::secureFilesInText( preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent() ) ) );
+				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
-					$item->setPubDate(wfTimestamp(TS_UNIX,$row['rev_timestamp']));
-					$item->setComments($title->getTalkPage()->getFullURL());
-					$item->setGUID($title->getFullURL( "oldid=".$article->getRevIdFetched() ), 'true');
-					$channel->addItem($item);
+					$item->setPubDate( wfTimestamp( TS_UNIX,$row['rev_timestamp'] ) );
+					$item->setComments( $title->getTalkPage()->getFullURL() );
+					$item->setGUID( $title->getFullURL( "oldid=".$article->getRevIdFetched() ), 'true' );
+					$channel->addItem( $item );
 				}
 			}
 		}
 
-		$dbr->freeResult($res);
+		$dbr->freeResult( $res );
 		return $channel->buildOutput();
 	}
 
-	public function buildRssNs($aParams) {
-		global $wgOut, $wgSitename, $wgLang;
-		$wgTitle = $this->mAdapter->get('Title');
-		$wgUser = $this->mAdapter->get('User');
-		$wgDBprefix = $this->mAdapter->get('DBprefix');
+	public function buildRssNs( $aParams ) {
+		global $wgRequest, $wgSitename, $wgLang, $wgDBprefix;
 
 		$dbr =  wfGetDB( DB_SLAVE );
 
 		$_showLimit = 10;
 
-		if(isset($aParams['ns'])) {
+		if ( isset( $aParams['ns'] ) ) {
 			$ns = $aParams['ns']+0;
-		}
-		else {
-			$ns = BsCore::getParam('ns', 0, BsPARAM::REQUEST|BsPARAMTYPE::INT);
+		} else {
+			$ns = $wgRequest->getInt( 'ns', 0 );
 		}
 
 		$aNamespaces = $wgLang->getNamespaces();
 
-		$channel = RSSCreator::createChannel($wgSitename . ' - ' . wfMsg( 'bs-rssstandards-title_ns' ) . ' ' . $aNamespaces[$ns], 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_ns' ));
+		$channel = RSSCreator::createChannel( $wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title_ns' )->plain() . ' ' . $aNamespaces[$ns], 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_ns' )->plain() );
 
-		$res = $dbr->query("select page_id from ".$wgDBprefix."page where page_namespace = ".$ns);
+		$res = $dbr->query( "select page_id from ".$wgDBprefix."page where page_namespace = ".$ns );
 
 		$entryIds = Array();
 		while ($row = $dbr->fetchRow($res)) {
 			$entryIds[] = $row['page_id'];
 		}
 
-		if(count($entryIds)) {
+		if ( count( $entryIds ) ) {
 			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM ".$wgDBprefix."revision as r WHERE r.rev_page In (".join(",",$entryIds).") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
-			$res = $dbr->query($query);
-			$numberOfEntries = $dbr->numRows($res);
+			$res = $dbr->query( $query );
+			$numberOfEntries = $dbr->numRows( $res );
 
 			$query .= ' LIMIT '.$_showLimit;
 
 			$res = $dbr->query($query);
 
-
-			while ($row = $dbr->fetchRow($res)) {
-				$title = Title::newFromID($row['rev_page']);
-				$article = new Article($title);
-				if (!$title->userCan( 'read' )) {
+			while ( $row = $dbr->fetchRow( $res ) ) {
+				$title = Title::newFromID( $row['rev_page'] );
+				$article = new Article( $title );
+				if ( !$title->userCan( 'read' ) ) {
 					$numberOfEntries--;
 					continue;
 				}
-				$more = false;
 
-				$_title = str_replace("_", " ", $title->getText());
+				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_tmpText = preg_replace("#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mAdapter->parseWikiText($article->getContent()));
-				if(class_exists('SecureFileStore')) {
+				$_tmpText = preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText($article->getContent()));
+				if ( class_exists( 'SecureFileStore' ) ) {
 					$_description = SecureFileStore::secureFilesInText($_tmpText);
 				} else {
 					$_description = $_tmpText;
 				}
-				unset($_tmpText);
-				
-				$item = RSSItemCreator::createItem($_title, $_link, $_description);
-				if($item) {
-					$item->setPubDate(wfTimestamp(TS_UNIX,$row['rev_timestamp']));
-					$item->setComments($title->getTalkPage()->getFullURL());
-					$item->setGUID($title->getFullURL( "oldid=".$article->getRevIdFetched() ), 'true');
-					$channel->addItem($item);
+				unset( $_tmpText );
+
+				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
+				if ( $item ) {
+					$item->setPubDate( wfTimestamp( TS_UNIX, $row['rev_timestamp'] ) );
+					$item->setComments( $title->getTalkPage()->getFullURL() );
+					$item->setGUID( $title->getFullURL( "oldid=".$article->getRevIdFetched() ), 'true' );
+					$channel->addItem( $item );
 				}
 			}
 		}
 
-		$dbr->freeResult($res);
+		$dbr->freeResult( $res );
 		return $channel->buildOutput();
 	}
-	
-	public function buildRssWatch($par) {
+
+	public function buildRssWatch( $par ) {
 		// TODO SU (04.07.11 10:35): Globals
-		global $wgUser, $wgOut, $wgLang, $wgRequest;
-		global $wgRCShowWatchingUsers, $wgEnotifWatchlist, $wgShowUpdatedMarker;
-		global $wgEnotifWatchlist, $wgSitename;
+		global $wgUser, $wgOut, $wgRequest, $wgRCShowWatchingUsers,
+				$wgEnotifWatchlist, $wgShowUpdatedMarker, $wgEnotifWatchlist, $wgSitename;
+
 		$fname = 'wfSpecialWatchlist';
 
-		$skin = $wgUser->getSkin();
+		$skin = RequestContext::getMain()->getSkin();
 		$specialTitle = $wgSitename . ' - ' . SpecialPage::getTitleFor( 'Watchlist' );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		# Anons don't get a watchlist
-		if( $wgUser->isAnon() ) {
-			$_user = BsCore::getParam('u', '', BsPARAM::REQUEST|BsPARAMTYPE::STRING);
-			$user = User::newFromName($_user);
-			$_hash = BsCore::getParam('h', '', BsPARAM::REQUEST|BsPARAMTYPE::STRING);
-			if(!($user && $_hash == md5($_user.$user->getToken().$user->getId())) || $user->isAnon()) {
-				$wgOut->setPageTitle( wfMsg( 'bs-rssstandards-watchnologin' ) );
-				$llink = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogin' ), wfMsgHtml( 'loginreqlink' ), 'returnto=' . $specialTitle->getPrefixedUrl() );
-				$wgOut->addHtml( wfMsgWikiHtml( 'watchlistanontext', $llink ) );
+		if ( $wgUser->isAnon() ) {
+			$_user = $wgRequest->getVal( 'u', '' );
+			$user = User::newFromName( $_user );
+			$_hash = $wgRequest->getVal( 'h', '' );
+			if ( !( $user && $_hash == md5( $_user.$user->getToken().$user->getId() ) ) || $user->isAnon() ) {
+				$wgOut->setPageTitle( wfMessage( 'bs-rssstandards-watchnologin' )->plain() );
+				$llink = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogin' ), wfMessage( 'loginreqlink' )->plain(), 'returnto=' . $specialTitle->getPrefixedUrl() );
+				$wgOut->addHtml( wfMessage( 'watchlistanontext', $llink )->plain() );
 				return;
 			}
-		}
-		else {
+		} else {
 			$user = $wgUser;
 		}
 
-		$wgOut->setPageTitle( wfMsg( 'bs-rssstandards-watchlist' ) );
+		$wgOut->setPageTitle( wfMessage( 'bs-rssstandards-watchlist' )->plain() );
 
-		$sub  = wfMsgExt( 'watchlistfor', 'parseinline', $user->getName() );
+		$sub  = wfMessage( 'watchlistfor', $user->getName() )->parse();
 		$sub .= '<br />' . WatchlistEditor::buildTools( $user->getSkin() );
 		$wgOut->setSubtitle( $sub );
 
@@ -407,7 +389,7 @@ class RSSStandards extends BsExtensionMW {
 			/* ?     */ 'namespace' => 'all',
 		);
 
-		extract($defaults);
+		extract( $defaults );
 
 		# Extract variables from the request, falling back to user preferences or
 		# other default values if these don't exist
@@ -417,14 +399,14 @@ class RSSStandards extends BsExtensionMW {
 		$prefs['hideminor'] = $user->getBoolOption( 'watchlisthideminor' );
 
 		# Get query variables
-		$days     = $wgRequest->getVal(  'days', $prefs['days'] );
+		$days     = $wgRequest->getVal( 'days', $prefs['days'] );
 		$hideOwn  = $wgRequest->getBool( 'hideOwn', $prefs['hideown'] );
 		$hideBots = $wgRequest->getBool( 'hideBots', $prefs['hidebots'] );
 		$hideMinor = $wgRequest->getBool( 'hideMinor', $prefs['hideminor'] );
 
 		# Get namespace value, if supplied, and prepare a WHERE fragment
 		$nameSpace = $wgRequest->getIntOrNull( 'namespace' );
-		if( !is_null( $nameSpace ) ) {
+		if ( !is_null( $nameSpace ) ) {
 			$nameSpace = intval( $nameSpace );
 			$nameSpaceClause = " AND rc_namespace = $nameSpace";
 		} else {
@@ -439,35 +421,35 @@ class RSSStandards extends BsExtensionMW {
 			array( 'wl_user' => $uid ), __METHOD__ );
 		// Adjust for page X, talk:page X, which are both stored separately,
 		// but treated together
-		$nitems = floor($watchlistCount / 2);
+		$nitems = floor( $watchlistCount / 2 );
 
-		if( is_null($days) || !is_numeric($days) ) {
+		if( is_null( $days ) || !is_numeric( $days ) ) {
 			$big = 1000; /* The magical big */
-			if($nitems > $big) {
+			if ( $nitems > $big ) {
 				# Set default cutoff shorter
 				$days = $defaults['days'] = (12.0 / 24.0); # 12 hours...
 			} else {
 				$days = $defaults['days']; # default cutoff for shortlisters
 			}
 		} else {
-			$days = floatval($days);
+			$days = floatval( $days );
 		}
 
 		// Dump everything here
 		$nondefaults = array();
 
-		wfAppendToArrayIfNotDefault('days'     , $days         , $defaults, $nondefaults);
-		wfAppendToArrayIfNotDefault('hideOwn'  , (int)$hideOwn , $defaults, $nondefaults);
-		wfAppendToArrayIfNotDefault('hideBots' , (int)$hideBots, $defaults, $nondefaults);
-		wfAppendToArrayIfNotDefault('hideMinor', (int)$hideMinor, $defaults, $nondefaults );
-		wfAppendToArrayIfNotDefault('namespace', $nameSpace     , $defaults, $nondefaults);
+		wfAppendToArrayIfNotDefault( 'days'     , $days         , $defaults, $nondefaults );
+		wfAppendToArrayIfNotDefault( 'hideOwn'  , (int)$hideOwn , $defaults, $nondefaults );
+		wfAppendToArrayIfNotDefault( 'hideBots' , (int)$hideBots, $defaults, $nondefaults );
+		wfAppendToArrayIfNotDefault( 'hideMinor', (int)$hideMinor, $defaults, $nondefaults );
+		wfAppendToArrayIfNotDefault( 'namespace', $nameSpace     , $defaults, $nondefaults );
 
 		$hookSql = "";
-		if( ! wfRunHooks('BeforeWatchlist', array($nondefaults, $user, &$hookSql)) ) {
+		if ( !wfRunHooks( 'BeforeWatchlist', array($nondefaults, $user, &$hookSql ) ) ) {
 			return;
 		}
 
-		if($nitems == 0) {
+		if ( $nitems == 0 ) {
 			$wgOut->addWikiMsg( 'nowatchlist' );
 			return;
 		}
@@ -547,7 +529,7 @@ class RSSStandards extends BsExtensionMW {
 
 		$list = ChangesList::newFromUser( $user );
 
-		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_watch' ) );
+		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_watch' )->plain() );
 
 		$html = $list->beginRecentChangesList();
 		$counter = 1;
@@ -570,7 +552,7 @@ class RSSStandards extends BsExtensionMW {
 				$updated = false;
 			}
 
-			if ($wgRCShowWatchingUsers && $user->getOption( 'shownumberswatching' )) {
+			if ( $wgRCShowWatchingUsers && $user->getOption( 'shownumberswatching' ) ) {
 				$rc->numberofWatchingusers = $dbr->selectField( 
 					'watchlist',
 					'COUNT(*)',
@@ -590,14 +572,14 @@ class RSSStandards extends BsExtensionMW {
 		$html .= $list->endRecentChangesList();
 		$lines = array();
 		preg_match_all('%<li.*?>(.*?)</li>%', $html, $lines, PREG_SET_ORDER);
-		foreach($lines as $key => $line) {
+		foreach ( $lines as $key => $line ) {
 			$item = $items[$key];
 			$entry = RSSItemCreator::createItem(
 				$item['title'],
 				$item['link'],
 				RSSCreator::xmlEncode($line[1])
 			);
-			if( $entry == false ){
+			if ( $entry == false ){
 				wfDebugLog('BS::RSSStandards::buildRssWatch', 'Invalid item: '.var_export($item,true) );
 				continue;
 			}
@@ -609,16 +591,16 @@ class RSSStandards extends BsExtensionMW {
 
 		return $channel->buildOutput();
 	}
-	
+
 	public function buildLinksRc() {
 		global $wgUser;
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMsg( 'bs-rssfeeder-recent_changes'));
+		$set->setLabel( wfMessage( 'bs-rssfeeder-recent_changes' )->plain() );
 
 		$label = new ViewFormElementLabel();
 		$label->useAutoWidth();
-		$label->setFor('btnFeedRc');
-		$label->setText( wfMsg( 'bs-rssstandards-description_rc' ) );
+		$label->setFor( 'btnFeedRc' );
+		$label->setText( wfMessage( 'bs-rssstandards-description_rc' )->plain() );
 
 		$btn = new ViewFormElementButton();
 		$btn->setId('btnFeedRc');
@@ -633,77 +615,77 @@ class RSSStandards extends BsExtensionMW {
 				)
 			)
 		);
-		$btn->setLabel( wfMsg( 'bs-rssstandards-submit_title' ) );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
 
-		$set->addItem($label);
-		$set->addItem($btn);
+		$set->addItem( $label );
+		$set->addItem( $btn );
 		return $set;
 	}
 
 	public function buildLinksPage() {
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMsg( 'bs-rssstandards-title_page' ) );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title_page' )->plain() );
 
 		$div = new ViewTagElement();
-		$div->setAutoElement('div');
-		$div->setId('divFeedPage');
+		$div->setAutoElement( 'div' );
+		$div->setId( 'divFeedPage' );
 
 		$btn = new ViewFormElementButton();
-		$btn->setId('btnFeedPage');
-		$btn->setName('btnFeedPage');
-		$btn->setType('button');
-		$btn->setLabel( wfMsg( 'bs-rssstandards-submit_title' ) );
+		$btn->setId( 'btnFeedPage' );
+		$btn->setName( 'btnFeedPage' );
+		$btn->setType( 'button' );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
 
-		$set->addItem($div);
-		$set->addItem($btn);
+		$set->addItem( $div );
+		$set->addItem( $btn );
 		return $set;
 	}
 
 	public function buildLinksOwn() {
-		$wgUser = $this->mAdapter->get('User');
+		global $wgUser;
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMsg( 'bs-rssstandards-title_own' ) );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title_own' )->plain() );
 
 		$label = new ViewFormElementLabel();
 		$label->useAutoWidth();
-		$label->setFor('btnFeedOwn');
-		$label->setText( wfMsg( 'bs-rssstandards-description_own' ) );
+		$label->setFor( 'btnFeedOwn' );
+		$label->setText( wfMessage( 'bs-rssstandards-description_own' )->plain() );
 
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $wgUser->getName();
 		$sUserToken  = $wgUser->getToken();
 
 		$btn = new ViewFormElementButton();
-		$btn->setId('btnFeedOwn');
-		$btn->setName('btnFeedOwn');
-		$btn->setType('button');
+		$btn->setId( 'btnFeedOwn' );
+		$btn->setName( 'btnFeedOwn' );
+		$btn->setType( 'button' );
 		$btn->setValue(
 			$oSpecialRSS->getLinkUrl(
 				array(
-						'Page' => 'followOwn',
-						'u'    => $sUserName,
-						'h'    => $sUserToken
+					'Page' => 'followOwn',
+					'u'    => $sUserName,
+					'h'    => $sUserToken
 				)
 			)
 		);
-		$btn->setLabel( wfMsg( 'bs-rssstandards-submit_title' ) );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
 
-		$set->addItem($label);
-		$set->addItem($btn);
+		$set->addItem( $label );
+		$set->addItem( $btn );
 		return $set;
 	}
 
 	public function buildLinksNs() {
 		global $wgUser;
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMsg( 'bs-rssstandards-title_ns' ) );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title_ns' )->plain() );
 
 		$select = new ViewFormElementSelectbox();
-		$select->setId('selFeedNs');
-		$select->setName('selFeedNs');
-		$select->setLabel( wfMsg( 'bs-rssstandards-field_title_ns' ) );
+		$select->setId( 'selFeedNs' );
+		$select->setName( 'selFeedNs' );
+		$select->setLabel( wfMessage( 'bs-rssfeeder-field_title_ns' )->plain() );
 
-		$aNamespaces = BsAdapterMW::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA ) );
+		$aNamespaces = BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA ) );
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $wgUser->getName();
 		$sUserToken  = $wgUser->getToken();
@@ -724,30 +706,28 @@ class RSSStandards extends BsExtensionMW {
 		}
 
 		$btn = new ViewFormElementButton();
-		$btn->setId('btnFeedNs');
-		$btn->setName('btnFeedNs');
-		$btn->setType('button');
-		$btn->setLabel( wfMsg( 'bs-rssstandards-submit_title' ) );
+		$btn->setId( 'btnFeedNs' );
+		$btn->setName( 'btnFeedNs' );
+		$btn->setType( 'button' );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
 
-		$set->addItem($select);
-		$set->addItem($btn);
+		$set->addItem( $select );
+		$set->addItem( $btn );
 		return $set;
 	}
 
 	public function buildLinksCat() {
 		global $wgUser;
-		$wgDBprefix   = $this->mAdapter->get('DBprefix');
-		$wgScriptPath = $this->mAdapter->get('ScriptPath');
 
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMsg( 'bs-rssstandards-title_cat' ) );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title_cat' )->plain() );
 
 		$select = new ViewFormElementSelectbox();
-		$select->setId('selFeedCat');
-		$select->setName('selFeedCat');
-		$select->setLabel( wfMsg( 'bs-rssstandards-field_title_cat' ) );
+		$select->setId( 'selFeedCat' );
+		$select->setName( 'selFeedCat' );
+		$select->setLabel( wfMessage( 'bs-rssstandards-field_title_cat' )->plain() );
 
-		$dbr = wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			'categorylinks',
 			'cl_to',
@@ -762,7 +742,7 @@ class RSSStandards extends BsExtensionMW {
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $wgUser->getName();
 		$sUserToken  = $wgUser->getToken();
-		while ($row = $dbr->fetchRow($res)) {
+		while ( $row = $dbr->fetchRow( $res ) ) {
 			$select->addData(
 				array(
 					'value' => $oSpecialRSS->getLinkUrl(
@@ -779,34 +759,33 @@ class RSSStandards extends BsExtensionMW {
 		}
 
 		$btn = new ViewFormElementButton();
-		$btn->setId('btnFeedCat');
-		$btn->setName('btnFeedCat');
-		$btn->setType('button');
-		$btn->setLabel( wfMsg( 'bs-rssstandards-submit_title' ) );
+		$btn->setId( 'btnFeedCat' );
+		$btn->setName( 'btnFeedCat' );
+		$btn->setType( 'button' );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
 
-		$set->addItem($select);
-		$set->addItem($btn);
+		$set->addItem( $select );
+		$set->addItem( $btn );
 
 		return $set;
 	}
-	
+
 	public function buildLinksWatch() {
-		$wgScriptPath = $this->mAdapter->get('ScriptPath');
-		$wgUser = $this->mAdapter->get('User');
+		global $wgUser;
 		$aRssWatchlistDays = array(1, 3, 5, 7, 14, 30, 60, 90, 180, 365);
 
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMsg( 'bs-rssstandards-title_watch' ) );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title_watch' )->plain() );
 
 		$select = new ViewFormElementSelectbox();
-		$select->setId('selFeedWatch');
-		$select->setName('selFeedWatch');
-		$select->setLabel( wfMsg( 'bs-rssstandards-field_title_watch' ) );
+		$select->setId( 'selFeedWatch' );
+		$select->setName( 'selFeedWatch' );
+		$select->setLabel( wfMessage( 'bs-rssstandards-field_title_watch' )->plain() );
 
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $wgUser->getName();
 		$sUserToken  = $wgUser->getToken();
-		foreach($aRssWatchlistDays as $day) {
+		foreach ( $aRssWatchlistDays as $day ) {
 			$select->addData(
 				array(
 					'value' => $oSpecialRSS->getLinkUrl(
@@ -817,34 +796,31 @@ class RSSStandards extends BsExtensionMW {
 							'h'    => $sUserToken
 						)
 					),
-					'label' => sprintf( wfMsg( 'bs-rssstandards-link_text_watch' ), $day )
+					'label' => sprintf( wfMessage( 'bs-rssstandards-link_text_watch' )->plain(), $day )
 				)
 			);
 		}
 
 		$btn = new ViewFormElementButton();
-		$btn->setId('btnFeedWatch');
-		$btn->setName('btnFeedWatch');
-		$btn->setType('button');
-		$btn->setLabel( wfMsg( 'bs-rssstandards-submit_title' ) );
+		$btn->setId( 'btnFeedWatch' );
+		$btn->setName( 'btnFeedWatch' );
+		$btn->setType( 'button' );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
 
-		$set->addItem($select);
-		$set->addItem($btn);
+		$set->addItem( $select );
+		$set->addItem( $btn );
 
 		return $set;
 	}
 
-	public function getPages( &$output ) {
-		$wgUser       = $this->mAdapter->get('User');
-		$wgContLang   = $this->mAdapter->get('ContLang');
-		$wgScriptPath = $this->mAdapter->get('ScriptPath');
+	public static function getPages() {
+		if ( BsCore::checkAccessAdmission( 'read' ) === false ) return true;
+		global $wgUser, $wgContLang;
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$dbr->clearFlag( DBO_TRX );
-		$sPageNameFragment = BsCore::getParam('query', '', BsPARAM::REQUEST|BsPARAMTYPE::SQL_STRING);
 		$aNamespaces = $wgContLang->getNamespaces();
 
-		$tbl_page = $dbr->tableName('page');
 		$res = $dbr->select(
 			'page',
 			array( 'page_title', 'page_namespace' ),
@@ -858,9 +834,9 @@ class RSSStandards extends BsExtensionMW {
 		$sUserToken  = $wgUser->getToken();
 		$aPageRSS = array();
 
-		while($row = $res->fetchObject()) {
+		while ( $row = $res->fetchObject() ) {
 			$sNSPrefix = '';
-			if( $row->page_namespace && isset($aNamespaces[$row->page_namespace]) ) {
+			if ( $row->page_namespace && isset( $aNamespaces[$row->page_namespace] ) ) {
 				$sNSPrefix = ' (NS:'.$aNamespaces[$row->page_namespace].')';
 			}
 			$aPageRSS[] = array(
@@ -877,6 +853,6 @@ class RSSStandards extends BsExtensionMW {
 			);
 		}
 
-		$output = json_encode(array('pages' => $aPageRSS));
+		return FormatJson::encode( array( 'pages' => $aPageRSS ) );
 	}
 }

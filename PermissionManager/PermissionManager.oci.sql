@@ -3,7 +3,7 @@
 -- Part of BlueSpice for MediaWiki
 --
 -- @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
--- @version    $Id: PermissionManager.oci.sql 9795 2013-06-18 14:40:59Z rvogel $
+
 -- @package    BlueSpice_Extensions
 -- @subpackage PermissionManager
 -- @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -13,10 +13,10 @@
 CREATE SEQUENCE /*$wgDBprefix*/pm_tmpl_id_seq MINVALUE 0 START WITH 0;
 CREATE TABLE /*$wgDBprefix*/bs_permission_templates
 (
-  tpl_id            number NOT NULL,
+  tpl_id            number,
   tpl_name          varchar2(100) NOT NULL,
   tpl_description   varchar2(1000),
-  tpl_data          long NOT NULL
+  tpl_data          long
 );
 ALTER TABLE /*$wgDBprefix*/bs_permission_templates ADD CONSTRAINT /*$wgDBprefix*/bs_permission_pk PRIMARY KEY (tpl_id);
 
