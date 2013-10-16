@@ -1,0 +1,359 @@
+/**
+ * Stylesheet for ExtendedSearch
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @package    BlueSpice_Extensions
+ * @subpackage ExtendedSearch
+ * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+/* Specialpage */
+
+.bs-extendedsearch-facet-separator {
+	height: 2px;
+	/* @embed */
+	background-image: url("../resources/images/facets-spacer.gif");
+	background-repeat: repeat-x;
+	margin: 2px 5px 5px 5px;
+	display: block;
+}
+
+#bs-extendedsearch-spinner {
+	background-color: #FFFFFF;
+	/* @embed */
+	background-image: url("../resources/images/blue-loading_blue.gif");
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: none;
+	/* for IE */
+	filter:alpha(opacity=70);
+	/* CSS3 standard */
+	opacity: .7;
+	position: absolute;
+	top: 1px; /*be sure to add on-resize event*/
+	left: 1px;
+	width: 1px;
+	height: 1px;
+	z-index: 998;
+}
+
+#bs-extendedsearch-titlebuttonimage-specialpage[shine="on"],
+#bs-search-button-specialpage:hover > div#bs-extendedsearch-titlebuttonimage-specialpage {
+	background-position: right bottom;
+	/* for IE */
+	filter:alpha(opacity=60);
+	/* CSS3 standard */
+	opacity:0.6;
+}
+
+#bs-extendedsearch-fulltextbuttonimage-specialpage[shine="on"],
+#bs-search-fulltext-specialpage:hover > div#bs-extendedsearch-fulltextbuttonimage-specialpage {
+	background-position: left bottom;
+	/* for IE */
+	filter:alpha(opacity=60);
+	/* CSS3 standard */
+	opacity:0.6;
+}
+
+div#bs-extendedsearch-titlebuttonimage-specialpage {
+	background-position: right top;
+	margin-top: 1px;
+}
+
+div#bs-extendedsearch-fulltextbuttonimage-specialpage {
+	background-position: left top;
+	margin-top: 1px;
+}
+
+div.bs-extendedsearch-buttonimage-specialpage {
+	/* @embed */
+	background-image: url("../resources/images/bs-searchicons-orange.png");
+	background-repeat: no-repeat;
+	vertical-align: bottom;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	height: 18px;
+	padding-left: 0;
+	width: 26px;
+}
+
+button.bs-search-button-specialpage {
+	margin: 0 4px 0 0;
+	padding: 0 0 2px 0;
+}
+
+#bs-extendedsearch-checkbox-searchfiles {
+	margin: 4px 5px 0 4px !important;
+}
+
+.bs-extendedsearch-multivaluefield {
+	float: left;
+	margin: 12px;
+}
+
+.bs-extendedsearch-optionsformheadline {
+	padding: 12px;
+	background-color: #F1F1F1;
+	font-weight: bolder;
+	margin-top: 10px;
+}
+
+#bs-extendedsearch-inputfieldtext-specialpage {
+	width: 45% !important;
+	background-color: white !important;
+	margin-right: 4px;
+	padding-top: 4px !important;
+}
+
+#bs-extendedsearch-form-specialpage {
+	background-color: #F8F8F8;
+	padding: 12px 0 12px 15px;
+}
+
+div#bs-extendedsearch-noofresultsandsearchterm {
+	font-size: 13px;
+	color: #AAAAAA;
+	font-weight: bolder;
+	margin: 20px 0 15px 0;
+}
+
+span#bs-extendedsearch-searchterm {
+	color: #303030;
+}
+
+.bs-extendedsearch-result-title h3 {
+	display: inline;
+	margin: 10px 0 5px 6px;
+	font-weight: normal;
+	padding: 0px;
+}
+
+#bs-extendedsearch-results-finalizer {
+	clear: both;
+}
+
+#bs-extendedsearch-all-filter-boxes {
+	background-color: #F8F8F8;
+}
+
+.bs-extendedsearch-facetbox-container {
+	font-size: 11px;
+}
+
+.bs-extendedsearch-filter-headline-outer {
+	height: 24px;
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
+
+.bs-extendedsearch-default-line {
+	height: 27px;
+	margin-bottom: 7px;
+}
+
+#bs-extendedsearch-paging-lower {
+	padding-top: 7px;
+	margin-bottom: 0px;
+	clear: both;
+}
+
+.bs-extendedsearch-sorting-bar {
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #EEEDED;
+}
+
+.bs-extendedsearch-paging-spacer {
+	padding: 1px;
+	float: left;
+}
+
+.bs-extendedsearch-paging-no {
+	float: left;
+	border: 1px solid;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	color: #666666;
+	background-color: #EEEDED;
+	border-color: #CCCCCC;
+}
+
+.bs-extendedsearch-paging-no:hover,
+.bs-extendedsearch-paging-no-active {
+	background-color: #3E5389;
+	color: #FFFFFF;
+	border-color: #6481AC;
+}
+
+.bs-extendedsearch-default-textspacing {
+	padding-top: 5px;
+	height: 22px;
+}
+
+.bs-extendedsearch-paging-dots {
+	float: left;
+}
+
+#bs-extendedsearch-filters {
+	float: left;
+	width: 189px;
+	margin-top: 34.5px;
+}
+
+/*alle divs unterhalb von #bs-extendedsearch-filters-results-paging*/
+#bs-extendedsearch-filters-results-paging > div {
+	vertical-align: top;
+}
+
+#bs-extendedsearch-filters-results-paging a:hover {
+	color: #0A1E4F !important;
+}
+
+.bs-extendedsearch-results-with-facets {
+	margin-left: 194px;
+}
+
+/* todo: still necessary? */
+.clearboth {
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+}
+.search-wrapper {
+	overflow: hidden; /* This hides the excess padding in non-IE browsers */
+	padding: 12px 0 12px 0;
+	border-bottom: 1px solid #DDDDDD;
+}
+.search-wrapper:hover {
+	background-color: #F8F8F8;
+}
+.search-hit-title {
+	display:block;
+	padding-top: 4px;
+	padding-left: 4px;
+}
+.search-result-info {
+	font-size: 10px;
+	color: #666;
+	margin: 5px 0 0 28px;
+	font-weight: bold;
+}
+.search-hit-text {
+	margin: 7px 0 0 28px;
+	padding-top: 1px;
+	font-size: 11px;
+	color: #666;
+}
+#hwstatus {
+	text-align:left;
+}
+#hwmode {
+	font-weight: bold;
+}
+.facet-title {
+	background-color:#EEEDED;
+	color: #555555;
+	margin: 0 0 7px 0;
+	font-weight: bold;
+}
+#bs-es-searchterm-error {
+	color: #C25B5B !important;
+	font-size: 16px;
+	font-weight: bolder;
+	margin: 10px;
+}
+.bs-extendedsearch-spellchecker {
+	font-size: 13px;
+	color: #AAAAAA;
+	font-weight: bold;
+}
+div.search-hit-text em {
+	color: #000;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+}
+span.bs-extendedsearch-result-title h3 em {
+	font-size: 15px;
+	font-style: normal;
+	font-weight: bold;
+	color: #3F527F !important;
+}
+.bs-extendedsearch-facetend {
+	margin-bottom: 7px;
+}
+.facetBarEntry {
+	padding-left: 3px;
+	line-height: 18px;
+}
+.facetBarEntry:hover {
+	background-color: #EEEDED;
+	display: block;
+}
+.facetBarEntry input {
+	padding: 0;
+}
+#bs-extendedsearch-all-filter-boxes input[type="checkbox"] {
+	border: none;
+	background: none;
+	opacity: 0;
+	float: left;
+	width: 15px;
+	height: 13px;
+	cursor: pointer;
+	clear: both;
+	margin-top: 2px !important;
+	margin-left: 2px;
+}
+#bs-extendedsearch-all-filter-boxes input[type="checkbox"] +label {
+	margin-left: -15px;
+	clear: both;
+	padding: 5px 0 4px 19px;
+	background: url("../resources/images/checkbox.png") left center no-repeat !important;
+}
+#bs-extendedsearch-all-filter-boxes div.facet-title input[type="checkbox"] +label {
+	margin-left: -15px;
+	clear: both;
+	padding: 5px 0 4px 19px;
+	/* @embed */
+	background: url("../resources/images/checkbox-title.png") left center no-repeat !important;
+}
+#bs-extendedsearch-all-filter-boxes input[type='checkbox']:checked + label, #bs-extendedsearch-all-filter-boxes div.facet-title input[type='checkbox']:checked + label {
+	/* @embed */
+	background-image: url("../resources/images/checked.png") !important;
+}
+#bs-extendedsearch-linktoextendedpage {
+	float: right;
+	margin: 8px 12px 0 0;
+}
+.bs-extendedsearch-morefacets {
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding-bottom: 5px;
+	font-size: 10px;
+}
+.bs-extendedsearch-hiddenfacet {
+	display: none;
+}
+.bs-extendedsearch-cat {
+	font-size: 10px;
+	margin: 7px 0 0 28px;
+	font-weight: bold;
+}
+.bs-extendedsearch-result-icon {
+	margin: 7px 0 0 3px;
+}
+.bs-extendedsearch-sectionresult{
+	font-size: 12px;
+}
+.bs-extendedsearch-sectionresult a:hover {
+	text-decoration: none !important;
+}

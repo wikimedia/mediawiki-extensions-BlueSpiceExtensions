@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
@@ -55,10 +55,10 @@ class PermissionManager extends BsExtensionMW {
 			EXTINFO::NAME        => 'PermissionManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for editing user rights',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
+			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
 
 		WikiAdmin::registerModule('PermissionManager', array(

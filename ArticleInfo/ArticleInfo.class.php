@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
  * @package    BlueSpice_Extensions
  * @subpackage ArticleInfo
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -68,12 +68,12 @@ class ArticleInfo extends BsExtensionMW {
 			EXTINFO::NAME        => 'ArticleInfo',
 			EXTINFO::DESCRIPTION => 'Provides information about an article for status bar.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-										'bluespice' => '1.22.0',
-										'StateBar' => '1.22.0'
+										'bluespice' => '2.22.0',
+										'StateBar' => '2.22.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::ArticleInfo';

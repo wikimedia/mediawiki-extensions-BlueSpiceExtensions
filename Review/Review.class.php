@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage Review
@@ -76,12 +76,12 @@ class Review extends BsExtensionMW {
 			EXTINFO::NAME => 'Review',
 			EXTINFO::DESCRIPTION => 'Adds workflow functionality to pages.',
 			EXTINFO::AUTHOR => 'Markus Glaser',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
-				'bluespice' => '1.22.0',
-				'StateBar' => '1.22.0'
+				'bluespice' => '2.22.0',
+				'StateBar' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::Review';
@@ -280,7 +280,7 @@ class Review extends BsExtensionMW {
 		return true;
 	}
 
-	public function onSkinTemplateNavigationUniversal( $oSkinTemplate, $links ) {
+	public function onSkinTemplateNavigationUniversal( $oSkinTemplate, &$links ) {
 		if ( $this->getTitle()->isContentPage() === false ) return true;
 		if ( $this->getTitle()->exists() === false ) return true;
 		if ( $this->getTitle()->userCan( 'workflowview' ) === false ) return true;
@@ -347,7 +347,7 @@ class Review extends BsExtensionMW {
 		array_unshift($aParams, $sSiteName);
 
 		if ( !is_null( $oInvolvedUser ) ) {
-			$aParams[] = $this->mCore->getUserDisplayName( $oInvolvedUser );
+			$aParams[] = BsCore::getUserDisplayName( $oInvolvedUser );
 		}
 
 		$sSubject = wfMessage( "{$sBaseMessageKey}-header", $aParams )->inLanguage( $sReceiverLang )->plain();

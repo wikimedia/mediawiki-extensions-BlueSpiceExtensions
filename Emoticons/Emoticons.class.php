@@ -27,7 +27,7 @@
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage Emoticons
@@ -82,10 +82,10 @@ class Emoticons extends BsExtensionMW {
 			EXTINFO::NAME        => 'Emoticons',
 			EXTINFO::DESCRIPTION => 'Renders emoticons in a text as images.',
 			EXTINFO::AUTHOR      => 'Alex Wollangk, Marc Reymann, Sebastian Ulbricht, Mathias Scheer, Robert Vogel, Patric Wirth',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
+			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
 		$this->mExtensionKey = 'MW::Emoticons';
 		wfProfileOut( 'BS::'.__METHOD__ );

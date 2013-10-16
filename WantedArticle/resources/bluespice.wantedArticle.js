@@ -93,7 +93,7 @@ BsWantedArticle = {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					textMsg: 'bs-wantedarticle-info_nothing_entered'
+					text: 'bs-wantedarticle-info_nothing_entered'
 				}
 			);
 			return false;
@@ -136,7 +136,7 @@ BsWantedArticle = {
 		$.getJSON( 
 			bs.util.getAjaxDispatcherUrl( 'WantedArticle::ajaxAddWantedArticle', [ sArticleTitle ] ),
 			function( oData, oTextStatus ) {
-				bs.util.alert( oData.message );
+				bs.util.alert( 'WAsuc', { text: oData.message, title: 'Status' } );
 				if( oData.success == true ) {
 					BsWantedArticle.resetDefaults();
 					BsWantedArticle.reloadAllWantedArticleTags();

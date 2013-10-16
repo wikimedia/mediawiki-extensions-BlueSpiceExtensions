@@ -24,7 +24,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage VisualEditor
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -65,6 +65,7 @@ class VisualEditor extends BsExtensionMW {
 			"textcolor",
 			"contextmenu",
 			//"link" //Needed for "unlink"
+			"autoresize"
 		),
 		'external_plugins'			 => array (
 			'bswikicode'	 => '../tiny_mce_plugins/bswikicode/plugin.js',
@@ -122,10 +123,11 @@ class VisualEditor extends BsExtensionMW {
 		// save plugin
 		'save_enablewhendirty'		 => true,
 		//Allow style tags in body and unordered lists in spans (inline)
-		'valid_children' => "+body[style],+span[ul]",
+		'valid_children' => "+span[ul]",
 		//set the id of the body tag in iframe to bodyContent, so styles do 
 		//apply in a correct manner. This may be dangerous.
-		'body_id' => 'bodyContent'
+		'body_id' => 'bodyContent',
+		'autoresize_max_height' => 15000
 	);
 
 	/**
@@ -161,10 +163,10 @@ class VisualEditor extends BsExtensionMW {
 			EXTINFO::NAME        => 'VisualEditor',
 			EXTINFO::DESCRIPTION => 'Visual editor for MediaWiki.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array ( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array ( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey	 = 'MW::VisualEditor';
 
@@ -288,7 +290,7 @@ class VisualEditor extends BsExtensionMW {
 
 		$this->aConfigStandard[ "extended_valid_elements" ] =
 				BsConfig::get( 'MW::VisualEditor::AllowedTags' )
-				. implode( '[*]|', $aDefaultTags ) . '[*]|body[style]';
+				. implode( '[*]|', $aDefaultTags );
 
 		// find the right language file
 		$language	 = $wgLang->getCode();

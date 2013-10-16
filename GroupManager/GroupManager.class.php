@@ -23,7 +23,7 @@
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
  * @package    Bluespice_Extensions
  * @subpackage GroupManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -50,10 +50,10 @@ class GroupManager extends BsExtensionMW {
 			EXTINFO::NAME        => 'GroupManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deletig user groups and their rights',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::GroupManager';
 

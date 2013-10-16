@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    1.22.0
+ * @version    2.22.0
  * @package    Bluespice_Extensions
  * @subpackage RSSFeeder
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -50,10 +50,10 @@ class RSSFeeder extends BsExtensionMW {
 			EXTINFO::NAME        => 'RSSFeeder',
 			EXTINFO::DESCRIPTION => 'A extension to put out valid rss for every extension, which has a buildRss-function',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::RSSFeeder';
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -62,7 +62,64 @@ class RSSFeeder extends BsExtensionMW {
 	/**
 	 * initialise the extension
 	 */
-	protected function initExt() {}
+	protected function initExt() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
+		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
+		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	public static function getRSS( $iCount, $sUrl ) {
+		global $wgParser;
+		$oParserOpts = new ParserOptions;
+		$iCount = intval( $iCount );
+
+		$sTag = '<rss max="' . $iCount . '">' . $sUrl . '</rss>';
+
+		return $wgParser->parse( $sTag, RequestContext::getMain()->getTitle(), $oParserOpts )->getText();
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
+	 * 
+	 * @param array &$aPortlets reference to array portlets
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
+		$aPortlets[] = array(
+						'type' => 'BS.RSSFeeder.RSSPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+							'height' => 660,
+							'rssurl' => 'http://blog.blue-spice.org/feed/'
+						),
+						'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+						'description' => wfMessage( 'bs-dashboards-rss-desc' )->plain()
+		);
+
+		return true;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
+	 * 
+	 * @param object $oCaller caller instance
+	 * @param array &$aPortalConfig reference to array portlet configs
+	 * @param boolean $bIsDefault default
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$aPortalConfig[0][] = array(
+			'type'  => 'BS.RSSFeeder.RSSPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+				'height' => 610,
+				'rssurl' => 'http://blog.blue-spice.org/feed/'
+			)
+		);
+
+		return true;
+	}
 
 	/**
 	 * an array which holds the informations of all registered feed plugins

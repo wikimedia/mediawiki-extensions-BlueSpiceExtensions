@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
@@ -63,12 +63,12 @@ class UEModulePDF extends BsExtensionMW {
 			EXTINFO::NAME        => 'UEModulePDF',
 			EXTINFO::DESCRIPTION => 'Enables MediaWiki to export pages into PDF format.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-				'bluespice'       => '1.22.0',
-				'UniversalExport' => '1.22.0'
+				'bluespice'       => '2.22.0',
+				'UniversalExport' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::UEModulePDF';

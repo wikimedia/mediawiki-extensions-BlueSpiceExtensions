@@ -1,0 +1,90 @@
+/**
+ * Stylesheet for ExtendedSearch
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @package    BlueSpice_Extensions
+ * @subpackage ExtendedSearch
+ * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+/**** Autocomplete ****/
+
+#bs-extendedsearch-autocomplete {
+	background-color: #FFFFFF !important;
+	border: 1px solid #AAA !important;
+	position: absolute !important;
+	z-index: 1000 !important;
+	padding: 0px !important;
+}
+
+#bs-extendedsearch-autocomplete .ui-menu-item-highlight {
+	background-color: #ECF1F8 !important;
+}
+
+#bs-extendedsearch-autocomplete li.ui-menu-item a{
+	font-size: 11px !important;
+	font-family: sans-serif !important;
+	color: #3F527F !important;
+	cursor: pointer !important;
+	padding-top: 3px !important;
+	padding-right: 4px !important;
+	padding-bottom: 3px !important;
+	padding-left: 4px !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+}
+
+#bs-extendedsearch-autocomplete #ui-active-menuitem {
+	background-color: #ECF1F8 !important;
+}
+
+#bs-extendedsearch-autocomplete li.ui-menu-item:hover {
+	background-color: #ECF1F8 !important;
+}
+
+#bs-extendedsearch-autocomplete a.ui-corner-all {
+	display: block !important;
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+}
+
+#bs-extendedsearch-autocomplete a.ui-state-hover {
+	background: url() !important;
+	background-color: #ECF1F8 !important;
+	font-size: 11px !important;
+	margin: 0px !important;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+	border-radius: 0 0 0 0 !important;
+}
+
+#bs-extendedsearch-autocomplete .bs-extendedsearch-ac-noresults {
+	border-top: 1px !important;
+	border-right: 0px !important;
+	border-bottom: 0px !important;
+	border-left: 0px !important;
+	border-style: solid !important;
+	border-color: #AAA !important;
+}
+
+#bs-extendedsearch-autocomplete ul.ui-menu {
+	padding: 0px !important;
+}
+
+#bs-extendedsearch-autocomplete a.ui-corner-all {
+	border: none !important;
+}
+
+#bs-extendedsearch-autocomplete li.ui-state-active a {
+	float: none !important;
+	padding: 0px !important;
+	text-decoration: none;
+}

@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Stefan Widmann <widmann@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage Notifications
@@ -32,7 +32,7 @@
  */
 
 /* Changelog
- * v1.22.0
+ * v2.22.0
  * - initial release
  */
 
@@ -62,10 +62,10 @@ class Notifications extends BsExtensionMW {
 			EXTINFO::NAME        => 'Notifications',
 			EXTINFO::DESCRIPTION => 'Send changes in the wiki via echo extension.',
 			EXTINFO::AUTHOR      => 'Stefan Widmann',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::Notifications';
 		wfProfileOut( 'BS::Notifications::Construct' );
@@ -185,7 +185,7 @@ class Notifications extends BsExtensionMW {
 			'title-message' => 'bs-echo-page-edit',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-edit-subject', // TODO SW: make text
-			'flyout-params' => array( 'title', 'agent' ),
+			'flyout-params' => array( 'titlelink', 'agentlink' ),
 			'email-subject-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-edit',// TODO SW: make text
@@ -378,8 +378,9 @@ class Notifications extends BsExtensionMW {
 			'agent'	=> $user,
 			'extra'	=> array(
 					'summary'	=>	$summary,
-					'titlelink'	=>	$article->getTitle()->getFullURL(),
-					'difflink'	=>	is_object( $revision ) ? $article->getTitle()->getFullURL( array( 'diff' => $revision->getId(), 'oldid' => $revision->getPrevious()->getId() ) ) : 'no difflink available',
+					'titlelink'	=>	true,
+					'difflink'	=>	is_object( $revision ) ? array( 'diffparams' => array( 'diff' => $revision->getId(), 'oldid' => $revision->getPrevious()->getId() ) ): array( 'diffparams' => array() ),
+					'agentlink' => true,
 				),
 		) );
 

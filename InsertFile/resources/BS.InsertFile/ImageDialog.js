@@ -198,7 +198,8 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			sizewidth: this.nbWidth.getValue(),
 			link: this.cbPages.getValue(),
 			alt: this.tfAlt.getValue(),
-			src: this.hdnUrl.getValue()
+			//Ext.htmlDecode(): this feels like the wrong place...
+			src: Ext.htmlDecode(this.hdnUrl.getValue())
 		});
 		
 		if(this.cbxNoLink.getValue() == true ) {

@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    Bluespice_Extensions
  * @subpackage ExtensionInfo
@@ -62,10 +62,10 @@ class ExtensionInfo extends BsExtensionMW {
 			EXTINFO::NAME        => 'ExtensionInfo',
 			EXTINFO::DESCRIPTION => 'Information about active Hallo Welt! extensions.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 
 		WikiAdmin::registerModule( 'ExtensionInfo', array(

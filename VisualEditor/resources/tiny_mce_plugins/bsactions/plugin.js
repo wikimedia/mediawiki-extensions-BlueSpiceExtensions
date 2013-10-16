@@ -5,7 +5,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    1.22.0
+ * @version    2.22.0
  
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
@@ -92,6 +92,7 @@ var BsActions = function() {
 				var json = Ext.decode(response.responseText);
 				$("input[name=wpEdittime]").val(json.edittime);
 				$("input[name=wpStarttime]").val(json.starttime);
+				mw.notify( json.message );
 				$('#mw-js-message').html('<div>' + json.message + '</div>').show(); //TODO: Use jsMsg() or newer interfaces (message bubbles)
 				$('#mw-js-message').stop().css("background-color", "#FFFF9C").animate({backgroundColor: "#FCFCFC"}, 1500);
 				$('#wpSummary').val(json.summary);

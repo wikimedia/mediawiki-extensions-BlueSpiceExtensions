@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
@@ -66,10 +66,10 @@ class PermissionManager extends BsExtensionMW {
 			EXTINFO::NAME		 => 'PermissionManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for editing user rights',
 			EXTINFO::AUTHOR		 => 'Sebastian Ulbricht',
-			EXTINFO::VERSION	 => '1.22.0',
+			EXTINFO::VERSION	 => '2.22.0',
 			EXTINFO::STATUS		 => 'beta',
 			EXTINFO::URL		 => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS		 => array ( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS		 => array ( 'bluespice' => '2.22.0' )
 		);
 
 		WikiAdmin::registerModule( 'PermissionManager',
@@ -85,26 +85,31 @@ class PermissionManager extends BsExtensionMW {
 
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
-	
+
 	protected function initExt() {
-		BsConfig::registerVar( 'MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-lockmode', 'toggle' );
-		BsConfig::registerVar( 'MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-skipSysNs', 'toggle' );
+		BsConfig::registerVar( 'MW::PermissionManager::Lockmode', false,
+						 BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-lockmode',
+						 'toggle' );
+		BsConfig::registerVar( 'MW::PermissionManager::SkipSystemNS', false,
+						 BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-skipSysNs',
+						 'toggle' );
 		$this->setHook( 'BSWikiAdminUserManagerBeforeUserListSend' );
 	}
-	
-	public function onBSWikiAdminUserManagerBeforeUserListSend( $oUserManager, &$data ) {
-		if( !BsConfig::get( 'MW::PermissionManager::Lockmode' ) ) return true;
 
-		foreach( $data['users'] as $keyname => $aUser ) {
-			foreach( $aUser as $index => $value ) {
-				if( is_array( $value ) ) {
-					foreach( $value as $indexof => $val ) {
-						if( is_array( $val ) ) {
-							foreach( $val as $indexname => $groupName ) {
-								if( $indexname == 'group' ) {
-									if( $groupName == BsGroupHelper::$sLockModeGroup ) {
-										unset( $data['users'][$keyname][$index][$indexof] );
-										$data['users'][$keyname][$index] = array_values( $data['users'][$keyname][$index] );
+	public function onBSWikiAdminUserManagerBeforeUserListSend( $oUserManager,
+															 &$data ) {
+		if ( !BsConfig::get( 'MW::PermissionManager::Lockmode' ) ) return true;
+
+		foreach ( $data[ 'users' ] as $keyname => $aUser ) {
+			foreach ( $aUser as $index => $value ) {
+				if ( is_array( $value ) ) {
+					foreach ( $value as $indexof => $val ) {
+						if ( is_array( $val ) ) {
+							foreach ( $val as $indexname => $groupName ) {
+								if ( $indexname == 'group' ) {
+									if ( $groupName == BsGroupHelper::$sLockModeGroup ) {
+										unset( $data[ 'users' ][ $keyname ][ $index ][ $indexof ] );
+										$data[ 'users' ][ $keyname ][ $index ] = array_values( $data[ 'users' ][ $keyname ][ $index ] );
 									}
 								}
 							}
@@ -116,7 +121,7 @@ class PermissionManager extends BsExtensionMW {
 
 		return true;
 	}
-	
+
 	public static function setupLockmodePermissions() {
 		global $wgAdditionalGroups, $wgGroupPermissions, $wgNamespacePermissionLockdown;
 		if ( !BsConfig::get( 'MW::PermissionManager::Lockmode' ) ) {
@@ -198,6 +203,66 @@ class PermissionManager extends BsExtensionMW {
 	}
 
 	/**
+	 * Creates a virtual user which belongs to all given groups and checks all
+	 * the given permissions agains a virtual title in every namespace.
+	 * 
+	 * Returns an array of the form
+	 * <code>
+	 * array(
+	 *     'permission1' => array(
+	 *         'ns1' => true,
+	 *         'ns2' => false,
+	 *         ...
+	 *     ),
+	 *     'permission2' => array(
+	 *         'ns1' => false,
+	 *         'ns2' => false,
+	 *         ...
+	 *     )
+	 * )
+	 * </code>
+	 * 
+	 * @global Language $wgLang
+	 * @param string|array $groups
+	 * @param string|array $permissions
+	 * @return array
+	 */
+	public static function checkRealPermissions( $groups, $permissions ) {
+		global $wgLang;
+
+		if ( !is_array( $groups ) ) {
+			$groups = array ( $groups );
+		}
+
+		if ( !is_array( $permissions ) ) {
+			$permissions = array ( $permissions );
+		}
+
+		$checkUser = new CheckUser();
+		$checkUser->setGroups( $groups );
+
+		$namespaces		 = $wgLang->getNamespaces();
+		$permissionMap	 = array ( );
+
+		foreach ( $permissions as $permission ) {
+			foreach ( $namespaces as $nsId => $nsName ) {
+				$permissionMap[ $permission ][ $nsId ] = false;
+
+				if ( !$checkUser->isAllowed( $permission ) ) {
+					continue;
+				}
+
+				$checkTitle = Title::makeTitle( $nsId, 'Check_permission_title' );
+				if ( $checkTitle->userCan( $permission, $checkUser, false ) ) {
+					$permissionMap[ $permission ][ $nsId ] = true;
+				}
+			}
+		}
+
+		return $permissionMap;
+	}
+
+	/**
 	 * 
 	 * @global array $wgGroupPermissions
 	 * @global array $wgNamespacePermissionLockdown
@@ -218,6 +283,8 @@ class PermissionManager extends BsExtensionMW {
 		$namespaces[ 0 ] = wfMessage( 'bs-permissionmanager-main-namespaces' )->plain();
 		$rules			 = array ( );
 
+		$permissionMap = self::checkRealPermissions( $group, $permissions );
+
 		// one ruleset per permission
 		foreach ( $permissions as $permission ) {
 			// default: restricted
@@ -234,6 +301,18 @@ class PermissionManager extends BsExtensionMW {
 			}
 
 			$rule[ 'global' ] = $permitted;
+
+			if ( !$permitted ) {
+				if ( isset( $wgGroupPermissions[ 'user' ][ $permission ] ) ) {
+					$permitted = $wgGroupPermissions[ 'user' ][ $permission ];
+				}
+			}
+			if ( !$permitted ) {
+				if ( isset( $wgGroupPermissions[ '*' ][ $permission ] ) ) {
+					$permitted = $wgGroupPermissions[ '*' ][ $permission ];
+				}
+			}
+			$rule[ 'global_allowed' ] = $permitted;
 
 			// if this permission is a global permission
 			if ( in_array( $permission, self::$aGlobalPermissions ) ) {
@@ -280,7 +359,7 @@ class PermissionManager extends BsExtensionMW {
 
 				// save the namespace information in the ruleset
 				$rule[ $namespaceName ]				 = $ns_permitted;
-				$rule[ $namespaceName . '_allowed' ] = $ns_allowed;
+				$rule[ $namespaceName . '_allowed' ] = $permissionMap[ $permission ][ $namespaceId ]; //$ns_allowed;
 			}
 			// add the ruleset to the rule selection
 			$rules[ ] = $rule;
@@ -413,7 +492,7 @@ class PermissionManager extends BsExtensionMW {
 				$isReadLockdown = false;
 				foreach ( $aPermissions as $sPermission => $aGroups ) {
 					$sSaveContent .= "\$wgNamespacePermissionLockdown[$iNS]['$sPermission']"
-							. " = array(" . (count($aGroups) ? "'".join( "','", $aGroups )."'" : '') . ");\n";
+							. " = array(" . (count( $aGroups ) ? "'" . join( "','", $aGroups ) . "'" : '') . ");\n";
 					if ( $sPermission == 'read' ) {
 						$isReadLockdown = true;
 					}
@@ -472,14 +551,7 @@ class PermissionManager extends BsExtensionMW {
 	 * @return array
 	 */
 	protected static function getAllGroups() {
-		if ( empty( self::$aGroups ) ) {
-			self::$aGroups = array_merge(
-					User::getImplicitGroups(), User::getAllGroups()
-			);
-			self::$aGroups = array_diff( self::$aGroups, self::$aInvisibleGroups );
-			natsort( self::$aGroups );
-		}
-		return self::$aGroups;
+		return BsGroupHelper::getAvailableGroups( array ( 'blacklist' => self::$aInvisibleGroups ) );
 	}
 
 }

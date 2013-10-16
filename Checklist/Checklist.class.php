@@ -55,10 +55,10 @@ class Checklist extends BsExtensionMW {
 			EXTINFO::NAME => 'Checklist',
 			EXTINFO::DESCRIPTION => 'Adds checklist functionality.',
 			EXTINFO::AUTHOR => 'Markus Glaser',
-			EXTINFO::VERSION => '1.22.0',
-			EXTINFO::STATUS => 'alpha',
+			EXTINFO::VERSION => '2.22.0',
+			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::Checklist';
 
@@ -230,7 +230,7 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = ">";
 			
 			foreach ( $aOptions as $sOption ) {
-				$aOptionSet = split("\|", $sOption);
+				$aOptionSet = explode("\|", $sOption);
 				
 				if (!$sSelectColor && isset ($aOptionSet[1])) {
 					$sSelectColor = "style='color:".$aOptionSet[1].";' ";

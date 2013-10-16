@@ -55,10 +55,10 @@ class InsertLink extends BsExtensionMW {
 			EXTINFO::NAME => 'InsertLink',
 			EXTINFO::DESCRIPTION => 'Dialogbox to enter a link.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht, Patric Wirth',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array('bluespice' => '1.22.0')
+			EXTINFO::DEPS => array('bluespice' => '2.22.0')
 		);
 		$this->mExtensionKey = 'MW::InsertLink';
 		wfProfileOut('BS::' . __METHOD__);

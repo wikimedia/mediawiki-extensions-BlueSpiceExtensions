@@ -5,7 +5,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
@@ -172,19 +172,18 @@ var BsBehaviour = function() {
 
 		/**
 		 * Makes sure doubleclick does not select additional spaces
-		 * @param TinyMCE ed Reference to current editor
 		 * @param Event e Current KeyPress event
 		 */
-		ed.on('DblClick', function(ed, e) {
+		ed.on('DblClick', function(e) {
 			var range, bsContent, firstSpace, selectionObject;
 
 			if (document.getSelection) {
-				range = ed.selection.getRng();
+				range = this.selection.getRng();
 				bsContent = String(range);
 				firstSpace = bsContent.search(/[\s\u00A0\u48ef\u0020]*$/gi);
-				selectionObject = ed.selection.getSel();
+				selectionObject = this.selection.getSel();
 				range.setEnd(selectionObject.focusNode, selectionObject.focusOffset + (firstSpace - (bsContent.length)));
-				ed.selection.setRng(range);
+				this.selection.setRng(range);
 			}
 			else if (document.selection) {
 				// IE code

@@ -5,7 +5,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor

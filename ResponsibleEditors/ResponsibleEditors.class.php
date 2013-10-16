@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
 
  * @package    BlueSpice_Extensions
  * @subpackage ResponsibleEditors
@@ -62,13 +62,13 @@ class ResponsibleEditors extends BsExtensionMW {
 			EXTINFO::NAME => 'ResponsibleEditors',
 			EXTINFO::DESCRIPTION => 'Enables MediaWiki to manage responsible editors for articles.',
 			EXTINFO::AUTHOR => 'Robert Vogel',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
-				'bluespice' => '1.22.0',
-				'StateBar' => '1.22.0',
-				'Authors' => '1.22.0'
+				'bluespice' => '2.22.0',
+				'StateBar' => '2.22.0',
+				'Authors' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::ResponsibleEditors';
@@ -319,6 +319,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		$links['actions']['respeditors'] = array(
 			'text'  => wfMsg( 'bs-responsibleeditors-contentactions-label' ),
 			'href'  => '#',
+			'class' => false
 		);
 		
 		return true;

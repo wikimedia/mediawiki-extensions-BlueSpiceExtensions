@@ -23,7 +23,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
  * @package    BlueSpice_Extensions
  * @subpackage Dashboards
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -55,11 +55,11 @@ class Dashboards extends BsExtensionMW {
 			EXTINFO::NAME        => 'Dashboards',
 			EXTINFO::DESCRIPTION => 'Provides dashboards for normal users and admins.',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-				'bluespice'    => '1.22.0'
+				'bluespice'    => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::Dashboards';
@@ -85,6 +85,9 @@ class Dashboards extends BsExtensionMW {
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'PersonalUrls' );
+
+		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
+		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
@@ -272,5 +275,33 @@ class Dashboards extends BsExtensionMW {
 		$oResponse->setPayload( $aPortlets );
 
 		return $oResponse;
+	}
+
+	public function onBSDashboardsUserDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$aPortalConfig[0][] = array(
+			'type'  => 'BS.Dashboards.CalendarPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-dashboard-userportlet-calendar-title' )->plain()
+			)
+		);
+		return true;
+	}
+
+	/**
+	 * 
+	 * @global OutputPage $wgOut
+	 * @param type $aPortlets
+	 * @return boolean
+	 */
+	public function onBSDashboardsUserDashboardPortalPortlets( &$aPortlets ) {
+		$aPortlets[] = array(
+			'type'  => 'BS.Dashboards.CalendarPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-dashboard-userportlet-calendar-title' )->plain(),
+			),
+			'title' => wfMessage( 'bs-dashboard-userportlet-calendar-title' )->plain(),
+			'description' => wfMessage( 'bs-dashboard-userportlet-calendar-description' )->plain()
+		);
+		return true;
 	}
 }

@@ -34,10 +34,10 @@ class RSSStandards extends BsExtensionMW {
 			EXTINFO::NAME        => 'RSSStandards',
 			EXTINFO::DESCRIPTION => 'builds rss feeds based on different options',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
+			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
 		$this->mExtensionKey = 'MW::RSSStandards';
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -160,7 +160,7 @@ class RSSStandards extends BsExtensionMW {
 
 		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_page' ) );
 		while( $row = $res->fetchObject() ) {
-			$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
+			$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 			$entry = RSSItemCreator::createItem(
 				wfMessage( 'bs-rssstandards-changes_from' )->plain().$row->rc_user_text,
 				$title->getFullURL( 'diff=' . $row->rc_this_oldid . '&oldid=prev' ),

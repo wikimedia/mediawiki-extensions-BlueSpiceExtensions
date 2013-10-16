@@ -24,7 +24,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Tobias Weichart <weichart@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
 
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
@@ -78,10 +78,10 @@ class Statistics extends BsExtensionMW {
 			EXTINFO::NAME        => 'Statistics',
 			EXTINFO::DESCRIPTION => 'Statistics module for BlueSpice.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Patric Wirth',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::Statistics';
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -416,25 +416,25 @@ class Statistics extends BsExtensionMW {
 	}
 
 	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
-		$aPortalConfig[0] = array(
+		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
 			'config' => array(
 				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain()
 			)
 		);
-		$aPortalConfig[0] = array(
+		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
 			'config' => array(
 				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain()
 			)
 		);
-		$aPortalConfig[0] = array(
+		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
 			'config' => array(
 				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain()
 			)
 		);
-		$aPortalConfig[0] = array(
+		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
 			'config' => array(
 				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain()

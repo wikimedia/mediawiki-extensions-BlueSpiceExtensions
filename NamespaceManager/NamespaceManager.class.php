@@ -6,7 +6,7 @@
  * Administration interface for adding, editing and deletig user groups and their rights
  * @copyright Copyright (c) 2013, HalloWelt! Medienwerkstatt GmbH, All rights reserved.
  * @author Sebastian Ulbricht
- * @version 1.22.0
+ * @version 2.22.0
  */
 /* Changelog
  * v1.20.0
@@ -58,13 +58,13 @@ class NamespaceManager extends BsExtensionMW {
 			EXTINFO::NAME => 'NamespaceManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deletig user groups and their rights',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 
-				'bluespice' => '1.22.0',
-				'WikiAdmin' => '1.22.0',
-				'Preferences' => '1.22.0'
+				'bluespice' => '2.22.0',
+				'WikiAdmin' => '2.22.0',
+				'Preferences' => '2.22.0'
 			)
 		);
 

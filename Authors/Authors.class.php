@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage Authors
@@ -72,7 +72,7 @@ class Authors extends BsExtensionMW {
 			EXTINFO::NAME        => 'Authors',
 			EXTINFO::DESCRIPTION => 'Displays authors of an article with image.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '1.20.0' )

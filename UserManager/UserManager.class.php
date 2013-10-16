@@ -23,7 +23,7 @@
  *
  * @author     Sebastian Ulbricht
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage UserManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -58,10 +58,10 @@ class UserManager extends BsExtensionMW {
 			EXTINFO::NAME        => 'UserManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting users.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 
 		WikiAdmin::registerModule( 'UserManager', array(

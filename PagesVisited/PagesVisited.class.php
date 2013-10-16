@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage PagesVisited
@@ -60,9 +60,6 @@ class PagesVisited extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['PagesVisited'] = __DIR__ . '/PagesVisited.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::VARIABLE;
@@ -70,12 +67,12 @@ class PagesVisited extends BsExtensionMW {
 			EXTINFO::NAME        => 'PagesVisited',
 			EXTINFO::DESCRIPTION => 'Provides a personalized list of last visited pages.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-										'bluespice'   => '1.22.0',
-										'WhoIsOnline' => '1.22.0'
+										'bluespice'   => '2.22.0',
+										'WhoIsOnline' => '2.22.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::PagesVisited';
@@ -374,4 +371,67 @@ class PagesVisited extends BsExtensionMW {
 		//self::$prResultListViewCache[$sCacheKey] = $oVisitedPagesListView;
 		return $oVisitedPagesListView;
 	}
+
+	/**
+	 * Get the pages for specialpage, called via ajax
+	 * @param string $sOutput Output to return
+	 * @return bool Always true
+	 */
+	public static function getData( $iUserID ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+
+		$oStoreParams = BsExtJSStoreParams::newFromRequest();
+		$iLimit     = $oStoreParams->getLimit();
+		$iStart     = $oStoreParams->getStart();
+		$sSort      = $oStoreParams->getSort( 'MAX(readers_ts)' );
+		$sDirection = $oStoreParams->getDirection();
+
+		if ( $sSort == 'user_page' ) $sSort = 'readers_user_name';
+
+		$res = $oDbr->select(
+				array( 'bs_readers' ),
+				array( 'readers_page_id', 'MAX(readers_ts) as readers_ts' ),
+				array( 'readers_user_id' => $iUserID ),
+				__METHOD__,
+				array(
+					'GROUP BY' => 'readers_page_id',
+					'ORDER BY' => 'MAX(readers_ts) DESC',
+					'LIMIT'    => $iLimit,
+					'OFFSET'   => $iStart
+				)
+		);
+
+		$aPages = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			while ( $row = $oDbr->fetchObject( $res ) ) {
+				$oTitle = Title::newFromID( $row->readers_page_id );
+
+				$aTmpPage = array();
+				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
+				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
+				$aTmpPage['pv_ts'] = date( "d.m.Y", $row->readers_ts );
+
+				$aPages['page'][] = $aTmpPage;
+			}
+		}
+		$oDbr->freeResult( $res );
+
+		$rowCount = $oDbr->select(
+				'bs_readers',
+				'readers_page_id',
+				array(
+					'readers_user_id' => $iUserID
+				),
+				__METHOD__,
+				array(
+					'GROUP BY' => 'readers_page_id'
+				)
+		);
+		$aPages['totalCount'] = $oDbr->numRows( $rowCount );
+		$oDbr->freeResult( $rowCount );
+
+		$sOutput = json_encode( $aPages );
+		return $sOutput;
+	}
+
 }

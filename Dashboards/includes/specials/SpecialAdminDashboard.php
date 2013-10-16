@@ -63,7 +63,7 @@ class SpecialAdminDashboard extends BsSpecialPage {
 		$this->getOutput()->addJsConfigVars( 'bsPortalConfigLocation', $sLocation );
 		$this->getOutput()->addJsConfigVars( 'bsPortalConfig', $aPortalConfig );
 
-		$this->getOutput()->addModuleStyles( 'bluespice.extjs/bluespice.extjs.BS.portal.css' );
+		$this->getOutput()->addModuleStyles( 'ext.bluespice.extjs.BS.portal.css' );
 		$this->getOutput()->addModules( 'ext.bluespice.dashboards.adminDashboard' );
 
 		return true;

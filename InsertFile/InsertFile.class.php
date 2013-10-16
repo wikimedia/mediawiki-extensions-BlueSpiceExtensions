@@ -24,7 +24,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
 
  * @package    BlueSpice_Extensions
  * @subpackage InsertFile
@@ -63,11 +63,11 @@ class InsertFile extends BsExtensionMW {
 			EXTINFO::NAME        => 'InsertFile',
 			EXTINFO::DESCRIPTION => 'Dialogbox to upload files and enter a file link.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 
-				'bluespice' => '1.22.0'
+				'bluespice' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::InsertFile';

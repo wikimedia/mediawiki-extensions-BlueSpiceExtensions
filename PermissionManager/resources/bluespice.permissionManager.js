@@ -49,6 +49,8 @@ function() {
 						name: 'grouping'
 					}, {
 						name: 'global'
+					}, {
+						name: 'global_allowed'
 					}],
 				columns = [{
 						header: mw.messages.get('bs-permissionmanager-header-permissions'),
@@ -79,6 +81,20 @@ function() {
 									}
 								}
 							}
+						},
+						renderer: function(value, meta, record) {
+								if(record.get('global_allowed')) {
+									meta.tdCls = 'allowed';
+								}
+								var cssPrefix = Ext.baseCSSPrefix,
+									cls = [cssPrefix + 'grid-checkcolumn'];
+								if (this.disabled) {
+									meta.tdCls += ' ' + this.disabledCls;
+								}
+								if (value) {
+									cls.push(cssPrefix + 'grid-checkcolumn-checked');
+								}
+								return '<img class="' + cls.join(' ') + '" src="' + Ext.BLANK_IMAGE_URL + '"/>';
 						}
 					}],
 				subcolumns = [];

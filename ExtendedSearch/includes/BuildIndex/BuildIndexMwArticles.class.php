@@ -85,8 +85,13 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	 * @param array $aEditors Editors
 	 * @return Apache_Solr_Document
 	 */
-	public function makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace, $iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections ) {
-		$oSolrDocument = $this->oMainControl->makeDocument( 'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '', $iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections );
+	public function makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace,
+			$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections ) {
+
+		$oSolrDocument = $this->oMainControl->makeDocument(
+				'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '',
+				$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections );
+
 		return $oSolrDocument;
 	}
 
@@ -112,7 +117,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 			$oTitle = Title::makeTitle( $sPageNamespace, $sPageTitle );
 
-			$bIsRedirect = (int) $oTitle->isRedirect();
+			$bIsRedirect = (int)$oTitle->isRedirect();
 
 			$sContent = $this->oMainControl->parseTextForIndex( $oDocument->old_text, $oTitle );
 			$aSections = $this->oMainControl->extractEditSections( $oDocument->old_text );
@@ -123,7 +128,10 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 			$aCategories = $oExtendedSearchBase->getCategoriesFromDbForCertainPageId( $iPageID );
 			if ( empty( $aCategories ) ) $aCategories = array( 'notcategorized' );
 
-			$oSolrDocument = $this->makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace, $iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections );
+			$oSolrDocument = $this->makeSingleDocument(
+					$sPageTitle, $sContent, $iPageID, $sPageNamespace, $iTimestamp,
+					$aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections
+			);
 
 			$this->oMainControl->addDocument( $oSolrDocument, $this->mode, self::S_ERROR_MSG_KEY );
 

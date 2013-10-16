@@ -124,7 +124,7 @@ $messages['de'] = array(
 	'echo-dismiss-title-bs-shoutbox'			=> 'Shoutbox Messages',
 
 	'bs-echo-page-edit'							=> 'Die Seite [[$1]] wurde bearbeitet',
-	'bs-echo-flyout-page-edit'					=> 'Die Seite [[$1]] wurde von $2 bearbeitet',
+	'bs-echo-flyout-page-edit'					=> 'Die Seite [[$1]] wurde von [[$2]] bearbeitet',
 	'bs-echo-page-create'						=> 'Die Seite [[$1]] wurde neu angelegt',
 	'bs-echo-flyout-page-create'				=> 'Die Seite [[$1]] wurde von $2 neu angelegt',
 	'bs-echo-page-delete'						=> 'Die Seite [[$1]] wurde gelöscht',

@@ -2,7 +2,7 @@
  * NamespaceManager extension
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
  * @package    Bluespice_Extensions
  * @subpackage NamespaceManager
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

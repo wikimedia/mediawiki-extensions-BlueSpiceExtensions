@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     MediaWiki Extension
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
 
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedEditBar
@@ -61,10 +61,10 @@ class ExtendedEditBar extends BsExtensionMW {
 			EXTINFO::NAME        => 'ExtendedEditBar',
 			EXTINFO::DESCRIPTION => 'Provides additional buttons to the wiki edit field.',
 			EXTINFO::AUTHOR      => 'MediaWiki Extension, packaging by Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0 ',
+			EXTINFO::VERSION     => '2.22.0 ',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.blue-spice.org',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::ExtendedEditBar';
 		wfProfileOut('BS::'.__METHOD__ );

@@ -11,8 +11,6 @@
 	font-weight: bold;
 }
 #RSSFeederForm button {
-	position: absolute;
-	left: 900px;
 	/*@embed*/
 	background-image: url(images/bs-icon-rss.png);
 	background-repeat: no-repeat;
@@ -22,12 +20,13 @@
 	cursor: pointer;
 	height: 24px;
 	border: 1px solid #8393C3;
+	display: inline-block;
+	float: right;
 }
 #RSSFeederForm label {
 	display: inline-block;
 	width: 150px;
 	zoom: 1;
-	*display: inline;
 }
 #RSSFeederForm label.label_use_auto_width {
 	width: auto;
@@ -36,5 +35,5 @@
 	width: 250px;
 }
 #divFeedPage {
-	display: inline;
+	display: inline-block;
 }

@@ -223,9 +223,9 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	},
 	showDlgAgain: function() {
 		if ( this.active === 'add' ) {
-			this.dlgUserAdd.show();
+			this.dlgNamespaceAdd.show();
 		} else {
-			this.dlgUserEdit.show();
+			this.dlgNamespaceEdit.show();
 		}
 	},
 	renderMsgSuccess: function( responseObj ) {
@@ -242,6 +242,10 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 				message = message + responseObj.errors[i].message + '<br />';
 			}
 			bs.util.alert( 'UMfail', { text: message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			return;
+		} else if ( responseObj.message.length ) {
+			bs.util.alert( 'UMfail', { text: responseObj.message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			return;
 		}
 	}
 } );

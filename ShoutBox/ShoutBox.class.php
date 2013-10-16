@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Karl Waldmanstetter
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
 
  * @package    BlueSpice_Extensions
  * @subpackage ShoutBox
@@ -82,10 +82,10 @@ class ShoutBox extends BsExtensionMW {
 			EXTINFO::NAME        => 'ShoutBox',
 			EXTINFO::DESCRIPTION => 'Adds a parser function for embedding your own shoutbox.',
 			EXTINFO::AUTHOR      => 'Karl Waldmannstetter, Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0', 
+			EXTINFO::VERSION     => '2.22.0', 
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::ShoutBox';
 		wfProfileOut( 'BS::'.__METHOD__ );

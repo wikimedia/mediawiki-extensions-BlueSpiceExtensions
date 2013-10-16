@@ -4,21 +4,36 @@ BsExtensionManager::registerExtension('ExtendedSearch', BsRUNLEVEL::FULL|BsRUNLE
 
 $wgExtensionMessagesFiles['ExtendedSearch'] = __DIR__ . '/languages/ExtendedSearch.i18n.php';
 
-$wgResourceModules['ext.bluespice.extendedsearch'] = array(
-	'scripts' => array(
-		'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.admin.js',
-		'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.autocompleteWidget.js',
-		'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.specialpage.js'
-	),
-	'styles'  => 'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.css',
-	'messages' => array(
-		'bs-extendedsearch-more',
-		'bs-extendedsearch-fewer'
-	),
-	'position' => 'top',
+$aResourceModuleTemplate = array(
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
+
+$wgResourceModules['ext.bluespice.extendedsearch.autocomplete.style'] = array(
+	'styles'  => 'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.autocomplete.css'
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.extendedsearch.autocomplete'] = array(
+	'scripts' => 'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.autocompleteWidget.js',
+	'position' => 'bottom',
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.extendedsearch.admin'] = array(
+	'scripts' =>  'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.admin.js'
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.extendedsearch.specialpage.style'] = array(
+	'styles'  => 'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.specialpage.css'
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.extendedsearch.specialpage'] = array(
+	'scripts' => 'extensions/BlueSpiceExtensions/ExtendedSearch/resources/bluespice.extendedSearch.specialpage.js',
+	'position' => 'bottom',
+	'messages' => array(
+		'bs-extendedsearch-more',
+		'bs-extendedsearch-fewer'
+	)
+) + $aResourceModuleTemplate;
 
 $wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
 $wgAjaxExportList[] = 'ExtendedSearch::getAutocompleteData';

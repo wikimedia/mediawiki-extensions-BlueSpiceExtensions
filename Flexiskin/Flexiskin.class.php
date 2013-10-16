@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Tobias Weichart <weichart@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
  * @package    BlueSpice_Extensions
  * @subpackage Flexiskin
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -53,11 +53,11 @@ class Flexiskin extends BsExtensionMW {
 			EXTINFO::NAME => 'Flexiskin',
 			EXTINFO::DESCRIPTION => 'Provides a page to manage flexiskins with customizing options.',
 			EXTINFO::AUTHOR => 'Tobias Weichart',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
-				'bluespice' => '1.22.0'
+				'bluespice' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::Flexiskin';

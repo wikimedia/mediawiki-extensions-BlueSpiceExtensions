@@ -4,7 +4,7 @@ Ext.define('BS.Dashboards.LogEventsPortlet', {
 	
 	portletConfigClass : 'BS.Dashboards.LogEventsPortletConfig',
 
-	beforeInitCompontents: function() {
+	beforeInitComponent: function() {
 		this.gdMainConfig = {
 			store: Ext.create('Ext.data.Store', {
 				fields: [ 'logid', 'timestamp', 'action', 'user'],

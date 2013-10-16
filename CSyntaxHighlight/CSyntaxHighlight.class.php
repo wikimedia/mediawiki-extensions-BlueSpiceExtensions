@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage CSyntaxHighlight
@@ -97,11 +97,11 @@ class CSyntaxHighlight extends BsExtensionMW {
 			EXTINFO::NAME        => 'CSyntaxHighlight',
 			EXTINFO::DESCRIPTION => 'Adds customizable syntax highlighting functionality to BlueSpice. Based on SyntaxHighlighter by Alex Gorbatchev (http://alexgorbatchev.com/SyntaxHighlighter/)',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-										'bluespice' => '1.22.0'
+										'bluespice' => '2.22.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::CSyntaxHighlight';

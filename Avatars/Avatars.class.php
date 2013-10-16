@@ -3,7 +3,7 @@
 /**
  * Avatars extension for BlueSpice
  *
- * Prevent unauthorized access to files and images.
+ * Provide generic and individual user images
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Marc Reymann <reymann@hallowelt.biz>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
  * @version    $Id$
  * @package    BlueSpice_Extensions
  * @subpackage Avatars
@@ -55,10 +55,10 @@ class Avatars extends BsExtensionMW {
 			EXTINFO::NAME => 'Avatars',
 			EXTINFO::DESCRIPTION => 'Provide generic and individual user images.',
 			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array('bluespice' => '1.22.0'));
+			EXTINFO::DEPS => array('bluespice' => '2.22.0'));
 		$this->mExtensionKey = 'MW::Avatars';
 		wfProfileOut('BS::' . __METHOD__);
 	}

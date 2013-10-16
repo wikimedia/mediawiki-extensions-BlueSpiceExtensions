@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
 
  * @package    BlueSpice_Extensions
  * @subpackage FormattingHelp
@@ -60,10 +60,10 @@ class FormattingHelp extends BsExtensionMW {
 			EXTINFO::NAME        => 'FormattingHelp',
 			EXTINFO::DESCRIPTION => 'Displays a help screen in the wiki edit view.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
+			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
 		$this->mExtensionKey = 'MW::FormattingHelp';
 

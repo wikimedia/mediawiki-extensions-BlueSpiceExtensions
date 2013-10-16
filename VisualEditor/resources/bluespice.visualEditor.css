@@ -59,8 +59,12 @@ td.mceToolbar {
 	padding-right: 20px !important;
 }
 
+#editform div.mce-tinymce {
+	border: none;
+}
+
 .bs-ve-fixed {
-	position: fixed;
+	position: fixed !important;
 	top: 0px;
 	background-color: #EEE !important;
 	border: 1px solid #BBB !important;

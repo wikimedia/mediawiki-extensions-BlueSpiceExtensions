@@ -22,7 +22,7 @@
 * For further information visit http://www.blue-spice.org
 *
 * @author     Patric Wirth <wirth@hallowelt.biz>
-* @version    1.22.0
+* @version    2.22.0
 
 * @package    Bluespice_Extensions
 * @subpackage TopMenuBarCustomizer
@@ -51,10 +51,10 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			EXTINFO::NAME        => 'TopMenuBarCustomizer',
 			EXTINFO::DESCRIPTION => 'Customize the Top Menu Links.',
 			EXTINFO::AUTHOR      => 'Patric Wirth',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 
 		$this->mExtensionKey = 'TopMenuBarCustomizer';
@@ -65,9 +65,9 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	public function initExt() {
 		//TODO: Add some error massages on article save (more than 5 entrys etc.)
-		//TODO: Insert existing menu entries when MediaWiki:TopBarMenu is going to be first created
 		$this->setHook('BSBlueSpiceSkin:ApplicationList','onBlueSpiceSkinApplicationList', true);
 		$this->setHook('BeforePageDisplay');
+		$this->setHook('EditFormPreloadText');
 
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels',       2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfLevels' );
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::DataSourceTitle',     'TopBarMenu', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-topmenubarcustomizer-pref-DataSourceTitle' );
@@ -83,6 +83,28 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		$oOutputPage->addModules('ext.bluespice.topmenubarcustomizer');
+		return true;
+	}
+
+	/**
+	 * Hook-Handle for MW hook EditFormPreloadText
+	 * @param string $sText
+	 * @param Title $oTitle
+	 * @return boolean - always true
+	 */
+	public function onEditFormPreloadText($sText, $oTitle) {
+		if( !$oTitle->equals(Title::newFromText(BsConfig::get('MW::TopMenuBarCustomizer::DataSourceTitle'), NS_MEDIAWIKI)) ) return true;
+
+		global $wgUser;
+		$aApplications = BsConfig::get('MW::Applications');
+		$sCurrentApplicationContext = BsConfig::get('MW::ApplicationContext');
+		$aOut = array();
+		wfRunHooks( 'BSBlueSpiceSkin:ApplicationList', array( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $this ) );
+
+		foreach($aApplications as $aApplication) {
+			$sText .= "*{$aApplication['name']}\n";
+		}
+
 		return true;
 	}
 
@@ -209,7 +231,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 * @return Array - Single parsed menu item (app)
 	 */
 	private function parseSingleLine( $sLine ) {
-		global $wgTitle;
+		global $wgTitle, $wgServer, $wgScriptPath;;
 		$newApp = array(
 			'name' => '',
 			'url' => '',
@@ -237,6 +259,8 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 					$newApp['url'] = $aParsedUrl['scheme'].$aParsedUrl['delimiter'].$aParsedUrl['host'].$aParsedUrl['path'].$sQuery;
 					$newApp['external'] = true;
 				} 
+			} else if( strpos($aAppParts[1], '?') === 0 ) { //?action=blog
+				$newApp['url'] = $wgServer.$wgScriptPath.'/'.$aAppParts[1];
 			} else {
 				$oTitle = Title::newFromText( trim($aAppParts[1]) );
 				if( is_null($oTitle) ) {
@@ -248,6 +272,8 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 					}
 				}
 			}
+		} else {
+			$newApp['url'] = $wgServer.$wgScriptPath;
 		}
 
 		if( !empty( $aAppParts[2] ) ) {

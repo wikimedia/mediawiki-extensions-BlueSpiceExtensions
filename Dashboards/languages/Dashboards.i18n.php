@@ -17,6 +17,10 @@ $messages['en'] = array(
 	//SpecialPage
 	'admindashboard' => 'Admin dashboard',
 	'userdashboard'  => 'User dashboard',
+
+	//Default portlets user
+	'bs-dashboard-userportlet-calendar-title'		=> 'Calendar',
+	'bs-dashboard-userportlet-calendar-description'	=> 'Calendar',
 );
 
 $messages['de'] = array(
@@ -34,6 +38,10 @@ $messages['de'] = array(
 	//SpecialPage
 	'admindashboard' => 'Admincockpit',
 	'userdashboard'  => 'Benutzercockpit',
+
+	//Default portlets user
+	'bs-dashboard-userportlet-calendar-title'		=> 'Kalender',
+	'bs-dashboard-userportlet-calendar-description'	=> 'Kalender',
 );
 
 $messages['qqq'] = array();

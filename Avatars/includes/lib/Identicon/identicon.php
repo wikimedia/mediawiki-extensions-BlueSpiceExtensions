@@ -1,7 +1,7 @@
 <?php
 function generateIdenticon( $iUserId, $iUserImageDefaultSize=64 ) {
 	$avatarhash = md5( $iUserId );
-	error_log( "\$avatarhash: $avatarhash" );
+	#error_log( "\$avatarhash: $avatarhash" );
 	$avatarsize = $iUserImageDefaultSize;
 
 	/* parse hash string */

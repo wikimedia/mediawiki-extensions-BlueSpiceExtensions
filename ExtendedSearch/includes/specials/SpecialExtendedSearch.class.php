@@ -166,6 +166,9 @@ class SpecialExtendedSearch extends BsSpecialPage {
 	function execute( $sParameter ) {
 		parent::execute( $sParameter );
 
+		$this->getOutput()->addModuleStyles( 'ext.bluespice.extendedsearch.specialpage.style' );
+		$this->getOutput()->addModules( 'ext.bluespice.extendedsearch.specialpage' );
+
 		$oSearchRequest       = new SearchRequest( 'search_form_body' );
 		$this->oSearchOptions = new SearchOptions( $oSearchRequest );
 		$oSearchformView      = new ViewBaseElement();

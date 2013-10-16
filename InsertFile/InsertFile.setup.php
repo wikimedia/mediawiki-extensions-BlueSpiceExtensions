@@ -52,6 +52,7 @@ $wgResourceModules['ext.bluespice.insertFile'] = array(
 		'bs-insertfile-uploadImageFieldLabel',
 		'bs-insertfile-uploadFileEmptyText',
 		'bs-insertfile-uploadFileFieldLabel',
+		'bs-insertfile-uploadDestFileLabel',
 		'bs-insertfile-uploadDescFileLabel',
 		'bs-insertfile-uploadWatchThisLabel',
 		'bs-insertfile-uploadIgnoreWarningsLabel',

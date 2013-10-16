@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    Bluespice_Extensions
  * @subpackage NamespaceCss
@@ -45,10 +45,10 @@ class NamespaceCss extends BsExtensionMW {
 			EXTINFO::NAME        => 'NamespaceCss',
 			EXTINFO::DESCRIPTION => 'Diff styles for namespaces in MW.',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Tobias Weichart, Patric Wirth',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 
 		$this->mExtensionKey = 'MW::NamespaceCss';

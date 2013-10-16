@@ -11,8 +11,6 @@
  */
 
 $(document).bind('BsInsertLinkWindowBeforeAddTabs', function( event, window, items ){
-	Ext.Loader.setPath( 'BS.InsertLinkInterWiki', wgScriptPath+'/extensions/BlueSpiceExtensions/InterWikiLinks/resources/BS.InsertLinkInterWiki');
-
 	var storeData = []
 	for(var i = 0; i < mw.config.get('BSInterWikiPrefixes', []).length; i++) {
 		storeData.push({
@@ -30,6 +28,6 @@ $(document).bind('BsInsertLinkWindowBeforeAddTabs', function( event, window, ite
 	});
 
 	items.push(
-		Ext.create( 'BS.InsertLinkInterWiki.FormPanelInterWiki', { storeIW: storeIW } )
+		Ext.create( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', { storeIW: storeIW } )
 	);
 });

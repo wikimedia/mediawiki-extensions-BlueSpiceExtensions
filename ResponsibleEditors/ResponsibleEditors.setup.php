@@ -29,7 +29,10 @@ $wgResourceModules['ext.bluespice.responsibleEditors'] = array(
 
 $wgResourceModules['ext.bluespice.responsibleEditors.manager'] = array(
 	'scripts' => 'bluespice.responsibleEditors.manager.js',
-	'dependencies' => 'ext.bluespice.responsibleEditors',
+	'dependencies' => array(
+		'ext.bluespice.responsibleEditors',
+		'ext.bluespice.extjs',
+	),
 	'messages' => array(
 		'bs-responsibleeditors-pnlDescriptionText',
 		'bs-responsibleeditors-pnlSucessText',

@@ -25,7 +25,7 @@
  * @author     Mathias Scheer <Scheer@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage WantedArticle
@@ -73,10 +73,10 @@ class WantedArticle extends BsExtensionMW {
 			EXTINFO::NAME        => 'WantedArticle',
 			EXTINFO::DESCRIPTION => 'Add an article to the wanted article list.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array('bluespice' => '1.22.0')
+			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
 		$this->mExtensionKey = 'MW::WantedArticle';
 		wfProfileOut( 'BS::' . __METHOD__ );

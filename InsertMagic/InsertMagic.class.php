@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage InsertMagic
@@ -120,12 +120,12 @@ class InsertMagic extends BsExtensionMW {
 			EXTINFO::NAME        => 'InsertMagic',
 			EXTINFO::DESCRIPTION => 'Provides a dialog box to add magicwords and tags to an articles content in edit mode.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-				'bluespice'    => '1.22.0',
-				'VisualEditor' => '1.22.0'
+				'bluespice'    => '2.22.0',
+				'VisualEditor' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::InsertMagic';

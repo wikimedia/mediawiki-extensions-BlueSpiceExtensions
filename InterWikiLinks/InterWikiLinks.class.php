@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage InterWikiLinks
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -50,10 +50,10 @@ class InterWikiLinks extends BsExtensionMW {
 			EXTINFO::NAME        => 'InterWikiLinks',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting interwiki links',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 
 		WikiAdmin::registerModule('InterWikiLinks', array(

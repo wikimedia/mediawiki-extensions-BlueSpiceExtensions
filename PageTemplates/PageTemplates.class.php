@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage PageTemplates
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -60,11 +60,11 @@ class PageTemplates extends BsExtensionMW {
 			EXTINFO::NAME        => 'PageTemplates',
 			EXTINFO::DESCRIPTION => 'Displays a list of templates marked as page templates.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-										'bluespice'   => '1.22.0'
+										'bluespice'   => '2.22.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::PageTemplates';

@@ -1,13 +1,13 @@
 <?php
 /**
- * Internationalisation file for HideTitle
+ * Internationalisation file for RSSFeeder
  *
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
 
  * @package    BlueSpice_Extensions
- * @subpackage HideTitle
+ * @subpackage RSSFeeder
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
@@ -31,6 +31,11 @@ $messages['en'] = array(
 	'bs-rssfeeder-followOwn_text'               => 'An overview of your own contributions to the Wiki',
 	'bs-rssfeeder-submit_title'                 => 'Show',
 	'bs-rssfeeder-field_title_ns'               => 'Namespace',
+	'bs-rssfeeder-rss' => 'RSS-Feed',
+	'bs-dashboards-rss-desc' => 'Create your own RSS-Feed',
+
+	//Javascript
+	'bs-extjs-rssfeeder-rss-title' => 'RSS-Url'
 );
 
 $messages['de'] = array(
@@ -49,13 +54,19 @@ $messages['de'] = array(
 	'bs-rssfeeder-followOwn_text'               => 'Überblick über Änderungen in eigenen Beiträgen',
 	'bs-rssfeeder-submit_title'                 => 'Anzeigen',
 	'bs-rssfeeder-field_title_ns'               => 'Namensraum',
+	'bs-rssfeeder-rss' => 'RSS-Feed',
+	'bs-dashboards-rss-desc' => 'Erstelle deinen eigenen RSS-Feed',
+
+	//Javascript
+	'bs-extjs-rssfeeder-rss-title' => 'RSS-Url'
 );
 
 $messages['de-formal'] = array(
 	'bs-rssfeeder-pagetext'                     => '<p><b>RSS (Rich Site Summary)</b> ist ein abonnierbarer Ticker, der von entsprechenden Programmen in regelmäßigen Abständen abgerufen wird und neben einer Überschrift einen kurzen Textanriss liefert.</p>
 <p>Um einen RSS-Feed zu abonnieren, klicken Sie auf den Anzeigen-Button und übertragen Sie die URL aus der Adresszeile in Ihr RSS-Programm.</p>
 <p>Folgende RSS-Feeds stehen zur Verfügung:</p>',
-	'bs-rssfeeder-pages_text'                   => 'Bitte wählen Sie eine Seite.'
+	'bs-rssfeeder-pages_text'                   => 'Bitte wählen Sie eine Seite.',
+	'bs-dashboards-rss-desc' => 'Erstellen Sie Ihren eigenen RSS-Feed',
 );
 
 $messages['qqq'] = array();

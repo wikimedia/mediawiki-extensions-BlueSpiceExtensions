@@ -82,6 +82,7 @@ class ExtendedSearchAdmin {
 		if ( wfReadOnly() ) {
 			throw new ReadOnlyError;
 		}
+		RequestContext::getMain()->getOutput()->addModules( 'ext.bluespice.extendedsearch.admin' );
 
 		$sForm = '';
 

@@ -17,7 +17,6 @@ Ext.onReady(function() {
 	};
 	
 	buttons.nsblog.addListener('click', function() {
-		console.log( Ext.get('selFeedNsBlog').dom.value  );
 		location.href = Ext.get('selFeedNsBlog').dom.value;
 	});
 	
@@ -47,7 +46,11 @@ Ext.onReady(function() {
 		proxy: {
 			type: 'ajax',
 			url: bs.util.getAjaxDispatcherUrl('RSSStandards::getPages'),
-			root: 'pages'
+			reader: {
+				type: 'json',
+				root: 'pages',
+				idProperty: 'page'
+			}
 		},
 		fields: ['page', 'url']
 	});
@@ -56,8 +59,6 @@ Ext.onReady(function() {
 		renderTo: 'divFeedPage',
 		displayField: 'page',
 		minChars: 1,
-		//fieldLabel: page_label,
-		tpl: '<tpl for="."><div ext:qtip="{page}" class="x-combo-list-item">{page}</div></tpl>',
 		store: pagestore,
 		mode: 'local',
 		typeAhead: true,
@@ -70,7 +71,7 @@ Ext.onReady(function() {
 		listeners: {
 			'select': {
 				fn: function(box, record, idx) {
-					link = record.get('url');
+					link = record[0].get('url');
 				},
 				scope: this
 			}

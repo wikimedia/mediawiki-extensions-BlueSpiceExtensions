@@ -59,10 +59,10 @@ class UserPreferences extends BsExtensionMW {
 			EXTINFO::NAME => 'UserPreferences',
 			EXTINFO::DESCRIPTION => 'Renders the BlueSpice tab in preferences.',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::UserPreferences';
 		wfProfileOut( 'BS::' . __METHOD__ );

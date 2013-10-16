@@ -11,8 +11,27 @@
  * @filesource
  */
 
-// TODO MRG (09.10.13 10:28): This is deprecated
+offsetTop = 0;
+$(window).scroll(function(){
+	var toobar = $('.mce-stack-layout-item').first();
+	if( toobar.length == 0 ) return;
+	if(offsetTop == 0){
+		offsetTop = $('#mw-content-text').position().top; //toobar.position().top;
+	}
+	
+	if( $(document).scrollTop() > offsetTop ) { //window.scrollY
+		if( toobar.hasClass('bs-ve-fixed') == false ) {
+			
+			toobar.addClass('bs-ve-fixed');
+			toobar.width( toobar.parent().width() );
+		}
+	}
+	else {
+		toobar.removeClass('bs-ve-fixed');
+	}
+});
 
+// TODO MRG (09.10.13 10:28): This is deprecated
 $(document).on('VisualEditor::instanceShow', function(event, editorId) {
 	if (editorId === 'wpTextbox1') {
 		$('#toolbar').hide();

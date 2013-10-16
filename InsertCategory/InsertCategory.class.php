@@ -24,7 +24,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage InsertCategory
@@ -62,10 +62,10 @@ class InsertCategory extends BsExtensionMW {
 			EXTINFO::NAME        => 'InsertCategory',
 			EXTINFO::DESCRIPTION => 'Dialogbox to enter a category link.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::InsertCategory';
 		wfProfileOut( 'BS::' . __METHOD__ );
@@ -189,7 +189,8 @@ class InsertCategory extends BsExtensionMW {
 		if ( !$this->getTitle()->userCan( 'edit' ) ) return true;
 		$links['actions']['insert_category'] = array(
 			"text" => wfMessage( 'bs-insertcategory-insert_category' )->plain(),
-			"href" => '#'
+			"href" => '#',
+			"class" => false
 		);
 
 		return true;

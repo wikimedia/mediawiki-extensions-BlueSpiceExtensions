@@ -1,0 +1,30 @@
+/**
+ * Stylesheet for Readers
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @version    $Id: Readers.css 9953 2013-06-27 07:56:51Z smuggli $
+ * @package    BlueSpice_Extensions
+ * @subpackage Authors
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+.bs-readers-profile {
+	display: inline !important;
+}
+.bs-readers fieldset {
+	width: auto;
+	border-left: 0px;
+	border-top: 1px;
+	border-right: 0px;
+	border-bottom: 1px;
+	border-color: #CCC;
+	border-style: solid;
+	background-color: #F3F3F3;
+}
+.bs-readers legend {
+	color: #AAAAAA;
+}

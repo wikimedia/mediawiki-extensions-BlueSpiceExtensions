@@ -116,6 +116,10 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 				BS.InsertFile.ImageDialog.clearListeners();
 				BS.InsertFile.ImageDialog.on( 'ok', function( sender, data ) {
 					var imgAttrs = this.plugins.bswikicode.makeDefaultImageAttributesObject();
+					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
+					//Manually prefix with NS_IMAGE. I wonder if this should 
+					//be done within the dialog.
+					data.imagename = formattedNamespaces[bs.ns.NS_IMAGE]+':'+data.imagename;
 					var classAddition = '';
 					var styleAddition = '';
 					if( data.sizeheight !== '' ) {
@@ -147,15 +151,18 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 
 					var dataAttrs = bs.util.makeDataAttributeObject( data );
 					$.extend(imgAttrs, dataAttrs);
-					var newImgNode = this.dom.create( 'img', imgAttrs );
+					var newImgNode = null;
 					if( image.nodeName.toLowerCase() == 'img' ) {
+						newImgNode = this.dom.create( 'img', imgAttrs );
 						this.dom.replace(newImgNode, image);
+						//Place cursor to end
+						this.selection.select(newImgNode, false);
 					}
 					else {
-						this.dom.insertAfter(newImgNode, image);
+						newImgNode = this.dom.createHTML( 'img', imgAttrs );
+						this.insertContent(newImgNode);
 					}
-					//Place cursor to end
-					this.selection.select(newImgNode, false);
+					
 					this.selection.collapse(false);
 				}, this);
 				
@@ -187,22 +194,24 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 					var nsText = formattedNamespaces[bs.ns.NS_MEDIA];
 					var prefixedTitle = nsText + ':' + data.title;
-					var newAnchor = this.dom.create(
-						'a',
-						{
-							'title': data.displayText,
-							'href': prefixedTitle,
-							'class': 'internal bs-internal-link',
-							'data-bs-type' : 'internal_link'
-						},
-						data.displayText
-					);
+					var newAnchor = null;
+					var anchorAttrs = {
+						'title': data.displayText,
+						'href': prefixedTitle,
+						'class': 'internal bs-internal-link',
+						'data-bs-type' : 'internal_link'
+					};
 					if( anchor.nodeName.toLowerCase() == 'a' ) {
+						newAnchor = this.dom.create( 'a', anchorAttrs, data.displayText );
 						this.dom.replace(newAnchor, anchor);
+						//Place cursor to end
+						this.selection.select(newImgNode, false);
 					}
 					else {
-						this.dom.insertAfter(newAnchor, anchor);
+						newAnchor = this.dom.createHTML( 'a', anchorAttrs, data.displayText );
+						this.insertContent(newAnchor);
 					}
+					this.selection.collapse(false);
 				}, this);
 				
 				BS.InsertFile.FileDialog.show();

@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Marc Reymann
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
 
  * @package    BlueSpice_Extensions
  * @subpackage SecureFileStore
@@ -68,11 +68,11 @@ class SecureFileStore extends BsExtensionMW {
 			EXTINFO::NAME        => 'SecureFileStore',
 			EXTINFO::DESCRIPTION => 'Prevent unauthorized access to files and images.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Marc Reymann',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-							'bluespice'   => '1.22.0'
+							'bluespice'   => '2.22.0'
 						)
 		);
 		$this->mExtensionKey = 'MW::SecureFileStore';

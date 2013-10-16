@@ -118,7 +118,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			title: title,
 			href: ns+page,
 			type: this.linktype,
-			code: '[[' + ns + page + desc + ']]'
+			code: ns + page + desc
 			//'class': ''
 		};
 	},

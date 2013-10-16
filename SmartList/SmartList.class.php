@@ -25,7 +25,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage SmartList
@@ -67,11 +67,11 @@ class SmartList extends BsExtensionMW {
 			EXTINFO::NAME        => 'SmartList',
 			EXTINFO::DESCRIPTION => 'Displays the last five changes of the wiki in a list.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel, Patric Wirth, Stephan Muggli',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
-				'bluespice' => '1.22.0'
+				'bluespice' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::SmartList';
@@ -208,22 +208,22 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
 		$aPortalConfig[0][] = array(
-						'type'  => 'BS.SmartList.MostVisitedPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
-						)
+			'type'  => 'BS.SmartList.MostVisitedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
+			)
 		);
 		$aPortalConfig[1][] = array(
-						'type'  => 'BS.SmartList.MostEditedPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
-						)
+			'type'  => 'BS.SmartList.MostEditedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
+			)
 		);
 		$aPortalConfig[2][] = array(
-						'type'  => 'BS.SmartList.MostActivePortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
-						)
+			'type'  => 'BS.SmartList.MostActivePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
+			)
 		);
 
 		return true;
@@ -257,11 +257,11 @@ class SmartList extends BsExtensionMW {
 	 * @return boolean always true to keep hook alive
 	 */
 	public function onBSDashboardsUserDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
-		$aPortalConfig[0][] = array(
-						'type'  => 'BS.SmartList.YourEditsPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-lastedits' )->plain()
-						)
+		$aPortalConfig[1][] = array(
+			'type'  => 'BS.SmartList.YourEditsPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-lastedits' )->plain()
+			)
 		);
 
 		return true;

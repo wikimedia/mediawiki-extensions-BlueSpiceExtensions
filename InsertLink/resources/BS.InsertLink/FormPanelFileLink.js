@@ -100,7 +100,7 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 			title: title,
 			href: 'file:///' + target,
 			type: '',
-			code: '[file:///' + target + desc + ']'
+			code: 'file:///' + target + desc
 			//'class': ''
 		};
 	},

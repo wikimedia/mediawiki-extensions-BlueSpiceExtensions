@@ -53,10 +53,10 @@ class PageAccess extends BsExtensionMW {
 			EXTINFO::NAME => 'PageAccess',
 			EXTINFO::DESCRIPTION => 'Controls access on page level.',
 			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::PageAccess';
 

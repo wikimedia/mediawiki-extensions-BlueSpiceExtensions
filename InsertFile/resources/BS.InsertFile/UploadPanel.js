@@ -107,11 +107,9 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			name: 'ignorewarnings'
 		});
 		
-		/*
-		this.bsCategories = Ext.create( 'Ext.ux.form.field.BoxSelect', {
+		this.bsCategories = Ext.create( 'BS.form.CategoryBoxSelect', {
 			fieldLabel: mw.message('bs-insertfile-categories').plain()
 		});
-		*/
 		
 		this.fsDetails = Ext.create( 'Ext.form.FieldSet', {
 			title: 'Details',
@@ -131,12 +129,12 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			this.fsDetails
 		];
 		var detailsItems = [
-				this.taDescription,
-				this.cbLicences,
-				this.cbxWarnings,
-				this.cbxWatch
-				//,this.bsCategories
-			];
+			//this.bsCategories,
+			this.taDescription,
+			this.cbLicences,
+			this.cbxWarnings,
+			this.cbxWatch
+		];
 		
 		$(document).trigger( 'BSUploadPanelInitComponent', [ this, panelItems, detailsItems ] );
 		

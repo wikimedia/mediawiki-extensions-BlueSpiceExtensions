@@ -96,7 +96,7 @@ VisualEditor = (function VisualEditor() {
 				_editorMode = 'tiny';
 				$(document).trigger('VisualEditor::instanceShow', [id]);
 			} else {
-				tinymce.activeEditor.destroy();
+				//tinymce.activeEditor.destroy();
 				tinymce.activeEditor.remove();
 				_editorMode = 'wiki';
 				$(document).trigger('VisualEditor::instanceHide', [id]);

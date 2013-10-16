@@ -40,7 +40,8 @@ $wgResourceModules['ext.bluespice.dashboards'] = array(
 	'messages' => array(
 		'tooltip-p-logo',
 		'bs-dashboards-addportlet',
-		'bs-dashboards-portlets'
+		'bs-dashboards-portlets',
+		'bs-extjs-rssfeeder-rss-title'
 	),
 	'dependencies' => array(
 		'ext.bluespice.extjs.BS.portal'
@@ -58,6 +59,9 @@ $wgResourceModules['ext.bluespice.dashboards.userDashboard'] = array(
 		'ext.bluespice.dashboards'
 	),
 	'messages' => array(
+		//Default portlets user
+		'bs-dashboard-userportlet-calendar-title',
+		'bs-dashboard-userportlet-calendar-description',
 	)
 ) + $aResourceModuleTemplate;
 

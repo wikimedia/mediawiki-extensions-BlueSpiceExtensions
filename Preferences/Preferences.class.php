@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    Bluespice_Extensions
  * @subpackage Preferences
@@ -56,10 +56,10 @@ class BsPreferences extends BsExtensionMW {
 			EXTINFO::NAME => 'Preferences',
 			EXTINFO::DESCRIPTION => 'Offers the possibility to admins, to configurate the whole wiki from a single SpecialPage',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array('bluespice' => '1.22.0')
+			EXTINFO::DEPS => array('bluespice' => '2.22.0')
 		);
 
 		WikiAdmin::registerModule( 'Preferences', array(

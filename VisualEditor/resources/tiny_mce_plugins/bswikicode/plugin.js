@@ -5,7 +5,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
@@ -386,7 +386,7 @@ var BsWikiCode = function() {
 				value = wikiImageObject[property];
 				//"link" may be intentionally empty. Therefore we have to 
 				//check it _before_ "value is empty?"
-				if (property == 'link' && ( value !== 'false' || value !== false) ) {
+				if (property == 'link' && value !== 'false' && value !== false ) {
 					wikiText.push(property + '=' + value);
 					continue;
 				}
@@ -549,7 +549,7 @@ var BsWikiCode = function() {
 				}
 
 				if (type === "internal_link") {
-					if (target === tinymce.activeEditor.dom.decode(label)) {
+					if (target === label ) { //TinyMCE3: tinymce.activeEditor.dom.decode(label)
 						linkwiki = "[[" + target + "]]";
 					} else {
 						linkwiki = "[[" + target + "|" + label + "]]";
@@ -566,11 +566,11 @@ var BsWikiCode = function() {
 							target = target.replace( ':/', '://' );
 						}
 					}
-					if( label == target ) {
-						linkwiki = "[" + target + "]";
-					} else {
+					//if( label == target ) {
+					//	linkwiki = "[" + target + "]";
+					//} else {
 						linkwiki = "[" + target + " " + label + "]";
-					}
+					//}
 				}
 				text = text.replace(links[i], linkwiki);
 			}
@@ -1202,8 +1202,16 @@ var BsWikiCode = function() {
 		//Write back content of <pre> tags.
 		text = _recoverPres(text);
 
-		// p is neccessary to fix Ticket#2010111510000021. do not use p in the complementary line in html2wiki
-		text = text + '<p><br class="bs_lastline" /></p>';
+		//In some cases (i.e. Editor.insertContent('<img ... />') ) the content
+		//is not parsed. We do not want to append any stuff in this case.
+		if( text == textObject.text || text == '<p>'+textObject.text+'</p>' ) {
+			text = textObject.text;
+		}
+		else {
+			//<p> is neccessary to fix Ticket#2010111510000021. do not use <p> 
+			//in the complementary line in html2wiki
+			text = text + '<p><br class="bs_lastline" /></p>';
+		}
 
 		// wrap the text in an object to send it to event listeners
 		textObject = {text: text};
@@ -1224,6 +1232,7 @@ var BsWikiCode = function() {
 	 * @returns {String}
 	 */
 	function _html2wiki(text) {
+console.log( text );
 		// save some work, if the text is empty
 		if (text === '') {
 			return text;
@@ -1255,10 +1264,12 @@ var BsWikiCode = function() {
 		text = text.replace(/<br class="bs_emptyline_first"[^>]*>/gmi, "@@br_emptyline_first@@");
 
 		// if emptyline_first is no longer empty, change it to a normal p
+		text = text.replace(/<p class="bs_emptyline_first"[^>]*>&nbsp;<\/p>/gmi, '<p>@@br_emptyline_first@@</p>'); // TinyMCE 4
 		text = text.replace(/<p class="bs_emptyline_first"[^>]*>(.*?\S+.*?)<\/p>/gmi, "<p>$1</p>");
 		text = text.replace(/<p class="bs_emptyline_first"[^>]*>.*?<\/p>/gmi, "<p>@@br_emptyline_first@@</p>");
 		text = text.replace(/<br class="bs_emptyline"[^>]*>/gmi, "@@br_emptyline@@");
 		// if emptyline is no longer empty, change it to a normal p
+		text = text.replace(/<p class="bs_emptyline"[^>]*>&nbsp;<\/p>/gmi, '<p>@@br_emptyline@@</p>'); // TinyMCE 4
 		text = text.replace(/<p class="bs_emptyline"[^>]*>(.*?\S+.*?)<\/p>/gmi, "<p>$1</p>");
 		text = text.replace(/<p class="bs_emptyline"[^>]*>(.*?)<\/p>/gmi, "<p>@@br_emptyline@@</p>");
 		text = text.replace(/<br mce_bogus="1"\/>/gmi, "");
@@ -1446,7 +1457,7 @@ var BsWikiCode = function() {
 			}
 		}
 		text = _tables2wiki(text);
-
+console.log(text);
 		text = text.replace(/\n?@@br_emptyline_first@@/gmi, "\n");
 		text = text.replace(/\n?@@br_emptyline@@/gmi, "");
 		// Cleanup von falschen Image-URLs
@@ -1760,7 +1771,7 @@ var BsWikiCode = function() {
 				replacer = new RegExp(regex, 'gmi');
 
 				// \n works in IE. In FF, this is not neccessary.
-				if (isIE) {
+				if ( navigator.appName == 'Microsoft Internet Explorer' ) {
 					text = text.replace(replacer, "\n" + _preTags[i]);
 				} else {
 					text = text.replace(replacer, _preTags[i]);
@@ -1776,7 +1787,7 @@ var BsWikiCode = function() {
 				replacer = new RegExp(regex, 'gmi');
 
 				// \n works in IE. In FF, this is not neccessary.
-				if (isIE) {
+				if ( navigator.appName == 'Microsoft Internet Explorer' ) {
 					text = text.replace(replacer, "\n" + _preTagsSpace[i]);
 				} else {
 					text = text.replace(replacer, _preTagsSpace[i]);
@@ -2003,23 +2014,6 @@ var BsWikiCode = function() {
 		_images = []; //Reset the images "array"
 		e.content = _wiki2html(e.content);
 		_loadImageRealUrls();
-
-		//Apply MediaWiki Styling
-		if (e.content.match(/<style data-role="bs-mediawiki-styles">[\S\s]*?<\/style>/gmi) === null) {
-			var mediaWikiStyleBlocks = [];
-			$('style').each(function(i, v) {
-				//"class" attribute gets eaten up by TinyMCE Validator,
-				//therefore we use "data-role".
-				mediaWikiStyleBlocks.push(
-					'<style data-role="bs-mediawiki-styles">' +
-					$(v).text() +
-					'</style>'
-					);
-			});
-
-			e.content += mediaWikiStyleBlocks.join("\n");
-		}
-
 	}
 
 	/**
@@ -2028,11 +2022,8 @@ var BsWikiCode = function() {
 	 * @param {tinymce.ContentEvent} e
 	 */
 	function _onGetContent(e) {
-
 		e.format = 'wiki';
 
-		// remove all style definitions from the html
-		e.content = e.content.replace(/<style data-role="bs-mediawiki-styles">[\S\s]*?<\/style>/gmi, '');
 		// process the html to wikicode
 		e.content = _html2wiki(e.content);
 
@@ -2122,6 +2113,14 @@ var BsWikiCode = function() {
 	
 	this.getSpecialTagList = function() {
 		return _specialtags;
+	},
+	
+	this.getTemplateList = function() {
+		return _templates;
+	},
+	
+	this.getSwitchList = function() {
+		return _switches;
 	}
 };
 

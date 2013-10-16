@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    1.22.0
+ * @version    2.22.0
 
  * @package    BlueSpice_Extensions
  * @subpackage SaferEdit
@@ -64,12 +64,12 @@ class SaferEdit extends BsExtensionMW {
 			EXTINFO::NAME        => 'SaferEdit',
 			EXTINFO::DESCRIPTION => 'Intermediate saving of wiki edits.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '1.22.0',
+			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-										'bluespice'   => '1.22.0',
-										'StateBar' => '1.22.0'
+										'bluespice'   => '2.22.0',
+										'StateBar' => '2.22.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::SaferEdit';

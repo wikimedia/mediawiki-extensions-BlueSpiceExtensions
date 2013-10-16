@@ -24,7 +24,7 @@
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    1.22.0 stable
+ * @version    2.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -74,10 +74,10 @@ class ExtendedSearch extends BsExtensionMW {
 			EXTINFO::NAME => 'ExtendedSearch',
 			EXTINFO::DESCRIPTION => 'Apache Solr (http://lucene.apache.org/solr/) based search plugin to extend the search functionality',
 			EXTINFO::AUTHOR => 'Stephan Muggli, Mathias Scheer, Markus Glaser',
-			EXTINFO::VERSION => '1.22.0',
+			EXTINFO::VERSION => '2.22.0',
 			EXTINFO::STATUS => 'beta',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array( 'bluespice' => '1.22.0' )
+			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::ExtendedSearch';
 
@@ -160,7 +160,8 @@ class ExtendedSearch extends BsExtensionMW {
 	* @return boolean
 	*/
 	public function onBeforePageDisplay( $oOut, $oSkin ) {
-		$oOut->addModules( 'ext.bluespice.extendedsearch' );
+		$oOut->addModuleStyles( 'ext.bluespice.extendedsearch.autocomplete.style' );
+		$oOut->addModules( 'ext.bluespice.extendedsearch.autocomplete' );
 		return true;
 	}
 
