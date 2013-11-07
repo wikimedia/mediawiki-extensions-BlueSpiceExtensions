@@ -49,9 +49,9 @@ class RSSStandards extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param OutputPage $oOutputPage
 	 * @param SkinTemplate $oSkinTemplate
 	 * @return boolean
@@ -146,15 +146,15 @@ class RSSStandards extends BsExtensionMW {
 		$res = $dbr->select(
 			array( 'page', 'recentchanges' ),
 			'*',
-			array( 
+			array(
 				'page_title'     => $sTitle,
 				'page_namespace' => $iNSid,
 				'rc_timestamp > '. $dbr->timestamp( time() - intval( 7 * 86400 ) )
 			),
 			__METHOD__,
 			array( 'ORDER BY' => 'rc_timestamp DESC' ),
-			array( 
-				'page'=> array( 'LEFT JOIN', 'rc_cur_id = page_id' ) 
+			array(
+				'page'=> array( 'LEFT JOIN', 'rc_cur_id = page_id' )
 			)
 		);
 
@@ -217,7 +217,7 @@ class RSSStandards extends BsExtensionMW {
 
 		return $channel->buildOutput();
 	}
-	
+
 	public function buildRssCat() {
 		global $wgRequest, $wgSitename, $wgDBprefix;
 
@@ -527,7 +527,7 @@ class RSSStandards extends BsExtensionMW {
 		$linkBatch->execute();
 		$dbr->dataSeek( $res, 0 );
 
-		$list = ChangesList::newFromUser( $user );
+		$list = ChangesList::newFromContext( $skin->getContext() );
 
 		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_watch' )->plain() );
 
@@ -553,7 +553,7 @@ class RSSStandards extends BsExtensionMW {
 			}
 
 			if ( $wgRCShowWatchingUsers && $user->getOption( 'shownumberswatching' ) ) {
-				$rc->numberofWatchingusers = $dbr->selectField( 
+				$rc->numberofWatchingusers = $dbr->selectField(
 					'watchlist',
 					'COUNT(*)',
 					array(
@@ -608,7 +608,7 @@ class RSSStandards extends BsExtensionMW {
 		$btn->setType('button');
 		$btn->setValue(
 			SpecialPage::getTitleFor( 'Recentchanges' )->getLocalUrl(
-				array( 
+				array(
 					'feed' => 'rss',
 					'u'    => $wgUser->getName(),
 					'h'    => $wgUser->getToken()
