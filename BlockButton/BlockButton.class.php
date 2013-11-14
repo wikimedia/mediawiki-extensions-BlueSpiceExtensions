@@ -94,24 +94,24 @@ class BlockButton extends BsExtensionMW {
 	 * Add the blockpage link to the "more" menu
 	 * 
 	 * @global User $wgUser
-	 * @global Title $wgTitle
 	 * @global type $hwgBlockbuttonOverwriteExistingPages
 	 * @param Skin $skin
 	 * @param type $content_actions
 	 * @return boolean 
 	 */
 	public function addBlockbuttonTab( $skin, &$content_actions ) {
-		global $wgUser,$wgTitle, $hwgBlockbuttonOverwriteExistingPages;
-		if ( $wgTitle->getNamespace() == NS_SECURE ) return true;
-		if ( $wgTitle->getNamespace() == NS_IMAGE ) return true;
-		$oTitle = Title::newFromText( $wgTitle->getText(), NS_SECURE );
+		global $wgUser, $hwgBlockbuttonOverwriteExistingPages;
+		$title = $skin->getTitle();
+		if ( $title->getNamespace() == NS_SECURE ) return true;
+		if ( $title->getNamespace() == NS_IMAGE ) return true;
+		$oTitle = Title::newFromText( $title->getText(), NS_SECURE );
 		if( $oTitle->exists() && !$hwgBlockbuttonOverwriteExistingPages ) return true;
-		if ( $wgTitle->getArticleID() == 0 || $wgTitle->isMainPage() ) return true;
+		if ( $title->getArticleID() == 0 || $title->isMainPage() ) return true;
 		if ( $wgUser->isAllowed('blockpage') ) {
 			$content_actions['blockbutton'] = array(
 				"class" => "",
 				"text" => wfMsg( 'bs-blockbutton-block-page'),
-				"href" => $wgTitle->getLinkURL( array( 'action' => 'blockpage') ),
+				"href" => $title->getLinkURL( array( 'action' => 'blockpage') ),
 				"attributes" => ""
 			);
 		}
