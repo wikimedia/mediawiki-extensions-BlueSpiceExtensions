@@ -77,7 +77,6 @@ class CountThings extends BsExtensionMW {
 	
 	/**
 	 *
-	 * @global Title $wgTitle
 	 * @param Parser $parser
 	 * @return boolean 
 	 */

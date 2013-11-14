@@ -11,7 +11,6 @@ class SpecialFlexiskin extends BsSpecialPage {
 	 * @param string $sParameter
 	 */
 	public function execute($sParameter) {
-		global $wgTitle;
 		parent::execute($sParameter);
 		if ( $this->getUser()->isAllowed( 'flexiskinedit' ) === false ) {
 			$oOutputPage = $this->getOutput();
