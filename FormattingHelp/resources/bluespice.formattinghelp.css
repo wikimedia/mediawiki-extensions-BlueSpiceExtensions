@@ -20,14 +20,15 @@
 }
 
 #bs-formattinghelp-content table tr td {
-	padding: 5px;
-}
-
-#bs-formattinghelp-content table tr td:first-child {
-	text-align: right;
+	padding: 10px 5px;
 }
 
 #bs-editbutton-formattinghelp {
 	/*@embed*/
 	background-image: url(images/button_formatinghelp.png);
+}
+
+#bs-formattinghelp-content th, #bs-formattinghelp-content td{
+	padding: 10px 5px;
+	text-align: left;
 }

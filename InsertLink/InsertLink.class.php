@@ -109,31 +109,40 @@ class InsertLink extends BsExtensionMW {
 	 * @param type $output The ajax output which have to be valid JSON.
 	 */
 	public static function getPage() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		global $wgContLang, $wgRequest;
+		global $wgUser, $wgRequest;
+
+		$aResult = array(
+			'items' => array(),
+			'success' => false
+		);
+		if( !$wgUser->isAllowed('edit') ) {
+			return json_encode($aResult);
+		}
+
 		$iNs = $wgRequest->getInt( 'ns', 0 );
-		$sNamespace = $wgContLang->getNsText( $iNs );
-		$oTestTitle = Title::newFromText( $sNamespace . ':Test' );
+		$dbr = wfGetDB(DB_SLAVE);
 
-		if ( $iNs === false ) {
-			return '{items: []}';
+		$rRes = $dbr->select(
+			'page',
+			array( 'page_id' ),
+			array( 'page_namespace' => $iNs ),
+			__METHOD__,
+			array( 'ORDER BY' => 'page_title' )
+		);
+
+		while( $o = $dbr->fetchObject($rRes) ) {
+			$oTitle = Title::newFromID($o->page_id);
+			if( !$oTitle || !$oTitle->userCan('read')) continue;
+
+			$aResult['items'][] = array(
+				'name' => $oTitle->getText(),
+				'label' => $o->page_id,
+				'ns' => $iNs,
+			);
 		}
+		$aResult['success'] = true;
 
-		$output = '{items: [';
-		if ( is_object( $oTestTitle ) && $oTestTitle->userCan( 'read' ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$res = $dbr->select(array('page'), array('page_title', 'page_namespace', 'page_id'), array('page_namespace' => $iNs), null, array('ORDER BY' => 'page_title')); //, array('page_namespace'=>$ns)
-			while ($page = $dbr->fetchRow($res)) {
-				//TODO: User can see (and link to) pages whose very existence should be kept secret.
-				$output .= '{name:"' . addslashes($page['page_title']) . '", label:"' . $page['page_id'] . '", ns:"' . $page['page_namespace'] . '"},';
-			}
-			if (strrpos($output, ',') == strlen($output) - 1)
-				$output = substr($output, 0, strlen($output) - 1);
-		}
-		$output .= ']}';
-
-		return $output;
-		// TODO MRG (01.07.11 12:24): use json_encode
+		return json_encode( $aResult );
 	}
 
 	/**

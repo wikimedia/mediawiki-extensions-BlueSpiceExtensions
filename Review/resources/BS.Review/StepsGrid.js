@@ -7,7 +7,7 @@ Ext.define( 'BS.Review.StepsGrid', {
 		this.gpMainConf = {
 			height: 215,
 			autoscroll: true
-		}
+		};
 		
 		this.colMainConf.columns = [
 			Ext.create( 'Ext.grid.column.RowNumberer', {

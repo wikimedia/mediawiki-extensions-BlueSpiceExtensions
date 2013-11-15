@@ -71,7 +71,8 @@ $messages['de'] = array(
 $messages['de-formal'] = array(
 	'invalid-namespaces'                          => 'Bitte überprüfen Sie diese Namespaces: $1.',
 	'bs-smartlist-lastedits'                      => 'Ihre Änderungen',
-	'bs-smartlist-lasteditsdesc'                  => 'Liste der von Ihnen zuletzt bearbeiteten Artikel'
+	'bs-smartlist-lasteditsdesc'                  => 'Liste der von Ihnen zuletzt bearbeiteten Artikel',
+	'bs-smartlist-lastedits'                      => 'Ihre Änderungen',
 );
 
 $messages['en'] = array(

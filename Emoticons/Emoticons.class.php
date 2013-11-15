@@ -99,7 +99,7 @@ class Emoticons extends BsExtensionMW {
 		$this->setHook( 'OutputPageBeforeHTML' );
 		$this->setHook( 'ArticleSave' );
 
-		BsConfig::registerVar( 'MW::Emoticons::PathToEmoticons', '/extensions/BlueSpiceExtensions/Emoticons/emoticons', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-emoticons-pref-PathToEmoticons' );
+		BsConfig::registerVar( 'MW::Emoticons::PathToEmoticons', '/extensions/BlueSpiceExtensions/Emoticons/emoticons', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-emoticons-pref-PathToEmoticons' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

@@ -1,4 +1,17 @@
 <?php
+/**
+ * Formatter class for notifications
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Stefan Widmann <widmann@hallowelt.biz>
+
+ * @package    BlueSpice_Extensions
+ * @subpackage Notifications
+ * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
 class BsNotificationsFormatter extends EchoBasicFormatter {
 	
 	public function __construct( $params ) {
@@ -37,13 +50,17 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 				)
 			);
 		} else if( $param === 'agentlink' ) {
-			$this->setUserpageLink(
+			if( $event->getAgent()->isAnon() ) {
+				$message->params( wfMessage( 'bs-echo-anon-user' )->parse() );
+			} else {
+				$this->setUserpageLink(
 					$event,
 					$message,
 					array(
 						'class' => 'mw-echo-userpage'
 					)
-			);
+				);
+			}
 		}else {
 			parent::processParam( $event, $param, $message, $user );
 		}
@@ -70,10 +87,10 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 	 */
 	public function setUserpageLink ( $event, $message, $props = array() ) {
 		$title = $event->getAgent()->getUserPage();
-		$this->buildLink($title, $message, $props, false);
-		
+//		if( $event->getAgent()->isAnon() ) $props['linkText'] = $event->getAgent()->getName ();
+		$this->buildLink($title, $message, $props, false );
 	}
-	
+
 	public function buildLink( $title, $message, $props, $bLinkWithPrefixedText = true ) {
 		$param = array();
 		if ( isset( $props['param'] ) ) {
@@ -99,7 +116,7 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 					$linkText = htmlspecialchars( $title->getText() );
 				}
 			}
-
+			
 			$message->rawParams( Linker::link( $title, $linkText, $class, $param ) );
 		} elseif ( $this->outputFormat === 'email' ) {
 			$message->params( $title->getCanonicalURL( $param ) );

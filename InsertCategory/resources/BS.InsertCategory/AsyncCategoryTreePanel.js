@@ -6,7 +6,7 @@ Ext.define( 'BS.InsertCategory.AsyncCategoryTreePanel', {
 		}
 	},*/
 	width: 250,
-	title: 'Categories',
+	title: mw.message( 'bs-insertcategory-panel-title' ).plain(),
 	useArrows: true,
 	rootVisible: false,
 	displayField: 'text',

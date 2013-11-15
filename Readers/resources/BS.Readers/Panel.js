@@ -40,7 +40,7 @@ Ext.define( 'BS.Readers.Panel', {
 			header: mw.message( 'bs-readers-headerUsername' ).plain(),
 			sortable: true,
 			dataIndex: 'user_name',
-			tpl: '<img src="{user_image}" /> <a href="{user_page}">{user_name}</a>',
+			tpl: '<a href="{user_page}">{user_name}</a>',
 			filterable: true,
 			flex: 1
 		} );

@@ -93,7 +93,7 @@ class NamespaceManager extends BsExtensionMW {
 			$this->registerExtensionSchemaUpdate( 'bs_namespacemanager_backup_text', __DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_text.sql' );
 		}
 
-		BsConfig::registerVar( 'MW::NamespaceManager::NsOffset', 3000, BsConfig::TYPE_INT,  BsConfig::LEVEL_PRIVATE );
+		BsConfig::registerVar( 'MW::NamespaceManager::NsOffset', 2999, BsConfig::TYPE_INT,  BsConfig::LEVEL_PRIVATE );
 
 		$this->setHook( 'NamespaceManager::getMetaFields', 'onGetMetaFields', true );
 		$this->setHook( 'NamespaceManager::getNamespaceData', 'onGetNamespaceData', true );
@@ -333,6 +333,7 @@ class NamespaceManager extends BsExtensionMW {
 					'success' => false,
 					'message' => wfMessage( 'bs-namespacemanager-namespace_name_length' )->plain()
 					) );
+			// TODO MRG (06.11.13 11:17): Unicodefähigkeit?
 			} else if ( !preg_match( '%^[a-zA-Z_\\x80-\\xFF][a-zA-Z0-9_\\x80-\\xFF]{1,99}$%i', $sNamespace ) ) {
 				return json_encode( array(
 					'success' => false,

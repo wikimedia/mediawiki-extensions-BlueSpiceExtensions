@@ -2,12 +2,12 @@ Ext.define( 'BS.Review.StepDialog', {
 	extend: 'BS.Window',
 	singleton: true,
 	modal: true,
-	
+
 	afterInitComponent: function() {
 		this.setTitle( mw.message('bs-review-titleAddReviewer' ).plain() );
 		this.cbUsers = Ext.create( 'BS.form.UserCombo' );
 		this.tfComment = Ext.create( 'Ext.form.TextField', {
-			labalAlign: 'right',
+			labelAlign: 'right',
 			fieldLabel: mw.message('bs-review-labelComment').plain()
 		});
 		
@@ -18,7 +18,7 @@ Ext.define( 'BS.Review.StepDialog', {
 
 		this.callParent();
 	},
-	
+
 	setData: function( obj ) {
 		this.callParent( [obj.data] );
 		if( typeof this.currentData.user_id == 'undefined' ){
@@ -31,7 +31,7 @@ Ext.define( 'BS.Review.StepDialog', {
 		this.cbUsers.setValueByUserId( this.currentData.user_id );
 		this.tfComment.setValue( this.currentData.comment );
 	},
-	
+
 	getData: function() {
 		var data = this.callParent( arguments );
 		var user = this.cbUsers.getUserModel();

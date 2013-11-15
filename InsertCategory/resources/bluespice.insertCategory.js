@@ -1,14 +1,14 @@
 // WYSIWYG mode
 $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons, commands ){
+	var t = plugin;
+	var ed = t.getEditor();
+	
 	var currentImagePath = mw.config.get('wgScriptPath') + '/extensions/BlueSpiceExtensions/InsertCategory/resources/images';
-	buttons.push(
-		{
-			buttonId: 'hwinsertcategory',
-			buttonConfig: {
-				title : 'hwactions.insertcategory',
-				cmd : 'mceHwCategory',
-				image : currentImagePath+'/hwcategory.png'
-			}
+	
+	ed.addButton('hwinsertcategory', {
+		title : mw.message('bs-insertcategory-title').plain(),
+		cmd : 'mceHwCategory',
+		buttonId: 'hwinsertcategory'
 		}
 	);
 

@@ -5,7 +5,6 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
-
  * @package    BlueSpice_Extensions
  * @subpackage VisualEditor
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -32,14 +31,24 @@ $messages['en'] = array(
 	'bs-visualeditor-pref-GuiSwitchable'      => 'GUI Mode switchable',
 	'bs-visualeditor-save-message'            => 'Saved revision at $1 with summary "$2".',
 	'bs-visualeditor-no-summary'              => '/* no summary */',
-	
+
 	'bs-visualeditor-sortable'              => 'Sortable',
-	'bs-visualeditor-sortable-wikitable'    => 'Standard (sortable)',
 	'bs-visualeditor-wikitable'             => 'Standard',
 	'bs-visualeditor-contenttable'          => 'Content',
 	'bs-visualeditor-contenttable-black'    => 'Content (black)',
 	'bs-visualeditor-contenttable-blue'     => 'Content (blue)',
 	'bs-visualeditor-contenttable-darkblue' => 'Content (darkblue)',
+	'bs-visualeditor-cuscosky'              => 'Cusco Sky',
+	'bs-visualeditor-casablanca'            => 'Casablanca',
+	'bs-visualeditor-greyscale'             => 'Greyscale',
+	'bs-visualeditor-greyscale-narrow'      => 'Greyscale (narrow)',
+	
+	'bs-visualeditor-bsactions-wiki'      => 'WikiText',
+	'bs-visualeditor-bsactions-switchgui' => 'Switch toolbar',
+	'bs-visualeditor-bsactions-linebreak' => 'Linkebreak',
+	'bs-visualeditor-bsactions-signature' => 'Signature',
+	
+	'bs-visualeditor-switch-noeditor-desc' => 'Disables the VisualEditor extension for this page',
 );
 
 $messages['de'] = array(
@@ -59,14 +68,23 @@ $messages['de'] = array(
 	'bs-visualeditor-pref-GuiSwitchable'      => 'Anzeigemodus umschaltbar',
 	'bs-visualeditor-save-message'            => 'Version gespeichert um $1 mit der Zusammenfassung "$2".',
 	'bs-visualeditor-no-summary'              => '/* Keine Zusammenfassung */',
-	
+
 	'bs-visualeditor-sortable'              => 'Sortierbar',
-	'bs-visualeditor-sortable-wikitable'    => 'Standard (sortierbar)',
 	'bs-visualeditor-wikitable'             => 'Standard',
 	'bs-visualeditor-contenttable'          => 'Inhaltstabelle',
 	'bs-visualeditor-contenttable-black'    => 'Inhaltstabelle (schwarz)',
 	'bs-visualeditor-contenttable-blue'     => 'Inhaltstabelle (blau)',
 	'bs-visualeditor-contenttable-darkblue' => 'Inhaltstabelle (dunkelblau)',
+	'bs-visualeditor-cuscosky'              => 'Cusco Sky',
+	'bs-visualeditor-casablanca'            => 'Casablanca',
+	'bs-visualeditor-greyscale'             => 'Graustufen',
+	'bs-visualeditor-greyscale-narrow'      => 'Graustufen (schmal)',
+	
+	'bs-visualeditor-bsactions-switchgui' => 'Werkzeugleiste umschalten',
+	'bs-visualeditor-bsactions-linebreak' => 'Zeilenumbruch',
+	'bs-visualeditor-bsactions-signature' => 'Signatur',
+	
+	'bs-visualeditor-switch-noeditor-desc' => 'Deaktiviert die VisualEditor Erweiterung auf dieser Seite',
 );
 
 $messages['de-formal'] = array();

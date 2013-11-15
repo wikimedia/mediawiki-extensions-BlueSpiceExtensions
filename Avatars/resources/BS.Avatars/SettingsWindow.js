@@ -3,7 +3,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 	title: mw.message('bs-avatars-upload-title').plain(),
 	id: 'bs-avatars-upload-window',
 	width: 430,
-	height: 200,
+	/*height: 200,*/
 	singleton: true,
 	closeAction: 'hide',
 	bodyPadding: 5,
@@ -20,6 +20,13 @@ Ext.define('BS.Avatars.SettingsWindow', {
 			}
 		});
 		this.ufLogoUpload.on('upload', this.btnUploadClick, this);
+		this.fsUpload = Ext.create('Ext.form.FieldSet', {
+			title: mw.message('bs-avatars-file-upload-fieldset-title').plain(),
+			collapsible: true,
+			items: [
+				this.ufLogoUpload
+			]
+		});
 		this.tfUserImage = Ext.create('Ext.form.field.Text', {
 			name: 'uimg',
 			fieldLabel: mw.message('bs-avatars-userimage-label').plain(),
@@ -32,22 +39,44 @@ Ext.define('BS.Avatars.SettingsWindow', {
 			text: mw.message('bs-avatars-userimage-save-button').plain()
 		});
 		this.bUserImage.on('click', this.tfUserImageClick, this);
+		this.fsUserImage = Ext.create('Ext.form.FieldSet', {
+			title: mw.message('bs-avatars-user-image-fieldset-title').plain(),
+			collapsible: true,
+			items: [
+				this.tfUserImage,
+				this.bUserImage
+			]
+		});
 		this.bGenerateNew = Ext.create('Ext.Button', {
 			text: mw.message('bs-avatars-generate-new-label').plain()
 					//height: 50,
 					//width: 50			
 		});
 		this.bGenerateNew.on('click', this.btnGenerateNewClick, this);
+		this.fsGenerateNew = Ext.create('Ext.form.FieldSet', {
+			title: mw.message('bs-avatars-auto-generate-fieldset-title').plain(),
+			collapsible: true,
+			items: [
+				this.bGenerateNew
+			]
+		});
+		this.bCancel = Ext.create('Ext.Button', {
+			text: mw.message('bs-avatars-cancel-button').plain()
+		});
+		this.bCancel.on('click', this.btnCancelClick, this);
 		this.items = [
-			this.ufLogoUpload,
-			this.tfUserImage
+			this.fsUpload,
+			this.fsUserImage,
+			this.fsGenerateNew
 		];
 		this.buttons = [
-			this.bGenerateNew,
-			this.bUserImage
+			this.bCancel
 		];
 
 		this.callParent(arguments);
+	},
+	btnCancelClick: function() {
+		this.close();
 	},
 	doGenerateNew: function() {
 		Ext.Ajax.request({

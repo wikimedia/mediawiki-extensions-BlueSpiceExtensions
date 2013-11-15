@@ -76,7 +76,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			var responseObj = Ext.decode(response.responseText);
 			if (responseObj.success === true) {
 				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src;
+				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
 				this.currentData.skinId = responseObj.id;
 			} else {
 				bs.util.alert('bs-flexiskin-saveskin-error',
@@ -147,7 +147,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			var responseObj = Ext.decode(response.responseText);
 			if (responseObj.success === true) {
 				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src;
+				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
 				this.setData(responseObj.data);
 			} else {
 				bs.util.alert('bs-flexiskin-addskin-error',
@@ -183,7 +183,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			var responseObj = Ext.decode(response.responseText);
 			if (responseObj.success === true) {
 				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src;
+				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
 			} else {
 				bs.util.alert('bs-flexiskin-saveskinpreview-error',
 					{

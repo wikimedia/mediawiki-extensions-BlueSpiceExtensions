@@ -6,6 +6,7 @@ $wgExtensionMessagesFiles['SaferEdit'] = __DIR__ . '/languages/SaferEdit.i18n.ph
 
 $wgResourceModules['ext.bluespice.saferedit.general'] = array(
 	'scripts' => 'bluespice.SaferEdit.general.js',
+	'position' => 'bottom',
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/SaferEdit/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/SaferEdit/resources',
 );

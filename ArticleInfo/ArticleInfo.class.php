@@ -104,9 +104,6 @@ class ArticleInfo extends BsExtensionMW {
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'BeforePageDisplay');
 
-		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
-		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
-
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -122,73 +119,8 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		$oOutputPage->addModules('ext.bluespice.articleinfo');
+		$oOutputPage->addModules( 'ext.bluespice.articleinfo' );
 		return true;
-	}
-
-		/**
-	 * Event-Handler for 'MW::Utility::WidgetListHelper::InitKeywords'. Registers a callback for the WHOISONLINE Keyword.
-	 * @param BsEvent $oEvent The Event object
-	 * @param array $aKeywords An array of Keywords array( 'KEYWORD' => $callable )
-	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
-	 */
-	public function onBSWidgetListHelperInitKeyWords( &$aKeywords, $oTitle ) {
-		$aKeywords[ 'TEMPLATES' ] = array( $this, 'onWidgetListKeyword' );
-		return true;
-	}
-
-	/**
-	 * Renders the widget
-	 * @param array $aViews List of widgets. Add to this list.
-	 * @param object $oUser current user object
-	 * @param object $oTitle current title object
-	 * @return boolean Always true
-	 */
-	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$aViews[] = $this->onWidgetListKeyword( $oTitle );
-		return true;
-	}
-
-	/**
-	 * Callback for WidgetListHelper. Adds the WhoIsOnline Widget to the list if Keyword is found.
-	 * @return ViewWidget.
-	 */
-	public function onWidgetListKeyword( $oTitle ) {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		$oWidgetView = new ViewWidget();
-		$oWidgetView
-			->setId( 'bs-articleinfo-templates' )
-			->setTitle( wfMessage( 'bs-articleinfo-templates' )->plain() )
-			->setBody( $this->getPortlet() )
-			->setTooltip( wfMessage( 'bs-articleinfo-templates' )->plain() )
-			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-articleinfo-portlet' ) ); //For correct margin and fontsize
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-		return $oWidgetView;
-	}
-
-	
-	/**
-	 * Generates list of templates
-	 * @return string list of edits
-	 */
-	public function getPortlet() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		$aTemplatesTitles = $this->getTitle()->getTemplateLinksFrom();
-
-		$aTemplates = array();
-		foreach ( $aTemplatesTitles as $oTitle ) {
-			$sLink = Linker::link( $oTitle, BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) ) );
-			$aTemplates[] = '<li>' . $sLink . '</li>';
-		}
-
-		if ( empty( $aTemplates ) ) {
-			$aTemplates[] = '<li>' . wfMessage( 'bs-articleinfo-notemplates' ) . '</li>';
-		}
-
-		$sEdits = '<ul>' . implode( '', $aTemplates ) .'</ul>';
-		wfProfileOut( 'BS::'.__METHOD__ );
-		return $sEdits;
 	}
 
 	/**
@@ -200,7 +132,7 @@ class ArticleInfo extends BsExtensionMW {
 		$aSortTopVars['statebartoplastedited'] = wfMessage( 'bs-articleinfo-statebartoplastedited' )->plain();
 		$aSortTopVars['statebartoplasteditor'] = wfMessage( 'bs-articleinfo-statebartoplasteditor' )->plain();
 		$aSortTopVars['statebartopcategories'] = wfMessage( 'bs-articleinfo-statebartopcategories' )->plain();
-		$aSortTopVars['statebartopsubpages']   = wfMessage( 'bs-articleinfo-statebartopsubpages' )->plain();
+		$aSortTopVars['statebartopsubpages'] = wfMessage( 'bs-articleinfo-statebartopsubpages' )->plain();
 		//postponed
 		//HINT: http://84.16.252.165/otrs24/index.pl?Action=AgentTicketZoom;TicketID=3980;ArticleID=22500#22173
 		//$aSortTopVars['statebartoparticleviews']	= wfMsg( 'bs-articleinfo-statebartoparticleviews' );
@@ -213,9 +145,9 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStatebarAddSortBodyVars( &$aSortBodyVars ) {
-		$aSortBodyVars['statebarbodycategories']   = wfMessage( 'bs-articleinfo-statebarbodycategories' )->plain();
-		$aSortBodyVars['statebarbodyeditsummary']  = wfMessage( 'bs-articleinfo-statebarbodyeditsummary' )->plain();
-		$aSortBodyVars['statebarbodysubpages']     = wfMessage( 'bs-articleinfo-statebarbodysubpages' )->plain();
+		$aSortBodyVars['statebarbodycategories'] = wfMessage( 'bs-articleinfo-statebarbodycategories' )->plain();
+		$aSortBodyVars['statebarbodysubpages'] = wfMessage( 'bs-articleinfo-statebarbodysubpages' )->plain();
+		$aSortBodyVars['statebarbodytemplates'] = wfMessage( 'bs-articleinfo-statebarbodytemplates' )->plain();
 		return true;
 	}
 	
@@ -257,13 +189,13 @@ class ArticleInfo extends BsExtensionMW {
 		if ( BsExtensionManager::isContextActive( 'MW::ArticleInfo::Hide' ) ) return true;
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$aBodyElements = array(
-			'statebarbodyeditsummary' => $this->makeStateBarBodyEditSummary( $oTitle ),
 			'statebarbodysubpages' => $this->makeStateBarBodySubPages( $oTitle ),
-			'statebarbodycategories' => $this->makeStateBarBodyCategories( $oTitle )
+			'statebarbodycategories' => $this->makeStateBarBodyCategories( $oTitle ),
+			'statebarbodytemplates' => $this->makeStateBarBodyTemplates( $oTitle )
 		);
 
-		foreach( $aBodyElements as $sKey => $oBodyView) {
-			if(!$oBodyView) continue;
+		foreach ( $aBodyElements as $sKey => $oBodyView ) {
+			if ( !$oBodyView ) continue;
 			$aBodyViews[$sKey] = $oBodyView;
 		}
 
@@ -533,29 +465,32 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
-	 * @param Title $oTitle
-	 * @return \ViewStateBarBodyElement
+	 * Generates list of templates
+	 * @return string list of edits
 	 */
-	private function makeStateBarBodyEditSummary( $oTitle ) {
+	private function makeStateBarBodyTemplates( $oTitle ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$oLastEditSummaryView = new ViewStateBarBodyElement();
+		$aTemplatesTitles = $oTitle->getTemplateLinksFrom();
 
-		$sSummary = wfMessage( 'bs-articleinfo-no-summary' )->plain();
-		$oArticle = new Article( $oTitle );
-		if ( $oArticle == null )
-			$sSummary = wfMessage( 'bs-articleinfo-not-logged-in' )->plain();
-		else if ( $oArticle->getComment() )
-			$sSummary = $oArticle->getComment(); // TODO RBV (30.11.10 13:14): Would be cool to parse WikiText but there stands the problem with image links. Some images are pretty huge and won't get scaled.
+		$aTemplates = array();
+		foreach ( $aTemplatesTitles as $oTitle ) {
+			$sLink = Linker::link( $oTitle, $oTitle->getText() );
+			$aTemplates[] = $sLink;
+		}
 
-		$oLastEditSummaryView->setKey( 'EditSummary' );
-		$oLastEditSummaryView->setHeading( wfMessage( 'bs-articleinfo-edit-summary' )->plain() );
-		$oLastEditSummaryView->setBodyText( $sSummary );
+		if ( empty( $aTemplates ) ) {
+			$aTemplates[] = wfMessage( 'bs-articleinfo-notemplates' );
+		}
 
-		wfRunHooks( 'BSArticleInfoBeforeAddEditSummaryView', array( $this, &$oLastEditSummaryView ) );
+		$sEdits = implode( '<br />', $aTemplates );
+
+		$oTemplatesView = new ViewStateBarBodyElement();
+		$oTemplatesView->setKey( 'Templates' );
+		$oTemplatesView->setHeading( wfMessage( 'bs-articleinfo-templates' )->plain() );
+		$oTemplatesView->setBodyText( $sEdits );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
-		return $oLastEditSummaryView;
+		return $oTemplatesView;
 	}
 
 	/**
@@ -589,7 +524,7 @@ class ArticleInfo extends BsExtensionMW {
 	 */
 	private function makeStateBarBodySubPages( $oTitle ) {
 		global $wgUser;
-		if( $oTitle->hasSubpages() == false ) return false;
+		if ( $oTitle->hasSubpages() == false ) return false;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
 
@@ -599,16 +534,15 @@ class ArticleInfo extends BsExtensionMW {
 
 		$aSubpages = $oTitle->getSubpages( -1 );
 
-		if( count($aSubpages) > 100 ) {
+		if ( count( $aSubpages ) > 100 ) {
 			$oSubpageListView->setBodyText( wfMessage( 'bs-articleinfo-subpages-too-much' )->plain() );
-		}
-		else {
+		} else {
 			// TODO RBV (22.02.12 10:22): Less inline CSS, more use of classes
 			$oList = new ViewBaseElement();
 			$oList->setAutoWrap( '<ul style="margin:0">###CONTENT###</ul>' );
 			$oList->setTemplate( '<li style="{STYLE}">&rarr; {LINK}</li>' );
 
-			foreach( $aSubpages as $oTitle ) {
+			foreach ( $aSubpages as $oTitle ) {
 				$sLink = $wgUser->getSkin()->link( $oTitle, $oTitle->getSubpageText() );
 				$sStyle = 'margin-left:'.( count( explode( '/', $oTitle->getText() ) ) - 1 ).'em';
 				$oList->addData( array( 'LINK' => $sLink, 'STYLE' => $sStyle ) );
@@ -617,7 +551,7 @@ class ArticleInfo extends BsExtensionMW {
 			$oSubpageListView->setBodyText( $oList->execute() );
 		}
 
-		wfRunHooks('BSArticleInfoBeforeSubpagesBodyView', array( $this, &$oSubpageListView ));
+		wfRunHooks( 'BSArticleInfoBeforeSubpagesBodyView', array( $this, &$oSubpageListView ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oSubpageListView;

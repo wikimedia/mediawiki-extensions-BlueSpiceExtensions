@@ -1,17 +1,12 @@
 Ext.define( 'BS.Review.OverviewPanel', {
 	extend: 'Ext.grid.Panel',
+	features: [],
 	viewConfig: { 
 		forceFit: true
 	},
-	
+
 	initComponent: function() {
-		this.cbUser = Ext.create( 'BS.form.UserCombo' );
-		this.dockedItems = {
-			xtype: 'toolbar',
-			dock: 'top',
-			items: [ this.cbUser ]
-		};
-		
+
 		this.store = Ext.create( 'Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
@@ -20,15 +15,18 @@ Ext.define( 'BS.Review.OverviewPanel', {
 					type: 'json',
 					root: 'payload',
 					idProperty: 'rev_id'
+				},
+				extraParams: {
+					userID: mw.config.get('bsSpecialReviewUserID', 0)
 				}
 			},
-			fields: [ 'rev_id', 'page_title', 'owner_name', 'rev_mode',
+			fields: [ 'rev_id', 'page_title', 'owner_name', 'owner_real_name', 'rev_mode',
 				'rev_mode_text', 'rev_status', 'rev_status_text', 'rejected',
 				'accepted', 'accepted_text', 'total', 'endtimetamp', 
 				'assessors', 'startdate', 'enddate' ],
 			autoLoad: true
 		});
-		
+
 		this.columns = {
 			defaults: {
 				flex: 1
@@ -43,6 +41,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				{
 					header: mw.message('bs-review-header-owner_name').plain(),
 					dataIndex: 'owner_name',
+					renderer: this.renderOwner,
 					sortable: false
 				},
 				{
@@ -74,10 +73,31 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				}
 			]
 		};
-		
+
+		this.filters = Ext.create('Ext.ux.grid.FiltersFeature', {
+			encode: true,
+			local: false,
+			filters: [{
+				type: 'string',
+				dataIndex: 'page_title'
+			},{
+				type: 'string',
+				dataIndex: 'owner_name'
+			},{
+				type: 'string',
+				dataIndex: 'assessors'
+			}]
+		});
+
+		this.features = [this.filters];
+
 		this.callParent(arguments)
 	},
-	
+
+	renderOwner: function( value, metaData, record, rowIndex, colIndex, store ) {
+		return record.get('owner_real_name') || value;
+	},
+
 	renderPageTitle: function( cellValue, record ) {
 		return mw.html.element(
 			"a",
@@ -87,7 +107,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			cellValue
 		);
 	},
-	
+
 	renderAssessors: function( cellValue, record ) {
 		var table = '<table cellpadding="5">';
 		var row = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
@@ -105,7 +125,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			}
 			table += row.format(
 				status,
-				line.name,
+				line.real_name || line.name,
 				line.timestamp || ''
 			);
 		}

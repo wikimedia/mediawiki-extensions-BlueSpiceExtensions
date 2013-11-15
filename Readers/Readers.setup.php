@@ -13,6 +13,7 @@ $wgSpecialPages['Readers'] = 'SpecialReaders';
 $wgSpecialPageGroups['Readers'] = 'bluespice';
 
 $wgAjaxExportList[] = 'Readers::getUsers';
+$wgAjaxExportList[] = 'Readers::getData';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP.'/extensions/BlueSpiceExtensions/Readers/resources',
@@ -23,24 +24,35 @@ $aResourceModuleTemplate = array(
 $wgResourceModules['ext.bluespice.readers.styles'] = array(
 	'styles' => array(
 		'bluespice.readers.css'
-	),
-	'dependencies' => array(
-		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.readers.specialreaders'] = array(
 	'scripts' => array(
-		'extensions/BlueSpiceExtensions/Readers/resources/bluespice.readers.js',
+		'bluespice.readers.js',
 	),
 	'dependencies' => array(
 		'ext.bluespice.extjs'
 	),
+	'position' => 'bottom',
 	'messages' => array(
 		'bs-readers-headerUsername',
 		'bs-readers-headerReadersPath',
 		'bs-readers-headerTs'
+	)
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.readers.specialreaderspath'] = array(
+	'scripts' => array(
+		'bluespice.readerspath.js',
 	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
-);
+	'dependencies' => array(
+		'ext.bluespice.extjs'
+	),
+	'position' => 'bottom',
+	'messages' => array(
+		'bs-readers-headerUsername',
+		'bs-readers-headerReadersPath',
+		'bs-readers-headerTs'
+	)
+) + $aResourceModuleTemplate;

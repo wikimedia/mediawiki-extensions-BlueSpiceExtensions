@@ -96,11 +96,13 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 			target = this.tfTargetUrl.getValue();
 		}
 
+		target = target.replace(' ', '%20');
+
 		return { 
 			title: title,
 			href: 'file:///' + target,
 			type: '',
-			code: 'file:///' + target + desc
+			code: '[file:///' + target + desc + ']'
 			//'class': ''
 		};
 	},

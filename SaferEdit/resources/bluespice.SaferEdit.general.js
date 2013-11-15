@@ -50,7 +50,7 @@ BsSaferEdit = {
 
 		BSPing.registerListener( 'SaferEditIsSomeoneEditing', BsSaferEdit.interval, [], BsSaferEdit.someoneIsEditingListener );
 	}
-}
+};
 
 $(document).ready( function() { 
 	BsSaferEdit.init();

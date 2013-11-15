@@ -69,7 +69,7 @@ class Avatars extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn('BS::' . __METHOD__);
 
-		BsConfig::registerVar('MW::Avatars::DefaultSize', 48, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-Avatars-pref-DefaultSize', 'int');
+		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-Avatars-pref-DefaultSize', 'int');
 		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-Avatars-pref-Generator', 'select');
 
 		$this->setHook('BSAdapterGetUserMiniProfileBeforeInit');
@@ -106,6 +106,11 @@ class Avatars extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBSAdapterGetUserMiniProfileBeforeInit($oUserMiniProfileView, $oUser, $aParams) {
+		if ($oUser->isAnon()) {
+			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::AnonUserImage'));
+			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
+			return true;
+		}
 		# If user has set MW image or URL return immediately
 		if ($oUser->getOption('MW::UserImage'))
 			return true;
@@ -240,9 +245,10 @@ class Avatars extends BsExtensionMW {
 		self::unsetUserImage($wgUser);
 		$oAvatars = BsExtensionManager::getExtension('Avatars');
 		$sAvatarFileName = self::$sAvatarFilePrefix . $wgUser->getId() . ".png";
-		$oStatus = BsFileSystemHelper::uploadFile($wgRequest->getVal('name'), $oAvatars->mInfo[EXTINFO::NAME], $sAvatarFileName, "png");
+		$oStatus = BsFileSystemHelper::uploadAndConvertImage($wgRequest->getVal('name'), $oAvatars->mInfo[EXTINFO::NAME], $sAvatarFileName);
 		if (!$oStatus->isGood()) {
-			$aResult = json_encode(array('success' => false, 'msg' => $oStatus->getMessage()));
+			$aErrors = $oStatus->getErrorsArray();
+			$aResult = json_encode(array('success' => false, 'msg' => $aErrors[0][0]));
 		} else {
 			$aResult = json_encode(array('success' => true, 'msg' => wfMessage('bs-avatars-upload-complete')->plain(), 'name' => $oStatus->getValue()));
 			# found no way to regenerate thumbs. just delete thumb folder if it exists

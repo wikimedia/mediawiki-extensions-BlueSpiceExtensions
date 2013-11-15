@@ -45,7 +45,12 @@ $messages['en'] = array(
     'bs-flexiskin-labelBackgroundColor' => 'Background Color',
     'bs-flexiskin-headerHeader' => 'Header',
     'bs-flexiskin-labelHeaderUpload' => 'Logo',
-    'bs-flexiskin-labelBackgroundUpload' => 'Background Image',
+    'bs-flexiskin-labelBackgroundUpload' => 'Background image',
+	'bs-flexiskin-no-repeat' => 'no repeat',
+	'bs-flexiskin-repeat-x' => 'horizontal repeat',
+	'bs-flexiskin-repeat-y' => 'vertical repeat',
+	'bs-flexiskin-repeat' => 'horizontal and vertical repeat',
+	'bs-flexiskin-labelRepeatBackground' => 'Repeat background image',
     'bs-flexiskin-labelCompleteColor' => 'Complete color',
     'bs-flexiskin-no-img' => 'No Image',
     'bs-flexiskin-headerPosition' => "Positions and sizes",
@@ -54,7 +59,8 @@ $messages['en'] = array(
     'bs-flexiskin-left' => 'left',
     'bs-flexiskin-right' => 'right',
     'bs-flexiskin-center' => 'center',
-    'bs-flexiskin-labelWidth' => 'Complete width (px)'
+    'bs-flexiskin-labelWidth' => 'Complete width (px)',
+	'bs-flexiskin-labelFullWidth' => 'Maximum width'
 );
 
 $messages['de'] = array(
@@ -89,6 +95,11 @@ $messages['de'] = array(
     'bs-flexiskin-headerHeader' => 'Kopfleiste',
     'bs-flexiskin-labelLogoUpload' => 'Logo',
     'bs-flexiskin-labelBackgroundUpload' => 'Hintergrundbild',
+	'bs-flexiskin-labelRepeatBackground' => 'Hintergrundbild wiederholen',
+	'bs-flexiskin-no-repeat' => 'keine Wiederholung',
+	'bs-flexiskin-repeat-x' => 'horizontale Wiederholung',
+	'bs-flexiskin-repeat-y' => 'vertikale Wiederholung',
+	'bs-flexiskin-repeat' => 'horizontale und vertikale Wiederholung',
     'bs-flexiskin-labelCompleteColor' => 'Gesamtfarbe',
     'bs-flexiskin-no-img' => 'Kein Bild',
     'bs-flexiskin-headerPosition' => "Positionen und Größen",
@@ -97,7 +108,8 @@ $messages['de'] = array(
     'bs-flexiskin-left' => 'links',
     'bs-flexiskin-right' => 'rechts',
     'bs-flexiskin-center' => 'mittig',
-    'bs-flexiskin-labelWidth' => 'Gesamtbreite (px)'
+    'bs-flexiskin-labelWidth' => 'Gesamtbreite (px)',
+	'bs-flexiskin-labelFullWidth' => 'Maximale Breite'
 );
 
 $messages['de-formal'] = array(

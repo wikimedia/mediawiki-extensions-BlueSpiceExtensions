@@ -150,7 +150,7 @@ var BsActions = function() {
 
 	this.getInfo = function() {
 		var info = {
-			longname: 'BlueSpice Edit Dialogs',
+			longname: 'BlueSpice Edit Actions',
 			author: 'Hallo Welt! - Medienwerkstatt GmbH',
 			authorurl: 'http://www.hallowelt.biz',
 			infourl: 'http://www.hallowelt.biz'
@@ -169,24 +169,27 @@ var BsActions = function() {
 		_currentImagePath = mw.config.get('wgScriptPath')
 			+ '/extensions/BlueSpiceExtensions/VisualEditor/resources/tiny_mce_plugins/bsactions/images';
 
+		//HINT: TinyMCE I18N seems not wo work. Using MediaWiki I18N
 		buttons = [{
 				buttonId: 'bsswitch',
 				buttonConfig: {
-					title: 'bsactions.switchgui',
+					title: mw.message('bs-visualeditor-bsactions-switchgui').plain(), //'bsactions.switchgui',
 					cmd: 'mceBsSwitch',
+					role: 'switchgui',
 					image: _currentImagePath + '/hwswitch.gif'
 				}
 			}, {
 				buttonId: 'bssignature',
 				buttonConfig: {
-					title: 'bsactions.signature',
+					title: mw.message('bs-visualeditor-bsactions-signature').plain(), //'bsactions.signature',
 					cmd: 'mceBsSignature',
+					role: 'signature',
 					image: _currentImagePath + '/hwsignature.gif'
 				}
 			}, {
 				buttonId: 'bswiki',
 				buttonConfig: {
-					title: 'bsactions.wiki',
+					title: mw.message('bs-visualeditor-bsactions-wiki').plain(), //'bsactions.wiki',
 					cmd: 'mceBsWiki',
 					role: 'editor_switcher',
 					image: _currentImagePath + '/hwwiki.gif'
@@ -194,30 +197,52 @@ var BsActions = function() {
 			}, {
 				buttonId: 'bslinebreak',
 				buttonConfig: {
-					title: 'bsactions.linebreak',
+					title: mw.message('bs-visualeditor-bsactions-linebreak').plain(), //'bsactions.linebreak',
 					cmd: 'mceBsLinebreak',
+					role: 'linebreak',
 					image: _currentImagePath + '/hwlinebreak.gif'
 				}
 			}, {
 				buttonId: 'bstableaddrowbefore',
 				buttonConfig: {
-					title: 'bsactions.tableaddrowbefore',
+					title: 'Insert row before',
 					cmd: 'mceTableInsertRowBefore',
 					image: _currentImagePath + '/hwtableinsertrowbefore.gif'
 				}
 			}, {
 				buttonId: 'bstableaddrowafter',
 				buttonConfig: {
-					title: 'bsactions.tableaddrowafter',
+					title: 'Insert row after',
 					cmd: 'mceTableInsertRowAfter',
 					image: _currentImagePath + '/hwtableinsertrowafter.gif'
 				}
 			}, {
 				buttonId: 'bstabledeleterow',
 				buttonConfig: {
-					title: 'bsactions.tabledeleterow',
+					title: 'Delete row',
 					cmd: 'mceTableDeleteRow',
 					image: _currentImagePath + '/hwtabledeleterow.gif'
+				}
+			}, {
+				buttonId: 'bstableaddcolumnbefore',
+				buttonConfig: {
+					title: 'Insert column before',
+					cmd: 'mceTableInsertColBefore',
+					image: _currentImagePath + '/hwtableinsertcolumnbefore.gif'
+				}
+			}, {
+				buttonId: 'bstableaddcolumnafter',
+				buttonConfig: {
+					title: 'Insert column after',
+					cmd: 'mceTableInsertColAfter',
+					image: _currentImagePath + '/hwtableinsertcolumnafter.gif'
+				}
+			}, {
+				buttonId: 'bstabledeletecolumn',
+				buttonConfig: {
+					title: 'Delete column',
+					cmd: 'mceTableDeleteCol',
+					image: _currentImagePath + '/hwtabledeletecolumn.gif'
 				}
 			}];
 
@@ -234,7 +259,6 @@ var BsActions = function() {
 			}, {
 				commandId: 'mceBsSignature',
 				commandCallback: function() {
-
 					_editor.selection.setContent('--~~~~');
 				} //Inserts a signature
 			}, {
@@ -269,3 +293,4 @@ var BsActions = function() {
 };
 
 tinymce.PluginManager.add('bsactions', BsActions);
+//tinymce.PluginManager.requireLangPack('bsactions'); //Seems not to work

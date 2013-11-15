@@ -26,7 +26,6 @@
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage SmartList
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -87,31 +86,32 @@ class SmartList extends BsExtensionMW {
 		$this->setHook( 'ArticleSaveComplete' );
 		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
+		$this->setHook( 'BSUserSidebarDefaultWidgets' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
-		BsConfig::registerVar('MW::SmartList::Count', 5, BsConfig::LEVEL_USER | BsConfig::TYPE_INT, 'bs-smartlist-pref-Count', 'int');
-		BsConfig::registerVar('MW::SmartList::Namespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Namespaces', 'multiselectex');
-		BsConfig::registerVar('MW::SmartList::ExcludeNamespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-ExcludeNamespaces', 'multiselectex');
-		BsConfig::registerVar('MW::SmartList::Categories', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING, 'bs-smartlist-pref-Categories', 'multiselectplusadd');
-		BsConfig::registerVar('MW::SmartList::ExcludeCategories', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING, 'bs-smartlist-pref-ExcludeCategories', 'multiselectplusadd');
+		BsConfig::registerVar( 'MW::SmartList::Count', 5, BsConfig::LEVEL_USER | BsConfig::TYPE_INT, 'bs-smartlist-pref-Count', 'int');
+		BsConfig::registerVar( 'MW::SmartList::Namespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Namespaces', 'multiselectex');
+		BsConfig::registerVar( 'MW::SmartList::ExcludeNamespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-ExcludeNamespaces', 'multiselectex');
+		BsConfig::registerVar( 'MW::SmartList::Categories', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING, 'bs-smartlist-pref-Categories', 'multiselectplusadd');
+		BsConfig::registerVar( 'MW::SmartList::ExcludeCategories', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING, 'bs-smartlist-pref-ExcludeCategories', 'multiselectplusadd');
 		// possible values: AND, OR
 		BsConfig::registerVar('MW::SmartList::CategoryMode', 'OR', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-CategoryMode', 'select');
 		// possible values: -, day, week, month
-		BsConfig::registerVar('MW::SmartList::Period', '-', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Period', 'select');
-		BsConfig::registerVar('MW::SmartList::Mode', 'recentchanges', BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_STRING, 'bs-smartlist-pref-Mode' );
-		BsConfig::registerVar('MW::SmartList::ShowMinorChanges', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowMinorChanges', 'toggle');
-		BsConfig::registerVar('MW::SmartList::ShowOnlyNewArticles', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowOnlyNewArticles', 'toggle');
-		BsConfig::registerVar('MW::SmartList::Trim', 20, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-Trim', 'int');
-		BsConfig::registerVar('MW::SmartList::ShowText', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowText', 'toggle');
-		BsConfig::registerVar('MW::SmartList::TrimText', 50, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-TrimText', 'int');
+		BsConfig::registerVar( 'MW::SmartList::Period', '-', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Period', 'select');
+		BsConfig::registerVar( 'MW::SmartList::Mode', 'recentchanges', BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_STRING, 'bs-smartlist-pref-Mode' );
+		BsConfig::registerVar( 'MW::SmartList::ShowMinorChanges', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowMinorChanges', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::ShowOnlyNewArticles', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowOnlyNewArticles', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::Trim', 20, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-Trim', 'int');
+		BsConfig::registerVar( 'MW::SmartList::ShowText', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowText', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::TrimText', 50, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-TrimText', 'int');
 		// possible values: title, time
-		BsConfig::registerVar('MW::SmartList::Order', 'time', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Order', 'select'); //title|time
-		BsConfig::registerVar('MW::SmartList::ShowNamespace', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowNamespace', 'toggle');
-		BsConfig::registerVar('MW::SmartList::Comments', false, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Comments', 'check');
+		BsConfig::registerVar( 'MW::SmartList::Order', 'time', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Order', 'select'); //title|time
+		BsConfig::registerVar( 'MW::SmartList::ShowNamespace', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowNamespace', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::Comments', false, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Comments', 'check');
 
 		wfProfileOut('BS::' . __METHOD__);
 	}
@@ -171,28 +171,28 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
 		$aPortlets[] = array(
-						'type'  => 'BS.SmartList.MostEditedPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
-						),
-						'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain(),
-						'description' => wfMessage( 'bs-smartlist-mosteditedpagesdesc' )->plain()
+			'type'  => 'BS.SmartList.MostEditedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
+			),
+			'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain(),
+			'description' => wfMessage( 'bs-smartlist-mosteditedpagesdesc' )->plain()
 		);
 		$aPortlets[] = array(
-						'type'  => 'BS.SmartList.MostVisitedPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
-						),
-						'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain(),
-						'description' => wfMessage( 'bs-smartlist-mostvisitedpagesdesc' )->plain()
+			'type'  => 'BS.SmartList.MostVisitedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
+			),
+			'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain(),
+			'description' => wfMessage( 'bs-smartlist-mostvisitedpagesdesc' )->plain()
 		);
 		$aPortlets[] = array(
-						'type'  => 'BS.SmartList.MostActivePortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
-						),
-						'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain(),
-						'description' => wfMessage( 'bs-smartlist-mostactiveusersdesc' )->plain()
+			'type'  => 'BS.SmartList.MostActivePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
+			),
+			'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain(),
+			'description' => wfMessage( 'bs-smartlist-mostactiveusersdesc' )->plain()
 		);
 
 		return true;
@@ -237,12 +237,36 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onBSDashboardsUserDashboardPortalPortlets( &$aPortlets ) {
 		$aPortlets[] = array(
-						'type'  => 'BS.SmartList.YourEditsPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-smartlist-lastedits' )->plain()
-						),
-						'title' => wfMessage( 'bs-smartlist-lastedits' )->plain(),
-						'description' => wfMessage( 'bs-smartlist-lasteditsdesc' )->plain()
+			'type'  => 'BS.SmartList.YourEditsPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-lastedits' )->plain()
+			),
+			'title' => wfMessage( 'bs-smartlist-lastedits' )->plain(),
+			'description' => wfMessage( 'bs-smartlist-lasteditsdesc' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.SmartList.MostEditedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
+			),
+			'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain(),
+			'description' => wfMessage( 'bs-smartlist-mosteditedpagesdesc' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.SmartList.MostVisitedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
+			),
+			'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain(),
+			'description' => wfMessage( 'bs-smartlist-mostvisitedpagesdesc' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.SmartList.MostActivePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
+			),
+			'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain(),
+			'description' => wfMessage( 'bs-smartlist-mostactiveusersdesc' )->plain()
 		);
 
 		return true;
@@ -257,10 +281,28 @@ class SmartList extends BsExtensionMW {
 	 * @return boolean always true to keep hook alive
 	 */
 	public function onBSDashboardsUserDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
-		$aPortalConfig[1][] = array(
+		$aPortalConfig[0][] = array(
+			'type'  => 'BS.SmartList.MostVisitedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostvisitedpages' )->plain()
+			)
+		);
+		$aPortalConfig[0][] = array(
 			'type'  => 'BS.SmartList.YourEditsPortlet',
 			'config' => array(
 				'title' => wfMessage( 'bs-smartlist-lastedits' )->plain()
+			)
+		);
+		$aPortalConfig[1][] = array(
+			'type'  => 'BS.SmartList.MostEditedPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mosteditedpages' )->plain()
+			)
+		);
+		$aPortalConfig[2][] = array(
+			'type'  => 'BS.SmartList.MostActivePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-smartlist-mostactiveusers' )->plain()
 			)
 		);
 
@@ -271,7 +313,7 @@ class SmartList extends BsExtensionMW {
 	 * Callback for WidgetListHelper. Adds the WhoIsOnline Widget to the list if Keyword is found.
 	 * @return ViewWidget.
 	 */
-	public function onWidgetListKeywordLastEdits() {
+	public function onWidgetListKeywordYourEdits() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$oWidgetView = new ViewWidget();
 		$oWidgetView
@@ -290,9 +332,10 @@ class SmartList extends BsExtensionMW {
 	 * Generates list of your edits
 	 * @return string list of edits
 	 */
-	public function getYourEdits( $iCount, $sCaller ) {
+	public function getYourEdits( $iCount, $sOrigin = 'dashboard' ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$iCount = intval( $iCount );
+		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
+
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(
 			'revision',
@@ -309,21 +352,24 @@ class SmartList extends BsExtensionMW {
 		$aEdits = array();
 		if ( $oDbr->numRows( $res ) > 0 ) {
 			foreach ( $res as $row ) {
+				$sHtml = '';
 				$oTitle = Title::newFromID( $row->rev_page );
-				$sLink = Linker::link( $oTitle, BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) ) );
-				$aEdits[] = '<li>' . $sLink . '</li>';
+				if ( $sOrigin === 'dashboard' ) {
+					$sHtml = $oTitle->getPrefixedText();
+				} else {
+					$sHtml = BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) );
+				}
+				$sLink = Linker::link( $oTitle, $sHtml );
+				$aEdits[] = Html::openElement( 'li' ) . $sLink . Html::closeElement( 'li' );
 			}
 		} else {
 			 return wfMessage( 'bs-smartlist-noedits' )->plain();
 		}
 
-		if ( $sCaller == 'widget' ) {
-			$sEdits = '<ul>' . implode( '', $aEdits ) .'</ul>';
-		} else {
-			$sEdits = '<ol>' . implode( '', $aEdits ) .'</ol>';
-		}
-		wfProfileOut( 'BS::'.__METHOD__ );
 
+		$sEdits = Html::openElement( 'ul' ) . implode( '', $aEdits ) . Html::closeElement( 'ul' );
+
+		wfProfileOut( 'BS::'.__METHOD__ );
 		return $sEdits;
 	}
 
@@ -358,16 +404,12 @@ class SmartList extends BsExtensionMW {
 	 * @return bool true to allow other hooked methods to be executed. Always true.
 	 */
 	public function onParserFirstCallInit( &$parser ) {
-		BsConfig::registerVar( 
-			'MW::SmartList::Heading', 
-			wfMessage( 'bs-smartlist-recent-changes' )->plain(), 
-			BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING, 
-			'bs-smartlist-pref-Heading'
-		);
+		BsConfig::registerVar( 'MW::SmartList::Heading', wfMessage( 'bs-smartlist-recent-changes' )->plain(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING, 'bs-smartlist-pref-Heading' );
 		// for legacy reasons
 		$parser->setHook( 'infobox', array( &$this, 'onTagSmartList' ) );
-		$parser->setHook( 'smartlist', array( &$this, 'onTagSmartList' ) );
 		$parser->setHook( 'bs:infobox', array( &$this, 'onTagSmartList' ) );
+
+		$parser->setHook( 'smartlist', array( &$this, 'onTagSmartList' ) );
 		$parser->setHook( 'bs:smartlist', array( &$this, 'onTagSmartList' ) );
 		$parser->setHook( 'bs:newbies', array( &$this, 'onTagBsNewbies' ) );
 		$parser->setHook( 'bs:toplist', array( &$this, 'onTagToplist' ) );
@@ -411,7 +453,17 @@ class SmartList extends BsExtensionMW {
 
 		$aViews[] = $oWidgetView;
 
-		$aViews[] = $this->onWidgetListKeywordLastEdits();
+		return true;
+	}
+
+	/**
+	 * Callback for UserSidebar. Adds the YourEdits Widget to the UserSidebar as default filling.
+	 * @param BsEvent $oEvent The event to handle
+	 * @param array $aWidgets An array of WidgetView objects
+	 * @return array An array of WidgetView objects
+	 */
+	public function onBSUserSidebarDefaultWidgets( &$aViews, $oUser, $oTitle ) {
+		$aViews[] = $this->onWidgetListKeywordYourEdits();
 
 		return true;
 	}
@@ -423,7 +475,7 @@ class SmartList extends BsExtensionMW {
 	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
 	 */
 	public function onBSWidgetListHelperInitKeyWords( &$aKeywords, $oTitle ) {
-		$aKeywords['YOUREDITS'] = array( $this, 'onWidgetListKeywordLastEdits' );
+		$aKeywords['YOUREDITS'] = array( $this, 'onWidgetListKeywordYourEdits' );
 		$aKeywords['INFOBOX']   = array( $this, 'onWidgetListKeyword' );
 		$aKeywords['SMARTLIST'] = array( $this, 'onWidgetListKeyword' );
 
@@ -448,7 +500,7 @@ class SmartList extends BsExtensionMW {
 	 * @return always true to keep hook running
 	 */
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
-		if( $type != 'tags' ) return true;
+		if ( $type != 'tags' ) return true;
 
 		$oResponse->result[] = array(
 			'id' => 'bs:smartlist',
@@ -506,7 +558,7 @@ class SmartList extends BsExtensionMW {
 		$aArgs['showns']              = BsCore::sanitizeArrayEntry( $aArgs, 'showns',      true,            BsPARAMTYPE::BOOL );
 		$aArgs['numwithtext']         = BsCore::sanitizeArrayEntry( $aArgs, 'numwithtext', 100,             BsPARAMTYPE::INT );
 		$aArgs['meta']                = BsCore::sanitizeArrayEntry( $aArgs, 'meta', false,                  BsPARAMTYPE::BOOL );
-		$aArgs['new']                 = BsCore::sanitizeArrayEntry( $aArgs, 'new',         true,            BsPARAMTYPE::BOOL );
+		$aArgs['new']                 = BsCore::sanitizeArrayEntry( $aArgs, 'new',         false,            BsPARAMTYPE::BOOL );
 
 		$oSmartListView = new ViewBaseElement();
 		if ( !empty( $aArgs['heading'] ) ) {
@@ -568,7 +620,7 @@ class SmartList extends BsExtensionMW {
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
-		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['period'], array( 'fullResponse' => true, 'setname' => 'period', 'set' => array('-', 'day', 'week', 'month') ) );
+		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['period'], array( 'fullResponse' => true, 'setname' => 'period', 'set' => array( '-', 'day', 'week', 'month' ) ) );
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
@@ -689,6 +741,7 @@ class SmartList extends BsExtensionMW {
 					__METHOD__,
 					array( 'GROUP BY' => 'rc_title, rc_namespace', 'ORDER BY' => $sOrderSQL )
 			);
+
 			$iCount = 0;
 			foreach ( $res as $row ) {
 				if ( $iCount == $aArgs['count'] ) break;
@@ -834,18 +887,32 @@ class SmartList extends BsExtensionMW {
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function getToplist( $sInput, $aArgs, $oParser ) {
-		$sCat    = BsCore::sanitizeArrayEntry( $aArgs, 'cat',           '', BsPARAMTYPE::STRING );
-		$sNs     = BsCore::sanitizeArrayEntry( $aArgs, 'ns',            '', BsPARAMTYPE::STRING );
-		$iCount  = BsCore::sanitizeArrayEntry( $aArgs, 'count',         10, BsPARAMTYPE::INT );
+		$sCat = BsCore::sanitizeArrayEntry( $aArgs, 'cat',           '', BsPARAMTYPE::STRING );
+		$sNs = BsCore::sanitizeArrayEntry( $aArgs, 'ns',            '', BsPARAMTYPE::STRING );
+		$iCount = BsCore::sanitizeArrayEntry( $aArgs, 'count',         10, BsPARAMTYPE::INT );
 		$sPeriod = BsCore::sanitizeArrayEntry( $aArgs, 'period', 'alltime', BsPARAMTYPE::STRING );
+		$iPortletPeriod = BsCore::sanitizeArrayEntry( $aArgs, 'portletperiod', 0, BsPARAMTYPE::INT );
+		$bAlltime = true;
 
 		$oDbr = wfGetDB( DB_SLAVE );
-		if ( $sPeriod === 'month' ) {
-			$aTables         = array( 'bs_whoisonline' );
-			$aColumns        = array( 'DISTINCT(wo_page_title) AS page_title', 'wo_page_namespace' );
-			$aConditions     = array( 'wo_action' => 'view' );
-			$aOptions        = array();
+		if ( in_array( $sPeriod, array( 'week', 'month' ) ) || in_array( $iPortletPeriod, array( 7, 30 ) ) ) {
+			$aTables = array( 'bs_whoisonline' );
+			$aColumns = array(
+				'COUNT( wo_page_title ) AS page_counter',
+				'wo_page_title',
+				'wo_page_namespace'
+			);
+			$aConditions = array( 'wo_action' => 'view' );
+			$aOptions = array(
+				'GROUP BY' => 'wo_page_title'
+			);
 			$aJoinConditions = array();
+
+			if ( $sPeriod === 'week' || $iPortletPeriod === 7 ) {
+				$iTimestamp = wfTimestamp( TS_UNIX ) - ( 7 * 24 * 60 * 60 );
+				$aConditions[] = 'wo_timestamp >= ' . $iTimestamp;
+			}
+			$bAlltime = false;
 		} else {
 			$aTables         = array( 'page' );
 			$aColumns        = array( 'page_title', 'page_counter', 'page_namespace' );
@@ -863,7 +930,7 @@ class SmartList extends BsExtensionMW {
 				$sCategory = $sCat;
 			}
 
-			if ( $sPeriod === 'month' ) {
+			if ( $bAlltime === false ) {
 				$aColumns[] = 'wo_page_id';
 				$aJoinConditions = array( 'categorylinks' => array( 'RIGHT JOIN ', 'wo_page_id = cl_from' ) );
 				$aTables[]            = 'categorylinks';
@@ -879,7 +946,7 @@ class SmartList extends BsExtensionMW {
 			$iNamespaces = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $sNs );
 			if ( is_array( $iNamespaces ) ) {
 				foreach ( $iNamespaces as $iNamespace ) {
-					if ( $sPeriod === 'month' ) {
+					if ( $bAlltime === false ) {
 						$aConditions['wo_page_namespace'] = $iNamespace;
 					} else {
 						$aConditions['page_namespace'] =$iNamespace;
@@ -910,11 +977,11 @@ class SmartList extends BsExtensionMW {
 
 			$aList = array();
 			$iCurrCount = 0;
-			if ( $sPeriod === 'month' ) {
+			if ( $bAlltime === false ) {
 				foreach ( $res as $row ) {
-					if ( $iCurrCount == $iCount ) break;
-					if ( empty( $row->page_title ) ) continue;
-					$oTitle = Title::makeTitle( $row->wo_page_namespace, $row->page_title );
+					if ( $iCurrCount === $iCount ) break;
+					if ( empty( $row->wo_page_title ) ) continue;
+					$oTitle = Title::makeTitle( $row->wo_page_namespace, $row->wo_page_title );
 
 					if ( !$oTitle->quickUserCan( 'read' ) ) continue;
 
@@ -926,15 +993,8 @@ class SmartList extends BsExtensionMW {
 						}
 					}
 
-					$oViews = $oDbr->selectRow(
-						array( 'bs_whoisonline' ),
-						array( 'COUNT(wo_page_title) AS page_counter' ),
-						array( 'wo_page_title' => $row->page_title )
-					);
-					if ( $oViews->page_counter == '0' ) continue;
-
 					$sLink = BsLinkProvider::makeLink( $oTitle );
-					$aList['<li>'. $sLink . ' (' . $oViews->page_counter . ')</li>'] = (int)$oViews->page_counter;
+					$aList['<li>'. $sLink . ' (' . $row->page_counter . ')</li>'] = (int)$row->page_counter;
 					$iCurrCount++;
 				}
 				arsort( $aList );
@@ -974,13 +1034,14 @@ class SmartList extends BsExtensionMW {
 	 * Generates list of most edited pages
 	 * @return String list of pages or empty
 	 */
-	public function getEditedPages( $iCount, $sTime ) {
+	public function getEditedPages( $iCount, $iTime ) {
 		$oDbr = wfGetDB( DB_SLAVE );
-		$iCount = intval( $iCount );
+		$iCount = BsCore::sanitize( $iCount, 10, BsPARAMTYPE::INT );
+		$iTime = BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
 
 		$aConditions = array();
-		if ( $sTime === 'month' ) {
-			$this->getTimestampForQuery( $aConditions );
+		if ( $iTime !== 0 ) {
+			$this->getTimestampForQuery( $aConditions, $iTime );
 		}
 
 		$res = $oDbr->select(
@@ -1019,13 +1080,14 @@ class SmartList extends BsExtensionMW {
 	 * Generates list of most edited pages
 	 * @return String list of pages or empty
 	 */
-	public function getActivePortlet( $iCount, $sTime ) {
+	public function getActivePortlet( $iCount, $iTime ) {
 		$oDbr = wfGetDB( DB_SLAVE );
-		$iCount = intval( $iCount );
+		$iCount = BsCore::sanitize( $iCount, 10, BsPARAMTYPE::INT );
+		$iTime = BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
 
 		$aConditions = array();
-		if ( $sTime === 'month' ) {
-			$this->getTimestampForQuery( $aConditions );
+		if ( $iTime !== 0 ) {
+			$this->getTimestampForQuery( $aConditions, $iTime );
 		}
 
 		$res = $oDbr->select(
@@ -1071,9 +1133,9 @@ class SmartList extends BsExtensionMW {
 	 * @param aray &$aConditions reference to array of conditions
 	 * @return boolean always true
 	 */
-	public function getTimestampForQuery( &$aConditions ) {
-		$iMonth = 30 * 24 * 60 * 60;
-		$iTimeStamp = wfTimestamp( TS_UNIX ) - $iMonth;
+	public function getTimestampForQuery( &$aConditions, $iTime ) {
+		$iTimeInSec = $iTime * 24 * 60 * 60;
+		$iTimeStamp = wfTimestamp( TS_UNIX ) - $iTimeInSec;
 		$iTimeStamp = wfTimestamp( TS_MW, $iTimeStamp );
 		$aConditions = array( 'rev_timestamp >= '.$iTimeStamp );
 
@@ -1087,7 +1149,7 @@ class SmartList extends BsExtensionMW {
 	 * @return string most visited pages
 	 */
 	public static function getMostVisitedPages( $iCount, $sTime ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'period' => $sTime ), null );
+		return BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'portletperiod' => $sTime ), null );
 	}
 
 	/**
@@ -1116,8 +1178,8 @@ class SmartList extends BsExtensionMW {
 	 * @param sring $sCaller caller
 	 * @return string most edited pages
 	 */
-	public static function getYourEditsPortlet( $iCount, $sCaller ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getYourEdits( $iCount, $sCaller );
+	public static function getYourEditsPortlet( $iCount ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getYourEdits( $iCount );
 	}
 
 }

@@ -419,7 +419,7 @@ class BsReviewProcess {
 	/**
 	 * This functions resets a interupted workflow.
 	 */
-	function reset() {
+	function reset( $sComment = '' ) {
 		$dbw = wfGetDB(DB_MASTER);
 
 		// Get Review-ID and owner id
@@ -463,7 +463,7 @@ class BsReviewProcess {
 			'revs_user_id' => $owner_id,
 			'revs_status' => -1,
 			'revs_sort_id' => ++$iLastVotedId,
-			'revs_comment' => ''
+			'revs_comment' => $sComment,
 		);
 		foreach ($this->_aInjections as $oInjection) {
 			$oInjection->createStepDefault($data);
@@ -481,7 +481,7 @@ class BsReviewProcess {
 				'revs_user_id' => $aUser['revs_user_id'],
 				'revs_status' => -1,
 				'revs_sort_id' => ++$iLastVotedId,
-				'revs_comment' => ''
+				'revs_comment' => '',
 			);
 			foreach ($this->_aInjections as $oInjection) {
 				$oInjection->createStepDefault($data);

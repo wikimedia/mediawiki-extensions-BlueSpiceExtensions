@@ -73,7 +73,6 @@ class PageAccess extends BsExtensionMW {
 	}
 
 	public function onArticleSave( &$article, &$user, &$text, &$summary, $minor, $watchthis, $sectionanchor, &$flags, &$status ) {
-		global $wgVersion;
 		# Prevent user from locking himself out of his own page
 		$oEditInfo = $article->prepareTextForEdit( $text, null, $user ); 
 		$sAccessGroups = $oEditInfo->output->getProperty( 'bs-page-access' );
@@ -87,16 +86,10 @@ class PageAccess extends BsExtensionMW {
 		$aTemplateTitles = $this->getTemplateTitles( $text );
 		foreach ( $aTemplateTitles as $oTemplateTitle ) {
 			if ( !$this->isUserAllowed( $oTemplateTitle, $user ) ) {
-				if ( version_compare( $wgVersion, '1.18.0', '<' ) ) {
-					throw new MWException( "Lockout prevented in " . __METHOD__ );
-					return false;
-				}
-				else {
-					$err[0] = 'bs-pageaccess-error-included-forbidden-template';
-					$err[1] = $oTemplateTitle->getText();
-					throw new PermissionsError( 'edit', array( $err ) ); # since MW 1.18
-					return false;
-				}
+				$err[0] = 'bs-pageaccess-error-included-forbidden-template';
+				$err[1] = $oTemplateTitle->getText();
+				throw new PermissionsError( 'edit', array( $err ) ); # since MW 1.18
+				return false;
 			}
 		}
 
@@ -166,6 +159,7 @@ class PageAccess extends BsExtensionMW {
 	}
 
 	public function onUserCan( $title, $user, $action, &$result ) {
+		// TODO MRG: Is this list really exhaustive enough?
 		if( !in_array($action, array('read', 'edit', 'delete', 'move')) ) return true;
 		if ( $this->isUserAllowed( $title, $user ) ) return true;
 		$result = false;

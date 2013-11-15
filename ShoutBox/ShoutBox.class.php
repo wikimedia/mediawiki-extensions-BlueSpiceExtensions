@@ -239,7 +239,7 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always true
 	 */
 	public static function getShouts( $iArticleId, $iLimit ) {
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false ) return true;
+		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false ) return "";
 
 		// do not allow negative page ids and pages that have 0 as id (e.g. special pages)
 		if ( $iArticleId <= 0 ) return true;
@@ -248,7 +248,7 @@ class ShoutBox extends BsExtensionMW {
 		$sOutput = '';
 		//return false on hook handler to break here
 		if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit ) ) ) {
-			return true;
+			return "";
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );

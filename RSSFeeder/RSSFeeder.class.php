@@ -66,6 +66,8 @@ class RSSFeeder extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
+		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
+		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -109,6 +111,48 @@ class RSSFeeder extends BsExtensionMW {
 	 * @return boolean always true to keep hook alive
 	 */
 	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$aPortalConfig[0][] = array(
+			'type'  => 'BS.RSSFeeder.RSSPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+				'height' => 610,
+				'rssurl' => 'http://blog.blue-spice.org/feed/'
+			)
+		);
+
+		return true;
+	}
+
+		/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
+	 * 
+	 * @param array &$aPortlets reference to array portlets
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsUserDashboardPortalPortlets( &$aPortlets ) {
+		$aPortlets[] = array(
+						'type' => 'BS.RSSFeeder.RSSPortlet',
+						'config' => array(
+							'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+							'height' => 610,
+							'rssurl' => 'http://blog.blue-spice.org/feed/'
+						),
+						'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+						'description' => wfMessage( 'bs-dashboards-rss-desc' )->plain()
+		);
+
+		return true;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
+	 * 
+	 * @param object $oCaller caller instance
+	 * @param array &$aPortalConfig reference to array portlet configs
+	 * @param boolean $bIsDefault default
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsUserDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
 		$aPortalConfig[0][] = array(
 			'type'  => 'BS.RSSFeeder.RSSPortlet',
 			'config' => array(

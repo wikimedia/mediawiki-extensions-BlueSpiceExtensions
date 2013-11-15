@@ -99,9 +99,9 @@ class Apache_Solr_Service
 	/**
 	 * Servlet mappings
 	 */
-	const PING_SERVLET = 'admin/ping';
-	const UPDATE_SERVLET = 'update';
-	const SEARCH_SERVLET = 'select';
+	const PING_SERVLET = '/admin/ping';
+	const UPDATE_SERVLET = '/update';
+	const SEARCH_SERVLET = '/select';
 	const THREADS_SERVLET = 'admin/threads';
 
 	/**
@@ -267,9 +267,9 @@ class Apache_Solr_Service
 	protected function _initUrls()
 	{
 		//Initialize our full servlet URLs now that we have server information
-		$this->_updateUrl = $this->_constructUrl(self::UPDATE_SERVLET, array('wt' => self::SOLR_WRITER ));
-		$this->_searchUrl = $this->_constructUrl(self::SEARCH_SERVLET);
-		$this->_threadsUrl = $this->_constructUrl(self::THREADS_SERVLET, array('wt' => self::SOLR_WRITER ));
+		$this->_updateUrl = $this->_constructUrl( BsConfig::get( 'MW::ExtendedSearch::SolrCore' ) . self::UPDATE_SERVLET );
+		$this->_searchUrl = $this->_constructUrl( BsConfig::get( 'MW::ExtendedSearch::SolrCore' ) . self::SEARCH_SERVLET );
+		$this->_threadsUrl = $this->_constructUrl( BsConfig::get( 'MW::ExtendedSearch::SolrCore' ) . self::THREADS_SERVLET );
 
 		$this->_urlsInited = true;
 	}
@@ -572,7 +572,7 @@ class Apache_Solr_Service
 				stream_set_timeout($fp, 0, $writeTimeoutInMicroseconds);
 			}
 
-			$request = 	'HEAD ' . $this->_path . self::PING_SERVLET . ' HTTP/1.1' . "\r\n" .
+			$request = 	'HEAD ' . $this->_path . BsConfig::get( 'MW::ExtendedSearch::SolrCore' ). self::PING_SERVLET . ' HTTP/1.1' . "\r\n" .
 						'host: ' . $this->_host . "\r\n" .
 						'Connection: close' . "\r\n" .
 						"\r\n";

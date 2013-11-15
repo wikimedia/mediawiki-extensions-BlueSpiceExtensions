@@ -102,8 +102,8 @@ class SearchService extends SolrServiceAdapter {
 	 * @return string sanitized search string.
 	 */
 	public static function sanitzeSearchString( $sSearchString ) {
-		$sSearchString = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
 		$sSearchString = trim( $sSearchString );
+		$sSearchString = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
 
 		return $sSearchString;
 	}
@@ -119,16 +119,22 @@ class SearchService extends SolrServiceAdapter {
 		$sSearchString = mb_strtolower( $sSearchString );
 		$sSearchString = str_ireplace( array( ' and ', ' or ', ' not ' ), array( ' AND ', ' OR ', ' NOT ' ), ' '.$sSearchString.' ' );
 
-		/*
-		 * Underscore should be replaced by solr, however, it is not
-		 * Replace slash in order to look for subpages
-		 */
 		if ( ( substr_count( $sSearchString, '"' ) % 2 ) != 0 ) {
 			$sSearchString = str_replace( '"', '\\"', $sSearchString );
 		}
+
 		$sSearchString = str_replace( array( '_', '/' ), ' ', $sSearchString );
-		$sSearchString = str_replace( array( ':', '{', '}', '(', ')', '[', ']' ), array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]' ), $sSearchString );
-		$sSearchString = str_replace( array( '\\\\{', '\\\\}' ), array( '\\{', '\\}' ), $sSearchString );
+
+		$sSearchString = str_replace(
+			array( ':', '{', '}', '(', ')', '[', ']', '+', '&' ),
+			array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]', '\\+', '\\&' ),
+			$sSearchString
+		);
+		$sSearchString = str_replace(
+			array( '\\\\{', '\\\\}' ),
+			array( '\\{', '\\}' ),
+			$sSearchString
+		);
 		$sSearchString = trim( $sSearchString );
 		wfProfileOut( 'BS::'.__METHOD__ );
 
@@ -176,16 +182,13 @@ class SearchService extends SolrServiceAdapter {
 	 * @param string $sSearchString Raw search string
 	 * @return string (Possibly) wildcarded search string.
 	 */
-	public static function wildcardSearchstringOfOnlyOneWord( $sSearchString ) {
+	public static function wildcardSearchstring( $sSearchString ) {
 		// remove beginning
 		$sSearchString = trim( $sSearchString ); 
 		if ( empty( $sSearchString ) ) {
 			return $sSearchString;
 		}
-		// in case of two terms nothing shall be wildcarded
-		if ( strpos( $sSearchString, ' ' ) !== false ) {
-			return $sSearchString;
-		}
+
 		if ( self::containsStringUnescapedCharsOf( $sSearchString, '~' ) ) {
 			return $sSearchString;
 		}
@@ -197,6 +200,10 @@ class SearchService extends SolrServiceAdapter {
 		}
 		if ( self::containsStringUnescapedCharsOf( $sSearchString, '*' ) ) {
 			return $sSearchString;
+		}
+
+		if ( strpos( $sSearchString, ' ' ) !== false ) {
+			$sSearchString = str_replace( ' ', '*', $sSearchString );
 		}
 
 		return '*' . $sSearchString . '*';
@@ -316,7 +323,7 @@ class SearchService extends SolrServiceAdapter {
 		 *    - xml:  xml-formatted, each entity of the document (headings,
 		 *            body, paragraphs, ...) embraced by it's own tag
 		 */
-		$url = $this->sUrl.'update/extract?extractOnly=true&extractFormat=text';
+		$url = $this->sUrl . BsConfig::get( 'MW::ExtendedSearch::SolrCore' ) . '/update/extract?extractOnly=true&extractFormat=text';
 		if ( $this->oGetFileTextCurlHandle === null
 			|| $this->iGetFileTextConnectionCounter > 30
 			|| $this->iGetFileTextCurlAge + 75 < microtime( true ) ) {
@@ -402,7 +409,9 @@ class SearchService extends SolrServiceAdapter {
 
 		$response = $this->deleteByQuery( $sQuery );
 		$status = $response->getHttpStatus();
-		$this->commit();
+
+		BuildIndexMainControl::getInstance()->commitAndOptimize( true );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 
 		return $status;

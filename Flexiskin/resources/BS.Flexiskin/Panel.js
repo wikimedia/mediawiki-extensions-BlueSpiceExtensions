@@ -117,6 +117,7 @@ Ext.define('BS.Flexiskin.Panel', {
 						skinId: this.selectedRow[0].get('flexiskin_id'),
 						config: config
 					});
+					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
 					BS.Flexiskin.PreviewWindow.show();
 				}, this);
 			},

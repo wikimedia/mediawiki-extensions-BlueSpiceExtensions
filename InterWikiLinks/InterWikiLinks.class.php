@@ -164,7 +164,7 @@ class InterWikiLinks extends BsExtensionMW {
 		}
 		$dbr->freeResult( $res );
 
-		return json_encode( $data );
+		return FormatJson::encode( $data );
 	}
 
 	/**
@@ -174,7 +174,7 @@ class InterWikiLinks extends BsExtensionMW {
 	public static function doEditInterWikiLink( $bEditMode, $iw_prefix, $iw_url, $iw_old_prefix = '' ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
@@ -261,8 +261,10 @@ class InterWikiLinks extends BsExtensionMW {
 			}
 			$aAnswer['message'][] = $bEditMode ? wfMessage( 'bs-interwikilinks-link_added' )->plain() : wfMessage( 'bs-interwikilinks-link_created' )->plain();
 		}
+		
+		self::purgeTitles( $iw_prefix );
 
-		return json_encode( $aAnswer );
+		return FormatJson::encode( $aAnswer );
 	}
 
 
@@ -274,7 +276,7 @@ class InterWikiLinks extends BsExtensionMW {
 	public static function doDeleteInterWikiLink( $iw_prefix ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
@@ -300,8 +302,25 @@ class InterWikiLinks extends BsExtensionMW {
 		if ( $aAnswer['success'] ) {
 			$aAnswer['message'][] = wfMessage( 'bs-interwikilinks-link_deleted' )->plain();
 		}
+		
+		self::purgeTitles( $iw_prefix );
 
-		return json_encode( $aAnswer );
+		return FormatJson::encode( $aAnswer );
+	}
+
+	protected static function purgeTitles($iw_prefix) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			'iwlinks',
+			array('iwl_from', 'iwl_prefix'),
+			array('iwl_prefix' => $iw_prefix)
+		);
+		
+		foreach( $res as $row ) {
+			$oTitle = Title::newFromID( $row->iwl_from );
+			if( $oTitle instanceof Title == false ) continue;
+			$oTitle->invalidateCache();
+		}
 	}
 
 }

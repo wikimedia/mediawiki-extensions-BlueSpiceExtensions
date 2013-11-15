@@ -1,8 +1,6 @@
 <?php
 /**
- * Extension Template for BlueSpice
- *
- * Dummy extension. Use as copy template for new extensions.
+ * Readers for BlueSpice
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +21,8 @@
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @version    2.22.0
- * @version    $Id: Readers.class.php 9959 2013-06-27 13:15:52Z smuggli $
  * @package    BlueSpice_Extensions
- * @subpackage ExtensionTemplate
+ * @subpackage Readers
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
@@ -37,9 +34,9 @@
 */
 
 /**
- * Base class for ExtensionTemplate extension
+ * Readers extension
  * @package BlueSpice_Extensions
- * @subpackage ExtensionTemplate
+ * @subpackage Readers
  */
 class Readers extends BsExtensionMW {
 
@@ -75,15 +72,15 @@ class Readers extends BsExtensionMW {
 
 		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'ParserBeforeStrip' );
 		$this->setHook( 'BSBlueSpiceSkinBeforeArticleHeadline' );
 		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
-		$this->setHook( 'SkinTemplateContentActions' );;
+		$this->setHook( 'SkinTemplateContentActions' );
 
 		$this->mCore->registerPermission( 'viewreaders' );
 
 		BsConfig::registerVar( 'MW::Readers::UpOrDown', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-upordown', 'toggle' );
-		BsConfig::registerVar( 'MW::Readers::NumOfReaders', '10', BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-readers-pref-numofreaders', 'int' );
+		BsConfig::registerVar( 'MW::Readers::Active', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-active', 'toggle' );
+		BsConfig::registerVar( 'MW::Readers::NumOfReaders', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-readers-pref-numofreaders', 'int' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -109,6 +106,7 @@ class Readers extends BsExtensionMW {
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if ( $this->checkContext() === false ) return true;
 		$oOutputPage->addModuleStyles( 'ext.bluespice.readers.styles' );
+		$this->insertTrace();
 
 		return true;
 	}
@@ -118,7 +116,7 @@ class Readers extends BsExtensionMW {
 	 * @param object $oParser Parser
 	 * @return boolean Always true
 	 */
-	public function onParserBeforeStrip( &$oParser ) {
+	public function insertTrace() {
 		if ( $this->checkContext() === false ) return true;
 		$oUser = $this->getUser();
 		$oTitle = $this->getTitle();
@@ -127,12 +125,12 @@ class Readers extends BsExtensionMW {
 		$oDbw = wfGetDB( DB_MASTER );
 
 		$aNewRow = array();
-		$aNewRow['readers_id']      = '';
+		$aNewRow['readers_id'] = '';
 		$aNewRow['readers_user_id'] = $oUser->getId();
 		$aNewRow['readers_user_name'] = $oUser->getName();
 		$aNewRow['readers_page_id'] = $oTitle->getArticleID();
 		$aNewRow['readers_rev_id'] = $oRevision->getId();
-		$aNewRow['readers_ts']      = wfTimestamp();
+		$aNewRow['readers_ts'] = wfTimestamp();
 
 		$oDbw->insert( 'bs_readers', $aNewRow );
 
@@ -145,10 +143,10 @@ class Readers extends BsExtensionMW {
 	 * @return Boolean Always true for it is a MediwWiki Hook callback.
 	 */
 	public function onSkinTemplateContentActions( &$aContentActions ) {
+		if ( $this->checkContext() === false ) return true;
 		//Check if menu entry has to be displayed
 		$oCurrentUser = $this->getUser();
 		if ( $oCurrentUser->isLoggedIn() === false ) return true;
-
 
 		$oCurrentTitle = $this->getTitle();
 		if ( $oCurrentTitle->exists() === false ) return true;
@@ -290,7 +288,7 @@ class Readers extends BsExtensionMW {
 				$aTmpUser['user_image'] = $sImage;
 				$aTmpUser['user_name'] = $oUser->getName();
 				$aTmpUser['user_page'] = $oTitle->getLocalURL();
-				$aTmpUser['user_readers'] = SpecialPage::getTitleFor( 'PagesVisited', $oTitle->getPrefixedText() )->getLocalURL();
+				$aTmpUser['user_readers'] = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() )->getLocalURL();
 				$aTmpUser['user_ts'] = $row->readers_ts;
 				$aTmpUser['user_date'] = date( "d.m.Y H.i", $row->readers_ts );
 
@@ -310,8 +308,7 @@ class Readers extends BsExtensionMW {
 		);
 		$aUsers['totalCount'] = $oDbr->numRows( $rowCount );
 
-		$sOutput = json_encode( $aUsers );
-		return $sOutput;
+		return json_encode( $aUsers );
 	}
 
 	/**
@@ -320,6 +317,8 @@ class Readers extends BsExtensionMW {
 	 */
 	public function checkContext() {
 		global $wgTitle, $wgUser;
+
+		if ( BsConfig::get( 'MW::Readers::Active' ) == false ) return false;
 
 		if ( is_null( $wgTitle ) ) return false;
 
@@ -339,6 +338,63 @@ class Readers extends BsExtensionMW {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Get the pages for specialpage, called via ajax
+	 * @param string $sOutput Output to return
+	 * @return bool Always true
+	 */
+	public static function getData( $iUserID ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+
+		$oStoreParams = BsExtJSStoreParams::newFromRequest();
+		$iLimit = $oStoreParams->getLimit();
+		$iStart = $oStoreParams->getStart();
+		$sSort = $oStoreParams->getSort( 'MAX(readers_ts)' );
+
+		if ( $sSort == 'user_page' ) $sSort = 'readers_user_name';
+
+		$res = $oDbr->select(
+				array( 'bs_readers', 'page' ),
+				array( 'readers_page_id', 'MAX(readers_ts) as readers_ts' ),
+				array( 'readers_user_id' => $iUserID ),
+				__METHOD__,
+				array(
+					'GROUP BY' => 'readers_page_id',
+					'ORDER BY' => 'MAX(readers_ts) DESC',
+					'LIMIT'    => $iLimit,
+					'OFFSET'   => $iStart
+				),
+				array( 'page' => array( 'RIGHT JOIN', 'readers_page_id = page_id' ) )
+		);
+
+		$aPages = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			foreach ( $res as $row ) {
+				$oTitle = Title::newFromID( $row->readers_page_id );
+
+				$aTmpPage = array();
+				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
+				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
+				$aTmpPage['pv_ts'] = date( "d.m.Y", $row->readers_ts );
+
+				$aPages['page'][] = $aTmpPage;
+			}
+		}
+		$oDbr->freeResult( $res );
+
+		$rowCount = $oDbr->select(
+				'bs_readers',
+				'readers_page_id',
+				array( 'readers_user_id' => $iUserID ),
+				__METHOD__,
+				array( 'GROUP BY' => 'readers_page_id' )
+		);
+		$aPages['totalCount'] = $oDbr->numRows( $rowCount );
+		$oDbr->freeResult( $rowCount );
+
+		return json_encode( $aPages );
 	}
 
 }

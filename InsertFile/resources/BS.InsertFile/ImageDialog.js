@@ -35,7 +35,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			width: 70,
 			minValue: 1,
 			value: 1,
-			margin: '0 5 0 0',
+			margin: '0 0 0 5',
 			allowDecimals: false
 		});
 		this.nbHeight.on('change', this.onNbHeightChange, this);
@@ -43,7 +43,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			width: 70,
 			minValue: 1,
 			value: 1,
-			margin: '0 0 0 5',
+			margin: '0 5 0 0',
 			allowDecimals: false
 		});
 		this.nbWidth.on('change', this.onNbWidthChange, this);
@@ -146,9 +146,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 					margin: '0 5 5 0'
 				},*/
 				items: [
-					this.nbHeight,
+					this.nbWidth,
 					this.btnKeepRatio,
-					this.nbWidth
+					this.nbHeight
 				]
 			},
 			this.tfAlt
@@ -169,13 +169,13 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	},
 	processRatio: function(w, h) {
 		var record = this.getSingleSelection();
-		if ((w == 0 && h == 0) || record == null ) {
+		if ((w === 0 && h === 0) || record === null ) {
 			return 0;
 		}
 		var orgW = record.get('width');
 		var orgH = record.get('height');
 
-		if (w == 0) {
+		if (w === 0) {
 			return Math.round(orgW / (orgH / h));
 		}
 		else {
@@ -192,48 +192,63 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	getData: function() {
 		var cfg = this.callParent(arguments);
 		Ext.apply(cfg, {
-			imagename: this.tfFileName.getValue(),
+			//bs.wikiText.Link stuff
 			caption: this.tfLinkText.getValue(),
-			sizeheight: this.nbHeight.getValue(),
-			sizewidth: this.nbWidth.getValue(),
+			sizeheight: false,
+			sizewidth: false,
 			link: this.cbPages.getValue(),
 			alt: this.tfAlt.getValue(),
-			//Ext.htmlDecode(): this feels like the wrong place...
-			src: Ext.htmlDecode(this.hdnUrl.getValue())
+			
+			//VisualEditor stuff
+			imagename: this.tfFileName.getValue(),
+			src: Ext.htmlDecode(this.hdnUrl.getValue()) //Ext.htmlDecode(): this feels like the wrong place...
 		});
 		
-		if(this.cbxNoLink.getValue() == true ) {
+		if(this.cbxNoLink.getValue() === true ) {
 			cfg.link = '';
 		}
 		
 		var format = this.rgFormat.getValue();
 		format = format['img-type'];
 		
-		if( format == 'thumb' ) {
+		if( format === 'thumb' ) {
 			cfg.thumb = true;
 		}
-		else if( format == 'frame' ) {
+		else if( format === 'frame' ) {
 			cfg.frame = true;
 		}
-		else if( format == 'border' ) {
+		else if( format === 'border' ) {
 			cfg.border = true;
 		}
 		
 		var align = this.rgAlign.getValue();
 		align = align['img-align'];
 		if( align !== 'none' ) {
-			cfg.align = align
+			cfg.align = align;
 		}
 		
 		//Is this necessary?
-		if( align == 'left' ) {
+		if( align === 'left' ) {
 			cfg.left = true;
 		}
-		else if( align == 'center' ) {
+		else if( align === 'center' ) {
 			cfg.center = true;
 		}
-		else if( align == 'right' ) {
+		else if( align === 'right' ) {
 			cfg.right = true;
+		}
+		
+		//Only set width and height if they are _not_ the original size!
+		var record = this.getSingleSelection();
+		if( record === null ){
+			return cfg;
+		}
+		
+		var height = this.nbHeight.getValue();
+		var width = this.nbWidth.getValue();
+		if( height != record.get('height') || width != record.get('width') ) {
+			cfg.sizeheight = height;
+			cfg.sizewidth = width;
 		}
 		
 		return cfg;
@@ -264,15 +279,15 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.hdnUrl.reset();
 
 		var format = 'none';
-		if( obj.thumb  != 'false' ) format = 'thumb';
-		if( obj.frame  != 'false')  format = 'frame';
-		if( obj.border != 'false' ) format = 'border';
+		if( obj.thumb && obj.thumb  != 'false' ) format = 'thumb';
+		if( obj.frame && obj.frame  != 'false')  format = 'frame';
+		if( obj.border&& obj.border != 'false' ) format = 'border';
 		this.rgFormat.setValue({
 			'img-type': format
 		});
 
 		var align = obj.align;
-		if( align == '' ) align = 'none';
+		if( align === '' ) align = 'none';
 		this.rgAlign.setValue({
 			'img-align': align
 		});
@@ -312,8 +327,8 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	},
 	
 	onRgFormatChange: function( sender, newValue, oldValue, eOpts ) {
-		if( newValue['img-type'] == 'frame' 
-			|| newValue['img-type'] == 'thumb' ) {
+		if( newValue['img-type'] === 'frame' 
+			|| newValue['img-type'] === 'thumb' ) {
 			this.tfLinkText.enable();
 		}
 		else {

@@ -16,6 +16,7 @@ $wgResourceModules['ext.bluespice.review.styles'] = array(
 
 $wgResourceModules['ext.bluespice.review'] = array(
 	'scripts' => 'bluespice.review.js',
+	'position' => 'bottom',
 	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
 		'bs-review-title',
@@ -72,6 +73,7 @@ $wgResourceModules['ext.bluespice.review.overview'] = array(
 		'bs-review-header-accepted_text',
 		'bs-review-header-startdate',
 		'bs-review-header-enddate',
+		'bs-review-overviewpanel-alloption',
 	)
 ) + $aResourceModuleTemplate;
 

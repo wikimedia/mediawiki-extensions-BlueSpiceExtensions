@@ -527,7 +527,7 @@ class RSSStandards extends BsExtensionMW {
 		$linkBatch->execute();
 		$dbr->dataSeek( $res, 0 );
 
-		$list = ChangesList::newFromContext( $skin->getContext() );
+		$list = ChangesList::newFromContext( $skin->getContext() ); //Thanks to Bartosz Dziewoński (https://gerrit.wikimedia.org/r/#/c/94082/)
 
 		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_watch' )->plain() );
 

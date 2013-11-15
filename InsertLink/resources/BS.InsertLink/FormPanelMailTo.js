@@ -70,7 +70,7 @@ Ext.define( 'BS.InsertLink.FormPanelMailTo', {
 			title: title,
 			href: 'mailto:' + target,
 			type: '',
-			code: 'mailto:' + target + desc
+			code: '[mailto:' + target + desc + ']'
 			//'class': ''
 		};
 	},

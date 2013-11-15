@@ -96,7 +96,7 @@ class PageTemplates extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::PageTemplates::ExcludeNs',               array( -2,-1,6,7,8,9,10,11,14,15 ),
 																					BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagetemplates-ExcludeNs', 'multiselectex' );
 		// Hide line after the empty page entry
-		BsConfig::registerVar( 'MW::PageTemplates::HideLinesAfterEmptyPage', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-HideLinesAfterEmptyPage', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::HideLinesAfterEmptyPage', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL,      'bs-pagetemplates-HideLinesAfterEmptyPage', 'toggle' );
 		// Force page to be created in target namespace
 		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace',          false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-ForceNamespace', 'toggle' );
 		// Hide template if page is not in target namespace

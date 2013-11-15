@@ -71,15 +71,16 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		RequestContext::getMain()->getOutput()->addJsConfigVars(
 				'aExtensionInfo', $aExtensionInfo
 		);
-		
+		$sCreditsLink = ' (<a href="' . SpecialPage::getTitleFor( 'Credits' )->getFullURL() . '">Credits</a>)';
+
 		$aOut = array();
 		$aOut[] = '<table class="softwaretable">';
 		$aOut[] = '  <tr>';
-		$aOut[] = '    <th style="width:20%; height:18px;">Software</th>';
+		$aOut[] = '    <th style="width:30%; height:18px;">Software</th>';
 		$aOut[] = '    <th>Version</th>';
 		$aOut[] = '  </tr>';
 		$aOut[] = '  <tr>';
-		$aOut[] = '    <td><a title="'.$wgBlueSpiceExtInfo['url'].'" href="'.$wgBlueSpiceExtInfo['url'].'">'.$wgBlueSpiceExtInfo['name'].'</a></td>';
+		$aOut[] = '    <td><a title="'.$wgBlueSpiceExtInfo['url'].'" href="'.$wgBlueSpiceExtInfo['url'].'">'.$wgBlueSpiceExtInfo['name'].'</a>'.$sCreditsLink.'</td>';
 		$aOut[] = '    <td>'.$wgBlueSpiceExtInfo['version'].'</td>';
 		$aOut[] = '  </tr>';
 		$aOut[] = '</table>';

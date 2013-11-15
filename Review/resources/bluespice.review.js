@@ -47,7 +47,13 @@
 	//Wire up accept/decline links
 	$(document).on('click', 'a#bs-review-ok', function() {
 		$.ajax({
-			url: bs.util.getAjaxDispatcherUrl('Review::getVoteResponse', [ mw.config.get('wgArticleId'), 'yes']),
+			url: bs.util.getAjaxDispatcherUrl('Review::getVoteResponse'),
+			data: {
+				articleID: mw.config.get('wgArticleId'),
+				vote: 'yes',
+				comment: $('#bs-review-voteresponse-comment').val() || ''
+			},
+			type: "POST",
 			success: function( data, textStatus, jqXHR ) {
 				bs.util.alert(
 					'bs-review-alert',
@@ -65,7 +71,13 @@
 	});
 	$(document).on('click', 'a#bs-review-dismiss', function() {
 		$.ajax({
-			url: bs.util.getAjaxDispatcherUrl('Review::getVoteResponse', [ mw.config.get('wgArticleId'), 'no']),
+			url: bs.util.getAjaxDispatcherUrl('Review::getVoteResponse'),
+			data: {
+				articleID: mw.config.get('wgArticleId'),
+				vote: 'no',
+				comment: $('#bs-review-voteresponse-comment').val() || ''
+			},
+			type: "POST",
 			success: function( data, textStatus, jqXHR ) {
 				bs.util.alert(
 					'bs-review-alert',

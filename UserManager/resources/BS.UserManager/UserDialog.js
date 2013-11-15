@@ -16,6 +16,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 	extend: 'BS.Window',
 	currentData: {},
 	selectedData: {},
+	maxHeight: 620,
 	afterInitComponent: function() {
 		if( this.currentData.groups ) {
 			this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
@@ -62,7 +63,8 @@ Ext.define( 'BS.UserManager.UserDialog', {
 			labelAlign: 'right',
 			store: this.strGroups,
 			valueField: 'group',
-			displayField: 'displayname'
+			displayField: 'displayname',
+			maxHeight: 350
 		} );
 
 		this.items = [

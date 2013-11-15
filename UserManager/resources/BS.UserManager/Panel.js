@@ -16,6 +16,9 @@ Ext.define( 'BS.UserManager.Panel', {
 	extend: 'BS.CRUDGridPanel',
 	features: [],
 	initComponent: function() {
+		this.smMain = this.smMain || Ext.create( 'Ext.selection.RowModel', {
+			mode: "MULTI"
+		});
 		this.strMain = Ext.create( 'Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
@@ -160,7 +163,7 @@ Ext.define( 'BS.UserManager.Panel', {
 		bs.util.confirm(
 			'UMremove',
 			{
-				text: mw.message( 'bs-usermanager-confirmDeleteUser' ).plain(),
+				text: mw.message( 'bs-usermanager-confirmDeleteUser', this.grdMain.getSelectionModel().getSelection().length ).text(),
 				title: mw.message( 'bs-usermanager-titleDeleteUser' ).plain()
 			},
 			{
@@ -172,24 +175,26 @@ Ext.define( 'BS.UserManager.Panel', {
 	},
 	onRemoveUserOk: function() {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var userId = selectedRow[0].get( 'user_id' );
+		for (var i = 0; i<selectedRow.length; i++){
+			var userId = selectedRow[i].get( 'user_id' );
 
-		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'UserManager::deleteUser',
-				[ userId ]
-			),
-			scope: this,
-			method: 'post',
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-				} else {
-					this.renderMsgFailure( responseObj );
+			Ext.Ajax.request( {
+				url: bs.util.getAjaxDispatcherUrl(
+					'UserManager::deleteUser',
+					[ userId ]
+				),
+				scope: this,
+				method: 'post',
+				success: function( response, opts ) {
+					var responseObj = Ext.decode( response.responseText );
+					if ( responseObj.success === true ) {
+						this.renderMsgSuccess( responseObj );
+					} else {
+						this.renderMsgFailure( responseObj );
+					}
 				}
-			}
-		});
+			});
+		}
 	},
 	onDlgUserAddOk: function( data, user ) {
 		Ext.Ajax.request( {

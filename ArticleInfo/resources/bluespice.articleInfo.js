@@ -50,8 +50,8 @@ BsArticleInfo = {
 
 		$('#bs-statebar').find('#bs-statebar-view').before(result.checkRevisionView);
 	}
-}
+};
 
 mw.loader.using('ext.bluespice', function() {
-	BsArticleInfo.init()
+	BsArticleInfo.init();
 });

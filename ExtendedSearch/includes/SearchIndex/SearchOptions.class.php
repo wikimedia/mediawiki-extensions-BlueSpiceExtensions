@@ -228,12 +228,12 @@ class SearchOptions {
 	 * @return array List of url parameters.
 	 */
 	public function getSolrMltQuery( $oTitle ) {
-		global $wgContentNamespaces;
 		$aSearchOptions = array();
 		$aNamespaces = array();
 
 		$sFqNamespaces = '{!tag=na}+namespace:( ';
-		foreach ( $wgContentNamespaces as $key => $value ) {
+		$aContentNamespaces = BsConfig::get( 'MW::ExtendedSearch::MltNS' );
+		foreach ( $aContentNamespaces as $key => $value ) {
 			$aNamespaces[] = '' . $value . '';
 		}
 
@@ -262,7 +262,7 @@ class SearchOptions {
 		$aSolrMltQuery = array(
 			'searchString'  => 'hwid:' . $oTitle->getArticleID() . '',
 			'offset'        => 0,
-			'searchLimit'   => 5,
+			'searchLimit'   => 6,
 			'searchOptions' => $aSearchOptions
 		);
 
@@ -297,7 +297,7 @@ class SearchOptions {
 
 		$vNamespace = ExtendedSearchBase::getInstance()->checkSearchstringForNamespace( $this->aOptions['searchStringRaw'], $this->aOptions['searchStringOrig'] );
 
-		$this->aOptions['searchStringWildcarded']    = SearchService::wildcardSearchstringOfOnlyOneWord( $this->aOptions['searchStringOrig'] );
+		$this->aOptions['searchStringWildcarded']    = SearchService::wildcardSearchstring( $this->aOptions['searchStringOrig'] );
 		$this->aOptions['searchStringForStatistics'] = $this->aOptions['searchStringWildcarded'];
 		$this->aOptions['searchStrComp']             = array();
 		$this->aOptions['bExtendedForm']             = $oSearchRequest->bExtendedForm;
@@ -374,43 +374,46 @@ class SearchOptions {
 		$this->aOptions['namespaces'] = $oSearchRequest->aNamespaces;
 		$this->aOptions['sayt'] = $oSearchRequest->sSearchAsYouType;
 
-		global $wgUser, $wgCanonicalNamespaceNames, $wgNamespacesToBeSearchedDefault;
+		global $wgCanonicalNamespaceNames, $wgExtraNamespaces;
+		$aNamespaces = array_slice( $wgCanonicalNamespaceNames, 2 );
+		$aNamespaces = $aNamespaces + $wgExtraNamespaces;
+		$oUser = $this->oRequestContext->getUser();
 
 		if ( empty( $this->aOptions['namespaces'] ) && $vNamespace === false ) {
 			$this->aOptions['namespaces'] = array();
+
 			// Main
-			if ( BsNamespaceHelper::checkNamespacePermission( NS_MAIN, 'read' ) !== false )
-					$this->aOptions['namespaces'][] = '' . NS_MAIN . '';
+			if ( BsNamespaceHelper::checkNamespacePermission( NS_MAIN, 'read' ) !== false ) {
+				$this->aOptions['namespaces'][] = '' . NS_MAIN;
+			}
 
 			// Namespace 1000 are specialpages
 			$this->aOptions['namespaces'][] = '1000';
 
 			if ( in_array( $oSearchRequest->sRequestOrigin, array( 'search_form_body', 'uri_builder', 'ajax' ) )
-				|| $wgUser->getOption( 'searcheverything' ) == 1 ) {
-				// Blog
-				if ( BsNamespaceHelper::checkNamespacePermission( NS_BLOG, 'read' ) !== false )
-						$this->aOptions['namespaces'][] = '' . NS_BLOG . '';
+				|| $oUser->getOption( 'searcheverything' ) == 1 ) {
 
-				foreach ( $wgCanonicalNamespaceNames as $key => $value ) {
+				foreach ( $aNamespaces as $key => $value ) {
 					if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false ) continue;
 
-					$this->aOptions['namespaces'][] = '' . $key . '';
+					$this->aOptions['namespaces'][] = '' . $key;
 				}
 			} else {
 				wfRunHooks( 'BSExtendedSearchEmptyNamespacesElse', array( $this, $oSearchRequest ) );
+				global $wgNamespacesToBeSearchedDefault;
 
-				foreach ( $wgCanonicalNamespaceNames as $key => $value ) {
-					if ( $this->oRequestContext->getUser()->getBoolOption( 'searchNs'.$key, false )
+				foreach ( $aNamespaces as $key => $value ) {
+					if ( $oUser->getBoolOption( 'searchNs'.$key, false )
 						|| isset( $wgNamespacesToBeSearchedDefault[$key] ) ) {
-						$this->aOptions['namespaces'][] = '' . $key . '';
+						if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false ) continue;
+						$this->aOptions['namespaces'][] = '' . $key;
 					}
 				}
 			}
 
-			if ( ( $oSearchRequest->bSearchFiles === true && $wgUser->isAllowed( 'searchfiles' ) )
+			if ( ( $oSearchRequest->bSearchFiles === true && $oUser->isAllowed( 'searchfiles' ) )
 				|| $this->aOptions['sayt'] == 1 ) {
-				$this->aOptions['namespaces'][] = '998';
-				$this->aOptions['namespaces'][] = '999';
+				$this->aOptions['namespaces'][] = '998 999';
 			}
 
 			$this->aOptions['namespaces'] = array_unique( $this->aOptions['namespaces'] );
@@ -431,30 +434,28 @@ class SearchOptions {
 		if ( $vNamespace === false && ( !empty( $this->aOptions['namespaces'] ) || $this->aOptions['files'] === true ) ) {
 			// todo (according to Markus): files should not be coded as namespace
 			// => i.e. modify solr's schema
-			$sFqNamespaces = '{!tag=na}+namespace:(';
-			if ( empty( $this->aOptions['namespaces'] ) && ( $oSearchRequest->sRequestOrigin != 'uri_builder' ) ) {
+			$aFqNamespaces = array();
+
+			if ( empty( $this->aOptions['namespaces'] ) && $oSearchRequest->sRequestOrigin != 'uri_builder' ) {
 				// if NO namespace selected search ALL namespaces
 				// namespace 0 not in keys of wgCanonicalNamespaceNames
 				// todo: just wondering: if NO namespace selected just SKIP +namespace(..)! Or is there a problem with namespace 999?
-				$sFqNamespaces .= '0 ';
-				foreach ( $wgCanonicalNamespaceNames as $na => $value ) {
-					// filter -2, -1, 0
-					if ( $na > 0 ) {
-						if ( BsNamespaceHelper::checkNamespacePermission( $na, 'read' ) === false ) continue;
-						$sFqNamespaces .= $na.' ';
-					}
+				foreach ( $aNamespaces as $sNamespace => $value ) {
+					if ( BsNamespaceHelper::checkNamespacePermission( $na, 'read' ) === false ) continue;
+					$aFqNamespaces[] = $sNamespace;
 				}
 			} else {
-				foreach ( $this->aOptions['namespaces'] as $na ) {
-					if ( BsNamespaceHelper::checkNamespacePermission( $na, 'read' ) === false ) continue;
-					$sFqNamespaces .= $na.' ';
-					if ( $na == '999' ) $filesAlreadyAddedInLoopBefore = true;
+				foreach ( $this->aOptions['namespaces'] as $sNamespace ) {
+					$aFqNamespaces[] = $sNamespace;
+					if ( $sNamespace == '999' ) $filesAlreadyAddedInLoopBefore = true;
 				}
 			}
-			if ( !isset( $filesAlreadyAddedInLoopBefore ) && $this->aOptions['files'] === true && $wgUser->isAllowed( 'searchfiles' ) ) {
-				$sFqNamespaces .= '999 ';
+
+			if ( !isset( $filesAlreadyAddedInLoopBefore ) && $this->aOptions['files'] === true && $oUser->isAllowed( 'searchfiles' ) ) {
+				$aFqNamespaces[] = '999';
 			}
-			$fq[] = trim( $sFqNamespaces ).')';
+
+			$fq[] = '{!tag=na}+namespace:(' . implode( ' ', $aFqNamespaces ) . ')';
 		}
 
 		if ( empty( $oSearchRequest->aNamespaces ) && $oSearchRequest->sOrigin != 'titlebar' ) {
@@ -512,15 +513,12 @@ class SearchOptions {
 			$fq[] = $sFqEditor;
 		}
 
-		$userLimit    = BsConfig::get( 'MW::ExtendedSearch::LimitResultsUser' );
-		$defaultLimit = BsConfig::get( 'MW::ExtendedSearch::LimitResultDef' );
-		$searchLimit  = ( $userLimit == 0 ) ? $defaultLimit : $userLimit;
+		$searchLimit = BsConfig::get( 'MW::ExtendedSearch::LimitResults' );
 
 		$this->aOptions['offset']       = $oSearchRequest->iOffset;
 		$this->aOptions['order']        = $oSearchRequest->sOrder;
 		$this->aOptions['asc']          = $oSearchRequest->sAsc;
-		$this->aOptions['searchLimit']  = ( $searchLimit == 0 ) ? 10 : $searchLimit;
-		$this->aOptions['contextlines'] = $this->oRequestContext->getUser()->getOption( 'contextlines', 5 );
+		$this->aOptions['searchLimit']  = ( $searchLimit == 0 ) ? 25 : $searchLimit;
 		$this->aOptions['titleExists']  = $this->titleExists( $oSearchRequest->sInput );
 		$this->aOptions['format']       = $oSearchRequest->sFormat;
 		$this->aOptions['showpercent']  = BsConfig::get( 'MW::ExtendedSearch::ShowPercent' );

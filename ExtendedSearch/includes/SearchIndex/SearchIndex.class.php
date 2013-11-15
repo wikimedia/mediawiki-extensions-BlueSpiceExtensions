@@ -172,7 +172,6 @@ class SearchIndex {
 		}
 
 		$iNumFound = $oHits->response->numFound;
-		$iMaxScore = $oHits->response->maxScore;
 
 		$bEscalateToFuzzy = ( $iNumFound == 0 ); // boolean!
 		// escalate to fuzzy
@@ -185,8 +184,9 @@ class SearchIndex {
 			}
 
 			$iNumFound = $oHits->response->numFound;
-			$iMaxScore = $oHits->response->maxScore;
 		}
+
+		$iMaxScore = $oHits->response->maxScore;
 
 		$this->logSearch(
 			$this->oSearchOptions->getOption( 'searchStringForStatistics' ),
@@ -236,7 +236,7 @@ class SearchIndex {
 
 		$loopsCalculated = ( $iNumFound / $searchLimit ) + 1;
 		$this->vSearchResult->setOption( 'activePage', 1 );
-		$url_offset = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET|SearchUriBuilder::NO_ENCODE );
+		$url_offset = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET );
 
 		for ( $i = 1; $i < $loopsCalculated; $i++ ) {
 			$offset_step = ( ( $i - 1 ) * $searchLimit );
@@ -263,7 +263,7 @@ class SearchIndex {
 			'sortdirection' => ( $this->oSearchOptions->getOption( 'asc' ) == 'asc' ) ? 'asc' : 'desc',
 			'sorturl' => $this->oUriBuilder->buildUri(
 					SearchUriBuilder::ALL,
-					SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET|SearchUriBuilder::NO_ENCODE
+					SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET
 				)
 			);
 
@@ -706,10 +706,10 @@ class SearchIndex {
 						$oTitle = Title::newFromText( $sRedirect );
 						$aRedirects[] = BsLinkProvider::makeLink( $oTitle );
 					}
-					$sRedirect = ' | Redirect from ' . implode( ', ', $aRedirects );
+					$sRedirect = ' | ' . wfMessage( 'bs-extendedsearch-redirect' )->escaped() . ' ' . implode( ', ', $aRedirects );
 				} else {
 					$oTitle = Title::newFromText( $oDocument->redirects );
-					$sRedirect = ' | Redirect from ' . BsLinkProvider::makeLink( $oTitle );
+					$sRedirect = ' | ' . wfMessage( 'bs-extendedsearch-redirect' )->escaped() . ' ' . BsLinkProvider::makeLink( $oTitle );
 				}
 			}
 

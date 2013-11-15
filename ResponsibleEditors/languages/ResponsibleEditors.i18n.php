@@ -74,8 +74,10 @@ After logging into the wiki you can open the article with this link:
 	$4",
 	'responsibleeditors'                                            => 'Responsible Editors',
 	'responsibleeditors-desc'                                       => 'This specialpage enables you to set responsible editors for pages',
-	'specialpages-group-bluespice'                                         => 'BlueSpice',
-		
+	'bs-responsibleeditors-no-own-responsibilities'                 => 'There are no articles which you are the responsible editor for',
+	'bs-responsibleeditors-yourresponsibilities'                    => 'Your responsibilities',
+	'bs-responsibleeditors-yourresponsibilitiesdesc'                => 'List of articles witch you are responsible for',
+
 	//JavaScript
 	'bs-responsibleeditors-availableEditors'=> 'Available editors',
 	'bs-responsibleeditors-assignedEditors'=> 'Assigned editors',
@@ -105,8 +107,7 @@ After logging into the wiki you can open the article with this link:
 	'bs-responsibleeditors-pnlFailureText'=> 'Beim Ändern der Verantwortlichkeit ist ein Fehler aufgetreten. Bitte kontaktieren Sie Ihren Administrator.',
 	'bs-responsibleeditors-cbLabelEditorList'=> 'Verantwortlicher Reakteur',
 	'bs-responsibleeditors-cbEmptyText'=> 'Kein Redakteur gewählt',
-	'bs-responsibleeditors-loadMaskMessage'=> 'Übertrage Daten...',
-
+	'bs-responsibleeditors-loadMaskMessage'=> 'Übertrage Daten...'
 );
 
 $messages['de'] = array(
@@ -176,7 +177,9 @@ Nach Anmeldung am Wiki kannst Du den Artikel mit folgendem Link erreichen:
 	'bs-responsibleeditors-mail-text-auto-generated-article-summary'       => 'Durch die Erweiterung ResponsibleEditors automatisch angelegt.',
 	'responsibleeditors'                                            => 'Verantwortliche Redakteure',
 	'responsibleeditors-desc'                                       => 'Mit dieser Spezialseite kannst du Artikeln verantwortliche Redakteure zuweisen',
-	'specialpages-group-bluespice'                                         => 'BlueSpice',
+	'bs-responsibleeditors-no-own-responsibilities'                 => 'Du bist für keinen Artikel der verantworliche Redakteur',
+	'bs-responsibleeditors-yourresponsibilities'                    => 'Deine Verantwortlichkeiten',
+	'bs-responsibleeditors-yourresponsibilitiesdesc'                => 'Liste der Artikel, für die du verantwortlich bist',
 
 	// Javascript i18n
 	'bs-responsibleeditors-availableEditors' =>'Verfügbare Redakteure',
@@ -237,6 +240,9 @@ Nach Anmeldung am Wiki können Sie den Artikel mit folgendem Link erreichen:
 Nach Anmeldung am Wiki können Sie den Artikel mit folgendem Link erreichen:
 	$3",
 	'responsibleeditors-desc' => 'Mit dieser Spezialseite können Sie Artikeln verantwortliche Redakteure zuweisen',
+	'bs-responsibleeditors-yourresponsibilities' => 'Ihre Verantwortlichkeiten',
+	'bs-responsibleeditors-no-own-responsibilities' => 'Sie sind für keinen Artikel der verantworliche Redakteur',
+	'bs-responsibleeditors-yourresponsibilitiesdesc' => 'Liste der Artikel, für die Sie verantworlich sind',
 );
 
 $messages['qqq'] = array();

@@ -97,6 +97,8 @@ class Statistics extends BsExtensionMW {
 		$this->setHook( 'BSExtendedSearchAdminButtons' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
+		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
+		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
 		//BsConfig::registerVar( 'MW::Statistics::DiagramDir',           'images/statistics',   BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING,       'bs-statistics-pref-DiagramDir' );
 		//BsConfig::registerVar( 'MW::Statistics::DiagramWidth',         700,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramWidth', 'int' );
@@ -271,7 +273,7 @@ class Statistics extends BsExtensionMW {
 		$iWidthGreen = floor($iWidth * $fPercent);
 		$iWidthRemain = $iWidth-$iWidthGreen;
 
-		$sPercent = sPrintf( "%0.1f", $fPercent * 100 );
+		$sPercent = sprintf( "%0.1f", $fPercent * 100 );
 
 		$sOut = '<div style="background-color:green;border:2px solid #DDDDDD;width:'.$iWidthGreen.'px;height:25px;float:left;color:#DDDDDD;text-align:center;border-right:0px;text-weight:bold;vertical-align:middle;">'.$sPercent.'%</div>';
 		$sOut .= '<div style="border:2px solid #DDDDDD;border-left:0px;width:'.$iWidthRemain.'px;height:25px;float:left;"></div>';
@@ -282,7 +284,7 @@ class Statistics extends BsExtensionMW {
 	public function onBSExtendedSearchAdminButtons( $oSpecialPage, &$aSearchAdminButtons ) {
 		$sScriptPath = BsConfig::get( 'MW::ScriptPath' );
 		$aSearchAdminButtons['Statistics'] = array(
-			'href' => SpecialPage::getTitleFor( 'SpecialExtendedStatistics' )->getLinkUrl(),
+			'href' => SpecialPage::getTitleFor( 'ExtendedStatistics' )->getLinkUrl(),
 			'onclick' => '',
 			'label' => wfMessage( 'bs-extendedsearch-statistics' )->plain(),
 			'image' => "$sScriptPath/extensions/BlueSpiceExtensions/Statistics/resources/images/bs-searchstatistics.png"
@@ -415,46 +417,97 @@ class Statistics extends BsExtensionMW {
 		return json_encode($aResult);
 	}
 
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
+	 * 
+	 * @param object $oCaller caller instance
+	 * @param array &$aPortalConfig reference to array portlet configs
+	 * @param boolean $bIsDefault default
+	 * @return boolean always true to keep hook alive
+	 */
 	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$this->getPortalConfig( $aPortalConfig );
+
+		return true;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
+	 * 
+	 * @param array &$aPortlets reference to array portlets
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
+		$this->getPortalPortlets( $aPortlets );
+
+		return true;
+	}
+
+		/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
+	 * 
+	 * @param object $oCaller caller instance
+	 * @param array &$aPortalConfig reference to array portlet configs
+	 * @param boolean $bIsDefault default
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsUserDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
+		$this->getPortalConfig( $aPortalConfig );
+
+		return true;
+	}
+
+	/**
+	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
+	 * 
+	 * @param array &$aPortlets reference to array portlets
+	 * @return boolean always true to keep hook alive
+	 */
+	public function onBSDashboardsUserDashboardPortalPortlets( &$aPortlets ) {
+		$this->getPortalPortlets( $aPortlets );
+
+		return true;
+	}
+
+	public function getPortalConfig( &$aPortalConfig ) {
 		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain()
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain()
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
+				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain()
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
+				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain()
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
+				'inputPeriod' => 'week',
 			)
 		);
 
 		return true;
 	}
 
-	/**
-	 * 
-	 * @global OutputPage $wgOut
-	 * @param type $aPortlets
-	 * @return boolean
-	 */
-	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
+	public function getPortalPortlets( &$aPortlets ) {
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
 			'config' => array(
 				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+				'inputPeriod' => 'week',
 			),
 			'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
 			'description' => wfMessage( 'bs-statistics-portlet-NumberOfUsersdesc' )->plain()
@@ -462,7 +515,8 @@ class Statistics extends BsExtensionMW {
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain()
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
+				'inputPeriod' => 'week',
 			),
 			'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
 			'description' => wfMessage( 'bs-statistics-portlet-NumberOfEditsdesc' )->plain()
@@ -470,7 +524,8 @@ class Statistics extends BsExtensionMW {
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain()
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
+				'inputPeriod' => 'week',
 			),
 			'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
 			'description' => wfMessage( 'bs-statistics-portlet-NumberOfArticlesdesc' )->plain()
@@ -478,7 +533,8 @@ class Statistics extends BsExtensionMW {
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain()
+				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
+				'inputPeriod' => 'week',
 			),
 			'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
 			'description' => wfMessage( 'bs-statistics-portlet-NumberOfPagesdesc' )->plain()
@@ -486,4 +542,5 @@ class Statistics extends BsExtensionMW {
 
 		return true;
 	}
+
 }

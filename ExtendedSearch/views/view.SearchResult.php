@@ -212,10 +212,15 @@ class ViewSearchResult extends ViewBaseElement {
 		);
 		if ( $arrows ) $aStyleClasses[] = 'bs-extendedsearch-paging-arrows';
 		if ( $bActive ) $aStyleClasses[] = 'bs-extendedsearch-paging-no-active';
+
 		$aOut = $pageNo;
 		if ( $bActive ) $aOut = "<b>{$aOut}</b>";
+
 		$aOut = '<div class="'.implode( ' ', $aStyleClasses ).'">'.$aOut.'</div>';
-		if ( !$bActive && $url !== '' ) $aOut = "<a href=\"{$url}\">{$aOut}</a>";
+
+		if ( !$bActive && !empty( $url ) ) {
+			$aOut = Html::openElement( 'a', array( 'href' => $url ) ) . $aOut . Html::closeElement( 'a' );
+		}
 
 		return $aOut;
 	}
@@ -227,7 +232,7 @@ class ViewSearchResult extends ViewBaseElement {
 	protected function getPaging() {
 		$aOut = array();
 		$aPaging = $this->getOption( 'pages' );
-		$pageActive = (int) $this->getOption( 'activePage' );
+		$pageActive = (int)$this->getOption( 'activePage' );
 		$firstPageToDisplay = ( $pageActive > 5 ) ? $pageActive - 5 : 1;
 		end( $aPaging );
 		$lastPage = key( $aPaging );
@@ -334,7 +339,7 @@ class ViewSearchResult extends ViewBaseElement {
 	 * @return string range.
 	 */
 	public function getNumberOfPageItems() {
-		$iNumOfResults = BsConfig::get( 'MW::ExtendedSearch::LimitResultDef' );
+		$iNumOfResults = BsConfig::get( 'MW::ExtendedSearch::LimitResults' );
 		$iBegin        = ( ( $this->getOption( 'activePage' ) - 1 ) * $iNumOfResults ) + 1;
 		$iEnd          = $this->getOption( 'activePage' ) * $iNumOfResults;
 

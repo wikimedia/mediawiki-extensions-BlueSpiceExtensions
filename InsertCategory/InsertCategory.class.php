@@ -83,7 +83,7 @@ class InsertCategory extends BsExtensionMW {
 		$this->setHook( 'VisualEditorConfig' );
 
 		BsConfig::registerVar( 'MW::InsertCategory::CategoryNamespaceName', 'Category', BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT );
-		BsConfig::registerVar( 'MW::InsertCategory::WithParents', true, BsConfig::LEVEL_USER | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-insertcategory-pref-WithParents', 'toggle' );
+		BsConfig::registerVar( 'MW::InsertCategory::WithParents', false, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-insertcategory-pref-WithParents', 'toggle' );
 
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}

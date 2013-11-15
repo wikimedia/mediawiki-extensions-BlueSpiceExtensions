@@ -84,7 +84,8 @@ class UEModulePDF extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL',   'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-PdfServiceURL' );
 		BsConfig::registerVar( 'MW::UEModulePDF::DefaultTemplate', 'BlueSpice', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-DefaultTemplate' );
 		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS',      false,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-SuppressNS', 'toggle' );
-		BsConfig::registerVar( 'MW::UEModulePDF::Backend',        'BsPDFServlet', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-Backend' );
+		/* This setting is no longer needed. We do not provide the old bn2pdf.war anymore */
+		BsConfig::registerVar( 'MW::UEModulePDF::Backend',        'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-Backend' );
 		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath',   'extensions/BlueSpiceFoundation/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-TemplatePath' );
 
 		//Hooks
@@ -119,7 +120,7 @@ class UEModulePDF extends BsExtensionMW {
 					'options' => BsPDFTemplateProvider::getTemplatesForSelectOptions( $aParams )
 				);
 				break;
-			case 'Backend':
+			case 'Backend': // TODO: This is deprecated. Remove it.
 				$aPrefs = array(
 					'type'    => 'select',
 					'options' => array(

@@ -162,7 +162,7 @@ BsSaferEditEditMode = {
 	 * Initiates saving of edited text in certain intervals
 	 */
 	startSaving: function() {
-		BsSaferEditEditMode.oldText = BsSaferEditEditMode.getText()
+		BsSaferEditEditMode.oldText = BsSaferEditEditMode.getText();
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.oldText;
 		BSPing.registerListener( 
 			'SaferEditSave', 
@@ -262,7 +262,7 @@ BsSaferEditEditMode = {
 				url,
 				null,
 				function ( sResponseData ){
-					var oResponse = JSON.parse(sResponseData)
+					var oResponse = JSON.parse(sResponseData);
 
 					if ( oResponse.notexts == "1" ) return;
 					if ( oResponse.savedOtherSection == "1" ) {
@@ -444,7 +444,7 @@ BsSaferEditEditMode = {
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText( 'VisualEditor' );
 		BsSaferEditEditMode.isUnsaved = false;
 	}
-}
+};
 
 $(document).ready( function() { 
 	BsSaferEditEditMode.init();

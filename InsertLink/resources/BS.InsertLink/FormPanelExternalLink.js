@@ -96,7 +96,7 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 			title: title,
 			href: target,
 			type: '',
-			code: target + desc
+			code: '['+target + desc+']'
 			//'class': ''
 		};
 	},

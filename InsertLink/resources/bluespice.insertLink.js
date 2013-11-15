@@ -18,6 +18,7 @@ $(document).ready(function(){
 			BS.InsertLink.Window.resetData();
 			BS.InsertLink.Window.clearListeners();
 			BS.InsertLink.Window.on( 'ok', BsInsertLinkWikiTextConnector.applyData, this );
+			BS.InsertLink.Window.on( 'cancel', bs.util.selection.reset );
 			BsInsertLinkWikiTextConnector.getData();
 			BS.InsertLink.Window.setData(
 				BsInsertLinkWikiTextConnector.getData()
@@ -115,9 +116,13 @@ var BsInsertLinkVisualEditorConnector = {
 	applyData: function( window, data, plugin ) {
 		var editor = plugin.getEditor();
 
-		var newAnchor = null
+		var newAnchor = null;
+		//Trim left and right everything (including linebreaks) that is not a starting or ending link code
+		//This is necessary to avoid the bswikicode parser from breakin the markup
+		var code = data.code.replace(/(^.*?\[|\].*?$|\r\n|\r|\n)/gm,''); //first layer of '[...]' //external-, file- and mailto- links
+		code = code.replace(/(^.*?\[|\].*?$|\r\n|\r|\n)/gm,''); //potential second layer of '[[...]]' //internal and interwiki links
 
-		if( editor.selection.getNode().nodeName.toLowerCase() == 'a' ) {
+		if( editor.selection.getNode().nodeName.toLowerCase() === 'a' ) {
 			newAnchor = editor.dom.create(
 				'a',
 				{
@@ -125,7 +130,7 @@ var BsInsertLinkVisualEditorConnector = {
 					'href': data.href,
 					//'class': data.class,
 					'data-bs-type': data.type,
-					'data-bs-wikitext': data.code
+					'data-bs-wikitext': code
 				},
 				data.title ? data.title : data.href
 			);
@@ -143,7 +148,7 @@ var BsInsertLinkVisualEditorConnector = {
 				'href': data.href,
 				//'class': data.class,
 				'data-bs-type': data.type,
-				'data-bs-wikitext': data.code
+				'data-bs-wikitext': code
 			},
 			data.title ? data.title : data.href
 		);

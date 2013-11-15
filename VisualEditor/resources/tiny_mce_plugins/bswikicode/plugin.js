@@ -116,9 +116,10 @@ var BsWikiCode = function() {
 		return {
 			'class': "bs-ve-image",
 			'border': 0,
+			//'width': _userThumbsize,
 			//HAD: display:inline-block; //Future: only CSS class
 			'style':"margin: 0.5em 0 0.8em 0; padding: 3px; cursor:pointer;"
-		}
+		};
 	};
 
 	function _image2html(link) {
@@ -271,6 +272,8 @@ var BsWikiCode = function() {
 		if (wikiImageObject.center === true) {
 			htmlImageObject.addClass('center');
 			htmlImageObject.css({
+				'float' : 'none', //Those might be set
+				'clear' : 'none', //by thumb'
 				'display': 'block',
 				'margin-left': 'auto',
 				'margin-right': 'auto'
@@ -1232,7 +1235,6 @@ var BsWikiCode = function() {
 	 * @returns {String}
 	 */
 	function _html2wiki(text) {
-console.log( text );
 		// save some work, if the text is empty
 		if (text === '') {
 			return text;
@@ -1457,7 +1459,7 @@ console.log( text );
 			}
 		}
 		text = _tables2wiki(text);
-console.log(text);
+
 		text = text.replace(/\n?@@br_emptyline_first@@/gmi, "\n");
 		text = text.replace(/\n?@@br_emptyline@@/gmi, "");
 		// Cleanup von falschen Image-URLs

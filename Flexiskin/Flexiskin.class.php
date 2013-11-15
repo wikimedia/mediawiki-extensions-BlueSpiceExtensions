@@ -136,7 +136,7 @@ class Flexiskin extends BsExtensionMW {
 			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinExists')->plain()));
 		}
 		$sConfigFile = self::generateConfigFile($oData);
-		$oStatus = BsFileSystemHelper::saveToDataDirectory('conf.json', $sConfigFile, "flexiskin" . DS . $sId);
+		$oStatus = BsFileSystemHelper::saveToDataDirectory('conf.json', $sConfigFile, "flexiskin" . DS . utf8_decode($sId));
 		if (!$oStatus->isGood()) {
 			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-fail-add-skin', self::getErrorMessage($oStatus))->plain()));
 		}
@@ -151,16 +151,19 @@ class Flexiskin extends BsExtensionMW {
 	}
 
 	private static function generateConfigFile($oData) {
-		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","completeColor":"333333","backgroundImage":""},';
+		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","completeColor":"333333","backgroundImage":"","repeatBackground":"no-repeat"},';
 		$sConfig .= '{"id":"header","logo":""},';
-		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1000"}]';
+		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1000", "fullWidth":"0"}]';
 		return $sConfig;
 	}
 
-	public static function getFlexiskinConfig($bReturnStatus = false, $sId = "") {
+	public static function getFlexiskinConfig($bReturnStatus = false, $sId = "", $bIsPreview = false) {
 		global $wgRequest;
 		$iId = $sId == "" ? self::getVal('id') : $sId;
-		$oStatus = BsFileSystemHelper::getFileContent("conf.json", "flexiskin" . DS . $iId);
+		if ($bIsPreview)
+			$oStatus = BsFileSystemHelper::getFileContent("conf.tmp.json", "flexiskin" . DS . $iId);
+		else
+			$oStatus = BsFileSystemHelper::getFileContent("conf.json", "flexiskin" . DS . $iId);
 		if ($bReturnStatus)
 			return $oStatus;
 		if (!$oStatus->isGood())
@@ -282,7 +285,12 @@ class Flexiskin extends BsExtensionMW {
 		if (self::getVal('flexiskin') || BsConfig::get('MW::Flexiskin::Active') != '') {
 			$sId = self::getVal('flexiskin') != '' ? self::getVal('flexiskin') : BsConfig::get('MW::Flexiskin::Active');
 			if ($sId != "default"){
-				$aResult = json_decode(self::getFlexiskinConfig(false, $sId));
+				if (self::getVal("preview"))
+					$aResult = json_decode(self::getFlexiskinConfig(false, $sId, true));
+				else
+					$aResult = json_decode(self::getFlexiskinConfig(false, $sId, false));
+				if ($aConfig[1]->logo == "")
+					return true;
 				$aConfig = json_decode($aResult->config);
 				$sPath = BS_DATA_PATH . "/flexiskin/" . $sId . "/images/";
 				$sImg = "<img src='".$sPath . $aConfig[1]->logo."' />";
@@ -302,6 +310,7 @@ class Flexiskin extends BsExtensionMW {
 			$aReturn[] = "body{background-image:url('images/" . $aConfig->backgroundImage . "') !important;}";
 		else
 			$aReturn[] = "body{background-image:none !important;}";
+		$aReturn[] = "body{background-repeat:".$aConfig->repeatBackground . " !important;}";
 		$aReturn[] = "#bs-left-resize-container{background-color:#" . $aConfig->completeColor . "}";
 		$aReturn[] = "#bs-beforearticlecontent{border-top:#" . $aConfig->completeColor . "}";
 		$aReturn[] = "#p-cactions li.selected a{color:#" . $aConfig->completeColor . "}";
@@ -327,22 +336,29 @@ class Flexiskin extends BsExtensionMW {
 		if ($aConfig->content != 'center') {
 			$aReturn[] = "#bs-wrapper{margin-" . $aConfig->content . ":0;}";
 		}
-		$aReturn[] = "#bs-menu-top{width:" . (int) $aConfig->width . "px;}";
-		$aReturn[] = "#bs-application{width:" . (int) $aConfig->width . "px;}";
-		$aReturn[] = "#bs-wrapper{width:" . (int) $aConfig->width . "px;min-width:" . (int) $aConfig->width . "px;}";
+		if ($aConfig->fullWidth == 0){
+			$aReturn[] = "#bs-menu-top{width:" . (int) $aConfig->width . "px;}";
+			$aReturn[] = "#bs-application{width:" . (int) $aConfig->width . "px;}";
+			$aReturn[] = "#bs-wrapper{width:" . (int) $aConfig->width . "px;min-width:" . (int) $aConfig->width . "px;}";
+		}
+		else{
+			$aReturn[] = "#bs-menu-top{width:100%;}";
+			$aReturn[] = "#bs-application{width:100%;}";
+			$aReturn[] = "#bs-wrapper{width:100%;min-width:100%;}";
+		}
 		$aReturn[] = "#bs-tools-container{width:" . ((int) $aConfig->width - 200 + 28) . "px;margin-left:-" . ((int) $aConfig->width - 246) . "px}";
 		return implode(" \n", $aReturn);
 	}
 	private static function getVal($sVal, $sDefault = "", $bIsArray = false){
 		global $wgRequest;
 		$sValSearched = $wgRequest->getVal($sVal, $sDefault);
-		return self::sanitizeString($sValSearched);
+		return /*self::sanitizeString(*/$sValSearched/*)*/;
 	}
 	
 	private static function getValues(){
 		global $wgRequest;
 		$aValSearched = $wgRequest->getValues();
-		return self::sanitizeArray($aValSearched);
+		return /*self::sanitizeArray(*/$aValSearched/*)*/;
 	}
 	
 	private static function sanitizeArray($aArray){

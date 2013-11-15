@@ -42,14 +42,21 @@
  * @subpackage Notifications
  */
 class Notifications extends BsExtensionMW {
-	private $aUsersToNotify = array();//unused so far
-	private $aEchoPrefix = array(
+	public $aEchoPrefix = array(
 		'web'	=> 'echo-subscriptions-web-',
 		'email'	=> 'echo-subscriptions-email-'
 	);
-	private $aArticleEdit = array( //unused
-		'minor'	=> false
+
+	public static $aNotificationCategories = array(
+		'bs-edit-cat' => array( 'priority' => 3 ),
+		'bs-create-cat' => array( 'priority' => 3 ),
+		'bs-delete-cat' => array( 'priority' => 3 ),
+		'bs-move-cat' => array( 'priority' => 3 ),
+		'bs-newuser-cat' => array( 'priority' => 3 ),
+		'bs-shoutbox-cat' => array( 'priority' => 3 ),
+		
 	);
+	
 	/**
 	 * Constructor of Notifications class
 	 */
@@ -86,6 +93,7 @@ class Notifications extends BsExtensionMW {
 		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
 		$this->setHook( 'GetPreferences' );
 		$this->setHook( 'UserSaveOptions' );
+		$this->setHook( 'BeforePageDisplay' );
 
 		// Variables
 		BsConfig::registerVar( 'MW::Notifications::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-notifications-pref-active', 'toggle' );
@@ -157,13 +165,15 @@ class Notifications extends BsExtensionMW {
 				BsConfig::getUsersForVar( $this->aEchoPrefix['email'].$event->getType().'-cat', '1', false, false )
 			) 
 		);
-		
-		foreach( $aTmpUsers as $index => $user ) {
-			if ( $user instanceof User ){}
-			if( !$user->getOption( 'MW::Notifications::Active', false ) ) continue;
-			if( !$event->getTitle()->userCan( 'read', $user ) ) continue;
-			if( !in_array( $event->getTitle()->getNamespace(), unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) continue;
-			if( $event->getAgent()->getRequest()->getVal( 'wpMinoredit', false ) && $user->getOption( 'MW::Notifications::NotifyNoMinor', false ) ) continue;
+
+		foreach ( $aTmpUsers as $index => $user ) {
+			if ( $user instanceof User ){}// just for code completion
+			if ( !$user->getOption( 'MW::Notifications::Active', false ) ) continue;
+			if ( !$event->getTitle()->userCan( 'read', $user ) ) continue;
+			if ( is_array( unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) {
+				if ( !in_array( $event->getTitle()->getNamespace(), unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) continue;
+			}
+			if ( $event->getAgent()->getRequest()->getVal( 'wpMinoredit', false ) && $user->getOption( 'MW::Notifications::NotifyNoMinor', false ) ) continue;
 			$users[] = $user;
 		}
 		
@@ -171,137 +181,106 @@ class Notifications extends BsExtensionMW {
 	}
 
 	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
-		// edit a page
-		$notificationCategories['bs-edit-cat'] = array(
-			'priority' => 3,
-//			'no-dismiss'	=> array( 'all' ),
-			'tooltip' => 'testing the tooltip',
-		);
-		
-		$notifications['bs-edit'] = array(
+		// categoriedefinition via self::$aNotificationCategories
+		//  HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Notification_category_parameters
+		foreach( self::$aNotificationCategories as $sCategory => $aCategoryDefinition ) {
+			$notificationCategories[$sCategory] = $aCategoryDefinition;
+		}
+
+		$notifications['bs-edit'] = array( // HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Defining_a_notification
 			'category' => 'bs-edit-cat',
-			'group' => 'positive',
+			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-edit',
 			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-edit-subject', // TODO SW: make text
+			'flyout-message' => 'bs-notifications-email-edit-subject',
 			'flyout-params' => array( 'titlelink', 'agentlink' ),
-			'email-subject-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'email-subject-message' => 'bs-notifications-email-edit-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
-			'email-body-message' => 'bs-notifications-email-edit',// TODO SW: make text
+			'email-body-message' => 'bs-notifications-email-edit',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
-			'email-body-batch-message' => 'hello again',// TODO SW: make text
-			'icon' => 'w',
+			'email-body-batch-message' => 'hello again',
+			'icon' => 'edit',
 		);
-		
-		// create a page
-		$notificationCategories['bs-create-cat'] = array(
-			'priority' => 3,
-			'tooltip' => 'testing the tooltip',
-		);
-		
+
 		$notifications['bs-create'] = array(
 			'category' => 'bs-create-cat',
-			'group' => 'positive',
+			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-create',
 			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
-			'flyout-params' => array( 'title', 'agent' ),
-			'email-subject-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'flyout-message' => 'bs-notifications-email-new-subject',
+			'flyout-params' => array( 'titlelink', 'agentlink' ),
+			'email-subject-message' => 'bs-notifications-email-new-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
-			'email-body-message' => 'bs-notifications-email-edit',// TODO SW: make text
-			'email-body-params' => array( 'title', 'agent' ),
-			'email-body-batch-message' => 'hello again',// TODO SW: make text
-			'icon' => 'w',
+			'email-body-message' => 'bs-notifications-email-new',
+			'email-body-params' => array( 'titlelink', 'agentlink' ),
+			'email-body-batch-message' => 'hello again',
+			'icon' => 'create',
 		);
-		
-		// delete a page
-		$notificationCategories['bs-delete-cat'] = array(
-			'priority' => 3,
-			'tooltip' => 'testing the tooltip',
-		);
-		
+
 		$notifications['bs-delete'] = array(
 			'category' => 'bs-delete-cat',
-			'group' => 'positive',
+			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-delete',
 			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
-			'flyout-params' => array( 'title', 'agent' ),
-			'email-subject-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'flyout-message' => 'bs-notifications-email-delete-subject',
+			'flyout-params' => array( 'titlelink', 'agentlink' ),
+			'email-subject-message' => 'bs-notifications-email-delete-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
-			'email-body-message' => 'bs-notifications-email-edit',// TODO SW: make text
+			'email-body-message' => 'bs-notifications-email-delete',
 			'email-body-params' => array( 'title', 'agent' ),
-			'email-body-batch-message' => 'hello again',// TODO SW: make text
-			'icon' => 'trash',
+			'email-body-batch-message' => 'hello again',
+			'icon' => 'delete',
 		);
-		
-		// move a page
-		$notificationCategories['bs-move-cat'] = array(
-			'priority' => 3,
-			'tooltip' => 'testing the tooltip',
-		);
-		
+
 		$notifications['bs-move'] = array(
 			'category' => 'bs-move-cat',
-			'group' => 'positive',
+			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-move',
 			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'flyout-message' => 'bs-notifications-email-move-subject',
 			'flyout-params' => array( 'title', 'agent' ),
-			'email-subject-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'email-subject-message' => 'bs-notifications-email-move-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
-			'email-body-message' => 'bs-notifications-email-edit',// TODO SW: make text
+			'email-body-message' => 'bs-notifications-email-move',
 			'email-body-params' => array( 'title', 'agent' ),
-			'email-body-batch-message' => 'hello again',// TODO SW: make text
-			'icon' => 'w',
+			'email-body-batch-message' => 'hello again',
+			'icon' => 'move',
 		);
-		
-		// new user created
-		$notificationCategories['bs-newuser-cat'] = array(
-			'priority' => 3,
-			'tooltip' => 'testing the tooltip',
-		);
-		
+
 		$notifications['bs-newuser'] = array(
 			'category' => 'bs-newuser-cat',
-			'group' => 'positive',
+			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-newuser',
 			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'flyout-message' => 'bs-notifications-email-newuser-subject',
 			'flyout-params' => array( 'title', 'agent' ),
-			'email-subject-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'email-subject-message' => 'bs-notifications-email-newuser-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
-			'email-body-message' => 'bs-notifications-email-edit',// TODO SW: make text
+			'email-body-message' => 'bs-notifications-email-newuser',
 			'email-body-params' => array( 'title', 'agent' ),
-			'email-body-batch-message' => 'hello again',// TODO SW: make text
-			'icon' => 'w',
+			'email-body-batch-message' => 'hello again',
+			'icon' => 'newuser',
 		);
-		
-		// shoutbox entry
-		$notificationCategories['bs-shoutbox-cat'] = array(
-			'priority' => 3,
-			'tooltip' => 'testing the tooltip',
-		);
-		
+
 		$notifications['bs-shoutbox'] = array(
 			'category' => 'bs-shoutbox-cat',
-			'group' => 'positive',
+			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-newuser',
 			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'flyout-message' => 'bs-notifications-email-edit-subject',
 			'flyout-params' => array( 'title', 'agent' ),
-			'email-subject-message' => 'bs-notifications-email-edit-subject',// TODO SW: make text
+			'email-subject-message' => 'bs-notifications-email-edit-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
-			'email-body-message' => 'bs-notifications-email-edit',// TODO SW: make text
+			'email-body-message' => 'bs-notifications-email-edit',
 			'email-body-params' => array( 'title', 'agent' ),
-			'email-body-batch-message' => 'hello again',// TODO SW: make text
-			'icon' => 'w',
+			'email-body-batch-message' => 'hello again',
+			'icon' => 'shoutbox',
 		);
 		return true;
 	}
@@ -454,14 +433,18 @@ class Notifications extends BsExtensionMW {
 	}
 	
 	public static function onBSBlueSpiceSkinUserBarBeforeLogout(&$aUserBarBeforeLogoutViews, $wgUser, $skin){
-		if (!isset($skin->data['personal_urls']['notifications'])) 
-			return true;
+		if (!isset($skin->data['personal_urls']['notifications'])) return true;
 		$oView = new ViewBaseElement();
 		$oView->setId("pt-notifications");
 		$oLink = HTML::element("a", array('href' => htmlspecialchars($skin->data['personal_urls']['notifications']['href'])), $skin->data['personal_urls']['notifications']['text']);
 		
 		$oView->addData(array($oLink));
 		$aUserBarBeforeLogoutViews[] = $oView;
+		return true;
+	}
+	
+	public function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		$out->addModuleStyles( 'ext.bluespice.notifications.icons' );
 		return true;
 	}
 

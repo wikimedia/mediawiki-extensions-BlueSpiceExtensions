@@ -1,7 +1,5 @@
 Ext.define('BS.FormattingHelp.Window', {
 	extend: 'Ext.Window',
-	height: 630,
-	width: 760,
 	autoScroll: true,
 	closeAction: 'hide',
 	singleton: true,
@@ -11,13 +9,14 @@ Ext.define('BS.FormattingHelp.Window', {
 		
 		this.pnlMain = Ext.create('Ext.Panel',{
 			id: 'bs-formattinghelp-content',
-			loader: {
+			/*loader: {
 				url: bs.util.getAjaxDispatcherUrl( 'FormattingHelp::getFormattingHelp' )
-			},
+			},*/
+			html: mw.message('bs-formattinghelp-help-text').plain(),
 			autoScroll: true
 		});
 		
-		this.pnlMain.getLoader().load();
+		//this.pnlMain.getLoader().load();
 		
 		this.items = [
 			this.pnlMain

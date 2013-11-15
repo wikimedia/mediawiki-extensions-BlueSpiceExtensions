@@ -98,18 +98,16 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 			prefix = this.cbInterWiki.getValue() + ':';
 		}
 
-		//var href = '';
 		var page = '';
 		if( this.tfPageTitle.getValue() ) {
 			page = this.tfPageTitle.getValue();
-			//href = mw.util.wikiGetlink(ns+page);
 		}
 
 		return { 
 			title: title,
 			href: prefix+page,
 			type: this.linktype,
-			code: prefix + page + desc
+			code: '[[' + prefix + page + desc + ']]'
 			//'class': ''
 		};
 	},

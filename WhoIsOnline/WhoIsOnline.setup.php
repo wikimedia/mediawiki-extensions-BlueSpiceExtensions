@@ -1,11 +1,12 @@
 <?php
 
-BsExtensionManager::registerExtension('WhoIsOnline',                     BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension('WhoIsOnline', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
 $wgExtensionMessagesFiles['WhoIsOnline'] = __DIR__ . '/WhoIsOnline.i18n.php';
 
 $wgResourceModules['ext.bluespice.whoisonline'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/WhoIsOnline/resources/WhoIsOnline.js',
+	'position' => 'bottom',
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );

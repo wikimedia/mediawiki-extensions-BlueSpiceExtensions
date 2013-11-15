@@ -107,6 +107,7 @@ $messages['en'] = array(
 	'bs-extendedsearch-pref-numfacets'                      => 'Number of facets',
 	'bs-extendedsearch-pref-showmlt'                        => 'Show similar articles',
 	'bs-extendedsearch-pref-showpercent'                    => 'Show percent for each result',
+	'bs-extendedsearch-pref-solrcore'                       => 'Solr core instance',
 	'bs-extendedsearch-about_to_start'                      => 'Starting...',
 	'bs-extendedsearch-label'                               => 'Search',
 	'bs-extendedsearch-index-successfully-deleted'          => 'The index was successfully deleted.',
@@ -142,9 +143,12 @@ $messages['en'] = array(
 	'bs-extendedsearch-desc'                                => 'Descending',
 	'bs-extendedsearch-unknown'                             => 'Unknown',
 	'bs-extendedsearch-section'                             => 'Section ',
-	'bs-extendedsearch-morelikethis'                        => 'Similar articles:',
+	'bs-extendedsearch-morelikethis'                        => 'Similar articles',
 	'bs-extendedsearch-recentsearchterms'                   => 'Recent search terms',
 	'bs-extendedsearch-recentsearchtermsdesc'               => 'List of the most recent searched terms inside this Wiki sorted by count',
+	'bs-extendedsearch-no-mlt-found'                        => 'No similar articles found',
+	'bs-extendedsearch-pref-mltns'                          => '"More like this" namespaces',
+	'bs-extendedsearch-redirect'                            => 'Redirect from',
 
 	//Javascript
 	'bs-extendedsearch-more'                                => 'More',
@@ -244,6 +248,7 @@ $messages['de'] = array(
 	'bs-extendedsearch-pref-numfacets'                      => 'Anzahl der Facetten',
 	'bs-extendedsearch-pref-showmlt'                        => 'Ähnliche Artikel anzeigen',
 	'bs-extendedsearch-pref-showpercent'                    => 'Prozent für jedes Ergebnis anzeigen',
+	'bs-extendedsearch-pref-solrcore'                       => 'Solr Core Instanz',
 	'bs-extendedsearch-about_to_start'                      => 'Starte...',
 	'bs-extendedsearch-label'                               => 'Suche konfigurieren',
 	'bs-extendedsearch-index-successfully-deleted'          => 'Der Index wurde erfolgreich gelöscht.',
@@ -278,9 +283,12 @@ $messages['de'] = array(
 	'bs-extendedsearch-desc'                                => 'Absteigend',
 	'bs-extendedsearch-unknown'                             => 'Unbekannt',
 	'bs-extendedsearch-section'                             => 'Abschnitt ',
-	'bs-extendedsearch-morelikethis'                        => 'Ähnliche Artikel:',
+	'bs-extendedsearch-morelikethis'                        => 'Ähnliche Artikel',
 	'bs-extendedsearch-recentsearchterms'                   => 'Meist gesuchte Begriffe',
 	'bs-extendedsearch-recentsearchtermsdesc'               => 'Liste der am häufigest gesuchten Begriffe dieses Wikis, sortiert nach der Anzahl',
+	'bs-extendedsearch-no-mlt-found'                        => 'Keine ähnlichen Artikel gefunden',
+	'bs-extendedsearch-pref-mltns'                          => '"More like this" Namensräume',
+	'bs-extendedsearch-redirect'                            => 'Weiterleitung von',
 
 	//Javascript
 	'bs-extendedsearch-more'                                => 'Mehr',

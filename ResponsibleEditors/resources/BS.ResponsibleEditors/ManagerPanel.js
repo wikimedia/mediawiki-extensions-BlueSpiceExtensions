@@ -265,29 +265,29 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	},
 
 	renderResponsibleEditor: function( aValue, oMetaData, oRecord, iRowIndex, iColIndex, oStore ) {
-		if( aValue == undefined || aValue.length == 0) {
+		if( typeof(aValue) == 'undefined' || aValue.length == 0) {
 			return String.format(
 				'<em style="color: #A0A0A0">{0}</em>',
 				mw.message('bs-responsibleeditors-columnResponsibleEditorNotSet').plain()
 			);
 		}
-		
+
 		var content = '';
-		
+
 		for( var i = 0; i < aValue.length; i++) {
 			var sDisplayName = aValue[i].user_displayname;
 			var sUrl =  aValue[i].user_page_link_url;
-			
+
 			sDisplayName = sDisplayName.replace( /_/g, ' ' );
 			if( i != 0 ) {
 				content += ', ';
 			}
-			content += String.format(
-				'<a href="{0}" title="{1}" class="bs-confirm-nav">{1}</a>',
+			content += '<a href="{0}" title="{1}" class="bs-confirm-nav">{1}</a>'.format(
 				sUrl,
 				sDisplayName
 			);
 		}
+
 		return content
 	}
 });

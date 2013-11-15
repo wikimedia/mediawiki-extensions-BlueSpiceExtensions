@@ -17,7 +17,8 @@ $wgResourceModules['ext.bluespice.shoutbox'] = array(
 		'bs-shoutbox-confirm_text',
 		'bs-shoutbox-confirm_title',
 		'bs-shoutbox-enterMessage'
-	)
+	),
+	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.shoutbox.styles'] = array(

@@ -70,7 +70,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		$this->setHook('EditFormPreloadText');
 
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels',       2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfLevels' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::DataSourceTitle',     'TopBarMenu', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-topmenubarcustomizer-pref-DataSourceTitle' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::DataSourceTitle',     'TopBarMenu', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-topmenubarcustomizer-pref-DataSourceTitle' );
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfMainEntries', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfMainEntries', 'int' );
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries',  25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfSubEntries', 'int' );
 	}
@@ -171,8 +171,8 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	private function parseArticleContentLines( $aLines, $aApps = array(), $iPassed = 0 ) {
 		$iAllowedLevels = BsConfig::get('MW::TopMenuBarCustomizer::NuberOfLevels');
-		$iMaxEntrys = $iPassed === 0 ? BsConfig::get('MW::TopMenuBarCustomizer::NumberOfMainEntries') : BsConfig::get('MW::TopMenuBarCustomizer::NumberOfSubEntries');
-		
+		$iMaxEntrys = $iPassed === 0 ? BsConfig::get('MW::TopMenuBarCustomizer::NumberOfMainEntries') -1 : BsConfig::get('MW::TopMenuBarCustomizer::NumberOfSubEntries') -1;
+
 		if($iAllowedLevels < 1 || $iMaxEntrys < 1) return $aApps;
 
 		$iPassed++;

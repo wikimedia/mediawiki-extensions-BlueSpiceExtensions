@@ -90,13 +90,12 @@ class Checklist extends BsExtensionMW {
 	public static function doChangeCheckItem() {
 		$oRequest = RequestContext::getMain()->getRequest();
 		$iPos = $oRequest->getInt( 'pos', 0 );
-		if ( $iPos == 0 ) return false;
+		if ( $iPos == 0 ) return 'false';
 		$sValue = $oRequest->getVal( 'value', '' );
-		if ( $sValue == '' ) return false;
+		if ( $sValue == '' ) return 'false';
 		$sArticleId = $oRequest->getInt( 'articleId', 0 );
-		if ( $sArticleId == 0 ) return false;
-		
-		$oArticle = Article::newFromID( $sArticleId );
+		if ( $sArticleId == 0 ) return 'false';
+
 		$oWikiPage = WikiPage::newFromID( $sArticleId );
 		$oContent = $oWikiPage->getContent();
 		$sContent = $oContent->getNativeData();
@@ -120,8 +119,8 @@ class Checklist extends BsExtensionMW {
 		$oContentHandler = $oContent->getContentHandler();
 		$oNewContent = $oContentHandler->makeContent($sContent, $oWikiPage->getTitle());
 		$oResult = $oWikiPage->doEditContent( $oNewContent, $sSummary );
-		
-		return true;
+
+		return 'true';
 	}
 	
 	public static function getOptionsList() {
@@ -230,7 +229,7 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = ">";
 			
 			foreach ( $aOptions as $sOption ) {
-				$aOptionSet = explode("\|", $sOption);
+				$aOptionSet = explode("|", $sOption);
 				
 				if (!$sSelectColor && isset ($aOptionSet[1])) {
 					$sSelectColor = "style='color:".$aOptionSet[1].";' ";

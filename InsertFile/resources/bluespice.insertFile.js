@@ -10,6 +10,7 @@ $(document).ready(function(){
 				var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 				data.nsText = formattedNamespaces[bs.ns.NS_MEDIA];
 				data.caption = data.displayText;
+				delete( data.src );
 				var wikiLink = new bs.wikiText.Link( data );
 				bs.util.selection.restore( wikiLink.toString() );
 			});
@@ -49,7 +50,8 @@ $(document).ready(function(){
 			BS.InsertFile.ImageDialog.on( 'ok',function( dialog, data ) {
 				var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 				data.nsText = formattedNamespaces[bs.ns.NS_IMAGE];
-				delete(data.imagename); //Not recognized by wikiText.Link
+				delete( data.imagename ); //Not recognized by wikiText.Link
+				delete( data.src );
 				var wikiLink = new bs.wikiText.Link( data );
 				bs.util.selection.restore( wikiLink.toString() );
 			});
@@ -107,7 +109,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			var image = this.selection.getNode();
 			var params = {};
 			
-			if( image.nodeName.toLowerCase() == 'img' ) {
+			if( image.nodeName.toLowerCase() === 'img' ) {
 				var data = bs.util.makeAttributeObject( image );
 				params = bs.util.unprefixDataAttributeObject(data);
 			}
@@ -122,27 +124,33 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					data.imagename = formattedNamespaces[bs.ns.NS_IMAGE]+':'+data.imagename;
 					var classAddition = '';
 					var styleAddition = '';
-					if( data.sizeheight !== '' ) {
-						styleAddition += ' height: '+data.sizeheight+'px;'
+					if( data.sizeheight ) {
+						styleAddition += ' height: '+data.sizeheight+'px;';
 					}
-					if( data.sizewidth !== '' ) {
-						styleAddition += ' width: '+data.sizewidth+'px;'
+					if( data.sizewidth ) {
+						styleAddition += ' width: '+data.sizewidth+'px;';
 					}
 					//TODO: This is ugly stuff from "bswikicode". Find better 
 					//solution in the year 2017.
 					if( data.thumb == true || data.frame == true ) {
-						styleAddition += ' border: 1px solid #CCC; float: right; clear:right; margin-left: 1.4em';
+						imgAttrs['data-bs-width'] = 180; //HARDCODED 180px --> we should use user option!
+						classAddition += ' thumb';
+						styleAddition += ' border: 1px solid #CCC; width: 180px;'; //HARDCODED 180px
+						//A thumb floats right by default
+						if( data.align == 'none' ) {
+							styleAddition += ' float: right; clear:right; margin-left: 1.4em';
+						}
 					}
 					if( data.align == 'center' || data.center == true ) {
-						classAddition += 'center';
+						classAddition += ' center';
 						styleAddition += ' display: block; margin-left: auto; margin-right: auto;';
 					}
 					if( data.align == 'right' || data.right == true ) {
-						classAddition += 'tright';
+						classAddition += ' tright';
 						styleAddition += ' float: right; clear: right; margin-left: 1.4em;';
 					}
 					if( data.align == 'left' || data.left == true ) {
-						classAddition += 'tleft';
+						classAddition += ' tleft';
 						styleAddition += ' float: left; clear: left; margin-right: 1.4em;';
 					}
 					imgAttrs.src = data.src;
@@ -152,7 +160,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					var dataAttrs = bs.util.makeDataAttributeObject( data );
 					$.extend(imgAttrs, dataAttrs);
 					var newImgNode = null;
-					if( image.nodeName.toLowerCase() == 'img' ) {
+					if( image.nodeName.toLowerCase() === 'img' ) {
 						newImgNode = this.dom.create( 'img', imgAttrs );
 						this.dom.replace(newImgNode, image);
 						//Place cursor to end
@@ -176,9 +184,12 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 		commandId: 'mceBsFile',
 		commandCallback: function() {
 			var anchor = this.selection.getNode();
-			var params = {};
+			var params = {
+				caption: this.selection.getContent(),
+				displayText: this.selection.getContent()
+			};
 
-			if( anchor.nodeName.toLowerCase() == 'a' ) {
+			if( anchor.nodeName.toLowerCase() === 'a' ) {
 				var prefixedTitle = decodeURIComponent( anchor.getAttribute( 'href' ) );
 				var wikiLink = new bs.wikiText.Link( '[['+prefixedTitle+']]');
 				params = {
@@ -201,11 +212,11 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 						'class': 'internal bs-internal-link',
 						'data-bs-type' : 'internal_link'
 					};
-					if( anchor.nodeName.toLowerCase() == 'a' ) {
+					if( anchor.nodeName.toLowerCase() === 'a' ) {
 						newAnchor = this.dom.create( 'a', anchorAttrs, data.displayText );
 						this.dom.replace(newAnchor, anchor);
 						//Place cursor to end
-						this.selection.select(newImgNode, false);
+						this.selection.select(newAnchor, false);
 					}
 					else {
 						newAnchor = this.dom.createHTML( 'a', anchorAttrs, data.displayText );

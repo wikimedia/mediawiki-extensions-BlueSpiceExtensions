@@ -91,7 +91,7 @@ class SearchUriBuilder {
 	/**
 	 * Other params (?)
 	 */
-	const NO_ENCODE = 16384;
+	const ENCODE = 16384;
 
 	/**
 	 * Currently determined search options.
@@ -209,7 +209,7 @@ class SearchUriBuilder {
 			}
 		} else $uri = $sParams;
 
-		if ( $iExclude & self::NO_ENCODE ) {
+		if ( $iExclude & self::ENCODE ) {
 			$uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
 		}
 

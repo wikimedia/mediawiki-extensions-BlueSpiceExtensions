@@ -316,13 +316,18 @@ class WantedArticle extends BsExtensionMW {
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowCreSugInAc' ) == false ) return true;
 
+		$sShortAndEscapedString = SearchService::sanitzeSearchString(
+			BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) 
+		);
+		$sSearchString = SearchService::sanitzeSearchString( $sSearchString );
+
 		$oTitle = Title::newFromText( $sSearchString );
 		if ( is_object( $oTitle ) ) {
 			if ( $oTitle->userCan( 'createpage' ) && $oTitle->userCan( 'edit' ) ) {
 				$oItemCreate        = new stdClass();
 				$oItemCreate->id    = ++$iID;
 				$oItemCreate->value = $sSearchString;
-				$oItemCreate->label = wfMessage( 'bs-wantedarticle-create-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' )->plain() . '';
+				$oItemCreate->label = wfMessage( 'bs-wantedarticle-create-page', '<b>' . $sShortAndEscapedString . '</b>' )->plain() . '';
 				$oItemCreate->type  = '';
 				$oItemCreate->link  = $oTitle->getFullURL();
 				$oItemCreate->attr  = 'bs-extendedsearch-ac-noresults';
@@ -333,7 +338,7 @@ class WantedArticle extends BsExtensionMW {
 				$oItemSuggest = new stdClass();
 				$oItemSuggest->id = ++$iID;
 				$oItemSuggest->value = $sSearchString;
-				$oItemSuggest->label = wfMessage( 'bs-wantedarticle-suggest-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' )->plain() . '';
+				$oItemSuggest->label = wfMessage( 'bs-wantedarticle-suggest-page', '<b>' . $sShortAndEscapedString . '</b>' )->plain() . '';
 				$oItemSuggest->type = '';
 				$oItemSuggest->link = '#' . $sSearchString;
 				$oItemSuggest->attr = 'bs-extendedsearch-suggest';

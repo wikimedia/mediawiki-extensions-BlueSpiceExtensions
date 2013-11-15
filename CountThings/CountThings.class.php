@@ -48,9 +48,6 @@ class CountThings extends BsExtensionMW {
 
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['CountThings'] = __DIR__ . '/CountThings.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK

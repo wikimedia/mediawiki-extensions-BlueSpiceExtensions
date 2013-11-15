@@ -85,10 +85,8 @@ class Dashboards extends BsExtensionMW {
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'PersonalUrls' );
-
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
-
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -202,8 +200,9 @@ class Dashboards extends BsExtensionMW {
 	 * AjaxDispatcher callback for saving a user portal config
 	 * @return BsCAResponse
 	 */
-	public static function saveUserDashboardConfig( $aPortalConfig ) {
+	public static function saveUserDashboardConfig() {
 		$oResponse = BsCAResponse::newFromPermission( 'read' );
+		$aPortalConfig = RequestContext::getMain()->getRequest()->getVal( 'portletConfig', '' );
 
 		$oDbw = wfGetDB( DB_MASTER );
 		$iUserId = RequestContext::getMain()->getUser()->getId();
@@ -228,8 +227,9 @@ class Dashboards extends BsExtensionMW {
 	 * AjaxDispatcher callback for saving an admin portal config
 	 * @return BsCAResponse
 	 */
-	public static function saveAdminDashboardConfig( $aPortalConfig ) {
+	public static function saveAdminDashboardConfig() {
 		$oResponse = BsCAResponse::newFromPermission( 'read' );
+		$aPortalConfig = RequestContext::getMain()->getRequest()->getVal( 'portletConfig', '' );
 
 		$oDbw = wfGetDB( DB_MASTER );
 		$oDbw->replace(

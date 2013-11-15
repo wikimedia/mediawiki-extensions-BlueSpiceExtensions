@@ -141,6 +141,7 @@ $messages['en'] = array(
 	'bs-review-no-valid-user'            => 'This is not a valid user or no userobject is given.',
 	'review'                      => 'Review',
 	'review-desc'                 => 'Adds workflow functionality to pages',
+	'bs-review-specialreview-header'     => '{{plural:$1|Reviews of $2|Review overview}}',
 
 	//Javascript
 	'bs-review-title' => 'Review',
@@ -189,6 +190,7 @@ $messages['en'] = array(
 	'bs-review-header-startdate' => 'Start',
 	'bs-review-header-enddate' => 'End',
 	'bs-review-confirm-delete-review' => 'Do you really want to delete this review?',
+	'bs-review-overviewpanel-alloption' => '(all)',
 );
 
 $messages['de'] = array(
@@ -316,6 +318,7 @@ $messages['de'] = array(
 	'bs-review-no-valid-user'            => 'Dieser Benutzer ist unzulässig oder es ist kein Benutzerobjekt vorhanden.',
 	'review' => 'Review',
 	'review-desc' => 'Fügt Artikeln Workflow-Funktionen hinzu.',
+	'bs-review-specialreview-header'     => '{{plural:$1|Begutachtungen für $2|Begutachtugsübersicht}}',
 	
 	//Javascript
 	'bs-review-title' => 'Begutachtung',
@@ -365,6 +368,7 @@ $messages['de'] = array(
 	'bs-review-header-startdate' => 'Beginn',
 	'bs-review-header-enddate' => 'Ende',
 	'bs-review-confirm-delete-review' => 'Möchtest du diese Begutachtung wirklich löschen?',
+	'bs-review-overviewpanel-alloption' => '(alle)',
 );
 
 $messages['de-formal'] = array(

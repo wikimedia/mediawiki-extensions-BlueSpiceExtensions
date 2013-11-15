@@ -2,16 +2,20 @@
 
 BsExtensionManager::registerExtension( 'UniversalExport', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['UniversalExport']      = __DIR__ . '/UniversalExport.i18n.php';
-$wgExtensionMessagesFiles['UniversalExportAlias'] = __DIR__ . '/specialpages/SpecialUniversalExport.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
+$wgExtensionMessagesFiles['UniversalExport']      = __DIR__ . '/languages/UniversalExport.i18n.php';
+$wgExtensionMessagesFiles['UniversalExportAlias'] = __DIR__ . '/languages/SpecialUniversalExport.alias.php';
 
-$wgAutoloadClasses['SpecialUniversalExport'] = __DIR__ . '/specialpages/SpecialUniversalExport.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
+$wgAutoloadClasses['SpecialUniversalExport']      = __DIR__ . '/includes/specials/SpecialUniversalExport.class.php';
+$wgAutoloadClasses['ViewExportModuleOverview']    = __DIR__ . '/includes/views/ViewExportModuleOverview.php';
+$wgAutoloadClasses['BsUniversalExportModule']     = __DIR__ . '/includes/UniversalExportModule.interface.php';
+$wgAutoloadClasses['BsUniversalExportHelper']     = __DIR__ . '/includes/UniversalExportHelper.class.php';
+$wgAutoloadClasses['BsUniversalExportTagLibrary'] = __DIR__ . '/includes/UniversalExportTagLibrary.class.php';
 
 $wgSpecialPageGroups['UniversalExport'] = 'bluespice';
-$wgSpecialPages['UniversalExport'] = 'SpecialUniversalExport'; # Tell MediaWiki about the new special page and its class name
+$wgSpecialPages['UniversalExport'] = 'SpecialUniversalExport';
 
-$wgAutoloadClasses['ViewExportModuleOverview'] = __DIR__ . '/views/view.ExportModuleOverview.php';
-
-$wgAutoloadClasses['BsUniversalExportModule'] = __DIR__ . '/lib/UniversalExportModule.interface.php';
-$wgAutoloadClasses['BsUniversalExportHelper'] = __DIR__ . '/lib/UniversalExportHelper.class.php';
-$wgAutoloadClasses['BsUniversalExportTagLibrary'] = __DIR__ . '/lib/UniversalExportTagLibrary.class.php';
+$wgResourceModules['ext.bluespice.universalExport'] = array(
+	'styles' => 'bluespice.universalExport.js',
+	'localBasePath' => __DIR__ . '/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/UniversalExport/resources'
+);

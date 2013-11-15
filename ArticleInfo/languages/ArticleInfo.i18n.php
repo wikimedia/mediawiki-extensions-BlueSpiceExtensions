@@ -45,10 +45,9 @@ $messages['de'] = array(
 	'bs-articleinfo-statebartopcategories'   => 'Kategorien',
 	'bs-articleinfo-statebartopsubpages'     => 'Unterseiten',
 	'bs-articleinfo-statebarbodycategories'  => 'Kategorien',
-	'bs-articleinfo-statebarbodyeditsummary' => 'Zusammenfassung',
 	'bs-articleinfo-statebarbodysubpages'    => 'Unterseiten',
 	'bs-articleinfo-hiddencats'              => 'Versteckte Kategorien',
-	'bs-articleinfo-notemplates'             => 'Keine Vorlagen für diesen Artikel gefunden',
+	'bs-articleinfo-notemplates'             => 'Keine Vorlagen gefunden',
 	'bs-articleinfo-templates'               => 'Vorlagen'
 );
 
@@ -86,10 +85,9 @@ $messages['en'] = array(
 	'bs-articleinfo-statebartopcategories'   => 'Categories',
 	'bs-articleinfo-statebartopsubpages'     => 'Subpages',
 	'bs-articleinfo-statebarbodycategories'  => 'Categories',
-	'bs-articleinfo-statebarbodyeditsummary' => 'Summary',
 	'bs-articleinfo-statebarbodysubpages'    => 'Subpages',
 	'bs-articleinfo-hiddencats'              => 'Hidden Categories',
-	'bs-articleinfo-notemplates'             => 'No templates found for this article',
+	'bs-articleinfo-notemplates'             => 'No templates found',
 	'bs-articleinfo-templates'               => 'Templates'
 );
 

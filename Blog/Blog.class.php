@@ -116,7 +116,7 @@ class Blog extends BsExtensionMW {
 		// Should a link to complete list of blog entries be rendered?
 		BsConfig::registerVar('MW::Blog::ShowAll', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowAll', 'toggle');
 		// Place more link at end of blog entry instead of next line
-		BsConfig::registerVar('MW::Blog::MoreAtEndOfEntry', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreAtEndOfEntry', 'toggle');
+		BsConfig::registerVar('MW::Blog::MoreAtEndOfEntry', true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreAtEndOfEntry', 'toggle');
 		// Possible values are "creation" and "title"
 		//BsConfig::registerVar('MW::Blog::SortBy',			'creation',	BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, $this->mI18N);
 		BsConfig::registerVar( 'MW::Blog::SortBy', 'creation', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-SortBy', 'select' );
@@ -132,7 +132,7 @@ class Blog extends BsExtensionMW {
 		// Defines how images should be rendered. Possible values: full|thumb|none
 		//BsConfig::registerVar('MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, $this->mI18N);
 		BsConfig::registerVar( 'MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-ImageRenderMode', 'select' );
-		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTagFormWhenNotLoggedIn', 'toggle');
+		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTagFormWhenNotLoggedIn', 'toggle');
 
 		global $wgServer, $wgScriptPath;
 		//Register Application for ApplicationBar in BlueSpice-Skin
@@ -532,10 +532,16 @@ class Blog extends BsExtensionMW {
 			} else {
 				$sTitle = $oTitle->getText();
 			}
+
+			$aTalkParams = array();
+			if ( !$oTitle->getTalkPage()->exists() ) {
+				$aTalkParams = array( 'action' => 'edit' );
+			}
+
 			$oBlogItemView->setTitle( $sTitle );
 			$oBlogItemView->setRevId( $oArticle->getRevIdFetched() );
 			$oBlogItemView->setURL( $oTitle->getFullURL() );
-			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getFullURL() );
+			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getFullURL( $aTalkParams ) );
 			$oBlogItemView->setTalkCount( $iCount );
 			$oBlogItemView->setTrackbackUrl( $oTitle->getFullURL() );
 

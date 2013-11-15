@@ -95,6 +95,8 @@ class WidgetBar extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( $oOutputPage, $oSkinTemplate ) {
 		$oOutputPage->addModules( 'ext.bluespice.widgetbar' );
+		$oOutputPage->addModuleStyles( 'ext.bluespice.widgetbar.style' );
+
 		return true;
 	}
 

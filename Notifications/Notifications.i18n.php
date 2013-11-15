@@ -4,7 +4,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Stefan Widmann <widmann@hallowelt.biz>
 
  * @package    BlueSpice_Extensions
  * @subpackage Notifications
@@ -25,6 +25,7 @@ $messages['en'] = array(
 	'echo-pref-subscription-bs-newuser-cat'		=> 'If a new user gets created (only for Administrators)',
 	'echo-pref-subscription-bs-shoutbox-cat'	=> 'Notification messages on observed Pages (Shoutbox)',
 
+	'bs-echo-anon-user'							=> "'''anonymous'''",
 	'echo-dismiss-title-bs-edit'				=> 'site changed',
 	'echo-dismiss-title-bs-create'				=> 'site created',
 	'echo-dismiss-title-bs-delete'				=> 'site deleted',
@@ -122,7 +123,8 @@ $messages['de'] = array(
 	'echo-dismiss-title-bs-move'				=> 'Seiten verschoben',
 	'echo-dismiss-title-bs-newuser'				=> 'Neue Benutzer ',
 	'echo-dismiss-title-bs-shoutbox'			=> 'Shoutbox Messages',
-
+	
+	'bs-echo-anon-user'							=> "'''Anonym'''",
 	'bs-echo-page-edit'							=> 'Die Seite [[$1]] wurde bearbeitet',
 	'bs-echo-flyout-page-edit'					=> 'Die Seite [[$1]] wurde von [[$2]] bearbeitet',
 	'bs-echo-page-create'						=> 'Die Seite [[$1]] wurde neu angelegt',

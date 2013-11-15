@@ -93,10 +93,10 @@ class Review extends BsExtensionMW {
 	protected function initExt() {
 		// Register style in constructor in order to have it loaded on special pages
 		BsConfig::registerVar('MW::Review::CheckOwner', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-review-pref-CheckOwner', 'toggle');
-		BsConfig::registerVar('MW::Review::ShowNameInTooltip', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-review-pref-ShowNameInTooltip', 'toggle');
+		BsConfig::registerVar('MW::Review::ShowNameInTooltip', true, BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_BOOL, 'bs-review-pref-ShowNameInTooltip', 'toggle');
 		BsConfig::registerVar('MW::Review::EmailNotifyOwner', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-review-pref-EmailNotifyOwner', 'toggle');
 		BsConfig::registerVar('MW::Review::EmailNotifyReviewer', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-review-pref-EmailNotifyReviewer', 'toggle');
-		BsConfig::registerVar('MW::Review::ShowAssessor', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-review-pref-ShowAssessor', 'toggle');
+		BsConfig::registerVar('MW::Review::ShowAssessor', true, BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_BOOL, 'bs-review-pref-ShowAssessor', 'toggle');
 
 		$this->setHook('SkinTemplateOutputPageBeforeExec', 'checkReviewStatus');
 		$this->setHook('SkinTemplateNavigation::Universal', 'onSkinTemplateNavigationUniversal');
@@ -371,7 +371,7 @@ class Review extends BsExtensionMW {
 
 		$bShowAssessor = BsConfig::get( 'MW::Review::ShowAssessor' );
 
-		$sql = 'SELECT  r.rev_id, r.rev_pid, p.page_title, p.page_namespace, u.user_name, u.user_id, r.rev_mode, rs.revs_status, u2.user_name AS owner_name, ';
+		$sql = 'SELECT  r.rev_id, r.rev_pid, p.page_title, p.page_namespace, u.user_name, u.user_real_name, u.user_id, r.rev_mode, rs.revs_status, u2.user_name AS owner_name, u2.user_real_name AS owner_real_name, ';
 		switch ( $wgDBtype ) {
 			case 'postgres' : {
 					$sql.= "        EXTRACT(EPOCH FROM TO_TIMESTAMP(r.rev_enddate, 'YYYYMMDDHH24MISS')) AS endtimestamp, TO_CHAR(TO_DATE(r.rev_startdate, 'YYYYMMDDHH24MISS'), 'DD.MM.YYYY') AS startdate, ";
@@ -436,6 +436,7 @@ class Review extends BsExtensionMW {
 			if ( $bShowAssessor ) {
 				$arrList[$row['rev_id']]['assessors'][] = array(
 					'name' => $row['user_name'],
+					'real_name' => $row['user_real_name'],
 					'revs_status' => $row['revs_status'],
 					'timestamp' => $row['stepdate']
 				);
@@ -986,7 +987,7 @@ class Review extends BsExtensionMW {
 				if ( is_object( $step ) ) {
 
 					$sLink = '<a id="%s" href="#" class="%s" title="%s">%s</a>';
-					
+
 					$review_msg = sprintf( 
 						$sLink,
 						'bs-review-ok',
@@ -1005,8 +1006,14 @@ class Review extends BsExtensionMW {
 
 					wfRunHooks( 'BsReview::checkStatus::afterMessage', array( $step, &$review_msg ) );
 
-					if ( $step->comment )
-						$review_msg .= "<br/><i>" . wfMessage('bs-review-comment')->plain() . "</i> " . $step->comment;
+					if ( $step->comment ) $review_msg .= "<br/><i>" . wfMessage('bs-review-comment')->plain() . "</i> " . $step->comment;
+					
+					$review_msg .= "blabla:".XML::input(
+						'bs-review-voteresponse-comment', 
+						false, 
+						'', 
+						array('id' => 'bs-review-voteresponse-comment')
+					);
 				}
 				BsExtensionManager::setContext( 'MW::ReviewShow' );
 
@@ -1023,8 +1030,8 @@ class Review extends BsExtensionMW {
 	 */
 	public function makeStateBarTopReview( $sIcon ) {
 		$oReviewView = new ViewStateBarTopElement();
-		global $wgArticle, $wgScriptPath;
-		if ( is_object( $wgArticle ) ) {
+		global $wgScriptPath;
+		if ( is_object( $this->getTitle() ) ) {
 			$oReviewView->setKey( 'Review' );
 			// TODO MRG (12.06.11 23:54): Use abstraction getImagePath
 			$oReviewView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/Review/resources/images/' . $sIcon );
@@ -1080,7 +1087,7 @@ class Review extends BsExtensionMW {
 
 		$oUserBarElementView = new ViewUserBarElement();
 		$oUserBarElementView->setId( 'review-userbar-element' );
-		$oUserBarElementView->setLink( SpecialPage::getTitleFor( 'Review' )->getFullURL() . '/User:' . $oUser->getName());
+		$oUserBarElementView->setLink( SpecialPage::getTitleFor( 'Review' )->getFullURL() . '/' . $oUser->getName());
 		$oUserBarElementView->setIcon( $wgScriptPath . '/extensions/BlueSpiceExtensions/Review/resources/images/bs-icon-review.png');
 		//echo $oUser->getId();
 		$oUserBarElementView->setText( $iCountReviews + $iCountFinishedReviews );
@@ -1094,18 +1101,25 @@ class Review extends BsExtensionMW {
 	 * Called when a review vote is cast. Handles votes. Called by remote handler.
 	 * @return bool Allow other hooked methods to be executed. always true.
 	 */
-	public static function getVoteResponse( $iArticleId = false, $sVote = false ) {
+	public static function getVoteResponse() {
+		global $wgRequest;
+
+		$iArticleId = $wgRequest->getInt( 'articleID', 0 );
+		$sVote      = $wgRequest->getVal( 'vote', '' );
+		$sComment   = $wgRequest->getVal( 'comment', '' );
+
 		if ( BsCore::checkAccessAdmission( 'workflowview' ) === false ) return '';
 
-		if ( $iArticleId === false || $sVote === false ) {
+		if ( empty($iArticleId) || empty($sVote) ) {
 			return wfMessage( 'bs-review-review_error' )->plain();
 		}
 
-		$oReview = BsExtensionManager::getExtension( 'Review' );
-		$oUser = RequestContext::getMain()->getUser();
-		$oTitle = Title::newFromID( $iArticleId );
+		$oReview    = BsExtensionManager::getExtension( 'Review' );
+		$oUser      = RequestContext::getMain()->getUser();
+		$oTitle     = Title::newFromID( $iArticleId );
 		$sTitleText = $oTitle->getPrefixedText();
 		$sTitleUrl  = $oTitle->getFullURL();
+		$oNext      = null;
 
 		$dbw = wfGetDB( DB_MASTER );
 		// Get ID of the apropriate step
@@ -1121,7 +1135,7 @@ class Review extends BsExtensionMW {
 		$conds[] = $tbl_rev . '.rev_pid=' . $iArticleId; // reviews only for current article
 		$conds[] = $tbl_step . '.revs_status=-1';  // prevent user from confirming twice
 
-		$options = array();
+		$options = array('ORDER BY' => 'revs_sort_id ASC');
 		$join_conds = array();
 
 		wfRunHooks( 'BsReview::buildDbQuery', array( 'getVoteResponse', &$tables, &$fields, &$conds, &$options, &$join_conds ) );
@@ -1132,6 +1146,8 @@ class Review extends BsExtensionMW {
 		// Unexpectedly, no review could be found.
 		if ( $dbw->numRows( $res ) == 0 ) {
 			return wfMessage( 'bs-review-review_secondtime' )->plain();
+		} elseif ( $dbw->numRows( $res ) > 1 ) {
+			$oNext = $dbw->fetchObject( $res );
 		}
 
 		$dbw->freeResult( $res );
@@ -1144,6 +1160,12 @@ class Review extends BsExtensionMW {
 			case "yes" :
 				$data['revs_status'] = 1;
 				$oReview->oLogger->addEntry('approve', $oTitle, '', null, $oUser);
+				if( empty($sComment) && !is_null($oNext) ) break;
+				$dbw->update( 
+					'bs_review_steps', 
+					array( 'revs_comment' => $oNext->revs_comment."<br />$sComment" ), 
+					array( 'revs_id' => $oNext->revs_id )
+				);
 				break;
 			case "no" :
 				$data['revs_status'] = 0;
@@ -1153,7 +1175,7 @@ class Review extends BsExtensionMW {
 				$data['revs_status'] = -1;
 				break;
 		}
-		
+
 		wfRunHooks( 'BsReview::dataBeforeSafe', array( 'getVoteResponse', &$data ) );
 
 		$dbw->update( 'bs_review_steps', $data, array( 'revs_id' => $step_id ) );
@@ -1169,7 +1191,7 @@ class Review extends BsExtensionMW {
 			self::sendNotification( 'accept', $oOwner, array( $sTitleText, date( 'Y-m-d' ) ), $sTitleUrl, $oUser );
 		} elseif ( $sVote == 'no' ) {
 			if ( $oReviewProcess->isSequential() ) {
-				$oReviewProcess->reset();
+				$oReviewProcess->reset( $sComment );
 				self::sendNotification( 'deny-and-restart', $oOwner, array($sTitleText, date( 'Y-m-d' ) ), $sTitleUrl, $oUser );
 			} else {
 				self::sendNotification( 'deny', $oOwner, array($sTitleText, date( 'Y-m-d' ) ), $sTitleUrl, $oUser );
@@ -1178,92 +1200,6 @@ class Review extends BsExtensionMW {
 
 		wfRunHooks( 'BsReview::getVoteResponseOnMailAction', array( $row, $oTitle, $oOwner ) );
 
-		/*$sOwnerMail = $oOwner->getEmail();
-		$sOwnerLang = $oOwner->getOption('language');
-		$sOwnerName = $this->mCore->getUserDisplayName($oOwner);
-		$sSiteName = BsConfig::get('MW::Sitename');
-
-		if ($sOwnerMail && BsConfig::getVarForUser('MW::Review::EmailNotifyOwner', $oOwner->getName())) {
-			$sReviewerName = $this->mCore->getUserDisplayName($oUser);
-
-			if ($sAction == 'yes') {
-				$sSubject = wfMessage(
-						'bs-review-mail-accept-header', $sSiteName, $sReviewerName, $sTitleText
-					)->inLanguage($sOwnerLang)->plain();
-
-				$sMsg = wfMessage(
-						'bs-review-mail-accept-body', $sReviewerName, date('Y-m-d'), $sOwnerName
-					)->inLanguage($sOwnerLang)->plain();
-			} else if ($sAction == 'no') {
-				if ($oReviewProcess->isSequential()) {
-					$oReviewProcess->reset();
-					$delegated_to = false;
-
-					$sSubject = wfMessage(
-							'bs-review-mail-deny-and-restart-header', $sSiteName, $sReviewerName, $sTitleText
-						)->inLanguage($sOwnerLang)->plain();
-
-					$sMsg = wfMessage(
-							'bs-review-mail-deny-and-restart-body', $sReviewerName, date('Y-m-d'), $sOwnerName
-						)->inLanguage($sOwnerLang)->plain();
-				} else {
-					$sSubject = wfMessage(
-						'bs-review-mail-deny-header', $sSiteName, $sReviewerName, $sTitleText
-					);
-
-					$sMsg = wfMessage(
-							'bs-review-mail-deny-body', $sReviewerName, date('Y-m-d'), $sOwnerName
-						)->inLanguage($sOwnerLang)->plain();
-				}
-			}
-
-			$sMsg .= wfMessage(
-					'bs-review-mail-link-to-page', $sTitleUrl
-				)->inLanguage($sOwnerLang)->plain();
-
-			//Send mail to review owner about vote outcome
-			BsMailer::getInstance('MW')->send($oOwner, $sSubject, $sMsg);
-
-			if ($delegated_to) {
-				$oOrigUser = User::newFromId($origuserid);
-				$sOrigUserMail = $oOrigUser->getEmail();
-				$sOrigUserLang = $oOrigUser->getOption('language');
-				$sOrigUserName = $this->mCore->getUserDisplayName($oOrigUser);
-
-				$sSubject = wfMessage(
-						'bs-review-mail-redelegate-header', $sSiteName, $sReviewerName
-					)->inLanguage($sOwnerLang)->plain();
-
-				$sMsg = wfMessage(
-						'bs-review-mail-redelegate-body', $sReviewerName, $sTitleText, $sOrigUserName
-					)->inLanguage($sOwnerLang)->plain();
-
-				$sMsg .= wfMessage(
-						'bs-review-mail-link-to-page', $sTitleUrl
-					)->inLanguage($sOwnerLang)->plain();
-
-				//Send mail to review owner about delegated vote
-				BsMailer::getInstance('MW')->send($oOwner, $sSubject, $sMsg);
-
-				if ($sOrigUserMail) {
-					$sSubject = wfMessage(
-							'bs-review-mail-redelegate-to-header', $sSiteName, $sReviewerName
-						)->inLanguage($sOrigUserLang)->plain();
-
-					$sMsg = wfMessage(
-							'bs-review-mail-redelegate-to-body', $sReviewerName, $sTitleText
-						)->inLanguage($sOrigUserLang)->plain();
-
-					$sMsg .= wfMessage(
-							'bs-review-mail-link-to-page', $sTitleUrl
-						)->inLanguage($sOrigUserLang)->plain();
-
-					//Send mail to the user that delegated the vote
-					BsMailer::getInstance('MW')->send($oOrigUser, $sSubject, $sMsg);
-				}
-			}
-		}*/
-
 		// Let flagged revision know that it's all goooooood (or not approved)
 		$bResult = true;
 		wfRunHooks( 'checkPageIsReviewable', array( $oTitle, &$bResult ) );
@@ -1271,31 +1207,11 @@ class Review extends BsExtensionMW {
 			if ( $oReviewProcess->isFinished() == 'status' ) {
 				if ( !$oUser->isAllowed( 'review' ) ) {
 					self::sendNotification( 'finish', $oOwner, array( $sTitleText ), $sTitleUrl );
-					/*if ($sOwnerMail) {
-						$sSubject = wfMessage(
-								'bs-review-mail-finish-header', BsConfig::get('MW::Sitename')
-							)->inLanguage($sOwnerLang)->plain();
-
-						$sMsg = wfMessage(
-								'bs-review-mail-finish-body', $sOwnerName, $sTitleText, $sTitleUrl
-							)->inLanguage($sOwnerLang)->plain();c
-
-						BsMailer::getInstance('MW')->send($oOwner, $sSubject, $sMsg);
-					}*/
 				}
 			}
 		} else {
 			if ( $sOwnerMail ) {
 				self::sendNotification( 'finish-no-flagged-revs', $oOwner, array( $sTitleText ), $sTitleUrl );
-				/*$sSubject = wfMessage(
-						'bs-review-mail-finish-header', BsConfig::get('MW::Sitename')
-					)->inLanguage($sOwnerLang)->plain();
-
-				$sMsg = wfMessage(
-						'bs-review-mail-finish-no-flagged-revs-body', $sOwnerName, $sTitleText, $sTitleUrl
-					)->inLanguage($sOwnerLang)->plain();
-
-				BsMailer::getInstance('MW')->send($oOwner, $sSubject, $sMsg);*/
 			}
 		}
 

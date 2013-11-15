@@ -90,7 +90,7 @@ class SecureFileStore extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition',     'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-DefaultDisposition', 'select' );
 		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline',      array( 'pdf' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionInline', 'multiselectplusadd' );
 		BsConfig::registerVar( 'MW::SecureFileStore::DispositionAttachment',  array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionAttachment', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::SecureFileStore::FileExtensionWhitelist', array('jpg', 'jpeg', 'png', 'gif', 'swf'), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-FileExtensionWhitelist', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::SecureFileStore::FileExtensionWhitelist', array(), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-FileExtensionWhitelist', 'multiselectplusadd' );
 
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'secureImages' );
 		$this->setHook( 'ExtendedSearchBeforeAjaxResponse', 'secureImages' );
@@ -233,8 +233,8 @@ class SecureFileStore extends BsExtensionMW {
 		}
 
 		// User is allowed to retrieve file. Get things going.
-		#$sFileMime = MimeMagic::singleton()->guessMimeType( $sFilePath, false );
-		$sFileMime = ( $oFile ) ? $oFile->getMimeType() : "unknown/unknown";
+		# If file is not in MW's repo try to guess MIME type
+		$sFileMime = ( $oFile ) ? $oFile->getMimeType() : MimeMagic::singleton()->guessMimeType( $sFilePath, false );
 
 		$sFileDispo = BsConfig::get( 'MW::SecureFileStore::DefaultDisposition' );
 		if ( in_array( $sFileExt, BsConfig::get( 'MW::SecureFileStore::DispositionAttachment' ) ) ) $sFileDispo = 'attachment';

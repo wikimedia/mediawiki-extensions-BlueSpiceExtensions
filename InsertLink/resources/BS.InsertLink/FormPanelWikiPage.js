@@ -11,7 +11,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			fieldLabel: mw.message('bs-insertlink-label_namespace').plain(),
 			name: 'inputNamespace',
 			typeAhead: true,
-			mode: 'local',
+			queryMode: 'local',
 			triggerAction: 'all',
 			forceSelection: true,
 			width: 600,
@@ -24,7 +24,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			fieldLabel: mw.message('bs-insertlink-label_page').plain(),
 			displayField:'name',
 			typeAhead: true,
-			mode: 'local',
+			queryMode: 'local',
 			triggerAction: 'all',
 			width: 600,
 			emptyText:mw.message('bs-insertlink-select_a_page').plain()
@@ -37,8 +37,9 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 		this.callParent(arguments);
 	},
 	onCbNamespaceSelect: function( field, record ) {
+		var data = record.getData();
 		this.storePages.load({
-			params:{ ns: record[0].get('ns') }
+			params:{ ns: data.ns }
 		});
 	},
 	resetData: function() {
@@ -75,6 +76,9 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			bAcitve = true;
 		} else if( obj.code !== false ) {
 			if( obj.code.match(/\[\[[^\]]*\]\]/) ) {
+				if( obj.code.indexOf("[[:") === 0 ) { //[[:Category:Title]]
+					obj.code = '[[' + obj.code.substring( 3, obj.code.length );
+				}
 				var link = new bs.wikiText.Link(obj.code);
 
 				this.cbPageName.setValue( link.getTitle() );
@@ -114,11 +118,16 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			//href = mw.util.wikiGetlink(ns+page);
 		}
 
+		var code = ns + page + desc + ']]';
+		if( this.cbNamespace.store.getAt(index).get('ns') == 14 ) { //[[:Category:Title]]
+			code = ':' + code;
+		}
+		code = '[[' + code;
 		return { 
 			title: title,
 			href: ns+page,
 			type: this.linktype,
-			code: ns + page + desc
+			code: code
 			//'class': ''
 		};
 	},

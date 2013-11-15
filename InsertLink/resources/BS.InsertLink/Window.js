@@ -10,6 +10,7 @@ Ext.define( 'BS.InsertLink.Window', {
 	height: 220,
 	layout: 'border',
 	singleton: true,
+	border: false,
 	defaultObj: {
 		href: false,
 		raw: false,
@@ -66,11 +67,12 @@ Ext.define( 'BS.InsertLink.Window', {
 		$(document).trigger('BsInsertLinkWindowBeforeAddTabs', [this, items]);
 
 		this.pnlTabs = Ext.create( 'Ext.tab.Panel', {
+			border: false,
 			activeTab: 0,
 			region: 'center',
 			items: items
 		});
-		this.pnlTabs.on('beforetabchange', this.onBeforeTabChange, this);
+		//this.pnlTabs.on('beforetabchange', this.onBeforeTabChange, this);
 
 		this.items = [
 			this.pnlTabs
@@ -91,14 +93,20 @@ Ext.define( 'BS.InsertLink.Window', {
 		for(var i=0; i < this.pnlTabs.items.length; i++) {
 			this.pnlTabs.items.getAt(i).resetData();
 		}
+		this.pnlTabs.un('beforetabchange', this.onBeforeTabChange, this);
 	},
 	setData: function( obj ) {
 		obj = $.extend( this.defaultObj, obj );
+		var defaultTab = true;
 		for(var i=0; i < this.pnlTabs.items.length; i++) {
 			if(this.pnlTabs.items.getAt(i).setData(obj)) {
 				this.pnlTabs.setActiveTab(i);
+				defaultTab = false;
 			}
 		}
+		if(defaultTab) this.pnlTabs.setActiveTab(0);
+
+		this.pnlTabs.on('beforetabchange', this.onBeforeTabChange, this);
 
 		this.callParent( arguments );
 	},

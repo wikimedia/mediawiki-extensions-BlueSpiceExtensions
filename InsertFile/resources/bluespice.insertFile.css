@@ -10,9 +10,26 @@ a#bs-editbutton-insertimage {
 
 i.mce-i-bsfile {
 	/*@embed*/
-	background-image: url(images/file3.png);
+	background-image: url(images/button_insert-file-16px.png);
+}
+
+i.mce-i-image {
+	/*@embed*/
+	background-image: url(images/button_insert-img-16px.png);
+}
+
+i.mce-i-image:before {
+	content: "";
 }
 
 td.bs-if-cell {
 	vertical-align: middle;
+}
+
+li.x-boundlist-item.indent-1 {
+	text-indent: 10px;
+}
+
+.bs-ve-image.thumb.center {
+	width: auto;
 }

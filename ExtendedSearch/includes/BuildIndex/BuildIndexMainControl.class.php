@@ -23,7 +23,7 @@
  */
 class BuildIndexMainControl {
 
-		/**
+	/**
 	 * Instance of current search service
 	 * @var BsSearchService
 	 */
@@ -344,8 +344,7 @@ class BuildIndexMainControl {
 			$sRes .= "Instance ExtendedSearchBase returned following BsException in procedure buildIndex(): {$e->getMessage()}";
 		}
 
-		$this->oSearchService->commit( true, true, true, 60 );
-		$this->oSearchService->optimize( true );
+		$this->commitAndOptimize( true );
 
 		$this->writeLog(
 			wfMessage( 'bs-extendedsearch-finished' )->plain(),
@@ -633,13 +632,29 @@ class BuildIndexMainControl {
 	 * @return BuildIndexMainControl Return self for method chaining.
 	 */
 	protected function processTypes() {
-		$this->aTypes['wiki'] = (bool) BsConfig::get( 'MW::ExtendedSearch::IndexTypesWiki' );
-		$this->aTypes['speical'] = (bool) BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecial' );
-		$this->aTypes['repo'] = (bool) BsConfig::get( 'MW::ExtendedSearch::IndexTypesRepo' );
-		$this->aTypes['linked'] = (bool) BsConfig::get( 'MW::ExtendedSearch::IndexTyLinked' );
-		$this->aTypes['special-linked'] = (bool) BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecialLinked' );
+		$this->aTypes['wiki'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesWiki' );
+		$this->aTypes['speical'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecial' );
+		$this->aTypes['repo'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesRepo' );
+		$this->aTypes['linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTyLinked' );
+		$this->aTypes['special-linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecialLinked' );
 
 		return true;
+	}
+
+	/**
+	 * Triggers commit and optimize xml update messages
+	 * @return object Always null
+	 */
+	public function commitAndOptimize( $bOptimize = false ) {
+		// http://wiki.apache.org/solr/UpdateXmlMessages#A.22commit.22_and_.22optimize.22
+		try {
+			$this->oSearchService->commit( true, true, true, 60 );
+
+			// Don't optimize on every call it is very expensive
+			if ( $bOptimize === true ) {
+				$this->oSearchService->optimize( true );
+			}
+		} catch ( Exception $e ) {}
 	}
 
 }

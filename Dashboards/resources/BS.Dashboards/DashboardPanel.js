@@ -17,7 +17,7 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 
 			for ( var j = 0; j < columnConfig.length; j++ ) {
 				var portletConfig = columnConfig[j];
-				var portlet = Ext.create( 
+				var portlet = Ext.create(
 					portletConfig.type,
 					portletConfig.config
 				);
@@ -71,23 +71,9 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 	},
 
 	onContextMenu: function( event, element, eOpts ) {
-		if ( this.cmPortlets == false ) {
-			this.cmPortlets = Ext.create('Ext.menu.Menu', {
-				items: {
-					text: 'i owe you a context menu'//,
-					/*handler: function() {
-						this.wdPortletCatalog = Ext.create( 'BS.Dashboards.PortletCatalog', {
-							title: 'Hallo'
-						});
-						this.wdPortletCatalog.show();
-					}*/
-				}
-			});
-		}
 		event.preventDefault();
-		this.cmPortlets.showAt( event.getXY() );
 	},
-	
+
 	getPortalConfig: function() {
 		var portletConfig = [];
 		var numberOfColumns = this.items.length;
@@ -114,13 +100,16 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 		var portletConfig = this.getPortalConfig();
 
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl( 
-				this.saveConfigBackend.rs,
-				Ext.Array.merge(
+			method: 'post',
+			url: bs.util.getAjaxDispatcherUrl(
+				this.saveConfigBackend.rs
+			),
+			params: {
+				portletConfig: Ext.Array.merge(
 					[ Ext.encode(portletConfig) ],
 					this.saveConfigBackend.additionalArgs
 				)
-			)
+			}
 		});
 	}
 });

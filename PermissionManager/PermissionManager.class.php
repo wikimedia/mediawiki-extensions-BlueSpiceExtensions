@@ -24,7 +24,6 @@
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -51,6 +50,9 @@ class PermissionManager extends BsExtensionMW {
 		"override-export-depth", "passwordreset", "proxyunbannable",
 		"sendemail", "siteadmin", "unblockself", "userrights",
 		"userrights-interwiki", "writeapi", "skipcaptcha", "renameuser"
+	);
+	protected static $aProtectedPermissions = array(
+		'read', 'siteadmin', 'wikiadmin'
 	);
 
 	/**
@@ -461,8 +463,32 @@ class PermissionManager extends BsExtensionMW {
 				$aLockdown = $tmp;
 			}
 		}
+		
+		$aGroupPermissions = self::checkAndSetProtectedPermissions($aGroupPermissions);
 
 		return json_encode( self::writeGroupSettings( $aGroupPermissions, $aLockdown ) );
+	}
+	
+	protected static function checkAndSetProtectedPermissions($aGroupPermissions) {
+		$aCheckedPermissions = array();
+		
+		foreach(self::$aProtectedPermissions as $sPermission) {
+			$aCheckedPermissions[$sPermission] = false;
+			foreach($aGroupPermissions as $sGroup => $aPermissions) {
+				if(isset($aGroupPermissions[$sGroup][$sPermission])
+					&& $aGroupPermissions[$sGroup][$sPermission] == true) {
+					$aCheckedPermissions[$sPermission] = true;
+				}
+			}
+		}
+		
+		foreach($aCheckedPermissions as $sPermission => $bAllreadySet) {
+			if(!$bAllreadySet) {
+				$aGroupPermissions['sysop'][$sPermission] = true;
+			}
+		}
+		
+		return $aGroupPermissions;
 	}
 
 	protected static function writeGroupSettings( $aGroupPermissions,

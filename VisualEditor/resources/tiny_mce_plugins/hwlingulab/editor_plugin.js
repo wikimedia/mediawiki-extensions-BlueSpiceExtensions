@@ -16,17 +16,14 @@
 				ed.addCommand('mceLingulab', function(){
 								var text = tinymce.activeEditor.selection.getContent({format : 'text'});
 								//alert(tinymce.activeEditor.selection.getContent());
-								//console.log(text);
 								$.ajax({
 										url: wgScriptPath+"/extensions/BlueSpiceExtensions/VisualEditor/resources/tiny_mce_plugins/hwlingulab/src/sample_posteddata.php",
 										type: "POST",
 										data: "text=" + escape(text),
 										async : false,
 										success: function (response) {
-												//console.log(response);
 												if (response!='') {
 													var resp = $.parseJSON(response);
-													console.log(resp);
 													var conf = confirm(resp.text);
 													if (conf == true){
 															window.open(resp.link);

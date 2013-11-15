@@ -5,6 +5,7 @@ Ext.define('BS.Statistics.StatisticsPortlet', {
 	series:[],
 	portletConfigClass : 'BS.Statistics.StatisticsPortletConfig',
 	categoryLabel: 'Bluespice',
+	filters: [],
 	beforeInitCompontent: function() {
 
 		Ext.Ajax.on('requestcomplete', this.onRequestComplete, this);
@@ -50,6 +51,8 @@ Ext.define('BS.Statistics.StatisticsPortlet', {
 			}
 		});
 
+		this.on( 'configchange', this.onConfigChange, this);
+
 	},
 
 	afterInitComponent: function() {
@@ -63,5 +66,50 @@ Ext.define('BS.Statistics.StatisticsPortlet', {
 		var x = Ext.decode(response.responseText);
 		this.ctMain.axes.getAt(1).title = x.label;
 		
+	},
+	getPortletConfig: function() {
+		var cfg = this.callParent(arguments);
+		cfg.inputPeriod = this.inputPeriod;
+		return cfg;
+	},
+	setPortletConfig: function( oConfig ) {
+		this.inputPeriod = oConfig.inputPeriod;
+		this.callParent(arguments);
+	},
+
+	getPeriod: function() {
+		var oConfig = this.getPortletConfig();
+		var oDate = new Date();
+
+		switch(oConfig.inputPeriod) {
+			case 'day':
+				oDate.setDate(oDate.getDate() - 1);
+				break;
+			case 'week':
+				oDate.setDate(oDate.getDate() - 7);
+				break;
+			case 'month':
+				oDate.setDate(oDate.getDate() - 30);
+				break;
+		}
+
+		return oDate;
+	},
+
+	getGrain: function() {
+		var oConfig = this.getPortletConfig();
+		var grain = 'd';
+		switch(oConfig.inputPeriod) {
+			case 'month':
+				grain = 'W';
+				break;
+		}
+		return grain;
+	},
+
+	onConfigChange: function( oConfig ) {
+		this.ctMainConfig.store.getProxy().extraParams.inputFrom = Ext.Date.format( this.getPeriod(), 'd.m.Y' )
+		this.ctMainConfig.store.getProxy().extraParams.InputDepictionGrain = this.getGrain();
+		this.ctMainConfig.store.load();
 	}
 });

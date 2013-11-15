@@ -6,6 +6,11 @@ Ext.require([
 	'BS.PermissionManager.model.Namespace',
 ],
 function() {
+	Ext.state.Manager.setProvider(
+		new Ext.state.CookieProvider({
+			expires: new Date(new Date().getTime()+(1000 * 60 * 60 * 24 * 30)) // 30 days
+		})
+	);
 	Ext.override(Ext.grid.locking.Lockable, {
 		modifyHeaderCt: function() {
 			return;
@@ -54,6 +59,7 @@ function() {
 					}],
 				columns = [{
 						header: mw.messages.get('bs-permissionmanager-header-permissions'),
+						id: mw.messages.get('bs-permissionmanager-header-permissions'),
 						dataIndex: 'permission',
 						width: 300,
 						locked: true,
@@ -61,6 +67,7 @@ function() {
 						hideable: false
 					}, {
 						header: mw.messages.get('bs-permissionmanager-header-global'),
+						id: mw.messages.get('bs-permissionmanager-header-global'),
 						dataIndex: 'global',
 						width: 160,
 						xtype: 'checkcolumn',
@@ -104,6 +111,7 @@ function() {
 						&& _visibleOnDefault[namespace.id] === true);
 					subcolumns.push({
 						header: namespace.name,
+						id: namespace.name,
 						dataIndex: namespace.name,
 						width: 200,
 						hidden: hidden,
@@ -144,6 +152,7 @@ function() {
 				});
 				columns.push({
 					header: mw.messages.get('bs-permissionmanager-header-namespaces'),
+					id: mw.messages.get('bs-permissionmanager-header-namespaces'),
 					columns: subcolumns
 				});
 				Ext.define('PermissionRule', {
@@ -191,6 +200,8 @@ function() {
 				_grid = Ext.create('BS.PermissionManager.GridPanel', {
 					store: _gridStore,
 					columns: columns,
+					stateId: 'bs-pm-grid-panel',
+					stateful: true,
 					dockedItems: [
 						Ext.create('Ext.toolbar.Toolbar', {
 							dock: 'top',

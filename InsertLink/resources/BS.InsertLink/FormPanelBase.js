@@ -4,10 +4,15 @@ Ext.define( 'BS.InsertLink.FormPanelBase', {
 	pnlMainConf: {
 		items: null
 	},
+	fieldDefaults: {
+		labelAlign: 'right'
+	},
+	padding: '5px',
+	border: false,
 	initComponent: function() {
-		
+
 		this.beforeInitComponent();
-		
+
 		this.tfDesc = Ext.create( 'Ext.form.TextField', {
 			fieldLabel : mw.message('bs-insertlink-label_description').plain(),
 			name : 'inputDesc',
@@ -21,12 +26,13 @@ Ext.define( 'BS.InsertLink.FormPanelBase', {
 
 		this.callParent(arguments);
 	},
-	
+
 	beforeInitComponent: function() {},
 	resetData: function() {
 		this.tfDesc.reset();
 	},
 	setData: function( obj ) {
+		//if( !obj.desc || this.tfDesc.getValue() != '' ) return;
 		if( !obj.desc ) return;
 		this.tfDesc.setValue(obj.desc);
 	},
@@ -34,7 +40,6 @@ Ext.define( 'BS.InsertLink.FormPanelBase', {
 		return this.getDescription();
 	},
 	setDescription: function( desc ) {
-		//if(desc == '') return;
 		this.tfDesc.setValue( desc );
 	},
 	getDescription: function() {

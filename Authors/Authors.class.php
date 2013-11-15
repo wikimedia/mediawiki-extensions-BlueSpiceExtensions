@@ -75,7 +75,7 @@ class Authors extends BsExtensionMW {
 			EXTINFO::VERSION     => '2.22.0',
 			EXTINFO::STATUS      => 'beta',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '1.20.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::Authors';
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -96,19 +96,12 @@ class Authors extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Authors::ImageHeight', 40,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-imageheight', 'int' );
 		BsConfig::registerVar( 'MW::Authors::ImageWidth',  40,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-imagewidth', 'int' );
 		BsConfig::registerVar( 'MW::Authors::Limit',       10,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-limit', 'int' );
-		BsConfig::registerVar( 'MW::Authors::MoreImage',   'more-users_v2.png',          BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-authors-pref-moreimage' );
+		BsConfig::registerVar( 'MW::Authors::MoreImage',   'more-users_v2.png',          BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-authors-pref-moreimage' );
 		BsConfig::registerVar( 'MW::Authors::Show',        true,                         BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-authors-pref-show', 'toggle' );
 
-		$this->mCore->registerBehaviorSwitch( 'NOAUTHORS', array( $this, 'noAuthorsCallback' ) );
+		$this->mCore->registerBehaviorSwitch( 'bs_noauthors' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
-	 * Callback for behaviorswitch
-	 */
-	public function noAuthorsCallback() {
-		BsExtensionManager::setContext( 'MW::Authors::Hide' );
 	}
 
 	/**
@@ -139,7 +132,7 @@ class Authors extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if ( $this->checkContext() === false ) return true;
-		$oOutputPage->addModules('ext.bluespice.authors');
+		$oOutputPage->addModuleStyles('ext.bluespice.authors.styles');
 
 		return true;
 	}
@@ -249,7 +242,7 @@ class Authors extends BsExtensionMW {
 		array_unshift( $aViews, $oAuthorsView );
 		return true;
 	}
-	
+
 	/**
 	 * Walks the line of revisions to find first editor that is not on blacklist
 	 * @param string $sOriginatorUserName
@@ -291,9 +284,9 @@ class Authors extends BsExtensionMW {
 		}
 
 		// Do not display if __NOAUTHORS__ keyword is found
-		if ( BsExtensionManager::isContextActive( 'MW::Authors::Hide' ) ) return false;
+		$vNoAuthors = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_noauthors' );
+		if( $vNoAuthors === '' ) return false;
 
 		return true;
 	}
-
-} // class Authors extends BsExtensionMW
+}

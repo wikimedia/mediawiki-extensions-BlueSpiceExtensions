@@ -50,8 +50,7 @@
 .bs-statebar-body-item {
 	display: inline-block !important;
 	vertical-align: top;
-    padding: 4px 6px;
-    /*float: left;*/
+	padding: 5px 10px;
 }
 
 .bs-statebarbody-itemheading {

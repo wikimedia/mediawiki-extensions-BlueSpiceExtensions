@@ -4,7 +4,6 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 	layout: 'form',
 	currentData: {},
 	id: 'bs-flexiskin-preview-menu-general',
-
 	initComponent: function() {
 		this.tfName = Ext.create('Ext.form.TextField', {
 			fieldLabel: mw.message('bs-flexiskin-labelName').plain(),
@@ -20,7 +19,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			name: 'desc',
 			allowBlank: false
 		});
-		
+
 		this.pfBackgroundColor = Ext.create('Ext.picker.Color', {
 			value: '', // initial selected color
 			id: 'bs-flexiskin-general-background-color',
@@ -31,14 +30,14 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 				scope: this
 			}
 		});
-		
+
 		this.coBackgroundColorContainer = Ext.create('Ext.form.FieldContainer', {
 			fieldLabel: mw.message('bs-flexiskin-labelBackgroundColor').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',
 			items: [this.pfBackgroundColor]
 		});
-		
+
 		this.pfCompleteColor = Ext.create('Ext.picker.Color', {
 			value: '', // initial selected color
 			id: 'bs-flexiskin-general-complete-color',
@@ -64,15 +63,39 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 				resetButton: true
 			}
 		});
+		var rep_back_pos = Ext.create('Ext.data.Store', {
+			fields: ['repeating', 'val'],
+			data: [
+				{"repeating": "no-repeat", 'val': mw.message('bs-flexiskin-no-repeat').plain()},
+				{"repeating": 'repeat-x', 'val': mw.message('bs-flexiskin-repeat-x').plain()},
+				{"repeating": 'repeat-y', 'val': mw.message('bs-flexiskin-repeat-y').plain()},
+				{"repeating": "repeat", 'val': mw.message('bs-flexiskin-repeat').plain()}
+			]
+		});
+		this.cgRepeatBackground = Ext.create('Ext.form.ComboBox', {
+			fieldLabel: mw.message('bs-flexiskin-labelRepeatBackground').plain(),
+			mode: 'local',
+			store: rep_back_pos,
+			displayField: 'val',
+			valueField: 'repeating',
+			listeners: {
+				'select': function(cb, rec) {
+					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+				},
+				scope: this
+			},
+			scope: this
+		});
 		this.ufBackgroundUpload.on('reset', this.btnResetClick, this);
 		this.ufBackgroundUpload.on('upload', this.btnUploadClick, this);
-		
+
 		this.items = [
-		this.tfName,
-		this.tfDesc,
-		this.coCompleteColorContainer,
-		this.coBackgroundColorContainer,
-		this.ufBackgroundUpload
+			this.tfName,
+			this.tfDesc,
+			this.coCompleteColorContainer,
+			this.coBackgroundColorContainer,
+			this.ufBackgroundUpload,
+			this.cgRepeatBackground
 		];
 		this.callParent(arguments);
 	},
@@ -92,10 +115,10 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
 				} else {
 					bs.util.alert('bs-flexiskin-saveskin-error',
-					{
-						text: responseObj.msg,
-						titleMsg: 'bs-extjs-error'
-					}, {
+							{
+								text: responseObj.msg,
+								titleMsg: 'bs-extjs-error'
+							}, {
 						ok: function() {
 						},
 						cancel: function() {
@@ -131,7 +154,8 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			desc: this.tfDesc.getValue(),
 			backgroundColor: this.pfBackgroundColor.getValue(),
 			completeColor: this.pfCompleteColor.getValue(),
-			backgroundImage: Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').getValue()
+			backgroundImage: Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').getValue(),
+			repeatBackground: this.cgRepeatBackground.getValue()
 		};
 		return data;
 	},
@@ -141,13 +165,14 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		this.tfDesc.setValue(data.config.desc);
 		this.setColor(this.pfBackgroundColor, data.config.backgroundColor);
 		this.setColor(this.pfCompleteColor, data.config.completeColor);
+		this.cgRepeatBackground.setValue(data.config.repeatBackground)
 		Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').setValue(data.config.backgroundImage);
 	},
-	setColor: function(el, clr){
+	setColor: function(el, clr) {
 		var bFound = false;
 		clr = clr.replace('#', "");
-		Ext.Array.each(el.colors, function(val){
-			if (clr == val){
+		Ext.Array.each(el.colors, function(val) {
+			if (clr == val) {
 				bFound = true;
 			}
 		});

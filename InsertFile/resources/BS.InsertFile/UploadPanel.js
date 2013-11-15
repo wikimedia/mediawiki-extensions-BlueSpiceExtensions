@@ -76,20 +76,22 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			valueField: 'value',
 			displayField: 'text',
 			tpl: new Ext.XTemplate(
-				'<tpl for=".">',
-				  '<tpl if="this.hasValue(value) == false">',
-				    '<div class="x-combo-list-item no-value">{text}</div>',
+				'<ul class="x-list-plain">',
+				  '<tpl for=".">',
+				    '<tpl if="this.hasValue(value) == false">',
+				      '<li role="option" class="x-boundlist-item no-value">{text}</li>',
+				    '</tpl>',
+				    '<tpl if="this.hasValue(value)">',
+				      '<li role="option" class="x-boundlist-item indent-{indent}">{text}</li>',
+				    '</tpl>',
 				  '</tpl>',
-				  '<tpl if="this.hasValue(value)">',
-				    '<div class="x-combo-list-item indent-{indent}">{text}</div>',
-				  '</tpl>',
-				'</tpl>',
+				'</ul>',
 				{
 					compiled: true,
 					disableFormats: true,
 					// member functions:
 					hasValue: function(value) {
-						return value != '';
+						return value !== '';
 					}
 				}
 			)
@@ -129,7 +131,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			this.fsDetails
 		];
 		var detailsItems = [
-			//this.bsCategories,
+			this.bsCategories,
 			this.taDescription,
 			this.cbLicences,
 			this.cbxWarnings,
@@ -195,7 +197,21 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 	
 	uploadFile: function( sessionKeyForReupload ) {
 		var desc = this.taDescription.getValue();
-		desc += this.cbLicences.getValue();
+		var licence = this.cbLicences.getValue();
+		if( licence ) {
+			desc += licence + "\n";
+		}
+		
+		var categories = this.bsCategories.getValue();
+		var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
+		for( var i = 0; i < categories.length; i++ ) {
+			var categoryLink = new bs.wikiText.Link({
+				title: $.ucFirst( categories[i] ),
+				nsText: formattedNamespaces[bs.ns.NS_CATEGORY],
+				link: false //TDOD: fix this in "bs.wikiText.Link"
+			});
+			desc += "\n" + categoryLink.toString();
+		}
 		this.taDescription.setValue( desc );
 
 		this.cbLicences.disable(); //To prevent the form from submitting a generated name
@@ -260,6 +276,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 	validateFile: function( value ) {
 		if( value == "" ) return true;
 		var me = this.up('form');
+		me.allowedFileExtensions = mw.config.get( 'wgFileExtensions' );
 
 		var nameParts = value.split('.');
 		var fileExtension = nameParts[nameParts.length-1].toLowerCase();

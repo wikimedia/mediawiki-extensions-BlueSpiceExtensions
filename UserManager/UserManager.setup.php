@@ -1,11 +1,11 @@
 <?php
 
-BsExtensionManager::registerExtension('UserManager',                     BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension('UserManager', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
 $wgExtensionMessagesFiles['UserManager'] = __DIR__ . '/languages/UserManager.i18n.php';
 
 $wgResourceModules['ext.bluespice.userManager'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/UserManager/resources/bluespice.userManager.js',
+	'scripts' => 'bluespice.userManager.js',
 	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
 		'bs-usermanager-headerUsername',
@@ -37,8 +37,8 @@ $wgResourceModules['ext.bluespice.userManager'] = array(
 		'bs-usermanager-showEntries',
 		'bs-usermanager-textCannotEditOwn',
 	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'localBasePath' => __DIR__ . '/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/UserManager/resources'
 );
 
 $wgAjaxExportList[] = 'UserManager::getUsers';

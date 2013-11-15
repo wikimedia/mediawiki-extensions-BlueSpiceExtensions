@@ -9,9 +9,6 @@ Ext.define('BS.Statistics.StatisticsPortletNumberOfEdits', {
 			yTitle: mw.message('bs-statistics-portlet-NumberOfEdits').plain()
 		};
 
-		var oneWeekAgo = new Date();
-		oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
 		this.ctMainConfig.store = Ext.create('Ext.data.JsonStore', {
 			method: 'post',
 			fields: ['name', 'hits'],
@@ -27,13 +24,20 @@ Ext.define('BS.Statistics.StatisticsPortletNumberOfEdits', {
 					inputDiagrams: 'BsDiagramNumberOfEdits',
 					rgInputDepictionMode: 'aggregated',
 					inputTo: Ext.Date.format(new Date(),'d.m.Y'),
-					inputFrom: Ext.Date.format(oneWeekAgo, 'd.m.Y'),
-					InputDepictionGrain: 'd'
+					inputFrom: Ext.Date.format(this.getPeriod(), 'd.m.Y'),
+					InputDepictionGrain: this.getGrain()
 				}
 			},
 			autoLoad: true
 		});
 
 		this.callParent();
+	},
+
+	getPeriod: function() {
+		return this.callParent();
+	},
+	getGrain: function() {
+		return this.callParent();
 	}
 });

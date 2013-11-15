@@ -41,7 +41,6 @@
 	z-index: 998;
 }
 
-#bs-extendedsearch-titlebuttonimage-specialpage[shine="on"],
 #bs-search-button-specialpage:hover > div#bs-extendedsearch-titlebuttonimage-specialpage {
 	background-position: right bottom;
 	/* for IE */
@@ -50,7 +49,6 @@
 	opacity:0.6;
 }
 
-#bs-extendedsearch-fulltextbuttonimage-specialpage[shine="on"],
 #bs-search-fulltext-specialpage:hover > div#bs-extendedsearch-fulltextbuttonimage-specialpage {
 	background-position: left bottom;
 	/* for IE */
@@ -345,7 +343,7 @@ span.bs-extendedsearch-result-title h3 em {
 }
 .bs-extendedsearch-cat {
 	font-size: 10px;
-	margin: 7px 0 0 28px;
+	margin: 7px 0 3px 28px;
 	font-weight: bold;
 }
 .bs-extendedsearch-result-icon {

@@ -153,8 +153,8 @@ class ExtendedSearchBase {
 			// Indexing file links 
 			$oBuildIndexMainControl->buildIndexLinked( '', $iPageID );
 		} catch ( Exception $e ) {}
-		// commit reopens the IndexReaders in Solr-Server. Document might not be findable otherwise.
-		$this->oSearchService->commit( true, true, true, 60 );
+
+		$oBuildIndexMainControl->commitAndOptimize();
 	}
 
 	/**
@@ -165,7 +165,9 @@ class ExtendedSearchBase {
 		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
 		$oIndexFile             = new BuildIndexMwSingleFile( $oBuildIndexMainControl, $oFile );
 		$oIndexFile->indexCrawledDocuments();
-		$this->oSearchService->commit( true, true, true, 60 );
+
+		$oBuildIndexMainControl->commitAndOptimize();
+
 		return true;
 	}
 
@@ -178,7 +180,10 @@ class ExtendedSearchBase {
 		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
 		$sUniqueID              = $oBuildIndexMainControl->getUniqueId( $iID, $sPath );
 		$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
-		$this->oSearchService->commit( true, true, true, 60 );
+
+		$oBuildIndexMainControl->commitAndOptimize();
+
+		return true;
 	}
 
 	/**
@@ -189,7 +194,10 @@ class ExtendedSearchBase {
 		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
 		$sUniqueID = $oBuildIndexMainControl->getUniqueId( $iID );
 		$this->oSearchService->deleteById( $sUniqueID );
-		$this->oSearchService->commit( true, true, true, 60 ); // todo: not sure if necessary
+
+		$oBuildIndexMainControl->commitAndOptimize();
+
+		return true;
 	}
 
 	/**
@@ -199,6 +207,8 @@ class ExtendedSearchBase {
 	public function updateIndexWikiByTitleObject( $oTitle ) {
 		$oArticle = new Article( $oTitle );
 		$this->updateIndexWiki( $oArticle );
+
+		return true;
 	}
 
 	/**
@@ -322,12 +332,10 @@ class ExtendedSearchBase {
 	 */
 	public function searchAutocomplete( $sSearchString ) {
 		if ( self::isCurlActivated() === false ) return '';
-
 		$oSearchOptions = SearchOptions::getInstance();
 
 		$sSearchString     = urldecode( $sSearchString );
 		$sSolrSearchString = SearchService::preprocessSearchInput( $sSearchString );
-		$sSearchString     = SearchService::sanitzeSearchString( $sSearchString );
 
 		$vNamespace = $this->checkSearchstringForNamespace( $sSearchString, $sSolrSearchString );
 
@@ -405,43 +413,7 @@ class ExtendedSearchBase {
 
 				if ( !$oTitle->userCan( 'read' ) ) continue;
 
-				$sModifiedSearchString = str_replace( '/', ' ', $sSearchString );
-				$aSearchStringParts    = explode( ' ', $sModifiedSearchString );
-				$sLabelText            = BsStringHelper::shorten(
-					$oTitle->getText(),
-					array( 'max-length' => '54', 'position' => 'middle', 'ellipsis-characters' => '...' )
-				);
-
-				$iPosition = stripos( $sLabelText, $sSearchString );
-
-				if ( $iPosition !== false ) {
-					$sPartOfTitle    = mb_substr( $sLabelText, $iPosition, mb_strlen( $sSearchString ) );
-					$sEscapedPattern = preg_quote( $sPartOfTitle, '#' );
-					$sLabelText      = preg_replace( '#'.$sEscapedPattern.'#i', '<b>'.$sPartOfTitle.'</b>', $sLabelText , 1 );
-				} else {
-					$iOccurences  = 0;
-					$aOccurrences = array();
-
-					foreach ( $aSearchStringParts as $sPart ) {
-						if ( empty( $sPart ) ) continue;
-						$sModifiedPart = strtolower( $sPart );
-						if ( in_array( $sModifiedPart, $aOccurrences ) ) {
-							continue;
-						} else {
-							$iOccurences = substr_count( strtolower( $sSearchString ), $sModifiedPart );
-						}
-						$iPosition = mb_strripos( $sLabelText, $sPart );
-
-						if ( $iPosition !== false ) {
-							$sPartOfTitle    = mb_substr( $sLabelText, $iPosition, mb_strlen( $sPart ) );
-							$sEscapedPattern = preg_quote( $sPartOfTitle, '#' );
-							$sLabelText      = preg_replace( '#'.$sEscapedPattern.'#i', '['.$sPartOfTitle.']', $sLabelText , $iOccurences );
-
-							$aOccurrences[] = $sModifiedPart;
-						}
-					}
-					$sLabelText = str_replace( array( '[', ']' ), array( '<b>', '</b>' ), $sLabelText );
-				}
+				$sLabelText = $this->highlightTitle( $oTitle, $sSearchString );
 
 				// Adding namespace
 				$sLabelText = BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ) . ':' .$sLabelText;
@@ -451,50 +423,106 @@ class ExtendedSearchBase {
 					$sLabelText = str_replace( $sNamespace.':', '', $sLabelText );
 				}
 
-				$oItem        = new stdClass();
-				$oItem->id    = ++$iID;
+				$oItem = new stdClass();
+				$oItem->id = ++$iID;
 				$oItem->value = $oTitle->getPrefixedText();
 				$oItem->label = $sLabelText;
-				$oItem->type  = $oDoc->type;
-				$oItem->link  = $oTitle->getFullURL();
-				$oItem->attr  = '';
+				$oItem->type = $oDoc->type;
+				$oItem->link = $oTitle->getFullURL();
+				$oItem->attr = '';
 
 				$aResults[] = $oItem;
 			}
 		}
 
+		$iSearchfiles = ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) ? '1' : '0' ;
+
+		$sShortAndEscaped = SearchService::sanitzeSearchString(
+			BsStringHelper::shorten(
+				$sSearchString,
+				array(
+					'max-length' => '60',
+					'position' => 'middle',
+					'ellipsis-characters' => '...'
+				)
+			)
+		);
+
+		$sLabel = wfMessage( 'bs-extendedsearch-searchfulltext' )->escaped() . '<br />';
+		$sLabel .= '<b>' . $sShortAndEscaped . '</b>';
+
 		$bTitleExists = $oSearchOptions->titleExists( $sSearchString );
 
 		wfRunHooks( 'BSExtendedSearchAutocomplete', array( &$aResults, $sSearchString, &$iID, $bTitleExists ) );
 
-		$iSearchfiles = ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) ? '1' : '0' ;
-
-		$sLabel = wfMessage( 'bs-extendedsearch-searchfulltext' )->plain() . '<br /><b>' .
-					BsStringHelper::shorten(
-						$sSearchString,
-						array( 'max-length' => '60', 'position' => 'middle', 'ellipsis-characters' => '...' ) 
-					) .
-					'</b>';
+		$sSearchString = SearchService::sanitzeSearchString( $sSearchString );
 
 		$aLinkParams = array(
 			'search_origin' => 'titlebar',
-			'search_scope'  => 'text',
-			'search_input'  => $sSearchString,
-			'search_files'  => $iSearchfiles,
-			'autocomplete'  => true
+			'search_scope' => 'text',
+			'search_input' => $sSearchString,
+			'search_files' => $iSearchfiles,
+			'autocomplete' => true
 		);
 
-		$oItem        = new stdClass();
-		$oItem->id    = ++$iID;
-		$oItem->value = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
+		$oItem = new stdClass();
+		$oItem->id = ++$iID;
+		$oItem->value = $sSearchString;
 		$oItem->label = $sLabel;
-		$oItem->type  = '';
-		$oItem->link  = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getFullUrl( $aLinkParams );
-		$oItem->attr  = 'bs-extendedsearch-ac-noresults';
+		$oItem->type = '';
+		$oItem->link = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getFullUrl( $aLinkParams );
+		$oItem->attr = 'bs-extendedsearch-ac-noresults';
 
 		$aResults[] = $oItem;
 
 		return json_encode( $aResults );
+	}
+
+	/**
+	 * Highlights title for a given search string
+	 * @param string $sSearchString search string
+	 * @param object $oTitle Title object which should be highlieghtes
+	 * @return string highlighted title
+	 */
+	public function highlightTitle( $oTitle, $sSearchString ) {
+		$sModifiedSearchString = str_replace( '/', ' ', $sSearchString );
+		$sLabelText = BsStringHelper::shorten(
+			$oTitle->getText(),
+			array( 'max-length' => '54', 'position' => 'middle', 'ellipsis-characters' => '...' )
+		);
+
+		$iPosition = mb_stripos( $sLabelText, $sSearchString );
+
+		if ( $iPosition !== false ) {
+			$sPartOfTitle = mb_substr( $sLabelText, $iPosition, mb_strlen( $sSearchString ) );
+			$sEscapedPattern = preg_quote( $sPartOfTitle, '#' );
+			$sLabelText = preg_replace( '#'.$sEscapedPattern.'#i', '<b>'.$sPartOfTitle.'</b>', $sLabelText , 1 );
+		} else {
+			$iOccurences = 0;
+			$aOccurrences = array();
+			$aSearchStringParts = explode( ' ', $sModifiedSearchString );
+
+			foreach ( $aSearchStringParts as $sPart ) {
+				if ( empty( $sPart ) ) continue;
+
+				$sModifiedPart = mb_strtolower( $sPart );
+				if ( in_array( $sModifiedPart, $aOccurrences ) ) continue;
+
+				$iPosition = mb_stripos( $sLabelText, $sPart );
+
+				if ( $iPosition !== false ) {
+					$sPartOfTitle = mb_substr( $sLabelText, $iPosition, mb_strlen( $sPart ) );
+					$sEscapedPattern = preg_quote( $sPartOfTitle, '#' );
+					$sLabelText = preg_replace( '#'.$sEscapedPattern.'#i', '['.$sPartOfTitle.']', $sLabelText, 1 );
+
+					$aOccurrences[] = $sModifiedPart;
+				}
+			}
+
+			$sLabelText = str_replace( array( '[', ']' ), array( '<b>', '</b>' ), $sLabelText );
+		}
+
+		return $sLabelText;
 	}
 
 	/**
@@ -523,6 +551,8 @@ class ExtendedSearchBase {
 		$aMlt = array();
 		//$aMlt[] = implode( ', ', $oResults->interestingTerms );
 		foreach ( $oResults->response->docs as $oRes ) {
+			if ( count( $aMlt )  === 5 ) break;
+
 			if ( $oRes->namespace != 999 ) {
 				$oMltTitle = Title::makeTitle( $oRes->namespace, $oRes->title );
 			} else {
@@ -539,9 +569,10 @@ class ExtendedSearchBase {
 			$aMlt[] = BsLinkProvider::makeLink( $oMltTitle, $sHtml );
 		}
 
-		if ( !empty( $aMlt ) ) {
-			$oViewMlt->setOption( 'mlt', $aMlt );
+		if ( empty( $aMlt ) ) {
+			$aMlt[] = wfMessage( 'bs-extendedsearch-no-mlt-found' )->plain();
 		}
+		$oViewMlt->setOption( 'mlt', $aMlt );
 
 		return $oViewMlt;
 	}
@@ -550,15 +581,17 @@ class ExtendedSearchBase {
 	 * Generates list of most searched terms
 	 * @return string list of most searched terms
 	 */
-	public function recentSearchTerms( $iCount, $sTime ) {
+	public function recentSearchTerms( $iCount, $iTime ) {
 		$oDbr = wfGetDB( DB_SLAVE );
+		$iCount = intval( $iCount );
+		$iTime = intval( $iTime );
 
 		$aConditions = array();
-		if ( $sTime === 'month' ) {
-			$iMonth = 30 * 24 * 60 * 60;
-			$iTimeStamp = wfTimestamp( TS_UNIX ) - $iMonth;
+		if ( $iTime !== 0 ) {
+			$iTimeInSec = $iTime * 24 * 60 * 60;
+			$iTimeStamp = wfTimestamp( TS_UNIX ) - $iTimeInSec;
 			$iTimeStamp = wfTimestamp( TS_MW, $iTimeStamp );
-			$aConditions = array( 'stats_ts >= '.$iTimeStamp );
+			$aConditions = array( 'rev_timestamp >= '.$iTimeStamp );
 		}
 
 		$res = $oDbr->select(

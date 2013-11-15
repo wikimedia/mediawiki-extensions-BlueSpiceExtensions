@@ -96,7 +96,15 @@ VisualEditor = (function VisualEditor() {
 				_editorMode = 'tiny';
 				$(document).trigger('VisualEditor::instanceShow', [id]);
 			} else {
-				//tinymce.activeEditor.destroy();
+				//This is basically copied from tinymce.js:27051
+				//We cannot call tinymce.destroy directly because tinymce.save 
+				//called from tinymce.remove relies on the selection object 
+				//which would be set to null in tinymce.destroy
+				tinymce.DOM.unbind(
+					tinymce.activeEditor.formElement,
+					'submit reset',
+					tinymce.activeEditor.formEventDelegate
+				);
 				tinymce.activeEditor.remove();
 				_editorMode = 'wiki';
 				$(document).trigger('VisualEditor::instanceHide', [id]);

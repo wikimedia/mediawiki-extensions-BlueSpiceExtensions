@@ -94,8 +94,8 @@ class StateBar extends BsExtensionMW {
 
 		BsConfig::registerVar( 'MW::StateBar::Show', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-statebar-pref-donotshow', 'toggle' );
 
-		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableOnPages', '', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-statebar-pref-disableonpages' );
-		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableForSysops', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-statebar-pref-disableforsysops', 'toggle' );
+		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableOnPages', '', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-statebar-pref-disableonpages' );
+		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableForSysops', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-statebar-pref-disableforsysops', 'toggle' );
 
 		$this->mCore->registerBehaviorSwitch( 'NOSTATEBAR', array( $this, 'noStateBarCallback' ) );
 
@@ -241,6 +241,7 @@ class StateBar extends BsExtensionMW {
 		return true;
 	}
 
+	// TODO MRG (06.11.13 21:10): Does this also work in edit mode? It seems, there is no parser
 	/**
 	 * ParserFirstCallInit Hook is called when the parser initialises for the first time.
 	 * @param Parser $parser MediaWiki Parser object
@@ -297,6 +298,9 @@ class StateBar extends BsExtensionMW {
 		$oTitle = $this->checkContext( $this->getTitle() );
 		if ( is_null( $oTitle ) ) return true;
 
+		$oOutputPage->addModules( 'ext.bluespice.statebar' );
+		$oOutputPage->addModuleStyles( 'ext.bluespice.statebar.style' );
+
 		$aDisableOnSites = explode( ',',BsConfig::get( 'MW::StateBar::DisableOnPages' ) ); //Deprecated
 		if ( !empty( $aDisableOnSites ) ) {
 			$aUserGroups = $this->getUser()->getGroups();
@@ -312,7 +316,6 @@ class StateBar extends BsExtensionMW {
 		}
 
 		BsExtensionManager::setContext( 'MW::StateBarShow' );
-		$oOutputPage->addModules( 'ext.bluespice.statebar' );
 		return true;
 	}
 

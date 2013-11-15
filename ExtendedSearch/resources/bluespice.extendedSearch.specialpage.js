@@ -23,15 +23,8 @@ BsExtendedSearchSpecialPage = {
 	init: function() {
 		$( '#bs-extendedsearch-inputfieldtext-specialpage' ).focus( function() {
 			if ( $( this ).val() == $( this ).attr( 'defaultvalue' ) ) $( this ).val( '' );
-			if ( $( '#bs-search-button-hidden-specialpage' ).val() == 'title' ) {
-				$( '#bs-extendedsearch-titlebuttonimage-specialpage' ).attr( 'shine', 'on' );
-			} else {
-				$( '#bs-extendedsearch-fulltextbuttonimage-specialpage' ).attr( 'shine', 'on' );
-			}
 		}).blur( function() {
 			if ( $( this ).val() == '' ) $( this ).val( $( this ).attr( 'defaultvalue' ) );
-			$( '#bs-extendedsearch-titlebuttonimage-specialpage' ).attr( 'shine', '' );
-			$( '#bs-extendedsearch-fulltextbuttonimage-specialpage' ).attr( 'shine', '' );
 		});
 
 		$( '#bs-search-button-specialpage' ).click( function( event ) {

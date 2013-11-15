@@ -112,10 +112,10 @@ class WhoIsOnline extends BsExtensionMW {
 		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
-		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BsAdapterAjaxPingResult' );
 
-		BsConfig::registerVar( 'MW::WhoIsOnline::LinkUsers', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-whoisonline-pref-LinkUsers', 'toggle' );
+		BsConfig::registerVar( 'MW::WhoIsOnline::LinkUsers', true, BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_BOOL, 'bs-whoisonline-pref-LinkUsers', 'toggle' );
 		BsConfig::registerVar( 'MW::WhoIsOnline::LimitCount', 7, BsConfig::LEVEL_USER | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_INT, 'bs-whoisonline-pref-LimitCount', 'int' );
 		BsConfig::registerVar( 'MW::WhoIsOnline::OrderBy', 'onlinetime', BsConfig::LEVEL_USER | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-whoisonline-pref-OrderBy', 'select' );
 		BsConfig::registerVar( 'MW::WhoIsOnline::MaxIdleTime', 600, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-whoisonline-pref-MaxIdleTime', 'int' );
@@ -183,8 +183,7 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		$oTitle = $oSkin->getTitle();
-		if( !$oTitle->userCan('read') ) return true;
+		if ( !$this->getTitle()->userCan( 'read' ) ) return true;
 
 		BsExtensionManager::setContext( 'MW::WhoIsOnline::Show' );
 		$oOutputPage->addModules( 'ext.bluespice.whoisonline' );
@@ -192,7 +191,7 @@ class WhoIsOnline extends BsExtensionMW {
 	}
 
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
-		if( $type != 'tags' ) return true;
+		if ( $type != 'tags' ) return true;
 
 		$oResponse->result[] = array(
 			'id' => 'bs:whoisonlinecount',
@@ -209,8 +208,6 @@ class WhoIsOnline extends BsExtensionMW {
 			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinepopup-desc' )->plain(),
 			'code' => '<bs:whoisonlinepopup />',
 		);
-		
-		//TODO: Add MagicWord variables too?
 
 		return true;
 	}
@@ -328,7 +325,7 @@ class WhoIsOnline extends BsExtensionMW {
 	public function onUsersCount( $oParser ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		$sOut = '<span class="bs-whoisonline-count">'.count($this->getWhoIsOnline()).'</span>';
+		$sOut = '<span class="bs-whoisonline-count">'.count( $this->getWhoIsOnline() ).'</span>';
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return array( $sOut, 'noparse' => 1 );
@@ -421,19 +418,16 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBsAdapterAjaxPingResult( $sRef, $aData, $iArticleId, $sTitle, $iNamespace, $iRevision, &$aSingleResult ) {
-		if( $sRef !== 'WhoIsOnline') return true;
+		if ( $sRef !== 'WhoIsOnline') return true;
 
 		$oTitle = Title::newFromText( $sTitle, $iNamespace );
-		if( is_null($oTitle) || !$oTitle->userCan('read') ) return true;
-
-		global $wgUser, $wgRequest;
-		$this->insertTrace( $oTitle, $wgUser, $wgRequest );
+		if ( is_null($oTitle) || !$oTitle->userCan('read') ) return true;
 
 		$aWhoIsOnline = $this->getWhoIsOnline();
 		$aSingleResult['count'] = count( $aWhoIsOnline );
 
 		$aSingleResult['portletItems'] = array();
-		foreach( $aWhoIsOnline as $oWhoIsOnline) {
+		foreach ( $aWhoIsOnline as $oWhoIsOnline ) {
 			$oUser = User::newFromName( $oWhoIsOnline->wo_user_name );
 			$oWhoIsOnlineItemWidgetView = new ViewWhoIsOnlineItemWidget();
 			$oWhoIsOnlineItemWidgetView->setOption( 'renderLink', BsConfig::get( 'MW::WhoIsOnline::LinkUsers' ) );
@@ -455,13 +449,12 @@ class WhoIsOnline extends BsExtensionMW {
 	private function getWhoIsOnline( $sOrderBy = '', $bForceReload = false){
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		if( isset($this->aWhoIsOnlineData[$sOrderBy]) && $bForceReload === false ) {
+		if ( isset( $this->aWhoIsOnlineData[$sOrderBy] ) && $bForceReload === false ) {
 			wfProfileOut( 'BS::'.__METHOD__ );
 			return $this->aWhoIsOnlineData[$sOrderBy];
 		}
 
-		if( empty($sOrderBy) ) 
-			$sOrderBy = BsConfig::get( 'MW::WhoIsOnline::OrderBy' );
+		if ( empty( $sOrderBy ) ) $sOrderBy = BsConfig::get( 'MW::WhoIsOnline::OrderBy' );
 
 		$sMaxIdle = BsConfig::get( 'MW::WhoIsOnline::MaxIdleTime' );
 		//$iLimit   = BsConfig::get( 'MW::WhoIsOnline::LimitCount' );
@@ -522,9 +515,9 @@ class WhoIsOnline extends BsExtensionMW {
 		$iMaxIdleTime        = BsConfig::get( 'MW::WhoIsOnline::MaxIdleTime' );
 		$iInterval           = BsConfig::get( 'MW::WhoIsOnline::Interval' );
 
-		if( $vLastLoggedPageHash == $sCurrentPageHash 
-			&& $vLastLoggedTime + $iMaxIdleTime + $iInterval + ($iMaxIdleTime * 0.1) > $iCurrentTimestamp
-			) return true;
+		if ( $vLastLoggedPageHash == $sCurrentPageHash
+			&& $vLastLoggedTime + $iMaxIdleTime + $iInterval + ($iMaxIdleTime * 0.1) > $iCurrentTimestamp )
+				return true;
 
 		//log action
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -539,9 +532,7 @@ class WhoIsOnline extends BsExtensionMW {
 			array( 'wo_timestamp < ' . ( $iCurrentTimestamp - $iRemoveEntriesAfter ) )
 		);
 
-		global $wgDBtype;
 		$aNewRow = array();
-		if( $wgDBtype == 'oracle' ) $aNewRow[ 'wo_id' ] = 0;
 
 		$aNewRow[ 'wo_page_id' ]        = $oTitle->getArticleId();
 		$aNewRow[ 'wo_page_namespace' ] = $oTitle->getNamespace();
@@ -551,6 +542,9 @@ class WhoIsOnline extends BsExtensionMW {
 		$aNewRow[ 'wo_user_real_name' ] = $oUser->getRealName();
 		$aNewRow[ 'wo_timestamp' ]      = $iCurrentTimestamp;
 		$aNewRow[ 'wo_action' ]         = $oRequest->getVal( 'action', 'view' );
+
+		global $wgDBtype;
+		if ( $wgDBtype == 'oracle' ) $aNewRow[ 'wo_id' ] = 0;
 
 		$dbw->insert( 'bs_whoisonline', $aNewRow );
 

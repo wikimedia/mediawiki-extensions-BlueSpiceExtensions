@@ -107,7 +107,7 @@ $messages['en'] = array(
 	'bs-usermanager-labelPasswordCheck' => 'Retype password',
 	'bs-usermanager-titleEditGroups' => 'Edit groups',
 	'bs-usermanager-titleDeleteUser' => 'Delete user',
-	'bs-usermanager-confirmDeleteUser' => 'Are you sure, you want delete this user?',
+	'bs-usermanager-confirmDeleteUser' => 'Are you sure, you want delete $1?{{PLURAL:$1|this user|these users}}',
 	'bs-usermanager-showEntries' => 'Displaying {0} - {1} of {2}',
 	'bs-usermanager-textCannotEditOwn' => 'You cannot change or delete your own account.',
 );
@@ -205,7 +205,7 @@ $messages['de'] = array(
 	'bs-usermanager-labelPasswordCheck' => 'Passwortwiederholung',
 	'bs-usermanager-titleEditGroups' => 'Gruppen bearbeiten',
 	'bs-usermanager-titleDeleteUser' => 'Benutzer löschen',
-	'bs-usermanager-confirmDeleteUser' => 'Bist du sicher, dass du diesen Benutzer löschen willst?',
+	'bs-usermanager-confirmDeleteUser' => 'Bist du sicher, dass du {{PLURAL:$1|diesen|diese}} Benutzer löschen willst?',
 	'bs-usermanager-showEntries' => 'Angezeigte Einträge {0} - {1} von {2}',
 	'bs-usermanager-textCannotEditOwn' => 'Du kannst dein eigenes Benutzerkonto nicht bearbeiten oder löschen.',
 );
@@ -228,7 +228,7 @@ $messages['de-formal'] = array(
 	'bs-usermanager-users_max'                => 'Sie haben bereits die maximale Anzahl von $1 Benutzern eingerichtet',
 	
 	//JavaScript
-	'bs-usermanager-confirmDeleteUser' => 'Sind Sie sicher, dass Sie diesen Benutzer löschen wollen?',
+	'bs-usermanager-confirmDeleteUser' => 'Sind Sie sicher, dass Sie $1 Benutzer löschen wollen?$1?{{PLURAL:$1|diesen|diese}}',
 	'bs-usermanager-textCannotEditOwn' => 'Sie können Ihr eigenes Benutzerkonto nicht bearbeiten oder löschen.',
 );
 

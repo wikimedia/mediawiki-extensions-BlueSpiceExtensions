@@ -40,6 +40,11 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'bs-flexiskin-headerHeader',
 	'bs-flexiskin-labelLogoUpload',
 	'bs-flexiskin-labelBackgroundUpload',
+	'bs-flexiskin-labelRepeatBackground',
+	'bs-flexiskin-no-repeat',
+	'bs-flexiskin-repeat-x',
+	'bs-flexiskin-repeat-y',
+	'bs-flexiskin-repeat',
 	'bs-flexiskin-labelCompleteColor',
 	'bs-flexiskin-labelNavigation',
 	'bs-flexiskin-no-img',
@@ -48,7 +53,8 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'bs-flexiskin-left',
 	'bs-flexiskin-right',
 	'bs-flexiskin-center',
-	'bs-flexiskin-labelWidth'
+	'bs-flexiskin-labelWidth',
+	'bs-flexiskin-labelFullWidth'
     ),
     'localBasePath' => $IP,
     'remoteBasePath' => &$GLOBALS['wgScriptPath']

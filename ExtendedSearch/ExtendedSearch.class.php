@@ -97,39 +97,39 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		global $wgSecretKey;
+		global $wgSecretKey, $wgDBname, $wgDBserver;
 
 		// max 32 chars with userlevel! 123 456789012345678 90123456789012 '::' counts as one char :-)
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefFuzziness', '0.5', BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-defduzziness' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowPercent', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showpercent', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResultDef', 25, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC,  'bs-extendedsearch-pref-limitresultdef', 'int' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::SearchFiles', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-searchfiles', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::JumpToTitle', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-jumptotitle', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreateSugg', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showcreatesugg', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResults', 25, BsConfig::TYPE_INT|BsConfig::LEVEL_USER,  'bs-extendedsearch-pref-limitresultdef', 'int' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::SearchFiles', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-searchfiles', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::JumpToTitle', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-jumptotitle', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreateSugg', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showcreatesugg', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowSpell', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showspell', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowFacets', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-showfacets', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowAutocomplete', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showautocomplete', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreSugInAc', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-showcresuginac', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::AcEntries', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC,  'bs-extendedsearch-pref-acentries', 'int' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTyLinked', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextylinked', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTyLinked', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextylinked', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesRepo', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypesrepo', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesWiki', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypeswiki', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesSpecial', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypeswiki', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesSpecial', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypeswiki', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ExternalRepo', '', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-externalrepo' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefScopeUser', 'text', BsConfig::TYPE_STRING|BsConfig::LEVEL_USER|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-defscopeuser', 'select' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::FormMethod', 'get', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-formmethod' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::HighlightSnippets', '3', BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-highlightsnippets', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::LogUsers', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logusers', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::Logging', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logging', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::SelectorHeight', 10, BsConfig::TYPE_INT );
-		BsConfig::registerVar( 'MW::ExtendedSearch::SelectorWidth', '200px', BsConfig::TYPE_STRING );
-		BsConfig::registerVar( 'MW::ExtendedSearch::IndexFileTypes', 'doc, pdf, ppt, xls, txt', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indexfiletypes' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::IndexFileTypes', 'doc, docx, pdf, ppt, pptx, xls, xlsx, txt', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indexfiletypes' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SolrServiceUrl', 'http://127.0.0.1:8080/solr', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrserviceurl' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SolrPingTime', 2, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrpingtime', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SetFocus', true, BsConfig::LEVEL_USER|BsConfig::RENDER_AS_JAVASCRIPT|BsConfig::TYPE_BOOL, 'bs-extendedsearch-pref-setfocus', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::CustomerID', md5( $wgSecretKey ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-CustomerID' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::CustomerID', sha1( $wgDBserver . $wgDBname . $wgSecretKey ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-CustomerID' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::NumFacets', 15, BsConfig::LEVEL_USER|BsConfig::RENDER_AS_JAVASCRIPT|BsConfig::TYPE_INT, 'bs-extendedsearch-pref-numfacets', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowMlt', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showmlt', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::SolrCore', 'bluespice', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrcore' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::MltNS', array( 0 ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-mltns', 'multiselectex' );
 
 		// Hooks
 		$this->setHook( 'FormDefaults' );
@@ -141,7 +141,6 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'FileDeleteComplete' );
 		$this->setHook( 'FileUndeleteComplete' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd' );
 		$this->setHook( 'BSStateBarAddSortBodyVars' );
@@ -173,18 +172,6 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onBSWidgetListHelperInitKeyWords( &$aKeywords, $oTitle ) {
 		$aKeywords[ 'MORELIKETHIS' ] = array( $this, 'onWidgetListKeyword' );
-		return true;
-	}
-
-	/**
-	 * Renders the ExtendedSearch widget
-	 * @param array $aViews List of widgets. Add to this list.
-	 * @param object $oUser current user object
-	 * @param object $oTitle current title object
-	 * @return boolean Always true
-	 */
-	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$aViews[] = $this->onWidgetListKeyword( $oTitle );
 		return true;
 	}
 
@@ -242,15 +229,18 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array();
-		switch ( $oVariable->getName() ) {
-			case 'DefScopeUser' :
-				$aPrefs = array(
-					'options' => array(
-						wfMessage( 'bs-extendedsearch-pref-scope-text' )->plain()  => 'text',
-						wfMessage( 'bs-extendedsearch-pref-scope-title' )->plain() => 'title'
-					)
-				);
-				break;
+		if ( $oVariable->getName() === 'DefScopeUser' ) {
+			$aPrefs = array(
+				'options' => array(
+					wfMessage( 'bs-extendedsearch-pref-scope-text' )->plain()  => 'text',
+					wfMessage( 'bs-extendedsearch-pref-scope-title' )->plain() => 'title'
+				)
+			);
+		} else if ( $oVariable->getName() === 'MltNS' ) {
+			$aPrefs = array(
+				'type'    => 'multiselectex',
+				'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA ) )
+			);
 		}
 
 		return $aPrefs;
@@ -298,12 +288,12 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
 		$aPortlets[] = array(
-						'type'  => 'BS.ExtendedSearch.RecentSearchTermsPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain()
-						),
-						'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain(),
-						'description' => wfMessage( 'bs-extendedsearch-recentsearchtermsdesc' )->plain()
+			'type'  => 'BS.ExtendedSearch.RecentSearchTermsPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain()
+			),
+			'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain(),
+			'description' => wfMessage( 'bs-extendedsearch-recentsearchtermsdesc' )->plain()
 		);
 
 		return true;
@@ -319,10 +309,10 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onBSDashboardsAdminDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
 		$aPortalConfig[0][] = array(
-						'type'  => 'BS.ExtendedSearch.RecentSearchTermsPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain()
-						)
+			'type'  => 'BS.ExtendedSearch.RecentSearchTermsPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain()
+			)
 		);
 
 		return true;

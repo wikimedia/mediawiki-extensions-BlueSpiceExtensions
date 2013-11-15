@@ -42,7 +42,7 @@ class ViewStateBar extends ViewBaseElement {
 		$aOut[] = '<div id="bs-statebar">';
 
 		$aOut[] = ' <span id="bs-statebar-viewtoggler" style="line-height: 1.5em;" title="'.wfMessage( 'bs-statebar-viewtoggler-tooltip' )->plain().'" >';
-		$aOut[] = '<img id="bs-statebar-viewtoggler-image" src="'.$wgScriptPath.'/extensions/BlueSpiceExtensions/StateBar/resources/images/bs-statebar-viewtoggler_more.png" />';
+		$aOut[] = '<img id="bs-statebar-viewtoggler-image" src="'.$wgScriptPath.'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_more.png" />';
 		$aOut[] = '</span>';
 
 		foreach( $this->mStateBarTopViews as $oStateBarTopView ) {
