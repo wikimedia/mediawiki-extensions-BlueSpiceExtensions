@@ -42,7 +42,8 @@ $messages['en'] = array(
 	//JavaScript
 	'bs-shoutbox-confirm_text'  => 'Do you really want to delete that entry?',
 	'bs-shoutbox-confirm_title' =>'Confirm',
-	'bs-shoutbox-enterMessage'  =>'Please enter a message.'
+	'bs-shoutbox-enterMessage'  =>'Please enter a message.',
+	'bs-shoutbox-too-early'     => 'Please wait a few seconds before submitting the next entry.',
 );
 
 $messages['de'] = array(
@@ -72,7 +73,8 @@ $messages['de'] = array(
 	//JavaScript
 	'bs-shoutbox-confirm_text'  => 'Möchtest du diesen Eintrag wirklich löschen?',
 	'bs-shoutbox-confirm_title' =>'Bestätigen',
-	'bs-shoutbox-enterMessage'  =>'Bitte gib eine Nachricht ein!'
+	'bs-shoutbox-enterMessage'  =>'Bitte gib eine Nachricht ein!',
+	'bs-shoutbox-too-early'     => 'Bitte warte ein paar Sekunden bevor du den nächsten Beitrag abschickst.'
 	
 );
 
@@ -80,8 +82,9 @@ $messages['de-formal'] = array(
 	'bs-shoutbox-archive-failure'         => 'Beim Löschen des Shoutbox-Eintrags ist ein Fehler aufgetreten, bitte versuchen Sie es erneut.',
 
 	//JavaScript
-	'bs-shoutbox-confirm_text'  => 'Möchteen Sie diesen Eintrag wirklich löschen?',
-	'bs-shoutbox-enterMessage'  =>'Bitte geben Sie eine Nachricht ein!'
+	'bs-shoutbox-confirm_text'  => 'Möchten Sie diesen Eintrag wirklich löschen?',
+	'bs-shoutbox-enterMessage'  =>'Bitte geben Sie eine Nachricht ein!',
+	'bs-shoutbox-too-early'     => 'Bitte warten Sie ein paar Sekunden bevor Sie den nächsten Beitrag abschicken.'
 );
 
 $messages['qqq'] = array();

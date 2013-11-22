@@ -53,13 +53,11 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		}
 
 		$aTemplate[] = '<div class="search-wrapper">';
+		$aTemplate[] = '<div class="bs-extendedsearch-result-head">';
 		$aTemplate[] = '<span class="bs-extendedsearch-result-icon">' . $this->getOption( 'searchicon' ) . '</span>';
 		$aTemplate[] = '<span class="bs-extendedsearch-result-title"><h3>' . $this->getOption( 'searchlink' ) . '</h3></span>';
-		$aTemplate[] = '<div class="search-result-info">';
-
-		if ( $this->getOption( 'showpercent' ) ) {
-			$aTemplate[] = $this->getOption( 'scorepercent' ) . '% | ';
-		}
+		$aTemplate[] = '</div>';
+		$aTemplate[] = '<div class="bs-search-result-info">';
 
 		$aTemplate[] = $this->getOption( 'timestamp' );
 
@@ -70,7 +68,7 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		$aTemplate[] = '</div>';
 
 		if ( $this->getOption( 'highlightsnippets' ) ) {
-			$aTemplate[] = '<div class="search-hit-text">' . $sHighlightSnippets . '</div>';
+			$aTemplate[] = '<div class="bs-search-hit-text">' . $sHighlightSnippets . '</div>';
 		}
 
 		$sCategories = trim( $this->getOption( 'catstr' ) );

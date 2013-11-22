@@ -17,8 +17,8 @@ VisualEditor = (function VisualEditor() {
 		 * @private
 		 */
 		_config = {
-		_default: mw.config.get('BsVisualEditorConfigDefault')
-	};
+			_default: mw.config.get('BsVisualEditorConfigDefault')
+		};
 
 	return {
 		/**

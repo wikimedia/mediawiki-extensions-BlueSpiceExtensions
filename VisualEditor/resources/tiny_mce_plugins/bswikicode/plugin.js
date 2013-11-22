@@ -440,7 +440,7 @@ var BsWikiCode = function() {
 			linkTargetParts, protocol, targetText,
 			namespaces = mw.config.get('wgNamespaceIds'), 
 			imageExtensions = mw.config.get('bsImageExtensions'),
-			anchorFormat = '<a href="{0}" title="{1}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
+			anchorFormat = '<a href="{0}" data-mce-href="{5}" title="{1}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
 
 		links = text.match(/\[\[([^\]]*?)\]\]/gi);
 		if (links) {
@@ -458,11 +458,12 @@ var BsWikiCode = function() {
 				
 
 				linkHtml = anchorFormat.format(
-					linkTarget,//escape(linkTarget),
+					'bs://' + linkTarget,//escape(linkTarget),
 					linkLabel,
 					'internal_link',
 					'internal bs-internal-link',
-					link
+					link,
+					linkTarget
 				);
 
 				targetParts = linkTarget.split(":");
@@ -510,7 +511,8 @@ var BsWikiCode = function() {
 					linkLabel,
 					'external_link',
 					'external bs-external-link bs-protocol-'+protocol,
-					link
+					link,
+					linkTarget
 				);
 				text = text.replace("[" + link + "]", linkHtml);
 			}
@@ -953,11 +955,14 @@ var BsWikiCode = function() {
 			emptyLineCount = 0,
 			emptyLineBefore = false,
 			emptyLine = false,
-			emptyLineAfter = false;
+			emptyLineAfter = false,
+			lastLine = false;
 
 		for (var i = 0; i < lines.length; i++) {
 			// Prevent REDIRECT from being rendered as list
 			line = lines[i].match(/^(\*|#(?!REDIRECT)|:|;)+/);
+			lastLine = (i == lines.length - 1);
+			
 			if (line && line !== '') {
 				lines[i] = lines[i].replace(/^(\*|#|:|;)*\s*(.*?)$/gmi, "$2");
 				if (line[0].indexOf(':') === 0) {
@@ -1057,7 +1062,9 @@ var BsWikiCode = function() {
 						if ((emptyLineCount % 2 === 0) && (emptyLineAfter || beforeBlock || specialClosematchTwoBefore)) {
 							lines[i] = lines[i] + '<p class="bs_emptyline_first"><br class="bs_emptyline_first"/>';
 						} else {
-							lines[i] = lines[i] + '<p class="bs_emptyline"><br class="bs_emptyline"/>';
+							if (!lastLine) {
+								lines[i] = lines[i] + '<p class="bs_emptyline"><br class="bs_emptyline"/>';
+							}
 						}
 						inParagraph = true;
 					}
@@ -1216,6 +1223,12 @@ var BsWikiCode = function() {
 			text = text + '<p><br class="bs_lastline" /></p>';
 		}
 
+		// this reverts the line above. otherwise undo/redo will not work
+		text = text.replace(/<p><br [^>]*bs_lastline[^>]*><\/p>/gmi, '');
+		text = text.replace(/<br data-attributes="" \/>/gmi, '<br/>');
+		text = text.replace(/<br data-attributes="[^>]*data-mce-bogus[^>]*" \/>/gmi, '');
+		text = text.replace(/<br [^>]*data-mce-bogus="1"[^>]*>/gmi, '');
+
 		// wrap the text in an object to send it to event listeners
 		textObject = {text: text};
 		// call the event listeners
@@ -1278,7 +1291,7 @@ var BsWikiCode = function() {
 
 		text = text.replace(/<br.*?>/gi, function(match, offset, string) {
 			var attributes = $(match).attr('data-attributes');
-			if (typeof attributes === 'undefined') {
+			if (typeof attributes === 'undefined' || attributes == "") {
 				attributes = ' /';
 			}
 			return '<br' + decodeURI(attributes) + '>';
@@ -1478,7 +1491,10 @@ var BsWikiCode = function() {
 		// Cleanup am Schluss löscht alle Zeilenumbrüche und Leerzeilen/-Zeichen am Ende.
 		// Important: do not use m flag, since this makes $ react to any line ending instead of text ending
 		text = text.replace(/((<p( [^>]*?)?>(\s|&nbsp;|<br\s?\/>)*?<\/p>)|<br\s?\/>|\s)*$/gi, "");
-		text = text.replace(/<br class="bs_lastline"[^>]*>/g, '');
+		text = text.replace(/<br [^>]*bs_lastline[^>]*>/gmi, '');
+		text = text.replace(/<br data-attributes="" \/>/gmi, '<br/>');
+		text = text.replace(/<br data-attributes="[^>]*data-mce-bogus[^>]*" \/>/gmi, '');
+		text = text.replace(/<br [^>]*data-mce-bogus="1"[^>]*>/gmi, '');
 		text = text.replace(/^\n*/gi, '');
 
 		// wrap the text in an object to send it to event listeners
@@ -2009,7 +2025,10 @@ var BsWikiCode = function() {
 	 * @param {tinymce.ContentEvent} e
 	 */
 	function _onBeforeSetContent(e) {
-
+		
+		// if raw format is requested, this is usually for internal issues like
+		// undo/redo. So no additional processing should occur. Default is 'html'
+		if (e.format == 'raw' ) return;
 		if (e.load) {
 			e.content = _preprocessWiki2Html(e.content);
 		}
@@ -2024,7 +2043,12 @@ var BsWikiCode = function() {
 	 * @param {tinymce.ContentEvent} e
 	 */
 	function _onGetContent(e) {
-		e.format = 'wiki';
+		
+		// if raw format is requested, this is usually for internal issues like
+		// undo/redo. So no additional processing should occur. Default is 'html'
+		if (e.format == 'raw' ) return;
+		
+		if (e.format != 'raw') e.format = 'wiki';
 
 		// process the html to wikicode
 		e.content = _html2wiki(e.content);

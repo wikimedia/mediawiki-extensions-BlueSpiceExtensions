@@ -1,1 +1,0 @@
-BsReview.i18n.dialogTitle = 'Delegiere an';

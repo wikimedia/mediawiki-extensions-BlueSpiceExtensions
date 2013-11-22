@@ -82,8 +82,9 @@ class Emoticons extends BsExtensionMW {
 			EXTINFO::NAME        => 'Emoticons',
 			EXTINFO::DESCRIPTION => 'Renders emoticons in a text as images.',
 			EXTINFO::AUTHOR      => 'Alex Wollangk, Marc Reymann, Sebastian Ulbricht, Mathias Scheer, Robert Vogel, Patric Wirth',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);

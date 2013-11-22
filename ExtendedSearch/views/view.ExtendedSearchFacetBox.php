@@ -81,7 +81,7 @@ class ViewExtendedSearchFacetBox extends ViewBaseElement {
 	 */
 	public function execute( $params = false ) {
 		$this->setTemplate('');
-		$titleBar = '<div class="facet-title bs-extendedsearch-default-textspacing">';
+		$titleBar = '<div class="bs-facet-title bs-extendedsearch-default-textspacing">';
 		if ( $this->iEntriesChecked > 0 ) {
 			$checked = ' checked="checked"';
 			$uri = $this->getOption( 'uri-facet-delete' );

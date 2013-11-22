@@ -92,7 +92,6 @@ class SpecialReview extends BsSpecialPage {
 		}
 
 		$aReviewList = self::filterReviewList(Review::getData(), $aFilter);
-		error_log(var_export($aReviewList,1));
 		$aReviews = array();
 
 		foreach ($aReviewList as $arrKey => $row) {
@@ -122,6 +121,7 @@ class SpecialReview extends BsSpecialPage {
 			$oReview->enddate = $row['enddate'];
 			$oReview->assessors = array();
 
+			$bRejected = false;
 			foreach ($row['assessors'] AS $arrAssessor) {
 				$oAssessor = new stdClass();
 				$oAssessor->revs_status = $arrAssessor['revs_status'];
@@ -129,10 +129,29 @@ class SpecialReview extends BsSpecialPage {
 				$oAssessor->real_name = $arrAssessor['real_name'];
 				$oAssessor->timestamp = false;
 
-				if ($arrAssessor['timestamp'] != '00.00' && $arrAssessor['revs_status'] >= 0) {
+				if( $arrAssessor['timestamp'] != '00.00' && $arrAssessor['revs_status'] >= 0) {
 					$oAssessor->timestamp = $arrAssessor['timestamp'];
 				}
+
+				if( $oReview->accepted === 0 && $oAssessor->revs_status === '-3' ) {
+					$bRejected = true;
+				}
+
 				$oReview->assessors[] = $oAssessor;
+			}
+
+			$oCurrentDate = DateTime::createFromFormat('YmdHis', wfTimestampNow());
+			$oEndDate = DateTime::createFromFormat('d.m.Y', $oReview->enddate);
+			if( $oEndDate && $oEndDate && $oEndDate < $oCurrentDate ) {
+				$oReview->accepted_text = 
+					wfMessage( 'bs-review-accepted' )->plain() . ': ' . 
+					$oReview->accepted . '/' . $row['total'] . '<br />'.
+					wfMessage( 'bs-review-expired' )->plain();
+			} elseif( $bRejected ) {
+				$oReview->accepted_text = 
+					wfMessage( 'bs-review-accepted' )->plain() . ': ' . 
+					$oReview->accepted . '/' . $row['total'] . '<br />'.
+					wfMessage( 'bs-review-denied' )->plain();
 			}
 
 			$aReviews[] = $oReview;

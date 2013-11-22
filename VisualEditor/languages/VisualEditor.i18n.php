@@ -45,8 +45,16 @@ $messages['en'] = array(
 	
 	'bs-visualeditor-bsactions-wiki'      => 'WikiText',
 	'bs-visualeditor-bsactions-switchgui' => 'Switch toolbar',
-	'bs-visualeditor-bsactions-linebreak' => 'Linkebreak',
+	'bs-visualeditor-bsactions-linebreak' => 'Linebreak',
 	'bs-visualeditor-bsactions-signature' => 'Signature',
+	'bs-visualeditor-bsactions-save'      => 'Save',
+	'bs-visualeditor-bsactions-headings'  => 'Headings',
+	'bs-visualeditor-bsactions-paragraph' => 'Paragraph',
+	'bs-visualeditor-bsactions-heading2'  => 'Heading 2',
+	'bs-visualeditor-bsactions-heading3'  => 'Heading 3',
+	'bs-visualeditor-bsactions-heading4'  => 'Heading 4',
+	'bs-visualeditor-bsactions-heading5'  => 'Heading 5',
+	'bs-visualeditor-bsactions-heading6'  => 'Heading 6',
 	
 	'bs-visualeditor-switch-noeditor-desc' => 'Disables the VisualEditor extension for this page',
 );
@@ -83,6 +91,14 @@ $messages['de'] = array(
 	'bs-visualeditor-bsactions-switchgui' => 'Werkzeugleiste umschalten',
 	'bs-visualeditor-bsactions-linebreak' => 'Zeilenumbruch',
 	'bs-visualeditor-bsactions-signature' => 'Signatur',
+	'bs-visualeditor-bsactions-save'      => 'Speichern',
+	'bs-visualeditor-bsactions-headings'  => 'Überschriften',
+	'bs-visualeditor-bsactions-paragraph' => 'Absatz',
+	'bs-visualeditor-bsactions-heading2'  => 'Überschrift 2',
+	'bs-visualeditor-bsactions-heading3'  => 'Überschrift 3',
+	'bs-visualeditor-bsactions-heading4'  => 'Überschrift 4',
+	'bs-visualeditor-bsactions-heading5'  => 'Überschrift 5',
+	'bs-visualeditor-bsactions-heading6'  => 'Überschrift 6',
 	
 	'bs-visualeditor-switch-noeditor-desc' => 'Deaktiviert die VisualEditor Erweiterung auf dieser Seite',
 );

@@ -53,14 +53,22 @@ class Flexiskin extends BsExtensionMW {
 			EXTINFO::NAME => 'Flexiskin',
 			EXTINFO::DESCRIPTION => 'Provides a page to manage flexiskins with customizing options.',
 			EXTINFO::AUTHOR => 'Tobias Weichart',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
 				'bluespice' => '2.22.0'
 			)
 		);
 		$this->mExtensionKey = 'MW::Flexiskin';
+		
+		WikiAdmin::registerModule( 'Flexiskin', array(
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_usermanagement_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-flexiskin-label'
+		) );
+		
 		wfProfileOut('BS::' . __METHOD__);
 	}
 
@@ -81,6 +89,11 @@ class Flexiskin extends BsExtensionMW {
 		}
 		$this->mCore->registerPermission('flexiskinedit');
 		wfProfileOut('BS::' . __METHOD__);
+	}
+	
+	public function getForm( $firsttime = false ) {
+		$this->getOutput()->addModules("ext.bluespice.flexiskin");
+		return '<div id="bs-flexiskin-container"></div>';
 	}
 
 	public function runPreferencePlugin($sAdapterName, $oVariable) {
@@ -340,13 +353,14 @@ class Flexiskin extends BsExtensionMW {
 			$aReturn[] = "#bs-menu-top{width:" . (int) $aConfig->width . "px;}";
 			$aReturn[] = "#bs-application{width:" . (int) $aConfig->width . "px;}";
 			$aReturn[] = "#bs-wrapper{width:" . (int) $aConfig->width . "px;min-width:" . (int) $aConfig->width . "px;}";
+			//$aReturn[] = "#bs-tools-container{width:" . ((int) $aConfig->width - 200 + 28) . "px;margin-left:-" . ((int) $aConfig->width - 246) . "px}";
 		}
 		else{
 			$aReturn[] = "#bs-menu-top{width:100%;}";
 			$aReturn[] = "#bs-application{width:100%;}";
 			$aReturn[] = "#bs-wrapper{width:100%;min-width:100%;}";
 		}
-		$aReturn[] = "#bs-tools-container{width:" . ((int) $aConfig->width - 200 + 28) . "px;margin-left:-" . ((int) $aConfig->width - 246) . "px}";
+		
 		return implode(" \n", $aReturn);
 	}
 	private static function getVal($sVal, $sDefault = "", $bIsArray = false){

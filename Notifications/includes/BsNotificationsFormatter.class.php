@@ -61,6 +61,15 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 					)
 				);
 			}
+		} else if( $param === 'userlink') {
+			$this->setUserpageLink(
+					$event,
+					$message,
+					array(
+						'class' => 'mw-echo-userpage',
+						'created' => true,
+					)
+				);
 		}else {
 			parent::processParam( $event, $param, $message, $user );
 		}
@@ -86,9 +95,24 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 	 * @return type
 	 */
 	public function setUserpageLink ( $event, $message, $props = array() ) {
-		$title = $event->getAgent()->getUserPage();
-//		if( $event->getAgent()->isAnon() ) $props['linkText'] = $event->getAgent()->getName ();
-		$this->buildLink($title, $message, $props, false );
+		if( isset( $props['created'] ) && $props['created'] ) {
+			unset( $props['created'] );
+			$aExtra = $event->getExtra();
+			$oUser = User::newFromName( $aExtra['user'] );
+			if( is_object( $oUser ) ) {
+				$title = $oUser->getUserPage();
+			} else {
+				$title = null;
+			}
+		} else {
+			$title = $event->getAgent()->getUserPage();
+		}
+		
+		if( $title === null ) {
+			$message->params( wfMessage( 'bs-echo-unknown-user' )->parse() );
+		} else {
+			$this->buildLink($title, $message, $props, false );
+		}
 	}
 
 	public function buildLink( $title, $message, $props, $bLinkWithPrefixedText = true ) {

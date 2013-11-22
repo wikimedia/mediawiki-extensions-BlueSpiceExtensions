@@ -6,6 +6,7 @@ $(document).ready(function(){
 		var me = this;
 		Ext.require('BS.InsertFile.FileDialog', function(){
 			BS.InsertFile.FileDialog.clearListeners();
+			BS.InsertFile.FileDialog.on( 'cancel', bs.util.selection.reset );
 			BS.InsertFile.FileDialog.on( 'ok', function( dialog, data ) {
 				var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 				data.nsText = formattedNamespaces[bs.ns.NS_MEDIA];
@@ -47,6 +48,7 @@ $(document).ready(function(){
 		var me = this;
 		Ext.require('BS.InsertFile.ImageDialog', function(){
 			BS.InsertFile.ImageDialog.clearListeners();
+			BS.InsertFile.ImageDialog.on( 'cancel', bs.util.selection.reset );
 			BS.InsertFile.ImageDialog.on( 'ok',function( dialog, data ) {
 				var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 				data.nsText = formattedNamespaces[bs.ns.NS_IMAGE];
@@ -80,11 +82,22 @@ $(document).ready(function(){
 });
 
 // Register buttons with hwactions plugin of VisualEditor
-$(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, commands ){
+$(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, commands, menus ){
 	var t = plugin;
 	var ed = t.editor;
 
-	//Insert mage
+	//Insert mage	
+	menus.push({
+		menuId: 'bsContextImage',
+		menuConfig: {
+			text: mw.message('bs-insertfile-button_image_title').plain(),
+			icon: 'image',
+			cmd : 'mceBsImage'
+		}
+	});
+	
+	
+	
 	buttons.push({
 		buttonId: 'bsimage',
 		buttonConfig: {

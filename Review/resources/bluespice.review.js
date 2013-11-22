@@ -93,9 +93,4 @@
 			}
 		});
 	});
-	
-	//Register statebar opener
-	$(document).bind( 'BsStateBarRegisterToggleClickElements', function(event, aRegisteredToggleClickElements) {
-		aRegisteredToggleClickElements.push($('#sb-Review'));
-	});
 }( mediaWiki, jQuery, blueSpice ));

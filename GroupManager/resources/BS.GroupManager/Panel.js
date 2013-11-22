@@ -57,7 +57,9 @@ Ext.define( 'BS.GroupManager.Panel', {
 	},
 	onBtnAddClick: function( oButton, oEvent ) {
 		if ( !this.dlgGroupAdd ) {
-			this.dlgGroupAdd = Ext.create( 'BS.GroupManager.GroupDialog' );
+			this.dlgGroupAdd = Ext.create( 'BS.GroupManager.GroupDialog', {
+				id: 'bs-groupmanager-add-dlg'
+			} );
 			this.dlgGroupAdd.on( 'ok', this.onDlgGroupAddOk, this );
 		}
 
@@ -73,7 +75,9 @@ Ext.define( 'BS.GroupManager.Panel', {
 			return;
 		}
 		if ( !this.dlgGroupEdit ) {
-			this.dlgGroupEdit = Ext.create( 'BS.GroupManager.GroupDialog' );
+			this.dlgGroupEdit = Ext.create( 'BS.GroupManager.GroupDialog', {
+				id: 'bs-groupmanager-edit-dlg'
+			} );
 			this.dlgGroupEdit.on( 'ok', this.onDlgUserEditOk, this );
 		}
 
@@ -91,7 +95,7 @@ Ext.define( 'BS.GroupManager.Panel', {
 			return;
 		}
 		bs.util.confirm(
-			'GMremove',
+			'bs-groupmanager-remove-dlg',
 			{
 				text: mw.message( 'bs-groupmanager-removeGroup' ).plain(),
 				title: mw.message( 'bs-groupmanager-tipRemove' ).plain()

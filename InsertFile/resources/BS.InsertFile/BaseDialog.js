@@ -84,6 +84,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 				direction: 'ASC'
 			}
 		});
+		this.stImageGrid.on( 'load', this.onStImageGridLoad, this );
 		
 		this.sfFilter = Ext.create( 'Ext.ux.form.SearchField', {
 			fieldLabel: mw.message('bs-insertfile-labelFilter').plain(),
@@ -162,6 +163,10 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.callParent(arguments);
 	},
 	
+	//Override in subclasses
+	onStImageGridLoad: function( store, records, successful, eOpts ) {
+	},
+	
 	btnUploadClick: function( sender, event ) {
 		this.dlgUpload.show();
 	},
@@ -175,7 +180,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		var cfg = {
 			title: this.tfFileName.getValue(),
 			displayText: this.tfLinkText.getValue()
-		}
+		};
 		return cfg;
 	},
 	

@@ -55,8 +55,9 @@ class InsertLink extends BsExtensionMW {
 			EXTINFO::NAME => 'InsertLink',
 			EXTINFO::DESCRIPTION => 'Dialogbox to enter a link.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht, Patric Wirth',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array('bluespice' => '2.22.0')
 		);
@@ -87,8 +88,11 @@ class InsertLink extends BsExtensionMW {
 	 * @return boolean always true to keep hook alife
 	 */
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'bssignature',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bslink" );
+		$iIndexStandard = array_search( 'bssignature',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bslink" );
+		
+		// Add context menu entry
+		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsContextLink bsContextUnlink', $aConfigStandard["contextmenu"] );
 		return true;
 	}
 

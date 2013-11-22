@@ -14,8 +14,9 @@
 
 #bs-statebar {
     background: #f3f3f3;
-    min-height: 35px;
+    min-height: 37px;
     width: auto;
+	overflow: auto;
 }
 .bs-statebar-viewtoggler {
     cursor: pointer;
@@ -62,6 +63,7 @@
 .bs-statebar-top-item {
     margin-right: 5px;
 	display: inline;
+	margin-bottom: 10px;
 }
 
 .bs-statebar-top-text {

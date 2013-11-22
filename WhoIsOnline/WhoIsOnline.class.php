@@ -85,8 +85,9 @@ class WhoIsOnline extends BsExtensionMW {
 			EXTINFO::NAME        => 'WhoIsOnline',
 			EXTINFO::DESCRIPTION => 'Displays a list of users who are currently online.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice' => '2.22.0'
@@ -501,6 +502,7 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function insertTrace( $oTitle, $oUser, $oRequest) {
+		if ( wfReadOnly() ) return true;
 		if ( ( $oUser->getId() == 0 ) ) return true; // Anonymous user
 
 		$sPageTitle = $oTitle->getText();

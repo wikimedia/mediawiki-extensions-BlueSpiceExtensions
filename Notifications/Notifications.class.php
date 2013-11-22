@@ -69,8 +69,9 @@ class Notifications extends BsExtensionMW {
 			EXTINFO::NAME        => 'Notifications',
 			EXTINFO::DESCRIPTION => 'Send changes in the wiki via echo extension.',
 			EXTINFO::AUTHOR      => 'Stefan Widmann',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -169,11 +170,15 @@ class Notifications extends BsExtensionMW {
 		foreach ( $aTmpUsers as $index => $user ) {
 			if ( $user instanceof User ){}// just for code completion
 			if ( !$user->getOption( 'MW::Notifications::Active', false ) ) continue;
-			if ( !$event->getTitle()->userCan( 'read', $user ) ) continue;
-			if ( is_array( unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) {
-				if ( !in_array( $event->getTitle()->getNamespace(), unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) continue;
+			if( $event->getTitle() instanceof Title ) {
+				if ( !$event->getTitle()->userCan( 'read', $user ) ) continue;
+				if ( is_array( unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) {
+					if ( !in_array( $event->getTitle()->getNamespace(), unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) continue;
+				}
 			}
-			if ( $event->getAgent()->getRequest()->getVal( 'wpMinoredit', false ) && $user->getOption( 'MW::Notifications::NotifyNoMinor', false ) ) continue;
+			if( $event->getAgent() instanceof User ) {
+				if ( $event->getAgent()->getRequest()->getVal( 'wpMinoredit', false ) && $user->getOption( 'MW::Notifications::NotifyNoMinor', false ) ) continue;
+			}
 			$users[] = $user;
 		}
 		
@@ -181,7 +186,7 @@ class Notifications extends BsExtensionMW {
 	}
 
 	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
-		// categoriedefinition via self::$aNotificationCategories
+		// category definition via self::$aNotificationCategories
 		//  HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Notification_category_parameters
 		foreach( self::$aNotificationCategories as $sCategory => $aCategoryDefinition ) {
 			$notificationCategories[$sCategory] = $aCategoryDefinition;
@@ -196,11 +201,12 @@ class Notifications extends BsExtensionMW {
 			'flyout-message' => 'bs-notifications-email-edit-subject',
 			'flyout-params' => array( 'titlelink', 'agentlink' ),
 			'email-subject-message' => 'bs-notifications-email-edit-subject',
-			'email-subject-params' => array( 'title', 'agent' ),
+			'email-subject-params' => array( 'titlelink', 'agentlink' ),
 			'email-body-message' => 'bs-notifications-email-edit',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'edit',
+//			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
 		$notifications['bs-create'] = array(
@@ -214,9 +220,10 @@ class Notifications extends BsExtensionMW {
 			'email-subject-message' => 'bs-notifications-email-new-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-new',
-			'email-body-params' => array( 'titlelink', 'agentlink' ),
+			'email-body-params' => array( 'titlelink', 'agentlink', 'summary', 'titlelink', 'difflink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'create',
+//			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
 		$notifications['bs-delete'] = array(
@@ -230,9 +237,10 @@ class Notifications extends BsExtensionMW {
 			'email-subject-message' => 'bs-notifications-email-delete-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-delete',
-			'email-body-params' => array( 'title', 'agent' ),
+			'email-body-params' => array( 'titlelink', 'agentlink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'delete',
+//			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
 		$notifications['bs-move'] = array(
@@ -256,13 +264,13 @@ class Notifications extends BsExtensionMW {
 			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-newuser',
-			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-newuser-subject',
-			'flyout-params' => array( 'title', 'agent' ),
-			'email-subject-message' => 'bs-notifications-email-newuser-subject',
-			'email-subject-params' => array( 'title', 'agent' ),
+			'title-params' => array( 'userlink' ),
+			'flyout-message' => 'bs-notifications-email-addaccount-subject',
+			'flyout-params' => array( 'userlink' ),
+			'email-subject-message' => 'bs-notifications-email-addaccount-subject',
+			'email-subject-params' => array( 'userlink' ),
 			'email-body-message' => 'bs-notifications-email-newuser',
-			'email-body-params' => array( 'title', 'agent' ),
+			'email-body-params' => array( 'userlink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'newuser',
 		);
@@ -345,7 +353,7 @@ class Notifications extends BsExtensionMW {
 				'agent'	=> $user,
 				'extra'	=> array(
 					'summary'	=>	$summary,
-					'titlelink' => $article->getTitle()->getFullURL(),
+					'titlelink' => true,
 				),
 			) );
 			return true;
@@ -421,10 +429,10 @@ class Notifications extends BsExtensionMW {
 		EchoEvent::create( array(
 			'type' => 'bs-newuser',
 			// TODO SW: implement own notifications formatter
-//			'extra'	=> array(
-//				'usercreated'	=> $oUser,
-//				'userdetails'	=> $aUserDetails,
-//			)
+			'extra'	=> array(
+				'user'	=> $oUser->getName(),
+				'userlink'	=> true,
+			)
 		) );
 		
 

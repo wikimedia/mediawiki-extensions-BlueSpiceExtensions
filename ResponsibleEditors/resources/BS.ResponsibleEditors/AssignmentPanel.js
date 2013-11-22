@@ -38,7 +38,6 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 	
 	getData: function(){
 		this.currentData.editorIds = this.isRespEds.getValue();
-		console.log( this.currentData );
 		return this.callParent();
 	},
 

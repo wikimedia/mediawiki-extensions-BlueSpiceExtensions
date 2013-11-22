@@ -498,7 +498,6 @@ class ExtendedSearchBase {
 			$sEscapedPattern = preg_quote( $sPartOfTitle, '#' );
 			$sLabelText = preg_replace( '#'.$sEscapedPattern.'#i', '<b>'.$sPartOfTitle.'</b>', $sLabelText , 1 );
 		} else {
-			$iOccurences = 0;
 			$aOccurrences = array();
 			$aSearchStringParts = explode( ' ', $sModifiedSearchString );
 
@@ -591,7 +590,7 @@ class ExtendedSearchBase {
 			$iTimeInSec = $iTime * 24 * 60 * 60;
 			$iTimeStamp = wfTimestamp( TS_UNIX ) - $iTimeInSec;
 			$iTimeStamp = wfTimestamp( TS_MW, $iTimeStamp );
-			$aConditions = array( 'rev_timestamp >= '.$iTimeStamp );
+			$aConditions = array( 'stats_ts >= '.$iTimeStamp );
 		}
 
 		$res = $oDbr->select(
@@ -634,6 +633,58 @@ class ExtendedSearchBase {
 		}
 
 		return implode( "\n", $aResults );
+	}
+
+	/**
+	 * Writes a given search request to database log.
+	 * @param string $term Search term
+	 * @param int $iNumFound Number of hits
+	 * @param string $scope What was the scope of the search?
+	 * @param string $files Were files searched as well?
+	 * @return bool always false.
+	 */
+	public function logSearch( $term, $iNumFound, $scope, $files ) {
+		if ( !BsConfig::get( 'MW::ExtendedSearch::Logging' ) ) return false;
+		global $wgDBtype;
+
+		$oDbw = wfGetDB( DB_MASTER );
+
+		if ( $wgDBtype == 'postgres' ) {
+			$term = pg_escape_string( $term );
+		} elseif ( $wgDBtype == 'oracle' ) {
+			$term = addslashes( $term );
+		} else {
+			$term = mysql_real_escape_string( $term );
+		}
+
+		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) )
+			? RequestContext::getMain()->getUser()->getId()
+			: '';
+
+		$effectiveScope = ( $files ) ? $scope.'-files' : $scope;
+		$data = array(
+			'stats_term'  => $term,
+			'stats_ts'    => wfTimestamp( TS_MW ),
+			'stats_user'  => $user,
+			'stats_hits'  => $iNumFound,
+			'stats_scope' => $effectiveScope
+		);
+
+		$oDbw->insert( 'bs_searchstats', $data );
+
+		return true;
+	}
+
+	/**
+	 * Renders error message
+	 * @param string $message I18N key of error message
+	 * @return ViewBaseElement Renders error message.
+	 */
+	protected function createErrorMessageView( $sMessage ) {
+		$res = new ViewBaseElement();
+		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
+		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
+		return $res;
 	}
 
 }

@@ -2,7 +2,7 @@ Ext.define('BS.PermissionManager.GridPanel', {
 	extend: 'Ext.grid.Panel',
 	renderTo: 'panelPermissionManager', //TODO: Is this a good place?
 	columnLines: true,
-	width: 'auto',
+	width: 970,
 	height: 550,
 	frame: true,
 	header: false,

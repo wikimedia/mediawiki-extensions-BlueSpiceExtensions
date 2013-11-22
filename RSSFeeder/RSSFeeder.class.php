@@ -50,8 +50,9 @@ class RSSFeeder extends BsExtensionMW {
 			EXTINFO::NAME        => 'RSSFeeder',
 			EXTINFO::DESCRIPTION => 'A extension to put out valid rss for every extension, which has a buildRss-function',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);

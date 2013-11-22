@@ -24,6 +24,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
+ * @author     Stefan Widmann <widmann@hallowelt.biz>
  * @version    2.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage VisualEditor
@@ -65,7 +66,8 @@ class VisualEditor extends BsExtensionMW {
 			"textcolor",
 			"contextmenu",
 			//"link" //Needed for "unlink"
-			"autoresize"
+			"autoresize",
+			"charmap"
 		),
 		'external_plugins' => array(
 			'bswikicode'  => '../tiny_mce_plugins/bswikicode/plugin.js',
@@ -77,18 +79,18 @@ class VisualEditor extends BsExtensionMW {
 		//'inline' => true,
 		'menu' => false,
 		'toolbar1' => array(
-			'bswiki', /* 'bsswitch', */ 'save', '|', 'undo', 'redo', '|',
-			'search', 'replace', 'paste', 'pasteword', 'selectall', '|',
-			'bold', 'italic', 'underline', 'strikethrough', '|',
-			'bullist', 'numlist', '|', 'outdent', 'indent', '|',
-			'styleselect', 'forecolor'
+			'bswiki', /* 'bsswitch', */ 'bssave', '|', 'undo', 'redo', '|',
+			'searchreplace', 'paste', '|', 'bssignature', 'unlink', '|',
+			'table', '|', 'bstableaddrowbefore', 
+			'bstableaddrowafter', 'bstabledeleterow', 'bstableaddcolumnbefore',
+			'bstableaddcolumnafter', 'bstabledeletecolumn'
 		),
 		'toolbar2' => array(
-			'hr', 'removeformat', '|',
-			'charmap', '|', 'table', 'bstableaddrowbefore', 
-			'bstableaddrowafter', 'bstabledeleterow', 'bstableaddcolumnbefore',
-			'bstableaddcolumnafter', 'bstabledeletecolumn', '|',
-			'bssignature', 'unlink', 'bslinebreak', '|', 'fullscreen'
+			'bold', 'italic', 'underline', 'strikethrough', '|',
+			'bullist', 'numlist', '|', 'outdent', 'indent', '|',
+			'charmap', 'bslinebreak', '|',
+			'styleselect', 'bsheadings', 'forecolor', 'removeformat', '|',
+			'fullscreen'
 		),
 		// autofocus on the editor instance with this id
 		'auto_focus' => 'wpTextbox1',
@@ -149,7 +151,8 @@ class VisualEditor extends BsExtensionMW {
 				array('title' => 'bs-visualeditor-greyscale-narrow', 'selector' => 'table', 'classes' => 'greyscale-narrow'),
 			)),
 			array('title' => 'Pre', 'block' => 'pre', 'classes' => 'bs_pre_from_space'),
-		)
+		),
+		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn'
 	);
 
 	/**
@@ -184,8 +187,9 @@ class VisualEditor extends BsExtensionMW {
 			EXTINFO::NAME => 'VisualEditor',
 			EXTINFO::DESCRIPTION => 'Visual editor for MediaWiki.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array('bluespice' => '2.22.0')
 		);

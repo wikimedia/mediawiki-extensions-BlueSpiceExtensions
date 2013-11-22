@@ -56,8 +56,9 @@ class BsPreferences extends BsExtensionMW {
 			EXTINFO::NAME => 'Preferences',
 			EXTINFO::DESCRIPTION => 'Offers the possibility to admins, to configurate the whole wiki from a single SpecialPage',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array('bluespice' => '2.22.0')
 		);
@@ -154,13 +155,10 @@ class BsPreferences extends BsExtensionMW {
 						$field['message'] = 'toc-' . $oVariable->getName() . '-message';
 					}
 					if ( $oVariable->getOptions() & BsConfig::USE_PLUGIN_FOR_PREFS ) {
-						$tmp = NULL;
-						if ( $sExtensionName == 'BASE' ) {
-							#$tmp = $this->mAdapter->runPreferencePlugin( 'MW', $oVariable ); Never reached @TODO remove me
-						} else {
-							$oExtension = BsExtensionManager::getExtension( $sExtensionName );
-							$tmp = $oExtension->runPreferencePlugin( 'MW', $oVariable );
-						}
+
+						$oExtension = BsExtensionManager::getExtension( $sExtensionName );
+						$tmp = $oExtension->runPreferencePlugin( 'MW', $oVariable );
+
 						$field = array_merge( $field, $tmp );
 					}
 					$preferences[$oVariable->generateFieldId()] = $field;

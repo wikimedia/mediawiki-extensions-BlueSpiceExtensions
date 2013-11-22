@@ -55,8 +55,9 @@ class CountThings extends BsExtensionMW {
 			EXTINFO::NAME => 'CountThings',
 			EXTINFO::DESCRIPTION => 'Counts all kinds of things.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);

@@ -61,8 +61,9 @@ class ResponsibleEditors extends BsExtensionMW {
 			EXTINFO::NAME => 'ResponsibleEditors',
 			EXTINFO::DESCRIPTION => 'Enables MediaWiki to manage responsible editors for articles.',
 			EXTINFO::AUTHOR => 'Robert Vogel',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
 				'bluespice' => '2.22.0',
@@ -109,6 +110,10 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->setHook( 'BSPageAccessAddAdditionalAccessGroups', 'onPageAccessAddAdditionalAccessGroups' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
+		
+		// Echo extension hooks
+		$this->setHook( 'BeforeCreateEchoEvent' );
+		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
 
 		$this->mCore->registerPermission( 'responsibleeditors-changeresponsibility' );
 		$this->mCore->registerPermission( 'responsibleeditors-viewspecialpage' );
@@ -960,5 +965,15 @@ class ResponsibleEditors extends BsExtensionMW {
 
 		return implode( '', $aResults );
 	}
+	
+	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
+		/* implement */
+		return true;
+	}
+	
+	public function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
+		/* implement */
+        return true;
+}
 
 }

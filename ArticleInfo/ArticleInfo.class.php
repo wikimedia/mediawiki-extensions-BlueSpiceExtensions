@@ -68,8 +68,9 @@ class ArticleInfo extends BsExtensionMW {
 			EXTINFO::NAME        => 'ArticleInfo',
 			EXTINFO::DESCRIPTION => 'Provides information about an article for status bar.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice' => '2.22.0',

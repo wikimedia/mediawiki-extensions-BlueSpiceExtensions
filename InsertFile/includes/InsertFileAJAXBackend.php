@@ -211,7 +211,7 @@ class InsertFileAJAXBackend {
 		$thumbs_height = 128;
 		
 		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$sFileType       = $oStoreParams->getRequest()->getVal('type', 'image');
+		$sFileType    = $oStoreParams->getRequest()->getVal('type', 'image');
 		//$aFileExtensions = $oStoreParams->getRequest()->getArray('type'); //TODO: For future use
 		
 		$sStart = $oStoreParams->getStart();
@@ -221,12 +221,12 @@ class InsertFileAJAXBackend {
 			case 'size':
 				$sSort = 'i.img_size';
 				break;
-			case 'lastmod':
-				$sSort = 'i.img_timestamp';
-				break;
 			case 'name':
-			default:
 				$sSort = 'i.img_name';
+				break;
+			case 'lastmod':
+			default:
+				$sSort = 'i.img_timestamp';
 		}
 		$sSort .= ' '.$oStoreParams->getDirection();
 
@@ -244,7 +244,8 @@ class InsertFileAJAXBackend {
 		$aConds[] = $sType;
 
 		$aNameFilters = array();
-		$aNameFilters[] = $oStoreParams->getQuery();
+		//We need to replace spaces, because the DB value does not have spaces
+		$aNameFilters[] = str_replace( ' ', '_', $oStoreParams->getQuery() );
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$sImageTable = $dbr->tableName( 'image' );

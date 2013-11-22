@@ -25,23 +25,28 @@
 class SearchIndex {
 
 	/**
-	 * Reference to current search service, e.g. Solr
-	 * @var BsSearchService Current search service
+	 * Instance of ExtendedSearchBase
+	 * @var ExtendedSearchBase obejct of ExtendedSearchBase
+	 */
+	protected $oExtendedSearchBase;
+	/**
+	 * Instance of SearchService
+	 * @var SearchService object of SearchService
 	 */
 	protected $oSearchService;
 	/**
-	 * Current search options as set by defaults and url params
-	 * @var SearchOptions SearchOptions object
+	 * Instance of SearchOptions
+	 * @var SearchOptions object of SearchOptions
 	 */
 	protected $oSearchOptions;
 	/**
-	 * Search options as set by url params
-	 * @var SearchRequest SearchRequest object
+	 * Instance of SearchRequest
+	 * @var SearchRequest object of SearchRequest
 	 */
 	protected $oSearchRequest;
 	/**
-	 * Request Context
-	 * @var RequestContext RequestContext object
+	 * RequestContext
+	 * @var RequestContext object of RequestContext
 	 */
 	protected $oRequestContext;
 	/**
@@ -69,7 +74,13 @@ class SearchIndex {
 	 * Constructor for SearchIndexMW class
 	 * @param BsSearchService $searchServiceObject Current search service
 	 */
-	public function __construct() {}
+	public function __construct() {
+		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance();
+		$this->oSearchRequest = SearchRequest::getInstance();
+		$this->oSearchOptions = SearchOptions::getInstance();
+		$this->oUriBuilder = SearchUriBuilder::getInstance();
+		$this->oRequestContext = RequestContext::getMain();
+	}
 
 	/**
 	 * Return a instance of SearchIndex.
@@ -122,10 +133,6 @@ class SearchIndex {
 	 */
 	public function search( $oSearchService, &$aMonitor ) {
 		$this->oSearchService = $oSearchService;
-		$this->oSearchRequest = SearchRequest::getInstance();
-		$this->oSearchOptions = SearchOptions::getInstance();
-		$this->oUriBuilder = SearchUriBuilder::getInstance();
-		$this->oRequestContext = RequestContext::getMain();
 		global $wgScriptPath;
 
 		/* Jump to page */
@@ -141,7 +148,7 @@ class SearchIndex {
 
 		if ( !$this->oSearchRequest->isSearchable() ) {
 			if ( $this->oSearchRequest->sOrigin != '' && $this->oSearchOptions->getOption( 'searchStringOrig' ) == '' ) {
-				return $this->createErrorMessageView( 'bs-extendedsearch-no_search_term' );
+				return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-no_search_term' );
 			} else {
 				$vbe = new ViewBaseElement();
 				$vbe->setAutoElement( false );
@@ -168,7 +175,7 @@ class SearchIndex {
 				return $this->oRequestContext->getOutput()->redirect( $sUrl, '404' );
 			}
 
-			return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
+			return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 		}
 
 		$iNumFound = $oHits->response->numFound;
@@ -180,15 +187,13 @@ class SearchIndex {
 			try {
 				$oHits = $this->oSearchService->search( $aFuzzyQuery['searchString'], $aFuzzyQuery['offset'], $aFuzzyQuery['searchLimit'], $aFuzzyQuery['searchOptions'] );
 			} catch ( Exception $e ) {
-				return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
+				return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 			}
 
 			$iNumFound = $oHits->response->numFound;
 		}
 
-		$iMaxScore = $oHits->response->maxScore;
-
-		$this->logSearch(
+		$this->oExtendedSearchBase->logSearch(
 			$this->oSearchOptions->getOption( 'searchStringForStatistics' ),
 			$iNumFound,
 			$this->oSearchOptions->getOption( 'scope' ),
@@ -588,8 +593,6 @@ class SearchIndex {
 		);
 
 		foreach ( $oDocuments as $oDocument ) {
-			$sPercent = 100 * ( sprintf( '%.2f', $oDocument->score / $iMaxScore ) );
-
 			//Show Page Title and link it
 			$sLinkIcon = $aImageLinks['default'];
 
@@ -627,7 +630,15 @@ class SearchIndex {
 						$sHtml = str_replace ( '_', ' ', $sHtml );
 					}
 
-					$sSearchLink = BsLinkProvider::makeLink( $oTitle, $sHtml, $aCustomAttribs = array(), $aQuery = array(), $aOptions = array( 'known' ) );
+					$sSearchLink = BsLinkProvider::makeLink(
+						$oTitle,
+						$sHtml,
+						$aCustomAttribs = array(
+							'class' => 'bs-extendedsearch-result-headline'
+						),
+						$aQuery = array(),
+						$aOptions = array( 'known' )
+					);
 
 					if ( isset( $oHits->highlighting->{$oDocument->uid}->sections ) ) {
 						$oParser = new Parser();
@@ -722,12 +733,10 @@ class SearchIndex {
 			$aResultEntryDataSet = array(
 				'searchicon'        => $sLinkIcon,
 				'searchlink'        => $sSearchLink,
-				'scorepercent'      => $sPercent,
 				'timestamp'         => $sTimestamp,
 				'catstr'            => $catstr,
 				'redirect'          => $sRedirect,
-				'highlightsnippets' => $aHighlightsnippets,
-				'showpercent'       => ( $this->oSearchOptions->getOption( 'showpercent' ) === true ),
+				'highlightsnippets' => $aHighlightsnippets
 			);
 
 			$this->vSearchResult->addResultEntry( $aResultEntryDataSet );
@@ -737,18 +746,6 @@ class SearchIndex {
 		// ----------end results ---------------
 
 		return $this->vSearchResult;
-	}
-
-	/**
-	 * Renders error message
-	 * @param string $message I18N key of error message
-	 * @return ViewBaseElement Renders error message.
-	 */
-	protected function createErrorMessageView( $sMessage ) {
-		$res = new ViewBaseElement();
-		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
-		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
-		return $res;
 	}
 
 	/**
@@ -774,46 +771,6 @@ class SearchIndex {
 			}
 		}
 		return 0;
-	}
-
-	/**
-	 * Writes a given search request to database log.
-	 * @param string $term Search term
-	 * @param int $iNumFound Number of hits
-	 * @param string $scope What was the scope of the search?
-	 * @param string $files Were files searched as well?
-	 * @return bool always false.
-	 */
-	public function logSearch( $term, $iNumFound, $scope, $files ) {
-		if ( !BsConfig::get( 'MW::ExtendedSearch::Logging' ) ) return false;
-		global $wgDBtype;
-
-		$oDbw = wfGetDB( DB_MASTER );
-
-		if ( $wgDBtype == 'postgres' ) {
-			$term = pg_escape_string( $term );
-		} elseif ( $wgDBtype == 'oracle' ) {
-			$term = addslashes( $term );
-		} else {
-			$term = mysql_real_escape_string( $term );
-		}
-
-		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) )
-			? $this->oRequestContext->getUser()->getId()
-			: '';
-
-		$effectiveScope = ( $files ) ? $scope.'-files' : $scope;
-		$data = array(
-			'stats_term'  => $term,
-			'stats_ts'    => date( 'YmdHis' ),
-			'stats_user'  => $user,
-			'stats_hits'  => $iNumFound,
-			'stats_scope' => $effectiveScope
-		);
-
-		$oDbw->insert( 'bs_searchstats', $data );
-
-		return true;
 	}
 
 }

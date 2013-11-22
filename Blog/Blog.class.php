@@ -82,8 +82,9 @@ class Blog extends BsExtensionMW {
 			EXTINFO::NAME        => 'Blog',
 			EXTINFO::DESCRIPTION => 'Display a blog style list of pages.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -154,7 +155,7 @@ class Blog extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		$oOutputPage->addModules( 'ext.bluespice.blog' );
+		$oOutputPage->addModuleStyles( 'ext.bluespice.blog' );
 
 		return true;
 	}
@@ -540,10 +541,10 @@ class Blog extends BsExtensionMW {
 
 			$oBlogItemView->setTitle( $sTitle );
 			$oBlogItemView->setRevId( $oArticle->getRevIdFetched() );
-			$oBlogItemView->setURL( $oTitle->getFullURL() );
-			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getFullURL( $aTalkParams ) );
+			$oBlogItemView->setURL( $oTitle->getLocalURL() );
+			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getLocalURL( $aTalkParams ) );
 			$oBlogItemView->setTalkCount( $iCount );
-			$oBlogItemView->setTrackbackUrl( $oTitle->getFullURL() );
+			$oBlogItemView->setTrackbackUrl( $oTitle->getLocalURL() );
 
 			if ( $bShowInfo ) {
 				$oFirstRevision = $oTitle->getFirstRevision();
@@ -554,7 +555,7 @@ class Blog extends BsExtensionMW {
 
 				if ( $iUserId != 0 ) {
 					$oAuthorUser = User::newFromId( $iUserId );
-					$oBlogItemView->setAuthorPage( $oAuthorUser->getUserPage()->getFullText() );
+					$oBlogItemView->setAuthorPage( $oAuthorUser->getUserPage()->getLocalURL() );
 					$oBlogItemView->setAuthorName( $this->mCore->getUserDisplayName( $oAuthorUser ) );
 				} else {
 					$oBlogItemView->setAuthorName( $oFirstRevision->getUserText() );

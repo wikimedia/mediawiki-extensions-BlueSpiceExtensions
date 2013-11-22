@@ -56,12 +56,10 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		});
 		this.ufBackgroundUpload = Ext.create('BS.form.UploadPanel', {
 			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
-			defaultValues: {
-				uploadFormName: 'background',
-				fieldLabel: mw.message('bs-flexiskin-labelBackgroundUpload').plain(),
-				labelWidth: 100,
-				resetButton: true
-			}
+			uploadFormName: 'background',
+			uploadFieldLabel: mw.message('bs-flexiskin-labelBackgroundUpload').plain(),
+			uploadLabelWidth: 100,
+			uploadResetButton: true
 		});
 		var rep_back_pos = Ext.create('Ext.data.Store', {
 			fields: ['repeating', 'val'],

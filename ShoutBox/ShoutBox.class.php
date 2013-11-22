@@ -82,8 +82,9 @@ class ShoutBox extends BsExtensionMW {
 			EXTINFO::NAME        => 'ShoutBox',
 			EXTINFO::DESCRIPTION => 'Adds a parser function for embedding your own shoutbox.',
 			EXTINFO::AUTHOR      => 'Karl Waldmannstetter, Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0', 
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -315,7 +316,7 @@ class ShoutBox extends BsExtensionMW {
 
 		$vLastCommit = $oRequest->getSessionData( 'MW::ShoutBox::lastCommit' );
 		if ( is_numeric( $vLastCommit ) && $vLastCommit + $iCommitTimeInterval > $iCurrentCommit ) {
-			return true;
+			return json_encode(array('success' => false, 'msg' => 'bs-shoutbox-too-early'));
 		}
 		$oRequest->setSessionData( 'MW::ShoutBox::lastCommit', $iCurrentCommit );
 
@@ -344,7 +345,7 @@ class ShoutBox extends BsExtensionMW {
 		); // TODO RBV (21.10.10 17:21): Send error / success to client.
 
 		wfRunHooks( 'BSShoutBoxAfterInsertShout', array( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) );
-		return self::getShouts( $iArticleId, 0 );
+		return json_encode(array('success' => true, 'msg' => self::getShouts( $iArticleId, 0 )));
 	}
 
 	/**

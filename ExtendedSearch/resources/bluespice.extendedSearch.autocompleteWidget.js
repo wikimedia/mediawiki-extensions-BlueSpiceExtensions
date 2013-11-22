@@ -11,24 +11,25 @@
  * @filesource
  */
 
-$(document).ready( function() {
+mw.loader.using( 'jquery.ui.autocomplete', function() {
 	var cache = {};
 	var lastXhr = {};
 
 	$( ".bs-autocomplete-field" ).autocomplete( {
-		position: { my: "right top",
-					at: "right bottom",
-					of: "#bs-searchbar",
-					offset: "-12 -1"
+		position: { 
+			my: "right top",
+			at: "right bottom",
+			of: "#bs-searchbar",
+			offset: "-12 -1"
 		},
 		source: function( req, setList ) {
 			if ( req.term in cache ) {
 				setList( cache[ req.term ] );
 			} else {
-					var url = bs.util.getAjaxDispatcherUrl(
-						'ExtendedSearch::getAutocompleteData',
-						[ encodeURIComponent( req.term ) ]
-					);
+				var url = bs.util.getAjaxDispatcherUrl(
+					'ExtendedSearch::getAutocompleteData',
+					[ encodeURIComponent( req.term ) ]
+				);
 				var lastXhr = $.ajax( {
 					url: url,
 					dataType: 'json',

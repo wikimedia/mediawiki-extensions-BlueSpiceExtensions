@@ -34,8 +34,9 @@ class RSSStandards extends BsExtensionMW {
 			EXTINFO::NAME        => 'RSSStandards',
 			EXTINFO::DESCRIPTION => 'builds rss feeds based on different options',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);

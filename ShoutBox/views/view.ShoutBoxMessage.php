@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: view.ShoutBoxMessage.php 6444 2012-09-10 13:04:48Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -136,14 +136,16 @@ class ViewShoutBoxMessage extends ViewBaseElement {
 			$aOut[] = '      <span class="bs-sb-meassage-head-small">'. $sUserRealName . '</span>';
 		}
 		$aOut[] = '    </div>';
-		$aOut[] = '    <div class="bs-sb-message-text">'. nl2br( $this->sMessage ) . '</div> ';
 		if ( isset( $this->sDate ) ) {
-			$aOut[] = '    <div class="bs-sb-message-foot">'. $this->sDate . '</div> ';
+			$aOut[] = '<div class="bs-sb-message-time">'. $this->sDate;
+			$aOut[] = '</div> ';
 		}
+		$aOut[] = '    <div class="bs-sb-message-text">'. nl2br( $this->sMessage );
+		$aOut[] = '    </div> ';
 		$aOut[] = '  </div>';
 		$sArchiveButton = '  <div class="bs-sb-archive"></div>';
 		//unset button if user doesn't have the right to archive
-		if ( !BsAdapterMW::checkAccessAdmission( 'archiveshoutbox' ) ) $sArchiveButton = '';
+		if ( !BsCore::checkAccessAdmission( 'archiveshoutbox' ) ) $sArchiveButton = '';
 		//if setting for "just allow own entries to be archived" is set + username != shoutbox-entry-username => unset button
 		if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) && $wgUser->getName() != $sUserName ) $sArchiveButton = '';
 

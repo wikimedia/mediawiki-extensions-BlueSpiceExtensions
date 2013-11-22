@@ -20,6 +20,8 @@ BsChecklist = {
 	checkboxStyle: 'color:transparent;width:12px;height:12px;border:0px;background-color:transparent;background-repeat:no-repeat;',
 	optionsLists: [],
 	menuButton: false,
+	lastCommand: "mceBsCheckbox",
+	lastCommandKey: false,
 	
 	init: function () {
 		/*alert('check');*/
@@ -232,18 +234,30 @@ $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e,
 	}
 });
 
-$(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, commands) {
+$(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, commands, menus) {
 	var t = plugin;
 	var ed = t.getEditor();
+	
+	
+	
+	menus.push({
+		menuId: 'bsChecklist',
+		menuConfig: {
+			text: mw.message('bs-checklist-menu_insert_checkbox').plain(),
+			cmd : 'mceBsChecklistLastCommand'
+		}
+	});
 	
 	var menuItems = [];
 	
 	menuItems.push({text: '-'});
 	
 	menuItems.push({
-		text: mw.message('bs-checklist-menu_insert_checkbox').plain(),
+		text: mw.message('bs-checklist-button_checkbox_title').plain(),
 		value: 'Checkbox',
 		onclick:function(){
+			BsChecklist.lastCommand = 'mceBsCheckbox';
+			BsChecklist.lastCommandKey = false;
 			ed.execCommand('mceBsCheckbox', false);
 		}
 	});
@@ -261,6 +275,8 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 				}],
 				onsubmit: function(e) {
 					// Insert content when the window form is submitted
+					BsChecklist.lastCommand = 'mceBsSelectbox';
+					BsChecklist.lastCommandKey = e.data.title;
 					ed.execCommand('mceBsSelectbox', false, e.data.title);
 				}
 			})
@@ -269,7 +285,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 	
 	ed.addButton('bscheckbox', {
 		title: mw.message('bs-checklist-button_checkbox_title').plain(),
-		cmd: 'mceBsCheckbox',
+		cmd: 'mceBsChecklistLastCommand',
 		type: 'splitbutton',
 		//icon: 'image',
 		menu: menuItems,
@@ -304,6 +320,8 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 							text: thekey,
 							value : thekey,
 							onclick:function(e){
+								BsChecklist.lastCommand = 'mceBsSelectbox';
+								BsChecklist.lastCommandKey = this.value();
 								ed.execCommand('mceBsSelectbox', false, this.value());
 							}
 						});
@@ -312,6 +330,10 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 			}
 		}
 
+	});
+
+	ed.addCommand('mceBsChecklistLastCommand', function(ui, value) {
+		ed.execCommand( BsChecklist.lastCommand, false, BsChecklist.lastCommandKey );
 	});
 
 	ed.addCommand('mceBsCheckbox', function(ui, value) {

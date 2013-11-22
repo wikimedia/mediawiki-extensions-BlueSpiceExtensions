@@ -52,8 +52,9 @@ class HideTitle extends BsExtensionMW {
 			EXTINFO::NAME        => 'HideTitle',
 			EXTINFO::DESCRIPTION => 'Tag to hide the title of an article.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);

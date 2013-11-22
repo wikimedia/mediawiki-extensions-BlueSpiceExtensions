@@ -55,8 +55,9 @@ class Avatars extends BsExtensionMW {
 			EXTINFO::NAME => 'Avatars',
 			EXTINFO::DESCRIPTION => 'Provide generic and individual user images.',
 			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION => 'default',
+			EXTINFO::STATUS => 'default',
+			EXTINFO::PACKAGE => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array('bluespice' => '2.22.0'));
 		$this->mExtensionKey = 'MW::Avatars';
@@ -106,6 +107,7 @@ class Avatars extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBSAdapterGetUserMiniProfileBeforeInit($oUserMiniProfileView, $oUser, $aParams) {
+		# Set anonymous image for anonymous or deleted users
 		if ($oUser->isAnon()) {
 			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::AnonUserImage'));
 			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
@@ -114,6 +116,12 @@ class Avatars extends BsExtensionMW {
 		# If user has set MW image or URL return immediately
 		if ($oUser->getOption('MW::UserImage'))
 			return true;
+		# Set default image in read-only mode or thumb creation might get triggered
+		if (wfReadOnly()) {
+			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DefaultUserImage'));
+			return true;
+		}
+		# Set or generate user's avatar
 		$oUserMiniProfileView->setOption('userimagesrc', $this->generateAvatar($oUser, $aParams));
 		return true;
 	}
@@ -128,6 +136,11 @@ class Avatars extends BsExtensionMW {
 		# If user has set MW image or URL return immediately
 		if ($oUser->getOption('MW::UserImage'))
 			return true;
+		# Set default image in read-only mode or thumb creation might get triggered
+		if (wfReadOnly()) {
+			$oView->setImagePath(BsConfig::get('MW::DefaultUserImage'));
+			return true;
+		}
 		$oView->setImagePath($this->generateAvatar($oUser));
 		return true;
 	}
@@ -138,6 +151,13 @@ class Avatars extends BsExtensionMW {
 	 * @return type
 	 */
 	public static function setUserImage($sUserImage) {
+		if (wfReadOnly()) {
+			global $wgReadOnly;
+			return FormatJson::encode(array(
+						'success' => false,
+						'message' => array(wfMessage('bs-readonly', $wgReadOnly)->escaped())
+			));
+		}
 		// check if string is URL or valid file
 		$oFile = wfFindFile($sUserImage);
 		$bIsImage = is_object($oFile) && $oFile->canRender();
@@ -163,6 +183,10 @@ class Avatars extends BsExtensionMW {
 	 * @return type
 	 */
 	public static function generateAvatarAjax() {
+		if (wfReadOnly()) {
+			global $wgReadOnly;
+			return new AjaxResponse(FormatJson::encode(wfMessage('bs-readonly', $wgReadOnly)->escaped()));
+		}
 		$oUser = RequestContext::getMain()->getUser();
 		self::unsetUserImage($oUser);
 		$oAvatars = BsExtensionManager::getExtension('Avatars');
@@ -210,7 +234,8 @@ class Avatars extends BsExtensionMW {
 					break;
 				case 'InstantAvatar':
 					require_once( __DIR__ . "/includes/lib/InstantAvatar/instantavatar.php" );
-					$oIA = new InstantAvatar(__DIR__ . '/includes/lib/InstantAvatar/Comfortaa-Regular.ttf', 18, $iAvatarDefaultSize, $iAvatarDefaultSize, 2, __DIR__ . '/includes/lib/InstantAvatar/glass.png');
+					$iFontSize = intval(18/40 * $iAvatarDefaultSize);
+					$oIA = new InstantAvatar(__DIR__ . '/includes/lib/InstantAvatar/Comfortaa-Regular.ttf', $iFontSize, $iAvatarDefaultSize, $iAvatarDefaultSize, 2, __DIR__ . '/includes/lib/InstantAvatar/glass.png');
 					if ($sUserRealName) {
 						preg_match_all('#(^| )(.)#u', $sUserRealName, $aMatches);
 						$sChars = join('', $aMatches[2]);
@@ -241,6 +266,12 @@ class Avatars extends BsExtensionMW {
 	}
 
 	public static function uploadFile() {
+		if (wfReadOnly()) {
+			global $wgReadOnly;
+			$oAjaxResponse = new AjaxResponse(FormatJson::encode(array('success' => false, 'msg' => wfMessage('bs-readonly', $wgReadOnly)->escaped())));
+			$oAjaxResponse->setContentType('text/html');
+			return $oAjaxResponse;
+		}
 		global $wgRequest, $wgUser;
 		self::unsetUserImage($wgUser);
 		$oAvatars = BsExtensionManager::getExtension('Avatars');

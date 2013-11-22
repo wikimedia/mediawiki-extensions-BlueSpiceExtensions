@@ -68,8 +68,9 @@ class SecureFileStore extends BsExtensionMW {
 			EXTINFO::NAME        => 'SecureFileStore',
 			EXTINFO::DESCRIPTION => 'Prevent unauthorized access to files and images.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Marc Reymann',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 							'bluespice'   => '2.22.0'

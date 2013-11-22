@@ -63,8 +63,9 @@ class InsertFile extends BsExtensionMW {
 			EXTINFO::NAME        => 'InsertFile',
 			EXTINFO::DESCRIPTION => 'Dialogbox to upload files and enter a file link.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 
 				'bluespice' => '2.22.0'
@@ -89,12 +90,15 @@ class InsertFile extends BsExtensionMW {
 
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite) {
 		// TODO SW: use string as parameter !!
-		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bsimage" );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 2, 0, "bsfile" );
+		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bsimage" );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 2, 0, "bsfile" );
 
-		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar1"] );
-		array_splice( $aConfigOverwrite["toolbar1"], $iIndexOverwrite + 1, 0, "bsimage" );
+		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar2"] );
+		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "bsimage" );
+		
+		// Add context menu entry
+		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsContextImage', $aConfigStandard["contextmenu"] );
 		return true;
 	}
 

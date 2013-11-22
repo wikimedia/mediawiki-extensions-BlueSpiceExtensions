@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'bs-flexiskin-extension-description' => 'Provides a page to manage flexiskins with customizing options.',
 	//SpecialPage
 	'flexiskin' => 'Flexiskin',
+	'bs-flexiskin-label' => 'Flexiskin',
 	'bs-flexiskin-defaultName' => 'Default',
 	'bs-flexiskin-defaultDesc' => 'Default Template for the Flexiskin',
 	'bs-flexiskin-error-skinExists' => 'A Flexiskin with this name already exists.',
@@ -67,6 +68,7 @@ $messages['de'] = array(
 	'bs-flexiskin-extension-description' => 'Stellt eine Seite zum Verwalten von Flexiskins mit Anpassungsoptionen zur Verfügung.',
 	//SpecialPage
 	'flexiskin' => 'Flexiskin',
+	'bs-flexiskin-label' => 'Flexiskin',
 	'bs-flexiskin-defaultName' => 'Standard',
 	'bs-flexiskin-defaultDesc' => 'Standard Vorlage für den Flexiskin',
 	'bs-flexiskin-error-skinExists' => 'Ein Flexiskin mit diesem Namen existiert bereits.',

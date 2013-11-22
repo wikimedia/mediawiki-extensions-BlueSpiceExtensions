@@ -17,8 +17,8 @@ $oTitle:
  &$bResult:
 
 'BsReview::checkStatus::afterMessage':
-$step.
- &$review_msg:
+ $step:
+ $oReviewView:
 
 'BsReview::buildDbQuery':
 'getVoteResponse':

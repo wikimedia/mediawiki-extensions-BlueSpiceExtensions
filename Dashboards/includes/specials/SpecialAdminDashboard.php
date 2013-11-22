@@ -13,6 +13,7 @@ class SpecialAdminDashboard extends BsSpecialPage {
 	public function execute( $sParameter ) {
 		parent::execute( $sParameter );
 
+		$this->checkForReadOnly();
 		$this->getAdminConfig();
 
 		$this->getOutput()->addHTML(
@@ -27,6 +28,7 @@ class SpecialAdminDashboard extends BsSpecialPage {
 	 * @return string HTML output to be displayed
 	 */
 	public function getForm() {
+		$this->checkForReadOnly();
 		$this->getAdminConfig();
 
 		$sForm = '<div id="bs-dashboards-admindashboard"></div>';
@@ -68,4 +70,18 @@ class SpecialAdminDashboard extends BsSpecialPage {
 
 		return true;
 	}
+
+	private function checkForReadOnly() {
+		if ( wfReadOnly() ) {
+			global $wgReadOnly;
+			$this->getOutput()->addHTML(
+				'<script>var wgReadOnly = true; alert("' . wfMessage( 'bs-readonly', $wgReadOnly )->escaped() . '");</script>'
+			);
+
+			return true;
+		}
+
+		return false;
+	}
+
 }

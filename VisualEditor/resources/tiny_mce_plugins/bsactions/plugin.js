@@ -26,6 +26,7 @@ var BsActions = function() {
 		_currentImagePath;
 
 	function handleDisabledState(ctrl, selector) {
+		var editor = tinyMCE.activeEditor;
 		function bindStateListener() {
 			ctrl.disabled(!editor.dom.getParent(editor.selection.getStart(), selector));
 
@@ -40,10 +41,39 @@ var BsActions = function() {
 			editor.on('init', bindStateListener);
 		}
 	}
+	
+	function handleVisibilityState(ctrl, selector) {
+		var editor = tinyMCE.activeEditor;
+		function bindStateListener() {
+			ctrl.visible(editor.dom.getParent(editor.selection.getStart(), selector));
+
+			editor.selection.selectorChanged(selector, function(state) {
+				ctrl.visible(state);
+			});
+		}
+
+		if (editor.initialized) {
+			bindStateListener();
+		} else {
+			editor.on('init', bindStateListener);
+		}
+	}
 
 	function postRender() {
 		/*jshint validthis:true*/
 		handleDisabledState(this, 'table');
+	}
+	
+	function postRenderVisibilityTable() {
+		handleVisibilityState(this, 'TABLE');
+	}
+	
+	function postRenderSave() {
+		var self = this;
+
+		tinyMCE.activeEditor.on('nodeChange', function() {
+			self.disabled(tinyMCE.activeEditor.getParam("save_enablewhendirty", true) && !tinyMCE.activeEditor.isDirty());
+		});
 	}
 
 	function postRenderCell() {
@@ -157,20 +187,102 @@ var BsActions = function() {
 		};
 		return info;
 	};
+	
+	/**
+	 * There is a incompatibility between fullscreen and autoresize plugin. So after changing
+	 * to fullscreen, we need to restore the scrollbar
+	 * @param {type} state
+	 * @returns {undefined}
+	 */
+	function  _addFullScreenScrollbar( state ) {
+		_editor.getDoc().documentElement.style.overflowY = "auto";
+	}
 
 	this.getEditor = function() {
 		return _editor;
 	}
 
 	this.init = function(ed, url) {
-		var buttons, commands;
+		var buttons, commands, menus;
 
 		_editor = ed;
 		_currentImagePath = mw.config.get('wgScriptPath')
 			+ '/extensions/BlueSpiceExtensions/VisualEditor/resources/tiny_mce_plugins/bsactions/images';
 
+		var headingsMenuItems = [];
+
+		headingsMenuItems.push({
+			text: mw.message('bs-visualeditor-bsactions-paragraph').plain(),
+			onclick : function() { ed.execCommand('FormatBlock', false, 'p'); }
+		});
+
+		headingsMenuItems.push({
+			text: mw.message('bs-visualeditor-bsactions-heading2').plain(),
+			onclick : function() { ed.execCommand('FormatBlock', false, 'h2'); }
+		});
+
+		headingsMenuItems.push({
+			text: mw.message('bs-visualeditor-bsactions-heading3').plain(),
+			onclick : function() { ed.execCommand('FormatBlock', false, 'h3'); }
+		});
+
+		headingsMenuItems.push({
+			text: mw.message('bs-visualeditor-bsactions-heading4').plain(),
+			onclick : function() { ed.execCommand('FormatBlock', false, 'h4'); }
+		});
+
+		headingsMenuItems.push({
+			text: mw.message('bs-visualeditor-bsactions-heading5').plain(),
+			onclick : function() { ed.execCommand('FormatBlock', false, 'h5'); }
+		});
+
+		headingsMenuItems.push({
+			text: mw.message('bs-visualeditor-bsactions-heading6').plain(),
+			onclick : function() { ed.execCommand('FormatBlock', false, 'h6'); }
+		});
+		
+		menus = [{
+				menuId: 'bstableprops',
+				menuConfig: {
+					text: 'Table properties',
+					context: 'table',
+					onPostRender:  postRenderVisibilityTable,
+					cmd: 'mceInsertTable'
+				}
+			}, {
+				menuId: 'bsdeletetable',
+				menuConfig: {
+					text: 'Delete table',
+					context: 'table',
+					onPostRender:  postRenderVisibilityTable,
+					cmd: 'mceTableDelete'
+				}
+			}, {
+				menuId: 'bscell',
+				menuItem: ed.menuItems['cell'],
+				menuOnPostRender: postRenderVisibilityTable
+			}, {
+				menuId: 'bsrow',
+				menuItem: ed.menuItems['row'],
+				menuOnPostRender: postRenderVisibilityTable
+			}, {
+				menuId: 'bscolumn',
+				menuItem: ed.menuItems['column'],
+				menuOnPostRender: postRenderVisibilityTable
+			}];
+	
 		//HINT: TinyMCE I18N seems not wo work. Using MediaWiki I18N
 		buttons = [{
+				buttonId: 'bssave',
+				buttonConfig: {
+					title: mw.message('bs-visualeditor-bsactions-save').plain(), //'bsactions.switchgui',
+					cmd: 'mceBsSave',
+					role: 'save',
+					icon: 'save',
+					disabled: true,
+					onPostRender: postRenderSave
+				}
+			}, {
 				buttonId: 'bsswitch',
 				buttonConfig: {
 					title: mw.message('bs-visualeditor-bsactions-switchgui').plain(), //'bsactions.switchgui',
@@ -207,47 +319,61 @@ var BsActions = function() {
 				buttonConfig: {
 					title: 'Insert row before',
 					cmd: 'mceTableInsertRowBefore',
-					image: _currentImagePath + '/hwtableinsertrowbefore.gif'
+					image: _currentImagePath + '/hwtableinsertrowbefore.gif',
+					onPostRender: postRenderVisibilityTable
 				}
 			}, {
 				buttonId: 'bstableaddrowafter',
 				buttonConfig: {
 					title: 'Insert row after',
 					cmd: 'mceTableInsertRowAfter',
-					image: _currentImagePath + '/hwtableinsertrowafter.gif'
+					image: _currentImagePath + '/hwtableinsertrowafter.gif',
+					onPostRender: postRenderVisibilityTable
 				}
 			}, {
 				buttonId: 'bstabledeleterow',
 				buttonConfig: {
 					title: 'Delete row',
 					cmd: 'mceTableDeleteRow',
-					image: _currentImagePath + '/hwtabledeleterow.gif'
+					image: _currentImagePath + '/hwtabledeleterow.gif',
+					onPostRender: postRenderVisibilityTable
 				}
 			}, {
 				buttonId: 'bstableaddcolumnbefore',
 				buttonConfig: {
 					title: 'Insert column before',
 					cmd: 'mceTableInsertColBefore',
-					image: _currentImagePath + '/hwtableinsertcolumnbefore.gif'
+					image: _currentImagePath + '/hwtableinsertcolumnbefore.gif',
+					onPostRender: postRenderVisibilityTable
 				}
 			}, {
 				buttonId: 'bstableaddcolumnafter',
 				buttonConfig: {
 					title: 'Insert column after',
 					cmd: 'mceTableInsertColAfter',
-					image: _currentImagePath + '/hwtableinsertcolumnafter.gif'
+					image: _currentImagePath + '/hwtableinsertcolumnafter.gif',
+					onPostRender: postRenderVisibilityTable
 				}
 			}, {
 				buttonId: 'bstabledeletecolumn',
 				buttonConfig: {
 					title: 'Delete column',
 					cmd: 'mceTableDeleteCol',
-					image: _currentImagePath + '/hwtabledeletecolumn.gif'
+					image: _currentImagePath + '/hwtabledeletecolumn.gif',
+					onPostRender: postRenderVisibilityTable
+				}
+			}, {
+				buttonId: 'bsheadings', // name to add to toolbar button list
+				buttonConfig: {
+					title : mw.message('bs-visualeditor-bsactions-headings').plain(), // tooltip text seen on mouseover
+					text : mw.message('bs-visualeditor-bsactions-headings').plain(),
+					menu : headingsMenuItems,
+					type: 'menubutton'
 				}
 			}];
 
 		commands = [{
-				commandId: 'mceSave',
+				commandId: 'mceBsSave',
 				commandCallback: function() {
 					_doSaveArticle();
 				}
@@ -269,12 +395,20 @@ var BsActions = function() {
 			}, {
 				commandId: 'mceBsLinebreak',
 				commandCallback: function() {
-					_editor.selection.setContent('<br />');
-				} //Inserts a Linebreak
+					_editor.selection.getBookmark();
+					//only insert if selection is collapsed
+					if ( _editor.selection.isCollapsed() ) {
+						var node =  _editor.dom.create( 'br' );
+						_editor.dom.insertAfter(node, _editor.selection.getNode());
+						//Place cursor to end
+						_editor.selection.select(node, false);
+						_editor.selection.collapse(false);
+					}
+				}	
 			}];
 
 		//Give other extensions the chance to alter buttons and commands
-		$(document).trigger('BsVisualEditorActionsInit', [this, buttons, commands]);
+		$(document).trigger('BsVisualEditorActionsInit', [this, buttons, commands, menus]);
 
 		// Register buttons
 		for (var i = 0; i < buttons.length; i++) {
@@ -288,7 +422,18 @@ var BsActions = function() {
 			ed.addCommand(command.commandId, command.commandCallback);
 		}
 
+		// Register menus
+		for (var j = 0; j < menus.length; j++) {
+			var menu = menus[j];
+			if ( menu.menuItem ) {
+				menu.menuItem.onPostRender = menu.menuOnPostRender;
+				ed.addMenuItem(menu.menuId, menu.menuItem);
+			} else {
+				ed.addMenuItem(menu.menuId, menu.menuConfig);
+			}
+		}
 		//ed.on('NodeChange', _onNodeChange);
+		ed.on( 'FullscreenStateChanged', _addFullScreenScrollbar );
 	};
 };
 

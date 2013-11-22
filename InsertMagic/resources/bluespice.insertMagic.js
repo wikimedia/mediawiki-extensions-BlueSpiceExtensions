@@ -82,6 +82,7 @@ var BsInsertMagicVisualEditorConnector = {
 	data: {},
 	getData: function() {
 		var me = BsInsertMagicVisualEditorConnector;
+		me.bookmark = me.caller.selection.getBookmark();
 		var node = me.caller.selection.getNode();
 		//me.selection = me.caller.selection.getBookmark();
 		me.data.id   = node.getAttribute('data-bs-id');
@@ -110,6 +111,7 @@ var BsInsertMagicVisualEditorConnector = {
 	
 	applyData: function(  sender, data ) {
 		var me = BsInsertMagicVisualEditorConnector;
+		me.caller.selection.moveToBookmark( me.bookmark );
 		//me.caller.selection.moveToBookmark(me.selection);
 		var selectedNode = me.caller.selection.getNode();
 		var code = data.code;

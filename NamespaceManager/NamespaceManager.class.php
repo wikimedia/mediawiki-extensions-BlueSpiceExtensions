@@ -6,6 +6,7 @@
  * Administration interface for adding, editing and deletig user groups and their rights
  * @copyright Copyright (c) 2013, HalloWelt! Medienwerkstatt GmbH, All rights reserved.
  * @author Sebastian Ulbricht
+ * @author Stefan Widmann <widmann@hallowelt.biz>
  * @version 2.22.0
  */
 /* Changelog
@@ -57,9 +58,10 @@ class NamespaceManager extends BsExtensionMW {
 		$this->mInfo = array(
 			EXTINFO::NAME => 'NamespaceManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deletig user groups and their rights',
-			EXTINFO::AUTHOR => 'Sebastian Ulbricht',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stefan Widmann',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 
 				'bluespice' => '2.22.0',
@@ -371,8 +373,7 @@ class NamespaceManager extends BsExtensionMW {
 			return json_encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
-				) );
-			return;
+			) );
 		}
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
@@ -438,11 +439,7 @@ class NamespaceManager extends BsExtensionMW {
 		}
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
-		global $wgContLang;
-
-		$aUserNamespaces = self::getUserNamespaces( true );
-
-		if ( empty( $iDoArticle ) ) $iDoArticle = 0;
+		$iNS = BsCore::sanitize( $iNS, '', BsPARAMTYPE::INT );
 
 		if ( !$iNS ) {
 			return json_encode( array(
@@ -450,6 +447,9 @@ class NamespaceManager extends BsExtensionMW {
 				'message' => wfMessage( 'bs-namespacemanager-no_valid_namespace_id' )->plain()
 				) );
 		}
+
+		global $wgContLang;
+		$aUserNamespaces = self::getUserNamespaces( true );
 		$aNamespacesToRemove = array( array( $iNS, 0 ) );
 		$sNamespace = $aUserNamespaces[ $iNS ][ 'name' ];
 
@@ -461,12 +461,12 @@ class NamespaceManager extends BsExtensionMW {
 		}
 
 		$bErrors = false;
+		if ( empty( $iDoArticle ) ) $iDoArticle = 0;
 
 		switch ( $iDoArticle ) {
 			case 0:
 				foreach ( $aNamespacesToRemove as $aNamespace ) {
 					if ( !NamespaceNuker::nukeNamespaceWithAllPages( $aNamespace[ 0 ] ) ) {
-
 						$bErrors = true;
 					} else {
 						$aUserNamespaces[ $aNamespace[ 0 ] ] = false;

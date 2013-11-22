@@ -49,7 +49,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 	 */
 	public function execute( $params = false ) {
 		global $wgBlueSpiceExtInfo;
-		
+
 		$aExtensionInfo = array();
 		foreach ( $this->mExtensions as $aExtension ) {
 
@@ -60,28 +60,30 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 					$aExtension[EXTINFO::NAME],
 					$this->getHelpdeskUrl($aExtension)
 				),
-				'version'     => $aExtension[EXTINFO::VERSION],
+				'version'     => ( $aExtension[EXTINFO::VERSION] === 'default' ) ? $wgBlueSpiceExtInfo['version'] : $aExtension[EXTINFO::VERSION],
+				'package'     => (  !isset( $aExtension[EXTINFO::PACKAGE] ) || $aExtension[EXTINFO::PACKAGE] === 'default' ) ? $wgBlueSpiceExtInfo['package'] : $aExtension[EXTINFO::PACKAGE],
 				'description' => $this->getExtensionDescription( $aExtension ),
-				'status'      => $aExtension[EXTINFO::STATUS],
+				'status'      => ( $aExtension[EXTINFO::STATUS] === 'default' ) ? $wgBlueSpiceExtInfo['status'] : $aExtension[EXTINFO::STATUS],
 			);
-			
+
 			$aExtensionInfo[] = $aExtensionInfoArray;
 		}
-		
+
 		RequestContext::getMain()->getOutput()->addJsConfigVars(
 				'aExtensionInfo', $aExtensionInfo
 		);
 		$sCreditsLink = ' (<a href="' . SpecialPage::getTitleFor( 'Credits' )->getFullURL() . '">Credits</a>)';
 
+		$sVersion = $wgBlueSpiceExtInfo['version'].( ( $wgBlueSpiceExtInfo['status'] !== 'stable' ) ? ' '.$wgBlueSpiceExtInfo['status'] : '' );
 		$aOut = array();
 		$aOut[] = '<table class="softwaretable">';
 		$aOut[] = '  <tr>';
-		$aOut[] = '    <th style="width:30%; height:18px;">Software</th>';
-		$aOut[] = '    <th>Version</th>';
+		$aOut[] = '    <th style="width:30%; height:18px;">'.wfMessage( 'bs-extensioninfo-software' )->plain().'</th>';
+		$aOut[] = '    <th>'.wfMessage( 'bs-extensioninfo-version' )->plain().'</th>';
 		$aOut[] = '  </tr>';
 		$aOut[] = '  <tr>';
 		$aOut[] = '    <td><a title="'.$wgBlueSpiceExtInfo['url'].'" href="'.$wgBlueSpiceExtInfo['url'].'">'.$wgBlueSpiceExtInfo['name'].'</a>'.$sCreditsLink.'</td>';
-		$aOut[] = '    <td>'.$wgBlueSpiceExtInfo['version'].'</td>';
+		$aOut[] = '    <td>'.$sVersion.'</td>';
 		$aOut[] = '  </tr>';
 		$aOut[] = '</table>';
 		$aOut[] = '<div id="bs-extensioninfo-grid"></div>';

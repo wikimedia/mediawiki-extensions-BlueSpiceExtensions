@@ -24,6 +24,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
+ * @author     Stefan Widmann <widmann@hallowelt.biz>
  * @version    2.22.0
 
  * @package    BlueSpice_Extensions
@@ -61,9 +62,10 @@ class InsertCategory extends BsExtensionMW {
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InsertCategory',
 			EXTINFO::DESCRIPTION => 'Dialogbox to enter a category link.',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Stefan Widmann',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -95,11 +97,11 @@ class InsertCategory extends BsExtensionMW {
 	 * @return boolean 
 	 */
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "hwinsertcategory" );
+		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "hwinsertcategory" );
 
-		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar1"] );
-		array_splice( $aConfigOverwrite["toolbar1"], $iIndexOverwrite + 1, 0, "hwinsertcategory" );
+		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar2"] );
+		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "hwinsertcategory" );
 		return true;
 	}
 	

@@ -55,8 +55,9 @@ class Checklist extends BsExtensionMW {
 			EXTINFO::NAME => 'Checklist',
 			EXTINFO::DESCRIPTION => 'Adds checklist functionality.',
 			EXTINFO::AUTHOR => 'Markus Glaser',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
@@ -82,8 +83,11 @@ class Checklist extends BsExtensionMW {
 	 * @return boolean always true to keep hook alife
 	 */
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bscheckbox" );
+		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bscheckbox" );
+		
+		// Add context menu entry
+		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsChecklist', $aConfigStandard["contextmenu"] );
 		return true;
 	}
 
@@ -158,7 +162,7 @@ class Checklist extends BsExtensionMW {
 		$this->getOutput()->addModuleStyles('ext.bluespice.checklist.styles');
 		$this->getOutput()->addModules('ext.bluespice.checklist');
 		
-		$aRows[1]['content'][70] = 'bs-editbutton-checklist';
+		$aRows[0]['dialogs'][60] = 'bs-editbutton-checklist';
 
 		$aButtonCfgs['bs-editbutton-checklist'] = array(
 			'tip' => wfMessage( 'bs-checklist-menu_insert_checkbox' )->plain(),

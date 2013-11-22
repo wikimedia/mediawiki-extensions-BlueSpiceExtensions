@@ -60,8 +60,9 @@ class FormattingHelp extends BsExtensionMW {
 			EXTINFO::NAME        => 'FormattingHelp',
 			EXTINFO::DESCRIPTION => 'Displays a help screen in the wiki edit view.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);

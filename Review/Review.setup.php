@@ -16,7 +16,6 @@ $wgResourceModules['ext.bluespice.review.styles'] = array(
 
 $wgResourceModules['ext.bluespice.review'] = array(
 	'scripts' => 'bluespice.review.js',
-	'position' => 'bottom',
 	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
 		'bs-review-title',
@@ -83,8 +82,7 @@ $wgAutoloadClasses['SpecialReview'] = __DIR__ . '/includes/specials/SpecialRevie
 $wgAutoloadClasses['BsReviewProcess'] = __DIR__ . '/includes/ReviewProcess.class.php';
 $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessStep.class.php';
 
-$wgAutoloadClasses['ViewReviewForm'] = __DIR__ . '/views/view.ReviewForm.php';
-$wgAutoloadClasses['ViewReviewStep'] = __DIR__ . '/views/view.ReviewStep.php';
+$wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.StateBarBodyElementReview.php';
 
 $wgSpecialPageGroups['Review'] = 'bluespice';
 

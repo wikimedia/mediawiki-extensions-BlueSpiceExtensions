@@ -230,6 +230,7 @@ class ViewBlogItem extends ViewBaseElement {
 		if ( $this->getOption( 'more' ) ) {
 			$aLinkOptions = array(
 			    'href'   => $this->mUrl,
+				'class'  => 'bs-blog-item-read-more',
 			    'title'  => wfMessage( 'bs-blog-read-more' )->plain()
 			);
 			if ( $this->getOption( 'moreInNewWindow' ) )
@@ -258,6 +259,7 @@ class ViewBlogItem extends ViewBaseElement {
 		// Comments
 		$sOut .= $this->renderLink( array(
 										'href'   => $this->mTalkUrl,
+										'class'  => 'bs-blog-item-comments',
 										'title'  => wfMessage( 'bs-blog-comments' )->plain() ),
 									wfMessage( 'bs-blog-comments' )->plain() )
 			.' ('.$this->mTalkCount.')';
@@ -268,6 +270,7 @@ class ViewBlogItem extends ViewBaseElement {
 			$sOut .= $this->renderLink(
 				array(
 					'href'   => $this->mTrackbackURL,
+					'class'  => 'bs-blog-item-trackback',
 					'title'  => wfMessage( 'bs-blog-trackback' )->plain()
 				),
 				wfMessage( 'bs-blog-trackback' )->plain()
@@ -281,6 +284,7 @@ class ViewBlogItem extends ViewBaseElement {
 				array(
 					'href'   => $this->mUrl,
 					'query'  => 'oldid='.$this->mRevId,
+					'class'  => 'bs-blog-item-permalink',
 					'title'  => wfMessage( 'bs-blog-permalink' )->plain()
 				),
 				wfMessage( 'bs-blog-permalink' )->plain()

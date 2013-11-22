@@ -157,6 +157,26 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.callParent(arguments);
 	},
 	
+	//We need to set the 
+	onStImageGridLoad: function( store, records, successful, eOpts ) {
+		//Only if we have a image selected
+		if( store.filters.items.length > 0 && records.length === 1 ) {
+			//We need to select the record but not to fire the 'select' 
+			//event. So this.processRatio will work
+			this.gdImages.getSelectionModel().select(0, false, true); 
+
+			//And only if the images has no width/height information
+			if( this.nbWidth.getValue() === null && this.nbHeight.getValue() === null ) {
+				var record = records[0];
+				this.isSetData = true;
+				this.nbWidth.setValue(+record.get('width'));
+				this.nbHeight.setValue(+record.get('height'));
+				this.isSetData = false;
+			}
+		}
+		this.callParent(arguments);
+	},
+	
 	onNbHeightChange: function( sender, newValue, oldValue, eOpts ) {
 		if (this.btnKeepRatio.pressed && !this.isSetData) {
 			this.nbWidth.setValue(this.processRatio(0, newValue));

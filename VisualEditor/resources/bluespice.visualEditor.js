@@ -16,7 +16,7 @@ $(window).scroll(function(){
 	var toobar = $('.mce-stack-layout-item').first();
 	if( toobar.length == 0 ) return;
 	if(offsetTop == 0){
-		offsetTop = $('#mw-content-text').position().top; //toobar.position().top;
+		offsetTop = $('#editform').position().top; //toobar.position().top;
 	}
 	
 	if( $(document).scrollTop() > offsetTop ) { //window.scrollY

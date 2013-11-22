@@ -62,8 +62,9 @@ class ExtensionInfo extends BsExtensionMW {
 			EXTINFO::NAME        => 'ExtensionInfo',
 			EXTINFO::DESCRIPTION => 'Information about active Hallo Welt! extensions.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE	 => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);

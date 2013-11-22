@@ -50,8 +50,9 @@ class GroupManager extends BsExtensionMW {
 			EXTINFO::NAME        => 'GroupManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deletig user groups and their rights',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -201,21 +202,10 @@ class GroupManager extends BsExtensionMW {
 				return json_encode( $result );
 			}
 
-			$wgGroupPermissions[$sNewGroup] = $wgGroupPermissions[$sGroup];
-			unset( $wgGroupPermissions[$sGroup] );
-			foreach ( $wgNamespacePermissionLockdown as $iNs => $aPermissions ) {
-				foreach ( $aPermissions as $sPermission => $aGroups ) {
-					$iIndex = array_search( $sGroup, $aGroups );
-					if ( $iIndex !== false ) {
-						array_splice( $wgNamespacePermissionLockdown[$iNs][$sPermission], $iIndex, 1, array( $sNewGroup ) );
-					}
-				}
+			wfRunHooks( "BSGroupManagerGroupNameChanged", array( $sGroup, $sNewGroup, &$result ) );
+			if ( $result['success'] === false ) {
+				return json_encode( $result );
 			}
-			$_SESSION['pmTemp'] = array(
-				'aGroupPermissions' => $wgGroupPermissions,
-				'aLockdown' => $wgNamespacePermissionLockdown
-			);
-			BsExtensionManager::getExtension( 'PermissionManager' )->setData( $output );
 		}
 
 		return $output;
@@ -249,25 +239,12 @@ class GroupManager extends BsExtensionMW {
 
 			$wgAdditionalGroups[$sGroup] = false;
 			BsExtensionManager::getExtension( 'GroupManager' )->saveData();
-			unset( $wgGroupPermissions[$sGroup] );
-
-			foreach ( $wgNamespacePermissionLockdown as $iNS => $aPermissions ) {
-				foreach ( $aPermissions as $sPermission => $aGroups ) {
-					$iIndex = array_search( $sGroup, $aGroups );
-					if ( $iIndex !== false ) {
-						if ( count( $aGroups ) == 1 ) {
-							unset( $wgNamespacePermissionLockdown[$iNS][$sPermission] );
-						} else {
-							array_splice( $wgNamespacePermissionLockdown[$iNS][$sPermission], $iIndex, 1 );
-						}
-					}
-				}
+			
+			wfRunHooks( "BSGroupManagerGroupDeleted", array( $sGroup, &$result ) );
+			if ( $result['success'] === false ) {
+				return json_encode( $result );
 			}
-			$_SESSION['pmTemp'] = array(
-				'aGroupPermissions' => $wgGroupPermissions,
-				'aLockdown' => $wgNamespacePermissionLockdown
-			);
-			BsExtensionManager::getExtension( 'PermissionManager' )->setData( $output );
+			
 		}
 
 		return $output;

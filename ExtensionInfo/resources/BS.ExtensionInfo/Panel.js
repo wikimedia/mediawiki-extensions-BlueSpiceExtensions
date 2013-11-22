@@ -6,9 +6,10 @@ Ext.define( 'BS.ExtensionInfo.Panel', {
 			fields:[ {name: 'name'},
 				{name: 'version'},
 				{name: 'description'},
-				{name: 'status'}
+				{name: 'status'},
+				{name: 'package'}
 			],
-			groupField:'status',
+			groupField:'package',
 			data: aExtensionInfo
 		});
 		
@@ -40,6 +41,13 @@ Ext.define( 'BS.ExtensionInfo.Panel', {
 				dataIndex: 'status',
 				renderer: this.renderStatus,
 				width: 75
+			}, {
+				id: 'package',
+				header: mw.message('bs-extensioninfo-headerPackage').plain(),
+				sortable: false,
+				dataIndex: 'package',
+				renderer: this.renderStatus,
+				width: 120
 			}
 		];
 		

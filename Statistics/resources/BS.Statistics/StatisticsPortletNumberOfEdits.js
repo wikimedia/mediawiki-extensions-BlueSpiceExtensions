@@ -1,3 +1,16 @@
+/**
+ * Statistics portlet number of edits
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage Statistics
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
 Ext.define('BS.Statistics.StatisticsPortletNumberOfEdits', {
 	extend: 'BS.Statistics.StatisticsPortlet',
 	portletConfigClass : 'BS.Statistics.StatisticsPortletConfig',

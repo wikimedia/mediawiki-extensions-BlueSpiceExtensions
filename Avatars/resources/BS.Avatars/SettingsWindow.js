@@ -13,11 +13,10 @@ Ext.define('BS.Avatars.SettingsWindow', {
 	initComponent: function() {
 		this.ufLogoUpload = Ext.create('BS.form.UploadPanel', {
 			url: bs.util.getAjaxDispatcherUrl('Avatars::uploadFile'),
-			defaultValues: {
-				uploadFormName: 'avatars',
-				fieldLabel: mw.message('bs-avatars-upload-label').plain(),
-				labelWidth: 50
-			}
+			uploadFormName: 'avatars',
+			//uploadFieldLabel: mw.message('bs-avatars-upload-label').plain(),
+			uploadLabelWidth: 50,
+			uploadButtonsInline: true
 		});
 		this.ufLogoUpload.on('upload', this.btnUploadClick, this);
 		this.fsUpload = Ext.create('Ext.form.FieldSet', {
@@ -29,33 +28,47 @@ Ext.define('BS.Avatars.SettingsWindow', {
 		});
 		this.tfUserImage = Ext.create('Ext.form.field.Text', {
 			name: 'uimg',
-			fieldLabel: mw.message('bs-avatars-userimage-label').plain(),
 			blankText: mw.message('bs-avatars-userimage-help').plain(),
 			emptyText: mw.user.options.get('MW::UserImage'),
 			allowBlank: false,
-			labelWidth: 150
+			labelWidth: 150,
+			padding: "0 5 0 0"
 		});
 		this.bUserImage = Ext.create('Ext.Button', {
-			text: mw.message('bs-avatars-userimage-save-button').plain()
+			text: mw.message('bs-avatars-userimage-save-button').plain(),
+			flex:0.5
 		});
 		this.bUserImage.on('click', this.tfUserImageClick, this);
 		this.fsUserImage = Ext.create('Ext.form.FieldSet', {
 			title: mw.message('bs-avatars-user-image-fieldset-title').plain(),
 			collapsible: true,
-			items: [
-				this.tfUserImage,
-				this.bUserImage
+			collapsed: true,
+			items: [{
+					xtype: 'fieldcontainer',
+					// fieldLabel: mw.message('bs-avatars-userimage-label').plain(),
+					layout: 'hbox',
+					defaults: {
+						flex: 1,
+						hideLabel: true
+					},
+					items: [
+						this.tfUserImage,
+						this.bUserImage
+					]
+				}
 			]
 		});
 		this.bGenerateNew = Ext.create('Ext.Button', {
-			text: mw.message('bs-avatars-generate-new-label').plain()
+			text: mw.message('bs-avatars-generate-new-label').plain(),
 					//height: 50,
-					//width: 50			
+					width: "100%",
+					margin: "0 0 10 0"
 		});
 		this.bGenerateNew.on('click', this.btnGenerateNewClick, this);
 		this.fsGenerateNew = Ext.create('Ext.form.FieldSet', {
 			title: mw.message('bs-avatars-auto-generate-fieldset-title').plain(),
 			collapsible: true,
+			collapsed: true,
 			items: [
 				this.bGenerateNew
 			]
@@ -110,10 +123,10 @@ Ext.define('BS.Avatars.SettingsWindow', {
 			bs.util.confirm('AMwarn2', {
 				text: mw.message('bs-avatars-warning-text').plain(),
 				title: mw.message('bs-avatars-warning-label').plain()},
-				{
-					ok: callback,
-					scope: this
-				}
+			{
+				ok: callback,
+				scope: this
+			}
 			);
 		}
 		else {

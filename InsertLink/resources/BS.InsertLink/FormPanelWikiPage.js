@@ -1,3 +1,15 @@
+/**
+ * InsertLink internal link panel
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage InsertLink
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
 
 Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 	extend: 'BS.InsertLink.FormPanelBase',
@@ -119,7 +131,8 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 		}
 
 		var code = ns + page + desc + ']]';
-		if( this.cbNamespace.store.getAt(index).get('ns') == 14 ) { //[[:Category:Title]]
+		// Escape Kategory namespace (people want to link to the category page, not assign a category
+		if( this.cbNamespace.getValue() && this.cbNamespace.store.getAt(index).get('ns') == 14 ) { //[[:Category:Title]]
 			code = ':' + code;
 		}
 		code = '[[' + code;

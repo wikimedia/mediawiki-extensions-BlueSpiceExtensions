@@ -177,8 +177,9 @@ class WikiAdmin extends BsExtensionMW {
 			EXTINFO::NAME        => 'WikiAdmin',
 			EXTINFO::DESCRIPTION => 'Central point of administration for BlueSpice',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Mathias Scheer',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);

@@ -10,7 +10,6 @@ $wgAutoloadClasses['SpecialFlexiskin'] = __DIR__ . '/includes/specials/SpecialFl
 $wgHooks['BSGetLogo'][] = "Flexiskin::onBSGetLogo";
 
 $wgSpecialPageGroups['Flexiskin'] = 'bluespice';
-$wgSpecialPages['Flexiskin'] = 'SpecialFlexiskin';
 
 $wgResourceModules['ext.bluespice.flexiskin'] = array(
     'scripts' => array(

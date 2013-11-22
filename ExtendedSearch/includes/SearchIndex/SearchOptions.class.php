@@ -521,7 +521,6 @@ class SearchOptions {
 		$this->aOptions['searchLimit']  = ( $searchLimit == 0 ) ? 25 : $searchLimit;
 		$this->aOptions['titleExists']  = $this->titleExists( $oSearchRequest->sInput );
 		$this->aOptions['format']       = $oSearchRequest->sFormat;
-		$this->aOptions['showpercent']  = BsConfig::get( 'MW::ExtendedSearch::ShowPercent' );
 
 		$this->aSearchOptions['fl']          = 'wiki,uid,hwid,type,title,overall_type,path,namespace,cat,score,ts,redirect,redirects';
 		$this->aSearchOptions['fq']          = $fq;

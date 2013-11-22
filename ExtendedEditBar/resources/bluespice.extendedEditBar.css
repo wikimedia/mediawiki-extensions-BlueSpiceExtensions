@@ -13,6 +13,12 @@ a.bs-button-32:hover {
 	background-color: #e2e2e2;
 }
 
+#toolbar {
+	display:none;
+	position: absolute;
+	left: -9999px;
+}
+
 #bs-extendededitbar {
 	background-color: #ebebeb;
 	border: 1px solid #9e9e9e;

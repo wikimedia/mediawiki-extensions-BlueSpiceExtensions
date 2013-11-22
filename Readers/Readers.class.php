@@ -52,8 +52,9 @@ class Readers extends BsExtensionMW {
 			EXTINFO::NAME        => 'Readers',
 			EXTINFO::DESCRIPTION => 'Creates a list of the people who read an article.',
 			EXTINFO::AUTHOR      => 'Stephan Muggli',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice' => '2.22.0',
@@ -117,10 +118,16 @@ class Readers extends BsExtensionMW {
 	 * @return boolean Always true
 	 */
 	public function insertTrace() {
-		if ( $this->checkContext() === false ) return true;
 		$oUser = $this->getUser();
 		$oTitle = $this->getTitle();
 		$oRevision = Revision::newFromTitle( $oTitle );
+
+		//When exporting a page using Special:UniversalExport the title is 
+		//for unknown circumstances "UniversalExport". Therefore checkContext 
+		//fails. This issue may be connected with PageContentProvider and 
+		//should be fixed there. But this is pretty much more complicated right
+		//now, so this workaround is implemented.
+		if ( $oRevision instanceof Revision === false ) return true;
 
 		$oDbw = wfGetDB( DB_MASTER );
 
@@ -130,7 +137,7 @@ class Readers extends BsExtensionMW {
 		$aNewRow['readers_user_name'] = $oUser->getName();
 		$aNewRow['readers_page_id'] = $oTitle->getArticleID();
 		$aNewRow['readers_rev_id'] = $oRevision->getId();
-		$aNewRow['readers_ts'] = wfTimestamp();
+		$aNewRow['readers_ts'] = wfTimestamp( TS_MW );
 
 		$oDbw->insert( 'bs_readers', $aNewRow );
 
@@ -290,7 +297,7 @@ class Readers extends BsExtensionMW {
 				$aTmpUser['user_page'] = $oTitle->getLocalURL();
 				$aTmpUser['user_readers'] = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() )->getLocalURL();
 				$aTmpUser['user_ts'] = $row->readers_ts;
-				$aTmpUser['user_date'] = date( "d.m.Y H.i", $row->readers_ts );
+				$aTmpUser['user_date'] = date( "d.m.Y H.i", wfTimestamp( TS_UNIX, $row->readers_ts ) );
 
 				$aUsers['users'][] = $aTmpUser;
 			}
@@ -317,6 +324,8 @@ class Readers extends BsExtensionMW {
 	 */
 	public function checkContext() {
 		global $wgTitle, $wgUser;
+
+		if ( wfReadOnly() ) return false;
 
 		if ( BsConfig::get( 'MW::Readers::Active' ) == false ) return false;
 

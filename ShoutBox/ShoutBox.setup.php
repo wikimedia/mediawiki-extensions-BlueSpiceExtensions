@@ -16,7 +16,8 @@ $wgResourceModules['ext.bluespice.shoutbox'] = array(
 	'messages' => array(
 		'bs-shoutbox-confirm_text',
 		'bs-shoutbox-confirm_title',
-		'bs-shoutbox-enterMessage'
+		'bs-shoutbox-enterMessage',
+		'bs-shoutbox-too-early'
 	),
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
@@ -31,6 +32,6 @@ $wgAjaxExportList[] = 'ShoutBox::getShouts';
 $wgAjaxExportList[] = 'ShoutBox::insertShout';
 $wgAjaxExportList[] = 'ShoutBox::archiveShout';
 
-$wgAutoloadClasses['ViewShoutBox']            = __DIR__ . '/includes/ViewShoutBox.php';
-$wgAutoloadClasses['ViewShoutBoxMessageList'] = __DIR__ . '/includes/ViewShoutBoxMessageList.php';
-$wgAutoloadClasses['ViewShoutBoxMessage']     = __DIR__ . '/includes/ViewShoutBoxMessage.php';
+$wgAutoloadClasses['ViewShoutBox']            = __DIR__ . '/views/view.ShoutBox.php';
+$wgAutoloadClasses['ViewShoutBoxMessageList'] = __DIR__ . '/views/view.ShoutBoxMessageList.php';
+$wgAutoloadClasses['ViewShoutBoxMessage']     = __DIR__ . '/views/view.ShoutBoxMessage.php';

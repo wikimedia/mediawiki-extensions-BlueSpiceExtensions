@@ -14,8 +14,9 @@
 
 .bs-sb-listitem {
 	border-bottom: 1px solid #999;
-	padding: 16px 0px;
+	padding: 10px 0px 5px 0;
 	width: 575px;
+	margin: 0;
 }
 
 .bs-sb-listitem:last-child {
@@ -25,18 +26,22 @@
 .bs-sb-message-head {
 	font-size: 12px;
 	color: #333;
+	line-height: 12px;
 }
 
 .bs-sb-message-text {
 	font-size: 12px;
 	color: #333;
-	margin-bottom: 6px;
 	word-wrap: break-word;
+	line-height: 18px;
+	padding: 5px 0 0 0;
 }
 
-.bs-sb-message-foot {
-	font-size: 10px;
+.bs-sb-message-time {
+	font-size: 12px;
 	color: #999;
+	line-height: 12px;
+	padding-top: 9px;
 }
 
 #bs-sb-form {
@@ -46,6 +51,7 @@
 
 #bs-sb-send {
 	float: right;
+	margin: 0;
 }
 
 #bs-sb-message {
@@ -61,7 +67,7 @@
 	float: left;
 }
 .bs-sb-message {
-	margin-left: 5px;
+	margin-left: 10px;
 	float: left;
 	width: 520px;
 }
@@ -84,4 +90,14 @@
 	/*@embed*/
 	background-image: url("images/bs-archive.png");
 	cursor: pointer;
+}
+#bs-sb-content ul{
+	margin: 0;
+}
+
+li.bs-sb-more a, li.bs-sb-more a:hover{
+	display: block;
+	background: url(images/shoutbox-more-btn.png) center center #dfdfdf no-repeat;
+	text-decoration: none;
+	margin-top: 10px;
 }

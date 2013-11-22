@@ -74,8 +74,9 @@ class ExtendedSearch extends BsExtensionMW {
 			EXTINFO::NAME => 'ExtendedSearch',
 			EXTINFO::DESCRIPTION => 'Apache Solr (http://lucene.apache.org/solr/) based search plugin to extend the search functionality',
 			EXTINFO::AUTHOR => 'Stephan Muggli, Mathias Scheer, Markus Glaser',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
@@ -101,7 +102,6 @@ class ExtendedSearch extends BsExtensionMW {
 
 		// max 32 chars with userlevel! 123 456789012345678 90123456789012 '::' counts as one char :-)
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefFuzziness', '0.5', BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-defduzziness' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::ShowPercent', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showpercent', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResults', 25, BsConfig::TYPE_INT|BsConfig::LEVEL_USER,  'bs-extendedsearch-pref-limitresultdef', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SearchFiles', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-searchfiles', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::JumpToTitle', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-jumptotitle', 'toggle' );

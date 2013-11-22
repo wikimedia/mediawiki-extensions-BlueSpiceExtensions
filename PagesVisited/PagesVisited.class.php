@@ -67,8 +67,9 @@ class PagesVisited extends BsExtensionMW {
 			EXTINFO::NAME        => 'PagesVisited',
 			EXTINFO::DESCRIPTION => 'Provides a personalized list of last visited pages.',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice'   => '2.22.0',
@@ -255,7 +256,7 @@ class PagesVisited extends BsExtensionMW {
 		}
 
 		// TODO RBV (04.07.11 15:02): Rework method -> implode() is a workaround for legacy code.
-		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',',$aNamespaces ), $iCurrentNamespaceId, 20, $sSortOrder );
+		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',',$aNamespaces ), $iCurrentNamespaceId, 19, $sSortOrder );
 		$sOut      = $oListView->execute();
 
 		if ( !( $oListView instanceof ViewTagError ) ) {

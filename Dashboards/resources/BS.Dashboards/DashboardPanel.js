@@ -45,35 +45,29 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 
 		this.callParent(arguments);
 	},
-
 	onPortletCatalogOk: function ( data, portlet ) {
 		var portlet = Ext.create( portlet.type, portlet.config );
 		portlet.on( 'configchange', this.onPortletConfigChange, this );
-		portlet.on( 'close', this.onPortletClose, this )
+		portlet.on( 'close', this.onPortletClose, this );
 		this.items.getAt(0).insert( 0, portlet );
 		this.savePortalConfig();
 	},
-
 	onPortletConfigChange: function( portlet, cfg ) {
 		this.savePortalConfig();
 	},
 	onPortletClose: function() {
 		this.savePortalConfig();
 	},
-			
 	onDrop: function() {
 		this.savePortalConfig();
 	},
-
 	onAfterRender: function( panel, layout, eOpts ) {
 		//Allow context menu
 		this.getEl().on( 'contextmenu', this.onContextMenu, this );
 	},
-
 	onContextMenu: function( event, element, eOpts ) {
 		event.preventDefault();
 	},
-
 	getPortalConfig: function() {
 		var portletConfig = [];
 		var numberOfColumns = this.items.length;
@@ -95,8 +89,11 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 
 		return portletConfig;
 	},
-
 	savePortalConfig: function() {
+		if ( typeof wgReadOnly !== "undefined" ) {
+			if ( wgReadOnly ) return;
+		}
+
 		var portletConfig = this.getPortalConfig();
 
 		Ext.Ajax.request({

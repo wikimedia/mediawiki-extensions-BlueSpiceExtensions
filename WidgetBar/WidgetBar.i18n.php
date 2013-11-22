@@ -21,7 +21,7 @@ $messages['en'] = array(
 	'prefs-WidgetBar'                          => 'Widgets',
 	'bs-widgetbar-pref-UserPageSubPageTitle'   => 'Subarticle that hosts the &quot;Widgetlist&quot;',
 	'bs-widgetbar-userpagesettings-headline'   => 'Widgets',
-	'bs-widgetbar-userpagesettings-link-title' => 'Click here to edit the content of the Widget flyout',
+	'bs-widgetbar-userpagesettings-link-title' => 'Click here to edit the content of the Widgetbar',
 	'bs-widgetbar-userpagesettings-link-text'  => 'Edit Widgets',
 	'bs-widget-container-tooltip'              => 'Widgets',
 	'bs-widget-flyout-heading'                 => 'Widgets'
@@ -33,14 +33,14 @@ $messages['de'] = array(
 	'prefs-WidgetBar'                          => 'Widgets',
 	'bs-widgetbar-pref-UserPageSubPageTitle'   => 'Unterartikel, in dem die &quot;Widgets&quot; verwaltet werden',
 	'bs-widgetbar-userpagesettings-headline'   => 'Widgets',
-	'bs-widgetbar-userpagesettings-link-title' => 'Klicke hier um den Inhalt des Widget-Flyouts zu bearbeiten',
+	'bs-widgetbar-userpagesettings-link-title' => 'Klicke hier um den Inhalt der Widgetbar zu bearbeiten',
 	'bs-widgetbar-userpagesettings-link-text'  => 'Widgets bearbeiten',
 	'bs-widget-container-tooltip'              => 'Widgets',
 	'bs-widget-flyout-heading'                 => 'Widgets'
 );
 
 $messages['de-formal'] = array(
-	'bs-widgetbar-userpagesettings-link-title' => 'Klicken Sie hier um den Inhalt des Widget-Flyouts zu bearbeiten',
+	'bs-widgetbar-userpagesettings-link-title' => 'Klicken Sie hier um den Inhalt der Widgetbar zu bearbeiten',
 	'bs-widgetbar-lastedits'                   => 'Ihre Änderungen'
 );
 

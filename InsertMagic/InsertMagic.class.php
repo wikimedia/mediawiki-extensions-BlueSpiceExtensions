@@ -120,8 +120,9 @@ class InsertMagic extends BsExtensionMW {
 			EXTINFO::NAME        => 'InsertMagic',
 			EXTINFO::DESCRIPTION => 'Provides a dialog box to add magicwords and tags to an articles content in edit mode.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice'    => '2.22.0',
@@ -163,11 +164,11 @@ class InsertMagic extends BsExtensionMW {
 	 * @return boolean always true to keep hook alife
 	 */
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bsmagic" );
+		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bsmagic" );
 
-		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar1"] );
-		array_splice( $aConfigOverwrite["toolbar1"], $iIndexOverwrite + 1, 0, "bsmagic" );
+		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar2"] );
+		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "bsmagic" );
 		return true;
 	}
 

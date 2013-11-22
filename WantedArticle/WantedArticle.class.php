@@ -73,8 +73,9 @@ class WantedArticle extends BsExtensionMW {
 			EXTINFO::NAME        => 'WantedArticle',
 			EXTINFO::DESCRIPTION => 'Add an article to the wanted article list.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -201,7 +202,7 @@ class WantedArticle extends BsExtensionMW {
 				$aTitleList = $this->getDefaultTitleList( $aWishList );
 		}
 		
-		if( BsConfig::get( 'MW::WantedArticle::Order' ) == 'ASC' ) {
+		if( BsConfig::get( 'MW::WantedArticle::Order' ) == 'DESC' ) {
 			$aTitleList = array_reverse( $aTitleList );
 		}
 		$iIncludeLimit = BsConfig::get( 'MW::WantedArticle::IncludeLimit' );

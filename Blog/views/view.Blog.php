@@ -94,8 +94,6 @@ class ViewBlog extends ViewBaseElement {
 
 		$aOut[] = '<div class="bs-blog-wrapper clearfix">';
 		$aOut[] = '  <form action="#" id="'.$sId.'form" action="get" onsubmit="hw_'.$sId.'_submit();return false;">';
-		$aOut[] = '    <div class="bs-blog-form-left"></div>';
-		$aOut[] = '    <div class="bs-blog-form-right"></div>';  
 		$aOut[] = '    <div class="bs-blog-form-center">';
 		$aOut[] = '      <h2 class="bs-blog-header">'.wfMessage( 'bs-blog-form-title-text' )->plain().'</h2>';
 		$aOut[] = '      <input id="'.$sId.'Input" class="bs-blog-newentry-input" name="newpage" type="text" value="'.wfMessage( 'bs-blog-form-inline-text' )->plain().'" onfocus="if (this.value==\''.wfMessage( 'bs-blog-form-inline-text' )->plain().'\') this.value=\'\';" />';

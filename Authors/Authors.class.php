@@ -72,8 +72,9 @@ class Authors extends BsExtensionMW {
 			EXTINFO::NAME        => 'Authors',
 			EXTINFO::DESCRIPTION => 'Displays authors of an article with image.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);

@@ -6,7 +6,7 @@ $wgExtensionMessagesFiles['WidgetBar'] = __DIR__ . '/WidgetBar.i18n.php';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => 'extensions/BlueSpiceExtensions/WidgetBar/resources/',
-	'remoteBasePath' => 'extensions/BlueSpiceExtensions/WidgetBar/resources'
+	'remoteExtPath' => 'BlueSpiceExtensions/WidgetBar/resources'
 );
 
 $wgResourceModules['ext.bluespice.widgetbar.style'] = array(

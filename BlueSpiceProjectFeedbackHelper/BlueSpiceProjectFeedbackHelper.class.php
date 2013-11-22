@@ -51,8 +51,9 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 			EXTINFO::NAME        => 'BlueSpiceProjectFeedbackHelper',
 			EXTINFO::DESCRIPTION => 'Provides a fixed \'submit bugs\' panel at the bottom of the user interface.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice' => '2.22.0'

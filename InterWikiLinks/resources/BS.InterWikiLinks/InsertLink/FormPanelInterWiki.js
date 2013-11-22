@@ -1,3 +1,16 @@
+/**
+ * InsertLink interwiki links Panel
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage InsertLink
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
 Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 	extend: 'BS.InsertLink.FormPanelBase',
 	linktype: 'internal_link',

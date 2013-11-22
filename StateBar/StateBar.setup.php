@@ -6,7 +6,7 @@ $wgExtensionMessagesFiles['StateBar'] = __DIR__.'/languages/StateBar.i18n.php';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => 'extensions/BlueSpiceExtensions/StateBar/resources/',
-	'remoteBasePath' => 'extensions/BlueSpiceExtensions/StateBar/resources'
+	'remoteExtPath' => 'BlueSpiceExtensions/StateBar/resources'
 );
 
 $wgResourceModules['ext.bluespice.statebar.style'] = array(

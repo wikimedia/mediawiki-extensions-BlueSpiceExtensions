@@ -8,6 +8,10 @@
 class PermissionTemplates {
 	protected static $_aTemplates = array();
 
+	/**
+	 * 
+	 * @return array
+	 */
 	public static function getAll() {
 		if(!count(self::$_aTemplates)) {
 			$oDb        = wfGetDB(DB_SLAVE);

@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: view.ShoutBox.php 9757 2013-06-17 08:18:53Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

@@ -66,8 +66,9 @@ class SmartList extends BsExtensionMW {
 			EXTINFO::NAME        => 'SmartList',
 			EXTINFO::DESCRIPTION => 'Displays the last five changes of the wiki in a list.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel, Patric Wirth, Stephan Muggli',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
 				'bluespice' => '2.22.0'

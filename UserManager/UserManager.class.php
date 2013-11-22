@@ -58,8 +58,9 @@ class UserManager extends BsExtensionMW {
 			EXTINFO::NAME        => 'UserManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting users.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -121,13 +122,13 @@ class UserManager extends BsExtensionMW {
 				foreach($aFilters as $oFilter) {
 					switch($oFilter->field) {
 						case 'user_name':
-							$aConditions[] = "user_name LIKE '".trim($oFilter->value)."%'";
+							$aConditions[] = "user_name LIKE '%".trim($oFilter->value)."%'";
 							break;
 						case 'user_real_name':
-							$aConditions[] = "user_real_name LIKE '".trim($oFilter->value)."%'";
+							$aConditions[] = "user_real_name LIKE '%".trim($oFilter->value)."%'";
 							break;
 						case 'user_email':
-							$aConditions[] = "user_email LIKE '".trim($oFilter->value)."%'";
+							$aConditions[] = "user_email LIKE '%".trim($oFilter->value)."%'";
 							break;
 						case 'groups':
 							$aTables[] = 'user_groups';

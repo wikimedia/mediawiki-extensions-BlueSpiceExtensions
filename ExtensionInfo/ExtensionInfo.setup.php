@@ -18,6 +18,7 @@ $wgResourceModules['ext.bluespice.extensioninfo'] = array(
 		'bs-extensioninfo-headerVersion',
 		'bs-extensioninfo-headerDescription',
 		'bs-extensioninfo-headerStatus',
+		'bs-extensioninfo-headerPackage',
 		'bs-extensioninfo-btnClearGrouping',
 		'bs-extensioninfo-groupingTemplateViewTextSingular',
 		'bs-extensioninfo-groupingTemplateViewTextPlural'

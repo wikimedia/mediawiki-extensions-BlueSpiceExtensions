@@ -78,8 +78,9 @@ class Statistics extends BsExtensionMW {
 			EXTINFO::NAME        => 'Statistics',
 			EXTINFO::DESCRIPTION => 'Statistics module for BlueSpice.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Patric Wirth',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);

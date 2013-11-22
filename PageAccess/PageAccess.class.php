@@ -53,8 +53,9 @@ class PageAccess extends BsExtensionMW {
 			EXTINFO::NAME => 'PageAccess',
 			EXTINFO::DESCRIPTION => 'Controls access on page level.',
 			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);

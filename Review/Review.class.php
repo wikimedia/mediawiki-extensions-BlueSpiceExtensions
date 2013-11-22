@@ -76,8 +76,9 @@ class Review extends BsExtensionMW {
 			EXTINFO::NAME => 'Review',
 			EXTINFO::DESCRIPTION => 'Adds workflow functionality to pages.',
 			EXTINFO::AUTHOR => 'Markus Glaser',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array(
 				'bluespice' => '2.22.0',
@@ -112,7 +113,7 @@ class Review extends BsExtensionMW {
 		$this->setHook('BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd');
 		$this->setHook('BeforePageDisplay');
 
-		$this->mCore->registerPermission('workflowview');
+		$this->mCore->registerPermission('workflowview', array('user'));
 		$this->mCore->registerPermission('workflowedit');
 		$this->mCore->registerPermission('workflowlist');
 
@@ -423,10 +424,12 @@ class Review extends BsExtensionMW {
 					$arrList[$row['rev_id']]['total'] = isset($arrList[$row['rev_id']]['total']) ? $arrList[$row['rev_id']]['total'] + 1 : 1;
 					break;
 				case '0':
+				//case '-3':
 					$arrList[$row['rev_id']]['rejected'] = isset($arrList[$row['rev_id']]['rejected']) ? $arrList[$row['rev_id']]['rejected'] + 1 : 1;
 					$arrList[$row['rev_id']]['total'] = isset($arrList[$row['rev_id']]['total']) ? $arrList[$row['rev_id']]['total'] + 1 : 1;
 					break;
 				case '1':
+				//case '-2':
 					$arrList[$row['rev_id']]['accepted'] = isset($arrList[$row['rev_id']]['accepted']) ? $arrList[$row['rev_id']]['accepted'] + 1 : 1;
 					$arrList[$row['rev_id']]['total'] = isset($arrList[$row['rev_id']]['total']) ? $arrList[$row['rev_id']]['total'] + 1 : 1;
 					break;
@@ -915,111 +918,87 @@ class Review extends BsExtensionMW {
 		$oRev = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
 		$pages = BsReviewProcess::listReviews( $oUser->getId() );
 
-		if ( $oRev !== false ) {
-			if ( $res = $oRev->isFinished() ) {
-				$text = wfMessage( 'bs-review-review_finished' )->plain();
-				if ( $oRev->isSequential() ) {
-					switch ( $res ) {
-						case 'date' :
-							$text .= wfMessage('bs-review-date_')->plain();
-							break;
-						case 'status' :
-							$text .= wfMessage('bs-review-agreed')->plain();
-							break;
-						case 'denied' :
-							$text .= wfMessage('bs-review-denied_')->plain();
-							break;
-					}
-				} else {
-					$res = $oRev->currentStatus();
-					$res = explode(';', $res);
-					if ($res[2]) {
-						$text .= "<br />" . wfMessage('bs-review-accepted')->plain() . ":" . $res[2];
-					}
-					if ($res[1]) {
-						$text .= "<br />" . wfMessage('bs-review-rejected')->plain() . ":" . $res[1];
-					}
-					if ($res[0]) {
-						$text .= "<br />" . wfMessage('bs-review-abstain')->plain() . ":" . $res[0];
-					}
+		if ( $oRev === false ) return true;
+
+		$oReviewView = new ViewStateBarBodyElementReview();
+		$oReviewView->setReview($oRev);
+
+		if ( $res = $oRev->isFinished() ) {
+			//$text = wfMessage( 'bs-review-review_finished' )->plain();
+			$oReviewView->setStatusText( wfMessage( 'bs-review-review_finished' )->plain() );
+			if ( $oRev->isSequential() ) {
+				switch ( $res ) {
+					case 'date' :
+						$text .= wfMessage('bs-review-date_')->plain();
+						break;
+					case 'status' :
+						$text .= wfMessage('bs-review-agreed')->plain();
+						break;
+					case 'denied' :
+						$text .= wfMessage('bs-review-denied_')->plain();
+						break;
 				}
 			} else {
-				$modetext = wfMessage( 'bs-review-unknown' )->plain();
-				switch ( $oRev->mode ) {
-					case BsReviewProcess::MODE_VOTE : $modetext = wfMessage( 'bs-review-vote' )->plain();
-						break;
-					case BsReviewProcess::MODE_SIGN : $modetext = wfMessage( 'bs-review-sign' )->plain();
-						break;
-					case BsReviewProcess::MODE_COMMENT : $modetext = wfMessage( 'bs-review-comment' )->plain();
-						break;
-					case BsReviewProcess::MODE_WORKFLOW : $modetext = wfMessage( 'bs-review-workflow' )->plain();
-						break;
+				$res = $oRev->currentStatus();
+				$res = explode(';', $res);
+				if ($res[2]) {
+					$text .= "<br />" . wfMessage('bs-review-accepted')->plain() . ":" . $res[2];
 				}
-
-				$text = wfMessage( 'bs-review-reviewed_till', $oRev->getStartdate(), $oRev->getEnddate(), $modetext )->plain();
-
-				// Show who created the workflow?
-				if ( BsConfig::get( 'MW::Review::ShowNameInTooltip' ) ) {
-					$user = User::newFromId( $oRev->owner );
-					$text.= wfMessage( 'bs-review-reviewed_till_extra', $user->getName() )->plain();
+				if ($res[1]) {
+					$text .= "<br />" . wfMessage('bs-review-rejected')->plain() . ":" . $res[1];
+				}
+				if ($res[0]) {
+					$text .= "<br />" . wfMessage('bs-review-abstain')->plain() . ":" . $res[0];
 				}
 			}
-
-			$aBodyViews['statebarbodyreview'] = $this->makeStateBarBodyReview( $text );
-		}
-
-
-		if ( $oRev ) {
-			// Flagged Revision: Only show the "not accepted" icon on the template page an not on the released page, which is accepted.
-			$obj = false;
-			$bResult = false;
-			wfRunHooks( 'checkPageIsReviewable', array( $oTitle, &$bResult ) );
-			if ( $bResult ) {
-				$obj = FlaggedRevision::newFromStable( $oTitle );
+			$oReviewView->setStatusReasonText( $text );
+		} else {
+			$modetext = wfMessage( 'bs-review-unknown' )->plain();
+			switch ( $oRev->mode ) {
+				case BsReviewProcess::MODE_VOTE : $modetext = wfMessage( 'bs-review-vote' )->plain();
+					break;
+				case BsReviewProcess::MODE_SIGN : $modetext = wfMessage( 'bs-review-sign' )->plain();
+					break;
+				case BsReviewProcess::MODE_COMMENT : $modetext = wfMessage( 'bs-review-comment' )->plain();
+					break;
+				case BsReviewProcess::MODE_WORKFLOW : $modetext = wfMessage( 'bs-review-workflow' )->plain();
+					break;
 			}
-		}
 
-		if ( count( $pages ) ) {
-			// check if current page is to be reviewed
-			if ( in_array( $oTitle->getArticleID(), $pages ) ) {
-				$step = $oRev->currentStep( $oUser->getId() );
-				$review_msg = '';
-				if ( is_object( $step ) ) {
+			$text = wfMessage( 'bs-review-reviewed_till', $oRev->getStartdate(), $oRev->getEnddate(), $modetext )->plain();
 
-					$sLink = '<a id="%s" href="#" class="%s" title="%s">%s</a>';
-
-					$review_msg = sprintf( 
-						$sLink,
-						'bs-review-ok',
-						'bs-icon-accept',
-						wfMessage('bs-review-i-agree')->plain(),
-						wfMessage('bs-review-i-agree')->plain()
-					);
-					$review_msg .= "&nbsp;&nbsp;";
-					$review_msg .= sprintf( 
-						$sLink,
-						'bs-review-dismiss',
-						'bs-icon-decline',
-						wfMessage('bs-review-i-dismiss')->plain(),
-						wfMessage('bs-review-i-dismiss')->plain()
-					);
-
-					wfRunHooks( 'BsReview::checkStatus::afterMessage', array( $step, &$review_msg ) );
-
-					if ( $step->comment ) $review_msg .= "<br/><i>" . wfMessage('bs-review-comment')->plain() . "</i> " . $step->comment;
-					
-					$review_msg .= "blabla:".XML::input(
-						'bs-review-voteresponse-comment', 
-						false, 
-						'', 
-						array('id' => 'bs-review-voteresponse-comment')
-					);
-				}
-				BsExtensionManager::setContext( 'MW::ReviewShow' );
-
-				$aBodyViews['statebarbodydoreview'] = $this->makeStateBarBodyDoReview( $review_msg );
+			// Show who created the workflow?
+			if ( BsConfig::get( 'MW::Review::ShowNameInTooltip' ) ) {
+				$user = User::newFromId( $oRev->owner );
+				$text.= wfMessage( 'bs-review-reviewed_till_extra', $user->getName() )->plain();
 			}
+			$oReviewView->setStatusText( $text );
 		}
+
+		// Flagged Revision: Only show the "not accepted" icon on the template page an not on the released page, which is accepted.
+		$obj = false;
+		$bResult = false;
+		wfRunHooks( 'checkPageIsReviewable', array( $oTitle, &$bResult ) );
+		if ( $bResult ) {
+			$obj = FlaggedRevision::newFromStable( $oTitle );
+		}
+
+		if ( empty( $pages ) || !in_array( $oTitle->getArticleID(), $pages ) ) {
+			$aBodyViews['statebarbodyreview'] = $oReviewView;
+			return true;
+		}
+
+		$step = $oRev->currentStep( $oUser->getId() );
+		//BsExtensionManager::setContext( 'MW::ReviewShow' );
+		if ( !is_object( $step ) ) return true;
+
+		$oReviewView->setVotable();
+		if ( !empty($step->comment) ) { 
+			$oReviewView->setComment( $step->comment );
+		}
+
+		wfRunHooks( 'BsReview::checkStatus::afterMessage', array( $step, $oReviewView ) );
+		$aBodyViews['statebarbodyreview'] = $oReviewView;
 		return true;
 	}
 
@@ -1040,34 +1019,6 @@ class Review extends BsExtensionMW {
 			//$oReviewView->setTextLink( $sArticleEditPageLink );
 			//$oReviewView->setTextLinkTitle( wfMsg( 'statebar-top' ) );
 		}
-		return $oReviewView;
-	}
-
-	/**
-	 * Renders status output to StatusBar body secion.
-	 * @param string $text HTML that should be displayed in Statebar body.
-	 * @return ViewStateBarBodyElement View that is part of StateBar.
-	 */
-	public function makeStateBarBodyReview( $text ) {
-		$oReviewView = new ViewStateBarBodyElement();
-		$oReviewView->setKey( 'Review' );
-		$oReviewView->setHeading( wfMessage( 'bs-review-statebar-body-header' )->plain() );
-		$oReviewView->setBodyText( $text );
-
-		return $oReviewView;
-	}
-
-	/**
-	 * Renders vote output to StatusBar body secion.
-	 * @param string $text HTML that should be displayed in Statebar body.
-	 * @return ViewStateBarBodyElement View that is part of StateBar.
-	 */
-	public function makeStateBarBodyDoReview( $text ) {
-		$oReviewView = new ViewStateBarBodyElement();
-		$oReviewView->setKey( 'DoReview' );
-		$oReviewView->setHeading( wfMessage( 'bs-review-statebar-body-do-review' ) );
-		$oReviewView->setBodyText( $text );
-
 		return $oReviewView;
 	}
 
@@ -1160,10 +1111,11 @@ class Review extends BsExtensionMW {
 			case "yes" :
 				$data['revs_status'] = 1;
 				$oReview->oLogger->addEntry('approve', $oTitle, '', null, $oUser);
-				if( empty($sComment) && !is_null($oNext) ) break;
+				if( empty($sComment) || is_null($oNext) || !$oNext ) break;
+				$sUserName = BsCore::getUserDisplayName( $oUser );
 				$dbw->update( 
 					'bs_review_steps', 
-					array( 'revs_comment' => $oNext->revs_comment."<br />$sComment" ), 
+					array( 'revs_comment' => $oNext->revs_comment."<br /><b>$sUserName: </b>$sComment" ), 
 					array( 'revs_id' => $oNext->revs_id )
 				);
 				break;
@@ -1246,7 +1198,17 @@ class Review extends BsExtensionMW {
 		//if( $out->getTitle()->userCan('workflowread') == false ) return true;
 
 		$out->addModules( 'ext.bluespice.review' );
-		
+
+		//PW TODO: find better way
+		//this always was loaded too late, no matter what dependency or position
+		$out->addScript(
+			'<script>'.
+				"$(document).on( 'BsStateBarRegisterToggleClickElements', function(event, aRegisteredToggleClickElements) {".
+					"aRegisteredToggleClickElements.push($('#sb-Review'));".
+				"});".
+			'</script>'
+		);
+
 		$bUserCanEdit = $out->getTitle()->userCan( 'workflowedit' );
 		$out->addJsConfigVars( 'bsReviewUserCanEdit', $bUserCanEdit );
 

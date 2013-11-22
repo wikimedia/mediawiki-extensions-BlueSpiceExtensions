@@ -16,7 +16,8 @@ $messages = array();
 
 $messages['en'] = array(
 	'prefs-Readers'    => 'Readers of this article',
-	'bs-readers-title' => '{{PLURAL:$1|Reader|Readers}} of this article',
+	'bs-readers-extension-description' => 'Shows readers of an article.',
+	'bs-readers-title' => '{{PLURAL:$1|Reader|Readers}}',
 	'bs-readers-pref-upordown' => 'Show Readers below article Headline',
 	'specialreaders' => 'Readers',
 	'specialreaders-user' => 'Read',
@@ -41,7 +42,8 @@ $messages['en'] = array(
 
 $messages['de'] = array(
 	'prefs-Readers'    => 'Besucher dieses Artikels',
-	'bs-readers-title' => 'Besucher dieses Artikels',
+	'bs-readers-extension-description' => 'Zeigt die Leser eines Artikels an.',
+	'bs-readers-title' => 'Besucher',
 	'bs-readers-pref-upordown' => 'Besucher unterhalb der Artikelüberschrift anzeigen',
 	'specialreaders' => 'Besucher',
 	'specialreaders-user' => 'Besucht',

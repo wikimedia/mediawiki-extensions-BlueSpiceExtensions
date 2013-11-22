@@ -97,8 +97,9 @@ class CSyntaxHighlight extends BsExtensionMW {
 			EXTINFO::NAME        => 'CSyntaxHighlight',
 			EXTINFO::DESCRIPTION => 'Adds customizable syntax highlighting functionality to BlueSpice. Based on SyntaxHighlighter by Alex Gorbatchev (http://alexgorbatchev.com/SyntaxHighlighter/)',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice' => '2.22.0'
