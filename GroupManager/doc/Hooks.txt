@@ -1,0 +1,10 @@
+==Groupmanager.class.php==
+
+'BSGroupManagerGroupNameChanged':
+$sGroup:
+$sNewGroup:
+&$result:
+
+'BSGroupManagerGroupDeleted':
+$sGroup:
+&$result:

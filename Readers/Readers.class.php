@@ -92,8 +92,9 @@ class Readers extends BsExtensionMW {
 	 * @return boolean Always true
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
-		global $wgExtNewTables;
+		global $wgExtNewTables, $wgExtNewFields;
 		$wgExtNewTables[] = array( 'bs_readers', __DIR__.DS.'db'.DS.'readers.sql' );
+		$wgExtNewFields[] = array( 'bs_readers', 'readers_ts', __DIR__.DS.'db/mysql/readers.patch.readers_ts.sql' );
 
 		return true;
 	}
@@ -137,7 +138,7 @@ class Readers extends BsExtensionMW {
 		$aNewRow['readers_user_name'] = $oUser->getName();
 		$aNewRow['readers_page_id'] = $oTitle->getArticleID();
 		$aNewRow['readers_rev_id'] = $oRevision->getId();
-		$aNewRow['readers_ts'] = wfTimestamp( TS_MW );
+		$aNewRow['readers_ts'] = wfTimestampNow();
 
 		$oDbw->insert( 'bs_readers', $aNewRow );
 

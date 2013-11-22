@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS /*_*/bs_readers (
 	readers_user_name varbinary(255) NOT NULL DEFAULT '',
 	readers_page_id INT(30) UNSIGNED NOT NULL,
 	readers_rev_id INT(30) UNSIGNED NOT NULL,
-	readers_ts INT(30) UNSIGNED NOT NULL
+	readers_ts varchar(16) NOT NULL DEFAULT ''
 ) /*$wgDBTableOptions*/
 COMMENT='BlueSpice: Readers - Stores information on users activities';
 
