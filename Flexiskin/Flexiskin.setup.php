@@ -44,7 +44,7 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'bs-flexiskin-repeat-x',
 	'bs-flexiskin-repeat-y',
 	'bs-flexiskin-repeat',
-	'bs-flexiskin-labelCompleteColor',
+	'bs-flexiskin-labelCustomBackgroundColor',
 	'bs-flexiskin-labelNavigation',
 	'bs-flexiskin-no-img',
 	'bs-flexiskin-headerPosition',

@@ -20,6 +20,7 @@ body.mce-content-body {
 	text-align:left;
 	min-width: 0px;
 	background: none !important;
+	padding: 0 !important;
 }
 
 td.mceToolbar {

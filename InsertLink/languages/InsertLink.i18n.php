@@ -21,7 +21,7 @@ $messages['de'] = array(
 	'bs-insertlink-pref-ShowFilelink' => 'Links auf lokale Dateien erlauben',
 	//Javascript
 
-	'bs-insertlink-button_title' => 'Link einfügen/bearbeiten.',
+	'bs-insertlink-button_title' => 'Link einfügen/bearbeiten',
 	'bs-insertlink-dlg_title' => 'Link einfügen',
 	'bs-insertlink-tab_wiki_page' => 'Wiki-Seite',
 	'bs-insertlink-tab_external_link' => 'Externer Link',

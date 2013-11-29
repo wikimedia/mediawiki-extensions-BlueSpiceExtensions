@@ -66,7 +66,7 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 		this.tfNamespaceName.setValue( this.currentData.name );
 		this.fCbSubpages.setValue( this.currentData.subpages );
 		this.fCbSearchable.setValue( this.currentData.searchable );
-		this.fCbEvaluable.setValue( this.currentData.evaluable );
+		this.fCbEvaluable.setValue( this.currentData.content );
 	},
 	getData: function() {
 		this.selectedData.id = this.currentData.id;

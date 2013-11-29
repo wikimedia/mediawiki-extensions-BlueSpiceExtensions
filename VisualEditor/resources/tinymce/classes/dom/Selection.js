@@ -55,17 +55,24 @@ define("tinymce/dom/Selection", [
 	Selection.prototype = {
 		/**
 		 * Move the selection cursor range to the specified node and offset.
+		 * If there is no node specified it will move it to the first suitable location within the body.
 		 *
 		 * @method setCursorLocation
-		 * @param {Node} node Node to put the cursor in.
-		 * @param {Number} offset Offset from the start of the node to put the cursor at.
+		 * @param {Node} node Optional node to put the cursor in.
+		 * @param {Number} offset Optional offset from the start of the node to put the cursor at.
 		 */
 		setCursorLocation: function(node, offset) {
 			var self = this, rng = self.dom.createRng();
-			rng.setStart(node, offset);
-			rng.setEnd(node, offset);
-			self.setRng(rng);
-			self.collapse(false);
+
+			if (!node) {
+				self._moveEndPoint(rng, self.editor.getBody(), true);
+				self.setRng(rng);
+			} else {
+				rng.setStart(node, offset);
+				rng.setEnd(node, offset);
+				self.setRng(rng);
+				self.collapse(false);
+			}
 		},
 
 		/**
@@ -680,34 +687,6 @@ define("tinymce/dom/Selection", [
 			// Clear stored range set by FocusManager
 			self.lastFocusBookmark = null;
 
-			function setPoint(node, start) {
-				var walker = new TreeWalker(node, node);
-
-				do {
-					// Text node
-					if (node.nodeType == 3 && trim(node.nodeValue).length !== 0) {
-						if (start) {
-							rng.setStart(node, 0);
-						} else {
-							rng.setEnd(node, node.nodeValue.length);
-						}
-
-						return;
-					}
-
-					// BR element
-					if (node.nodeName == 'BR') {
-						if (start) {
-							rng.setStartBefore(node);
-						} else {
-							rng.setEndBefore(node);
-						}
-
-						return;
-					}
-				} while ((node = (start ? walker.next() : walker.prev())));
-			}
-
 			if (node) {
 				if (!content && self.controlSelection.controlSelect(node)) {
 					return;
@@ -719,8 +698,8 @@ define("tinymce/dom/Selection", [
 
 				// Find first/last text node or BR element
 				if (content) {
-					setPoint(node, 1);
-					setPoint(node);
+					self._moveEndPoint(rng, node, true);
+					self._moveEndPoint(rng, node);
 				}
 
 				self.setRng(rng);
@@ -959,7 +938,7 @@ define("tinymce/dom/Selection", [
 		getNode: function() {
 			var self = this, rng = self.getRng(), elm;
 			var startContainer = rng.startContainer, endContainer = rng.endContainer;
-			var startOffset = rng.startOffset, endOffset = rng.endOffset;
+			var startOffset = rng.startOffset, endOffset = rng.endOffset, root = self.dom.getRoot();
 
 			function skipEmptyTextNodes(node, forwards) {
 				var orig = node;
@@ -973,7 +952,7 @@ define("tinymce/dom/Selection", [
 
 			// Range maybe lost after the editor is made visible again
 			if (!rng) {
-				return self.dom.getRoot();
+				return root;
 			}
 
 			if (rng.setStart) {
@@ -1021,7 +1000,14 @@ define("tinymce/dom/Selection", [
 				return elm;
 			}
 
-			return rng.item ? rng.item(0) : rng.parentElement();
+			elm = rng.item ? rng.item(0) : rng.parentElement();
+
+			// IE 7 might return elements outside the iframe
+			if (elm.ownerDocument !== self.win.document) {
+				elm = root;
+			}
+
+			return elm;
 		},
 
 		getSelectedBlocks: function(startElm, endElm) {
@@ -1310,13 +1296,110 @@ define("tinymce/dom/Selection", [
 			return self;
 		},
 
+		getScrollContainer: function() {
+			var scrollContainer, node = this.dom.getRoot();
+
+			while (node && node.nodeName != 'BODY') {
+				if (node.scrollHeight > node.clientHeight) {
+					scrollContainer = node;
+					break;
+				}
+
+				node = node.parentNode;
+			}
+
+			return scrollContainer;
+		},
+
 		scrollIntoView: function(elm) {
-			var y, viewPort, self = this, dom = self.dom;
+			var y, viewPort, self = this, dom = self.dom, root = dom.getRoot(), viewPortY, viewPortH;
+
+			function getPos(elm) {
+				var x = 0, y = 0;
+
+				var offsetParent = elm;
+				while (offsetParent && offsetParent.nodeType) {
+					x += offsetParent.offsetLeft || 0;
+					y += offsetParent.offsetTop || 0;
+					offsetParent = offsetParent.offsetParent;
+				}
+
+				return {x: x, y: y};
+			}
+
+			if (root.nodeName != 'BODY') {
+				var scrollContainer = self.getScrollContainer();
+				if (scrollContainer) {
+					y = getPos(elm).y - getPos(scrollContainer).y;
+					viewPortH = scrollContainer.clientHeight;
+					viewPortY = scrollContainer.scrollTop;
+					if (y < viewPortY || y + 25 > viewPortY + viewPortH) {
+						scrollContainer.scrollTop = y < viewPortY ? y : y - viewPortH + 25;
+					}
+
+					return;
+				}
+			}
 
 			viewPort = dom.getViewPort(self.editor.getWin());
 			y = dom.getPos(elm).y;
-			if (y < viewPort.y || y + 25 > viewPort.y + viewPort.h) {
-				self.editor.getWin().scrollTo(0, y < viewPort.y ? y : y - viewPort.h + 25);
+			viewPortY = viewPort.y;
+			viewPortH = viewPort.h;
+			if (y < viewPort.y || y + 25 > viewPortY + viewPortH) {
+				self.editor.getWin().scrollTo(0, y < viewPortY ? y : y - viewPortH + 25);
+			}
+		},
+
+		_moveEndPoint: function(rng, node, start) {
+			var root = node, walker = new TreeWalker(node, root);
+			var nonEmptyElementsMap = this.dom.schema.getNonEmptyElements();
+
+			do {
+				// Text node
+				if (node.nodeType == 3 && trim(node.nodeValue).length !== 0) {
+					if (start) {
+						rng.setStart(node, 0);
+					} else {
+						rng.setEnd(node, node.nodeValue.length);
+					}
+
+					return;
+				}
+
+				// BR/IMG/INPUT elements
+				if (nonEmptyElementsMap[node.nodeName]) {
+					if (start) {
+						rng.setStartBefore(node);
+					} else {
+						if (node.nodeName == 'BR') {
+							rng.setEndBefore(node);
+						} else {
+							rng.setEndAfter(node);
+						}
+					}
+
+					return;
+				}
+
+				// Found empty text block old IE can place the selection inside those
+				if (Env.ie && Env.ie < 11 && this.dom.isBlock(node) && this.dom.isEmpty(node)) {
+					if (start) {
+						rng.setStart(node, 0);
+					} else {
+						rng.setEnd(node, 0);
+					}
+
+					return;
+				}
+			} while ((node = (start ? walker.next() : walker.prev())));
+
+			// Failed to find any text node or other suitable location then move to the root of body
+			if (root.nodeName == 'BODY') {
+				if (start) {
+					rng.setStart(root, 0);
+				} else {
+					rng.setEnd(root, root.childNodes.length);
+				}
 			}
 		},
 

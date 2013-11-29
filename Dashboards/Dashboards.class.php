@@ -88,7 +88,7 @@ class Dashboards extends BsExtensionMW {
 		$this->setHook( 'PersonalUrls' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
-		$this->setHook( 'BSInsertMagicAjaxGetData' );
+		//$this->setHook( 'BSInsertMagicAjaxGetData' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

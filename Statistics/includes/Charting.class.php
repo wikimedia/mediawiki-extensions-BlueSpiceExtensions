@@ -110,18 +110,19 @@ class BsCharting {
 		$data = $oDiagram->getData();
 		$label = $oDiagram->getListLabel();
 		$out = '';
-		$out .= "<div style='font-size:14px;font-weight:bold;text-align:center;'>".$oDiagram->getTitle()."</div>";
-		$out .= "<div style='font-size:12px;text-align:center;'>".$oDiagram->getDescription()."</div>";
-		$out .= "<div style='font-size:11px;text-align:left;'>";
-		$out .= $oDiagram->getFilterText();
-		$out .= "<br>n = ".count( $data );
-		$out .= "</div>";
-		$out .= "<table width='80%' id='ExtendedSearchTable' border='0' cellspacing='0' cellpadding='4' class='sortable'>";
+		//$out .= "<div style='font-size:14px;font-weight:bold;text-align:center;'>".$oDiagram->getTitle()."</div>";
+		//$out .= "<div id='StatisticsTableViewHeader'>".$oDiagram->getTitle()."</div>";
+		//$out .= "<div style='font-size:12px;text-align:center;'>".$oDiagram->getDescription()."</div>";
+		//$out .= "<div style='font-size:11px;text-align:left;'>";
+		//$out .= $oDiagram->getFilterText();
+		//$out .= "<br>n = ".count( $data );
+		//$out .= "</div>";
+		$out .= "<table width='80%' id='StatisticsTableView' border='0' cellspacing='0' cellpadding='4' class='sortable'>";
 		if ($label) {
-			$out .= '<tr>';
+			$out .= '<thead><tr>';
 			foreach ($label as $col)
 				$out .= '<th>'.$col.'</th>';
-			$out .= '</tr>';
+			$out .= '</tr></thead>';
 		}
 
 		foreach ($data as $value)

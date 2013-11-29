@@ -50,7 +50,8 @@ class PermissionManager extends BsExtensionMW {
 		"importupload", "ipblock-exempt", "move-rootuserpages",
 		"override-export-depth", "passwordreset", "proxyunbannable",
 		"sendemail", "siteadmin", "unblockself", "userrights",
-		"userrights-interwiki", "writeapi", "skipcaptcha", "renameuser"
+		"userrights-interwiki", "writeapi", "skipcaptcha", "renameuser", "viewfiles",
+		"searchfiles", "wikiadmin"
 	);
 	protected static $aProtectedPermissions = array(
 		'read', 'siteadmin', 'wikiadmin'
@@ -439,6 +440,11 @@ class PermissionManager extends BsExtensionMW {
 		$aNamespaces = self::getAllNamespaces();
 		$aNamespaces[0] = wfMessage('bs-permissionmanager-main-namespaces')->plain();
 
+		$aRealPermissionMaps = array();
+		foreach ($aGroups as $sGroup) {
+			$aRealPermissionMaps[$sGroup] = self::checkRealPermissions($sGroup, $aPermissions);
+		}
+
 		foreach ($aPermissions as $sPermission) {
 			$aDataSet = array(
 				'permission' => $sPermission,
@@ -452,7 +458,8 @@ class PermissionManager extends BsExtensionMW {
 					$sDisplayName = $sGroup;
 				}
 				$aSet = array(
-					'group' => $sDisplayName
+					'group' => $sDisplayName,
+					'group_value' => $sGroup
 				);
 
 				if (isset($wgGroupPermissions[$sGroup]) && isset($wgGroupPermissions[$sGroup][$sPermission]) && $wgGroupPermissions[$sGroup][$sPermission]) {
@@ -460,20 +467,33 @@ class PermissionManager extends BsExtensionMW {
 				} else {
 					$aSet['global'] = false;
 				}
+				
+				$permitted = $aSet['global'];
+				if (!in_array($sGroup, array('*', 'user'))) {
+					if (!$permitted) {
+						if (isset($wgGroupPermissions['user'][$sPermission])) {
+							$permitted = $wgGroupPermissions['user'][$sPermission];
+						}
+					}
+					if (!$permitted) {
+						if (isset($wgGroupPermissions['*'][$sPermission])) {
+							$permitted = $wgGroupPermissions['*'][$sPermission];
+						}
+					}
+				}
+				$aSet['global_allowed'] = $permitted;
 
 				foreach ($aNamespaces as $iNsId => $sNsName) {
 					if (!$aSet['global']) {
 						$aSet[$sNsName] = false;
 					} else {
-						if (isset($wgNamespacePermissionLockdown[$iNsId])
-								&& isset($wgNamespacePermissionLockdown[$iNsId][$sPermission])
-								&& $wgNamespacePermissionLockdown[$iNsId][$sPermission]
-								&& in_array($sGroup, $wgNamespacePermissionLockdown[$iNsId][$sPermission])) {
+						if (isset($wgNamespacePermissionLockdown[$iNsId]) && isset($wgNamespacePermissionLockdown[$iNsId][$sPermission]) && $wgNamespacePermissionLockdown[$iNsId][$sPermission] && in_array($sGroup, $wgNamespacePermissionLockdown[$iNsId][$sPermission])) {
 							$aSet[$sNsName] = true;
 						} else {
 							$aSet[$sNsName] = false;
 						}
 					}
+					$aSet[$sNsName . '_allowed'] = $aRealPermissionMaps[$sGroup][$sPermission][$iNsId];
 				}
 
 				$aDataSet['data'][] = $aSet;

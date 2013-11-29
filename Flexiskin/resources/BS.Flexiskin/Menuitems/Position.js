@@ -55,6 +55,9 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 			name: 'width',
 			allowBlank: false
 		});
+		this.tfWidth.on("blur", function(){
+			Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+		});
 		this.cbFullWidth = Ext.create('Ext.form.field.Checkbox', {
 			fieldLabel: mw.message('bs-flexiskin-labelFullWidth').plain(),
 			labelWidth: 100,

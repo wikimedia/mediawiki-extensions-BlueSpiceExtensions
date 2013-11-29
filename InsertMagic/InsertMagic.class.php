@@ -70,7 +70,7 @@ class InsertMagic extends BsExtensionMW {
 			'{{CURRENTVERSION}}',
 			'{{CONTENTLANGUAGE}}', //'{{CONTENTLANG}}',
 			'{{PAGEID}}',
-			'{{PAGESIZE:"page name"}}', //'{{PAGESIZE:<page name>|R}}',
+			'{{PAGESIZE:"pagename"}}', //'{{PAGESIZE:<page name>|R}}',
 			'{{PROTECTIONLEVEL:"action"}}',
 			'{{REVISIONID}}',
 			'{{REVISIONDAY}}',

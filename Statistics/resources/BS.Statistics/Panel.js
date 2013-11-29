@@ -20,6 +20,7 @@ Ext.define( 'BS.Statistics.Panel', {
 	initComponent: function() {
 		this.pnlFilters = Ext.create('BS.Statistics.Filter');
 		this.pnlFilters.on('saved', this.onPnlFiltersSaved, this);
+		this.pnlFilters.on('btnOKBeforeSend', this.filtersBtnOKBeforeSend, this)
 
 		this.crtMain = Ext.create('BS.Statistics.Chart');
 
@@ -71,18 +72,41 @@ Ext.define( 'BS.Statistics.Panel', {
 
 		this.callParent();
 	},
+	filtersBtnOKBeforeSend: function() {
+		this.getEl().mask(
+			mw.message('bs-statistics-loadingMessage').plain(),
+			Ext.baseCSSPrefix + 'mask-loading'
+		);
+	},
 	onPnlFiltersSaved: function(sender, data, result) {
+		this.getEl().unmask();
 		this.crtMain.hide();
 		this.pnlMain.update('');
+		this.pnlMain.remove('StatisticsTableView', false);
+		this.muExport.enable();
 		if( typeof data.list == 'undefined' ) {
 			this.crtMain.setData(data);
 			this.crtMain.setCategory(result.label);
 			this.crtMain.show();
 			return;
 		}
+		this.muExport.disable();
 		this.pnlMain.update(data.list);
+		this.pnlMain.add( Ext.create('Ext.ux.grid.TransformGrid', 'StatisticsTableView', {
+			id: 'StatisticsTableView',
+			title: result.label,
+			width: this.getWidth(),
+			height: this.pnlMain.getHeight(),
+			stripeRows: true
+		}) );
+		this.pnlMain.doLayout();
 	},
 	onClickmuExport: function( menu, item, e, eOpts ) {
+		this.getEl().mask(
+			mw.message('bs-statistics-loadingMessage').plain(),
+			Ext.baseCSSPrefix + 'mask-loading'
+		);
+
 		if(item.value == 'image/png') {
 			Ext.draw.engine.ImageExporter.defaultUrl = mw.util.wikiGetlink('Special:ExtendedStatistics/export-png');
 			this.crtMain.save( {type:item.value} );

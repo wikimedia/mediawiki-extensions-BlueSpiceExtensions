@@ -217,6 +217,7 @@ Ext.define( 'BS.Statistics.Filter', {
 			lastQuery: '',
 			forceSelection: true
 		});
+		this.cbInputDepictionGrain.select('W');
 
 		this.btnOK = new Ext.create( 'Ext.Button', {
 			text: mw.message('bs-statistics-continue-step-3').plain()
@@ -302,6 +303,7 @@ Ext.define( 'BS.Statistics.Filter', {
 	},
 	btnOKclicked: function(button,event){
 		if( this.getForm().isValid() == false ) return;
+		this.fireEvent('btnOKBeforeSend', this)
 		this.getForm().doAction('submit', {
 			success: this.fpSuccess,
 			failure: this.fpFailure,

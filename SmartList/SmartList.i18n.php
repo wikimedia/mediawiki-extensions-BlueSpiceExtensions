@@ -60,7 +60,7 @@ $messages['de'] = array(
 	'bs-smartlist-mostvisitedpages'               => 'Meist besuchte Artikel',
 	'bs-smartlist-mosteditedpages'                => 'Meist editierte Artikel',
 	'bs-smartlist-mostactiveusers'                => 'Aktivste Benutzer (Bearbeitungen)',
-	'bs-smartlist-lastedits'                      => 'Deine Änderungen',
+	'bs-smartlist-lastedits'                      => 'Meine Änderungen',
 	'bs-smartlist-noedits'                        => 'Keine Änderungen gefunden',
 	'bs-smartlist-mostactiveusersdesc'            => 'Liste der aktivsten Benutzer dieses Wikis, sortiert nach der Anzahl der Bearbeitungen',
 	'bs-smartlist-mosteditedpagesdesc'            => 'Liste der meisten editierten Artikel dieses Wikis, sortiert nach der Anzahl der Bearbeitungen',
@@ -70,16 +70,15 @@ $messages['de'] = array(
 
 $messages['de-formal'] = array(
 	'invalid-namespaces'                          => 'Bitte überprüfen Sie diese Namespaces: $1.',
-	'bs-smartlist-lastedits'                      => 'Ihre Änderungen',
+	'bs-smartlist-lastedits'                      => 'Meine Änderungen',
 	'bs-smartlist-lasteditsdesc'                  => 'Liste der von Ihnen zuletzt bearbeiteten Artikel',
-	'bs-smartlist-lastedits'                      => 'Ihre Änderungen',
 );
 
 $messages['en'] = array(
 	'bs-smartlist-extension-description'          => 'Displays the last five changes of the wiki in a list.',
 	'prefs-SmartList'                             => 'SmartList',
 	'SmartList'                                   => 'SmartList',
-	'bs-smartlist-recent-changes'                 => 'Recent Changes',
+	'bs-smartlist-recent-changes'                 => 'Recent changes',
 	'bs-smartlist-no-entries'                     => 'No entries were found.',
 	'bs-smartlist-invalid-namespaces'             => 'Please check these namespaces: $1.',
 	'bs-smartlist-comment'                        => 'comment',
@@ -120,7 +119,7 @@ $messages['en'] = array(
 	'bs-smartlist-mostvisitedpages'               => 'Most visited pages',
 	'bs-smartlist-mosteditedpages'                => 'Most edited pages',
 	'bs-smartlist-mostactiveusers'                => 'Most active users (edits)',
-	'bs-smartlist-lastedits'                      => 'Your edits',
+	'bs-smartlist-lastedits'                      => 'My edits',
 	'bs-smartlist-noedits'                        => 'No edits found',
 	'bs-smartlist-mostactiveusersdesc'            => 'List of most active users of this wiki sorted by number of edits',
 	'bs-smartlist-mosteditedpagesdesc'            => 'List of most edited articles of this wiki sorted by number of edits',

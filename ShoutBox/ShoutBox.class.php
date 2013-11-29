@@ -356,8 +356,7 @@ class ShoutBox extends BsExtensionMW {
 	 */
 	public static function archiveShout( $iShoutId ){
 		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false
-			|| BsCore::checkAccessAdmission( 'writeshoutbox' ) === false
-			|| BsCore::checkAccessAdmission( 'archiveshoutbox' ) === false ) return true;
+			|| BsCore::checkAccessAdmission( 'writeshoutbox' ) === false ) return true;
 
 		global $wgUser;
 		$iUserId = $wgUser->getId();
@@ -372,10 +371,13 @@ class ShoutBox extends BsExtensionMW {
 		);
 
 		$row = $dbw->fetchRow( $res );
-		//if setting for "just allow own entries to be archived" is set + username != shoutbox-entry-username => exit
-		if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) == true && $iUserId != $row['sb_user_id'] ) {
-			$sOutput = wfMessage( 'bs-shoutbox-archive-failure-user' )->plain();
-			return true;
+		// If we don't have archiveshoutbox rights, maybe we can delete our own shout?
+		if ( !BsCore::checkAccessAdmission( 'archiveshoutbox' ) ) {
+			//if setting for "allow own entries to be archived" is set + username != shoutbox-entry-username => exit
+			if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) && $iUserId != $row['sb_user_id'] ) {
+				$sOutput = wfMessage( 'bs-shoutbox-archive-failure-user' )->plain();
+				return true;
+			}
 		}
 		$res = $dbw->update(
 							'bs_shoutbox',

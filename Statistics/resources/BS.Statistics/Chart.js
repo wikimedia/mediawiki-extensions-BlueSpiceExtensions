@@ -52,6 +52,7 @@ Ext.define( 'BS.Statistics.Chart', {
 		});
 
 		this.series.push({
+			title: mw.message('bs-statistics-label-count').plain(),
 			type: 'line',
 			highlight: {
 				size: 7,

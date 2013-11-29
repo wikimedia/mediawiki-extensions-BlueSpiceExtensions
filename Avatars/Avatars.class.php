@@ -109,7 +109,7 @@ class Avatars extends BsExtensionMW {
 	public function onBSAdapterGetUserMiniProfileBeforeInit($oUserMiniProfileView, $oUser, $aParams) {
 		# Set anonymous image for anonymous or deleted users
 		if ($oUser->isAnon()) {
-			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::AnonUserImage'));
+			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DeletedUserImage'));
 			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
 			return true;
 		}
@@ -234,11 +234,11 @@ class Avatars extends BsExtensionMW {
 					break;
 				case 'InstantAvatar':
 					require_once( __DIR__ . "/includes/lib/InstantAvatar/instantavatar.php" );
-					$iFontSize = intval(18/40 * $iAvatarDefaultSize);
+					$iFontSize = round(18/40 * $iAvatarDefaultSize);
 					$oIA = new InstantAvatar(__DIR__ . '/includes/lib/InstantAvatar/Comfortaa-Regular.ttf', $iFontSize, $iAvatarDefaultSize, $iAvatarDefaultSize, 2, __DIR__ . '/includes/lib/InstantAvatar/glass.png');
 					if ($sUserRealName) {
 						preg_match_all('#(^| )(.)#u', $sUserRealName, $aMatches);
-						$sChars = join('', $aMatches[2]);
+						$sChars = implode('', $aMatches[2]);
 						if (mb_strlen($sChars) < 2)
 							$sChars = $sUserRealName;
 					}

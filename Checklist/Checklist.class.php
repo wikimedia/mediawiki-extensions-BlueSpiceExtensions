@@ -212,8 +212,8 @@ class Checklist extends BsExtensionMW {
 
 	public function onMagicWordBsChecklist( $input, $args, $parser ) {
 		/*
-		 *   16:37:57: Echt? Ich dachte du machst ein Edit auf der Seite. Da müsste der Cache doch automatisch invalidiert werden, oder?
-  16:38:56: Und falls das nicht geht sollte ein $oTitle-&gt;invalidateCache(); den gleichen Effekt haben.
+		 *16:37:57: Echt? Ich dachte du machst ein Edit auf der Seite. Da müsste der Cache doch automatisch invalidiert werden, oder?
+		 *16:38:56: Und falls das nicht geht sollte ein $oTitle-&gt;invalidateCache(); den gleichen Effekt haben.
 		 */
 		$parser->disableCache();
 		
@@ -264,7 +264,7 @@ class Checklist extends BsExtensionMW {
 			}
 			$sOut[] = "/>";
 		}
-		$sOut = join($sOut, '');
+		$sOut = implode($sOut, '');
 		$sOut = str_replace('{color}', $sSelectColor, $sOut);
 		return $sOut;
 	}

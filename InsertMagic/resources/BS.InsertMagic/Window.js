@@ -62,7 +62,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			autoLoad: true,
 			fields: ['id', 'type', 'name', 'desc', 'code' ],
 			sortInfo: {
-				field: 'id',
+				field: 'name',
 				direction: 'ASC'
 			}
 		});
@@ -168,6 +168,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 	},
 	
 	onStoreLoad: function( store, records, options ) {
+		this.tagsStore.sort( 'name', 'ASC' );
 		this.tagsStore.filter( 'type', 'tag'); //just initial
 	},
 	

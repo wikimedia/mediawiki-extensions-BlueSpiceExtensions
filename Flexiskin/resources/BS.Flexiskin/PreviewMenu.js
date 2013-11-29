@@ -146,8 +146,10 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			success: function(response) {
 			var responseObj = Ext.decode(response.responseText);
 			if (responseObj.success === true) {
+				this.setLoading();
 				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
 				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
+				responseObj.data.config = Ext.decode(responseObj.data.config);
 				this.setData(responseObj.data);
 			} else {
 				bs.util.alert('bs-flexiskin-addskin-error',

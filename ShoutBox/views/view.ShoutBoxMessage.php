@@ -143,11 +143,12 @@ class ViewShoutBoxMessage extends ViewBaseElement {
 		$aOut[] = '    <div class="bs-sb-message-text">'. nl2br( $this->sMessage );
 		$aOut[] = '    </div> ';
 		$aOut[] = '  </div>';
-		$sArchiveButton = '  <div class="bs-sb-archive"></div>';
-		//unset button if user doesn't have the right to archive
-		if ( !BsCore::checkAccessAdmission( 'archiveshoutbox' ) ) $sArchiveButton = '';
-		//if setting for "just allow own entries to be archived" is set + username != shoutbox-entry-username => unset button
-		if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) && $wgUser->getName() != $sUserName ) $sArchiveButton = '';
+		$sArchiveButton = '';
+		$sArchiveButtonEnabled = '  <div class="bs-sb-archive"></div>';
+		//set button if user has the right to archive
+		if ( BsCore::checkAccessAdmission( 'archiveshoutbox' ) ) $sArchiveButton = $sArchiveButtonEnabled;
+		//if setting for "allow own entries to be archived" is set + username == shoutbox-entry-username => set button
+		if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) && $wgUser->getName() == $sUserName ) $sArchiveButton = $sArchiveButtonEnabled;
 
 		$aOut[] = $sArchiveButton;
 		$aOut[] = '</li>';

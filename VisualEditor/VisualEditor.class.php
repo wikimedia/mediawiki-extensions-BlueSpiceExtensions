@@ -52,7 +52,7 @@ class VisualEditor extends BsExtensionMW {
 	 * Standard configuration for visual editor in full mode
 	 */
 	private $aConfigStandard = array(
-		'selector' => 'textarea',
+		'selector' => '#wpTextbox1, .enableEditor',
 		'plugins' => array(
 			"lists",
 			//"emoticons",

@@ -32,11 +32,11 @@
 }
 
 #bs-statebar-view {
+	background: transparent;
+	border: none;
+	font-family: 'Source Sans Pro', sans-serif;
     margin-top: 3px;
-    background: #fff;
     display: none;
-    border-top: 1px solid #D1D1D1;
-    border-bottom: 1px solid #D1D1D1;
     margin-bottom: 5px;
 }
 
@@ -73,7 +73,7 @@
 
 .bs-statebar-body-itembody {
     color: #060606;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 14px;
     padding: 2px 0 4px 0;
 }
@@ -83,5 +83,37 @@
 }
 
 #bs-statebar-view h4 {
-    color: #aaa;
+    color: #3E5389;
+	text-transform: uppercase;
+	font-weight: 100;
+}
+
+.bs-statebar-top-item span,.bs-statebar-top-item a,.bs-statebar-top-item a:visited {
+	font-family:'Muli', sans-serif;
+	color:#3e5389;
+	font-size:10px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+#bs-statebar {
+	background-color:transparent;
+	padding:10px 10px 10px;
+}
+
+#bs-statebar-viewtoggler {
+	margin:0;
+	line-height: 1.5em;
+	width: 100%;
+	display: block;
+	background-color: white;
+	float: none;
+	cursor: default;
+}
+
+#bs-statebar-viewtoggler-image {
+	display:block;
+	margin:0 auto;
+	cursor: pointer;
+	margin-top: -7px\9;
 }

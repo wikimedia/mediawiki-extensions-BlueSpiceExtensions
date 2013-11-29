@@ -46,6 +46,7 @@ $(document).on('VisualEditor::instanceHide', function(event, editorId) {
 		$('#bs-extendededitbar').show();
 	}
 });
+
 mw.loader.using( 'ext.bluespice.visualEditor', function() {
 	var currentSiteCSS = [];
 	//We collect the CSS Links from this document and set them as content_css 
@@ -57,11 +58,14 @@ mw.loader.using( 'ext.bluespice.visualEditor', function() {
 		if( cssUrl.startsWith( '/' ) ) cssBaseURL = mw.config.get('wgServer');
 		currentSiteCSS.push( cssBaseURL + cssUrl );
 	});
-	
-	VisualEditor.getInstance().setConfig('editpage', {
-		height: 550,
-		content_css: currentSiteCSS.join(',')
-	});
+
+	//IE9 fix
+	if ( typeof VisualEditor.getInstance().setConfig != "undefined" ) {
+		VisualEditor.getInstance().setConfig('editpage', {
+			height: 550,
+			content_css: currentSiteCSS.join(',')
+		});
+	}
 
 	if (mw.config.get('BsVisualEditorUseTidy') === true) {
 		VisualEditor.startEditors();

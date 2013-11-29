@@ -5,7 +5,7 @@ BsExtensionManager::registerExtension('UserPreferences', BsRUNLEVEL::FULL|BsRUNL
 $wgExtensionMessagesFiles['UserPreferences'] = __DIR__ . '/UserPreferences.i18n.php';
 
 $wgResourceModules['ext.bluespice.userpreferences'] = array(
-	'styles' => 'extensions/bluespice.userpreferences.css',
+	'styles' => 'bluespice.userpreferences.css',
 	'localBasePath' => __DIR__.'/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/UserPreferences/resources'
 );

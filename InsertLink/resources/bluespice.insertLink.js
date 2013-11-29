@@ -198,7 +198,7 @@ var BsInsertLinkVisualEditorConnector = {
 		);
 
 		editor.insertContent(newAnchor);
-		editor.selection.select(newAnchor, false);
+		//editor.selection.select(newAnchor, false);
 		editor.selection.collapse(false);
 		//editor.dom.inserAfter(newAnchor, editor.selection.getSel());
 		//editor.selection.getEnd().remove();

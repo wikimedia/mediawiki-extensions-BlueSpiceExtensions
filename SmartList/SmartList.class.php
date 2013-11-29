@@ -950,7 +950,7 @@ class SmartList extends BsExtensionMW {
 					if ( $bAlltime === false ) {
 						$aConditions['wo_page_namespace'] = $iNamespace;
 					} else {
-						$aConditions['page_namespace'] =$iNamespace;
+						$aConditions['page_namespace'] = $iNamespace;
 					}
 				}
 			}

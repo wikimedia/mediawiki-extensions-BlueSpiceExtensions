@@ -38,10 +38,10 @@
 }
 
 .bs-sb-message-time {
-	font-size: 12px;
+	font-size: 10px;
 	color: #999;
 	line-height: 12px;
-	padding-top: 9px;
+	padding-top: 2px;
 }
 
 #bs-sb-form {

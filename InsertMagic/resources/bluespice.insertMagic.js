@@ -20,7 +20,19 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 		buttonId: 'bsmagic',
 		buttonConfig: {
 			title : mw.message('bs-insertmagic-dlg_title').plain(),
-			cmd : 'mceBsMagic'
+			cmd : 'mceBsMagic',
+			onPostRender: function() {
+				var self = this;
+
+				tinyMCE.activeEditor.on('NodeChange', function(evt) {
+					self.disabled(false);
+					$(evt.parents).each(function(){
+						if ( this.tagName.toLowerCase() == 'pre' ) {
+							self.disabled(true);
+						}
+					});
+				});
+			}
 		}
 	});
 	commands.push({

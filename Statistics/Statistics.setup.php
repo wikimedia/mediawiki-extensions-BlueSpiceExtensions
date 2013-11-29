@@ -35,6 +35,7 @@ $wgResourceModules['ext.bluespice.statistics'] = array(
 		'bs-statistics-W',
 		'bs-statistics-d',
 		'bs-statistics-label-count',
+		'bs-statistics-loadingMessage',
 	)
 ) + $aResourceModuleTemplate;
 

@@ -90,6 +90,7 @@ $messages['en'] = array(
 	'bs-statistics-pref-ExcludeUsers-title'       => 'Add user',
 	'bs-statistics-pref-ExcludeUsers-message'     => 'Add the user you wish to exclude.',
 	'bs-statistics-pref-MaxNumberOfIntervals'     => 'Maximum number of steps',
+	'bs-statistics-loadingMessage'                => 'Loading',
 
 	'bs-statistics-portlet-NumberOfUsers'         => 'Number of users',
 	'bs-statistics-portlet-NumberOfEdits'         => 'Number of edits',
@@ -181,6 +182,7 @@ $messages['de'] = array(
 	'bs-statistics-pref-ExcludeUsers-title'       => 'Auszuschließenden Benutzer hinzufügen',
 	'bs-statistics-pref-ExcludeUsers-message'     => 'Gib hier den Namen des auszuschließenden Benutzers ein.',
 	'bs-statistics-pref-MaxNumberOfIntervals'     => 'Maximale Anzahl von Schritten',
+	'bs-statistics-loadingMessage'                => 'Laden',
 
 	'bs-statistics-portlet-NumberOfUsers'         => 'Anzahl der Benutzer',
 	'bs-statistics-portlet-NumberOfEdits'         => 'Anzahl der Bearbeitungen',

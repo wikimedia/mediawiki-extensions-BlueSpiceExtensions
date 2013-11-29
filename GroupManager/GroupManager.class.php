@@ -86,6 +86,12 @@ class GroupManager extends BsExtensionMW {
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 		global $wgGroupPermissions, $wgAdditionalGroups;
 
+		$oStoreParams = BsExtJSStoreParams::newFromRequest();
+		$iLimit     = $oStoreParams->getLimit();
+		$iStart     = $oStoreParams->getStart();
+		$sSort      = $oStoreParams->getSort( 'group_name' );
+		$sDirection = $oStoreParams->getDirection();
+
 		$aGroups = array();
 		foreach ( BsGroupHelper::getAvailableGroups() as $sGroup ) {
 			$aGroups['groups'][] = array(
@@ -93,6 +99,18 @@ class GroupManager extends BsExtensionMW {
 				'additional_group' => ( isset( $wgAdditionalGroups[$sGroup] ) )
 			);
 		}
+		
+		if ( $sDirection == 'DESC' ) {
+			usort( $aGroups['groups'], function ($a, $b) { return strnatcasecmp($b["group_name"], $a["group_name"]); });
+		} else {
+			usort( $aGroups['groups'], function ($a, $b) { return strnatcasecmp($a["group_name"], $b["group_name"]); });
+		}
+		
+		$aGroups['totalCount'] = sizeof( $aGroups['groups'] );
+		
+		// Apply limit and offset
+		$aGroups['groups'] = array_slice( $aGroups['groups'], $iStart, $iLimit );
+		
 
 		return json_encode( $aGroups );
 	}

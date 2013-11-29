@@ -149,6 +149,8 @@ class ExtendedSearch extends BsExtensionMW {
 
 		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance();
 
+		$this->mCore->registerPermission( 'searchfiles', array( 'user' ) );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

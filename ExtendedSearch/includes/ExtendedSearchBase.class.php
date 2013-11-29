@@ -680,7 +680,7 @@ class ExtendedSearchBase {
 	 * @param string $message I18N key of error message
 	 * @return ViewBaseElement Renders error message.
 	 */
-	protected function createErrorMessageView( $sMessage ) {
+	public function createErrorMessageView( $sMessage ) {
 		$res = new ViewBaseElement();
 		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
 		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );

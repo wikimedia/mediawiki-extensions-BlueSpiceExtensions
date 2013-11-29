@@ -49,9 +49,8 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 		this.callParent(arguments);
 	},
 	onCbNamespaceSelect: function( field, record ) {
-		var data = record.getData();
 		this.storePages.load({
-			params:{ ns: data.ns }
+			params:{ ns: record[0].get('ns') }
 		});
 	},
 	resetData: function() {
@@ -130,11 +129,12 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			//href = mw.util.wikiGetlink(ns+page);
 		}
 
-		var code = ns + page + desc + ']]';
 		// Escape Kategory namespace (people want to link to the category page, not assign a category
-		if( this.cbNamespace.getValue() && this.cbNamespace.store.getAt(index).get('ns') == 14 ) { //[[:Category:Title]]
-			code = ':' + code;
+		if( this.cbNamespace.getValue() && this.cbNamespace.getValue() == bs.util.getNamespaceText(14) ) { //[[:Category:Title]]
+			ns = ':' + ns;
 		}
+		
+		var code = ns + page + desc + ']]';
 		code = '[[' + code;
 		return { 
 			title: title,

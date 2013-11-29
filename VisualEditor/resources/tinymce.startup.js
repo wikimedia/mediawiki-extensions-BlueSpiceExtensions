@@ -40,13 +40,17 @@ VisualEditor = (function VisualEditor() {
 				+ '/extensions/BlueSpiceExtensions/VisualEditor/resources/tinymce';
 
 			// start all the configured TinyMCE instances
-			for (var key in _config) {
-				if (key === '_default') {
-					continue;
+			if ( Object.keys(_config).length > 1 ) {
+				for (var key in _config) {
+					if (key === '_default') {
+						continue;
+					}
+					window.tinyMCE.init($.extend({}, _config['_default'], _config[key]));
 				}
-				window.tinyMCE.init($.extend({}, _config['_default'], _config[key]));
+			} else {
+				// Fix for IE9 where we don't get a extra config by default
+				window.tinyMCE.init(_config['_default']);
 			}
-
 			_editorMode = 'tiny';
 			_started = true;
 		},
@@ -161,6 +165,6 @@ VisualEditor = (function VisualEditor() {
 			getConfig: function(key) {
 				return _config[key] || {};
 			}
-		}
+		};
 	}
 }());

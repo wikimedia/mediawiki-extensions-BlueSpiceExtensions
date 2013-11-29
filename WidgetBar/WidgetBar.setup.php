@@ -10,11 +10,11 @@ $aResourceModuleTemplate = array(
 );
 
 $wgResourceModules['ext.bluespice.widgetbar.style'] = array(
-	'styles'  => 'bluespice.WidgetBar.css'
+	'styles'  => 'bluespice.widgetBar.css'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.widgetbar'] = array(
-	'scripts' => 'bluespice.WidgetBar.js',
+	'scripts' => 'bluespice.widgetBar.js',
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 

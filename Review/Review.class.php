@@ -970,7 +970,8 @@ class Review extends BsExtensionMW {
 			// Show who created the workflow?
 			if ( BsConfig::get( 'MW::Review::ShowNameInTooltip' ) ) {
 				$user = User::newFromId( $oRev->owner );
-				$text.= wfMessage( 'bs-review-reviewed_till_extra', $user->getName() )->plain();
+				$sName = BsCore::getUserDisplayName($user);
+				$text.= wfMessage( 'bs-review-reviewed_till_extra', $sName )->plain();
 			}
 			$oReviewView->setStatusText( $text );
 		}

@@ -13,7 +13,9 @@ Ext.require([
                     return;
                 }
             });
-
+            Ext.state.Manager.setProvider(new Ext.state.CookieProvider({
+                expires: new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 30))
+            }));
             Ext.tip.QuickTipManager.init();
             var _visibleOnDefault = {
                 0: true,
@@ -25,13 +27,17 @@ Ext.require([
                 templates: {},
                 memory: {}
             };
+            var _setLoading = function(flag) {
+                _grid.setLoading(flag);
+                _gridExtra.setLoading(flag);
+            };
             var _checkLock = false;
             var _checkTemplates = function() {
                 Ext.suspendLayouts();
                 _checkLock = true;
                 for (var key in _templateMatrix.templates) {
                     var ruleSet = _templateMatrix.templates[key].ruleSet;
-
+                    var newValues = {};
                     for (var ns in _templateMatrix.memory) {
                         var permissions = _templateMatrix.memory[ns];
                         var match = true;
@@ -43,12 +49,15 @@ Ext.require([
                         }
 
                         if (match) {
-                            _gridStore.getById(key).set(ns, true);
+                            newValues[ns] = true;
+                            //_gridStore.getById(key).set(ns, true);
                         } else {
-                            _gridStore.getById(key).set(ns, false);
+                            newValues[ns] = false;
+                            //_gridStore.getById(key).set(ns, false);
                         }
-                        _gridStore.getById(key).commit();
                     }
+                    _gridStore.getById(key).set(newValues);
+                    _gridStore.getById(key).commit();
                 }
                 _checkLock = false;
                 Ext.resumeLayouts(true);
@@ -73,9 +82,12 @@ Ext.require([
                                 return true;
                             }
 
+                            var newValues = {};
                             for (var permission in ruleSet) {
-                                _gridStore.getById(ruleSet[permission]).set(ns, record.get(ns));
+                                newValues[ns] = record.get(ns);
+                                //_gridStore.getById(ruleSet[permission]).set(ns, record.get(ns));
                             }
+                            _gridStore.getById(ruleSet[permission]).set(newValues);
                         });
                     }
                     _checkLock = false;
@@ -145,13 +157,15 @@ Ext.require([
                         var columns = [{
                                 header: mw.messages.get('bs-permissionmanager-header-group'),
                                 dataIndex: 'group',
+                                id: 'col-group_extra',
                                 width: 300,
                                 locked: true,
-                                sortable: true,
+                                sortable: false,
                                 hideable: false
                             }, {
                                 header: mw.messages.get('bs-permissionmanager-header-global'),
                                 dataIndex: 'global',
+                                id: 'col-global_extra',
                                 width: 160,
                                 xtype: 'checkcolumn',
                                 sortable: false,
@@ -159,22 +173,47 @@ Ext.require([
                                     beforecheckchange: function() {
                                         return false;
                                     }
+                                },
+                                renderer: function(value, meta, record) {
+                                    if (record.get('global_allowed')) {
+                                        meta.tdCls = 'allowed';
+                                        //console.log(record.get(this.text + '_allowed'));
+                                    }
+                                    var cssPrefix = Ext.baseCSSPrefix,
+                                            cls = [cssPrefix + 'grid-checkcolumn'];
+                                    if (this.disabled) {
+                                        meta.tdCls += ' ' + this.disabledCls;
+                                    }
+                                    if (value) {
+                                        cls.push(cssPrefix + 'grid-checkcolumn-checked');
+                                    }
+                                    return '<img class="' + cls.join(' ') + '" src="' + Ext.BLANK_IMAGE_URL + '"/>';
                                 }
                             }];
                         var fields = [{
-                                name: 'groups', type: 'string'
+                                name: 'group', type: 'string'
+                            }, {
+                                name: 'group_value', type: 'string'
                             }, {
                                 name: 'global', type: 'boolean'
                             }];
                         var subcolumns = [];
                         var data = records[0].get('data')[0];
                         for (var key in data) {
-                            if (key == 'group' || key == 'global') {
+                            if (key == 'group' || key == 'global' || key == 'group_value') {
+                                continue;
+                            }
+                            fields.push({
+                                name: key,
+                                type: 'boolean'
+                            });
+                            if (key.indexOf('_allowed') != -1) {
                                 continue;
                             }
                             subcolumns.push({
                                 header: key,
                                 dataIndex: key,
+                                id: 'col-' + key + '_extra',
                                 width: 200,
                                 hidden: _columnsHiddenDefault[key],
                                 xtype: 'checkcolumn',
@@ -183,11 +222,22 @@ Ext.require([
                                     beforecheckchange: function() {
                                         return false;
                                     }
+                                },
+                                renderer: function(value, meta, record) {
+                                    if (record.get(this.text + '_allowed')) {
+                                        meta.tdCls = 'allowed';
+                                        //console.log(record.get(this.text + '_allowed'));
+                                    }
+                                    var cssPrefix = Ext.baseCSSPrefix,
+                                            cls = [cssPrefix + 'grid-checkcolumn'];
+                                    if (this.disabled) {
+                                        meta.tdCls += ' ' + this.disabledCls;
+                                    }
+                                    if (value) {
+                                        cls.push(cssPrefix + 'grid-checkcolumn-checked');
+                                    }
+                                    return '<img class="' + cls.join(' ') + '" src="' + Ext.BLANK_IMAGE_URL + '"/>';
                                 }
-                            });
-                            fields.push({
-                                name: key,
-                                type: 'boolean'
                             });
                         }
                         columns.push({
@@ -201,7 +251,6 @@ Ext.require([
                         });
                         _gridStoreExtra = Ext.create('Ext.data.Store', {
                             model: 'AccessDataSet',
-                            data: [],
                             proxy: {
                                 type: 'memory',
                                 reader: {
@@ -214,8 +263,11 @@ Ext.require([
                         _gridExtra.destroy();
                         _gridExtra = Ext.create('BS.PermissionManager.GridPanelExtra', {
                             store: _gridStoreExtra,
+                            stateId: 'bs-pm-grid-extra',
+                            stateful: true,
                             columns: columns
                         });
+                        _setLoading(false);
                     }
                 }
             });
@@ -230,6 +282,9 @@ Ext.require([
                     }
                 },
                 listeners: {
+                    beforeload: function() {
+                        _setLoading(true);
+                    },
                     load: function(store, records, successful, eOpts) {
                         var data,
                                 ruleset,
@@ -254,12 +309,13 @@ Ext.require([
                         columns = [{
                                 header: mw.messages.get('bs-permissionmanager-header-permissions'),
                                 dataIndex: 'permission',
+                                id: 'col-permission',
                                 width: 300,
                                 locked: true,
                                 sortable: true,
                                 hideable: false,
                                 renderer: function(value, meta, record) {
-                                    if(record.get('tip')) {
+                                    if (record.get('tip')) {
                                         meta.tdAttr = 'data-qtip="' + record.get('tip') + '"';
                                     }
                                     return value;
@@ -267,6 +323,7 @@ Ext.require([
                             }, {
                                 header: mw.messages.get('bs-permissionmanager-header-global'),
                                 dataIndex: 'global',
+                                id: 'col-global',
                                 width: 160,
                                 xtype: 'checkcolumn',
                                 sortable: false,
@@ -274,6 +331,7 @@ Ext.require([
                                     checkchange: function(column, index, checked, eOpts) {
                                         var record = _grid.getView().getRecord(index);
                                         if (checked === false) {
+                                            var newValues = {};
                                             for (var field in record.data) {
                                                 if (field === 'permission'
                                                         || field === 'tip'
@@ -284,8 +342,10 @@ Ext.require([
                                                         || field === 'group') {
                                                     continue;
                                                 }
-                                                record.set(field, false);
+                                                newValues[field] = false;
+                                                //record.set(field, false);
                                             }
+                                            record.set(newValues);
                                         }
                                     }
                                 },
@@ -311,12 +371,14 @@ Ext.require([
                         subcolumns = [];
                         data = records[0].getAssociatedData();
                         Ext.Array.each(data.namespaces, function(namespace, index, namespaces) {
-                            hidden = !(typeof (_visibleOnDefault[namespace.id]) !== 'undefined'
+                            var cleanNamespaceName = namespace.name.replace(/\s/g, '_');
+                            var hidden = !(typeof (_visibleOnDefault[namespace.id]) !== 'undefined'
                                     && _visibleOnDefault[namespace.id] === true);
                             _columnsHiddenDefault[namespace.name] = hidden;
                             subcolumns.push({
                                 header: namespace.name,
                                 dataIndex: namespace.name,
+                                id: 'col-' + cleanNamespaceName,
                                 width: 200,
                                 hidden: hidden,
                                 xtype: 'checkcolumn',
@@ -394,28 +456,40 @@ Ext.require([
                                     _mainStore.reload();
                                 },
                                 update: function(store, record, op, modifiedFields, options) {
+                                    if (modifiedFields == null) {
+                                        return;
+                                    }
+                                    //console.log(modifiedFields);
                                     var permission = record.get('permission');
 
-                                    for (var i in modifiedFields) {
-                                        if (typeof _templateMatrix.memory[modifiedFields[i]] == 'undefined') {
-                                            _templateMatrix.memory[modifiedFields[i]] = [];
-                                        }
-                                        if (record.get(modifiedFields[i])) {
-                                            _templateMatrix.memory[modifiedFields[i]].push(permission);
-                                        } else {
-                                            for (var j in _templateMatrix.memory[modifiedFields[i]]) {
-                                                if (_templateMatrix.memory[modifiedFields[i]][j] == permission) {
-                                                    delete _templateMatrix.memory[modifiedFields[i]][j];
+                                    if (!_checkLock) {
+                                        for (var i in modifiedFields) {
+                                            if (typeof _templateMatrix.memory[modifiedFields[i]] == 'undefined') {
+                                                _templateMatrix.memory[modifiedFields[i]] = [];
+                                            }
+                                            if (record.get(modifiedFields[i])) {
+                                                _templateMatrix.memory[modifiedFields[i]].push(permission);
+                                            } else {
+                                                for (var j in _templateMatrix.memory[modifiedFields[i]]) {
+                                                    if (_templateMatrix.memory[modifiedFields[i]][j] == permission) {
+                                                        delete _templateMatrix.memory[modifiedFields[i]][j];
+                                                    }
                                                 }
                                             }
                                         }
-                                    }
 
-                                    if (!_checkLock) {
                                         if (!record.get('isTemplate')) {
-                                            _checkTemplates();
+                                            //_checkTemplates();
+                                            window.setTimeout(function() {
+                                                _checkTemplates();
+                                                _setLoading(false);
+                                            }, 0);
                                         } else {
-                                            _checkPermissions();
+                                            //_checkPermissions();
+                                            window.setTimeout(function() {
+                                                _checkPermissions();
+                                                _setLoading(false);
+                                            }, 0);
                                         }
                                     }
                                 }
@@ -455,15 +529,67 @@ Ext.require([
                         _grid = Ext.create('BS.PermissionManager.GridPanel', {
                             store: _gridStore,
                             columns: columns,
+                            stateId: 'bs-pm-grid',
+                            stateful: true,
                             listeners: {
                                 select: function(rm, record, index, options) {
                                     var permission = record.get('permission');
                                     if (!record.get('isTemplate')) {
                                         var extraRecord = _extraStore.getById(permission);
                                         _gridStoreExtra.loadRawData(extraRecord.get('data'));
+                                        _gridStoreExtra.sort({
+                                            sorterFn: function(record1, record2) {
+                                                value1 = record1.get('group_value');
+                                                value2 = record2.get('group_value');
+                                                // * is always the first element
+                                                if (value1 === '*') {
+                                                    return -1;
+                                                }
+                                                if (value2 === '*') {
+                                                    return 1;
+                                                }
+
+                                                // user is bigger then * but smaller then all other
+                                                if (value1 === 'user') {
+                                                    if (value2 === '*') {
+                                                        return 1;
+                                                    } else {
+                                                        return -1;
+                                                    }
+                                                }
+                                                if (value2 === 'user') {
+                                                    if (value1 === '*') {
+                                                        return -1;
+                                                    } else {
+                                                        return 1;
+                                                    }
+                                                }
+
+                                                // sysop is bigger then * and user but small then all other
+                                                if (value1 === 'sysop') {
+                                                    if (value2 === '*' || value2 === 'user') {
+                                                        return 1;
+                                                    } else {
+                                                        return -1;
+                                                    }
+                                                }
+                                                if (value2 === 'sysop') {
+                                                    if (value1 === '*' || value1 === 'user') {
+                                                        return -1;
+                                                    } else {
+                                                        return 1;
+                                                    }
+                                                }
+
+                                                if (record1.get('group') < record2.get('group')) {
+                                                    return -1;
+                                                } else {
+                                                    return 1;
+                                                }
+                                            }
+                                        });
                                         //_gridExtra.show();
                                     } else {
-                                        console.log(record);
                                         _gridStoreExtra.removeAll();
                                         //_gridExtra.getView().refresh();
                                         //_gridExtra.hide();
@@ -506,30 +632,7 @@ Ext.require([
                                 })
                             ]
                         });
-                        /*var view = _grid.getView();
-                        var tip = Ext.create('Ext.tip.ToolTip', {
-                            // The overall target element.
-                            target: view.el,
-                            // Each grid row causes its own separate show and hide.
-                            delegate: view.itemSelector,
-                            // Moving within the row should not hide the tip.
-                            trackMouse: true,
-                            // Render immediately so that tip.body can be referenced prior to the first show.
-                            renderTo: Ext.getBody(),
-                            listeners: {
-                                // Change content dynamically depending on which element triggered the show.
-                                beforeshow: function updateTipBody(tip) {
-                                    console.log(tip);
-                                    var record = view.getRecord(tip.triggerElement);
-                                    if(record.get('tip')) {
-                                        tip.update(record.get('tip'));
-                                    } else {
-                                        tip.update(record.get('permission'));
-                                    }
-                                    
-                                }
-                            }
-                        });*/
+                        _setLoading(true);
                         _extraStore.load();
                         window.setTimeout(function() {
                             _checkTemplates();

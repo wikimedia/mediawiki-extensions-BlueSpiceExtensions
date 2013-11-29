@@ -46,7 +46,8 @@ Ext.define( 'BS.GroupManager.Panel', {
 			header: mw.message('bs-groupmanager-headerGroupname').plain(),
 			sortable: true,
 			dataIndex: 'additional_group',
-			hidden: true
+			hidden: true,
+			hideable: false
 		} );
 
 		this.colMainConf.columns = [
@@ -91,7 +92,7 @@ Ext.define( 'BS.GroupManager.Panel', {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var additionalGroup = selectedRow[0].get( 'additional_group' );
 		if ( !additionalGroup ) {
-			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotEditable' ).plain(), title: 'Status' } );
+			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotRemovable' ).plain(), title: 'Status' } );
 			return;
 		}
 		bs.util.confirm(

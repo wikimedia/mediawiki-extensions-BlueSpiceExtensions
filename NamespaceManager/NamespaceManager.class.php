@@ -192,11 +192,10 @@ class NamespaceManager extends BsExtensionMW {
 		$oRequest = RequestContext::getMain()->getRequest();
 		$iLimit = $oRequest->getInt( 'limit', 25 );
 		$iStart = $oRequest->getInt( 'start', 0 );
-		$sSort = $oRequest->getVal( 'sort', 'id' );
-		$sDir = $oRequest->getVal( 'sir', 'DESC' );
+		$sSort = $oRequest->getVal( 'sort', '[{"property":"id","direction":"DESC"}]' );
 
-		self::$aSortConditions['sort'] = $sSort;
-		self::$aSortConditions['dir'] = $sDir;
+		self::$aSortConditions = json_decode($sSort);
+		self::$aSortConditions = self::$aSortConditions[0];
 		usort( $aResults, 'NamespaceManager::namespaceManagerRemoteSort' );
 
 		$aLimitedResults = array();
@@ -217,11 +216,11 @@ class NamespaceManager extends BsExtensionMW {
 	public static function namespaceManagerRemoteSort( $value1, $value2 ) {
 		$leftVal = $value1;
 		$rightVal = $value2;
-		if ( self::$aSortConditions['dir'] === 'ASC' ) {
+		if ( self::$aSortConditions->direction === 'ASC' ) {
 			$leftVal = $value2;
 			$rightVal = $value1;
 		}
-		switch( self::$aSortConditions['sort'] ) {
+		switch( self::$aSortConditions->property ) {
 			case 'name':
 				if ( strcasecmp( $leftVal['name'], $rightVal['name'] ) === 0 ) {
 					return 0;
@@ -237,7 +236,7 @@ class NamespaceManager extends BsExtensionMW {
 				}
 			break;
 			default:
-				wfRunHooks( 'NamespaceManager::namespaceManagerRemoteSort', array( $this, $value1, $value2, $this->aSortConditions ) );
+				wfRunHooks( 'NamespaceManager::namespaceManagerRemoteSort', array( $value1, $value2, self::$aSortConditions ) );
 		}
 
 	}

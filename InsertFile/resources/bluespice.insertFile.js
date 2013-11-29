@@ -103,7 +103,19 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 		buttonConfig: {
 			title : mw.message('bs-insertfile-button_image_title').plain(),
 			cmd : 'mceBsImage',
-			icon: 'image'
+			icon: 'image',
+			onPostRender: function() {
+				var self = this;
+
+				tinyMCE.activeEditor.on('NodeChange', function(evt) {
+					self.disabled(false);
+					$(evt.parents).each(function(){
+						if ( this.tagName.toLowerCase() == 'pre' ) {
+							self.disabled(true);
+						}
+					});
+				});
+			}
 		}
 	});
 
@@ -112,7 +124,19 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 		buttonId: 'bsfile',
 		buttonConfig: {
 			title : mw.message('bs-insertfile-button_file_title').plain(),
-			cmd : 'mceBsFile'
+			cmd : 'mceBsFile',
+			onPostRender: function() {
+				var self = this;
+
+				tinyMCE.activeEditor.on('NodeChange', function(evt) {
+					self.disabled(false);
+					$(evt.parents).each(function(){
+						if ( this.tagName.toLowerCase() == 'pre' ) {
+							self.disabled(true);
+						}
+					});
+				});
+			}
 		}
 	});
 
@@ -219,20 +243,22 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					var nsText = formattedNamespaces[bs.ns.NS_MEDIA];
 					var prefixedTitle = nsText + ':' + data.title;
 					var newAnchor = null;
+					var displayText = data.displayText;
+					if ( displayText == '' ) displayText = data.title;
 					var anchorAttrs = {
-						'title': data.displayText,
+						'title': displayText,
 						'href': prefixedTitle,
 						'class': 'internal bs-internal-link',
 						'data-bs-type' : 'internal_link'
 					};
 					if( anchor.nodeName.toLowerCase() === 'a' ) {
-						newAnchor = this.dom.create( 'a', anchorAttrs, data.displayText );
+						newAnchor = this.dom.create( 'a', anchorAttrs, displayText );
 						this.dom.replace(newAnchor, anchor);
 						//Place cursor to end
 						this.selection.select(newAnchor, false);
 					}
 					else {
-						newAnchor = this.dom.createHTML( 'a', anchorAttrs, data.displayText );
+						newAnchor = this.dom.createHTML( 'a', anchorAttrs, displayText );
 						this.insertContent(newAnchor);
 					}
 					this.selection.collapse(false);

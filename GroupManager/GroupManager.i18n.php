@@ -82,7 +82,8 @@ $messages['de'] = array(
 	'bs-groupmanager-titleError' => 'Fehler',
 	'bs-groupmanager-removeGroup' => 'Willst du die Gruppe wirklich löschen?',
 	'bs-groupmanager-lableName' => 'Gruppenname:',
-	'bs-groupmanager-msgNotEditable' => 'Dies ist eine Systemgruppe und kann nicht umbenannt werden.'
+	'bs-groupmanager-msgNotEditable' => 'Dies ist eine Systemgruppe und kann nicht umbenannt werden.',
+	'bs-groupmanager-msgNotRemovable' => 'Dies ist eine Systemgruppe und kann nicht gelöscht werden.'
 );
 
 $messages['de-formal'] = array(
@@ -164,7 +165,8 @@ $messages['en'] = array(
 	'bs-groupmanager-titleError' => 'Error',
 	'bs-groupmanager-removeGroup' => 'Are you sure you want to remove this group?',
 	'bs-groupmanager-lableName' => 'Group name:',
-	'bs-groupmanager-msgNotEditable' => 'This group is a system group and cannot be renamed.'
+	'bs-groupmanager-msgNotEditable' => 'This group is a system group and cannot be renamed.',
+	'bs-groupmanager-msgNotRemovable' => 'This group is a system group and cannot be removed.'
 );
 
 $messages['qqq'] = array();

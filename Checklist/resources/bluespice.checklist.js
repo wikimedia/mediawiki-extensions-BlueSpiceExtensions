@@ -293,18 +293,15 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 			var self = this;
 			BsChecklist.menuButton = this;
 			ed.on('NodeChange', function(evt) {
-				//this is experimental
-				$("#wpTextbox1_ifr").contents().find(".tag:not([id])").each(function(index, value) {
-					var node = BsChecklist.makeAndRegisterCheckboxSpecialTag(ed, false);
-					$(value).replaceWith(node);
-					//evt.target.selection.collapse(false);
-				});
-				
-				if ( evt.target.selection.isCollapsed() ) {
-					self.disabled(false);
-				} else {
+				self.disabled(false);
+				if ( !evt.target.selection.isCollapsed() ) {
 					self.disabled(true);
 				}
+				$(evt.parents).each(function(){
+					if ( this.tagName.toLowerCase() == 'pre' ) {
+						self.disabled(true);
+					}
+				});
 			});
 		},
 		

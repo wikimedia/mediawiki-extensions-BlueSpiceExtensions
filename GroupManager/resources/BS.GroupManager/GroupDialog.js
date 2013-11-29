@@ -28,7 +28,7 @@ Ext.define( 'BS.GroupManager.GroupDialog', {
 		this.items = [
 			this.tfGroupName
 		];
-
+		
 		this.callParent(arguments);
 	},
 	resetData: function() {

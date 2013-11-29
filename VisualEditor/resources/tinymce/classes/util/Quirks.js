@@ -177,6 +177,16 @@ define("tinymce/util/Quirks", [
 			}
 
 			function allContentsSelected(rng) {
+				if (!rng.setStart) {
+					if (rng.item) {
+						return false;
+					}
+
+					var bodyRng = rng.duplicate();
+					bodyRng.moveToElementText(editor.getBody());
+					return RangeUtils.compareRanges(rng, bodyRng);
+				}
+
 				var selection = serializeRng(rng);
 
 				var allRng = dom.createRng();
@@ -187,19 +197,15 @@ define("tinymce/util/Quirks", [
 			}
 
 			editor.on('keydown', function(e) {
-				var keyCode = e.keyCode, isCollapsed;
+				var keyCode = e.keyCode, isCollapsed, body;
 
 				// Empty the editor if it's needed for example backspace at <p><b>|</b></p>
 				if (!isDefaultPrevented(e) && (keyCode == DELETE || keyCode == BACKSPACE)) {
 					isCollapsed = editor.selection.isCollapsed();
+					body = editor.getBody();
 
 					// Selection is collapsed but the editor isn't empty
-					if (isCollapsed && !dom.isEmpty(editor.getBody())) {
-						return;
-					}
-
-					// IE deletes all contents correctly when everything is selected
-					if (isIE && !isCollapsed) {
+					if (isCollapsed && !dom.isEmpty(body)) {
 						return;
 					}
 
@@ -211,7 +217,13 @@ define("tinymce/util/Quirks", [
 					// Manually empty the editor
 					e.preventDefault();
 					editor.setContent('');
-					editor.selection.setCursorLocation(editor.getBody(), 0);
+
+					if (body.firstChild && dom.isBlock(body.firstChild)) {
+						editor.selection.setCursorLocation(body.firstChild, 0);
+					} else {
+						editor.selection.setCursorLocation(body, 0);
+					}
+
 					editor.nodeChanged();
 				}
 			});
@@ -219,6 +231,7 @@ define("tinymce/util/Quirks", [
 
 		/**
 		 * WebKit doesn't select all the nodes in the body when you press Ctrl+A.
+		 * IE selects more than the contents <body>[<p>a</p>]</body> instead of <body><p>[a]</p]</body> see bug #6438
 		 * This selects the whole body so that backspace/delete logic will delete everything
 		 */
 		function selectAll() {
@@ -263,7 +276,9 @@ define("tinymce/util/Quirks", [
 		 * browser just deletes the paragraph - the browser fails to merge the text node with a horizontal rule so it is
 		 * left there. TinyMCE sees a floating text node and wraps it in a paragraph on the key up event (ForceBlocks.js
 		 * addRootBlocks), meaning the action does nothing. With this code, FireFox/IE matche the behaviour of other
-		 * browsers
+		 * browsers.
+		 *
+		 * It also fixes a bug on Firefox where it's impossible to delete HR elements.
 		 */
 		function removeHrOnBackspace() {
 			editor.on('keydown', function(e) {
@@ -271,6 +286,12 @@ define("tinymce/util/Quirks", [
 					if (selection.isCollapsed() && selection.getRng(true).startOffset === 0) {
 						var node = selection.getNode();
 						var previousSibling = node.previousSibling;
+
+						if (node.nodeName == 'HR') {
+							dom.remove(node);
+							e.preventDefault();
+							return;
+						}
 
 						if (previousSibling && previousSibling.nodeName && previousSibling.nodeName.toLowerCase() === "hr") {
 							dom.remove(previousSibling);
@@ -917,6 +938,43 @@ define("tinymce/util/Quirks", [
 			}
 		}
 
+		/**
+		 * IE 11 has an annoying issue where you can't move focus into the editor
+		 * by clicking on the white area HTML element. We used to be able to to fix this with
+		 * the fixCaretSelectionOfDocumentElementOnIe fix. But since M$ removed the selection
+		 * object it's not possible anymore. So we need to hack in a ungly CSS to force the
+		 * body to be at least 150px. If the user clicks the HTML element out side this 150px region
+		 * we simply move the focus into the first paragraph. Not ideal since you loose the
+		 * positioning of the caret but goot enough for most cases.
+		 */
+		function bodyHeight() {
+			if (!editor.inline) {
+				editor.contentStyles.push('body {min-height: 150px}');
+				editor.on('click', function(e) {
+					if (e.target.nodeName == 'HTML') {
+						editor.execCommand('SelectAll');
+						editor.selection.collapse(true);
+						editor.nodeChanged();
+					}
+				});
+			}
+		}
+
+		/**
+		 * Firefox on Mac OS will move the browser back to the previous page if you press CMD+Left arrow.
+		 * You might then loose all your work so we need to block that behavior and replace it with our own.
+		 */
+		function blockCmdArrowNavigation() {
+			if (Env.mac) {
+				editor.on('keydown', function(e) {
+					if (VK.metaKeyPressed(e) && (e.keyCode == 37 || e.keyCode == 39)) {
+						e.preventDefault();
+						editor.selection.getSel().modify('move', e.keyCode == 37 ? 'backward' : 'forward', 'word');
+					}
+				});
+			}
+		}
+
 		// All browsers
 		disableBackspaceIntoATable();
 		removeBlockQuoteOnBackSpace();
@@ -935,6 +993,7 @@ define("tinymce/util/Quirks", [
 			if (Env.iOS) {
 				selectionChangeNodeChanged();
 				restoreFocusOnKeyDown();
+				bodyHeight();
 			} else {
 				selectAll();
 			}
@@ -952,6 +1011,14 @@ define("tinymce/util/Quirks", [
 			fixCaretSelectionOfDocumentElementOnIe();
 		}
 
+		if (Env.ie >= 11) {
+			bodyHeight();
+		}
+
+		if (Env.ie) {
+			selectAll();
+		}
+
 		// Gecko
 		if (isGecko) {
 			removeHrOnBackspace();
@@ -961,6 +1028,7 @@ define("tinymce/util/Quirks", [
 			addBrAfterLastLinks();
 			removeGhostSelection();
 			showBrokenImageIcon();
+			blockCmdArrowNavigation();
 		}
 	};
 });

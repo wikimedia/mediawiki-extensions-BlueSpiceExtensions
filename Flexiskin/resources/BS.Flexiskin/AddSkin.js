@@ -30,7 +30,8 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 			fieldLabel: mw.message('bs-flexiskin-labelDesc').plain(),
 			labelWidth: 130,
 			labelAlign: 'left',
-			name: 'desc'
+			name: 'desc',
+			allowBlank: false
 		});
 		
 		this.cbSkins = Ext.create( 'Ext.form.field.ComboBox', {
@@ -38,8 +39,10 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 			labelWidth: 130,
 			labelAlign: 'left',
 			store: this.strSkins,
-			valueField: 'skin',
-			displayField: 'flexiskin_name'
+			valueField: 'flexiskin_id',
+			displayField: 'flexiskin_name',
+			forceSelection: true,
+			allowBlank: false
 		} );
 
 		this.items = [
@@ -67,6 +70,10 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 		}
 	},
 	getData: function() {
+		if( this.cbSkins.validate() != true || this.tfDesc.validate() != true || this.tfName.validate() != true ) {
+			return null;
+		}
+
 		this.selectedData.flexiskin_name = this.tfName.getValue();
 		this.selectedData.flexiskin_desc = this.tfDesc.getValue();
 		this.selectedData.skins = this.cbSkins.getValue();

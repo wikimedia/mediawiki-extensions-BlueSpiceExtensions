@@ -80,7 +80,7 @@ class Readers extends BsExtensionMW {
 		$this->mCore->registerPermission( 'viewreaders' );
 
 		BsConfig::registerVar( 'MW::Readers::UpOrDown', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-upordown', 'toggle' );
-		BsConfig::registerVar( 'MW::Readers::Active', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-active', 'toggle' );
+		BsConfig::registerVar( 'MW::Readers::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-active', 'toggle' );
 		BsConfig::registerVar( 'MW::Readers::NumOfReaders', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-readers-pref-numofreaders', 'int' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -298,7 +298,7 @@ class Readers extends BsExtensionMW {
 				$aTmpUser['user_page'] = $oTitle->getLocalURL();
 				$aTmpUser['user_readers'] = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() )->getLocalURL();
 				$aTmpUser['user_ts'] = $row->readers_ts;
-				$aTmpUser['user_date'] = date( "d.m.Y H.i", wfTimestamp( TS_UNIX, $row->readers_ts ) );
+				$aTmpUser['user_date'] = RequestContext::getMain()->getLanguage()->timeanddate( $row->readers_ts );
 
 				$aUsers['users'][] = $aTmpUser;
 			}
@@ -387,7 +387,7 @@ class Readers extends BsExtensionMW {
 				$aTmpPage = array();
 				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
 				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
-				$aTmpPage['pv_ts'] = date( "d.m.Y", $row->readers_ts );
+				$aTmpPage['pv_ts'] = RequestContext::getMain()->getLanguage()->timeanddate( $row->readers_ts );
 
 				$aPages['page'][] = $aTmpPage;
 			}

@@ -116,7 +116,7 @@ class UniversalExport extends BsExtensionMW {
 			'creator'  => 'Hallo Welt! Medienwerkstatt GmbH',
 		);
 		$aMetadataOverrides = array(
-			'producer' => 'UniversalExport 1.20 (BlueSpice for MediaWiki)'
+			'producer' => 'UniversalExport 2.22 (BlueSpice for MediaWiki)'
 		);
 
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryWhitelist', $this->aCategoryWhitelist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );

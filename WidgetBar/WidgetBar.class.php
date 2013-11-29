@@ -210,20 +210,4 @@ class WidgetBar extends BsExtensionMW {
 		wfRunHooks( 'BSWidgetBarGetDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
 		return $aViews;
 	}
-	
-	/**
-	 * Sets parameters for more complex options in preferences
-	 * @param string $sAdapterName Name of the adapter, e.g. MW
-	 * @param BsConfig $oVariable Instance of variable
-	 * @return array Preferences options
-	 */
-	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
-		$aPrefs = array(
-			'options' => array(
-				wfMessage( 'bs-pref-SkinWidgetDirection-left' )->plain() => 'left',
-				wfMessage( 'bs-pref-SkinWidgetDirection-right' )->plain() => 'right',
-			)
-		);
-		return $aPrefs;
-	}
 }

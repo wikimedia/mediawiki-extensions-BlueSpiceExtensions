@@ -195,7 +195,8 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var editable = selectedRow[0].get( 'editable' );
 		if ( editable === false ) {
-			bs.util.alert( 'NMfail', { text: message, title: 'Status' }, { ok: function() {}, cancel: function() {}, scope: this } );
+			bs.util.alert( 'NMfail', { text: mw.message('bs-namespacemanager-msgNotEditableDelete').plain(), title: 'Status' }, { ok: function() {}, cancel: function() {}, scope: this } );
+                        return;
 		}
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var id = selectedRow[0].get( 'id' );

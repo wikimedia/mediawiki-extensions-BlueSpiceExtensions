@@ -14,7 +14,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 		this.ufLogoUpload = Ext.create('BS.form.UploadPanel', {
 			url: bs.util.getAjaxDispatcherUrl('Avatars::uploadFile'),
 			uploadFormName: 'avatars',
-			//uploadFieldLabel: mw.message('bs-avatars-upload-label').plain(),
+			uploadFieldLabel: mw.message('bs-avatars-upload-label').plain(),
 			uploadLabelWidth: 50,
 			uploadButtonsInline: true
 		});

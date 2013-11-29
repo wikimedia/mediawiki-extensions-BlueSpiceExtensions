@@ -72,7 +72,9 @@ class UserPreferences extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
 
-		$this->setHook( 'GetPreferences' );
+		//PW(27.11.2013): ensure that this hook-handler is called first or strange things happen
+		$this->setHook( 'GetPreferences', 'onGetPreferences', true );
+
 		$this->setHook( 'UserLoadOptions' );
 		$this->setHook( 'UserSaveOptions' );
 		$this->setHook( 'BeforePageDisplay' );
