@@ -342,8 +342,6 @@ class RSSStandards extends BsExtensionMW {
 		global $wgUser, $wgOut, $wgRequest, $wgRCShowWatchingUsers,
 				$wgEnotifWatchlist, $wgShowUpdatedMarker, $wgEnotifWatchlist, $wgSitename;
 
-		$fname = 'wfSpecialWatchlist';
-
 		$skin = RequestContext::getMain()->getSkin();
 		$specialTitle = $wgSitename . ' - ' . SpecialPage::getTitleFor( 'Watchlist' );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
@@ -505,7 +503,7 @@ class RSSStandards extends BsExtensionMW {
 	  ORDER BY rc_timestamp DESC
 			$limitWatchlist";
 
-		$res = $dbr->query( $sql, $fname );
+		$res = $dbr->query( $sql, __METHOD__ );
 		$numRows = $dbr->numRows( $res );
 
 		# If there's nothing to show, stop here
