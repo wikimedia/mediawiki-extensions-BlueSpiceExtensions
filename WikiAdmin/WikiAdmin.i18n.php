@@ -22,7 +22,9 @@ $messages['en'] = array(
 	'bs-wikiadmin-wikiadmin'             => 'WikiAdmin123',
 	'specialwikiadmin'                   => 'Wiki Admin',
 	'specialwikiadmin-desc'              => '',
-	'specialpages-group-bluespice'       => 'BlueSpice'
+	'specialpages-group-bluespice'       => 'BlueSpice',
+	// TODO: we also need rights- messages
+	'action-wikiadmin'                   => 'view pages which are protected with the "WikiAdmin" right',
 );
 
 $messages['de'] = array(
@@ -32,7 +34,8 @@ $messages['de'] = array(
 	'bs-wikiadmin-wikiadmin'             => 'WikiAdmin123',
 	'specialwikiadmin'                   => 'Wiki Admin',
 	'specialwikiadmin-desc'              => '',
-	'specialpages-group-bluespice'       => 'BlueSpice'
+	'specialpages-group-bluespice'       => 'BlueSpice',
+	'action-wikiadmin'                   => 'Seiten zu sehen, die mit dem "WikiAdmin"-Recht geschützt sind.',
 );
 
 $messages['de-formal'] = array(

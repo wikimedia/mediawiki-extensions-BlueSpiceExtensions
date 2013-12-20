@@ -29,15 +29,18 @@ BsStateBar = {
 		$.each( this.aRegisteredToggleClickElements, function( key, value ) {
 			value.unbind('click');
 		} );
+		var params = {
+			action:'ajax',
+			rs:'StateBar::ajaxCollectBodyViews',
+			articleID: wgArticleId
+		};
 
+		$(document).trigger( 'BsStateBarBodyBeforeLoad', [params] );
 		$.getJSON(
 			wgScriptPath + '/index.php',
-			{
-				action:'ajax',
-				rs:'StateBar::ajaxCollectBodyViews',
-				articleID: wgArticleId
-			},
+			params,
 			function( result ) {
+				$(document).trigger( 'BsStateBarBodyLoad', [result] );
 				if ( result['success'] === true ) {
 					$('#sStateBarBodyLoadView').slideToggle('fast');
 
@@ -57,10 +60,11 @@ BsStateBar = {
 						BsStateBar.oStateBarView.append(bodyItem.slideToggle('fast'));
 					});
 
+					$(document).trigger( 'BsStateBarBodyLoadComplete', [result['views'], result] );
+
 					$.each(BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
 						BsStateBar.viewTogglerClick(value);
 					});
-					$(document).trigger( 'BsStateBarBodyLoadComplete', [result['views']] );
 				} else {
 					//console.log(result);
 				}

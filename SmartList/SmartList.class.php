@@ -840,10 +840,9 @@ class SmartList extends BsExtensionMW {
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function onTagBsNewbies( $sInput, $aArgs, $oParser ) {
-		global $wgUser;
 		$oParser->disableCache();
-
 		$iCount = BsCore::sanitizeArrayEntry( $aArgs, 'count', 5, BsPARAMTYPE::INT );
+
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(
 			'user', 
@@ -855,14 +854,15 @@ class SmartList extends BsExtensionMW {
 				'LIMIT' => $iCount
 			)
 		);
+
 		$aOut = array();
 		foreach ( $res as $row ) {
-			$oCurrentUser = User::newFromId( $row->user_id );
-			$sLink = $wgUser->getSkin()->link(
-					$oCurrentUser->getUserPage(), $this->mCore->getUserDisplayName( $oCurrentUser )
-			);
+			$oUser = User::newFromId( $row->user_id );
+			$oTitle = Title::makeTitle( NS_USER, $oUser->getName() );
+			$sLink = BsLinkProvider::makeLink( $oTitle, $oUser->getName() );
 			$aOut[] = $sLink;
 		}
+
 		$oDbr->freeResult( $res );
 		return implode( ', ', $aOut );
 	}
@@ -905,7 +905,8 @@ class SmartList extends BsExtensionMW {
 			);
 			$aConditions = array( 'wo_action' => 'view' );
 			$aOptions = array(
-				'GROUP BY' => 'wo_page_title'
+				'GROUP BY' => 'wo_page_title',
+				'ORDER BY' => 'page_counter DESC'
 			);
 			$aJoinConditions = array();
 

@@ -117,7 +117,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 			$oTitle = Title::makeTitle( $sPageNamespace, $sPageTitle );
 
-			$bIsRedirect = (int)$oTitle->isRedirect();
+			$bIsRedirect = $oTitle->isRedirect();
 
 			$sContent = $this->oMainControl->parseTextForIndex( $oDocument->old_text, $oTitle );
 			$aSections = $this->oMainControl->extractEditSections( $oDocument->old_text );

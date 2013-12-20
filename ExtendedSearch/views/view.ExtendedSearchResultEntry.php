@@ -33,7 +33,12 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 	protected function processSnippets( array $aSnippets ) {
 		$sOut = '';
 		foreach ( $aSnippets as $sFrag ) {
-			$sFrag = strip_tags( $sFrag, '<em>' );
+			$sFrag = htmlspecialchars( $sFrag, ENT_QUOTES, 'UTF-8' );
+			$sFrag = str_replace(
+				array( '&lt;em&gt;', '&lt;/em&gt;' ),
+				array( '<em>', '</em>' ),
+				$sFrag
+			);
 			if ( empty( $sFrag ) ) continue;
 			$sOut .= "{$sFrag}<br />";
 		}

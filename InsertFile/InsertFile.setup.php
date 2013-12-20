@@ -18,9 +18,6 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.insertFile'] = array(
 	'scripts' =>  'bluespice.insertFile.js',
-	'dependencies' => array(
-		'ext.bluespice.extjs'
-	),
 	'messages' => array(
 		'bs-insertfile-button_image_title',
 		'bs-insertfile-button_file_title',

@@ -75,3 +75,8 @@ td.mceToolbar {
 	/*@embed*/
 	background-image: url(images/button_vis-editor.png);
 }
+
+/* reset has layout: http://onhavinglayout.fwpf-webdesign.de/ */
+h1, h2, h3, h4, h5, h6 {
+	overflow: visible !important;
+}

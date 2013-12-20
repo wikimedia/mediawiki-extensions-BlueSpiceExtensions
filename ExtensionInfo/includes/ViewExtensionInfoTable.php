@@ -72,7 +72,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		RequestContext::getMain()->getOutput()->addJsConfigVars(
 				'aExtensionInfo', $aExtensionInfo
 		);
-		$sCreditsLink = ' (<a href="' . SpecialPage::getTitleFor( 'Credits' )->getFullURL() . '">Credits</a>)';
+		$sCreditsLink = ' (<a href="' . SpecialPage::getTitleFor( 'SpecialCredits' )->getFullURL() . '">Credits</a>)';
 
 		$sVersion = $wgBlueSpiceExtInfo['version'].( ( $wgBlueSpiceExtInfo['status'] !== 'stable' ) ? ' '.$wgBlueSpiceExtInfo['status'] : '' );
 		$aOut = array();

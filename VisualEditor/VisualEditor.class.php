@@ -52,7 +52,7 @@ class VisualEditor extends BsExtensionMW {
 	 * Standard configuration for visual editor in full mode
 	 */
 	private $aConfigStandard = array(
-		'selector' => '#wpTextbox1, .enableEditor',
+		'selector' => '#wpTextbox1',
 		'plugins' => array(
 			"lists",
 			//"emoticons",
@@ -103,7 +103,7 @@ class VisualEditor extends BsExtensionMW {
 		// don't wrap the editable element?
 		'nowrap' => false,
 		// enable resizing for element like images, tables or media objects
-		'object_resizing' => false,
+		'object_resizing' => true,
 		// convert font tags into spans with styles
 		'convert_fonts_to_spans' => true,
 		// the html mode for tag creation (we need xhtml)
@@ -318,11 +318,14 @@ class VisualEditor extends BsExtensionMW {
 
 		// find the right language file
 		$language = $wgLang->getCode();
-		$langDir = dirname(__FILE__) . '/resources/tinymce/langs';
-		if (!file_exists("{$langDir}/{$language}.js")) {
-			$language = explode('_', $language);
-			if (file_exists("{$langDir}/{$language[0]}.js")) {
-				$language = $language[0];
+		$langDir = dirname(__FILE__) . DS . 'resources' . DS . 'tinymce' . DS . 'langs';
+		if (!file_exists("{$langDir}" . DS . "{$language}.js")) {
+			//i don't know what language files use underscores, but i'll leave it here
+			$aLanguage = explode('_', $language);
+			if (count($aLanguage)<2)
+				$aLanguage = explode('-', $language);
+			if (file_exists("{$langDir}" . DS . "{$aLanguage[0]}.js")) {
+				$language = $aLanguage[0];
 			} else {
 				$language = 'en';
 			}
@@ -397,7 +400,11 @@ class VisualEditor extends BsExtensionMW {
 			return true;
 
 		$out->addModuleStyles('ext.bluespice.visualEditor.styles');
-		$out->addModules('ext.bluespice.visualEditor');
+		// $out->addModules breaks IE8
+		$out->addModuleScripts('ext.bluespice.visualEditor.tinymce');
+		$out->addModuleScripts('ext.bluespice.visualEditor');
+		
+		$out->addModuleMessages('ext.bluespice.visualEditor.tinymce');
 
 		return true;
 	}

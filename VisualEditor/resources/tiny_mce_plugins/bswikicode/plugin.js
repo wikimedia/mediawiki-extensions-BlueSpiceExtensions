@@ -358,11 +358,24 @@ var BsWikiCode = function() {
 */
 			if (htmlImageObject.attr('width') 
 				&& htmlImageObject.attr('width') !== wikiImageObject.sizewidth) {
-				wikiImageObject.sizewidth = htmlImageObject.attr('width');
+				wikiImageObject.sizewidth = htmlImageObject.attr( 'width' );
 			}
 			if (htmlImageObject.attr('height') 
 				&& htmlImageObject.attr('height') !== wikiImageObject.sizeheight) {
-				wikiImageObject.sizeheight = htmlImageObject.attr('height');
+				wikiImageObject.sizeheight = htmlImageObject.attr( 'height' );
+			}
+			if (htmlImageObject.css( 'width' )) {
+				console.log( htmlImageObject.css( 'width' ) );
+				var csswidth = htmlImageObject.css( 'width' ).replace('px', '');
+				if ( csswidth !== "0" ) {
+					wikiImageObject.sizewidth = csswidth;
+				}
+			}
+			if (htmlImageObject.css( 'height' )) {
+				var cssheight = htmlImageObject.css( 'height' ).replace('px', '');
+				if ( cssheight !== "0" ) {
+					wikiImageObject.sizeheight = cssheight;
+				}
 			}
 
 			if (htmlImageObject.css('float')) {
@@ -683,12 +696,12 @@ var BsWikiCode = function() {
 			} else if (line = lines[i].match(/^\|\}/gi)) {
 				closeLine = '';
 				if (inTd) {
-					closeLine = "</td>";
+					closeLine = "</p></td>";
 				}
 				if (inTr) {
 					closeLine += "</tr>";
 				}
-				lines[i] = closeLine + "</table>" + line[0].substr(2, line[0].length);
+				lines[i] = closeLine + "</table><br/>" + line[0].substr(2, line[0].length);
 				inTr = inTd = inTable = false;
 			} else if ((i === (start + 1)) && (line = lines[i].match(/^\|\+(.*)/gi))) {
 				lines[i] = "<caption>" + line[0].substr(2) + "</caption>";
@@ -700,7 +713,7 @@ var BsWikiCode = function() {
 					attr = " " + attr;
 				}
 				if (inTd) {
-					endTd = "</td>";
+					endTd = "</p></td>";
 					inTd = false;
 				}
 				if (inTr) {
@@ -745,9 +758,9 @@ var BsWikiCode = function() {
 					}
 
 					if (inTd) {
-						curLine += "</td><td" + tdAttr + ">" + tdText;
+						curLine += "</p></td><td" + tdAttr + "><p>" + tdText;
 					} else {
-						curLine += "<td" + tdAttr + ">" + tdText;
+						curLine += "<td" + tdAttr + "><p>" + tdText;
 						inTd = true;
 					}
 				}
@@ -1202,8 +1215,13 @@ var BsWikiCode = function() {
 
 		// fill empty table cells
 		// @todo maybe in the _table2html method
-		text = text.replace(/<td([^>]*)>\s*<\/td>/gmi, '<td$1><br mce_bogus="1"/></td>');
-		text = text.replace(/<th([^>]*)>\s*<\/th>/gmi, '<th$1><br mce_bogus="1"/></th>');
+		text = text.replace(/<td([^>]*)>(\s|<br([^>]*)>)*<\/td>/gmi, '<td$1><p>&nbsp;</p></td>');
+		text = text.replace(/<th([^>]*)>\s*<\/th>/gmi, '<th$1><p></p></th>');
+		
+		//check if text ends with </table>, need to insert something after the table
+		//otherwise you won't be able to write after the table
+		if (text.indexOf("</table>", text.length - 8) !== -1)
+			text += "<br/>";
 
 		// clean up bogus code when spans are in a single line
 		text = text.replace(/<p>((<span([^>]*)>\s*)+)<\/p>/gmi, '$1');
@@ -1591,7 +1609,16 @@ var BsWikiCode = function() {
 				templateName = templateName.replace(/[\{\}]/gmi, "");
 
 				templateNameLines = templateName.split(/\n/i);
-				templateName = templateNameLines[0];
+				templateName = templateNameLines[0].trim();
+				
+				// remove everything after the magic word name
+				if ( templateName.indexOf( "#" ) === 0 ) {
+					templateName = templateName.slice( 0, templateName.indexOf( ":" ));
+				}
+				// remove any parameters from name. Reason: they might contain parsable code
+				if ( templateName.indexOf( "|" ) > 0 ) {
+					templateName = templateName.slice( 0, templateName.indexOf( "|" ));
+				}
 
 				text = text.replace(
 					_templates[i],

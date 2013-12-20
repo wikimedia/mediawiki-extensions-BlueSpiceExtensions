@@ -49,7 +49,7 @@ $messages['de-formal'] = array(
 
 $messages['en'] = array(
 	'bs-insertcategory-extension-description' => 'Dialogbox to enter a category link.',
-	'bs-insertcategory-insert_category' => 'Insert Category',
+	'bs-insertcategory-insert_category' => 'Insert category',
 	'prefs-InsertCategory' => 'Insert Category',
 	'bs-insertcategory-pref-WithParents' => 'Insert categories include its parents',
 	

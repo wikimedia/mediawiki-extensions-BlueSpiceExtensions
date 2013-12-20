@@ -446,7 +446,7 @@ BsSaferEditEditMode = {
 	}
 };
 
-$(document).ready( function() { 
+mw.loader.using( 'ext.bluespice', function() {
 	BsSaferEditEditMode.init();
 	if( mw.config.get('bsSaferEditHasTexts', false ) ) {
 		BsSaferEditEditMode.toggleDialog();

@@ -20,7 +20,7 @@ $(document).bind('BsInsertLinkWindowBeforeAddTabs', function( event, window, ite
 	var storeIW = Ext.create('Ext.data.Store', {
 		fields: [
 			'name',
-			'label',
+			'label'
 		],
 		data: storeData,
 		autoLoad: false

@@ -233,7 +233,8 @@ class Statistics extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if( !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('AdminDashboard'))
-			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('Wiki_Admin')) 
+			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('SpecialWikiAdmin'))
+			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('UserDashboard'))
 		) return true;
 
 		$oOutputPage->addModules('ext.bluespice.statisticsPortlets');

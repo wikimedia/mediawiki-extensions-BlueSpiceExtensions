@@ -14,10 +14,6 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.insertMagic'] = array(
 	'scripts' => 'bluespice.insertMagic.js',
-	'dependencies' => array(
-		'ext.bluespice.extjs',
-		'jquery.textSelection'
-	),
 	'messages' => array(
 		'bs-insertmagic-dlg_title',
 		'bs-insertmagic-type_tags',

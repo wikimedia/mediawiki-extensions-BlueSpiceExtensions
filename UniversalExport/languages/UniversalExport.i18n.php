@@ -54,9 +54,7 @@ $messages['en'] = array(
 	'universalexport'                                                  => 'UniversalExport' ,
 	'specialuniversalexport-desc'                                      => 'Adds export functions to MediaWiki. For example export to Pdf.',
 	'right-universalexport-export'                                     => 'Use UniversalExport extension',
-	'right-universalexport-export-unfiltered'                          => 'Export content unfiltered',
-	'right-universalexport-export-with-attachments'                    => 'Export articles with file attachments (PDF)',
-	'right-universalexport-export-recursive'                           => 'Include linked atricles in export',
+	'action-universalexport-export'                                    => 'to create an export file',
 );
 
 $messages['de'] = array(
@@ -97,9 +95,7 @@ $messages['de'] = array(
 	'specialuniversalexport'                                           => 'UniversalExport' ,
 	'specialuniversalexport-desc'                                      => 'Ergänzt MediaWiki um verschiedene Exportfunktionen. Zum Beispiel Export nach Pdf.',
 	'right-universalexport-export'                                     => 'Benutzen der UniversalExport Erweiterung',
-	'right-universalexport-export-unfiltered'                          => 'Inhalte ungefiltert exportieren',
-	'right-universalexport-export-with-attachments'                    => 'Exportieren mit Dateianhängen (PDF)',
-	'right-universalexport-export-recursive'                           => 'Verlinkte Artikel mitexportieren',
+	'action-universalexport-export'                                    => 'eine Exportdatei zu erstellen',
 );
 
 $messages['de-formal'] = array(

@@ -726,8 +726,8 @@ class SearchIndex {
 
 			$sTimestamp = sprintf(
 				'%s - %s',
-				$this->oRequestContext->getLang()->date( $oDocument->ts, true ),
-				$this->oRequestContext->getLang()->time( $oDocument->ts, true )
+				$this->oRequestContext->getLanguage()->date( $oDocument->ts, true ),
+				$this->oRequestContext->getLanguage()->time( $oDocument->ts, true )
 			);
 
 			$aResultEntryDataSet = array(

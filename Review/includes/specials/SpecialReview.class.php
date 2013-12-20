@@ -105,8 +105,6 @@ class SpecialReview extends BsSpecialPage {
 			$oReview->page_title = Title::makeTitle( $row['page_namespace'], $row['page_title'] )->getPrefixedText();
 			$oReview->owner_name = $row['owner_name'];
 			$oReview->owner_real_name = $row['owner_real_name'];
-			$oReview->rev_mode = $row['rev_mode'];
-			$oReview->rev_mode_text = wfMessage( 'bs-review-' . $row['rev_mode'])->plain();
 			$oReview->rev_status = $row['revs_status'];
 			$oReview->rev_status_text = wfMessage( 'bs-review-' . $row['revs_status'])->plain();
 			$oReview->rejected = isset($row['rejected']) ? $row['rejected'] : false;

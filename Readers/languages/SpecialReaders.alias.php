@@ -3,15 +3,15 @@ $specialPageAliases = array();
 
 /** English */
 $specialPageAliases['en'] = array(
-	'SpecialReaders' => array( 'Readers' ),
+	'Readers' => array( 'Readers' ),
 );
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'SpecialReaders' => array( 'Leser' ),
+	'Readers' => array( 'Leser' ),
 );
 
 /** German (Deutsch) */
 $specialPageAliases['de-formal'] = array(
-	'SpecialReaders' => array( 'Leser' ),
+	'Readers' => array( 'Leser' ),
 );

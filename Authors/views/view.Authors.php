@@ -64,7 +64,7 @@ class ViewAuthors extends ViewBaseElement {
 		$aOut[] = '<div class="bs-authors">';
 		$aOut[] = '  <fieldset>';
 		$aOut[] = '    <legend>';
-		$aOut[] = wfMsgExt( 'bs-authors-title', array( 'parsemag' ), $iAuthors );
+		$aOut[] = wfMessage( 'bs-authors-title', $iAuthors )->text();
 		$aOut[] = '    </legend>';
 		$aOut[] = $sAuthorsList;
 		$aOut[] = '  </fieldset>';

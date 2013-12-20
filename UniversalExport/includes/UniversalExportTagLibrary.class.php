@@ -62,7 +62,7 @@ class BsUniversalExportTagLibrary {
 
 		// TODO RBV (08.02.11 11:34): Use CSS class for styling
 		$aOut[] = '<div class="bs-universalexport-pagebreak" style="border-top: 2px dotted #999; background-color: #F5F5F5; color: #BBB; font-style: italic; text-align: center;">';
-		$aOut[] = wfMsg( 'bs-universalexport-tag-pagebreak-text' );
+		$aOut[] = wfMessage( 'bs-universalexport-tag-pagebreak-text' )->plain();
 		$aOut[] = '</div>';
 
 		return implode( '', $aOut );
@@ -72,7 +72,7 @@ class BsUniversalExportTagLibrary {
 		$aOut = array();
 
 		// TODO RBV (08.02.11 11:34): Use CSS class for styling
-		$aOut[] = '<div class="bs-universalexport-exportexclude" style="background-color:#F5F5F5" title="'.wfMsg( 'bs-universalexport-tag-exclude-text' ).'">';
+		$aOut[] = '<div class="bs-universalexport-exportexclude" style="background-color:#F5F5F5" title="'.wfMessage( 'bs-universalexport-tag-exclude-text' )->plain().'">';
 		$aOut[] = $oParser->recursiveTagParse( $sContent );
 		$aOut[] = '</div>';
 
@@ -89,7 +89,7 @@ class BsUniversalExportTagLibrary {
 
 		$oHideTitleTagView = new ViewStateBarBodyElement();
 		$oHideTitleTagView->setKey( 'bs-universalexport-hidetitle-'.self::$mHideTitleTagCount );
-		$oHideTitleTagView->setHeading( wfMsg( 'bs-universalexport-tag-hidetitle-text' ) );
+		$oHideTitleTagView->setHeading( wfMessage( 'bs-universalexport-tag-hidetitle-text' )->plain() );
 
 		//PW(06.09.2012): return view instead of add statebar element
 		//StateBar::addBodyElement( $oHideTitleTagView, 'statebaruniversal' );
@@ -102,7 +102,7 @@ class BsUniversalExportTagLibrary {
 	public static function onExcludeArticleTag( $sContent, $aAttributes, $oParser ) {
 		$oExcludeArticleTagView = new ViewStateBarBodyElement();
 		$oExcludeArticleTagView->setKey( 'bs-universalexport-excludearticle-'.self::$mExcludeArticleTagCount );
-		$oExcludeArticleTagView->setHeading( wfMsg( 'bs-universalexport-tag-excludearticle-text' ) );
+		$oExcludeArticleTagView->setHeading( wfMessage( 'bs-universalexport-tag-excludearticle-text' )->plain() );
 
 		//PW(06.09.2012): return view instead of add statebar element
 		//StateBar::addBodyElement( $oExcludeArticleTagView, 1030 + self::$mExcludeArticleTagCount );
@@ -150,7 +150,7 @@ class BsUniversalExportTagLibrary {
 		$oRowView->setTemplate( '<tr><td>{KEY}</td><td><em>{VALUE}</em></td></tr>' );
 		foreach( $aParameters['rows'] as $sKey => $sValue ){
 			$oRowView->addData( array(
-				'KEY'   => wfMsg( 'bs-universalexport-' . $sKey ),
+				'KEY'   => wfMessage( 'bs-universalexport-' . $sKey )->plain(),
 				'VALUE' => $sValue
 			));
 		}

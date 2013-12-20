@@ -142,9 +142,12 @@ class ResponsibleEditors extends BsExtensionMW {
 
 			$out->addJsConfigVars( 'bsResponsibleEditors', $oData );
 		}
-		//Attach Bookshelfs plugin if in context
-		if ( SpecialPage::getTitleFor( 'BookshelfBookManager' )->equals( $out->getTitle() ) ) {
-			$out->addModules( 'ext.bluespice.responsibleEditors.bookshelfPlugin' );
+
+		if ( BsExtensionManager::getExtension( 'Bookshelf' ) !== null ) {
+			//Attach Bookshelfs plugin if in context
+			if ( SpecialPage::getTitleFor( 'BookshelfBookManager' )->equals( $out->getTitle() ) ) {
+				$out->addModules( 'ext.bluespice.responsibleEditors.bookshelfPlugin' );
+			}
 		}
 		return true;
 	}
@@ -359,7 +362,7 @@ class ResponsibleEditors extends BsExtensionMW {
 			return true;
 
 		$links['actions']['respeditors'] = array(
-			'text'  => wfMsg( 'bs-responsibleeditors-contentactions-label' ),
+			'text'  => wfMessage( 'bs-responsibleeditors-contentactions-label' )->plain(),
 			'href'  => '#',
 			'class' => false
 		);
@@ -394,7 +397,7 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStatebarAddSortTopVars( &$aSortTopVars ) {
-		$aSortTopVars['statebartopresponsibleeditorsentries'] = wfMsg( 'bs-responsibleeditors-statebartopresponsibleeditorsentries' );
+		$aSortTopVars['statebartopresponsibleeditorsentries'] = wfMessage( 'bs-responsibleeditors-statebartopresponsibleeditorsentries' )->plain();
 		return true;
 	}
 	
@@ -404,7 +407,7 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStatebarAddSortBodyVars( &$aSortBodyVars ) {
-		$aSortBodyVars['statebarbodyresponsibleeditorsentries'] = wfMsg( 'bs-responsibleeditors-statebarbodyresponsibleeditorsentries' );
+		$aSortBodyVars['statebarbodyresponsibleeditorsentries'] = wfMessage( 'bs-responsibleeditors-statebarbodyresponsibleeditorsentries' )->plain();
 		return true;
 	}
 	
@@ -516,7 +519,7 @@ class ResponsibleEditors extends BsExtensionMW {
 
 		$oResponsibleEditorsTopView->setKey('ResponsibleEditors-Top');
 		$oResponsibleEditorsTopView->setIconSrc( BsConfig::get( 'MW::ScriptPath' ) . '/extensions/BlueSpiceExtensions/' . $this->mInfo[EXTINFO::NAME] . '/resources/images/' . BsConfig::get('MW::ResponsibleEditors::ImageResponsibleEditorStatebarIcon'));
-		$oResponsibleEditorsTopView->setIconAlt(wfMsg( 'bs-responsibleeditors-statebartop-icon-alt' ));
+		$oResponsibleEditorsTopView->setIconAlt( wfMessage( 'bs-responsibleeditors-statebartop-icon-alt' )->plain() );
 		$oResponsibleEditorsTopView->setText($sDispalyName);
 		$oResponsibleEditorsTopView->setTextLinkTitle($sDispalyName);
 		$oResponsibleEditorsTopView->setTextLink($oFirstResponsibleEditor->getUserPage()->getFullURL());
@@ -531,9 +534,9 @@ class ResponsibleEditors extends BsExtensionMW {
 
 		$oResponsibleEditorsBodyView = new ViewStateBarBodyElement();
 
-		$sStateBarBodyHeadline = wfMsg( 'bs-responsibleeditors-statebarbody-headline-singular' );
+		$sStateBarBodyHeadline = wfMessage( 'bs-responsibleeditors-statebarbody-headline-singular' )->plain();
 		if (count($aResponsibleEditorIds) > 1) {
-			$sStateBarBodyHeadline = wfMsg( 'bs-responsibleeditors-statebarbody-headline-plural' );
+			$sStateBarBodyHeadline = wfMessage( 'bs-responsibleeditors-statebarbody-headline-plural' )->plain();
 		}
 
 		$aResponsibleEditorUserMiniProfiles = array();

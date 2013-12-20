@@ -11,7 +11,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	singleton: true,
 	id: 'bs-InsertImage-dlg-window',
 	title: mw.message('bs-insertfile-titleImage').plain(),
-	
+
 	//Custom Settings
 	allowedFileExtensions: mw.config.get( 'bsImageExtensions' ),
 	storeFileType: 'image',
@@ -38,7 +38,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			margin: '0 0 0 5',
 			allowDecimals: false
 		});
-		this.nbHeight.on('change', this.onNbHeightChange, this);
+		this.nbHeight.on('blur', this.onNbHeightChange, this);
 		this.nbWidth = Ext.create( 'Ext.form.field.Number',{
 			width: 70,
 			minValue: 1,
@@ -46,7 +46,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			margin: '0 5 0 0',
 			allowDecimals: false
 		});
-		this.nbWidth.on('change', this.onNbWidthChange, this);
+		this.nbWidth.on('blur', this.onNbWidthChange, this);
 		this.btnKeepRatio = Ext.create('Ext.Button', {
 			text: '&nbsp;x&nbsp;',
 			tooltip: mw.message('bs-insertfile-tipKeepRatio').plain(),
@@ -87,7 +87,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			]
 		});
 		this.rgFormat.on( 'change', this.onRgFormatChange, this );
-		
+
 		this.rgAlign = Ext.create('Ext.form.RadioGroup', {
 			fieldLabel: mw.message('bs-insertfile-labelAlign').plain(),
 			value: 'none',
@@ -120,11 +120,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		});
 		
 		this.tfAlt = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-insertfile-labelAlt').plain()
+			fieldLabel: mw.message('bs-insertfile-labelAlt').plain(),
+			//todo: needs implementation, just setting an empty string
+			//otherwise the edit dialog would display false
+			value: ""
 		});
-		
+
 		this.hdnUrl = Ext.create( 'Ext.form.field.Hidden' );
-		
+
 		this.configPanel.height = 250;
 		this.configPanel.items = [
 			this.rgFormat,
@@ -156,7 +159,6 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		
 		this.callParent(arguments);
 	},
-	
 	//We need to set the 
 	onStImageGridLoad: function( store, records, successful, eOpts ) {
 		//Only if we have a image selected
@@ -176,15 +178,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		}
 		this.callParent(arguments);
 	},
-	
-	onNbHeightChange: function( sender, newValue, oldValue, eOpts ) {
+	onNbHeightChange: function( element, event ) {
 		if (this.btnKeepRatio.pressed && !this.isSetData) {
-			this.nbWidth.setValue(this.processRatio(0, newValue));
+			this.nbWidth.setValue(this.processRatio(0, element.lastValue));
 		}
 	},
-	onNbWidthChange: function( sender, newValue, oldValue, eOpts ) {
+	onNbWidthChange: function( element, event ) {
 		if (this.btnKeepRatio.pressed && !this.isSetData) {
-			this.nbHeight.setValue(this.processRatio(newValue, 0));
+			this.nbHeight.setValue(this.processRatio(element.lastValue, 0));
 		}
 	},
 	processRatio: function(w, h) {
@@ -208,7 +209,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.callParent(arguments);
 	},
 	*/
-	
+
 	getData: function() {
 		var cfg = this.callParent(arguments);
 		Ext.apply(cfg, {
@@ -218,7 +219,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			sizewidth: false,
 			link: this.cbPages.getValue(),
 			alt: this.tfAlt.getValue(),
-			
+			thumb: false,
+			border: false,
+			frame: false,
 			//VisualEditor stuff
 			imagename: this.tfFileName.getValue(),
 			src: Ext.htmlDecode(this.hdnUrl.getValue()) //Ext.htmlDecode(): this feels like the wrong place...
@@ -273,7 +276,6 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		
 		return cfg;
 	},
-	
 	setData: function( obj ) {
 		this.isSetData = true;
 		if( obj.imagename ) {
@@ -299,9 +301,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.hdnUrl.reset();
 
 		var format = 'none';
-		if( obj.thumb && obj.thumb  != 'false' ) format = 'thumb';
-		if( obj.frame && obj.frame  != 'false')  format = 'frame';
-		if( obj.border&& obj.border != 'false' ) format = 'border';
+		if( obj.thumb && obj.thumb !== 'false' ) format = 'thumb';
+		if( obj.frame && obj.frame !== 'false')  format = 'frame';
+		if( obj.border&& obj.border !== 'false' ) format = 'border';
 		this.rgFormat.setValue({
 			'img-type': format
 		});
@@ -315,7 +317,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.sizewidth !== '' ) { 
 			this.nbWidth.setValue(obj.sizewidth);
 		}
-		
+
 		if( obj.sizeheight !== '' ) { 
 			this.nbHeight.setValue(obj.sizeheight);
 		}
@@ -323,7 +325,13 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.alt !== '' ) { 
 			this.tfAlt.setValue( obj.alt );
 		}
-		
+		else
+			this.tfAlt.setValue("");
+
+		if( obj.link !== '' ) { 
+			this.cbPages.setValue( obj.link );
+		}
+
 		this.hdnUrl.setValue( obj.src );
 		this.isSetData = false;
 	},

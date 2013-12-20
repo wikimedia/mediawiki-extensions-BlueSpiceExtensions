@@ -163,9 +163,11 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					var styleAddition = '';
 					if( data.sizeheight ) {
 						styleAddition += ' height: '+data.sizeheight+'px;';
+						imgAttrs['height'] = data.sizeheight;
 					}
 					if( data.sizewidth ) {
 						styleAddition += ' width: '+data.sizewidth+'px;';
+						imgAttrs['width'] = data.sizewidth;
 					}
 					//TODO: This is ugly stuff from "bswikicode". Find better 
 					//solution in the year 2017.
@@ -205,7 +207,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					}
 					else {
 						newImgNode = this.dom.createHTML( 'img', imgAttrs );
-						this.insertContent(newImgNode);
+						this.selection.setContent(newImgNode);
 					}
 					
 					this.selection.collapse(false);

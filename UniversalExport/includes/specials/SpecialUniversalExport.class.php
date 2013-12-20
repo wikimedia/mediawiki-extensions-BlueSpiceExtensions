@@ -75,7 +75,7 @@ class SpecialUniversalExport extends BsSpecialPage {
 		//Set up default parameters and metadata
 		$this->aParams = BsConfig::get( 'MW::UniversalExport::ParamsDefaults' );
 		$this->aParams['webroot-filesystempath'] = BsCore::getMediaWikiWebrootPath();
-		$this->aMetadata = json_decode( BsConfig::get( 'MW::UniversalExport::MetadataDefaults' ), true );
+		$this->aMetadata = FormatJson::decode( BsConfig::get( 'MW::UniversalExport::MetadataDefaults' ), true );
 
 		//Set up Black- and Whitelists
 		$this->aCategoryWhitelist = BsConfig::get( 'MW::UniversalExport::CategoryWhitelist' );
@@ -121,8 +121,8 @@ class SpecialUniversalExport extends BsSpecialPage {
 				)
 			);
 			if( $res != false ) {
-				$res = json_decode( $res, true );
-				if(is_array( $res ) ) {
+				$res = FormatJson::decode( $res, true );
+				if( is_array( $res ) ) {
 					$this->aParams = array_merge(
 						$this->aParams,
 						$res

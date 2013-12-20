@@ -217,7 +217,7 @@ class Authors extends BsExtensionMW {
 			$sUserName = $aUserNames[$i];
 			if ( $sUserName == '//--MORE--//' ) {
 				$oMoreAuthorsView = $this->mCore->getUserMiniProfile( new User(), $aParams );
-				$oMoreAuthorsView->setOption( 'userdisplayname', wfMsg( 'bs-authors-show-all-authors' ) );
+				$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
 				$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
 				$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array('action' => 'edit') ) );
 				$oMoreAuthorsView->setOption( 'classes', array('bs-authors-more-icon') );

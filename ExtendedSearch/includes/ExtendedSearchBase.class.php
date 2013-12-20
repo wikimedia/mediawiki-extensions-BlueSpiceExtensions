@@ -105,34 +105,36 @@ class ExtendedSearchBase {
 	 * @param Article $oArticle MediaWiki article object of article to be indexed.
 	 * @param string $sText Text to be indexed (optional, fetched from article if not present)
 	 */
-	public function updateIndexWiki( &$oArticle ) {
+	public function updateIndexWiki( $oArticle ) {
 		if ( $oArticle === null ) return;
 		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-		$oBuildIndexMwArticles  = new BuildIndexMwArticles( $oBuildIndexMainControl );
+		$oBuildIndexMwArticles = new BuildIndexMwArticles( $oBuildIndexMainControl );
 
-		$oTitle    = $oArticle->getTitle();
+		$oTitle = $oArticle->getTitle();
 		$oRevision = Revision::newFromTitle( $oTitle );
 
 		wfRunHooks( 'BS::ExtendedSearch::UpdateIndexWiki', array( &$oTitle, &$oRevision ) );
 		if ( $oTitle === null ) return;
 
-		$iPageID         = $oTitle->getArticleID();
-		$iPageNamespace  = $oTitle->getNamespace();
-		$sPageTitle      = $oTitle->getText();
-		$iPageTimestamp  = $oTitle->getTouched();
+		$iPageID = $oTitle->getArticleID();
+		$iPageNamespace = $oTitle->getNamespace();
+		$sPageTitle = $oTitle->getText();
+		$iPageTimestamp = $oTitle->getTouched();
 		$aPageCategories = $this->getCategoriesFromDbForCertainPageId( $iPageID );
-		$aPageEditors    = $this->getEditorsFromDbForCertainPageId( $iPageID );
-		$bRedirect       = (int)$oTitle->isRedirect();
+		$aPageEditors = $this->getEditorsFromDbForCertainPageId( $iPageID );
+		$bRedirect = $oTitle->isRedirect();
 
 		$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
 
-		if ( $bRedirect === 1 ) {
-			$oRedirectTitle = Title::newFromRedirectRecurse( $sPageContent );
-			$oArticle = new Article( $oRedirectTitle );
-			$this->updateIndexWiki( $oArticle );
+		if ( $bRedirect === true ) {
+			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT )->getUltimateRedirectTarget();
+			if ( $oRedirectTitle instanceof Title ) {
+				$oArticle = new Article( $oRedirectTitle );
+				$this->updateIndexWiki( $oArticle );
+			}
 		}
 
-		$aSections    = $oBuildIndexMainControl->extractEditSections( $sPageContent );
+		$aSections = $oBuildIndexMainControl->extractEditSections( $sPageContent );
 		$sPageContent = $oBuildIndexMainControl->parseTextForIndex( $sPageContent, $oTitle );
 
 		$aRedirects = $oBuildIndexMainControl->getRedirects( $oTitle );
@@ -163,8 +165,12 @@ class ExtendedSearchBase {
 	 */
 	public function updateIndexFile( $oFile ) {
 		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-		$oIndexFile             = new BuildIndexMwSingleFile( $oBuildIndexMainControl, $oFile );
-		$oIndexFile->indexCrawledDocuments();
+		$oIndexFile = new BuildIndexMwSingleFile( $oBuildIndexMainControl, $oFile );
+		try {
+			$oIndexFile->indexCrawledDocuments();
+		} catch ( Exception $e ) {
+			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
 
 		$oBuildIndexMainControl->commitAndOptimize();
 
@@ -178,8 +184,12 @@ class ExtendedSearchBase {
 	 */
 	public function deleteIndexFile( $iID, $sPath ) {
 		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-		$sUniqueID              = $oBuildIndexMainControl->getUniqueId( $iID, $sPath );
-		$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
+		$sUniqueID = $oBuildIndexMainControl->getUniqueId( $iID, $sPath );
+		try {
+			$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
+		} catch ( Exception $e ) {
+			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
 
 		$oBuildIndexMainControl->commitAndOptimize();
 
@@ -193,7 +203,11 @@ class ExtendedSearchBase {
 	public function deleteFromIndexWiki( $iID ) {
 		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
 		$sUniqueID = $oBuildIndexMainControl->getUniqueId( $iID );
-		$this->oSearchService->deleteById( $sUniqueID );
+		try {
+			$this->oSearchService->deleteById( $sUniqueID );
+		} catch ( Exception $e ) {
+			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
 
 		$oBuildIndexMainControl->commitAndOptimize();
 
@@ -334,14 +348,14 @@ class ExtendedSearchBase {
 		if ( self::isCurlActivated() === false ) return '';
 		$oSearchOptions = SearchOptions::getInstance();
 
-		$sSearchString     = urldecode( $sSearchString );
+		$sSearchString = urldecode( $sSearchString );
 		$sSolrSearchString = SearchService::preprocessSearchInput( $sSearchString );
 
 		$vNamespace = $this->checkSearchstringForNamespace( $sSearchString, $sSolrSearchString );
 
 		$aQuery = $oSearchOptions->getSolrAutocompleteQuery();
-		$aQuery['searchString'] = 'titleWord:("'.$sSolrSearchString.'") OR titleWord:('.$sSolrSearchString.') OR titleWord:('.$sSolrSearchString.'*)';
-		$aQuery['searchLimit']  = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
+		$aQuery['searchString'] = 'titleEdge:('.$sSolrSearchString.')';
+		$aQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 
 		if ( $vNamespace !== false ) {
 			$i = 0;
@@ -373,9 +387,9 @@ class ExtendedSearchBase {
 			$oSearchOptions->setOption( 'scope', 'title' );
 
 			$aFuzzyQuery = $oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
-			$aFuzzyQuery['searchLimit']            = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
+			$aFuzzyQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 			$aFuzzyQuery['searchOptions']['facet'] = 'off';
-			$aFuzzyQuery['searchOptions']['hl']    = 'off';
+			$aFuzzyQuery['searchOptions']['hl'] = 'off';
 
 			try {
 				$oHits = $this->oSearchService->search(
@@ -395,13 +409,13 @@ class ExtendedSearchBase {
 		$iID      = 0;
 
 		if ( !empty( $oDocuments ) ) {
-			$oTitle                = null;
-			$iPosition             = 0;
-			$sPartOfTitle          = '';
+			$oTitle = null;
+			$iPosition = 0;
+			$sPartOfTitle = '';
 			$sModifiedSearchString = '';
-			$sLabelText            = '';
-			$sEscapedPattern       = '';
-			$aSearchStringParts    = array();
+			$sLabelText = '';
+			$sEscapedPattern = '';
+			$aSearchStringParts = array();
 
 			foreach ( $oDocuments as $oDoc ) {
 				if ( $oDoc->namespace != '999' ) {
@@ -549,23 +563,25 @@ class ExtendedSearchBase {
 
 		$aMlt = array();
 		//$aMlt[] = implode( ', ', $oResults->interestingTerms );
-		foreach ( $oResults->response->docs as $oRes ) {
-			if ( count( $aMlt )  === 5 ) break;
+		if ( !empty( $oResults->response->docs ) ) {
+			foreach ( $oResults->response->docs as $oRes ) {
+				if ( count( $aMlt )  === 5 ) break;
 
-			if ( $oRes->namespace != 999 ) {
-				$oMltTitle = Title::makeTitle( $oRes->namespace, $oRes->title );
-			} else {
-				$oMltTitle = Title::makeTitle( NS_FILE, $oRes->title );
+				if ( $oRes->namespace != 999 ) {
+					$oMltTitle = Title::makeTitle( $oRes->namespace, $oRes->title );
+				} else {
+					$oMltTitle = Title::makeTitle( NS_FILE, $oRes->title );
+				}
+
+				if ( !$oMltTitle->userCan( 'read' ) ) continue;
+				if ( $oMltTitle->getArticleID() == $oTitle->getArticleID() ) continue;
+
+				$sHtml = $oMltTitle->getPrefixedText();
+				if ( $sOrigin === 'widgetbar' ) {
+					$sHtml = BsStringHelper::shorten( $oMltTitle->getPrefixedText(), array( 'max-length' => 18, 'position' => 'middle' ) );
+				}
+				$aMlt[] = BsLinkProvider::makeLink( $oMltTitle, $sHtml );
 			}
-
-			if ( !$oMltTitle->userCan( 'read' ) ) continue;
-			if ( $oMltTitle->getArticleID() == $oTitle->getArticleID() ) continue;
-
-			$sHtml = $oMltTitle->getPrefixedText();
-			if ( $sOrigin === 'widgetbar' ) {
-				$sHtml = BsStringHelper::shorten( $oMltTitle->getPrefixedText(), array( 'max-length' => 18, 'position' => 'middle' ) );
-			}
-			$aMlt[] = BsLinkProvider::makeLink( $oMltTitle, $sHtml );
 		}
 
 		if ( empty( $aMlt ) ) {
@@ -649,13 +665,7 @@ class ExtendedSearchBase {
 
 		$oDbw = wfGetDB( DB_MASTER );
 
-		if ( $wgDBtype == 'postgres' ) {
-			$term = pg_escape_string( $term );
-		} elseif ( $wgDBtype == 'oracle' ) {
-			$term = addslashes( $term );
-		} else {
-			$term = mysql_real_escape_string( $term );
-		}
+		$term = BsCore::sanitize( $term, '', BsPARAMTYPE::SQL_STRING );
 
 		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) )
 			? RequestContext::getMain()->getUser()->getId()
@@ -663,10 +673,10 @@ class ExtendedSearchBase {
 
 		$effectiveScope = ( $files ) ? $scope.'-files' : $scope;
 		$data = array(
-			'stats_term'  => $term,
-			'stats_ts'    => wfTimestamp( TS_MW ),
-			'stats_user'  => $user,
-			'stats_hits'  => $iNumFound,
+			'stats_term' => $term,
+			'stats_ts' => wfTimestamp( TS_MW ),
+			'stats_user' => $user,
+			'stats_hits' => $iNumFound,
 			'stats_scope' => $effectiveScope
 		);
 

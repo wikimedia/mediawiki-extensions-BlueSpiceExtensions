@@ -274,12 +274,12 @@ class NamespaceManager extends BsExtensionMW {
 	 * Hook-Handler for NamespaceManager::editNamespace
 	 * @return boolean Always true to kepp hook alive
 	 */
-	public function onEditNamespace( &$aNamespaceDefinition, $bSubpages, $bSearchable, $bEvalualbe, $bUseInternalDefaults = false ) {
+	public function onEditNamespace( &$aNamespaceDefinition, &$iNs, $bSubpages, $bSearchable, $bEvalualbe, $bUseInternalDefaults ) {
 		if ( !$bUseInternalDefaults ) {
-			if ( empty( $aNamespaceDefinition ) ) $aNamespaceDefinition = array();
-			$aNamespaceDefinition += array( 'content' => $bEvalualbe,'subpages' => $bSubpages,'searched' => $bSearchable );
+			if ( empty( $aNamespaceDefinition[$iNs] ) ) $aNamespaceDefinition[$iNs] = array();
+			$aNamespaceDefinition[$iNs] += array( 'content' => $bEvalualbe,'subpages' => $bSubpages,'searched' => $bSearchable );
 		} else {
-			$aNamespaceDefinition += $this->_aDefaultNamespaceSettings;
+			$aNamespaceDefinition[$iNs] += $this->_aDefaultNamespaceSettings;
 		}
 		return true;
 	}
@@ -343,14 +343,17 @@ class NamespaceManager extends BsExtensionMW {
 			} else {
 				$aUserNamespaces[$iNS] = array( 'name' => $sNamespace );
 
-				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces[$iNS], $bSubpages, $bSearchable, $bEvaluable ) );
+				$bUseInternalDefaults = false;
+				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable, $bUseInternalDefaults ) );
 
-				$aUserNamespaces[ ( $iNS + 1 ) ] = array(
+				++$iNS;
+				$aUserNamespaces[ ( $iNS ) ] = array(
 					'name' => $sNamespace . '_' . $wgContLang->getNsText( NS_TALK ),
 					// TODO SU (04.07.11 12:13): Subpages in diskussionsnamespaces? Würd ich nicht machen. Diese drei Werte hätte ich eigentlich gerne in einer Einstellung, die im Konstruktor festgelegt wird. Gerne zunächst PRIVATE
 					'alias' => $sNamespace . '_talk'
 				);
-				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces[$iNS], $bSubpages, $bSearchable, $bEvaluable, true ) );
+				$bUseInternalDefaults = true;
+				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable, $bUseInternalDefaults ) );
 
 				return json_encode( self::setUserNamespaces( $aUserNamespaces ) );
 			}
@@ -406,7 +409,7 @@ class NamespaceManager extends BsExtensionMW {
 					//'name' => $sNamespace . '_' . $wgContLang->getNsText( NS_TALK ),
 					'alias' => str_replace( '_' . $wgContLang->getNsText( NS_TALK ), '_talk', $sNamespace ),
 				);
-			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces[$iNS], $bSubpages, $bSearchable, $bEvaluable ) );
+			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable ) );
 		} else {
 			$aUserNamespaces[$iNS] = array(
 				'name' => $sNamespace,
@@ -416,7 +419,7 @@ class NamespaceManager extends BsExtensionMW {
 				$aUserNamespaces[($iNS + 1)]['name'] = $sNamespace . '_' . $wgContLang->getNsText( NS_TALK );
 				$aUserNamespaces[($iNS + 1)]['alias'] = $sNamespace . '_talk';
 			}
-			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces[$iNS], $bSubpages, $bSearchable, $bEvaluable ) );
+			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable ) );
 		}
 
 		$aResult = self::setUserNamespaces( $aUserNamespaces );

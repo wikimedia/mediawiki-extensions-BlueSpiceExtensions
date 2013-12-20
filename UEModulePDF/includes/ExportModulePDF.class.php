@@ -145,8 +145,8 @@ class BsExportModulePDF implements BsUniversalExportModule {
 	public function getOverview() {
 		$oModuleOverviewView = new ViewExportModuleOverview();
 
-		$oModuleOverviewView->setOption( 'module-title', wfMsg( 'bs-uemodulepdf-overview-title' ) );
-		$oModuleOverviewView->setOption( 'module-description', wfMsg( 'bs-uemodulepdf-overview-description' ) );
+		$oModuleOverviewView->setOption( 'module-title', wfMessage( 'bs-uemodulepdf-overview-title' )->plain() );
+		$oModuleOverviewView->setOption( 'module-description', wfMessage( 'bs-uemodulepdf-overview-description' )->plain() );
 		$oModuleOverviewView->setOption( 'module-bodycontent', '' );
 
 		$oWebserviceStateView = new ViewBaseElement();
@@ -155,25 +155,25 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			);
 
 		$sWebServiceUrl = BsConfig::get( 'MW::UEModulePDF::PdfServiceURL' );
-		$sWebserviceState = wfMsg( 'bs-uemodulepdf-overview-webservice-state-not-ok' );
+		$sWebserviceState = wfMessage( 'bs-uemodulepdf-overview-webservice-state-not-ok' )->plain();
 		$sColor = 'red';
 		if( BsConnectionHelper::testUrlForTimeout( $sWebServiceUrl ) ) {
 			$sColor = 'green';
-			$sWebserviceState = wfMsg( 'bs-uemodulepdf-overview-webservice-state-ok' );
+			$sWebserviceState = wfMessage( 'bs-uemodulepdf-overview-webservice-state-ok' )->plain();
 
 			$oWebserviceUrlView = new ViewBaseElement();
 			$oWebserviceUrlView->setTemplate(
 				'{LABEL}: <a href="{URL}" target="_blank">{URL}</a><br/>'
 			);
 			$oWebserviceUrlView->addData(array(
-				'LABEL' => wfMsg( 'bs-uemodulepdf-overview-webservice-webadmin' ),
+				'LABEL' => wfMessage( 'bs-uemodulepdf-overview-webservice-webadmin' )->plain(),
 				'URL'   => $sWebServiceUrl,
 			));
 			$oModuleOverviewView->addItem( $oWebserviceUrlView );
 		}
 
 		$oWebserviceStateView->addData(array(
-			'LABEL' => wfMsg( 'bs-uemodulepdf-overview-webservice-state' ),
+			'LABEL' => wfMessage( 'bs-uemodulepdf-overview-webservice-state' )->plain(),
 			'COLOR' => $sColor,
 			'STATE' => $sWebserviceState
 		));

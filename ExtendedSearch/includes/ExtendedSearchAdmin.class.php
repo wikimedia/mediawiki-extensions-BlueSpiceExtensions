@@ -54,7 +54,7 @@ class ExtendedSearchAdmin {
 	 * called with action=remote&mod=ExtendedSearchAdmin&rf=getProgressBar
 	 * @param string $sOutput Ready rendered output
 	 */
-	public function getProgressBar( $sParamMode ) {
+	public static function getProgressBar( $sParamMode ) {
 		// todo: add new mechanism
 		switch ( $sParamMode ) {
 			case 'createForm' :

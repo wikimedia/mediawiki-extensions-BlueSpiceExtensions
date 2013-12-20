@@ -77,6 +77,8 @@ After logging into the wiki you can open the article with this link:
 	'bs-responsibleeditors-no-own-responsibilities'                 => 'There are no articles which you are the responsible editor for',
 	'bs-responsibleeditors-yourresponsibilities'                    => 'Your responsibilities',
 	'bs-responsibleeditors-yourresponsibilitiesdesc'                => 'List of articles witch you are responsible for',
+	// TODO: add rights- messages
+	'action-responsibleeditors-viewspecialpage'     => 'view pages which are protected with the "ResponsibleEditors-Viewspecialpage" right',
 
 	//JavaScript
 	'bs-responsibleeditors-availableEditors'=> 'Available editors',
@@ -180,6 +182,7 @@ Nach Anmeldung am Wiki kannst Du den Artikel mit folgendem Link erreichen:
 	'bs-responsibleeditors-no-own-responsibilities'                 => 'Du bist für keinen Artikel der verantworliche Redakteur',
 	'bs-responsibleeditors-yourresponsibilities'                    => 'Deine Verantwortlichkeiten',
 	'bs-responsibleeditors-yourresponsibilitiesdesc'                => 'Liste der Artikel, für die du verantwortlich bist',
+	'action-responsibleeditors-viewspecialpage'                     => 'Seiten, die durch das "ResponsibleEditors-Viewspecialpage" Recht geschützt sind, aufzurufen',
 
 	// Javascript i18n
 	'bs-responsibleeditors-availableEditors' =>'Verfügbare Redakteure',

@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review DROP COLUMN `rev_mode`;

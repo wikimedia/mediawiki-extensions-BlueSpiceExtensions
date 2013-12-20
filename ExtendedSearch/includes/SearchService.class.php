@@ -126,8 +126,8 @@ class SearchService extends SolrServiceAdapter {
 		$sSearchString = str_replace( array( '_', '/' ), ' ', $sSearchString );
 
 		$sSearchString = str_replace(
-			array( ':', '{', '}', '(', ')', '[', ']', '+', '&' ),
-			array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]', '\\+', '\\&' ),
+			array( ':', '{', '}', '(', ')', '[', ']', '+', '&', '.', '/' ),
+			array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]', '\\+', '\\&', '\\.', '\\/' ),
 			$sSearchString
 		);
 		$sSearchString = str_replace(

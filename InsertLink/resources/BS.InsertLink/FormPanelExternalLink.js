@@ -39,6 +39,8 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 	onTargetUrlFocus: function( field ) {
 		if ( field.getValue() == '' ) {
 			field.setValue('http://');
+			//set the cursor at the end, otherwise you'll write at the start of the line
+			field.selectText(field.getValue().length);
 		}
 	},
 	onTargetUrlChange: function( field, newValue, oldValue ) {

@@ -54,7 +54,7 @@ class SpecialRSSFeeder extends BsSpecialPage {
 		}
 
 		$this->getOutput()->addHTML(
-				'<script type="text/javascript">var page_label = "'.wfMsg( 'bs-rssfeeder-page_label' ).'";</script>'.
+				'<script type="text/javascript">var page_label = "'.  wfMessage( 'bs-rssfeeder-page_label' )->plain().'";</script>'.
 				$form->execute()
 		);
 	}

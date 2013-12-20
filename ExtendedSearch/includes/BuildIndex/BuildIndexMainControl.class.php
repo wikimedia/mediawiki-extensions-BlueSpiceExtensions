@@ -32,7 +32,7 @@ class BuildIndexMainControl {
 	 * Number of documents in index.
 	 * @var int
 	 */
-	public $iDocsInIndex = 0;
+	public $iDocsInIndex = 1;
 	/**
 	 * Path to lock file.
 	 * @var string Path. 
@@ -189,7 +189,7 @@ class BuildIndexMainControl {
 	 * @param string $mode I18N string that is used in progress bar
 	 */
 	public function buildIndexSpecial( $mode ) {
-		if ( $this->aTypes['speical'] !== true ) return;
+		if ( $this->aTypes['special'] !== true ) return;
 		$oBuildIndexInstance = new BuildIndexMwSpecial( $this );
 		$oBuildIndexInstance
 			->setMode( $mode )
@@ -534,7 +534,7 @@ class BuildIndexMainControl {
 
 		$bExtendedSearchIndexVerbose = true;
 		if ( $bExtendedSearchIndexVerbose && $sMode != '__FINISHED__' ) {
-			$sOutput = "{$sMode}: {$sMessage} ...{$sProgress}%";
+			$sOutput = "{$this->iDocsInIndex}: {$sMode}: {$sProgress}% - {$sMessage}";
 
 			if ( $this->logFile() ) {
 				$this->logFile( 'write', "{$sOutput}\n" ); // output to logFile
@@ -557,28 +557,37 @@ class BuildIndexMainControl {
 		$sParsedText = '';
 		if ( empty( $sText ) || is_null( $oTitle ) ) return $sParsedText;
 
-		$oParser        = new Parser();
+		$oParser = new Parser();
 		$oParserOptions = new ParserOptions();
 
-		if ( preg_match( '#<rss.*?>#', $sText ) ) {
-			return $sParsedText;
-		}
+		$sText = preg_replace_callback( '#<.*?>#', array( $this, 'preTags' ), $sText );
 
 		try {
 			$sParsedText = $oParser->parse( $sText, $oTitle, $oParserOptions )->getText();
 		} catch ( Exception $e ) {
 			return $sParsedText;
 		}
+
 		$sParsedText = strip_tags( $sParsedText );
 		$sParsedText = str_replace( $this->aFragsToBeReplaced, ' ', $sParsedText );
+		$sParsedText = html_entity_decode( $sParsedText );
 
 		return $sParsedText;
 	}
 
 	/**
+	 * Callback function to return every tag surrounded with pre tags to avoid parse
+	 * @param array $aTags Array of matches
+	 * @return string pre surrounded tag
+	 */
+	public function preTags( $aTags ) {
+		return '<pre>' . $aTags[0] . '</pre>';
+	}
+
+	/**
 	 * Extracts the edit sections out of a given text
 	 * @param string $sText Text to be parsed
-	 * @return Array array of sections
+	 * @return array array of sections
 	 */
 	public function extractEditSections( $sText ) {
 		$aSections = array();
@@ -633,7 +642,7 @@ class BuildIndexMainControl {
 	 */
 	protected function processTypes() {
 		$this->aTypes['wiki'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesWiki' );
-		$this->aTypes['speical'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecial' );
+		$this->aTypes['special'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecial' );
 		$this->aTypes['repo'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesRepo' );
 		$this->aTypes['linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTyLinked' );
 		$this->aTypes['special-linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecialLinked' );

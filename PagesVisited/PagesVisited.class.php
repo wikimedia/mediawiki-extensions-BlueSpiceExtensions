@@ -115,8 +115,8 @@ class PagesVisited extends BsExtensionMW {
 			case 'WidgetSortOdr':
 				$aPrefs = array(
 					'options' => array(
-						wfMsg( 'bs-pagesvisited-pref-sort-time' )     => 'time',
-						wfMsg( 'bs-pagesvisited-pref-sort-pagename' ) => 'pagename'
+						wfMessage( 'bs-pagesvisited-pref-sort-time' )->plain() => 'time',
+						wfMessage( 'bs-pagesvisited-pref-sort-pagename' )->plain() => 'pagename'
 					)
 				);
 				break;

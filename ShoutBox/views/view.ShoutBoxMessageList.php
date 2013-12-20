@@ -48,7 +48,7 @@ class ViewShoutBoxMessageList extends ViewBaseElement {
 				$out .= '<li class="bs-sb-more"><a href="#" onclick="BsShoutBox.updateShoutbox('.$this->iMoreLimit.');return false;">&nbsp;</a></li>';
 			}
 		} else {
-			$out = '<li><i>'.wfMsg( 'bs-shoutbox-no-entries' ).'</i></li>';
+			$out = '<li><i>'.wfMessage( 'bs-shoutbox-no-entries' )->plain().'</i></li>';
 		}
 		return '<ul>'.$out.'</ul>';
 	}

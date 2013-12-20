@@ -114,14 +114,14 @@ button.bs-search-button-specialpage {
 }
 
 div#bs-extendedsearch-noofresultsandsearchterm {
-	font-size: 1.1em !important;
+	font-size: 13px !important;
 	color: #AAAAAA;
-	font-weight: bolder;
 	margin: 20px 0 15px 0;
 }
 
 span#bs-extendedsearch-searchterm {
 	color: #303030;
+	font-weight: bold;
 }
 .bs-extendedsearch-result-icon {
 	display: inline-block;
@@ -135,13 +135,11 @@ span#bs-extendedsearch-searchterm {
 }
 .bs-extendedsearch-result-title h3 {
 	font-weight: normal;
-	font-size: 1.2em !important;
 	margin: 0 !important;
 	padding: 0 !important;
-	line-height: 1.2em !important;
+	line-height: 1.4em !important;
 }
 .bs-extendedsearch-result-headline {
-	font-size: 1.2em !important;
 	font-weight: normal !important;
 }
 
@@ -151,10 +149,6 @@ span#bs-extendedsearch-searchterm {
 
 #bs-extendedsearch-all-filter-boxes {
 	background-color: #F8F8F8;
-}
-
-.bs-extendedsearch-facetbox-container {
-	font-size: 0.7em !important;
 }
 
 .bs-extendedsearch-filter-headline-outer {
@@ -248,10 +242,9 @@ span#bs-extendedsearch-searchterm {
 	background-color: #F8F8F8;
 }
 .bs-search-result-info {
-	font-size: 0.8em !important;
+	font-size: 11px !important;
 	color: #666;
 	margin: 5px 0 0 28px;
-	font-weight: bold;
 }
 .bs-search-result-info a {
 	font-size: 1em !important;
@@ -259,7 +252,6 @@ span#bs-extendedsearch-searchterm {
 div.bs-search-hit-text {
 	margin: 7px 0 0 28px;
 	padding-top: 1px;
-	font-size: 0.9em !important;
 	color: #666;
 }
 div.bs-search-hit-text em {
@@ -274,11 +266,10 @@ div.bs-search-hit-text em {
 	font-weight: bold;
 }
 .bs-facet-title {
-	font-size: 1.1em !important;
+	font-size: 13px !important;
 	background-color: #EEEDED;
 	color: #555555;
 	margin: 0 0 7px 0;
-	font-weight: bold;
 }
 #bs-es-searchterm-error {
 	color: #C25B5B !important;
@@ -287,9 +278,7 @@ div.bs-search-hit-text em {
 	margin: 10px;
 }
 .bs-extendedsearch-spellchecker {
-	font-size: 1em !important;
 	color: #AAAAAA;
-	font-weight: bold;
 }
 span.bs-extendedsearch-result-title h3 em {
 	font-style: normal;
@@ -300,9 +289,9 @@ span.bs-extendedsearch-result-title h3 em {
 	margin-bottom: 7px;
 }
 .facetBarEntry {
-	font-size: 1.2em !important;
 	padding-left: 3px;
 	line-height: 18px;
+	font-size: 11px !important;
 }
 .facetBarEntry:hover {
 	background-color: #EEEDED;
@@ -350,25 +339,24 @@ span.bs-extendedsearch-result-title h3 em {
 	margin-right: auto;
 	text-align: center;
 	padding-bottom: 5px;
-	font-size: 0.8em !important;
+	font-size: 11px !important;
 }
 .bs-extendedsearch-hiddenfacet {
 	display: none;
 }
 .bs-extendedsearch-cat {
-	font-size: 0.8em !important;
+	font-size: 11px !important;
 	margin: 7px 0 3px 28px;
-	font-weight: bold;
 }
 .bs-extendedsearch-cat a {
-	font-size: 1em !important;
+	font-size: 11px !important;
 }
 .bs-extendedsearch-sectionresult {
-	font-size: 0.8em !important;
+	font-size: 12px !important;
 	font-weight: normal !important;
 }
 .bs-extendedsearch-sectionresult a{
-	font-size: 1em !important;
+	font-size: 12px !important;
 }
 .bs-extendedsearch-sectionresult a:hover {
 	text-decoration: none !important;

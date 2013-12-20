@@ -150,7 +150,7 @@ class BsPDFServlet {
 				);
 				wfDebugLog( 
 					'BS::UEModulePDF',
-					$sResponse
+					FormatJson::encode( FormatJson::decode($sResponse), true )
 				);
 			}
 			else {

@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_review_templates ADD `revt_sequential` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `revt_editable`;

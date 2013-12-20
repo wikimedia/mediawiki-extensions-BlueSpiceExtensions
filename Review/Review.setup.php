@@ -51,11 +51,6 @@ $wgResourceModules['ext.bluespice.review'] = array(
 		'bs-review-labelTemplateSaveForAll',
 		'bs-review-labelTemplateDelete',
 		'bs-review-templateName',
-		'bs-review-mode',
-		'bs-review-modeVote',
-		'bs-review-modeSign',
-		'bs-review-modeComment',
-		'bs-review-modeWorkflow',
 		'bs-review-confirm-delete-step',
 		'bs-review-confirm-delete-review'
 	)
@@ -67,7 +62,6 @@ $wgResourceModules['ext.bluespice.review.overview'] = array(
 	'messages' => array(
 		'bs-review-header-page_title',
 		'bs-review-header-owner_name',
-		'bs-review-header-rev_mode',
 		'bs-review-header-assessors',
 		'bs-review-header-accepted_text',
 		'bs-review-header-startdate',

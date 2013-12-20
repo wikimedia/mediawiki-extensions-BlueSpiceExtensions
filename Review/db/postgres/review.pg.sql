@@ -11,13 +11,14 @@
 -- @filesource
 
 CREATE TABLE /*$wgDBprefix*/bs_review (
-  rev_id        serial          NOT NULL PRIMARY KEY,
-  rev_pid       smallint        NOT NULL DEFAULT '0',
-  rev_editable  smallint        NOT NULL DEFAULT '0',
-  rev_mode      varchar(20)     NOT NULL,
-  rev_startdate varchar(32)     NOT NULL DEFAULT '2000-01-01 00:00:00+00',
-  rev_enddate   varchar(32)     NOT NULL DEFAULT '2000-01-01 00:00:00+00',
-  rev_owner     smallint        NOT NULL
+  rev_id         serial          NOT NULL PRIMARY KEY,
+  rev_pid        smallint        NOT NULL DEFAULT '0',
+  rev_editable   smallint        NOT NULL DEFAULT '0',
+  rev_sequential smallint        NOT NULL DEFAULT '0',
+  rev_abortable  smallint        NOT NULL DEFAULT '0',
+  rev_startdate  varchar(32)     NOT NULL DEFAULT '2000-01-01 00:00:00+00',
+  rev_enddate    varchar(32)     NOT NULL DEFAULT '2000-01-01 00:00:00+00',
+  rev_owner      smallint        NOT NULL
 );
 
 CREATE TABLE /*$wgDBprefix*/bs_review_steps (
@@ -35,8 +36,10 @@ CREATE TABLE /*$wgDBprefix*/bs_review_templates (
   revt_id        serial          NOT NULL PRIMARY KEY,
   revt_name      varchar(255)    NOT NULL,
   revt_owner     int             NOT NULL,
-  revt_user    varchar(255)    NOT NULL,
-  revt_mode      varchar(20)     NOT NULL,
+  revt_user      varchar(255)    NOT NULL,
+  rev_editable   smallint        NOT NULL,
+  rev_sequential smallint        NOT NULL,
+  rev_abortable  smallint        NOT NULL,
   revt_public    smallint        NOT NULL
 );
 

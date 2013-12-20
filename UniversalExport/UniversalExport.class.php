@@ -151,8 +151,8 @@ class UniversalExport extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStatebarAddSortBodyVars( &$aSortBodyVars ) {
-		$aSortBodyVars['statebarbodyuniversalexportmeta']   = wfMsg( 'bs-universalexport-statebarbodyuniversalexportmeta' );
-		$aSortBodyVars['statebarbodyuniversalexportparams'] = wfMsg( 'bs-universalexport-statebarbodyuniversalexportparams' );
+		$aSortBodyVars['statebarbodyuniversalexportmeta']   = wfMessage( 'bs-universalexport-statebarbodyuniversalexportmeta' )->plain();
+		$aSortBodyVars['statebarbodyuniversalexportparams'] = wfMessage( 'bs-universalexport-statebarbodyuniversalexportparams' )->plain();
 		return true;
 	}
 	
@@ -283,9 +283,9 @@ class UniversalExport extends BsExtensionMW {
 
 		$oWidgetView = new ViewWidget();
 		$oWidgetView->setId( 'universalexport' )
-					->setTitle( wfMsg( 'bs-universalexport-widget-title' ) )
+					->setTitle( wfMessage( 'bs-universalexport-widget-title' )->plain() )
 					->setBody( $sList )
-					->setTooltip( wfMsg( 'bs-universalexport-widget-tooltip' ) );
+					->setTooltip( wfMessage( 'bs-universalexport-widget-tooltip' )->plain() );
 
 		return $oWidgetView;
 	}
@@ -297,7 +297,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:uemeta',
 			'type' => 'tag',
 			'name' => 'uemeta',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-meta-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-meta-desc' )->plain(),
 			'code' => '<bs:uemeta someMeta="Some Value" anotherMeta="Another Value" />',
 		);
 		
@@ -305,7 +305,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:ueparams',
 			'type' => 'tag',
 			'name' => 'ueparams',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-params-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-params-desc' )->plain(),
 			'code' => '<bs:ueparams someParam="Some Value" anotherMeta="Another Value" />',
 		);
 		
@@ -313,7 +313,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:uepagebreak',
 			'type' => 'tag',
 			'name' => 'uepagebreak',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-pagebreak-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-pagebreak-desc' )->plain(),
 			'code' => '<bs:uepagebreak />',
 		);
 		
@@ -321,7 +321,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:uenoexport',
 			'type' => 'tag',
 			'name' => 'uenoexport',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-noexport-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-noexport-desc' )->plain(),
 			'code' => '<bs:uenoexport>Not included in export</bs:uenoexport>',
 		);
 

@@ -25,7 +25,8 @@ class BsReviewProcessStep {
 		'revs_user_id' => 'user',
 		'revs_comment' => 'comment',
 		'revs_status' => 'status',
-		'revs_sort_id' => 'sort_id'
+		'revs_sort_id' => 'sort_id',
+		'revs_delegate_to' => 'delegate_to'
 	);
 	/**
 	 * The user that is in charge of the step.
@@ -59,12 +60,13 @@ class BsReviewProcessStep {
 		return $oStep;
 	}
 	
-	public static function newFromData($user, $comment, $status=-1, $sort_id=0) {
+	public static function newFromData($user, $comment, $status=-1, $sort_id=0, $delegate_to=0) {
 		$oStep = new self();
 		$oStep->user    = $user;
 		$oStep->comment = $comment;
 		$oStep->status  = $status;
 		$oStep->sort_id = $sort_id;
+		$oStep->delegate_to = $delegate_to;
 		return $oStep;
 	}
 

@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'bs-review-review_finished' => 'This article has been reviewed.',
 	'bs-review-unknown' => 'unknown',
 	'bs-review-please_review' => 'Please review this page:',
-	'bs-review-reviewed_till' => 'This page is being reviewed from <br/><b>$1</b> to <b>$2</b><br/>.<br/>Mode: <b>$3</b>',
+	'bs-review-reviewed_till' => 'This page is being reviewed from <br/><b>$1</b> to <b>$2</b><br/>.',
 	'bs-review-reviewed_till_extra' => '<br />Created by <b>$1</b>',
 	'bs-review-active_workflow' => 'Active review',
 	'bs-review-status' => 'State',
@@ -48,7 +48,6 @@ $messages['en'] = array(
 	'bs-review-change' => 'change',
 	'bs-review-assign' => 'assign',
 	'bs-review-delete_workflow' => 'delete review',
-	'bs-review-mode' => 'Mode',
 	'bs-review-startdate' => 'start date',
 	'bs-review-enddate' => 'end date',
 	'bs-review-save_success' => 'The review was assigned successfully.',
@@ -116,7 +115,6 @@ $messages['en'] = array(
 	'bs-review-title_page'               => 'Page',
 	'bs-review-title_user'               => 'Owner',
 	'bs-review-title_userlist'           => 'Assessor',
-	'bs-review-title_mode'               => 'Mode',
 	'bs-review-title_status'             => 'Status',
 	'bs-review-title_date'               => 'Date',
 	'bs-review-vote'                     => 'Vote',
@@ -144,6 +142,14 @@ $messages['en'] = array(
 	'bs-review-specialreview-header'     => '{{plural:$1|Reviews of $2|Review overview}}',
 	'bs-review-commentinputlabel'        => 'Your comment',
 	'bs-review-ownercomment'             => 'Comment of $1',
+	
+	//Permissions
+	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there 
+	//is no UI to display them yet.
+	'action-workflowview' => 'to access this interface',
+	'right-workflowview' => 'See interface components of the Review extension',
+	'right-workflowedit' => 'Create a new and modify an existing Review workflow',
+	'right-workflowlist' => 'Show the list of workflows on the Review specialpage',
 
 	//Javascript
 	'bs-review-title' => 'Review',
@@ -178,15 +184,9 @@ $messages['en'] = array(
 	'bs-review-labelTemplateSaveForAll' => 'Save for everyone',
 	'bs-review-labelTemplateDelete' => 'Delete',
 	'bs-review-templateName' => 'Name of the template',
-	'bs-review-mode' => 'Mode',
-	'bs-review-modeVote' => 'No editing allowed / Ignore reviewer order',
-	'bs-review-modeSign' => 'No editing allowed / Follow reviewer order',
-	'bs-review-modeComment' => 'Editing allowed / Ignore reviewer order',
-	'bs-review-modeWorkflow' => 'Editing allowed / Follow reviewer order',
 	'bs-review-confirm-delete-step' => 'Do you really want to delete this step?',
 	'bs-review-header-page_title' => 'Pahe',
 	'bs-review-header-owner_name' => 'Owner',
-	'bs-review-header-rev_mode' => 'Mode',
 	'bs-review-header-assessors' => 'Assessors',
 	'bs-review-header-accepted_text' => 'State',
 	'bs-review-header-startdate' => 'Start',
@@ -214,7 +214,7 @@ $messages['de'] = array(
 	'bs-review-review_finished'          => 'Diese Seite wurde begutachtet.',
 	'bs-review-unknown'                  => 'unbekannt',
 	'bs-review-please_review'            => 'Bitte begutachte diese Seite:',
-	'bs-review-reviewed_till'            => 'Diese Seite wird von <b>$1</b> bis <b>$2</b> begutachtet.', //<br/>Modus: <b>$3</b>',
+	'bs-review-reviewed_till'            => 'Diese Seite wird von <b>$1</b> bis <b>$2</b> begutachtet.',
 	'bs-review-reviewed_till_extra'      => '<br />Der Prozess wurde von <b>$1</b> angestoßen',
 	'bs-review-active_workflow'          => 'Aktiver Begutachtungsprozess',
 	'bs-review-status'                   => 'Status',
@@ -228,7 +228,6 @@ $messages['de'] = array(
 	'bs-review-change'                   => 'ändern',
 	'bs-review-assign'                   => 'zuweisen',
 	'bs-review-delete_workflow'          => 'Begutachtungsprozess löschen',
-	'bs-review-mode'                     => 'Modus',
 	'bs-review-startdate'                => 'Startdatum',
 	'bs-review-enddate'                  => 'Enddatum',
 	'bs-review-save_success'             => 'Der Begutachtungsprozess wurde erfolgreich eingetragen.',
@@ -323,6 +322,14 @@ $messages['de'] = array(
 	'bs-review-specialreview-header'     => '{{plural:$1|Begutachtungen für $2|Begutachtungsübersicht}}',
 	'bs-review-commentinputlabel'        => 'Dein Kommentar',
 	'bs-review-ownercomment'             => 'Kommentar von $1',
+	
+	//Permissions
+	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there 
+	//is no UI to display them yet.
+	'action-workflowview' => 'diese Seite aufzurufen',
+	'right-workflowview' => 'Oberflächenelemente der Review Erweiterung anzeigen',
+	'right-workflowedit' => 'Review Workflows anlegen und bearbeiten',
+	'right-workflowlist' => 'Die Liste der Workflows auf der Review Spezialseite ansehen',
 
 	//Javascript
 	'bs-review-title' => 'Begutachtung',
@@ -358,15 +365,9 @@ $messages['de'] = array(
 	'bs-review-labelTemplateSaveForAll' => 'Für alle speichern',
 	'bs-review-labelTemplateDelete' => 'Löschen',
 	'bs-review-templateName' => 'Name der Vorlage',
-	'bs-review-mode' => 'Modus',
-	'bs-review-modeVote' => 'Bearbeiten nicht erlaubt / Gutachter-Reihenfolge nicht beachten',
-	'bs-review-modeSign' => 'Bearbeiten nicht erlaubt / Gutachter-Reihenfolge beachten',
-	'bs-review-modeComment' => 'Bearbeiten erlaubt / Gutachter-Reihenfolge nicht beachten',
-	'bs-review-modeWorkflow' => 'Bearbeiten erlaubt / Gutachter-Reihenfolge beachten',
 	'bs-review-confirm-delete-step' => 'Möchtest du diesen Schritt wirklich löschen?',
 	'bs-review-header-page_title' => 'Seite',
 	'bs-review-header-owner_name' => 'Besitzer',
-	'bs-review-header-rev_mode' => 'Modus',
 	'bs-review-header-assessors' => 'Begutachter',
 	'bs-review-header-accepted_text' => 'Status',
 	'bs-review-header-startdate' => 'Beginn',

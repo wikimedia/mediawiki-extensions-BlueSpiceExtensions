@@ -52,6 +52,6 @@ BsSaferEdit = {
 	}
 };
 
-$(document).ready( function() { 
+mw.loader.using( 'ext.bluespice', function() {
 	BsSaferEdit.init();
 });

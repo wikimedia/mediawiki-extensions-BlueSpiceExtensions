@@ -31,6 +31,7 @@ $messages['en'] = array(
 	'specialpages-group-bluespice' => 'BlueSpice',
 	'bs-readers-pref-active' => 'Activate readers of this article',
 	'bs-readers-pref-numofreaders' => 'Number of readers to display',
+	'bs-readers-emptyinput' => 'You have to specify an article',
 
 	//Javascript
 	'bs-readers-headerUsername' => 'User name',
@@ -57,6 +58,7 @@ $messages['de'] = array(
 	'specialpages-group-bluespice' => 'BlueSpice',
 	'bs-readers-pref-active' => 'Besucher dieses Artikels aktivieren.',
 	'bs-readers-pref-numofreaders' => 'Anzahl der anzuzeigenden Besucher',
+	'bs-readers-emptyinput' => 'Du musste einen Artikel angeben',
 
 	//Javascript
 	'bs-readers-headerUsername' => 'Benutzername',
@@ -68,7 +70,8 @@ $messages['de'] = array(
 
 $messages['de-formal'] = array(
 	'specialreaders-desc' => 'Diese Spezialseite zeigt Ihnen die Besucher eines Artikels',
-	'specialpages-group-bluespice' => 'BlueSpice'
+	'specialpages-group-bluespice' => 'BlueSpice',
+	'bs-readers-emptyinput' => 'Sie müssen einen Artikel angeben',
 );
 
 $messages['qqq'] = array();

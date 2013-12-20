@@ -22,7 +22,7 @@ class BsPDFPageProvider {
 
 	/**
 	 * Fetches the requested pages markup, cleans it and returns a DOMDocument.
-	 * @param array $aParams Needs the 'article-id' key to be set and valid.
+	 * @param array $aParams Needs the 'article-id' or 'title' key to be set and valid.
 	 * @return array 
 	 */
 	public static function getPage( $aParams ) {
@@ -30,8 +30,11 @@ class BsPDFPageProvider {
 
 		$oBookmarksDOM = new DOMDocument();
 		$oBookmarksDOM->loadXML('<bookmarks></bookmarks>');
-		
-		$oTitle = Title::newFromID($aParams['article-id']);
+
+		$oTitle = null;
+		if( isset($aParams['article-id']) ) {
+			$oTitle = Title::newFromID($aParams['article-id']);
+		}
 		if( $oTitle == null ){
 			//HINT: This is probably the wrong place for urldecode(); Should be 
 			//done by caller. I.e. BookExportModulePDF

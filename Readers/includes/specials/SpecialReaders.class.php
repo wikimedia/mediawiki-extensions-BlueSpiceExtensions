@@ -20,7 +20,7 @@
 class SpecialReaders extends BsSpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'Readers', 'viewreaders' );
+		parent::__construct( 'Readers', 'viewreaders', false );
 	}
 
 	public function execute( $sParameter ) {
@@ -59,7 +59,7 @@ class SpecialReaders extends BsSpecialPage {
 				$sOut = $oErrorView->execute();
 			}
 		} else {
-			$oErrorView = new ViewTagErrorList();
+			$oErrorView = new ViewTagErrorList( BsExtensionManager::getExtension('Readers') );
 			$oErrorView->addItem( new ViewTagError( wfMessage( 'bs-readers-emptyinput' )->plain() ) );
 			$sOut = $oErrorView->execute();
 		}

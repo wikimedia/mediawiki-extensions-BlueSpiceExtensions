@@ -37,7 +37,7 @@ class ViewBlogItem extends ViewBaseElement {
 	protected $mEntryDate;
 	/**
 	 * Link that points to the author's page
-	 * @var string URL to the author's page 
+	 * @var string PrefixedText of the author's page 
 	 */
 	protected $mAuthorPage;
 	/**
@@ -122,7 +122,7 @@ class ViewBlogItem extends ViewBaseElement {
 
 	/**
 	 * Setter method for mAuthorPage
-	 * @param string $page URL
+	 * @param string $page PrefixedText form of a user page
 	 */
 	public function setAuthorPage( $page ) {
 		$this->mAuthorPage = $page;

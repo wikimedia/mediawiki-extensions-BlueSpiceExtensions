@@ -66,7 +66,7 @@ class Dashboards extends BsExtensionMW {
 		$this->mExtensionKey = 'MW::Dashboards';
 
 		WikiAdmin::registerModuleClass( 'SpecialAdminDashboard', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_usermanagement_v1.png',
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_dashboard_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-specialadmindashboard-label'
 		) );

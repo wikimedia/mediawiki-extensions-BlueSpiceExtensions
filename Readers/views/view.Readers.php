@@ -47,7 +47,7 @@ class ViewReaders extends ViewBaseElement {
 		$aOut[] = '<div class="bs-readers">';
 		$aOut[] = '  <fieldset>';
 		$aOut[] = '    <legend>';
-		$aOut[] = wfMsgExt( 'bs-readers-title', array( 'parsemag' ), $iReaders );
+		$aOut[] = wfMessage( 'bs-readers-title', $iReaders )->text();
 		$aOut[] = '    </legend>';
 		$aOut[] = $sReadersList;
 		$aOut[] = '  </fieldset>';

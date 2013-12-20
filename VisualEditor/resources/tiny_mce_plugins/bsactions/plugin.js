@@ -302,7 +302,17 @@ var BsActions = function() {
 				buttonId: 'bswiki',
 				buttonConfig: {
 					title: mw.message('bs-visualeditor-bsactions-wiki').plain(), //'bsactions.wiki',
-					cmd: 'mceBsWiki',
+					//cmd: 'mceBsWiki',
+					//we don't use tinymce cmd here
+					//as the result would be some ugly js-errors
+					//due to the fact, that tinymce isn't that much happy about
+					//beeing destroyed by it's own cmds
+					onClick: function(){
+						// unbind resize event
+						ed.off("change setcontent paste keyup", ed.plugins.autoresize.resize);
+						VisualEditor.toggleEditor();
+						return true;
+					},
 					role: 'editor_switcher',
 					image: _currentImagePath + '/hwwiki.gif'
 				}
@@ -387,11 +397,6 @@ var BsActions = function() {
 				commandCallback: function() {
 					_editor.selection.setContent('--~~~~');
 				} //Inserts a signature
-			}, {
-				commandId: 'mceBsWiki',
-				commandCallback: function() {
-					VisualEditor.toggleEditor();
-				} //Toggles the editor
 			}, {
 				commandId: 'mceBsLinebreak',
 				commandCallback: function() {

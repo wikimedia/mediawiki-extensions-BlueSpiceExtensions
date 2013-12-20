@@ -72,9 +72,6 @@ class Emoticons extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['Emoticons'] = __DIR__ . '/Emoticons.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
@@ -129,7 +126,7 @@ class Emoticons extends BsExtensionMW {
 			$sPathToEmoticons = BsConfig::get('MW::ScriptPath').BsConfig::get('MW::Emoticons::PathToEmoticons');
 
 			// Get the list of emoticons from the message system.
-			$sMappingContent = wfMsg('bs-emoticons-mapping');
+			$sMappingContent = wfMessage('bs-emoticons-mapping')->plain();
 			if( empty( $sMappingContent ) ) return true; // If the content successfully loaded, do the replacement
 
 			$aMappingLines = explode( "\n", $sMappingContent );
@@ -203,7 +200,7 @@ class Emoticons extends BsExtensionMW {
 			$oErrorView = new ViewErrorMessage();
 			if( !isset( $aEmoticonHash[1] ) ) {
 				$oErrorView->addData(
-					array( wfMsg( 'bs-emoticons-error-validation-missing-symbol', $iLineNumber, $aEmoticonHash[0] ) )
+					array( wfMessage( 'bs-emoticons-error-validation-missing-symbol', $iLineNumber, $aEmoticonHash[0] )->plain() )
 					);
 				
 				return $oErrorView->execute();
@@ -211,7 +208,7 @@ class Emoticons extends BsExtensionMW {
 			if( preg_match('#^.*?\.(jpg|jpeg|gif|png)$#si', $aEmoticonHash[0] ) === 0 ) {
 				//$oStatus->fatal ( 'edit-no-change' );
 				$oErrorView->addData(
-					array( wfMsg( 'bs-emoticons-error-validation-imagename', $iLineNumber, $aEmoticonHash[0] ) )
+					array( wfMessage( 'bs-emoticons-error-validation-imagename', $iLineNumber, $aEmoticonHash[0] )->plain() )
 				);
 				
 				return $oErrorView->execute();
@@ -222,7 +219,7 @@ class Emoticons extends BsExtensionMW {
 				$iSymbolLength = strlen( $sPart );
 				if( $iSymbolLength < 2 || $iSymbolLength > 10 ) {
 					$oErrorView->addData(
-						array( wfMsg( 'bs-emoticons-error-validation-symbol', $iLineNumber, $sPart ) )
+						array( wfMessage( 'bs-emoticons-error-validation-symbol', $iLineNumber, $sPart ) )
 						);
 					return $oErrorView->execute();
 				}

@@ -20,8 +20,8 @@ Ext.define( 'BS.Review.OverviewPanel', {
 					userID: mw.config.get('bsSpecialReviewUserID', 0)
 				}
 			},
-			fields: [ 'rev_id', 'page_title', 'owner_name', 'owner_real_name', 'rev_mode',
-				'rev_mode_text', 'rev_status', 'rev_status_text', 'rejected',
+			fields: [ 'rev_id', 'page_title', 'owner_name', 'owner_real_name',
+				'rev_status', 'rev_status_text', 'rejected',
 				'accepted', 'accepted_text', 'total', 'endtimetamp', 
 				'assessors', 'startdate', 'enddate' ],
 			autoLoad: true
@@ -45,12 +45,6 @@ Ext.define( 'BS.Review.OverviewPanel', {
 					sortable: false
 				},
 				{
-					header: mw.message('bs-review-header-rev_mode').plain(),
-					dataIndex: 'rev_mode',
-					hidden: true,
-					sortable: false
-				},
-				{
 					header: mw.message('bs-review-header-assessors').plain(),
 					dataIndex: 'assessors',
 					renderer: this.renderAssessors,
@@ -69,7 +63,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				{
 					header: mw.message('bs-review-header-enddate').plain(),
 					sortable: false,
-					dataIndex: 'startdate'
+					dataIndex: 'enddate'
 				}
 			]
 		};
@@ -122,6 +116,12 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			}
 			if( line.revs_status == -1 ) {
 				status = status.format( 'rv_unknown' );
+			}
+			if( line.revs_status == -2 ) { //Was '1' before reject, see BsReviewProcess::reset()
+				status = '<div class="rv_yes">'+status.format( 'rv_invalid' )+'</div>';
+			}
+			if( line.revs_status == -3 ) { //Was '0' before reject
+				status = '<div class="rv_no">'+status.format( 'rv_invalid' )+'</div>';
 			}
 			table += row.format(
 				status,

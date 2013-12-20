@@ -298,25 +298,8 @@ class InsertFileAJAXBackend {
 		$res = $dbr->query( $sql );
 		foreach ( $res as $row ) {
 			$img = self::newFromName( $row->img_name );
-			
-			// small fix for images that are smaller than the default thumb
-			if( $thumbs_width > $img->getWidth() ) {
-				$thumbs_width = ( $img->getWidth() - 1 );
-			}
-			if( $thumbs_height > $img->getHeight() ) {
-				$thumbs_height = ( $img->getHeight() - 1) ;
-			}
-			// TODO MRG (27.09.10 13:16): Hier haben wir ein Performance-Problem, wenn es sehr viele
-			// Thumbs sind, die auf einmal erzeugt werden. Das kann man momentan nicht lösen.
-			// Allerdings ist ein Vermerk sinnvoll.
-			$thumb = $img->createThumb( $thumbs_width, $thumbs_height );
-			//TODO: test ($thumb != null) necessary?
-			$aThumbs = $img->getThumbnails();
-			if( $sFileType === 'file' ) {
-				$url = $thumb;
-			} else {
-				$url = $img->getThumbUrl( array_pop( $aThumbs ) ).'?ck='.md5($row->img_timestamp);
-			}
+
+			$url = $img->getUrl();
 			
 			if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
 				$url = SecureFileStore::secureStuff( $url, true );

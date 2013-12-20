@@ -25,6 +25,7 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 	protected $bVotable = false;
 	protected $sComment = '';
 	protected $oReview = null;
+	protected $aButtons = array();
 
 	public function __construct() {
 		parent::__construct();
@@ -60,22 +61,16 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 				'',
 				array('id' => 'bs-review-voteresponse-comment')
 			);
-
-			$aOut[] =	sprintf( 
-				'<a id="%s" href="#" class="%s" title="%s">%s</a>',
-				'bs-review-ok',
-				'bs-icon-accept',
-				wfMessage('bs-review-i-agree')->plain(),
-				wfMessage('bs-review-i-agree')->plain()
-			);
-			//$aOut[] = "&nbsp;&nbsp;";
-			$aOut[] =	sprintf( 
-				'<a id="%s" href="#" class="%s" title="%s">%s</a>',
-				'bs-review-dismiss',
-				'bs-icon-decline',
-				wfMessage('bs-review-i-dismiss')->plain(),
-				wfMessage('bs-review-i-dismiss')->plain()
-			);
+			
+			foreach($this->aButtons as $aButton) {
+				$aOut[] = sprintf( 
+					'<a id="%s" href="#" class="%s" title="%s">%s</a>',
+					$aButton['id'],
+					$aButton['class'],
+					$aButton['title'],
+					$aButton['text']
+				);
+			}
 
 			$aOut[] =	'</div>';
 		}
@@ -83,6 +78,15 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 		$aOut[] = '</div>';
 
 		return implode( "\n", $aOut );
+	}
+	
+	public function addButton($sId, $sClass, $sTitle, $sText) {
+		$this->aButtons[] = array(
+			'id' => $sId,
+			'class' => $sClass,
+			'title' => $sTitle,
+			'text' => $sText
+		);
 	}
 
 	public function setStatusText( $sStatusText ) {

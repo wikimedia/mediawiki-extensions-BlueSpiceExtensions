@@ -35,19 +35,17 @@ $(window).scroll(function(){
 $(document).on('VisualEditor::instanceShow', function(event, editorId) {
 	if (editorId === 'wpTextbox1') {
 		$('#toolbar').hide();
-		$('#hw-toolbar').hide(); //Deprecated
 		$('#bs-extendededitbar').hide();
 	}
 });
 $(document).on('VisualEditor::instanceHide', function(event, editorId) {
 	if (editorId === 'wpTextbox1') {
 		$('#toolbar').show();
-		$('#hw-toolbar').show(); //Deprecated
 		$('#bs-extendededitbar').show();
 	}
 });
 
-mw.loader.using( 'ext.bluespice.visualEditor', function() {
+$(document).ready( function() {
 	var currentSiteCSS = [];
 	//We collect the CSS Links from this document and set them as content_css 
 	//for TinyMCE
@@ -56,11 +54,12 @@ mw.loader.using( 'ext.bluespice.visualEditor', function() {
 		var cssUrl = $(this).attr('href');
 		//Conditionally make urls absolute to avoid conflict with tinymce.baseURL
 		if( cssUrl.startsWith( '/' ) ) cssBaseURL = mw.config.get('wgServer');
-		currentSiteCSS.push( cssBaseURL + cssUrl );
+		//need to check, if the stylesheet is already included
+		if (jQuery.inArray(cssBaseURL + cssUrl, currentSiteCSS) === -1)
+			currentSiteCSS.push( cssBaseURL + cssUrl );
 	});
-
 	//IE9 fix
-	if ( typeof VisualEditor.getInstance().setConfig != "undefined" ) {
+	if ( typeof VisualEditor != "undefined" && typeof VisualEditor.getInstance().setConfig != "undefined" ) {
 		VisualEditor.getInstance().setConfig('editpage', {
 			height: 550,
 			content_css: currentSiteCSS.join(',')
@@ -73,12 +72,11 @@ mw.loader.using( 'ext.bluespice.visualEditor', function() {
 	}
 });
 
-$(document).on('click', 'a#bs-editbutton-visualeditor', function(e) {
+$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 	e.preventDefault();
 	//todo: check ob richtig, denke durch 'wpTextbox1' wird in tinymce.startup.js ln 95
 	//eine Instanz des tiny erzeugt, der mit seiner id den MW-Editor überschreibt => kein speichern möglich
 	//VisualEditor.toggleEditor('wpTextbox1');
-	
 	$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
 	VisualEditor.startEditors();
 	return false;

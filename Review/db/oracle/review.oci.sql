@@ -15,7 +15,8 @@ CREATE TABLE /*$wgDBprefix*/bs_review (
 	rev_id number NOT NULL,
 	rev_pid number NOT NULL,
 	rev_editable number,
-	rev_mode varchar2(20) NOT NULL,
+        rev_sequential number,
+        rev_abortable number,
 	rev_startdate varchar2(14) NOT NULL,
 	rev_enddate varchar2(14) NOT NULL,
 	rev_owner number NOT NULL
@@ -58,8 +59,10 @@ CREATE TABLE /*$wgDBprefix*/bs_review_templates (
 	revt_id        number NOT NULL,
 	revt_name      varchar2(255) NOT NULL,
 	revt_owner     number NOT NULL,
-	revt_user    varchar2(255) NOT NULL,
-	revt_mode      varchar2(20) NOT NULL,
+	revt_user      varchar2(255) NOT NULL,
+	rev_editable   number,
+        rev_sequential number,
+        rev_abortable  number,
 	revt_public    number NOT NULL
 );
 ALTER TABLE /*$wgDBprefix*/bs_review_templates ADD CONSTRAINT /*$wgDBprefix*/bs_review_tmpl_pk PRIMARY KEY (revt_id);

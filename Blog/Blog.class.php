@@ -555,7 +555,7 @@ class Blog extends BsExtensionMW {
 
 				if ( $iUserId != 0 ) {
 					$oAuthorUser = User::newFromId( $iUserId );
-					$oBlogItemView->setAuthorPage( $oAuthorUser->getUserPage()->getLocalURL() );
+					$oBlogItemView->setAuthorPage( $oAuthorUser->getUserPage()->getPrefixedText() );
 					$oBlogItemView->setAuthorName( $this->mCore->getUserDisplayName( $oAuthorUser ) );
 				} else {
 					$oBlogItemView->setAuthorName( $oFirstRevision->getUserText() );
@@ -628,7 +628,7 @@ class Blog extends BsExtensionMW {
 			)
 		);
 
-		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_page' ) );
+		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_page' )->plain() );
 
 		$oTitle = Title::makeTitle( $iNSid , 'Blog' );
 		$aSubpages = $oTitle->getSubpages();

@@ -64,7 +64,7 @@ class Flexiskin extends BsExtensionMW {
 		$this->mExtensionKey = 'MW::Flexiskin';
 		
 		WikiAdmin::registerModule( 'Flexiskin', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_usermanagement_v1.png',
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_flexiskin_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-flexiskin-label'
 		) );
@@ -323,10 +323,10 @@ class Flexiskin extends BsExtensionMW {
 					$aResult = json_decode(self::getFlexiskinConfig(false, $sId, true));
 				else
 					$aResult = json_decode(self::getFlexiskinConfig(false, $sId, false));
+				$aConfig = json_decode($aResult->config);
 				if ($aConfig[1]->logo == "")
 					return true;
-				$aConfig = json_decode($aResult->config);
-				$sPath = BS_DATA_PATH . "/flexiskin/" . md5($sId) . "/images/";
+				$sPath = BS_DATA_PATH . "/flexiskin/" . $sId . "/images/";
 				$sImg = "<img src='".$sPath . $aConfig[1]->logo."' />";
 				return false;
 			}

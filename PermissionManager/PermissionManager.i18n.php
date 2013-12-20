@@ -89,7 +89,7 @@ $messages[ 'en' ] = array (
 	'bs-permissionmanager-template-editor-delete-success' => 'Template successfully deleted',
 	'bs-permissionmanager-template-editor-delete-failure' => 'Template could not be deleted',
 	'prefs-PermissionManager'						  => 'Permission Manager',
-	'bs-pm-pref-lockmode'							  => 'aktivate lockmode',
+	'bs-pm-pref-lockmode'							  => 'activate lockmode',
 	'bs-pm-pref-skipSysNs'							  => 'skip mediawiki namespaces if lockmode is active',
 );
 

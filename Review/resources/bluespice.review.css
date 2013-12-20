@@ -64,6 +64,14 @@
 	height:24px;
 }
 
+.rv_invalid {
+	background-repeat:no-repeat;
+	/*@embed*/
+	background-image:url(images/bs-rv-invalid.png);
+	width:24px;
+	height:24px;
+}
+
 .rv_steps_colhd {
 	color:#D9DbDc;
 	font-size:11px;

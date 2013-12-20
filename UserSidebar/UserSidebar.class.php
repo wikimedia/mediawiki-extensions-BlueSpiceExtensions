@@ -151,9 +151,9 @@ class UserSidebar extends BsExtensionMW {
 		$oUserPageSettingsView->addData(
 			array(
 				'URL'      => htmlspecialchars( $oUserSidebarArticleTitle->getEditURL() ),
-				'TITLE'    => wfMsg( 'bs-usersidebar-userpagesettings-link-title' ),
-				'TEXT'     => wfMsg( 'bs-usersidebar-userpagesettings-link-text' ),
-				'IMGALT'   => wfMsg( 'bs-usersidebar-userpagesettings-headline' ),
+				'TITLE'    => wfMessage( 'bs-usersidebar-userpagesettings-link-title' )->plain(),
+				'TEXT'     => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->plain(),
+				'IMGALT'   => wfMessage( 'bs-usersidebar-userpagesettings-headline' )->plain(),
 				'IMGSRC'   => $this->getImagePath().'bs-userpage-sidebar.png',
 			)
 		);
