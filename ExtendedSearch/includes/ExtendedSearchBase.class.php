@@ -4,9 +4,9 @@
  *
  * Part of BlueSpice for MediaWiki
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -98,188 +98,6 @@ class ExtendedSearchBase {
 		$oView->addItem( $oResultView );
 
 		return $oView;
-	}
-
-	/**
-	 * Triggers a search index update for a specified article.
-	 * @param Article $oArticle MediaWiki article object of article to be indexed.
-	 * @param string $sText Text to be indexed (optional, fetched from article if not present)
-	 */
-	public function updateIndexWiki( $oArticle ) {
-		if ( $oArticle === null ) return;
-		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-		$oBuildIndexMwArticles = new BuildIndexMwArticles( $oBuildIndexMainControl );
-
-		$oTitle = $oArticle->getTitle();
-		$oRevision = Revision::newFromTitle( $oTitle );
-
-		wfRunHooks( 'BS::ExtendedSearch::UpdateIndexWiki', array( &$oTitle, &$oRevision ) );
-		if ( $oTitle === null ) return;
-
-		$iPageID = $oTitle->getArticleID();
-		$iPageNamespace = $oTitle->getNamespace();
-		$sPageTitle = $oTitle->getText();
-		$iPageTimestamp = $oTitle->getTouched();
-		$aPageCategories = $this->getCategoriesFromDbForCertainPageId( $iPageID );
-		$aPageEditors = $this->getEditorsFromDbForCertainPageId( $iPageID );
-		$bRedirect = $oTitle->isRedirect();
-
-		$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
-
-		if ( $bRedirect === true ) {
-			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT )->getUltimateRedirectTarget();
-			if ( $oRedirectTitle instanceof Title ) {
-				$oArticle = new Article( $oRedirectTitle );
-				$this->updateIndexWiki( $oArticle );
-			}
-		}
-
-		$aSections = $oBuildIndexMainControl->extractEditSections( $sPageContent );
-		$sPageContent = $oBuildIndexMainControl->parseTextForIndex( $sPageContent, $oTitle );
-
-		$aRedirects = $oBuildIndexMainControl->getRedirects( $oTitle );
-
-		// http://www.mediawiki.org/wiki/Manual:WfTimestamp
-		// wfTimestamp( TS_MW ) returns actual UTC in format YmdHis which results in gmdate( 'YmdHis', time() );
-		// do not use date( 'YmdHis' ); it does not return GMT but timestamp with timezone-offset
-		if ( strpos( $iPageTimestamp, '1970' ) === 0 ) $iPageTimestamp = wfTimestamp( TS_MW );
-
-		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument( $sPageTitle, $sPageContent, $iPageID, $iPageNamespace, $iPageTimestamp, $aPageCategories, $aPageEditors, $aRedirects, $bRedirect, $aSections );
-		try {
-			$this->oSearchService->addDocument( $oSolrDocument );
-		} catch ( Exception $e ) {
-			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
-		}
-
-		try {
-			// Indexing file links 
-			$oBuildIndexMainControl->buildIndexLinked( '', $iPageID );
-		} catch ( Exception $e ) {}
-
-		$oBuildIndexMainControl->commitAndOptimize();
-	}
-
-	/**
-	 * Triggers a search index update for a file.
-	 * @param File $oFile file object.
-	 */
-	public function updateIndexFile( $oFile ) {
-		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-		$oIndexFile = new BuildIndexMwSingleFile( $oBuildIndexMainControl, $oFile );
-		try {
-			$oIndexFile->indexCrawledDocuments();
-		} catch ( Exception $e ) {
-			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
-		}
-
-		$oBuildIndexMainControl->commitAndOptimize();
-
-		return true;
-	}
-
-	/**
-	 * Triggers deletion of a specified file from search index.
-	 * @param int $id Article id of page to be deleted.
-	 * @param string $path path to the file.
-	 */
-	public function deleteIndexFile( $iID, $sPath ) {
-		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-		$sUniqueID = $oBuildIndexMainControl->getUniqueId( $iID, $sPath );
-		try {
-			$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
-		} catch ( Exception $e ) {
-			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
-		}
-
-		$oBuildIndexMainControl->commitAndOptimize();
-
-		return true;
-	}
-
-	/**
-	 * Triggers deletion of a specified item from search index.
-	 * @param int $iID Article id of page to be deleted.
-	 */
-	public function deleteFromIndexWiki( $iID ) {
-		$oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-		$sUniqueID = $oBuildIndexMainControl->getUniqueId( $iID );
-		try {
-			$this->oSearchService->deleteById( $sUniqueID );
-		} catch ( Exception $e ) {
-			$oBuildIndexMainControl->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
-		}
-
-		$oBuildIndexMainControl->commitAndOptimize();
-
-		return true;
-	}
-
-	/**
-	 * Triggers search index update for a given title.
-	 * @param Title $title MediaWiki title object of article to be updated.
-	 */
-	public function updateIndexWikiByTitleObject( $oTitle ) {
-		$oArticle = new Article( $oTitle );
-		$this->updateIndexWiki( $oArticle );
-
-		return true;
-	}
-
-	/**
-	 * Reads out table %dbPrefix%categorylinks for certain page_id
-	 * @param int $pageId ID of article that category links should be read for.
-	 * @return array Categorynames as values
-	 */
-	public function getCategoriesFromDbForCertainPageId( $iPageID ) {
-		$oDbr = wfGetDB( DB_SLAVE );
-
-		// returns false on failure
-		$oDbResTableCategories = $oDbr->select(
-				'categorylinks',
-				'DISTINCT cl_to',
-				array( 'cl_from' => $iPageID )
-		);
-
-		$aCategories = array();
-		if ( $oDbResTableCategories && $oDbr->numRows( $oDbResTableCategories ) > 0 ) {
-			while ( $rowTableCategories = $oDbr->fetchObject( $oDbResTableCategories ) ) {
-				$aCategories[] = $rowTableCategories->cl_to;
-			}
-		}
-		$oDbr->freeResult( $oDbResTableCategories );
-
-		return $aCategories;
-	}
-
-	/**
-	 * Reads out table %dbPrefix%revision for certain page_id
-	 * @param int $pageId ID of article that revisions should be read for.
-	 * @return array editors as values
-	 */
-	public function getEditorsFromDbForCertainPageId( $iPageID ) {
-		$oDbr = wfGetDB( DB_SLAVE );
-
-		// returns false on failure
-		$oDbResTableRevision = $oDbr->select(
-				'revision',
-				'DISTINCT rev_user_text',
-				array( 'rev_page' => $iPageID )
-		);
-
-		$aEditors = array();
-		if ( $oDbr->numRows( $oDbResTableRevision ) > 0 ) {
-			$oUser = null;
-			$sEditor = '';
-			while ( $rowTableRevision = $oDbr->fetchObject( $oDbResTableRevision ) ) {
-				$sEditor = $rowTableRevision->rev_user_text;
-				$oUser = User::newFromName( $sEditor );
-				if ( !is_object( $oUser ) ) $sEditor = 'unknown';
-				$aEditors[] = $sEditor;
-			}
-		}
-		$oDbr->freeResult( $oDbResTableRevision );
-
-		return $aEditors;
 	}
 
 	/**
@@ -574,7 +392,8 @@ class ExtendedSearchBase {
 				}
 
 				if ( !$oMltTitle->userCan( 'read' ) ) continue;
-				if ( $oMltTitle->getArticleID() == $oTitle->getArticleID() ) continue;
+				if ( $oMltTitle->getArticleID() === $oTitle->getArticleID() ) continue;
+				if ( $oMltTitle->isRedirect() ) continue;
 
 				$sHtml = $oMltTitle->getPrefixedText();
 				if ( $sOrigin === 'widgetbar' ) {

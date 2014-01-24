@@ -255,9 +255,9 @@ class SearchIndex {
 
 		$aSortTypes = array(
 			'titleSort' => 'bs-extendedsearch-sort-title',
-			'score'     => 'bs-extendedsearch-sort-relevance',
-			'type'      => 'bs-extendedsearch-sort-type',
-			'ts'        => 'bs-extendedsearch-sort-ts'
+			'score' => 'bs-extendedsearch-sort-relevance',
+			'type' => 'bs-extendedsearch-sort-type',
+			'ts' => 'bs-extendedsearch-sort-ts'
 		);
 
 		$aSorting = array(
@@ -488,8 +488,10 @@ class SearchIndex {
 					foreach ( $facetTypeAll as $typeUrl => $attributesUrl ) {
 						$bOwnUrlAndNotAlreadyChecked = ( ( $type == $typeUrl ) && !isset( $attributesUrl['checked'] ) );
 						$bOtherUrlAndAlreadyChecked = ( ( $type != $typeUrl ) && isset( $attributesUrl['checked'] ) );
-						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked )
+
+						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked ) {
 							$uri .= '&ty[]='.$typeUrl;
+						}
 					}
 
 					$aDataSet['uri'] = $uri;
@@ -584,11 +586,11 @@ class SearchIndex {
 		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
 
 		$aImageLinks = array(
-			'doc'     => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
-			'ppt'     => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
-			'xls'     => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
-			'pdf'     => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
-			'txt'     => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
+			'doc' => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
+			'ppt' => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
+			'xls' => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
+			'pdf' => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
+			'txt' => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
 			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
 		);
 
@@ -731,11 +733,11 @@ class SearchIndex {
 			);
 
 			$aResultEntryDataSet = array(
-				'searchicon'        => $sLinkIcon,
-				'searchlink'        => $sSearchLink,
-				'timestamp'         => $sTimestamp,
-				'catstr'            => $catstr,
-				'redirect'          => $sRedirect,
+				'searchicon' => $sLinkIcon,
+				'searchlink' => $sSearchLink,
+				'timestamp' => $sTimestamp,
+				'catstr' => $catstr,
+				'redirect' => $sRedirect,
 				'highlightsnippets' => $aHighlightsnippets
 			);
 

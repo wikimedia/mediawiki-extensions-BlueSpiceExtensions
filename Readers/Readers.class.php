@@ -123,17 +123,20 @@ class Readers extends BsExtensionMW {
 		$oTitle = $this->getTitle();
 		$oRevision = Revision::newFromTitle( $oTitle );
 
-		//When exporting a page using Special:UniversalExport the title is 
-		//for unknown circumstances "UniversalExport". Therefore checkContext 
-		//fails. This issue may be connected with PageContentProvider and 
-		//should be fixed there. But this is pretty much more complicated right
-		//now, so this workaround is implemented.
-		if ( $oRevision instanceof Revision === false ) return true;
+		if ( !( $oRevision instanceof Revision ) ) return true;
 
 		$oDbw = wfGetDB( DB_MASTER );
 
+		$oDbw->delete(
+			'bs_readers',
+			array(
+				'readers_user_id' => $oUser->getId(),
+				'readers_page_id' => $oTitle->getArticleID()
+			)
+		);
+
 		$aNewRow = array();
-		$aNewRow['readers_id'] = '';
+		$aNewRow['readers_id'] = 0;
 		$aNewRow['readers_user_id'] = $oUser->getId();
 		$aNewRow['readers_user_name'] = $oUser->getName();
 		$aNewRow['readers_page_id'] = $oTitle->getArticleID();
@@ -324,26 +327,27 @@ class Readers extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function checkContext() {
-		global $wgTitle, $wgUser;
+		$oTitle = $this->getTitle();
+		$oUser = $this->getUser();
 
 		if ( wfReadOnly() ) return false;
 
 		if ( BsConfig::get( 'MW::Readers::Active' ) == false ) return false;
 
-		if ( is_null( $wgTitle ) ) return false;
+		if ( is_null( $oTitle ) ) return false;
 
-		if ( !$wgTitle->exists() ) return false;
+		if ( !$oTitle->exists() ) return false;
 
-		if ( $wgUser->isAnon() ) return false;
+		if ( $oUser->isAnon() || User::isIP( $oUser->getName() ) ) return false;
 
 		// Do only display when user is allowed to read
-		if ( !$wgTitle->userCan( 'read' ) ) return false;
+		if ( !$oTitle->userCan( 'read' ) ) return false;
 
 		// Do only display in view mode
 		if ( $this->getRequest()->getVal( 'action', 'view' ) !== 'view' ) return false;
 
 		// Do not display on SpecialPages, CategoryPages or ImagePages
-		if ( in_array( $wgTitle->getNamespace(), array( NS_SPECIAL, NS_CATEGORY, NS_FILE ) ) ) {
+		if ( in_array( $oTitle->getNamespace(), array( NS_SPECIAL, NS_CATEGORY, NS_FILE, NS_MEDIAWIKI ) ) ) {
 			return false;
 		}
 
@@ -373,10 +377,10 @@ class Readers extends BsExtensionMW {
 				array(
 					'GROUP BY' => 'readers_page_id',
 					'ORDER BY' => 'MAX(readers_ts) DESC',
-					'LIMIT'    => $iLimit,
-					'OFFSET'   => $iStart
+					'LIMIT' => $iLimit,
+					'OFFSET' => $iStart
 				),
-				array( 'page' => array( 'RIGHT JOIN', 'readers_page_id = page_id' ) )
+				array( 'page' => array( 'INNER JOIN', 'readers_page_id = page_id' ) )
 		);
 
 		$aPages = array();

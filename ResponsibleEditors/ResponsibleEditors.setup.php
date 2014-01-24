@@ -3,7 +3,7 @@
 BsExtensionManager::registerExtension('ResponsibleEditors', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
 $wgExtensionMessagesFiles['ResponsibleEditors']      = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
-$wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.alias.php';
+$wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages
 $wgAutoloadClasses['BsResponsibleEditor']       = __DIR__ . '/includes/BsResponsibleEditor.php';
@@ -76,6 +76,15 @@ $wgResourceModules['ext.bluespice.responsibleEditors.bookshelfPlugin'] = array(
 	'messages' => array(
 		'bs-responsibleeditors-titleEditors',
 		'bs-responsibleeditors-cmChangeRespEditors',
+	)
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.responsibleEditors.superList'] = array(
+	'scripts' => array(
+		'bluespice.responsibleEditors.SuperList.js',
+	),
+	'dependencies' => array(
+		'ext.bluespice.responsibleEditors'
 	)
 ) + $aResourceModuleTemplate;
 

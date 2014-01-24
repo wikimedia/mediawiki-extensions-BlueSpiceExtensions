@@ -45,7 +45,7 @@ $(document).on('VisualEditor::instanceHide', function(event, editorId) {
 	}
 });
 
-$(document).ready( function() {
+function bs_initVisualEditor() {
 	var currentSiteCSS = [];
 	//We collect the CSS Links from this document and set them as content_css 
 	//for TinyMCE
@@ -70,7 +70,7 @@ $(document).ready( function() {
 		VisualEditor.startEditors();
 		$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
 	}
-});
+}
 
 $(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 	e.preventDefault();
@@ -80,4 +80,16 @@ $(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 	$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
 	VisualEditor.startEditors();
 	return false;
+});
+
+$(document).ready( function() {
+	var BsVisualEditorLoaderUsingDeps = mw.config.get('BsVisualEditorLoaderUsingDeps');
+
+	//Check if there are other modules we need to wait for
+	if( BsVisualEditorLoaderUsingDeps.length > 0 ) {
+		mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
+	}
+	else {
+		bs_initVisualEditor();
+	}
 });

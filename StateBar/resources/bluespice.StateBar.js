@@ -29,6 +29,7 @@ BsStateBar = {
 		$.each( this.aRegisteredToggleClickElements, function( key, value ) {
 			value.unbind('click');
 		} );
+		//TODO: Use CAIContext!
 		var params = {
 			action:'ajax',
 			rs:'StateBar::ajaxCollectBodyViews',

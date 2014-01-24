@@ -70,7 +70,28 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 						'created' => true,
 					)
 				);
-		}else {
+		} else if ( $param === 'newtitle' ) {
+			$aExtra = $event->getExtra();
+			$oNewTitle = $aExtra['newtitle'];
+			$message->params( $oNewTitle->getPrefixedText() );
+		} else if ( $param === 'newtitlelink' ) {
+			$aExtra = $event->getExtra();
+			$oNewTitle = $aExtra['newtitle'];
+			$this->buildLink(
+				$oNewTitle,
+				$message,
+				array(
+					'class' => 'mw-echo-title',
+					)
+			);
+		} else if( $param === 'deletereason' ) {
+			$aExtra = $event->getExtra();
+			$message->params( $aExtra['deletereason'] );
+		} else if( $param === 'shoutmsg' ) {
+			$aExtra = $event->getExtra();
+			$sMessage = $aExtra['shoutmsg'];
+			$message->params( $sMessage );
+		} else {
 			parent::processParam( $event, $param, $message, $user );
 		}
 	}
@@ -115,6 +136,13 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 		}
 	}
 
+	/**
+	 * 
+	 * @param Title $title
+	 * @param type $message
+	 * @param type $props
+	 * @param type $bLinkWithPrefixedText
+	 */
 	public function buildLink( $title, $message, $props, $bLinkWithPrefixedText = true ) {
 		$param = array();
 		if ( isset( $props['param'] ) ) {

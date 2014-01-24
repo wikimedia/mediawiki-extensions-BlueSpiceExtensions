@@ -1,21 +1,13 @@
 <?php
 
 /**
- * This file is part of blue spice for MediaWiki.
+ * This file is part of BlueSpice for MediaWiki.
  *
- * Administration interface for adding, editing and deletig user groups and their rights
+ * Administration interface for adding, editing and deleting namespaces
  * @copyright Copyright (c) 2013, HalloWelt! Medienwerkstatt GmbH, All rights reserved.
  * @author Sebastian Ulbricht
  * @author Stefan Widmann <widmann@hallowelt.biz>
  * @version 2.22.0
- */
-/* Changelog
- * v1.20.0
- * -raised to stable
- * v1.0.0
- * -raised to stable
- * v0.1
- * FIRST CHANGES
  */
 
 // Last review: MRG (01.07.11 01:35)
@@ -57,7 +49,7 @@ class NamespaceManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'NamespaceManager',
-			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deletig user groups and their rights',
+			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting namespaces',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stefan Widmann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -102,7 +94,12 @@ class NamespaceManager extends BsExtensionMW {
 		$this->setHook( 'NamespaceManager::editNamespace', 'onEditNamespace', true );
 		$this->setHook( 'NamespaceManager::writeNamespaceConfiguration', 'onWriteNamespaceConfiguration', true );
 		$this->setHook( 'LoadExtensionSchemaUpdates', 'onLoadExtensionSchemaUpdates', true );
+		
+		//CR, RBV: This is suposed to return all constants! Not just system NS.
+		//At the moment the implementation relies on an hardcoded mapping, 
+		//which is bad. We need to change this and make it more generic!
 		$GLOBALS['bsSystemNamespaces'] = BsNamespaceHelper::getMwNamespaceConstants();
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 		
@@ -116,16 +113,40 @@ class NamespaceManager extends BsExtensionMW {
 	public function onLoadExtensionSchemaUpdates( $du ) {
 		parent::onLoadExtensionSchemaUpdates( $du );
 		global $wgExtPGNewFields, $wgDBtype;
-		$dir = __DIR__;
+		$dir = __DIR__.DS.'resources'.DS;
 
 		if ( $wgDBtype == 'postgres' ) {
-			$wgExtPGNewFields[] = array( 'bs_namespacemanager_backup_page', 'page_content_model', $dir.DS.'resources' . DS . 'bs_namespacemanager_backup_page.patch.pg.sql' );
-			$wgExtPGNewFields[] = array( 'bs_namespacemanager_backup_revision', 'rev_sha1', $dir.DS.'resources' . DS . 'bs_namespacemanager_backup_revision.patch.rev_sha1.pg.sql' );
-			$wgExtPGNewFields[] = array( 'bs_namespacemanager_backup_revision', 'rev_content_model', $dir.DS.'resources' . DS . 'bs_namespacemanager_backup_revision.patch2.pg.sql' );
+			$wgExtPGNewFields[] = array( 
+				'bs_namespacemanager_backup_page', 
+				'page_content_model', 
+				$dir . 'bs_namespacemanager_backup_page.patch.pg.sql'
+			);
+			$wgExtPGNewFields[] = array( 
+				'bs_namespacemanager_backup_revision', 
+				'rev_sha1', 
+				$dir . 'bs_namespacemanager_backup_revision.patch.rev_sha1.pg.sql'
+			);
+			$wgExtPGNewFields[] = array(
+				'bs_namespacemanager_backup_revision',
+				'rev_content_model', 
+				$dir . 'bs_namespacemanager_backup_revision.patch2.pg.sql'
+			);
 		} else {
-			$du->addExtensionField( 'bs_namespacemanager_backup_page', 'page_content_model', $dir.DS.'resources' . DS . 'bs_namespacemanager_backup_page.patch.sql' );
-			$du->addExtensionField( 'bs_namespacemanager_backup_revision', 'rev_sha1', $dir.DS.'resources' . DS . 'bs_namespacemanager_backup_revision.patch.rev_sha1.sql');
-			$du->addExtensionField( 'bs_namespacemanager_backup_revision', 'rev_content_model', $dir.DS.'resources' . DS . 'bs_namespacemanager_backup_revision.patch2.sql' );
+			$du->addExtensionField( 
+				'bs_namespacemanager_backup_page', 
+				'page_content_model', 
+				$dir . 'bs_namespacemanager_backup_page.patch.sql'
+			);
+			$du->addExtensionField( 
+				'bs_namespacemanager_backup_revision',
+				'rev_sha1', 
+				$dir . 'bs_namespacemanager_backup_revision.patch.rev_sha1.sql'
+			);
+			$du->addExtensionField( 
+				'bs_namespacemanager_backup_revision', 
+				'rev_content_model', 
+				$dir . 'bs_namespacemanager_backup_revision.patch2.sql'
+			);
 		}
 		return true;
 	}
@@ -156,6 +177,23 @@ class NamespaceManager extends BsExtensionMW {
 	public function getForm() {
 		$this->getOutput()->addModules( 'ext.bluespice.namespaceManager' );
 		BsExtensionManager::setContext( 'MW::NamespaceManagerShow' );
+		$aMetaFields = array(
+			array( 
+				'name' => 'id', 
+				'type' => 'int', 
+				'sortable' => true, 
+				'label' => wfMessage( 'bs-namespacemanager-label-id' )->plain()
+			),
+			array(
+				'name' => 'name',
+				'sortable' => true,
+				'label' => wfMessage( 'bs-namespacemanager-label-namespaces' )->plain()
+			)
+		);
+
+		wfRunHooks( 'NamespaceManager::getMetaFields', array( &$aMetaFields ) );
+		$this->getOutput()->addJsConfigVars('bsNamespaceManagerMetaFields', $aMetaFields);
+		
 		return '<div id="bs-namespacemanager-grid"></div>';
 	}
 
@@ -166,13 +204,6 @@ class NamespaceManager extends BsExtensionMW {
 	public static function getData() {
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 		global $wgContLang;
-
-		$aMetaFields = array(
-			array( 'name' => 'id', 'type' => 'int', 'sortable' => true, 'label' => wfMessage( 'bs-namespacemanager-label-id' )->plain() ),
-			array( 'name' => 'name', 'sortable' => true, 'label' => wfMessage( 'bs-namespacemanager-label-namespaces' )->plain() )
-		);
-
-		wfRunHooks( 'NamespaceManager::getMetaFields', array( &$aMetaFields ) );
 
 		$aResults = array();
 		$aNamespaces = $wgContLang->getNamespaces();
@@ -194,7 +225,7 @@ class NamespaceManager extends BsExtensionMW {
 		$iStart = $oRequest->getInt( 'start', 0 );
 		$sSort = $oRequest->getVal( 'sort', '[{"property":"id","direction":"DESC"}]' );
 
-		self::$aSortConditions = json_decode($sSort);
+		self::$aSortConditions = FormatJson::decode($sSort);
 		self::$aSortConditions = self::$aSortConditions[0];
 		usort( $aResults, 'NamespaceManager::namespaceManagerRemoteSort' );
 
@@ -210,7 +241,7 @@ class NamespaceManager extends BsExtensionMW {
 			'success' => true,
 			'results' => $aLimitedResults
 		);
-		return json_encode( $aReturn );
+		return FormatJson::encode( $aReturn );
 	}
 
 	public static function namespaceManagerRemoteSort( $value1, $value2 ) {
@@ -242,16 +273,33 @@ class NamespaceManager extends BsExtensionMW {
 	}
 
 	public function onGetMetaFields( &$aMetaFields ) {
-		$aMetaFields[] = array( 'name' => 'editable', 'type' => 'boolean', 'label' => wfMessage( 'bs-namespacemanager-label-editable' )->plain() );
-		$aMetaFields[] = array( 'name' => 'subpages', 'type' => 'boolean', 'label' => wfMessage( 'bs-namespacemanager-label-subpages' )->plain() );
-		$aMetaFields[] = array( 'name' => 'searchable', 'type' => 'boolean', 'label' => wfMessage( 'bs-namespacemanager-label-searchable' )->plain() );
-		$aMetaFields[] = array( 'name' => 'content', 'type' => 'boolean', 'label' => wfMessage( 'bs-namespacemanager-label-content' )->plain() );
+		$aMetaFields[] = array( 
+			'name' => 'editable', 
+			'type' => 'boolean', 
+			'label' => wfMessage( 'bs-namespacemanager-label-editable' )->plain()
+		);
+		$aMetaFields[] = array( 
+			'name' => 'subpages', 
+			'type' => 'boolean', 
+			'label' => wfMessage( 'bs-namespacemanager-label-subpages' )->plain()
+		);
+		$aMetaFields[] = array( 
+			'name' => 'searchable', 
+			'type' => 'boolean', 
+			'label' => wfMessage( 'bs-namespacemanager-label-searchable' )->plain()
+		);
+		$aMetaFields[] = array( 
+			'name' => 'content', 
+			'type' => 'boolean', 
+			'label' => wfMessage( 'bs-namespacemanager-label-content' )->plain()
+		);
 
 		return true;
 	}
 
 	public function onGetNamespaceData( &$aResults ) {
-		global $wgExtraNamespaces, $wgNamespacesWithSubpages, $wgContentNamespaces, $wgNamespacesToBeSearchedDefault, $bsSystemNamespaces;
+		global $wgNamespacesWithSubpages, $wgContentNamespaces, 
+				$wgNamespacesToBeSearchedDefault, $bsSystemNamespaces;
 		wfRunHooks( 'BSNamespaceManagerBeforeSetUsernamespaces', array( $this, &$bsSystemNamespaces ) );
 		$aUserNamespaces = self::getUserNamespaces();
 
@@ -274,10 +322,13 @@ class NamespaceManager extends BsExtensionMW {
 	 * Hook-Handler for NamespaceManager::editNamespace
 	 * @return boolean Always true to kepp hook alive
 	 */
-	public function onEditNamespace( &$aNamespaceDefinition, &$iNs, $bSubpages, $bSearchable, $bEvalualbe, $bUseInternalDefaults ) {
+	public function onEditNamespace( &$aNamespaceDefinition, &$iNs, $aAdditionalSettings, $bUseInternalDefaults ) {
 		if ( !$bUseInternalDefaults ) {
 			if ( empty( $aNamespaceDefinition[$iNs] ) ) $aNamespaceDefinition[$iNs] = array();
-			$aNamespaceDefinition[$iNs] += array( 'content' => $bEvalualbe,'subpages' => $bSubpages,'searched' => $bSearchable );
+			$aNamespaceDefinition[$iNs] += array( 
+				'content'  => $aAdditionalSettings['content'],
+				'subpages' => $aAdditionalSettings['subpages'],
+				'searched' => $aAdditionalSettings['searchable'] );
 		} else {
 			$aNamespaceDefinition[$iNs] += $this->_aDefaultNamespaceSettings;
 		}
@@ -300,10 +351,10 @@ class NamespaceManager extends BsExtensionMW {
 	/**
 	 * Build the configuration for a new namespace and give it to the save method.
 	 */
-	public static function addNamespace( $sNamespace, $bSubpages, $bSearchable, $bEvaluable ) {
+	public static function addNamespace( $sNamespace, $aAdditionalSettings ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
 			) );
@@ -312,6 +363,7 @@ class NamespaceManager extends BsExtensionMW {
 
 		global $wgContLang;
 		$aNamespaces = $wgContLang->getNamespaces();
+		$aAdditionalSettings = FormatJson::decode($aAdditionalSettings, true);
 		$aUserNamespaces = self::getUserNamespaces( true );
 		end( $aNamespaces );
 		$iNS = key( $aNamespaces ) + 1;
@@ -330,13 +382,13 @@ class NamespaceManager extends BsExtensionMW {
 		}
 		if ( $sResult ) {
 			if ( strlen( $sNamespace ) < 2 ) {
-				return json_encode( array(
+				return FormatJson::encode( array(
 					'success' => false,
 					'message' => wfMessage( 'bs-namespacemanager-namespace_name_length' )->plain()
 					) );
 			// TODO MRG (06.11.13 11:17): Unicodefähigkeit?
 			} else if ( !preg_match( '%^[a-zA-Z_\\x80-\\xFF][a-zA-Z0-9_\\x80-\\xFF]{1,99}$%i', $sNamespace ) ) {
-				return json_encode( array(
+				return FormatJson::encode( array(
 					'success' => false,
 					'message' => wfMessage( 'bs-namespacemanager-wrong_namespace_name_format' )->plain()
 					) );
@@ -344,7 +396,7 @@ class NamespaceManager extends BsExtensionMW {
 				$aUserNamespaces[$iNS] = array( 'name' => $sNamespace );
 
 				$bUseInternalDefaults = false;
-				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable, $bUseInternalDefaults ) );
+				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $aAdditionalSettings, $bUseInternalDefaults ) );
 
 				++$iNS;
 				$aUserNamespaces[ ( $iNS ) ] = array(
@@ -353,13 +405,13 @@ class NamespaceManager extends BsExtensionMW {
 					'alias' => $sNamespace . '_talk'
 				);
 				$bUseInternalDefaults = true;
-				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable, $bUseInternalDefaults ) );
+				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $aAdditionalSettings, $bUseInternalDefaults ) );
 
-				return json_encode( self::setUserNamespaces( $aUserNamespaces ) );
+				return FormatJson::encode( self::setUserNamespaces( $aUserNamespaces ) );
 			}
 		} else {
 			// TODO SU (04.07.11 12:13): Aus Gründen der Lesbarkeit würde ich das direkt in die obige foreach-Schleife packen und den else-Zweig hir weglassen.
-			return json_encode( array(
+			return FormatJson::encode( array(
 					'success' => false,
 					'message' => wfMessage( 'bs-namespacemanager-namespace_already_exists' )->plain()
 				) );
@@ -369,10 +421,10 @@ class NamespaceManager extends BsExtensionMW {
 	/**
 	 * Change the configuration of a given namespace and give it to the save method.
 	 */
-	public static function editNamespace( $iNS, $sNamespace, $bSubpages, $bSearchable, $bEvaluable ) {
+	public static function editNamespace( $iNS, $sNamespace, $aAdditionalSettings ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
 			) );
@@ -380,24 +432,26 @@ class NamespaceManager extends BsExtensionMW {
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		global $bsSystemNamespaces, $wgContLang;
+		$iNS = (int)$iNS;
+		$aAdditionalSettings = FormatJson::decode($aAdditionalSettings, true);
 		$oNamespaceManager = BsExtensionManager::getExtension( 'NamespaceManager' );
 		wfRunHooks( 'BSNamespaceManagerBeforeSetUsernamespaces', array( $oNamespaceManager, &$bsSystemNamespaces ) );
 		$aUserNamespaces = self::getUserNamespaces( true );
 
 		if ( $iNS !== NS_MAIN && !$iNS ) {
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-namespacemanager-no_valid_namespace_id' )->plain()
 			) );
 		}
 		if ( strlen( $sNamespace ) < 2 ) {
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-namespacemanager-namespace_name_length' )->plain()
 			) );
 		}
 		if ( $iNS !== NS_MAIN && $iNS !== NS_PROJECT && $iNS !== NS_PROJECT_TALK && !preg_match( '%^[a-zA-Z_\\x80-\\xFF][a-zA-Z0-9_\\x80-\\xFF]{1,99}$%', $sNamespace ) ) {
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-namespacemanager-wrong_namespace_name_format' )->plain()
 			) );
@@ -406,10 +460,9 @@ class NamespaceManager extends BsExtensionMW {
 		if ( !isset( $bsSystemNamespaces[($iNS)] ) && strstr( $sNamespace, '_' . $wgContLang->getNsText( NS_TALK ) ) ) {
 				$aUserNamespaces[ $iNS ] = array(
 					'name' => $aUserNamespaces[$iNS]['name'],
-					//'name' => $sNamespace . '_' . $wgContLang->getNsText( NS_TALK ),
 					'alias' => str_replace( '_' . $wgContLang->getNsText( NS_TALK ), '_talk', $sNamespace ),
 				);
-			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable ) );
+			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $aAdditionalSettings, false ) );
 		} else {
 			$aUserNamespaces[$iNS] = array(
 				'name' => $sNamespace,
@@ -419,13 +472,13 @@ class NamespaceManager extends BsExtensionMW {
 				$aUserNamespaces[($iNS + 1)]['name'] = $sNamespace . '_' . $wgContLang->getNsText( NS_TALK );
 				$aUserNamespaces[($iNS + 1)]['alias'] = $sNamespace . '_talk';
 			}
-			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $bSubpages, $bSearchable, $bEvaluable ) );
+			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $aAdditionalSettings, false ) );
 		}
 
 		$aResult = self::setUserNamespaces( $aUserNamespaces );
 		$aResult['message'] = wfMessage( 'bs-namespacemanager-nsedited' )->plain();
 
-		return json_encode( $aResult );
+		return FormatJson::encode( $aResult );
 	}
 
 	/**
@@ -434,7 +487,7 @@ class NamespaceManager extends BsExtensionMW {
 	public function deleteNamespace( $iNS, $iDoArticle ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
 				) );
@@ -444,7 +497,7 @@ class NamespaceManager extends BsExtensionMW {
 		$iNS = BsCore::sanitize( $iNS, '', BsPARAMTYPE::INT );
 
 		if ( !$iNS ) {
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-namespacemanager-no_valid_namespace_id' )->plain()
 				) );
@@ -499,9 +552,9 @@ class NamespaceManager extends BsExtensionMW {
 		if ( !$bErrors ) {
 			$aResult = self::setUserNamespaces( $aUserNamespaces );
 			$aResult['message'] = wfMessage( 'bs-namespacemanager-nsremoved' )->plain();
-			return json_encode( $aResult );
+			return FormatJson::encode( $aResult );
 		} else {
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => wfMessage( 'bs-namespacemanager-error_on_remove_namespace' )->plain()
 				) );
@@ -550,7 +603,8 @@ class NamespaceManager extends BsExtensionMW {
 	 * @param array $aUserNamespaceDefinition the namespace configuration
 	 */
 	protected static function setUserNamespaces( $aUserNamespaceDefinition ) {
-		global $wgNamespacesWithSubpages, $wgContentNamespaces, $wgNamespacesToBeSearchedDefault, $bsSystemNamespaces;
+		global $wgNamespacesWithSubpages, $wgContentNamespaces, 
+			$wgNamespacesToBeSearchedDefault, $bsSystemNamespaces;
 
 		$oNamespaceManager = BsExtensionManager::getExtension( 'NamespaceManager' );
 		wfRunHooks( 'BSNamespaceManagerBeforeSetUsernamespaces', array( $oNamespaceManager, &$bsSystemNamespaces ) );

@@ -99,8 +99,6 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	 * Indexes all documents that were found in crawl() method.
 	 */
 	public function indexCrawledDocuments() {
-		$oExtendedSearchBase = ExtendedSearchBase::getInstance();
-
 		while ( $oDocument = $this->oDbr->fetchObject( $this->oDocumentsDb ) ) {
 			$this->count++;
 			set_time_limit( $this->iTimeLimit ); // is needed ... else you can not create larger indexes
@@ -124,8 +122,8 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 			$aRedirects = $this->oMainControl->getRedirects( $oTitle );
 
 			$iTimestamp = $oDocument->page_touched;
-			$aEditors = $oExtendedSearchBase->getEditorsFromDbForCertainPageId( $iPageID );
-			$aCategories = $oExtendedSearchBase->getCategoriesFromDbForCertainPageId( $iPageID );
+			$aEditors = $this->oMainControl->getEditorsFromDbForCertainPageId( $iPageID );
+			$aCategories = $this->oMainControl->getCategoriesFromDbForCertainPageId( $iPageID );
 			if ( empty( $aCategories ) ) $aCategories = array( 'notcategorized' );
 
 			$oSolrDocument = $this->makeSingleDocument(
@@ -143,8 +141,9 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	 * Descructor for BuildIndexMwArticles class
 	 */
 	public function __destruct() {
-		if ( $this->oDocumentsDb !== null )
+		if ( $this->oDocumentsDb !== null ) {
 			$this->oDbr->freeResult( $this->oDocumentsDb );
+		}
 	}
 
 }

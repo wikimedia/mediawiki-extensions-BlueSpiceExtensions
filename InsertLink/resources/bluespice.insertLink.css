@@ -46,6 +46,7 @@ i.mce-i-unlink {
 	background-image: url(images/button_insert-unlink-16px.png);
 }
 
+i.mce-i-link:before,
 i.mce-i-unlink:before{
 	content: "";
 }

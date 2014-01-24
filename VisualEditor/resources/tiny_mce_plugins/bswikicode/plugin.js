@@ -453,7 +453,7 @@ var BsWikiCode = function() {
 			linkTargetParts, protocol, targetText,
 			namespaces = mw.config.get('wgNamespaceIds'), 
 			imageExtensions = mw.config.get('bsImageExtensions'),
-			anchorFormat = '<a href="{0}" data-mce-href="{5}" title="{1}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
+			anchorFormat = '<a href="{0}" data-mce-href="{5}" title="{6}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
 
 		links = text.match(/\[\[([^\]]*?)\]\]/gi);
 		if (links) {
@@ -471,12 +471,13 @@ var BsWikiCode = function() {
 				
 
 				linkHtml = anchorFormat.format(
-					'bs://' + linkTarget,//escape(linkTarget),
-					linkLabel,
-					'internal_link',
-					'internal bs-internal-link',
-					link,
-					linkTarget
+					'bs://' + linkTarget,//escape(linkTarget), //0
+					linkLabel,                                 //1
+					'internal_link',                           //2
+					'internal bs-internal-link',               //3
+					$('<div/>').text(link).html(),             //4
+					linkTarget,                                //5
+					$('<div/>').text(linkLabel).html()         //6
 				);
 
 				targetParts = linkTarget.split(":");
@@ -520,12 +521,13 @@ var BsWikiCode = function() {
 					linkLabel = linkParts.join(" ");
 				}
 				linkHtml = anchorFormat.format(
-					linkTarget,//escape(linkTarget),
-					linkLabel,
-					'external_link',
-					'external bs-external-link bs-protocol-'+protocol,
-					link,
-					linkTarget
+					linkTarget,//escape(linkTarget),                     //0
+					linkLabel,                                           //1
+					'external_link',                                     //2
+					'external bs-external-link bs-protocol-'+protocol,   //3
+					$('<div/>').text(link).html(),                       //4
+					linkTarget,                                          //5
+					$('<div/>').text(linkLabel).html()                   //6
 				);
 				text = text.replace("[" + link + "]", linkHtml);
 			}

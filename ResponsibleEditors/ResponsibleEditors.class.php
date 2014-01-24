@@ -30,23 +30,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-// Last review MRG (01.07.11 11:05)
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * - More user notifications
- * - Elevated permissions for responsible editors
- * v1.0.0
- * - version number reset
- * v1.9.1
- * - Added new assignment dialog as SpecialPage to avoid ExtJS loading in view mode.
- * v1.9.0
- * - Raised to stable
- * v1.0.0b
- * - Initial release
- * - Port from HalloWiki Sunrise 1.9
- */
 
 class ResponsibleEditors extends BsExtensionMW {
 	protected static $aResponsibleEditorIdsByArticleId = array();
@@ -114,6 +97,11 @@ class ResponsibleEditors extends BsExtensionMW {
 		// Echo extension hooks
 		$this->setHook( 'BeforeCreateEchoEvent' );
 		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
+		
+		$this->setHook( 'SuperList::getFieldDefinitions', 'onSuperListGetFieldDefinitions' );
+		$this->setHook( 'SuperList::getColumnDefinitions', 'onSuperListGetColumnDefinitions' );
+		$this->setHook( 'SuperList::queryPagesWithFilter', 'onSuperListQueryPagesWithFilter' );
+		$this->setHook( 'SuperList::buildDataSets', 'onSuperListBuildDataSets' );
 
 		$this->mCore->registerPermission( 'responsibleeditors-changeresponsibility' );
 		$this->mCore->registerPermission( 'responsibleeditors-viewspecialpage' );
@@ -149,6 +137,14 @@ class ResponsibleEditors extends BsExtensionMW {
 				$out->addModules( 'ext.bluespice.responsibleEditors.bookshelfPlugin' );
 			}
 		}
+
+		if ( BsExtensionManager::getExtension( 'SuperList' ) !== null ) {
+			//Attach SuperList plugin if in context
+			if ( SpecialPage::getTitleFor( 'SuperList' )->equals( $out->getTitle() ) ) {
+				$out->addModules( 'ext.bluespice.responsibleEditors.superList' );
+			}
+		}
+		
 		return true;
 	}
 
@@ -976,7 +972,96 @@ class ResponsibleEditors extends BsExtensionMW {
 	
 	public function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
 		/* implement */
-        return true;
-}
+		return true;
+	}
 
+	public function onSuperListGetFieldDefinitions(&$aFields) {
+		$aFields[] = array(
+			'name' => 'responsible_editors'
+		);
+		return true;
+	}
+
+	public function onSuperListGetColumnDefinitions(&$aColumns) {
+		$aColumns[] = array(
+			'header' => wfMessage('bs-responsibleeditors-assignedEditors')->escaped(), 
+			'dataIndex' => 'responsible_editors', 
+			'hidden' => true
+		);
+		return true;
+	}
+	public function onSuperListQueryPagesWithFilter($aFilters, &$aTables, &$aFields, &$aConditions, &$aJoinConditions) {
+		$dbr = wfGetDB(DB_SLAVE);
+		$sTablePrefix = $dbr->tablePrefix();
+
+		$aTables[] = "{$sTablePrefix}bs_responsible_editors AS responsible";
+		$aJoinConditions["{$sTablePrefix}bs_responsible_editors AS responsible"] = array(
+			'LEFT OUTER JOIN', "{$sTablePrefix}page.page_id=responsible.re_page_id"
+		);
+		$aTables[] = "{$sTablePrefix}user AS responsible_users";
+		$aJoinConditions["{$sTablePrefix}user AS responsible_users"] = array(
+			'LEFT OUTER JOIN', "responsible.re_user_id=responsible_users.user_id"
+		);
+		$aFields[] = "GROUP_CONCAT(IF(STRCMP(responsible_users.user_real_name,''),responsible_users.user_real_name,responsible_users.user_name)) AS responsible_editors";
+
+		if (array_key_exists('responsible_editors', $aFilters)) {
+			SuperList::filterStringsTable("CONCAT_WS(',',IF(STRCMP(responsible_users.user_real_name,''),responsible_users.user_real_name,responsible_users.user_name))", $aFilters['responsible_editors'], $aConditions);
+		}
+
+		return true;
+	}
+	
+	function onSuperListBuildDataSets(&$aRows) {
+		if (!count($aRows)) {
+			return true;
+		}
+
+		$aPageIds = array_keys($aRows);
+
+		$dbr = wfGetDB(DB_READ);
+		$aTables = array(
+			'bs_responsible_editors', 'user'
+		);
+		$aJoinConditions = array(
+			'user' => array('JOIN', 're_user_id=user_id')
+		);
+		$sField = "re_page_id, re_position, user_id";
+		$sCondition = "re_page_id IN (" . implode(',', $aPageIds) . ")";
+		$aOptions = array(
+			'ORDER BY' => 're_page_id, re_position'
+		);
+
+		$res = $dbr->select( $aTables, $sField, $sCondition, __METHOD__, 
+			$aOptions, $aJoinConditions );
+
+		$aData = array();
+		$aUserIds = array();
+		while ($row = $res->fetchObject()) {
+			$oUser = User::newFromId($row->user_id);
+			if( $oUser === null ) continue;
+			$aUserIds[$row->re_page_id][] = $row->user_id;
+			$aData[$row->re_page_id][] = 
+				'<li>'.
+					'<a class="bs-re-superlist-editor" href="#">'.
+						BsCore::getUserDisplayName($oUser).
+					'</a>'.
+				'</li>';
+		}
+
+		foreach ($aRows as $iKey => $aRowSet) {
+			if (array_key_exists($iKey, $aData)) {
+				$aRows[$iKey]['responsible_editors'] = 
+					Html::rawElement(
+						'ul', 
+						array(
+							'data-articleId' => $iKey,
+							'data-editorIds' => FormatJson::encode($aUserIds[$iKey])
+						),
+						implode('', $aData[$iKey])
+					);
+			}
+		}
+
+		return true;
+	}
 }

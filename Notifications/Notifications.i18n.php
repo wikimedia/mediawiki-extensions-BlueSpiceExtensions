@@ -52,7 +52,7 @@ $messages['en'] = array(
 	'bs-echo-email-subject-page-create'			=> 'The site [[$1]] has been created',
 	'bs-echo-email-subject-page-delete'			=> 'The site [[$1]] has been deleted',
 	'bs-echo-email-subject-page-move'			=> 'The site [[$1]] has been moved',
-	'bs-echo-email-subject-page-newuser'		=> 'The User [[$1]] was new created',
+	'bs-echo-email-subject-page-newuser'		=> 'The User [[$1]] was created',
 	'bs-echo-email-subject-page-shoutbox'		=> 'On the site [[$1]] was a new ShoutBox-Message created',
 
 	// Email body
@@ -177,18 +177,18 @@ $messages['de'] = array(
 	// END HERE -------------------------------------------------------------- //
 
 	'bs-notifications-extension-description'    => 'Sendet eine E-Mail-Benachrichtigung bei Änderungen.',
-	'bs-notifications-email-new-subject'        => "Seite $1 von $2 angelegt",
-	'bs-notifications-email-new'                => "die Seite $1 wurde von $2 neu angelegt.\n\nKommentar:\n $3 \nDu kannst den Artikel über diesen Link aufrufen:\n$4\n",
-	'bs-notifications-email-edit-subject'       => "Seite $1 von $2 geändert",
-	'bs-notifications-email-edit'               => "die Seite $1 wurde von $2 geändert.\n\nKommentar:\n $3 \nDu kannst den Artikel über diese URL aufrufen:\n$4.\n\nUm nur die Änderungen zu sehen, folge diesem Link:\n$5\n",
-	'bs-notifications-email-move-subject'       => "Seite $1 von $2 verschoben",
-	'bs-notifications-email-move'               => "die Seite $1 wurde von $2 nach $3 verschoben. Du kannst den Artikel über diese URL aufrufen:\n$4\n",
-	'bs-notifications-email-delete-subject'     => "Seite $1 von $2 gelöscht",
-	'bs-notifications-email-delete'             => "die Seite $1 wurde von $2 gelöscht.\n\nAls Grund wurde angegeben:\n$3",
+	'bs-notifications-email-new-subject'        => "Seite $1 wurde von $2 angelegt",
+	'bs-notifications-email-new'                => "Die Seite $1 wurde von $2 neu angelegt.\n\nKommentar:\n $3 \nDu kannst den Artikel über diesen Link aufrufen:\n$4\n",
+	'bs-notifications-email-edit-subject'       => "Seite $1 wurde von $2 geändert",
+	'bs-notifications-email-edit'               => "Die Seite $1 wurde von $2 geändert.\n\nKommentar:\n $3 \nDu kannst den Artikel über diese URL aufrufen:\n$4.\n\nUm nur die Änderungen zu sehen, folge diesem Link:\n$5\n",
+	'bs-notifications-email-move-subject'       => "Seite $1 wurde von $2 nach $3 verschoben",
+	'bs-notifications-email-move'               => "Die Seite $1 wurde von $2 nach $3 verschoben.\n\nDu kannst den Artikel über diese URL aufrufen:\n$4\n",
+	'bs-notifications-email-delete-subject'     => "Seite $1 wurde von $2 gelöscht",
+	'bs-notifications-email-delete'             => "Die Seite $1 wurde von $2 gelöscht.\n\nAls Grund wurde angegeben:\n$3",
 	'bs-notifications-email-addaccount-subject' => "Benutzer $1 wurde neu angelegt",
-	'bs-notifications-email-addaccount'         => "der Benutzer $1 mit Benutzernamen $2 wurde neu angelegt.",
-	'bs-notifications-email-shout-subject'      => "$2 hat auf Seite $1 eine Nachricht hinterlassen",
-	'bs-notifications-email-shout'              => "$2 hat auf der Seite $1 eine Nachricht hinterlassen.\n\nNachricht:\n$3\n\nDu kannst den Artikel über diese URL aufrufen:\n$4.\n",
+	'bs-notifications-email-addaccount'         => "Der Benutzer $1 wurde neu angelegt.",
+	'bs-notifications-email-shout-subject'      => "$2 hat auf der Seite $1 eine Nachricht hinterlassen",
+	'bs-notifications-email-shout'              => "$2 hat auf der Seite $1 eine Nachricht hinterlassen.\n\nNachricht:\n$3\n\nDu kannst den Artikel über diese URL aufrufen:\n$4\n",
 	'prefs-Notifications'                       => 'Benachrichtigungen',
 	'bs-notifications-pref-notifynew'           => 'Benachrichtigung bei neuen Seiten',
 	'bs-notifications-pref-notifyedit'          => 'Benachrichtigung beim Bearbeiten von Seiten',
@@ -203,10 +203,10 @@ $messages['de'] = array(
 );
 
 $messages['de-formal'] = array(
-	'bs-notifications-email-new'                => "die Seite $1 wurde von $2 neu angelegt.\n\nKommentar:\n$3\n\nSie können den Artikel über diesen Link aufrufen:\n$4\n",
-	'bs-notifications-email-edit'               => "die Seite $1 wurde von $2 geändert.\n\nKommentar:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4.\n\nUm nur die Änderungen zu sehen, folgen Sie diesem Link:\n$5\n",
-	'bs-notifications-email-move'               => "die Seite $1 wurde von $2 nach $3 verschoben. Sie können den Artikel über diese URL aufrufen:\n$4\n",
-	'bs-notifications-email-shout'              => "$2 hat auf der Seite $1 eine Nachricht hinterlassen.\n\nNachricht:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4\n."
+	'bs-notifications-email-new'                => "Die Seite $1 wurde von $2 neu angelegt.\n\nKommentar:\n$3\n\nSie können den Artikel über diesen Link aufrufen:\n$4\n",
+	'bs-notifications-email-edit'               => "Die Seite $1 wurde von $2 geändert.\n\nKommentar:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4.\n\nUm nur die Änderungen zu sehen, folgen Sie diesem Link:\n$5\n",
+	'bs-notifications-email-move'               => "Die Seite $1 wurde von $2 nach $3 verschoben.\n\nSie können den Artikel über diese URL aufrufen:\n$4\n",
+	'bs-notifications-email-shout'              => "$2 hat auf der Seite $1 eine Nachricht hinterlassen.\n\nNachricht:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4\n"
 );
 
 $messages['qqq'] = array();

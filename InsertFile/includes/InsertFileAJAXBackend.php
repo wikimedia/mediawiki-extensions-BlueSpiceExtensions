@@ -203,6 +203,24 @@ class InsertFileAJAXBackend {
 		);
 	}
 
+	public static function getExistsWarning( $sFilename ) {
+		$oFile = wfFindFile( $sFilename );
+		if( !$oFile ) {
+			$oFile = wfLocalFile( $sFilename );
+		}
+
+		$s = '&#160;';
+		if ( $oFile ) {
+			$exists = UploadBase::getExistsWarning( $oFile );
+			$warning = SpecialUpload::getExistsWarning( $exists );
+			if ( $warning !== '' ) {
+				$s = "<div>$warning</div>";
+			}
+		}
+
+		return $s;
+	}
+
 	/**
 	 * Process the dataset for the ExtJS file store and put it to ajax output.
 	 */
@@ -349,7 +367,7 @@ class InsertFileAJAXBackend {
 
 		return $sNameFilters;
 	}
-	
+
 	protected static function newFromName( $name ) {
 		$title = Title::makeTitleSafe( NS_FILE, $name );
 		if ( is_object( $title ) ) {

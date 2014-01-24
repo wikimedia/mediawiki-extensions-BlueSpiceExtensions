@@ -57,7 +57,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 					tdCls: 'bs-if-cell'
 				}
 			}
-		}
+		};
 		
 		this.stImageGrid = Ext.create('Ext.data.Store', {
 			height: 200,
@@ -90,7 +90,13 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			fieldLabel: mw.message('bs-insertfile-labelFilter').plain(),
 			width: 500,
 			labelWidth: 50,
-			store: this.stImageGrid
+			store: this.stImageGrid,
+				listeners: {
+					change: function( field, newValue, oldValue, eOpts ) {
+						field.onTrigger2Click();
+						return true;
+					}
+				}
 		});
 		
 		this.dlgUpload = Ext.create('BS.InsertFile.UploadDialog',{
@@ -163,8 +169,11 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.callParent(arguments);
 	},
 	
-	//Override in subclasses
 	onStImageGridLoad: function( store, records, successful, eOpts ) {
+		//Only if we have a exact match selected
+		if( store.filters.items.length > 0 && records.length === 1 ) {
+			this.gdImages.getSelectionModel().select(0);
+		}
 	},
 	
 	btnUploadClick: function( sender, event ) {
@@ -172,8 +181,8 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	},
 	
 	dlgUploadOKClick: function( dialog, upload ){
-		this.sfFilter.setValue( upload.filename );
 		this.stImageGrid.reload();
+		this.sfFilter.setValue( upload.filename );
 	},
 	
 	getData: function() {
@@ -220,14 +229,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	},
 	
 	renderSize: function( size ){
-		if(size < 1024) {
-			return size + " " + mw.message('bs-insertfile-bytes').plain();
-		} else {
-			return (
-				Math.round(
-					((size*10) / 1024))/10
-			) + " " + mw.message('bs-insertfile-kilobytes').plain();
-		}
+		return Ext.util.Format.fileSize( size );
 	},
 	
 	renderLastModified: function( lastmod ){

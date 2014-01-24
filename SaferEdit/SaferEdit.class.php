@@ -202,13 +202,17 @@ class SaferEdit extends BsExtensionMW {
 	 */
 	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
 		$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle();
-		if( empty($aIntermediateEdits) ) return true;
+		if ( empty( $aIntermediateEdits ) ) return true;
 
-		foreach( $aIntermediateEdits as $oEdit ) {
-			if( BsConfig::get( 'MW::SaferEdit::UseSE' ) !== false && $oEdit->se_user_name == $oUser->getName() && trim($oEdit->se_text) != trim(Article::newFromID($oTitle->getArticleID())->getContent())) {
+		foreach ( $aIntermediateEdits as $oEdit ) {
+			if ( BsConfig::get( 'MW::SaferEdit::UseSE' ) !== false && $oEdit->se_user_name == $oUser->getName()
+				&& trim( $oEdit->se_text ) != BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) ) {
+
 				$aTopViews['statebartopsaferedit'] = $this->makeStateBarTopSaferEdit( Article::newFromID($oTitle->getArticleID()), $oEdit->se_edit_section );
 			}
-			if( $oEdit->se_user_name != $oUser->getName() && $oEdit->se_timestamp > date( "YmdHis", time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 )) {
+
+			$iTime = date( "YmdHis", time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
+			if ( $oEdit->se_user_name != $oUser->getName() && $oEdit->se_timestamp > $iTime ) {
 				$aTopViews['statebartopsafereditediting'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name );
 			}
 		}
@@ -256,30 +260,26 @@ class SaferEdit extends BsExtensionMW {
 
 	
 	function parseSaferEdit( $oTitle ) {
-		global $wgUser;
+		$oUser = $this->getUser();
 
 		$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle( $oTitle );
 		if ( empty($aIntermediateEdits) ) return false;
 
-		$oArticle = Article::newFromID( $oTitle->getArticleID() );
 		foreach ( $aIntermediateEdits as $oEdit ) {
-			if ( is_object( $oArticle ) ) {
-				$sOrigText = trim( $oArticle->getContent() );
-				if ( $oEdit->se_edit_section != -1 ) {
-					global $wgParser;
-					$sOrigText = $wgParser->getSection( $sOrigText, $oEdit->se_edit_section );
-				}
-			} else {
-				$sOrigText = "";
+			$sOrigText = trim( BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) );
+
+			if ( $oEdit->se_edit_section != -1 ) {
+				global $wgParser;
+				$sOrigText = $wgParser->getSection( $sOrigText, $oEdit->se_edit_section );
 			}
 
-			if ( strcmp( $sOrigText, trim($oEdit->se_text) ) == 0 ) {
-				$this->doClearSaferEdit( $wgUser->getName(), $oTitle->getPrefixedDBkey(), $oTitle->getNamespace() );
+			if ( strcmp( $sOrigText, trim( $oEdit->se_text ) ) === 0 ) {
+				$this->doClearSaferEdit( $oUser->getName(), $oTitle->getPrefixedDBkey(), $oTitle->getNamespace() );
 				$this->aIntermediateEditsForCurrentTitle = null; //force reload
 				return false;
 			}
 
-			if ( $oEdit->se_user_name == $wgUser->getName() ) {
+			if ( $oEdit->se_user_name == $oUser->getName() ) {
 				if ( $this->getRequest()->getVal( 'action', 'view' ) == 'edit' ) {
 					$this->getOutput()->addJsConfigVars('bsSaferEditHasTexts', true );
 				}
@@ -554,18 +554,18 @@ class SaferEdit extends BsExtensionMW {
 				$aSingleResult['someoneEditingView'] = $aSingleResult['safereditView'] = '';
 				$oArticle = Article::newFromID( $iArticleId );
 
-				foreach( $aIntermediateEdits as $oEdit ) {
-					if( BsConfig::get( 'MW::SaferEdit::UseSE' ) !== false && $oEdit->se_user_name == $wgUser->getName() && trim($oEdit->se_text) != trim($oArticle->getContent())) {
-						$aSingleResult['safereditView'] = $this->makeStateBarTopSaferEdit( $oArticle, $oEdit->se_edit_section )
-							->execute();
+				foreach ( $aIntermediateEdits as $oEdit ) {
+					if ( BsConfig::get( 'MW::SaferEdit::UseSE' ) !== false && $oEdit->se_user_name == $wgUser->getName()
+						&& trim($oEdit->se_text) != trim( BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) ) ) {
+						$aSingleResult['safereditView'] = $this->makeStateBarTopSaferEdit( $oArticle, $oEdit->se_edit_section )->execute();
 					}
-					if( $oEdit->se_user_name != $wgUser->getName() && $oEdit->se_timestamp > date( "YmdHis", time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 )) {
+					if ( $oEdit->se_user_name != $wgUser->getName() && $oEdit->se_timestamp > date( "YmdHis", time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 )) {
 						$aSingleResult['someoneEditingView'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name )
 							->execute();
 					}
 				}
+
 				break;
-				
 			case 'SaferEditSave':
 				$iSection	= empty($aData[0]['section']) ? -1 : $aData[0]['section'];
 				$sText		= empty($aData[0]['text']) ?	'' : $aData[0]['text'];

@@ -316,6 +316,7 @@ class Blog extends BsExtensionMW {
 		} else {
 			$oTitle = $this->getTitle();
 		}
+
 		// initialize local variables
 		$sOut = '';
 		$oErrorListView = new ViewTagErrorList( $this );
@@ -355,7 +356,7 @@ class Blog extends BsExtensionMW {
 		$argsBShowPermalink          = BsCore::sanitizeArrayEntry( $args, 'showpermalink',   $bShowPermalink,   BsPARAMTYPE::BOOL );
 		$argsModeNamespace           = BsCore::sanitizeArrayEntry( $args, 'mode',   null,   BsPARAMTYPE::STRING );
 
-		if( $argsModeNamespace === 'ns' && is_object( $oTitle ) ) {
+		if ( $argsModeNamespace === 'ns' && is_object( $oTitle ) ) {
 			$argsINamespace = $oTitle->getNamespace();
 		}
 
@@ -387,9 +388,9 @@ class Blog extends BsExtensionMW {
 			return $oErrorListView->execute();
 		}
 
-		if( BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true ) {
+		if ( BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true ) {
 			$oPermissionTest = Title::newFromText( 'PermissionTest', $argsINamespace );
-			if( !$oPermissionTest->userCan( 'edit' ) ) {
+			if ( !$oPermissionTest->userCan( 'edit' ) ) {
 				$argsBNewEntryField = false;
 			}
 		}
@@ -401,12 +402,12 @@ class Blog extends BsExtensionMW {
 		$iLimit = 0; // for later use
 
 		$aArticleIds = array();
-		foreach( $aSubpages as $oSubpage ) {
+		foreach ( $aSubpages as $oSubpage ) {
 			$aArticleIds[] = $oSubpage->getArticleID();
 			$iLimit++;  // for later use
 		}
 
-		if( count( $aArticleIds ) < 1 ) {
+		if ( count( $aArticleIds ) < 1 ) {
 			$aArticleIds = 0;
 		}
 
@@ -414,8 +415,7 @@ class Blog extends BsExtensionMW {
 		$aOptions = array();
 		if ( !$argsSSortBy || $argsSSortBy == 'creation' ) {
 			$aOptions['ORDER BY'] = 'page_id DESC';
-		}
-		else if ( $argsSSortBy == 'title' ) {
+		} elseif ( $argsSSortBy == 'title' ) {
 			$aOptions['ORDER BY'] = 'page_title ASC';
 		}
 
@@ -424,6 +424,7 @@ class Blog extends BsExtensionMW {
 		$aConditions = array();
 
 		$dbr = wfGetDB( DB_SLAVE );
+
 		if ( $argsSCategory ) {
 			$aTables[] = 'categorylinks';
 			$sFiels = 'cl_from AS entry_page_id';
@@ -473,18 +474,18 @@ class Blog extends BsExtensionMW {
 		$iLoop = 0;
 		foreach( $res as $row ) {
 			// prepare data for view class
-			$oTitle   = Title::newFromID( $row->entry_page_id );
-			$oArticle = new Article( $oTitle, 0 );
+			$oTitle = Title::newFromID( $row->entry_page_id );
 			if ( !$oTitle->userCan( 'read' ) ) { $iNumberOfEntries--; continue; }
 
 			$bMore = false;
-			$aContent = preg_split( '#<(bs:blog:)?more */>#', $oArticle->getContent() );
+			$aContent = preg_split( '#<(bs:blog:)?more */>#', BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) );
 			if ( sizeof( $aContent ) > 1 ) $bMore = true;
 			$aContent = trim( $aContent[0] );
 			// Prevent recursive rendering of blog tag
 			$aContent = preg_replace( '/<(bs:)blog[^>]*?>/', '', $aContent );
 			// Thumbnail images
 			$sNamespaceRegEx = implode( '|', BsNamespaceHelper::getNamespaceNamesAndAliases( NS_IMAGE ) );
+
 			switch ( $argsSImageRenderMode ) {
 				case 'none':
 					$aContent = preg_replace( '/(\[\[('.$sNamespaceRegEx.'):[^\|\]]*)(\|)?(.*?)(\]\])/', '', $aContent );
@@ -499,19 +500,22 @@ class Blog extends BsExtensionMW {
 			}
 
 			if ( strlen( $aContent ) > $argsIMaxEntryCharacters ) $bMore = true;
-			$aContent = BsStringHelper::shorten( 
-							$aContent, 
-							array( 
-									'max-length' => $argsIMaxEntryCharacters, 
-									'ignore-word-borders' => false, 
-									'position' => 'end'
-							) 
-						);
+
+			$aContent = BsStringHelper::shorten(
+						$aContent,
+						array(
+							'max-length' => $argsIMaxEntryCharacters, 
+							'ignore-word-borders' => false, 
+							'position' => 'end'
+						)
+			);
+
 			$resComment = $dbr->selectRow( 
 				'revision',
 				'COUNT( rev_id ) AS cnt',
 				array( 'rev_page' => $oTitle->getTalkPage()->getArticleID() )
 			);
+
 			$iCount = $resComment->cnt;
 			// set data for view class
 			$oBlogItemView = new ViewBlogItem();
@@ -539,8 +543,9 @@ class Blog extends BsExtensionMW {
 				$aTalkParams = array( 'action' => 'edit' );
 			}
 
+			$oRevision = Revision::newFromTitle( $oTitle );
 			$oBlogItemView->setTitle( $sTitle );
-			$oBlogItemView->setRevId( $oArticle->getRevIdFetched() );
+			$oBlogItemView->setRevId( $oRevision->getId() );
 			$oBlogItemView->setURL( $oTitle->getLocalURL() );
 			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getLocalURL( $aTalkParams ) );
 			$oBlogItemView->setTalkCount( $iCount );
@@ -668,8 +673,8 @@ class Blog extends BsExtensionMW {
 		}
 
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
-		$sUserName   = $oUser->getName();
-		$sUserToken  = $oUser->getToken();
+		$sUserName = $oUser->getName();
+		$sUserToken = $oUser->getToken();
 
 		foreach( $aNamespaces as $key => $name ) {
 			$select->addData(
@@ -677,9 +682,9 @@ class Blog extends BsExtensionMW {
 					'value' => $oSpecialRSS->getLinkUrl(
 						array(
 							'Page' => 'blog',
-							'ns'   => $key,
-							'u'    => $sUserName,
-							'h'    => $sUserToken
+							'ns' => $key,
+							'u' => $sUserName,
+							'h' => $sUserToken
 						)
 					),
 					'label' => $name

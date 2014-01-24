@@ -233,17 +233,17 @@ BsSaferEditEditMode = {
 
 		switch (mode) {
 			case "VisualEditor":
-				text = document.getElementById('wpTextbox1').value; 
+				text = $('wpTextbox1').val(); 
 				break;
 			case "MW":
 				text = tinyMCE.activeEditor.getContent({save:true}); 
 				break;
 			default: //detect
-				if( typeof VisualEditorMode != 'undefined' && VisualEditorMode ) {
+				if( typeof VisualEditorMode !== 'undefined' && VisualEditorMode ) {
 					text = tinyMCE.activeEditor.getContent({save:true});
 					break;
 				}
-				text = document.getElementById('wpTextbox1').value;	
+				text = $('#wpTextbox1').val();
 		}
 
 		return text;
@@ -386,7 +386,7 @@ BsSaferEditEditMode = {
 		if ( bsVisualEditorUse ) {
 			tinyMCE.execCommand('mceSetContent', false, text);
 		} else {
-			document.getElementById('wpTextbox1').value = text;
+			$('wpTextbox1').val(text);
 		}
 
 		$.post(

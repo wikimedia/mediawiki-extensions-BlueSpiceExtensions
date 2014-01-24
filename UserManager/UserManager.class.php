@@ -469,6 +469,7 @@ class UserManager extends BsExtensionMW {
 
 	/**
 	 * Deletes an user form the database
+	 * @global User $wgUser
 	 * @param Integer $iUserId user id
 	 * @return string json encoded response
 	 */
@@ -477,15 +478,16 @@ class UserManager extends BsExtensionMW {
 			global $wgReadOnly;
 			return json_encode( array(
 				'success' => false,
-				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
-				) );
+				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() ),
+				'errors' => array(),
+			));
 		}
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'message' => array()
+			'message' => array(),
 		);
 
 		$oUser = User::newFromId( $iUserId );
@@ -500,23 +502,31 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-admin_nodelete' )->plain();
 		}
 
-		if ( $aAnswer['success'] ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->delete( 'user',
-				array( 'user_id' => $oUser->getId() )
-			);
-			$res1 = $dbw->delete( 'user_groups',
-				array( 'ug_user' => $oUser->getId() )
-			);
-			$res2 = $dbw->delete( 'user_newtalk',
-				array( 'user_id' => $oUser->getId() )
-			);
-			$iUsers = $dbw->selectField( 'user', 'COUNT(*)', array() );
-			$res3 = $dbw->update( 'site_stats',
-				array( 'ss_users' => $iUsers ),
-				array( 'ss_row_id' => 1 )
-			);
+		global $wgUser;
+		if ( $oUser->getId() == $wgUser->getId() ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-self_nodelete' )->plain();
 		}
+
+		if( !$aAnswer['success'] ) {
+			return json_encode( $aAnswer );
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+		$res = $dbw->delete( 'user',
+			array( 'user_id' => $oUser->getId() )
+		);
+		$res1 = $dbw->delete( 'user_groups',
+			array( 'ug_user' => $oUser->getId() )
+		);
+		$res2 = $dbw->delete( 'user_newtalk',
+			array( 'user_id' => $oUser->getId() )
+		);
+		$iUsers = $dbw->selectField( 'user', 'COUNT(*)', array() );
+		$res3 = $dbw->update( 'site_stats',
+			array( 'ss_users' => $iUsers ),
+			array( 'ss_row_id' => 1 )
+		);
 
 		if ( $oUser->getUserPage()->exists() ) {
 			$oUserPageArticle = new Article( $oUser->getUserPage() );
@@ -526,11 +536,10 @@ class UserManager extends BsExtensionMW {
 		if ( ( $res === false ) || ( $res1 === false ) || ( $res2 === false ) || ( $res3 === false ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db_error' )->plain();
+			return json_encode( $aAnswer );
 		}
 
-		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-user_deleted' )->plain();
-		}
+		$aAnswer['message'][] = wfMessage( 'bs-usermanager-user_deleted' )->plain();
 
 		return json_encode( $aAnswer );
 	}

@@ -88,7 +88,16 @@ class InsertFile extends BsExtensionMW {
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
-	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite) {
+	/**
+	 * Hook Handler for VisualEditorConfig Hook
+	 * @param Array $aConfigStandard reference
+	 * @param Array $aConfigOverwrite reference
+	 * @param Array &$aLoaderUsingDeps reference
+	 * @return boolean always true to keep hook alife
+	 */
+	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
+		$aLoaderUsingDeps[] = 'ext.bluespice.insertFile';
+
 		// TODO SW: use string as parameter !!
 		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
 		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bsimage" );
@@ -117,4 +126,5 @@ class InsertFile extends BsExtensionMW {
 		);
 		return true;
 	}
+
 }

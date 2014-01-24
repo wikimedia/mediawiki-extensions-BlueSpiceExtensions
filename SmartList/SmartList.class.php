@@ -355,6 +355,7 @@ class SmartList extends BsExtensionMW {
 			foreach ( $res as $row ) {
 				$sHtml = '';
 				$oTitle = Title::newFromID( $row->rev_page );
+				if( !is_object( $oTitle ) ) continue;
 				if ( $sOrigin === 'dashboard' ) {
 					$sHtml = $oTitle->getPrefixedText();
 				} else {
@@ -364,7 +365,7 @@ class SmartList extends BsExtensionMW {
 				$aEdits[] = Html::openElement( 'li' ) . $sLink . Html::closeElement( 'li' );
 			}
 		} else {
-			 return wfMessage( 'bs-smartlist-noedits' )->plain();
+			 return Html::openElement( 'ul' ) . Html::openElement( 'li' ) . wfMessage( 'bs-smartlist-noedits' )->plain() . Html::closeElement( 'li' ) . Html::closeElement( 'ul' );
 		}
 
 
@@ -934,7 +935,7 @@ class SmartList extends BsExtensionMW {
 
 			if ( $bAlltime === false ) {
 				$aColumns[] = 'wo_page_id';
-				$aJoinConditions = array( 'categorylinks' => array( 'RIGHT JOIN ', 'wo_page_id = cl_from' ) );
+				$aJoinConditions = array( 'categorylinks' => array( 'INNER JOIN ', 'wo_page_id = cl_from' ) );
 				$aTables[]            = 'categorylinks';
 				$aConditions['cl_to'] = $sCategory;
 			} else {

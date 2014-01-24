@@ -29,57 +29,61 @@ class SearchUriBuilder {
 	 */
 	const BASE = 1;
 	/**
+	 * URL basis
+	 */
+	const ORIGIN = 2;
+	/**
 	 * Search input
 	 */
-	const INPUT = 2;
+	const INPUT = 4;
 	/**
 	 * Scope: title or text
 	 */
-	const SCOPE = 4;
+	const SCOPE = 8;
 	/**
 	 * Search files?
 	 */
-	const FILES = 8;
+	const FILES = 16;
 	/**
 	 * Describes submit type
 	 */
-	const SUBMIT = 16;
+	const SUBMIT = 32;
 	/**
 	 * Which namespaces to search
 	 */
-	const NAMESPACES = 32;
+	const NAMESPACES = 64;
 	/**
 	 * Is this a more like this search?
 	 */
-	const MLT = 64;
+	const MLT = 128;
 	/**
 	 * Which categories to search
 	 */
-	const CATS = 128;
+	const CATS = 256;
 	/**
 	 * Which filetypes to search
 	 */
-	const TYPE = 256;
+	const TYPE = 512;
 	/**
 	 * Which editors to search
 	 */
-	const EDITOR = 512;
+	const EDITOR = 1024;
 	/**
 	 * Order of search results
 	 */
-	const ORDER = 1024;
+	const ORDER = 2048;
 	/**
 	 * Ascending or descending order?
 	 */
-	const ASC = 2048;
+	const ASC = 4096;
 	/**
 	 * Where to start.
 	 */
-	const OFFSET = 4096;
+	const OFFSET = 8192;
 	/**
 	 * Other params (?)
 	 */
-	const EXTENDED = 8192;
+	const EXTENDED = 16384;
 	/**
 	 * Combination of order, direction and offset (?)
 	 */
@@ -87,11 +91,11 @@ class SearchUriBuilder {
 	/**
 	 * Everything
 	 */
-	const ALL = 8191; // all but EXTENDED
+	const ALL = 16383; // all but EXTENDED
 	/**
 	 * Other params (?)
 	 */
-	const ENCODE = 16384;
+	const ENCODE = 32768;
 
 	/**
 	 * Currently determined search options.
@@ -128,8 +132,9 @@ class SearchUriBuilder {
 		$this->oSearchRequest = SearchRequest::getInstance();
 
 		$this->aUri[self::BASE] = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getLocalUrl();
-		$this->aUri[self::INPUT] = 'search_input='.$this->oSearchOptions->getOption( 'searchStringRaw' );
-		$this->aUri[self::SCOPE] = 'search_scope='.$this->oSearchOptions->getOption( 'scope' );
+		$this->aUri[self::ORIGIN] = 'search_origin=' . $this->oSearchOptions->getOption( 'searchOrigin' );
+		$this->aUri[self::INPUT] = 'search_input=' . $this->oSearchOptions->getOption( 'searchStringRaw' );
+		$this->aUri[self::SCOPE] = 'search_scope=' . $this->oSearchOptions->getOption( 'scope' );
 		$this->aUri[self::FILES] = 'search_files='
 				.( ( $this->oSearchOptions->getOption( 'files' ) === true ) ? '1' : '0' );
 		$this->aUri[self::SUBMIT] = 'search_submit=1';
@@ -184,21 +189,22 @@ class SearchUriBuilder {
 		$components = $iInclude & (~$iExclude);
 		if ( isset( $this->aCache[$components] ) ) return $this->aCache[$components];
 
-		$arrayKeysWanted = array();
-		if ( self::INPUT & $components )      $arrayKeysWanted[self::INPUT] = true;
-		if ( self::SCOPE & $components )      $arrayKeysWanted[self::SCOPE] = true;
-		if ( self::FILES & $components )      $arrayKeysWanted[self::FILES] = true;
-		if ( self::SUBMIT & $components )     $arrayKeysWanted[self::SUBMIT] = true;
-		if ( self::NAMESPACES & $components ) $arrayKeysWanted[self::NAMESPACES] = true;
-		if ( self::MLT & $components )        $arrayKeysWanted[self::MLT] = true;
-		if ( self::CATS & $components )       $arrayKeysWanted[self::CATS] = true;
-		if ( self::TYPE & $components )       $arrayKeysWanted[self::TYPE] = true;
-		if ( self::EDITOR & $components )     $arrayKeysWanted[self::EDITOR] = true;
-		if ( self::ORDER & $components )      $arrayKeysWanted[self::ORDER] = true;
-		if ( self::ASC & $components )        $arrayKeysWanted[self::ASC] = true;
-		if ( self::EXTENDED & $components )   $arrayKeysWanted[self::EXTENDED] = true;
+		$aKeysWanted = array();
+		if ( self::ORIGIN & $components ) $aKeysWanted[self::ORIGIN] = true;
+		if ( self::INPUT & $components ) $aKeysWanted[self::INPUT] = true;
+		if ( self::SCOPE & $components ) $aKeysWanted[self::SCOPE] = true;
+		if ( self::FILES & $components ) $aKeysWanted[self::FILES] = true;
+		if ( self::SUBMIT & $components ) $aKeysWanted[self::SUBMIT] = true;
+		if ( self::NAMESPACES & $components ) $aKeysWanted[self::NAMESPACES] = true;
+		if ( self::MLT & $components ) $aKeysWanted[self::MLT] = true;
+		if ( self::CATS & $components ) $aKeysWanted[self::CATS] = true;
+		if ( self::TYPE & $components ) $aKeysWanted[self::TYPE] = true;
+		if ( self::EDITOR & $components ) $aKeysWanted[self::EDITOR] = true;
+		if ( self::ORDER & $components ) $aKeysWanted[self::ORDER] = true;
+		if ( self::ASC & $components ) $aKeysWanted[self::ASC] = true;
+		if ( self::EXTENDED & $components ) $aKeysWanted[self::EXTENDED] = true;
 
-		$arrayKeysValuesWanted = array_intersect_key( $this->aUri , $arrayKeysWanted );
+		$arrayKeysValuesWanted = array_intersect_key( $this->aUri , $aKeysWanted );
 		$sParams = implode( '&', $arrayKeysValuesWanted );
 
 		if ( self::BASE & $components ) {

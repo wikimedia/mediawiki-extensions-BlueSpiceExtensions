@@ -1,7 +1,7 @@
 Ext.define( 'BS.InsertFile.UploadPanel', {
 	extend: 'Ext.form.Panel',
 	require:[
-		'BS.form.action.MediaWikiApiAction'
+		'BS.form.action.MediaWikiApiCall'
 	],
 	fieldDefaults: {
 		anchor: '100%',
@@ -110,6 +110,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		});
 		
 		this.bsCategories = Ext.create( 'BS.form.CategoryBoxSelect', {
+			id: this.getId()+'categories',
+			name: 'categories',
 			fieldLabel: mw.message('bs-insertfile-categories').plain()
 		});
 		
@@ -120,12 +122,12 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			anchor: '98%',
 			defaults: {
 				anchor: '100%',
-				labelWidth: 70,
+				labelWidth: 90,
 				labelAlign: 'right'
 			}
 		});
 		
-		var panelItems = [
+		this.panelItems = [
 			this.tfFileName,
 			this.fuFile,
 			this.fsDetails
@@ -138,10 +140,10 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			this.cbxWatch
 		];
 		
-		$(document).trigger( 'BSUploadPanelInitComponent', [ this, panelItems, detailsItems ] );
+		$(document).trigger( 'BSUploadPanelInitComponent', [ this, this.panelItems, detailsItems ] );
 		
 		this.fsDetails.add( detailsItems );
-		this.items = panelItems;
+		this.items = this.panelItems;
 
 		this.addEvents( 'uploadcomplete' );
 
@@ -162,17 +164,25 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 	
 	tfFileNameChange: function(field, value) {
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl( 'SpecialUpload::ajaxGetExistsWarning', [ value ] ),
+			url: bs.util.getAjaxDispatcherUrl( 'InsertFileAJAXBackend::getExistsWarning', [ value ] ),
 			success: function(response, options) {
-				if(!(response.responseText.trim() == ''
-					|| response.responseText == '&#160;'
-					|| response.responseText == '&nbsp;')) {
+				if(!(response.responseText.trim() === ''
+					|| response.responseText === '&#160;'
+					|| response.responseText === '&nbsp;')) {
 
 					bs.util.alert( 
 						this.getId()+'-existswarning',
 						{
 							title: 'Status',
 							text: response.responseText
+						},
+						{
+							ok: function() {
+								//User is noticed. Now let's set the 
+								//ignore warnings flag automatically
+								this.cbxWarnings.setValue(true);
+							},
+							scope: this
 						}
 					);
 				}
@@ -183,10 +193,10 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 	
 	checkFileSize: function( ExtCmpId ) {
 		//No FileAPI? No love.
-		if(typeof window.FileReader == 'undefined') return true;
+		if(typeof window.FileReader === 'undefined') return true;
 		
 		var allowedSize = mw.config.get('bsMaxUploadSize');
-		if( allowedSize == null ) return true;
+		if( allowedSize === null ) return true;
 		
 		var filesize = this.fuFile.fileInputEl.dom.files[0].size;
 		if( filesize > allowedSize.php || filesize > allowedSize.mediawiki) {
@@ -219,11 +229,15 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		var params = {
 			action: 'upload',
 			token: mw.user.tokens.get('editToken'),
-			format: 'json'
-		}
+			//IE9 has an issue with this API call returnug a application/json 
+			//content-type. Therefore we let the server return a "text/xml" 
+			//content-type header
+			//HINT: http://stackoverflow.com/questions/18571719/extjs-file-uploading-error-on-ie8-ie9
+			format: 'xml'
+		};
 		
 		if( sessionKeyForReupload ) {
-			params.sessionkey = sessionKeyForReupload
+			params.sessionkey = sessionKeyForReupload;
 		}
 
 		this.getForm().doAction( Ext.create('BS.form.action.MediaWikiApiCall', {
@@ -249,19 +263,38 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		this.getEl().unmask();
 		this.cbLicences.enable();
 		
-		var res = Ext.decode(response.responseText);
-		if( res.error ) {
+		var errorTag = response.responseXML
+			.documentElement.getElementsByTagName('error').item(0);
+
+		if( errorTag !== null ) {
 			bs.util.alert(
 				this.getId()+'-error',
 				{
 					title: mw.message('bs-insertfile-error').plain(),
-					text: res.error.info
+					text: errorTag.getAttribute('info')
 				}
 			);
 			return;
 		}
+		
+		//As we process XML instead of JSON (see reason above) we have to 
+		//create a suitable JS object from the XML response to be compatible
+		var uploadTag = response.responseXML
+			.documentElement.getElementsByTagName('upload').item(0);
+		var imageinfoTag = uploadTag.getElementsByTagName('imageinfo').item(0);
+		
+		var imageinfo = {};
+		for( var i = 0; i < imageinfoTag.attributes.length; i++ ) {
+			var attribute = imageinfoTag.attributes.item(i);
+			imageinfo[attribute.nodeName] = attribute.nodeValue;
+		}
+		var upload = {
+			result: uploadTag.getAttribute('result'),
+			filename: uploadTag.getAttribute('filename'),
+			imageinfo: imageinfo
+		};
 
-		this.fireEvent( 'uploadcomplete', this, res.upload );
+		this.fireEvent( 'uploadcomplete', this, upload );
 		this.getForm().reset();
 	},
 	
@@ -274,19 +307,27 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 
 	//scope: "this" == fuFile
 	validateFile: function( value ) {
-		if( value == "" ) return true;
+		if( value === "" ) return true;
 		var me = this.up('form');
 		me.allowedFileExtensions = mw.config.get( 'wgFileExtensions' );
 
 		var nameParts = value.split('.');
 		var fileExtension = nameParts[nameParts.length-1].toLowerCase();
-		
-		if( $.inArray( fileExtension, me.allowedFileExtensions ) == -1 ) {
+		var extensionFound = false;
+
+		$.each(me.allowedFileExtensions, function(index, value) {
+			if (value.toLowerCase() === fileExtension.toLowerCase()) {
+				extensionFound = true;
+				return false;
+			}
+		});
+
+		if(!extensionFound) {
 			return mw.message('bs-insertfile-allowedFiletypesAre').plain()
 				+ " " + me.allowedFileExtensions.join(', ');
 		}
 		
-		if( me.checkFileSize() == false ) {
+		if( me.checkFileSize() === false ) {
 			return mw.message( 'largefileserver' ).plain();
 		}
 		

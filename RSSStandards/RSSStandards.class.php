@@ -448,10 +448,10 @@ class RSSStandards extends BsExtensionMW {
 			return;
 		}
 
-		if ( $nitems == 0 ) {
+		/*if ( $nitems == 0 ) {
 			$wgOut->addWikiMsg( 'nowatchlist' );
 			return;
-		}
+		}*/
 
 		if ( $days <= 0 ) {
 			$andcutoff = '';
@@ -506,25 +506,27 @@ class RSSStandards extends BsExtensionMW {
 		$res = $dbr->query( $sql, __METHOD__ );
 		$numRows = $dbr->numRows( $res );
 
-		# If there's nothing to show, stop here
+		/*# If there's nothing to show, stop here
 		if( $numRows == 0 ) {
 			$wgOut->addWikiMsg( 'watchnochange' );
 			return;
-		}
+		}*/
 
 		/* End bottom header */
 
-		/* Do link batch query */
-		$linkBatch = new LinkBatch;
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			$userNameUnderscored = str_replace( ' ', '_', $row->rc_user_text );
-			if ( $row->rc_user != 0 ) {
-				$linkBatch->add( NS_USER, $userNameUnderscored );
+		if($numRows > 0) {
+			/* Do link batch query */
+			$linkBatch = new LinkBatch;
+			while ( $row = $dbr->fetchObject( $res ) ) {
+				$userNameUnderscored = str_replace( ' ', '_', $row->rc_user_text );
+				if ( $row->rc_user != 0 ) {
+					$linkBatch->add( NS_USER, $userNameUnderscored );
+				}
+				$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
 			}
-			$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
+			$linkBatch->execute();
+			$dbr->dataSeek( $res, 0 );
 		}
-		$linkBatch->execute();
-		$dbr->dataSeek( $res, 0 );
 
 		$list = ChangesList::newFromContext( $skin->getContext() ); //Thanks to Bartosz Dziewoński (https://gerrit.wikimedia.org/r/#/c/94082/)
 

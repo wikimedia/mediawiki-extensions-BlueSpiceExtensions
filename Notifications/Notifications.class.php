@@ -201,7 +201,7 @@ class Notifications extends BsExtensionMW {
 			'flyout-message' => 'bs-notifications-email-edit-subject',
 			'flyout-params' => array( 'titlelink', 'agentlink' ),
 			'email-subject-message' => 'bs-notifications-email-edit-subject',
-			'email-subject-params' => array( 'titlelink', 'agentlink' ),
+			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-edit',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
 			'email-body-batch-message' => 'hello again',
@@ -220,7 +220,7 @@ class Notifications extends BsExtensionMW {
 			'email-subject-message' => 'bs-notifications-email-new-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-new',
-			'email-body-params' => array( 'titlelink', 'agentlink', 'summary', 'titlelink', 'difflink' ),
+			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'create',
 //			'bundle' => array( 'web' => true, 'email' => true ),
@@ -237,7 +237,7 @@ class Notifications extends BsExtensionMW {
 			'email-subject-message' => 'bs-notifications-email-delete-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-delete',
-			'email-body-params' => array( 'titlelink', 'agentlink' ),
+			'email-body-params' => array( 'titlelink', 'agent', 'deletereason' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'delete',
 //			'bundle' => array( 'web' => true, 'email' => true ),
@@ -250,11 +250,11 @@ class Notifications extends BsExtensionMW {
 			'title-message' => 'bs-echo-page-move',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-move-subject',
-			'flyout-params' => array( 'title', 'agent' ),
+			'flyout-params' => array( 'title', 'agentlink', 'newtitlelink' ),
 			'email-subject-message' => 'bs-notifications-email-move-subject',
-			'email-subject-params' => array( 'title', 'agent' ),
+			'email-subject-params' => array( 'title', 'agent', 'newtitle' ),
 			'email-body-message' => 'bs-notifications-email-move',
-			'email-body-params' => array( 'title', 'agent' ),
+			'email-body-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'move',
 		);
@@ -268,8 +268,8 @@ class Notifications extends BsExtensionMW {
 			'flyout-message' => 'bs-notifications-email-addaccount-subject',
 			'flyout-params' => array( 'userlink' ),
 			'email-subject-message' => 'bs-notifications-email-addaccount-subject',
-			'email-subject-params' => array( 'userlink' ),
-			'email-body-message' => 'bs-notifications-email-newuser',
+			'email-subject-params' => array( 'user' ),
+			'email-body-message' => 'bs-notifications-email-addaccount',
 			'email-body-params' => array( 'userlink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'newuser',
@@ -281,12 +281,12 @@ class Notifications extends BsExtensionMW {
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-echo-page-newuser',
 			'title-params' => array( 'title' ),
-			'flyout-message' => 'bs-notifications-email-edit-subject',
-			'flyout-params' => array( 'title', 'agent' ),
-			'email-subject-message' => 'bs-notifications-email-edit-subject',
+			'flyout-message' => 'bs-notifications-email-shout-subject',
+			'flyout-params' => array( 'titlelink', 'agentlink' ),
+			'email-subject-message' => 'bs-notifications-email-shout-subject',
 			'email-subject-params' => array( 'title', 'agent' ),
-			'email-body-message' => 'bs-notifications-email-edit',
-			'email-body-params' => array( 'title', 'agent' ),
+			'email-body-message' => 'bs-notifications-email-shout',
+			'email-body-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
 			'email-body-batch-message' => 'hello again',
 			'icon' => 'shoutbox',
 		);
@@ -312,13 +312,16 @@ class Notifications extends BsExtensionMW {
 	 */
 	public function onBSShoutBoxAfterInsertShout( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		global $wgUser;
+		global $wgUser; // TODO SW: use user id
 		if ( $wgUser->isAllowed( 'bot' ) ) return true;
-		
+
 		EchoEvent::create( array(
 			'type' => 'bs-shoutbox',
 			'title' => Title::newFromID( $iArticleId ),
 			'agent'	=> $wgUser,
+			'extra' => array(
+				'shoutmsg' => $sMessage
+			)
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -390,6 +393,9 @@ class Notifications extends BsExtensionMW {
 			'type' => 'bs-delete',
 			'title' => $article->getTitle(),
 			'agent'	=> $user,
+			'extra' => array(
+				'deletereason' => $reason
+			),
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -412,6 +418,9 @@ class Notifications extends BsExtensionMW {
 			'type' => 'bs-move',
 			'title' => $oTitle,
 			'agent'	=> $user,
+			'extra' => array(
+				'newtitle' => $newtitle,
+			)
 		) );
 		
 		wfProfileOut( 'BS::'.__METHOD__ );

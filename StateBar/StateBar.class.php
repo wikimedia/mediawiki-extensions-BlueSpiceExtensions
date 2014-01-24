@@ -24,7 +24,6 @@
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage Authors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -279,7 +278,14 @@ class StateBar extends BsExtensionMW {
 			//check again for redirect target
 			$oTitle = BsArticleHelper::getInstance( $oTitle )->getTitleFromRedirectRecurse();
 			$this->oRedirectTargetTitle = $oTitle;
-			return $this->checkContext( $oTitle, true );
+			if ( $oTitle->exists() ) {
+				return $this->checkContext( $oTitle, true );
+			} else {
+				/* if redirect points to none existing article
+				   you don't get redirected, so display StateBar
+				   HW#2014010710000128 */
+				return true;
+			}
 		}
 
 		if ( BsExtensionManager::isContextActive( 'MW::StateBar:Hide' ) ) return null;

@@ -71,5 +71,16 @@ class CheckUser extends User {
 	public function saveSettings() {
 		return;
 	}
-
+#
+//------PW 31.12.2013: added to prevent Fatals when on Spezial:Spezialseiten ---------
+//PHP Fatal error:  Call to undefined method CheckUser::setContext() in X:\xampp\htdocs\blueforge\includes\SpecialPageFactory.php on line 365
+//PHP Fatal error:  Call to undefined method CheckUser::isListed() in X:\xampp\htdocs\blueforge\includes\SpecialPageFactory.php on line 366
+# HW#2013123110000037 - https://otrs.hallowelt.biz/otrs/index.pl?Action=AgentTicketZoom;TicketID=5725
+public function setContext() {
+	return;
+}
+public function isListed() {
+	return;
+}
+//----------END-----------------------------------------------------------------------
 }

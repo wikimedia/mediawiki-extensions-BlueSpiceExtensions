@@ -59,8 +59,10 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 
 		$aTemplate[] = '<div class="search-wrapper">';
 		$aTemplate[] = '<div class="bs-extendedsearch-result-head">';
-		$aTemplate[] = '<span class="bs-extendedsearch-result-icon">' . $this->getOption( 'searchicon' ) . '</span>';
-		$aTemplate[] = '<span class="bs-extendedsearch-result-title"><h3>' . $this->getOption( 'searchlink' ) . '</h3></span>';
+		$aTemplate[] = '<table><tr>';
+		$aTemplate[] = '<td><span class="bs-extendedsearch-result-icon">' . $this->getOption( 'searchicon' ) . '</span></td>';
+		$aTemplate[] = '<td><span class="bs-extendedsearch-result-title"><h3>' . $this->getOption( 'searchlink' ) . '</h3></span></td>';
+		$aTemplate[] = '</tr></table>';
 		$aTemplate[] = '</div>';
 		$aTemplate[] = '<div class="bs-search-result-info">';
 

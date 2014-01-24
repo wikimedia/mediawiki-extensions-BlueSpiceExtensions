@@ -163,10 +163,6 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	onStImageGridLoad: function( store, records, successful, eOpts ) {
 		//Only if we have a image selected
 		if( store.filters.items.length > 0 && records.length === 1 ) {
-			//We need to select the record but not to fire the 'select' 
-			//event. So this.processRatio will work
-			this.gdImages.getSelectionModel().select(0, false, true); 
-
 			//And only if the images has no width/height information
 			if( this.nbWidth.getValue() === null && this.nbHeight.getValue() === null ) {
 				var record = records[0];
@@ -325,11 +321,16 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.alt !== '' ) { 
 			this.tfAlt.setValue( obj.alt );
 		}
-		else
+		else {
 			this.tfAlt.setValue("");
+		}
 
-		if( obj.link !== '' ) { 
+		if( obj.link !== '' && obj.link !== false ) { 
 			this.cbPages.setValue( obj.link );
+		}
+		
+		if( obj.link !== '' ) {
+			this.cbxNoLink.setValue(true);
 		}
 
 		this.hdnUrl.setValue( obj.src );
@@ -339,8 +340,12 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.callParent(arguments);
 		this.hdnUrl.setValue( record.get('url') );
-		this.nbWidth.setValue( record.get('width') );
-		this.nbHeight.setValue( record.get('height') );
+		//This is to avoid an overriding of the dimension that may have been 
+		//set by this.setData()
+		if( grid.getStore().filters.items.length === 0 || grid.getStore().getCount() !== 1 ) {
+			this.nbWidth.setValue( record.get('width') );
+			this.nbHeight.setValue( record.get('height') );
+		}
 	},
 	
 	//If we want do have a WikiImageLink that produces a unlinked image we will 

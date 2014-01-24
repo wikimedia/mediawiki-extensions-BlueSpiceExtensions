@@ -106,28 +106,11 @@ class UEModulePDF extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array();
 		switch( $oVariable->getName() ) {
-			case 'PDFenNS': // TODO RBV (24.05.12 15:16): Move to Bookshelf
-			case 'PDFwithATTenNS':
-				$aPrefs = array(
-					'type'    => 'multiselectex',
-					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( -2, NS_MEDIA, NS_MEDIAWIKI, NS_MEDIAWIKI_TALK ) )
-				);
-
-				break;
 			case 'DefaultTemplate':
 				$aParams = array( 'template-path' => BsConfig::get('MW::UEModulePDF::TemplatePath') );
 				$aPrefs = array(
 					'type'    => 'select',
 					'options' => BsPDFTemplateProvider::getTemplatesForSelectOptions( $aParams )
-				);
-				break;
-			case 'Backend': // TODO: This is deprecated. Remove it.
-				$aPrefs = array(
-					'type'    => 'select',
-					'options' => array(
-						'BShtml2PDF.war' => 'BsPDFServlet',
-						'bn2pdf.war'     => 'BsPDFWebService',
-					)
 				);
 				break;
 			default:
@@ -200,7 +183,7 @@ class UEModulePDF extends BsExtensionMW {
 		$aLinks = array();
 		$aLinks['pdf-single-no-attachments'] = array(
 			'URL'     => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
-			'TITLE'   => wfMsg( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' ),
+			'TITLE'   => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->plain(),
 			'CLASSES' => 'bs-uemodulepdf-single',
 			'TEXT'    => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
 		);
@@ -233,7 +216,7 @@ class UEModulePDF extends BsExtensionMW {
 		$aContentActions = array(
 			'id' => 'pdf',
 			'href' => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
-			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
+			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->plain(),
 			'text' => ''
 		);
 

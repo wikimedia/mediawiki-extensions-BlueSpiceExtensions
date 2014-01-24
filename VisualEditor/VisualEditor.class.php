@@ -318,7 +318,7 @@ class VisualEditor extends BsExtensionMW {
 
 		// find the right language file
 		$language = $wgLang->getCode();
-		$langDir = dirname(__FILE__) . DS . 'resources' . DS . 'tinymce' . DS . 'langs';
+		$langDir = __DIR__ . DS . 'resources' . DS . 'tinymce' . DS . 'langs';
 		if (!file_exists("{$langDir}" . DS . "{$language}.js")) {
 			//i don't know what language files use underscores, but i'll leave it here
 			$aLanguage = explode('_', $language);
@@ -332,23 +332,30 @@ class VisualEditor extends BsExtensionMW {
 		}
 		$this->aConfigStandard['language'] = $language;
 
+		$aLoaderUsingDeps = array();
 		// TODO SW: use string flag as parameter to allow hookhandler to 
 		// determin context. This will be usefull if hook gets called in 
 		// another place
-		
-		wfRunHooks('VisualEditorConfig', array(&$this->aConfigStandard, &$this->aConfigOverwrite));
+		wfRunHooks(
+			'VisualEditorConfig', 
+			array(
+				&$this->aConfigStandard,
+				&$this->aConfigOverwrite,
+				&$aLoaderUsingDeps
+			)
+		);
 
-		foreach( $this->aConfigStandard['style_formats'] as &$aStyles ){
-			foreach( $aStyles as $key => &$val ){
-				if ( $key == "title" )
+		foreach(  $this->aConfigStandard['style_formats'] as &$aStyles ){
+			foreach ( $aStyles as $key => &$val ){
+				if ( $key == "title" ) {
 					$oMsg = wfMessage($val);
-					if( $oMsg->exists() ) {
-						$val = $oMsg->plain();
-					}
-				else if ( $key == "items" && is_array($val) ){
-					foreach( $val as &$item ){
+				}
+				if ( $oMsg->exists() ) {
+					$val = $oMsg->plain();
+				} elseif ( $key == "items" && is_array($val) ){
+					foreach ( $val as &$item ) {
 						$oMsg = wfMessage($item['title']);
-						if( $oMsg->exists() ) {
+						if ( $oMsg->exists() ) {
 							$item['title'] = $oMsg->plain();
 						}
 					}
@@ -363,6 +370,7 @@ class VisualEditor extends BsExtensionMW {
 		$wgOut->addJsConfigVars('BsVisualEditorConfigAlternative', array_merge(
 			$this->aConfigStandard, $this->aConfigOverwrite
 		));
+		$wgOut->addJsConfigVars('BsVisualEditorLoaderUsingDeps', $aLoaderUsingDeps);
 
 		return true;
 	}
@@ -432,7 +440,7 @@ class VisualEditor extends BsExtensionMW {
 		if (BsCore::checkAccessAdmission('read') === false)
 			return true;
 		global $wgLang, $wgRequest;
-		$sArticleId = $wgRequest->getInt('articleId', -1);
+		$sArticleId = $wgRequest->getInt('articleId', 0);
 		$sText = $wgRequest->getVal('text', '');
 		$sPageName = $wgRequest->getVal('pageName', '');
 		$sSummary = $wgRequest->getVal('summary', '');
@@ -443,10 +451,9 @@ class VisualEditor extends BsExtensionMW {
 			$sSummary = wfMessage('bs-visualeditor-no-summary')->plain();
 		}
 
-		if ($sArticleId == -1) {
-			$oArticle = new Article(Title::newFromText($sPageName)); //Article::newFromTitle( Title::newFromText( $sPageName ) );
-		} else {
-			$oArticle = Article::newFromID($sArticleId);
+		$oArticle = Article::newFromID($sArticleId);
+		if ( $oArticle === null ) {
+			$oArticle = new Article(Title::newFromText($sPageName));
 		}
 
 		if ($iSection) {

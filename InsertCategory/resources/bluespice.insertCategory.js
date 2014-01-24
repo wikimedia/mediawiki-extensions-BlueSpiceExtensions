@@ -97,7 +97,7 @@ var BsInsertCategoryViewHelper = {
 				var obj = Ext.decode(response.responseText);
 				if ( obj.success ) {
 					Ext.Msg.alert('Status', mw.msg('bs-insertcategory-success'));
-					window.location.reload( false );
+					window.location.reload( true );
 				} else {
 					Ext.Msg.alert(mw.msg('bs-insertcategory-failure'), obj.msg);
 				}

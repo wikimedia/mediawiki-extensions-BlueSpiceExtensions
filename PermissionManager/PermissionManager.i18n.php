@@ -5,12 +5,12 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author Stephan Muggli <muggli@hallowelt.biz>
 
- * @package    BlueSpice_Extensions
+ * @packageBlueSpice_Extensions
  * @subpackage PermissionManager
- * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @copyrightCopyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @licensehttp://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
 $messages = array ( );
@@ -48,9 +48,10 @@ $messages[ 'de' ] = array (
 	'bs-permissionmanager-template-editor-msgEdit' => 'Neuer Name für die Vorlage',
 	'bs-permissionmanager-template-editor-delete-success' => 'Vorlage erfolgreich gelöscht',
 	'bs-permissionmanager-template-editor-delete-failure' => 'Vorlage konnte nicht gelöscht werden',
-	'prefs-PermissionManager'						  => 'Rechteverwaltung',
-	'bs-pm-pref-lockmode'							  => 'Lockmode aktivieren',
-	'bs-pm-pref-skipSysNs'							  => 'MW Namensräume bei Lockmode ignorieren',
+	'prefs-PermissionManager'		=> 'Rechteverwaltung',
+	'bs-pm-pref-lockmode'			=> 'Lockmode aktivieren',
+	'bs-pm-pref-skipSysNs'			=> 'MediaWiki Systemnamensräume bei eingschaltetem Lockmode ignorieren',
+	'bs-pm-pref-enableRealityCheck'	=> 'Rechteprüfung aktivieren (Ressourcenintensiv)',
 );
 
 $messages[ 'de-formal' ] = array ( );
@@ -88,9 +89,10 @@ $messages[ 'en' ] = array (
 	'bs-permissionmanager-template-editor-msgEdit' => 'Enter the new name for the template',
 	'bs-permissionmanager-template-editor-delete-success' => 'Template successfully deleted',
 	'bs-permissionmanager-template-editor-delete-failure' => 'Template could not be deleted',
-	'prefs-PermissionManager'						  => 'Permission Manager',
-	'bs-pm-pref-lockmode'							  => 'activate lockmode',
-	'bs-pm-pref-skipSysNs'							  => 'skip mediawiki namespaces if lockmode is active',
+	'prefs-PermissionManager'		=> 'Permission Manager',
+	'bs-pm-pref-lockmode'			=> 'Activate lockmode',
+	'bs-pm-pref-skipSysNs'			=> 'Skip MediaWiki system namespaces if lockmode is active',
+	'bs-pm-pref-enableRealityCheck'	=> 'Activate permission check (resource intensive)',
 );
 
 $messages[ 'qqq' ] = array ( );

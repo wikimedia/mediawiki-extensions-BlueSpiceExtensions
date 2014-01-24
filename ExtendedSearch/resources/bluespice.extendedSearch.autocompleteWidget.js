@@ -15,6 +15,8 @@ mw.loader.using( 'jquery.ui.autocomplete', function() {
 	var cache = {};
 	var lastXhr = {};
 
+	if( $( ".bs-autocomplete-field" ).length < 1 ) return;
+
 	$( ".bs-autocomplete-field" ).autocomplete( {
 		position: { 
 			my: "right top",

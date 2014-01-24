@@ -125,7 +125,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		return json_encode($aResponsibleEditors);
 	}
 */
-	static function ajaxGetPossibleEditors( $iArticleId ) {
+	static function ajaxGetPossibleEditors( $iArticleId = -1 ) {
 		$aResult = array( 'users' => array() );
 		if( $iArticleId == -1 ) return FormatJson::encode( $aResult );
 
@@ -178,21 +178,24 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		}
 		//Remove all
 		$dbw->delete(
-				'bs_responsible_editors', 
-				array(
-					're_page_id' => $iArticleId
-				)
+			'bs_responsible_editors', 
+			array(
+				're_page_id' => $iArticleId
+			)
 		);
 
 		//Add all --> to maintain position! As log as re_position field is not used properly...
+		$iPosition = 0;
 		foreach( $aEditors as $iEditor ) {
 			$dbw->insert(
 					'bs_responsible_editors', 
 					array(
 						're_page_id' => $iArticleId,
-						're_user_id' => $iEditor
+						're_user_id' => $iEditor,
+						're_position' => $iPosition
 					)
 			);
+			$iPosition++;
 		}
 
 		$dbw->commit();
@@ -200,7 +203,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 
 		$oRequestedTitle->invalidateCache();
 
-		return json_encode(array('success' => true));
+		return FormatJson::encode(array('success' => true));
 	}
 
 	/**

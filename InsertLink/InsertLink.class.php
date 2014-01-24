@@ -85,9 +85,12 @@ class InsertLink extends BsExtensionMW {
 	 * Hook Handler for VisualEditorConfig Hook
 	 * @param Array $aConfigStandard reference
 	 * @param Array $aConfigOverwrite reference
+	 * @param Array &$aLoaderUsingDeps reference
 	 * @return boolean always true to keep hook alife
 	 */
-	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
+	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
+		$aLoaderUsingDeps[] = 'ext.bluespice.insertlink';
+		
 		$iIndexStandard = array_search( 'bssignature',$aConfigStandard["toolbar1"] );
 		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bslink" );
 		

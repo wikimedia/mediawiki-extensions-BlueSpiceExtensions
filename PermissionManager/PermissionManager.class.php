@@ -84,7 +84,7 @@ class PermissionManager extends BsExtensionMW {
 				)
 		);
 
-		$this->registerExtensionSchemaUpdate('bs_permission_templates', __DIR__ . DS . 'PermissionManager.sql');
+		$this->registerExtensionSchemaUpdate('bs_permission_templates', __DIR__ . DS . 'db/PermissionManager.sql');
 
 		wfProfileOut('BS::' . __METHOD__);
 	}
@@ -92,6 +92,8 @@ class PermissionManager extends BsExtensionMW {
 	protected function initExt() {
 		BsConfig::registerVar('MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-lockmode', 'toggle');
 		BsConfig::registerVar('MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-skipSysNs', 'toggle');
+		BsConfig::registerVar('MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL | BsConfig::RENDER_AS_JAVASCRIPT, 'bs-pm-pref-enableRealityCheck', 'toggle');
+
 		$this->setHook('BSWikiAdminUserManagerBeforeUserListSend');
 		$this->setHook('BSGroupManagerGroupNameChanged');
 	}
@@ -240,7 +242,7 @@ class PermissionManager extends BsExtensionMW {
 	/**
 	 * Creates a virtual user which belongs to all given groups and checks all
 	 * the given permissions agains a virtual title in every namespace.
-	 * 
+	 *
 	 * Returns an array of the form
 	 * <code>
 	 * array(
@@ -256,7 +258,7 @@ class PermissionManager extends BsExtensionMW {
 	 *     )
 	 * )
 	 * </code>
-	 * 
+	 *
 	 * @global Language $wgLang
 	 * @param string|array $groups
 	 * @param string|array $permissions
@@ -298,7 +300,7 @@ class PermissionManager extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @global array $wgGroupPermissions
 	 * @global array $wgNamespacePermissionLockdown
 	 * @global WebRequest $wgRequest
@@ -467,7 +469,7 @@ class PermissionManager extends BsExtensionMW {
 				} else {
 					$aSet['global'] = false;
 				}
-				
+
 				$permitted = $aSet['global'];
 				if (!in_array($sGroup, array('*', 'user'))) {
 					if (!$permitted) {

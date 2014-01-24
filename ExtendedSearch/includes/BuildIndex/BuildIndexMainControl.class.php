@@ -4,8 +4,8 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -111,8 +111,8 @@ class BuildIndexMainControl {
 		$this->oSearchService = SearchService::getInstance();
 
 		$this->sFilePathIndexProgTxt = BSDATADIR.DS.'index_prog.txt';
-		$this->sFilePathLogFile      = BSDATADIR.DS.'ExtendedSearch.log';
-		$this->sFilePathLockFile     = BSDATADIR.DS.'ExtendedSearch.lock';
+		$this->sFilePathLogFile = BSDATADIR.DS.'ExtendedSearch.log';
+		$this->sFilePathLockFile = BSDATADIR.DS.'ExtendedSearch.lock';
 
 		//Possible values of PHP_SAPI (not all): apache, cgi (until PHP 5.3), cgi-fcgi, cli
 		$this->bCommandLineMode = ( PHP_SAPI === 'cli' );
@@ -148,7 +148,7 @@ class BuildIndexMainControl {
 		$this->sCustomerId = BsConfig::get( 'MW::ExtendedSearch::CustomerID' );
 
 		// Maximum file size in MB
-		$iMaxFileSize = (int) ini_get( 'post_max_size' );
+		$iMaxFileSize = (int)ini_get( 'post_max_size' );
 		if ( empty( $iMaxFileSize ) || $iMaxFileSize <= 0 ) $iMaxFileSize = 32;
 		$this->iMaxDocSize = $iMaxFileSize * 1024 * 1024; // Make bytes out of it
 	}
@@ -165,6 +165,128 @@ class BuildIndexMainControl {
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return self::$oInstance;
+	}
+
+	/**
+	 * Triggers a search index update for a specified article.
+	 * @param Article $oArticle MediaWiki article object of article to be indexed.
+	 * @param string $sText Text to be indexed (optional, fetched from article if not present)
+	 */
+	public function updateIndexWiki( $oArticle ) {
+		if ( is_null( $oArticle ) ) return;
+		$oBuildIndexMwArticles = new BuildIndexMwArticles( $this );
+
+		$oTitle = $oArticle->getTitle();
+		$oRevision = Revision::newFromTitle( $oTitle );
+		if ( is_null( $oTitle ) || is_null( $oRevision ) ) return;
+
+		wfRunHooks( 'BS::ExtendedSearch::UpdateIndexWiki', array( &$oTitle, &$oRevision ) );
+		if ( is_null( $oTitle ) ) return;
+
+		$iPageID = $oTitle->getArticleID();
+		$iPageNamespace = $oTitle->getNamespace();
+		$sPageTitle = $oTitle->getText();
+		$iPageTimestamp = $oTitle->getTouched();
+		$aPageCategories = $this->getCategoriesFromDbForCertainPageId( $iPageID );
+		$aPageEditors = $this->getEditorsFromDbForCertainPageId( $iPageID );
+		$bRedirect = $oTitle->isRedirect();
+
+		$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
+
+		if ( $bRedirect === true ) {
+			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT )->getUltimateRedirectTarget();
+			if ( $oRedirectTitle instanceof Title ) {
+				$oArticle = new Article( $oRedirectTitle );
+				$this->updateIndexWiki( $oArticle );
+			}
+		}
+
+		$aSections = $this->extractEditSections( $sPageContent );
+		$sPageContent = $this->parseTextForIndex( $sPageContent, $oTitle );
+
+		$aRedirects = $this->getRedirects( $oTitle );
+
+		// http://www.mediawiki.org/wiki/Manual:WfTimestamp
+		// wfTimestamp( TS_MW ) returns actual UTC in format YmdHis which results in gmdate( 'YmdHis', time() );
+		// do not use date( 'YmdHis' ); it does not return GMT but timestamp with timezone-offset
+		if ( strpos( $iPageTimestamp, '1970' ) === 0 ) $iPageTimestamp = wfTimestamp( TS_MW );
+
+		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument( $sPageTitle, $sPageContent, $iPageID, $iPageNamespace, $iPageTimestamp, $aPageCategories, $aPageEditors, $aRedirects, $bRedirect, $aSections );
+		try {
+			$this->oSearchService->addDocument( $oSolrDocument );
+		} catch ( Exception $e ) {
+			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
+
+		try {
+			// Indexing file links 
+			$this->buildIndexLinked( '', $iPageID );
+		} catch ( Exception $e ) {}
+
+		$this->commitAndOptimize();
+	}
+
+	/**
+	 * Triggers a search index update for a file.
+	 * @param File $oFile file object.
+	 */
+	public function updateIndexFile( $oFile ) {
+		$oIndexFile = new BuildIndexMwSingleFile( $this, $oFile );
+		try {
+			$oIndexFile->indexCrawledDocuments();
+		} catch ( Exception $e ) {
+			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
+
+		$this->commitAndOptimize();
+
+		return true;
+	}
+
+	/**
+	 * Triggers deletion of a specified file from search index.
+	 * @param int $id Article id of page to be deleted.
+	 * @param string $path path to the file.
+	 */
+	public function deleteIndexFile( $iID, $sPath ) {
+		$sUniqueID = $this->getUniqueId( $iID, $sPath );
+		try {
+			$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
+		} catch ( Exception $e ) {
+			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
+
+		$this->commitAndOptimize();
+
+		return true;
+	}
+
+	/**
+	 * Triggers deletion of a specified item from search index.
+	 * @param int $iID Article id of page to be deleted.
+	 */
+	public function deleteFromIndexWiki( $iID ) {
+		$sUniqueID = $this->getUniqueId( $iID );
+		try {
+			$this->oSearchService->deleteById( $sUniqueID );
+		} catch ( Exception $e ) {
+			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+		}
+
+		$this->commitAndOptimize();
+
+		return true;
+	}
+
+	/**
+	 * Triggers search index update for a given title.
+	 * @param Title $title MediaWiki title object of article to be updated.
+	 */
+	public function updateIndexWikiByTitleObject( $oTitle ) {
+		$oArticle = new Article( $oTitle );
+		$this->updateIndexWiki( $oArticle );
+
+		return true;
 	}
 
 	/**
@@ -450,6 +572,63 @@ class BuildIndexMainControl {
 	}
 
 	/**
+	 * Reads out table %dbPrefix%categorylinks for certain page_id
+	 * @param int $pageId ID of article that category links should be read for.
+	 * @return array Categorynames as values
+	 */
+	public function getCategoriesFromDbForCertainPageId( $iPageID ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+
+		// returns false on failure
+		$oDbResTableCategories = $oDbr->select(
+				'categorylinks',
+				'DISTINCT cl_to',
+				array( 'cl_from' => $iPageID )
+		);
+
+		$aCategories = array();
+		if ( $oDbResTableCategories && $oDbr->numRows( $oDbResTableCategories ) > 0 ) {
+			while ( $rowTableCategories = $oDbr->fetchObject( $oDbResTableCategories ) ) {
+				$aCategories[] = $rowTableCategories->cl_to;
+			}
+		}
+		$oDbr->freeResult( $oDbResTableCategories );
+
+		return $aCategories;
+	}
+
+	/**
+	 * Reads out table %dbPrefix%revision for certain page_id
+	 * @param int $pageId ID of article that revisions should be read for.
+	 * @return array editors as values
+	 */
+	public function getEditorsFromDbForCertainPageId( $iPageID ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+
+		// returns false on failure
+		$oDbResTableRevision = $oDbr->select(
+				'revision',
+				'DISTINCT rev_user_text',
+				array( 'rev_page' => $iPageID )
+		);
+
+		$aEditors = array();
+		if ( $oDbr->numRows( $oDbResTableRevision ) > 0 ) {
+			$oUser = null;
+			$sEditor = '';
+			while ( $rowTableRevision = $oDbr->fetchObject( $oDbResTableRevision ) ) {
+				$sEditor = $rowTableRevision->rev_user_text;
+				$oUser = User::newFromName( $sEditor );
+				if ( !is_object( $oUser ) ) $sEditor = 'unknown';
+				$aEditors[] = $sEditor;
+			}
+		}
+		$oDbr->freeResult( $oDbResTableRevision );
+
+		return $aEditors;
+	}
+
+	/**
 	 * Returns a unique id from parameter information.
 	 * @param int $iID Id of an article.
 	 * @param string $sPath Path to a file.
@@ -560,7 +739,11 @@ class BuildIndexMainControl {
 		$oParser = new Parser();
 		$oParserOptions = new ParserOptions();
 
+		// find all tags and sorround them with pre tags
 		$sText = preg_replace_callback( '#<.*?>#', array( $this, 'preTags' ), $sText );
+
+		// find all behaviour switches and replace them with nothing
+		$sText = preg_replace( '#__[A-Z_]+__#', '', $sText );
 
 		try {
 			$sParsedText = $oParser->parse( $sText, $oTitle, $oParserOptions )->getText();
@@ -576,7 +759,7 @@ class BuildIndexMainControl {
 	}
 
 	/**
-	 * Callback function to return every tag surrounded with pre tags to avoid parse
+	 * Callback function to return every tag surrounded with pre tags to avoid parsing
 	 * @param array $aTags Array of matches
 	 * @return string pre surrounded tag
 	 */
@@ -607,7 +790,7 @@ class BuildIndexMainControl {
 	/**
 	 * Returns array of redirects for a given title
 	 * @param object $oTitle Title object
-	 * @return Array array of redirects
+	 * @return array array of redirects
 	 */
 	public function getRedirects( $oTitle ) {
 		$aRedirects = array();
@@ -627,6 +810,7 @@ class BuildIndexMainControl {
 		$vTempFileTypes = BsConfig::get( 'MW::ExtendedSearch::IndexFileTypes' );
 		$vTempFileTypes = str_replace( array( ' ', ';' ), array( '', ',' ), $vTempFileTypes );
 		$vTempFileTypes = explode( ',', $vTempFileTypes );
+
 		foreach ( $vTempFileTypes as $value ) {
 			$this->aFiletypes[$value] = true;
 		}
@@ -652,6 +836,7 @@ class BuildIndexMainControl {
 
 	/**
 	 * Triggers commit and optimize xml update messages
+	 * @param boolean $bOptimize optimize index or not
 	 * @return object Always null
 	 */
 	public function commitAndOptimize( $bOptimize = false ) {

@@ -156,9 +156,9 @@ class SearchOptions {
 		if ( $this->aSolrQuery !== null ) return $this->aSolrQuery;
 
 		$this->aSolrQuery = array(
-			'searchString'  => $this->aOptions['searchStringFinal'],
-			'offset'        => $this->aOptions['offset'],
-			'searchLimit'   => $this->aOptions['searchLimit'],
+			'searchString' => $this->aOptions['searchStringFinal'],
+			'offset' => $this->aOptions['offset'],
+			'searchLimit' => $this->aOptions['searchLimit'],
 			'searchOptions' => $this->aSearchOptions
 		);
 
@@ -176,9 +176,9 @@ class SearchOptions {
 		$aSearchOptions['sort'] = $this->aSearchOptions['sort'];
 
 		$aSolrAutocompleteQuery = array(
-			'searchString'  => $this->aOptions['searchStringFinal'],
-			'offset'        => $this->aOptions['offset'],
-			'searchLimit'   => $this->aOptions['searchLimit'],
+			'searchString' => $this->aOptions['searchStringFinal'],
+			'offset' => $this->aOptions['offset'],
+			'searchLimit' => $this->aOptions['searchLimit'],
 			'searchOptions' => $aSearchOptions
 		);
 
@@ -198,6 +198,7 @@ class SearchOptions {
 		} else { 
 			$fuzzySearchString = $sSearchString;
 		}
+
 		$lastSignOfStringIsTilde = ( strrpos( $fuzzySearchString , '~' ) === ( strlen( $this->aOptions['searchStringOrig'] ) -1 ) );
 		$fuzzySearchString .= ( ( $lastSignOfStringIsTilde ) ? '' : '~' );
 		$fuzzySearchString .= BsConfig::get( 'MW::ExtendedSearch::DefFuzziness' );
@@ -214,9 +215,9 @@ class SearchOptions {
 		$this->aOptions['searchStringFuzzy'] .= ') AND redirect:0';
 
 		$this->aSolrFuzzyQuery = array(
-			'searchString'  => $this->aOptions['searchStringFuzzy'],
-			'offset'        => $this->aOptions['offset'],
-			'searchLimit'   => $this->aOptions['searchLimit'],
+			'searchString' => $this->aOptions['searchStringFuzzy'],
+			'offset' => $this->aOptions['offset'],
+			'searchLimit' => $this->aOptions['searchLimit'],
 			'searchOptions' => $this->aSearchOptions
 		);
 
@@ -260,9 +261,9 @@ class SearchOptions {
 			//http://localhost:8080/solr/mlt?q=hwid:2084&start=0&rows=10&fl=title,score&mlt.fl=title,text&mlt.boost=true&mlt.qf=title%5E10.0&mlt.mindf=1&mlt.mintf=1&mlt.interestingTerms=details&mlt.maxqt=10&mlt.minwl=5
 			//mlt.maxqt=10&mlt.minwl=5
 		$aSolrMltQuery = array(
-			'searchString'  => 'hwid:' . $oTitle->getArticleID() . '',
+			'searchString'  => 'hwid:' . $oTitle->getArticleID(),
 			'offset'        => 0,
-			'searchLimit'   => 6,
+			'searchLimit'   => 10,
 			'searchOptions' => $aSearchOptions
 		);
 
@@ -291,6 +292,7 @@ class SearchOptions {
 		$oSearchRequest = SearchRequest::getInstance();
 
 		$this->aOptions['searchStringRaw']  = $oSearchRequest->sInput;
+		$this->aOptions['searchOrigin'] = $oSearchRequest->sOrigin;
 		$this->aOptions['searchStringOrig'] = SearchService::preprocessSearchInput( $oSearchRequest->sInput );
 
 		self::$searchStringRaw = $this->aOptions['searchStringRaw'];
@@ -390,7 +392,7 @@ class SearchOptions {
 			// Namespace 1000 are specialpages
 			$this->aOptions['namespaces'][] = '1000';
 
-			if ( in_array( $oSearchRequest->sRequestOrigin, array( 'search_form_body', 'uri_builder', 'ajax' ) )
+			if ( in_array( $this->aOptions['searchOrigin'], array( 'search_form_body', 'uri_builder', 'ajax' ) )
 				|| $oUser->getOption( 'searcheverything' ) == 1 ) {
 
 				foreach ( $aNamespaces as $key => $value ) {
@@ -436,7 +438,7 @@ class SearchOptions {
 			// => i.e. modify solr's schema
 			$aFqNamespaces = array();
 
-			if ( empty( $this->aOptions['namespaces'] ) && $oSearchRequest->sRequestOrigin != 'uri_builder' ) {
+			if ( empty( $this->aOptions['namespaces'] ) && $this->aOptions['searchOrigin'] != 'uri_builder' ) {
 				// if NO namespace selected search ALL namespaces
 				// namespace 0 not in keys of wgCanonicalNamespaceNames
 				// todo: just wondering: if NO namespace selected just SKIP +namespace(..)! Or is there a problem with namespace 999?
@@ -458,7 +460,7 @@ class SearchOptions {
 			$fq[] = '{!tag=na}+namespace:(' . implode( ' ', $aFqNamespaces ) . ')';
 		}
 
-		if ( empty( $oSearchRequest->aNamespaces ) && $oSearchRequest->sOrigin != 'titlebar' ) {
+		if ( empty( $oSearchRequest->aNamespaces ) && $this->aOptions['searchOrigin'] != 'titlebar' ) {
 			$this->aOptions['namespaces'] = array();
 		}
 
@@ -515,26 +517,26 @@ class SearchOptions {
 
 		$searchLimit = BsConfig::get( 'MW::ExtendedSearch::LimitResults' );
 
-		$this->aOptions['offset']       = $oSearchRequest->iOffset;
-		$this->aOptions['order']        = $oSearchRequest->sOrder;
-		$this->aOptions['asc']          = $oSearchRequest->sAsc;
-		$this->aOptions['searchLimit']  = ( $searchLimit == 0 ) ? 25 : $searchLimit;
-		$this->aOptions['titleExists']  = $this->titleExists( $oSearchRequest->sInput );
-		$this->aOptions['format']       = $oSearchRequest->sFormat;
+		$this->aOptions['offset'] = $oSearchRequest->iOffset;
+		$this->aOptions['order'] = $oSearchRequest->sOrder;
+		$this->aOptions['asc'] = $oSearchRequest->sAsc;
+		$this->aOptions['searchLimit'] = ( $searchLimit == 0 ) ? 25 : $searchLimit;
+		$this->aOptions['titleExists'] = $this->titleExists( $oSearchRequest->sInput );
+		$this->aOptions['format'] = $oSearchRequest->sFormat;
 
-		$this->aSearchOptions['fl']          = 'wiki,uid,hwid,type,title,overall_type,path,namespace,cat,score,ts,redirect,redirects';
-		$this->aSearchOptions['fq']          = $fq;
-		$this->aSearchOptions['sort']        = $this->aOptions['order'] . ' ' . $this->aOptions['asc'];
-		$this->aSearchOptions['hl']          = 'on';
-		$this->aSearchOptions['hl.fl']       = 'titleWord, titleReverse, sections, textWord, textReverse';
+		$this->aSearchOptions['fl'] = 'wiki,uid,hwid,type,title,overall_type,path,namespace,cat,score,ts,redirect,redirects';
+		$this->aSearchOptions['fq'] = $fq;
+		$this->aSearchOptions['sort'] = $this->aOptions['order'] . ' ' . $this->aOptions['asc'];
+		$this->aSearchOptions['hl'] = 'on';
+		$this->aSearchOptions['hl.fl'] = 'titleWord, titleReverse, sections, textWord, textReverse';
 		$this->aSearchOptions['hl.snippets'] = BsConfig::get( 'MW::ExtendedSearch::HighlightSnippets' );
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) {
-			$this->aSearchOptions['facet']          = 'on';
-			$this->aSearchOptions['facet.sort']     = 'false';
-			$this->aSearchOptions['facet.field']    = array( '{!ex=na}namespace', '{!ex=ca}cat', '{!ex=ov}overall_type', '{!ex=ty}type', '{!ex=ed}editor' );
+			$this->aSearchOptions['facet'] = 'on';
+			$this->aSearchOptions['facet.sort'] = 'false';
+			$this->aSearchOptions['facet.field'] = array( '{!ex=na}namespace', '{!ex=ca}cat', '{!ex=ov}overall_type', '{!ex=ty}type', '{!ex=ed}editor' );
 			$this->aSearchOptions['facet.mincount'] = '1';
-			$this->aSearchOptions['facet.missing']  = 'true';
+			$this->aSearchOptions['facet.missing'] = 'true';
 		}
 	}
 

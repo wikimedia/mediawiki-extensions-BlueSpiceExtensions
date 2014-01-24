@@ -30,7 +30,8 @@ class SpecialReaders extends BsSpecialPage {
 
 		if ( !empty( $sParameter ) ) {
 			$oRequestedTitle = Title::newFromText( $sParameter );
-			if ( $oRequestedTitle->exists() && $oRequestedTitle->getNamespace() !== NS_USER ) {
+
+			if ( $oRequestedTitle->exists() && ( $oRequestedTitle->getNamespace() !== NS_USER || $oRequestedTitle->isSubpage() === true ) ) {
 				$sOut = $this->renderReadersGrid();
 
 				$oOut->addModules( 'ext.bluespice.readers.specialreaders' );

@@ -148,7 +148,8 @@ span#bs-extendedsearch-searchterm {
 }
 
 #bs-extendedsearch-all-filter-boxes {
-	background-color: #F8F8F8;
+	border-right: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
 }
 
 .bs-extendedsearch-filter-headline-outer {
@@ -172,7 +173,7 @@ span#bs-extendedsearch-searchterm {
 	font-size: 1em !important;
 	padding-left: 5px;
 	padding-right: 5px;
-	background-color: #EEEDED;
+	background-color: #F1F1F1;
 }
 
 .bs-extendedsearch-paging-spacer {
@@ -187,7 +188,7 @@ span#bs-extendedsearch-searchterm {
 	height: 25px;
 	text-align: center;
 	color: #666666;
-	background-color: #EEEDED;
+	background-color: #F1F1F1;
 	border-color: #CCCCCC;
 	font-size: 1em !important;
 }
@@ -210,7 +211,7 @@ span#bs-extendedsearch-searchterm {
 
 #bs-extendedsearch-filters {
 	float: left;
-	width: 189px;
+	width: 190px;
 	margin-top: 34.5px;
 }
 
@@ -235,8 +236,8 @@ span#bs-extendedsearch-searchterm {
 }
 .search-wrapper {
 	overflow: hidden; /* This hides the excess padding in non-IE browsers */
-	padding: 12px 0 12px 0;
-	border-bottom: 1px solid #DDDDDD;
+	padding: 12px 0 15px;
+	border-bottom: 1px solid #EEE;
 }
 .search-wrapper:hover {
 	background-color: #F8F8F8;
@@ -267,7 +268,7 @@ div.bs-search-hit-text em {
 }
 .bs-facet-title {
 	font-size: 13px !important;
-	background-color: #EEEDED;
+	background-color: #F1F1F1;
 	color: #555555;
 	margin: 0 0 7px 0;
 }
@@ -294,7 +295,7 @@ span.bs-extendedsearch-result-title h3 em {
 	font-size: 11px !important;
 }
 .facetBarEntry:hover {
-	background-color: #EEEDED;
+	background-color: #F8F8F8;
 	display: block;
 }
 .facetBarEntry input {
@@ -346,7 +347,7 @@ span.bs-extendedsearch-result-title h3 em {
 }
 .bs-extendedsearch-cat {
 	font-size: 11px !important;
-	margin: 7px 0 3px 28px;
+	margin: 7px 0 0 28px;
 }
 .bs-extendedsearch-cat a {
 	font-size: 11px !important;

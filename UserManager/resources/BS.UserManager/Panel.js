@@ -187,11 +187,7 @@ Ext.define( 'BS.UserManager.Panel', {
 				method: 'post',
 				success: function( response, opts ) {
 					var responseObj = Ext.decode( response.responseText );
-					if ( responseObj.success === true ) {
-						this.renderMsgSuccess( responseObj );
-					} else {
-						this.renderMsgFailure( responseObj );
-					}
+					this.renderMsgSuccess( responseObj );
 				}
 			});
 		}
@@ -272,9 +268,9 @@ Ext.define( 'BS.UserManager.Panel', {
 		}
 	},
 	renderMsgFailure: function( responseObj ) {
-		if ( responseObj.errors ) {
+		if ( responseObj.errors.length ) {
 			var message = '';
-			for ( i in responseObj.errors ) {
+			for ( var i in responseObj.errors ) {
 				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
 				message = message + responseObj.errors[i].message + '<br />';
 			}

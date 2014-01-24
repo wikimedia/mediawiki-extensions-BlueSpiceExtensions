@@ -248,21 +248,31 @@ class ShoutBox extends BsExtensionMW {
 
 		$sOutput = '';
 		//return false on hook handler to break here
-		if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit ) ) ) {
-			return "";
+		
+		$aTables = array('bs_shoutbox');
+		$aFields = array('*');
+		$aConditions = array( 
+			'sb_page_id' => $iArticleId,
+			'sb_archived' => '0',
+			'sb_parent_id' => '0',
+			'sb_title' => '',
+		);
+		$aOptions = array(
+			'ORDER BY' => 'sb_timestamp DESC',
+			'LIMIT' => $iLimit + 1, // One more than iLimit in order to know if there are more shouts left.
+		);
+
+		if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit, &$aTables, &$aFields, &$aConditions, &$aOptions ) ) ) {
+			return $sOutput;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
-				'bs_shoutbox',
-				'*',
-				array( 'sb_page_id' => $iArticleId, 'sb_archived' => '0', 'sb_parent_id' => '0', 'sb_title' => '' ),
-				__METHOD__,
-				array(
-					'ORDER BY' => 'sb_timestamp DESC',
-					// One more than iLimit in order to know if there are more shouts left.
-					'LIMIT' => $iLimit + 1
-				)
+			$aTables,
+			$aFields,
+			$aConditions,
+			__METHOD__,
+			$aOptions
 		);
 
 		$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
