@@ -4,7 +4,7 @@
  * Visual Editor extension for BlueSpice
  *
  * Visual editor for MediaWiki.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -43,7 +43,7 @@ class VisualEditor extends BsExtensionMW {
 	private $bStartEditor = true;
 
 	/**
-	 * Stores whether available tag names in mediawiki have been collected. 
+	 * Stores whether available tag names in mediawiki have been collected.
 	 * This should only happen once, however, the hook is called more often.
 	 * @var bool Availabel tags have been collected.
 	 */
@@ -81,7 +81,7 @@ class VisualEditor extends BsExtensionMW {
 		'toolbar1' => array(
 			'bswiki', /* 'bsswitch', */ 'bssave', '|', 'undo', 'redo', '|',
 			'searchreplace', 'paste', '|', 'bssignature', 'unlink', '|',
-			'table', '|', 'bstableaddrowbefore', 
+			'table', '|', 'bstableaddrowbefore',
 			'bstableaddrowafter', 'bstabledeleterow', 'bstableaddcolumnbefore',
 			'bstableaddcolumnafter', 'bstabledeletecolumn'
 		),
@@ -116,7 +116,7 @@ class VisualEditor extends BsExtensionMW {
 		'save_enablewhendirty' => true,
 		//Allow style tags in body and unordered lists in spans (inline)
 		'valid_children' => "+span[ul]",
-		//set the id of the body tag in iframe to bodyContent, so styles do 
+		//set the id of the body tag in iframe to bodyContent, so styles do
 		//apply in a correct manner. This may be dangerous.
 		'body_id' => 'bodyContent',
 		'autoresize_max_height' => 15000,
@@ -128,17 +128,17 @@ class VisualEditor extends BsExtensionMW {
 				array('title' => 'Header 5', 'format' => 'h5'),
 				array('title' => 'Header 6', 'format' => 'h6')
 			)),
-			array('title' => 'Inline', 'items'  => array( 
+			array('title' => 'Inline', 'items'  => array(
 				array('title' => 'Code', 'format' => 'code', 'icon' => 'code' ),
 				array('title' => 'Superscript', 'format' => 'superscript', 'icon' => 'superscript' ),
 				array('title' => 'Subscript', 'format' => 'subscript', 'icon' => 'subscript' ),
 			)),
-			array('title' => 'Alignment', 'items'  => array( 
+			array('title' => 'Alignment', 'items'  => array(
 				array('title' => 'Left', 'format' => 'alignleft', 'icon' => 'alignleft' ),
 				array('title' => 'Center', 'format' => 'aligncenter', 'icon' => 'aligncenter' ),
 				array('title' => 'Right', 'format' => 'alignright', 'icon' => 'alignright' ),
 			)),
-			array('title' => 'Table', 'items'  => array( 
+			array('title' => 'Table', 'items'  => array(
 				array('title' => 'bs-visualeditor-sortable', 'selector' => 'table', 'classes' => 'sortable'),
 				array('title' => 'bs-visualeditor-wikitable', 'selector' => 'table', 'classes' => 'wikitable'),
 				array('title' => 'bs-visualeditor-contenttable', 'selector' => 'table', 'classes' => 'contenttable'),
@@ -157,7 +157,7 @@ class VisualEditor extends BsExtensionMW {
 
 	/**
 	 * Default value for config of reduced version of the editor, which is currently stored in a private variable.
-	 * @var array will be JSON encoded later for configuration. 
+	 * @var array will be JSON encoded later for configuration.
 	 */
 	private $aConfigOverwrite = array(
 		'toolbar1' => array(
@@ -201,7 +201,7 @@ class VisualEditor extends BsExtensionMW {
 		BsConfig::registerVar('MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-SpecialTags');
 		BsConfig::registerVar('MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-AllowedTags');
 
-		BsConfig::registerVar('MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-Use', 'toggle');
+		BsConfig::registerVar('MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-Use', 'toggle');
 		BsConfig::registerVar('MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseLimited', 'toggle');
 		BsConfig::registerVar('MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseForceLimited', 'toggle');
 
@@ -229,10 +229,7 @@ class VisualEditor extends BsExtensionMW {
 	}
 
 	/**
-	 * 
-	 * @global Language $wgLang
-	 * @global Parser $wgParser
-	 * @global OutputPage $wgOut
+	 *
 	 * @param array $vars
 	 * @return boolean
 	 */
@@ -257,7 +254,7 @@ class VisualEditor extends BsExtensionMW {
 		);
 		return true;
 	}
-	
+
 	/**
 	 * Inject tags into InsertMagic
 	 * @param Object $oResponse reference
@@ -333,11 +330,11 @@ class VisualEditor extends BsExtensionMW {
 		$this->aConfigStandard['language'] = $language;
 
 		$aLoaderUsingDeps = array();
-		// TODO SW: use string flag as parameter to allow hookhandler to 
-		// determin context. This will be usefull if hook gets called in 
+		// TODO SW: use string flag as parameter to allow hookhandler to
+		// determin context. This will be usefull if hook gets called in
 		// another place
 		wfRunHooks(
-			'VisualEditorConfig', 
+			'VisualEditorConfig',
 			array(
 				&$this->aConfigStandard,
 				&$this->aConfigOverwrite,
@@ -362,7 +359,7 @@ class VisualEditor extends BsExtensionMW {
 				}
 			}
 		}
-		
+
 		$this->aConfigStandard = $this->_prepareConfig($this->aConfigStandard);
 		$this->aConfigOverwrite = $this->_prepareConfig($this->aConfigOverwrite);
 
@@ -411,7 +408,7 @@ class VisualEditor extends BsExtensionMW {
 		// $out->addModules breaks IE8
 		$out->addModuleScripts('ext.bluespice.visualEditor.tinymce');
 		$out->addModuleScripts('ext.bluespice.visualEditor');
-		
+
 		$out->addModuleMessages('ext.bluespice.visualEditor.tinymce');
 
 		return true;
@@ -431,7 +428,7 @@ class VisualEditor extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @global User $wgUser
 	 * @global Language $wgLang
 	 * @return string

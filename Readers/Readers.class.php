@@ -71,7 +71,6 @@ class Readers extends BsExtensionMW {
 	public function  initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSBlueSpiceSkinBeforeArticleHeadline' );
 		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
@@ -91,10 +90,16 @@ class Readers extends BsExtensionMW {
 	 * @param object §updater Updater
 	 * @return boolean Always true
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
-		global $wgExtNewTables, $wgExtNewFields;
-		$wgExtNewTables[] = array( 'bs_readers', __DIR__.DS.'db'.DS.'readers.sql' );
-		$wgExtNewFields[] = array( 'bs_readers', 'readers_ts', __DIR__.DS.'db/mysql/readers.patch.readers_ts.sql' );
+	public static function getSchemaUpdates( $updater ) {
+		$updater->addExtensionTable(
+			'bs_readers',
+			__DIR__.DS.'db'.DS.'readers.sql'
+		);
+		$updater->addExtensionField(
+			'bs_readers',
+			'readers_ts',
+			__DIR__.DS.'db/mysql/readers.patch.readers_ts.sql'
+		);
 
 		return true;
 	}

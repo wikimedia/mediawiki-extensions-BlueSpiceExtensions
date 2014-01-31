@@ -38,12 +38,13 @@ $messages['en'] = array(
 	'bs-shoutbox-archive-failure-user'    => 'Shoutboxentries may only be deleted by their creator.',
 	'bs-shoutbox-switch-description'      => 'Hides shoutbox on this page',
 	'bs-shoutbox-pref-show'               => 'Display Shoutbox',
-	
+	'bs-shoutbox-charactersleft' => 'Characters left',
+
 	//JavaScript
-	'bs-shoutbox-confirm_text'  => 'Do you really want to delete that entry?',
-	'bs-shoutbox-confirm_title' =>'Confirm',
-	'bs-shoutbox-enterMessage'  =>'Please enter a message.',
-	'bs-shoutbox-too-early'     => 'Please wait a few seconds before submitting the next entry.',
+	'bs-shoutbox-confirm_text'   => 'Do you really want to delete that entry?',
+	'bs-shoutbox-confirm_title'  => 'Confirm',
+	'bs-shoutbox-enterMessage'   => 'Please enter a message.',
+	'bs-shoutbox-too-early'      => 'Please wait a few seconds before submitting the next entry.',
 );
 
 $messages['de'] = array(
@@ -69,13 +70,13 @@ $messages['de'] = array(
 	'bs-shoutbox-archive-failure-user'    => 'Shoutbox-Einträge können nur von deren Ersteller gelöscht werden.',
 	'bs-shoutbox-switch-description'      => 'Shoutbox wird auf dieser Seite nicht angezeigt',
 	'bs-shoutbox-pref-show'               => 'Shoutbox anzeigen',
-	
+	'bs-shoutbox-charactersleft'          => 'Übrige Zeichen',
+
 	//JavaScript
-	'bs-shoutbox-confirm_text'  => 'Möchtest du diesen Eintrag wirklich löschen?',
-	'bs-shoutbox-confirm_title' =>'Bestätigen',
-	'bs-shoutbox-enterMessage'  =>'Bitte gib eine Nachricht ein!',
-	'bs-shoutbox-too-early'     => 'Bitte warte ein paar Sekunden bevor du den nächsten Beitrag abschickst.'
-	
+	'bs-shoutbox-confirm_text'   => 'Möchtest du diesen Eintrag wirklich löschen?',
+	'bs-shoutbox-confirm_title'  => 'Bestätigen',
+	'bs-shoutbox-enterMessage'   => 'Bitte gib eine Nachricht ein!',
+	'bs-shoutbox-too-early'      => 'Bitte warte ein paar Sekunden bevor du den nächsten Beitrag abschickst.',
 );
 
 $messages['de-formal'] = array(
@@ -83,7 +84,7 @@ $messages['de-formal'] = array(
 
 	//JavaScript
 	'bs-shoutbox-confirm_text'  => 'Möchten Sie diesen Eintrag wirklich löschen?',
-	'bs-shoutbox-enterMessage'  =>'Bitte geben Sie eine Nachricht ein!',
+	'bs-shoutbox-enterMessage'  => 'Bitte geben Sie eine Nachricht ein!',
 	'bs-shoutbox-too-early'     => 'Bitte warten Sie ein paar Sekunden bevor Sie den nächsten Beitrag abschicken.'
 );
 

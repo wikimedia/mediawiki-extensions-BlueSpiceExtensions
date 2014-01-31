@@ -25,23 +25,11 @@
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    2.22.0
  * @package    BlueSpice_Extensions
- * @subpackage Authors
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @subpackage StateBar
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0.0
- * - Raised to stable
- * - Added Events
- * v0.1.0b
- * - FIRST BUILD
- */
-
-// Last review MRG (30.06.11 11:10)
 
 /**
  * Base class for StateBar extension
@@ -190,7 +178,7 @@ class StateBar extends BsExtensionMW {
 		$oStateBar = BsExtensionManager::getExtension( 'StateBar' );
 		$oStateBar->registerSortVars();
 
-		$oTitle = $oStateBar->checkContext( 
+		$oTitle = $oStateBar->checkContext(
 			Title::newFromID( $iArticleID ),
 			true //because you already have the possible redirected title!
 				 //also prevents from get wrong data in redirect redirect

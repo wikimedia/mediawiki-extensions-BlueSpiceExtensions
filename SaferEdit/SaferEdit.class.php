@@ -91,7 +91,6 @@ class SaferEdit extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::SaferEdit::ShowNameOfEditingUser', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-ShowNameOfEditingUser', 'toggle' );
 		BsConfig::registerVar( 'MW::SaferEdit::WarnOnLeave', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-WarnOnLeave', 'toggle' );
 
-		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'ArticleSaveComplete', 'clearSaferEdit' );
 		//$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'parseSaferEdit' );
 		$this->setHook( 'EditPage::showEditForm:initial', 'setEditSection' );
@@ -128,7 +127,7 @@ class SaferEdit extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
 	 * @return boolean Always true to keep the hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtNewIndexes;
 		$sDir = __DIR__.DS.'db'.DS.$wgDBtype.DS;
 

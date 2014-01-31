@@ -32,12 +32,14 @@ $messages['de'] = array(
 	'bs-insertlink-label_link' => 'Link',
 	'bs-insertlink-label_mail' => 'E-Mail',
 	'bs-insertlink-label_namespace' => 'Namensraum',
-	'bs-insertlink-select_a_namespace' => 'Namensraum wählen ...',
+	'bs-insertlink-select_a_namespace' => '(Seiten)',
 	'bs-insertlink-label_description' => 'Beschreibung',
 	'bs-insertlink-label_ok' => 'Ok',
 	'bs-insertlink-label_cancel' => 'Abbrechen',
 	'bs-insertlink-label_file' => 'Datei',
-	'bs-insertlink-label_searchfile' => 'Durchsuchen...'
+	'bs-insertlink-label_searchfile' => 'Durchsuchen...',
+	'bs-insertLink-empty-field-text' => 'Um einen Link einzufügen muss ein Ziel angegeben werden.',
+	'bs-insertLink-empty-field-title' => 'Link einfügen'
 );
 
 $messages['de-formal'] = array();
@@ -60,13 +62,15 @@ $messages['en'] = array(
 	'bs-insertlink-label_link' => 'Link',
 	'bs-insertlink-label_mail' => 'E-Mail',
 	'bs-insertlink-label_namespace' => 'Namespace',
-	'bs-insertlink-select_a_namespace' => 'Choose namespace ...',
+	'bs-insertlink-select_a_namespace' => '(Pages)',
 	'bs-insertlink-label_prefix' => 'Prefix',
 	'bs-insertlink-label_description' => 'Description',
 	'bs-insertlink-label_ok' => 'Ok',
 	'bs-insertlink-label_cancel' => 'Cancel',
 	'bs-insertlink-label_file' => 'File',
-	'bs-insertlink-label_searchfile' => 'Search ...'
+	'bs-insertlink-label_searchfile' => 'Search ...',
+	'bs-insertLink-empty-field-text' => 'To insert a link you need to state a destination.',
+	'bs-insertLink-empty-field-title' => 'Insert link'
 );
 
 $messages['qqq'] = array();

@@ -39,6 +39,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			queryMode: 'local',
 			triggerAction: 'all',
 			width: 600,
+			allowBlank: false,
 			emptyText:mw.message('bs-insertlink-select_a_page').plain()
 		});
 

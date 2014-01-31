@@ -101,3 +101,11 @@ li.bs-sb-more a, li.bs-sb-more a:hover{
 	text-decoration: none;
 	margin-top: 10px;
 }
+
+.bs-sb-textarea-additionalinfo {
+	display:inline-block;
+	float:right;
+	margin-right:10px;
+	font-size:10px;
+	color:#999999;
+}

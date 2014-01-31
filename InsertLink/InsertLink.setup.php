@@ -28,7 +28,9 @@ $wgResourceModules['ext.bluespice.insertlink'] = array(
 		'bs-insertlink-label_ok',
 		'bs-insertlink-label_cancel',
 		'bs-insertlink-label_file',
-		'bs-insertlink-label_searchfile'
+		'bs-insertlink-label_searchfile',
+		'bs-insertLink-empty-field-text',
+		'bs-insertLink-empty-field-title'
 	)
 ) + $aResourceModuleTemplate;
 

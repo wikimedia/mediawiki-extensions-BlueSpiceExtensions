@@ -6,7 +6,8 @@ $wgExtensionMessagesFiles['ResponsibleEditors']      = __DIR__ . '/languages/Res
 $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages
-$wgAutoloadClasses['BsResponsibleEditor']       = __DIR__ . '/includes/BsResponsibleEditor.php';
+$GLOBALS['wgAutoloadClasses']['ResponsibleEditors'] = __DIR__ . '/ResponsibleEditors.class.php';
+$wgAutoloadClasses['BsResponsibleEditor'] = __DIR__ . '/includes/BsResponsibleEditor.php';
 $wgAutoloadClasses['SpecialResponsibleEditors'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.class.php';
 
 $wgSpecialPageGroups['ResponsibleEditors'] = 'bluespice';
@@ -99,5 +100,7 @@ $wgAjaxExportList[] = 'ResponsibleEditors::ajaxDeleteResponsibleEditorsForArticl
 $wgAjaxExportList[] = 'ResponsibleEditors::getResponsibleEditorsPortletData';
 
 $wgLogTypes[] = 'bs-responsibleeditors';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'ResponsibleEditors::getSchemaUpdates';
 
 unset( $aResourceModuleTemplate );

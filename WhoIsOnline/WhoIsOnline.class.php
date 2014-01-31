@@ -110,7 +110,6 @@ class WhoIsOnline extends BsExtensionMW {
 		$this->setHook( 'BeforeInitialize' );
 		$this->setHook( 'BeforePageDisplay');
 		$this->setHook( 'LanguageGetMagic' );
-		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
@@ -131,7 +130,7 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
 	 * @return boolean Always true to keep the hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtModifiedFields, $wgExtNewIndexes, $wgExtNewFields;
 		$sDir = __DIR__ . DS;
 

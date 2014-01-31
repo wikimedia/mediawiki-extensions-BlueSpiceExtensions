@@ -43,9 +43,9 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
+$GLOBALS['wgAutoloadClasses']['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
 $wgAutoloadClasses['PermissionTemplates'] = __DIR__ . '/includes/PermissionTemplates.class.php';
 $wgAutoloadClasses['CheckUser'] = __DIR__ . '/includes/CheckUser.class.php';
-
 
 $wgAjaxExportList[] = 'PermissionManager::getAccessRules';
 $wgAjaxExportList[] = 'PermissionManager::getGroupAccessData';
@@ -62,3 +62,5 @@ $wgAjaxExportList[] = 'PermissionManager::deleteTemplate';
 #$wgAjaxExportList[] = 'PermissionManager::setData';
 
 $wgExtensionFunctions[] = 'PermissionManager::setupLockmodePermissions';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'PermissionManager::getSchemaUpdates';

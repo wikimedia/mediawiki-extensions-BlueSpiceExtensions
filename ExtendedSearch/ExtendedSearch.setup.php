@@ -47,6 +47,7 @@ $wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
 $wgAPIModules['feedextendedsearch'] = 'ApiFeedExtendedSearch';
 $wgAutoloadClasses['ApiFeedExtendedSearch'] = __DIR__ . '/api/ApiFeedExtendedSearch.php';
 
+$GLOBALS['wgAutoloadClasses']['ExtendedSearch'] = __DIR__ . '/ExtendedSearch.class.php';
 $wgAutoloadClasses['Apache_Solr_Service'] = __DIR__ . '/includes/SolrPhpClient/Service.php';
 $wgAutoloadClasses['Apache_Solr_Document'] = __DIR__ . '/includes/SolrPhpClient/Document.php';
 $wgAutoloadClasses['Apache_Solr_Response'] = __DIR__ . '/includes/SolrPhpClient/Response.php';
@@ -86,3 +87,5 @@ $wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/Spec
 $wgSpecialPageGroups['SpecialExtendedSearch'] = 'bluespice';
 $wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
 $wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch'; # Tell MediaWiki about the new special page and its class name
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'ExtendedSearch::getSchemaUpdates';

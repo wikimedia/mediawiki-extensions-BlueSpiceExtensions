@@ -92,7 +92,6 @@ class UEModulePDF extends BsExtensionMW {
 		//Hooks
 		$this->setHook('BSUniversalExportGetWidget');
 		$this->setHook('BSUniversalExportSpecialPageExecute');
-		$this->setHook('LoadExtensionSchemaUpdates');
 		$this->setHook('SkinTemplateOutputPageBeforeExec');
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -109,7 +108,7 @@ class UEModulePDF extends BsExtensionMW {
 			case 'DefaultTemplate':
 				$aParams = array( 'template-path' => BsConfig::get('MW::UEModulePDF::TemplatePath') );
 				$aPrefs = array(
-					'type'    => 'select',
+					'type' => 'select',
 					'options' => BsPDFTemplateProvider::getTemplatesForSelectOptions( $aParams )
 				);
 				break;
@@ -124,23 +123,22 @@ class UEModulePDF extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
 	 * @return boolean Always true to keep the hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		//TODO: Create abstraction in Core/Adapter
 		$sTmpDir = BSDATADIR.DS.'UEModulePDF';
 		if( !file_exists( $sTmpDir ) ) {
 			echo 'Directory "'.$sTmpDir.'" not found. Creating.'."\n";
 			wfMkdirParents( $sTmpDir );
-		}
-		else {
+		} else {
 			echo 'Directory "'.$sTmpDir.'" found.'."\n";
 		}
-		
+
 		$sDefaultTemplateDir = BSDATADIR.DS.'PDFTemplates';
 		if( !file_exists( $sDefaultTemplateDir ) ) {
 			echo 'Default template directory "'.$sDefaultTemplateDir.'" not found. Copying.'."\n";
 			BsFileSystemHelper::copyRecursive( __DIR__.DS.'data'.DS.'PDFTemplates', $sDefaultTemplateDir );
 		}
-		
+
 		return true;
 	}
 

@@ -141,10 +141,10 @@ class InsertCategory extends BsExtensionMW {
 			return json_encode( array(
 				'success' => false,
 				'msg' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
-				) );
+			) );
 		}
 		global $wgRequest;
-		
+
 		$sTags = $wgRequest->getVal( 'categories', '' );
 		$aTags = explode( ',', $sTags );
 
@@ -154,7 +154,7 @@ class InsertCategory extends BsExtensionMW {
 			$sText = $oArticle->getRawText();
 			$sText = preg_replace( '%(<br \/>)*\[\['.BsNamespaceHelper::getNamespaceName( NS_CATEGORY ).':(.)+?\]\]\n?%i', '', $sText );
 			$sText = trim( $sText );
-			foreach( $aTags as $sTag ) {
+			foreach ( $aTags as $sTag ) {
 				$sText .= "\n\n[[".BsNamespaceHelper::getNamespaceName( NS_CATEGORY ).":$sTag]]";
 			}
 
@@ -171,14 +171,13 @@ class InsertCategory extends BsExtensionMW {
 	 * @return Boolean Always true for it is a MediwWiki Hook callback.
 	 */
 	public function onSkinTemplateContentActions( &$aContentActions) {
-		global $wgTitle;
 		if( $this->getRequest()->getVal( 'action', 'view') != 'view' ) return true;
-		if( !$wgTitle->userCan( 'edit' ) ) return true;
+		if( !$this->getTitle()->userCan( 'edit' ) ) return true;
 
 		$links = array( 'actions' => array() );
 		$this->onSkinTemplateNavigationUniversal( null, $links );
 		$aContentActions['insert_category'] = $links['actions']['insert_category'];
-		
+
 		return true;
 	}
 	
@@ -190,7 +189,7 @@ class InsertCategory extends BsExtensionMW {
 	 */
 	public function onSkinTemplateNavigationUniversal( $skin, &$links ) {
 		if( $this->getRequest()->getVal( 'action', 'view') != 'view' ) return true;
-		if ( !$this->getTitle()->isContentPage() ) return true;
+		if ( $this->getTitle()->isSpecialPage() ) return true;
 		if ( !$this->getTitle()->userCan( 'edit' ) ) return true;
 		$links['actions']['insert_category'] = array(
 			"text" => wfMessage( 'bs-insertcategory-insert_category' )->plain(),

@@ -87,8 +87,6 @@ class ExtendedSearch extends BsExtensionMW {
 		);
 		$this->mExtensionKey = 'MW::ExtendedSearch';
 
-		$this->registerExtensionSchemaUpdate( 'bs_searchstats', __DIR__ . DS . 'db' . DS . 'ExtendedSearch.sql' );
-
 		WikiAdmin::registerModuleClass( 'ExtendedSearchAdmin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_suche_v1.png',
 			'level' => 'wikiadmin',
@@ -158,6 +156,20 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Hook-Handler for Hook 'LoadExtensionSchemaUpdates'
+	 * @param object §updater Updater
+	 * @return boolean Always true
+	 */
+	public static function getSchemaUpdates( $updater ) {
+		$updater->addExtensionTable(
+			'bs_searchstats',
+			__DIR__.DS.'db'.DS.'ExtendedSearch.sql'
+		);
+
+		return true;
 	}
 
 	/**

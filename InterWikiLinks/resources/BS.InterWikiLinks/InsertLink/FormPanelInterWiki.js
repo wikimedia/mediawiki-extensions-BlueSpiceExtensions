@@ -25,13 +25,16 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 			typeAhead: true,
 			mode: 'local',
 			triggerAction: 'all',
-			emptyText: mw.message('bs-insertlink-select_a_page').plain(),
+			allowBlank: false,
+			emptyText: mw.message('bs-interwikilink-select_a_prefix').plain(),
 			width: 600
 		});
 
 		this.tfPageTitle = Ext.create( 'Ext.form.field.Text', {
 			name: 'inputTargetUrl',
 			fieldLabel: mw.message('bs-insertlink-label_page').plain(),
+			emptyText:mw.message('bs-insertlink-select_a_page').plain(),
+			allowBlank: false,
 			width: 600
 		});
 

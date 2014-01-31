@@ -48,6 +48,7 @@ $wgResourceModules['ext.bluespice.namespaceManager'] = array(
 
 $wgExtensionMessagesFiles['NamespaceManager'] = __DIR__ . '/NamespaceManager.i18n.php';
 
+$GLOBALS['wgAutoloadClasses']['NamespaceManager'] = __DIR__ . '/NamespaceManager.class.php';
 $wgAutoloadClasses['NamespaceNuker'] = __DIR__ . '/NamespaceNuker.php';
 
 $wgAjaxExportList[] = 'NamespaceManager::getForm';
@@ -56,3 +57,5 @@ $wgAjaxExportList[] = 'NamespaceManager::addNamespace';
 $wgAjaxExportList[] = 'NamespaceManager::editNamespace';
 $wgAjaxExportList[] = 'NamespaceManager::deleteNamespace';
 $wgAjaxExportList[] = 'NamespaceManager::isNamespaceEmpty';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'NamespaceManager::getSchemaUpdates';

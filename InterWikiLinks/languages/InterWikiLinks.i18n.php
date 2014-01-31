@@ -71,6 +71,7 @@ $messages['de'] = array(
 	//JavaScript InsertLink
 	'bs-interwikilinks-insertlink-tabtitle' => 'Link in anderes Wiki',
 	'bs-interwikilinks-insertlink-labelprefix' => 'Prefix',
+	'bs-interwikilink-select_a_prefix' => 'Präfix auswählen'
 );
 
 $messages['de-formal'] = array(
@@ -145,6 +146,7 @@ $messages['en'] = array(
 	//JavaScript InsertLink
 	'bs-interwikilinks-insertlink-tabtitle' => 'Link in another wiki',
 	'bs-interwikilinks-insertlink-labelprefix' => 'Prefix',
+	'bs-interwikilink-select_a_prefix' => 'Choose prefix'
 );
 
 $messages['qqq'] = array();

@@ -21,7 +21,8 @@ Ext.define( 'BS.InsertLink.FormPanelMailTo', {
 			name: 'inputTargetMail',
 			fieldLabel: mw.message('bs-insertlink-label_mail').plain(),
 			value: '',
-			width: 600
+			width: 600,
+			allowBlank: false
 		});
 
 		this.pnlMainConf.items = [];

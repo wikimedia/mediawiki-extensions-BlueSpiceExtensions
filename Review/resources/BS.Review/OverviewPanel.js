@@ -89,7 +89,18 @@ Ext.define( 'BS.Review.OverviewPanel', {
 	},
 
 	renderOwner: function( value, metaData, record, rowIndex, colIndex, store ) {
-		return record.get('owner_real_name') || value;
+            var ownerName = mw.config.get('bsSpecialReviewUserName', false);
+            var openTag = '';
+            var closeTag = '';
+            
+            if(ownerName && ownerName === value) {
+                openTag = '<span style="color: red">';
+                closeTag = '</span>';
+            }
+            
+            var content = record.get('owner_real_name') || value;
+            
+            return openTag + content + closeTag;
 	},
 
 	renderPageTitle: function( cellValue, record ) {
@@ -103,6 +114,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 	},
 
 	renderAssessors: function( cellValue, record ) {
+                var ownerName = mw.config.get('bsSpecialReviewUserName', false);
 		var table = '<table cellpadding="5">';
 		var row = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
 		for( var i = 0; i < cellValue.length; i++ ) {
@@ -123,9 +135,19 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			if( line.revs_status == -3 ) { //Was '0' before reject
 				status = '<div class="rv_no">'+status.format( 'rv_invalid' )+'</div>';
 			}
+                        
+                        var openTag = '';
+                        var closeTag = '';
+                        var content = line.real_name || line.name;
+                        
+                        if(ownerName && ownerName === line.name) {
+                            openTag = '<span style="color: red">';
+                            closeTag = '</span>';
+                        }
+                        
 			table += row.format(
 				status,
-				line.real_name || line.name,
+				openTag + content + closeTag,
 				line.timestamp || ''
 			);
 		}

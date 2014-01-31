@@ -205,7 +205,18 @@ class UserPreferences extends BsExtensionMW {
 				foreach ( $aSettings as $oVariable ) {
 					$id = $oVariable->getKey();
 					if ( isset( $options[ $id ] ) ) {
-						$options[ $id ] = unserialize( $options[ $id ] );
+						//HINT: HW#2014012910000113
+						//In some cases (LDAP?) a value is _not_ serialized.
+						//Trying to unserialize it results in a boolean 'false'
+						//and let MW unset the property
+						//Therefore we check weater boolean 'false' really
+						//means boolean 'false' or just unserialized value,
+						//which we can use withour converting it.
+						$valPlain = unserialize( $options[ $id ] );
+						$options[ $id ]
+							= ( $valPlain === false && $options[ $id ] !== 'b:0;' )
+							? $options[ $id ] //It is already unserialized
+							: $valPlain; //it is boolean 'false'
 						BsConfig::set( $id, $options[ $id ] );
 					}
 				}

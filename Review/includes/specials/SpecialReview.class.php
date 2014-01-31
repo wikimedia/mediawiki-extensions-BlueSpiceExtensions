@@ -56,6 +56,7 @@ class SpecialReview extends BsSpecialPage {
 			$sName = empty($sName) ? $oUser->getName() : $oUser->getRealName().' ('.$oUser->getName().')';
 			$oOutputPage->setPagetitle( wfMessage( 'bs-review-specialreview-header', 1, $sName )->parse() );
 			$oOutputPage->addJsConfigVars( 'bsSpecialReviewUserID', $oUser->getId() );
+			$oOutputPage->addJsConfigVars( 'bsSpecialReviewUserName', $oUser->getName() );
 		} else {
 			$oOutputPage->setPagetitle( wfMessage( 'bs-review-specialreview-header', 0)->parse() );
 		}

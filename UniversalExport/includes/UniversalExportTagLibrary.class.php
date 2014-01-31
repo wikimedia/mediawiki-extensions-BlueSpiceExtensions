@@ -72,7 +72,7 @@ class BsUniversalExportTagLibrary {
 		$aOut = array();
 
 		// TODO RBV (08.02.11 11:34): Use CSS class for styling
-		$aOut[] = '<div class="bs-universalexport-exportexclude" style="background-color:#F5F5F5" title="'.wfMessage( 'bs-universalexport-tag-exclude-text' )->plain().'">';
+		$aOut[] = '<div class="bs-universalexport-exportexclude" title="'.wfMessage( 'bs-universalexport-tag-exclude-text' )->plain().'">';
 		$aOut[] = $oParser->recursiveTagParse( $sContent );
 		$aOut[] = '</div>';
 

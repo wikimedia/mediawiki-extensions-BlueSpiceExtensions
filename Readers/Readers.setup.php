@@ -5,6 +5,7 @@ BsExtensionManager::registerExtension('Readers', BsRUNLEVEL::FULL|BsRUNLEVEL::RE
 $wgExtensionMessagesFiles['Readers'] = __DIR__ . '/languages/Readers.i18n.php';
 $wgExtensionMessagesFiles['ReadersAlias'] = __DIR__.'/languages/SpecialReaders.alias.php';
 
+$GLOBALS['wgAutoloadClasses']['Readers'] = __DIR__ . '/Readers.class.php';
 $wgAutoloadClasses['ViewReaders'] = __DIR__ . '/views/view.Readers.php';
 $wgAutoloadClasses['SpecialReaders']  = __DIR__.'/includes/specials/SpecialReaders.class.php';
 
@@ -14,6 +15,8 @@ $wgSpecialPageGroups['Readers'] = 'bluespice';
 
 $wgAjaxExportList[] = 'Readers::getUsers';
 $wgAjaxExportList[] = 'Readers::getData';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'Readers::getSchemaUpdates';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP.'/extensions/BlueSpiceExtensions/Readers/resources',

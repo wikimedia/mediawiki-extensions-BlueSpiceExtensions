@@ -480,7 +480,6 @@ class ExtendedSearchBase {
 	 */
 	public function logSearch( $term, $iNumFound, $scope, $files ) {
 		if ( !BsConfig::get( 'MW::ExtendedSearch::Logging' ) ) return false;
-		global $wgDBtype;
 
 		$oDbw = wfGetDB( DB_MASTER );
 

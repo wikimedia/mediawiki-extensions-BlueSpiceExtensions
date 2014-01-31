@@ -32,7 +32,9 @@
  */
 
 class ResponsibleEditors extends BsExtensionMW {
+
 	protected static $aResponsibleEditorIdsByArticleId = array();
+
 	protected static $aResponsibleEditorsByArticleId = array();
 
 	public function __construct() {
@@ -82,8 +84,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'ArticleSaveComplete' );
 		$this->setHook( 'TitleMoveComplete' );
-		$this->setHook( 'LoadExtensionSchemaUpdates' );
-		
+
 		$this->setHook( 'BSBookshelfManagerGetBookDataRow' );
 		$this->setHook( 'BSUEModulePDFcollectMetaData' );
 		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
@@ -93,11 +94,11 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->setHook( 'BSPageAccessAddAdditionalAccessGroups', 'onPageAccessAddAdditionalAccessGroups' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
-		
+
 		// Echo extension hooks
 		$this->setHook( 'BeforeCreateEchoEvent' );
 		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
-		
+
 		$this->setHook( 'SuperList::getFieldDefinitions', 'onSuperListGetFieldDefinitions' );
 		$this->setHook( 'SuperList::getColumnDefinitions', 'onSuperListGetColumnDefinitions' );
 		$this->setHook( 'SuperList::queryPagesWithFilter', 'onSuperListQueryPagesWithFilter' );
@@ -105,7 +106,7 @@ class ResponsibleEditors extends BsExtensionMW {
 
 		$this->mCore->registerPermission( 'responsibleeditors-changeresponsibility' );
 		$this->mCore->registerPermission( 'responsibleeditors-viewspecialpage' );
-		$this->mCore->registerPermission( 'responsibleeditors-takeresponsibility', array('user') );
+		$this->mCore->registerPermission( 'responsibleeditors-takeresponsibility', array( 'user' ) );
 		wfProfileOut('BS::' . __METHOD__);
 	}
 
@@ -163,21 +164,21 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
 	 * @return boolean Always true to keep the hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype;
 		switch( $wgDBtype ) {
-			case 'postgres': $updater->addExtensionTable( 
-					'bs_responsible_editors', 
+			case 'postgres': $updater->addExtensionTable(
+					'bs_responsible_editors',
 					__DIR__.'/db/ResponsibleEditors.pg.sql'
 				);
 				break;
-			case 'oracle': $updater->addExtensionTable( 
-					'bs_responsible_editors', 
+			case 'oracle': $updater->addExtensionTable(
+					'bs_responsible_editors',
 					__DIR__.'/db/ResponsibleEditors.oci.sql'
 				);
 				break;
-			default: $updater->addExtensionTable( 
-					'bs_responsible_editors', 
+			default: $updater->addExtensionTable(
+					'bs_responsible_editors',
 					__DIR__.'/db/ResponsibleEditors.sql'
 				);
 		}
@@ -197,30 +198,29 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @param MediaWiki $mediaWiki
 	 * @return boolean Always true
 	 */
-	public function onBeforeInitialize( &$title, $article, &$output, &$user, $request, $mediaWiki ) {
-		if( !$title->exists() ) return true;
+	public function onBeforeInitialize( &$oTitle, $article, &$output, &$oUser, $request, $mediaWiki ) {
+		if ( !$oTitle->exists() ) return true;
 
 		$aActivatedNamespaces = BsConfig::get('MW::ResponsibleEditors::ActivatedNamespaces');
-		if( !is_array( $aActivatedNamespaces ) ) return true;
-		if( !in_array($title->getNamespace(), $aActivatedNamespaces) ) return true;
-		
-		global $wgUser;
-		
-		$iArticleID = $title->getArticleID();
+		if ( !is_array( $aActivatedNamespaces ) ) return true;
+		if ( !in_array($oTitle->getNamespace(), $aActivatedNamespaces) ) return true;
+
+		$iArticleID = $oTitle->getArticleID();
 		$aResponsibleEditorsIDs = $this->getResponsibleEditorIdsByArticleId( $iArticleID );
-		if( !in_array($wgUser->getId(), $aResponsibleEditorsIDs) ) return true;
-		
-		$aAvailablePermissions = BsConfig::get('MW::ResponsibleEditors::AutoPermissions');
-		if( empty($aAvailablePermissions) ) return true;
-		
-		$this->mCore->addTemporaryGroupToUser( $wgUser, 'tmprespeditors', $aAvailablePermissions );
+
+		if ( !in_array( $oUser->getId(), $aResponsibleEditorsIDs ) ) return true;
+
+		$aAvailablePermissions = BsConfig::get( 'MW::ResponsibleEditors::AutoPermissions' );
+		if ( empty( $aAvailablePermissions ) ) return true;
+
+		BsGroupHelper::addTemporaryGroupToUser( $oUser, 'tmprespeditors', $aAvailablePermissions );
 		return true;
 	}
-	
+
 	public function onBSUEModulePDFcollectMetaData($oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta) {
 		$aEditors = $this->getResponsibleEditorIdsByArticleId($oTitle->getArticleId());
 		$aEditorNames = array();
-		foreach ($aEditors as $iEditorId) {
+		foreach ( $aEditors as $iEditorId ) {
 			$aEditorNames[] = $this->mCore->getUserDisplayName(User::newFromId($iEditorId));
 		}
 		$aMeta['responsibleeditors'] = implode(', ', $aEditorNames);
@@ -230,7 +230,7 @@ class ResponsibleEditors extends BsExtensionMW {
 	public function onBSBookshelfManagerGetBookDataRow($oBookTitle, $oBookRow) {
 		$oBookRow->editors = array();
 		$aEditors = $this->getResponsibleEditorIdsByArticleId($oBookRow->page_id);
-		foreach ($aEditors as $iEditorId) {
+		foreach ( $aEditors as $iEditorId ) {
 			$oBookRow->editors[] = array(
 				'id' => $iEditorId,
 				'name' => $this->mCore->getUserDisplayName(User::newFromId($iEditorId))
@@ -336,33 +336,26 @@ class ResponsibleEditors extends BsExtensionMW {
 	public function onSkinTemplateNavigationUniversal($oSkinTemplate, &$links) {
 		//Check if menu entry has to be displayed
 		$oCurrentUser = $this->getUser();
-		if ($oCurrentUser->isLoggedIn() === false)
-			return true;
+		if ( $oCurrentUser->isLoggedIn() === false ) return true;
 
 		$oCurrentTitle = $this->getTitle();
-		if ($oCurrentTitle->exists() === false)
-			return true;
-		if ($oCurrentTitle->getNamespace() === NS_SPECIAL)
-			return true;
+		if ( $oCurrentTitle->exists() === false ) return true;
+		if ( $oCurrentTitle->getNamespace() === NS_SPECIAL ) return true;
 
-		$aActivatedNamespaces = BsConfig::get('MW::ResponsibleEditors::ActivatedNamespaces');
-		if (is_array($aActivatedNamespaces)) {
-			if (!in_array($oCurrentTitle->getNamespace(), $aActivatedNamespaces))
-				return true;
+		$aActivatedNamespaces = BsConfig::get( 'MW::ResponsibleEditors::ActivatedNamespaces' );
+		if ( is_array( $aActivatedNamespaces ) ) {
+			if ( !in_array( $oCurrentTitle->getNamespace(), $aActivatedNamespaces ) ) return true;
+		} else {
+			if ( $oCurrentTitle->getNamespace() == $aActivatedNamespaces ) return true;
 		}
-		else {
-			if ($oCurrentTitle->getNamespace() == $aActivatedNamespaces)
-				return true;
-		}
-		if ($this->userIsAllowedToChangeResponsibility($oCurrentUser, $oCurrentTitle) === false)
-			return true;
+		if ( $this->userIsAllowedToChangeResponsibility( $oCurrentUser, $oCurrentTitle ) === false ) return true;
 
 		$links['actions']['respeditors'] = array(
 			'text'  => wfMessage( 'bs-responsibleeditors-contentactions-label' )->plain(),
 			'href'  => '#',
 			'class' => false
 		);
-		
+
 		return true;
 	}
 

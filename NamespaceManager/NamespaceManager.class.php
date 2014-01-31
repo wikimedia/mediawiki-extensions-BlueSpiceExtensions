@@ -76,16 +76,6 @@ class NamespaceManager extends BsExtensionMW {
 	 */
 	public function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		global $wgDBtype;
-		if ( $wgDBtype == 'oracle' ) {
-			$this->registerExtensionSchemaUpdate( 'bs_ns_bak_page', __DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_page.sql' );
-			$this->registerExtensionSchemaUpdate( 'bs_ns_bak_revision', __DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_revision.sql' );
-			$this->registerExtensionSchemaUpdate( 'bs_ns_bak_text', __DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_text.sql' );
-		} else {
-			$this->registerExtensionSchemaUpdate( 'bs_namespacemanager_backup_page', __DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_page.sql' );
-			$this->registerExtensionSchemaUpdate( 'bs_namespacemanager_backup_revision', __DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_revision.sql' );
-			$this->registerExtensionSchemaUpdate( 'bs_namespacemanager_backup_text', __DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_text.sql' );
-		}
 
 		BsConfig::registerVar( 'MW::NamespaceManager::NsOffset', 2999, BsConfig::TYPE_INT,  BsConfig::LEVEL_PRIVATE );
 
@@ -93,8 +83,7 @@ class NamespaceManager extends BsExtensionMW {
 		$this->setHook( 'NamespaceManager::getNamespaceData', 'onGetNamespaceData', true );
 		$this->setHook( 'NamespaceManager::editNamespace', 'onEditNamespace', true );
 		$this->setHook( 'NamespaceManager::writeNamespaceConfiguration', 'onWriteNamespaceConfiguration', true );
-		$this->setHook( 'LoadExtensionSchemaUpdates', 'onLoadExtensionSchemaUpdates', true );
-		
+
 		//CR, RBV: This is suposed to return all constants! Not just system NS.
 		//At the moment the implementation relies on an hardcoded mapping, 
 		//which is bad. We need to change this and make it more generic!
@@ -110,44 +99,72 @@ class NamespaceManager extends BsExtensionMW {
 	* @param DatabaseUpdater $du
 	* @return boolean 
 	*/
-	public function onLoadExtensionSchemaUpdates( $du ) {
-		parent::onLoadExtensionSchemaUpdates( $du );
+	public static function getSchemaUpdates( $updater ) {
 		global $wgExtPGNewFields, $wgDBtype;
 		$dir = __DIR__.DS.'resources'.DS;
 
+		if ( $wgDBtype == 'oracle' ) {
+			$updater->addExtensionTable(
+				'bs_ns_bak_page',
+				__DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_page.sql'
+			);
+			$updater->addExtensionTable(
+				'bs_ns_bak_revision',
+				__DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_revision.sql'
+			);
+			$updater->addExtensionTable(
+				'bs_ns_bak_text',
+				__DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_text.sql'
+			);
+		} else {
+			$updater->addExtensionTable(
+				'bs_namespacemanager_backup_page',
+				__DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_page.sql'
+			);
+			$updater->addExtensionTable(
+				'bs_namespacemanager_backup_revision',
+				__DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_revision.sql'
+			);
+			$updater->addExtensionTable(
+				'bs_namespacemanager_backup_text',
+				__DIR__ . DS . 'resources' . DS . 'bs_namespacemanager_backup_text.sql'
+			);
+		}
+
 		if ( $wgDBtype == 'postgres' ) {
-			$wgExtPGNewFields[] = array( 
-				'bs_namespacemanager_backup_page', 
-				'page_content_model', 
+			$wgExtPGNewFields[] = array(
+				'bs_namespacemanager_backup_page',
+				'page_content_model',
 				$dir . 'bs_namespacemanager_backup_page.patch.pg.sql'
 			);
-			$wgExtPGNewFields[] = array( 
-				'bs_namespacemanager_backup_revision', 
-				'rev_sha1', 
+			$wgExtPGNewFields[] = array(
+				'bs_namespacemanager_backup_revision',
+				'rev_sha1',
 				$dir . 'bs_namespacemanager_backup_revision.patch.rev_sha1.pg.sql'
 			);
 			$wgExtPGNewFields[] = array(
 				'bs_namespacemanager_backup_revision',
-				'rev_content_model', 
+				'rev_content_model',
 				$dir . 'bs_namespacemanager_backup_revision.patch2.pg.sql'
 			);
 		} else {
-			$du->addExtensionField( 
-				'bs_namespacemanager_backup_page', 
+			$updater->addExtensionField(
+				'bs_namespacemanager_backup_page',
 				'page_content_model', 
 				$dir . 'bs_namespacemanager_backup_page.patch.sql'
 			);
-			$du->addExtensionField( 
+			$updater->addExtensionField(
 				'bs_namespacemanager_backup_revision',
-				'rev_sha1', 
+				'rev_sha1',
 				$dir . 'bs_namespacemanager_backup_revision.patch.rev_sha1.sql'
 			);
-			$du->addExtensionField( 
-				'bs_namespacemanager_backup_revision', 
-				'rev_content_model', 
+			$updater->addExtensionField(
+				'bs_namespacemanager_backup_revision',
+				'rev_content_model',
 				$dir . 'bs_namespacemanager_backup_revision.patch2.sql'
 			);
 		}
+
 		return true;
 	}
 

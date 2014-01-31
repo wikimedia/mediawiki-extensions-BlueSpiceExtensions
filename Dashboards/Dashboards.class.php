@@ -84,7 +84,6 @@ class Dashboards extends BsExtensionMW {
 
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'ParserFirstCallInit' );
-		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'PersonalUrls' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
@@ -134,7 +133,7 @@ class Dashboards extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater
 	 * @return boolean Always true to keep Hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
 			'bs_dashboards_configs',
 			__DIR__ .'/db/mysql/bs_dashboards_configs.sql'

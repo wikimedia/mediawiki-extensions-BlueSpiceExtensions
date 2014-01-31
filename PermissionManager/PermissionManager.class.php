@@ -84,18 +84,30 @@ class PermissionManager extends BsExtensionMW {
 				)
 		);
 
-		$this->registerExtensionSchemaUpdate('bs_permission_templates', __DIR__ . DS . 'db/PermissionManager.sql');
-
 		wfProfileOut('BS::' . __METHOD__);
 	}
 
 	protected function initExt() {
-		BsConfig::registerVar('MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-lockmode', 'toggle');
-		BsConfig::registerVar('MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-pm-pref-skipSysNs', 'toggle');
-		BsConfig::registerVar('MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL | BsConfig::RENDER_AS_JAVASCRIPT, 'bs-pm-pref-enableRealityCheck', 'toggle');
+		BsConfig::registerVar('MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pm-pref-lockmode', 'toggle');
+		BsConfig::registerVar('MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pm-pref-skipSysNs', 'toggle');
+		BsConfig::registerVar('MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-pm-pref-enableRealityCheck', 'toggle');
 
 		$this->setHook('BSWikiAdminUserManagerBeforeUserListSend');
 		$this->setHook('BSGroupManagerGroupNameChanged');
+	}
+
+	/**
+	 * Hook-Handler for Hook 'LoadExtensionSchemaUpdates'
+	 * @param object §updater Updater
+	 * @return boolean Always true
+	 */
+	public static function getSchemaUpdates( $updater ) {
+		$updater->addExtensionTable(
+			'bs_permission_templates',
+			__DIR__.DS .'db'.DS.'PermissionManager.sql'
+		);
+
+		return true;
 	}
 
 	public function onBSGroupManagerGroupNameChanged($sGroup, $sNewGroup, &$result) {

@@ -260,7 +260,6 @@ class BsReviewProcess {
 	function currentStep($uid) {
 		foreach ($this->steps as $step) {
 			$bResult = null;
-			error_log(var_export($this->_aInjections, true));
 			foreach ($this->_aInjections as $oInjection) {
 				if ($oInjection->currentStepIsActive($step, $uid) && $bResult !== false) {
 					$bResult = true;

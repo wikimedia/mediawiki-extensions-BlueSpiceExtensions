@@ -69,7 +69,6 @@ class PageTemplates extends BsExtensionMW {
 										)
 		);
 		$this->mExtensionKey = 'MW::PageTemplates';
-		$this->registerExtensionSchemaUpdate( 'bs_pagetemplate', __DIR__.DS.'PageTemplates.sql' );
 
 		WikiAdmin::registerModuleClass( 'PageTemplatesAdmin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_templates_v1.png',
@@ -92,15 +91,29 @@ class PageTemplates extends BsExtensionMW {
 		$this->setHook( 'ParserFirstCallInit' );
 
 		// Show pages with similar titles when creating pages
-		BsConfig::registerVar( 'MW::PageTemplates::ShowSimilar',             false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL,        'bs-pagetemplates-ShowSimilar' );
+		BsConfig::registerVar( 'MW::PageTemplates::ShowSimilar', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL,        'bs-pagetemplates-ShowSimilar' );
 		// Do not use page template mechanism for these pages
-		BsConfig::registerVar( 'MW::PageTemplates::ExcludeNs',               array( -2,-1,6,7,8,9,10,11,14,15 ),
-																					BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagetemplates-ExcludeNs', 'multiselectex' );
+		BsConfig::registerVar( 'MW::PageTemplates::ExcludeNs', array( -2,-1,6,7,8,9,10,11,14,15 ),
+								BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagetemplates-ExcludeNs', 'multiselectex' );
 		// Force page to be created in target namespace
-		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace',          false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-ForceNamespace', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-ForceNamespace', 'toggle' );
 		// Hide template if page is not in target namespace
-		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs',     true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-HideIfNotInTargetNs', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-HideIfNotInTargetNs', 'toggle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Hook-Handler for Hook 'LoadExtensionSchemaUpdates'
+	 * @param object §updater Updater
+	 * @return boolean Always true
+	 */
+	public static function getSchemaUpdates( $updater ) {
+		$updater->addExtensionTable(
+			'bs_pagetemplate',
+			__DIR__.DS.'PageTemplates.sql'
+		);
+
+		return true;
 	}
 
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
@@ -252,8 +265,8 @@ class PageTemplates extends BsExtensionMW {
 					$sLink = BsLinkProvider::makeLink(
 						$oTargetNsTitle,
 						$row->pt_label,
-						$aCostumAttr = array(),
-						array( 'preload' => $oTitle->getPrefixedText() )
+						array(),
+						array( 'preload' => $oNsTitle->getPrefixedText() )
 					);
 					$aOutNs[$sNamespaceName]['link'] .= '<li>' . $sLink;
 
@@ -265,7 +278,7 @@ class PageTemplates extends BsExtensionMW {
 					$sLink = BsLinkProvider::makeLink(
 						$oTitle,
 						$row->pt_label,
-						$aCostumAttr = array(),
+						array(),
 						array( 'preload' => $oNsTitle->getPrefixedText() )
 					);
 					$sOutAll .= '<li>' . $sLink;

@@ -32,6 +32,9 @@ $wgAjaxExportList[] = 'ShoutBox::getShouts';
 $wgAjaxExportList[] = 'ShoutBox::insertShout';
 $wgAjaxExportList[] = 'ShoutBox::archiveShout';
 
-$wgAutoloadClasses['ViewShoutBox']            = __DIR__ . '/views/view.ShoutBox.php';
+$GLOBALS['wgAutoloadClasses']['ShoutBox'] = __DIR__ . '/ShoutBox.class.php';
+$wgAutoloadClasses['ViewShoutBox'] = __DIR__ . '/views/view.ShoutBox.php';
 $wgAutoloadClasses['ViewShoutBoxMessageList'] = __DIR__ . '/views/view.ShoutBoxMessageList.php';
-$wgAutoloadClasses['ViewShoutBoxMessage']     = __DIR__ . '/views/view.ShoutBoxMessage.php';
+$wgAutoloadClasses['ViewShoutBoxMessage'] = __DIR__ . '/views/view.ShoutBoxMessage.php';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'ShoutBox::getSchemaUpdates';

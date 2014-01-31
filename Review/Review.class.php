@@ -105,7 +105,6 @@ class Review extends BsExtensionMW {
 		$this->setHook('userCan', 'checkReviewPermissions');
 		$this->setHook('BSBlueSpiceSkinUserBarBeforeLogout', 'makeUserBar');
 		$this->setHook('ArticleDeleteComplete');
-		$this->setHook('LoadExtensionSchemaUpdates');
 		$this->setHook('BSFlaggedRevsConnectorCollectFlagInfo');
 		$this->setHook('BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars');
 		$this->setHook('BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars');
@@ -138,63 +137,100 @@ class Review extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
 	 * @return boolean Always true to keep the hook running
 	 */
-	public function onLoadExtensionSchemaUpdates($updater) {
+	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtModifiedFields, $wgExtNewIndexes, $wgExtNewFields;
 		$sDir = __DIR__ . DS;
 
 		if ($wgDBtype == 'mysql') {
-			$wgExtNewTables[] = array('bs_review', $sDir . 'db/mysql/review.sql');
+			$updater->addExtensionTable(
+				'bs_review',
+				$sDir . 'db/mysql/review.sql'
+			);
 
 			$dbr = wfGetDB(DB_SLAVE);
 
 			if ($dbr->tableExists('bs_review')) {
 				if (!$dbr->fieldExists('bs_review', 'rev_sequential')) {
-					$wgExtNewFields[] = array('bs_review', 'rev_sequential', $sDir . 'db/mysql/review.patch.rev_sequential.sql');
+					$updater->addExtensionField(
+						'bs_review',
+						'rev_sequential',
+						$sDir . 'db/mysql/review.patch.rev_sequential.sql'
+					);
 				}
 				if (!$dbr->fieldExists('bs_review', 'rev_abortable')) {
-					$wgExtNewFields[] = array('bs_review', 'rev_abortable', $sDir . 'db/mysql/review.patch.rev_abortable.sql');
+					$updater->addExtensionField(
+						'bs_review',
+						'rev_abortable',
+						$sDir . 'db/mysql/review.patch.rev_abortable.sql'
+					);
 				}
 			}
 			if ($dbr->tableExists('bs_review_steps') && !$dbr->fieldExists('bs_review_steps', 'delegate_to')) {
-				$wgExtNewFields[] = array('bs_review_steps', 'revs_delegate_to', $sDir . 'db/mysql/review.patch.revs_delegate_to.sql');
+				$updater->addExtensionField(
+					'bs_review_steps',
+					'revs_delegate_to',
+					$sDir . 'db/mysql/review.patch.revs_delegate_to.sql'
+				);
 			}
 			if ($dbr->tableExists('bs_review')) {
 				if (!$dbr->fieldExists('bs_review_templates', 'revt_editable')) {
-					$wgExtNewFields[] = array('bs_review_templates', 'revt_editable', $sDir . 'db/mysql/review_templates.patch.revt_editable.sql');
+					$updater->addExtensionField(
+						'bs_review_templates',
+						'revt_editable',
+						$sDir . 'db/mysql/review_templates.patch.revt_editable.sql'
+					);
 				}
 				if (!$dbr->fieldExists('bs_review_templates', 'revt_sequential')) {
-					$wgExtNewFields[] = array('bs_review_templates', 'revt_sequential', $sDir . 'db/mysql/review_templates.patch.revt_sequential.sql');
+					$updater->addExtensionField(
+						'bs_review_templates',
+						'revt_sequential',
+						$sDir . 'db/mysql/review_templates.patch.revt_sequential.sql'
+					);
 				}
 				if (!$dbr->fieldExists('bs_review_templates', 'revt_abortable')) {
-					$wgExtNewFields[] = array('bs_review_templates', 'revt_abortable', $sDir . 'db/mysql/review_templates.patch.revt_abortable.sql');
+					$updater->addExtensionField(
+						'bs_review_templates',
+						'revt_abortable',
+						$sDir . 'db/mysql/review_templates.patch.revt_abortable.sql'
+					);
 				}
 			}
 
-			$wgExtModifiedFields[] = array('bs_review', 'id', $sDir . 'db/mysql/review.patch.id.sql');
-			$wgExtModifiedFields[] = array('bs_review', 'pid', $sDir . 'db/mysql/review.patch.pid.sql');
-			$wgExtModifiedFields[] = array('bs_review', 'editable', $sDir . 'db/mysql/review.patch.editable.sql');
-			$wgExtModifiedFields[] = array('bs_review', 'mode', $sDir . 'db/mysql/review.patch.mode.sql');
-			$wgExtModifiedFields[] = array('bs_review', 'rev_mode', $sDir . 'db/mysql/review.patch.rev_mode.sql');
-			$wgExtModifiedFields[] = array('bs_review', 'startdate', $sDir . 'db/mysql/review.patch.startdate.sql');
-			$wgExtModifiedFields[] = array('bs_review', 'enddate', $sDir . 'db/mysql/review.patch.enddate.sql');
-			$wgExtModifiedFields[] = array('bs_review', 'owner', $sDir . 'db/mysql/review.patch.owner.sql');
+			$updater->modifyExtensionField('bs_review', 'id', $sDir . 'db/mysql/review.patch.id.sql');
+			$updater->modifyExtensionField('bs_review', 'pid', $sDir . 'db/mysql/review.patch.pid.sql');
+			$updater->modifyExtensionField('bs_review', 'editable', $sDir . 'db/mysql/review.patch.editable.sql');
+			$updater->modifyExtensionField('bs_review', 'mode', $sDir . 'db/mysql/review.patch.mode.sql');
+			$updater->modifyExtensionField('bs_review', 'rev_mode', $sDir . 'db/mysql/review.patch.rev_mode.sql');
+			$updater->modifyExtensionField('bs_review', 'startdate', $sDir . 'db/mysql/review.patch.startdate.sql');
+			$updater->modifyExtensionField('bs_review', 'enddate', $sDir . 'db/mysql/review.patch.enddate.sql');
+			$updater->modifyExtensionField('bs_review', 'owner', $sDir . 'db/mysql/review.patch.owner.sql');
 
-			$wgExtModifiedFields[] = array('bs_review_steps', 'id', $sDir . 'db/mysql/review_steps.patch.id.sql');
-			$wgExtModifiedFields[] = array('bs_review_steps', 'review_id', $sDir . 'db/mysql/review_steps.patch.review_id.sql');
-			$wgExtModifiedFields[] = array('bs_review_steps', 'user_id', $sDir . 'db/mysql/review_steps.patch.user_id.sql');
-			$wgExtModifiedFields[] = array('bs_review_steps', 'status', $sDir . 'db/mysql/review_steps.patch.status.sql');
-			$wgExtModifiedFields[] = array('bs_review_steps', 'sort_id', $sDir . 'db/mysql/review_steps.patch.sort_id.sql');
-			$wgExtModifiedFields[] = array('bs_review_steps', 'comment', $sDir . 'db/mysql/review_steps.patch.comment.sql');
-			$wgExtModifiedFields[] = array('bs_review_steps', 'delegate_to', $sDir . 'db/mysql/review_steps.patch.delegate_to.sql');
-			$wgExtModifiedFields[] = array('bs_review_steps', 'timestamp', $sDir . 'db/mysql/review_steps.patch.timestamp.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'id', $sDir . 'db/mysql/review_steps.patch.id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'review_id', $sDir . 'db/mysql/review_steps.patch.review_id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'user_id', $sDir . 'db/mysql/review_steps.patch.user_id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'status', $sDir . 'db/mysql/review_steps.patch.status.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'sort_id', $sDir . 'db/mysql/review_steps.patch.sort_id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'comment', $sDir . 'db/mysql/review_steps.patch.comment.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'delegate_to', $sDir . 'db/mysql/review_steps.patch.delegate_to.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'timestamp', $sDir . 'db/mysql/review_steps.patch.timestamp.sql');
 
-			$wgExtModifiedFields[] = array('bs_review_templates', 'id', $sDir . 'db/mysql/review_templates.patch.id.sql');
-			$wgExtModifiedFields[] = array('bs_review_templates', 'name', $sDir . 'db/mysql/review_templates.patch.name.sql');
-			$wgExtModifiedFields[] = array('bs_review_templates', 'owner', $sDir . 'db/mysql/review_templates.patch.owner.sql');
-			$wgExtModifiedFields[] = array('bs_review_templates', 'user', $sDir . 'db/mysql/review_templates.patch.user.sql');
-			$wgExtModifiedFields[] = array('bs_review_templates', 'mode', $sDir . 'db/mysql/review_templates.patch.mode.sql');
-			$wgExtModifiedFields[] = array('bs_review_templates', 'revt_mode', $sDir . 'db/mysql/review_templates.patch.revt_mode.sql');
-			$wgExtModifiedFields[] = array('bs_review_templates', 'public', $sDir . 'db/mysql/review_templates.patch.public.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'id', $sDir . 'db/mysql/review_steps.patch.id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'review_id', $sDir . 'db/mysql/review_steps.patch.review_id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'user_id', $sDir . 'db/mysql/review_steps.patch.user_id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'status', $sDir . 'db/mysql/review_steps.patch.status.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'sort_id', $sDir . 'db/mysql/review_steps.patch.sort_id.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'comment', $sDir . 'db/mysql/review_steps.patch.comment.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'delegate_to', $sDir . 'db/mysql/review_steps.patch.delegate_to.sql');
+			$updater->modifyExtensionField('bs_review_steps', 'timestamp', $sDir . 'db/mysql/review_steps.patch.timestamp.sql');
+
+			$updater->modifyExtensionField('bs_review_templates', 'id', $sDir . 'db/mysql/review_templates.patch.id.sql');
+			$updater->modifyExtensionField('bs_review_templates', 'name', $sDir . 'db/mysql/review_templates.patch.name.sql');
+			$updater->modifyExtensionField('bs_review_templates', 'owner', $sDir . 'db/mysql/review_templates.patch.owner.sql');
+			$updater->modifyExtensionField('bs_review_templates', 'user', $sDir . 'db/mysql/review_templates.patch.user.sql');
+			$updater->modifyExtensionField('bs_review_templates', 'mode', $sDir . 'db/mysql/review_templates.patch.mode.sql');
+			$updater->modifyExtensionField('bs_review_templates', 'revt_mode', $sDir . 'db/mysql/review_templates.patch.revt_mode.sql');
+			$updater->modifyExtensionField('bs_review_templates', 'revt_mode', $sDir . 'db/mysql/review_templates.patch.revt_mode.sql');
+			$updater->modifyExtensionField('bs_review_templates', 'public', $sDir . 'db/mysql/review_templates.patch.public.sql');
 		} elseif ($wgDBtype == 'postgres') {
 			$wgExtNewTables[] = array('bs_review', $sDir . 'db/postgres/review.pg.sql');
 
@@ -1088,7 +1124,7 @@ class Review extends BsExtensionMW {
 		$oUserBarElementView->setLink(SpecialPage::getTitleFor('Review')->getFullURL() . '/' . $oUser->getName());
 		$oUserBarElementView->setIcon($wgScriptPath . '/extensions/BlueSpiceExtensions/Review/resources/images/bs-icon-review.png');
 
-		$oUserBarElementView->setText($iCountReviews + $iCountFinishedReviews);
+		$oUserBarElementView->setText($iCountReviews ."|". $iCountFinishedReviews);
 
 		$aViews[] = $oUserBarElementView;
 
@@ -1206,6 +1242,8 @@ class Review extends BsExtensionMW {
 			if ($oReviewProcess->isFinished() == 'status') {
 				if (!$oUser->isAllowed('review')) {
 					self::sendNotification('finish', $oOwner, array($sTitleText), $sTitleUrl);
+				} else {
+					self::sendNotification('finish-and-review', $oOwner, array($sTitleText), $sTitleUrl);
 				}
 			}
 		} else {
