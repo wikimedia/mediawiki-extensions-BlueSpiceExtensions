@@ -288,8 +288,6 @@ class StateBar extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if ( BsConfig::get( 'MW::StateBar::Show' ) === false ) return true;
-		//make sure to use wgTitle to get possible redirect as early as possible
-		//also prevents from get wrong data in redirect redirect
 		$oTitle = $this->checkContext( $this->getTitle() );
 		if ( is_null( $oTitle ) ) return true;
 

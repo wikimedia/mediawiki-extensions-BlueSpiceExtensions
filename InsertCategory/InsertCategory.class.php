@@ -166,7 +166,6 @@ class InsertCategory extends BsExtensionMW {
 
 	/**
 	 * MediaWiki ContentActions hook. For more information please refer to <mediawiki>/docs/hooks.txt
-	 * @global Title $wgTitle
 	 * @param Array $aContentActions This array is used within the skin to render the content actions menu
 	 * @return Boolean Always true for it is a MediwWiki Hook callback.
 	 */

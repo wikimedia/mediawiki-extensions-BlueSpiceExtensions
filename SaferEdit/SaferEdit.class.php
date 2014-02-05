@@ -200,7 +200,7 @@ class SaferEdit extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running 
 	 */
 	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
-		$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle();
+		$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle( $oTitle );
 		if ( empty( $aIntermediateEdits ) ) return true;
 
 		foreach ( $aIntermediateEdits as $oEdit ) {
@@ -220,17 +220,11 @@ class SaferEdit extends BsExtensionMW {
 
 	/**
 	 * Loads intermediate edits
-	 * @global Title $wgTitle
 	 * @param Title $oTitle
 	 * @return array
 	 */
-	public function getIntermediateEditsForCurrentTitle( $oTitle = null ) {
+	public function getIntermediateEditsForCurrentTitle( $oTitle ) {
 		if( is_array($this->aIntermediateEditsForCurrentTitle)) return $this->aIntermediateEditsForCurrentTitle;
-
-		if( is_null($oTitle) ) {
-			global $wgTitle;
-			$oTitle = $wgTitle;
-		}
 
 		if( is_null($oTitle) || !$oTitle->exists() ) {
 			$this->aIntermediateEditsForCurrentTitle = array();
