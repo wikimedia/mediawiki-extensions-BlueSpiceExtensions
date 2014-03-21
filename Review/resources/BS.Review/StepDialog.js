@@ -5,7 +5,9 @@ Ext.define( 'BS.Review.StepDialog', {
 
 	afterInitComponent: function() {
 		this.setTitle( mw.message('bs-review-titleAddReviewer' ).plain() );
-		this.cbUsers = Ext.create( 'BS.form.UserCombo' );
+		this.cbUsers = Ext.create( 'BS.form.UserCombo', {
+			anyMatch: true
+		} );
 		this.cbUsers.getStore().sort('display_name', 'asc');
 
 		this.tfComment = Ext.create( 'Ext.form.TextField', {

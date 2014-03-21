@@ -133,10 +133,13 @@ class PageTemplates extends BsExtensionMW {
 	}
 
 	/**
-	 * Automatically modifies "noarticletext" message. Otherwise, you would have to modify MediaWiki:noarticletext in the wiki, wich causes installation overhead.
+	 * Automatically modifies "noarticletext" message. Otherwise, you would 
+	 * have to modify MediaWiki:noarticletext in the wiki, wich causes 
+	 * installation overhead.
 	 * @param string $sKey The message key. Note that it comes ucfirst and can be an i18n version (e.g. Noarticletext/de-formal)
 	 * @param string $sMessage This variable is called by reference and modified.
 	 * @return bool Success marker for MediaWiki Hooks. The message itself is returned in referenced variable $sMessage. Note that it cannot contain pure HTML.
+	 * @throws PermissionsError
 	 */
 	public function onMessagesPreLoad( $sKey, &$sMessage ) {
 		if ( strstr( $sKey, 'Noarticletext' ) === false ) {
@@ -144,20 +147,19 @@ class PageTemplates extends BsExtensionMW {
 		}
 
 		$oTitle = $this->getTitle();
-		$oOut = $this->getOutput();
-
 		if ( !is_object( $oTitle ) ) {
 			return true;
 		}
 
+		/*
+		 * As we are in view mode but we present the user only links to 
+		 * edit/create mode we do a preemptive check wether or not th user 
+		 * also has edit/create permission
+		 */
 		if ( !$oTitle->userCan( 'edit' ) ) {
-			$oOut->permissionRequired( 'edit' );
-			$sMessage = null;
-			return false;
+			throw new PermissionsError( 'edit' );
 		} elseif ( !$oTitle->userCan( 'createpage' ) ) {
-			$oOut->permissionRequired( 'createpage' );
-			$sMessage = null;
-			return false;
+			throw new PermissionsError( 'createpage' );
 		} else {
 			$sMessage = '<bs:pagetemplates />';
 		}
@@ -203,8 +205,6 @@ class PageTemplates extends BsExtensionMW {
 		$sOut = wfMessage( 'bs-pagetemplates-choose-template' )->plain();
 		$aOutNs = array();
 		$sOutAll = '';
-		$sDivAll = '';
-		$sDivNs = '';
 		$oTargetNsTitle = null;
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -268,12 +268,14 @@ class PageTemplates extends BsExtensionMW {
 						array(),
 						array( 'preload' => $oNsTitle->getPrefixedText() )
 					);
-					$aOutNs[$sNamespaceName]['link'] .= '<li>' . $sLink;
+					$sLink = '<li>' . $sLink;
+					if ( $row->pt_desc ) $sLink .= '<br/>' . $row->pt_desc;
+					$sLink .= '</li>';
 
-					if ( $row->pt_desc ) $aOutNs[$sNamespaceName]['link'] .= '<br/>' . $row->pt_desc;
-
-					$aOutNs[$sNamespaceName]['link'] .= '</li>';
-					$aOutNs[$sNamespaceName]['id'] = $row->pt_target_namespace;
+					$aOutNs[$sNamespaceName][] = array(
+						'link' => $sLink,
+						'id' => $row->pt_target_namespace
+					);
 				} elseif ( $row->pt_target_namespace == "-99" ) {
 					$sLink = BsLinkProvider::makeLink(
 						$oTitle,
@@ -297,8 +299,7 @@ class PageTemplates extends BsExtensionMW {
 			foreach ( $vOrder as $key => $value ) {
 				if ( empty( $value ) ) continue;
 				if ( array_key_exists( $value, $aOutNs ) ) {
-					$aTmp[$value]['link'] = $aOutNs[$value]['link'];
-					$aTmp[$value]['id'] = $aOutNs[$value]['id'];
+					$aTmp[$value] = $aOutNs[$value];
 				}
 			}
 
@@ -307,19 +308,20 @@ class PageTemplates extends BsExtensionMW {
 
 		$aLeftCol = array();
 		$aRightCol = array();
-
 		foreach ( $aOutNs as $sNs => $aTmpOut ) {
-			$sNamespaceName = BsNamespaceHelper::getNamespaceName( $aTmpOut['id'] );
-			if ( $aTmpOut['id'] == $oTitle->getNamespace() || $aTmpOut['id'] == -99 ) {
-				$aLeftCol[$sNamespaceName] = '<ul>' . $aTmpOut['link'] . '</ul>';
-			} else {
-				$aRightCol[$sNamespaceName] = '<ul>' . $aTmpOut['link'] . '</ul>';
+			foreach ( $aTmpOut as $key => $aAttribs ) {
+				$sNamespaceName = BsNamespaceHelper::getNamespaceName( $aAttribs['id'] );
+				if ( $aAttribs['id'] == $oTitle->getNamespace() || $aAttribs['id'] == -99 ) {
+					$aLeftCol[$sNamespaceName][] = '<ul>' . $aAttribs['link'] . '</ul>';
+				} else {
+					$aRightCol[$sNamespaceName][] = '<ul>' . $aAttribs['link'] . '</ul>';
+				}
 			}
 		}
 
 		if ( $sOutAll !== '' ) {
 			$sSectionGeneral = wfMessage( 'bs-pagetemplates-general-section' )->plain();
-			$aLeftCol[$sSectionGeneral] = '<ul>' . $sOutAll . '</ul>';
+			$aLeftCol[$sSectionGeneral][] = '<ul>' . $sOutAll . '</ul>';
 		}
 
 		$sOut .= '<br />';
@@ -329,10 +331,14 @@ class PageTemplates extends BsExtensionMW {
 
 			if ( !empty( $aLeftCol ) ) {
 				$sOut .= '<td style="vertical-align:top;">';
-				foreach ( $aLeftCol as $sNamespace => $sHtml ) {
+				foreach ( $aLeftCol as $sNamespace => $aHtml ) {
+					if ( $sNamespace == wfMessage( 'bs-ns_all' )->plain() ) {
+						$sNamespace = wfMessage( 'bs-pagetemplates-general-section' )->plain();
+					}
+
 					$sOut .= '<br />';
 					$sOut .= '<h3>' . $sNamespace . '</h3>';
-					$sOut .= $sHtml;
+					$sOut .= implode( '', $aHtml );
 				}
 				$sOut .= '</td>';
 			}
@@ -340,10 +346,10 @@ class PageTemplates extends BsExtensionMW {
 			if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
 				if ( !empty( $aRightCol ) ) {
 					$sOut .= '<td style="vertical-align:top;">';
-					foreach ( $aRightCol as $sNamespace => $sHtml ) {
+					foreach ( $aRightCol as $sNamespace => $aHtml ) {
 						$sOut .= '<br />';
 						$sOut .= '<h3>' . $sNamespace . '</h3>';
-						$sOut .= $sHtml;
+						$sOut .= implode( '', $aHtml );
 					}
 					$sOut .= '</td>';
 				}

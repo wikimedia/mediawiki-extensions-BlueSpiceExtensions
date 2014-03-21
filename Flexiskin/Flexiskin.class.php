@@ -146,6 +146,8 @@ class Flexiskin extends BsExtensionMW {
 	public static function addFlexiskin() {
 		$aData = json_decode(self::getVal('data'));
 		$oData = $aData[0];
+		if (is_null($oData->template))
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templateNotExists')->plain()));
 		if( empty($oData->template) )
 			$oData->template = 'default';
 
@@ -154,12 +156,14 @@ class Flexiskin extends BsExtensionMW {
 			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinExists')->plain()));
 		}
 		//PW(27.11.2013) TODO: add check template really exists before add
-		if( empty($oData->name) || empty($oData->desc) ) {
+		if( empty($oData->name) ) {
 			//PW(27.11.2013) TODO: add msg
-			return json_encode(array('success' => false, 'msg' => ''));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-nameEmpty')->plain()));
 		}
 		if ( $oData->template != 'default'){
 			$oConfig = self::getFlexiskinConfig(true, $oData->template);
+			if (!$oConfig->isGood())
+				return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templateNotExists')->plain()));
 			$oConf = json_decode($oConfig->getValue());
 			$oConf[0]->name = $oData->name;
 			$oConf[0]->desc = $oData->desc;

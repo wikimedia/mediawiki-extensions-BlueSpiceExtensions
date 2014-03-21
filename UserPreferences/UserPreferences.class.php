@@ -212,7 +212,11 @@ class UserPreferences extends BsExtensionMW {
 						//Therefore we check weater boolean 'false' really
 						//means boolean 'false' or just unserialized value,
 						//which we can use withour converting it.
-						$valPlain = unserialize( $options[ $id ] );
+						if( BsStringHelper::isSerialized( $options[ $id ] ) ) {
+							$valPlain = unserialize( $options[ $id ] );
+						} else {
+							$valPlain = $options[ $id ];
+						}
 						$options[ $id ]
 							= ( $valPlain === false && $options[ $id ] !== 'b:0;' )
 							? $options[ $id ] //It is already unserialized

@@ -79,7 +79,7 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 		$.each( values, function( index, element ){
 			valuesToSet.push( $.ucFirst( element ) );
 		});
-		sender.setValue( valuesToSet.join(','), true )
+		sender.setValue( valuesToSet.join(','), true );
 	},
 	setData: function( data ) {
 		this.bsCategories.setValue( data );

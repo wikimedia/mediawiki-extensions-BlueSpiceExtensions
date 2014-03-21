@@ -179,10 +179,10 @@ class PagesVisited extends BsExtensionMW {
 		$oParser->disableCache();
 		$oErrorListView = new ViewTagErrorList( $this );
 
-		$iCount          = BsCore::sanitizeArrayEntry( $aAttributes, 'count',              5, BsPARAMTYPE::INT );
+		$iCount = BsCore::sanitizeArrayEntry( $aAttributes, 'count',              5, BsPARAMTYPE::INT );
 		$iMaxTitleLength = BsCore::sanitizeArrayEntry( $aAttributes, 'maxtitlelength',    20, BsPARAMTYPE::INT );
-		$sNamespaces     = BsCore::sanitizeArrayEntry( $aAttributes, 'namespaces',     'all', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
-		$sSortOrder      = BsCore::sanitizeArrayEntry( $aAttributes, 'order',          'time', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
+		$sNamespaces = BsCore::sanitizeArrayEntry( $aAttributes, 'namespaces',     'all', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
+		$sSortOrder = BsCore::sanitizeArrayEntry( $aAttributes, 'order',          'time', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
 
 		//Validation
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30) );
@@ -200,13 +200,13 @@ class PagesVisited extends BsExtensionMW {
 		}
 
 		$iCurrentNamespaceId = $oParser->getTitle()->getNamespace();
-		$oListView           = $this->makePagesVisitedWikiList( $iCount, $sNamespaces, $iCurrentNamespaceId, $iMaxTitleLength, $sSortOrder );
-		$sOut                = $oListView->execute();
+		$oListView = $this->makePagesVisitedWikiList( $iCount, $sNamespaces, $iCurrentNamespaceId, $iMaxTitleLength, $sSortOrder );
+		$sOut = $oListView->execute();
 
 		if ( $oListView instanceof ViewTagErrorList ) {
 			return $sOut;
 		} else {
-			return $this->mCore->parseWikiText( $sOut );
+			return $this->mCore->parseWikiText( $sOut, $this->getTitle() );
 		}
 	}
 
@@ -242,9 +242,9 @@ class PagesVisited extends BsExtensionMW {
 	 * @param array &$aViews List of Widget view objects from the BlueSpice Skin.
 	 */
 	private function addWidgetView( &$aViews ) {
-		$iCount              = BsConfig::get( 'MW::PagesVisited::WidgetLimit' );
-		$aNamespaces         = BsConfig::get( 'MW::PagesVisited::WidgetNS' );
-		$sSortOrder          = BsConfig::get( 'MW::PagesVisited::WidgetSortOdr' );
+		$iCount = BsConfig::get( 'MW::PagesVisited::WidgetLimit' );
+		$aNamespaces = BsConfig::get( 'MW::PagesVisited::WidgetNS' );
+		$sSortOrder = BsConfig::get( 'MW::PagesVisited::WidgetSortOdr' );
 		$iCurrentNamespaceId = 0;
 
 		//Validation
@@ -257,10 +257,10 @@ class PagesVisited extends BsExtensionMW {
 
 		// TODO RBV (04.07.11 15:02): Rework method -> implode() is a workaround for legacy code.
 		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',',$aNamespaces ), $iCurrentNamespaceId, 19, $sSortOrder );
-		$sOut      = $oListView->execute();
+		$sOut = $oListView->execute();
 
 		if ( !( $oListView instanceof ViewTagError ) ) {
-			$sOut = $this->mCore->parseWikiText( $sOut );
+			$sOut = $this->mCore->parseWikiText( $sOut, $this->getTitle() );
 		}
 
 		$oWidgetView = new ViewWidget();
@@ -286,8 +286,8 @@ class PagesVisited extends BsExtensionMW {
 		//$sCacheKey = md5( $oCurrentUser->getName().$iCount.$sNamespaces.$iCurrentNamespaceId.$iMaxTitleLength );
 		//if( isset( self::$prResultListViewCache[$sCacheKey] ) ) return self::$prResultListViewCache[$sCacheKey];
 		$oErrorListView = new ViewTagErrorList( $this );
-		$oErrorView     = null;
-		$aConditions    = array();
+		$oErrorView = null;
+		$aConditions = array();
 		$aNamespaceIndexes = array( 0 );
 
 		try {

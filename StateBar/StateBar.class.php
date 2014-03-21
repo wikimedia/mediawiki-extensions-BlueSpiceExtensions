@@ -288,6 +288,7 @@ class StateBar extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if ( BsConfig::get( 'MW::StateBar::Show' ) === false ) return true;
+
 		$oTitle = $this->checkContext( $this->getTitle() );
 		if ( is_null( $oTitle ) ) return true;
 

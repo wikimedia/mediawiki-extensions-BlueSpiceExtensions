@@ -257,7 +257,7 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_description = SecureFileStore::secureFilesInText( preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent() ) ) );
+				$_description = SecureFileStore::secureFilesInText( preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent(), $this->getTitle() ) ) );
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
 					$item->setPubDate( wfTimestamp( TS_UNIX,$row['rev_timestamp'] ) );
@@ -315,7 +315,7 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_tmpText = preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText($article->getContent()));
+				$_tmpText = preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent(), $this->getTitle() ) );
 				if ( class_exists( 'SecureFileStore' ) ) {
 					$_description = SecureFileStore::secureFilesInText($_tmpText);
 				} else {

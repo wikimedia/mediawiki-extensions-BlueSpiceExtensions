@@ -43,6 +43,11 @@ $messages['en'] = array(
 	'bs-visualeditor-greyscale'             => 'Greyscale',
 	'bs-visualeditor-greyscale-narrow'      => 'Greyscale (narrow)',
 	
+	'bs-visualeditor-aligntop'              => 'Top',
+	'bs-visualeditor-alignmiddle'           => 'Middle',
+	'bs-visualeditor-alignbottom'           => 'Bottom',
+	
+	
 	'bs-visualeditor-bsactions-wiki'      => 'WikiText',
 	'bs-visualeditor-bsactions-switchgui' => 'Switch toolbar',
 	'bs-visualeditor-bsactions-linebreak' => 'Linebreak',
@@ -87,6 +92,10 @@ $messages['de'] = array(
 	'bs-visualeditor-casablanca'            => 'Casablanca',
 	'bs-visualeditor-greyscale'             => 'Graustufen',
 	'bs-visualeditor-greyscale-narrow'      => 'Graustufen (schmal)',
+	
+	'bs-visualeditor-aligntop'              => 'Oben',
+	'bs-visualeditor-alignmiddle'           => 'Mitte',
+	'bs-visualeditor-alignbottom'           => 'Unten',
 	
 	'bs-visualeditor-bsactions-switchgui' => 'Werkzeugleiste umschalten',
 	'bs-visualeditor-bsactions-linebreak' => 'Zeilenumbruch',

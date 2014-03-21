@@ -536,3 +536,6 @@ div.gallerytext {
 	padding: 2px 4px;
 	word-wrap: break-word;
 }
+div.patrollink {
+	display: none;
+}

@@ -223,7 +223,7 @@ class ViewBlogItem extends ViewBaseElement {
 		if ( $this->getOption( 'moreAtEndOfEntry' ) ) $sOut .= '&nbsp;';
 		else $sOut .= "\n";
 
-		$sParsedOut = BsCore::getInstance()->parseWikiText( $sOut );
+		$sParsedOut = BsCore::getInstance()->parseWikiText( $sOut, RequestContext::getMain()->getTitle() );
 
 		$sOut = $sParsedOut;
 

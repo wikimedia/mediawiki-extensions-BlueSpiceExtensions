@@ -23,7 +23,6 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    2.22.0 stable
-
  * @package    BlueSpice_Extensions
  * @subpackage FormattingHelp
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -116,7 +115,7 @@ class FormattingHelp extends BsExtensionMW {
 		$sOutput = $oFormattinghelpArticle->getContent();
 
 		if ( $sOutput ) {
-			$sOutput = $this->mCore->parseWikiText( $sOutput );
+			$sOutput = $this->mCore->parseWikiText( $sOutput, RequestContext::getMain()->getTitle() );
 		} else {
 			$sOutput = wfMessage( 'bs-formattinghelp-help-text' )->plain();
 		}

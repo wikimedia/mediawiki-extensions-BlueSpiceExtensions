@@ -143,6 +143,8 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	commands.push({
 		commandId: 'mceBsImage',
 		commandCallback: function() {
+			var editor = plugin.getEditor();
+			var bookmark = editor.selection.getBookmark();
 			var image = this.selection.getNode();
 			var params = {};
 			
@@ -154,6 +156,9 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			Ext.require('BS.InsertFile.ImageDialog', function(){
 				BS.InsertFile.ImageDialog.clearListeners();
 				BS.InsertFile.ImageDialog.on( 'ok', function( sender, data ) {
+					var editor = plugin.getEditor();
+					editor.selection.moveToBookmark(bookmark);
+					var node = editor.selection.getNode();
 					var imgAttrs = this.plugins.bswikicode.makeDefaultImageAttributesObject();
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 					//Manually prefix with NS_IMAGE. I wonder if this should 
@@ -207,7 +212,8 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					}
 					else {
 						newImgNode = this.dom.createHTML( 'img', imgAttrs );
-						this.selection.setContent(newImgNode);
+						//this.selection.setContent(newImgNode);
+						editor.insertContent(newImgNode);
 					}
 					
 					this.selection.collapse(false);

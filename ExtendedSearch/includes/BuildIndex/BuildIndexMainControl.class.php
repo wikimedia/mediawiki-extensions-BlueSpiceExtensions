@@ -39,6 +39,11 @@ class BuildIndexMainControl {
 	 */
 	public $sFilePathLockFile = '';
 	/**
+	 * Indicates whether builder was called from console
+	 * @var bool True if called in cli mode.
+	 */
+	public $bCommandLineMode = false;
+	/**
 	 * Reference to instance of base class.
 	 * @var ExtendedSearchBaseMW Search base class.
 	 */
@@ -54,16 +59,6 @@ class BuildIndexMainControl {
 	 */
 	protected $aLimit = array();
 	/**
-	 * List of file types that can be indexed.
-	 * @var array List of file extensions. Caution: these need to be known to the indexer.
-	 */
-	protected $aFiletypes = array();
-	/**
-	 * Maximum execution time per document to be indexed.
-	 * @var int Execution time in seconds. 
-	 */
-	protected $iTimeLimit = 0;
-	/**
 	 * Path to file where index progress is stored.
 	 * @var string Path
 	 */
@@ -74,25 +69,10 @@ class BuildIndexMainControl {
 	 */
 	protected $sFilePathLogFile = '';
 	/**
-	 * Maximum size for documents to be indexed.
-	 * @var int File size in bytes.
-	 */
-	protected $iMaxDocSize = 0;
-	/**
 	 * Unique ID that identifies a certain Wiki
 	 * @var string Unique ID
 	 */
 	protected $sCustomerId = '';
-	/**
-	 * Indicates whether builder was called from console
-	 * @var bool True if called in cli mode.
-	 */
-	protected $bCommandLineMode = false;
-	/**
-	 * Array of file types that should be indexed
-	 * @var array
-	 */
-	protected $aFileTypes = array();
 	/**
 	 * Text fragments to be replaced
 	 * @var array Fragments
@@ -117,40 +97,21 @@ class BuildIndexMainControl {
 		//Possible values of PHP_SAPI (not all): apache, cgi (until PHP 5.3), cgi-fcgi, cli
 		$this->bCommandLineMode = ( PHP_SAPI === 'cli' );
 
-		/* $limit is null OR string with syntax "{start},{range}"
-		 * if not set it defaults to false
-		 *     then the existence of $_GET['start'] and $_GET['range'] is checked
-		 *     in case of presence a limit is set with these parameters casted as integers */
-		if ( !$this->bCommandLineMode ) {
-			global $wgRequest;
-			$aLimitStart = $wgRequest->getInt( 'start', -1 );
-			$aLimitRange = $wgRequest->getInt( 'range', -1 );
-			if ( $aLimitStart !== -1 && $aLimitRange !== -1 ) {
-				$this->aLimit = $aLimitStart.','.$aLimitRange;
-			}
-		}
-
-		if ( !empty( $this->aLimit ) ) {
-			$this->aLimit = explode( ',', $this->aLimit );
-			if ( count( $this->aLimit ) != 2 ) {
-				throw new BsException( 'Invalid limit in '.__FILE__.', method'.__METHOD__ );
-			}
-		}
-
-		if ( !$this->bCommandLineMode ) {
-			$this->iTimeLimit = ini_get( 'max_execution_time' );
-		} else {
-			$this->iTimeLimit = 120;
-		}
-
-		$this->setFileTypes();
-		$this->processTypes();
 		$this->sCustomerId = BsConfig::get( 'MW::ExtendedSearch::CustomerID' );
 
-		// Maximum file size in MB
-		$iMaxFileSize = (int)ini_get( 'post_max_size' );
-		if ( empty( $iMaxFileSize ) || $iMaxFileSize <= 0 ) $iMaxFileSize = 32;
-		$this->iMaxDocSize = $iMaxFileSize * 1024 * 1024; // Make bytes out of it
+		// Set major types to be indexed
+		$this->aTypes['wiki'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesWiki' );
+		$this->aTypes['special'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecial' );
+		$this->aTypes['repo'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesRepo' );
+		$this->aTypes['linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTyLinked' );
+		$this->aTypes['special-linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecialLinked' );
+	}
+
+	/**
+	 * Setter for major types that should be indexed
+	 */
+	public function setIndexTypes( $aTypes ) {
+		$this->aTypes = $aTypes;
 	}
 
 	/**
@@ -296,10 +257,8 @@ class BuildIndexMainControl {
 	public function buildIndexWiki( $mode ) {
 		if ( $this->aTypes['wiki'] !== true ) return;
 		$oBuildIndexInstance = new BuildIndexMwArticles( $this );
-		$oBuildIndexInstance
-			->setMode( $mode )
-			->setTimeLimit( $this->iTimeLimit )
-			->setLimit( $this->aLimit );
+		$oBuildIndexInstance->setMode( $mode );
+
 		$noOfResults = $oBuildIndexInstance->crawl();
 		if ( !empty( $noOfResults ) ) {
 			$oBuildIndexInstance->indexCrawledDocuments();
@@ -313,10 +272,8 @@ class BuildIndexMainControl {
 	public function buildIndexSpecial( $mode ) {
 		if ( $this->aTypes['special'] !== true ) return;
 		$oBuildIndexInstance = new BuildIndexMwSpecial( $this );
-		$oBuildIndexInstance
-			->setMode( $mode )
-			->setTimeLimit( $this->iTimeLimit )
-			->setLimit( $this->aLimit );
+		$oBuildIndexInstance->setMode( $mode );
+
 		$noOfResults = $oBuildIndexInstance->crawl();
 		if ( !empty( $noOfResults ) ) {
 			$oBuildIndexInstance->indexCrawledDocuments();
@@ -330,12 +287,8 @@ class BuildIndexMainControl {
 	public function buildIndexRepo( $mode ) {
 		if ( $this->aTypes['repo'] !== true ) return;
 		$oBuildIndexInstance = new BuildIndexMwRepository( $this );
-		$oBuildIndexInstance
-			->setMode( $mode )
-			->setTimeLimit( $this->iTimeLimit )
-			->setFileTypes( $this->aFiletypes )
-			->setMaxDocSize( $this->iMaxDocSize )
-			->setLimit( $this->aLimit );
+		$oBuildIndexInstance->setMode( $mode );
+
 		$noOfResults = $oBuildIndexInstance->crawl();
 		if ( !empty( $noOfResults ) ) {
 			$oBuildIndexInstance->indexCrawledDocuments();
@@ -349,12 +302,8 @@ class BuildIndexMainControl {
 	public function buildIndexExternalRepo( $sMode ) {
 		if ( $this->aTypes['repo'] !== true ) return;
 		$oBuildIndexInstance = new BuildIndexMwExternalRepository( $this );
-		$oBuildIndexInstance
-			->setMode( $sMode )
-			->setTimeLimit( $this->iTimeLimit )
-			->setFileTypes( $this->aFiletypes )
-			->setMaxDocSize( $this->iMaxDocSize )
-			->setLimit( $this->aLimit );
+		$oBuildIndexInstance->setMode( $sMode );
+
 		$noOfResults = $oBuildIndexInstance->crawl();
 		if ( !empty( $noOfResults ) ) {
 			$oBuildIndexInstance->indexCrawledDocuments();
@@ -368,7 +317,6 @@ class BuildIndexMainControl {
 	 */
 	public function buildIndexLinked( $sMode, $iArticleID = null ) {
 		if ( $this->aTypes['linked'] !== true ) return;
-		global $wgDBprefix;
 		$aErrorMessageKeys = array();
 		$everythingsOk = BuildIndexMwLinked::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 		if ( !$everythingsOk ) {
@@ -377,14 +325,12 @@ class BuildIndexMainControl {
 			}
 			return;
 		}
+
+		global $wgDBprefix;
 		$oBuildIndexInstance = new BuildIndexMwLinked( $this );
-		$oBuildIndexInstance
-			->setMode( $sMode )
-			->setTimeLimit( $this->iTimeLimit )
-			->setFileTypes( $this->aFiletypes )
-			->setMaxDocSize( $this->iMaxDocSize )
-			->setLimit( $this->aLimit )
-			->setDbPrefix( $wgDBprefix );
+		$oBuildIndexInstance->setMode( $sMode );
+		$oBuildIndexInstance->setDbPrefix( $wgDBprefix );
+
 		$noOfResults = $oBuildIndexInstance->crawl( $iArticleID );
 		if ( !empty( $noOfResults ) ) {
 			$oBuildIndexInstance->indexCrawledDocuments();
@@ -397,7 +343,6 @@ class BuildIndexMainControl {
 	 */
 	public function buildIndexSpecialLinked( $sMode ) {
 		if ( $this->aTypes['special-linked'] !== true ) return;
-		global $wgDBprefix;
 		$aErrorMessageKeys = array();
 		$everythingsOk = BuildIndexMwSpecialLinked::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 		if ( !$everythingsOk ) {
@@ -406,14 +351,12 @@ class BuildIndexMainControl {
 			}
 			return;
 		}
+
+		global $wgDBprefix;
 		$oBuildIndexInstance = new BuildIndexMwSpecialLinked( $this );
-		$oBuildIndexInstance
-			->setMode( $sMode )
-			->setTimeLimit( $this->iTimeLimit )
-			->setFileTypes( $this->aFiletypes )
-			->setMaxDocSize( $this->iMaxDocSize )
-			->setLimit( $this->aLimit )
-			->setDbPrefix( $wgDBprefix );
+		$oBuildIndexInstance->setMode( $sMode );
+		$oBuildIndexInstance->setDbPrefix( $wgDBprefix );
+
 		$noOfResults = $oBuildIndexInstance->crawl();
 		if ( !empty( $noOfResults ) ) {
 			$oBuildIndexInstance->indexCrawledDocuments();
@@ -422,11 +365,6 @@ class BuildIndexMainControl {
 
 	/**
 	 * Completely (re)builds search index.
-	 * @param SearchService $oSearchService
-	 * @param string $aLimit Number and offset of articles to be indexed. Format {iLimitStart},{iLimitRange}
-	 * @param array $aFiletypes List of file types to be indexed.
-	 * @param array $aTypes List of document types to be indexed.
-	 * @param int $iTimeLimit Maximum execution time per document in seconds.
 	 * @return string Always empty
 	 */
 	public function buildIndex() {
@@ -530,21 +468,21 @@ class BuildIndexMainControl {
 			$aRedirects = array(), $bIsRedirect = 0, $aSections = array(), $iIsSpecial = 0 ) {
 		$oDoc = new Apache_Solr_Document();
 
-		$oDoc->wiki         = $this->sCustomerId;
+		$oDoc->wiki = $this->sCustomerId;
 		$oDoc->overall_type = $sOverallType;
-		$oDoc->type         = $sType;
-		$oDoc->title        = $sTitle;
-		$oDoc->text         = $sText;
-		$oDoc->hwid         = $iID;
-		$oDoc->namespace    = $iNamespace;
-		$oDoc->path         = $vPath;
-		$oDoc->cat          = $aCategories;
-		$oDoc->editor       = $aEditors;
-		$oDoc->uid          = $this->getUniqueId( $iID, $vPath );
-		$oDoc->redirects    = $aRedirects;
-		$oDoc->redirect     = $bIsRedirect;
-		$oDoc->sections     = $aSections;
-		$oDoc->special      = $iIsSpecial;
+		$oDoc->type = $sType;
+		$oDoc->title = $sTitle;
+		$oDoc->text = $sText;
+		$oDoc->hwid = $iID;
+		$oDoc->namespace = $iNamespace;
+		$oDoc->path = $vPath;
+		$oDoc->cat = $aCategories;
+		$oDoc->editor = $aEditors;
+		$oDoc->uid  = $this->getUniqueId( $iID, $vPath );
+		$oDoc->redirects = $aRedirects;
+		$oDoc->redirect = $bIsRedirect;
+		$oDoc->sections = $aSections;
+		$oDoc->special = $iIsSpecial;
 
 		// Date must be of the format 1995-12-31T23:59:59Z
 		// If makeDocument is trigged by onArticleSaveComplete for example,
@@ -720,6 +658,9 @@ class BuildIndexMainControl {
 			}
 		}
 
+		// dont need index_prog.txt output on cmd
+		if ( $this->bCommandLineMode ) return;
+
 		$sLine = '["'.$sMode.'", "'.$sMessage.'", "'.$sProgress.'"]';
 		$rFh = fopen( $this->sFilePathIndexProgTxt, 'w' ); // output one line to file, recreating file each time (for ajax progress bar)
 		fwrite( $rFh, $sLine );
@@ -736,9 +677,6 @@ class BuildIndexMainControl {
 		$sParsedText = '';
 		if ( empty( $sText ) || is_null( $oTitle ) ) return $sParsedText;
 
-		$oParser = new Parser();
-		$oParserOptions = new ParserOptions();
-
 		// find all tags and sorround them with pre tags
 		$sText = preg_replace_callback( '#<.*?>#', array( $this, 'preTags' ), $sText );
 
@@ -746,7 +684,7 @@ class BuildIndexMainControl {
 		$sText = preg_replace( '#__[A-Z_]+__#', '', $sText );
 
 		try {
-			$sParsedText = $oParser->parse( $sText, $oTitle, $oParserOptions )->getText();
+			$sParsedText = BsCore::getInstance()->parseWikiText( $sText, $oTitle );
 		} catch ( Exception $e ) {
 			return $sParsedText;
 		}
@@ -801,37 +739,6 @@ class BuildIndexMainControl {
 		}
 
 		return $aRedirects;
-	}
-
-	/**
-	 * Sets the file types that should be indexed
-	 */
-	public function setFileTypes() {
-		$vTempFileTypes = BsConfig::get( 'MW::ExtendedSearch::IndexFileTypes' );
-		$vTempFileTypes = str_replace( array( ' ', ';' ), array( '', ',' ), $vTempFileTypes );
-		$vTempFileTypes = explode( ',', $vTempFileTypes );
-
-		foreach ( $vTempFileTypes as $value ) {
-			$this->aFiletypes[$value] = true;
-		}
-		unset( $vTempFileTypes );
-
-		return true;
-	}
-
-	/**
-	 * Prepare available types against default values.
-	 * @param array $aTypes List of types.
-	 * @return BuildIndexMainControl Return self for method chaining.
-	 */
-	protected function processTypes() {
-		$this->aTypes['wiki'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesWiki' );
-		$this->aTypes['special'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecial' );
-		$this->aTypes['repo'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesRepo' );
-		$this->aTypes['linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTyLinked' );
-		$this->aTypes['special-linked'] = (bool)BsConfig::get( 'MW::ExtendedSearch::IndexTypesSpecialLinked' );
-
-		return true;
 	}
 
 	/**

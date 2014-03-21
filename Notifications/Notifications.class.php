@@ -279,7 +279,7 @@ class Notifications extends BsExtensionMW {
 			'category' => 'bs-shoutbox-cat',
 			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
-			'title-message' => 'bs-echo-page-newuser',
+			'title-message' => 'bs-echo-page-shoutbox',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-shout-subject',
 			'flyout-params' => array( 'titlelink', 'agentlink' ),

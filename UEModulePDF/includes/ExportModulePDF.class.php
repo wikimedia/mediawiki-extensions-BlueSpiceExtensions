@@ -83,7 +83,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$aContents = array(
 			'content' => array( $aPage['dom']->documentElement )
 		);
-		wfRunHooks( 'BSUEModulePDFBeforeAddingContent', array( &$aTemplate, &$aContents ) );
+		wfRunHooks( 'BSUEModulePDFBeforeAddingContent', array( &$aTemplate, &$aContents, $oCaller, &$aPage ) );
 		
 		$oContentTags = $oDOM->getElementsByTagName( 'content' );
 		$i = $oContentTags->length - 1;
@@ -91,7 +91,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			$oContentTag = $oContentTags->item($i);
 			$sKey = $oContentTag->getAttribute('key');
 			if( isset($aContents[$sKey] ) ) {
-				foreach($aContents[$sKey] as $oNode ) {
+				foreach( $aContents[$sKey] as $oNode ) {
 					$oNode = $oDOM->importNode( $oNode, true );
 					$oContentTag->parentNode->insertBefore( $oNode, $oContentTag );
 				}

@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'bs-review-review_finished' => 'This article has been reviewed.',
 	'bs-review-unknown' => 'unknown',
 	'bs-review-please_review' => 'Please review this page:',
-	'bs-review-reviewed_till' => 'This page is being reviewed from <br/><b>$1</b> to <b>$2</b><br/>.',
+	'bs-review-reviewed_till' => 'This page is being reviewed from <br/><b>$1</b> to <b>$2</b>.',
 	'bs-review-reviewed_till_extra' => '<br />Created by <b>$1</b>',
 	'bs-review-active_workflow' => 'Active review',
 	'bs-review-status' => 'State',
@@ -105,9 +105,9 @@ $messages['en'] = array(
 	'bs-review-approved-review'          => 'has accepted at a review process on $1.',
 	'bs-review-denied-review'            => 'has denied at a review process on $1.',
 	'bs-review-finished-review'          => 'has finished a review process on $1.',
-	'bs-review-logpage'                  => 'QA log',
-	'bs-review-logpagetext'              => 'This is the log of quality assurance processes.',
-	'bs-review-Review'                   => 'Quality assurance',
+	'bs-review-logpage'                  => 'Review log',
+	'bs-review-logpagetext'              => 'This is the log of review processes.',
+	'bs-review-Review'                   => 'Review',
 	'bs-review-pref-CheckOwner'          => 'Only the owner of a review process may change it',
 	'bs-review-pref-ShowNameInTooltip'   => 'Show names of the participants',
 	'bs-review-pref-EmailNotifyOwner'    => 'Notify the owner of a review process about changes',
@@ -144,6 +144,7 @@ $messages['en'] = array(
 	'bs-review-specialreview-header'     => '{{plural:$1|Reviews of $2|Review overview}}',
 	'bs-review-commentinputlabel'        => 'Your comment',
 	'bs-review-ownercomment'             => 'Comment of $1',
+	'bs-review-comments' => 'Comments',
 	
 	//Permissions
 	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there 
@@ -198,7 +199,7 @@ $messages['en'] = array(
 );
 
 $messages['de'] = array(
-	'prefs-Review'                       => 'Qualitätssicherung',
+	'prefs-Review'                       => 'Begutachtung',
 	'bs-review-extension-description'    => 'Einem Artikel kann ein Begutachtungsprozesses zugeordnet werden, z.B. das Überprüfen des Artikels durch einen Nutzer.',
 	'bs-review-ext_review'               => 'Begutachtung',
 	'bs-review-menu_entry'               => 'Begutachtung bearbeiten',
@@ -261,13 +262,13 @@ $messages['de'] = array(
 	'bs-review-mail-comment'             => "\nEs wurde ein Kommentar für Dich eingetragen:\n\"$1\"",
 	'bs-review-specialpage-title'        => "Begutachtung für \"$1\"",
 	'bs-review-specialpage-subtitle'     => "← $1",
-	'bs-review-statebar-top'             => "Review",
-	'bs-review-statebar-body-header'     => "Qualitätssicherung",
+	'bs-review-statebar-top'             => "Begutachtung",
+	'bs-review-statebar-body-header'     => "Begutachtung",
 	'bs-review-statebar-body-do-review'  => 'Bitte begutachte diese Seite',
 	'bs-review-i-agree'                  => 'Ich stimme zu',
 	'bs-review-i-dismiss'                => 'Ich lehne ab',
 	'bs-review-i-delegate'               => 'Delegieren',
-	'bs-review-here-are-your-workflows'  => 'Auf den folgenden Seiten bist Du an einem Qualitätssicherungsprozess beteiligt. Gib Deine Bewertung auf diesen Seiten in der Statusleiste ab.',
+	'bs-review-here-are-your-workflows'  => 'Auf den folgenden Seiten bist Du an einem Begutachtungsprozess beteiligt. Gib Deine Bewertung auf diesen Seiten in der Statusleiste ab.',
 	'bs-review-not-allowed'              => 'Der Zugriff auf diese Seite ist nicht erlaubt.',
 	'bs-review-startdate-missing'        => 'Bitte gib ein Startdatum an.',
 	'bs-review-enddate-missing'          => 'Bitte gib ein Enddatum an.',
@@ -326,6 +327,7 @@ $messages['de'] = array(
 	'bs-review-specialreview-header'     => '{{plural:$1|Begutachtungen für $2|Begutachtungsübersicht}}',
 	'bs-review-commentinputlabel'        => 'Dein Kommentar',
 	'bs-review-ownercomment'             => 'Kommentar von $1',
+	'bs-review-comments' => 'Kommentare',
 	
 	//Permissions
 	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there 
@@ -356,7 +358,7 @@ $messages['de'] = array(
 	'bs-review-btnSave' => 'Speichern',
 	'bs-review-btnDelete' => 'Löschen',
 	'bs-review-btnCancel' => 'Abbrechen',
-	'bs-review-noReviewAssigned' => 'Diese Seite hat derzeit keinen Qualitätssicherungsprozess.',
+	'bs-review-noReviewAssigned' => 'Diese Seite hat derzeit keinen Begutachtungsprozess.',
 	'bs-review-headerActions' => 'Aktionen',
 	'bs-review-titleAddReviewer' => 'Begutachter hinzufügen',
 	'bs-review-titleEditReviewer' => 'Begutachter bearbeiten',
@@ -400,7 +402,7 @@ $messages['de-formal'] = array(
 	'bs-review-mail-finish-no-flagged-revs-body' => 'bs-review-mail-finish-no-flagged-revs-body', //deprecated?
 	'bs-review-mail-comment'             => "\nEs wurde ein Kommentar für Sie eingetragen:\n\"$1\"",
 	'bs-review-statebar-body-do-review'  => 'Bitte begutachten Sie diese Seite',
-	'bs-review-here-are-your-workflows'  => 'Auf den folgenden Seiten sind Sie an einem Qualitätssicherungsprozess beteiligt. Geben Sie Ihre Bewertung auf diesen Seiten in der Statusleiste ab.',
+	'bs-review-here-are-your-workflows'  => 'Auf den folgenden Seiten sind Sie an einem Begutachtungsprozess beteiligt. Geben Sie Ihre Bewertung auf diesen Seiten in der Statusleiste ab.',
 	'bs-review-startdate-missing'        => 'Bitte geben Sie ein Startdatum an.',
 	'bs-review-enddate-missing'          => 'Bitte geben Sie ein Enddatum an.',
 	'bs-review-no-reviewers'             => 'Bitte geben Sie mindestens einen Begutachter an.',

@@ -220,7 +220,7 @@ class WantedArticle extends BsExtensionMW {
 			$aWikiCodeList[] = '*'.BsLinkProvider::makeEscapedWikiLinkForTitle( $oTitle, $sWishTitle );
 		}
 
-		$sBody = $this->mCore->parseWikiText( implode( "\n", $aWikiCodeList ) );
+		$sBody = $this->mCore->parseWikiText( implode( "\n", $aWikiCodeList ), $this->getTitle() );
 
 		$oWidgetView = new ViewWidget();
 		$oWidgetView
@@ -540,7 +540,7 @@ class WantedArticle extends BsExtensionMW {
 		if ( $oEditStatus->isGood() ) {
 			return json_encode(  array( 'success' => true, 'message' => wfMessage( 'bs-wantedarticle-success-suggestion-entered' )->plain() ) );
 		} else {
-			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText() );
+			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText(), $this->getTitle() );
 			return json_encode(  array( 'success' => false, 'message' => $sErrorMsg ) );
 		}
 	}

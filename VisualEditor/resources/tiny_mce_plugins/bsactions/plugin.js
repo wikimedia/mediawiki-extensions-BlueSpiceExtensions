@@ -167,7 +167,7 @@ var BsActions = function() {
 		var href = unescape(element.getAttribute('href').toLowerCase());
 		//TODO: i18n || mw client framework
 		return (href.indexOf('kategorie:') != -1) || (href.indexOf('category:') != -1)
-	}
+	};
 
 	this.elementIsMediaAnchor = function(element) {
 		if (element.nodeName != 'A') {
@@ -176,7 +176,7 @@ var BsActions = function() {
 		var href = unescape(element.getAttribute('href').toLowerCase());
 		//TODO: i18n || mw client framework
 		return (href.indexOf('medium:') != -1) || (href.indexOf('media:') != -1)
-	}
+	};
 
 	this.getInfo = function() {
 		var info = {
@@ -194,13 +194,13 @@ var BsActions = function() {
 	 * @param {type} state
 	 * @returns {undefined}
 	 */
-	function  _addFullScreenScrollbar( state ) {
+	function _addFullScreenScrollbar( state ) {
 		_editor.getDoc().documentElement.style.overflowY = "auto";
 	}
 
 	this.getEditor = function() {
 		return _editor;
-	}
+	};
 
 	this.init = function(ed, url) {
 		var buttons, commands, menus;
@@ -308,8 +308,8 @@ var BsActions = function() {
 					//due to the fact, that tinymce isn't that much happy about
 					//beeing destroyed by it's own cmds
 					onClick: function(){
-						// unbind resize event
-						ed.off("change setcontent paste keyup", ed.plugins.autoresize.resize);
+						// unbind resize event .-- did not help
+						// ed.off("change setcontent paste keyup", ed.plugins.autoresize.resize);
 						VisualEditor.toggleEditor();
 						return true;
 					},

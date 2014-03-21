@@ -9,20 +9,24 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 
 	initComponent: function() {
 		this.btnSave = Ext.create("Ext.Button", {
+			id: 'bs-flexiskin-preview-menu-save',
 			text: mw.message('bs-extjs-save').plain(),
 			disabled: true
 		});
 		this.btnSave.on('click', this.btnSaveClick, this);
 		this.btnClose = Ext.create("Ext.Button", {
+			id: 'bs-flexiskin-preview-menu-close',
 			text: mw.message('bs-extjs-close').plain()
 		});
 		this.btnClose.on('click', this.btnCloseClick, this);
 		this.btnReset = Ext.create("Ext.Button", {
+			id: 'bs-flexiskin-preview-menu-reset',
 			text: mw.message('bs-extjs-reset').plain(),
 			disabled: true
 		});
 		this.btnReset.on('click', this.btnResetClick, this);
 		this.dockedItems = [{
+			id: 'bs-flexiskin-preview-menu-toolbar',
 			xtype: 'toolbar',
 			dock: 'top',
 			ui: 'footer',

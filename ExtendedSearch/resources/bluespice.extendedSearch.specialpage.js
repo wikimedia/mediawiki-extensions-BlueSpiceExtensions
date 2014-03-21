@@ -372,7 +372,7 @@ BsExtendedSearchAjaxManager.prototype = {
 			thread = setTimeout( function() { ExtendedSearchAjaxManager.ajaxMeANewResultsPlz( url ) }, 300 );
 		} );
 	}
-}
+};
 
 ExtendedSearchAjaxManager = null;
 

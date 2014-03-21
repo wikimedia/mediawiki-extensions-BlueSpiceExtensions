@@ -750,8 +750,8 @@ class SmartList extends BsExtensionMW {
 
 				$oTitle = Title::makeTitleSafe( $row->namespace, $row->title );
 
-				if ( $aArgs['new'] == false ) {
-					if ( $oTitle->isNewPage() == true ) continue;
+				if ( $aArgs['new'] == true ) {
+					if ( $oTitle->isNewPage() == false ) continue;
 				}
 
 				if ( !$oTitle->quickUserCan( 'read' ) ) continue;
@@ -774,10 +774,6 @@ class SmartList extends BsExtensionMW {
 		if ( count( $aObjectList ) ) {
 			foreach ( $aObjectList as $row ) {
 				$oTitle = Title::makeTitleSafe( $row->namespace, $row->title );
-				if ( $oTitle->isRedirect() ) {
-					$oArticle = Article::newFromID( $oTitle->getArticleID() );
-					$oTitle = $oArticle->followRedirect();
-				}
 
 				// Security here: only show pages the user can read.
 				$sText = '';
@@ -830,7 +826,7 @@ class SmartList extends BsExtensionMW {
 		} else {
 			return '';
 		}
-		return $this->mCore->parseWikiText( $oSmartListListView->execute() );
+		return $this->mCore->parseWikiText( $oSmartListListView->execute(), $this->getTitle() );
 	}
 
 	/**

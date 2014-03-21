@@ -13,6 +13,7 @@
 
 Ext.define( 'BS.Readers.Panel', {
 	extend: 'Ext.grid.Panel',
+	id: 'bs-readers-panel',
 
 	initComponent: function() {
 		this.store = Ext.create( 'Ext.data.JsonStore', {

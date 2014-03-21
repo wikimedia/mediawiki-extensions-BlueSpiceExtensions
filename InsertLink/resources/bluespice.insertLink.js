@@ -14,18 +14,12 @@
 //PW(28.09.2013) TODO: use FormPanelFileLink context 
 onFileDialogFile = function(path) {
 	Ext.getCmp('BSInserLinkTargetUrl').setValue(path);
-}
+};
 //PW(28.09.2013) TODO: use FormPanelFileLink context 
 onFileDialogCancel = function() {
-}
+};
 
 $(document).ready(function() {
-	if (bsInsertLinkUseFilelinkApplet) {
-		if (navigator.appName == 'Microsoft Internet Explorer') {
-			bsInsertLinkUseFilelinkApplet = false;
-		}
-	}
-
 	$('#bs-editbutton-insertlink').on('click', function() {
 		var me = this;
 		Ext.require('BS.InsertLink.Window', function() {
@@ -108,7 +102,7 @@ $(document).bind('BsVisualEditorActionsInit', function(event, plugin, buttons, c
 
 var BsInsertLinkWikiTextConnector = {
 	getData: function() {
-		return {code: bs.util.selection.save()}
+		return {code: bs.util.selection.save()};
 	},
 	applyData: function(window, data) {
 		if (data.href === "" || data.href === "mailto:" || data.href === "href://") {
@@ -129,7 +123,7 @@ var BsInsertLinkWikiTextConnector = {
 		}
 		bs.util.selection.restore(data.code);
 	}
-}
+};
 
 var BsInsertLinkVisualEditorConnector = {
 	getData: function(plugin, editor) {
@@ -225,4 +219,4 @@ var BsInsertLinkVisualEditorConnector = {
 		//editor.selection.select(newAnchor, false);
 		//editor.selection.collapse(false);
 	}
-}
+};

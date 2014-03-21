@@ -400,12 +400,14 @@
 
     <fieldType name="text_edge" class="solr.TextField" positionIncrementGap="100" >
       <analyzer type="index">
-        <tokenizer class="solr.LowerCaseTokenizerFactory"/>
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+		<filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="100" side="front" />
       </analyzer>
 	  <analyzer type="query">
-      <tokenizer class="solr.LowerCaseTokenizerFactory"/>
-   </analyzer>
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+		<filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
     </fieldType>
 
     <!-- Just like text_general except it reverses the characters of
@@ -413,7 +415,7 @@
 
     <fieldType name="text_spell" class="solr.TextField" positionIncrementGap="100" >
       <analyzer>
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>

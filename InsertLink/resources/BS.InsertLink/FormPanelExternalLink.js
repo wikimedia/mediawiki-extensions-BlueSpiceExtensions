@@ -16,7 +16,7 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 	protocols : [
 		'http://',
 		'https://',
-		'//',
+		'//'
 	],
 	beforeInitComponent: function() {
 		this.setTitle( mw.message('bs-insertlink-tab_external_link').plain() );
@@ -26,7 +26,7 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 			fieldLabel: mw.message('bs-insertlink-label_link').plain(),
 			value: 'http://',
 			width: 600,
-			allowBlank: false,
+			allowBlank: false
 		});
 
 		this.tfTargetUrl.on('focus', this.onTargetUrlFocus, this);

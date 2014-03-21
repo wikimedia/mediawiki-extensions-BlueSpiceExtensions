@@ -110,6 +110,7 @@ class UniversalExport extends BsExtensionMW {
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+		$this->setHook( 'BeforePageDisplay' );
 
 		//Configuration variables
 		$aMetadataDefaults = array(
@@ -145,6 +146,11 @@ class UniversalExport extends BsExtensionMW {
 		return $aPrefs;
 	}
 
+	public function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		$out->addModuleStyles( 'ext.bluespice.universalExport.css' );
+		return true;
+	}
+	
 	/**
 	 * Hook-Handler for Hook 'BSStatebarAddSortBodyVars'
 	 * @param array $aSortBodyVars

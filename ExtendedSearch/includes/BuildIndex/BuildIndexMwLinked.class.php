@@ -59,8 +59,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 		if ( $iArticleID != null && is_int( $iArticleID ) ) {
 			$clauses[] = 'el_from = ' . $iArticleID;
 		}
-		$options = $this->getLimitForDb();
-		$this->documentsDb = $this->oDbr->select( $tables, $fields, $clauses, __METHOD__, $options );
+		$this->documentsDb = $this->oDbr->select( $tables, $fields, $clauses, __METHOD__ );
 
 		$this->totalNoDocumentsCrawled = $this->oDbr->numRows( $this->documentsDb );
 		return $this->totalNoDocumentsCrawled;
@@ -86,7 +85,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	public function indexCrawledDocuments() {
 		while ( $document = $this->oDbr->fetchObject( $this->documentsDb ) ) {
 			$this->count++;
-			set_time_limit( $this->iTimeLimit );
+			if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
 			if ( $this->doesLinkedPathFilterMatch( $document->el_to ) ) continue;
 
@@ -122,8 +121,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 			try {
 				$uniqueIdForDocument = $this->oMainControl->getUniqueId( -1, $path );
 				$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
-			}
-			catch ( Exception $e ) {
+			} catch ( Exception $e ) {
 				$this->writeLog( 'Error indexing file '.$document->el_to.' with errormessage '.$e->getMessage() );
 				continue;
 			}

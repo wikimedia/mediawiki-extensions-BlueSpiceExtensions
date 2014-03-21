@@ -118,7 +118,7 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBeforePageDisplay( $out, $skin ) {
-		if ( $out->getRequest()->getVal( 'action', 'view') == 'view' && $out->getTitle()->isContentPage() ) {
+		if ( $out->getRequest()->getVal( 'action', 'view') == 'view' && !$out->getTitle()->isSpecialPage() ) {
 			$out->addModules( 'ext.bluespice.responsibleEditors' );
 			$out->addModuleStyles( 'ext.bluespice.responsibleEditors.styles' );
 

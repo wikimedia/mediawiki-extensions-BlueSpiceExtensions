@@ -71,7 +71,6 @@ class UserManager extends BsExtensionMW {
 			'message' => 'bs-usermanager-label'
 		) );
 
-		BsConfig::registerVar( 'MW::UserManager::AllowPasswordChange', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-usermanager-pref-AllowPasswordChange', 'toggle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -79,15 +78,15 @@ class UserManager extends BsExtensionMW {
 		//if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$iLimit     = $oStoreParams->getLimit();
-		$iStart     = $oStoreParams->getStart();
-		$sSort      = $oStoreParams->getSort( 'user_name' );
+		$iLimit = $oStoreParams->getLimit();
+		$iStart = $oStoreParams->getStart();
+		$sSort = $oStoreParams->getSort( 'user_name' );
 		$sDirection = $oStoreParams->getDirection();
-		$aFilters   = $oStoreParams->getFilter();
+		$aFilters = $oStoreParams->getFilter();
 
 		$aSortingParams = json_decode( $sSort );
 		if ( is_array( $aSortingParams ) ) {
-			$sSort      = $aSortingParams[0]->property;
+			$sSort = $aSortingParams[0]->property;
 			$sDirection = $aSortingParams[0]->direction;
 		}
 
@@ -368,18 +367,12 @@ class UserManager extends BsExtensionMW {
 			'message' => array()
 		);
 
-		if ( !BsConfig::get( 'MW::UserManager::AllowPasswordChange' ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-not_allowed' )->plain();
-		}
-
 		$oUser = User::newFromName( $sUsername );
 
 		if ( $oUser->getId() === 0 ) {
 			$aAnswer['success'] = false;
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-id_noexist' )->plain(); // id_noexist = 'This user ID does not exist'
 		}
-
 		if ( strpos( $sPassword, '\\' ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(

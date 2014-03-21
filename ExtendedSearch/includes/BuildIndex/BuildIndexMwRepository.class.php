@@ -43,8 +43,8 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
-		$this->oDbr = wfGetDB( DB_SLAVE );
 		parent::__construct( $oMainControl );
+		$this->oDbr = wfGetDB( DB_SLAVE );
 	}
 
 	/**
@@ -60,9 +60,10 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 			'img_timestamp'
 		);
 		$clauses = 'img_major_mime = \'application\'';
-		$options = $this->getLimitForDb();
-		$this->documentsDb = $this->oDbr->select( $tables, $fields, $clauses, __METHOD__, $options );
+
+		$this->documentsDb = $this->oDbr->select( $tables, $fields, $clauses, __METHOD__ );
 		$this->totalNoDocumentsCrawled = $this->oDbr->numRows( $this->documentsDb );
+
 		return $this->totalNoDocumentsCrawled;
 	}
 
@@ -101,7 +102,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	public function indexCrawledDocuments() {
 		while ( $document = $this->oDbr->fetchObject( $this->documentsDb ) ) {
 			$this->count++;
-			set_time_limit( $this->iTimeLimit );
+			 if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
 			$this->writeLog( $document->img_name );
 

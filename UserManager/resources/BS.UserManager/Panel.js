@@ -14,6 +14,7 @@
 
 Ext.define( 'BS.UserManager.Panel', {
 	extend: 'BS.CRUDGridPanel',
+	id: 'bs-usermanager-extgrid',
 	features: [],
 	initComponent: function() {
 		this.smMain = this.smMain || Ext.create( 'Ext.selection.RowModel', {

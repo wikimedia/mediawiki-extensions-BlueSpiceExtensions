@@ -191,10 +191,13 @@ class WidgetBar extends BsExtensionMW {
 			$aViews[] = $oWidgetListView->setWidgets( $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle ) );
 			return $aViews;
 		}
+		
+		$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
+		if( empty($aWidgets) ) {
+			$aWidgets = $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle );
+		}
+		$oWidgetListView->setWidgets( $aWidgets );
 
-		$oWidgetListView->setWidgets(
-			BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets()
-		);
 		$aViews[] = $oWidgetListView;
 		return $aViews;
 	}

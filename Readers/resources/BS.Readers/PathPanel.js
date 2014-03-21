@@ -13,6 +13,7 @@
 
 Ext.define( 'BS.Readers.PathPanel', {
 	extend: 'Ext.grid.Panel',
+	id: 'bs-readers-pathpanel',
 
 	initComponent: function() {
 		this.store = Ext.create( 'Ext.data.JsonStore', {

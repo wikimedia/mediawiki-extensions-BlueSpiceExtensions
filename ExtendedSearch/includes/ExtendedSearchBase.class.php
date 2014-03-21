@@ -172,7 +172,7 @@ class ExtendedSearchBase {
 		$vNamespace = $this->checkSearchstringForNamespace( $sSearchString, $sSolrSearchString );
 
 		$aQuery = $oSearchOptions->getSolrAutocompleteQuery();
-		$aQuery['searchString'] = 'titleEdge:('.$sSolrSearchString.')';
+		$aQuery['searchString'] = 'titleEdge:('.$sSolrSearchString.') OR titleWord:("'.$sSolrSearchString.'")';
 		$aQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 
 		if ( $vNamespace !== false ) {
@@ -183,7 +183,7 @@ class ExtendedSearchBase {
 				}
 				$i++;
 			}
-			$aQuery['searchOptions']['fq'][$i] = '{!tag=na}+namespace:(' . $vNamespace . ')';
+			$aQuery['searchOptions']['fq'][$i] = 'namespace:(' . $vNamespace . ')';
 		}
 
 		try {
@@ -224,7 +224,7 @@ class ExtendedSearchBase {
 		}
 
 		$aResults = array();
-		$iID      = 0;
+		$iID = 0;
 
 		if ( !empty( $oDocuments ) ) {
 			$oTitle = null;
@@ -362,16 +362,10 @@ class ExtendedSearchBase {
 	 * @param string $sOrigin origin of request
 	 * @return View $oViewMlt MoreLikeThis view
 	 */
-	public function getViewMoreLikeThis( $oTitle, $sOrigin ) {
+	public function getViewMoreLikeThis( $oTitle ) {
 		$oViewMlt = new ViewMoreLikeThis;
 		if ( $oTitle->isSpecialPage() ) return $oViewMlt;
 
-		if ( $sOrigin === 'widgetbar' ) {
-			global $wgTitle;
-			$oTitle = $wgTitle;
-		}
-
-		$oViewMlt->setOption( 'origin', $sOrigin );
 		$aMltQuery = SearchOptions::getInstance()->getSolrMltQuery( $oTitle );
 		try {
 			$oResults = SearchService::getInstance()->mlt( $aMltQuery['searchString'], $aMltQuery['offset'], $aMltQuery['searchLimit'], $aMltQuery['searchOptions'] );
@@ -396,9 +390,6 @@ class ExtendedSearchBase {
 				if ( $oMltTitle->isRedirect() ) continue;
 
 				$sHtml = $oMltTitle->getPrefixedText();
-				if ( $sOrigin === 'widgetbar' ) {
-					$sHtml = BsStringHelper::shorten( $oMltTitle->getPrefixedText(), array( 'max-length' => 18, 'position' => 'middle' ) );
-				}
 				$aMlt[] = BsLinkProvider::makeLink( $oMltTitle, $sHtml );
 			}
 		}
@@ -417,8 +408,8 @@ class ExtendedSearchBase {
 	 */
 	public function recentSearchTerms( $iCount, $iTime ) {
 		$oDbr = wfGetDB( DB_SLAVE );
-		$iCount = intval( $iCount );
-		$iTime = intval( $iTime );
+		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
+		$iTime =  BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
 
 		$aConditions = array();
 		if ( $iTime !== 0 ) {
@@ -429,9 +420,9 @@ class ExtendedSearchBase {
 		}
 
 		$res = $oDbr->select(
-				'bs_searchstats',
-				'stats_term',
-				$aConditions
+			'bs_searchstats',
+			'stats_term',
+			$aConditions
 		);
 
 		$aResults = array();
@@ -448,7 +439,7 @@ class ExtendedSearchBase {
 
 				$sTerm = mb_strtolower( $sTerm );
 				if ( array_key_exists( $sTerm, $aTerms ) ) {
-					$aTerms[$sTerm] = $aTerms[$sTerm] + 1;
+					$aTerms[$sTerm] += 1;
 				} else {
 					$aTerms[$sTerm] = 1;
 				}

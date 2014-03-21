@@ -49,9 +49,9 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl, $oFile ) {
+		parent::__construct( $oMainControl );
 		$this->oFile = $oFile;
 		$this->oDbr = wfGetDB( DB_SLAVE );
-		parent::__construct( $oMainControl );
 	}
 
 	/**

@@ -245,6 +245,7 @@ class SecureFileStore extends BsExtensionMW {
 		header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', $aFileStat['mtime'] ) . ' GMT' );
 		header( "Content-Type: $sFileMime" );
 		header( "Content-Disposition: $sFileDispo; filename=\"$sFileName\"" );
+		header( "Cache-Control: no-cache,must-revalidate", true ); //Otherwise IE might deliver old version
 
 		if ( !empty( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ) {
 			$sModSince  = preg_replace( '/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE'] );

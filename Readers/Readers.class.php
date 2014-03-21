@@ -57,7 +57,7 @@ class Readers extends BsExtensionMW {
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
-										'bluespice' => '2.22.0',
+										'bluespice' => '2.22.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::Readers';
@@ -174,9 +174,9 @@ class Readers extends BsExtensionMW {
 		//Add menu entry
 		$aContentActions['readersbutton'] = array(
 			'class' => false,
-			'text'  => wfMessage( 'bs-readers-contentactions-label' )->plain(),
-			'href'  => $oSpecialPageWithParam->getLocalURL(),
-			'id'    => 'ca-readers'
+			'text' => wfMessage( 'bs-readers-contentactions-label' )->plain(),
+			'href' => $oSpecialPageWithParam->getLocalURL(),
+			'id' => 'ca-readers'
 		);
 
 		return true;
@@ -240,7 +240,7 @@ class Readers extends BsExtensionMW {
 
 		if ( $oDbr->numRows( $res ) > 0 ) {
 			$aParams = array();
-			$aParams['width']  = BsConfig::get( 'MW::Authors::ImageWidth' );
+			$aParams['width'] = BsConfig::get( 'MW::Authors::ImageWidth' );
 			$aParams['height'] = BsConfig::get( 'MW::Authors::ImageHeight' );
 
 			$oViewReaders = new ViewReaders();
@@ -267,9 +267,9 @@ class Readers extends BsExtensionMW {
 		$iArticleID = $oTitle->getArticleID();
 
 		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$iLimit     = $oStoreParams->getLimit();
-		$iStart     = $oStoreParams->getStart();
-		$sSort      = $oStoreParams->getSort( 'MAX(readers_ts)' );
+		$iLimit = $oStoreParams->getLimit();
+		$iStart = $oStoreParams->getStart();
+		$sSort = $oStoreParams->getSort( 'MAX(readers_ts)' );
 		$sDirection = $oStoreParams->getDirection();
 
 		if ( $sSort == 'user_page' ) $sSort = 'readers_user_name';
@@ -282,15 +282,16 @@ class Readers extends BsExtensionMW {
 				__METHOD__,
 				array(
 					'GROUP BY' => 'readers_user_id',
-					'ORDER BY' => '' . $sSort . ' ' . $sDirection .'',
-					'LIMIT'    => $iLimit,
-					'OFFSET'   => $iStart
+					'ORDER BY' => $sSort . ' ' . $sDirection,
+					'LIMIT' => $iLimit,
+					'OFFSET' => $iStart
 				)
 		);
 
 		$aUsers = array();
 		if ( $oDbr->numRows( $res ) > 0 ) {
 			$aParams = array();
+			$oLanguage = RequestContext::getMain()->getLanguage();
 			foreach ( $res as $row ) {
 				$oUser = User::newFromId( (int)$row->readers_user_id );
 				$oTitle = Title::makeTitle( NS_USER, $oUser->getName() );
@@ -306,7 +307,7 @@ class Readers extends BsExtensionMW {
 				$aTmpUser['user_page'] = $oTitle->getLocalURL();
 				$aTmpUser['user_readers'] = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() )->getLocalURL();
 				$aTmpUser['user_ts'] = $row->readers_ts;
-				$aTmpUser['user_date'] = RequestContext::getMain()->getLanguage()->timeanddate( $row->readers_ts );
+				$aTmpUser['user_date'] = $oLanguage->timeanddate( $row->readers_ts );
 
 				$aUsers['users'][] = $aTmpUser;
 			}
@@ -390,13 +391,14 @@ class Readers extends BsExtensionMW {
 
 		$aPages = array();
 		if ( $oDbr->numRows( $res ) > 0 ) {
+			$oLanguage = RequestContext::getMain()->getLanguage();
 			foreach ( $res as $row ) {
 				$oTitle = Title::newFromID( $row->readers_page_id );
 
 				$aTmpPage = array();
 				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
 				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
-				$aTmpPage['pv_ts'] = RequestContext::getMain()->getLanguage()->timeanddate( $row->readers_ts );
+				$aTmpPage['pv_ts'] = $oLanguage->timeanddate( $row->readers_ts );
 
 				$aPages['page'][] = $aTmpPage;
 			}

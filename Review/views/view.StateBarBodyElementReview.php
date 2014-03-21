@@ -24,6 +24,7 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 	protected $sStatusReasonText = '';
 	protected $bVotable = false;
 	protected $sComment = '';
+	protected $aComments = array();
 	protected $oReview = null;
 	protected $aButtons = array();
 
@@ -45,13 +46,20 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 		$aOut[] =	'<div class="bs-statebar-body-itembody" id="sbb-'.$this->sKey.'-text">';
 		$aOut[] =		$this->sStatusText;
 		$aOut[] =		$this->sStatusReasonText;
-		if( $this->bVotable ) {
-			$aOut[] =	'<h4 class="bs-statebar-body-itemheading" id="sbb-DoReview-heading">'.wfMessage( 'bs-review-statebar-body-do-review' )->plain().'</h4>';
-			if( !empty($this->sComment) ) {
-				$sUserName = BsCore::getUserDisplayName(User::newFromId( $this->oReview->owner ));
-				$aOut[] = '<b>'.wfMessage('bs-review-ownercomment', $sUserName)->plain()."</b><br /><i>".$this->sComment."</i>";
+		if( !empty($this->aComments) ) {
+			$aOut[] = '<br /><br /><u>'.wfMessage('bs-review-comments')->plain()."</u><br />";
+			foreach( $this->aComments as $sComment ) {
+				$aOut[] = $sComment.'<br />';
 			}
-			$aOut[] = '<div class="bs-statebar-body-reviewvotesection">';
+		}
+		$aOut[] =	'</div>';
+		if( $this->bVotable ) {
+			$aOut[] = '<h4 class="bs-statebar-body-itemheading" id="sbb-DoReview-heading">'.wfMessage( 'bs-review-statebar-body-do-review' )->plain().'</h4>';
+			$aOut[] = '<div class="bs-statebar-body-itembody" id="sbb-DoReview-text">';
+			$aOut[] =	'<div class="bs-statebar-body-reviewvotesection">';
+			if( !empty($this->sComment) ) {
+				$aOut[] = $this->sComment.'<br />';
+			}
 			$aOut[] =	'<label for="bs-review-voteresponse-comment">';
 			$aOut[] =		wfMessage('bs-review-commentinputlabel')->plain();
 			$aOut[] =	'</label>';
@@ -71,10 +79,9 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 					$aButton['text']
 				);
 			}
-
 			$aOut[] =	'</div>';
+			$aOut[] = '<div>';
 		}
-		$aOut[] =	'</div>';
 		$aOut[] = '</div>';
 
 		return implode( "\n", $aOut );
@@ -99,6 +106,10 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 	}
 	public function setComment( $sComment ) {
 		$this->sComment = $sComment;
+		return $this;
+	}
+	public function setPreceedingCommentsList( $aComments ) {
+		$this->aComments = $aComments;
 		return $this;
 	}
 	public function setVotable( $bVotable = true ) {

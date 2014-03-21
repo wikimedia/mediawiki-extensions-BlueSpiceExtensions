@@ -73,14 +73,6 @@ $messages['en'] = array(
 
 	'UserManager'                             => 'User manager',
 	'prefs-UserManager'                       => 'User manager',
-	'bs-usermanager-pref-AllowPasswordChange' => 'Allow change of password',
-	'bs-usermanager-pref-UTF8DecodeInput'     => 'Decode input',
-	'bs-usermanager-pref-LinkUsers'           => 'Link to user pages',
-	'bs-usermanager-pref-LinkEmail'           => 'Link to e-mail addresses',
-	'bs-usermanager-pref-AllowEdit'           => 'Allow edit',
-	'bs-usermanager-pref-AllowDelete'         => 'Allow deletion',
-	'bs-usermanager-pref-AllowGroups'         => 'Allow groups',
-	'bs-usermanager-pref-AllowCreate'         => 'Allow creation',
 	
 	//JavaScript
 	'bs-usermanager-headerUsername' => 'User name',
@@ -172,14 +164,6 @@ $messages['de'] = array(
 
 	'UserManager'                             => 'Benutzerverwaltung',
 	'prefs-UserManager'                       => 'Benutzerverwaltung',
-	'bs-usermanager-pref-AllowPasswordChange' => 'Ändern des Passworts zulassen',
-	'bs-usermanager-pref-UTF8DecodeInput'     => 'Eingabe UTF8 decodieren',
-	'bs-usermanager-pref-LinkUsers'           => 'Benutzerseiten verlinken',
-	'bs-usermanager-pref-LinkEmail'           => 'E-Mail-Adressen verlinken',
-	'bs-usermanager-pref-AllowEdit'           => 'Bearbeiten zulassen',
-	'bs-usermanager-pref-AllowDelete'         => 'Löschen zulassen',
-	'bs-usermanager-pref-AllowGroups'         => 'Gruppen zulassen',
-	'bs-usermanager-pref-AllowCreate'         => 'Erstellen zulassen',
 	
 	//JavaScript
 	'bs-usermanager-headerUsername' => 'Benutzername',

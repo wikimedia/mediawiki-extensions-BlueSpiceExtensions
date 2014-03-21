@@ -2,6 +2,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 	extend: 'BS.Panel',
 	layout: 'form',
 	modal: true,
+	id: 'bs-resped-assignment-panel',
 	
 	afterInitComponent: function() {
 		this.strAvailableRespEds = Ext.create('Ext.data.JsonStore', {

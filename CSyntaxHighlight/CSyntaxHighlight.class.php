@@ -62,6 +62,7 @@ class CSyntaxHighlight extends BsExtensionMW {
 				'Java'        => array( 'java' ),
 				'JavaFX'      => array( 'jfx', 'javafx' ),
 				'JScript'     => array( 'js', 'jscript', 'javascript' ),
+				'Lilypond'    => array( 'ly', 'lilypond' ),
 				'Perl'        => array( 'perl', 'pl' ),
 				'Php'         => array( 'php' ),
 				'Plain'       => array( 'text', 'plain' ),

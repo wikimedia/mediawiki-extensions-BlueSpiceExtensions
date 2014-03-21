@@ -183,8 +183,13 @@ class UserSidebar extends BsExtensionMW {
 			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
 			return true;
 		}
+		
+		$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
+		if( empty($aWidgets) ) {
+			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
+		}
 
-		$aViews = array_merge( $aViews, BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets() );
+		$aViews = array_merge( $aViews, $aWidgets );
 		return true;
 	}
 

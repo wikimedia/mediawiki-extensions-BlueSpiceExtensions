@@ -17,7 +17,7 @@
     min-height: 37px;
     width: auto;
 	background-color: transparent;
-	padding-top: 10px;
+	padding: 10px 0 0 10px;
 }
 .bs-statebar-viewtoggler {
     cursor: pointer;
@@ -75,7 +75,6 @@
     color: #060606;
     font-size: 12px;
     line-height: 14px;
-    padding: 2px 0 4px 0;
 }
 
 .bs-statebar-top-icon {

@@ -45,7 +45,7 @@ $messages['en'] = array(
 	'bs-flexiskin-headerActive' => 'Active',
     'bs-flexiskin-labelBackgroundColor' => 'Background color',
     'bs-flexiskin-headerHeader' => 'Header',
-    'bs-flexiskin-labelHeaderUpload' => 'Logo',
+	'bs-flexiskin-labelLogoUpload' => 'Logo',
     'bs-flexiskin-labelBackgroundUpload' => 'Background image',
 	'bs-flexiskin-no-repeat' => 'no repeat',
 	'bs-flexiskin-repeat-x' => 'horizontal repeat',
@@ -61,7 +61,9 @@ $messages['en'] = array(
     'bs-flexiskin-right' => 'right',
     'bs-flexiskin-center' => 'center',
     'bs-flexiskin-labelWidth' => 'Complete width (px)',
-	'bs-flexiskin-labelFullWidth' => 'Maximum width'
+	'bs-flexiskin-labelFullWidth' => 'Maximum width',
+	'bs-flexiskin-error-nameEmpty' => 'Please enter a valid name for the Flexiskin you want to create.',
+	'bs-flexiskin-error-templateNotExists' => 'The chosen template does not exist.'
 );
 
 $messages['de'] = array(
@@ -111,13 +113,16 @@ $messages['de'] = array(
     'bs-flexiskin-right' => 'rechts',
     'bs-flexiskin-center' => 'mittig',
     'bs-flexiskin-labelWidth' => 'Gesamtbreite (px)',
-	'bs-flexiskin-labelFullWidth' => 'Maximale Breite'
+	'bs-flexiskin-labelFullWidth' => 'Maximale Breite',
+	'bs-flexiskin-error-nameEmpty' => 'Bitte gib einen validen Namen für den Flexiskin den du erstellen möchtest ein.',
+	'bs-flexiskin-error-templateNotExists' => 'Das ausgewählte Template existiert nicht.'
 );
 
 $messages['de-formal'] = array(
 	'bs-flexiskin-dialogClose' => 'Sind Sie sicher, dass Sie die Vorschau schließen möchten?',
 	'bs-flexiskin-dialogReset' => 'Der Skin wird auf den zuletzt gespeicherten Stand zurückgesetzt. Möchten Sie fortfahren?',
-	'bs-flexiskin-confirmDeleteSkin' => 'Sind Sie sicher, dass Sie diesen Skin löschen möchten?'
+	'bs-flexiskin-confirmDeleteSkin' => 'Sind Sie sicher, dass Sie diesen Skin löschen möchten?',
+	'bs-flexiskin-error-nameEmpty' => 'Bitte geben Sie einen validen Namen für den Flexiskin den Sie erstellen möchten ein.'
 );
 
 $messages['qqq'] = array();

@@ -7,5 +7,6 @@
 }
 
 .bs-universalexport-exportexclude {
-	background-color:#F5F5F5;
+	background-color:#ddd;
+	display: inline-block;
 }

@@ -3,6 +3,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	
 	//Custom Settings
 	allowEdit: true,
+	id: 'bs-resped-manager-panel',
 	
 	initComponent: function() {		
 		this.allowEdit = mw.config.get('bsUserMayChangeResponsibilities');
@@ -266,8 +267,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 
 	renderResponsibleEditor: function( aValue, oMetaData, oRecord, iRowIndex, iColIndex, oStore ) {
 		if( typeof(aValue) === 'undefined' || aValue.length === 0) {
-			return String.format(
-				'<em style="color: #A0A0A0">{0}</em>',
+			return '<em style="color: #A0A0A0">{0}</em>'.format(
 				mw.message('bs-responsibleeditors-columnResponsibleEditorNotSet').plain()
 			);
 		}

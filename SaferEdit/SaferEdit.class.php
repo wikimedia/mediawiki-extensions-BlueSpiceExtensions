@@ -23,7 +23,6 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage SaferEdit
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -84,7 +83,7 @@ class SaferEdit extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		BsConfig::registerVar( 'MW::SaferEdit::UseSE', false, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-UseSE', 'toggle' );
+		BsConfig::registerVar( 'MW::SaferEdit::UseSE', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-UseSE', 'toggle' );
 		//BsConfig::registerVar( 'MW::SaferEdit::HasTexts', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-HasTexts', 'toggle' );
 		BsConfig::registerVar( 'MW::SaferEdit::EditSection', -1, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_INT|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-EditSection', 'int' );
 		BsConfig::registerVar( 'MW::SaferEdit::Interval', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-Interval', 'int' );
@@ -178,7 +177,7 @@ class SaferEdit extends BsExtensionMW {
 	 * @return bool true do let other hooked methods be executed
 	 */
 	public function clearSaferEdit( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision ) {
-		$this->doClearSaferEdit( $user->mName, $article->getTitle()->getDbKey(), $article->getTitle()->getNamespace() );
+		$this->doClearSaferEdit( $user->getName(), $article->getTitle()->getDbKey(), $article->getTitle()->getNamespace() );
 		return true;
 	}
 
@@ -188,7 +187,7 @@ class SaferEdit extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStatebarAddSortTopVars( &$aSortTopVars ) {
-		$aSortTopVars['statebartopsaferedit']        = wfMessage( 'bs-saferedit-statebartopsaferedit' )->plain();
+		$aSortTopVars['statebartopsaferedit'] = wfMessage( 'bs-saferedit-statebartopsaferedit' )->plain();
 		$aSortTopVars['statebartopsafereditediting'] = wfMessage( 'bs-saferedit-statebartopsafereditediting' )->plain();
 		return true;
 	}
@@ -224,11 +223,10 @@ class SaferEdit extends BsExtensionMW {
 	 * @return array
 	 */
 	public function getIntermediateEditsForCurrentTitle( $oTitle ) {
-		if( is_array($this->aIntermediateEditsForCurrentTitle)) return $this->aIntermediateEditsForCurrentTitle;
+		if ( is_array( $this->aIntermediateEditsForCurrentTitle ) ) return $this->aIntermediateEditsForCurrentTitle;
 
-		if( is_null($oTitle) || !$oTitle->exists() ) {
-			$this->aIntermediateEditsForCurrentTitle = array();
-			return array();
+		if ( is_null( $oTitle ) || !$oTitle->exists() ) {
+			return $this->aIntermediateEditsForCurrentTitle = array();
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -251,12 +249,11 @@ class SaferEdit extends BsExtensionMW {
 		return $this->aIntermediateEditsForCurrentTitle;
 	}
 
-	
 	function parseSaferEdit( $oTitle ) {
 		$oUser = $this->getUser();
 
 		$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle( $oTitle );
-		if ( empty($aIntermediateEdits) ) return false;
+		if ( empty( $aIntermediateEdits ) ) return false;
 
 		foreach ( $aIntermediateEdits as $oEdit ) {
 			$sOrigText = trim( BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) );
@@ -267,14 +264,14 @@ class SaferEdit extends BsExtensionMW {
 			}
 
 			if ( strcmp( $sOrigText, trim( $oEdit->se_text ) ) === 0 ) {
-				$this->doClearSaferEdit( $oUser->getName(), $oTitle->getPrefixedDBkey(), $oTitle->getNamespace() );
+				$this->doClearSaferEdit( $oEdit->se_user_name, $oTitle->getPrefixedDBkey(), $oTitle->getNamespace() );
 				$this->aIntermediateEditsForCurrentTitle = null; //force reload
 				return false;
 			}
 
 			if ( $oEdit->se_user_name == $oUser->getName() ) {
 				if ( $this->getRequest()->getVal( 'action', 'view' ) == 'edit' ) {
-					$this->getOutput()->addJsConfigVars('bsSaferEditHasTexts', true );
+					$this->getOutput()->addJsConfigVars( 'bsSaferEditHasTexts', true );
 				}
 			}
 		}
@@ -307,7 +304,7 @@ class SaferEdit extends BsExtensionMW {
 		$sTable = 'bs_saferedit';
 		$aFields = array(
 			"se_timestamp" => date( "YmdHis" ),
-			"se_text"      => $sText,
+			"se_text" => $sText,
 		);
 		$aConditions = array(
 			"se_user_name"      => $sUsername,
@@ -325,9 +322,9 @@ class SaferEdit extends BsExtensionMW {
 
 			$oTitle->invalidateCache();
 			return $db->update( 
-				$sTable, 
+				$sTable,
 				$aFields,
-				array( "se_id" => $oRow->se_id)
+				array( "se_id" => $oRow->se_id )
 			);
 		}
 
@@ -362,15 +359,15 @@ class SaferEdit extends BsExtensionMW {
 
 		$sPageTitle = str_replace( ' ', '_', $sPageTitle );
 		$db = wfGetDB( DB_MASTER );
-		$db->delete( 
+		$db->delete(
 			'bs_saferedit',
 			array(
-				"se_user_name"      => $sUserName,
-				"se_page_title"     => $oTitle->getDBkey(),
+				"se_user_name" => $sUserName,
+				"se_page_title" => $oTitle->getDBkey(),
 				"se_page_namespace" => $iPageNamespace,
 			)
 		);
-		
+
 		Title::newFromText( $sPageTitle, $iPageNamespace )->invalidateCache();
 		return true;
 	}
@@ -383,15 +380,15 @@ class SaferEdit extends BsExtensionMW {
 	public static function getLostTexts( $sUname, $sPageTitle, $iPageNamespace, $iSection ) {
 		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
 		$oTitle = Title::newFromText( $sPageTitle, $iPageNamespace );
-		$oDbw = wfGetDB( DB_SLAVE );
 
+		$oDbw = wfGetDB( DB_SLAVE );
 		$res = $oDbw->select(
 			'bs_saferedit',
 			'se_text, se_timestamp, se_edit_section',
 			array(
-				"se_page_title"     => $oTitle->getDBkey(),
+				"se_page_title" => $oTitle->getDBkey(),
 				"se_page_namespace" => $iPageNamespace,
-				"se_user_name"      => $sUname
+				"se_user_name" => $sUname
 			),
 			'',
 			array( "ORDER BY" => "se_id DESC" )
@@ -399,17 +396,13 @@ class SaferEdit extends BsExtensionMW {
 		if ( $oDbw->numRows( $res ) > 0 ) {
 			$row = $oDbw->fetchRow( $res );
 
-			//$oTitle   = Title::newFromText( $sPageTitle );
-			$oArticle = Article::newFromID( $oTitle->getArticleID() );
-			if ( is_object( $oArticle ) ) {
-				$sOrigText = $oArticle->getRawText();
-				if ( $iSection != -1 ) {
-					global $wgParser;
-					$sOrigText = $wgParser->getSection( $sOrigText, $iSection );
-				}
-			} else {
-				$sOrigText = '';
+			$sOrigText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
+
+			if ( $iSection != -1 ) {
+				global $wgParser;
+				$sOrigText = $wgParser->getSection( $sOrigText, $iSection );
 			}
+
 			if ( $iSection != $row['se_edit_section'] ) {
 				if ( $row['se_edit_section'] == '-1' ) {
 					$sEditUrl = $oTitle->getEditURL();
@@ -417,17 +410,17 @@ class SaferEdit extends BsExtensionMW {
 					$sEditUrl = $oTitle->getEditURL()."&section=".$row['se_edit_section'];
 				}
 				$aData = array(
-						"ts" => BsFormatConverter::mwTimestampToAgeString( $row['se_timestamp'] ),
-						"savedOtherSection" => "1",
-						"redirect" => $sEditUrl
+					"ts" => BsFormatConverter::mwTimestampToAgeString( $row['se_timestamp'] ),
+					"savedOtherSection" => "1",
+					"redirect" => $sEditUrl
 				);
-			} else if ( strcmp( $sOrigText, urldecode($row['se_text'] ) ) == 0 ) {
+			} elseif ( strcmp( $sOrigText, urldecode($row['se_text'] ) ) == 0 ) {
 				$aData = array( "notexts" => "1" );
 			} else {
 				$str = urldecode($row['se_text']);
 				$aData = array(
 					"ts" => BsFormatConverter::mwTimestampToAgeString( $row['se_timestamp'] ),
-					"html" => BsCore::getInstance()->parseWikiText( $str ), //breaks on Mainpage
+					"html" => BsCore::getInstance()->parseWikiText( $str, RequestContext::getMain()->getTitle() ), //breaks on Mainpage
 					"wiki" => $str,
 					"section" => $row['se_edit_section'],
 					"notexts" => 0

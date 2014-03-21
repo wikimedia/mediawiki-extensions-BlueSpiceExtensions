@@ -44,6 +44,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			items: [this.pfBackgroundColor]
 		});
 		this.tfCustomBackgroundColor = Ext.create('Ext.form.TextField', {
+			id: 'bs-flexiskin-general-custom-background-field',
 			fieldLabel: mw.message('bs-flexiskin-labelCustomBackgroundColor').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',

@@ -105,7 +105,7 @@ class ExtendedSearch extends BsExtensionMW {
 
 		// max 32 chars with userlevel! 123 456789012345678 90123456789012 '::' counts as one char :-)
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefFuzziness', '0.5', BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-defduzziness' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResults', 25, BsConfig::TYPE_INT|BsConfig::LEVEL_USER,  'bs-extendedsearch-pref-limitresultdef', 'int' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResults', 15, BsConfig::TYPE_INT|BsConfig::LEVEL_USER,  'bs-extendedsearch-pref-limitresultdef', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SearchFiles', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-searchfiles', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::JumpToTitle', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-jumptotitle', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreateSugg', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showcreatesugg', 'toggle' );
@@ -165,10 +165,12 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public static function getSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
-			'bs_searchstats',
-			__DIR__.DS.'db'.DS.'ExtendedSearch.sql'
+			'bs_searchstats', __DIR__.DS.'db'.DS.'ExtendedSearch.sql'
 		);
-
+		$updater->addExtensionField(
+			'bs_searchstats', 'stats_scope',
+			__DIR__.DS.'db'.DS.'ExtendedSearch.stats_scope.patch.sql'
+		);
 		return true;
 	}
 
@@ -205,7 +207,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$oWidgetView
 			->setId( 'bs-extendedsearch-mlt' )
 			->setTitle( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() )
-			->setBody( $this->oExtendedSearchBase->getViewMoreLikeThis( $oTitle, 'widgetbar' )->execute() )
+			->setBody( $this->oExtendedSearchBase->getViewMoreLikeThis( $oTitle )->execute() )
 			->setTooltip( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() )
 			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-extendedsearch-portlet' ) ); //For correct margin and fontsize
 
@@ -235,7 +237,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$oMltListView = new ViewStateBarBodyElement();
 		$oMltListView->setKey( 'MoreLikeThis' );
 		$oMltListView->setHeading( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() );
-		$oMltListView->setBodyText( ExtendedSearchBase::getInstance()->getViewMoreLikeThis( $oTitle, 'statebar' )->execute() );
+		$oMltListView->setBodyText( ExtendedSearchBase::getInstance()->getViewMoreLikeThis( $oTitle )->execute() );
 
 		$aBodyViews['statebarbodymorelikethis'] = $oMltListView;
 		return true;
@@ -262,7 +264,6 @@ class ExtendedSearch extends BsExtensionMW {
 				'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA ) )
 			);
 		}
-
 		return $aPrefs;
 	}
 
@@ -334,7 +335,6 @@ class ExtendedSearch extends BsExtensionMW {
 				'title' => wfMessage( 'bs-extendedsearch-recentsearchterms' )->plain()
 			)
 		);
-
 		return true;
 	}
 
@@ -375,7 +375,6 @@ class ExtendedSearch extends BsExtensionMW {
 		$aSearchBoxKeyValues['method'] = ( 0 == strcasecmp( BsConfig::get( 'MW::ExtendedSearch::FormMethod' ), 'get' ) ) ? 'get' : 'post';
 
 		if ( !empty( SearchOptions::$searchStringRaw ) ) $aSearchBoxKeyValues['SearchTextFieldText'] = SearchOptions::$searchStringRaw;
-
 		return true;
 	}
 
@@ -393,7 +392,6 @@ class ExtendedSearch extends BsExtensionMW {
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onArticleDeleteComplete: '.$e->getMessage() );
 		}
-
 		return true;
 	}
 
@@ -410,7 +408,6 @@ class ExtendedSearch extends BsExtensionMW {
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onArticleSaveComplete: '.$e->getMessage() );
 		}
-
 		return true;
 	}
 
@@ -426,7 +423,6 @@ class ExtendedSearch extends BsExtensionMW {
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onArticleUndelete: '.$e->getMessage() );
 		}
-
 		return true;
 	}
 
@@ -463,7 +459,6 @@ class ExtendedSearch extends BsExtensionMW {
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onTitleMoveComplete: '.$e->getMessage() );
 		}
-
 		return true;
 	}
 
@@ -480,7 +475,6 @@ class ExtendedSearch extends BsExtensionMW {
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileUpload: '.$e->getMessage() );
 		}
-
 		return true;
 	}
 
@@ -503,7 +497,6 @@ class ExtendedSearch extends BsExtensionMW {
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileDeleteComplete: '.$e->getMessage() );
 		}
-
 		return true;
 	}
 
@@ -522,7 +515,6 @@ class ExtendedSearch extends BsExtensionMW {
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileUndeleteComplete: '.$e->getMessage() );
 		}
-
 		return true;
 	}
 

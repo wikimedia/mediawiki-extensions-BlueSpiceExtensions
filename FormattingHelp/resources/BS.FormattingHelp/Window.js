@@ -3,6 +3,7 @@ Ext.define('BS.FormattingHelp.Window', {
 	autoScroll: true,
 	closeAction: 'hide',
 	singleton: true,
+	id: 'bs-formattinghelp-window',
 
 	initComponent: function(){
 		this.setTitle( mw.message('bs-formattinghelp-formatting').plain() );

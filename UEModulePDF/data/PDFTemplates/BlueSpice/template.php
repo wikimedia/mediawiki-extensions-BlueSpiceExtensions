@@ -27,6 +27,7 @@ return array(
 			'stylesheets/styles.css',
 			'../common/stylesheets/geshi-php.css',
 			'../common/stylesheets/fonts.css',
+			//'../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',
 			'../common/fonts/DejaVuSans-Bold.ttf',
 			'../common/fonts/DejaVuSans-Oblique.ttf',

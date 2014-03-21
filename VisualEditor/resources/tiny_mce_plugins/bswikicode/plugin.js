@@ -109,7 +109,7 @@ var BsWikiCode = function() {
 			link: false,
 			sizewidth: false,
 			sizeheight: false
-		}
+		};
 	};
 	
 	this.makeDefaultImageAttributesObject = function() {
@@ -365,7 +365,6 @@ var BsWikiCode = function() {
 				wikiImageObject.sizeheight = htmlImageObject.attr( 'height' );
 			}
 			if (htmlImageObject.css( 'width' )) {
-				console.log( htmlImageObject.css( 'width' ) );
 				var csswidth = htmlImageObject.css( 'width' ).replace('px', '');
 				if ( csswidth !== "0" ) {
 					wikiImageObject.sizewidth = csswidth;
@@ -513,7 +512,7 @@ var BsWikiCode = function() {
 				linkTargetParts = linkTarget.split( ':' ); //Detect protocol
 				protocol= 'none';
 				if( linkTargetParts.length > 1){
-					protocol = linkTargetParts[0]
+					protocol = linkTargetParts[0];
 				}
 
 				if (linkParts.length > 1) {
@@ -553,7 +552,7 @@ var BsWikiCode = function() {
 				hrefAttr = link.match(/href="(.*?)"/i);
 				if (hrefAttr) {
 					target = hrefAttr[1];
-					target = target;//unescape(target);
+					// 03.03.2014 STM ??? target = target; //unescape(target);
 				}
 				// @todo <br /> br-tags bereits in insertLink abfangen oder hier einfügen
 				inner = link.match(/>(.*?)<\/a>/i);
@@ -643,6 +642,7 @@ var BsWikiCode = function() {
 			inTable = false,
 			inTr = false,
 			inTd = false,
+			inTh = false,
 			start = 0,
 			nestLevel = 0;
 		// there is an IE bug with split: split(\n) will not produce an extra element with \n\n.
@@ -698,13 +698,16 @@ var BsWikiCode = function() {
 			} else if (line = lines[i].match(/^\|\}/gi)) {
 				closeLine = '';
 				if (inTd) {
-					closeLine = "</p></td>";
+					closeLine = "</td>";
+				}
+				if (inTh) {
+					closeLine = "</th>";
 				}
 				if (inTr) {
 					closeLine += "</tr>";
 				}
-				lines[i] = closeLine + "</table><br/>" + line[0].substr(2, line[0].length);
-				inTr = inTd = inTable = false;
+				lines[i] = closeLine + "</table>" + line[0].substr(2, line[0].length);
+				inTr = inTd = inTh = inTable = false;
 			} else if ((i === (start + 1)) && (line = lines[i].match(/^\|\+(.*)/gi))) {
 				lines[i] = "<caption>" + line[0].substr(2) + "</caption>";
 			} else if (line = lines[i].match(/^\|\-(.*)/gi)) {
@@ -715,8 +718,12 @@ var BsWikiCode = function() {
 					attr = " " + attr;
 				}
 				if (inTd) {
-					endTd = "</p></td>";
-					inTd = false;
+					endTd = "</td>";
+					inTd = inTh = false;
+				}
+				if (inTh) {
+					endTd = "</th>";
+					inTh = inTd = false;
 				}
 				if (inTr) {
 					lines[i] = endTd + "</tr><tr" + attr + ">";
@@ -725,7 +732,6 @@ var BsWikiCode = function() {
 					inTr = true;
 				}
 			} else if (line = lines[i].match(/^\|(.*)/gi)) {
-				// Todo: also implement for !!
 				cells = line[0].substr(1, line[0].length).split(/(\|\|)/);
 				var curLine = '';
 
@@ -760,9 +766,13 @@ var BsWikiCode = function() {
 					}
 
 					if (inTd) {
-						curLine += "</p></td><td" + tdAttr + "><p>" + tdText;
+						curLine += "</td><td" + tdAttr + ">" + tdText;
+					} else if ( inTh ) {
+						curLine += "</th><td" + tdAttr + ">" + tdText;
+						inTh = false;
+						inTd = true;
 					} else {
-						curLine += "<td" + tdAttr + "><p>" + tdText;
+						curLine += "<td" + tdAttr + ">" + tdText;
 						inTd = true;
 					}
 				}
@@ -802,11 +812,15 @@ var BsWikiCode = function() {
 						inTr = true;
 						curLine = "<tr>" + curLine;
 					}
-					if (inTd) {
+					if (inTh) {
 						curLine += "</th><th" + tdAttr + ">" + tdText;
+					} else if (inTd) {
+						curLine += "</td><th" + tdAttr + ">" + tdText;
+						inTd = false;
+						inTh = true;
 					} else {
 						curLine += "<th" + tdAttr + ">" + tdText;
-						inTd = true;
+						inTh = true;
 					}
 				}
 				lines[i] = curLine;
@@ -1217,13 +1231,13 @@ var BsWikiCode = function() {
 
 		// fill empty table cells
 		// @todo maybe in the _table2html method
-		text = text.replace(/<td([^>]*)>(\s|<br([^>]*)>)*<\/td>/gmi, '<td$1><p>&nbsp;</p></td>');
-		text = text.replace(/<th([^>]*)>\s*<\/th>/gmi, '<th$1><p></p></th>');
+		text = text.replace(/<td([^>]*)>(\s|<br([^>]*)>)*<\/td>/gmi, '<td$1><br mce_bogus="1" /></td>');
+		text = text.replace(/<th([^>]*)>\s*<\/th>/gmi, '<th$1><br mce_bogus="1" /></th>');
 		
 		//check if text ends with </table>, need to insert something after the table
 		//otherwise you won't be able to write after the table
 		if (text.indexOf("</table>", text.length - 8) !== -1)
-			text += "<br/>";
+			text += "<br mce_bogus='1' />";
 
 		// clean up bogus code when spans are in a single line
 		text = text.replace(/<p>((<span([^>]*)>\s*)+)<\/p>/gmi, '$1');
@@ -1470,6 +1484,8 @@ var BsWikiCode = function() {
 						text = text.replace(/\n?<\/blockquote>\s*<blockquote[^>]*?>/, "\n<blockquote>");
 					} else if (text.search(/<\/blockquote>\s*<\/blockquote>/) === nextPos) {
 						text = text.replace(/<\/blockquote>/, "");
+					} else if (text.search(/<\/blockquote>\s*<\/li>/) === nextPos) {
+						text = text.replace(/<\/blockquote>/, "");
 					} else {
 						//prevent newline after last blockquote //if no * or # is present
 						if (listTag.length > 0) {
@@ -1507,7 +1523,8 @@ var BsWikiCode = function() {
 		text = text.replace(/([^^])?\n?<pre/gi, "$1\n<pre");
 
 		// Cleanup empty lines that exists if enter was pressed within an aligned paragraph
-		text = text.replace(/<div[^>]*?>(\s|&nbsp;)*<\/div>/gmi, "");
+		// However, leave empty divs with ids or classes
+		text = text.replace(/<div (?!(id|class))[^>]*?>(\s|&nbsp;)*<\/div>/gmi, "");
 		// Cleanup am Schluss löscht alle Zeilenumbrüche und Leerzeilen/-Zeichen am Ende.
 		// Important: do not use m flag, since this makes $ react to any line ending instead of text ending
 		text = text.replace(/((<p( [^>]*?)?>(\s|&nbsp;|<br\s?\/>)*?<\/p>)|<br\s?\/>|\s)*$/gi, "");
@@ -1735,7 +1752,7 @@ var BsWikiCode = function() {
 				var innerText = _specialtags[i];
 				var retValue = $(document).triggerHandler( 'BSVisualEditorRecoverSpecialTag', [this, currentState, innerText] );
 				if ( retValue ) {
-					innerText = retValue.innerText
+					innerText = retValue.innerText;
 				}
 
 				text = text.replace(matcher, innerText);
@@ -1852,7 +1869,7 @@ var BsWikiCode = function() {
 	 * @returns {String}
 	 */
 	function _preserveEntities(text) {
-		var regex, matcher, mtext, i, ent
+		var regex, matcher, mtext, i, ent;
 
 		if (!_entities) {
 			_entities = new Array();
@@ -1984,9 +2001,33 @@ var BsWikiCode = function() {
 				bs.util.getCAIUrl( 'getFileUrl', [ image.imageName ] ),
 				'', //No additional params
 				function(data, textStatus, jqXHR) {
-					content = ed.getBody().innerHTML;
-					ed.getBody().innerHTML = 
-						content.split(_imageDummyUrl+'?'+data.file).join(data.url);
+					var images = ed.getBody().getElementsByTagName('img');
+					for( var i = 0; i < images.length; i++ ) {
+						//We process only matching nodes
+						if(images[i].src !== wgServer+_imageDummyUrl+'?'+data.file) {
+							continue;
+						}
+						
+						//As some browsers may have set the nodes width/height 
+						//attributes implicitly to the AJAX LOADER's values we 
+						//need to correct them
+						var jqImg = $(images[i]);
+						if( jqImg.data('bs-sizewidth') ){
+							jqImg.width( jqImg.data('bs-sizewidth') );
+						}
+						else {
+							jqImg.removeAttr( 'width' );
+						}
+						if( jqImg.data('bs-sizeheight') ){
+							jqImg.height( jqImg.data('bs-sizeheight') );
+						}
+						else {
+							jqImg.removeAttr( 'height' );
+						}
+						
+						//Last but not least set the url to the correct image
+						images[i].src = data.url.replace(/&amp;/g, '&');
+					}
 				}
 			);
 		}
@@ -2158,9 +2199,9 @@ var BsWikiCode = function() {
 		ed.on('mouseDown', function(e){
 			var body = ed.getBody();
 			if(jQuery(e.target).hasClass('bsClickableElement')){
-				jQuery(body).attr({'contenteditable': false})
+				jQuery(body).attr({'contenteditable': false});
 			}else{
-				jQuery(body).attr({'contenteditable': true})
+				jQuery(body).attr({'contenteditable': true});
 			}
 		});
 
@@ -2168,15 +2209,15 @@ var BsWikiCode = function() {
 	
 	this.getSpecialTagList = function() {
 		return _specialtags;
-	},
+	};
 	
 	this.getTemplateList = function() {
 		return _templates;
-	},
+	};
 	
 	this.getSwitchList = function() {
 		return _switches;
-	}
+	};
 };
 
 tinymce.PluginManager.add('bswikicode', BsWikiCode);

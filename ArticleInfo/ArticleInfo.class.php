@@ -408,14 +408,14 @@ class ArticleInfo extends BsExtensionMW {
 	private function makeStateBarBodyCategories( $oTitle ) {
 		global $wgUser;
 		$aCurrentPagesCategories = $oTitle->getParentCategories();
-		if( empty( $aCurrentPagesCategories ) ) return false;
+		if ( empty( $aCurrentPagesCategories ) ) return false;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$bIsProcessed = false;
 
 		wfRunHooks( 'BSArticleInfoBeforeAddLastEditorView', array( $this, &$aCurrentPagesCategories , &$bIsProcessed ) );
 
-		if( $bIsProcessed === false ){
+		if ( $bIsProcessed === false ){
 			ksort( $aCurrentPagesCategories );
 		}
 
@@ -427,31 +427,38 @@ class ArticleInfo extends BsExtensionMW {
 		);
 
 		$aHiddenPageIDs = array();
-		while( $row = $oDbr->fetchObject( $res ) ) {
+		while ( $row = $oDbr->fetchObject( $res ) ) {
 			$aHiddenPageIDs[] = $row->pp_page;
 		}
 
 		$sCategories = '';
-		$aAllCategoriesWithUrls = array();
-		$aAllHiddenCategoriesWithUrls = array();
+		$sAllCategoriesWithUrls = '';
+		$sAllCategoriesWithUrls = '';
 
 		foreach( $aCurrentPagesCategories as $sCat => $sName ) {
 			$oCat = Title::newFromText( $sCat );
 
 			if ( in_array( $oCat->getArticleID(), $aHiddenPageIDs ) ) {
-				$aAllHiddenCategoriesWithUrls[] = BsLinkProvider::makeLink( $oCat, $oCat->getText() );
+				$sAllCategoriesWithUrls .= '<li>' . BsLinkProvider::makeLink( $oCat, $oCat->getText() ) . '</li>';
 				continue;
 			}
 
-			$aAllCategoriesWithUrls[] = BsLinkProvider::makeLink( $oCat, $oCat->getText() ); //But all for the body element
+			$sAllCategoriesWithUrls .= '<li>' . BsLinkProvider::makeLink( $oCat, $oCat->getText() ) . '</li>'; //But all for the body element
 		}
 
-		$sCategories = implode( '<br />', $aAllCategoriesWithUrls );
+		if ( !empty( $sAllCategoriesWithUrls ) ) {
+			$sCategories = '<ul>' . $sAllCategoriesWithUrls . '</ul>';
+		}
+
 		if ( $wgUser->getBoolOption( 'showhiddencats' ) ) {
-			if ( !empty( $aAllHiddenCategoriesWithUrls ) ) {
+			if ( !empty( $sAllCategoriesWithUrls ) ) {
 				$sCategories .= '<h4>' . wfMessage( 'bs-articleinfo-hiddencats' )->plain() . '</h4>'.
-								implode( '<br />', $aAllHiddenCategoriesWithUrls );
+								'<ul>' . $sAllCategoriesWithUrls . '</ul>';
 			}
+		}
+
+		if ( empty( $sCategories ) ) {
+			$sCategories = wfMessage( 'bs-articleinfo-nocategories' )->plain();
 		}
 
 		$oCategoriesLinkBodyElement = new ViewStateBarBodyElement();
@@ -473,22 +480,21 @@ class ArticleInfo extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$aTemplatesTitles = $oTitle->getTemplateLinksFrom();
 
-		$aTemplates = array();
+		$sTemplates = '';
 		foreach ( $aTemplatesTitles as $oTitle ) {
-			$sLink = Linker::link( $oTitle, $oTitle->getText() );
-			$aTemplates[] = $sLink;
+			$sTemplates .= '<li>' . Linker::link( $oTitle, $oTitle->getText() ) . '</li>';
 		}
 
-		if ( empty( $aTemplates ) ) {
-			$aTemplates[] = wfMessage( 'bs-articleinfo-notemplates' );
+		if ( empty( $sTemplates ) ) {
+			$sTemplates = wfMessage( 'bs-articleinfo-notemplates' );
+		} else {
+			$sTemplates = '<ul>' . $sTemplates . '</ul>';
 		}
-
-		$sEdits = implode( '<br />', $aTemplates );
 
 		$oTemplatesView = new ViewStateBarBodyElement();
 		$oTemplatesView->setKey( 'Templates' );
 		$oTemplatesView->setHeading( wfMessage( 'bs-articleinfo-templates' )->plain() );
-		$oTemplatesView->setBodyText( $sEdits );
+		$oTemplatesView->setBodyText( $sTemplates );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oTemplatesView;

@@ -164,7 +164,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.items = [
 			this.gdImages,
 			this.pnlConfig
-		]
+		];
 		
 		this.callParent(arguments);
 	},

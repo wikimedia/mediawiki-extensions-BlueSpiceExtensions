@@ -14,8 +14,8 @@ $wgAutoloadClasses['BsUniversalExportTagLibrary'] = __DIR__ . '/includes/Univers
 $wgSpecialPageGroups['UniversalExport'] = 'bluespice';
 $wgSpecialPages['UniversalExport'] = 'SpecialUniversalExport';
 
-$wgResourceModules['ext.bluespice.universalExport'] = array(
-	'styles' => 'bluespice.universalExport.js',
+$wgResourceModules['ext.bluespice.universalExport.css'] = array(
+	'styles' => 'bluespice.universalExport.css',
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/UniversalExport/resources'
 );

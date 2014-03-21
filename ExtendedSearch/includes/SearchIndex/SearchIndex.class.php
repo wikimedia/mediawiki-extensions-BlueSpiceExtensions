@@ -138,7 +138,7 @@ class SearchIndex {
 		/* Jump to page */
 		if ( BsConfig::get( 'MW::ExtendedSearch::JumpToTitle' )
 			&& ( $this->oSearchOptions->getOption( 'titleExists' ) === true )
-			&& ( $this->oSearchRequest->sRequestOrigin == 'titlebar' )
+			&& ( $this->oSearchRequest->sOrigin == 'titlebar' )
 			&& ( $this->oSearchRequest->bAutocomplete === false ) ) {
 			$this->oRequestContext->getOutput()->redirect(
 				$this->oSearchOptions->getOption( 'existingTitleObject' )->getFullURL()
@@ -644,7 +644,7 @@ class SearchIndex {
 
 					if ( isset( $oHits->highlighting->{$oDocument->uid}->sections ) ) {
 						$oParser = new Parser();
-						$sSection = strip_tags( $oHits->highlighting->{$oDocument->uid}->sections[0] );
+						$sSection = strip_tags( $oHits->highlighting->{$oDocument->uid}->sections[0], '<em>' );
 						$sSectionAnchor = $oParser->guessSectionNameFromWikiText( $sSection );
 						$sSectionLink = BsLinkProvider::makeLink( $oTitle, $sSection, $aCustomAttribs = array(), $aQuery = array(), $aOptions = array( 'known' ) );
 

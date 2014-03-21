@@ -63,6 +63,9 @@ VisualEditor = {
 		setDefaultConfig: function(config) {
 			this._config['_default'] = config;
 		},
+		setConfig: function(key, config) {
+			this._config[key] = config;
+		},
 		toggleGui: function() {
 			var id = tinymce.activeEditor.id,
 				loadConfig;

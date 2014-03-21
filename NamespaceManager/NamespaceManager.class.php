@@ -427,7 +427,9 @@ class NamespaceManager extends BsExtensionMW {
 				return FormatJson::encode( self::setUserNamespaces( $aUserNamespaces ) );
 			}
 		} else {
-			// TODO SU (04.07.11 12:13): Aus Gründen der Lesbarkeit würde ich das direkt in die obige foreach-Schleife packen und den else-Zweig hir weglassen.
+			// TODO SU (04.07.11 12:13): Aus Gründen der Lesbarkeit würde ich 
+			// das direkt in die obige foreach-Schleife packen und den else-
+			// Zweig hier weglassen.
 			return FormatJson::encode( array(
 					'success' => false,
 					'message' => wfMessage( 'bs-namespacemanager-namespace_already_exists' )->plain()
@@ -592,7 +594,7 @@ class NamespaceManager extends BsExtensionMW {
 		}
 		$sConfigContent = file_get_contents( BSROOTDIR . DS . 'config' . DS . 'nm-settings.php' );
 		$aUserNamespaces = array();
-//		if ( preg_match_all( '%// START Namespace ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*).*define\("NS_\1", ([0-9]*)\).*?// END Namespace \1%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
+		//if ( preg_match_all( '%// START Namespace ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*).*define\("NS_\1", ([0-9]*)\).*?// END Namespace \1%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
 		if ( preg_match_all( '%define\("NS_([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)", ([0-9]*)\)%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
 			$aUserNamespaces = $aMatches[ 2 ];
 		}

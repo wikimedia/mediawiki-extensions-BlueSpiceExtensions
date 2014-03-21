@@ -77,6 +77,8 @@ class NamespaceCss extends BsExtensionMW {
 		$iCurrentNs		= $oTitle->getNamespace();
 
 		if( $oTitle->isTalkPage() ) $iCurrentNs--;
+		if( !isset($aNamespaces[$iCurrentNs]) ) return true;
+
 		$oStyleSheetTitle = Title::newFromText( $aNamespaces[$iCurrentNs].'_css', NS_MEDIAWIKI );
 		if( $oStyleSheetTitle->exists() ) {
 			$oOut->addStyle($oStyleSheetTitle->getLocalUrl( array( 'action' => 'raw', 'ctype' => 'text/css' ) ));

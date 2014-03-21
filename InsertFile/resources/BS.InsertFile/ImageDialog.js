@@ -325,12 +325,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			this.tfAlt.setValue("");
 		}
 
-		if( obj.link !== '' && obj.link !== false ) { 
+		if( obj.link !== '' && obj.link !== false && obj.link !== 'false' ) { 
 			this.cbPages.setValue( obj.link );
 		}
 		
-		if( obj.link !== '' ) {
+		if( obj.link === '' ) {
 			this.cbxNoLink.setValue(true);
+		} else {
+			this.cbxNoLink.setValue(false);
 		}
 
 		this.hdnUrl.setValue( obj.src );

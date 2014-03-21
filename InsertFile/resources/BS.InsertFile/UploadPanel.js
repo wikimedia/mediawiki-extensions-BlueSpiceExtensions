@@ -284,9 +284,11 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		var imageinfoTag = uploadTag.getElementsByTagName('imageinfo').item(0);
 		
 		var imageinfo = {};
-		for( var i = 0; i < imageinfoTag.attributes.length; i++ ) {
-			var attribute = imageinfoTag.attributes.item(i);
-			imageinfo[attribute.nodeName] = attribute.nodeValue;
+		if( imageinfoTag.attributes ) {
+			for( var i = 0; i < imageinfoTag.attributes.length; i++ ) {
+				var attribute = imageinfoTag.attributes.item(i);
+				imageinfo[attribute.nodeName] = attribute.nodeValue;
+			}
 		}
 		var upload = {
 			result: uploadTag.getAttribute('result'),

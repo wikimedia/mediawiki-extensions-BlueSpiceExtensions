@@ -16,19 +16,20 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 	protocols: ['file:///'],
 	beforeInitComponent: function() {
 		this.setTitle( mw.message('bs-insertlink-tab6_title').plain() );
-
-		oApplet = document.createElement('applet');
-		oBody = document.getElementsByTagName('body')[0];
-		oApplet.setAttribute('code', 'HWFileChooserApplet.class');
-		oApplet.setAttribute('id', 'HWFileChooserApplet');
-		oApplet.setAttribute('name', 'HWFileChooserApplet');
-		oApplet.setAttribute('scriptable', 'true');
-		oApplet.setAttribute('mayscript', 'true');
-		oApplet.setAttribute('codebase', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertLink/resources/');
-		oApplet.setAttribute('style', 'width:0px;height:0px;padding:0;margin:0;');
-		oApplet.setAttribute('height', '1');
-		oApplet.setAttribute('width', '1');
-		oBody.appendChild(oApplet);
+		this.on( 'beforeactivate', function(){
+			oApplet = document.createElement('applet');
+			oBody = document.getElementsByTagName('body')[0];
+			oApplet.setAttribute('code', 'HWFileChooserApplet.class');
+			oApplet.setAttribute('id', 'HWFileChooserApplet');
+			oApplet.setAttribute('name', 'HWFileChooserApplet');
+			oApplet.setAttribute('scriptable', 'true');
+			oApplet.setAttribute('mayscript', 'true');
+			oApplet.setAttribute('codebase', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertLink/resources/');
+			oApplet.setAttribute('style', 'width:0px;height:0px;padding:0;margin:0;');
+			oApplet.setAttribute('height', '1');
+			oApplet.setAttribute('width', '1');
+			oBody.appendChild(oApplet);
+		}, this);
 
 		this.tfTargetUrl = Ext.create( 'Ext.form.field.Text', {
 			id: 'BSInserLinkTargetUrl',
@@ -108,7 +109,8 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 			target = this.tfTargetUrl.getValue();
 		}
 
-		target = target.replace(' ', '%20');
+		target = target.replace(/\\/g, '/');
+		target = target.replace(/ /g, '%20');
 
 		return { 
 			title: title,

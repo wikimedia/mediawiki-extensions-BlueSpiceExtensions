@@ -43,9 +43,10 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			emptyText:mw.message('bs-insertlink-select_a_page').plain()
 		});
 
-		this.pnlMainConf.items = [];
-		this.pnlMainConf.items.push( this.cbNamespace );
-		this.pnlMainConf.items.push( this.cbPageName );
+		this.pnlMainConf.items = [
+			this.cbNamespace,
+			this.cbPageName
+		];
 
 		this.callParent(arguments);
 	},
@@ -58,30 +59,37 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 		this.cbNamespace.reset();
 		this.cbPageName.reset();
 
-		this.callParent();
+		this.callParent(arguments);
 	},
 	setData: function( obj ) {
 		var bAcitve = false;
 		var desc = false;
 
-		if( obj.type && obj.type == this.linktype ) {
-			var link = String(obj.href);
-			link = link.replace(wgServer+"/", "");
+		if ( obj.type && obj.type == this.linktype ) {
+			var link = String( obj.href );
+			link = link.replace( wgServer+"/", "" );
 			link = unescape(link);
-			if( obj.content.match( '|' ) ) {
+
+			if ( obj.content.indexOf( '|' )!== -1 ) {
 				var content = obj.content.split( '|' );
 				if(content.length > 1 ) {
 					desc = content[1];
 					desc = desc.replace( ']]', '' );
-				} else if(content[0] != obj.href) {
+				} else if ( content[0] != obj.href ) {
 					desc = content[0];
 				}
 			}
 			if ( link.match( ':' ) ) {
 				var parts = link.split( ':' );
-				if( parts.length == 3 ) parts.shift();
-				this.cbNamespace.setValue( parts.shift() )
-				this.cbPageName.setValue(parts.join( ':' ))
+				if ( parts.length === 3 && parts[0] === ":" ) parts.shift();
+
+				var namespace = parts.shift();
+				if ( this.storeNS.findRecord( 'label', namespace ) == null ) {
+					this.cbPageName.setValue( namespace + ":" + parts.join( ':' ) );
+				} else {
+					this.cbNamespace.setValue( namespace );
+					this.cbPageName.setValue( parts.join( ':' ) );
+				}
 			} else {
 				this.cbPageName.setValue( link );
 			}
@@ -102,7 +110,9 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			} else {
 				desc = obj.code;
 			}
-		} else if( obj.content && obj.content != '' ) desc = obj.content;
+		} else if( obj.content && obj.content != '' ) {
+			desc = obj.content;
+		}
 
 		this.callParent( [{desc: desc}] );
 		return bAcitve;
@@ -111,7 +121,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 		var title = this.callParent();
 
 		var desc = '';
-		if( title != '' ) {
+		if ( title != '' ) {
 			desc = '|'+title;
 		}
 

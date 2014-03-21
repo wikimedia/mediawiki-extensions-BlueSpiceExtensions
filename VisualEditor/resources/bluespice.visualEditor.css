@@ -21,6 +21,8 @@ body.mce-content-body {
 	min-width: 0px;
 	background: none !important;
 	padding: 0 !important;
+	/* reset height 100% of bluespice.skin.main.css, otherwise resize will not work */
+	height: auto;
 }
 
 td.mceToolbar {

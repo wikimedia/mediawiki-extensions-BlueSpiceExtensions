@@ -25,6 +25,7 @@ Ext.define( 'BS.Statistics.Filter', {
 	submitEmptyText: false,
 	method: 'post',
 	url: mw.util.wikiScript(),
+	id: 'bs-statistics-filterpanel',
 	baseParams: {
 		action: 'ajax',
 		rs: 'SpecialExtendedStatistics::ajaxSave'
@@ -220,7 +221,8 @@ Ext.define( 'BS.Statistics.Filter', {
 		this.cbInputDepictionGrain.select('W');
 
 		this.btnOK = new Ext.create( 'Ext.Button', {
-			text: mw.message('bs-statistics-continue-step-3').plain()
+			text: mw.message('bs-statistics-continue-step-3').plain(),
+			id: 'bs-statistics-filterpanel-submit'
 		});
 		this.btnOK.addListener( 'click', this.btnOKclicked, this);
 

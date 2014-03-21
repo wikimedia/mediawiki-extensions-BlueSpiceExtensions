@@ -59,8 +59,8 @@ function bs_initVisualEditor() {
 			currentSiteCSS.push( cssBaseURL + cssUrl );
 	});
 	//IE9 fix
-	if ( typeof VisualEditor != "undefined" && typeof VisualEditor.getInstance().setConfig != "undefined" ) {
-		VisualEditor.getInstance().setConfig('editpage', {
+	if ( typeof VisualEditor != "undefined" ) {
+		VisualEditor.setConfig('editpage', {
 			height: 550,
 			content_css: currentSiteCSS.join(',')
 		});

@@ -21,6 +21,7 @@ Ext.define( 'BS.Statistics.Chart', {
 	legend: {
 		position: 'right'
 	},
+	id: 'bs-statistics-chartpanel',
 	axes: [],
 	series: [],
 	initComponent: function() {

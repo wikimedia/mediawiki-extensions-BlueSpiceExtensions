@@ -232,18 +232,19 @@ class Dashboards extends BsExtensionMW {
 		$aPortalConfig = RequestContext::getMain()->getRequest()->getVal( 'portletConfig', '' );
 
 		$oDbw = wfGetDB( DB_MASTER );
-		$oDbw->replace(
-				'bs_dashboards_configs',
-				array(
-					'dc_type'
-				),
-				array(
-					'dc_type' => 'admin',
-					'dc_identifier' => '',
-					'dc_config' => serialize( $aPortalConfig ),
-					'dc_timestamp' => '',
-				),
-				__METHOD__
+		$oDbw->delete(
+			'bs_dashboards_configs',
+			array( 'dc_type' => 'admin' )
+		);
+		$oDbw->insert(
+			'bs_dashboards_configs',
+			array(
+				'dc_type' => 'admin',
+				'dc_identifier' => '',
+				'dc_config' => serialize( $aPortalConfig ),
+				'dc_timestamp' => '',
+			),
+			__METHOD__
 		);
 
 		return $oResponse;

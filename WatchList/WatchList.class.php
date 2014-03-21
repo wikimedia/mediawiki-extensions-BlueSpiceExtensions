@@ -172,7 +172,7 @@ class WatchList extends BsExtensionMW {
 		}
 
 		$oWatchList = $this->fetchWatchlist( $this->getUser(), $iCount, $iMaxTitleLength, $sOrder );
-		return $this->mCore->parseWikiText( $oWatchList->execute() );
+		return $this->mCore->parseWikiText( $oWatchList->execute(), $this->getTitle() );
 	}
 
 	/**
@@ -215,7 +215,7 @@ class WatchList extends BsExtensionMW {
 		$sWatchListWikiText = $oWatchList->execute();
 		if (  empty( $sWatchListWikiText ) ) return $oUserSidebarView;
 
-		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText ) );
+		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText ), $this->getTitle() );
 
 		return $oUserSidebarView;
 	}

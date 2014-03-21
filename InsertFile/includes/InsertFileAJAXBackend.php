@@ -81,7 +81,7 @@ class InsertFileAJAXBackend {
 				}
 				break;
 		}
-
+		
 		$res = $dbr->query( $sql );
 		if ( $res && $res->numRows() ) {
 			$row = $res->fetchObject();
@@ -214,6 +214,9 @@ class InsertFileAJAXBackend {
 			$exists = UploadBase::getExistsWarning( $oFile );
 			$warning = SpecialUpload::getExistsWarning( $exists );
 			if ( $warning !== '' ) {
+				if ( BsExtensionManager::getExtension( 'SecureFileStore' ) !== null ) {
+					$warning = SecureFileStore::secureStuff( $warning );
+				}
 				$s = "<div>$warning</div>";
 			}
 		}
@@ -346,24 +349,26 @@ class InsertFileAJAXBackend {
 		//HINT: CONVERT is needed because field type is VARBINARY. 
 		//Converting to UTF8 is just a heuristics. SQL is probably 
 		//nonstandard.
-		$sFormat = "LOWER(CONVERT(i.img_name USING 'UTF8')) LIKE '%s%%'";
+		$sFormat = "LOWER(CONVERT(i.img_name USING 'UTF8')) LIKE %s";
 
 		if( $dbType == 'oracle' || $dbType == 'postgres') {
-			$sFormat = "LOWER(i.img_name) LIKE '%s%%'";
+			$sFormat = "LOWER(i.img_name) LIKE %s";
 		}
-		
+		$dbr = wfGetDB( DB_SLAVE );
 		$aFormattedFilters = array();
 		foreach( $nameFilters as $nameFilter ) {
 			//if( empty($nameFilter) ) continue;
 			$aFormattedFilters[] = sprintf(
 				$sFormat,
-				strtolower($nameFilter)
+				$dbr->addQuotes('%'.strtolower($nameFilter).'%')
 			);
 		}
 		
 		$sNameFilters = implode( ' OR ', $aFormattedFilters );
 		
-		if( !empty($sNameFilters) ) $sNameFilters = '('.$sNameFilters.')';
+		if( !empty($sNameFilters) ) {
+			$sNameFilters = '('.$sNameFilters.')';
+		}
 
 		return $sNameFilters;
 	}

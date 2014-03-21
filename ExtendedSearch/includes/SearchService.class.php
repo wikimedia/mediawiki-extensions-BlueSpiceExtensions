@@ -356,18 +356,14 @@ class SearchService extends SolrServiceAdapter {
 	 */
 	public function &getFileText( $filepath, $timeLimit = null ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		if ( $timeLimit === null ) $timeLimit = 60;
 
 		$this->initGetFileTextCurlHandle();
-
-		set_time_limit( $timeLimit );
 
 		// @todo: $rawPost = file_get_contents(urldecode($filepath));
 		$vText = file_get_contents( $filepath );
 		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_POSTFIELDS, $vText );
 
-		$curlTimeLimit = $timeLimit - 10;
-		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_TIMEOUT, $curlTimeLimit ); // 290 did not work! Error: Fatal error: Maximum execution time of 60 seconds exceeded in ...
+		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_TIMEOUT, 20 ); // 290 did not work! Error: Fatal error: Maximum execution time of 60 seconds exceeded in ...
 
 		$vText = curl_exec( $this->oGetFileTextCurlHandle );
 		$vText = simplexml_load_string( $vText );
@@ -403,7 +399,7 @@ class SearchService extends SolrServiceAdapter {
 			|| ( strpos( $customerId, '*' ) !== false ) ) return false;
 
 		$sQuery = "uid:$customerId-*";
-		if( !empty( $sParams ) ) {
+		if ( !empty( $sParams ) ) {
 			$sQuery = "($sQuery)AND($sParams)";
 		}
 

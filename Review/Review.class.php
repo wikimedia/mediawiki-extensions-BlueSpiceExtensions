@@ -459,9 +459,9 @@ class Review extends BsExtensionMW {
 		// What is the user allowed to see?
 		if ($wgUser->isAllowed('workflowlist')) {
 			global $wgRequest;
-			$iUserId = $wgRequest->getInt('user', $wgUser->mId);
+			$iUserId = $wgRequest->getInt('user', $wgRequest->getInt('userID', $wgUser->mId));
 			// if( intval($_GET['user']) )
-			if (!( $iUserId === false )) { // <== getParam returns default (false) if INT is expected and param is not numeric
+			if ($iUserId) { // <== getParam returns default (false) if INT is expected and param is not numeric
 				//$sql.= 'AND (r.owner="'. $_GET['user'] .'" OR "'. $_GET['user'] .'" IN (SELECT hrs.user_id FROM hw_review_steps AS hrs WHERE hrs.review_id=r.id)) ';
 				$sql.= 'AND (r.rev_owner=' . $iUserId . ' OR EXISTS (SELECT 1 FROM ' . $tbl_step . ' AS hrs WHERE hrs.revs_review_id=r.rev_id AND hrs.revs_user_id = ' . $iUserId . ')) ';
 			}
@@ -996,8 +996,9 @@ class Review extends BsExtensionMW {
 		$oRev = BsReviewProcess::newFromPid($oTitle->getArticleID());
 		$pages = BsReviewProcess::listReviews($oUser->getId());
 
-		if ($oRev === false)
+		if ($oRev === false) {
 			return true;
+		}
 
 		$oReviewView = new ViewStateBarBodyElementReview();
 		$oReviewView->setReview($oRev);
@@ -1058,6 +1059,14 @@ class Review extends BsExtensionMW {
 		if ($bResult) {
 			$obj = FlaggedRevision::newFromStable($oTitle);
 		}
+		
+		$aComments = array();
+		foreach($oRev->steps as $_step) {
+			if(!empty($_step->comment) && $_step->status != -1) {
+				$aComments[] = $_step->comment;
+			}
+		}
+		$oReviewView->setPreceedingCommentsList($aComments);
 
 		if (empty($pages) || !in_array($oTitle->getArticleID(), $pages)) {
 			$aBodyViews['statebarbodyreview'] = $oReviewView;
@@ -1065,14 +1074,12 @@ class Review extends BsExtensionMW {
 		}
 
 		$step = $oRev->currentStep($oUser->getId());
-		//BsExtensionManager::setContext( 'MW::ReviewShow' );
-		if (!is_object($step))
+		if (!is_object($step)) {
 			return true;
-
-		$oReviewView->setVotable();
-		if (!empty($step->comment)) {
-			$oReviewView->setComment($step->comment);
 		}
+
+		$oReviewView->setVotable( true );
+		$oReviewView->setComment( $step->comment );
 
 		wfRunHooks('BsReview::checkStatus::afterMessage', array($step, $oReviewView));
 		$aBodyViews['statebarbodyreview'] = $oReviewView;
@@ -1142,8 +1149,9 @@ class Review extends BsExtensionMW {
 		$sVote = $wgRequest->getVal('vote', '');
 		$sComment = $wgRequest->getVal('comment', '');
 
-		if (BsCore::checkAccessAdmission('workflowview') === false)
+		if (BsCore::checkAccessAdmission('workflowview') === false) {
 			return '';
+		}
 
 		if (empty($iArticleId) || empty($sVote)) {
 			return wfMessage('bs-review-review_error')->plain();
@@ -1172,10 +1180,10 @@ class Review extends BsExtensionMW {
 
 		$options = array('ORDER BY' => 'revs_sort_id ASC');
 		$join_conds = array();
-
+		$fields = $tbl_step . '.*';
 		wfRunHooks('BsReview::buildDbQuery', array('getVoteResponse', &$tables, &$fields, &$conds, &$options, &$join_conds));
 
-		$res = $dbw->select($tables, $tbl_step . '.*', $conds, __METHOD__, $options, $join_conds);
+		$res = $dbw->select($tables, $fields, $conds, __METHOD__, $options, $join_conds);
 		$row = $dbw->fetchRow($res);
 
 		// Unexpectedly, no review could be found.
@@ -1188,6 +1196,7 @@ class Review extends BsExtensionMW {
 		$dbw->freeResult($res);
 
 		$step_id = $row['revs_id'];
+		$initial_comment = $row['revs_comment'];
 
 		// update data
 		$data = array();
@@ -1195,12 +1204,6 @@ class Review extends BsExtensionMW {
 			case "yes" :
 				$data['revs_status'] = 1;
 				$oReview->oLogger->addEntry('approve', $oTitle, '', null, $oUser);
-				if (empty($sComment) || is_null($oNext) || !$oNext)
-					break;
-				$sUserName = BsCore::getUserDisplayName($oUser);
-				$dbw->update(
-						'bs_review_steps', array('revs_comment' => $oNext->revs_comment . "<br /><b>$sUserName: </b>$sComment"), array('revs_id' => $oNext->revs_id)
-				);
 				break;
 			case "no" :
 				$data['revs_status'] = 0;
@@ -1210,17 +1213,33 @@ class Review extends BsExtensionMW {
 				$data['revs_status'] = -1;
 				break;
 		}
+		
+		// Identify owner
+		$oReviewProcess = BsReviewProcess::newFromPid($iArticleId);
+		$oOwner = User::newFromID($oReviewProcess->getOwner());
+		$sOwnerMail = $oOwner->getEmail();
+		
+		$sUserName = BsCore::getUserDisplayName($oUser);
+		$sOwnerName = BsCore::getUserDisplayName($oOwner);
+		if( !empty($initial_comment) ) {
+			$initial_comment = "<em>{$sOwnerName}: </em>{$initial_comment}";
+		}
+		if(!empty($sComment)) {
+			$data['revs_comment'] = "<em>{$sUserName}: </em>{$sComment}";
+
+			//Prepend original comment
+			if( !empty( $initial_comment ) ) {
+				$data['revs_comment'] = $initial_comment . " &rArr; ".$data['revs_comment'];
+			}
+		} else {
+			$data['revs_comment'] = $initial_comment;
+		}
 
 		wfRunHooks('BsReview::dataBeforeSafe', array('getVoteResponse', &$data));
 
 		$dbw->update('bs_review_steps', $data, array('revs_id' => $step_id));
 
 		$oTitle->invalidateCache();
-
-		// Identify owner
-		$oReviewProcess = BsReviewProcess::newFromPid($iArticleId);
-		$oOwner = User::newFromID($oReviewProcess->getOwner());
-		$sOwnerMail = $oOwner->getEmail();
 
 		if ($sVote == 'yes') {
 			self::sendNotification('accept', $oOwner, array($sTitleText, date('Y-m-d')), $sTitleUrl, $oUser);

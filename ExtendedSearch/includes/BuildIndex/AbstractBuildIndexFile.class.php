@@ -26,12 +26,33 @@ abstract class AbstractBuildIndexFile extends AbstractBuildIndexAll {
 	 * List of file types to be indexed
 	 * @var array Strings of file extensions
 	 */
-	protected $aFileTypes;
+	protected $aFileTypes = array();
 	/**
 	 * Maximum size of documents to be indexed
 	 * @var int Document size in bytes
 	 */
-	protected $iMaxDocSize = null;
+	protected $iMaxDocSize = 0;
+
+	/*
+	 * Constructor
+	 */
+	public function __construct( $oMainControl ) {
+		parent::__construct( $oMainControl );
+		// Set file types to be indexed
+		$vTempFileTypes = BsConfig::get( 'MW::ExtendedSearch::IndexFileTypes' );
+		$vTempFileTypes = str_replace( array( ' ', ';' ), array( '', ',' ), $vTempFileTypes );
+		$vTempFileTypes = explode( ',', $vTempFileTypes );
+
+		foreach ( $vTempFileTypes as $value ) {
+			$this->aFileTypes[$value] = true;
+		}
+		unset( $vTempFileTypes );
+
+		// Maximum file size in MB
+		$iMaxFileSize = (int)ini_get( 'post_max_size' );
+		if ( empty( $iMaxFileSize ) || $iMaxFileSize <= 0 ) $iMaxFileSize = 32;
+		$this->iMaxDocSize = $iMaxFileSize * 1024 * 1024; // Make bytes out of it
+	}
 
 	/**
 	 * Checks system settings before indexing.
@@ -39,7 +60,7 @@ abstract class AbstractBuildIndexFile extends AbstractBuildIndexAll {
 	 * @return bool true if system's settings are ok to run with
 	 */
 	public static function areYouAbleToRunWithSystemSettings( &$aErrorMessageKeys = array() ) {
-		if ( !ini_get( 'allow_url_fopen' ) )  {
+		if ( !ini_get( 'allow_url_fopen' ) ) {
 			$aErrorMessageKeys['no_allow_url_include'] = true;
 		}
 		return parent::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
@@ -84,23 +105,23 @@ abstract class AbstractBuildIndexFile extends AbstractBuildIndexAll {
 	 */
 	public function mimeDecoding( $sMinorMime, $sFilename = '' ) {
 		$aDecodingTable = array(
-			'msword'            => 'doc',
+			'msword' => 'doc',
 			'vnd.ms-powerpoint' => 'ppt',
-			'vnd.ms-excel'      => 'xls',
-			'htm'               => 'html',
-			'x-bash'            => 'sh',
-			'plain'             => 'txt',
-			'x-c'               => 'txt',
-			'x-c++'             => 'txt',
-			'perl'              => 'txt',
-			'text'              => 'txt',
-			'x-gzip'            => 'zip',
-			'vnd.openxmlformats-officedocument.spreadsheetml.sheet'         => 'xls',
-			'vnd.openxmlformats-officedocument.spreadsheetml.template'      => 'xls',
-			'vnd.openxmlformats-officedocument.presentationml.template'     => 'ppt',
+			'vnd.ms-excel' => 'xls',
+			'htm' => 'html',
+			'x-bash' => 'sh',
+			'plain' => 'txt',
+			'x-c' => 'txt',
+			'x-c++' => 'txt',
+			'perl' => 'txt',
+			'text' => 'txt',
+			'x-gzip' => 'zip',
+			'vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'xls',
+			'vnd.openxmlformats-officedocument.spreadsheetml.template' => 'xls',
+			'vnd.openxmlformats-officedocument.presentationml.template' => 'ppt',
 			'vnd.openxmlformats-officedocument.presentationml.presentation' => 'ppt',
-			'vnd.openxmlformats-officedocument.wordprocessingml.document'   => 'doc',
-			'vnd.openxmlformats-officedocument.wordprocessingml.template'   => 'doc'
+			'vnd.openxmlformats-officedocument.wordprocessingml.document' => 'doc',
+			'vnd.openxmlformats-officedocument.wordprocessingml.template' => 'doc'
 		);
 
 		if ( array_key_exists( $sMinorMime, $aDecodingTable ) ) {

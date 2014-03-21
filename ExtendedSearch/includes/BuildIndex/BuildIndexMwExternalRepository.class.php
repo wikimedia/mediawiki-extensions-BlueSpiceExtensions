@@ -120,7 +120,7 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 				continue;
 			}
 
-			set_time_limit( $this->iTimeLimit );
+			if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
 			try {
 				$repoFileSize = $oRepoFile->getSize(); // throws Exception if file does not exist

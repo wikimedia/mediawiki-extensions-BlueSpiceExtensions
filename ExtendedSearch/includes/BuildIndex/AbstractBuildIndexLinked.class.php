@@ -23,6 +23,13 @@
  */
 abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 
+	/*
+	 * Constructor
+	 */
+	public function __construct( $oMainControl ) {
+		parent::__construct( $oMainControl );
+	}
+
 	/**
 	 * Checks system settings before indexing.
 	 * @param array &$aErrorMessageKeys with keys to be filled as keys of error messages
@@ -61,7 +68,6 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 	 */
 	public function setDbPrefix( $sDbPrefix ) {
 		$this->sDbPrefix = $sDbPrefix;
-		return $this;
 	}
 
 	/**
@@ -83,7 +89,6 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 	 */
 	public function setLinkedPathFilter( $sLinkedPathFilter ) {
 		$this->sLinkedPathFilter = $sLinkedPathFilter;
-		return $this;
 	}
 
 	/**

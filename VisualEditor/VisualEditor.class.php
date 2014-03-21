@@ -66,13 +66,15 @@ class VisualEditor extends BsExtensionMW {
 			"textcolor",
 			"contextmenu",
 			//"link" //Needed for "unlink"
-			"autoresize",
-			"charmap"
+			//"autoresize",
+			"charmap",
+			"noneditable"
 		),
 		'external_plugins' => array(
 			'bswikicode'  => '../tiny_mce_plugins/bswikicode/plugin.js',
 			'bsbehaviour' => '../tiny_mce_plugins/bsbehaviour/plugin.js',
-			'bsactions'   => '../tiny_mce_plugins/bsactions/plugin.js'
+			'bsactions'   => '../tiny_mce_plugins/bsactions/plugin.js',
+			'bsautoresize'=> '../tiny_mce_plugins/bsautoresize/plugin.js'
 		),
 		'menubar' => false,
 		'statusbar' => false,
@@ -137,6 +139,9 @@ class VisualEditor extends BsExtensionMW {
 				array('title' => 'Left', 'format' => 'alignleft', 'icon' => 'alignleft' ),
 				array('title' => 'Center', 'format' => 'aligncenter', 'icon' => 'aligncenter' ),
 				array('title' => 'Right', 'format' => 'alignright', 'icon' => 'alignright' ),
+				array('title' => 'Top', 'selector' => 'td', 'classes' => 'bs-aligntop' ),
+				array('title' => 'Middle', 'selector' => 'td', 'classes' => 'bs-alignmiddle' ),
+				array('title' => 'Bottom', 'selector' => 'td', 'classes' => 'bs-alignbottom' )
 			)),
 			array('title' => 'Table', 'items'  => array(
 				array('title' => 'bs-visualeditor-sortable', 'selector' => 'table', 'classes' => 'sortable'),
@@ -149,6 +154,14 @@ class VisualEditor extends BsExtensionMW {
 				array('title' => 'bs-visualeditor-casablanca', 'selector' => 'table', 'classes' => 'casablanca'),
 				array('title' => 'bs-visualeditor-greyscale', 'selector' => 'table', 'classes' => 'greyscale'),
 				array('title' => 'bs-visualeditor-greyscale-narrow', 'selector' => 'table', 'classes' => 'greyscale-narrow'),
+			)),
+			array('title' => 'Cell', 'items'  => array(
+				array('title' => 'Left', 'selector' => 'td', 'format' => 'alignleft', 'icon' => 'alignleft' ),
+				array('title' => 'Center', 'selector' => 'td', 'format' => 'aligncenter', 'icon' => 'aligncenter' ),
+				array('title' => 'Right', 'selector' => 'td', 'format' => 'alignright', 'icon' => 'alignright' ),
+				array('title' => 'bs-visualeditor-aligntop', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'top') ),
+				array('title' => 'bs-visualeditor-alignmiddle', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'middle') ),
+				array('title' => 'bs-visualeditor-alignbottom', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'bottom') )
 			)),
 			array('title' => 'Pre', 'block' => 'pre', 'classes' => 'bs_pre_from_space'),
 		),
@@ -187,7 +200,7 @@ class VisualEditor extends BsExtensionMW {
 			EXTINFO::NAME => 'VisualEditor',
 			EXTINFO::DESCRIPTION => 'Visual editor for MediaWiki.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => 'default',
+			EXTINFO::VERSION     => '2.22.1a',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
@@ -297,6 +310,7 @@ class VisualEditor extends BsExtensionMW {
 			$allowedTags .= $tag . '[*],';
 			$specialTags .= $tag . '|';
 		}
+		$allowedTags .= 'div[*],';
 
 		BsConfig::set('MW::VisualEditor::SpecialTags', $specialTags);
 		BsConfig::set('MW::VisualEditor::AllowedTags', $allowedTags);
@@ -311,7 +325,7 @@ class VisualEditor extends BsExtensionMW {
 				. implode('|', $aDefaultTags);
 
 		$this->aConfigStandard["extended_valid_elements"] = BsConfig::get('MW::VisualEditor::AllowedTags')
-				. implode('[*]|', $aDefaultTags);
+				. implode('[*],', $aDefaultTags);
 
 		// find the right language file
 		$language = $wgLang->getCode();

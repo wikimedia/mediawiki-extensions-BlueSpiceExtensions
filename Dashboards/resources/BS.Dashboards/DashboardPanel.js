@@ -23,7 +23,7 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 				);
 				//Listen to config changes to persist them
 				portlet.on( 'configchange', this.onPortletConfigChange, this );
-				portlet.on( 'close', this.onPortletClose, this );
+				portlet.on( 'destroy', this.onPortletDestroy, this );
 				portlets.push(portlet);
 			}
 
@@ -55,7 +55,8 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 	onPortletConfigChange: function( portlet, cfg ) {
 		this.savePortalConfig();
 	},
-	onPortletClose: function() {
+	onPortletDestroy: function() {
+		this.items.remove(portlet);
 		this.savePortalConfig();
 	},
 	onDrop: function() {

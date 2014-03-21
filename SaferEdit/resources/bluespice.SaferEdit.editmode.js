@@ -164,20 +164,20 @@ BsSaferEditEditMode = {
 	startSaving: function() {
 		BsSaferEditEditMode.oldText = BsSaferEditEditMode.getText();
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.oldText;
-		BSPing.registerListener( 
-			'SaferEditSave', 
-			0, 
+		BSPing.registerListener(
+			'SaferEditSave',
+			0,
 			[{
 				text: BsSaferEditEditMode.oldText,
 				section: bsSaferEditEditSection
-			}], 
-			BsSaferEditEditMode.saveTextListener 
+			}],
+			BsSaferEditEditMode.saveTextListener
 		);
 	},
 
 	saveTextListener: function(result, Listener) {
 		var text = BsSaferEditEditMode.getText();
-		
+
 		if( BsSaferEditEditMode.canceledByUser ) return;
 
 		if( BsSaferEditEditMode.oldText != text ) {
@@ -252,32 +252,34 @@ BsSaferEditEditMode = {
 	 * Retrieves a saved intermediate text if present
 	 */
 	getLostTexts: function() {
-		if ( typeof( bsSaferEditUseSE ) != "undefined" && bsSaferEditUseSE ) {
-			var url = bs.util.getAjaxDispatcherUrl(
-				'SaferEdit::getLostTexts',
-				[ wgUserName, wgPageName, wgNamespaceNumber, bsSaferEditEditSection ]
-			);
+		if ( typeof( bsSaferEditUseSE ) != "undefined" ) {
+			if ( bsSaferEditUseSE ) {
+				var url = bs.util.getAjaxDispatcherUrl(
+					'SaferEdit::getLostTexts',
+					[ wgUserName, wgPageName, wgNamespaceNumber, bsSaferEditEditSection ]
+				);
 
-			$.get(
-				url,
-				null,
-				function ( sResponseData ){
-					var oResponse = JSON.parse(sResponseData);
+				$.get(
+					url,
+					null,
+					function ( sResponseData ){
+						var oResponse = JSON.parse(sResponseData);
 
-					if ( oResponse.notexts == "1" ) return;
-					if ( oResponse.savedOtherSection == "1" ) {
+						if ( oResponse.notexts == "1" ) return;
+						if ( oResponse.savedOtherSection == "1" ) {
+							BsSaferEditEditMode.savedTS = oResponse.ts;
+							BsSaferEditEditMode.redirect = oResponse.redirect;
+							BsSaferEditEditMode.showRedirect();
+							return;
+						}
 						BsSaferEditEditMode.savedTS = oResponse.ts;
-						BsSaferEditEditMode.redirect = oResponse.redirect;
-						BsSaferEditEditMode.showRedirect();
-						return;
-					}
-					BsSaferEditEditMode.savedTS = oResponse.ts;
-					BsSaferEditEditMode.savedHTML = unescape(oResponse.html);
-					BsSaferEditEditMode.savedWikiCode = unescape(oResponse.wiki);
+						BsSaferEditEditMode.savedHTML = unescape(oResponse.html);
+						BsSaferEditEditMode.savedWikiCode = unescape(oResponse.wiki);
 
-					setTimeout('BsSaferEditEditMode.show()', 10);
-				}
-			);
+						setTimeout('BsSaferEditEditMode.show()', 10);
+					}
+				);
+			}
 		} else {
 			this.startSaving();
 			//BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval);
@@ -287,12 +289,12 @@ BsSaferEditEditMode = {
 	 * Conducts neccessary preparations of edit form and starts intermediate saving
 	 */
 	init: function() {
-		if ( wgAction=="edit" || wgAction=="submit" ) BsSaferEditEditMode.editMode = true;
-		if ( wgCanonicalNamespace=="Special" ) BsSaferEditEditMode.editMode = false;
+		if ( wgAction == "edit" || wgAction == "submit" ) BsSaferEditEditMode.editMode = true;
+		if ( wgCanonicalNamespace == "Special" ) BsSaferEditEditMode.editMode = false;
 
-		if( !BsSaferEditEditMode.editMode ) return;
+		if ( !BsSaferEditEditMode.editMode ) return;
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText();
-		var links = document.getElementsByTagName("a");
+		var links = document.getElementsByTagName( "a" );
 		for ( i = 0; i < links.length; i++ ) {
 			if ( links[i].innerHTML == mw.message('bs-saferedit-cancel').plain() || links[i].innerHTML == "Cancel" ) {
 				links[i].onclick = BsSaferEditEditMode.cancelSaferEdit;
@@ -339,7 +341,7 @@ BsSaferEditEditMode = {
 		$.post(
 			bs.util.getAjaxDispatcherUrl(
 				'SaferEdit::saveText',
-				[ encodeURIComponent(text), wgUserName, wgPageName, wgNamespaceNumber, bsSaferEditEditSection, bPingOnly ]
+				[ encodeURIComponent( text ), wgUserName, wgPageName, wgNamespaceNumber, bsSaferEditEditSection, bPingOnly ]
 			),
 			function ( sResponseData ){
 				if ( sResponseData == "OK" ) {
@@ -381,18 +383,21 @@ BsSaferEditEditMode = {
 	 */
 	restore: function() {
 		var text = BsSaferEditEditMode.savedWikiCode;
+
 		//text = text.replace(/^<textarea.*?>/i, '');
 		//text = text.replace(/<\/textarea>$/i, '');
-		if ( bsVisualEditorUse ) {
-			tinyMCE.execCommand('mceSetContent', false, text);
+		if ( typeof bsVisualEditorUse !== 'undefined' ) {
+			if ( bsVisualEditorUse ) {
+				tinyMCE.execCommand('mceSetContent', false, text);
+			}
 		} else {
-			$('wpTextbox1').val(text);
+			$('#wpTextbox1').val(text);
 		}
 
 		$.post(
 			bs.util.getAjaxDispatcherUrl(
 				'SaferEdit::doCancelSaferEdit',
-				[ escape(wgUserName), wgPageName, wgNamespaceNumber ]
+				[ wgUserName, wgPageName, wgNamespaceNumber ]
 			),
 			function ( sResponseData ){
 				//BsSaferEditEditMode.clearIcon();

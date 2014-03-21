@@ -354,7 +354,15 @@ class BsReviewProcess {
 		$dbw = wfGetDB(DB_MASTER);
 
 		// Get Review-ID
-		$res = $dbw->select('bs_review', 'rev_id', "rev_pid=" . $this->pid, '', array('ORDER BY' => 'REV_ID DESC'));
+		$res = $dbw->select(
+			'bs_review', 
+			'rev_id', 
+			"rev_pid=" . $this->pid,
+			__METHOD__,
+			array(
+				'ORDER BY' => 'REV_ID DESC'
+			)
+		);
 		$row = $dbw->fetchRow($res);
 		$dbw->freeResult($res);
 		$review_id = $row['rev_id'];
@@ -362,8 +370,6 @@ class BsReviewProcess {
 		$tbl = $dbw->tableName('bs_review');
 
 		global $wgDBtype;
-		// TODO: TL (18.08.2011, 09:30)
-		// replace global
 		if ($wgDBtype == 'postgres') {
 			$dbw->query("UPDATE $tbl SET startdate=to_char(current_timestamp, 'YYYY-MM-DD HH24:MI:SS'), enddate=to_char(current_timestamp + interval '7 days', 'YYYY-MM-DD HH24:MI:SS') WHERE pid={$this->pid}");
 		} else {
@@ -382,7 +388,15 @@ class BsReviewProcess {
 		$dbw = wfGetDB(DB_MASTER);
 
 		// Get Review-ID and owner id
-		$res = $dbw->select('bs_review', array('rev_id', 'rev_owner'), "rev_pid=" . $this->pid, '', array('ORDER BY' => 'rev_id DESC'));
+		$res = $dbw->select(
+			'bs_review', 
+			array('rev_id', 'rev_owner'),
+			"rev_pid=" . $this->pid,
+			__METHOD__,
+			array(
+				'ORDER BY' => 'rev_id DESC'
+			)
+		);
 		$row = $dbw->fetchRow($res);
 		$dbw->freeResult($res);
 		$review_id = $row['rev_id'];
@@ -391,8 +405,6 @@ class BsReviewProcess {
 		$tbl = $dbw->tableName('bs_review');
 
 		global $wgDBtype;
-		// TODO: TL (18.08.2011, 09:30)
-		// replace global
 		if ($wgDBtype == 'oracle') {
 			$dbw->query("UPDATE $tbl SET rev_startdate=to_char(SYSDATE, 'YYYYMMDDHH24MISS'), rev_enddate=to_char(SYSDATE + interval '7 days', 'YYYYMMDDHH24MISS') WHERE rev_pid={$this->pid}");
 		} elseif ($wgDBtype == 'postgres') {
@@ -405,7 +417,15 @@ class BsReviewProcess {
 		$aUsersVoted = array();
 		$iLastVotedId = 0;
 		$iVoteAmount = 0;
-		$res = $dbw->select('bs_review_steps', array('revs_user_id', 'revs_sort_id'), array('revs_status > -1', 'revs_review_id = ' . $review_id), '', array('ORDER BY revs_sort_id'));
+		
+		//Get all steps that have not been processed yet
+		$res = $dbw->select(
+			'bs_review_steps', 
+			array('revs_user_id', 'revs_sort_id', 'revs_comment'), 
+			array('revs_status > -1', 'revs_review_id = ' . $review_id),
+			__METHOD__,
+			array('ORDER BY revs_sort_id')
+		);
 		while ($row = $dbw->fetchRow($res)) {
 			$aUsersVoted[] = $row;
 			$iLastVotedId = $row['revs_sort_id'];
@@ -422,26 +442,39 @@ class BsReviewProcess {
 			'revs_user_id' => $owner_id,
 			'revs_status' => -1,
 			'revs_sort_id' => ++$iLastVotedId,
-			'revs_comment' => $sComment,
+			'revs_comment' => "<u>".BsCore::getUserDisplayName().": </u>".$sComment,
 		);
 		foreach ($this->_aInjections as $oInjection) {
 			$oInjection->createStepDefault($data);
 		}
 		$dbw->insert('bs_review_steps', $data);
 
+		//Append the unprocessed steps to the list of steps
 		$lastUserId = 0;
 		foreach ($aUsersVoted as $aUser) {
 			if ($aUser['revs_user_id'] == $lastUserId) {
 				continue;
 			}
 			$lastUserId = $aUser['revs_user_id'];
+			$lastInitialComment = $aUser['revs_comment'];
+			//We remove the contributed parts of the comment and leave only 
+			//the initial part. Hacky hacky hacky...
+			$matches = array();
+			preg_match(
+				'#.*?/em>(.*?) &rArr;.*?#si', $lastInitialComment, $matches
+			);
+			if( isset($matches[1]) ) {
+				$lastInitialComment = trim($matches[1]);
+			}
+			
 			$data = array(
 				'revs_review_id' => $review_id,
-				'revs_user_id' => $aUser['revs_user_id'],
-				'revs_status' => -1,
-				'revs_sort_id' => ++$iLastVotedId,
-				'revs_comment' => '',
+				'revs_user_id'   => $aUser['revs_user_id'],
+				'revs_status'    => -1,
+				'revs_sort_id'   => ++$iLastVotedId,
+				'revs_comment'   => $lastInitialComment,
 			);
+
 			foreach ($this->_aInjections as $oInjection) {
 				$oInjection->createStepDefault($data);
 			}
@@ -457,7 +490,17 @@ class BsReviewProcess {
 	static function newFromPid($pid) {
 		$oReviewProcess = false;
 		$dbw = wfGetDB(DB_MASTER);
-		$res = $dbw->select('bs_review', '*', "rev_pid=" . $pid, '', array("ORDER BY" => "REV_ID DESC"));
+		$res = $dbw->select(
+			'bs_review',
+			'*',
+			array( 
+				"rev_pid" => $pid
+			),
+			__METHOD__,
+			array(
+				"ORDER BY" => "REV_ID DESC"
+			)
+		);
 		if ($row = $dbw->fetchRow($res)) {
 			$oReviewProcess = new BsReviewProcess();
 			$dbw->freeResult($res);
@@ -475,7 +518,17 @@ class BsReviewProcess {
 
 			$rid = $row['rev_id'];
 
-			$res = $dbw->select('bs_review_steps', '*', "revs_review_id=" . $rid, '', array("ORDER BY" => "revs_sort_id ASC"));
+			$res = $dbw->select(
+				'bs_review_steps', 
+				'*', 
+				array( 
+					"revs_review_id" => $rid
+				),
+				__METHOD__,
+				array(
+					"ORDER BY" => "revs_sort_id ASC"
+				)
+			);
 			while ($row = $dbw->fetchRow($res)) {
 				$oReviewProcess->steps[] = BsReviewProcessStep::newFromRow($row);
 			}

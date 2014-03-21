@@ -85,10 +85,10 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 		parent::_initUrls();
 
 		if ( $this->bUseDifferentProtocolThanHttp ) {
-			$this->_updateUrl       = str_ireplace( 'http://', $this->sProtocol.'://', $this->_updateUrl );
-			$this->_searchUrl       = str_ireplace( 'http://', $this->sProtocol.'://', $this->_searchUrl );
-			$this->_threadsUrl      = str_ireplace( 'http://', $this->sProtocol.'://', $this->_threadsUrl );
-			$this->_spellcheckUrl   = str_ireplace( 'http://', $this->sProtocol.'://', $this->_spellcheckUrl );
+			$this->_updateUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_updateUrl );
+			$this->_searchUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_searchUrl );
+			$this->_threadsUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_threadsUrl );
+			$this->_spellcheckUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_spellcheckUrl );
 			$this->_morelikethisUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_morelikethisUrl );
 		}
 		wfProfileOut( 'BS::'.__METHOD__ );

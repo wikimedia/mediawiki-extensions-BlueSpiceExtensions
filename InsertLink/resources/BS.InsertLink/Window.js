@@ -61,19 +61,19 @@ Ext.define( 'BS.InsertLink.Window', {
 			fields: ['name', 'label', 'ns']
 		});
 
-		this.fpnlWikiPage     = Ext.create( 'BS.InsertLink.FormPanelWikiPage', { storePages: this.storePages, storeNS: this.storeNS } );
-		this.fpnlExternalLink = Ext.create( 'BS.InsertLink.FormPanelExternalLink', { } );
-		this.fpnlMailTo       = Ext.create( 'BS.InsertLink.FormPanelMailTo', { } );
+		this.fpnlWikiPage = Ext.create( 'BS.InsertLink.FormPanelWikiPage', { storePages: this.storePages, storeNS: this.storeNS } );
+		this.fpnlExternalLink = Ext.create( 'BS.InsertLink.FormPanelExternalLink', {} );
+		this.fpnlMailTo = Ext.create( 'BS.InsertLink.FormPanelMailTo', {} );
 
 		var items = [
 			this.fpnlWikiPage,
 			this.fpnlExternalLink,
-			this.fpnlMailTo,
-		]
+			this.fpnlMailTo
+		];
 
-		if(bsInsertLinkUseFilelinkApplet) {
-			this.fpnlFileLink = Ext.create( 'BS.InsertLink.FormPanelFileLink', { } );
-			items.push(this.fpnlFileLink);
+		if ( wgUrlProtocols.indexOf( 'file' ) !== -1 ) {
+			this.fpnlFileLink = Ext.create( 'BS.InsertLink.FormPanelFileLink', {} );
+			items.push( this.fpnlFileLink );
 		}
 
 		$(document).trigger('BsInsertLinkWindowBeforeAddTabs', [this, items]);
@@ -88,7 +88,7 @@ Ext.define( 'BS.InsertLink.Window', {
 
 		this.items = [
 			this.pnlTabs
-		]
+		];
 
 		this.callParent(arguments);
 	},
@@ -101,7 +101,7 @@ Ext.define( 'BS.InsertLink.Window', {
 			selection: false,
 			code: false,
 			desc: false
-		}
+		};
 		for(var i=0; i < this.pnlTabs.items.length; i++) {
 			this.pnlTabs.items.getAt(i).resetData();
 		}

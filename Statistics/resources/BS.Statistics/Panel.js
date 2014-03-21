@@ -16,6 +16,7 @@ Ext.define( 'BS.Statistics.Panel', {
 	//id: 'bs-statistics-dlg-panel',
 	layout: 'border',
 	height: 600,
+	id: 'bs-statistics-mainpanel',
 
 	initComponent: function() {
 		this.pnlFilters = Ext.create('BS.Statistics.Filter');
@@ -43,7 +44,8 @@ Ext.define( 'BS.Statistics.Panel', {
 
 		this.btnExport = Ext.create( 'Ext.Button', {
 			text: 'Export',
-			menu: this.muExport
+			menu: this.muExport,
+			id: 'bs-statistics-mainpanel-exportmenu'
 		});
 
 		this.tbarMain = Ext.create('Ext.toolbar.Toolbar', {
@@ -102,10 +104,10 @@ Ext.define( 'BS.Statistics.Panel', {
 		this.pnlMain.doLayout();
 	},
 	onClickmuExport: function( menu, item, e, eOpts ) {
-		this.getEl().mask(
+		/*this.getEl().mask(
 			mw.message('bs-statistics-loadingMessage').plain(),
 			Ext.baseCSSPrefix + 'mask-loading'
-		);
+		);*/
 
 		if(item.value == 'image/png') {
 			Ext.draw.engine.ImageExporter.defaultUrl = mw.util.wikiGetlink('Special:ExtendedStatistics/export-png');
@@ -116,6 +118,7 @@ Ext.define( 'BS.Statistics.Panel', {
 			tag: 'form',
 			method: 'POST',
 			action: mw.util.wikiGetlink('Special:ExtendedStatistics/export-svg'),
+			target : '_blank',
 			children: [{
 				tag: 'input',
 				type: 'hidden',
@@ -138,7 +141,7 @@ Ext.define( 'BS.Statistics.Panel', {
 			}]
 		});
 		form.last(null, true).value = this.crtMain.save( {type:'image/svg+xml'} );
-		form.dom.submit();
+		form.dom.submit({target : '_blank'});
 		form.remove();
 	}
 });
