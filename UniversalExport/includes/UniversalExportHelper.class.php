@@ -39,38 +39,38 @@ class BsUniversalExportHelper {
 	public static function checkPermissionForTitle( $oTitle, &$aParams ) {
 		global $wgUser;
 
-		$bErrorOccured = false;
+		$bErrorOccurred = false;
 		foreach( $aParams as $sValue ) {
 			if ( $oTitle->getNamespace() == NS_SPECIAL ) {
 				switch( $sValue ) {
 					case 'recursive':
-						if( !$wgUser->isAllowed( 'universalexport-export-recursive' ) ) $bErrorOccured = true;
+						if( !$wgUser->isAllowed( 'universalexport-export-recursive' ) ) $bErrorOccurred = true;
 						break;
 					case 'with-attachments':
-						if( !$wgUser->isAllowed( 'universalexport-export-with-attachments' ) ) $bErrorOccured = true;
+						if( !$wgUser->isAllowed( 'universalexport-export-with-attachments' ) ) $bErrorOccurred = true;
 						break;
 					case 'unfiltered':
-						if( !$wgUser->isAllowed( 'universalexport-export-unfiltered' ) ) $bErrorOccured = true;
+						if( !$wgUser->isAllowed( 'universalexport-export-unfiltered' ) ) $bErrorOccurred = true;
 						break;
 				}
 			}
 			else{
 				switch( $sValue ) {
 					case 'recursive':
-						if( !$oTitle->userCan( 'universalexport-export-recursive' ) ) $bErrorOccured = true;
+						if( !$oTitle->userCan( 'universalexport-export-recursive' ) ) $bErrorOccurred = true;
 						break;
 					case 'with-attachments':
-						if( !$oTitle->userCan( 'universalexport-export-with-attachments' ) ) $bErrorOccured = true;
+						if( !$oTitle->userCan( 'universalexport-export-with-attachments' ) ) $bErrorOccurred = true;
 						break;
 					case 'unfiltered':
-						if( !$oTitle->userCan( 'universalexport-export-unfiltered' ) ) $bErrorOccured = true;
+						if( !$oTitle->userCan( 'universalexport-export-unfiltered' ) ) $bErrorOccurred = true;
 						break;
 				}
 			}
 		}
 
 
-		if( $bErrorOccured ) throw new Exception ( 'error-no-permission' );
+		if( $bErrorOccurred ) throw new Exception ( 'error-no-permission' );
 	}
 
 	public static function getCategoriesForTitle( $oTitle ) {
@@ -93,17 +93,17 @@ class BsUniversalExportHelper {
 	}
 
 	/**
-	 * Finds suitable headlines in $oPageDOM and creates returns a 
+	 * Finds suitable headlines in $oPageDOM and creates returns a
 	 * <bookmarks /> element with links to them
 	 * @param DOMDocument $oPageDOM
-	 * @return DOMElement 
+	 * @return DOMElement
 	 */
-	public static function getBookmarkElementForPageDOM( $oPageDOM ) {	
+	public static function getBookmarkElementForPageDOM( $oPageDOM ) {
 		$oBookmarksDOM = new DOMDocument();
-		
+
 		//HINT: http://calibre-ebook.com/user_manual/xpath.html
 		$oBodyContentXPath = new DOMXPath( $oPageDOM );
-		$oHeadingElements  = $oBodyContentXPath->query( 
+		$oHeadingElements  = $oBodyContentXPath->query(
 			"//*[contains(@class, 'firstHeading') "
 			."or contains(@class, 'mw-headline') "
 			."and not(contains(@class, 'mw-headline-'))]"
@@ -136,7 +136,7 @@ class BsUniversalExportHelper {
 		//Build up <bookmarks> tree
 		$oParentBookmark = $oPageTitleBookmarkElement;
 		$iParentLevel = 0;
-		$aHeadingLevels = array_flip( 
+		$aHeadingLevels = array_flip(
 			array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' )
 		);
 		for ( $i = 1; $i < $oHeadingElements->length; $i++ ) {
@@ -173,7 +173,7 @@ class BsUniversalExportHelper {
 
 			$oHeadingElementAnchor = self::findPreviousDOMElementSibling( $oHeadingElement, 'a' );
 			if( $oHeadingElementAnchor !== null ) {
-				
+
 				$sOrigialNameValue = $oHeadingElementAnchor->getAttribute( 'name' );
 				$oHeadingElementAnchor->setAttribute( 'name', $sHeadingJumpmark );
 
@@ -191,7 +191,7 @@ class BsUniversalExportHelper {
 				$oHeadingElement->insertBefore( $oNewAnchorTag );
 			}
 		}
-		
+
 		return $oPageTitleBookmarkElement;
 	}
 
@@ -234,7 +234,7 @@ class BsUniversalExportHelper {
 			}
 			return self::findPreviousDOMElementSibling( $oDOMNodesPrevSibling, $sWantedNodeName );
 		}
-		
+
 		return null;
 	}
 }

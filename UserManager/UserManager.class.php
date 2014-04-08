@@ -3,7 +3,7 @@
  * UserManager Extension for BlueSpice
  *
  * Administration interface for adding, editing and deleting users.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -95,10 +95,10 @@ class UserManager extends BsExtensionMW {
 		global $wgDBtype, $wgDBprefix;
 		//PW TODO: filter for oracle
 		if( $wgDBtype == 'oracle' ) {
-			$res = $dbr->query( 
-				"SELECT * FROM 
+			$res = $dbr->query(
+				"SELECT * FROM
 					(
-						SELECT user_id,user_name,user_real_name,user_email,row_number() OVER (ORDER BY ".$sSort." ".$sDirection.") rnk  
+						SELECT user_id,user_name,user_real_name,user_email,row_number() OVER (ORDER BY ".$sSort." ".$sDirection.") rnk
 						FROM \"".strtoupper($wgDBprefix)."MWUSER\"
 					)
 				WHERE rnk BETWEEN ".($iStart+1)." AND ".($iLimit + $iStart)
@@ -108,7 +108,7 @@ class UserManager extends BsExtensionMW {
 				'user'
 			);
 
-			$aOptions = array( 
+			$aOptions = array(
 				'ORDER BY' => $sSort.' '.$sDirection,
 				'LIMIT'    => $iLimit,
 				'OFFSET'   => $iStart
@@ -137,7 +137,7 @@ class UserManager extends BsExtensionMW {
 				}
 			}
 
-			$res = $dbr->select( 
+			$res = $dbr->select(
 				$aTables,
 				'*',
 				$aConditions,
@@ -211,29 +211,29 @@ class UserManager extends BsExtensionMW {
 
 		$sUsername = ucfirst( $sUsername );
 		if ( User::isValidUserName( $sUsername ) === false ) { //TODO: Check if User::isCreatableName() is a better validation
-			$aResponse['errors'][] = array( 
-				'id' => 'username', 
+			$aResponse['errors'][] = array(
+				'id' => 'username',
 				'message' => wfMessage( 'bs-usermanager-invalid_uname_gen' )->plain()
 			);
 		}
 
 		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
-			$aResponse['errors'][] = array( 
-				'id' => 'email', 
+			$aResponse['errors'][] = array(
+				'id' => 'email',
 				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
 			);
 		}
 
 		if ( $sPassword == '' ) {
-			$aResponse['errors'][] = array( 
-				'id' => 'pass', 
+			$aResponse['errors'][] = array(
+				'id' => 'pass',
 				'message' => wfMessage( 'bs-usermanager-enter_pwd' )->plain()
 			);
 		}
 
 		if ( strpos( $sRealname, '\\' ) ) {
-			$aResponse['errors'][] = array( 
-				'id' => 'realname', 
+			$aResponse['errors'][] = array(
+				'id' => 'realname',
 				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
 			);
 		}
@@ -254,7 +254,7 @@ class UserManager extends BsExtensionMW {
 
 		$oNewUser = User::newFromName( $sUsername );
 		if ( $oNewUser == null ) { //Should not be neccessary as we check for username validity above
-			$aResponse['errors'][] = array( 
+			$aResponse['errors'][] = array(
 				'id' => 'username',
 				'message' => wfMessage( 'bs-usermanager-invalid_uname' )->plain()
 			);
@@ -262,22 +262,22 @@ class UserManager extends BsExtensionMW {
 
 		if ( $oNewUser instanceof User ) {
 			if( $oNewUser->getId() != 0 ) {
-				$aResponse['errors'][] = array( 
-					'id' => 'username', 
+				$aResponse['errors'][] = array(
+					'id' => 'username',
 					'message' => wfMessage( 'bs-usermanager-user_exists' )->plain()
 				);
 			}
 
 			if ( $oNewUser->isValidPassword( $sPassword ) == false ) {
 				//TODO: $oNewUser->getPasswordValidity() returns a message key in case of error. Maybe we sould return this message.
-				$aResponse['errors'][] = array( 
-					'id' => 'pass', 
+				$aResponse['errors'][] = array(
+					'id' => 'pass',
 					'message' => wfMessage( 'bs-usermanager-invalid_pwd' )->plain()
 				);
 			}
 		}
 
-		if( !empty( $aResponse['errors'] ) ) { //In case that any error occured
+		if( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
 			return json_encode( $aResponse );
 		}
 
@@ -304,7 +304,7 @@ class UserManager extends BsExtensionMW {
 						'user_groups',
 						array(
 							'ug_user' => $oNewUser->getId(),
-							'ug_group' => addslashes( $sGroup ) 
+							'ug_group' => addslashes( $sGroup )
 						)
 				);
 			}
@@ -324,7 +324,7 @@ class UserManager extends BsExtensionMW {
 		$_SESSION['wsDomain'] = $tmpDomain;
 
 		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
-		wfRunHooks( 
+		wfRunHooks(
 			'BSUserManagerAfterAddUser',
 			array(
 				$oUserManager,
@@ -376,28 +376,28 @@ class UserManager extends BsExtensionMW {
 		if ( strpos( $sPassword, '\\' ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'pass', 
+				'id' => 'pass',
 				'message' => wfMessage( 'bs-usermanager-invalid_pwd' )->plain()
 			); // 'invalid_pwd' = 'The supplied password is invalid. Please do not use apostrophes or backslashes.'
 		}
 		if ( $sPassword !== $sRePassword ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'newpass', 
+				'id' => 'newpass',
 				'message' => wfMessage( 'bs-usermanager-pwd_nomatch' )->plain()
 			);
 		}
 		if ( strpos( $sRealname, '\\' ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'realname', 
+				'id' => 'realname',
 				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
 			);
 		}
 		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'email', 
+				'id' => 'email',
 				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
 			);
 		}
@@ -407,7 +407,7 @@ class UserManager extends BsExtensionMW {
 			if ( !empty( $sPassword ) ) {
 				$res = $dbw->update(
 						'user',
-						array( 'user_password' => User::crypt( $sPassword ) ), 
+						array( 'user_password' => User::crypt( $sPassword ) ),
 						array( 'user_id' => $oUser->getId() )
 				);
 			} else {
@@ -429,7 +429,7 @@ class UserManager extends BsExtensionMW {
 						'user_groups',
 						array(
 							'ug_user' => $oUser->getId(),
-							'ug_group' => addslashes( $sGroup ) 
+							'ug_group' => addslashes( $sGroup )
 						)
 					);
 				}

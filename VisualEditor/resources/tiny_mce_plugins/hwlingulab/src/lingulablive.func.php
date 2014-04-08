@@ -4,17 +4,17 @@
 
 	/**
 	* LinguLab live Webservice PHP Class
-	* 
+	*
 	* Class to get rating of text on PHP-Systems
-	* 
+	*
 	* @author Oliver Storm
 	* @author Stefan Huissel
 	* @author Stefan Huissel
 	*/
 	class linguLabLiveWebservice
 	{
-	private $_username = 'weichart@hallowelt.biz'; # Username	
-	private $_pw = 'Hallowelt89'; # Password	
+	private $_username = 'weichart@hallowelt.biz'; # Username
+	private $_pw = 'Hallowelt89'; # Password
 
 	private $_serviceURL = 'http://api.lingulab.de/LiveService.asmx?WSDL'; # URI of webservice
 
@@ -38,9 +38,9 @@
 
 	/**
 	* Connects via SOAP to the Webservice and gets the authentication key
-	* 
+	*
 	* public constructor function
-	* 
+	*
 	* @return void
 	*/
 	public function __construct()
@@ -51,14 +51,14 @@
 			$_SESSION = array();
 			$this->resultMessage = "";
 			$this->loginData = "";
-		}	
+		}
 
 		if(isset($_POST['username']) && $_POST['username']!="" && $this->_username==""){
 			$this->_username = $_POST['username'];
 			$this->_pw = $_POST['pass'];
 		}
 
-		if($this->_username!="") $_SESSION['username'] = $this->_username;			
+		if($this->_username!="") $_SESSION['username'] = $this->_username;
 
 		if(isset($_SESSION['username']) && $_SESSION['username']!=""){
 
@@ -67,8 +67,8 @@
 			$this->_result = $this->_classClient->call('Login', array(array('userName' => $this->_username,'password' => $this->_pw)));
 
 			$err = $this->_classClient->getError();
-			if ($this->_classClient->fault) {	
-				echo '<h2>Error has occured while Login process.</h2>';
+			if ($this->_classClient->fault) {
+				echo '<h2>Error has occurred while Login process.</h2>';
 			}
 			else if ($err){
 				echo '<h2>Constructor error</h2><pre>' . $err . '</pre>';
@@ -85,12 +85,12 @@
 						$this->_result['LoginResult']['AuthenticationKey'] = $_SESSION['lingulabkey'];
 					}
 					else{
-						echo '->'.$this->_authenticationError[$sessionValidation['ValidateAuthenticationResult']]; 
+						echo '->'.$this->_authenticationError[$sessionValidation['ValidateAuthenticationResult']];
 
 					}
 				}
 				else{
-					//echo "Error occured. Session ain't saved no more.";
+					//echo "Error occurred. Session ain't saved no more.";
 				}
 			}
 			else{
@@ -111,47 +111,47 @@
 		}
 
 		//echo $this->resultMessage;
-		//print_r($this->_result); 
-		//echo $_SESSION['lingulabkey'];  
+		//print_r($this->_result);
+		//echo $_SESSION['lingulabkey'];
 	}
-	
+
 	/**
 	* Collects the different texttypes via SOAP from the Service
-	* 
+	*
 	* public configuration function
-	* 
+	*
 	* @return string
 	*/
 	public function getConfiguration()
 	{
 		$_options = $this->_classClient->call('GetConfigurations', array(array('authenticationKey'=>$_SESSION['lingulabkey'],'languageKey' => 'de')));
 		$optString .= '<select name="mode" id="mode" class="dropdown" onchange="checkKeywordActivity()">';
-		
+
 		if($_options['GetConfigurationsResult']['Configurations']['ConfigurationEntry']['Id']!=""){
 			/* Free User */
 			$optString .=  '<option value="'.$_options['GetConfigurationsResult']['Configurations']['ConfigurationEntry']['Id'].','.$_options['GetConfigurationsResult']['Configurations']['ConfigurationEntry']['IsKeywordsSupported'].'">';
 			$optString .=  $_options['GetConfigurationsResult']['Configurations']['ConfigurationEntry']['Name'];
-			$optString .=  '</option>'; 
+			$optString .=  '</option>';
 		}else{
 			/* Premium User */
 			foreach($_options['GetConfigurationsResult']['Configurations']['ConfigurationEntry'] as $opt){
 				$optString .=  '<option value="'.$opt['Id'].','.$opt['IsKeywordsSupported'].'">';
 				$optString .=  $opt['Name'];
-				$optString .=  '</option>'; 
-			}			
+				$optString .=  '</option>';
+			}
 		}
-		
+
 		$optString .= '</select>';
-		
+
 		return $optString;
 	}
 
-	
+
 	/**
 	* Delievers the data to the Service and receives the result
-	* 
+	*
 	* @return void
-	*/	
+	*/
 	public function checkContent($_POST)
 	{
 		$text = $_POST['text'];
@@ -159,16 +159,16 @@
 		$h2 = isset($_POST['h2']) ? '<h2>'.$_POST['h2'].'</h2>' : '';
 		$h3 = isset($_POST['h3']) ? '<h3>'.$_POST['h3'].'</h3>' : '';
 		$text = utf8_decode($h1).utf8_decode($h2).utf8_decode($h3).$text;
-	
+
 		$kw1 = isset($_POST['kw1']) ? $_POST['kw1'] : '';
 		$kw2 = isset($_POST['kw2']) ? $_POST['kw2'] : '';
 		$kw3 = isset($_POST['kw3']) ? $_POST['kw3'] : '';
 		$configType = isset($_POST['mode']) ? $_POST['mode'] : '01_web-text_grundform';
-	
+
 		$aparam = array('inputData'=>array('Text' => $text,'ConfigurationId'=>$configType,'SearchKeyword1'=>$kw1,'SearchKeyword2'=>$kw2,'SearchKeyword3'=>$kw3),'authenticationKey'=>$_SESSION['lingulabkey']);
 		$key = $_SESSION['lingulabkey'];
 		$action = $this->_classClient->call('ProcessText', array($aparam));
-	   
+
 		$res = $action['ProcessTextResult'];
 		//var_dump( $res );
 		if($res['ErrorCode'] != 0){
@@ -192,16 +192,16 @@
 		$params = array('resultKey' => $_SESSION['resid'],'authenticationKey'=>$_SESSION['lingulabkey']);
 		$content = $this->_classClient->call('GetUpdatedText', array($params));
 
-		$h1 = $this->__get_string_between($content['GetUpdatedTextResult']['RawText'], "<h1>", "</h1>"); 
-		$h2 = $this->__get_string_between($content['GetUpdatedTextResult']['RawText'], "<h2>", "</h2>"); 
-		$h3 = $this->__get_string_between($content['GetUpdatedTextResult']['RawText'], "<h3>", "</h3>"); 
-		$text = $this->delUnwantedTags($content['GetUpdatedTextResult']['RawText']); 
+		$h1 = $this->__get_string_between($content['GetUpdatedTextResult']['RawText'], "<h1>", "</h1>");
+		$h2 = $this->__get_string_between($content['GetUpdatedTextResult']['RawText'], "<h2>", "</h2>");
+		$h3 = $this->__get_string_between($content['GetUpdatedTextResult']['RawText'], "<h3>", "</h3>");
+		$text = $this->delUnwantedTags($content['GetUpdatedTextResult']['RawText']);
 
 		echo $h1.'[,]'.$h2.'[,]'.$h3.'[,]'.$text;
 
 	}
 
-	public function __get_string_between($string, $start, $end){ 
+	public function __get_string_between($string, $start, $end){
 
 		//Calculate the length of the start and end tags
 		$lenStart = strlen($start);
@@ -231,7 +231,7 @@
 
 		$tmp = $strEnd - $strStart;
 		return substr($string, $strStart, $tmp);
-	} 
+	}
 
 
 	function delUnwantedTags ($code){
