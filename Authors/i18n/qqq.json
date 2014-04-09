@@ -1,0 +1,18 @@
+{
+    "@metadata": {
+        "authors": [
+            "Stephan Muggli <muggli@hallowelt.biz>"
+        ]
+    },
+    "bs-authors-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of authors extension",
+    "prefs-authors": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline of authors section preferences",
+    "bs-authors-title": "Headline of authors below article, $1 is the number of authors for PLURAL distinction",
+    "bs-authors-profileimage": "Image title for profile image, used on user page",
+    "bs-authors-profileimage-change": "Text for change your profile image, shown on user page",
+    "bs-authors-show-all-authors": "Image title for more authors available, used if there are too many authors",
+    "bs-authors-pref-imageheight": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for height of image:",
+    "bs-authors-pref-imagewidth": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for width of image:",
+    "bs-authors-pref-limit": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for how much authors should be displayed:",
+    "bs-authors-pref-show": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for display authors",
+    "bs-authors-switch-description": "Behaviour switch __NOAUTHORS__ description for hiding authors on this article, shown in InsertMagic."
+}

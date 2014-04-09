@@ -1,0 +1,18 @@
+{
+    "@metadata": {
+        "authors": [
+            "Stephan Muggli <muggli@hallowelt.biz>"
+        ]
+    },
+    "bs-authors-desc": "Unter einem Artikel werden dessen Autoren in Form von Profilbildern angezeigt",
+    "prefs-authors": "Autoren dieses Artikels",
+    "bs-authors-title": "{{PLURAL:$1|Autor|Autoren}}",
+    "bs-authors-profileimage": "Profilbild",
+    "bs-authors-profileimage-change": "Profilbild ändern",
+    "bs-authors-show-all-authors": "Weitere Autoren vorhanden",
+    "bs-authors-pref-imageheight": "Bildhöhe:",
+    "bs-authors-pref-imagewidth": "Bildbreite:",
+    "bs-authors-pref-limit": "Maximale Anzahl angezeigter Autoren:",
+    "bs-authors-pref-show": "Autoren anzeigen",
+    "bs-authors-switch-description": "Autoren werden auf diesem Artikel nicht angezeigt."
+}
