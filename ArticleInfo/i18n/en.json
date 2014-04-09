@@ -1,0 +1,32 @@
+{
+    "@metadata": {
+        "authors": [
+            "Stephan Muggli <muggli@hallowelt.biz>"
+        ]
+    },
+    "bs-articleinfo-desc": "Provides information about a page in status bar",
+    "prefs-articleinfo": "Page information",
+    "bs-articleinfo-pref-CheckRevisionInterval": "Update interval in seconds:",
+    "bs-articleinfo-last-edited": "Time since recent change",
+    "bs-articleinfo-last-edited-tooltip": "Last edit",
+    "bs-articleinfo-last-editor": "Last {{GENDER:$1|editor}}",
+    "bs-articleinfo-categories": "Categories",
+    "bs-articleinfo-more-categories": "More categories available",
+    "bs-articleinfo-all-categories-heading": "Categories",
+    "bs-articleinfo-nocategories": "No categories found.",
+    "bs-articleinfo-hiddencats": "Hidden categories",
+    "bs-articleinfo-notemplates": "No templates found.",
+    "bs-articleinfo-templates": "Templates",
+    "bs-articleinfo-subpages": "Subpages",
+    "bs-articleinfo-subpages-available": "There are subpages for this page",
+    "bs-articleinfo-subpages-too-much": "There are more than 100 subpages available.",
+    "bs-articleinfo-check-revision": "New version available",
+    "bs-articleinfo-check-revision-tooltip": "Reload page",
+    "bs-articleinfo-statebartoplastedited": "Recent edit",
+    "bs-articleinfo-statebartoplasteditor": "Recent editor",
+    "bs-articleinfo-statebartopcategories": "Categories",
+    "bs-articleinfo-statebartopsubpages": "Subpages",
+    "bs-articleinfo-statebarbodycategories": "Categories",
+    "bs-articleinfo-statebarbodysubpages": "Subpages",
+    "bs-articleinfo-statebarbodytemplates": "Templates"
+}
