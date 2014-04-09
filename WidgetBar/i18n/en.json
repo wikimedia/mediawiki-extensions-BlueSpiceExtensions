@@ -1,0 +1,14 @@
+{
+    "@metadata": {
+        "authors": [
+            "Stephan Muggli <muggli@hallowelt.biz>"
+        ]
+    },
+    "bs-widgetbar-desc": "Adds widgets to the user interface",
+    "prefs-widgetbar": "Widget bar",
+    "bs-widgetbar-userpagesettings-headline": "Widgets",
+    "bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Edit}} the content of your widget toolbar:",
+    "bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Edit}} my widget toolbar",
+    "bs-widget-container-tooltip": "Widgets",
+    "bs-widget-flyout-heading": "Widgets"
+}
