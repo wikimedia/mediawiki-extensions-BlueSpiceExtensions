@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-authors-desc": "Affiche les auteurs d’une page avec leur image",
+	"prefs-authors": "Auteurs de cet article",
+	"bs-authors-title": "{{PLURAL:$1|Auteur|Auteurs}}",
+	"bs-authors-profileimage": "Image du profil",
+	"bs-authors-profileimage-change": "Modifier l’image du profil",
+	"bs-authors-show-all-authors": "Plus d’auteurs disponibles",
+	"bs-authors-pref-imageheight": "Hauteur de l’image :",
+	"bs-authors-pref-imagewidth": "Largeur de l’image :",
+	"bs-authors-pref-limit": "Limite des auteurs à afficher :",
+	"bs-authors-pref-show": "Afficher les auteurs",
+	"bs-authors-switch-description": "Masque les auteurs sur cet article."
+}

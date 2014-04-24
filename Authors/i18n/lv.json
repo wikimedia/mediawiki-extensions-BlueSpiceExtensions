@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"prefs-authors": "Šā raksta autori",
+	"bs-authors-title": "{{PLURAL:$1|Autors|Autori}}",
+	"bs-authors-profileimage": "Profila attēls",
+	"bs-authors-profileimage-change": "Mainīt profila attēlu",
+	"bs-authors-pref-imageheight": "Attēla augstums:",
+	"bs-authors-pref-imagewidth": "Attēla platums:",
+	"bs-authors-pref-limit": "Ierobežot rādāmos autorus:",
+	"bs-authors-pref-show": "Rādīt autorus",
+	"bs-authors-switch-description": "Paslēpj šī raksta autorus."
+}
