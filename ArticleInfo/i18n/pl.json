@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-articleinfo-categories": "Kategorie",
+	"bs-articleinfo-all-categories-heading": "Kategorie",
+	"bs-articleinfo-hiddencats": "Ukryte kategorie",
+	"bs-articleinfo-templates": "Szablony",
+	"bs-articleinfo-subpages": "Podstrony",
+	"bs-articleinfo-statebartopcategories": "Kategorie",
+	"bs-articleinfo-statebartopsubpages": "Podstrony",
+	"bs-articleinfo-statebarbodycategories": "Kategorie",
+	"bs-articleinfo-statebarbodysubpages": "Podstrony",
+	"bs-articleinfo-statebarbodytemplates": "Szablony"
+}

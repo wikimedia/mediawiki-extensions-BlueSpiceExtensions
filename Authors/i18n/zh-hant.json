@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"prefs-authors": "此條目作者",
+	"bs-authors-title": "$1個作者",
+	"bs-authors-profileimage": "設定檔圖像",
+	"bs-authors-profileimage-change": "更改設定檔圖像",
+	"bs-authors-show-all-authors": "更多作者可用",
+	"bs-authors-pref-imageheight": "圖像高度：",
+	"bs-authors-pref-imagewidth": "圖像寬度：",
+	"bs-authors-pref-show": "顯示作者",
+	"bs-authors-switch-description": "於條目中隱藏作者。"
+}

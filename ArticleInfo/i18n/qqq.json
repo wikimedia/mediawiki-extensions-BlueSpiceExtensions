@@ -1,32 +1,32 @@
 {
-    "@metadata": {
-        "authors": [
-            "Stephan Muggli <muggli@hallowelt.biz>"
-        ]
-    },
-    "bs-articleinfo-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of article info extension",
-    "prefs-articleinfo": "Used in[[Special:Wiki_Admin&mode=Preferences]], headline for article information section in preferences",
-    "bs-articleinfo-pref-CheckRevisionInterval": "Option in [[Special:Wiki_Admin&mode=Preferences]], timespan until article informations are updated in seconds:",
-    "bs-articleinfo-last-edited": "Image alternative text for time since recent change, used in status bar above article",
-    "bs-articleinfo-last-edited-tooltip": "Anchor title for last edit, used in status bar above article",
-    "bs-articleinfo-last-editor": "Image alternative text for last editor, used in status bar above article, $1 is the current user name for GENDER distinction (depends on sex setting)",
-    "bs-articleinfo-categories": "Image alternative text for categories, used in status bar above article",
-    "bs-articleinfo-more-categories": "Anchor title for more categories available, used in status bar above article",
-    "bs-articleinfo-all-categories-heading": "Headline for categories section, shown in folded out status bar",
-    "bs-articleinfo-nocategories": "Text for no categories found, shown in folded out status bar.",
-    "bs-articleinfo-hiddencats": "Headline for hidden categories, shown in folded out status bar",
-    "bs-articleinfo-notemplates": "Text for no templates found, shown in folded out status bar.",
-    "bs-articleinfo-templates": "Headline for templates section, shown in folded out status bar",
-    "bs-articleinfo-subpages": "Anchor text for subpages, shown in status bar above article",
-    "bs-articleinfo-subpages-available": "Image alternative text for subpages are available for this article, used in folded out status bar",
-    "bs-articleinfo-subpages-too-much": "Text for there are more than 100 subpages available, shown in folded out status bar.",
-    "bs-articleinfo-check-revision": "Anchor text and image alternative text for new version available, shown in status bar above article",
-    "bs-articleinfo-check-revision-tooltip": "Anchor title for reload article shown in status bar above article",
-    "bs-articleinfo-statebartoplastedited": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item recent edit",
-    "bs-articleinfo-statebartoplasteditor": "Used in [[Special:Wiki_Admin&mode=Preferences]],label for top sorting item recent editor",
-    "bs-articleinfo-statebartopcategories": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item categories",
-    "bs-articleinfo-statebartopsubpages": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item subpages",
-    "bs-articleinfo-statebarbodycategories": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item categories",
-    "bs-articleinfo-statebarbodysubpages": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item subpages",
-    "bs-articleinfo-statebarbodytemplates": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item templates"
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-articleinfo-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of article info extension",
+	"prefs-articleinfo": "Used in[[Special:Wiki_Admin&mode=Preferences]], headline for article information section in preferences",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Option in [[Special:Wiki_Admin&mode=Preferences]], timespan until article informations are updated in seconds:",
+	"bs-articleinfo-last-edited": "Image alternative text for time since recent change, used in status bar above article",
+	"bs-articleinfo-last-edited-tooltip": "Anchor title for last edit, used in status bar above article",
+	"bs-articleinfo-last-editor": "Image alternative text for last editor, used in status bar above article, $1 is the current user name for GENDER distinction (depends on sex setting)",
+	"bs-articleinfo-categories": "Image alternative text for categories, used in status bar above article",
+	"bs-articleinfo-more-categories": "Anchor title for more categories available, used in status bar above article",
+	"bs-articleinfo-all-categories-heading": "Headline for categories section, shown in folded out status bar",
+	"bs-articleinfo-nocategories": "Text for no categories found, shown in folded out status bar.",
+	"bs-articleinfo-hiddencats": "Headline for hidden categories, shown in folded out status bar",
+	"bs-articleinfo-notemplates": "Text for no templates found, shown in folded out status bar.",
+	"bs-articleinfo-templates": "Headline for templates section, shown in folded out status bar",
+	"bs-articleinfo-subpages": "Anchor text for subpages, shown in status bar above article",
+	"bs-articleinfo-subpages-available": "Image alternative text for subpages are available for this article, used in folded out status bar",
+	"bs-articleinfo-subpages-too-much": "Text for there are more than 100 subpages available, shown in folded out status bar.",
+	"bs-articleinfo-check-revision": "Anchor text and image alternative text for new version available, shown in status bar above article",
+	"bs-articleinfo-check-revision-tooltip": "Anchor title for reload article shown in status bar above article",
+	"bs-articleinfo-statebartoplastedited": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item recent edit",
+	"bs-articleinfo-statebartoplasteditor": "Used in [[Special:Wiki_Admin&mode=Preferences]],label for top sorting item recent editor",
+	"bs-articleinfo-statebartopcategories": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item categories",
+	"bs-articleinfo-statebartopsubpages": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item subpages",
+	"bs-articleinfo-statebarbodycategories": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item categories",
+	"bs-articleinfo-statebarbodysubpages": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item subpages",
+	"bs-articleinfo-statebarbodytemplates": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item templates"
 }

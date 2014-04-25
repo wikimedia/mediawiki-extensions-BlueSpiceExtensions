@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92"
+		]
+	},
+	"prefs-articleinfo": "Information sur la page",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalle de mise à jour en secondes:",
+	"bs-articleinfo-last-edited": "Temps depuis le récent changement",
+	"bs-articleinfo-last-edited-tooltip": "Dernière modification",
+	"bs-articleinfo-last-editor": "Dernier  {{GENDER:$1| éditeur}}",
+	"bs-articleinfo-categories": "Catégories",
+	"bs-articleinfo-all-categories-heading": "Catégories",
+	"bs-articleinfo-nocategories": "Pas de catégories trouvées.",
+	"bs-articleinfo-templates": "Modèles",
+	"bs-articleinfo-subpages-available": "Il existe des sous-pages pour cette page",
+	"bs-articleinfo-subpages-too-much": "Il y a plus de 100 sous-pages disponibles.",
+	"bs-articleinfo-check-revision-tooltip": "Recharger la page",
+	"bs-articleinfo-statebarbodycategories": "Catégories",
+	"bs-articleinfo-statebarbodysubpages": "Sous-pages",
+	"bs-articleinfo-statebarbodytemplates": "Modèles"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-widgetbar-desc": "Ajoute des widgets à l’interface utilisateur",
+	"prefs-widgetbar": "Barre des widgets",
+	"bs-widgetbar-userpagesettings-headline": "Widgets",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Modifier}} le contenu de votre barre d’outils de widgets :",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Modifier}} ma barre d’outils de widgets",
+	"bs-widget-container-tooltip": "Widgets",
+	"bs-widget-flyout-heading": "Widgets"
+}

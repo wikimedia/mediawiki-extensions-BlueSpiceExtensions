@@ -1,16 +1,16 @@
 {
-    "@metadata": {
-        "authors": [
-            "Stephan Muggli <muggli@hallowelt.biz>"
-        ]
-    },
-    "bs-statebar-desc": "Zeigt eine Statusleiste über dem Artikel an",
-    "prefs-statebar": "Statusleiste",
-    "bs-statebar-pref-sortbodyvars": "Body Reihenfolge:",
-    "bs-statebar-pref-sorttopvars": "Top Reihenfolge:",
-    "bs-statebar-pref-show": "Statusleiste anzeigen",
-    "bs-statebar-viewtoggler": "[+/-]",
-    "bs-statebar-viewtoggler-tooltip": "Detailierte Informationen anzeigen",
-    "bs-statebar-switch-description": "Statusleiste wird auf diesem Artikel nicht angezeigt.",
-    "bs-statebar-ajax-nobodyviews": "Keine Informationen verfügbar."
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-statebar-desc": "Zeigt eine Statusleiste über dem Artikel an",
+	"prefs-statebar": "Statusleiste",
+	"bs-statebar-pref-sortbodyvars": "Body Reihenfolge:",
+	"bs-statebar-pref-sorttopvars": "Top Reihenfolge:",
+	"bs-statebar-pref-show": "Statusleiste anzeigen",
+	"bs-statebar-viewtoggler": "[+/-]",
+	"bs-statebar-viewtoggler-tooltip": "Detailierte Informationen anzeigen",
+	"bs-statebar-switch-description": "Statusleiste wird auf diesem Artikel nicht angezeigt.",
+	"bs-statebar-ajax-nobodyviews": "Keine Informationen verfügbar."
 }

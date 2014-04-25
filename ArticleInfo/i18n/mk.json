@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-articleinfo-desc": "Дава информации за страницата во статусник",
+	"prefs-articleinfo": "Информации за статии",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Интервал на поднова во секунди:",
+	"bs-articleinfo-last-edited": "Изминато време од скорешна промена",
+	"bs-articleinfo-last-edited-tooltip": "Последно уредување",
+	"bs-articleinfo-last-editor": "Последен {{GENDER:$1|уредник}}",
+	"bs-articleinfo-categories": "Категории",
+	"bs-articleinfo-more-categories": "Има уште категории",
+	"bs-articleinfo-all-categories-heading": "Категории",
+	"bs-articleinfo-nocategories": "Не пронајдов ниедна категорија.",
+	"bs-articleinfo-hiddencats": "Скриени категории",
+	"bs-articleinfo-notemplates": "Не пронајдов ниеден шаблон.",
+	"bs-articleinfo-templates": "Шаблони",
+	"bs-articleinfo-subpages": "Потстраници",
+	"bs-articleinfo-subpages-available": "Страницава има потстраници",
+	"bs-articleinfo-subpages-too-much": "Има преку 100 потстраници.",
+	"bs-articleinfo-check-revision": "Има нова верзија",
+	"bs-articleinfo-check-revision-tooltip": "Превчитај ја страницата",
+	"bs-articleinfo-statebartoplastedited": "Скорешно уредување",
+	"bs-articleinfo-statebartoplasteditor": "Скорешен уредник",
+	"bs-articleinfo-statebartopcategories": "Категории",
+	"bs-articleinfo-statebartopsubpages": "Потстраници",
+	"bs-articleinfo-statebarbodycategories": "Категории",
+	"bs-articleinfo-statebarbodysubpages": "Потстраници",
+	"bs-articleinfo-statebarbodytemplates": "Шаблони"
+}

@@ -1,14 +1,14 @@
 {
-    "@metadata": {
-        "authors": [
-            "Stephan Muggli <muggli@hallowelt.biz>"
-        ]
-    },
-    "bs-widgetbar-desc": "Fügt der Oberfläche das Widget-Flyout hinzu",
-    "prefs-widgetbar": "Widget bar",
-    "bs-widgetbar-userpagesettings-headline": "Widgets",
-    "bs-widgetbar-userpagesettings-link-title": "Inhalt deiner Widgetbar bearbeiten:",
-    "bs-widgetbar-userpagesettings-link-text": "Widgets bearbeiten",
-    "bs-widget-container-tooltip": "Widgets",
-    "bs-widget-flyout-heading": "Widgets"
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-widgetbar-desc": "Fügt der Oberfläche das Widget-Flyout hinzu",
+	"prefs-widgetbar": "Widget bar",
+	"bs-widgetbar-userpagesettings-headline": "Widgets",
+	"bs-widgetbar-userpagesettings-link-title": "Inhalt deiner Widgetbar bearbeiten:",
+	"bs-widgetbar-userpagesettings-link-text": "Widgets bearbeiten",
+	"bs-widget-container-tooltip": "Widgets",
+	"bs-widget-flyout-heading": "Widgets"
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-widgetbar-desc": "Добавляет виджеты в пользовательский интерфейс",
+	"prefs-widgetbar": "Меню виджетов",
+	"bs-widgetbar-userpagesettings-headline": "Виджеты",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Отредактируйте}} содержимое вашей панели виджетов:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Редактировать}} мою панель виджетов",
+	"bs-widget-container-tooltip": "Виджеты",
+	"bs-widget-flyout-heading": "Виджеты"
+}
