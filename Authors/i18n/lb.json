@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"prefs-authors": "Auteure vun dësem Artikel",
+	"bs-authors-title": "{{PLURAL:$1|Auteur|Auteuren}}",
+	"bs-authors-show-all-authors": "Méi Auteuren disponibel",
+	"bs-authors-pref-imageheight": "Héicht vum Bild:",
+	"bs-authors-pref-imagewidth": "Breet vum Bild:",
+	"bs-authors-pref-show": "Auteure weisen"
+}
