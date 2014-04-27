@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"prefs-articleinfo": "ページ情報",
+	"bs-articleinfo-categories": "カテゴリ",
+	"bs-articleinfo-all-categories-heading": "カテゴリ",
+	"bs-articleinfo-hiddencats": "隠しカテゴリ",
+	"bs-articleinfo-templates": "テンプレート",
+	"bs-articleinfo-subpages": "下位ページ",
+	"bs-articleinfo-statebartopcategories": "カテゴリ",
+	"bs-articleinfo-statebartopsubpages": "下位ページ",
+	"bs-articleinfo-statebarbodycategories": "カテゴリ",
+	"bs-articleinfo-statebarbodysubpages": "下位ページ",
+	"bs-articleinfo-statebarbodytemplates": "テンプレート"
+}

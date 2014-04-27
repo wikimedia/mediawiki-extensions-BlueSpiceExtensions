@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"VASANTH S.N."
+		]
+	},
+	"bs-statebar-desc": "ಸ್ಥಿತಿಪಟ್ಟಿಯನ್ನು ಒದಗಿಸಿ",
+	"prefs-statebar": "ಸ್ಥಿತಿಪಟ್ಟಿ",
+	"bs-statebar-pref-show": "ಸ್ಥಿತಿಪಟ್ಟಿಯನ್ನು ತೋರಿಸಿ",
+	"bs-statebar-viewtoggler-tooltip": "ವಿವರವಾದ ಮಾಹಿತಿಯನ್ನು ತೋರಿಸಿ",
+	"bs-statebar-switch-description": "ಈ ಪುಟದಲ್ಲಿ ಸ್ಥಿತಿಪಟ್ಟಿಯನ್ನು ಅಡಗಿಸಿ.",
+	"bs-statebar-ajax-nobodyviews": "ಯಾವುದೇ ವಿವರಣೆಯಿಲ್ಲ."
+}

@@ -4,6 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
+	"bs-authors-desc": "顯示與圖像關聯之頁面作者",
 	"prefs-authors": "此條目作者",
 	"bs-authors-title": "$1個作者",
 	"bs-authors-profileimage": "設定檔圖像",
@@ -11,6 +12,7 @@
 	"bs-authors-show-all-authors": "更多作者可用",
 	"bs-authors-pref-imageheight": "圖像高度：",
 	"bs-authors-pref-imagewidth": "圖像寬度：",
+	"bs-authors-pref-limit": "顯示作者限制：",
 	"bs-authors-pref-show": "顯示作者",
 	"bs-authors-switch-description": "於條目中隱藏作者。"
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-widgetbar-desc": "ユーザー インターフェイスにウィジェットを追加する",
+	"prefs-widgetbar": "ウィジェット バー",
+	"bs-widgetbar-userpagesettings-headline": "ウィジェット",
+	"bs-widgetbar-userpagesettings-link-title": "ウィジェット ツールバーの内容の{{GENDER:|編集}}:",
+	"bs-widgetbar-userpagesettings-link-text": "自分のウィジェット ツールバーを{{GENDER:|編集}}",
+	"bs-widget-container-tooltip": "ウィジェット",
+	"bs-widget-flyout-heading": "ウィジェット"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"prefs-statebar": "Строка состояния",
+	"bs-statebar-viewtoggler-tooltip": "Показать подробную информацию",
+	"bs-statebar-ajax-nobodyviews": "Информация отсутствует."
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-authors-profileimage": "プロフィール画像",
+	"bs-authors-profileimage-change": "プロフィール画像を変更",
+	"bs-authors-pref-imageheight": "画像の高さ:",
+	"bs-authors-pref-imagewidth": "画像の幅:"
+}

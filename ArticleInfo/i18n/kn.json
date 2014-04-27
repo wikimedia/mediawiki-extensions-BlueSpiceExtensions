@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"VASANTH S.N."
+		]
+	},
+	"prefs-articleinfo": "ಪುಟದ ಮಾಹಿತಿ",
+	"bs-articleinfo-last-edited": "ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಯ ನಂತರದ ಸಮಯ",
+	"bs-articleinfo-last-edited-tooltip": "ಕೊನೆಯ ಸಂಪಾದನೆ",
+	"bs-articleinfo-categories": "ವರ್ಗಗಳು",
+	"bs-articleinfo-more-categories": "ಹೆಚ್ಚಿನ ವರ್ಗಗಳು ಲಭ್ಯ",
+	"bs-articleinfo-all-categories-heading": "ವರ್ಗಗಳು",
+	"bs-articleinfo-nocategories": "ಯಾವುದೇ ವರ್ಗಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+	"bs-articleinfo-hiddencats": "ಅಡಗಿಸಲ್ಪಟ್ಟಿರುವ ವರ್ಗಗಳು",
+	"bs-articleinfo-notemplates": "ಸಿದ್ಧವಿನ್ಯಾಸ ಅಲಭ್ಯ.",
+	"bs-articleinfo-templates": "ಸಿದ್ಧವಿನ್ಯಾಸಗಳು",
+	"bs-articleinfo-subpages": "ಉಪ ಪುಟಗಳು",
+	"bs-articleinfo-subpages-too-much": "೧೦೦ ಕ್ಕಿಂತಲೂ ಹೆಚ್ಚಿನ ಉಪಪುಟಗಳು ಲಭ್ಯ.",
+	"bs-articleinfo-check-revision": "ಹೊಸ ಆವೃತ್ತಿ ಲಭ್ಯ",
+	"bs-articleinfo-check-revision-tooltip": "ಪುಟವನ್ನು ಪುನಃ ತುಂಬಿಸಿ",
+	"bs-articleinfo-statebartoplastedited": "ಇತ್ತೀಚೆಗಿನ ಸಂಪಾದನೆ",
+	"bs-articleinfo-statebartoplasteditor": "ಇತ್ತೀಚೆಗಿನ ಸಂಪಾದಕ",
+	"bs-articleinfo-statebartopcategories": "ವರ್ಗಗಳು",
+	"bs-articleinfo-statebartopsubpages": "ಉಪ ಪುಟಗಳು",
+	"bs-articleinfo-statebarbodycategories": "ವರ್ಗಗಳು",
+	"bs-articleinfo-statebarbodysubpages": "ಉಪ ಪುಟಗಳು",
+	"bs-articleinfo-statebarbodytemplates": "ಸಿದ್ಧವಿನ್ಯಾಸಗಳು"
+}

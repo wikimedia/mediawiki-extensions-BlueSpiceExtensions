@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-statebar-desc": "提供一個狀態列",
+	"prefs-statebar": "狀態列",
+	"bs-statebar-pref-sortbodyvars": "主體順序：",
+	"bs-statebar-pref-sorttopvars": "頂部順序：",
+	"bs-statebar-pref-show": "顯示狀態列",
+	"bs-statebar-viewtoggler-tooltip": "顯示詳細資訊",
+	"bs-statebar-switch-description": "於此頁隱藏狀態列。",
+	"bs-statebar-ajax-nobodyviews": "無可用資訊。"
+}

@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-articleinfo-desc": "提供有關狀態列中之頁面資訊",
+	"prefs-articleinfo": "頁面資訊",
+	"bs-articleinfo-pref-CheckRevisionInterval": "更新間隔秒計：",
+	"bs-articleinfo-last-edited": "新近更改后時間",
+	"bs-articleinfo-last-edited-tooltip": "新近編輯",
+	"bs-articleinfo-last-editor": "最近{{GENDER:$1|編者}}",
+	"bs-articleinfo-categories": "分類",
+	"bs-articleinfo-more-categories": "更多分類可用",
+	"bs-articleinfo-all-categories-heading": "分類",
+	"bs-articleinfo-nocategories": "找不到分類。",
+	"bs-articleinfo-hiddencats": "隱藏分類",
+	"bs-articleinfo-notemplates": "找不到模板。",
+	"bs-articleinfo-templates": "模板",
+	"bs-articleinfo-subpages": "子頁",
+	"bs-articleinfo-subpages-available": "有此頁面之子頁",
+	"bs-articleinfo-subpages-too-much": "超過100個子頁可用。",
+	"bs-articleinfo-check-revision": "新版本可用",
+	"bs-articleinfo-check-revision-tooltip": "重新載入頁面",
+	"bs-articleinfo-statebartoplastedited": "最近編輯",
+	"bs-articleinfo-statebartoplasteditor": "最近編者",
+	"bs-articleinfo-statebartopcategories": "分類",
+	"bs-articleinfo-statebartopsubpages": "子頁",
+	"bs-articleinfo-statebarbodycategories": "分類",
+	"bs-articleinfo-statebarbodysubpages": "子頁",
+	"bs-articleinfo-statebarbodytemplates": "模板"
+}

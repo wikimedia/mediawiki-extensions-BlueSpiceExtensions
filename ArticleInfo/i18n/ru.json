@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"prefs-articleinfo": "Сведения о странице",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Интервал обновления (в секундах):",
+	"bs-articleinfo-last-edited-tooltip": "Последняя правка",
+	"bs-articleinfo-categories": "Категории",
+	"bs-articleinfo-all-categories-heading": "Категории",
+	"bs-articleinfo-hiddencats": "Скрытые категории",
+	"bs-articleinfo-templates": "Шаблоны",
+	"bs-articleinfo-subpages": "Подстраницы",
+	"bs-articleinfo-check-revision": "Доступна новая версия",
+	"bs-articleinfo-check-revision-tooltip": "Перезагрузить страницу",
+	"bs-articleinfo-statebartopcategories": "Категории",
+	"bs-articleinfo-statebartopsubpages": "Подстраницы",
+	"bs-articleinfo-statebarbodycategories": "Категории",
+	"bs-articleinfo-statebarbodysubpages": "Подстраницы",
+	"bs-articleinfo-statebarbodytemplates": "Шаблоны"
+}
