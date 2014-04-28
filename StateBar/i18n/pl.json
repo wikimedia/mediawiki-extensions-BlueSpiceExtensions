@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-statebar-viewtoggler-tooltip": "Pokaż szczegółowe informacje",
+	"bs-statebar-ajax-nobodyviews": "Brak dostępnych informacji."
+}

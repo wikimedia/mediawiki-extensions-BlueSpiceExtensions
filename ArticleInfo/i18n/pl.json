@@ -4,11 +4,18 @@
 			"Chrumps"
 		]
 	},
+	"bs-articleinfo-last-edited-tooltip": "Ostatnia edycja",
 	"bs-articleinfo-categories": "Kategorie",
 	"bs-articleinfo-all-categories-heading": "Kategorie",
+	"bs-articleinfo-nocategories": "Nie znaleziono kategorii.",
 	"bs-articleinfo-hiddencats": "Ukryte kategorie",
+	"bs-articleinfo-notemplates": "Nie znaleziono szablonu.",
 	"bs-articleinfo-templates": "Szablony",
 	"bs-articleinfo-subpages": "Podstrony",
+	"bs-articleinfo-check-revision": "Dostępna jest nowa wersja",
+	"bs-articleinfo-check-revision-tooltip": "Przeładuj stronę",
+	"bs-articleinfo-statebartoplastedited": "Ostatnia edycja",
+	"bs-articleinfo-statebartoplasteditor": "Ostatni edytor",
 	"bs-articleinfo-statebartopcategories": "Kategorie",
 	"bs-articleinfo-statebartopsubpages": "Podstrony",
 	"bs-articleinfo-statebarbodycategories": "Kategorie",

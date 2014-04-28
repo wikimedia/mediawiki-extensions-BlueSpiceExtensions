@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"prefs-authors": "Autori di questa voce",
+	"bs-authors-title": "{{PLURAL:$1|Autore|Autori}}",
+	"bs-authors-profileimage": "Immagine profilo",
+	"bs-authors-profileimage-change": "Cambia immagine del profilo",
+	"bs-authors-show-all-authors": "Altri autori disponibili",
+	"bs-authors-pref-imageheight": "Altezza immagine:",
+	"bs-authors-pref-imagewidth": "Larghezza immagine:"
+}
