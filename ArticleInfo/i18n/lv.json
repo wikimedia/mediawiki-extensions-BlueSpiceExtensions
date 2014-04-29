@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"prefs-articleinfo": "Lapas informācija",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Atjaunināšanas intervāls sekundēs:",
+	"bs-articleinfo-last-edited": "Laiks kopš pēdējās izmaiņas",
+	"bs-articleinfo-last-edited-tooltip": "Pēdējais labojums",
+	"bs-articleinfo-categories": "Kategorijas",
+	"bs-articleinfo-all-categories-heading": "Kategorijas",
+	"bs-articleinfo-hiddencats": "Slēptās kategorijas",
+	"bs-articleinfo-templates": "Veidnes",
+	"bs-articleinfo-subpages": "Apakšlapas",
+	"bs-articleinfo-subpages-available": "Šai lapai ir apakšlapas",
+	"bs-articleinfo-subpages-too-much": "Pieejamas vairāk nekā 100 apakšlapas.",
+	"bs-articleinfo-check-revision": "Pieejama jauna versija",
+	"bs-articleinfo-check-revision-tooltip": "Pārlādēt lapu",
+	"bs-articleinfo-statebartopcategories": "Kategorijas",
+	"bs-articleinfo-statebartopsubpages": "Apakšlapas",
+	"bs-articleinfo-statebarbodycategories": "Kategorijas",
+	"bs-articleinfo-statebarbodysubpages": "Apakšlapas",
+	"bs-articleinfo-statebarbodytemplates": "Veidnes"
+}

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Wiochman"
 		]
 	},
+	"prefs-articleinfo": "Informacja o stronie",
 	"bs-articleinfo-last-edited-tooltip": "Ostatnia edycja",
 	"bs-articleinfo-categories": "Kategorie",
 	"bs-articleinfo-all-categories-heading": "Kategorie",

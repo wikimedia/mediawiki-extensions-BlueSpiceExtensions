@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Marmase"
+			"Marmase",
+			"Mirzali"
 		]
 	},
 	"prefs-articleinfo": "Melumatê pele",
@@ -13,13 +14,13 @@
 	"bs-articleinfo-hiddencats": "Kategoriyê nımıtey",
 	"bs-articleinfo-notemplates": "Şablon çıniyo.",
 	"bs-articleinfo-templates": "Şabloni",
-	"bs-articleinfo-subpages": "Bınpeley",
+	"bs-articleinfo-subpages": "Bınpeli",
 	"bs-articleinfo-subpages-available": "Nê bınpelê ena pele rê",
 	"bs-articleinfo-statebartoplastedited": "Vurnayışo bahdoyên",
 	"bs-articleinfo-statebartoplasteditor": "Editoro bahdoyên",
 	"bs-articleinfo-statebartopcategories": "Kategoriy",
-	"bs-articleinfo-statebartopsubpages": "Bınpeley",
+	"bs-articleinfo-statebartopsubpages": "Bınpeli",
 	"bs-articleinfo-statebarbodycategories": "Kategoriy",
-	"bs-articleinfo-statebarbodysubpages": "Bınpeley",
+	"bs-articleinfo-statebarbodysubpages": "Bınpeli",
 	"bs-articleinfo-statebarbodytemplates": "Şabloni"
 }

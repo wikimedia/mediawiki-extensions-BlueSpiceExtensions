@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Imperadeiro98"
+		]
+	},
+	"prefs-authors": "Autores deste artigo",
+	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
+	"bs-authors-profileimage": "Imagem de perfil",
+	"bs-authors-profileimage-change": "Mudar a imagem de perfil",
+	"bs-authors-show-all-authors": "Mais autores disponíveis",
+	"bs-authors-pref-imageheight": "Altura da imagem:",
+	"bs-authors-pref-imagewidth": "Largura da imagem:",
+	"bs-authors-pref-limit": "Limite de autores para mostrar:",
+	"bs-authors-pref-show": "Mostrar autores",
+	"bs-authors-switch-description": "Esconde os autores neste artigo."
+}
