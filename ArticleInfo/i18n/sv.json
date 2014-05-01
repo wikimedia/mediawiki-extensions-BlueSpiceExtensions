@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-articleinfo-desc": "Tillhandahåller information om en sida i statusfältet",
+	"prefs-articleinfo": "Sidinformation",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Uppdateringsintervall i sekunder:",
+	"bs-articleinfo-last-edited": "Tiden efter senaste ändringen",
+	"bs-articleinfo-last-edited-tooltip": "Sista redigeringen",
+	"bs-articleinfo-last-editor": "Sista {{GENDER:$1|redigeraren}}",
+	"bs-articleinfo-categories": "Kategorier",
+	"bs-articleinfo-more-categories": "Fler kategorier tillgängliga",
+	"bs-articleinfo-all-categories-heading": "Kategorier",
+	"bs-articleinfo-nocategories": "Inga kategorier hittades.",
+	"bs-articleinfo-hiddencats": "Dolda kategorier",
+	"bs-articleinfo-notemplates": "Inga mallar hittades.",
+	"bs-articleinfo-templates": "Mallar",
+	"bs-articleinfo-subpages": "Undersidor",
+	"bs-articleinfo-subpages-available": "Det finns undersidor till denna sida",
+	"bs-articleinfo-subpages-too-much": "Det finns fler än 100 undersidor tillgängliga.",
+	"bs-articleinfo-check-revision": "Ny version finns tillgänglig",
+	"bs-articleinfo-check-revision-tooltip": "Ladda om sidan",
+	"bs-articleinfo-statebartoplastedited": "Senaste redigeringen",
+	"bs-articleinfo-statebartoplasteditor": "Senaste redigeraren",
+	"bs-articleinfo-statebartopcategories": "Kategorier",
+	"bs-articleinfo-statebartopsubpages": "Undersidor",
+	"bs-articleinfo-statebarbodycategories": "Kategorier",
+	"bs-articleinfo-statebarbodysubpages": "Undersidor",
+	"bs-articleinfo-statebarbodytemplates": "Mallar"
+}

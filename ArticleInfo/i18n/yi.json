@@ -5,11 +5,17 @@
 		]
 	},
 	"prefs-articleinfo": "בלאַט־אינפֿארמאַציע",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|לעצטער רעדאַקטאָר|לעצטע רעדאַקטאָרין}}",
 	"bs-articleinfo-categories": "קאַטעגאָריעס",
 	"bs-articleinfo-all-categories-heading": "קאַטעגאָריעס",
+	"bs-articleinfo-nocategories": "קיין קאטעגאריעס נישט געטראפן",
 	"bs-articleinfo-hiddencats": "באהאלטענע קאטעגאריעס",
+	"bs-articleinfo-templates": "מוסטערן",
 	"bs-articleinfo-subpages": "אונטערבלעטער",
+	"bs-articleinfo-statebartoplastedited": "לעצטיקע רעדאקטירונג",
 	"bs-articleinfo-statebartopcategories": "קאַטעגאָריעס",
+	"bs-articleinfo-statebartopsubpages": "אונטערבלעטער",
 	"bs-articleinfo-statebarbodycategories": "קאַטעגאָריעס",
+	"bs-articleinfo-statebarbodysubpages": "אונטערבלעטער",
 	"bs-articleinfo-statebarbodytemplates": "מוסטערן"
 }

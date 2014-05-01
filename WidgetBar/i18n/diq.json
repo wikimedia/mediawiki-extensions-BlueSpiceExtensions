@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gorizon",
+			"Mirzali"
+		]
+	},
+	"bs-widgetbar-desc": "Verriyê karberi rê Widget keno cı",
+	"prefs-widgetbar": "Widget bar",
+	"bs-widgetbar-userpagesettings-headline": "Widgeti",
+	"bs-widgetbar-userpagesettings-link-title": "Zerrek ke toolbar da widget da xo {{GENDER:|bıvurne}}:",
+	"bs-widgetbar-userpagesettings-link-text": "Tollbar'a widgetta mı {{GENDER:|bıvurne}}",
+	"bs-widget-container-tooltip": "Widgeti",
+	"bs-widget-flyout-heading": "Widgeti"
+}

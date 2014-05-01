@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-statebar-desc": "Tillhandahåller ett statusfält",
+	"prefs-statebar": "Statusfält",
+	"bs-statebar-pref-show": "Visa statusfält",
+	"bs-statebar-viewtoggler-tooltip": "Visa detaljerad information",
+	"bs-statebar-switch-description": "Döljer statusfältet på denna sida.",
+	"bs-statebar-ajax-nobodyviews": "Ingen information tillgänglig."
+}
