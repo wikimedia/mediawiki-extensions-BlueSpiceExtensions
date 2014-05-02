@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jopparn"
 		]
 	},
 	"bs-authors-desc": "Visar författare till en sida med deras bild",
@@ -12,7 +13,7 @@
 	"bs-authors-show-all-authors": "Fler författare tillgängliga",
 	"bs-authors-pref-imageheight": "Bildhöjd:",
 	"bs-authors-pref-imagewidth": "Bildbredd:",
-	"bs-authors-pref-limit": "Författargräns att visa:",
+	"bs-authors-pref-limit": "Gräns för antal författare att visa:",
 	"bs-authors-pref-show": "Visa författare",
 	"bs-authors-switch-description": "Döljer författarna för denna artikel."
 }

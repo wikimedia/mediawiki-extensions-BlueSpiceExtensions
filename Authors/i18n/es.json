@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"prefs-authors": "Autores de este artículo",
+	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
+	"bs-authors-profileimage": "Imagen de perfil"
+}
