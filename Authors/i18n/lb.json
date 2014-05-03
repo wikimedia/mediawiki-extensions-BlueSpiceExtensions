@@ -4,8 +4,11 @@
 			"Robby"
 		]
 	},
+	"bs-authors-desc": "Weist d'Auteure vun enger Säit mat hirem Bild",
 	"prefs-authors": "Auteure vun dësem Artikel",
 	"bs-authors-title": "{{PLURAL:$1|Auteur|Auteuren}}",
+	"bs-authors-profileimage": "Profilbild",
+	"bs-authors-profileimage-change": "Profilbild änneren",
 	"bs-authors-show-all-authors": "Méi Auteuren disponibel",
 	"bs-authors-pref-imageheight": "Héicht vum Bild:",
 	"bs-authors-pref-imagewidth": "Breet vum Bild:",

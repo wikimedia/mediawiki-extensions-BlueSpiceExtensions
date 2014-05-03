@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Test Create account"
+		]
+	},
+	"bs-articleinfo-last-editor": "آخر {{GENDER:$1|تعديل}}",
+	"bs-articleinfo-subpages-too-much": "يوجد أكثر من 100 صفحة فرعية متاحة.",
+	"bs-articleinfo-statebarbodytemplates": "قوالب"
+}

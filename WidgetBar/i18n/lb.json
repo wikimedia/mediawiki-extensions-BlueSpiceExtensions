@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-widgetbar-userpagesettings-headline": "Widgets",
+	"bs-widget-container-tooltip": "Widgets",
+	"bs-widget-flyout-heading": "Widgets"
+}
