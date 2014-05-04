@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"איתן96"
+		]
+	},
+	"prefs-articleinfo": "מידע על הדף",
+	"bs-articleinfo-last-edited": "זמן שעבר מאז השינוי האחרון",
+	"bs-articleinfo-last-edited-tooltip": "עריכה אחרונה",
+	"bs-articleinfo-categories": "קטגוריות",
+	"bs-articleinfo-more-categories": "קטגוריות נוספות זמינות",
+	"bs-articleinfo-all-categories-heading": "קטגוריות",
+	"bs-articleinfo-nocategories": "לא נמצאו קטגוריות",
+	"bs-articleinfo-hiddencats": "קטגוריות מוסתרות",
+	"bs-articleinfo-notemplates": "לא נמצאו תבניות",
+	"bs-articleinfo-templates": "תבניות",
+	"bs-articleinfo-subpages-available": "ישנם דפי משנה עבור דף זה",
+	"bs-articleinfo-check-revision": "גרסה חדשה זמינה",
+	"bs-articleinfo-check-revision-tooltip": "טען מחדש את הדף",
+	"bs-articleinfo-statebartoplastedited": "עריכה אחרונה",
+	"bs-articleinfo-statebartopsubpages": "דפי משנה",
+	"bs-articleinfo-statebarbodycategories": "קטגוריות",
+	"bs-articleinfo-statebarbodysubpages": "דפי משנה",
+	"bs-articleinfo-statebarbodytemplates": "תבניות"
+}
