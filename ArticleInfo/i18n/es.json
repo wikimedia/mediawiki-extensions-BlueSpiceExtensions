@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Mcervera"
 		]
 	},
 	"bs-articleinfo-desc": "Proporciona información sobre una página en la barra de estado",
 	"prefs-articleinfo": "Información de la página",
 	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalo de actualización en segundos:",
+	"bs-articleinfo-last-edited": "Tiempo desde cambio reciente",
 	"bs-articleinfo-last-edited-tooltip": "Última modificación",
 	"bs-articleinfo-last-editor": "Últim{{GENDER:$1|o editor|a editora}}",
 	"bs-articleinfo-categories": "Categorías",
@@ -20,6 +22,8 @@
 	"bs-articleinfo-subpages-available": "Existen subpáginas de esta página",
 	"bs-articleinfo-subpages-too-much": "Hay más de 100 subpáginas disponibles.",
 	"bs-articleinfo-check-revision": "Actualización disponible",
+	"bs-articleinfo-check-revision-tooltip": "Recargar página",
+	"bs-articleinfo-statebartoplastedited": "Edición reciente",
 	"bs-articleinfo-statebartopcategories": "Categorías",
 	"bs-articleinfo-statebartopsubpages": "Subpáginas",
 	"bs-articleinfo-statebarbodycategories": "Categorías",

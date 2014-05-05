@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Imperadeiro98"
+			"Imperadeiro98",
+			"Fúlvio"
 		]
 	},
+	"bs-authors-desc": "Exibe os autores de uma página junto de suas imagens",
 	"prefs-authors": "Autores deste artigo",
 	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
 	"bs-authors-profileimage": "Imagem de perfil",

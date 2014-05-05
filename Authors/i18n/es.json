@@ -1,10 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Mcervera"
 		]
 	},
 	"prefs-authors": "Autores de este artículo",
 	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
-	"bs-authors-profileimage": "Imagen de perfil"
+	"bs-authors-profileimage": "Imagen de perfil",
+	"bs-authors-profileimage-change": "Cambiar imagen de perfil",
+	"bs-authors-show-all-authors": "Más autores disponibles",
+	"bs-authors-pref-imageheight": "Altura de la imagen:",
+	"bs-authors-pref-imagewidth": "Anchura de la imagen:",
+	"bs-authors-pref-limit": "Límite de autores a mostrar:",
+	"bs-authors-pref-show": "Mostrar autores",
+	"bs-authors-switch-description": "Oculta los autores de este artículo"
 }
