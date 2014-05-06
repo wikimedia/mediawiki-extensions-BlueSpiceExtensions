@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Sebastian Wallroth"
 		]
 	},
 	"bs-articleinfo-desc": "Zeigt Informationen über einen Artikel in der Statusleiste an",
-	"prefs-articleinfo": "Artikel Information",
+	"prefs-articleinfo": "Seiteninformationen",
 	"bs-articleinfo-pref-CheckRevisionInterval": "Aktualisierungsintervall in Sekunden",
 	"bs-articleinfo-last-edited": "Zeit seit der letzten Änderung",
 	"bs-articleinfo-last-edited-tooltip": "Letzte Bearbeitung",
