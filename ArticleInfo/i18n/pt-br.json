@@ -4,6 +4,8 @@
 			"Luckas"
 		]
 	},
+	"bs-articleinfo-last-edited-tooltip": "Última edição",
+	"bs-articleinfo-last-editor": "Últim{{GENDER:$1|o editor|a editora}}",
 	"bs-articleinfo-categories": "Categorias",
 	"bs-articleinfo-more-categories": "Mais categorias disponíveis",
 	"bs-articleinfo-all-categories-heading": "Categorias",
