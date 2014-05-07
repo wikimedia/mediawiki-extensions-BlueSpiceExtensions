@@ -4,15 +4,15 @@
             "Stephan Muggli <muggli@hallowelt.biz>"
         ]
     },
-    "bs-authors-desc": "Displays authors of an page with their image",
-    "prefs-authors": "Authors of this article",
+    "bs-authors-desc": "Displays the profile picture for authors of a page",
+    "prefs-authors": "Authors of this page",
     "bs-authors-title": "{{PLURAL:$1|Author|Authors}}",
-    "bs-authors-profileimage": "Profile image",
-    "bs-authors-profileimage-change": "Change profile image",
+    "bs-authors-profileimage": "Profile pricture",
+    "bs-authors-profileimage-change": "Change profile picture",
     "bs-authors-show-all-authors": "More authors available",
     "bs-authors-pref-imageheight": "Image height:",
     "bs-authors-pref-imagewidth": "Image width:",
     "bs-authors-pref-limit": "Limit of authors to display:",
     "bs-authors-pref-show": "Display authors",
-    "bs-authors-switch-description": "Hides authors on this article."
+    "bs-authors-switch-description": "Hides authors on this page."
 }
