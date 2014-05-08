@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D"
+		]
+	},
+	"prefs-articleinfo": "Titouroù ar bajenn",
+	"bs-articleinfo-last-edited-tooltip": "Kemm diwezhañ",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|skridaozer|skridaozerez}} ziwezhañ",
+	"bs-articleinfo-categories": "Rummadoù",
+	"bs-articleinfo-all-categories-heading": "Rummadoù",
+	"bs-articleinfo-hiddencats": "Rummadoù kuzhet",
+	"bs-articleinfo-templates": "Patromoù",
+	"bs-articleinfo-subpages": "Ispajennoù",
+	"bs-articleinfo-check-revision-tooltip": "Adkargañ ar bajenn",
+	"bs-articleinfo-statebartoplastedited": "Kemm diwezhañ",
+	"bs-articleinfo-statebartopcategories": "Rummadoù",
+	"bs-articleinfo-statebartopsubpages": "Ispajennoù",
+	"bs-articleinfo-statebarbodycategories": "Rummadoù",
+	"bs-articleinfo-statebarbodysubpages": "Ispajennoù",
+	"bs-articleinfo-statebarbodytemplates": "Patromoù"
+}

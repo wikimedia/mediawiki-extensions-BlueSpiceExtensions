@@ -4,8 +4,8 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-authors-desc": "Прикажува автори на една страница со нивни слики",
-	"prefs-authors": "Автори на статијава",
+	"bs-authors-desc": "Прикажува профилни слики на авторите на една страница",
+	"prefs-authors": "Автори на страницава",
 	"bs-authors-title": "{{PLURAL:$1|Автор|Автори}}",
 	"bs-authors-profileimage": "Профилна слика",
 	"bs-authors-profileimage-change": "Промена на профилната слика",
@@ -14,5 +14,5 @@
 	"bs-authors-pref-imagewidth": "Ширина на сликата:",
 	"bs-authors-pref-limit": "Колку највеќе автори да се прикажуваат:",
 	"bs-authors-pref-show": "Прикажувај автори",
-	"bs-authors-switch-description": "Ги сокрива авторите на статијата."
+	"bs-authors-switch-description": "Ги сокрива авторите на страницава."
 }

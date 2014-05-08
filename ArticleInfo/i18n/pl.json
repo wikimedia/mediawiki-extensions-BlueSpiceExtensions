@@ -7,6 +7,7 @@
 	},
 	"prefs-articleinfo": "Informacja o stronie",
 	"bs-articleinfo-last-edited-tooltip": "Ostatnia edycja",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Ostatni edytor|Ostatnia edytorka}}",
 	"bs-articleinfo-categories": "Kategorie",
 	"bs-articleinfo-all-categories-heading": "Kategorie",
 	"bs-articleinfo-nocategories": "Nie znaleziono kategorii.",
