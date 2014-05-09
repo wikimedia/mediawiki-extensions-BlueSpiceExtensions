@@ -6,7 +6,7 @@
 		]
 	},
 	"bs-authors-desc": "Exibe os autores de uma página junto de suas imagens",
-	"prefs-authors": "Autores deste artigo",
+	"prefs-authors": "Autores desta página",
 	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
 	"bs-authors-profileimage": "Imagem de perfil",
 	"bs-authors-profileimage-change": "Mudar a imagem de perfil",
