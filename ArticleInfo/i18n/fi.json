@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stryn"
+		]
+	},
+	"bs-articleinfo-categories": "Luokat",
+	"bs-articleinfo-more-categories": "Lisää luokkia saatavilla",
+	"bs-articleinfo-all-categories-heading": "Luokat",
+	"bs-articleinfo-nocategories": "Luokkia ei löytynyt.",
+	"bs-articleinfo-hiddencats": "Piilotetut luokat",
+	"bs-articleinfo-templates": "Mallineet",
+	"bs-articleinfo-subpages": "Alasivut"
+}
