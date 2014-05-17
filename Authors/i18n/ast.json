@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-authors-desc": "Amuesa la imaxe de perfil de los autores d'una páxina",
+	"prefs-authors": "Autores d'esta páxina",
+	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
+	"bs-authors-profileimage": "Imaxe de perfil",
+	"bs-authors-profileimage-change": "Cambiar la imaxe de perfil",
+	"bs-authors-show-all-authors": "Más autores disponibles",
+	"bs-authors-pref-imageheight": "Altor de la imaxe:",
+	"bs-authors-pref-imagewidth": "Anchu de la imaxe:",
+	"bs-authors-pref-limit": "Llende d'autores a amosar:",
+	"bs-authors-pref-show": "Amosar autores",
+	"bs-authors-switch-description": "Tapecer los autores nesta páxina."
+}

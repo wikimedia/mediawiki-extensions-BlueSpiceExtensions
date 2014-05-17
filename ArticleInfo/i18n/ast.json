@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-articleinfo-desc": "Ufre información sobro una páxina na barra d'estáu",
+	"prefs-articleinfo": "Información de la páxina",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalu d'anovamientu en segundos:",
+	"bs-articleinfo-last-edited": "Tiempu dende cambiu reciente",
+	"bs-articleinfo-last-edited-tooltip": "Última edición",
+	"bs-articleinfo-last-editor": "Últim{{GENDER:$1|u editor|a editora}}",
+	"bs-articleinfo-categories": "Categoríes",
+	"bs-articleinfo-more-categories": "Más categoríes disponibles",
+	"bs-articleinfo-all-categories-heading": "Categoríes",
+	"bs-articleinfo-nocategories": "Nun s'alcontraron categoríes.",
+	"bs-articleinfo-hiddencats": "Categoríes anubríes",
+	"bs-articleinfo-notemplates": "Nun s'alcontraron plantíes.",
+	"bs-articleinfo-templates": "Plantíes",
+	"bs-articleinfo-subpages": "Subpáxines",
+	"bs-articleinfo-subpages-available": "Esta páxina tien subpáxines",
+	"bs-articleinfo-subpages-too-much": "Hai más de 100 subpáxines disponibles.",
+	"bs-articleinfo-check-revision": "Disponible versión nueva",
+	"bs-articleinfo-check-revision-tooltip": "Recargar páxina",
+	"bs-articleinfo-statebartoplastedited": "Edición reciente",
+	"bs-articleinfo-statebartoplasteditor": "Editor reciente",
+	"bs-articleinfo-statebartopcategories": "Categoríes",
+	"bs-articleinfo-statebartopsubpages": "Subpáxines",
+	"bs-articleinfo-statebarbodycategories": "Categoríes",
+	"bs-articleinfo-statebarbodysubpages": "Subpáxines",
+	"bs-articleinfo-statebarbodytemplates": "Plantíes"
+}
