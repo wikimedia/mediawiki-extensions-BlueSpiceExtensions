@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Meshkov.a"
+			"Meshkov.a",
+			"Eroha"
 		]
 	},
-	"bs-authors-desc": "Отображает профиль изображение для авторов страницы",
+	"bs-authors-desc": "Выводит картинку профиля для авторов страницы",
 	"prefs-authors": "Авторы этой страницы",
 	"bs-authors-title": "Автор{{PLURAL:$1||ов|а}}",
 	"bs-authors-profileimage": "Изображение в профиле",

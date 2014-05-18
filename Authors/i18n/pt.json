@@ -5,7 +5,7 @@
 			"Fúlvio"
 		]
 	},
-	"bs-authors-desc": "Exibe os autores de uma página junto de suas imagens",
+	"bs-authors-desc": "Exibe a imagem do perfil dos autores de uma página",
 	"prefs-authors": "Autores desta página",
 	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
 	"bs-authors-profileimage": "Imagem de perfil",
