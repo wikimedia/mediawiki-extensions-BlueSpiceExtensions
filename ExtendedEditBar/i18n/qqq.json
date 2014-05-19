@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-extendededitbar-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of extended edit bar extension",
+	"bs-extendededitbar-redirecttip": "Text for redirect",
+	"bs-extendededitbar-redirectsample": "Text for insert text",
+	"bs-extendededitbar-striketip": "Text for strike",
+	"bs-extendededitbar-strikesample": "Text for strike-through text",
+	"bs-extendededitbar-entertip": "Text for line break",
+	"bs-extendededitbar-uppertip": "Text for superscript",
+	"bs-extendededitbar-uppersample": "Text for superscript text",
+	"bs-extendededitbar-lowertip": "Text for subscript",
+	"bs-extendededitbar-lowersample": "Text for subscript text",
+	"bs-extendededitbar-smalltip": "Text for small",
+	"bs-extendededitbar-smallsample": "Text for small text",
+	"bs-extendededitbar-commenttip": "Text for insert hidden comment",
+	"bs-extendededitbar-commentsample": "Text for comment",
+	"bs-extendededitbar-gallerytip": "Text for insert a picture gallery",
+	"bs-extendededitbar-gallerysamplepicture": "Text for picture",
+	"bs-extendededitbar-gallerysamplecaption": "Text for caption",
+	"bs-extendededitbar-quotetip": "Text for insert a block of quoted text",
+	"bs-extendededitbar-quotesample": "Text for block quote",
+	"bs-extendededitbar-tabletip": "Text for insert a table",
+	"bs-extendededitbar-tablesampleheader": "Text for header",
+	"bs-extendededitbar-tablesamplerow": "Text for row",
+	"bs-extendededitbar-tablesamplecell": "Text for cell"
+}
