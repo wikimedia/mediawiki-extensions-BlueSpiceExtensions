@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-dashboards-desc": "Provides dashboards for users and administrators",
+	"bs-specialadmindashboard-label": "Dashboard",
+	"bs-dashboards-addportlet": "Add portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Dashboards",
+	"bs-dashboards-pref-userdashboardonlogo": "Site logo links to user dashboard",
+	"admindashboard": "Admin dashboard",
+	"userdashboard": "User dashboard",
+	"bs-dashboard-userportlet-calendar-title": "Calendar",
+	"bs-dashboard-userportlet-calendar-description": "Calendar"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-dashboards-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of dashboards extension",
+	"bs-specialadmindashboard-label": "Anchor text in admin tab for dashboard\\n {{Identical|Dashboard}}",
+	"bs-dashboards-addportlet": "Winodw title for add portlet",
+	"bs-dashboards-portlets": "Window title for portlets",
+	"prefs-dashboards": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline of dashboards section.\\n {{Identical|Dashboard}}",
+	"bs-dashboards-pref-userdashboardonlogo": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for site logo links to user dashboard",
+	"admindashboard": "Special page name for admin dashboard\\n {{Identical|Admin dashboard}}",
+	"userdashboard": "Special page name for user dashboard\\n {{Identical|User dashboard}}",
+	"bs-dashboard-userportlet-calendar-title": "Portlet title for calendar",
+	"bs-dashboard-userportlet-calendar-description": "portlet description for calendar"
+}
