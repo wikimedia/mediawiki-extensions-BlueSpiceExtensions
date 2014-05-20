@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-interwikilinks-desc": "Administration interface for adding, editing and deleting interwiki links",
+	"bs-interwikilinks-invalid-pfx-spc": "The prefix is invalid. Please do not use spaces.",
+	"bs-interwikilinks-invalid-url-spc": "The URL is invalid. Please do not use spaces.",
+	"bs-interwikilinks-label": "Interwiki links",
+	"bs-interwikilinks-link-created": "The interwiki link has been created.",
+	"bs-interwikilinks-link-added": "The interwiki link has been added.",
+	"bs-interwikilinks-link-deleted": "The interwiki link has been deleted.",
+	"bs-interwikilinks-nooldpfx": "The previous prefix was not found.",
+	"bs-interwikilinks-nopfx": "Please supply a prefix.",
+	"bs-interwikilinks-nourl": "Please supply a URL.",
+	"bs-interwikilinks-pfxtoolong": "The prefix is too long. Please use a maximum of 32 characters.",
+	"bs-interwikilinks-pfxexists": "This prefix already exists.",
+	"bs-interwikilinks-headerprefix": "Prefix",
+	"bs-interwikilinks-headerurl": "URL",
+	"bs-interwikilinks-titleaddinterwikilink": "Add interwiki link",
+	"bs-interwikilinks-titleeditinterwikilink": "Edit interwiki link",
+	"bs-interwikilinks-labelprefix": "Prefix",
+	"bs-interwikilinks-labelurl": "URL",
+	"bs-interwikilinks-titledeleteinterwikilink": "Delete interwiki link",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Are you sure, you want delete this interwiki link?",
+	"bs-interwikilinks-insertlink-tabtitle": "Link into another wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
+	"bs-interwikilink-select-a-prefix": "Choose prefix"
+}

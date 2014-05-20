@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-interwikilinks-invalid-pfx-spc": "Das Präfix ist ungültig. Verwenden Sie keine Leerzeichen und Sonderzeichen.",
+	"bs-interwikilinks-invalid-url-spc": "Die URL ist ungültig. Verwenden Sie keine Leerzeichen.",
+	"bs-interwikilinks-nopfx": "Bitte geben Sie einen Präfix ein.",
+	"bs-interwikilinks-nourl": "Bitte geben Sie eine URL ein.",
+	"bs-interwikilinks-pfxtoolong": "Das Präfix ist zu lang. Geben Sie maximal 32 Zeichen an.",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Sind Sie sicher, dass Sie diesen Interwiki-Link löschen wollen?"
+}

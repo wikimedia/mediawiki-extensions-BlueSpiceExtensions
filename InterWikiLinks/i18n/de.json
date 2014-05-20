@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-interwikilinks-desc": "Administrationsinterface, um Links zwischen Wikis hinzuzufügen, zu bearbeiten und zu löschen",
+	"bs-interwikilinks-invalid-pfx-spc": "Das Präfix ist ungültig. Verwende keine Leerzeichen und keine Sonderzeichen.",
+	"bs-interwikilinks-invalid-url-spc": "Die URL ist ungültig. Verwende keine Leerzeichen.",
+	"bs-interwikilinks-label": "Interwikilinks",
+	"bs-interwikilinks-link-created": "Der Interwiki Link wurde erstellt.",
+	"bs-interwikilinks-link-added": "Der Interwiki Link wurde geändert.",
+	"bs-interwikilinks-link-deleted": "Der Interwiki Link wurde gelöscht.",
+	"bs-interwikilinks-nooldpfx": "Das ursprüngliche Präfix wurde nicht gefunden.",
+	"bs-interwikilinks-nopfx": "Bitte gib einen Präfix ein.",
+	"bs-interwikilinks-nourl": "Bitte gib eine URL ein.",
+	"bs-interwikilinks-pfxtoolong": "Das Präfix ist zu lang. Gib maximal 32 Zeichen an.",
+	"bs-interwikilinks-pfxexists": "Das Präfix ist bereits vorhanden.",
+	"bs-interwikilinks-headerprefix": "Präfix",
+	"bs-interwikilinks-headerurl": "Url",
+	"bs-interwikilinks-titleaddinterwikilink": "Interwiki-Link hinzufügen",
+	"bs-interwikilinks-titleeditinterwikilink": "Interwiki-Link bearbeiten",
+	"bs-interwikilinks-labelprefix": "Präfix",
+	"bs-interwikilinks-labelurl": "Url",
+	"bs-interwikilinks-titledeleteinterwikilink": "Interwiki-Link löschen",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Bist du sicher, dass du diesen Interwiki-Link löschen willst?",
+	"bs-interwikilinks-insertlink-tabtitle": "Link in anderes Wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Präfix",
+	"bs-interwikilink-select-a-prefix": "Präfix auswählen"
+}
