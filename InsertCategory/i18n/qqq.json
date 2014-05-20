@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-insertcategory-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of insert category extension",
+	"bs-insertcategory-insertcat": "Text for insert category\\n {{Identical|Insert category}}",
+	"prefs-insertcategory": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for insert category section.\\n{{Identical|Insert category}}",
+	"bs-insertcategory-pref-withparents": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for insert category with its parents",
+	"bs-insertcategory-title": "Window title for insert category",
+	"bs-insertcategory-cat-label": "Label for assigned:",
+	"bs-insertcategory-success": "Text for add category successful",
+	"bs-insertcategory-failure": "Text for error",
+	"bs-insertcategory-hint": "Text for note: to add a category, you have to press enter or terminate your entry with a comma.",
+	"bs-insertcategory-panel-title": "Title for categories"
+}
