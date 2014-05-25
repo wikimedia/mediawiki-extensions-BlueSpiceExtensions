@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Base"
+		]
+	},
+	"bs-authors-desc": "Відображає зображення профілів для авторів сторінки",
+	"prefs-authors": "Автори цієї сторіки",
+	"bs-authors-profileimage": "Зображення профілю",
+	"bs-authors-profileimage-change": "Змінити зображення профілю",
+	"bs-authors-show-all-authors": "Доступно більше авторів",
+	"bs-authors-pref-imageheight": "Висота зображення:",
+	"bs-authors-pref-imagewidth": "Ширина зображення:",
+	"bs-authors-pref-limit": "Обмеження числа авторів для відображення:",
+	"bs-authors-pref-show": "Відобразити авторів",
+	"bs-authors-switch-description": "Приховує авторів цієї сторінки."
+}

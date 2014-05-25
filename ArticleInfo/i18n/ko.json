@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Namoroka"
+		]
+	},
+	"prefs-articleinfo": "문서 정보",
+	"bs-articleinfo-pref-CheckRevisionInterval": "초 단위로 갱신하기:",
+	"bs-articleinfo-last-edited-tooltip": "마지막 편집",
+	"bs-articleinfo-last-editor": "마지막 {{GENDER:$1|편집자}}",
+	"bs-articleinfo-categories": "분류",
+	"bs-articleinfo-more-categories": "더 많은 분류",
+	"bs-articleinfo-all-categories-heading": "분류",
+	"bs-articleinfo-nocategories": "찾은 분류가 없습니다.",
+	"bs-articleinfo-hiddencats": "숨은 분류",
+	"bs-articleinfo-notemplates": "틀이 없습니다.",
+	"bs-articleinfo-templates": "틀",
+	"bs-articleinfo-subpages": "하위 문서",
+	"bs-articleinfo-subpages-available": "이 문서에는 하위 문서가 있습니다",
+	"bs-articleinfo-subpages-too-much": "이 문서에는 100개 이상의 하위 문서가 있습니다.",
+	"bs-articleinfo-check-revision": "새 버전을 사용할 수 있습니다",
+	"bs-articleinfo-check-revision-tooltip": "문서 새로고침",
+	"bs-articleinfo-statebartoplastedited": "최근 편집",
+	"bs-articleinfo-statebartoplasteditor": "최근 편집자",
+	"bs-articleinfo-statebartopcategories": "분류",
+	"bs-articleinfo-statebartopsubpages": "하위 문서",
+	"bs-articleinfo-statebarbodycategories": "분류",
+	"bs-articleinfo-statebarbodysubpages": "하위 문서",
+	"bs-articleinfo-statebarbodytemplates": "틀"
+}

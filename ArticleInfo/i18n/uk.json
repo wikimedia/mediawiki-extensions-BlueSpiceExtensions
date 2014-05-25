@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Base"
+		]
+	},
+	"bs-articleinfo-desc": "Надає інформацію про сторінку у рядку стану",
+	"prefs-articleinfo": "Інформація про сторінку",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Інтервал оновлення (у секундах):",
+	"bs-articleinfo-last-edited": "Час після найновішої зміни",
+	"bs-articleinfo-last-edited-tooltip": "Останнє редагування",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Останній редактор|Остання редакторка}}",
+	"bs-articleinfo-categories": "Категорії",
+	"bs-articleinfo-more-categories": "Доступно більше категорій",
+	"bs-articleinfo-all-categories-heading": "Категорії",
+	"bs-articleinfo-nocategories": "Не знайдено категорій.",
+	"bs-articleinfo-hiddencats": "Приховані категорії",
+	"bs-articleinfo-notemplates": "Не знайдено шаблонів.",
+	"bs-articleinfo-templates": "Шаблони",
+	"bs-articleinfo-subpages": "Підсторінки",
+	"bs-articleinfo-subpages-available": "Для цієї сторінки існують підсторнки",
+	"bs-articleinfo-subpages-too-much": "Наявно понад 100 підсторінок.",
+	"bs-articleinfo-check-revision": "Доступна нова версія",
+	"bs-articleinfo-check-revision-tooltip": "Перезавантажити сторінку",
+	"bs-articleinfo-statebartoplastedited": "Найновіше редагування",
+	"bs-articleinfo-statebartoplasteditor": "Останній редактор",
+	"bs-articleinfo-statebartopcategories": "Категорії",
+	"bs-articleinfo-statebartopsubpages": "Підсторінки",
+	"bs-articleinfo-statebarbodycategories": "Категорії",
+	"bs-articleinfo-statebarbodysubpages": "Підсторінки",
+	"bs-articleinfo-statebarbodytemplates": "Шаблони"
+}
