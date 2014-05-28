@@ -5,8 +5,8 @@
 			"Nemo bis"
 		]
 	},
-	"bs-authors-desc": "Visualizza gli autori di una pagina con la loro immagine",
-	"prefs-authors": "Autori di questa voce",
+	"bs-authors-desc": "Visualizza l'immagine del profilo per gli autori di una pagina",
+	"prefs-authors": "Autori di questa pagina",
 	"bs-authors-title": "{{PLURAL:$1|Autore|Autori}}",
 	"bs-authors-profileimage": "Immagine profilo",
 	"bs-authors-profileimage-change": "Cambia immagine del profilo",
@@ -15,5 +15,5 @@
 	"bs-authors-pref-imagewidth": "Larghezza immagine:",
 	"bs-authors-pref-limit": "Limite degli autori da visualizzare:",
 	"bs-authors-pref-show": "Visualizza autori",
-	"bs-authors-switch-description": "Nasconde gli autori su questo articolo."
+	"bs-authors-switch-description": "Nasconde gli autori su questa pagina."
 }
