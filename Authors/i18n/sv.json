@@ -5,8 +5,8 @@
 			"Jopparn"
 		]
 	},
-	"bs-authors-desc": "Visar författare till en sida med deras bild",
-	"prefs-authors": "Författarna till denna artikel",
+	"bs-authors-desc": "Visar profilbilden för författare till en sida",
+	"prefs-authors": "Författarna till denna sida",
 	"bs-authors-title": "{{PLURAL:$1|Författare}}",
 	"bs-authors-profileimage": "Profilbild",
 	"bs-authors-profileimage-change": "Ändra profilbild",
@@ -15,5 +15,5 @@
 	"bs-authors-pref-imagewidth": "Bildbredd:",
 	"bs-authors-pref-limit": "Gräns för antal författare att visa:",
 	"bs-authors-pref-show": "Visa författare",
-	"bs-authors-switch-description": "Döljer författarna för denna artikel."
+	"bs-authors-switch-description": "Döljer författarna för denna sida."
 }
