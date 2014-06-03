@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"prefs-avatars": "头像",
+	"bs-avatars-pref-generator": "生成器：",
+	"bs-avatars-pref-defaultsize": "像素默认大小：",
+	"bs-avatars-upload-title": "更改个人介绍图片",
+	"bs-avatars-upload-label": "图片",
+	"bs-avatars-generate-new-label": "生成新头像",
+	"bs-avatars-warning-title": "警告",
+	"bs-avatars-userimage-help": "例如：图片.jpg 或 http://localhost/图片.gif",
+	"bs-avatars-set-userimage-failed": "不是来自wiki的有效URL或图片。",
+	"bs-avatars-set-userimage-saved": "用户图片成功保存。",
+	"bs-avatars-file-upload-fieldset-title": "图片上传"
+}

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Y-M D"
+			"Y-M D",
+			"Fohanno"
 		]
 	},
-	"prefs-statebar": "Barrenn stad"
+	"prefs-statebar": "Barrenn stad",
+	"bs-statebar-ajax-nobodyviews": "N'eus titour ebet."
 }

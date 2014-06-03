@@ -1,8 +1,9 @@
-	{
+{
 	"@metadata": {
 		"authors": [
 			"Marc Reymann <reymann@hallowelt.biz>",
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"prefs-avatars": "Benutzerbilder",
@@ -22,4 +23,4 @@
 	"bs-avatars-set-userimage-saved": "Benutzerbild wurde gespeichert.",
 	"bs-avatars-file-upload-fieldset-title": "Bild hochladen",
 	"bs-avatars-auto-generate-fieldset-title": "Avatar automatisch generieren"
-	}
+}

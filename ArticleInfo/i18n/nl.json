@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Niknetniko"
+			"Niknetniko",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-articleinfo-desc": "Toont informatie over een pagina in de statusbalk.",
@@ -9,7 +10,7 @@
 	"bs-articleinfo-pref-CheckRevisionInterval": "Update-interval in seconden:",
 	"bs-articleinfo-last-edited": "Tijd sinds recente wijziging",
 	"bs-articleinfo-last-edited-tooltip": "Laatste bewerking",
-	"bs-articleinfo-last-editor": "Laatste {{GENDER:$1|editor}}",
+	"bs-articleinfo-last-editor": "Laatste {{GENDER:$1|bewerker}}",
 	"bs-articleinfo-categories": "Categorieën",
 	"bs-articleinfo-more-categories": "Meer categorieën beschikbaar",
 	"bs-articleinfo-all-categories-heading": "Categorieën",

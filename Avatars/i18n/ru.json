@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"prefs-avatars": "Аватары",
+	"bs-avatars-pref-generator": "Генератор:",
+	"bs-avatars-pref-defaultsize": "Размер по умолчанию (в пикселях):",
+	"bs-avatars-upload-complete": "Картина была успешно загружена.",
+	"bs-avatars-generate-complete": "Был создан новый аватар.",
+	"bs-avatars-upload-title": "Изменить изображение в профиле",
+	"bs-avatars-upload-label": "Картинка",
+	"bs-avatars-generate-new-label": "Создать новый аватар",
+	"bs-avatars-warning-title": "Внимание",
+	"bs-avatars-userimage-help": "например, Picture.jpg или http://localhost/Picture.gif",
+	"bs-avatars-file-upload-fieldset-title": "Загрузить изображение",
+	"bs-avatars-auto-generate-fieldset-title": "Создать аватар автоматически"
+}
