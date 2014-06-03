@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-hidetitle-desc": "Fügt den Tag <code><nowiki>__HIDETITLE__</nowiki></code> hinzu, um einen Seitentitel zu verstecken"
+}
