@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"prefs-avatars": "Аватараш",
+	"bs-avatars-pref-generator": "Генератор:",
+	"bs-avatars-generate-complete": "Кхоьллина керла аватар.",
+	"bs-avatars-upload-title": "Профиль чура сурт хийца",
+	"bs-avatars-upload-label": "Сурт",
+	"bs-avatars-generate-new-label": "Кхолла керла аватар",
+	"bs-avatars-warning-title": "Тергам бе",
+	"bs-avatars-userimage-help": "масала, Picture.jpg я http://localhost/Picture.gif"
+}

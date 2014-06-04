@@ -14,6 +14,7 @@
 	"bs-avatars-generate-new-label": "Создать новый аватар",
 	"bs-avatars-warning-title": "Внимание",
 	"bs-avatars-userimage-help": "например, Picture.jpg или http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-saved": "Пользовательское изображение успешно сохранено.",
 	"bs-avatars-file-upload-fieldset-title": "Загрузить изображение",
 	"bs-avatars-auto-generate-fieldset-title": "Создать аватар автоматически"
 }

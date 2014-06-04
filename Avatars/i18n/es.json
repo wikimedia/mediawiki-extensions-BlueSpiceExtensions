@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-avatars-pref-generator": "Generador:",
+	"bs-avatars-pref-defaultsize": "Tamaño predeterminado en píxeles:",
+	"bs-avatars-upload-complete": "La imagen se cargó correctamente.",
+	"bs-avatars-upload-title": "Cambiar la imagen del perfil",
+	"bs-avatars-upload-label": "Imagen",
+	"bs-avatars-warning-title": "Atención",
+	"bs-avatars-userimage-title": "Imagen del wiki o URL a imagen",
+	"bs-avatars-userimage-help": "p. ej., Imagen.jpg o http://localhost/Imagen.gif"
+}
