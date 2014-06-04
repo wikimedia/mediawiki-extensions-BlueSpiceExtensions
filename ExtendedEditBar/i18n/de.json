@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-extendededitbar-desc": "Stellt zusätzliche Funktionen im WikiCode-Editor zur Verfügung",
+	"bs-extendededitbar-redirecttip": "Umleiten",
+	"bs-extendededitbar-redirectsample": "Ziel eingeben",
+	"bs-extendededitbar-striketip": "Durchstreichen",
+	"bs-extendededitbar-strikesample": "Durchgestrichener Text",
+	"bs-extendededitbar-entertip": "Zeilenumbruch",
+	"bs-extendededitbar-uppertip": "Hochgestellt",
+	"bs-extendededitbar-uppersample": "Hochgestellter Text",
+	"bs-extendededitbar-lowertip": "Tiefgestellt",
+	"bs-extendededitbar-lowersample": "Tiefgestellter Text",
+	"bs-extendededitbar-smalltip": "Klein",
+	"bs-extendededitbar-smallsample": "Kleiner Text",
+	"bs-extendededitbar-commenttip": "Versteckter Kommentar",
+	"bs-extendededitbar-commentsample": "Kommentar",
+	"bs-extendededitbar-gallerytip": "Bildergalerie",
+	"bs-extendededitbar-gallerysamplepicture": "Bild",
+	"bs-extendededitbar-gallerysamplecaption": "Überschrift",
+	"bs-extendededitbar-quotetip": "Zitat einfügen",
+	"bs-extendededitbar-quotesample": "Zitat",
+	"bs-extendededitbar-tabletip": "Tabelle einfügen",
+	"bs-extendededitbar-tablesampleheader": "Überschrift",
+	"bs-extendededitbar-tablesamplerow": "Zeile",
+	"bs-extendededitbar-tablesamplecell": "Zelle"
+}
