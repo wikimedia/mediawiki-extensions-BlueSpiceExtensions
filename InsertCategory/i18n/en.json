@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-insertcategory-desc": "Dialog to enter a category link",
+	"bs-insertcategory-insertcat": "Insert category",
+	"prefs-insertcategory": "Insert category",
+	"bs-insertcategory-pref-withparents": "Insert category with its parents",
+	"bs-insertcategory-title": "Insert category",
+	"bs-insertcategory-cat-label": "Assigned:",
+	"bs-insertcategory-success": "Add category successful",
+	"bs-insertcategory-failure": "Error",
+	"bs-insertcategory-hint": "Note: to add a category, you have to press enter or terminate your entry with a comma.",
+	"bs-insertcategory-panel-title": "Categories"
+}
