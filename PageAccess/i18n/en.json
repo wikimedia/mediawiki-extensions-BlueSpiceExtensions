@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marc Reymann <reymann@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-pageaccess-desc": "Controls access on page level",
+	"bs-pageaccess-error-no-groups-given": "No groups were specified.",
+	"bs-pageaccess-error-not-member-of-given-groups": "You're not a member of the given groups. In order to prevent you from locking yourself out, saving was disabled.",
+	"bs-pageaccess-error-included-forbidden-template": "You've tried to use the template \"$1\" to which you don't have read access. In order to prevent you from locking yourself out, saving was disabled.",
+	"bs-pageaccess-tag-groups-desc": "Specify the groups that should have exclusive access to this page. Multiple groups can be separated by commas.",
+	"pageaccess": "Pages secured by PageAccess"
+}
