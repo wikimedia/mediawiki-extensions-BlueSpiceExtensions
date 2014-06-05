@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"bs-avatars-pref-defaultsize": "Podrazumevana veličina u pikselima:",
+	"bs-avatars-upload-complete": "Slika je uspešno otpremljena.",
+	"bs-avatars-upload-label": "Slika",
+	"bs-avatars-warning-title": "Upozorenje",
+	"bs-avatars-userimage-help": "na primer, Slika.jpg ili http://localhost/Slika.gif"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-authors-desc": "Mostra as imaxes de perfil dos autores dunha páxina",
+	"prefs-authors": "Autores desta páxina",
+	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
+	"bs-authors-profileimage": "Imaxe do perfil",
+	"bs-authors-profileimage-change": "Cambiar a imaxe do perfil",
+	"bs-authors-show-all-authors": "Máis autores dispoñibles",
+	"bs-authors-pref-imageheight": "Altura da imaxe:",
+	"bs-authors-pref-imagewidth": "Ancho da imaxe:",
+	"bs-authors-pref-limit": "Límite de autores a mostrar:",
+	"bs-authors-pref-show": "Mostrar autores",
+	"bs-authors-switch-description": "Oculta os autores desta páxina."
+}

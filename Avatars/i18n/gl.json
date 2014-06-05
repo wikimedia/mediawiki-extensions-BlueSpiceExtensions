@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"prefs-avatars": "Avatares",
+	"bs-avatars-desc": "Proporciona imaxes de usuario xenéricas e individuais",
+	"bs-avatars-pref-generator": "Xerador:",
+	"bs-avatars-pref-defaultsize": "Tamaño predeterminado en píxeles:",
+	"bs-avatars-upload-complete": "A imaxe subiuse correctamente.",
+	"bs-avatars-generate-complete": "Foi xerada unha nova imaxe de perfil.",
+	"bs-avatars-upload-title": "Cambiar a imaxe do perfil",
+	"bs-avatars-upload-label": "Imaxe",
+	"bs-avatars-generate-new-label": "Xerar nova imaxe de perfil",
+	"bs-avatars-warning-title": "Aviso",
+	"bs-avatars-warning-text": "Definiu unha imaxe de usuario nas súas preferencias. Ao usar imaxes de perfil vai redefinir esa configuración. Desexa continuar?",
+	"bs-avatars-userimage-title": "Imaxe do wiki ou URL a imaxe",
+	"bs-avatars-userimage-help": "p. ex. Imaxe.jpg ou http://hostlocal/Imaxe.gif",
+	"bs-avatars-set-userimage-failed": "Dirección URL non válida ou imaxe de wiki.",
+	"bs-avatars-set-userimage-saved": "Imaxe de usuario gardada correctamente.",
+	"bs-avatars-file-upload-fieldset-title": "Subir imaxe",
+	"bs-avatars-auto-generate-fieldset-title": "Xenerar perfil automaticamente"
+}
