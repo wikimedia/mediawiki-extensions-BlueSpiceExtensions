@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-hidetitle-desc": "Adiciona o código <code><nowiki>__HIDETITLE__</nowiki></code> para ocultar o título da página"
+}
