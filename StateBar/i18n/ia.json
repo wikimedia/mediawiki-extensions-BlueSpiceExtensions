@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-statebar-desc": "Forni un barra de stato",
+	"prefs-statebar": "Barra de stato",
+	"bs-statebar-pref-sortbodyvars": "Ordine de corpore:",
+	"bs-statebar-pref-sorttopvars": "Ordine superior:",
+	"bs-statebar-pref-show": "Monstrar barra de stato",
+	"bs-statebar-viewtoggler-tooltip": "Monstrar information detaliate",
+	"bs-statebar-switch-description": "Celar le barra de stato in iste pagina.",
+	"bs-statebar-ajax-nobodyviews": "Nulle information disponibile."
+}

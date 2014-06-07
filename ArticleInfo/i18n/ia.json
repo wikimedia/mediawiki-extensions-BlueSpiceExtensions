@@ -21,5 +21,12 @@
 	"bs-articleinfo-subpages-available": "Il ha subpaginas de iste pagina",
 	"bs-articleinfo-subpages-too-much": "Il ha plus de 100 subpaginas disponibile.",
 	"bs-articleinfo-check-revision": "Nove version disponibile",
-	"bs-articleinfo-check-revision-tooltip": "Recargar pagina"
+	"bs-articleinfo-check-revision-tooltip": "Recargar pagina",
+	"bs-articleinfo-statebartoplastedited": "Modification recente",
+	"bs-articleinfo-statebartoplasteditor": "Redactor recente",
+	"bs-articleinfo-statebartopcategories": "Categorias",
+	"bs-articleinfo-statebartopsubpages": "Subpaginas",
+	"bs-articleinfo-statebarbodycategories": "Categorias",
+	"bs-articleinfo-statebarbodysubpages": "Subpaginas",
+	"bs-articleinfo-statebarbodytemplates": "Patronos"
 }

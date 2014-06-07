@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-avatars-pref-generator": "Generator:",
+	"bs-avatars-pref-defaultsize": "Standardstorlek i bildpunkter:",
+	"bs-avatars-upload-complete": "Bilden laddades upp.",
+	"bs-avatars-upload-label": "Bild",
+	"bs-avatars-warning-title": "Varning",
+	"bs-avatars-set-userimage-saved": "Användarbilden sparades.",
+	"bs-avatars-file-upload-fieldset-title": "Bilduppladdning"
+}
