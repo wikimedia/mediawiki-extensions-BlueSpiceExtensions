@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ronel1"
+		]
+	},
+	"prefs-avatars": "תמונת משתמש",
+	"bs-avatars-desc": "מספק תמונות משתמש כללי ואישי",
+	"bs-avatars-pref-generator": "גנרטור:",
+	"bs-avatars-pref-defaultsize": "גודל ברירת המחדל של פיקסל:",
+	"bs-avatars-upload-complete": "התמונה הועלה בהצלחה.",
+	"bs-avatars-generate-complete": "סמל חדש נוצר.",
+	"bs-avatars-upload-title": "שינוי תמונת הפרופיל",
+	"bs-avatars-upload-label": "תמונה",
+	"bs-avatars-generate-new-label": "יצירת סמל חדש",
+	"bs-avatars-warning-title": "אזהרה",
+	"bs-avatars-warning-text": "הגדרת תמונה משתמש בהעדפות שלך. באמצעות תמונות אישיות ינקה את ההגדרה. האם ברצונך להמשיך?",
+	"bs-avatars-userimage-title": "התמונות מ- URL wiki או תמונה",
+	"bs-avatars-userimage-help": "ז. א Picture.jpg או http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "לא חוקי כתובת URL או תמונה בוויקי.",
+	"bs-avatars-set-userimage-saved": "תמונת המשתמש נשמר בהצלחה.",
+	"bs-avatars-file-upload-fieldset-title": "העלאת התמונות",
+	"bs-avatars-auto-generate-fieldset-title": "אוטומטי ליצור גלגול"
+}

@@ -5,5 +5,7 @@
 		]
 	},
 	"prefs-avatars": "Avataren",
-	"bs-avatars-upload-label": "Bild"
+	"bs-avatars-upload-complete": "D'Bild gouf eropgelueden.",
+	"bs-avatars-upload-label": "Bild",
+	"bs-avatars-file-upload-fieldset-title": "Bild eroplueden"
 }

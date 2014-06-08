@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Matma Rex"
+		]
+	},
+	"prefs-avatars": "Awatary",
+	"bs-avatars-pref-generator": "Generator:",
+	"bs-avatars-pref-defaultsize": "Domyślny rozmiar w pikselach:",
+	"bs-avatars-generate-complete": "Nowy awatar został wygenerowany.",
+	"bs-avatars-warning-title": "Ostrzeżenie"
+}
