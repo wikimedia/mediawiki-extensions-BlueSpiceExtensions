@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-extendededitbar-desc": "Fournit des boutons supplémentaires au champ d’édition du wiki",
+	"bs-extendededitbar-redirecttip": "Rediriger",
+	"bs-extendededitbar-redirectsample": "Insérer du texte",
+	"bs-extendededitbar-striketip": "Barrer",
+	"bs-extendededitbar-strikesample": "Texte barré",
+	"bs-extendededitbar-entertip": "Saut de ligne",
+	"bs-extendededitbar-uppertip": "Exposant",
+	"bs-extendededitbar-uppersample": "Texte en exposant",
+	"bs-extendededitbar-lowertip": "Indice",
+	"bs-extendededitbar-lowersample": "Texte en indice",
+	"bs-extendededitbar-smalltip": "Petit",
+	"bs-extendededitbar-smallsample": "Texte en petit",
+	"bs-extendededitbar-commenttip": "Insérer un commentaire caché",
+	"bs-extendededitbar-commentsample": "Commentaire",
+	"bs-extendededitbar-gallerytip": "Insérer une galerie de photos",
+	"bs-extendededitbar-gallerysamplepicture": "Photo",
+	"bs-extendededitbar-gallerysamplecaption": "Légende",
+	"bs-extendededitbar-quotetip": "Insérer un bloc de texte cité",
+	"bs-extendededitbar-quotesample": "Bloc de citation",
+	"bs-extendededitbar-tabletip": "Insérer un tableau",
+	"bs-extendededitbar-tablesampleheader": "Entête",
+	"bs-extendededitbar-tablesamplerow": "Ligne",
+	"bs-extendededitbar-tablesamplecell": "Cellule"
+}

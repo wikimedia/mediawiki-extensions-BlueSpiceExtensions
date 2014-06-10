@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tyey"
+		]
+	},
+	"prefs-insertcategory": "카테고리 추가",
+	"bs-insertcategory-title": "카테고리 추가",
+	"bs-insertcategory-failure": "오류",
+	"bs-insertcategory-panel-title": "카테고리"
+}

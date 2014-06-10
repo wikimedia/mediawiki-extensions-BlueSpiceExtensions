@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"prefs-insertcategory": "Inserir categoria",
+	"bs-insertcategory-title": "Inserir categoria",
+	"bs-insertcategory-failure": "Erro",
+	"bs-insertcategory-panel-title": "Categorias"
+}

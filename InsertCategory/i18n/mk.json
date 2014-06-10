@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-insertcategory-desc": "Дијалог за ставање на категорија",
+	"bs-insertcategory-insertcat": "Стави категорија",
+	"prefs-insertcategory": "Стави категорија",
+	"bs-insertcategory-pref-withparents": "Стави категорија со нејзините матични наткатегории",
+	"bs-insertcategory-title": "Стави категорија",
+	"bs-insertcategory-cat-label": "Доделено:",
+	"bs-insertcategory-success": "Категоријата е успешно додадена",
+	"bs-insertcategory-failure": "Грешка",
+	"bs-insertcategory-hint": "Напомена: за да ставите категорија, ќе треба да стиснете на Enter или да го завршите внесот со запирка.",
+	"bs-insertcategory-panel-title": "Категории"
+}

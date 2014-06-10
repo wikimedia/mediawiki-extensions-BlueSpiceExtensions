@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-pageaccess-desc": "Contrôle l’accès au niveau de la page",
+	"bs-pageaccess-error-no-groups-given": "Aucun groupe n’a été spécifié",
+	"bs-pageaccess-error-not-member-of-given-groups": "Vous n’êtes pas membre des groupes indiqués. Afin de vous éviter de vous bloquer vous-même, l’enregistrement a été désactivé.",
+	"bs-pageaccess-error-included-forbidden-template": "Vous essayez d’utiliser le modèle « $1 » sur lequel vous n’avez pas d’accès en lecture. Afin de vous éviter de vous bloquer vous-même, l’enregistrement a été désactivé.",
+	"bs-pageaccess-tag-groups-desc": "Spécifier les groupes que doivent avoir un accès exclusif à cette page. Plusieurs groupes peuvent être séparés par des virgules.",
+	"pageaccess": "Pages sécurisées par PageAccess"
+}

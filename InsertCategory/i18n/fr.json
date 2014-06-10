@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-insertcategory-desc": "Boîte de dialogue pour entrer un lien de catégorie",
+	"bs-insertcategory-insertcat": "Insérer une catégorie",
+	"prefs-insertcategory": "Insérer une catégorie",
+	"bs-insertcategory-pref-withparents": "Insérer une catégorie avec ses parents",
+	"bs-insertcategory-title": "Insérer une catégorie",
+	"bs-insertcategory-cat-label": "Assigné :",
+	"bs-insertcategory-success": "Catégorie bien ajoutée",
+	"bs-insertcategory-failure": "Erreur",
+	"bs-insertcategory-hint": "Note : pour ajouter une catégorie, vous devez appuyer sur entrée ou terminer votre saisie avec une virgule.",
+	"bs-insertcategory-panel-title": "Catégories"
+}
