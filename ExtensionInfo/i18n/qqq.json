@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-extensioninfo-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of extension info extension",
+	"bs-extensioninfo-label": "Anchor text in admin tab for extensions\\n {{Identical|Extensions}}",
+	"bs-extensioninfo-software": "Table header for software",
+	"bs-extensioninfo-version": "Table header for version",
+	"extensioninfo": "Special page name for extensions",
+	"bs-extensioninfo-headerextname": "Label for extension name",
+	"bs-extensioninfo-headerversion": "Label for version",
+	"bs-extensioninfo-headerdesc": "Label for description",
+	"bs-extensioninfo-headerstatus": "Label for status",
+	"bs-extensioninfo-headerpackage": "Label for package",
+	"bs-extensioninfo-groupingtemplateviewtext": "Text for element/elements, $1 is the number of elements for PLURAL distinction"
+}
