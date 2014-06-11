@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftab1995"
+		]
+	},
+	"bs-extendededitbar-desc": "উইকি সম্পাদনা ক্ষেত্রে অতিরিক্ত বোতাম প্রদান করে",
+	"bs-extendededitbar-redirecttip": "পুনর্নির্দেশ",
+	"bs-extendededitbar-redirectsample": "লেখা যোগ",
+	"bs-extendededitbar-striketip": "স্ট্রাইক",
+	"bs-extendededitbar-strikesample": "স্ট্রাইক-থ্রু লেখা",
+	"bs-extendededitbar-entertip": "লাইনের বিরতি",
+	"bs-extendededitbar-uppertip": "সুপারস্ক্রিপ্ট",
+	"bs-extendededitbar-uppersample": "সুপারস্ক্রিপ্ট লেখা",
+	"bs-extendededitbar-lowertip": "সাবস্ক্রিপ্ট",
+	"bs-extendededitbar-lowersample": "সাবস্ক্রিপ্ট লেখা",
+	"bs-extendededitbar-smalltip": "ছোট",
+	"bs-extendededitbar-smallsample": "ছোট লেখা",
+	"bs-extendededitbar-commenttip": "লুকায়িত মন্তব্য যোগ",
+	"bs-extendededitbar-commentsample": "মন্তব্য",
+	"bs-extendededitbar-gallerytip": "একটি ছবি গ্যালারি যোগ",
+	"bs-extendededitbar-gallerysamplepicture": "চিত্র",
+	"bs-extendededitbar-gallerysamplecaption": "ক্যাপশন",
+	"bs-extendededitbar-quotetip": "উদ্ধৃত লেখার একটি ব্লক যোগ",
+	"bs-extendededitbar-quotesample": "উদ্ধৃতি ব্লক",
+	"bs-extendededitbar-tabletip": "একটি ছক যোগ",
+	"bs-extendededitbar-tablesampleheader": "শীর্ষচরণ",
+	"bs-extendededitbar-tablesamplerow": "সারি",
+	"bs-extendededitbar-tablesamplecell": "ঘর"
+}

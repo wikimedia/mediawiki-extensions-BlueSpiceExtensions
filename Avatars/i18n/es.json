@@ -16,5 +16,6 @@
 	"bs-avatars-generate-new-label": "Generar nuevo avatar",
 	"bs-avatars-warning-title": "Atención",
 	"bs-avatars-userimage-title": "Imagen del wiki o URL a imagen",
-	"bs-avatars-userimage-help": "p. ej., Imagen.jpg o http://localhost/Imagen.gif"
+	"bs-avatars-userimage-help": "p. ej., Imagen.jpg o http://localhost/Imagen.gif",
+	"bs-avatars-set-userimage-saved": "Se guardó la imagen de usuario correctamente."
 }

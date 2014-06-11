@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-insertcategory-insertcat": "Добавить категорию",
+	"prefs-insertcategory": "Добавить категорию",
+	"bs-insertcategory-title": "Добавить категорию",
+	"bs-insertcategory-failure": "Ошибка",
+	"bs-insertcategory-panel-title": "Категории"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "Перенаправление",
+	"bs-extendededitbar-redirectsample": "Вставить текст",
+	"bs-extendededitbar-striketip": "Зачёркивание",
+	"bs-extendededitbar-commenttip": "Вставить скрытый комментарий",
+	"bs-extendededitbar-commentsample": "Комментарий",
+	"bs-extendededitbar-gallerysamplepicture": "Изображение",
+	"bs-extendededitbar-tabletip": "Вставить таблицу",
+	"bs-extendededitbar-tablesampleheader": "Заголовок",
+	"bs-extendededitbar-tablesamplerow": "Строка",
+	"bs-extendededitbar-tablesamplecell": "Ячейка"
+}

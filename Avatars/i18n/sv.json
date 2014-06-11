@@ -4,11 +4,16 @@
 			"WikiPhoenix"
 		]
 	},
+	"bs-avatars-desc": "Tillhandahåller allmänna och enskilda användarbilder",
 	"bs-avatars-pref-generator": "Generator:",
 	"bs-avatars-pref-defaultsize": "Standardstorlek i bildpunkter:",
 	"bs-avatars-upload-complete": "Bilden laddades upp.",
+	"bs-avatars-upload-title": "Ändra profilbild",
 	"bs-avatars-upload-label": "Bild",
 	"bs-avatars-warning-title": "Varning",
+	"bs-avatars-userimage-title": "Bild från wiki eller bildwebbadress",
+	"bs-avatars-userimage-help": "t.ex. Bild.jpg eller http://lokalvard/Bild.gif",
+	"bs-avatars-set-userimage-failed": "Ingen giltig webbadress eller bild från wiki.",
 	"bs-avatars-set-userimage-saved": "Användarbilden sparades.",
 	"bs-avatars-file-upload-fieldset-title": "Bilduppladdning"
 }
