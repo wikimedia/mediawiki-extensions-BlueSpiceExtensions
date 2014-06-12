@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-extensioninfo-desc": "有关已加载拓展的信息列表",
+	"bs-extensioninfo-label": "扩展",
+	"bs-extensioninfo-software": "软件",
+	"bs-extensioninfo-version": "版本",
+	"extensioninfo": "扩展",
+	"bs-extensioninfo-headerextname": "扩展名",
+	"bs-extensioninfo-headerversion": "版本",
+	"bs-extensioninfo-headerdesc": "说明",
+	"bs-extensioninfo-headerstatus": "状态",
+	"bs-extensioninfo-headerpackage": "程序包",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|运行环境}}"
+}

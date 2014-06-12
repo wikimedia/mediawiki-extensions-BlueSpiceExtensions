@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"bs-insertcategory-desc": "Cuadro de diálogo para introducir un enlace a categoría",
 	"bs-insertcategory-insertcat": "Insertar categoría",
 	"prefs-insertcategory": "Insertar categoría",
+	"bs-insertcategory-pref-withparents": "Insertar categoría con sus padres",
 	"bs-insertcategory-title": "Insertar categoría",
 	"bs-insertcategory-cat-label": "Asignada:",
 	"bs-insertcategory-failure": "Ocurrió un error",

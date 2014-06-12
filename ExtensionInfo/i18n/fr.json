@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-extensioninfo-desc": "Liste d’information sur les extensions chargées",
+	"bs-extensioninfo-label": "Extensions",
+	"bs-extensioninfo-software": "Logiciel",
+	"bs-extensioninfo-version": "Version",
+	"extensioninfo": "Extensions",
+	"bs-extensioninfo-headerextname": "Nom de l’extension",
+	"bs-extensioninfo-headerversion": "Version",
+	"bs-extensioninfo-headerdesc": "Description",
+	"bs-extensioninfo-headerstatus": "État",
+	"bs-extensioninfo-headerpackage": "Paquet",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|élément|éléments}}"
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe"
+		]
+	},
+	"bs-extensioninfo-desc": "Lista de información sobre las extensiones cargadas",
+	"bs-extensioninfo-label": "Extensiones",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Versión",
+	"extensioninfo": "Extensiones",
+	"bs-extensioninfo-headerextname": "Nombre de la extensión",
+	"bs-extensioninfo-headerversion": "Versión",
+	"bs-extensioninfo-headerdesc": "Descripción",
+	"bs-extensioninfo-headerstatus": "Estado",
+	"bs-extensioninfo-headerpackage": "Paquete",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elemento|elementos}}"
+}

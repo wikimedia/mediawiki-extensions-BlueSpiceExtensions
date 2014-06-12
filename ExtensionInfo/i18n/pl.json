@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-extensioninfo-label": "Rozszerzenia",
+	"bs-extensioninfo-software": "Oprogramowanie",
+	"bs-extensioninfo-version": "Wersja",
+	"extensioninfo": "Rozszerzenia",
+	"bs-extensioninfo-headerextname": "Nazwa rozszerzenia",
+	"bs-extensioninfo-headerversion": "Wersja",
+	"bs-extensioninfo-headerdesc": "Opis",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element|elementy|elementów}}"
+}

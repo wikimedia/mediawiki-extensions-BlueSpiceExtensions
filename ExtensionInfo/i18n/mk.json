@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-extensioninfo-desc": "Информативен список за вчитаните додатоци",
+	"bs-extensioninfo-label": "Додатоци",
+	"bs-extensioninfo-software": "Програмска опрема",
+	"bs-extensioninfo-version": "Верзија",
+	"extensioninfo": "Додатоци",
+	"bs-extensioninfo-headerextname": "Назив на додатокот",
+	"bs-extensioninfo-headerversion": "Верзија",
+	"bs-extensioninfo-headerdesc": "Опис",
+	"bs-extensioninfo-headerstatus": "Статус",
+	"bs-extensioninfo-headerpackage": "Пакет",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|елемент|елементи}}"
+}

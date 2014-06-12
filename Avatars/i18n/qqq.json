@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki"
 		]
 	},
-	"prefs-avatars": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for avatars section in preferences.\\n{{Identical|Avatars}}",
+	"prefs-avatars": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for avatars section in preferences.\n{{Identical|Avatars}}",
 	"bs-avatars-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of avatars extension",
 	"bs-avatars-pref-generator": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for avatar generator:",
 	"bs-avatars-pref-defaultsize": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for default size of avatar in pixel:",
@@ -16,7 +17,7 @@
 	"bs-avatars-warning-title": "Label for warning",
 	"bs-avatars-warning-text": "You have set a user picture in your preferences. Using avatars will clear this setting. Do you want to proceed?",
 	"bs-avatars-userimage-title": "Fieldset title for picture from wiki or picture URL",
-	"bs-avatars-userimage-help": "Help text for e.g. Picture.jpg or http://localhost/Picture.gif \\n Picture.jpg is a example for a picture from the wiki \\n http://localhost/Picture.gif is a example for a picture from url",
+	"bs-avatars-userimage-help": "Help text for e.g. Picture.jpg or http://localhost/Picture.gif\n\nPicture.jpg is a example for a picture from the wiki\n\nhttp://localhost/Picture.gif is a example for a picture from URL",
 	"bs-avatars-set-userimage-failed": "Text for not a valid picture from wiki or picture URL.",
 	"bs-avatars-set-userimage-saved": "Text for user picture successfully saved.",
 	"bs-avatars-file-upload-fieldset-title": "Fieldset title for picture upload",
