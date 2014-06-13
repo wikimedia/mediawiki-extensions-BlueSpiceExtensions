@@ -11,5 +11,6 @@
 	"bs-extensioninfo-headerextname": "Numm vun der Erweiderung",
 	"bs-extensioninfo-headerversion": "Versioun",
 	"bs-extensioninfo-headerdesc": "Beschreiwung",
-	"bs-extensioninfo-headerstatus": "Status"
+	"bs-extensioninfo-headerstatus": "Status",
+	"bs-extensioninfo-headerpackage": "Pak"
 }

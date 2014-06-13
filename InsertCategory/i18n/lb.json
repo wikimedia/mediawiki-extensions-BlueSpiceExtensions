@@ -4,6 +4,8 @@
 			"Robby"
 		]
 	},
+	"prefs-insertcategory": "Kategorie drasetzen",
+	"bs-insertcategory-title": "Kategorie drasetzen",
 	"bs-insertcategory-failure": "Feeler",
 	"bs-insertcategory-panel-title": "Kategorien"
 }

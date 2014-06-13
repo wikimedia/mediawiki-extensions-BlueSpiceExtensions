@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-extensioninfo-desc": "Információs lista a betöltött bővítményekről",
+	"bs-extensioninfo-label": "Kiterjesztések",
+	"bs-extensioninfo-software": "Szoftver",
+	"bs-extensioninfo-version": "Verzió",
+	"extensioninfo": "Kiterjesztések",
+	"bs-extensioninfo-headerextname": "Kiterjesztésnév",
+	"bs-extensioninfo-headerversion": "Verzió",
+	"bs-extensioninfo-headerdesc": "Leírás",
+	"bs-extensioninfo-headerstatus": "Állapot",
+	"bs-extensioninfo-headerpackage": "Csomag"
+}

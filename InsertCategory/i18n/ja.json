@@ -4,5 +4,11 @@
 			"Shirayuki"
 		]
 	},
-	"bs-insertcategory-title": "カテゴリを挿入"
+	"bs-insertcategory-desc": "カテゴリのリンクを入力するダイアログ",
+	"bs-insertcategory-insertcat": "カテゴリを挿入",
+	"bs-insertcategory-title": "カテゴリを挿入",
+	"bs-insertcategory-success": "カテゴリを追加しました",
+	"bs-insertcategory-failure": "エラー",
+	"bs-insertcategory-hint": "注: カテゴリを追加するには、Enter キーを押すか、またはカンマで区切ってください。",
+	"bs-insertcategory-panel-title": "カテゴリ"
 }

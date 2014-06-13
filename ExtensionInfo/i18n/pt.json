@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-extensioninfo-desc": "Lista de informações sobre as extensões carregadas",
+	"bs-extensioninfo-label": "Extensões",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Versão",
+	"extensioninfo": "Extensões",
+	"bs-extensioninfo-headerextname": "Nome da extensão",
+	"bs-extensioninfo-headerversion": "Versão",
+	"bs-extensioninfo-headerdesc": "Descrição",
+	"bs-extensioninfo-headerstatus": "Estado",
+	"bs-extensioninfo-headerpackage": "Pacote",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elemento|elementos}}"
+}
