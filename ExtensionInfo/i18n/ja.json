@@ -13,5 +13,6 @@
 	"bs-extensioninfo-headerversion": "バージョン",
 	"bs-extensioninfo-headerdesc": "説明",
 	"bs-extensioninfo-headerstatus": "状態",
-	"bs-extensioninfo-headerpackage": "パッケージ"
+	"bs-extensioninfo-headerpackage": "パッケージ",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|項目}}"
 }

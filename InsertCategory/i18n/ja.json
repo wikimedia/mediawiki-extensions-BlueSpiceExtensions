@@ -6,6 +6,8 @@
 	},
 	"bs-insertcategory-desc": "カテゴリのリンクを入力するダイアログ",
 	"bs-insertcategory-insertcat": "カテゴリを挿入",
+	"prefs-insertcategory": "カテゴリの挿入",
+	"bs-insertcategory-pref-withparents": "親カテゴリも含めてカテゴリを挿入",
 	"bs-insertcategory-title": "カテゴリを挿入",
 	"bs-insertcategory-success": "カテゴリを追加しました",
 	"bs-insertcategory-failure": "エラー",

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"PeppeAeco"
+		]
+	},
+	"bs-pageaccess-tag-groups-desc": "Specificare i gruppi che dovrebbero avere accesso esclusivo a questa pagina. Più gruppi possono essere separati da virgole.",
+	"pageaccess": "Pagine protette da PageAccess"
+}

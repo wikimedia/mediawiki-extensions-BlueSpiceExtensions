@@ -15,5 +15,5 @@
 	"bs-extensioninfo-headerdesc": "Label for description.\n{{Identical|Description}}",
 	"bs-extensioninfo-headerstatus": "Label for status.\n{{Identical|Status}}",
 	"bs-extensioninfo-headerpackage": "Label for package",
-	"bs-extensioninfo-groupingtemplateviewtext": "Text for element/elements. Parameters:\n* $1 - the number of elements for PLURAL distinction"
+	"bs-extensioninfo-groupingtemplateviewtext": "Text for element/elements. Parameters:\n* $1 - the number of elements (extensions)"
 }

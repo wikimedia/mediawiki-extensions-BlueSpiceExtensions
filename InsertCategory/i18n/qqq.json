@@ -10,7 +10,7 @@
 	"prefs-insertcategory": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for insert category section.\n{{Identical|Insert category}}",
 	"bs-insertcategory-pref-withparents": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for insert category with its parents",
 	"bs-insertcategory-title": "Window title for insert category.\n\nAlso used as tooltip for button.\n{{Identical|Insert category}}",
-	"bs-insertcategory-cat-label": "Label for assigned:",
+	"bs-insertcategory-cat-label": "Unused at this time.\n\nLabel for assigned:",
 	"bs-insertcategory-success": "Text for add category successful",
 	"bs-insertcategory-failure": "Text for error.\n{{Identical|Error}}",
 	"bs-insertcategory-hint": "Text for note: to add a category, you have to press enter or terminate your entry with a comma.",

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"PeppeAeco"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "Reindirizzare",
+	"bs-extendededitbar-redirectsample": "Inserire testo",
+	"bs-extendededitbar-striketip": "Annulla",
+	"bs-extendededitbar-strikesample": "Testo barrato",
+	"bs-extendededitbar-entertip": "Interruzione di riga",
+	"bs-extendededitbar-uppertip": "Apice",
+	"bs-extendededitbar-uppersample": "Testo in apice",
+	"bs-extendededitbar-lowertip": "Pedice",
+	"bs-extendededitbar-lowersample": "Testo in pedice",
+	"bs-extendededitbar-smalltip": "Piccolo",
+	"bs-extendededitbar-smallsample": "Testo piccolo",
+	"bs-extendededitbar-commenttip": "Inserisci commento nascosto",
+	"bs-extendededitbar-commentsample": "Commento",
+	"bs-extendededitbar-gallerysamplepicture": "Immagine",
+	"bs-extendededitbar-gallerysamplecaption": "Didascalia",
+	"bs-extendededitbar-tabletip": "Inserisci tabella",
+	"bs-extendededitbar-tablesampleheader": "Intestazione",
+	"bs-extendededitbar-tablesamplerow": "Riga"
+}
