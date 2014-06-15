@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-extendededitbar-commenttip": "Verborgen opmerking invoegen",
+	"bs-extendededitbar-commentsample": "Opmerking",
+	"bs-extendededitbar-gallerysamplepicture": "Afbeelding",
+	"bs-extendededitbar-gallerysamplecaption": "Bijschrift",
+	"bs-extendededitbar-tabletip": "Tabel invoegen",
+	"bs-extendededitbar-tablesamplerow": "Rij",
+	"bs-extendededitbar-tablesamplecell": "Cel"
+}

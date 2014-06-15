@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"prefs-authors": "Autors d’aquesta pàgina",
+	"bs-authors-title": "{{PLURAL:$1|Autor|Autors}}"
+}

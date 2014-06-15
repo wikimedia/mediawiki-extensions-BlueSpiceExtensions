@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tyey"
+			"Tyey",
+			"아라"
 		]
 	},
-	"bs-avatars-upload-title": "프로필 사진 변경",
+	"bs-avatars-upload-title": "프로필 사진 바꾸기",
 	"bs-avatars-upload-label": "사진",
 	"bs-avatars-warning-title": "경고",
-	"bs-avatars-file-upload-fieldset-title": "사진 업로드하기"
+	"bs-avatars-file-upload-fieldset-title": "사진 올리기"
 }

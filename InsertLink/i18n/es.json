@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-insertlink-desc": "Cuadro de diálogo para insertar un enlace",
+	"bs-insertlink": "Insertar enlace",
+	"bs-insertlink-button-title": "Insertar o editar enlace",
+	"bs-insertlink-dialog-title": "Insertar enlace",
+	"bs-insertlink-tab-wiki-page": "Página del wiki",
+	"bs-insertlink-tab-ext-link": "Enlace externo",
+	"bs-insertlink-tab-email": "Enlace a correo",
+	"bs-insertlink-tab-ext-file": "Enlace a archivo",
+	"bs-insertlink-label-page": "Página",
+	"bs-insertlink-label-link": "Enlace",
+	"bs-insertlink-label-mail": "Dirección de correo electrónico",
+	"bs-insertlink-label-description": "Descripción",
+	"bs-insertlink-label-file": "Archivo",
+	"bs-insertlink-label-searchfile": "Buscar…",
+	"bs-insertlink-select-a-page": "Elegir destino…",
+	"bs-insertlink-select-a-namespace": "(Páginas)",
+	"bs-insertlink-empty-field-text": "Para insertar un enlace es necesario definir el destino."
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-extensioninfo-label": "Uitbreidingen",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Versie",
+	"extensioninfo": "Uitbreidingen",
+	"bs-extensioninfo-headerextname": "Naam van de uitbreiding",
+	"bs-extensioninfo-headerversion": "Versie",
+	"bs-extensioninfo-headerdesc": "Beschrijving"
+}

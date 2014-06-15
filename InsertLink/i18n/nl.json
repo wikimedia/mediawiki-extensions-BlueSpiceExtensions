@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-insertlink-label-page": "Pagina",
+	"bs-insertlink-label-mail": "E-mailadres",
+	"bs-insertlink-label-description": "Beschrijving",
+	"bs-insertlink-label-file": "Bestand",
+	"bs-insertlink-select-a-namespace": "(Pagina's)"
+}

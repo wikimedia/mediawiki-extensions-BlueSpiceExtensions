@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-insertlink-desc": "Dialog-Këscht fir e Link anzeginn",
+	"bs-insertlink": "Link drasetzen",
+	"bs-insertlink-button-title": "Link drasetzen/änneren",
+	"bs-insertlink-dialog-title": "Link drasetzen",
+	"bs-insertlink-tab-wiki-page": "Wiki-Säit",
+	"bs-insertlink-tab-ext-link": "Externe Link",
+	"bs-insertlink-tab-email": "E-Mail-Link",
+	"bs-insertlink-tab-ext-file": "Link op de Fichier",
+	"bs-insertlink-label-page": "Säit",
+	"bs-insertlink-label-link": "Link",
+	"bs-insertlink-label-mail": "E-Mail-Adress",
+	"bs-insertlink-label-description": "Beschreiwung",
+	"bs-insertlink-label-file": "Fichier",
+	"bs-insertlink-label-searchfile": "Sichen...",
+	"bs-insertlink-select-a-page": "Zil eraussichen...",
+	"bs-insertlink-select-a-namespace": "(Säiten)"
+}

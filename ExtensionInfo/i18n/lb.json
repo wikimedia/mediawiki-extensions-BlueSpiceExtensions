@@ -12,5 +12,6 @@
 	"bs-extensioninfo-headerversion": "Versioun",
 	"bs-extensioninfo-headerdesc": "Beschreiwung",
 	"bs-extensioninfo-headerstatus": "Status",
-	"bs-extensioninfo-headerpackage": "Pak"
+	"bs-extensioninfo-headerpackage": "Pak",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|Element|Elementer}}"
 }
