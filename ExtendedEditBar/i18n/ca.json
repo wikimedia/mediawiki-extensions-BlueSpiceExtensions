@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-extendededitbar-smallsample": "Text petit",
+	"bs-extendededitbar-commentsample": "Comentari",
+	"bs-extendededitbar-quotetip": "Insereix un bloc de text citat",
+	"bs-extendededitbar-tablesamplerow": "Fila",
+	"bs-extendededitbar-tablesamplecell": "Cèl·la"
+}

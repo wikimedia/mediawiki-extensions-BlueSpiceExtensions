@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kc kennylau"
+		]
+	},
+	"bs-insertlink": "插入連結",
+	"bs-insertlink-button-title": "插入或者修改連結",
+	"bs-insertlink-dialog-title": "插入連結",
+	"bs-insertlink-tab-wiki-page": "維基頁面",
+	"bs-insertlink-tab-ext-link": "外部連結",
+	"bs-insertlink-tab-ext-file": "連去檔案",
+	"bs-insertlink-label-page": "版",
+	"bs-insertlink-label-link": "連結",
+	"bs-insertlink-label-mail": "電郵地址",
+	"bs-insertlink-label-description": "描述",
+	"bs-insertlink-label-file": "檔案",
+	"bs-insertlink-label-searchfile": "揾……",
+	"bs-insertlink-select-a-page": "揀目標……",
+	"bs-insertlink-empty-field-text": "想插入一個連結嘅話，你需要作出描述。"
+}
