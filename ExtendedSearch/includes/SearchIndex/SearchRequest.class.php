@@ -108,11 +108,11 @@ class SearchRequest {
 		$this->sEditor = $this->oRequest->getArray( 'ed', array() );
 		$this->sCategories = $this->oRequest->getArray( 'ca', array() );
 		$this->aNamespaces = $this->oRequest->getArray( 'na', array() );
-		$this->sType = $this->oRequest->getArray( 'ty', array() );
+		$this->aType = $this->oRequest->getArray( 'ty', array() );
 
-		if ( $this->oRequest->getFuzzyBool( 'search_files' ) !== false ) {
+		if ( $this->oRequest->getInt( 'search_files' ) !== 0 ) {
 			if ( $this->sOrigin !== 'ajax' ) {
-				if ( $this->oRequest->getFuzzyBool( 'search_files' ) == 1 ) {
+				if ( $this->oRequest->getInt( 'search_files' ) === 1 ) {
 					$this->bSearchFiles = true;
 				} else {
 					$this->bSearchFiles = false;

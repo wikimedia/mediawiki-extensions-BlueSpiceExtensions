@@ -275,7 +275,7 @@ class ViewSearchResult extends ViewBaseElement {
 	 */
 	protected function getSortingBar() {
 		$aSorting = $this->getOption( 'sorting' );
-		$aOut = '<span style="float: left;">';
+		$aOut = '<span>';
 		$aOut .= $this->getNumberOfPageItems() . ' ';
 		$aOut .= wfMessage( 'bs-extendedsearch-sort-by' )->plain();
 		$aOut .= '&nbsp;';

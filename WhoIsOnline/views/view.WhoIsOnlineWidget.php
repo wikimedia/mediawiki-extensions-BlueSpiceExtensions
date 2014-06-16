@@ -36,7 +36,7 @@ class ViewWhoIsOnlineWidget extends ViewBaseElement {
 		$aOut = array();
 		$aOut[] = '<ul>';
 		if ( $this->getOption( 'count' ) == 0 ) {
-			$aOut[] = '<li>' . wfMsg( 'bs-whoisonline-nousers' ) . '</li>';
+			$aOut[] = '<li>' . wfMessage( 'bs-whoisonline-nousers' )->plain() . '</li>';
 		}
 		else {
 			$this->setAutoElement( '' );

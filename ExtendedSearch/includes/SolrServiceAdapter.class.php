@@ -114,38 +114,11 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 	}
 
 	/**
-	 * Get a vaild curl handle.
-	 * @return resource Curl handle.
-	 */
-	protected function &getCurlHandle() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		if ( $this->curlConnectionCounter > 200 ) {
-			curl_close( $this->curlHandle );
-			$this->curlHandle = null;
-		}
-		if ( $this->curlHandle === null ) {
-			$this->curlHandle = curl_init(); // todo: function_exists('curl_init') not true on every installation => handle Exception
-			$this->curlConnectionCounter = 0;
-			//curl_setopt($this->curlHandle, CURLOPT_FRESH_CONNECT, 1); // Forces new http-connection
-			//curl_setopt($this->curlHandle, CURLOPT_FORBID_REUSE, 1);  // Closes http-connection after the request
-			//curl_setopt($this->curlHandle, CURLOPT_VERBOSE, 1);
-			curl_setopt( $this->curlHandle, CURLOPT_HEADER, true );
-			curl_setopt( $this->curlHandle, CURLOPT_HTTPHEADER, array( "Content-Type: text/xml; charset=utf-8", "Expect:" ) );
-			curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, true );
-			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYPEER, false ); // Allow self-signed certs
-			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYHOST, false ); // Allow certs that do not match the hostname
-		}
-		wfProfileOut( 'BS::'.__METHOD__ );
-
-		return $this->curlHandle;
-	}
-
-	/**
 	 * Central method for making a post operation against this Solr Server
 	 *
 	 * @param string $sUrl The URL to be requested
 	 * @param string $sRawPost Workload to be delivered
-	 * @param float $fTimeout Read timeout in seconds
+	 * @param float $iTimeLimit Read timeout in seconds
 	 * @param string $sContentType The content type to be included in the http-header
 	 * @return Apache_Solr_Response
 	 *
@@ -155,14 +128,14 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		try {
 			if ( $iTimeLimit === false ) {
-				$iTimeLimit = 20; 
+				$iTimeLimit = 20;
 			}
 
 			$ch = $this->getCurlHandle();
 			curl_setopt( $ch, CURLOPT_URL, $sUrl );
 			curl_setopt( $ch, CURLOPT_POST, true );
 			curl_setopt( $ch, CURLOPT_POSTFIELDS, $sRawPost );
-			curl_setopt( $ch, CURLOPT_TIMEOUT, $iTimeLimit ); // maximal exectuion time in seconds 
+			curl_setopt( $ch, CURLOPT_TIMEOUT, $iTimeLimit ); // maximal exectuion time in seconds
 
 			$data = curl_exec( $ch );
 			$this->curlConnectionCounter++;

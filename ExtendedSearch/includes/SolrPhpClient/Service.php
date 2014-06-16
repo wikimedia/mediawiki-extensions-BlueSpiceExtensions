@@ -717,8 +717,8 @@ class Apache_Solr_Service
 	    return $this->_sendRawGet($updateURL);
 	}
 
-	
-	
+
+
 	/**
 	 * Add a Solr Document to the index
 	 *
@@ -810,6 +810,9 @@ class Apache_Solr_Service
 						$fieldBoost = false;
 					}
 
+					if ( !mb_check_encoding( $multivalue, 'UTF-8' ) ) {
+						$multivalue = utf8_encode( $multivalue );
+					}
 					$multivalue = htmlspecialchars($multivalue, ENT_NOQUOTES, 'UTF-8');
 
 					$xml .= '>' . $multivalue . '</field>';
@@ -817,7 +820,7 @@ class Apache_Solr_Service
 			}
 			else
 			{
-				
+
 				$xml .= '<field name="' . $key . '"';
 
 				if ($fieldBoost !== false)
@@ -825,6 +828,9 @@ class Apache_Solr_Service
 					$xml .= ' boost="' . $fieldBoost . '"';
 				}
 
+				if ( !mb_check_encoding( $value, 'UTF-8' ) ) {
+					$value = utf8_encode( $value );
+				}
 				$value = htmlspecialchars($value, ENT_NOQUOTES, 'UTF-8');
 
 				$xml .= '>' . $value . '</field>';

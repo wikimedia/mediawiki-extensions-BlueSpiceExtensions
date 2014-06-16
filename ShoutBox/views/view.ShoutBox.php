@@ -18,7 +18,7 @@
 /**
  * This view renders the Shoutbox frame.
  * @package    BlueSpice_Extensions
- * @subpackage ShoutBox 
+ * @subpackage ShoutBox
  */
 class ViewShoutBox extends ViewBaseElement {
 
@@ -79,7 +79,6 @@ class ViewShoutBox extends ViewBaseElement {
 		$aOut[] = '  <fieldset>';
 		$aOut[] = '    <legend>' . wfMessage( 'bs-shoutbox-title' )->plain() . '</legend>';
 		$aOut[] = $innerText;
-		//$aOut[] = '    <div id="bs-sb-loading" style="display:none;"><img src="' . BsConfig::get('MW::ScriptPath') . '/extensions/BlueSpiceExtensions/ShoutBox/css/images/loading.gif" alt="'.wfMessage('loading').'" /></div>';
 		$aOut[] = '    <div id="bs-sb-content" style="display:none;"></div>';
 		$aOut[] = '  </fieldset>';
 		$aOut[] = '</div>';

@@ -29,7 +29,7 @@ mw.loader.using( 'jquery.ui.autocomplete', function() {
 				setList( cache[ req.term ] );
 			} else {
 				var url = bs.util.getAjaxDispatcherUrl(
-					'ExtendedSearch::getAutocompleteData',
+					'ExtendedSearchBase::getAutocompleteData',
 					[ encodeURIComponent( req.term ) ]
 				);
 				var lastXhr = $.ajax( {

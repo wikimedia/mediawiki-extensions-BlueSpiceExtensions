@@ -18,14 +18,14 @@ Ext.define( 'BS.InterWikiLinks.InterWikiLinksDialog', {
 	selectedData: {},
 	afterInitComponent: function() {
 		this.tfIWLPrefix = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message( 'bs-interwikilinks-labelPrefix' ).plain(),
+			fieldLabel: mw.message( 'bs-interwikilinks-labelprefix' ).plain(),
 			labelWidth: 85,
 			labelAlign: 'right',
 			name: 'iwl_prefix',
 			allowBlank: false
 		});
 		this.tfIWLUrl = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message( 'bs-interwikilinks-labelUrl' ).plain(),
+			fieldLabel: mw.message( 'bs-interwikilinks-labelurl' ).plain(),
 			labelWidth: 85,
 			labelAlign: 'right',
 			name: 'iwl_url',

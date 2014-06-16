@@ -1,6 +1,6 @@
 /**
  * VisualEditor extension
- * 
+ *
  * Wiki code to HTML and vice versa parser
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
@@ -22,42 +22,42 @@ var BsWikiCode = function() {
 	"use strict";
 	var
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_preTags,
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_preTagsSpace,
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_templates,
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_images,
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_comments,
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_specialtags,
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_switches,
 		/**
-		 * 
+		 *
 		 * @type Array
 		 */
 		_entities,
@@ -78,18 +78,23 @@ var BsWikiCode = function() {
 		 */
 		_userThumbsize = 3,
 		/**
-		 * 
+		 *
 		 * @type Boolean
 		 */
 		_processFlag = false,
 		/**
-		 * 
+		 * Used for numbering external links with no label
+		 * @type Number
+		 */
+        _externalLinkNo = 1,
+		/**
+		 *
 		 * @type TinyMCE
 		 */
 		_ed = null;
-		
+
 		var me = this;
-		
+
 	this.makeWikiImageDataObject = function() {
 		return {
 			imagename: '',
@@ -111,7 +116,7 @@ var BsWikiCode = function() {
 			sizeheight: false
 		};
 	};
-	
+
 	this.makeDefaultImageAttributesObject = function() {
 		return {
 			'class': "bs-ve-image",
@@ -222,7 +227,7 @@ var BsWikiCode = function() {
 				continue;
 			}
 		}
-		
+
 		if (wikiImageObject.alt) {
 			htmlImageObject.attr('alt', wikiImageObject.alt);
 		}
@@ -249,19 +254,21 @@ var BsWikiCode = function() {
 				htmlImageObject.width(wikiImageObject.thumbsize);
 			}
 		}
-		
-		//In the first place we have to assume that "thumb" and "frame" floats 
+
+		//In the first place we have to assume that "thumb" and "frame" floats
 		//right,as this is MW default. May be overridden below.
 		if (wikiImageObject.thumb === true || wikiImageObject.frame === true) {
 			//htmlImageObject.addClass('tright');
 			htmlImageObject.css('border', '1px solid #CCCCCC');
-			htmlImageObject.css('float', 'right');
-			htmlImageObject.css('clear', 'right');
-			htmlImageObject.css('margin-left', '1.4em');
+			if (wikiImageObject.none !== true){
+				htmlImageObject.css('float', 'right');
+				htmlImageObject.css('clear', 'right');
+				htmlImageObject.css('margin-left', '1.4em');
+			}
 		}
 
 /*
-		//This was a very old contruct. We don't need it anymore, because our 
+		//This was a very old contruct. We don't need it anymore, because our
 		//dialogs (InsertImage) have evolved.
 		if (wikiImageObject.link !== false) {
 			htmlImageObject.wrap('<a style="display:inline-block"></a>'); //IE needs closing tag
@@ -290,25 +297,25 @@ var BsWikiCode = function() {
 			htmlImageObject.css('margin-right', '1.4em');
 		}
 
-		//We store all parsed properties of the WikiText link within the dom 
+		//We store all parsed properties of the WikiText link within the dom
 		//node to make access by other components more easy
 		//We use $.attr instead of $.data because of issued with IE in older
 		//jQuery versions. This should be subject to further testing.
 		htmlImageObject.attr(
 			bs.util.makeDataAttributeObject(wikiImageObject)
 		);
-		
-		//Let's store the original WikiText as well. This makes it easier for 
+
+		//Let's store the original WikiText as well. This makes it easier for
 		//other extensions to read in the data.
 		//We can not use [[/]] because this might cause double parsing!
 		htmlImageObject.attr('data-bs-wikitext', link);
-		
-		//We set a dummy url which contains the original filename as 
+
+		//We set a dummy url which contains the original filename as
 		//querystring parameter
 		imgParts = parts[0].split(':');
 		src = _imageDummyUrl + '?' + imgParts[1];
-		
-		//We have to save the name and url of the image to allow post process 
+
+		//We have to save the name and url of the image to allow post process
 		//replacement of dummyUrls
 		_images.push({ imageName: imgParts[1], dummySrc: src });
 
@@ -344,8 +351,8 @@ var BsWikiCode = function() {
 			}
 
 			//Update things that might have changed in markup but not in "data"
-			if (htmlImageObject.css('display') === 'block' && 
-				htmlImageObject.css('margin-left') === 'auto' && 
+			if (htmlImageObject.css('display') === 'block' &&
+				htmlImageObject.css('margin-left') === 'auto' &&
 				htmlImageObject.css('margin-right') === 'auto') {
 				wikiImageObject.align = 'center';
 			}
@@ -356,11 +363,11 @@ var BsWikiCode = function() {
 				htmlImageObject = htmlImageObject.find('img').first();
 			}
 */
-			if (htmlImageObject.attr('width') 
+			if (htmlImageObject.attr('width')
 				&& htmlImageObject.attr('width') !== wikiImageObject.sizewidth) {
 				wikiImageObject.sizewidth = htmlImageObject.attr( 'width' );
 			}
-			if (htmlImageObject.attr('height') 
+			if (htmlImageObject.attr('height')
 				&& htmlImageObject.attr('height') !== wikiImageObject.sizeheight) {
 				wikiImageObject.sizeheight = htmlImageObject.attr( 'height' );
 			}
@@ -397,16 +404,16 @@ var BsWikiCode = function() {
 				if ($.inArray(property, ['left', 'right', 'center']) !== -1) {
 					continue; //Not used stuff
 				}
-				
+
 				value = wikiImageObject[property];
-				//"link" may be intentionally empty. Therefore we have to 
+				//"link" may be intentionally empty. Therefore we have to
 				//check it _before_ "value is empty?"
 				if (property == 'link' && value !== 'false' && value !== false ) {
 					wikiText.push(property + '=' + value);
 					continue;
 				}
 
-				if( value == null || value == false 
+				if( value == null || value == false
 					|| value == "" || typeof value == "undefined" ) continue;
 				//TODO: of short if(!value) ?
 
@@ -441,7 +448,7 @@ var BsWikiCode = function() {
 		}
 		return text;
 	}
-	
+
 	//Make public available?
 	//this.image2wiki = _image2wiki;
 
@@ -450,7 +457,7 @@ var BsWikiCode = function() {
 		var links, link, linkParts, linkTarget, linkLabel, linkHtml,
 			targetParts, fileExtension, targetTextParts, nsText, nsId,
 			linkTargetParts, protocol, targetText,
-			namespaces = mw.config.get('wgNamespaceIds'), 
+			namespaces = mw.config.get('wgNamespaceIds'),
 			imageExtensions = mw.config.get('bsImageExtensions'),
 			anchorFormat = '<a href="{0}" data-mce-href="{5}" title="{6}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
 
@@ -465,18 +472,23 @@ var BsWikiCode = function() {
 				// FS#134: Cleanup specials within Link
 				linkTarget = linkTarget.replace(/\<.*?\>/g, "");
 				if (linkParts.length > 1) {
-					linkLabel = linkParts[1];
+					// Links of the form [[Test|]] . Uses trim to cope with whitespace
+					if ( (linkParts[1].trim() === "") ) {
+						linkLabel = linkTarget.replace(/(.*:)?([^,\(]*)(.*)/, "$2");
+					} else {
+						linkLabel = linkParts[1];
+					}
 				}
-				
+
 
 				linkHtml = anchorFormat.format(
-					'bs://' + linkTarget,//escape(linkTarget), //0
-					linkLabel,                                 //1
-					'internal_link',                           //2
-					'internal bs-internal-link',               //3
-					$('<div/>').text(link).html(),             //4
-					linkTarget,                                //5
-					$('<div/>').text(linkLabel).html()         //6
+					encodeURI( 'bs://' + linkTarget ),//escape(linkTarget), //0
+					linkLabel,                                              //1
+					'internal_link',                                        //2
+					'internal bs-internal-link',                            //3
+					encodeURI( $('<div/>').text(link).html() ),             //4
+					encodeURI( linkTarget ),                                //5
+					encodeURI( $('<div/>').text(linkLabel).html() )         //6
 				);
 
 				targetParts = linkTarget.split(":");
@@ -495,9 +507,9 @@ var BsWikiCode = function() {
 				text = text.replace("[[" + link + "]]", linkHtml);
 			}
 		}
-		
+
 		//Also find protocol independent links
-		links = text.match(/\[([^\]]*)(:\/\/)?([^\]]*?)\]/gi);
+		links = text.match(/\[([^\]]*)(:)?\/\/([^\]]*?)\]/gi);
 
 		if (links) {
 			for (i = 0; i < links.length; i++) {
@@ -518,15 +530,18 @@ var BsWikiCode = function() {
 				if (linkParts.length > 1) {
 					linkParts.shift();
 					linkLabel = linkParts.join(" ");
+				} else {
+					linkLabel = "[" + _externalLinkNo + "]";
+					_externalLinkNo++;
 				}
 				linkHtml = anchorFormat.format(
-					linkTarget,//escape(linkTarget),                     //0
+					encodeURI( linkTarget ),//escape(linkTarget),                     //0
 					linkLabel,                                           //1
 					'external_link',                                     //2
 					'external bs-external-link bs-protocol-'+protocol,   //3
-					$('<div/>').text(link).html(),                       //4
-					linkTarget,                                          //5
-					$('<div/>').text(linkLabel).html()                   //6
+					encodeURI( $('<div/>').text(link).html() ),                       //4
+					encodeURI( linkTarget ),                                          //5
+					encodeURI( $('<div/>').text(linkLabel).html() )                   //6
 				);
 				text = text.replace("[" + link + "]", linkHtml);
 			}
@@ -536,7 +551,7 @@ var BsWikiCode = function() {
 
 	function _links2wiki(text) {
 		var links, linkwiki, type, target, label,
-			link, hrefAttr, inner, typeAttr, validProtocol;
+			link, hrefAttr, inner, typeAttr, validProtocol, wikitext;
 
 		links = text.match(/<a(.*?)<\/a>/gi);
 		linkwiki = '';
@@ -551,7 +566,7 @@ var BsWikiCode = function() {
 
 				hrefAttr = link.match(/href="(.*?)"/i);
 				if (hrefAttr) {
-					target = hrefAttr[1];
+					target = decodeURI( hrefAttr[1] );
 					// 03.03.2014 STM ??? target = target; //unescape(target);
 				}
 				// @todo <br /> br-tags bereits in insertLink abfangen oder hier einfügen
@@ -564,7 +579,20 @@ var BsWikiCode = function() {
 				//TODO: Maybe we should relay on classes instead?
 				typeAttr = link.match(/data-bs-type="(.*?)"/i);
 				if (typeAttr) {
-					type = typeAttr[1];
+					type = decodeURI( typeAttr[1] );
+				}
+
+				wikitext = link.match(/data-bs-wikitext="(.*?)"/i);
+				if (wikitext) {
+					wikitext = decodeURI( wikitext[1] );
+				}
+
+				if (wikitext) {
+					if (wikitext.indexOf("|") == wikitext.length-1) {
+						if (wikitext.replace(/(.*:)?([^,\(]*)(.*)\|/, "$2") == label) {
+							label = "";
+						}
+					}
 				}
 
 				if (type === "internal_link") {
@@ -574,7 +602,7 @@ var BsWikiCode = function() {
 						linkwiki = "[[" + target + "|" + label + "]]";
 					}
 				} else {
-					//TinyMCE seems to eat double slashes of no-http (https, 
+					//TinyMCE seems to eat double slashes of no-http (https,
 					//or protocol independent) hrefs.
 					//This is a ugly fix, it may have side effects
 					validProtocol = target.match(/\:\/\//i);
@@ -588,7 +616,11 @@ var BsWikiCode = function() {
 					//if( label == target ) {
 					//	linkwiki = "[" + target + "]";
 					//} else {
+					if ( type === "external_link" && wikitext.indexOf(" ") == -1 && label.match(/^\[\d+\]$/) ) {
+						linkwiki = "[" + target + "]";
+					} else {
 						linkwiki = "[" + target + " " + label + "]";
+					}
 					//}
 				}
 				text = text.replace(links[i], linkwiki);
@@ -597,13 +629,13 @@ var BsWikiCode = function() {
 
 		return text;
 	}
-	
+
 	//Make public available?
 	//this.links2wiki = _links2wiki;
 
 	/**
 	 * Normalizes some MW table syntax shorthand to HTML attributes
-	 * 
+	 *
 	 * @param {String} attr
 	 * @param {String} elm
 	 * @returns {String}
@@ -630,7 +662,7 @@ var BsWikiCode = function() {
 
 	/**
 	 * Convert MW tables to HTML
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -834,7 +866,7 @@ var BsWikiCode = function() {
 	}
 
 	function _tables2wiki(text) {
-		//cleanup thead and tbody tags. Caution: Must be placed before th cleanup because of 
+		//cleanup thead and tbody tags. Caution: Must be placed before th cleanup because of
 		//regex collision
 		text = text.replace(/<(\/)?tbody([^>]*)>/gmi, "");
 		text = text.replace(/<(\/)?thead([^>]*)>/gmi, "");
@@ -861,7 +893,7 @@ var BsWikiCode = function() {
 
 	/**
 	 * Converts MW list markers to HTML list open tags
-	 * 
+	 *
 	 * @param {String} lastList
 	 * @param {String} cur
 	 * @returns {String}
@@ -889,7 +921,7 @@ var BsWikiCode = function() {
 
 	/**
 	 * Converts MW list markers to HTML list end tags
-	 * 
+	 *
 	 * @param {String} lastList
 	 * @param {String} cur
 	 * @returns {String}
@@ -917,7 +949,7 @@ var BsWikiCode = function() {
 
 	/**
 	 * Converts MW list markers to HTML list item tags
-	 * 
+	 *
 	 * @param {String} lastList
 	 * @param {String} cur
 	 * @returns {String}
@@ -991,7 +1023,7 @@ var BsWikiCode = function() {
 			// Prevent REDIRECT from being rendered as list
 			line = lines[i].match(/^(\*|#(?!REDIRECT)|:|;)+/);
 			lastLine = (i == lines.length - 1);
-			
+
 			if (line && line !== '') {
 				lines[i] = lines[i].replace(/^(\*|#|:|;)*\s*(.*?)$/gmi, "$2");
 				if (line[0].indexOf(':') === 0) {
@@ -1137,7 +1169,7 @@ var BsWikiCode = function() {
 
 	/**
 	 * Processes wiki heading code into h tags.
-	 * 
+	 *
 	 * @param {String} match
 	 * @param {String} lineStart
 	 * @param {String} level
@@ -1152,7 +1184,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1233,7 +1265,7 @@ var BsWikiCode = function() {
 		// @todo maybe in the _table2html method
 		text = text.replace(/<td([^>]*)>(\s|<br([^>]*)>)*<\/td>/gmi, '<td$1><br mce_bogus="1" /></td>');
 		text = text.replace(/<th([^>]*)>\s*<\/th>/gmi, '<th$1><br mce_bogus="1" /></th>');
-		
+
 		//check if text ends with </table>, need to insert something after the table
 		//otherwise you won't be able to write after the table
 		if (text.indexOf("</table>", text.length - 8) !== -1)
@@ -1252,7 +1284,7 @@ var BsWikiCode = function() {
 			text = textObject.text;
 		}
 		else {
-			//<p> is neccessary to fix Ticket#2010111510000021. do not use <p> 
+			//<p> is neccessary to fix Ticket#2010111510000021. do not use <p>
 			//in the complementary line in html2wiki
 			text = text + '<p><br class="bs_lastline" /></p>';
 		}
@@ -1277,7 +1309,7 @@ var BsWikiCode = function() {
 		return text.search(/(<ul|<ol|<li( |>)|<\/?dl|<\/?dt|<blockquote[^>]*?>|<\/li( |>)|<\/ul|<\/ol|<\/blockquote|<p( |>)|<\/p( |>)|<h[1-6]|<hr)/);
 	}
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1544,7 +1576,7 @@ var BsWikiCode = function() {
 		return text;
 	}
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1585,11 +1617,13 @@ var BsWikiCode = function() {
 		tempTemplate = '';
 
 		_templates = new Array();
+		var checkedBraces = new Array();
 
 		for (pos = 0; pos < text.length; pos++) {
 			if (text[pos] === '{') {
 				curlyBraceDepth++;
-				if (text[pos + 1] === '{') {
+				if ( checkedBraces.indexOf(pos) == -1 && text[pos + 1] === '{') {
+					checkedBraces.push(pos + 1);
 					templateDepth++;
 				}
 			}
@@ -1605,7 +1639,8 @@ var BsWikiCode = function() {
 			}
 			if (text[pos] === '}') {
 				curlyBraceDepth--;
-				if (text[pos - 1] === '}') {
+				if ( checkedBraces.indexOf(pos-1) == -1 && text[pos - 1] === '}') {
+					checkedBraces.push(pos);
 					templateDepth--;
 				}
 				if (templateDepth === 0 && !squareBraceFirst) {
@@ -1629,7 +1664,7 @@ var BsWikiCode = function() {
 
 				templateNameLines = templateName.split(/\n/i);
 				templateName = templateNameLines[0].trim();
-				
+
 				// remove everything after the magic word name
 				if ( templateName.indexOf( "#" ) === 0 ) {
 					templateName = templateName.slice( 0, templateName.indexOf( ":" ));
@@ -1663,13 +1698,13 @@ var BsWikiCode = function() {
 		mtext = text;
 		i = 0;
 		st = '';
-		
+
 		var innerText = '';
 		var retValue = false;
 		var moreAttribs = '';
-		
+
 		while ((st = matcher.exec(mtext)) !== null) {
-			
+
 			retValue = $(document).triggerHandler( 'BSVisualEditorRenderSpecialTag', [this, st[1], st] );
 			if ( retValue ) {
 				innerText = retValue.innerText;
@@ -1736,7 +1771,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1793,7 +1828,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1822,7 +1857,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1864,7 +1899,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1892,7 +1927,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1912,7 +1947,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1944,7 +1979,7 @@ var BsWikiCode = function() {
 		return text;
 	}
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -1987,7 +2022,7 @@ var BsWikiCode = function() {
 		_processFlag = true;
 		return $1 + $2 + " <span class='single_linebreak' style='background-color:lightgray'>&para;<\/span> " + $3;
 	}
-	
+
 	/**
 	 *
 	 */
@@ -2004,12 +2039,12 @@ var BsWikiCode = function() {
 					var images = ed.getBody().getElementsByTagName('img');
 					for( var i = 0; i < images.length; i++ ) {
 						//We process only matching nodes
-						if(images[i].src !== wgServer+_imageDummyUrl+'?'+data.file) {
+						if ( decodeURI( images[i].src ) !== wgServer+_imageDummyUrl+'?'+data.file ) {
 							continue;
 						}
-						
-						//As some browsers may have set the nodes width/height 
-						//attributes implicitly to the AJAX LOADER's values we 
+
+						//As some browsers may have set the nodes width/height
+						//attributes implicitly to the AJAX LOADER's values we
 						//need to correct them
 						var jqImg = $(images[i]);
 						if( jqImg.data('bs-sizewidth') ){
@@ -2024,7 +2059,7 @@ var BsWikiCode = function() {
 						else {
 							jqImg.removeAttr( 'height' );
 						}
-						
+
 						//Last but not least set the url to the correct image
 						images[i].src = data.url.replace(/&amp;/g, '&');
 					}
@@ -2034,7 +2069,7 @@ var BsWikiCode = function() {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {String} text
 	 * @returns {String}
 	 */
@@ -2095,7 +2130,7 @@ var BsWikiCode = function() {
 	 * @param {tinymce.ContentEvent} e
 	 */
 	function _onBeforeSetContent(e) {
-		
+
 		// if raw format is requested, this is usually for internal issues like
 		// undo/redo. So no additional processing should occur. Default is 'html'
 		if (e.format == 'raw' ) return;
@@ -2113,11 +2148,11 @@ var BsWikiCode = function() {
 	 * @param {tinymce.ContentEvent} e
 	 */
 	function _onGetContent(e) {
-		
+
 		// if raw format is requested, this is usually for internal issues like
 		// undo/redo. So no additional processing should occur. Default is 'html'
 		if (e.format == 'raw' ) return;
-		
+
 		if (e.format != 'raw') e.format = 'wiki';
 
 		// process the html to wikicode
@@ -2147,7 +2182,7 @@ var BsWikiCode = function() {
 		}
 
 	}
-	
+
 	function _onLoadContent(ed, o) {
 		var internalLinks = [];
 		var internalLinksTitles = [];
@@ -2185,11 +2220,11 @@ var BsWikiCode = function() {
 		_imageDummyUrl = bs.em.paths.get('BlueSpiceFoundation')
 			+'/resources/bluespice/images/bs-ajax-loader-pik-blue.gif';
 		_ed = ed;
-		
+
 		ed.on('beforeSetContent', _onBeforeSetContent);
 		ed.on('getContent', _onGetContent);
 		ed.on('loadContent', _onLoadContent);
-		
+
 		ed.on('click', function(e) {
 			var dataname = ed.dom.getAttrib(e.target.parentNode, 'data-bs-name');
 			if ( dataname ) {
@@ -2206,15 +2241,15 @@ var BsWikiCode = function() {
 		});
 
 	};
-	
+
 	this.getSpecialTagList = function() {
 		return _specialtags;
 	};
-	
+
 	this.getTemplateList = function() {
 		return _templates;
 	};
-	
+
 	this.getSwitchList = function() {
 		return _switches;
 	};

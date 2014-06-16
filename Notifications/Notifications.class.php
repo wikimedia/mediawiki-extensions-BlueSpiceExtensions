@@ -54,9 +54,9 @@ class Notifications extends BsExtensionMW {
 		'bs-move-cat' => array( 'priority' => 3 ),
 		'bs-newuser-cat' => array( 'priority' => 3 ),
 		'bs-shoutbox-cat' => array( 'priority' => 3 ),
-		
+
 	);
-	
+
 	/**
 	 * Constructor of Notifications class
 	 */
@@ -116,12 +116,12 @@ class Notifications extends BsExtensionMW {
 				);
 		return $aPrefs;
 	}
-	
+
 	/**
 	 * Adds Notifications preferences to the echo section
 	 * @param User $user
 	 * @param array $preferences
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onGetPreferences( $user, array &$preferences ) {
 
@@ -139,7 +139,7 @@ class Notifications extends BsExtensionMW {
 		);
 
 		// ugly workaraound for mw's handling of get default options from multivaluefields
-		$sNotifyDefault = ( $user->getOption( 'MW::Notifications::NotifyNS', false ) )? unserialize( $user->getOption( 'MW::Notifications::NotifyNS' ) ) : array(0);
+		$sNotifyDefault = ( $user->getOption( 'MW::Notifications::NotifyNS', false ) ) ? $user->getOption( 'MW::Notifications::NotifyNS' ) : array(0);
 
 		$preferences['MW::Notifications::NotifyNS'] = array(
 			'type'			=> 'multiselectex',
@@ -156,7 +156,7 @@ class Notifications extends BsExtensionMW {
 	 * Get subscribers for the echo notifications
 	 * @param EchoEvent $event
 	 * @param type $users
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
 		$aTmpUsers = array_unique(
@@ -164,7 +164,7 @@ class Notifications extends BsExtensionMW {
 				// e.g. echo-subscriptions-email-bs-cat-edit
 				BsConfig::getUsersForVar( $this->aEchoPrefix['web'].$event->getType().'-cat' , '1', false, false ),
 				BsConfig::getUsersForVar( $this->aEchoPrefix['email'].$event->getType().'-cat', '1', false, false )
-			) 
+			)
 		);
 
 		foreach ( $aTmpUsers as $index => $user ) {
@@ -172,8 +172,8 @@ class Notifications extends BsExtensionMW {
 			if ( !$user->getOption( 'MW::Notifications::Active', false ) ) continue;
 			if( $event->getTitle() instanceof Title ) {
 				if ( !$event->getTitle()->userCan( 'read', $user ) ) continue;
-				if ( is_array( unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) {
-					if ( !in_array( $event->getTitle()->getNamespace(), unserialize( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) ) continue;
+				if ( is_array( $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) {
+					if ( !in_array( $event->getTitle()->getNamespace(), $user->getOption( 'MW::Notifications::NotifyNS', array() ) ) ) continue;
 				}
 			}
 			if( $event->getAgent() instanceof User ) {
@@ -181,7 +181,7 @@ class Notifications extends BsExtensionMW {
 			}
 			$users[] = $user;
 		}
-		
+
 		return true;
 	}
 
@@ -292,7 +292,7 @@ class Notifications extends BsExtensionMW {
 		);
 		return true;
 	}
-	
+
 	public function onUserSaveOptions( User $user, array &$options ) {
 		if( isset( $options['MW::Notifications::NotifyNS'] ) ) {
 			$options['MW::Notifications::NotifyNS'] = serialize( $options['MW::Notifications::NotifyNS'] );
@@ -300,7 +300,7 @@ class Notifications extends BsExtensionMW {
 
 		return true;
 	}
-	
+
 	/**
 	 * Notification for Shoutbox messages
 	 * @param int $iArticleId ID of the article the message was posted to.
@@ -327,7 +327,7 @@ class Notifications extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
 	}
-	
+
 	// TODO RBV (30.06.11 09:51): Coding Conventions for parameters.
 	/**
 	 * Sends a notification on article creation and edit.
@@ -422,7 +422,7 @@ class Notifications extends BsExtensionMW {
 				'newtitle' => $newtitle,
 			)
 		) );
-		
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
 	}
@@ -443,23 +443,23 @@ class Notifications extends BsExtensionMW {
 				'userlink'	=> true,
 			)
 		) );
-		
+
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
 	}
-	
+
 	public static function onBSBlueSpiceSkinUserBarBeforeLogout(&$aUserBarBeforeLogoutViews, $wgUser, $skin){
 		if (!isset($skin->data['personal_urls']['notifications'])) return true;
 		$oView = new ViewBaseElement();
 		$oView->setId("pt-notifications");
 		$oLink = HTML::element("a", array('href' => htmlspecialchars($skin->data['personal_urls']['notifications']['href'])), $skin->data['personal_urls']['notifications']['text']);
-		
+
 		$oView->addData(array($oLink));
 		$aUserBarBeforeLogoutViews[] = $oView;
 		return true;
 	}
-	
+
 	public function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		$out->addModuleStyles( 'ext.bluespice.notifications.icons' );
 		return true;

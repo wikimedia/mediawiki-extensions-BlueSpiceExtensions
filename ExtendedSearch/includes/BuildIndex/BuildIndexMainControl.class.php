@@ -35,7 +35,7 @@ class BuildIndexMainControl {
 	public $iDocsInIndex = 1;
 	/**
 	 * Path to lock file.
-	 * @var string Path. 
+	 * @var string Path.
 	 */
 	public $sFilePathLockFile = '';
 	/**
@@ -65,7 +65,7 @@ class BuildIndexMainControl {
 	protected $sFilePathIndexProgTxt = '';
 	/**
 	 * Path to log file.
-	 * @var string Path. 
+	 * @var string Path.
 	 */
 	protected $sFilePathLogFile = '';
 	/**
@@ -180,7 +180,7 @@ class BuildIndexMainControl {
 		}
 
 		try {
-			// Indexing file links 
+			// Indexing file links
 			$this->buildIndexLinked( '', $iPageID );
 		} catch ( Exception $e ) {}
 
@@ -206,11 +206,11 @@ class BuildIndexMainControl {
 
 	/**
 	 * Triggers deletion of a specified file from search index.
-	 * @param int $id Article id of page to be deleted.
-	 * @param string $path path to the file.
+	 * @param int $sPath path to the file.
+	 * @param string $sOverallType overall type
 	 */
-	public function deleteIndexFile( $iID, $sPath ) {
-		$sUniqueID = $this->getUniqueId( $iID, $sPath );
+	public function deleteIndexFile( $sPath, $sOverallType ) {
+		$sUniqueID = $this->getUniqueId( $sPath, $sOverallType );
 		try {
 			$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
 		} catch ( Exception $e ) {
@@ -227,7 +227,7 @@ class BuildIndexMainControl {
 	 * @param int $iID Article id of page to be deleted.
 	 */
 	public function deleteFromIndexWiki( $iID ) {
-		$sUniqueID = $this->getUniqueId( $iID );
+		$sUniqueID = $this->getUniqueId( $iID, 'wiki' );
 		try {
 			$this->oSearchService->deleteById( $sUniqueID );
 		} catch ( Exception $e ) {
@@ -241,7 +241,7 @@ class BuildIndexMainControl {
 
 	/**
 	 * Triggers search index update for a given title.
-	 * @param Title $title MediaWiki title object of article to be updated.
+	 * @param Title $oTitle MediaWiki title object of article to be updated.
 	 */
 	public function updateIndexWikiByTitleObject( $oTitle ) {
 		$oArticle = new Article( $oTitle );
@@ -464,9 +464,15 @@ class BuildIndexMainControl {
 	 * @return Apache_Solr_Document
 	 */
 	public function makeDocument( $sOverallType, $sType, $sTitle, $sText, $iID, $iNamespace,
-			$vPath, $iTimestamp, $aCategories = array(), $aEditors = array(),
+			$vPath, $sVirtualPath, $iTimestamp, $aCategories = array(), $aEditors = array(),
 			$aRedirects = array(), $bIsRedirect = 0, $aSections = array(), $iIsSpecial = 0 ) {
 		$oDoc = new Apache_Solr_Document();
+
+		if ( empty( $sVirtualPath ) ) {
+			$oDoc->uid = $this->getUniqueId( $iID, $sOverallType );
+		} else {
+			$oDoc->uid = $this->getUniqueId( $sVirtualPath, $sOverallType );
+		}
 
 		$oDoc->wiki = $this->sCustomerId;
 		$oDoc->overall_type = $sOverallType;
@@ -478,7 +484,6 @@ class BuildIndexMainControl {
 		$oDoc->path = $vPath;
 		$oDoc->cat = $aCategories;
 		$oDoc->editor = $aEditors;
-		$oDoc->uid  = $this->getUniqueId( $iID, $vPath );
 		$oDoc->redirects = $aRedirects;
 		$oDoc->redirect = $bIsRedirect;
 		$oDoc->sections = $aSections;
@@ -496,11 +501,11 @@ class BuildIndexMainControl {
 			} else {
 				global $wgDBtype;
 				switch( $wgDBtype ) {
-					case 'oracle' : 
-						$oDoc->ts = preg_replace( "/(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2}):(\d{2}).(\d{6})/", "$3-$2-$1T$4:$5:$6Z", $iTimestamp ); 
+					case 'oracle' :
+						$oDoc->ts = preg_replace( "/(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2}):(\d{2}).(\d{6})/", "$3-$2-$1T$4:$5:$6Z", $iTimestamp );
 						break;
-					case 'postgres': 
-						$oDoc->ts = preg_replace( "/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})\+00/", "$1-$2-$3T$4:$5:$6Z", $iTimestamp ); 
+					case 'postgres':
+						$oDoc->ts = preg_replace( "/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})\+00/", "$1-$2-$3T$4:$5:$6Z", $iTimestamp );
 						break;
 				}
 			}
@@ -511,7 +516,7 @@ class BuildIndexMainControl {
 
 	/**
 	 * Reads out table %dbPrefix%categorylinks for certain page_id
-	 * @param int $pageId ID of article that category links should be read for.
+	 * @param int $iPageID ID of article that category links should be read for.
 	 * @return array Categorynames as values
 	 */
 	public function getCategoriesFromDbForCertainPageId( $iPageID ) {
@@ -537,7 +542,7 @@ class BuildIndexMainControl {
 
 	/**
 	 * Reads out table %dbPrefix%revision for certain page_id
-	 * @param int $pageId ID of article that revisions should be read for.
+	 * @param int $iPageID ID of article that revisions should be read for.
 	 * @return array editors as values
 	 */
 	public function getEditorsFromDbForCertainPageId( $iPageID ) {
@@ -568,19 +573,21 @@ class BuildIndexMainControl {
 
 	/**
 	 * Returns a unique id from parameter information.
-	 * @param int $iID Id of an article.
-	 * @param string $sPath Path to a file.
+	 * @param variable $vIdentifier Id of an article or path of a file.
+	 * @param string $sOverallType overall type
 	 * @return string The unique ID in the index for a given document-id/-title/-path
 	 */
-	public function getUniqueId( $iID, $sPath = null ) {
-		$sPath = str_replace( array( '/', '\\' ), '', $sPath );
-		if ( ( $iID == -1 ) && empty( $sPath ) )
-				throw new BsException( 'getUniqueId in BuildIndex has been called with $id == -1 and invalid $sPath: '.$sPath );
+	public function getUniqueId( $vIdentifier, $sOverallType ) {
+		if ( substr_count( $vIdentifier, '/' ) || substr_count( $vIdentifier, '\\' ) ) {
+			$vIdentifier = str_replace( array( '/', '\\' ) , '', $vIdentifier );
+		}
+		if ( empty( $vIdentifier ) || empty( $sOverallType ) )
+				throw new BsException( 'getUniqueId in BuildIndex has been called with empty $vIdentifier or empty $sOverallType' );
 		/* md5 encoding of $path has several advantages
 		 *    - almost unique and thus injective hash of any filepath
 		 *    - 32 alphanumeric characters [0-9,a-f] => thus robust for encoding
 		 *    - shorter and better performing than sha1 */
-		return $this->sCustomerId.'-'.( ( $iID == -1 ) ? md5( $sPath ) : $iID );
+		return md5( $this->sCustomerId . $vIdentifier . $sOverallType );
 	}
 
 	/**

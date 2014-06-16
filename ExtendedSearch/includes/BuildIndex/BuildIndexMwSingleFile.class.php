@@ -69,9 +69,8 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 	 * @param unknown $ts Timestamp
 	 * @return Apache_Solr_Document
 	 */
-	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts ) {
-		$doc = $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $ts );
-		return $doc;
+	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts, $sVirtualFilePath ) {
+		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualFilePath, $ts );
 	}
 
 	// duplicate of AbstractBuildIndexMwLinked
@@ -93,7 +92,7 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 	 * Indexes document that was set in __construct.
 	 */
 	public function indexCrawledDocuments() {
-		$sFileName         = $this->oFile->getName();
+		$sFileName = $this->oFile->getName();
 		$oFileMinorDocType = $this->oDbr->selectRow(
 			'image',
 			'img_minor_mime',
@@ -107,32 +106,32 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 		$sFileDocType = $this->mimeDecoding( $oFileMinorDocType->img_minor_mime, $sFileName );
 		$sFileTimestamp = $this->oFile->getTimestamp();
 
-		$sFilePath = $this->oFile->getPath();
-		$oFileRepoLocalRef = $this->oFile->getRepo()->getLocalReference( $sFilePath );
+		$sVirtualFilePath = $this->oFile->getPath();
+		$oFileRepoLocalRef = $this->oFile->getRepo()->getLocalReference( $sVirtualFilePath );
 		if ( !is_null( $oFileRepoLocalRef ) ) {
 			$sFilePath = $oFileRepoLocalRef->getPath();
 		}
 
 		try {
-			$uniqueIdForDocument = $this->oMainControl->getUniqueId( -1, $sFilePath );
+			$uniqueIdForDocument = $this->oMainControl->getUniqueId( $sVirtualFilePath, 'repo' );
 			$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
 		} catch ( Exception $e ) {
-			$this->writeLog( 'Error indexing file '.$document->img_name.' with errormessage '.$e->getMessage() );
-			continue;
+			$this->writeLog( 'Error indexing file '.$sFileName.' with errormessage '.$e->getMessage() );
+			return;
 		}
 
 		if ( $hitsDocumentInIndexWithSameUID->response->numFound != 0 ) {
 			// timestamps have different format => compare function to equalize both
 			$timestampIndexDoc = $hitsDocumentInIndexWithSameUID->response->docs[0]->ts;
 			if ( !$this->isTimestamp1YoungerThanTimestamp2( $sFileTimestamp, $timestampIndexDoc ) ) {
-				$this->writeLog( ('Already in index: '.$document->img_name ) );
+				$this->writeLog( ('Already in index: '.$sFileName ) );
 				return;
 			}
 		}
 
 		$sFileText = $this->oMainControl->oSearchService->getFileText( $sFilePath, $this->iTimeLimit );
 
-		$doc = $this->makeRepoDocument( $sFileDocType , $sFileName, $sFileText, $sFilePath, $sFileTimestamp );
+		$doc = $this->makeRepoDocument( $sFileDocType, $sFileName, $sFileText, $sFilePath, $sFileTimestamp, $sVirtualFilePath );
 		if ( $doc ) {
 			// mode and ERROR_MSG_KEY are only passed for the case when addDocument fails
 			$this->oMainControl->addDocument( $doc, $this->mode, self::S_ERROR_MSG_KEY );

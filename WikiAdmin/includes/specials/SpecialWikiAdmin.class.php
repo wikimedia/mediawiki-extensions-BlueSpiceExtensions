@@ -22,7 +22,7 @@ class SpecialWikiAdmin extends BsSpecialPage {
 			if ( strcasecmp( $wa_mode, $moduleName ) == 0 ) {
 				$wa_mode_Credits = WikiAdmin::getRegisteredModule( $moduleName );
 				if ( !$this->getUser()->isAllowed( $wa_mode_Credits['level'] ) ) {
-					$output = wfMessage( 'bs-wikiadmin-not_allowed' )->plain();
+					$output = wfMessage( 'bs-wikiadmin-notallowed' )->plain();
 					$oOut->addHTML( $output );
 					return;
 				}
@@ -43,6 +43,7 @@ class SpecialWikiAdmin extends BsSpecialPage {
 	}
 
 	public function getForm() {
+		global $wgScriptPath;
 		$form = '';
 		$registeredModules = WikiAdmin::getRegisteredModules();
 		foreach ( $registeredModules as $module => $params ) {
@@ -51,7 +52,7 @@ class SpecialWikiAdmin extends BsSpecialPage {
 			// TODO SU (04.07.11 10:56): Gehört eigentlich in eine view.
 			$form .= '<div class="bs-admincontrolbtn">';
 			$form .= '<a href="'.$url.'">';
-			$form .= '<img src="'.BsConfig::get( 'MW::ScriptPath' ).$params['image'].'" alt="'.$module.'" title="'.$module.'">';
+			$form .= '<img src="'.$wgScriptPath.$params['image'].'" alt="'.$module.'" title="'.$module.'">';
 			$form .= '<div class="bs-admin-label">';
 			$form .= wfMessage( $params['message'] )->plain();
 			$form .= '</div>';

@@ -64,7 +64,7 @@ class ViewWhoIsOnlineTag extends ViewBaseElement {
 		$sOut = '<a class="bs-tooltip-link" href="#" id="'.$this->getTargetId().'">'.$this->getOption( 'title' ).'</a>'
 				.'<div class="bs-tooltip">'
 					.'<ul class="bs-who-heading">'
-						.'<li>'.wfMsg('bs-whoisonline-widget-title').'</li>'
+						.'<li>'.wfMessage('bs-whoisonline-widget-title')->plain().'</li>'
 					.'</ul>'
 					.'<div id="'.$this->getTargetId().'-target" class="bs-whoisonline-portlet" '.$sMaxHeight.'>'
 						.($this->oPortlet ? $this->oPortlet->execute() : '')

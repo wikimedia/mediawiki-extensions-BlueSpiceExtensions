@@ -115,12 +115,10 @@ class WhoIsOnline extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BsAdapterAjaxPingResult' );
 
-		BsConfig::registerVar( 'MW::WhoIsOnline::LinkUsers', true, BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_BOOL, 'bs-whoisonline-pref-LinkUsers', 'toggle' );
-		BsConfig::registerVar( 'MW::WhoIsOnline::LimitCount', 7, BsConfig::LEVEL_USER | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_INT, 'bs-whoisonline-pref-LimitCount', 'int' );
-		BsConfig::registerVar( 'MW::WhoIsOnline::OrderBy', 'onlinetime', BsConfig::LEVEL_USER | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-whoisonline-pref-OrderBy', 'select' );
-		BsConfig::registerVar( 'MW::WhoIsOnline::MaxIdleTime', 600, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-whoisonline-pref-MaxIdleTime', 'int' );
-		BsConfig::registerVar( 'MW::WhoIsOnline::RemoveEntriesAfter', 2592000, BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_INT );
-		BsConfig::registerVar( 'MW::WhoIsOnline::Interval', 10, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_INT, 'bs-whoisonline-pref-Interval', 'int' );
+		BsConfig::registerVar( 'MW::WhoIsOnline::LimitCount', 7, BsConfig::LEVEL_USER | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_INT, 'bs-whoisonline-pref-limitcount', 'int' );
+		BsConfig::registerVar( 'MW::WhoIsOnline::OrderBy', 'onlinetime', BsConfig::LEVEL_USER | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-whoisonline-pref-orderby', 'select' );
+		BsConfig::registerVar( 'MW::WhoIsOnline::MaxIdleTime', 600, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-whoisonline-pref-maxidletime', 'int' );
+		BsConfig::registerVar( 'MW::WhoIsOnline::Interval', 10, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_INT, 'bs-whoisonline-pref-interval', 'int' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -221,8 +219,8 @@ class WhoIsOnline extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array(
 			'options' => array(
-				wfMessage( 'bs-whoisonline-pref-sort-name' )->plain() => 'name',
-				wfMessage( 'bs-whoisonline-pref-sort-time' )->plain() => 'onlinetime',
+				wfMessage( 'bs-whoisonline-pref-orderby-name' )->plain() => 'name',
+				wfMessage( 'bs-whoisonline-pref-orderby-time' )->plain() => 'onlinetime',
 			)
 		);
 		return $aPrefs;
@@ -396,7 +394,6 @@ class WhoIsOnline extends BsExtensionMW {
 
 			$oUser = User::newFromName( $oWhoIsOnline->wo_user_name );
 			$oWhoIsOnlineItemWidgetView = new ViewWhoIsOnlineItemWidget();
-			$oWhoIsOnlineItemWidgetView->setOption( 'renderLink', BsConfig::get( 'MW::WhoIsOnline::LinkUsers' ) );
 			$oWhoIsOnlineItemWidgetView->setUserName( $oUser->getName() );
 			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mCore->getUserDisplayName( $oUser ) );
 			$oWhoIsOnlineWidgetView->addItem( $oWhoIsOnlineItemWidgetView );
@@ -430,7 +427,6 @@ class WhoIsOnline extends BsExtensionMW {
 		foreach ( $aWhoIsOnline as $oWhoIsOnline ) {
 			$oUser = User::newFromName( $oWhoIsOnline->wo_user_name );
 			$oWhoIsOnlineItemWidgetView = new ViewWhoIsOnlineItemWidget();
-			$oWhoIsOnlineItemWidgetView->setOption( 'renderLink', BsConfig::get( 'MW::WhoIsOnline::LinkUsers' ) );
 			$oWhoIsOnlineItemWidgetView->setUserName( $oUser->getName() );
 			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mCore->getUserDisplayName( $oUser ) );
 			$aSingleResult['portletItems'][] = $oWhoIsOnlineItemWidgetView->execute();
@@ -525,7 +521,7 @@ class WhoIsOnline extends BsExtensionMW {
 		$oRequest->setSessionData( $this->mExtensionKey.'::lastLoggedPageHash', $sCurrentPageHash );
 		$oRequest->setSessionData( $this->mExtensionKey.'::lastLoggedTime', $iCurrentTimestamp );
 
-		$iRemoveEntriesAfter = BsConfig::get( 'MW::WhoIsOnline::RemoveEntriesAfter' );
+		$iRemoveEntriesAfter = 2592000;
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete(

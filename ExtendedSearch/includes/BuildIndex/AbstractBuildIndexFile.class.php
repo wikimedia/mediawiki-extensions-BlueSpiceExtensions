@@ -101,7 +101,7 @@ abstract class AbstractBuildIndexFile extends AbstractBuildIndexAll {
 	/**
 	 * Matches mime types to file extensions
 	 * @param string $sMinorMime Mime type to match
-	 * @return string File extension or original mime type 
+	 * @return string File extension or original mime type
 	 */
 	public function mimeDecoding( $sMinorMime, $sFilename = '' ) {
 		$aDecodingTable = array(
@@ -118,10 +118,18 @@ abstract class AbstractBuildIndexFile extends AbstractBuildIndexAll {
 			'x-gzip' => 'zip',
 			'vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'xls',
 			'vnd.openxmlformats-officedocument.spreadsheetml.template' => 'xls',
+			'vnd.ms-excel.sheet.macroEnabled.12' => 'xls',
+			'vnd.ms-excel.template.macroEnabled.12' => 'xls',
 			'vnd.openxmlformats-officedocument.presentationml.template' => 'ppt',
 			'vnd.openxmlformats-officedocument.presentationml.presentation' => 'ppt',
+			'vnd.ms-powerpoint.presentation.macroEnabled.12' => 'ppt',
+			'vnd.ms-powerpoint.template.macroEnabled.12' => 'ppt',
 			'vnd.openxmlformats-officedocument.wordprocessingml.document' => 'doc',
-			'vnd.openxmlformats-officedocument.wordprocessingml.template' => 'doc'
+			'vnd.openxmlformats-officedocument.wordprocessingml.template' => 'doc',
+			'vnd.ms-word.document.macroEnabled.12' => 'doc',
+			'vnd.ms-word.template.macroEnabled.12' => 'doc',
+			'acad' => 'm',
+			'x-mathcad' => 'mcd'
 		);
 
 		if ( array_key_exists( $sMinorMime, $aDecodingTable ) ) {

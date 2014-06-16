@@ -93,7 +93,7 @@ BsWantedArticle = {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					text: 'bs-wantedarticle-info_nothing_entered'
+					text: 'bs-wantedarticle-info-nothing-entered'
 				}
 			);
 			return false;
@@ -109,7 +109,7 @@ BsWantedArticle = {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					text: mw.message('bs-wantedarticle-info_title_contains_invalid_characters' ).plain()
+					text: mw.message('bs-wantedarticle-info-title-contains-invalid-chars' ).plain()
 							+ aFoundChars.join( ', ' )
 				}
 			);

@@ -29,7 +29,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	const S_ERROR_MSG_KEY = 'error-indexing-linked';
 	/**
 	 * Pointer to current database connection
-	 * @var object Referenec to Database object 
+	 * @var object Referenec to Database object
 	 */
 	protected $oDbr;
 	/**
@@ -39,7 +39,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	protected $documentsDb = null;
 	/**
 	 * Constructor for BuildIndexMwLinked class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate. 
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		$this->oDbr = wfGetDB( DB_SLAVE );
@@ -71,12 +71,11 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	 * @param string $filename Filename of document to be indexed.
 	 * @param string $fileText The body of the wiki-page or the document
 	 * @param string $path Path to document if external (not in wiki). Might be empty or null
-	 * @param unknown $ts Timestamp
+	 * @param unknown $timestamp Timestamp
 	 * @return Apache_Solr_Document
 	 */
 	public function makeLinkedDocument( $type, $filename, &$fileText, $path, $timestamp ) {
-		$doc = $this->oMainControl->makeDocument( 'linked', $type, $filename, $fileText, -1, 998, $path, $timestamp );
-		return $doc;
+		return $this->oMainControl->makeDocument( 'external', $type, $filename, $fileText, -1, 998, $path, $path, $timestamp );
 	}
 
 	/**
@@ -119,7 +118,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 
 			// Check if the file is already indexed
 			try {
-				$uniqueIdForDocument = $this->oMainControl->getUniqueId( -1, $path );
+				$uniqueIdForDocument = $this->oMainControl->getUniqueId( $path, 'external' );
 				$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
 			} catch ( Exception $e ) {
 				$this->writeLog( 'Error indexing file '.$document->el_to.' with errormessage '.$e->getMessage() );

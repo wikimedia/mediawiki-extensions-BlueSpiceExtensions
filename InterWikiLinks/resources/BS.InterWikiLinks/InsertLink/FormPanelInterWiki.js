@@ -26,16 +26,14 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 			mode: 'local',
 			triggerAction: 'all',
 			allowBlank: false,
-			emptyText: mw.message('bs-interwikilink-select_a_prefix').plain(),
-			width: 600
+			emptyText: mw.message('bs-interwikilink-select-a-prefix').plain()
 		});
 
 		this.tfPageTitle = Ext.create( 'Ext.form.field.Text', {
 			name: 'inputTargetUrl',
-			fieldLabel: mw.message('bs-insertlink-label_page').plain(),
-			emptyText:mw.message('bs-insertlink-select_a_page').plain(),
-			allowBlank: false,
-			width: 600
+			fieldLabel: mw.message('bs-insertlink-label-page').plain(),
+			emptyText:mw.message('bs-insertlink-select-a-page').plain(),
+			allowBlank: false
 		});
 
 		this.pnlMainConf.items = [];
@@ -67,7 +65,7 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 				var interwiki = $.inArray(parts.shift(), mw.config.get('BSInterWikiPrefixes', []));
 				if( interwiki > -1) {
 					this.cbInterWiki.setValue( mw.config.get('BSInterWikiPrefixes', [])[interwiki] )
-					this.tfPageTitle.setValue(parts.join( ':' ))
+					this.tfPageTitle.setValue( parts.join( ':' ) );
 
 					if( obj.content.match( '|' ) ) {
 						var content = obj.content.split( '|' );

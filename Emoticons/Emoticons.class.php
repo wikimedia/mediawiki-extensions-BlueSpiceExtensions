@@ -109,21 +109,20 @@ class Emoticons extends BsExtensionMW {
 	 * @return bool Always true to keep hook running.
 	 */
 	public function onOutputPageBeforeHTML( &$oParserOutput, &$sText) {
-		global $wgMemc; //http://www.mediawiki.org/wiki/Memcached
+		global $wgMemc, $wgScriptPath; //http://www.mediawiki.org/wiki/Memcached
 
 		$sCurrentAction = $this->getRequest()->getVal( 'action', 'view' );
 		$oCurrentTitle  = $this->getTitle();
 
-		if( in_array( $sCurrentAction, array('edit', 'history', 'delete', 'watch') ) ) return true;
-		if( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;
+		if ( in_array( $sCurrentAction, array('edit', 'history', 'delete', 'watch') ) ) return true;
+		if ( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
 		$aMapping = $wgMemc->get( $sKey );
-		
-		if( $aMapping == false ) {
 
-			$sPathToEmoticons = BsConfig::get('MW::ScriptPath').BsConfig::get('MW::Emoticons::PathToEmoticons');
+		if ( $aMapping == false ) {
+			$sPathToEmoticons = $wgScriptPath.BsConfig::get('MW::Emoticons::PathToEmoticons');
 
 			// Get the list of emoticons from the message system.
 			$sMappingContent = wfMessage('bs-emoticons-mapping')->plain();
@@ -155,7 +154,7 @@ class Emoticons extends BsExtensionMW {
 					}
 				}
 			}
-			
+
 			$aMapping = array('emoticons' => $aEmoticons, 'replacements' => $aImageReplacements );
 			$wgMemc->set( $sKey, $aMapping );
 		}
@@ -180,15 +179,12 @@ class Emoticons extends BsExtensionMW {
 	 * @return mixed Boolean true if syntax is okay or the saved article is not the MappingSourceArticle, String 'error-msg' if an error occurs.
 	 */
 	public function onArticleSave( $oArticle, $oUser, $sText, $sSummary, $bIsMinor, $bIsWatch, $iSection, &$iFlags, $oStatus ) {
-		
-		//TODO: error view does not work
-		
 		global $wgMemc;
 		$oMappingSourceTitle = Title::newFromText( 'bs-emoticons-mapping', NS_MEDIAWIKI );
 		if( !$oMappingSourceTitle->equals( $oArticle->getTitle() ) ) return true;
-		
+
 		$aLines = explode( "\n" , $sText );
-		
+
 		foreach( $aLines as $iLineNumber => $sLine ) {
 			$iLineNumber++;
 			$sLine = trim( $sLine ); //Remove leading space
@@ -202,7 +198,7 @@ class Emoticons extends BsExtensionMW {
 				$oErrorView->addData(
 					array( wfMessage( 'bs-emoticons-error-validation-missing-symbol', $iLineNumber, $aEmoticonHash[0] )->plain() )
 					);
-				
+
 				return $oErrorView->execute();
 			}
 			if( preg_match('#^.*?\.(jpg|jpeg|gif|png)$#si', $aEmoticonHash[0] ) === 0 ) {
@@ -210,7 +206,7 @@ class Emoticons extends BsExtensionMW {
 				$oErrorView->addData(
 					array( wfMessage( 'bs-emoticons-error-validation-imagename', $iLineNumber, $aEmoticonHash[0] )->plain() )
 				);
-				
+
 				return $oErrorView->execute();
 			}
 
@@ -225,7 +221,7 @@ class Emoticons extends BsExtensionMW {
 				}
 			}
 		}
-		
+
 		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
 		$wgMemc->delete( $sKey );
 		return true;

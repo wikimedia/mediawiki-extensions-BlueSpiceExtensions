@@ -212,9 +212,8 @@
          will be allowed before they are merged into one.
          Default is 10 for both merge policies.
       -->
-    <!-- 
-    <mergeFactor>10</mergeFactor>
-      -->
+
+    <mergeFactor>2</mergeFactor>
 
     <!-- Expert: Merge Scheduler
          The Merge Scheduler in Lucene controls how merges are
@@ -520,9 +519,9 @@
          (DocList) based on a query, a sort, and the range of documents requested.  
       -->
     <queryResultCache class="solr.LRUCache"
-                     size="512"
-                     initialSize="512"
-                     autowarmCount="0"/>
+                     size="16384"
+                     initialSize="4096"
+                     autowarmCount="1024"/>
    
     <!-- Document Cache
 
@@ -531,9 +530,9 @@
          this cache will not be autowarmed.  
       -->
     <documentCache class="solr.LRUCache"
-                   size="512"
-                   initialSize="512"
-                   autowarmCount="0"/>
+                   size="16384"
+                   initialSize="16384"
+                   autowarmCount="4096"/>
     
     <!-- custom cache currently used by block join --> 
     <cache name="perSegFilter"

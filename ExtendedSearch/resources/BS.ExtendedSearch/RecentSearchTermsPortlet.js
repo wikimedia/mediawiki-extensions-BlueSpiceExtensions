@@ -15,14 +15,14 @@ Ext.define( 'BS.ExtendedSearch.RecentSearchTermsPortlet', {
 	portletConfigClass: 'BS.ExtendedSearch.RecentSearchTermsPortletConfig',
 
 	initComponent: function() {
-		this.contentUrl = bs.util.getAjaxDispatcherUrl( 'ExtendedSearch::getRecentSearchTerms', [ this.portletItemCount, this.portletTimeSpan ] );
+		this.contentUrl = bs.util.getAjaxDispatcherUrl( 'ExtendedSearchBase::getRecentSearchTerms', [ this.portletItemCount, this.portletTimeSpan ] );
 		this.callParent(arguments);
 	},
 
 	setPortletConfig: function( cfg ) {
 		this.callParent(arguments);
 		this.cContent.getLoader().load({
-			url: bs.util.getAjaxDispatcherUrl( 'ExtendedSearch::getRecentSearchTerms', [ this.portletItemCount, cfg.portletTimeSpan ] )
+			url: bs.util.getAjaxDispatcherUrl( 'ExtendedSearchBase::getRecentSearchTerms', [ this.portletItemCount, cfg.portletTimeSpan ] )
 		});
 	}
 } );

@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('ArticleInfo', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['ArticleInfo'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['ArticleInfo'] = __DIR__ . '/languages/ArticleInfo.i18n.php';
 
 $wgResourceModules['ext.bluespice.articleinfo'] = array(

@@ -58,9 +58,9 @@ class ViewBlog extends ViewBaseElement {
 			return '';
 		$sOut = $this->renderLink(
 				array(
-					'href'   => BsCore::getRequestURI(),
-					'query'  => 'showall=true',
-					'title'  => wfMessage( 'bs-blog-show-all' )->plain()
+					'href' => BsCore::getRequestURI(),
+					'query' => 'showall=true',
+					'title' => wfMessage( 'bs-blog-show-all' )->plain()
 				),
 				wfMessage( 'bs-blog-show-all' )->plain()
 		);
@@ -72,21 +72,20 @@ class ViewBlog extends ViewBaseElement {
 	 * @return string HTML of form. 
 	 */
 	public function renderShowNewEntryField() {
+		global $wgScriptPath, $wgUser;
 		$sId = 'blog'.self::$iFormElementCount;
 		self::$iFormElementCount++;
-		$sParentpage = ( $this->getOption('parentpage') )? $this->getOption('parentpage') : '';
+		$sParentpage = ( $this->getOption('parentpage') ) ? $this->getOption('parentpage') : '';
 		$aOut = array();
 		$aOut[] = '<script type="text/javascript">';
 		$aOut[] = 'hw_'.$sId.'_submit = function() {';
 		$aOut[] = '  pagename = "'.$sParentpage.'" + document.getElementById("'.$sId.'Input").value;';
 		//$aOut[] = '  if(!check_pagename(pagename)) return false;';
 		$aOut[] = '  pagename = pagename.replace(" ", "_");';
-		global $wgUser;
-		if($wgUser->isLoggedIn() || BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true) {
-			$aOut[] = '  url = unescape("'.BsConfig::get( 'MW::ScriptPath' ).'/index.php?title='.( $this->getOption( 'namespace' ) ? $this->getOption( 'namespace' ).':' : '' ).'"+pagename+"%26action"+"=edit"+"%26blogcat='.$this->getOption( 'blogcat' ).'");';
-		}
-		else {
-			$aOut[] = '  url = unescape("'.BsConfig::get( 'MW::ScriptPath' ).'/index.php%3Ftitle=special:userlogin%26returnto='.$this->getOption( 'namespace' ).':"+pagename);';
+		if ( $wgUser->isLoggedIn() || BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true ) {
+			$aOut[] = '  url = unescape("'.$wgScriptPath.'/index.php?title='.( $this->getOption( 'namespace' ) ? $this->getOption( 'namespace' ).':' : '' ).'"+pagename+"%26action"+"=edit"+"%26blogcat='.$this->getOption( 'blogcat' ).'");';
+		} else {
+			$aOut[] = '  url = unescape("'.$wgScriptPath.'/index.php%3Ftitle=special:userlogin%26returnto='.$this->getOption( 'namespace' ).':"+pagename);';
 		}
 		$aOut[] = '  window.location.href = url;';
 		$aOut[] = '}';

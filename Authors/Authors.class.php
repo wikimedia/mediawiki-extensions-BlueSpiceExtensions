@@ -24,7 +24,6 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage Authors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -70,7 +69,7 @@ class Authors extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo          = array(
 			EXTINFO::NAME        => 'Authors',
-			EXTINFO::DESCRIPTION => 'Displays authors of an article with image.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-authors-desc' )->plain(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -93,11 +92,11 @@ class Authors extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
 
-		BsConfig::registerVar( 'MW::Authors::Blacklist',   array( 'MediaWiki default' ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING, 'bs-authors-pref-blacklist' );
+		BsConfig::registerVar( 'MW::Authors::Blacklist',   array( 'MediaWiki default' ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
 		BsConfig::registerVar( 'MW::Authors::ImageHeight', 40,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-imageheight', 'int' );
 		BsConfig::registerVar( 'MW::Authors::ImageWidth',  40,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-imagewidth', 'int' );
 		BsConfig::registerVar( 'MW::Authors::Limit',       10,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-limit', 'int' );
-		BsConfig::registerVar( 'MW::Authors::MoreImage',   'more-users_v2.png',          BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-authors-pref-moreimage' );
+		BsConfig::registerVar( 'MW::Authors::MoreImage',   'more-users_v2.png',          BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
 		BsConfig::registerVar( 'MW::Authors::Show',        true,                         BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-authors-pref-show', 'toggle' );
 
 		$this->mCore->registerBehaviorSwitch( 'bs_noauthors' );
@@ -184,58 +183,70 @@ class Authors extends BsExtensionMW {
 			__METHOD__,
 			array(
 				'GROUP BY' => 'rev_user_text',
-				'ORDER BY' => 'ts ASC'
+				'ORDER BY' => 'ts DESC'
 			)
 		);
 
-		$iRows = $res->numRows();
-		if ( $iRows == 0 ) return true;
+		if ( $res->numRows() == 0 ) return true;
 
 		$oAuthorsView = new ViewAuthors();
 		if ( $sPrintable == 'yes' ) $oAuthorsView->setOption( 'print', true );
 
 		$aUserNames = array();
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$aUserNames[] = $row->rev_user_text;
 		}
 
+		$iCount = count( $aUserNames );
+
 		$sOriginatorUserName = $oTitle->getFirstRevision()->getUserText();
 		$sOriginatorUserName = $this->checkOriginatorForBlacklist( $sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist );
-		if ( $aUserNames[0] != $sOriginatorUserName ) array_unshift( $aUserNames, $sOriginatorUserName );
 
-		$bUseEllipsis = false;
-		$iCount = count( $aUserNames );
-		if ( $iCount > $iLimit ) $bUseEllipsis = true;
-
-		if ( $bUseEllipsis ) {
-			$iLength = $iCount - $iLimit + 1; //The plus 1 is for the '//--MORE--//' entry
-			array_splice( $aUserNames, 1, $iLength, '//--MORE--//' ); // '//--MORE--//' is an invalid username. Therefore we won't get problems in later processing.
-			$iCount = count( $aUserNames );
+		if ( $iCount > 1 ) {
+			array_unshift( $aUserNames, $sOriginatorUserName );
+			$iCount++;
 		}
 
-		for ( $i = 0; $i < $iCount; $i++ ) {
-			$sUserName = $aUserNames[$i];
-			if ( $sUserName == '//--MORE--//' ) {
-				$oMoreAuthorsView = $this->mCore->getUserMiniProfile( new User(), $aParams );
-				$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
-				$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
-				$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array('action' => 'edit') ) );
-				$oMoreAuthorsView->setOption( 'classes', array('bs-authors-more-icon') );
-				if ( $sPrintable == 'yes' ) $oMoreAuthorsView->setOption( 'print', true );
+		$bAddMore = false;
+		if ( $iCount > $iLimit ) $bAddMore = true;
 
-				$oAuthorsView->addItem( $oMoreAuthorsView );
+		$i = 0;
+		$iItems = 0;
+		while ( $i < $iCount ) {
+			if ( $iItems > $iLimit ) break;
+			$sUserName = $aUserNames[$i];
+
+			if ( User::isIP( $sUserName ) ) {
+				unset( $aUserNames[$i] );
+				$i++;
 				continue;
 			}
 
 			$oAuthorUser = User::newFromName( $sUserName );
 
-			if ( !is_object( $oAuthorUser ) ) continue; // If the username was invalid... Should never happen, because the value comes from the DB.
-			if ( in_array( $oAuthorUser->getName(), $aBlacklist ) ) continue; // Check for blacklisting
+			if ( !is_object( $oAuthorUser ) || in_array( $oAuthorUser->getName(), $aBlacklist ) ) {
+				unset( $aUserNames[$i] );
+				$i++;
+				continue;
+			}
 
 			$oUserMiniProfileView = $this->mCore->getUserMiniProfile( $oAuthorUser, $aParams );
-			if ( $sPrintable   == 'yes' )  $oUserMiniProfileView->setOption( 'print', true );
+			if ( $sPrintable == 'yes' ) $oUserMiniProfileView->setOption( 'print', true );
 
+			$iItems++;
+			$i++;
 			$oAuthorsView->addItem( $oUserMiniProfileView );
+		}
+
+		if ( $bAddMore === true ) {
+			$oMoreAuthorsView = $this->mCore->getUserMiniProfile( new User(), $aParams );
+			$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
+			$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
+			$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array( 'action' => 'history' ) ) );
+			$oMoreAuthorsView->setOption( 'classes', array( 'bs-authors-more-icon' ) );
+			if ( $sPrintable == 'yes' ) $oMoreAuthorsView->setOption( 'print', true );
+
+			$oAuthorsView->addItem( $oMoreAuthorsView );
 		}
 
 		$dbr->freeResult( $res );

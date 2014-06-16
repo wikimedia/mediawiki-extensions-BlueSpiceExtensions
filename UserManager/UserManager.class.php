@@ -277,7 +277,7 @@ class UserManager extends BsExtensionMW {
 			}
 		}
 
-		if( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
+		if ( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
 			return json_encode( $aResponse );
 		}
 

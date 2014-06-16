@@ -56,14 +56,14 @@ class ViewWantedArticleForm extends ViewBaseElement {
 		$aOut[] = '       name="bs-wantedarticle-composite-textfield"';
 		$aOut[] = '       type="text"';
 		$aOut[] = '       class="bs-unfocused-textfield bs-wantedarticle-composite-textfield"';
-		$aOut[] = '       value="'.wfMsg( 'bs-wantedarticle-single-textfield-defaulttext' ).'"';
-		$aOut[] = '       data-defaultvalue="'.wfMsg( 'bs-wantedarticle-single-textfield-defaulttext' ).'" />';
+		$aOut[] = '       value="'.wfMessage( 'bs-wantedarticle-single-textfield-defaulttext' )->plain().'"';
+		$aOut[] = '       data-defaultvalue="'.wfMessage( 'bs-wantedarticle-single-textfield-defaulttext' )>plain().'" />';
 		$aOut[] = '<button id="bs-wantedarticle-suggestbutton-'.self::$iFormCounter.'" class="bs-linkbutton bs-wantedarticle-suggestbutton">';
-		$aOut[] = wfMsg( 'bs-wantedarticle-single-textfield-suggestbutton-text' );
+		$aOut[] = wfMessage( 'bs-wantedarticle-single-textfield-suggestbutton-text' )->plain();
 		$aOut[] = '</button>';
 		if( $this->bShowCreateArticle === true ) {
 			$aOut[] = '<button id="bs-wantedarticle-createbutton-'.self::$iFormCounter.'" class="bs-linkbutton bs-wantedarticle-createbutton">';
-			$aOut[] = wfMsg( 'bs-wantedarticle-single-textfield-createbutton-text' );
+			$aOut[] = wfMessage( 'bs-wantedarticle-single-textfield-createbutton-text' )>plain();
 			$aOut[] = '</button>';
 		}
 
@@ -81,10 +81,10 @@ class ViewWantedArticleForm extends ViewBaseElement {
 		$aOut[] = '       name="bs-wantedarticle-composite-textfield-'.self::$iFormCounter.'"';
 		$aOut[] = '       type="text"';
 		$aOut[] = '       class="bs-unfocused-textfield bs-wantedarticle-composite-textfield bs-wanted-article-tag"';
-		$aOut[] = '       value="'.wfMsg( 'bs-wantedarticle-single-textfield-defaulttext' ).'" ';
-		$aOut[] = '       data-defaultvalue="'.wfMsg( 'bs-wantedarticle-single-textfield-defaulttext' ).'" />';
+		$aOut[] = '       value="'.wfMessage( 'bs-wantedarticle-single-textfield-defaulttext' )>plain().'" ';
+		$aOut[] = '       data-defaultvalue="'.wfMessage( 'bs-wantedarticle-single-textfield-defaulttext' )>plain().'" />';
 		$aOut[] = '<input type="submit" id="bs-wantedarticle-suggestbutton-'.self::$iFormCounter.'" class="bs-wantedarticle-suggestbutton bs-wantedarticle-tag-suggestbutton"';
-		$aOut[] = '       value = "'.wfMsg( 'bs-wantedarticle-single-textfield-suggestbutton-text' ).'"';
+		$aOut[] = '       value = "'.wfMessage( 'bs-wantedarticle-single-textfield-suggestbutton-text' )>plain().'"';
 		$aOut[] = '/>';
 
 		return implode( "\n", $aOut );

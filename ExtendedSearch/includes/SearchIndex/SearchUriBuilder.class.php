@@ -127,9 +127,9 @@ class SearchUriBuilder {
 	 * Constructor for SearchUriBuilderMW class
 	 * @param SearchOptions $oSearchOptions SearchOptions object
 	 */
-	public function __construct() {
-		$this->oSearchOptions = SearchOptions::getInstance();
-		$this->oSearchRequest = SearchRequest::getInstance();
+	public function __construct( $oSearchRequest, $oSearchOptions ) {
+		$this->oSearchRequest = $oSearchRequest;
+		$this->oSearchOptions = $oSearchOptions;
 
 		$this->aUri[self::BASE] = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getLocalUrl();
 		$this->aUri[self::ORIGIN] = 'search_origin=' . $this->oSearchOptions->getOption( 'searchOrigin' );
@@ -183,7 +183,7 @@ class SearchUriBuilder {
 	 * Actually compiles an uri
 	 * @param int $iInclude bitmask of class constants
 	 * @param int $iExclude bitmask of class constants
-	 * @return string uri that is NOT urlencoded 
+	 * @return string uri that is NOT urlencoded
 	 */
 	public function buildUri( $iInclude, $iExclude = 0 ) {
 		$components = $iInclude & (~$iExclude);

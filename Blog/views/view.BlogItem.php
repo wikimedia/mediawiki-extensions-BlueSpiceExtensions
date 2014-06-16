@@ -229,15 +229,15 @@ class ViewBlogItem extends ViewBaseElement {
 
 		if ( $this->getOption( 'more' ) ) {
 			$aLinkOptions = array(
-			    'href'   => $this->mUrl,
+				'href'   => $this->mUrl,
 				'class'  => 'bs-blog-item-read-more',
-			    'title'  => wfMessage( 'bs-blog-read-more' )->plain()
+				'title'  => wfMessage( 'bs-blog-read-more' )->plain()
 			);
 			if ( $this->getOption( 'moreInNewWindow' ) )
-			    $aLinkOptions['openInNewWindow'] = true;
+				$aLinkOptions['openInNewWindow'] = true;
 			$sContent = wfMessage( 'bs-blog-read-more' )->plain();
 			if ( $this->getOption( 'moreAtEndOfEntry' ) )
-			    $sContent .= '...';
+				$sContent .= '...';
 			$sOut .= $this->renderLink( $aLinkOptions, $sContent );
 
 			if ( !$this->getOption( 'moreAtEndOfEntry' ) ) $sOut .= $this->mActionDivisor;
@@ -257,35 +257,35 @@ class ViewBlogItem extends ViewBaseElement {
 		$sOut = '';
 		$sOut .= '<div class="bs-blog-item-actions">';
 		// Comments
-		$sOut .= $this->renderLink( array(
-										'href'   => $this->mTalkUrl,
-										'class'  => 'bs-blog-item-comments',
-										'title'  => wfMessage( 'bs-blog-comments' )->plain() ),
-									wfMessage( 'bs-blog-comments' )->plain() )
-			.' ('.$this->mTalkCount.')';
+		$sOut .= $this->renderLink(
+			array(
+				'href' => $this->mTalkUrl,
+				'class' => 'bs-blog-item-comments',
+				'title' => wfMessage( 'bs-blog-comments' )->plain() ),
+			wfMessage( 'bs-blog-comments' )->plain() ) .' ('.$this->mTalkCount.')';
 
 		// Trackback
 		if ( $this->getOption( 'showTrackback' ) ) {
 			$sOut .= $this->mActionDivisor;
 			$sOut .= $this->renderLink(
 				array(
-					'href'   => $this->mTrackbackURL,
-					'class'  => 'bs-blog-item-trackback',
-					'title'  => wfMessage( 'bs-blog-trackback' )->plain()
+					'href' => $this->mTrackbackURL,
+					'class' => 'bs-blog-item-trackback',
+					'title' => wfMessage( 'bs-blog-trackback' )->plain()
 				),
 				wfMessage( 'bs-blog-trackback' )->plain()
 			);
 		}
 
 		// Permalink
-		if ($this->getOption( 'showPermalink' ) ) {
+		if ( $this->getOption( 'showPermalink' ) ) {
 			$sOut .= $this->mActionDivisor;
 			$sOut .= $this->renderLink(
 				array(
-					'href'   => $this->mUrl,
-					'query'  => 'oldid='.$this->mRevId,
-					'class'  => 'bs-blog-item-permalink',
-					'title'  => wfMessage( 'bs-blog-permalink' )->plain()
+					'href' => $this->mUrl,
+					'query' => 'oldid='.$this->mRevId,
+					'class' => 'bs-blog-item-permalink',
+					'title' => wfMessage( 'bs-blog-permalink' )->plain()
 				),
 				wfMessage( 'bs-blog-permalink' )->plain()
 			);

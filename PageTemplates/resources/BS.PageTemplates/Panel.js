@@ -37,28 +37,28 @@ Ext.define( 'BS.PageTemplates.Panel', {
 
 		this.colLabel = Ext.create( 'Ext.grid.column.Template', {
 			id: 'pg-label',
-			header: mw.message('bs-pagetemplates-headerLabel').plain(),
+			header: mw.message('bs-pagetemplates-headerlabel').plain(),
 			sortable: true,
 			dataIndex: 'label',
 			tpl: '{label}'
 		} );
 		this.colDesc = Ext.create( 'Ext.grid.column.Column', {
 			id: 'pg-desc',
-			header: mw.message('bs-pagetemplates-headerDescription').plain(),
+			header: mw.message('bs-pagetemplates-label-desc').plain(),
 			xtype: 'templatecolumn',
 			sortable: true,
 			dataIndex: 'desc'
 		} );
 		this.colTargetns = Ext.create( 'Ext.grid.column.Column', {
 			id: 'pg-targetns',
-			header: mw.message('bs-pagetemplates-headerTargetNamespace').plain(),
+			header: mw.message('bs-pagetemplates-headertargetnamespace').plain(),
 			xtype: 'templatecolumn',
 			sortable: true,
 			dataIndex: 'targetns'
 		} );
 		this.colTemplate = Ext.create( 'Ext.grid.column.Column', {
 			id: 'pg-template',
-			header: mw.message('bs-pagetemplates-headerTemplate').plain(),
+			header: mw.message('bs-pagetemplates-label-article').plain(),
 			xtype: 'templatecolumn',
 			sortable: true,
 			dataIndex: 'template'
@@ -79,7 +79,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 		}
 
 		this.active = 'add';
-		this.dlgTemplateAdd.setTitle( mw.message( 'bs-pagetemplates-tipAddTemplate' ).plain() );
+		this.dlgTemplateAdd.setTitle( mw.message( 'bs-pagetemplates-tipaddtemplate' ).plain() );
 		this.dlgTemplateAdd.show();
 		this.callParent( arguments );
 	},
@@ -97,7 +97,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			this.dlgTemplateEdit.tfNamespaceName.disable();
 		}
 
-		this.dlgTemplateEdit.setTitle( mw.message( 'bs-pagetemplates-tipEditDetails' ).plain() );
+		this.dlgTemplateEdit.setTitle( mw.message( 'bs-pagetemplates-tipeditdetails' ).plain() );
 		this.dlgTemplateEdit.setData( selectedRow[0].getData() );
 		this.dlgTemplateEdit.show();
 		this.callParent( arguments );
@@ -106,8 +106,8 @@ Ext.define( 'BS.PageTemplates.Panel', {
 		bs.util.confirm(
 			'PTremove',
 			{
-				text: mw.message( 'bs-pagetemplates-confirmDeleteTemplate' ).plain(),
-				title: mw.message( 'bs-pagetemplates-tipDeleteTemplate' ).plain()
+				text: mw.message( 'bs-pagetemplates-confirm-deletetpl' ).plain(),
+				title: mw.message( 'bs-pagetemplates-tipdeletetemplate' ).plain()
 			},
 			{
 				ok: this.onDlgTemplateRemoveOk,

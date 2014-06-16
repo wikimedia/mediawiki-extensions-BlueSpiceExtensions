@@ -59,9 +59,9 @@ class UserPreferences extends BsExtensionMW {
 			EXTINFO::NAME => 'UserPreferences',
 			EXTINFO::DESCRIPTION => 'Renders the BlueSpice tab in preferences.',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
+			EXTINFO::VERSION => 'default',
+			EXTINFO::STATUS => 'default',
+			EXTINFO::PACKAGE => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
@@ -74,8 +74,6 @@ class UserPreferences extends BsExtensionMW {
 
 		//PW(27.11.2013): ensure that this hook-handler is called first or strange things happen
 		$this->setHook( 'GetPreferences', 'onGetPreferences', true );
-
-		$this->setHook( 'UserLoadOptions' );
 		$this->setHook( 'UserSaveOptions' );
 		$this->setHook( 'BeforePageDisplay' );
 
@@ -89,7 +87,7 @@ class UserPreferences extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if( !SpecialPage::getTitleFor('Preferences') ->equals( $oOutputPage->getTitle() ) ) return true;
+		if ( !SpecialPage::getTitleFor('Preferences') ->equals( $oOutputPage->getTitle() ) ) return true;
 		$oOutputPage->addModules('ext.bluespice.userpreferences');
 
 		return true;
@@ -102,9 +100,6 @@ class UserPreferences extends BsExtensionMW {
 	 * @return true always true to keep hook alive
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		BsConfig::loadUserSettings( $user );
-		BsCore::loadHtmlFormClass();
-
 		$bOrigDeliver = BsConfig::deliverUsersSettings( true );
 		$aRegisteredVariables = BsConfig::getRegisteredVars();
 		$aSortedVariables = array();
@@ -112,8 +107,7 @@ class UserPreferences extends BsExtensionMW {
 		foreach ( $aRegisteredVariables as $oVariable ) {
 			$iOptions = $oVariable->getOptions();
 
-			if ( !( $iOptions & ( BsConfig::LEVEL_USER ) ) )
-				continue;
+			if ( !( $iOptions & ( BsConfig::LEVEL_USER ) ) ) continue;
 
 			$sAdapterName = strtoupper( $oVariable->getAdapter() );
 			$sExtensionName = $oVariable->getExtension();
@@ -125,15 +119,15 @@ class UserPreferences extends BsExtensionMW {
 				$sExtensionNameLower = strtolower( $sExtensionName );
 				$sExtensionTranslation = wfMessage( 'prefs-' . $sExtensionNameLower )->plain();
 			}
-			$aSortedVariables[ $sAdapterName ][$sExtensionTranslation][ $sExtensionName][ ] = $oVariable;
-			ksort($aSortedVariables[$sAdapterName]);
+			$aSortedVariables[$sAdapterName][$sExtensionTranslation][$sExtensionName][] = $oVariable;
+			ksort( $aSortedVariables[$sAdapterName] );
 		}
 
 		foreach ( $aSortedVariables as $sAdapterName => $aExtensions ) {
 			if ( !count( $aExtensions ) )continue;
 			$sBaseSection = 'bluespice/' . $sAdapterName;
 
-			foreach ($aExtensions as $val){
+			foreach ( $aExtensions as $val ){
 				if ( !count( $val ) ) continue;
 
 				foreach ( $val as $sExtensionName => $aSettings ) {
@@ -146,7 +140,7 @@ class UserPreferences extends BsExtensionMW {
 							'type' => $oVariable->getFieldMapping(),
 							'label-message' => $oVariable->getI18nName(), // a system message
 							'section' => $sSection,
-							'default' => $oVariable->getValue()
+							'default' => ( BsStringHelper::isSerialized( $oVariable->getValue() ) ) ? unserialize( $oVariable->getValue() ) : $oVariable->getValue()
 						);
 
 						if ( $oVariable->getFieldMapping() == 'multiselectplusadd' ) {
@@ -163,7 +157,7 @@ class UserPreferences extends BsExtensionMW {
 							$field = array_merge( $field, $tmp );
 						}
 
-						$preferences[ $oVariable->generateFieldId() ] = $field;
+						$preferences[$oVariable->generateFieldId()] = $field;
 					}
 				}
 			}
@@ -179,52 +173,16 @@ class UserPreferences extends BsExtensionMW {
 	 * @param Array &$options Options array
 	 * @return true always true to keep hook alive
 	 */
-	public function onUserLoadOptions( $user, &$options ) {
-		$aRegisteredVariables = BsConfig::getRegisteredVars();
-		$aSortedVariables = array();
+	public static function onUserLoadOptions( $user, &$options ) {
 
-		foreach ( $aRegisteredVariables as $oVariable ) {
-			$iOptions = $oVariable->getOptions();
-
-			if ( !( $iOptions & ( BsConfig::LEVEL_USER ) ) )continue;
-
-			$sAdapterName = strtoupper( $oVariable->getAdapter() );
-			$sExtensionName = $oVariable->getExtension();
-
-			if ( empty( $sExtensionName ) ) $sExtensionName = 'BASE';
-
-			$aSortedVariables[ $sAdapterName ][ $sExtensionName ][ ] = $oVariable;
-		}
-
-		foreach ( $aSortedVariables as $sAdapterName => $aExtensions ) {
-			if ( !count( $aExtensions ) ) continue;
-
-			foreach ( $aExtensions as $sExtensionName => $aSettings ) {
-				if ( !count( $aSettings ) ) continue;
-
-				foreach ( $aSettings as $oVariable ) {
-					$id = $oVariable->getKey();
-					if ( isset( $options[ $id ] ) ) {
-						//HINT: HW#2014012910000113
-						//In some cases (LDAP?) a value is _not_ serialized.
-						//Trying to unserialize it results in a boolean 'false'
-						//and let MW unset the property
-						//Therefore we check weater boolean 'false' really
-						//means boolean 'false' or just unserialized value,
-						//which we can use withour converting it.
-						if( BsStringHelper::isSerialized( $options[ $id ] ) ) {
-							$valPlain = unserialize( $options[ $id ] );
-						} else {
-							$valPlain = $options[ $id ];
-						}
-						$options[ $id ]
-							= ( $valPlain === false && $options[ $id ] !== 'b:0;' )
-							? $options[ $id ] //It is already unserialized
-							: $valPlain; //it is boolean 'false'
-						BsConfig::set( $id, $options[ $id ] );
-					}
-				}
+		foreach ( $options as $key => $value ) {
+			if ( strpos( $key, 'MW::' ) !== 0 ) {
+				continue;
 			}
+			if ( BsStringHelper::isSerialized( $value ) ) {
+				$options[$key] = unserialize( $value );
+			}
+			BsConfig::set( $key, $options[$key], true );
 		}
 
 		return true;
@@ -239,7 +197,7 @@ class UserPreferences extends BsExtensionMW {
 	public function onUserSaveOptions( $user, &$options ) {
 		BsConfig::loadSettings();
 
-		$oCurrentTitle = $this->getContext()->getTitle(); //May return null in CLI
+		$oCurrentTitle = $this->getTitle(); //May return null in CLI
 		if ( $oCurrentTitle instanceof Title && $oCurrentTitle->isSpecialPage() ) {
 			$bDeliverUserSettings = true;
 		} else {
@@ -277,15 +235,16 @@ class UserPreferences extends BsExtensionMW {
 					//Avoid "undefined index" notices and weird NULL values in settings
 					$value = $oVariable->getValue();
 
-					if( isset( $options[ $oVariable->generateFieldId() ] ) ) { //Set but no bool
+					if ( isset( $options[ $oVariable->generateFieldId() ] ) ) { //Set but no bool
 						$value = $options[ $oVariable->generateFieldId() ];
 					}
-					if( isset( $options[ $oVariable->getKey() ] ) ) { //Set but no bool
+					if ( isset( $options[ $oVariable->getKey() ] ) ) { //Set but no bool
 						$value = $options[ $oVariable->getKey() ];
 					}
 
-					$options[ $oVariable->getKey() ] = serialize( $value );
-					unset( $options[ $oVariable->generateFieldId() ] );
+
+					$options[$oVariable->getKey()] = ( BsStringHelper::isSerialized( $value ) ) ? $value : serialize( $value );
+					unset( $options[$oVariable->generateFieldId()] );
 				}
 			}
 		}

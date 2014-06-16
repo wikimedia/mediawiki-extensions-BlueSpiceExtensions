@@ -163,7 +163,7 @@ var BsInsertCategoryWysiwygEditorHelper = {
 	},
 
 	setCategories: function( categories ) {
-		var regexCat = /(<br \/>)*\[\[(?:k|c)ategor(?:ie|y):(.)+?\]\]\n?/ig;
+		var regexCat = new RegExp('(<br \/>)*\\[\\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':..*?\\]\\]', 'ig'); ///(<br \/>)*\[\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':(.+?)\]\]/ig;
 		var tags = '';
 		var text = tinyMCE.activeEditor.getContent();
 		text = text.replace(regexCat, "");

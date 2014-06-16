@@ -86,7 +86,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 		this.tfRealName.reset();
 		this.cbGroups.reset();
 
-		this.callParent();
+		this.callParent(arguments);
 	},
 	setData: function( obj ) {
 		this.currentData = obj;

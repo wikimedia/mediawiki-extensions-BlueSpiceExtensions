@@ -55,6 +55,18 @@ Ext.define( 'BS.Statistics.Panel', {
 			]
 		});
 
+		this.pnlStats = Ext.create('Ext.Panel', {
+			region: 'center',
+			legend: {
+				position: 'right'
+			},
+			layout: 'border',
+			html: '',
+			items: [
+
+			]});
+		this.pnlStats.hide();
+
 		this.pnlMain = Ext.create('Ext.Panel', {
 			region: 'center',
 			legend: {
@@ -64,7 +76,8 @@ Ext.define( 'BS.Statistics.Panel', {
 			html: '',
 			tbar: this.tbarMain,
 			items: [
-				this.crtMain
+				this.crtMain,
+				this.pnlStats
 			]});
 
 		this.items = [
@@ -82,26 +95,31 @@ Ext.define( 'BS.Statistics.Panel', {
 	},
 	onPnlFiltersSaved: function(sender, data, result) {
 		this.getEl().unmask();
-		this.crtMain.hide();
-		this.pnlMain.update('');
-		this.pnlMain.remove('StatisticsTableView', false);
-		this.muExport.enable();
 		if( typeof data.list == 'undefined' ) {
-			this.crtMain.setData(data);
-			this.crtMain.setCategory(result.label);
-			this.crtMain.show();
+			this.muExport.enable();
+			this.pnlStats.hide();
+			var task = new Ext.util.DelayedTask(function(){
+				this.crtMain.show();
+				//this.pnlMain.doLayout();
+				this.crtMain.setData(data);
+				this.crtMain.setCategory(result.label);
+			}, this);
+			task.delay(100);
 			return;
 		}
+		this.crtMain.hide();
 		this.muExport.disable();
-		this.pnlMain.update(data.list);
-		this.pnlMain.add( Ext.create('Ext.ux.grid.TransformGrid', 'StatisticsTableView', {
+		this.pnlStats.update(data.list);
+		this.pnlStats.removeAll();
+		this.pnlStats.show();
+		this.pnlStats.add( Ext.create('Ext.ux.grid.TransformGrid', 'StatisticsTableView', {
 			id: 'StatisticsTableView',
 			title: result.label,
 			width: this.getWidth(),
 			height: this.pnlMain.getHeight(),
 			stripeRows: true
 		}) );
-		this.pnlMain.doLayout();
+		this.pnlStats.doLayout();
 	},
 	onClickmuExport: function( menu, item, e, eOpts ) {
 		/*this.getEl().mask(

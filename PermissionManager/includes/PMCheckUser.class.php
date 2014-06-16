@@ -3,8 +3,6 @@
 /**
  * PermissionManager extension for BlueSpice
  *
- * Provides information about an article for status bar.
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -27,18 +25,17 @@
 
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-// Last review MRG (01.07.11 12:51)
 
 /**
  * Class for a temporary user object to check permissions
  * @package BlueSpice_Extensions
  * @subpackage WikiAdmin
  */
-class CheckUser extends User {
+class PMCheckUser extends User {
 
 	public function __construct() {
 		parent::__construct();
@@ -71,16 +68,12 @@ class CheckUser extends User {
 	public function saveSettings() {
 		return;
 	}
-#
-//------PW 31.12.2013: added to prevent Fatals when on Spezial:Spezialseiten ---------
-//PHP Fatal error:  Call to undefined method CheckUser::setContext() in X:\xampp\htdocs\blueforge\includes\SpecialPageFactory.php on line 365
-//PHP Fatal error:  Call to undefined method CheckUser::isListed() in X:\xampp\htdocs\blueforge\includes\SpecialPageFactory.php on line 366
-# HW#2013123110000037 - https://otrs.hallowelt.biz/otrs/index.pl?Action=AgentTicketZoom;TicketID=5725
-public function setContext() {
-	return;
-}
-public function isListed() {
-	return;
-}
-//----------END-----------------------------------------------------------------------
+
+	public function setContext() {
+		return;
+	}
+
+	public function isListed() {
+		return;
+	}
 }

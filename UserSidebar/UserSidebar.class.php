@@ -150,11 +150,11 @@ class UserSidebar extends BsExtensionMW {
 		);
 		$oUserPageSettingsView->addData(
 			array(
-				'URL'      => htmlspecialchars( $oUserSidebarArticleTitle->getEditURL() ),
-				'TITLE'    => wfMessage( 'bs-usersidebar-userpagesettings-link-title' )->plain(),
-				'TEXT'     => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->plain(),
-				'IMGALT'   => wfMessage( 'bs-usersidebar-userpagesettings-headline' )->plain(),
-				'IMGSRC'   => $this->getImagePath().'bs-userpage-sidebar.png',
+				'URL' => htmlspecialchars( $oUserSidebarArticleTitle->getEditURL() ),
+				'TITLE' => wfMessage( 'bs-usersidebar-userpagesettings-link-title' )->plain(),
+				'TEXT' => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->text(),
+				'IMGALT' => wfMessage( 'bs-usersidebar-userpagesettings-headline' )->plain(),
+				'IMGSRC' => $this->getImagePath().'bs-userpage-sidebar.png',
 			)
 		);
 

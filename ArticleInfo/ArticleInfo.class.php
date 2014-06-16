@@ -66,7 +66,7 @@ class ArticleInfo extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'ArticleInfo',
-			EXTINFO::DESCRIPTION => 'Provides information about an article for status bar.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-articleinfo-desc' )->plain(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -86,12 +86,12 @@ class ArticleInfo extends BsExtensionMW {
 	 */
 	public function  initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		BsConfig::registerVar( 'MW::ArticleInfo::ImageLastEdited',    'bs-infobar-last-edited.png', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageLastEdited' );
-		BsConfig::registerVar( 'MW::ArticleInfo::ImageLastEditor',    'bs-infobar-author.png',      BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageLastEditor' );
-		BsConfig::registerVar( 'MW::ArticleInfo::ImageCategories',    'bs-infobar-category.png',    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageCategories' );
-		BsConfig::registerVar( 'MW::ArticleInfo::ImageSubpages',      'bs-infobar-subpages.png',    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageSubpages' );
-		BsConfig::registerVar( 'MW::ArticleInfo::ImageCheckRevision', 'bs-infobar-revision.png',    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-articleinfo-ImageRevision' );
-		BsConfig::registerVar( 'MW::ArticleInfo::CheckRevisionInterval', 10, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_INT, 'bs-articleinfo-pref-CheckRevisionInterval', 'int' );
+		BsConfig::registerVar( 'MW::ArticleInfo::ImageLastEdited', 'bs-infobar-last-edited.png', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
+		BsConfig::registerVar( 'MW::ArticleInfo::ImageLastEditor', 'bs-infobar-author.png', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
+		BsConfig::registerVar( 'MW::ArticleInfo::ImageCategories', 'bs-infobar-category.png', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
+		BsConfig::registerVar( 'MW::ArticleInfo::ImageSubpages', 'bs-infobar-subpages.png', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
+		BsConfig::registerVar( 'MW::ArticleInfo::ImageCheckRevision', 'bs-infobar-revision.png', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
+		BsConfig::registerVar( 'MW::ArticleInfo::CheckRevisionInterval', 10, BsConfig::LEVEL_PUBLIC|BsConfig::RENDER_AS_JAVASCRIPT|BsConfig::TYPE_INT, 'bs-articleinfo-pref-CheckRevisionInterval', 'int' );
 
 		$this->mCore->registerBehaviorSwitch( 'NOARTICLEINFO', array( $this, 'noArticleInfoCallback' ) );
 
@@ -151,12 +151,12 @@ class ArticleInfo extends BsExtensionMW {
 		$aSortBodyVars['statebarbodytemplates'] = wfMessage( 'bs-articleinfo-statebarbodytemplates' )->plain();
 		return true;
 	}
-	
+
 	/**
 	 * Hook-Handler for Hook 'BSStateBarBeforeTopViewAdd'
 	 * @param StateBar $oStateBar
 	 * @param array $aTopViews
-	 * @return boolean Always true to keep hook running 
+	 * @return boolean Always true to keep hook running
 	 */
 	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
 		if ( BsExtensionManager::isContextActive( 'MW::ArticleInfo::Hide' ) ) return true;
@@ -179,7 +179,7 @@ class ArticleInfo extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
 	}
-	
+
 	/**
 	 * Hook-Handler for Hook 'BSStateBarBeforeBodyViewAdd'
 	 * @param StateBar $oStateBar
@@ -206,7 +206,6 @@ class ArticleInfo extends BsExtensionMW {
 
 	/**
 	 * Hook-Handler for BS hook BsAdapterAjaxPingResult
-	 * @global User $wgUser
 	 * @param string $sRef
 	 * @param array $aData
 	 * @param integer $iArticleId
@@ -214,21 +213,20 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBsAdapterAjaxPingResult( $sRef, $aData, $iArticleId, $sTitle, $iNamespace, $iRevision, &$aSingleResult ) {
-		if( $sRef !== 'ArticleInfo' || empty($iArticleId) || empty($iRevision) ) return true;
+		if ( $sRef !== 'ArticleInfo' || empty( $iArticleId ) || empty( $iRevision ) ) return true;
 
 		$oTitle = Title::newFromID( $iArticleId );
-		if( is_null($oTitle) || !$oTitle->userCan('read') ) return true;
-		$aSingleResult['success'] = true;
-		global $wgUser;
+		if ( is_null( $oTitle ) || !$oTitle->userCan( 'read' ) ) return true;
 
-		if( $aData[0] == 'checkRevision' ) {
+		$aSingleResult['success'] = true;
+		$oUser = $this->getUser();
+
+		if ( $aData[0] == 'checkRevision' ) {
 			$aSingleResult['newRevision'] = false;
-			$oRevision = Revision::newFromId($iRevision);
-			if( !is_null($oRevision->getNext()) 
+			$oRevision = Revision::newFromTitle( $oTitle );
+			if ( $oRevision->getId() > $iRevision
 				&& !( //do not show own made revision when saving is in progress
-					$aData[1] == 'edit' 
-					&& $wgUser->getID() > 0 
-					&& $oRevision->getUser() === $wgUser->getID()
+					$aData[1] == 'edit' && $oUser->getID() > 0 && $oRevision->getUser() === $oUser->getID()
 				)
 			) {
 				$aSingleResult['newRevision'] = true;
@@ -275,7 +273,7 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarTopElement
 	 */
@@ -296,7 +294,7 @@ class ArticleInfo extends BsExtensionMW {
 		}
 
 		$sFormattedTimestamp = BsFormatConverter::mwTimestampToAgeString( $sTimestamp, true );
-		$sArticleHistoryPageLink = $oArticle->getTitle()->getLinkURL( 
+		$sArticleHistoryPageLink = $oArticle->getTitle()->getLinkURL(
 			array(
 				'diff'   => 0,
 				'action' => 'historysubmit'
@@ -318,7 +316,7 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarTopElement
 	 */
@@ -337,7 +335,7 @@ class ArticleInfo extends BsExtensionMW {
 
 		$oLastEditorView->setKey( 'LastEditor' );
 		$oLastEditorView->setIconSrc( $this->getImagePath( true ).BsConfig::get('MW::ArticleInfo::ImageLastEditor') );
-		$oLastEditorView->setIconAlt( wfMessage('bs-articleinfo-last-editor')->plain() );
+		$oLastEditorView->setIconAlt( wfMessage('bs-articleinfo-last-editor')->plain(), $this->getUser()->getName() );
 		$oLastEditorView->setText( $sLastEditorName );
 		$oLastEditorView->setTextLinkTitle( $sLastEditorName );
 		$oLastEditorView->setTextLink( $sLastEditorUserPageUrl );
@@ -349,7 +347,7 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarTopElementCategoryShortList
 	 */
@@ -401,7 +399,7 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarBodyElement
 	 */
@@ -501,7 +499,7 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarTopElement
 	 */
@@ -524,7 +522,7 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @global User $wgUser
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarBodyElement
@@ -565,7 +563,7 @@ class ArticleInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarTopElement
 	 */
@@ -586,7 +584,7 @@ class ArticleInfo extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oArticleViewsView;
 	}
-	
+
 	/**
 	 * Hook-Handler for Mediawiki hook ArticleDeleteComplete
 	 * @param Article $article
@@ -603,7 +601,7 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return boolean - always true
 	 */
 	public function onArticleSaveComplete( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
-		if( $status->value['new'] === false ) return true; 
+		if( $status->value['new'] === false ) return true;
 
 		$oTitle = $article->getTitle();
 		if( !$oTitle->isSubpage() ) return true;
@@ -616,7 +614,7 @@ class ArticleInfo extends BsExtensionMW {
 		$oParentTitle->invalidateCache();
 		return true;
 	}
-	
+
 	/**
 	 * Hook-Handler for Mediawiki hook ArticleDeleteComplete
 	 * @param Article $article

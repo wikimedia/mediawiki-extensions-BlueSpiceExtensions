@@ -147,12 +147,13 @@ class CSyntaxHighlight extends BsExtensionMW {
 	}
 
 	public function onOutputPageBeforeHTML( $oParserOutput, $sText ) {
+		global $wgScriptPath;
 		// TODO RBV (13.07.11 15:44): Better recognition...
-		if( strpos( $sText, '<pre class="brush:' ) === false ) return true;
+		if ( strpos( $sText, '<pre class="brush:' ) === false ) return true;
 
 		BsExtensionManager::setContext( 'MW::CSyntaxHighlight' );
 
-		$sBrushScriptPath = BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
+		$sBrushScriptPath = $wgScriptPath.'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
 
 		$sTheme = BsConfig::get('MW::CSyntaxHighlight::Theme');
 		$sStyleBlock = '<link rel="stylesheet" href="' . $sBrushScriptPath .
@@ -165,10 +166,11 @@ class CSyntaxHighlight extends BsExtensionMW {
 	}
 
 	public function onSkinAfterBottomScripts( $oSkin, &$bottomScriptText ) {
-		$sBrushScriptPath = BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
+		global $wgScriptPath;
+		$sBrushScriptPath = $wgScriptPath.'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
 
 		$aAutoloaderParams = array();
-		foreach( $this->aBrushes as $sBrushName => $aAliases ) {
+		foreach ( $this->aBrushes as $sBrushName => $aAliases ) {
 			//HINT: http://alexgorbatchev.com/SyntaxHighlighter/manual/api/autoloader.html
 			$aAutoloaderParams[] = '["'.implode( '","', $aAliases ).'","'.$sBrushScriptPath.'/shBrush'.$sBrushName.'.js" ]';
 		}
@@ -181,9 +183,9 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$aScriptBlock[] = 'SyntaxHighlighter.autoloader( ';
 		$aScriptBlock[] = implode( ",\n", $aAutoloaderParams );
 		$aScriptBlock[] = ');';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"]    = bsCSyntaxHighlightToolbar;';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"] = bsCSyntaxHighlightToolbar;';
 		$aScriptBlock[] = 'SyntaxHighlighter.defaults["auto-links"] = bsCSyntaxHighlightAutoLinks;';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"]     = bsCSyntaxHighlightGutter;';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"] = bsCSyntaxHighlightGutter;';
 		$aScriptBlock[] = 'SyntaxHighlighter.all();';
 		$aScriptBlock[] = '});';
 		$aScriptBlock[] = '</script>';

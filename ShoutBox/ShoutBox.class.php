@@ -110,14 +110,14 @@ class ShoutBox extends BsExtensionMW {
 
 		$this->mCore->registerBehaviorSwitch( 'bs_noshoutbox' );
 
-		BsConfig::registerVar('MW::ShoutBox::ShowShoutBoxByNamespace', array(0), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_INT, 'bs-shoutbox-pref-ShowShoutBoxByNamespace', 'multiselectplusadd' );
-		BsConfig::registerVar('MW::ShoutBox::CommitTimeInterval',      15,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-CommitTimeInterval', 'int' );
-		BsConfig::registerVar('MW::ShoutBox::NumberOfShouts',          5,        BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-NumberOfShouts', 'int' );
-		BsConfig::registerVar('MW::ShoutBox::ShowAge',                 true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-ShowAge', 'toggle' );
-		BsConfig::registerVar('MW::ShoutBox::ShowUser',                true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-ShowUser', 'toggle' );
+		BsConfig::registerVar('MW::ShoutBox::ShowShoutBoxByNamespace', array(0), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_INT, 'multiselectplusadd' );
+		BsConfig::registerVar('MW::ShoutBox::CommitTimeInterval',      15,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-committimeinterval', 'int' );
+		BsConfig::registerVar('MW::ShoutBox::NumberOfShouts',          5,        BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-numberofshouts', 'int' );
+		BsConfig::registerVar('MW::ShoutBox::ShowAge',                 true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-showage', 'toggle' );
+		BsConfig::registerVar('MW::ShoutBox::ShowUser',                true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-showuser', 'toggle' );
 		BsConfig::registerVar('MW::ShoutBox::Show',                    true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-show', 'toggle' );
-		BsConfig::registerVar('MW::ShoutBox::AllowArchive',            true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-AllowArchive', 'toggle' );
-		BsConfig::registerVar('MW::ShoutBox::MaxMessageLength',        255,      BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-MaxMessageLength', 'int' );
+		BsConfig::registerVar('MW::ShoutBox::AllowArchive',            true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-allowarchive', 'toggle' );
+		BsConfig::registerVar('MW::ShoutBox::MaxMessageLength',        255,      BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-maxmessagelength', 'int' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -127,10 +127,10 @@ class ShoutBox extends BsExtensionMW {
 	 * @return boolean Always true to keep the hook running
 	 */
 	public static function getSchemaUpdates( $updater ) {
-		global $wgDBtype, $wgExtNewTables, $wgExtModifiedFields, $wgExtNewIndexes, $wgExtNewFields;
+		global $wgDBtype, $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
 		$sDir = __DIR__ . DS;
 
-		if( $wgDBtype == 'mysql' ) {
+		if ( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[]  = array( 'bs_shoutbox', $sDir . 'db/mysql/ShoutBox.sql' );
 			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/mysql/ShoutBox.patch.sb_page_id.index.sql' );
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/mysql/ShoutBox.patch.sb_user_id.sql' );
@@ -140,17 +140,17 @@ class ShoutBox extends BsExtensionMW {
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_title', $sDir . 'db/mysql/ShoutBox.patch.sb_title.sql' );
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_touched', $sDir . 'db/mysql/ShoutBox.patch.sb_touched.sql' );
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_parent_id', $sDir . 'db/mysql/ShoutBox.patch.sb_parent_id.sql' );
-		} elseif( $wgDBtype == 'postgres' ) {
+		} elseif ( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables[]  = array( 'bs_shoutbox', $sDir . 'db/postgres/ShoutBox.pg.sql' );
 			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/postgres/ShoutBox.patch.sb_archived.pg.sql' );
 			/*
 			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/postgres/ShoutBox.patch.sb_page_id.index.pg.sql' );
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/postgres/ShoutBox.patch.sb_user_id.pg.sql' );
 			*/
-		} elseif( $wgDBtype == 'oracle' ) {
+		} elseif ( $wgDBtype == 'oracle' ) {
 			$wgExtNewTables[]  = array( 'bs_shoutbox', $sDir . 'db/oracle/ShoutBox.oci.sql' );
 			$dbr = wfGetDB( DB_SLAVE );
-			if( !$dbr->fieldExists('bs_shoutbox', 'sb_archived') && $dbr->tableExists('bs_shoutbox') ) {
+			if ( !$dbr->fieldExists('bs_shoutbox', 'sb_archived') && $dbr->tableExists('bs_shoutbox') ) {
 				#$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/oracle/ShoutBox.patch.sb_archived.oci.sql' );
 			}
 			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/oracle/ShoutBox.patch.sb_page_id.index.oci.sql' );

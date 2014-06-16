@@ -129,7 +129,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.hdnUrl = Ext.create( 'Ext.form.field.Hidden' );
 
 		this.configPanel.height = 250;
-		this.configPanel.items = [
+		var items = [
 			this.rgFormat,
 			this.rgAlign,
 			{
@@ -156,6 +156,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			},
 			this.tfAlt
 		];
+		
+		$(document).trigger("BSInsertFileInsertImageDialogAfterInit", [items]);
+		this.configPanel.items = items;
 		
 		this.callParent(arguments);
 	},
@@ -256,6 +259,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		else if( align === 'right' ) {
 			cfg.right = true;
 		}
+		else if( align === 'none' ) {
+			cfg.none = true;
+		}
 		
 		//Only set width and height if they are _not_ the original size!
 		var record = this.getSingleSelection();
@@ -341,6 +347,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.callParent(arguments);
+		$(document).trigger("BSInsertFileInsertImageDialogAfterImageSelect", [this, grid, record, index]);
 		this.hdnUrl.setValue( record.get('url') );
 		//This is to avoid an overriding of the dimension that may have been 
 		//set by this.setData()

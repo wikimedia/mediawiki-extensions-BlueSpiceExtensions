@@ -4,7 +4,7 @@
  * Avatars extension for BlueSpice
  *
  * Provide generic and individual user images
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -70,8 +70,8 @@ class Avatars extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn('BS::' . __METHOD__);
 
-		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-Avatars-pref-DefaultSize', 'int');
-		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-Avatars-pref-Generator', 'select');
+		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-avatars-pref-defaultsize', 'int');
+		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-avatars-pref-generator', 'select');
 
 		$this->setHook('BSAdapterGetUserMiniProfileBeforeInit');
 		$this->setHook('BsAuthorPageProfileImageAfterInitFields');
@@ -130,7 +130,7 @@ class Avatars extends BsExtensionMW {
 	 * Show avatar on user page
 	 * @param ViewAuthorsUserPageProfileImageSetting $oView
 	 * @param User $oUser
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onBsAuthorPageProfileImageAfterInitFields($oView, $oUser) {
 		# If user has set MW image or URL return immediately
@@ -168,7 +168,7 @@ class Avatars extends BsExtensionMW {
 			));
 		} else {
 			$oUser = RequestContext::getMain()->getUser();
-			$oUser->setOption('MW::UserImage', serialize($sUserImage));
+			$oUser->setOption('MW::UserImage', $sUserImage);
 			$oUser->saveSettings();
 
 			return FormatJson::encode(array(
@@ -209,7 +209,7 @@ class Avatars extends BsExtensionMW {
 	/**
 	 * Generate an avatar image
 	 * @param User $oUser
-	 * @return string Relative URL to avatar image 
+	 * @return string Relative URL to avatar image
 	 */
 	public function generateAvatar($oUser, $aParams = array(), $bOverwrite = false) {
 		$iAvatarDefaultSize = BsConfig::get('MW::Avatars::DefaultSize');

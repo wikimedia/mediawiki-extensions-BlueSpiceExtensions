@@ -24,7 +24,7 @@
   * http://www.gnu.org/copyleft/gpl.html
   *
   * For further information visit http://www.blue-spice.org
-  * 
+  *
   * Version information
   * $LastChangedDate: 2013-06-25 11:17:54 +0200 (Di, 25 Jun 2013) $
   * $LastChangedBy: rvogel $
@@ -38,7 +38,7 @@
  * v0.1.0
  * FIRST CHANGES
  */
-  
+
  // Last review: (01.07.11 01:58)
 
 class WikiAdmin extends BsExtensionMW {
@@ -117,15 +117,15 @@ class WikiAdmin extends BsExtensionMW {
 	// TODO SU (04.07.11 11:09): Brauchen wir das noch?
 	public static function &get( $name ) {
 		switch ( $name ) {
-			case 'ExcludeGroups' :        return self::$prExcludeGroups;
+			case 'ExcludeGroups': return self::$prExcludeGroups;
 				break;
-			case 'ExcludeDeleteGroups' :  return self::$prExcludeDeleteGroups;
+			case 'ExcludeDeleteGroups': return self::$prExcludeDeleteGroups;
 				break;
-			case 'ExcludeRights' :        return self::$prExcludeRights;
+			case 'ExcludeRights': return self::$prExcludeRights;
 				break;
-			case 'CommonRights' :         return self::$prCommonRights;
+			case 'CommonRights': return self::$prCommonRights;
 				break;
-			case 'HardPerms' :            return self::$prHardPerms;
+			case 'HardPerms': return self::$prHardPerms;
 				break;
 		}
 		return null;
@@ -161,7 +161,7 @@ class WikiAdmin extends BsExtensionMW {
 	public static function loadModules() {
 		if ( !self::$prLoadModulesAndScripts ) return;
 		foreach( self::$prRegisteredModules as $name => $params ) {
-			self::$prRunningModules[$name] =& BsExtensionManager::getExtension( $name );
+			self::$prRunningModules[$name] = BsExtensionManager::getExtension( $name );
 		}
 		foreach( self::$prRegisteredModuleClasses as $name => $params ) {
 			self::$prRunningModules[$name] = new $name();

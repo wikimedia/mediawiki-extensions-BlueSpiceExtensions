@@ -14,9 +14,9 @@ $wgResourceModules['ext.bluespice.shoutbox'] = array(
 	'scripts' => 'bluespice.shoutBox.js',
 	'dependencies' => 'ext.bluespice',
 	'messages' => array(
-		'bs-shoutbox-confirm_text',
-		'bs-shoutbox-confirm_title',
-		'bs-shoutbox-enterMessage',
+		'bs-shoutbox-confirm-text',
+		'bs-shoutbox-confirm-title',
+		'bs-shoutbox-entermessage',
 		'bs-shoutbox-too-early'
 	),
 	'position' => 'bottom'

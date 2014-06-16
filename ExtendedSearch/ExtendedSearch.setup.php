@@ -39,8 +39,8 @@ $wgResourceModules['ext.bluespice.extendedsearch.specialpage'] = array(
 unset( $aResourceModuleTemplate );
 
 $wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
-$wgAjaxExportList[] = 'ExtendedSearch::getAutocompleteData';
-$wgAjaxExportList[] = 'ExtendedSearch::getRecentSearchTerms';
+$wgAjaxExportList[] = 'ExtendedSearchBase::getAutocompleteData';
+$wgAjaxExportList[] = 'ExtendedSearchBase::getRecentSearchTerms';
 
 $wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
 

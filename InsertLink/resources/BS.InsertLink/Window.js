@@ -33,41 +33,15 @@ Ext.define( 'BS.InsertLink.Window', {
 		desc: false
 	},
 	afterInitComponent: function() {
-		this.setTitle( mw.message('bs-insertlink-dlg_title').plain() );
+		this.setTitle( mw.message('bs-insertlink-dialog-title').plain() );
 
-		this.storePages = Ext.create( 'Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'InsertLink::getPage' ),
-				reader: {
-					type: 'json',
-					root: 'items'
-				}
-			},
-			autoLoad: true,
-			fields: ['name', 'label', 'ns']
-		});
-
-		this.storeNS = Ext.create( 'Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'InsertLink::getNamespace'),
-				reader: {
-					type: 'json',
-					root: 'items'
-				}
-			},
-			autoLoad: true,
-			fields: ['name', 'label', 'ns']
-		});
-
-		this.fpnlWikiPage = Ext.create( 'BS.InsertLink.FormPanelWikiPage', { storePages: this.storePages, storeNS: this.storeNS } );
-		this.fpnlExternalLink = Ext.create( 'BS.InsertLink.FormPanelExternalLink', {} );
-		this.fpnlMailTo = Ext.create( 'BS.InsertLink.FormPanelMailTo', {} );
+		this.fpnlWikiPage = Ext.create( 'BS.InsertLink.FormPanelWikiPage' );
+		this.fpnlExtLink = Ext.create( 'BS.InsertLink.FormPanelExternalLink' );
+		this.fpnlMailTo = Ext.create( 'BS.InsertLink.FormPanelMailTo' );
 
 		var items = [
 			this.fpnlWikiPage,
-			this.fpnlExternalLink,
+			this.fpnlExtLink,
 			this.fpnlMailTo
 		];
 
@@ -82,6 +56,9 @@ Ext.define( 'BS.InsertLink.Window', {
 			border: false,
 			activeTab: 0,
 			region: 'center',
+			defaults: {
+				frame: false
+			},
 			items: items
 		});
 		//this.pnlTabs.on('beforetabchange', this.onBeforeTabChange, this);

@@ -23,7 +23,6 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage WatchList
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -55,9 +54,6 @@ class WatchList extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['WatchList'] = __DIR__ . '/WatchList.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::OTHER;
@@ -87,15 +83,15 @@ class WatchList extends BsExtensionMW {
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
-		BsConfig::registerVar( 'MW::WatchList::WidgetLimit',       10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-watchlist-pref-WidgetLimit', 'int' );
-		BsConfig::registerVar( 'MW::WatchList::WidgetSortOdr', 'time', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-watchlist-pref-WidgetSortOdr', 'select' );
+		BsConfig::registerVar( 'MW::WatchList::WidgetLimit', 10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-watchlist-pref-widgetlimit', 'int' );
+		BsConfig::registerVar( 'MW::WatchList::WidgetSortOdr', 'time', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-watchlist-pref-widgetsortodr', 'select' );
 	}
 
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		return array(
 			'options' => array(
-				wfMsg( 'bs-watchlist-pref-sort-time' )  => 'time',
-				wfMsg( 'bs-watchlist-pref-sort-title' ) => 'pagename',
+				wfMessage( 'bs-watchlist-pref-sort-time' )->plain() => 'time',
+				wfMessage( 'bs-watchlist-pref-sort-title' )->plain() => 'pagename',
 			)
 		);
 	}
@@ -149,22 +145,32 @@ class WatchList extends BsExtensionMW {
 		$oErrorListView = new ViewTagErrorList( $this );
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 1000) );
 		if ( $oValidationICount->getErrorCode() ) {
-			$oErrorListView->addItem( 
+			$oErrorListView->addItem(
 				new ViewTagError( 'count: '.wfMsg( $oValidationICount->getI18N() ) )
 			);
 		}
 
 		$oValidationIMaxTitleLength = BsValidator::isValid( 'IntegerRange', $iMaxTitleLength, array('fullResponse' => true, 'lowerBoundary' => 5, 'upperBoundary' => 500) );
 		if ( $oValidationIMaxTitleLength->getErrorCode() ) {
-			$oErrorListView->addItem( 
+			$oErrorListView->addItem(
 				new ViewTagError( 'maxtitlelength: '.wfMsg( $oValidationIMaxTitleLength->getI18N() ) )
 			);
 		}
 
-		if( !in_array( $sOrder, array( 'pagename', 'time' ) ) ) {
-			$oErrorListView->addItem( 
-				new ViewTagError( 'order: '.wfMsg( 'bs-watchlist-string-validation-not-valid' ) )
-			);
+		$oValidationResult = BsValidator::isValid(
+			'SetItem',
+			$sOrder,
+			array(
+				'fullResponse' => true,
+				'setname' => 'sort',
+				'set' => array(
+					'time',
+					'pagename'
+				)
+			)
+		);
+		if ( $oValidationResult->getErrorCode() ) {
+			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
 
 		if ( $oErrorListView->hasItems() ) {
@@ -177,7 +183,6 @@ class WatchList extends BsExtensionMW {
 
 	/**
 	 * Event-Handler for 'MW::Utility::WidgetListHelper::InitKeywords'. Registers a callback for the WATCHLIST Keyword.
-	 * @param BsEvent $oEvent The Event object
 	 * @param array $aKeywords An array of Keywords array( 'KEYWORD' => $callable )
 	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
 	 */
@@ -203,7 +208,7 @@ class WatchList extends BsExtensionMW {
 		if( !in_array( $sOrder, array( 'pagename', 'time' ) ) ) $sOrder = 'pagename';
 
 		$oUserSidebarView = new ViewWidget();
-		$oUserSidebarView->setTitle( wfMsg( 'bs-watchlist-title-sidebar' ) )
+		$oUserSidebarView->setTitle( wfMessage( 'bs-watchlist-title-sidebar' )->plain() )
 			->setAdditionalBodyClasses( array('bs-nav-links') ); //For correct margin and fontsize
 
 		$oWatchList = $this->fetchWatchlist(
@@ -237,15 +242,15 @@ class WatchList extends BsExtensionMW {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
-						'watchlist',
-						array( 'wl_namespace', 'wl_title' ),
-						array(
-							'wl_user' => $oCurrentUser->getId(),
-							'NOT wl_notificationtimestamp' => NULL
-						),
-						__METHOD__,
-						$aOptions
-					);
+			'watchlist',
+			array( 'wl_namespace', 'wl_title' ),
+			array(
+				'wl_user' => $oCurrentUser->getId(),
+				'NOT wl_notificationtimestamp' => NULL
+			),
+			__METHOD__,
+			$aOptions
+		);
 
 		$oWatchedArticlesListView = new ViewBaseElement();
 		$oWatchedArticlesListView->setTemplate( '*{WIKILINK}' . "\n" );

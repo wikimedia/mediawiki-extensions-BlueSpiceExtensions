@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('Authors', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['Authors'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['Authors'] = __DIR__ . '/languages/Authors.i18n.php';
 $wgExtensionMessagesFiles['AuthorsMagic'] = __DIR__ . '/languages/Authors.i18n.magic.php';
 

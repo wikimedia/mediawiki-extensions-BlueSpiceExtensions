@@ -50,7 +50,7 @@ $messages['en'] = array(
 	'bs-extendedsearch-mlt-results' => '$2 hits similar to article <b>$1</b> were found.',
 	'bs-extendedsearch-no_allow_url_include' => 'Indexing not possible: allow_url_fopen',
 	'bs-extendedsearch-no_result' => 'Search for <b>$1</b> found no matches',
-	'bs-extendedsearch-no_search_term' => 'Please enter a search term',
+	'bs-extendedsearch-nosearchterm' => 'Please enter a search term',
 	'bs-extendedsearch-result' => 'Search for <b>$1</b> found {{PLURAL:$2|$2 result|$2 results}}',
 	'bs-extendedsearch-remove-filter' => 'remove',
 	'bs-extendedsearch-result-caption' => 'results',
@@ -93,8 +93,6 @@ $messages['en'] = array(
 	'bs-extendedsearch-pref-externalrepo' => 'Index external Directory',
 	'bs-extendedsearch-pref-autocfulltext' => 'Show fulltext option in autocomplete',
 	'bs-extendedsearch-pref-acentries' => 'Number of results in autocomplete',
-	'bs-extendedsearch-pref-customerid' => 'Unique ID (necessary to run more than one bluespice with one solr server)',
-	'bs-extendedsearch-pref-formmethod' => 'Search form to be sent with \'post\' or \'get\'',
 	'bs-extendedsearch-pref-highlightsnippets' => 'Number of highlight snippets',
 	'bs-extendedsearch-pref-indexfiletypes' => 'File extensions to be indexed',
 	'bs-extendedsearch-pref-indextypesexternal' => 'Index external directories',
@@ -103,7 +101,6 @@ $messages['en'] = array(
 	'bs-extendedsearch-pref-maxdocsizemb' => 'Maximum size of files during indexing',
 	'bs-extendedsearch-pref-solrpingtime' => 'Ping time (in seconds)',
 	'bs-extendedsearch-pref-showcresuginac' => 'Show create/suggest links in autocomplete',
-	'bs-extendedsearch-pref-showspell' => 'Show Spellchecker on specialpage',
 	'bs-extendedsearch-pref-solrserviceurl' => 'Solr URL',
 	'bs-extendedsearch-pref-setfocus' => 'Automatically focus searchbox (articles only)',
 	'bs-extendedsearch-pref-numfacets' => 'Number of facets',
@@ -151,8 +148,6 @@ $messages['en'] = array(
 	'bs-extendedsearch-pref-mltns' => '"More like this" namespaces',
 	'bs-extendedsearch-redirect' => 'Redirect from',
 	'bs-extendedsearch-totalnoofarticles' => 'Number of articles to index',
-
-	//Javascript
 	'bs-extendedsearch-more' => 'More',
 	'bs-extendedsearch-fewer' => 'Fewer'
 );
@@ -193,7 +188,7 @@ $messages['de'] = array(
 	'bs-extendedsearch-mlt-results' => 'Zum Artikel <b>$1</b> wurden $2 ähnliche Treffer gefunden.',
 	'bs-extendedsearch-no_allow_url_include' => 'Indexierung nicht möglich: allow_url_fopen',
 	'bs-extendedsearch-no_result' => 'Die Suche nach <b>$1</b> findet keine Treffer',
-	'bs-extendedsearch-no_search_term' => 'Bitte gib einen Suchbegriff ein',
+	'bs-extendedsearch-nosearchterm' => 'Bitte gib einen Suchbegriff ein',
 	'bs-extendedsearch-result' => '{{PLURAL:$2|$2 Ergebnis|$2 Ergebnisse}} für <b>$1</b> gefunden',
 	'bs-extendedsearch-remove-filter' => 'aufheben',
 	'bs-extendedsearch-result-caption' => 'Ergebnissen',
@@ -236,8 +231,6 @@ $messages['de'] = array(
 	'bs-extendedsearch-pref-externalrepo' => 'Externes Verzeichnis indexieren',
 	'bs-extendedsearch-pref-autocfulltext' => 'Volltext Suchoption im Autocomplete Dialog anzeigen',
 	'bs-extendedsearch-pref-acentries' => 'Anzahl der Autocomplete-Ergebnisse',
-	'bs-extendedsearch-pref-customerid' => 'Eindeutige Kennung (um mehrere bluespice mit einem Suchserver zu betreiben)',
-	'bs-extendedsearch-pref-formmethod' => 'Absenden Suchformular mittels \'post\' oder \'get\'',
 	'bs-extendedsearch-pref-highlightsnippets' => 'Anzahl Zeilen für die Markierung gefundener Textpassagen (Ergebnisliste)',
 	'bs-extendedsearch-pref-indexfiletypes' => 'Dateiendungen zum Indexieren',
 	'bs-extendedsearch-pref-indextypesexternal' => 'Externe Verzeichnisse durchsuchbar machen',
@@ -246,7 +239,6 @@ $messages['de'] = array(
 	'bs-extendedsearch-pref-maxdocsizemb' => 'Maximale Dateigröße beim Indexieren',
 	'bs-extendedsearch-pref-solrpingtime' => 'Ping-Zeit (in Sekunden)',
 	'bs-extendedsearch-pref-showcresuginac' => 'Erstellen/Vorschlagen Links in dem Autocomplete Menü anzeigen',
-	'bs-extendedsearch-pref-showspell' => 'Spellchecker auf der Spezialseite anzeigen',
 	'bs-extendedsearch-pref-solrserviceurl' => 'Solr URL',
 	'bs-extendedsearch-pref-setfocus' => 'Automatisch Suchfeld fokusieren (nur Artikel)',
 	'bs-extendedsearch-pref-numfacets' => 'Anzahl der Facetten',
@@ -293,14 +285,12 @@ $messages['de'] = array(
 	'bs-extendedsearch-pref-mltns' => '"More like this" Namensräume',
 	'bs-extendedsearch-redirect' => 'Weiterleitung von',
 	'bs-extendedsearch-totalnoofarticles' => 'Zu indexierende Artikel',
-
-	//Javascript
 	'bs-extendedsearch-more' => 'Mehr',
 	'bs-extendedsearch-fewer' => 'Weniger'
 );
 
 $messages['de-formal'] = array(
-	'bs-extendedsearch-no_search_term' => 'Bitte geben Sie einen Suchbegriff ein',
+	'bs-extendedsearch-nosearchterm' => 'Bitte geben Sie einen Suchbegriff ein',
 	'bs-extendedsearch-lockfiletext' => 'Löschen Sie die Lockdatei nur, wenn Sie sich sicher sind, dass kein Indexierprozess läuft!',
 	'bs-extendedsearch-did-you-mean' => 'Meinten Sie $1?'
 );

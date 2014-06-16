@@ -109,7 +109,6 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::SearchFiles', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-searchfiles', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::JumpToTitle', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-jumptotitle', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreateSugg', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showcreatesugg', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::ShowSpell', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showspell', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowFacets', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-showfacets', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowAutocomplete', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showautocomplete', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreSugInAc', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-showcresuginac', 'toggle' );
@@ -120,7 +119,7 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesSpecial', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypesspecial', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ExternalRepo', '', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-externalrepo' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefScopeUser', 'text', BsConfig::TYPE_STRING|BsConfig::LEVEL_USER|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-defscopeuser', 'select' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::FormMethod', 'get', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-formmethod' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::FormMethod', 'get', BsConfig::TYPE_STRING|BsConfig::LEVEL_PRIVATE );
 		BsConfig::registerVar( 'MW::ExtendedSearch::HighlightSnippets', '3', BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-highlightsnippets', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::LogUsers', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logusers', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::Logging', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logging', 'toggle' );
@@ -128,7 +127,7 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::SolrServiceUrl', 'http://127.0.0.1:8080/solr', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrserviceurl' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SolrPingTime', 2, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrpingtime', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SetFocus', true, BsConfig::LEVEL_USER|BsConfig::RENDER_AS_JAVASCRIPT|BsConfig::TYPE_BOOL, 'bs-extendedsearch-pref-setfocus', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::CustomerID', sha1( $wgDBserver . $wgDBname . $wgSecretKey ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-CustomerID' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::CustomerID', sha1( $wgDBserver . $wgDBname . $wgSecretKey ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
 		BsConfig::registerVar( 'MW::ExtendedSearch::NumFacets', 15, BsConfig::LEVEL_USER|BsConfig::RENDER_AS_JAVASCRIPT|BsConfig::TYPE_INT, 'bs-extendedsearch-pref-numfacets', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowMlt', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showmlt', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SolrCore', 'bluespice', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrcore' );
@@ -150,7 +149,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 
-		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance();
+		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance( $this );
 		$this->oBuildIndexMainControl = BuildIndexMainControl::getInstance();
 
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ) );
@@ -176,19 +175,18 @@ class ExtendedSearch extends BsExtensionMW {
 
 	/**
 	* Adds the 'ext.bluespice.extendedsearch' module to the OutputPage
-	* @param OutputPage $out
-	* @param Skin $skin
+	* @param OutputPage $oOut
+	* @param Skin $oSkin
 	* @return boolean
 	*/
 	public function onBeforePageDisplay( $oOut, $oSkin ) {
 		$oOut->addModuleStyles( 'ext.bluespice.extendedsearch.autocomplete.style' );
-		$oOut->addModules( 'ext.bluespice.extendedsearch.autocomplete' );
+		$oOut->addModuleScripts( 'ext.bluespice.extendedsearch.autocomplete' );
 		return true;
 	}
 
 	/**
 	 * Event-Handler for 'MW::Utility::WidgetListHelper::InitKeywords'. Registers a callback for the WHOISONLINE Keyword.
-	 * @param BsEvent $oEvent The Event object
 	 * @param array $aKeywords An array of Keywords array( 'KEYWORD' => $callable )
 	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
 	 */
@@ -237,7 +235,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$oMltListView = new ViewStateBarBodyElement();
 		$oMltListView->setKey( 'MoreLikeThis' );
 		$oMltListView->setHeading( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() );
-		$oMltListView->setBodyText( ExtendedSearchBase::getInstance()->getViewMoreLikeThis( $oTitle )->execute() );
+		$oMltListView->setBodyText( $this->oExtendedSearchBase->getViewMoreLikeThis( $oTitle )->execute() );
 
 		$aBodyViews['statebarbodymorelikethis'] = $oMltListView;
 		return true;
@@ -268,20 +266,11 @@ class ExtendedSearch extends BsExtensionMW {
 	}
 
 	/**
-	 * Returns results for autocomplete. AJAX function.
-	 * @param string $sSearchString string to search for
-	 * @return string JSON encoded results
-	 */
-	public static function getAutocompleteData( $sSearchString ) {
-		return ExtendedSearchBase::getInstance()->searchAutocomplete( $sSearchString );
-	}
-
-	/**
 	 * Returns rendered inner part of search results page. Used for faceting and paging. AJAX function.
 	 * @return string JSON encoded HTML of search results page.
 	 */
 	public static function getRequestJson() {
-		$viewContentsSpecialPage = ExtendedSearchBase::getInstance()->renderSpecialpage();
+		$viewContentsSpecialPage = ExtendedSearchBase::getInstance( RequestContext::getMain() )->getResults();
 
 		$oDummy = new StdClass();
 		$oDummy->data = array( 'bodytext' => $viewContentsSpecialPage->execute() );
@@ -292,18 +281,8 @@ class ExtendedSearch extends BsExtensionMW {
 	}
 
 	/**
-	 * Returns list of recent search terms called via Ajax
-	 * @param integer $iCount number of items
-	 * @param sring $sTime timespan
-	 * @return string recent search terms
-	 */
-	public static function getRecentSearchTerms( $iCount, $sTime ) {
-		return ExtendedSearchBase::getInstance()->recentSearchTerms( $iCount, $sTime );
-	}
-
-	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -322,7 +301,7 @@ class ExtendedSearch extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -340,7 +319,7 @@ class ExtendedSearch extends BsExtensionMW {
 
 	/**
 	 * Determines default values for search form.
-	 * @param BsEvent $oEvent Contains additional information, e.g. calling instance.
+	 * @param BsEvent $oCallingInstance Contains additional information, e.g. calling instance.
 	 * @param array $aSearchBoxKeyValues List of parameters sent by calling event.
 	 * @return array Modified parameters list.
 	 */
@@ -367,12 +346,12 @@ class ExtendedSearch extends BsExtensionMW {
 		$aSearchBoxKeyValues['TitleKeyValuePair'] = array( 'search_scope', 'title' );
 		$aSearchBoxKeyValues['FulltextKeyValuePair'] = array( 'search_scope', 'text' );
 
-		// Default scope 
+		// Default scope
 		$aSearchBoxKeyValues['DefaultKeyValuePair'] = ( BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' )
 			? $aSearchBoxKeyValues['TitleKeyValuePair']
 			: $aSearchBoxKeyValues['FulltextKeyValuePair'];
 
-		$aSearchBoxKeyValues['method'] = ( 0 == strcasecmp( BsConfig::get( 'MW::ExtendedSearch::FormMethod' ), 'get' ) ) ? 'get' : 'post';
+		$aSearchBoxKeyValues['method'] = BsConfig::get( 'MW::ExtendedSearch::FormMethod' );
 
 		if ( !empty( SearchOptions::$searchStringRaw ) ) $aSearchBoxKeyValues['SearchTextFieldText'] = SearchOptions::$searchStringRaw;
 		return true;
@@ -440,7 +419,7 @@ class ExtendedSearch extends BsExtensionMW {
 			// Moving article
 			$this->oBuildIndexMainControl->updateIndexWikiByTitleObject( $oNewtitle );
 			// Check if redirect is created; 0 is no redirect
-			if ( $iNewID != 0 ) {
+			if ( $iNewID !== 0 ) {
 				$this->oBuildIndexMainControl->updateIndexWikiByTitleObject( $oTitle );
 			}
 			// Moving file if namespace of title is the file namespace
@@ -448,12 +427,7 @@ class ExtendedSearch extends BsExtensionMW {
 				$oOldFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
 				$oNewFile = RepoGroup::singleton()->findFile( $oNewtitle );
 
-				$oFileRepoLocalRef = $oOldFile->getRepo()->getLocalReference( $oOldFile->getPath() );
-				if ( !is_null( $oFileRepoLocalRef ) ) {
-					$sFilePath = $oFileRepoLocalRef->getPath();
-				}
-
-				$this->oBuildIndexMainControl->deleteIndexFile( -1,$sFilePath );
+				$this->oBuildIndexMainControl->deleteIndexFile( $oOldFile->getPath(), 'repo' );
 				$this->oBuildIndexMainControl->updateIndexFile( $oNewFile );
 			}
 		} catch ( BsException $e ) {
@@ -481,7 +455,7 @@ class ExtendedSearch extends BsExtensionMW {
 	/**
 	 * Delete file from index when file is deleted
 	 * @param File $oFile MediaWiki file object of deleted file
-	 * @param unknown $uOldimage the name of the old file
+	 * @param File $oOldimage the name of the old file
 	 * @param Article $oArticle reference to the article if all revisions are deleted
 	 * @param User $oUser user who performed the deletion
 	 * @param string $sReason reason
@@ -489,11 +463,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
 		try {
-			$oFileRepoLocalRef = $oFile->getRepo()->getLocalReference( $oFile->getPath() );
-			if ( !is_null( $oFileRepoLocalRef ) ) {
-				$sFilePath = $oFileRepoLocalRef->getPath();
-			}
-			$this->oBuildIndexMainControl->deleteIndexFile( -1, $sFilePath );
+			$this->oBuildIndexMainControl->deleteIndexFile( $oFile->getPath(), 'repo' );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileDeleteComplete: '.$e->getMessage() );
 		}

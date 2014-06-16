@@ -66,9 +66,10 @@ function bs_initVisualEditor() {
 		});
 	}
 
-	if (mw.config.get('BsVisualEditorUseTidy') === true) {
-		VisualEditor.startEditors();
-		$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
+	if ( mw.config.get('bsVisualEditorUse') !== false 
+		&& mw.user.options.get('MW::VisualEditor::Use') === true ) {
+			VisualEditor.startEditors();
+			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
 	}
 }
 

@@ -87,8 +87,7 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 	 * @return Apache_Solr_sFile
 	 */
 	public function makeRepoDocument( $sType, $sFilename, &$sText, $sRealPath, $vTimestamp ) {
-		$oSolrDocument = $this->oMainControl->makeDocument( '', $sType, $sFilename, $sText, -1, 998, $sRealPath, $vTimestamp );
-		return $oSolrDocument;
+		return $this->oMainControl->makeDocument( 'external', $sType, $sFilename, $sText, -1, 998, $sRealPath, $sRealPath, $vTimestamp );
 	}
 
 	// duplicate of AbstractBuildIndexMwLinked
@@ -136,7 +135,7 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 			$sRepoFileRealPath = $oRepoFile->getRealPath();
 
 			try {
-				$uniqueIdForFile = $this->oMainControl->getUniqueId( -1, $sRepoFileRealPath );
+				$uniqueIdForFile = $this->oMainControl->getUniqueId( $sRepoFileRealPath, 'external' );
 				$hitssFileInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForFile, 0, 1 );
 			} catch ( Exception $e ) {
 				$this->writeLog( 'Error indexing file '.$oRepoFile->getFilename().' with errormessage '.$e->getMessage() );

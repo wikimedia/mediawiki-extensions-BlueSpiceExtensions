@@ -40,7 +40,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 
 	/**
 	 * Constructor for BuildIndexMwLinked class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate.
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
@@ -76,9 +76,8 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	 * @param unknown $ts Timestamp
 	 * @return Apache_Solr_Document
 	 */
-	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts ) {
-		$doc = $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $ts );
-		return $doc;
+	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts, $sVirtualPath ) {
+		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualPath, $ts );
 	}
 
 	// duplicate of AbstractBuildIndexMwLinked
@@ -114,7 +113,8 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 
 			$oTitle = Title::newFromText( $document->img_name, NS_FILE );
 			$oFile = wfLocalFile( $oTitle );
-			$oFileRepoLocalRef = $oFile->getRepo()->getLocalReference( $oFile->getPath() );
+			$sVirtualPath = $oFile->getPath();
+			$oFileRepoLocalRef = $oFile->getRepo()->getLocalReference( $sVirtualPath );
 			if ( !is_null( $oFileRepoLocalRef ) ) {
 				$path = $oFileRepoLocalRef->getPath();
 			}
@@ -135,7 +135,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 			$repoFileRealPath = $repoFile->getRealPath();
 
 			try {
-				$uniqueIdForDocument = $this->oMainControl->getUniqueId( -1, $repoFileRealPath );
+				$uniqueIdForDocument = $this->oMainControl->getUniqueId( $sVirtualPath, 'repo' );
 				$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
 			} catch ( Exception $e ) {
 				$this->writeLog( 'Error indexing file '.$document->img_name.' with errormessage '.$e->getMessage() );
@@ -162,7 +162,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 				error_log( $e->getMessage() );
 			}
 
-			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage );
+			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage, $sVirtualPath );
 
 			if ( $doc ) {
 				// mode and ERROR_MSG_KEY are only passed for the case when addDocument fails

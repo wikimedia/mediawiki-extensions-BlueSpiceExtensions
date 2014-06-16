@@ -56,6 +56,7 @@ class ViewStateBar extends ViewBaseElement {
 		}
 
 		$aOut[] = ' </div>'; // #state_view
+		$aOut [] = "<div class='clearfix'></div>";
 		$aOut[] = '</div>'; //#page_state
 
 		return join( "\n", $aOut );

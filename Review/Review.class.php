@@ -1079,7 +1079,8 @@ class Review extends BsExtensionMW {
 		}
 
 		$oReviewView->setVotable( true );
-		$oReviewView->setComment( $step->comment );
+		$sUserName = BsCore::getUserDisplayName($oUser);
+		$oReviewView->setComment( "<em>{$sUserName}:</em> {$_step->comment}" );
 
 		wfRunHooks('BsReview::checkStatus::afterMessage', array($step, $oReviewView));
 		$aBodyViews['statebarbodyreview'] = $oReviewView;
@@ -1177,6 +1178,7 @@ class Review extends BsExtensionMW {
 		$conds[] = $tbl_step . '.revs_review_id = ' . $tbl_rev . '.rev_id';  // join tables
 		$conds[] = $tbl_rev . '.rev_pid=' . $iArticleId; // reviews only for current article
 		$conds[] = $tbl_step . '.revs_status=-1';  // prevent user from confirming twice
+		$conds[] = $tbl_step . ".revs_user_id='{$oUser->getId()}'"; // make sure we select a dataset for the current user
 
 		$options = array('ORDER BY' => 'revs_sort_id ASC');
 		$join_conds = array();
@@ -1184,7 +1186,9 @@ class Review extends BsExtensionMW {
 		wfRunHooks('BsReview::buildDbQuery', array('getVoteResponse', &$tables, &$fields, &$conds, &$options, &$join_conds));
 
 		$res = $dbw->select($tables, $fields, $conds, __METHOD__, $options, $join_conds);
-		$row = $dbw->fetchRow($res);
+		if(!$row = $dbw->fetchRow($res)) {
+			return wfMessage('bs-review-review_error')->plain();
+		}
 
 		// Unexpectedly, no review could be found.
 		if ($dbw->numRows($res) == 0) {

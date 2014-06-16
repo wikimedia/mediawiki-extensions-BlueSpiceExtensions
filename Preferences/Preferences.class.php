@@ -1,9 +1,9 @@
 <?php
 /**
  * This is the Preferences class.
- * 
+ *
  * The Preferences offers an easy way to manage the settings of BlueSpice.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,13 +17,12 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    2.22.0
-
  * @package    Bluespice_Extensions
  * @subpackage Preferences
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -34,7 +33,7 @@
 // Last review MRG (01.07.11 13:56)
 
 /* Changelog
- * 
+ *
  */
 
 /**
@@ -74,13 +73,14 @@ class BsPreferences extends BsExtensionMW {
 
 	/**
 	 * returns the formular for Preferences
-	 * @return string the formular string 
+	 * @return string the formular string
 	 */
 	public function getForm() {
 		if ( wfReadOnly() ) {
 			throw new ReadOnlyError;
 		}
 
+		$this->getOutput()->addModuleScripts( 'ext.bluespice.preferences' );
 		$this->getOutput()->addHTML( '<br />' );
 
 		$oRequest = $this->getRequest();
@@ -167,8 +167,6 @@ class BsPreferences extends BsExtensionMW {
 		}
 		BsConfig::deliverUsersSettings( $orig_deliver );
 
-		BsCore::loadHtmlFormClass();
-
 		$oForm = new HTMLFormEx( $preferences, 'prefs' );
 		$oForm->setTitle( $this->getTitle() );
 		$oForm->addHiddenField( 'mode', 'Preferences' );
@@ -179,8 +177,6 @@ class BsPreferences extends BsExtensionMW {
 		$oForm->show();
 
 		$this->getOutput()->addHTML( '<br />' );
-
-		BsConfig::loadUserSettings( $this->getUser()->getName() );
 
 		return '';
 	}

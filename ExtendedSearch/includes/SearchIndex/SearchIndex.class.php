@@ -25,11 +25,6 @@
 class SearchIndex {
 
 	/**
-	 * Instance of ExtendedSearchBase
-	 * @var ExtendedSearchBase obejct of ExtendedSearchBase
-	 */
-	protected $oExtendedSearchBase;
-	/**
 	 * Instance of SearchService
 	 * @var SearchService object of SearchService
 	 */
@@ -48,7 +43,7 @@ class SearchIndex {
 	 * RequestContext
 	 * @var RequestContext object of RequestContext
 	 */
-	protected $oRequestContext;
+	protected $oContext;
 	/**
 	 * View that renders search results
 	 * @var ViewSearchResult ViewSearchResult object
@@ -74,12 +69,11 @@ class SearchIndex {
 	 * Constructor for SearchIndexMW class
 	 * @param BsSearchService $searchServiceObject Current search service
 	 */
-	public function __construct() {
-		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance();
-		$this->oSearchRequest = SearchRequest::getInstance();
-		$this->oSearchOptions = SearchOptions::getInstance();
-		$this->oUriBuilder = SearchUriBuilder::getInstance();
-		$this->oRequestContext = RequestContext::getMain();
+	public function __construct( $oSearchRequest, $oSearchOptions, $oSearchUriBuilder, $oContext ) {
+		$this->oSearchRequest = $oSearchRequest;
+		$this->oSearchOptions = $oSearchOptions;
+		$this->oUriBuilder = $oSearchUriBuilder;
+		$this->oContext = $oContext;
 	}
 
 	/**
@@ -96,12 +90,12 @@ class SearchIndex {
 
 	/**
 	 * Shorten facet string.
-	 * @param string $facet Name of facet
+	 * @param string $sFacet Name of facet
 	 * @return string Shortened name of facet
 	 */
 	public function reduceMaxFacetLength( $sFacet ) {
 		$sFacet = str_replace( '_', ' ', $sFacet );
-		return BsStringHelper::shorten( 
+		return BsStringHelper::shorten(
 					$sFacet,
 					array(
 						'max-length' => $this->iMaxFacetLength,
@@ -112,7 +106,7 @@ class SearchIndex {
 
 	/**
 	 * Shorten facet string.
-	 * @param string $facet Name of facet
+	 * @param string $sFacet Name of facet
 	 * @return string Shortened name of facet
 	 */
 	public function getFacetTitle( $sFacet ) {
@@ -127,7 +121,7 @@ class SearchIndex {
 
 	/**
 	 * This functions searches the index for a given search term
-	 * @param BsSearchRequest $oSearchRequestCore Current search request
+	 * @param BsSearchRequest $oSearchService Current search request
 	 * @param array &$aMonitor Set of options.
 	 * @return ViewSearchResult View that describes search results
 	 */
@@ -140,15 +134,15 @@ class SearchIndex {
 			&& ( $this->oSearchOptions->getOption( 'titleExists' ) === true )
 			&& ( $this->oSearchRequest->sOrigin == 'titlebar' )
 			&& ( $this->oSearchRequest->bAutocomplete === false ) ) {
-			$this->oRequestContext->getOutput()->redirect(
+
+			$this->oContext->getOutput()->redirect(
 				$this->oSearchOptions->getOption( 'existingTitleObject' )->getFullURL()
 			);
-			throw new Exception( 'redirect' );
 		}
 
 		if ( !$this->oSearchRequest->isSearchable() ) {
 			if ( $this->oSearchRequest->sOrigin != '' && $this->oSearchOptions->getOption( 'searchStringOrig' ) == '' ) {
-				return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-no_search_term' );
+				return $this->createErrorMessageView( 'bs-extendedsearch-nosearchterm' );
 			} else {
 				$vbe = new ViewBaseElement();
 				$vbe->setAutoElement( false );
@@ -172,10 +166,10 @@ class SearchIndex {
 				}
 				$sUrl .= ( ( strpos( $sUrl, '?' ) === false ) ? '?' : '&').$sParams;
 
-				return $this->oRequestContext->getOutput()->redirect( $sUrl, '404' );
+				return $this->oContext->getOutput()->redirect( $sUrl, '404' );
 			}
 
-			return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
+			return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 		}
 
 		$iNumFound = $oHits->response->numFound;
@@ -187,13 +181,13 @@ class SearchIndex {
 			try {
 				$oHits = $this->oSearchService->search( $aFuzzyQuery['searchString'], $aFuzzyQuery['offset'], $aFuzzyQuery['searchLimit'], $aFuzzyQuery['searchOptions'] );
 			} catch ( Exception $e ) {
-				return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
+				return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 			}
 
 			$iNumFound = $oHits->response->numFound;
 		}
 
-		$this->oExtendedSearchBase->logSearch(
+		$this->logSearch(
 			$this->oSearchOptions->getOption( 'searchStringForStatistics' ),
 			$iNumFound,
 			$this->oSearchOptions->getOption( 'scope' ),
@@ -204,16 +198,14 @@ class SearchIndex {
 
 		$this->vSearchResult->setOption( 'siteUri', $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::MLT ) );
 
-		if ( BsConfig::get( 'MW::ExtendedSearch::ShowSpell' ) ) {
-			if ( $iNumFound == 0 || $bEscalateToFuzzy ) {
-				$this->vSearchResult->addSpell(
-					array(
-						'script_path' => $wgScriptPath,
-						'sim' => $this->oSearchService->getSpellcheck( $this->oSearchOptions->getOption( 'searchStringRaw' ), $this->oSearchOptions->getSearchOptionsSim() ),
-						'url' => $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::INPUT | SearchUriBuilder::MLT | SearchUriBuilder::ORDER_ASC_OFFSET )
-					)
-				);
-			}
+		if ( $iNumFound == 0 || $bEscalateToFuzzy ) {
+			$this->vSearchResult->addSpell(
+				array(
+					'script_path' => $wgScriptPath,
+					'sim' => $this->oSearchService->getSpellcheck( $this->oSearchOptions->getOption( 'searchStringRaw' ), $this->oSearchOptions->getSearchOptionsSim() ),
+					'url' => $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::INPUT | SearchUriBuilder::MLT | SearchUriBuilder::ORDER_ASC_OFFSET )
+				)
+			);
 		}
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowCreateSugg' ) ) {
@@ -228,7 +220,7 @@ class SearchIndex {
 		}
 
 		$aMonitor['NoOfResultsFound'] = $iNumFound;
-		$aMonitor['SearchTerm']       = $this->oSearchOptions->getOption( 'searchStringRaw' );
+		$aMonitor['SearchTerm'] = $this->oSearchOptions->getOption( 'searchStringRaw' );
 		$aMonitor['EscalatedToFuzzy'] = $bEscalateToFuzzy;
 
 		if ( $iNumFound == 0 ) return $this->vSearchResult;
@@ -465,7 +457,7 @@ class SearchIndex {
 				$aFacetsTypeInHits = $oHits->facet_counts->facet_fields->type;
 				foreach ( $aFacetsTypeInHits as $type => $count ) {
 					if ( $type == '_empty_' ) continue;
-					if ( $type != 'wiki' && !$this->oRequestContext->getUser()->isAllowed( 'searchfiles' ) ) {
+					if ( $type != 'wiki' && !$this->oContext->getUser()->isAllowed( 'searchfiles' ) ) {
 						continue;
 					}
 					$facetTypeAll[$type]['count'] = $count;
@@ -656,7 +648,7 @@ class SearchIndex {
 						}
 						$sSearchLink .= ' <span class="bs-extendedsearch-sectionresult">('. wfMessage( 'bs-extendedsearch-section' )->plain() . $sSectionLink . ')</span>';
 					}
-				} elseif ( $this->oRequestContext->getUser()->isAllowed( 'searchfiles' ) ) {
+				} elseif ( $this->oContext->getUser()->isAllowed( 'searchfiles' ) ) {
 					$sLinkIcon = ( isset( $aImageLinks[$oDocument->type] ) )
 						? $aImageLinks[$oDocument->type]
 						: $aImageLinks['default'];
@@ -685,17 +677,26 @@ class SearchIndex {
 			if ( isset( $oDocument->cat ) ) {
 				if ( is_array( $oDocument->cat ) ) {
 					$catlinks = array();
+					$iItems = 0;
 					foreach ( $oDocument->cat as $c ) {
 						if ( $c == 'notcategorized' ) continue;
-						$oTitle = Title::makeTitle( NS_CATEGORY, $c );
-						$catstr = BsLinkProvider::makeLink( $oTitle, $oTitle->getText() );
-						$catlinks[] = $catstr;
+						$oCatTitle = Title::makeTitle( NS_CATEGORY, $c );
+						$catstr = BsLinkProvider::makeLink( $oCatTitle, $oCatTitle->getText() );
+
+						if ( $iItems === 3 ) {
+							$catlinks[] = BsLinkProvider::makeLink( $oTitle, '...' );
+							break;
+						} else {
+							$catlinks[] = $catstr;
+						}
+
+						$iItems++;
 					}
 					$catstr = implode( ', ', $catlinks );
 				} else {
 					if ( $oDocument->cat != 'notcategorized' ) {
-						$oTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
-						$catstr = BsLinkProvider::makeLink( $oTitle, $oTitle->getText() );
+						$oCatTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
+						$catstr = BsLinkProvider::makeLink( $oCatTitle, $oCatTitle->getText() );
 					}
 				}
 			}
@@ -704,8 +705,8 @@ class SearchIndex {
 			$aHighlightsnippets = null;
 			if ( $this->oSearchOptions->getOption( 'scope' ) != 'title' ) {
 				$oHighlightData = $oHits->highlighting->{$oDocument->uid};
-				if ( isset( $oHighlightData->textWord ) ) { 
-					$aHighlightsnippets = $oHighlightData->textWord; 
+				if ( isset( $oHighlightData->textWord ) ) {
+					$aHighlightsnippets = $oHighlightData->textWord;
 				} elseif ( isset( $oHighlightData->textReverse ) ) {
 					$aHighlightsnippets = $oHighlightData->textReverse;
 				}
@@ -728,8 +729,8 @@ class SearchIndex {
 
 			$sTimestamp = sprintf(
 				'%s - %s',
-				$this->oRequestContext->getLanguage()->date( $oDocument->ts, true ),
-				$this->oRequestContext->getLanguage()->time( $oDocument->ts, true )
+				$this->oContext->getLanguage()->date( $oDocument->ts, true ),
+				$this->oContext->getLanguage()->time( $oDocument->ts, true )
 			);
 
 			$aResultEntryDataSet = array(
@@ -773,6 +774,51 @@ class SearchIndex {
 			}
 		}
 		return 0;
+	}
+
+	/**
+	 * Writes a given search request to database log.
+	 * @param string $term Search term
+	 * @param int $iNumFound Number of hits
+	 * @param string $scope What was the scope of the search?
+	 * @param string $files Were files searched as well?
+	 * @return bool always false.
+	 */
+	public function logSearch( $term, $iNumFound, $scope, $files ) {
+		if ( !BsConfig::get( 'MW::ExtendedSearch::Logging' ) ) return false;
+
+		$oDbw = wfGetDB( DB_MASTER );
+
+		$term = BsCore::sanitize( $term, '', BsPARAMTYPE::SQL_STRING );
+
+		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) )
+			? RequestContext::getMain()->getUser()->getId()
+			: '';
+
+		$effectiveScope = ( $files ) ? $scope.'-files' : $scope;
+		$data = array(
+			'stats_term' => $term,
+			'stats_ts' => wfTimestamp( TS_MW ),
+			'stats_user' => $user,
+			'stats_hits' => $iNumFound,
+			'stats_scope' => $effectiveScope
+		);
+
+		$oDbw->insert( 'bs_searchstats', $data );
+
+		return true;
+	}
+
+	/**
+	 * Renders error message
+	 * @param string $sMessage I18N key of error message
+	 * @return ViewBaseElement Renders error message.
+	 */
+	public function createErrorMessageView( $sMessage ) {
+		$res = new ViewBaseElement();
+		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
+		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
+		return $res;
 	}
 
 }

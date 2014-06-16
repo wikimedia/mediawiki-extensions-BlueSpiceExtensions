@@ -72,13 +72,11 @@ class Readers extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSBlueSpiceSkinBeforeArticleHeadline' );
 		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
 		$this->setHook( 'SkinTemplateContentActions' );
 
 		$this->mCore->registerPermission( 'viewreaders' );
 
-		BsConfig::registerVar( 'MW::Readers::UpOrDown', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-upordown', 'toggle' );
 		BsConfig::registerVar( 'MW::Readers::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-active', 'toggle' );
 		BsConfig::registerVar( 'MW::Readers::NumOfReaders', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-readers-pref-numofreaders', 'int' );
 
@@ -183,24 +181,6 @@ class Readers extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinBeforeArticleContent'. Creates the StateBar. on articles.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return bool Always true to keep hook running.
-	 */
-	public function onBSBlueSpiceSkinBeforeArticleHeadline( &$aViews, $oUser, $oTitle ) {
-		if ( $this->checkContext() === false ) return true;
-		if ( !$oTitle->userCan( 'viewreaders' ) ) return true;
-		if ( BsConfig::get( 'MW::Readers::UpOrDown' ) === false ) return true;
-
-		$oViewReaders = $this->generateViewReaders( $oTitle );
-		array_unshift( $aViews, $oViewReaders );
-
-		return true;
-	}
-
-	/**
 	 * Hook-Handler for 'BSBlueSpiceSkinAfterArticleContent'. Creates the Readers list below an article.
 	 * @param array $aViews Array of views to be rendered in skin
 	 * @param User $oUser Current user object
@@ -210,7 +190,6 @@ class Readers extends BsExtensionMW {
 	public function onBSBlueSpiceSkinAfterArticleContent( &$aViews, $oUser, $oTitle ) {
 		if ( $this->checkContext() === false ) return true;
 		if ( !$oTitle->userCan( 'viewreaders' ) ) return true;
-		if ( BsConfig::get( 'MW::Readers::UpOrDown' ) === true ) return true;
 
 		$oViewReaders = $this->generateViewReaders( $oTitle );
 		$aViews[] = $oViewReaders;
@@ -258,7 +237,7 @@ class Readers extends BsExtensionMW {
 
 	/**
 	 * Get the Users for specialpage, called via ajax
-	 * @param string $sOutput Output to return
+	 * @param string $sPage page title
 	 * @return bool Always true
 	 */
 	public static function getUsers( $sPage ) {

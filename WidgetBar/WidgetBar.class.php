@@ -23,7 +23,6 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage WidgetBar
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -37,8 +36,6 @@
  * v1.0.0
  * - initial release
  */
-
-// Last review MRG (01.07.11 02:11) 
 
 /**
  * Base class for WidgetBar extension
@@ -59,13 +56,13 @@ class WidgetBar extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'WidgetBar',
-			EXTINFO::DESCRIPTION => 'Adds the widget flyout to the skin.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-widgetbar-desc' )->plain(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
+			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::WidgetBar';
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -82,14 +79,14 @@ class WidgetBar extends BsExtensionMW {
 		$this->setHook( 'GetPreferences' );
 		$this->setHook( 'BeforePageDisplay' );
 
-		BsConfig::registerVar( 'MW::WidgetBar::UserPageSubPageTitle', 'Widgetbar', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-widgetbar-pref-UserPageSubPageTitle' );
+		BsConfig::registerVar( 'MW::WidgetBar::UserPageSubPageTitle', 'Widgetbar', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
 		BsConfig::registerVar( 'MW::WidgetBar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-widgetbar-userpagesettings-link-title', 'link' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param OutputPage $oOutputPage
 	 * @param SkinTemplate $oSkinTemplate
 	 * @return boolean
@@ -126,8 +123,8 @@ class WidgetBar extends BsExtensionMW {
 	public function onGetPreferences( $user, &$preferences ) {
 		$sUserPageSubPageTitle  = BsConfig::get( 'MW::WidgetBar::UserPageSubPageTitle' );
 		$oWidgetBarArticleTitle = Title::makeTitle( NS_USER, $user->getName().'/'.$sUserPageSubPageTitle );
-		$preferences['MW_WidgetBar_LinkToEdit']['default'] = array( 
-			'href' => $oWidgetBarArticleTitle->getEditURL(), 
+		$preferences['MW_WidgetBar_LinkToEdit']['default'] = array(
+			'href' => $oWidgetBarArticleTitle->getEditURL(),
 			'content' => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->plain()
 		);
 		return true;
@@ -153,11 +150,11 @@ class WidgetBar extends BsExtensionMW {
 		$oUserPageSettingsView->addData(
 			array(
 				'HEADLINE' => wfMessage( 'bs-widgetbar-userpagesettings-headline' )->plain(),
-				'URL'      => htmlspecialchars( $oWidgetBarArticleTitle->getEditURL() ),
-				'TITLE'    => wfMessage( 'bs-widgetbar-userpagesettings-link-title' )->plain(),
-				'TEXT'     => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->plain(),
-				'IMGALT'   => wfMessage( 'bs-widgetbar-userpagesettings-headline' )->plain(),
-				'IMGSRC'   => $this->getImagePath( true ).'bs-userpage-widgets.png',
+				'URL' => htmlspecialchars( $oWidgetBarArticleTitle->getEditURL() ),
+				'TITLE' => wfMessage( 'bs-widgetbar-userpagesettings-link-title' )->plain(),
+				'TEXT' => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->text(),
+				'IMGALT' => wfMessage( 'bs-widgetbar-userpagesettings-headline' )->plain(),
+				'IMGSRC' => $this->getImagePath( true ).'bs-userpage-widgets.png',
 			)
 		);
 
@@ -191,7 +188,7 @@ class WidgetBar extends BsExtensionMW {
 			$aViews[] = $oWidgetListView->setWidgets( $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle ) );
 			return $aViews;
 		}
-		
+
 		$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
 		if( empty($aWidgets) ) {
 			$aWidgets = $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle );

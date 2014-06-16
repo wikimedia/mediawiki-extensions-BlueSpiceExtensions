@@ -18,14 +18,15 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 		'https://',
 		'//'
 	],
+	linktype: 'external_link',
+	origLabel: '',
 	beforeInitComponent: function() {
-		this.setTitle( mw.message('bs-insertlink-tab_external_link').plain() );
+		this.setTitle( mw.message('bs-insertlink-tab-ext-link').plain() );
 
 		this.tfTargetUrl = Ext.create( 'Ext.form.field.Text', {
 			name: 'inputTargetUrl',
-			fieldLabel: mw.message('bs-insertlink-label_link').plain(),
+			fieldLabel: mw.message('bs-insertlink-label-link').plain(),
 			value: 'http://',
-			width: 600,
 			allowBlank: false
 		});
 
@@ -47,8 +48,8 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 	onTargetUrlChange: function( field, newValue, oldValue ) {
 		for( var i = 0; i < this.protocols.length; i++ ) {
 			if( newValue.match( 'http://' + this.protocols[i] ) ) {
-				field.setValue( newValue.replace( 
-					'http://' + this.protocols[i], 
+				field.setValue( newValue.replace(
+					'http://' + this.protocols[i],
 					this.protocols[i] )
 				);
 			}
@@ -63,11 +64,15 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 		var bAcitve = false;
 		var desc = false;
 
-		if(obj.href) {
-			for( var i = 0; i < this.protocols.length; i++ ) {
-				if( String(obj.href).indexOf(this.protocols[i]) === 0) {
-					if(String(obj.href) !== String(obj.content)) {
-						desc = obj.content;
+		if ( obj.href ) {
+			for ( var i = 0; i < this.protocols.length; i++ ) {
+				if ( String( obj.href ).indexOf( this.protocols[i] ) === 0 ) {
+					if ( String( obj.href ) !== String( obj.content ) ) {
+						if ( obj.content.match( /\[\d\]/ ) === null ) {
+							desc = obj.content;
+						} else {
+							this.origLabel = obj.content;
+						}
 					}
 					var link = String(obj.href);//.replace(this.protocols[i], "");
 					this.tfTargetUrl.setValue( unescape(link) );
@@ -99,6 +104,12 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 		var desc = '';
 		if( title != '' ) {
 			desc = ' '+title;
+		} else {
+			if ( this.origLabel === '' ) {
+				title = '[1]';
+			} else {
+				title = this.origLabel;
+			}
 		}
 
 		var href = '';
@@ -107,10 +118,10 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 			target = this.tfTargetUrl.getValue();
 		}
 
-		return { 
+		return {
 			title: title,
 			href: target,
-			type: '',
+			type: this.linktype,
 			code: '['+target + desc+']'
 			//'class': ''
 		};

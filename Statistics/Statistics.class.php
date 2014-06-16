@@ -3,7 +3,7 @@
  * Statistics Extension for BlueSpice
  *
  * Adds statistical analysis to pages.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -32,7 +32,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
- 
+
 /* Changelog
  * v1.20.0
  * - MediaWiki I18N
@@ -150,7 +150,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Returns list of available diagrams.
-	 * @return array List of diagram objects. 
+	 * @return array List of diagram objects.
 	 */
 	public static function getAvailableDiagrams() {
 		self::loadAvailableDiagrams();
@@ -215,7 +215,7 @@ class Statistics extends BsExtensionMW {
 		}
 	}
 
-	/** 
+	/**
 	 * Registers a tag "bs:infobox" with the parser. for legacy reasons witn HalloWiki, also "infobox" is supported. Called by ParserFirstCallInit hook
 	 * @param Parser $parser MediaWiki parser object
 	 * @return bool allow other hooked methods to be executed. always true
@@ -225,9 +225,9 @@ class Statistics extends BsExtensionMW {
 		$parser->setHook( 'bs:statistics:progress', array( &$this, 'onTagProgress' ) );
 		return true;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param OutputPage $oOutputPage
 	 * @param Skin $oSkin
 	 */
@@ -263,13 +263,13 @@ class Statistics extends BsExtensionMW {
 
 		// substract 1 because one item is in the progressitem attribute
 		$iFraction = substr_count( $sText, $sFraction ) - 1;
-		
+
 		if ( $sBaseItem ) {
 			$iBase = substr_count( $sText, $sBaseItem ) - 1;
 		} else {
 			$iBase = $iBaseCount;
 		}
-		
+
 		$fPercent = $iFraction / $iBase;
 
 		$iWidthGreen = floor($iWidth * $fPercent);
@@ -284,12 +284,13 @@ class Statistics extends BsExtensionMW {
 	}
 
 	public function onBSExtendedSearchAdminButtons( $oSpecialPage, &$aSearchAdminButtons ) {
-		$sScriptPath = BsConfig::get( 'MW::ScriptPath' );
+		global $wgScriptPath;
+
 		$aSearchAdminButtons['Statistics'] = array(
 			'href' => SpecialPage::getTitleFor( 'ExtendedStatistics' )->getLinkUrl(),
 			'onclick' => '',
 			'label' => wfMessage( 'bs-extendedsearch-statistics' )->plain(),
-			'image' => "$sScriptPath/extensions/BlueSpiceExtensions/Statistics/resources/images/bs-searchstatistics.png"
+			'image' => "$wgScriptPath/extensions/BlueSpiceExtensions/Statistics/resources/images/bs-searchstatistics.png"
 		);
 
 		return true;
@@ -314,7 +315,7 @@ class Statistics extends BsExtensionMW {
 			foreach( $oDiagram->getFilters() as $key => $oFilter ) $aFilterKeys[] = $key;
 
 			$aResult['data'][] = array(
-				'key' => $oDiagram->getDiagramKey(), 
+				'key' => $oDiagram->getDiagramKey(),
 				'displaytitle' => $oDiagram->getTitle(),
 				'listable' => $oDiagram->isListable(),
 				'filters' => $aFilterKeys,
@@ -366,7 +367,7 @@ class Statistics extends BsExtensionMW {
 			return json_encode($aResult);
 		}
 
-		foreach( BsNamespaceHelper::getNamespacesForSelectOptions( array( -2,-1 ) ) as $key => $name ) 
+		foreach( BsNamespaceHelper::getNamespacesForSelectOptions( array( -2,-1 ) ) as $key => $name )
 			$aResult['data'][] = array( 'key' => $key, 'displaytitle' => $name );
 
 		$aResult['success'] = true;
@@ -421,7 +422,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -435,7 +436,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -447,7 +448,7 @@ class Statistics extends BsExtensionMW {
 
 		/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -461,7 +462,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */

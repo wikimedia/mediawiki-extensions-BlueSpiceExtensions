@@ -15,7 +15,7 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 	extend: 'BS.InsertLink.FormPanelBase',
 	protocols: ['file:///'],
 	beforeInitComponent: function() {
-		this.setTitle( mw.message('bs-insertlink-tab6_title').plain() );
+		this.setTitle( mw.message('bs-insertlink-tab-ext-file').plain() );
 		this.on( 'beforeactivate', function(){
 			oApplet = document.createElement('applet');
 			oBody = document.getElementsByTagName('body')[0];
@@ -34,13 +34,13 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 		this.tfTargetUrl = Ext.create( 'Ext.form.field.Text', {
 			id: 'BSInserLinkTargetUrl',
 			name: 'inputTargetUrl',
-			fieldLabel: mw.message('bs-insertlink-label_file').plain(),
+			fieldLabel: mw.message('bs-insertlink-label-file').plain(),
 			value: '',
 			width: '75%'
 		});
 		this.btnSearchFile = Ext.create( 'Ext.button.Button', {
 			id: 'inputSearchFile',
-			text: mw.message('bs-insertlink-label_searchfile').plain(),
+			text: mw.message('bs-insertlink-label-searchfile').plain(),
 			handler: function(){
 				document.HWFileChooserApplet.openDialog('onFileDialogFile', 'onFileDialogCancel');
 			},
@@ -48,7 +48,6 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 		});
 		
 		this.fcTargetFields = Ext.create('Ext.form.FieldContainer', {
-			 width: 600,
 			 layout: 'hbox'
 		});
 		this.fcTargetFields.add(this.tfTargetUrl);

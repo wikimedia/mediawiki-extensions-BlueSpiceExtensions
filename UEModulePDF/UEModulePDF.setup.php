@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('UEModulePDF', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$bsgUEModulePDFCURLOptions = array();
+
 $wgExtensionMessagesFiles['UEModulePDF'] = __DIR__ . '/UEModulePDF.i18n.php';
 
 $GLOBALS['wgAutoloadClasses']['UEModulePDF'] = __DIR__ . '/UEModulePDF.class.php';

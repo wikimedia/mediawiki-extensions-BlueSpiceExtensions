@@ -122,6 +122,7 @@ class VisualEditor extends BsExtensionMW {
 		//apply in a correct manner. This may be dangerous.
 		'body_id' => 'bodyContent',
 		'autoresize_max_height' => 15000,
+		#'document_base_url' => $GLOBALS['wgServer'],
 		'style_formats' => array(
 			array('title' => 'Headers', 'items' => array(
 				array('title' => 'Header 2', 'format' => 'h2'),
@@ -200,7 +201,7 @@ class VisualEditor extends BsExtensionMW {
 			EXTINFO::NAME => 'VisualEditor',
 			EXTINFO::DESCRIPTION => 'Visual editor for MediaWiki.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.1a',
+			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
@@ -236,29 +237,14 @@ class VisualEditor extends BsExtensionMW {
 		// Hooks
 		$this->setHook( 'ParserAfterTidy' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'ResourceLoaderGetConfigVars' );
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 	}
 
-	/**
-	 *
-	 * @param array $vars
-	 * @return boolean
-	 */
-	public function onResourceLoaderGetConfigVars(&$vars) {
-		if (!BsConfig::get('MW::VisualEditor::Use') || !$this->bStartEditor) {
-			$vars['BsVisualEditorUseTidy'] = false;
-		} else {
-			$vars['BsVisualEditorUseTidy'] = true;
-		}
-
-		return true;
-	}
-
 	public function onBSExtendedEditBarBeforeEditToolbar(&$aRows, &$aButtonCfgs) {
-		if ($this->bShowToolbarIcon == false)
+		if ($this->bShowToolbarIcon == false) {
 			return true;
+		}
 
 		$aRows[0]['editing'][10] = 'bs-editbutton-visualeditor';
 
@@ -436,8 +422,7 @@ class VisualEditor extends BsExtensionMW {
 
 		$this->bStartEditor = false;
 		//Overwrite user setting
-		BsCore::registerClientScriptBlock(
-				$this->mExtensionKey, "bsVisualEditorUse=false;", 'NOEDITOR');
+		$this->getOutput()->addJsConfigVars('bsVisualEditorUse', false);
 		BsConfig::set('MW::VisualEditor::Use', false, true); //This seems to be too late
 	}
 

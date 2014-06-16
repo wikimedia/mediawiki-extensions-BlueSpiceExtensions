@@ -58,14 +58,14 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		if ( $this->getUser()->isAllowed( 'responsibleeditors-changeresponsibility' ) ) {
 			$sUserIsAllowedToChangeResponsibilities = true;
 		}
-		
+
 		$this->getOutput()->addJsConfigVars(
-			'bsUserMayChangeResponsibilities', 
+			'bsUserMayChangeResponsibilities',
 			$sUserIsAllowedToChangeResponsibilities
 		);
 		$this->getOutput()->addModules('ext.bluespice.responsibleEditors.manager');
 
-		return Html::element( 
+		return Html::element(
 			'div',
 			array(
 				'id' => 'bs-responsibleeditors-container'
@@ -129,7 +129,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		$aResult = array( 'users' => array() );
 		if( $iArticleId == -1 ) return FormatJson::encode( $aResult );
 
-		$oResponsibleEditors = BsExtensionMW::getInstanceFor( 'MW::ResponsibleEditors' );
+		$oResponsibleEditors = BsExtensionManager::getExtension( 'ResponsibleEditors' );
 		$aResult['users'] = $aEditors = $oResponsibleEditors->getListOfResponsibleEditorsForArticle($iArticleId);
 
 		return FormatJson::encode( $aResult );
@@ -178,7 +178,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		}
 		//Remove all
 		$dbw->delete(
-			'bs_responsible_editors', 
+			'bs_responsible_editors',
 			array(
 				're_page_id' => $iArticleId
 			)
@@ -188,7 +188,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		$iPosition = 0;
 		foreach( $aEditors as $iEditor ) {
 			$dbw->insert(
-					'bs_responsible_editors', 
+					'bs_responsible_editors',
 					array(
 						're_page_id' => $iArticleId,
 						're_user_id' => $iEditor,
@@ -207,7 +207,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 	}
 
 	/**
-	 * 
+	 *
 	 * @global User $wgUser
 	 * @param array $aNewEditorIds
 	 * @param array $aRemovedEditorIds

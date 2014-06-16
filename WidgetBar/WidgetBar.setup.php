@@ -2,7 +2,9 @@
 
 BsExtensionManager::registerExtension('WidgetBar', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['WidgetBar'] = __DIR__ . '/WidgetBar.i18n.php';
+$wgMessagesDirs['WidgetBar'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['WidgetBar'] = __DIR__ . '/languages/WidgetBar.i18n.php';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => 'extensions/BlueSpiceExtensions/WidgetBar/resources/',
@@ -20,7 +22,7 @@ $wgResourceModules['ext.bluespice.widgetbar'] = array(
 
 unset( $aResourceModuleTemplate );
 
-$wgAutoloadClasses['ViewWidget']          = __DIR__ . '/views/view.Widget.php';
-$wgAutoloadClasses['ViewWidgetError']     = __DIR__ . '/views/view.WidgetError.php';
+$wgAutoloadClasses['ViewWidget'] = __DIR__ . '/views/view.Widget.php';
+$wgAutoloadClasses['ViewWidgetError'] = __DIR__ . '/views/view.WidgetError.php';
 $wgAutoloadClasses['ViewWidgetErrorList'] = __DIR__ . '/views/view.WidgetErrorList.php';
-$wgAutoloadClasses['ViewWidgetList']      = __DIR__ . '/views/view.WidgetList.php';
+$wgAutoloadClasses['ViewWidgetList'] = __DIR__ . '/views/view.WidgetList.php';

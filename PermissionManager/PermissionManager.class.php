@@ -158,7 +158,7 @@ class PermissionManager extends BsExtensionMW {
 						if (is_array($val)) {
 							foreach ($val as $indexname => $groupName) {
 								if ($indexname == 'group') {
-									if ($groupName == BsGroupHelper::$sLockModeGroup) {
+									if ($groupName == BsGroupHelper::getLockModeGroup()) {
 										unset($data['users'][$keyname][$index][$indexof]);
 										$data['users'][$keyname][$index] = array_values($data['users'][$keyname][$index]);
 									}
@@ -287,7 +287,7 @@ class PermissionManager extends BsExtensionMW {
 			$permissions = array($permissions);
 		}
 
-		$checkUser = new CheckUser();
+		$checkUser = new PMCheckUser();
 		$checkUser->setGroups($groups);
 
 		$namespaces = $wgLang->getNamespaces();
@@ -329,7 +329,7 @@ class PermissionManager extends BsExtensionMW {
 		// initialise the basic data
 		$permissions = self::getAllPermissions();
 		$namespaces = self::getAllNamespaces();
-		$namespaces[0] = wfMessage('bs-permissionmanager-main-namespaces')->plain();
+		$namespaces[0] = trim( wfMessage('bs-ns_main')->plain(), '()' );
 		$rules = array();
 
 		$permissionMap = self::checkRealPermissions($group, $permissions);
@@ -452,7 +452,7 @@ class PermissionManager extends BsExtensionMW {
 		$aPermissions = self::getAllPermissions();
 		$aGroups = self::getAllGroups();
 		$aNamespaces = self::getAllNamespaces();
-		$aNamespaces[0] = wfMessage('bs-permissionmanager-main-namespaces')->plain();
+		$aNamespaces[0] = trim( wfMessage('bs-ns_main')->plain(), '()' );
 
 		$aRealPermissionMaps = array();
 		foreach ($aGroups as $sGroup) {
@@ -572,6 +572,7 @@ class PermissionManager extends BsExtensionMW {
 		global $wgGroupPermissions, $wgNamespacePermissionLockdown, $wgLang;
 
 		$rules = json_decode($_POST['rules']);
+
 		if (!is_array($rules)) {
 			$rules = array($rules);
 		}
@@ -585,7 +586,7 @@ class PermissionManager extends BsExtensionMW {
 			$group = $rule->group;
 			$permission = $rule->permission;
 			$isGlobal = in_array($permission, self::$aGlobalPermissions);
-			$mainSpace = wfMessage('bs-permissionmanager-main-namespaces')->plain();
+			$mainSpace = trim( wfMessage('bs-ns_main')->plain(), '()' );
 			if (in_array($group, self::$aInvisibleGroups)) {
 				continue;
 			}
@@ -593,7 +594,10 @@ class PermissionManager extends BsExtensionMW {
 			$aGroupPermissions[$group][$permission] = $rule->global;
 
 			if (!$isGlobal) {
-				unset($rule->group, $rule->permission, $rule->isGlobal, $rule->grouping, $rule->global);
+
+				unset($rule->group, $rule->permission, $rule->isGlobal,
+						$rule->grouping, $rule->global, $rule->isTemplate,
+						$rule->tip);
 
 				foreach ($rule as $namespace => $permitted) {
 					if (strpos($namespace, '_allowed') !== false) {
@@ -604,8 +608,9 @@ class PermissionManager extends BsExtensionMW {
 					} else {
 						$namespaceId = $wgLang->getNsIndex($namespace);
 					}
-					if ($permitted) {
+					if ($permitted === true && $namespaceId !== false) {
 						$aLockdown[$namespaceId][$permission][] = $group;
+
 					}
 				}
 			}
@@ -613,12 +618,13 @@ class PermissionManager extends BsExtensionMW {
 
 		if (!empty($aGroupPermissions)) {
 			$tmp = $wgGroupPermissions;
-			foreach ($aGroupPermissions as $group => $permissions) {
-				$tmp[$group] = $permissions;
+			foreach ($aGroupPermissions as $groupName => $permissions) {
+				$tmp[$groupName] = $permissions;
 			}
 			$aGroupPermissions = $tmp;
 
 			if (!empty($aLockdown)) {
+
 				$tmp = $wgNamespacePermissionLockdown;
 				foreach ($tmp as $namespaceId => $permissions) {
 					foreach ($permissions as $permission => $groups) {
@@ -630,6 +636,7 @@ class PermissionManager extends BsExtensionMW {
 						}
 					}
 				}
+
 				foreach ($aLockdown as $namespaceId => $permissions) {
 					foreach ($permissions as $permission => $groups) {
 						foreach ($groups as $group) {
@@ -641,6 +648,7 @@ class PermissionManager extends BsExtensionMW {
 						}
 					}
 				}
+
 				$aLockdown = $tmp;
 			}
 		}
@@ -690,8 +698,11 @@ class PermissionManager extends BsExtensionMW {
 			foreach ($aNamespacePermissionLockdown as $iNS => $aPermissions) {
 				$isReadLockdown = false;
 				foreach ($aPermissions as $sPermission => $aGroups) {
+					if( empty( $aGroups ) ) {
+						continue;
+					}
 					$sSaveContent .= "\$wgNamespacePermissionLockdown[$iNS]['$sPermission']"
-							. " = array(" . (count($aGroups) ? "'" . join("','", $aGroups) . "'" : '') . ");\n";
+							. " = array(" . (count($aGroups) ? "'" . implode("','", $aGroups) . "'" : '') . ");\n";
 					if ($sPermission == 'read') {
 						$isReadLockdown = true;
 					}

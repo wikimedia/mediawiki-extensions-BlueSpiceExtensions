@@ -25,10 +25,35 @@
 class ExtendedSearchBase {
 
 	/**
+	 * Given context.
+	 * @var $oContext
+	 */
+	protected $oContext = null;
+	/**
 	 * Instance of current search service.
 	 * @var $oSearchService
 	 */
 	protected $oSearchService = null;
+	/**
+	 * Reference to instance of SearchRequest.
+	 * @var Object SearchRequest class.
+	 */
+	protected $oSearchRequest = null;
+	/**
+	 * Instance of current search options.
+	 * @var $oSearchService
+	 */
+	protected $oSearchOptions = null;
+	/**
+	 * Reference to instance of SearchUriBuilder.
+	 * @var Object SearchUriBuilder class.
+	 */
+	protected $oSearchUriBuilder = null;
+	/**
+	 * Reference to instance of SearchUriBuilder.
+	 * @var Object SearchUriBuilder class.
+	 */
+	protected $oSearchIndex = null;
 	/**
 	 * Instance of ExtendedSearchBase
 	 * @var Object
@@ -38,7 +63,7 @@ class ExtendedSearchBase {
 	/**
 	 * Constructor of ExtendedSearchBase class
 	 */
-	public function __construct() {
+	public function __construct( $oContext ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		try {
 			$this->oSearchService = SearchService::getInstance();
@@ -46,6 +71,12 @@ class ExtendedSearchBase {
 			wfProfileOut( 'BS::'.__METHOD__ );
 			return null;
 		}
+
+		$this->oContext = $oContext;
+		$this->oSearchRequest = new SearchRequest();
+		$this->oSearchOptions = new SearchOptions( $this->oSearchRequest, $this->oContext );
+		$this->oSearchUriBuilder = new SearchUriBuilder( $this->oSearchRequest, $this->oSearchOptions );
+		$this->oSearchIndex = new SearchIndex( $this->oSearchRequest, $this->oSearchOptions, $this->oSearchUriBuilder, $this->oContext );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -53,10 +84,10 @@ class ExtendedSearchBase {
 	 * Return a instance of ExtendedSearchBase.
 	 * @return ExtendedSearchBase Instance of ExtendedSearchBase
 	 */
-	public static function getInstance() {
+	public static function getInstance( $Context ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		if ( self::$oInstance === null ) {
-			self::$oInstance = new self();
+			self::$oInstance = new self( $Context );
 		}
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -86,57 +117,161 @@ class ExtendedSearchBase {
 	 */
 	public function renderSpecialpage() {
 		// Form and results views are added via addItem to a ViewBaseElement
-		$oView = new ViewBaseElement();
+		$oSearchformView = new ViewBaseElement();
+		$oSearchform = new ViewExtendedSearchFormPage();
 		$aMonitor = array();
 
-		$oResultView = $this->search( $aMonitor );
+		if ( $this->oSearchOptions->getOptionBool( 'bExtendedForm' ) ) {
+			$aMonitor['linkToExtendedPageMessageKey'] = 'bs-extendedsearch-specialpage-form-return-to-simple';
+			$aMonitor['linkToExtendedPageUri'] = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL );
 
-		$vNoOfResultsFound = new ViewNoOfResultsFound();
-		$vNoOfResultsFound->setOptions( $aMonitor );
-		$oView->addItem( $vNoOfResultsFound );
+			$oSearchformView->addItem( $this->renderExtendedForm( $oSearchform ) );
+			$bShowExtendedForm = true;
+		} else {
+			$aMonitor['linkToExtendedPageMessageKey'] = 'bs-extendedsearch-specialpage-form-expand-to-extended';
+			$aMonitor['linkToExtendedPageUri'] = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL | SearchUriBuilder::EXTENDED );
+		}
 
-		$oView->addItem( $oResultView );
+		$oSearchform->setOptions( $aMonitor );
+		$oSearchformView->addItem( $oSearchform );
 
+		$oView = new ViewBaseElement();
+		$this->oContext->getOutPut()->addHTML( $oSearchformView->execute() );
+
+		if ( isset( $bShowExtendedForm ) && $bShowExtendedForm == 'true' ) return;
+
+		return $this->getResults();
+	}
+
+	public function getResults() {
+		try {
+			$oView = new ViewBaseElement();
+			$aResponeMonitor = array();
+
+			$oResultView = $this->search( $aResponeMonitor );
+
+			$vNoOfResultsFound = new ViewNoOfResultsFound();
+			$vNoOfResultsFound->setOptions( $aResponeMonitor );
+			$oView->addItem( $vNoOfResultsFound );
+
+			$oView->addItem( $oResultView );
+		} catch ( BsException $e ) {
+			if ( $e->getMessage() == 'redirect' ) return;
+			throw $e;
+		}
 		return $oView;
 	}
 
 	/**
-	 * Reads in searchstring and checks if a namespace is in it
-	 * @param string $sSearchString given searchstring
-	 * @param string $sSolrSearchString the solr searchstring
-	 * @return int id of namespace
+	 * Renders extended search options form.
+	 * @param array $aMonitor List that contains form view.
+	 * @return ViewBaseElement View that describes search options.
 	 */
-	public function checkSearchstringForNamespace( $sSearchString, &$sSolrSearchString ) {
-		if ( empty( $sSearchString ) ) {
-			return false;
+	public function renderExtendedForm( &$aMonitor ) {
+		global $wgContLang;
+
+		$aHiddenFieldsInForm = array();
+		$aHiddenFieldsInForm['search_asc'] = $this->oSearchOptions->getOption( 'asc' );
+		$aHiddenFieldsInForm['search_order'] = $this->oSearchOptions->getOption( 'order' );// score|titleSort|type|ts
+		$aHiddenFieldsInForm['search_submit'] = '1';
+
+		$aMonitor->setOptions(
+			array(
+				'hiddenFields' => $aHiddenFieldsInForm,
+				'files' => $this->oSearchOptions->getOption( 'files' ),
+				'method' => BsConfig::get( 'MW::ExtendedSearch::FormMethod' ),
+				'scope' => $this->oSearchOptions->getOption( 'scope' )
+			)
+		);
+
+		$vOptionsFormWiki = $aMonitor->getOptionsForm( 'wiki', wfMessage( 'bs-extendedsearch-search-wiki' )->plain() );
+		$vNamespaceBox = $vOptionsFormWiki->getBox( 'NAMESPACE-FIELD', 'bs-extendedsearch-search-namespace', 'na[]' );
+		$aMwNamespaces = $wgContLang->getNamespaces();
+		$aSelectedNamespaces = $this->oSearchOptions->getOption( 'namespaces' );
+
+		if ( BsConfig::get( 'MW::SortAlph' ) ) asort( $aMwNamespaces );
+
+		foreach ( $aMwNamespaces as $namespace ) {
+			$iNsIndex = $wgContLang->getNsIndex( $namespace );
+			if ( $iNsIndex < 0 ) continue;
+			if ( $iNsIndex == 0 ) $namespace = wfMessage( 'bs-extendedsearch-articles' )->plain();
+			$vNamespaceBox->addEntry(
+				$iNsIndex,
+				array(
+					'value' => $iNsIndex,
+					'text' => $namespace,
+					'selected' => in_array( (string) $iNsIndex, $aSelectedNamespaces )
+				)
+			);
 		}
 
-		if ( substr_count( $sSearchString, ':' ) === 0 ) {
-			return false;
+		$checkboxSearchFilesAttributes = array(
+			'type' => 'checkbox',
+			'id' => 'bs-extendedsearch-checkbox-searchfiles'
+		);
+
+		if ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) || $this->oSearchOptions->getOption( 'files' ) ) {
+			$checkboxSearchFilesAttributes['checked'] = 'checked';
+		}
+		$checkboxSearchFiles = Xml::input( 'search_files', false, 1, $checkboxSearchFilesAttributes );
+		$checkboxSearchFiles .= wfMessage( 'bs-extendedsearch-files' )->plain();
+
+		$vNamespaceBox->dirtyAppend( '<br />'.$checkboxSearchFiles );
+
+		$dbr = wfGetDB( DB_SLAVE ); // needed for categories and editors
+
+		$catRes = $dbr->select(
+				array( 'category' ),
+				array( 'cat_id', 'cat_title' ),
+				'',
+				null,
+				array( 'ORDER BY' => 'cat_title asc' )
+		);
+		if ( $dbr->numRows( $catRes ) != 0 ) {
+			$vCategoryBox = $vOptionsFormWiki->getBox( 'CATEGORY-FIELD', 'bs-extendedsearch-search-category', 'ca[]' );
+			$aSelectedCategories = $this->oSearchOptions->getOption( 'cats' );
+			while ( $catRow = $dbr->fetchObject( $catRes ) ) {
+				$vCategoryBox->addEntry(
+					$catRow->cat_title,
+					array(
+						'value' => $catRow->cat_title,
+						'text' => $catRow->cat_title,
+						'selected' => in_array( $catRow->cat_title, $aSelectedCategories )
+					)
+				);
+			}
 		}
 
-		$aParts = explode( ':', $sSearchString );
-		if ( count( $aParts ) !== 2 ) {
-			return false;
+		$dbr->freeResult( $catRes );
+
+		$vEditorsBox = $vOptionsFormWiki->getBox( 'EDITORS-FIELD', 'bs-extendedsearch-search-editors', 'ed[]' );
+		$edRes = $dbr->select(
+			array( 'revision' ),
+			array( 'DISTINCT rev_user_text' ),
+			'',
+			null,
+			array( 'ORDER BY' => 'rev_user_text' )
+		);
+		$aSelectedEditors = $this->oSearchOptions->getOption( 'editor' );
+		while ( $edRow = $dbr->fetchObject( $edRes ) ) {
+			$oUser = User::newFromName( $edRow->rev_user_text );
+			if ( !is_object( $oUser ) ) continue;
+
+			$vEditorsBox->addEntry(
+				$oUser->getName(),
+				array(
+					'value' => $oUser->getName(),
+					'text' => $oUser->getName(),
+					'selected' => in_array( $oUser->getName(), $aSelectedEditors )
+				)
+			);
 		}
 
-		if ( empty( $aParts[0] ) || empty( $aParts[1] ) ) {
-			return false;
-		}
+		$dbr->freeResult( $edRes );
 
-		$iNamespace = BsNamespaceHelper::getNamespaceIndex( $aParts[0] );
-		if ( empty( $iNamespace ) || !is_int( $iNamespace ) ) {
-			return false;
-		}
-
-		// Check for special namespace
-		if ( $iNamespace === NS_SPECIAL ) {
-			$iNamespace = 1000;
-		}
-
-		$sSolrSearchString = $aParts[1];
-
-		return $iNamespace;
+		$vbe = new ViewBaseElement();
+		$vbe->setAutoElement( false );
+		return $vbe;
 	}
 
 	/**
@@ -146,7 +281,7 @@ class ExtendedSearchBase {
 	 */
 	public function search( &$aMonitor ) {
 		try {
-			$vItem = SearchIndex::getInstance()->search( $this->oSearchService, $aMonitor );
+			$vItem = $this->oSearchIndex->search( $this->oSearchService, $aMonitor );
 		} catch ( BsException $e ) {
 			if ( $e->getMessage() == 'redirect' ) throw $e;
 			$vItem = new ViewBaseElement();
@@ -158,36 +293,69 @@ class ExtendedSearchBase {
 	}
 
 	/**
+	 * Sanitze search input to prevent XSS
+	 * @param string $sSearchString Raw search string.
+	 * @return string sanitized search string.
+	 */
+	public static function sanitzeSearchString( $sSearchString ) {
+		$sSearchString = trim( $sSearchString );
+		$sSearchString = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
+
+		return $sSearchString;
+	}
+
+	/**
+	 * Normalize search string in order to be processed by search service.
+	 * @param string $sSearchString Raw search string.
+	 * @return string Normalized search string.
+	 */
+	public static function preprocessSearchInput( $sSearchString ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		// Uppercase reserved words for the lovely lucene
+		$sSearchString = mb_strtolower( $sSearchString );
+		$sSearchString = str_ireplace( array( ' and ', ' or ', ' not ' ), array( ' AND ', ' OR ', ' NOT ' ), ' '.$sSearchString.' ' );
+
+		if ( ( substr_count( $sSearchString, '"' ) % 2 ) != 0 ) {
+			$sSearchString = str_replace( '"', '\\"', $sSearchString );
+		}
+
+		$sSearchString = str_replace( array( '_', '/' ), ' ', $sSearchString );
+
+		$sSearchString = str_replace(
+			array( ':', '{', '}', '(', ')', '[', ']', '+', '&', '.', '/' ),
+			array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]', '\\+', '\\&', '\\.', '\\/' ),
+			$sSearchString
+		);
+		$sSearchString = str_replace(
+			array( '\\\\{', '\\\\}' ),
+			array( '\\{', '\\}' ),
+			$sSearchString
+		);
+		$sSearchString = trim( $sSearchString );
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $sSearchString;
+	}
+
+	/**
 	 * Starts a search for Autocomplete
 	 * @param String $sSearchString The string to be searched for.
 	 * @return String JSON of search results.
 	 */
-	public function searchAutocomplete( $sSearchString ) {
+	public static function getAutocompleteData( $sSearchString ) {
 		if ( self::isCurlActivated() === false ) return '';
-		$oSearchOptions = SearchOptions::getInstance();
+
+		$oSerachService = SearchService::getInstance();
+		$oSearchRequest = new SearchRequest();
+		$oSearchOptions = new SearchOptions( $oSearchRequest, RequestContext::getMain() );
 
 		$sSearchString = urldecode( $sSearchString );
-		$sSolrSearchString = SearchService::preprocessSearchInput( $sSearchString );
+		$sSolrSearchString = self::preprocessSearchInput( $sSearchString );
 
-		$vNamespace = $this->checkSearchstringForNamespace( $sSearchString, $sSolrSearchString );
-
-		$aQuery = $oSearchOptions->getSolrAutocompleteQuery();
-		$aQuery['searchString'] = 'titleEdge:('.$sSolrSearchString.') OR titleWord:("'.$sSolrSearchString.'")';
-		$aQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
-
-		if ( $vNamespace !== false ) {
-			$i = 0;
-			foreach ( $aQuery['searchOptions']['fq'] as $key ) {
-				if ( preg_match( '#.*?namespace:.*?#', $key ) ) {
-					break;
-				}
-				$i++;
-			}
-			$aQuery['searchOptions']['fq'][$i] = 'namespace:(' . $vNamespace . ')';
-		}
+		$aQuery = $oSearchOptions->getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString );
 
 		try {
-			$oHits = $this->oSearchService->search(
+			$oHits = $oSerachService->search(
 				$aQuery['searchString'],
 				$aQuery['offset'],
 				$aQuery['searchLimit'],
@@ -202,15 +370,15 @@ class ExtendedSearchBase {
 		$bEscalateToFuzzy = ( $oHits->response->numFound == 0 ); // boolean!
 		// Escalate to fuzzy
 		if ( $bEscalateToFuzzy ) {
-			$oSearchOptions->setOption( 'scope', 'title' );
+			$this->oSearchOptions->setOption( 'scope', 'title' );
 
-			$aFuzzyQuery = $oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
+			$aFuzzyQuery = $this->oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
 			$aFuzzyQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 			$aFuzzyQuery['searchOptions']['facet'] = 'off';
 			$aFuzzyQuery['searchOptions']['hl'] = 'off';
 
 			try {
-				$oHits = $this->oSearchService->search(
+				$oHits = $oSerachService->search(
 					$aFuzzyQuery['searchString'],
 					$aFuzzyQuery['offset'],
 					$aFuzzyQuery['searchLimit'],
@@ -228,12 +396,7 @@ class ExtendedSearchBase {
 
 		if ( !empty( $oDocuments ) ) {
 			$oTitle = null;
-			$iPosition = 0;
-			$sPartOfTitle = '';
-			$sModifiedSearchString = '';
 			$sLabelText = '';
-			$sEscapedPattern = '';
-			$aSearchStringParts = array();
 
 			foreach ( $oDocuments as $oDoc ) {
 				if ( $oDoc->namespace != '999' ) {
@@ -245,13 +408,16 @@ class ExtendedSearchBase {
 
 				if ( !$oTitle->userCan( 'read' ) ) continue;
 
-				$sLabelText = $this->highlightTitle( $oTitle, $sSearchString );
+				$sLabelText = self::highlightTitle( $oTitle, $sSearchString );
 
 				// Adding namespace
-				$sLabelText = BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ) . ':' .$sLabelText;
+				if ( $oTitle->getNamespace() !== NS_MAIN ) {
+					$sLabelText = BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ) . ':' .$sLabelText;
+				}
 
-				if ( $vNamespace == $oTitle->getNamespace() ) {
-					$sNamespace = BsNamespaceHelper::getNamespaceName( $vNamespace );
+				//If namespace is in searchstring remove it from display
+				if ( $aQuery['namespace'] !== false ) {
+					$sNamespace = BsNamespaceHelper::getNamespaceName( $aQuery['namespace'] );
 					$sLabelText = str_replace( $sNamespace.':', '', $sLabelText );
 				}
 
@@ -269,7 +435,7 @@ class ExtendedSearchBase {
 
 		$iSearchfiles = ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) ? '1' : '0' ;
 
-		$sShortAndEscaped = SearchService::sanitzeSearchString(
+		$sShortAndEscaped = self::sanitzeSearchString(
 			BsStringHelper::shorten(
 				$sSearchString,
 				array(
@@ -285,21 +451,21 @@ class ExtendedSearchBase {
 
 		$bTitleExists = $oSearchOptions->titleExists( $sSearchString );
 
-		wfRunHooks( 'BSExtendedSearchAutocomplete', array( &$aResults, $sSearchString, &$iID, $bTitleExists ) );
+		$sEcpSearchString = self::sanitzeSearchString( $sSearchString );
 
-		$sSearchString = SearchService::sanitzeSearchString( $sSearchString );
+		wfRunHooks( 'BSExtendedSearchAutocomplete', array( &$aResults, $sSearchString, &$iID, $bTitleExists, $sEcpSearchString ) );
 
 		$aLinkParams = array(
 			'search_origin' => 'titlebar',
 			'search_scope' => 'text',
-			'search_input' => $sSearchString,
+			'search_input' => $sEcpSearchString,
 			'search_files' => $iSearchfiles,
 			'autocomplete' => true
 		);
 
 		$oItem = new stdClass();
 		$oItem->id = ++$iID;
-		$oItem->value = $sSearchString;
+		$oItem->value = $sEcpSearchString;
 		$oItem->label = $sLabel;
 		$oItem->type = '';
 		$oItem->link = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getFullUrl( $aLinkParams );
@@ -312,11 +478,14 @@ class ExtendedSearchBase {
 
 	/**
 	 * Highlights title for a given search string
+	 * @param object $oTitle Title which should be highlighted
 	 * @param string $sSearchString search string
-	 * @param object $oTitle Title object which should be highlieghtes
 	 * @return string highlighted title
 	 */
-	public function highlightTitle( $oTitle, $sSearchString ) {
+	public static function highlightTitle( $oTitle, $sSearchString ) {
+		$sPartOfTitle = '';
+		$sEscapedPattern = '';
+		$aSearchStringParts = array();
 		$sModifiedSearchString = str_replace( '/', ' ', $sSearchString );
 		$sLabelText = BsStringHelper::shorten(
 			$oTitle->getText(),
@@ -366,9 +535,14 @@ class ExtendedSearchBase {
 		$oViewMlt = new ViewMoreLikeThis;
 		if ( $oTitle->isSpecialPage() ) return $oViewMlt;
 
-		$aMltQuery = SearchOptions::getInstance()->getSolrMltQuery( $oTitle );
+		$aMltQuery = $this->oSearchOptions->getSolrMltQuery( $oTitle );
 		try {
-			$oResults = SearchService::getInstance()->mlt( $aMltQuery['searchString'], $aMltQuery['offset'], $aMltQuery['searchLimit'], $aMltQuery['searchOptions'] );
+			$oResults = $this->oSearchService->mlt(
+				$aMltQuery['searchString'],
+				$aMltQuery['offset'],
+				$aMltQuery['searchLimit'],
+				$aMltQuery['searchOptions']
+			);
 		} catch ( Exception $e ) {
 			return $oViewMlt;
 		}
@@ -406,10 +580,10 @@ class ExtendedSearchBase {
 	 * Generates list of most searched terms
 	 * @return string list of most searched terms
 	 */
-	public function recentSearchTerms( $iCount, $iTime ) {
+	public static function getRecentSearchTerms( $iCount, $iTime ) {
 		$oDbr = wfGetDB( DB_SLAVE );
 		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
-		$iTime =  BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
+		$iTime = BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
 
 		$aConditions = array();
 		if ( $iTime !== 0 ) {
@@ -459,51 +633,6 @@ class ExtendedSearchBase {
 		}
 
 		return implode( "\n", $aResults );
-	}
-
-	/**
-	 * Writes a given search request to database log.
-	 * @param string $term Search term
-	 * @param int $iNumFound Number of hits
-	 * @param string $scope What was the scope of the search?
-	 * @param string $files Were files searched as well?
-	 * @return bool always false.
-	 */
-	public function logSearch( $term, $iNumFound, $scope, $files ) {
-		if ( !BsConfig::get( 'MW::ExtendedSearch::Logging' ) ) return false;
-
-		$oDbw = wfGetDB( DB_MASTER );
-
-		$term = BsCore::sanitize( $term, '', BsPARAMTYPE::SQL_STRING );
-
-		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) )
-			? RequestContext::getMain()->getUser()->getId()
-			: '';
-
-		$effectiveScope = ( $files ) ? $scope.'-files' : $scope;
-		$data = array(
-			'stats_term' => $term,
-			'stats_ts' => wfTimestamp( TS_MW ),
-			'stats_user' => $user,
-			'stats_hits' => $iNumFound,
-			'stats_scope' => $effectiveScope
-		);
-
-		$oDbw->insert( 'bs_searchstats', $data );
-
-		return true;
-	}
-
-	/**
-	 * Renders error message
-	 * @param string $message I18N key of error message
-	 * @return ViewBaseElement Renders error message.
-	 */
-	public function createErrorMessageView( $sMessage ) {
-		$res = new ViewBaseElement();
-		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
-		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
-		return $res;
 	}
 
 }

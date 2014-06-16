@@ -72,7 +72,7 @@ BsExtendedSearchAjaxManager.prototype = {
 	getUri: function() {
 		var out = [];
 		for ( key in ExtendedSearchAjaxManager.oUrlParams ) {
-			if ( typeof( ExtendedSearchAjaxManager.oUrlParams[key] ) == 'object' 
+			if ( typeof( ExtendedSearchAjaxManager.oUrlParams[key] ) == 'object'
 				&& ( ExtendedSearchAjaxManager.oUrlParams[key] instanceof Array ) ) {
 
 				for ( key2 in ExtendedSearchAjaxManager.oUrlParams[key] ){
@@ -382,11 +382,11 @@ $(document).ready( function() {
 	ExtendedSearchAjaxManager = new BsExtendedSearchAjaxManager();
 	ExtendedSearchAjaxManager.init();
 
-	$("#bs-extendedsearch-checkbox-searchfiles").change(function() {
-		if ($(this).is(':checked')) {
-			$('#bs-extendedsearch-input-searchfiles').val('1');
+	$("#bs-extendedsearch-checkbox-searchfiles").change( function() {
+		if ( $( this ).is( ':checked' ) ) {
+			$( '#bs-extendedsearch-input-searchfiles' ).val( '1' );
 		} else {
-			$('#bs-extendedsearch-input-searchfiles').val('0');
+			$('#bs-extendedsearch-input-searchfiles').val( '0' );
 		}
 	});
 });

@@ -110,11 +110,80 @@ class SmartList extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::SmartList::ShowText', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowText', 'toggle');
 		BsConfig::registerVar( 'MW::SmartList::TrimText', 50, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-TrimText', 'int');
 		// possible values: title, time
-		BsConfig::registerVar( 'MW::SmartList::Order', 'time', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Order', 'select'); //title|time
+		BsConfig::registerVar( 'MW::SmartList::Order', 'DESC', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Order', 'select'); //title|time
+		BsConfig::registerVar( 'MW::SmartList::Sort', 'time', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-sort', 'select');
 		BsConfig::registerVar( 'MW::SmartList::ShowNamespace', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowNamespace', 'toggle');
 		BsConfig::registerVar( 'MW::SmartList::Comments', false, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Comments', 'check');
 
 		wfProfileOut('BS::' . __METHOD__);
+	}
+
+	/**
+	 * Hook-Handler for Hook 'LoadExtensionSchemaUpdates'
+	 * @param object §updater Updater
+	 * @return boolean Always true
+	 */
+	public static function getSchemaUpdates( $updater ) {
+		$odbw = wfGetDB( DB_MASTER );
+		$res = $odbw->select(
+			'bs_settings',
+			$odbw->addIdentifierQuotes( 'value' ),
+			array(
+				$odbw->addIdentifierQuotes( 'key' ) => 'MW::SmartList::Order'
+			)
+		);
+		if ( $odbw->numRows( $res ) === 1 ) {
+			$obj = $odbw->fetchObject( $res );
+			if ( $obj->value === serialize( 'time' ) || $obj->value === serialize( 'title' ) ) {
+				$odbw->delete(
+				'bs_settings',
+				array(
+					$odbw->addIdentifierQuotes( 'key' ) => 'MW::SmartList::Order'
+				)
+			);
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Returns list of most visited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sTime timespan
+	 * @return string most visited pages
+	 */
+	public static function getMostVisitedPages( $iCount, $sTime ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'portletperiod' => $sTime ), null );
+	}
+
+	/**
+	 * Returns list of most edited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sTime timespan
+	 * @return string most edited pages
+	 */
+	public static function getMostEditedPages( $iCount, $sTime ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getEditedPages( $iCount, $sTime );
+	}
+
+	/**
+	 * Returns list of most edited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sTime timespan
+	 * @return string most edited pages
+	 */
+	public static function getMostActivePortlet( $iCount, $sTime ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getActivePortlet( $iCount, $sTime );
+	}
+
+	/**
+	 * Returns list of most edited pages called via Ajax
+	 * @param integer $iCount number of items
+	 * @param sring $sCaller caller
+	 * @return string most edited pages
+	 */
+	public static function getYourEditsPortlet( $iCount ) {
+		return BsExtensionManager::getExtension( 'SmartList' )->getYourEdits( $iCount );
 	}
 
 	/**
@@ -126,7 +195,7 @@ class SmartList extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array();
 		switch ($oVariable->getName()) {
-			case 'CategoryMode' :
+			case 'CategoryMode':
 				$aPrefs = array(
 					'options' => array(
 						wfMessage( 'bs-smartlist-AND' )->plain() => 'AND',
@@ -134,7 +203,7 @@ class SmartList extends BsExtensionMW {
 					)
 				);
 				break;
-			case 'Period' :
+			case 'Period':
 				$aPrefs = array(
 					'options' => array(
 						'-' => '-',
@@ -144,7 +213,7 @@ class SmartList extends BsExtensionMW {
 					)
 				);
 				break;
-			case 'Order' :
+			case 'Sort':
 				$aPrefs = array(
 					'options' => array(
 						wfMessage( 'bs-smartlist-time' )->plain() => 'time',
@@ -152,8 +221,15 @@ class SmartList extends BsExtensionMW {
 					)
 				);
 				break;
-			case 'Namespaces' :
-			case 'ExcludeNamespaces' :
+			case 'Order':
+				$aPrefs = array(
+					'options' => array(
+						wfMessage( 'bs-smartlist-desc' )->plain() => 'DESC',
+						wfMessage( 'bs-smartlist-asc' )->plain() => 'ASC'
+					)
+				);
+				break;
+			case 'ExcludeNamespaces':
 				$aPrefs = array(
 					'type' => 'multiselectex',
 					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL ) ),
@@ -166,7 +242,7 @@ class SmartList extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -201,7 +277,7 @@ class SmartList extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -232,7 +308,7 @@ class SmartList extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsUserDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -275,7 +351,7 @@ class SmartList extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsUserDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -326,53 +402,6 @@ class SmartList extends BsExtensionMW {
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oWidgetView;
-	}
-
-	
-	/**
-	 * Generates list of your edits
-	 * @return string list of edits
-	 */
-	public function getYourEdits( $iCount, $sOrigin = 'dashboard' ) {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
-
-		$oDbr = wfGetDB( DB_SLAVE );
-		$res = $oDbr->select(
-			'revision',
-			'rev_page',
-			array( 'rev_user' => $this->getUser()->getId() ),
-			__METHOD__,
-			array(
-				'GROUP BY' => 'rev_page',
-				'ORDER BY' => 'MAX(rev_timestamp) DESC',
-				'LIMIT' => $iCount
-			)
-		);
-
-		$aEdits = array();
-		if ( $oDbr->numRows( $res ) > 0 ) {
-			foreach ( $res as $row ) {
-				$sHtml = '';
-				$oTitle = Title::newFromID( $row->rev_page );
-				if( !is_object( $oTitle ) ) continue;
-				if ( $sOrigin === 'dashboard' ) {
-					$sHtml = $oTitle->getPrefixedText();
-				} else {
-					$sHtml = BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) );
-				}
-				$sLink = Linker::link( $oTitle, $sHtml );
-				$aEdits[] = Html::openElement( 'li' ) . $sLink . Html::closeElement( 'li' );
-			}
-		} else {
-			 return Html::openElement( 'ul' ) . Html::openElement( 'li' ) . wfMessage( 'bs-smartlist-noedits' )->plain() . Html::closeElement( 'li' ) . Html::closeElement( 'ul' );
-		}
-
-
-		$sEdits = Html::openElement( 'ul' ) . implode( '', $aEdits ) . Html::closeElement( 'ul' );
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-		return $sEdits;
 	}
 
 	/**
@@ -427,22 +456,23 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
 		$aArgs = array();
-		$aArgs['count']                  = (int) BsConfig::get( 'MW::SmartList::Count' );
-		$aArgs['namespaces']             = implode( ',', BsConfig::get( 'MW::SmartList::Namespaces' ) );
-		$aArgs['excludeNamespaces']      = implode( ',', BsConfig::get( 'MW::SmartList::ExcludeNamespaces' ) );
-		$aArgs['categories']             = implode( ',', BsConfig::get( 'MW::SmartList::Categories' ) );
-		$aArgs['excludeCategories']      = implode( ',', BsConfig::get( 'MW::SmartList::ExcludeCategories' ) );
-		$aArgs['categoryMode']           = BsConfig::get( 'MW::SmartList::CategoryMode' );
-		$aArgs['showMinorChanges']       = BsConfig::get( 'MW::SmartList::ShowMinorChanges' );
-		$aArgs['period']                 = BsConfig::get( 'MW::SmartList::Period' );
-		$aArgs['mode']                   = BsConfig::get( 'MW::SmartList::Mode' );
-		$aArgs['showOnlyNewArticles']    = BsConfig::get( 'MW::SmartList::ShowOnlyNewArticles' );
-		$aArgs['heading']                = BsConfig::get( 'MW::SmartList::Heading' );
-		$aArgs['trim']                   = BsConfig::get( 'MW::SmartList::Trim' );
-		$aArgs['showtext']               = BsConfig::get( 'MW::SmartList::ShowText' );
-		$aArgs['trimtext']               = BsConfig::get( 'MW::SmartList::TrimText' );
-		$aArgs['order']                  = BsConfig::get( 'MW::SmartList::Order' );
-		$aArgs['showns']                 = BsConfig::get( 'MW::SmartList::ShowNamespace' );
+		$aArgs['count'] = (int)BsConfig::get( 'MW::SmartList::Count' );
+		$aArgs['namespaces'] = implode( ',', BsConfig::get( 'MW::SmartList::Namespaces' ) );
+		$aArgs['excludeNamespaces'] = implode( ',', BsConfig::get( 'MW::SmartList::ExcludeNamespaces' ) );
+		$aArgs['categories'] = implode( ',', BsConfig::get( 'MW::SmartList::Categories' ) );
+		$aArgs['excludeCategories'] = implode( ',', BsConfig::get( 'MW::SmartList::ExcludeCategories' ) );
+		$aArgs['categoryMode'] = BsConfig::get( 'MW::SmartList::CategoryMode' );
+		$aArgs['showMinorChanges'] = BsConfig::get( 'MW::SmartList::ShowMinorChanges' );
+		$aArgs['period'] = BsConfig::get( 'MW::SmartList::Period' );
+		$aArgs['mode'] = BsConfig::get( 'MW::SmartList::Mode' );
+		$aArgs['showOnlyNewArticles'] = BsConfig::get( 'MW::SmartList::ShowOnlyNewArticles' );
+		$aArgs['heading'] = BsConfig::get( 'MW::SmartList::Heading' );
+		$aArgs['trim'] = BsConfig::get( 'MW::SmartList::Trim' );
+		$aArgs['showtext'] = BsConfig::get( 'MW::SmartList::ShowText' );
+		$aArgs['trimtext'] = BsConfig::get( 'MW::SmartList::TrimText' );
+		$aArgs['order'] = BsConfig::get( 'MW::SmartList::Order' );
+		$aArgs['sort'] = BsConfig::get( 'MW::SmartList::Sort' );
+		$aArgs['showns'] = BsConfig::get( 'MW::SmartList::ShowNamespace' );
 
 		$sCustomList = $this->getCustomList( $aArgs );
 		$sHeading = wfMessage( 'bs-smartlist-recent-changes' )->plain();
@@ -472,7 +502,6 @@ class SmartList extends BsExtensionMW {
 
 	/**
 	 * Event-Handler for 'MW::Utility::WidgetListHelper::InitKeywords'. Registers a callback for the INFOBOX Keyword.
-	 * @param BsEvent $oEvent The Event object
 	 * @param array $aKeywords An array of Keywords array( 'KEYWORD' => $callable )
 	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
 	 */
@@ -542,25 +571,25 @@ class SmartList extends BsExtensionMW {
 		$oParser->disableCache();
 
 		//Get arguments
-		$aArgs['count']               = BsCore::sanitizeArrayEntry( $aArgs, 'count',      5,                BsPARAMTYPE::INT );
-		$aArgs['namespaces']          = BsCore::sanitizeArrayEntry( $aArgs, 'ns',         'all',            BsPARAMTYPE::SQL_STRING );
-		$aArgs['excludeNamespaces']   = BsCore::sanitizeArrayEntry( $aArgs, 'excludens',  '',               BsPARAMTYPE::SQL_STRING );  // exclude namespaces
-		$aArgs['categories']          = BsCore::sanitizeArrayEntry( $aArgs, 'cat',        '-',              BsPARAMTYPE::SQL_STRING );
-		$aArgs['excludeCategories']   = BsCore::sanitizeArrayEntry( $aArgs, 'excludecat', '',               BsPARAMTYPE::SQL_STRING );
-		$aArgs['categoryMode']        = BsCore::sanitizeArrayEntry( $aArgs, 'catmode',    'OR',             BsPARAMTYPE::SQL_STRING );
-		$aArgs['showMinorChanges']    = BsCore::sanitizeArrayEntry( $aArgs, 'minor',       true,            BsPARAMTYPE::BOOL );
-		$aArgs['period']              = BsCore::sanitizeArrayEntry( $aArgs, 'period',      '-',             BsPARAMTYPE::SQL_STRING );
-		$aArgs['mode']                = BsCore::sanitizeArrayEntry( $aArgs, 'mode',        'recentchanges', BsPARAMTYPE::STRING );
-		$aArgs['showOnlyNewArticles'] = BsCore::sanitizeArrayEntry( $aArgs, 'new',         false,           BsPARAMTYPE::BOOL );
-		$aArgs['heading']             = BsCore::sanitizeArrayEntry( $aArgs, 'heading',     '',              BsPARAMTYPE::STRING );
-		$aArgs['trim']                = BsCore::sanitizeArrayEntry( $aArgs, 'trim',        30,              BsPARAMTYPE::NUMERIC );
-		$aArgs['showtext']            = BsCore::sanitizeArrayEntry( $aArgs, 'showtext',    false,           BsPARAMTYPE::BOOL );
-		$aArgs['trimtext']            = BsCore::sanitizeArrayEntry( $aArgs, 'trimtext',    50,              BsPARAMTYPE::NUMERIC );
-		$aArgs['order']               = BsCore::sanitizeArrayEntry( $aArgs, 'order',       'time',          BsPARAMTYPE::SQL_STRING );
-		$aArgs['showns']              = BsCore::sanitizeArrayEntry( $aArgs, 'showns',      true,            BsPARAMTYPE::BOOL );
-		$aArgs['numwithtext']         = BsCore::sanitizeArrayEntry( $aArgs, 'numwithtext', 100,             BsPARAMTYPE::INT );
-		$aArgs['meta']                = BsCore::sanitizeArrayEntry( $aArgs, 'meta', false,                  BsPARAMTYPE::BOOL );
-		$aArgs['new']                 = BsCore::sanitizeArrayEntry( $aArgs, 'new',         false,            BsPARAMTYPE::BOOL );
+		$aArgs['count'] = BsCore::sanitizeArrayEntry( $aArgs, 'count', 5, BsPARAMTYPE::INT );
+		$aArgs['namespaces'] = BsCore::sanitizeArrayEntry( $aArgs, 'ns', 'all', BsPARAMTYPE::SQL_STRING );
+		$aArgs['excludeNamespaces'] = BsCore::sanitizeArrayEntry( $aArgs, 'excludens',  '', BsPARAMTYPE::SQL_STRING );  // exclude namespaces
+		$aArgs['categories'] = BsCore::sanitizeArrayEntry( $aArgs, 'cat', '-', BsPARAMTYPE::SQL_STRING );
+		$aArgs['excludeCategories'] = BsCore::sanitizeArrayEntry( $aArgs, 'excludecat', '', BsPARAMTYPE::SQL_STRING );
+		$aArgs['categoryMode'] = BsCore::sanitizeArrayEntry( $aArgs, 'catmode', 'OR', BsPARAMTYPE::SQL_STRING );
+		$aArgs['showMinorChanges'] = BsCore::sanitizeArrayEntry( $aArgs, 'minor', true, BsPARAMTYPE::BOOL );
+		$aArgs['period'] = BsCore::sanitizeArrayEntry( $aArgs, 'period', '-', BsPARAMTYPE::SQL_STRING );
+		$aArgs['mode'] = BsCore::sanitizeArrayEntry( $aArgs, 'mode', 'recentchanges', BsPARAMTYPE::STRING );
+		$aArgs['showOnlyNewArticles'] = BsCore::sanitizeArrayEntry( $aArgs, 'new', false, BsPARAMTYPE::BOOL );
+		$aArgs['heading'] = BsCore::sanitizeArrayEntry( $aArgs, 'heading', '', BsPARAMTYPE::STRING );
+		$aArgs['trim'] = BsCore::sanitizeArrayEntry( $aArgs, 'trim', 30, BsPARAMTYPE::NUMERIC );
+		$aArgs['showtext'] = BsCore::sanitizeArrayEntry( $aArgs, 'showtext', false, BsPARAMTYPE::BOOL );
+		$aArgs['trimtext'] = BsCore::sanitizeArrayEntry( $aArgs, 'trimtext', 50, BsPARAMTYPE::NUMERIC );
+		$aArgs['sort'] = BsCore::sanitizeArrayEntry( $aArgs, 'sort', 'time', BsPARAMTYPE::SQL_STRING );
+		$aArgs['order'] = BsCore::sanitizeArrayEntry( $aArgs, 'order', 'DESC', BsPARAMTYPE::SQL_STRING );
+		$aArgs['showns'] = BsCore::sanitizeArrayEntry( $aArgs, 'showns', true, BsPARAMTYPE::BOOL );
+		$aArgs['numwithtext'] = BsCore::sanitizeArrayEntry( $aArgs, 'numwithtext', 100, BsPARAMTYPE::INT );
+		$aArgs['meta'] = BsCore::sanitizeArrayEntry( $aArgs, 'meta', false, BsPARAMTYPE::BOOL );
 
 		$oSmartListView = new ViewBaseElement();
 		if ( !empty( $aArgs['heading'] ) ) {
@@ -618,30 +647,92 @@ class SmartList extends BsExtensionMW {
 		/*
 		 * Validation of namespaces and categories
 		 */
-		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['categoryMode'], array( 'fullResponse' => true, 'setname' => 'catmode', 'set' => array( 'AND', 'OR' ) ) );
+		$oValidationResult = BsValidator::isValid(
+			'SetItem',
+			$aArgs['categoryMode'],
+			array(
+				'fullResponse' => true,
+				'setname' => 'catmode',
+				'set' => array(
+					'AND',
+					'OR'
+				)
+			)
+		);
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
-		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['period'], array( 'fullResponse' => true, 'setname' => 'period', 'set' => array( '-', 'day', 'week', 'month' ) ) );
+
+		$oValidationResult = BsValidator::isValid(
+			'SetItem',
+			$aArgs['period'],
+			array(
+				'fullResponse' => true,
+				'setname' => 'period',
+				'set' => array(
+					'-',
+					'day',
+					'week',
+					'month'
+				)
+			)
+		);
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
-		$oValidationResult = BsValidator::isValid( 'PositiveInteger', $aArgs['trim'], array( 'fullResponse' => true) );
+
+		$oValidationResult = BsValidator::isValid(
+			'PositiveInteger',
+			$aArgs['trim'],
+			array( 'fullResponse' => true )
+		);
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
-		$oValidationResult = BsValidator::isValid( 'PositiveInteger', $aArgs['trimtext'], array( 'fullResponse' => true ) );
+
+		$oValidationResult = BsValidator::isValid(
+			'PositiveInteger',
+			$aArgs['trimtext'],
+			array( 'fullResponse' => true )
+		);
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
-		$oValidationResult = BsValidator::isValid( 'SetItem', $aArgs['order'], array( 'fullResponse' => true, 'setname' => 'order', 'set' => array('time', 'title') ) );
+
+		$oValidationResult = BsValidator::isValid(
+			'SetItem',
+			$aArgs['sort'],
+			array(
+				'fullResponse' => true,
+				'setname' => 'sort',
+				'set' => array(
+					'time',
+					'title'
+				)
+			)
+		);
+		if ( $oValidationResult->getErrorCode() ) {
+			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
+		}
+
+		$oValidationResult = BsValidator::isValid(
+			'SetItem',
+			$aArgs['order'],
+			array(
+				'fullResponse' => true,
+				'setname' => 'order',
+				'set' => array(
+					'ASC',
+					'DESC'
+				)
+			)
+		);
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
 
 		if ( $aArgs['mode'] == 'recentchanges' ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$sMinTimestamp = $dbr->timestamp(1);
 			$aConditions = array();
 			// TODO RBV (17.05.11 16:52): Put this into abstraction layer
 			if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
@@ -662,13 +753,13 @@ class SmartList extends BsExtensionMW {
 			}
 
 			switch ( $aArgs['period'] ) {
-				case 'month' : $sMinTimestamp = $dbr->timestamp( time() - 30 * 24 * 60 * 60 );
+				case 'month': $sMinTimestamp = $dbr->timestamp( time() - 30 * 24 * 60 * 60 );
 					break;
-				case 'week' : $sMinTimestamp = $dbr->timestamp( time() - 7 * 24 * 60 * 60 );
+				case 'week': $sMinTimestamp = $dbr->timestamp( time() - 7 * 24 * 60 * 60 );
 					break;
-				case 'day' : $sMinTimestamp = $dbr->timestamp( time() - 24 * 60 * 60 );
+				case 'day': $sMinTimestamp = $dbr->timestamp( time() - 24 * 60 * 60 );
 					break;
-				default :
+				default:
 					break;
 			}
 
@@ -709,26 +800,39 @@ class SmartList extends BsExtensionMW {
 				}
 			}
 
-			if ( !$aArgs['showMinorChanges'] )
+			switch ( $aArgs['sort'] ) {
+				case 'title':
+					$sOrderSQL = 'rc_title';
+					break;
+				default:
+					// ORDER BY MAX() - this one was tricky. It makes sure, only the changes with the maximum date are selected.
+					$sOrderSQL = 'MAX(rc_timestamp)';
+					break;
+			}
+
+			switch ( $aArgs['order'] ) {
+				case 'ASC':
+					$sOrderSQL .= ' ASC';
+					break;
+				default:
+					$sOrderSQL .= ' DESC';
+					break;
+			}
+
+			if ( !$aArgs['showMinorChanges'] ) {
 				$aConditions[] = 'rc_minor = 0';
-			if ( $aArgs['showOnlyNewArticles'] )
+			}
+			if ( $aArgs['showOnlyNewArticles'] ) {
+				$sOrderSQL = 'MIN(rc_timestamp) DESC';
 				$aConditions[] = 'rc_new = 1';
-			if ( !empty( $aArgs['period'] ) ) {
+			}
+			if ( !empty( $aArgs['period'] ) && $aArgs['period'] !== '-' ) {
 				$aConditions[] = "rc_timestamp > '" . $sMinTimestamp . "'";
 			}
+
 			$aConditions[] = 'rc_title = page_title AND rc_namespace = page_namespace'; //prevent display of deleted articles
 			$aConditions[] = 'NOT (rc_type = 3)'; //prevent moves and deletes from being displayed
 
-			switch ( $aArgs['order'] ) {
-				case 'title':
-					$sOrderSQL = 'title ASC';
-					break;
-				case 'time':
-				default:
-					// ORDER BY MAX() - this one was tricky. It makes sure, only the changes with the maximum date are selected.
-					$sOrderSQL = 'MAX(rc_timestamp) DESC';
-					break;
-			}
 			$aFields = array( 'rc_title as title', 'rc_namespace as namespace' );
 			if ( $aArgs['meta'] ) {
 				$aFields[] = 'MAX(rc_timestamp) as time, rc_user_text as username';
@@ -737,11 +841,17 @@ class SmartList extends BsExtensionMW {
 				$aFields[] = 'MAX(rc_comment) as comment';
 			}
 			$res = $dbr->select(
-					array('recentchanges', 'page'),
-					$aFields,
-					$aConditions,
-					__METHOD__,
-					array( 'GROUP BY' => 'rc_title, rc_namespace', 'ORDER BY' => $sOrderSQL )
+				array(
+					'recentchanges',
+					'page'
+				),
+				$aFields,
+				$aConditions,
+				__METHOD__,
+				array(
+					'GROUP BY' => 'rc_title, rc_namespace',
+					'ORDER BY' => $sOrderSQL
+				)
 			);
 
 			$iCount = 0;
@@ -749,10 +859,6 @@ class SmartList extends BsExtensionMW {
 				if ( $iCount == $aArgs['count'] ) break;
 
 				$oTitle = Title::makeTitleSafe( $row->namespace, $row->title );
-
-				if ( $aArgs['new'] == true ) {
-					if ( $oTitle->isNewPage() == false ) continue;
-				}
 
 				if ( !$oTitle->quickUserCan( 'read' ) ) continue;
 
@@ -780,13 +886,12 @@ class SmartList extends BsExtensionMW {
 				$sMeta = '';
 				$sComment = '';
 				$sTitle = $oTitle->getText();
-				if( BsConfig::get('MW::SmartList::Comments' ) ) {
+				if ( BsConfig::get('MW::SmartList::Comments' ) ) {
 					$sComment = wfMessage( 'bs-smartlist-comment' )->plain().': ';
 					$sComment .= ( strlen( $row->comment ) > 50 ) ? substr( $row->comment, 0, 50 ).'...' : $row->comment;
 				}
-				if( $aArgs['meta'] ) {
-					global $wgLang;
-					$sMeta = ' - <i>('.$row->username.', '.$wgLang->date(  $row->time, true, true  ).')</i>';
+				if ( $aArgs['meta'] ) {
+					$sMeta = ' - <i>('.$row->username.', '.$this->getLanguage()->date( $row->time, true, true ).')</i>';
 				}
 				$oSmartListListEntryView = new ViewBaseElement();
 				if ( $aArgs['showtext'] && ( $iItems <= $aArgs['numwithtext'] ) ) {
@@ -807,7 +912,7 @@ class SmartList extends BsExtensionMW {
 
 				$sNamespaceText = '';
 
-				if ( $row->namespace > 0 && $row->namespace != NULL ) {
+				if ( $row->namespace > 0 && $row->namespace != null ) {
 					$sNamespaceText = MWNamespace::getCanonicalName( $row->namespace );
 				}
 				$aData = array(
@@ -830,6 +935,52 @@ class SmartList extends BsExtensionMW {
 	}
 
 	/**
+	 * Generates list of your edits
+	 * @return string list of edits
+	 */
+	public function getYourEdits( $iCount, $sOrigin = 'dashboard' ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
+
+		$oDbr = wfGetDB( DB_SLAVE );
+		$res = $oDbr->select(
+			'revision',
+			'rev_page',
+			array( 'rev_user' => $this->getUser()->getId() ),
+			__METHOD__,
+			array(
+				'GROUP BY' => 'rev_page',
+				'ORDER BY' => 'MAX(rev_timestamp) DESC',
+				'LIMIT' => $iCount
+			)
+		);
+
+		$aEdits = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			foreach ( $res as $row ) {
+				$sHtml = '';
+				$oTitle = Title::newFromID( $row->rev_page );
+				if( !is_object( $oTitle ) ) continue;
+				if ( $sOrigin === 'dashboard' ) {
+					$sHtml = $oTitle->getPrefixedText();
+				} else {
+					$sHtml = BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) );
+				}
+				$sLink = Linker::link( $oTitle, $sHtml );
+				$aEdits[] = Html::openElement( 'li' ) . $sLink . Html::closeElement( 'li' );
+			}
+		} else {
+			 return Html::openElement( 'ul' ) . Html::openElement( 'li' ) . wfMessage( 'bs-smartlist-noedits' )->plain() . Html::closeElement( 'li' ) . Html::closeElement( 'ul' );
+		}
+
+
+		$sEdits = Html::openElement( 'ul' ) . implode( '', $aEdits ) . Html::closeElement( 'ul' );
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return $sEdits;
+	}
+
+	/**
 	 * Renders the BsNewbies tag. Called by parser function.
 	 * @param string $sInput Inner HTML of BsNewbies tag. Not used.
 	 * @param array $aArgs List of tag attributes.
@@ -842,10 +993,10 @@ class SmartList extends BsExtensionMW {
 
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(
-			'user', 
-			'user_id', 
-			array(), 
-			__METHOD__, 
+			'user',
+			'user_id',
+			array(),
+			__METHOD__,
 			array(
 				'ORDER BY' => 'user_id DESC',
 				'LIMIT' => $iCount
@@ -955,7 +1106,7 @@ class SmartList extends BsExtensionMW {
 		}
 		$res = $oDbr->select(
 			$aTables,
-			$aColumns, 
+			$aColumns,
 			$aConditions,
 			__METHOD__,
 			$aOptions,
@@ -1139,46 +1290,6 @@ class SmartList extends BsExtensionMW {
 		$aConditions = array( 'rev_timestamp >= '.$iTimeStamp );
 
 		return true;
-	}
-
-	/**
-	 * Returns list of most visited pages called via Ajax
-	 * @param integer $iCount number of items
-	 * @param sring $sTime timespan
-	 * @return string most visited pages
-	 */
-	public static function getMostVisitedPages( $iCount, $sTime ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'portletperiod' => $sTime ), null );
-	}
-
-	/**
-	 * Returns list of most edited pages called via Ajax
-	 * @param integer $iCount number of items
-	 * @param sring $sTime timespan
-	 * @return string most edited pages
-	 */
-	public static function getMostEditedPages( $iCount, $sTime ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getEditedPages( $iCount, $sTime );
-	}
-
-	/**
-	 * Returns list of most edited pages called via Ajax
-	 * @param integer $iCount number of items
-	 * @param sring $sTime timespan
-	 * @return string most edited pages
-	 */
-	public static function getMostActivePortlet( $iCount, $sTime ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getActivePortlet( $iCount, $sTime );
-	}
-
-	/**
-	 * Returns list of most edited pages called via Ajax
-	 * @param integer $iCount number of items
-	 * @param sring $sCaller caller
-	 * @return string most edited pages
-	 */
-	public static function getYourEditsPortlet( $iCount ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getYourEdits( $iCount );
 	}
 
 }

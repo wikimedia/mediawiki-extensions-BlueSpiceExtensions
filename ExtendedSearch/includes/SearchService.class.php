@@ -51,10 +51,10 @@ class SearchService extends SolrServiceAdapter {
 
 	/**
 	 * Constructor for BsSearchService class
-	 * @param string $protocol Protocol of Solr service URL
-	 * @param string $host Host of Solr service URL
-	 * @param string $port Port of Solr service URL
-	 * @param string $path Path of Solr service URL
+	 * @param string $sProtocol Protocol of Solr service URL
+	 * @param string $sHost Host of Solr service URL
+	 * @param string $sPort Port of Solr service URL
+	 * @param string $sPath Path of Solr service URL
 	 */
 	public function __construct( $sProtocol, $sHost, $sPort, $sPath ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -94,51 +94,6 @@ class SearchService extends SolrServiceAdapter {
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return self::$oInstance;
-	}
-
-	/**
-	 * Sanitze search input to prevent XSS
-	 * @param string $searchString Raw search string.
-	 * @return string sanitized search string.
-	 */
-	public static function sanitzeSearchString( $sSearchString ) {
-		$sSearchString = trim( $sSearchString );
-		$sSearchString = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
-
-		return $sSearchString;
-	}
-
-	/**
-	 * Normalize search string in order to be processed by search service.
-	 * @param string $searchString Raw search string.
-	 * @return string Normalized search string.
-	 */
-	public static function preprocessSearchInput( $sSearchString ) {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Uppercase reserved words for the lovely lucene
-		$sSearchString = mb_strtolower( $sSearchString );
-		$sSearchString = str_ireplace( array( ' and ', ' or ', ' not ' ), array( ' AND ', ' OR ', ' NOT ' ), ' '.$sSearchString.' ' );
-
-		if ( ( substr_count( $sSearchString, '"' ) % 2 ) != 0 ) {
-			$sSearchString = str_replace( '"', '\\"', $sSearchString );
-		}
-
-		$sSearchString = str_replace( array( '_', '/' ), ' ', $sSearchString );
-
-		$sSearchString = str_replace(
-			array( ':', '{', '}', '(', ')', '[', ']', '+', '&', '.', '/' ),
-			array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]', '\\+', '\\&', '\\.', '\\/' ),
-			$sSearchString
-		);
-		$sSearchString = str_replace(
-			array( '\\\\{', '\\\\}' ),
-			array( '\\{', '\\}' ),
-			$sSearchString
-		);
-		$sSearchString = trim( $sSearchString );
-		wfProfileOut( 'BS::'.__METHOD__ );
-
-		return $sSearchString;
 	}
 
 	/**
@@ -184,7 +139,7 @@ class SearchService extends SolrServiceAdapter {
 	 */
 	public static function wildcardSearchstring( $sSearchString ) {
 		// remove beginning
-		$sSearchString = trim( $sSearchString ); 
+		$sSearchString = trim( $sSearchString );
 		if ( empty( $sSearchString ) ) {
 			return $sSearchString;
 		}
@@ -215,34 +170,25 @@ class SearchService extends SolrServiceAdapter {
 	 * @param string $query The raw query string
 	 * @param int $offset The starting offset for result documents
 	 * @param int $limit The maximum number of result documents to return
-	 * @param array $params key / value pairs for other query parameters (see Solr documentation), use arrays for parameter keys used more than once (e.g. facet.field)
+	 * @param array $aParams key / value pairs for other query parameters (see Solr documentation), use arrays for parameter keys used more than once (e.g. facet.field)
 	 * @return Apache_Solr_Response
 	 */
-	public function mlt( $query, $offset = 0, $limit = 10, $params = array() ) {
+	public function mlt( $query, $offset = 0, $limit = 10, $aParams = array() ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		if ( !is_array( $params ) ) {
-			$params = array();
+		if ( !is_array( $aParams ) ) {
+			$aParams = array();
 		}
 
 		// common parameters in this interface
-		$params['wt']      = self::SOLR_WRITER;
-		$params['json.nl'] = $this->_namedListTreatment;
-		$params['q']       = $query;
-		$params['rows']    = $limit;
+		$aParams['wt'] = self::SOLR_WRITER;
+		$aParams['json.nl'] = $this->_namedListTreatment;
+		$aParams['q'] = $query;
+		$aParams['rows'] = $limit;
 
-		// use http_build_query to encode our arguments because its faster
-		// than urlencoding all the parts ourselves in a loop
-		$queryString = http_build_query( $params, null, $this->_queryStringDelimiter );
-
-		// because http_build_query treats arrays differently than we want to, correct the query
-		// string by changing foo[#]=bar (# being an actual number) parameter strings to just
-		// multiple foo=bar strings. This regex should always work since '=' will be urlencoded
-		// anywhere else the regex isn't expecting it
-		$queryString = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $queryString );
-
+		$sQueryString = $this->buildHttpQuery( $aParams );
 		wfProfileOut( 'BS::'.__METHOD__ );
 
-		return $this->_sendRawGet( $this->_morelikethisUrl.$this->_queryDelimiter.$queryString );
+		return $this->_sendRawGet( $this->_morelikethisUrl.$sQueryString );
 	}
 
 	/**
@@ -260,15 +206,22 @@ class SearchService extends SolrServiceAdapter {
 			$aParams = array();
 		}
 
-		$aParams['spellcheck']   = 'true';
-		$aParams['q']            = $sQuery;
+		$aParams['spellcheck'] = 'true';
+		$aParams['q'] = $sQuery;
 		$aParams['spellcheck.q'] = $sQuery;
 
 		if ( $bIndexing === false ) {
-			$aParams['wt']      = self::SOLR_WRITER;
+			$aParams['wt'] = self::SOLR_WRITER;
 			$aParams['json.nl'] = $this->_namedListTreatment;
 		}
 
+		$sQueryString = $this->buildHttpQuery( $aParams );
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $this->_sendRawGet( $this->_spellcheckUrl.$sQueryString );
+	}
+
+	protected function buildHttpQuery( $aParams ) {
 		// use http_build_query to encode our arguments because its faster
 		// than urlencoding all the parts ourselves in a loop
 		$sQueryString = http_build_query( $aParams, null, $this->_queryStringDelimiter );
@@ -278,9 +231,8 @@ class SearchService extends SolrServiceAdapter {
 		// multiple foo=bar strings. This regex should always work since '=' will be urlencoded
 		// anywhere else the regex isn't expecting it
 		$sQueryString = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $sQueryString );
-		wfProfileOut( 'BS::'.__METHOD__ );
 
-		return $this->_sendRawGet( $this->_spellcheckUrl.$this->_queryDelimiter.$sQueryString );
+		return $this->_queryDelimiter.$sQueryString;
 	}
 
 	/**
@@ -348,6 +300,33 @@ class SearchService extends SolrServiceAdapter {
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
+		/**
+	 * Get a vaild curl handle.
+	 * @return resource Curl handle.
+	 */
+	protected function &getCurlHandle() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		if ( $this->curlConnectionCounter > 200 ) {
+			curl_close( $this->curlHandle );
+			$this->curlHandle = null;
+		}
+		if ( $this->curlHandle === null ) {
+			$this->curlHandle = curl_init(); // todo: function_exists('curl_init') not true on every installation => handle Exception
+			$this->curlConnectionCounter = 0;
+			//curl_setopt($this->curlHandle, CURLOPT_FRESH_CONNECT, 1); // Forces new http-connection
+			//curl_setopt($this->curlHandle, CURLOPT_FORBID_REUSE, 1);  // Closes http-connection after the request
+			//curl_setopt($this->curlHandle, CURLOPT_VERBOSE, 1);
+			curl_setopt( $this->curlHandle, CURLOPT_HEADER, true );
+			curl_setopt( $this->curlHandle, CURLOPT_HTTPHEADER, array( "Content-Type: text/xml; charset=utf-8", "Expect:" ) );
+			curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, true );
+			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYPEER, false ); // Allow self-signed certs
+			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYHOST, false ); // Allow certs that do not match the hostname
+		}
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $this->curlHandle;
+	}
+
 	/**
 	 * Sends a file to the Solr-Server to be disassembled there
 	 * transfer is done by cUrl, not by
@@ -389,7 +368,7 @@ class SearchService extends SolrServiceAdapter {
 	/**
 	 * If server does not answer with http-status 200 an Exception is thrown
 	 * @param string $sParams Param to specify delete query
-	 * @return integer status of connect to server 
+	 * @return integer status of connect to server
 	 */
 	public function deleteIndex( $sParams = '' ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -398,7 +377,7 @@ class SearchService extends SolrServiceAdapter {
 			|| ( strpos( $customerId, '?' ) !== false )
 			|| ( strpos( $customerId, '*' ) !== false ) ) return false;
 
-		$sQuery = "uid:$customerId-*";
+		$sQuery = "wiki:$customerId";
 		if ( !empty( $sParams ) ) {
 			$sQuery = "($sQuery)AND($sParams)";
 		}

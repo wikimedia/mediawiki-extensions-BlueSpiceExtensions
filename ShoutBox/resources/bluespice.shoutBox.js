@@ -128,7 +128,7 @@ mw.loader.using('ext.bluespice', function() {
 			bs.util.alert(
 				'bs-shoutbox-alert',
 				{
-					textMsg: 'bs-shoutbox-enterMessage'
+					textMsg: 'bs-shoutbox-entermessage'
 				}
 			);
 			return false;
@@ -163,8 +163,8 @@ mw.loader.using('ext.bluespice', function() {
 		bs.util.confirm(
 			'bs-shoutbox-confirm',
 			{
-				titleMsg: 'bs-shoutbox-confirm_title',
-				textMsg: 'bs-shoutbox-confirm_text'
+				titleMsg: 'bs-shoutbox-confirm-title',
+				textMsg: 'bs-shoutbox-confirm-text'
 			},
 		{
 			ok: function() {

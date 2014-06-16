@@ -90,9 +90,9 @@ class PagesVisited extends BsExtensionMW {
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
-		BsConfig::registerVar( 'MW::PagesVisited::WidgetLimit',          10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-pagesvisited-pref-WidgetLimit', 'int' );
-		BsConfig::registerVar( 'MW::PagesVisited::WidgetNS',     array( 0 ), BsConfig::LEVEL_USER|BsConfig::TYPE_ARRAY_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-WidgetNS', 'multiselectex' );
-		BsConfig::registerVar( 'MW::PagesVisited::WidgetSortOdr',    'time', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-WidgetSortOdr', 'select' );
+		BsConfig::registerVar( 'MW::PagesVisited::WidgetLimit',          10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-pagesvisited-pref-widgetlimit', 'int' );
+		BsConfig::registerVar( 'MW::PagesVisited::WidgetNS',     array( 0 ), BsConfig::LEVEL_USER|BsConfig::TYPE_ARRAY_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-widgetns', 'multiselectex' );
+		BsConfig::registerVar( 'MW::PagesVisited::WidgetSortOdr',    'time', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-widgetsortodr', 'select' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -148,7 +148,6 @@ class PagesVisited extends BsExtensionMW {
 
 	/**
 	 * Event-Handler for 'MW::Utility::WidgetListHelper::InitKeywords'. Registers a callback for the PAGESVISITED Keyword.
-	 * @param BsEvent $oEvent The Event object
 	 * @param array $aKeywords An array of Keywords array( 'KEYWORD' => $callable )
 	 * @return array The appended array of Keywords array( 'KEYWORD' => $callable )
 	 */
@@ -163,7 +162,7 @@ class PagesVisited extends BsExtensionMW {
 	 * @return bool Always true to keep hook running.
 	 */
 	public function onParserFirstCallInit( &$oParser ) {
-		$oParser->setHook( 'pagesvisited',    array( $this, 'onPagesVisitedTag' ) );
+		$oParser->setHook( 'pagesvisited', array( $this, 'onPagesVisitedTag' ) );
 		$oParser->setHook( 'bs:pagesvisited', array( $this, 'onPagesVisitedTag' ) );
 		return true;
 	}

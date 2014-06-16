@@ -66,8 +66,7 @@ Ext.define( 'BS.UserManager.Panel', {
 			header: mw.message('bs-usermanager-headerUsername').plain(),
 			sortable: true,
 			dataIndex: 'user_name',
-			tpl: '<a href="{user_page}">{user_name}</a>',
-			filterable: true
+			tpl: '<a href="{user_page}">{user_name}</a>'
 		} );
 		this.colRealName = Ext.create( 'Ext.grid.column.Template', {
 			id: 'userrealname',
@@ -79,7 +78,6 @@ Ext.define( 'BS.UserManager.Panel', {
 		this.colEmail = Ext.create( 'Ext.grid.column.Column', {
 			id: this.getId()+'-useremail',
 			header: mw.message('bs-usermanager-headerEmail').plain(),
-			xtype: 'templatecolumn',
 			sortable: true,
 			dataIndex: 'user_email',
 			renderer: this.renderEmail
@@ -95,13 +93,16 @@ Ext.define( 'BS.UserManager.Panel', {
 			local: false,
 			filters: [{
 				type: 'string',
-				dataIndex: 'user_name'
+				dataIndex: 'user_name',
+				menuItems: ['ct']
 			},{
 				type: 'string',
-				dataIndex: 'user_real_name'
+				dataIndex: 'user_real_name',
+				menuItems: ['ct']
 			},{
 				type: 'string',
-				dataIndex: 'user_email'
+				dataIndex: 'user_email',
+				menuItems: ['ct']
 			},{
 				type: 'list',
 				dataIndex: 'groups',

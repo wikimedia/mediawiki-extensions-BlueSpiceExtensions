@@ -10,7 +10,7 @@
  */
 
 $(document).bind('BsInsertLinkWindowBeforeAddTabs', function( event, window, items ){
-	var storeData = []
+	var storeData = [];
 	for(var i = 0; i < mw.config.get('BSInterWikiPrefixes', []).length; i++) {
 		storeData.push({
 			name: mw.config.get('BSInterWikiPrefixes', [])[i],

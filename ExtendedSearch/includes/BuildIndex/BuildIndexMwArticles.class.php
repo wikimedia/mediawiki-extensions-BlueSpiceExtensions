@@ -31,7 +31,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 	/**
 	 * Pointer to current database connection
-	 * @var object Referenec to Database object 
+	 * @var object Referenec to Database object
 	 */
 	protected $oDbr = null;
 	/**
@@ -47,7 +47,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 	/**
 	 * Constructor for BuildIndexMwArticles class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate. 
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
@@ -83,11 +83,9 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	public function makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace,
 			$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections ) {
 
-		$oSolrDocument = $this->oMainControl->makeDocument(
-				'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '',
+		return $this->oMainControl->makeDocument(
+				'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '', '',
 				$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections );
-
-		return $oSolrDocument;
 	}
 
 	/**
