@@ -90,9 +90,9 @@ class PagesVisited extends BsExtensionMW {
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
-		BsConfig::registerVar( 'MW::PagesVisited::WidgetLimit',          10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-pagesvisited-pref-widgetlimit', 'int' );
-		BsConfig::registerVar( 'MW::PagesVisited::WidgetNS',     array( 0 ), BsConfig::LEVEL_USER|BsConfig::TYPE_ARRAY_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-widgetns', 'multiselectex' );
-		BsConfig::registerVar( 'MW::PagesVisited::WidgetSortOdr',    'time', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-widgetsortodr', 'select' );
+		BsConfig::registerVar( 'MW::PagesVisited::WidgetLimit', 10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-pagesvisited-pref-widgetlimit', 'int' );
+		BsConfig::registerVar( 'MW::PagesVisited::WidgetNS', array( 0 ), BsConfig::LEVEL_USER|BsConfig::TYPE_ARRAY_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-widgetns', 'multiselectex' );
+		BsConfig::registerVar( 'MW::PagesVisited::WidgetSortOdr', 'time', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-widgetsortodr', 'select' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -108,7 +108,7 @@ class PagesVisited extends BsExtensionMW {
 		switch( $oVariable->getName() ) {
 			case 'WidgetNS':
 				$aPrefs = array(
-					'type'    => 'multiselectex',
+					'type' => 'multiselectex',
 					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( -2, NS_MEDIA, NS_MEDIAWIKI, NS_MEDIAWIKI_TALK, NS_SPECIAL ) )
 				);
 				break;
@@ -178,10 +178,10 @@ class PagesVisited extends BsExtensionMW {
 		$oParser->disableCache();
 		$oErrorListView = new ViewTagErrorList( $this );
 
-		$iCount = BsCore::sanitizeArrayEntry( $aAttributes, 'count',              5, BsPARAMTYPE::INT );
-		$iMaxTitleLength = BsCore::sanitizeArrayEntry( $aAttributes, 'maxtitlelength',    20, BsPARAMTYPE::INT );
-		$sNamespaces = BsCore::sanitizeArrayEntry( $aAttributes, 'namespaces',     'all', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
-		$sSortOrder = BsCore::sanitizeArrayEntry( $aAttributes, 'order',          'time', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
+		$iCount = BsCore::sanitizeArrayEntry( $aAttributes, 'count', 5, BsPARAMTYPE::INT );
+		$iMaxTitleLength = BsCore::sanitizeArrayEntry( $aAttributes, 'maxtitlelength', 20, BsPARAMTYPE::INT );
+		$sNamespaces = BsCore::sanitizeArrayEntry( $aAttributes, 'namespaces', 'all', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
+		$sSortOrder = BsCore::sanitizeArrayEntry( $aAttributes, 'order', 'time', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
 
 		//Validation
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30) );
@@ -244,15 +244,12 @@ class PagesVisited extends BsExtensionMW {
 		$iCount = BsConfig::get( 'MW::PagesVisited::WidgetLimit' );
 		$aNamespaces = BsConfig::get( 'MW::PagesVisited::WidgetNS' );
 		$sSortOrder = BsConfig::get( 'MW::PagesVisited::WidgetSortOdr' );
-		$iCurrentNamespaceId = 0;
 
 		//Validation
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array( 'fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30 ) );
 		if ( $oValidationICount->getErrorCode() ) $iCount = 10;
 
-		if ( $this->getTitle() !== null  ) { // TODO RBV (15.04.11 13:05): Necessary?
-			$iCurrentNamespaceId = $this->getTitle()->getNamespace();
-		}
+		$iCurrentNamespaceId = $this->getTitle()->getNamespace();
 
 		// TODO RBV (04.07.11 15:02): Rework method -> implode() is a workaround for legacy code.
 		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',',$aNamespaces ), $iCurrentNamespaceId, 19, $sSortOrder );
@@ -297,11 +294,9 @@ class PagesVisited extends BsExtensionMW {
 			$oVisitedPagesListView = new ViewBaseElement();
 			$oVisitedPagesListView->setTemplate( '<ul><li><em>{TEXT}</em></li></ul>' . "\n" );
 
-			if( count( $aInvalidNamespaces ) > 1 ) {
-				$sErrorMsg = wfMessage( 'bs-pagesvisited-error-namespaces-not-valid', implode( ',', $aInvalidNamespaces ) )->plain();
-			} else {
-				$sErrorMsg = wfMessage( 'bs-pagesvisited-error-namespace-not-valid', $aInvalidNamespaces[0] )->plain();
-			}
+			$iCount = count( $aInvalidNamespaces );
+			$sNs = implode( ', ', $aInvalidNamespaces );
+			$sErrorMsg = wfMessage( 'bs-pagesvisited-error-nsnotvalid', $iCount, $sNs )->text();
 
 			$oVisitedPagesListView->addData( array ( 'TEXT' => $sErrorMsg ) );
 
