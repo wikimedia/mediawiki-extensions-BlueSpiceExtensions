@@ -4,5 +4,5 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-hidetitle-desc": "Adds the tag <code><nowiki>__HIDETITLE__</nowiki></code> to hide the title of the page"
+	"bs-hidetitle-desc": "Adds the magic word <code><nowiki>__HIDETITLE__</nowiki></code> to hide the title of the page"
 }
