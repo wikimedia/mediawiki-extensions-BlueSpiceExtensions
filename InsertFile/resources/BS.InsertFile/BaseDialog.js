@@ -21,7 +21,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		},
 		collapsible: true,
 		collapsed: true,
-		title: mw.message('bs-insertfile-tabTitle1').plain(),
+		title: mw.message('bs-insertfile-details-title').plain(),
 		region: 'south',
 		height: 100,
 		bodyPadding: 5,
@@ -39,16 +39,16 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 					width: 56,
 					sortable: false
 				},{
-					text: mw.message('bs-insertfile-fileName').plain(),
+					text: mw.message('bs-insertfile-filename').plain(),
 					dataIndex: 'name',
 					flex: 1
 				},{
-					text: mw.message('bs-insertfile-fileSize').plain(),
+					text: mw.message('bs-insertfile-filesize').plain(),
 					dataIndex: 'size',
 					renderer:this.renderSize,
 					width: 100
 				},{
-					text: mw.message('bs-insertfile-lastModified').plain(),
+					text: mw.message('bs-insertfile-lastmodified').plain(),
 					dataIndex: 'lastmod',
 					renderer:this.renderLastModified,
 					width: 150
@@ -87,7 +87,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.stImageGrid.on( 'load', this.onStImageGridLoad, this );
 		
 		this.sfFilter = Ext.create( 'Ext.ux.form.SearchField', {
-			fieldLabel: mw.message('bs-insertfile-labelFilter').plain(),
+			fieldLabel: mw.message('bs-insertfile-labelfilter').plain(),
 			width: 500,
 			labelWidth: 50,
 			store: this.stImageGrid,
@@ -100,7 +100,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		});
 		
 		this.dlgUpload = Ext.create('BS.InsertFile.UploadDialog',{
-			title: mw.message('bs-insertfile-labelUpload').plain(),
+			title: mw.message('bs-insertfile-labelupload').plain(),
 			id: this.getId()+'-upload-dlg',
 			allowedFileExtensions: this.allowedFileExtensions
 		});
@@ -108,7 +108,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.dlgUpload.on( 'ok', this.dlgUploadOKClick, this );
 		
 		this.btnUpload = Ext.create('Ext.Button',{
-			text: mw.message('bs-insertfile-labelUpload').plain()
+			text: mw.message('bs-insertfile-labelupload').plain()
 			//glyph: 72
 			//iconCls: ''
 		});
@@ -140,7 +140,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			},
 			viewConfig: {
 				trackOver: false,
-				emptyText: mw.message('bs-insertfile-noMatch').plain()
+				emptyText: mw.message('bs-insertfile-nomatch').plain()
 			},
 			columns: this.conf.columns
 		});
@@ -149,7 +149,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		
 		this.tfFileName = Ext.create('Ext.form.TextField', {
 			readOnly: true,
-			fieldLabel: mw.message('bs-insertfile-fileName').plain()
+			fieldLabel: mw.message('bs-insertfile-filename').plain()
 		});
 		
 		this.tfLinkText = Ext.create('Ext.form.TextField', {
@@ -235,7 +235,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	renderLastModified: function( lastmod ){
 		return Ext.Date.format(
 			new Date(lastmod * 1000), 
-			mw.message('bs-insertfile-dateformat').plain()
+			'd.m.Y G:i'
 		);
 	},
 	
