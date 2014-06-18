@@ -82,12 +82,12 @@ class UEModulePDF extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//Variables
-		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL',   'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-PdfServiceURL' );
-		BsConfig::registerVar( 'MW::UEModulePDF::DefaultTemplate', 'BlueSpice', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-DefaultTemplate' );
-		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS',      false,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-SuppressNS', 'toggle' );
+		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL',   'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-pdfserviceurl' );
+		BsConfig::registerVar( 'MW::UEModulePDF::DefaultTemplate', 'BlueSpice', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-templatepath' );
+		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS',      false,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-suppressns', 'toggle' );
 		/* This setting is no longer needed. We do not provide the old bn2pdf.war anymore */
-		BsConfig::registerVar( 'MW::UEModulePDF::Backend',        'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-Backend' );
-		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath',   'extensions/BlueSpiceFoundation/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-TemplatePath' );
+		BsConfig::registerVar( 'MW::UEModulePDF::Backend',        'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS );
+		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath',   'extensions/BlueSpiceFoundation/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-templatepath' );
 
 		//Hooks
 		$this->setHook('BSUniversalExportGetWidget');
