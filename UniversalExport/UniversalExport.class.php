@@ -122,8 +122,8 @@ class UniversalExport extends BsExtensionMW {
 
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryWhitelist', $this->aCategoryWhitelist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryBlacklist', $this->aCategoryBlacklist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
-		BsConfig::registerVar( 'MW::UniversalExport::MetadataDefaults',  json_encode( $aMetadataDefaults ),  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-MetadataDefaults', 'textarea' );
-		BsConfig::registerVar( 'MW::UniversalExport::MetadataOverrides', json_encode( $aMetadataOverrides ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-MetadataOverrides', 'textarea' );
+		BsConfig::registerVar( 'MW::UniversalExport::MetadataDefaults',  json_encode( $aMetadataDefaults ),  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-metadatadefaults', 'textarea' );
+		BsConfig::registerVar( 'MW::UniversalExport::MetadataOverrides', json_encode( $aMetadataOverrides ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-metadataoverrides', 'textarea' );
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsDefaults',    $this->aParamsDefaults,     BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsOverrides',   $this->aParamsOverrides,    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 

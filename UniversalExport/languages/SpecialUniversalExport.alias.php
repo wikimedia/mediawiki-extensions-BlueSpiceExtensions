@@ -3,7 +3,7 @@ $specialPageAliases = array();
 
 /** English */
 $specialPageAliases['en'] = array(
-    'UniversalExport' => array( 'UniversalExport', 'Universal Export' ),
+	'UniversalExport' => array( 'UniversalExport', 'Universal Export' ),
 );
 
 /** German (Deutsch) */
