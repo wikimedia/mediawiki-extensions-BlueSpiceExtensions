@@ -3,7 +3,8 @@
 		"authors": [
 			"Niknetniko",
 			"Sjoerddebruin",
-			"McDutchie"
+			"McDutchie",
+			"Ribert"
 		]
 	},
 	"bs-articleinfo-desc": "Toont informatie over een pagina in de statusbalk.",
@@ -25,6 +26,7 @@
 	"bs-articleinfo-check-revision": "Nieuwe versie beschikbaar",
 	"bs-articleinfo-check-revision-tooltip": "Pagina opnieuw laden",
 	"bs-articleinfo-statebartoplastedited": "Recente bewerking",
+	"bs-articleinfo-statebartoplasteditor": "Recente editor",
 	"bs-articleinfo-statebartopcategories": "Categorieën",
 	"bs-articleinfo-statebartopsubpages": "Subpagina's",
 	"bs-articleinfo-statebarbodycategories": "Categorieën",

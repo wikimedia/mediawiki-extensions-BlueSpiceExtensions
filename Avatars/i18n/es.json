@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Miguel2706"
+			"Miguel2706",
+			"Themasterriot"
 		]
 	},
 	"prefs-avatars": "Avatares",
@@ -17,6 +18,7 @@
 	"bs-avatars-warning-title": "Atención",
 	"bs-avatars-userimage-title": "Imagen del wiki o URL a imagen",
 	"bs-avatars-userimage-help": "p. ej., Imagen.jpg o http://localhost/Imagen.gif",
+	"bs-avatars-set-userimage-failed": "No es una URL o imagen válida de una wiki.",
 	"bs-avatars-set-userimage-saved": "Se guardó la imagen de usuario correctamente.",
 	"bs-avatars-file-upload-fieldset-title": "Carga de imagen",
 	"bs-avatars-auto-generate-fieldset-title": "Generar avatar automáticamente"

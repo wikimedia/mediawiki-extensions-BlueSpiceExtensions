@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftab1995"
+		]
+	},
+	"bs-avatars-pref-generator": "উত্পাদক:",
+	"bs-avatars-pref-defaultsize": "পিক্সেলে ডিফল্ট আকার:",
+	"bs-avatars-upload-complete": "চিত্র সফলভাবে আপলোড হয়েছে।",
+	"bs-avatars-upload-title": "প্রোফাইল চিত্র পরিবর্তন করুন",
+	"bs-avatars-upload-label": "চিত্র",
+	"bs-avatars-warning-title": "সতর্কীকরণ",
+	"bs-avatars-userimage-help": "উদা. Picture.jpg বা http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-saved": "ব্যবহারকারীর চিত্র সফলভাবে সংরক্ষিত হয়েছে।",
+	"bs-avatars-file-upload-fieldset-title": "চিত্র আপলোড"
+}

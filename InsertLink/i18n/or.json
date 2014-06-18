@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Psubhashish"
+		]
+	},
+	"bs-insertlink": "ଲିଙ୍କ ଭରନ୍ତୁ",
+	"bs-insertlink-dialog-title": "ଲିଙ୍କ ଭରନ୍ତୁ",
+	"bs-insertlink-tab-wiki-page": "ଉଇକିପୃଷ୍ଠା",
+	"bs-insertlink-tab-ext-link": "ବାହାର ଲିଙ୍କ",
+	"bs-insertlink-tab-email": "ଇମେଲ-ଲିଙ୍କ",
+	"bs-insertlink-tab-ext-file": "ଫାଇଲକୁ ଲିଙ୍କ କରନ୍ତୁ",
+	"bs-insertlink-label-link": "ଲିଙ୍କ",
+	"bs-insertlink-label-mail": "ଇମେଲ ଠିକଣା",
+	"bs-insertlink-label-description": "ବିବରଣୀ",
+	"bs-insertlink-label-file": "ଫାଇଲ",
+	"bs-insertlink-label-searchfile": "ଖୋଜନ୍ତୁ...",
+	"bs-insertlink-select-a-page": "ଲକ୍ଷ୍ୟ ବାଛନ୍ତୁ...",
+	"bs-insertlink-select-a-namespace": "(ପୃଷ୍ଠାମାନ)",
+	"bs-insertlink-empty-field-text": "ଲିଙ୍କଟିଏ ଭରିବା ପାଇଁ ଯେଉଁଠାକୁ ପଠାଉଛନ୍ତି ତାହା ଜଣାଇବାକୁ ପଡ଼ିବ ।"
+}

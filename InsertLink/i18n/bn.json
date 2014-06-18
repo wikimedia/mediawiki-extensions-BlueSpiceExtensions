@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftab1995"
+		]
+	},
+	"bs-insertlink": "লিংক যোগ করো",
+	"bs-insertlink-dialog-title": "লিংক যোগ করো",
+	"bs-insertlink-tab-wiki-page": "উইকি পাতা",
+	"bs-insertlink-tab-ext-link": "বহিঃসংযোগ",
+	"bs-insertlink-tab-email": "ইমেইল-সংযোগ",
+	"bs-insertlink-label-page": "পাতা",
+	"bs-insertlink-label-link": "লিংক",
+	"bs-insertlink-label-mail": "ইমেইল ঠিকানা",
+	"bs-insertlink-label-description": "বিবরণ",
+	"bs-insertlink-label-file": "ফাইল",
+	"bs-insertlink-label-searchfile": "অনুসন্ধান ...",
+	"bs-insertlink-select-a-namespace": "(পাতাগুলি)"
+}
