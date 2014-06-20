@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Ribert"
+			"Ribert",
+			"Southparkfan"
 		]
 	},
 	"prefs-avatars": "Avatar:",
@@ -16,5 +17,8 @@
 	"bs-avatars-generate-new-label": "nieuwe avatar genereren",
 	"bs-avatars-warning-title": "Waarschuwing",
 	"bs-avatars-userimage-title": "Foto van wiki of afbeelding URL",
-	"bs-avatars-set-userimage-failed": "Niet een geldige URL of afbeelding van wiki."
+	"bs-avatars-userimage-help": "bijvoorbeeld Afbeelding.jpg of http://localhost/Afbeelding.gif",
+	"bs-avatars-set-userimage-failed": "Niet een geldige URL of afbeelding van wiki.",
+	"bs-avatars-set-userimage-saved": "Profielfoto succesvol opgeslagen",
+	"bs-avatars-file-upload-fieldset-title": "Afbeelding uploaden"
 }
