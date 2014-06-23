@@ -12,26 +12,12 @@ Ext.define( 'BS.InsertMagic.Window', {
 	singleton: true,
 
 	afterInitComponent: function() {
-		this.setTitle( mw.message('bs-insertmagic-dlg_title').plain() );
+		this.setTitle( mw.message('bs-insertmagic-dlg-title').plain() );
 
-		this.btnPreview = Ext.create( 'Ext.Button', {
-			id: 'bs-InsertMagic-btn-preview',
-			text: mw.message('bs-insertmagic-btn_preview').plain(),
-			handler: this.onBtnPreviewClicked,
-			scope: this
-		});
-		/*
-		this.buttons = [
-			//this.btnPreview,
-			this.btnSave,
-			this.btnCancel
-		];*/
-		
 		var typesArray = [
-			[ 'tag',      mw.message('bs-insertmagic-type_tags').plain() ],
-			[ 'switch',   mw.message('bs-insertmagic-type_switches').plain() ],
-			[ 'variable', mw.message('bs-insertmagic-type_variables').plain() ]/*,
-			[ 'redirect', mw.message('bs-insertmagic-type_redirect').plain() ]*/
+			[ 'tag', mw.message('bs-insertmagic-type-tags').plain() ],
+			[ 'switch', mw.message('bs-insertmagic-type-switches').plain() ],
+			[ 'variable', mw.message('bs-insertmagic-type-variables').plain() ]
 		];
 		//TODO: Make hook?
 		
@@ -125,10 +111,10 @@ Ext.define( 'BS.InsertMagic.Window', {
 				align: 'stretch' // Child items are stretched to full width
 			},
 			items: [
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_first').plain() }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-first').plain() }),
 				this.cmbType,
 				this.tagsGrid,
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_desc').plain(), style: 'padding-top: 10px' }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-desc').plain(), style: 'padding-top: 10px' }),
 				this.descPanel
 			]
 		});
@@ -142,10 +128,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 				align: 'stretch'
 			},
 			items:[
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_second').plain() }),
-				this.syntaxTextArea/*,
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_third, style: 'padding-top: 10px' }),
-				this.previewPanel*/
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-second').plain() }),
+				this.syntaxTextArea
 			]
 		});
 		
@@ -179,10 +163,6 @@ Ext.define( 'BS.InsertMagic.Window', {
 		this.tagsStore.filter( 'type', record[0].get('field1') );
 	},
 
-	onBtnPreviewClicked: function( oSender, oEvent ) {
-		//this.previewPanel;
-	},
-	
 	onRowSelect: function( grid, record, index, eOpts ) {
 		var data = {
 			desc : record.get('desc'),

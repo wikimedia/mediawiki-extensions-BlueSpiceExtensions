@@ -19,7 +19,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	buttons.push({
 		buttonId: 'bsmagic',
 		buttonConfig: {
-			title : mw.message('bs-insertmagic-dlg_title').plain(),
+			title : mw.message('bs-insertmagic-dlg-title').plain(),
 			cmd : 'mceBsMagic',
 			onPostRender: function() {
 				var self = this;
