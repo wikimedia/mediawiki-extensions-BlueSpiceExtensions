@@ -209,19 +209,19 @@ class VisualEditor extends BsExtensionMW {
 		);
 		$this->mExtensionKey = 'MW::VisualEditor';
 
-		BsConfig::registerVar('MW::VisualEditor::disableNS', array(NS_MEDIAWIKI), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-visualeditor-pref-disableNS', 'multiselectex');
-		BsConfig::registerVar('MW::VisualEditor::defaultNoContextNS', array(NS_SPECIAL, NS_MEDIA, NS_FILE), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT, 'bs-visualeditor-pref-defaultNoContextNS', 'multiselectex');
+		BsConfig::registerVar('MW::VisualEditor::disableNS', array(NS_MEDIAWIKI), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-visualeditor-pref-disablens', 'multiselectex');
+		BsConfig::registerVar('MW::VisualEditor::defaultNoContextNS', array(NS_SPECIAL, NS_MEDIA, NS_FILE), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT, 'bs-visualeditor-pref-defaultnocontextns', 'multiselectex');
 
-		BsConfig::registerVar('MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-SpecialTags');
-		BsConfig::registerVar('MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-AllowedTags');
+		BsConfig::registerVar('MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-specialtags');
+		BsConfig::registerVar('MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-allowedtags');
 
-		BsConfig::registerVar('MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-Use', 'toggle');
-		BsConfig::registerVar('MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseLimited', 'toggle');
-		BsConfig::registerVar('MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseForceLimited', 'toggle');
+		BsConfig::registerVar('MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-use', 'toggle');
+		BsConfig::registerVar('MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-uselimited', 'toggle');
+		BsConfig::registerVar('MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-useforcelimited', 'toggle');
 
-		BsConfig::registerVar('MW::VisualEditor::DebugMode', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-DebugMode');
-		BsConfig::registerVar('MW::VisualEditor::GuiMode', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-GuiMode');
-		BsConfig::registerVar('MW::VisualEditor::GuiSwitchable', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-GuiSwitchable');
+		BsConfig::registerVar('MW::VisualEditor::DebugMode', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-debugmode');
+		BsConfig::registerVar('MW::VisualEditor::GuiMode', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-guimode');
+		BsConfig::registerVar('MW::VisualEditor::GuiSwitchable', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-guiswitchable');
 
 		wfProfileOut('BS::' . __METHOD__);
 	}
@@ -444,7 +444,7 @@ class VisualEditor extends BsExtensionMW {
 
 		$sReturnEditTime = wfTimestampNow();
 		if ($sSummary == 'false') {
-			$sSummary = wfMessage('bs-visualeditor-no-summary')->plain();
+			$sSummary = '/* '.wfMessage( 'bs-visualeditor-no-summary' )->plain().' */';
 		}
 
 		$oArticle = Article::newFromID($sArticleId);
