@@ -40,7 +40,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 
 		this.colMainConf.columns = [
 			{
-				header   : mw.message('bs-responsibleeditors-columnHeaderNamespace').plain(),
+				header   : mw.message('bs-responsibleeditors-columnnamespace').plain(),
 				sortable : true,
 				dataIndex: 'page_namespace',
 				renderer : this.renderNamespace,
@@ -50,12 +50,12 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 			},
 			{
 				id       : 'name',
-				header   : mw.message('bs-responsibleeditors-columnHeaderArticle').plain(),
+				header   : mw.message('bs-responsibleeditors-columnpage').plain(),
 				sortable : true,
 				dataIndex: 'page_title',
 				renderer : this.renderArticleTitle
 			},{
-				header   : mw.message('bs-responsibleeditors-columnHeaderResponsibleEditor').plain(),
+				header   : mw.message('bs-responsibleeditors-columnresponsibleeditor').plain(),
 				sortable : false,
 				dataIndex: 'users',
 				renderer : this.renderResponsibleEditor
@@ -76,21 +76,21 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 			items: [
 			{
 				id     : 'bs-re-only-assigned',
-				text   : mw.message('bs-responsibleeditors-rbDisplayModeOnlyAssignedText').plain(),
+				text   : mw.message('bs-responsibleeditors-rbdisplaymodeonlyassignedtext').plain(),
 				checked: true,
 				value  : 'only-assigned',
 				group  : 'displayMode'
 			},
 			{
 				id     : 'bs-re-only-not-assigned',
-				text   : mw.message('bs-responsibleeditors-rbDisplayModeOnlyNotAssigned').plain(),
+				text   : mw.message('bs-responsibleeditors-rbdisplaymodeonlynotassigned').plain(),
 				checked: false,
 				value  : 'only-not-assigned',
 				group  : 'displayMode'
 			},
 			{
 				id     : 'bs-re-all',
-				text   : mw.message('bs-responsibleeditors-rbDisplayModeAll').plain(),
+				text   : mw.message('bs-responsibleeditors-rbdisplaymodeall').plain(),
 				checked: false,
 				value  : 'all',
 				group  : 'displayMode'
@@ -100,12 +100,12 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 		this.mnuAssignmentFilter.on( 'click', this.mnuAssignmentFilterClick, this );
 
 		this.btnAssignmentFilterMenu = Ext.create( 'Ext.Button', {
-			text: mw.message('bs-responsibleeditors-rbDisplayModeOnlyAssignedText').plain(),
+			text: mw.message('bs-responsibleeditors-rbdisplaymodeonlyassignedtext').plain(),
 			menu: this.mnuAssignmentFilter
 		});
 		
 		this.cbNamespaceFilter = Ext.create( 'Ext.form.ComboBox', {
-			emptyText    : mw.message('bs-responsibleeditors-cbNamespacesEmptyText').plain(),
+			emptyText    : mw.message('bs-responsibleeditors-cbnamespacesemptytext').plain(),
 			displayField : 'namespace_text',
 			valueField   : 'namespace_id',
 			typeAhead    : true,
@@ -268,7 +268,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	renderResponsibleEditor: function( aValue, oMetaData, oRecord, iRowIndex, iColIndex, oStore ) {
 		if( typeof(aValue) === 'undefined' || aValue.length === 0) {
 			return '<em style="color: #A0A0A0">{0}</em>'.format(
-				mw.message('bs-responsibleeditors-columnResponsibleEditorNotSet').plain()
+				mw.message('bs-responsibleeditors-columneesponsibleeditornotset').plain()
 			);
 		}
 
