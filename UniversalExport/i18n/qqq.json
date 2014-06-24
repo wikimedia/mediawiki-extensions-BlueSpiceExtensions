@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki"
 		]
 	},
 	"bs-universalexport-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of univeral export extension",
@@ -28,6 +29,6 @@
 	"bs-universalexport-error-requested-title-in-category-blacklist": "Text for the requested page must not be exported because it is on category blacklist.",
 	"bs-universalexport-statebarbodyuniversalexportmeta": "Text for universal export metadata",
 	"bs-universalexport-statebarbodyuniversalexportparams": "Text for universal export parameter",
-	"action-universalexport-export": "Text for to create an export file",
-	"right-universalexport-export": "Text for create an export file"
+	"action-universalexport-export": "{{doc-action|universalexport-export}}",
+	"right-universalexport-export": "{{doc-right|universalexport-export}}"
 }
