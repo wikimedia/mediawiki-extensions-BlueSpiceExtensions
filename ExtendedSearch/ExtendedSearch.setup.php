@@ -1,6 +1,6 @@
 <?php
 
-BsExtensionManager::registerExtension('ExtendedSearch', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension( 'ExtendedSearch', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE );
 
 $wgExtensionMessagesFiles['ExtendedSearch'] = __DIR__ . '/languages/ExtendedSearch.i18n.php';
 
@@ -41,7 +41,6 @@ unset( $aResourceModuleTemplate );
 $wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
 $wgAjaxExportList[] = 'ExtendedSearchBase::getAutocompleteData';
 $wgAjaxExportList[] = 'ExtendedSearchBase::getRecentSearchTerms';
-
 $wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
 
 $wgAPIModules['feedextendedsearch'] = 'ApiFeedExtendedSearch';
@@ -82,10 +81,10 @@ $wgAutoloadClasses['ViewSpell'] = __DIR__ . '/views/view.Spell.php';
 $wgAutoloadClasses['ViewMoreLikeThis'] = __DIR__ . '/views/view.MoreLikeThis.php';
 $wgAutoloadClasses['ViewExtendedSearchResultEntry'] = __DIR__ . '/views/view.ExtendedSearchResultEntry.php';
 
-// Specialpage and messages
-$wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
+// Specialpage
+$wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.class.php';
 $wgSpecialPageGroups['SpecialExtendedSearch'] = 'bluespice';
-$wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
-$wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch'; # Tell MediaWiki about the new special page and its class name
+$wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/languages/SpecialExtendedSearch.alias.php';
+$wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ExtendedSearch::getSchemaUpdates';

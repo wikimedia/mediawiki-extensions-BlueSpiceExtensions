@@ -38,7 +38,7 @@ abstract class AbstractBuildIndexMwLinked extends AbstractBuildIndexLinked {
 			}
 		}
 		if ( !$bUrlProtocolFileActivated )
-				$aErrorMessageKeys['bs-extendedsearch-file_protocol_not_activated'] = true;
+				$aErrorMessageKeys['bs-extendedsearch-file-protocol-not-activated'] = true;
 		return parent::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 	}
 

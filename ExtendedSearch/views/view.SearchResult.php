@@ -288,8 +288,8 @@ class ViewSearchResult extends ViewBaseElement {
 			if ( $bActive ) {
 				$sDirection = ( $aSorting['sortdirection'] == 'asc' ) ? 'desc' : 'asc';
 				$sDirectionMessage = ( $aSorting['sortdirection'] == 'asc' )
-					? wfMessage( 'bs-extendedsearch-asc' )->plain()
-					: wfMessage( 'bs-extendedsearch-desc' )->plain();
+					? wfMessage( 'bs-extendedsearch-ascending' )->plain()
+					: wfMessage( 'bs-extendedsearch-descending' )->plain();
 
 				global $wgScriptPath;
 				$sIcon = '<img src="' . $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
@@ -340,15 +340,15 @@ class ViewSearchResult extends ViewBaseElement {
 	 */
 	public function getNumberOfPageItems() {
 		$iNumOfResults = BsConfig::get( 'MW::ExtendedSearch::LimitResults' );
-		$iBegin        = ( ( $this->getOption( 'activePage' ) - 1 ) * $iNumOfResults ) + 1;
-		$iEnd          = $this->getOption( 'activePage' ) * $iNumOfResults;
+		$iBegin = ( ( $this->getOption( 'activePage' ) - 1 ) * $iNumOfResults ) + 1;
+		$iEnd = $this->getOption( 'activePage' ) * $iNumOfResults;
+		$iNumFound = $this->getOption( 'numFound' );
 
-		if ( $this->getOption( 'numFound' ) < $iEnd ) {
-			$iEnd = $this->getOption( 'numFound' );
+		if ( $iNumFound < $iEnd ) {
+			$iEnd = $iNumFound;
 		}
 
-		return $iBegin .' - ' . $iEnd . ' ' . wfMessage( 'bs-extendedsearch-outof' )->plain()
-				. ' ' . $this->getOption( 'numFound' ) . ' ' . wfMessage( 'bs-extendedsearch-result-caption' )->plain() . ' ';
+		return wfMessage( 'bs-extendedsearch-result-caption', $iBegin, $iEnd, $iNumFound )->plain();
 	}
 
 }

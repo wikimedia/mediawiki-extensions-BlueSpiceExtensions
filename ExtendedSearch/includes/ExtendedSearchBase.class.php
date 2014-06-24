@@ -125,8 +125,10 @@ class ExtendedSearchBase {
 			$aMonitor['linkToExtendedPageMessageKey'] = 'bs-extendedsearch-specialpage-form-return-to-simple';
 			$aMonitor['linkToExtendedPageUri'] = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL );
 
-			$oSearchformView->addItem( $this->renderExtendedForm( $oSearchform ) );
-			$bShowExtendedForm = true;
+			$this->renderExtendedForm( $oSearchform );
+			$oSearchform->setOptions( $aMonitor );
+			$oSearchformView->addItem( $oSearchform );
+			return $oSearchformView;
 		} else {
 			$aMonitor['linkToExtendedPageMessageKey'] = 'bs-extendedsearch-specialpage-form-expand-to-extended';
 			$aMonitor['linkToExtendedPageUri'] = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL | SearchUriBuilder::EXTENDED );
@@ -137,8 +139,6 @@ class ExtendedSearchBase {
 
 		$oView = new ViewBaseElement();
 		$this->oContext->getOutPut()->addHTML( $oSearchformView->execute() );
-
-		if ( isset( $bShowExtendedForm ) && $bShowExtendedForm == 'true' ) return;
 
 		return $this->getResults();
 	}
@@ -184,7 +184,7 @@ class ExtendedSearchBase {
 			)
 		);
 
-		$vOptionsFormWiki = $aMonitor->getOptionsForm( 'wiki', wfMessage( 'bs-extendedsearch-search-wiki' )->plain() );
+		$vOptionsFormWiki = $aMonitor->getOptionsForm( 'wiki', '' );
 		$vNamespaceBox = $vOptionsFormWiki->getBox( 'NAMESPACE-FIELD', 'bs-extendedsearch-search-namespace', 'na[]' );
 		$aMwNamespaces = $wgContLang->getNamespaces();
 		$aSelectedNamespaces = $this->oSearchOptions->getOption( 'namespaces' );
@@ -194,7 +194,7 @@ class ExtendedSearchBase {
 		foreach ( $aMwNamespaces as $namespace ) {
 			$iNsIndex = $wgContLang->getNsIndex( $namespace );
 			if ( $iNsIndex < 0 ) continue;
-			if ( $iNsIndex == 0 ) $namespace = wfMessage( 'bs-extendedsearch-articles' )->plain();
+			if ( $iNsIndex == 0 ) $namespace = wfMessage( 'bs-ns_main' )->plain();
 			$vNamespaceBox->addEntry(
 				$iNsIndex,
 				array(
