@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"EagerLin"
+		]
+	},
+	"bs-extensioninfo-headerversion": "版本",
+	"bs-extensioninfo-headerdesc": "描述",
+	"bs-extensioninfo-headerstatus": "狀態"
+}
