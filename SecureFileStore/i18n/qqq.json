@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-securefilestore-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of secure file store extension",
+	"prefs-securefilestore": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for secure file store section in preferences.\n{{Identical|Secure file store}}",
+	"bs-securefilestore-pref-defaultdisposition": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for display files by default:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for browser",
+	"bs-securefilestore-pref-defaultdisposition-external": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for external",
+	"bs-securefilestore-pref-dispositionattachment": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for external file types:",
+	"bs-securefilestore-pref-dispositioninline": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for browser file types:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for always display these file types:"
+}
