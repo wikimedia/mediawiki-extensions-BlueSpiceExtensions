@@ -4,5 +4,5 @@
 			"Okras"
 		]
 	},
-	"bs-hidetitle-desc": "Добавляет тег <code><nowiki>__HIDETITLE__</nowiki></code>, чтобы скрыть заголовок страницы"
+	"bs-hidetitle-desc": "Добавляет волшебное слово <code><nowiki>__HIDETITLE__</nowiki></code>, чтобы скрыть заголовок страницы"
 }
