@@ -109,8 +109,7 @@ BsWantedArticle = {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					text: mw.message('bs-wantedarticle-info-title-contains-invalid-chars' ).plain()
-							+ aFoundChars.join( ', ' )
+					text: mw.message('bs-wantedarticle-title-invalid-chars', aFoundChars.length, aFoundChars.join( ', ' ) ).plain()
 				}
 			);
 			return false;
