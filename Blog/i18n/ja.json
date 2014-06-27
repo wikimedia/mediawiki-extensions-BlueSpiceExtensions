@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"prefs-blog": "ブログ",
+	"bs-blog-comments": "コメント",
+	"bs-blog-trackback": "トラックバック",
+	"bs-blog-permalink": "固定リンク",
+	"bs-blog-form-button-text": "作成",
+	"bs-blog-blog": "ブログ",
+	"bs-blog-pref-sortby": "並び順:",
+	"bs-blog-pref-imagerendermode": "画像の表示:"
+}

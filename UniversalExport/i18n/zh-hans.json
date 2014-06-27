@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cwek"
+		]
+	},
+	"bs-universalexport-desc": "添加导出功能",
+	"prefs-universalexport": "通用输出",
+	"universalexport": "通用输出",
+	"bs-universalexport-pref-metadatadefaults": "元数据（标准的，基于JSON格式）：",
+	"bs-universalexport-pref-metadataoverrides": "元数据（覆盖的，基于JSON格式）：",
+	"bs-universalexport-page-title-without-param": "通用输出：模块",
+	"bs-universalexport-page-title-on-error": "通用输出：错误",
+	"bs-universalexport-page-text-without-param": "此页显示可用的导出模块的通用输出信息。",
+	"bs-universalexport-page-text-without-param-no-modules-registered": "没有注册的模块。",
+	"bs-universalexport-widget-title": "导出",
+	"bs-universalexport-widget-tooltip": "导出当前页",
+	"bs-universalexport-tag-pagebreak-text": "分页符",
+	"bs-universalexport-tag-exclude-text": "此文本将不会导出。",
+	"bs-universalexport-tag-hidetitle-text": "此页面的标题将不会在导出中可见。",
+	"bs-universalexport-tag-excludearticle-text": "此页可能不会被导出。",
+	"bs-universalexport-statebarbodyuniversalexportparams": "通用输出参数",
+	"action-universalexport-export": "去创建一个导出文件",
+	"right-universalexport-export": "创建一个导出文件"
+}
