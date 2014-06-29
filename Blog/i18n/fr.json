@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fany"
+			"Fany",
+			"Gomoko"
 		]
 	},
 	"bs-blog-desc": "Affiche une liste de pages de style de blog",
@@ -9,6 +10,7 @@
 	"bs-blog-no-entries": "Il n'y a pas d'entrées de blogs.",
 	"bs-blog-comments": "Commentaires",
 	"bs-blog-read-more": "Pour en savoir plus",
+	"bs-blog-trackback": "Rétrolien",
 	"bs-blog-permalink": "Lien permanent",
 	"bs-blog-show-all": "Afficher toutes les entrées",
 	"bs-blog-form-inline-text": "Titre...",

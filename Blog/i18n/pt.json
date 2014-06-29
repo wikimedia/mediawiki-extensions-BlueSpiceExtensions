@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Fúlvio"
 		]
 	},
 	"bs-blog-desc": "Mostra uma lista de páginas ao estilo de blogue",
@@ -9,6 +10,7 @@
 	"bs-blog-no-entries": "Não existem entradas de blogue.",
 	"bs-blog-comments": "Comentários",
 	"bs-blog-read-more": "Ler mais",
+	"bs-blog-trackback": "Trackback",
 	"bs-blog-permalink": "Ligação permanente",
 	"bs-blog-show-all": "Mostrar todas as entradas",
 	"bs-blog-form-inline-text": "Título...",

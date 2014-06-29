@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Fúlvio"
 		]
 	},
+	"bs-extendededitbar-desc": "Adiciona botões adicionais ao campo de edição da wiki",
 	"bs-extendededitbar-redirecttip": "Redirecionamento",
 	"bs-extendededitbar-redirectsample": "Inserir texto",
 	"bs-extendededitbar-striketip": "Rasurar",
@@ -17,9 +19,13 @@
 	"bs-extendededitbar-smallsample": "Texto pequeno",
 	"bs-extendededitbar-commenttip": "Inserir comentário oculto",
 	"bs-extendededitbar-commentsample": "Comentário",
+	"bs-extendededitbar-gallerytip": "Inserir galeria de imagens",
 	"bs-extendededitbar-gallerysamplepicture": "Imagem",
 	"bs-extendededitbar-gallerysamplecaption": "Legenda",
+	"bs-extendededitbar-quotetip": "Inserir bloco de citação de texto",
 	"bs-extendededitbar-quotesample": "Citação",
 	"bs-extendededitbar-tabletip": "Inserir tabela",
-	"bs-extendededitbar-tablesampleheader": "Cabeçalho"
+	"bs-extendededitbar-tablesampleheader": "Cabeçalho",
+	"bs-extendededitbar-tablesamplerow": "Linha",
+	"bs-extendededitbar-tablesamplecell": "Célula"
 }

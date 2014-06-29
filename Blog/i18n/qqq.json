@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Shirayuki"
+			"Shirayuki",
+			"Robby"
 		]
 	},
 	"bs-blog-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of blog extension",

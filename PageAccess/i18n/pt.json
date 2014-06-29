@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fúlvio"
+		]
+	},
+	"bs-pageaccess-desc": "Controla o acesso em nível de página",
+	"bs-pageaccess-error-no-groups-given": "Nenhum grupo especificado.",
+	"bs-pageaccess-error-not-member-of-given-groups": "Você não é um membro dos grupos citados. O salvamento foi desactivado a fim de evitar o bloqueio de seu acesso.",
+	"bs-pageaccess-error-included-forbidden-template": "Você tentou utilizar a predefinição \"$1\", ao qual não tens acesso para leitura. O salvamento foi desactivado a fim de evitar o bloqueio de seu acesso.",
+	"bs-pageaccess-tag-groups-desc": "Especifique os grupos que devem ter acesso exclusivo a esta página. Separe os grupos com vírgula.",
+	"pageaccess": "Páginas asseguradas pela PageAccess"
+}
