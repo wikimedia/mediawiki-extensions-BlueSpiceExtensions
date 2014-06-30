@@ -4,5 +4,8 @@
 			"WikiPhoenix"
 		]
 	},
-	"action-universalexport-export": "för att skapa en exportfil"
+	"bs-universalexport-desc": "Lägger till exportfunktioner",
+	"bs-universalexport-tag-pagebreak-text": "Sidbrytning",
+	"action-universalexport-export": "för att skapa en exportfil",
+	"right-universalexport-export": "Skapa en exportfil"
 }

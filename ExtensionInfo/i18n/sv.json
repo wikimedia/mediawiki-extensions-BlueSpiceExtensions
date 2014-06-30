@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-extensioninfo-label": "Tillägg",
@@ -12,5 +13,6 @@
 	"bs-extensioninfo-headerversion": "Version",
 	"bs-extensioninfo-headerdesc": "Beskrivning",
 	"bs-extensioninfo-headerstatus": "Status",
-	"bs-extensioninfo-headerpackage": "Paket"
+	"bs-extensioninfo-headerpackage": "Paket",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element}}"
 }
