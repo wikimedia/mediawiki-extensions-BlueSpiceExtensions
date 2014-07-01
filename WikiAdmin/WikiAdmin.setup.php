@@ -7,8 +7,9 @@ $wgExtensionFunctions[] = 'WikiAdmin::loadModules';
 $wgExtensionMessagesFiles['WikiAdmin'] = __DIR__ . '/languages/WikiAdmin.i18n.php';
 
 // Specialpage and messages
-$wgAutoloadClasses['SpecialWikiAdmin'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
+$wgAutoloadClasses['SpecialWikiAdmin'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.class.php';
 $wgSpecialPageGroups['SpecialWikiAdmin'] = 'bluespice';
-$wgExtensionMessagesFiles['WikiAdminAlias'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
-$wgSpecialPages['SpecialWikiAdmin'] = 'SpecialWikiAdmin'; # Tell MediaWiki about the new special page and its class name
+$wgExtensionMessagesFiles['WikiAdminAlias'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.alias.php';
+$wgSpecialPages['SpecialWikiAdmin'] = 'SpecialWikiAdmin';
 
+$wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'WikiAdmin::onSkinTemplateOutputPageBeforeExec';

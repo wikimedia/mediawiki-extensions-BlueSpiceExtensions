@@ -24,22 +24,11 @@
   * http://www.gnu.org/copyleft/gpl.html
   *
   * For further information visit http://www.blue-spice.org
-  *
-  * Version information
-  * $LastChangedDate: 2013-06-25 11:17:54 +0200 (Di, 25 Jun 2013) $
-  * $LastChangedBy: rvogel $
-  * $Rev: 9912 $
-
   */
 
 /* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v0.1.0
- * FIRST CHANGES
+ * v2.23.0
  */
-
- // Last review: (01.07.11 01:58)
 
 class WikiAdmin extends BsExtensionMW {
 
@@ -195,5 +184,50 @@ class WikiAdmin extends BsExtensionMW {
 		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Adds WikiAdmin tab to main navigation
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
+	 */
+	public static function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if( $sktemplate->getUser()->isAllowed('wikiadmin') === false ) {
+			return true;
+		}
+
+		$oSpecialPage = SpecialPage::getTitleFor('WikiAdmin');
+		$aRegisteredModules = WikiAdmin::getRegisteredModules();
+
+		$aOut = array();
+		$aOut[] = '<ul>';
+
+		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
+			$skeyLower = mb_strtolower($sModuleKey);
+			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
+			$sUrl = $oSpecialPage->getLocalURL( array( 'mode' => $sModuleKey ) );
+			//$sUrl = str_replace( '&', '&amp;', $sUrl );
+			$sLink = Html::element(
+				'a',
+				array(
+					'id' => 'bs-admin-'.$skeyLower,
+					'href' => $sUrl,
+					'title' => $sModulLabel
+				),
+				$sModulLabel
+			);
+			$aOut[] = '  <li>'.$sLink.'</li>';
+		}
+
+		$aOut[] = '</ul>';
+
+		$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
+			'position' => 100,
+			'label' => wfMessage('bs-tab_admin')->plain(),
+			'class' => 'icon-wrench',
+			'content' => implode( "\n", $aOut )
+		);
+		return true;
 	}
 }

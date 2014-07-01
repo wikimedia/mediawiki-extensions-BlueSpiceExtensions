@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-wikiadmin-desc": "BlueSpice Administration",
+	"bs-wikiadmin-notallowed": "Du bist leider nicht berechtigt, diese Seite zu benutzen.",
+	"specialwikiadmin": "BlueSpice Administration",
+	"action-wikiadmin": "darstellen von BlueSpice Administrationsseiten",
+	"right-wikiadmin": "BlueSpice Administrationsseiten darzustellen"
+}
