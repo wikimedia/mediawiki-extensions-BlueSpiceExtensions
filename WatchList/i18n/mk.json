@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-watchlist-desc": "Додава елемент и ознака за список на набљудувања",
+	"bs-watchlist-title-sidebar": "Набљудувања",
+	"bs-watchlist-pref-widgetlimit": "Ограничување на записи:",
+	"bs-watchlist-pref-widgetsortodr": "Подреди по:",
+	"bs-watchlist-pref-sort-time": "Време",
+	"bs-watchlist-pref-sort-title": "Наслов",
+	"bs-watchlist-tag-watchlist-desc": "Создава список на страници што се во вашите набљудувања и имаат непроверени промени"
+}
