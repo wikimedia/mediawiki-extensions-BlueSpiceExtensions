@@ -5,7 +5,6 @@
 		]
 	},
 	"bs-watchlist-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of watchlist extension",
-	"prefs-watchlist": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for watchlist section.\n{{Identical|Watchlist}}",
 	"bs-watchlist-title-sidebar": "Headline for watchlist \n{{Identical|Watchlist}}",
 	"bs-watchlist-pref-widgetlimit": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for limit of entries:",
 	"bs-watchlist-pref-widgetsortodr": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for sort by",

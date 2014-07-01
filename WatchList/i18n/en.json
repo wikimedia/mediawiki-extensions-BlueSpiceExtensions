@@ -5,7 +5,6 @@
 		]
 	},
 	"bs-watchlist-desc": "Adds a watchlist widget and tag",
-	"prefs-watchlist": "Watchlist",
 	"bs-watchlist-title-sidebar": "Watchlist",
 	"bs-watchlist-pref-widgetlimit": "Limit of entries:",
 	"bs-watchlist-pref-widgetsortodr": "Sort by:",
