@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Ermöglicht es, eigene oder vorhandene Menüpunkte zu bearbeiten oder zu erstellen.",
+	"prefs-topmenubarcustomizer": "TopMenuBarCustomizer",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Anzahl verschachtelter Ebenen:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Anzahl von Einträgen auf der Hauptebene:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Anzahl von Einträgen auf Unterebenen:"
+}
