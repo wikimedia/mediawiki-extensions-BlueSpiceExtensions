@@ -5,7 +5,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-insertmagic-gallery": "Erstellen Sie eine Galerie von Vorschaubildern mit Hilfe des <code>\<gallery\></code> Tag.",
+	"bs-insertmagic-gallery": "Erstellen Sie eine Galerie von Vorschaubildern mit Hilfe des <code>&lt;gallery&gt;</code> Tag.",
 	"bs-insertmagic-label-first": "1. Wählen Sie ein magisches Wort",
 	"bs-insertmagic-label-second": "2. Geben Sie den Text ein"
 }
