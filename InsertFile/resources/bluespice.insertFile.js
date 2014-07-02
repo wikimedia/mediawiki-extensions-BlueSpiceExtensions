@@ -90,7 +90,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	menus.push({
 		menuId: 'bsContextImage',
 		menuConfig: {
-			text: mw.message('bs-insertfile-button_image_title').plain(),
+			text: mw.message('bs-insertfile-button-image-title').plain(),
 			icon: 'image',
 			cmd : 'mceBsImage'
 		}
@@ -98,7 +98,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	buttons.push({
 		buttonId: 'bsimage',
 		buttonConfig: {
-			title : mw.message('bs-insertfile-button_image_title').plain(),
+			title : mw.message('bs-insertfile-button-image-title').plain(),
 			cmd : 'mceBsImage',
 			icon: 'image',
 			onPostRender: function() {
@@ -120,7 +120,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	buttons.push({
 		buttonId: 'bsfile',
 		buttonConfig: {
-			title : mw.message('bs-insertfile-button_file_title').plain(),
+			title : mw.message('bs-insertfile-button-file-title').plain(),
 			cmd : 'mceBsFile',
 			onPostRender: function() {
 				var self = this;

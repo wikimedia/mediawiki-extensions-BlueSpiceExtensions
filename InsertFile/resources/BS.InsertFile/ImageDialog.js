@@ -10,7 +10,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 
 	singleton: true,
 	id: 'bs-InsertImage-dlg-window',
-	title: mw.message('bs-insertfile-titleImage').plain(),
+	title: mw.message('bs-insertfile-titleimage').plain(),
 
 	//Custom Settings
 	allowedFileExtensions: mw.config.get( 'bsImageExtensions' ),
@@ -49,7 +49,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.nbWidth.on('blur', this.onNbWidthChange, this);
 		this.btnKeepRatio = Ext.create('Ext.Button', {
 			text: '&nbsp;x&nbsp;',
-			tooltip: mw.message('bs-insertfile-tipKeepRatio').plain(),
+			tooltip: mw.message('bs-insertfile-tipkeepratio').plain(),
 			enableToggle: true,
 			pressed: true,
 			ui: 'default-toolbar-small',
@@ -57,29 +57,29 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		});
 
 		this.rgFormat = Ext.create('Ext.form.RadioGroup', {
-			fieldLabel: mw.message('bs-insertfile-labelType').plain(),
+			fieldLabel: mw.message('bs-insertfile-labeltype').plain(),
 			value: 'thumb',
 			items: [{
-					boxLabel: mw.message('bs-insertfile-typeNone').plain(),
+					boxLabel: mw.message('bs-insertfile-typenone').plain(),
 					id: 'img-type-none',
 					name: 'img-type',
 					inputValue: 'none'
 				},
 				{
-					boxLabel: mw.message('bs-insertfile-typeThumb').plain(),
+					boxLabel: mw.message('bs-insertfile-typethumb').plain(),
 					id: 'img-type-thumb',
 					name: 'img-type',
 					inputValue: 'thumb',
 					checked: true
 				},
 				{
-					boxLabel: mw.message('bs-insertfile-typeFrame').plain(),
+					boxLabel: mw.message('bs-insertfile-typeframe').plain(),
 					id: 'img-type-frame',
 					name: 'img-type',
 					inputValue: 'frame'
 				},
 				{
-					boxLabel: mw.message('bs-insertfile-typeBorder').plain(),
+					boxLabel: mw.message('bs-insertfile-typeborder').plain(),
 					id: 'img-type-border',
 					name: 'img-type',
 					inputValue: 'border'
@@ -89,29 +89,29 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.rgFormat.on( 'change', this.onRgFormatChange, this );
 
 		this.rgAlign = Ext.create('Ext.form.RadioGroup', {
-			fieldLabel: mw.message('bs-insertfile-labelAlign').plain(),
+			fieldLabel: mw.message('bs-insertfile-labelalign').plain(),
 			value: 'none',
 			items: [{
-					boxLabel: mw.message('bs-insertfile-alignNone').plain(),
+					boxLabel: mw.message('bs-insertfile-alignnone').plain(),
 					id: 'img-align-none',
 					name: 'img-align',
 					inputValue: 'none',
 					checked: true
 				},
 				{
-					boxLabel: mw.message('bs-insertfile-alignLeft').plain(),
+					boxLabel: mw.message('bs-insertfile-alignleft').plain(),
 					id: 'img-align-left',
 					name: 'img-align',
 					inputValue: 'left'
 				},
 				{
-					boxLabel: mw.message('bs-insertfile-alignCenter').plain(),
+					boxLabel: mw.message('bs-insertfile-aligncenter').plain(),
 					id: 'img-align-center',
 					name: 'img-align',
 					inputValue: 'center'
 				},
 				{
-					boxLabel: mw.message('bs-insertfile-alignRight').plain(),
+					boxLabel: mw.message('bs-insertfile-alignright').plain(),
 					id: 'img-align-right',
 					name: 'img-align',
 					inputValue: 'right'
@@ -120,7 +120,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		});
 		
 		this.tfAlt = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-insertfile-labelAlt').plain(),
+			fieldLabel: mw.message('bs-insertfile-labelalt').plain(),
 			//todo: needs implementation, just setting an empty string
 			//otherwise the edit dialog would display false
 			value: ""
@@ -134,7 +134,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			this.rgAlign,
 			{
 				xtype: 'fieldcontainer',
-				fieldLabel: mw.message('bs-insertfile-labelLink').plain(),
+				fieldLabel: mw.message('bs-insertfile-labellink').plain(),
 				layout: 'hbox',
 				items: [
 					this.cbPages,
@@ -143,7 +143,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			},
 			{
 				xtype: 'fieldcontainer',
-				fieldLabel: mw.message('bs-insertfile-labelDimensions').plain(),
+				fieldLabel: mw.message('bs-insertfile-labeldimensions').plain(),
 				layout: 'hbox',
 				/*fieldDefaults: {
 					margin: '0 5 5 0'

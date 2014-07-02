@@ -119,10 +119,10 @@ class InsertFile extends BsExtensionMW {
 		$aRows[0]['dialogs'][30] = 'bs-editbutton-insertfile';
 
 		$aButtonCfgs['bs-editbutton-insertimage'] = array(
-			'tip' => wfMessage( 'bs-insertfile-insert_image' )->plain()
+			'tip' => wfMessage( 'bs-insertfile-insert-image' )->plain()
 		);
 		$aButtonCfgs['bs-editbutton-insertfile'] = array(
-			'tip' => wfMessage( 'bs-insertfile-insert_file' )->plain()
+			'tip' => wfMessage( 'bs-insertfile-insert-file' )->plain()
 		);
 		return true;
 	}

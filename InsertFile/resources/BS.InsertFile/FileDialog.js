@@ -4,7 +4,7 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 
 	singleton: true,
 	id: 'bs-InsertFile-dlg-window',
-	title: mw.message('bs-insertfile-titleFile').plain(),
+	title: mw.message('bs-insertfile-titlefile').plain(),
 	
 	storeFileType: 'file',
 	
