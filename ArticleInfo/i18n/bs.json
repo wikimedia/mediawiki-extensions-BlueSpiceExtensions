@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Edinwiki"
+			"Edinwiki",
+			"KWiki"
 		]
 	},
-	"bs-articleinfo-last-edited-tooltip": "Zadnja izmjena",
+	"bs-articleinfo-last-edited-tooltip": "Posljednja izmjena",
 	"bs-articleinfo-all-categories-heading": "Kategorije",
 	"bs-articleinfo-statebarbodytemplates": "Šabloni"
 }

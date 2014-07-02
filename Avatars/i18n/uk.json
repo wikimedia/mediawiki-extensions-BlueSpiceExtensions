@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"prefs-avatars": "Аватари",
+	"bs-avatars-desc": "Містить загальні та індивідуальні зображення користувача",
+	"bs-avatars-pref-generator": "Генератор:",
+	"bs-avatars-pref-defaultsize": "Стандартний розмір у пікселях:",
+	"bs-avatars-upload-complete": "Зображення завантажено успішно.",
+	"bs-avatars-generate-complete": "Створено новий аватар.",
+	"bs-avatars-upload-title": "Змінити зображення профілю",
+	"bs-avatars-upload-label": "Зображення",
+	"bs-avatars-generate-new-label": "Створити новий аватар",
+	"bs-avatars-warning-title": "Застереження",
+	"bs-avatars-warning-text": "Ви вказали зображення користувача у своїх налаштуваннях. Використання аватарів очистить цей параметр. Хочете продовжити?",
+	"bs-avatars-userimage-title": "Зображення з вікі або URL малюнка",
+	"bs-avatars-userimage-help": "напр., Picture.jpg або http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "Неприпустима URL-адреса або малюнок з вікі.",
+	"bs-avatars-set-userimage-saved": "Зображення користувача успішно збережено.",
+	"bs-avatars-file-upload-fieldset-title": "Завантажити зображення",
+	"bs-avatars-auto-generate-fieldset-title": "Автоматичне створення аватара"
+}

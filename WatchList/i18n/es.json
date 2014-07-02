@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Fitoschido"
 		]
 	},
-	"bs-watchlist-title-sidebar": "Páginas vigiadas",
+	"bs-watchlist-title-sidebar": "Lista de seguimiento",
+	"bs-watchlist-pref-widgetlimit": "Límite de entradas:",
 	"bs-watchlist-pref-widgetsortodr": "Ordenar por:",
 	"bs-watchlist-pref-sort-time": "Hora",
 	"bs-watchlist-pref-sort-title": "Título"

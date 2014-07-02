@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Base"
+			"Base",
+			"Ата"
 		]
 	},
 	"bs-authors-desc": "Відображає зображення профілів для авторів сторінки",
 	"prefs-authors": "Автори цієї сторіки",
+	"bs-authors-title": "{{PLURAL:$1|Автор|Автори}}",
 	"bs-authors-profileimage": "Зображення профілю",
 	"bs-authors-profileimage-change": "Змінити зображення профілю",
 	"bs-authors-show-all-authors": "Доступно більше авторів",
