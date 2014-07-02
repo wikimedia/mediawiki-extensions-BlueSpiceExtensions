@@ -129,8 +129,8 @@ class PageTemplates extends BsExtensionMW {
 	}
 
 	/**
-	 * Automatically modifies "noarticletext" message. Otherwise, you would 
-	 * have to modify MediaWiki:noarticletext in the wiki, wich causes 
+	 * Automatically modifies "noarticletext" message. Otherwise, you would
+	 * have to modify MediaWiki:noarticletext in the wiki, wich causes
 	 * installation overhead.
 	 * @param string $sKey The message key. Note that it comes ucfirst and can be an i18n version (e.g. Noarticletext/de-formal)
 	 * @param string $sMessage This variable is called by reference and modified.
@@ -148,8 +148,8 @@ class PageTemplates extends BsExtensionMW {
 		}
 
 		/*
-		 * As we are in view mode but we present the user only links to 
-		 * edit/create mode we do a preemptive check wether or not th user 
+		 * As we are in view mode but we present the user only links to
+		 * edit/create mode we do a preemptive check wether or not th user
 		 * also has edit/create permission
 		 */
 		if ( !$oTitle->userCan( 'edit' ) ) {
@@ -197,23 +197,7 @@ class PageTemplates extends BsExtensionMW {
 		// if we are not on a wiki page, return. This is important when calling import scripts that try to create nonexistent pages, e.g. importImages
 		if ( !is_object( $oTitle ) ) return true;
 
-		// TODO RBV (18.05.11 08:53): Coding Conventions bei Variablen. View? BaseView mit Template?
-		$sOut = wfMessage( 'bs-pagetemplates-choose-template' )->plain();
-		$aOutNs = array();
-		$sOutAll = '';
-		$oTargetNsTitle = null;
-
 		$dbr = wfGetDB( DB_SLAVE );
-
-		$sOut .= '<br /><br /><ul><li>';
-		$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), $aCostumAttr = array(), array( 'preload' => '' ) );
-		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
-		$sOut .= '</li></ul>';
-
-		$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
-		$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
-		$vOrder = explode( '*', $vOrder );
-		$vOrder = array_map( 'trim', $vOrder );
 
 		$aConds = array();
 		if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
@@ -237,6 +221,23 @@ class PageTemplates extends BsExtensionMW {
 			__METHOD__,
 			array( 'ORDER BY' => 'pt_label' )
 		);
+
+		// There is always one template for empty page it is added some lines beneath that
+		$iCount = $dbr->numRows( $res ) + 1;
+		$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->plain();
+		$aOutNs = array();
+		$sOutAll = '';
+		$oTargetNsTitle = null;
+
+		$sOut .= '<br /><br /><ul><li>';
+		$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), array(), array( 'preload' => '' ) );
+		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
+		$sOut .= '</li></ul>';
+
+		$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
+		$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
+		$vOrder = explode( '*', $vOrder );
+		$vOrder = array_map( 'trim', $vOrder );
 
 		if ( $res && $dbr->numRows( $res ) > 0 ) {
 			while ( $row = $dbr->fetchObject( $res ) ) {

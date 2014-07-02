@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-pagetemplates-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of page templates extension",
+	"prefs-pagetemplates": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for avatars section in preferences.\n{{Identical|Page templates}}",
+	"bs-pagetemplates-empty-page": "Anchor text for empty page",
+	"bs-pagetemplates-empty-page-desc": "Text for start with an empty page.",
+	"bs-pagetemplatesadmin-label": "Anchor text in admin tab for page templates \n {{Identical|Page templates}}",
+	"bs-pagetemplates-tpl-desc-toolong": "Text for the description is too long. Please use a maximum of 255 characters.",
+	"bs-pagetemplates-tpl-label-toolong": "Text for the label is to long. Please use a maximum of 255 characters.",
+	"bs-pagetemplates-tpl-label-empty": "Text for please enter a label.",
+	"bs-pagetemplates-tpl-name-toolong": "Text for the template name is to long. Please use a maximum of 255 characters.",
+	"bs-pagetemplates-tpl-name-empty": "Text for please enter a template name.",
+	"bs-pagetemplates-no-id": "Text for please enter a page to be used as template.",
+	"bs-pagetemplates-tpl-added": "Text for the template has been added.",
+	"bs-pagetemplates-invalid_pfx": "Text for the prefix is invalid.",
+	"bs-pagetemplates-nooldtpl": "Text for the old template could not be found.",
+	"bs-pagetemplates-tpl-edited": "Text for the changes have been saved.",
+	"bs-pagetemplates-dberror": "Text for a database error occurred.",
+	"bs-pagetemplates-tpl-deleted": "Text for the template has been deleted.",
+	"bs-pagetemplates-general-section": "Headline for general",
+	"bs-pagetemplates-choose-template": "text for this page doesn't exist yet. You can create a new page. If you don't want to do that, click the back button of your browser to return to the last page visited. \n\nYou can choose {{PLURAL:$1||one of}} the following {{PLURAL:$1|template|templates}}: \n $1 is the number of templates use it for PLURAL distinction",
+	"bs-pagetemplates-pref-excludens": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for do not show templates in these namespaces:",
+	"bs-pagetemplates-pref-forcenamespace": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for force target namespace",
+	"bs-pagetemplates-pref-hideifnotintargetns": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for hide template if the page is not to be created in the target namespace",
+	"bs-pagetemplates-headerlabel": "Label for label",
+	"bs-pagetemplates-headertargetnamespace": "Label for namespace",
+	"bs-pagetemplates-tipeditdetails": "Text for edit template",
+	"bs-pagetemplates-tipdeletetemplate": "Text for delete template",
+	"bs-pagetemplates-tipaddtemplate": "Text for add template",
+	"bs-pagetemplates-label-tpl": "Label for template name",
+	"bs-pagetemplates-label-desc": "Label for description",
+	"bs-pagetemplates-label-targetns": "Label for namespace",
+	"bs-pagetemplates-label-tplns": "Label for template namespace",
+	"bs-pagetemplates-label-article": "Label for template",
+	"bs-pagetemplates-confirm-deletetpl": "Text for are you sure you want to delete this template?"
+}
