@@ -53,16 +53,13 @@ class ViewShoutBox extends ViewBaseElement {
 
 		$aOut = array();
 		$aOut[] = '<form id="bs-sb-form" class="clearfix">';
-		$aOut[] =   '<textarea id="bs-sb-message" maxlength="'.BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ).'">' . wfMessage( 'bs-shoutbox-message' )->plain() . '</textarea>';
-		$aOut[] = '  <br />';
-		$aOut[] = '  <img id="bs-sb-loading" src="'.$wgScriptPath.'/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" alt="Loading..."/>';
-		$aOut[] = '  <input id="bs-sb-send" type="submit" value="' . wfMessage( 'bs-shoutbox-shout' )->plain() . '" />';
-		$aOut[] =   '<p class="bs-sb-textarea-additionalinfo">';
-		$aOut[] =   wfMessage('bs-shoutbox-charactersleft')->plain().': ';
-		$aOut[] =   '<span id="bs-sb-charactercounter">';
-		$aOut[] =     BsConfig::get( 'MW::ShoutBox::MaxMessageLength' );
-		$aOut[] =   '</span>';
-		$aOut[] =   '</p>';
+		$aOut[] = '<textarea id="bs-sb-message" maxlength="'.BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ).'">' . wfMessage( 'bs-shoutbox-message' )->plain() . '</textarea>';
+		$aOut[] = '<br />';
+		$aOut[] = '<img id="bs-sb-loading" src="'.$wgScriptPath.'/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" alt="Loading..."/>';
+		$aOut[] = '<input id="bs-sb-send" type="submit" value="' . wfMessage( 'bs-shoutbox-shout' )->plain() . '" />';
+		$aOut[] = '<p class="bs-sb-textarea-additionalinfo">';
+		$aOut[] = '<span id="bs-sb-charactercounter"></span>';
+		$aOut[] = '</p>';
 		$aOut[] = '</form>';
 
 		return implode( "\n" , $aOut );
@@ -76,11 +73,11 @@ class ViewShoutBox extends ViewBaseElement {
 	protected function wrapAll( $innerText ) {
 		$aOut = array();
 		$aOut[] = '<div class="bs-sb">';
-		$aOut[] = '  <fieldset>';
-		$aOut[] = '    <legend>' . wfMessage( 'bs-shoutbox-title' )->plain() . '</legend>';
+		$aOut[] = '<fieldset>';
+		$aOut[] = '<legend>' . wfMessage( 'bs-shoutbox-title' )->plain() . '</legend>';
 		$aOut[] = $innerText;
-		$aOut[] = '    <div id="bs-sb-content" style="display:none;"></div>';
-		$aOut[] = '  </fieldset>';
+		$aOut[] = '<div id="bs-sb-content" style="display:none;"></div>';
+		$aOut[] = '</fieldset>';
 		$aOut[] = '</div>';
 
 		return implode( "\n" , $aOut );

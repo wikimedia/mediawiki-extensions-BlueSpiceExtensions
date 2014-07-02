@@ -9,7 +9,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Karl Waldmanstetter
  * @version    1.1.0
- 
+
  * @package    Bluespice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -37,7 +37,7 @@ BsShoutBox = {
 	textField: null,
 	/**
 	 * Default value of message field, taken from message input box
-	 * @var string 
+	 * @var string
 	 */
 	defaultMessage: '',
 	/**
@@ -47,17 +47,17 @@ BsShoutBox = {
 	msgList: null,
 	/**
 	 * Reference to the send button
-	 * @var jQuery 
+	 * @var jQuery
 	 */
 	btnSend: null,
 	/**
 	 * Reference to the ajax loader gif
-	 * @var jQuery 
+	 * @var jQuery
 	 */
 	ajaxLoader: null,
 	/**
 	 * Reference to the caracter counter
-	 * @var jQuery 
+	 * @var jQuery
 	 */
 	characterCounter: null,
 	/**
@@ -65,19 +65,18 @@ BsShoutBox = {
 	 * @param sblimit int Maximum number of shouts before more link is displayed
 	 */
 	updateShoutbox: function(sblimit) {
-		if (typeof (sblimit) == 'undefined')
-			sblimit = 0;
+		if ( typeof (sblimit) == 'undefined' ) sblimit = 0;
 		BsShoutBox.ajaxLoader.fadeIn();
 
 		this.msgList.load(
-			bs.util.getAjaxDispatcherUrl('ShoutBox::getShouts', [wgArticleId, sblimit]),
+			bs.util.getAjaxDispatcherUrl( 'ShoutBox::getShouts', [ wgArticleId, sblimit ] ),
 			function(data) {
 				BsShoutBox.msgList.slideDown();
 				BsShoutBox.btnSend.blur().removeAttr('disabled'); //reactivate the send button
 				BsShoutBox.textField.val(BsShoutBox.defaultMessage);
 				BsShoutBox.textField.blur().removeAttr('disabled');
 				BsShoutBox.ajaxLoader.fadeOut();
-				BsShoutBox.characterCounter.text(BsShoutBox.textField.attr('maxlength'));
+				BsShoutBox.characterCounter.text( mw.message( 'bs-shoutbox-charactersleft', BsShoutBox.textField.attr( 'maxlength' ) ).text() );
 			}
 		);
 	},
@@ -118,8 +117,9 @@ mw.loader.using('ext.bluespice', function() {
 	});
 
 	BsShoutBox.textField.bind("input propertychange", function (e) {
-		var currCharLen = $(this).val() == BsShoutBox.defaultMessage ? $(this).attr('maxlength') : $(this).val().length
-		BsShoutBox.characterCounter.text($(this).attr('maxlength') - $(this).val().length);
+		var currCharLen = $( this ).attr( 'maxlength' ) - $( this ).val().length;
+
+		BsShoutBox.characterCounter.text( mw.message( 'bs-shoutbox-charactersleft', currCharLen ).text() );
 	});
 
 	$("#bs-sb-form").submit(function() {
