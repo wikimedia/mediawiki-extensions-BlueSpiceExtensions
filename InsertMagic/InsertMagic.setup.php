@@ -15,16 +15,16 @@ $aResourceModuleTemplate = array(
 $wgResourceModules['ext.bluespice.insertMagic'] = array(
 	'scripts' => 'bluespice.insertMagic.js',
 	'messages' => array(
-		'bs-insertmagic-dlg_title',
-		'bs-insertmagic-type_tags',
-		'bs-insertmagic-type_variables',
-		'bs-insertmagic-type_switches',
-		'bs-insertmagic-type_redirect',
-		'bs-insertmagic-btn_preview',
-		'bs-insertmagic-label_first',
-		'bs-insertmagic-label_second',
-		'bs-insertmagic-label_third',
-		'bs-insertmagic-label_desc'
+		'bs-insertmagic-dlg-title',
+		'bs-insertmagic-type-tags',
+		'bs-insertmagic-type-variables',
+		'bs-insertmagic-type-switches',
+		'bs-insertmagic-type-redirect',
+		'bs-insertmagic-btn-preview',
+		'bs-insertmagic-label-first',
+		'bs-insertmagic-label-second',
+		'bs-insertmagic-label-third',
+		'bs-insertmagic-label-desc'
 	)
 ) + $aResourceModuleTemplate;
 
