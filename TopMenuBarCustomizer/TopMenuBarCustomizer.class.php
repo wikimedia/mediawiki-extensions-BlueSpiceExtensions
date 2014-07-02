@@ -17,7 +17,7 @@
 * You should have received a copy of the GNU General Public License along
 * with this program; if not, write to the Free Software Foundation, Inc.,
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
+*
 * This file is part of BlueSpice for MediaWiki
 * For further information visit http://www.blue-spice.org
 *
@@ -66,14 +66,12 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	public function initExt() {
 		//TODO: Add some error massages on article save (more than 5 entrys etc.)
-		$this->setHook('BSBlueSpiceSkin:ApplicationList','onBlueSpiceSkinApplicationList', true);
 		$this->setHook('BeforePageDisplay');
-		$this->setHook('EditFormPreloadText');
+		$this->setHook('SkinTemplateOutputPageBeforeExec');
 
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels',       2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfLevels' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::DataSourceTitle',     'TopBarMenu', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-topmenubarcustomizer-pref-DataSourceTitle' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfMainEntries', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfMainEntries', 'int' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries',  25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfSubEntries', 'int' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels',       2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberoflevels' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfMainEntries', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofmainentries', 'int' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries',  25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofsubentries', 'int' );
 	}
 
 	/**
@@ -88,67 +86,35 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handle for MW hook EditFormPreloadText
-	 * @param string $sText
-	 * @param Title $oTitle
-	 * @return boolean - always true
+	 * Overrides existing bs_navigation_topbar
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onEditFormPreloadText($sText, $oTitle) {
-		if( !$oTitle->equals(Title::newFromText(BsConfig::get('MW::TopMenuBarCustomizer::DataSourceTitle'), NS_MEDIAWIKI)) ) return true;
-
-		global $wgUser;
-		$aApplications = BsConfig::get('MW::Applications');
-		$sCurrentApplicationContext = BsConfig::get('MW::ApplicationContext');
-		$aOut = array();
-		wfRunHooks( 'BSBlueSpiceSkin:ApplicationList', array( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $this ) );
-
-		foreach($aApplications as $aApplication) {
-			$sText .= "*{$aApplication['name']}\n";
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ){
+		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, 'TopBarMenu' );
+		if( is_null($oTopBarMenuTitle ) || !$oTopBarMenuTitle->exists() ) {
+			return true;
 		}
-
-		return true;
-	}
-
-	/**
-	 * Hook-Handler for BSBlueSpiceSkin:ApplicationList
-	 * @param Array $aApplications
-	 * @param String $sCurrentApplicationContext
-	 * @param User $wgUser
-	 * @param Array $aOut
-	 * @param Object $oSender
-	 * @return boolean - false to stop BSBlueSpiceSkin:ApplicationList hook in skin
-	 */
-	public function onBlueSpiceSkinApplicationList( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $oSender){
-		//re-run applications hook, so later called extensions can register applications after this method returns false
-		if( $oSender === $this) return true;
-		wfRunHooks( 'BSBlueSpiceSkin:ApplicationList', array( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $this ) );
-
-		$sSourceTitle = BsConfig::get('MW::TopMenuBarCustomizer::DataSourceTitle');
-		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, $sSourceTitle );
-		if( is_null($oTopBarMenuTitle ) || !$oTopBarMenuTitle->exists() ) return true;
 
 		$newAppList = BsPageContentProvider::getInstance()->getContentFromTitle( $oTopBarMenuTitle );
 
 		// force unset Applications by create an empty page
 		if( $newAppList === "" ) {
-			$aKeys = array_keys( $aApplications );
-			foreach($aKeys as $key) {
-				unset( $aApplications[$key] );
-			}
-			return false;
+			unset($tpl->data['bs_navigation_sites']);
+			return true;
 		}
-		$this->aOldApps = $aApplications;
+		$this->aOldApps = $tpl->data['bs_navigation_sites'];
 		$aLines = explode( "\n", trim( $newAppList ) );
 		$this->aApps = $this->parseArticleContentLines( $aLines );
-		
-		$aOut[] = '<div id="bs-apps">';
-		$aOut[] =	'<ul>';
+
+		$aOut= array();
 		foreach( $this->aApps as $aApp ) {
 			$oMainItem = new ViewTopMenuItemMain();
 			$oMainItem->setLevel( $aApp['level'] );
-			$oMainItem->setName( $aApp['name'] );
-			$oMainItem->setLink( $aApp['url'] );
-			$oMainItem->setDisplaytitle( $aApp['displaytitle'] );
+			$oMainItem->setName( $aApp['id'] );
+			$oMainItem->setLink( $aApp['href'] );
+			$oMainItem->setDisplaytitle( $aApp['text'] );
 			$oMainItem->setActive( $aApp['active'] );
 			$oMainItem->setContainsActive( $aApp['containsactive'] );
 			$oMainItem->setExternal( $aApp['external'] );
@@ -157,10 +123,11 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			}
 			$aOut[] = $oMainItem->execute();
 		}
-		$aOut[] =	'</ul>';
-		$aOut[] = '</div>';
 
-		return false;
+		$tpl->data['bs_navigation_sites'] = array(
+			implode( "\n", $aOut )
+		);
+		return true;
 	}
 
 	/**
@@ -172,9 +139,13 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	private function parseArticleContentLines( $aLines, $aApps = array(), $iPassed = 0 ) {
 		$iAllowedLevels = BsConfig::get('MW::TopMenuBarCustomizer::NuberOfLevels');
-		$iMaxEntrys = $iPassed === 0 ? BsConfig::get('MW::TopMenuBarCustomizer::NumberOfMainEntries') -1 : BsConfig::get('MW::TopMenuBarCustomizer::NumberOfSubEntries') -1;
+		$iMaxEntrys = $iPassed === 0
+				? BsConfig::get('MW::TopMenuBarCustomizer::NumberOfMainEntries') -1
+				: BsConfig::get('MW::TopMenuBarCustomizer::NumberOfSubEntries') -1;
 
-		if($iAllowedLevels < 1 || $iMaxEntrys < 1) return $aApps;
+		if($iAllowedLevels < 1 || $iMaxEntrys < 1) {
+			return $aApps;
+		}
 
 		$iPassed++;
 		$aChildLines = array();
@@ -196,27 +167,35 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 				$iLastKey = key( array_slice( $aApps, -1, 1, TRUE ) );
 				$aApps[$iLastKey]['children'] = $this->parseArticleContentLines( $aChildLines, array() ,$iPassed );
 				foreach( $aApps[$iLastKey]['children'] as $aChildApps ) {
-					if( !$aChildApps['active'] && !$aChildApps['containsactive'] ) continue;
+					if( !$aChildApps['active'] && !$aChildApps['containsactive'] ) {
+						continue;
+					}
 					$aApps[$iLastKey]['containsactive'] = true;
 					break;
 				}
 				$aChildLines = array();
 			}
-			
-			if( count($aApps) > $iMaxEntrys) continue;
+
+			if( count($aApps) > $iMaxEntrys) {
+				continue;
+			}
 
 			$aApp = $this->parseSingleLine( substr($aLines[$i], 1) );
-			if( empty($aApp) ) continue;
-			
+			if( empty($aApp) ) {
+				continue;
+			}
+
 			$aApp['level'] = $iPassed;
 			$aApps[] = $aApp;
 		}
 		//add childern to the last element
 		if( !empty($aChildLines) ) {
-			$iLastKey = key( array_slice( $aApps, -1, 1, TRUE ) );
+			$iLastKey = key( array_slice( $aApps, -1, 1, true ) );
 			$aApps[$iLastKey]['children'] = $this->parseArticleContentLines( $aChildLines, array() ,$iPassed );
 			foreach( $aApps[$iLastKey]['children'] as $aChildApps ) {
-				if( !$aChildApps['active'] && !$aChildApps['containsactive'] ) continue;
+				if( !$aChildApps['active'] && !$aChildApps['containsactive'] ) {
+					continue;
+				}
 				$aApps[$iLastKey]['containsactive'] = true;
 				break;
 			}
@@ -224,7 +203,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 
 		return $aApps;
 	}
-	
+
 	/**
 	 * Parses a single menu item
 	 * @global Title $wgTitle
@@ -232,22 +211,24 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 * @return Array - Single parsed menu item (app)
 	 */
 	private function parseSingleLine( $sLine ) {
-		global $wgTitle, $wgServer, $wgScriptPath;;
+		global $wgTitle, $wgServer, $wgScriptPath;
 		$newApp = array(
-			'name' => '',
-			'url' => '',
-			'displaytitle' => '',
+			'id' => '',
+			'href' => '',
+			'text' => '',
 			'active' => false,
 			'containsactive' => false,
 			'external' => false,
 		);
-		
+
 		$aAppParts = explode( '|', trim ( $sLine ) );
 		foreach( $aAppParts as $key => $val ) {
 			$aAppParts[$key ] = trim( $val );
 		}
-		if( empty($aAppParts[0]) ) return array();
-		$newApp['name'] = $aAppParts[0];
+		if( empty($aAppParts[0]) ) {
+			return array();
+		}
+		$newApp['id'] = $aAppParts[0];
 
 		if( !empty( $aAppParts[1] ) ) {
 			$aParsedUrl = wfParseUrl( $aAppParts[1] );
@@ -257,40 +238,40 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 				}
 				if( $aParsedUrl['scheme'] == 'http' || $aParsedUrl['scheme'] == 'https' ) {
 					$sQuery = !empty( $aParsedUrl['query'] ) ? '?'.$aParsedUrl['query'] : '';
-					$newApp['url'] = $aParsedUrl['scheme'].$aParsedUrl['delimiter'].$aParsedUrl['host'].$aParsedUrl['path'].$sQuery;
+					$newApp['href'] = $aParsedUrl['scheme'].$aParsedUrl['delimiter'].$aParsedUrl['host'].$aParsedUrl['path'].$sQuery;
 					$newApp['external'] = true;
-				} 
+				}
 			} else if( strpos($aAppParts[1], '?') === 0 ) { //?action=blog
-				$newApp['url'] = $wgServer.$wgScriptPath.'/'.$aAppParts[1];
+				$newApp['href'] = $wgServer.$wgScriptPath.'/'.$aAppParts[1];
 			} else {
 				$oTitle = Title::newFromText( trim($aAppParts[1]) );
 				if( is_null($oTitle) ) {
 					//$sParseError = $newApp; not in use
 				} else {
-					$newApp['url'] = $oTitle->getFullURL();
+					$newApp['href'] = $oTitle->getFullURL();
 					if( $oTitle->equals($wgTitle) ) {
 						$newApp['active'] = true;
 					}
 				}
 			}
 		} else {
-			$newApp['url'] = $wgServer.$wgScriptPath;
+			$newApp['href'] = $wgServer.$wgScriptPath;
 		}
 
 		if( !empty( $aAppParts[2] ) ) {
-			$newApp['displaytitle'] = $aAppParts[2];
+			$newApp['text'] = $aAppParts[2];
 		}
 
 		//get old menu entries with the same id
 		foreach($this->aOldApps as $key => $aOldApp) {
-			if( $aOldApp['name'] == $newApp['name'] ) {
+			if( $aOldApp['id'] == $newApp['id'] ) {
 				if( empty($aAppParts[1]) ) {
 					//no new url given - use old url
-					$newApp['url'] = $aOldApp['url'];
+					$newApp['href'] = $aOldApp['href'];
 				}
 				if( empty($aAppParts[2]) ) {
-					//no new display title - use old displaytitle
-					$newApp['displaytitle'] = $aOldApp['displaytitle'];
+					//no new display title - use old text
+					$newApp['text'] = $aOldApp['text'];
 				}
 				break;
 			}

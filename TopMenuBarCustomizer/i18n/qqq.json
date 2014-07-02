@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of top menu bar customizer extension",
+	"prefs-topmenubarcustomizer": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline of top menu bar customizer section preferences",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for number of nested layers:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for entries on main layer:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for entries on sub layers:"
+}

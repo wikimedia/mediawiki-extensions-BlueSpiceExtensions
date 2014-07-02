@@ -99,7 +99,7 @@ class ViewTopMenuItem extends ViewBaseElement {
 	public function setLink( $sLink ) {
 		$this->sLink = $sLink;
 	}
-	
+
 	/**
 	 * Sets the active property
 	 * @param boolean $bActive
@@ -107,7 +107,7 @@ class ViewTopMenuItem extends ViewBaseElement {
 	public function setActive( $bActive ) {
 		$this->bActive = $bActive;
 	}
-	
+
 	/**
 	 * Sets the contains active property
 	 * @param boolean $bContainsActive
@@ -156,16 +156,16 @@ class ViewTopMenuItem extends ViewBaseElement {
 		$aOut[] = '</li>';
 		return implode( "\n", $aOut);
 	}
-	
+
 	private function rederChildItems() {
 		$aOut[] ='<ul class="bs-apps-child level-'.($this->iLevel+1).'">';
 
 		foreach( $this->aChildren as $aApp ) {
 			$oItem = new ViewTopMenuItem();
 			$oItem->setLevel( $aApp['level'] );
-			$oItem->setName( $aApp['name'] );
-			$oItem->setLink( $aApp['url'] );
-			$oItem->setDisplaytitle( $aApp['displaytitle'] );
+			$oItem->setName( $aApp['id'] );
+			$oItem->setLink( $aApp['href'] );
+			$oItem->setDisplaytitle( $aApp['text'] );
 			$oItem->setActive( $aApp['active'] );
 			$oItem->setContainsActive( $aApp['containsactive'] );
 			if( !empty($aApp['children']) ) {
