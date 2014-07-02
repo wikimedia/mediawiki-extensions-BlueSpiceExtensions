@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-userpreferences-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of user preferences extension"
+}
