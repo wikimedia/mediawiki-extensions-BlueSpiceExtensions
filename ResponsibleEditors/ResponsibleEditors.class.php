@@ -63,16 +63,16 @@ class ResponsibleEditors extends BsExtensionMW {
 
 	protected function initExt() {
 		wfProfileIn('BS::' . __METHOD__);
-		BsConfig::registerVar( 'MW::ResponsibleEditors::EChange', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-EChange', 'toggle' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::EDelete', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-EDelete', 'toggle' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::EMove',   true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-EMove', 'toggle' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::ActivatedNamespaces', array(0), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-responsibleeditors-pref-ActivatedNamespaces', 'multiselectex' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::AutoAssignOnArticleCreation', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-AutoAssignOnArticleCreation', 'toggle' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::ResponsibleEditorMayChangeAssignment', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-ResponsibleEditorMayChangeAssignment', 'toggle' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::EChange', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-echange', 'toggle' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::EDelete', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-edelete', 'toggle' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::EMove',   true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-emove', 'toggle' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::ActivatedNamespaces', array(0), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-responsibleeditors-pref-activatednamespaces', 'multiselectex' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::AutoAssignOnArticleCreation', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-autoassignonarticlecreation', 'toggle' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::ResponsibleEditorMayChangeAssignment', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-responsibleeditormaychangeassignment', 'toggle' );
 		BsConfig::registerVar( 'MW::ResponsibleEditors::ImageResponsibleEditorStatebarIcon', 'bs-infobar-responsibleeditor.png', BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_STRING, 'bs-responsibleeditors-pref-ImageResponsibleEditorStatebarIcon' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::EMailNotificationOnResponsibilityChange', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-EMailNotificationOnResponsibilityChange', 'toggle' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::AddArticleToREWatchLists', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-AddArticleToREWatchLists', 'toggle' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::AutoPermissions', array('read', 'edit'), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-responsibleeditors-pref-AutoPermissions', 'multiselectex' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::EMailNotificationOnResponsibilityChange', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-emailnotificationonresponsibilitychange', 'toggle' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::AddArticleToREWatchLists', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-responsibleeditormaychangeassignment', 'toggle' );
+		BsConfig::registerVar( 'MW::ResponsibleEditors::AutoPermissions', array('read', 'edit'), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-responsibleeditors-pref-autopermissions', 'multiselectex' );
 
 		//Hooks
 		$this->setHook( 'BeforeInitialize' );
@@ -524,10 +524,7 @@ class ResponsibleEditors extends BsExtensionMW {
 
 		$oResponsibleEditorsBodyView = new ViewStateBarBodyElement();
 
-		$sStateBarBodyHeadline = wfMessage( 'bs-responsibleeditors-statebarbody-headline-singular' )->plain();
-		if (count($aResponsibleEditorIds) > 1) {
-			$sStateBarBodyHeadline = wfMessage( 'bs-responsibleeditors-statebarbody-headline-plural' )->plain();
-		}
+		$sStateBarBodyHeadline = wfMessage( 'bs-responsibleeditors-statebarbody-headline', count( $aResponsibleEditorIds ) )->plain();
 
 		$aResponsibleEditorUserMiniProfiles = array();
 		foreach ($aResponsibleEditorIds as $iResponsibleEditorId) {
@@ -867,15 +864,16 @@ class ResponsibleEditors extends BsExtensionMW {
 		$aResponsibleEditors = array();
 		foreach ($aResponsibleEditorIds as $iUserId) {
 			$oREUser = User::newFromId($iUserId);
-			if( $iUserId == $oUser->getId() ) continue;
-			if( BsConfig::getVarForUser("MW::ResponsibleEditors::E".ucfirst($sAction), $oREUser) === true ) {
+			if ( $iUserId == $oUser->getId() ) continue;
+			if ( BsConfig::getVarForUser("MW::ResponsibleEditors::E".ucfirst($sAction), $oREUser) === true ) {
 				$aResponsibleEditors[] = $oREUser;
 			}
 		}
 
-		if( empty( $aResponsibleEditors ) ) return true;
+		if ( empty( $aResponsibleEditors ) ) return true;
 
-		$sUserName    = BsExtensionManager::getExtension( 'ResponsibleEditors' )->mCore->getUserDisplayName( $oUser );
+		$sUserRealName = BsCore::getInstance()->getUserDisplayName( $oUser );
+		$sUsername = $oUser->getName();
 		$sArticleName = $aTitles[0]->getText();
 		$sArticleLink = $aTitles[0]->getFullURL();
 
@@ -884,41 +882,47 @@ class ResponsibleEditors extends BsExtensionMW {
 				$sSubject = wfMessage(
 					'bs-responsibleeditors-mail-subject-re-article-changed',
 					$sArticleName,
-					$sUserName
-				)->plain();
+					$sUsername,
+					$sUserRealName
+				)->text();
 				$sMessage = wfMessage(
 					'bs-responsibleeditors-mail-text-re-article-changed',
 					$sArticleName,
-					$sUserName,
+					$sUsername,
+					$sUserRealName,
 					$sArticleLink
-				)->plain();
+				)->text();
 				break;
 			case 'delete':
 				$sSubject = wfMessage(
 					'bs-responsibleeditors-mail-subject-re-article-deleted',
 					$sArticleName,
-					$sUserName
-				)->plain();
+					$sUsername,
+					$sUserRealName
+				)->text();
 				$sMessage = wfMessage(
 					'bs-responsibleeditors-mail-text-re-article-deleted',
 					$sArticleName,
-					$sUserName,
+					$sUsername,
+					$sUserRealName,
 					$sArticleLink
-				)->plain();
+				)->text();
 				break;
 			case 'move':
 				$sSubject = wfMessage(
 					'bs-responsibleeditors-mail-subject-re-article-moved',
 					$sArticleName,
-					$sUserName
-				)->plain();
+					$sUsername,
+					$sUserRealName
+				)->text();
 				$sMessage = wfMessage(
 					'bs-responsibleeditors-mail-text-re-article-moved',
 					$sArticleName,
 					$aTitles[1]->getPrefixedText(),
-					$sUserName,
+					$sUsername
+					$sUserRealName,
 					$aTitles[1]->getFullURL()
-				)->plain();
+				)->text();
 				break;
 			default:
 				wfDebugLog(
@@ -953,7 +957,7 @@ class ResponsibleEditors extends BsExtensionMW {
 			}
 			$aResults[] = Html::closeElement( 'ul' );
 		} else {
-			$aResults[] = wfMessage( 'bs-responsibleeditors-no-own-responsibilities' )->escaped();
+			$aResults[] = wfMessage( 'bs-responsibleeditors-no-own-responsibilities' )->plain();
 		}
 
 		return implode( '', $aResults );
@@ -978,7 +982,7 @@ class ResponsibleEditors extends BsExtensionMW {
 
 	public function onSuperListGetColumnDefinitions(&$aColumns) {
 		$aColumns[] = array(
-			'header' => wfMessage('bs-responsibleeditors-assignedEditors')->escaped(),
+			'header' => wfMessage('bs-responsibleeditors-assignededitors')->escaped(),
 			'dataIndex' => 'responsible_editors',
 			'hidden' => true
 		);

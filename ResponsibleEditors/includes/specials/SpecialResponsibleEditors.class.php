@@ -225,6 +225,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		$sArticleName  = $oArticleTitle->getPrefixedText();
 		$sArticleLink  = $oArticleTitle->getFullURL();
 		$sChangingUserName = $oCore->getUserDisplayName( $wgUser );
+		$sUsername = $wgUser->getName();
 
 		//Notify new editors
 		$aNewEditors = array();
@@ -234,16 +235,8 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 			$aNewEditors[] = $oUser;
 		}
 
-		$sSubject = wfMessage(
-			'bs-responsibleeditors-mail-subject-new-editor',
-			$sArticleName
-		)->plain();
-		$sMessage = wfMessage(
-			'bs-responsibleeditors-mail-text-new-editor',
-			$sChangingUserName,
-			$sArticleName,
-			$sArticleLink
-		)->plain();
+		$sSubject = wfMessage( 'bs-responsibleeditors-mail-subject-new-editor', $sArticleName )->text();
+		$sMessage = wfMessage( 'bs-responsibleeditors-mail-text-new-editor', $sUsername, $sChangingUserName, $sArticleName, $sArticleLink )->text();
 
 		BsMailer::getInstance('MW')->send( $aNewEditors, $sSubject, $sMessage );
 
@@ -281,12 +274,13 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		)->plain();
 		$sMessage = wfMessage(
 			'bs-responsibleeditors-mail-text-former-editor',
+			$sUsername,
 			$sChangingUserName,
 			$sArticleName,
 			implode( ', ', $aCurrentRespEdNames ),
 			count( $aCurrentRespEdNames ),
 			$sArticleLink
-		)->parse();
+		)->text();
 
 		BsMailer::getInstance('MW')->send( $aRemovedEditors, $sSubject, $sMessage );
 	}

@@ -25,8 +25,8 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 			store: this.strAvailableRespEds,
 			displayField: 'user_displayname',
 			valueField: 'user_id',
-			fromTitle: mw.message('bs-responsibleeditors-availableEditors').plain(),
-			toTitle: mw.message('bs-responsibleeditors-assignedEditors').plain(),
+			fromTitle: mw.message('bs-responsibleeditors-availableeditors').plain(),
+			toTitle: mw.message('bs-responsibleeditors-assignededitors').plain(),
 			height: 250
 		});
 
