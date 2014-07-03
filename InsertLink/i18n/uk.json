@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-insertlink-desc": "Діалогове вікно для введення посилання",
+	"bs-insertlink": "Вставити посилання",
+	"bs-insertlink-button-title": "Вставити/редагувати посилання",
+	"bs-insertlink-dialog-title": "Вставити посилання",
+	"bs-insertlink-tab-wiki-page": "Вікі-сторінка",
+	"bs-insertlink-tab-ext-link": "Зовнішнє посилання",
+	"bs-insertlink-tab-email": "Посилання електронної пошти",
+	"bs-insertlink-tab-ext-file": "Посилання на файл",
+	"bs-insertlink-label-page": "Сторінка",
+	"bs-insertlink-label-link": "Посилання",
+	"bs-insertlink-label-mail": "Адреса електронної пошти",
+	"bs-insertlink-label-description": "Опис",
+	"bs-insertlink-label-file": "Файл",
+	"bs-insertlink-label-searchfile": "Пошук...",
+	"bs-insertlink-select-a-page": "Виберіть ціль...",
+	"bs-insertlink-select-a-namespace": "(Сторінки)",
+	"bs-insertlink-empty-field-text": "Щоб вставити посилання, ви повинні вказати кінцеве призначення."
+}

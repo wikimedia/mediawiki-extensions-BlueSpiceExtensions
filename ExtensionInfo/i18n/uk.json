@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-extensioninfo-desc": "Список відомостей про завантажені розширення",
+	"bs-extensioninfo-label": "Розширення",
+	"bs-extensioninfo-software": "Програмне забезпечення",
+	"bs-extensioninfo-version": "Версія",
+	"extensioninfo": "Розширення",
+	"bs-extensioninfo-headerextname": "Назва розширення",
+	"bs-extensioninfo-headerversion": "Версія",
+	"bs-extensioninfo-headerdesc": "Опис",
+	"bs-extensioninfo-headerstatus": "Статус",
+	"bs-extensioninfo-headerpackage": "Пакет",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|елемент|елементи}}"
+}

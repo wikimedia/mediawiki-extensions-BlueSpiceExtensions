@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-extendededitbar-desc": "Додає додаткові кнопки до поля вікі-редагування",
+	"bs-extendededitbar-redirecttip": "Перенаправлення",
+	"bs-extendededitbar-redirectsample": "Вставити текст",
+	"bs-extendededitbar-striketip": "Закреслення",
+	"bs-extendededitbar-strikesample": "Перекреслений текст",
+	"bs-extendededitbar-entertip": "Розрив рядка",
+	"bs-extendededitbar-uppertip": "Верхній індекс",
+	"bs-extendededitbar-uppersample": "Текст у верхньому індексі",
+	"bs-extendededitbar-lowertip": "Нижній індекс",
+	"bs-extendededitbar-lowersample": "Текст у нижньому індексі",
+	"bs-extendededitbar-smalltip": "Малий",
+	"bs-extendededitbar-smallsample": "Малий текст",
+	"bs-extendededitbar-commenttip": "Вставити прихований коментар",
+	"bs-extendededitbar-commentsample": "Коментар",
+	"bs-extendededitbar-gallerytip": "Вставити галерею зображень",
+	"bs-extendededitbar-gallerysamplepicture": "Зображення",
+	"bs-extendededitbar-gallerysamplecaption": "Підпис",
+	"bs-extendededitbar-quotetip": "Вставити блок цитованого тексту",
+	"bs-extendededitbar-quotesample": "Цитата",
+	"bs-extendededitbar-tabletip": "Вставити таблицю",
+	"bs-extendededitbar-tablesampleheader": "Шапка",
+	"bs-extendededitbar-tablesamplerow": "Рядок",
+	"bs-extendededitbar-tablesamplecell": "Клітинка"
+}
