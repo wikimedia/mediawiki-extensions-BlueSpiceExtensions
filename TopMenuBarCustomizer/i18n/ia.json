@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Crear e modificar menus",
+	"prefs-topmenubarcustomizer": "Personalisation de menus",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Numero de nivellos de stratos:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entratas in le strato principal:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entratas in substratos:"
+}

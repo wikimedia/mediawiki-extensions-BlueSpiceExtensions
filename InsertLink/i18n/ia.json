@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-insertlink-desc": "Quadro de dialogo pro inserer un ligamine",
+	"bs-insertlink": "Inserer ligamine",
+	"bs-insertlink-button-title": "Inserer/modificar ligamine",
+	"bs-insertlink-dialog-title": "Inserer ligamine",
+	"bs-insertlink-tab-wiki-page": "Pagina wiki",
+	"bs-insertlink-tab-ext-link": "Ligamine externe",
+	"bs-insertlink-tab-email": "Ligamine de e-mail",
+	"bs-insertlink-tab-ext-file": "Ligamine a un file",
+	"bs-insertlink-label-page": "Pagina",
+	"bs-insertlink-label-link": "Ligamine",
+	"bs-insertlink-label-mail": "Adresse de e-mail",
+	"bs-insertlink-label-description": "Description",
+	"bs-insertlink-label-file": "File",
+	"bs-insertlink-label-searchfile": "Cercar…",
+	"bs-insertlink-select-a-page": "Selige destination…",
+	"bs-insertlink-select-a-namespace": "(Paginas)",
+	"bs-insertlink-empty-field-text": "Pro inserer un ligamine es necessari specificar un destination."
+}

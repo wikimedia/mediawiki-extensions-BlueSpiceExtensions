@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-interwikilinks-desc": "Interface de administração para adicionar, editar ou eliminar ligações interlínguas",
+	"bs-interwikilinks-invalid-pfx-spc": "O prefixo é inválido. Por favor, não use espaços.",
+	"bs-interwikilinks-invalid-url-spc": "O URL é inválido. Por favor, não use espaços.",
+	"bs-interwikilinks-label": "Ligações interlínguas",
+	"bs-interwikilinks-link-created": "A ligação interlíngua foi criada.",
+	"bs-interwikilinks-link-added": "A ligação interlíngua foi adicionada.",
+	"bs-interwikilinks-link-deleted": "A ligação interlíngua foi eliminada.",
+	"bs-interwikilinks-nooldpfx": "O prefixo anterior não foi encontrado.",
+	"bs-interwikilinks-nopfx": "Por favor, forneça um prefixo.",
+	"bs-interwikilinks-nourl": "Por favor, forneça um URL.",
+	"bs-interwikilinks-pfxtoolong": "O prefixo é demasiado longo, Por favor, utilize um máximo de 32 caracteres.",
+	"bs-interwikilinks-pfxexists": "Este prefixo já existe.",
+	"bs-interwikilinks-headerprefix": "Prefixo",
+	"bs-interwikilinks-titleaddinterwikilink": "Adicionar ligação interlíngua",
+	"bs-interwikilinks-titleeditinterwikilink": "Editar ligação interlíngua",
+	"bs-interwikilinks-labelprefix": "Prefixo",
+	"bs-interwikilinks-titledeleteinterwikilink": "Eliminar ligação interlíngua",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Tem a certeza que pretende eliminar esta ligação interlíngua?",
+	"bs-interwikilinks-insertlink-tabtitle": "Ligar a outra wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefixo",
+	"bs-interwikilink-select-a-prefix": "Escolha o prefixo"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-universalexport-desc": "Adde functiones de exportation",
+	"prefs-universalexport": "Exportation universal",
+	"universalexport": "Exportation universal",
+	"bs-universalexport-pref-metadatadefaults": "Metadatos (standard, JSON):"
+}

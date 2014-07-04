@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-shoutbox-desc": "Adjunge un cassa pro \"clamar\" messages post le contento de un pagina",
+	"prefs-shoutbox": "Clamatorio",
+	"bs-shoutbox-title": "Clamatorio",
+	"bs-shoutbox-message": "Message",
+	"bs-shoutbox-shout": "Clamar",
+	"bs-shoutbox-no-entries": "Nihil clamate ancora.",
+	"bs-shoutbox-loading": "Cargamento in curso…",
+	"bs-shoutbox-pref-committimeinterval": "Tempore inter duo messages (in secundas):",
+	"bs-shoutbox-pref-maxmessagelength": "Longitude maxime de un message:",
+	"bs-shoutbox-pref-numberofshouts": "Numero de messages monstrate:",
+	"bs-shoutbox-pref-showage": "Monstrar le data de creation de un message",
+	"bs-shoutbox-pref-showuser": "Monstrar le autor de un message",
+	"bs-shoutbox-pref-allowarchive": "Usatores pote deler lor proprie entratas",
+	"bs-shoutbox-pref-show": "Monstrar clamatorio",
+	"bs-shoutbox-archive-success": "Entrata delite.",
+	"bs-shoutbox-archive-failure": "Un error ha occurrite durante le tentativa de deler le entrata. Per favor reproba.",
+	"bs-shoutbox-archive-failure-user": "Entratas pote solmente esser delite per lor autor.",
+	"bs-shoutbox-switch-description": "Cela le clamatorio in iste pagina",
+	"bs-shoutbox-charactersleft": "Resta $1 character{{PLURAL:$1||es}}",
+	"bs-shoutbox-confirm-text": "Vole tu realmente deler iste entrata?",
+	"bs-shoutbox-confirm-title": "Confirmar",
+	"bs-shoutbox-entermessage": "Per favor entra un message.",
+	"bs-shoutbox-too-early": "Per favor attende alcun secundas ante de submitter le proxime entrata."
+}

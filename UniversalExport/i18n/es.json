@@ -6,6 +6,8 @@
 		]
 	},
 	"bs-universalexport-desc": "Añade funciones de exportación",
+	"bs-universalexport-pref-metadatadefaults": "Metadatos (estándares, JSON):",
+	"bs-universalexport-pref-metadataoverrides": "Metadatos (invalidar, JSON):",
 	"bs-universalexport-page-text-without-param-no-modules-registered": "No hay módulos registrados.",
 	"bs-universalexport-widget-title": "Exportar",
 	"bs-universalexport-widget-tooltip": "Exportar la página actual",
@@ -14,5 +16,6 @@
 	"bs-universalexport-tag-excludearticle-text": "No se puede exportar esta página.",
 	"bs-universalexport-tag-noexport-desc": "El contenido dentro de esta etiqueta no se exportará.",
 	"bs-universalexport-tag-meta-desc": "Permite para añadir metadatos arbitrarios a un documento exportado.",
-	"action-universalexport-export": "para crear un archivo de exportación"
+	"action-universalexport-export": "para crear un archivo de exportación",
+	"right-universalexport-export": "Crear un archivo de exportación"
 }

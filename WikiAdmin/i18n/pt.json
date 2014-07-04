@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-wikiadmin-desc": "Administração de BlueSpice",
+	"bs-wikiadmin-notallowed": "Não tem permissão para usar esta página.",
+	"specialwikiadmin": "Administração de BlueSpice",
+	"action-wikiadmin": "para mostrar páginas de administração BlueSpice",
+	"right-wikiadmin": "Mostrar páginas de administração de BlueSpice"
+}
