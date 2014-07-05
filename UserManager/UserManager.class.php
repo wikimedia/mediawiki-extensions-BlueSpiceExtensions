@@ -217,7 +217,7 @@ class UserManager extends BsExtensionMW {
 			);
 		}
 
-		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
+		if ( $sEmail != '' && Sanitizer::validateEmail ( $sEmail ) === false ) {
 			$aResponse['errors'][] = array(
 				'id' => 'email',
 				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
@@ -394,7 +394,7 @@ class UserManager extends BsExtensionMW {
 				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
 			);
 		}
-		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
+		if ( $sEmail != '' && Sanitizer::validateEmail ( $sEmail ) === false ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'email',
