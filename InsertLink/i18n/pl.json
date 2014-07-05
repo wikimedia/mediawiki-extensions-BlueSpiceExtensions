@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-insertlink-label-page": "Strona",
+	"bs-insertlink-label-mail": "Adres e‐mail",
+	"bs-insertlink-label-description": "Opis",
+	"bs-insertlink-label-file": "Plik",
+	"bs-insertlink-select-a-namespace": "(Strony)"
+}

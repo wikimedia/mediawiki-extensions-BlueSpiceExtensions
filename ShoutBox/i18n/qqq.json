@@ -1,16 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Robby"
 		]
 	},
 	"bs-shoutbox-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of shoutbox extension",
 	"prefs-shoutbox": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for shout box section in preferences. \n {{Identical|Shoutbox}}",
 	"bs-shoutbox-title": "Fieldset legend for shoutbox",
-	"bs-shoutbox-message": "Default text in textarea for message",
+	"bs-shoutbox-message": "Default text in textarea for message\n{{Identical|Message}}",
 	"bs-shoutbox-shout": "Shout it",
 	"bs-shoutbox-no-entries": "Text for nothing here yet.",
-	"bs-shoutbox-loading": "Text for loading...",
+	"bs-shoutbox-loading": "Text for loading...\n{{Identical|Loading}}",
 	"bs-shoutbox-pref-committimeinterval": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for time between two messages (in seconds):",
 	"bs-shoutbox-pref-maxmessagelength": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for maximum length of a message:",
 	"bs-shoutbox-pref-numberofshouts": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for number of messages shown:",
@@ -24,7 +25,7 @@
 	"bs-shoutbox-switch-description": "Used in InsertMagic extension, tag description for hides shoutbox on this page",
 	"bs-shoutbox-charactersleft": "Text for $1 character{{PLURAL:$1||s}} \n $1 is the number of characters left, also use this for PLURAL distinction",
 	"bs-shoutbox-confirm-text": "Text for do you really want to delete this entry?",
-	"bs-shoutbox-confirm-title": "Window title for confirm",
+	"bs-shoutbox-confirm-title": "Window title for confirm\n{{Identical|Confirm}}",
 	"bs-shoutbox-entermessage": "Text for please enter a message.",
 	"bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry."
 }

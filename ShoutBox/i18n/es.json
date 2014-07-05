@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-shoutbox-message": "Mensaje",
+	"bs-shoutbox-loading": "Cargando...",
+	"bs-shoutbox-pref-committimeinterval": "Tiempo entre dos mensajes (en segundos):",
+	"bs-shoutbox-pref-numberofshouts": "Número de mensajes mostrados:",
+	"bs-shoutbox-pref-showuser": "Mostrar el autor de un mensaje",
+	"bs-shoutbox-archive-success": "Entrada borrada.",
+	"bs-shoutbox-confirm-text": "¿Estás seguro de querer borrar esta entrada?",
+	"bs-shoutbox-confirm-title": "Confirmar",
+	"bs-shoutbox-entermessage": "Introduce un mensaje."
+}

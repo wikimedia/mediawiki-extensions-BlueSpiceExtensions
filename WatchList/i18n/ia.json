@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-watchlist-desc": "Adde un widget e un etiquetta pro le observatorio",
+	"bs-watchlist-title-sidebar": "Observatorio",
+	"bs-watchlist-pref-widgetlimit": "Limite de entratas:",
+	"bs-watchlist-pref-widgetsortodr": "Ordinar per:",
+	"bs-watchlist-pref-sort-time": "Hora",
+	"bs-watchlist-pref-sort-title": "Titulo",
+	"bs-watchlist-tag-watchlist-desc": "Crea un lista de paginas que es presente in tu observatorio e que ha un modification non approbate."
+}

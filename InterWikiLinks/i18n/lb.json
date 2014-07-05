@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-interwikilinks-label": "Interwiki-Linken",
+	"bs-interwikilinks-link-deleted": "Den Interwiki-Link gouf geläscht.",
+	"bs-interwikilinks-nooldpfx": "De virege Prefix gouf net fonnt.",
+	"bs-interwikilinks-headerprefix": "Prefix",
+	"bs-interwikilinks-labelprefix": "Prefix",
+	"bs-interwikilinks-insertlink-tabtitle": "Link an eng aner Wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefix"
+}
