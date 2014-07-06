@@ -5,6 +5,10 @@
 		]
 	},
 	"bs-shoutbox-message": "Хаам",
+	"bs-shoutbox-no-entries": "Кхузахь хӀума яц.",
 	"bs-shoutbox-loading": "Чуйолуш…",
+	"bs-shoutbox-pref-numberofshouts": "Гуш болу хаамийн дукхалла:",
+	"bs-shoutbox-pref-showuser": "Хааман автор гайта",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|символ|символаш}} харцахьа",
 	"bs-shoutbox-confirm-title": "Бакъдан"
 }

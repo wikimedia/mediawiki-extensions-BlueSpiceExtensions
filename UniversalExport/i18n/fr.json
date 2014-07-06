@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"McDutchie"
+			"McDutchie",
+			"SnowedEarth"
 		]
 	},
 	"bs-universalexport-desc": "Ajoute les fonctions d’exportation",
@@ -29,6 +30,6 @@
 	"bs-universalexport-error-requested-title-in-category-blacklist": "La page demandée ne doit pas être exportée car elle est dans la catégorie des listes noires.",
 	"bs-universalexport-statebarbodyuniversalexportmeta": "Métadonnées d’exportation universelle",
 	"bs-universalexport-statebarbodyuniversalexportparams": "Paramètre d’exportation universelle",
-	"action-universalexport-export": "pour créer un fichier exporté",
+	"action-universalexport-export": "créer un fichier d'exportation",
 	"right-universalexport-export": "Créer un fichier exporté"
 }

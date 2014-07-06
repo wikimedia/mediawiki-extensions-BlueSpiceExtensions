@@ -6,7 +6,7 @@
 	},
 	"bs-authors-desc": "АгӀонийн автораш гойту цера суьрташцан",
 	"prefs-authors": "ХӀокху агӀона автораш",
-	"bs-authors-title": "{{PLURAL:$1Автор|Автораш}}",
+	"bs-authors-title": "{{PLURAL:$1|Автор|Автораш}}",
 	"bs-authors-profileimage": "Сурт профиль чохь ду",
 	"bs-authors-profileimage-change": "Бехк ма билла сурт профиль чохь ду",
 	"bs-authors-show-all-authors": "Кхин бу автораш",

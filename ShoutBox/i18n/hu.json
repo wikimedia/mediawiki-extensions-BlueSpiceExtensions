@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-shoutbox-message": "Üzenet",
+	"bs-shoutbox-no-entries": "Még nincs itt semmi.",
+	"bs-shoutbox-loading": "Betöltés…",
+	"bs-shoutbox-pref-committimeinterval": "Két üzenet közötti idő (másodpercbe):",
+	"bs-shoutbox-pref-maxmessagelength": "Egy üzenet maximális hossza:",
+	"bs-shoutbox-pref-showage": "Mutasd az üzenet létrehozásának dátumát",
+	"bs-shoutbox-pref-showuser": "Az üzenet szerzőjének mutatása",
+	"bs-shoutbox-archive-success": "Bejegyzés törölve.",
+	"bs-shoutbox-confirm-text": "Biztosan törlöd ezt a bejegyzést?",
+	"bs-shoutbox-confirm-title": "Megerősítés"
+}

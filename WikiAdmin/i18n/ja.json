@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"action-wikiadmin": "BlueSpice 管理ページの表示",
+	"right-wikiadmin": "BlueSpice 管理ページを表示"
+}
