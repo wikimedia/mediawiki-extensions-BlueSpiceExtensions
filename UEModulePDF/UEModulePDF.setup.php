@@ -1,10 +1,12 @@
 <?php
 
-BsExtensionManager::registerExtension('UEModulePDF', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension( 'UEModulePDF', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE );
 
 $bsgUEModulePDFCURLOptions = array();
 
-$wgExtensionMessagesFiles['UEModulePDF'] = __DIR__ . '/UEModulePDF.i18n.php';
+$wgMessagesDirs['UEModulePDF'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['UEModulePDF'] = __DIR__ . '/languages/UEModulePDF.i18n.php';
 
 $GLOBALS['wgAutoloadClasses']['UEModulePDF'] = __DIR__ . '/UEModulePDF.class.php';
 $wgAutoloadClasses['BsPDFPageProvider'] = __DIR__ . '/includes/PDFPageProvider.class.php';

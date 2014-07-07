@@ -146,7 +146,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$oModuleOverviewView = new ViewExportModuleOverview();
 
 		$oModuleOverviewView->setOption( 'module-title', wfMessage( 'bs-uemodulepdf-overview-title' )->plain() );
-		$oModuleOverviewView->setOption( 'module-description', wfMessage( 'bs-uemodulepdf-overview-description' )->plain() );
+		$oModuleOverviewView->setOption( 'module-description', wfMessage( 'bs-uemodulepdf-overview-desc' )->plain() );
 		$oModuleOverviewView->setOption( 'module-bodycontent', '' );
 
 		$oWebserviceStateView = new ViewBaseElement();
