@@ -3,7 +3,7 @@
  * SecureFileStore extension for BlueSpice
  *
  * Prevent unauthorized access to files and images.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -86,11 +86,11 @@ class SecureFileStore extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		BsExtensionManager::setContext( 'MW::SecureFileStore::Active' );
-		
-		BsConfig::registerVar( 'MW::SecureFileStore::Active',                 true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-Active' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition',     'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-DefaultDisposition', 'select' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline',      array( 'pdf' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionInline', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DispositionAttachment',  array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionAttachment', 'multiselectplusadd' );
+
+		BsConfig::registerVar( 'MW::SecureFileStore::Active',                 true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT );
+		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition',     'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-defaultdisposition', 'select' );
+		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline',      array( 'pdf' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-dispositioninline', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::SecureFileStore::DispositionAttachment',  array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-dispositionattachment', 'multiselectplusadd' );
 		BsConfig::registerVar( 'MW::SecureFileStore::FileExtensionWhitelist', array(), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-FileExtensionWhitelist', 'multiselectplusadd' );
 
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'secureImages' );
@@ -107,7 +107,12 @@ class SecureFileStore extends BsExtensionMW {
 	}
 
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
-		$aPrefs = array( 'options' => array( 'inline' => 'inline', 'attachment' => 'attachment' ) );
+		$aPrefs = array(
+			'options' => array(
+				wfMessage( 'bs-securefilestore-pref-defaultdisposition-brower' )->plain() => 'inline',
+				wfMessage( 'bs-securefilestore-pref-defaultdisposition-external' )->plain() => 'attachment'
+			)
+		);
 		return $aPrefs;
 	}
 
@@ -115,7 +120,7 @@ class SecureFileStore extends BsExtensionMW {
 	 * Replaces links to files with links to secure file dispatcher.
 	 * @param object $oObject needed by hook
 	 * @param object $oText reference to skin template object
-	 * @return bool hook must return true 
+	 * @return bool hook must return true
 	 */
 	public function secureImages( $oObject, &$oText ) {
 		if ( !BsConfig::get( 'MW::SecureFileStore::Active' ) ) return true;
@@ -126,7 +131,7 @@ class SecureFileStore extends BsExtensionMW {
 	/**
 	 * Replaces links to files with links to secure file dispatcher.
 	 * @param string $sText HTML source text
-	 * @return string HTML with replaced links 
+	 * @return string HTML with replaced links
 	 */
 	public static function secureFilesInText( $sText ) {
 		if ( !BsConfig::get( 'MW::SecureFileStore::Active' ) ) return $sText;
@@ -137,7 +142,7 @@ class SecureFileStore extends BsExtensionMW {
 	 * Replaces links to files with links to secure file dispatcher.
 	 * @param string $sText HTML source text
 	 * @param bool $bIsUrl switches replacement mode
-	 * @return string HTML with replaced links 
+	 * @return string HTML with replaced links
 	 */
 	public static function secureStuff( $sText, $bIsUrl = false ) {
 		global $wgScriptPath, $wgUploadPath;
@@ -161,10 +166,10 @@ class SecureFileStore extends BsExtensionMW {
 	 */
 	public static function getFile() {
 		global $wgUploadDirectory;
-		$sRawFilePath     = RequestContext::getMain()->getRequest()->getVal( 'f' );
+		$sRawFilePath = RequestContext::getMain()->getRequest()->getVal( 'f' );
 		// Some extensions (e.g. Social Profile) add params with ? to filename
-		$aRawFilePathPcs  = preg_split( "/\?.*=/", $sRawFilePath );
-		$sRawFilePath     = $aRawFilePathPcs[0];
+		$aRawFilePathPcs = preg_split( "/\?.*=/", $sRawFilePath );
+		$sRawFilePath = $aRawFilePathPcs[0];
 		$sUploadDirectory = realpath( $wgUploadDirectory );
 		if ( empty( $sUploadDirectory ) ) throw new MWException( '$wgUploadDirectory is empty. This should never happen!' );
 
@@ -179,8 +184,7 @@ class SecureFileStore extends BsExtensionMW {
 					$sFilePath = realpath( $oImgRepoLocalRef->getPath() );
 				}
 			}
-		}
-		else {
+		} else {
 			$sFilePath = realpath( $sUploadDirectory . $sRawFilePath );
 		}
 
@@ -201,15 +205,16 @@ class SecureFileStore extends BsExtensionMW {
 		// At this point we have a valid and readable file path in $sFilePath.
 		// Now create a File object to get some properties
 
-		if ( strstr( $sFilePath, 'thumb' ) ) $sFindFileName = preg_replace( "#(\d*px-)#", '', $sFileName ); 
-		else $sFindFileName = $sFileName;
+		$sFindFileName= ( strstr( $sFilePath, 'thumb' ) )
+			? preg_replace( "#(\d*px-)#", '', $sFileName )
+			: $sFileName;
 
 		$aOptions = array( 'time' => false );
 		//TODO: maybe check for "/archive" in $sFilePath, too. But this migth be a config setting, so do not hardcode
-		$isArchive = preg_match('#^\d{14}!#si', $sFindFileName); //i.e. "20120724112914!Adobe-reader-x-tco-de.pdf"
-		if( $isArchive ) {
-			$aFilenameParts   = explode( '!', $sFindFileName, 2);
-			$sFindFileName    = $aFilenameParts[1];
+		$isArchive = preg_match( '#^\d{14}!#si', $sFindFileName ); //i.e. "20120724112914!Adobe-reader-x-tco-de.pdf"
+		if ( $isArchive ) {
+			$aFilenameParts = explode( '!', $sFindFileName, 2);
+			$sFindFileName = $aFilenameParts[1];
 			$aOptions['time'] = $aFilenameParts[0];
 		}
 		$oFile = RepoGroup::singleton()->findFile( $sFindFileName, $aOptions );
@@ -235,11 +240,13 @@ class SecureFileStore extends BsExtensionMW {
 
 		// User is allowed to retrieve file. Get things going.
 		# If file is not in MW's repo try to guess MIME type
-		$sFileMime = ( $oFile ) ? $oFile->getMimeType() : MimeMagic::singleton()->guessMimeType( $sFilePath, false );
+		$sFileMime = ( $oFile )
+			? $oFile->getMimeType()
+			: MimeMagic::singleton()->guessMimeType( $sFilePath, false );
 
 		$sFileDispo = BsConfig::get( 'MW::SecureFileStore::DefaultDisposition' );
 		if ( in_array( $sFileExt, BsConfig::get( 'MW::SecureFileStore::DispositionAttachment' ) ) ) $sFileDispo = 'attachment';
-		if ( in_array( $sFileExt, BsConfig::get( 'MW::SecureFileStore::DispositionInline' ) ) )     $sFileDispo = 'inline';
+		if ( in_array( $sFileExt, BsConfig::get( 'MW::SecureFileStore::DispositionInline' ) ) ) $sFileDispo = 'inline';
 
 		$aFileStat = stat( $sFilePath );
 		header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', $aFileStat['mtime'] ) . ' GMT' );
@@ -248,10 +255,10 @@ class SecureFileStore extends BsExtensionMW {
 		header( "Cache-Control: no-cache,must-revalidate", true ); //Otherwise IE might deliver old version
 
 		if ( !empty( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ) {
-			$sModSince  = preg_replace( '/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE'] );
+			$sModSince = preg_replace( '/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE'] );
 			$sSinceTime = strtotime( $sModSince );
 			if ( $aFileStat['mtime'] <= $sSinceTime ) {
-				ini_set('zlib.output_compression', 0);
+				ini_set( 'zlib.output_compression', 0 );
 				header( "HTTP/1.0 304 Not Modified" );
 				exit;
 			}
