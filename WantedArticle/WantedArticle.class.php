@@ -358,13 +358,23 @@ class WantedArticle extends BsExtensionMW {
 	 * @return always true to keep hook running
 	 */
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
-		if( $type != 'tags' ) return true;
+		if ( $type != 'tags' ) return true;
+
+		$aParams = array(
+			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-count' )->text(),
+			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-title' )->text(),
+			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-order' )->text(),
+			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-sort' )->text(),
+			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-type' )->text()
+		);
+		$sDesc = wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc' )->plain().
+				'<br /><br />' . implode( '<br />', $aParams );
 
 		$oResponse->result[] = array(
 			'id' => 'bs:wantedarticle',
 			'type' => 'tag',
 			'name' => 'wantedarticle',
-			'desc' => wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc' )->parse(),
+			'desc' => $sDesc,
 			'code' => '<bs:wantedarticle />',
 		);
 
@@ -488,19 +498,25 @@ class WantedArticle extends BsExtensionMW {
 		}
 
 		if ( count( $aFoundChars ) > 0 ) {
-			$sErrorMsg  = wfMessage( 'bs-wantedarticle-ajax-error-invalid-chars' )->plain();
-			$sErrorMsg .= implode( ', ', $aFoundChars );
+			$sChars = implode( ', ', $aFoundChars );
+			$sErrorMsg = wfMessage( 'bs-wantedarticle-title-invalid-chars', count( $aFoundChars ), $sChars )->plain();
 			return json_encode( array('success' => false, 'message' => $sErrorMsg ) );
 		}
 
 		//Check if suggested page already exists
 		$oSuggestedTitle = Title::newFromText( $sSuggestedArticleWikiLink );
+		$sSuggestedTitle = $oSuggestedTitle->getPrefixedText();
 		if ( $oSuggestedTitle->exists() ) {
 			$sErrorMsg = wfMessage(
 				'bs-wantedarticle-ajax-error-suggested-page-already-exists',
-				$oSuggestedTitle->getPrefixedText()
+				$sSuggestedTitle
 			)->plain();
-			return json_encode(  array('success' => false, 'message' => $sErrorMsg ) );
+			return json_encode(
+				array(
+					'success' => false,
+					'message' => $sErrorMsg
+				)
+			);
 		}
 
 		$oWantedArticle = BsExtensionManager::getExtension( 'WantedArticle' );
@@ -513,9 +529,14 @@ class WantedArticle extends BsExtensionMW {
 			if ( $oSuggestedTitle->equals( $aWish['title'] ) ){
 				$sErrorMsg = wfMessage(
 					'bs-wantedarticle-ajax-error-suggested-page-already-on-list',
-					$oSuggestedTitle->getPrefixedText()
+					$sSuggestedTitle
 				)->plain();
-				return json_encode( array('success' => true, 'message' => $sErrorMsg ) );
+				return json_encode(
+					array(
+						'success' => true,
+						'message' => $sErrorMsg
+					)
+				);
 			}
 			if ( $bDeleteExisting && $aWish['title']->exists() === true ){
 				unset($aWishList[$key]);
@@ -534,14 +555,24 @@ class WantedArticle extends BsExtensionMW {
 		$oEditStatus = $oWantedArticle->saveTitleListToTitle(
 			$aWishList,
 			$oDataSourceArticle->getTitle(),
-			wfMessage( 'bs-wantedarticle-edit-comment-suggestion-added', $oSuggestedTitle->getPrefixedText() )->plain()
+			wfMessage( 'bs-wantedarticle-edit-comment-suggestion-added', $sSuggestedTitle )->plain()
 		);
 
 		if ( $oEditStatus->isGood() ) {
-			return json_encode(  array( 'success' => true, 'message' => wfMessage( 'bs-wantedarticle-success-suggestion-entered' )->plain() ) );
+			return FormatJson::encode( 
+				array(
+					'success' => true,
+					'message' => wfMessage( 'bs-wantedarticle-success-suggestion-entered', $sSuggestedTitle )->plain()
+				)
+			);
 		} else {
 			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText(), $this->getTitle() );
-			return json_encode(  array( 'success' => false, 'message' => $sErrorMsg ) );
+			return FormatJson::encode( 
+				array(
+					'success' => false,
+					'message' => $sErrorMsg
+				)
+			);
 		}
 	}
 
