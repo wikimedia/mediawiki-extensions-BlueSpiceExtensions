@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Створення та редагування існуючих меню",
+	"prefs-topmenubarcustomizer": "Налаштовувач меню",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Кількість вкладених шарів:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Записи на основному шарі:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Записи на субшарах:"
+}
