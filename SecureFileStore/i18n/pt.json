@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-securefilestore-desc": "Previne o acesso sem autorização a ficheiros"
+}

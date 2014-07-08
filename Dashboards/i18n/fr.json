@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-dashboards-desc": "Fournit des tableaux de bord aux utilisateurs et aux administrateurs",
+	"bs-specialadmindashboard-label": "Tableau de bord",
+	"bs-dashboards-addportlet": "Ajouter un portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Tableaux de bord",
+	"bs-dashboards-pref-userdashboardonlogo": "Le logo du site est un lien vers le tableau de bord de l’utilisateur",
+	"admindashboard": "Tableau de bord administrateur",
+	"userdashboard": "Tableau de bord utilisateur",
+	"bs-dashboard-userportlet-calendar-title": "Calendrier",
+	"bs-dashboard-userportlet-calendar-description": "Calendrier"
+}

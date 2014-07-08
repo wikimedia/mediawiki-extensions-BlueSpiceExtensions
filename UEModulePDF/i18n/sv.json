@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-uemodulepdf-desc": "Möjliggör export till PDF",
+	"prefs-uemodulepdf": "Universal PDF-modul för export",
+	"uemodulepdf": "Universal PDF-modul för export",
+	"bs-uemodulepdf-pref-templatepath": "Standardmall:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportera denna sida som PDF.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exporterar sidor (specialsidor och innehållssidor) till PDF.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "tillgänglig",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "ej tillgänglig"
+}

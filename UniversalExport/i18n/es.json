@@ -16,6 +16,6 @@
 	"bs-universalexport-tag-excludearticle-text": "No se puede exportar esta página.",
 	"bs-universalexport-tag-noexport-desc": "El contenido dentro de esta etiqueta no se exportará.",
 	"bs-universalexport-tag-meta-desc": "Permite para añadir metadatos arbitrarios a un documento exportado.",
-	"action-universalexport-export": "para crear un archivo de exportación",
+	"action-universalexport-export": "crear un archivo de exportación",
 	"right-universalexport-export": "Crear un archivo de exportación"
 }

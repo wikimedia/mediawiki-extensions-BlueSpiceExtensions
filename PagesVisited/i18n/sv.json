@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"prefs-pagesvisited": "Besökta sidor",
+	"bs-pagesvisited-widget-title": "Besökta sidor",
+	"bs-pagesvisited-pref-widgetns": "Namnrymder:",
+	"bs-pagesvisited-pref-widgetsortodr": "Sortera efter:",
+	"bs-pagesvisited-pref-sort-time": "Tid",
+	"bs-pagesvisited-pref-sort-pagename": "Titel",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Visar en lista över sidor som du besökt."
+}

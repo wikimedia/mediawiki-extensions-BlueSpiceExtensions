@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"NataChe"
+		]
+	},
+	"bs-dashboards-desc": "Створює панелі інструментів для користувачів і адміністраторів",
+	"bs-specialadmindashboard-label": "Панель інструментів",
+	"bs-dashboards-addportlet": "Додати портлет",
+	"bs-dashboards-portlets": "Портлети",
+	"prefs-dashboards": "Панелі інструментів",
+	"bs-dashboards-pref-userdashboardonlogo": "Логотип сайту перенаправляє користувача у його персональну панель",
+	"admindashboard": "Панель інструментів адміністратора",
+	"userdashboard": "Панель інструменів користувача",
+	"bs-dashboard-userportlet-calendar-title": "Календар",
+	"bs-dashboard-userportlet-calendar-description": "Календар"
+}

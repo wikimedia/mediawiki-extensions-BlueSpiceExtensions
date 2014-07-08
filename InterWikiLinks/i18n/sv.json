@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-interwikilinks-desc": "Administrationsgränssnittet för att lägga till, redigera och ta bort interwikilänkar",
+	"bs-interwikilinks-invalid-pfx-spc": "Prefixet är ogiltig. Vänligen använd inte mellanslag.",
+	"bs-interwikilinks-invalid-url-spc": "URL-adressen är ogiltig. Vänligen använd inte mellanslag.",
+	"bs-interwikilinks-label": "Interwiki-länkar",
+	"bs-interwikilinks-link-created": "Interwiki-länken har skapats.",
+	"bs-interwikilinks-link-added": "Interwiki-länken har lagts till.",
+	"bs-interwikilinks-link-deleted": "Interwiki-länken har raderats.",
+	"bs-interwikilinks-nooldpfx": "Det tidigare prefixet kunde inte hittas.",
+	"bs-interwikilinks-nopfx": "Ange ett prefix.",
+	"bs-interwikilinks-nourl": "Ange en URL.",
+	"bs-interwikilinks-pfxtoolong": "Prefixet är för långt. Använd högst 32 tecken.",
+	"bs-interwikilinks-pfxexists": "Detta prefix finns redan.",
+	"bs-interwikilinks-headerprefix": "Prefix",
+	"bs-interwikilinks-titleaddinterwikilink": "Lägg till interwiki-länk",
+	"bs-interwikilinks-titleeditinterwikilink": "Redigera interwiki-länk",
+	"bs-interwikilinks-labelprefix": "Prefix",
+	"bs-interwikilinks-titledeleteinterwikilink": "Ta bort interwiki-länk",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Är du säker på att du vill radera denna interwiki-länk?",
+	"bs-interwikilinks-insertlink-tabtitle": "Länka till en annan wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
+	"bs-interwikilink-select-a-prefix": "Välj prefix"
+}

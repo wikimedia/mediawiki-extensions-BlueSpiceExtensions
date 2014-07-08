@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Föreslå",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Skapa",
+	"bs-wantedarticle-single-textfield-defaulttext": "Sidtitel",
+	"bs-wantedarticle-tag-more-linktext": "Mer ...",
+	"bs-wantedarticle-tag-default-title": "Önskade sidor",
+	"bs-wantedarticle-pref-includelimit": "Antal förslag:",
+	"bs-wantedarticle-pref-sort": "Sortera efter:",
+	"bs-wantedarticle-pref-order": "Ordning:",
+	"bs-wantedarticle-pref-sort-time": "Tid",
+	"bs-wantedarticle-pref-sort-title": "Titel",
+	"bs-wantedarticle-pref-order-asc": "stigande",
+	"bs-wantedarticle-pref-order-desc": "fallande",
+	"bs-wantedarticle-create-page": "Skapa sida \"$1\".",
+	"bs-wantedarticle-suggest-page": "Föreslå sida \"$1\"."
+}

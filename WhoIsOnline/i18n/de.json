@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-whoisonline-desc": "Zeigt eine Liste der User an, die momentan online sind",
 	"bs-whoisonline-nousers": "Es ist niemand angemeldet.",
 	"bs-whoisonline-widget-title": "Wer ist online?",
-	"prefs-WhoIsOnline": "Wer ist online?",
+	"prefs-whoisonline": "Wer ist online?",
 	"bs-whoisonline-pref-limitcount": "Maximale Zahl der angezeigten Nutzer:",
 	"bs-whoisonline-pref-orderby": "Sortieren nach:",
 	"bs-whoisonline-pref-maxidletime": "Zeit, nach der ein inaktiver Benutzer nicht mehr als Online angezeigt wird (Sekunden)",

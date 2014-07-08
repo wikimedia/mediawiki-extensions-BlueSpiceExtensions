@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"NataChe"
+		]
+	},
+	"prefs-uemodulepdf": "Універсальний модуль експорту PDF",
+	"bs-uemodulepdf-pref-templatepath": "Стандартний шаблон:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Експортувати цю сторінку у форматі PDF.",
+	"bs-uemodulepdf-overview-title": "Формат переносних документів (PDF)",
+	"bs-uemodulepdf-overview-desc": "Експортує сторінки (спеціальні сторінки та сторінки контенту) у PDF.",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "не доступний",
+	"soap-service-url-not-valid": "Неприпустима адреса веб-служби створення PDF. Будь ласка, перевірте налаштування вікі."
+}

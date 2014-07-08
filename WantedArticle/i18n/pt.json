@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-wantedarticle-ajax-error-no-parameter": "Não foi fornecido nenhum título para a página.",
+	"bs-wantedarticle-page-removed": "A página \"$1\" foi removida.",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Criar",
+	"bs-wantedarticle-single-textfield-defaulttext": "Título da página",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>ordem</code>: Ordenar por <code>título</code> ou <code>hora</code>.",
+	"bs-wantedarticle-tag-more-linktext": "Mais ...",
+	"bs-wantedarticle-pref-includelimit": "Número de sugestões:",
+	"bs-wantedarticle-pref-sort": "Ordenar por:",
+	"bs-wantedarticle-pref-order": "Ordem:",
+	"bs-wantedarticle-pref-sort-time": "Hora",
+	"bs-wantedarticle-pref-sort-title": "Título",
+	"bs-wantedarticle-pref-order-asc": "ascendente",
+	"bs-wantedarticle-pref-order-desc": "descendente",
+	"bs-wantedarticle-info-nothing-entered": "Por favor, forneça um título válido para a página.",
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|O caráter seguinte não é válido|Os seguintes carateres não são válidos}} para uso no título de uma página: $2"
+}

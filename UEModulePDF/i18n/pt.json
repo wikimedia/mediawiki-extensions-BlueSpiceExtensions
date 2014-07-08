@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"prefs-uemodulepdf": "Módulo de exportação universal PDF",
+	"uemodulepdf": "Módulo de exportação universal PDF",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponível",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "não disponível"
+}

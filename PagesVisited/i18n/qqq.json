@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Robby"
 		]
 	},
 	"bs-pagesvisited-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of pages visited extension",
@@ -12,6 +13,6 @@
 	"bs-pagesvisited-pref-widgetns": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for namespaces:",
 	"bs-pagesvisited-pref-widgetsortodr": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for sort by:",
 	"bs-pagesvisited-pref-sort-time": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for time",
-	"bs-pagesvisited-pref-sort-pagename": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for title",
+	"bs-pagesvisited-pref-sort-pagename": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for title\n{{Identical|Title}}",
 	"bs-pagesvisited-tag-pagesvisited-desc": "Used in InsertMagic extension, tag description for show a list of pages you have visited."
 }

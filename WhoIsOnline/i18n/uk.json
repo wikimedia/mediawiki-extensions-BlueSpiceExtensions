@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"NataChe"
+		]
+	},
+	"prefs-whoisonline": "Хто на сайті?",
+	"bs-whoisonline-pref-orderby": "Впорядкувати за:",
+	"bs-whoisonline-pref-orderby-time": "Час безперервної робити:",
+	"bs-whoisonline-pref-interval": "Інтервал оновлення в секундах:"
+}

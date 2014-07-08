@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Skapa och redigera befintliga menyer",
+	"prefs-topmenubarcustomizer": "Meny-anpassare",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Antal kapslade lager:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Inlägg på huvudlagret:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Inlägg på underlager:"
+}

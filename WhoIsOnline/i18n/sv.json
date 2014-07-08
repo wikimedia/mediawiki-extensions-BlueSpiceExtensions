@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-whoisonline-nousers": "Ingen är inloggad.",
+	"bs-whoisonline-widget-title": "Vem är online?",
+	"prefs-whoisonline": "Vem är online?",
+	"bs-whoisonline-pref-limitcount": "Maximalt antal användare som visas:",
+	"bs-whoisonline-pref-orderby": "Sortera efter:",
+	"bs-whoisonline-pref-maxidletime": "Tid i sekunder tills en användare markeras som offline:",
+	"bs-whoisonline-pref-orderby-name": "Namn",
+	"bs-whoisonline-pref-interval": "Uppdateringsintervall i sekunder:"
+}

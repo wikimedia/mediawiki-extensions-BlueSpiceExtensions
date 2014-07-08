@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jopparn"
 		]
 	},
 	"bs-universalexport-desc": "Lägger till exportfunktioner",
+	"bs-universalexport-widget-title": "Exportera",
+	"bs-universalexport-widget-tooltip": "Exportera den aktuella sidan",
 	"bs-universalexport-tag-pagebreak-text": "Sidbrytning",
+	"bs-universalexport-tag-exclude-text": "Denna text exporteras inte.",
+	"bs-universalexport-tag-hidetitle-text": "Titeln på denna sida kommer inte att synas i exporten.",
 	"action-universalexport-export": "för att skapa en exportfil",
 	"right-universalexport-export": "Skapa en exportfil"
 }
