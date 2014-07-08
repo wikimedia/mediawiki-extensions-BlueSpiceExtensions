@@ -919,7 +919,7 @@ class ResponsibleEditors extends BsExtensionMW {
 					'bs-responsibleeditors-mail-text-re-article-moved',
 					$sArticleName,
 					$aTitles[1]->getPrefixedText(),
-					$sUsername
+					$sUsername,
 					$sUserRealName,
 					$aTitles[1]->getFullURL()
 				)->text();
