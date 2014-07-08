@@ -63,7 +63,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 		$this->oDocumentsDb = $this->oDbr->select( 'page', 'page_id', array(), __METHOD__ );
 		$this->totalNoDocumentsCrawled = $this->oDbr->numRows( $this->oDocumentsDb );
 
-		$sMessage = wfMessage( 'bs-extendedsearch-totalnoofarticles' )->plain() . ': ' . $this->totalNoDocumentsCrawled . "\n";
+		$sMessage = wfMessage( 'bs-extendedsearch-totalnoofarticles', $this->totalNoDocumentsCrawled )->plain() . "\n";
 		$this->oMainControl->logFile( 'write', $sMessage );
 
 		return $this->totalNoDocumentsCrawled;

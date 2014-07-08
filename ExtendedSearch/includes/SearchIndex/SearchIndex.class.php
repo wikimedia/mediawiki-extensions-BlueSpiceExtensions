@@ -317,7 +317,7 @@ class SearchIndex {
 					} elseif ( $namespace == '998' ) {
 						$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-extfiles' )->plain();
 					} elseif ( $namespace == '0' ) {
-						$namespaceTitle = wfMessage( 'bs-extendedsearch-facet-namespace-main' )->plain();
+						$namespaceTitle = wfMessage( 'bs-ns_main' )->plain();
 					} else {
 						$namespaceTitle = BsNamespaceHelper::getNamespaceName( $namespace, false );
 						$facetNamespaceAll[$namespace]['title'] = $this->getFacetTitle( $namespaceTitle );
@@ -674,6 +674,7 @@ class SearchIndex {
 			}
 
 			$catstr = '';
+			$iCats = 0;
 			if ( isset( $oDocument->cat ) ) {
 				if ( is_array( $oDocument->cat ) ) {
 					$catlinks = array();
@@ -693,11 +694,13 @@ class SearchIndex {
 						$iItems++;
 					}
 					$catstr = implode( ', ', $catlinks );
+					$iCats = count( $catlinks );
 				} else {
 					if ( $oDocument->cat != 'notcategorized' ) {
 						$oCatTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
 						$catstr = BsLinkProvider::makeLink( $oCatTitle, $oCatTitle->getText() );
 					}
+					$iCats = 1;
 				}
 			}
 
@@ -720,10 +723,10 @@ class SearchIndex {
 						$oTitle = Title::newFromText( $sRedirect );
 						$aRedirects[] = BsLinkProvider::makeLink( $oTitle );
 					}
-					$sRedirect = ' | ' . wfMessage( 'bs-extendedsearch-redirect' )->escaped() . ' ' . implode( ', ', $aRedirects );
+					$sRedirect = wfMessage( 'bs-extendedsearch-redirect', implode( ', ', $aRedirects ) )->plain();
 				} else {
 					$oTitle = Title::newFromText( $oDocument->redirects );
-					$sRedirect = ' | ' . wfMessage( 'bs-extendedsearch-redirect' )->escaped() . ' ' . BsLinkProvider::makeLink( $oTitle );
+					$sRedirect = wfMessage( 'bs-extendedsearch-redirect', BsLinkProvider::makeLink( $oTitle ) )->plain();
 				}
 			}
 
@@ -738,6 +741,7 @@ class SearchIndex {
 				'searchlink' => $sSearchLink,
 				'timestamp' => $sTimestamp,
 				'catstr' => $catstr,
+				'catno' => $iCats,
 				'redirect' => $sRedirect,
 				'highlightsnippets' => $aHighlightsnippets
 			);

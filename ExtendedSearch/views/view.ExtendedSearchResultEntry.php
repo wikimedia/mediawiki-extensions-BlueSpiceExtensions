@@ -75,14 +75,13 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		$aTemplate[] = '</div>';
 
 		if ( $this->getOption( 'highlightsnippets' ) ) {
-			$aTemplate[] = '<div class="bs-search-hit-text">' . $sHighlightSnippets . '</div>';
+			$aTemplate[] = '<div class="bs-search-hit-text">'.$sHighlightSnippets.'</div>';
 		}
 
 		$sCategories = trim( $this->getOption( 'catstr' ) );
 		if ( !empty( $sCategories ) ) {
-			$aTemplate[] = '<div class="bs-extendedsearch-cat search-result-entry-info">' .
-							wfMessage( 'bs-extendedsearch-category-filter' )->plain() .
-							': ' . $sCategories . '</div>';
+			$aTemplate[] = '<div class="bs-extendedsearch-cat search-result-entry-info">'.
+				wfMessage( 'bs-extendedsearch-category-filter', $this->getOption( 'catno' ), $sCategories )->plain().'</div>';
 		}
 
 		$aTemplate[] = '</div>';

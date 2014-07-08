@@ -37,15 +37,15 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 	 */
 	public static function areYouAbleToRunWithSystemSettings( &$aErrorMessageKeys = array() ) {
 		global $wgUrlProtocols;
-		$urlProtocols = $wgUrlProtocols;
 		$bUrlProtocolFileActivated = false;
-		foreach ( $urlProtocols as $urlProtocol ) {
+		foreach ( $wgUrlProtocols as $urlProtocol ) {
 			if ( strpos( $urlProtocol, 'file:' ) === 0 ) {
 				$bUrlProtocolFileActivated = true;
 			}
 		}
-		if ( !$bUrlProtocolFileActivated )
-				$aErrorMessageKeys['bs-extendedsearch-file_protocol_not_activated'] = true;
+		if ( !$bUrlProtocolFileActivated ) {
+			$aErrorMessageKeys['bs-extendedsearch-file-protocol-not-activated'] = true;
+		}
 		return parent::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 	}
 

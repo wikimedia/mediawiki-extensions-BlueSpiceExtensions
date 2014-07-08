@@ -90,14 +90,14 @@ class ExtendedSearchAdmin {
 
 		if ( SearchService::getInstance()->ping( 2 ) === false ) {
 			RequestContext::getMain()->getOutput()->addHTML(
-				'<br /><div style="color:#F00; font-size:20px;">' . wfMessage( 'bs-extendedsearch-server-not-available' )->escaped() . '</div><br />'
+				'<br /><div style="color:#F00; font-size:20px;">' . wfMessage( 'bs-extendedsearch-server-not-available' )->plain() . '</div><br />'
 			);
 			return false;
 		}
 
 		if ( !ExtendedSearchBase::isCurlActivated() ) {
 			RequestContext::getMain()->getOutput()->addHTML(
-				'<br /><div style="color:#F00; font-size:20px;">' . wfMessage( 'bs-extendedsearch-curl-not-active' )->escaped() . '</div><br />'
+				'<br /><div style="color:#F00; font-size:20px;">' . wfMessage( 'bs-extendedsearch-curl-not-active' )->plain() . '</div><br />'
 			);
 			return false;
 		}
@@ -107,19 +107,19 @@ class ExtendedSearchAdmin {
 				'create' => array(
 					'href' => '#',
 					'onclick' => 'bs.util.toggleMessage( bs.util.getAjaxDispatcherUrl( \'ExtendedSearchAdmin::getProgressBar\', [\'createForm\'] ), \'' . addslashes( wfMessage( 'bs-extendedsearch-create-index' )->plain() ) . '\', 400, 300);setTimeout(\'bsExtendedSearchStartCreate()\', 1000);',
-					'label' => wfMessage( 'bs-extendedsearch-create-index' )->escaped(),
+					'label' => wfMessage( 'bs-extendedsearch-create-index' )->plain(),
 					'image' => "$wgScriptPath/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/bs-searchindex-rebuild.png"
 				),
 				'delete' => array(
 					'href' => '#',
 					'onclick' => 'bs.util.toggleMessage( bs.util.getAjaxDispatcherUrl( \'ExtendedSearchAdmin::getProgressBar\', [\'delete\'] ), \'' . addslashes( wfMessage( 'bs-extendedsearch-delete-index' )->plain() ) . '\', 400, 300);',
-					'label' => wfMessage( 'bs-extendedsearch-delete-index' )->escaped(),
+					'label' => wfMessage( 'bs-extendedsearch-delete-index' )->plain(),
 					'image' => "$wgScriptPath/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/bs-searchindex-delete.png"
 				),
 				'overwrite' => array(
 					'href' => '#',
 					'onclick' => 'bs.util.toggleMessage( bs.util.getAjaxDispatcherUrl( \'ExtendedSearchAdmin::getProgressBar\', [\'createForm\'] ), \'' . addslashes( wfMessage( 'bs-extendedsearch-overwrite-index' )->plain() ) . '\', 400, 300);setTimeout(\'bsExtendedSearchStartCreate()\', 1000);',
-					'label' => wfMessage( 'bs-extendedsearch-overwrite-index' )->escaped(),
+					'label' => wfMessage( 'bs-extendedsearch-overwrite-index' )->plain(),
 					'image' => "$wgScriptPath/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/bs-searchindex-optimization.png"
 				)
 			);
@@ -127,12 +127,12 @@ class ExtendedSearchAdmin {
 			$aSearchAdminButtons = array(
 				'deleteLock' => array(
 					'href' => '#',
-					'onclick' => 'bsExtendedSearchConfirm( \'' . wfMessage( 'bs-extendedsearch-warning' )->escaped() . '\', \'' . wfMessage( 'bs-extendedsearch-lockfiletext' )->escaped() . '\')',
-					'label' => wfMessage( 'bs-extendedsearch-delete-lock' )->escaped(),
+					'onclick' => 'bsExtendedSearchConfirm( \'' . wfMessage( 'bs-extendedsearch-warning' )->plain() . '\', \'' . wfMessage( 'bs-extendedsearch-lockfiletext' )->plain() . '\')',
+					'label' => wfMessage( 'bs-extendedsearch-delete-lock' )->plain(),
 					'image' => "$wgScriptPath/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/bs-searchindex-delete.png"
 				)
 			);
-			$sForm .= '<h3><font color=\'red\'>' . wfMessage( 'bs-extendedsearch-indexinginprogress' )->escaped() . '</font></h3><br />';
+			$sForm .= '<h3><font color=\'red\'>' . wfMessage( 'bs-extendedsearch-indexinginprogress' )->plain() . '</font></h3><br />';
 		}
 
 		wfRunHooks( 'BSExtendedSearchAdminButtons', array( $this, &$aSearchAdminButtons ) );
@@ -179,7 +179,7 @@ class ExtendedSearchAdmin {
 	public function getCreateForm() {
 		return '<div id="hwstatus">
 					<span id="BsExtendedSearchMode">'. wfMessage( 'bs-extendedsearch-status' )->plain().'</span>:
-					<span id="BsExtendedSearchMessage">' . wfMessage( 'bs-extendedsearch-about_to_start' )->plain() . '</span>
+					<span id="BsExtendedSearchMessage">' . wfMessage( 'bs-extendedsearch-about-to-start' )->plain() . '</span>
 				</div>
 				<div id="BsExtendedSearchProgress">&nbsp;</div>';
 	}
@@ -224,7 +224,7 @@ class ExtendedSearchAdmin {
 				$sForm .= wfMessage( 'bs-extendedsearch-index-error-deleting', $iStatus )->plain() . '<br />';
 			}
 		} catch ( Exception $e ) {
-			$sForm .= wfMessage( 'bs-extendedsearch-no-success-deleting' )->plain() . '<br />';
+			$sForm .= wfMessage( 'bs-extendedsearch-no-success-deleting', $e->getMessage() )->plain() . '<br />';
 			$sForm .= $e->getMessage();
 		}
 

@@ -426,7 +426,7 @@ class SearchOptions {
 				// namespace 0 not in keys of wgCanonicalNamespaceNames
 				// todo: just wondering: if NO namespace selected just SKIP +namespace(..)! Or is there a problem with namespace 999?
 				foreach ( $aNamespaces as $sNamespace => $value ) {
-					if ( BsNamespaceHelper::checkNamespacePermission( $na, 'read' ) === false ) continue;
+					if ( BsNamespaceHelper::checkNamespacePermission( $sNamespace, 'read' ) === false ) continue;
 					$aFqNamespaces[] = $sNamespace;
 				}
 			} else {

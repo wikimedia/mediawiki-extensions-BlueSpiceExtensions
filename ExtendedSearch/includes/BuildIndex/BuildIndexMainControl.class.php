@@ -392,11 +392,11 @@ class BuildIndexMainControl {
 			}
 			$this->lockFile( 'createLock' );
 
-			$this->buildIndexWiki( wfMessage( 'bs-extendedsearch-indexing_wiki_articles' )->plain() );
-			$this->buildIndexSpecial( wfMessage( 'bs-extendedsearch-indexing_specialpages' )->plain() );
-			$this->buildIndexRepo( wfMessage( 'bs-extendedsearch-indexing_files_in_repo' )->plain() );
-			$this->buildIndexLinked( wfMessage( 'bs-extendedsearch-indexing_linked_files' )->plain() );
-			$this->buildIndexExternalRepo( wfMessage( 'bs-extendedsearch-indexing_external_files_in_repo' )->plain() );
+			$this->buildIndexWiki( wfMessage( 'bs-extendedsearch-indexing-wiki-articles' )->plain() );
+			$this->buildIndexSpecial( wfMessage( 'bs-extendedsearch-indexing-specialpages' )->plain() );
+			$this->buildIndexRepo( wfMessage( 'bs-extendedsearch-indexing-files-in-repo' )->plain() );
+			$this->buildIndexLinked( wfMessage( 'bs-extendedsearch-indexing-linked-files' )->plain() );
+			$this->buildIndexExternalRepo( wfMessage( 'bs-extendedsearch-indexing-external-files-in-repo' )->plain() );
 
 			wfRunHooks( 'BSExtendedSearchBuildIndex', array( $this ) );
 		} catch ( BsException $e ) {
