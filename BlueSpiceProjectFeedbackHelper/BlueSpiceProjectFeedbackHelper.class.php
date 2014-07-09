@@ -104,7 +104,12 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 		}
 		$oView = new ViewBlueSpiceProjectFeedbackHelperPanel();
 
-		$tpl->data['dataAfterContent'] .= $oView->execute();
+		if( isset( $tpl->data['dataAfterContent'] ) ) {
+			$tpl->data['dataAfterContent'] .= $oView->execute();
+		} else {
+			$tpl->data['dataAfterContent'] = $oView->execute();
+		}
+
 		return true;
 	}
 
