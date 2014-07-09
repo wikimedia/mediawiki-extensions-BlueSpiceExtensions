@@ -28,7 +28,7 @@ BsWantedArticle = {
 			//TODO: $.live() is deprecated since v1.7. Replace with $.on() as soon as we drop MW 1.17 support.
 			return BsWantedArticle.sendSuggestion( $( this ).attr( 'href' ).substr( 1 ) );
 		});
-		
+
 		this.oForms          = $( '.bs-wantedarticle-form' );
 		this.oTextFields     = $( '.bs-wantedarticle-composite-textfield' );
 		this.oCreateButtons  = $( '.bs-wantedarticle-createbutton' );
@@ -84,7 +84,7 @@ BsWantedArticle = {
 				return BsWantedArticle.sendSuggestion( sTitle );
 			}*/
 		});
-		
+
 		this.toggleMoreHandler();
 	},
 
@@ -118,9 +118,6 @@ BsWantedArticle = {
 	},
 
 	navigateToTarget: function( sArticleTitle ) {
-
-		//oForm.trigger( 'bs-wantedarticle-navigateToTarget' );
-
 		sArticleTitle = sArticleTitle.replace( ' ', '_' );
 		var sUrl = this.config.urlBase + '/index.php?title=' + encodeURIComponent( sArticleTitle );
 		document.location.href = sUrl;
@@ -129,10 +126,7 @@ BsWantedArticle = {
 	},
 
 	sendSuggestion: function( sArticleTitle ) {
-
-		//oForm.trigger( 'bs-wantedarticle-sendSuggestion' );
-
-		$.getJSON( 
+		$.getJSON(
 			bs.util.getAjaxDispatcherUrl( 'WantedArticle::ajaxAddWantedArticle', [ sArticleTitle ] ),
 			function( oData, oTextStatus ) {
 				bs.util.alert( 'WAsuc', { text: oData.message, title: 'Status' } );
@@ -163,7 +157,7 @@ BsWantedArticle = {
 					}
 				}
 			}
-			$.getJSON( 
+			$.getJSON(
 				bs.util.getAjaxDispatcherUrl(
 					'WantedArticle::ajaxGetWantedArticles',
 					[
@@ -192,7 +186,7 @@ BsWantedArticle = {
 				}
 			});
 		}
-		
+
 		if($('.togglemore-queue').width() !== null) {
 			// taken from view => onclick="$(this).hide();$(this).next().show(); return false;"
 			$('.togglemore-queue').click( function(){
@@ -200,7 +194,7 @@ BsWantedArticle = {
 				$(this).next().show();
 			});
 		}
-		
+
 	}
 }
 

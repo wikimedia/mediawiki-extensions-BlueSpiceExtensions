@@ -197,7 +197,9 @@ class WatchList extends BsExtensionMW {
 	 */
 	public function onWidgetListKeyword() {
 		$oCurrentUser = $this->getUser();
-		if( $oCurrentUser->isAnon() ) return null;
+		if( $oCurrentUser->isAnon() ) {
+			return null;
+		}
 
 		$iCount = BsConfig::get('MW::WatchList::WidgetLimit');
 		$sOrder = BsConfig::get('MW::WatchList::WidgetSortOdr');
@@ -218,9 +220,11 @@ class WatchList extends BsExtensionMW {
 			$sOrder
 		);
 		$sWatchListWikiText = $oWatchList->execute();
-		if (  empty( $sWatchListWikiText ) ) return $oUserSidebarView;
+		if (  empty( $sWatchListWikiText ) ) {
+			return $oUserSidebarView;
+		}
 
-		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText ), $this->getTitle() );
+		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText, $this->getTitle() ) );
 
 		return $oUserSidebarView;
 	}
@@ -237,7 +241,9 @@ class WatchList extends BsExtensionMW {
 		$aWatchlist = array();
 
 		$aOptions = array();
-		if( $sOrder == 'pagename' ) $aOptions['ORDER BY'] = 'wl_title';
+		if( $sOrder == 'pagename' ) {
+			$aOptions['ORDER BY'] = 'wl_title';
+		}
 		$aOptions['LIMIT'] = $iCount;
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -280,7 +286,7 @@ class WatchList extends BsExtensionMW {
 	 * @return array An array of WidgetView objects
 	 */
 	public function onBSUserSidebarDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$aViews[] = $this->onWidgetListKeyword();
+		$aViews['WATCHLIST'] = $this->onWidgetListKeyword();
 		return true;
 	}
 }

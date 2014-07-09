@@ -93,32 +93,24 @@ class SearchRequest {
 	 */
 	protected function processInputs() {
 		$this->sScope = $this->oRequest->getVal( 'search_scope' );
-		$this->sOrigin = $this->oRequest->getVal( 'search_origin' );
 		$this->sOperator = $this->oRequest->getVal( 'op' );
 		$this->sAsc = $this->oRequest->getVal( 'search_asc', $this->sAsc );
 		$this->iOffset = $this->oRequest->getVal( 'search_offset', $this->iOffset ); // todo: type is int??
 		$this->sOrder = $this->oRequest->getVal( 'search_order', $this->sOrder );
 		$this->sFormat = $this->oRequest->getVal( 'search_format', $this->sFormat );
 		$this->sId = $this->oRequest->getVal( 'search_id', false );
-		$this->sInput = $this->oRequest->getVal( 'search_input', false );
+		$this->sInput = $this->oRequest->getVal( 'q', false );
 		$this->sHidden = $this->oRequest->getVal( 'search_hidden' );
-		$this->sSearchAsYouType = $this->oRequest->getVal( 'searchasyoutype' );
 		$this->bExtendedForm = $this->oRequest->getFuzzyBool( 'search_extended', false );
-		$this->bAutocomplete = $this->oRequest->getFuzzyBool( 'autocomplete', false );
+		$this->bSft = $this->oRequest->getFuzzyBool( 'sft', false );
 		$this->sEditor = $this->oRequest->getArray( 'ed', array() );
 		$this->sCategories = $this->oRequest->getArray( 'ca', array() );
 		$this->aNamespaces = $this->oRequest->getArray( 'na', array() );
 		$this->aType = $this->oRequest->getArray( 'ty', array() );
 
-		if ( $this->oRequest->getInt( 'search_files' ) !== 0 ) {
-			if ( $this->sOrigin !== 'ajax' ) {
-				if ( $this->oRequest->getInt( 'search_files' ) === 1 ) {
-					$this->bSearchFiles = true;
-				} else {
-					$this->bSearchFiles = false;
-				}
-			}
-		}
+		$this->bSearchFiles = ( $this->oRequest->getInt( 'search_files', 0 ) === 1 )
+			? true
+			: false;
 
 		if ( !$this->sScope ) {
 			$this->sScope = BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' );

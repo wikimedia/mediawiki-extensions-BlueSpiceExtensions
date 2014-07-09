@@ -1,6 +1,8 @@
 <?php
 BsExtensionManager::registerExtension('InterWikiLinks',                  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$wgMessagesDirs['InterWikiLinks'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['InterWikiLinks'] = __DIR__ . '/languages/InterWikiLinks.i18n.php';
 
 $wgResourceModules['ext.bluespice.interWikiLinks'] = array(

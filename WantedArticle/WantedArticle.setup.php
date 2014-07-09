@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('WantedArticle', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['WantedArticle'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['WantedArticle'] = __DIR__ . '/languages/WantedArticle.i18n.php';
 
 $wgResourceModules['ext.bluespice.wantedarticle'] = array(

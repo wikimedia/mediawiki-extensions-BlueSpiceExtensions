@@ -107,8 +107,8 @@ class InsertMagic extends BsExtensionMW {
 	);
 
 	/**
-	 * Contructor of the InsertMagic class
-	 */
+	* Contructor of the InsertMagic class
+	*/
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->mExtensionFile = __FILE__;
@@ -155,12 +155,12 @@ class InsertMagic extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook Handler for VisualEditorConfig Hook
-	 * @param Array $aConfigStandard reference
-	 * @param Array $aConfigOverwrite reference
-	 * @param Array &$aLoaderUsingDeps reference
-	 * @return boolean always true to keep hook alife
-	 */
+	* Hook Handler for VisualEditorConfig Hook
+	* @param Array $aConfigStandard reference
+	* @param Array $aConfigOverwrite reference
+	* @param Array &$aLoaderUsingDeps reference
+	* @return boolean always true to keep hook alife
+	*/
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
 		$aLoaderUsingDeps[] = 'ext.bluespice.insertMagic';
 

@@ -19,7 +19,7 @@
  * @subpackage UEModulePDF
  */
 class BsExportModulePDF implements BsUniversalExportModule {
-	
+
 	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
 	 * Java library xhtmlrenderer to create a PDF file.
@@ -29,7 +29,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 	public function createExportFile( &$oCaller ) {
 		global $wgUser, $wgRequest;
 		$aPageParams = $oCaller->aParams;
-		
+
 		$aPageParams['title']      = $oCaller->oRequestedTitle->getPrefixedText();
 		$aPageParams['article-id'] = $oCaller->oRequestedTitle->getArticleID();
 		$aPageParams['oldid']      = $wgRequest->getInt( 'oldid', 0 );
@@ -62,29 +62,29 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			'language' => $wgUser->getOption( 'language', 'en' ),
 			'meta'     => $aPage['meta']
 		);
-		
+
 		//Override template param if needed. The override may come from GET (&ue[template]=...) or from a tag (<bs:ueparams template="..." />)
 		//TODO: Make more generic
-		if(!empty( $oCaller->aParams['template'] ) ) { 
+		if(!empty( $oCaller->aParams['template'] ) ) {
 			$aTemplateParams['template'] = $oCaller->aParams['template'];
 		}
-		
+
 		$aTemplate = BsPDFTemplateProvider::getTemplate( $aTemplateParams );
 
 		//Combine Page Contents and Template
 		$oDOM = $aTemplate['dom'];
-		
+
 		//Add the bookmarks
 		$aTemplate['bookmarks-element']->appendChild(
 			$aTemplate['dom']->importNode( $aPage['bookmark-element'], true )
 		);
 		$aTemplate['title-element']->nodeValue = $oCaller->oRequestedTitle->getPrefixedText();
-		
+
 		$aContents = array(
 			'content' => array( $aPage['dom']->documentElement )
 		);
 		wfRunHooks( 'BSUEModulePDFBeforeAddingContent', array( &$aTemplate, &$aContents, $oCaller, &$aPage ) );
-		
+
 		$oContentTags = $oDOM->getElementsByTagName( 'content' );
 		$i = $oContentTags->length - 1;
 		while( $i > -1 ){
@@ -116,7 +116,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 
 		if ( RequestContext::getMain()->getRequest()->getVal( 'debugformat', '' ) == 'html' ) {
 			$aResponse['content'] = $oDOM->saveXML( $oDOM->documentElement );
-			$aResponse['mime-type'] = 'text/html'; 
+			$aResponse['mime-type'] = 'text/html';
 			$aResponse['filename'] = sprintf(
 				'%s.html',
 				$oCaller->oRequestedTitle->getPrefixedText()
@@ -124,7 +124,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			$aResponse['disposition'] = 'inline';
 			return $aResponse;
 		}
-		
+
 		$sBackendClass = BsConfig::get('MW::UEModulePDF::Backend');
 		$oPDFBackend = new $sBackendClass( $oCaller->aParams );
 		$aResponse['content'] = $oPDFBackend->createPDF( $oDOM );
@@ -167,7 +167,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			);
 			$oWebserviceUrlView->addData(array(
 				'LABEL' => wfMessage( 'bs-uemodulepdf-overview-webservice-webadmin' )->plain(),
-				'URL'   => $sWebServiceUrl,
+				'URL' => $sWebServiceUrl,
 			));
 			$oModuleOverviewView->addItem( $oWebserviceUrlView );
 		}

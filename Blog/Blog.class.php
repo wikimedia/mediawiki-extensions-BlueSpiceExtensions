@@ -26,43 +26,16 @@
  * @version    2.22.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage Blog
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
 
 /* Changelog
- * v1.20.0
- *
- * v1.1.0
- * - Implemented CR Comments
- * - Fixed bugs
- * v1.0.0
- * -reset version numbering
- * v2.2
- * - new image rendering (renders images as thumbs)
- * - entry fields with categories
- * v2.1.1
- * - new attributes ns, shownewentryfield and newentryfieldposition
- * v2.1.0
- * - use views for error and output
- * v2.0.1
- * - Code refactored / beautified
- * - Removed usage of global variables
- * - Improved use of MediaWiki database abstraction layer.
- * v2.0.0
- * - Migrate to Blue spice
- * v1.1.3
- * - $_GET, $_POST, $_REQUEST => $hw->getParam (for security reasons)
- * v1.1.2
- * - open more link in new window
- * v1.1.1
- * - prevent recursive parsing
+ * v2.23.0
  */
 
-// Last Code Review RBV (30.06.2011)
-
-/**
+/*
  * Base class for page template extension
  * @package BlueSpice_Extensions
  * @subpackage Blog
@@ -76,7 +49,7 @@ class Blog extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// Base settings
 		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
+		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Blog',
 			EXTINFO::DESCRIPTION => 'Display a blog style list of pages.',
@@ -98,12 +71,13 @@ class Blog extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'UnknownAction' );
-		$this->setHook( 'SkinTemplateContentActions' );
+		$this->setHook( 'SkinTemplateNavigation::Universal', 'onSkinTemplateNavigationUniversal' );
 		$this->setHook( 'EditFormPreloadText' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		$this->setHook( 'BSNamespaceManagerBeforeSetUsernamespaces', 'onBSNamespaceManagerBeforeSetUsernamespaces');
 		$this->setHook( 'BSRSSFeederGetRegisteredFeeds' );
 		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
 		// Trackback is not fully functional in MW and thus disabled.
 		BsConfig::registerVar( 'MW::Blog::ShowTrackback', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL );
@@ -131,17 +105,28 @@ class Blog extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-imagerendermode', 'select' );
 		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'toggle' );
 
-		global $wgServer, $wgScriptPath;
-		//Register Application for ApplicationBar in BlueSpice-Skin
-		$arRegisteredApplications = BsConfig::get( 'MW::Applications' );
-		$arRegisteredApplications[] = array(
-			'name' => 'Blog',
-			'displaytitle' => 'Blog',
-			'url' => $wgServer.$wgScriptPath.'/index.php?action=blog'
-		);
-		BsConfig::set( 'MW::Applications', $arRegisteredApplications );
-
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Adds entry to bs_navigation_topbar
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ){
+		global $wgScriptPath;
+		$tpl->data['bs_navigation_sites'][20] = array(
+			'id' => 'nt-blog',
+			'href' => wfAppendQuery( $wgScriptPath.'/index.php', array(
+				'action' => 'blog'
+			)),
+			'text' => wfMessage('bs-blog-blog')->plain()
+		);
+		if( BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ) ) {
+			$tpl->data['bs_navigation_sites_active'] = 'nt-blog';
+		}
+		return true;
 	}
 
 	/**
@@ -200,20 +185,20 @@ class Blog extends BsExtensionMW {
 		return true;
 	}
 
-	//Hint: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/examples/Content_action.php?view=markup
 	/**
-	 * Removes all content actions from action tabs and highlights blog in application context. Called by SkinTemplateContentActions hook.
-	 * @param array $content_actions List of actions to be displayed in action tabs
-	 * @return bool allow other hooked methods to be executed. Always false in order to prevent any content actions to be implemented.
+	 * Removes all content actions from action tabs and highlights blog in
+	 * application context. Called by SkinTemplateNavigationUniversal hook.
+	 * @param SkinTemplate $sktemplate
+	 * @param type $links
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateContentActions( &$content_actions ) {
+	public function onSkinTemplateNavigationUniversal( &$sktemplate, &$links ) {
 		$sAction = $this->getRequest()->getVal( 'action', '' );
 		if ( ( $sAction != 'blog' ) ) {
 			return true;
 		} else {
-			$content_actions = array();
+			$links = array();
 		}
-		BsConfig::set( 'MW::ApplicationContext', 'Blog' );
 		return false;
 	}
 
@@ -273,11 +258,10 @@ class Blog extends BsExtensionMW {
 		if ( $action != 'blog' ) return true;
 
 		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
-		BsConfig::set( 'MW::ApplicationContext', 'Blog' );
 
-		$oMwOut = $this->getOutput();
-		$oMwOut->setPageTitle( 'Blog' ); // set page content
-		$oMwOut->addHTML( $this->onBlog( '', array(), null ) );
+		$oOut = $this->getOutput();
+		$oOut->setPageTitle( 'Blog' ); // set page content
+		$oOut->addHTML( $this->onBlog( '', array(), null ) );
 
 		return false; // return false to prevent other actions to bind on 'blog'
 	}

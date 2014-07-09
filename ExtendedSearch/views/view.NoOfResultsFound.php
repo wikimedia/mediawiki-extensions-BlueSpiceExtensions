@@ -22,7 +22,7 @@
 /**
  * This view renders the ExtendedSearch search results summary.
  * @package    BlueSpice_Extensions
- * @subpackage ExtendedSearch 
+ * @subpackage ExtendedSearch
  */
 class ViewNoOfResultsFound extends ViewBaseElement {
 
@@ -50,7 +50,7 @@ class ViewNoOfResultsFound extends ViewBaseElement {
 	public function execute( $params = false ) {
 		$noOfResultsFound = $this->getOption( 'NoOfResultsFound' );
 		if ( $noOfResultsFound === false ) return '';
-		$searchTerm = '<b>'.$this->getOption( 'SearchTerm' ).'</b>';
+		$searchTerm = Html::element( 'b', array(), $this->getOption( 'SearchTerm' ) );
 
 		if ( $this->getOption( 'EscalatedToFuzzy' ) && $noOfResultsFound > 0 ) {
 			$sOut = wfMessage( 'bs-extendedsearch-fuzzy', $searchTerm, $noOfResultsFound )->text();

@@ -3,7 +3,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 	layout: 'form',
 	modal: true,
 	id: 'bs-resped-assignment-panel',
-	
+
 	afterInitComponent: function() {
 		this.strAvailableRespEds = Ext.create('Ext.data.JsonStore', {
 			proxy: {
@@ -25,8 +25,8 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 			store: this.strAvailableRespEds,
 			displayField: 'user_displayname',
 			valueField: 'user_id',
-			fromTitle: mw.message('bs-responsibleeditors-availableeditors').plain(),
-			toTitle: mw.message('bs-responsibleeditors-assignededitors').plain(),
+			fromTitle: mw.message( 'bs-responsibleeditors-availableeditors' ).plain(),
+			toTitle: mw.message( 'bs-responsibleeditors-assignededitors' ).plain(),
 			height: 250
 		});
 
@@ -36,7 +36,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 
 		this.callParent();
 	},
-	
+
 	getData: function(){
 		this.currentData.editorIds = this.isRespEds.getValue();
 		return this.callParent();
@@ -60,7 +60,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 
 	onStrAvailableRespEdsLoad: function( store, records, successful, eOpts ) {
 		if( this.currentData.editorIds ) {
-			this.isRespEds.setValue( 
+			this.isRespEds.setValue(
 				this.currentData.editorIds
 			);
 		}

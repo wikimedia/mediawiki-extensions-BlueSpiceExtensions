@@ -149,7 +149,7 @@ class ViewTopMenuItem extends ViewBaseElement {
 
 		$aOut = array();
 		$aOut[] = '<li>';
-		$aOut[] =	'<a href="'.$this->sLink .'" title="'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'" class="'.$sClass.'" '.$sLinkTarget.'>'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'</a>';
+		$aOut[] = '  <a href="'.$this->sLink .'" title="'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'" class="'.$sClass.'" '.$sLinkTarget.'>'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'</a>';
 		if( !empty($this->aChildren) ) {
 			$aOut[] = $this->rederChildItems();
 		}

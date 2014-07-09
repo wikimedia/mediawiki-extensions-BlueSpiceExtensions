@@ -33,18 +33,7 @@
  * @filesource
  */
 /* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0
- * - Refactored and beautified code
- * - Using BlueSpice view architecture
- * - Using BlueSpice sanitizer
- * - Implemented Code review 20100928
- * v0.1
- * - initial commit
- * v0.2
- * - added aditional params hook
- * - modified tag attributes handling
+ * v2.23.0
  */
 
 /**
@@ -483,7 +472,7 @@ class SmartList extends BsExtensionMW {
 				->setTooltip( $sHeading )
 				->setAdditionalBodyClasses( array( 'bs-nav-links' ) ); //For correct margin and fontsize
 
-		$aViews[] = $oWidgetView;
+		$aViews['SMARTLIST'] = $oWidgetView;
 
 		return true;
 	}
@@ -495,7 +484,7 @@ class SmartList extends BsExtensionMW {
 	 * @return array An array of WidgetView objects
 	 */
 	public function onBSUserSidebarDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$aViews[] = $this->onWidgetListKeywordYourEdits();
+		$aViews['YOUREDITS'] = $this->onWidgetListKeywordYourEdits();
 
 		return true;
 	}
@@ -834,7 +823,7 @@ class SmartList extends BsExtensionMW {
 			$aConditions[] = 'NOT (rc_type = 3)'; //prevent moves and deletes from being displayed
 
 			$aFields = array( 'rc_title as title', 'rc_namespace as namespace' );
-			if ( $aArgs['meta'] ) {
+			if ( isset( $aArgs['meta'] ) && $aArgs['meta'] == true ) {
 				$aFields[] = 'MAX(rc_timestamp) as time, rc_user_text as username';
 			}
 			if ( BsConfig::get( 'MW::SmartList::Comments' ) ) {
@@ -860,7 +849,7 @@ class SmartList extends BsExtensionMW {
 
 				$oTitle = Title::makeTitleSafe( $row->namespace, $row->title );
 
-				if ( !$oTitle->quickUserCan( 'read' ) ) continue;
+				if ( !$oTitle || !$oTitle->quickUserCan( 'read' ) ) continue;
 
 				$aObjectList[] = $row;
 				$iCount++;
@@ -890,7 +879,7 @@ class SmartList extends BsExtensionMW {
 					$sComment = wfMessage( 'bs-smartlist-comment' )->plain().': ';
 					$sComment .= ( strlen( $row->comment ) > 50 ) ? substr( $row->comment, 0, 50 ).'...' : $row->comment;
 				}
-				if ( $aArgs['meta'] ) {
+				if ( isset( $aArgs['meta'] ) && $aArgs['meta'] == true ) {
 					$sMeta = ' - <i>('.$row->username.', '.$this->getLanguage()->date( $row->time, true, true ).')</i>';
 				}
 				$oSmartListListEntryView = new ViewBaseElement();

@@ -1,7 +1,7 @@
 
 Ext.define( 'BS.InsertFile.ImageDialog', {
 	extend: 'BS.InsertFile.BaseDialog',
-	//'requires' and 'Ext.create(...)' are more or less the same. It may be 
+	//'requires' and 'Ext.create(...)' are more or less the same. It may be
 	//more safe to use 'requires' at runtime.
 	requires: [
 		'Ext.form.ComboBox', 'Ext.form.field.Checkbox', 'Ext.Button',
@@ -21,16 +21,16 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			width: 350,
 			margin: '0 5 0 0'
 		});
-		
+
 		this.cbxNoLink = Ext.create( 'Ext.form.field.Checkbox', {
 			boxLabel: mw.message('bs-insertfile-no-link').plain(),
-			handler: this.onCbxNoLinkChange, 
+			handler: this.onCbxNoLinkChange,
 			scope: this
 		});
-		//Change event is not fired properly. Seems to be a bug in ExtJS. We 
+		//Change event is not fired properly. Seems to be a bug in ExtJS. We
 		//use 'handler' in stead.
 		//this.cbxNoLink.on( 'change ', this.onCbxNoLinkChange, this );
-		
+
 		this.nbHeight = Ext.create( 'Ext.form.field.Number',{
 			width: 70,
 			minValue: 1,
@@ -118,7 +118,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 				}
 			]
 		});
-		
+
 		this.tfAlt = Ext.create( 'Ext.form.TextField', {
 			fieldLabel: mw.message('bs-insertfile-labelalt').plain(),
 			//todo: needs implementation, just setting an empty string
@@ -128,7 +128,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 
 		this.hdnUrl = Ext.create( 'Ext.form.field.Hidden' );
 
-		this.configPanel.height = 250;
+		this.configPanel.height = 270;
 		var items = [
 			this.rgFormat,
 			this.rgAlign,
@@ -156,13 +156,13 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			},
 			this.tfAlt
 		];
-		
+
 		$(document).trigger("BSInsertFileInsertImageDialogAfterInit", [items]);
 		this.configPanel.items = items;
-		
+
 		this.callParent(arguments);
 	},
-	//We need to set the 
+	//We need to set the
 	onStImageGridLoad: function( store, records, successful, eOpts ) {
 		//Only if we have a image selected
 		if( store.filters.items.length > 0 && records.length === 1 ) {
@@ -225,14 +225,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			imagename: this.tfFileName.getValue(),
 			src: Ext.htmlDecode(this.hdnUrl.getValue()) //Ext.htmlDecode(): this feels like the wrong place...
 		});
-		
+
 		if(this.cbxNoLink.getValue() === true ) {
 			cfg.link = '';
 		}
-		
+
 		var format = this.rgFormat.getValue();
 		format = format['img-type'];
-		
+
 		if( format === 'thumb' ) {
 			cfg.thumb = true;
 		}
@@ -242,13 +242,13 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		else if( format === 'border' ) {
 			cfg.border = true;
 		}
-		
+
 		var align = this.rgAlign.getValue();
 		align = align['img-align'];
 		if( align !== 'none' ) {
 			cfg.align = align;
 		}
-		
+
 		//Is this necessary?
 		if( align === 'left' ) {
 			cfg.left = true;
@@ -262,20 +262,22 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		else if( align === 'none' ) {
 			cfg.none = true;
 		}
-		
+
 		//Only set width and height if they are _not_ the original size!
 		var record = this.getSingleSelection();
 		if( record === null ){
 			return cfg;
 		}
-		
+
 		var height = this.nbHeight.getValue();
 		var width = this.nbWidth.getValue();
 		if( height != record.get('height') || width != record.get('width') ) {
 			cfg.sizeheight = height;
 			cfg.sizewidth = width;
 		}
-		
+
+		$(document).trigger("BSInsertFileInsertImageDialogBeforeReturnGetData", [this, cfg]);
+
 		return cfg;
 	},
 	setData: function( obj ) {
@@ -290,7 +292,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		}
 
 		this.callParent( arguments );
-		
+
 		//Reset all fields to default; Maybe do this onOKClick
 		this.rgFormat.reset();
 		this.rgAlign.reset();
@@ -316,25 +318,25 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			'img-align': align
 		});
 
-		if( obj.sizewidth !== '' ) { 
+		if( obj.sizewidth !== '' ) {
 			this.nbWidth.setValue(obj.sizewidth);
 		}
 
-		if( obj.sizeheight !== '' ) { 
+		if( obj.sizeheight !== '' ) {
 			this.nbHeight.setValue(obj.sizeheight);
 		}
 
-		if( obj.alt !== '' ) { 
+		if( obj.alt !== '' ) {
 			this.tfAlt.setValue( obj.alt );
 		}
 		else {
 			this.tfAlt.setValue("");
 		}
 
-		if( obj.link !== '' && obj.link !== false && obj.link !== 'false' ) { 
+		if( obj.link !== '' && obj.link !== false && obj.link !== 'false' ) {
 			this.cbPages.setValue( obj.link );
 		}
-		
+
 		if( obj.link === '' ) {
 			this.cbxNoLink.setValue(true);
 		} else {
@@ -344,20 +346,21 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.hdnUrl.setValue( obj.src );
 		this.isSetData = false;
 	},
-	
+
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.callParent(arguments);
-		$(document).trigger("BSInsertFileInsertImageDialogAfterImageSelect", [this, grid, record, index]);
+
 		this.hdnUrl.setValue( record.get('url') );
-		//This is to avoid an overriding of the dimension that may have been 
+		//This is to avoid an overriding of the dimension that may have been
 		//set by this.setData()
 		if( grid.getStore().filters.items.length === 0 || grid.getStore().getCount() !== 1 ) {
 			this.nbWidth.setValue( record.get('width') );
 			this.nbHeight.setValue( record.get('height') );
 		}
+		$(document).trigger("BSInsertFileInsertImageDialogAfterImageSelect", [this, grid, record, index]);
 	},
-	
-	//If we want do have a WikiImageLink that produces a unlinked image we will 
+
+	//If we want do have a WikiImageLink that produces a unlinked image we will
 	//have to supply a "link=" (empty value) parameter.
 	onCbxNoLinkChange: function( sender, checked ) {
 		if( checked ) {
@@ -367,9 +370,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			this.cbPages.enable();
 		}
 	},
-	
+
 	onRgFormatChange: function( sender, newValue, oldValue, eOpts ) {
-		if( newValue['img-type'] === 'frame' 
+		if( newValue['img-type'] === 'frame'
 			|| newValue['img-type'] === 'thumb' ) {
 			this.tfLinkText.enable();
 		}

@@ -13,16 +13,16 @@ class ViewWidget extends ViewBaseElement {
 
 		$sAdditionalTitleClasses = implode(' ', $this->_mAdditionalTitleClasses );
 		$sAdditionalBodyClasses = implode(' ', $this->_mAdditionalBodyClasses );
-        if (is_array($params) && isset($params['format']) && $params['format'] == 'json'){
-            $oReturn = new stdClass();
-            $oReturn->defaultViewstate = $this->_mDefaultViewstate;
-            $oReturn->title = $this->_mTitle;
-            $oReturn->body = $this->_mBody;
-            $oReturn->tooltip = $this->_mTooltip;
-            $oReturn->additionalTitleClasses = $this->_mAdditionalTitleClasses;
-            $oReturn->additionalBodyClasses = $this->_mAdditionalBodyClasses;
-            return $oReturn;
-        }
+		if (is_array($params) && isset($params['format']) && $params['format'] == 'json'){
+			$oReturn = new stdClass();
+			$oReturn->defaultViewstate = $this->_mDefaultViewstate;
+			$oReturn->title = $this->_mTitle;
+			$oReturn->body = $this->_mBody;
+			$oReturn->tooltip = $this->_mTooltip;
+			$oReturn->additionalTitleClasses = $this->_mAdditionalTitleClasses;
+			$oReturn->additionalBodyClasses = $this->_mAdditionalBodyClasses;
+			return $oReturn;
+		}
 		$aOut = array();
 		$aOut[] = '<div class="bs-widget'.$this->_mDefaultViewstate.'" id="bs-widget-'.$this->_mId.'" title="'.$this->_mTooltip.'">';
 		$aOut[] = '  <div class="bs-widget-head">';

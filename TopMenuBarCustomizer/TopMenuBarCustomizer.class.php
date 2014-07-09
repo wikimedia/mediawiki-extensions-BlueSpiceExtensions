@@ -66,12 +66,12 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	public function initExt() {
 		//TODO: Add some error massages on article save (more than 5 entrys etc.)
-		$this->setHook('BeforePageDisplay');
-		$this->setHook('SkinTemplateOutputPageBeforeExec');
+		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels',       2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberoflevels' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels', 2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberoflevels' );
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfMainEntries', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofmainentries', 'int' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries',  25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofsubentries', 'int' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries', 25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofsubentries', 'int' );
 	}
 
 	/**
@@ -97,7 +97,8 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			return true;
 		}
 
-		$newAppList = BsPageContentProvider::getInstance()->getContentFromTitle( $oTopBarMenuTitle );
+		$newAppList = BsPageContentProvider::getInstance()
+			->getContentFromTitle( $oTopBarMenuTitle );
 
 		// force unset Applications by create an empty page
 		if( $newAppList === "" ) {
@@ -124,9 +125,8 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			$aOut[] = $oMainItem->execute();
 		}
 
-		$tpl->data['bs_navigation_sites'] = array(
-			implode( "\n", $aOut )
-		);
+		$tpl->data['bs_navigation_sites'] = implode( "\n", $aOut );
+
 		return true;
 	}
 
@@ -139,18 +139,18 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	private function parseArticleContentLines( $aLines, $aApps = array(), $iPassed = 0 ) {
 		$iAllowedLevels = BsConfig::get('MW::TopMenuBarCustomizer::NuberOfLevels');
-		$iMaxEntrys = $iPassed === 0
-				? BsConfig::get('MW::TopMenuBarCustomizer::NumberOfMainEntries') -1
-				: BsConfig::get('MW::TopMenuBarCustomizer::NumberOfSubEntries') -1;
+		$iMaxEntrys = ( $iPassed === 0 )
+			? BsConfig::get('MW::TopMenuBarCustomizer::NumberOfMainEntries') -1
+			: BsConfig::get('MW::TopMenuBarCustomizer::NumberOfSubEntries') -1;
 
-		if($iAllowedLevels < 1 || $iMaxEntrys < 1) {
+		if ( $iAllowedLevels < 1 || $iMaxEntrys < 1 ) {
 			return $aApps;
 		}
 
 		$iPassed++;
 		$aChildLines = array();
 		$i = 0;
-		for( $i; $i < count($aLines); $i++ ) {
+		for ( $i; $i < count($aLines); $i++ ) {
 			$aLines[$i] = trim($aLines[$i]);
 			//prevents from lines without * and list starts without parent item
 			if ( strpos( $aLines[$i], '*' ) !== 0 || (strpos( $aLines[$i], '**' ) === 0 &&  $i == 0)) {
@@ -163,7 +163,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 				}
 				continue;
 			}
-			if( !empty($aChildLines) ) {
+			if ( !empty( $aChildLines ) ) {
 				$iLastKey = key( array_slice( $aApps, -1, 1, TRUE ) );
 				$aApps[$iLastKey]['children'] = $this->parseArticleContentLines( $aChildLines, array() ,$iPassed );
 				foreach( $aApps[$iLastKey]['children'] as $aChildApps ) {
@@ -176,7 +176,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 				$aChildLines = array();
 			}
 
-			if( count($aApps) > $iMaxEntrys) {
+			if ( count($aApps) > $iMaxEntrys) {
 				continue;
 			}
 
@@ -189,11 +189,11 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			$aApps[] = $aApp;
 		}
 		//add childern to the last element
-		if( !empty($aChildLines) ) {
+		if( !empty( $aChildLines ) ) {
 			$iLastKey = key( array_slice( $aApps, -1, 1, true ) );
 			$aApps[$iLastKey]['children'] = $this->parseArticleContentLines( $aChildLines, array() ,$iPassed );
-			foreach( $aApps[$iLastKey]['children'] as $aChildApps ) {
-				if( !$aChildApps['active'] && !$aChildApps['containsactive'] ) {
+			foreach ( $aApps[$iLastKey]['children'] as $aChildApps ) {
+				if ( !$aChildApps['active'] && !$aChildApps['containsactive'] ) {
 					continue;
 				}
 				$aApps[$iLastKey]['containsactive'] = true;

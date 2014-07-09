@@ -115,7 +115,7 @@ BsSaferEditEditMode = {
 					items: [
 						{
 							xtype: 'tbtext',
-							text: mw.message('bs-saferedit-lastSavedVersion').plain() + BsSaferEditEditMode.savedTS
+							text: mw.message('bs-saferedit-lastsavedversion', BsSaferEditEditMode.savedTS).plain()
 						}
 					]
 				}, {
@@ -135,7 +135,7 @@ BsSaferEditEditMode = {
 				},
 				scope: this
 			},{
-				text: mw.message('bs-saferedit-cancel').plain(),
+				text: mw.message('bs-extjs-cancel').plain(),
 				handler: function(){
 					BsSaferEditEditMode.cancelSaferEdit();
 					BsSaferEditEditMode.canceledByUser = false;
@@ -209,11 +209,8 @@ BsSaferEditEditMode = {
 			'bs-saferedit',
 			{
 				titleMsg: 'bs-saferedit-othersectiontitle',
-				text: mw.message('bs-saferedit-othersectiontext1').plain() + 
-					'<br/>' + 
-					mw.message('bs-saferedit-othersectiontext2').plain() + 
-					BsSaferEditEditMode.savedTS + 
-					'<br />' + 
+				text: mw.message('bs-saferedit-othersectiontext1').plain() + '<br/>' +
+					mw.message('bs-saferedit-othersectiontext2', BsSaferEditEditMode.savedTS ).plain() + '<br />' +
 					mw.message('bs-saferedit-othersectiontext3').plain()
 			},
 			{
@@ -296,7 +293,7 @@ BsSaferEditEditMode = {
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText();
 		var links = document.getElementsByTagName( "a" );
 		for ( i = 0; i < links.length; i++ ) {
-			if ( links[i].innerHTML == mw.message('bs-saferedit-cancel').plain() || links[i].innerHTML == "Cancel" ) {
+			if ( links[i].innerHTML == mw.message('bs-extjs-cancel').plain() || links[i].innerHTML == "Cancel" ) {
 				links[i].onclick = BsSaferEditEditMode.cancelSaferEdit;
 			}
 		}
@@ -423,13 +420,12 @@ BsSaferEditEditMode = {
 	checkSaved: function() {
 		if ( !BsSaferEditEditMode.isSubmit && BsSaferEditEditMode.hasUnsavedChanges("-") ) {
 			if(/chrome/.test(navigator.userAgent.toLowerCase())) { //chrome compatibility
-				return mw.message('bs-saferedit-unsavedChanges').plain();
+				return mw.message('bs-saferedit-unsavedchanges').plain();
 			}
 			if(window.event) {
-				window.event.returnValue = mw.message('bs-saferedit-unsavedChanges').plain();
-			}
-			else {
-				return mw.message('bs-saferedit-unsavedChanges').plain();
+				window.event.returnValue = mw.message('bs-saferedit-unsavedchanges').plain();
+			} else {
+				return mw.message('bs-saferedit-unsavedchanges').plain();
 			}
 		}
 		// do not return anything, not even null. otherwise IE will display the dialogue

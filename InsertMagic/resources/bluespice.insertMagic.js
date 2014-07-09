@@ -57,26 +57,21 @@ $(document).bind('hwbehavior-_setDisabled', function( event, plugin, setValue, l
 });
 
 var BsInsertMagicHelper = {
-	
 	getTypeFromText: function( text ) {
 		//What about tags containing variables? Or variables containing tags?
 		if( text.match(/<(.*?)>/gmi) ) { //TODO: find better test
 			return 'tag';
-		}
-		else if( text.match(/\{\{(.*?)\}\}/gmi) ) {
+		} else if( text.match(/\{\{(.*?)\}\}/gmi) ) {
 			return 'variable';
-		}
-		else if( text.match(/__(.*?)__/gmi) ){
+		} else if( text.match(/__(.*?)__/gmi) ){
 			return 'switch';
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
 };
 
 var BsInsertMagicWikiTextConnector = {
-	
 	getData: function() {
 		var currentCode = bs.util.selection.save();
 		var data = {
@@ -102,8 +97,8 @@ var BsInsertMagicVisualEditorConnector = {
 		me.data.name = node.getAttribute('data-bs-name');
 		var currentCode = '';
 
-		//TODO: Laufzeitproblem: onShow ist Store noch nicht unbedingt geladen 
-		//und Grid nicht unbedingt gerendert. --> selection speichern und 
+		//TODO: Laufzeitproblem: onShow ist Store noch nicht unbedingt geladen
+		//und Grid nicht unbedingt gerendert. --> selection speichern und
 		//StoreOnLoad Fokus und Selection setzen!
 		if ( me.data.type == 'template' ) {
 			var templates = me.caller.plugins.bswikicode.getTemplateList();
@@ -123,7 +118,7 @@ var BsInsertMagicVisualEditorConnector = {
 		me.data.code = currentCode;
 		return me.data;
 	},
-	
+
 	applyData: function(  sender, data ) {
 		var me = BsInsertMagicVisualEditorConnector;
 		me.bookmark = me.caller.selection.getBookmark();

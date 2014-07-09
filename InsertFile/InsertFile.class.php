@@ -4,7 +4,7 @@
  * InsertFile extension for BlueSpice
  *
  * Dialogbox to upload files and enter a file link.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -67,7 +67,7 @@ class InsertFile extends BsExtensionMW {
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 
+			EXTINFO::DEPS        => array(
 				'bluespice' => '2.22.0'
 			)
 		);
@@ -105,7 +105,7 @@ class InsertFile extends BsExtensionMW {
 
 		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar2"] );
 		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "bsimage" );
-		
+
 		// Add context menu entry
 		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsContextImage', $aConfigStandard["contextmenu"] );
 		return true;
@@ -114,7 +114,7 @@ class InsertFile extends BsExtensionMW {
 	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
 		$this->getOutput()->addModuleStyles('ext.bluespice.insertFile.styles');
 		$this->getOutput()->addModules('ext.bluespice.insertFile');
-		
+
 		$aRows[0]['dialogs'][20] = 'bs-editbutton-insertimage';
 		$aRows[0]['dialogs'][30] = 'bs-editbutton-insertfile';
 

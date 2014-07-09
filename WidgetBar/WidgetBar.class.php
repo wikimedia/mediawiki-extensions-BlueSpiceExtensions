@@ -74,12 +74,12 @@ class WidgetBar extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
-		$this->setHook( 'BlueSpiceSkin:Widgets', 'onWidgets' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'userCan', 'onUserCan' );
 		$this->setHook( 'GetPreferences' );
 		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'EditFormPreloadText' );
 
-		BsConfig::registerVar( 'MW::WidgetBar::UserPageSubPageTitle', 'Widgetbar', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
 		BsConfig::registerVar( 'MW::WidgetBar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-widgetbar-userpagesettings-link-title', 'link' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -107,9 +107,13 @@ class WidgetBar extends BsExtensionMW {
 	 * @return bool false if the user accesses a UserSidebar Title of another user, true in all other cases.
 	 */
 	public function onUserCan( $oTitle, $oUser, $sAction, $bResult ){
-		if ( $sAction != 'edit' ) return true;
-		if ( $oTitle->getNamespace() != NS_USER || !$oTitle->isSubpage() ) return true;
-		if ( strcasecmp( $oTitle->getSubpageText(), BsConfig::get( 'MW::WidgetBar::UserPageSubPageTitle' ) ) == 0 ) {
+		if ( $sAction != 'edit' ) {
+			return true;
+		}
+		if ( $oTitle->getNamespace() != NS_USER || !$oTitle->isSubpage() ){
+			return true;
+		}
+		if ( strcasecmp( $oTitle->getSubpageText(), 'Widgetbar' ) == 0 ) {
 			$oBasePage = Title::newFromText( $oTitle->getBaseText(), NS_USER );
 			if ( !$oBasePage->equals( $oUser->getUserPage() ) ) {
 				$bResult = false;
@@ -121,8 +125,7 @@ class WidgetBar extends BsExtensionMW {
 
 	// TODO STM 08.10.12: Docblock
 	public function onGetPreferences( $user, &$preferences ) {
-		$sUserPageSubPageTitle  = BsConfig::get( 'MW::WidgetBar::UserPageSubPageTitle' );
-		$oWidgetBarArticleTitle = Title::makeTitle( NS_USER, $user->getName().'/'.$sUserPageSubPageTitle );
+		$oWidgetBarArticleTitle = Title::makeTitle( NS_USER, $user->getName().'/Widgetbar' );
 		$preferences['MW_WidgetBar_LinkToEdit']['default'] = array(
 			'href' => $oWidgetBarArticleTitle->getEditURL(),
 			'content' => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->plain()
@@ -138,8 +141,7 @@ class WidgetBar extends BsExtensionMW {
 	 * @return array The SettingsViews array with an andditional View object
 	 */
 	public function onUserPageSettings( $oUser, $oTitle, &$aSettingViews ){
-		$sUserPageSubPageTitle  = BsConfig::get('MW::WidgetBar::UserPageSubPageTitle');
-		$oWidgetBarArticleTitle = Title::makeTitle( NS_USER, $oUser->getName().'/'.$sUserPageSubPageTitle );
+		$oWidgetBarArticleTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Widgetbar' );
 
 		// TODO MRG (01.07.11 02:13): Should be put in a view in BsCore
 		$oUserPageSettingsView = new ViewBaseElement();
@@ -164,29 +166,44 @@ class WidgetBar extends BsExtensionMW {
 
 	/**
 	 * Hook-Handler for 'BlueSpiceSkin:Widgets'. Adds Widgets to the Widgetbar.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current User object
-	 * @param QuickTemplate $oQuickTemplate Current QuickTemplate object
-	 * @return boolean Always true to keep the hook running
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onWidgets( &$aViews, $oUser, $oQuickTemplate ) {
-		global $wgTitle;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		$oCurrentTitle = $sktemplate->getTitle();
+		$oUser = $sktemplate->getUser();
+
+		$oView = $this->getWidgets($oCurrentTitle, $oUser);
+
+		$tpl->data['bs_dataBeforeContent']['bs-widgetbar'] = array(
+			'position' => 20,
+			'label' => wfMessage('prefs-widgetbar')->text(),
+			'content' => $oView
+		);
+		return true;
+	}
+
+	protected function getWidgets($oCurrentTitle, $oUser) {
 		$oWidgetListView = new ViewWidgetList();
 		$aWidgetViews = array();
-		if ( $wgTitle->userCan( 'read' ) == false ) {
-			if ( $wgTitle->getNamespace() == -1 && $oUser->isLoggedIn() ) {
-				$aViews[] = $oWidgetListView->setWidgets( $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle ) );
-				return $aViews;
+		if ( $oCurrentTitle->userCan( 'read' ) == false ) {
+			if ( $oCurrentTitle->isSpecialPage() && $oUser->isLoggedIn() ) {
+				$oView = $oWidgetListView->setWidgets(
+					$this->getDefaultWidgets( $aWidgetViews, $oUser, $oCurrentTitle )
+				);
+				return $oView;
 			}
-			return $aViews;
+			return $oView;
 		}
 
-		$sTitle = BsConfig::get('MW::WidgetBar::UserPageSubPageTitle');
-		$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/'.$sTitle );
+		$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Widgetbar' );
 
 		if ( $oTitle->exists() === false ) {
-			$aViews[] = $oWidgetListView->setWidgets( $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle ) );
-			return $aViews;
+			$oView = $oWidgetListView->setWidgets(
+				$this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle )
+			);
+			return $oView;
 		}
 
 		$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
@@ -195,8 +212,8 @@ class WidgetBar extends BsExtensionMW {
 		}
 		$oWidgetListView->setWidgets( $aWidgets );
 
-		$aViews[] = $oWidgetListView;
-		return $aViews;
+		$oView = $oWidgetListView;
+		return $oView;
 	}
 
 	/**
@@ -209,5 +226,24 @@ class WidgetBar extends BsExtensionMW {
 	private function getDefaultWidgets( &$aViews, $oUser, $oTitle) {
 		wfRunHooks( 'BSWidgetBarGetDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
 		return $aViews;
+	}
+
+	/**
+	 * Fills default widget list definition into user's config page
+	 * @param string $text
+	 * @param Title $title
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onEditFormPreloadText( &$text, &$title ) {
+		if( !$title->equals(Title::makeTitle(NS_USER, $this->getUser()->getName().'/Widgetbar')) ) {
+			return true;
+		}
+		$aViews = array();
+		$aViews = $this->getDefaultWidgets($aViews, $this->getUser(), $title);
+		$aDefaultWidgetKeywords = array_keys($aViews);
+
+		$text = '* '. implode( "\n* ", $aDefaultWidgetKeywords );
+
+		return true;
 	}
 }

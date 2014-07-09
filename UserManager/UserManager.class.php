@@ -210,14 +210,14 @@ class UserManager extends BsExtensionMW {
 		);
 
 		$sUsername = ucfirst( $sUsername );
-		if ( User::isValidUserName( $sUsername ) === false ) { //TODO: Check if User::isCreatableName() is a better validation
+		if ( Sanitizer::validateEmail( $sUsername ) === false ) { //TODO: Check if User::isCreatableName() is a better validation
 			$aResponse['errors'][] = array(
 				'id' => 'username',
 				'message' => wfMessage( 'bs-usermanager-invalid_uname_gen' )->plain()
 			);
 		}
 
-		if ( $sEmail != '' && Sanitizer::validateEmail ( $sEmail ) === false ) {
+		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
 			$aResponse['errors'][] = array(
 				'id' => 'email',
 				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
@@ -394,7 +394,7 @@ class UserManager extends BsExtensionMW {
 				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
 			);
 		}
-		if ( $sEmail != '' && Sanitizer::validateEmail ( $sEmail ) === false ) {
+		if ( $sEmail != '' && Sanitizer::validateEmail( $sEmail ) === false ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'email',

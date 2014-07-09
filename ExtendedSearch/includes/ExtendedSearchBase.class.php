@@ -76,7 +76,7 @@ class ExtendedSearchBase {
 		$this->oSearchRequest = new SearchRequest();
 		$this->oSearchOptions = new SearchOptions( $this->oSearchRequest, $this->oContext );
 		$this->oSearchUriBuilder = new SearchUriBuilder( $this->oSearchRequest, $this->oSearchOptions );
-		$this->oSearchIndex = new SearchIndex( $this->oSearchRequest, $this->oSearchOptions, $this->oSearchUriBuilder, $this->oContext );
+		$this->oSearchIndex = new SearchIndex( $this->oSearchService, $this->oSearchRequest, $this->oSearchOptions, $this->oSearchUriBuilder, $this->oContext );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -116,9 +116,13 @@ class ExtendedSearchBase {
 	 * @return ViewBaseElement View with inner content of search result page.
 	 */
 	public function renderSpecialpage() {
+		$this->oSearchOptions->readInSearchRequest();
+		$this->oSearchUriBuilder->init();
+
 		// Form and results views are added via addItem to a ViewBaseElement
 		$oSearchformView = new ViewBaseElement();
 		$oSearchform = new ViewExtendedSearchFormPage();
+		$oSearchform->setRequest( $this->oSearchRequest );
 		$aMonitor = array();
 
 		if ( $this->oSearchOptions->getOptionBool( 'bExtendedForm' ) ) {
@@ -137,21 +141,25 @@ class ExtendedSearchBase {
 		$oSearchform->setOptions( $aMonitor );
 		$oSearchformView->addItem( $oSearchform );
 
-		$oView = new ViewBaseElement();
 		$this->oContext->getOutPut()->addHTML( $oSearchformView->execute() );
 
-		return $this->getResults();
+		return $this->getResults( false );
 	}
 
-	public function getResults() {
+	public function getResults( $bAjax ) {
+		if ( $bAjax === true ) {
+			$this->oSearchOptions->readInSearchRequest();
+			$this->oSearchUriBuilder->init();
+		}
 		try {
 			$oView = new ViewBaseElement();
-			$aResponeMonitor = array();
+			$oView->setId( 'bs-extendedsearch-specialpage-body' );
+			$aMonitor = array();
 
-			$oResultView = $this->search( $aResponeMonitor );
+			$oResultView = $this->search( $aMonitor );
 
 			$vNoOfResultsFound = new ViewNoOfResultsFound();
-			$vNoOfResultsFound->setOptions( $aResponeMonitor );
+			$vNoOfResultsFound->setOptions( $aMonitor );
 			$oView->addItem( $vNoOfResultsFound );
 
 			$oView->addItem( $oResultView );
@@ -179,7 +187,7 @@ class ExtendedSearchBase {
 			array(
 				'hiddenFields' => $aHiddenFieldsInForm,
 				'files' => $this->oSearchOptions->getOption( 'files' ),
-				'method' => BsConfig::get( 'MW::ExtendedSearch::FormMethod' ),
+				'method' => 'get',
 				'scope' => $this->oSearchOptions->getOption( 'scope' )
 			)
 		);
@@ -281,7 +289,7 @@ class ExtendedSearchBase {
 	 */
 	public function search( &$aMonitor ) {
 		try {
-			$vItem = $this->oSearchIndex->search( $this->oSearchService, $aMonitor );
+			$vItem = $this->oSearchIndex->search( $aMonitor );
 		} catch ( BsException $e ) {
 			if ( $e->getMessage() == 'redirect' ) throw $e;
 			$vItem = new ViewBaseElement();
@@ -348,6 +356,7 @@ class ExtendedSearchBase {
 		$oSerachService = SearchService::getInstance();
 		$oSearchRequest = new SearchRequest();
 		$oSearchOptions = new SearchOptions( $oSearchRequest, RequestContext::getMain() );
+		$oSearchOptions->readInSearchRequest();
 
 		$sSearchString = urldecode( $sSearchString );
 		$sSolrSearchString = self::preprocessSearchInput( $sSearchString );
@@ -370,9 +379,9 @@ class ExtendedSearchBase {
 		$bEscalateToFuzzy = ( $oHits->response->numFound == 0 ); // boolean!
 		// Escalate to fuzzy
 		if ( $bEscalateToFuzzy ) {
-			$this->oSearchOptions->setOption( 'scope', 'title' );
+			$oSearchOptions->setOption( 'scope', 'title' );
 
-			$aFuzzyQuery = $this->oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
+			$aFuzzyQuery = $oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
 			$aFuzzyQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 			$aFuzzyQuery['searchOptions']['facet'] = 'off';
 			$aFuzzyQuery['searchOptions']['hl'] = 'off';
@@ -456,11 +465,9 @@ class ExtendedSearchBase {
 		wfRunHooks( 'BSExtendedSearchAutocomplete', array( &$aResults, $sSearchString, &$iID, $bTitleExists, $sEcpSearchString ) );
 
 		$aLinkParams = array(
-			'search_origin' => 'titlebar',
 			'search_scope' => 'text',
-			'search_input' => $sEcpSearchString,
-			'search_files' => $iSearchfiles,
-			'autocomplete' => true
+			'q' => $sEcpSearchString,
+			'search_files' => $iSearchfiles
 		);
 
 		$oItem = new stdClass();
@@ -473,7 +480,7 @@ class ExtendedSearchBase {
 
 		$aResults[] = $oItem;
 
-		return json_encode( $aResults );
+		return FormatJson::encode( $aResults );
 	}
 
 	/**

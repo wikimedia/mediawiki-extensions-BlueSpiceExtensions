@@ -77,8 +77,7 @@ class InsertCategory extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
-		$this->setHook( 'SkinTemplateContentActions' );
-		$this->setHook( 'SkinTemplateNavigation::Universal', 'onSkinTemplateNavigationUniversal' );
+		$this->setHook( 'SkinTemplateNavigation' );
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'VisualEditorConfig' );
@@ -166,38 +165,25 @@ class InsertCategory extends BsExtensionMW {
 	}
 
 	/**
-	 * MediaWiki ContentActions hook. For more information please refer to <mediawiki>/docs/hooks.txt
-	 * @param Array $aContentActions This array is used within the skin to render the content actions menu
-	 * @return Boolean Always true for it is a MediwWiki Hook callback.
+	 * Adds the "Insert category" menu entry in view mode
+	 * @param SkinTemplate $sktemplate
+	 * @param array $links
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateContentActions( &$aContentActions) {
-		if ( $this->getRequest()->getVal( 'action', 'view') != 'view' ) return true;
-		if ( !$this->getTitle()->userCan( 'edit' ) ) return true;
-
-		$links = array( 'actions' => array() );
-		$this->onSkinTemplateNavigationUniversal( null, $links );
-		$aContentActions['insert_category'] = $links['actions']['insert_category'];
-
-		return true;
-	}
-
-	/**
-	 *
-	 * @param type $skin
-	 * @param type $links
-	 * @return boolean
-	 */
-	public function onSkinTemplateNavigationUniversal( $skin, &$links ) {
-		if ( $this->getRequest()->getVal( 'action', 'view') != 'view' ) return true;
-		if ( $this->getTitle()->isSpecialPage() ) return true;
-		if ( !$this->getTitle()->userCan( 'edit' ) ) return true;
+	public function onSkinTemplateNavigation( &$sktemplate, &$links ) {
+		if ( $this->getRequest()->getVal( 'action', 'view') != 'view' ) {
+			return true;
+		}
+		if ( !$this->getTitle()->userCan( 'edit' ) ) {
+			return true;
+		}
 		$links['actions']['insert_category'] = array(
-			"text" => wfMessage( 'bs-insertcategory-insertcat' )->plain(),
-			"href" => '#',
-			"class" => false
+			'text' => wfMessage( 'bs-insertcategory-insertcat' )->text(),
+			'href' => '#',
+			'class' => false,
+			'id' => 'ca-insertcategory'
 		);
 
 		return true;
 	}
-
 }

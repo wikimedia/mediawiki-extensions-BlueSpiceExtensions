@@ -152,9 +152,8 @@ class BuildIndexMainControl {
 		$aPageEditors = $this->getEditorsFromDbForCertainPageId( $iPageID );
 		$bRedirect = $oTitle->isRedirect();
 
-		$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
-
 		if ( $bRedirect === true ) {
+			$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
 			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT )->getUltimateRedirectTarget();
 			if ( $oRedirectTitle instanceof Title ) {
 				$oArticle = new Article( $oRedirectTitle );
@@ -162,8 +161,8 @@ class BuildIndexMainControl {
 			}
 		}
 
-		$aSections = $this->extractEditSections( $sPageContent );
-		$sPageContent = $this->parseTextForIndex( $sPageContent, $oTitle );
+		$aSections = $this->extractEditSections( $oTitle );
+		$sPageContent = $this->prepareTextForIndex( $oTitle );
 
 		$aRedirects = $this->getRedirects( $oTitle );
 
@@ -172,7 +171,19 @@ class BuildIndexMainControl {
 		// do not use date( 'YmdHis' ); it does not return GMT but timestamp with timezone-offset
 		if ( strpos( $iPageTimestamp, '1970' ) === 0 ) $iPageTimestamp = wfTimestamp( TS_MW );
 
-		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument( $sPageTitle, $sPageContent, $iPageID, $iPageNamespace, $iPageTimestamp, $aPageCategories, $aPageEditors, $aRedirects, $bRedirect, $aSections );
+		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument(
+			$sPageTitle,
+			$sPageContent,
+			$iPageID,
+			$iPageNamespace,
+			$iPageTimestamp,
+			$aPageCategories,
+			$aPageEditors,
+			$aRedirects,
+			$bRedirect,
+			$aSections
+		);
+
 		try {
 			$this->oSearchService->addDocument( $oSolrDocument );
 		} catch ( Exception $e ) {
@@ -680,47 +691,29 @@ class BuildIndexMainControl {
 	 * @param object $oTitle Title object
 	 * @return string Parsed text or empty on failure
 	 */
-	public function parseTextForIndex( $sText, $oTitle ) {
-		$sParsedText = '';
-		if ( empty( $sText ) || is_null( $oTitle ) ) return $sParsedText;
+	public function prepareTextForIndex( Title $oTitle ) {
+		$sText = WikiPage::newFromID( $oTitle->getArticleID() )
+				->getContent()
+				->getParserOutput( $oTitle )
+				->getText();
 
-		// find all tags and sorround them with pre tags
-		$sText = preg_replace_callback( '#<.*?>#', array( $this, 'preTags' ), $sText );
+		$sText = Sanitizer::stripAllTags( $sText );
+		$sText = str_replace( $this->aFragsToBeReplaced, ' ', $sText );
+		$sText = html_entity_decode( $sText );
 
-		// find all behaviour switches and replace them with nothing
-		$sText = preg_replace( '#__[A-Z_]+__#', '', $sText );
-
-		try {
-			$sParsedText = BsCore::getInstance()->parseWikiText( $sText, $oTitle );
-		} catch ( Exception $e ) {
-			return $sParsedText;
-		}
-
-		$sParsedText = strip_tags( $sParsedText );
-		$sParsedText = str_replace( $this->aFragsToBeReplaced, ' ', $sParsedText );
-		$sParsedText = html_entity_decode( $sParsedText );
-
-		return $sParsedText;
-	}
-
-	/**
-	 * Callback function to return every tag surrounded with pre tags to avoid parsing
-	 * @param array $aTags Array of matches
-	 * @return string pre surrounded tag
-	 */
-	public function preTags( $aTags ) {
-		return '<pre>' . $aTags[0] . '</pre>';
+		return $sText;
 	}
 
 	/**
 	 * Extracts the edit sections out of a given text
-	 * @param string $sText Text to be parsed
+	 * @param object $oTitle Text to be parsed
 	 * @return array array of sections
 	 */
-	public function extractEditSections( $sText ) {
+	public function extractEditSections( $oTitle ) {
 		$aSections = array();
-		if ( empty( $sText ) ) return $aSections;
+		if ( !( $oTitle instanceof Title ) ) return $aSections;
 
+		$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 		$aMatches  = array();
 		$aLines = explode( "\n", $sText );
 		foreach ( $aLines as $sLine ) {

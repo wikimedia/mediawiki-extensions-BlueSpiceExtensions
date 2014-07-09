@@ -119,7 +119,6 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesSpecial', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypesspecial', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ExternalRepo', '', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-externalrepo' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefScopeUser', 'text', BsConfig::TYPE_STRING|BsConfig::LEVEL_USER|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-defscopeuser', 'select' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::FormMethod', 'get', BsConfig::TYPE_STRING|BsConfig::LEVEL_PRIVATE );
 		BsConfig::registerVar( 'MW::ExtendedSearch::HighlightSnippets', '3', BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-highlightsnippets', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::LogUsers', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logusers', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::Logging', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logging', 'toggle' );
@@ -134,7 +133,6 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::MltNS', array( 0 ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-mltns', 'multiselectex' );
 
 		// Hooks
-		$this->setHook( 'FormDefaults' );
 		$this->setHook( 'ArticleSaveComplete' );
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'ArticleUndelete' );
@@ -148,6 +146,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'BSStateBarAddSortBodyVars' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
 		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance( $this );
 		$this->oBuildIndexMainControl = BuildIndexMainControl::getInstance();
@@ -182,6 +181,7 @@ class ExtendedSearch extends BsExtensionMW {
 	public function onBeforePageDisplay( $oOut, $oSkin ) {
 		$oOut->addModuleStyles( 'ext.bluespice.extendedsearch.autocomplete.style' );
 		$oOut->addModuleScripts( 'ext.bluespice.extendedsearch.autocomplete' );
+		$oOut->addModuleScripts( 'ext.bluespice.extendedsearch.focus' );
 		return true;
 	}
 
@@ -270,14 +270,21 @@ class ExtendedSearch extends BsExtensionMW {
 	 * @return string JSON encoded HTML of search results page.
 	 */
 	public static function getRequestJson() {
-		$viewContentsSpecialPage = ExtendedSearchBase::getInstance( RequestContext::getMain() )->getResults();
+		$viewContentsSpecialPage = ExtendedSearchBase::getInstance( RequestContext::getMain() )
+			->getResults( true );
 
 		$oDummy = new StdClass();
-		$oDummy->data = array( 'bodytext' => $viewContentsSpecialPage->execute() );
+		$oDummy->data = array(
+			'bodytext' => $viewContentsSpecialPage->execute()
+		);
 
 		wfRunHooks( 'ExtendedSearchBeforeAjaxResponse', array( null, &$oDummy ) );
 
-		return json_encode( array( 'contents' => $oDummy->data['bodytext'] ) );
+		return json_encode(
+			array(
+				'contents' => $oDummy->data['bodytext']
+			)
+		);
 	}
 
 	/**
@@ -318,42 +325,34 @@ class ExtendedSearch extends BsExtensionMW {
 	}
 
 	/**
-	 * Determines default values for search form.
-	 * @param BsEvent $oCallingInstance Contains additional information, e.g. calling instance.
-	 * @param array $aSearchBoxKeyValues List of parameters sent by calling event.
-	 * @return array Modified parameters list.
+	 * Sets values for search form.
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onFormDefaults( $oCallingInstance, &$aSearchBoxKeyValues ) {
-		$aSearchBoxKeyValues['SearchTextFieldName'] = 'search_input';
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ){
+		$tpl->set( 'searchtitle', SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getFullText() );
 
-		$aLocalUrl = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getLocalUrl();
-		$aLocalUrl = explode( '?', $aLocalUrl );
-		$aSearchBoxKeyValues['SearchDestination'] = $aLocalUrl[0];
-
-		if ( isset( $aLocalUrl[1] ) && strpos( $aLocalUrl[1], '=' ) !== false ) {
-			$aTitle = explode( '=', $aLocalUrl[1] );
-			$aSearchBoxKeyValues['HiddenFields']['title'] = urldecode( $aTitle[1] );
+		if ( !empty( SearchOptions::$searchStringRaw ) ) {
+			$tpl->set( 'q', SearchOptions::$searchStringRaw );
 		}
+
+		$tpl->set(
+			'bs_search_input',
+			array(
+				'id' => 'bs-extendedsearch-input',
+				'type' => 'text',
+				'name' => 'q'
+			)
+		);
+
+		$aHiddenFields = array();
+		$aHiddenFields['sft'] = '1';
 		if ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) {
-			$aSearchBoxKeyValues['HiddenFields']['search_files'] = '1';
-		}
-		if ( $oCallingInstance instanceof ViewExtendedSearchFormPage ) {
-			$aSearchBoxKeyValues['HiddenFields']['search_origin'] = 'search_form_body';
-		} elseif ( $oCallingInstance instanceof BlueSpiceTemplate ) {
-			$aSearchBoxKeyValues['HiddenFields']['search_origin'] = 'titlebar';
+			$aHiddenFields['search_files'] = '1';
 		}
 
-		$aSearchBoxKeyValues['TitleKeyValuePair'] = array( 'search_scope', 'title' );
-		$aSearchBoxKeyValues['FulltextKeyValuePair'] = array( 'search_scope', 'text' );
-
-		// Default scope
-		$aSearchBoxKeyValues['DefaultKeyValuePair'] = ( BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' )
-			? $aSearchBoxKeyValues['TitleKeyValuePair']
-			: $aSearchBoxKeyValues['FulltextKeyValuePair'];
-
-		$aSearchBoxKeyValues['method'] = BsConfig::get( 'MW::ExtendedSearch::FormMethod' );
-
-		if ( !empty( SearchOptions::$searchStringRaw ) ) $aSearchBoxKeyValues['SearchTextFieldText'] = SearchOptions::$searchStringRaw;
+		$tpl->set( 'bs_search_hidden_fields', $aHiddenFields );
 		return true;
 	}
 

@@ -29,61 +29,57 @@ class SearchUriBuilder {
 	 */
 	const BASE = 1;
 	/**
-	 * URL basis
-	 */
-	const ORIGIN = 2;
-	/**
 	 * Search input
 	 */
-	const INPUT = 4;
+	const INPUT = 2;
 	/**
 	 * Scope: title or text
 	 */
-	const SCOPE = 8;
+	const SCOPE = 4;
 	/**
 	 * Search files?
 	 */
-	const FILES = 16;
+	const FILES = 8;
 	/**
 	 * Describes submit type
 	 */
-	const SUBMIT = 32;
+	const SUBMIT = 16;
 	/**
 	 * Which namespaces to search
 	 */
-	const NAMESPACES = 64;
+	const NAMESPACES = 32;
 	/**
 	 * Is this a more like this search?
 	 */
-	const MLT = 128;
+	const MLT = 64;
 	/**
 	 * Which categories to search
 	 */
-	const CATS = 256;
+	const CATS = 128;
 	/**
 	 * Which filetypes to search
 	 */
-	const TYPE = 512;
+	const TYPE = 256;
 	/**
 	 * Which editors to search
 	 */
-	const EDITOR = 1024;
+	const EDITOR = 512;
 	/**
 	 * Order of search results
 	 */
-	const ORDER = 2048;
+	const ORDER = 1024;
 	/**
 	 * Ascending or descending order?
 	 */
-	const ASC = 4096;
+	const ASC = 2048;
 	/**
 	 * Where to start.
 	 */
-	const OFFSET = 8192;
+	const OFFSET = 4096;
 	/**
 	 * Other params (?)
 	 */
-	const EXTENDED = 16384;
+	const EXTENDED = 8192;
 	/**
 	 * Combination of order, direction and offset (?)
 	 */
@@ -91,11 +87,11 @@ class SearchUriBuilder {
 	/**
 	 * Everything
 	 */
-	const ALL = 16383; // all but EXTENDED
+	const ALL = 8191; // all but EXTENDED
 	/**
 	 * Other params (?)
 	 */
-	const ENCODE = 32768;
+	const ENCODE = 16384;
 
 	/**
 	 * Currently determined search options.
@@ -130,10 +126,11 @@ class SearchUriBuilder {
 	public function __construct( $oSearchRequest, $oSearchOptions ) {
 		$this->oSearchRequest = $oSearchRequest;
 		$this->oSearchOptions = $oSearchOptions;
+	}
 
+	public function init() {
 		$this->aUri[self::BASE] = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getLocalUrl();
-		$this->aUri[self::ORIGIN] = 'search_origin=' . $this->oSearchOptions->getOption( 'searchOrigin' );
-		$this->aUri[self::INPUT] = 'search_input=' . $this->oSearchOptions->getOption( 'searchStringRaw' );
+		$this->aUri[self::INPUT] = 'q=' . $this->oSearchOptions->getOption( 'searchStringRaw' );
 		$this->aUri[self::SCOPE] = 'search_scope=' . $this->oSearchOptions->getOption( 'scope' );
 		$this->aUri[self::FILES] = 'search_files='
 				.( ( $this->oSearchOptions->getOption( 'files' ) === true ) ? '1' : '0' );
@@ -190,7 +187,6 @@ class SearchUriBuilder {
 		if ( isset( $this->aCache[$components] ) ) return $this->aCache[$components];
 
 		$aKeysWanted = array();
-		if ( self::ORIGIN & $components ) $aKeysWanted[self::ORIGIN] = true;
 		if ( self::INPUT & $components ) $aKeysWanted[self::INPUT] = true;
 		if ( self::SCOPE & $components ) $aKeysWanted[self::SCOPE] = true;
 		if ( self::FILES & $components ) $aKeysWanted[self::FILES] = true;

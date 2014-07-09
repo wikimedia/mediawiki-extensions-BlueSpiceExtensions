@@ -122,8 +122,8 @@ class UniversalExport extends BsExtensionMW {
 
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryWhitelist', $this->aCategoryWhitelist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryBlacklist', $this->aCategoryBlacklist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
-		BsConfig::registerVar( 'MW::UniversalExport::MetadataDefaults',  json_encode( $aMetadataDefaults ),  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-metadatadefaults', 'textarea' );
-		BsConfig::registerVar( 'MW::UniversalExport::MetadataOverrides', json_encode( $aMetadataOverrides ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-metadataoverrides', 'textarea' );
+		BsConfig::registerVar( 'MW::UniversalExport::MetadataDefaults',  json_encode( $aMetadataDefaults ),  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-MetadataDefaults', 'textarea' );
+		BsConfig::registerVar( 'MW::UniversalExport::MetadataOverrides', json_encode( $aMetadataOverrides ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-universalexport-pref-MetadataOverrides', 'textarea' );
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsDefaults',    $this->aParamsDefaults,     BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsOverrides',   $this->aParamsOverrides,    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 
@@ -142,7 +142,7 @@ class UniversalExport extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		//MetadataDefaults and MetadataOverrides
 		$aPrefs = array( 'rows' => 5 );
-		
+
 		return $aPrefs;
 	}
 
@@ -150,7 +150,7 @@ class UniversalExport extends BsExtensionMW {
 		$out->addModuleStyles( 'ext.bluespice.universalExport.css' );
 		return true;
 	}
-	
+
 	/**
 	 * Hook-Handler for Hook 'BSStatebarAddSortBodyVars'
 	 * @param array $aSortBodyVars
@@ -161,7 +161,7 @@ class UniversalExport extends BsExtensionMW {
 		$aSortBodyVars['statebarbodyuniversalexportparams'] = wfMessage( 'bs-universalexport-statebarbodyuniversalexportparams' )->plain();
 		return true;
 	}
-	
+
 	/**
 	 * Hook handler that adds information to the StateBar body
 	 * @param StateBar $oStatebar
@@ -195,7 +195,7 @@ class UniversalExport extends BsExtensionMW {
 					)
 				);
 		}
-		
+
 		return true;
 	}
 
@@ -221,7 +221,9 @@ class UniversalExport extends BsExtensionMW {
 	 */
 	public function onDefaultWidgets( $oEvent, $aWidgets ) {
 		$oWidget = $this->getWidget();
-		if( $oWidget !== null ) $aWidgets[] = $oWidget;
+		if( $oWidget !== null ) {
+			$aWidgets['UNIVERSALEXPORT'] = $oWidget;
+		}
 		return $aWidgets;
 	}
 
@@ -255,7 +257,7 @@ class UniversalExport extends BsExtensionMW {
 
 	/**
 	 * Creates a Widget object
-	 * @return ViewWidget 
+	 * @return ViewWidget
 	 */
 	public function getWidget() {
 		$sAction = $this->getRequest()->getVal( 'action', 'view' );
@@ -295,7 +297,7 @@ class UniversalExport extends BsExtensionMW {
 
 		return $oWidgetView;
 	}
-	
+
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
@@ -306,7 +308,7 @@ class UniversalExport extends BsExtensionMW {
 			'desc' => wfMessage( 'bs-universalexport-tag-meta-desc' )->plain(),
 			'code' => '<bs:uemeta someMeta="Some Value" anotherMeta="Another Value" />',
 		);
-		
+
 		$oResponse->result[] = array(
 			'id' => 'bs:ueparams',
 			'type' => 'tag',
@@ -314,7 +316,7 @@ class UniversalExport extends BsExtensionMW {
 			'desc' => wfMessage( 'bs-universalexport-tag-params-desc' )->plain(),
 			'code' => '<bs:ueparams someParam="Some Value" anotherMeta="Another Value" />',
 		);
-		
+
 		$oResponse->result[] = array(
 			'id' => 'bs:uepagebreak',
 			'type' => 'tag',
@@ -322,7 +324,7 @@ class UniversalExport extends BsExtensionMW {
 			'desc' => wfMessage( 'bs-universalexport-tag-pagebreak-desc' )->plain(),
 			'code' => '<bs:uepagebreak />',
 		);
-		
+
 		$oResponse->result[] = array(
 			'id' => 'bs:uenoexport',
 			'type' => 'tag',

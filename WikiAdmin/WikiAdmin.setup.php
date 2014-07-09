@@ -4,6 +4,8 @@ BsExtensionManager::registerExtension('WikiAdmin', BsRUNLEVEL::FULL|BsRUNLEVEL::
 
 $wgExtensionFunctions[] = 'WikiAdmin::loadModules';
 
+$wgMessagesDirs['WikiAdmin'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['WikiAdmin'] = __DIR__ . '/languages/WikiAdmin.i18n.php';
 
 // Specialpage and messages

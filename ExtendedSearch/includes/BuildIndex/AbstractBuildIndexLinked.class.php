@@ -56,7 +56,7 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 	protected $sDbPrefix = '';
 	/**
 	 * Files in this path are not to be indexed.
-	 * @var string Path to be filtered 
+	 * @var string Path to be filtered
 	 */
 	// CR MRG (25.06.11 16:11): Sollte das nicht ein array werden?
 	protected $sLinkedPathFilter = null;

@@ -81,7 +81,6 @@ class SearchOptions {
 	public function __construct( $oSearchRequest, $oContext ) {
 		$this->oSearchRequest = $oSearchRequest;
 		$this->oRequestContext = $oContext;
-		$this->readInSearchRequest();
 	}
 
 	/**
@@ -291,9 +290,8 @@ class SearchOptions {
 	/**
 	 * Retrieves parameters from defaults and search options.
 	 */
-	protected function readInSearchRequest() {
+	public function readInSearchRequest() {
 		$this->aOptions['searchStringRaw'] = $this->oSearchRequest->sInput;
-		$this->aOptions['searchOrigin'] = $this->oSearchRequest->sOrigin;
 		$this->aOptions['searchStringOrig'] = ExtendedSearchBase::preprocessSearchInput( $this->oSearchRequest->sInput );
 
 		self::$searchStringRaw = $this->aOptions['searchStringRaw'];
@@ -325,15 +323,15 @@ class SearchOptions {
 
 		$aSearchTitle = array(
 			'titleWord:("' . $this->aOptions['searchStringOrig'] . '")^50',
-			'titleWord:(' . $this->aOptions['searchStringOrig'] . ')^20',
-			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
-			'redirects:(' . $this->aOptions['searchStringOrig'] . ')'
+			'titleWord:(' . $this->aOptions['searchStringOrig'] . ')^10',
+			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')^1',
+			'redirects:(' . $this->aOptions['searchStringOrig'] . ')^0.1'
 		);
 
 		$aSearchText = array(
-			'textWord:(' . $this->aOptions['searchStringOrig'] .')',
+			'textWord:(' . $this->aOptions['searchStringOrig'] .')^2',
 			'textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')^0.1',
-			'sections:(' . $this->aOptions['searchStringOrig'] . ')'
+			'sections:(' . $this->aOptions['searchStringOrig'] . ')^0.1'
 		);
 
 		$sSearchStringTitle = implode( ' OR ', $aSearchTitle );
@@ -349,94 +347,92 @@ class SearchOptions {
 
 		// $this->aOptions['namespaces'] HAS TO BE an array with numeric indices of type string!
 		$this->aOptions['namespaces'] = $this->oSearchRequest->aNamespaces;
-		$this->aOptions['sayt'] = $this->oSearchRequest->sSearchAsYouType;
 
 		global $wgCanonicalNamespaceNames, $wgExtraNamespaces;
 		$aNamespaces = array_slice( $wgCanonicalNamespaceNames, 2 );
 		$aNamespaces = $aNamespaces + $wgExtraNamespaces;
-		$oUser = $this->oRequestContext->getUser();
 
 		$bTagNamespace = false;
-		if ( empty( $this->aOptions['namespaces'] ) && $vNamespace === false ) {
-			$this->aOptions['namespaces'] = array();
+		if ( $vNamespace === false ) {
+			$this->aOptions['files'] = ( $this->oSearchRequest->bSearchFiles === true )
+				? true
+				: false;
 
-			// Main
-			if ( BsNamespaceHelper::checkNamespacePermission( NS_MAIN, 'read' ) !== false ) {
-				$this->aOptions['namespaces'][] = '' . NS_MAIN;
-			}
-
-			if ( in_array( $this->aOptions['searchOrigin'], array( 'search_form_body', 'uri_builder', 'ajax' ) )
-				|| $oUser->getOption( 'searcheverything' ) == 1 ) {
-
-				foreach ( $aNamespaces as $key => $value ) {
-					if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false ) continue;
-
-					$this->aOptions['namespaces'][] = '' . $key;
-				}
-
-				$aDiff = array_diff( array_keys( $aNamespaces ), $this->aOptions['namespaces'] );
-				if ( empty( $aDiff ) ) {
-					$bSearchAll = true;
+			$oUser = RequestContext::getMain()->getUser();
+			if ( !$oUser->getOption( 'searcheverything' ) ) {
+				if ( empty( $this->aOptions['namespaces'] ) ) {
 					$this->aOptions['namespaces'] = array();
+
+					$aOptions = $oUser->getOptions();
+					foreach ( $aOptions as $sOpt => $sValue ) {
+						if ( strpos( $sOpt, 'searchNs' ) !== false && $sValue == true ) {
+							$this->aOptions['namespaces'][] = '' . str_replace( 'searchNs', '', $sOpt );
+						}
+					}
+
+					$aAllowedTypes = explode( ',' , BsConfig::get( 'MW::ExtendedSearch::IndexFileTypes' ) );
+					$aAllowedTypes = array_map( 'trim', $aAllowedTypes );
+					$aSearchFilesFacet = array_intersect( $this->oSearchRequest->aType, $aAllowedTypes );
+
+					if ( ( $this->aOptions['files'] === true || !empty( $aSearchFilesFacet ) )
+						&& $oUser->isAllowed( 'searchfiles' ) ) {
+						$this->aOptions['namespaces'][] = '999';
+						$this->aOptions['namespaces'][] = '998';
+					}
+				} else {
+					$bTagNamespace = true;
+					$aTmp = array();
+					foreach ( $this->aOptions['namespaces'] as $iNs ) {
+						if ( BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) === true ) {
+							$aTmp[] = $iNs;
+						}
+					}
+					$this->aOptions['namespaces'] = $aTmp;
 				}
 			} else {
-				wfRunHooks( 'BSExtendedSearchEmptyNamespacesElse', array( $this, $this->oSearchRequest ) );
-				global $wgNamespacesToBeSearchedDefault;
+				if ( empty( $this->aOptions['namespaces'] ) ) {
+					$aTmp = array();
+					foreach ( $aNamespaces as $iNs ) {
+						if ( BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) === true ) {
+							$aTmp[] = $iNs;
+						}
+					}
 
-				foreach ( $aNamespaces as $key => $value ) {
-					if ( $oUser->getBoolOption( 'searchNs'.$key, false )
-						|| isset( $wgNamespacesToBeSearchedDefault[$key] ) ) {
-						if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false ) continue;
-						$this->aOptions['namespaces'][] = '' . $key;
+					if ( !empty( $aTmp ) ) {
+						$this->aOptions['namespaces'] = array_diff( $this->aOptions['namespaces'], $aTmp );
+					}
+				} else {
+					$bTagNamespace = true;
+					$aTmp = array();
+					foreach ( $this->aOptions['namespaces'] as $iNs ) {
+						if ( BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) === true ) {
+							$aTmp[] = $iNs;
+						}
+					}
+
+					if ( !empty( $aTmp ) ) {
+						$this->aOptions['namespaces'] = array_diff( $this->aOptions['namespaces'], $aTmp );
 					}
 				}
 			}
-
-			$aAllowedTypes = explode( ',' , BsConfig::get( 'MW::ExtendedSearch::IndexFileTypes' ) );
-			$aAllowedTypes = array_map( 'trim', $aAllowedTypes );
-			$aSearchFilesFacet = array_intersect( $this->oSearchRequest->aType, $aAllowedTypes );
-
-			if ( ( $this->oSearchRequest->bSearchFiles === true || !empty( $aSearchFilesFacet ) || $this->aOptions['sayt'] == '1' )
-				&& $oUser->isAllowed( 'searchfiles' ) && !isset( $bSearchAll ) ) {
-				$this->aOptions['namespaces'][] = '999';
-				$this->aOptions['namespaces'][] = '998';
-			}
-
-			$this->aOptions['namespaces'] = array_unique( $this->aOptions['namespaces'] );
-		}
-
-		/*
-		 * If checkbox "search_files" is unchecked in the search form, this value is NOT PASSED AT ALL!
-		 * In that case it is not possible to set $this->sFiles = $this->sDefaultSearchFiles, because the User probably wanted files not to be searched AND $this->sDefaultSearchFiles could be set to 'files'$
-		 * Thus a hidden field was added to the search form with name="search_origin" and value="search_form_body"
-		 * If that field can be read with the POST-data, the DefaultSearchFiles has to be omitted
-		 */
-		if ( $this->oSearchRequest->bSearchFiles === true ) {
-			$this->aOptions['files'] = true;
 		} else {
-			$this->aOptions['files'] = false;
+			$bTagNamespace = true;
+			$this->aOptions['namespaces'][] = '' . $vNamespace;
 		}
 
-		if ( $vNamespace === false && ( !empty( $this->aOptions['namespaces'] ) || $this->aOptions['files'] === true ) ) {
-			// todo (according to Markus): files should not be coded as namespace
-			// => i.e. modify solr's schema
+		$this->aOptions['namespaces'] = array_unique( $this->aOptions['namespaces'] );
+
+		if ( !empty( $this->aOptions['namespaces'] ) ) {
 			$aFqNamespaces = array();
-			if ( empty( $this->aOptions['namespaces'] ) && $this->aOptions['searchOrigin'] != 'uri_builder' ) {
-				// if NO namespace selected search ALL namespaces
-				// namespace 0 not in keys of wgCanonicalNamespaceNames
-				// todo: just wondering: if NO namespace selected just SKIP +namespace(..)! Or is there a problem with namespace 999?
-				foreach ( $aNamespaces as $sNamespace => $value ) {
-					if ( BsNamespaceHelper::checkNamespacePermission( $sNamespace, 'read' ) === false ) continue;
-					$aFqNamespaces[] = $sNamespace;
-				}
-			} else {
-				foreach ( $this->aOptions['namespaces'] as $sNamespace ) {
-					$aFqNamespaces[] = $sNamespace;
-					if ( $sNamespace == '999' ) $filesAlreadyAddedInLoopBefore = true;
+			foreach ( $this->aOptions['namespaces'] as $sNamespace ) {
+				$aFqNamespaces[] = $sNamespace;
+				if ( $sNamespace == '999' ) {
+					$filesAlreadyAddedInLoopBefore = true;
 				}
 			}
 
-			if ( !isset( $filesAlreadyAddedInLoopBefore ) && $this->aOptions['files'] === true && $oUser->isAllowed( 'searchfiles' ) ) {
+			if ( !isset( $filesAlreadyAddedInLoopBefore ) && $this->aOptions['files'] === true
+				&& $oUser->isAllowed( 'searchfiles' ) ) {
 				$aFqNamespaces[] = '999';
 			}
 
@@ -446,14 +442,6 @@ class SearchOptions {
 				: 'namespace:(' . implode( ' ', $aFqNamespaces ) . ')';
 		}
 
-		if ( empty( $this->oSearchRequest->aNamespaces ) && $this->aOptions['searchOrigin'] != 'titlebar' ) {
-			$this->aOptions['namespaces'] = array();
-		}
-
-		if ( $vNamespace !== false ) {
-			$bTagNamespace = true;
-			$this->aOptions['namespaces'][] = '' . $vNamespace;
-		}
 		// $this->aOptions['cats'] = $this->oSearchRequest->sCat; // string, defaults to '' if 'search_cat' not set in REQUEST
 		$this->aOptions['cats'] = $this->oSearchRequest->sCategories; // array of strings or empty array
 

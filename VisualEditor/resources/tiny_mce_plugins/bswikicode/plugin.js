@@ -188,8 +188,9 @@ var BsWikiCode = function() {
 
 			if ($.inArray(part, ['frame', 'gerahmt']) !== -1) {
 				wikiImageObject.frame = true;
-				wikiImageObject.sizewidth = false;
-				wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc
+				//wikiImageObject.sizewidth = false;
+				//wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc
+				//this was removed due to mediawiki behaviour, frame + sizes DOES work
 				continue;
 			}
 
@@ -1505,6 +1506,7 @@ var BsWikiCode = function() {
 					}
 					break;
 				case '</dt' :
+					listTag = listTag.substr(0, listTag.length - 1);
 					text = text.replace(/<\/dt>/, "");
 					break;
 				case '</li' :

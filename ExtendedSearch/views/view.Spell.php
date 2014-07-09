@@ -17,7 +17,7 @@
 /**
  * This view renders the ExtendedSearch Spellchecker hint in result view.
  * @package    BlueSpice_Extensions
- * @subpackage ExtendedSearch 
+ * @subpackage ExtendedSearch
  */
 class ViewSpell extends ViewBaseElement {
 
@@ -30,7 +30,7 @@ class ViewSpell extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $aParam = false ) {
-		$sResult       = '';
+		$sResult = '';
 		$vSpellchecker = $this->getOption( 'sim' );
 
 		if ( is_array( $vSpellchecker ) && count( $vSpellchecker ) ) {
@@ -40,10 +40,9 @@ class ViewSpell extends ViewBaseElement {
 				$sSpell = str_replace( '_', ' ', $sSpell );
 				$sSpellcheckerLink = Xml::element(
 						'a',
-						array( 'href' => $this->getOption( 'url' ) . '&search_input=' . urlencode( $sSpell ) ),
+						array( 'href' => $this->getOption( 'url' ) . '&q=' . urlencode( $sSpell ) ),
 						ucfirst( htmlspecialchars( $sSpell, ENT_QUOTES, 'UTF-8' ) )
 				);
-				$sSpellcheckerLink = str_replace( 'uri_builder', 'search_form_body', $sSpellcheckerLink );
 
 				$aSpells[] = $sSpellcheckerLink;
 			}

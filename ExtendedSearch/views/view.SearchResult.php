@@ -19,7 +19,7 @@
 /**
  * This view renders the ExtendedSearch results page.
  * @package    BlueSpice_Extensions
- * @subpackage ExtendedSearch 
+ * @subpackage ExtendedSearch
  */
 class ViewSearchResult extends ViewBaseElement {
 
@@ -48,7 +48,7 @@ class ViewSearchResult extends ViewBaseElement {
 	 * Adds data to the current result entry view.
 	 * @param array $aDataSet List of result items.
 	 */
-	public function addResultEntry( $aDataSet ) {
+	public function setResultEntry( $aDataSet ) {
 		$vResultEntry = new ViewExtendedSearchResultEntry();
 		$vResultEntry->setOptions( $aDataSet );
 		$this->aResultEntryView[] = $vResultEntry->execute();
@@ -123,7 +123,7 @@ class ViewSearchResult extends ViewBaseElement {
 				$aOut[] = Xml::element(
 					'div',
 					array(
-						'id'=> 'bs-extendedsearch-siteuri',
+						'id' => 'bs-extendedsearch-siteuri',
 						'siteuri' => $this->getOption( 'siteUri' )
 					),
 					'',
@@ -275,10 +275,14 @@ class ViewSearchResult extends ViewBaseElement {
 	 */
 	protected function getSortingBar() {
 		$aSorting = $this->getOption( 'sorting' );
-		$aOut = '<span>';
-		$aOut .= $this->getNumberOfPageItems() . ' ';
-		$aOut .= wfMessage( 'bs-extendedsearch-sort-by' )->plain();
-		$aOut .= '&nbsp;';
+		$aOut = array();
+		$aOut[] = '<span class="bs-extendedsearch-sorting-results">';
+		$aOut[] = $this->getNumberOfPageItems();
+		$aOut[] = '</span>';
+
+		$aOut[] = '<span class="bs-extendedsearch-sorting-sortby">';
+		$aOut[] = wfMessage( 'bs-extendedsearch-sort-by' )->plain();
+
 		// 'titleSort', 'score', 'type', 'ts'
 		$iItems = count( $aSorting['sorttypes'] );
 		$iNum = 1;
@@ -291,49 +295,54 @@ class ViewSearchResult extends ViewBaseElement {
 					? wfMessage( 'bs-extendedsearch-ascending' )->plain()
 					: wfMessage( 'bs-extendedsearch-descending' )->plain();
 
+
 				global $wgScriptPath;
-				$sIcon = '<img src="' . $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
-				$sIcon .= ( $aSorting['sortdirection'] == 'asc' ) ? 'arrow_up.png' : 'arrow_down.png';
-				$sIcon .= '" title="' . $sDirectionMessage . '" alt="' . $sDirectionMessage . '" />&nbsp;';
+				$sIcon .= '" title="' . $sDirectionMessage . '" alt="' . $sDirectionMessage . '" />';
+				$sImg = ( $aSorting['sortdirection'] == 'asc' ) ? 'arrow_up.png' : 'arrow_down.png';
+				$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
+				$sIcon = Html::element(
+					'img',
+					array(
+						'src' => $sImgPath . $sImg,
+						'title' => $sDirectionMessage,
+						'alt' => $sDirectionMessage
+					)
+				);
 			} else {
 				// $direction = $sortDirection todo: think it over: if sort order is changed from score to time, the order should be reset!
 				$sDirection = ( in_array( $sort, array( 'titleSort', 'type' ) ) ) ? 'asc' : 'desc';
 				$sIcon = '';
 			}
 
-			if ( $bActive ) $aOut .= '<b>';
+			if ( $bActive ) $aOut[] = '<b>';
 
-			$aOut .= Html::element(
-					'a',
-					array( 'href' => $aSorting['sorturl'].'&search_asc='.$sDirection.'&search_order='.$sort.'&search_origin=search_form_body' ),
-					wfMessage( $sMessage )->plain()
+			$aOut[] = Html::element(
+				'a',
+				array( 'href' => $aSorting['sorturl'].'&search_asc='.$sDirection.'&search_order='.$sort ),
+				wfMessage( $sMessage )->plain()
 			);
 
-			$aOut .= '&nbsp;' . $sIcon;
+			$aOut[] = $sIcon;
 
-			if ( $bActive ) $aOut .= '</b>';
+			if ( $bActive ) $aOut[] = '</b>';
 			if ( $iNum < $iItems ) {
-				$aOut .= '|&nbsp;';
+				$aOut[] = '|';
 			}
 			$iNum++;
 		}
 
-		$aOut .= '</span>';
+		$aOut[] = '</span>';
 
-		return $aOut;
+		return implode( "\n" , $aOut );
 	}
 
-	/**
-	 * Generates a facet box view.
-	 * @return ViewExtendedSearchFacetBox Generated facet box view.
-	 */
-	public function generateViewFacetBox() {
-		$oNewBox = new ViewExtendedSearchFacetBox();
-		$this->aFacetBoxes[] = $oNewBox;
-
-		return $oNewBox;
+	public function setFacet( $oFacet ) {
+		$this->aFacetBoxes[] = $oFacet;
 	}
 
+	public function getFacets() {
+		return $this->aFacetBoxes;
+	}
 	/**
 	 * Returns the range of numbers which articles are displayed
 	 * @return string range.
@@ -348,7 +357,7 @@ class ViewSearchResult extends ViewBaseElement {
 			$iEnd = $iNumFound;
 		}
 
-		return wfMessage( 'bs-extendedsearch-result-caption', $iBegin, $iEnd, $iNumFound )->plain();
+		return wfMessage( 'bs-extendedsearch-result-caption', $iBegin, $iEnd, $iNumFound )->text();
 	}
 
 }

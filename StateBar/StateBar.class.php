@@ -77,7 +77,7 @@ class StateBar extends BsExtensionMW {
 
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSBlueSpiceSkinBeforeArticleContent' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
 		BsConfig::registerVar( 'MW::StateBar::Show', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-statebar-pref-show', 'toggle' );
@@ -289,7 +289,16 @@ class StateBar extends BsExtensionMW {
 			return true;
 		}
 
-		$oTitle = $this->checkContext( $this->getTitle() );
+		global $wgTitle;
+		//PW(24.06.2014):
+		//make sure to use wgTitle to get possible redirect as early as possible!
+		//also prevents from get wrong data in redirect redirect
+		//please do not change!
+		$oTitle = $this->checkContext( $wgTitle );
+		/* PLEASE DO NOT CHANGE !!!!
+			$oTitle = $this->checkContext( $this->getTitle() );
+		*/
+
 		if ( is_null( $oTitle ) ) {
 			return true;
 		}
@@ -302,22 +311,27 @@ class StateBar extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinBeforeArticleContent'. Creates the StateBar. on articles.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return bool Always true to keep hook running.
+	 * Creates the StateBar. on articles.
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onBSBlueSpiceSkinBeforeArticleContent( &$aViews, $oUser, $oTitle, $oSkinTemplate ) {
-		if( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) return true;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) {
+			return true;
+		}
 
 		if( !is_null( $this->oRedirectTargetTitle ) ) {
 			$oTitle = $this->oRedirectTargetTitle;
 		}
-		wfRunHooks("BSStateBarBeforeTopViewAdd", array( $this, &$this->aTopViews, $oUser, $oTitle, $oSkinTemplate ));
+		wfRunHooks( 'BSStateBarBeforeTopViewAdd', array(
+			$this, &$this->aTopViews, $sktemplate->getUser(),
+			$sktemplate->getTitle(), $sktemplate )
+		);
 
 		if( count( $this->aTopViews ) == 0 ) {
-			BsExtensionManager::removeContext( 'MW::StateBarShow' ); // TODO RBV (01.07.11 18:26): Ain't this too late?
+			// TODO RBV (01.07.11 18:26): Ain't this too late?
+			BsExtensionManager::removeContext( 'MW::StateBarShow' );
 			return true;
 		}
 
@@ -331,7 +345,11 @@ class StateBar extends BsExtensionMW {
 			$oViewStateBar->addStateBarTopView( $oTopView );
 		}
 
-		$aViews[] = $oViewStateBar;
+		$tpl->data['bs_dataBeforeContent']['bs-statebar'] = array(
+			'position' => 10,
+			'label' => wfMessage( 'prefs-statebar' )->text(),
+			'content' => $oViewStateBar
+		);
 		return true;
 	}
 

@@ -173,7 +173,7 @@ class WhoIsOnline extends BsExtensionMW {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
 	 * @param OutputPage $oOutputPage
@@ -351,7 +351,7 @@ class WhoIsOnline extends BsExtensionMW {
 		$oParser->disableCache();
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$sLinkTitle = BsCore::sanitize( $sLinkTitle, '', BsPARAMTYPE::STRING );
-		
+
 		if( empty( $sLinkTitle ) ) $sLinkTitle = wfMessage('bs-whoisonline-widget-title')->plain();
 		$oWhoIsOnlineTagView = new ViewWhoIsOnlineTag();
 		$oWhoIsOnlineTagView->setOption( 'title', $sLinkTitle );
@@ -369,7 +369,7 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @return array Appenden list of Widgets.
 	 */
 	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$aViews[] = $this->onWidgetListKeyword();
+		$aViews['WHOISONLINE'] = $this->onWidgetListKeyword();
 		return true;
 	}
 
@@ -474,14 +474,14 @@ class WhoIsOnline extends BsExtensionMW {
 		$dbr = wfGetDB( DB_SLAVE );
 		switch ( $sOrderBy ) {
 			case 'name' :
-			default : 
+			default :
 				$aOptions['ORDER_BY'] = 'wo_user_name ASC';
 			case 'onlinetime' :
 				$aOptions['ORDER_BY'] = 'MAX(wo_timestamp) DESC';
 		}
 
 		$rRes = $dbr->select( $aTables, $aFields, $aConditions, __METHOD__, $aOptions );
-		while( $oRow = $dbr->fetchObject($rRes) ) 
+		while( $oRow = $dbr->fetchObject($rRes) )
 			$this->aWhoIsOnlineData[$sOrderBy][] = $oRow;
 
 		wfProfileOut( 'BS::'.__METHOD__ );

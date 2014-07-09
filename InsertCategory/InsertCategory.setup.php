@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('InsertCategory', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['InsertCategory'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['InsertCategory'] = __DIR__ . '/languages/InsertCategory.i18n.php';
 
 $aResourceModuleTemplate = array(

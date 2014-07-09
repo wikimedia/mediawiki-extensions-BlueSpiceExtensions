@@ -93,9 +93,9 @@ class PageTemplates extends BsExtensionMW {
 		// Do not use page template mechanism for these pages
 		BsConfig::registerVar( 'MW::PageTemplates::ExcludeNs', array( -2,-1,6,7,8,9,10,11,14,15 ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagetemplates-pref-excludens', 'multiselectex' );
 		// Force page to be created in target namespace
-		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-pref-forcenamespace', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-forcenamespace', 'toggle' );
 		// Hide template if page is not in target namespace
-		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-pref-hideifnotintargetns', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-hideifnotintargetns', 'toggle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

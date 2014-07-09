@@ -1,6 +1,8 @@
 <?php
 
-BsExtensionManager::registerExtension('PageTemplates', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension( 'PageTemplates', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
+
+$wgMessagesDirs['PageTemplates'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['PageTemplates'] = __DIR__ . '/languages/PageTemplates.i18n.php';
 

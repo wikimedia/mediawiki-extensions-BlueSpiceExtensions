@@ -7,7 +7,7 @@ $wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/languages/Flexiskin.al
 
 $wgAutoloadClasses['SpecialFlexiskin'] = __DIR__ . '/includes/specials/SpecialFlexiskin.php';
 
-$wgHooks['BSGetLogo'][] = "Flexiskin::onBSGetLogo";
+$wgHooks['SkinTemplateOutputPageBeforeExec'][] = "Flexiskin::onSkinTemplateOutputPageBeforeExec";
 
 $wgSpecialPageGroups['Flexiskin'] = 'bluespice';
 

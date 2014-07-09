@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension( 'UniversalExport', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$wgMessagesDirs['UniversalExport'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['UniversalExport']      = __DIR__ . '/languages/UniversalExport.i18n.php';
 $wgExtensionMessagesFiles['UniversalExportAlias'] = __DIR__ . '/languages/SpecialUniversalExport.alias.php';
 

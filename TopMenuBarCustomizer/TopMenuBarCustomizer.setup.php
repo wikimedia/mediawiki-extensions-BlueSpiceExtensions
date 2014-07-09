@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('TopMenuBarCustomizer',            BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['TopMenuBarCustomizer'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['TopMenuBarCustomizer'] = __DIR__ . '/languages/TopMenuBarCustomizer.i18n.php';
 
 $wgResourceModules['ext.bluespice.topmenubarcustomizer'] = array(

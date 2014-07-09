@@ -1,6 +1,8 @@
 <?php
 BsExtensionManager::registerExtension('ExtensionInfo',  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$wgMessagesDirs['ExtensionInfo'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['ExtensionInfo'] = __DIR__ . '/languages/ExtensionInfo.i18n.php';
 $wgExtensionMessagesFiles['ExtensionInfoAlias'] = __DIR__ . '/languages/SpecialExtensionInfo.alias.php';
 

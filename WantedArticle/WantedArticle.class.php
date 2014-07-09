@@ -88,7 +88,6 @@ class WantedArticle extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::WantedArticle::initExt' );
-		$this->setHook( 'BlueSpiceSkin:NavigationTop', 'onNavigationTop' );
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'ArticleSaveComplete' );
 		$this->setHook( 'BSExtendedSearchAdditionalActions' );
@@ -236,7 +235,7 @@ class WantedArticle extends BsExtensionMW {
 	 * @return array An array of WidgetView objects
 	 */
 	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ){
-		$aViews[] = $this->onWidgetListKeyword();
+		$aViews['WANTEDARTICLES'] = $this->onWidgetListKeyword();
 		return true;
 	}
 
@@ -463,19 +462,6 @@ class WantedArticle extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for 'BlueSpiceSkin:NavigationTop'. Creates the wanted article form in the left column.
-	 * @param array $aViews The array of view objects to be displayed in the left column.
-	 * @param QuickTemplate $oQuickTemplate The MediaWiki QuickTemplate object.
-	 * @return bool Always true to keep the hook running.
-	 */
-	public function onNavigationTop( &$aViews, $oQuickTemplate ){
-		$oFormView = new ViewWantedArticleForm();
-		$oFormView->setShowCreateArticle( BsConfig::get( 'MW::WantedArticle::ShowCreate' ) );
-		$aViews[] =  $oFormView;
-		return true;
-	}
-
-	/**
 	 * Handles the suggestion ajax request.
 	 * A new title is entered into the list. Depending on configuration, already existing articles are deleted.
 	 * @return bool true on correct processing. JSON answer is in $sOut parameter.
@@ -511,12 +497,7 @@ class WantedArticle extends BsExtensionMW {
 				'bs-wantedarticle-ajax-error-suggested-page-already-exists',
 				$sSuggestedTitle
 			)->plain();
-			return json_encode(
-				array(
-					'success' => false,
-					'message' => $sErrorMsg
-				)
-			);
+			return json_encode(  array('success' => false, 'message' => $sErrorMsg ) );
 		}
 
 		$oWantedArticle = BsExtensionManager::getExtension( 'WantedArticle' );
@@ -529,14 +510,9 @@ class WantedArticle extends BsExtensionMW {
 			if ( $oSuggestedTitle->equals( $aWish['title'] ) ){
 				$sErrorMsg = wfMessage(
 					'bs-wantedarticle-ajax-error-suggested-page-already-on-list',
-					$sSuggestedTitle
+					$oSuggestedTitle->getPrefixedText()
 				)->plain();
-				return json_encode(
-					array(
-						'success' => true,
-						'message' => $sErrorMsg
-					)
-				);
+				return json_encode( array('success' => true, 'message' => $sErrorMsg ) );
 			}
 			if ( $bDeleteExisting && $aWish['title']->exists() === true ){
 				unset($aWishList[$key]);
@@ -559,7 +535,7 @@ class WantedArticle extends BsExtensionMW {
 		);
 
 		if ( $oEditStatus->isGood() ) {
-			return FormatJson::encode( 
+			return json_encode(
 				array(
 					'success' => true,
 					'message' => wfMessage( 'bs-wantedarticle-success-suggestion-entered', $sSuggestedTitle )->plain()
@@ -567,12 +543,7 @@ class WantedArticle extends BsExtensionMW {
 			);
 		} else {
 			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText(), $this->getTitle() );
-			return FormatJson::encode( 
-				array(
-					'success' => false,
-					'message' => $sErrorMsg
-				)
-			);
+			return json_encode(  array( 'success' => false, 'message' => $sErrorMsg ) );
 		}
 	}
 

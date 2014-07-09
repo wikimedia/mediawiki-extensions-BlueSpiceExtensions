@@ -361,3 +361,7 @@ span.bs-extendedsearch-result-title h3 em {
 .bs-extendedsearch-sectionresult a:hover {
 	text-decoration: none !important;
 }
+
+.bs-extendedsearch-sorting-sortby {
+	float: right;
+}

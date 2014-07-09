@@ -87,7 +87,7 @@ class Authors extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// Hooks
-		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
@@ -152,14 +152,17 @@ class Authors extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinAfterArticleContent'. Creates the authors list below an article.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return Boolean Always true to keep hook running.
+	 * Hook-Handler for 'SkinTemplateOutputPageBeforeExec'. Creates the authors list below an article.
+	 * @param SkinTemplate $sktemplate a collection of views. Add the view that needs to be displayed
+	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
+	 * @return bool always true
 	 */
-	public function onBSBlueSpiceSkinAfterArticleContent( &$aViews, $oUser, $oTitle ) {
-		if ( $this->checkContext() === false ) return true;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if ( $this->checkContext() === false ) {
+			return true;
+		}
+
+		$oTitle = $sktemplate->getTitle();
 
 		//Read in config variables
 		$iLimit     = BsConfig::get( 'MW::Authors::Limit' );
@@ -187,10 +190,14 @@ class Authors extends BsExtensionMW {
 			)
 		);
 
-		if ( $res->numRows() == 0 ) return true;
+		if ( $res->numRows() == 0 ) {
+			return true;
+		}
 
 		$oAuthorsView = new ViewAuthors();
-		if ( $sPrintable == 'yes' ) $oAuthorsView->setOption( 'print', true );
+		if ( $sPrintable == 'yes' ) {
+			$oAuthorsView->setOption( 'print', true );
+		}
 
 		$aUserNames = array();
 		foreach ( $res as $row ) {
@@ -200,7 +207,9 @@ class Authors extends BsExtensionMW {
 		$iCount = count( $aUserNames );
 
 		$sOriginatorUserName = $oTitle->getFirstRevision()->getUserText();
-		$sOriginatorUserName = $this->checkOriginatorForBlacklist( $sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist );
+		$sOriginatorUserName = $this->checkOriginatorForBlacklist(
+			$sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist
+		);
 
 		if ( $iCount > 1 ) {
 			array_unshift( $aUserNames, $sOriginatorUserName );
@@ -208,12 +217,16 @@ class Authors extends BsExtensionMW {
 		}
 
 		$bAddMore = false;
-		if ( $iCount > $iLimit ) $bAddMore = true;
+		if ( $iCount > $iLimit ) {
+			$bAddMore = true;
+		}
 
 		$i = 0;
 		$iItems = 0;
 		while ( $i < $iCount ) {
-			if ( $iItems > $iLimit ) break;
+			if ( $iItems > $iLimit ) {
+				break;
+			}
 			$sUserName = $aUserNames[$i];
 
 			if ( User::isIP( $sUserName ) ) {
@@ -231,7 +244,9 @@ class Authors extends BsExtensionMW {
 			}
 
 			$oUserMiniProfileView = $this->mCore->getUserMiniProfile( $oAuthorUser, $aParams );
-			if ( $sPrintable == 'yes' ) $oUserMiniProfileView->setOption( 'print', true );
+			if ( $sPrintable == 'yes' ) {
+				$oUserMiniProfileView->setOption( 'print', true );
+			}
 
 			$iItems++;
 			$i++;
@@ -244,14 +259,20 @@ class Authors extends BsExtensionMW {
 			$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
 			$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array( 'action' => 'history' ) ) );
 			$oMoreAuthorsView->setOption( 'classes', array( 'bs-authors-more-icon' ) );
-			if ( $sPrintable == 'yes' ) $oMoreAuthorsView->setOption( 'print', true );
+			if ( $sPrintable == 'yes' ) {
+				$oMoreAuthorsView->setOption( 'print', true );
+			}
 
 			$oAuthorsView->addItem( $oMoreAuthorsView );
 		}
 
 		$dbr->freeResult( $res );
 
-		array_unshift( $aViews, $oAuthorsView );
+		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
+			'position' => 10,
+			'label' => wfMessage( 'bs-authors-title' )->text(),
+			'content' => $oAuthorsView
+		);
 		return true;
 	}
 
@@ -277,13 +298,19 @@ class Authors extends BsExtensionMW {
 	 * @return bool
 	 */
 	private function checkContext() {
-		if ( BsConfig::get( 'MW::Authors::Show' ) === false ) return false;
+		if ( BsConfig::get( 'MW::Authors::Show' ) === false ) {
+			return false;
+		}
 
 		$oTitle = $this->getTitle();
-		if ( !is_object( $oTitle ) ) return false;
+		if ( !is_object( $oTitle ) ) {
+			return false;
+		}
 
 		// Do only display when user is allowed to read
-		if ( !$oTitle->userCan( 'read' ) ) return false;
+		if ( !$oTitle->userCan( 'read' ) ) {
+			return false;
+		}
 
 		// Do only display in view mode
 		if ( $this->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
@@ -297,7 +324,9 @@ class Authors extends BsExtensionMW {
 
 		// Do not display if __NOAUTHORS__ keyword is found
 		$vNoAuthors = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_noauthors' );
-		if( $vNoAuthors === '' ) return false;
+		if( $vNoAuthors === '' ) {
+			return false;
+		}
 
 		return true;
 	}

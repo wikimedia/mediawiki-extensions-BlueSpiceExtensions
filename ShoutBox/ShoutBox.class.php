@@ -3,7 +3,7 @@
  * Shoutbox extension for BlueSpice
  *
  * Adds a parser function for embedding your own shoutbox.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -61,7 +61,7 @@
  */
 
 //Last Code Review RBV (30.06.2011)
- 
+
 /**
  * Base class for ShoutBox extension
  * @package BlueSpice_Extensions
@@ -99,7 +99,7 @@ class ShoutBox extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		// Hooks
-		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
@@ -135,7 +135,7 @@ class ShoutBox extends BsExtensionMW {
 			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/mysql/ShoutBox.patch.sb_page_id.index.sql' );
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/mysql/ShoutBox.patch.sb_user_id.sql' );
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/mysql/ShoutBox.patch.sb_archived.sql' );
-			
+
 			//TODO: also do this for oracle and postgres
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_title', $sDir . 'db/mysql/ShoutBox.patch.sb_title.sql' );
 			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_touched', $sDir . 'db/mysql/ShoutBox.patch.sb_touched.sql' );
@@ -182,7 +182,7 @@ class ShoutBox extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param OutputPage $oOutputPage
 	 * @param SkinTemplate $oSkinTemplate
 	 * @return boolean
@@ -203,7 +203,7 @@ class ShoutBox extends BsExtensionMW {
 
 		$vNoShoutbox = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_noshoutbox' );
 		if( $vNoShoutbox === '' ) return true;
-		
+
 		$oOutputPage->addModuleStyles('ext.bluespice.shoutbox.styles');
 		$oOutputPage->addModules('ext.bluespice.shoutbox');
 
@@ -213,27 +213,33 @@ class ShoutBox extends BsExtensionMW {
 
 	/**
 	 * Adds the shoutbox output to be rendered from skin.
-	 * @param array $aViews a collection of views. Add the view that needs to be displayed
-	 * @param User $oUser currently logged in user. Not used in this context.
-	 * @param Title $oTitle current title.
-	 * @return bool always true 
+	 * @param SkinTemplate $sktemplate a collection of views. Add the view that needs to be displayed
+	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
+	 * @return bool always true
 	 */
-	public function onBSBlueSpiceSkinAfterArticleContent( &$aViews, $oUser, $oTitle ) {
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) ) return true;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) ) {
+			return true;
+		}
 
 		$oShoutBoxView = new ViewShoutBox();
 
 		wfRunHooks( 'BSShoutBoxBeforeAddViewAfterArticleContent', array( &$oShoutBoxView ) );
 
-		if ( $oTitle->userCan( 'writeshoutbox' ) ) {
+		if ( $sktemplate->getTitle()->userCan( 'writeshoutbox' ) ) {
 			$oShoutBoxView->setOption( 'showmessageform', true );
 		}
-		$aViews[] = $oShoutBoxView;
+
+		$tpl->data['bs_dataAfterContent']['bs-shoutbox'] = array(
+			'position' => 30,
+			'label' => wfMessage('bs-shoutbox-title')->text(),
+			'content' => $oShoutBoxView ->execute()
+		);
 		return true;
 	}
 
 	/**
-	 * Delivers a rendered list of shouts for the current page to be displayed in the shoutbox. 
+	 * Delivers a rendered list of shouts for the current page to be displayed in the shoutbox.
 	 * This function is called remotely via AJAX-Handler.
 	 * @param string $sOutput contains the rendered list
 	 * @return bool allow other hooked methods to be executed. Always true
@@ -247,10 +253,10 @@ class ShoutBox extends BsExtensionMW {
 
 		$sOutput = '';
 		//return false on hook handler to break here
-		
+
 		$aTables = array('bs_shoutbox');
 		$aFields = array('*');
-		$aConditions = array( 
+		$aConditions = array(
 			'sb_page_id' => $iArticleId,
 			'sb_archived' => '0',
 			'sb_parent_id' => '0',
@@ -307,7 +313,7 @@ class ShoutBox extends BsExtensionMW {
 	}
 
 	/**
-	 * Inserts a shout for the current page. 
+	 * Inserts a shout for the current page.
 	 * This function is called remotely via AJAX-Handler.
 	 * @param string $sOutput success state of database action
 	 * @return bool allow other hooked methods to be executed
@@ -358,7 +364,7 @@ class ShoutBox extends BsExtensionMW {
 	}
 
 	/**
-	 * Archivess a shout for the current page. 
+	 * Archivess a shout for the current page.
 	 * This function is called remotely via AJAX-Handler.
 	 * @param string $sOutput success state of database action
 	 * @return bool allow other hooked methods to be executed

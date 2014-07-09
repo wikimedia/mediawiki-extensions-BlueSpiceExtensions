@@ -231,7 +231,7 @@ class PagesVisited extends BsExtensionMW {
 		$aView = array();
 		$this->addWidgetView( $aView );
 		$aView[0]->setAdditionalBodyClasses( array( 'bs-nav-links' ) );
-		$aViews[] = $aView[0];
+		$aViews['PAGESVISITED'] = $aView[0];
 
 		return true;
 	}
@@ -252,7 +252,7 @@ class PagesVisited extends BsExtensionMW {
 		$iCurrentNamespaceId = $this->getTitle()->getNamespace();
 
 		// TODO RBV (04.07.11 15:02): Rework method -> implode() is a workaround for legacy code.
-		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',',$aNamespaces ), $iCurrentNamespaceId, 19, $sSortOrder );
+		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',', $aNamespaces ), $iCurrentNamespaceId, 19, $sSortOrder );
 		$sOut = $oListView->execute();
 
 		if ( !( $oListView instanceof ViewTagError ) ) {

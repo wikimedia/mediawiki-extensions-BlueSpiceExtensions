@@ -15,12 +15,12 @@ Ext.define( 'BS.InsertMagic.Window', {
 		this.setTitle( mw.message('bs-insertmagic-dlg-title').plain() );
 
 		var typesArray = [
-			[ 'tag', mw.message('bs-insertmagic-type-tags').plain() ],
-			[ 'switch', mw.message('bs-insertmagic-type-switches').plain() ],
-			[ 'variable', mw.message('bs-insertmagic-type-variables').plain() ]
+			[ 'tag', mw.message('bs-insertmagic-type_tags').plain() ],
+			[ 'switch', mw.message('bs-insertmagic-type_switches').plain() ],
+			[ 'variable', mw.message('bs-insertmagic-type_variables').plain() ]
 		];
 		//TODO: Make hook?
-		
+
 		//HINT: http://stackoverflow.com/questions/4834285/extjs-combobox-acting-like-regular-select
 		this.cmbType = Ext.create( 'Ext.form.ComboBox', {
 			id: 'bs-InsertMagic-cmb-type',
@@ -34,7 +34,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			store: typesArray
 		});
 		this.cmbType.on( 'select', this.onTypeSelected, this );
-		
+
 		this.tagsStore = Ext.create( 'Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
@@ -53,7 +53,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			}
 		});
 		this.tagsStore.on( 'load',this.onStoreLoad, this );
-		
+
 		this.tagsGrid = Ext.create('Ext.grid.Panel', {
 			title: '',
 			id: 'bs-InsertMagic-grid-tag',
@@ -76,7 +76,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			style: 'padding-top: 5px'
 		});
 		this.tagsGrid.on( 'select', this.onRowSelect, this );
-		
+
 		this.syntaxTextArea = Ext.create( 'Ext.form.TextArea', {
 			id: 'bs-InsertMagic-textarea-syntax',
 			hideLabel: true,
@@ -84,7 +84,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			flex: 1,
 			bodyPadding: 5
 		});
-		
+
 		this.previewPanel = Ext.create('Ext.Panel', {
 			id: 'bs-InsertMagic-panel-preview',
 			border: true,
@@ -92,7 +92,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			bodyStyle: 'padding:5px;',
 			autoScroll: true
 		});
-		
+
 		this.descPanel = Ext.create('Ext.Panel', {
 			id: 'bs-InsertMagic-panel-desc',
 			border: true,
@@ -100,7 +100,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			autoScroll: true,
 			bodyPadding: 5
 		});
-		
+
 		this.pnlWest = Ext.create('Ext.Container', {
 			region: 'west',
 			width: 250,
@@ -114,11 +114,11 @@ Ext.define( 'BS.InsertMagic.Window', {
 				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-first').plain() }),
 				this.cmbType,
 				this.tagsGrid,
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-desc').plain(), style: 'padding-top: 10px' }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-desc').plain(), style: 'padding-top: 10px' } ),
 				this.descPanel
 			]
 		});
-		
+
 		this.pnlCenter = Ext.create('Ext.Container', {
 			region: 'center',
 			border: false,
@@ -128,57 +128,57 @@ Ext.define( 'BS.InsertMagic.Window', {
 				align: 'stretch'
 			},
 			items:[
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-second').plain() }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_second').plain() }),
 				this.syntaxTextArea
 			]
 		});
-		
+
 		this.items = [
 			this.pnlWest,
 			this.pnlCenter
 		];
-		
+
 		this.callParent(arguments);
 	},
-	
+
 	getData: function() {
 		this.currentData.code = this.syntaxTextArea.getValue();
 		return this.currentData;
 	},
-	
+
 	setData: function( obj ) {
 		this.syntaxTextArea.setValue( obj.code );
 		this.callParent( arguments );
 	},
-	
+
 	onStoreLoad: function( store, records, options ) {
 		this.tagsStore.sort( 'name', 'ASC' );
 		this.tagsStore.filter( 'type', 'tag'); //just initial
 	},
-	
+
 	onTypeSelected: function( combo, record, index ){
 		this.tagsStore.removeFilter();
 		//record[0] because of single select
 		//field1 is because of ArrayStore. Could be optimized.
-		this.tagsStore.filter( 'type', record[0].get('field1') );
+		this.tagsStore.filter( 'type', record[0].get( 'field1' ) );
 	},
 
 	onRowSelect: function( grid, record, index, eOpts ) {
 		var data = {
-			desc : record.get('desc'),
-			type : record.get('type')
+			desc : record.get( 'desc' ),
+			type : record.get( 'type' )
 		};
 		this.currentData.type = data.type;
-		this.currentData.name = record.get('name');
+		this.currentData.name = record.get( 'name' );
 
-		this.setCommonFields( record.get('code'), data );
+		this.setCommonFields( record.get( 'code' ), data );
 	},
 
 	setCommonFields: function( text, data ) {
 		this.descPanel.update(data.desc);
 		this.syntaxTextArea.setValue( text );
 		this.syntaxTextArea.focus();
-		
+
 		var start = text.indexOf('"') + 1;
 		var end = text.indexOf('"', start );
 		if( data.type != 'tag' ) {

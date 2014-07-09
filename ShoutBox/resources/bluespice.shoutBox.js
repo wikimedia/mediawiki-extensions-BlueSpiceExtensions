@@ -9,7 +9,6 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Karl Waldmanstetter
  * @version    1.1.0
-
  * @package    Bluespice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -65,27 +64,28 @@ BsShoutBox = {
 	 * @param sblimit int Maximum number of shouts before more link is displayed
 	 */
 	updateShoutbox: function(sblimit) {
-		if ( typeof (sblimit) == 'undefined' ) sblimit = 0;
+		if ( typeof sblimit == 'undefined' )
+			sblimit = 0;
 		BsShoutBox.ajaxLoader.fadeIn();
 
 		this.msgList.load(
 			bs.util.getAjaxDispatcherUrl( 'ShoutBox::getShouts', [ wgArticleId, sblimit ] ),
-			function(data) {
+			function( data ) {
 				BsShoutBox.msgList.slideDown();
-				BsShoutBox.btnSend.blur().removeAttr('disabled'); //reactivate the send button
-				BsShoutBox.textField.val(BsShoutBox.defaultMessage);
-				BsShoutBox.textField.blur().removeAttr('disabled');
+				BsShoutBox.btnSend.blur().removeAttr( 'disabled' ); //reactivate the send button
+				BsShoutBox.textField.val( BsShoutBox.defaultMessage );
+				BsShoutBox.textField.blur().removeAttr( 'disabled' );
 				BsShoutBox.ajaxLoader.fadeOut();
 				BsShoutBox.characterCounter.text( mw.message( 'bs-shoutbox-charactersleft', BsShoutBox.textField.attr( 'maxlength' ) ).text() );
 			}
 		);
 	},
-	archiveEntry: function(iShoutID) {
-		$("#bs-sb-error").empty();
+	archiveEntry: function( iShoutID ) {
+		$( "#bs-sb-error" ).empty();
 		BsShoutBox.ajaxLoader.fadeIn();
 		$.post(
-			bs.util.getAjaxDispatcherUrl('ShoutBox::archiveShout', [iShoutID]),
-			function(data) {
+			bs.util.getAjaxDispatcherUrl( 'ShoutBox::archiveShout', [ iShoutID ] ),
+			function( data ) {
 				BsShoutBox.updateShoutbox();
 				$("#bs-sb-error").html(data).fadeIn().delay("1500").fadeOut();
 			}
@@ -94,13 +94,13 @@ BsShoutBox = {
 };
 
 mw.loader.using('ext.bluespice', function() {
-	$("#bs-sb-content").before($("<div id='bs-sb-error'></div>"));
-	BsShoutBox.textField = $("#bs-sb-message");
-	BsShoutBox.btnSend = $("#bs-sb-send");
-	BsShoutBox.msgList = $("#bs-sb-content");
-	BsShoutBox.ajaxLoader = $("#bs-sb-loading");
+	$( "#bs-sb-content" ).before( $( "<div id='bs-sb-error'></div>" ) );
+	BsShoutBox.textField = $( "#bs-sb-message" );
+	BsShoutBox.btnSend = $( "#bs-sb-send" );
+	BsShoutBox.msgList = $( "#bs-sb-content" );
+	BsShoutBox.ajaxLoader = $( "#bs-sb-loading" );
 	BsShoutBox.defaultMessage = BsShoutBox.textField.val();
-	BsShoutBox.characterCounter = $('#bs-sb-charactercounter');
+	BsShoutBox.characterCounter = $( '#bs-sb-charactercounter' );
 	BsShoutBox.updateShoutbox();
 
 	//HTML5 like placeholder effect.
@@ -122,9 +122,9 @@ mw.loader.using('ext.bluespice', function() {
 		BsShoutBox.characterCounter.text( mw.message( 'bs-shoutbox-charactersleft', currCharLen ).text() );
 	});
 
-	$("#bs-sb-form").submit(function() {
+	$( "#bs-sb-form" ).submit( function() {
 		var sMessage = BsShoutBox.textField.val();
-		if (sMessage == '' || sMessage == BsShoutBox.defaultMessage) {
+		if ( sMessage == '' || sMessage == BsShoutBox.defaultMessage ) {
 			bs.util.alert(
 				'bs-shoutbox-alert',
 				{
@@ -139,10 +139,10 @@ mw.loader.using('ext.bluespice', function() {
 		BsShoutBox.textField.blur().attr('disabled', 'disabled');
 
 		$.post(
-			bs.util.getAjaxDispatcherUrl('ShoutBox::insertShout', [wgArticleId, sMessage]),
-			function(data) {
-				var responseObj = $.parseJSON(data);
-				if (responseObj.success === false) {
+			bs.util.getAjaxDispatcherUrl( 'ShoutBox::insertShout', [ wgArticleId, sMessage ] ),
+			function( data ) {
+				var responseObj = $.parseJSON( data );
+				if ( responseObj.success === false ) {
 					bs.util.alert(
 						'bs-shoutbox-alert',
 						{
@@ -158,7 +158,7 @@ mw.loader.using('ext.bluespice', function() {
 		return false;
 	});
 
-	$(".bs-sb-archive").live("click", function() {
+	$(document).on( 'click', '.bs-sb-archive', function() {
 		var iShoutID = $(this).parent().attr('id');
 		bs.util.confirm(
 			'bs-shoutbox-confirm',
@@ -168,7 +168,7 @@ mw.loader.using('ext.bluespice', function() {
 			},
 		{
 			ok: function() {
-				BsShoutBox.archiveEntry(iShoutID.replace(/bs-sb-/, ""));
+				BsShoutBox.archiveEntry( iShoutID.replace( /bs-sb-/, "" ) );
 			}
 		});
 	});

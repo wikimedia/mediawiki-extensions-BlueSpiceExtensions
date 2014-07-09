@@ -24,31 +24,14 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 
 	protected static $messagesLoaded = false;
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( 'ResponsibleEditors', 'responsibleeditors-viewspecialpage' );
 	}
 
-	function execute( $sParameter ) {
+	public function execute( $sParameter ) {
 		parent::execute( $sParameter );
 
-		/*if( !empty( $sParameter ) ) {
-			$oRequestedTitle = Title::newFromText( $sParameter );
-			if( $oRequestedTitle->exists() ) {
-				 $sOut = $this->renderChangeAssignmentDialog( $oRequestedTitle );
-			}
-			else {
-				$oErrorView = new ViewTagErrorList();
-				$oErrorView->addItem(
-								new ViewTagError(
-									wfMessage( 'bs-responsibleeditors-error-specialpage-given-article-does-not-exist' )->plain()
-								)
-							);
-				$sOut = $oErrorView->execute();
-			}
-		}
-		else {*/
-			$sOut = $this->renderOverviewGrid();
-		//}
+		$sOut = $this->renderOverviewGrid();
 
 		$this->getOutput()->addHTML( $sOut );
 	}
@@ -72,60 +55,8 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 			)
 		);
 	}
-/*
-	public function renderChangeAssignmentDialog( Title $oRequestedTitle ) {
-		$oOutputPage  = $this->getOutput();
-		$oCurrentUser = $this->getUser();
-		$oRespEdExt   = BsExtensionMW::getInstanceFor( 'MW::ResponsibleEditors' );
 
-		if( $oRespEdExt->userIsAllowedToChangeResponsibility( $oCurrentUser, $oRequestedTitle ) === false ) {
-			$oErrorView = new ViewTagErrorList();
-				$oErrorView->addItem(
-								new ViewTagError(
-									wfMessage( 'bs-responsibleeditors-error-ajax-not-allowed' )->plain()
-								)
-							);
-			$sOut = $oErrorView->execute();
-		}
-		else {
-			$oOutputPage->setPageTitle( $oOutputPage->getPageTitle().': '.$oRequestedTitle->getFullText() );
-			$aResponsibleEditorIds = $oRespEdExt->getResponsibleEditorIdsByArticleId( $oRequestedTitle->getArticleID() );
-			$oData = new stdClass();
-			$oData->articleId = $oRequestedTitle->getArticleID();
-			$oData->editorIds = $aResponsibleEditorIds;
-			$oData->returnUrl = $oRequestedTitle->getFullURL();
-			$oOutputPage->addHtml(
-				'<script type="text/javascript">
-					bsResponsibleEditorsData = '.json_encode($oData).'
-				</script>'
-			);
-
-			$sOut = '<div id="bs-responsibleeditors-assignmentdialog"></div>';
-		}
-		return $sOut;
-	}
-*/
-/*
-	static function ajaxGetResponsibleEditors( $iArticleId ) {
-		if( $iArticleId == -1 ) return json_encode( array() );
-
-		$oResponsibleEditors = BsExtensionMW::getInstanceFor( 'MW::ResponsibleEditors' );
-		$aEditors = $oResponsibleEditors->getResponsibleEditorIdsByArticleId($iArticleId);
-
-		$aResponsibleEditors = array();
-		foreach ($aEditors as $iUserId) {
-			$aResponsibleEditors[] = array(
-				$iUserId,
-				BsCore::getInstance()->getUserDisplayName(
-					User::newFromId($iUserId)
-				),
-				'X'
-			);
-		}
-		return json_encode($aResponsibleEditors);
-	}
-*/
-	static function ajaxGetPossibleEditors( $iArticleId = -1 ) {
+	public static function ajaxGetPossibleEditors( $iArticleId = -1 ) {
 		$aResult = array( 'users' => array() );
 		if( $iArticleId == -1 ) return FormatJson::encode( $aResult );
 
@@ -135,7 +66,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		return FormatJson::encode( $aResult );
 	}
 
-	static function ajaxSetResponsibleEditors( $sParams ) {
+	public static function ajaxSetResponsibleEditors( $sParams ) {
 
 		$aParams = FormatJson::decode( $sParams, true );
 
@@ -215,7 +146,7 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 	 * @param int $iArticleId
 	 * @return void
 	 */
-	static function notifyAffectedUsers( $aNewEditorIds, $aRemovedEditorIds, $aUntouchedEditorIds, $iArticleId ) {
+	public static function notifyAffectedUsers( $aNewEditorIds, $aRemovedEditorIds, $aUntouchedEditorIds, $iArticleId ) {
 		global $wgUser;
 		if( BsConfig::get( 'MW::ResponsibleEditors::EMailNotificationOnResponsibilityChange' ) != true ) return;
 
@@ -246,10 +177,6 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 			if( $wgUser->getId() == $iUserId ) continue; //Skip notification if user changes responsibility himself
 			$aUntouchedEditors[] = User::newFromId( $iUserId );
 		}
-		/*
-		//For future use...
-		BsMailer::getInstance('MW')->send( $aUntouchedEditors, $sSubject, $sBody );
-		*/
 
 		//Notify removed editors
 		$aRemovedEditors = array();

@@ -4,7 +4,7 @@
  * Review Extension for BlueSpice
  *
  * Adds workflow functionality to pages.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -32,24 +32,8 @@
  * @filesource
  */
 /* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * - Added/changed e-mail notifications
- * v1.1.1
- * - Hooking into FlaggedRevsConnector to avoid display of review form if workflow is active
- * v1.1.0
- * - Added indexes to database tables to improve performance
- * - Fixed some I18N issues
- * - Fixed ExtJS bug
- * - Replaced logging mechanism
- * v1.0.0
- * - Raised to stable
- * - Code Review
- * v0.1
- * - initial commit
+ * v2.23.0
  */
-
-// Last Code Review RBV (30.06.2011)
 
 /**
  * Main class for Review extension
@@ -100,10 +84,8 @@ class Review extends BsExtensionMW {
 		BsConfig::registerVar('MW::Review::ShowAssessor', true, BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_BOOL, 'bs-review-pref-ShowAssessor', 'toggle');
 
 		$this->setHook('SkinTemplateOutputPageBeforeExec', 'checkReviewStatus');
-		$this->setHook('SkinTemplateNavigation::Universal', 'onSkinTemplateNavigationUniversal');
-		$this->setHook('SkinTemplateTabs', 'addReviewTab'); //Unused: This feature was removed completely in version 1.18.0.
+		$this->setHook('SkinTemplateNavigation');
 		$this->setHook('userCan', 'checkReviewPermissions');
-		$this->setHook('BSBlueSpiceSkinUserBarBeforeLogout', 'makeUserBar');
 		$this->setHook('ArticleDeleteComplete');
 		$this->setHook('BSFlaggedRevsConnectorCollectFlagInfo');
 		$this->setHook('BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars');
@@ -111,6 +93,7 @@ class Review extends BsExtensionMW {
 		$this->setHook('BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd');
 		$this->setHook('BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd');
 		$this->setHook('BeforePageDisplay');
+		$this->setHook('SkinTemplateOutputPageBeforeExec');
 
 		$this->mCore->registerPermission('workflowview', array('user'));
 		$this->mCore->registerPermission('workflowedit');
@@ -299,7 +282,7 @@ class Review extends BsExtensionMW {
 			} else {
 				if (!$dbr->fieldExists('bs_review_steps', 'revs_delegate_to')) {
 					$dbr->query('ALTER TABLE ' . $dbr->tableName('bs_review_steps') . ' RENAME COLUMN delegate_to TO revs_delegate_to');
-					//wont work on linux for NO reason ...  
+					//wont work on linux for NO reason ...
 					//$wgExtModifiedFields[ ] = array( 'bs_review_steps', 'delegate_to', $sDir . 'db/oracle/review_steps.patch.delegate_to.sql' );
 				}
 			}
@@ -338,46 +321,32 @@ class Review extends BsExtensionMW {
 		return true;
 	}
 
-	public function onSkinTemplateNavigationUniversal($oSkinTemplate, &$links) {
-		if ($this->getTitle()->isContentPage() === false)
+	/**
+	 * Adds the "Review" menu entry in view mode
+	 * @param SkinTemplate $oSkinTemplate
+	 * @param array $links
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onSkinTemplateNavigation($oSkinTemplate, &$links) {
+		if ($this->getTitle()->exists() === false) {
 			return true;
-		if ($this->getTitle()->exists() === false)
+		}
+		if ($this->getTitle()->userCan('workflowview') === false) {
 			return true;
-		if ($this->getTitle()->userCan('workflowview') === false)
-			return true;
+		}
 
 		$links['actions']['review'] = array(
-			'text' => wfMessage('bs-review-menu_entry')->plain(),
+			'text' => wfMessage('bs-review-menu_entry')->text(),
 			'href' => '#',
-			'class' => false
-		);
-		return true;
-	}
-
-	/**
-	 * Adds review menu item to action tabs. Called by SkinTemplateTabs hook.
-	 * @param Skin $skin MediaWiki skin object.
-	 * @param array $content_actions Current array of tab actions. The function adds the action to this array.
-	 * @return bool Allow other hooked methods to be executed. always true.
-	 * @deprecated This feature was removed completely in version 1.18.0. (https://www.mediawiki.org/wiki/Manual:Hooks/SkinTemplateTabs)
-	 */
-	public function addReviewTab($skin, &$content_actions) {
-		if ($this->getTitle()->exists() === false)
-			return true;
-		if ($this->getTitle()->userCan('workflowview'))
-			return true;
-
-		$content_actions['review'] = array(
-			"text" => wfMessage('bs-review-menu_entry')->plain(),
-			"href" => '#',
-			"class" => false
+			'class' => false,
+			'id' => 'ca-review'
 		);
 		return true;
 	}
 
 	/**
 	 * Wrapper method for the process of sending notification mails
-	 * 
+	 *
 	 * @param string $sType a key which identifies the messages keys for the mail (accept, decline etc)
 	 * @param User $oReceiver the user object of the user which should get the notification
 	 * @param array $aParams additional parameters for the message
@@ -640,7 +609,7 @@ class Review extends BsExtensionMW {
 	 * @param User $oUser Currently authenticated user.
 	 * @param string $sAction Action for which a permission is being requested.
 	 * @param bool $bRight Is user currently allowed to do the action on the page? If this is set to false, permission will be denied.
-	 * @return bool Allow other hooked methods to be executed. False if edit right is denied. 
+	 * @return bool Allow other hooked methods to be executed. False if edit right is denied.
 	 */
 	public function checkReviewPermissions($oTitle, $oUser, $sAction, &$bRight) {
 		$aActionsBlacklist = array('edit', 'delete', 'move', 'protect', 'rollback');
@@ -652,7 +621,7 @@ class Review extends BsExtensionMW {
 			return true; // There is no review on the page
 
 
-			
+
 // Because of FlaggedRevs is it now allowed to edit when a workflow is finished...
 		$bResult = false;
 		wfRunHooks('checkPageIsReviewable', array($oTitle, &$bResult));
@@ -679,7 +648,7 @@ class Review extends BsExtensionMW {
 	 * Prevents the FlaggedRevsConnector form from being shown when a workflow is active
 	 * @param Title $oCurrentTitle
 	 * @param array $aFlagInfo
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onBSFlaggedRevsConnectorCollectFlagInfo($oCurrentTitle, &$aFlagInfo) {
 		$oRev = BsReviewProcess::newFromPid($oCurrentTitle->getArticleID());
@@ -899,7 +868,7 @@ class Review extends BsExtensionMW {
 	 * Hook-Handler for Hook 'BSStateBarBeforeTopViewAdd'
 	 * @param StateBar $oStateBar
 	 * @param array $aTopViews
-	 * @return boolean Always true to keep hook running 
+	 * @return boolean Always true to keep hook running
 	 */
 	public function onStateBarBeforeTopViewAdd($oStateBar, &$aTopViews, $oUser, $oTitle) {
 		$sIcon = 'bs-infobar-workflow-open';
@@ -1008,7 +977,7 @@ class Review extends BsExtensionMW {
 		$oReviewView->addButton(
 				'bs-review-ok', 'bs-icon-accept', wfMessage('bs-review-i-agree')->plain(), wfMessage('bs-review-i-agree')->plain()
 		);
-		
+
 
 		if ($res = $oRev->isFinished()) {
 			//$text = wfMessage( 'bs-review-review_finished' )->plain();
@@ -1059,7 +1028,7 @@ class Review extends BsExtensionMW {
 		if ($bResult) {
 			$obj = FlaggedRevision::newFromStable($oTitle);
 		}
-		
+
 		$aComments = array();
 		foreach($oRev->steps as $_step) {
 			if(!empty($_step->comment) && $_step->status != -1) {
@@ -1108,33 +1077,30 @@ class Review extends BsExtensionMW {
 	}
 
 	/**
-	 * Renders user bar icon if current user has an open review.
-	 * @param array $aViews Array of views in TopBar.
-	 * @param User $oUser Current user.
-	 * @param object $oSender The sender of that event.
-	 * @return bool Allow other hooked methods to be executed. always true.
+	 * Adds a info to bs_personal_info
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
 	 */
-	public function makeUserBar(&$aViews, $oUser, $oSender) {
-		global $wgScriptPath;
-		
+	public function onSkinTemplateOutputPageBeforeExec(&$sktemplate, &$tpl){
+		$oUser = $sktemplate->getUser();
 		if( $oUser->isAllowed('workflowview') === false ) {
 			return true;
 		}
-		
+
 		$iCountReviews = count(BsReviewProcess::listReviews($oUser->getId()));
 		$iCountFinishedReviews = BsReviewProcess::userHasWaitingReviews($oUser);
 
-		if ($iCountReviews <= 0 && !$iCountFinishedReviews)
+		if ($iCountReviews <= 0 && !$iCountFinishedReviews) {
 			return true;
+		}
 
-		$oUserBarElementView = new ViewUserBarElement();
-		$oUserBarElementView->setId('review-userbar-element');
-		$oUserBarElementView->setLink(SpecialPage::getTitleFor('Review')->getFullURL() . '/' . $oUser->getName());
-		$oUserBarElementView->setIcon($wgScriptPath . '/extensions/BlueSpiceExtensions/Review/resources/images/bs-icon-review.png');
-
-		$oUserBarElementView->setText($iCountReviews ."|". $iCountFinishedReviews);
-
-		$aViews[] = $oUserBarElementView;
+		$tpl->data['bs_personal_info'][20] = array(
+			'id' => 'pi-review',
+			'href' => SpecialPage::getTitleFor('Review', $oUser->getName() )->getLocalURL(),
+			'text' => $iCountReviews ."|". $iCountFinishedReviews,
+			'class' => 'icon-eye'
+		);
 
 		return true;
 	}
@@ -1217,12 +1183,12 @@ class Review extends BsExtensionMW {
 				$data['revs_status'] = -1;
 				break;
 		}
-		
+
 		// Identify owner
 		$oReviewProcess = BsReviewProcess::newFromPid($iArticleId);
 		$oOwner = User::newFromID($oReviewProcess->getOwner());
 		$sOwnerMail = $oOwner->getEmail();
-		
+
 		$sUserName = BsCore::getUserDisplayName($oUser);
 		$sOwnerName = BsCore::getUserDisplayName($oOwner);
 		if( !empty($initial_comment) ) {
@@ -1296,7 +1262,7 @@ class Review extends BsExtensionMW {
 	 * Adds CSS to Page
 	 * @param OutputPage $out
 	 * @param Skin $skin
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onBeforePageDisplay(&$out, &$skin) {
 		$out->addModuleStyles('ext.bluespice.review.styles');

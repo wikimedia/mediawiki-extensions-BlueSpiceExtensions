@@ -110,6 +110,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	public function indexCrawledDocuments() {
 		$this->iRounds = ceil( $this->totalNoDocumentsCrawled / $this->iLimit );
 
+		global $wgUser;
 		for ( $i = 0; $i < $this->iRounds; $i++ ) {
 			$this->loadNextDocuments( $i );
 
@@ -130,9 +131,8 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 				$bIsRedirect = $oTitle->isRedirect();
 
-				$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
-				$sContent = $this->oMainControl->parseTextForIndex( $sText, $oTitle );
-				$aSections = $this->oMainControl->extractEditSections( $sText );
+				$sContent = $this->oMainControl->prepareTextForIndex( $oTitle );
+				$aSections = $this->oMainControl->extractEditSections( $oTitle );
 				$aRedirects = $this->oMainControl->getRedirects( $oTitle );
 
 				$iTimestamp = $oTitle->getTouched();

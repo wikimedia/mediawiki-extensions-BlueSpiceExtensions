@@ -2,7 +2,9 @@
 
 BsExtensionManager::registerExtension('ResponsibleEditors', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['ResponsibleEditors']      = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
+$wgMessagesDirs['ResponsibleEditors'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['ResponsibleEditors'] = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
 $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages
@@ -60,7 +62,7 @@ $wgResourceModules['ext.bluespice.responsibleEditors.manager'] = array(
 
 $wgResourceModules['ext.bluespice.responsibleEditors.bookshelfPlugin'] = array(
 	'scripts' => array(
-		'bluespice.responsibleEditors.BookshelfPlugin.js',		
+		'bluespice.responsibleEditors.BookshelfPlugin.js',
 	),
 	'dependencies' => 'ext.bluespice.responsibleEditors',
 	'messages' => array(

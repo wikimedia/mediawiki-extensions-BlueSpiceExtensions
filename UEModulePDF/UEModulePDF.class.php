@@ -82,12 +82,12 @@ class UEModulePDF extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		//Variables
-		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL',   'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-pdfserviceurl' );
+		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL', 'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-pdfserviceurl' );
 		BsConfig::registerVar( 'MW::UEModulePDF::DefaultTemplate', 'BlueSpice', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-templatepath' );
-		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS',      false,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-suppressns', 'toggle' );
+		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-suppressns', 'toggle' );
 		/* This setting is no longer needed. We do not provide the old bn2pdf.war anymore */
-		BsConfig::registerVar( 'MW::UEModulePDF::Backend',        'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS );
-		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath',   'extensions/BlueSpiceFoundation/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-templatepath' );
+		BsConfig::registerVar( 'MW::UEModulePDF::Backend', 'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS );
+		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath', 'extensions/BlueSpiceFoundation/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-templatepath' );
 
 		//Hooks
 		$this->setHook('BSUniversalExportGetWidget');
@@ -117,7 +117,7 @@ class UEModulePDF extends BsExtensionMW {
 		}
 		return $aPrefs;
 	}
-	
+
 	/**
 	 * Sets up requires directories
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
@@ -147,7 +147,7 @@ class UEModulePDF extends BsExtensionMW {
 	 * @param SpecialUniversalExport $oSpecialPage
 	 * @param string $sParam
 	 * @param array $aModules
-	 * @return true 
+	 * @return true
 	 */
 	public function onBSUniversalExportSpecialPageExecute( $oSpecialPage, $sParam, &$aModules ) {
 		$aModules['pdf'] = new BsExportModulePDF();
@@ -209,13 +209,16 @@ class UEModulePDF extends BsExtensionMW {
 		}
 		$sSpecialPageParameter = BsCore::sanitize( $sTitle, '', BsPARAMTYPE::STRING );
 		$oSpecialPage = SpecialPage::getTitleFor( 'UniversalExport', $sSpecialPageParameter );
-		if ( isset( $aCurrentQueryParams['title'] ) ) unset( $aCurrentQueryParams['title'] );
+		if ( isset( $aCurrentQueryParams['title'] ) ) {
+			unset( $aCurrentQueryParams['title'] );
+		}
 		$aCurrentQueryParams['ue[module]'] = 'pdf';
 		$aContentActions = array(
-			'id' => 'pdf',
+			'id' => 'bs-ta-uemodulepdf',
 			'href' => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
-			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->plain(),
-			'text' => ''
+			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->text(),
+			'text' => wfMessage('bs-uemodulepdf-widgetlink-single-no-attachments-text')->text(),
+			'class' => 'icon-file-pdf'
 		);
 
 		$template->data['bs_title_actions'][] = $aContentActions;

@@ -16,12 +16,10 @@ $wgResourceModules['ext.bluespice.saferedit.general'] = array(
 $wgResourceModules['ext.bluespice.saferedit.editmode'] = array(
 	'scripts' => 'bluespice.SaferEdit.editmode.js',
 	'messages' => array(
-		'bs-saferedit-lastSavedVersion',
-		'bs-saferedit-editFormOk',
-		'bs-saferedit-editFormCancel',
+		'bs-saferedit-lastsavedversion',
 		'bs-saferedit-restore',
-		'bs-saferedit-cancel',
-		'bs-saferedit-unsavedChanges',
+		'bs-extjs-cancel',
+		'bs-saferedit-unsavedchanges',
 		'bs-saferedit-othersectiontitle',
 		'bs-saferedit-othersectiontext1',
 		'bs-saferedit-othersectiontext2',

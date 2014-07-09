@@ -69,7 +69,6 @@ class ResponsibleEditors extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ResponsibleEditors::ActivatedNamespaces', array(0), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-responsibleeditors-pref-activatednamespaces', 'multiselectex' );
 		BsConfig::registerVar( 'MW::ResponsibleEditors::AutoAssignOnArticleCreation', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-autoassignonarticlecreation', 'toggle' );
 		BsConfig::registerVar( 'MW::ResponsibleEditors::ResponsibleEditorMayChangeAssignment', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-responsibleeditormaychangeassignment', 'toggle' );
-		BsConfig::registerVar( 'MW::ResponsibleEditors::ImageResponsibleEditorStatebarIcon', 'bs-infobar-responsibleeditor.png', BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_STRING, 'bs-responsibleeditors-pref-ImageResponsibleEditorStatebarIcon' );
 		BsConfig::registerVar( 'MW::ResponsibleEditors::EMailNotificationOnResponsibilityChange', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-emailnotificationonresponsibilitychange', 'toggle' );
 		BsConfig::registerVar( 'MW::ResponsibleEditors::AddArticleToREWatchLists', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-responsibleeditormaychangeassignment', 'toggle' );
 		BsConfig::registerVar( 'MW::ResponsibleEditors::AutoPermissions', array('read', 'edit'), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-responsibleeditors-pref-autopermissions', 'multiselectex' );
@@ -77,8 +76,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		//Hooks
 		$this->setHook( 'BeforeInitialize' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'SkinTemplateNavigation::Universal', 'onSkinTemplateNavigationUniversal' );
-		$this->setHook( 'SkinTemplateContentActions' );
+		$this->setHook( 'SkinTemplateNavigation' );
 		$this->setHook( 'ArticleInsertComplete' );
 		$this->setHook( 'SpecialMovepageAfterMove' );
 		$this->setHook( 'ArticleDeleteComplete' );
@@ -314,33 +312,22 @@ class ResponsibleEditors extends BsExtensionMW {
 	}
 
 	/**
-	 * MediaWiki ContentActions hook. For more information please refer to <mediawiki>/docs/hooks.txt
-	 * @param Array $aContentActions This array is used within the skin to render the content actions menu
-	 * @return Boolean Always true for it is a MediwWiki Hook callback.
-	 */
-	public function onSkinTemplateContentActions( &$aContentActions) {
-
-		$links = array( 'actions' => array() );
-		$this->onSkinTemplateNavigationUniversal( null, $links );
-		$aContentActions['respeditors'] = $links['actions']['respeditors'];
-
-		return true;
-	}
-
-	/**
-	 * MediaWiki ContentActions hook. For more information please refer to <mediawiki>/docs/hooks.txt
-	 * @param SkinTemplate $oSkinTemplate
-	 * @param array $links This array is used within the skin to render the content actions menu
+	 * Adds the "Responsible editors" menu entry in view mode
+	 * @param SkinTemplate $sktemplate
+	 * @param array $links
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateNavigationUniversal($oSkinTemplate, &$links) {
+	public function onSkinTemplateNavigation( &$sktemplate, &$links ) {
 		//Check if menu entry has to be displayed
 		$oCurrentUser = $this->getUser();
-		if ( $oCurrentUser->isLoggedIn() === false ) return true;
+		if ( $oCurrentUser->isLoggedIn() === false ) {
+			return true;
+		}
 
 		$oCurrentTitle = $this->getTitle();
-		if ( $oCurrentTitle->exists() === false ) return true;
-		if ( $oCurrentTitle->getNamespace() === NS_SPECIAL ) return true;
+		if ( $oCurrentTitle->exists() === false ) {
+			return true;
+		}
 
 		$aActivatedNamespaces = BsConfig::get( 'MW::ResponsibleEditors::ActivatedNamespaces' );
 		if ( is_array( $aActivatedNamespaces ) ) {
@@ -351,9 +338,10 @@ class ResponsibleEditors extends BsExtensionMW {
 		if ( $this->userIsAllowedToChangeResponsibility( $oCurrentUser, $oCurrentTitle ) === false ) return true;
 
 		$links['actions']['respeditors'] = array(
-			'text'  => wfMessage( 'bs-responsibleeditors-contentactions-label' )->plain(),
+			'text'  => wfMessage( 'bs-responsibleeditors-contentactions-label' )->text(),
 			'href'  => '#',
-			'class' => false
+			'class' => false,
+			'id' => 'ca-respeditors'
 		);
 
 		return true;
@@ -508,7 +496,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		$sDispalyName = $this->mCore->getUserDisplayName($oFirstResponsibleEditor);
 
 		$oResponsibleEditorsTopView->setKey('ResponsibleEditors-Top');
-		$oResponsibleEditorsTopView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/' . $this->mInfo[EXTINFO::NAME] . '/resources/images/' . BsConfig::get('MW::ResponsibleEditors::ImageResponsibleEditorStatebarIcon'));
+		$oResponsibleEditorsTopView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/' . $this->mInfo[EXTINFO::NAME] . '/resources/images/bs-infobar-responsibleeditor.png' );
 		$oResponsibleEditorsTopView->setIconAlt( wfMessage( 'bs-responsibleeditors-statebartop-icon-alt' )->plain() );
 		$oResponsibleEditorsTopView->setText($sDispalyName);
 		$oResponsibleEditorsTopView->setTextLinkTitle($sDispalyName);
@@ -858,14 +846,14 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @param array $aTitles
 	 * @param string $sAction
 	 */
-	static function notifyResponsibleEditors($aResponsibleEditorIds, $oUser, $aTitles, $sAction) {
+	public static function notifyResponsibleEditors($aResponsibleEditorIds, $oUser, $aTitles, $sAction) {
 		if (empty($aResponsibleEditorIds)) return true;
 
 		$aResponsibleEditors = array();
 		foreach ($aResponsibleEditorIds as $iUserId) {
 			$oREUser = User::newFromId($iUserId);
 			if ( $iUserId == $oUser->getId() ) continue;
-			if ( BsConfig::getVarForUser("MW::ResponsibleEditors::E".ucfirst($sAction), $oREUser) === true ) {
+			if ( BsConfig::getVarForUser( "MW::ResponsibleEditors::E".ucfirst( $sAction ), $oREUser ) === true ) {
 				$aResponsibleEditors[] = $oREUser;
 			}
 		}
@@ -932,7 +920,7 @@ class ResponsibleEditors extends BsExtensionMW {
 				return;
 		}
 
-		BsMailer::getInstance('MW')->send($aResponsibleEditors, $sSubject, $sMessage);
+		BsMailer::getInstance( 'MW' )->send( $aResponsibleEditors, $sSubject, $sMessage );
 	}
 
 	public static function getResponsibleEditorsPortletData( $iCount, $iUserId ) {
@@ -982,7 +970,7 @@ class ResponsibleEditors extends BsExtensionMW {
 
 	public function onSuperListGetColumnDefinitions(&$aColumns) {
 		$aColumns[] = array(
-			'header' => wfMessage('bs-responsibleeditors-assignededitors')->escaped(),
+			'header' => wfMessage( 'bs-responsibleeditors-assignededitors' )->escaped(),
 			'dataIndex' => 'responsible_editors',
 			'hidden' => true
 		);

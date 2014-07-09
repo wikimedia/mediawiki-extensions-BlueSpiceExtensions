@@ -72,8 +72,8 @@ class Readers extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
-		$this->setHook( 'SkinTemplateContentActions' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'SkinTemplateNavigation' );
 
 		$this->mCore->registerPermission( 'viewreaders' );
 
@@ -152,27 +152,38 @@ class Readers extends BsExtensionMW {
 	}
 
 	/**
-	 * MediaWiki ContentActions hook. For more information please refer to <mediawiki>/docs/hooks.txt
-	 * @param Array $aContentActions This array is used within the skin to render the content actions menu
-	 * @return Boolean Always true for it is a MediwWiki Hook callback.
+	 * Adds the "Readers" menu entry in view mode
+	 * @param SkinTemplate $sktemplate
+	 * @param array $links
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateContentActions( &$aContentActions ) {
-		if ( $this->checkContext() === false ) return true;
+	public function onSkinTemplateNavigation( &$sktemplate, &$links ) {
+		if ( $this->checkContext() === false ) {
+			return true;
+		}
 		//Check if menu entry has to be displayed
 		$oCurrentUser = $this->getUser();
-		if ( $oCurrentUser->isLoggedIn() === false ) return true;
+		if ( $oCurrentUser->isLoggedIn() === false ) {
+			return true;
+		}
 
 		$oCurrentTitle = $this->getTitle();
-		if ( $oCurrentTitle->exists() === false ) return true;
-		if ( $oCurrentTitle->getNamespace() === NS_SPECIAL ) return true;
-		if ( !$oCurrentTitle->userCan( 'viewreaders' ) ) return true;
+		if ( $oCurrentTitle->exists() === false ) {
+			return true;
+		}
 
-		$oSpecialPageWithParam = SpecialPage::getTitleFor( 'Readers', $oCurrentTitle->getPrefixedText());
+		if ( !$oCurrentTitle->userCan( 'viewreaders' ) ) {
+			return true;
+		}
+
+		$oSpecialPageWithParam = SpecialPage::getTitleFor(
+			'Readers', $oCurrentTitle->getPrefixedText()
+		);
 
 		//Add menu entry
-		$aContentActions['readersbutton'] = array(
+		$links['actions']['readers'] = array(
 			'class' => false,
-			'text' => wfMessage( 'bs-readers-contentactions-label' )->plain(),
+			'text' => wfMessage( 'bs-readers-contentactions-label' )->text(),
 			'href' => $oSpecialPageWithParam->getLocalURL(),
 			'id' => 'ca-readers'
 		);
@@ -181,18 +192,26 @@ class Readers extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinAfterArticleContent'. Creates the Readers list below an article.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return Boolean Always true to keep hook running.
+	 * Hook-Handler for 'SkinTemplateOutputPageBeforeExec'. Creates the Readers list below an article.
+	 * @param SkinTemplate $sktemplate a collection of views. Add the view that needs to be displayed
+	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
+	 * @return bool always true
 	 */
-	public function onBSBlueSpiceSkinAfterArticleContent( &$aViews, $oUser, $oTitle ) {
-		if ( $this->checkContext() === false ) return true;
-		if ( !$oTitle->userCan( 'viewreaders' ) ) return true;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if ( $this->checkContext() === false ) {
+			return true;
+		}
+		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
+			return true;
+		}
 
-		$oViewReaders = $this->generateViewReaders( $oTitle );
-		$aViews[] = $oViewReaders;
+		$oViewReaders = $this->generateViewReaders( $sktemplate->getTitle() );
+
+		$tpl->data['bs_dataAfterContent']['bs-readers'] = array(
+			'position' => 20,
+			'label' => wfMessage('bs-readers-title')->text(),
+			'content' => $oViewReaders
+		);
 
 		return true;
 	}

@@ -83,12 +83,12 @@ class SaferEdit extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		BsConfig::registerVar( 'MW::SaferEdit::UseSE', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-UseSE', 'toggle' );
+		BsConfig::registerVar( 'MW::SaferEdit::UseSE', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-usese', 'toggle' );
 		//BsConfig::registerVar( 'MW::SaferEdit::HasTexts', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-HasTexts', 'toggle' );
 		BsConfig::registerVar( 'MW::SaferEdit::EditSection', -1, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_INT|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-EditSection', 'int' );
-		BsConfig::registerVar( 'MW::SaferEdit::Interval', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-Interval', 'int' );
-		BsConfig::registerVar( 'MW::SaferEdit::ShowNameOfEditingUser', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-ShowNameOfEditingUser', 'toggle' );
-		BsConfig::registerVar( 'MW::SaferEdit::WarnOnLeave', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-WarnOnLeave', 'toggle' );
+		BsConfig::registerVar( 'MW::SaferEdit::Interval', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-interval', 'int' );
+		BsConfig::registerVar( 'MW::SaferEdit::ShowNameOfEditingUser', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-shownameofeditinguser', 'toggle' );
+		BsConfig::registerVar( 'MW::SaferEdit::WarnOnLeave', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-warnonleave', 'toggle' );
 
 		$this->setHook( 'ArticleSaveComplete', 'clearSaferEdit' );
 		//$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'parseSaferEdit' );
@@ -103,7 +103,7 @@ class SaferEdit extends BsExtensionMW {
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	
+
 	/**
 	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
 	 * @param OutputPage $oOutputPage
@@ -134,7 +134,7 @@ class SaferEdit extends BsExtensionMW {
 			$wgExtNewTables[]  = array( 'bs_saferedit', $sDir . 'SaferEdit.sql' );
 			$wgExtNewIndexes[] = array( 'bs_saferedit', 'se_page_title',     $sDir . 'SaferEdit.patch.se_page_title.index.sql' );
 			$wgExtNewIndexes[] = array( 'bs_saferedit', 'se_page_namespace', $sDir . 'SaferEdit.patch.se_page_namespace.index.sql' );
-			
+
 		} elseif( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables[]  = array( 'bs_saferedit', $sDir . 'SaferEdit.pg.sql' );
 			/*
@@ -196,7 +196,7 @@ class SaferEdit extends BsExtensionMW {
 	 * Hook-Handler for Hook 'BSStateBarBeforeTopViewAdd'
 	 * @param StateBar $oStateBar
 	 * @param array $aTopViews
-	 * @return boolean Always true to keep hook running 
+	 * @return boolean Always true to keep hook running
 	 */
 	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
 		$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle( $oTitle );
@@ -290,7 +290,7 @@ class SaferEdit extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param string $sText
 	 * @param string $sUsername
 	 * @param Title $oTitle
@@ -321,7 +321,7 @@ class SaferEdit extends BsExtensionMW {
 			if( empty($sText) ) unset($aFields['se_text']);
 
 			$oTitle->invalidateCache();
-			return $db->update( 
+			return $db->update(
 				$sTable,
 				$aFields,
 				array( "se_id" => $oRow->se_id )
@@ -475,11 +475,11 @@ class SaferEdit extends BsExtensionMW {
 		$oSaferEditView->setKey( 'SaferEditSomeoneEditing' );
 		$oSaferEditView->setIconSrc( $wgScriptPath.'/extensions/BlueSpiceExtensions/SaferEdit/resources/images/bs-infobar-editing-orange.png' );
 		if ( BsConfig::get( 'MW::SaferEdit::ShowNameOfEditingUser' ) ) {
-			$oSaferEditView->setIconAlt( wfMessage( 'bs-saferedit-user-editing-tooltip', $sUserName )->plain() );
-			$oSaferEditView->setText( wfMessage( 'bs-saferedit-user-editing-topbar', $sUserName )->plain() );
+			$oSaferEditView->setIconAlt( wfMessage( 'bs-saferedit-user-editing', $sUserName )->text() );
+			$oSaferEditView->setText( wfMessage( 'bs-saferedit-user-editing', $sUserName )->text() );
 		} else {
-			$oSaferEditView->setIconAlt( wfMessage( 'bs-saferedit-someone-editing-tooltip' )->plain() );
-			$oSaferEditView->setText( wfMessage( 'bs-saferedit-someone-editing-topbar' )->plain() );
+			$oSaferEditView->setIconAlt( wfMessage( 'bs-saferedit-someone-editing' )->plain() );
+			$oSaferEditView->setText( wfMessage( 'bs-saferedit-someone-editing' )->plain() );
 		}
 
 		return $oSaferEditView;
@@ -556,7 +556,7 @@ class SaferEdit extends BsExtensionMW {
 				$iSection	= empty($aData[0]['section']) ? -1 : $aData[0]['section'];
 				$sText		= empty($aData[0]['text']) ?	'' : $aData[0]['text'];
 
-				$aSingleResult['success'] = $this->saveText( 
+				$aSingleResult['success'] = $this->saveText(
 					$sText,
 					$wgUser->getName(),
 					$oTitle,

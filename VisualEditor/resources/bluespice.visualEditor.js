@@ -49,11 +49,14 @@ function bs_initVisualEditor() {
 	var currentSiteCSS = [];
 	//We collect the CSS Links from this document and set them as content_css 
 	//for TinyMCE
+
 	$('link[rel=stylesheet]').each(function(){
 		var cssBaseURL = '';
 		var cssUrl = $(this).attr('href');
 		//Conditionally make urls absolute to avoid conflict with tinymce.baseURL
-		if( cssUrl.startsWith( '/' ) ) cssBaseURL = mw.config.get('wgServer');
+		if( cssUrl.indexOf('/') === 0 ) {
+			cssBaseURL = mw.config.get('wgServer');
+		}
 		//need to check, if the stylesheet is already included
 		if (jQuery.inArray(cssBaseURL + cssUrl, currentSiteCSS) === -1)
 			currentSiteCSS.push( cssBaseURL + cssUrl );
@@ -85,12 +88,5 @@ $(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 
 $(document).ready( function() {
 	var BsVisualEditorLoaderUsingDeps = mw.config.get('BsVisualEditorLoaderUsingDeps');
-
-	//Check if there are other modules we need to wait for
-	if( BsVisualEditorLoaderUsingDeps.length > 0 ) {
-		mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
-	}
-	else {
-		bs_initVisualEditor();
-	}
+	mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
 });

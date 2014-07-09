@@ -46,7 +46,6 @@ BsStateBar = {
 					$('#sStateBarBodyLoadView').slideToggle('fast');
 
 					if ( result['views'].length < 1 ) {
-						//console.log(result['message']);
 						var messageItem = $('<div class="bs-statebar-body-item style="display:none"><p>' + result['message'] + '</p></div>').filter('DIV.bs-statebar-body-item');
 						BsStateBar.oStateBarView.append(messageItem.slideToggle('fast'));
 						$.each( BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
@@ -67,7 +66,6 @@ BsStateBar = {
 						BsStateBar.viewTogglerClick(value);
 					});
 				} else {
-					//console.log(result);
 				}
 			}
 		);
@@ -87,11 +85,7 @@ BsStateBar = {
 	viewTogglerClick: function( inputObject ) {
 		inputObject.click(function(){
 			BsStateBar.oStateBarView.slideToggle( 'fast' );
-			var sCurImg = $('#bs-statebar-viewtoggler-image').attr( 'src' );
-			sCurImg.match('_more')
-				? $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathActive )
-				: $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathInactive );
-
+			$('#bs-statebar-viewtoggler').toggleClass('open');
 			BsStateBar.getStateBarBody();
 		});
 	},

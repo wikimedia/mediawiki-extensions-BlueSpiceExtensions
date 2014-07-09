@@ -31,9 +31,6 @@
  * @filesource
  */
 BsExtensionManager::registerExtension('Notifications', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
-// Hooks
-// Unfortunately i forgot, why this hook is here in the setup file, but maybe it makes sense?
-$wgHooks['BSBlueSpiceSkinUserBarBeforeLogout'][] = 'Notifications::onBSBlueSpiceSkinUserBarBeforeLogout';
 
 // MessageFiles
 $wgExtensionMessagesFiles['Notifications'] = __DIR__ . '/Notifications.i18n.php';

@@ -149,7 +149,7 @@ $messages['en'] = array(
 	//Permissions
 	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there 
 	//is no UI to display them yet.
-	'action-workflowview' => 'access this interface',
+	'action-workflowview' => 'to access this interface',
 	'right-workflowview' => 'See interface components of the Review extension',
 	'right-workflowedit' => 'Create a new and modify an existing Review workflow',
 	'right-workflowlist' => 'Show the list of workflows on the Review specialpage',

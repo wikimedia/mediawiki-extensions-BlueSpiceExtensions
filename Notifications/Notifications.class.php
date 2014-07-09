@@ -95,6 +95,7 @@ class Notifications extends BsExtensionMW {
 		$this->setHook( 'GetPreferences' );
 		$this->setHook( 'UserSaveOptions' );
 		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
 		// Variables
 		BsConfig::registerVar( 'MW::Notifications::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-notifications-pref-active', 'toggle' );
@@ -449,14 +450,24 @@ class Notifications extends BsExtensionMW {
 		return true;
 	}
 
-	public static function onBSBlueSpiceSkinUserBarBeforeLogout(&$aUserBarBeforeLogoutViews, $wgUser, $skin){
-		if (!isset($skin->data['personal_urls']['notifications'])) return true;
-		$oView = new ViewBaseElement();
-		$oView->setId("pt-notifications");
-		$oLink = HTML::element("a", array('href' => htmlspecialchars($skin->data['personal_urls']['notifications']['href'])), $skin->data['personal_urls']['notifications']['text']);
+	/**
+	 * Moves Notification link from personal_urls to special bs_personal_info
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onSkinTemplateOutputPageBeforeExec(&$sktemplate, &$tpl){
+		if (!isset($tpl->data['personal_urls']['notifications'])) {
+			return true;
+		}
 
-		$oView->addData(array($oLink));
-		$aUserBarBeforeLogoutViews[] = $oView;
+		$tpl->data['bs_personal_info'][10] = array(
+			'id' => 'pi-notifications',
+			'class' => 'icon-mail4'
+		) + $tpl->data['personal_urls']['notifications'];
+
+		unset($tpl->data['personal_urls']['notifications']);
+
 		return true;
 	}
 

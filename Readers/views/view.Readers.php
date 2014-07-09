@@ -37,7 +37,7 @@ class ViewReaders extends ViewBaseElement {
 		}
 
 		$sReadersList = '';
-		$iReaders = count( $this->mItems );
+		$iReaders = count( $this->_mItems );
 		foreach ( $this->_mItems as $oMiniProfile ) {
 			$oMiniProfile->setOption( 'classes', array( 'bs-readers-profile' ) );
 			$sReadersList .= $oMiniProfile->execute();
