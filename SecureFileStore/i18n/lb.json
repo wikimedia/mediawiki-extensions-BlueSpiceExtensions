@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-securefilestore-pref-defaultdisposition-brower": "Browser",
+	"bs-securefilestore-pref-defaultdisposition-external": "Extern",
+	"bs-securefilestore-pref-dispositionattachment": "Type vun externe Fichieren:"
+}

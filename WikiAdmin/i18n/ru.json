@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a"
+		]
+	},
+	"bs-wikiadmin-notallowed": "Вы не можете использовать эту страницу.",
+	"action-wikiadmin": "отобразить страницу администрирования BlueSpice",
+	"right-wikiadmin": "Отображение страницы администрирования BlueSpice"
+}

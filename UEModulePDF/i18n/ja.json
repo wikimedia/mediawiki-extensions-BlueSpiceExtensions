@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"soap-service-url-not-valid": "PDF を生成するウェブ サービスの URL が有効ではありません。ウィキの設定を確認してください。",
+	"soap-service-url-not-set": "PDF を生成するウェブ サービスの URL が設定されていません。ウィキの設定を確認してください。"
+}

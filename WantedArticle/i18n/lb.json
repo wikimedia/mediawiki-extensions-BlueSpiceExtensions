@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-wantedarticle-desc": "Eng gewënscht Säit virschloen",
+	"prefs-wantedarticle": "Gewënscht Säit",
+	"bs-wantedarticle-ajax-error-no-parameter": "Kee Säitentitel uginn.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Déi virgeschloe Säit \"$1\" gëtt et schonn.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "D'Säit \"$1\" gouf scho virgeschlo.",
+	"bs-wantedarticle-page-removed": "D'Säit \"$1\" gouf ewechgeholl.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Virschloen",
+	"bs-wantedarticle-single-textfield-defaulttext": "Titel vun der Säit",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Iwwerschrëft.",
+	"bs-wantedarticle-tag-more-linktext": "Méi …",
+	"bs-wantedarticle-tag-default-title": "Gewënscht Säiten",
+	"bs-wantedarticle-pref-sort-time": "Zäit",
+	"bs-wantedarticle-pref-sort-title": "Titel",
+	"bs-wantedarticle-suggest-page": "Säit \"$1\" virschloen."
+}

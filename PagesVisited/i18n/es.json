@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-pagesvisited-desc": "Proporciona una lista personalizada de las últimas páginas visitadas",
+	"prefs-pagesvisited": "Páginas visitadas",
+	"bs-pagesvisited-widget-title": "Páginas visitadas",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|El espacio|Los espacios}} de nombres <code>$2</code> no {{PLURAL:$1|es válido|son válidos}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Límite de entradas:",
+	"bs-pagesvisited-pref-widgetns": "Espacios de nombresː",
+	"bs-pagesvisited-pref-widgetsortodr": "Ordenar por:",
+	"bs-pagesvisited-pref-sort-time": "Tiempo",
+	"bs-pagesvisited-pref-sort-pagename": "Título",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Muestra una lista de páginas que has visitado."
+}

@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"HarpyWar",
+			"Meshkov.a"
+		]
+	},
+	"bs-wantedarticle-desc": "Предложить разыскиваемую страницу",
+	"prefs-wantedarticle": "Требуемые страницы",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Предложение \"$1\" добавлено.",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Создать",
+	"bs-wantedarticle-single-textfield-defaulttext": "Заголовок страницы",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Порядок сортировки <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) или <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Сортировать по <code>title</code> или <code>time</code>.",
+	"bs-wantedarticle-tag-more-linktext": "Больше …",
+	"bs-wantedarticle-tag-default-title": "Требуемые страницы",
+	"bs-wantedarticle-pref-sort": "Сортировать по:",
+	"bs-wantedarticle-pref-order": "Порядок",
+	"bs-wantedarticle-pref-sort-time": "Время",
+	"bs-wantedarticle-pref-sort-title": "Заголовок",
+	"bs-wantedarticle-pref-order-asc": "По возрастанию",
+	"bs-wantedarticle-pref-order-desc": "По убыванию"
+}

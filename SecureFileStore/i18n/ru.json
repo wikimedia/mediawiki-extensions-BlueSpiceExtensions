@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a"
+		]
+	},
+	"bs-securefilestore-desc": "Предотвращает несанкционированный доступ к файлам",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Обзор",
+	"bs-securefilestore-pref-defaultdisposition-external": "Внешние",
+	"bs-securefilestore-pref-dispositionattachment": "Типы внешних файлов:",
+	"bs-securefilestore-pref-dispositioninline": "Обзор типов файлов:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Всегда отображать эти типы файлов:"
+}

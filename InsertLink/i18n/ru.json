@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a"
+		]
+	},
+	"bs-insertlink-dialog-title": "Вставить ссылку",
+	"bs-insertlink-tab-wiki-page": "Вики-страница",
+	"bs-insertlink-tab-ext-link": "Внешняя ссылка",
+	"bs-insertlink-tab-ext-file": "Ссылка на файл",
+	"bs-insertlink-label-page": "Страница",
+	"bs-insertlink-label-link": "Ссылка",
+	"bs-insertlink-label-mail": "Адрес электронной почты",
+	"bs-insertlink-label-description": "Описание",
+	"bs-insertlink-label-file": "Файл",
+	"bs-insertlink-label-searchfile": "Поиск…",
+	"bs-insertlink-select-a-page": "Выберите цель...",
+	"bs-insertlink-select-a-namespace": "(Страницы)"
+}

@@ -4,9 +4,14 @@
 			"Jopparn"
 		]
 	},
+	"bs-wantedarticle-sort-value-unknown": "Giltiga värden är: titel och tid.",
+	"bs-wantedarticle-page-removed": "Sidan \"$1\" har tagits bort.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Föreslå",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Skapa",
 	"bs-wantedarticle-single-textfield-defaulttext": "Sidtitel",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Gör en lista över önskade sidor. Tillgängliga konfigurationsattribut:",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>: Antal sidor att visa.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<kod>titel</code>: Rubrik.",
 	"bs-wantedarticle-tag-more-linktext": "Mer ...",
 	"bs-wantedarticle-tag-default-title": "Önskade sidor",
 	"bs-wantedarticle-pref-includelimit": "Antal förslag:",

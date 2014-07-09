@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Shirayuki"
 		]
 	},
 	"bs-interwikilinks-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of interwiki links extension",
 	"bs-interwikilinks-invalid-pfx-spc": "Text for the prefix is invalid. Please do not use spaces.",
 	"bs-interwikilinks-invalid-url-spc": "Text for the URL is invalid. Please do not use spaces.",
-	"bs-interwikilinks-label": "Anchor text in admin tab for interwiki links \\n {{Identical|Interwiki links}}",
+	"bs-interwikilinks-label": "Anchor text in admin tab for interwiki links.\n{{Identical|Interwiki link}}",
 	"bs-interwikilinks-link-created": "Text for the interwiki link has been created.",
 	"bs-interwikilinks-link-added": "Text for the interwiki link has been added.",
 	"bs-interwikilinks-link-deleted": "Text for the interwiki link has been deleted.",

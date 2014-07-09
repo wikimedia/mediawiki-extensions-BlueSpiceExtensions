@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"bs-whoisonline-desc": "Tregon një listë e përdoruesve të cilët janë aktualisht në linjë",
+	"bs-whoisonline-nousers": "Askush nuk është i regjistruar.",
+	"bs-whoisonline-widget-title": "Kush është online?",
+	"prefs-whoisonline": "Kush është online?",
+	"bs-whoisonline-pref-limitcount": "Numri maksimal i përdoruesve të treguar:",
+	"bs-whoisonline-pref-orderby": "Rendit nga",
+	"bs-whoisonline-pref-orderby-name": "Emri",
+	"bs-whoisonline-pref-interval": "Përditesoni intervalin në sekonda:"
+}

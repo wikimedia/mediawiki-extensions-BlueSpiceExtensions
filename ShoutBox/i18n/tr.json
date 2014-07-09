@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-shoutbox-message": "İleti",
+	"bs-shoutbox-loading": "Yükleniyor...",
+	"bs-shoutbox-confirm-title": "Onayla"
+}

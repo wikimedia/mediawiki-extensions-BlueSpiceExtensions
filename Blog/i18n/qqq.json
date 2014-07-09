@@ -7,7 +7,7 @@
 		]
 	},
 	"bs-blog-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of blog extension",
-	"prefs-blog": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for blog section in preferences. \\n {{Identical|Blog}}",
+	"prefs-blog": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for blog section in preferences.\n{{Identical|Blog}}",
 	"bs-blog-no-entries": "Text for there are no blog entries.",
 	"bs-blog-comments": "Anchor title for comments.\n{{Identical|Comment}}",
 	"bs-blog-read-more": "Anchor title for read more",

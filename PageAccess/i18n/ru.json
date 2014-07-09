@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a"
+		]
+	},
+	"bs-pageaccess-desc": "Управление доступом на уровне страницы",
+	"bs-pageaccess-error-no-groups-given": "Группы не были указаны."
+}

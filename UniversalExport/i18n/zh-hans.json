@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cwek",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"NigelSoft"
 		]
 	},
 	"bs-universalexport-desc": "添加导出功能",
@@ -29,6 +30,6 @@
 	"bs-universalexport-error-requested-title-in-category-blacklist": "请求页面必须不能导出因为它位于分类黑名单中。",
 	"bs-universalexport-statebarbodyuniversalexportmeta": "通用导出元数据",
 	"bs-universalexport-statebarbodyuniversalexportparams": "通用输出参数",
-	"action-universalexport-export": "去创建一个导出文件",
+	"action-universalexport-export": "创建一个导出文件",
 	"right-universalexport-export": "创建一个导出文件"
 }

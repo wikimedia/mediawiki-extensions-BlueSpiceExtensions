@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe"
+		]
+	},
+	"bs-interwikilinks-desc": "Interfaz administrativa para añadir, editar y eliminar enlaces interwiki",
+	"bs-interwikilinks-invalid-pfx-spc": "El prefijo es inválido. Por favor, no uses espacios.",
+	"bs-interwikilinks-invalid-url-spc": "La URL es inválida. Por favor, no uses espacios.",
+	"bs-interwikilinks-label": "Enlaces interwiki",
+	"bs-interwikilinks-nopfx": "Suministra un prefijo.",
+	"bs-interwikilinks-nourl": "Especifica una URL.",
+	"bs-interwikilinks-pfxtoolong": "El prefijo es demasiado largo. Usa 32 caracteres como máximo.",
+	"bs-interwikilinks-pfxexists": "Este prefijo ya existe.",
+	"bs-interwikilinks-headerprefix": "Prefijo",
+	"bs-interwikilinks-labelprefix": "Prefijo",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefijo",
+	"bs-interwikilink-select-a-prefix": "Elegir prefijo"
+}

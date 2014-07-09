@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-securefilestore-pref-defaultdisposition-brower": "Tarayıcı",
+	"bs-securefilestore-pref-dispositioninline": "Tarayıcı dosya türleri:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Şu dosya türlerini her zaman görüntüle:"
+}

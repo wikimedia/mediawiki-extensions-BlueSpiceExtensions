@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Sugjerojmë",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Krijo",
+	"bs-wantedarticle-single-textfield-defaulttext": "Titulli i faqes:",
+	"bs-wantedarticle-tag-more-linktext": "Më shumë...",
+	"bs-wantedarticle-tag-default-title": "Artikuj më të dëshiruar",
+	"bs-wantedarticle-pref-sort-time": "Kohë",
+	"bs-wantedarticle-pref-sort-title": "Titulli",
+	"bs-wantedarticle-pref-order-desc": "duke zbritur"
+}

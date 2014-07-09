@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"NigelSoft"
+		]
+	},
+	"bs-pagesvisited-desc": "提供个性化的最近访问页面列表",
+	"prefs-pagesvisited": "访问过的页面",
+	"bs-pagesvisited-widget-title": "访问过的页面",
+	"bs-pagesvisited-error-nsnotvalid": "提供的名字空间<code>$2</code>{{PLURAL:$1|无效}}。",
+	"bs-pagesvisited-pref-widgetlimit": "记录限制：",
+	"bs-pagesvisited-pref-widgetns": "名字空间：",
+	"bs-pagesvisited-pref-widgetsortodr": "排序方式：",
+	"bs-pagesvisited-pref-sort-time": "时间",
+	"bs-pagesvisited-pref-sort-pagename": "标题",
+	"bs-pagesvisited-tag-pagesvisited-desc": "显示您已访问过的页面列表。"
+}

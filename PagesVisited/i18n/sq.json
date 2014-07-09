@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"bs-pagesvisited-desc": "Ofron një listë të personalizuar të faqeve fundit qëkeni vizituar",
+	"prefs-pagesvisited": "Faqet e vizituara",
+	"bs-pagesvisited-widget-title": "Faqet e vizituara",
+	"bs-pagesvisited-pref-widgetlimit": "Kufiri i hyrjeve:",
+	"bs-pagesvisited-pref-widgetns": "Hapësira:",
+	"bs-pagesvisited-pref-widgetsortodr": "Rendit nga",
+	"bs-pagesvisited-pref-sort-time": "Koha",
+	"bs-pagesvisited-pref-sort-pagename": "titull",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Afishon një listë të faqeve që keni vizituar."
+}

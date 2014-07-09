@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"NigelSoft"
+		]
+	},
+	"bs-shoutbox-message": "消息",
+	"bs-shoutbox-no-entries": "这里什么都没有。",
+	"bs-shoutbox-loading": "正在加载…",
+	"bs-shoutbox-archive-success": "条目已删除。",
+	"bs-shoutbox-confirm-title": "确认",
+	"bs-shoutbox-entermessage": "请输入一条消息。",
+	"bs-shoutbox-too-early": "请等待几秒钟后再提交下一个条目。"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-specialadmindashboard-label": "ダッシュボード",
+	"prefs-dashboards": "ダッシュボード",
+	"admindashboard": "管理者ダッシュボード",
+	"userdashboard": "利用者ダッシュボード"
+}
