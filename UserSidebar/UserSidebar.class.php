@@ -50,9 +50,6 @@ class UserSidebar extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['UserSidebar'] = __DIR__ . '/UserSidebar.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::OTHER;
@@ -85,8 +82,6 @@ class UserSidebar extends BsExtensionMW {
 		$this->setHook( 'GetPreferences' );
 		$this->setHook( 'EditFormPreloadText' );
 		$this->setHook( 'BeforePageDisplay' );
-
-		BsConfig::registerVar( 'MW::UserSidebar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-usersidebar-userpagesettings-link-title', 'link' );
 
 		$wgAPIModules['sidebar'] = 'ApiSidebar';
 
@@ -165,7 +160,7 @@ class UserSidebar extends BsExtensionMW {
 				'URL' => htmlspecialchars( $oUserSidebarArticleTitle->getEditURL() ),
 				'TITLE' => wfMessage( 'bs-usersidebar-userpagesettings-link-title' )->plain(),
 				'TEXT' => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->text(),
-				'IMGALT' => wfMessage( 'bs-usersidebar-userpagesettings-headline' )->plain(),
+				'IMGALT' => wfMessage( 'bs-tab_focus' )->plain(),
 				'IMGSRC' => $this->getImagePath().'bs-userpage-sidebar.png',
 			)
 		);

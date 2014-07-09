@@ -1,8 +1,10 @@
 <?php
 
-BsExtensionManager::registerExtension('UserSidebar', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension( 'UserSidebar', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
 
-$wgExtensionMessagesFiles['UserSidebar'] = __DIR__ . '/UserSidebar.i18n.php';
+$wgMessagesDirs['UserSidebar'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['UserSidebar'] = __DIR__ . '/languages/UserSidebar.i18n.php';
 
 $wgAutoloadClasses['ApiSidebar'] = __DIR__ . '/api/ApiSidebar.php';
 
