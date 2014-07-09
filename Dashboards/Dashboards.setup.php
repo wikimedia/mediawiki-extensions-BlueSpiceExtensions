@@ -5,11 +5,12 @@ BsExtensionManager::registerExtension('Dashboards', BsRUNLEVEL::FULL|BsRUNLEVEL:
 $wgExtensionMessagesFiles['Dashboards'] = __DIR__ . '/languages/Dashboards.i18n.php';
 $wgExtensionMessagesFiles['DashboardsAlias'] = __DIR__.'/languages/Dashboards.alias.php';
 
+$GLOBALS['wgAutoloadClasses']['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['SpecialAdminDashboard'] = __DIR__.'/includes/specials/SpecialAdminDashboard.php';
-$wgAutoloadClasses['SpecialUserDashboard']  = __DIR__.'/includes/specials/SpecialUserDashboard.php';
-$wgAutoloadClasses['DashboardConfigRow']    = __DIR__.'/includes/DashboardConfigRow.php';
-$wgAutoloadClasses['DashboardConfigTable']  = __DIR__.'/includes/DashboardConfigTable.php';
+$wgAutoloadClasses['SpecialUserDashboard'] = __DIR__.'/includes/specials/SpecialUserDashboard.php';
+$wgAutoloadClasses['DashboardConfigRow'] = __DIR__.'/includes/DashboardConfigRow.php';
+$wgAutoloadClasses['DashboardConfigTable'] = __DIR__.'/includes/DashboardConfigTable.php';
 
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';
@@ -23,6 +24,8 @@ $wgAjaxExportList[] = 'Dashboards::saveTagDashboardConfig';
 $wgAjaxExportList[] = 'Dashboards::getPortlets';
 $wgAjaxExportList[] = 'Dashboards::getAdminDashboardConfig';
 $wgAjaxExportList[] = 'Dashboards::getUserDashboardConfig';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'Dashboards::getSchemaUpdates';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP.'/extensions/BlueSpiceExtensions/Dashboards/resources',

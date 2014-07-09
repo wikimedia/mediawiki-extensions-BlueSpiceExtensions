@@ -19,5 +19,3 @@ $wgResourceModules['ext.bluespice.rssFeeder'] = array(
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/RSSFeeder/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/RSSFeeder/resources',
 );
-
-$wgRSSUrlWhitelist[] = 'http://blog.blue-spice.org/feed/';

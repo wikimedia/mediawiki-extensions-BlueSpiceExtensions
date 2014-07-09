@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: view.ShoutBox.php 9757 2013-06-17 08:18:53Z pwirth $
+
  * @package    BlueSpice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -18,7 +18,7 @@
 /**
  * This view renders the Shoutbox frame.
  * @package    BlueSpice_Extensions
- * @subpackage ShoutBox 
+ * @subpackage ShoutBox
  */
 class ViewShoutBox extends ViewBaseElement {
 
@@ -53,15 +53,20 @@ class ViewShoutBox extends ViewBaseElement {
 
 		$aOut = array();
 		$aOut[] = '<form id="bs-sb-form" class="clearfix">';
-		$aOut[] = '  <textarea id="bs-sb-message" maxlength="'.BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ).'">' . wfMsg( 'bs-shoutbox-message' ) . '</textarea>';
+		$aOut[] =   '<textarea id="bs-sb-message" maxlength="'.BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ).'">' . wfMessage( 'bs-shoutbox-message' )->plain() . '</textarea>';
 		$aOut[] = '  <br />';
 		$aOut[] = '  <img id="bs-sb-loading" src="'.$wgScriptPath.'/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" alt="Loading..."/>';
-		$aOut[] = '  <input id="bs-sb-send" type="submit" value="' . wfMsg( 'bs-shoutbox-shout' ) . '" />';
+		$aOut[] = '  <input id="bs-sb-send" type="submit" value="' . wfMessage( 'bs-shoutbox-shout' )->plain() . '" />';
+		$aOut[] =   '<p class="bs-sb-textarea-additionalinfo">';
+		$aOut[] =   wfMessage('bs-shoutbox-charactersleft')->plain().': ';
+		$aOut[] =   '<span id="bs-sb-charactercounter">';
+		$aOut[] =     BsConfig::get( 'MW::ShoutBox::MaxMessageLength' );
+		$aOut[] =   '</span>';
+		$aOut[] =   '</p>';
 		$aOut[] = '</form>';
 
 		return implode( "\n" , $aOut );
 	}
-
 
 	/**
 	 * Renders the basic shoutbox layer
@@ -72,9 +77,8 @@ class ViewShoutBox extends ViewBaseElement {
 		$aOut = array();
 		$aOut[] = '<div class="bs-sb">';
 		$aOut[] = '  <fieldset>';
-		$aOut[] = '    <legend>' . wfMsg( 'bs-shoutbox-title' ) . '</legend>';
+		$aOut[] = '    <legend>' . wfMessage( 'bs-shoutbox-title' )->plain() . '</legend>';
 		$aOut[] = $innerText;
-		//$aOut[] = '    <div id="bs-sb-loading" style="display:none;"><img src="' . BsConfig::get('MW::ScriptPath') . '/extensions/BlueSpiceExtensions/ShoutBox/css/images/loading.gif" alt="'.wfMsg('loading').'" /></div>';
 		$aOut[] = '    <div id="bs-sb-content" style="display:none;"></div>';
 		$aOut[] = '  </fieldset>';
 		$aOut[] = '</div>';

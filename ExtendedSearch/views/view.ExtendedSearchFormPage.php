@@ -17,7 +17,7 @@
 /**
  * This view renders the ExtendedSearch search form.
  * @package    BlueSpice_Extensions
- * @subpackage ExtendedSearch 
+ * @subpackage ExtendedSearch
  */
 class ViewExtendedSearchFormPage extends ViewBaseElement {
 
@@ -50,86 +50,87 @@ class ViewExtendedSearchFormPage extends ViewBaseElement {
 		}
 
 		$sValue = ( isset( $aSearchBoxKeyValues['SearchTextFieldText'] ) )
-					? $aSearchBoxKeyValues['SearchTextFieldText']
-					: $aSearchBoxKeyValues['SearchTextFieldDefaultText'];
+			? $aSearchBoxKeyValues['SearchTextFieldText']
+			: $aSearchBoxKeyValues['SearchTextFieldDefaultText'];
+
 		$sInputFields .= Xml::input(
-				$aSearchBoxKeyValues['SearchTextFieldName'],
-				false,
-				$sValue,
-				array (
-					'title'        => $aSearchBoxKeyValues['SearchTextFieldTitle'],
-					'id'           => 'bs-extendedsearch-inputfieldtext-specialpage',
-					'defaultvalue' => $aSearchBoxKeyValues['SearchTextFieldDefaultText'],
-					'accesskey'    => 'f'
-				)
+			$aSearchBoxKeyValues['SearchTextFieldName'],
+			false,
+			$sValue,
+			array (
+				'title' => $aSearchBoxKeyValues['SearchTextFieldTitle'],
+				'id' => 'bs-extendedsearch-inputfieldtext-specialpage',
+				'defaultvalue' => $aSearchBoxKeyValues['SearchTextFieldDefaultText'],
+				'accesskey' => 'f'
+			)
 		);
 
 		$sInputFields .= Xml::input(
-				'search_scope',
-				false,
-				$aSearchBoxKeyValues['DefaultKeyValuePair'][1],
-				array (
-					'type' => 'hidden',
-					'id'   => 'bs-search-button-hidden-specialpage'
-				)
+			'search_scope',
+			false,
+			$aSearchBoxKeyValues['DefaultKeyValuePair'][1],
+			array (
+				'type' => 'hidden',
+				'id' => 'bs-search-button-hidden-specialpage'
+			)
 		);
 
 
 		$sImageTitleButton = Xml::element(
-				'div',
-				array(
-					'id'    => 'bs-extendedsearch-titlebuttonimage-specialpage',
-					'class' => 'bs-extendedsearch-buttonimage-specialpage'
-				),
-				'',
-				false
+			'div',
+			array(
+				'id' => 'bs-extendedsearch-titlebuttonimage-specialpage',
+				'class' => 'bs-extendedsearch-buttonimage-specialpage'
+			),
+			'',
+			false
 		);
 
 		$sInputFields .= Xml::openElement(
-				'button',
-				array(
-					'type'  => 'button',
-					'title' => $aSearchBoxKeyValues['TitleKeyValuePair'][1],
-					'id'    => 'bs-search-button-specialpage',
-					'class' => 'bs-search-button-specialpage'
-				)
+			'button',
+			array(
+				'type' => 'button',
+				'title' => $aSearchBoxKeyValues['TitleKeyValuePair'][1],
+				'id' => 'bs-search-button-specialpage',
+				'class' => 'bs-search-button-specialpage'
+			)
 		);
 		$sInputFields .= $sImageTitleButton;
 		$sInputFields .= Xml::closeElement( 'button' );
 
 		$sImageFulltextButton = Xml::element(
-				'div',
-				array(
-					'id'    => 'bs-extendedsearch-fulltextbuttonimage-specialpage',
-					'class' => 'bs-extendedsearch-buttonimage-specialpage'
-				),
-				'',
-				false
+			'div',
+			array(
+				'id' => 'bs-extendedsearch-fulltextbuttonimage-specialpage',
+				'class' => 'bs-extendedsearch-buttonimage-specialpage'
+			),
+			'',
+			false
 		);
 
 		$sInputFields .= Xml::openElement(
-				'button',
-				array(
-					'type'  => 'button',
-					'title' => $aSearchBoxKeyValues['FulltextKeyValuePair'][1],
-					'id'    => 'bs-search-fulltext-specialpage',
-					'class' => 'bs-search-button-specialpage'
-				)
+			'button',
+			array(
+				'type' => 'button',
+				'title' => $aSearchBoxKeyValues['FulltextKeyValuePair'][1],
+				'id' => 'bs-search-fulltext-specialpage',
+				'class' => 'bs-search-button-specialpage'
+			)
 		);
 		$sInputFields .= $sImageFulltextButton;
 		$sInputFields .= Xml::closeElement( 'button' );
 
 		$sLinkToExtendedPage = Xml::element(
-				'a',
-				array(
-					'href' => $this->getOption( 'linkToExtendedPageUri' ),
-					'id'   => 'bs-extendedsearch-linktoextendedpage'
-				),
-				wfMessage( $this->getOption( 'linkToExtendedPageMessageKey' ) )->plain(),
-				false
+			'a',
+			array(
+				'href' => $this->getOption( 'linkToExtendedPageUri' ),
+				'id' => 'bs-extendedsearch-linktoextendedpage'
+			),
+			wfMessage( $this->getOption( 'linkToExtendedPageMessageKey' ) )->plain(),
+			false
 		);
 
-		if ( empty( $this->_mItems ) ) {
+		if ( $this->hasItems() === 0 ) {
 			$sDivSearchDomains = '';
 		} else {
 			$itemsOut = '';
@@ -137,23 +138,19 @@ class ViewExtendedSearchFormPage extends ViewBaseElement {
 				$itemsOut .= $item->execute();
 			}
 			$sDivSearchDomains = Xml::openElement( 'div', array( 'class' => 'bs-extendedsearch-domaindiv' ) ).
-								$itemsOut.
-								Xml::closeElement( 'div' );
-			
+								$itemsOut . Xml::closeElement( 'div' );
 		}
 
 		$aFormAttributes = array(
-				'class'  => 'bs-search-form',
-				'id'     => 'bs-extendedsearch-form-specialpage',
-				'action' => $aSearchBoxKeyValues['SearchDestination'],
-				'method' => $aSearchBoxKeyValues['method'] );
+			'class' => 'bs-search-form',
+			'id' => 'bs-extendedsearch-form-specialpage',
+			'action' => $aSearchBoxKeyValues['SearchDestination'],
+			'method' => $aSearchBoxKeyValues['method']
+		);
 
-		if ( !isset( $aSearchBoxKeyValues['SearchTextFieldText'] ) )
-			$aFormAttributes['onsubmit'] = 'if (document.getElementById(\'bs-extendedsearch-inputfieldtext-specialpage\').value == \''.$aSearchBoxKeyValues['SearchTextFieldDefaultText'].'\') return false;';
-
-		$sForm = Xml::openElement( 'form', $aFormAttributes ) .
-				$sInputFields.$sLinkToExtendedPage.$sDivSearchDomains .
-				Xml::closeElement( 'form' );
+		$sForm = $sLinkToExtendedPage;
+		$sForm .= Xml::openElement( 'form', $aFormAttributes ) . $sInputFields . Xml::closeElement( 'form' );
+		$sForm .= $sDivSearchDomains;
 
 		return $sForm;
 	}

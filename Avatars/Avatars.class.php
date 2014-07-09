@@ -4,7 +4,7 @@
  * Avatars extension for BlueSpice
  *
  * Provide generic and individual user images
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -55,8 +55,9 @@ class Avatars extends BsExtensionMW {
 			EXTINFO::NAME => 'Avatars',
 			EXTINFO::DESCRIPTION => 'Provide generic and individual user images.',
 			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION => 'default',
+			EXTINFO::STATUS => 'default',
+			EXTINFO::PACKAGE => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array('bluespice' => '2.22.0'));
 		$this->mExtensionKey = 'MW::Avatars';
@@ -69,7 +70,7 @@ class Avatars extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn('BS::' . __METHOD__);
 
-		BsConfig::registerVar('MW::Avatars::DefaultSize', 48, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-Avatars-pref-DefaultSize', 'int');
+		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-Avatars-pref-DefaultSize', 'int');
 		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-Avatars-pref-Generator', 'select');
 
 		$this->setHook('BSAdapterGetUserMiniProfileBeforeInit');
@@ -106,9 +107,21 @@ class Avatars extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBSAdapterGetUserMiniProfileBeforeInit($oUserMiniProfileView, $oUser, $aParams) {
+		# Set anonymous image for anonymous or deleted users
+		if ($oUser->isAnon()) {
+			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DeletedUserImage'));
+			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
+			return true;
+		}
 		# If user has set MW image or URL return immediately
 		if ($oUser->getOption('MW::UserImage'))
 			return true;
+		# Set default image in read-only mode or thumb creation might get triggered
+		if (wfReadOnly()) {
+			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DefaultUserImage'));
+			return true;
+		}
+		# Set or generate user's avatar
 		$oUserMiniProfileView->setOption('userimagesrc', $this->generateAvatar($oUser, $aParams));
 		return true;
 	}
@@ -117,12 +130,17 @@ class Avatars extends BsExtensionMW {
 	 * Show avatar on user page
 	 * @param ViewAuthorsUserPageProfileImageSetting $oView
 	 * @param User $oUser
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onBsAuthorPageProfileImageAfterInitFields($oView, $oUser) {
 		# If user has set MW image or URL return immediately
 		if ($oUser->getOption('MW::UserImage'))
 			return true;
+		# Set default image in read-only mode or thumb creation might get triggered
+		if (wfReadOnly()) {
+			$oView->setImagePath(BsConfig::get('MW::DefaultUserImage'));
+			return true;
+		}
 		$oView->setImagePath($this->generateAvatar($oUser));
 		return true;
 	}
@@ -133,6 +151,13 @@ class Avatars extends BsExtensionMW {
 	 * @return type
 	 */
 	public static function setUserImage($sUserImage) {
+		if (wfReadOnly()) {
+			global $wgReadOnly;
+			return FormatJson::encode(array(
+						'success' => false,
+						'message' => array(wfMessage('bs-readonly', $wgReadOnly)->escaped())
+			));
+		}
 		// check if string is URL or valid file
 		$oFile = wfFindFile($sUserImage);
 		$bIsImage = is_object($oFile) && $oFile->canRender();
@@ -143,7 +168,7 @@ class Avatars extends BsExtensionMW {
 			));
 		} else {
 			$oUser = RequestContext::getMain()->getUser();
-			$oUser->setOption('MW::UserImage', serialize($sUserImage));
+			$oUser->setOption('MW::UserImage', $sUserImage);
 			$oUser->saveSettings();
 
 			return FormatJson::encode(array(
@@ -158,6 +183,10 @@ class Avatars extends BsExtensionMW {
 	 * @return type
 	 */
 	public static function generateAvatarAjax() {
+		if (wfReadOnly()) {
+			global $wgReadOnly;
+			return new AjaxResponse(FormatJson::encode(wfMessage('bs-readonly', $wgReadOnly)->escaped()));
+		}
 		$oUser = RequestContext::getMain()->getUser();
 		self::unsetUserImage($oUser);
 		$oAvatars = BsExtensionManager::getExtension('Avatars');
@@ -180,7 +209,7 @@ class Avatars extends BsExtensionMW {
 	/**
 	 * Generate an avatar image
 	 * @param User $oUser
-	 * @return string Relative URL to avatar image 
+	 * @return string Relative URL to avatar image
 	 */
 	public function generateAvatar($oUser, $aParams = array(), $bOverwrite = false) {
 		$iAvatarDefaultSize = BsConfig::get('MW::Avatars::DefaultSize');
@@ -205,10 +234,11 @@ class Avatars extends BsExtensionMW {
 					break;
 				case 'InstantAvatar':
 					require_once( __DIR__ . "/includes/lib/InstantAvatar/instantavatar.php" );
-					$oIA = new InstantAvatar(__DIR__ . '/includes/lib/InstantAvatar/Comfortaa-Regular.ttf', 18, $iAvatarDefaultSize, $iAvatarDefaultSize, 2, __DIR__ . '/includes/lib/InstantAvatar/glass.png');
+					$iFontSize = round(18/40 * $iAvatarDefaultSize);
+					$oIA = new InstantAvatar(__DIR__ . '/includes/lib/InstantAvatar/Comfortaa-Regular.ttf', $iFontSize, $iAvatarDefaultSize, $iAvatarDefaultSize, 2, __DIR__ . '/includes/lib/InstantAvatar/glass.png');
 					if ($sUserRealName) {
 						preg_match_all('#(^| )(.)#u', $sUserRealName, $aMatches);
-						$sChars = join('', $aMatches[2]);
+						$sChars = implode('', $aMatches[2]);
 						if (mb_strlen($sChars) < 2)
 							$sChars = $sUserRealName;
 					}
@@ -236,13 +266,20 @@ class Avatars extends BsExtensionMW {
 	}
 
 	public static function uploadFile() {
+		if (wfReadOnly()) {
+			global $wgReadOnly;
+			$oAjaxResponse = new AjaxResponse(FormatJson::encode(array('success' => false, 'msg' => wfMessage('bs-readonly', $wgReadOnly)->escaped())));
+			$oAjaxResponse->setContentType('text/html');
+			return $oAjaxResponse;
+		}
 		global $wgRequest, $wgUser;
 		self::unsetUserImage($wgUser);
 		$oAvatars = BsExtensionManager::getExtension('Avatars');
 		$sAvatarFileName = self::$sAvatarFilePrefix . $wgUser->getId() . ".png";
-		$oStatus = BsFileSystemHelper::uploadFile($wgRequest->getVal('name'), $oAvatars->mInfo[EXTINFO::NAME], $sAvatarFileName, "png");
+		$oStatus = BsFileSystemHelper::uploadAndConvertImage($wgRequest->getVal('name'), $oAvatars->mInfo[EXTINFO::NAME], $sAvatarFileName);
 		if (!$oStatus->isGood()) {
-			$aResult = json_encode(array('success' => false, 'msg' => $oStatus->getMessage()));
+			$aErrors = $oStatus->getErrorsArray();
+			$aResult = json_encode(array('success' => false, 'msg' => $aErrors[0][0]));
 		} else {
 			$aResult = json_encode(array('success' => true, 'msg' => wfMessage('bs-avatars-upload-complete')->plain(), 'name' => $oStatus->getValue()));
 			# found no way to regenerate thumbs. just delete thumb folder if it exists

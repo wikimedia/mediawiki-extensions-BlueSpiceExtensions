@@ -22,8 +22,8 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage PagesVisited
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -66,9 +66,10 @@ class PagesVisited extends BsExtensionMW {
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'PagesVisited',
 			EXTINFO::DESCRIPTION => 'Provides a personalized list of last visited pages.',
-			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 										'bluespice'   => '2.22.0',
@@ -87,6 +88,7 @@ class PagesVisited extends BsExtensionMW {
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BSUserSidebarDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
+		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
 		BsConfig::registerVar( 'MW::PagesVisited::WidgetLimit',          10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-pagesvisited-pref-WidgetLimit', 'int' );
 		BsConfig::registerVar( 'MW::PagesVisited::WidgetNS',     array( 0 ), BsConfig::LEVEL_USER|BsConfig::TYPE_ARRAY_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-WidgetNS', 'multiselectex' );
@@ -113,8 +115,8 @@ class PagesVisited extends BsExtensionMW {
 			case 'WidgetSortOdr':
 				$aPrefs = array(
 					'options' => array(
-						wfMsg( 'bs-pagesvisited-pref-sort-time' )     => 'time',
-						wfMsg( 'bs-pagesvisited-pref-sort-pagename' ) => 'pagename'
+						wfMessage( 'bs-pagesvisited-pref-sort-time' )->plain() => 'time',
+						wfMessage( 'bs-pagesvisited-pref-sort-pagename' )->plain() => 'pagename'
 					)
 				);
 				break;
@@ -122,6 +124,26 @@ class PagesVisited extends BsExtensionMW {
 				break;
 		}
 		return $aPrefs;
+	}
+
+	/**
+	 * Inject tags into InsertMagic
+	 * @param Object $oResponse reference
+	 * $param String $type
+	 * @return always true to keep hook running
+	 */
+	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
+		if( $type != 'tags' ) return true;
+
+		$oResponse->result[] = array(
+			'id' => 'bs:pagesvisited',
+			'type' => 'tag',
+			'name' => 'pagesvisited',
+			'desc' => wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->parse(),
+			'code' => '<bs:pagesvisited />',
+		);
+
+		return true;
 	}
 
 	/**
@@ -154,12 +176,13 @@ class PagesVisited extends BsExtensionMW {
 	 * @return string HTML list of recently visited pages
 	 */
 	public function onPagesVisitedTag( $sInput, $aAttributes, $oParser ) {
+		$oParser->disableCache();
 		$oErrorListView = new ViewTagErrorList( $this );
 
-		$iCount          = BsCore::sanitizeArrayEntry( $aAttributes, 'count',              5, BsPARAMTYPE::INT );
+		$iCount = BsCore::sanitizeArrayEntry( $aAttributes, 'count',              5, BsPARAMTYPE::INT );
 		$iMaxTitleLength = BsCore::sanitizeArrayEntry( $aAttributes, 'maxtitlelength',    20, BsPARAMTYPE::INT );
-		$sNamespaces     = BsCore::sanitizeArrayEntry( $aAttributes, 'namespaces',     'all', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
-		$sSortOrder      = BsCore::sanitizeArrayEntry( $aAttributes, 'order',          'time', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
+		$sNamespaces = BsCore::sanitizeArrayEntry( $aAttributes, 'namespaces',     'all', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
+		$sSortOrder = BsCore::sanitizeArrayEntry( $aAttributes, 'order',          'time', BsPARAMTYPE::STRING | BsPARAMOPTION::CLEANUP_STRING );
 
 		//Validation
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30) );
@@ -177,14 +200,13 @@ class PagesVisited extends BsExtensionMW {
 		}
 
 		$iCurrentNamespaceId = $oParser->getTitle()->getNamespace();
-		$oListView           = $this->makePagesVisitedWikiList( $iCount, $sNamespaces, $iCurrentNamespaceId, $iMaxTitleLength );
-		$sOut                = $oListView->execute();
+		$oListView = $this->makePagesVisitedWikiList( $iCount, $sNamespaces, $iCurrentNamespaceId, $iMaxTitleLength, $sSortOrder );
+		$sOut = $oListView->execute();
 
-		if ( $oListView instanceof ViewTagErrorList) {
+		if ( $oListView instanceof ViewTagErrorList ) {
 			return $sOut;
-		}
-		else {
-			return $this->mCore->parseWikiText( $sOut );
+		} else {
+			return $this->mCore->parseWikiText( $sOut, $this->getTitle() );
 		}
 	}
 
@@ -195,7 +217,8 @@ class PagesVisited extends BsExtensionMW {
 	public function onWidgetListKeyword() {
 		$aViews = array();
 		$this->addWidgetView( $aViews );
-		$aViews[0]->setAdditionalBodyClasses( array('bs-nav-links') );
+		$aViews[0]->setAdditionalBodyClasses( array( 'bs-nav-links' ) );
+
 		return $aViews[0];
 	}
 
@@ -208,7 +231,7 @@ class PagesVisited extends BsExtensionMW {
 	public function onBSUserSidebarDefaultWidgets( &$aViews, $oUser, $oTitle ) {
 		$aView = array();
 		$this->addWidgetView( $aView );
-		$aView[0]->setAdditionalBodyClasses( array('bs-nav-links') );
+		$aView[0]->setAdditionalBodyClasses( array( 'bs-nav-links' ) );
 		$aViews[] = $aView[0];
 
 		return true;
@@ -219,31 +242,31 @@ class PagesVisited extends BsExtensionMW {
 	 * @param array &$aViews List of Widget view objects from the BlueSpice Skin.
 	 */
 	private function addWidgetView( &$aViews ) {
-		$iCount              = BsConfig::get( 'MW::PagesVisited::WidgetLimit' );
-		$aNamespaces         = BsConfig::get( 'MW::PagesVisited::WidgetNS' ); //error_log( '$aNamespaces = '.var_export( $aNamespaces, true ) );
+		$iCount = BsConfig::get( 'MW::PagesVisited::WidgetLimit' );
+		$aNamespaces = BsConfig::get( 'MW::PagesVisited::WidgetNS' );
+		$sSortOrder = BsConfig::get( 'MW::PagesVisited::WidgetSortOdr' );
 		$iCurrentNamespaceId = 0;
-		$sSortOrder          = BsConfig::get( 'MW::PagesVisited::WidgetSortOdr' );
 
 		//Validation
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array( 'fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30 ) );
 		if ( $oValidationICount->getErrorCode() ) $iCount = 10;
 
-		if( $this->getTitle() !== null  ) { // TODO RBV (15.04.11 13:05): Necessary?
+		if ( $this->getTitle() !== null  ) { // TODO RBV (15.04.11 13:05): Necessary?
 			$iCurrentNamespaceId = $this->getTitle()->getNamespace();
 		}
 
 		// TODO RBV (04.07.11 15:02): Rework method -> implode() is a workaround for legacy code.
-		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',',$aNamespaces ), $iCurrentNamespaceId, 20, $sSortOrder );
-		$sOut      = $oListView->execute();
+		$oListView = $this->makePagesVisitedWikiList( $iCount, implode( ',',$aNamespaces ), $iCurrentNamespaceId, 19, $sSortOrder );
+		$sOut = $oListView->execute();
 
 		if ( !( $oListView instanceof ViewTagError ) ) {
-			$sOut = $this->mCore->parseWikiText( $sOut );
+			$sOut = $this->mCore->parseWikiText( $sOut, $this->getTitle() );
 		}
 
 		$oWidgetView = new ViewWidget();
-		$oWidgetView->setTitle( wfMsg( 'bs-pagesvisited-widget-title' ) )
+		$oWidgetView->setTitle( wfMessage( 'bs-pagesvisited-widget-title' )->plain() )
 					->setBody( $sOut )
-					->setAdditionalBodyClasses( array('bs-nav-links') ); //For correct margin and fontsize
+					->setAdditionalBodyClasses( array( 'bs-nav-links' ) ); //For correct margin and fontsize
 
 		$aViews[] = $oWidgetView;
 	}
@@ -258,40 +281,40 @@ class PagesVisited extends BsExtensionMW {
 	 */
 	private function makePagesVisitedWikiList( $iCount = 5, $sNamespaces = 'all', $iCurrentNamespaceId = 0, $iMaxTitleLength = 20, $sSortOrder = 'time' ) {
 		$oCurrentUser = $this->getUser();
-		if( is_null( $oCurrentUser ) ) return null; // in CLI
+		if ( is_null( $oCurrentUser ) ) return null; // in CLI
 
 		//$sCacheKey = md5( $oCurrentUser->getName().$iCount.$sNamespaces.$iCurrentNamespaceId.$iMaxTitleLength );
 		//if( isset( self::$prResultListViewCache[$sCacheKey] ) ) return self::$prResultListViewCache[$sCacheKey];
 		$oErrorListView = new ViewTagErrorList( $this );
-		$oErrorView     = null;
-		$aConditions    = array();
+		$oErrorView = null;
+		$aConditions = array();
 		$aNamespaceIndexes = array( 0 );
 
 		try {
 			$aNamespaceIndexes = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $sNamespaces ); //Returns array of integer indexes
-		}
-		catch ( BsInvalidNamespaceException $oException ) {
+		} catch ( BsInvalidNamespaceException $oException ) {
 			$aInvalidNamespaces = $oException->getListOfInvalidNamespaces();
 
 			$oVisitedPagesListView = new ViewBaseElement();
 			$oVisitedPagesListView->setTemplate( '<ul><li><em>{TEXT}</em></li></ul>' . "\n" );
 
 			if( count( $aInvalidNamespaces ) > 1 ) {
-				$sErrorMsg = wfMsg( 'bs-pagesvisited-error-namespaces-not-valid', implode( ',', $aInvalidNamespaces ) );
+				$sErrorMsg = wfMessage( 'bs-pagesvisited-error-namespaces-not-valid', implode( ',', $aInvalidNamespaces ) )->plain();
+			} else {
+				$sErrorMsg = wfMessage( 'bs-pagesvisited-error-namespace-not-valid', $aInvalidNamespaces[0] )->plain();
 			}
-			else {
-				$sErrorMsg = wfMsg( 'bs-pagesvisited-error-namespace-not-valid', $aInvalidNamespaces[0] );
-			}
-			$oVisitedPagesListView->addData( array (
-				'TEXT' => $sErrorMsg
-				)
-			);
+
+			$oVisitedPagesListView->addData( array ( 'TEXT' => $sErrorMsg ) );
 
 			//self::$prResultListViewCache[$sCacheKey] = $oVisitedPagesListView;
 			return $oVisitedPagesListView;
 		}
 
-		$aConditions   = array( 'wo_user_id' => $oCurrentUser->getId() );
+		$aConditions = array(
+			'wo_user_id' => $oCurrentUser->getId(),
+			'wo_action' => 'view'
+		);
+
 		$aConditions[] = 'wo_page_namespace IN ('.implode( ',', $aNamespaceIndexes ).')'; //Add IN clause to conditions-array
 		$aConditions[] = 'wo_page_namespace != -1'; // TODO RBV (24.02.11 13:54): Filter SpecialPages because there are difficulties to list them
 
@@ -300,7 +323,7 @@ class PagesVisited extends BsExtensionMW {
 			'ORDER BY' => 'MAX(wo_timestamp) DESC'
 		);
 
-		if( $sSortOrder == 'pagename' ) $aOptions['ORDER BY'] = 'wo_page_title ASC';
+		if ( $sSortOrder == 'pagename' ) $aOptions['ORDER BY'] = 'wo_page_title ASC';
 
 		//If the page the extension is used on appears in the result set we have to fetch one row more than neccessary.
 		if ( in_array( $iCurrentNamespaceId, $aNamespaceIndexes ) ) $aOptions['OFFSET'] = 1;
@@ -311,10 +334,10 @@ class PagesVisited extends BsExtensionMW {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		global $wgDBtype;
-		if($wgDBtype == 'oracle') {
+		if ( $wgDBtype == 'oracle' ) {
 			$sRowNumField = 'rnk';
-			$sTable = strtoupper($dbr->tablePrefix().$sTable);
-			$sFields = implode(',', $aFields);
+			$sTable = mb_strtoupper( $dbr->tablePrefix().$sTable );
+			$sFields = implode( ',', $aFields );
 			$sConditions = $dbr->makeList( $aConditions, LIST_AND );
 			$aOptions['ORDER BY'] = $sSortOrder == 'pagename' ? $aOptions['ORDER BY'] : 'wo_timestamp DESC' ;
 
@@ -325,9 +348,7 @@ class PagesVisited extends BsExtensionMW {
 											)
 										WHERE ".$sRowNumField." BETWEEN (0) AND (".$iCount.") GROUP BY ".$aOptions["GROUP BY"].""
 			);
-		}
-		else {
-			$aOptions['LIMIT'] = $iCount;
+		} else {
 			$res = $dbr->select(
 								$sTable,
 								$aFields,
@@ -339,7 +360,10 @@ class PagesVisited extends BsExtensionMW {
 
 		$oVisitedPagesListView = new ViewBaseElement();
 		$oVisitedPagesListView->setTemplate( '*{WIKILINK}' . "\n" );
+		$iItems = 1;
+
 		foreach ( $res as $row ) {
+			if ( $iItems > $iCount ) break;
 			$oVisitedPageTitle = Title::newFromID( $row->wo_page_id );
 			/*
 			// TODO RBV (24.02.11 13:52): Make SpecialPages work...
@@ -362,76 +386,15 @@ class PagesVisited extends BsExtensionMW {
 			);
 
 			$oVisitedPagesListView->addData(
-				array ( 'WIKILINK'  => BsLinkProvider::makeEscapedWikiLinkForTitle( $oVisitedPageTitle, $sDisplayTitle ) )
+				array ( 'WIKILINK' => BsLinkProvider::makeEscapedWikiLinkForTitle( $oVisitedPageTitle, $sDisplayTitle ) )
 			);
+			$iItems++;
 		}
 
 		//$dbr->freeResult( $res );
 
 		//self::$prResultListViewCache[$sCacheKey] = $oVisitedPagesListView;
 		return $oVisitedPagesListView;
-	}
-
-	/**
-	 * Get the pages for specialpage, called via ajax
-	 * @param string $sOutput Output to return
-	 * @return bool Always true
-	 */
-	public static function getData( $iUserID ) {
-		$oDbr = wfGetDB( DB_SLAVE );
-
-		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$iLimit     = $oStoreParams->getLimit();
-		$iStart     = $oStoreParams->getStart();
-		$sSort      = $oStoreParams->getSort( 'MAX(readers_ts)' );
-		$sDirection = $oStoreParams->getDirection();
-
-		if ( $sSort == 'user_page' ) $sSort = 'readers_user_name';
-
-		$res = $oDbr->select(
-				array( 'bs_readers' ),
-				array( 'readers_page_id', 'MAX(readers_ts) as readers_ts' ),
-				array( 'readers_user_id' => $iUserID ),
-				__METHOD__,
-				array(
-					'GROUP BY' => 'readers_page_id',
-					'ORDER BY' => 'MAX(readers_ts) DESC',
-					'LIMIT'    => $iLimit,
-					'OFFSET'   => $iStart
-				)
-		);
-
-		$aPages = array();
-		if ( $oDbr->numRows( $res ) > 0 ) {
-			while ( $row = $oDbr->fetchObject( $res ) ) {
-				$oTitle = Title::newFromID( $row->readers_page_id );
-
-				$aTmpPage = array();
-				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
-				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
-				$aTmpPage['pv_ts'] = date( "d.m.Y", $row->readers_ts );
-
-				$aPages['page'][] = $aTmpPage;
-			}
-		}
-		$oDbr->freeResult( $res );
-
-		$rowCount = $oDbr->select(
-				'bs_readers',
-				'readers_page_id',
-				array(
-					'readers_user_id' => $iUserID
-				),
-				__METHOD__,
-				array(
-					'GROUP BY' => 'readers_page_id'
-				)
-		);
-		$aPages['totalCount'] = $oDbr->numRows( $rowCount );
-		$oDbr->freeResult( $rowCount );
-
-		$sOutput = json_encode( $aPages );
-		return $sOutput;
 	}
 
 }

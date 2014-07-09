@@ -30,7 +30,7 @@ class BuildIndexMwSpecialLinked extends AbstractBuildIndexMwLinked {
 
 	/**
 	 * Pointer to current database connection
-	 * @var object Referenec to Database object 
+	 * @var object Referenec to Database object
 	 */
 	protected $oDbr;
 	/**
@@ -95,8 +95,7 @@ class BuildIndexMwSpecialLinked extends AbstractBuildIndexMwLinked {
 	 * @return Apache_Solr_Document
 	 */
 	public function makeLinkedDocument( $type, $filename, &$fileText, $path, $timestamp ) {
-		$doc = $this->oMainControl->makeDocument( 'linked', $type, $filename, $fileText, -1, 999, $path, $timestamp );
-		return $doc;
+		return $this->oMainControl->makeDocument( 'linked', $type, $filename, $fileText, -1, 999, $path, $timestamp );
 	}
 
 	/**
@@ -135,7 +134,7 @@ class BuildIndexMwSpecialLinked extends AbstractBuildIndexMwLinked {
 
 			// Check if the file is already indexed
 			try {
-				$uniqueIdForDocument = $this->oMainControl->getUniqueId( -1, $path );
+				$uniqueIdForDocument = $this->oMainControl->getUniqueId( $path, 'special-linked' );
 				$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
 			}
 			catch ( Exception $e ) {

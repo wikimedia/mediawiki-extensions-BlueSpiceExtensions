@@ -5,13 +5,17 @@ BsExtensionManager::registerExtension('WidgetBar', BsRUNLEVEL::FULL|BsRUNLEVEL::
 $wgExtensionMessagesFiles['WidgetBar'] = __DIR__ . '/WidgetBar.i18n.php';
 
 $aResourceModuleTemplate = array(
-	'localBasePath' => __DIR__ . '/resources',
+	'localBasePath' => 'extensions/BlueSpiceExtensions/WidgetBar/resources/',
 	'remoteExtPath' => 'BlueSpiceExtensions/WidgetBar/resources'
 );
 
+$wgResourceModules['ext.bluespice.widgetbar.style'] = array(
+	'styles'  => 'bluespice.widgetBar.css'
+) + $aResourceModuleTemplate;
+
 $wgResourceModules['ext.bluespice.widgetbar'] = array(
 	'scripts' => 'bluespice.widgetBar.js',
-	'styles'  => 'bluespice.widgetBar.css', //TODO: Make style independent
+	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

@@ -1,8 +1,7 @@
 /**
- * InterWikiManager extension
+ * InterLink js for InsertLink extension
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    0.1 beta
  * @package    Bluespice_Extensions
  * @subpackage InterWikiLinks
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -11,7 +10,7 @@
  */
 
 $(document).bind('BsInsertLinkWindowBeforeAddTabs', function( event, window, items ){
-	var storeData = []
+	var storeData = [];
 	for(var i = 0; i < mw.config.get('BSInterWikiPrefixes', []).length; i++) {
 		storeData.push({
 			name: mw.config.get('BSInterWikiPrefixes', [])[i],
@@ -21,7 +20,7 @@ $(document).bind('BsInsertLinkWindowBeforeAddTabs', function( event, window, ite
 	var storeIW = Ext.create('Ext.data.Store', {
 		fields: [
 			'name',
-			'label',
+			'label'
 		],
 		data: storeData,
 		autoLoad: false

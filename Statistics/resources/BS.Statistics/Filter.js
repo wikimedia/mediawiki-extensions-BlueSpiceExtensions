@@ -1,4 +1,16 @@
-	
+/**
+ * Statistics filter panel
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage Statistics
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
 Ext.define( 'BS.Statistics.Filter', {
 	extend: 'Ext.form.Panel',
 	//id: 'bs-statistics-dlg-filter',
@@ -13,6 +25,7 @@ Ext.define( 'BS.Statistics.Filter', {
 	submitEmptyText: false,
 	method: 'post',
 	url: mw.util.wikiScript(),
+	id: 'bs-statistics-filterpanel',
 	baseParams: {
 		action: 'ajax',
 		rs: 'SpecialExtendedStatistics::ajaxSave'
@@ -205,9 +218,11 @@ Ext.define( 'BS.Statistics.Filter', {
 			lastQuery: '',
 			forceSelection: true
 		});
+		this.cbInputDepictionGrain.select('W');
 
 		this.btnOK = new Ext.create( 'Ext.Button', {
-			text: mw.message('bs-statistics-continue-step-3').plain()
+			text: mw.message('bs-statistics-continue-step-3').plain(),
+			id: 'bs-statistics-filterpanel-submit'
 		});
 		this.btnOK.addListener( 'click', this.btnOKclicked, this);
 
@@ -290,6 +305,7 @@ Ext.define( 'BS.Statistics.Filter', {
 	},
 	btnOKclicked: function(button,event){
 		if( this.getForm().isValid() == false ) return;
+		this.fireEvent('btnOKBeforeSend', this)
 		this.getForm().doAction('submit', {
 			success: this.fpSuccess,
 			failure: this.fpFailure,

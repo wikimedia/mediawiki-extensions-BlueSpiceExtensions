@@ -27,11 +27,11 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 	/**
 	 * URL servlet part for morelikethis
 	 */
-	const MORELIKETHIS_SERVLET = 'mlt';
+	const MORELIKETHIS_SERVLET = '/mlt';
 	/**
 	 * URL servlet part for spellchecker
 	 */
-	const SPELLCHECK_SERVLET = 'spell';
+	const SPELLCHECK_SERVLET = '/spell';
 
 	/**
 	 * URL protocol part of solr service.
@@ -80,15 +80,15 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 	 */
 	protected function _initUrls() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->_morelikethisUrl = $this->_constructUrl( self::MORELIKETHIS_SERVLET );
-		$this->_spellcheckUrl = $this->_constructUrl( self::SPELLCHECK_SERVLET );
+		$this->_morelikethisUrl = $this->_constructUrl( BsConfig::get( 'MW::ExtendedSearch::SolrCore' ) . self::MORELIKETHIS_SERVLET );
+		$this->_spellcheckUrl = $this->_constructUrl( BsConfig::get( 'MW::ExtendedSearch::SolrCore' ) . self::SPELLCHECK_SERVLET );
 		parent::_initUrls();
 
 		if ( $this->bUseDifferentProtocolThanHttp ) {
-			$this->_updateUrl       = str_ireplace( 'http://', $this->sProtocol.'://', $this->_updateUrl );
-			$this->_searchUrl       = str_ireplace( 'http://', $this->sProtocol.'://', $this->_searchUrl );
-			$this->_threadsUrl      = str_ireplace( 'http://', $this->sProtocol.'://', $this->_threadsUrl );
-			$this->_spellcheckUrl   = str_ireplace( 'http://', $this->sProtocol.'://', $this->_spellcheckUrl );
+			$this->_updateUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_updateUrl );
+			$this->_searchUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_searchUrl );
+			$this->_threadsUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_threadsUrl );
+			$this->_spellcheckUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_spellcheckUrl );
 			$this->_morelikethisUrl = str_ireplace( 'http://', $this->sProtocol.'://', $this->_morelikethisUrl );
 		}
 		wfProfileOut( 'BS::'.__METHOD__ );

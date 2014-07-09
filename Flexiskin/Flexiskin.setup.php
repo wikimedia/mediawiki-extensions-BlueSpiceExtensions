@@ -10,7 +10,6 @@ $wgAutoloadClasses['SpecialFlexiskin'] = __DIR__ . '/includes/specials/SpecialFl
 $wgHooks['BSGetLogo'][] = "Flexiskin::onBSGetLogo";
 
 $wgSpecialPageGroups['Flexiskin'] = 'bluespice';
-$wgSpecialPages['Flexiskin'] = 'SpecialFlexiskin';
 
 $wgResourceModules['ext.bluespice.flexiskin'] = array(
     'scripts' => array(
@@ -40,7 +39,12 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'bs-flexiskin-headerHeader',
 	'bs-flexiskin-labelLogoUpload',
 	'bs-flexiskin-labelBackgroundUpload',
-	'bs-flexiskin-labelCompleteColor',
+	'bs-flexiskin-labelRepeatBackground',
+	'bs-flexiskin-no-repeat',
+	'bs-flexiskin-repeat-x',
+	'bs-flexiskin-repeat-y',
+	'bs-flexiskin-repeat',
+	'bs-flexiskin-labelCustomBackgroundColor',
 	'bs-flexiskin-labelNavigation',
 	'bs-flexiskin-no-img',
 	'bs-flexiskin-headerPosition',
@@ -48,7 +52,10 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'bs-flexiskin-left',
 	'bs-flexiskin-right',
 	'bs-flexiskin-center',
-	'bs-flexiskin-labelWidth'
+	'bs-flexiskin-labelWidth',
+	'bs-flexiskin-labelFullWidth',
+	'bs-flexiskin-error-nameEmpty',
+	'bs-flexiskin-error-templateNotExists'
     ),
     'localBasePath' => $IP,
     'remoteBasePath' => &$GLOBALS['wgScriptPath']

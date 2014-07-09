@@ -37,7 +37,7 @@ class ViewBlogItem extends ViewBaseElement {
 	protected $mEntryDate;
 	/**
 	 * Link that points to the author's page
-	 * @var string URL to the author's page 
+	 * @var string PrefixedText of the author's page 
 	 */
 	protected $mAuthorPage;
 	/**
@@ -122,7 +122,7 @@ class ViewBlogItem extends ViewBaseElement {
 
 	/**
 	 * Setter method for mAuthorPage
-	 * @param string $page URL
+	 * @param string $page PrefixedText form of a user page
 	 */
 	public function setAuthorPage( $page ) {
 		$this->mAuthorPage = $page;
@@ -223,13 +223,14 @@ class ViewBlogItem extends ViewBaseElement {
 		if ( $this->getOption( 'moreAtEndOfEntry' ) ) $sOut .= '&nbsp;';
 		else $sOut .= "\n";
 
-		$sParsedOut = BsCore::getInstance()->parseWikiText( $sOut );
+		$sParsedOut = BsCore::getInstance()->parseWikiText( $sOut, RequestContext::getMain()->getTitle() );
 
 		$sOut = $sParsedOut;
 
 		if ( $this->getOption( 'more' ) ) {
 			$aLinkOptions = array(
 			    'href'   => $this->mUrl,
+				'class'  => 'bs-blog-item-read-more',
 			    'title'  => wfMessage( 'bs-blog-read-more' )->plain()
 			);
 			if ( $this->getOption( 'moreInNewWindow' ) )
@@ -258,6 +259,7 @@ class ViewBlogItem extends ViewBaseElement {
 		// Comments
 		$sOut .= $this->renderLink( array(
 										'href'   => $this->mTalkUrl,
+										'class'  => 'bs-blog-item-comments',
 										'title'  => wfMessage( 'bs-blog-comments' )->plain() ),
 									wfMessage( 'bs-blog-comments' )->plain() )
 			.' ('.$this->mTalkCount.')';
@@ -268,6 +270,7 @@ class ViewBlogItem extends ViewBaseElement {
 			$sOut .= $this->renderLink(
 				array(
 					'href'   => $this->mTrackbackURL,
+					'class'  => 'bs-blog-item-trackback',
 					'title'  => wfMessage( 'bs-blog-trackback' )->plain()
 				),
 				wfMessage( 'bs-blog-trackback' )->plain()
@@ -281,6 +284,7 @@ class ViewBlogItem extends ViewBaseElement {
 				array(
 					'href'   => $this->mUrl,
 					'query'  => 'oldid='.$this->mRevId,
+					'class'  => 'bs-blog-item-permalink',
 					'title'  => wfMessage( 'bs-blog-permalink' )->plain()
 				),
 				wfMessage( 'bs-blog-permalink' )->plain()

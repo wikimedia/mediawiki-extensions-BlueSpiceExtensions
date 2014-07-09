@@ -51,11 +51,6 @@ $wgResourceModules['ext.bluespice.review'] = array(
 		'bs-review-labelTemplateSaveForAll',
 		'bs-review-labelTemplateDelete',
 		'bs-review-templateName',
-		'bs-review-mode',
-		'bs-review-modeVote',
-		'bs-review-modeSign',
-		'bs-review-modeComment',
-		'bs-review-modeWorkflow',
 		'bs-review-confirm-delete-step',
 		'bs-review-confirm-delete-review'
 	)
@@ -67,22 +62,22 @@ $wgResourceModules['ext.bluespice.review.overview'] = array(
 	'messages' => array(
 		'bs-review-header-page_title',
 		'bs-review-header-owner_name',
-		'bs-review-header-rev_mode',
 		'bs-review-header-assessors',
 		'bs-review-header-accepted_text',
 		'bs-review-header-startdate',
 		'bs-review-header-enddate',
+		'bs-review-overviewpanel-alloption',
 	)
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate);
 
+$GLOBALS['wgAutoloadClasses']['Review'] = __DIR__ . '/Review.class.php';
 $wgAutoloadClasses['SpecialReview'] = __DIR__ . '/includes/specials/SpecialReview.class.php';
 $wgAutoloadClasses['BsReviewProcess'] = __DIR__ . '/includes/ReviewProcess.class.php';
 $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessStep.class.php';
 
-$wgAutoloadClasses['ViewReviewForm'] = __DIR__ . '/views/view.ReviewForm.php';
-$wgAutoloadClasses['ViewReviewStep'] = __DIR__ . '/views/view.ReviewStep.php';
+$wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.StateBarBodyElementReview.php';
 
 $wgSpecialPageGroups['Review'] = 'bluespice';
 
@@ -92,3 +87,5 @@ $wgAjaxExportList[] = 'Review::doEditReview';
 $wgAjaxExportList[] = 'Review::getVoteResponse';
 $wgAjaxExportList[] = 'Review::getUsers';
 $wgAjaxExportList[] = 'SpecialReview::ajaxGetOverview';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'Review::getSchemaUpdates';

@@ -48,9 +48,6 @@ class CountThings extends BsExtensionMW {
 
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['CountThings'] = __DIR__ . '/CountThings.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
@@ -58,8 +55,9 @@ class CountThings extends BsExtensionMW {
 			EXTINFO::NAME => 'CountThings',
 			EXTINFO::DESCRIPTION => 'Counts all kinds of things.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
@@ -77,7 +75,6 @@ class CountThings extends BsExtensionMW {
 	
 	/**
 	 *
-	 * @global Title $wgTitle
 	 * @param Parser $parser
 	 * @return boolean 
 	 */

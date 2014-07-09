@@ -11,7 +11,7 @@
 
 #bs-runningheaderfix h1 {
 	margin: 2.5cm 0 0 2.5cm;
-	font: small;
+	font-size: small;
 	color:#6c6d6f;
 	border: none;
 }

@@ -1,5 +1,6 @@
 Ext.define( 'BS.Flexiskin.AddSkin', {
 	extend: 'BS.Window',
+	id: 'bs-flexiskin-add-dlg',
 	currentData: {},
 	selectedData: {},
 	afterInitComponent: function() {
@@ -24,13 +25,15 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 			labelAlign: 'left',
 			name: 'name',
 			required: true,
-			allowBlank: false
+			allowBlank: false,
+			id: 'bs-flexiskin-add-dlg-name'
 		});
 		this.tfDesc = Ext.create( 'Ext.form.TextField', {
 			fieldLabel: mw.message('bs-flexiskin-labelDesc').plain(),
 			labelWidth: 130,
 			labelAlign: 'left',
-			name: 'desc'
+			name: 'desc',
+			id: 'bs-flexiskin-add-dlg-desc'
 		});
 		
 		this.cbSkins = Ext.create( 'Ext.form.field.ComboBox', {
@@ -38,8 +41,11 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 			labelWidth: 130,
 			labelAlign: 'left',
 			store: this.strSkins,
-			valueField: 'skin',
-			displayField: 'flexiskin_name'
+			valueField: 'flexiskin_id',
+			displayField: 'flexiskin_name',
+			forceSelection: true,
+			allowBlank: false,
+			id: 'bs-flexiskin-add-dlg-skins'
 		} );
 
 		this.items = [
@@ -53,7 +59,8 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 	resetData: function() {
 		this.tfName.reset();
 		this.tfDesc.reset();
-		this.cbSkins.reset();
+		this.strSkins.reload();
+		this.cbSkins.setValue('default');
 
 		this.callParent();
 	},
@@ -67,6 +74,10 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 		}
 	},
 	getData: function() {
+		if( this.cbSkins.validate() != true || this.tfDesc.validate() != true || this.tfName.validate() != true ) {
+			return null;
+		}
+
 		this.selectedData.flexiskin_name = this.tfName.getValue();
 		this.selectedData.flexiskin_desc = this.tfDesc.getValue();
 		this.selectedData.skins = this.cbSkins.getValue();
@@ -79,6 +90,7 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 				flexiskin_name: mw.message('bs-flexiskin-defaultName').plain(),
 				flexiskin_desc: mw.message('bs-flexiskin-defaultDesc').plain()
 		});
+		this.cbSkins.setValue('default');
 	},
 			
 	getSkinsValue: function( data ) {

@@ -28,22 +28,15 @@ class ViewMoreLikeThis extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $aParam = false ) {
-		$sResult       = '';
+		$sResult = '';
 		$vMoreLikeThis = $this->getOption( 'mlt' );
-		$sOrigin = $this->getOption( 'origin' );
 
 		if ( is_array( $vMoreLikeThis ) && !empty( $vMoreLikeThis ) ) {
-			if ( $sOrigin === 'widgetbar' ) {
-				$sResult .= '<ul>';
-				foreach ( $vMoreLikeThis as $sMlt ) {
-					$sResult .= '<li>'. $sMlt .'</li>';
-				}
-				$sResult .= '</ul>';
-			} else {
-				foreach ( $vMoreLikeThis as $sMlt ) {
-					$sResult .= $sMlt .'<br />';
-				}
+			$sResult .= '<ul>';
+			foreach ( $vMoreLikeThis as $sMlt ) {
+				$sResult .= '<li>'. $sMlt .'</li>';
 			}
+			$sResult .= '</ul>';
 		}
 
 		return $sResult;

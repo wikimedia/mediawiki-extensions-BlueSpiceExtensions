@@ -3,10 +3,11 @@
 BsExtensionManager::registerExtension('ResponsibleEditors', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
 $wgExtensionMessagesFiles['ResponsibleEditors']      = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
-$wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.alias.php';
+$wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages
-$wgAutoloadClasses['BsResponsibleEditor']       = __DIR__ . '/includes/BsResponsibleEditor.php';
+$GLOBALS['wgAutoloadClasses']['ResponsibleEditors'] = __DIR__ . '/ResponsibleEditors.class.php';
+$wgAutoloadClasses['BsResponsibleEditor'] = __DIR__ . '/includes/BsResponsibleEditor.php';
 $wgAutoloadClasses['SpecialResponsibleEditors'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.class.php';
 
 $wgSpecialPageGroups['ResponsibleEditors'] = 'bluespice';
@@ -17,6 +18,10 @@ $aResourceModuleTemplate = array(
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/ResponsibleEditors/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/ResponsibleEditors/resources'
 );
+
+$wgResourceModules['ext.bluespice.responsibleEditors.styles'] = array(
+	'styles' => 'bluespice.responsibleEditors.css',
+) + $aResourceModuleTemplate;;
 
 $wgResourceModules['ext.bluespice.responsibleEditors'] = array(
 	'scripts' => 'bluespice.responsibleEditors.js',
@@ -73,6 +78,15 @@ $wgResourceModules['ext.bluespice.responsibleEditors.bookshelfPlugin'] = array(
 	)
 ) + $aResourceModuleTemplate;
 
+$wgResourceModules['ext.bluespice.responsibleEditors.superList'] = array(
+	'scripts' => array(
+		'bluespice.responsibleEditors.SuperList.js',
+	),
+	'dependencies' => array(
+		'ext.bluespice.responsibleEditors'
+	)
+) + $aResourceModuleTemplate;
+
 $wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxGetResponsibleEditors';
 $wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxSetResponsibleEditors';
 $wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxGetPossibleEditors';
@@ -81,7 +95,10 @@ $wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetResponsibleEditorsByArticleId'
 $wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetArticlesByNamespaceId';
 $wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetListOfResponsibleEditorsForArticle';
 $wgAjaxExportList[] = 'ResponsibleEditors::ajaxDeleteResponsibleEditorsForArticle';
+$wgAjaxExportList[] = 'ResponsibleEditors::getResponsibleEditorsPortletData';
 
 $wgLogTypes[] = 'bs-responsibleeditors';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'ResponsibleEditors::getSchemaUpdates';
 
 unset( $aResourceModuleTemplate );

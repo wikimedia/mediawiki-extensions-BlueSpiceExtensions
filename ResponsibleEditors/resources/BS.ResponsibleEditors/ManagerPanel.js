@@ -3,6 +3,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	
 	//Custom Settings
 	allowEdit: true,
+	id: 'bs-resped-manager-panel',
 	
 	initComponent: function() {		
 		this.allowEdit = mw.config.get('bsUserMayChangeResponsibilities');
@@ -141,7 +142,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 		this.tbar.add( this.btnAssignmentFilterMenu );
 		this.tbar.add( this.cbNamespaceFilter );
 		
-		if( this.allowEdit == false ) {
+		if( this.allowEdit === false ) {
 			this.btnAdd.hide();
 			this.btnEdit.hide();
 			this.btnRemove.hide();
@@ -153,14 +154,14 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	},
 	
 	onAfterRender: function( sende, eOpts ) {
-		if( this.allowEdit == false ) {
+		if( this.allowEdit === false ) {
 			this.colActions.disable();
 			this.colActions.hide(); //"afterInitComponent" is too early...
 		}
 	},
 	
 	mnuAssignmentFilterClick: function( menu, item, e, eOpts ) {
-		if( typeof item == 'undefined' ) return;
+		if( typeof item === 'undefined' ) return;
 
 		this.btnAssignmentFilterMenu.setText( item.text );
 		
@@ -184,7 +185,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 		
 		this.btnAdd.disable();
 		
-		if( record.get('users').length == 0 ) {
+		if( record.get('users').length === 0 ) {
 			this.btnAdd.enable();
 		}
 		
@@ -246,7 +247,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	//TODO: Add "BS.comlums.NamespaceColumn" ot BSF
 	renderNamespace: function( oValue, oMetaData, oRecord, iRowIndex, iColIndex, oStore ) {
 		var nmsp = oRecord.get( 'page_namespace' );
-		if( nmsp == 0) return mw.message('blanknamespace').plain();
+		if( nmsp === 0) return mw.message('blanknamespace').plain();
 
 		var nmsps = mw.config.get('wgFormattedNamespaces');
 
@@ -265,29 +266,28 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	},
 
 	renderResponsibleEditor: function( aValue, oMetaData, oRecord, iRowIndex, iColIndex, oStore ) {
-		if( aValue == undefined || aValue.length == 0) {
-			return String.format(
-				'<em style="color: #A0A0A0">{0}</em>',
+		if( typeof(aValue) === 'undefined' || aValue.length === 0) {
+			return '<em style="color: #A0A0A0">{0}</em>'.format(
 				mw.message('bs-responsibleeditors-columnResponsibleEditorNotSet').plain()
 			);
 		}
-		
+
 		var content = '';
-		
+
 		for( var i = 0; i < aValue.length; i++) {
 			var sDisplayName = aValue[i].user_displayname;
 			var sUrl =  aValue[i].user_page_link_url;
-			
+
 			sDisplayName = sDisplayName.replace( /_/g, ' ' );
-			if( i != 0 ) {
+			if( i !== 0 ) {
 				content += ', ';
 			}
-			content += String.format(
-				'<a href="{0}" title="{1}" class="bs-confirm-nav">{1}</a>',
+			content += '<a href="{0}" title="{1}" class="bs-confirm-nav">{1}</a>'.format(
 				sUrl,
 				sDisplayName
 			);
 		}
-		return content
+
+		return content;
 	}
 });

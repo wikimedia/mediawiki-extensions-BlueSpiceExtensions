@@ -70,7 +70,7 @@ class InsertMagic extends BsExtensionMW {
 			'{{CURRENTVERSION}}',
 			'{{CONTENTLANGUAGE}}', //'{{CONTENTLANG}}',
 			'{{PAGEID}}',
-			'{{PAGESIZE:"page name"}}', //'{{PAGESIZE:<page name>|R}}',
+			'{{PAGESIZE:"pagename"}}', //'{{PAGESIZE:<page name>|R}}',
 			'{{PROTECTIONLEVEL:"action"}}',
 			'{{REVISIONID}}',
 			'{{REVISIONDAY}}',
@@ -120,8 +120,9 @@ class InsertMagic extends BsExtensionMW {
 			EXTINFO::NAME        => 'InsertMagic',
 			EXTINFO::DESCRIPTION => 'Provides a dialog box to add magicwords and tags to an articles content in edit mode.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice'    => '2.22.0',
@@ -160,14 +161,17 @@ class InsertMagic extends BsExtensionMW {
 	 * Hook Handler for VisualEditorConfig Hook
 	 * @param Array $aConfigStandard reference
 	 * @param Array $aConfigOverwrite reference
+	 * @param Array &$aLoaderUsingDeps reference
 	 * @return boolean always true to keep hook alife
 	 */
-	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bsmagic" );
+	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
+		$aLoaderUsingDeps[] = 'ext.bluespice.insertMagic';
+		
+		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bsmagic" );
 
-		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar1"] );
-		array_splice( $aConfigOverwrite["toolbar1"], $iIndexOverwrite + 1, 0, "bsmagic" );
+		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar2"] );
+		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "bsmagic" );
 		return true;
 	}
 

@@ -2,5 +2,4 @@
 host=gerrit.wikimedia.org
 port=29418
 project=mediawiki/extensions/BlueSpiceExtensions.git
-defaultbranch=master
-defaultrebase=0
+defaultbranch=REL1_22

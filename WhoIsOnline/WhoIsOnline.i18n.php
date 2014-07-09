@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'bs-whoisonline-tag-whoisonlinepopup-desc' => 'Renders a little fly-out list of currently logged in users.
 
 Valid attributes:
-;anchortext:The text you want the fly-out to be attached to.',
+;anchortext: The text you want the fly-out to be attached to.',
 );
 
 $messages['de'] = array(

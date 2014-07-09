@@ -65,8 +65,9 @@ class WatchList extends BsExtensionMW {
 			EXTINFO::NAME        => 'WatchList',
 			EXTINFO::DESCRIPTION => 'Adds a watchlist widget',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 									'bluespice' => '2.22.0',
@@ -171,7 +172,7 @@ class WatchList extends BsExtensionMW {
 		}
 
 		$oWatchList = $this->fetchWatchlist( $this->getUser(), $iCount, $iMaxTitleLength, $sOrder );
-		return $this->mCore->parseWikiText( $oWatchList->execute() );
+		return $this->mCore->parseWikiText( $oWatchList->execute(), $this->getTitle() );
 	}
 
 	/**
@@ -214,7 +215,7 @@ class WatchList extends BsExtensionMW {
 		$sWatchListWikiText = $oWatchList->execute();
 		if (  empty( $sWatchListWikiText ) ) return $oUserSidebarView;
 
-		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText ) );
+		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText ), $this->getTitle() );
 
 		return $oUserSidebarView;
 	}

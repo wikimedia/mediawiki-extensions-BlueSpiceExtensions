@@ -3,7 +3,7 @@ Ext.define( 'BS.Review.Dialog', {
 	id:'bs-review-dlg',
 	singleton: true,
 	width: 600,
-	height: 400,
+	height: 500,
 
 	afterInitComponent: function() {
 		this.setTitle( mw.message('bs-review-title').plain() );

@@ -31,7 +31,12 @@ define("tinymce/ui/Control", [
 
 	var Control = Class.extend({
 		Statics: {
-			controlIdLookup: {}
+			controlIdLookup: {},
+			elementIdCache: elementIdCache
+		},
+
+		isRtl: function() {
+			return Control.rtl;
 		},
 
 		/**
@@ -237,7 +242,7 @@ define("tinymce/ui/Control", [
 			}
 
 			function getSide(name) {
-				var val = parseInt(getStyle(name), 10);
+				var val = parseFloat(getStyle(name), 10);
 
 				return isNaN(val) ? 0 : val;
 			}
@@ -261,18 +266,19 @@ define("tinymce/ui/Control", [
 		initLayoutRect: function() {
 			var self = this, settings = self.settings, borderBox, layoutRect;
 			var elm = self.getEl(), width, height, minWidth, minHeight, autoResize;
-			var startMinWidth, startMinHeight;
+			var startMinWidth, startMinHeight, initialSize;
 
-			// Measure boxes
+			// Measure the current element
 			borderBox = self._borderBox = self._borderBox || self.measureBox(elm, 'border');
 			self._paddingBox = self._paddingBox || self.measureBox(elm, 'padding');
 			self._marginBox = self._marginBox || self.measureBox(elm, 'margin');
+			initialSize = DomUtils.getSize(elm);
 
 			// Setup minWidth/minHeight and width/height
 			startMinWidth = settings.minWidth;
 			startMinHeight = settings.minHeight;
-			minWidth = startMinWidth || elm.offsetWidth;
-			minHeight = startMinHeight || elm.offsetHeight;
+			minWidth = startMinWidth || initialSize.width;
+			minHeight = startMinHeight || initialSize.height;
 			width = settings.width;
 			height = settings.height;
 			autoResize = settings.autoResize;
@@ -432,7 +438,12 @@ define("tinymce/ui/Control", [
 		 * @method repaint
 		 */
 		repaint: function() {
-			var self = this, style, bodyStyle, rect, borderBox, borderW = 0, borderH = 0, lastRepaintRect;
+			var self = this, style, bodyStyle, rect, borderBox, borderW = 0, borderH = 0, lastRepaintRect, round;
+
+			// Use Math.round on all values on IE < 9
+			round = !document.createRange ? Math.round : function(value) {
+				return value;
+			};
 
 			style = self.getEl().style;
 			rect = self._layoutRect;
@@ -443,35 +454,35 @@ define("tinymce/ui/Control", [
 			borderH = borderBox.top + borderBox.bottom;
 
 			if (rect.x !== lastRepaintRect.x) {
-				style.left = rect.x + 'px';
+				style.left = round(rect.x) + 'px';
 				lastRepaintRect.x = rect.x;
 			}
 
 			if (rect.y !== lastRepaintRect.y) {
-				style.top = rect.y + 'px';
+				style.top = round(rect.y) + 'px';
 				lastRepaintRect.y = rect.y;
 			}
 
 			if (rect.w !== lastRepaintRect.w) {
-				style.width = (rect.w - borderW) + 'px';
+				style.width = round(rect.w - borderW) + 'px';
 				lastRepaintRect.w = rect.w;
 			}
 
 			if (rect.h !== lastRepaintRect.h) {
-				style.height = (rect.h - borderH) + 'px';
+				style.height = round(rect.h - borderH) + 'px';
 				lastRepaintRect.h = rect.h;
 			}
 
 			// Update body if needed
 			if (self._hasBody && rect.innerW !== lastRepaintRect.innerW) {
 				bodyStyle = self.getEl('body').style;
-				bodyStyle.width = (rect.innerW) + 'px';
+				bodyStyle.width = round(rect.innerW) + 'px';
 				lastRepaintRect.innerW = rect.innerW;
 			}
 
 			if (self._hasBody && rect.innerH !== lastRepaintRect.innerH) {
 				bodyStyle = bodyStyle || self.getEl('body').style;
-				bodyStyle.height = (rect.innerH) + 'px';
+				bodyStyle.height = round(rect.innerH) + 'px';
 				lastRepaintRect.innerH = rect.innerH;
 			}
 
@@ -688,6 +699,17 @@ define("tinymce/ui/Control", [
 			}
 
 			return args;
+		},
+
+		/**
+		 * Returns true/false if the specified event has any listeners.
+		 *
+		 * @method hasEventListeners
+		 * @param {String} name Name of the event to check for.
+		 * @return {Boolean} True/false state if the event has listeners.
+		 */
+		hasEventListeners: function(name) {
+			return name in this._bindings;
 		},
 
 		/**
@@ -1083,11 +1105,11 @@ define("tinymce/ui/Control", [
 		 * @return {tinymce.ui.Control} Current control instance.
 		 */
 		remove: function() {
-			var self = this, elm = self.getEl(), parent = self.parent(), newItems;
+			var self = this, elm = self.getEl(), parent = self.parent(), newItems, i;
 
 			if (self.items) {
 				var controls = self.items().toArray();
-				var i = controls.length;
+				i = controls.length;
 				while (i--) {
 					controls[i].remove();
 				}
@@ -1111,8 +1133,16 @@ define("tinymce/ui/Control", [
 			}
 
 			delete Control.controlIdLookup[self._id];
+			delete elementIdCache[self._id];
 
-			if (elm.parentNode) {
+			if (elm && elm.parentNode) {
+				var nodes = elm.getElementsByTagName('*');
+
+				i = nodes.length;
+				while (i--) {
+					delete elementIdCache[nodes[i].id];
+				}
+
 				elm.parentNode.removeChild(elm);
 			}
 

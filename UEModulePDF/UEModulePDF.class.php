@@ -63,8 +63,9 @@ class UEModulePDF extends BsExtensionMW {
 			EXTINFO::NAME        => 'UEModulePDF',
 			EXTINFO::DESCRIPTION => 'Enables MediaWiki to export pages into PDF format.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice'       => '2.22.0',
@@ -84,13 +85,13 @@ class UEModulePDF extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL',   'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-PdfServiceURL' );
 		BsConfig::registerVar( 'MW::UEModulePDF::DefaultTemplate', 'BlueSpice', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-DefaultTemplate' );
 		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS',      false,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-SuppressNS', 'toggle' );
-		BsConfig::registerVar( 'MW::UEModulePDF::Backend',        'BsPDFServlet', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-Backend' );
+		/* This setting is no longer needed. We do not provide the old bn2pdf.war anymore */
+		BsConfig::registerVar( 'MW::UEModulePDF::Backend',        'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-Backend' );
 		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath',   'extensions/BlueSpiceFoundation/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-TemplatePath' );
 
 		//Hooks
 		$this->setHook('BSUniversalExportGetWidget');
 		$this->setHook('BSUniversalExportSpecialPageExecute');
-		$this->setHook('LoadExtensionSchemaUpdates');
 		$this->setHook('SkinTemplateOutputPageBeforeExec');
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -104,28 +105,11 @@ class UEModulePDF extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array();
 		switch( $oVariable->getName() ) {
-			case 'PDFenNS': // TODO RBV (24.05.12 15:16): Move to Bookshelf
-			case 'PDFwithATTenNS':
-				$aPrefs = array(
-					'type'    => 'multiselectex',
-					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( -2, NS_MEDIA, NS_MEDIAWIKI, NS_MEDIAWIKI_TALK ) )
-				);
-
-				break;
 			case 'DefaultTemplate':
 				$aParams = array( 'template-path' => BsConfig::get('MW::UEModulePDF::TemplatePath') );
 				$aPrefs = array(
-					'type'    => 'select',
+					'type' => 'select',
 					'options' => BsPDFTemplateProvider::getTemplatesForSelectOptions( $aParams )
-				);
-				break;
-			case 'Backend':
-				$aPrefs = array(
-					'type'    => 'select',
-					'options' => array(
-						'BShtml2PDF.war' => 'BsPDFServlet',
-						'bn2pdf.war'     => 'BsPDFWebService',
-					)
 				);
 				break;
 			default:
@@ -139,23 +123,22 @@ class UEModulePDF extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
 	 * @return boolean Always true to keep the hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		//TODO: Create abstraction in Core/Adapter
 		$sTmpDir = BSDATADIR.DS.'UEModulePDF';
 		if( !file_exists( $sTmpDir ) ) {
 			echo 'Directory "'.$sTmpDir.'" not found. Creating.'."\n";
 			wfMkdirParents( $sTmpDir );
-		}
-		else {
+		} else {
 			echo 'Directory "'.$sTmpDir.'" found.'."\n";
 		}
-		
+
 		$sDefaultTemplateDir = BSDATADIR.DS.'PDFTemplates';
 		if( !file_exists( $sDefaultTemplateDir ) ) {
 			echo 'Default template directory "'.$sDefaultTemplateDir.'" not found. Copying.'."\n";
 			BsFileSystemHelper::copyRecursive( __DIR__.DS.'data'.DS.'PDFTemplates', $sDefaultTemplateDir );
 		}
-		
+
 		return true;
 	}
 
@@ -198,7 +181,7 @@ class UEModulePDF extends BsExtensionMW {
 		$aLinks = array();
 		$aLinks['pdf-single-no-attachments'] = array(
 			'URL'     => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
-			'TITLE'   => wfMsg( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' ),
+			'TITLE'   => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->plain(),
 			'CLASSES' => 'bs-uemodulepdf-single',
 			'TEXT'    => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
 		);
@@ -231,7 +214,7 @@ class UEModulePDF extends BsExtensionMW {
 		$aContentActions = array(
 			'id' => 'pdf',
 			'href' => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
-			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
+			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->plain(),
 			'text' => ''
 		);
 

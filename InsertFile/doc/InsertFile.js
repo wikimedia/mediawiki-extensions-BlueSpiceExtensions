@@ -611,9 +611,9 @@ BsFileManager = {
 								listeners: {
 									'change': {
 										fn: function(field, value) {
-											var url = wgScriptPath + '/index.php?action=ajax&rs=SpecialUpload::ajaxGetExistsWarning';
+											var url = wgScriptPath + '/index.php?action=ajax&rs=InsertFileAJAXBackend::getExistsWarning' + '&rsargs[]=' + value;
 											Ext.Ajax.request({
-												url: url + '&rsargs[]=' + value,
+												url: url,
 												success: function(response, options) {
 													if (!(response.responseText.trim() == ''
 														|| response.responseText == '&#160;'

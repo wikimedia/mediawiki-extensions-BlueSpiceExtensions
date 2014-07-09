@@ -33,7 +33,12 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 	protected function processSnippets( array $aSnippets ) {
 		$sOut = '';
 		foreach ( $aSnippets as $sFrag ) {
-			$sFrag = strip_tags( $sFrag, '<em>' );
+			$sFrag = htmlspecialchars( $sFrag, ENT_QUOTES, 'UTF-8' );
+			$sFrag = str_replace(
+				array( '&lt;em&gt;', '&lt;/em&gt;' ),
+				array( '<em>', '</em>' ),
+				$sFrag
+			);
 			if ( empty( $sFrag ) ) continue;
 			$sOut .= "{$sFrag}<br />";
 		}
@@ -53,13 +58,13 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		}
 
 		$aTemplate[] = '<div class="search-wrapper">';
-		$aTemplate[] = '<span class="bs-extendedsearch-result-icon">' . $this->getOption( 'searchicon' ) . '</span>';
-		$aTemplate[] = '<span class="bs-extendedsearch-result-title"><h3>' . $this->getOption( 'searchlink' ) . '</h3></span>';
-		$aTemplate[] = '<div class="search-result-info">';
-
-		if ( $this->getOption( 'showpercent' ) ) {
-			$aTemplate[] = $this->getOption( 'scorepercent' ) . '% | ';
-		}
+		$aTemplate[] = '<div class="bs-extendedsearch-result-head">';
+		$aTemplate[] = '<table><tr>';
+		$aTemplate[] = '<td><span class="bs-extendedsearch-result-icon">' . $this->getOption( 'searchicon' ) . '</span></td>';
+		$aTemplate[] = '<td><span class="bs-extendedsearch-result-title"><h3>' . $this->getOption( 'searchlink' ) . '</h3></span></td>';
+		$aTemplate[] = '</tr></table>';
+		$aTemplate[] = '</div>';
+		$aTemplate[] = '<div class="bs-search-result-info">';
 
 		$aTemplate[] = $this->getOption( 'timestamp' );
 
@@ -70,7 +75,7 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		$aTemplate[] = '</div>';
 
 		if ( $this->getOption( 'highlightsnippets' ) ) {
-			$aTemplate[] = '<div class="search-hit-text">' . $sHighlightSnippets . '</div>';
+			$aTemplate[] = '<div class="bs-search-hit-text">' . $sHighlightSnippets . '</div>';
 		}
 
 		$sCategories = trim( $this->getOption( 'catstr' ) );

@@ -83,8 +83,9 @@ class UniversalExport extends BsExtensionMW {
 			EXTINFO::NAME        => 'UniversalExport',
 			EXTINFO::DESCRIPTION => 'Enables MediaWiki to export pages into different formats.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice' => '2.22.0',
@@ -109,13 +110,14 @@ class UniversalExport extends BsExtensionMW {
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+		$this->setHook( 'BeforePageDisplay' );
 
 		//Configuration variables
 		$aMetadataDefaults = array(
 			'creator'  => 'Hallo Welt! Medienwerkstatt GmbH',
 		);
 		$aMetadataOverrides = array(
-			'producer' => 'UniversalExport 1.20 (BlueSpice for MediaWiki)'
+			'producer' => 'UniversalExport 2.22 (BlueSpice for MediaWiki)'
 		);
 
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryWhitelist', $this->aCategoryWhitelist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
@@ -144,14 +146,19 @@ class UniversalExport extends BsExtensionMW {
 		return $aPrefs;
 	}
 
+	public function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		$out->addModuleStyles( 'ext.bluespice.universalExport.css' );
+		return true;
+	}
+	
 	/**
 	 * Hook-Handler for Hook 'BSStatebarAddSortBodyVars'
 	 * @param array $aSortBodyVars
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStatebarAddSortBodyVars( &$aSortBodyVars ) {
-		$aSortBodyVars['statebarbodyuniversalexportmeta']   = wfMsg( 'bs-universalexport-statebarbodyuniversalexportmeta' );
-		$aSortBodyVars['statebarbodyuniversalexportparams'] = wfMsg( 'bs-universalexport-statebarbodyuniversalexportparams' );
+		$aSortBodyVars['statebarbodyuniversalexportmeta']   = wfMessage( 'bs-universalexport-statebarbodyuniversalexportmeta' )->plain();
+		$aSortBodyVars['statebarbodyuniversalexportparams'] = wfMessage( 'bs-universalexport-statebarbodyuniversalexportparams' )->plain();
 		return true;
 	}
 	
@@ -282,9 +289,9 @@ class UniversalExport extends BsExtensionMW {
 
 		$oWidgetView = new ViewWidget();
 		$oWidgetView->setId( 'universalexport' )
-					->setTitle( wfMsg( 'bs-universalexport-widget-title' ) )
+					->setTitle( wfMessage( 'bs-universalexport-widget-title' )->plain() )
 					->setBody( $sList )
-					->setTooltip( wfMsg( 'bs-universalexport-widget-tooltip' ) );
+					->setTooltip( wfMessage( 'bs-universalexport-widget-tooltip' )->plain() );
 
 		return $oWidgetView;
 	}
@@ -296,7 +303,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:uemeta',
 			'type' => 'tag',
 			'name' => 'uemeta',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-meta-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-meta-desc' )->plain(),
 			'code' => '<bs:uemeta someMeta="Some Value" anotherMeta="Another Value" />',
 		);
 		
@@ -304,7 +311,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:ueparams',
 			'type' => 'tag',
 			'name' => 'ueparams',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-params-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-params-desc' )->plain(),
 			'code' => '<bs:ueparams someParam="Some Value" anotherMeta="Another Value" />',
 		);
 		
@@ -312,7 +319,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:uepagebreak',
 			'type' => 'tag',
 			'name' => 'uepagebreak',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-pagebreak-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-pagebreak-desc' )->plain(),
 			'code' => '<bs:uepagebreak />',
 		);
 		
@@ -320,7 +327,7 @@ class UniversalExport extends BsExtensionMW {
 			'id' => 'bs:uenoexport',
 			'type' => 'tag',
 			'name' => 'uenoexport',
-			'desc' => wfMsgExt( 'bs-universalexport-tag-noexport-desc', array( 'parse' ) ),
+			'desc' => wfMessage( 'bs-universalexport-tag-noexport-desc' )->plain(),
 			'code' => '<bs:uenoexport>Not included in export</bs:uenoexport>',
 		);
 

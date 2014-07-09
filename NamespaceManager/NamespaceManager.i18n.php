@@ -23,7 +23,7 @@ $messages['de'] = array(
 	'bs-namespacemanager-wrong_namespace_name_format' => 'Der von Dir gewählte Namespace-Name enthält unzulässige Zeichen.',
 	'bs-namespacemanager-namespace_already_exists'    => 'Der von Dir gewählte Namespace-Name existiert bereits.',
 	'bs-namespacemanager-namespace_name_length'       => 'Der von Ihnen eingetragene Namespace-Name muss minderstens zwei Zeichen lang sein.',
-	'no_valid_namespace_id'                           => 'Keine zulässige Namespace ID',
+	'bs-namespacemanager-no_valid_namespace_id'       => 'Keine zulässige Namespace ID',
 	'bs-namespacemanager-label-id'                    => 'ID',
 	'bs-namespacemanager-label-namespaces'            => 'Namensräume',
 	'bs-namespacemanager-label-editable'              => 'umbenennbar',
@@ -81,14 +81,14 @@ $messages['de-formal'] = array(
 );
 
 $messages['en'] = array(
-	'bs-namespacemanager-extension-description'       => 'Administration interface for adding, editing and deleting user groups and their rights.',
+	'bs-namespacemanager-extension-description'       => 'Administration interface for adding, editing and deleting namespaces',
 	'bs-namespacemanager-back'                        => 'Back',
 	'bs-namespacemanager-label'                       => 'Namespace manager',
 	'bs-namespacemanager-not_allowed'                 => 'You are not allowed to use this page.',
 	'bs-namespacemanager-wrong_namespace_name_format' => 'The namespace name you have chosen contains invalid characters.',
 	'bs-namespacemanager-namespace_already_exists'    => 'The namespace name you have chosen already exists.',
 	'bs-namespacemanager-namespace_name_length'       => 'The namespace you have entered must have a length of two chars.',
-	'no_valid_namespace_id'                           => 'No valid namespace ID',
+	'bs-namespacemanager-no_valid_namespace_id'       => 'No valid namespace ID',
 	'bs-namespacemanager-label-id'                    => 'ID',
 	'bs-namespacemanager-label-namespaces'            => 'Namespaces',
 	'bs-namespacemanager-label-editable'              => 'renamable',

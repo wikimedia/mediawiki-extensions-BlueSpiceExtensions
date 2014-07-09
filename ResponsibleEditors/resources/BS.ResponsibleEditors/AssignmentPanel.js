@@ -2,6 +2,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 	extend: 'BS.Panel',
 	layout: 'form',
 	modal: true,
+	id: 'bs-resped-assignment-panel',
 	
 	afterInitComponent: function() {
 		this.strAvailableRespEds = Ext.create('Ext.data.JsonStore', {
@@ -14,10 +15,12 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 					idProperty: 'user_id'
 				}
 			},
-			fields: [ 'user_id', 'user_displayname' ]
+			fields: [ 'user_id', 'user_displayname' ],
+			sorters:['user_displayname'],
+			remoteSort: false
 		});
 		this.strAvailableRespEds.on( 'load', this.onStrAvailableRespEdsLoad, this );
-		
+
 		this.isRespEds = Ext.create( 'Ext.ux.form.ItemSelector', {
 			store: this.strAvailableRespEds,
 			displayField: 'user_displayname',
@@ -26,7 +29,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 			toTitle: mw.message('bs-responsibleeditors-assignedEditors').plain(),
 			height: 250
 		});
-		
+
 		this.items = [
 			this.isRespEds
 		];
@@ -36,7 +39,6 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 	
 	getData: function(){
 		this.currentData.editorIds = this.isRespEds.getValue();
-		console.log( this.currentData );
 		return this.callParent();
 	},
 
@@ -55,7 +57,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 			);
 		}
 	},
-	
+
 	onStrAvailableRespEdsLoad: function( store, records, successful, eOpts ) {
 		if( this.currentData.editorIds ) {
 			this.isRespEds.setValue( 

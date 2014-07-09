@@ -25,6 +25,10 @@ define("tinymce/ui/FormatControls", [
 	var each = Tools.each;
 
 	EditorManager.on('AddEditor', function(e) {
+		if (e.editor.rtl) {
+			Control.rtl = true;
+		}
+
 		registerControls(e.editor);
 	});
 
@@ -51,7 +55,7 @@ define("tinymce/ui/FormatControls", [
 
 			// Default preview
 			if (!previewStyles) {
-				previewStyles = 'font-family font-size font-weight text-decoration ' +
+				previewStyles = 'font-family font-size font-weight font-style text-decoration ' +
 					'text-transform color background-color border border-radius';
 			}
 

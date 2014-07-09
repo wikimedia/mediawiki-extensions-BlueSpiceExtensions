@@ -1,21 +1,23 @@
 ==UEModulePDF.class.php==
 
 'BSUEModulePDFBeforeCreateWidget'.
-$this:
+ $oSender:
  $oSpecialPage:
  &$aLinks:
  $aCurrentQueryParams:
 
 ==ExportModulePDF.class.pdf==
 
- 'BSUEModulePDFBeforeAddingContent':
-&$aTemplate:
+'BSUEModulePDFBeforeAddingContent':
+ &$aTemplate:
  &$aContents:
+ $oCaller:
+ &$aPage:
 
 'BSUEModulePDFBeforeCreatePDF':
-$this:
- $oDOM:
- $oCaller:
+$oSender:
+$oDOM:
+$oCaller:
 
 
 ==PDFPageProvider.class.php==
@@ -24,20 +26,20 @@ $this:
  &$aParams:
 
 'BSUEModulePDFgetPage':
-$oTitle:
+ $oTitle:
  &$aPage:
  &$aParams:
  $oDOMXPath:
 
  'BSUEModulePDFcollectMetaData':
-$oTitle:
+ $oTitle:
  $oPageDOM:
  &$aParams:
  $oDOMXPath:
  &$aMeta:
 
 'BSUEModulePDFcleanUpDOM':
-$oTitle:
+ $oTitle:
  $oPageDOM:
  &$aParams:
  $oDOMXPath:
@@ -47,31 +49,31 @@ $oTitle:
 ==PDFServlet.class.php==
 
 'BSUEModulePDFCreatePDFBeforeSend':
-$this:
+ $oSender:
  &$aOptions:
  $oHtmlDOM:
 
  'BSUEModulePDFUploadFilesBeforeSend':
-$this:
+ $oSender:
  &$aPostData:
  $sType:
 
 'BSUEModulePDFFindFiles':
-$this:
+ $oSender:
  $oImageElement:
  $sAbsoluteFileSystemPath:
  $sFileName:
  'images':
 
 'BSUEModulePDFWebserviceFindFiles':
-$this:
+ $oSender:
  $oImageElement:
  $sAbsoluteFileSystemPath:
  $sFileName:
  'images':
 
 'BSUEModulePDFAfterFindFiles':
-$this:
+ $oSender:
  $oHtml:
  &$aFiles:
  $aParams:
@@ -88,41 +90,19 @@ $this:
 ==PDFWebService.class.php==
 
 'BSUEModulePDFCreatePDFBeforeSend':
- $this:
+ $oSender:
  &$aOptions:
  $oHtmlDOM:
 
 'BSUEModulePDFWebserviceFindFiles':
-$this:
+$oSender:
  $oImageElement:
  $sAbsoluteFileSystemPath:
  $sFileName:
  'IMAGE':
 
 'BSUEModulePDFWebserviceFindFiles':
- $this:
+ $oSender:
  $oFileAnchorElement:
  $sAbsoluteFileSystemPath:
  $sHrefFilename:
- 'ATTACHMENT':
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

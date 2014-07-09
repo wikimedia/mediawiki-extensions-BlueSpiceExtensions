@@ -7,7 +7,7 @@ Ext.define( 'BS.Review.StepsGrid', {
 		this.gpMainConf = {
 			height: 215,
 			autoscroll: true
-		}
+		};
 		
 		this.colMainConf.columns = [
 			Ext.create( 'Ext.grid.column.RowNumberer', {
@@ -199,15 +199,22 @@ Ext.define( 'BS.Review.StepsGrid', {
 	
 	renderStatus: function ( cellValue, record ) {
 		var content = '<div class="{0}"></div>';
-		if( cellValue == 0 ) {
-			content = content.format( 'rv_no' );
-		}
-		else if( cellValue == -1 ) {
-			content = content.format( 'rv_unknown' );
-		}
-		else if( cellValue == 1 ) {
-			content = content.format( 'rv_yes' );
-		}
+			if( cellValue == 0 ) {
+				content = content.format( 'rv_no' );
+			}
+			if( cellValue == 1 ) {
+				content = content.format( 'rv_yes' );
+			}
+			if( cellValue == -1 ) {
+				content = content.format( 'rv_unknown' );
+			}
+			if( cellValue == -2 ) { //Was '1' before reject, see BsReviewProcess::reset()
+				content = '<div class="rv_yes">'+content.format( 'rv_invalid' )+'</div>';
+			}
+			if( cellValue == -3 ) { //Was '0' before reject
+				content = '<div class="rv_no">'+content.format( 'rv_invalid' )+'</div>';
+			}
+		
 		return content;
 	}
 });

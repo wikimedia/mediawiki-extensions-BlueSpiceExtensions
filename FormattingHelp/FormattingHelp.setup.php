@@ -11,7 +11,8 @@ $aResourceModuleTemplate = array(
 $wgResourceModules['ext.bluespice.formattinghelp'] = array(
 	'scripts' => 'bluespice.formattinghelp.js',
 	'messages' => array(
-		'bs-formattinghelp-formatting'
+		'bs-formattinghelp-formatting',
+		'bs-formattinghelp-help-text'
 	),
 	'dependencies' => 'mediawiki.action.edit',
 ) + $aResourceModuleTemplate;

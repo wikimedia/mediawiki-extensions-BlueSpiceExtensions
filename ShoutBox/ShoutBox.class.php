@@ -82,8 +82,9 @@ class ShoutBox extends BsExtensionMW {
 			EXTINFO::NAME        => 'ShoutBox',
 			EXTINFO::DESCRIPTION => 'Adds a parser function for embedding your own shoutbox.',
 			EXTINFO::AUTHOR      => 'Karl Waldmannstetter, Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0', 
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -100,7 +101,6 @@ class ShoutBox extends BsExtensionMW {
 		// Hooks
 		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
 		// Permissions
@@ -126,7 +126,7 @@ class ShoutBox extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
 	 * @return boolean Always true to keep the hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtModifiedFields, $wgExtNewIndexes, $wgExtNewFields;
 		$sDir = __DIR__ . DS;
 
@@ -239,7 +239,7 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always true
 	 */
 	public static function getShouts( $iArticleId, $iLimit ) {
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false ) return true;
+		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false ) return "";
 
 		// do not allow negative page ids and pages that have 0 as id (e.g. special pages)
 		if ( $iArticleId <= 0 ) return true;
@@ -247,21 +247,31 @@ class ShoutBox extends BsExtensionMW {
 
 		$sOutput = '';
 		//return false on hook handler to break here
-		if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit ) ) ) {
-			return true;
+		
+		$aTables = array('bs_shoutbox');
+		$aFields = array('*');
+		$aConditions = array( 
+			'sb_page_id' => $iArticleId,
+			'sb_archived' => '0',
+			'sb_parent_id' => '0',
+			'sb_title' => '',
+		);
+		$aOptions = array(
+			'ORDER BY' => 'sb_timestamp DESC',
+			'LIMIT' => $iLimit + 1, // One more than iLimit in order to know if there are more shouts left.
+		);
+
+		if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit, &$aTables, &$aFields, &$aConditions, &$aOptions ) ) ) {
+			return $sOutput;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
-				'bs_shoutbox',
-				'*',
-				array( 'sb_page_id' => $iArticleId, 'sb_archived' => '0', 'sb_parent_id' => '0', 'sb_title' => '' ),
-				__METHOD__,
-				array(
-					'ORDER BY' => 'sb_timestamp DESC',
-					// One more than iLimit in order to know if there are more shouts left.
-					'LIMIT' => $iLimit + 1
-				)
+			$aTables,
+			$aFields,
+			$aConditions,
+			__METHOD__,
+			$aOptions
 		);
 
 		$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
@@ -315,7 +325,7 @@ class ShoutBox extends BsExtensionMW {
 
 		$vLastCommit = $oRequest->getSessionData( 'MW::ShoutBox::lastCommit' );
 		if ( is_numeric( $vLastCommit ) && $vLastCommit + $iCommitTimeInterval > $iCurrentCommit ) {
-			return true;
+			return json_encode(array('success' => false, 'msg' => 'bs-shoutbox-too-early'));
 		}
 		$oRequest->setSessionData( 'MW::ShoutBox::lastCommit', $iCurrentCommit );
 
@@ -344,7 +354,7 @@ class ShoutBox extends BsExtensionMW {
 		); // TODO RBV (21.10.10 17:21): Send error / success to client.
 
 		wfRunHooks( 'BSShoutBoxAfterInsertShout', array( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) );
-		return self::getShouts( $iArticleId, 0 );
+		return json_encode(array('success' => true, 'msg' => self::getShouts( $iArticleId, 0 )));
 	}
 
 	/**
@@ -355,8 +365,7 @@ class ShoutBox extends BsExtensionMW {
 	 */
 	public static function archiveShout( $iShoutId ){
 		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false
-			|| BsCore::checkAccessAdmission( 'writeshoutbox' ) === false
-			|| BsCore::checkAccessAdmission( 'archiveshoutbox' ) === false ) return true;
+			|| BsCore::checkAccessAdmission( 'writeshoutbox' ) === false ) return true;
 
 		global $wgUser;
 		$iUserId = $wgUser->getId();
@@ -371,10 +380,13 @@ class ShoutBox extends BsExtensionMW {
 		);
 
 		$row = $dbw->fetchRow( $res );
-		//if setting for "just allow own entries to be archived" is set + username != shoutbox-entry-username => exit
-		if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) == true && $iUserId != $row['sb_user_id'] ) {
-			$sOutput = wfMessage( 'bs-shoutbox-archive-failure-user' )->plain();
-			return true;
+		// If we don't have archiveshoutbox rights, maybe we can delete our own shout?
+		if ( !BsCore::checkAccessAdmission( 'archiveshoutbox' ) ) {
+			//if setting for "allow own entries to be archived" is set + username != shoutbox-entry-username => exit
+			if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) && $iUserId != $row['sb_user_id'] ) {
+				$sOutput = wfMessage( 'bs-shoutbox-archive-failure-user' )->plain();
+				return true;
+			}
 		}
 		$res = $dbw->update(
 							'bs_shoutbox',

@@ -24,7 +24,7 @@
   * http://www.gnu.org/copyleft/gpl.html
   *
   * For further information visit http://www.blue-spice.org
-  * 
+  *
   * Version information
   * $LastChangedDate: 2013-06-25 11:17:54 +0200 (Di, 25 Jun 2013) $
   * $LastChangedBy: rvogel $
@@ -38,7 +38,7 @@
  * v0.1.0
  * FIRST CHANGES
  */
-  
+
  // Last review: (01.07.11 01:58)
 
 class WikiAdmin extends BsExtensionMW {
@@ -161,7 +161,7 @@ class WikiAdmin extends BsExtensionMW {
 	public static function loadModules() {
 		if ( !self::$prLoadModulesAndScripts ) return;
 		foreach( self::$prRegisteredModules as $name => $params ) {
-			self::$prRunningModules[$name] =& BsExtensionManager::getExtension( $name );
+			self::$prRunningModules[$name] = BsExtensionManager::getExtension( $name );
 		}
 		foreach( self::$prRegisteredModuleClasses as $name => $params ) {
 			self::$prRunningModules[$name] = new $name();
@@ -177,8 +177,9 @@ class WikiAdmin extends BsExtensionMW {
 			EXTINFO::NAME        => 'WikiAdmin',
 			EXTINFO::DESCRIPTION => 'Central point of administration for BlueSpice',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Mathias Scheer',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -191,6 +192,7 @@ class WikiAdmin extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		self::$prLoadModulesAndScripts = true;
+		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

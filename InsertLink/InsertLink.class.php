@@ -25,16 +25,6 @@
  *
  * For further information visit http://www.blue-spice.org
  */
-/* Changelog
- * v1.20.0
- *
- * v1.0.0
- * -raised to stable
- * v0.1
- * -initial commit
- */
-
-// Last review MRG (01.07.11 12:22)
 
 /**
  * Class for link assistent
@@ -55,8 +45,9 @@ class InsertLink extends BsExtensionMW {
 			EXTINFO::NAME => 'InsertLink',
 			EXTINFO::DESCRIPTION => 'Dialogbox to enter a link.',
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht, Patric Wirth',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array('bluespice' => '2.22.0')
 		);
@@ -73,29 +64,31 @@ class InsertLink extends BsExtensionMW {
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'VisualEditorConfig' );
 
-		BsConfig::registerVar('MW::InsertLink::ShowFilelink', true, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT, 'bs-insertlink-pref-ShowFilelink', 'toggle');
-		BsConfig::registerVar('MW::InsertLink::UseFilelinkApplet', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT);
-		BsConfig::registerVar('MW::InsertLink::ExcludeNs', array(), BsConfig::LEVEL_PRIVATE);
-
 		wfProfileOut('BS::InsertLink::initExt');
 	}
-	
+
 	/**
 	 * Hook Handler for VisualEditorConfig Hook
 	 * @param Array $aConfigStandard reference
 	 * @param Array $aConfigOverwrite reference
+	 * @param Array &$aLoaderUsingDeps reference
 	 * @return boolean always true to keep hook alife
 	 */
-	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'bssignature',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bslink" );
+	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
+		$aLoaderUsingDeps[] = 'ext.bluespice.insertlink';
+
+		$iIndexStandard = array_search( 'bssignature',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bslink" );
+
+		// Add context menu entry
+		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsContextLink bsContextUnlink', $aConfigStandard["contextmenu"] );
 		return true;
 	}
 
 	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
 		$this->getOutput()->addModuleStyles('ext.bluespice.insertlink.styles');
 		$this->getOutput()->addModules('ext.bluespice.insertlink');
-		
+
 		$aRows[0]['dialogs'][40] = 'bs-editbutton-insertlink';
 
 		$aButtonCfgs['bs-editbutton-insertlink'] = array(
@@ -109,56 +102,39 @@ class InsertLink extends BsExtensionMW {
 	 * @param type $output The ajax output which have to be valid JSON.
 	 */
 	public static function getPage() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		global $wgContLang, $wgRequest;
+		global $wgUser, $wgRequest;
+
+		$aResult = array(
+			'items' => array(),
+			'success' => false
+		);
+		if( !$wgUser->isAllowed('edit') ) {
+			return json_encode($aResult);
+		}
+
 		$iNs = $wgRequest->getInt( 'ns', 0 );
-		$sNamespace = $wgContLang->getNsText( $iNs );
-		$oTestTitle = Title::newFromText( $sNamespace . ':Test' );
+		$dbr = wfGetDB(DB_SLAVE);
 
-		if ( $iNs === false ) {
-			return '{items: []}';
+		$rRes = $dbr->select(
+			'page',
+			array( 'page_id' ),
+			array( 'page_namespace' => $iNs ),
+			__METHOD__,
+			array( 'ORDER BY' => 'page_title' )
+		);
+
+		while( $o = $dbr->fetchObject($rRes) ) {
+			$oTitle = Title::newFromID($o->page_id);
+			if( !$oTitle || !$oTitle->userCan('read')) continue;
+
+			$aResult['items'][] = array(
+				'name' => $oTitle->getText(),
+				'label' => $o->page_id,
+				'ns' => $iNs,
+			);
 		}
+		$aResult['success'] = true;
 
-		$output = '{items: [';
-		if ( is_object( $oTestTitle ) && $oTestTitle->userCan( 'read' ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$res = $dbr->select(array('page'), array('page_title', 'page_namespace', 'page_id'), array('page_namespace' => $iNs), null, array('ORDER BY' => 'page_title')); //, array('page_namespace'=>$ns)
-			while ($page = $dbr->fetchRow($res)) {
-				//TODO: User can see (and link to) pages whose very existence should be kept secret.
-				$output .= '{name:"' . addslashes($page['page_title']) . '", label:"' . $page['page_id'] . '", ns:"' . $page['page_namespace'] . '"},';
-			}
-			if (strrpos($output, ',') == strlen($output) - 1)
-				$output = substr($output, 0, strlen($output) - 1);
-		}
-		$output .= ']}';
-
-		return $output;
-		// TODO MRG (01.07.11 12:24): use json_encode
-	}
-
-	/**
-	 * Get all visible namespaces and put it to ajax output.
-	 * @param type $output The ajax output which have to be valid JSON.
-	 */
-	public static function getNamespace() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		global $wgContLang;
-
-		$output = '{identifier:"name", items: [';
-		foreach ($wgContLang->getNamespaces() as $ns) {
-			$nsIndex = $wgContLang->getNsIndex( $ns );
-			if (in_array($nsIndex, BsConfig::get('MW::InsertLink::ExcludeNs')))
-				continue;
-			$oTestTitle = Title::newFromText($ns . ':Test');
-			if (is_object($oTestTitle) && $oTestTitle->userCan('read')) {
-				$output .= '{name:"' . BsNamespaceHelper::getNamespaceName($nsIndex) . '", label:"' . BsNamespaceHelper::getNamespaceName($nsIndex) . '", ns:"' . $nsIndex . '"},';
-			}
-		}
-		if (strrpos($output, ',') == strlen($output) - 1)
-			$output = substr($output, 0, strlen($output) - 1);
-		$output .= ']}';
-
-		return $output;
-		// TODO MRG (01.07.11 12:24): Use json_encode
+		return FormatJson::encode( $aResult );
 	}
 }

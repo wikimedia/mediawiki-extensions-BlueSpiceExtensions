@@ -23,15 +23,8 @@ BsExtendedSearchSpecialPage = {
 	init: function() {
 		$( '#bs-extendedsearch-inputfieldtext-specialpage' ).focus( function() {
 			if ( $( this ).val() == $( this ).attr( 'defaultvalue' ) ) $( this ).val( '' );
-			if ( $( '#bs-search-button-hidden-specialpage' ).val() == 'title' ) {
-				$( '#bs-extendedsearch-titlebuttonimage-specialpage' ).attr( 'shine', 'on' );
-			} else {
-				$( '#bs-extendedsearch-fulltextbuttonimage-specialpage' ).attr( 'shine', 'on' );
-			}
 		}).blur( function() {
 			if ( $( this ).val() == '' ) $( this ).val( $( this ).attr( 'defaultvalue' ) );
-			$( '#bs-extendedsearch-titlebuttonimage-specialpage' ).attr( 'shine', '' );
-			$( '#bs-extendedsearch-fulltextbuttonimage-specialpage' ).attr( 'shine', '' );
 		});
 
 		$( '#bs-search-button-specialpage' ).click( function( event ) {
@@ -79,7 +72,7 @@ BsExtendedSearchAjaxManager.prototype = {
 	getUri: function() {
 		var out = [];
 		for ( key in ExtendedSearchAjaxManager.oUrlParams ) {
-			if ( typeof( ExtendedSearchAjaxManager.oUrlParams[key] ) == 'object' 
+			if ( typeof( ExtendedSearchAjaxManager.oUrlParams[key] ) == 'object'
 				&& ( ExtendedSearchAjaxManager.oUrlParams[key] instanceof Array ) ) {
 
 				for ( key2 in ExtendedSearchAjaxManager.oUrlParams[key] ){
@@ -379,7 +372,7 @@ BsExtendedSearchAjaxManager.prototype = {
 			thread = setTimeout( function() { ExtendedSearchAjaxManager.ajaxMeANewResultsPlz( url ) }, 300 );
 		} );
 	}
-}
+};
 
 ExtendedSearchAjaxManager = null;
 
@@ -389,11 +382,11 @@ $(document).ready( function() {
 	ExtendedSearchAjaxManager = new BsExtendedSearchAjaxManager();
 	ExtendedSearchAjaxManager.init();
 
-	$("#bs-extendedsearch-checkbox-searchfiles").change(function() {
-		if ($(this).is(':checked')) {
-			$('#bs-extendedsearch-input-searchfiles').val('1');
+	$("#bs-extendedsearch-checkbox-searchfiles").change( function() {
+		if ( $( this ).is( ':checked' ) ) {
+			$( '#bs-extendedsearch-input-searchfiles' ).val( '1' );
 		} else {
-			$('#bs-extendedsearch-input-searchfiles').val('0');
+			$('#bs-extendedsearch-input-searchfiles').val( '0' );
 		}
 	});
 });

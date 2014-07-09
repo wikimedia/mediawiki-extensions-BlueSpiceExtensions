@@ -1,35 +1,35 @@
-VisualEditor = (function VisualEditor() {
-	"use strict";
+// Use strict breaks IE8
+// "use strict";
 
-	var
+VisualEditor = {
+
 		/**
 		 * @type VisualEditor
 		 * @private
 		 */
-		_instance = this,
-		_instancesGui = {},
-		_editorMode = 'wiki',
-		_started = false,
-		_bookmark = false,
-		_settings = {},
+		_instance: this,
+		_instancesGui: {},
+		_editorMode: 'wiki',
+		_started: false,
+		_bookmark: false,
+		_settings: {},
 		/**
 		 * @type Object
 		 * @private
 		 */
-		_config = {
-		_default: mw.config.get('BsVisualEditorConfigDefault')
-	};
+		_config: {
+			_default: mw.config.get('BsVisualEditorConfigDefault')
+		},
 
-	return {
 		/**
 		 * Singleton for system wide possiblity to change the configuration
 		 * @returns {VisualEditor}
 		 */
 		getInstance: function() {
-			if (!_instance) {
-				_instance = _createInstance();
+			if (!this._instance) {
+				this._instance = _createInstance();
 			}
-			return _instance;
+			return this._instance;
 		},
 		/**
 		 * Starts all configured TinyMCE instances
@@ -40,36 +40,45 @@ VisualEditor = (function VisualEditor() {
 				+ '/extensions/BlueSpiceExtensions/VisualEditor/resources/tinymce';
 
 			// start all the configured TinyMCE instances
-			for (var key in _config) {
-				if (key === '_default') {
-					continue;
+			// IE8 fix, does not know Object.keys
+			if ( Object.keys && Object.keys(this._config).length > 1 ) {
+				for (var key in this._config) {
+					if (key === '_default') {
+						continue;
+					}
+					window.tinyMCE.init($.extend({}, this._config['_default'], this._config[key]));
 				}
-				window.tinyMCE.init($.extend({}, _config['_default'], _config[key]));
+			} else {
+				// Fix for IE8/9 where we don't get a extra config by default
+				this._config['_default'] =  mw.config.get('BsVisualEditorConfigDefault');
+				window.tinyMCE.init(this._config['_default']);
 			}
-
-			_editorMode = 'tiny';
-			_started = true;
+			this._editorMode = 'tiny';
+			this._started = true;
 		},
 		/**
 		 * Sets the default config object.
 		 * @param {Object} config
 		 */
 		setDefaultConfig: function(config) {
-			_config['_default'] = config;
+			this._config['_default'] = config;
+		},
+		setConfig: function(key, config) {
+			this._config[key] = config;
 		},
 		toggleGui: function() {
 			var id = tinymce.activeEditor.id,
 				loadConfig;
-			if (typeof(_instancesGui[id]) === 'undefined') {
-				_instancesGui[id] = 'BsVisualEditorConfigDefault';
+			if (typeof(this._instancesGui[id]) === 'undefined') {
+				this._instancesGui[id] = 'BsVisualEditorConfigDefault';
 			}
 
-			if (_instancesGui[id] === 'BsVisualEditorConfigDefault') {
+			if (this._instancesGui[id] === 'BsVisualEditorConfigDefault') {
 				loadConfig = 'BsVisualEditorConfigAlternative';
-				_instancesGui[id] = 'BsVisualEditorConfigDefault';
+				this._instancesGui[id] = 'BsVisualEditorConfigDefault';
 			} else {
 				loadConfig = 'BsVisualEditorConfigDefault';
-				_instancesGui[id] = 'BsVisualEditorConfigAlternative';
+				this._instancesGui[id] = 'BsVisualEditorConfigAlternative';
 			}
 
 			tinymce.remove('#' + id);
@@ -80,55 +89,63 @@ VisualEditor = (function VisualEditor() {
 		},
 		toggleEditor: function(id) {
 
-			if (_started === false) {
+			if (this._started === false) {
 				$(document).trigger('VisualEditor::instanceShow', [id]);
 				this.startEditors();
 				return;
 			}
 
 			if (id === undefined) {
-				id = tinymce.activeEditor.id;
-				_settings[id] = tinymce.activeEditor.settings;
+				id = window.tinyMCE.activeEditor.id;
+				this._settings[id] = window.tinyMCE.activeEditor.settings;
 			}
 
-			if (_editorMode === 'wiki') {
-				tinymce.createEditor(id, _settings[id]).init();
-				_editorMode = 'tiny';
+			if (this._editorMode === 'wiki') {
+				window.tinyMCE.createEditor(id, this._settings[id]).init();
+				this._editorMode = 'tiny';
 				$(document).trigger('VisualEditor::instanceShow', [id]);
 			} else {
-				//tinymce.activeEditor.destroy();
-				tinymce.activeEditor.remove();
-				_editorMode = 'wiki';
+				//This is basically copied from tinymce.js:27051
+				//We cannot call tinymce.destroy directly because tinymce.save 
+				//called from tinymce.remove relies on the selection object 
+				//which would be set to null in tinymce.destroy
+				window.tinyMCE.DOM.unbind(
+					window.tinyMCE.activeEditor.formElement,
+					'submit reset',
+					window.tinyMCE.activeEditor.formEventDelegate
+				);
+				window.tinyMCE.activeEditor.remove();
+				this._editorMode = 'wiki';
 				$(document).trigger('VisualEditor::instanceHide', [id]);
 			}
 		},
 		startEditMode: function(bookmark) {
-			if (_editorMode === 'tiny' && !tinymce.activeEditor.isHidden()) {
-				_bookmark = bookmark;
+			if (this._editorMode === 'tiny' && !tinymce.activeEditor.isHidden()) {
+				this._bookmark = bookmark;
 			} else {
-				_bookmark = bs.util.selection.save();
+				this._bookmark = bs.util.selection.save();
 			}
 		},
 		endEditMode: function() {
-			_bookmark = false;
+			this._bookmark = false;
 			bs.util.selection.reset();
 		},
 		insertContent: function(wikitext) {
-			console.log(wikitext);
+			//console.log(wikitext);
 			if (_editorMode === 'tiny' && !tinymce.activeEditor.isHidden()) {
-				tinyMCE.activeEditor.selection.moveToBookmark(_bookmark);
+				tinyMCE.activeEditor.selection.moveToBookmark(this._bookmark);
 				tinyMCE.execCommand('mceInsertRawHTML', true, wikitext);
-				tinyMCE.activeEditor.selection.moveToBookmark(_bookmark);
+				tinyMCE.activeEditor.selection.moveToBookmark(this._bookmark);
 				tinyMCE.activeEditor.selection.collapse(true);
-				console.log('tiny');
+				//console.log('tiny');
 			} else {
 				bs.util.selection.restore(wikitext);
-				console.log('wiki');
+				//console.log('wiki');
 			}
-		}
-	}
+		},
 
-	function _createInstance() {
+
+	_createInstance: function() {
 		return {
 			/**
 			 * Add or override a config object with the given key.
@@ -140,7 +157,7 @@ VisualEditor = (function VisualEditor() {
 				if (key == "_default") {
 					throw "Don`t overwrite the default config!";
 				} else {
-					_config[key] = config;
+					this._config[key] = config;
 				}
 			},
 			/**
@@ -151,8 +168,8 @@ VisualEditor = (function VisualEditor() {
 			 * @return {Object}
 			 */
 			getConfig: function(key) {
-				return _config[key] || {};
+				return this._config[key] || {};
 			}
-		}
+		};
 	}
-}());
+};

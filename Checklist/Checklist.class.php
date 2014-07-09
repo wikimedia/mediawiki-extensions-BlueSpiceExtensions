@@ -55,8 +55,9 @@ class Checklist extends BsExtensionMW {
 			EXTINFO::NAME => 'Checklist',
 			EXTINFO::DESCRIPTION => 'Adds checklist functionality.',
 			EXTINFO::AUTHOR => 'Markus Glaser',
-			EXTINFO::VERSION => '2.22.0',
-			EXTINFO::STATUS => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
@@ -79,24 +80,29 @@ class Checklist extends BsExtensionMW {
 	 * Hook Handler for VisualEditorConfig Hook
 	 * @param Array $aConfigStandard reference
 	 * @param Array $aConfigOverwrite reference
+	 * @param Array &$aLoaderUsingDeps reference
 	 * @return boolean always true to keep hook alife
 	 */
-	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite ) {
-		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar2"] );
-		array_splice( $aConfigStandard["toolbar2"], $iIndexStandard + 1, 0, "bscheckbox" );
+	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
+		$aLoaderUsingDeps[] = 'ext.bluespice.checklist';
+
+		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bscheckbox" );
+		
+		// Add context menu entry
+		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsChecklist', $aConfigStandard["contextmenu"] );
 		return true;
 	}
 
 	public static function doChangeCheckItem() {
 		$oRequest = RequestContext::getMain()->getRequest();
 		$iPos = $oRequest->getInt( 'pos', 0 );
-		if ( $iPos == 0 ) return false;
+		if ( $iPos == 0 ) return 'false';
 		$sValue = $oRequest->getVal( 'value', '' );
-		if ( $sValue == '' ) return false;
+		if ( $sValue == '' ) return 'false';
 		$sArticleId = $oRequest->getInt( 'articleId', 0 );
-		if ( $sArticleId == 0 ) return false;
-		
-		$oArticle = Article::newFromID( $sArticleId );
+		if ( $sArticleId == 0 ) return 'false';
+
 		$oWikiPage = WikiPage::newFromID( $sArticleId );
 		$oContent = $oWikiPage->getContent();
 		$sContent = $oContent->getNativeData();
@@ -120,8 +126,8 @@ class Checklist extends BsExtensionMW {
 		$oContentHandler = $oContent->getContentHandler();
 		$oNewContent = $oContentHandler->makeContent($sContent, $oWikiPage->getTitle());
 		$oResult = $oWikiPage->doEditContent( $oNewContent, $sSummary );
-		
-		return true;
+
+		return 'true';
 	}
 	
 	public static function getOptionsList() {
@@ -159,7 +165,7 @@ class Checklist extends BsExtensionMW {
 		$this->getOutput()->addModuleStyles('ext.bluespice.checklist.styles');
 		$this->getOutput()->addModules('ext.bluespice.checklist');
 		
-		$aRows[1]['content'][70] = 'bs-editbutton-checklist';
+		$aRows[0]['dialogs'][60] = 'bs-editbutton-checklist';
 
 		$aButtonCfgs['bs-editbutton-checklist'] = array(
 			'tip' => wfMessage( 'bs-checklist-menu_insert_checkbox' )->plain(),
@@ -209,8 +215,8 @@ class Checklist extends BsExtensionMW {
 
 	public function onMagicWordBsChecklist( $input, $args, $parser ) {
 		/*
-		 *   16:37:57: Echt? Ich dachte du machst ein Edit auf der Seite. Da müsste der Cache doch automatisch invalidiert werden, oder?
-  16:38:56: Und falls das nicht geht sollte ein $oTitle-&gt;invalidateCache(); den gleichen Effekt haben.
+		 *16:37:57: Echt? Ich dachte du machst ein Edit auf der Seite. Da müsste der Cache doch automatisch invalidiert werden, oder?
+		 *16:38:56: Und falls das nicht geht sollte ein $oTitle-&gt;invalidateCache(); den gleichen Effekt haben.
 		 */
 		$parser->disableCache();
 		
@@ -230,7 +236,7 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = ">";
 			
 			foreach ( $aOptions as $sOption ) {
-				$aOptionSet = explode("\|", $sOption);
+				$aOptionSet = explode("|", $sOption);
 				
 				if (!$sSelectColor && isset ($aOptionSet[1])) {
 					$sSelectColor = "style='color:".$aOptionSet[1].";' ";
@@ -261,7 +267,7 @@ class Checklist extends BsExtensionMW {
 			}
 			$sOut[] = "/>";
 		}
-		$sOut = join($sOut, '');
+		$sOut = implode($sOut, '');
 		$sOut = str_replace('{color}', $sSelectColor, $sOut);
 		return $sOut;
 	}

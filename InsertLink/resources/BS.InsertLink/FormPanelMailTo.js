@@ -1,15 +1,27 @@
+/**
+ * InsertLink mail to panel
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage InsertLink
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
 
 Ext.define( 'BS.InsertLink.FormPanelMailTo', {
 	extend: 'BS.InsertLink.FormPanelBase',
 	protocols: ['mailto:'],
 	beforeInitComponent: function() {
-		this.setTitle( mw.message('bs-insertlink-tab3_title').plain() );
+		this.setTitle( mw.message('bs-insertlink-tab-email').plain() );
 		
 		this.tfTargetMail = Ext.create( 'Ext.form.field.Text', {
 			name: 'inputTargetMail',
-			fieldLabel: mw.message('bs-insertlink-label_mail').plain(),
+			fieldLabel: mw.message('bs-insertlink-label-mail').plain(),
 			value: '',
-			width: 600
+			allowBlank: false
 		});
 
 		this.pnlMainConf.items = [];
@@ -70,7 +82,7 @@ Ext.define( 'BS.InsertLink.FormPanelMailTo', {
 			title: title,
 			href: 'mailto:' + target,
 			type: '',
-			code: 'mailto:' + target + desc
+			code: '[mailto:' + target + desc + ']'
 			//'class': ''
 		};
 	},

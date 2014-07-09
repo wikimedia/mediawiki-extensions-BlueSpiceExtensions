@@ -1,33 +1,46 @@
+/**
+ * InsertLink file link panel
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage InsertLink
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
 
 Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 	extend: 'BS.InsertLink.FormPanelBase',
 	protocols: ['file:///'],
 	beforeInitComponent: function() {
-		this.setTitle( mw.message('bs-insertlink-tab6_title').plain() );
-
-		oApplet = document.createElement('applet');
-		oBody = document.getElementsByTagName('body')[0];
-		oApplet.setAttribute('code', 'HWFileChooserApplet.class');
-		oApplet.setAttribute('id', 'HWFileChooserApplet');
-		oApplet.setAttribute('name', 'HWFileChooserApplet');
-		oApplet.setAttribute('scriptable', 'true');
-		oApplet.setAttribute('mayscript', 'true');
-		oApplet.setAttribute('codebase', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertLink/resources/');
-		oApplet.setAttribute('style', 'width:0px;height:0px;padding:0;margin:0;');
-		oApplet.setAttribute('height', '1');
-		oApplet.setAttribute('width', '1');
-		oBody.appendChild(oApplet);
+		this.setTitle( mw.message('bs-insertlink-tab-ext-file').plain() );
+		this.on( 'beforeactivate', function(){
+			oApplet = document.createElement('applet');
+			oBody = document.getElementsByTagName('body')[0];
+			oApplet.setAttribute('code', 'HWFileChooserApplet.class');
+			oApplet.setAttribute('id', 'HWFileChooserApplet');
+			oApplet.setAttribute('name', 'HWFileChooserApplet');
+			oApplet.setAttribute('scriptable', 'true');
+			oApplet.setAttribute('mayscript', 'true');
+			oApplet.setAttribute('codebase', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertLink/resources/');
+			oApplet.setAttribute('style', 'width:0px;height:0px;padding:0;margin:0;');
+			oApplet.setAttribute('height', '1');
+			oApplet.setAttribute('width', '1');
+			oBody.appendChild(oApplet);
+		}, this);
 
 		this.tfTargetUrl = Ext.create( 'Ext.form.field.Text', {
 			id: 'BSInserLinkTargetUrl',
 			name: 'inputTargetUrl',
-			fieldLabel: mw.message('bs-insertlink-label_file').plain(),
+			fieldLabel: mw.message('bs-insertlink-label-file').plain(),
 			value: '',
 			width: '75%'
 		});
 		this.btnSearchFile = Ext.create( 'Ext.button.Button', {
 			id: 'inputSearchFile',
-			text: mw.message('bs-insertlink-label_searchfile').plain(),
+			text: mw.message('bs-insertlink-label-searchfile').plain(),
 			handler: function(){
 				document.HWFileChooserApplet.openDialog('onFileDialogFile', 'onFileDialogCancel');
 			},
@@ -35,7 +48,6 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 		});
 		
 		this.fcTargetFields = Ext.create('Ext.form.FieldContainer', {
-			 width: 600,
 			 layout: 'hbox'
 		});
 		this.fcTargetFields.add(this.tfTargetUrl);
@@ -96,11 +108,14 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 			target = this.tfTargetUrl.getValue();
 		}
 
+		target = target.replace(/\\/g, '/');
+		target = target.replace(/ /g, '%20');
+
 		return { 
 			title: title,
 			href: 'file:///' + target,
 			type: '',
-			code: 'file:///' + target + desc
+			code: '[file:///' + target + desc + ']'
 			//'class': ''
 		};
 	},

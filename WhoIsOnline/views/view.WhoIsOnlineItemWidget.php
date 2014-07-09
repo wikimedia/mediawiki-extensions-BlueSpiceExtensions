@@ -43,7 +43,8 @@ class ViewWhoIsOnlineItemWidget extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $params = false ) {
-		if( empty( $this->sUserDisplayName ) ) {
+		global $wgScriptPath;
+		if ( empty( $this->sUserDisplayName ) ) {
 			$this->sUserDisplayName = $this->sUserName;
 		}
 
@@ -54,10 +55,10 @@ class ViewWhoIsOnlineItemWidget extends ViewBaseElement {
 		if ( $this->getOption( 'renderLink' ) ) {
 			$aOut[] = sprintf(
 							'<a href="%s/index.php?title=User:%s" title="%s">%s</a>',
-							BsConfig::get( 'MW::ScriptPath' ),
+							$wgScriptPath,
 							$this->sUserName,
 							$this->sUserDisplayName,
-							BsStringHelper::shorten( $this->sUserDisplayName, array('max-length' => 50) )
+							BsStringHelper::shorten( $this->sUserDisplayName, array( 'max-length' => 50 ) )
 						);
 		}
 		else {

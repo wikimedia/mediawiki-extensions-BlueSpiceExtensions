@@ -55,6 +55,17 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 			name: 'width',
 			allowBlank: false
 		});
+		this.tfWidth.on("blur", function(){
+			Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+		});
+		this.cbFullWidth = Ext.create('Ext.form.field.Checkbox', {
+			fieldLabel: mw.message('bs-flexiskin-labelFullWidth').plain(),
+			labelWidth: 100,
+			labelAlign: 'left',
+			name: 'fullWidth',
+			handler: this.onCbFullWidthChange, 
+			scope: this
+		});
 		this.tfWidth.on('keyup', function() {
 			//TODO: make this work...
 			Ext.getCmp('bs-flexiskin-preview-menu').btnSave.enable();
@@ -62,16 +73,27 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 		this.items = [
 			this.cgNavigation,
 			this.cgContent,
-			this.tfWidth
+			this.tfWidth,
+			this.cbFullWidth
 		];
 		this.callParent(arguments);
+	},
+	onCbFullWidthChange: function( sender, checked ) {
+		if( checked ) {
+			this.tfWidth.disable();
+		}
+		else {
+			this.tfWidth.enable();
+		}
+		Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
 	},
 	getData: function() {
 		var data = {
 			id: 'position',
 			navigation: this.cgNavigation.getValue(),
 			content: this.cgContent.getValue(),
-			width: this.tfWidth.getValue()
+			width: this.tfWidth.getValue(),
+			fullWidth: this.cbFullWidth.getValue()
 		};
 		return data;
 	},
@@ -80,5 +102,6 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 		this.cgNavigation.setValue(this.currentData.config.navigation);
 		this.cgContent.setValue(this.currentData.config.content);
 		this.tfWidth.setValue(this.currentData.config.width);
+		this.cbFullWidth.setValue(this.currentData.config.fullWidth);
 	}
 });

@@ -1,0 +1,1 @@
+ALTER TABLE /*_*/bs_readers MODIFY /*i*/readers_ts varchar( 16 ) NOT NULL DEFAULT ''

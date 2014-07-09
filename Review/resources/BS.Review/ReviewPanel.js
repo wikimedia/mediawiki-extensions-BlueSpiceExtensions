@@ -70,7 +70,9 @@ Ext.define( 'BS.Review.ReviewPanel', {
 		return {
 			cmd: 'insert',
 			pid: this.currentData.page_id,
-			mode: 'workflow', // TODO: BS docu - Ext.getCmp('mode').getValue(),
+			editable: true,
+                        sequential: true,
+                        abortable: true,
 			startdate: this.dfStart.getValue(),
 			enddate:   this.dfEnd.getValue(),
 			steps:     this.gdSteps.getData()
@@ -85,8 +87,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 			params: {
 				review: Ext.encode(obj),
 				pid: obj.pid,
-				cmd: 'insert',
-				mode: 'workflow' // TODO: BS docu - 'comment'
+				cmd: 'insert'
 			},
 			success: function(response) {
 				result = Ext.decode( response.responseText );

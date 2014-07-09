@@ -3,8 +3,6 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    1.0 beta
- * @version    $Id$
  * @package    Bluespice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

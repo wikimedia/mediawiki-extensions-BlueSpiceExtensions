@@ -61,7 +61,7 @@ class ViewStateBarTopElementCategoryShortList extends ViewStateBarTopElement {
 			$aOut[] = $sCategory;
 		}
 		if( $this->bMoreCategoriesAvailable ) {
-			$aOut[] = '<a class="bs-statebar-viewtoggler" href="#" title="'.wfMsg( 'bs-articleinfo-more-categories' ).'">[...]</a>';
+			$aOut[] = '<a class="bs-statebar-viewtoggler" href="#" title="'.wfMessage( 'bs-articleinfo-more-categories' )->plain().'">[...]</a>';
 		}
 
 		$this->sText = implode( ', ', $aOut );

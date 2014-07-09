@@ -61,8 +61,9 @@ class ExtendedEditBar extends BsExtensionMW {
 			EXTINFO::NAME        => 'ExtendedEditBar',
 			EXTINFO::DESCRIPTION => 'Provides additional buttons to the wiki edit field.',
 			EXTINFO::AUTHOR      => 'MediaWiki Extension, packaging by Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0 ',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.blue-spice.org',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -234,7 +235,7 @@ class ExtendedEditBar extends BsExtensionMW {
 		$aButtonCfgs = $aMWButtonCfgs + $aBSButtonCfgs;
 		
 		$aRows = array(
-			array(), //this is reserverd for BlueSpice dialogs
+			array('editing' => array(), 'dialogs' => array(), 'table' => array( 10 => 'bs-editbutton-table' )), //this is reserverd for BlueSpice dialogs
 			array(
 				'formatting' => array(
 					10 => 'mw-editbutton-bold',
@@ -242,14 +243,13 @@ class ExtendedEditBar extends BsExtensionMW {
 					30 => 'bs-editbutton-strike',
 					40 => 'mw-editbutton-headline',
 					50 => 'bs-editbutton-linebreak',
-					60 => 'bs-editbutton-table',
 				),
 				'content' => array(
-					10 => 'mw-editbutton-link',
-					20 => 'mw-editbutton-extlink',
+					//10 => 'mw-editbutton-link',
+					//20 => 'mw-editbutton-extlink',
 					30 => 'mw-editbutton-strike',
-					40 => 'mw-editbutton-image',
-					50 => 'mw-editbutton-media',
+					//40 => 'mw-editbutton-image',
+					//50 => 'mw-editbutton-media',
 					60 => 'bs-editbutton-gallery',
 				),
 				'misc' => array(
@@ -301,8 +301,13 @@ class ExtendedEditBar extends BsExtensionMW {
 			$aContent[] = $sRow;
 		}
 		
-		//We completely replace the old toolbar (the one with ugly icons)
-		$toolbar = Html::rawElement( 
+		//We have to keep the old toolbar (the one with ugly icons) because 
+		//some extensions (i.e. MsUpload) rely on it to add elements to the DOM.
+		//Unfortunately VisualEditor wil set it to visible when toggled. 
+		//Therefore we move it out of sight using CSS positioning. Some buttons
+		//May be not visible though.
+		//TODO: Take contents of div#toolbar as base
+		$toolbar .= Html::rawElement( 
 			'div', 
 			array( 'id' => 'bs-extendededitbar' ),
 			implode( '', $aContent)

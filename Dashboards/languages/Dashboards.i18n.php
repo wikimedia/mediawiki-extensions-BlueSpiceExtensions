@@ -24,20 +24,20 @@ $messages['en'] = array(
 );
 
 $messages['de'] = array(
-	'bs-dashboards-extension-description' => 'Stellt Cockpits für Benutzer und Administratoren zur Verfügung.',
+	'bs-dashboards-extension-description' => 'Stellt Dashboards für Benutzer und Administratoren zur Verfügung.',
 
-	'bs-specialadmindashboard-label' => 'Cockpit',
-	'bs-dashboards-tag-desc' => 'Fügt dieser Seite einen "Cockpit"-Bereich hinzu.',
+	'bs-specialadmindashboard-label' => 'Dashboard',
+	'bs-dashboards-tag-desc' => 'Fügt dieser Seite einen "Dashboard"-Bereich hinzu.',
 	'bs-dashboards-addportlet' => 'Portlet hinzufügen',
 	'bs-dashboards-portlets' => 'Portlets',
 
 	//Settings
-	'prefs-Dashboards'                       => 'Cockpits',
-	'bs-dashboards-pref-UserDashboardOnLogo' => 'Logo der Website verlinkt auf das Benutzercockpit',
+	'prefs-Dashboards'                       => 'Dashboards',
+	'bs-dashboards-pref-UserDashboardOnLogo' => 'Logo der Website verlinkt auf das Benutzerdashboard',
 
 	//SpecialPage
-	'admindashboard' => 'Admincockpit',
-	'userdashboard'  => 'Benutzercockpit',
+	'admindashboard' => 'Admin-Dashboard',
+	'userdashboard'  => 'Benutzer-Dashboard',
 
 	//Default portlets user
 	'bs-dashboard-userportlet-calendar-title'		=> 'Kalender',

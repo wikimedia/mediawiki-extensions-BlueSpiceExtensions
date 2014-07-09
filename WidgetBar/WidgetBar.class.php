@@ -61,8 +61,9 @@ class WidgetBar extends BsExtensionMW {
 			EXTINFO::NAME        => 'WidgetBar',
 			EXTINFO::DESCRIPTION => 'Adds the widget flyout to the skin.',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -95,6 +96,8 @@ class WidgetBar extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( $oOutputPage, $oSkinTemplate ) {
 		$oOutputPage->addModules( 'ext.bluespice.widgetbar' );
+		$oOutputPage->addModuleStyles( 'ext.bluespice.widgetbar.style' );
+
 		return true;
 	}
 
@@ -188,10 +191,13 @@ class WidgetBar extends BsExtensionMW {
 			$aViews[] = $oWidgetListView->setWidgets( $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle ) );
 			return $aViews;
 		}
+		
+		$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
+		if( empty($aWidgets) ) {
+			$aWidgets = $this->getDefaultWidgets( $aWidgetViews, $oUser, $oTitle );
+		}
+		$oWidgetListView->setWidgets( $aWidgets );
 
-		$oWidgetListView->setWidgets(
-			BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets()
-		);
 		$aViews[] = $oWidgetListView;
 		return $aViews;
 	}
@@ -206,21 +212,5 @@ class WidgetBar extends BsExtensionMW {
 	private function getDefaultWidgets( &$aViews, $oUser, $oTitle) {
 		wfRunHooks( 'BSWidgetBarGetDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
 		return $aViews;
-	}
-	
-	/**
-	 * Sets parameters for more complex options in preferences
-	 * @param string $sAdapterName Name of the adapter, e.g. MW
-	 * @param BsConfig $oVariable Instance of variable
-	 * @return array Preferences options
-	 */
-	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
-		$aPrefs = array(
-			'options' => array(
-				wfMessage( 'bs-pref-SkinWidgetDirection-left' )->plain() => 'left',
-				wfMessage( 'bs-pref-SkinWidgetDirection-right' )->plain() => 'right',
-			)
-		);
-		return $aPrefs;
 	}
 }

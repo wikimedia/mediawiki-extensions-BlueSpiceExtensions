@@ -24,7 +24,6 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
  * @version    2.22.0 stable
-
  * @package    BlueSpice_Extensions
  * @subpackage Blog
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -82,8 +81,9 @@ class Blog extends BsExtensionMW {
 			EXTINFO::NAME        => 'Blog',
 			EXTINFO::DESCRIPTION => 'Display a blog style list of pages.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -116,7 +116,7 @@ class Blog extends BsExtensionMW {
 		// Should a link to complete list of blog entries be rendered?
 		BsConfig::registerVar('MW::Blog::ShowAll', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowAll', 'toggle');
 		// Place more link at end of blog entry instead of next line
-		BsConfig::registerVar('MW::Blog::MoreAtEndOfEntry', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreAtEndOfEntry', 'toggle');
+		BsConfig::registerVar('MW::Blog::MoreAtEndOfEntry', true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-blog-pref-MoreAtEndOfEntry', 'toggle');
 		// Possible values are "creation" and "title"
 		//BsConfig::registerVar('MW::Blog::SortBy',			'creation',	BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, $this->mI18N);
 		BsConfig::registerVar( 'MW::Blog::SortBy', 'creation', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-SortBy', 'select' );
@@ -132,7 +132,7 @@ class Blog extends BsExtensionMW {
 		// Defines how images should be rendered. Possible values: full|thumb|none
 		//BsConfig::registerVar('MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, $this->mI18N);
 		BsConfig::registerVar( 'MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-ImageRenderMode', 'select' );
-		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTagFormWhenNotLoggedIn', 'toggle');
+		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-blog-pref-ShowTagFormWhenNotLoggedIn', 'toggle');
 
 		global $wgServer, $wgScriptPath;
 		//Register Application for ApplicationBar in BlueSpice-Skin
@@ -154,7 +154,7 @@ class Blog extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		$oOutputPage->addModules( 'ext.bluespice.blog' );
+		$oOutputPage->addModuleStyles( 'ext.bluespice.blog' );
 
 		return true;
 	}
@@ -315,6 +315,7 @@ class Blog extends BsExtensionMW {
 		} else {
 			$oTitle = $this->getTitle();
 		}
+
 		// initialize local variables
 		$sOut = '';
 		$oErrorListView = new ViewTagErrorList( $this );
@@ -333,7 +334,6 @@ class Blog extends BsExtensionMW {
 		$bNewEntryFieldPosition = BsConfig::get( 'MW::Blog::NewEntryFieldPosition' );
 		$sImageRenderMode       = BsConfig::get( 'MW::Blog::ImageRenderMode' );
 		$iMaxEntryCharacters    = BsConfig::get( 'MW::Blog::MaxEntryCharacters' );
-		$iNamespace = NS_BLOG;
 
 		// Trackbacks are not supported the way we intend it to be. From http://www.mediawiki.org/wiki/Manual:$wgUseTrackbacks
 		// When MediaWiki receives a trackback ping, a box will show up at the bottom of the article containing a link to the originating page
@@ -343,7 +343,7 @@ class Blog extends BsExtensionMW {
 		// get tag attributes
 		$argsIShowLimit              = BsCore::sanitizeArrayEntry( $args, 'count', $iShowLimit, BsPARAMTYPE::NUMERIC|BsPARAMOPTION::DEFAULT_ON_ERROR );
 		$argsSCategory               = BsCore::sanitizeArrayEntry( $args, 'cat',   false,          BsPARAMTYPE::STRING );
-		$argsINamespace              = BsNamespaceHelper::getNamespaceIndex( BsCore::sanitizeArrayEntry( $args, 'ns',   $iNamespace, BsPARAMTYPE::STRING ));
+		$argsINamespace              = BsNamespaceHelper::getNamespaceIndex( BsCore::sanitizeArrayEntry( $args, 'ns',   NS_BLOG, BsPARAMTYPE::STRING ));
 		$argsBNewEntryField          = BsCore::sanitizeArrayEntry( $args, 'newentryfield',         $bShowNewEntryField,     BsPARAMTYPE::BOOL );
 		$argsSNewEntryFieldPosition  = BsCore::sanitizeArrayEntry( $args, 'newentryfieldposition', $bNewEntryFieldPosition, BsPARAMTYPE::STRING );
 		$argsSImageRenderMode        = BsCore::sanitizeArrayEntry( $args, 'imagerendermode',       $sImageRenderMode,       BsPARAMTYPE::STRING );
@@ -354,7 +354,7 @@ class Blog extends BsExtensionMW {
 		$argsBShowPermalink          = BsCore::sanitizeArrayEntry( $args, 'showpermalink',   $bShowPermalink,   BsPARAMTYPE::BOOL );
 		$argsModeNamespace           = BsCore::sanitizeArrayEntry( $args, 'mode',   null,   BsPARAMTYPE::STRING );
 
-		if( $argsModeNamespace === 'ns' && is_object( $oTitle ) ) {
+		if ( $argsModeNamespace === 'ns' && is_object( $oTitle ) ) {
 			$argsINamespace = $oTitle->getNamespace();
 		}
 
@@ -386,9 +386,9 @@ class Blog extends BsExtensionMW {
 			return $oErrorListView->execute();
 		}
 
-		if( BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true ) {
+		if ( BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true ) {
 			$oPermissionTest = Title::newFromText( 'PermissionTest', $argsINamespace );
-			if( !$oPermissionTest->userCan( 'edit' ) ) {
+			if ( !$oPermissionTest->userCan( 'edit' ) ) {
 				$argsBNewEntryField = false;
 			}
 		}
@@ -400,12 +400,12 @@ class Blog extends BsExtensionMW {
 		$iLimit = 0; // for later use
 
 		$aArticleIds = array();
-		foreach( $aSubpages as $oSubpage ) {
+		foreach ( $aSubpages as $oSubpage ) {
 			$aArticleIds[] = $oSubpage->getArticleID();
 			$iLimit++;  // for later use
 		}
 
-		if( count( $aArticleIds ) < 1 ) {
+		if ( count( $aArticleIds ) < 1 ) {
 			$aArticleIds = 0;
 		}
 
@@ -413,8 +413,7 @@ class Blog extends BsExtensionMW {
 		$aOptions = array();
 		if ( !$argsSSortBy || $argsSSortBy == 'creation' ) {
 			$aOptions['ORDER BY'] = 'page_id DESC';
-		}
-		else if ( $argsSSortBy == 'title' ) {
+		} elseif ( $argsSSortBy == 'title' ) {
 			$aOptions['ORDER BY'] = 'page_title ASC';
 		}
 
@@ -423,6 +422,7 @@ class Blog extends BsExtensionMW {
 		$aConditions = array();
 
 		$dbr = wfGetDB( DB_SLAVE );
+
 		if ( $argsSCategory ) {
 			$aTables[] = 'categorylinks';
 			$sFiels = 'cl_from AS entry_page_id';
@@ -455,10 +455,9 @@ class Blog extends BsExtensionMW {
 			$oBlogView = new ViewBlog();
 			$oBlogView->setOption( 'shownewentryfield', $argsBNewEntryField );
 			$oBlogView->setOption( 'newentryfieldposition', $argsSNewEntryFieldPosition );
+			$oBlogView->setOption( 'namespace', BsNamespaceHelper::getNamespaceName( $argsINamespace ) );
 			if ( $argsSCategory ) {
 				$oBlogView->setOption( 'blogcat', $argsSCategory );
-			} else {
-				$oBlogView->setOption( 'namespace', BsNamespaceHelper::getNamespaceName( $argsINamespace ) );
 			}
 			// actually create blog output
 			$sOut = $oBlogView->execute();
@@ -472,18 +471,18 @@ class Blog extends BsExtensionMW {
 		$iLoop = 0;
 		foreach( $res as $row ) {
 			// prepare data for view class
-			$oTitle   = Title::newFromID( $row->entry_page_id );
-			$oArticle = new Article( $oTitle, 0 );
+			$oTitle = Title::newFromID( $row->entry_page_id );
 			if ( !$oTitle->userCan( 'read' ) ) { $iNumberOfEntries--; continue; }
 
 			$bMore = false;
-			$aContent = preg_split( '#<(bs:blog:)?more */>#', $oArticle->getContent() );
+			$aContent = preg_split( '#<(bs:blog:)?more */>#', BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) );
 			if ( sizeof( $aContent ) > 1 ) $bMore = true;
 			$aContent = trim( $aContent[0] );
 			// Prevent recursive rendering of blog tag
 			$aContent = preg_replace( '/<(bs:)blog[^>]*?>/', '', $aContent );
 			// Thumbnail images
 			$sNamespaceRegEx = implode( '|', BsNamespaceHelper::getNamespaceNamesAndAliases( NS_IMAGE ) );
+
 			switch ( $argsSImageRenderMode ) {
 				case 'none':
 					$aContent = preg_replace( '/(\[\[('.$sNamespaceRegEx.'):[^\|\]]*)(\|)?(.*?)(\]\])/', '', $aContent );
@@ -498,19 +497,22 @@ class Blog extends BsExtensionMW {
 			}
 
 			if ( strlen( $aContent ) > $argsIMaxEntryCharacters ) $bMore = true;
-			$aContent = BsStringHelper::shorten( 
-							$aContent, 
-							array( 
-									'max-length' => $argsIMaxEntryCharacters, 
-									'ignore-word-borders' => false, 
-									'position' => 'end'
-							) 
-						);
+
+			$aContent = BsStringHelper::shorten(
+				$aContent,
+				array(
+					'max-length' => $argsIMaxEntryCharacters, 
+					'ignore-word-borders' => false, 
+					'position' => 'end'
+				)
+			);
+
 			$resComment = $dbr->selectRow( 
 				'revision',
 				'COUNT( rev_id ) AS cnt',
 				array( 'rev_page' => $oTitle->getTalkPage()->getArticleID() )
 			);
+
 			$iCount = $resComment->cnt;
 			// set data for view class
 			$oBlogItemView = new ViewBlogItem();
@@ -527,17 +529,24 @@ class Blog extends BsExtensionMW {
 
 			//TODO: magic_call?
 			
-			if( $argsModeNamespace === 'ns' ) {
+			if ( $argsModeNamespace === 'ns' ) {
 				$sTitle = substr( $oTitle->getText(), 5 );
 			} else {
 				$sTitle = $oTitle->getText();
 			}
+
+			$aTalkParams = array();
+			if ( !$oTitle->getTalkPage()->exists() ) {
+				$aTalkParams = array( 'action' => 'edit' );
+			}
+
+			$oRevision = Revision::newFromTitle( $oTitle );
 			$oBlogItemView->setTitle( $sTitle );
-			$oBlogItemView->setRevId( $oArticle->getRevIdFetched() );
-			$oBlogItemView->setURL( $oTitle->getFullURL() );
-			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getFullURL() );
+			$oBlogItemView->setRevId( $oRevision->getId() );
+			$oBlogItemView->setURL( $oTitle->getLocalURL() );
+			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getLocalURL( $aTalkParams ) );
 			$oBlogItemView->setTalkCount( $iCount );
-			$oBlogItemView->setTrackbackUrl( $oTitle->getFullURL() );
+			$oBlogItemView->setTrackbackUrl( $oTitle->getLocalURL() );
 
 			if ( $bShowInfo ) {
 				$oFirstRevision = $oTitle->getFirstRevision();
@@ -548,7 +557,7 @@ class Blog extends BsExtensionMW {
 
 				if ( $iUserId != 0 ) {
 					$oAuthorUser = User::newFromId( $iUserId );
-					$oBlogItemView->setAuthorPage( $oAuthorUser->getUserPage()->getFullText() );
+					$oBlogItemView->setAuthorPage( $oAuthorUser->getUserPage()->getPrefixedText() );
 					$oBlogItemView->setAuthorName( $this->mCore->getUserDisplayName( $oAuthorUser ) );
 				} else {
 					$oBlogItemView->setAuthorName( $oFirstRevision->getUserText() );
@@ -605,7 +614,7 @@ class Blog extends BsExtensionMW {
 			$sPageName = $sTitle;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		/*$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			array( 'page', 'recentchanges' ),
 			'*',
@@ -619,9 +628,12 @@ class Blog extends BsExtensionMW {
 			array( 
 				'page'=> array( 'LEFT JOIN', 'rc_cur_id = page_id' ) 
 			)
-		);
+		);*/
 
-		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_page' ) );
+		$oChannel = RSSCreator::createChannel(
+			RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName ),
+			'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_page' )->plain()
+		);
 
 		$oTitle = Title::makeTitle( $iNSid , 'Blog' );
 		$aSubpages = $oTitle->getSubpages();
@@ -661,8 +673,8 @@ class Blog extends BsExtensionMW {
 		}
 
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
-		$sUserName   = $oUser->getName();
-		$sUserToken  = $oUser->getToken();
+		$sUserName = $oUser->getName();
+		$sUserToken = $oUser->getToken();
 
 		foreach( $aNamespaces as $key => $name ) {
 			$select->addData(
@@ -670,9 +682,9 @@ class Blog extends BsExtensionMW {
 					'value' => $oSpecialRSS->getLinkUrl(
 						array(
 							'Page' => 'blog',
-							'ns'   => $key,
-							'u'    => $sUserName,
-							'h'    => $sUserToken
+							'ns' => $key,
+							'u' => $sUserName,
+							'h' => $sUserToken
 						)
 					),
 					'label' => $name

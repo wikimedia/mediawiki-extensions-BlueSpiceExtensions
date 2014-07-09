@@ -28,11 +28,6 @@ class BuildIndexMwSpecial extends AbstractBuildIndexAll {
 	const S_ERROR_MSG_KEY = 'error-indexing-wiki';
 
 	/**
-	 * Pointer to current database connection
-	 * @var object Referenec to Database object 
-	 */
-	protected $oDbr;
-	/**
 	 * List of documents to be indexed.
 	 * @var resource Result of db query.
 	 */
@@ -40,7 +35,7 @@ class BuildIndexMwSpecial extends AbstractBuildIndexAll {
 
 	/**
 	 * Constructor for BuildIndexMwArticles class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate. 
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
@@ -51,8 +46,7 @@ class BuildIndexMwSpecial extends AbstractBuildIndexAll {
 	 * @return int Number of documents to be indexed.
 	 */
 	public function crawl() {
-		global $wgUser;
-		$this->oDocumentsDb = SpecialPageFactory::getUsablePages( $wgUser );
+		$this->oDocumentsDb = SpecialPageFactory::getUsablePages( RequestContext::getMain()->getUser() );
 		$this->totalNoDocumentsCrawled = count( $this->oDocumentsDb );
 
 		return $this->totalNoDocumentsCrawled;
@@ -64,14 +58,13 @@ class BuildIndexMwSpecial extends AbstractBuildIndexAll {
 	 * @param string $sContent The body of the wiki-page or the document
 	 * @param int $iPageID Id is -1 in case it's no wiki-article
 	 * @param int $sPageNamespace Namespace of document, is 999 in case it's no wiki-article
-	 * @param unknown $iTimestamp Timestamp
-	 * @param array $aCategories Categories
-	 * @param array $aEditors Editors
 	 * @return Apache_Solr_Document
 	 */
-	public function makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace, $sPath, $iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections, $iIsSpecial ) {
-		$oSolrDocument = $this->oMainControl->makeDocument( 'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, $sPath, $iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections, $iIsSpecial );
-		return $oSolrDocument;
+	public function makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace, $sPath, $iTimestamp, $iIsSpecial ) {
+		return $this->oMainControl->makeDocument(
+				'special', '', $sPageTitle, $sContent, $iPageID, $sPageNamespace,
+				'', $sPath, $iTimestamp, array(), array(), array(), 0, array(), $iIsSpecial
+		);
 	}
 
 	/**
@@ -80,7 +73,7 @@ class BuildIndexMwSpecial extends AbstractBuildIndexAll {
 	public function indexCrawledDocuments() {
 		foreach ( $this->oDocumentsDb as $oSpecialPage ) {
 			$this->count++;
-			set_time_limit( $this->iTimeLimit );
+			if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
 			$sPageTitle = $oSpecialPage->getTitle()->getText();
 			$iTimestamp = wfTimestampNow();
@@ -88,7 +81,7 @@ class BuildIndexMwSpecial extends AbstractBuildIndexAll {
 
 			$this->writeLog( $sPageTitle );
 
-			$oSolrDocument = $this->makeSingleDocument( $sPageTitle, '', -1, 1000, $sPageTitle, $iTimestamp, array(), array(), array(), 0, array(), $iIsSpecial );
+			$oSolrDocument = $this->makeSingleDocument( $sPageTitle, '', -1, 1000, $sPageTitle, $iTimestamp, $iIsSpecial );
 
 			$this->oMainControl->addDocument( $oSolrDocument, $this->mode, self::S_ERROR_MSG_KEY );
 		}

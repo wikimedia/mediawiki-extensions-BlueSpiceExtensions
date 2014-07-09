@@ -54,7 +54,7 @@ var BsBehaviour = function() {
 			leaveEnabledIds = [ed.editorId + '_' + 'hwwiki']; //Do not disable switch to wikicode; ed.editorId+'_'+c.id = i.e. wpTextbox1_hwwiki
 
 		$(document).trigger('hwbehavior-_setDisabled', [this, s, leaveEnabledIds]);
-		console.log(ed.menuItems);
+//		console.log(ed.menuItems);
 		tinymce.each(ed.menuItems, function(button, id, buttonCollection) {
 			if($.inArray(id, leaveEnabledIds) === -1) {
 				button.disabled(true);

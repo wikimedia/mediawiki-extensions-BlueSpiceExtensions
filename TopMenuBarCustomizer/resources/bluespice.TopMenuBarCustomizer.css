@@ -23,7 +23,9 @@
 	left: 130px;
 	top: 0px;
 }
-
+#bs-apps ul.bs-apps-child li {
+	float: none;
+}
 ul .bs-apps-child {
 	display:none;
 	position: absolute;
@@ -32,14 +34,11 @@ ul .bs-apps-child {
 	margin: 7px 0 0 -130px;
 	padding: 5px;
 	text-align: left;
-	width: 130px;
 	z-index: 1000;
 	border: 3px solid #B1B9CF;
 }
-.bs-apps-child  li {
-	width:130px
-}
-.bs-apps-child  li:hover{
+
+.bs-apps-child li:hover{
 	background-color: #C8CDD2;
 }
 .bs-apps-child a:hover{

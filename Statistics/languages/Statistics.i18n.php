@@ -90,6 +90,7 @@ $messages['en'] = array(
 	'bs-statistics-pref-ExcludeUsers-title'       => 'Add user',
 	'bs-statistics-pref-ExcludeUsers-message'     => 'Add the user you wish to exclude.',
 	'bs-statistics-pref-MaxNumberOfIntervals'     => 'Maximum number of steps',
+	'bs-statistics-loadingMessage'                => 'Loading',
 
 	'bs-statistics-portlet-NumberOfUsers'         => 'Number of users',
 	'bs-statistics-portlet-NumberOfEdits'         => 'Number of edits',
@@ -98,7 +99,12 @@ $messages['en'] = array(
 	'bs-statistics-portlet-NumberOfUsersdesc'     => 'Statistic of the number of users from this wiki',
 	'bs-statistics-portlet-NumberOfEditsdesc'     => 'Statistic of the number of edits from this wiki',
 	'bs-statistics-portlet-NumberOfArticlesdesc'  => 'Statistic of the number of articles from this wiki',
-	'bs-statistics-portlet-NumberOfPagesdesc'     => 'Statistic of the number of pages from this wiki'
+	'bs-statistics-portlet-NumberOfPagesdesc'     => 'Statistic of the number of pages from this wiki',
+
+	'bs-statistics-portletconfig-periodlabel'     => 'Period of time',
+	'bs-statistics-portletconfig-periodday'       => 'Yesterday',
+	'bs-statistics-portletconfig-periodweek'      => 'Seven days',
+	'bs-statistics-portletconfig-periodmonth'     => '30 days',
 );
 
 $messages['de'] = array(
@@ -176,6 +182,7 @@ $messages['de'] = array(
 	'bs-statistics-pref-ExcludeUsers-title'       => 'Auszuschließenden Benutzer hinzufügen',
 	'bs-statistics-pref-ExcludeUsers-message'     => 'Gib hier den Namen des auszuschließenden Benutzers ein.',
 	'bs-statistics-pref-MaxNumberOfIntervals'     => 'Maximale Anzahl von Schritten',
+	'bs-statistics-loadingMessage'                => 'Laden',
 
 	'bs-statistics-portlet-NumberOfUsers'         => 'Anzahl der Benutzer',
 	'bs-statistics-portlet-NumberOfEdits'         => 'Anzahl der Bearbeitungen',
@@ -184,7 +191,12 @@ $messages['de'] = array(
 	'bs-statistics-portlet-NumberOfUsersdesc'     => 'Statistik der Anzahl der Benutzer dieses Wikis',
 	'bs-statistics-portlet-NumberOfEditsdesc'     => 'Statistik der Anzahl der Bearbeitungen dieses Wikis',
 	'bs-statistics-portlet-NumberOfArticlesdesc'  => 'Statistik der Anzahl der Artikel dieses Wikis',
-	'bs-statistics-portlet-NumberOfPagesdesc'     => 'Statistik der Anzahl der Seiten dieses Wikis'
+	'bs-statistics-portlet-NumberOfPagesdesc'     => 'Statistik der Anzahl der Seiten dieses Wikis',
+
+	'bs-statistics-portletconfig-periodlabel'     => 'Zeitraum',
+	'bs-statistics-portletconfig-periodday'       => 'Gestern',
+	'bs-statistics-portletconfig-periodweek'      => 'Sieben Tage',
+	'bs-statistics-portletconfig-periodmonth'     => '30 Tage',
 );
 
 $messages['de-formal'] = array(

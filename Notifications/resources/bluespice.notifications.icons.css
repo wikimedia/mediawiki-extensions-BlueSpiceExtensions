@@ -1,0 +1,43 @@
+/* 
+    Created on : 13.11.2013, 14:47:51
+    Author     : Stefan Widmann <widmann@hallowelt.biz>
+*/
+
+.mw-echo-state > .mw-echo-icon-delete {
+	/* @embed */
+	background-image: url('../icons/delete.png');
+}
+
+.mw-echo-state > .mw-echo-icon-create {
+	/* @embed */
+	background-image: url('../icons/create.png');
+}
+
+.mw-echo-state > .mw-echo-icon-edit {
+	/* @embed */
+	background-image: url('../icons/edit.png');
+}
+
+.mw-echo-state > .mw-echo-icon-move {
+	/* @embed */
+	background-image: url('../icons/move.png');
+}
+
+.mw-echo-state > .mw-echo-icon-newuser {
+	/* @embed */
+	background-image: url('../icons/newuser.png');
+}
+
+.mw-echo-state > .mw-echo-icon-shoutbox {
+	/* @embed */
+	background-image: url('../icons/shoutbox.png');
+}
+
+.mw-echo-state > .mw-echo-icon {
+	width: 32px;
+	height: 32px;
+}
+
+.mw-echo-notification {
+	padding: 15px 35px 10px 0px;
+}

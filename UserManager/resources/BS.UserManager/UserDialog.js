@@ -16,6 +16,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 	extend: 'BS.Window',
 	currentData: {},
 	selectedData: {},
+	maxHeight: 620,
 	afterInitComponent: function() {
 		if( this.currentData.groups ) {
 			this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
@@ -62,7 +63,8 @@ Ext.define( 'BS.UserManager.UserDialog', {
 			labelAlign: 'right',
 			store: this.strGroups,
 			valueField: 'group',
-			displayField: 'displayname'
+			displayField: 'displayname',
+			maxHeight: 350
 		} );
 
 		this.items = [
@@ -84,7 +86,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 		this.tfRealName.reset();
 		this.cbGroups.reset();
 
-		this.callParent();
+		this.callParent(arguments);
 	},
 	setData: function( obj ) {
 		this.currentData = obj;

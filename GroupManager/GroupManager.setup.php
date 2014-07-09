@@ -18,7 +18,8 @@ $wgResourceModules['ext.bluespice.groupManager'] = array(
 		'bs-groupmanager-titleError',
 		'bs-groupmanager-removeGroup',
 		'bs-groupmanager-lableName',
-		'bs-groupmanager-msgNotEditable'
+		'bs-groupmanager-msgNotEditable',
+		'bs-groupmanager-msgNotRemovable'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']

@@ -67,10 +67,10 @@ class SearchRequest {
 	 */
 	protected function setDefaults() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->sOrder       = 'score';
-		$this->sAsc         = 'desc';
-		$this->iOffset      = 0;
-		$this->sFormat      = 'html';
+		$this->sOrder = 'score';
+		$this->sAsc = 'desc';
+		$this->iOffset = 0;
+		$this->sFormat = 'html';
 		$this->bSearchFiles = false;
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -80,11 +80,11 @@ class SearchRequest {
 	 */
 	protected function processSettings() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->sDefaultFuzziness  = BsConfig::get( 'MW::ExtendedSearch::DefFuzziness' );
+		$this->sDefaultFuzziness = BsConfig::get( 'MW::ExtendedSearch::DefFuzziness' );
 		$this->sHighlightSnippets = BsConfig::get( 'MW::ExtendedSearch::HighlightSnippets' );
-		$this->bLogUsers          = BsConfig::get( 'MW::ExtendedSearch::LogUsers' );
-		$this->bLogging           = BsConfig::get( 'MW::ExtendedSearch::Logging' );
-		$this->iMaxDocSize        = ( BsConfig::get( 'MW::ExtendedSearch::MaxDocSizeMB', 10 ) * 1024 * 1024 );
+		$this->bLogUsers = BsConfig::get( 'MW::ExtendedSearch::LogUsers' );
+		$this->bLogging = BsConfig::get( 'MW::ExtendedSearch::Logging' );
+		$this->iMaxDocSize = ( BsConfig::get( 'MW::ExtendedSearch::MaxDocSizeMB', 10 ) * 1024 * 1024 );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -92,28 +92,27 @@ class SearchRequest {
 	 * Get values from url parameters
 	 */
 	protected function processInputs() {
-		$this->sScope           = $this->oRequest->getVal( 'search_scope' );
-		$this->sOrigin          = $this->oRequest->getVal( 'search_origin' );
-		$this->sOperator        = $this->oRequest->getVal( 'op' );
-		$this->sAsc             = $this->oRequest->getVal( 'search_asc', $this->sAsc );
-		$this->iOffset          = $this->oRequest->getVal( 'search_offset', $this->iOffset ); // todo: type is int??
-		$this->sOrder           = $this->oRequest->getVal( 'search_order', $this->sOrder );
-		$this->sFormat          = $this->oRequest->getVal( 'search_format', $this->sFormat );
-		$this->sId              = $this->oRequest->getVal( 'search_id', false );
-		$this->sInput           = $this->oRequest->getVal( 'search_input', false );
-		$this->sHidden          = $this->oRequest->getVal( 'search_hidden' );
-		$this->sRequestOrigin   = $this->oRequest->getVal( 'search_origin' );
+		$this->sScope = $this->oRequest->getVal( 'search_scope' );
+		$this->sOrigin = $this->oRequest->getVal( 'search_origin' );
+		$this->sOperator = $this->oRequest->getVal( 'op' );
+		$this->sAsc = $this->oRequest->getVal( 'search_asc', $this->sAsc );
+		$this->iOffset = $this->oRequest->getVal( 'search_offset', $this->iOffset ); // todo: type is int??
+		$this->sOrder = $this->oRequest->getVal( 'search_order', $this->sOrder );
+		$this->sFormat = $this->oRequest->getVal( 'search_format', $this->sFormat );
+		$this->sId = $this->oRequest->getVal( 'search_id', false );
+		$this->sInput = $this->oRequest->getVal( 'search_input', false );
+		$this->sHidden = $this->oRequest->getVal( 'search_hidden' );
 		$this->sSearchAsYouType = $this->oRequest->getVal( 'searchasyoutype' );
-		$this->bExtendedForm    = $this->oRequest->getFuzzyBool( 'search_extended', false );
-		$this->bAutocomplete    = $this->oRequest->getFuzzyBool( 'autocomplete', false );
-		$this->sEditor          = $this->oRequest->getArray( 'ed', array() );
-		$this->sCategories      = $this->oRequest->getArray( 'ca', array() );
-		$this->aNamespaces      = $this->oRequest->getArray( 'na', array() );
-		$this->sType            = $this->oRequest->getArray( 'ty', array() );
+		$this->bExtendedForm = $this->oRequest->getFuzzyBool( 'search_extended', false );
+		$this->bAutocomplete = $this->oRequest->getFuzzyBool( 'autocomplete', false );
+		$this->sEditor = $this->oRequest->getArray( 'ed', array() );
+		$this->sCategories = $this->oRequest->getArray( 'ca', array() );
+		$this->aNamespaces = $this->oRequest->getArray( 'na', array() );
+		$this->aType = $this->oRequest->getArray( 'ty', array() );
 
-		if ( $this->oRequest->getFuzzyBool( 'search_files' ) !== false ) {
+		if ( $this->oRequest->getInt( 'search_files' ) !== 0 ) {
 			if ( $this->sOrigin !== 'ajax' ) {
-				if ( $this->oRequest->getFuzzyBool( 'search_files' ) == 1 ) {
+				if ( $this->oRequest->getInt( 'search_files' ) === 1 ) {
 					$this->bSearchFiles = true;
 				} else {
 					$this->bSearchFiles = false;

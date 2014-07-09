@@ -16,7 +16,7 @@ $(window).scroll(function(){
 	var toobar = $('.mce-stack-layout-item').first();
 	if( toobar.length == 0 ) return;
 	if(offsetTop == 0){
-		offsetTop = $('#mw-content-text').position().top; //toobar.position().top;
+		offsetTop = $('#editform').position().top; //toobar.position().top;
 	}
 	
 	if( $(document).scrollTop() > offsetTop ) { //window.scrollY
@@ -35,18 +35,17 @@ $(window).scroll(function(){
 $(document).on('VisualEditor::instanceShow', function(event, editorId) {
 	if (editorId === 'wpTextbox1') {
 		$('#toolbar').hide();
-		$('#hw-toolbar').hide(); //Deprecated
 		$('#bs-extendededitbar').hide();
 	}
 });
 $(document).on('VisualEditor::instanceHide', function(event, editorId) {
 	if (editorId === 'wpTextbox1') {
 		$('#toolbar').show();
-		$('#hw-toolbar').show(); //Deprecated
 		$('#bs-extendededitbar').show();
 	}
 });
-mw.loader.using( 'ext.bluespice.visualEditor', function() {
+
+function bs_initVisualEditor() {
 	var currentSiteCSS = [];
 	//We collect the CSS Links from this document and set them as content_css 
 	//for TinyMCE
@@ -55,27 +54,43 @@ mw.loader.using( 'ext.bluespice.visualEditor', function() {
 		var cssUrl = $(this).attr('href');
 		//Conditionally make urls absolute to avoid conflict with tinymce.baseURL
 		if( cssUrl.startsWith( '/' ) ) cssBaseURL = mw.config.get('wgServer');
-		currentSiteCSS.push( cssBaseURL + cssUrl );
+		//need to check, if the stylesheet is already included
+		if (jQuery.inArray(cssBaseURL + cssUrl, currentSiteCSS) === -1)
+			currentSiteCSS.push( cssBaseURL + cssUrl );
 	});
-	
-	VisualEditor.getInstance().setConfig('editpage', {
-		height: 550,
-		content_css: currentSiteCSS.join(',')
-	});
-
-	if (mw.config.get('BsVisualEditorUseTidy') === true) {
-		VisualEditor.startEditors();
-		$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
+	//IE9 fix
+	if ( typeof VisualEditor != "undefined" ) {
+		VisualEditor.setConfig('editpage', {
+			height: 550,
+			content_css: currentSiteCSS.join(',')
+		});
 	}
-});
 
-$(document).on('click', 'a#bs-editbutton-visualeditor', function(e) {
+	if ( mw.config.get('bsVisualEditorUse') !== false 
+		&& mw.user.options.get('MW::VisualEditor::Use') === true ) {
+			VisualEditor.startEditors();
+			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
+	}
+}
+
+$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 	e.preventDefault();
 	//todo: check ob richtig, denke durch 'wpTextbox1' wird in tinymce.startup.js ln 95
 	//eine Instanz des tiny erzeugt, der mit seiner id den MW-Editor überschreibt => kein speichern möglich
 	//VisualEditor.toggleEditor('wpTextbox1');
-	
 	$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
 	VisualEditor.startEditors();
 	return false;
+});
+
+$(document).ready( function() {
+	var BsVisualEditorLoaderUsingDeps = mw.config.get('BsVisualEditorLoaderUsingDeps');
+
+	//Check if there are other modules we need to wait for
+	if( BsVisualEditorLoaderUsingDeps.length > 0 ) {
+		mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
+	}
+	else {
+		bs_initVisualEditor();
+	}
 });

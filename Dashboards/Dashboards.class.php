@@ -55,8 +55,9 @@ class Dashboards extends BsExtensionMW {
 			EXTINFO::NAME        => 'Dashboards',
 			EXTINFO::DESCRIPTION => 'Provides dashboards for normal users and admins.',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array(
 				'bluespice'    => '2.22.0'
@@ -65,7 +66,7 @@ class Dashboards extends BsExtensionMW {
 		$this->mExtensionKey = 'MW::Dashboards';
 
 		WikiAdmin::registerModuleClass( 'SpecialAdminDashboard', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_usermanagement_v1.png',
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_dashboard_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-specialadmindashboard-label'
 		) );
@@ -83,13 +84,10 @@ class Dashboards extends BsExtensionMW {
 
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'ParserFirstCallInit' );
-		$this->setHook( 'LoadExtensionSchemaUpdates' );
 		$this->setHook( 'PersonalUrls' );
-
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
-
-		$this->setHook( 'BSInsertMagicAjaxGetData' );
+		//$this->setHook( 'BSInsertMagicAjaxGetData' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -135,7 +133,7 @@ class Dashboards extends BsExtensionMW {
 	 * @param DatabaseUpdater $updater
 	 * @return boolean Always true to keep Hook running
 	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
+	public static function getSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
 			'bs_dashboards_configs',
 			__DIR__ .'/db/mysql/bs_dashboards_configs.sql'
@@ -202,8 +200,9 @@ class Dashboards extends BsExtensionMW {
 	 * AjaxDispatcher callback for saving a user portal config
 	 * @return BsCAResponse
 	 */
-	public static function saveUserDashboardConfig( $aPortalConfig ) {
+	public static function saveUserDashboardConfig() {
 		$oResponse = BsCAResponse::newFromPermission( 'read' );
+		$aPortalConfig = RequestContext::getMain()->getRequest()->getVal( 'portletConfig', '' );
 
 		$oDbw = wfGetDB( DB_MASTER );
 		$iUserId = RequestContext::getMain()->getUser()->getId();
@@ -228,22 +227,24 @@ class Dashboards extends BsExtensionMW {
 	 * AjaxDispatcher callback for saving an admin portal config
 	 * @return BsCAResponse
 	 */
-	public static function saveAdminDashboardConfig( $aPortalConfig ) {
+	public static function saveAdminDashboardConfig() {
 		$oResponse = BsCAResponse::newFromPermission( 'read' );
+		$aPortalConfig = RequestContext::getMain()->getRequest()->getVal( 'portletConfig', '' );
 
 		$oDbw = wfGetDB( DB_MASTER );
-		$oDbw->replace(
-				'bs_dashboards_configs',
-				array(
-					'dc_type'
-				),
-				array(
-					'dc_type' => 'admin',
-					'dc_identifier' => '',
-					'dc_config' => serialize( $aPortalConfig ),
-					'dc_timestamp' => '',
-				),
-				__METHOD__
+		$oDbw->delete(
+			'bs_dashboards_configs',
+			array( 'dc_type' => 'admin' )
+		);
+		$oDbw->insert(
+			'bs_dashboards_configs',
+			array(
+				'dc_type' => 'admin',
+				'dc_identifier' => '',
+				'dc_config' => serialize( $aPortalConfig ),
+				'dc_timestamp' => '',
+			),
+			__METHOD__
 		);
 
 		return $oResponse;

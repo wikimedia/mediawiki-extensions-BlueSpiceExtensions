@@ -31,22 +31,27 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 	/**
 	 * Pointer to current database connection
-	 * @var object Referenec to Database object 
+	 * @var object Referenec to Database object
 	 */
-	protected $oDbr;
+	protected $oDbr = null;
 	/**
 	 * List of documents to be indexed.
 	 * @var resource Result of db query.
 	 */
 	protected $oDocumentsDb = null;
+	/**
+	 * Rounds for indexing
+	 * @var int
+	 */
+	protected $iRounds = 0;
 
 	/**
 	 * Constructor for BuildIndexMwArticles class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate. 
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
-		$this->oDbr = wfGetDB( DB_SLAVE );
 		parent::__construct( $oMainControl );
+		$this->oDbr = wfGetDB( DB_SLAVE );
 	}
 
 	/**
@@ -54,23 +59,13 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	 * @return int Number of documents to be indexed.
 	 */
 	public function crawl() {
-		$this->writeLog();
-		$tables = array(
-			'page',
-			'text',
-			'revision'
-		);
-		$fields = array(
-			'page_id',
-			'page_title',
-			'page_namespace',
-			'page_touched',
-			'old_text'
-		);
-		$clauses = 'page_latest = rev_id AND rev_text_id = old_id';
-		$options = $this->getLimitForDb();
-		$this->oDocumentsDb = $this->oDbr->select( $tables, $fields, $clauses, __METHOD__, $options );
+		// just for num rows
+		$this->oDocumentsDb = $this->oDbr->select( 'page', 'page_id', array(), __METHOD__ );
 		$this->totalNoDocumentsCrawled = $this->oDbr->numRows( $this->oDocumentsDb );
+
+		$sMessage = wfMessage( 'bs-extendedsearch-totalnoofarticles' )->plain() . ': ' . $this->totalNoDocumentsCrawled . "\n";
+		$this->oMainControl->logFile( 'write', $sMessage );
+
 		return $this->totalNoDocumentsCrawled;
 	}
 
@@ -88,54 +83,72 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	public function makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace,
 			$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections ) {
 
-		$oSolrDocument = $this->oMainControl->makeDocument(
-				'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '',
+		return $this->oMainControl->makeDocument(
+				'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '', '',
 				$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections );
+	}
 
-		return $oSolrDocument;
+	/**
+	 * Fetches next results to index
+	 * @param integer $iRound which round we are in
+	 */
+	public function loadNextDocuments( $iRound ) {
+		if ( $iRound === 0 ) {
+			$sOptions = array( 'LIMIT' => $this->iLimit );
+		} else {
+			$iOffset = $iRound * $this->iLimit;
+			$sOptions = array( 'LIMIT' => $this->iLimit, 'OFFSET' => $iOffset );
+		}
+
+		$this->oDocumentsDb = $this->oDbr->select( 'page', 'page_id', array(), __METHOD__, $sOptions );
+		sleep( 2 );
 	}
 
 	/**
 	 * Indexes all documents that were found in crawl() method.
 	 */
 	public function indexCrawledDocuments() {
-		$oExtendedSearchBase = ExtendedSearchBase::getInstance();
+		$this->iRounds = ceil( $this->totalNoDocumentsCrawled / $this->iLimit );
 
-		while ( $oDocument = $this->oDbr->fetchObject( $this->oDocumentsDb ) ) {
-			$this->count++;
-			set_time_limit( $this->iTimeLimit ); // is needed ... else you can not create larger indexes
+		for ( $i = 0; $i < $this->iRounds; $i++ ) {
+			$this->loadNextDocuments( $i );
 
-			wfRunHooks( 'BS::ExtendedSearch::IndexCrawlDocuments', array( &$oDocument ) );
+			while ( $oDocument = $this->oDbr->fetchObject( $this->oDocumentsDb ) ) {
+				$oTitle = Title::newFromID( $oDocument->page_id );
+				$this->count++;
+				if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit ); // is needed ... else you can not create larger indexes
 
-			if ( $oDocument === null ) continue;
+				wfRunHooks( 'BS::ExtendedSearch::IndexCrawlDocuments', array( &$oDocument ) );
 
-			$this->writeLog( $oDocument->page_title );
+				if ( $oDocument === null ) continue;
 
-			$iPageID        = $oDocument->page_id;
-			$sPageTitle     = $oDocument->page_title;
-			$sPageNamespace = $oDocument->page_namespace;
+				$this->writeLog( $oTitle->getText() );
 
-			$oTitle = Title::makeTitle( $sPageNamespace, $sPageTitle );
+				$iPageID = $oTitle->getArticleID();
+				$sPageTitle = $oTitle->getText();
+				$sPageNamespace = $oTitle->getNamespace();
 
-			$bIsRedirect = (int)$oTitle->isRedirect();
+				$bIsRedirect = $oTitle->isRedirect();
 
-			$sContent = $this->oMainControl->parseTextForIndex( $oDocument->old_text, $oTitle );
-			$aSections = $this->oMainControl->extractEditSections( $oDocument->old_text );
-			$aRedirects = $this->oMainControl->getRedirects( $oTitle );
+				$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
+				$sContent = $this->oMainControl->parseTextForIndex( $sText, $oTitle );
+				$aSections = $this->oMainControl->extractEditSections( $sText );
+				$aRedirects = $this->oMainControl->getRedirects( $oTitle );
 
-			$iTimestamp = $oDocument->page_touched;
-			$aEditors = $oExtendedSearchBase->getEditorsFromDbForCertainPageId( $iPageID );
-			$aCategories = $oExtendedSearchBase->getCategoriesFromDbForCertainPageId( $iPageID );
-			if ( empty( $aCategories ) ) $aCategories = array( 'notcategorized' );
+				$iTimestamp = $oTitle->getTouched();
+				$aEditors = $this->oMainControl->getEditorsFromDbForCertainPageId( $iPageID );
+				$aCategories = $this->oMainControl->getCategoriesFromDbForCertainPageId( $iPageID );
+				if ( empty( $aCategories ) ) $aCategories = array( 'notcategorized' );
 
-			$oSolrDocument = $this->makeSingleDocument(
-					$sPageTitle, $sContent, $iPageID, $sPageNamespace, $iTimestamp,
-					$aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections
-			);
+				$oSolrDocument = $this->makeSingleDocument(
+						$sPageTitle, $sContent, $iPageID, $sPageNamespace, $iTimestamp,
+						$aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections
+				);
 
-			$this->oMainControl->addDocument( $oSolrDocument, $this->mode, self::S_ERROR_MSG_KEY );
+				$this->oMainControl->addDocument( $oSolrDocument, $this->mode, self::S_ERROR_MSG_KEY );
 
-			wfRunHooks( 'BSExtendedSearchBuildIndexAfterAddArticle', array( $oTitle, $oSolrDocument ) );
+				wfRunHooks( 'BSExtendedSearchBuildIndexAfterAddArticle', array( $oTitle, $oSolrDocument ) );
+			}
 		}
 	}
 
@@ -143,8 +156,9 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	 * Descructor for BuildIndexMwArticles class
 	 */
 	public function __destruct() {
-		if ( $this->oDocumentsDb !== null )
+		if ( $this->oDocumentsDb !== null ) {
 			$this->oDbr->freeResult( $this->oDocumentsDb );
+		}
 	}
 
 }

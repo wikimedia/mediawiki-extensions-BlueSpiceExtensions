@@ -1,3 +1,16 @@
+/**
+ * InsertLink interwiki links Panel
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @package    Bluespice_Extensions
+ * @subpackage InsertLink
+ * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
 Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 	extend: 'BS.InsertLink.FormPanelBase',
 	linktype: 'internal_link',
@@ -12,14 +25,15 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 			typeAhead: true,
 			mode: 'local',
 			triggerAction: 'all',
-			emptyText: mw.message('bs-insertlink-select_a_page').plain(),
-			width: 600
+			allowBlank: false,
+			emptyText: mw.message('bs-interwikilink-select_a_prefix').plain()
 		});
 
 		this.tfPageTitle = Ext.create( 'Ext.form.field.Text', {
 			name: 'inputTargetUrl',
-			fieldLabel: mw.message('bs-insertlink-label_page').plain(),
-			width: 600
+			fieldLabel: mw.message('bs-insertlink-label-page').plain(),
+			emptyText:mw.message('bs-insertlink-select-a-page').plain(),
+			allowBlank: false
 		});
 
 		this.pnlMainConf.items = [];
@@ -51,7 +65,7 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 				var interwiki = $.inArray(parts.shift(), mw.config.get('BSInterWikiPrefixes', []));
 				if( interwiki > -1) {
 					this.cbInterWiki.setValue( mw.config.get('BSInterWikiPrefixes', [])[interwiki] )
-					this.tfPageTitle.setValue(parts.join( ':' ))
+					this.tfPageTitle.setValue( parts.join( ':' ) );
 
 					if( obj.content.match( '|' ) ) {
 						var content = obj.content.split( '|' );
@@ -98,18 +112,16 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 			prefix = this.cbInterWiki.getValue() + ':';
 		}
 
-		//var href = '';
 		var page = '';
 		if( this.tfPageTitle.getValue() ) {
 			page = this.tfPageTitle.getValue();
-			//href = mw.util.wikiGetlink(ns+page);
 		}
 
 		return { 
 			title: title,
 			href: prefix+page,
 			type: this.linktype,
-			code: prefix + page + desc
+			code: '[[' + prefix + page + desc + ']]'
 			//'class': ''
 		};
 	},

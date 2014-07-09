@@ -7,12 +7,10 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 	initComponent: function() {
 		this.ufLogoUpload = Ext.create('BS.form.UploadPanel', {
 			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
-			defaultValues: {
-				uploadFormName: 'logo',
-				fieldLabel: mw.message('bs-flexiskin-labelLogoUpload').plain(),
-				labelWidth: 50,
-				resetButton: true
-			}
+			uploadFormName: 'logo',
+			uploadFieldLabel: mw.message('bs-flexiskin-labelLogoUpload').plain(),
+			uploadLabelWidth: 50,
+			uploadResetButton: true
 		});
 		this.ufLogoUpload.on('reset', this.btnResetClick, this);
 		this.ufLogoUpload.on('upload', this.btnUploadClick, this);

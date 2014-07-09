@@ -10,6 +10,7 @@ $wgAutoloadClasses['InsertFileAJAXBackend'] = __DIR__ . '/includes/InsertFileAJA
 $wgAjaxExportList[] = 'InsertFileAJAXBackend::getFilePage';
 $wgAjaxExportList[] = 'InsertFileAJAXBackend::getFiles';
 $wgAjaxExportList[] = 'InsertFileAJAXBackend::getLicenses';
+$wgAjaxExportList[] = 'InsertFileAJAXBackend::getExistsWarning';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__ . '/resources',
@@ -18,9 +19,6 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.insertFile'] = array(
 	'scripts' =>  'bluespice.insertFile.js',
-	'dependencies' => array(
-		'ext.bluespice.extjs'
-	),
 	'messages' => array(
 		'bs-insertfile-button_image_title',
 		'bs-insertfile-button_file_title',
@@ -77,8 +75,6 @@ $wgResourceModules['ext.bluespice.insertFile'] = array(
 		'bs-insertfile-errorWrongFileTypeOnDestination',
 		'bs-insertfile-uploadComplete',
 		'bs-insertfile-statusNotClear',
-		'bs-insertfile-bytes',
-		'bs-insertfile-kilobytes' ,
 		'bs-insertfile-dateformat',
 		'bs-insertfile-titleFile' ,
 		'bs-insertfile-titleImage' ,

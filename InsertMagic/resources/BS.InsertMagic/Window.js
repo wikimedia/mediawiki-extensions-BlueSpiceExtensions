@@ -62,7 +62,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			autoLoad: true,
 			fields: ['id', 'type', 'name', 'desc', 'code' ],
 			sortInfo: {
-				field: 'id',
+				field: 'name',
 				direction: 'ASC'
 			}
 		});
@@ -152,7 +152,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 		this.items = [
 			this.pnlWest,
 			this.pnlCenter
-		]
+		];
 		
 		this.callParent(arguments);
 	},
@@ -168,6 +168,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 	},
 	
 	onStoreLoad: function( store, records, options ) {
+		this.tagsStore.sort( 'name', 'ASC' );
 		this.tagsStore.filter( 'type', 'tag'); //just initial
 	},
 	
@@ -190,7 +191,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 		this.currentData.type = data.type;
 		this.currentData.name = record.get('name');
 
-		this.setCommonFields( record.get('code'), data )
+		this.setCommonFields( record.get('code'), data );
 	},
 
 	setCommonFields: function( text, data ) {
@@ -199,7 +200,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 		this.syntaxTextArea.focus();
 		
 		var start = text.indexOf('"') + 1;
-		var end   = text.indexOf('"', start );
+		var end = text.indexOf('"', start );
 		if( data.type != 'tag' ) {
 			start = start - 1;
 			end = end + 1;

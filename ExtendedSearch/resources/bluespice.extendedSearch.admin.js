@@ -55,7 +55,9 @@ bsExtendedSearchRequestProgress = function( count ) {
 	Ext.Ajax.request({
 		url: wgScriptPath + '/extensions/BlueSpiceExtensions/ExtendedSearch/includes/BuildIndex/index_progress.php',
 		success: function( response, opts ) {
-			res = Ext.decode( response.responseText );
+			var res = "";
+			if (response.responseText !== "")
+				res = Ext.decode( response.responseText );
 			finished = false;
 			if ( typeof( res ) === 'object' ) {
 				if ( res[0] === "__FINISHED__" ) finished = true;

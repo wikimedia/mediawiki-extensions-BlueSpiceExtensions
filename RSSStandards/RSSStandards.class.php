@@ -34,8 +34,9 @@ class RSSStandards extends BsExtensionMW {
 			EXTINFO::NAME        => 'RSSStandards',
 			EXTINFO::DESCRIPTION => 'builds rss feeds based on different options',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -49,9 +50,9 @@ class RSSStandards extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param OutputPage $oOutputPage
 	 * @param SkinTemplate $oSkinTemplate
 	 * @return boolean
@@ -146,19 +147,19 @@ class RSSStandards extends BsExtensionMW {
 		$res = $dbr->select(
 			array( 'page', 'recentchanges' ),
 			'*',
-			array( 
+			array(
 				'page_title'     => $sTitle,
 				'page_namespace' => $iNSid,
 				'rc_timestamp > '. $dbr->timestamp( time() - intval( 7 * 86400 ) )
 			),
 			__METHOD__,
 			array( 'ORDER BY' => 'rc_timestamp DESC' ),
-			array( 
-				'page'=> array( 'LEFT JOIN', 'rc_cur_id = page_id' ) 
+			array(
+				'page'=> array( 'LEFT JOIN', 'rc_cur_id = page_id' )
 			)
 		);
 
-		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMsg( 'bs-rssstandards-description_page' ) );
+		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_page' )->plain() );
 		while( $row = $res->fetchObject() ) {
 			$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 			$entry = RSSItemCreator::createItem(
@@ -217,7 +218,7 @@ class RSSStandards extends BsExtensionMW {
 
 		return $channel->buildOutput();
 	}
-	
+
 	public function buildRssCat() {
 		global $wgRequest, $wgSitename, $wgDBprefix;
 
@@ -256,7 +257,7 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_description = SecureFileStore::secureFilesInText( preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent() ) ) );
+				$_description = SecureFileStore::secureFilesInText( preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent(), $this->getTitle() ) ) );
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
 					$item->setPubDate( wfTimestamp( TS_UNIX,$row['rev_timestamp'] ) );
@@ -314,7 +315,7 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_tmpText = preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText($article->getContent()));
+				$_tmpText = preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent(), $this->getTitle() ) );
 				if ( class_exists( 'SecureFileStore' ) ) {
 					$_description = SecureFileStore::secureFilesInText($_tmpText);
 				} else {
@@ -340,8 +341,6 @@ class RSSStandards extends BsExtensionMW {
 		// TODO SU (04.07.11 10:35): Globals
 		global $wgUser, $wgOut, $wgRequest, $wgRCShowWatchingUsers,
 				$wgEnotifWatchlist, $wgShowUpdatedMarker, $wgEnotifWatchlist, $wgSitename;
-
-		$fname = 'wfSpecialWatchlist';
 
 		$skin = RequestContext::getMain()->getSkin();
 		$specialTitle = $wgSitename . ' - ' . SpecialPage::getTitleFor( 'Watchlist' );
@@ -449,10 +448,10 @@ class RSSStandards extends BsExtensionMW {
 			return;
 		}
 
-		if ( $nitems == 0 ) {
+		/*if ( $nitems == 0 ) {
 			$wgOut->addWikiMsg( 'nowatchlist' );
 			return;
-		}
+		}*/
 
 		if ( $days <= 0 ) {
 			$andcutoff = '';
@@ -504,30 +503,32 @@ class RSSStandards extends BsExtensionMW {
 	  ORDER BY rc_timestamp DESC
 			$limitWatchlist";
 
-		$res = $dbr->query( $sql, $fname );
+		$res = $dbr->query( $sql, __METHOD__ );
 		$numRows = $dbr->numRows( $res );
 
-		# If there's nothing to show, stop here
+		/*# If there's nothing to show, stop here
 		if( $numRows == 0 ) {
 			$wgOut->addWikiMsg( 'watchnochange' );
 			return;
-		}
+		}*/
 
 		/* End bottom header */
 
-		/* Do link batch query */
-		$linkBatch = new LinkBatch;
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			$userNameUnderscored = str_replace( ' ', '_', $row->rc_user_text );
-			if ( $row->rc_user != 0 ) {
-				$linkBatch->add( NS_USER, $userNameUnderscored );
+		if($numRows > 0) {
+			/* Do link batch query */
+			$linkBatch = new LinkBatch;
+			while ( $row = $dbr->fetchObject( $res ) ) {
+				$userNameUnderscored = str_replace( ' ', '_', $row->rc_user_text );
+				if ( $row->rc_user != 0 ) {
+					$linkBatch->add( NS_USER, $userNameUnderscored );
+				}
+				$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
 			}
-			$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
+			$linkBatch->execute();
+			$dbr->dataSeek( $res, 0 );
 		}
-		$linkBatch->execute();
-		$dbr->dataSeek( $res, 0 );
 
-		$list = ChangesList::newFromUser( $user );
+		$list = ChangesList::newFromContext( $skin->getContext() ); //Thanks to Bartosz Dziewoński (https://gerrit.wikimedia.org/r/#/c/94082/)
 
 		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_watch' )->plain() );
 
@@ -553,7 +554,7 @@ class RSSStandards extends BsExtensionMW {
 			}
 
 			if ( $wgRCShowWatchingUsers && $user->getOption( 'shownumberswatching' ) ) {
-				$rc->numberofWatchingusers = $dbr->selectField( 
+				$rc->numberofWatchingusers = $dbr->selectField(
 					'watchlist',
 					'COUNT(*)',
 					array(
@@ -608,7 +609,7 @@ class RSSStandards extends BsExtensionMW {
 		$btn->setType('button');
 		$btn->setValue(
 			SpecialPage::getTitleFor( 'Recentchanges' )->getLocalUrl(
-				array( 
+				array(
 					'feed' => 'rss',
 					'u'    => $wgUser->getName(),
 					'h'    => $wgUser->getToken()

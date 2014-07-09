@@ -33,6 +33,7 @@ $wgResourceModules['bluespice.insertLink.interWikiLinks'] = array(
 	'messages' => array(
 		'bs-interwikilinks-insertlink-tabtitle',
 		'bs-interwikilinks-insertlink-labelprefix',
+		'bs-interwikilink-select_a_prefix'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']

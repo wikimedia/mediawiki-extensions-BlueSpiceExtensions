@@ -49,7 +49,7 @@ $messages['de'] = array(
 	'bs-interwikilinks-rename'                => 'Umbenennen',
 	'bs-interwikilinks-url'                   => 'URL',
 	'bs-interwikilinks-url_2long'             => 'Die URL ist zu lang. Gib maximal 127 Zeichen an!',
-	
+
 	//JavaScript
 	'bs-interwikilinks-headerPrefix' => 'Präfix',
 	'bs-interwikilinks-headerUrl' => 'Url',
@@ -70,7 +70,8 @@ $messages['de'] = array(
 
 	//JavaScript InsertLink
 	'bs-interwikilinks-insertlink-tabtitle' => 'Link in anderes Wiki',
-	'bs-interwikilinks-insertlink-labelprefix' => 'Prefix',
+	'bs-interwikilinks-insertlink-labelprefix' => 'Präfix',
+	'bs-interwikilink-select_a_prefix' => 'Präfix auswählen'
 );
 
 $messages['de-formal'] = array(
@@ -145,6 +146,7 @@ $messages['en'] = array(
 	//JavaScript InsertLink
 	'bs-interwikilinks-insertlink-tabtitle' => 'Link in another wiki',
 	'bs-interwikilinks-insertlink-labelprefix' => 'Prefix',
+	'bs-interwikilink-select_a_prefix' => 'Choose prefix'
 );
 
 $messages['qqq'] = array();

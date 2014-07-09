@@ -1,4 +1,17 @@
 <?php
+/**
+ * Formatter class for notifications
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Stefan Widmann <widmann@hallowelt.biz>
+
+ * @package    BlueSpice_Extensions
+ * @subpackage Notifications
+ * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
 class BsNotificationsFormatter extends EchoBasicFormatter {
 	
 	public function __construct( $params ) {
@@ -37,14 +50,48 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 				)
 			);
 		} else if( $param === 'agentlink' ) {
-			$this->setUserpageLink(
+			if( $event->getAgent()->isAnon() ) {
+				$message->params( wfMessage( 'bs-echo-anon-user' )->parse() );
+			} else {
+				$this->setUserpageLink(
 					$event,
 					$message,
 					array(
 						'class' => 'mw-echo-userpage'
 					)
+				);
+			}
+		} else if( $param === 'userlink') {
+			$this->setUserpageLink(
+					$event,
+					$message,
+					array(
+						'class' => 'mw-echo-userpage',
+						'created' => true,
+					)
+				);
+		} else if ( $param === 'newtitle' ) {
+			$aExtra = $event->getExtra();
+			$oNewTitle = $aExtra['newtitle'];
+			$message->params( $oNewTitle->getPrefixedText() );
+		} else if ( $param === 'newtitlelink' ) {
+			$aExtra = $event->getExtra();
+			$oNewTitle = $aExtra['newtitle'];
+			$this->buildLink(
+				$oNewTitle,
+				$message,
+				array(
+					'class' => 'mw-echo-title',
+					)
 			);
-		}else {
+		} else if( $param === 'deletereason' ) {
+			$aExtra = $event->getExtra();
+			$message->params( $aExtra['deletereason'] );
+		} else if( $param === 'shoutmsg' ) {
+			$aExtra = $event->getExtra();
+			$sMessage = $aExtra['shoutmsg'];
+			$message->params( $sMessage );
+		} else {
 			parent::processParam( $event, $param, $message, $user );
 		}
 	}
@@ -69,11 +116,33 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 	 * @return type
 	 */
 	public function setUserpageLink ( $event, $message, $props = array() ) {
-		$title = $event->getAgent()->getUserPage();
-		$this->buildLink($title, $message, $props, false);
+		if( isset( $props['created'] ) && $props['created'] ) {
+			unset( $props['created'] );
+			$aExtra = $event->getExtra();
+			$oUser = User::newFromName( $aExtra['user'] );
+			if( is_object( $oUser ) ) {
+				$title = $oUser->getUserPage();
+			} else {
+				$title = null;
+			}
+		} else {
+			$title = $event->getAgent()->getUserPage();
+		}
 		
+		if( $title === null ) {
+			$message->params( wfMessage( 'bs-echo-unknown-user' )->parse() );
+		} else {
+			$this->buildLink($title, $message, $props, false );
+		}
 	}
-	
+
+	/**
+	 * 
+	 * @param Title $title
+	 * @param type $message
+	 * @param type $props
+	 * @param type $bLinkWithPrefixedText
+	 */
 	public function buildLink( $title, $message, $props, $bLinkWithPrefixedText = true ) {
 		$param = array();
 		if ( isset( $props['param'] ) ) {
@@ -99,7 +168,7 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 					$linkText = htmlspecialchars( $title->getText() );
 				}
 			}
-
+			
 			$message->rawParams( Linker::link( $title, $linkText, $class, $param ) );
 		} elseif ( $this->outputFormat === 'email' ) {
 			$message->params( $title->getCanonicalURL( $param ) );

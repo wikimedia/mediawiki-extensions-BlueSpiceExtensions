@@ -15,14 +15,14 @@ Ext.define( 'BS.SmartList.YourEditsPortlet', {
 	portletConfigClass: 'BS.SmartList.YourEditsPortletConfig',
 
 	initComponent: function() {
-		this.contentUrl = bs.util.getAjaxDispatcherUrl( 'SmartList::getYourEditsPortlet', [ this.portletItemCount, 'dashboard' ] );
+		this.contentUrl = bs.util.getAjaxDispatcherUrl( 'SmartList::getYourEditsPortlet', [ this.portletItemCount ] );
 		this.callParent(arguments);
 	},
 
 	setPortletConfig: function( cfg ) {
 		this.callParent(arguments);
 		this.cContent.getLoader().load({
-			url: bs.util.getAjaxDispatcherUrl( 'SmartList::getYourEditsPortlet', [ this.portletItemCount, 'dashboard' ] )
+			url: bs.util.getAjaxDispatcherUrl( 'SmartList::getYourEditsPortlet', [ this.portletItemCount ] )
 		});
 	}
 } );

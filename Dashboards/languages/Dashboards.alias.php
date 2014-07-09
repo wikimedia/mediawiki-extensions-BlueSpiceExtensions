@@ -10,6 +10,6 @@ $specialPageAliases['en'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'AdminDashboard' => array( 'Admin Cockpit' ),
-	'UserDashboard'  => array( 'Benutzer Cockpit' ),
+	'AdminDashboard' => array( 'Admin Dashboard' ),
+	'UserDashboard'  => array( 'Benutzer Dashboard' ),
 );

@@ -32,6 +32,7 @@ $messages['en'] = array(
 	'bs-pagesvisited-pref-sort-time'                    => 'Time',
 	'bs-pagesvisited-pref-sort-pagename'                => 'Title',
 	'bs-pagesvisited-pref-namespaces-all'               => 'All',
+	'bs-pagesvisited-tag-pagesvisited-desc'             => 'Show a list of articles you have visited'
 );
 
 $messages['de'] = array(
@@ -51,8 +52,11 @@ $messages['de'] = array(
 	'bs-pagesvisited-pref-sort-time'                    => 'Zeit',
 	'bs-pagesvisited-pref-sort-pagename'                => 'Titel',
 	'bs-pagesvisited-pref-namespaces-all'               => 'Alle',
+	'bs-pagesvisited-tag-pagesvisited-desc'             => 'Gibt eine Liste mit Aritkeln aus, die du besucht hast'
 );
 
-$messages['de-formal'] = array();
+$messages['de-formal'] = array(
+	'bs-pagesvisited-tag-pagesvisited-desc'             => 'Gibt eine Liste mit Aritkeln aus, die Sie besucht haben'
+);
 
 $messages['qqq'] = array();

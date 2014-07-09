@@ -19,33 +19,37 @@ BsStateBar = {
 	bAjaxCallComplete: false,
 	sStateBarBodyLoadView: '<div id="sStateBarBodyLoadView"><center><img src="' + wgScriptPath + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" /></center></div>',
 	aRegisteredToggleClickElements: new Array(),
-	imagePathActive:  wgScriptPath+'/extensions/BlueSpiceExtensions/StateBar/resources/images/bs-statebar-viewtoggler_less.png',
-	imagePathInctive:  wgScriptPath+'/extensions/BlueSpiceExtensions/StateBar/resources/images/bs-statebar-viewtoggler_more.png',
+	imagePathActive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_less.png',
+	imagePathInactive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_more.png',
 
 	getStateBarBody: function(){
-		if( BsStateBar.bAjaxCallComplete === true ) return;
+		if ( BsStateBar.bAjaxCallComplete === true ) return;
 
 		this.oStateBarView.html(this.sStateBarBodyLoadView);
-		$.each(this.aRegisteredToggleClickElements, function( key, value ) {
+		$.each( this.aRegisteredToggleClickElements, function( key, value ) {
 			value.unbind('click');
-		});
+		} );
+		//TODO: Use CAIContext!
+		var params = {
+			action:'ajax',
+			rs:'StateBar::ajaxCollectBodyViews',
+			articleID: wgArticleId
+		};
 
+		$(document).trigger( 'BsStateBarBodyBeforeLoad', [params] );
 		$.getJSON(
 			wgScriptPath + '/index.php',
-			{
-				action:'ajax',
-				rs:'StateBar::ajaxCollectBodyViews',
-				articleID: wgArticleId
-			},
+			params,
 			function( result ) {
-				if( result['success'] == true) {
+				$(document).trigger( 'BsStateBarBodyLoad', [result] );
+				if ( result['success'] === true ) {
 					$('#sStateBarBodyLoadView').slideToggle('fast');
 
-					if( result['views'].length < 1) {
-						console.log(result['message']);
+					if ( result['views'].length < 1 ) {
+						//console.log(result['message']);
 						var messageItem = $('<div class="bs-statebar-body-item style="display:none"><p>' + result['message'] + '</p></div>').filter('DIV.bs-statebar-body-item');
 						BsStateBar.oStateBarView.append(messageItem.slideToggle('fast'));
-						$.each(BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
+						$.each( BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
 							BsStateBar.viewTogglerClick(value);
 						});
 						return;
@@ -57,10 +61,11 @@ BsStateBar = {
 						BsStateBar.oStateBarView.append(bodyItem.slideToggle('fast'));
 					});
 
+					$(document).trigger( 'BsStateBarBodyLoadComplete', [result['views'], result] );
+
 					$.each(BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
 						BsStateBar.viewTogglerClick(value);
 					});
-					$(document).trigger( 'BsStateBarBodyLoadComplete', [result['views']] );
 				} else {
 					//console.log(result);
 				}
@@ -84,10 +89,10 @@ BsStateBar = {
 			BsStateBar.oStateBarView.slideToggle( 'fast' );
 			var sCurImg = $('#bs-statebar-viewtoggler-image').attr( 'src' );
 			sCurImg.match('_more')
-				? $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathActive)
-				: $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathInactive);
+				? $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathActive )
+				: $('#bs-statebar-viewtoggler-image').attr( 'src', BsStateBar.imagePathInactive );
 
-			BsStateBar.getStateBarBody()
+			BsStateBar.getStateBarBody();
 		});
 	},
 
@@ -97,8 +102,8 @@ BsStateBar = {
 
 		this.bindViewTogglerClick();
 	}
-}
+};
 
-$(document).ready(function(){
-    BsStateBar.init();
-});
+$( document ).ready( function() {
+	BsStateBar.init();
+} );

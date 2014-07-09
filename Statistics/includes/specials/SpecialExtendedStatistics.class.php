@@ -178,6 +178,7 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 		if ( $oDiagram->isList() ) {
 			//$aResult['data']['list'] = BsCharting::drawTable($oDiagram);
 			$aResult['data']['list'] = BsCharting::prepareList( $oDiagram, $oReader );
+			$aResult['label'] = $oDiagram->getTitle();
 			$aResult['success'] = true;
 			return json_encode($aResult);
 		}

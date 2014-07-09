@@ -73,8 +73,9 @@ class WantedArticle extends BsExtensionMW {
 			EXTINFO::NAME        => 'WantedArticle',
 			EXTINFO::DESCRIPTION => 'Add an article to the wanted article list.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -201,7 +202,7 @@ class WantedArticle extends BsExtensionMW {
 				$aTitleList = $this->getDefaultTitleList( $aWishList );
 		}
 		
-		if( BsConfig::get( 'MW::WantedArticle::Order' ) == 'ASC' ) {
+		if( BsConfig::get( 'MW::WantedArticle::Order' ) == 'DESC' ) {
 			$aTitleList = array_reverse( $aTitleList );
 		}
 		$iIncludeLimit = BsConfig::get( 'MW::WantedArticle::IncludeLimit' );
@@ -219,7 +220,7 @@ class WantedArticle extends BsExtensionMW {
 			$aWikiCodeList[] = '*'.BsLinkProvider::makeEscapedWikiLinkForTitle( $oTitle, $sWishTitle );
 		}
 
-		$sBody = $this->mCore->parseWikiText( implode( "\n", $aWikiCodeList ) );
+		$sBody = $this->mCore->parseWikiText( implode( "\n", $aWikiCodeList ), $this->getTitle() );
 
 		$oWidgetView = new ViewWidget();
 		$oWidgetView
@@ -316,13 +317,18 @@ class WantedArticle extends BsExtensionMW {
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowCreSugInAc' ) == false ) return true;
 
+		$sShortAndEscapedString = SearchService::sanitzeSearchString(
+			BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) 
+		);
+		$sSearchString = SearchService::sanitzeSearchString( $sSearchString );
+
 		$oTitle = Title::newFromText( $sSearchString );
 		if ( is_object( $oTitle ) ) {
 			if ( $oTitle->userCan( 'createpage' ) && $oTitle->userCan( 'edit' ) ) {
 				$oItemCreate        = new stdClass();
 				$oItemCreate->id    = ++$iID;
 				$oItemCreate->value = $sSearchString;
-				$oItemCreate->label = wfMessage( 'bs-wantedarticle-create-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' )->plain() . '';
+				$oItemCreate->label = wfMessage( 'bs-wantedarticle-create-page', '<b>' . $sShortAndEscapedString . '</b>' )->plain() . '';
 				$oItemCreate->type  = '';
 				$oItemCreate->link  = $oTitle->getFullURL();
 				$oItemCreate->attr  = 'bs-extendedsearch-ac-noresults';
@@ -333,7 +339,7 @@ class WantedArticle extends BsExtensionMW {
 				$oItemSuggest = new stdClass();
 				$oItemSuggest->id = ++$iID;
 				$oItemSuggest->value = $sSearchString;
-				$oItemSuggest->label = wfMessage( 'bs-wantedarticle-suggest-page', '<b>' . BsStringHelper::shorten( $sSearchString, array( 'max-length' => '30', 'position' => 'middle', 'ellipsis-characters' => '...' ) ) . '</b>' )->plain() . '';
+				$oItemSuggest->label = wfMessage( 'bs-wantedarticle-suggest-page', '<b>' . $sShortAndEscapedString . '</b>' )->plain() . '';
 				$oItemSuggest->type = '';
 				$oItemSuggest->link = '#' . $sSearchString;
 				$oItemSuggest->attr = 'bs-extendedsearch-suggest';
@@ -534,7 +540,7 @@ class WantedArticle extends BsExtensionMW {
 		if ( $oEditStatus->isGood() ) {
 			return json_encode(  array( 'success' => true, 'message' => wfMessage( 'bs-wantedarticle-success-suggestion-entered' )->plain() ) );
 		} else {
-			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText() );
+			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText(), $this->getTitle() );
 			return json_encode(  array( 'success' => false, 'message' => $sErrorMsg ) );
 		}
 	}

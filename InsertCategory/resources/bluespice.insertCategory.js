@@ -1,13 +1,25 @@
 // WYSIWYG mode
 $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons, commands ){
+	var t = plugin;
+	var ed = t.getEditor();
+
 	var currentImagePath = mw.config.get('wgScriptPath') + '/extensions/BlueSpiceExtensions/InsertCategory/resources/images';
-	buttons.push(
-		{
-			buttonId: 'hwinsertcategory',
-			buttonConfig: {
-				title : 'hwactions.insertcategory',
-				cmd : 'mceHwCategory',
-				image : currentImagePath+'/hwcategory.png'
+
+	ed.addButton('hwinsertcategory', {
+		title : mw.message('bs-insertcategory-title').plain(),
+		cmd : 'mceHwCategory',
+		buttonId: 'hwinsertcategory',
+					onPostRender: function() {
+				var self = this;
+
+				tinyMCE.activeEditor.on('NodeChange', function(evt) {
+					self.disabled(false);
+					$(evt.parents).each(function(){
+						if ( this.tagName.toLowerCase() == 'pre' ) {
+							self.disabled(true);
+						}
+					});
+				});
 			}
 		}
 	);
@@ -31,12 +43,10 @@ $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons,
 			});
 		}
 	});
-
-
 });
 
 
-$(document).ready(function(){
+$(document).ready(function() {
 	// view mode
 	$('#ca-insert_category').find('a').on( 'click', function( e ) {
 		e.preventDefault();
@@ -71,8 +81,7 @@ $(document).ready(function(){
 			BS.InsertCategory.Dialog.show( me );
 		});
 	});
-	
-	
+
 	return false;
 });
 
@@ -80,17 +89,16 @@ var BsInsertCategoryViewHelper = {
 	getCategories: function() {
 		return mw.config.get("wgCategories");
 	},
-	
+
 	setCategories: function( categories ) {
 		Ext.Ajax.request({
 			url: bs.util.getAjaxDispatcherUrl( 'InsertCategory::addCategoriesToArticle', [ wgArticleId ] ),
 			success: function( response, opts ) {
 				var obj = Ext.decode(response.responseText);
-				if(obj.success) {
+				if ( obj.success ) {
 					Ext.Msg.alert('Status', mw.msg('bs-insertcategory-success'));
-					window.location.reload( false );
-				}
-				else {
+					window.location.reload( true );
+				} else {
 					Ext.Msg.alert(mw.msg('bs-insertcategory-failure'), obj.msg);
 				}
 			},
@@ -101,7 +109,7 @@ var BsInsertCategoryViewHelper = {
 			}
 		});
 	}
-}
+};
 
 var BsInsertCategoryWikiEditorHelper = {
 	getCategories: function() {
@@ -110,32 +118,32 @@ var BsInsertCategoryWikiEditorHelper = {
 		var myregexp = new RegExp('\\[\\['+ bs.util.getNamespaceText( bs.ns.NS_CATEGORY ) +':(.+?)\\]\\]', 'g');
 		var match;
 		var terms = [];
-		
+
 		match = myregexp.exec(text);
-		while(match != null) {
+		while( match !== null ) {
 			terms.push( match[1] );
 			match = myregexp.exec(text);
 		}
 
-		return terms;		
+		return terms;
 	},
-	
+
 	setCategories: function( categories ) {
 		var regexCat = /(<br \/>)*\[\[(?:k|c)ategor(?:ie|y):(.)+?\]\]\n?/ig;
 		var tags = '';
 		var text = $('#wpTextbox1').val();
 		text = text.replace(regexCat, "");
-		
+
 		$.each( categories, function( index, value ) {
-			tags = tags + "\n" + '[[Kategorie:' + value + ']]';
+			tags = tags + "\n" + '[[' + bs.util.getNamespaceText( bs.ns.NS_CATEGORY ) + ':' + value + ']]';
 		});
-		
+
 		$('#wpTextbox1').val( text + tags );
-		
+
 		//BsCore.restoreSelection(tags, 'append');
 		//BsCore.restoreScrollPosition();
 	}
-}
+};
 
 var BsInsertCategoryWysiwygEditorHelper = {
 	getCategories: function() {
@@ -144,26 +152,26 @@ var BsInsertCategoryWysiwygEditorHelper = {
 		var myregexp = new RegExp('\\[\\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':(.+?)\\]\\]', 'g');
 		var match;
 		var terms = [];
-		
+
 		match = myregexp.exec(text);
-		while(match != null) {
+		while( match !== null ) {
 			terms.push( match[1] );
 			match = myregexp.exec(text);
 		}
 
 		return terms;
 	},
-	
+
 	setCategories: function( categories ) {
-		var regexCat = /(<br \/>)*\[\[(?:k|c)ategor(?:ie|y):(.)+?\]\]\n?/ig;
+		var regexCat = new RegExp('(<br \/>)*\\[\\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':..*?\\]\\]', 'ig'); ///(<br \/>)*\[\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':(.+?)\]\]/ig;
 		var tags = '';
 		var text = tinyMCE.activeEditor.getContent();
 		text = text.replace(regexCat, "");
-		
+
 		$.each( categories, function( index, value ) {
-			tags = tags + "\n\n" + '[[Kategorie:' + value + ']]';
+			tags = tags + "\n\n" + '[[' + bs.util.getNamespaceText( bs.ns.NS_CATEGORY ) + ':' + value + ']]';
 		});
-		
+
 		tinyMCE.activeEditor.setContent( text + tags );
 	}
-}
+};

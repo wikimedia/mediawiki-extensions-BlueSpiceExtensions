@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    $Id: view.ShoutBoxMessageList.php 6444 2012-09-10 13:04:48Z smuggli $
+
  * @package    BlueSpice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -45,10 +45,10 @@ class ViewShoutBoxMessageList extends ViewBaseElement {
 		if ( $this->hasItems() ) {
 			$out = parent::execute();
 			if ( $this->iMoreLimit ) {
-				$out .= '<li><a href="#" onclick="BsShoutBox.updateShoutbox('.$this->iMoreLimit.');return false;">'.wfMsg( 'bs-shoutbox-more' ).'</a></li>';
+				$out .= '<li class="bs-sb-more"><a href="#" onclick="BsShoutBox.updateShoutbox('.$this->iMoreLimit.');return false;">&nbsp;</a></li>';
 			}
 		} else {
-			$out = '<li><i>'.wfMsg( 'bs-shoutbox-no-entries' ).'</i></li>';
+			$out = '<li><i>'.wfMessage( 'bs-shoutbox-no-entries' )->plain().'</i></li>';
 		}
 		return '<ul>'.$out.'</ul>';
 	}

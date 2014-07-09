@@ -11,7 +11,7 @@ $messages['en'] = array(
 	'bs-avatars-generate-complete'                             => 'A new avatar was created.',
 	
 	//JavaScript
-	'bs-avatars-upload-title'                                  => 'Upload profile picture (PNG)',
+	'bs-avatars-upload-title'                                  => 'Change profile image',
 	'bs-avatars-upload-label'                                  => 'Picture',
 	'bs-avatars-generate-new-label'                            => 'Generate new avatar',
 	'bs-avatars-warning-label'                                 => 'Warning',
@@ -20,7 +20,11 @@ $messages['en'] = array(
 	'bs-avatars-userimage-help'                                => 'e. g. Image.jpg or http://localhost/image.gif',
 	'bs-avatars-set-userimage-failed'                          => 'Not a valid URL or wiki image',
 	'bs-avatars-set-userimage-saved'                           => 'User image successfully saved',
-	'bs-avatars-userimage-save-button'                         => 'Save'
+	'bs-avatars-userimage-save-button'                         => 'Save',
+	'bs-avatars-cancel-button'                                 => 'Cancel',
+	'bs-avatars-file-upload-fieldset-title'                    => 'Image upload',
+	'bs-avatars-user-image-fieldset-title'                     => 'Wiki image or image URL',
+	'bs-avatars-auto-generate-fieldset-title'                  => 'Auto generate avatar'
 );
 
 $messages['de'] = array(
@@ -33,7 +37,7 @@ $messages['de'] = array(
 	'bs-avatars-generate-complete'                             => 'Es wurde ein neuer Avatar generiert.',
 	
 	//Javascript
-	'bs-avatars-upload-title'                                  => 'Profilbild hochladen (PNG)',
+	'bs-avatars-upload-title'                                  => 'Profilbild ändern',
 	'bs-avatars-upload-label'                                  => 'Bild',
 	'bs-avatars-generate-new-label'                            => 'Neuen Avatar generieren',
 	'bs-avatars-warning-label'                                 => 'Warnung',
@@ -42,7 +46,11 @@ $messages['de'] = array(
 	'bs-avatars-userimage-help'                                => 'Z. B. Image.jpg oder http://localhost/image.gif',
 	'bs-avatars-set-userimage-failed'                          => 'Keine gültige URL oder Wiki-Bild',
 	'bs-avatars-set-userimage-saved'                           => 'Benutzerbild wurde gespeichert',
-	'bs-avatars-userimage-save-button'                         => 'Speichern'
+	'bs-avatars-userimage-save-button'                         => 'Speichern',
+	'bs-avatars-cancel-button'                                 => 'Abbrechen',
+	'bs-avatars-file-upload-fieldset-title'                    => 'Bild hochladen',
+	'bs-avatars-user-image-fieldset-title'                     => 'Wiki-Bild oder Bild-URL',
+	'bs-avatars-auto-generate-fieldset-title'                  => 'Avatar automatisch generieren'
 );
 
 $messages['qqq'] = array(

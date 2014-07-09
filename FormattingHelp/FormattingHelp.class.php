@@ -23,7 +23,6 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    2.22.0 stable
-
  * @package    BlueSpice_Extensions
  * @subpackage FormattingHelp
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -60,8 +59,9 @@ class FormattingHelp extends BsExtensionMW {
 			EXTINFO::NAME        => 'FormattingHelp',
 			EXTINFO::DESCRIPTION => 'Displays a help screen in the wiki edit view.',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -115,7 +115,7 @@ class FormattingHelp extends BsExtensionMW {
 		$sOutput = $oFormattinghelpArticle->getContent();
 
 		if ( $sOutput ) {
-			$sOutput = $this->mCore->parseWikiText( $sOutput );
+			$sOutput = $this->mCore->parseWikiText( $sOutput, RequestContext::getMain()->getTitle() );
 		} else {
 			$sOutput = wfMessage( 'bs-formattinghelp-help-text' )->plain();
 		}

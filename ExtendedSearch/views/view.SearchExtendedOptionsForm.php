@@ -71,8 +71,6 @@ class ViewSearchExtendedOptionsForm extends ViewBaseElement {
 		if ( isset( $this->_mItems[$sKey] ) ) return $this->_mItems[$sKey];
 
 		$oRes = new ViewSearchMultivalueField();
-		$oRes->setOption( 'selectorHeight', BsConfig::get( 'MW::ExtendedSearch::SelectorHeight' ) );
-		$oRes->setOption( 'selectorWidth', BsConfig::get( 'MW::ExtendedSearch::SelectorWidth' ) );
 		$this->addItem( $oRes, $sKey );
 
 		return $oRes;

@@ -8,13 +8,11 @@ return array(
 
 	/* A brief description. This information may be used in the user interface */
 	'info' => array(
-		'name'      => 'BlueSpice 1.20',
+		'name'      => 'BlueSpice',
 		'author'    => 'Hallo Welt!',
 		'copyright' => 'Hallo Welt! - Medienwerkstatt GmbH',
 		'url'       => 'http://www.hallowelt.biz',
-		'description'      => 'This is the default BlueSpice PDF Template',
-		'description-msg'  => 'desc',
-		'version' => '1.20.0'
+		'description'      => 'This is the default BlueSpice PDF Template'
 	),
 
 	/**
@@ -29,6 +27,7 @@ return array(
 			'stylesheets/styles.css',
 			'../common/stylesheets/geshi-php.css',
 			'../common/stylesheets/fonts.css',
+			//'../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',
 			'../common/fonts/DejaVuSans-Bold.ttf',
 			'../common/fonts/DejaVuSans-Oblique.ttf',
@@ -49,23 +48,23 @@ return array(
 	 */
 	'messages' => array(
 		'en' => array(
-			'desc'        => 'This is the default PDFTemplate of BlueSpice 1.20 for single article export.',
+			'desc'        => 'This is the default PDFTemplate of BlueSpice for single article export.',
 			'exportdate'  => 'Export:',
 			'page'        => 'Page ',
 			'of'          => ' of ',
-			'disclaimer'  => 'This document was created with BlueSpice 1.20'
+			'disclaimer'  => 'This document was created with BlueSpice'
 		),
 		'de' => array(
-			'desc'        => 'Dies ist das Standard-PDFTemplate von BlueSpice 1.20 für den Export einzelner Artikel.',
+			'desc'        => 'Dies ist das Standard-PDFTemplate von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice 1.20'),
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'),
 		'de-formal' => array(
-			'desc'        => 'Dies ist das Standard-PDFTemplate von BlueSpice 1.20 für den Export einzelner Artikel.',
+			'desc'        => 'Dies ist das Standard-PDFTemplate von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice 1.20'),
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'),
 	)
 );

@@ -51,10 +51,10 @@ class SearchService extends SolrServiceAdapter {
 
 	/**
 	 * Constructor for BsSearchService class
-	 * @param string $protocol Protocol of Solr service URL
-	 * @param string $host Host of Solr service URL
-	 * @param string $port Port of Solr service URL
-	 * @param string $path Path of Solr service URL
+	 * @param string $sProtocol Protocol of Solr service URL
+	 * @param string $sHost Host of Solr service URL
+	 * @param string $sPort Port of Solr service URL
+	 * @param string $sPath Path of Solr service URL
 	 */
 	public function __construct( $sProtocol, $sHost, $sPort, $sPath ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -98,19 +98,19 @@ class SearchService extends SolrServiceAdapter {
 
 	/**
 	 * Sanitze search input to prevent XSS
-	 * @param string $searchString Raw search string.
+	 * @param string $sSearchString Raw search string.
 	 * @return string sanitized search string.
 	 */
 	public static function sanitzeSearchString( $sSearchString ) {
-		$sSearchString = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
 		$sSearchString = trim( $sSearchString );
+		$sSearchString = htmlspecialchars( $sSearchString, ENT_QUOTES, 'UTF-8' );
 
 		return $sSearchString;
 	}
 
 	/**
 	 * Normalize search string in order to be processed by search service.
-	 * @param string $searchString Raw search string.
+	 * @param string $sSearchString Raw search string.
 	 * @return string Normalized search string.
 	 */
 	public static function preprocessSearchInput( $sSearchString ) {
@@ -119,16 +119,22 @@ class SearchService extends SolrServiceAdapter {
 		$sSearchString = mb_strtolower( $sSearchString );
 		$sSearchString = str_ireplace( array( ' and ', ' or ', ' not ' ), array( ' AND ', ' OR ', ' NOT ' ), ' '.$sSearchString.' ' );
 
-		/*
-		 * Underscore should be replaced by solr, however, it is not
-		 * Replace slash in order to look for subpages
-		 */
 		if ( ( substr_count( $sSearchString, '"' ) % 2 ) != 0 ) {
 			$sSearchString = str_replace( '"', '\\"', $sSearchString );
 		}
+
 		$sSearchString = str_replace( array( '_', '/' ), ' ', $sSearchString );
-		$sSearchString = str_replace( array( ':', '{', '}', '(', ')', '[', ']' ), array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]' ), $sSearchString );
-		$sSearchString = str_replace( array( '\\\\{', '\\\\}' ), array( '\\{', '\\}' ), $sSearchString );
+
+		$sSearchString = str_replace(
+			array( ':', '{', '}', '(', ')', '[', ']', '+', '&', '.', '/' ),
+			array( '\\:', '\\{', '\\}', '\\(', '\\)', '\\[', '\\]', '\\+', '\\&', '\\.', '\\/' ),
+			$sSearchString
+		);
+		$sSearchString = str_replace(
+			array( '\\\\{', '\\\\}' ),
+			array( '\\{', '\\}' ),
+			$sSearchString
+		);
 		$sSearchString = trim( $sSearchString );
 		wfProfileOut( 'BS::'.__METHOD__ );
 
@@ -176,16 +182,13 @@ class SearchService extends SolrServiceAdapter {
 	 * @param string $sSearchString Raw search string
 	 * @return string (Possibly) wildcarded search string.
 	 */
-	public static function wildcardSearchstringOfOnlyOneWord( $sSearchString ) {
+	public static function wildcardSearchstring( $sSearchString ) {
 		// remove beginning
-		$sSearchString = trim( $sSearchString ); 
+		$sSearchString = trim( $sSearchString );
 		if ( empty( $sSearchString ) ) {
 			return $sSearchString;
 		}
-		// in case of two terms nothing shall be wildcarded
-		if ( strpos( $sSearchString, ' ' ) !== false ) {
-			return $sSearchString;
-		}
+
 		if ( self::containsStringUnescapedCharsOf( $sSearchString, '~' ) ) {
 			return $sSearchString;
 		}
@@ -199,6 +202,10 @@ class SearchService extends SolrServiceAdapter {
 			return $sSearchString;
 		}
 
+		if ( strpos( $sSearchString, ' ' ) !== false ) {
+			$sSearchString = str_replace( ' ', '*', $sSearchString );
+		}
+
 		return '*' . $sSearchString . '*';
 	}
 
@@ -208,34 +215,25 @@ class SearchService extends SolrServiceAdapter {
 	 * @param string $query The raw query string
 	 * @param int $offset The starting offset for result documents
 	 * @param int $limit The maximum number of result documents to return
-	 * @param array $params key / value pairs for other query parameters (see Solr documentation), use arrays for parameter keys used more than once (e.g. facet.field)
+	 * @param array $aParams key / value pairs for other query parameters (see Solr documentation), use arrays for parameter keys used more than once (e.g. facet.field)
 	 * @return Apache_Solr_Response
 	 */
-	public function mlt( $query, $offset = 0, $limit = 10, $params = array() ) {
+	public function mlt( $query, $offset = 0, $limit = 10, $aParams = array() ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		if ( !is_array( $params ) ) {
-			$params = array();
+		if ( !is_array( $aParams ) ) {
+			$aParams = array();
 		}
 
 		// common parameters in this interface
-		$params['wt']      = self::SOLR_WRITER;
-		$params['json.nl'] = $this->_namedListTreatment;
-		$params['q']       = $query;
-		$params['rows']    = $limit;
+		$aParams['wt'] = self::SOLR_WRITER;
+		$aParams['json.nl'] = $this->_namedListTreatment;
+		$aParams['q'] = $query;
+		$aParams['rows'] = $limit;
 
-		// use http_build_query to encode our arguments because its faster
-		// than urlencoding all the parts ourselves in a loop
-		$queryString = http_build_query( $params, null, $this->_queryStringDelimiter );
-
-		// because http_build_query treats arrays differently than we want to, correct the query
-		// string by changing foo[#]=bar (# being an actual number) parameter strings to just
-		// multiple foo=bar strings. This regex should always work since '=' will be urlencoded
-		// anywhere else the regex isn't expecting it
-		$queryString = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $queryString );
-
+		$sQueryString = $this->buildHttpQuery( $aParams );
 		wfProfileOut( 'BS::'.__METHOD__ );
 
-		return $this->_sendRawGet( $this->_morelikethisUrl.$this->_queryDelimiter.$queryString );
+		return $this->_sendRawGet( $this->_morelikethisUrl.$sQueryString );
 	}
 
 	/**
@@ -253,15 +251,22 @@ class SearchService extends SolrServiceAdapter {
 			$aParams = array();
 		}
 
-		$aParams['spellcheck']   = 'true';
-		$aParams['q']            = $sQuery;
+		$aParams['spellcheck'] = 'true';
+		$aParams['q'] = $sQuery;
 		$aParams['spellcheck.q'] = $sQuery;
 
 		if ( $bIndexing === false ) {
-			$aParams['wt']      = self::SOLR_WRITER;
+			$aParams['wt'] = self::SOLR_WRITER;
 			$aParams['json.nl'] = $this->_namedListTreatment;
 		}
 
+		$sQueryString = $this->buildHttpQuery( $aParams );
+		wfProfileOut( 'BS::'.__METHOD__ );
+
+		return $this->_sendRawGet( $this->_spellcheckUrl.$sQueryString );
+	}
+
+	protected function buildHttpQuery( $aParams ) {
 		// use http_build_query to encode our arguments because its faster
 		// than urlencoding all the parts ourselves in a loop
 		$sQueryString = http_build_query( $aParams, null, $this->_queryStringDelimiter );
@@ -271,9 +276,8 @@ class SearchService extends SolrServiceAdapter {
 		// multiple foo=bar strings. This regex should always work since '=' will be urlencoded
 		// anywhere else the regex isn't expecting it
 		$sQueryString = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $sQueryString );
-		wfProfileOut( 'BS::'.__METHOD__ );
 
-		return $this->_sendRawGet( $this->_spellcheckUrl.$this->_queryDelimiter.$sQueryString );
+		return $this->_queryDelimiter.$sQueryString;
 	}
 
 	/**
@@ -316,7 +320,7 @@ class SearchService extends SolrServiceAdapter {
 		 *    - xml:  xml-formatted, each entity of the document (headings,
 		 *            body, paragraphs, ...) embraced by it's own tag
 		 */
-		$url = $this->sUrl.'update/extract?extractOnly=true&extractFormat=text';
+		$url = $this->sUrl . BsConfig::get( 'MW::ExtendedSearch::SolrCore' ) . '/update/extract?extractOnly=true&extractFormat=text';
 		if ( $this->oGetFileTextCurlHandle === null
 			|| $this->iGetFileTextConnectionCounter > 30
 			|| $this->iGetFileTextCurlAge + 75 < microtime( true ) ) {
@@ -349,18 +353,14 @@ class SearchService extends SolrServiceAdapter {
 	 */
 	public function &getFileText( $filepath, $timeLimit = null ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		if ( $timeLimit === null ) $timeLimit = 60;
 
 		$this->initGetFileTextCurlHandle();
-
-		set_time_limit( $timeLimit );
 
 		// @todo: $rawPost = file_get_contents(urldecode($filepath));
 		$vText = file_get_contents( $filepath );
 		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_POSTFIELDS, $vText );
 
-		$curlTimeLimit = $timeLimit - 10;
-		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_TIMEOUT, $curlTimeLimit ); // 290 did not work! Error: Fatal error: Maximum execution time of 60 seconds exceeded in ...
+		curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_TIMEOUT, 20 ); // 290 did not work! Error: Fatal error: Maximum execution time of 60 seconds exceeded in ...
 
 		$vText = curl_exec( $this->oGetFileTextCurlHandle );
 		$vText = simplexml_load_string( $vText );
@@ -386,7 +386,7 @@ class SearchService extends SolrServiceAdapter {
 	/**
 	 * If server does not answer with http-status 200 an Exception is thrown
 	 * @param string $sParams Param to specify delete query
-	 * @return integer status of connect to server 
+	 * @return integer status of connect to server
 	 */
 	public function deleteIndex( $sParams = '' ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -395,14 +395,16 @@ class SearchService extends SolrServiceAdapter {
 			|| ( strpos( $customerId, '?' ) !== false )
 			|| ( strpos( $customerId, '*' ) !== false ) ) return false;
 
-		$sQuery = "uid:$customerId-*";
-		if( !empty( $sParams ) ) {
+		$sQuery = "wiki:$customerId";
+		if ( !empty( $sParams ) ) {
 			$sQuery = "($sQuery)AND($sParams)";
 		}
 
 		$response = $this->deleteByQuery( $sQuery );
 		$status = $response->getHttpStatus();
-		$this->commit();
+
+		BuildIndexMainControl::getInstance()->commitAndOptimize( true );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 
 		return $status;

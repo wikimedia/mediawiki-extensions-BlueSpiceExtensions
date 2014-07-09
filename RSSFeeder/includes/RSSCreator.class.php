@@ -111,7 +111,7 @@ class RSSCreator {
                                                          'registerProcedure' => false),
                                'copyright'      => false,
                                'docs'           => 'http://www.rssboard.org/rss-specification',
-                               'generator'      => 'HalloWiki RSSCreator',
+                               'generator'      => 'BlueSpice RSSCreator',
                                'image'          => array('link'        => false,
                                                          'title'       => false,
                                                          'url'         => false,

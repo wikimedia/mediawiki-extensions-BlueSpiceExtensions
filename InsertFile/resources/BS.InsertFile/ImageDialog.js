@@ -11,7 +11,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	singleton: true,
 	id: 'bs-InsertImage-dlg-window',
 	title: mw.message('bs-insertfile-titleImage').plain(),
-	
+
 	//Custom Settings
 	allowedFileExtensions: mw.config.get( 'bsImageExtensions' ),
 	storeFileType: 'image',
@@ -35,18 +35,18 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			width: 70,
 			minValue: 1,
 			value: 1,
-			margin: '0 5 0 0',
+			margin: '0 0 0 5',
 			allowDecimals: false
 		});
-		this.nbHeight.on('change', this.onNbHeightChange, this);
+		this.nbHeight.on('blur', this.onNbHeightChange, this);
 		this.nbWidth = Ext.create( 'Ext.form.field.Number',{
 			width: 70,
 			minValue: 1,
 			value: 1,
-			margin: '0 0 0 5',
+			margin: '0 5 0 0',
 			allowDecimals: false
 		});
-		this.nbWidth.on('change', this.onNbWidthChange, this);
+		this.nbWidth.on('blur', this.onNbWidthChange, this);
 		this.btnKeepRatio = Ext.create('Ext.Button', {
 			text: '&nbsp;x&nbsp;',
 			tooltip: mw.message('bs-insertfile-tipKeepRatio').plain(),
@@ -87,7 +87,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			]
 		});
 		this.rgFormat.on( 'change', this.onRgFormatChange, this );
-		
+
 		this.rgAlign = Ext.create('Ext.form.RadioGroup', {
 			fieldLabel: mw.message('bs-insertfile-labelAlign').plain(),
 			value: 'none',
@@ -120,11 +120,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		});
 		
 		this.tfAlt = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-insertfile-labelAlt').plain()
+			fieldLabel: mw.message('bs-insertfile-labelAlt').plain(),
+			//todo: needs implementation, just setting an empty string
+			//otherwise the edit dialog would display false
+			value: ""
 		});
-		
+
 		this.hdnUrl = Ext.create( 'Ext.form.field.Hidden' );
-		
+
 		this.configPanel.height = 250;
 		this.configPanel.items = [
 			this.rgFormat,
@@ -146,9 +149,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 					margin: '0 5 5 0'
 				},*/
 				items: [
-					this.nbHeight,
+					this.nbWidth,
 					this.btnKeepRatio,
-					this.nbWidth
+					this.nbHeight
 				]
 			},
 			this.tfAlt
@@ -156,26 +159,40 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		
 		this.callParent(arguments);
 	},
-	
-	onNbHeightChange: function( sender, newValue, oldValue, eOpts ) {
+	//We need to set the 
+	onStImageGridLoad: function( store, records, successful, eOpts ) {
+		//Only if we have a image selected
+		if( store.filters.items.length > 0 && records.length === 1 ) {
+			//And only if the images has no width/height information
+			if( this.nbWidth.getValue() === null && this.nbHeight.getValue() === null ) {
+				var record = records[0];
+				this.isSetData = true;
+				this.nbWidth.setValue(+record.get('width'));
+				this.nbHeight.setValue(+record.get('height'));
+				this.isSetData = false;
+			}
+		}
+		this.callParent(arguments);
+	},
+	onNbHeightChange: function( element, event ) {
 		if (this.btnKeepRatio.pressed && !this.isSetData) {
-			this.nbWidth.setValue(this.processRatio(0, newValue));
+			this.nbWidth.setValue(this.processRatio(0, element.lastValue));
 		}
 	},
-	onNbWidthChange: function( sender, newValue, oldValue, eOpts ) {
+	onNbWidthChange: function( element, event ) {
 		if (this.btnKeepRatio.pressed && !this.isSetData) {
-			this.nbHeight.setValue(this.processRatio(newValue, 0));
+			this.nbHeight.setValue(this.processRatio(element.lastValue, 0));
 		}
 	},
 	processRatio: function(w, h) {
 		var record = this.getSingleSelection();
-		if ((w == 0 && h == 0) || record == null ) {
+		if ((w === 0 && h === 0) || record === null ) {
 			return 0;
 		}
 		var orgW = record.get('width');
 		var orgH = record.get('height');
 
-		if (w == 0) {
+		if (w === 0) {
 			return Math.round(orgW / (orgH / h));
 		}
 		else {
@@ -188,57 +205,78 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.callParent(arguments);
 	},
 	*/
-	
+
 	getData: function() {
 		var cfg = this.callParent(arguments);
 		Ext.apply(cfg, {
-			imagename: this.tfFileName.getValue(),
+			//bs.wikiText.Link stuff
 			caption: this.tfLinkText.getValue(),
-			sizeheight: this.nbHeight.getValue(),
-			sizewidth: this.nbWidth.getValue(),
+			sizeheight: false,
+			sizewidth: false,
 			link: this.cbPages.getValue(),
 			alt: this.tfAlt.getValue(),
-			//Ext.htmlDecode(): this feels like the wrong place...
-			src: Ext.htmlDecode(this.hdnUrl.getValue())
+			thumb: false,
+			border: false,
+			frame: false,
+			//VisualEditor stuff
+			imagename: this.tfFileName.getValue(),
+			src: Ext.htmlDecode(this.hdnUrl.getValue()) //Ext.htmlDecode(): this feels like the wrong place...
 		});
 		
-		if(this.cbxNoLink.getValue() == true ) {
+		if(this.cbxNoLink.getValue() === true ) {
 			cfg.link = '';
 		}
 		
 		var format = this.rgFormat.getValue();
 		format = format['img-type'];
 		
-		if( format == 'thumb' ) {
+		if( format === 'thumb' ) {
 			cfg.thumb = true;
 		}
-		else if( format == 'frame' ) {
+		else if( format === 'frame' ) {
 			cfg.frame = true;
 		}
-		else if( format == 'border' ) {
+		else if( format === 'border' ) {
 			cfg.border = true;
 		}
 		
 		var align = this.rgAlign.getValue();
 		align = align['img-align'];
 		if( align !== 'none' ) {
-			cfg.align = align
+			cfg.align = align;
 		}
 		
 		//Is this necessary?
-		if( align == 'left' ) {
+		if( align === 'left' ) {
 			cfg.left = true;
 		}
-		else if( align == 'center' ) {
+		else if( align === 'center' ) {
 			cfg.center = true;
 		}
-		else if( align == 'right' ) {
+		else if( align === 'right' ) {
 			cfg.right = true;
 		}
+		else if( align === 'none' ) {
+			cfg.none = true;
+		}
 		
+		//Only set width and height if they are _not_ the original size!
+		var record = this.getSingleSelection();
+		if( record === null ){
+			return cfg;
+		}
+		
+		var height = this.nbHeight.getValue();
+		var width = this.nbWidth.getValue();
+		if( height != record.get('height') || width != record.get('width') ) {
+			cfg.sizeheight = height;
+			cfg.sizewidth = width;
+		}
+
+		$(document).trigger("BSInsertFileInsertImageDialogBeforeReturnGetData", [this, cfg]);
+
 		return cfg;
 	},
-	
 	setData: function( obj ) {
 		this.isSetData = true;
 		if( obj.imagename ) {
@@ -264,15 +302,15 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.hdnUrl.reset();
 
 		var format = 'none';
-		if( obj.thumb  != 'false' ) format = 'thumb';
-		if( obj.frame  != 'false')  format = 'frame';
-		if( obj.border != 'false' ) format = 'border';
+		if( obj.thumb && obj.thumb !== 'false' ) format = 'thumb';
+		if( obj.frame && obj.frame !== 'false')  format = 'frame';
+		if( obj.border&& obj.border !== 'false' ) format = 'border';
 		this.rgFormat.setValue({
 			'img-type': format
 		});
 
 		var align = obj.align;
-		if( align == '' ) align = 'none';
+		if( align === '' ) align = 'none';
 		this.rgAlign.setValue({
 			'img-align': align
 		});
@@ -280,7 +318,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.sizewidth !== '' ) { 
 			this.nbWidth.setValue(obj.sizewidth);
 		}
-		
+
 		if( obj.sizeheight !== '' ) { 
 			this.nbHeight.setValue(obj.sizeheight);
 		}
@@ -288,16 +326,35 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.alt !== '' ) { 
 			this.tfAlt.setValue( obj.alt );
 		}
+		else {
+			this.tfAlt.setValue("");
+		}
+
+		if( obj.link !== '' && obj.link !== false && obj.link !== 'false' ) { 
+			this.cbPages.setValue( obj.link );
+		}
 		
+		if( obj.link === '' ) {
+			this.cbxNoLink.setValue(true);
+		} else {
+			this.cbxNoLink.setValue(false);
+		}
+
 		this.hdnUrl.setValue( obj.src );
 		this.isSetData = false;
 	},
 	
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.callParent(arguments);
+
 		this.hdnUrl.setValue( record.get('url') );
-		this.nbWidth.setValue( record.get('width') );
-		this.nbHeight.setValue( record.get('height') );
+		//This is to avoid an overriding of the dimension that may have been 
+		//set by this.setData()
+		if( grid.getStore().filters.items.length === 0 || grid.getStore().getCount() !== 1 ) {
+			this.nbWidth.setValue( record.get('width') );
+			this.nbHeight.setValue( record.get('height') );
+		}
+		$(document).trigger("BSInsertFileInsertImageDialogAfterImageSelect", [this, grid, record, index]);
 	},
 	
 	//If we want do have a WikiImageLink that produces a unlinked image we will 
@@ -312,8 +369,8 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	},
 	
 	onRgFormatChange: function( sender, newValue, oldValue, eOpts ) {
-		if( newValue['img-type'] == 'frame' 
-			|| newValue['img-type'] == 'thumb' ) {
+		if( newValue['img-type'] === 'frame' 
+			|| newValue['img-type'] === 'thumb' ) {
 			this.tfLinkText.enable();
 		}
 		else {

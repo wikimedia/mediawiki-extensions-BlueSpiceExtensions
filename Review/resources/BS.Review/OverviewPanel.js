@@ -1,17 +1,12 @@
 Ext.define( 'BS.Review.OverviewPanel', {
 	extend: 'Ext.grid.Panel',
+	features: [],
 	viewConfig: { 
 		forceFit: true
 	},
-	
+
 	initComponent: function() {
-		this.cbUser = Ext.create( 'BS.form.UserCombo' );
-		this.dockedItems = {
-			xtype: 'toolbar',
-			dock: 'top',
-			items: [ this.cbUser ]
-		};
-		
+
 		this.store = Ext.create( 'Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
@@ -20,15 +15,18 @@ Ext.define( 'BS.Review.OverviewPanel', {
 					type: 'json',
 					root: 'payload',
 					idProperty: 'rev_id'
+				},
+				extraParams: {
+					userID: mw.config.get('bsSpecialReviewUserID', 0)
 				}
 			},
-			fields: [ 'rev_id', 'page_title', 'owner_name', 'rev_mode',
-				'rev_mode_text', 'rev_status', 'rev_status_text', 'rejected',
+			fields: [ 'rev_id', 'page_title', 'owner_name', 'owner_real_name',
+				'rev_status', 'rev_status_text', 'rejected',
 				'accepted', 'accepted_text', 'total', 'endtimetamp', 
 				'assessors', 'startdate', 'enddate' ],
 			autoLoad: true
 		});
-		
+
 		this.columns = {
 			defaults: {
 				flex: 1
@@ -43,12 +41,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				{
 					header: mw.message('bs-review-header-owner_name').plain(),
 					dataIndex: 'owner_name',
-					sortable: false
-				},
-				{
-					header: mw.message('bs-review-header-rev_mode').plain(),
-					dataIndex: 'rev_mode',
-					hidden: true,
+					renderer: this.renderOwner,
 					sortable: false
 				},
 				{
@@ -70,14 +63,46 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				{
 					header: mw.message('bs-review-header-enddate').plain(),
 					sortable: false,
-					dataIndex: 'startdate'
+					dataIndex: 'enddate'
 				}
 			]
 		};
-		
+
+		this.filters = Ext.create('Ext.ux.grid.FiltersFeature', {
+			encode: true,
+			local: false,
+			filters: [{
+				type: 'string',
+				dataIndex: 'page_title'
+			},{
+				type: 'string',
+				dataIndex: 'owner_name'
+			},{
+				type: 'string',
+				dataIndex: 'assessors'
+			}]
+		});
+
+		this.features = [this.filters];
+
 		this.callParent(arguments)
 	},
-	
+
+	renderOwner: function( value, metaData, record, rowIndex, colIndex, store ) {
+            var ownerName = mw.config.get('bsSpecialReviewUserName', false);
+            var openTag = '';
+            var closeTag = '';
+            
+            if(ownerName && ownerName === value) {
+                openTag = '<span style="color: red">';
+                closeTag = '</span>';
+            }
+            
+            var content = record.get('owner_real_name') || value;
+            
+            return openTag + content + closeTag;
+	},
+
 	renderPageTitle: function( cellValue, record ) {
 		return mw.html.element(
 			"a",
@@ -87,8 +112,9 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			cellValue
 		);
 	},
-	
+
 	renderAssessors: function( cellValue, record ) {
+                var ownerName = mw.config.get('bsSpecialReviewUserName', false);
 		var table = '<table cellpadding="5">';
 		var row = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
 		for( var i = 0; i < cellValue.length; i++ ) {
@@ -103,9 +129,25 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			if( line.revs_status == -1 ) {
 				status = status.format( 'rv_unknown' );
 			}
+			if( line.revs_status == -2 ) { //Was '1' before reject, see BsReviewProcess::reset()
+				status = '<div class="rv_yes">'+status.format( 'rv_invalid' )+'</div>';
+			}
+			if( line.revs_status == -3 ) { //Was '0' before reject
+				status = '<div class="rv_no">'+status.format( 'rv_invalid' )+'</div>';
+			}
+                        
+                        var openTag = '';
+                        var closeTag = '';
+                        var content = line.real_name || line.name;
+                        
+                        if(ownerName && ownerName === line.name) {
+                            openTag = '<span style="color: red">';
+                            closeTag = '</span>';
+                        }
+                        
 			table += row.format(
 				status,
-				line.name,
+				openTag + content + closeTag,
 				line.timestamp || ''
 			);
 		}

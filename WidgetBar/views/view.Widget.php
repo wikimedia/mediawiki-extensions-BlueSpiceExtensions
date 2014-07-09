@@ -46,7 +46,7 @@ class ViewWidget extends ViewBaseElement {
 				$this->_mBody .= $oViewItem->execute();
 			}
 			}else {
-				$this->_mBody = '<ul><li><em>' . wfMsg( 'bs-no-information-available' ) . '</em></li></ul>';
+				$this->_mBody = '<ul><li><em>' . wfMessage( 'bs-no-information-available' )->plain() . '</em></li></ul>';
 			}
 		}
 	}

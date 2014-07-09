@@ -25,23 +25,28 @@
 class SearchIndex {
 
 	/**
-	 * Reference to current search service, e.g. Solr
-	 * @var BsSearchService Current search service
+	 * Instance of ExtendedSearchBase
+	 * @var ExtendedSearchBase obejct of ExtendedSearchBase
+	 */
+	protected $oExtendedSearchBase;
+	/**
+	 * Instance of SearchService
+	 * @var SearchService object of SearchService
 	 */
 	protected $oSearchService;
 	/**
-	 * Current search options as set by defaults and url params
-	 * @var SearchOptions SearchOptions object
+	 * Instance of SearchOptions
+	 * @var SearchOptions object of SearchOptions
 	 */
 	protected $oSearchOptions;
 	/**
-	 * Search options as set by url params
-	 * @var SearchRequest SearchRequest object
+	 * Instance of SearchRequest
+	 * @var SearchRequest object of SearchRequest
 	 */
 	protected $oSearchRequest;
 	/**
-	 * Request Context
-	 * @var RequestContext RequestContext object
+	 * RequestContext
+	 * @var RequestContext object of RequestContext
 	 */
 	protected $oRequestContext;
 	/**
@@ -69,7 +74,13 @@ class SearchIndex {
 	 * Constructor for SearchIndexMW class
 	 * @param BsSearchService $searchServiceObject Current search service
 	 */
-	public function __construct() {}
+	public function __construct() {
+		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance();
+		$this->oSearchRequest = SearchRequest::getInstance();
+		$this->oSearchOptions = SearchOptions::getInstance();
+		$this->oUriBuilder = SearchUriBuilder::getInstance();
+		$this->oRequestContext = RequestContext::getMain();
+	}
 
 	/**
 	 * Return a instance of SearchIndex.
@@ -116,32 +127,28 @@ class SearchIndex {
 
 	/**
 	 * This functions searches the index for a given search term
-	 * @param BsSearchRequest $oSearchRequestCore Current search request
+	 * @param BsSearchRequest $oSearchService Current search request
 	 * @param array &$aMonitor Set of options.
 	 * @return ViewSearchResult View that describes search results
 	 */
 	public function search( $oSearchService, &$aMonitor ) {
 		$this->oSearchService = $oSearchService;
-		$this->oSearchRequest = SearchRequest::getInstance();
-		$this->oSearchOptions = SearchOptions::getInstance();
-		$this->oUriBuilder = SearchUriBuilder::getInstance();
-		$this->oRequestContext = RequestContext::getMain();
 		global $wgScriptPath;
 
 		/* Jump to page */
 		if ( BsConfig::get( 'MW::ExtendedSearch::JumpToTitle' )
 			&& ( $this->oSearchOptions->getOption( 'titleExists' ) === true )
-			&& ( $this->oSearchRequest->sRequestOrigin == 'titlebar' )
+			&& ( $this->oSearchRequest->sOrigin == 'titlebar' )
 			&& ( $this->oSearchRequest->bAutocomplete === false ) ) {
+
 			$this->oRequestContext->getOutput()->redirect(
 				$this->oSearchOptions->getOption( 'existingTitleObject' )->getFullURL()
 			);
-			throw new Exception( 'redirect' );
 		}
 
 		if ( !$this->oSearchRequest->isSearchable() ) {
 			if ( $this->oSearchRequest->sOrigin != '' && $this->oSearchOptions->getOption( 'searchStringOrig' ) == '' ) {
-				return $this->createErrorMessageView( 'bs-extendedsearch-no_search_term' );
+				return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-no_search_term' );
 			} else {
 				$vbe = new ViewBaseElement();
 				$vbe->setAutoElement( false );
@@ -168,11 +175,10 @@ class SearchIndex {
 				return $this->oRequestContext->getOutput()->redirect( $sUrl, '404' );
 			}
 
-			return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
+			return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 		}
 
 		$iNumFound = $oHits->response->numFound;
-		$iMaxScore = $oHits->response->maxScore;
 
 		$bEscalateToFuzzy = ( $iNumFound == 0 ); // boolean!
 		// escalate to fuzzy
@@ -181,14 +187,13 @@ class SearchIndex {
 			try {
 				$oHits = $this->oSearchService->search( $aFuzzyQuery['searchString'], $aFuzzyQuery['offset'], $aFuzzyQuery['searchLimit'], $aFuzzyQuery['searchOptions'] );
 			} catch ( Exception $e ) {
-				return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
+				return $this->oExtendedSearchBase->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 			}
 
 			$iNumFound = $oHits->response->numFound;
-			$iMaxScore = $oHits->response->maxScore;
 		}
 
-		$this->logSearch(
+		$this->oExtendedSearchBase->logSearch(
 			$this->oSearchOptions->getOption( 'searchStringForStatistics' ),
 			$iNumFound,
 			$this->oSearchOptions->getOption( 'scope' ),
@@ -223,7 +228,7 @@ class SearchIndex {
 		}
 
 		$aMonitor['NoOfResultsFound'] = $iNumFound;
-		$aMonitor['SearchTerm']       = $this->oSearchOptions->getOption( 'searchStringRaw' );
+		$aMonitor['SearchTerm'] = $this->oSearchOptions->getOption( 'searchStringRaw' );
 		$aMonitor['EscalatedToFuzzy'] = $bEscalateToFuzzy;
 
 		if ( $iNumFound == 0 ) return $this->vSearchResult;
@@ -236,7 +241,7 @@ class SearchIndex {
 
 		$loopsCalculated = ( $iNumFound / $searchLimit ) + 1;
 		$this->vSearchResult->setOption( 'activePage', 1 );
-		$url_offset = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET|SearchUriBuilder::NO_ENCODE );
+		$url_offset = $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET );
 
 		for ( $i = 1; $i < $loopsCalculated; $i++ ) {
 			$offset_step = ( ( $i - 1 ) * $searchLimit );
@@ -250,9 +255,9 @@ class SearchIndex {
 
 		$aSortTypes = array(
 			'titleSort' => 'bs-extendedsearch-sort-title',
-			'score'     => 'bs-extendedsearch-sort-relevance',
-			'type'      => 'bs-extendedsearch-sort-type',
-			'ts'        => 'bs-extendedsearch-sort-ts'
+			'score' => 'bs-extendedsearch-sort-relevance',
+			'type' => 'bs-extendedsearch-sort-type',
+			'ts' => 'bs-extendedsearch-sort-ts'
 		);
 
 		$aSorting = array(
@@ -263,7 +268,7 @@ class SearchIndex {
 			'sortdirection' => ( $this->oSearchOptions->getOption( 'asc' ) == 'asc' ) ? 'asc' : 'desc',
 			'sorturl' => $this->oUriBuilder->buildUri(
 					SearchUriBuilder::ALL,
-					SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET|SearchUriBuilder::NO_ENCODE
+					SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET
 				)
 			);
 
@@ -483,8 +488,10 @@ class SearchIndex {
 					foreach ( $facetTypeAll as $typeUrl => $attributesUrl ) {
 						$bOwnUrlAndNotAlreadyChecked = ( ( $type == $typeUrl ) && !isset( $attributesUrl['checked'] ) );
 						$bOtherUrlAndAlreadyChecked = ( ( $type != $typeUrl ) && isset( $attributesUrl['checked'] ) );
-						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked )
+
+						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked ) {
 							$uri .= '&ty[]='.$typeUrl;
+						}
 					}
 
 					$aDataSet['uri'] = $uri;
@@ -579,17 +586,15 @@ class SearchIndex {
 		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
 
 		$aImageLinks = array(
-			'doc'     => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
-			'ppt'     => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
-			'xls'     => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
-			'pdf'     => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
-			'txt'     => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
+			'doc' => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
+			'ppt' => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
+			'xls' => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
+			'pdf' => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
+			'txt' => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
 			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
 		);
 
 		foreach ( $oDocuments as $oDocument ) {
-			$sPercent = 100 * ( sprintf( '%.2f', $oDocument->score / $iMaxScore ) );
-
 			//Show Page Title and link it
 			$sLinkIcon = $aImageLinks['default'];
 
@@ -627,11 +632,19 @@ class SearchIndex {
 						$sHtml = str_replace ( '_', ' ', $sHtml );
 					}
 
-					$sSearchLink = BsLinkProvider::makeLink( $oTitle, $sHtml, $aCustomAttribs = array(), $aQuery = array(), $aOptions = array( 'known' ) );
+					$sSearchLink = BsLinkProvider::makeLink(
+						$oTitle,
+						$sHtml,
+						$aCustomAttribs = array(
+							'class' => 'bs-extendedsearch-result-headline'
+						),
+						$aQuery = array(),
+						$aOptions = array( 'known' )
+					);
 
 					if ( isset( $oHits->highlighting->{$oDocument->uid}->sections ) ) {
 						$oParser = new Parser();
-						$sSection = strip_tags( $oHits->highlighting->{$oDocument->uid}->sections[0] );
+						$sSection = strip_tags( $oHits->highlighting->{$oDocument->uid}->sections[0], '<em>' );
 						$sSectionAnchor = $oParser->guessSectionNameFromWikiText( $sSection );
 						$sSectionLink = BsLinkProvider::makeLink( $oTitle, $sSection, $aCustomAttribs = array(), $aQuery = array(), $aOptions = array( 'known' ) );
 
@@ -672,17 +685,26 @@ class SearchIndex {
 			if ( isset( $oDocument->cat ) ) {
 				if ( is_array( $oDocument->cat ) ) {
 					$catlinks = array();
+					$iItems = 0;
 					foreach ( $oDocument->cat as $c ) {
 						if ( $c == 'notcategorized' ) continue;
-						$oTitle = Title::makeTitle( NS_CATEGORY, $c );
-						$catstr = BsLinkProvider::makeLink( $oTitle, $oTitle->getText() );
-						$catlinks[] = $catstr;
+						$oCatTitle = Title::makeTitle( NS_CATEGORY, $c );
+						$catstr = BsLinkProvider::makeLink( $oCatTitle, $oCatTitle->getText() );
+
+						if ( $iItems === 3 ) {
+							$catlinks[] = BsLinkProvider::makeLink( $oTitle, '...' );
+							break;
+						} else {
+							$catlinks[] = $catstr;
+						}
+
+						$iItems++;
 					}
 					$catstr = implode( ', ', $catlinks );
 				} else {
 					if ( $oDocument->cat != 'notcategorized' ) {
-						$oTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
-						$catstr = BsLinkProvider::makeLink( $oTitle, $oTitle->getText() );
+						$oCatTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
+						$catstr = BsLinkProvider::makeLink( $oCatTitle, $oCatTitle->getText() );
 					}
 				}
 			}
@@ -706,28 +728,26 @@ class SearchIndex {
 						$oTitle = Title::newFromText( $sRedirect );
 						$aRedirects[] = BsLinkProvider::makeLink( $oTitle );
 					}
-					$sRedirect = ' | Redirect from ' . implode( ', ', $aRedirects );
+					$sRedirect = ' | ' . wfMessage( 'bs-extendedsearch-redirect' )->escaped() . ' ' . implode( ', ', $aRedirects );
 				} else {
 					$oTitle = Title::newFromText( $oDocument->redirects );
-					$sRedirect = ' | Redirect from ' . BsLinkProvider::makeLink( $oTitle );
+					$sRedirect = ' | ' . wfMessage( 'bs-extendedsearch-redirect' )->escaped() . ' ' . BsLinkProvider::makeLink( $oTitle );
 				}
 			}
 
 			$sTimestamp = sprintf(
 				'%s - %s',
-				$this->oRequestContext->getLang()->date( $oDocument->ts, true ),
-				$this->oRequestContext->getLang()->time( $oDocument->ts, true )
+				$this->oRequestContext->getLanguage()->date( $oDocument->ts, true ),
+				$this->oRequestContext->getLanguage()->time( $oDocument->ts, true )
 			);
 
 			$aResultEntryDataSet = array(
-				'searchicon'        => $sLinkIcon,
-				'searchlink'        => $sSearchLink,
-				'scorepercent'      => $sPercent,
-				'timestamp'         => $sTimestamp,
-				'catstr'            => $catstr,
-				'redirect'          => $sRedirect,
-				'highlightsnippets' => $aHighlightsnippets,
-				'showpercent'       => ( $this->oSearchOptions->getOption( 'showpercent' ) === true ),
+				'searchicon' => $sLinkIcon,
+				'searchlink' => $sSearchLink,
+				'timestamp' => $sTimestamp,
+				'catstr' => $catstr,
+				'redirect' => $sRedirect,
+				'highlightsnippets' => $aHighlightsnippets
 			);
 
 			$this->vSearchResult->addResultEntry( $aResultEntryDataSet );
@@ -737,18 +757,6 @@ class SearchIndex {
 		// ----------end results ---------------
 
 		return $this->vSearchResult;
-	}
-
-	/**
-	 * Renders error message
-	 * @param string $message I18N key of error message
-	 * @return ViewBaseElement Renders error message.
-	 */
-	protected function createErrorMessageView( $sMessage ) {
-		$res = new ViewBaseElement();
-		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
-		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
-		return $res;
 	}
 
 	/**
@@ -774,46 +782,6 @@ class SearchIndex {
 			}
 		}
 		return 0;
-	}
-
-	/**
-	 * Writes a given search request to database log.
-	 * @param string $term Search term
-	 * @param int $iNumFound Number of hits
-	 * @param string $scope What was the scope of the search?
-	 * @param string $files Were files searched as well?
-	 * @return bool always false.
-	 */
-	public function logSearch( $term, $iNumFound, $scope, $files ) {
-		if ( !BsConfig::get( 'MW::ExtendedSearch::Logging' ) ) return false;
-		global $wgDBtype;
-
-		$oDbw = wfGetDB( DB_MASTER );
-
-		if ( $wgDBtype == 'postgres' ) {
-			$term = pg_escape_string( $term );
-		} elseif ( $wgDBtype == 'oracle' ) {
-			$term = addslashes( $term );
-		} else {
-			$term = mysql_real_escape_string( $term );
-		}
-
-		$user = ( BsConfig::get( 'MW::ExtendedSearch::LogUsers' ) )
-			? $this->oRequestContext->getUser()->getId()
-			: '';
-
-		$effectiveScope = ( $files ) ? $scope.'-files' : $scope;
-		$data = array(
-			'stats_term'  => $term,
-			'stats_ts'    => date( 'YmdHis' ),
-			'stats_user'  => $user,
-			'stats_hits'  => $iNumFound,
-			'stats_scope' => $effectiveScope
-		);
-
-		$oDbw->insert( 'bs_searchstats', $data );
-
-		return true;
 	}
 
 }

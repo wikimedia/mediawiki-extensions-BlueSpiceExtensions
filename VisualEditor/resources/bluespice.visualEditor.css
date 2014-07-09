@@ -20,6 +20,9 @@ body.mce-content-body {
 	text-align:left;
 	min-width: 0px;
 	background: none !important;
+	padding: 0 !important;
+	/* reset height 100% of bluespice.skin.main.css, otherwise resize will not work */
+	height: auto;
 }
 
 td.mceToolbar {
@@ -73,4 +76,9 @@ td.mceToolbar {
 #bs-editbutton-visualeditor {
 	/*@embed*/
 	background-image: url(images/button_vis-editor.png);
+}
+
+/* reset has layout: http://onhavinglayout.fwpf-webdesign.de/ */
+h1, h2, h3, h4, h5, h6 {
+	overflow: visible !important;
 }

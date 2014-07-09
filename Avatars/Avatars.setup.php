@@ -26,7 +26,11 @@ $wgResourceModules['ext.bluespice.avatars.js'] = array(
 		'bs-avatars-set-userimage-failed',
 		'bs-avatars-set-userimage-saved',
 		'bs-avatars-userimage-save-button',
-		'bs-avatars-userimage-help'
+		'bs-avatars-userimage-help',
+		'bs-avatars-cancel-button',
+		'bs-avatars-file-upload-fieldset-title',
+		'bs-avatars-user-image-fieldset-title',
+		'bs-avatars-auto-generate-fieldset-title'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']

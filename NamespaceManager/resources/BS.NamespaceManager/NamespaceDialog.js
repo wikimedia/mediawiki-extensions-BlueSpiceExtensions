@@ -24,56 +24,59 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 			name: 'namespacename',
 			allowBlank: false
 		});
-		this.fCbSubpages = Ext.create( 'Ext.form.field.Checkbox', {
-			boxLabel: mw.message( 'bs-namespacemanager-headerIsSubpagesNamespace' ).plain(),
-			name: 'cb-subpages',
-			checked: true,
-			allowBlank: false
-		});
-		this.fCbSearchable = Ext.create( 'Ext.form.field.Checkbox', {
-			boxLabel: mw.message( 'bs-namespacemanager-headerIsSearchableNamespace' ).plain(),
-			name: 'cb-searchable',
-			checked: true,
-			allowBlank: false
-		});
-		this.fCbEvaluable = Ext.create( 'Ext.form.field.Checkbox', {
-			boxLabel: mw.message( 'bs-namespacemanager-headerIsContentNamespace' ).plain(),
-			name: 'cb-evaluable',
-			checked: true,
-			allowBlank: false
-		});
-
+		
 		this.items = [
-			this.tfNamespaceName,
-			this.fCbSubpages,
-			this.fCbSearchable,
-			this.fCbEvaluable
+			this.tfNamespaceName
 		];
+		this.checkboxControls = {};
+		
+		//TODO: this is not nice since it introduces an dependency
+		var fieldDefs = mw.config.get('bsNamespaceManagerMetaFields');
+		
+		for( var i = 0; i < fieldDefs.length; i++ ) {
+			var fieldDef = fieldDefs[i];
+			if( fieldDef.type !== 'boolean' || fieldDef.name === 'editable' ) {
+				continue;
+			}
+			var cbControl =  Ext.create( 'Ext.form.field.Checkbox', {
+				boxLabel: fieldDef.label,
+				name: 'cb-'+fieldDef.name
+			});
+			this.checkboxControls[fieldDef.name] = cbControl;
+			this.items.push( cbControl );
+		}
 
 		this.callParent(arguments);
 	},
 	resetData: function() {
 		this.tfNamespaceName.reset();
-		this.fCbSubpages.reset();
-		this.fCbSearchable.reset();
-		this.fCbEvaluable.reset();
+		for( var name in this.checkboxControls ) {
+			this.checkboxControls[name].reset();
+		}
 
 		this.callParent();
 	},
 	setData: function( obj ) {
 		this.currentData = obj;
+		
+		if(this.currentData.editable) {
+			this.tfNamespaceName.enable();
+		}
+		else {
+			this.tfNamespaceName.disable();
+		}
 
 		this.tfNamespaceName.setValue( this.currentData.name );
-		this.fCbSubpages.setValue( this.currentData.subpages );
-		this.fCbSearchable.setValue( this.currentData.searchable );
-		this.fCbEvaluable.setValue( this.currentData.evaluable );
+		for( var name in this.checkboxControls ) {
+			this.checkboxControls[name].setValue( this.currentData[name] );
+		}
 	},
 	getData: function() {
 		this.selectedData.id = this.currentData.id;
 		this.selectedData.name = this.tfNamespaceName.getValue();
-		this.selectedData.subpages = this.fCbSubpages.getValue();
-		this.selectedData.searchable = this.fCbSearchable.getValue();
-		this.selectedData.evaluable = this.fCbEvaluable.getValue();
+		for( var name in this.checkboxControls ) {
+			this.selectedData[name] = this.checkboxControls[name].getValue();
+		}
 
 		return this.selectedData;
 	}

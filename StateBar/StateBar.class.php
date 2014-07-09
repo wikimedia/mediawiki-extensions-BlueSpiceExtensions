@@ -24,25 +24,12 @@
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
- * @subpackage Authors
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @subpackage StateBar
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0.0
- * - Raised to stable
- * - Added Events
- * v0.1.0b
- * - FIRST BUILD
- */
-
-// Last review MRG (30.06.11 11:10)
 
 /**
  * Base class for StateBar extension
@@ -72,8 +59,9 @@ class StateBar extends BsExtensionMW {
 			EXTINFO::NAME        => 'StateBar',
 			EXTINFO::DESCRIPTION => 'Provides a statebar.',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Patric Wirth',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -94,10 +82,10 @@ class StateBar extends BsExtensionMW {
 
 		BsConfig::registerVar( 'MW::StateBar::Show', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-statebar-pref-donotshow', 'toggle' );
 
-		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableOnPages', '', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-statebar-pref-disableonpages' );
-		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableForSysops', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-statebar-pref-disableforsysops', 'toggle' );
+		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableOnPages', '', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-statebar-pref-disableonpages' );
+		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableForSysops', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-statebar-pref-disableforsysops', 'toggle' );
 
-		$this->mCore->registerBehaviorSwitch( 'NOSTATEBAR', array( $this, 'noStateBarCallback' ) );
+		$this->mCore->registerBehaviorSwitch( 'bs_nostatebar' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -162,15 +150,6 @@ class StateBar extends BsExtensionMW {
 	}
 
 	/**
-	 * Callback for behaviorswitch
-	 */
-	public function noStateBarCallback() {
-		if ( $this->getRequest()->getVal( 'action', 'view' ) === 'edit' ) return;
-
-		BsExtensionManager::setContext( 'MW::StateBar:Hide' );
-	}
-
-	/**
 	 * AJAX interface for BlueSpice SateBar body views
 	 * @return string The JSON formatted response
 	 */
@@ -184,13 +163,13 @@ class StateBar extends BsExtensionMW {
 
 		$iArticleID = RequestContext::getMain()->getRequest()->getInt( 'articleID', 0 );
 		if( empty($iArticleID) ) {
-			return json_encode($aResult);
+			return FormatJson::encode($aResult);
 		}
 
 		$oStateBar = BsExtensionManager::getExtension( 'StateBar' );
 		$oStateBar->registerSortVars();
 
-		$oTitle = $oStateBar->checkContext( 
+		$oTitle = $oStateBar->checkContext(
 			Title::newFromID( $iArticleID ),
 			true //because you already have the possible redirected title!
 				 //also prevents from get wrong data in redirect redirect
@@ -218,7 +197,7 @@ class StateBar extends BsExtensionMW {
 
 		$aResult['views'] = $aExecutedBodyViews;
 		$aResult['success'] = true;
-		return json_encode( $aResult );
+		return FormatJson::encode( $aResult );
 	}
 
 	/**
@@ -241,6 +220,7 @@ class StateBar extends BsExtensionMW {
 		return true;
 	}
 
+	// TODO MRG (06.11.13 21:10): Does this also work in edit mode? It seems, there is no parser
 	/**
 	 * ParserFirstCallInit Hook is called when the parser initialises for the first time.
 	 * @param Parser $parser MediaWiki Parser object
@@ -268,7 +248,10 @@ class StateBar extends BsExtensionMW {
 		if ( $oTitle->userCan( 'read' ) === false ) return null;
 
 		if ( $bRedirect ) {
-			if ( BsExtensionManager::isContextActive( 'MW::StateBar:Hide' ) ) return null;
+			$vNoStatebar = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_nostatebar' );
+			if( $vNoStatebar === '' ) {
+				return null;
+			}
 			return $oTitle;
 		}
 
@@ -277,10 +260,21 @@ class StateBar extends BsExtensionMW {
 			//check again for redirect target
 			$oTitle = BsArticleHelper::getInstance( $oTitle )->getTitleFromRedirectRecurse();
 			$this->oRedirectTargetTitle = $oTitle;
-			return $this->checkContext( $oTitle, true );
+			if ( $oTitle->exists() ) {
+				return $this->checkContext( $oTitle, true );
+			} else {
+				/* If redirect points to none existing article
+				 * you don't get redirected, so display StateBar.
+				 *See HW#2014010710000128
+				 */
+				return true;
+			}
 		}
 
-		if ( BsExtensionManager::isContextActive( 'MW::StateBar:Hide' ) ) return null;
+		$vNoStatebar = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_nostatebar' );
+		if( $vNoStatebar === '' ) {
+			return null;
+		}
 		return $oTitle;
 	}
 
@@ -291,11 +285,26 @@ class StateBar extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if ( BsConfig::get( 'MW::StateBar::Show' ) === false ) return true;
-		//make sure to use wgTitle to get possible redirect as early as possible
+		if ( BsConfig::get( 'MW::StateBar::Show' ) === false ) {
+			return true;
+		}
+
+		global $wgTitle;
+		//PW(24.06.2014):
+		//make sure to use wgTitle to get possible redirect as early as possible!
 		//also prevents from get wrong data in redirect redirect
-		$oTitle = $this->checkContext( $this->getTitle() );
-		if ( is_null( $oTitle ) ) return true;
+		//please do not change!
+		$oTitle = $this->checkContext( $wgTitle );
+		/* PLEASE DO NOT CHANGE !!!!
+			$oTitle = $this->checkContext( $this->getTitle() );
+		*/
+
+		if ( is_null( $oTitle ) ) {
+			return true;
+		}
+
+		$oOutputPage->addModules( 'ext.bluespice.statebar' );
+		$oOutputPage->addModuleStyles( 'ext.bluespice.statebar.style' );
 
 		$aDisableOnSites = explode( ',',BsConfig::get( 'MW::StateBar::DisableOnPages' ) ); //Deprecated
 		if ( !empty( $aDisableOnSites ) ) {
@@ -312,7 +321,6 @@ class StateBar extends BsExtensionMW {
 		}
 
 		BsExtensionManager::setContext( 'MW::StateBarShow' );
-		$oOutputPage->addModules( 'ext.bluespice.statebar' );
 		return true;
 	}
 

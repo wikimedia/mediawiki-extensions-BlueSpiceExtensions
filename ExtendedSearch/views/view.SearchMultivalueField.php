@@ -81,8 +81,8 @@ class ViewSearchMultivalueField extends ViewBaseElement {
 			array(
 				'name'     => $this->getOption( 'urlFieldName' ),
 				'multiple' => 'true',
-				'size'     => $this->getOption( 'selectorHeight' ),
-				'style'    => 'width: '.$this->getOption( 'selectorWidth' )
+				'size'     => 10,
+				'style'    => 'width: 200px'
 			)
 		);
 		$sFormSelect .= $sEntries;

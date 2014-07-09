@@ -45,8 +45,9 @@ class NamespaceCss extends BsExtensionMW {
 			EXTINFO::NAME        => 'NamespaceCss',
 			EXTINFO::DESCRIPTION => 'Diff styles for namespaces in MW.',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Tobias Weichart, Patric Wirth',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -71,14 +72,15 @@ class NamespaceCss extends BsExtensionMW {
 	 */
 	public function onBeforePageDisplay( &$oOut, &$oSkin ) {
 		$oTitle = $oSkin->getTitle();
-
 		$aNamespaces	= MWNamespace::getCanonicalNamespaces();
 		$iCurrentNs		= $oTitle->getNamespace();
 
 		if( $oTitle->isTalkPage() ) $iCurrentNs--;
+		if( !isset($aNamespaces[$iCurrentNs]) ) return true;
+
 		$oStyleSheetTitle = Title::newFromText( $aNamespaces[$iCurrentNs].'_css', NS_MEDIAWIKI );
 		if( $oStyleSheetTitle->exists() ) {
-			$oOut->addStyle($oStyleSheetTitle->getLocalUrl( array( 'action' => 'raw', 'ctype' => 'text/css' ) ));
+			$oOut->addHeadItem('namespacecss', "<link rel='stylesheet' href='" . $oStyleSheetTitle->getLocalUrl( array( 'action' => 'raw', 'ctype' => 'text/css' ) ) . "'>");
 		}
 
 		return true;

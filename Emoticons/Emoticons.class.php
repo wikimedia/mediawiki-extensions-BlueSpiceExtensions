@@ -72,9 +72,6 @@ class Emoticons extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['Emoticons'] = __DIR__ . '/Emoticons.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
@@ -82,8 +79,9 @@ class Emoticons extends BsExtensionMW {
 			EXTINFO::NAME        => 'Emoticons',
 			EXTINFO::DESCRIPTION => 'Renders emoticons in a text as images.',
 			EXTINFO::AUTHOR      => 'Alex Wollangk, Marc Reymann, Sebastian Ulbricht, Mathias Scheer, Robert Vogel, Patric Wirth',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -99,7 +97,7 @@ class Emoticons extends BsExtensionMW {
 		$this->setHook( 'OutputPageBeforeHTML' );
 		$this->setHook( 'ArticleSave' );
 
-		BsConfig::registerVar( 'MW::Emoticons::PathToEmoticons', '/extensions/BlueSpiceExtensions/Emoticons/emoticons', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-emoticons-pref-PathToEmoticons' );
+		BsConfig::registerVar( 'MW::Emoticons::PathToEmoticons', '/extensions/BlueSpiceExtensions/Emoticons/emoticons', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-emoticons-pref-PathToEmoticons' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -111,24 +109,23 @@ class Emoticons extends BsExtensionMW {
 	 * @return bool Always true to keep hook running.
 	 */
 	public function onOutputPageBeforeHTML( &$oParserOutput, &$sText) {
-		global $wgMemc; //http://www.mediawiki.org/wiki/Memcached
+		global $wgMemc, $wgScriptPath; //http://www.mediawiki.org/wiki/Memcached
 
 		$sCurrentAction = $this->getRequest()->getVal( 'action', 'view' );
 		$oCurrentTitle  = $this->getTitle();
 
-		if( in_array( $sCurrentAction, array('edit', 'history', 'delete', 'watch') ) ) return true;
-		if( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;
+		if ( in_array( $sCurrentAction, array('edit', 'history', 'delete', 'watch') ) ) return true;
+		if ( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
 		$aMapping = $wgMemc->get( $sKey );
-		
-		if( $aMapping == false ) {
 
-			$sPathToEmoticons = BsConfig::get('MW::ScriptPath').BsConfig::get('MW::Emoticons::PathToEmoticons');
+		if ( $aMapping == false ) {
+			$sPathToEmoticons = $wgScriptPath.BsConfig::get('MW::Emoticons::PathToEmoticons');
 
 			// Get the list of emoticons from the message system.
-			$sMappingContent = wfMsg('bs-emoticons-mapping');
+			$sMappingContent = wfMessage('bs-emoticons-mapping')->plain();
 			if( empty( $sMappingContent ) ) return true; // If the content successfully loaded, do the replacement
 
 			$aMappingLines = explode( "\n", $sMappingContent );
@@ -157,7 +154,7 @@ class Emoticons extends BsExtensionMW {
 					}
 				}
 			}
-			
+
 			$aMapping = array('emoticons' => $aEmoticons, 'replacements' => $aImageReplacements );
 			$wgMemc->set( $sKey, $aMapping );
 		}
@@ -182,15 +179,12 @@ class Emoticons extends BsExtensionMW {
 	 * @return mixed Boolean true if syntax is okay or the saved article is not the MappingSourceArticle, String 'error-msg' if an error occurs.
 	 */
 	public function onArticleSave( $oArticle, $oUser, $sText, $sSummary, $bIsMinor, $bIsWatch, $iSection, &$iFlags, $oStatus ) {
-		
-		//TODO: error view does not work
-		
 		global $wgMemc;
 		$oMappingSourceTitle = Title::newFromText( 'bs-emoticons-mapping', NS_MEDIAWIKI );
 		if( !$oMappingSourceTitle->equals( $oArticle->getTitle() ) ) return true;
-		
+
 		$aLines = explode( "\n" , $sText );
-		
+
 		foreach( $aLines as $iLineNumber => $sLine ) {
 			$iLineNumber++;
 			$sLine = trim( $sLine ); //Remove leading space
@@ -202,17 +196,17 @@ class Emoticons extends BsExtensionMW {
 			$oErrorView = new ViewErrorMessage();
 			if( !isset( $aEmoticonHash[1] ) ) {
 				$oErrorView->addData(
-					array( wfMsg( 'bs-emoticons-error-validation-missing-symbol', $iLineNumber, $aEmoticonHash[0] ) )
+					array( wfMessage( 'bs-emoticons-error-validation-missing-symbol', $iLineNumber, $aEmoticonHash[0] )->plain() )
 					);
-				
+
 				return $oErrorView->execute();
 			}
 			if( preg_match('#^.*?\.(jpg|jpeg|gif|png)$#si', $aEmoticonHash[0] ) === 0 ) {
 				//$oStatus->fatal ( 'edit-no-change' );
 				$oErrorView->addData(
-					array( wfMsg( 'bs-emoticons-error-validation-imagename', $iLineNumber, $aEmoticonHash[0] ) )
+					array( wfMessage( 'bs-emoticons-error-validation-imagename', $iLineNumber, $aEmoticonHash[0] )->plain() )
 				);
-				
+
 				return $oErrorView->execute();
 			}
 
@@ -221,13 +215,13 @@ class Emoticons extends BsExtensionMW {
 				$iSymbolLength = strlen( $sPart );
 				if( $iSymbolLength < 2 || $iSymbolLength > 10 ) {
 					$oErrorView->addData(
-						array( wfMsg( 'bs-emoticons-error-validation-symbol', $iLineNumber, $sPart ) )
+						array( wfMessage( 'bs-emoticons-error-validation-symbol', $iLineNumber, $sPart ) )
 						);
 					return $oErrorView->execute();
 				}
 			}
 		}
-		
+
 		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
 		$wgMemc->delete( $sKey );
 		return true;

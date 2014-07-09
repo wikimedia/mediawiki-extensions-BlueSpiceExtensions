@@ -35,6 +35,7 @@ $wgResourceModules['ext.bluespice.statistics'] = array(
 		'bs-statistics-W',
 		'bs-statistics-d',
 		'bs-statistics-label-count',
+		'bs-statistics-loadingMessage',
 	)
 ) + $aResourceModuleTemplate;
 
@@ -45,6 +46,11 @@ $wgResourceModules['ext.bluespice.statisticsPortlets'] = array(
 		'bs-statistics-portlet-NumberOfEdits',
 		'bs-statistics-portlet-NumberOfArticles',
 		'bs-statistics-portlet-NumberOfPages',
+		'bs-statistics-portletconfig-periodlabel',
+		'bs-statistics-portletconfig-periodlabel',
+		'bs-statistics-portletconfig-periodday',
+		'bs-statistics-portletconfig-periodweek',
+		'bs-statistics-portletconfig-periodmonth',
 	)
 ) + $aResourceModuleTemplate;
 

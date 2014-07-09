@@ -4,8 +4,11 @@ BsExtensionManager::registerExtension('SaferEdit',                       BsRUNLE
 
 $wgExtensionMessagesFiles['SaferEdit'] = __DIR__ . '/languages/SaferEdit.i18n.php';
 
+$GLOBALS['wgAutoloadClasses']['SaferEdit'] = __DIR__ . '/SaferEdit.class.php';
+
 $wgResourceModules['ext.bluespice.saferedit.general'] = array(
 	'scripts' => 'bluespice.SaferEdit.general.js',
+	'position' => 'bottom',
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/SaferEdit/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/SaferEdit/resources',
 );
@@ -30,6 +33,8 @@ $wgResourceModules['ext.bluespice.saferedit.editmode'] = array(
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/SaferEdit/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/SaferEdit/resources',
 );
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'SaferEdit::getSchemaUpdates';
 
 $wgAjaxExportList[] = 'SaferEdit::doCancelSaferEdit';
 $wgAjaxExportList[] = 'SaferEdit::getLostTexts';

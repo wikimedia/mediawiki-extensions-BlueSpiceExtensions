@@ -3,7 +3,7 @@
  * ExtensionInfo extension for BlueSpice
  *
  * Information about active Hallo Welt! extensions.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,14 +17,13 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    2.22.0
-
  * @package    Bluespice_Extensions
  * @subpackage ExtensionInfo
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -62,8 +61,9 @@ class ExtensionInfo extends BsExtensionMW {
 			EXTINFO::NAME        => 'ExtensionInfo',
 			EXTINFO::DESCRIPTION => 'Information about active Hallo Welt! extensions.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE	 => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -77,23 +77,17 @@ class ExtensionInfo extends BsExtensionMW {
 	}
 
 	/**
-	 * Initialization of ExtensionInfo extension
-	 */
-	public function initExt() {
-	}
-
-	/**
 	 * Renders the main form. Called by WikiAdmin
-	 * @return string rendered HTML 
+	 * @return string rendered HTML
 	 */
 	public function getForm() {
-		global $wgOut;
-		$wgOut->addModules('ext.bluespice.extensioninfo');
+		$this->getOutput()->addModuleStyles( 'ext.bluespice.extensioninfo.styles' );
+		$this->getOutput()->addModules( 'ext.bluespice.extensioninfo' );
 		BsExtensionManager::setContext( 'MW::ExtensionInfoShow' );
 		$oViewExtensionInfoTable = new ViewExtensionInfoTable();
 
 		$aInfos = BsExtensionManager::getExtensionInformation();
-		ksort($aInfos);
+		ksort( $aInfos );
 
 		$oViewExtensionInfoTable->setExtensions( $aInfos );
 

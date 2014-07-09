@@ -58,9 +58,9 @@ class ViewBlog extends ViewBaseElement {
 			return '';
 		$sOut = $this->renderLink(
 				array(
-					'href'   => BsCore::getRequestURI(),
-					'query'  => 'showall=true',
-					'title'  => wfMessage( 'bs-blog-show-all' )->plain()
+					'href' => BsCore::getRequestURI(),
+					'query' => 'showall=true',
+					'title' => wfMessage( 'bs-blog-show-all' )->plain()
 				),
 				wfMessage( 'bs-blog-show-all' )->plain()
 		);
@@ -72,6 +72,7 @@ class ViewBlog extends ViewBaseElement {
 	 * @return string HTML of form. 
 	 */
 	public function renderShowNewEntryField() {
+		global $wgScriptPath;
 		$sId = 'blog'.self::$iFormElementCount;
 		self::$iFormElementCount++;
 		$sParentpage = ( $this->getOption('parentpage') )? $this->getOption('parentpage') : '';
@@ -83,10 +84,10 @@ class ViewBlog extends ViewBaseElement {
 		$aOut[] = '  pagename = pagename.replace(" ", "_");';
 		global $wgUser;
 		if($wgUser->isLoggedIn() || BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true) {
-			$aOut[] = '  url = unescape("'.BsConfig::get( 'MW::ScriptPath' ).'/index.php?title='.( $this->getOption( 'namespace' ) ? $this->getOption( 'namespace' ).':' : '' ).'"+pagename+"%26action"+"=edit"+"%26blogcat='.$this->getOption( 'blogcat' ).'");';
+			$aOut[] = '  url = unescape("'.$wgScriptPath.'/index.php?title='.( $this->getOption( 'namespace' ) ? $this->getOption( 'namespace' ).':' : '' ).'"+pagename+"%26action"+"=edit"+"%26blogcat='.$this->getOption( 'blogcat' ).'");';
 		}
 		else {
-			$aOut[] = '  url = unescape("'.BsConfig::get( 'MW::ScriptPath' ).'/index.php%3Ftitle=special:userlogin%26returnto='.$this->getOption( 'namespace' ).':"+pagename);';
+			$aOut[] = '  url = unescape("'.$wgScriptPath.'/index.php%3Ftitle=special:userlogin%26returnto='.$this->getOption( 'namespace' ).':"+pagename);';
 		}
 		$aOut[] = '  window.location.href = url;';
 		$aOut[] = '}';
@@ -94,8 +95,6 @@ class ViewBlog extends ViewBaseElement {
 
 		$aOut[] = '<div class="bs-blog-wrapper clearfix">';
 		$aOut[] = '  <form action="#" id="'.$sId.'form" action="get" onsubmit="hw_'.$sId.'_submit();return false;">';
-		$aOut[] = '    <div class="bs-blog-form-left"></div>';
-		$aOut[] = '    <div class="bs-blog-form-right"></div>';  
 		$aOut[] = '    <div class="bs-blog-form-center">';
 		$aOut[] = '      <h2 class="bs-blog-header">'.wfMessage( 'bs-blog-form-title-text' )->plain().'</h2>';
 		$aOut[] = '      <input id="'.$sId.'Input" class="bs-blog-newentry-input" name="newpage" type="text" value="'.wfMessage( 'bs-blog-form-inline-text' )->plain().'" onfocus="if (this.value==\''.wfMessage( 'bs-blog-form-inline-text' )->plain().'\') this.value=\'\';" />';

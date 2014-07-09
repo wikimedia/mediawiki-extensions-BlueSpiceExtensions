@@ -9,20 +9,24 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 
 	initComponent: function() {
 		this.btnSave = Ext.create("Ext.Button", {
+			id: 'bs-flexiskin-preview-menu-save',
 			text: mw.message('bs-extjs-save').plain(),
 			disabled: true
 		});
 		this.btnSave.on('click', this.btnSaveClick, this);
 		this.btnClose = Ext.create("Ext.Button", {
+			id: 'bs-flexiskin-preview-menu-close',
 			text: mw.message('bs-extjs-close').plain()
 		});
 		this.btnClose.on('click', this.btnCloseClick, this);
 		this.btnReset = Ext.create("Ext.Button", {
+			id: 'bs-flexiskin-preview-menu-reset',
 			text: mw.message('bs-extjs-reset').plain(),
 			disabled: true
 		});
 		this.btnReset.on('click', this.btnResetClick, this);
 		this.dockedItems = [{
+			id: 'bs-flexiskin-preview-menu-toolbar',
 			xtype: 'toolbar',
 			dock: 'top',
 			ui: 'footer',
@@ -76,7 +80,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			var responseObj = Ext.decode(response.responseText);
 			if (responseObj.success === true) {
 				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src;
+				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
 				this.currentData.skinId = responseObj.id;
 			} else {
 				bs.util.alert('bs-flexiskin-saveskin-error',
@@ -146,8 +150,10 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			success: function(response) {
 			var responseObj = Ext.decode(response.responseText);
 			if (responseObj.success === true) {
+				this.setLoading();
 				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src;
+				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
+				responseObj.data.config = Ext.decode(responseObj.data.config);
 				this.setData(responseObj.data);
 			} else {
 				bs.util.alert('bs-flexiskin-addskin-error',
@@ -183,7 +189,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			var responseObj = Ext.decode(response.responseText);
 			if (responseObj.success === true) {
 				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src;
+				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
 			} else {
 				bs.util.alert('bs-flexiskin-saveskinpreview-error',
 					{

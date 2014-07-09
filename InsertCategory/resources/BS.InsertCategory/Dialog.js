@@ -1,10 +1,13 @@
 Ext.define( 'BS.InsertCategory.Dialog', {
 	extend: 'BS.Window',
+	id: 'bs-insertcategory',
 	singleton: true,
 	layout: 'border',
 	height: 350,
 	width:500,
 	modal: true,
+	title: mw.message('bs-insertcategory-title').plain(),
+	
 	isDirty: false,
 	afterInitComponent: function() {
 		this.strBoxSelect = Ext.create('Ext.data.JsonStore', {
@@ -29,13 +32,13 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 		});
 		
 		this.bsCategories = Ext.create('BS.form.CategoryBoxSelect', {
-			fieldLabel: mw.message('bs-insertcategory-cat_tag').plain(),
-			labelAlign: 'top'
+			fieldLabel: mw.message('bs-insertcategory-cat_label').plain(),
+			labelAlign: 'top',
+			id: 'bs-insertcategory-categorybox'
 		});
 		this.bsCategories.on( 'select', this.onSelect, this );
 		this.bsCategories.on( 'change', this.onChange, this );
 
-		
 		this.bsCategoriesLabel = Ext.create( 'Ext.form.Label', {
 			html: '<div style="padding:3px; background-color:#e3e5eb;">'+mw.message('bs-insertcategory-hint').plain()+'</div>'
 		});
@@ -76,19 +79,18 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 		$.each( values, function( index, element ){
 			valuesToSet.push( $.ucFirst( element ) );
 		});
-		sender.setValue( valuesToSet.join(','), true )
+		sender.setValue( valuesToSet.join(','), true );
 	},
 	setData: function( data ) {
 		this.bsCategories.setValue( data );
 	},
-	
 	getData: function() {
 		var aCategories = [];
-		
+
 		$.each( this.bsCategories.getValueRecords(), function( index, value ) {
 			aCategories.push( value.raw.text );
 		});
-		
+
 		return aCategories;
 	}
 });

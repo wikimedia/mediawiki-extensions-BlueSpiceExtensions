@@ -1,19 +1,17 @@
-.icon-user_respedit {
-	background-image: url('../resources/images/bs-infobar-responsibleeditor.png');
-}
+/**
+ * Stylesheet for ResponsibleEditors
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Patric Wirth <wirth@hallowelt.biz>
 
-.icon-user_add {
-	background-image: url('../resources/images/user_add.png') !important;
-}
+ * @package    BlueSpice_Extensions
+ * @subpackage ResponsibleEditors
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
 
-.icon-user_delete {
-	background-image: url('../resources/images/user_delete.png') !important;
-}
-
-.icon-user_edit {
-	background-image: url('../resources/images/user_edit.png') !important;
-}
-
-.icon-user {
-	background-image: url('../resources/images/user.png') !important;
+.bs-statebar-body-itembody .bs-userminiprofile {
+	margin-right: 5px;
 }

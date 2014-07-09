@@ -6,7 +6,7 @@ class InsertFileAJAXBackend {
 		$oLicenses = new JsonLicenses();
 		return $oLicenses->getJsonOutput();
 	}
-	
+
 	/**
 	 * Calculate on which page an file is shown and put it to ajax output.
 	 * @param type $output The ajax output which have to be valid JSON.
@@ -15,7 +15,7 @@ class InsertFileAJAXBackend {
 		global $wgDBtype;
 		$oRequest = RequestContext::getMain()->getRequest();
 		$filename = $oRequest->getVal( 'filename', false );
-		$type     = $oRequest->getVal( 'type', 'image' );
+		$type = $oRequest->getVal( 'type', 'image' );
 		$pagesize = $oRequest->getInt( 'pagesize', 12 );
 
 		if ( strstr( $filename, 'index.php' ) ) {
@@ -86,8 +86,7 @@ class InsertFileAJAXBackend {
 		if ( $res && $res->numRows() ) {
 			$row = $res->fetchObject();
 			$page = ceil( $row->rank / $pagesize );
-		}
-		else {
+		} else {
 			$page = 0;
 		}
 		return FormatJson::encode(
@@ -133,8 +132,7 @@ class InsertFileAJAXBackend {
 							 ORDER BY {$sql_sort}) tmp
 						ORDER BY tmp.img_timestamp DESC
 						LIMIT 1";
-			}
-			else {
+			} else {
 				$tbl = $dbr->tableName( 'image' );
 				$sql = "SELECT tmp.rank, tmp.img_name FROM
 							(SELECT @row:=@row+1 rank, i.img_name, i.img_timestamp
@@ -152,27 +150,24 @@ class InsertFileAJAXBackend {
 				$row = $res->fetchObject();
 				$page = ceil( $row->rank / $pagesize );
 				$filename = $row->img_name;
-			}
-			else {
+			} else {
 				$page = 0;
 			}
-		}
-		else {
+		} else {
 			if ( $type == 'image' ) {
 				$tbl = $dbr->tableName( 'image' );
 				$sql = "SELECT i.img_name, i.img_timestamp
 						 FROM {$tbl} i
 						 WHERE (i.img_major_mime = 'image' OR i.img_minor_mime = 'tiff')
 						 ORDER BY {$sql_sort}";
-			}
-			else {
+			} else {
 				$tbl = $dbr->tableName( 'image' );
 				$sql = "SELECT i.img_name, i.img_timestamp
 						 FROM {$tbl} i
 						 WHERE (i.img_major_mime != 'image' AND i.img_minor_mime != 'tiff')
 						 ORDER BY {$sql_sort}";
 			}
-			
+
 			$filename = '';
 
 			$res = $dbr->query( $sql );
@@ -189,8 +184,7 @@ class InsertFileAJAXBackend {
 				}
 				$page = ceil( $newestRow['rank'] / $pagesize );
 				$filename = $newestRow['filename'];
-			}
-			else {
+			} else {
 				$page = 0;
 			}
 		}
@@ -203,17 +197,38 @@ class InsertFileAJAXBackend {
 		);
 	}
 
+	public static function getExistsWarning( $sFilename ) {
+		$oFile = wfFindFile( $sFilename );
+		if( !$oFile ) {
+			$oFile = wfLocalFile( $sFilename );
+		}
+
+		$s = '&#160;';
+		if ( $oFile ) {
+			$exists = UploadBase::getExistsWarning( $oFile );
+			$warning = SpecialUpload::getExistsWarning( $exists );
+			if ( $warning !== '' ) {
+				if ( BsExtensionManager::getExtension( 'SecureFileStore' ) !== null ) {
+					$warning = SecureFileStore::secureStuff( $warning );
+				}
+				$s = "<div>$warning</div>";
+			}
+		}
+
+		return $s;
+	}
+
 	/**
 	 * Process the dataset for the ExtJS file store and put it to ajax output.
 	 */
 	public static function getFiles() {
 		$thumbs_width  = 128;
 		$thumbs_height = 128;
-		
+
 		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$sFileType       = $oStoreParams->getRequest()->getVal('type', 'image');
+		$sFileType    = $oStoreParams->getRequest()->getVal('type', 'image');
 		//$aFileExtensions = $oStoreParams->getRequest()->getArray('type'); //TODO: For future use
-		
+
 		$sStart = $oStoreParams->getStart();
 		$sLimit = $oStoreParams->getLimit();
 
@@ -221,12 +236,12 @@ class InsertFileAJAXBackend {
 			case 'size':
 				$sSort = 'i.img_size';
 				break;
-			case 'lastmod':
-				$sSort = 'i.img_timestamp';
-				break;
 			case 'name':
-			default:
 				$sSort = 'i.img_name';
+				break;
+			case 'lastmod':
+			default:
+				$sSort = 'i.img_timestamp';
 		}
 		$sSort .= ' '.$oStoreParams->getDirection();
 
@@ -239,12 +254,13 @@ class InsertFileAJAXBackend {
 				$sType = "(i.img_major_mime != 'image' AND i.img_minor_mime != 'tiff')";
 				break;
 		}
-		
+
 		$aConds = array();
 		$aConds[] = $sType;
 
 		$aNameFilters = array();
-		$aNameFilters[] = $oStoreParams->getQuery();
+		//We need to replace spaces, because the DB value does not have spaces
+		$aNameFilters[] = str_replace( ' ', '_', $oStoreParams->getQuery() );
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$sImageTable = $dbr->tableName( 'image' );
@@ -257,8 +273,8 @@ class InsertFileAJAXBackend {
 		$sConds = implode( ' AND ', $aConds );
 
 		if ( $wgDBtype == 'oracle' ) {
-			$sql = 
-				"SELECT * FROM 
+			$sql =
+				"SELECT * FROM
 					(
 						SELECT i.img_name, i.img_size, i.img_width, i.img_height, (ROUND(TO_DATE(TO_CHAR(i.img_timestamp, 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') - TO_DATE('19700101', 'YYYYMMDDHH24MISS')) * 86400) AS img_timestamp,
 								row_number() over (ORDER BY {$sSort}) rnk
@@ -266,16 +282,14 @@ class InsertFileAJAXBackend {
 						WHERE {$sConds}
 					)
 				WHERE rnk BETWEEN {$sStart}+1 AND " . ( $sStart + $sLimit );
-		}
-		elseif ( $wgDBtype == 'postgres' ) {
+		} elseif ( $wgDBtype == 'postgres' ) {
 			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, ROUND(DATE_PART('epoch', i.img_timestamp)) as img_timestamp
 				FROM {$sImageTable} i
 				WHERE {$sConds}
 				ORDER BY {$sSort}
 				OFFSET {$sStart}
 				LIMIT {$sLimit}";
-		}
-		else {
+		} else {
 			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, UNIX_TIMESTAMP(i.img_timestamp) as img_timestamp
 				FROM {$sImageTable} i
 				WHERE {$sConds}
@@ -283,7 +297,7 @@ class InsertFileAJAXBackend {
 				LIMIT {$sStart}, {$sLimit}";
 		}
 
-		$rowTotal = $dbr->selectRow( 
+		$rowTotal = $dbr->selectRow(
 			array( 'i' => 'image' ),
 			array( 'total' => 'COUNT(img_name)' ),
 			$sConds
@@ -297,26 +311,9 @@ class InsertFileAJAXBackend {
 		$res = $dbr->query( $sql );
 		foreach ( $res as $row ) {
 			$img = self::newFromName( $row->img_name );
-			
-			// small fix for images that are smaller than the default thumb
-			if( $thumbs_width > $img->getWidth() ) {
-				$thumbs_width = ( $img->getWidth() - 1 );
-			}
-			if( $thumbs_height > $img->getHeight() ) {
-				$thumbs_height = ( $img->getHeight() - 1) ;
-			}
-			// TODO MRG (27.09.10 13:16): Hier haben wir ein Performance-Problem, wenn es sehr viele
-			// Thumbs sind, die auf einmal erzeugt werden. Das kann man momentan nicht lösen.
-			// Allerdings ist ein Vermerk sinnvoll.
-			$thumb = $img->createThumb( $thumbs_width, $thumbs_height );
-			//TODO: test ($thumb != null) necessary?
-			$aThumbs = $img->getThumbnails();
-			if( $sFileType === 'file' ) {
-				$url = $thumb;
-			} else {
-				$url = $img->getThumbUrl( array_pop( $aThumbs ) ).'?ck='.md5($row->img_timestamp);
-			}
-			
+
+			$url = $img->getUrl();
+
 			if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
 				$url = SecureFileStore::secureStuff( $url, true );
 			}
@@ -332,8 +329,8 @@ class InsertFileAJAXBackend {
 		}
 		return FormatJson::encode( $aOutput );
 	}
-	
-	
+
+
 	/**
 	 * Builds filter conditions for SQL query
 	 * @param array $nameFilters
@@ -341,31 +338,33 @@ class InsertFileAJAXBackend {
 	 * @return string A SQL fragment containing all filter conditions
 	 */
 	protected static function buildNameFiltersSQL( $nameFilters, $dbType ) {
-		//HINT: CONVERT is needed because field type is VARBINARY. 
-		//Converting to UTF8 is just a heuristics. SQL is probably 
+		//HINT: CONVERT is needed because field type is VARBINARY.
+		//Converting to UTF8 is just a heuristics. SQL is probably
 		//nonstandard.
-		$sFormat = "LOWER(CONVERT(i.img_name USING 'UTF8')) LIKE '%s%%'";
+		$sFormat = "LOWER(CONVERT(i.img_name USING 'UTF8')) LIKE %s";
 
 		if( $dbType == 'oracle' || $dbType == 'postgres') {
-			$sFormat = "LOWER(i.img_name) LIKE '%s%%'";
+			$sFormat = "LOWER(i.img_name) LIKE %s";
 		}
-		
+		$dbr = wfGetDB( DB_SLAVE );
 		$aFormattedFilters = array();
 		foreach( $nameFilters as $nameFilter ) {
 			//if( empty($nameFilter) ) continue;
 			$aFormattedFilters[] = sprintf(
 				$sFormat,
-				strtolower($nameFilter)
+				$dbr->addQuotes('%'.strtolower($nameFilter).'%')
 			);
 		}
-		
+
 		$sNameFilters = implode( ' OR ', $aFormattedFilters );
-		
-		if( !empty($sNameFilters) ) $sNameFilters = '('.$sNameFilters.')';
+
+		if( !empty($sNameFilters) ) {
+			$sNameFilters = '('.$sNameFilters.')';
+		}
 
 		return $sNameFilters;
 	}
-	
+
 	protected static function newFromName( $name ) {
 		$title = Title::makeTitleSafe( NS_FILE, $name );
 		if ( is_object( $title ) ) {

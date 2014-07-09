@@ -24,7 +24,7 @@ $messages['de'] = array(
 	//JavaScript
 	'bs-insertcategory-button_title' => 'Kategorie zuordnen',
 	'bs-insertcategory-title' => 'Kategorie einfügen',
-	'bs-insertcategory-cat_label' => 'Kategorie:',
+	'bs-insertcategory-cat_label' => 'Zugewiesene Kategorien:',
 	'bs-insertcategory-emptyText' => 'Kategorie wählen ...',
 	'bs-insertcategory-cat_tag' =>'Kategorie:',
 	'bs-insertcategory-ok' => 'Ok',
@@ -37,7 +37,8 @@ $messages['de'] = array(
 	'bs-insertcategory-new_category_btn' => 'Hinzufügen',
 	'bs-insertcategory-tb_2' => 'Bitte beachte, dass eine neue Kategorie erst nach dem Speichern des Artikel im Kategoriebaum erscheint.',
 	'bs-insertcategory-success' => 'Kategorie erfolgreich hinzugefügt',
-	'bs-insertcategory-hint' => '(Um eine Kategorie hinzuzufügen, musst Du die Eingabe mit einem Komma beenden)',
+	'bs-insertcategory-hint' => 'Hinweis: Um eine Kategorie hinzuzufügen, musst Du die Eingabe mit einem Komma beenden oder Enter drücken.',
+	'bs-insertcategory-panel-title' => 'Kategorien'
 );
 
 $messages['de-formal'] = array(
@@ -48,28 +49,29 @@ $messages['de-formal'] = array(
 
 $messages['en'] = array(
 	'bs-insertcategory-extension-description' => 'Dialogbox to enter a category link.',
-	'bs-insertcategory-insert_category'       => 'Insert Category',
-	'prefs-InsertCategory'                    => 'Insert Category',
-	'bs-insertcategory-pref-WithParents'      => 'Insert categories include its parents',
+	'bs-insertcategory-insert_category' => 'Insert category',
+	'prefs-InsertCategory' => 'Insert Category',
+	'bs-insertcategory-pref-WithParents' => 'Insert categories include its parents',
 	
 	//JavaScript
-	'bs-insertcategory-button_title'     => 'Attach category',
-	'bs-insertcategory-title'            => 'Insert Category',
-	'bs-insertcategory-cat_label'        => 'Category:',
-	'bs-insertcategory-emptyText'        => 'Chosen category ...',
-	'bs-insertcategory-cat_tag'          => 'Category:',
-	'bs-insertcategory-ok'               => 'Ok',
-	'bs-insertcategory-cancel'           => 'Abort',
-	'bs-insertcategory-delete_cat'       => 'Remove category',
-	'bs-insertcategory-selected_cats'    => 'Chosen categories',
-	'bs-insertcategory-avail_cats'       => 'Available categories',
-	'bs-insertcategory-tb_1'             => 'Click on a category on the left column to add it.',
-	'bs-insertcategory-new_category'     => 'Add new category:',
+	'bs-insertcategory-button_title' => 'Attach category',
+	'bs-insertcategory-title' => 'Insert Category',
+	'bs-insertcategory-cat_label' => 'Assigned categories:',
+	'bs-insertcategory-emptyText' => 'Chosen category ...',
+	'bs-insertcategory-cat_tag' => 'Category:',
+	'bs-insertcategory-ok' => 'Ok',
+	'bs-insertcategory-cancel' => 'Abort',
+	'bs-insertcategory-delete_cat' => 'Remove category',
+	'bs-insertcategory-selected_cats' => 'Chosen categories',
+	'bs-insertcategory-avail_cats' => 'Available categories',
+	'bs-insertcategory-tb_1' => 'Click on a category on the left column to add it.',
+	'bs-insertcategory-new_category' => 'Add new category:',
 	'bs-insertcategory-new_category_btn' => 'Add',
-	'bs-insertcategory-tb_2'             => 'Please notice, that new categories will not appear in the category tree.',
-	'bs-insertcategory-success'          => 'Add category successful',
-	'bs-insertcategory-failure'          => 'Error',
-	'bs-insertcategory-hint'				 => '(to add a category, you have to terminate your entry with a comma)',
+	'bs-insertcategory-tb_2' => 'Please notice, that new categories will not appear in the category tree.',
+	'bs-insertcategory-success' => 'Add category successful',
+	'bs-insertcategory-failure' => 'Error',
+	'bs-insertcategory-hint' => 'Note: to add a category, you have to terminate your entry with a comma or press enter',
+	'bs-insertcategory-panel-title' => 'Categories'
 );
 
 $messages['qqq'] = array();

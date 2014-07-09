@@ -68,8 +68,9 @@ class UserSidebar extends BsExtensionMW {
 			EXTINFO::NAME        => 'UserSidebar',
 			EXTINFO::DESCRIPTION => 'Adds the focus tab to sidebar.',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht, Robert Vogel',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
 		);
@@ -150,9 +151,9 @@ class UserSidebar extends BsExtensionMW {
 		$oUserPageSettingsView->addData(
 			array(
 				'URL'      => htmlspecialchars( $oUserSidebarArticleTitle->getEditURL() ),
-				'TITLE'    => wfMsg( 'bs-usersidebar-userpagesettings-link-title' ),
-				'TEXT'     => wfMsg( 'bs-usersidebar-userpagesettings-link-text' ),
-				'IMGALT'   => wfMsg( 'bs-usersidebar-userpagesettings-headline' ),
+				'TITLE'    => wfMessage( 'bs-usersidebar-userpagesettings-link-title' )->plain(),
+				'TEXT'     => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->plain(),
+				'IMGALT'   => wfMessage( 'bs-usersidebar-userpagesettings-headline' )->plain(),
 				'IMGSRC'   => $this->getImagePath().'bs-userpage-sidebar.png',
 			)
 		);
@@ -182,8 +183,13 @@ class UserSidebar extends BsExtensionMW {
 			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
 			return true;
 		}
+		
+		$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
+		if( empty($aWidgets) ) {
+			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
+		}
 
-		$aViews = array_merge( $aViews, BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets() );
+		$aViews = array_merge( $aViews, $aWidgets );
 		return true;
 	}
 

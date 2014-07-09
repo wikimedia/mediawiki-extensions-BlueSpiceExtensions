@@ -5,9 +5,8 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    $Id: SpecialReaders.class.php 9950 2013-06-26 14:58:43Z smuggli $
  * @package    BlueSpice_Extensions
- * @subpackage ResponsibleEditors
+ * @subpackage Readers
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
@@ -20,50 +19,65 @@
  */
 class SpecialReaders extends BsSpecialPage {
 
-	function __construct() {
-		parent::__construct( 'Readers', 'viewreaders' );
+	public function __construct() {
+		parent::__construct( 'Readers', 'viewreaders', false );
 	}
 
-	function execute( $sParameter ) {
+	public function execute( $sParameter ) {
 		parent::execute( $sParameter );
 		$oRequestedTitle = null;
+		$oOut = $this->getOutput();
 
 		if ( !empty( $sParameter ) ) {
 			$oRequestedTitle = Title::newFromText( $sParameter );
-			if ( $oRequestedTitle->exists() && $oRequestedTitle->getNamespace() != NS_USER ) {
-				$sOut = $this->renderReadersGrid( $oRequestedTitle );
+
+			if ( $oRequestedTitle->exists() && ( $oRequestedTitle->getNamespace() !== NS_USER || $oRequestedTitle->isSubpage() === true ) ) {
+				$sOut = $this->renderReadersGrid();
+
+				$oOut->addModules( 'ext.bluespice.readers.specialreaders' );
+				$oOut->setPageTitle( $oOut->getPageTitle().': '.$oRequestedTitle->getFullText() );
+
+				$oOut->addHtml(
+					'<script type="text/javascript">
+						bsReadersTitle = "' . $oRequestedTitle->getPrefixedText() . '";
+					</script>'
+				);
+			} elseif ( $oRequestedTitle->getNamespace() === NS_USER ) {
+				$sOut = $this->renderReaderspathGrid();
+
+				$oOut->addModules( 'ext.bluespice.readers.specialreaderspath' );
+				$oOut->setPageTitle( wfMessage( 'specialreaders-user' )->plain().': '.$oRequestedTitle->getText() );
+
+				$oUser = User::newFromName( $oRequestedTitle->getText() );
+				$oOut->addHtml(
+					'<script type="text/javascript">
+						bsReadersUserID = "' . $oUser->getId() . '";
+					</script>'
+				);
 			} else {
 				$oErrorView = new ViewTagErrorList();
 				$oErrorView->addItem( new ViewTagError( wfMessage( 'bs-readers-article-does-not-exist' )->plain() ) );
 				$sOut = $oErrorView->execute();
 			}
 		} else {
-			$oErrorView = new ViewTagErrorList();
+			$oErrorView = new ViewTagErrorList( BsExtensionManager::getExtension('Readers') );
 			$oErrorView->addItem( new ViewTagError( wfMessage( 'bs-readers-emptyinput' )->plain() ) );
 			$sOut = $oErrorView->execute();
 		}
 
-		$oOut = $this->getOutput();
-
 		if ( $oRequestedTitle === null ) {
 			$oOut->setPageTitle( $oOut->getPageTitle() );
-		} else {
-			$oOut->setPageTitle( $oOut->getPageTitle().': '.$oRequestedTitle->getFullText() );
-			$oOut->addHtml(
-				'<script type="text/javascript">
-					bsReadersTitle = "'.$oRequestedTitle->getPrefixedText().'";
-				</script>'
-			);
 		}
 
 		$oOut->addHTML( $sOut );
-		$this->getOutput()->addModules( 'ext.bluespice.readers.specialreaders' );
 	}
 
-	private function renderReadersGrid( $oTitle ) {
+	private function renderReadersGrid() {
+		return '<div id="bs-readers-grid"></div>';
+	}
 
-		$sOut = '<div id="bs-readers-grid"></div>';
-		return $sOut;
+	private function renderReaderspathGrid() {
+		return '<div id="bs-readerspath-grid"></div>';
 	}
 
 }

@@ -3,7 +3,7 @@
  * UserManager Extension for BlueSpice
  *
  * Administration interface for adding, editing and deleting users.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -58,8 +58,9 @@ class UserManager extends BsExtensionMW {
 			EXTINFO::NAME        => 'UserManager',
 			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting users.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => '2.22.0',
-			EXTINFO::STATUS      => 'beta',
+			EXTINFO::VERSION     => 'default',
+			EXTINFO::STATUS      => 'default',
+			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
@@ -70,7 +71,6 @@ class UserManager extends BsExtensionMW {
 			'message' => 'bs-usermanager-label'
 		) );
 
-		BsConfig::registerVar( 'MW::UserManager::AllowPasswordChange', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-usermanager-pref-AllowPasswordChange', 'toggle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -78,15 +78,15 @@ class UserManager extends BsExtensionMW {
 		//if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$iLimit     = $oStoreParams->getLimit();
-		$iStart     = $oStoreParams->getStart();
-		$sSort      = $oStoreParams->getSort( 'user_name' );
+		$iLimit = $oStoreParams->getLimit();
+		$iStart = $oStoreParams->getStart();
+		$sSort = $oStoreParams->getSort( 'user_name' );
 		$sDirection = $oStoreParams->getDirection();
-		$aFilters   = $oStoreParams->getFilter();
+		$aFilters = $oStoreParams->getFilter();
 
 		$aSortingParams = json_decode( $sSort );
 		if ( is_array( $aSortingParams ) ) {
-			$sSort      = $aSortingParams[0]->property;
+			$sSort = $aSortingParams[0]->property;
 			$sDirection = $aSortingParams[0]->direction;
 		}
 
@@ -95,10 +95,10 @@ class UserManager extends BsExtensionMW {
 		global $wgDBtype, $wgDBprefix;
 		//PW TODO: filter for oracle
 		if( $wgDBtype == 'oracle' ) {
-			$res = $dbr->query( 
-				"SELECT * FROM 
+			$res = $dbr->query(
+				"SELECT * FROM
 					(
-						SELECT user_id,user_name,user_real_name,user_email,row_number() OVER (ORDER BY ".$sSort." ".$sDirection.") rnk  
+						SELECT user_id,user_name,user_real_name,user_email,row_number() OVER (ORDER BY ".$sSort." ".$sDirection.") rnk
 						FROM \"".strtoupper($wgDBprefix)."MWUSER\"
 					)
 				WHERE rnk BETWEEN ".($iStart+1)." AND ".($iLimit + $iStart)
@@ -108,7 +108,7 @@ class UserManager extends BsExtensionMW {
 				'user'
 			);
 
-			$aOptions = array( 
+			$aOptions = array(
 				'ORDER BY' => $sSort.' '.$sDirection,
 				'LIMIT'    => $iLimit,
 				'OFFSET'   => $iStart
@@ -121,13 +121,13 @@ class UserManager extends BsExtensionMW {
 				foreach($aFilters as $oFilter) {
 					switch($oFilter->field) {
 						case 'user_name':
-							$aConditions[] = "user_name LIKE '".trim($oFilter->value)."%'";
+							$aConditions[] = "user_name LIKE '%".trim($oFilter->value)."%'";
 							break;
 						case 'user_real_name':
-							$aConditions[] = "user_real_name LIKE '".trim($oFilter->value)."%'";
+							$aConditions[] = "user_real_name LIKE '%".trim($oFilter->value)."%'";
 							break;
 						case 'user_email':
-							$aConditions[] = "user_email LIKE '".trim($oFilter->value)."%'";
+							$aConditions[] = "user_email LIKE '%".trim($oFilter->value)."%'";
 							break;
 						case 'groups':
 							$aTables[] = 'user_groups';
@@ -137,7 +137,7 @@ class UserManager extends BsExtensionMW {
 				}
 			}
 
-			$res = $dbr->select( 
+			$res = $dbr->select(
 				$aTables,
 				'*',
 				$aConditions,
@@ -211,29 +211,29 @@ class UserManager extends BsExtensionMW {
 
 		$sUsername = ucfirst( $sUsername );
 		if ( User::isValidUserName( $sUsername ) === false ) { //TODO: Check if User::isCreatableName() is a better validation
-			$aResponse['errors'][] = array( 
-				'id' => 'username', 
+			$aResponse['errors'][] = array(
+				'id' => 'username',
 				'message' => wfMessage( 'bs-usermanager-invalid_uname_gen' )->plain()
 			);
 		}
 
 		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
-			$aResponse['errors'][] = array( 
-				'id' => 'email', 
+			$aResponse['errors'][] = array(
+				'id' => 'email',
 				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
 			);
 		}
 
 		if ( $sPassword == '' ) {
-			$aResponse['errors'][] = array( 
-				'id' => 'pass', 
+			$aResponse['errors'][] = array(
+				'id' => 'pass',
 				'message' => wfMessage( 'bs-usermanager-enter_pwd' )->plain()
 			);
 		}
 
 		if ( strpos( $sRealname, '\\' ) ) {
-			$aResponse['errors'][] = array( 
-				'id' => 'realname', 
+			$aResponse['errors'][] = array(
+				'id' => 'realname',
 				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
 			);
 		}
@@ -254,7 +254,7 @@ class UserManager extends BsExtensionMW {
 
 		$oNewUser = User::newFromName( $sUsername );
 		if ( $oNewUser == null ) { //Should not be neccessary as we check for username validity above
-			$aResponse['errors'][] = array( 
+			$aResponse['errors'][] = array(
 				'id' => 'username',
 				'message' => wfMessage( 'bs-usermanager-invalid_uname' )->plain()
 			);
@@ -262,22 +262,22 @@ class UserManager extends BsExtensionMW {
 
 		if ( $oNewUser instanceof User ) {
 			if( $oNewUser->getId() != 0 ) {
-				$aResponse['errors'][] = array( 
-					'id' => 'username', 
+				$aResponse['errors'][] = array(
+					'id' => 'username',
 					'message' => wfMessage( 'bs-usermanager-user_exists' )->plain()
 				);
 			}
 
 			if ( $oNewUser->isValidPassword( $sPassword ) == false ) {
 				//TODO: $oNewUser->getPasswordValidity() returns a message key in case of error. Maybe we sould return this message.
-				$aResponse['errors'][] = array( 
-					'id' => 'pass', 
+				$aResponse['errors'][] = array(
+					'id' => 'pass',
 					'message' => wfMessage( 'bs-usermanager-invalid_pwd' )->plain()
 				);
 			}
 		}
 
-		if( !empty( $aResponse['errors'] ) ) { //In case that any error occured
+		if ( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
 			return json_encode( $aResponse );
 		}
 
@@ -304,7 +304,7 @@ class UserManager extends BsExtensionMW {
 						'user_groups',
 						array(
 							'ug_user' => $oNewUser->getId(),
-							'ug_group' => addslashes( $sGroup ) 
+							'ug_group' => addslashes( $sGroup )
 						)
 				);
 			}
@@ -324,7 +324,7 @@ class UserManager extends BsExtensionMW {
 		$_SESSION['wsDomain'] = $tmpDomain;
 
 		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
-		wfRunHooks( 
+		wfRunHooks(
 			'BSUserManagerAfterAddUser',
 			array(
 				$oUserManager,
@@ -367,43 +367,37 @@ class UserManager extends BsExtensionMW {
 			'message' => array()
 		);
 
-		if ( !BsConfig::get( 'MW::UserManager::AllowPasswordChange' ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-not_allowed' )->plain();
-		}
-
 		$oUser = User::newFromName( $sUsername );
 
 		if ( $oUser->getId() === 0 ) {
 			$aAnswer['success'] = false;
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-id_noexist' )->plain(); // id_noexist = 'This user ID does not exist'
 		}
-
 		if ( strpos( $sPassword, '\\' ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'pass', 
+				'id' => 'pass',
 				'message' => wfMessage( 'bs-usermanager-invalid_pwd' )->plain()
 			); // 'invalid_pwd' = 'The supplied password is invalid. Please do not use apostrophes or backslashes.'
 		}
 		if ( $sPassword !== $sRePassword ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'newpass', 
+				'id' => 'newpass',
 				'message' => wfMessage( 'bs-usermanager-pwd_nomatch' )->plain()
 			);
 		}
 		if ( strpos( $sRealname, '\\' ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'realname', 
+				'id' => 'realname',
 				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
 			);
 		}
 		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
-				'id' => 'email', 
+				'id' => 'email',
 				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
 			);
 		}
@@ -413,7 +407,7 @@ class UserManager extends BsExtensionMW {
 			if ( !empty( $sPassword ) ) {
 				$res = $dbw->update(
 						'user',
-						array( 'user_password' => User::crypt( $sPassword ) ), 
+						array( 'user_password' => User::crypt( $sPassword ) ),
 						array( 'user_id' => $oUser->getId() )
 				);
 			} else {
@@ -435,7 +429,7 @@ class UserManager extends BsExtensionMW {
 						'user_groups',
 						array(
 							'ug_user' => $oUser->getId(),
-							'ug_group' => addslashes( $sGroup ) 
+							'ug_group' => addslashes( $sGroup )
 						)
 					);
 				}
@@ -468,6 +462,7 @@ class UserManager extends BsExtensionMW {
 
 	/**
 	 * Deletes an user form the database
+	 * @global User $wgUser
 	 * @param Integer $iUserId user id
 	 * @return string json encoded response
 	 */
@@ -476,15 +471,16 @@ class UserManager extends BsExtensionMW {
 			global $wgReadOnly;
 			return json_encode( array(
 				'success' => false,
-				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
-				) );
+				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() ),
+				'errors' => array(),
+			));
 		}
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'message' => array()
+			'message' => array(),
 		);
 
 		$oUser = User::newFromId( $iUserId );
@@ -499,23 +495,31 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-admin_nodelete' )->plain();
 		}
 
-		if ( $aAnswer['success'] ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->delete( 'user',
-				array( 'user_id' => $oUser->getId() )
-			);
-			$res1 = $dbw->delete( 'user_groups',
-				array( 'ug_user' => $oUser->getId() )
-			);
-			$res2 = $dbw->delete( 'user_newtalk',
-				array( 'user_id' => $oUser->getId() )
-			);
-			$iUsers = $dbw->selectField( 'user', 'COUNT(*)', array() );
-			$res3 = $dbw->update( 'site_stats',
-				array( 'ss_users' => $iUsers ),
-				array( 'ss_row_id' => 1 )
-			);
+		global $wgUser;
+		if ( $oUser->getId() == $wgUser->getId() ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-self_nodelete' )->plain();
 		}
+
+		if( !$aAnswer['success'] ) {
+			return json_encode( $aAnswer );
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+		$res = $dbw->delete( 'user',
+			array( 'user_id' => $oUser->getId() )
+		);
+		$res1 = $dbw->delete( 'user_groups',
+			array( 'ug_user' => $oUser->getId() )
+		);
+		$res2 = $dbw->delete( 'user_newtalk',
+			array( 'user_id' => $oUser->getId() )
+		);
+		$iUsers = $dbw->selectField( 'user', 'COUNT(*)', array() );
+		$res3 = $dbw->update( 'site_stats',
+			array( 'ss_users' => $iUsers ),
+			array( 'ss_row_id' => 1 )
+		);
 
 		if ( $oUser->getUserPage()->exists() ) {
 			$oUserPageArticle = new Article( $oUser->getUserPage() );
@@ -525,11 +529,10 @@ class UserManager extends BsExtensionMW {
 		if ( ( $res === false ) || ( $res1 === false ) || ( $res2 === false ) || ( $res3 === false ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db_error' )->plain();
+			return json_encode( $aAnswer );
 		}
 
-		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-user_deleted' )->plain();
-		}
+		$aAnswer['message'][] = wfMessage( 'bs-usermanager-user_deleted' )->plain();
 
 		return json_encode( $aAnswer );
 	}

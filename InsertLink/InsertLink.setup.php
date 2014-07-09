@@ -12,23 +12,21 @@ $aResourceModuleTemplate = array(
 $wgResourceModules['ext.bluespice.insertlink'] = array(
 	'scripts' => 'bluespice.insertLink.js',
 	'messages' => array(
-		'bs-insertlink-button_title',
-		'bs-insertlink-dlg_title',
-		'bs-insertlink-tab_wiki_page',
-		'bs-insertlink-tab_external_link',
-		'bs-insertlink-tab3_title',
-		'bs-insertlink-tab6_title',
-		'bs-insertlink-label_page',
-		'bs-insertlink-select_a_page',
-		'bs-insertlink-label_link',
-		'bs-insertlink-label_mail',
-		'bs-insertlink-label_namespace',
-		'bs-insertlink-select_a_namespace',
-		'bs-insertlink-label_description',
-		'bs-insertlink-label_ok',
-		'bs-insertlink-label_cancel',
-		'bs-insertlink-label_file',
-		'bs-insertlink-label_searchfile'
+		'bs-insertlink-button-title',
+		'bs-insertlink-dialog-title',
+		'bs-insertlink-tab-wiki-page',
+		'bs-insertlink-tab-ext-link',
+		'bs-insertlink-tab-email',
+		'bs-insertlink-tab-ext-file',
+		'bs-insertlink-label-page',
+		'bs-insertlink-label-link',
+		'bs-insertlink-label-mail',
+		'bs-insertlink-label-description',
+		'bs-insertlink-label-file',
+		'bs-insertlink-label-searchfile',
+		'bs-insertlink-select-a-page',
+		'bs-insertlink-select-a-namespace',
+		'bs-insertlink-empty-field-text'
 	)
 ) + $aResourceModuleTemplate;
 
@@ -38,5 +36,4 @@ $wgResourceModules['ext.bluespice.insertlink.styles'] = array(
 
 unset( $aResourceModuleTemplate );
 
-$wgAjaxExportList[] = 'InsertLink::getNamespace';
 $wgAjaxExportList[] = 'InsertLink::getPage';

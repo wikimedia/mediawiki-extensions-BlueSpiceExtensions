@@ -92,7 +92,7 @@ Ext.define('BS.Flexiskin.Panel', {
 		Ext.Ajax.request({
 			url: bs.util.getAjaxDispatcherUrl('Flexiskin::getFlexiskinConfig'),
 			params: {
-				id: this.selectedRow[0].getData().flexiskin_id
+				id: this.selectedRow[0].getData().flexiskin_id,
 			},
 			success: function(response) {
 				var responseObj = Ext.decode(response.responseText);
@@ -117,6 +117,7 @@ Ext.define('BS.Flexiskin.Panel', {
 						skinId: this.selectedRow[0].get('flexiskin_id'),
 						config: config
 					});
+					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
 					BS.Flexiskin.PreviewWindow.show();
 				}, this);
 			},
@@ -210,65 +211,8 @@ Ext.define('BS.Flexiskin.Panel', {
 		data.push({
 			name: this.dlgSkinAdd.tfName.getValue(),
 			desc: this.dlgSkinAdd.tfDesc.getValue(),
-			template: this.dlgSkinAdd.cbSkins.getRawValue()
+			template: this.dlgSkinAdd.cbSkins.getValue()
 		});
 		return data;
-	}/*,
-	 onDlgUserEditOk: function( data, user ) {
-	 Ext.Ajax.request( {
-	 url: bs.util.getAjaxDispatcherUrl(
-	 'Flexiskin::editUser',
-	 [
-	 user.user_name,
-	 user.user_password,
-	 user.user_repassword,
-	 user.user_email,
-	 user.user_real_name,
-	 user.groups
-	 ]
-	 ),
-	 scope: this,
-	 success: function( response, opts ) {
-	 var responseObj = Ext.decode( response.responseText );
-	 if ( responseObj.success === true ) {
-	 this.renderMsgSuccess( responseObj );
-	 this.dlgUserEdit.resetData();
-	 } else {
-	 this.renderMsgFailure( responseObj );
-	 }
-	 },
-	 failure: function( response, opts ) {}
-	 });
-	 },
-	 reloadStore: function() {
-	 this.strMain.reload();
-	 },
-	 showDlgAgain: function() {
-	 if ( this.active === 'add' ) {
-	 this.dlgUserAdd.show();
-	 } else {
-	 this.dlgUserEdit.show();
-	 }
-	 },
-	 renderMsgSuccess: function( responseObj ) {
-	 if ( responseObj.message.length ) {
-	 var message = '';
-	 for ( var i in responseObj.message ) {
-	 if ( typeof( responseObj.message[i] ) !== 'string' ) continue;
-
-	 message = message + responseObj.message[i] + '<br />';
-	 }
-	 bs.util.alert( 'UMsuc', { text: message, title: 'Status' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
-	 }
-	 },
-	 renderMsgFailure: function( responseObj ) {
-	 if ( responseObj.errors ) {
-	 var message = '';
-	 for ( i in responseObj.errors ) {
-	 if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
-	 message = message + responseObj.errors[i].message + '<br />';
-	 }
-	 bs.util.alert( 'UMfail', { text: message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
-	 }
-	 }*/
+	}
 });
