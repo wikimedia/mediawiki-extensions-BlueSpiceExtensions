@@ -62,10 +62,15 @@ BsSaferEditEditMode = {
 	 */
 	win: false,
 	/**
-	 * Timestamp of saved version in restore dialogue
+	 * Time of saved version in restore dialogue
 	 * @var string Rendered timestamp, currently age of stored release
 	 */
-	savedTS: '',
+	savedTime: '',
+	/**
+	 * Date of saved version in restore dialogue
+	 * @var string Rendered timestamp, currently age of stored release
+	 */
+	savedDate: '',
 	/**
 	 * Rendered HTML of saved version that is displayed in restore dialogue
 	 * @var string Rendered HTML
@@ -115,7 +120,7 @@ BsSaferEditEditMode = {
 					items: [
 						{
 							xtype: 'tbtext',
-							text: mw.message('bs-saferedit-lastsavedversion', BsSaferEditEditMode.savedTS).plain()
+							text: mw.message('bs-saferedit-lastsavedversion', BsSaferEditEditMode.savedDate, BsSaferEditEditMode.savedTime).plain()
 						}
 					]
 				}, {
@@ -189,14 +194,14 @@ BsSaferEditEditMode = {
 				text = '';
 			}
 		}
-		BSPing.registerListener( 
-			'SaferEditSave', 
-			BsSaferEditEditMode.interval, 
+		BSPing.registerListener(
+			'SaferEditSave',
+			BsSaferEditEditMode.interval,
 			[{
 				text: text,
 				section: bsSaferEditEditSection
-			}], 
-			BsSaferEditEditMode.saveTextListener 
+			}],
+			BsSaferEditEditMode.saveTextListener
 		);
 	},
 
@@ -210,7 +215,7 @@ BsSaferEditEditMode = {
 			{
 				titleMsg: 'bs-saferedit-othersectiontitle',
 				text: mw.message('bs-saferedit-othersectiontext1').plain() + '<br/>' +
-					mw.message('bs-saferedit-othersectiontext2', BsSaferEditEditMode.savedTS ).plain() + '<br />' +
+					mw.message('bs-saferedit-othersectiontext2', BsSaferEditEditMode.savedDate, BsSaferEditEditMode.savedTime ).plain() + '<br />' +
 					mw.message('bs-saferedit-othersectiontext3').plain()
 			},
 			{
@@ -224,16 +229,16 @@ BsSaferEditEditMode = {
 			}
 		);
 	},
-	
+
 	getText: function( mode ) {
 		var text = '';
 
 		switch (mode) {
 			case "VisualEditor":
-				text = $('wpTextbox1').val(); 
+				text = $('wpTextbox1').val();
 				break;
 			case "MW":
-				text = tinyMCE.activeEditor.getContent({save:true}); 
+				text = tinyMCE.activeEditor.getContent({save:true});
 				break;
 			default: //detect
 				if( typeof VisualEditorMode !== 'undefined' && VisualEditorMode ) {
@@ -264,12 +269,14 @@ BsSaferEditEditMode = {
 
 						if ( oResponse.notexts == "1" ) return;
 						if ( oResponse.savedOtherSection == "1" ) {
-							BsSaferEditEditMode.savedTS = oResponse.ts;
+							BsSaferEditEditMode.savedTime = oResponse.time;
+							BsSaferEditEditMode.savedDate = oResponse.date;
 							BsSaferEditEditMode.redirect = oResponse.redirect;
 							BsSaferEditEditMode.showRedirect();
 							return;
 						}
-						BsSaferEditEditMode.savedTS = oResponse.ts;
+						BsSaferEditEditMode.savedTime = oResponse.time;
+						BsSaferEditEditMode.savedDate = oResponse.date;
 						BsSaferEditEditMode.savedHTML = unescape(oResponse.html);
 						BsSaferEditEditMode.savedWikiCode = unescape(oResponse.wiki);
 
@@ -311,7 +318,7 @@ BsSaferEditEditMode = {
 	 */
 	saveText: function() {
 		var text = BsSaferEditEditMode.getText();
-		
+
 		if( BsSaferEditEditMode.canceledByUser ) return;
 
 		if( BsSaferEditEditMode.oldText != text ) {
@@ -405,7 +412,7 @@ BsSaferEditEditMode = {
 
 	hasUnsavedChanges: function(mode) {
 		var text = BsSaferEditEditMode.getText( mode );
-		
+
 		if ( text.trim() != BsSaferEditEditMode.origText.trim() ) {
 			BsSaferEditEditMode.isUnsaved = true;
 			return true;

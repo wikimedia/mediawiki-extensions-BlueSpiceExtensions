@@ -403,6 +403,7 @@ class SaferEdit extends BsExtensionMW {
 				$sOrigText = $wgParser->getSection( $sOrigText, $iSection );
 			}
 
+			$oLang = RequestContext::getMain()->getLanguage();
 			if ( $iSection != $row['se_edit_section'] ) {
 				if ( $row['se_edit_section'] == '-1' ) {
 					$sEditUrl = $oTitle->getEditURL();
@@ -410,16 +411,18 @@ class SaferEdit extends BsExtensionMW {
 					$sEditUrl = $oTitle->getEditURL()."&section=".$row['se_edit_section'];
 				}
 				$aData = array(
-					"ts" => BsFormatConverter::mwTimestampToAgeString( $row['se_timestamp'] ),
+					"time" => $oLang->time( $row['se_timestamp'] ),
+					"date" => $oLang->date( $row['se_timestamp'] ),
 					"savedOtherSection" => "1",
 					"redirect" => $sEditUrl
 				);
 			} elseif ( strcmp( $sOrigText, urldecode($row['se_text'] ) ) == 0 ) {
 				$aData = array( "notexts" => "1" );
 			} else {
-				$str = urldecode($row['se_text']);
+				$str = urldecode( $row['se_text'] );
 				$aData = array(
-					"ts" => BsFormatConverter::mwTimestampToAgeString( $row['se_timestamp'] ),
+					"time" => $oLang->time( $row['se_timestamp'] ),
+					"date" => $oLang->date( $row['se_timestamp'] ),
 					"html" => BsCore::getInstance()->parseWikiText( $str, RequestContext::getMain()->getTitle() ), //breaks on Mainpage
 					"wiki" => $str,
 					"section" => $row['se_edit_section'],
