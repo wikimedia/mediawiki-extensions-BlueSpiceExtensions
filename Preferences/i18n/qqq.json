@@ -5,5 +5,6 @@
 		]
 	},
 	"bs-preferences-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of preferences extension",
-	"prefs-bluespice": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for bluespice section in preferences.\n{{Identical|BlueSpice}}"
+	"prefs-bluespice": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for bluespice section in preferences.\n{{Identical|BlueSpice}}",
+	"bs-preferences-label": "Anchor text for preferences\n{{Identical|Preferences}}"
 }
