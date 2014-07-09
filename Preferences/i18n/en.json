@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-preferences-desc": "Administration interface to configure BlueSpice",
+	"prefs-bluespice": "BlueSpice"
+}

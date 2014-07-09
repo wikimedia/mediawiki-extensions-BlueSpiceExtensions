@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-preferences-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of preferences extension",
+	"prefs-bluespice": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for bluespice section in preferences.\n{{Identical|BlueSpice}}"
+}
