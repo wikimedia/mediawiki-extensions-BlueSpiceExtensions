@@ -1,6 +1,8 @@
 <?php
 
-BsExtensionManager::registerExtension('SaferEdit',                       BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension('SaferEdit', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+
+$wgMessagesDirs['SaferEdit'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['SaferEdit'] = __DIR__ . '/languages/SaferEdit.i18n.php';
 

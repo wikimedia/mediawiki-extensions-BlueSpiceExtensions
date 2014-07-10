@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension( 'ExtendedSearch', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE );
 
+$wgMessagesDirs['ExtendedSearch'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['ExtendedSearch'] = __DIR__ . '/languages/ExtendedSearch.i18n.php';
 
 $aResourceModuleTemplate = array(
