@@ -88,9 +88,9 @@ class PermissionManager extends BsExtensionMW {
 	}
 
 	protected function initExt() {
-		BsConfig::registerVar('MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pm-pref-lockmode', 'toggle');
-		BsConfig::registerVar('MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pm-pref-skipSysNs', 'toggle');
-		BsConfig::registerVar('MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-pm-pref-enableRealityCheck', 'toggle');
+		BsConfig::registerVar('MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-permissionmanager-pref-lockmode', 'toggle');
+		BsConfig::registerVar('MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-permissionmanager-pref-skipsysns', 'toggle');
+		BsConfig::registerVar('MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-permissionmanager-pref-enablerealitycheck', 'toggle');
 
 		$this->setHook('BSWikiAdminUserManagerBeforeUserListSend');
 		$this->setHook('BSGroupManagerGroupNameChanged');
@@ -540,7 +540,7 @@ class PermissionManager extends BsExtensionMW {
 		if ($bSaveResult) {
 			$aResult['success'] = true;
 		} else {
-			$aResult['msg'] = wfMessage('bs-permissionmanager-template-editor-save-failure')->plain();
+			$aResult['msg'] = wfMessage('bs-permissionmanager-msgtpled-savefailure')->plain();
 		}
 
 		return json_encode($aResult);
@@ -562,7 +562,7 @@ class PermissionManager extends BsExtensionMW {
 		if ($bDeleteResult) {
 			$aResult['success'] = true;
 		} else {
-			$aResult['msg'] = wfMessage('bs-permissionmanager-template-editor-delete-failure')->plain();
+			$aResult['msg'] = wfMessage('bs-permissionmanager-msgtpled-deletefail')->plain();
 		}
 
 		return json_encode($aResult);
