@@ -450,7 +450,7 @@ function() {
 							var button = Ext.getCmp('btnSave');
 							button.setText(mw.messages.get('bs-permissionmanager-btn-save-label'));
 							button.enable();
-							Ext.MessageBox.alert('', mw.messages.get('bs-permissionmanager-btn-save-success'));
+							Ext.MessageBox.alert('', mw.messages.get('bs-permissionmanager-save-success'));
 							_mainStore.reload();
 						},
 						update: function(store, record, op, modifiedFields, options) {
@@ -502,7 +502,7 @@ function() {
 					ruleset = {
 						group: records[0].raw.activeGroup,
 						isTemplate: true,
-						grouping: ' ' + mw.message('bs-permissionmanager-labelTemplates').plain(),
+						grouping: ' ' + mw.message('bs-permissionmanager-labeltemplates').plain(),
 						permission: template.text
 					};
 
@@ -603,7 +603,7 @@ function() {
 							items: [{
 									xtype: 'cycle',
 									showText: true,
-									prependText: mw.messages.get('bs-permissionmanager-btn-group-label'),
+									prependText: mw.messages.get('bs-permissionmanager-btn-group-label')+' ',
 									menu: {
 										items: records[0].raw.btnGroup
 									},
