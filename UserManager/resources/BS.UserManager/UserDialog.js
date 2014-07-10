@@ -22,7 +22,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 			this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
 		}
 		this.tfUserName = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-usermanager-labelUsername').plain(),
+			fieldLabel: mw.message('bs-usermanager-headerusername').plain(),
 			labelWidth: 130,
 			labelAlign: 'right',
 			name: 'username',
@@ -30,7 +30,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 		});
 		this.tfPassword = Ext.create( 'Ext.form.TextField', {
 			inputType: 'password',
-			fieldLabel: mw.message('bs-usermanager-labelNewPassword').plain(),
+			fieldLabel: mw.message('bs-usermanager-labelnewpassword').plain(),
 			labelWidth: 130,
 			labelAlign: 'right',
 			name: 'pass',
@@ -38,27 +38,27 @@ Ext.define( 'BS.UserManager.UserDialog', {
 		});
 		this.tfRePassword = Ext.create( 'Ext.form.TextField', {
 			inputType: 'password',
-			fieldLabel: mw.message('bs-usermanager-labelPasswordCheck').plain(),
+			fieldLabel: mw.message('bs-usermanager-labelpasswordcheck').plain(),
 			labelWidth: 130,
 			labelAlign: 'right',
 			name: 'repass',
 			allowBlank: false
 		});
 		this.tfEmail = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-usermanager-labelEmail').plain(),
+			fieldLabel: mw.message('bs-usermanager-headeremail').plain(),
 			labelWidth: 130,
 			labelAlign: 'right',
 			name: 'email'
 		});
 		this.tfRealName = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-usermanager-labelRealname').plain(),
+			fieldLabel: mw.message('bs-usermanager-headerrealname').plain(),
 			labelWidth: 130,
 			labelAlign: 'right',
 			name: 'realname'
 		});
 		
 		this.cbGroups = Ext.create( 'Ext.ux.form.MultiSelect', {
-			fieldLabel: mw.message('bs-usermanager-labelgroups').plain(),
+			fieldLabel: mw.message('bs-usermanager-headergroups').plain(),
 			labelWidth: 130,
 			labelAlign: 'right',
 			store: this.strGroups,

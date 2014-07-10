@@ -63,27 +63,27 @@ Ext.define( 'BS.UserManager.Panel', {
 
 		this.colUserName = Ext.create( 'Ext.grid.column.Template', {
 			id: 'username',
-			header: mw.message('bs-usermanager-headerUsername').plain(),
+			header: mw.message('bs-usermanager-headerusername').plain(),
 			sortable: true,
 			dataIndex: 'user_name',
 			tpl: '<a href="{user_page}">{user_name}</a>'
 		} );
 		this.colRealName = Ext.create( 'Ext.grid.column.Template', {
 			id: 'userrealname',
-			header: mw.message('bs-usermanager-headerRealname').plain(),
+			header: mw.message('bs-usermanager-headerrealname').plain(),
 			sortable: true,
 			dataIndex: 'user_real_name',
 			tpl: '{user_real_name}'
 		} );
 		this.colEmail = Ext.create( 'Ext.grid.column.Column', {
 			id: this.getId()+'-useremail',
-			header: mw.message('bs-usermanager-headerEmail').plain(),
+			header: mw.message('bs-usermanager-headeremail').plain(),
 			sortable: true,
 			dataIndex: 'user_email',
 			renderer: this.renderEmail
 		} );
 		this.colGroups = Ext.create( 'Ext.grid.column.Column', {
-			header: mw.message('bs-usermanager-headerGroups').plain(),
+			header: mw.message('bs-usermanager-headergroups').plain(),
 			dataIndex: 'groups',
 			renderer: this.renderGroups,
 			sortable: false
@@ -142,7 +142,7 @@ Ext.define( 'BS.UserManager.Panel', {
 		}
 
 		this.active = 'add';
-		this.dlgUserAdd.setTitle( mw.message( 'bs-usermanager-titleAddUser' ).plain() );
+		this.dlgUserAdd.setTitle( mw.message( 'bs-usermanager-titleadduser' ).plain() );
 		this.dlgUserAdd.tfUserName.enable();
 		this.dlgUserAdd.show();
 		this.callParent( arguments );
@@ -155,7 +155,7 @@ Ext.define( 'BS.UserManager.Panel', {
 		}
 
 		this.active = 'edit';
-		this.dlgUserEdit.setTitle( mw.message( 'bs-usermanager-titleEditDetails' ).plain() );
+		this.dlgUserEdit.setTitle( mw.message( 'bs-usermanager-titleeditdetails' ).plain() );
 		this.dlgUserEdit.tfUserName.disable();
 		this.dlgUserEdit.setData( selectedRow[0].getData() );
 		this.dlgUserEdit.show();
@@ -165,8 +165,8 @@ Ext.define( 'BS.UserManager.Panel', {
 		bs.util.confirm(
 			'UMremove',
 			{
-				text: mw.message( 'bs-usermanager-confirmDeleteUser', this.grdMain.getSelectionModel().getSelection().length ).text(),
-				title: mw.message( 'bs-usermanager-titleDeleteUser' ).plain()
+				text: mw.message( 'bs-usermanager-confirmdeleteuser', this.grdMain.getSelectionModel().getSelection().length ).text(),
+				title: mw.message( 'bs-usermanager-titledeleteuser' ).plain()
 			},
 			{
 				ok: this.onRemoveUserOk,
