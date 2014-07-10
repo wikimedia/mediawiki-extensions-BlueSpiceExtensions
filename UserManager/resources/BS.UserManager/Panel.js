@@ -266,7 +266,7 @@ Ext.define( 'BS.UserManager.Panel', {
 
 				message = message + responseObj.message[i] + '<br />';
 			}
-			bs.util.alert( 'UMsuc', { text: message, title: 'Status' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMsuc', { text: message, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 		}
 	},
 	renderMsgFailure: function( responseObj ) {
@@ -276,7 +276,7 @@ Ext.define( 'BS.UserManager.Panel', {
 				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
 				message = message + responseObj.errors[i].message + '<br />';
 			}
-			bs.util.alert( 'UMfail', { text: message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMfail', { text: message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
 		}
 	}
 } );

@@ -316,10 +316,10 @@ Ext.define( 'BS.Statistics.Filter', {
 		this.fireEvent('saved', this, action.result.data, action.result);
 		this.collapse();
 		if( action.result.message === undefined || action.result.message == '') return;
-		Ext.Msg.alert('Status', action.result.message);
+		bs.util.alert( 'STAsuc', { text: action.result.message, titleMsg: 'bs-extjs-title-success' } );
 	},
 	fpFailure: function( form, action ) {
 		if( action.result.message === undefined || action.result.message == '') return;
-		Ext.Msg.alert('Status', action.result.message);
+		bs.util.alert( 'STAfail', { text: action.result.message, titleMsg: 'bs-extjs-title-success' } );
 	}
 });

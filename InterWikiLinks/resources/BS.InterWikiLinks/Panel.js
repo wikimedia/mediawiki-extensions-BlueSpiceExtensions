@@ -177,7 +177,7 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 	},
 	renderMsgSuccess: function( responseObj ) {
 		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMsuc', { text: responseObj.message, title: 'Status' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMsuc', { text: responseObj.message, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 		}
 	},
 	renderMsgFailure: function( responseObj ) {
@@ -187,7 +187,7 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
 				message = message + responseObj.errors[i].message + '<br />';
 			}
-			bs.util.alert( 'UMfail', { text: message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMfail', { text: message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
 		}
 	}
 } );
