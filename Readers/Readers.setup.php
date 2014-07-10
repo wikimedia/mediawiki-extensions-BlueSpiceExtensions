@@ -39,9 +39,9 @@ $wgResourceModules['ext.bluespice.readers.specialreaders'] = array(
 	),
 	'position' => 'bottom',
 	'messages' => array(
-		'bs-readers-headerUsername',
-		'bs-readers-headerReadersPath',
-		'bs-readers-headerTs'
+		'bs-readers-header-username',
+		'bs-readers-header-readerspath',
+		'bs-readers-header-ts'
 	)
 ) + $aResourceModuleTemplate;
 
@@ -54,8 +54,8 @@ $wgResourceModules['ext.bluespice.readers.specialreaderspath'] = array(
 	),
 	'position' => 'bottom',
 	'messages' => array(
-		'bs-readers-headerUsername',
-		'bs-readers-headerReadersPath',
-		'bs-readers-headerTs'
+		'bs-readers-header-username',
+		'bs-readers-header-readerspath',
+		'bs-readers-header-ts'
 	)
 ) + $aResourceModuleTemplate;
