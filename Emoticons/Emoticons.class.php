@@ -96,8 +96,6 @@ class Emoticons extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'OutputPageBeforeHTML' );
 		$this->setHook( 'ArticleSave' );
-
-		BsConfig::registerVar( 'MW::Emoticons::PathToEmoticons', '/extensions/BlueSpiceExtensions/Emoticons/emoticons', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-emoticons-pref-PathToEmoticons' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -122,10 +120,27 @@ class Emoticons extends BsExtensionMW {
 		$aMapping = $wgMemc->get( $sKey );
 
 		if ( $aMapping == false ) {
-			$sPathToEmoticons = $wgScriptPath.BsConfig::get('MW::Emoticons::PathToEmoticons');
+			$sPathToEmoticons = $wgScriptPath . '/extensions/BlueSpiceExtensions/Emoticons/emoticons';
 
 			// Get the list of emoticons from the message system.
-			$sMappingContent = wfMessage('bs-emoticons-mapping')->plain();
+			$sMappingContent = "smile.png           :-)     :)
+								sad.png             :-(     :(
+								neutral.png         :-|     :|
+								angry.png           :-@     :@
+								wink.png            ;-)     ;)
+								smile-big.png       :D     :-D
+								thinking.png        :-/     :/
+								shut-mouth.png      :-X     :X
+								crying.png          :'(
+								shock.png           :-O
+								confused.png        :-S
+								glasses-cool.png    8-)
+								laugh.png           :lol:
+								yawn.png            (:|
+								good.png            :good:
+								bad.png             :bad:
+								embarrassed.png     :-[
+								shame.png           [-X     [-x";
 			if( empty( $sMappingContent ) ) return true; // If the content successfully loaded, do the replacement
 
 			$aMappingLines = explode( "\n", $sMappingContent );
