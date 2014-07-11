@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-preferences-desc": "Interface d’administration pour configurer BlueSpice",
+	"bs-preferences-label": "Préférences"
+}

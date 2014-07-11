@@ -4,10 +4,12 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Robby",
-			"Shirayuki"
+			"Shirayuki",
+			"Nemo bis",
+			"Smuggli"
 		]
 	},
-	"bs-wantedarticle-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of wanted page extension.",
+	"bs-wantedarticle-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of wanted page extension",
 	"prefs-wantedarticle": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for wanted page section in preferences.\n{{Identical|Wanted page}}",
 	"bs-wantedarticle-ajax-error-no-parameter": "Text for no page title provided.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Text for the suggested page \"$1\" already exitis. \n $1 is the name of the suggested page",
@@ -32,14 +34,14 @@
 	"bs-wantedarticle-pref-deleteexisting": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for delete existing entries",
 	"bs-wantedarticle-pref-showcreate": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show create link",
 	"bs-wantedarticle-pref-deleteoncreation": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for remove entry from list when page is created",
-	"bs-wantedarticle-pref-datasourcetemplatetitle": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for template title for suggestions:",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Option in Special:Wiki_Admin&mode=Preferences: label for template title for suggestions, that is the pages requested by users via the WantedArticle extension.",
 	"bs-wantedarticle-pref-sort": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for sort by:\n{{Identical|Sort by}}",
 	"bs-wantedarticle-pref-order": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for order:\n{{Identical|Order}}",
 	"bs-wantedarticle-pref-sort-time": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for time\n{{Identical|Time}}",
 	"bs-wantedarticle-pref-sort-title": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for title\n{{Identical|Title}}",
 	"bs-wantedarticle-pref-order-asc": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for ascending\n{{Identical|Ascending}}",
 	"bs-wantedarticle-pref-order-desc": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for descending\n{{Identical|Descending}}",
-	"bs-wantedarticle-create-page": "Text for create page \"$1\". $1 is the entered page name",
+	"bs-wantedarticle-create-page": "Text for create page \"$1\". $1 is the entered page name\n{{Identical|Create page}}",
 	"bs-wantedarticle-suggest-page": "Test for suggest page \"$1\". $1 is the entered page name",
 	"bs-wantedarticle-info-nothing-entered": "Text for please provide a valid page title.",
 	"bs-wantedarticle-title-invalid-chars": "Text for the following character{{PLURAL:$1| is|s are}} not valid for use in a page title: $2\n $1 is the number of characters which are not valid - use for PLURAL distinction, $2 is a comma seperated list of invalid characters"

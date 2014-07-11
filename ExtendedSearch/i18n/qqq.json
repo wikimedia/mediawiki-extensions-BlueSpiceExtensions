@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Nike"
 		]
 	},
 	"bs-extendedsearch-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of extended search extension",
@@ -69,7 +70,7 @@
 	"bs-extendedsearch-pref-numfacets": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for number of facets on special page:",
 	"bs-extendedsearch-pref-showmlt": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label text for show similar pages",
 	"bs-extendedsearch-pref-solrcore": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for solr core instance:",
-	"bs-extendedsearch-pref-mltns": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for namespaces for \"{{int:bs-extendedsearch-morelikethis}}\":",
+	"bs-extendedsearch-pref-mltns": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text.\n* \"{{msg-mw|bs-extendedsearch-morelikethis}}\"",
 	"bs-extendedsearch-about-to-start": "Text for starting...",
 	"bs-extendedsearch-index-successfully-deleted": "Text for the index was deleted.",
 	"bs-extendedsearch-create-index": "Anchor text for re-create index",

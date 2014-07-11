@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"prefs-visualeditor": "Visuellen Editeur",
+	"bs-visualeditor-pref-disablens": "An Nummräim desaktivéieren:",
+	"bs-visualeditor-no-summary": "Kee Resumé",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Inhalt",
+	"bs-visualeditor-contenttable-black": "Inhalt (schwaarz)",
+	"bs-visualeditor-contenttable-blue": "Inhalt (blo)",
+	"bs-visualeditor-contenttable-darkblue": "Inhalt (donkelblo)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale-narrow": "Grostufen (schmuel)",
+	"bs-visualeditor-aligntop": "Uewen",
+	"bs-visualeditor-alignmiddle": "Mëtt",
+	"bs-visualeditor-alignbottom": "Ënnen",
+	"bs-visualeditor-bsactions-wiki": "WikiText",
+	"bs-visualeditor-bsactions-signature": "Ënnerschrëft",
+	"bs-visualeditor-bsactions-save": "Späicheren",
+	"bs-visualeditor-bsactions-headings": "Iwwerschrëften",
+	"bs-visualeditor-bsactions-paragraph": "Abschnitt",
+	"bs-visualeditor-bsactions-heading2": "Iwwerschrëft 2",
+	"bs-visualeditor-bsactions-heading3": "Iwwerschrëft 3",
+	"bs-visualeditor-bsactions-heading4": "Iwwerschrëft 4",
+	"bs-visualeditor-bsactions-heading5": "Iwwerschrëft 5",
+	"bs-visualeditor-switch-noeditor-desc": "Desaktivéiert VisualEditor op dëser Säit."
+}

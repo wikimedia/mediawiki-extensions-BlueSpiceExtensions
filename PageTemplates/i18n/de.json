@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-pagetemplates-desc": "Es können vorgefertigte Seitenvorlagen angelegt werden",
@@ -16,6 +17,7 @@
 	"bs-pagetemplates-tpl-name-empty": "Bitte gib eine Vorlage an.",
 	"bs-pagetemplates-no-id": "Bitte gib eine Seite an, die als Vorlage verwendet werden soll.",
 	"bs-pagetemplates-tpl-added": "Das Template wurde eingetragen.",
+	"bs-pagetemplates-invalid_pfx": "Das Präfix ist ungültig.",
 	"bs-pagetemplates-nooldtpl": "Das urspr&uuml;ngliche Template wurde nicht gefunden.",
 	"bs-pagetemplates-tpl-edited": "Die Änderungen wurden übernommen.",
 	"bs-pagetemplates-dberror": "Es ist ein Datenbankfehler aufgetreten.",

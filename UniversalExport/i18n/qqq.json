@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Shirayuki"
+			"Shirayuki",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-universalexport-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of univeral export extension",
@@ -14,9 +15,9 @@
 	"bs-universalexport-page-title-on-error": "Text for universal export: Error",
 	"bs-universalexport-page-text-without-param": "Text for this page displays information about available export modules of the universal export.",
 	"bs-universalexport-page-text-without-param-no-modules-registered": "Text for there are no modules registered.",
-	"bs-universalexport-widget-title": "Widget headline for export \n {{Identical|Who is online?}}",
+	"bs-universalexport-widget-title": "Widget headline for export \n{{Identical|Export}}",
 	"bs-universalexport-widget-tooltip": "text for export the current page",
-	"bs-universalexport-tag-pagebreak-text": "Text for page break",
+	"bs-universalexport-tag-pagebreak-text": "Text for page break\n{{Identical|Page break}}",
 	"bs-universalexport-tag-exclude-text": "Text for this text will not be exported.",
 	"bs-universalexport-tag-hidetitle-text": "Text for the title of this page will be not be visible in the export.",
 	"bs-universalexport-tag-excludearticle-text": "Text for this page may not be exported.",

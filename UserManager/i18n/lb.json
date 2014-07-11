@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-usermanager-self-nodelete": "Dir kënnt Äre Benotzerkont net läschen.",
+	"bs-usermanager-enter-pwd": "Gitt w.e.g. e Passwuert an.",
+	"bs-usermanager-idnotexist": "Dëse Benotzer gëtt et net.",
+	"bs-usermanager-invalid-pwd": "D'Passwuert ass net valabel.",
+	"bs-usermanager-invalid-realname": "De richtegen Numm ass net valabel.",
+	"bs-usermanager-invalid-uname": "De Benotzernumm ass net valabel.",
+	"bs-usermanager-invalid-email-gen": "D'E-Mail-Adress ass net valabel.",
+	"bs-usermanager-user-deleted": "De Benotzer gouf geläscht.",
+	"bs-usermanager-user-exists": "De Benotzernumm gëtt et schonn.",
+	"bs-usermanager-save-successful": "Ännerunge gespäichert.",
+	"bs-usermanager-headerusername": "Benotzernumm",
+	"bs-usermanager-headerrealname": "Richtegen Numm",
+	"bs-usermanager-headergroups": "Gruppen",
+	"bs-usermanager-titleadduser": "Benotzer derbäisetzen",
+	"bs-usermanager-titleeditdetails": "Benotzer änneren",
+	"bs-usermanager-labelnewpassword": "Passwuert",
+	"bs-usermanager-labelpasswordcheck": "Passwuert confirméieren",
+	"bs-usermanager-titledeleteuser": "Benotzer läschen"
+}

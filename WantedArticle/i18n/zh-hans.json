@@ -5,7 +5,7 @@
 		]
 	},
 	"bs-wantedarticle-desc": "建议需要的页面",
-	"prefs-wantedarticle": "待撰页面",
+	"prefs-wantedarticle": "需要的页面",
 	"bs-wantedarticle-ajax-error-no-parameter": "没提供页面标题。",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "建议的页面“$1”已存在。",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "页面“$1”已建议。",

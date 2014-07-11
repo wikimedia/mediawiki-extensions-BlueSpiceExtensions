@@ -3,12 +3,13 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Robby",
-			"Ата"
+			"Ата",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-shoutbox-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of shoutbox extension",
 	"prefs-shoutbox": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for shout box section in preferences. \n {{Identical|Shoutbox}}",
-	"bs-shoutbox-title": "Fieldset legend for shoutbox",
+	"bs-shoutbox-title": "Fieldset legend for shoutbox\n{{Identical|Shoutbox}}",
 	"bs-shoutbox-message": "Default text in textarea for message\n{{Identical|Message}}",
 	"bs-shoutbox-shout": "Shout it",
 	"bs-shoutbox-no-entries": "Text for nothing here yet.",

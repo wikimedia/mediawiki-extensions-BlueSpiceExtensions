@@ -11,7 +11,7 @@
 	"bs-responsibleeditors-mail-text-re-article-changed": "Die Seite \"$1\", für den Sie als verantwortlicher Redakteur eingetragen sind, wurde von $2 bearbeitet. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $3",
 	"bs-responsibleeditors-mail-text-re-article-deleted": "Die Seite \"$1\", für den Sie als verantwortlicher Redakteur eingetragen sind, wurde von $2 gelöscht. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $3",
 	"bs-responsibleeditors-mail-text-re-article-moved": "Die Seite \"$1\", für den Sie als verantwortlicher Redakteur eingetragen sind, wurde von $3 nach \"$2\" verschoben. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $3",
-	"bs-responsibleeditors-yourresponsibilities": "Ihre Verantwortlichkeiten",
 	"bs-responsibleeditors-no-own-responsibilities": "Sie sind für keine Seite der verantworliche Redakteur.",
+	"bs-responsibleeditors-yourresponsibilities": "Ihre Verantwortlichkeiten",
 	"bs-responsibleeditors-yourresponsibilitiesdesc": "Liste der Seiten, für die Sie verantworlich sind."
 }
