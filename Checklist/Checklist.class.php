@@ -44,7 +44,7 @@ class Checklist extends BsExtensionMW {
 
 	public $iCheckboxCounter = 0;
 	public $bCheckboxFound = false;
-	
+
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
@@ -88,7 +88,7 @@ class Checklist extends BsExtensionMW {
 
 		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
 		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bscheckbox" );
-		
+
 		// Add context menu entry
 		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsChecklist', $aConfigStandard["contextmenu"] );
 		return true;
@@ -106,7 +106,7 @@ class Checklist extends BsExtensionMW {
 		$oWikiPage = WikiPage::newFromID( $sArticleId );
 		$oContent = $oWikiPage->getContent();
 		$sContent = $oContent->getNativeData();
-		
+
 		// Maybe a sanity-check is just enough here
 		$sNewValue = 'value="';
 		if ($sValue == 'true' )
@@ -117,11 +117,11 @@ class Checklist extends BsExtensionMW {
 			$sNewValue .= $sValue;
 		#$sNewValue .= $iPos;
 		$sNewValue .= '" ';
-		
+
 		$sContent = self::preg_replace_nth( "/(<bs:checklist )([^>]*?>)/", "$1".$sNewValue."$2", $sContent, $iPos );
-		
+
 		#return $sContent;
-		
+
 		$sSummary = "Modified Check";
 		$oContentHandler = $oContent->getContentHandler();
 		$oNewContent = $oContentHandler->makeContent($sContent, $oWikiPage->getTitle());
@@ -129,7 +129,7 @@ class Checklist extends BsExtensionMW {
 
 		return 'true';
 	}
-	
+
 	public static function getOptionsList() {
 		$oRequest = RequestContext::getMain()->getRequest();
 		$sList = $oRequest->getVal( 'listId', '' );
@@ -150,25 +150,25 @@ class Checklist extends BsExtensionMW {
 					return reset($found);
 			}, $subject,$nth  );
 	}
-	
+
 	/**
 	 *
 	 * @param Parser $parser
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onParserFirstCallInit( &$parser ) {
 		$parser->setHook( 'bs:checklist', array( &$this, 'onMagicWordBsChecklist' ) );
 		return true;
 	}
-	
-		public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
+
+	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
 		$this->getOutput()->addModuleStyles('ext.bluespice.checklist.styles');
 		$this->getOutput()->addModules('ext.bluespice.checklist');
-		
+
 		$aRows[0]['dialogs'][60] = 'bs-editbutton-checklist';
 
 		$aButtonCfgs['bs-editbutton-checklist'] = array(
-			'tip' => wfMessage( 'bs-checklist-menu_insert_checkbox' )->plain(),
+			'tip' => wfMessage( 'bs-checklist-menu-insert-checkbox' )->plain(),
 			'open' => '<bs:checklist />'
 		);
 		return true;
@@ -183,17 +183,23 @@ class Checklist extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
+		$aMessage = array();
+		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-desc' )->plain().'<br />';
+		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-type' )->plain();
+		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-list' )->plain();
+		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-value' )->plain();
+
 		$oResponse->result[] = array(
 			'id' => 'bs:checklist',
 			'type' => 'tag',
 			'name' => 'checklist',
-			'desc' => wfMessage( 'bs-checklist-tag-checklist-desc' )->parse(),
+			'desc' => implode( '<br />', $aMessage ),
 			'code' => '<bs:checklist />',
 		);
 
 		return true;
 	}
-	
+
 	public static function getListOptions( $listTitle ) {
 		$aOptions = array();
 		$oTitle = Title::newFromText( $listTitle );
@@ -219,14 +225,14 @@ class Checklist extends BsExtensionMW {
 		 *16:38:56: Und falls das nicht geht sollte ein $oTitle-&gt;invalidateCache(); den gleichen Effekt haben.
 		 */
 		$parser->disableCache();
-		
+
 		$this->bCheckboxFound = true;
 		$sOut = array();
-		
+
 		if (isset($args['list'])) {
 			$aOptions = $this->getListOptions( $args['list'] );
 		}
-		
+
 		//$aOptions = array("grün", "blau", "gelb", "rot");
 		$sSelectColor = '';
 		if (isset($args['type']) && $args['type'] == 'list' ) {
@@ -234,14 +240,14 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = "id='".$this->getNewCheckboxId()."' ";
 			$sOut[] = "onchange='BsChecklist.change(this);' ";
 			$sOut[] = ">";
-			
+
 			foreach ( $aOptions as $sOption ) {
 				$aOptionSet = explode("|", $sOption);
-				
+
 				if (!$sSelectColor && isset ($aOptionSet[1])) {
 					$sSelectColor = "style='color:".$aOptionSet[1].";' ";
 				}
-				
+
 				$sOption = $aOptionSet[0];
 				$sOut[] = "<option ";
 				if (isset ($aOptionSet[1])) {
@@ -276,7 +282,7 @@ class Checklist extends BsExtensionMW {
 		$this->iCheckboxCounter++;
 		return $this->iCheckboxCounter;
 	}
-	
+
 	/**
 	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
 	 * @param OutputPage $oOutputPage

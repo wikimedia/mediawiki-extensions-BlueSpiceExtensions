@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-checklist-desc": "Provides checklist functionality",
+	"bs-checklist-button-checkbox-title": "Checklist elements",
+	"bs-checklist-menu-insert-list-title": "Insert list",
+	"bs-checklist-menu-insert-checkbox": "Checkbox",
+	"bs-checklist-dlg-insert-list-title": "{{int:bs-checklist-menu-insert-list-title}}",
+	"bs-checklist-dlg-insert-list-value-list": "Value list",
+	"bs-checklist-tag-checklist-desc": "Renders a checkbox or select field. Available configuration attributes:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> renders a select list.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Name of the template with the available values. Parameter <code>type</code> must be set to <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> or a value out of the list template."
+}
