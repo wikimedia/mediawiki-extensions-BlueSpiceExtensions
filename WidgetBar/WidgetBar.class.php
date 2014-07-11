@@ -128,7 +128,7 @@ class WidgetBar extends BsExtensionMW {
 		$oWidgetBarArticleTitle = Title::makeTitle( NS_USER, $user->getName().'/Widgetbar' );
 		$preferences['MW_WidgetBar_LinkToEdit']['default'] = array(
 			'href' => $oWidgetBarArticleTitle->getEditURL(),
-			'content' => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->plain()
+			'content' => wfMessage( 'bs-widgetbar-userpagesettings-link-text' )->text()
 		);
 		return true;
 	}

@@ -109,7 +109,6 @@ class UserPreferences extends BsExtensionMW {
 
 			if ( !( $iOptions & ( BsConfig::LEVEL_USER ) ) ) continue;
 
-			$sAdapterName = strtoupper( $oVariable->getAdapter() );
 			$sExtensionName = $oVariable->getExtension();
 
 			if ( empty( $sExtensionName ) ){
@@ -119,46 +118,29 @@ class UserPreferences extends BsExtensionMW {
 				$sExtensionNameLower = strtolower( $sExtensionName );
 				$sExtensionTranslation = wfMessage( 'prefs-' . $sExtensionNameLower )->plain();
 			}
-			$aSortedVariables[$sAdapterName][$sExtensionTranslation][$sExtensionName][] = $oVariable;
-			ksort( $aSortedVariables[$sAdapterName] );
+			$aSortedVariables[$sExtensionTranslation][$sExtensionName][] = $oVariable;
+			ksort( $aSortedVariables );
 		}
 
-		foreach ( $aSortedVariables as $sAdapterName => $aExtensions ) {
-			if ( !count( $aExtensions ) )continue;
-			$sBaseSection = 'bluespice/' . $sAdapterName;
+		foreach ( $aSortedVariables as $val ){
+			if ( !count( $val ) ) continue;
 
-			foreach ( $aExtensions as $val ){
-				if ( !count( $val ) ) continue;
+			foreach ( $val as $sExtensionName => $aSettings ) {
+				// if continue, then $oAdapterSetView is not added to output
+				if ( !count( $aSettings ) ) continue;
+				$sSection = 'bluespice/' . $sExtensionName;
 
-				foreach ( $val as $sExtensionName => $aSettings ) {
-					// if continue, then $oAdapterSetView is not added to output
-					if ( !count( $aSettings ) ) continue;
-					$sSection = $sBaseSection . '/' . $sExtensionName;
+				foreach ( $aSettings as $oVariable ) {
+					$field = $oVariable->getFieldDefinition( $sSection );
 
-					foreach ( $aSettings as $oVariable ) {
-						$field = array(
-							'type' => $oVariable->getFieldMapping(),
-							'label-message' => $oVariable->getI18nName(), // a system message
-							'section' => $sSection,
-							'default' => ( BsStringHelper::isSerialized( $oVariable->getValue() ) ) ? unserialize( $oVariable->getValue() ) : $oVariable->getValue()
-						);
+					if ( $oVariable->getOptions() & BsConfig::USE_PLUGIN_FOR_PREFS ) {
+						$oExtension = BsExtensionManager::getExtension( $sExtensionName );
+						$tmp = $oExtension->runPreferencePlugin( 'MW', $oVariable );
 
-						if ( $oVariable->getFieldMapping() == 'multiselectplusadd' ) {
-							$field[ 'options' ] = $oVariable->getValue();
-							$field[ 'title' ] = 'toc-' . $oVariable->getName() . '-title';
-							$field[ 'message' ] = 'toc-' . $oVariable->getName() . '-message';
-						}
-
-						if ( $oVariable->getOptions() & BsConfig::USE_PLUGIN_FOR_PREFS ) {
-
-							$oExtension = BsExtensionManager::getExtension( $sExtensionName );
-							$tmp = $oExtension->runPreferencePlugin( 'MW', $oVariable );
-
-							$field = array_merge( $field, $tmp );
-						}
-
-						$preferences[$oVariable->generateFieldId()] = $field;
+						$field = array_merge( $field, $tmp );
 					}
+
+					$preferences[$oVariable->generateFieldId()] = $field;
 				}
 			}
 		}

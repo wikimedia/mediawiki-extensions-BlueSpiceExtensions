@@ -85,6 +85,8 @@ class UserSidebar extends BsExtensionMW {
 
 		$wgAPIModules['sidebar'] = 'ApiSidebar';
 
+		BsConfig::registerVar( 'MW::UserSidebar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-usersidebar-userpagesettings-link-title', 'link' );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -135,7 +137,7 @@ class UserSidebar extends BsExtensionMW {
 		$oUserSidebarArticleTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Sidebar' );
 		$aPreferences['MW_UserSidebar_LinkToEdit']['default'] = array(
 			'href' => $oUserSidebarArticleTitle->getEditURL(),
-			'content' => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->plain()
+			'content' => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->text()
 		);
 		return true;
 	}
