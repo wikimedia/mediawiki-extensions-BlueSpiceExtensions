@@ -39,12 +39,12 @@
 	"bs-responsibleeditors-no-own-responsibilities": "Text for there are no pages which you are the responsible editor for.",
 	"bs-responsibleeditors-yourresponsibilities": "Headline text for your responsibilities",
 	"bs-responsibleeditors-yourresponsibilitiesdesc": "Text for list of pages which you are responsible for.",
-	"action-responsibleeditors-viewspecialpage": "Text for view pages which are protected with the \"ResponsibleEditors-Viewspecialpage\" right",
-	"right-responsibleeditors-viewspecialpage": "Text for use responsible editors extension",
+	"action-responsibleeditors-viewspecialpage": "{{doc-action|responsibleeditors-viewspecialpage}}",
+	"right-responsibleeditors-viewspecialpage": "{{doc-right|responsibleeditors-viewspecialpage}}",
 	"bs-responsibleeditors-availableeditors": "Headline text for available editors",
 	"bs-responsibleeditors-assignededitors": "Headline text for assigned editors",
-	"bs-responsibleeditors-title": "Dialog title for responsible editors \n{{Identical|Responsible editors}}",
-	"bs-responsibleeditors-titleeditors": "Dialog title for responsible editors \n{{Identical|Responsible editors}}",
+	"bs-responsibleeditors-title": "Window title for responsible editors \n{{Identical|Responsible editors}}",
+	"bs-responsibleeditors-titleeditors": "Window title for responsible editors \n{{Identical|Responsible editors}}",
 	"bs-responsibleeditors-cmchangerespeditors": "Lable text for change responsible editors",
 	"bs-responsibleeditors-columnpage": "Column headline for page \n{{Identical|Page}}",
 	"bs-responsibleeditors-columnresponsibleeditor": "Column headline for responsible editors \n{{Identical|Responsible editors}}",
@@ -53,5 +53,7 @@
 	"bs-responsibleeditors-rbdisplaymodeonlynotassigned": "Option on special page for show only pages without assigned responsibility",
 	"bs-responsibleeditors-rbdisplaymodeall": "Option on special page for show all pages",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Text for select a namespace",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "Text for not assigned"
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Text for not assigned",
+	"log-name-bs-responsibleeditors": "Used in [[Special:Log]], label for responsible editors log",
+	"log-description-bs-responsibleeditors": "Used in [[Special:Log]], log description for editors responsible for pages."
 }
