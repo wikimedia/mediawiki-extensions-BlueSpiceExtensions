@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-insertfile-labelfilter": "Filter:",
+	"bs-insertfile-filename": "Numm vum Fichier",
+	"bs-insertfile-filesize": "Gréisst vum Fichier",
+	"bs-insertfile-lastmodified": "Rezent Ännerungen",
+	"bs-insertfile-labelupload": "Eroplueden",
+	"bs-insertfile-details-title": "Detailer",
+	"bs-insertfile-labeldimensions": "Gréisst (B x H)",
+	"bs-insertfile-labelalt": "Alternativen Text",
+	"bs-insertfile-labellink": "Link",
+	"bs-insertfile-alignleft": "lenks",
+	"bs-insertfile-labeltype": "Dekoratioun",
+	"bs-insertfile-typethumb": "Miniaturbild",
+	"bs-insertfile-uploadimageemptytext": "Sicht en neit Bild eraus ...",
+	"bs-insertfile-uploadimagefieldlabel": "Neit Bild eroplueden",
+	"bs-insertfile-uploaddescfilelabel": "Resumé",
+	"bs-insertfile-uploadwatchthislabel": "Dëse Fichier iwwerwaachen",
+	"bs-insertfile-uploadsubmitvalue": "Fichier eroplueden",
+	"bs-insertfile-warning": "Warnung",
+	"bs-insertfile-error": "Feeler",
+	"bs-insertfile-uploadcomplete": "Äre Fichier gouf gespäichert.",
+	"bs-insertfile-titlefile": "Fichier drsetzen",
+	"bs-insertfile-titleimage": "Bild drasetzen",
+	"bs-insertfile-license": "Lizenz",
+	"bs-insertfile-categories": "Kategorien",
+	"bs-insertfile-linktext": "Tesxt weisen",
+	"bs-insertfile-no-link": "Kee Link."
+}

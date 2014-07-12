@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-permissionmanager-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of permisson manager extension",
@@ -10,15 +11,15 @@
 	"bs-permissionmanager-grouping-global": "Column headline for namespace independent permissions\n{{Identical|Namespace independent permissions}}",
 	"bs-permissionmanager-grouping-local": "Column headline for namespace specific permissions\n{{Identical|Namespace specific permissions}}",
 	"bs-permissionmanager-btn-group-label": "Button text for group:\n{{Identical|Group}}",
-	"bs-permissionmanager-header-permissions": "Column headline for permissions\n{{Identical|Permissions}}",
+	"bs-permissionmanager-header-permissions": "Column headline for permissions\n{{Identical|Permission}}",
 	"bs-permissionmanager-header-global": "Column headline for wiki\n{{Identical|Wiki}}",
-	"bs-permissionmanager-header-namespaces": "Column headline for namespaces\n{{Identical|Namespaces}}",
+	"bs-permissionmanager-header-namespaces": "Column headline for namespaces\n{{Identical|Namespace}}",
 	"bs-permissionmanager-header-group": "Column headline for group\n{{Identical|Group}}",
 	"bs-permissionmanager-btn-save-label": "Column headline for save\n{{Identical|Save}}",
-	"bs-permissionmanager-btn-save-in-progress-label": "Button text for saving ...",
+	"bs-permissionmanager-btn-save-in-progress-label": "Button text for saving ...\n{{Identical|Saving}}",
 	"bs-permissionmanager-save-success": "Success message for permissions saved.",
-	"bs-permissionmanager-labeltemplates": "Column headline for templates\n{{Identical|Templates}}",
-	"bs-permissionmanager-btn-template-editor": "Button text for edit templates",
+	"bs-permissionmanager-labeltemplates": "Column headline for templates\n{{Identical|Template}}",
+	"bs-permissionmanager-btn-template-editor": "Button text for edit templates\n{{Identical|Edit template}}",
 	"bs-permissionmanager-labeltpled": "Window title for template editor",
 	"bs-permissionmanager-labeltpled-desc": "Column headline for description\n{{Identical|Description}}",
 	"bs-permissionmanager-labeltpled-active": "Column headline for active\n{{Identical|Active}}",
@@ -29,11 +30,11 @@
 	"bs-permissionmanager-msgtpled-success": "Success message for template saved.",
 	"bs-permissionmanager-msgtpled-savefailure": "Error message for template could not be saved.",
 	"bs-permissionmanager-msgtpled-saveonabort": "Message for do you want to save all data now?",
-	"bs-permissionmanager-msgtpled-new": "Label for template name:",
+	"bs-permissionmanager-msgtpled-new": "Label for template name:\n{{Identical|Tempalte name}}",
 	"bs-permissionmanager-msgtpled-edit": "Label for new template name:",
 	"bs-permissionmanager-msgtpled-delete": "Success message for template deleted.",
 	"bs-permissionmanager-msgtpled-deletefail": "Error message for template could not be deleted.",
-	"bs-permissionmanager-titletpled-new": "Window title for create template",
+	"bs-permissionmanager-titletpled-new": "Window title for create template\n{{Identical|Create template}}",
 	"bs-permissionmanager-titletpled-edit": "Window title for rename template",
 	"bs-permissionmanager-titletpled-delete": "Window title for delete template",
 	"bs-permissionmanager-pref-lockmode": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for activate lockmode",

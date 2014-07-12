@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"McDutchie"
 		]
 	},
 	"bs-visualeditor-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of visual editor extension",
@@ -9,7 +10,7 @@
 	"bs-visualeditor-editbutton-hint": "Tooltip text for visual editor \n{{Identical|Visual editor}}",
 	"bs-visualeditor-pref-disablens": "Disable in namespaces:",
 	"bs-visualeditor-pref-use": "Use WYSIWYG editor by default",
-	"bs-visualeditor-save-message": "Text for saved revision at $1 with summary \"$2\". \n $1 is the date when revision was created \n $2 is the summary of the revision",
+	"bs-visualeditor-save-message": "Text for saved revision at $1 with summary \"$2\". \n* $1 is the date when revision was created \n* $2 is the summary of the revision",
 	"bs-visualeditor-no-summary": "Text for no summary \n{{Identical|no summary}}",
 	"bs-visualeditor-sortable": "Text for sortable \n{{Identical|sortable}}",
 	"bs-visualeditor-wikitable": "Text for standard \n{{Identical|standard}}",

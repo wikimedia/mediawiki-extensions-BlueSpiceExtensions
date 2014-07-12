@@ -4,8 +4,11 @@
 			"Robby"
 		]
 	},
+	"bs-visualeditor-desc": "TinyMCE WYSIWYG-Editeur",
 	"prefs-visualeditor": "Visuellen Editeur",
+	"bs-visualeditor-editbutton-hint": "Visuellen Editeur",
 	"bs-visualeditor-pref-disablens": "An Nummräim desaktivéieren:",
+	"bs-visualeditor-save-message": "Gespäichert Versioun vum $1 mam Resumé \"$2\".",
 	"bs-visualeditor-no-summary": "Kee Resumé",
 	"bs-visualeditor-wikitable": "Standard",
 	"bs-visualeditor-contenttable": "Inhalt",
@@ -27,5 +30,6 @@
 	"bs-visualeditor-bsactions-heading3": "Iwwerschrëft 3",
 	"bs-visualeditor-bsactions-heading4": "Iwwerschrëft 4",
 	"bs-visualeditor-bsactions-heading5": "Iwwerschrëft 5",
+	"bs-visualeditor-bsactions-heading6": "Iwwerschrëft 6",
 	"bs-visualeditor-switch-noeditor-desc": "Desaktivéiert VisualEditor op dëser Säit."
 }

@@ -6,5 +6,6 @@
 	},
 	"bs-shoutbox-message": "İleti",
 	"bs-shoutbox-loading": "Yükleniyor...",
+	"bs-shoutbox-pref-numberofshouts": "Görüntülenen ileti sayısı:",
 	"bs-shoutbox-confirm-title": "Onayla"
 }

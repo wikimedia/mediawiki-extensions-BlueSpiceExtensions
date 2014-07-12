@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-insertmagic-desc": "对编辑模式加入对话框以允许插入魔术字和标签",
+	"bs-insertmagic": "插入魔术字",
+	"bs-insertmagic-notoc": "隐藏表中内容。",
+	"bs-insertmagic-currentyear": "当前年",
+	"bs-insertmagic-currentmonth": "当前月（零填充数字）。",
+	"bs-insertmagic-currentmonthname": "当前月（名字）。",
+	"bs-insertmagic-currentmonthnamegen": "当前月（所有格形式）。",
+	"bs-insertmagic-currentmonthabbrev": "当前月（缩写）。",
+	"bs-insertmagic-currentdayname": "周中一天（名字）。",
+	"bs-insertmagic-currenttime": "时间（24小时，HH:mm格式）。",
+	"bs-insertmagic-currenthour": "小时（24小时制，零填充数字）。",
+	"bs-insertmagic-currentweek": "周（数字）。",
+	"bs-insertmagic-currenttimestamp": "时间戳格式：YYYYMMDDHHmmss。",
+	"bs-insertmagic-sitename": "Wiki站点名。",
+	"bs-insertmagic-server": "域URL。",
+	"bs-insertmagic-servername": "域名。",
+	"bs-insertmagic-currentversion": "Wiki的MediaWiki版本。",
+	"bs-insertmagic-contentlanguage": "Wiki的默认界面语言。",
+	"bs-insertmagic-noinclude": "将处理<code>&lt;noinclude&gt;</code>与<code>&lt;/noinclude&gt;</code>之间的任何东西并只当页面直接浏览时显示，它将无可取代。",
+	"bs-insertmagic-includeonly": "逆向行为是<code>&lt;includeonly&gt;</code>。",
+	"bs-insertmagic-dlg-title": "插入魔术字或标签",
+	"bs-insertmagic-type-tags": "标签",
+	"bs-insertmagic-type-variables": "变量",
+	"bs-insertmagic-type-switches": "行为交换",
+	"bs-insertmagic-label-first": "一、选择标签或魔术字",
+	"bs-insertmagic-label-second": "二、修改代码",
+	"bs-insertmagic-label-desc": "说明"
+}

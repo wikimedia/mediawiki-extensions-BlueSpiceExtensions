@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-extendedsearch-facet-category": "Kategori",
+	"bs-extendedsearch-finished": "Tamamlandı",
+	"bs-extendedsearch-search-help-multiselect": "Birden çok öğe seçmek için CTRL tuşunu basılı tutun.",
+	"bs-extendedsearch-pref-scope-text": "Tam metin",
+	"bs-extendedsearchadmin-label": "Arama seçenekleri",
+	"bs-extendedsearch-status": "Durum",
+	"bs-extendedsearch-statistics": "İstatistikler",
+	"bs-extendedsearch-warning": "Uyarı",
+	"bs-extendedsearch-did-you-mean": "Bunu mu demek istediniz \"$1\"?"
+}

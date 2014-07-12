@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-pagetemplates-empty-page": "Eidel Säit",
+	"bs-pagetemplates-empty-page-desc": "Mat enger edeler Sät ufänken.",
+	"bs-pagetemplates-nooldtpl": "Déi al Schabloun gouf net fonnt.",
+	"bs-pagetemplates-tpl-edited": "D'Ännerunge gouf gespäichert.",
+	"bs-pagetemplates-tpl-deleted": "D'Schabloun gouf geläscht.",
+	"bs-pagetemplates-general-section": "Allgemeng",
+	"bs-pagetemplates-headerlabel": "Etikett",
+	"bs-pagetemplates-headertargetnamespace": "Nummraum",
+	"bs-pagetemplates-tipeditdetails": "Schabloun änneren",
+	"bs-pagetemplates-tipdeletetemplate": "Schabloun läschen",
+	"bs-pagetemplates-tipaddtemplate": "Schabloun derbäisetzen",
+	"bs-pagetemplates-label-tpl": "Numm vun der Schabloun",
+	"bs-pagetemplates-label-desc": "Beschreiwung",
+	"bs-pagetemplates-label-targetns": "Nummraum",
+	"bs-pagetemplates-label-article": "Schabloun"
+}

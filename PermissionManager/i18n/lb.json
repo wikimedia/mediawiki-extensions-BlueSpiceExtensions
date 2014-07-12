@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-permissionmanager-header-global": "Wiki",
+	"bs-permissionmanager-header-namespaces": "Nummraim",
+	"bs-permissionmanager-btn-save-label": "Späicheren",
+	"bs-permissionmanager-btn-save-in-progress-label": "Späicheren ...",
+	"bs-permissionmanager-labeltemplates": "Schablounen",
+	"bs-permissionmanager-labeltpled-desc": "Beschreiwung",
+	"bs-permissionmanager-labeltpled-active": "Aktiv",
+	"bs-permissionmanager-labeltpled-add": "Nei",
+	"bs-permissionmanager-labeltpled-edit": "Änneren",
+	"bs-permissionmanager-labeltpled-delete": "Läschen",
+	"bs-permissionmanager-labeltpled-cancel": "Ofbriechen",
+	"bs-permissionmanager-msgtpled-savefailure": "Schabloun konnt net gespäichert ginn.",
+	"bs-permissionmanager-titletpled-delete": "Schabloun läschen"
+}

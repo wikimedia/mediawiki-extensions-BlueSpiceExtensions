@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"SnowedEarth"
+		]
+	},
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "Valeurs fournies invalides.",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Accès refusé. Vous n'êtes pas autorisé à effectuer cette action.",
+	"bs-responsibleeditors-statebartop-icon-alt": "Il y a un éditeur responsable pour cette page",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "La page donnée n'existe pas.",
+	"bs-responsibleeditors-no-own-responsibilities": "Vous n'êtes l'éditeur responsable d'aucune page.",
+	"action-responsibleeditors-viewspecialpage": "afficher les pages qui sont protégées avec le droit « ResponsibleEditors-Viewspecialpage »",
+	"bs-responsibleeditors-title": "Editeurs responsables",
+	"bs-responsibleeditors-columnnamespace": "Espace de noms",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Sélectionnez un espace de noms"
+}

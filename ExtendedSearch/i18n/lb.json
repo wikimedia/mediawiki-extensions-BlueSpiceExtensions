@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategorie|Kategorien}}: $2",
+	"bs-extendedsearch-error": "Feeler:",
+	"bs-extendedsearch-facet-category": "Kategorie",
+	"bs-extendedsearch-facet-editors": "Auteuren",
+	"bs-extendedsearch-facet-namespace": "Nummraum",
+	"bs-extendedsearch-facet-namespace-files": "Fichieren",
+	"bs-extendedsearch-facet-type": "Format",
+	"bs-extendedsearch-facet-uncategorized": "Net kategoriséiert",
+	"bs-extendedsearch-facet-namespace-extfiles": "Extern Fichieren",
+	"bs-extendedsearch-finished": "Fäerdeg",
+	"bs-extendedsearch-search-editors": "No Auteure sichen:",
+	"bs-extendedsearch-sort-relevance": "Relevanz",
+	"bs-extendedsearch-sort-title": "Titel",
+	"bs-extendedsearch-sort-ts": "Zäit",
+	"bs-extendedsearch-sort-type": "Typ",
+	"bs-extendedsearch-pref-scope-title": "Titel",
+	"bs-extendedsearch-pref-showmlt": "Ähnlech Säite weisen",
+	"bs-extendedsearch-statistics": "Statistiken",
+	"bs-extendedsearch-unknown": "Onbekannt",
+	"bs-extendedsearch-section": "Abschnitt",
+	"bs-extendedsearch-morelikethis": "Ähnlech Säiten",
+	"bs-extendedsearch-no-mlt-found": "Keng ähnlech Säite fonnt.",
+	"bs-extendedsearch-redirect": "Viruleedung vu(n): $1",
+	"bs-extendedsearch-more": "Méi",
+	"bs-extendedsearch-fewer": "Manner"
+}

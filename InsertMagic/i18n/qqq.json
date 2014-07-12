@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.biz>",
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-insertmagic-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of insert magic extension",
@@ -59,8 +60,8 @@
 	"bs-insertmagic-noinclude": "Text for anything between <code>&lt;noinclude&gt;</code> and <code>&lt;/noinclude&gt;</code> will be processed and displayed only when the page is being viewed directly, it will not be included or substituted.",
 	"bs-insertmagic-includeonly": "Text for the converse is <code>&lt;includeonly&gt;</code>.",
 	"bs-insertmagic-dlg-title": "Window title for insert tag or magic word \n {{Identical|Insert magic word or tag}}",
-	"bs-insertmagic-type-tags": "Option in dialog for tags\n {{Identical|Tags}}",
-	"bs-insertmagic-type-variables": "Option in dialog for variables \n {{Identical|Variables}}",
+	"bs-insertmagic-type-tags": "Option in dialog for tags\n {{Identical|Tag}}",
+	"bs-insertmagic-type-variables": "Option in dialog for variables \n {{Identical|Variable}}",
 	"bs-insertmagic-type-switches": "Option in dialog for behavior switches \n {{Identical|Behavior switches}}",
 	"bs-insertmagic-label-first": "Headline text for 1. choose tag or magic word \n {{Identical|1. Choose tag or magic word}}",
 	"bs-insertmagic-label-second": "Headline text for 2. modify code \n {{Identical|2. Modify code}}",

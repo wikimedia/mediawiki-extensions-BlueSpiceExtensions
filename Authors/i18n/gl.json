@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
 	"bs-authors-desc": "Mostra as imaxes de perfil dos autores dunha páxina",
@@ -13,6 +14,6 @@
 	"bs-authors-pref-imageheight": "Altura da imaxe:",
 	"bs-authors-pref-imagewidth": "Ancho da imaxe:",
 	"bs-authors-pref-limit": "Límite de autores a mostrar:",
-	"bs-authors-pref-show": "Mostrar autores",
-	"bs-authors-switch-description": "Oculta os autores desta páxina."
+	"bs-authors-pref-show": "Mostrar os autores",
+	"bs-authors-switch-description": "Agocha os autores nesta páxina."
 }

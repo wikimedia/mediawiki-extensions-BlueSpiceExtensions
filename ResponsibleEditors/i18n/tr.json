@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-responsibleeditors-pref-echange": "Sayfa değiştirildiğinde bildir",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Erişim engellendi. Bu eylemi gerçekleştirme yetkiniz yok.",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Belirtilen sayfa mevcut değil."
+}
