@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"prefs-pagetemplates": "Predefinições",
+	"bs-pagetemplates-empty-page": "Página vazia",
+	"bs-pagetemplatesadmin-label": "Predefinições",
+	"bs-pagetemplates-tpl-desc-toolong": "A descrição é demasiado longa. Por favor, use um máximo de 255 carateres.",
+	"bs-pagetemplates-tpl-label-toolong": "O rótulo é demasiado longo. Por favor, use um máximo de 255 carateres.",
+	"bs-pagetemplates-tpl-label-empty": "Por favor, introduza um rótulo.",
+	"bs-pagetemplates-tpl-name-toolong": "O nome da predefinição é demasiado longo. Por favor, use um máximo de 255 carateres.",
+	"bs-pagetemplates-tpl-name-empty": "Por favor, insira um nome para a predefinição.",
+	"bs-pagetemplates-headertargetnamespace": "Domínio",
+	"bs-pagetemplates-label-article": "Predefinição"
+}

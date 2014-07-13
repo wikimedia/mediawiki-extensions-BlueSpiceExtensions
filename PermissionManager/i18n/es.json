@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"prefs-permissionmanager": "Gestor de permisos",
+	"bs-permissionmanager-label": "Gestor de permisos",
+	"bs-permissionmanager-btn-group-label": "Grupo:",
+	"bs-permissionmanager-header-permissions": "Permisos",
+	"bs-permissionmanager-header-global": "Wiki",
+	"bs-permissionmanager-header-namespaces": "Espacios de nombres",
+	"bs-permissionmanager-btn-save-label": "Guardar",
+	"bs-permissionmanager-btn-save-in-progress-label": "Guardando…",
+	"bs-permissionmanager-labeltemplates": "Plantillas",
+	"bs-permissionmanager-btn-template-editor": "Editar plantillas",
+	"bs-permissionmanager-labeltpled": "Editor de plantillas",
+	"bs-permissionmanager-labeltpled-desc": "Descripción",
+	"bs-permissionmanager-labeltpled-add": "Nuevo",
+	"bs-permissionmanager-labeltpled-edit": "Editar",
+	"bs-permissionmanager-labeltpled-cancel": "Cancelar",
+	"bs-permissionmanager-msgtpled-savefailure": "No se pudo guardar la plantilla.",
+	"bs-permissionmanager-msgtpled-saveonabort": "¿Quieres guardar todos los datos ahora?",
+	"bs-permissionmanager-msgtpled-new": "Nombre de la plantilla:",
+	"bs-permissionmanager-titletpled-new": "Crear una plantilla"
+}

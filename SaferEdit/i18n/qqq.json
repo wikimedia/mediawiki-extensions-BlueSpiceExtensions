@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Shirayuki"
+			"Shirayuki",
+			"Robby"
 		]
 	},
 	"bs-saferedit-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of pages visited extension",
@@ -18,7 +19,7 @@
 	"bs-saferedit-pref-usese": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for activate safer editing",
 	"bs-saferedit-statebartopsaferedit": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for safer editing.\n{{Identical|Safer editing}}",
 	"bs-saferedit-statebartopsafereditediting": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for safer editing - someone is editing",
-	"bs-saferedit-lastsavedversion": "Text for last saved version from $1 - $2.\n $1 is the date of the last saved version, $2 is the time of the the last saved version.",
+	"bs-saferedit-lastsavedversion": "Text for last saved version from $1 - $2.\n* $1 is the date of the last saved version,\n* $2 is the time of the the last saved version.",
 	"bs-saferedit-unsavedchanges": "Text for there are unsaved changes.",
 	"bs-saferedit-othersectiontitle": "Window title for section to restore",
 	"bs-saferedit-othersectiontext1": "Text for there is a backup of another section.",

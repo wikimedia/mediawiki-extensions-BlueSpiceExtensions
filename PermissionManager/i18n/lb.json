@@ -4,11 +4,16 @@
 			"Robby"
 		]
 	},
+	"bs-permissionmanager-btn-group-label": "Grupp:",
+	"bs-permissionmanager-header-permissions": "Rechter",
 	"bs-permissionmanager-header-global": "Wiki",
 	"bs-permissionmanager-header-namespaces": "Nummraim",
+	"bs-permissionmanager-header-group": "Grupp",
 	"bs-permissionmanager-btn-save-label": "Späicheren",
 	"bs-permissionmanager-btn-save-in-progress-label": "Späicheren ...",
+	"bs-permissionmanager-save-success": "Rechter gespäichert.",
 	"bs-permissionmanager-labeltemplates": "Schablounen",
+	"bs-permissionmanager-btn-template-editor": "Schablounen änneren",
 	"bs-permissionmanager-labeltpled-desc": "Beschreiwung",
 	"bs-permissionmanager-labeltpled-active": "Aktiv",
 	"bs-permissionmanager-labeltpled-add": "Nei",
@@ -16,5 +21,9 @@
 	"bs-permissionmanager-labeltpled-delete": "Läschen",
 	"bs-permissionmanager-labeltpled-cancel": "Ofbriechen",
 	"bs-permissionmanager-msgtpled-savefailure": "Schabloun konnt net gespäichert ginn.",
+	"bs-permissionmanager-msgtpled-new": "Numm vun der Schabloun:",
+	"bs-permissionmanager-msgtpled-edit": "Neien Numm vun der Scahbloun:",
+	"bs-permissionmanager-msgtpled-deletefail": "Schabloun konnt net geläscht ginn.",
+	"bs-permissionmanager-titletpled-edit": "Schabloun ëmbenennen",
 	"bs-permissionmanager-titletpled-delete": "Schabloun läschen"
 }

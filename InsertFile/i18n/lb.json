@@ -4,6 +4,9 @@
 			"Robby"
 		]
 	},
+	"bs-insertfile-insert-image": "Bild drasetzen",
+	"bs-insertfile-insert-file": "Fichier drasetzen",
+	"bs-insertfile-labelsort": "Zortéieren no:",
 	"bs-insertfile-labelfilter": "Filter:",
 	"bs-insertfile-filename": "Numm vum Fichier",
 	"bs-insertfile-filesize": "Gréisst vum Fichier",
@@ -13,15 +16,21 @@
 	"bs-insertfile-labeldimensions": "Gréisst (B x H)",
 	"bs-insertfile-labelalt": "Alternativen Text",
 	"bs-insertfile-labellink": "Link",
+	"bs-insertfile-alignnone": "keng",
 	"bs-insertfile-alignleft": "lenks",
+	"bs-insertfile-alignright": "riets",
 	"bs-insertfile-labeltype": "Dekoratioun",
 	"bs-insertfile-typethumb": "Miniaturbild",
+	"bs-insertfile-typeframe": "Rumm",
 	"bs-insertfile-uploadimageemptytext": "Sicht en neit Bild eraus ...",
 	"bs-insertfile-uploadimagefieldlabel": "Neit Bild eroplueden",
+	"bs-insertfile-uploadfileemptytext": "En neie Fichier eraussichen ...",
 	"bs-insertfile-uploaddescfilelabel": "Resumé",
 	"bs-insertfile-uploadwatchthislabel": "Dëse Fichier iwwerwaachen",
+	"bs-insertfile-uploadignorewarningslabel": "All Warnungen ignoréieren",
 	"bs-insertfile-uploadsubmitvalue": "Fichier eroplueden",
 	"bs-insertfile-warning": "Warnung",
+	"bs-insertfile-allowedfiletypesare": "Valabe Fichierstype sinn:",
 	"bs-insertfile-error": "Feeler",
 	"bs-insertfile-uploadcomplete": "Äre Fichier gouf gespäichert.",
 	"bs-insertfile-titlefile": "Fichier drsetzen",
@@ -29,5 +38,6 @@
 	"bs-insertfile-license": "Lizenz",
 	"bs-insertfile-categories": "Kategorien",
 	"bs-insertfile-linktext": "Tesxt weisen",
-	"bs-insertfile-no-link": "Kee Link."
+	"bs-insertfile-no-link": "Kee Link.",
+	"bs-insertfile-upload-waitmessage": "Eroplueden am Gaang ..."
 }

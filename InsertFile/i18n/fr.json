@@ -49,5 +49,22 @@
 	"bs-insertfile-errornofileextensiononupload": "Le fichier que vous avez choisi n’a pas d’extension de fichier.",
 	"bs-insertfile-errornofileextensionondestination": "Le nom cible que vous avez choisi n’a pas d’extension de fichier.",
 	"bs-insertfile-errorWrongFileExtensionOnUpload": "Le fichier que vous avez choisi n’a pas d’extension de fichier valide.",
-	"bs-insertfile-errorWrongImageTypeOnUpload": "Le fichier que vous avez choisi n’est pas un type d’image autorisé."
+	"bs-insertfile-errorWrongImageTypeOnUpload": "Le fichier que vous avez choisi n’est pas un type d’image autorisé.",
+	"bs-insertfile-errorWrongFileTypeOnUpload": "Le fichier que vous avez choisi n’est pas un type de fichier autorisé.",
+	"bs-insertfile-errorWrongFileExtensionOnDestination": "Le nom cible que vous avez choisi n’est pas une extension de fichier valide.",
+	"bs-insertfile-errorwrongimagetypeondestination": "Le nom cible que vous avez choisi n’a pas une extension d’image autorisée.",
+	"bs-insertfile-errorwrongfiletypeondestination": "Le nom cible que vous avez choisi n’a pas une extension de fichier autorisée.",
+	"bs-insertfile-uploadcomplete": "Votre fichier a bien été enregistré.",
+	"bs-insertfile-titlefile": "Insérer un fichier",
+	"bs-insertfile-titleimage": "Insérer une image",
+	"bs-insertfile-tipkeepratio": "Conserver les proportions",
+	"bs-insertfile-of": "de",
+	"bs-insertfile-select-a-link": "Sélectionner ou entrer un lien",
+	"bs-insertfile-license": "Licence",
+	"bs-insertfile-categories": "Catégories",
+	"bs-insertfile-linktext": "Afficher le texte",
+	"bs-insertfile-no-link": "Aucun lien",
+	"bs-insertfile-error-no-medialink": "Aucun lien de média sélectionné.",
+	"bs-insertfile-error-no-imagelink": "Aucun lien d’image sélectionné.",
+	"bs-insertfile-upload-waitmessage": "Téléchargement en cours…"
 }

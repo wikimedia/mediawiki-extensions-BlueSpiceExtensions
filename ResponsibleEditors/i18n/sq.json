@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"bs-responsibleeditors-pref-emailnotificationonresponsibilitychange": "Lajmëro për ndryshimin e përgjegjësisë",
+	"bs-responsibleeditors-pref-autopermissions": "Caktimin automatik të të drejtave:",
+	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "redaktorët përgjegjës",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Akses i mohuar. Ju nuk jeni i autorizuar për të kryer këtë veprim.",
+	"bs-responsibleeditors-contentactions-label": "Ndryshimi i përgjegjësisë",
+	"bs-responsibleeditors-statebartop-icon-alt": "Ka një redaktor përgjegjës për këtë faqe",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Faqja e dhënë nuk ekziston.",
+	"responsibleeditors": "redaktorët përgjegjës",
+	"bs-responsibleeditors-no-own-responsibilities": "Nuk ka faqe për të cilat ju jeni  editor përgjegjës.",
+	"bs-responsibleeditors-yourresponsibilities": "Përgjegjësitë tuaja",
+	"bs-responsibleeditors-yourresponsibilitiesdesc": "Lista e faqeve  për të cilat ju jeni përgjegjës.",
+	"bs-responsibleeditors-title": "redaktorët përgjegjës",
+	"bs-responsibleeditors-columnnamespace": "Hapësira"
+}

@@ -3,7 +3,8 @@
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Robby"
 		]
 	},
 	"bs-insertmagic-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of insert magic extension",
@@ -34,7 +35,7 @@
 	"bs-insertmagic-currenttime": "Text for time (24-hour HH:mm format).",
 	"bs-insertmagic-currenthour": "Text for hour (24-hour zero-padded number).",
 	"bs-insertmagic-currentweek": "Text for week (number).",
-	"bs-insertmagic-currenttimestamp": "Text for timestamp in format YYYYMMDDHHmmss. \n YYYY present year, MM present month, DD present day, HH present hour, mm present minute, ss present second",
+	"bs-insertmagic-currenttimestamp": "Text for timestamp in format YYYYMMDDHHmmss.\n* YYYY present year,\n* MM present month,\n* DD present day,\n* HH present hour,\n* mm present minute,\n* ss present second",
 	"bs-insertmagic-sitename": "Text for the wiki's site name.",
 	"bs-insertmagic-server": "Text for domain URL.",
 	"bs-insertmagic-servername": "Text for domain name.",

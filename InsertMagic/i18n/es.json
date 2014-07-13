@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-insertmagic-desc": "Añade al modo de edición un cuadro de diálogo que permite insertar palabras mágicas y etiquetas",
+	"bs-insertmagic": "Insertar una palabra mágica",
+	"bs-insertmagic-notoc": "Oculta la tabla de contenido.",
+	"bs-insertmagic-toc": "Coloca una tabla de contenido en la posición de la palabra actual.",
+	"bs-insertmagic-index": "Indicar que los motores de búsqueda deben indizar la página.",
+	"bs-insertmagic-currentdayname": "Día de la semana (nombre).",
+	"bs-insertmagic-currenttime": "Hora (formato HH:mm, 24 horas).",
+	"bs-insertmagic-currentweek": "Semana (número).",
+	"bs-insertmagic-sitename": "El nombre del wiki.",
+	"bs-insertmagic-server": "URL del dominio.",
+	"bs-insertmagic-currentversion": "La versión de MediaWiki que usa el wiki.",
+	"bs-insertmagic-contentlanguage": "El idioma predeterminado de la interfaz del wiki.",
+	"bs-insertmagic-dlg-title": "Insertar una palabra mágica o etiqueta",
+	"bs-insertmagic-type-tags": "Etiquetas",
+	"bs-insertmagic-type-variables": "Variables",
+	"bs-insertmagic-label-desc": "Descripción"
+}

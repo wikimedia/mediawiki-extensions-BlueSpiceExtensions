@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-insertfile-insert-image": "Insertar una imagen",
+	"bs-insertfile-insert-file": "Insertar un archivo",
+	"bs-insertfile-button-image-title": "Insertar o editar una imagen",
+	"bs-insertfile-labelsort": "Ordenar por:",
+	"bs-insertfile-labelfilter": "Filtro:",
+	"bs-insertfile-filename": "Nombre del archivo",
+	"bs-insertfile-filesize": "Tamaño del archivo",
+	"bs-insertfile-lastmodified": "Cambios recientes",
+	"bs-insertfile-details-title": "Detalles",
+	"bs-insertfile-labelalt": "Texto alternativo",
+	"bs-insertfile-labellink": "enlace",
+	"bs-insertfile-uploadbuttontext": "Examinar",
+	"bs-insertfile-uploadimageemptytext": "Elige una imagen nueva…",
+	"bs-insertfile-uploadimagefieldlabel": "Cargar una imagen nueva",
+	"bs-insertfile-uploadfileemptytext": "Elige un archivo nuevo…",
+	"bs-insertfile-uploaddestfilelabel": "Nombre de destino",
+	"bs-insertfile-uploaddescfilelabel": "Resumen",
+	"bs-insertfile-uploadsubmitvalue": "Cargar un archivo",
+	"bs-insertfile-errorloading": "Se produjo un error al cargar los archivos.",
+	"bs-insertfile-allowedfiletypesare": "Los tipos de archivo válidos son:",
+	"bs-insertfile-error": "Error",
+	"bs-insertfile-errornofileextensiononupload": "El archivo elegido no tiene ninguna extensión.",
+	"bs-insertfile-errorWrongFileExtensionOnUpload": "El archivo elegido no tiene una extensión válida.",
+	"bs-insertfile-errorWrongImageTypeOnUpload": "El archivo elegido no es de un tipo permitido.",
+	"bs-insertfile-errorWrongFileTypeOnUpload": "El tipo de archivo elegido no está permitido.",
+	"bs-insertfile-uploadcomplete": "Se guardó el archivo correctamente.",
+	"bs-insertfile-titlefile": "Insertar un archivo",
+	"bs-insertfile-titleimage": "Insertar una imagen",
+	"bs-insertfile-tipkeepratio": "Mantener las proporciones",
+	"bs-insertfile-of": "de",
+	"bs-insertfile-license": "Licencia",
+	"bs-insertfile-categories": "Categorías"
+}

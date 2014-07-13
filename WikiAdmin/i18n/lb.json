@@ -4,5 +4,7 @@
 			"Robby"
 		]
 	},
-	"bs-wikiadmin-notallowed": "Dir däerft dës Säit net benotzen."
+	"bs-wikiadmin-desc": "BlueSpice Gestioun",
+	"bs-wikiadmin-notallowed": "Dir däerft dës Säit net benotzen.",
+	"specialwikiadmin": "BlueSpice Gestioun"
 }

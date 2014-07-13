@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-saferedit-restore": "Restaurar",
+	"bs-saferedit-unsavedchanges": "Hay cambios sin guardar.",
+	"bs-saferedit-othersectiontitle": "Sección que restaurar",
+	"bs-saferedit-othersectiontext1": "Hay una copia de seguridad de otra sección."
+}

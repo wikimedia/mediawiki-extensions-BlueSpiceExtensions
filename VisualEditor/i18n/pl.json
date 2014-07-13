@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pio387"
+		]
+	},
+	"prefs-visualeditor": "Visual editor",
+	"bs-visualeditor-pref-disablens": "Wyłącz w przestrzeni nazw:",
+	"bs-visualeditor-save-message": "Zapisano zmiany pod datą $1 z opisem \"$2\"."
+}

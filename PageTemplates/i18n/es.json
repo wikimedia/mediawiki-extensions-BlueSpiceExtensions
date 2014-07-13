@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-pagetemplates-empty-page": "Página vacía",
+	"bs-pagetemplates-tpl-desc-toolong": "La descripción es demasiado larga. Utiliza 255 caracteres como máximo.",
+	"bs-pagetemplates-tpl-label-toolong": "La etiqueta es demasiado larga. Utiliza 255 caracteres como máximo.",
+	"bs-pagetemplates-tpl-name-toolong": "El nombre de la plantilla es demasiado largo. Utiliza 255 caracteres como máximo.",
+	"bs-pagetemplates-tpl-name-empty": "Escribe el nombre de una plantilla.",
+	"bs-pagetemplates-invalid_pfx": "El prefijo no es válido.",
+	"bs-pagetemplates-dberror": "Se produjo un error en la base de datos.",
+	"bs-pagetemplates-headerlabel": "Etiqueta",
+	"bs-pagetemplates-headertargetnamespace": "Espacio de nombres",
+	"bs-pagetemplates-tipeditdetails": "Editar la plantilla",
+	"bs-pagetemplates-tipaddtemplate": "Añadir una plantilla",
+	"bs-pagetemplates-label-tpl": "Nombre de la plantilla",
+	"bs-pagetemplates-label-desc": "Descripción",
+	"bs-pagetemplates-label-targetns": "Espacio de nombres",
+	"bs-pagetemplates-label-article": "Plantilla"
+}

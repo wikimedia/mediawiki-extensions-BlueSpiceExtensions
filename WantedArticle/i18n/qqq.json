@@ -6,7 +6,8 @@
 			"Robby",
 			"Shirayuki",
 			"Nemo bis",
-			"Smuggli"
+			"Smuggli",
+			"Lloffiwr"
 		]
 	},
 	"bs-wantedarticle-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of wanted page extension",
@@ -33,8 +34,8 @@
 	"bs-wantedarticle-pref-includelimit": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for number of suggestions:",
 	"bs-wantedarticle-pref-deleteexisting": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for delete existing entries",
 	"bs-wantedarticle-pref-showcreate": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show create link",
-	"bs-wantedarticle-pref-deleteoncreation": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for remove entry from list when page is created",
-	"bs-wantedarticle-pref-datasourcetemplatetitle": "Option in Special:Wiki_Admin&mode=Preferences: label for template title for suggestions, that is the pages requested by users via the WantedArticle extension.",
+	"bs-wantedarticle-pref-deleteoncreation": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for remove entry from list when page is created. This preference enables automatic deletion of entries from the list as soon as their page was created.",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Option in Special:Wiki_Admin&mode=Preferences: label for template title for suggestions, that is the new pages requested by users via the WantedArticle extension.",
 	"bs-wantedarticle-pref-sort": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for sort by:\n{{Identical|Sort by}}",
 	"bs-wantedarticle-pref-order": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for order:\n{{Identical|Order}}",
 	"bs-wantedarticle-pref-sort-time": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for time\n{{Identical|Time}}",

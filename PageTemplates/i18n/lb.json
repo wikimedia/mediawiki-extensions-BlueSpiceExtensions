@@ -4,8 +4,10 @@
 			"Robby"
 		]
 	},
+	"prefs-pagetemplates": "Säiteschablounen",
 	"bs-pagetemplates-empty-page": "Eidel Säit",
 	"bs-pagetemplates-empty-page-desc": "Mat enger edeler Sät ufänken.",
+	"bs-pagetemplates-tpl-added": "D'Schabloun gouf derbäigesat.",
 	"bs-pagetemplates-nooldtpl": "Déi al Schabloun gouf net fonnt.",
 	"bs-pagetemplates-tpl-edited": "D'Ännerunge gouf gespäichert.",
 	"bs-pagetemplates-tpl-deleted": "D'Schabloun gouf geläscht.",
@@ -18,5 +20,6 @@
 	"bs-pagetemplates-label-tpl": "Numm vun der Schabloun",
 	"bs-pagetemplates-label-desc": "Beschreiwung",
 	"bs-pagetemplates-label-targetns": "Nummraum",
+	"bs-pagetemplates-label-tplns": "Nummraum Schabloun",
 	"bs-pagetemplates-label-article": "Schabloun"
 }

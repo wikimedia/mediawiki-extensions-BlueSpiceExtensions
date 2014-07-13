@@ -10,6 +10,7 @@
 	"bs-wantedarticle-ajax-error-no-parameter": "No se proporcionó el título de la página.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Ya existe la página sugerida \"$1\".",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "La página \"$1\" ya fue sugerida.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Se añadió la sugerencia «$1».",
 	"bs-wantedarticle-success-suggestion-entered": "Se añadió tu sugerencia \"$1\".",
 	"bs-wantedarticle-sort-value-unknown": "Los valores válidos son: título y tiempo.",
 	"bs-wantedarticle-order-value-unknown": "Los valores válidos son: ASC ({{int:bs-wantedarticle-pref-order-asc}}) y DESC ({{int:bs-wantedarticle-pref-order-desc}}).",

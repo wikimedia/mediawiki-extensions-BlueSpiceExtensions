@@ -4,5 +4,8 @@
 			"Robby"
 		]
 	},
-	"bs-saferedit-restore": "Restauréieren"
+	"bs-saferedit-desc": "Tëschespäichere vun den Ännerungen",
+	"bs-saferedit-restore": "Restauréieren",
+	"bs-saferedit-someone-editing": "D'Säit gëtt geännert",
+	"bs-saferedit-lastsavedversion": "Lescht gespäichert Versioun vum $1 - $2."
 }
