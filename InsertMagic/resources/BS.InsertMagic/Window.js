@@ -15,9 +15,9 @@ Ext.define( 'BS.InsertMagic.Window', {
 		this.setTitle( mw.message('bs-insertmagic-dlg-title').plain() );
 
 		var typesArray = [
-			[ 'tag', mw.message('bs-insertmagic-type_tags').plain() ],
-			[ 'switch', mw.message('bs-insertmagic-type_switches').plain() ],
-			[ 'variable', mw.message('bs-insertmagic-type_variables').plain() ]
+			[ 'tag', mw.message('bs-insertmagic-type-tags').plain() ],
+			[ 'switch', mw.message('bs-insertmagic-type-switches').plain() ],
+			[ 'variable', mw.message('bs-insertmagic-type-variables').plain() ]
 		];
 		//TODO: Make hook?
 
@@ -128,7 +128,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 				align: 'stretch'
 			},
 			items:[
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label_second').plain() }),
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-second').plain() }),
 				this.syntaxTextArea
 			]
 		});
