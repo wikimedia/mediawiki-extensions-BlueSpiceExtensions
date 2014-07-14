@@ -5,6 +5,28 @@
 			"Liuxinyu970226"
 		]
 	},
+	"prefs-responsibleeditors": "职责编辑",
 	"bs-responsibleeditors-pref-activatednamespaces": "启用的名字空间：",
-	"action-responsibleeditors-viewspecialpage": "查看以“ResponsibleEditors-Viewspecialpage”权限保护的页面"
+	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "职责编辑",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "职责编辑",
+	"bs-responsibleeditors-success-ajax": "职责已更改。",
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "提供的值无效。",
+	"bs-responsibleeditors-contentactions-label": "更改职责",
+	"bs-responsibleeditors-statebarbody-headline": "职责{{PLURAL:$1|编辑}}",
+	"bs-responsibleeditors-mail-subject-re-article-changed": "页面“$1”被$3{{GENDER:$2|编辑}}",
+	"bs-responsibleeditors-mail-subject-re-article-deleted": "页面“$1”被$3{{GENDER:$2|删除}}",
+	"bs-responsibleeditors-mail-subject-re-article-moved": "页面“$1”被$3{{GENDER:$2|移动}}",
+	"responsibleeditors": "职责编辑",
+	"bs-responsibleeditors-yourresponsibilities": "您的职责",
+	"action-responsibleeditors-viewspecialpage": "查看以“ResponsibleEditors-Viewspecialpage”权限保护的页面",
+	"bs-responsibleeditors-availableeditors": "可用编辑",
+	"bs-responsibleeditors-assignededitors": "已分配编辑",
+	"bs-responsibleeditors-title": "职责编辑",
+	"bs-responsibleeditors-titleeditors": "职责编辑",
+	"bs-responsibleeditors-columnpage": "页面",
+	"bs-responsibleeditors-columnresponsibleeditor": "职责编辑",
+	"bs-responsibleeditors-columnnamespace": "名字空间",
+	"bs-responsibleeditors-rbdisplaymodeall": "显示所有页面",
+	"bs-responsibleeditors-cbnamespacesemptytext": "选择名字空间",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "未分配"
 }

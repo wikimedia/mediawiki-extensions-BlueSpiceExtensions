@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-usermanager-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of user manager extension",
@@ -22,7 +23,7 @@
 	"bs-usermanager-headerusername": "Column headline and label for username\\n{{Identical|Username}}",
 	"bs-usermanager-headerrealname": "Column headline and label for real name\\n{{Identical|Real name}}",
 	"bs-usermanager-headeremail": "Column headline and label for Email\\n{{Identical|Email}}",
-	"bs-usermanager-headergroups": "Column headline and label for Groups\\n{{Identical|Groups}}",
+	"bs-usermanager-headergroups": "Column headline and label for Groups\\n\n{{Identical|Group}}",
 	"bs-usermanager-titleadduser": "Window title for add user\\n{{Identical|Add user}}",
 	"bs-usermanager-titleeditdetails": "Window title for edit user\\n{{Identical|Edit user}}",
 	"bs-usermanager-labelnewpassword": "Label for password\\n{{Identical|Password}}",

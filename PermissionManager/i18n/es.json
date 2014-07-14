@@ -4,12 +4,14 @@
 			"Fitoschido"
 		]
 	},
+	"bs-permissionmanager-desc": "Interfaz administrativa para gestionar permisos",
 	"prefs-permissionmanager": "Gestor de permisos",
 	"bs-permissionmanager-label": "Gestor de permisos",
 	"bs-permissionmanager-btn-group-label": "Grupo:",
 	"bs-permissionmanager-header-permissions": "Permisos",
 	"bs-permissionmanager-header-global": "Wiki",
 	"bs-permissionmanager-header-namespaces": "Espacios de nombres",
+	"bs-permissionmanager-header-group": "Grupo",
 	"bs-permissionmanager-btn-save-label": "Guardar",
 	"bs-permissionmanager-btn-save-in-progress-label": "Guardando…",
 	"bs-permissionmanager-labeltemplates": "Plantillas",

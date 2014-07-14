@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"prefs-avatars": "Avatar",
+	"bs-avatars-desc": "Menyediakan gambar pengguna generik dan individual",
+	"bs-avatars-pref-generator": "Generator:",
+	"bs-avatars-pref-defaultsize": "Ukuran standar dalam piksel:",
+	"bs-avatars-upload-complete": "Gambar telah berhasil diunggah.",
+	"bs-avatars-generate-complete": "Avatar baru telah dibuat.",
+	"bs-avatars-upload-title": "Ubah foto profil",
+	"bs-avatars-upload-label": "Gambar",
+	"bs-avatars-generate-new-label": "Hasilkan avatar baru",
+	"bs-avatars-warning-title": "Peringatan",
+	"bs-avatars-warning-text": "Anda telah mengatur gambar pengguna dalam preferensi Anda. Menggunakan avatar akan menghapus pengaturan ini. Apakah Anda ingin melanjutkan?",
+	"bs-avatars-userimage-title": "Gambar dari wiki atau URL gambar",
+	"bs-avatars-userimage-help": "misalnya Gambar.jpg atau http://localhost/Gambar.gif",
+	"bs-avatars-set-userimage-failed": "Bukan URL yang valid atau gambar dari wiki.",
+	"bs-avatars-set-userimage-saved": "Gambar pengguna berhasil disimpan.",
+	"bs-avatars-file-upload-fieldset-title": "Unggah gambar",
+	"bs-avatars-auto-generate-fieldset-title": "Hasilkan avatar secara otomatis"
+}

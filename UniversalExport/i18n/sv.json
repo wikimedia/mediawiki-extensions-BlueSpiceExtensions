@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
 	"bs-universalexport-desc": "Lägger till exportfunktioner",
@@ -11,6 +12,6 @@
 	"bs-universalexport-tag-pagebreak-text": "Sidbrytning",
 	"bs-universalexport-tag-exclude-text": "Denna text exporteras inte.",
 	"bs-universalexport-tag-hidetitle-text": "Titeln på denna sida kommer inte att synas i exporten.",
-	"action-universalexport-export": "för att skapa en exportfil",
+	"action-universalexport-export": "skapa en exportfil",
 	"right-universalexport-export": "Skapa en exportfil"
 }

@@ -4,6 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
+	"bs-insertfile-desc": "用于上传文件和插入文件连接的对话框",
 	"bs-insertfile-insert-image": "插入图片",
 	"bs-insertfile-insert-file": "插入文件",
 	"bs-insertfile-button-image-title": "插入或编辑图片",
@@ -40,11 +41,21 @@
 	"bs-insertfile-uploadwatchthislabel": "查看此文件",
 	"bs-insertfile-uploadignorewarningslabel": "忽略任何警告",
 	"bs-insertfile-uploadsubmitvalue": "上传文件",
+	"bs-insertfile-errorloading": "载入文件时出错。",
 	"bs-insertfile-warning": "警告",
 	"bs-insertfile-allowedfiletypesare": "有效的文件类型有：",
 	"bs-insertfile-error": "错误",
+	"bs-insertfile-uploadcomplete": "您的文件已成功保存。",
 	"bs-insertfile-titlefile": "插入文件",
 	"bs-insertfile-titleimage": "插入图片",
 	"bs-insertfile-tipkeepratio": "保持比例",
-	"bs-insertfile-of": "的"
+	"bs-insertfile-of": "的",
+	"bs-insertfile-select-a-link": "选择或输入连接",
+	"bs-insertfile-license": "许可协议",
+	"bs-insertfile-categories": "分类",
+	"bs-insertfile-linktext": "显示文字",
+	"bs-insertfile-no-link": "无链接",
+	"bs-insertfile-error-no-medialink": "未选择媒体连接。",
+	"bs-insertfile-error-no-imagelink": "未选择图片连接。",
+	"bs-insertfile-upload-waitmessage": "上传中……"
 }

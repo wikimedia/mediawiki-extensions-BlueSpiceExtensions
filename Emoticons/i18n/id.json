@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"bs-emoticons-desc": "Buat emotikon",
+	"bs-emoticons-error-validation-missing-symbol": "Kesalahan dalam baris $1: Tidak ada simbol untuk gambar \"$2\".",
+	"bs-emoticons-error-validation-imagename": "Kesalahan dalam baris $1: Nama gambar \"$2\" tidak sah.",
+	"bs-emoticons-error-validation-symbol": "Kesalahan dalam baris $1: Simbol \"$2\" tidak sah. Itu harus antara dua dan sepuluh karakter."
+}

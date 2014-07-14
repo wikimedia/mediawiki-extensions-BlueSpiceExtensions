@@ -6,6 +6,7 @@
 		]
 	},
 	"bs-responsibleeditors-error-ajax-invalid-parameter": "Se proporcionaron valores no válidos.",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "La página proporcionada no existe.",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "$3 {{GENDER:$2|editó}} la página «$1»",
 	"bs-responsibleeditors-mail-subject-re-article-deleted": "$3 {{GENDER:$2|eliminó}} la página «$1»",
 	"bs-responsibleeditors-mail-subject-re-article-moved": "$3 {{GENDER:$2|movió}} la página «$1»",

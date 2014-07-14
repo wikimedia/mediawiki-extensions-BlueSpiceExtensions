@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"bs-insertmagic-desc": "Menambahkan dialog ke mode suntingan yang memungkinkan penyisipan kata-kata ajaib dan tag",
+	"bs-insertmagic": "Masukkan kata ajaib",
+	"bs-insertmagic-notoc": "Sembunyikan daftar isi.",
+	"bs-insertmagic-forcetoc": "Memaksa daftar isi untuk muncul di posisi normal."
+}
