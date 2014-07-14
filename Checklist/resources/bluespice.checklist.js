@@ -243,7 +243,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 	menus.push({
 		menuId: 'bsChecklist',
 		menuConfig: {
-			text: mw.message('bs-checklist-menu_insert_checkbox').plain(),
+			text: mw.message('bs-checklist-menu-insert-checkbox').plain(),
 			cmd : 'mceBsChecklistLastCommand'
 		}
 	});
@@ -253,7 +253,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 	menuItems.push({text: '-'});
 	
 	menuItems.push({
-		text: mw.message('bs-checklist-button_checkbox_title').plain(),
+		text: mw.message('bs-checklist-button-checkbox-title').plain(),
 		value: 'Checkbox',
 		onclick:function(){
 			BsChecklist.lastCommand = 'mceBsCheckbox';
@@ -263,15 +263,15 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 	});
 	
 	menuItems.push({
-		text: mw.message('bs-checklist-menu_insert_list_title').plain(),
+		text: mw.message('bs-checklist-menu-insert-list-title').plain(),
 		onclick: function() {
 			// Open window
 			ed.windowManager.open({
-				title: mw.message('bs-checklist-dlg_insert_list_title').plain(),
+				title: mw.message('bs-checklist-dlg-insert-list-title').plain(),
 				body: [{
 						type: 'textbox',
 						name: 'title',
-						label: mw.message('bs-checklist-dlg_insert_list_value_list').plain()
+						label: mw.message('bs-checklist-dlg-insert-list-value-list').plain()
 				}],
 				onsubmit: function(e) {
 					// Insert content when the window form is submitted
@@ -284,7 +284,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 	});
 	
 	ed.addButton('bscheckbox', {
-		title: mw.message('bs-checklist-button_checkbox_title').plain(),
+		title: mw.message('bs-checklist-button-checkbox-title').plain(),
 		cmd: 'mceBsChecklistLastCommand',
 		type: 'splitbutton',
 		//icon: 'image',

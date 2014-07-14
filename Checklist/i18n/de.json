@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-checklist-desc": "Ermöglicht die Erstellug von Checklisten",
+	"bs-checklist-button-checkbox-title": "Checklistenelemente",
+	"bs-checklist-menu-insert-list-title": "Liste einfügen",
+	"bs-checklist-menu-insert-checkbox": "Checkbox",
+	"bs-checklist-dlg-insert-list-title": "{{int:bs-checklist-menu-insert-list-title}}",
+	"bs-checklist-dlg-insert-list-value-list": "Werteliste",
+	"bs-checklist-tag-checklist-desc": "Erstellt eine Checkbox oder Select-Menü. Verfügbare Konfigurationsparameter sind:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list<code> erstellt ein Select-Menü.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Name der Vorlage, die die verfügbaren Werte beinhaltet. Parameter <code>type</code> mit dem Wert <code>list</code> muss gesetzt sein.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> oder ein Wert aus der Werte Vorlage."
+}

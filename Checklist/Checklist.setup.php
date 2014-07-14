@@ -12,11 +12,11 @@ $aResourceModuleTemplate = array(
 $wgResourceModules['ext.bluespice.checklist'] = array(
 	'scripts' => 'bluespice.checklist.js',
 	'messages' => array(
-		'bs-checklist-button_checkbox_title',
-		'bs-checklist-menu_insert_list_title',
-		'bs-checklist-menu_insert_checkbox',
-		'bs-checklist-dlg_insert_list_title',
-		'bs-checklist-dlg_insert_list_value_list',
+		'bs-checklist-button-checkbox-title',
+		'bs-checklist-menu-insert-list-title',
+		'bs-checklist-menu-insert-checkbox',
+		'bs-checklist-dlg-insert-list-title',
+		'bs-checklist-dlg-insert-list-value-list',
 	)
 ) + $aResourceModuleTemplate;
 
