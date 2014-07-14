@@ -72,7 +72,7 @@ Ext.define( 'BS.GroupManager.Panel', {
 	onBtnEditClick: function( oButton, oEvent ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		if ( !selectedRow[0].getData().additional_group ) {
-			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotEditable' ).plain(), title: 'Status' } );
+			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotEditable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
 			return;
 		}
 		if ( !this.dlgGroupEdit ) {
@@ -92,7 +92,7 @@ Ext.define( 'BS.GroupManager.Panel', {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var additionalGroup = selectedRow[0].get( 'additional_group' );
 		if ( !additionalGroup ) {
-			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotRemovable' ).plain(), title: 'Status' } );
+			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotRemovable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
 			return;
 		}
 		bs.util.confirm(
@@ -184,12 +184,12 @@ Ext.define( 'BS.GroupManager.Panel', {
 	},
 	renderMsgSuccess: function( responseObj ) {
 		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMsuc', { text: responseObj.message, title: 'Status' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMsuc', { text: responseObj.message, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 		}
 	},
 	renderMsgFailure: function( responseObj ) {
 		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMfail', { text: responseObj.message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMfail', { text: responseObj.message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
 		}
 	}
 } );

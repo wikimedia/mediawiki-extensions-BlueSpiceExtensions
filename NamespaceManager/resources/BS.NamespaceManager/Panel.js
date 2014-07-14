@@ -109,7 +109,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 				'NMfail',
 				{ 
 					textMsg: 'bs-namespacemanager-msgNotEditableDelete',
-					title: 'Status'
+					titleMsg: 'bs-extjs-title-warning'
 				}
 			);
 			return;
@@ -221,7 +221,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 				'UMsuc',
 				{
 					text: responseObj.message,
-					title: 'Status'
+					titleMsg: 'bs-extjs-title-success'
 				}, 
 				{ 
 					ok: this.reloadStore,
@@ -241,7 +241,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 				'UMfail',
 				{ 
 					text: message,
-					title: 'Status'
+					titleMsg: 'bs-extjs-title-warning'
 				},
 				{ 
 					ok: this.showDlgAgain,
@@ -253,8 +253,8 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 			bs.util.alert( 
 				'UMfail',
 				{ 
-					text: responseObj.message, 
-					title: 'Status'
+					text: responseObj.message,
+					titleMsg: 'bs-extjs-title-warning'
 				},
 				{ 
 					ok: this.showDlgAgain,

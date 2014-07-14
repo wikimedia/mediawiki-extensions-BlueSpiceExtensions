@@ -104,7 +104,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 						'AMsuc',
 						{
 							text: response,
-							title: 'Status'
+							titleMsg: 'bs-extjs-title-success'
 						},
 				{
 					ok: function() {
@@ -148,10 +148,10 @@ Ext.define('BS.Avatars.SettingsWindow', {
 				var response = Ext.decode(response.responseText);
 				if (!response.success) {
 					bs.util.alert(
-							'AMUsuc',
+							'AMUfail',
 							{
 								text: response.message[0],
-								title: 'Status'
+								titleMsg: 'bs-extjs-title-warning'
 							},
 					{
 						ok: function() {
@@ -167,7 +167,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 							'AMUsuc',
 							{
 								text: response.message[0],
-								title: 'Status'
+								titleMsg: 'bs-extjs-title-success'
 							},
 					{
 						ok: function() {

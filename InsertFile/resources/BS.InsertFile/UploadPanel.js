@@ -173,7 +173,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 					bs.util.alert(
 						this.getId()+'-existswarning',
 						{
-							title: 'Status',
+							titleMsg: 'bs-extjs-title-warning',
 							text: response.responseText
 						},
 						{

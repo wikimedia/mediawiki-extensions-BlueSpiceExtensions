@@ -129,7 +129,7 @@ BsWantedArticle = {
 		$.getJSON(
 			bs.util.getAjaxDispatcherUrl( 'WantedArticle::ajaxAddWantedArticle', [ sArticleTitle ] ),
 			function( oData, oTextStatus ) {
-				bs.util.alert( 'WAsuc', { text: oData.message, title: 'Status' } );
+				bs.util.alert( 'WAsuc', { text: oData.message, titleMsg: 'bs-extjs-title-success' } );
 				if( oData.success == true ) {
 					BsWantedArticle.resetDefaults();
 					BsWantedArticle.reloadAllWantedArticleTags();
