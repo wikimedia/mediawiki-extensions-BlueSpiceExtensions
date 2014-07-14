@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-checklist-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of checklist extension",
+	"bs-checklist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of checklist extension",
 	"bs-checklist-button-checkbox-title": "Button text for checklist elements",
 	"bs-checklist-menu-insert-list-title": "Label for insert list\n{{Identical|Insert list}}",
 	"bs-checklist-menu-insert-checkbox": "Label for checkbox\n{{Identical|Checkbox}}",

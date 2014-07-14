@@ -6,7 +6,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-pageaccess-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of page access extension",
+	"bs-pageaccess-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page access extension",
 	"bs-pageaccess-error-no-groups-given": "Text for no groups were specified.",
 	"bs-pageaccess-error-not-member-of-given-groups": "Text for you're not a member of the given groups. In order to prevent you from locking yourself out, saving was disabled.",
 	"bs-pageaccess-error-included-forbidden-template": "Text for you've tried to use the template \"$1\" to which you don't have read access. In order to prevent you from locking yourself out, saving was disabled.",

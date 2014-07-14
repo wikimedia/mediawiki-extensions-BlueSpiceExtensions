@@ -7,12 +7,12 @@
 			"Shirayuki"
 		]
 	},
-	"bs-uemodulepdf-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of UEModulePDF extension \n UEModulePDF stands for Universal Export Module PDF",
-	"prefs-uemodulepdf": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for universal export PDF module",
+	"bs-uemodulepdf-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of UEModulePDF extension \n UEModulePDF stands for Universal Export Module PDF",
+	"prefs-uemodulepdf": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for universal export PDF module",
 	"uemodulepdf": "Special page name for universal export PDF module.",
-	"bs-uemodulepdf-pref-pdfserviceurl": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for backend URL:\n{{Identical|Backend URL}}",
-	"bs-uemodulepdf-pref-templatepath": "Option in [[Special:Wiki_Admin&mode=Preferences]], label text for standard template:",
-	"bs-uemodulepdf-pref-suppressns": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label text for hide namespace prefix in PDF",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for backend URL:\n{{Identical|Backend URL}}",
+	"bs-uemodulepdf-pref-templatepath": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for standard template:",
+	"bs-uemodulepdf-pref-suppressns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for hide namespace prefix in PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Text for PDF single page",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Text for export this page as PDF.",
 	"bs-uemodulepdf-overview-title": "Text for Portable Document Format (PDF) \n {{Identical|Portable Document Format (PDF)}}",

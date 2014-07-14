@@ -6,14 +6,14 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-pagesvisited-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of pages visited extension",
-	"prefs-pagesvisited": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for pages visited section in preferences.\n{{Identical|Pages visited}}",
+	"bs-pagesvisited-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of pages visited extension",
+	"prefs-pagesvisited": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for pages visited section in preferences.\n{{Identical|Pages visited}}",
 	"bs-pagesvisited-widget-title": "Widget headline for pages visited\n {{Identical|Pages visited}}",
 	"bs-pagesvisited-error-nsnotvalid": "Text for given namespace{{PLURAL:$1||s}} <code>$2</code> {{PLURAL:$1|is|are}} not valid. \n $1 is the number of namespaces for PLURAL distinction \n $2 the namespace or comma seperated list of namespaces",
-	"bs-pagesvisited-pref-widgetlimit": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for limit of entries:",
-	"bs-pagesvisited-pref-widgetns": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for namespaces:\n{{Identical|Namespace}}",
-	"bs-pagesvisited-pref-widgetsortodr": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for sort by:\n{{Identical|Sort by}}",
-	"bs-pagesvisited-pref-sort-time": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for time\n{{Identical|Time}}",
-	"bs-pagesvisited-pref-sort-pagename": "Option in [[Special:Wiki_Admin&mode=Preferences]], option label for title\n{{Identical|Title}}",
+	"bs-pagesvisited-pref-widgetlimit": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for limit of entries:",
+	"bs-pagesvisited-pref-widgetns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for namespaces:\n{{Identical|Namespace}}",
+	"bs-pagesvisited-pref-widgetsortodr": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by:\n{{Identical|Sort by}}",
+	"bs-pagesvisited-pref-sort-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for time\n{{Identical|Time}}",
+	"bs-pagesvisited-pref-sort-pagename": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for title\n{{Identical|Title}}",
 	"bs-pagesvisited-tag-pagesvisited-desc": "Used in InsertMagic extension, tag description for show a list of pages you have visited."
 }
