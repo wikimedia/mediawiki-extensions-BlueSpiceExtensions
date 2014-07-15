@@ -19,7 +19,7 @@
  * @subpackage WhoIsOnline
  */
 class ViewWhoIsOnlineTag extends ViewBaseElement {
-	
+
 	/**
 	 * Counter increments with every instance. Used to separate several instances on one page.
 	 * @var int Current number of instance.
@@ -48,7 +48,7 @@ class ViewWhoIsOnlineTag extends ViewBaseElement {
 	public function getTargetId() {
 		return $this->sTargetId;
 	}
-	
+
 	public function setPortlet( $oPortlet ) {
 		$this->oPortlet = $oPortlet;
 		return $this;
@@ -60,17 +60,29 @@ class ViewWhoIsOnlineTag extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $params = false ) {
-		$sMaxHeight = 'data-maxheight="'.(BsConfig::get('MW::WhoIsOnline::LimitCount')*20).'"';
-		$sOut = '<a class="bs-tooltip-link" href="#" id="'.$this->getTargetId().'">'.$this->getOption( 'title' ).'</a>'
-				.'<div class="bs-tooltip">'
-					.'<ul class="bs-who-heading">'
-						.'<li>'.wfMessage('bs-whoisonline-widget-title')->plain().'</li>'
-					.'</ul>'
-					.'<div id="'.$this->getTargetId().'-target" class="bs-whoisonline-portlet" '.$sMaxHeight.'>'
-						.($this->oPortlet ? $this->oPortlet->execute() : '')
-					.'</div>'
-				.'</div>'
-				;
+		$sTargetId = $this->getTargetId().'-target';
+
+		$sLink = Html::element(
+			'a',
+			array(
+				'class' => 'bs-tooltip-link',
+				'id' => $this->getTargetId(),
+				'data-bs-tt-title' => wfMessage('bs-whoisonline-widget-title')->plain(),
+				'data-bs-tt-target' => $sTargetId,
+				'data-bs-tt-maxheight' => (BsConfig::get('MW::WhoIsOnline::LimitCount')*20)
+			),
+			$this->getOption( 'title' )
+		);
+
+		$sTarget = Html::rawElement(
+			'div',
+			array(
+				'class' => 'bs-tooltip-body bs-whoisonline-portlet',
+				'id' => $sTargetId
+			),
+			($this->oPortlet ? $this->oPortlet->execute() : '')
+		);
+		$sOut = $sLink.'<div class="bs-tooltip">'.$sTarget.'</div>';
 
 		return $sOut;
 	}
