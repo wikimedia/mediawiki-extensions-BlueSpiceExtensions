@@ -401,13 +401,13 @@ class NamespaceManager extends BsExtensionMW {
 			if ( strlen( $sNamespace ) < 2 ) {
 				return FormatJson::encode( array(
 					'success' => false,
-					'message' => wfMessage( 'bs-namespacemanager-namespace_name_length' )->plain()
+					'message' => wfMessage( 'bs-namespacemanager-ns-length' )->plain()
 					) );
 			// TODO MRG (06.11.13 11:17): Unicodefähigkeit?
 			} else if ( !preg_match( '%^[a-zA-Z_\\x80-\\xFF][a-zA-Z0-9_\\x80-\\xFF]{1,99}$%i', $sNamespace ) ) {
 				return FormatJson::encode( array(
 					'success' => false,
-					'message' => wfMessage( 'bs-namespacemanager-wrong_namespace_name_format' )->plain()
+					'message' => wfMessage( 'bs-namespacemanager-wrong-name' )->plain()
 					) );
 			} else {
 				$aUserNamespaces[$iNS] = array( 'name' => $sNamespace );
@@ -432,7 +432,7 @@ class NamespaceManager extends BsExtensionMW {
 			// Zweig hier weglassen.
 			return FormatJson::encode( array(
 					'success' => false,
-					'message' => wfMessage( 'bs-namespacemanager-namespace_already_exists' )->plain()
+					'message' => wfMessage( 'bs-namespacemanager-ns-exists' )->plain()
 				) );
 		}
 	}
@@ -460,19 +460,19 @@ class NamespaceManager extends BsExtensionMW {
 		if ( $iNS !== NS_MAIN && !$iNS ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-no_valid_namespace_id' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-invalid-id' )->plain()
 			) );
 		}
 		if ( strlen( $sNamespace ) < 2 ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-namespace_name_length' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-ns-length' )->plain()
 			) );
 		}
 		if ( $iNS !== NS_MAIN && $iNS !== NS_PROJECT && $iNS !== NS_PROJECT_TALK && !preg_match( '%^[a-zA-Z_\\x80-\\xFF][a-zA-Z0-9_\\x80-\\xFF]{1,99}$%', $sNamespace ) ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-wrong_namespace_name_format' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-wrong-name' )->plain()
 			) );
 		}
 
@@ -518,7 +518,7 @@ class NamespaceManager extends BsExtensionMW {
 		if ( !$iNS ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-no_valid_namespace_id' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-invalid-id' )->plain()
 				) );
 		}
 

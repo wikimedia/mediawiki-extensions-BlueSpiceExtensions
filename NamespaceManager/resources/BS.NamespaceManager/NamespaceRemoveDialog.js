@@ -23,16 +23,16 @@ Ext.define( 'BS.NamespaceManager.NamespaceRemoveDialog', {
 			columns: 1,
 			vertical: true,
 			items: [
-				{ boxLabel: mw.message('bs-namespacemanager-willDelete').plain(), name: 'rb', inputValue: '0' },
-				{ boxLabel: mw.message('bs-namespacemanager-willMove').plain(), name: 'rb', inputValue: '1' },
-				{ boxLabel: mw.message('bs-namespacemanager-willMoveSuffix').plain(), name: 'rb', inputValue: '2' }
+				{ boxLabel: mw.message('bs-namespacemanager-willdelete').text(), name: 'rb', inputValue: '0' },
+				{ boxLabel: mw.message('bs-namespacemanager-willmove').parse(), name: 'rb', inputValue: '1' },
+				{ boxLabel: mw.message('bs-namespacemanager-willmovesuffix', this.nsName).parse(), name: 'rb', inputValue: '2' }
 			]
 		});
 
 		this.items = [{
 				html: mw.message( 'bs-namespacemanager-deletewarning' ).plain()
 			}, {
-				html: mw.message( 'bs-namespacemanager-articlesPresent' ).plain()
+				html: mw.message( 'bs-namespacemanager-pagepresent' ).plain()
 			},
 			this.rgNamespacenuker
 		];

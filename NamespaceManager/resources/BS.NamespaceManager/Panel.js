@@ -84,7 +84,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		//TODO: not nice. Decision on wether is "add" or "edit" shold be made 
 		//by the dialog depending on the provided ID. I.e. -1 for "add"
 		this.active = 'add';
-		this.dlgNamespaceAdd.setTitle( mw.message( 'bs-namespacemanager-btnAddNamespace' ).plain() );
+		this.dlgNamespaceAdd.setTitle( mw.message( 'bs-namespacemanager-tipadd' ).plain() );
 		this.dlgNamespaceAdd.show();
 		this.callParent( arguments );
 	},
@@ -96,7 +96,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		}
 
 		this.active = 'edit';
-		this.dlgNamespaceEdit.setTitle( mw.message( 'bs-namespacemanager-tipEdit' ).plain() );
+		this.dlgNamespaceEdit.setTitle( mw.message( 'bs-namespacemanager-tipedit' ).plain() );
 		this.dlgNamespaceEdit.setData( selectedRow[0].getData() );
 		this.dlgNamespaceEdit.show();
 		this.callParent( arguments );
@@ -108,18 +108,24 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 			bs.util.alert( 
 				'NMfail',
 				{ 
-					textMsg: 'bs-namespacemanager-msgNotEditableDelete',
+					textMsg: 'bs-namespacemanager-msgnoteditabledelete',
 					titleMsg: 'bs-extjs-title-warning'
 				}
 			);
 			return;
 		}
 		if ( !this.dlgNamespaceRemove ) {
-			this.dlgNamespaceRemove = Ext.create( 'BS.NamespaceManager.NamespaceRemoveDialog', {id:"bs-namespacemanager-remove-dlg"} );
+			this.dlgNamespaceRemove = Ext.create(
+				'BS.NamespaceManager.NamespaceRemoveDialog',
+				{
+					id:"bs-namespacemanager-remove-dlg",
+					nsName: selectedRow[0].get( 'name' )
+				}
+			);
 			this.dlgNamespaceRemove.on( 'ok', this.onDlgNamespaceRemoveOk, this );
 		}
 
-		this.dlgNamespaceRemove.setTitle( mw.message( 'bs-namespacemanager-tipRemove' ).plain() );
+		this.dlgNamespaceRemove.setTitle( mw.message( 'bs-namespacemanager-tipremove' ).plain() );
 		this.dlgNamespaceRemove.setData( selectedRow[0].getData() );
 		this.dlgNamespaceRemove.show();
 		this.callParent( arguments );
