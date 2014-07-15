@@ -16,7 +16,7 @@
 /**
  * Describes number of pages for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class BsDiagramNumberOfPages extends BsDiagram {
 
@@ -26,17 +26,17 @@ class BsDiagramNumberOfPages extends BsDiagram {
 	public function __construct() {
 		parent::__construct();
 
-		$this->sTitle = wfMsg( 'bs-statistics-diag-number-of-pages');
-		$this->sDescription = wfMsg( 'bs-statistics-diag-number-of-pages-desc');
-		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
-		$this->sTitley = wfMsg( 'bs-statistics-label-count');
+		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-pages')->text();
+		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-pages-desc')->text();
+		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
+		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
 		$this->bListable = true;
 		$this->sSqlWhatForDiagram = "count(DISTINCT rev_page)";
 		$this->sSqlWhatForList = "DISTINCT page_title, rev_user_text";
-		$this->sSqlFromWhere = "FROM #__revision AS a 
+		$this->sSqlFromWhere = "FROM #__revision AS a
 									JOIN #__page ON #__page.page_id = a.rev_page
 									LEFT JOIN #__categorylinks AS c ON c.cl_from = a.rev_page
 								WHERE rev_timestamp @period
@@ -47,7 +47,7 @@ class BsDiagramNumberOfPages extends BsDiagram {
 								)
 								AND @BsFilterNamespace
 								AND @BsFilterCategory";
-		$this->sListLabel = array( wfMsg( 'bs-statistics-label-article'), wfMsg( 'bs-statistics-label-creator') );
+		$this->sListLabel = array( wfMessage( 'bs-statistics-label-article')->text(), wfMessage( 'bs-statistics-label-creator')->text() );
 		$this->sMode = BsDiagram::MODE_AGGREGATED;
 
 		$this->addFilter( new BsFilterNamespace( $this, array( 0 ) ) );

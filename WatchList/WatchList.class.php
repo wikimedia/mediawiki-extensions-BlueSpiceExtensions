@@ -146,14 +146,14 @@ class WatchList extends BsExtensionMW {
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 1000) );
 		if ( $oValidationICount->getErrorCode() ) {
 			$oErrorListView->addItem(
-				new ViewTagError( 'count: '.wfMsg( $oValidationICount->getI18N() ) )
+				new ViewTagError( 'count: '.wfMessage( $oValidationICount->getI18N() )->text() )
 			);
 		}
 
 		$oValidationIMaxTitleLength = BsValidator::isValid( 'IntegerRange', $iMaxTitleLength, array('fullResponse' => true, 'lowerBoundary' => 5, 'upperBoundary' => 500) );
 		if ( $oValidationIMaxTitleLength->getErrorCode() ) {
 			$oErrorListView->addItem(
-				new ViewTagError( 'maxtitlelength: '.wfMsg( $oValidationIMaxTitleLength->getI18N() ) )
+				new ViewTagError( 'maxtitlelength: '.wfMessage( $oValidationIMaxTitleLength->getI18N() )->text() )
 			);
 		}
 

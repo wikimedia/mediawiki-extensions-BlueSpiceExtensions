@@ -21,10 +21,10 @@ class ViewWidgetList extends ViewBaseElement {
 
 		$aOut = array();
 		$aOut[] = '<div id="bs-widget-container" >';
-		$aOut[] = '  <div class="icon-plus" id="bs-widget-tab" title="' . wfMsg( 'bs-widget-container-tooltip' ) . '" tabindex="100">[+/-]</div>';
+		$aOut[] = '  <div class="icon-plus" id="bs-widget-tab" title="' . wfMessage( 'bs-widget-container-tooltip' )->text() . '" tabindex="100">[+/-]</div>';
 		$aOut[] = '  <div id="bs-flyout">';
 		$aOut[] = '    <div id="bs-flyout-top"></div>';
-		$aOut[] = '    <h4 id="bs-flyout-heading">' . wfMsg( 'bs-widget-flyout-heading' ) . '</h4>';
+		$aOut[] = '    <h4 id="bs-flyout-heading">' . wfMessage( 'bs-widget-flyout-heading' )->text() . '</h4>';
 		$aOut[] = $sEditLink;
 		$aOut[] = '    <div id="bs-flyout-content">';
 

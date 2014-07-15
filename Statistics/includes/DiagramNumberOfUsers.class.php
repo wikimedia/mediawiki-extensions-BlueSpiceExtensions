@@ -27,10 +27,10 @@ class BsDiagramNumberOfUsers extends BsDiagram {
 		parent::__construct();
 
 		BsConfig::get( 'MW::Statistics::ExcludeUsers' );
-		$this->sTitle = wfMsg( 'bs-statistics-diag-number-of-users');
-		$this->sDescription = wfMsg( 'bs-statistics-diag-number-of-users-desc');
-		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
-		$this->sTitley = wfMsg( 'bs-statistics-label-count');
+		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-users')->text();
+		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-users-desc')->text();
+		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
+		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
@@ -45,7 +45,7 @@ class BsDiagramNumberOfUsers extends BsDiagram {
 									WHERE ug_group = 'bot'
 								)
 								AND NOT user_name IN (@BsFilterUsers)";
-		$this->sListLabel = array( wfMsg( 'bs-statistics-label-name'), wfMsg( 'bs-statistics-label-registration') );
+		$this->sListLabel = array( wfMessage( 'bs-statistics-label-name')->text(), wfMessage( 'bs-statistics-label-registration')->text() );
 		$this->sMode = BsDiagram::MODE_AGGREGATED;
 
 		$this->addFilter( new BsFilterUsers( $this ) );

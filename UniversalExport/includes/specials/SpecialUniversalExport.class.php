@@ -110,7 +110,7 @@ class SpecialUniversalExport extends BsSpecialPage {
 				throw new Exception( 'error-requested-title-does-not-exist' );
 			}*/
 
-			//Get relevant page props 
+			//Get relevant page props
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->selectField(
 				'page_props',
@@ -129,7 +129,7 @@ class SpecialUniversalExport extends BsSpecialPage {
 					);
 				}
 			}
-			
+
 			BsUniversalExportHelper::getParamsFromQueryString( $this->aParams );
 
 			if ( $this->oRequestedTitle->userCan( 'universalexport-export' ) === false ) {
@@ -159,7 +159,7 @@ class SpecialUniversalExport extends BsSpecialPage {
 		}
 		catch( Exception $oException ) {
 			//Display Exception-Message and Stacktrace
-			$this->oOutputPage->setPageTitle( wfMsg( 'bs-universalexport-page-title-on-error' ) );
+			$this->oOutputPage->setPageTitle( wfMessage( 'bs-universalexport-page-title-on-error' )->text() );
 			$oExceptionView = new ViewException( $oException );
 			$this->oOutputPage->addHtml( $oExceptionView->execute() );
 		}
@@ -170,12 +170,12 @@ class SpecialUniversalExport extends BsSpecialPage {
 	 */
 	private function outputInformation() {
 		// TODO RBV (14.12.10 09:59): Display information about WebService availability, configuration settings, etc... Could also be used to monitor Webservice and manually empty cache.
-		$this->oOutputPage->setPageTitle( wfMsg( 'bs-universalexport-page-title-without-param' ) );
-		$this->oOutputPage->addHtml( wfMsg( 'bs-universalexport-page-text-without-param' ) );
+		$this->oOutputPage->setPageTitle( wfMessage( 'bs-universalexport-page-title-without-param' )->text() );
+		$this->oOutputPage->addHtml( wfMessage( 'bs-universalexport-page-text-without-param' )->text() );
 		$this->oOutputPage->addHtml( '<hr />' );
 
 		if( empty( $this->aModules ) ){
-			$this->oOutputPage->addHtml( wfMsg( 'bs-universalexport-page-text-without-param-no-modules-registered' ) );
+			$this->oOutputPage->addHtml( wfMessage( 'bs-universalexport-page-text-without-param-no-modules-registered' )->text() );
 			return;
 		}
 

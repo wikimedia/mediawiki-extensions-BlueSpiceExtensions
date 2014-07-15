@@ -2,9 +2,9 @@
 
 /**
  * JsonLicenses
- * 
+ *
  * Extends the mediawiki licenses class to put the available licenses out in a json format for ExtJS combobox.
- * 
+ *
  * @author Sebastian Ulbricht
  */
 class JsonLicenses extends Licenses {
@@ -16,7 +16,7 @@ class JsonLicenses extends Licenses {
 	}
 
 	public function getJsonOutput() {
-		$this->json[] = $this->outputJsonOption( wfMsg( 'nolicense' ), '' );
+		$this->json[] = $this->outputJsonOption( wfMessage( 'nolicense' )->text(), '' );
 		$this->makeJson( $this->getLicenses() );
 		return json_encode(array('items' => $this->json));
 	}
@@ -24,7 +24,7 @@ class JsonLicenses extends Licenses {
 	protected function outputJsonOption( $text, $value, $depth = 0 ) {
 		return array(
 			'text' => $text,
-			'value' => "\n\n==".wfMsgForContent( 'license-header' )."==\n{{".$value."}}",
+			'value' => "\n\n==".  wfMessage( 'license-header' )->inContentLanguage()->text()."==\n{{".$value."}}",
 			'indent'=> $depth
 		);
 	}
