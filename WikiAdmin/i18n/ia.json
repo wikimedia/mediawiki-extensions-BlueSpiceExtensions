@@ -6,7 +6,7 @@
 	},
 	"bs-wikiadmin-desc": "Administration de BlueSpice",
 	"bs-wikiadmin-notallowed": "Tu non es autorisate a usar iste pagina.",
-	"specialwikiadmin": "Administration de BlueSpice",
+	"wikiadmin": "Administration de BlueSpice",
 	"action-wikiadmin": "vider paginas de administration de BlueSpice",
 	"right-wikiadmin": "Vider paginas de administration de BlueSpice"
 }

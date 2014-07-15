@@ -6,7 +6,7 @@
 	},
 	"bs-wikiadmin-desc": "BlueSpice管理员",
 	"bs-wikiadmin-notallowed": "您未被允许使用此页面。",
-	"specialwikiadmin": "BlueSpice管理员",
+	"wikiadmin": "BlueSpice管理员",
 	"action-wikiadmin": "显示BlueSpice管理员页面",
 	"right-wikiadmin": "显示BlueSpice管理员页面"
 }

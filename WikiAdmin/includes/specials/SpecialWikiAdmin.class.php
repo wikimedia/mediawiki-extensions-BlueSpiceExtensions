@@ -3,7 +3,7 @@ class SpecialWikiAdmin extends BsSpecialPage {
 
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		parent::__construct( 'SpecialWikiAdmin', 'wikiadmin' ); // SpecialPage($name, $restriction)
+		parent::__construct( 'WikiAdmin', 'wikiadmin' ); // SpecialPage($name, $restriction)
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
