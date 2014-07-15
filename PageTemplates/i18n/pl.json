@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-pagetemplates-empty-page": "Pusta strona",
+	"bs-pagetemplates-tpl-added": "Szablon został dodany.",
+	"bs-pagetemplates-headerlabel": "Etykieta",
+	"bs-pagetemplates-headertargetnamespace": "Przestrzeń nazw",
+	"bs-pagetemplates-tipeditdetails": "Edytuj szablon",
+	"bs-pagetemplates-tipdeletetemplate": "Usuń szablon",
+	"bs-pagetemplates-tipaddtemplate": "Dodaj szablon",
+	"bs-pagetemplates-label-tpl": "Nazwa szablonu",
+	"bs-pagetemplates-label-desc": "Opis",
+	"bs-pagetemplates-label-targetns": "Przestrzeń nazw",
+	"bs-pagetemplates-label-article": "Szablon"
+}

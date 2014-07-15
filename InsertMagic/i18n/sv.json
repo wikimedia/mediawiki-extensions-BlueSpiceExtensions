@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-insertmagic": "Infoga magiskt ord",
+	"bs-insertmagic-notoc": "Döljer innehållsförteckningen.",
+	"bs-insertmagic-currentyear": "Nuvarande år",
+	"bs-insertmagic-currentmonthname": "Nuvarande månad (namn).",
+	"bs-insertmagic-currentmonthnamegen": "Nuvarande månad (genitivform).",
+	"bs-insertmagic-currentdayname": "Veckodag (namn).",
+	"bs-insertmagic-currenttime": "Tid (24-timmars HH:mm-format).",
+	"bs-insertmagic-currentweek": "Vecka (nummer).",
+	"bs-insertmagic-currenttimestamp": "Tidsstämpel med formatet ååååmmddhhmmss.",
+	"bs-insertmagic-servername": "Domännamn.",
+	"bs-insertmagic-revisionid": "Unikt versions-ID.",
+	"bs-insertmagic-gallery": "Skapa ett galleri av miniatyrer med <code>&lt;gallery&gt;</code>-taggen.",
+	"bs-insertmagic-dlg-title": "Infoga magiskt ord eller tagg",
+	"bs-insertmagic-type-tags": "Taggar",
+	"bs-insertmagic-type-variables": "Variabler",
+	"bs-insertmagic-label-second": "2. Ändra koden",
+	"bs-insertmagic-label-desc": "Beskrivning"
+}

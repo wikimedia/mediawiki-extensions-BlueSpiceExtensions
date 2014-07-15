@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-usermanager-labelnewpassword": "Hasło",
+	"bs-usermanager-labelpasswordcheck": "Potwierdź hasło"
+}

@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-insertfile-insert-file": "Infoga fil",
+	"bs-insertfile-uploadsdisabled": "Filuppladdning är inaktiverat på den här wikin.",
+	"bs-insertfile-nomatch": "Inga träffar",
+	"bs-insertfile-labelsort": "Sortera på:",
+	"bs-insertfile-labelfilter": "Filter:",
+	"bs-insertfile-filename": "Filnamn",
+	"bs-insertfile-filesize": "Filstorlek",
+	"bs-insertfile-lastmodified": "Senaste ändringar",
+	"bs-insertfile-labelupload": "Ladda upp",
+	"bs-insertfile-details-title": "Detaljer",
+	"bs-insertfile-labeldimensions": "Storlek (b x h)",
+	"bs-insertfile-labelalt": "Alternativ text",
+	"bs-insertfile-alignnone": "ingen",
+	"bs-insertfile-typenone": "ingen",
+	"bs-insertfile-typethumb": "miniatyr",
+	"bs-insertfile-uploadbuttontext": "Bläddra",
+	"bs-insertfile-uploadimageemptytext": "Välj en ny bild...",
+	"bs-insertfile-uploadsubmitvalue": "Ladda upp fil",
+	"bs-insertfile-errorloading": "Ett fel uppstod vid inläsning av filer.",
+	"bs-insertfile-warning": "Varning",
+	"bs-insertfile-warningupload": "Det finns en fil som väntar uppladdning. Vill du verkligen stänga detta fönster?",
+	"bs-insertfile-allowedfiletypesare": "Giltiga filtyper är:",
+	"bs-insertfile-error": "Fel",
+	"bs-insertfile-errornofileextensiononupload": "Den fil som du valde har ingen filändelse.",
+	"bs-insertfile-errorWrongFileExtensionOnUpload": "Den fil som du valde har inget giltigt filtillägg.",
+	"bs-insertfile-errorWrongFileTypeOnUpload": "Filen du valde är inte en tillåten filtyp.",
+	"bs-insertfile-uploadcomplete": "Din fil har sparats framgångsrikt.",
+	"bs-insertfile-titlefile": "Infoga fil",
+	"bs-insertfile-titleimage": "Infoga bild",
+	"bs-insertfile-tipkeepratio": "Behåll proportioner",
+	"bs-insertfile-of": "av",
+	"bs-insertfile-license": "Licens",
+	"bs-insertfile-linktext": "Visa text",
+	"bs-insertfile-error-no-medialink": "Ingen medialänk vald."
+}

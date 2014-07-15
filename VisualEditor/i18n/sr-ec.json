@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"prefs-visualeditor": "Визуелни уређивач",
+	"bs-visualeditor-editbutton-hint": "Визуелни уређивач",
+	"bs-visualeditor-wikitable": "Стандардна",
+	"bs-visualeditor-contenttable": "Садржај",
+	"bs-visualeditor-bsactions-wiki": "Викитекст",
+	"bs-visualeditor-bsactions-signature": "Потпис",
+	"bs-visualeditor-bsactions-save": "Сачувај",
+	"bs-visualeditor-bsactions-headings": "Наслови",
+	"bs-visualeditor-bsactions-paragraph": "Параграф",
+	"bs-visualeditor-bsactions-heading2": "Наслов 2",
+	"bs-visualeditor-bsactions-heading3": "Наслов 3",
+	"bs-visualeditor-bsactions-heading4": "Наслов 4",
+	"bs-visualeditor-bsactions-heading5": "Наслов 5",
+	"bs-visualeditor-bsactions-heading6": "Наслов 6"
+}

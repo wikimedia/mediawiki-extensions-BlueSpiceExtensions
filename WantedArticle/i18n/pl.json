@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-wantedarticle-single-textfield-defaulttext": "Tytuł strony",
+	"bs-wantedarticle-tag-more-linktext": "Więcej ...",
+	"bs-wantedarticle-pref-sort": "Sortuj według:",
+	"bs-wantedarticle-pref-sort-time": "Czas",
+	"bs-wantedarticle-pref-sort-title": "Tytuł",
+	"bs-wantedarticle-pref-order-asc": "rosnąco",
+	"bs-wantedarticle-pref-order-desc": "malejąco"
+}

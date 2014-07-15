@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-insertfile-labelsort": "Sortuj według:",
+	"bs-insertfile-labelfilter": "Filtr:",
+	"bs-insertfile-filename": "Nazwa pliku",
+	"bs-insertfile-filesize": "Rozmiar pliku",
+	"bs-insertfile-lastmodified": "Ostatnie zmiany",
+	"bs-insertfile-details-title": "Szczegóły",
+	"bs-insertfile-warning": "Ostrzeżenie",
+	"bs-insertfile-error": "Błąd",
+	"bs-insertfile-tipkeepratio": "Zachowaj proporcje",
+	"bs-insertfile-license": "Licencja",
+	"bs-insertfile-categories": "Kategorie"
+}

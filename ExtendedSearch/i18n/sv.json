@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-extendedsearch-desc": "Utökad sökning",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategori|Kategorier}}: $2",
+	"bs-extendedsearch-error": "Fel:",
+	"bs-extendedsearch-facet-category": "Kategori",
+	"bs-extendedsearch-facet-namespace": "Namnrymd",
+	"bs-extendedsearch-facet-namespace-files": "Filer",
+	"bs-extendedsearch-facet-type": "Format",
+	"bs-extendedsearch-facet-uncategorized": "Okategoriserad",
+	"bs-extendedsearch-indexing-files-in-repo": "Indexerar uppladdade filer",
+	"bs-extendedsearch-result": "Sökningen efter \"$1\" hittade $2 {{PLURAL:$2|resultat}}.",
+	"bs-extendedsearch-sort-by": "Sorterade efter:",
+	"bs-extendedsearch-sort-title": "Titel",
+	"bs-extendedsearch-sort-ts": "Tid",
+	"bs-extendedsearch-sort-type": "Typ",
+	"bs-extendedsearch-pref-scope-title": "Titel",
+	"bs-extendedsearch-index-successfully-deleted": "Indexet raderades.",
+	"bs-extendedsearch-delete-index": "Radera index",
+	"bs-extendedsearch-docs-in-index": "dokument indexerade.",
+	"bs-extendedsearch-status": "Status",
+	"bs-extendedsearch-index-error-deleting": "Ett fel uppstod vid radering av index: $1",
+	"bs-extendedsearch-statistics": "Statistik",
+	"bs-extendedsearch-warning": "Varning",
+	"bs-extendedsearch-more": "Mer"
+}

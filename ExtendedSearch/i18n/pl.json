@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-extendedsearch-error": "Błąd:",
+	"bs-extendedsearch-facet-category": "Kategoria",
+	"bs-extendedsearch-facet-editors": "Autorzy",
+	"bs-extendedsearch-facet-namespace": "Przestrzeń nazw",
+	"bs-extendedsearch-facet-namespace-files": "Pliki",
+	"bs-extendedsearch-sort-title": "Tytuł",
+	"bs-extendedsearch-sort-ts": "Czas",
+	"bs-extendedsearch-sort-type": "Typ",
+	"bs-extendedsearch-pref-scope-title": "Tytuł",
+	"bs-extendedsearchadmin-label": "Opcje wyszukiwania",
+	"bs-extendedsearch-warning": "Ostrzeżenie",
+	"bs-extendedsearch-ascending": "Rosnąco",
+	"bs-extendedsearch-descending": "Malejąco",
+	"bs-extendedsearch-section": "Sekcja",
+	"bs-extendedsearch-morelikethis": "Podobne strony",
+	"bs-extendedsearch-no-mlt-found": "Nie znaleziono podobnych stron.",
+	"bs-extendedsearch-redirect": "Przekierowanie z: $1",
+	"bs-extendedsearch-more": "Więcej",
+	"bs-extendedsearch-fewer": "Mniej"
+}

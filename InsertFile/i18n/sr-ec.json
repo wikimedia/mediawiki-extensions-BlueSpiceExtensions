@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"bs-insertfile-insert-image": "Убаци слику",
+	"bs-insertfile-insert-file": "Убаци датотеку",
+	"bs-insertfile-labelsort": "Поређај по:",
+	"bs-insertfile-labelfilter": "Филтер:",
+	"bs-insertfile-filename": "Назив датотеке",
+	"bs-insertfile-filesize": "Величина датотеке",
+	"bs-insertfile-lastmodified": "Скорашње измене",
+	"bs-insertfile-details-title": "Детаљи",
+	"bs-insertfile-labelalt": "Алтернативни текст",
+	"bs-insertfile-typeframe": "оквир",
+	"bs-insertfile-uploaddescfilelabel": "Опис",
+	"bs-insertfile-uploadignorewarningslabel": "Занемари сва упозорења",
+	"bs-insertfile-uploadsubmitvalue": "Пошаљи датотеку",
+	"bs-insertfile-warning": "Упозорење",
+	"bs-insertfile-uploadcomplete": "Ваша датотека је успешно сачувана.",
+	"bs-insertfile-titlefile": "Убаци датотеку",
+	"bs-insertfile-license": "Лиценца",
+	"bs-insertfile-categories": "Категорије"
+}

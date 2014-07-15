@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-permissionmanager-desc": "Administrationsgränssnittet för att hantera behörigheter",
+	"bs-permissionmanager-grouping-global": "Namnrymdsoberoende behörigheter",
+	"bs-permissionmanager-btn-group-label": "Grupp:",
+	"bs-permissionmanager-header-permissions": "Behörigheter",
+	"bs-permissionmanager-header-namespaces": "Namnrymder",
+	"bs-permissionmanager-header-group": "Grupp",
+	"bs-permissionmanager-btn-save-label": "Spara",
+	"bs-permissionmanager-btn-save-in-progress-label": "Sparar...",
+	"bs-permissionmanager-labeltemplates": "Mallar",
+	"bs-permissionmanager-btn-template-editor": "Redigera mallar",
+	"bs-permissionmanager-labeltpled": "Mall-redigeraren",
+	"bs-permissionmanager-labeltpled-desc": "Beskrivning",
+	"bs-permissionmanager-labeltpled-add": "Ny",
+	"bs-permissionmanager-labeltpled-edit": "Redigera",
+	"bs-permissionmanager-labeltpled-delete": "Radera",
+	"bs-permissionmanager-labeltpled-cancel": "Avbryt",
+	"bs-permissionmanager-msgtpled-success": "Mallen sparades.",
+	"bs-permissionmanager-msgtpled-savefailure": "Mallen kunde inte sparas.",
+	"bs-permissionmanager-msgtpled-delete": "Mallen raderades.",
+	"bs-permissionmanager-titletpled-edit": "Byt namn på mallen"
+}

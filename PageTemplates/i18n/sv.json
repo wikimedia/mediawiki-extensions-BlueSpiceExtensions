@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-pagetemplates-empty-page": "Tom sida",
+	"bs-pagetemplates-tpl-desc-toolong": "Beskrivningen är för lång. Använd maximalt 255 tecken.",
+	"bs-pagetemplates-tpl-added": "Mallen har lagts till.",
+	"bs-pagetemplates-nooldtpl": "Den gamla mallen kunde inte hittas.",
+	"bs-pagetemplates-tpl-edited": "Ändringarna har sparats.",
+	"bs-pagetemplates-dberror": "Ett databasfel uppstod.",
+	"bs-pagetemplates-tipdeletetemplate": "Radera mall",
+	"bs-pagetemplates-tipaddtemplate": "Lägg till mall",
+	"bs-pagetemplates-label-desc": "Beskrivning",
+	"bs-pagetemplates-label-targetns": "Namnrymd",
+	"bs-pagetemplates-label-article": "Mall"
+}
