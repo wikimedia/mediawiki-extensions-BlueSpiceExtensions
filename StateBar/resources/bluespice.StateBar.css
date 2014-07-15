@@ -28,9 +28,7 @@
 }
 
 .bs-statebar-top-item {
-	margin-right: 5px;
-	display: inline;
-	margin-bottom: 10px;
+	display: inline-block;
 	font-size: 90%;
 }
 
