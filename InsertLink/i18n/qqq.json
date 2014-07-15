@@ -6,7 +6,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-insertlink-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of insert link extension",
+	"bs-insertlink-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert link extension",
 	"bs-insertlink": "{{Identical|Insert link}}",
 	"bs-insertlink-button-title": "The tooltip for the button that opens the dialog. It is shown on mouse over.",
 	"bs-insertlink-dialog-title": "The title of the dialog window.\n{{Identical|Insert link}}",

@@ -7,7 +7,7 @@
 			"Robby"
 		]
 	},
-	"bs-insertmagic-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of insert magic extension",
+	"bs-insertmagic-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert magic extension",
 	"bs-insertmagic": "Text for insert magic word \n {{Identical|Insert magic word}}",
 	"bs-insertmagic-notoc": "Text for hides the table of contents.",
 	"bs-insertmagic-forcetoc": "Text for forces the table of contents to appear at its normal position.",

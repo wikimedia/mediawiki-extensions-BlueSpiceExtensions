@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-extendededitbar-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of extended edit bar extension",
+	"bs-extendededitbar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended edit bar extension",
 	"bs-extendededitbar-redirecttip": "Text for redirect",
 	"bs-extendededitbar-redirectsample": "Text for insert text",
 	"bs-extendededitbar-striketip": "Text for strike",

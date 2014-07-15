@@ -5,10 +5,10 @@
 			"Shirayuki"
 		]
 	},
-	"prefs-avatars": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for avatars section in preferences.\n{{Identical|Avatar}}",
-	"bs-avatars-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of avatars extension",
-	"bs-avatars-pref-generator": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for avatar generator:\n{{Identical|Generator}}",
-	"bs-avatars-pref-defaultsize": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for default size of avatar in pixel:",
+	"prefs-avatars": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for avatars section in preferences.\n{{Identical|Avatar}}",
+	"bs-avatars-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of avatars extension",
+	"bs-avatars-pref-generator": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for avatar generator:\n{{Identical|Generator}}",
+	"bs-avatars-pref-defaultsize": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for default size of avatar in pixel:",
 	"bs-avatars-upload-complete": "Text for the picture was uploaded successfully.",
 	"bs-avatars-generate-complete": "Text for a new avatar was generated.",
 	"bs-avatars-upload-title": "Window title for change profile picture",

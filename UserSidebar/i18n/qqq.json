@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-usersidebar-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of user sidebar extension",
+	"bs-usersidebar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of user sidebar extension",
 	"bs-usersidebar-userpagesettings-link-title": "Image title for edit the content of your focus",
 	"bs-usersidebar-userpagesettings-link-text": "Anchor text for {{GENDER:|edit}} focus"
 }

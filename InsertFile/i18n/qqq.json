@@ -5,7 +5,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-insertfile-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of insert file extension",
+	"bs-insertfile-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert file extension",
 	"bs-insertfile-insert-image": "Text for insert image \n{{Identical|Insert image}}",
 	"bs-insertfile-insert-file": "Text for insert file \n{{Identical|Insert file}}",
 	"bs-insertfile-button-image-title": "Button text for insert or edit image \n{{Identical|Insert or edit image}}",

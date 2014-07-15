@@ -6,8 +6,8 @@
 			"Robby"
 		]
 	},
-	"bs-pagetemplates-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of page templates extension",
-	"prefs-pagetemplates": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for avatars section in preferences.\n{{Identical|Page templates}}",
+	"bs-pagetemplates-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page templates extension",
+	"prefs-pagetemplates": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for avatars section in preferences.\n{{Identical|Page templates}}",
 	"bs-pagetemplates-empty-page": "Anchor text for empty page",
 	"bs-pagetemplates-empty-page-desc": "Text for start with an empty page.",
 	"bs-pagetemplatesadmin-label": "Anchor text in admin tab for page templates \n {{Identical|Page templates}}",
@@ -25,9 +25,9 @@
 	"bs-pagetemplates-tpl-deleted": "Text for the template has been deleted.",
 	"bs-pagetemplates-general-section": "Headline for general\n{{Identical|General}}",
 	"bs-pagetemplates-choose-template": "text for this page doesn't exist yet. You can create a new page. If you don't want to do that, click the back button of your browser to return to the last page visited. \n\nYou can choose {{PLURAL:$1||one of}} the following {{PLURAL:$1|template|templates}}: \n $1 is the number of templates use it for PLURAL distinction",
-	"bs-pagetemplates-pref-excludens": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for do not show templates in these namespaces:",
-	"bs-pagetemplates-pref-forcenamespace": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for force target namespace",
-	"bs-pagetemplates-pref-hideifnotintargetns": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for hide template if the page is not to be created in the target namespace",
+	"bs-pagetemplates-pref-excludens": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for do not show templates in these namespaces:",
+	"bs-pagetemplates-pref-forcenamespace": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for force target namespace",
+	"bs-pagetemplates-pref-hideifnotintargetns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for hide template if the page is not to be created in the target namespace",
 	"bs-pagetemplates-headerlabel": "Label for label\n{{Identical|Label}}",
 	"bs-pagetemplates-headertargetnamespace": "Label for namespace\n{{Identical|Namespace}}",
 	"bs-pagetemplates-tipeditdetails": "Text for edit template\n{{Identical|Edit template}}",

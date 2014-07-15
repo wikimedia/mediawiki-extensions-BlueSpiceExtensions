@@ -5,8 +5,8 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-permissionmanager-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of permisson manager extension",
-	"prefs-permissionmanager": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for permission manager section in preferences.\n{{Identical|Permission manager}}",
+	"bs-permissionmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of permisson manager extension",
+	"prefs-permissionmanager": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for permission manager section in preferences.\n{{Identical|Permission manager}}",
 	"bs-permissionmanager-label": "Anchor text for permission manager\n{{Identical|Permission manager}}",
 	"bs-permissionmanager-grouping-global": "Column headline for namespace independent permissions\n{{Identical|Namespace independent permissions}}",
 	"bs-permissionmanager-grouping-local": "Column headline for namespace specific permissions\n{{Identical|Namespace specific permissions}}",
@@ -37,7 +37,7 @@
 	"bs-permissionmanager-titletpled-new": "Window title for create template\n{{Identical|Create template}}",
 	"bs-permissionmanager-titletpled-edit": "Window title for rename template",
 	"bs-permissionmanager-titletpled-delete": "Window title for delete template",
-	"bs-permissionmanager-pref-lockmode": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for activate lockmode",
-	"bs-permissionmanager-pref-skipsysns": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for skip system namespaces if lockmode is active",
-	"bs-permissionmanager-pref-enablerealitycheck": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for activate permission check"
+	"bs-permissionmanager-pref-lockmode": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for activate lockmode",
+	"bs-permissionmanager-pref-skipsysns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for skip system namespaces if lockmode is active",
+	"bs-permissionmanager-pref-enablerealitycheck": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for activate permission check"
 }

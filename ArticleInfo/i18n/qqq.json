@@ -5,9 +5,9 @@
 			"Shirayuki"
 		]
 	},
-	"bs-articleinfo-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of article info extension",
-	"prefs-articleinfo": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for article information section in preferences.\n{{Identical|Page information}}",
-	"bs-articleinfo-pref-CheckRevisionInterval": "Option in [[Special:Wiki_Admin&mode=Preferences]], timespan until article informations are updated in seconds:",
+	"bs-articleinfo-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of article info extension",
+	"prefs-articleinfo": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for article information section in preferences.\n{{Identical|Page information}}",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], timespan until article informations are updated in seconds:",
 	"bs-articleinfo-last-edited": "Image alternative text for time since recent change, used in status bar above article",
 	"bs-articleinfo-last-edited-tooltip": "Anchor title for last edit, used in status bar above article",
 	"bs-articleinfo-last-editor": "Image alternative text for last editor, used in status bar above article, $1 is the current user name for GENDER distinction (depends on sex setting)",
@@ -23,11 +23,11 @@
 	"bs-articleinfo-subpages-too-much": "Text for there are more than 100 subpages available, shown in folded out status bar.",
 	"bs-articleinfo-check-revision": "Anchor text and image alternative text for new version available, shown in status bar above article",
 	"bs-articleinfo-check-revision-tooltip": "Anchor title for reload article shown in status bar above article",
-	"bs-articleinfo-statebartoplastedited": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item recent edit",
-	"bs-articleinfo-statebartoplasteditor": "Used in [[Special:Wiki_Admin&mode=Preferences]],label for top sorting item recent editor",
-	"bs-articleinfo-statebartopcategories": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item categories.\n{{Identical|Category}}",
-	"bs-articleinfo-statebartopsubpages": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for top sorting item subpages.\n{{Identical|Subpage}}",
-	"bs-articleinfo-statebarbodycategories": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item categories.\n{{Identical|Category}}",
-	"bs-articleinfo-statebarbodysubpages": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item subpages.\n{{Identical|Subpage}}",
-	"bs-articleinfo-statebarbodytemplates": "Used in [[Special:Wiki_Admin&mode=Preferences]], label for body sorting item templates.\n{{Identical|Template}}"
+	"bs-articleinfo-statebartoplastedited": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for top sorting item recent edit",
+	"bs-articleinfo-statebartoplasteditor": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences],label for top sorting item recent editor",
+	"bs-articleinfo-statebartopcategories": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for top sorting item categories.\n{{Identical|Category}}",
+	"bs-articleinfo-statebartopsubpages": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for top sorting item subpages.\n{{Identical|Subpage}}",
+	"bs-articleinfo-statebarbodycategories": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for body sorting item categories.\n{{Identical|Category}}",
+	"bs-articleinfo-statebarbodysubpages": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for body sorting item subpages.\n{{Identical|Subpage}}",
+	"bs-articleinfo-statebarbodytemplates": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for body sorting item templates.\n{{Identical|Template}}"
 }
