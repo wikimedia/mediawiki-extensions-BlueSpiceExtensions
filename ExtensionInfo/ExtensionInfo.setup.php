@@ -28,6 +28,9 @@ $wgResourceModules['ext.bluespice.extensioninfo'] = array(
 		'bs-extensioninfo-headerpackage',
 		'bs-extensioninfo-groupingtemplateviewtext'
 	),
+	'dependencies' => array(
+		'mediawiki.jqueryMsg'
+	),
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/ExtensionInfo/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/ExtensionInfo/resources',
 );
