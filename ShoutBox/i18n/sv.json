@@ -20,6 +20,7 @@
 	"bs-shoutbox-archive-failure": "Ett fel uppstod då borttagning av inlägget försöktes, försök igen.",
 	"bs-shoutbox-archive-failure-user": "Inlägg kan endast tas bort av deras författare.",
 	"bs-shoutbox-switch-description": "Döljer shoutbox på den här sidan",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|tecken}} återstår",
 	"bs-shoutbox-confirm-text": "Vill du verkligen radera detta inlägg?",
 	"bs-shoutbox-confirm-title": "Bekräfta",
 	"bs-shoutbox-entermessage": "Skriv in ett meddelande.",

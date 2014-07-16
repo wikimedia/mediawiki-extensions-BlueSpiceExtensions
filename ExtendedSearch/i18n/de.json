@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Smuggli"
 		]
 	},
 	"bs-extendedsearch-desc": "Erweiterte Suche",
@@ -47,7 +48,7 @@
 	"bs-extendedsearch-pref-defscopeuser": "Standard für Suche:",
 	"bs-extendedsearch-pref-scope-text": "Volltext",
 	"bs-extendedsearch-pref-scope-title": "Titel",
-	"bs-extendedsearch-pref-jumptotitle": "Weiterleitung zur Seite, wenn er vorhanden",
+	"bs-extendedsearch-pref-jumptotitle": "Bei Suchanfragen weiterleiten zur Seite, falls diese vorhanden ist",
 	"bs-extendedsearch-pref-indextylinked": "In der Wiki Seite verlinkte Dateien indexieren",
 	"bs-extendedsearch-pref-indextypesrepo": "Hochgeladene Dateien indexieren",
 	"bs-extendedsearch-pref-indextypeswiki": "Wiki Seiten indexieren",

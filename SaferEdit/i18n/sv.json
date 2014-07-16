@@ -5,5 +5,8 @@
 		]
 	},
 	"bs-saferedit-restore": "Återställ",
+	"bs-saferedit-lastsavedversion": "Senast sparad version från $1 - $2.",
+	"bs-saferedit-unsavedchanges": "Det finns osparade ändringar.",
+	"bs-saferedit-othersectiontext2": "Säkerhetskopian skapades $1 - $2.",
 	"bs-saferedit-othersectiontext3": "Vill du byta till det avsnittet?"
 }

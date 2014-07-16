@@ -7,11 +7,14 @@
 		]
 	},
 	"bs-universalexport-desc": "Lägger till exportfunktioner",
+	"bs-universalexport-pref-metadatadefaults": "Metadata (standard, JSON):",
+	"bs-universalexport-page-text-without-param-no-modules-registered": "Det finns inga registrerade moduler.",
 	"bs-universalexport-widget-title": "Exportera",
 	"bs-universalexport-widget-tooltip": "Exportera den aktuella sidan",
 	"bs-universalexport-tag-pagebreak-text": "Sidbrytning",
 	"bs-universalexport-tag-exclude-text": "Denna text exporteras inte.",
 	"bs-universalexport-tag-hidetitle-text": "Titeln på denna sida kommer inte att synas i exporten.",
+	"bs-universalexport-tag-excludearticle-text": "Denna sida får inte exporteras.",
 	"action-universalexport-export": "skapa en exportfil",
 	"right-universalexport-export": "Skapa en exportfil"
 }

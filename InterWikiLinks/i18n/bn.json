@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftab1995"
+		]
+	},
+	"bs-interwikilinks-label": "আন্তঃউইকি সংযোগ",
+	"bs-interwikilinks-nourl": "একটি URL দিন।",
+	"bs-interwikilinks-titleaddinterwikilink": "আন্তঃউইকি সংযোগ যোগ করুন",
+	"bs-interwikilinks-titleeditinterwikilink": "আন্তঃউইকি সংযোগ সম্পাদনা",
+	"bs-interwikilinks-titledeleteinterwikilink": "আন্তঃউইকি সংযোগ অপসারণ করুন",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "আপনি কি নিশ্চিত, আপনি এই আন্তউইকি সংযোগ অপসারণ করতে চান?",
+	"bs-interwikilinks-insertlink-tabtitle": "অন্য উইকি মধ্যে সংযোগ"
+}

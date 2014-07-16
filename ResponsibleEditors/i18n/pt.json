@@ -5,8 +5,10 @@
 			"Vitorvicentevalente"
 		]
 	},
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "Valores fornecidos inválidos.",
 	"action-responsibleeditors-viewspecialpage": "Visualizar as páginas protegidas pelo direito \"ResponsibleEditors-Viewspecialpage\"",
 	"bs-responsibleeditors-columnpage": "Página",
 	"bs-responsibleeditors-columnnamespace": "Domínio",
-	"bs-responsibleeditors-rbdisplaymodeall": "Mostrar todas as páginas"
+	"bs-responsibleeditors-rbdisplaymodeall": "Mostrar todas as páginas",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Selecione um domínio"
 }
