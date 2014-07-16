@@ -75,7 +75,7 @@ class RSSStandards extends BsExtensionMW {
 	 */
 	public function onBSRSSFeederGetRegisteredFeeds( $aFeeds ) {
 		RSSFeeder::registerFeed('recentchanges',
-			wfMessage( 'bs-rssfeeder-recent_changes' )->plain(),
+			wfMessage( 'bs-rssfeeder-recent-changes' )->plain(),
 			wfMessage( 'bs-rssstandards-description_rc' )->plain(),
 			$this,
 			NULL,
@@ -596,7 +596,7 @@ class RSSStandards extends BsExtensionMW {
 	public function buildLinksRc() {
 		global $wgUser;
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMessage( 'bs-rssfeeder-recent_changes' )->plain() );
+		$set->setLabel( wfMessage( 'bs-rssfeeder-recent-changes' )->plain() );
 
 		$label = new ViewFormElementLabel();
 		$label->useAutoWidth();
@@ -616,7 +616,7 @@ class RSSStandards extends BsExtensionMW {
 				)
 			)
 		);
-		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit' )->plain() );
 
 		$set->addItem( $label );
 		$set->addItem( $btn );
@@ -635,7 +635,7 @@ class RSSStandards extends BsExtensionMW {
 		$btn->setId( 'btnFeedPage' );
 		$btn->setName( 'btnFeedPage' );
 		$btn->setType( 'button' );
-		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit' )->plain() );
 
 		$set->addItem( $div );
 		$set->addItem( $btn );
@@ -669,7 +669,7 @@ class RSSStandards extends BsExtensionMW {
 				)
 			)
 		);
-		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit' )->plain() );
 
 		$set->addItem( $label );
 		$set->addItem( $btn );
@@ -684,7 +684,7 @@ class RSSStandards extends BsExtensionMW {
 		$select = new ViewFormElementSelectbox();
 		$select->setId( 'selFeedNs' );
 		$select->setName( 'selFeedNs' );
-		$select->setLabel( wfMessage( 'bs-rssfeeder-field_title_ns' )->plain() );
+		$select->setLabel( wfMessage( 'bs-ns' )->plain() );
 
 		$aNamespaces = BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA ) );
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
@@ -710,7 +710,7 @@ class RSSStandards extends BsExtensionMW {
 		$btn->setId( 'btnFeedNs' );
 		$btn->setName( 'btnFeedNs' );
 		$btn->setType( 'button' );
-		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit' )->plain() );
 
 		$set->addItem( $select );
 		$set->addItem( $btn );
@@ -763,7 +763,7 @@ class RSSStandards extends BsExtensionMW {
 		$btn->setId( 'btnFeedCat' );
 		$btn->setName( 'btnFeedCat' );
 		$btn->setType( 'button' );
-		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit' )->plain() );
 
 		$set->addItem( $select );
 		$set->addItem( $btn );
@@ -806,7 +806,7 @@ class RSSStandards extends BsExtensionMW {
 		$btn->setId( 'btnFeedWatch' );
 		$btn->setName( 'btnFeedWatch' );
 		$btn->setType( 'button' );
-		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit' )->plain() );
 
 		$set->addItem( $select );
 		$set->addItem( $btn );
