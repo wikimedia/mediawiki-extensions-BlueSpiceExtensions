@@ -1,0 +1,12 @@
+/*
+    Created on : 09.07.2014, 13:38:41
+    Author     : swidmann
+*/
+.mw-echo-state > .mw-echo-icon {
+	width: 32px;
+	height: 32px;
+}
+
+.mw-echo-notification {
+	padding: 15px 35px 10px 0px;
+}

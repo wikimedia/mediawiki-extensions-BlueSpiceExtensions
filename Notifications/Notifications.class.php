@@ -67,8 +67,8 @@ class Notifications extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Notifications',
-			EXTINFO::DESCRIPTION => 'Send changes in the wiki via echo extension.',
-			EXTINFO::AUTHOR      => 'Stefan Widmann',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-notifications-desc' )->text(),
+			EXTINFO::AUTHOR      => array( '[https://www.mediawiki.org/wiki/User:Swidmann Stefan Widmann]' ),
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
@@ -169,7 +169,6 @@ class Notifications extends BsExtensionMW {
 		);
 
 		foreach ( $aTmpUsers as $index => $user ) {
-			if ( $user instanceof User ){}// just for code completion
 			if ( !$user->getOption( 'MW::Notifications::Active', false ) ) continue;
 			if( $event->getTitle() instanceof Title ) {
 				if ( !$event->getTitle()->userCan( 'read', $user ) ) continue;
@@ -186,7 +185,28 @@ class Notifications extends BsExtensionMW {
 		return true;
 	}
 
-	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
+	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
+		$sIconPath = 'BlueSpiceExtensions/Notifications/resources/icons/';
+		$icons+=array(
+			'bs-edit' => array(
+				'path' => $sIconPath.'edit.png'
+			),
+			'bs-create' => array(
+				'path' => $sIconPath.'create.png'
+			),
+			'bs-delete' => array(
+				'path' => $sIconPath.'delete.png'
+			),
+			'bs-move' => array(
+				'path' => $sIconPath.'move.png'
+			),
+			'bs-newuser' => array(
+				'path' => $sIconPath.'newuser.png'
+			),
+			'bs-shoutbox' => array(
+				'path' => $sIconPath.'shoutbox.png'
+			),
+		);
 		// category definition via self::$aNotificationCategories
 		//  HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Notification_category_parameters
 		foreach( self::$aNotificationCategories as $sCategory => $aCategoryDefinition ) {
@@ -206,7 +226,7 @@ class Notifications extends BsExtensionMW {
 			'email-body-message' => 'bs-notifications-email-edit',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
 			'email-body-batch-message' => 'hello again',
-			'icon' => 'edit',
+			'icon' => 'bs-edit',
 //			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
@@ -223,7 +243,7 @@ class Notifications extends BsExtensionMW {
 			'email-body-message' => 'bs-notifications-email-new',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
 			'email-body-batch-message' => 'hello again',
-			'icon' => 'create',
+			'icon' => 'bs-create',
 //			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
@@ -240,7 +260,7 @@ class Notifications extends BsExtensionMW {
 			'email-body-message' => 'bs-notifications-email-delete',
 			'email-body-params' => array( 'titlelink', 'agent', 'deletereason' ),
 			'email-body-batch-message' => 'hello again',
-			'icon' => 'delete',
+			'icon' => 'bs-delete',
 //			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
@@ -257,7 +277,7 @@ class Notifications extends BsExtensionMW {
 			'email-body-message' => 'bs-notifications-email-move',
 			'email-body-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
 			'email-body-batch-message' => 'hello again',
-			'icon' => 'move',
+			'icon' => 'bs-move',
 		);
 
 		$notifications['bs-newuser'] = array(
@@ -273,7 +293,7 @@ class Notifications extends BsExtensionMW {
 			'email-body-message' => 'bs-notifications-email-addaccount',
 			'email-body-params' => array( 'userlink' ),
 			'email-body-batch-message' => 'hello again',
-			'icon' => 'newuser',
+			'icon' => 'bs-newuser',
 		);
 
 		$notifications['bs-shoutbox'] = array(
@@ -289,7 +309,7 @@ class Notifications extends BsExtensionMW {
 			'email-body-message' => 'bs-notifications-email-shout',
 			'email-body-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
 			'email-body-batch-message' => 'hello again',
-			'icon' => 'shoutbox',
+			'icon' => 'bs-shoutbox',
 		);
 		return true;
 	}
@@ -461,10 +481,15 @@ class Notifications extends BsExtensionMW {
 			return true;
 		}
 
+
 		$tpl->data['bs_personal_info'][10] = array(
-			'id' => 'pi-notifications',
-			'class' => 'icon-mail4'
+			'id' => 'pt-notifications',
+			'class' => 'icon-mail4',
 		) + $tpl->data['personal_urls']['notifications'];
+
+		if( isset( $tpl->data['personal_urls']['notifications']['text'] ) && $tpl->data['personal_urls']['notifications']['text'] > 0 ) {
+			$tpl->data['bs_personal_info'][10]['active'] = true;
+		}
 
 		unset($tpl->data['personal_urls']['notifications']);
 
@@ -472,7 +497,10 @@ class Notifications extends BsExtensionMW {
 	}
 
 	public function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		$out->addModuleStyles( 'ext.bluespice.notifications.icons' );
+		$out->addModuleStyles( array(
+				'ext.bluespice.notifications'
+			)
+		);
 		return true;
 	}
 

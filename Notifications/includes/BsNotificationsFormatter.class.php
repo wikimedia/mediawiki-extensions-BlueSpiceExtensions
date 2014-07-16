@@ -13,17 +13,17 @@
  * @filesource
  */
 class BsNotificationsFormatter extends EchoBasicFormatter {
-	
+
 	public function __construct( $params ) {
 		parent::__construct( $params );
 	}
-	
+
 	/**
 	 *
 	 * @param EchoEvent $event
 	 * @param type $param
 	 * @param Message $message
-	 * @param User $user 
+	 * @param User $user
 	 */
 	protected function processParam($event, $param, $message, $user) {
 		if( $param === 'summary' ) {
@@ -51,7 +51,7 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 			);
 		} else if( $param === 'agentlink' ) {
 			if( $event->getAgent()->isAnon() ) {
-				$message->params( wfMessage( 'bs-echo-anon-user' )->parse() );
+				$message->params( "'''".wfMessage( 'bs-echo-anon-user' )."'''" )->parse();
 			} else {
 				$this->setUserpageLink(
 					$event,
@@ -95,7 +95,7 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 			parent::processParam( $event, $param, $message, $user );
 		}
 	}
-	
+
 	/**
 	 * Should create a difflink for the given title
 	 * @param EchoEvent $event
@@ -106,8 +106,8 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 		$title = $event->getAgent()->getUserPage();
 		$this->buildLink($title, $message, $props);
 	}
-	
-	
+
+
 	/**
 	 *  Creates a link to the user page (user given by event)
 	 * @param EchoEvent $event
@@ -128,16 +128,16 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 		} else {
 			$title = $event->getAgent()->getUserPage();
 		}
-		
+
 		if( $title === null ) {
-			$message->params( wfMessage( 'bs-echo-unknown-user' )->parse() );
+			$message->params( "'''".wfMessage( 'bs-echo-unknown-user' )."'''" )->parse();
 		} else {
 			$this->buildLink($title, $message, $props, false );
 		}
 	}
 
 	/**
-	 * 
+	 *
 	 * @param Title $title
 	 * @param type $message
 	 * @param type $props
@@ -168,7 +168,7 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 					$linkText = htmlspecialchars( $title->getText() );
 				}
 			}
-			
+
 			$message->rawParams( Linker::link( $title, $linkText, $class, $param ) );
 		} elseif ( $this->outputFormat === 'email' ) {
 			$message->params( $title->getCanonicalURL( $param ) );

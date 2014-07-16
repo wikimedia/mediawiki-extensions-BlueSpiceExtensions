@@ -34,15 +34,19 @@ BsExtensionManager::registerExtension('Notifications', BsRUNLEVEL::FULL|BsRUNLEV
 
 // MessageFiles
 $wgExtensionMessagesFiles['Notifications'] = __DIR__ . '/Notifications.i18n.php';
+$wgMessagesDirs['Notifications'] = __DIR__ . '/i18n';
 
 // Autoloader
 $wgAutoloadClasses['BsNotificationsFormatter'] = __DIR__.'/includes/BsNotificationsFormatter.class.php';
 
-$wgResourceModules['ext.bluespice.notifications.icons'] = array(
-	'styles' => 'extensions/BlueSpiceExtensions/Notifications/resources/bluespice.notifications.icons.css',
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+$wgResourceModuleTemplate = array(
+	'localBasePath' => "$IP/extensions/BlueSpiceExtensions/Notifications/resources",
+	'remoteExtPath' => 'BlueSpiceExtensions/Notifications/resources'
 );
+
+$wgResourceModules['ext.bluespice.notifications'] = array(
+	'styles' => 'bluespice.notifications.css',
+)+$wgResourceModuleTemplate;
 /**
  * Setting defaults for users
  * Webprefix: echo-subscriptions-web-
@@ -64,3 +68,5 @@ $wgDefaultUserOptions['echo-subscriptions-email-mention'] = false;
 // Web
 $wgDefaultUserOptions['echo-subscriptions-web-article-linked'] = true;
 $wgDefaultUserOptions['echo-subscriptions-web-mention'] = true;
+
+unset( $wgResourceModuleTemplate );
