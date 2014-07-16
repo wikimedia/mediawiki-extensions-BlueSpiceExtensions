@@ -76,11 +76,14 @@ $messages['de'] = array(
 	'bs-groupmanager-headerActions' => 'Aktionen',
 	'bs-groupmanager-btnAddGroup' => 'Gruppe hinzufügen',
 	'bs-groupmanager-tipEdit' => 'Gruppe umbennen',
-	'bs-groupmanager-tipRemove' => 'Gruppe löschen',
+	'bs-groupmanager-tipRemove' => '{{PLURAL:$1|Gruppe|Gruppen}} löschen',
 	'bs-groupmanager-titleNewGroup' => 'Gruppe hinzufügen',
 	'bs-groupmanager-titleEditGroup' => 'Gruppe bearbeiten',
 	'bs-groupmanager-titleError' => 'Fehler',
-	'bs-groupmanager-removeGroup' => 'Willst du die Gruppe wirklich löschen?',
+	'bs-groupmanager-removeGroup' => 'Willst du die {{PLURAL:$1|Gruppe|Gruppen}} wirklich löschen?',
+	'bs-groupmanager-removegroup-message-success' => 'Folgende {{PLURAL:$1|Gruppe wurde|Gruppen wurden}} gelöscht:$2',
+	'bs-groupmanager-removegroup-message-failure' => 'Folgende {{PLURAL:$1|Gruppe konnte|Gruppen konnten}} nicht gelöscht werden:$2',
+	'bs-groupmanager-removegroup-message-unknown' => 'Ein unbekannter Fehler ist aufgetreten, bitte versuche es erneut.',
 	'bs-groupmanager-lableName' => 'Gruppenname:',
 	'bs-groupmanager-msgNotEditable' => 'Dies ist eine Systemgruppe und kann nicht umbenannt werden.',
 	'bs-groupmanager-msgNotRemovable' => 'Dies ist eine Systemgruppe und kann nicht gelöscht werden.'
@@ -97,7 +100,8 @@ $messages['de-formal'] = array(
 	'bs-groupmanager-not_allowed'           => 'Sie sind leider nicht berechtigt, diese Seite zu benutzen.',
 
 	//Javascript
-	'bs-groupmanager-removeGroup' => 'Wollen Sie die Gruppe wirklich löschen?'
+	'bs-groupmanager-removeGroup' => 'Wollen Sie die {{PLURAL:$1|Gruppe|Gruppen}} wirklich löschen?',
+	'bs-groupmanager-removegroup-message-unknown' => 'Ein unbekannter Fehler ist aufgetreten, bitte versuchen Sie es erneut.',
 );
 
 $messages['en'] = array(
@@ -163,10 +167,17 @@ $messages['en'] = array(
 	'bs-groupmanager-titleNewGroup' => 'New group',
 	'bs-groupmanager-titleEditGroup' => 'Edit group',
 	'bs-groupmanager-titleError' => 'Error',
-	'bs-groupmanager-removeGroup' => 'Are you sure you want to remove this group?',
+	'bs-groupmanager-removeGroup' => 'Are you sure you want to remove {{PLURAL:$1|this group|these groups}}?',
+	'bs-groupmanager-removegroup-message-success' => 'The following {{PLURAL:$1|group|groups}} were deleted:$2',
+	'bs-groupmanager-removegroup-message-failure' => 'The following {{PLURAL:$1|group|groups}}could not be deleted:$2',
+	'bs-groupmanager-removegroup-message-unknown' => 'An unexpected error occurred, please try again.',
 	'bs-groupmanager-lableName' => 'Group name:',
 	'bs-groupmanager-msgNotEditable' => 'This group is a system group and cannot be renamed.',
 	'bs-groupmanager-msgNotRemovable' => 'This group is a system group and cannot be removed.'
 );
 
-$messages['qqq'] = array();
+$messages['qqq'] = array(
+	'bs-groupmanager-removegroup-message-success' => 'Success message after deleting a group or a pair of groups.',
+	'bs-groupmanager-removegroup-message-failure' => 'Failure message after deleting a group or a pair of groups.',
+	'bs-groupmanager-removegroup-message-unknown' => 'An unexpected error occurred while trying to delete a group.',
+);

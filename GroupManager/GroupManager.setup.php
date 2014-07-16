@@ -19,7 +19,9 @@ $wgResourceModules['ext.bluespice.groupManager'] = array(
 		'bs-groupmanager-removeGroup',
 		'bs-groupmanager-lableName',
 		'bs-groupmanager-msgNotEditable',
-		'bs-groupmanager-msgNotRemovable'
+		'bs-groupmanager-msgNotRemovable',
+		'bs-groupmanager-removegroup-message-success',
+		'bs-groupmanager-removegroup-message-failure'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
@@ -30,3 +32,4 @@ $wgAjaxExportList[] = 'GroupManager::getGroups';
 $wgAjaxExportList[] = 'GroupManager::addGroup';
 $wgAjaxExportList[] = 'GroupManager::editGroup';
 $wgAjaxExportList[] = 'GroupManager::removeGroup';
+$wgAjaxExportList[] = 'GroupManager::removeGroups';
