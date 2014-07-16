@@ -6,7 +6,7 @@ Ext.define( 'BS.Review.Dialog', {
 	height: 500,
 
 	afterInitComponent: function() {
-		this.setTitle( mw.message('bs-review-title').plain() );
+		this.setTitle( mw.message('bs-review-review').plain() );
 		this.btnOK.setText( mw.message('bs-extjs-save').plain() );
 		this.btnCancel.setText( mw.message('bs-extjs-delete').plain() );
 		

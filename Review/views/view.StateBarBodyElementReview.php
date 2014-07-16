@@ -42,7 +42,7 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 	public function execute( $params = false ) {
 
 		$aOut[] = '<div class="bs-statebar-body-item" id="sbb-'.$this->sKey.'">';
-		$aOut[] =	'<h4 class="bs-statebar-body-itemheading" id="sbb-'.$this->sKey.'-heading">'.wfMessage( 'bs-review-statebar-body-header' )->plain().'</h4>';
+		$aOut[] =	'<h4 class="bs-statebar-body-itemheading" id="sbb-'.$this->sKey.'-heading">'.wfMessage( 'bs-review-review' )->plain().'</h4>';
 		$aOut[] =	'<div class="bs-statebar-body-itembody" id="sbb-'.$this->sKey.'-text">';
 		$aOut[] =		$this->sStatusText;
 		$aOut[] =		$this->sStatusReasonText;

@@ -7,7 +7,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 		var nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 		
 		this.dfStart = new Ext.create('Ext.form.field.Date',{
-			fieldLabel: mw.message('bs-review-lblStartdate' ).plain(),
+			fieldLabel: mw.message('bs-review-lblstartdate' ).plain(),
 			margin: '0 5 0 0',
 			value: new Date(),
 			minValue: today,
@@ -15,7 +15,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 		});
 
 		this.dfEnd = new Ext.create('Ext.form.field.Date',{
-			fieldLabel:mw.message('bs-review-lblEnddate' ).plain(),
+			fieldLabel:mw.message('bs-review-lblenddate' ).plain(),
 			value: nextWeek,
 			labelAlign: 'right'
 		});
@@ -102,7 +102,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 					bs.util.alert(
 						'bs-review-save-alert',
 						{
-							titleMsg: 'bs-review-titleStatus',
+							titleMsg: 'bs-review-colstatus',
 							text: tmp
 						},
 						{
@@ -127,7 +127,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 					bs.util.alert(
 						'bs-review-save-alert',
 						{
-							titleMsg: 'bs-review-titleStatus',
+							titleMsg: 'bs-review-colstatus',
 							text: tmp
 						}
 					);
