@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-rssfeeder-desc": "Fügt RSS Funktionalität hinzu",
+	"rssfeeder": "RSS Feeder",
+	"bs-rssfeeder-pagetext": "Folgende RSS-Feeds stehen zur Verfügung",
+	"bs-rssfeeder-recent-changes": "Letzte Änderungen",
+	"bs-rssfeeder-pages": "Seite",
+	"bs-rssfeeder-submit": "Anzeigen",
+	"bs-rssfeeder-rss": "RSS-Feed",
+	"bs-dashboards-rss-desc": "Erstelle deinen eigenen RSS-Feed",
+	"bs-extjs-rssfeeder-rss-title": "RSS-URL"
+}

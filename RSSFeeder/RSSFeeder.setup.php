@@ -1,6 +1,8 @@
 <?php
 
-BsExtensionManager::registerExtension('RSSFeeder', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension( 'RSSFeeder', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
+
+$wgMessagesDirs['RSSFeeder'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['RSSFeeder']      = __DIR__ . '/languages/RSSFeeder.i18n.php';
 $wgExtensionMessagesFiles['RSSFeederAlias'] = __DIR__ . '/languages/SpecialRSSFeeder.alias.php';

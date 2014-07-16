@@ -35,7 +35,6 @@ class SpecialRSSFeeder extends BsSpecialPage {
 			return;
 		}
 
-		$this->getOutput()->setPageTitle('RSS');
 		$this->getOutput()->addModuleStyles( 'ext.bluespice.rssFeeder' );
 
 		$form = new ViewBaseForm();
@@ -44,7 +43,7 @@ class SpecialRSSFeeder extends BsSpecialPage {
 
 		$label = new ViewFormElementLabel();
 		$label->useAutoWidth();
-		$label->setText(wfMessage( 'bs-rssfeeder-pagetext' )->plain());
+		$label->setText( '<h3>' . wfMessage( 'bs-rssfeeder-pagetext' )->plain() . '</h3>' );
 
 		$form->addItem($label);
 
@@ -54,7 +53,6 @@ class SpecialRSSFeeder extends BsSpecialPage {
 		}
 
 		$this->getOutput()->addHTML(
-				'<script type="text/javascript">var page_label = "'.  wfMessage( 'bs-rssfeeder-page_label' )->plain().'";</script>'.
 				$form->execute()
 		);
 	}
