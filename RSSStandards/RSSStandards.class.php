@@ -76,7 +76,7 @@ class RSSStandards extends BsExtensionMW {
 	public function onBSRSSFeederGetRegisteredFeeds( $aFeeds ) {
 		RSSFeeder::registerFeed('recentchanges',
 			wfMessage( 'bs-rssfeeder-recent-changes' )->plain(),
-			wfMessage( 'bs-rssstandards-description_rc' )->plain(),
+			wfMessage( 'bs-rssstandards-desc-rc' )->plain(),
 			$this,
 			NULL,
 			NULL,
@@ -84,8 +84,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('followOwn',
-			wfMessage( 'bs-rssstandards-title_own' )->plain(),
-			wfMessage( 'bs-rssstandards-description_own' )->plain(),
+			wfMessage( 'bs-rssstandards-title-own' )->plain(),
+			wfMessage( 'bs-rssstandards-desc-own' )->plain(),
 			$this,
 			'buildRssOwn',
 			array('u'),
@@ -93,8 +93,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('followPage',
-			wfMessage( 'bs-rssstandards-title_page' )->plain(),
-			wfMessage( 'bs-rssstandards-description_page' )->plain(),
+			wfMessage( 'bs-rssstandards-title-page' )->plain(),
+			wfMessage( 'bs-rssstandards-desc-page' )->plain(),
 			$this,
 			'buildRssPage',
 			array('p', 'ns'),
@@ -102,8 +102,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('namespace',
-			wfMessage( 'bs-rssstandards-title_ns' )->plain(),
-			wfMessage( 'bs-rssstandards-description_ns' )->plain(),
+			wfMessage( 'bs-ns' )->plain(),
+			wfMessage( 'bs-rssstandards-desc-ns' )->plain(),
 			$this,
 			'buildRssNs',
 			array('ns'),
@@ -111,8 +111,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed( 'category',
-			wfMessage( 'bs-rssstandards-title_cat' )->plain(),
-			wfMessage( 'bs-rssstandards-description_cat' )->plain(),
+			wfMessage( 'bs-rssstandards-title-cat' )->plain(),
+			wfMessage( 'bs-rssstandards-desc-cat' )->plain(),
 			$this,
 			'buildRssCat',
 			array('cat'),
@@ -120,8 +120,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		RSSFeeder::registerFeed('watchlist',
-			wfMessage( 'bs-rssstandards-title_watch' )->plain(),
-			wfMessage( 'bs-rssstandards-description_watch' )->plain(),
+			wfMessage( 'bs-rssstandards-title-watch' )->plain(),
+			wfMessage( 'bs-rssstandards-desc-watch' )->plain(),
 			$this,
 			'buildRssWatch',
 			array('days'),
@@ -159,11 +159,11 @@ class RSSStandards extends BsExtensionMW {
 			)
 		);
 
-		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_page' )->plain() );
+		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-page' )->plain() );
 		while( $row = $res->fetchObject() ) {
 			$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 			$entry = RSSItemCreator::createItem(
-				wfMessage( 'bs-rssstandards-changes_from' )->plain().$row->rc_user_text,
+				wfMessage( 'bs-rssstandards-changes-from', $row->rc_user_text )->text(),
 				$title->getFullURL( 'diff=' . $row->rc_this_oldid . '&oldid=prev' ),
 				FeedUtils::formatDiff( $row )
 			);
@@ -201,12 +201,12 @@ class RSSStandards extends BsExtensionMW {
 			$res = false;
 		}
 
-		$channel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title_own' )->plain() ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_own' )->plain() );
+		$channel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title-own' )->plain() ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-own' )->plain() );
 		if ( $res ) {
 			while ( $obj = $res->fetchObject() ) {
 				$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 				$entry = RSSItemCreator::createItem(
-					wfMessage( 'bs-rssstandards-changes_from' )->plain().$obj->rc_user_text,
+					wfMessage( 'bs-rssstandards-changes-from', $obj->rc_user_text )->text(),
 					$title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ),
 					FeedUtils::formatDiff($obj)
 				);
@@ -228,7 +228,7 @@ class RSSStandards extends BsExtensionMW {
 
 		$cat = $wgRequest->getVal( 'cat', '' );
 
-		$channel = RSSCreator::createChannel($wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title_cat' )->plain() . ' ' . addslashes( $cat ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_cat' )->plain() );
+		$channel = RSSCreator::createChannel($wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title-cat' )->plain() . ' ' . addslashes( $cat ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-cat' )->plain() );
 
 		$res = $dbr->query( "select cl_from FROM ".$wgDBprefix."categorylinks WHERE cl_to = '".addslashes( $cat )."'" );
 
@@ -287,7 +287,7 @@ class RSSStandards extends BsExtensionMW {
 
 		$aNamespaces = $wgLang->getNamespaces();
 
-		$channel = RSSCreator::createChannel( $wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title_ns' )->plain() . ' ' . $aNamespaces[$ns], 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_ns' )->plain() );
+		$channel = RSSCreator::createChannel( $wgSitename . ' - ' . wfMessage( 'bs-ns' )->plain() . ' ' . $aNamespaces[$ns], 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-ns' )->plain() );
 
 		$res = $dbr->query( "select page_id from ".$wgDBprefix."page where page_namespace = ".$ns );
 
@@ -530,7 +530,7 @@ class RSSStandards extends BsExtensionMW {
 
 		$list = ChangesList::newFromContext( $skin->getContext() ); //Thanks to Bartosz Dziewoński (https://gerrit.wikimedia.org/r/#/c/94082/)
 
-		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_watch' )->plain() );
+		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-watch' )->plain() );
 
 		$html = $list->beginRecentChangesList();
 		$counter = 1;
@@ -601,7 +601,7 @@ class RSSStandards extends BsExtensionMW {
 		$label = new ViewFormElementLabel();
 		$label->useAutoWidth();
 		$label->setFor( 'btnFeedRc' );
-		$label->setText( wfMessage( 'bs-rssstandards-description_rc' )->plain() );
+		$label->setText( wfMessage( 'bs-rssstandards-desc-rc' )->plain() );
 
 		$btn = new ViewFormElementButton();
 		$btn->setId('btnFeedRc');
@@ -625,7 +625,7 @@ class RSSStandards extends BsExtensionMW {
 
 	public function buildLinksPage() {
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMessage( 'bs-rssstandards-title_page' )->plain() );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title-page' )->plain() );
 
 		$div = new ViewTagElement();
 		$div->setAutoElement( 'div' );
@@ -645,12 +645,12 @@ class RSSStandards extends BsExtensionMW {
 	public function buildLinksOwn() {
 		global $wgUser;
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMessage( 'bs-rssstandards-title_own' )->plain() );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title-own' )->plain() );
 
 		$label = new ViewFormElementLabel();
 		$label->useAutoWidth();
 		$label->setFor( 'btnFeedOwn' );
-		$label->setText( wfMessage( 'bs-rssstandards-description_own' )->plain() );
+		$label->setText( wfMessage( 'bs-rssstandards-desc-own' )->plain() );
 
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $wgUser->getName();
@@ -679,7 +679,7 @@ class RSSStandards extends BsExtensionMW {
 	public function buildLinksNs() {
 		global $wgUser;
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMessage( 'bs-rssstandards-title_ns' )->plain() );
+		$set->setLabel( wfMessage( 'bs-ns' )->plain() );
 
 		$select = new ViewFormElementSelectbox();
 		$select->setId( 'selFeedNs' );
@@ -721,12 +721,12 @@ class RSSStandards extends BsExtensionMW {
 		global $wgUser;
 
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMessage( 'bs-rssstandards-title_cat' )->plain() );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title-cat' )->plain() );
 
 		$select = new ViewFormElementSelectbox();
 		$select->setId( 'selFeedCat' );
 		$select->setName( 'selFeedCat' );
-		$select->setLabel( wfMessage( 'bs-rssstandards-field_title_cat' )->plain() );
+		$select->setLabel( wfMessage( 'bs-rssstandards-title-cat' )->plain() );
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
@@ -776,12 +776,12 @@ class RSSStandards extends BsExtensionMW {
 		$aRssWatchlistDays = array(1, 3, 5, 7, 14, 30, 60, 90, 180, 365);
 
 		$set = new ViewFormElementFieldset();
-		$set->setLabel( wfMessage( 'bs-rssstandards-title_watch' )->plain() );
+		$set->setLabel( wfMessage( 'bs-rssstandards-title-watch' )->plain() );
 
 		$select = new ViewFormElementSelectbox();
 		$select->setId( 'selFeedWatch' );
 		$select->setName( 'selFeedWatch' );
-		$select->setLabel( wfMessage( 'bs-rssstandards-field_title_watch' )->plain() );
+		$select->setLabel( wfMessage( 'bs-rssstandards-title-watch' )->plain() );
 
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $wgUser->getName();
@@ -797,7 +797,7 @@ class RSSStandards extends BsExtensionMW {
 							'h'    => $sUserToken
 						)
 					),
-					'label' => sprintf( wfMessage( 'bs-rssstandards-link_text_watch' )->plain(), $day )
+					'label' => wfMessage( 'bs-rssstandards-link-text-watch', $day )->text(),
 				)
 			);
 		}
