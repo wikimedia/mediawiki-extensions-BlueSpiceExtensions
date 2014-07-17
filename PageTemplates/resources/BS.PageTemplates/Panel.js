@@ -72,10 +72,17 @@ Ext.define( 'BS.PageTemplates.Panel', {
 		];
 		this.callParent( arguments );
 	},
+	makeSelModel: function(){
+		this.smModel = Ext.create( 'Ext.selection.CheckboxModel', {
+			mode: "MULTI",
+			selType: 'checkboxmodel'
+		});
+		return this.smModel;
+	},
 	onBtnAddClick: function( oButton, oEvent ) {
 		if ( !this.dlgTemplateAdd ) {
 			this.dlgTemplateAdd = Ext.create( 'BS.PageTemplates.TemplateDialog' );
-			this.dlgTemplateAdd.on( 'ok', this.onDlgNamespaceAddOk, this );
+			this.dlgTemplateAdd.on( 'ok', this.onDlgTemplateAddOk, this );
 		}
 
 		this.active = 'add';
@@ -103,11 +110,12 @@ Ext.define( 'BS.PageTemplates.Panel', {
 		this.callParent( arguments );
 	},
 	onBtnRemoveClick: function( oButton, oEvent ) {
+		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		bs.util.confirm(
 			'PTremove',
 			{
-				text: mw.message( 'bs-pagetemplates-confirm-deletetpl' ).plain(),
-				title: mw.message( 'bs-pagetemplates-tipdeletetemplate' ).plain()
+				text: mw.message( 'bs-pagetemplates-confirm-deletetpl', selectedRow.length ).text(),
+				title: mw.message( 'bs-pagetemplates-tipdeletetemplate', selectedRow.length ).text()
 			},
 			{
 				ok: this.onDlgTemplateRemoveOk,
@@ -116,7 +124,8 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			}
 		);
 	},
-	onDlgNamespaceAddOk: function( data, template ) {
+	onDlgTemplateAddOk: function( data, template ) {
+		this.dlgTemplateAdd.setLoading();
 		Ext.Ajax.request( {
 			url: bs.util.getAjaxDispatcherUrl(
 				'PageTemplatesAdmin::doEditTemplate',
@@ -132,18 +141,25 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			method: 'post',
 			scope: this,
 			success: function( response, opts ) {
+				this.dlgTemplateAdd.setLoading(false);
 				var responseObj = Ext.decode( response.responseText );
 				if ( responseObj.success === true ) {
 					this.renderMsgSuccess( responseObj );
 					this.dlgTemplateAdd.resetData();
+					this.dlgTemplateAdd.close();
 				} else {
 					this.renderMsgFailure( responseObj );
 				}
 			},
-			failure: function( response, opts ) {}
+			failure: function( response, opts ) {
+				this.dlgTemplateAdd.setLoading(false);
+				this.renderMsgFailure();
+			}
 		});
+		return false;
 	},
 	onDlgTemplateEditOk: function( data, template ) {
+		this.dlgTemplateEdit.setLoading();
 		Ext.Ajax.request( {
 			url: bs.util.getAjaxDispatcherUrl(
 				'PageTemplatesAdmin::doEditTemplate',
@@ -159,34 +175,43 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			method: 'post',
 			scope: this,
 			success: function( response, opts ) {
+				this.dlgTemplateEdit.setLoading(false);
 				var responseObj = Ext.decode( response.responseText );
 				if ( responseObj.success === true ) {
 					this.dlgTemplateEdit.resetData();
 					this.renderMsgSuccess( responseObj );
+					this.dlgTemplateEdit.close();
 				} else {
 					this.renderMsgFailure( responseObj );
 				}
 			},
-			failure: function( response, opts ) {}
+			failure: function( response, opts ) {
+				this.dlgTemplateAdd.setLoading(false);
+				this.renderMsgFailure();
+			}
 		});
 	},
 	onDlgTemplateRemoveOk: function( data, namespace ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var ptId = selectedRow[0].get( 'id' );
+		var ptIds = new Object();
+		for (var i = 0; i < selectedRow.length; i++){
+			ptIds[selectedRow[i].get( 'id' )] = selectedRow[i].get( 'label' );
+		}
 
 		Ext.Ajax.request( {
 			url: bs.util.getAjaxDispatcherUrl(
-				'PageTemplatesAdmin::doDeleteTemplate',
-				[ ptId ]
+				'PageTemplatesAdmin::doDeleteTemplates',
+				[ ptIds ]
 			),
 			scope: this,
 			method: 'post',
 			success: function( response, opts ) {
 				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
+				if ( Object.keys(responseObj).length >= this.grdMain.getSelectionModel().getSelection().length ) {
 					this.renderMsgSuccess( responseObj );
 				} else {
-					this.renderMsgFailure( responseObj );
+					var failureObj = {success: false, message: mw.message("bs-pagetemplates-remove-message-unknown").plain()};
+					this.renderMsgFailure( failureObj );
 				}
 			}
 		});
@@ -196,24 +221,60 @@ Ext.define( 'BS.PageTemplates.Panel', {
 	},
 	showDlgAgain: function() {
 		if ( this.active === 'add' ) {
-			this.dlgUserAdd.show();
+			this.dlgTemplateAdd.show();
 		} else {
-			this.dlgUserEdit.show();
+			this.dlgTemplateEdit.show();
 		}
 	},
 	renderMsgSuccess: function( responseObj ) {
-		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMsuc', { text: responseObj.message, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+		var successText = "";
+		if ( typeof(responseObj.message) !== "undefined" && typeof(responseObj.message.length) !== "undefined" && responseObj.message.length )
+			successText = responseObj.message;
+		else{
+			var success = "", failure = new Object(), counterSuccess = 0, counterFailure = 0;
+			$.each(responseObj, function(i, response){
+				if (response.success === true){
+					success += "<li>"+i+"</li>";
+					counterSuccess++;
+				}
+				else{
+					if (typeof(failure [response.errors[0]]) === "undefined")
+						failure [response.errors[0]] = {};
+					failure [response.errors[0]][i] = "<li>"+i+"</li>";
+					counterFailure++;
+				}
+			});
+			if (counterFailure > 0){
+				var failureMessage = "";
+				$.each(failure, function(i, f){
+					var failureMsg = "";
+					$.each(f, function(index, template){
+						failureMsg += template;
+					});
+					failureMessage += mw.message("bs-pagetemplates-remove-message-failure", f.length, "<ul>"+failureMsg+"</ul>", i) + "<br/><br/>";
+				});
+			}
+			successText = counterSuccess > 0 ? (mw.message("bs-pagetemplates-remove-message-success", counterSuccess, "<ul>"+success+"</ul><br/>").text()) : "";
+			successText += counterFailure > 0 ? failureMessage : "";
 		}
+		bs.util.alert( 'UMsuc', { text: successText, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 	},
 	renderMsgFailure: function( responseObj ) {
+		if (typeof(responseObj) === 'undefined' || typeof(responseObj.errors) === 'undefined'){
+			bs.util.alert( 'UMfail', { text: mw.message("bs-pagetemplates-remove-message-unknown").plain(), titleMsg: 'bs-extjs-title-warning' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+		}
 		if ( responseObj.errors ) {
 			var message = '';
 			for ( i in responseObj.errors ) {
-				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
-				message = message + responseObj.errors[i].message + '<br />';
+				if ( typeof( responseObj.errors[i] ) !== 'string') continue;
+				message += responseObj.errors[i] + '<br />';
 			}
+			if (message === '')
+				message = mw.message("bs-pagetemplates-remove-message-unknown").plain()
 			bs.util.alert( 'UMfail', { text: message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+		}
+		else if ( responseObj.message.length ) {
+			bs.util.alert( 'UMfail', { text: responseObj.message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 		}
 	}
 } );

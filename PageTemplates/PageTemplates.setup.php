@@ -22,7 +22,10 @@ $wgResourceModules['ext.bluespice.pageTemplates'] = array(
 		'bs-pagetemplates-label-targetns',
 		'bs-pagetemplates-label-tplns',
 		'bs-pagetemplates-label-article',
-		'bs-pagetemplates-confirm-deletetpl'
+		'bs-pagetemplates-confirm-deletetpl',
+		'bs-pagetemplates-remove-message-unknown',
+		'bs-pagetemplates-remove-message-success',
+		'bs-pagetemplates-remove-message-failure'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
@@ -34,5 +37,6 @@ $wgAjaxExportList[] = 'PageTemplatesAdmin::getTemplates';
 $wgAjaxExportList[] = 'PageTemplatesAdmin::getNamespaces';
 $wgAjaxExportList[] = 'PageTemplatesAdmin::doEditTemplate';
 $wgAjaxExportList[] = 'PageTemplatesAdmin::doDeleteTemplate';
+$wgAjaxExportList[] = 'PageTemplatesAdmin::doDeleteTemplates';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PageTemplates::getSchemaUpdates';

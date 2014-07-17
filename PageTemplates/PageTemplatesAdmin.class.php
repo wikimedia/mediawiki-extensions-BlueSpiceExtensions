@@ -23,7 +23,7 @@ class PageTemplatesAdmin {
 
 	/**
 	 * Back reference to base extension.
-	 * @var BsExtensionMW 
+	 * @var BsExtensionMW
 	 */
 	protected $oExtension;
 
@@ -33,7 +33,7 @@ class PageTemplatesAdmin {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		$this->oExtension = BsExtensionManager::getExtension( 'PageTemplates' ); 
+		$this->oExtension = BsExtensionManager::getExtension( 'PageTemplates' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -101,17 +101,17 @@ class PageTemplatesAdmin {
 			case 'template':
 				$sSortField = 'pt_template_title';
 				break;
-			default: 
+			default:
 				$sSortField = 'pt_label';
 				break;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
-			array( 'bs_pagetemplate' ), 
-			array( 'pt_id', 'pt_label', 'pt_desc', 'pt_target_namespace', 'pt_template_title', 'pt_template_namespace'  ), 
-			array(), 
-			'', 
+			array( 'bs_pagetemplate' ),
+			array( 'pt_id', 'pt_label', 'pt_desc', 'pt_target_namespace', 'pt_template_title', 'pt_template_namespace'  ),
+			array(),
+			__METHOD__,
 			array( 'ORDER BY' => $sSortField . ' ' . $sDirection, 'LIMIT' => $iLimit, 'OFFSET' => $iStart )
 		);
 
@@ -139,7 +139,7 @@ class PageTemplatesAdmin {
 	}
 
 	/**
-	 * Creates or changes a template 
+	 * Creates or changes a template
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public static function doEditTemplate( $iOldId, $sTemplateName, $sLabel, $sDesc, $iTargetNs, $iTemplateNs ) {
@@ -240,7 +240,7 @@ class PageTemplatesAdmin {
 	}
 
 	/**
-	 * Deletes a template 
+	 * Deletes a template
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public static function doDeleteTemplate( $iId ) {
@@ -277,6 +277,16 @@ class PageTemplatesAdmin {
 		}
 
 		return json_encode( $aAnswer );
+	}
+
+	public static function doDeleteTemplates($aId){
+		$output = array();
+		if (is_array($aId) && count($aId) > 0){
+			foreach($aId as $sId => $sName){
+				$output [$sName] = FormatJson::decode(self::doDeleteTemplate($sId));
+			}
+		}
+		return FormatJson::encode($output);
 	}
 
 }

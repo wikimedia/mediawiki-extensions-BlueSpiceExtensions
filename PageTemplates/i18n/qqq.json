@@ -31,12 +31,16 @@
 	"bs-pagetemplates-headerlabel": "Label for label\n{{Identical|Label}}",
 	"bs-pagetemplates-headertargetnamespace": "Label for namespace\n{{Identical|Namespace}}",
 	"bs-pagetemplates-tipeditdetails": "Text for edit template\n{{Identical|Edit template}}",
-	"bs-pagetemplates-tipdeletetemplate": "Text for delete template",
+	"bs-pagetemplates-tipdeletetemplate": "Text for delete template\n*$1 is the number of templates use for PLURAL distinction",
 	"bs-pagetemplates-tipaddtemplate": "Text for add template",
 	"bs-pagetemplates-label-tpl": "Label for template name",
 	"bs-pagetemplates-label-desc": "Label for description.\n{{Identical|Description}}",
 	"bs-pagetemplates-label-targetns": "Label for namespace\n{{Identical|Namespace}}",
 	"bs-pagetemplates-label-tplns": "Label for template namespace",
 	"bs-pagetemplates-label-article": "Label for template\n{{Identical|Template}}",
-	"bs-pagetemplates-confirm-deletetpl": "Text for are you sure you want to delete this template?"
+	"bs-pagetemplates-confirm-deletetpl": "Text for are you sure you want to delete this template?\n*$1 is the number of templates use for PLURAL distinction",
+	"bs-pagetemplates-remove-message-unknown": "An unexpected error occurred while trying to delete a template.",
+	"bs-groupmanager-removegroup-message-success": "Success message after deleting a template or a pair of templatess\n*$1 is the number of templates use for PLURAL distinction\n*$2 is a list of successfully deleted templates",
+	"bs-groupmanager-removegroup-message-failure": "Failure message after deleting a template or a pair of templates\n*$1 is the number of templates use for PLURAL distinction\n*$2 is a list of templates, that could not be deleted\n*$3 is the reason why the template could not be deleted",
+	"bs-groupmanager-removegroup-message-unknown": "An unexpected error occurred while trying to delete a template."
 }
