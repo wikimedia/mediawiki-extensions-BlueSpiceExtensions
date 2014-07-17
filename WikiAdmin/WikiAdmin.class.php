@@ -203,6 +203,7 @@ class WikiAdmin extends BsExtensionMW {
 		$aOut = array();
 		$aOut[] = '<ul>';
 
+		$aOutSortable = array();
 		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
 			$skeyLower = mb_strtolower($sModuleKey);
 			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
@@ -217,9 +218,11 @@ class WikiAdmin extends BsExtensionMW {
 				),
 				$sModulLabel
 			);
-			$aOut[] = '  <li>'.$sLink.'</li>';
+			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
 		}
 
+		ksort($aOutSortable);
+		$aOut[] = implode("\n", $aOutSortable).'</ul>';
 		$aOut[] = '</ul>';
 
 		$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
