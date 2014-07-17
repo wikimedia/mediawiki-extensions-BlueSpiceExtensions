@@ -51,5 +51,7 @@
 	"bs-responsibleeditors-rbdisplaymodeonlynotassigned": "Seiten denen kein Redakteur zugewiesen ist",
 	"bs-responsibleeditors-rbdisplaymodeall": "Alle Seiten",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Namensraum auswählen",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "Nicht zugewiesen."
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Nicht zugewiesen.",
+	"log-name-bs-responsibleeditors": "Verantwortliche Redakteure-Logbuch",
+	"log-description-bs-responsibleeditors": "Logbuch von Redakteuren die für gewisse Seiten verantwortlich sind."
 }

@@ -51,5 +51,7 @@
 	"bs-responsibleeditors-rbdisplaymodeonlynotassigned": "Show only pages without assigned responsibility",
 	"bs-responsibleeditors-rbdisplaymodeall": "Show all pages",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Select a namespace",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "Not assigned"
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Not assigned",
+	"log-name-bs-responsibleeditors": "Responsible editors log",
+	"log-description-bs-responsibleeditors": "This is a log of editors responsible for pages."
 }
