@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"bs-insertfile-insert-image": "Insertar una imagen",
@@ -14,13 +15,17 @@
 	"bs-insertfile-filename": "Nombre del archivo",
 	"bs-insertfile-filesize": "Tamaño del archivo",
 	"bs-insertfile-lastmodified": "Cambios recientes",
+	"bs-insertfile-labelupload": "Subir",
 	"bs-insertfile-details-title": "Detalles",
 	"bs-insertfile-labelalt": "Texto alternativo",
+	"bs-insertfile-labelalign": "Ajuste",
 	"bs-insertfile-labellink": "enlace",
 	"bs-insertfile-alignnone": "ninguna",
 	"bs-insertfile-alignleft": "izquierda",
 	"bs-insertfile-aligncenter": "centro",
 	"bs-insertfile-alignright": "derecha",
+	"bs-insertfile-labeltype": "Decoración",
+	"bs-insertfile-typenone": "ninguno",
 	"bs-insertfile-typethumb": "miniatura",
 	"bs-insertfile-typeframe": "marco",
 	"bs-insertfile-typeborder": "borde",
@@ -28,10 +33,14 @@
 	"bs-insertfile-uploadimageemptytext": "Elige una imagen nueva…",
 	"bs-insertfile-uploadimagefieldlabel": "Cargar una imagen nueva",
 	"bs-insertfile-uploadfileemptytext": "Elige un archivo nuevo…",
+	"bs-insertfile-uploadfilefieldlabel": "Nombre del archivo de destino",
 	"bs-insertfile-uploaddestfilelabel": "Nombre de destino",
 	"bs-insertfile-uploaddescfilelabel": "Resumen",
+	"bs-insertfile-uploadwatchthislabel": "Vigilar este archivo",
+	"bs-insertfile-uploadignorewarningslabel": "Ignorar las advertencias",
 	"bs-insertfile-uploadsubmitvalue": "Cargar un archivo",
 	"bs-insertfile-errorloading": "Se produjo un error al cargar los archivos.",
+	"bs-insertfile-warning": "Advertencia",
 	"bs-insertfile-allowedfiletypesare": "Los tipos de archivo válidos son:",
 	"bs-insertfile-error": "Error",
 	"bs-insertfile-errornofileextensiononupload": "El archivo elegido no tiene ninguna extensión.",
@@ -45,5 +54,6 @@
 	"bs-insertfile-tipkeepratio": "Mantener las proporciones",
 	"bs-insertfile-of": "de",
 	"bs-insertfile-license": "Licencia",
-	"bs-insertfile-categories": "Categorías"
+	"bs-insertfile-categories": "Categorías",
+	"bs-insertfile-no-link": "Sin enlace"
 }

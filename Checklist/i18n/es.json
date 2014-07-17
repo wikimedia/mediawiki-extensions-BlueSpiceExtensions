@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-checklist-menu-insert-list-title": "Insertar lista",
+	"bs-checklist-dlg-insert-list-value-list": "Lista de valores",
+	"bs-checklist-tag-checklist-param-list": "<code>lista</code>: Nombre de la plantilla con los valores disponibles. El parámetro <code>tipo</code> debe establecerse a <code>lista</code>."
+}

@@ -13,5 +13,6 @@
 	"bs-pagetemplates-tpl-name-toolong": "O nome da predefinição é demasiado longo. Por favor, use um máximo de 255 carateres.",
 	"bs-pagetemplates-tpl-name-empty": "Por favor, insira um nome para a predefinição.",
 	"bs-pagetemplates-headertargetnamespace": "Domínio",
-	"bs-pagetemplates-label-article": "Predefinição"
+	"bs-pagetemplates-label-article": "Predefinição",
+	"bs-pagetemplates-remove-message-unknown": "Ocorreu um erro inesperado, por favor tente novamente."
 }

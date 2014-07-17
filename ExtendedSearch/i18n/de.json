@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Smuggli"
+			"Smuggli",
+			"Kghbln"
 		]
 	},
 	"bs-extendedsearch-desc": "Erweiterte Suche",
@@ -33,7 +34,7 @@
 	"bs-extendedsearch-result-caption": "$1 - $2 von $3 Ergebnis{{PLURAL:$3||sen}}",
 	"bs-extendedsearch-search-category": "Suche in Kategorien:",
 	"bs-extendedsearch-search-editors": "Suche nach Autoren:",
-	"bs-extendedsearch-search-help-multiselect": "Für Mehrfachauswahl CTRL Taste gedrückt halten.",
+	"bs-extendedsearch-search-help-multiselect": "Zur Mehrfachauswahl die Steuerungstaste (Strg) gedrückt halten.",
 	"bs-extendedsearch-search-namespace": "Suche in Namensräumen:",
 	"bs-extendedsearch-server-not-available": "Der Suchserver ist nicht erreichbar.",
 	"bs-extendedsearch-sort-by": "Sortiert nach:",

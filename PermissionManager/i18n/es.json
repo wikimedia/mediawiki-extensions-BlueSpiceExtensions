@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"bs-permissionmanager-desc": "Interfaz administrativa para gestionar permisos",
@@ -18,7 +19,7 @@
 	"bs-permissionmanager-btn-template-editor": "Editar plantillas",
 	"bs-permissionmanager-labeltpled": "Editor de plantillas",
 	"bs-permissionmanager-labeltpled-desc": "Descripción",
-	"bs-permissionmanager-labeltpled-add": "Nuevo",
+	"bs-permissionmanager-labeltpled-add": "Nueva",
 	"bs-permissionmanager-labeltpled-edit": "Editar",
 	"bs-permissionmanager-labeltpled-cancel": "Cancelar",
 	"bs-permissionmanager-msgtpled-savefailure": "No se pudo guardar la plantilla.",

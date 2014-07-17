@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-checklist-desc": "Fournit une fonctionnalité de liste de contrôle",
+	"bs-checklist-button-checkbox-title": "Éléments de la liste de contrôle",
+	"bs-checklist-menu-insert-list-title": "Insérer une liste",
+	"bs-checklist-menu-insert-checkbox": "Case à cocher",
+	"bs-checklist-dlg-insert-list-value-list": "Liste de valeurs",
+	"bs-checklist-tag-checklist-desc": "Affiche une case à cocher ou une liste déroulante. Attributs de configuration disponibles :",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> affiche une liste déroulante.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Nom du modèle avec les valeurs disponibles. Le paramètre <code>type</code> doit être fixé à <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> ou une valeur du modèle de la liste."
+}

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"bs-insertmagic-desc": "Añade al modo de edición un cuadro de diálogo que permite insertar palabras mágicas y etiquetas",
@@ -9,6 +10,7 @@
 	"bs-insertmagic-notoc": "Oculta la tabla de contenido.",
 	"bs-insertmagic-toc": "Coloca una tabla de contenido en la posición de la palabra actual.",
 	"bs-insertmagic-index": "Indicar que los motores de búsqueda deben indizar la página.",
+	"bs-insertmagic-currentyear": "Año actual",
 	"bs-insertmagic-currentmonthname": "Mes actual (nombre).",
 	"bs-insertmagic-currentmonthabbrev": "Mes actual (abreviado).",
 	"bs-insertmagic-currentdayname": "Día de la semana (nombre).",
@@ -16,6 +18,7 @@
 	"bs-insertmagic-currentweek": "Semana (número).",
 	"bs-insertmagic-sitename": "El nombre del wiki.",
 	"bs-insertmagic-server": "URL del dominio.",
+	"bs-insertmagic-servername": "Nombre de dominio.",
 	"bs-insertmagic-currentversion": "La versión de MediaWiki que usa el wiki.",
 	"bs-insertmagic-contentlanguage": "El idioma predeterminado de la interfaz del wiki.",
 	"bs-insertmagic-revisionyear": "El año en que se realizó el cambio.",

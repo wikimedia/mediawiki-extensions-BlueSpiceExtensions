@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-checklist-desc": "Дава можност за поставување на штикларнички избор",
+	"bs-checklist-button-checkbox-title": "Штикларнички ставки",
+	"bs-checklist-menu-insert-list-title": "Вметни список",
+	"bs-checklist-menu-insert-checkbox": "Штикларник",
+	"bs-checklist-dlg-insert-list-value-list": "Список на вредности",
+	"bs-checklist-tag-checklist-desc": "Дава штикларник или изборно поле. Расположиви атрибути за задавање:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> дава изборен список.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Назив на шаблонот со расположивите вредности. На параметарот <code>type</code> мора да му се зададе <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> или вредност од шаблонот со вредности."
+}
