@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-groupmanager-removegroup": "Wollen Sie die {{PLURAL:$1|Gruppe|Gruppen}} wirklich löschen?",
+	"bs-groupmanager-removegroup-message-unknown": "Ein unbekannter Fehler ist aufgetreten, bitte versuchen Sie es erneut."
+}

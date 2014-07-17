@@ -37,14 +37,14 @@ Ext.define( 'BS.GroupManager.Panel', {
 
 		this.colGroupName = Ext.create( 'Ext.grid.column.Column', {
 			id: 'group_name',
-			header: mw.message('bs-groupmanager-headerGroupname').plain(),
+			header: mw.message('bs-groupmanager-headergroup').plain(),
 			sortable: true,
 			dataIndex: 'group_name',
 			flex: 1
 		} );
 		this.colAdditionalGroup = Ext.create( 'Ext.grid.column.Column', {
 			id: 'additional_group',
-			header: mw.message('bs-groupmanager-headerGroupname').plain(),
+			header: mw.message('bs-groupmanager-headergroup').plain(),
 			sortable: true,
 			dataIndex: 'additional_group',
 			hidden: true,
@@ -73,14 +73,14 @@ Ext.define( 'BS.GroupManager.Panel', {
 		}
 
 		this.active = 'add';
-		this.dlgGroupAdd.setTitle( mw.message( 'bs-groupmanager-titleNewGroup' ).plain() );
+		this.dlgGroupAdd.setTitle( mw.message( 'bs-groupmanager-titlenewgroup' ).plain() );
 		this.dlgGroupAdd.show();
 		this.callParent( arguments );
 	},
 	onBtnEditClick: function( oButton, oEvent ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		if ( !selectedRow[0].getData().additional_group ) {
-			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotEditable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
+			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgnoteditable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
 			return;
 		}
 		if ( !this.dlgGroupEdit ) {
@@ -91,7 +91,7 @@ Ext.define( 'BS.GroupManager.Panel', {
 		}
 
 		this.active = 'edit';
-		this.dlgGroupEdit.setTitle( mw.message( 'bs-groupmanager-titleEditGroup' ).plain() );
+		this.dlgGroupEdit.setTitle( mw.message( 'bs-groupmanager-titleeditgroup' ).plain() );
 		this.dlgGroupEdit.setData( selectedRow[0].getData() );
 		this.dlgGroupEdit.show();
 		this.callParent( arguments );
@@ -106,14 +106,14 @@ Ext.define( 'BS.GroupManager.Panel', {
 			}
 		}
 		if ( !additionalGroup ) {
-			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotRemovable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
+			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgnotremovable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
 			return;
 		}
 		bs.util.confirm(
 			'bs-groupmanager-remove-dlg',
 			{
-				text: mw.message( 'bs-groupmanager-removeGroup', selectedRow.length).text(),
-				title: mw.message( 'bs-groupmanager-tipRemove', selectedRow.length ).text()
+				text: mw.message( 'bs-groupmanager-removegroup', selectedRow.length).text(),
+				title: mw.message( 'bs-groupmanager-tipremove', selectedRow.length ).text()
 			},
 			{
 				ok: this.onRemoveGroupOk,

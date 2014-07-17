@@ -166,7 +166,7 @@ class GroupManager extends BsExtensionMW {
 		if ( array_key_exists( $sGroup, $wgAdditionalGroups ) ) {
 			return FormatJson::encode( array(
 					'success' => false,
-					'msg' => wfMessage( 'bs-groupmanager-grp_exists' )->plain()
+					'msg' => wfMessage( 'bs-groupmanager-grpexists' )->plain()
 				)
 			);
 		}
@@ -254,7 +254,7 @@ class GroupManager extends BsExtensionMW {
 			if (!isset($wgAdditionalGroups[$sGroup])) {
 				return FormatJson::encode(array(
 					'success' => false,
-					'message' => wfMessage('bs-groupmanager-msgNotRemovable')->plain()
+					'message' => wfMessage('bs-groupmanager-msgnotremovable')->plain()
 						)
 				);
 			}
@@ -298,17 +298,17 @@ class GroupManager extends BsExtensionMW {
 			if ( !empty( $aInvalidChars ) ) {
 				return array(
 					'success' => false,
-					'message' => wfMessage( 'bs-groupmanager-invalid_name', implode( ',', $aInvalidChars ) )->plain()
+					'message' => wfMessage( 'bs-groupmanager-invalid-name', implode( ',', $aInvalidChars ) )->plain()
 				);
 			} elseif ( preg_match( "/^[0-9]+$/", $sGroup ) ) {
 				return array(
 					'success' => false,
-					'message' => wfMessage( 'bs-groupmanager-invalid_name_numeric' )->plain()
+					'message' => wfMessage( 'bs-groupmanager-invalid-name-numeric' )->plain()
 				);
 			} elseif ( strlen( $sGroup ) > 16 ) {
 				return array(
 					'success' => false,
-					'message' => wfMessage( 'bs-groupmanager-invalid_name_length' )->plain()
+					'message' => wfMessage( 'bs-groupmanager-invalid-name-length' )->plain()
 				);
 			} else {
 				if ( $mValue !== false ) {

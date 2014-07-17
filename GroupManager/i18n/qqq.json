@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-groupmanager-removegroup-message-success": "Success message after deleting a group or a pair of groups.",
+	"bs-groupmanager-removegroup-message-failure": "Failure message after deleting a group or a pair of groups.",
+	"bs-groupmanager-removegroup-message-unknown": "An unexpected error occurred while trying to delete a group."
+}
