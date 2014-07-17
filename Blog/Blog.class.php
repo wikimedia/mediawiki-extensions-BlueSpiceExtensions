@@ -643,7 +643,7 @@ class Blog extends BsExtensionMW {
 		$select = new ViewFormElementSelectbox();
 		$select->setId( 'selFeedNsBlog' );
 		$select->setName( 'selFeedNsBlog' );
-		$select->setLabel( wfMessage( 'bs-rssfeeder-field_title_ns' )->plain() );
+		$select->setLabel( wfMessage( 'bs-ns' )->plain() );
 
 		$aNamespacesTemp = BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA, NS_BLOG, NS_BLOG_TALK, NS_FILE ) );
 		$aNamespaces = array();
@@ -677,7 +677,7 @@ class Blog extends BsExtensionMW {
 		$btn->setId( 'btnFeedNsBlog' );
 		$btn->setName( 'btnFeedNsBlog' );
 		$btn->setType( 'button' );
-		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit_title' )->plain() );
+		$btn->setLabel( wfMessage( 'bs-rssfeeder-submit' )->plain() );
 
 		$set->addItem( $select );
 		$set->addItem( $btn );
