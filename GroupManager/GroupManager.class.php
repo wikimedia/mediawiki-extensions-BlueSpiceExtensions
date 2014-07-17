@@ -298,7 +298,10 @@ class GroupManager extends BsExtensionMW {
 			if ( !empty( $aInvalidChars ) ) {
 				return array(
 					'success' => false,
-					'message' => wfMessage( 'bs-groupmanager-invalid-name', implode( ',', $aInvalidChars ) )->plain()
+					'message' => wfMessage( 'bs-groupmanager-invalid-name' )
+						->numParams( count( $aInvalidChars ) )
+						->params( implode( ',', $aInvalidChars ) )
+						->text()
 				);
 			} elseif ( preg_match( "/^[0-9]+$/", $sGroup ) ) {
 				return array(
