@@ -30,12 +30,15 @@
 	"bs-pagetemplates-headerlabel": "Name",
 	"bs-pagetemplates-headertargetnamespace": "Namensraum",
 	"bs-pagetemplates-tipeditdetails": "Vorlage bearbeiten",
-	"bs-pagetemplates-tipdeletetemplate": "Vorlage löschen",
+	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|Vorlage|Vorlagen}} löschen",
 	"bs-pagetemplates-tipaddtemplate": "Vorlage hinzufügen",
 	"bs-pagetemplates-label-tpl": "Name",
 	"bs-pagetemplates-label-desc": "Beschreibung",
 	"bs-pagetemplates-label-targetns": "Namensraum",
 	"bs-pagetemplates-label-tplns": "Vorlagen Namensraum",
 	"bs-pagetemplates-label-article": "Vorlage",
-	"bs-pagetemplates-confirm-deletetpl": "Bist du sicher, dass du diese Vorlage löschen willst?"
+	"bs-pagetemplates-confirm-deletetpl": "Bist du sicher, dass du diese {{PLURAL:$1|Vorlage|Vorlagen}} löschen willst?",
+	"bs-pagetemplates-remove-message-unknown": "Ein unbekannter Fehler ist aufgetreten, bitte versuche es erneut.",
+	"bs-pagetemplates-remove-message-success": "Folgende {{PLURAL:$1|Vorlage wurde|Vorlagen wurden}} gelöscht:$2",
+	"bs-pagetemplates-remove-message-failure": "Folgende {{PLURAL:$1|Vorlage konnte|Vorlagen konnten}} nicht gelöscht werden:$2(Grund: $3)"
 }

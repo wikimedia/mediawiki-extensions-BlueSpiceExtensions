@@ -84,6 +84,9 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 	storePagesReload: function( combo, records, eOpts ) {
 		this.strPages.load( { params: { ns: records[0].get( 'id' ) } } );
 	},
+	onBtnOKClick: function() {
+		this.fireEvent( 'ok', this, this.getData() );
+	},
 	resetData: function() {
 		this.tfLabel.reset();
 		this.taDesc.reset();
