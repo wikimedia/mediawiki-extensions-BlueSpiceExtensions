@@ -1,5 +1,7 @@
 <?php
 
-BsExtensionManager::registerExtension('NamespaceCss', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension( 'NamespaceCss', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
 
-$wgExtensionMessagesFiles['NamespaceCss'] = __DIR__ . '/NamespaceCss.i18n.php';
+$wgMessagesDirs['NamespaceCss'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['NamespaceCss'] = __DIR__ . '/languages/NamespaceCss.i18n.php';
