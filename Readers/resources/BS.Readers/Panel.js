@@ -38,7 +38,7 @@ Ext.define( 'BS.Readers.Panel', {
 
 		this.colUserName = Ext.create( 'Ext.grid.column.Template', {
 			id: 'username',
-			header: mw.message( 'bs-readers-headerUsername' ).plain(),
+			header: mw.message( 'bs-readers-header-username' ).plain(),
 			sortable: true,
 			dataIndex: 'user_name',
 			tpl: '<a href="{user_page}">{user_name}</a>',
@@ -47,7 +47,7 @@ Ext.define( 'BS.Readers.Panel', {
 		} );
 		this.colReadersPage = Ext.create( 'Ext.grid.column.Template', {
 			id: 'userreaderspage',
-			header: mw.message( 'bs-readers-headerReadersPath' ).plain(),
+			header: mw.message( 'bs-readers-header-readerspath' ).plain(),
 			sortable: true,
 			dataIndex: 'user_readers',
 			tpl: '<a href="{user_readers}">{user_name}</a>',
@@ -55,7 +55,7 @@ Ext.define( 'BS.Readers.Panel', {
 		} );
 		this.colUserTs = Ext.create( 'Ext.grid.column.Template', {
 			id: 'userts',
-			header: mw.message( 'bs-readers-headerTs' ).plain(),
+			header: mw.message( 'bs-readers-header-ts' ).plain(),
 			sortable: true,
 			dataIndex: 'user_ts',
 			tpl: '{user_date}',

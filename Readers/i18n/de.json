@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-readers-desc": "Zeigt die Besucher einer Seite an.",
+	"prefs-readers": "Besucher dieser Seite",
+	"bs-readers-title": "Besucher",
+	"readers-user": "Seiten besucht von: $1",
+	"readers": "Besucher der Seite: $1",
+	"bs-readers-contentactions-label": "Besucher anzeigen",
+	"bs-readers-pagenotexists": "Es wurde keine Seite übergeben.",
+	"bs-readers-pref-active": "Besucher dieser Seite aktivieren.",
+	"bs-readers-pref-numofreaders": "Anzahl der anzuzeigenden Besucher:",
+	"bs-readers-emptyinput": "Du musste einen Seite angeben.",
+	"bs-readers-header-username": "Benutzername",
+	"bs-readers-header-readerspath": "Leser",
+	"bs-readers-header-ts": "Datum"
+}

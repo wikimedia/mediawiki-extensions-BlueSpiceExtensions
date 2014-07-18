@@ -35,7 +35,7 @@ class SpecialReaders extends BsSpecialPage {
 				$sOut = $this->renderReadersGrid();
 
 				$oOut->addModules( 'ext.bluespice.readers.specialreaders' );
-				$oOut->setPageTitle( $oOut->getPageTitle().': '.$oRequestedTitle->getFullText() );
+				$oOut->setPageTitle( wfMessage( 'readers', $oRequestedTitle->getFullText() )->text() );
 
 				$oOut->addHtml(
 					'<script type="text/javascript">
@@ -46,9 +46,9 @@ class SpecialReaders extends BsSpecialPage {
 				$sOut = $this->renderReaderspathGrid();
 
 				$oOut->addModules( 'ext.bluespice.readers.specialreaderspath' );
-				$oOut->setPageTitle( wfMessage( 'specialreaders-user' )->plain().': '.$oRequestedTitle->getText() );
-
 				$oUser = User::newFromName( $oRequestedTitle->getText() );
+				$oOut->setPageTitle( wfMessage( 'readers-user', $oUser->getName() )->text() );
+
 				$oOut->addHtml(
 					'<script type="text/javascript">
 						bsReadersUserID = "' . $oUser->getId() . '";
@@ -56,7 +56,7 @@ class SpecialReaders extends BsSpecialPage {
 				);
 			} else {
 				$oErrorView = new ViewTagErrorList();
-				$oErrorView->addItem( new ViewTagError( wfMessage( 'bs-readers-article-does-not-exist' )->plain() ) );
+				$oErrorView->addItem( new ViewTagError( wfMessage( 'bs-readers-pagenotexists' )->plain() ) );
 				$sOut = $oErrorView->execute();
 			}
 		} else {
