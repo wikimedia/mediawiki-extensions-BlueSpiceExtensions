@@ -1,6 +1,8 @@
 <?php
 
-BsExtensionManager::registerExtension('Flexiskin', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension( 'Flexiskin', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE );
+
+$wgMessagesDirs['Flexiskin'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['Flexiskin'] = __DIR__ . '/languages/Flexiskin.i18n.php';
 $wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/languages/Flexiskin.alias.php';
@@ -12,53 +14,50 @@ $wgHooks['SkinTemplateOutputPageBeforeExec'][] = "Flexiskin::onSkinTemplateOutpu
 $wgSpecialPageGroups['Flexiskin'] = 'bluespice';
 
 $wgResourceModules['ext.bluespice.flexiskin'] = array(
-    'scripts' => array(
-	'extensions/BlueSpiceExtensions/Flexiskin/resources/bluespice.flexiskin.js',
-    ),
-    'styles' => array(
-	'extensions/BlueSpiceExtensions/Flexiskin/resources/bluespice.flexiskin.css',
-    ),
-    'dependencies' => array(
-	'ext.bluespice.extjs'
-    ),
-    'messages' => array(
-	'bs-flexiskin-headerName',
-	'bs-flexiskin-headerDesc',
-	'bs-flexiskin-labelName',
-	'bs-flexiskin-labelDesc',
-	'bs-flexiskin-headerGeneral',
-	'bs-flexiskin-dialogClose',
-	'bs-flexiskin-dialogReset',
-	'bs-flexiskin-confirmDeleteSkin',
-	'bs-flexiskin-titleAddSkin',
-	'bs-flexiskin-labelSkins',
-	'bs-flexiskin-defaultName',
-	'bs-flexiskin-defaultDesc',
-	'bs-flexiskin-headerActive',
-	'bs-flexiskin-labelBackgroundColor',
-	'bs-flexiskin-headerHeader',
-	'bs-flexiskin-labelLogoUpload',
-	'bs-flexiskin-labelBackgroundUpload',
-	'bs-flexiskin-labelRepeatBackground',
-	'bs-flexiskin-no-repeat',
-	'bs-flexiskin-repeat-x',
-	'bs-flexiskin-repeat-y',
-	'bs-flexiskin-repeat',
-	'bs-flexiskin-labelCustomBackgroundColor',
-	'bs-flexiskin-labelNavigation',
-	'bs-flexiskin-no-img',
-	'bs-flexiskin-headerPosition',
-	'bs-flexiskin-labelContent',
-	'bs-flexiskin-left',
-	'bs-flexiskin-right',
-	'bs-flexiskin-center',
-	'bs-flexiskin-labelWidth',
-	'bs-flexiskin-labelFullWidth',
-	'bs-flexiskin-error-nameEmpty',
-	'bs-flexiskin-error-templateNotExists'
-    ),
-    'localBasePath' => $IP,
-    'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'scripts' => array(
+		'extensions/BlueSpiceExtensions/Flexiskin/resources/bluespice.flexiskin.js',
+	),
+	'styles' => array(
+		'extensions/BlueSpiceExtensions/Flexiskin/resources/bluespice.flexiskin.css',
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
+	),
+	'messages' => array(
+		'bs-flexiskin-labelname',
+		'bs-flexiskin-labeldesc',
+		'bs-flexiskin-headergeneral',
+		'bs-flexiskin-dialogclose',
+		'bs-flexiskin-dialogreset',
+		'bs-flexiskin-confirmdeleteskin',
+		'bs-flexiskin-titleaddskin',
+		'bs-flexiskin-labelskins',
+		'bs-flexiskin-defaultname',
+		'bs-flexiskin-defaultdesc',
+		'bs-flexiskin-headeractive',
+		'bs-flexiskin-labelbgcolor',
+		'bs-flexiskin-headerheader',
+		'bs-flexiskin-labellogoupload',
+		'bs-flexiskin-labelbackgroundupload',
+		'bs-flexiskin-labelrepeatbackground',
+		'bs-flexiskin-no-repeat',
+		'bs-flexiskin-repeat-x',
+		'bs-flexiskin-repeat-y',
+		'bs-flexiskin-repeat',
+		'bs-flexiskin-labelcustombgcolor',
+		'bs-flexiskin-labelnavigation',
+		'bs-flexiskin-headerposition',
+		'bs-flexiskin-labelcontent',
+		'bs-flexiskin-left',
+		'bs-flexiskin-right',
+		'bs-flexiskin-center',
+		'bs-flexiskin-labelwidth',
+		'bs-flexiskin-labelfullwidth',
+		'bs-flexiskin-error-nameempty',
+		'bs-flexiskin-error-templatenotexists'
+	),
+	'localBasePath' => $IP,
+	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
 $wgAjaxExportList[] = 'Flexiskin::getFlexiskins';

@@ -20,7 +20,7 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 		this.strSkins.on( 'load', this.onStrSkinsLoad, this );
 
 		this.tfName = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-flexiskin-labelName').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelname').plain(),
 			labelWidth: 130,
 			labelAlign: 'left',
 			name: 'name',
@@ -29,7 +29,7 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 			id: 'bs-flexiskin-add-dlg-name'
 		});
 		this.tfDesc = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message('bs-flexiskin-labelDesc').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labeldesc').plain(),
 			labelWidth: 130,
 			labelAlign: 'left',
 			name: 'desc',
@@ -37,7 +37,7 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 		});
 		
 		this.cbSkins = Ext.create( 'Ext.form.field.ComboBox', {
-			fieldLabel: mw.message('bs-flexiskin-labelSkins').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelskins').plain(),
 			labelWidth: 130,
 			labelAlign: 'left',
 			store: this.strSkins,
@@ -87,8 +87,8 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 	onStrSkinsLoad: function( store, records, successful, eOpts ) {
 		store.insert(0, {
 				flexiskin_id:'default',
-				flexiskin_name: mw.message('bs-flexiskin-defaultName').plain(),
-				flexiskin_desc: mw.message('bs-flexiskin-defaultDesc').plain()
+				flexiskin_name: mw.message('bs-flexiskin-defaultname').plain(),
+				flexiskin_desc: mw.message('bs-flexiskin-defaultdesc').plain()
 		});
 		this.cbSkins.setValue('default');
 	},
