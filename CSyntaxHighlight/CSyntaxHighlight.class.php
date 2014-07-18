@@ -119,13 +119,10 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$this->setHook( 'SkinAfterBottomScripts' );
 
 		// TODO RBV (12.04.11 15:47): Provide all config possibilities of SyntaxHighlighter...
-		//User variables
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::Theme',     'Default', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-csyntaxhighlight-pref-Theme', 'select' );
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::Gutter',    true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-Gutter', 'toggle' );
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::AutoLinks', true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-AutoLinks', 'toggle' );
-
-		//Admin variables
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::Toolbar',   false,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-Toolbar', 'toggle' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::Theme',     'Default', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-csyntaxhighlight-pref-theme', 'select' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::Gutter',    true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-gutter', 'toggle' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::AutoLinks', true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-autolinks', 'toggle' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::Toolbar',   false,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-toolbar', 'toggle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
