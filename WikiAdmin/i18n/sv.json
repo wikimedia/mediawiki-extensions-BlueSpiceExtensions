@@ -6,7 +6,7 @@
 	},
 	"bs-wikiadmin-desc": "BlueSpice administration",
 	"bs-wikiadmin-notallowed": "Du har inte behörighet att använda denna sida.",
-	"specialwikiadmin": "BlueSpice administration",
+	"wikiadmin": "BlueSpice administration",
 	"action-wikiadmin": "Visa BlueSpices administrationssidor",
 	"right-wikiadmin": "Visa BlueSpices administrationssidor"
 }

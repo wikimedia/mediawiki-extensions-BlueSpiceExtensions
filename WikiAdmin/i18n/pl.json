@@ -6,5 +6,5 @@
 	},
 	"bs-wikiadmin-desc": "Administracja BlueSpice",
 	"bs-wikiadmin-notallowed": "Nie masz uprawnień, aby skorzystać z tej strony.",
-	"specialwikiadmin": "Administracja BlueSpice"
+	"wikiadmin": "Administracja BlueSpice"
 }

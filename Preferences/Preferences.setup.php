@@ -6,6 +6,8 @@ $wgMessagesDirs['Preferences'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['Preferences'] = __DIR__ . '/languages/Preferences.i18n.php';
 
+$wgHooks['BeforePageDisplay'][] = "BsPreferences::onBeforePageDisplay";
+
 $aResourceModuleTemplate = array(
 	'localBasePath' => 'extensions/BlueSpiceExtensions/Preferences/resources/',
 	'remoteExtPath' => 'BlueSpiceExtensions/Preferences/resources'

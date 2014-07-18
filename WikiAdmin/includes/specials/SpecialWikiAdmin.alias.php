@@ -3,15 +3,15 @@ $specialPageAliases = array();
 
 /** English */
 $specialPageAliases['en'] = array(
-    'SpecialWikiAdmin' => array( 'WikiAdmin' ),
+    'WikiAdmin' => array( 'WikiAdmin' ),
 );
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'SpecialWikiAdmin' => array( 'Wiki Admin' ),
+	'WikiAdmin' => array( 'Wiki Admin' ),
 );
 
 /** German (Deutsch Formal) */
 $specialPageAliases['de-formal'] = array(
-	'SpecialWikiAdmin' => array( 'Wiki Admin' ),
+	'WikiAdmin' => array( 'Wiki Admin' ),
 );

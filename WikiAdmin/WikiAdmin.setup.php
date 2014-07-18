@@ -10,8 +10,8 @@ $wgExtensionMessagesFiles['WikiAdmin'] = __DIR__ . '/languages/WikiAdmin.i18n.ph
 
 // Specialpage and messages
 $wgAutoloadClasses['SpecialWikiAdmin'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.class.php';
-$wgSpecialPageGroups['SpecialWikiAdmin'] = 'bluespice';
+$wgSpecialPageGroups['WikiAdmin'] = 'bluespice';
 $wgExtensionMessagesFiles['WikiAdminAlias'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.alias.php';
-$wgSpecialPages['SpecialWikiAdmin'] = 'SpecialWikiAdmin';
+$wgSpecialPages['WikiAdmin'] = 'SpecialWikiAdmin';
 
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'WikiAdmin::onSkinTemplateOutputPageBeforeExec';
