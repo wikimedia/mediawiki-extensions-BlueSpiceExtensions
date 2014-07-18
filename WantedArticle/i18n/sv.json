@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
 	"bs-wantedarticle-desc": "Föreslå en önskad sida",
@@ -22,11 +23,14 @@
 	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<kod>titel</code>: Rubrik.",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>ordning</code>: Sorteringsordning <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) eller <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sortering</code>: Sortera efter <code>titel</code> eller <code>tid</code>.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Utdataformat <code>list</code> eller <code>quene</code> (kommaseparerad).",
 	"bs-wantedarticle-tag-more-linktext": "Mer ...",
 	"bs-wantedarticle-tag-default-title": "Önskade sidor",
 	"bs-wantedarticle-pref-includelimit": "Antal förslag:",
 	"bs-wantedarticle-pref-deleteexisting": "Ta bort befintliga poster från listan",
+	"bs-wantedarticle-pref-showcreate": "Visa skapa-länk",
 	"bs-wantedarticle-pref-deleteoncreation": "Ta bort posten från listan när sida skapas",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Malltitel för förslag:",
 	"bs-wantedarticle-pref-sort": "Sortera efter:",
 	"bs-wantedarticle-pref-order": "Ordning:",
 	"bs-wantedarticle-pref-sort-time": "Tid",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Robby"
+			"Robby",
+			"Shirayuki"
 		]
 	},
 	"bs-pagetemplates-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page templates extension",
@@ -31,13 +32,13 @@
 	"bs-pagetemplates-headerlabel": "Label for label\n{{Identical|Label}}",
 	"bs-pagetemplates-headertargetnamespace": "Label for namespace\n{{Identical|Namespace}}",
 	"bs-pagetemplates-tipeditdetails": "Text for edit template\n{{Identical|Edit template}}",
-	"bs-pagetemplates-tipdeletetemplate": "Text for delete template\n*$1 is the number of templates use for PLURAL distinction",
+	"bs-pagetemplates-tipdeletetemplate": "Used as label for the button. Parameters:\n* $1 - the number of templates use for PLURAL distinction\nSee also:\n* {{msg-mw|Bs-pagetemplates-confirm-deletetpl}}",
 	"bs-pagetemplates-tipaddtemplate": "Text for add template",
 	"bs-pagetemplates-label-tpl": "Label for template name",
 	"bs-pagetemplates-label-desc": "Label for description.\n{{Identical|Description}}",
 	"bs-pagetemplates-label-targetns": "Label for namespace\n{{Identical|Namespace}}",
 	"bs-pagetemplates-label-tplns": "Label for template namespace",
 	"bs-pagetemplates-label-article": "Label for template\n{{Identical|Template}}",
-	"bs-pagetemplates-confirm-deletetpl": "Text for are you sure you want to delete this template?\n*$1 is the number of templates use for PLURAL distinction",
+	"bs-pagetemplates-confirm-deletetpl": "Used as title for the confirmation. Parameters:\n* $1 - the number of templates use for PLURAL distinction\nSee also:\n* {{msg-mw|Bs-pagetemplates-tipdeletetemplate}}",
 	"bs-pagetemplates-remove-message-unknown": "An unexpected error occurred while trying to delete a template."
 }

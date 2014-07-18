@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
+	"bs-insertlink-desc": "Dialogruta för att ange en länk",
 	"bs-insertlink": "Infoga länk",
 	"bs-insertlink-button-title": "Infoga/redigera länk",
 	"bs-insertlink-dialog-title": "Infoga länk",
@@ -18,5 +20,6 @@
 	"bs-insertlink-label-file": "Fil",
 	"bs-insertlink-label-searchfile": "Sök ...",
 	"bs-insertlink-select-a-page": "Välj mål ...",
-	"bs-insertlink-select-a-namespace": "(Sidor)"
+	"bs-insertlink-select-a-namespace": "(Sidor)",
+	"bs-insertlink-empty-field-text": "För att infoga en länk måste du ange en destination."
 }

@@ -18,5 +18,6 @@
 	"bs-visualeditor-bsactions-heading3": "Cabeçalho 3",
 	"bs-visualeditor-bsactions-heading4": "Cabeçalho 4",
 	"bs-visualeditor-bsactions-heading5": "Cabeçalho 5",
-	"bs-visualeditor-bsactions-heading6": "Cabeçalho 6"
+	"bs-visualeditor-bsactions-heading6": "Cabeçalho 6",
+	"bs-visualeditor-switch-noeditor-desc": "Desativa o Editor Visual nesta página."
 }

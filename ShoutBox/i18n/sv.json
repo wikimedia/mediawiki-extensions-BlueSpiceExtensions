@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
+	"bs-shoutbox-desc": "Lägger till en shoutbox efter innehållt på en sida",
 	"prefs-shoutbox": "Shoutbox",
 	"bs-shoutbox-title": "Shoutbox",
 	"bs-shoutbox-message": "Meddelande",
+	"bs-shoutbox-shout": "Skrik",
 	"bs-shoutbox-no-entries": "Ingenting här ännu.",
 	"bs-shoutbox-loading": "Laddar...",
 	"bs-shoutbox-pref-committimeinterval": "Tiden mellan två meddelanden (i sekunder):",

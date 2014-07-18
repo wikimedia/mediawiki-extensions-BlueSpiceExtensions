@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
+	"bs-insertfile-desc": "Dialogrutan för att ladda upp filer och infoga en fillänk",
 	"bs-insertfile-insert-image": "Infoga bild",
 	"bs-insertfile-insert-file": "Infoga fil",
 	"bs-insertfile-button-image-title": "Infoga eller redigera bilden",
@@ -23,6 +25,7 @@
 	"bs-insertfile-labellink": "Länk",
 	"bs-insertfile-alignnone": "ingen",
 	"bs-insertfile-alignleft": "vänster",
+	"bs-insertfile-aligncenter": "centrerad",
 	"bs-insertfile-alignright": "höger",
 	"bs-insertfile-labeltype": "Dekoration",
 	"bs-insertfile-typenone": "ingen",
@@ -33,6 +36,9 @@
 	"bs-insertfile-uploadimageemptytext": "Välj en ny bild...",
 	"bs-insertfile-uploadimagefieldlabel": "Ladda upp ny bild",
 	"bs-insertfile-uploadfileemptytext": "Välj en ny fil...",
+	"bs-insertfile-uploadfilefieldlabel": "Destinations filnamn",
+	"bs-insertfile-uploaddestfilelabel": "Målnamn",
+	"bs-insertfile-uploaddescfilelabel": "Sammanfattning",
 	"bs-insertfile-uploadwatchthislabel": "Bevaka den här filen",
 	"bs-insertfile-uploadignorewarningslabel": "Ignorera eventuella varningar",
 	"bs-insertfile-uploadsubmitvalue": "Ladda upp fil",
@@ -42,9 +48,13 @@
 	"bs-insertfile-allowedfiletypesare": "Giltiga filtyper är:",
 	"bs-insertfile-error": "Fel",
 	"bs-insertfile-errornofileextensiononupload": "Den fil som du valde har ingen filändelse.",
-	"bs-insertfile-errorWrongFileExtensionOnUpload": "Den fil som du valde har inget giltigt filtillägg.",
+	"bs-insertfile-errornofileextensionondestination": "Målnamnet du valde har ingen filändelse.",
+	"bs-insertfile-errorWrongFileExtensionOnUpload": "Den fil som du valde har inget giltigt filändelse.",
 	"bs-insertfile-errorWrongImageTypeOnUpload": "Filen du valde är inte en tillåten bildtyp.",
 	"bs-insertfile-errorWrongFileTypeOnUpload": "Filen du valde är inte en tillåten filtyp.",
+	"bs-insertfile-errorWrongFileExtensionOnDestination": "Målnamnet du valde har ingen giltig filändelse.",
+	"bs-insertfile-errorwrongimagetypeondestination": "Målnamnet du valde har ingen tillåten filändelse för bilder.",
+	"bs-insertfile-errorwrongfiletypeondestination": "Målnamnet du valde har ingen tillåten filändelse.",
 	"bs-insertfile-uploadcomplete": "Din fil har sparats framgångsrikt.",
 	"bs-insertfile-titlefile": "Infoga fil",
 	"bs-insertfile-titleimage": "Infoga bild",

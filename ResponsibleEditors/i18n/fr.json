@@ -52,5 +52,7 @@
 	"bs-responsibleeditors-rbdisplaymodeonlynotassigned": "Afficher uniquement les pages sans responsabilité affectée",
 	"bs-responsibleeditors-rbdisplaymodeall": "Afficher toutes les pages",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Sélectionnez un espace de noms",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "Non affectée"
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Non affectée",
+	"log-name-bs-responsibleeditors": "Journal des éditeurs responsables",
+	"log-description-bs-responsibleeditors": "Ceci est un journal des éditeurs responsables de pages."
 }

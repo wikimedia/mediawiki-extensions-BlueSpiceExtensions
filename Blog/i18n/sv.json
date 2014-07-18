@@ -20,6 +20,8 @@
 	"bs-blog-pref-moreinnewwindow": "Öppna nytt fönster för att läsa mer",
 	"bs-blog-pref-showinfo": "Visa information om inlägget",
 	"bs-blog-pref-showlimit": "Antal blogginlägg:",
+	"bs-blog-pref-shownewentryfield": "Visa formulär för ny bloggpost",
+	"bs-blog-pref-showpermalink": "Visa länken för permanent länk",
 	"bs-blog-pref-sortby": "Sortera efter:",
 	"bs-blog-pref-imagerendermode": "Visa bilder som:",
 	"bs-blog-pref-maxentrycharacters": "Antal ord per inlägg:",

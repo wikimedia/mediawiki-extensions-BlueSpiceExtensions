@@ -51,5 +51,7 @@
 	"bs-responsibleeditors-rbdisplaymodeonlynotassigned": "Прикажувај само недоделени страници",
 	"bs-responsibleeditors-rbdisplaymodeall": "Сите страници",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Изберете именски простор",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "Недоделена"
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Недоделена",
+	"log-name-bs-responsibleeditors": "Дневник на одговорни уредници",
+	"log-description-bs-responsibleeditors": "Ова е дневник на уредници одговорни за страници."
 }

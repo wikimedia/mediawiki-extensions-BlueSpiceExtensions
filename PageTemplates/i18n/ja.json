@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|テンプレート}}を削除",
+	"bs-pagetemplates-confirm-deletetpl": "このテンプレートを本当に削除しますか?"
+}

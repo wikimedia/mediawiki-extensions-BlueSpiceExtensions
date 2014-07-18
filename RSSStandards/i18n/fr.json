@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-rssstandards-desc": "Construit un flux RSS basé sur différentes options",
+	"bs-rssstandards-desc-rc": "Flux avec un aperçu des modifications récentes dans le wiki",
+	"bs-rssstandards-title-page": "Page",
+	"bs-rssstandards-desc-page": "Flux avec un aperçu des modifications récentes d’une page.",
+	"bs-rssstandards-title-own": "Contributions propres",
+	"bs-rssstandards-desc-own": "Flux avec un aperçu de vos propres contributions sur le wiki.",
+	"bs-rssstandards-title-cat": "Catégorie",
+	"bs-rssstandards-desc-cat": "Flux avec un aperçu des modifications récentes dans une catégorie.",
+	"bs-rssstandards-title-watch": "Liste de suivi",
+	"bs-rssstandards-desc-watch": "Flux avec un aperçu de vos pages suivies.",
+	"bs-rssstandards-link-text-watch": "Modifications récentes de {{PLURAL:$1|ce jour passé|ces $1 derniers jours}}.",
+	"bs-rssstandards-desc-ns": "Flux avec un aperçu des modifications récentes dans un espace de noms.",
+	"bs-rssstandards-changes-from": "Changements {{GENDER:$1|par}} : $1"
+}

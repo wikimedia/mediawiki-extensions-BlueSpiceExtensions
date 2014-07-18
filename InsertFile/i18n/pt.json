@@ -4,6 +4,12 @@
 			"Vitorvicentevalente"
 		]
 	},
+	"bs-insertfile-insert-image": "Inserir imagem",
+	"bs-insertfile-insert-file": "Inserir ficheiro",
+	"bs-insertfile-button-image-title": "Inserir ou editar imagem",
+	"bs-insertfile-uploadsdisabled": "Os carregamentos foram desativados nesta wiki.",
+	"bs-insertfile-labelsort": "Ordenar por:",
+	"bs-insertfile-labelfilter": "Filtro:",
 	"bs-insertfile-filename": "Nome do ficheiro",
 	"bs-insertfile-filesize": "Tamanho do ficheiro",
 	"bs-insertfile-lastmodified": "Mudanças recentes",
@@ -21,8 +27,10 @@
 	"bs-insertfile-typeborder": "borda",
 	"bs-insertfile-uploadbuttontext": "Procurar",
 	"bs-insertfile-uploadfilefieldlabel": "Nome do ficheiro de destino",
+	"bs-insertfile-uploaddescfilelabel": "Resumo",
 	"bs-insertfile-uploadwatchthislabel": "Vigiar este ficheiro",
 	"bs-insertfile-uploadignorewarningslabel": "Ignorar todos os avisos",
+	"bs-insertfile-uploadsubmitvalue": "Carregar ficheiro",
 	"bs-insertfile-warning": "Aviso",
 	"bs-insertfile-warningupload": "Existe um ficheiro em espera. Tem a certeza que pretende fechar esta janela?",
 	"bs-insertfile-allowedfiletypesare": "Tipos de ficheiros válidos:",

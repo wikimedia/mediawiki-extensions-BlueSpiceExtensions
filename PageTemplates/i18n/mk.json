@@ -29,12 +29,15 @@
 	"bs-pagetemplates-headerlabel": "Етикета",
 	"bs-pagetemplates-headertargetnamespace": "Именски простор",
 	"bs-pagetemplates-tipeditdetails": "Уреди го шаблонот",
-	"bs-pagetemplates-tipdeletetemplate": "Избриши го шаблонот",
+	"bs-pagetemplates-tipdeletetemplate": "Избриши {{PLURAL:$1|го шаблонот|ги шаблоните}}",
 	"bs-pagetemplates-tipaddtemplate": "Додај шаблон",
 	"bs-pagetemplates-label-tpl": "Назив на шаблонот",
 	"bs-pagetemplates-label-desc": "Опис",
 	"bs-pagetemplates-label-targetns": "Именски простор",
 	"bs-pagetemplates-label-tplns": "Именски простор на шаблонот",
 	"bs-pagetemplates-label-article": "Шаблон",
-	"bs-pagetemplates-confirm-deletetpl": "Дали сте сигурни дека сакате да го избришете шаблонов?"
+	"bs-pagetemplates-confirm-deletetpl": "Дали сте сигурни дека сакате да го избришете шаблонов?",
+	"bs-pagetemplates-remove-message-unknown": "Се јави неочекувана грешка. Обидете се повторно.",
+	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|Избришан е следниов шаблон|Избришани се следниве шаблони}}: $2",
+	"bs-pagetemplates-remove-message-failure": "Не можев да {{PLURAL:$1|го избришам следниов шаблон|ги избришам следниве шаблони}}: $2 (Причина: $3)"
 }

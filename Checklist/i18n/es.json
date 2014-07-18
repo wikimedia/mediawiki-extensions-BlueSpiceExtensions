@@ -1,10 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"ProtoplasmaKid"
 		]
 	},
+	"bs-checklist-desc": "Proporciona una lista de comprobación de la funcionalidad",
+	"bs-checklist-button-checkbox-title": "Lista de comprobación de elementos",
 	"bs-checklist-menu-insert-list-title": "Insertar lista",
+	"bs-checklist-menu-insert-checkbox": "Casilla de verificación",
 	"bs-checklist-dlg-insert-list-value-list": "Lista de valores",
+	"bs-checklist-tag-checklist-desc": "Representa una casilla de verificación o un campo a seleccionar. Atributos de configuración disponibles:",
 	"bs-checklist-tag-checklist-param-list": "<code>lista</code>: Nombre de la plantilla con los valores disponibles. El parámetro <code>tipo</code> debe establecerse a <code>lista</code>."
 }

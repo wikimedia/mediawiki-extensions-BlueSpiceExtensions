@@ -15,7 +15,7 @@
 	"bs-pagetemplates-headerlabel": "Etikett",
 	"bs-pagetemplates-headertargetnamespace": "Nummraum",
 	"bs-pagetemplates-tipeditdetails": "Schabloun änneren",
-	"bs-pagetemplates-tipdeletetemplate": "Schabloun läschen",
+	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|Schabloun|Schabloune}} läschen",
 	"bs-pagetemplates-tipaddtemplate": "Schabloun derbäisetzen",
 	"bs-pagetemplates-label-tpl": "Numm vun der Schabloun",
 	"bs-pagetemplates-label-desc": "Beschreiwung",
