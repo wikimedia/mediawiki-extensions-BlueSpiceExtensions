@@ -31,6 +31,7 @@
 	"bs-extendedsearch-pref-scope-text": "Texto completo",
 	"bs-extendedsearch-pref-scope-title": "Título",
 	"bs-extendedsearch-pref-limitresultdef": "Número de resultados na página especial:",
+	"bs-extendedsearch-pref-acentries": "Número de sugestões com termo de pesquisa correspondente:",
 	"bs-extendedsearch-pref-showmlt": "Mostrar páginas semelhantes",
 	"bs-extendedsearch-pref-mltns": "Domínios para \"{{int:bs-extendedsearch-morelikethis}}\":",
 	"bs-extendedsearchadmin-label": "Opções de pesquisa",

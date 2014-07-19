@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-rssstandards-title-page": "Säit",
+	"bs-rssstandards-title-cat": "Kategorie",
+	"bs-rssstandards-title-watch": "Iwwerwaachungslëscht",
+	"bs-rssstandards-changes-from": "Ännerunge {{GENDER:$1|vum}}: $1"
+}
