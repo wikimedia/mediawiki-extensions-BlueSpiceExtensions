@@ -92,7 +92,7 @@
 	"bs-extendedsearch-section": "Section ",
 	"bs-extendedsearch-morelikethis": "Similar pages",
 	"bs-extendedsearch-recentsearchterms": "Recent search terms",
-	"bs-extendedsearch-recentsearchtermsdesc": "List of the most recent searched terms inside this Wiki sorted by their count.",
+	"bs-extendedsearch-recentsearchtermsdesc": "List of the most recent searched terms inside this wiki sorted by their count.",
 	"bs-extendedsearch-no-mlt-found": "No similar pages found.",
 	"bs-extendedsearch-redirect": "Redirect from: $1",
 	"bs-extendedsearch-totalnoofarticles": "Number of pages to index: $1",
