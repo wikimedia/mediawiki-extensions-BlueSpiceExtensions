@@ -21,5 +21,7 @@
 	"bs-pagetemplates-label-desc": "Beschreiwung",
 	"bs-pagetemplates-label-targetns": "Nummraum",
 	"bs-pagetemplates-label-tplns": "Nummraum Schabloun",
-	"bs-pagetemplates-label-article": "Schabloun"
+	"bs-pagetemplates-label-article": "Schabloun",
+	"bs-pagetemplates-remove-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
+	"bs-pagetemplates-remove-message-success": "Dës {{PLURAL:$1|Schabloun gouf|Schabloune goufe}} geläscht:$2"
 }

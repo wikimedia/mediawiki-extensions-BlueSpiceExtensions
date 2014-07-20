@@ -18,6 +18,7 @@
 	"bs-insertmagic-currenthour": "Stonn (24-Stonne-Format, mat enger Null virdrun)",
 	"bs-insertmagic-currentweek": "Woch (Nummer)",
 	"bs-insertmagic-currenttimestamp": "Zäitstempel am Format JJJJMMDDSSmmss.",
+	"bs-insertmagic-sitename": "Den Numm vum Site vun der Wiki.",
 	"bs-insertmagic-currentversion": "D'MediaWiki Versioun vun dëser Wiki.",
 	"bs-insertmagic-revisionday": "Dag vun der Ännerung (keng Null virdrun)",
 	"bs-insertmagic-revisionyear": "Joer vun der Ännerung.",

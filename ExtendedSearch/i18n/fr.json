@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fany",
-			"Gomoko"
+			"Gomoko",
+			"Orikrin1998"
 		]
 	},
 	"bs-extendedsearch-desc": "Recherche avancée",
@@ -56,9 +57,9 @@
 	"bs-extendedsearch-pref-limitresultdef": "Nombre de résultats sur la page spéciale :",
 	"bs-extendedsearch-pref-showcreatesugg": "Afficher les liens de création et suggestion dans une page spéciale",
 	"bs-extendedsearch-pref-showfacets": "Afficher les facettes dans une page spéciale",
-	"bs-extendedsearch-pref-showautocomplete": "Afficher le menu de complétude automatique",
+	"bs-extendedsearch-pref-showautocomplete": "Suggérer des pages correspondant au terme de recherche",
 	"bs-extendedsearch-pref-externalrepo": "Indexer le répertoire externe :",
-	"bs-extendedsearch-pref-acentries": "Nombre de résultats dans la complétude automatique :",
+	"bs-extendedsearch-pref-acentries": "Nombre de suggestions correspondant au terme de recherche :",
 	"bs-extendedsearch-pref-highlightsnippets": "Nombre d’extraits mis en surbrillance :",
 	"bs-extendedsearch-pref-indexfiletypes": "Extensions des fichiers à indexer :",
 	"bs-extendedsearch-pref-logging": "Évaluation statistique des requêtes de recherche",
@@ -66,7 +67,7 @@
 	"bs-extendedsearch-pref-solrpingtime": "Temps de réponse (en secondes) :",
 	"bs-extendedsearch-pref-showcresuginac": "Afficher les liens de création et de suggestion dans la complétude automatique",
 	"bs-extendedsearch-pref-solrserviceurl": "URL de Solr :",
-	"bs-extendedsearch-pref-setfocus": "Se focaliser automatiquement sur le formulaire de recherche (pages uniquement)",
+	"bs-extendedsearch-pref-setfocus": "Sélectionner automatiquement le formulaire de recherche (pages de contenu uniquement)",
 	"bs-extendedsearch-pref-numfacets": "Nombre de facettes :",
 	"bs-extendedsearch-pref-showmlt": "Afficher les pages similaires",
 	"bs-extendedsearch-pref-solrcore": "Instance cœur de Solr :",

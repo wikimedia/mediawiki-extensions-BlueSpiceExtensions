@@ -9,6 +9,7 @@
 	"bs-insertfile-insert-file": "Insertar un archivo",
 	"bs-insertfile-button-image-title": "Insertar o editar una imagen",
 	"bs-insertfile-button-file-title": "Insertar o editar un archivo",
+	"bs-insertfile-uploadsdisabled": "La carga de archivos está desactivada en este wiki.",
 	"bs-insertfile-nomatch": "No hay coincidencias",
 	"bs-insertfile-labelsort": "Ordenar por:",
 	"bs-insertfile-labelfilter": "Filtro:",

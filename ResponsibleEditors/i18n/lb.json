@@ -13,6 +13,7 @@
 	"bs-responsibleeditors-contentactions-label": "Responsabilitéit änneren",
 	"bs-responsibleeditors-statebartop-icon-alt": "Et gëtt e responsabelen Editeur fir dës Säit",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "D'Säit, déi ugi gouf, gëtt et net.",
+	"bs-responsibleeditors-mail-subject-re-article-changed": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|geännert}}",
 	"bs-responsibleeditors-mail-subject-re-article-moved": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|geréckelt}}",
 	"bs-responsibleeditors-yourresponsibilities": "Är Verantwortung",
 	"bs-responsibleeditors-yourresponsibilitiesdesc": "Lëscht vu Säite fir déi Dir responsabel sidd.",

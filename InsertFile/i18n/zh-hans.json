@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Fengchao"
 		]
 	},
 	"bs-insertfile-desc": "用于上传文件和插入文件连接的对话框",
@@ -45,6 +46,8 @@
 	"bs-insertfile-warning": "警告",
 	"bs-insertfile-allowedfiletypesare": "有效的文件类型有：",
 	"bs-insertfile-error": "错误",
+	"bs-insertfile-errornofileextensiononupload": "您选择的文件没有扩展名。",
+	"bs-insertfile-errornofileextensionondestination": "您选择的目标名称没有扩展名。",
 	"bs-insertfile-uploadcomplete": "您的文件已成功保存。",
 	"bs-insertfile-titlefile": "插入文件",
 	"bs-insertfile-titleimage": "插入图片",

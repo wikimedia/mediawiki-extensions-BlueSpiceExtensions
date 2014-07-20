@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-rssstandards-title-page": "Página",
+	"bs-rssstandards-title-own": "Contribuciones propias",
+	"bs-rssstandards-title-cat": "Categoría",
+	"bs-rssstandards-title-watch": "Lista de seguimiento",
+	"bs-rssstandards-link-text-watch": "Cambios recientes {{PLURAL:$1|del último día|de los últimos $1 días}}.",
+	"bs-rssstandards-changes-from": "Cambios {{GENDER:$1|de}}: $1"
+}
