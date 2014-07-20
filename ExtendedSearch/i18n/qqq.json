@@ -96,7 +96,7 @@
 	"bs-extendedsearch-section": "Text for section\n{{Identical|Section}}",
 	"bs-extendedsearch-morelikethis": "Headline for similar pages\n{{Identical|Similar pages}}",
 	"bs-extendedsearch-recentsearchterms": "Headline for recent search terms\n{{Identical|Recent search terms}}",
-	"bs-extendedsearch-recentsearchtermsdesc": "Text for list of the most recent searched terms inside this Wiki sorted by thier count.",
+	"bs-extendedsearch-recentsearchtermsdesc": "Text for list of the most recent searched terms inside this Wiki sorted by their count.",
 	"bs-extendedsearch-no-mlt-found": "Text for no similar pages found.",
 	"bs-extendedsearch-redirect": "Text for redirect from: $1 \n $1 is a comma sperated list of redirects",
 	"bs-extendedsearch-totalnoofarticles": "Text for number of pages to index: $1 \n $1 is the total number of pages",
