@@ -16,7 +16,7 @@ Ext.define( 'BS.Review.StepsGrid', {
 			}),
 			{
 				dataIndex: 'status',
-				header: mw.message('bs-review-colStatus' ).plain(),
+				header: mw.message('bs-review-colstatus' ).plain(),
 				sortable: false,
 				width: 60,
 				flex: 0,
@@ -24,12 +24,12 @@ Ext.define( 'BS.Review.StepsGrid', {
 			},
 			{
 				dataIndex: 'user_display_name',
-				header: mw.message('bs-review-colReviewer' ).plain(),
+				header: mw.message('bs-review-colreviewer' ).plain(),
 				sortable: false
 			},
 			{
 				dataIndex: 'comment',
-				header: mw.message('bs-review-colComment' ).plain(),
+				header: mw.message('bs-review-colcomment' ).plain(),
 				sortable: false
 			}
 		];
@@ -37,13 +37,13 @@ Ext.define( 'BS.Review.StepsGrid', {
 		this.colMainConf.actions = [
 			{
 				icon: mw.config.get('wgScriptPath') + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-um_moveup_tn.png',
-				tooltip: mw.message('bs-review-btnMoveUp' ).plain(),
+				tooltip: mw.message('bs-review-btnmoveup' ).plain(),
 				iconCls: 'bs-extjs-actioncloumn-icon',
 				handler: this.onActionUpClick,
 				scope: this
 			}, {
 				icon: mw.config.get('wgScriptPath') + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-um_movedown_tn.png',
-				tooltip: mw.message('bs-review-btnMoveDown' ).plain(),
+				tooltip: mw.message('bs-review-btnmovedown' ).plain(),
 				iconCls: 'bs-extjs-actioncloumn-icon',
 				handler: this.onActionDownClick,
 				scope: this

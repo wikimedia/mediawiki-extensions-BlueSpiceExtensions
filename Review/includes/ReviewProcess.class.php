@@ -33,7 +33,7 @@
  * @subpackage Review
  */
 class BsReviewProcess {
-	
+
 	/**
 	 * Page id of article the review is associated with.
 	 * @var int Article ID.
@@ -355,8 +355,8 @@ class BsReviewProcess {
 
 		// Get Review-ID
 		$res = $dbw->select(
-			'bs_review', 
-			'rev_id', 
+			'bs_review',
+			'rev_id',
 			"rev_pid=" . $this->pid,
 			__METHOD__,
 			array(
@@ -389,7 +389,7 @@ class BsReviewProcess {
 
 		// Get Review-ID and owner id
 		$res = $dbw->select(
-			'bs_review', 
+			'bs_review',
 			array('rev_id', 'rev_owner'),
 			"rev_pid=" . $this->pid,
 			__METHOD__,
@@ -417,11 +417,11 @@ class BsReviewProcess {
 		$aUsersVoted = array();
 		$iLastVotedId = 0;
 		$iVoteAmount = 0;
-		
+
 		//Get all steps that have not been processed yet
 		$res = $dbw->select(
-			'bs_review_steps', 
-			array('revs_user_id', 'revs_sort_id', 'revs_comment'), 
+			'bs_review_steps',
+			array('revs_user_id', 'revs_sort_id', 'revs_comment'),
 			array('revs_status > -1', 'revs_review_id = ' . $review_id),
 			__METHOD__,
 			array('ORDER BY revs_sort_id')
@@ -457,7 +457,7 @@ class BsReviewProcess {
 			}
 			$lastUserId = $aUser['revs_user_id'];
 			$lastInitialComment = $aUser['revs_comment'];
-			//We remove the contributed parts of the comment and leave only 
+			//We remove the contributed parts of the comment and leave only
 			//the initial part. Hacky hacky hacky...
 			$matches = array();
 			preg_match(
@@ -466,7 +466,7 @@ class BsReviewProcess {
 			if( isset($matches[1]) ) {
 				$lastInitialComment = trim($matches[1]);
 			}
-			
+
 			$data = array(
 				'revs_review_id' => $review_id,
 				'revs_user_id'   => $aUser['revs_user_id'],
@@ -493,7 +493,7 @@ class BsReviewProcess {
 		$res = $dbw->select(
 			'bs_review',
 			'*',
-			array( 
+			array(
 				"rev_pid" => $pid
 			),
 			__METHOD__,
@@ -519,9 +519,9 @@ class BsReviewProcess {
 			$rid = $row['rev_id'];
 
 			$res = $dbw->select(
-				'bs_review_steps', 
-				'*', 
-				array( 
+				'bs_review_steps',
+				'*',
+				array(
 					"revs_review_id" => $rid
 				),
 				__METHOD__,
@@ -555,7 +555,7 @@ class BsReviewProcess {
 		$oReviewProcess->editable = $wgRequest->getBool('rv_editable');
 		$oReviewProcess->sequential = $wgRequest->getBool('rv_sequential');
 		$oReviewProcess->abortable = $wgRequest->getBool('rv_abortable');
-		
+
 		$oReviewProcess->startdate = date("Y-m-d", strtotime($wgRequest->getVal('rv_startdate', '')));
 		$oReviewProcess->enddate = date("Y-m-d", strtotime($wgRequest->getVal('rv_enddate', '')));
 
