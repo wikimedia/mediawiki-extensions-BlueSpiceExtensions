@@ -316,18 +316,19 @@ span.bs-extendedsearch-result-title h3 em {
 	margin-left: -15px;
 	clear: both;
 	padding: 5px 0 4px 19px;
-	background: url("../resources/images/checkbox.png") left center no-repeat !important;
+	/* @embed */
+	background: url("images/checkbox.png") left center no-repeat !important;
 }
 #bs-extendedsearch-all-filter-boxes div.facet-title input[type="checkbox"] +label {
 	margin-left: -15px;
 	clear: both;
 	padding: 5px 0 4px 19px;
 	/* @embed */
-	background: url("../resources/images/checkbox-title.png") left center no-repeat !important;
+	background: url("images/checkbox-title.png") left center no-repeat !important;
 }
 #bs-extendedsearch-all-filter-boxes input[type='checkbox']:checked + label, #bs-extendedsearch-all-filter-boxes div.facet-title input[type='checkbox']:checked + label {
 	/* @embed */
-	background-image: url("../resources/images/checked.png") !important;
+	background-image: url("images/checked.png") !important;
 }
 #bs-extendedsearch-linktoextendedpage {
 	float: right;
