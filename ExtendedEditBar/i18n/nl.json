@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Sjoerddebruin"
 		]
 	},
+	"bs-extendededitbar-redirectsample": "Tekst invoegen",
 	"bs-extendededitbar-commenttip": "Verborgen opmerking invoegen",
 	"bs-extendededitbar-commentsample": "Opmerking",
 	"bs-extendededitbar-gallerysamplepicture": "Afbeelding",

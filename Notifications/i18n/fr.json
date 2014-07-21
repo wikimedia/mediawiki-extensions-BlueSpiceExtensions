@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-notifications-desc": "Envoie des notifications sur des modifications sélectionnées par l’utilisateur",
+	"prefs-notifications": "Notifications",
+	"prefs-echo-extended": "Paramètres système avancés",
+	"bs-notifications-pref-notifyns": "Notifier uniquement les modifications dans ces espaces de nom :",
+	"bs-notifications-pref-notifynominor": "Aucune notification pour les modifications mineures",
+	"bs-notifications-pref-active": "Activer les notifications",
+	"bs-echo-anon-user": "anonyme",
+	"bs-echo-unknown-user": "inconnu",
+	"bs-echo-page-edit": "La page [[:$1]] a été modifiée",
+	"bs-echo-page-create": "La page [[:$1]] a été créée",
+	"bs-echo-page-delete": "La page [[:$1]] a été supprimée",
+	"bs-echo-page-move": "La page [[:$1]] a été déplacée",
+	"bs-echo-page-newuser": "L’utilisateur $1 a été créé.",
+	"bs-echo-page-shoutbox": "Un nouveau message de ShoutBox sur le site [[:$1]].",
+	"bs-notifications-email-new-subject": "Page $1 {{GENDER:$2|créée}} par $2",
+	"bs-notifications-email-new": "La page « $1 » a été {{GENDER:$2|créée}} par $2.\n\nCommentaire :\n $3 \nVous pouvez consulter cette page en suivant ce lien :\n$4",
+	"bs-notifications-email-edit-subject": "Page $1 {{GENDER:$2|modifiée}} par $2",
+	"bs-notifications-email-edit": "La page « $1 » a été {{GENDER:$2|modifiée}} par $2.\n\nCommentaire :\n $3 \nVous pouvez consulter cette page en suivant ce lien :\n$4.\n\nSi vous voulez ne voir que les modifications, suivez ce lien :\n$5",
+	"bs-notifications-email-move-subject": "Page $1 {{GENDER:$2|déplacée}} par $2",
+	"bs-notifications-email-move": "La page « $1 » a été {{GENDER:$2|déplacée}} en $3 par $2. Vous pouvez consulter cette page en suivant ce lien :\n$4",
+	"bs-notifications-email-delete-subject": "Page $1 {{GENDER:$2|supprimée}} par $2",
+	"bs-notifications-email-delete": "La page « $1 » a été {{GENDER:$2|supprimée}} par $2.\n\nEn voici le motif :\n$3",
+	"bs-notifications-email-addaccount-subject": "Utilisateur $1 créé",
+	"bs-notifications-email-addaccount": "L’utilisateur $1, de son vrai nom $2, a été créé.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|a publié}} un message sur la page $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|a publié}} un message sur la page « $1 ».\n\nMessage :\n$3\n\nVous pouvez consulter la page en suivant ce lien :\n$4.",
+	"echo-category-title-bs-create-cat": "Notifications pour les nouvelles pages",
+	"echo-category-title-bs-edit-cat": "Notifications pour les modifications",
+	"echo-category-title-bs-move-cat": "Notifications pour les déplacements",
+	"echo-category-title-bs-delete-cat": "Notifications pour les suppressions",
+	"echo-category-title-bs-newuser-cat": "Notifications pour les nouveaux utilisateurs (administrateurs uniquement)",
+	"echo-category-title-bs-shoutbox-cat": "Notification pour les messages sur les pages suivies (shoutbox)"
+}

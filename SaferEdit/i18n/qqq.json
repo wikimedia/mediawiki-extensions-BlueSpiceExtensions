@@ -12,7 +12,7 @@
 	"bs-saferedit-restore": "Button label for restore\n{{Identical|Restore}}",
 	"bs-saferedit-safer-edit-tooltip": "Text for a recovery version is available.",
 	"bs-saferedit-safer-edit-topbar": "Window title for recovery\n{{Identical|Recovery}}",
-	"bs-saferedit-user-editing": "Text in top bar for $1 is {{GENDER:$1|editing}} the page \n $1 is the user name of the user who is editing the page at the moment.\nNo punctuation needed.",
+	"bs-saferedit-user-editing": "Text in top bar for $1 is {{GENDER:$1|editing}} the page \n* $1 is the user name of the user who is editing the page at the moment.\n\nNo punctuation needed.",
 	"bs-saferedit-someone-editing": "Text in top bar for the page is being edited\n No punctuation needed.",
 	"bs-saferedit-pref-interval": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for recovery version interval:",
 	"bs-saferedit-pref-shownameofeditinguser": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show name of current editor",

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-checklist-desc": "Забезпечує функціональність контрольного списку",
+	"bs-checklist-button-checkbox-title": "Елементи контрольного списку",
+	"bs-checklist-menu-insert-list-title": "Вставити список",
+	"bs-checklist-menu-insert-checkbox": "Галочка",
+	"bs-checklist-dlg-insert-list-value-list": "Список значень",
+	"bs-checklist-tag-checklist-desc": "Візуалізує галочку або поле вибору. Доступні атрибути конфігурації:"
+}

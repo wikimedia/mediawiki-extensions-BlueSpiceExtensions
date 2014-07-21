@@ -6,5 +6,6 @@
 	},
 	"bs-rssstandards-title-page": "Página",
 	"bs-rssstandards-title-cat": "Categoria",
-	"bs-rssstandards-title-watch": "Páginas vigiadas"
+	"bs-rssstandards-title-watch": "Páginas vigiadas",
+	"bs-rssstandards-changes-from": "Alterações {{GENDER:$1|de}}: $1"
 }

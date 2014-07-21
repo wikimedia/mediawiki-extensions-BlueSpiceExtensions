@@ -19,6 +19,7 @@
 	"bs-usermanager-save-successful": "Ännerunge gespäichert.",
 	"bs-usermanager-headerusername": "Benotzernumm",
 	"bs-usermanager-headerrealname": "Richtegen Numm",
+	"bs-usermanager-headeremail": "E-Mail",
 	"bs-usermanager-headergroups": "Gruppen",
 	"bs-usermanager-titleadduser": "Benotzer derbäisetzen",
 	"bs-usermanager-titleeditdetails": "Benotzer änneren",

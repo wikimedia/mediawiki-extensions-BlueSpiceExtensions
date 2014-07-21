@@ -7,9 +7,11 @@
 	"prefs-pagetemplates": "Säiteschablounen",
 	"bs-pagetemplates-empty-page": "Eidel Säit",
 	"bs-pagetemplates-empty-page-desc": "Mat enger edeler Sät ufänken.",
+	"bs-pagetemplatesadmin-label": "Säiteschablounen",
 	"bs-pagetemplates-tpl-added": "D'Schabloun gouf derbäigesat.",
 	"bs-pagetemplates-nooldtpl": "Déi al Schabloun gouf net fonnt.",
 	"bs-pagetemplates-tpl-edited": "D'Ännerunge gouf gespäichert.",
+	"bs-pagetemplates-dberror": "Et ass en Datebankfeeler geschitt.",
 	"bs-pagetemplates-tpl-deleted": "D'Schabloun gouf geläscht.",
 	"bs-pagetemplates-general-section": "Allgemeng",
 	"bs-pagetemplates-headerlabel": "Etikett",
@@ -22,6 +24,7 @@
 	"bs-pagetemplates-label-targetns": "Nummraum",
 	"bs-pagetemplates-label-tplns": "Nummraum Schabloun",
 	"bs-pagetemplates-label-article": "Schabloun",
+	"bs-pagetemplates-confirm-deletetpl": "Sidd Dir sécher datt Dir dës Schabloun läsche wëllt?",
 	"bs-pagetemplates-remove-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
 	"bs-pagetemplates-remove-message-success": "Dës {{PLURAL:$1|Schabloun gouf|Schabloune goufe}} geläscht:$2"
 }

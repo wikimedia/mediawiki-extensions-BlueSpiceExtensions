@@ -91,6 +91,7 @@
 	"bs-extendedsearch-section": "节",
 	"bs-extendedsearch-morelikethis": "相似页面",
 	"bs-extendedsearch-recentsearchterms": "最近搜索关键词",
+	"bs-extendedsearch-recentsearchtermsdesc": "最近在此wiki内搜索关键词列表依据计数分类。",
 	"bs-extendedsearch-no-mlt-found": "没找到相似页面。",
 	"bs-extendedsearch-redirect": "重定向自：$1",
 	"bs-extendedsearch-totalnoofarticles": "索引的页面数：$1",
