@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-smartlist-invalid-namespaces": "Bitte überprüfen Sie {{PLURAL:$1|diesen Namensraum|diese Namensräume}}: $1.",
+	"bs-smartlist-lasteditsdesc": "Liste der von Ihnen zuletzt bearbeiteten Seiten."
+}
