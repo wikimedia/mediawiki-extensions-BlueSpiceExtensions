@@ -215,7 +215,7 @@ class UEModulePDF extends BsExtensionMW {
 		$aCurrentQueryParams['ue[module]'] = 'pdf';
 		$aContentActions = array(
 			'id' => 'bs-ta-uemodulepdf',
-			'href' => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
+			'href' => $oSpecialPage->getLinkUrl( $aCurrentQueryParams ),
 			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->text(),
 			'text' => wfMessage('bs-uemodulepdf-widgetlink-single-no-attachments-text')->text(),
 			'class' => 'icon-file-pdf'
