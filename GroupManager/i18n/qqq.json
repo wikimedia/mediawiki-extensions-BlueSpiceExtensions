@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-groupmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of group manager extension",
@@ -21,7 +22,7 @@
 	"bs-groupmanager-removegroup-message-success": "Success message after deleting a group or a pair of groups.\n*$1 is the number of groups which should be removed - use for PLURAL distinction",
 	"bs-groupmanager-removegroup-message-failure": "Failure message after deleting a group or a pair of groups.\n*$1 is the number of groups which should be removed - use for PLURAL distinction",
 	"bs-groupmanager-removegroup-message-unknown": "An unexpected error occurred while trying to delete a group.",
-	"bs-groupmanager-lablename": "Label for a input field thats contains the group name\n{{Identical|Group name:}}",
+	"bs-groupmanager-lablename": "Label for a input field thats contains the group name\n{{Identical|Group name}}",
 	"bs-groupmanager-msgnoteditable": "Error message that the group you want to edit is a system group and therefore cannot be renamed",
 	"bs-groupmanager-msgnotremovable": "Error message that the group you want to remove is a system group and therefore cannot be removed"
 }

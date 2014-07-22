@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-readers-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of readers extension.",
-	"prefs-readers": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for readers section in preferences.\n{{Identical|Readers}}",
-	"bs-readers-title": "Headline below content for readers section\n*$1 is the number of readers for PLURAL distinction\n*$2 is the username of the user - use for GENDER distinction (singular only)",
+	"prefs-readers": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for readers section in preferences.\n{{Identical|Reader}}",
+	"bs-readers-title": "Headline below content for readers section\n*$1 is the number of readers for PLURAL distinction\n*$2 is the username of the user - use for GENDER distinction (singular only)\n{{Identical|Reader}}",
 	"readers-user": "Special page title for pages {{GENDER:$1|read}} by: $1\n $1 is the username - use for GENDER distinction",
 	"readers": "Special page title for readers of \"$1\"\n*$1 is the page name",
 	"bs-readers-contentactions-label": "Anchor text for display readers\n{{Identical|Display readers}}",

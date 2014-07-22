@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-groupmanager-grpexists": "De Grupp gëtt et schonn.",
+	"bs-groupmanager-grpadded": "D'Grupp gouf derbäigesat.",
+	"bs-groupmanager-grpedited": "D'Grupp gouf geännert.",
+	"bs-groupmanager-grpremoved": "D'Grupp gouf ewechgeholl.",
+	"bs-groupmanager-invalid-name-length": "Den Numm vum Grupp däerf net méi laang wéi 16 Zeeche sinn.",
+	"bs-groupmanager-invalid-name-numeric": "Den Numm vum Grupp muss mindestens een Zeechen hunn.",
+	"bs-groupmanager-headergroup": "Grupp",
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|Grupp|Gruppen}} ewechhuelen",
+	"bs-groupmanager-titlenewgroup": "Neie Grupp",
+	"bs-groupmanager-titleeditgroup": "Grupp änneren",
+	"bs-groupmanager-removegroup-message-failure": "Dës {{PLURAL:$1|Grupp konnt|Gruppe konnten}} net geläscht ginn: $2",
+	"bs-groupmanager-removegroup-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
+	"bs-groupmanager-lablename": "Numm vum Grupp:"
+}

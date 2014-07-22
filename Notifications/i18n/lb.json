@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"prefs-notifications": "Notifikatiounen",
+	"prefs-echo-extended": "Erweidert Systemastellungen",
+	"bs-notifications-pref-notifynominor": "Keng Notifikatioun fir kleng Ännerungen",
+	"bs-notifications-pref-active": "Notifikatiounen aktivéieren",
+	"bs-echo-anon-user": "anonym",
+	"bs-echo-unknown-user": "onbekannt",
+	"bs-echo-page-edit": "D'Säit [[:$1]] gouf geännert",
+	"bs-echo-page-create": "D'Säit [[:$1]] gouf ugeluecht",
+	"bs-echo-page-delete": "D'Säit [[:$1]] gouf geläscht",
+	"bs-echo-page-move": "D'Säit [[:$1]] gouf geréckelt",
+	"bs-notifications-email-edit-subject": "Säit $1 {{GENDER:$2|geännert}} vum $2",
+	"bs-notifications-email-move-subject": "Säit $1 {{GENDER:$2|geréckelt}} vum $2",
+	"bs-notifications-email-delete-subject": "Säit $1 {{GENDER:$2|geläscht}} vum $2",
+	"bs-notifications-email-addaccount-subject": "Benotzer $1 gouf ugeluecht",
+	"bs-notifications-email-addaccount": "De Benotzer $1 mam richtegen Numm $2 gouf ugeluecht.",
+	"echo-category-title-bs-create-cat": "Notifikatioun fir nei Säiten",
+	"echo-category-title-bs-edit-cat": "Notifikatioun fir Ännerungen"
+}
