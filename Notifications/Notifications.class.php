@@ -187,7 +187,7 @@ class Notifications extends BsExtensionMW {
 
 	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
 		$sIconPath = 'BlueSpiceExtensions/Notifications/resources/icons/';
-		$icons+=array(
+		$icons = array_merge( $icons, array(
 			'bs-edit' => array(
 				'path' => $sIconPath.'edit.png'
 			),
@@ -206,7 +206,7 @@ class Notifications extends BsExtensionMW {
 			'bs-shoutbox' => array(
 				'path' => $sIconPath.'shoutbox.png'
 			),
-		);
+		) );
 		// category definition via self::$aNotificationCategories
 		//  HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Notification_category_parameters
 		foreach( self::$aNotificationCategories as $sCategory => $aCategoryDefinition ) {
