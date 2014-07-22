@@ -236,6 +236,8 @@ class PageTemplatesAdmin {
 			}
 		}
 
+		PageTemplates::invalidatePageTemplatesCache( $iTargetNs );
+
 		return json_encode( $aAnswer );
 	}
 
@@ -265,6 +267,7 @@ class PageTemplatesAdmin {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
+		$oRow = $dbw->selectRow( 'bs_pagetemplate', 'pt_target_namespace', array( 'pt_id' => $iId ) );
 		$res = $dbw->delete( 'bs_pagetemplate', array( 'pt_id' => $iId ) );
 
 		if ( $res === false ) {
@@ -274,6 +277,10 @@ class PageTemplatesAdmin {
 
 		if ( $aAnswer['success'] ) {
 			$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl-deleted' )->plain();
+		}
+
+		if( $oRow ) {
+			PageTemplates::invalidatePageTemplatesCache( $oRow->pt_target_namespace );
 		}
 
 		return json_encode( $aAnswer );

@@ -73,6 +73,8 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		$iArticleId = $aParams['articleId'];
 		$aEditors   = $aParams['editorIds'];
 
+		ResponsibleEditors::deleteResponsibleEditorsFromCache($iArticleId );
+
 		$oRequestedTitle = Title::newFromId($iArticleId);
 
 		if (!$oRequestedTitle->userCan('responsibleeditors-changeresponsibility')) {

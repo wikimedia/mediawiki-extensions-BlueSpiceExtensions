@@ -84,7 +84,7 @@ BsShoutBox = {
 		$( "#bs-sb-error" ).empty();
 		BsShoutBox.ajaxLoader.fadeIn();
 		$.post(
-			bs.util.getAjaxDispatcherUrl( 'ShoutBox::archiveShout', [ iShoutID ] ),
+			bs.util.getAjaxDispatcherUrl( 'ShoutBox::archiveShout', [ iShoutID, wgArticleId ] ),
 			function( data ) {
 				BsShoutBox.updateShoutbox();
 				$("#bs-sb-error").html(data).fadeIn().delay("1500").fadeOut();

@@ -82,6 +82,7 @@ class UserSidebar extends BsExtensionMW {
 		$this->setHook( 'GetPreferences' );
 		$this->setHook( 'EditFormPreloadText' );
 		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'PageContentSaveComplete' );
 
 		$wgAPIModules['sidebar'] = 'ApiSidebar';
 
@@ -179,7 +180,23 @@ class UserSidebar extends BsExtensionMW {
 	 * @return array of WidgetView objects
 	 */
 	private function getDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		wfRunHooks( 'BSUserSidebarDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
+		if( $oUser->isLoggedIn() ) {
+			$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', $oTitle->getPrefixedDBkey() );
+		} else {
+			$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', 'default' );
+		}
+
+		$aData = BsCacheHelper::get( $sKey );
+
+		if( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching Widget views from cache' );
+			$aViews = $aData;
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching Widget views from DB' );
+			wfRunHooks( 'BSUserSidebarDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
+			BsCacheHelper::set( $sKey , $aViews, 60*15 );// invalidate cache after 15 minutes
+		}
+
 		return true;
 	}
 
@@ -259,6 +276,33 @@ class UserSidebar extends BsExtensionMW {
 		$aDefaultWidgetKeywords = array_keys($aViews);
 
 		$text = '* '. implode( "\n* ", $aDefaultWidgetKeywords );
+
+		return true;
+	}
+
+	/**
+	 * Invalidates user sidebar cache
+	 * @param Article $article
+	 * @param User $user
+	 * @param Content $content
+	 * @param type $summary
+	 * @param type $isMinor
+	 * @param type $isWatch
+	 * @param type $section
+	 * @param type $flags
+	 * @param Revision $revision
+	 * @param Status $status
+	 * @param type $baseRevId
+	 * @return boolean
+	 */
+	public static function onPageContentSaveComplete( $article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
+		if( !$article->getTitle()->equals( Title::newFromText( $user->getName().'/Sidebar', NS_USER) ) ) return true;
+
+		$aKeys = array(
+			BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', $article->getTitle()->getPrefixedDBkey() ),
+			BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', 'default' ),
+		);
+		BsCacheHelper::invalidateCache( $aKeys );
 
 		return true;
 	}

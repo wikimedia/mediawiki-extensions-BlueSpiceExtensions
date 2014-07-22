@@ -91,6 +91,7 @@ class Authors extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
+		$this->setHook( 'PageContentSave' );
 
 		BsConfig::registerVar( 'MW::Authors::Blacklist',   array( 'MediaWiki default' ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
 		BsConfig::registerVar( 'MW::Authors::ImageHeight', 40,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-imageheight', 'int' );
@@ -176,98 +177,108 @@ class Authors extends BsExtensionMW {
 		$sPrintable = $this->getRequest()->getVal( 'printable', 'no' );
 		$iArticleId = $oTitle->getArticleID();
 
-		//HINT: Maybe we want to use MW interface Article::getContributors() to have better caching
-		//HINT2: Check if available in MW 1.17+
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			array( 'revision' ),
-			array( 'rev_user_text', 'MAX(rev_timestamp) AS ts' ),
-			array( 'rev_page' => $iArticleId ),
-			__METHOD__,
-			array(
-				'GROUP BY' => 'rev_user_text',
-				'ORDER BY' => 'ts DESC'
-			)
-		);
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Authors', $iArticleId );
+		$aData = BsCacheHelper::get( $sKey );
 
-		if ( $res->numRows() == 0 ) {
-			return true;
-		}
+		if( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetched AuthorsView from cache' );
+			$oAuthorsView = $aData;
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching AuthorsView from DB' );
+			//HINT: Maybe we want to use MW interface Article::getContributors() to have better caching
+			//HINT2: Check if available in MW 1.17+
+			// SW: There is still no caching in WikiPage::getContributors()! 17.07.2014
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				array( 'revision' ),
+				array( 'rev_user_text', 'MAX(rev_timestamp) AS ts' ),
+				array( 'rev_page' => $iArticleId ),
+				__METHOD__,
+				array(
+					'GROUP BY' => 'rev_user_text',
+					'ORDER BY' => 'ts DESC'
+				)
+			);
 
-		$oAuthorsView = new ViewAuthors();
-		if ( $sPrintable == 'yes' ) {
-			$oAuthorsView->setOption( 'print', true );
-		}
-
-		$aUserNames = array();
-		foreach ( $res as $row ) {
-			$aUserNames[] = $row->rev_user_text;
-		}
-
-		$iCount = count( $aUserNames );
-
-		$sOriginatorUserName = $oTitle->getFirstRevision()->getUserText();
-		$sOriginatorUserName = $this->checkOriginatorForBlacklist(
-			$sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist
-		);
-
-		if ( $iCount > 1 ) {
-			array_unshift( $aUserNames, $sOriginatorUserName );
-			$iCount++;
-		}
-
-		$bAddMore = false;
-		if ( $iCount > $iLimit ) {
-			$bAddMore = true;
-		}
-
-		$i = 0;
-		$iItems = 0;
-		while ( $i < $iCount ) {
-			if ( $iItems > $iLimit ) {
-				break;
-			}
-			$sUserName = $aUserNames[$i];
-
-			if ( User::isIP( $sUserName ) ) {
-				unset( $aUserNames[$i] );
-				$i++;
-				continue;
+			if ( $res->numRows() == 0 ) {
+				return true;
 			}
 
-			$oAuthorUser = User::newFromName( $sUserName );
-
-			if ( !is_object( $oAuthorUser ) || in_array( $oAuthorUser->getName(), $aBlacklist ) ) {
-				unset( $aUserNames[$i] );
-				$i++;
-				continue;
-			}
-
-			$oUserMiniProfileView = $this->mCore->getUserMiniProfile( $oAuthorUser, $aParams );
+			$oAuthorsView = new ViewAuthors();
 			if ( $sPrintable == 'yes' ) {
-				$oUserMiniProfileView->setOption( 'print', true );
+				$oAuthorsView->setOption( 'print', true );
 			}
 
-			$iItems++;
-			$i++;
-			$oAuthorsView->addItem( $oUserMiniProfileView );
-		}
-
-		if ( $bAddMore === true ) {
-			$oMoreAuthorsView = $this->mCore->getUserMiniProfile( new User(), $aParams );
-			$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
-			$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
-			$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array( 'action' => 'history' ) ) );
-			$oMoreAuthorsView->setOption( 'classes', array( 'bs-authors-more-icon' ) );
-			if ( $sPrintable == 'yes' ) {
-				$oMoreAuthorsView->setOption( 'print', true );
+			$aUserNames = array();
+			foreach ( $res as $row ) {
+				$aUserNames[] = $row->rev_user_text;
 			}
 
-			$oAuthorsView->addItem( $oMoreAuthorsView );
+			$iCount = count( $aUserNames );
+
+			$sOriginatorUserName = $oTitle->getFirstRevision()->getUserText();
+			$sOriginatorUserName = $this->checkOriginatorForBlacklist(
+				$sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist
+			);
+
+			if ( $iCount > 1 ) {
+				array_unshift( $aUserNames, $sOriginatorUserName );
+				$iCount++;
+			}
+
+			$bAddMore = false;
+			if ( $iCount > $iLimit ) {
+				$bAddMore = true;
+			}
+
+			$i = 0;
+			$iItems = 0;
+			while ( $i < $iCount ) {
+				if ( $iItems > $iLimit ) {
+					break;
+				}
+				$sUserName = $aUserNames[$i];
+
+				if ( User::isIP( $sUserName ) ) {
+					unset( $aUserNames[$i] );
+					$i++;
+					continue;
+				}
+
+				$oAuthorUser = User::newFromName( $sUserName );
+
+				if ( !is_object( $oAuthorUser ) || in_array( $oAuthorUser->getName(), $aBlacklist ) ) {
+					unset( $aUserNames[$i] );
+					$i++;
+					continue;
+				}
+
+				$oUserMiniProfileView = $this->mCore->getUserMiniProfile( $oAuthorUser, $aParams );
+				if ( $sPrintable == 'yes' ) {
+					$oUserMiniProfileView->setOption( 'print', true );
+				}
+
+				$iItems++;
+				$i++;
+				$oAuthorsView->addItem( $oUserMiniProfileView );
+			}
+
+			if ( $bAddMore === true ) {
+				$oMoreAuthorsView = $this->mCore->getUserMiniProfile( new User(), $aParams );
+				$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
+				$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
+				$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array( 'action' => 'history' ) ) );
+				$oMoreAuthorsView->setOption( 'classes', array( 'bs-authors-more-icon' ) );
+				if ( $sPrintable == 'yes' ) {
+					$oMoreAuthorsView->setOption( 'print', true );
+				}
+
+				$oAuthorsView->addItem( $oMoreAuthorsView );
+			}
+
+			$dbr->freeResult( $res );
+			BsCacheHelper::set( $sKey, $oAuthorsView );
 		}
-
-		$dbr->freeResult( $res );
-
 		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
 			'position' => 10,
 			'label' => wfMessage( 'bs-authors-title' )->text(),
@@ -328,6 +339,24 @@ class Authors extends BsExtensionMW {
 			return false;
 		}
 
+		return true;
+	}
+
+	/**
+	 * Invalidates cache for authors
+	 * @param WikiPage $wikiPage
+	 * @param User $user
+	 * @param Content $content
+	 * @param type $summary
+	 * @param type $isMinor
+	 * @param type $isWatch
+	 * @param type $section
+	 * @param type $flags
+	 * @param Status $status
+	 * @return boolean
+	 */
+	public static function onPageContentSave( $wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $status ) {
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'Authors', $wikiPage->getTitle()->getArticleID() ) );
 		return true;
 	}
 }

@@ -607,6 +607,7 @@ class ResponsibleEditors extends BsExtensionMW {
 						)
 		);
 
+		self::deleteResponsibleEditorsFromCache( $iArticleId );
 		$oRequestedTitle->invalidateCache();
 
 		$oResponse->status = BsXHRResponseStatus::SUCCESS;
@@ -817,25 +818,42 @@ class ResponsibleEditors extends BsExtensionMW {
 		if( isset(self::$aResponsibleEditorsByArticleId[$iArticleId]) && $bForceReload === false )
 			return self::$aResponsibleEditorsByArticleId[$iArticleId];
 
-		$dbr = wfGetDB(DB_SLAVE);
-		$res = $dbr->select(
-			'bs_responsible_editors',
-			'*',
-			array('re_page_id' => $iArticleId),
-			__METHOD__,
-			array('ORDER BY' => 're_position')
-		);
-
 		$aResponsibleEditorIds = array();
 		$aResponsibleEditors = array();
-		foreach ($res as $row) {
-			$aResponsibleEditorIds[] = $row->re_user_id;
-			$aResponsibleEditors[] = $row;
+
+		$sKey = BsCacheHelper::getCacheKey( 'ResponsibleEditors', 'getResponsibleEditorsByArticleId', (int)$iArticleId );
+		$aData = BsCacheHelper::get( $sKey );
+
+		if( $aData !== false ) {
+			wfDebugLog( 'BsMemcached' , __CLASS__.': Fetching ResponsibleEditors from cache' );
+			self::$aResponsibleEditorIdsByArticleId[$iArticleId] = $aData['EditorIdsByArticleId'];
+			self::$aResponsibleEditorsByArticleId[$iArticleId] = $aData['EditorsByArticleId'];
+		} else {
+			wfDebugLog( 'BsMemcached' , __CLASS__.': Fetching ResponsibleEditors from DB' );
+			$dbr = wfGetDB(DB_SLAVE);
+			$res = $dbr->select(
+				'bs_responsible_editors',
+				'*',
+				array('re_page_id' => $iArticleId),
+				__METHOD__,
+				array('ORDER BY' => 're_position')
+			);
+
+
+			foreach ($res as $row) {
+				$row->re_user_id = (int)$row->re_user_id;
+				$aResponsibleEditorIds[] = $row->re_user_id;
+				$aResponsibleEditors[] = $row;
+			}
+
+			$aData = array();
+			$aData['EditorIdsByArticleId'] = $aResponsibleEditorIds;
+			$aData['EditorsByArticleId'] = $aResponsibleEditors;
+			BsCacheHelper::set( $sKey, $aData );
+
+			self::$aResponsibleEditorIdsByArticleId[$iArticleId] = $aResponsibleEditorIds;
+			self::$aResponsibleEditorsByArticleId[$iArticleId] = $aResponsibleEditors;
 		}
-
-		self::$aResponsibleEditorIdsByArticleId[$iArticleId] = $aResponsibleEditorIds;
-		self::$aResponsibleEditorsByArticleId[$iArticleId] = $aResponsibleEditors;
-
 		return $aResponsibleEditors;
 	}
 
@@ -1049,5 +1067,9 @@ class ResponsibleEditors extends BsExtensionMW {
 		}
 
 		return true;
+	}
+
+	public static function deleteResponsibleEditorsFromCache( $iArticleId ) {
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'ResponsibleEditors', 'getResponsibleEditorsByArticleId', (int)$iArticleId ) );
 	}
 }

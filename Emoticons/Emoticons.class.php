@@ -103,11 +103,10 @@ class Emoticons extends BsExtensionMW {
 	 * Hook-Handler for 'OutputPageBeforeHTML' (MediaWiki). Replaces Emoticon syntax with images.
 	 * @param ParserOutput $oParserOutput The ParserOutput object that corresponds to the page.
 	 * @param string $sText The text that will be displayed in HTML.
-	 * @global MWMemcached $wgMemc The MediaWiki Memcached object
 	 * @return bool Always true to keep hook running.
 	 */
 	public function onOutputPageBeforeHTML( &$oParserOutput, &$sText) {
-		global $wgMemc, $wgScriptPath; //http://www.mediawiki.org/wiki/Memcached
+		global $wgScriptPath;
 
 		$sCurrentAction = $this->getRequest()->getVal( 'action', 'view' );
 		$oCurrentTitle  = $this->getTitle();
@@ -116,8 +115,8 @@ class Emoticons extends BsExtensionMW {
 		if ( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
-		$aMapping = $wgMemc->get( $sKey );
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Emoticons' );
+		$aMapping = BsCacheHelper::get( $sKey );
 
 		if ( $aMapping == false ) {
 			$sPathToEmoticons = $wgScriptPath . '/extensions/BlueSpiceExtensions/Emoticons/emoticons';
@@ -171,7 +170,7 @@ class Emoticons extends BsExtensionMW {
 			}
 
 			$aMapping = array('emoticons' => $aEmoticons, 'replacements' => $aImageReplacements );
-			$wgMemc->set( $sKey, $aMapping );
+			BsCacheHelper::set( $sKey, $aMapping );
 		}
 
 		$sText = str_replace( $aMapping['emoticons'], $aMapping['replacements'], $sText );
@@ -237,8 +236,8 @@ class Emoticons extends BsExtensionMW {
 			}
 		}
 
-		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
-		$wgMemc->delete( $sKey );
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'Emoticons' ) );
+
 		return true;
 	}
 }
