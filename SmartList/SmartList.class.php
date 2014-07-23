@@ -83,26 +83,21 @@ class SmartList extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
-		BsConfig::registerVar( 'MW::SmartList::Count', 5, BsConfig::LEVEL_USER | BsConfig::TYPE_INT, 'bs-smartlist-pref-Count', 'int');
-		BsConfig::registerVar( 'MW::SmartList::Namespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Namespaces', 'multiselectex');
-		BsConfig::registerVar( 'MW::SmartList::ExcludeNamespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-ExcludeNamespaces', 'multiselectex');
-		BsConfig::registerVar( 'MW::SmartList::Categories', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING, 'bs-smartlist-pref-Categories', 'multiselectplusadd');
-		BsConfig::registerVar( 'MW::SmartList::ExcludeCategories', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING, 'bs-smartlist-pref-ExcludeCategories', 'multiselectplusadd');
-		// possible values: AND, OR
-		BsConfig::registerVar('MW::SmartList::CategoryMode', 'OR', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-CategoryMode', 'select');
+		BsConfig::registerVar( 'MW::SmartList::Count', 5, BsConfig::LEVEL_USER | BsConfig::TYPE_INT, 'bs-smartlist-pref-count', 'int');
+		BsConfig::registerVar( 'MW::SmartList::Namespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-namespaces', 'multiselectex');
+		BsConfig::registerVar( 'MW::SmartList::Categories', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING, 'bs-smartlist-pref-categories', 'multiselectplusadd');
 		// possible values: -, day, week, month
-		BsConfig::registerVar( 'MW::SmartList::Period', '-', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Period', 'select');
-		BsConfig::registerVar( 'MW::SmartList::Mode', 'recentchanges', BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_STRING, 'bs-smartlist-pref-Mode' );
-		BsConfig::registerVar( 'MW::SmartList::ShowMinorChanges', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowMinorChanges', 'toggle');
-		BsConfig::registerVar( 'MW::SmartList::ShowOnlyNewArticles', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowOnlyNewArticles', 'toggle');
-		BsConfig::registerVar( 'MW::SmartList::Trim', 20, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-Trim', 'int');
-		BsConfig::registerVar( 'MW::SmartList::ShowText', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowText', 'toggle');
-		BsConfig::registerVar( 'MW::SmartList::TrimText', 50, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-TrimText', 'int');
+		BsConfig::registerVar( 'MW::SmartList::Period', '-', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-period', 'select');
+		BsConfig::registerVar( 'MW::SmartList::ShowMinorChanges', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-showminorchanges', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::ShowOnlyNewArticles', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-showonlynewarticles', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::Trim', 20, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-trim', 'int');
+		BsConfig::registerVar( 'MW::SmartList::ShowText', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-showtext', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::TrimText', 50, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-smartlist-pref-trimtext', 'int');
 		// possible values: title, time
-		BsConfig::registerVar( 'MW::SmartList::Order', 'DESC', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Order', 'select'); //title|time
+		BsConfig::registerVar( 'MW::SmartList::Order', 'DESC', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-order', 'select'); //title|time
 		BsConfig::registerVar( 'MW::SmartList::Sort', 'time', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-sort', 'select');
-		BsConfig::registerVar( 'MW::SmartList::ShowNamespace', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-ShowNamespace', 'toggle');
-		BsConfig::registerVar( 'MW::SmartList::Comments', false, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-Comments', 'check');
+		BsConfig::registerVar( 'MW::SmartList::ShowNamespace', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-smartlist-pref-shownamespace', 'toggle');
+		BsConfig::registerVar( 'MW::SmartList::Comments', false, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-comments', 'check');
 
 		wfProfileOut('BS::' . __METHOD__);
 	}
@@ -183,12 +178,12 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		$aPrefs = array();
-		switch ($oVariable->getName()) {
+		switch ( $oVariable->getName() ) {
 			case 'CategoryMode':
 				$aPrefs = array(
 					'options' => array(
-						wfMessage( 'bs-smartlist-AND' )->plain() => 'AND',
-						wfMessage( 'bs-smartlist-OR' )->plain() => 'OR'
+						wfMessage( 'bs-smartlist-and' )->plain() => 'AND',
+						wfMessage( 'bs-smartlist-or' )->plain() => 'OR'
 					)
 				);
 				break;
@@ -208,20 +203,6 @@ class SmartList extends BsExtensionMW {
 						wfMessage( 'bs-smartlist-time' )->plain() => 'time',
 						wfMessage( 'bs-smartlist-title' )->plain() => 'title'
 					)
-				);
-				break;
-			case 'Order':
-				$aPrefs = array(
-					'options' => array(
-						wfMessage( 'bs-smartlist-desc' )->plain() => 'DESC',
-						wfMessage( 'bs-smartlist-asc' )->plain() => 'ASC'
-					)
-				);
-				break;
-			case 'ExcludeNamespaces':
-				$aPrefs = array(
-					'type' => 'multiselectex',
-					'options' => BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL ) ),
 				);
 				break;
 		}
@@ -424,7 +405,6 @@ class SmartList extends BsExtensionMW {
 	 * @return bool true to allow other hooked methods to be executed. Always true.
 	 */
 	public function onParserFirstCallInit( &$parser ) {
-		BsConfig::registerVar( 'MW::SmartList::Heading', wfMessage( 'bs-smartlist-recent-changes' )->plain(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING, 'bs-smartlist-pref-Heading' );
 		// for legacy reasons
 		$parser->setHook( 'infobox', array( &$this, 'onTagSmartList' ) );
 		$parser->setHook( 'bs:infobox', array( &$this, 'onTagSmartList' ) );
@@ -447,15 +427,13 @@ class SmartList extends BsExtensionMW {
 		$aArgs = array();
 		$aArgs['count'] = (int)BsConfig::get( 'MW::SmartList::Count' );
 		$aArgs['namespaces'] = implode( ',', BsConfig::get( 'MW::SmartList::Namespaces' ) );
-		$aArgs['excludeNamespaces'] = implode( ',', BsConfig::get( 'MW::SmartList::ExcludeNamespaces' ) );
 		$aArgs['categories'] = implode( ',', BsConfig::get( 'MW::SmartList::Categories' ) );
-		$aArgs['excludeCategories'] = implode( ',', BsConfig::get( 'MW::SmartList::ExcludeCategories' ) );
-		$aArgs['categoryMode'] = BsConfig::get( 'MW::SmartList::CategoryMode' );
+		$aArgs['categoryMode'] = 'OR';
 		$aArgs['showMinorChanges'] = BsConfig::get( 'MW::SmartList::ShowMinorChanges' );
 		$aArgs['period'] = BsConfig::get( 'MW::SmartList::Period' );
-		$aArgs['mode'] = BsConfig::get( 'MW::SmartList::Mode' );
+		$aArgs['mode'] = 'recentchanges';
 		$aArgs['showOnlyNewArticles'] = BsConfig::get( 'MW::SmartList::ShowOnlyNewArticles' );
-		$aArgs['heading'] = BsConfig::get( 'MW::SmartList::Heading' );
+		$aArgs['heading'] = wfMessage( 'bs-smartlist-recent-changes' )->plain();
 		$aArgs['trim'] = BsConfig::get( 'MW::SmartList::Trim' );
 		$aArgs['showtext'] = BsConfig::get( 'MW::SmartList::ShowText' );
 		$aArgs['trimtext'] = BsConfig::get( 'MW::SmartList::TrimText' );
@@ -562,9 +540,7 @@ class SmartList extends BsExtensionMW {
 		//Get arguments
 		$aArgs['count'] = BsCore::sanitizeArrayEntry( $aArgs, 'count', 5, BsPARAMTYPE::INT );
 		$aArgs['namespaces'] = BsCore::sanitizeArrayEntry( $aArgs, 'ns', 'all', BsPARAMTYPE::SQL_STRING );
-		$aArgs['excludeNamespaces'] = BsCore::sanitizeArrayEntry( $aArgs, 'excludens',  '', BsPARAMTYPE::SQL_STRING );  // exclude namespaces
 		$aArgs['categories'] = BsCore::sanitizeArrayEntry( $aArgs, 'cat', '-', BsPARAMTYPE::SQL_STRING );
-		$aArgs['excludeCategories'] = BsCore::sanitizeArrayEntry( $aArgs, 'excludecat', '', BsPARAMTYPE::SQL_STRING );
 		$aArgs['categoryMode'] = BsCore::sanitizeArrayEntry( $aArgs, 'catmode', 'OR', BsPARAMTYPE::SQL_STRING );
 		$aArgs['showMinorChanges'] = BsCore::sanitizeArrayEntry( $aArgs, 'minor', true, BsPARAMTYPE::BOOL );
 		$aArgs['period'] = BsCore::sanitizeArrayEntry( $aArgs, 'period', '-', BsPARAMTYPE::SQL_STRING );
@@ -606,10 +582,7 @@ class SmartList extends BsExtensionMW {
 	 * Actually renders the SmartList list view.
 	 * @param int $aArgs['count'] Maximum number of items in list.
 	 * @param string $aArgs['namespaces'] Comma separated list of namespaces that should be considered.
-	 * @param string $aArgs['excludeNamespaces'] Comma separated list of namespaces that should not be considered.
 	 * @param string $aArgs['categories'] Comma separated list of categories that should be considered.
-	 * @param string $aArgs['excludeCategories'] Comma separated list of categories that should not be considered.
-	 * @param string $aArgs['excludeCategories'] Mode of combination when multiple categories are present. (AND|OR)
 	 * @param string $aArgs['period'] Period of time that should be considered (-|day|week|month)
 	 * @param string $aArgs['mode'] Defines the basic criteria of pages that should be considered. Default: recentchanges. Other Extensions can hook into SmartList and define their own mode.
 	 * @param bool $aArgs['showMinorChanges'] Should minor changes be considered
@@ -732,14 +705,6 @@ class SmartList extends BsExtensionMW {
 				}
 				$aArgs['categories'] = implode( ',', $aCategories );
 			}
-			if ( $aArgs['excludeCategories'] != '' ) {
-				$aExcludeCategories = explode( ',', $aArgs['excludeCategories'] );
-				for ( $i = 0; $i < count( $aExcludeCategories ); $i++ ) {
-					$aExcludeCategories[$i] = str_replace( ' ', '_', $aExcludeCategories[$i] );
-					$aExcludeCategories[$i] = "'" . trim( ucfirst( $aExcludeCategories[$i] ) ) . "'";
-				}
-				$aArgs['excludeCategories'] = implode( ',', $aExcludeCategories );
-			}
 
 			switch ( $aArgs['period'] ) {
 				case 'month': $sMinTimestamp = $dbr->timestamp( time() - 30 * 24 * 60 * 60 );
@@ -757,34 +722,22 @@ class SmartList extends BsExtensionMW {
 				$aConditions[] = 'rc_namespace IN (' . implode( ',', $aNamespaceIds ) . ')';
 			} catch ( BsInvalidNamespaceException $ex ) {
 				$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
-				$oErrorListView->addItem( new ViewTagError( wfMessage( 'bs-smartlist-invalid-namespaces', $sInvalidNamespaces )->plain() ) );
+				$oErrorListView->addItem(
+					new ViewTagError(
+						wfMessage( 'bs-smartlist-invalid-namespaces' )
+							->numParams( count( $ex->getListOfInvalidNamespaces() ) )
+							->params( $sInvalidNamespaces )
+							->text()
+					)
+				);
 			}
 
-			if ( $aArgs['excludeNamespaces'] != '' ) {
-				try {
-					$aNamespaceIds = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $aArgs['excludeNamespaces'] );
-					$aConditions[] = 'rc_namespace NOT IN (' . implode( ',', $aNamespaceIds ) . ')';
-				} catch ( BsInvalidNamespaceException $ex ) {
-					$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
-					$oErrorListView->addItem( new ViewTagError( wfMessage( 'bs-smartlist-invalid-namespaces', $sInvalidNamespaces )->plain() ) );
-				}
-			}
 			if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
 				if ( $aArgs['categoryMode'] == 'OR' ) {
 					$aConditions[] = 'rc_cur_id IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to IN (' . $aArgs['categories'] . ') )';
 				} else {
 					foreach ( $aCategories as $sCategory ) {
 						$aConditions[] = 'rc_cur_id IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to = ' . $sCategory . ' )';
-					}
-				}
-			}
-
-			if ( $aArgs['excludeCategories'] != '' ) {
-				if ( $aArgs['categoryMode'] == 'OR' ) {
-					$aConditions[] = 'rc_cur_id NOT IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to IN (' . $aArgs['excludeCategories'] . ') )';
-				} else {
-					foreach ( $aExcludeCategories as $sExcludeCategory ) {
-						$aConditions[] = 'rc_cur_id NOT IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to = ' . $sExcludeCategory . ' )';
 					}
 				}
 			}
@@ -876,8 +829,8 @@ class SmartList extends BsExtensionMW {
 				$sComment = '';
 				$sTitle = $oTitle->getText();
 				if ( BsConfig::get('MW::SmartList::Comments' ) ) {
-					$sComment = wfMessage( 'bs-smartlist-comment' )->plain().': ';
-					$sComment .= ( strlen( $row->comment ) > 50 ) ? substr( $row->comment, 0, 50 ).'...' : $row->comment;
+					$sComment = ( strlen( $row->comment ) > 50 ) ? substr( $row->comment, 0, 50 ) . '...' : $row->comment;
+					$sComment = wfMessage( 'bs-smartlist-comment' )->params( $sComment )->plain();
 				}
 				if ( isset( $aArgs['meta'] ) && $aArgs['meta'] == true ) {
 					$sMeta = ' - <i>('.$row->username.', '.$this->getLanguage()->date( $row->time, true, true ).')</i>';
@@ -949,7 +902,7 @@ class SmartList extends BsExtensionMW {
 			foreach ( $res as $row ) {
 				$sHtml = '';
 				$oTitle = Title::newFromID( $row->rev_page );
-				if( !is_object( $oTitle ) ) continue;
+				if ( !( $oTitle instanceof Title ) ) continue;
 				if ( $sOrigin === 'dashboard' ) {
 					$sHtml = $oTitle->getPrefixedText();
 				} else {
@@ -959,11 +912,10 @@ class SmartList extends BsExtensionMW {
 				$aEdits[] = Html::openElement( 'li' ) . $sLink . Html::closeElement( 'li' );
 			}
 		} else {
-			 return Html::openElement( 'ul' ) . Html::openElement( 'li' ) . wfMessage( 'bs-smartlist-noedits' )->plain() . Html::closeElement( 'li' ) . Html::closeElement( 'ul' );
+			 return '<ul><li>' . wfMessage( 'bs-smartlist-noedits' )->plain() . '</ul></li>';
 		}
 
-
-		$sEdits = Html::openElement( 'ul' ) . implode( '', $aEdits ) . Html::closeElement( 'ul' );
+		$sEdits = '<ul>' . implode( '', $aEdits ) . '</ul>';
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $sEdits;
@@ -1166,7 +1118,7 @@ class SmartList extends BsExtensionMW {
 		}
 
 		$oDbr->freeResult( $res );
-		return wfMessage( 'bs-smartlist-toplist-noresults' )->plain();
+		return wfMessage( 'bs-smartlist-no-entries' )->plain();
 	}
 
 	/**
