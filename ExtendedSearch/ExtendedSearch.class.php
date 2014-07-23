@@ -180,8 +180,8 @@ class ExtendedSearch extends BsExtensionMW {
 	*/
 	public function onBeforePageDisplay( $oOut, $oSkin ) {
 		$oOut->addModuleStyles( 'ext.bluespice.extendedsearch.autocomplete.style' );
-		$oOut->addModuleScripts( 'ext.bluespice.extendedsearch.autocomplete' );
-		$oOut->addModuleScripts( 'ext.bluespice.extendedsearch.focus' );
+		$oOut->addModules( 'ext.bluespice.extendedsearch.autocomplete' );
+		$oOut->addModules( 'ext.bluespice.extendedsearch.focus' );
 		return true;
 	}
 
