@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matik7"
+		]
+	},
+	"bs-review-save-error": "Wystąpił błąd podczas zapisywania.",
+	"bs-review-mail-link-to-page": "Kliknij w ten link: $1",
+	"bs-review-i-agree": "Akceptuję",
+	"bs-review-not-allowed": "Nie masz uprawnień, aby korzystać z tej strony.",
+	"bs-review-comments": "Komentarze",
+	"bs-review-btnmoveup": "Do góry",
+	"bs-review-btnmovedown": "W dół",
+	"bs-review-colstatus": "Status",
+	"bs-review-colreviewer": "Weryfikator",
+	"bs-review-lblstartdate": "Data rozpoczęcia",
+	"bs-review-header-startdate": "Start"
+}

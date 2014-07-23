@@ -12,7 +12,7 @@
 	"bs-review-mail-invite-body": "$1 bittet Sie, den Artikel $2 zu begutachten.",
 	"bs-review-mail-comment": "Es wurde ein Kommentar für Sie eingetragen: \\\"$1\\\"",
 	"bs-review-statebar-body-do-review": "Bitte begutachten Sie diese Seite",
+	"bs-review-commentinputlabel": "Ihr Kommentar:",
 	"bs-review-confirm-delete-step": "Möchten Sie diesen Schritt wirklich löschen?",
-	"bs-review-confirm-delete-review": "Möchten Sie diese Begutachtung wirklich löschen?",
-	"bs-review-commentinputlabel": "Ihr Kommentar:"
+	"bs-review-confirm-delete-review": "Möchten Sie diese Begutachtung wirklich löschen?"
 }

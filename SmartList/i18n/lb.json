@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-smartlist-recent-changes": "Rezent Ännerungen",
+	"bs-smartlist-no-entries": "Näischt fonnt.",
+	"bs-smartlist-comment": "Bemierkung: $1",
+	"bs-smartlist-pref-comments": "Bemierkung weisen",
+	"bs-smartlist-pref-namespaces": "Nummraim:",
+	"bs-smartlist-pref-categories": "Kategorien:",
+	"bs-smartlist-pref-showminorchanges": "Kleng Ännerunge weisen",
+	"bs-smartlist-pref-showonlynewarticles": "Nëmmen nei Säite weisen",
+	"bs-smartlist-day": "Dag",
+	"bs-smartlist-week": "Woch",
+	"bs-smartlist-month": "Mount",
+	"bs-smartlist-time": "Zäit",
+	"bs-smartlist-title": "Titel",
+	"bs-smartlist-tag-newbies-desc": "Déi lescht Benotzer weisen.",
+	"bs-smartlist-mosteditedpages": "Am dackste geännert Säiten",
+	"bs-smartlist-lastedits": "Meng Ännerungen",
+	"bs-smartlist-noedits": "Keng Ännerunge fonnt.",
+	"bs-smartlist-mostactiveusersdesc": "Lëscht vun den aktive Benotzer zortéiert no der Zuel vun hiren Ännerungen.",
+	"bs-smartlist-mosteditedpagesdesc": "Lëscht vun de Säiten déi am dackste geännert goufen zortéiert no der Zuel vun hiren Ännerungen.",
+	"bs-smartlist-lasteditsdesc": "Lëscht vu Säiten déi Dir geännert hutt."
+}

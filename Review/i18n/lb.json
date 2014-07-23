@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-review-review": "Nokucken",
+	"bs-review-review-error": "En onbekannte Feeler ass geschitt.",
+	"bs-review-i-agree": "Akzeptéieren",
+	"bs-review-not-allowed": "Dir däerft net op dës Säit zougräifen.",
+	"bs-review-commentinputlabel": "Är Bemierkung:",
+	"bs-review-comments": "Bemierkungen",
+	"bs-review-btnmoveup": "Eropréckelen",
+	"bs-review-btnmovedown": "Erofréckelen",
+	"bs-review-colcomment": "Bemierkung",
+	"bs-review-labelcomment": "Bemierkung",
+	"bs-review-header-page-title": "Säit",
+	"bs-review-header-owner-name": "Besëtzer",
+	"bs-review-header-startdate": "Ufank"
+}

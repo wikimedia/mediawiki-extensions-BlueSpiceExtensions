@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shield-9"
+		]
+	},
+	"bs-groupmanager-grpexists": "そのグループは既に存在します。",
+	"bs-groupmanager-titleeditgroup": "グループを編集",
+	"bs-groupmanager-lablename": "グループ名:"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-groupmanager-desc": "Interfejs administracyjny do zarządzania grupami",
+	"bs-groupmanager-grpexists": "Grupa już istnieje.",
+	"bs-groupmanager-grpadded": "Grupa została dodana.",
+	"bs-groupmanager-grpremoved": "Grupa została usunięta.",
+	"bs-groupmanager-invalid-name-length": "Nazwa grupy nie może być dłuższa niż 16 znaków.",
+	"bs-groupmanager-invalid-name-numeric": "Nazwa grupy musi mieć co najmniej jeden znak.",
+	"bs-groupmanager-headergroup": "Grupa",
+	"bs-groupmanager-titlenewgroup": "Nowa grupa",
+	"bs-groupmanager-titleeditgroup": "Edytuj grupę",
+	"bs-groupmanager-lablename": "Nazwa grupy:"
+}

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"2nd-player"
 		]
 	},
+	"bs-extendededitbar-redirecttip": "転送",
 	"bs-extendededitbar-entertip": "改行"
 }

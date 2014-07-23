@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"2nd-player"
 		]
 	},
 	"bs-extendededitbar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended edit bar extension",
-	"bs-extendededitbar-redirecttip": "Text for redirect",
+	"bs-extendededitbar-redirecttip": "Text for redirect\n{{Identical|Redirect}}",
 	"bs-extendededitbar-redirectsample": "Text for insert text",
 	"bs-extendededitbar-striketip": "Text for strike",
 	"bs-extendededitbar-strikesample": "Text for strike-through text",

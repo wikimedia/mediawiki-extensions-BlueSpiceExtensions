@@ -8,6 +8,7 @@
 	"bs-pagetemplates-empty-page": "Eidel Säit",
 	"bs-pagetemplates-empty-page-desc": "Mat enger edeler Sät ufänken.",
 	"bs-pagetemplatesadmin-label": "Säiteschablounen",
+	"bs-pagetemplates-tpl-desc-toolong": "D'Beschreiwung ass ze laang. Gitt w.e.g. maximal 255 Zeechen an!",
 	"bs-pagetemplates-tpl-added": "D'Schabloun gouf derbäigesat.",
 	"bs-pagetemplates-nooldtpl": "Déi al Schabloun gouf net fonnt.",
 	"bs-pagetemplates-tpl-edited": "D'Ännerunge gouf gespäichert.",

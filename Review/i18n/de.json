@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-review-desc": "Fügt Begutachtungs Funktionalität hinzu",
@@ -16,7 +17,7 @@
 	"bs-review-abstain": "Enthalten",
 	"bs-review-review-finished": "Diese Seite wurde begutachtet.",
 	"bs-review-reviewed-till": "Diese Seite wird von $1 bis $2 begutachtet.",
-	"bs-review-reviewed-till-extra": "Der Prozess wurde von $1 {{GENDER:$1|angestoßen}}",
+	"bs-review-reviewed-till-extra": "{{GENDER:$1|Erstellt}} von $2",
 	"bs-review-save-success": "Die Begutachtung wurde erstellt.",
 	"bs-review-save-error": "Es ist ein Fehler beim Speichern aufgetreten.",
 	"bs-review-save-removed": "Der Begutachtungsprozess wurde gelöscht.",
@@ -28,7 +29,7 @@
 	"bs-review-review-saved": "Die Begutachtung wurde gespeichert",
 	"bs-review-mail-link-to-page": "Folge diesem Link: $1",
 	"bs-review-mail-invite-header": "Bitte begutachte diese Seite \"$1\"",
-	"bs-review-mail-invite-body": "$1 bittet Dich, die Seite \"$2\" zu begutachten.",
+	"bs-review-mail-invite-body": "$1 {{GENDER:$2|bittet}} dich, die Seite „$3“ zu begutachten.",
 	"bs-review-mail-comment": "Es wurde ein Kommentar für Dich eingetragen: \"$1\".",
 	"bs-review-statebar-body-do-review": "Bitte begutachte diese Seite",
 	"bs-review-i-agree": "Ich stimme zu",

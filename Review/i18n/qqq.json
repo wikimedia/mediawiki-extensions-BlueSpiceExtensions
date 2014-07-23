@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension",
@@ -11,9 +12,9 @@
 	"bs-review-date": "Text message that not all participants have voted on a review yet.",
 	"bs-review-agreed": "Text message that all participants have agreed on a review.",
 	"bs-review-denied-disagreed": "Error message that at least one participant has disagreed on a review.",
-	"bs-review-accepted": "Text message that a number of reviewer has accepted the review.\n*$1 is the number of users which have accepted",
-	"bs-review-rejected": "Text message that a number of reviewer has rejected the review.\n*$1 is the number of users which have rejected",
-	"bs-review-abstain": "Text message that a number of reviewer has abstained the review.\n*$1 is the number of users which have abstained",
+	"bs-review-accepted": "Text message that a number of reviewer has accepted the review.\n*$1 is the number of users which have accepted\n{{Identical|Accepted}}",
+	"bs-review-rejected": "Text message that a number of reviewer has rejected the review.\n*$1 is the number of users which have rejected\n{{Identical|Rejected}}",
+	"bs-review-abstain": "Text message that a number of reviewer has abstained the review.\n*$1 is the number of users which have abstained\n{{Identical|Abstained}}",
 	"bs-review-review-finished": "Success message that this page has been reviewed.",
 	"bs-review-reviewed-till": "Text message that this page is being reviewed for some time.\n*$1 is the start date\n*$2 is the end date",
 	"bs-review-reviewed-till-extra": "Text message that this review was created by someone.\n*$1 is the username - use for GENDER distinction\n* is the real name of the user",
@@ -48,10 +49,10 @@
 	"bs-review-pref-emailnotifyreviewer": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for notify the reviewer of a review about changes",
 	"bs-review-expired": "Error message that the review has expired\n{{Identical|Expired}}",
 	"bs-review-denied": "Error message that the review had to be returned and needs to be reviewed again",
-	"review": "{{doc-special|Review}}",
+	"review": "{{doc-special|Review}}\n{{Identical|Review}}",
 	"bs-review-specialreview-header": "Title of the special page. Special page title can be for a user or for an overview over all existing reviews. This depends on whether a user is passed as a parameter to the special page.\n* $1 is the number if a user is passed\n**0 means overview over all reviews\n**1 reviews of one specific user\n*$2 is the real name of the user",
 	"bs-review-commentinputlabel": "Label for your comment:",
-	"bs-review-comments": "Headline for comments section",
+	"bs-review-comments": "Headline for comments section\n{{Identical|Comment}}",
 	"action-workflowview": "{{doc-action|workflowview}}",
 	"action-workflowedit": "{{doc-action|workflowedit}}",
 	"action-workflowlist": "{{doc-action|workflowlist}}",
@@ -63,13 +64,13 @@
 	"bs-review-colstatus": "Column headline for status\n{{Identical|Status}}",
 	"bs-review-colreviewer": "Column headline for reviewer\n{{Identical|Reviewer}}",
 	"bs-review-colcomment": "Column headline for comment\n{{Identical|Comment}}",
-	"bs-review-lblstartdate": "Label for start date\nNo punctuation needed",
-	"bs-review-lblenddate": "Label for end date\nNo punctuation needed",
+	"bs-review-lblstartdate": "Label for start date\nNo punctuation needed\n{{Identical|Start date}}",
+	"bs-review-lblenddate": "Label for end date\nNo punctuation needed\n{{Identical|End date}}",
 	"bs-review-titleaddreviewer": "Window title for add reviewer\n{{Identical|Add reviewer}}",
 	"bs-review-labelcomment": "Column headline for comment\n{{Identical|Comment}}",
 	"bs-review-header-page-title": "Column headline for page\n{{Identical|Page}}",
 	"bs-review-header-owner-name": "Column headline for owner\n{{Identical|Owner}}",
-	"bs-review-header-assessors": "Column headline for assessors\n{{Identical|Assessors}}",
+	"bs-review-header-assessors": "Column headline for assessors\n{{Identical|Assessor}}",
 	"bs-review-header-accepted-text": "Column headline for state\n{{Identical|State}}",
 	"bs-review-header-startdate": "Column headline for start\n{{Identical|Start}}",
 	"bs-review-header-enddate": "Column headline for end\n{{Identical|End}}",

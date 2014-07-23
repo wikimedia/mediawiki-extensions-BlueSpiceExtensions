@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"prefs-notifications": "Powiadomienia",
+	"bs-echo-page-edit": "Strona [[:$1]] została zmieniona",
+	"bs-echo-page-create": "Strona [[:$1]] została utworzona",
+	"bs-echo-page-delete": "Strona [[:$1]] została skasowana",
+	"bs-echo-page-move": "Strona [[:$1]] została przeniesiona",
+	"echo-category-title-bs-create-cat": "Powiadomienie o nowych stronach"
+}

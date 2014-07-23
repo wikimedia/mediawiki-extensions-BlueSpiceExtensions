@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-extendedsearch-error": "Fazi :",
+	"bs-extendedsearch-facet-category": "Rummad",
+	"bs-extendedsearch-facet-namespace-files": "Restroù",
+	"bs-extendedsearch-facet-type": "Furmad",
+	"bs-extendedsearch-facet-namespace-extfiles": "Restroù diavaez",
+	"bs-extendedsearch-search-category": "Klask er rummadoù :",
+	"bs-extendedsearch-sort-title": "Titl",
+	"bs-extendedsearch-sort-ts": "Eur",
+	"bs-extendedsearch-sort-type": "Seurt",
+	"bs-extendedsearch-pref-scope-title": "Titl",
+	"bs-extendedsearch-pref-indextypeswiki": "Menegeriñ ar pajennoù wiki",
+	"bs-extendedsearch-index-successfully-deleted": "Dilamet eo bet ar meneger.",
+	"bs-extendedsearch-create-index": "Adkrouiñ ar meneger",
+	"bs-extendedsearch-delete-index": "Dilemel ar meneger",
+	"bs-extendedsearch-status": "Statud",
+	"bs-extendedsearch-index-error-deleting": "Fazi pa oad o tilemel ar meneger : $1",
+	"bs-extendedsearch-statistics": "Stadegoù",
+	"bs-extendedsearch-indexinginprogress": "Emeur o krouiñ ar meneger.",
+	"bs-extendedsearch-ascending": "War gresk",
+	"bs-extendedsearch-descending": "War zigresk",
+	"bs-extendedsearch-unknown": "Dianav",
+	"bs-extendedsearch-section": "Rann",
+	"bs-extendedsearch-morelikethis": "Pajennoù damheñvel",
+	"bs-extendedsearch-no-mlt-found": "N'eus bet kavet pajenn damheñvel ebet.",
+	"bs-extendedsearch-totalnoofarticles": "Niver a bajennoù da venegeriñ : $1",
+	"bs-extendedsearch-more": "Muioc'h",
+	"bs-extendedsearch-fewer": "Nebeutoc'h"
+}

@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Y-M D"
+			"Y-M D",
+			"Fohanno"
 		]
 	},
+	"bs-insertmagic-currentweek": "Sizhun (niver).",
+	"bs-insertmagic-server": "URL an domani.",
+	"bs-insertmagic-servername": "Anv an domani.",
 	"bs-insertmagic-type-variables": "Argemmennoù",
 	"bs-insertmagic-label-desc": "Deskrivadur"
 }

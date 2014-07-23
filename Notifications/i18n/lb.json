@@ -6,6 +6,7 @@
 	},
 	"prefs-notifications": "Notifikatiounen",
 	"prefs-echo-extended": "Erweidert Systemastellungen",
+	"bs-notifications-pref-notifyns": "Mech nëmmen informéiere bei Ännerungen an dësen Nummräim:",
 	"bs-notifications-pref-notifynominor": "Keng Notifikatioun fir kleng Ännerungen",
 	"bs-notifications-pref-active": "Notifikatiounen aktivéieren",
 	"bs-echo-anon-user": "anonym",
@@ -20,5 +21,6 @@
 	"bs-notifications-email-addaccount-subject": "Benotzer $1 gouf ugeluecht",
 	"bs-notifications-email-addaccount": "De Benotzer $1 mam richtegen Numm $2 gouf ugeluecht.",
 	"echo-category-title-bs-create-cat": "Notifikatioun fir nei Säiten",
-	"echo-category-title-bs-edit-cat": "Notifikatioun fir Ännerungen"
+	"echo-category-title-bs-edit-cat": "Notifikatioun fir Ännerungen",
+	"echo-category-title-bs-delete-cat": "Notifikatioun fir Läschungen"
 }
