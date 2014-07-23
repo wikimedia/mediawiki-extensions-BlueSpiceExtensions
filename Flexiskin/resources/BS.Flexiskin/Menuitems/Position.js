@@ -1,6 +1,6 @@
 Ext.define('BS.Flexiskin.Menuitems.Position', {
 	extend: 'BS.Panel',
-	title: mw.message('bs-flexiskin-headerPosition').plain(),
+	title: mw.message('bs-flexiskin-headerposition').plain(),
 	layout: 'form',
 	currentData: {},
 	id: 'bs-flexiskin-preview-menu-position',
@@ -13,7 +13,7 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 			]
 		});
 		this.cgNavigation = Ext.create('Ext.form.ComboBox', {
-			fieldLabel: mw.message('bs-flexiskin-labelNavigation').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelnavigation').plain(),
 			mode: 'local',
 			store: nav_pos,
 			displayField: 'val',
@@ -35,7 +35,7 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 			]
 		});
 		this.cgContent = Ext.create('Ext.form.ComboBox', {
-			fieldLabel: mw.message('bs-flexiskin-labelContent').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelcontent').plain(),
 			mode: 'local',
 			store: cont_pos,
 			displayField: 'val',
@@ -49,7 +49,7 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 			scope: this
 		});
 		this.tfWidth = Ext.create('Ext.form.TextField', {
-			fieldLabel: mw.message('bs-flexiskin-labelWidth').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelwidth').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',
 			name: 'width',
@@ -59,7 +59,7 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 			Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
 		});
 		this.cbFullWidth = Ext.create('Ext.form.field.Checkbox', {
-			fieldLabel: mw.message('bs-flexiskin-labelFullWidth').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelfullwidth').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',
 			name: 'fullWidth',

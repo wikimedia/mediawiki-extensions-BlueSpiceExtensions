@@ -1,12 +1,12 @@
 Ext.define('BS.Flexiskin.Menuitems.General', {
 	extend: 'Ext.Panel',
-	title: mw.message('bs-flexiskin-headerGeneral').plain(),
+	title: mw.message('bs-flexiskin-headergeneral').plain(),
 	layout: 'form',
 	currentData: {},
 	id: 'bs-flexiskin-preview-menu-general',
 	initComponent: function() {
 		this.tfName = Ext.create('Ext.form.TextField', {
-			fieldLabel: mw.message('bs-flexiskin-labelName').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelname').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',
 			name: 'name',
@@ -16,7 +16,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
 		});
 		this.tfDesc = Ext.create('Ext.form.TextField', {
-			fieldLabel: mw.message('bs-flexiskin-labelDesc').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labeldesc').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',
 			name: 'desc',
@@ -38,14 +38,14 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		});
 
 		this.coBackgroundColorContainer = Ext.create('Ext.form.FieldContainer', {
-			fieldLabel: mw.message('bs-flexiskin-labelBackgroundColor').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelbgcolor').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',
 			items: [this.pfBackgroundColor]
 		});
 		this.tfCustomBackgroundColor = Ext.create('Ext.form.TextField', {
 			id: 'bs-flexiskin-general-custom-background-field',
-			fieldLabel: mw.message('bs-flexiskin-labelCustomBackgroundColor').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelcustombgcolor').plain(),
 			labelWidth: 100,
 			labelAlign: 'left',
 			name: 'customBackgroundColor',
@@ -60,7 +60,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		this.ufBackgroundUpload = Ext.create('BS.form.UploadPanel', {
 			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
 			uploadFormName: 'background',
-			uploadFieldLabel: mw.message('bs-flexiskin-labelBackgroundUpload').plain(),
+			uploadFieldLabel: mw.message('bs-flexiskin-labelbackgroundupload').plain(),
 			uploadLabelWidth: 100,
 			uploadResetButton: true
 		});
@@ -74,7 +74,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			]
 		});
 		this.cgRepeatBackground = Ext.create('Ext.form.ComboBox', {
-			fieldLabel: mw.message('bs-flexiskin-labelRepeatBackground').plain(),
+			fieldLabel: mw.message('bs-flexiskin-labelrepeatbackground').plain(),
 			mode: 'local',
 			store: rep_back_pos,
 			displayField: 'val',

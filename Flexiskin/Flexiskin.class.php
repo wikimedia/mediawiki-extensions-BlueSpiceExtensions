@@ -99,7 +99,7 @@ class Flexiskin extends BsExtensionMW {
 	public function runPreferencePlugin($sAdapterName, $oVariable) {
 		$aData = self::getFlexiskins(false);
 		$aResult = array('options' => array(
-				wfMessage('bs-flexiskin-defaultName')->plain() => 'default',
+				wfMessage('bs-flexiskin-defaultname')->plain() => 'default',
 		));
 		if (isset($aData['flexiskin']) && count($aData['flexiskin']) > 0)
 		foreach ($aData['flexiskin'] as $aConf) {
@@ -147,23 +147,23 @@ class Flexiskin extends BsExtensionMW {
 		$aData = json_decode(self::getVal('data'));
 		$oData = $aData[0];
 		if (is_null($oData->template))
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templateNotExists')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templatenotexists')->plain()));
 		if( empty($oData->template) )
 			$oData->template = 'default';
 
 		$sId = str_replace(" ", "_", strtolower($oData->name));
 		if (is_dir((self::$sFlexiskinPath . "/" . md5($sId)))) {
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinExists')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinexists')->plain()));
 		}
 		//PW(27.11.2013) TODO: add check template really exists before add
 		if( empty($oData->name) ) {
 			//PW(27.11.2013) TODO: add msg
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-nameEmpty')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-nameempty')->plain()));
 		}
 		if ( $oData->template != 'default'){
 			$oConfig = self::getFlexiskinConfig(true, $oData->template);
 			if (!$oConfig->isGood())
-				return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templateNotExists')->plain()));
+				return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templatenotexists')->plain()));
 			$oConf = json_decode($oConfig->getValue());
 			$oConf[0]->name = $oData->name;
 			$oConf[0]->desc = $oData->desc;
@@ -270,7 +270,7 @@ class Flexiskin extends BsExtensionMW {
 		$aConfigs = json_decode($aData['data']);
 		$aFile = self::generateStyleFile($aConfigs);
 		if (self::$iOldId != self::$iNewId && is_dir(self::$sFlexiskinPath . DS . self::$iNewId) && file_exists(self::$sFlexiskinPath . DS . self::$iNewId . DS . "conf.json")) {
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinExists')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinexists')->plain()));
 		}
 		if (self::$iOldId != self::$iNewId && is_dir(self::$sFlexiskinPath . DS . self::$iOldId)) {
 			$oStatus = BsFileSystemHelper::renameFolder("flexiskin" . DS . self::$iOldId, "flexiskin" . DS . self::$iNewId);

@@ -38,21 +38,21 @@ Ext.define('BS.Flexiskin.Panel', {
 
 		this.colName = Ext.create('Ext.grid.column.Template', {
 			id: 'flexiskin_name',
-			header: mw.message('bs-flexiskin-headerName').plain(),
+			header: mw.message('bs-flexiskin-labelname').plain(),
 			sortable: true,
 			dataIndex: 'flexiskin_name',
 			tpl: '{flexiskin_name}'
 		});
 		this.colDesc = Ext.create('Ext.grid.column.Template', {
 			id: 'flexiskin_desc',
-			header: mw.message('bs-flexiskin-headerDesc').plain(),
+			header: mw.message('bs-flexiskin-labeldesc').plain(),
 			sortable: true,
 			dataIndex: 'flexiskin_desc',
 			tpl: '{flexiskin_desc}'
 		});
 		this.colActive = Ext.create('Ext.grid.column.CheckColumn', {
 			id: 'flexiskin_active',
-			header: mw.message('bs-flexiskin-headerActive').plain(),
+			header: mw.message('bs-flexiskin-headeractive').plain(),
 			sortable: true,
 			dataIndex: 'flexiskin_active'
 		});
@@ -82,7 +82,7 @@ Ext.define('BS.Flexiskin.Panel', {
 			this.dlgSkinAdd.on('ok', this.onDlgSkinAdd, this);
 		}
 
-		this.dlgSkinAdd.setTitle(mw.message('bs-flexiskin-titleAddSkin').plain());
+		this.dlgSkinAdd.setTitle(mw.message('bs-flexiskin-titleaddskin').plain());
 		this.dlgSkinAdd.tfName.enable();
 		this.dlgSkinAdd.show();
 		this.callParent(arguments);
@@ -129,7 +129,7 @@ Ext.define('BS.Flexiskin.Panel', {
 		bs.util.confirm(
 			'UMremove',
 			{
-				text: mw.message('bs-flexiskin-confirmDeleteSkin').plain(),
+				text: mw.message('bs-flexiskin-confirmdeleteskin').plain(),
 				title: mw.message('bs-extjs-delete').plain()
 			},
 			{

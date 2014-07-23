@@ -107,7 +107,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			'bs-flexiskin-config-close',
 			{
 				titleMsg: 'bs-extjs-warning',
-				textMsg: 'bs-flexiskin-dialogClose'
+				textMsg: 'bs-flexiskin-dialogclose'
 			},
 		{
 			ok: function() {
@@ -129,7 +129,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			'bs-flexiskin-config-close',
 			{
 				titleMsg: 'bs-extjs-warning',
-				textMsg: 'bs-flexiskin-dialogReset'
+				textMsg: 'bs-flexiskin-dialogreset'
 			},
 		{
 			ok: function() {

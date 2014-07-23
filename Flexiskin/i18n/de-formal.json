@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tobias Weichart <weichart@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-flexiskin-dialogclose": "Sind Sie sicher, dass Sie die Vorschau schließen möchten?",
+	"bs-flexiskin-dialogreset": "Der Skin wird auf den zuletzt gespeicherten Stand zurückgesetzt. Möchten Sie fortfahren?",
+	"bs-flexiskin-confirmdeleteskin": "Sind Sie sicher, dass Sie diesen Skin löschen möchten?",
+	"bs-flexiskin-error-nameempty": "Bitte geben Sie einen validen Namen für den Skin den Sie erstellen möchten ein."
+}
