@@ -1,18 +1,30 @@
 <?php
-
-BsExtensionManager::registerExtension('TopMenuBarCustomizer',            BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
-
-$wgMessagesDirs['TopMenuBarCustomizer'] = __DIR__ . '/i18n';
-
-$wgExtensionMessagesFiles['TopMenuBarCustomizer'] = __DIR__ . '/languages/TopMenuBarCustomizer.i18n.php';
-
-$wgResourceModules['ext.bluespice.topmenubarcustomizer'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/TopMenuBarCustomizer/resources/bluespice.TopMenuBarCustomizer.js',
-	'styles'  => 'extensions/BlueSpiceExtensions/TopMenuBarCustomizer/resources/bluespice.TopMenuBarCustomizer.css',
-	'position' => 'top',
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+BsExtensionManager::registerExtension(
+	'TopMenuBarCustomizer',
+	BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE
 );
 
-$wgAutoloadClasses['ViewTopMenuItem'] = __DIR__.'/views/view.TopMenuItem.php';
-$wgAutoloadClasses['ViewTopMenuItemMain'] = __DIR__.'/views/view.TopMenuItemMain.php';
+$aResourceModuleTemplate = array(
+	'dependencies' => 'ext.bluespice',
+	'localBasePath' => "$IP/extensions/BlueSpiceExtensions/TopMenuBarCustomizer/resources",
+	'remoteExtPath' => 'BlueSpiceExtensions/TopMenuBarCustomizer/resources'
+);
+
+$wgMessagesDirs['TopMenuBarCustomizer'] = __DIR__."/i18n";
+
+$wgExtensionMessagesFiles['TopMenuBarCustomizer'] = __DIR__."/languages/TopMenuBarCustomizer.i18n.php";
+
+$wgAutoloadClasses['TopMenuBarCustomizerParser'] = __DIR__."/includes/TopMenuBarCustomizerParser.php";
+$wgAutoloadClasses['ViewTopMenuItem'] = __DIR__."/views/view.TopMenuItem.php";
+
+$wgResourceModules['ext.bluespice.topmenubarcustomizer'] = array(
+	'scripts' => 'bluespice.TopMenuBarCustomizer.js',
+	'position' => 'top',
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.topmenubarcustomizer.styles'] = array(
+	'styles'  => 'bluespice.TopMenuBarCustomizer.css',
+	'position' => 'top',
+) + $aResourceModuleTemplate;
+
+unset($aResourceModuleTemplate);

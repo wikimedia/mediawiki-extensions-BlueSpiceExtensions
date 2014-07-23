@@ -77,7 +77,7 @@ class Blog extends BsExtensionMW {
 		$this->setHook( 'BSNamespaceManagerBeforeSetUsernamespaces', 'onBSNamespaceManagerBeforeSetUsernamespaces');
 		$this->setHook( 'BSRSSFeederGetRegisteredFeeds' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'BSTopMenuBarCustomizerRegisterNavigationSites' );
 
 		// Trackback is not fully functional in MW and thus disabled.
 		BsConfig::registerVar( 'MW::Blog::ShowTrackback', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL );
@@ -109,23 +109,22 @@ class Blog extends BsExtensionMW {
 	}
 
 	/**
-	 * Adds entry to bs_navigation_topbar
-	 * @param SkinTemplate $sktemplate
-	 * @param BaseTemplate $tpl
-	 * @return boolean Always true to keep hook running
+	 * Adds entry to navigation sites
+	 * @global string $wgScriptPath
+	 * @param array $aNavigationSites
+	 * @return boolean - always true
 	 */
-	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ){
+	public function onBSTopMenuBarCustomizerRegisterNavigationSites( &$aNavigationSites ) {
 		global $wgScriptPath;
-		$tpl->data['bs_navigation_sites'][20] = array(
+
+		$aNavigationSites[] = array(
 			'id' => 'nt-blog',
 			'href' => wfAppendQuery( $wgScriptPath.'/index.php', array(
 				'action' => 'blog'
 			)),
-			'text' => wfMessage('bs-blog-blog')->plain()
+			'active' => BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ),
+			'text' => wfMessage('bs-blog-blog')->plain(),
 		);
-		if( BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ) ) {
-			$tpl->data['bs_navigation_sites_active'] = 'nt-blog';
-		}
 		return true;
 	}
 
