@@ -13,7 +13,7 @@
 
 /**** Autocomplete ****/
 
-#bs-extendedsearch-autocomplete.ui-widget {
+#bs-extendedsearch-autocomplete .ui-widget {
 	font-family: inherit;
 	font-size: inherit;
 	border-radius: 0;
@@ -21,7 +21,7 @@
 }
 
 #bs-extendedsearch-autocomplete .ui-widget-content {
-	background-image: none;
+	background: none;
 }
 
 #bs-extendedsearch-autocomplete li.ui-menu-item a{
@@ -37,6 +37,7 @@
 }
 
 #bs-extendedsearch-autocomplete a.ui-state-hover {
+	background-image: none;
 	margin: 0px;
 }
 
