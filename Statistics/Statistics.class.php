@@ -101,21 +101,14 @@ class Statistics extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
-		//BsConfig::registerVar( 'MW::Statistics::DiagramDir',           'images/statistics',   BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING,       'bs-statistics-pref-DiagramDir' );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramWidth',         700,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramWidth', 'int' );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramHeight',        500,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramHeight', 'int' );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramType',          'line',                BsConfig::LEVEL_USER|BsConfig::TYPE_STRING,         $this->mI18N );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramType',          'line',                BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-statistics-pref-DiagramType', 'select' );
-		//BsConfig::registerVar( 'MW::Statistics::DefaultFrom',          '01 January 2010',     BsConfig::LEVEL_USER|BsConfig::TYPE_STRING,         'bs-statistics-pref-DefaultFrom' );
-		//BsConfig::registerVar( 'MW::Statistics::DisableCache',         true,                  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,         'bs-statistics-pref-DisableCache', 'toggle' );
+		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers', array( 'WikiSysop' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-excludeusers', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 36, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-statistics-pref-maxnumberofintervals', 'int' );
 
-		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers',         array( 'WikiSysop' ),  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-ExcludeUsers', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 36,                    BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,          'bs-statistics-pref-MaxNumberOfIntervals', 'int' );
 		$aAvailableGrains = array(
-			'Y' => 'bs-statistics-Y',
-			'm' => 'bs-statistics-m',
-			'W' => 'bs-statistics-W',
-			'd' => 'bs-statistics-d',
+			'Y' => 'bs-statistics-year',
+			'm' => 'bs-statistics-month',
+			'W' => 'bs-statistics-week',
+			'd' => 'bs-statistics-day',
 		);
 		BsConfig::registerVar( 'MW::Statistics::AvailableGrains', $aAvailableGrains, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED, 'bs-statistics-pref-AvailableGrains');
 
@@ -232,9 +225,9 @@ class Statistics extends BsExtensionMW {
 	 * @param Skin $oSkin
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if( !$oSkin->getTitle()->isSpecial( 'AdminDashboard' )
-			&& !$oSkin->getTitle()->isSpecial( 'WikiAdmin' )
-			&& !$oSkin->getTitle()->isSpecial( 'UserDashboard' )
+		if( !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('AdminDashboard'))
+			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('SpecialWikiAdmin'))
+			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('UserDashboard'))
 		) return true;
 
 		$oOutputPage->addModules('ext.bluespice.statisticsPortlets');
@@ -388,7 +381,7 @@ class Statistics extends BsExtensionMW {
 			return json_encode($aResult);
 		}
 
-		//$aCategories[wfMsg( 'bs-statistics-all-categories' )] = '(all)';
+		//$aCategories[wfMsg( 'bs-ns_all' )] = '(all)';
 		$oDbr = wfGetDB( DB_SLAVE );
 		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );
 		while ( $oRow = $rRes->fetchObject() ) {
@@ -476,28 +469,28 @@ class Statistics extends BsExtensionMW {
 		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofusers' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofedits' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
@@ -509,38 +502,38 @@ class Statistics extends BsExtensionMW {
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofusers' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfUsersdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofusers' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofusersdesc' )->plain()
 		);
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofedits' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfEditsdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofedits' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofeditsdesc' )->plain()
 		);
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfArticlesdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofpagesdesc' )->plain()
 		);
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfPagesdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofpagesdesc' )->plain()
 		);
 
 		return true;

@@ -5,7 +5,6 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
-
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -27,10 +26,10 @@ class BsDiagramNumberOfUsers extends BsDiagram {
 		parent::__construct();
 
 		BsConfig::get( 'MW::Statistics::ExcludeUsers' );
-		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-users')->text();
-		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-users-desc')->text();
-		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
-		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
+		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-users' )->plain();
+		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-users-desc' )->plain();
+		$this->sTitlex = wfMessage( 'bs-statistics-label-time' )->plain();
+		$this->sTitley = wfMessage( 'bs-statistics-label-count' )->plain();
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
@@ -45,7 +44,7 @@ class BsDiagramNumberOfUsers extends BsDiagram {
 									WHERE ug_group = 'bot'
 								)
 								AND NOT user_name IN (@BsFilterUsers)";
-		$this->sListLabel = array( wfMessage( 'bs-statistics-label-name')->text(), wfMessage( 'bs-statistics-label-registration')->text() );
+		$this->sListLabel = array( wfMessage( 'bs-statistics-label-name' )->plain(), wfMessage( 'bs-statistics-label-registration' )->plain() );
 		$this->sMode = BsDiagram::MODE_AGGREGATED;
 
 		$this->addFilter( new BsFilterUsers( $this ) );

@@ -1,6 +1,8 @@
 <?php
 BsExtensionManager::registerExtension('Statistics', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['Statistcs'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['Statistcs'] = __DIR__ . '/languages/Statistics.i18n.php';
 
 $aResourceModuleTemplate = array(
@@ -17,40 +19,37 @@ $wgResourceModules['ext.bluespice.statistics'] = array(
 	),
 	'messages' => array(
 		'bs-statistics-filters',
-		'bs-statistics-continue-step-3',
+		'bs-statistics-finish',
 		'bs-statistics-diagram',
 		'bs-statistics-from',
 		'bs-statistics-to',
 		'bs-statistics-filter-user',
 		'bs-statistics-filter-searchscope',
-		'bs-statistics-filter-namespace',
+		'bs-ns',
 		'bs-statistics-filter-category',
 		'bs-statistics-mode',
 		'bs-statistics-absolute',
 		'bs-statistics-aggregated',
 		'bs-statistics-list',
 		'bs-statistics-grain',
-		'bs-statistics-Y',
-		'bs-statistics-m',
-		'bs-statistics-W',
-		'bs-statistics-d',
-		'bs-statistics-label-count',
-		'bs-statistics-loadingMessage',
+		'bs-statistics-year',
+		'bs-statistics-month',
+		'bs-statistics-week',
+		'bs-statistics-day',
+		'bs-statistics-label-count'
 	)
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.statisticsPortlets'] = array(
 	'messages' => array(
 		'bs-statistics-label-count',
-		'bs-statistics-portlet-NumberOfUsers',
-		'bs-statistics-portlet-NumberOfEdits',
-		'bs-statistics-portlet-NumberOfArticles',
-		'bs-statistics-portlet-NumberOfPages',
-		'bs-statistics-portletconfig-periodlabel',
-		'bs-statistics-portletconfig-periodlabel',
+		'bs-statistics-portlet-numberofusers',
+		'bs-statistics-portlet-numberofedits',
+		'bs-statistics-portlet-numberofpages',
+		'bs-extjs-portal-timespan',
 		'bs-statistics-portletconfig-periodday',
-		'bs-statistics-portletconfig-periodweek',
-		'bs-statistics-portletconfig-periodmonth',
+		'bs-statistics-week',
+		'bs-statistics-month',
 	)
 ) + $aResourceModuleTemplate;
 
