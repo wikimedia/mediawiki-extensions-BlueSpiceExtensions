@@ -38,8 +38,8 @@ class SpecialRSSFeeder extends BsSpecialPage {
 		$this->getOutput()->addModuleStyles( 'ext.bluespice.rssFeeder' );
 
 		$form = new ViewBaseForm();
-		$form->setId('RSSFeederForm');
-		$form->setValidationUrl('index.php?&action=remote&mod=RSSFeeder&rf=validate');
+		$form->setId( 'RSSFeederForm' );
+		#$form->setValidationUrl( 'index.php?&action=remote&mod=RSSFeeder&rf=validate' );
 
 		$label = new ViewFormElementLabel();
 		$label->useAutoWidth();

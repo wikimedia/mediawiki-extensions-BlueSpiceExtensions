@@ -4,13 +4,13 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-rssfeeder-desc": "Adds RSS functionality",
+	"bs-rssfeeder-desc": "Create your own RSS feed",
 	"rssfeeder": "RSS feeder",
-	"bs-rssfeeder-pagetext": "You can subscribe to the following RSS feeds",
+	"bs-rssfeeder-pagetext": "You can subscribe to the following RSS feeds:",
 	"bs-rssfeeder-recent-changes": "Recent changes",
 	"bs-rssfeeder-pages": "Page",
 	"bs-rssfeeder-submit": "Show",
 	"bs-rssfeeder-rss": "RSS feed",
-	"bs-dashboards-rss-desc": "Create your own RSS feed",
+	"bs-rssfeeder-rss-desc": "Create your own RSS feed",
 	"bs-extjs-rssfeeder-rss-title": "RSS URL"
 }
