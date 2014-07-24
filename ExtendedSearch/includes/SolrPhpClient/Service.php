@@ -730,13 +730,12 @@ class Apache_Solr_Service
 	 *
 	 * @throws Exception If an error occurs during the service call
 	 */
-	public function addDocument(Apache_Solr_Document $document, $allowDups = false, $overwritePending = true, $overwriteCommitted = true)
+	public function addDocument( Apache_Solr_Document $document, $bOverwrite = true )
 	{
-		$dupValue = $allowDups ? 'true' : 'false';
-		$pendingValue = $overwritePending ? 'true' : 'false';
-		$committedValue = $overwriteCommitted ? 'true' : 'false';
+		$bOw = ( $bOverwrite ) ? 'true' : 'false';
 
-		$rawPost = '<add allowDups="' . $dupValue . '" overwritePending="' . $pendingValue . '" overwriteCommitted="' . $committedValue . '">';
+		$rawPost = '<add overwrite="' . $bOw . '">';
+
 		$rawPost .= $this->_documentToXmlFragment($document);
 		$rawPost .= '</add>';
 
@@ -754,13 +753,11 @@ class Apache_Solr_Service
 	 *
 	 * @throws Exception If an error occurs during the service call
 	 */
-	public function addDocuments($documents, $allowDups = false, $overwritePending = true, $overwriteCommitted = true)
+	public function addDocuments($documents, $bOverwrite = true )
 	{
-		$dupValue = $allowDups ? 'true' : 'false';
-		$pendingValue = $overwritePending ? 'true' : 'false';
-		$committedValue = $overwriteCommitted ? 'true' : 'false';
+		$bOw = ( $bOverwrite ) ? 'true' : 'false';
 
-		$rawPost = '<add allowDups="' . $dupValue . '" overwritePending="' . $pendingValue . '" overwriteCommitted="' . $committedValue . '">';
+		$rawPost = '<add overwrite="' . $bOw . '">';
 
 		foreach ($documents as $document)
 		{
@@ -843,28 +840,6 @@ class Apache_Solr_Service
 	}
 
 	/**
-	 * Send a commit command.  Will be synchronous unless both wait parameters are set to false.
-	 *
-	 * @param boolean $optimize Defaults to true
-	 * @param boolean $waitFlush Defaults to true
-	 * @param boolean $waitSearcher Defaults to true
-	 * @param float $timeout Maximum expected duration (in seconds) of the commit operation on the server (otherwise, will throw a communication exception). Defaults to 1 hour
-	 * @return Apache_Solr_Response
-	 *
-	 * @throws Exception If an error occurs during the service call
-	 */
-	public function commit($optimize = true, $waitFlush = true, $waitSearcher = true, $timeout = 3600)
-	{
-		$optimizeValue = $optimize ? 'true' : 'false';
-		$flushValue = $waitFlush ? 'true' : 'false';
-		$searcherValue = $waitSearcher ? 'true' : 'false';
-
-        $rawPost = '<commit optimize="' . $optimizeValue . '" waitFlush="' . $flushValue . '" waitSearcher="' . $searcherValue . '" />';
-
-		return $this->_sendRawPost($this->_updateUrl, $rawPost, $timeout);
-	}
-
-	/**
 	 * Raw Delete Method. Takes a raw post body and sends it to the update service. Body should be
 	 * a complete and well formed "delete" xml document
 	 *
@@ -890,13 +865,10 @@ class Apache_Solr_Service
 	 */
 	public function deleteById($id, $fromPending = true, $fromCommitted = true)
 	{
-		$pendingValue = $fromPending ? 'true' : 'false';
-		$committedValue = $fromCommitted ? 'true' : 'false';
-
 		//escape special xml characters
 		$id = htmlspecialchars($id, ENT_NOQUOTES, 'UTF-8');
 
-		$rawPost = '<delete fromPending="' . $pendingValue . '" fromCommitted="' . $committedValue . '"><id>' . $id . '</id></delete>';
+		$rawPost = '<delete><id>' . $id . '</id></delete>';
 
 		return $this->delete($rawPost);
 	}
@@ -913,13 +885,10 @@ class Apache_Solr_Service
 	 */
 	public function deleteByQuery($rawQuery, $fromPending = true, $fromCommitted = true)
 	{
-		$pendingValue = $fromPending ? 'true' : 'false';
-		$committedValue = $fromCommitted ? 'true' : 'false';
-
 		// escape special xml characters
 		$rawQuery = htmlspecialchars($rawQuery, ENT_NOQUOTES, 'UTF-8');
 
-		$rawPost = '<delete fromPending="' . $pendingValue . '" fromCommitted="' . $committedValue . '"><query>' . $rawQuery . '</query></delete>';
+		$rawPost = '<delete><query>' . $rawQuery . '</query></delete>';
 
 		return $this->delete($rawPost);
 	}
@@ -937,10 +906,7 @@ class Apache_Solr_Service
 	 */
 	public function optimize($waitSearcher = true, $timeout = 3600)
 	{
-		$searcherValue = $waitSearcher ? 'true' : 'false';
-
-		$rawPost = '<optimize waitSearcher="' . $searcherValue . '" />';
-
+		$rawPost = '<optimize />';
 		return $this->_sendRawPost($this->_updateUrl, $rawPost, $timeout);
 	}
 

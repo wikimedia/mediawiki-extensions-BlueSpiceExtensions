@@ -64,7 +64,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 		$this->totalNoDocumentsCrawled = $this->oDbr->numRows( $this->oDocumentsDb );
 
 		$sMessage = wfMessage( 'bs-extendedsearch-totalnoofarticles', $this->totalNoDocumentsCrawled )->plain() . "\n";
-		$this->oMainControl->logFile( 'write', $sMessage );
+		$this->oMainControl->write( '', $sMessage );
 
 		return $this->totalNoDocumentsCrawled;
 	}
@@ -101,7 +101,6 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 		}
 
 		$this->oDocumentsDb = $this->oDbr->select( 'page', 'page_id', array(), __METHOD__, $sOptions );
-		sleep( 2 );
 	}
 
 	/**
@@ -110,7 +109,6 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	public function indexCrawledDocuments() {
 		$this->iRounds = ceil( $this->totalNoDocumentsCrawled / $this->iLimit );
 
-		global $wgUser;
 		for ( $i = 0; $i < $this->iRounds; $i++ ) {
 			$this->loadNextDocuments( $i );
 

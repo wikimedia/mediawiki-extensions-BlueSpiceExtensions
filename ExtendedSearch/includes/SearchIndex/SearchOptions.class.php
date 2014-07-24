@@ -253,9 +253,8 @@ class SearchOptions {
 		$aSearchOptions['fq'][] = $sFqNamespaces;
 
 		$aSearchOptions['mlt'] = 'true';
-		$aSearchOptions['mlt.fl'] = 'titleMlt,textMlt'; // todo: titleWord, textWord
+		$aSearchOptions['mlt.fl'] = 'textMlt'; // todo: titleWord, textWord
 		$aSearchOptions['mlt.boost'] = 'true';
-		$aSearchOptions['mlt.qf'] = 'titleMlt^10.0 textMlt^0.1';
 		$aSearchOptions['mlt.mindf'] = '5';
 		$aSearchOptions['mlt.mintf'] = '3';
 		$aSearchOptions['mlt.maxqt'] = '15';
@@ -438,7 +437,7 @@ class SearchOptions {
 
 			$bTagNamespace = true;
 			$aFq[] = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) )
-				? '{!tag=na}namespace:(' . implode( ' ', $aFqNamespaces ) . ')'
+				? '{!tag=na}namespace:("' . implode( '" "', $aFqNamespaces ) . '")'
 				: 'namespace:(' . implode( ' ', $aFqNamespaces ) . ')';
 		}
 
@@ -459,7 +458,7 @@ class SearchOptions {
 				}
 			}
 			$sFqCategories = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ca}' : '';
-			$sFqCategories .= 'cat:(' . implode( $sOperator, $this->aOptions['cats'] ) . ')';
+			$sFqCategories .= 'cat:("' . implode( '"' . $sOperator . '"', $this->aOptions['cats'] ) . '")';
 			$aFq[] = $sFqCategories;
 		}
 
@@ -480,7 +479,7 @@ class SearchOptions {
 			//       at whitespace
 			// but: +editor:("Robert V" "Mathias S") is already split correctly!
 			$sFqEditor = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ed}' : '';
-			$sFqEditor .= 'editor:(' . implode( $sOperator, $this->aOptions['editor'] ) . ')';
+			$sFqEditor .= 'editor:("' . implode( '"' . $sOperator . '"', $this->aOptions['editor'] ) . '")';
 			$aFq[] = $sFqEditor;
 		}
 

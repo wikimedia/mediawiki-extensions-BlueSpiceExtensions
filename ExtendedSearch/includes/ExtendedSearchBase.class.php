@@ -542,17 +542,7 @@ class ExtendedSearchBase {
 		$oViewMlt = new ViewMoreLikeThis;
 		if ( $oTitle->isSpecialPage() ) return $oViewMlt;
 
-		$aMltQuery = $this->oSearchOptions->getSolrMltQuery( $oTitle );
-		try {
-			$oResults = $this->oSearchService->mlt(
-				$aMltQuery['searchString'],
-				$aMltQuery['offset'],
-				$aMltQuery['searchLimit'],
-				$aMltQuery['searchOptions']
-			);
-		} catch ( Exception $e ) {
-			return $oViewMlt;
-		}
+		$oResults = $this->getMltData( $oTitle );
 
 		$aMlt = array();
 		//$aMlt[] = implode( ', ', $oResults->interestingTerms );
@@ -560,15 +550,15 @@ class ExtendedSearchBase {
 			foreach ( $oResults->response->docs as $oRes ) {
 				if ( count( $aMlt )  === 5 ) break;
 
-				if ( $oRes->namespace != 999 ) {
-					$oMltTitle = Title::makeTitle( $oRes->namespace, $oRes->title );
-				} else {
-					$oMltTitle = Title::makeTitle( NS_FILE, $oRes->title );
-				}
+				$oMltTitle = ( $oRes->namespace != 999 )
+					? Title::makeTitle( $oRes->namespace, $oRes->title )
+					: Title::makeTitle( NS_FILE, $oRes->title );
 
-				if ( !$oMltTitle->userCan( 'read' ) ) continue;
-				if ( $oMltTitle->getArticleID() === $oTitle->getArticleID() ) continue;
-				if ( $oMltTitle->isRedirect() ) continue;
+				if ( !$oMltTitle->userCan( 'read' )
+					|| $oMltTitle->getArticleID() === $oTitle->getArticleID()
+					|| $oMltTitle->isRedirect() ) {
+					continue;
+				}
 
 				$sHtml = $oMltTitle->getPrefixedText();
 				$aMlt[] = BsLinkProvider::makeLink( $oMltTitle, $sHtml );
@@ -576,7 +566,7 @@ class ExtendedSearchBase {
 		}
 
 		if ( empty( $aMlt ) ) {
-			$aMlt[] = wfMessage( 'bs-extendedsearch-no-mlt-found' )->plain();
+			$aMlt[] = $oResults->errormessage;
 		}
 		$oViewMlt->setOption( 'mlt', $aMlt );
 
@@ -640,6 +630,23 @@ class ExtendedSearchBase {
 		}
 
 		return implode( "\n", $aResults );
+	}
+
+	public function getMltData( $oTitle ) {
+		$aMltQuery = $this->oSearchOptions->getSolrMltQuery( $oTitle );
+		$oResults = new stdClass();
+		try {
+			$oResults = $this->oSearchService->mlt(
+				$aMltQuery['searchString'],
+				$aMltQuery['offset'],
+				$aMltQuery['searchLimit'],
+				$aMltQuery['searchOptions']
+			);
+		} catch ( Exception $e ) {
+			$oResults->errormessage = wfMessage( 'bs-extendedsearch-no-mlt-found' )->plain();
+		}
+
+		return $oResults;
 	}
 
 }

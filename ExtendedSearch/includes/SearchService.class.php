@@ -77,7 +77,7 @@ class SearchService extends SolrServiceAdapter {
 
 			if ( empty( $aUrl['host'] ) || empty( $aUrl['port'] ) || empty( $aUrl['path'] ) ) {
 				wfProfileOut( 'BS::'.__METHOD__ );
-				throw new BsException( 'Creating instance of '.__CLASS__.' not possible with these params:'
+				throw new Exception( 'Creating instance of ' . __CLASS__ . ' not possible with these params:'
 					.', $host='.( isset( $aUrl['host'] ) ? $aUrl['host'] : '' )
 					.', $port='.( isset( $aUrl['port'] ) ? $aUrl['port'] : '' )
 					.', $path='.( isset( $aUrl['path'] ) ? $aUrl['path'] : '' )
@@ -105,7 +105,7 @@ class SearchService extends SolrServiceAdapter {
 	 */
 	protected static function containsStringUnescapedCharsOf( $sString, $sChar, $sEscapeChar = '\\' ) {
 		// at $pos the $char occurs in $sString.
-		$pos = stripos( $sString, $sChar );
+		$pos = mb_stripos( $sString, $sChar );
 		//  If $sChar not comprised in $sString
 		if ( $pos === false ) {
 			return false;
@@ -354,11 +354,11 @@ class SearchService extends SolrServiceAdapter {
 		if ( intval( curl_getinfo( $this->oGetFileTextCurlHandle, CURLINFO_HTTP_CODE ) ) != 200 ) {
 			$cuGI = curl_getinfo( $this->oGetFileTextCurlHandle );
 			wfProfileOut( 'BS::'.__METHOD__ );
-			throw new BsException( "Error extracting document {$filepath}, cUrl returns http_code: {$cuGI['http_code']} and upload_content_length: {$cuGI['upload_content_length']}" );
+			throw new Exception( "Error extracting document {$filepath}, cUrl returns http_code: {$cuGI['http_code']} and upload_content_length: {$cuGI['upload_content_length']}" );
 		}
 		if ( curl_errno( $this->oGetFileTextCurlHandle ) != 0 ) {
 			wfProfileOut( 'BS::'.__METHOD__ );
-			throw new BsException( 'Search::getFileText - curl_error '.curl_error( $this->oGetFileTextCurlHandle ).' for file: '.$filepath );
+			throw new Exception( 'Search::getFileText - curl_error '.curl_error( $this->oGetFileTextCurlHandle ).' for file: '.$filepath );
 		}
 
 		wfProfileOut( 'BS::'.__METHOD__ );

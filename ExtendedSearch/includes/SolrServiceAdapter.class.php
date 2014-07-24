@@ -145,14 +145,13 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 			$responseData = ( isset( $responseParts[1] ) ) ? $responseParts[1] : '';
 			$response = new Apache_Solr_Response( $responseData, $http_response_header, $this->_createDocuments, $this->_collapseSingleValueArrays );
 		} catch ( Exception $e ) {
-			error_log ( 'Exception raised in Search::_sendRawPost: ' . $e->getMessage() );
-			//Search::writeLog($mode, 'Exception raised in Search::_sendRawPost: ' . $e->getMessage(), 0);
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost ' . $e->getMessage() );
 			wfProfileOut( 'BS::'.__METHOD__ );
 			return new Apache_Solr_Response('');
 		}
 
 		if ( $response->getHttpStatus() != 200 ) {
-			BuildIndexMainControl::getInstance()->logFile( 'write', 'Error in _sendRawPost ' . var_export( $response, true ) );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost ' . var_export( $response, 1 ) );
 			wfProfileOut( 'BS::'.__METHOD__ );
 			throw new Exception( '"' . $response->getHttpStatus() . '" Status: ' . $response->getHttpStatusMessage(), $response->getHttpStatus() );
 		}
@@ -162,21 +161,22 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 	}
 
 	/**
-	 * Overwriting commit() in Service.php to get rid of optimize parameter in the rawPost string
-	 * (optimize doesn't look valid in this version of solr)
-	 * @param bool $bOptimize Not used currently.
-	 * @param bool $bWaitFlush Send commit with waitFlush attribute
-	 * @param bool $bWaitSearcher Send commit with waitSearcher attribute
+	 * Overwriting commit() in Service.php
+	 * @param bool $bWaitSearcher send commit with waitSearcher attribute
+	 * @param bool $bSoftCommit send commit with softCommit attribute
+	 * @param bool $bExpungeDeletes send commit with expungeDeletes attribute
 	 * @param int $iTimeout Seconds to wait for server response.
 	 * @return Apache_Solr_Response
 	 */
-	public function commit( $bOptimize = true, $bWaitFlush = true, $bWaitSearcher = true, $iTimeout = 3600 ) {
+	public function commit( $bWaitSearcher = true, $bSoftCommit = true, $bExpungeDeletes = true, $iTimeout = 3600 ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// http://wiki.apache.org/solr/UpdateXmlMessages
 
-		$searcherValue = $bWaitSearcher ? 'true' : 'false';
+		$bWS = ( $bWaitSearcher ) ? 'true' : 'false';
+		$bCS = ( $bSoftCommit ) ? 'true' : 'false';
+		$bED = ( $bExpungeDeletes ) ? 'true' : 'false';
 
-		$rawPost = '<commit waitSearcher="' . $searcherValue . '" />';
+		$rawPost = '<commit waitSearcher="' . $bWS . '" softCommit="' . $bCS . '" expungeDeletes="' . $bED . '" />';
 		wfProfileOut( 'BS::'.__METHOD__ );
 
 		return $this->_sendRawPost( $this->_updateUrl, $rawPost, $iTimeout );

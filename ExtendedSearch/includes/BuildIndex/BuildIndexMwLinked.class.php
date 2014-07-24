@@ -116,28 +116,11 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 			$time = @filemtime( urldecode( $path ) );
 			$date = date( "YmdHis", $time );
 
-			// Check if the file is already indexed
-			try {
-				$uniqueIdForDocument = $this->oMainControl->getUniqueId( $path, 'external' );
-				$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
-			} catch ( Exception $e ) {
-				$this->writeLog( 'Error indexing file '.$document->el_to.' with errormessage '.$e->getMessage() );
-				continue;
-			}
-
-			// If already indexed and timestamp is not newer => don't index it!
-			if ( $hitsDocumentInIndexWithSameUID->response->numFound != 0 ) {
-				// timestamps have different format => compare function to equalize both
-				$timestampIndexDoc = $hitsDocumentInIndexWithSameUID->response->docs[0]->ts;
-				if ( !$this->isTimestamp1YoungerThanTimestamp2( $date, $timestampIndexDoc ) ) {
-					$this->writeLog( ( 'Already in index: '.$document->el_to ) );
-					continue;
-				}
-			}
+			if ( $this->checkExistence( $path, 'external', $date, $filename ) ) return;
 
 			$fileInfo = new SplFileInfo( $path );
 			$fileRealPath = $fileInfo->getRealPath();
-			$fileText =& $this->oMainControl->oSearchService->getFileText( $fileRealPath );
+			$fileText = $this->getFileText( $fileRealPath, $filename );
 			$doc = $this->makeLinkedDocument( $docType, $filename, $fileText, $path, $date );
 			$this->writeLog( $path );
 			if ( $doc ) {
