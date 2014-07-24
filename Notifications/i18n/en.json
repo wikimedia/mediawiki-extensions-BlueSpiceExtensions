@@ -4,7 +4,7 @@
 			"Swidmann"
 		]
 	},
-	"bs-notifications-desc": "Sends notications on user selected changes",
+	"bs-notifications-desc": "Sends notifications on user selected changes",
 	"prefs-notifications": "Notifications",
 	"prefs-echo-extended": "Advanced system settings",
 	"bs-notifications-pref-notifyns": "Only notify for changes in these namespaces:",

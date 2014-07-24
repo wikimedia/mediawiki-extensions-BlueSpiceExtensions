@@ -7,7 +7,7 @@
 	"bs-pagesvisited-desc": "Provides a personalized list of the last visited pages",
 	"prefs-pagesvisited": "Pages visited",
 	"bs-pagesvisited-widget-title": "Pages visited",
-	"bs-pagesvisited-error-nsnotvalid": "Given namespace{{PLURAL:$1||s}} <code>$2</code> {{PLURAL:$1|is|are}} not valid.",
+	"bs-pagesvisited-error-nsnotvalid": "Given {{PLURAL:$1|namespace|namespaces}} <code>$2</code> {{PLURAL:$1|is|are}} not valid.",
 	"bs-pagesvisited-pref-widgetlimit": "Limit of entries:",
 	"bs-pagesvisited-pref-widgetns": "Namespaces:",
 	"bs-pagesvisited-pref-widgetsortodr": "Sort by:",

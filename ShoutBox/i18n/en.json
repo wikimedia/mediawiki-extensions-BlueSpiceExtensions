@@ -22,7 +22,7 @@
     "bs-shoutbox-archive-failure": "An error occurred while trying to delete the entry, please try again.",
     "bs-shoutbox-archive-failure-user": "Entries can only be deleted by their author.",
     "bs-shoutbox-switch-description": "Hides shoutbox on this page",
-    "bs-shoutbox-charactersleft": "$1 character{{PLURAL:$1||s}} left",
+    "bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|character|characters}} left",
     "bs-shoutbox-confirm-text": "Do you really want to delete this entry?",
     "bs-shoutbox-confirm-title": "Confirm",
     "bs-shoutbox-entermessage": "Please enter a message.",

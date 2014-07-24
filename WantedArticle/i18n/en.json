@@ -22,7 +22,7 @@
 	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Headline.",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Sort order <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) or <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Sort by <code>title</code> or <code>time</code>.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Output format <code>list</code> or <code>quene</code> (comma seperated).",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Output format <code>list</code> or <code>quene</code> (comma separated).",
 	"bs-wantedarticle-tag-more-linktext": "More ...",
 	"bs-wantedarticle-tag-default-title": "Wanted pages",
 	"bs-wantedarticle-pref-includelimit": "Number of suggestions:",
@@ -39,5 +39,5 @@
 	"bs-wantedarticle-create-page": "Create page \"$1\".",
 	"bs-wantedarticle-suggest-page": "Suggest page \"$1\".",
 	"bs-wantedarticle-info-nothing-entered": "Please provide a valid page title.",
-	"bs-wantedarticle-title-invalid-chars": "The following character{{PLURAL:$1| is|s are}} not valid for use in a page title: $2"
+	"bs-wantedarticle-title-invalid-chars": "The following {{PLURAL:$1|character is|characters are}} not valid for use in a page title: $2"
 }

@@ -22,7 +22,7 @@
 	"bs-review-save-removed": "The review was deleted.",
 	"bs-review-save-nosteps": "No review steps were entered.",
 	"bs-review-save-noid": "No page ID was sent.",
-	"bs-review-save-norights": "You do not have the neccessary permission.",
+	"bs-review-save-norights": "You do not have the necessary permission.",
 	"bs-review-review-error": "An unknown error occurred.",
 	"bs-review-review-secondtime": "Review could not be found. Maybe, you are trying to review the page again.",
 	"bs-review-review-saved": "Your vote was saved.",
