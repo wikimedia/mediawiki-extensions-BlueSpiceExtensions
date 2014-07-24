@@ -23,7 +23,7 @@
 	"bs-review-save-removed": "Success message that a review was deleted.",
 	"bs-review-save-nosteps": "Error Message that no review steps were entered.",
 	"bs-review-save-noid": "Error message that no page ID was sent an so the review can not be created.",
-	"bs-review-save-norights": "Error message that the user who wants to create the review does not have neccessary permission.",
+	"bs-review-save-norights": "Error message that the user who wants to create the review does not have necessary permission.",
 	"bs-review-review-error": "Error message for an unknown error occurred.",
 	"bs-review-review-secondtime": "Error message that a review could not be found. A possible reason is that the user tries to vote again",
 	"bs-review-review-saved": "Success message that the the vote of a user was saved.",

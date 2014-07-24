@@ -60,7 +60,7 @@ class InsertCategory extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InsertCategory',
-			EXTINFO::DESCRIPTION => 'Dialogbox to enter a category link.',
+			EXTINFO::DESCRIPTION => 'Dialog box to enter a category link.',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Stefan Widmann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

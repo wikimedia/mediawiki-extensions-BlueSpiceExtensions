@@ -29,7 +29,7 @@
 	"bs-extendedsearch-invalid-query": "The query could not be processed.",
 	"bs-extendedsearch-nosearchterm": "Please enter a search term.",
 	"bs-extendedsearch-result": "Search for \"$1\" found $2 {{PLURAL:$2|result|results}}.",
-	"bs-extendedsearch-result-caption": "$1 - $2 out of $3 result{{PLURAL:$3||s}}",
+	"bs-extendedsearch-result-caption": "$1 - $2 out of $3 {{PLURAL:$3|result|results}}",
 	"bs-extendedsearch-search-category": "Search in the categories:",
 	"bs-extendedsearch-search-editors": "Search for authors:",
 	"bs-extendedsearch-search-help-multiselect": "Hold CTRL key to select multiple items.",
