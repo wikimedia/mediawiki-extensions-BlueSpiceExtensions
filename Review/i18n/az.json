@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wertuose"
+		]
+	},
+	"bs-review-mail-invite-body": "$1 sizi \"$3\" səhifəsinə baxmağa {{GENDER:$2|dəvət edib}}.",
+	"bs-review-colstatus": "Status"
+}

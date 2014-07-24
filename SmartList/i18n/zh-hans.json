@@ -30,9 +30,16 @@
 	"bs-smartlist-month": "月",
 	"bs-smartlist-time": "时间",
 	"bs-smartlist-title": "标题",
+	"bs-smartlist-tag-smartlist-desc": "显示最近更改的配置信息。",
+	"bs-smartlist-tag-newbies-desc": "显示最近用户。",
+	"bs-smartlist-tag-toplist-desc": "显示最多监视页面的列表。",
 	"bs-smartlist-mostvisitedpages": "最多查看页面",
 	"bs-smartlist-mosteditedpages": "最多编辑页面",
 	"bs-smartlist-mostactiveusers": "最活跃用户（编辑数）",
 	"bs-smartlist-lastedits": "我的编辑",
-	"bs-smartlist-noedits": "未找到编辑。"
+	"bs-smartlist-noedits": "未找到编辑。",
+	"bs-smartlist-mostactiveusersdesc": "按编辑数排列的最活跃用户列表。",
+	"bs-smartlist-mosteditedpagesdesc": "按编辑数排列的最多编辑页面列表。",
+	"bs-smartlist-mostvisitedpagesdesc": "按监视数排列的最多监视页面列表。",
+	"bs-smartlist-lasteditsdesc": "您编辑的页面列表。"
 }

@@ -15,6 +15,8 @@
 	"bs-echo-page-create": "D'Säit [[:$1]] gouf ugeluecht",
 	"bs-echo-page-delete": "D'Säit [[:$1]] gouf geläscht",
 	"bs-echo-page-move": "D'Säit [[:$1]] gouf geréckelt",
+	"bs-echo-page-newuser": "De Benotzer $1 gouf ugeluecht.",
+	"bs-notifications-email-new-subject": "Säit $1 {{GENDER:$2|ugeluecht}} vum $2",
 	"bs-notifications-email-edit-subject": "Säit $1 {{GENDER:$2|geännert}} vum $2",
 	"bs-notifications-email-move-subject": "Säit $1 {{GENDER:$2|geréckelt}} vum $2",
 	"bs-notifications-email-delete-subject": "Säit $1 {{GENDER:$2|geläscht}} vum $2",

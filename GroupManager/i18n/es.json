@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-groupmanager-grpexists": "El grupo ya existe.",
+	"bs-groupmanager-grpadded": "Se añadió el grupo.",
+	"bs-groupmanager-invalid-name-length": "El nombre del grupo no puede tener más de 16 caracteres.",
+	"bs-groupmanager-invalid-name-numeric": "El nombre del grupo debe tener al menos un carácter.",
+	"bs-groupmanager-headergroup": "Grupo",
+	"bs-groupmanager-titlenewgroup": "Nuevo grupo",
+	"bs-groupmanager-titleeditgroup": "Editar grupo",
+	"bs-groupmanager-lablename": "Nombre del grupo:"
+}

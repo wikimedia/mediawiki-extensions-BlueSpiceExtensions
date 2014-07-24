@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"prefs-review": "Ellenőriz",
+	"bs-review-save-norights": "Nincs meg a szükséges jogosultságod.",
+	"bs-review-i-agree": "Elfogadom",
+	"bs-review-comments": "Hozzászólások",
+	"bs-review-btnmoveup": "Mozgatás felfelé",
+	"bs-review-colstatus": "Állapot",
+	"bs-review-colreviewer": "Lektor",
+	"bs-review-header-startdate": "Kezdés"
+}

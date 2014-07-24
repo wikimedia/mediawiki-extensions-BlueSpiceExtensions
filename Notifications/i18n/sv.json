@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-echo-anon-user": "anonym",
+	"bs-notifications-email-new-subject": "Sida $1 {{GENDER:$2|skapades}} av $2"
+}

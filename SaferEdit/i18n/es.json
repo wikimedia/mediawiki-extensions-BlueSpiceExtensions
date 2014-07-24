@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"bs-saferedit-restore": "Restaurar",
 	"bs-saferedit-safer-edit-topbar": "Recuperación",
+	"bs-saferedit-user-editing": "$1 está {{GENDER:$1|editando}} la página",
 	"bs-saferedit-lastsavedversion": "La última versión guardada es del $1 a las $2.",
 	"bs-saferedit-unsavedchanges": "Hay cambios sin guardar.",
 	"bs-saferedit-othersectiontitle": "Sección que restaurar",

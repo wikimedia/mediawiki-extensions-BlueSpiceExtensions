@@ -1,18 +1,28 @@
 {
 	"@metadata": {
 		"authors": [
-			"Matik7"
+			"Matik7",
+			"Chrumps"
 		]
 	},
 	"prefs-smartlist": "Inteligentna lista",
 	"bs-smartlist-recent-changes": "Ostatnie zmiany",
+	"bs-smartlist-no-entries": "Brak wyników.",
+	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|Podana przestrzeń nazw jest nieprawidłowa|Podane przestrzenie nazw są nieprawidłowe}}: $2.",
+	"bs-smartlist-comment": "Komentarz: $1.",
 	"bs-smartlist-pref-comments": "Pokaż komentarz",
 	"bs-smartlist-pref-namespaces": "Przestrzenie nazw:",
 	"bs-smartlist-pref-categories": "Kategorie:",
+	"bs-smartlist-pref-period": "Okres:",
 	"bs-smartlist-pref-showminorchanges": "Pokaż drobne zmiany",
 	"bs-smartlist-pref-showonlynewarticles": "Pokaż tylko nowe strony",
 	"bs-smartlist-pref-trim": "Maksymalna długość tytułu:",
 	"bs-smartlist-pref-sort": "Sortuj według:",
+	"bs-smartlist-pref-shownamespace": "Pokaż tytuł strony z przestrzenią nazw",
+	"bs-smartlist-sort-asc": "rosnąco",
+	"bs-smartlist-sort-desc": "malejąco",
+	"bs-smartlist-day": "Dzień",
+	"bs-smartlist-week": "Tydzień",
 	"bs-smartlist-month": "Miesiąc",
 	"bs-smartlist-time": "Czas",
 	"bs-smartlist-title": "Tytuł",

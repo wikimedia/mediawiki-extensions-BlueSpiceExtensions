@@ -6,5 +6,7 @@
 		]
 	},
 	"bs-extendededitbar-redirecttip": "転送",
-	"bs-extendededitbar-entertip": "改行"
+	"bs-extendededitbar-striketip": "取り消し線",
+	"bs-extendededitbar-entertip": "改行",
+	"bs-extendededitbar-tabletip": "表を挿入"
 }

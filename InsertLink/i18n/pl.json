@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Matik7"
 		]
 	},
+	"bs-insertlink-desc": "Okno dialogowe do wprowadzenia adresu",
 	"bs-insertlink-label-page": "Strona",
 	"bs-insertlink-label-mail": "Adres e‐mail",
 	"bs-insertlink-label-description": "Opis",

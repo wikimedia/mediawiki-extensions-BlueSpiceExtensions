@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Añade funcionalidad de resaltado de sintaxis personalizable",
+	"prefs-csyntaxhighlight": "Resaltador de sintaxis",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Mostrar números de línea",
+	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de herramientas"
+}

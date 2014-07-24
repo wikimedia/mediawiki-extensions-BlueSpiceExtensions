@@ -9,6 +9,7 @@
 	"bs-wantedarticle-ajax-error-no-parameter": "Kee Säitentitel uginn.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Déi virgeschloe Säit \"$1\" gëtt et schonn.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "D'Säit \"$1\" gouf scho virgeschlo.",
+	"bs-wantedarticle-success-suggestion-entered": "Är Propos \"$1\" gouf derbäigesat.",
 	"bs-wantedarticle-page-removed": "D'Säit \"$1\" gouf ewechgeholl.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Virschloen",
 	"bs-wantedarticle-single-textfield-defaulttext": "Titel vun der Säit",
@@ -19,5 +20,6 @@
 	"bs-wantedarticle-pref-sort": "Zortéieren no:",
 	"bs-wantedarticle-pref-sort-time": "Zäit",
 	"bs-wantedarticle-pref-sort-title": "Titel",
-	"bs-wantedarticle-suggest-page": "Säit \"$1\" virschloen."
+	"bs-wantedarticle-suggest-page": "Säit \"$1\" virschloen.",
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Dëst Zeechen ass|Dës Zeeche sinn}} net valabel fir an engem Säitentitel ze benotzen: $2"
 }

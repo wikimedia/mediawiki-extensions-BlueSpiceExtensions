@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Matik7"
 		]
 	},
 	"bs-extendedsearch-error": "Błąd:",
@@ -9,6 +10,7 @@
 	"bs-extendedsearch-facet-editors": "Autorzy",
 	"bs-extendedsearch-facet-namespace": "Przestrzeń nazw",
 	"bs-extendedsearch-facet-namespace-files": "Pliki",
+	"bs-extendedsearch-result-caption": "$1 - $2 z $3 {{PLURAL:$3|wyniku|wyników}}",
 	"bs-extendedsearch-sort-title": "Tytuł",
 	"bs-extendedsearch-sort-ts": "Czas",
 	"bs-extendedsearch-sort-type": "Typ",

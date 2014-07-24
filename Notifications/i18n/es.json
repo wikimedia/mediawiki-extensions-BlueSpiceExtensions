@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"prefs-notifications": "Notificaciones",
+	"prefs-echo-extended": "Configuración avanzada del sistema",
+	"bs-notifications-pref-active": "Activar notificaciones",
+	"bs-echo-anon-user": "anónimo",
+	"bs-echo-page-create": "Se creó la página [[:$1]]",
+	"bs-notifications-email-new-subject": "Página $1 {{GENDER:$2|creada}} por $2",
+	"bs-notifications-email-new": "Se {{GENDER:$2|creó}} la página \"$1\" por $2.\n\nComentario:\n $3 \nPuedes visitar la página siguiendo este enlace:\n$4",
+	"bs-notifications-email-edit-subject": "Página $1 {{GENDER:$2|editada}} por $2",
+	"bs-notifications-email-edit": "Se {{GENDER:$2|editó}} la página \"$1\" por $2.\n\nComentario:\n $3 \nPuedes visitar la página siguiendo este enlace:\n$4.\n\nSi sólo quieres ver los cambios, sigue este enlaceː\n$5",
+	"bs-notifications-email-move-subject": "Página $1 {{GENDER:$2|trasladada}} por $2",
+	"bs-notifications-email-move": "Se {{GENDER:$2|trasladó}} la página \"$1\" hacia $3 por $2. Puedes visitar la página siguiendo este enlace:\n$4",
+	"bs-notifications-email-delete-subject": "Página $1 {{GENDER:$2|borrada}} por $2",
+	"bs-notifications-email-delete": "Se {{GENDER:$2|borró}} la página \"$1\" por $2.\n\nEsta fue la razón:\n$3",
+	"bs-notifications-email-addaccount-subject": "Usuario $1 creado",
+	"bs-notifications-email-addaccount": "Se creó el usuario $1 con nombre real $2.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|publicó}} un mensaje en la página $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|publicó}} un mensaje en la página \"$1\".\n\nMensaje:\n$3\n\nPuedes visitar la página siguiendo este enlace:\n$4."
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-smartlist-pref-comments": "Hozzászólás megjelenítése",
+	"bs-smartlist-pref-namespaces": "Névterek:",
+	"bs-smartlist-pref-sort": "Rendezés:",
+	"bs-smartlist-sort-asc": "növekvő",
+	"bs-smartlist-sort-desc": "csökkenő",
+	"bs-smartlist-month": "hónap",
+	"bs-smartlist-time": "Idő",
+	"bs-smartlist-title": "Cím",
+	"bs-smartlist-mosteditedpages": "Legtöbbször szerkesztett lapok",
+	"bs-smartlist-lastedits": "Szerkesztéseim",
+	"bs-smartlist-noedits": "Nem található szerkesztés."
+}

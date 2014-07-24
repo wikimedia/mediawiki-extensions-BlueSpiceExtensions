@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Wyz"
 		]
 	},
 	"bs-smartlist-desc": "Fournit des informations supplémentaires sur le contenu et les utilisateurs",
@@ -21,7 +22,7 @@
 	"bs-smartlist-pref-showtext": "Afficher le contenu de la page",
 	"bs-smartlist-pref-trimtext": "Taille maximale du contenu de la page (en caractères)",
 	"bs-smartlist-pref-order": "Trié par :",
-	"bs-smartlist-pref-sort": "Trié par :",
+	"bs-smartlist-pref-sort": "Trier par :",
 	"bs-smartlist-pref-shownamespace": "Afficher le titre de la page avec l’espace de noms",
 	"bs-smartlist-sort-asc": "croissant",
 	"bs-smartlist-sort-desc": "décroissant",
@@ -35,11 +36,11 @@
 	"bs-smartlist-tag-toplist-desc": "Affiche une liste des pages les plus vues.",
 	"bs-smartlist-mostvisitedpages": "Pages les plus vues",
 	"bs-smartlist-mosteditedpages": "Pages les plus modifiées",
-	"bs-smartlist-mostactiveusers": "Utilisateurs les plus actifs (en modifications)",
+	"bs-smartlist-mostactiveusers": "Utilisateurs les plus actifs (en nombre de modifications)",
 	"bs-smartlist-lastedits": "Mes modifications",
 	"bs-smartlist-noedits": "Aucune modification trouvée.",
-	"bs-smartlist-mostactiveusersdesc": "Liste des utilisateurs les plus actifs triée par leurs modifications.",
+	"bs-smartlist-mostactiveusersdesc": "Liste des utilisateurs les plus actifs triés par leurs modifications.",
 	"bs-smartlist-mosteditedpagesdesc": "Liste des pages les plus modifiées triées par leurs modifications.",
-	"bs-smartlist-mostvisitedpagesdesc": "Liste des pages les plus vues triées par leurs vues.",
+	"bs-smartlist-mostvisitedpagesdesc": "Liste des pages les plus vues triées par leurs consultations.",
 	"bs-smartlist-lasteditsdesc": "Liste des pages que vous avez modifiées."
 }

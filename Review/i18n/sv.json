@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"bs-review-date": "Några deltagare har inte röstat ännu.",
+	"bs-review-accepted": "Accepterat",
+	"bs-review-rejected": "Avvisad",
+	"bs-review-review-saved": "Din röst har sparats.",
+	"bs-review-statebar-body-do-review": "Vänligen läs igenom denna sida",
+	"bs-review-pref-shownameintooltip": "Visa namnen på deltagarna",
+	"bs-review-lblenddate": "Slutdatum",
+	"bs-review-labelcomment": "Kommentar",
+	"bs-review-header-enddate": "Slut"
+}

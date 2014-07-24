@@ -11,6 +11,7 @@
 	"bs-whoisonline-pref-limitcount": "Número máximo de usuarios mostrados:",
 	"bs-whoisonline-pref-orderby": "Ordenar por:",
 	"bs-whoisonline-pref-maxidletime": "Tiempo en segundos hasta que un usuario sea marcado como sin conexión:",
+	"bs-whoisonline-pref-orderby-time": "Tiempo de actividad",
 	"bs-whoisonline-pref-orderby-name": "Nombre",
 	"bs-whoisonline-pref-interval": "Intervalo de actualización en segundos:",
 	"bs-whoisonline-tag-whoisonlinecount-desc": "Representa el número de usuarios actualmente conectados."

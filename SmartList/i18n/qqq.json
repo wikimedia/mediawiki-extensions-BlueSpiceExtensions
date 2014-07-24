@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Chrumps"
 		]
 	},
 	"bs-smartlist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of smart list extension",
@@ -31,7 +32,7 @@
 	"bs-smartlist-month": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for month\n{{Identical|Month}}",
 	"bs-smartlist-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for time\n{{Identical|Time}}",
 	"bs-smartlist-title": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for title\n{{Identical|Title}}",
-	"bs-smartlist-tag-smartlist-desc": "Used in InsertMagic extension, tag description for displays configurable informations about recent changes.",
+	"bs-smartlist-tag-smartlist-desc": "Used in InsertMagic extension, tag description for displays configurable information about recent changes.",
 	"bs-smartlist-tag-newbies-desc": "Used in InsertMagic extension, tag description for displays the latest users.",
 	"bs-smartlist-tag-toplist-desc": "Used in InsertMagic extension, tag description for displays a list of the most viewed pages.",
 	"bs-smartlist-mostvisitedpages": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for most viewed pages",

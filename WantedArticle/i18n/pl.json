@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Matik7"
 		]
 	},
 	"bs-wantedarticle-single-textfield-defaulttext": "Tytuł strony",
@@ -10,5 +11,6 @@
 	"bs-wantedarticle-pref-sort-time": "Czas",
 	"bs-wantedarticle-pref-sort-title": "Tytuł",
 	"bs-wantedarticle-pref-order-asc": "rosnąco",
-	"bs-wantedarticle-pref-order-desc": "malejąco"
+	"bs-wantedarticle-pref-order-desc": "malejąco",
+	"bs-wantedarticle-title-invalid-chars": "Następując{{PLURAL:$1|y znak|e znaki}} nie mogą zostać użyte w tytule strony: $2"
 }
