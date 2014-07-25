@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumsaa"
+		]
+	},
+	"bs-smartlist-recent-changes": "Jijjiirama dhihoo",
+	"bs-smartlist-no-entries": "Homtuu hin argamane",
+	"bs-smartlist-comment": "Yaada: $1",
+	"bs-smartlist-pref-comments": "Yaada agarsiisi",
+	"bs-smartlist-pref-showminorchanges": "Jijjiirama xiqqoo agarsiisi",
+	"bs-smartlist-pref-showonlynewarticles": "Fuula haaraa qofa agarsiisi",
+	"bs-smartlist-pref-showtext": "Qabiyyee fuulaa agarsiisi",
+	"bs-smartlist-pref-order": "Kanaan fooyi:",
+	"bs-smartlist-pref-sort": "Kanaan fooyi:",
+	"bs-smartlist-sort-asc": "Irraa olee",
+	"bs-smartlist-sort-desc": "Irraa gadee",
+	"bs-smartlist-day": "Guyyaa",
+	"bs-smartlist-week": "Torban",
+	"bs-smartlist-month": "Ji'a",
+	"bs-smartlist-time": "Yeroo",
+	"bs-smartlist-title": "Mataduree",
+	"bs-smartlist-mosteditedpages": "Fuula baayyee jijjiirame",
+	"bs-smartlist-lastedits": "Jijjiirama Kan Koo",
+	"bs-smartlist-noedits": "Jijjiiramni hin argamne"
+}

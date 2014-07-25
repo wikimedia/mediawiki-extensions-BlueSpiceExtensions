@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumsaa"
+		]
+	},
+	"bs-extendedsearch-desc": "Barbaacha ballisi",
+	"bs-extendedsearch-error": "Dogoggora",
+	"bs-extendedsearch-finished": "Xumurame",
+	"bs-extendedsearch-sort-by": "Kanaan fooyame:",
+	"bs-extendedsearch-sort-title": "Mataduree",
+	"bs-extendedsearch-sort-ts": "Yeroo",
+	"bs-extendedsearch-pref-scope-title": "Mataduree",
+	"bs-extendedsearchadmin-label": "Filannoo barbaachaa",
+	"bs-extendedsearch-statistics": "Istaatistiiksii",
+	"bs-extendedsearch-warning": "Akeekkachiisa",
+	"bs-extendedsearch-did-you-mean": "\"$1\" jechuu keetii?",
+	"bs-extendedsearch-ascending": "Irraa olee",
+	"bs-extendedsearch-more": "Dabalata"
+}

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-shoutbox-charactersleft": "残り $1 {{PLURAL:$1|文字}}"
+}

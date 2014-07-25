@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"AVIADOR"
 		]
 	},
+	"bs-insertfile-desc": "Cuadro de diálogo para subir archivos e insertar un vínculo de archivo",
 	"bs-insertfile-insert-image": "Insertar una imagen",
 	"bs-insertfile-insert-file": "Insertar un archivo",
 	"bs-insertfile-button-image-title": "Insertar o editar una imagen",
@@ -18,6 +20,7 @@
 	"bs-insertfile-lastmodified": "Cambios recientes",
 	"bs-insertfile-labelupload": "Subir",
 	"bs-insertfile-details-title": "Detalles",
+	"bs-insertfile-labeldimensions": "Tamaño (ancho x alto)",
 	"bs-insertfile-labelalt": "Texto alternativo",
 	"bs-insertfile-labelalign": "Ajuste",
 	"bs-insertfile-labellink": "enlace",
@@ -42,19 +45,27 @@
 	"bs-insertfile-uploadsubmitvalue": "Cargar un archivo",
 	"bs-insertfile-errorloading": "Se produjo un error al cargar los archivos.",
 	"bs-insertfile-warning": "Advertencia",
+	"bs-insertfile-warningupload": "Hay un archivo esperando para ser subido. ¿De verdad quiere cerrar esta ventana?",
 	"bs-insertfile-allowedfiletypesare": "Los tipos de archivo válidos son:",
 	"bs-insertfile-error": "Error",
 	"bs-insertfile-errornofileextensiononupload": "El archivo elegido no tiene ninguna extensión.",
+	"bs-insertfile-errornofileextensionondestination": "El nombre de destino que eligió no tiene ninguna extensión de archivo.",
 	"bs-insertfile-errorWrongFileExtensionOnUpload": "El archivo elegido no tiene una extensión válida.",
 	"bs-insertfile-errorWrongImageTypeOnUpload": "El archivo elegido no es de un tipo permitido.",
 	"bs-insertfile-errorWrongFileTypeOnUpload": "El tipo de archivo elegido no está permitido.",
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "El nombre de destino elegido no tiene una extensión válida.",
+	"bs-insertfile-errorwrongimagetypeondestination": "El nombre de destino que eligió no tiene ninguna extensión de imagen permitida.",
+	"bs-insertfile-errorwrongfiletypeondestination": "El nombre de destino que eligió no tiene ninguna extensión de archivo permitida.",
 	"bs-insertfile-uploadcomplete": "Se guardó el archivo correctamente.",
 	"bs-insertfile-titlefile": "Insertar un archivo",
 	"bs-insertfile-titleimage": "Insertar una imagen",
 	"bs-insertfile-tipkeepratio": "Mantener las proporciones",
 	"bs-insertfile-of": "de",
+	"bs-insertfile-select-a-link": "Seleccione o escriba un enlace",
 	"bs-insertfile-license": "Licencia",
 	"bs-insertfile-categories": "Categorías",
-	"bs-insertfile-no-link": "Sin enlace"
+	"bs-insertfile-no-link": "Sin enlace",
+	"bs-insertfile-error-no-medialink": "No hay ningún enlace de medios seleccionado.",
+	"bs-insertfile-error-no-imagelink": "No hay ningún enlace de imagen seleccionado.",
+	"bs-insertfile-upload-waitmessage": "Subida en curso..."
 }

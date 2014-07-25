@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-notifications-desc": "对用户选定的更改发送notications",
+	"bs-notifications-desc": "对用户选定的更改发送通知",
 	"prefs-notifications": "通知",
 	"prefs-echo-extended": "高级系统设置",
 	"bs-notifications-pref-notifyns": "只对这些名字空间通知：",

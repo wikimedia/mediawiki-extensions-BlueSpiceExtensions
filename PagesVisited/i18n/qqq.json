@@ -3,13 +3,14 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Robby",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Shirayuki"
 		]
 	},
 	"bs-pagesvisited-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of pages visited extension",
 	"prefs-pagesvisited": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for pages visited section in preferences.\n{{Identical|Pages visited}}",
 	"bs-pagesvisited-widget-title": "Widget headline for pages visited\n {{Identical|Pages visited}}",
-	"bs-pagesvisited-error-nsnotvalid": "Text for given namespace{{PLURAL:$1||s}} <code>$2</code> {{PLURAL:$1|is|are}} not valid. \n $1 is the number of namespaces for PLURAL distinction \n $2 the namespace or comma separated list of namespaces",
+	"bs-pagesvisited-error-nsnotvalid": "Text for given namespaces <code>$2</code> are not valid.\n\nParameters:\n* $1 - the number of namespaces for PLURAL distinction\n* $2 - the namespace or comma separated list of namespaces",
 	"bs-pagesvisited-pref-widgetlimit": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for limit of entries:",
 	"bs-pagesvisited-pref-widgetns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for namespaces:\n{{Identical|Namespace}}",
 	"bs-pagesvisited-pref-widgetsortodr": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by:\n{{Identical|Sort by}}",

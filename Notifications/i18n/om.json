@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumsaa"
+		]
+	},
+	"bs-notifications-pref-active": "Yaaddachiisa kenni",
+	"bs-echo-anon-user": "Fayyadamaa hin beekkamne",
+	"bs-echo-unknown-user": "Hin beekkamne",
+	"bs-echo-page-create": "Fuulli  [[:$1]] ummameera",
+	"bs-echo-page-delete": "Fuulli [[:$1]] balleeffameera",
+	"bs-echo-page-move": "Fuulli [[:$1]] balleeffameera",
+	"echo-category-title-bs-create-cat": "Yaaddachiisa fuula haaraadhaaf kennamu",
+	"echo-category-title-bs-edit-cat": "Yaaddachiisa jijjiirraa fuulaa",
+	"echo-category-title-bs-move-cat": "Yaaddachiisaa hooffamuu fuulaa",
+	"echo-category-title-bs-delete-cat": "Akeekkachiisa balleessuu"
+}

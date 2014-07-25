@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"AVIADOR"
 		]
 	},
 	"bs-groupmanager-grpexists": "El grupo ya existe.",
@@ -11,5 +12,6 @@
 	"bs-groupmanager-headergroup": "Grupo",
 	"bs-groupmanager-titlenewgroup": "Nuevo grupo",
 	"bs-groupmanager-titleeditgroup": "Editar grupo",
+	"bs-groupmanager-removegroup-message-unknown": "Se produjo un error inesperado, por favor inténtelo otra vez.",
 	"bs-groupmanager-lablename": "Nombre del grupo:"
 }

@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumsaa"
+		]
+	},
+	"prefs-visualeditor": "Vizyuwaal Ediiterii",
+	"bs-visualeditor-editbutton-hint": "Vizyuwaal'Ediiterii",
+	"bs-visualeditor-contenttable": "Qabiyyee",
+	"bs-visualeditor-alignmiddle": "Gidduu",
+	"bs-visualeditor-alignbottom": "Garjallaa",
+	"bs-visualeditor-bsactions-signature": "Mallattoo",
+	"bs-visualeditor-bsactions-save": "Olkaayi",
+	"bs-visualeditor-bsactions-headings": "Mataduree",
+	"bs-visualeditor-bsactions-paragraph": "Keeyyata",
+	"bs-visualeditor-bsactions-heading2": "Mataduree 2",
+	"bs-visualeditor-bsactions-heading3": "Mataduree 3",
+	"bs-visualeditor-bsactions-heading4": "Mataduree 4",
+	"bs-visualeditor-bsactions-heading5": "Mataduree 5",
+	"bs-visualeditor-bsactions-heading6": "Mataduree 6"
+}

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Swidmann",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Ата"
 		]
 	},
 	"bs-notifications-desc": "Description of notifications extension",
@@ -20,7 +21,7 @@
 	"bs-echo-page-newuser": "Short message that a user was created. Parameters:\n* $1 username of the created user",
 	"bs-echo-page-shoutbox": "Short message that a shoutbox entry on a page was created. Parameters:\n* $1 pagename of page where the shoutbox entry was created",
 	"bs-notifications-email-new-subject": "Short message that a page was edited by a user. Parameters:\n* $1 pagename of the created page\n* $2 username",
-	"bs-notifications-email-new": "A page was created by a user with link to the page. Parameters:\n *$1 page that was created\n* $2 username\n* $3 summary of page creation\n* $4 link to the page",
+	"bs-notifications-email-new": "A page was created by a user with link to the page. Parameters:\n* $1 page that was created\n* $2 username\n* $3 summary of page creation\n* $4 link to the page",
 	"bs-notifications-email-edit-subject": "A page was edited by a user. Parameters:\n* $1 page that was edited\n* $2 username",
 	"bs-notifications-email-edit": "A page was edited by a user. Parameters:\n* $1 edited page\n* $2 username\n* $3 summary of edit\n* $4 link to edited page\n* $5 difflink to the page (&curid=10&diff=22&oldid=21)",
 	"bs-notifications-email-move-subject": "A page was moved by a user. Parameters:\n* $1 page that was moved\n* $2 username",

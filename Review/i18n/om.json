@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumsaa"
+		]
+	},
+	"prefs-review": "Gulaala",
+	"bs-review-review": "Gulaala",
+	"bs-review-menu-entry": "Gulaallii sirreessi",
+	"bs-review-accepted": "Fudhatame",
+	"bs-review-save-error": "Odoo olkaawuu dogoggorri uummame",
+	"bs-review-save-norights": "Kana gochuuf eeyyama ga'aa hin qabdu",
+	"bs-review-review-error": "Dogoggorri hin beekkamne uummame:",
+	"bs-review-review-saved": "Filannoon kee olkaawwameera",
+	"bs-review-mail-invite-header": "Maaloo, fuula \"$1\" gulaali",
+	"bs-review-statebar-body-do-review": "Maaloo fuula kana gulaali",
+	"bs-review-i-agree": "Fudhe",
+	"bs-review-i-dismiss": "Hin fudhadhu",
+	"review": "Gulaala",
+	"bs-review-commentinputlabel": "Yaada kee:",
+	"bs-review-comments": "Yaada",
+	"action-workflowlist": "Tarree gulaallii agarsiisi",
+	"bs-review-btnmoveup": "Ol hoofi",
+	"bs-review-btnmovedown": "Gadi hoofi",
+	"bs-review-colreviewer": "Gulaalaa",
+	"bs-review-colcomment": "Yaada",
+	"bs-review-lblstartdate": "Guyyaa itti jalqabu",
+	"bs-review-titleaddreviewer": "Gulaalaa galchi",
+	"bs-review-labelcomment": "Yaada",
+	"bs-review-header-page-title": "Fuula",
+	"bs-review-header-owner-name": "Abbaa",
+	"bs-review-header-startdate": "Jalqaba",
+	"bs-review-header-enddate": "Dhuma",
+	"bs-review-confirm-delete-step": "Dhuguma tartiiba kana balleessuu barbaaddaa?"
+}

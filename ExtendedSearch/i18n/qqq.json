@@ -6,7 +6,8 @@
 			"Liuxinyu970226",
 			"Robby",
 			"Smuggli",
-			"Ата"
+			"Ата",
+			"Shirayuki"
 		]
 	},
 	"bs-extendedsearch-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended search extension",
@@ -34,7 +35,7 @@
 	"bs-extendedsearch-invalid-query": "Text for the query could not be processed.",
 	"bs-extendedsearch-nosearchterm": "Text for please enter a search term.",
 	"bs-extendedsearch-result": "Search for \"$1\" found $2 {{PLURAL:$2|result|results}}.\n\n$1 is the search term in bold, $2 is the number of results found",
-	"bs-extendedsearch-result-caption": "Text for $1 - $2 out of $3 result{{PLURAL:$3||s}} \n* $1 - the start of shown result range\n* $2 - the end of shown result range\n* $3 - the total number of results found - use for PLURAL distinction",
+	"bs-extendedsearch-result-caption": "Text for $1 - $2 out of $3 results. Parameters: \n* $1 - the start of shown result range\n* $2 - the end of shown result range\n* $3 - the total number of results found - use for PLURAL distinction",
 	"bs-extendedsearch-search-category": "Text for search in the categories:",
 	"bs-extendedsearch-search-editors": "Text for search for authors:",
 	"bs-extendedsearch-search-help-multiselect": "Text for hold CTRL key to select multiple items.",

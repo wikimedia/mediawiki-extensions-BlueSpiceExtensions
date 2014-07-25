@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"AVIADOR"
 		]
 	},
 	"bs-extendedsearch-desc": "Búsqueda extendida",
@@ -58,9 +59,11 @@
 	"bs-extendedsearch-pref-externalrepo": "Indizar una carpeta externa:",
 	"bs-extendedsearch-pref-acentries": "Número de sugerencias coincidentes con el término de búsqueda:",
 	"bs-extendedsearch-pref-indexfiletypes": "Indizar los archivos con determinadas extensiones:",
+	"bs-extendedsearch-pref-logging": "Evaluación estadística de las consultas de búsqueda",
 	"bs-extendedsearch-pref-logusers": "Registrar el nombre del usuario con las búsquedas",
 	"bs-extendedsearch-pref-showcresuginac": "Mostrar los enlaces «Crear» y «Sugerir» en las sugerencias",
 	"bs-extendedsearch-pref-solrserviceurl": "URL de Solr:",
+	"bs-extendedsearch-pref-setfocus": "Enfocar automáticamente el formulario de búsqueda (solamente páginas de contenido)",
 	"bs-extendedsearch-pref-showmlt": "Mostrar páginas similares",
 	"bs-extendedsearch-pref-solrcore": "Instancia principal de Solr:",
 	"bs-extendedsearch-pref-mltns": "Espacios de nombres para \"{{int:bs-extendedsearch-morelikethis}}\":",

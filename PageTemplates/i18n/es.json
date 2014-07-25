@@ -2,11 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"AVIADOR"
 		]
 	},
+	"bs-pagetemplates-desc": "Muestra una lista de plantillas marcadas como plantillas de página",
+	"prefs-pagetemplates": "Plantillas de página",
 	"bs-pagetemplates-empty-page": "Página vacía",
 	"bs-pagetemplates-empty-page-desc": "Comenzar con una página vacía.",
+	"bs-pagetemplatesadmin-label": "Plantillas de página",
 	"bs-pagetemplates-tpl-desc-toolong": "La descripción es demasiado larga. Utiliza 255 caracteres como máximo.",
 	"bs-pagetemplates-tpl-label-toolong": "La etiqueta es demasiado larga. Utiliza 255 caracteres como máximo.",
 	"bs-pagetemplates-tpl-name-toolong": "El nombre de la plantilla es demasiado largo. Utiliza 255 caracteres como máximo.",

@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumsaa"
+		]
+	},
+	"bs-insertfile-insert-image": "Suura galchi",
+	"bs-insertfile-labelsort": "Kanaan fooyi:",
+	"bs-insertfile-filesize": "Guddina faayilii",
+	"bs-insertfile-lastmodified": "Jijjiirama dhihoo",
+	"bs-insertfile-labellink": "Liinkii",
+	"bs-insertfile-alignleft": "Bitaa",
+	"bs-insertfile-aligncenter": "Gidduu",
+	"bs-insertfile-alignright": "Mirga",
+	"bs-insertfile-labeltype": "Faaya",
+	"bs-insertfile-uploadignorewarningslabel": "Akeekkachiisa kana dagadhu",
+	"bs-insertfile-warning": "Akeekkachiisa",
+	"bs-insertfile-error": "Dogoggora",
+	"bs-insertfile-linktext": "Barreeffama agarsiisi",
+	"bs-insertfile-no-link": "Liinkiin hin jiru"
+}

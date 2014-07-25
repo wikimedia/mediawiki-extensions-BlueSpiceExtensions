@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Chrumps"
+			"Chrumps",
+			"2nd-player"
 		]
 	},
 	"bs-smartlist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of smart list extension",
@@ -25,7 +26,7 @@
 	"bs-smartlist-pref-order": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for order by:\n{{Identical|Order by}}",
 	"bs-smartlist-pref-sort": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by:\n{{Identical|Sort by}}",
 	"bs-smartlist-pref-shownamespace": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show page title with namespace",
-	"bs-smartlist-sort-asc": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for acsending\n{{Identical|Acsending}}",
+	"bs-smartlist-sort-asc": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for acsending\n{{Identical|Ascending}}",
 	"bs-smartlist-sort-desc": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for descending\n{{Identical|Descending}}",
 	"bs-smartlist-day": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for day\n{{Identical|Day}}",
 	"bs-smartlist-week": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for week\n{{Identical|Week}}",
@@ -35,7 +36,7 @@
 	"bs-smartlist-tag-smartlist-desc": "Used in InsertMagic extension, tag description for displays configurable information about recent changes.",
 	"bs-smartlist-tag-newbies-desc": "Used in InsertMagic extension, tag description for displays the latest users.",
 	"bs-smartlist-tag-toplist-desc": "Used in InsertMagic extension, tag description for displays a list of the most viewed pages.",
-	"bs-smartlist-mostvisitedpages": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for most viewed pages",
+	"bs-smartlist-mostvisitedpages": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for most viewed pages\n\nSee also\n*{{msg-mw|statistics-mostpopular}}",
 	"bs-smartlist-mosteditedpages": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for most edited pages",
 	"bs-smartlist-mostactiveusers": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for most active users (by edits)",
 	"bs-smartlist-lastedits": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for my edits",

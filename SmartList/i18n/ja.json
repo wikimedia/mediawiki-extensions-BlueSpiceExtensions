@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"2nd-player"
+			"2nd-player",
+			"Shirayuki"
 		]
 	},
-	"bs-smartlist-mostvisitedpages": "最も閲覧されているページ"
+	"bs-smartlist-sort-asc": "昇順",
+	"bs-smartlist-sort-desc": "降順",
+	"bs-smartlist-mostvisitedpages": "最も閲覧されているページ",
+	"bs-smartlist-mosteditedpages": "最も編集されているページ"
 }

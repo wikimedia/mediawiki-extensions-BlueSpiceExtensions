@@ -9,5 +9,8 @@
 	"bs-checklist-menu-insert-list-title": "Вставити список",
 	"bs-checklist-menu-insert-checkbox": "Галочка",
 	"bs-checklist-dlg-insert-list-value-list": "Список значень",
-	"bs-checklist-tag-checklist-desc": "Візуалізує галочку або поле вибору. Доступні атрибути конфігурації:"
+	"bs-checklist-tag-checklist-desc": "Візуалізує галочку або поле вибору. Доступні атрибути конфігурації:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> видає список вибіркиa select list.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: назва шаблону з доступними значеннями. Параметр <code>type</code> має бути встановлено як <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> або значення із шаблону списку."
 }

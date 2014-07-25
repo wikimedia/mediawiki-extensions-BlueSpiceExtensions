@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edustus"
+		]
+	},
+	"bs-groupmanager-headergroup": "Grup",
+	"bs-groupmanager-titlenewgroup": "Grup nou",
+	"bs-groupmanager-titleeditgroup": "Editar el grup",
+	"bs-groupmanager-lablename": "Nom del grup:"
+}

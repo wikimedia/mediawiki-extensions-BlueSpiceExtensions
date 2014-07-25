@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-pagesvisited-error-nsnotvalid": "指定した{{PLURAL:$1|名前空間}} <code>$2</code> は有効ではありません。"
+}

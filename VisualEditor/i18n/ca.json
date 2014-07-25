@@ -1,9 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toniher"
+			"Toniher",
+			"Edustus"
 		]
 	},
+	"bs-visualeditor-editbutton-hint": "Editor visual",
+	"bs-visualeditor-contenttable": "Contingut",
+	"bs-visualeditor-contenttable-black": "Contingut (negre)",
+	"bs-visualeditor-contenttable-blue": "Contingut (blau)",
+	"bs-visualeditor-contenttable-darkblue": "Contingut (blau fosc)",
 	"bs-visualeditor-bsactions-wiki": "Wikitext",
-	"bs-visualeditor-bsactions-save": "Desa"
+	"bs-visualeditor-bsactions-save": "Desa",
+	"bs-visualeditor-bsactions-headings": "Encapçalaments",
+	"bs-visualeditor-bsactions-paragraph": "Paràgraf",
+	"bs-visualeditor-bsactions-heading2": "Encapçalament 2",
+	"bs-visualeditor-bsactions-heading3": "Encapçalament 3",
+	"bs-visualeditor-bsactions-heading4": "Encapçalament 4",
+	"bs-visualeditor-bsactions-heading5": "Encapçalament 5",
+	"bs-visualeditor-bsactions-heading6": "Encapçalament 6"
 }

@@ -28,7 +28,7 @@
 	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "Text for <code>title</code>: Headline. \n \"title\" has to be lowercase",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "Text for <code>order</code>: Sort order <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) or <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}}) \n \"order\" has to be lowercase",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "Text for <code>sort</code>: Sort by <code>title</code> or <code>time</code>. \n \"sort\" has to be lowercase",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "Text for <code>type</code>: Output format <code>list</code> or <code>quene</code> (comma separated). \n \"type\" has to be lowercase",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "Text for <code>type</code>: Output format <code>list</code> or <code>quene</code> (comma separated). \n\n\"type\" has to be lowercase",
 	"bs-wantedarticle-tag-more-linktext": "Text for more ...\n{{Identical|More}}",
 	"bs-wantedarticle-tag-default-title": "Text for wanted pages.\n{{Identical|Wanted page}}",
 	"bs-wantedarticle-pref-includelimit": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for number of suggestions:",
@@ -45,5 +45,5 @@
 	"bs-wantedarticle-create-page": "Text for create page \"$1\". $1 is the entered page name\n{{Identical|Create page}}",
 	"bs-wantedarticle-suggest-page": "Test for suggest page \"$1\". $1 is the entered page name",
 	"bs-wantedarticle-info-nothing-entered": "Text for please provide a valid page title.",
-	"bs-wantedarticle-title-invalid-chars": "Text for the following character{{PLURAL:$1| is|s are}} not valid for use in a page title: $2\n $1 is the number of characters which are not valid - use for PLURAL distinction, $2 is a comma separated list of invalid characters"
+	"bs-wantedarticle-title-invalid-chars": "Text for the following characters are not valid for use in a page title: $2.\n\nParameters:\n* $1 - the number of characters which are not valid - use for PLURAL distinction\n* $2 - a comma separated list of invalid characters"
 }
