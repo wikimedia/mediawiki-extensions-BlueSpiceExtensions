@@ -22,6 +22,7 @@
 
 #bs-extendedsearch-autocomplete .ui-widget-content {
 	background: none;
+	background-color: #fff;
 }
 
 #bs-extendedsearch-autocomplete li.ui-menu-item a{
