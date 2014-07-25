@@ -1,6 +1,8 @@
 <?php
 
-BsExtensionManager::registerExtension('CountThings',                     BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension('CountThings', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+
+$wgMessagesDirs['CountThings'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['CountThings'] = __DIR__ . '/languages/CountThings.i18n.php';
 

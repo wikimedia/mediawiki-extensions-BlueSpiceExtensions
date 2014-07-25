@@ -162,7 +162,7 @@ class CountThings extends BsExtensionMW {
 	public function onMagicWordBsCountCharacters( $input, $args, $parser ) {
 		$parser->disableCache();
 		if ( empty( $input ) ) {
-			$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-countchars-no-input' )->plain() );
+			$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-no-input' )->plain() );
 			return $oErrorView->execute();
 		}
 
@@ -174,7 +174,7 @@ class CountThings extends BsExtensionMW {
 		$bValidModeProvided = false;
 		foreach( $aModes as $sMode ) {
 			if( !in_array( $sMode, $aAvailableModes ) ){
-				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-countchars-invalid-mode', $sMode )->plain() );
+				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-invalid-mode', $sMode )->plain() );
 				$sOut .= $oErrorView->execute();
 				continue;
 			}
@@ -186,7 +186,7 @@ class CountThings extends BsExtensionMW {
 		foreach( $aTitleTexts as $sTitleText ) {
 			$oTitle = Title::newFromText( trim( $sTitleText ) );
 			if( $oTitle == null || $oTitle->exists() == false ) {
-				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-countchars-title-does-not-exist', $sTitleText )->plain() );
+				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-not-exist', $sTitleText )->plain() );
 				$sOut .= $oErrorView->execute();
 				continue;
 			}
