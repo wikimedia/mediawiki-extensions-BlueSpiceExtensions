@@ -7,8 +7,10 @@
 	"bs-insertmagic": "Magescht Wuert drasetzen",
 	"bs-insertmagic-notoc": "Verstoppt d'Inhaltsverzeechnes.",
 	"bs-insertmagic-notitleconvert": "Op Wiki mat Sproochvariante, maacht keng Iwwersetzung vum Titel.",
+	"bs-insertmagic-index": "Suchmaschinne soen d'Säit ze indexéieren",
 	"bs-insertmagic-noindex": "Suchmaschinne soen d'Säit net ze indexéieren",
 	"bs-insertmagic-currentyear": "Aktuellt Joer",
+	"bs-insertmagic-currentmonth": "Aktuelle Mount (Zuel mat Null virdrun).",
 	"bs-insertmagic-currentmonthname": "Aktuelle Mount (Numm).",
 	"bs-insertmagic-currentmonthnamegen": "Aktuelle Mount (Numm am Genitiv)",
 	"bs-insertmagic-currentmonthabbrev": "Aktuelle Mount (Ofkierzung).",
@@ -25,6 +27,7 @@
 	"bs-insertmagic-revisionmonth": "Mount vun der Ännerung (Zuel ouni Null virdrun)",
 	"bs-insertmagic-revisionyear": "Joer vun der Ännerung.",
 	"bs-insertmagic-revisiontimestamp": "Zäitstempel vun der Ännerung.",
+	"bs-insertmagic-dlg-title": "Magescht Wuert oder Tag drasetzen",
 	"bs-insertmagic-type-variables": "Variabelen",
 	"bs-insertmagic-label-second": "2. Code änneren",
 	"bs-insertmagic-label-desc": "Beschreiwung"

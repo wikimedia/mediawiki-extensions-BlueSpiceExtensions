@@ -5,6 +5,7 @@
 		]
 	},
 	"bs-usermanager-desc": "Interfaz administrativa para gestionar usuarios",
+	"bs-usermanager-admin-nodelete": "No se puede eliminar la cuenta administrativa.",
 	"bs-usermanager-self-nodelete": "No puedes eliminar tu cuenta.",
 	"bs-usermanager-db-error": "Se produjo un error en la base de datos.",
 	"bs-usermanager-enter-pwd": "Escribe una contraseña.",
@@ -24,5 +25,7 @@
 	"bs-usermanager-headergroups": "Grupos",
 	"bs-usermanager-titleadduser": "Añadir un usuario",
 	"bs-usermanager-titleeditdetails": "Editar el usuario",
-	"bs-usermanager-labelnewpassword": "Contraseña"
+	"bs-usermanager-labelnewpassword": "Contraseña",
+	"bs-usermanager-labelpasswordcheck": "Confirmar la contraseña",
+	"bs-usermanager-titledeleteuser": "Eliminar el usuario"
 }

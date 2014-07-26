@@ -15,6 +15,7 @@
 	"bs-groupmanager-titlenewgroup": "Neie Grupp",
 	"bs-groupmanager-titleeditgroup": "Grupp änneren",
 	"bs-groupmanager-removegroup": "Sidd Dir sécher, datt Dir {{PLURAL:$1|dëse Grupp|dës Gruppen}} ewechuele wëllt?",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|Dëse Grupp gouf|Dës Gruppe goufe}} geläscht: $2",
 	"bs-groupmanager-removegroup-message-failure": "Dës {{PLURAL:$1|Grupp konnt|Gruppe konnten}} net geläscht ginn: $2",
 	"bs-groupmanager-removegroup-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
 	"bs-groupmanager-lablename": "Numm vum Grupp:"

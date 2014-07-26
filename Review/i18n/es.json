@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
 	"bs-review-desc": "Añade funcionalidad de revisión",
@@ -24,7 +25,7 @@
 	"bs-review-review-error": "Ocurrió un error desconocido.",
 	"bs-review-review-secondtime": "No se pudo encontrar la revisión. Quizás intentas revisar la página de nuevo.",
 	"bs-review-review-saved": "Se ha guardado tu voto.",
-	"bs-review-mail-link-to-page": "Siga este enlace: $1",
+	"bs-review-mail-link-to-page": "Sigue este enlace: $1",
 	"bs-review-mail-invite-header": "Revisa la página \"$1\"",
 	"bs-review-mail-invite-body": "$1 te ha {{GENDER:$2|invitado}} a revisar la página \"$3\".",
 	"bs-review-mail-comment": "Se ingresó un comentario: \"$1\".",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Matik7"
+			"Matik7",
+			"Pio387"
 		]
 	},
 	"bs-review-save-error": "Wystąpił błąd podczas zapisywania.",
@@ -15,5 +16,6 @@
 	"bs-review-colstatus": "Status",
 	"bs-review-colreviewer": "Weryfikator",
 	"bs-review-lblstartdate": "Data rozpoczęcia",
+	"bs-review-header-page-title": "Strona",
 	"bs-review-header-startdate": "Start"
 }

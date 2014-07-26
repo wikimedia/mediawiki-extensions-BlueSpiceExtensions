@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"S8321414"
+			"S8321414",
+			"LNDDYL"
 		]
 	},
-	"prefs-avatars": "頭像"
+	"prefs-avatars": "頭像",
+	"bs-avatars-pref-defaultsize": "畫素預設大小：",
+	"bs-avatars-warning-title": "警告",
+	"bs-avatars-userimage-help": "例如：圖片.jpg 或 http://localhost/圖片.gif"
 }

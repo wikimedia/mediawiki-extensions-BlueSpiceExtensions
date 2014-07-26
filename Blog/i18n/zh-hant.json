@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"LNDDYL"
 		]
 	},
+	"prefs-blog": "部落格",
+	"bs-blog-form-inline-text": "標題...",
+	"bs-blog-form-title-text": "建立新的部落格條目",
+	"bs-blog-form-button-text": "建立",
+	"bs-blog-blog": "部落格",
+	"bs-blog-pref-moreinnewwindow": "開啟新視窗以閱讀更多",
+	"bs-blog-pref-showinfo": "顯示有關該條目的資訊",
 	"bs-blog-pref-showpermalink": "顯示固定連結"
 }

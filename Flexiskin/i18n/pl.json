@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pio387"
+		]
+	},
+	"bs-flexiskin-error-fail-add-skin": "Skórka nie mogła zostać utworzona: $1.",
+	"bs-flexiskin-not-allowed": "Dostęp do tej strony jest niedozwolony.",
+	"bs-flexiskin-labelbackgroundupload": "Obraz w tle"
+}

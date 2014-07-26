@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
 	"prefs-readers": "Lectores",
@@ -12,6 +13,8 @@
 	"bs-readers-pagenotexists": "No existe la página.",
 	"bs-readers-pref-active": "Activar lectores",
 	"bs-readers-pref-numofreaders": "Número de lectores a mostrarː",
+	"bs-readers-emptyinput": "No se proporcionó ninguna página.",
+	"bs-readers-header-username": "Nombre de usuario",
 	"bs-readers-header-readerspath": "Lector",
 	"bs-readers-header-ts": "Fecha"
 }
