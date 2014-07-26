@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-namespacemanager-desc": "Administrationsoberfläche zum Erstellen und Bearbeiten von Rechten",
+	"bs-namespacemanager-label": "Namensraumverwaltung",
+	"bs-namespacemanager-wrong-name": "Der Namesraum enthält unzulässige Zeichen.",
+	"bs-namespacemanager-ns-exists": "Der Namesraum existiert bereits.",
+	"bs-namespacemanager-ns-length": "Der Namesraum muss minderstens zwei Zeichen lang sein.",
+	"bs-namespacemanager-invalid-id": "Keine zulässige Namesraum ID übertragen.",
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Namesraum",
+	"bs-namespacemanager-label-editable": "Umbenennbar",
+	"bs-namespacemanager-label-content": "In Statistik",
+	"bs-namespacemanager-label-searchable": "Standardmäßig durchsuchen",
+	"bs-namespacemanager-label-subpages": "Unterseiten",
+	"bs-namespacemanager-nsadded": "Der Namensraum wurde erstellt.",
+	"bs-namespacemanager-nsedited": "Der Namensraum wurde bearbeitet.",
+	"bs-namespacemanager-nsremoved": "Der Namensraum wurde gelöscht.",
+	"bs-namespacemanager-tipadd": "Namensraum hinzufügen",
+	"bs-namespacemanager-tipedit": "Namensraum bearbeiten",
+	"bs-namespacemanager-tipremove": "Namensraum entfernen",
+	"bs-namespacemanager-msgnoteditabledelete": "Dieser Namensraum ist ein System-Namensraum und kann deshalb nicht gelöscht werden.",
+	"bs-namespacemanager-labelnsname": "Namensraum-Name",
+	"bs-namespacemanager-willdelete": "Werden gelöscht",
+	"bs-namespacemanager-willmove": "Werden in \"{{int:bs-ns_main}}\" verschoben*",
+	"bs-namespacemanager-willmovesuffix": "Werden mit dem Suffix \"{{int:bs-from-something}}\" in \"{{int:bs-ns_main}}\" verschoben",
+	"bs-namespacemanager-deletewarning": "Bist du dir sicher, dass du den Namensraum löschen willst? Das Löschen eines Namensraums kann nicht rückgängig gemacht werden.",
+	"bs-namespacemanager-pagepresent": "Seiten in diesem Namensraum:"
+}
