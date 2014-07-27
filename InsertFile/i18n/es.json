@@ -6,7 +6,7 @@
 			"AVIADOR"
 		]
 	},
-	"bs-insertfile-desc": "Cuadro de diálogo para subir archivos e insertar un vínculo de archivo",
+	"bs-insertfile-desc": "Cuadro de diálogo para subir archivos e insertar un enlace de archivo",
 	"bs-insertfile-insert-image": "Insertar una imagen",
 	"bs-insertfile-insert-file": "Insertar un archivo",
 	"bs-insertfile-button-image-title": "Insertar o editar una imagen",
@@ -61,11 +61,11 @@
 	"bs-insertfile-titleimage": "Insertar una imagen",
 	"bs-insertfile-tipkeepratio": "Mantener las proporciones",
 	"bs-insertfile-of": "de",
-	"bs-insertfile-select-a-link": "Seleccione o escriba un enlace",
+	"bs-insertfile-select-a-link": "Seleccionar o escribir un enlace",
 	"bs-insertfile-license": "Licencia",
 	"bs-insertfile-categories": "Categorías",
 	"bs-insertfile-no-link": "Sin enlace",
-	"bs-insertfile-error-no-medialink": "No hay ningún enlace de medios seleccionado.",
-	"bs-insertfile-error-no-imagelink": "No hay ningún enlace de imagen seleccionado.",
+	"bs-insertfile-error-no-medialink": "No se seleccionó ningún enlace de multimedia.",
+	"bs-insertfile-error-no-imagelink": "No se seleccionó ningún enlace de imagen.",
 	"bs-insertfile-upload-waitmessage": "Subida en curso..."
 }

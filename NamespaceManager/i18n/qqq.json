@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-namespacemanager-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of namespace manager extension",
@@ -12,10 +13,10 @@
 	"bs-namespacemanager-invalid-id": "Error message for no valid namespace ID",
 	"bs-namespacemanager-label-id": "Column headline for id\n{{Identical|ID}}",
 	"bs-namespacemanager-label-namespaces": "Column headline for namespace\n{{Identical|Namespace}}",
-	"bs-namespacemanager-label-editable": "Column headline for renameable",
+	"bs-namespacemanager-label-editable": "Column headline for renameable\n{{Identical|Renameable}}",
 	"bs-namespacemanager-label-content": "Column headline for in statistics",
 	"bs-namespacemanager-label-searchable": "Column headline for search by default",
-	"bs-namespacemanager-label-subpages": "Column headline for subpages",
+	"bs-namespacemanager-label-subpages": "Column headline for subpages\n{{Identical|Subpage}}",
 	"bs-namespacemanager-nsadded": "Success message for the namespace has been added.",
 	"bs-namespacemanager-nsremoved": "Success message for the namespace has been removed.",
 	"bs-namespacemanager-nsedited": "Success message for the namespace has been edited.",

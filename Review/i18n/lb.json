@@ -14,6 +14,7 @@
 	"bs-review-save-norights": "Dir hutt net déi néideg Rechter.",
 	"bs-review-review-error": "En onbekannte Feeler ass geschitt.",
 	"bs-review-review-saved": "Är Stëmm gouf gespäichert.",
+	"bs-review-mail-link-to-page": "Dësem Link nogoen: $1",
 	"bs-review-mail-invite-header": "Kuckt d'Säit \"$1\" w.e.g. no",
 	"bs-review-mail-invite-body": "$1 huet Iech {{GENDER:$2|invitéiert}} fir d'Säit \"$3\" nozekucken.",
 	"bs-review-statebar-body-do-review": "Kuckt dës Säit w.e.g. no",

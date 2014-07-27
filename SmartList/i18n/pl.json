@@ -17,6 +17,8 @@
 	"bs-smartlist-pref-showminorchanges": "Pokaż drobne zmiany",
 	"bs-smartlist-pref-showonlynewarticles": "Pokaż tylko nowe strony",
 	"bs-smartlist-pref-trim": "Maksymalna długość tytułu:",
+	"bs-smartlist-pref-showtext": "Pokaż zawartość strony",
+	"bs-smartlist-pref-order": "Sortuj według:",
 	"bs-smartlist-pref-sort": "Sortuj według:",
 	"bs-smartlist-pref-shownamespace": "Pokaż tytuł strony z przestrzenią nazw",
 	"bs-smartlist-sort-asc": "rosnąco",

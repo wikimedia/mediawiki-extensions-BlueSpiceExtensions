@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Shirayuki",
 			"Robby",
-			"Fitoschido"
+			"Fitoschido",
+			"Ата"
 		]
 	},
 	"bs-saferedit-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of pages visited extension",
@@ -24,6 +25,6 @@
 	"bs-saferedit-unsavedchanges": "Text for there are unsaved changes.",
 	"bs-saferedit-othersectiontitle": "Window title for section to restore",
 	"bs-saferedit-othersectiontext1": "Text for there is a backup of another section.",
-	"bs-saferedit-othersectiontext2": "Text for the backup was created on $1. $1 is the date when the backup was created, $2 is the time when the backup was created.",
+	"bs-saferedit-othersectiontext2": "Text for the backup was created on $1. \n* $1 is the date when the backup was created, \n* $2 is the time when the backup was created.",
 	"bs-saferedit-othersectiontext3": "Text for do you want to switch to that section?"
 }

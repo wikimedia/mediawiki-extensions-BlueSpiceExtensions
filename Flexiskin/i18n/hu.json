@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-flexiskin-label": "Felület",
+	"bs-flexiskin-defaultname": "Alapértelmezett",
+	"bs-flexiskin-defaultdesc": "Alapértelmezett felület sablon.",
+	"bs-flexiskin-error-skinexists": "Ilyen nevű felület már létezik.",
+	"bs-flexiskin-error-fail-add-skin": "A felület nem hozható létre: $1.",
+	"prefs-flexiskin": "Felület",
+	"bs-flexiskin-pref-active": "Aktív felület:",
+	"bs-flexiskin-pref-logo": "Logó:",
+	"bs-flexiskin-labelname": "Név",
+	"bs-flexiskin-headergeneral": "Általános",
+	"bs-flexiskin-titleaddskin": "Felület hozzáadása",
+	"bs-flexiskin-labelskins": "Sablon",
+	"bs-flexiskin-headeractive": "Aktív",
+	"bs-flexiskin-labelbgcolor": "Háttérszín",
+	"bs-flexiskin-headerheader": "Fejléc",
+	"bs-flexiskin-labellogoupload": "Logó",
+	"bs-flexiskin-labelbackgroundupload": "Háttérkép",
+	"bs-flexiskin-no-repeat": "nincs ismétlés",
+	"bs-flexiskin-repeat-x": "vízszintes ismétlés",
+	"bs-flexiskin-repeat-y": "függőleges ismétlés",
+	"bs-flexiskin-labelrepeatbackground": "Háttérkép ismétlése",
+	"bs-flexiskin-headerposition": "Pozíció és méret",
+	"bs-flexiskin-error-templatenotexists": "A kiválasztott sablon nem létezik."
+}

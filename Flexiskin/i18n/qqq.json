@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Tobias Weichart <weichart@hallowelt.biz>",
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-flexiskin-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of flexi skin extension",
@@ -16,8 +17,8 @@
 	"bs-flexiskin-error-delete-skin": "Error message that the skin could not deleted\\n*$1 is the reason why the skin could not be deleted.",
 	"bs-flexiskin-not-allowed": "Error message that the access to this page is not allowed.",
 	"prefs-flexiskin": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for flexi skin section in preferences{{Identical|Skin}}",
-	"bs-flexiskin-pref-active": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for active skin:",
-	"bs-flexiskin-pref-logo": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for logo:",
+	"bs-flexiskin-pref-active": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for active skin:\n{{Identical|Active skin}}",
+	"bs-flexiskin-pref-logo": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for logo:\n{{Identical|Logo}}",
 	"bs-flexiskin-labelname": "Column headline for name\\n{{Identical|Name}}",
 	"bs-flexiskin-labeldesc": "Column headline for description\\n{{Identical|Description}}",
 	"bs-flexiskin-headergeneral": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], headline for general information section\\n{{Identical|General}}",

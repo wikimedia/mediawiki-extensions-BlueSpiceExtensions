@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-namespacemanager-label": "Névtér kezelő",
+	"bs-namespacemanager-label-namespaces": "Névtér",
+	"bs-namespacemanager-label-editable": "Átnevezhető",
+	"bs-namespacemanager-label-subpages": "Allapok",
+	"bs-namespacemanager-nsedited": "A névteret szerkesztették.",
+	"bs-namespacemanager-tipadd": "Névtér hozzáadása",
+	"bs-namespacemanager-tipremove": "Névtér eltávolítása",
+	"bs-namespacemanager-labelnsname": "Névtér név",
+	"bs-namespacemanager-willdelete": "Törlésre kerül",
+	"bs-namespacemanager-pagepresent": "A névtérhez tartozó oldalak:"
+}

@@ -42,7 +42,7 @@
 	"bs-insertmagic-dlg-title": "Insertar una palabra mágica o etiqueta",
 	"bs-insertmagic-type-tags": "Etiquetas",
 	"bs-insertmagic-type-variables": "Variables",
-	"bs-insertmagic-label-first": "1. Elija la etiqueta o palabra mágica",
-	"bs-insertmagic-label-second": "2. Modifique el código",
+	"bs-insertmagic-label-first": "1. Elije la etiqueta o palabra mágica",
+	"bs-insertmagic-label-second": "2. Modifica el código",
 	"bs-insertmagic-label-desc": "Descripción"
 }

@@ -2,20 +2,26 @@
 	"@metadata": {
 		"authors": [
 			"Matik7",
-			"Pio387"
+			"Pio387",
+			"Chrumps"
 		]
 	},
 	"bs-review-save-error": "Wystąpił błąd podczas zapisywania.",
 	"bs-review-save-norights": "Nie posiadasz wymaganych uprawnień.",
+	"bs-review-review-error": "Wystąpił nieznany błąd.",
+	"bs-review-review-saved": "Twój głos został zapisany.",
 	"bs-review-mail-link-to-page": "Kliknij w ten link: $1",
 	"bs-review-i-agree": "Akceptuję",
 	"bs-review-not-allowed": "Nie masz uprawnień, aby korzystać z tej strony.",
+	"bs-review-commentinputlabel": "Twój komentarz:",
 	"bs-review-comments": "Komentarze",
 	"bs-review-btnmoveup": "Do góry",
 	"bs-review-btnmovedown": "W dół",
 	"bs-review-colstatus": "Status",
 	"bs-review-colreviewer": "Weryfikator",
+	"bs-review-colcomment": "Komentarz",
 	"bs-review-lblstartdate": "Data rozpoczęcia",
+	"bs-review-labelcomment": "Komentarz",
 	"bs-review-header-page-title": "Strona",
 	"bs-review-header-startdate": "Start"
 }

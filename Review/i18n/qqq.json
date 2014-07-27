@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Ата"
 		]
 	},
 	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension",
@@ -30,7 +31,7 @@
 	"bs-review-mail-link-to-page": "Text message that a user should follow this link.\n$1 is the link",
 	"bs-review-mail-invite-header": "Mail subject that a user should review a page\n$1 is the name of page which should be reviewed",
 	"bs-review-mail-invite-body": "Mail body that another user invited you to make a review of a page.\n*$1 is the real name of the which invited you \n*$2 is the username of the which invited you \n*$3 is the name of page which should be reviewed",
-	"bs-review-mail-comment": "Optional mail body that a comment was entered.\n $1 is the comment.",
+	"bs-review-mail-comment": "Optional mail body that a comment was entered.\n* $1 is the comment.",
 	"bs-review-statebar-body-do-review": "Headline for the review section inside the state bar.",
 	"bs-review-i-agree": "Button label that you agree you reviwed this page\n{{Identical|Agree}}",
 	"bs-review-i-dismiss": "Button label that you disagree you reviwed this page\n{{Identical|Disagree}}",

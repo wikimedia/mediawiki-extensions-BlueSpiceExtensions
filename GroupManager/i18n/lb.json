@@ -8,6 +8,7 @@
 	"bs-groupmanager-grpadded": "D'Grupp gouf derbäigesat.",
 	"bs-groupmanager-grpedited": "D'Grupp gouf geännert.",
 	"bs-groupmanager-grpremoved": "D'Grupp gouf ewechgeholl.",
+	"bs-groupmanager-invalid-name": "Den Numm vum Grupp huet {{PLURAL:$1|en|$1}} net valabel Zeechen: $2",
 	"bs-groupmanager-invalid-name-length": "Den Numm vum Grupp däerf net méi laang wéi 16 Zeeche sinn.",
 	"bs-groupmanager-invalid-name-numeric": "Den Numm vum Grupp muss mindestens een Zeechen hunn.",
 	"bs-groupmanager-headergroup": "Grupp",
@@ -18,5 +19,6 @@
 	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|Dëse Grupp gouf|Dës Gruppe goufe}} geläscht: $2",
 	"bs-groupmanager-removegroup-message-failure": "Dës {{PLURAL:$1|Grupp konnt|Gruppe konnten}} net geläscht ginn: $2",
 	"bs-groupmanager-removegroup-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
-	"bs-groupmanager-lablename": "Numm vum Grupp:"
+	"bs-groupmanager-lablename": "Numm vum Grupp:",
+	"bs-groupmanager-msgnotremovable": "Dës Grupp ass e System-Grupp a kann net ewechgeholl ginn."
 }
