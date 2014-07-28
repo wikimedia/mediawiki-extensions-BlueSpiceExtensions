@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-countthings-desc": "Stellt Inhaltsbasierte Statistiken bereit",
+	"bs-countthings-chars-label": "Zeichen",
+	"bs-countthings-words-label": "Wörter",
+	"bs-countthings-pages-label": "Seiten",
+	"bs-countthings-error-no-input": "Es wurden keine Seite angegeben.",
+	"bs-countthings-error-invalid-mode": "Der Konfigurationsparameter \"$1\" ist nicht zulässig. Bitte verwende \"chars\", \"words\", oder \"pages\".",
+	"bs-countthings-error-not-exist": "Der Seite \"$1\" existiert nicht.",
+	"bs-countthings-tag-countarticles-desc": "Gibt die Anzahl der Seiten aus.",
+	"bs-countthings-tag-countusers-desc": "Gibt die Anzahl der Benutzer aus.",
+	"bs-countthings-tag-countcharacters-desc": "Stellt eine Statistik des Inhalts der angegeben Seiten dar. Verfügbarer Konfigurationsparameter ist:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Was soll gezählt werden <code>chars</code> (Zeichen), <code>words</code> (Wörter) oder <code>pages</code> (Seiten)."
+}

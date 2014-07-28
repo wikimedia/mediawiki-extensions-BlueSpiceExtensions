@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-countthings-error-invalid-mode": "Der Konfigurationsparameter \"$1\" ist nicht zulässig. Bitte verwenden Sie \"chars\", \"words\", oder \"pages\"."
+}

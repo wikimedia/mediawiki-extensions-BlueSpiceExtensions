@@ -53,11 +53,11 @@ class ViewCountCharacters extends ViewBaseElement {
 		$aOut[] = '  <table class="wikitable">';
 		$aOut[] = '    <tr><th colspan="2">'.$wgUser->getSkin()->link( $this->oTitle ).'</th></tr>';
 		if( $this->iChars != -1 )
-			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-countchars-chars-label' )->plain().'</th><td>'.$this->iChars.'</td></tr>';
+			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-chars-label' )->plain().'</th><td>'.$this->iChars.'</td></tr>';
 		if( $this->iWords != -1 )
-			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-countchars-words-label' )->plain().'</th><td>'.$this->iWords.'</td></tr>';
+			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-words-label' )->plain().'</th><td>'.$this->iWords.'</td></tr>';
 		if( $this->iPages != -1 )
-			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-countchars-pages-label' )->plain().'</th><td>'.$this->iPages.'</td></tr>';
+			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-pages-label' )->plain().'</th><td>'.$this->iPages.'</td></tr>';
 		$aOut[] = '  </table>';
 		$aOut[] = '</div>';
 
