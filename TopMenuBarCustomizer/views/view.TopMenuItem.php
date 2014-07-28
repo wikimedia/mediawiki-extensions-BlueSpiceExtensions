@@ -1,6 +1,6 @@
 <?php
 /**
- * Renders the a sub-item of the top bar menu.
+ * Renders the a navigation item of the top bar menu.
  *
  * Part of BlueSpice for MediaWiki
  *
@@ -14,7 +14,7 @@
  */
 
 /**
- * This view renders sub-item.
+ * This view renders a navigation item.
  * @package    BlueSpice_Extensions
  * @subpackage TopMenuBarCustomizer
  */
@@ -138,35 +138,48 @@ class ViewTopMenuItem extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $aParams = false ) {
-		$sClass = empty($this->aChildren) ? 'menu-item-single' : 'menu-item-container';
-		$sClass .= ' level-'.$this->iLevel;
-		if( $this->bContainsActive) $sClass .= ' contains-active';
-		if( $this->bActive) $sClass .= ' active';
+		$aClasses = array();
+
+		$aClasses[] = empty($this->aChildren) ? 'menu-item-single' : 'menu-item-container';
+		$aClasses[] = "level-$this->iLevel";
+		if( $this->bContainsActive) $aClasses[] = 'contains-active';
+		if( $this->bActive) $aClasses[] = 'active';
+
+		$sTitle = $sText = empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle;
+		if( wfMessage($sTitle)->exists() ) {
+			$sTitle = $sText = wfMessage($sTitle)->plain();
+		}
 
 		global $wgExternalLinkTarget;
-		$sLinkTarget = '';
-		if( $this->bExternal && !empty($wgExternalLinkTarget) ) $sLinkTarget = 'target="'.$wgExternalLinkTarget.'"';
 
-		$aOut = array();
-		$aOut[] = '<li>';
-		$aOut[] = '  <a href="'.$this->sLink .'" title="'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'" class="'.$sClass.'" '.$sLinkTarget.'>'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'</a>';
-		if( !empty($this->aChildren) ) {
-			$aOut[] = $this->rederChildItems();
+		$sLinkTarget = '';
+		if( $this->bExternal && !empty($wgExternalLinkTarget) ) {
+			$sLinkTarget = 'target="'.$wgExternalLinkTarget.'"';
 		}
-		$aOut[] = '</li>';
-		return implode( "\n", $aOut);
+
+		$sOut = '';
+		$sOut .= '<li>';
+		$sOut .= "<a href='$this->sLink' title='$sTitle' class='".implode(' ', $aClasses)."' $sLinkTarget>$sText</a>";
+		if( !empty($this->aChildren) ) {
+			$sOut .= $this->rederChildItems();
+		}
+		$sOut .= '</li>';
+		return $sOut;
 	}
 
 	private function rederChildItems() {
 		$aOut[] ='<ul class="bs-apps-child level-'.($this->iLevel+1).'">';
 
 		foreach( $this->aChildren as $aApp ) {
+			$aApp = array_merge(TopMenuBarCustomizer::$aNavigationSiteTemplate, $aApp);
+
 			$oItem = new ViewTopMenuItem();
 			$oItem->setLevel( $aApp['level'] );
 			$oItem->setName( $aApp['id'] );
 			$oItem->setLink( $aApp['href'] );
-			$oItem->setDisplaytitle( $aApp['text'] );
 			$oItem->setActive( $aApp['active'] );
+			$oItem->setExternal( $aApp['external'] );
+			$oItem->setDisplaytitle( $aApp['text'] );
 			$oItem->setContainsActive( $aApp['containsactive'] );
 			if( !empty($aApp['children']) ) {
 				$oItem->setChildren( $aApp['children'] );
