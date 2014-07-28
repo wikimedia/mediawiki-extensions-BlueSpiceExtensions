@@ -197,98 +197,121 @@ class PageTemplates extends BsExtensionMW {
 		// if we are not on a wiki page, return. This is important when calling import scripts that try to create nonexistent pages, e.g. importImages
 		if ( !is_object( $oTitle ) ) return true;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'PageTemplates', $oTitle->getNamespace() );
+		$aData = BsCacheHelper::get( $sKey );
 
-		$aConds = array();
-		if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
-			if ( $wgDBtype == 'postgres' ) {
-				$aConds[] = "pt_target_namespace IN ('" . $oTitle->getNamespace() . "', '-99')";
-			} else {
-				$aConds[] = 'pt_target_namespace IN (' . $oTitle->getNamespace() . ', -99)';
-			}
-		}
-
-		if ( $wgDBtype == 'postgres' ) {
-			$aFields = array( "pt_template_title, pt_template_namespace, pt_label, pt_desc, pt_target_namespace" );
-		} else {
-			$aFields = array( 'pt_template_title', 'pt_template_namespace', 'pt_label', 'pt_desc', 'pt_target_namespace' );
-		}
-
-		$res = $dbr->select(
-			array( 'bs_pagetemplate' ),
-			$aFields,
-			$aConds,
-			__METHOD__,
-			array( 'ORDER BY' => 'pt_label' )
-		);
-
-		// There is always one template for empty page it is added some lines beneath that
-		$iCount = $dbr->numRows( $res ) + 1;
-		$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->text();
+		$aRes = array();
 		$aOutNs = array();
-		$sOutAll = '';
-		$oTargetNsTitle = null;
 
-		$sOut .= '<br /><br /><ul><li>';
-		$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), array(), array( 'preload' => '' ) );
-		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
-		$sOut .= '</li></ul>';
+		if( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching PageTemplates from cache' );
+			list( $aRes, $sOut, $sOutAll ) = $aData;
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching PageTemplates from DB' );
+			$dbr = wfGetDB( DB_SLAVE );
 
-		$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
-		$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
-		$vOrder = explode( '*', $vOrder );
-		$vOrder = array_map( 'trim', $vOrder );
-
-		if ( $res && $dbr->numRows( $res ) > 0 ) {
-			while ( $row = $dbr->fetchObject( $res ) ) {
-				$oNsTitle = Title::makeTitle( $row->pt_template_namespace, $row->pt_template_title );
-
-				// TODO MRG (06.09.11 12:53): -99 is "all namespaces". Pls use a more telling constant
-				if ( ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) && $row->pt_target_namespace != "-99" )
-					|| $row->pt_target_namespace == $oTitle->getNamespace()
-					|| BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
-
-					$sNamespaceName = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace );
-					if ( !isset( $aOutNs[$sNamespaceName] ) ) {
-						$aOutNs[$sNamespaceName] = array();
-					}
-
-					if ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) ) {
-						$oTargetNsTitle = Title::makeTitle( $row->pt_target_namespace, $oTitle->getText() );
-					} else {
-						$oTargetNsTitle = $oTitle;
-					}
-
-					$sLink = BsLinkProvider::makeLink(
-						$oTargetNsTitle,
-						$row->pt_label,
-						array(),
-						array( 'preload' => $oNsTitle->getPrefixedText() )
-					);
-					$sLink = '<li>' . $sLink;
-					if ( $row->pt_desc ) $sLink .= '<br/>' . $row->pt_desc;
-					$sLink .= '</li>';
-
-					$aOutNs[$sNamespaceName][] = array(
-						'link' => $sLink,
-						'id' => $row->pt_target_namespace
-					);
-				} elseif ( $row->pt_target_namespace == "-99" ) {
-					$sLink = BsLinkProvider::makeLink(
-						$oTitle,
-						$row->pt_label,
-						array(),
-						array( 'preload' => $oNsTitle->getPrefixedText() )
-					);
-					$sOutAll .= '<li>' . $sLink;
-
-					if ( $row->pt_desc ) $sOutAll .= '<br />' . $row->pt_desc;
-
-					$sOutAll .= '</li>';
+			$aConds = array();
+			if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
+				if ( $wgDBtype == 'postgres' ) {
+					$aConds[] = "pt_target_namespace IN ('" . $oTitle->getNamespace() . "', '-99')";
+				} else {
+					$aConds[] = 'pt_target_namespace IN (' . $oTitle->getNamespace() . ', -99)';
 				}
 			}
 
+			if ( $wgDBtype == 'postgres' ) {
+				$aFields = array( "pt_template_title, pt_template_namespace, pt_label, pt_desc, pt_target_namespace" );
+			} else {
+				$aFields = array( 'pt_template_title', 'pt_template_namespace', 'pt_label', 'pt_desc', 'pt_target_namespace' );
+			}
+
+			$res = $dbr->select(
+				array( 'bs_pagetemplate' ),
+				$aFields,
+				$aConds,
+				__METHOD__,
+				array( 'ORDER BY' => 'pt_label' )
+			);
+
+			// There is always one template for empty page it is added some lines beneath that
+			$iCount = $dbr->numRows( $res ) + 1;
+			$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->text();
+			$sOutAll = '';
+			$oTargetNsTitle = null;
+
+			$sOut .= '<br /><br /><ul><li>';
+			$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), array(), array( 'preload' => '' ) );
+			$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
+			$sOut .= '</li></ul>';
+
+			$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
+			$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
+			$vOrder = explode( '*', $vOrder );
+			$vOrder = array_map( 'trim', $vOrder );
+
+			if ( $res && $dbr->numRows( $res ) > 0 ) {
+				while ( $row = $dbr->fetchObject( $res ) ) {
+					$aRes[] = $row;
+				}
+			}
 			$dbr->freeResult( $res );
+			BsCacheHelper::set(
+				$sKey,
+				array(
+					$aRes,
+					$sOut,
+					$sOutAll
+				)
+			);
+
+		}
+
+		foreach( $aRes as $row ) {
+			$oNsTitle = Title::makeTitle( $row->pt_template_namespace, $row->pt_template_title );
+
+			// TODO MRG (06.09.11 12:53): -99 is "all namespaces". Pls use a more telling constant
+			if ( ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) && $row->pt_target_namespace != "-99" )
+				|| $row->pt_target_namespace == $oTitle->getNamespace()
+				|| BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
+
+				$sNamespaceName = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace );
+				if ( !isset( $aOutNs[$sNamespaceName] ) ) {
+					$aOutNs[$sNamespaceName] = array();
+				}
+
+				if ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) ) {
+					$oTargetNsTitle = Title::makeTitle( $row->pt_target_namespace, $oTitle->getText() );
+				} else {
+					$oTargetNsTitle = $oTitle;
+				}
+
+				$sLink = BsLinkProvider::makeLink(
+					$oTargetNsTitle,
+					$row->pt_label,
+					array(),
+					array( 'preload' => $oNsTitle->getPrefixedText() )
+				);
+				$sLink = '<li>' . $sLink;
+				if ( $row->pt_desc ) $sLink .= '<br/>' . $row->pt_desc;
+				$sLink .= '</li>';
+
+				$aOutNs[$sNamespaceName][] = array(
+					'link' => $sLink,
+					'id' => $row->pt_target_namespace
+				);
+			} elseif ( $row->pt_target_namespace == "-99" ) {
+				$sLink = BsLinkProvider::makeLink(
+					$oTitle,
+					$row->pt_label,
+					array(),
+					array( 'preload' => $oNsTitle->getPrefixedText() )
+				);
+				$sOutAll .= '<li>' . $sLink;
+
+				if ( $row->pt_desc ) $sOutAll .= '<br />' . $row->pt_desc;
+
+				$sOutAll .= '</li>';
+			}
 		}
 
 		if ( !empty( $vOrder ) ) {
@@ -399,5 +422,13 @@ class PageTemplates extends BsExtensionMW {
 		}
 
 		return true;
+	}
+	/**
+	 * Invalidates PageTemplates cache for specific namespace
+	 * @param type $iNamespaceId
+	 * @return bool
+	 */
+	public static function invalidatePageTemplatesCache( $iNamespaceId ) {
+		return BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'PageTemplates', (int) $iNamespaceId )  );
 	}
 }

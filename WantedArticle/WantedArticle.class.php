@@ -255,6 +255,9 @@ class WantedArticle extends BsExtensionMW {
 	 * @return bool Always true to keep hooks running.
 	 */
 	public function onArticleSaveComplete( $oArticle, $oUser, $sText, $sSummary, $bIsMinor, $bIsWatch, $iSection, $vFlags, $oRevision, $oStatus, $vBaseRevId ) {
+		if( $oArticle->getTitle()->equals( $this->getDataSourceTemplateArticle()->getTitle() ) ) {
+			BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'WantedArticle', $oArticle->getTitle()->getPrefixedText() ) );
+		}
 		if( $oStatus->value['new'] != true ) return true;
 		if( BsConfig::get( 'MW::WantedArticle::DeleteOnCreation' ) === false ) return true;
 
@@ -612,33 +615,43 @@ class WantedArticle extends BsExtensionMW {
 	 * @return array An Array of Title objects
 	 */
 	public function getTitleListFromTitle( $oTitle ) {
-		$oArticleContent = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'WantedArticle', $oTitle->getPrefixedText() );
+		$aData = BsCacheHelper::get( $sKey );
 
-		$aTitleList = array();
-		$aLines = explode( "\n", $oArticleContent );
-		foreach( $aLines as $sLine ){
-			$sLine = trim( $sLine );
-			if( empty( $sLine ) || $sLine[0] != '*' ) continue;
-			$aMatches = array();
-			#*[[Title]] --[[Spezial:Beiträge/0:0:0:0:0:0:0:1|0:0:0:0:0:0:0:1]] 12:31, 7. Jan. 2013 (AST)
-			#*[[Title2]]--[[Benutzer:WikiSysop|WikiSysop]] ([[Benutzer Diskussion:WikiSysop|Diskussion]]) 17:47, 4. Jan. 2013 (AST)
-			preg_match('#\*.*?\[\[(.*?)\]\]( ?--\[\[.*?:(.*?/)?(.*?)\|.*?\]\].*?\)? (\(.*?\))? ?(.*?))?$#si', $sLine, $aMatches);
-			if( empty($aMatches) || !isset($aMatches[1]) ) continue;
+		if( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching WantedArticle list from cache' );
+			$aTitleList = $aData;
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching WantedArticle list from DB');
+			$oArticleContent = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 
-			$sTitle = $aMatches[1];
-			$sUsername = isset($aMatches[4]) ? $aMatches[4] : '';
-			$sSignature = isset($aMatches[2]) ? $aMatches[2] : '';
+			$aTitleList = array();
+			$aLines = explode( "\n", $oArticleContent );
 
-			$oT = Title::newFromText( $sTitle );
-			if( $oT === null ) continue;
-			$aTitleList[] = array(
-				'title'       => $oT,
-				//'mwtimestamp' => $sTime, // MW timestamp not currently not in use
-				'username'    => $sUsername,
-				'signature'   => $sSignature,
-			);
+			foreach( $aLines as $sLine ){
+				$sLine = trim( $sLine );
+				if( empty( $sLine ) || $sLine[0] != '*' ) continue;
+				$aMatches = array();
+				#*[[Title]] --[[Spezial:Beiträge/0:0:0:0:0:0:0:1|0:0:0:0:0:0:0:1]] 12:31, 7. Jan. 2013 (AST)
+				#*[[Title2]]--[[Benutzer:WikiSysop|WikiSysop]] ([[Benutzer Diskussion:WikiSysop|Diskussion]]) 17:47, 4. Jan. 2013 (AST)
+				preg_match('#\*.*?\[\[(.*?)\]\]( ?--\[\[.*?:(.*?/)?(.*?)\|.*?\]\].*?\)? (\(.*?\))? ?(.*?))?$#si', $sLine, $aMatches);
+				if( empty($aMatches) || !isset($aMatches[1]) ) continue;
+
+				$sTitle = $aMatches[1];
+				$sUsername = isset($aMatches[4]) ? $aMatches[4] : '';
+				$sSignature = isset($aMatches[2]) ? $aMatches[2] : '';
+
+				$oT = Title::newFromText( $sTitle );
+				if( $oT === null ) continue;
+				$aTitleList[] = array(
+					'title'       => $oT,
+					//'mwtimestamp' => $sTime, // MW timestamp not currently not in use
+					'username'    => $sUsername,
+					'signature'   => $sSignature,
+				);
+			}
+			BsCacheHelper::set( $sKey, $aTitleList );
 		}
-
 		return $aTitleList;
 	}
 

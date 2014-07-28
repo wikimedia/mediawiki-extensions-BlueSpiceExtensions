@@ -249,66 +249,77 @@ class ShoutBox extends BsExtensionMW {
 
 		// do not allow negative page ids and pages that have 0 as id (e.g. special pages)
 		if ( $iArticleId <= 0 ) return true;
-		if ( $iLimit <= 0 ) $iLimit = BsConfig::get('MW::ShoutBox::NumberOfShouts');
 
-		$sOutput = '';
-		//return false on hook handler to break here
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId );
+		$aData = BsCacheHelper::get( $sKey );
 
-		$aTables = array('bs_shoutbox');
-		$aFields = array('*');
-		$aConditions = array(
-			'sb_page_id' => $iArticleId,
-			'sb_archived' => '0',
-			'sb_parent_id' => '0',
-			'sb_title' => '',
-		);
-		$aOptions = array(
-			'ORDER BY' => 'sb_timestamp DESC',
-			'LIMIT' => $iLimit + 1, // One more than iLimit in order to know if there are more shouts left.
-		);
+		if( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching shouts from cache');
+			$sOutput = $aData;
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching shouts from DB');
+			if ( $iLimit <= 0 ) $iLimit = BsConfig::get('MW::ShoutBox::NumberOfShouts');
 
-		if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit, &$aTables, &$aFields, &$aConditions, &$aOptions ) ) ) {
-			return $sOutput;
+			$sOutput = '';
+			//return false on hook handler to break here
+
+			$aTables = array('bs_shoutbox');
+			$aFields = array('*');
+			$aConditions = array(
+				'sb_page_id' => $iArticleId,
+				'sb_archived' => '0',
+				'sb_parent_id' => '0',
+				'sb_title' => '',
+			);
+			$aOptions = array(
+				'ORDER BY' => 'sb_timestamp DESC',
+				'LIMIT' => $iLimit + 1, // One more than iLimit in order to know if there are more shouts left.
+			);
+
+			if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit, &$aTables, &$aFields, &$aConditions, &$aOptions ) ) ) {
+				return $sOutput;
+			}
+
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				$aTables,
+				$aFields,
+				$aConditions,
+				__METHOD__,
+				$aOptions
+			);
+
+			$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
+
+			if( $dbr->numRows( $res ) > $iLimit ) {
+				$oShoutBoxMessageListView->setMoreLimit( $iLimit + BsConfig::get('MW::ShoutBox::NumberOfShouts') );
+			}
+
+			$bShowAge  = BsConfig::get( 'MW::ShoutBox::ShowAge' );
+			$bShowUser = BsConfig::get( 'MW::ShoutBox::ShowUser' );
+
+			$iCount = 0;
+			while( $row = $dbr->fetchRow( $res ) ) {
+				$oUser = User::newFromId( $row['sb_user_id'] );
+				$oProfile = BsCore::getInstance()->getUserMiniProfile( $oUser );
+				$oShoutBoxMessageView = new ViewShoutBoxMessage();
+				if ( $bShowAge )  $oShoutBoxMessageView->setDate( BsFormatConverter::mwTimestampToAgeString( $row[ 'sb_timestamp' ], true ) );
+				if ( $bShowUser ) $oShoutBoxMessageView->setUsername( $row[ 'sb_user_name' ] );
+				$oShoutBoxMessageView->setUser( $oUser );
+				$oShoutBoxMessageView->setMiniProfile( $oProfile );
+				$oShoutBoxMessageView->setMessage( $row[ 'sb_message' ] );
+				$oShoutBoxMessageView->setShoutID( $row[ 'sb_id' ] );
+				$oShoutBoxMessageListView->addItem( $oShoutBoxMessageView );
+				// Since we have one more shout than iLimit, we need to count :)
+				$iCount++;
+				if ( $iCount >= $iLimit ) break;
+			}
+
+			$sOutput .= $oShoutBoxMessageListView->execute();
+
+			BsCacheHelper::set( $sKey, $sOutput );
+			$dbr->freeResult( $res );
 		}
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			$aTables,
-			$aFields,
-			$aConditions,
-			__METHOD__,
-			$aOptions
-		);
-
-		$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
-
-		if( $dbr->numRows( $res ) > $iLimit ) {
-			$oShoutBoxMessageListView->setMoreLimit( $iLimit + BsConfig::get('MW::ShoutBox::NumberOfShouts') );
-		}
-
-		$bShowAge  = BsConfig::get( 'MW::ShoutBox::ShowAge' );
-		$bShowUser = BsConfig::get( 'MW::ShoutBox::ShowUser' );
-
-		$iCount = 0;
-		while( $row = $dbr->fetchRow( $res ) ) {
-			$oUser = User::newFromId( $row['sb_user_id'] );
-			$oProfile = BsCore::getInstance()->getUserMiniProfile( $oUser );
-			$oShoutBoxMessageView = new ViewShoutBoxMessage();
-			if ( $bShowAge )  $oShoutBoxMessageView->setDate( BsFormatConverter::mwTimestampToAgeString( $row[ 'sb_timestamp' ], true ) );
-			if ( $bShowUser ) $oShoutBoxMessageView->setUsername( $row[ 'sb_user_name' ] );
-			$oShoutBoxMessageView->setUser( $oUser );
-			$oShoutBoxMessageView->setMiniProfile( $oProfile );
-			$oShoutBoxMessageView->setMessage( $row[ 'sb_message' ] );
-			$oShoutBoxMessageView->setShoutID( $row[ 'sb_id' ] );
-			$oShoutBoxMessageListView->addItem( $oShoutBoxMessageView );
-			// Since we have one more shout than iLimit, we need to count :)
-			$iCount++;
-			if ( $iCount >= $iLimit ) break;
-		}
-
-		$sOutput .= $oShoutBoxMessageListView->execute();
-
-		$dbr->freeResult( $res );
 		return $sOutput;
 	}
 
@@ -360,6 +371,8 @@ class ShoutBox extends BsExtensionMW {
 		); // TODO RBV (21.10.10 17:21): Send error / success to client.
 
 		wfRunHooks( 'BSShoutBoxAfterInsertShout', array( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) );
+
+		self::invalidateShoutBoxCache( $iArticleId );
 		return json_encode(array('success' => true, 'msg' => self::getShouts( $iArticleId, 0 )));
 	}
 
@@ -369,7 +382,7 @@ class ShoutBox extends BsExtensionMW {
 	 * @param string $sOutput success state of database action
 	 * @return bool allow other hooked methods to be executed
 	 */
-	public static function archiveShout( $iShoutId ){
+	public static function archiveShout( $iShoutId, $iArticleId ){
 		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false
 			|| BsCore::checkAccessAdmission( 'writeshoutbox' ) === false ) return true;
 
@@ -399,9 +412,15 @@ class ShoutBox extends BsExtensionMW {
 							array( 'sb_archived' => '1' ),
 							array( 'sb_id' => $iShoutId )
 		);
+
+		self::invalidateShoutBoxCache( (int)$iArticleId );
 		$sResponse = $res == true ? 'bs-shoutbox-archive-success' : 'bs-shoutbox-archive-failure';
 		$sOutput = wfMessage( $sResponse )->plain();
 		return $sOutput;
+	}
+
+	public static function invalidateShoutBoxCache( $iArticleId ) {
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId )  );
 	}
 
 }

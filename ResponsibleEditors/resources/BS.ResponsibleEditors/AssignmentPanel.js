@@ -44,12 +44,13 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 
 	setData: function( obj ){
 		this.callParent( arguments );
-		this.strAvailableRespEds.loadRawData( [], false );
-		this.strAvailableRespEds.load({
-			params: {
-				'rsargs[]': this.currentData.articleId
-			}
-		});
+		if( this.storeLoaded === false ) {
+			this.strAvailableRespEds.load({
+				params: {
+					'rsargs[]': this.currentData.articleId
+				}
+			});
+		}
 		//TODO: We need this very often. Maybe add to base class
 		if( !this.strAvailableRespEds.isLoading() ) {
 			this.isRespEds.setValue(
@@ -58,7 +59,9 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 		}
 	},
 
+	storeLoaded: false,
 	onStrAvailableRespEdsLoad: function( store, records, successful, eOpts ) {
+		this.storeLoaded = true;
 		if( this.currentData.editorIds ) {
 			this.isRespEds.setValue(
 				this.currentData.editorIds

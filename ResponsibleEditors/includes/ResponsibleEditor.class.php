@@ -8,7 +8,7 @@ class BsResponsibleEditor {
 
 	/**
 	 * Internal contructor method. Use static factory methods for instantiation.
-	 * @param User $oUser MediaWiki User object 
+	 * @param User $oUser MediaWiki User object
 	 */
 	private function __construct( $oUser ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -58,7 +58,7 @@ class BsResponsibleEditor {
 	 */
 	public function isAssignedToArticleId( $iArticleId ) {
 		if( $this->mAssignmentsLoaded === false ) $this->loadAssignments();
-		
+
 		if( array_key_exists( $iArticleId, $this->mAssignments ) ) {
 			return true;
 		}
