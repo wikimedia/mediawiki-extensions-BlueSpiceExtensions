@@ -89,7 +89,7 @@ Ext.define( 'BS.Statistics.Panel', {
 	},
 	filtersBtnOKBeforeSend: function() {
 		this.getEl().mask(
-			mw.message('bs-statistics-loadingMessage').plain(),
+			mw.message('bs-extjs-loading').plain(),
 			Ext.baseCSSPrefix + 'mask-loading'
 		);
 	},
@@ -123,7 +123,7 @@ Ext.define( 'BS.Statistics.Panel', {
 	},
 	onClickmuExport: function( menu, item, e, eOpts ) {
 		/*this.getEl().mask(
-			mw.message('bs-statistics-loadingMessage').plain(),
+			mw.message('bs-extjs-loading').plain(),
 			Ext.baseCSSPrefix + 'mask-loading'
 		);*/
 

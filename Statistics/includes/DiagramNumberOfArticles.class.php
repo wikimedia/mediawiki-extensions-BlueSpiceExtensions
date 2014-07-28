@@ -16,7 +16,7 @@
 /**
  * Describes number of articles for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics
+ * @subpackage Statistics 
  */
 class BsDiagramNumberOfArticles extends BsDiagram {
 
@@ -26,10 +26,10 @@ class BsDiagramNumberOfArticles extends BsDiagram {
 	public function __construct() {
 		parent::__construct();
 
-		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-pages-mw')->text();
-		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-pages-mw-desc')->text();
-		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
-		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
+		$this->sTitle = wfMsg( 'bs-statistics-diag-number-of-pages-mw');
+		$this->sDescription = wfMsg( 'bs-statistics-diag-number-of-pages-mw-desc');
+		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
+		$this->sTitley = wfMsg( 'bs-statistics-label-count');
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
@@ -74,7 +74,7 @@ class BsDiagramNumberOfArticles extends BsDiagram {
 									)
 								)
 								AND @BsFilterCategory";
-		$this->sListLabel = array( wfMessage( 'bs-statistics-label-article')->text(), wfMessage( 'bs-statistics-label-creator')->text() );
+		$this->sListLabel = array( wfMsg( 'bs-statistics-label-page'), wfMsg( 'bs-statistics-label-creator'));
 		$this->sMode = BsDiagram::MODE_AGGREGATED;
 
 		$this->addFilter( new BsFilterNamespace( $this, array( 0 ) ) );

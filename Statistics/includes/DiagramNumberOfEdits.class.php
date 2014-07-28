@@ -16,7 +16,7 @@
 /**
  * Describes number of edits for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics
+ * @subpackage Statistics 
  */
 class BsDiagramNumberOfEdits extends BsDiagram {
 
@@ -26,10 +26,10 @@ class BsDiagramNumberOfEdits extends BsDiagram {
 	public function __construct() {
 		parent::__construct();
 
-		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-edits')->text();
-		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-edits-desc')->text();
-		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
-		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
+		$this->sTitle = wfMsg( 'bs-statistics-diag-number-of-edits');
+		$this->sDescription = wfMsg( 'bs-statistics-diag-number-of-edits-desc');
+		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
+		$this->sTitley = wfMsg( 'bs-statistics-label-count');
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
@@ -52,7 +52,7 @@ class BsDiagramNumberOfEdits extends BsDiagram {
 								)
 								AND NOT rev_user_text IN (@BsFilterUsers)
 								AND @BsFilterCategory";
-		//$this->sListLabel = array(wfMessage( 'label-article')->text(), wfMessage( 'label-creator')->text());
+		//$this->sListLabel = array(wfMsg( 'label-article'), wfMsg( 'label-creator'));
 		$this->sMode = BsDiagram::MODE_ABSOLUTE;
 
 		$this->addFilter( new BsFilterNamespace( $this, array( 0 ) ) );

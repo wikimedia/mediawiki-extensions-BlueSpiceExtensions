@@ -48,7 +48,7 @@ abstract class BsMultiSelectFilter extends BsSelectFilter {
 		$this->getActiveValues();
 		$aI18NValues = array();
 		foreach ( $this->aActiveValues as $sValue ) {
-			$sValueText = preg_replace( "/^(<|&lt;)?(.*?)(>|&gt;)?$/", "$2", wfMessage( $sValue )->text() );
+			$sValueText = preg_replace( "/^(<|&lt;)?(.*?)(>|&gt;)?$/", "$2", wfMsg( $sValue ) );
 			$aI18NValues[] = $sValueText;
 		}
 		return implode( ", ", $aI18NValues );

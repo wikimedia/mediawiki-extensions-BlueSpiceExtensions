@@ -20,7 +20,7 @@ Ext.define('BS.Statistics.StatisticsPortletNumberOfUsers', {
 		this.ctMainConfig = {
 			axes: [],
 			series: [],
-			yTitle: mw.message('bs-statistics-portlet-NumberOfUsers').plain()
+			yTitle: mw.message('bs-statistics-portlet-numberofusers').plain()
 		};
 
 		this.ctMainConfig.store = Ext.create('Ext.data.JsonStore', {
