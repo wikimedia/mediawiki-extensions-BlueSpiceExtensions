@@ -10,6 +10,7 @@
 	"bs-extendedsearch-facet-editors": "Autorzy",
 	"bs-extendedsearch-facet-namespace": "Przestrzeń nazw",
 	"bs-extendedsearch-facet-namespace-files": "Pliki",
+	"bs-extendedsearch-facet-namespace-extfiles": "Pliki zewnętrzne",
 	"bs-extendedsearch-result-caption": "$1 - $2 z $3 {{PLURAL:$3|wyniku|wyników}}",
 	"bs-extendedsearch-sort-title": "Tytuł",
 	"bs-extendedsearch-sort-ts": "Czas",

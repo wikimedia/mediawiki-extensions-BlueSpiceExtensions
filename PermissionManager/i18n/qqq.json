@@ -30,7 +30,7 @@
 	"bs-permissionmanager-msgtpled-success": "Success message for template saved.",
 	"bs-permissionmanager-msgtpled-savefailure": "Error message for template could not be saved.",
 	"bs-permissionmanager-msgtpled-saveonabort": "Message for do you want to save all data now?",
-	"bs-permissionmanager-msgtpled-new": "Label for template name:\n{{Identical|Tempalte name}}",
+	"bs-permissionmanager-msgtpled-new": "Label for template name:\n{{Identical|Template name}}",
 	"bs-permissionmanager-msgtpled-edit": "Label for new template name:",
 	"bs-permissionmanager-msgtpled-delete": "Success message for template deleted.",
 	"bs-permissionmanager-msgtpled-deletefail": "Error message for template could not be deleted.",

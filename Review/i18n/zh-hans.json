@@ -44,6 +44,8 @@
 	"log-description-bs-review": "这是正在或曾被复核页面的日志。",
 	"bs-review-pref-checkowner": "只有复核的所有者可以更改它",
 	"bs-review-pref-shownameintooltip": "显示参与者名字",
+	"bs-review-pref-emailnotifyowner": "通知修订的所有者关于更改",
+	"bs-review-pref-emailnotifyreviewer": "通知修订的复核者关于更改",
 	"bs-review-expired": "已届满",
 	"bs-review-denied": "返回再次复核",
 	"review": "复核",

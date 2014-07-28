@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-flexiskin-headerheader": "Başlık",
+	"bs-flexiskin-labelbackgroundupload": "Arka plan resmi",
+	"bs-flexiskin-error-templatenotexists": "Seçilen şablon mevcut değil."
+}

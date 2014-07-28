@@ -9,7 +9,8 @@
 	"bs-pagetemplates-tpl-edited": "Değişiklikler kaydedildi.",
 	"bs-pagetemplates-tpl-deleted": "Şablon silindi.",
 	"bs-pagetemplates-tipeditdetails": "Şablonu düzenle",
-	"bs-pagetemplates-tipdeletetemplate": "Şablonu sil",
+	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|Şablonu|Şablonları}} sil",
 	"bs-pagetemplates-tipaddtemplate": "Şablon ekle",
-	"bs-pagetemplates-label-article": "Şablon"
+	"bs-pagetemplates-label-article": "Şablon",
+	"bs-pagetemplates-remove-message-unknown": "Beklenmeyen bir hata oluştu, lütfen tekrar deneyin."
 }

@@ -12,6 +12,7 @@
 	"bs-groupmanager-invalid-name-length": "Nazwa grupy nie może być dłuższa niż 16 znaków.",
 	"bs-groupmanager-invalid-name-numeric": "Nazwa grupy musi mieć co najmniej jeden znak.",
 	"bs-groupmanager-headergroup": "Grupa",
+	"bs-groupmanager-tipremove": "Usuwanie {{PLURAL:$1|grupy|grup}}",
 	"bs-groupmanager-titlenewgroup": "Nowa grupa",
 	"bs-groupmanager-titleeditgroup": "Edytuj grupę",
 	"bs-groupmanager-removegroup": "Czy na pewno chcesz usunąć {{PLURAL:$1|tę grupę|te grupy}}?",

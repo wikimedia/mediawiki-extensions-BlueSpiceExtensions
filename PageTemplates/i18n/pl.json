@@ -6,6 +6,7 @@
 	},
 	"bs-pagetemplates-empty-page": "Pusta strona",
 	"bs-pagetemplates-tpl-added": "Szablon został dodany.",
+	"bs-pagetemplates-pref-excludens": "Nie pokazuj szablonów w tych przestrzeniach nazw:",
 	"bs-pagetemplates-headerlabel": "Etykieta",
 	"bs-pagetemplates-headertargetnamespace": "Przestrzeń nazw",
 	"bs-pagetemplates-tipeditdetails": "Edytuj szablon",

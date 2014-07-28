@@ -23,5 +23,7 @@
 	"bs-review-lblstartdate": "Data rozpoczęcia",
 	"bs-review-labelcomment": "Komentarz",
 	"bs-review-header-page-title": "Strona",
-	"bs-review-header-startdate": "Start"
+	"bs-review-header-accepted-text": "Stan",
+	"bs-review-header-startdate": "Start",
+	"bs-review-confirm-delete-step": "Czy na pewno chcesz usunąć ten krok?"
 }

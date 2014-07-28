@@ -25,6 +25,7 @@
 	"bs-pagetemplates-choose-template": "此页面不存在。您可创建一个新页面。如果您不希望这样做，点击浏览器的返回按钮回到您最近访问的页面。您可以选择以下{{PLURAL:$1|模板}}{{PLURAL:$1||之一}}：",
 	"bs-pagetemplates-pref-excludens": "不要显示这些名字空间的模板：",
 	"bs-pagetemplates-pref-forcenamespace": "强制目标名字空间",
+	"bs-pagetemplates-pref-hideifnotintargetns": "如果页面不是在目标名字空间创建的就隐藏模板",
 	"bs-pagetemplates-headerlabel": "标签",
 	"bs-pagetemplates-headertargetnamespace": "名字空间",
 	"bs-pagetemplates-tipeditdetails": "编辑模板",

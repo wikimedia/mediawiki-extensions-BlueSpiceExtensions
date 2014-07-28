@@ -26,7 +26,11 @@
 	"bs-flexiskin-headerheader": "Iwwerschrëft",
 	"bs-flexiskin-labellogoupload": "Logo",
 	"bs-flexiskin-labelbackgroundupload": "Hannergrondbild",
+	"bs-flexiskin-no-repeat": "keng Widderhuelung",
+	"bs-flexiskin-repeat-y": "vertikal Widderhuelung",
+	"bs-flexiskin-repeat": "horizontal a vertikal Widderhuelung",
 	"bs-flexiskin-labelrepeatbackground": "Hannergrondbild widderhuelen",
+	"bs-flexiskin-labelcustombgcolor": "Personaliséiert Faarf",
 	"bs-flexiskin-headerposition": "Positioun a Gréisst",
 	"bs-flexiskin-labelnavigation": "Positioun vun der Navigatioun",
 	"bs-flexiskin-labelcontent": "Positioun vum Inhalt",
@@ -34,5 +38,6 @@
 	"bs-flexiskin-right": "riets",
 	"bs-flexiskin-labelwidth": "Gesamtbreet (a Pixel)",
 	"bs-flexiskin-labelfullwidth": "Maximal Breet",
+	"bs-flexiskin-error-nameempty": "Gitt w.e.g. e valabelen Numm a fir d'Ausgesinn dat Dir uleeë wëllt.",
 	"bs-flexiskin-error-templatenotexists": "Déi eruagesicht Schabloun gëtt et net!"
 }

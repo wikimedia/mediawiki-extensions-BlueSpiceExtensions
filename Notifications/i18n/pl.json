@@ -5,6 +5,8 @@
 		]
 	},
 	"prefs-notifications": "Powiadomienia",
+	"bs-notifications-pref-notifynominor": "Bez powiadomień o drobnych zmianach",
+	"bs-notifications-pref-active": "Włącz powiadomienia",
 	"bs-echo-page-edit": "Strona [[:$1]] została zmieniona",
 	"bs-echo-page-create": "Strona [[:$1]] została utworzona",
 	"bs-echo-page-delete": "Strona [[:$1]] została skasowana",

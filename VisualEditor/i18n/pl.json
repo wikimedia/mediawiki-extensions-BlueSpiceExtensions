@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pio387"
+			"Pio387",
+			"Chrumps"
 		]
 	},
 	"prefs-visualeditor": "Visual editor",
 	"bs-visualeditor-pref-disablens": "Wyłącz w przestrzeni nazw:",
-	"bs-visualeditor-save-message": "Zapisano zmiany pod datą $1 z opisem \"$2\"."
+	"bs-visualeditor-save-message": "Zapisano zmiany pod datą $1 z opisem \"$2\".",
+	"bs-visualeditor-bsactions-signature": "Podpis"
 }

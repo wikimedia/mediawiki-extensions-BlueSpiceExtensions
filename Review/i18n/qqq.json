@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Ата"
+			"Ата",
+			"Smuggli"
 		]
 	},
 	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension",
@@ -72,7 +73,7 @@
 	"bs-review-header-page-title": "Column headline for page\n{{Identical|Page}}",
 	"bs-review-header-owner-name": "Column headline for owner\n{{Identical|Owner}}",
 	"bs-review-header-assessors": "Column headline for assessors\n{{Identical|Assessor}}",
-	"bs-review-header-accepted-text": "Column headline for state\n{{Identical|State}}",
+	"bs-review-header-accepted-text": "Column headline for the state of a review\n{{Identical|State}}",
 	"bs-review-header-startdate": "Column headline for start\n{{Identical|Start}}",
 	"bs-review-header-enddate": "Column headline for end\n{{Identical|End}}",
 	"bs-review-confirm-delete-step": "Text message if you want to delete a step of a review",
