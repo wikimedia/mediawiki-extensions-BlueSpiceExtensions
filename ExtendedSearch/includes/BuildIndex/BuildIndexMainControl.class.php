@@ -67,7 +67,7 @@ class BuildIndexMainControl {
 	 * Path to log file.
 	 * @var string Path.
 	 */
-	protected $sFilePathLogFile = '';
+	protected $sFilePathIndexLogFile = '';
 	/**
 	 * Unique ID that identifies a certain Wiki
 	 * @var string Unique ID
@@ -91,7 +91,7 @@ class BuildIndexMainControl {
 		$this->oSearchService = SearchService::getInstance();
 
 		$this->sFilePathIndexProgTxt = BSDATADIR.DS.'index_prog.txt';
-		$this->sFilePathLogFile = BSDATADIR.DS.'ExtendedSearch.log';
+		$this->sFilePathIndexLogFile = BSDATADIR.DS.'ExtendedSearchIndex.log';
 		$this->sFilePathLockFile = BSDATADIR.DS.'ExtendedSearch.lock';
 
 		//Possible values of PHP_SAPI (not all): apache, cgi (until PHP 5.3), cgi-fcgi, cli
@@ -187,7 +187,7 @@ class BuildIndexMainControl {
 		try {
 			$this->oSearchService->addDocument( $oSolrDocument );
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
 		try {
@@ -195,7 +195,7 @@ class BuildIndexMainControl {
 			$this->buildIndexLinked( '', $iPageID );
 		} catch ( Exception $e ) {}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 	}
 
 	/**
@@ -207,10 +207,10 @@ class BuildIndexMainControl {
 		try {
 			$oIndexFile->indexCrawledDocuments();
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 
 		return true;
 	}
@@ -223,12 +223,12 @@ class BuildIndexMainControl {
 	public function deleteIndexFile( $sPath, $sOverallType ) {
 		$sUniqueID = $this->getUniqueId( $sPath, $sOverallType );
 		try {
-			$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
+			$this->oSearchService->deleteByQuery( 'uid:' . $sUniqueID );
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 
 		return true;
 	}
@@ -242,10 +242,10 @@ class BuildIndexMainControl {
 		try {
 			$this->oSearchService->deleteById( $sUniqueID );
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 
 		return true;
 	}
@@ -332,7 +332,7 @@ class BuildIndexMainControl {
 		$everythingsOk = BuildIndexMwLinked::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 		if ( !$everythingsOk ) {
 			foreach ( $aErrorMessageKeys as $key => $value ) {
-				$this->writeLog( $sMode, wfMessage( $key )->plain(), 0 );
+				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' ' . wfMessage( $key )->plain() );
 			}
 			return;
 		}
@@ -358,7 +358,7 @@ class BuildIndexMainControl {
 		$everythingsOk = BuildIndexMwSpecialLinked::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 		if ( !$everythingsOk ) {
 			foreach ( $aErrorMessageKeys as $key => $value ) {
-				$this->writeLog( $sMode, wfMessage( $key )->plain(), 0 );
+				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' ' . wfMessage( $key )->plain() );
 			}
 			return;
 		}
@@ -387,22 +387,26 @@ class BuildIndexMainControl {
 		libxml_use_internal_errors( true );
 
 		ob_start();
-		ob_flush();
 
 		if ( !$this->bCommandLineMode ) header( "Content-Encoding: none" );
 
 		// todo: what if zlib.output_compression = On in php.ini
-		$this->logFile( 'create' );
 
-		$this->logFile( 'write', date( "d.m.Y H:i:s" ) . "\n" );
+		if ( file_exists( $this->sFilePathLockFile ) ) {
+			return wfMessage( 'bs-extendedsearch-indexinginprogress' )->plain();
+		}
+
+		// create lock file
+		$this->lockFile( 'createLock' );
+		// create log file
+		$this->LogFile();
+		// create progress file
+		$this->progressFile( 'create' );
+
+		$this->write( date( "d.m.Y H:i:s" ) . "\n" );
 
 		$sRes = '';
 		try {
-			if ( file_exists( $this->sFilePathLockFile ) ) {
-				return $sRes = wfMessage( 'bs-extendedsearch-indexinginprogress' )->plain();
-			}
-			$this->lockFile( 'createLock' );
-
 			$this->buildIndexWiki( wfMessage( 'bs-extendedsearch-indexing-wiki-articles' )->plain() );
 			$this->buildIndexSpecial( wfMessage( 'bs-extendedsearch-indexing-specialpages' )->plain() );
 			$this->buildIndexRepo( wfMessage( 'bs-extendedsearch-indexing-files-in-repo' )->plain() );
@@ -411,20 +415,22 @@ class BuildIndexMainControl {
 
 			wfRunHooks( 'BSExtendedSearchBuildIndex', array( $this ) );
 		} catch ( BsException $e ) {
-			$this->logFile( 'deleteLock' );
+			$this->lockFile( 'deleteLock' );
 			$sRes .= "Instance ExtendedSearchBase returned following BsException in procedure buildIndex(): {$e->getMessage()}";
 		}
 
 		$this->commitAndOptimize( true );
 
-		$this->writeLog(
+		$this->write(
 			wfMessage( 'bs-extendedsearch-finished' )->plain(),
 			$this->iDocsInIndex . ' ' . wfMessage( 'bs-extendedsearch-docs-in-index' )->plain(),
 			100
 		);
 		$this->logFile( 'write', date( "d.m.Y H:i:s" ) );
 
-		$this->writeLog( 'unlink' );
+		// delete progress file
+		$this->progressFile( 'delete' );
+		// delete lock file
 		$this->lockFile( 'deleteLock' );
 
 		ob_end_clean();
@@ -446,11 +452,9 @@ class BuildIndexMainControl {
 		try {
 			$this->oSearchService->addDocument( $oSolrDocument );
 			$this->iDocsInIndex++;
-			wfRunHooks( 'BS:ExtendedSearch:AddDocumentLog', array( $oSolrDocument ) );
 		} catch ( Exception $ex ) {
-			if ( $iTryagain >= 2 ) { // todo: make no of retries configurable
-				$this->writeLog( $sMode, $sMessageOnError, 0 );
-				// todo: count documents, that have not been able to index and output this statistic
+			if ( $iTryagain >= 2 ) {
+				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' ' . $sMessageOnError );
 			} else {
 				// maybe solr has had too much to do so it was not always able to answer
 				sleep( 3 ); // todo: make timespan to wait configurable
@@ -602,92 +606,102 @@ class BuildIndexMainControl {
 	}
 
 	/**
-	 * Handles the search index lock file.
+	 * Handles the build index lock file.
 	 * @param string $sMode createLock, deleteLock
-	 * @return bool False if there is no logfile, true if no mode is given, no return value otherwise.
+	 * @return null
 	 */
-	public function lockFile( $sMode = '' ) {
-		if ( empty( $this->sFilePathLogFile ) ) return false;
-		if ( $sMode == '' ) return true;
-
+	public function lockFile( $sMode ) {
 		switch ( $sMode ) {
 			case 'createLock':
 				touch( $this->sFilePathLockFile );
-				return true;
+				break;
 			case 'deleteLock':
 				if ( file_exists( $this->sFilePathLockFile ) ) unlink( $this->sFilePathLockFile );
-				return true;
+				break;
 		}
 	}
 
 	/**
-	 * Handles the search index log file.
-	 * @param string $sMode delete, create, exists, is_writebale, write
-	 * @param string $sData Text to write to file.
-	 * @return bool False if there is no logfile, true if no mode is given, no return value otherwise.
+	 * Handles the build index log file.
+	 * @return null
 	 */
-	public function logFile( $sMode = '', $sData = '' ) {
-		if ( empty( $this->sFilePathLogFile ) ) return false;
-		if ( $sMode == '' ) return true;
-
-		switch ( $sMode ) {
-			case 'delete':
-				if ( $this->logFile( 'exists' ) ) unlink( $this->sFilePathLogFile );
-				return;
-			case 'create':
-				if ( $this->logFile( 'exists' ) ) $this->logFile( 'delete' );
-				touch( $this->sFilePathLogFile );
-				return true;
-			case 'exists':
-				return file_exists( $this->sFilePathLogFile );
-			case 'write':
-				if ( is_writable( $this->sFilePathLogFile ) ) {
-					$rFh = fopen( $this->sFilePathLogFile, 'a' );
-					fwrite( $rFh, $sData );
-					fclose( $rFh );
-				}
+	public function logFile() {
+		if ( !file_exists( $this->sFilePathIndexLogFile ) ){
+			touch( $this->sFilePathIndexLogFile );
+		} else {
+			unlink( $this->sFilePathIndexLogFile );
+			$this->logFile( 'create' );
 		}
 	}
 
 	/**
-	 * Write log output
+	 * Handles the build index progress file.
+	 * @return null
+	 */
+	public function progressFile( $sMode ) {
+		if ( $sMode === 'create' ) {
+			if ( file_exists( $this->sFilePathIndexProgTxt ) ) {
+				unlink( $this->sFilePathIndexProgTxt );
+				$this->progrssFile( 'create' );
+			} else {
+				touch( $this->sFilePathIndexProgTxt );
+			}
+		}
+		if ( $sMode === 'delete' ) {
+			if ( file_exists( $this->sFilePathIndexProgTxt ) ) {
+				unlink( $this->sFilePathIndexProgTxt );
+			}
+		}
+	}
+
+	/**
+	 * Writes output into the log file
+	 * @param string $sData text to write to file.
+	 * @return null
+	 */
+	public function writeLogOutput( $sData ) {
+		if ( is_writable( $this->sFilePathIndexLogFile ) ) {
+			$sData .= "\n";
+			file_put_contents( $this->sFilePathIndexLogFile, $sData, FILE_APPEND );
+		}
+	}
+
+	/**
+	 * Writes output into the progress file
+	 * @param string $sData text to write to file.
+	 * @return null
+	 */
+	public function writeProgressOutput( $sData ) {
+		if ( is_writable( $this->sFilePathIndexProgTxt ) ) {
+			file_put_contents( $this->sFilePathIndexProgTxt, $sData );
+		}
+	}
+
+	/**
+	 * Writes output to several files
 	 * @param string $sMode Information about the indexing area
 	 * @param string $sMessage Message to log.
 	 * @param string $sProgress Progress value between 0 and 100
-	 * @return void Returns no value if mode was unlink and no value otherwise.
+	 * @return null
 	 */
-	public function writeLog( $sMode, $sMessage = '', $sProgress = '' ) {
-		if ( $sMode == 'unlink' ) {
-			if ( !$this->bCommandLineMode ) sleep( 2 );
-			$this->writeLog( '__FINISHED__' );
-			if ( !$this->bCommandLineMode ) sleep( 2 );
-			unlink( $this->sFilePathIndexProgTxt );
-			return;
-		}
-
+	public function write( $sMode, $sMessage = '', $sProgress = '' ) {
 		$sMessage = addslashes( $sMessage );
 
-		$bExtendedSearchIndexVerbose = true;
-		if ( $bExtendedSearchIndexVerbose && $sMode != '__FINISHED__' ) {
-			$sOutput = "{$this->iDocsInIndex}: {$sMode}: {$sProgress}% - {$sMessage}";
+		$sOutput = ( !empty( $sMode ) )
+			? "{$this->iDocsInIndex}: {$sMode}: {$sProgress}% - {$sMessage}"
+			: $sMessage;
 
-			if ( $this->logFile() ) {
-				$this->logFile( 'write', "{$sOutput}\n" ); // output to logFile
-			}
-		}
+		$this->writeLogOutput( $sOutput );
 
-		// dont need index_prog.txt output on cmd
+		// dont need progess output on command line
 		if ( $this->bCommandLineMode ) return;
 
 		$sLine = '["'.$sMode.'", "'.$sMessage.'", "'.$sProgress.'"]';
-		$rFh = fopen( $this->sFilePathIndexProgTxt, 'w' ); // output one line to file, recreating file each time (for ajax progress bar)
-		fwrite( $rFh, $sLine );
-		fclose( $rFh );
+		$this->writeProgressOutput( $sLine );
 	}
 
 	/**
 	 * Parses text to be valid for indeing
-	 * @param string $sText Text to be parsed
 	 * @param object $oTitle Title object
 	 * @return string Parsed text or empty on failure
 	 */
@@ -746,10 +760,11 @@ class BuildIndexMainControl {
 	 * @param boolean $bOptimize optimize index or not
 	 * @return object Always null
 	 */
-	public function commitAndOptimize( $bOptimize = false ) {
+	public function commitAndOptimize( $bOptimize = false, $bWaitSearcher = true,
+		$bSoftCommit = false, $bExpungeDeletes = true ) {
 		// http://wiki.apache.org/solr/UpdateXmlMessages#A.22commit.22_and_.22optimize.22
 		try {
-			$this->oSearchService->commit( true, true, true, 60 );
+			$this->oSearchService->commit( $bWaitSearcher, $bSoftCommit, $bExpungeDeletes, 60 );
 
 			// Don't optimize on every call it is very expensive
 			if ( $bOptimize === true ) {

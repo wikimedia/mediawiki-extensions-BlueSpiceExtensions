@@ -73,21 +73,6 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualFilePath, $ts );
 	}
 
-	// duplicate of AbstractBuildIndexMwLinked
-	// they have no predecessor in common in bluespice-mw
-	// todo: externalize static, may be to AdapterMW
-	/**
-	 * Compares two timestamps
-	 * @param string $timestamp1 MW timestamp
-	 * @param string $timestamp2 MW timestamp
-	 * @return bool True if timestamp1 is younger than timestamp2
-	 */
-	public function isTimestamp1YoungerThanTimestamp2( $timestamp1, $timestamp2 ) {
-		$ts_unix1 = wfTimestamp( TS_UNIX, $timestamp1 );
-		$ts_unix2 = wfTimestamp( TS_UNIX, $timestamp2 );
-		return ( $ts_unix1 > $ts_unix2 );
-	}
-
 	/**
 	 * Indexes document that was set in __construct.
 	 */
@@ -104,6 +89,8 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 		if ( $oFileMinorDocType === false ) return;
 
 		$sFileDocType = $this->mimeDecoding( $oFileMinorDocType->img_minor_mime, $sFileName );
+		if ( !$this->checkDocType( $sFileDocType, $sFileName ) ) return;
+
 		$sFileTimestamp = $this->oFile->getTimestamp();
 
 		$sVirtualFilePath = $this->oFile->getPath();
@@ -112,24 +99,9 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 			$sFilePath = $oFileRepoLocalRef->getPath();
 		}
 
-		try {
-			$uniqueIdForDocument = $this->oMainControl->getUniqueId( $sVirtualFilePath, 'repo' );
-			$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
-		} catch ( Exception $e ) {
-			$this->writeLog( 'Error indexing file '.$sFileName.' with errormessage '.$e->getMessage() );
-			return;
-		}
+		if ( $this->checkExistence( $sVirtualFilePath, 'repo', $sFileTimestamp, $sFileName) ) return;
 
-		if ( $hitsDocumentInIndexWithSameUID->response->numFound != 0 ) {
-			// timestamps have different format => compare function to equalize both
-			$timestampIndexDoc = $hitsDocumentInIndexWithSameUID->response->docs[0]->ts;
-			if ( !$this->isTimestamp1YoungerThanTimestamp2( $sFileTimestamp, $timestampIndexDoc ) ) {
-				$this->writeLog( ('Already in index: '.$sFileName ) );
-				return;
-			}
-		}
-
-		$sFileText = $this->oMainControl->oSearchService->getFileText( $sFilePath, $this->iTimeLimit );
+		$sFileText = $this->getFileText( $sFilePath, $sFileName );
 
 		$doc = $this->makeRepoDocument( $sFileDocType, $sFileName, $sFileText, $sFilePath, $sFileTimestamp, $sVirtualFilePath );
 		if ( $doc ) {

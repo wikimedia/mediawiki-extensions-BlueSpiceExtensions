@@ -97,7 +97,7 @@ abstract class AbstractBuildIndexAll {
 
 	/**
 	 * Checks whether system settings are ok for a build run.
-	 * 
+	 *
 	 * if not implemented by child classes
 	 * OR if implemented and called via
 	 * parent::areYouAbleToRunWithSystemSettings
@@ -125,7 +125,7 @@ abstract class AbstractBuildIndexAll {
 	 */
 	public function writeLog( $sMessage = '', $sMode = null ){
 		if ( $sMode === null ) $sMode = $this->mode;
-		$this->oMainControl->writeLog( $sMode, $sMessage, $this->getProgress() );
+		$this->oMainControl->write( $sMode, $sMessage, $this->getProgress() );
 	}
 
 }
