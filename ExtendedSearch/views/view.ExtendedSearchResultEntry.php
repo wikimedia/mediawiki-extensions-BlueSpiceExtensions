@@ -34,7 +34,10 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		$sOut = '';
 		foreach ( $aSnippets as $sFrag ) {
 			if ( empty( $sFrag ) ) continue;
+			$sFrag = htmlspecialchars( $sFrag, ENT_QUOTES, 'UTF-8' );
+			$sFrag = str_replace( array( '&lt;em&gt;', '&lt;/em&gt;' ), array( '<em>', '</em>' ), $sFrag );
 			$sOut .= $sFrag . '<br />';
+
 		}
 		return $sOut;
 	}

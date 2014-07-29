@@ -29,11 +29,6 @@ class ViewSearchResult extends ViewBaseElement {
 	 */
 	protected $sOut = '';
 	/**
-	 * List of messages to be rendered.
-	 * @var array List of strings.
-	 */
-	protected $aMessages = array();
-	/**
 	 * Contain view for search entry.
 	 * @var ViewExtendedSearchResultEntry View for search entry.
 	 */
@@ -75,33 +70,11 @@ class ViewSearchResult extends ViewBaseElement {
 	}
 
 	/**
-	 * Adds a message to be displayed.
-	 * @param string $key Key for the message.
-	 * @param string $message The message in HTML.
-	 */
-	public function addMessage( $key, $message ) {
-		$this->aMessages[$key] = $message;
-	}
-
-	/**
 	 * Adds additional output to page.
 	 * @param string $aOutputToAdd HTML that shall be displayed.
 	 */
 	public function addOutput( $aOutputToAdd ) {
 		$this->out .= $aOutputToAdd;
-	}
-
-	/**
-	 * Prepares a message for direct output.
-	 * @param string $message The message that should be prepared.
-	 * @return string The modified message.
-	 */
-	protected function secureMessage( $message ) {
-		$search = array( "&lt;b&gt;", "&lt;/b&gt;", "&lt;i&gt;", "&lt;/i&gt;" );
-		$replace = array( "<b>", "</b>", "<i>", "</i>" ); // these tags may be contained in i18n messages
-		$secure = htmlentities( $message, ENT_QUOTES, 'UTF-8' );
-
-		return str_replace( $search, $replace, $secure ); // primitive whitelisting
 	}
 
 	/**
@@ -111,8 +84,6 @@ class ViewSearchResult extends ViewBaseElement {
 	public function execute( $param = false ) {
 		$aOut = array();
 		$aOut[] = parent::execute();
-		foreach ( $this->aMessages as $message )
-			$aOut[] = '<p>'.$this->secureMessage( $message )."</p>\n"; // primitive whitelisting
 
 		$aOut[] = $this->sOut;
 		if ( !empty( $this->aResultEntryView ) ) {
@@ -294,7 +265,6 @@ class ViewSearchResult extends ViewBaseElement {
 				$sDirectionMessage = ( $aSorting['sortdirection'] == 'asc' )
 					? wfMessage( 'bs-extendedsearch-ascending' )->plain()
 					: wfMessage( 'bs-extendedsearch-descending' )->plain();
-
 
 				global $wgScriptPath;
 				$sIcon .= '" title="' . $sDirectionMessage . '" alt="' . $sDirectionMessage . '" />';
