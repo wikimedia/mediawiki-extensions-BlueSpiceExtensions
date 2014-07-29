@@ -96,32 +96,25 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 	public function indexCrawledDocuments() {
 		foreach ( $this->aFiles as $sFile ) {
 			$oRepoFile = new SplFileInfo( $sFile );
+			if ( !$oRepoFile->isFile() ) continue;
 
+			$sFileName = $oRepoFile->getFilename();
 			$sDocType = $this->mimeDecoding( $oRepoFile->getExtension() );
-			if ( !$this->checkDocType( $sDocType, $oRepoFile->getFilename() ) ) continue;
+			if ( !$this->checkDocType( $sDocType, $sFileName ) ) continue;
 
 			if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
-			try {
-				$repoFileSize = $oRepoFile->getSize(); // throws Exception if file does not exist
-			} catch ( Exception $e ) {
-				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' File does not exist: ' . $oRepoFile->getFilename() );
-				continue;
-			}
-			if ( $this->sizeExceedsMaxDocSize( $repoFileSize ) ) {
-				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' File exceeds max doc size and will not be indexed: '.$oRepoFile->getFilename() );
-				continue;
-			}
+			if ( $this->sizeExceedsMaxDocSize( $oRepoFile->getSize(), $sFileName ) ) continue;
 
 			$sRepoFileRealPath = $oRepoFile->getRealPath();
 			$timestampImage = wfTimestamp( TS_ISO_8601, $oRepoFile->getMTime() );
 
-			if ( $this->checkExistence( $sRepoFileRealPath, 'external', $timestampImage, $oRepoFile->getFilename() ) ) return;
+			if ( $this->checkExistence( $sRepoFileRealPath, 'external', $timestampImage, $sFileName ) ) continue;
 
-			$text = $this->getFileText( $sRepoFileRealPath, $oRepoFile->getFilename() );
+			$text = $this->getFileText( $sRepoFileRealPath, $sFileName );
 
-			$doc = $this->makeRepoDocument( $sDocType, utf8_encode( $oRepoFile->getFilename() ), $text, utf8_encode( $sRepoFileRealPath ), $timestampImage );
-			$this->writeLog( $oRepoFile->getFilename() );
+			$doc = $this->makeRepoDocument( $sDocType, utf8_encode( $sFileName ), $text, utf8_encode( $sRepoFileRealPath ), $timestampImage );
+			$this->writeLog( $sFileName );
 
 			wfRunHooks( 'BSExtendedSearchBeforeAddExternalFile', array( $this, $oRepoFile, &$doc ) );
 

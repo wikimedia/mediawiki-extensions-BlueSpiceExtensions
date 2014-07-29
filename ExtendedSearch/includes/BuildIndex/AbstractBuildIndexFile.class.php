@@ -89,10 +89,12 @@ abstract class AbstractBuildIndexFile extends AbstractBuildIndexAll {
 	 * @param int $iSize Size of document to check in bytes.
 	 * @return bool True if document is too big.
 	 */
-	public function sizeExceedsMaxDocSize( $iSize ) {
-		if ( $this->iMaxDocSize === null || !is_int( $this->iMaxDocSize ) ) throw new Exception( 'iMaxDocSize not set or less than 1' );
-		if ( $this->iMaxDocSize <= 0 ) return false;
-		return ( $iSize > $this->iMaxDocSize );
+	public function sizeExceedsMaxDocSize( $iSize, $sFileName ) {
+		if ( $iSize > $this->iMaxDocSize ) {
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' File exceeds max doc size and will not be indexed: ' . $sFileName );
+			return true;
+		}
+		return false;
 	}
 
 	/**

@@ -86,6 +86,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	public function indexCrawledDocuments() {
 		while ( $document = $this->oDbr->fetchObject( $this->documentsDb ) ) {
 			$this->count++;
+
 			 if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
 			$this->writeLog( $document->img_name );
@@ -97,32 +98,22 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 			$oFile = wfLocalFile( $oTitle );
 			$sVirtualPath = $oFile->getPath();
 			$oFileRepoLocalRef = $oFile->getRepo()->getLocalReference( $sVirtualPath );
-			if ( !is_null( $oFileRepoLocalRef ) ) {
-				$path = $oFileRepoLocalRef->getPath();
-			}
+			if ( is_null( $oFileRepoLocalRef ) ) continue;
+			$path = $oFileRepoLocalRef->getPath();
 
-			$repoFile = new SplFileInfo( $path ); // todo: check - might be urlencoded
-			try {
-				$repoFileSize = $repoFile->getSize(); // throws Exception if file does not exist
-			} catch ( Exception $e ) {
-				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' File does not exist: '.$document->img_name );
-				continue;
-			}
+			$repoFile = new SplFileInfo( $path );
+			if ( !$repoFile->isFile() ) continue;
 
-			if ( $this->sizeExceedsMaxDocSize( $repoFileSize ) ){
-				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' File exceeds max doc size and will not be indexed: '.$document->img_name );
-				continue;
-			}
+			if ( $this->sizeExceedsMaxDocSize( $repoFile->getSize(), $document->img_name ) ) continue;
 
 			$repoFileRealPath = $repoFile->getRealPath();
 			$timestampImage = $document->img_timestamp;
 
-			if ( $this->checkExistence( $sVirtualPath, 'repo', $timestampImage, $document->img_name ) ) return;
+			if ( $this->checkExistence( $sVirtualPath, 'repo', $timestampImage, $document->img_name ) ) continue;
 
 			$text = $this->getFileText( $repoFileRealPath, $document->img_name );
 
 			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage, $sVirtualPath );
-
 			if ( $doc ) {
 				// mode and ERROR_MSG_KEY are only passed for the case when addDocument fails
 				$this->oMainControl->addDocument( $doc, $this->mode, self::S_ERROR_MSG_KEY );
