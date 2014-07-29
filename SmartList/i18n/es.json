@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"AVIADOR"
 		]
 	},
 	"bs-smartlist-desc": "Proporciona información adicional sobre el contenido y los usuarios",
+	"prefs-smartlist": "Lista inteligente",
 	"bs-smartlist-recent-changes": "Cambios recientes",
 	"bs-smartlist-no-entries": "No se encontraron resultados.",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|El espacio de nombres dado no es válido|Los espacios de nombres dados no son válidos}}: $2.",

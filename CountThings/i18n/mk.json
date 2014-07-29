@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-countthings-desc": "Дава статистики за содржините",
+	"bs-countthings-chars-label": "Знаци",
+	"bs-countthings-words-label": "Зборови",
+	"bs-countthings-pages-label": "Страници",
+	"bs-countthings-error-no-input": "Немате укажано страница.",
+	"bs-countthings-error-invalid-mode": "Режимот „$1“ е неважечки. Користете „chars“, „words“ или „pages“.",
+	"bs-countthings-error-not-exist": "Страницата „$1“ не постои.",
+	"bs-countthings-tag-countarticles-desc": "Го прикажува бројот на страници.",
+	"bs-countthings-tag-countusers-desc": "Го прикажува бројот на корисници.",
+	"bs-countthings-tag-countcharacters-desc": "Прикажува статистики за содржината на дадена страница. Расположив атрибут за поставка:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Што да се брои: <code>chars</code> (знаци), <code>words</code> (зборови) или <code>pages</code> (страници)."
+}

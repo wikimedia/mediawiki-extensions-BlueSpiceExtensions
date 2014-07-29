@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"WikiPhoenix"
 		]
 	},
 	"bs-insertmagic": "Infoga magiskt ord",
@@ -16,6 +17,7 @@
 	"bs-insertmagic-currenttime": "Tid (24-timmars HH:mm-format).",
 	"bs-insertmagic-currentweek": "Vecka (nummer).",
 	"bs-insertmagic-currenttimestamp": "Tidsstämpel med formatet ååååmmddhhmmss.",
+	"bs-insertmagic-server": "Domänens webbadress.",
 	"bs-insertmagic-servername": "Domännamn.",
 	"bs-insertmagic-contentlanguage": "Standardspråk för wikins gränssnitt.",
 	"bs-insertmagic-revisionid": "Unikt versions-ID.",

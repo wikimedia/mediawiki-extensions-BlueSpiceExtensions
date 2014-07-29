@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"AVIADOR"
 		]
 	},
 	"bs-review-desc": "Añade funcionalidad de revisión",
@@ -21,6 +22,8 @@
 	"bs-review-save-success": "La revisión fue asignada.",
 	"bs-review-save-error": "Se produjo un error al guardar.",
 	"bs-review-save-removed": "La revisión se ha eliminado.",
+	"bs-review-save-nosteps": "No se introdujeron pasos de revisión.",
+	"bs-review-save-noid": "No se envió ningún identificador de página.",
 	"bs-review-save-norights": "No tienes los permisos necesarios.",
 	"bs-review-review-error": "Ocurrió un error desconocido.",
 	"bs-review-review-secondtime": "No se pudo encontrar la revisión. Quizás intentas revisar la página de nuevo.",

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-checklist-menu-insert-list-title": "Infoga lista",
-	"bs-checklist-menu-insert-checkbox": "Kryssruta"
+	"bs-checklist-menu-insert-checkbox": "Kryssruta",
+	"bs-checklist-dlg-insert-list-value-list": "Värdelista"
 }

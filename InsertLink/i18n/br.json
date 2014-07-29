@@ -1,14 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Y-M D"
+			"Y-M D",
+			"Fohanno"
 		]
 	},
+	"bs-insertlink": "Ensoc'hañ ul liamm",
 	"bs-insertlink-dialog-title": "Ensoc'hañ ul liamm",
+	"bs-insertlink-tab-wiki-page": "Pajenn wiki",
 	"bs-insertlink-tab-ext-link": "Liamm diavaez",
 	"bs-insertlink-tab-ext-file": "Liamm ouzh ur restr",
 	"bs-insertlink-label-page": "Pajenn",
 	"bs-insertlink-label-link": "Liamm",
+	"bs-insertlink-label-mail": "Chomlec'h postel",
+	"bs-insertlink-label-description": "Deskrivadur",
 	"bs-insertlink-label-file": "Restr",
 	"bs-insertlink-label-searchfile": "Klask...",
 	"bs-insertlink-select-a-namespace": "(Pajennoù)"

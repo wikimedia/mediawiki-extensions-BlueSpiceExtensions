@@ -35,5 +35,11 @@
 	"bs-smartlist-tag-toplist-desc": "Виводить на екран список найбільш відвідуваних сторінок.",
 	"bs-smartlist-mostvisitedpages": "Сторінки, які найчастіше переглядають",
 	"bs-smartlist-mosteditedpages": "Найредагованіші сторінки",
-	"bs-smartlist-mostactiveusers": "Найактивніші користувачі (за редагуваннями)"
+	"bs-smartlist-mostactiveusers": "Найактивніші користувачі (за редагуваннями)",
+	"bs-smartlist-lastedits": "Мої редагування",
+	"bs-smartlist-noedits": "Редагувань не знайдено.",
+	"bs-smartlist-mostactiveusersdesc": "Список найбільш активних користувачів, відсортованих за їх редагуваннями.",
+	"bs-smartlist-mosteditedpagesdesc": "Список найбільш редагованих сторінок, відсортованих за їх редагуваннями.",
+	"bs-smartlist-mostvisitedpagesdesc": "Список найбільш відвідуваних сторінок, відсортованих за їх переглядами.",
+	"bs-smartlist-lasteditsdesc": "Список сторінок, які Ви редагували."
 }

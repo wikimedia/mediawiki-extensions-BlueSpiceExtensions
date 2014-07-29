@@ -4,7 +4,31 @@
 			"Fohanno"
 		]
 	},
+	"bs-insertfile-insert-image": "Ensoc'hañ ur skeudenn",
+	"bs-insertfile-insert-file": "Ensoc'hañ ur restr",
+	"bs-insertfile-labelsort": "Renkañ dre :",
 	"bs-insertfile-labelfilter": "Sil :",
 	"bs-insertfile-filename": "Anv ar restr",
-	"bs-insertfile-filesize": "Ment ar restr"
+	"bs-insertfile-filesize": "Ment ar restr",
+	"bs-insertfile-lastmodified": "Kemmoù graet nevez zo",
+	"bs-insertfile-labelupload": "Ezporzhiañ",
+	"bs-insertfile-details-title": "Munudoù",
+	"bs-insertfile-labellink": "Liamm",
+	"bs-insertfile-alignnone": "hini ebet",
+	"bs-insertfile-labeltype": "Kinkladur",
+	"bs-insertfile-typenone": "hini ebet",
+	"bs-insertfile-typeframe": "framm",
+	"bs-insertfile-typeborder": "bord",
+	"bs-insertfile-uploadbuttontext": "Furchal",
+	"bs-insertfile-uploadimageemptytext": "Choaz ur skeudenn nevez...",
+	"bs-insertfile-uploadfileemptytext": "Choaz ur restr nevez...",
+	"bs-insertfile-uploaddescfilelabel": "Diverradur",
+	"bs-insertfile-uploadwatchthislabel": "Evezhiañ ar restr-mañ",
+	"bs-insertfile-error": "Fazi",
+	"bs-insertfile-errornofileextensiononupload": "Ar restr ho peus choazet n'he deus astenn ebet.",
+	"bs-insertfile-titlefile": "Ensoc'hañ ur restr",
+	"bs-insertfile-titleimage": "Ensoc'hañ ur skeudenn",
+	"bs-insertfile-of": "eus",
+	"bs-insertfile-categories": "Rummadoù",
+	"bs-insertfile-no-link": "Liamm ebet"
 }

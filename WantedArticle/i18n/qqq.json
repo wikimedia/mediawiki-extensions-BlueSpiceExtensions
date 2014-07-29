@@ -7,13 +7,14 @@
 			"Shirayuki",
 			"Nemo bis",
 			"Smuggli",
-			"Lloffiwr"
+			"Lloffiwr",
+			"Ата"
 		]
 	},
 	"bs-wantedarticle-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of wanted page extension",
 	"prefs-wantedarticle": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for wanted page section in preferences.\n{{Identical|Wanted page}}",
 	"bs-wantedarticle-ajax-error-no-parameter": "Text for no page title provided.",
-	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Text for the suggested page \"$1\" already exitis. \n $1 is the name of the suggested page",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Text for the suggested page \"$1\" already exitis. \n* $1 is the name of the suggested page",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Text for the suggested page \"$1\" is already suggested. \n\n$1 is the name of the suggested page",
 	"bs-wantedarticle-edit-comment-suggestion-added": "Text for suggestion \"$1\" added. \n\n$1 is the name of the suggested page",
 	"bs-wantedarticle-success-suggestion-entered": "Text for your suggestion \"$1\" has been added.",

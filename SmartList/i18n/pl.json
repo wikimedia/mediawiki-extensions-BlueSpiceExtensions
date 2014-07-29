@@ -35,5 +35,6 @@
 	"bs-smartlist-mostactiveusers": "Najbardziej aktywni użytkownicy (według liczby edycji)",
 	"bs-smartlist-lastedits": "Moje zmiany",
 	"bs-smartlist-noedits": "Nie znaleziono zmian.",
-	"bs-smartlist-mosteditedpagesdesc": "Lista najczęściej edytowanych stron posortowana według liczby edycji."
+	"bs-smartlist-mosteditedpagesdesc": "Lista najczęściej edytowanych stron posortowana według liczby edycji.",
+	"bs-smartlist-mostvisitedpagesdesc": "Lista najczęściej oglądanych stron posortowana według liczby odsłon."
 }

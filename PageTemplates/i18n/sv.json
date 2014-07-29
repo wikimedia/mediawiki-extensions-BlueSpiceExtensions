@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"WikiPhoenix"
 		]
 	},
+	"prefs-pagetemplates": "Sidmallar",
 	"bs-pagetemplates-empty-page": "Tom sida",
 	"bs-pagetemplates-empty-page-desc": "Börja med en tom sida.",
 	"bs-pagetemplatesadmin-label": "Sidmallar",
@@ -22,7 +24,7 @@
 	"bs-pagetemplates-headerlabel": "Etikett",
 	"bs-pagetemplates-headertargetnamespace": "Namnrymd",
 	"bs-pagetemplates-tipeditdetails": "Redigera mall",
-	"bs-pagetemplates-tipdeletetemplate": "Radera mall",
+	"bs-pagetemplates-tipdeletetemplate": "Radera {{PLURAL:$1|mall|mallar}}",
 	"bs-pagetemplates-tipaddtemplate": "Lägg till mall",
 	"bs-pagetemplates-label-tpl": "Mallnamn",
 	"bs-pagetemplates-label-desc": "Beskrivning",

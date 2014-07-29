@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Namnrymd",
+	"bs-namespacemanager-label-subpages": "Undersidor",
+	"bs-namespacemanager-nsadded": "Namnrymden har lagts till.",
+	"bs-namespacemanager-nsremoved": "Namnrymden har tagits bort.",
+	"bs-namespacemanager-nsedited": "Namnrymden har redigerats.",
+	"bs-namespacemanager-tipadd": "Lägg till namnrymd",
+	"bs-namespacemanager-tipedit": "Redigera namnrymd",
+	"bs-namespacemanager-tipremove": "Ta bort namnrymd",
+	"bs-namespacemanager-willdelete": "Kommer att raderas",
+	"bs-namespacemanager-willmove": "Kommer att flyttas till \"{{int:bs-ns_main}}\"",
+	"bs-namespacemanager-willmovesuffix": "Kommer att flyttas till \"{{int:bs-ns_main}}\" med suffixet \"{{int:bs-from-something}}\"",
+	"bs-namespacemanager-pagepresent": "Sidor i denna namnrymd:"
+}

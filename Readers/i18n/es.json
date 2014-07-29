@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"AVIADOR"
 		]
 	},
+	"bs-readers-desc": "Muestra los lectores de una página y las páginas leídas por un usuario",
 	"prefs-readers": "Lectores",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Lector|Lectora}}|Lectores}}",
 	"readers-user": "Páginas {{GENDER:$1|leídas}} por: $1",

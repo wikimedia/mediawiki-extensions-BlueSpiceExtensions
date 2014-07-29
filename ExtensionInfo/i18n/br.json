@@ -12,5 +12,7 @@
 	"bs-extensioninfo-headerextname": "Anv an astenn",
 	"bs-extensioninfo-headerversion": "Stumm",
 	"bs-extensioninfo-headerdesc": "Deskrivadur",
-	"bs-extensioninfo-headerstatus": "Statud"
+	"bs-extensioninfo-headerstatus": "Statud",
+	"bs-extensioninfo-headerpackage": "Pakad",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elfenn|a elfennoù}}"
 }

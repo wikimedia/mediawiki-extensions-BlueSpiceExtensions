@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Y-M D"
+			"Y-M D",
+			"Fohanno"
 		]
 	},
 	"prefs-blog": "Blog",
@@ -10,5 +11,6 @@
 	"bs-blog-permalink": "Peurliamm",
 	"bs-blog-form-inline-text": "Titl...",
 	"bs-blog-form-button-text": "Krouiñ",
-	"bs-blog-blog": "Blog"
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-sortby": "Renkañ dre :"
 }

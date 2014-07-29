@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-review-rejected": "Distaolet",
+	"bs-review-not-allowed": "N'oc'h ket aotreet da vont d'ar bajenn-mañ.",
+	"bs-review-pref-shownameintooltip": "Diskouez anvioù ar berzhidi",
+	"bs-review-expired": "Aet d'e dermen",
+	"bs-review-colstatus": "Statud",
+	"bs-review-lblstartdate": "Deiziad kregiñ",
+	"bs-review-lblenddate": "Deiziad echuiñ",
+	"bs-review-header-page-title": "Pajenn",
+	"bs-review-header-owner-name": "Perc'henn"
+}

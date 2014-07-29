@@ -10,7 +10,7 @@
 	"bs-pagetemplates-headerlabel": "Etykieta",
 	"bs-pagetemplates-headertargetnamespace": "Przestrzeń nazw",
 	"bs-pagetemplates-tipeditdetails": "Edytuj szablon",
-	"bs-pagetemplates-tipdeletetemplate": "Usuń szablon",
+	"bs-pagetemplates-tipdeletetemplate": "Usuń {{PLURAL:$1|szablon|szablony}}",
 	"bs-pagetemplates-tipaddtemplate": "Dodaj szablon",
 	"bs-pagetemplates-label-tpl": "Nazwa szablonu",
 	"bs-pagetemplates-label-desc": "Opis",

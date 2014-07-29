@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-countthings-chars-label": "Znaki",
+	"bs-countthings-words-label": "Słowa",
+	"bs-countthings-pages-label": "Strony",
+	"bs-countthings-error-not-exist": "Strona „$1” nie istnieje.",
+	"bs-countthings-tag-countarticles-desc": "Wyświetla liczbę stron.",
+	"bs-countthings-tag-countusers-desc": "Wyświetla liczbę użytkowników."
+}

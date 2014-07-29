@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-countthings-chars-label": "Caracteres",
+	"bs-countthings-words-label": "Palavras",
+	"bs-countthings-pages-label": "Páginas",
+	"bs-countthings-error-no-input": "Nenhuma página fornecida.",
+	"bs-countthings-error-invalid-mode": "O modo \"$1\" é inválido. Por favor, utilize \"caracteres\", \"palavras\" ou \"páginas\".",
+	"bs-countthings-error-not-exist": "A página \"$1\" não existe.",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>modo</code>: Devem ser contados <code>caracteres</code> (caracteres), <code>palavras</code> (palavras) ou <code>páginas</code> (páginas)."
+}

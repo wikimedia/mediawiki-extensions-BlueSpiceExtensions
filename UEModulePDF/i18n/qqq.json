@@ -4,10 +4,11 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Robby",
-			"Shirayuki"
+			"Shirayuki",
+			"Ата"
 		]
 	},
-	"bs-uemodulepdf-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of UEModulePDF extension \n UEModulePDF stands for Universal Export Module PDF",
+	"bs-uemodulepdf-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of UEModulePDF extension \n* UEModulePDF stands for Universal Export Module PDF",
 	"prefs-uemodulepdf": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for universal export PDF module",
 	"uemodulepdf": "Special page name for universal export PDF module.",
 	"bs-uemodulepdf-pref-pdfserviceurl": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for backend URL:\n{{Identical|Backend URL}}",

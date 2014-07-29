@@ -4,12 +4,14 @@
 			"Ата"
 		]
 	},
+	"bs-saferedit-desc": "Проміжне збереження редагувань",
 	"prefs-saferedit": "Безпечніше редагування",
 	"bs-saferedit-restore": "Відновити",
 	"bs-saferedit-safer-edit-tooltip": "Доступна відновлена версія.",
 	"bs-saferedit-safer-edit-topbar": "Відновлення",
 	"bs-saferedit-user-editing": "$1 {{GENDER:$1|редагує}} сторінку",
 	"bs-saferedit-someone-editing": "Сторінка редагується",
+	"bs-saferedit-pref-interval": "Інтервал відновлених версій:",
 	"bs-saferedit-pref-shownameofeditinguser": "Показати ім'я поточного редактора",
 	"bs-saferedit-pref-warnonleave": "Попереджати мене, якщо я залишаю сторінку редагування з незбереженими змінами",
 	"bs-saferedit-pref-usese": "Активувати безпечніше редагування",

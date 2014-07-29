@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-flexiskin-label": "Utseende",
+	"bs-flexiskin-defaultname": "Standard",
+	"bs-flexiskin-defaultdesc": "Standardutseendemall.",
+	"bs-flexiskin-error-skinexists": "Ett utseende med det namnet finns redan.",
+	"bs-flexiskin-error-fail-add-skin": "Ett utseende kunde inte skapas:  $1.",
+	"prefs-flexiskin": "Utseende",
+	"bs-flexiskin-pref-active": "Aktuellt utseende:",
+	"bs-flexiskin-pref-logo": "Logotyp",
+	"bs-flexiskin-labelname": "Namn",
+	"bs-flexiskin-labeldesc": "Beskrivning",
+	"bs-flexiskin-headergeneral": "Allmänt",
+	"bs-flexiskin-titleaddskin": "Lägg till utseende",
+	"bs-flexiskin-labelskins": "Mall",
+	"bs-flexiskin-headeractive": "Aktiv",
+	"bs-flexiskin-labelbgcolor": "Bakgrundsfärg",
+	"bs-flexiskin-headerheader": "Rubrik",
+	"bs-flexiskin-labellogoupload": "Logotyp",
+	"bs-flexiskin-labelbackgroundupload": "Bakgrundsbild",
+	"bs-flexiskin-no-repeat": "ingen upprepning",
+	"bs-flexiskin-repeat-x": "horisontell upprepning",
+	"bs-flexiskin-repeat-y": "vertikala upprepning",
+	"bs-flexiskin-repeat": "horisontella och vertikala upprepning",
+	"bs-flexiskin-labelrepeatbackground": "Upprepa bakgrundsbild",
+	"bs-flexiskin-labelcustombgcolor": "Anpassad färg",
+	"bs-flexiskin-headerposition": "Position och storlek",
+	"bs-flexiskin-labelnavigation": "Position för navigering",
+	"bs-flexiskin-labelcontent": "Position för innehåll",
+	"bs-flexiskin-left": "vänster",
+	"bs-flexiskin-right": "höger",
+	"bs-flexiskin-center": "centrerad",
+	"bs-flexiskin-labelwidth": "Komplett bredd (i bildpunkter)",
+	"bs-flexiskin-labelfullwidth": "Maximal bredd"
+}

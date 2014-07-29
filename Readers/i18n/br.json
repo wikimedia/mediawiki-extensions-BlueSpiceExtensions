@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"prefs-readers": "Lennerien",
+	"bs-readers-contentactions-label": "Diskwel al lennerien",
+	"bs-readers-pagenotexists": "N'eus ket eus ar bajenn.",
+	"bs-readers-header-username": "Anv implijer",
+	"bs-readers-header-readerspath": "Lenner",
+	"bs-readers-header-ts": "Deiziad"
+}

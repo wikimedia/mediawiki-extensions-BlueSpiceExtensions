@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Orikrin1998"
+		]
+	},
+	"bs-rssfeeder-desc": "Créer votre propre flux RSS",
+	"bs-rssfeeder-pagetext": "Vous pouvez vous abonner aux flux RSS suivants :",
+	"bs-rssfeeder-recent-changes": "Modifications récentes",
+	"bs-rssfeeder-pages": "Page",
+	"bs-rssfeeder-submit": "Afficher",
+	"bs-rssfeeder-rss": "Flux RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL du flux RSS"
+}

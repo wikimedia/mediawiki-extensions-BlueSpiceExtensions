@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"AVIADOR"
 		]
 	},
-	"bs-topmenubarcustomizer-desc": "Crear y editar menús existentes"
+	"bs-topmenubarcustomizer-desc": "Crear y editar menús existentes",
+	"prefs-topmenubarcustomizer": "Personalizador de menú",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Número de capas anidadas:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entradas en la capa principal:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entradas en las sub-capas:"
 }

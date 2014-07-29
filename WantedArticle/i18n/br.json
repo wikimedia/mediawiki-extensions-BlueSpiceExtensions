@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-wantedarticle-single-textfield-createbutton-text": "Krouiñ",
+	"bs-wantedarticle-single-textfield-defaulttext": "Titl ar bajenn",
+	"bs-wantedarticle-tag-more-linktext": "Muioc'h...",
+	"bs-wantedarticle-pref-sort-time": "Eur",
+	"bs-wantedarticle-pref-sort-title": "Titl",
+	"bs-wantedarticle-pref-order-asc": "war gresk",
+	"bs-wantedarticle-pref-order-desc": "war zigresk",
+	"bs-wantedarticle-create-page": "Krouiñ ar bajenn \"$1\"."
+}

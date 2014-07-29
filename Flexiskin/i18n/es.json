@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe"
+		]
+	},
+	"bs-flexiskin-defaultname": "Predeterminada",
+	"bs-flexiskin-reset-error": "No se pudo restablecer la configuración: $1.",
+	"bs-flexiskin-error-get-config": "No se pudo cargar la configuración: $1.",
+	"bs-flexiskin-not-allowed": "No se permite el acceso a esta página.",
+	"bs-flexiskin-pref-logo": "Logo:",
+	"bs-flexiskin-labelname": "Nombre",
+	"bs-flexiskin-labeldesc": "Descripción",
+	"bs-flexiskin-headergeneral": "General",
+	"bs-flexiskin-dialogclose": "¿Estás seguro de que quieres cerrar la previsualización?",
+	"bs-flexiskin-labelskins": "Plantilla",
+	"bs-flexiskin-labelbgcolor": "Color de fondo",
+	"bs-flexiskin-headerheader": "Encabezamiento",
+	"bs-flexiskin-labellogoupload": "Logotipo",
+	"bs-flexiskin-labelbackgroundupload": "Imagen de fondo",
+	"bs-flexiskin-labelrepeatbackground": "Repetir la imagen de fondo",
+	"bs-flexiskin-labelcustombgcolor": "Color personalizado",
+	"bs-flexiskin-headerposition": "Posición y tamaño",
+	"bs-flexiskin-labelnavigation": "Posición de la navegación",
+	"bs-flexiskin-labelcontent": "Posición del contenido",
+	"bs-flexiskin-left": "izquierda",
+	"bs-flexiskin-right": "derecha",
+	"bs-flexiskin-center": "centro",
+	"bs-flexiskin-labelwidth": "Anchura completa (en píxeles)",
+	"bs-flexiskin-labelfullwidth": "Anchura máxima",
+	"bs-flexiskin-error-templatenotexists": "La plantilla elegida no existe."
+}

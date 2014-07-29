@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"prefs-csyntaxhighlight": "Syntaxmarkering",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Visa radnummer",
+	"bs-csyntaxhighlight-pref-autolinks": "Länka webbadresser",
+	"bs-csyntaxhighlight-pref-toolbar": "Visa verktygsfält"
+}

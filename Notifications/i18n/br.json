@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-echo-anon-user": "dizanv",
+	"bs-echo-unknown-user": "dianav",
+	"bs-echo-page-edit": "Kemmet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-create": "Krouet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-delete": "Dilamet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-move": "Dilec'hiet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-newuser": "Krouet eo bet an implijer $1.",
+	"bs-notifications-email-new-subject": "Pajenn $1 {{GENDER:$2|krouet}} gant $2",
+	"bs-notifications-email-edit-subject": "Pajenn $1 {{GENDER:$2|aozet}} gant $2",
+	"bs-notifications-email-move-subject": "Pajenn $1 {{GENDER:$2|dilec'hiet}} gant $2",
+	"bs-notifications-email-addaccount-subject": "Implijer $1 krouet"
+}
