@@ -57,6 +57,7 @@ $messages['en'] = array(
 	'bs-review-save_noid' => 'No page ID was sent.',
 	'bs-review-save_norights' => 'You do not have the neccessary rights.',
 	'bs-review-review_error' => 'An error occurred.',
+	'bs-review-review_permissions_error' => 'You don\'t have the permission to execute this action (\'$1\' needed).',
 	'bs-review-review_secondtime' => 'An error occurred. Possibly, you are trying to review the page the second time.',
 	'bs-review-review_saved' => 'Your vote was saved.',
 	'bs-review-mail-accept-header' => '$1: $4 has accepted $2',
@@ -145,9 +146,9 @@ $messages['en'] = array(
 	'bs-review-commentinputlabel'        => 'Your comment',
 	'bs-review-ownercomment'             => 'Comment of $1',
 	'bs-review-comments' => 'Comments',
-	
+
 	//Permissions
-	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there 
+	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there
 	//is no UI to display them yet.
 	'action-workflowview' => 'to access this interface',
 	'right-workflowview' => 'See interface components of the Review extension',
@@ -240,6 +241,7 @@ $messages['de'] = array(
 	'bs-review-save_noid'                => 'Es wurde keine SeitenID übertragen',
 	'bs-review-save_norights'            => 'Du hast nicht die erforderliche Berechtigung',
 	'bs-review-review_error'             => 'Es ist ein Fehler aufgetreten',
+	'bs-review-review_permissions_error' => 'Du hast nicht die benötigten Berechtigungen, um diese Aktion auszuführen (\'$1\' wird benötigt).',
 	'bs-review-review_secondtime'        => 'Es ist ein Fehler aufgetreten. Möglicherweise versuchst Du, eine Seite zum zweiten Mal zu begutachten',
 	'bs-review-review_saved'             => 'Die Begutachtung wurde gespeichert',
 	'bs-review-mail-accept-header'       => '$1: $4 hat dem Artikel $2 zugestimmt',
@@ -328,9 +330,9 @@ $messages['de'] = array(
 	'bs-review-commentinputlabel'        => 'Dein Kommentar',
 	'bs-review-ownercomment'             => 'Kommentar von $1',
 	'bs-review-comments' => 'Kommentare',
-	
+
 	//Permissions
-	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there 
+	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there
 	//is no UI to display them yet.
 	'action-workflowview' => 'diese Seite aufzurufen',
 	'right-workflowview' => 'Oberflächenelemente der Review Erweiterung anzeigen',
@@ -414,6 +416,7 @@ $messages['de-formal'] = array(
 	'bs-review-confirm-delete-step' => 'Möchten Sie diesen Schritt wirklich löschen?',
 	'bs-review-confirm-delete-review' => 'Möchten Sie diese Begutachtung wirklich löschen?',
 	'bs-review-commentinputlabel'        => 'Ihr Kommentar',
+	'bs-review-review_permissions_error' => 'Sie haben nicht die benötigten Berechtigungen, um diese Aktion auszuführen (\'$1\' wird benötigt).',
 );
 
 $messages['qqq'] = array();

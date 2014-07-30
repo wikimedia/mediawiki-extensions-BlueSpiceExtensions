@@ -4,7 +4,7 @@
  * Review Extension for BlueSpice
  *
  * Adds workflow functionality to pages.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -299,7 +299,7 @@ class Review extends BsExtensionMW {
 			} else {
 				if (!$dbr->fieldExists('bs_review_steps', 'revs_delegate_to')) {
 					$dbr->query('ALTER TABLE ' . $dbr->tableName('bs_review_steps') . ' RENAME COLUMN delegate_to TO revs_delegate_to');
-					//wont work on linux for NO reason ...  
+					//wont work on linux for NO reason ...
 					//$wgExtModifiedFields[ ] = array( 'bs_review_steps', 'delegate_to', $sDir . 'db/oracle/review_steps.patch.delegate_to.sql' );
 				}
 			}
@@ -377,7 +377,7 @@ class Review extends BsExtensionMW {
 
 	/**
 	 * Wrapper method for the process of sending notification mails
-	 * 
+	 *
 	 * @param string $sType a key which identifies the messages keys for the mail (accept, decline etc)
 	 * @param User $oReceiver the user object of the user which should get the notification
 	 * @param array $aParams additional parameters for the message
@@ -640,7 +640,7 @@ class Review extends BsExtensionMW {
 	 * @param User $oUser Currently authenticated user.
 	 * @param string $sAction Action for which a permission is being requested.
 	 * @param bool $bRight Is user currently allowed to do the action on the page? If this is set to false, permission will be denied.
-	 * @return bool Allow other hooked methods to be executed. False if edit right is denied. 
+	 * @return bool Allow other hooked methods to be executed. False if edit right is denied.
 	 */
 	public function checkReviewPermissions($oTitle, $oUser, $sAction, &$bRight) {
 		$aActionsBlacklist = array('edit', 'delete', 'move', 'protect', 'rollback');
@@ -652,7 +652,7 @@ class Review extends BsExtensionMW {
 			return true; // There is no review on the page
 
 
-			
+
 // Because of FlaggedRevs is it now allowed to edit when a workflow is finished...
 		$bResult = false;
 		wfRunHooks('checkPageIsReviewable', array($oTitle, &$bResult));
@@ -679,7 +679,7 @@ class Review extends BsExtensionMW {
 	 * Prevents the FlaggedRevsConnector form from being shown when a workflow is active
 	 * @param Title $oCurrentTitle
 	 * @param array $aFlagInfo
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onBSFlaggedRevsConnectorCollectFlagInfo($oCurrentTitle, &$aFlagInfo) {
 		$oRev = BsReviewProcess::newFromPid($oCurrentTitle->getArticleID());
@@ -899,7 +899,7 @@ class Review extends BsExtensionMW {
 	 * Hook-Handler for Hook 'BSStateBarBeforeTopViewAdd'
 	 * @param StateBar $oStateBar
 	 * @param array $aTopViews
-	 * @return boolean Always true to keep hook running 
+	 * @return boolean Always true to keep hook running
 	 */
 	public function onStateBarBeforeTopViewAdd($oStateBar, &$aTopViews, $oUser, $oTitle) {
 		$sIcon = 'bs-infobar-workflow-open';
@@ -1008,7 +1008,7 @@ class Review extends BsExtensionMW {
 		$oReviewView->addButton(
 				'bs-review-ok', 'bs-icon-accept', wfMessage('bs-review-i-agree')->plain(), wfMessage('bs-review-i-agree')->plain()
 		);
-		
+
 
 		if ($res = $oRev->isFinished()) {
 			//$text = wfMessage( 'bs-review-review_finished' )->plain();
@@ -1059,7 +1059,7 @@ class Review extends BsExtensionMW {
 		if ($bResult) {
 			$obj = FlaggedRevision::newFromStable($oTitle);
 		}
-		
+
 		$aComments = array();
 		foreach($oRev->steps as $_step) {
 			if(!empty($_step->comment) && $_step->status != -1) {
@@ -1068,7 +1068,7 @@ class Review extends BsExtensionMW {
 		}
 		$oReviewView->setPreceedingCommentsList($aComments);
 
-		if (empty($pages) || !in_array($oTitle->getArticleID(), $pages)) {
+		if ((empty($pages) || !in_array($oTitle->getArticleID(), $pages)) && $oTitle->userCan("workflowview", $oUser)) {
 			$aBodyViews['statebarbodyreview'] = $oReviewView;
 			return true;
 		}
@@ -1082,7 +1082,8 @@ class Review extends BsExtensionMW {
 		$oReviewView->setComment( $step->comment );
 
 		wfRunHooks('BsReview::checkStatus::afterMessage', array($step, $oReviewView));
-		$aBodyViews['statebarbodyreview'] = $oReviewView;
+		if ($oTitle->userCan("workflowview", $oUser))
+			$aBodyViews['statebarbodyreview'] = $oReviewView;
 		return true;
 	}
 
@@ -1115,11 +1116,11 @@ class Review extends BsExtensionMW {
 	 */
 	public function makeUserBar(&$aViews, $oUser, $oSender) {
 		global $wgScriptPath;
-		
+
 		if( $oUser->isAllowed('workflowview') === false ) {
 			return true;
 		}
-		
+
 		$iCountReviews = count(BsReviewProcess::listReviews($oUser->getId()));
 		$iCountFinishedReviews = BsReviewProcess::userHasWaitingReviews($oUser);
 
@@ -1150,7 +1151,7 @@ class Review extends BsExtensionMW {
 		$sComment = $wgRequest->getVal('comment', '');
 
 		if (BsCore::checkAccessAdmission('workflowview') === false) {
-			return '';
+			return wfMessage('bs-review-review_permissions_error', 'workflowview')->text();
 		}
 
 		if (empty($iArticleId) || empty($sVote)) {
@@ -1216,12 +1217,12 @@ class Review extends BsExtensionMW {
 				$data['revs_status'] = -1;
 				break;
 		}
-		
+
 		// Identify owner
 		$oReviewProcess = BsReviewProcess::newFromPid($iArticleId);
 		$oOwner = User::newFromID($oReviewProcess->getOwner());
 		$sOwnerMail = $oOwner->getEmail();
-		
+
 		$sUserName = BsCore::getUserDisplayName($oUser);
 		$sOwnerName = BsCore::getUserDisplayName($oOwner);
 		if( !empty($initial_comment) ) {
@@ -1295,7 +1296,7 @@ class Review extends BsExtensionMW {
 	 * Adds CSS to Page
 	 * @param OutputPage $out
 	 * @param Skin $skin
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onBeforePageDisplay(&$out, &$skin) {
 		$out->addModuleStyles('ext.bluespice.review.styles');
