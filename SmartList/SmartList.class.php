@@ -109,22 +109,24 @@ class SmartList extends BsExtensionMW {
 	 */
 	public static function getSchemaUpdates( $updater ) {
 		$odbw = wfGetDB( DB_MASTER );
-		$res = $odbw->select(
-			'bs_settings',
-			$odbw->addIdentifierQuotes( 'value' ),
-			array(
-				$odbw->addIdentifierQuotes( 'key' ) => 'MW::SmartList::Order'
-			)
-		);
-		if ( $odbw->numRows( $res ) === 1 ) {
-			$obj = $odbw->fetchObject( $res );
-			if ( $obj->value === serialize( 'time' ) || $obj->value === serialize( 'title' ) ) {
-				$odbw->delete(
+		if ( $odbw->tableExists( 'bs_settings' ) === true ) {
+			$res = $odbw->select(
 				'bs_settings',
+				$odbw->addIdentifierQuotes( 'value' ),
 				array(
 					$odbw->addIdentifierQuotes( 'key' ) => 'MW::SmartList::Order'
 				)
 			);
+			if ( $odbw->numRows( $res ) === 1 ) {
+				$obj = $odbw->fetchObject( $res );
+				if ( $obj->value === serialize( 'time' ) || $obj->value === serialize( 'title' ) ) {
+					$odbw->delete(
+					'bs_settings',
+					array(
+						$odbw->addIdentifierQuotes( 'key' ) => 'MW::SmartList::Order'
+					)
+				);
+				}
 			}
 		}
 		return true;
