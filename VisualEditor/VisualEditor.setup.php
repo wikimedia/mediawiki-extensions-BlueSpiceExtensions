@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('VisualEditor', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$GLOBALS['wgAutoloadClasses']['VisualEditor'] = __DIR__ . '/VisualEditor.class.php';
+
 $wgMessagesDirs['VisualEditor'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['VisualEditor'] = __DIR__ . '/languages/VisualEditor.i18n.php';

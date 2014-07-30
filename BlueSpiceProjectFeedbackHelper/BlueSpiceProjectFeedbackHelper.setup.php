@@ -13,4 +13,5 @@ $wgResourceModules['ext.bluespice.blueSpiceprojectfeedbackhelper'] = array(
 
 $wgAjaxExportList[] = 'BlueSpiceProjectFeedbackHelper::disableFeedback';
 
+$GLOBALS['wgAutoloadClasses']['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/BlueSpiceProjectFeedbackHelper.class.php';
 $wgAutoloadClasses['ViewBlueSpiceProjectFeedbackHelperPanel'] = __DIR__ . '/views/view.BlueSpiceProjectFeedbackHelperPanel.php';

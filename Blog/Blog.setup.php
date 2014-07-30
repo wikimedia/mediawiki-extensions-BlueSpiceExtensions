@@ -14,5 +14,6 @@ $wgResourceModules['ext.bluespice.blog'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
+$GLOBALS['wgAutoloadClasses']['Blog'] = __DIR__ . '/Blog.class.php';
 $wgAutoloadClasses['ViewBlog'] = __DIR__ . '/views/view.Blog.php';
 $wgAutoloadClasses['ViewBlogItem'] = __DIR__ . '/views/view.BlogItem.php';

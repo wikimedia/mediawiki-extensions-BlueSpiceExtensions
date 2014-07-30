@@ -7,6 +7,7 @@ $wgMessagesDirs['Flexiskin'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['Flexiskin'] = __DIR__ . '/languages/Flexiskin.i18n.php';
 $wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/languages/Flexiskin.alias.php';
 
+$GLOBALS['wgAutoloadClasses']['Flexiskin'] = __DIR__ . '/Flexiskin.class.php';
 $wgAutoloadClasses['SpecialFlexiskin'] = __DIR__ . '/includes/specials/SpecialFlexiskin.php';
 
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = "Flexiskin::onSkinTemplateOutputPageBeforeExec";

@@ -1,5 +1,7 @@
 <?php
-BsExtensionManager::registerExtension('InterWikiLinks',                  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension('InterWikiLinks', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+
+$GLOBALS['wgAutoloadClasses']['InterWikiLinks'] = __DIR__ . '/InterWikiLinks.class.php';
 
 $wgMessagesDirs['InterWikiLinks'] = __DIR__ . '/i18n';
 

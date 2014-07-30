@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('InsertLink', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$GLOBALS['wgAutoloadClasses']['InsertLink'] = __DIR__ . '/InsertLink.class.php';
+
 $wgMessagesDirs['InsertLink'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['InsertLink'] = __DIR__ . '/languages/InsertLink.i18n.php';

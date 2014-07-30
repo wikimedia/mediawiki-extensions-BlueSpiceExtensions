@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension( 'RSSFeeder', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
 
+$GLOBALS['wgAutoloadClasses']['RSSFeeder'] = __DIR__ . '/RSSFeeder.class.php';
+
 $wgMessagesDirs['RSSFeeder'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['RSSFeeder'] = __DIR__ . '/languages/RSSFeeder.i18n.php';
