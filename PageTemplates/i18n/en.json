@@ -38,6 +38,6 @@
 	"bs-pagetemplates-label-article": "Template",
 	"bs-pagetemplates-confirm-deletetpl": "Are you sure you want to delete this template?",
 	"bs-pagetemplates-remove-message-unknown": "An unexpected error occurred, please try again.",
-	"bs-pagetemplates-remove-message-success": "The following {{PLURAL:$1|template was|templates were}} deleted:$2",
-	"bs-pagetemplates-remove-message-failure": "The following {{PLURAL:$1|template|templates}} could not be deleted:$2(Reason: $3)"
+	"bs-pagetemplates-remove-message-success": "The following {{PLURAL:$1|template was|templates were}} deleted: $2",
+	"bs-pagetemplates-remove-message-failure": "The following {{PLURAL:$1|template|templates}} could not be deleted: $2 (Reason: $3)"
 }
