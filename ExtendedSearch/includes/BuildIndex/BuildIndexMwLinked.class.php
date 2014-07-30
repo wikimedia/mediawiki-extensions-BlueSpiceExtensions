@@ -90,35 +90,24 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 
 			$path = urldecode( $document->el_to );
 			$path = str_replace( "file:///", "", $path );
-
-			$ext = preg_split( '#[/\\.]+#', $path );
-			$ext = strtolower( array_pop( $ext ) );
-
-			$docType = $this->mimeDecoding( $ext ); // really needed for file extensions? or is it a relict from mw images (repo)
-			if ( !isset( $this->aFileTypes[$docType] ) || ( $this->aFileTypes[$docType] !== true ) ) {
-				$this->writeLog( ( 'Filetype not allowed: '.$docType.' ('.$path.')' ) );
-				continue;
-			}
-
-			$size = @filesize( urldecode( $path ) );
-			if ( $size === false ) {
-				$this->writeLog( ( 'File not accessible: '.$path ) );
-				continue;
-			}
-			if ( $this->sizeExceedsMaxDocSize( $size ) ){
-				$this->writeLog( ( 'File exceeds max doc size and will not be indexed: '.$document->el_to ) );
-				continue;
-			}
+			$fileInfo = new SplFileInfo( $path );
+			if ( !$fileInfo->isFile() ) continue;
 
 			$filename = explode( '/', $path );
 			$filename = array_pop( $filename );
 
+			if ( $this->sizeExceedsMaxDocSize( $fileInfo->getSize(), $filename ) ) continue;
+
+			$ext = preg_split( '#[/\\.]+#', $path );
+			$ext = strtolower( array_pop( $ext ) );
+			$docType = $this->mimeDecoding( $ext ); // really needed for file extensions? or is it a relict from mw images (repo)
+			if ( !$this->checkDocType( $docType, $filename ) ) continue;
+
 			$time = @filemtime( urldecode( $path ) );
 			$date = date( "YmdHis", $time );
 
-			if ( $this->checkExistence( $path, 'external', $date, $filename ) ) return;
+			if ( $this->checkExistence( $path, 'external', $date, $filename ) ) continue;
 
-			$fileInfo = new SplFileInfo( $path );
 			$fileRealPath = $fileInfo->getRealPath();
 			$fileText = $this->getFileText( $fileRealPath, $filename );
 			$doc = $this->makeLinkedDocument( $docType, $filename, $fileText, $path, $date );

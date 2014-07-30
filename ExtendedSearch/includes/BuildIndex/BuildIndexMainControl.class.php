@@ -399,11 +399,11 @@ class BuildIndexMainControl {
 		// create lock file
 		$this->lockFile( 'createLock' );
 		// create log file
-		$this->LogFile();
+		$this->logFile();
 		// create progress file
 		$this->progressFile( 'create' );
 
-		$this->write( date( "d.m.Y H:i:s" ) . "\n" );
+		$this->write( '', date( "d.m.Y H:i:s" ) . "\n" );
 
 		$sRes = '';
 		try {
@@ -426,7 +426,7 @@ class BuildIndexMainControl {
 			$this->iDocsInIndex . ' ' . wfMessage( 'bs-extendedsearch-docs-in-index' )->plain(),
 			100
 		);
-		$this->logFile( 'write', date( "d.m.Y H:i:s" ) );
+		$this->write( '', date( "d.m.Y H:i:s" ) );
 
 		// delete progress file
 		$this->progressFile( 'delete' );
@@ -630,7 +630,7 @@ class BuildIndexMainControl {
 			touch( $this->sFilePathIndexLogFile );
 		} else {
 			unlink( $this->sFilePathIndexLogFile );
-			$this->logFile( 'create' );
+			$this->logFile();
 		}
 	}
 
