@@ -5,6 +5,7 @@
 		]
 	},
 	"prefs-readers": "Lennerien",
+	"readers": "Lennerien eus \"$1\"",
 	"bs-readers-contentactions-label": "Diskwel al lennerien",
 	"bs-readers-pagenotexists": "N'eus ket eus ar bajenn.",
 	"bs-readers-header-username": "Anv implijer",

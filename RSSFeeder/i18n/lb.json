@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"rssfeeder": "RSS Feeder",
+	"bs-rssfeeder-recent-changes": "Rezent Ännerungen",
+	"bs-rssfeeder-pages": "Säit",
+	"bs-rssfeeder-submit": "Weisen",
+	"bs-extjs-rssfeeder-rss-title": "RSS-URL"
+}

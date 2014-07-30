@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Аль-Гимравий"
+		]
+	},
+	"bs-statistics-to": "Рахъалде",
+	"bs-statistics-grain": "Жанисеб",
+	"bs-statistics-mode": "Куц",
+	"bs-statistics-absolute": "модуль",
+	"bs-statistics-day": "Къо",
+	"bs-statistics-label-name": "ЦІар",
+	"bs-statistics-diag-number-of-pages": "Гьумеразул номерал",
+	"bs-statistics-label-page": "Гьумер",
+	"bs-statistics-label-searchterm": "Хъирщулеб жо",
+	"bs-statistics-filter-searchscope": "Хъирщиялъул область"
+}

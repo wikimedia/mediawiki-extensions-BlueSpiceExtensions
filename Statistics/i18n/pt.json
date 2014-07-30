@@ -34,6 +34,7 @@
 	"bs-statistics-label-maxhits": "Máximo de resultados",
 	"bs-statistics-label-time": "Hora",
 	"bs-statistics-filter-category": "Categoria",
+	"bs-statistics-filter-user": "Utilizadores excluídos",
 	"bs-statistics-pref-excludeusers": "Excluir estes utilizadores:",
 	"bs-statistics-pref-maxnumberofintervals": "Número máximo de passos de intervalo:",
 	"bs-statistics-portlet-numberofusers": "Número de utilizadores",

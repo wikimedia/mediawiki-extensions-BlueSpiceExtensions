@@ -34,5 +34,6 @@
 	"bs-review-header-page-title": "Säit",
 	"bs-review-header-owner-name": "Besëtzer",
 	"bs-review-header-startdate": "Ufank",
-	"bs-review-header-enddate": "Schluss"
+	"bs-review-header-enddate": "Schluss",
+	"bs-review-confirm-delete-step": "Wëllt Dir dëse Schrëtt wierklech läschen?"
 }

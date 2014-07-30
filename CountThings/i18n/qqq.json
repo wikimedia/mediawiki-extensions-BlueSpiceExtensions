@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-countthings-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of count things extension",
-	"bs-countthings-chars-label": "Table headline for characters\n{{Identical|Characters}}",
-	"bs-countthings-words-label": "Table headline for words\n{{Identical|Words}}",
-	"bs-countthings-pages-label": "Table headline for pages\n{{Identical|Pages}}",
+	"bs-countthings-chars-label": "Table headline for characters\n{{Identical|Character}}",
+	"bs-countthings-words-label": "Table headline for words\n{{Identical|Word}}",
+	"bs-countthings-pages-label": "Table headline for pages\n{{Identical|Page}}",
 	"bs-countthings-error-no-input": "Error message that no page was provided.",
-	"bs-countthings-error-invalid-mode": "Error message that the given mode is invalid. Valid modes are <code>chars</code>, <code>words</code>, or <code>pages</code>.\n*{{doc-important|Do not translate <code>chars</code>}}\n*{{doc-important|Do not translate <code>words</code>}}\n*{{doc-important|Do not translate <code>pages</code>}}\n*$1 is the given mode which is invalid.",
+	"bs-countthings-error-invalid-mode": "{{doc-important|Do not translate <code>chars</code>, <code>words</code> and <code>pages</code>}}\nError message that the given mode is invalid. Valid modes are <code>chars</code>, <code>words</code>, or <code>pages</code>.\n*$1 is the given mode which is invalid.",
 	"bs-countthings-error-not-exist": "Error message that the given page does not exist.\n*$1 is the page which does not exist.",
 	"bs-countthings-tag-countarticles-desc": "Used in InsertMagic extension, tag description for displays the number of pages.",
 	"bs-countthings-tag-countusers-desc": "Used in InsertMagic extension, tag description for displays the number of users.",

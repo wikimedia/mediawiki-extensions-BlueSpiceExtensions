@@ -4,11 +4,15 @@
 			"Умар"
 		]
 	},
+	"bs-flexiskin-label": "Кечяран тема",
+	"prefs-flexiskin": "Кечяран тема",
 	"bs-flexiskin-pref-logo": "Логотип:",
 	"bs-flexiskin-labelname": "ЦӀе",
 	"bs-flexiskin-headergeneral": "Юкъара",
 	"bs-flexiskin-labelskins": "Кеп",
 	"bs-flexiskin-headeractive": "Жигара",
 	"bs-flexiskin-headerheader": "Корта",
-	"bs-flexiskin-labellogoupload": "Логотип"
+	"bs-flexiskin-labellogoupload": "Логотип",
+	"bs-flexiskin-left": "харцахьа",
+	"bs-flexiskin-center": "юкъехь"
 }

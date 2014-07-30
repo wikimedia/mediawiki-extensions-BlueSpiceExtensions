@@ -8,5 +8,6 @@
 	"bs-responsibleeditors-mail-subject-re-article-deleted": "Ar bajenn \"$1\" zo bet {{GENDER:$2|dilamet}} gant $3",
 	"bs-responsibleeditors-columnpage": "Pajenn",
 	"bs-responsibleeditors-columnnamespace": "Esaouenn anv",
-	"bs-responsibleeditors-rbdisplaymodeall": "Diskouez an holl bajennoù"
+	"bs-responsibleeditors-rbdisplaymodeall": "Diskouez an holl bajennoù",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "N'eo ket deverket"
 }

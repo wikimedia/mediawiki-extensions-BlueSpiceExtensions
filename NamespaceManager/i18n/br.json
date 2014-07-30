@@ -5,5 +5,8 @@
 		]
 	},
 	"bs-namespacemanager-label-id": "ID",
-	"bs-namespacemanager-label-content": "Er stadegoù"
+	"bs-namespacemanager-label-editable": "A c'haller adenvel",
+	"bs-namespacemanager-label-content": "Er stadegoù",
+	"bs-namespacemanager-label-searchable": "Klask dre ziouer",
+	"bs-namespacemanager-label-subpages": "Ispajennoù"
 }

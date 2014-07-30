@@ -16,6 +16,7 @@
 	"bs-articleinfo-templates": "Patromoù",
 	"bs-articleinfo-subpages": "Ispajennoù",
 	"bs-articleinfo-subpages-available": "Ispajennoù zo evit ar bajenn-mañ",
+	"bs-articleinfo-subpages-too-much": "Ouzhpenn 100 ispajenn zo da gaout.",
 	"bs-articleinfo-check-revision": "Ur stumm nevez zo da gaout",
 	"bs-articleinfo-check-revision-tooltip": "Adkargañ ar bajenn",
 	"bs-articleinfo-statebartoplastedited": "Kemm diwezhañ",

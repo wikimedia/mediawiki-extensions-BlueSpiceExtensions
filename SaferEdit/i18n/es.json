@@ -20,7 +20,7 @@
 	"bs-saferedit-statebartopsafereditediting": "Edición más segura - alguien está editando",
 	"bs-saferedit-lastsavedversion": "La última versión guardada es del $1 a las $2.",
 	"bs-saferedit-unsavedchanges": "Hay cambios sin guardar.",
-	"bs-saferedit-othersectiontitle": "Sección que restaurar",
+	"bs-saferedit-othersectiontitle": "Sección a restaurar",
 	"bs-saferedit-othersectiontext1": "Hay una copia de seguridad de otra sección.",
 	"bs-saferedit-othersectiontext2": "Se creó la copia de seguridad el $1 a las $2.",
 	"bs-saferedit-othersectiontext3": "¿Desea cambiar a esa sección?"

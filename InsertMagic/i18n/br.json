@@ -5,10 +5,14 @@
 			"Fohanno"
 		]
 	},
+	"bs-insertmagic": "Ensoc'hañ ur ger hud",
+	"bs-insertmagic-notoc": "Kuzhat an daolenn.",
+	"bs-insertmagic-index": "Lavaret d'ar c'hefluskerioù enklask menegeriñ ar bajenn.",
 	"bs-insertmagic-currentweek": "Sizhun (niver).",
 	"bs-insertmagic-sitename": "Anv al lec'hienn wiki.",
 	"bs-insertmagic-server": "URL an domani.",
 	"bs-insertmagic-servername": "Anv an domani.",
+	"bs-insertmagic-type-tags": "Balizennoù",
 	"bs-insertmagic-type-variables": "Argemmennoù",
 	"bs-insertmagic-label-desc": "Deskrivadur"
 }

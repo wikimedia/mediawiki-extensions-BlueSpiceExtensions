@@ -38,6 +38,7 @@
 	"bs-insertmagic-revisionyear": "El año en que se realizó el cambio.",
 	"bs-insertmagic-revisionuser": "El nombre de usuario del usuario que hizo el cambio más reciente a la página, o el usuario actual al previsualizar un cambio.",
 	"bs-insertmagic-defaultsort": "Utilizado para la categorización de páginas, establece una clave de ordenación de categorías predeterminada.",
+	"bs-insertmagic-gallery": "Hacer una galería de imágenes en miniatura con la etiqueta <code>&lt;gallery&gt;</code>.",
 	"bs-insertmagic-nowiki": "Invalidar el código wiki.",
 	"bs-insertmagic-dlg-title": "Insertar una palabra mágica o etiqueta",
 	"bs-insertmagic-type-tags": "Etiquetas",

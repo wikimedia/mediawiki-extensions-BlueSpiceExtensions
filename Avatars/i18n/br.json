@@ -5,5 +5,9 @@
 		]
 	},
 	"prefs-avatars": "Avataroù",
-	"bs-avatars-upload-label": "Skeudenn"
+	"bs-avatars-pref-defaultsize": "Ment dre ziouer e pikseloù :",
+	"bs-avatars-generate-complete": "Krouet ez eus bet un avatar nevez.",
+	"bs-avatars-upload-title": "Cheñch skeudenn ar profil",
+	"bs-avatars-upload-label": "Skeudenn",
+	"bs-avatars-generate-new-label": "Krouiñ un avatar nevez"
 }

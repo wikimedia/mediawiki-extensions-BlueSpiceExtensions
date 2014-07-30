@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Orikrin1998"
+			"Orikrin1998",
+			"Gomoko"
 		]
 	},
 	"bs-statistics-desc": "Ajoute la fonctionnalité pour les statistiques étendues",
@@ -12,6 +13,7 @@
 	"bs-statistics-to": "À",
 	"bs-statistics-grain": "Intervalle",
 	"bs-statistics-mode": "Mode",
+	"bs-statistics-aggregated": "agrégé",
 	"bs-statistics-absolute": "absolu",
 	"bs-statistics-year": "Année",
 	"bs-statistics-month": "Mois",
@@ -23,6 +25,7 @@
 	"bs-statistics-filters": "Filtres",
 	"bs-statistics-interval-too-big": "L'intervalle est trop grand. Il ne doit pas contenir plus de 35 étapes d'intervalle.",
 	"bs-statistics-diag-number-of-users": "Nombre d'utilisateurs",
+	"bs-statistics-diag-number-of-users-desc": "Affiche le nombre d’utilisateurs qui ont été créés au cours de la période choisie.",
 	"bs-statistics-label-name": "Nom",
 	"bs-statistics-label-registration": "Inscription",
 	"bs-statistics-diag-number-of-pages": "Nombre de pages",
@@ -35,6 +38,8 @@
 	"bs-statistics-diag-number-of-edits-desc": "Affiche le nombre moyen de modifications dans la période choisie.",
 	"bs-statistics-diag-edits-per-user": "Modifications par utilisateur",
 	"bs-statistics-diag-edits-per-user-desc": "Affiche le nombre moyen de modifications d'un utilisateur dans la période choisie.",
+	"bs-statistics-diag-search-queries": "Requêtes de recherche",
+	"bs-statistics-diag-search-queries-desc": "Affiche le nombre de requêtes de recherche au cours de la période choisie.",
 	"bs-statistics-label-searchterm": "Terme de recherche",
 	"bs-statistics-label-count": "Nombre",
 	"bs-statistics-label-maxhits": "Nombre maximum de résulats",
@@ -43,6 +48,7 @@
 	"bs-statistics-filter-searchscope": "Étendue de recherche",
 	"bs-statistics-filter-user": "Utilisateurs exclus",
 	"bs-statistics-pref-excludeusers": "Exclure ces utilisateurs :",
+	"bs-statistics-pref-maxnumberofintervals": "Nombre maximal d’étapes intermédiaires :",
 	"bs-statistics-portlet-numberofusers": "Nombre d'utilisateurs",
 	"bs-statistics-portlet-numberofedits": "Nombre de modifications",
 	"bs-statistics-portlet-numberofpages": "Nombre de pages",

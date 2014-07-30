@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-statistics-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of statistics extension",
@@ -9,7 +10,7 @@
 	"extendedstatistics": "Special page title identical to preferences section\n{{Identical|Extended statistics}}",
 	"bs-statistics-diagram": "Used in [[Special:ExtendedStatistics]], label for query\n{{Identical|Query}}",
 	"bs-statistics-from": "Used in [[Special:ExtendedStatistics]], label for from\n{{Identical|From}}",
-	"bs-statistics-to": "Used in [[Special:ExtendedStatistics]], label for to\n{{To|Query}}",
+	"bs-statistics-to": "Used in [[Special:ExtendedStatistics]], label for to\n{{To|Query}}\n{{Identical|To}}",
 	"bs-statistics-grain": "Used in [[Special:ExtendedStatistics]], label for interval\n{{Identical|Interval}}",
 	"bs-statistics-mode": "Used in [[Special:ExtendedStatistics]], label for mode\n{{Identical|Mode}}",
 	"bs-statistics-aggregated": "Option in [[Special:ExtendedStatistics]], label for aggregated\n{{Identical|Aggregated}}",
@@ -21,7 +22,7 @@
 	"bs-statistics-list": "Option in [[Special:ExtendedStatistics]], label for list\n{{Identical|List}}",
 	"bs-statistics-not-allowed": "Error message used in [[Special:ExtendedStatistics]], to notify the user that he has not the necessary permissions for some actions.",
 	"bs-statistics-finish": "Used in [[Special:ExtendedStatistics]], button label for create diagram\n{{Identical|Create diagram}}",
-	"bs-statistics-filters": "Used in [[Special:ExtendedStatistics]], headline for filters section\n{{Identical|Filters}}",
+	"bs-statistics-filters": "Used in [[Special:ExtendedStatistics]], headline for filters section\n{{Identical|Filter}}",
 	"bs-statistics-interval-too-big": "Error message that the interval is too big. It should not contain more than 35 interval steps.",
 	"bs-statistics-diag-number-of-users": "Option in [[Special:ExtendedStatistics]], label for number of users",
 	"bs-statistics-diag-number-of-users-desc": "Description message for number of users option.",

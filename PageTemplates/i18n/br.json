@@ -4,10 +4,12 @@
 			"Fohanno"
 		]
 	},
+	"prefs-pagetemplates": "Patromoù pajenn",
 	"bs-pagetemplates-empty-page": "Pajenn c'houllo",
 	"bs-pagetemplates-empty-page-desc": "Kregiñ gant ur bajenn c'houllo.",
 	"bs-pagetemplatesadmin-label": "Patromoù pajenn",
 	"bs-pagetemplates-tpl-desc-toolong": "Re hir eo an deskrivadur. Implijit 255 arouezenn d'ar muiañ, mar plij.",
+	"bs-pagetemplates-tpl-name-empty": "Merkit un anv patrom, mar plij.",
 	"bs-pagetemplates-tpl-added": "Ouzhpennet eo bet ar patrom.",
 	"bs-pagetemplates-tpl-edited": "Enrollet eo bet ar c'hemmoù.",
 	"bs-pagetemplates-tpl-deleted": "Dilamet eo bet ar patrom.",

@@ -5,5 +5,6 @@
 		]
 	},
 	"bs-smartlist-sort-asc": "升冪",
-	"bs-smartlist-sort-desc": "降冪"
+	"bs-smartlist-sort-desc": "降冪",
+	"bs-smartlist-time": "時間"
 }

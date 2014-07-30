@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Krol111"
+		]
+	},
+	"bs-countthings-chars-label": "Znoki",
+	"bs-countthings-words-label": "Słowa",
+	"bs-countthings-pages-label": "Zajty",
+	"bs-countthings-error-not-exist": "Ńy ma zajty ze mjanym \"$1\"",
+	"bs-countthings-tag-countarticles-desc": "Pokozuje liczba zajt."
+}

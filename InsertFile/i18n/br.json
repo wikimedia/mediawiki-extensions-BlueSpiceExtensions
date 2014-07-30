@@ -6,6 +6,7 @@
 	},
 	"bs-insertfile-insert-image": "Ensoc'hañ ur skeudenn",
 	"bs-insertfile-insert-file": "Ensoc'hañ ur restr",
+	"bs-insertfile-button-file-title": "Ensoc'hañ pe aozañ ur restr",
 	"bs-insertfile-labelsort": "Renkañ dre :",
 	"bs-insertfile-labelfilter": "Sil :",
 	"bs-insertfile-filename": "Anv ar restr",
@@ -26,9 +27,12 @@
 	"bs-insertfile-uploadwatchthislabel": "Evezhiañ ar restr-mañ",
 	"bs-insertfile-error": "Fazi",
 	"bs-insertfile-errornofileextensiononupload": "Ar restr ho peus choazet n'he deus astenn ebet.",
+	"bs-insertfile-uploadcomplete": "Enrollet eo bet ho restr evel ma oa dleet.",
 	"bs-insertfile-titlefile": "Ensoc'hañ ur restr",
 	"bs-insertfile-titleimage": "Ensoc'hañ ur skeudenn",
 	"bs-insertfile-of": "eus",
+	"bs-insertfile-license": "Aotre-implijout",
 	"bs-insertfile-categories": "Rummadoù",
+	"bs-insertfile-linktext": "Diskwel an destenn",
 	"bs-insertfile-no-link": "Liamm ebet"
 }

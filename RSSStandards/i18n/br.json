@@ -5,5 +5,6 @@
 		]
 	},
 	"bs-rssstandards-title-page": "Pajenn",
-	"bs-rssstandards-title-cat": "Rummad"
+	"bs-rssstandards-title-cat": "Rummad",
+	"bs-rssstandards-changes-from": "Kemmoù {{GENDER:$1|gant}}: $1"
 }

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Veeven"
+		]
+	},
+	"bs-statistics-year": "సంవత్సరం",
+	"bs-statistics-month": "నెల",
+	"bs-statistics-day": "రోజు",
+	"bs-statistics-list": "జాబితా",
+	"bs-statistics-diag-number-of-users": "వాడుకరుల సంఖ్య",
+	"bs-statistics-label-name": "పేరు",
+	"bs-statistics-label-registration": "నమోదు",
+	"bs-statistics-diag-number-of-pages": "పేజీల సంఖ్య",
+	"bs-statistics-label-time": "సమయం",
+	"bs-statistics-filter-category": "వర్గం",
+	"bs-statistics-filter-user": "మినహాయించిన వాడుకరులు",
+	"bs-statistics-portlet-numberofusers": "వాడుకరుల సంఖ్య",
+	"bs-statistics-portlet-numberofedits": "మార్పుల సంఖ్య",
+	"bs-statistics-portlet-numberofpages": "పేజీల సంఖ్య",
+	"bs-statistics-portletconfig-periodday": "నిన్న"
+}
