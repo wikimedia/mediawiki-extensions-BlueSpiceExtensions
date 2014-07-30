@@ -153,9 +153,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			Ext.require('BS.InsertFile.ImageDialog', function(){
 				BS.InsertFile.ImageDialog.clearListeners();
 				BS.InsertFile.ImageDialog.on( 'ok', function( sender, data ) {
-					var editor = plugin.getEditor();
 					editor.selection.moveToBookmark(bookmark);
-					var node = editor.selection.getNode();
 					var imgAttrs = this.plugins.bswikicode.makeDefaultImageAttributesObject();
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 					//Manually prefix with NS_IMAGE. I wonder if this should
@@ -228,6 +226,8 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 		commandId: 'mceBsFile',
 		commandCallback: function() {
 			var anchor = this.selection.getNode();
+			var editor = plugin.getEditor();
+			var bookmark = editor.selection.getBookmark();
 			var params = {
 				caption: this.selection.getContent(),
 				displayText: this.selection.getContent()
@@ -246,6 +246,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			Ext.require('BS.InsertFile.FileDialog', function(){
 				BS.InsertFile.FileDialog.clearListeners();
 				BS.InsertFile.FileDialog.on( 'ok', function(sender, data) {
+					editor.selection.moveToBookmark(bookmark);
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 					var nsText = formattedNamespaces[bs.ns.NS_MEDIA];
 					var prefixedTitle = nsText + ':' + data.title;
@@ -266,7 +267,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					}
 					else {
 						newAnchor = this.dom.createHTML( 'a', anchorAttrs, displayText );
-						this.insertContent(newAnchor);
+						editor.insertContent(newAnchor);
 					}
 					this.selection.collapse(false);
 				}, this);
