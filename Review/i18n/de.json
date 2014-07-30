@@ -75,5 +75,6 @@
 	"bs-review-header-startdate": "Beginn",
 	"bs-review-header-enddate": "Ende",
 	"bs-review-confirm-delete-step": "Möchtest du diesen Schritt wirklich löschen?",
-	"bs-review-confirm-delete-review": "Möchtest du diese Begutachtung wirklich löschen?"
+	"bs-review-confirm-delete-review": "Möchtest du diese Begutachtung wirklich löschen?",
+	"bs-review-error-insufficient-permissions": "Du hast nicht die benötigte Berechtigung, um diese Aktion auszuführen (\"$1\" wird benötigt)."
 }

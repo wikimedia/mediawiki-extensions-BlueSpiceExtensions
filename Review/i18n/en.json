@@ -74,5 +74,6 @@
 	"bs-review-header-startdate": "Start",
 	"bs-review-header-enddate": "End",
 	"bs-review-confirm-delete-step": "Do you really want to delete this step?",
-	"bs-review-confirm-delete-review": "Do you really want to delete this review?"
+	"bs-review-confirm-delete-review": "Do you really want to delete this review?",
+	"bs-review-error-insufficient-permissions": "You don't have the permission to execute this action (\"$1\" needed)."
 }
