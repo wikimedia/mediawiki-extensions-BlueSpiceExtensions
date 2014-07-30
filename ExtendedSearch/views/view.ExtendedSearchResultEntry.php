@@ -80,7 +80,7 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		$sCategories = trim( $this->getOption( 'catstr' ) );
 		if ( !empty( $sCategories ) ) {
 			$aTemplate[] = '<div class="bs-extendedsearch-cat search-result-entry-info">'.
-				wfMessage( 'bs-extendedsearch-category-filter', $this->getOption( 'catno' ), $sCategories )->plain().'</div>';
+				wfMessage( 'bs-extendedsearch-category-filter', $this->getOption( 'catno' ), $sCategories )->text().'</div>';
 		}
 
 		$aTemplate[] = '</div>';
