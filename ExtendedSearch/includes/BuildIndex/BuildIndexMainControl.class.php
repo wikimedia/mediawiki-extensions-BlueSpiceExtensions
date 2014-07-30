@@ -642,7 +642,7 @@ class BuildIndexMainControl {
 		if ( $sMode === 'create' ) {
 			if ( file_exists( $this->sFilePathIndexProgTxt ) ) {
 				unlink( $this->sFilePathIndexProgTxt );
-				$this->progrssFile( 'create' );
+				$this->progressFile( 'create' );
 			} else {
 				touch( $this->sFilePathIndexProgTxt );
 			}
