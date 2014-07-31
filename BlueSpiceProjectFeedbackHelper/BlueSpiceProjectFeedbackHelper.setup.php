@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('BlueSpiceProjectFeedbackHelper',  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$wgMessagesDirs['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/languages/BlueSpiceProjectFeedbackHelper.i18n.php';
 
 $wgResourceModules['ext.bluespice.blueSpiceprojectfeedbackhelper'] = array(
