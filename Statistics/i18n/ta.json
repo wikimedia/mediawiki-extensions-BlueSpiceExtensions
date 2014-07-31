@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"ElangoRamanujam"
+		]
+	},
+	"bs-statistics-diagram": "வினவல்",
+	"bs-statistics-from": "அனுப்புநர்",
+	"bs-statistics-to": "பெறுனர்",
+	"bs-statistics-grain": "இடைவேளை",
+	"bs-statistics-year": "ஆண்டு",
+	"bs-statistics-month": "மாதம்",
+	"bs-statistics-week": "நாள்காட்டி வாரம்",
+	"bs-statistics-day": "நாள்",
+	"bs-statistics-list": "பட்டியல்",
+	"bs-statistics-finish": "படத்தை உருவாக்கவும்",
+	"bs-statistics-filters": "வடிகட்டிகள்",
+	"bs-statistics-diag-number-of-users": "பயனர்கள் எண்ணிக்கை",
+	"bs-statistics-label-name": "பெயர்",
+	"bs-statistics-label-registration": "பதிவு",
+	"bs-statistics-diag-number-of-pages": "பக்கங்களின் எண்ணிக்கை",
+	"bs-statistics-label-page": "பக்கம்",
+	"bs-statistics-label-count": "எண்ணிக்கை",
+	"bs-statistics-label-maxhits": "அதிகபட்ச முடிவுகள்",
+	"bs-statistics-label-time": "நேரம்",
+	"bs-statistics-filter-category": "பகுப்பு",
+	"bs-statistics-portlet-numberofusers": "பயனர்கள் எண்ணிக்கை",
+	"bs-statistics-portlet-numberofedits": "தொகுப்புகளின் எண்ணிக்கை",
+	"bs-statistics-portlet-numberofpages": "பக்கங்களின் எண்ணிக்கை",
+	"bs-statistics-portletconfig-periodday": "நேற்று"
+}

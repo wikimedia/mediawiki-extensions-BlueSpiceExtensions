@@ -46,6 +46,6 @@
 	"bs-flexiskin-center": "centro",
 	"bs-flexiskin-labelwidth": "Anchura completa (en píxeles)",
 	"bs-flexiskin-labelfullwidth": "Anchura máxima",
-	"bs-flexiskin-error-nameempty": "Introduce un nombre válido para la apariencia que deseas crear.",
+	"bs-flexiskin-error-nameempty": "Escribe un nombre válido para la apariencia que deseas crear.",
 	"bs-flexiskin-error-templatenotexists": "La plantilla elegida no existe."
 }

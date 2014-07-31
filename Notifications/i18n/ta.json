@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"ElangoRamanujam"
+		]
+	},
+	"bs-echo-page-edit": "[[:$1]] பக்கம் மாற்றப்பட்டது",
+	"bs-echo-page-delete": "[[:$1]] பக்கம் நீக்கப்பட்டது",
+	"bs-echo-page-newuser": "பயனர் $1 உருவாக்கப்பட்டது."
+}

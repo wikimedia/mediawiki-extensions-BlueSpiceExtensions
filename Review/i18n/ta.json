@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"ElangoRamanujam"
+		]
+	},
+	"bs-review-review": "மீள்பார்வை",
+	"bs-review-menu-entry": "மீள்பார்வையைத் தொகுக்கவும்",
+	"bs-review-date": "அனைத்து பங்கேற்போரும் இன்னும் வாக்களிக்கவில்லை.",
+	"bs-review-accepted": "ஏற்றுக்கொள்ளப்பட்டது",
+	"bs-review-rejected": "நிராகரித்தது",
+	"bs-review-review-finished": "இந்தப் பக்கம் பரிசீலிக்கப்பட்டது.",
+	"bs-review-save-norights": "தாங்கள் தேவையான அனுமதியைப் பெற்றிருக்கவில்லை.",
+	"bs-review-review-error": "இனம் தெரியாத ஒரு தவறு நிகழ்ந்துவிட்டது",
+	"bs-review-review-saved": "உங்களது வாக்கு சேமிக்கப்பட்டது.",
+	"bs-review-mail-invite-header": "அருள்கூர்ந்து ''$1'' பக்கத்தை மீள்பார்வையிடவும்",
+	"bs-review-statebar-body-do-review": "இப்பக்கத்தை அருளகூர்ந்து மீள்பார்வையிடவும்",
+	"bs-review-i-agree": "ஏற்றுக் கொள்ளவும்",
+	"bs-review-i-dismiss": "ஏற்றுக் கொள்ள முடியாது",
+	"bs-review-pref-shownameintooltip": "பங்கேற்போர் பெயர்களைக் காட்டுக",
+	"bs-review-expired": "காலாவதியானது",
+	"review": "மீள்பார்வை",
+	"bs-review-colreviewer": "மீள்பார்வையாளர்",
+	"bs-review-lblstartdate": "தொடக்க நாள்",
+	"bs-review-lblenddate": "முடிவு நாள்",
+	"bs-review-labelcomment": "கருத்து",
+	"bs-review-header-page-title": "பக்கம்",
+	"bs-review-header-owner-name": "உரிமையாளர்",
+	"bs-review-header-accepted-text": "நிலை",
+	"bs-review-header-startdate": "தொடங்குக",
+	"bs-review-header-enddate": "முடிவு"
+}

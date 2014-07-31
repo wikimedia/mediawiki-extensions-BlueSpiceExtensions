@@ -32,7 +32,7 @@
 	"bs-permissionmanager-msgtpled-delete": "Se ha eliminado la plantilla.",
 	"bs-permissionmanager-msgtpled-deletefail": "No se pudo eliminar la plantilla.",
 	"bs-permissionmanager-titletpled-new": "Crear una plantilla",
-	"bs-permissionmanager-titletpled-edit": "Cambiar el nombre de la plantilla",
+	"bs-permissionmanager-titletpled-edit": "Renombrar plantilla",
 	"bs-permissionmanager-titletpled-delete": "Eliminar la plantilla",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activar la comprobación de permisos"
 }

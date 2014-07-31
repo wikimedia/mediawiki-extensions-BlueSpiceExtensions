@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"ElangoRamanujam"
+		]
+	},
+	"bs-flexiskin-labelname": "பெயர்",
+	"bs-flexiskin-headergeneral": "பொதுவான",
+	"bs-flexiskin-headerheader": "தலைப்பு",
+	"bs-flexiskin-left": "இடப்பக்கம்",
+	"bs-flexiskin-right": "வலப்பக்கம்",
+	"bs-flexiskin-center": "நடுவில்",
+	"bs-flexiskin-labelfullwidth": "அதிகபட்ச அகலம்"
+}
