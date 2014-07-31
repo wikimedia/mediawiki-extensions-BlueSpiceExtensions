@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('WantedArticle', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$GLOBALS['wgAutoloadClasses']['WantedArticle'] = __DIR__ . '/WantedArticle.class.php';
+
 $wgMessagesDirs['WantedArticle'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['WantedArticle'] = __DIR__ . '/languages/WantedArticle.i18n.php';

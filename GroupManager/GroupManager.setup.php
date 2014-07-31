@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension( 'GroupManager', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE );
 
+$GLOBALS['wgAutoloadClasses']['GroupManager'] = __DIR__ . '/GroupManager.class.php';
+
 $wgMessagesDirs['GroupManager'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['GroupManager'] = __DIR__ . '/languages/GroupManager.i18n.php';

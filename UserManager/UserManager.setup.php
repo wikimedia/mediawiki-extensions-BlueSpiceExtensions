@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('UserManager', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$GLOBALS['wgAutoloadClasses']['UserManager'] = __DIR__ . '/UserManager.class.php';
+
 $wgMessagesDirs['UserManager'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['UserManager'] = __DIR__ . '/languages/UserManager.i18n.php';

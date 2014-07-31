@@ -6,6 +6,7 @@ $wgMessagesDirs['InsertFile'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['InsertFile'] = __DIR__ . '/languages/InsertFile.i18n.php';
 
+$GLOBALS['wgAutoloadClasses']['InsertFile'] = __DIR__ . '/InsertFile.class.php';
 $wgAutoloadClasses['JsonLicenses']          = __DIR__ . '/includes/JsonLicenses.php';
 $wgAutoloadClasses['InsertFileAJAXBackend'] = __DIR__ . '/includes/InsertFileAJAXBackend.php';
 

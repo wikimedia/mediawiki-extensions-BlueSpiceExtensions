@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('InsertCategory', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$GLOBALS['wgAutoloadClasses']['InsertCategory'] = __DIR__ . '/InsertCategory.class.php';
+
 $wgMessagesDirs['InsertCategory'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['InsertCategory'] = __DIR__ . '/languages/InsertCategory.i18n.php';

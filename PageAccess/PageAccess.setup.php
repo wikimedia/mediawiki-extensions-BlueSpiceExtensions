@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('PageAccess', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$GLOBALS['wgAutoloadClasses']['PageAccess'] = __DIR__ . '/PageAccess.class.php';
+
 $wgMessagesDirs['PageAccess'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['PageAccess'] = __DIR__ . '/languages/PageAccess.i18n.php';

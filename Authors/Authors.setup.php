@@ -14,5 +14,6 @@ $wgResourceModules['ext.bluespice.authors.styles'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
+$GLOBALS['wgAutoloadClasses']['Authors'] = __DIR__ . '/Authors.class.php';
 $wgAutoloadClasses['ViewAuthors'] = __DIR__ . '/views/view.Authors.php';
 $wgAutoloadClasses['ViewAuthorsUserPageProfileImageSetting'] = __DIR__ . '/views/view.AuthorsUserPageProfileImageSetting.php';

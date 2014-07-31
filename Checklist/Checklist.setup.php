@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('Checklist', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$GLOBALS['wgAutoloadClasses']['Checklist'] = __DIR__ . '/Checklist.class.php';
+
 $wgExtensionMessagesFiles['Checklist'] = __DIR__ . '/languages/Checklist.i18n.php';
 
 $aResourceModuleTemplate = array(
