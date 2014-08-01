@@ -22,3 +22,6 @@
 h4#bs-flyout-content-widgets-header{
 	text-transform: uppercase;
 }
+#bs-widgetbar-edit:hover{
+	color: rgb(205, 223, 242);
+}
