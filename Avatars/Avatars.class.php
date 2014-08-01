@@ -73,7 +73,7 @@ class Avatars extends BsExtensionMW {
 		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-avatars-pref-defaultsize', 'int');
 		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-avatars-pref-generator', 'select');
 
-		$this->setHook('BSAdapterGetUserMiniProfileBeforeInit');
+		$this->setHook('BSCoreGetUserMiniProfileBeforeInit');
 		$this->setHook('BsAuthorPageProfileImageAfterInitFields');
 
 		# TODO: required rights? user->read?
@@ -106,7 +106,7 @@ class Avatars extends BsExtensionMW {
 	 * @param type $aParams
 	 * @return boolean
 	 */
-	public function onBSAdapterGetUserMiniProfileBeforeInit($oUserMiniProfileView, $oUser, $aParams) {
+	public function onBSCoreGetUserMiniProfileBeforeInit(&$oUserMiniProfileView, &$oUser, &$aParams) {
 		# Set anonymous image for anonymous or deleted users
 		if ($oUser->isAnon()) {
 			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DeletedUserImage'));
@@ -114,8 +114,9 @@ class Avatars extends BsExtensionMW {
 			return true;
 		}
 		# If user has set MW image or URL return immediately
-		if ($oUser->getOption('MW::UserImage'))
+		if ($oUser->getOption('MW::UserImage')) {
 			return true;
+		}
 		# Set default image in read-only mode or thumb creation might get triggered
 		if (wfReadOnly()) {
 			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DefaultUserImage'));
@@ -234,7 +235,7 @@ class Avatars extends BsExtensionMW {
 					break;
 				case 'InstantAvatar':
 					require_once( __DIR__ . "/includes/lib/InstantAvatar/instantavatar.php" );
-					$iFontSize = round(18/40 * $iAvatarDefaultSize);
+					$iFontSize = round(18 / 40 * $iAvatarDefaultSize);
 					$oIA = new InstantAvatar(__DIR__ . '/includes/lib/InstantAvatar/Comfortaa-Regular.ttf', $iFontSize, $iAvatarDefaultSize, $iAvatarDefaultSize, 2, __DIR__ . '/includes/lib/InstantAvatar/glass.png');
 					if ($sUserRealName) {
 						preg_match_all('#(^| )(.)#u', $sUserRealName, $aMatches);
