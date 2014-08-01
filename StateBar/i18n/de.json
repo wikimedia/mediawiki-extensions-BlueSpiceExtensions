@@ -11,7 +11,7 @@
 	"bs-statebar-pref-sortbodyvars": "Body Reihenfolge:",
 	"bs-statebar-pref-sorttopvars": "Top Reihenfolge:",
 	"bs-statebar-pref-show": "Statusleiste anzeigen",
-	"bs-statebar-viewtoggler": "[+/-]",
+	"bs-statebar-viewtoggler": "DETAILS",
 	"bs-statebar-viewtoggler-tooltip": "Detailierte Informationen anzeigen",
 	"bs-statebar-switch-description": "Blendet die Statusleiste auf dieser Seite aus.",
 	"bs-statebar-ajax-nobodyviews": "Keine Informationen verfügbar."

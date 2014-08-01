@@ -12,8 +12,22 @@
  * @filesource
  */
 
-.bs-statebar-viewtoggler {
-	cursor: pointer;
+#bs-statebar-viewtoggler {
+	float: right;
+	height: 48px;
+	display: table;
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+
+#bs-statebar-viewtoggler span{
+	text-transform: uppercase;
+	padding-right: 10px;
+}
+
+#bs-statebar-viewtoggler span, #bs-statebar-viewtoggler.icon-menu2-after:after{
+	display: table-cell;
+	vertical-align: middle;
 }
 
 #bs-statebar-view {

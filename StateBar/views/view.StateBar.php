@@ -41,14 +41,15 @@ class ViewStateBar extends ViewBaseElement {
 		$aOut = array();
 		$aOut[] = '<div id="bs-statebar">';
 
-		$aOut[] = ' <a id="bs-statebar-viewtoggler" href="#" title="'.wfMessage( 'bs-statebar-viewtoggler-tooltip' )->plain().'" class="icon-plus">';
-		$aOut[] = '<span>[+/-]</span>';
+		$aOut[] = ' <a id="bs-statebar-viewtoggler" href="#" title="' . wfMessage('bs-statebar-viewtoggler-tooltip')->plain() . '" class="icon-menu2-after">';
+		$aOut[] = '<span>' . wfMessage('bs-statebar-viewtoggler')->plain() . '</span>';
 		$aOut[] = ' </a>';
 
 		foreach( $this->mStateBarTopViews as $oStateBarTopView ) {
 			$aOut[] = $oStateBarTopView->execute();
 		}
 
+		$aOut[] = ' <div class="clearfix"></div>';
 		$aOut[] = ' <div id="bs-statebar-view">';
 
 		foreach( $this->mStateBarBodyViews as $oStateBarBodyView ) {
