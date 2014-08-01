@@ -19,7 +19,7 @@
 	"bs-statistics-week": "Calender week",
 	"bs-statistics-day": "Day",
 	"bs-statistics-list": "List",
-	"bs-statistics-not-allowed": "You don't have the necessary permisson.",
+	"bs-statistics-not-allowed": "You don't have the necessary permission.",
 	"bs-statistics-finish": "Create diagram",
 	"bs-statistics-filters": "Filters",
 	"bs-statistics-interval-too-big": "The interval is too big. It should not contain more than 35 interval steps.",
