@@ -88,10 +88,6 @@ class SearchUriBuilder {
 	 * Everything
 	 */
 	const ALL = 8191; // all but EXTENDED
-	/**
-	 * Other params (?)
-	 */
-	const ENCODE = 16384;
 
 	/**
 	 * Currently determined search options.
@@ -210,10 +206,6 @@ class SearchUriBuilder {
 				$uri .= $sParams;
 			}
 		} else $uri = $sParams;
-
-		if ( $iExclude & self::ENCODE ) {
-			$uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
-		}
 
 		$this->aCache[$components] = $uri;
 
