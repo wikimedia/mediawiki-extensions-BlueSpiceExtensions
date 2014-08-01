@@ -227,7 +227,7 @@ BsExtendedSearchAjaxManager.prototype = {
 		var length = aAllParams.length;
 		var urlParams = urldiff;
 		var hash = document.location.hash;
-		for ( var i=0; i<length; i++ ) {
+		for ( var i = 0; i < length; i++ ) {
 			aKeyValue = aAllParams[i].split( '=' );
 			if ( i != length && document.location.hash != '' ) {
 				urlParams = '&' + urldiff;
@@ -249,6 +249,9 @@ BsExtendedSearchAjaxManager.prototype = {
 				}
 				ExtendedSearchAjaxManager.stripParamFromUrl( aKeyValue[0], aKeyValue[1] );
 			}
+		}
+		if ( !checked ) {
+			ExtendedSearchAjaxManager.addParamToUrl( 'nosel', '1' );
 		}
 		ExtendedSearchAjaxManager.ajaxMeANewResultsPlz();
 	},

@@ -359,7 +359,7 @@ class SearchOptions {
 
 			$oUser = RequestContext::getMain()->getUser();
 			if ( !$oUser->getOption( 'searcheverything' ) ) {
-				if ( empty( $this->aOptions['namespaces'] ) ) {
+				if ( empty( $this->aOptions['namespaces'] ) && $this->oSearchRequest->bNoSelect === false ) {
 					$this->aOptions['namespaces'] = array();
 
 					$aOptions = $oUser->getOptions();

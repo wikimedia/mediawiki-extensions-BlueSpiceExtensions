@@ -107,6 +107,7 @@ class SearchRequest {
 		$this->sCategories = $this->oRequest->getArray( 'ca', array() );
 		$this->aNamespaces = $this->oRequest->getArray( 'na', array() );
 		$this->aType = $this->oRequest->getArray( 'ty', array() );
+		$this->bNoSelect = $this->oRequest->getBool( 'nosel', false );
 
 		$this->bSearchFiles = ( $this->oRequest->getInt( 'search_files', 0 ) === 1 )
 			? true

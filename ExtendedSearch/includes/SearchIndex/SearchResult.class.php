@@ -205,7 +205,6 @@ class BsSearchResult {
 
 			if ( !is_null( $this->oResponse->facet_counts->facet_fields->{$sFacet} ) ) {
 				$oFacet->setOption( 'title', $aConfig['i18n'] );
-				$oFacet->setOption( 'uri-facet-delete', $aConfig['url'] );
 
 				$aFacets = array(); // alters to: array( 0 => array( 'checked' => true ), 1 => array( 'count' => 15 ), 999 => array( 'checked' => true, 'count' => 2 ) )
 				$aData = $this->oSearchOptions->getOption( $aConfig['option'] );
@@ -313,7 +312,7 @@ class BsSearchResult {
 				}
 
 				if ( $sFacet === 'namespace' ) {
-					$aReqNs = $this->oSearchOptions->getOption('namespaces');
+					$aReqNs = $this->oSearchOptions->getOption( 'namespaces' );
 					foreach ( $aReqNs as $ikey => $value ) {
 						if ( !in_array( $value, $aFacets ) ){
 							$aFacetAll[] = "{$aConfig['param']}[]=".$value;
@@ -322,6 +321,7 @@ class BsSearchResult {
 				}
 
 				$sFacetAll = implode( '&', $aFacetAll );
+				$oFacet->setOption( 'uri-facet-delete', $aConfig['url'].'&nosel=1' );
 				$oFacet->setOption(
 					'uri-facet-all',
 					$this->oSearchUriBuilder->buildUri( $aConfig['url'] ).'&'.$sFacetAll );
