@@ -19,3 +19,6 @@
 	cursor: pointer;
 }
 
+h4#bs-flyout-content-widgets-header{
+	text-transform: uppercase;
+}

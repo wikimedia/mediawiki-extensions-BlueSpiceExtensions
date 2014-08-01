@@ -177,7 +177,7 @@ class WidgetBar extends BsExtensionMW {
 		$oView = $this->getWidgets($oCurrentTitle, $oUser);
 
 		$tpl->data['bs_dataBeforeContent']['bs-widgetbar'] = array(
-			'position' => 20,
+			'position' => 10,
 			'label' => wfMessage('prefs-widgetbar')->text(),
 			'content' => $oView
 		);

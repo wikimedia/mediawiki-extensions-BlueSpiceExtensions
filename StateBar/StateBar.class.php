@@ -346,7 +346,7 @@ class StateBar extends BsExtensionMW {
 		}
 
 		$tpl->data['bs_dataBeforeContent']['bs-statebar'] = array(
-			'position' => 10,
+			'position' => 20,
 			'label' => wfMessage( 'prefs-statebar' )->text(),
 			'content' => $oViewStateBar
 		);
