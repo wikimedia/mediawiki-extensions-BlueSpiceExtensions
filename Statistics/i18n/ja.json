@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yatalu"
+		]
+	},
+	"bs-statistics-year": "年",
+	"bs-statistics-month": "月",
+	"bs-statistics-day": "日",
+	"bs-statistics-filter-category": "カテゴリ",
+	"bs-statistics-portlet-numberofedits": "編集回数"
+}

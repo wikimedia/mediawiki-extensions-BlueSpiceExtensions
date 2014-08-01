@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-countthings-chars-label": "Символы",
+	"bs-countthings-words-label": "Слова",
+	"bs-countthings-pages-label": "Страницы"
+}

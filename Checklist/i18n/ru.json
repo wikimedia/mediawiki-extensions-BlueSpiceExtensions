@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-checklist-menu-insert-list-title": "Вставить список",
+	"bs-checklist-menu-insert-checkbox": "Флажок",
+	"bs-checklist-dlg-insert-list-value-list": "Список значений"
+}

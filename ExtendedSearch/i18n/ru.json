@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-extendedsearch-error": "Ошибка:",
+	"bs-extendedsearch-facet-category": "Категория",
+	"bs-extendedsearch-facet-editors": "Авторы",
+	"bs-extendedsearch-facet-namespace": "Пространство имён",
+	"bs-extendedsearch-facet-namespace-files": "Файлы",
+	"bs-extendedsearch-facet-namespace-extfiles": "Внешние файлы",
+	"bs-extendedsearch-pref-scope-text": "Полный текст",
+	"bs-extendedsearch-create-index": "Пересоздать индекс",
+	"bs-extendedsearch-delete-index": "Удалить индекс",
+	"bs-extendedsearch-overwrite-index": "Перезаписать индекс",
+	"bs-extendedsearch-docs-in-index": "документов проиндексировано.",
+	"bs-extendedsearchadmin-label": "Настройки поиска",
+	"bs-extendedsearch-status": "Статус",
+	"bs-extendedsearch-index-error-deleting": "Ошибка при удалении индекса: $1",
+	"bs-extendedsearch-statistics": "Статистика",
+	"bs-extendedsearch-warning": "Предупреждение",
+	"bs-extendedsearch-ascending": "По возрастанию",
+	"bs-extendedsearch-descending": "По убыванию",
+	"bs-extendedsearch-unknown": "Неизвестно",
+	"bs-extendedsearch-section": "Раздел",
+	"bs-extendedsearch-morelikethis": "Похожие страницы",
+	"bs-extendedsearch-more": "Ещё",
+	"bs-extendedsearch-fewer": "Меньше"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin"
+		]
+	},
+	"bs-extendedsearch-sort-by": "Gesorteerd op:",
+	"bs-extendedsearch-sort-relevance": "Relevantie",
+	"bs-extendedsearch-sort-title": "Titel",
+	"bs-extendedsearch-sort-ts": "Tijd",
+	"bs-extendedsearch-sort-type": "Type",
+	"bs-extendedsearch-pref-scope-text": "Volledige tekst",
+	"bs-extendedsearch-status": "Status",
+	"bs-extendedsearch-ascending": "Oplopend",
+	"bs-extendedsearch-descending": "Aflopend",
+	"bs-extendedsearch-more": "Meer",
+	"bs-extendedsearch-fewer": "Minder"
+}

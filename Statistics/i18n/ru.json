@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Аль-Гимравий"
+			"Аль-Гимравий",
+			"Умар"
 		]
 	},
-	"bs-statistics-diagram": "ТІалаб гьаби",
-	"bs-statistics-to": "Рахъалде",
-	"bs-statistics-grain": "Жанисеб",
-	"bs-statistics-absolute": "модуль",
-	"bs-statistics-label-registration": "Хъвай-хъвагІай гьаби"
+	"bs-statistics-diagram": "Запрос",
+	"bs-statistics-to": "К",
+	"bs-statistics-grain": "Интервал",
+	"bs-statistics-absolute": "абсолютный",
+	"bs-statistics-label-registration": "Регистрация"
 }

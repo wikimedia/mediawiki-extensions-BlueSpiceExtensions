@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-flexiskin-label": "Тема оформления",
+	"bs-flexiskin-defaultname": "По умолчанию",
+	"prefs-flexiskin": "Тема оформления",
+	"bs-flexiskin-pref-logo": "Логотип:",
+	"bs-flexiskin-labeldesc": "Описание",
+	"bs-flexiskin-labelskins": "Шаблон",
+	"bs-flexiskin-labellogoupload": "Логотип",
+	"bs-flexiskin-labelbackgroundupload": "Фоновое изображение"
+}

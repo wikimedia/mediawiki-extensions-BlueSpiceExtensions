@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-extensioninfo-label": "Uitbreidingen",
@@ -10,5 +11,6 @@
 	"extensioninfo": "Uitbreidingen",
 	"bs-extensioninfo-headerextname": "Naam van de uitbreiding",
 	"bs-extensioninfo-headerversion": "Versie",
-	"bs-extensioninfo-headerdesc": "Beschrijving"
+	"bs-extensioninfo-headerdesc": "Beschrijving",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element|elementen}}"
 }

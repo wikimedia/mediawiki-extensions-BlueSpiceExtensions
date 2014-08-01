@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Imperadeiro98",
-			"Fúlvio"
+			"Fúlvio",
+			"Vitorvicentevalente"
 		]
 	},
 	"bs-statebar-desc": "Mostra uma barra de status",
@@ -10,6 +11,7 @@
 	"bs-statebar-pref-sortbodyvars": "Ordem do corpo:",
 	"bs-statebar-pref-sorttopvars": "Ordem superior:",
 	"bs-statebar-pref-show": "Exibir a barra de estado",
+	"bs-statebar-viewtoggler": "DETALHES",
 	"bs-statebar-viewtoggler-tooltip": "Mostrar informações detalhadas",
 	"bs-statebar-switch-description": "Oculta a barra de estado nesta página.",
 	"bs-statebar-ajax-nobodyviews": "Não há informações disponíveis."

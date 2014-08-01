@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"H4nek"
+		]
+	},
+	"bs-statistics-day": "Den",
+	"bs-statistics-label-name": "Název",
+	"bs-statistics-diag-number-of-pages": "Počet stránek",
+	"bs-statistics-label-page": "Stránka",
+	"bs-statistics-label-time": "Čas"
+}
