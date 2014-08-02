@@ -25,3 +25,7 @@ h4#bs-flyout-content-widgets-header{
 #bs-widgetbar-edit:hover{
 	color: rgb(205, 223, 242);
 }
+
+#bs-flyout{
+	display: none;
+}
