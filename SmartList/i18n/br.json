@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Y-M D"
 		]
 	},
 	"bs-smartlist-recent-changes": "Kemmoù graet nevez zo",
 	"bs-smartlist-no-entries": "N'eus bet kavet disoc'h ebet.",
 	"bs-smartlist-comment": "Evezhiadenn : $1.",
 	"bs-smartlist-pref-comments": "Diskouez an evezhiadenn",
+	"bs-smartlist-pref-namespaces": "Esaouennoù anv :",
 	"bs-smartlist-pref-categories": "Rummadoù :",
 	"bs-smartlist-pref-period": "Prantad :",
 	"bs-smartlist-pref-showminorchanges": "Diskouez ar c'hemmoù bihan",

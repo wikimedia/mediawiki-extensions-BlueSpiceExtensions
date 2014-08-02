@@ -25,6 +25,7 @@
 	"bs-statistics-label-creator": "Twórca",
 	"bs-statistics-diag-number-of-edits": "liczba edycji",
 	"bs-statistics-diag-number-of-edits-desc": "Wyświetla całkowitą liczbę edycji, które zostały wykonane w wybranym okresie.",
+	"bs-statistics-diag-edits-per-user": "Edycji na użytkownika",
 	"bs-statistics-label-maxhits": "Maksymalna liczba wyników",
 	"bs-statistics-label-time": "Czas",
 	"bs-statistics-filter-category": "Kategoria",

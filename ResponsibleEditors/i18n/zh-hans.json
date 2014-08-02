@@ -9,6 +9,7 @@
 	"prefs-responsibleeditors": "负责编辑者",
 	"bs-responsibleeditors-pref-activatednamespaces": "启用的名字空间：",
 	"bs-responsibleeditors-pref-emailnotificationonresponsibilitychange": "通知责任更改",
+	"bs-responsibleeditors-pref-responsibleeditormaychangeassignment": "加入页面至责任编辑者的监视列表",
 	"bs-responsibleeditors-pref-echange": "当页面更改时通知",
 	"bs-responsibleeditors-pref-edelete": "当页面删除时通知",
 	"bs-responsibleeditors-pref-emove": "当页面移动时通知",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Y-M D"
 		]
 	},
 	"bs-flexiskin-label": "Gwiskadur",
@@ -24,5 +25,6 @@
 	"bs-flexiskin-labelbackgroundupload": "Skeudenn drekleur",
 	"bs-flexiskin-labelcustombgcolor": "Liv personelaet",
 	"bs-flexiskin-headerposition": "Lec'hiadur ha ment",
+	"bs-flexiskin-labelfullwidth": "Ledander brasañ",
 	"bs-flexiskin-error-templatenotexists": "N'eus ket eus ar patrom choazet."
 }
