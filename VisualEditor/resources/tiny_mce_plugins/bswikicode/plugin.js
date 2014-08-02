@@ -445,7 +445,7 @@ var BsWikiCode = function() {
 				}
 			}
 
-			text = text.replace(image, '[[' + wikiText.join('|') + ']]');
+			text = text.replace(image, '[[' + wikiText.join('|').replace("@@PIPE@@", '|') + ']]');
 		}
 		return text;
 	}
@@ -463,6 +463,46 @@ var BsWikiCode = function() {
 			anchorFormat = '<a href="{0}" data-mce-href="{5}" title="{6}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
 
 		links = text.match(/\[\[([^\]]*?)\]\]/gi);
+
+		var pos = 0;
+		var squareBraceDepth = 0;
+		var checkedBraces = new Array();
+		var linkDepth = 0;
+		var tempTemplate = '';
+		var squareBraceFirst = false;
+		var _links = new Array();
+		for (pos = 0; pos < text.length; pos++) {
+			if (text[pos] === '[') {
+				squareBraceDepth++;
+				if ( checkedBraces.indexOf(pos) == -1 && text[pos + 1] === '[') {
+					checkedBraces.push(pos + 1);
+					linkDepth++;
+				}
+			}
+
+			// Caution: this matches only from the second curly brace.
+			if (linkDepth && !squareBraceFirst) {
+				if (linkDepth > 1 && text[pos] == '|' ) tempTemplate = tempTemplate + '@@PIPE@@';
+				//if (text[pos] == '|' ) tempTemplate = tempTemplate + '@@PIPE@@';
+				else tempTemplate = tempTemplate + text[pos];
+			}
+			if (text[pos] === ']') {
+				squareBraceDepth--;
+				if ( checkedBraces.indexOf(pos-1) == -1 && text[pos - 1] === ']') {
+					checkedBraces.push(pos);
+					linkDepth--;
+				}
+				if (linkDepth === 0 && !squareBraceFirst) {
+					if (tempTemplate !== '')
+						_links.push(tempTemplate);
+					tempTemplate = '';
+				}
+			}
+		}
+
+		links = _links;
+
+
 		if (links) {
 			for (var i = 0; i < links.length; i++) {
 				link = links[i].substr(2, links[i].length - 4);
@@ -505,6 +545,7 @@ var BsWikiCode = function() {
 					}
 				}
 
+				link = link.replace( "@@PIPE@@", "|" );
 				text = text.replace("[[" + link + "]]", linkHtml);
 			}
 		}
