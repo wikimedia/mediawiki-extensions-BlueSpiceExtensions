@@ -71,7 +71,7 @@ Ext.define('BS.Flexiskin.Panel', {
 				id: checked ? this.grdMain.getStore().getAt(rowindex).getData().flexiskin_id : ""
 			},
 			success: function(response) {
-				this.reloadStore();
+				window.location.reload()
 			},
 			scope: this
 		});

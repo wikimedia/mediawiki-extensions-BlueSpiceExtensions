@@ -189,9 +189,9 @@ class Flexiskin extends BsExtensionMW {
 	}
 
 	private static function generateConfigFile($oData) {
-		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","customBackgroundColor":"333333","backgroundImage":"","repeatBackground":"no-repeat"},';
+		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","customBackgroundColor":"F4F4F4","backgroundImage":"","repeatBackground":"no-repeat"},';
 		$sConfig .= '{"id":"header","logo":""},';
-		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1000", "fullWidth":"0"}]';
+		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1222", "fullWidth":"0"}]';
 		return $sConfig;
 	}
 
@@ -375,9 +375,8 @@ class Flexiskin extends BsExtensionMW {
 	private static function format_position($aConfig) {
 		$aReturn = "";
 		if ($aConfig->navigation == 'right') {
-			$aReturn[] = "#bs-left-column{float:right}";
-			$aReturn[] = "#bs-content-column{margin: 0 200px 0 0;}";
-			$aReturn[] = "#footer{margin: 20px 200px 0 0;}";
+			$aReturn[] = "#bs-content-column{margin: 0 302px 0 0;}";
+			$aReturn[] = "#footer{margin: 0px 302px 5px 0px;}";
 		}
 		if ($aConfig->content != 'center') {
 			$aReturn[] = "#bs-wrapper{margin-" . $aConfig->content . ":0;}";

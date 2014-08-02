@@ -267,7 +267,8 @@ class UniversalExport extends BsExtensionMW {
 		if( $oCurrentTitle->quickUserCan( 'universalexport-export' ) === false ) return null;
 
 		$aCurrentQueryParams = $this->getRequest()->getValues();
-		$sSpecialPageParameter = BsCore::sanitize( $aCurrentQueryParams['title'], '', BsPARAMTYPE::STRING );
+		$sTitle = isset($aCurrentQueryParams['title']) ? $aCurrentQueryParams['title'] : "";
+		$sSpecialPageParameter = BsCore::sanitize( $sTitle, '', BsPARAMTYPE::STRING );
 		$oSpecialPage = SpecialPage::getTitleFor( 'UniversalExport',$sSpecialPageParameter );
 		if( isset( $aCurrentQueryParams['title'] ) ) unset( $aCurrentQueryParams['title'] );
 
