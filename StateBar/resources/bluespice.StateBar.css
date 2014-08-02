@@ -56,7 +56,10 @@
 	display: inline-block;
 	text-decoration: none;
 }
-
+#bs-statebar-view ul#footer-info{
+	display: block;
+	list-style: none;
+}
 #bs-statebar {
 	background-color: #eee;
 	clear: both;

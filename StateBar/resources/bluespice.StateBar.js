@@ -42,31 +42,32 @@ BsStateBar = {
 			params,
 			function( result ) {
 				$(document).trigger( 'BsStateBarBodyLoad', [result] );
-				if ( result['success'] === true ) {
-					$('#sStateBarBodyLoadView').slideToggle('fast');
+				$('#sStateBarBodyLoadView').slideToggle('fast');
 
-					if ( result['views'].length < 1 ) {
-						var messageItem = $('<div class="bs-statebar-body-item style="display:none"><p>' + result['message'] + '</p></div>').filter('DIV.bs-statebar-body-item');
-						BsStateBar.oStateBarView.append(messageItem.slideToggle('fast'));
-						$.each( BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
-							BsStateBar.viewTogglerClick(value);
-						});
-						return;
-					}
-
-					$.each(result['views'], function( key, value ) {
-						var bodyItem = $(value).filter('DIV.bs-statebar-body-item');
-						bodyItem.hide();
-						BsStateBar.oStateBarView.append(bodyItem.slideToggle('fast'));
-					});
-
-					$(document).trigger( 'BsStateBarBodyLoadComplete', [result['views'], result] );
-
-					$.each(BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
+				if ( result['views'].length < 1 ) {
+					var messageItem = $('<div class="bs-statebar-body-item style="display:none"><p>' + result['message'] + '</p></div>').filter('DIV.bs-statebar-body-item');
+					BsStateBar.oStateBarView.append(messageItem.slideToggle('fast'));
+					$.each( BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
 						BsStateBar.viewTogglerClick(value);
 					});
-				} else {
+					return;
 				}
+
+				$.each(result['views'], function( key, value ) {
+					var bodyItem = $(value).filter('DIV.bs-statebar-body-item');
+					bodyItem.hide();
+					BsStateBar.oStateBarView.append(bodyItem.slideToggle('fast'));
+				});
+				if ($("#footer-info").length !== 0 ){
+					BsStateBar.oStateBarView.append($("<div class='clearfix'></div>"));
+					BsStateBar.oStateBarView.append($("#footer-info"));
+				}
+
+				$(document).trigger( 'BsStateBarBodyLoadComplete', [result['views'], result] );
+
+				$.each(BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
+					BsStateBar.viewTogglerClick(value);
+				});
 			}
 		);
 		this.bAjaxCallComplete = true;

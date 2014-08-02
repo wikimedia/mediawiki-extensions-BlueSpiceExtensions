@@ -162,7 +162,8 @@ class StateBar extends BsExtensionMW {
 		);
 
 		$iArticleID = RequestContext::getMain()->getRequest()->getInt( 'articleID', 0 );
-		if( empty($iArticleID) ) {
+		if( $iArticleID === 0 ) {
+			$aResult['message'] = wfMessage("bs-statebar-ajax-nobodyviews")->plain();
 			return FormatJson::encode($aResult);
 		}
 
@@ -175,6 +176,7 @@ class StateBar extends BsExtensionMW {
 				 //also prevents from get wrong data in redirect redirect
 		);
 		if( is_null($oTitle) ) {
+			$aResult['message'] = wfMessage("bs-statebar-ajax-nobodyviews")->plain();
 			return json_encode( $aResult );
 		}
 
