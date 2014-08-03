@@ -1604,8 +1604,9 @@ var BsWikiCode = function() {
 		// Important: do not use m flag, since this makes $ react to any line ending instead of text ending
 		text = text.replace(/((<p( [^>]*?)?>(\s|&nbsp;|<br\s?\/>)*?<\/p>)|<br\s?\/>|\s)*$/gi, "");
 		text = text.replace(/<br [^>]*bs_lastline[^>]*>/gmi, '');
-		text = text.replace(/<br data-attributes="" \/>/gmi, '<br/>');
-		text = text.replace(/<br data-attributes="[^>]*data-mce-bogus[^>]*" \/>/gmi, '');
+		text = text.replace(/<br data-attributes="" ?\/?>/gmi, '<br/>');
+		text = text.replace(/<br data-attributes="[^>]*data-mce-bogus[^>]*" ?\/?>/gmi, '');
+		text = text.replace(/<br data-attributes="[^>]*data-attributes[^>]*" ?\/?>/gmi, '<br/>');
 		text = text.replace(/<br [^>]*data-mce-bogus="1"[^>]*>/gmi, '');
 		text = text.replace(/^\n*/gi, '');
 
