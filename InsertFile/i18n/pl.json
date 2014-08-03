@@ -13,6 +13,7 @@
 	"bs-insertfile-labelalt": "Tekst alternatywny",
 	"bs-insertfile-typeframe": "ramka",
 	"bs-insertfile-uploadfilefieldlabel": "Nazwa pliku docelowego",
+	"bs-insertfile-uploaddestfilelabel": "Nazwa docelowa",
 	"bs-insertfile-uploadwatchthislabel": "Obserwuj ten plik",
 	"bs-insertfile-warning": "Ostrzeżenie",
 	"bs-insertfile-error": "Błąd",

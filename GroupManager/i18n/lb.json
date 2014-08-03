@@ -20,5 +20,6 @@
 	"bs-groupmanager-removegroup-message-failure": "Dës {{PLURAL:$1|Grupp konnt|Gruppe konnten}} net geläscht ginn: $2",
 	"bs-groupmanager-removegroup-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
 	"bs-groupmanager-lablename": "Numm vum Grupp:",
+	"bs-groupmanager-msgnoteditable": "Dës Grupp ass e System-Grupp a kann net ëmbenannt ginn.",
 	"bs-groupmanager-msgnotremovable": "Dës Grupp ass e System-Grupp a kann net ewechgeholl ginn."
 }

@@ -12,5 +12,6 @@
 	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|Şablonu|Şablonları}} sil",
 	"bs-pagetemplates-tipaddtemplate": "Şablon ekle",
 	"bs-pagetemplates-label-article": "Şablon",
-	"bs-pagetemplates-remove-message-unknown": "Beklenmeyen bir hata oluştu, lütfen tekrar deneyin."
+	"bs-pagetemplates-remove-message-unknown": "Beklenmeyen bir hata oluştu, lütfen tekrar deneyin.",
+	"bs-pagetemplates-remove-message-success": "Şu {{PLURAL:$1|şablon|şablonlar}} silindi: $2"
 }

@@ -18,8 +18,12 @@
 	"bs-wantedarticle-tag-default-title": "Gewënscht Säiten",
 	"bs-wantedarticle-pref-includelimit": "Zuel vun de Virschléi:",
 	"bs-wantedarticle-pref-sort": "Zortéieren no:",
+	"bs-wantedarticle-pref-order": "Reiefolleg:",
 	"bs-wantedarticle-pref-sort-time": "Zäit",
 	"bs-wantedarticle-pref-sort-title": "Titel",
+	"bs-wantedarticle-pref-order-asc": "vu kleng op grouss",
+	"bs-wantedarticle-pref-order-desc": "vu grouss op kleng",
+	"bs-wantedarticle-create-page": "Säit \"$1\" uleeën.",
 	"bs-wantedarticle-suggest-page": "Säit \"$1\" virschloen.",
 	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Dëst Zeechen ass|Dës Zeeche sinn}} net valabel fir an engem Säitentitel ze benotzen: $2"
 }

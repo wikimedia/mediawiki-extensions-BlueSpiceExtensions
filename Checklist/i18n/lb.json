@@ -4,5 +4,7 @@
 			"Robby"
 		]
 	},
-	"bs-checklist-menu-insert-list-title": "Lëscht drasetzen"
+	"bs-checklist-menu-insert-list-title": "Lëscht drasetzen",
+	"bs-checklist-dlg-insert-list-value-list": "Lëscht vu Wäerter",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list<code> generéiert e Select-Menü."
 }

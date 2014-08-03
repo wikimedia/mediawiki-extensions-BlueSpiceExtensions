@@ -9,6 +9,7 @@
 	"bs-checklist-menu-insert-list-title": "插入列表",
 	"bs-checklist-menu-insert-checkbox": "复选框",
 	"bs-checklist-dlg-insert-list-value-list": "值列表",
+	"bs-checklist-tag-checklist-desc": "呈现复选框或选择字段。可用配置属性：",
 	"bs-checklist-tag-checklist-param-type": "<code>type</code>：<code>list</code>渲染选择列表。",
 	"bs-checklist-tag-checklist-param-list": "<code>list</code>：带有效值的模板名。参数<code>type</code>必须设置为<code>list</code>。",
 	"bs-checklist-tag-checklist-param-value": "<code>value</code>：<code>checked</code>或列表模板以外的值。"

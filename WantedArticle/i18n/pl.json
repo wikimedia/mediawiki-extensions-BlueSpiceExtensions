@@ -5,6 +5,8 @@
 			"Matik7"
 		]
 	},
+	"bs-wantedarticle-page-removed": "Strona „$1” została usunięta.",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Utwórz",
 	"bs-wantedarticle-single-textfield-defaulttext": "Tytuł strony",
 	"bs-wantedarticle-tag-more-linktext": "Więcej ...",
 	"bs-wantedarticle-pref-sort": "Sortuj według:",

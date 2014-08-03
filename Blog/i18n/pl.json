@@ -13,5 +13,6 @@
 	"bs-blog-form-button-text": "Utwórz",
 	"bs-blog-blog": "Blog",
 	"bs-blog-pref-showlimit": "Liczba wpisów w blogu:",
-	"bs-blog-pref-sortby": "Sortuj według:"
+	"bs-blog-pref-sortby": "Sortuj według:",
+	"bs-blog-pref-imagerendermode": "Wyświetl obrazy jako:"
 }
