@@ -484,7 +484,7 @@ class Notifications extends BsExtensionMW {
 
 		$tpl->data['bs_personal_info'][10] = array(
 			'id' => 'pt-notifications',
-			'class' => 'icon-mail4',
+			'class' => 'icon-bell2',
 		) + $tpl->data['personal_urls']['notifications'];
 
 		if( isset( $tpl->data['personal_urls']['notifications']['text'] ) && $tpl->data['personal_urls']['notifications']['text'] > 0 ) {
