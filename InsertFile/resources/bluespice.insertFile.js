@@ -217,6 +217,8 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 				}, this);
 
 				BS.InsertFile.ImageDialog.show();
+				params.caption = params.caption.replace("@@PIPE@@", "|");
+				params.alt = params.alt.replace("@@PIPE@@", "|");
 				BS.InsertFile.ImageDialog.setData( params );
 			}, this);
 		}
