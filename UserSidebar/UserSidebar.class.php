@@ -254,7 +254,7 @@ class UserSidebar extends BsExtensionMW {
 		$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
 			'position' => 20,
 			'label' => wfMessage('bs-tab_focus')->plain(),
-			'class' => 'icon-drawer2',
+			'class' => 'icon-clipboard',
 			'content' => implode( "\n", $aOut )
 		);
 
