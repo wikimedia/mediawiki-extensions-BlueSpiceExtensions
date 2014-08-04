@@ -21,7 +21,7 @@
 	"bs-responsibleeditors-error-ajax-not-allowed": "Access denied. You are not authorized to perform this action.",
 	"bs-responsibleeditors-contentactions-label": "Change responsibility",
 	"bs-responsibleeditors-statebartop-icon-alt": "There is a responsible editor for this page",
-	"bs-responsibleeditors-statebarbody-headline": "Responsible {{PLURAL:$1|editor|editors}}",
+	"bs-responsibleeditors-statebarbody-headline": "Responsible {{PLURAL:$1|{{GENDER:$2|editor}}|editors}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "The given page does not exist.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Responsibility for \"$1\" assigned",
 	"bs-responsibleeditors-mail-text-new-editor": "$2 {{GENDER:$1|assigned}} you to \"$3\". After logging into the wiki you can open the page with this link: $4. If you have any questions please refer to $2.",
