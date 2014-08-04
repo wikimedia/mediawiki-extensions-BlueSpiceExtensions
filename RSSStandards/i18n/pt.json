@@ -7,5 +7,6 @@
 	"bs-rssstandards-title-page": "Página",
 	"bs-rssstandards-title-cat": "Categoria",
 	"bs-rssstandards-title-watch": "Páginas vigiadas",
+	"bs-rssstandards-link-text-watch": "Mudanças recentes {{PLURAL:$1|no último dia|nos últimos $1 dias}}.",
 	"bs-rssstandards-changes-from": "Alterações {{GENDER:$1|de}}: $1"
 }

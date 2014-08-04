@@ -30,6 +30,7 @@
 	"bs-statistics-diag-number-of-pages-mw-desc": "Weist d'Zuel vun de Säite mat Inhalt, déi an der gewielter Period ugeluecht goufen.",
 	"bs-statistics-label-page": "Säit",
 	"bs-statistics-diag-number-of-edits": "Zuel vun den Ännerungen",
+	"bs-statistics-diag-number-of-edits-desc": "Weist d'Gesamtzuel vun Ännerungen déi an der erausgesichter Period gemaach huet.",
 	"bs-statistics-diag-edits-per-user": "Ännerunge pro Benotzer",
 	"bs-statistics-diag-edits-per-user-desc": "Weist déi duerchschnëttlech Zuel vun Ännerungen déi e Benotzer an der erausgesichter Period gemaach huet.",
 	"bs-statistics-label-searchterm": "Sichbegrëff",

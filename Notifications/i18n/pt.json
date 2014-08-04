@@ -19,5 +19,6 @@
 	"bs-notifications-email-move-subject": "Página $1 {{GENDER:$2|movida}} por $2",
 	"bs-notifications-email-delete-subject": "Página $1 {{GENDER:$2|eliminada}} por $2",
 	"bs-notifications-email-delete": "A página \"$1\" foi {{GENDER:$2|eliminada}} por $2.\n\nO motivo dado foi o seguinte:\n$3",
-	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|publicou}} uma mensagem na página $1"
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|publicou}} uma mensagem na página $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|publicou}} uma mensagem na página \"$1\".\n\nMessagem:\n$3\n\nPode visitar a página ao seguir a seguinte ligação:\n$4."
 }

@@ -19,6 +19,7 @@
 	"bs-extendedsearch-files": "Pesquisar ficheiros",
 	"bs-extendedsearch-finished": "Terminada",
 	"bs-extendedsearch-fuzzy": "Uma procura exata para \"$1\" não encontrou nenhum resultado. {{PLURAL:$2|Existe $2 resultado semelhante|Existem $2 resultados semelhantes}}.",
+	"bs-extendedsearch-result-caption": "$1 - $2 de cerca de $3 {{PLURAL:$3|resultado|resultados}}",
 	"bs-extendedsearch-search-help-multiselect": "Mantenha a tecla CTRL pressionada para selecionar vários itens.",
 	"bs-extendedsearch-search-namespace": "Pesquisar nos domínios:",
 	"bs-extendedsearch-server-not-available": "O servidor de pesquisa não está disponível.",

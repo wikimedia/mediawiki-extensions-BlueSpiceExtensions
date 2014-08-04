@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Cwlin0416"
 		]
 	},
+	"bs-wantedarticle-pref-sort": "排序方式：",
 	"bs-wantedarticle-pref-sort-time": "時間"
 }

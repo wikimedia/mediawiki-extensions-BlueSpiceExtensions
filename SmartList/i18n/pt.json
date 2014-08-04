@@ -5,6 +5,7 @@
 		]
 	},
 	"bs-smartlist-desc": "Fornece informações adicionais sobre o conteúdo e os utilizadores",
+	"prefs-smartlist": "Lista inteligente",
 	"bs-smartlist-recent-changes": "Mudanças recentes",
 	"bs-smartlist-no-entries": "Não foram encontrados resultados.",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|O domínio fornecido é inválido|Os domínios fornecidos são inválidos}}: $2.",
@@ -25,6 +26,8 @@
 	"bs-smartlist-month": "Mês",
 	"bs-smartlist-time": "Hora",
 	"bs-smartlist-title": "Título",
+	"bs-smartlist-tag-smartlist-desc": "Apresenta informação configurável sobre mudanças recentes.",
+	"bs-smartlist-mostvisitedpages": "Páginas mais visitadas",
 	"bs-smartlist-mosteditedpages": "Páginas mais editadas",
 	"bs-smartlist-mostactiveusers": "Utilizadores mais ativos (por edições)",
 	"bs-smartlist-lastedits": "As minhas edições",

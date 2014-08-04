@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Cwlin0416"
 		]
 	},
+	"bs-smartlist-pref-sort": "排序方式：",
 	"bs-smartlist-sort-asc": "升冪",
 	"bs-smartlist-sort-desc": "降冪",
 	"bs-smartlist-time": "時間"

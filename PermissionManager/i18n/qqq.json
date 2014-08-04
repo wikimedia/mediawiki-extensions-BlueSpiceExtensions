@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Shirayuki"
 		]
 	},
-	"bs-permissionmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of permisson manager extension",
+	"bs-permissionmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of permission manager extension",
 	"prefs-permissionmanager": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for permission manager section in preferences.\n{{Identical|Permission manager}}",
 	"bs-permissionmanager-label": "Anchor text for permission manager\n{{Identical|Permission manager}}",
 	"bs-permissionmanager-grouping-global": "Column headline for namespace independent permissions\n{{Identical|Namespace independent permissions}}",

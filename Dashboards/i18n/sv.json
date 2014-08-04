@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
+	"bs-specialadmindashboard-label": "Instrumentpanel",
+	"bs-dashboards-addportlet": "Lägg till portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Instrumentpaneler",
+	"bs-dashboards-pref-userdashboardonlogo": "Webbplatsens logotyp länkar till användarinstrumentpanel",
+	"admindashboard": "Admin-instrumentpanel",
+	"userdashboard": "Användar-instrumentpanel",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
 	"bs-dashboard-userportlet-calendar-description": "Kalender"
 }
