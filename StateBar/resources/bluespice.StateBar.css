@@ -56,3 +56,36 @@
 	display: inline-block;
 	text-decoration: none;
 }
+
+#bs-statebar {
+	background-color: #eee;
+	clear: both;
+}
+#bs-statebar .clearfix{
+	clear: both;
+}
+
+#bs-statebar-viewtoggler{
+	color: lightgrey;
+}
+
+#bs-statebar-viewtoggler:hover, #bs-statebar-viewtoggler.open{
+	color: #3e5389;
+}
+
+#bs-statebar-view .bs-statebar-body-item {
+	float: left;
+}
+
+.bs-statebar-top-item {
+	height: 48px;
+	display: table;
+	box-sizing: border-box;
+	margin-left: 10px;
+	float: left;
+}
+
+.bs-statebar-top-icon, div.bs-statebar-top-item span.bs-statebar-top-text{
+	display: table-cell;
+	vertical-align: middle;
+}

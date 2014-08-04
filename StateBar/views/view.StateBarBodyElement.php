@@ -51,7 +51,7 @@ class ViewStateBarBodyElement extends ViewBaseElement {
 		$arOut = array();
 
 		if( empty( $this->sKey ) ) $this->sKey = md5( $this->sHeading );
-		$arOut[] = '<div id="sbb-'.$this->sKey.'" class="bs-statebar-body-item clearfix">';
+		$arOut[] = '<div id="sbb-'.$this->sKey.'" class="bs-statebar-body-item">';
 		$arOut[] = ' <h4 id="sbb-'.$this->sKey.'-heading" class="bs-statebar-body-itemheading">'.$this->sHeading.'</h4>';
 		$arOut[] = ' <div id="sbb-'.$this->sKey.'-text" class="bs-statebar-body-itembody">'.$this->sBodyText.'</div>';
 		$arOut[] = '</div>';

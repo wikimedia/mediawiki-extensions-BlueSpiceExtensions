@@ -317,6 +317,7 @@ class StateBar extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		global $wgDefaultSkin;
 		if( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) {
 			return true;
 		}
@@ -345,11 +346,15 @@ class StateBar extends BsExtensionMW {
 			$oViewStateBar->addStateBarTopView( $oTopView );
 		}
 
-		$tpl->data['bs_dataBeforeContent']['bs-statebar'] = array(
-			'position' => 20,
-			'label' => wfMessage( 'prefs-statebar' )->text(),
-			'content' => $oViewStateBar
-		);
+		if ($wgDefaultSkin == 'bluespiceskin')
+			$tpl->data['bs_dataBeforeContent']['bs-statebar'] = array(
+				'position' => 20,
+				'label' => wfMessage( 'prefs-statebar' )->text(),
+				'content' => $oViewStateBar
+			);
+		//this is the case when BlueSpice Skin is not active, so use vector methods.
+		else
+			$tpl->data['prebodyhtml'] .= $oViewStateBar;
 		return true;
 	}
 

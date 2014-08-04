@@ -11,7 +11,7 @@ $(document).on('click', '#bs-widget-tab', function(){
 	}
 	else {
 		$.cookie( 'bs-widget-container', 'true', {
-			path: '/', 
+			path: '/',
 			expires: 10
 		} );
 	}
