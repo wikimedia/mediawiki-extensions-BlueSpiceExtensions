@@ -228,7 +228,7 @@ class WikiAdmin extends BsExtensionMW {
 		$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
 			'position' => 100,
 			'label' => wfMessage('bs-tab_admin')->plain(),
-			'class' => 'icon-wrench',
+			'class' => 'icon-cog',
 			'content' => implode( "\n", $aOut )
 		);
 		return true;
