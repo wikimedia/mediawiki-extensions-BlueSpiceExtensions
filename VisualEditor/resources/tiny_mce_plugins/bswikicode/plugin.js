@@ -607,6 +607,11 @@ var BsWikiCode = function() {
 				link = links[i];
 
 				hrefAttr = link.match(/href="(.*?)"/i);
+				if (!hrefAttr) {
+					//This is an anchor tag which is not supported.
+					text = text.replace(links[i], "");
+					continue;
+				}
 				if (hrefAttr) {
 					target = decodeURI( hrefAttr[1] );
 					// 03.03.2014 STM ??? target = target; //unescape(target);
