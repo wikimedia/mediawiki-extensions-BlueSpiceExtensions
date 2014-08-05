@@ -6,6 +6,7 @@
 			"Jopparn"
 		]
 	},
+	"bs-blog-desc": "Visar en lista med sidor i blogg-stil",
 	"prefs-blog": "Blogg",
 	"bs-blog-no-entries": "Det finns inga blogginlägg.",
 	"bs-blog-comments": "Kommentarer",
@@ -18,6 +19,8 @@
 	"bs-blog-form-button-text": "Skapa",
 	"bs-blog-blog": "Blogg",
 	"bs-blog-pref-moreinnewwindow": "Öppna nytt fönster för att läsa mer",
+	"bs-blog-pref-newentryfieldposition": "Position för formuläret för ett nytt blogginlägg:",
+	"bs-blog-pref-showall": "Visa länk för alla poster",
 	"bs-blog-pref-showinfo": "Visa information om inlägget",
 	"bs-blog-pref-showlimit": "Antal blogginlägg:",
 	"bs-blog-pref-shownewentryfield": "Visa formulär för ny bloggpost",

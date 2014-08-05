@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mykola Swarnyk"
+		]
+	},
+	"bs-rssfeeder-desc": "Створити свій власний канал RSS",
+	"rssfeeder": "Канал RSS",
+	"bs-rssfeeder-pagetext": "Ви можете підписатися на такі RSS-канали:",
+	"bs-rssfeeder-recent-changes": "Нещодавні зміни",
+	"bs-rssfeeder-pages": "Сторінка",
+	"bs-rssfeeder-submit": "Показати",
+	"bs-rssfeeder-rss": "RSS-канал",
+	"bs-rssfeeder-rss-desc": "Створити свій власний RSS-канал",
+	"bs-extjs-rssfeeder-rss-title": "URL-адреса RSS"
+}

@@ -6,5 +6,7 @@
 	},
 	"bs-rssfeeder-recent-changes": "Ostatnie zmiany",
 	"bs-rssfeeder-pages": "Strona",
-	"bs-rssfeeder-submit": "Pokaż"
+	"bs-rssfeeder-submit": "Pokaż",
+	"bs-rssfeeder-rss": "Kanał RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL RSS"
 }

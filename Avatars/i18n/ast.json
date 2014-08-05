@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"prefs-avatars": "Avatares",
+	"bs-avatars-desc": "Ufre imaxes d'usuariu xenériques ya individuales",
+	"bs-avatars-pref-generator": "Xenerador:",
+	"bs-avatars-pref-defaultsize": "Tamañu predetermináu en pixels:",
+	"bs-avatars-upload-complete": "La imaxe xubióse correutamente.",
+	"bs-avatars-generate-complete": "Xeneróse un avatar nuevu.",
+	"bs-avatars-upload-title": "Cambiar la imaxe del perfil",
+	"bs-avatars-upload-label": "Semeya",
+	"bs-avatars-generate-new-label": "Xenerar un avatar nuevu",
+	"bs-avatars-warning-title": "Avisu",
+	"bs-avatars-warning-text": "Yá configurasti una imaxe d'usuariu nes tos preferencies. Usar avatares borrará esa configuración. ¿Quies siguir?",
+	"bs-avatars-userimage-title": "Imaxe de la wiki o URL de la imaxe",
+	"bs-avatars-userimage-help": "p. ex. Imaxe.jpg o http://localhost/Imaxe.gif",
+	"bs-avatars-set-userimage-failed": "Nun ye nin URL nin una imaxe de la wiki válida.",
+	"bs-avatars-set-userimage-saved": "Guardóse correutamente la imaxe d'usuariu.",
+	"bs-avatars-file-upload-fieldset-title": "Carga de la imaxe",
+	"bs-avatars-auto-generate-fieldset-title": "Xenerar avatar automáticamente"
+}

@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
 	"bs-extendedsearch-desc": "Utökad sökning",
 	"specialextendedsearch": "Utökad sökning",
 	"prefs-extendedsearch": "Utökad sökning",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategori|Kategorier}}: $2",
+	"bs-extendedsearch-curl-not-active": "cURL-tillägget är inte aktiverat.",
 	"bs-extendedsearch-error": "Fel:",
 	"bs-extendedsearch-facet-category": "Kategori",
 	"bs-extendedsearch-facet-editors": "Författare",
@@ -49,6 +51,7 @@
 	"bs-extendedsearch-pref-limitresultdef": "Antal resultat på specialsidan:",
 	"bs-extendedsearch-pref-logging": "Statistisk utvärdering av sökfrågor",
 	"bs-extendedsearch-pref-solrpingtime": "Ping-tiden (i sekunder):",
+	"bs-extendedsearch-pref-solrserviceurl": "Solr-URL:",
 	"bs-extendedsearch-pref-showmlt": "Visa liknande sidor",
 	"bs-extendedsearch-pref-mltns": "Namnrymder för \"{{int:bs-extendedsearch-morelikethis}}\":",
 	"bs-extendedsearch-about-to-start": "Startar...",

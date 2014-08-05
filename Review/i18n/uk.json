@@ -74,5 +74,6 @@
 	"bs-review-header-accepted-text": "Стан",
 	"bs-review-header-startdate": "Початок",
 	"bs-review-header-enddate": "Закінчення",
-	"bs-review-confirm-delete-step": "Ви дійсно хочете вилучити цей крок?"
+	"bs-review-confirm-delete-step": "Ви дійсно хочете вилучити цей крок?",
+	"bs-review-confirm-delete-review": "Ви справді хочете видалити цей відгук?"
 }

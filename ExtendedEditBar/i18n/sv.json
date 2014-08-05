@@ -22,6 +22,8 @@
 	"bs-extendededitbar-gallerytip": "Infoga ett bildgalleri",
 	"bs-extendededitbar-gallerysamplepicture": "Bild",
 	"bs-extendededitbar-gallerysamplecaption": "Bildtext",
+	"bs-extendededitbar-quotetip": "Infoga ett block av citerad text",
+	"bs-extendededitbar-quotesample": "Blockcitat",
 	"bs-extendededitbar-tabletip": "Infoga en tabell",
 	"bs-extendededitbar-tablesampleheader": "Rubrik",
 	"bs-extendededitbar-tablesamplerow": "Rad",

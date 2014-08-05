@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Lokal Profil"
 		]
 	},
 	"prefs-pagetemplates": "Sidmallar",
@@ -12,6 +13,7 @@
 	"bs-pagetemplates-tpl-desc-toolong": "Beskrivningen är för lång. Använd maximalt 255 tecken.",
 	"bs-pagetemplates-tpl-label-toolong": "Etiketten är för lång. Använd maximalt 255 tecken.",
 	"bs-pagetemplates-tpl-label-empty": "Vänligen ange en etikett.",
+	"bs-pagetemplates-tpl-name-toolong": "Mallnamnet är för långt. Använd maximalt 255 tecken.",
 	"bs-pagetemplates-tpl-name-empty": "Vänligen ange ett mallnamn.",
 	"bs-pagetemplates-no-id": "Vänligen ange en sida som ska användas som mall.",
 	"bs-pagetemplates-tpl-added": "Mallen har lagts till.",
@@ -20,6 +22,7 @@
 	"bs-pagetemplates-tpl-edited": "Ändringarna har sparats.",
 	"bs-pagetemplates-dberror": "Ett databasfel uppstod.",
 	"bs-pagetemplates-tpl-deleted": "Mallen har raderats.",
+	"bs-pagetemplates-general-section": "Allmänt",
 	"bs-pagetemplates-pref-excludens": "Visa inte mallar i dessa namnrymder:",
 	"bs-pagetemplates-headerlabel": "Etikett",
 	"bs-pagetemplates-headertargetnamespace": "Namnrymd",
@@ -31,5 +34,8 @@
 	"bs-pagetemplates-label-targetns": "Namnrymd",
 	"bs-pagetemplates-label-tplns": "Mall-namnrymden",
 	"bs-pagetemplates-label-article": "Mall",
-	"bs-pagetemplates-confirm-deletetpl": "Är du säker på att du vill radera den här mallen?"
+	"bs-pagetemplates-confirm-deletetpl": "Är du säker på att du vill radera den här mallen?",
+	"bs-pagetemplates-remove-message-unknown": "Ett oväntat fel uppstod, försök igen.",
+	"bs-pagetemplates-remove-message-success": "Följande {{PLURAL:$1|mall|mallar}} raderades: $2",
+	"bs-pagetemplates-remove-message-failure": "Följande {{PLURAL:$1|mall|mallar}} kunde inte raderas: $2 (Orsak: $3)"
 }

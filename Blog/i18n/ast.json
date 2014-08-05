@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-blog-desc": "Amuesa una llista de páxines con estilu blog",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Nun hai entraes de blog.",
+	"bs-blog-comments": "Comentarios",
+	"bs-blog-read-more": "Lleer más",
+	"bs-blog-trackback": "Enllaz de vuelta",
+	"bs-blog-permalink": "Enllaz permanente",
+	"bs-blog-show-all": "Ver toles entraes",
+	"bs-blog-form-inline-text": "Títulu...",
+	"bs-blog-form-title-text": "Crear nueva entrada del blog",
+	"bs-blog-form-button-text": "Crear",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Abrir una ventana nueva pa lleer más",
+	"bs-blog-pref-newentryfieldposition": "Posición pal formulariu de nueva entrada del blog:",
+	"bs-blog-pref-showall": "Amosar l'enllaz de toles entraes",
+	"bs-blog-pref-showinfo": "Amosar información sobro la entrada",
+	"bs-blog-pref-showlimit": "Númberu d'entraes del blog:",
+	"bs-blog-pref-shownewentryfield": "Amosar formulariu de nueva entrada del blog",
+	"bs-blog-pref-showpermalink": "Amosar enllaz del enllaz permanente",
+	"bs-blog-pref-sortby": "Ordenar por:",
+	"bs-blog-pref-imagerendermode": "Amosar les imaxes como:",
+	"bs-blog-pref-maxentrycharacters": "Númberu de palabres por entrada:",
+	"bs-blog-tag-blog-desc": "Amosar les entraes del blog en cada páxina."
+}
