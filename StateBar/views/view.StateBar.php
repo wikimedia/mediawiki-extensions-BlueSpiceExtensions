@@ -49,8 +49,7 @@ class ViewStateBar extends ViewBaseElement {
 			$aOut[] = $oStateBarTopView->execute();
 		}
 
-		$aOut[] = ' <div class="clearfix"></div>';
-		$aOut[] = ' <div id="bs-statebar-view">';
+		$aOut[] = ' <div id="bs-statebar-view" class="clearfix">';
 
 		foreach( $this->mStateBarBodyViews as $oStateBarBodyView ) {
 			$aOut[] = $oStateBarBodyView->execute();
