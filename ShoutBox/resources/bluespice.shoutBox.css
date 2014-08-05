@@ -109,3 +109,7 @@ li.bs-sb-more a, li.bs-sb-more a:hover{
 	font-size:10px;
 	color:#999999;
 }
+
+.bs-sb-tab-counter{
+	margin-left: 5px;
+}
