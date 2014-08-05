@@ -512,16 +512,25 @@ class ResponsibleEditors extends BsExtensionMW {
 
 		$oResponsibleEditorsBodyView = new ViewStateBarBodyElement();
 
-		$sStateBarBodyHeadline = wfMessage( 'bs-responsibleeditors-statebarbody-headline', count( $aResponsibleEditorIds ) )->plain();
-
+		$sLastUsername = '';
 		$aResponsibleEditorUserMiniProfiles = array();
-		foreach ($aResponsibleEditorIds as $iResponsibleEditorId) {
-			$aResponsibleEditorUserMiniProfiles[] =
-					$this->mCore->getUserMiniProfile(
-							User::newFromId($iResponsibleEditorId),
-							array('width' => 48, 'height' => 48, 'classes' => array('left'))
-					)->execute();
+		foreach ( $aResponsibleEditorIds as $iResponsibleEditorId ) {
+			$oUser = User::newFromId( $iResponsibleEditorId );
+			$sLastUsername = $oUser->getName();
+			$aResponsibleEditorUserMiniProfiles[] = $this->mCore->getUserMiniProfile(
+				$oUser,
+				array(
+					'width' => 48,
+					'height' => 48,
+					'classes' => array( 'left' )
+				)
+			)->execute();
 		}
+
+		$sStateBarBodyHeadline = wfMessage( 'bs-responsibleeditors-statebarbody-headline' )
+			->numParams( count( $aResponsibleEditorIds ) )
+			->params( $sLastUsername )
+			->text();
 
 		$oResponsibleEditorsBodyView->setKey('ResponsibleEditors-Body');
 		$oResponsibleEditorsBodyView->setHeading($sStateBarBodyHeadline);

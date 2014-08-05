@@ -21,7 +21,7 @@
 	"bs-responsibleeditors-error-ajax-not-allowed": "Du bist nicht berechtigt diese Aktion durchzuführen.",
 	"bs-responsibleeditors-contentactions-label": "Verantwortlichkeit ändern",
 	"bs-responsibleeditors-statebartop-icon-alt": "Dieser Seite ist ein verantwortlicher Redakteur zugewiesen",
-	"bs-responsibleeditors-statebarbody-headline": "Verantwortliche{{PLURAL:$1|r|}} Redakteur{{PLURAL:$1||e}}",
+	"bs-responsibleeditors-statebarbody-headline": "Verantwortliche{{PLURAL:$1|r|}} {{PLURAL:$1|{{GENDER:$2|Redakteur}}|Redakteure}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Die angegebene Seite existiert nicht.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Verantwortlichkeit für die Seite \"$1\" übertragen",
 	"bs-responsibleeditors-mail-text-new-editor": "Soeben wurde Dir durch {{GENDER:$1|Herr|Frau|}} $2 die Verantwortlichkeit für die Seite \"$3\" übertragen. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $4 Solltest Du Fragen zur Übertragung der Verantwortlichkeit auf Dich haben, wende Dich bitte an {{GENDER:$1|Herr|Frau|}} $2.",
