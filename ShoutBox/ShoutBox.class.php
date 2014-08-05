@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Shoutbox extension for BlueSpice
  *
@@ -31,7 +32,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
 /* Changelog
  * v1.20.0
  * - MediaWiki I18N
@@ -73,35 +73,36 @@ class ShoutBox extends BsExtensionMW {
 	 * Constructor of ShoutBox class
 	 */
 	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
+		wfProfileIn( 'BS::' . __METHOD__ );
 
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
-		$this->mInfo          = array(
-			EXTINFO::NAME        => 'ShoutBox',
+		$this->mInfo = array(
+			EXTINFO::NAME => 'ShoutBox',
 			EXTINFO::DESCRIPTION => 'Adds a parser function for embedding your own shoutbox.',
-			EXTINFO::AUTHOR      => 'Karl Waldmannstetter, Markus Glaser',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
+			EXTINFO::AUTHOR => 'Karl Waldmannstetter, Markus Glaser',
+			EXTINFO::VERSION => 'default',
+			EXTINFO::STATUS => 'default',
+			EXTINFO::PACKAGE => 'default',
+			EXTINFO::URL => 'http://www.hallowelt.biz',
+			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::ShoutBox';
-		wfProfileOut( 'BS::'.__METHOD__ );
+		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
 	/**
 	 * Initialization of ShoutBox extension
 	 */
 	protected function initExt() {
-		wfProfileIn( 'BS::'.__METHOD__ );
+		wfProfileIn( 'BS::' . __METHOD__ );
 
 		// Hooks
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
 
 		// Permissions
 		$this->mCore->registerPermission( 'readshoutbox' );
@@ -110,15 +111,15 @@ class ShoutBox extends BsExtensionMW {
 
 		$this->mCore->registerBehaviorSwitch( 'bs_noshoutbox' );
 
-		BsConfig::registerVar('MW::ShoutBox::ShowShoutBoxByNamespace', array(0), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_INT, 'multiselectplusadd' );
-		BsConfig::registerVar('MW::ShoutBox::CommitTimeInterval',      15,       BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-committimeinterval', 'int' );
-		BsConfig::registerVar('MW::ShoutBox::NumberOfShouts',          5,        BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-numberofshouts', 'int' );
-		BsConfig::registerVar('MW::ShoutBox::ShowAge',                 true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-showage', 'toggle' );
-		BsConfig::registerVar('MW::ShoutBox::ShowUser',                true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-showuser', 'toggle' );
-		BsConfig::registerVar('MW::ShoutBox::Show',                    true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-show', 'toggle' );
-		BsConfig::registerVar('MW::ShoutBox::AllowArchive',            true,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,       'bs-shoutbox-pref-allowarchive', 'toggle' );
-		BsConfig::registerVar('MW::ShoutBox::MaxMessageLength',        255,      BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,        'bs-shoutbox-pref-maxmessagelength', 'int' );
-		wfProfileOut( 'BS::'.__METHOD__ );
+		BsConfig::registerVar( 'MW::ShoutBox::ShowShoutBoxByNamespace', array( 0 ), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT, 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::ShoutBox::CommitTimeInterval', 15, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-shoutbox-pref-committimeinterval', 'int' );
+		BsConfig::registerVar( 'MW::ShoutBox::NumberOfShouts', 5, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-shoutbox-pref-numberofshouts', 'int' );
+		BsConfig::registerVar( 'MW::ShoutBox::ShowAge', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-shoutbox-pref-showage', 'toggle' );
+		BsConfig::registerVar( 'MW::ShoutBox::ShowUser', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-shoutbox-pref-showuser', 'toggle' );
+		BsConfig::registerVar( 'MW::ShoutBox::Show', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-shoutbox-pref-show', 'toggle' );
+		BsConfig::registerVar( 'MW::ShoutBox::AllowArchive', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-shoutbox-pref-allowarchive', 'toggle' );
+		BsConfig::registerVar( 'MW::ShoutBox::MaxMessageLength', 255, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-shoutbox-pref-maxmessagelength', 'int' );
+		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
 	/**
@@ -131,32 +132,32 @@ class ShoutBox extends BsExtensionMW {
 		$sDir = __DIR__ . DS;
 
 		if ( $wgDBtype == 'mysql' ) {
-			$wgExtNewTables[]  = array( 'bs_shoutbox', $sDir . 'db/mysql/ShoutBox.sql' );
+			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/mysql/ShoutBox.sql' );
 			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/mysql/ShoutBox.patch.sb_page_id.index.sql' );
-			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/mysql/ShoutBox.patch.sb_user_id.sql' );
-			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/mysql/ShoutBox.patch.sb_archived.sql' );
+			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/mysql/ShoutBox.patch.sb_user_id.sql' );
+			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/mysql/ShoutBox.patch.sb_archived.sql' );
 
 			//TODO: also do this for oracle and postgres
-			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_title', $sDir . 'db/mysql/ShoutBox.patch.sb_title.sql' );
-			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_touched', $sDir . 'db/mysql/ShoutBox.patch.sb_touched.sql' );
-			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_parent_id', $sDir . 'db/mysql/ShoutBox.patch.sb_parent_id.sql' );
+			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_title', $sDir . 'db/mysql/ShoutBox.patch.sb_title.sql' );
+			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_touched', $sDir . 'db/mysql/ShoutBox.patch.sb_touched.sql' );
+			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_parent_id', $sDir . 'db/mysql/ShoutBox.patch.sb_parent_id.sql' );
 		} elseif ( $wgDBtype == 'postgres' ) {
-			$wgExtNewTables[]  = array( 'bs_shoutbox', $sDir . 'db/postgres/ShoutBox.pg.sql' );
+			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/postgres/ShoutBox.pg.sql' );
 			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/postgres/ShoutBox.patch.sb_archived.pg.sql' );
 			/*
-			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/postgres/ShoutBox.patch.sb_page_id.index.pg.sql' );
-			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/postgres/ShoutBox.patch.sb_user_id.pg.sql' );
-			*/
+			  $wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/postgres/ShoutBox.patch.sb_page_id.index.pg.sql' );
+			  $wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/postgres/ShoutBox.patch.sb_user_id.pg.sql' );
+			 */
 		} elseif ( $wgDBtype == 'oracle' ) {
-			$wgExtNewTables[]  = array( 'bs_shoutbox', $sDir . 'db/oracle/ShoutBox.oci.sql' );
+			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/oracle/ShoutBox.oci.sql' );
 			$dbr = wfGetDB( DB_SLAVE );
-			if ( !$dbr->fieldExists('bs_shoutbox', 'sb_archived') && $dbr->tableExists('bs_shoutbox') ) {
+			if ( !$dbr->fieldExists( 'bs_shoutbox', 'sb_archived' ) && $dbr->tableExists( 'bs_shoutbox' ) ) {
 				#$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/oracle/ShoutBox.patch.sb_archived.oci.sql' );
 			}
 			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/oracle/ShoutBox.patch.sb_page_id.index.oci.sql' );
 			/*
-			$wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/oracle/ShoutBox.patch.sb_user_id.oci.sql' );
-			*/
+			  $wgExtNewFields[]  = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/oracle/ShoutBox.patch.sb_user_id.oci.sql' );
+			 */
 		}
 		return true;
 	}
@@ -168,10 +169,11 @@ class ShoutBox extends BsExtensionMW {
 	 * @return always true to keep hook running
 	 */
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
-		if( $type != 'switches' ) return true;
+		if ( $type != 'switches' )
+			return true;
 
 		$oResponse->result[] = array(
-			'id'   => 'bs:shoutbox',
+			'id' => 'bs:shoutbox',
 			'type' => 'switch',
 			'name' => 'NOSHOUTBOX',
 			'desc' => wfMessage( 'bs-shoutbox-switch-description' )->plain(),
@@ -188,24 +190,33 @@ class ShoutBox extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBeforePageDisplay( $oOutputPage, $oSkinTemplate ) {
-		if ( BsConfig::get( 'MW::ShoutBox::Show' ) === false ) return true;
+		if ( BsConfig::get( 'MW::ShoutBox::Show' ) === false )
+			return true;
 		$oTitle = $oOutputPage->getTitle();
-		if( $oOutputPage->isPrintable() ) return true;
+		if ( $oOutputPage->isPrintable() )
+			return true;
 
-		if( is_object( $oTitle ) && $oTitle->exists() == false ) return true;
-		if( !$oTitle->userCan( 'readshoutbox' ) ) return true;
-		if( $this->getRequest()->getVal( 'action', 'view' ) != 'view' ) return true;
-		if( $oTitle->isSpecialPage() ) return true;
-		if( !$oTitle->userCan( 'read' ) ) return true;
+		if ( is_object( $oTitle ) && $oTitle->exists() == false )
+			return true;
+		if ( !$oTitle->userCan( 'readshoutbox' ) )
+			return true;
+		if ( $this->getRequest()->getVal( 'action', 'view' ) != 'view' )
+			return true;
+		if ( $oTitle->isSpecialPage() )
+			return true;
+		if ( !$oTitle->userCan( 'read' ) )
+			return true;
 
 		$aNamespacesToDisplayShoutBox = BsConfig::get( 'MW::ShoutBox::ShowShoutBoxByNamespace' );
-		if( !in_array( $oTitle->getNsText(), $aNamespacesToDisplayShoutBox ) ) return true;
+		if ( !in_array( $oTitle->getNsText(), $aNamespacesToDisplayShoutBox ) )
+			return true;
 
 		$vNoShoutbox = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_noshoutbox' );
-		if( $vNoShoutbox === '' ) return true;
+		if ( $vNoShoutbox === '' )
+			return true;
 
-		$oOutputPage->addModuleStyles('ext.bluespice.shoutbox.styles');
-		$oOutputPage->addModules('ext.bluespice.shoutbox');
+		$oOutputPage->addModuleStyles( 'ext.bluespice.shoutbox.styles' );
+		$oOutputPage->addModules( 'ext.bluespice.shoutbox' );
 
 		BsExtensionManager::setContext( 'MW::ShoutboxShow' );
 		return true;
@@ -232,8 +243,8 @@ class ShoutBox extends BsExtensionMW {
 
 		$tpl->data['bs_dataAfterContent']['bs-shoutbox'] = array(
 			'position' => 30,
-			'label' => wfMessage('bs-shoutbox-title')->text(),
-			'content' => $oShoutBoxView ->execute()
+			'label' => wfMessage( 'bs-shoutbox-title' )->text(),
+			'content' => $oShoutBoxView->execute()
 		);
 		return true;
 	}
@@ -245,26 +256,29 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always true
 	 */
 	public static function getShouts( $iArticleId, $iLimit ) {
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false ) return "";
+		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false )
+			return "";
 
 		// do not allow negative page ids and pages that have 0 as id (e.g. special pages)
-		if ( $iArticleId <= 0 ) return true;
+		if ( $iArticleId <= 0 )
+			return true;
 
 		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId );
 		$aData = BsCacheHelper::get( $sKey );
 
-		if( $aData !== false ) {
-			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching shouts from cache');
+		if ( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching shouts from cache' );
 			$sOutput = $aData;
 		} else {
-			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching shouts from DB');
-			if ( $iLimit <= 0 ) $iLimit = BsConfig::get('MW::ShoutBox::NumberOfShouts');
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching shouts from DB' );
+			if ( $iLimit <= 0 )
+				$iLimit = BsConfig::get( 'MW::ShoutBox::NumberOfShouts' );
 
 			$sOutput = '';
 			//return false on hook handler to break here
 
-			$aTables = array('bs_shoutbox');
-			$aFields = array('*');
+			$aTables = array( 'bs_shoutbox' );
+			$aFields = array( '*' );
 			$aConditions = array(
 				'sb_page_id' => $iArticleId,
 				'sb_archived' => '0',
@@ -282,45 +296,66 @@ class ShoutBox extends BsExtensionMW {
 
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
-				$aTables,
-				$aFields,
-				$aConditions,
-				__METHOD__,
-				$aOptions
+					$aTables, $aFields, $aConditions, __METHOD__, $aOptions
 			);
 
 			$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
 
-			if( $dbr->numRows( $res ) > $iLimit ) {
-				$oShoutBoxMessageListView->setMoreLimit( $iLimit + BsConfig::get('MW::ShoutBox::NumberOfShouts') );
+			if ( $dbr->numRows( $res ) > $iLimit ) {
+				$oShoutBoxMessageListView->setMoreLimit( $iLimit + BsConfig::get( 'MW::ShoutBox::NumberOfShouts' ) );
 			}
 
-			$bShowAge  = BsConfig::get( 'MW::ShoutBox::ShowAge' );
+			$bShowAge = BsConfig::get( 'MW::ShoutBox::ShowAge' );
 			$bShowUser = BsConfig::get( 'MW::ShoutBox::ShowUser' );
 
 			$iCount = 0;
-			while( $row = $dbr->fetchRow( $res ) ) {
+			while ( $row = $dbr->fetchRow( $res ) ) {
 				$oUser = User::newFromId( $row['sb_user_id'] );
 				$oProfile = BsCore::getInstance()->getUserMiniProfile( $oUser );
 				$oShoutBoxMessageView = new ViewShoutBoxMessage();
-				if ( $bShowAge )  $oShoutBoxMessageView->setDate( BsFormatConverter::mwTimestampToAgeString( $row[ 'sb_timestamp' ], true ) );
-				if ( $bShowUser ) $oShoutBoxMessageView->setUsername( $row[ 'sb_user_name' ] );
+				if ( $bShowAge )
+					$oShoutBoxMessageView->setDate( BsFormatConverter::mwTimestampToAgeString( $row['sb_timestamp'], true ) );
+				if ( $bShowUser )
+					$oShoutBoxMessageView->setUsername( $row['sb_user_name'] );
 				$oShoutBoxMessageView->setUser( $oUser );
 				$oShoutBoxMessageView->setMiniProfile( $oProfile );
-				$oShoutBoxMessageView->setMessage( $row[ 'sb_message' ] );
-				$oShoutBoxMessageView->setShoutID( $row[ 'sb_id' ] );
+				$oShoutBoxMessageView->setMessage( $row['sb_message'] );
+				$oShoutBoxMessageView->setShoutID( $row['sb_id'] );
 				$oShoutBoxMessageListView->addItem( $oShoutBoxMessageView );
 				// Since we have one more shout than iLimit, we need to count :)
 				$iCount++;
-				if ( $iCount >= $iLimit ) break;
+				if ( $iCount >= $iLimit )
+					break;
 			}
 
 			$sOutput .= $oShoutBoxMessageListView->execute();
+			$iTotelShouts = self::getTotalShouts( $iArticleId );
+			$sOutput .= "<div id='bs-sb-count-all' style='display:none'>" . $iTotelShouts . "</div>";
 
 			BsCacheHelper::set( $sKey, $sOutput );
 			$dbr->freeResult( $res );
 		}
 		return $sOutput;
+	}
+
+	/**
+	 * Returns total number of shouts for the article id
+	 * @param int $iArticleId
+	 * @return int number of shouts
+	 */
+	public static function getTotalShouts( $iArticleId = 0 ) {
+		$aTables = array( 'bs_shoutbox' );
+		$aFields = array( 'sb_id' );
+		$aConditions = array(
+			'sb_page_id' => $iArticleId,
+			'sb_archived' => '0',
+			'sb_parent_id' => '0',
+			'sb_title' => '',
+		);
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( $aTables, $aFields, $aConditions, __METHOD__ );
+		$iTotelShouts = $res !== false ? $dbr->numRows( $res ) : 0;
+		return $iTotelShouts;
 	}
 
 	/**
@@ -330,11 +365,11 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed
 	 */
 	public static function insertShout( $iArticleId, $sMessage ) {
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false
-			|| BsCore::checkAccessAdmission( 'writeshoutbox' ) === false ) return true;
+		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false || BsCore::checkAccessAdmission( 'writeshoutbox' ) === false )
+			return true;
 
 		$oRequest = RequestContext::getMain()->getRequest();
-		$oUser    = RequestContext::getMain()->getUser();
+		$oUser = RequestContext::getMain()->getUser();
 
 		// prevent spam by enforcing a interval between two commits
 		$iCommitTimeInterval = BsConfig::get( 'MW::ShoutBox::CommitTimeInterval' );
@@ -342,12 +377,12 @@ class ShoutBox extends BsExtensionMW {
 
 		$vLastCommit = $oRequest->getSessionData( 'MW::ShoutBox::lastCommit' );
 		if ( is_numeric( $vLastCommit ) && $vLastCommit + $iCommitTimeInterval > $iCurrentCommit ) {
-			return json_encode(array('success' => false, 'msg' => 'bs-shoutbox-too-early'));
+			return json_encode( array( 'success' => false, 'msg' => 'bs-shoutbox-too-early' ) );
 		}
 		$oRequest->setSessionData( 'MW::ShoutBox::lastCommit', $iCurrentCommit );
 
-		$sNick      = BsCore::getUserDisplayName( $oUser );
-		$iUserId    = $oUser->getId();
+		$sNick = BsCore::getUserDisplayName( $oUser );
+		$iUserId = $oUser->getId();
 		$sTimestamp = wfTimestampNow();
 
 		if ( strlen( $sMessage ) > BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ) ) {
@@ -355,25 +390,25 @@ class ShoutBox extends BsExtensionMW {
 		}
 
 		// TODO MRG (08.09.10 01:57): error message
-		if ( $iArticleId <= 0 ) return false;
+		if ( $iArticleId <= 0 )
+			return false;
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
-			'bs_shoutbox',
-			array(
-				'sb_page_id'    => $iArticleId,
-				'sb_user_id'    => $iUserId,
-				'sb_user_name'  => $sNick,
-				'sb_message'    => $sMessage,
-				'sb_timestamp'  => $sTimestamp,
-				'sb_archived'   => '0'
-			)
+				'bs_shoutbox', array(
+			'sb_page_id' => $iArticleId,
+			'sb_user_id' => $iUserId,
+			'sb_user_name' => $sNick,
+			'sb_message' => $sMessage,
+			'sb_timestamp' => $sTimestamp,
+			'sb_archived' => '0'
+				)
 		); // TODO RBV (21.10.10 17:21): Send error / success to client.
 
 		wfRunHooks( 'BSShoutBoxAfterInsertShout', array( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) );
 
 		self::invalidateShoutBoxCache( $iArticleId );
-		return json_encode(array('success' => true, 'msg' => self::getShouts( $iArticleId, 0 )));
+		return json_encode( array( 'success' => true, 'msg' => self::getShouts( $iArticleId, 0 ) ) );
 	}
 
 	/**
@@ -382,20 +417,16 @@ class ShoutBox extends BsExtensionMW {
 	 * @param string $sOutput success state of database action
 	 * @return bool allow other hooked methods to be executed
 	 */
-	public static function archiveShout( $iShoutId, $iArticleId ){
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false
-			|| BsCore::checkAccessAdmission( 'writeshoutbox' ) === false ) return true;
+	public static function archiveShout( $iShoutId, $iArticleId ) {
+		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false || BsCore::checkAccessAdmission( 'writeshoutbox' ) === false )
+			return true;
 
 		global $wgUser;
 		$iUserId = $wgUser->getId();
 
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->select(
-				'bs_shoutbox',
-				'sb_user_id',
-				array( 'sb_id' => $iShoutId ),
-				__METHOD__,
-				array('LIMIT' => '1')
+				'bs_shoutbox', 'sb_user_id', array( 'sb_id' => $iShoutId ), __METHOD__, array( 'LIMIT' => '1' )
 		);
 
 		$row = $dbw->fetchRow( $res );
@@ -408,19 +439,41 @@ class ShoutBox extends BsExtensionMW {
 			}
 		}
 		$res = $dbw->update(
-							'bs_shoutbox',
-							array( 'sb_archived' => '1' ),
-							array( 'sb_id' => $iShoutId )
+				'bs_shoutbox', array( 'sb_archived' => '1' ), array( 'sb_id' => $iShoutId )
 		);
 
-		self::invalidateShoutBoxCache( (int)$iArticleId );
+		self::invalidateShoutBoxCache( (int) $iArticleId );
 		$sResponse = $res == true ? 'bs-shoutbox-archive-success' : 'bs-shoutbox-archive-failure';
 		$sOutput = wfMessage( $sResponse )->plain();
 		return $sOutput;
 	}
 
 	public static function invalidateShoutBoxCache( $iArticleId ) {
-		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId )  );
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId ) );
+	}
+
+	/**
+	 * Ads Shoutbox icon with number of shouts to the statebar
+	 * @global String $wgScriptPath
+	 * @param StateBar $oStateBar
+	 * @param array $aTopViews
+	 * @param User $oUser
+	 * @param Title $oTitle
+	 * @return boolean
+	 */
+	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
+		$oShoutboxView = new ViewStateBarTopElement();
+		$iTotalShouts = self::getTotalShouts( $oTitle->getArticleID() );
+		if ( !is_object( $this->getTitle() ) || $iTotalShouts == 0 ) {
+			return true;
+		}
+		global $wgScriptPath;
+		$oShoutboxView->setKey( 'Shoutbox' );
+		$oShoutboxView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/ShoutBox/resources/images/icon-shoutbox.png' );
+		$oShoutboxView->setIconAlt( wfMessage( 'bs-shoutbox-title' )->plain() );
+		$oShoutboxView->setText( self::getTotalShouts( $oTitle->getArticleID() ) );
+		$aTopViews['statebartopshoutbox'] = $oShoutboxView;
+		return true;
 	}
 
 }
