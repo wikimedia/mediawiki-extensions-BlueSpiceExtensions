@@ -97,7 +97,7 @@ class SearchIndex {
 		}
 
 		if ( !$this->oSearchRequest->isSearchable() ) {
-			if ( $this->oSearchRequest->sOrigin != '' && $this->oSearchOptions->getOption( 'searchStringOrig' ) == '' ) {
+			if ( $this->oSearchOptions->getOption( 'searchStringOrig' ) == '' ) {
 				return $this->createErrorMessageView( 'bs-extendedsearch-nosearchterm' );
 			} else {
 				$vbe = new ViewBaseElement();
