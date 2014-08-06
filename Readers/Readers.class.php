@@ -74,6 +74,7 @@ class Readers extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'SkinTemplateNavigation' );
+		$this->setHook( 'SkinAfterContent' );
 
 		$this->mCore->registerPermission( 'viewreaders' );
 
@@ -198,20 +199,41 @@ class Readers extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( $this->checkContext() === false ) {
+		global $wgDefaultSkin;
+		if ( $this->checkContext() === false ||
+				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ||
+				$wgDefaultSkin != "bluespiceskin" ) {
 			return true;
 		}
 		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
 			return true;
 		}
 
-		$oViewReaders = $this->generateViewReaders( $sktemplate->getTitle() );
+		$oViewReaders = $this->getReadersViewForAfterContent( $sktemplate->getTitle() );
 
 		$tpl->data['bs_dataAfterContent']['bs-readers'] = array(
 			'position' => 20,
-			'label' => wfMessage('bs-readers-title')->text(),
+			'label' => wfMessage( 'bs-readers-title' )->text(),
 			'content' => $oViewReaders
 		);
+
+		return true;
+	}
+
+	public function onSkinAfterContent( &$data, $sktemplate ) {
+		global $wgDefaultSkin;
+		if ( $this->checkContext() === false ||
+				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ||
+				$wgDefaultSkin == "bluespiceskin" ) {
+			return true;
+		}
+		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
+			return true;
+		}
+
+		$oViewReaders = $this->getReadersViewForAfterContent( $sktemplate->getTitle() );
+
+		$data .= $oViewReaders->execute();
 
 		return true;
 	}
@@ -221,7 +243,7 @@ class Readers extends BsExtensionMW {
 	 * @param Title $oTitle Current title object
 	 * @return View Readers view
 	 */
-	private function generateViewReaders( $oTitle ) {
+	private function getReadersViewForAfterContent( $oTitle ) {
 		$oViewReaders = null;
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(

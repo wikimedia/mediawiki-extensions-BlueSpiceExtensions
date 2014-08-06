@@ -100,6 +100,7 @@ class ShoutBox extends BsExtensionMW {
 
 		// Hooks
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'SkinAfterContent' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
@@ -229,10 +230,36 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) ) {
+		global $wgDefaultSkin;
+		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || $wgDefaultSkin != "bluespiceskin" ) {
 			return true;
 		}
 
+		$tpl->data['bs_dataAfterContent']['bs-shoutbox'] = array(
+			'position' => 30,
+			'label' => wfMessage( 'bs-shoutbox-title' )->text(),
+			'content' => $this->getShoutboxViewForAfterContent( $sktemplate )
+		);
+		return true;
+	}
+
+	/**
+	 * Hook-Handler for 'SkinAfterContent'. Adds the ShoutboxView to the end of the content
+	 * @global String $wgDefaultSkin
+	 * @param String $data
+	 * @param Skin $sktemplate
+	 * @return boolean
+	 */
+	public function onSkinAfterContent( &$data, $sktemplate ) {
+		global $wgDefaultSkin;
+		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || $wgDefaultSkin == "bluespiceskin" ) {
+			return true;
+		}
+		$data .= $this->getShoutboxViewForAfterContent( $sktemplate );
+		return true;
+	}
+
+	private function getShoutboxViewForAfterContent( $sktemplate ) {
 		$oShoutBoxView = new ViewShoutBox();
 
 		wfRunHooks( 'BSShoutBoxBeforeAddViewAfterArticleContent', array( &$oShoutBoxView ) );
@@ -241,12 +268,8 @@ class ShoutBox extends BsExtensionMW {
 			$oShoutBoxView->setOption( 'showmessageform', true );
 		}
 
-		$tpl->data['bs_dataAfterContent']['bs-shoutbox'] = array(
-			'position' => 30,
-			'label' => wfMessage( 'bs-shoutbox-title' )->text(),
-			'content' => $oShoutBoxView->execute()
-		);
-		return true;
+		$sShoutboxView = $oShoutBoxView->execute();
+		return $sShoutboxView;
 	}
 
 	/**

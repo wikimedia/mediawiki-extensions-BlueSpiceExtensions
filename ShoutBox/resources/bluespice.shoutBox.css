@@ -113,3 +113,21 @@ li.bs-sb-more a, li.bs-sb-more a:hover{
 .bs-sb-tab-counter{
 	margin-left: 5px;
 }
+
+#bs-sb-form, #bs-sb-content{
+	width: 75%;
+}
+#bs-sb-message{
+	width: 100%;
+}
+
+#bs-sb-content li.bs-sb-more{
+	list-style: none;
+}
+#bs-sb-content .bs-sb-message{
+	width: 95%;
+}
+#bs-sb-content .bs-sb-listitem{
+	width: 100%;
+	display: inline-block;
+}

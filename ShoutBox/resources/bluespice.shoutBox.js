@@ -89,6 +89,9 @@ BsShoutBox = {
 					BsShoutBox.ajaxLoader.fadeOut();
 					BsShoutBox.characterCounter.text( mw.message( 'bs-shoutbox-charactersleft', BsShoutBox.textField.attr( 'maxlength' ) ).text() );
 					BsShoutBox.shoutboxTabCounter.text( $( "#bs-sb-count-all" ).text() );
+					//statebar element
+					if ($('#sb-Shoutbox-text').length !== 0)
+						$('#sb-Shoutbox-text').text( $( "#bs-sb-count-all" ).text() );
 					$( document ).trigger( "onBsShoutboxAfterUpdated", [ BsShoutBox ] );
 				}
 		);

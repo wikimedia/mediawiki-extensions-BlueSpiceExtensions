@@ -225,12 +225,17 @@ class WikiAdmin extends BsExtensionMW {
 		$aOut[] = implode("\n", $aOutSortable).'</ul>';
 		$aOut[] = '</ul>';
 
-		$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
-			'position' => 100,
-			'label' => wfMessage('bs-tab_admin')->plain(),
-			'class' => 'icon-cog',
-			'content' => implode( "\n", $aOut )
-		);
+		global $wgDefaultSkin;
+		if ( $wgDefaultSkin == "bluespiceskin" ) {
+			$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
+				'position' => 100,
+				'label' => wfMessage( 'bs-tab_admin' )->plain(),
+				'class' => 'icon-cog',
+				'content' => implode( "\n", $aOut )
+			);
+		} else {
+			$tpl->data['sidebar'][wfMessage( 'bs-tab_admin' )->plain()] = implode( "\n", $aOut );
+		}
 		return true;
 	}
 }

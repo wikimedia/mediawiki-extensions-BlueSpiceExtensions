@@ -251,12 +251,17 @@ class UserSidebar extends BsExtensionMW {
 			}
 		}
 
-		$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
-			'position' => 20,
-			'label' => wfMessage('bs-tab_focus')->plain(),
-			'class' => 'icon-clipboard',
-			'content' => implode( "\n", $aOut )
-		);
+		global $wgDefaultSkin;
+		if ( $wgDefaultSkin == "bluespiceskin" ) {
+			$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
+				'position' => 20,
+				'label' => wfMessage( 'bs-tab_focus' )->plain(),
+				'class' => 'icon-clipboard',
+				'content' => implode( "\n", $aOut )
+			);
+		} else {
+			$tpl->data['sidebar'][wfMessage( 'bs-tab_focus' )->plain()] = implode( "\n", $aOut );
+		}
 
 		return true;
 	}
