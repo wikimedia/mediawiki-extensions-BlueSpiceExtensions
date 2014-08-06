@@ -160,10 +160,15 @@ class Authors extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
-		global $wgDefaultSkin;
-		if ( $wgDefaultSkin != "bluespiceskin" ){
+		if ( $this->checkContext() === false ) {
 			return true;
 		}
+
+		global $wgDefaultSkin;
+		if ( $wgDefaultSkin != "bluespiceskin" ) {
+			return true;
+		}
+
 		$oAuthorsView = $this->getAuthorsViewForAfterContent( $skin );
 		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
 			'position' => 10,
@@ -181,20 +186,22 @@ class Authors extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onSkinAfterContent( &$data, $sktemplate ) {
-		global $wgDefaultSkin;
-		if ( $wgDefaultSkin == "bluespiceskin" )
+		if ( $this->checkContext() === false ) {
 			return true;
-		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate );
-		if ( $oAuthorsView instanceof ViewAuthors ) {
-			$data .= $oAuthorsView->execute();
 		}
+
+		global $wgDefaultSkin;
+		if ( $wgDefaultSkin == "bluespiceskin" ) {
+			return true;
+		}
+
+		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate );
+		$data .= $oAuthorsView->execute();
+
 		return true;
 	}
 
 	private function getAuthorsViewForAfterContent( $oSkin ) {
-		if ( $this->checkContext() === false ) {
-			return true;
-		}
 		$oTitle = $oSkin->getTitle();
 
 		//Read in config variables
