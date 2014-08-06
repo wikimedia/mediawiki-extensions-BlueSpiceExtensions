@@ -207,6 +207,14 @@ class SmartList extends BsExtensionMW {
 					)
 				);
 				break;
+			case 'Order':
+				$aPrefs = array(
+					'options' => array(
+						wfMessage( 'bs-smartlist-sort-asc' )->plain() => 'ASC',
+						wfMessage( 'bs-smartlist-sort-desc' )->plain() => 'DESC'
+					)
+				);
+				break;
 		}
 
 		return $aPrefs;
