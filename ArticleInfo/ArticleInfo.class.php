@@ -335,7 +335,7 @@ class ArticleInfo extends BsExtensionMW {
 
 		$oLastEditorView->setKey( 'LastEditor' );
 		$oLastEditorView->setIconSrc( $this->getImagePath( true ).BsConfig::get('MW::ArticleInfo::ImageLastEditor') );
-		$oLastEditorView->setIconAlt( wfMessage('bs-articleinfo-last-editor')->plain(), $this->getUser()->getName() );
+		$oLastEditorView->setIconAlt( wfMessage('bs-articleinfo-last-editor')->text(), $this->getUser()->getName() );
 		$oLastEditorView->setText( $sLastEditorName );
 		$oLastEditorView->setTextLinkTitle( $sLastEditorName );
 		$oLastEditorView->setTextLink( $sLastEditorUserPageUrl );
