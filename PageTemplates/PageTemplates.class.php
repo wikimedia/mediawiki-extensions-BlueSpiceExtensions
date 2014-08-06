@@ -197,7 +197,7 @@ class PageTemplates extends BsExtensionMW {
 		// if we are not on a wiki page, return. This is important when calling import scripts that try to create nonexistent pages, e.g. importImages
 		if ( !is_object( $oTitle ) ) return true;
 
-		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'PageTemplates', $oTitle->getNamespace() );
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'PageTemplates', $oTitle->getPrefixedText() );
 		$aData = BsCacheHelper::get( $sKey );
 
 		$aRes = array();
