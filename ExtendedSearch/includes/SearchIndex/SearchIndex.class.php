@@ -216,7 +216,7 @@ class SearchIndex {
 	 */
 	public function createErrorMessageView( $sMessage ) {
 		$res = new ViewBaseElement();
-		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ': {message}</div>' );
+		$res->setTemplate( '<div id="bs-es-searchterm-error">' . wfMessage( 'bs-extendedsearch-error' )->plain() . ' {message}</div>' );
 		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
 		return $res;
 	}
