@@ -233,7 +233,9 @@ class Readers extends BsExtensionMW {
 
 		$oViewReaders = $this->getReadersViewForAfterContent( $sktemplate->getTitle() );
 
-		$data .= $oViewReaders->execute();
+		if ( $oViewReaders instanceof ViewReaders ) {
+			$data .= $oViewReaders->execute();
+		}
 
 		return true;
 	}

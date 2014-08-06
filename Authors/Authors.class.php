@@ -185,7 +185,9 @@ class Authors extends BsExtensionMW {
 		if ( $wgDefaultSkin == "bluespiceskin" )
 			return true;
 		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate );
-		$data .= $oAuthorsView->execute();
+		if ( $oAuthorsView instanceof ViewAuthors ) {
+			$data .= $oAuthorsView->execute();
+		}
 		return true;
 	}
 

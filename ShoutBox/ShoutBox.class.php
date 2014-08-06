@@ -255,7 +255,10 @@ class ShoutBox extends BsExtensionMW {
 		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || $wgDefaultSkin == "bluespiceskin" ) {
 			return true;
 		}
-		$data .= $this->getShoutboxViewForAfterContent( $sktemplate );
+		$oShoutboxView =  $this->getShoutboxViewForAfterContent( $sktemplate );
+		if ( $oShoutboxView instanceof ViewShoutBox ) {
+			$data .= $oShoutboxView->execute();
+		}
 		return true;
 	}
 
