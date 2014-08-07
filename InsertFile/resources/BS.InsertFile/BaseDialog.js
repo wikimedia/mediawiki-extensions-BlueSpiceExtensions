@@ -10,10 +10,10 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	width: 700,
 	height: 500,
 	layout: 'border',
-	
+
 	storeFileType: 'file',
 	isSetData: false,
-	
+
 	configPanel: {
 		fieldDefaults: {
 			labelAlign: 'right',
@@ -58,7 +58,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 				}
 			}
 		};
-		
+
 		this.stImageGrid = Ext.create('Ext.data.Store', {
 			height: 200,
 			buffered: true, // allow the grid to interact with the paging scroller by buffering
@@ -85,7 +85,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			}
 		});
 		this.stImageGrid.on( 'load', this.onStImageGridLoad, this );
-		
+
 		this.sfFilter = Ext.create( 'Ext.ux.form.SearchField', {
 			fieldLabel: mw.message('bs-insertfile-labelFilter').plain(),
 			width: 500,
@@ -98,37 +98,37 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 					}
 				}
 		});
-		
+
 		this.dlgUpload = Ext.create('BS.InsertFile.UploadDialog',{
 			title: mw.message('bs-insertfile-labelUpload').plain(),
 			id: this.getId()+'-upload-dlg',
 			allowedFileExtensions: this.allowedFileExtensions
 		});
-		
+
 		this.dlgUpload.on( 'ok', this.dlgUploadOKClick, this );
-		
+
 		this.btnUpload = Ext.create('Ext.Button',{
 			text: mw.message('bs-insertfile-labelUpload').plain()
 			//glyph: 72
 			//iconCls: ''
 		});
-		
+
 		this.btnUpload.on( 'click', this.btnUploadClick, this );
-		
+
 		var toolBarItems = [
 			this.sfFilter
 		];
-		
+
 		if( mw.config.get('bsEnableUploads') ) {
 			toolBarItems.push( '->' );
 			toolBarItems.push( this.btnUpload );
 		}
-		
+
 		this.tbGridTools = Ext.create('Ext.toolbar.Toolbar', {
 			dock: 'top',
 			items: toolBarItems
 		});
-		
+
 		this.gdImages = Ext.create('Ext.grid.Panel', {
 			region: 'center',
 			collapsible: false,
@@ -144,47 +144,52 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			},
 			columns: this.conf.columns
 		});
-		
+
 		this.gdImages.on( 'select', this.onGdImagesSelect, this );
-		
+
 		this.tfFileName = Ext.create('Ext.form.TextField', {
 			readOnly: true,
 			fieldLabel: mw.message('bs-insertfile-fileName').plain()
 		});
-		
+
 		this.tfLinkText = Ext.create('Ext.form.TextField', {
 			fieldLabel: mw.message('bs-insertfile-linktext').plain()
 		});
-		
+
 		this.configPanel.items.unshift(this.tfLinkText);
 		this.configPanel.items.unshift(this.tfFileName);
 
 		this.pnlConfig = Ext.create('Ext.form.Panel', this.configPanel );
-		
+		this.pnlConfig.on('expand', this.onPnlExpand, this);
+
 		this.items = [
 			this.gdImages,
 			this.pnlConfig
 		];
-		
+
 		this.callParent(arguments);
 	},
-	
+
 	onStImageGridLoad: function( store, records, successful, eOpts ) {
 		//Only if we have a exact match selected
 		if( store.filters.items.length > 0 && records.length === 1 ) {
 			this.gdImages.getSelectionModel().select(0);
 		}
 	},
-	
+
+	onPnlExpand: function(panel, eOpts){
+		$(document).trigger("onBsInsertFilePanelExpand", [this, panel, eOpts]);
+	},
+
 	btnUploadClick: function( sender, event ) {
 		this.dlgUpload.show();
 	},
-	
+
 	dlgUploadOKClick: function( dialog, upload ){
 		this.stImageGrid.reload();
 		this.sfFilter.setValue( upload.filename );
 	},
-	
+
 	getData: function() {
 		var cfg = {
 			title: this.tfFileName.getValue(),
@@ -192,7 +197,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		};
 		return cfg;
 	},
-	
+
 	setData: function( obj ) {
 		//Reset all fields. maybe do this onOKClick
 		this.sfFilter.reset();
@@ -215,11 +220,11 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		}
 		this.callParent( arguments );
 	},
-	
+
 	renderThumb: function( url ) {
-		/*return mw.html.element( 
+		/*return mw.html.element(
 			'img',
-			{ 
+			{
 				src: url,
 				height: 48,
 				width: 48
@@ -227,23 +232,23 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		);*/
 		return '<img src="'+url+'" height="48" width="48" />';
 	},
-	
+
 	renderSize: function( size ){
 		return Ext.util.Format.fileSize( size );
 	},
-	
+
 	renderLastModified: function( lastmod ){
 		return Ext.Date.format(
-			new Date(lastmod * 1000), 
+			new Date(lastmod * 1000),
 			mw.message('bs-insertfile-dateformat').plain()
 		);
 	},
-	
+
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.tfFileName.setValue( record.get('name') );
 		this.pnlConfig.expand();
 	},
-	
+
 	getSingleSelection: function() {
 		var selectedRecords = this.gdImages.getSelectionModel().getSelection();
 		if( selectedRecords.length > 0) {
