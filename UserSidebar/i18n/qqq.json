@@ -5,6 +5,7 @@
 		]
 	},
 	"bs-usersidebar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of user sidebar extension",
+	"prefs-usersidebar": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for user sidebar section in preferences\n{{Identical|User sidebar}}",
 	"bs-usersidebar-userpagesettings-link-title": "Image title for edit the content of your focus",
 	"bs-usersidebar-userpagesettings-link-text": "Anchor text for {{GENDER:|edit}} focus"
 }

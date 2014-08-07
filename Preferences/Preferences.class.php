@@ -151,7 +151,7 @@ class BsPreferences extends BsExtensionMW {
 		$oForm = new HTMLFormEx( $preferences, 'prefs' );
 		$oForm->setTitle( $this->getTitle() );
 		$oForm->addHiddenField( 'mode', 'Preferences' );
-		$oForm->setSubmitText( wfMessage( 'bs-preferences-button_save' )->plain() );
+		$oForm->setSubmitText( wfMessage( 'bs-extjs-save' )->plain() );
 		$oForm->setSubmitName( 'WikiAdminPreferencesSubmit' );
 		$oForm->setSubmitCallback( array( $this, 'savePreferences' ) );
 

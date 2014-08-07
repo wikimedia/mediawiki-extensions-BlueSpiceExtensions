@@ -5,6 +5,7 @@
 		]
 	},
 	"bs-usersidebar-desc": "Adds the focus tab to sidebar",
+	"prefs-usersidebar": "User sidebar",
 	"bs-usersidebar-userpagesettings-link-title": "Edit the content of your focus",
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Edit}} focus"
 }
