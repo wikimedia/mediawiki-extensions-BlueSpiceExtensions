@@ -98,7 +98,8 @@ class UserSidebar extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBeforePageDisplay( $oOutputPage, $oSkinTemplate ) {
-		$oOutputPage->addModules( 'ext.bluespice.usersidebar' );
+		//Removed module to restore old functionality
+		//$oOutputPage->addModules( 'ext.bluespice.usersidebar' );
 
 		return true;
 	}

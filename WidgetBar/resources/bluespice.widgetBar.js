@@ -50,7 +50,8 @@ $(document).on( 'click', '.bs-widget .bs-widget-head', function(){
  * #bs-widgetbar-settings => DIV on user's user page
  * #mw-htmlform-WidgetBar => TABLE ROW on Special:Preferences
  */
-$(document).on( 'click', '#bs-widgetbar-edit, #bs-widgetbar-settings, #mw-htmlform-WidgetBar', function(e) {
+//Restored old functionality
+/*$(document).on( 'click', '#bs-widgetbar-edit, #bs-widgetbar-settings, #mw-htmlform-WidgetBar', function(e) {
 
 	Ext.require( 'BS.WidgetBar.dialog.Edit', function() {
 		var dlg = new BS.WidgetBar.dialog.Edit();
@@ -63,4 +64,4 @@ $(document).on( 'click', '#bs-widgetbar-edit, #bs-widgetbar-settings, #mw-htmlfo
 
 	e.preventDefault();
 	return false;
-});
+});*/
