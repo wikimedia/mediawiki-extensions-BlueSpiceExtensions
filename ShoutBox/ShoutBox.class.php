@@ -370,18 +370,31 @@ class ShoutBox extends BsExtensionMW {
 	 * @return int number of shouts
 	 */
 	public static function getTotalShouts( $iArticleId = 0 ) {
-		$aTables = array( 'bs_shoutbox' );
-		$aFields = array( 'sb_id' );
-		$aConditions = array(
-			'sb_page_id' => $iArticleId,
-			'sb_archived' => '0',
-			'sb_parent_id' => '0',
-			'sb_title' => '',
-		);
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $aTables, $aFields, $aConditions, __METHOD__ );
-		$iTotelShouts = $res !== false ? $dbr->numRows( $res ) : 0;
-		return $iTotelShouts;
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', 'totalCount' . $iArticleId );
+		$iData = BsCacheHelper::get( $sKey );
+
+		if ( $iData === false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching total count from DB' );
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				'bs_shoutbox',
+				'sb_id',
+				array(
+					'sb_page_id' => $iArticleId,
+					'sb_archived' => '0',
+					'sb_parent_id' => '0',
+					'sb_title' => '',
+				),
+				__METHOD__
+			);
+			$iTotalShouts = $res !== false ? $dbr->numRows( $res ) : 0;
+
+			BsCacheHelper::set( $sKey, $iTotalShouts );
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching total count from cache' );
+			$iTotalShouts = $iData;
+		}
+		return $iTotalShouts;
 	}
 
 	/**
@@ -468,7 +481,7 @@ class ShoutBox extends BsExtensionMW {
 				'bs_shoutbox', array( 'sb_archived' => '1' ), array( 'sb_id' => $iShoutId )
 		);
 
-		self::invalidateShoutBoxCache( (int) $iArticleId );
+		self::invalidateShoutBoxCache( $iArticleId );
 		$sResponse = $res == true ? 'bs-shoutbox-archive-success' : 'bs-shoutbox-archive-failure';
 		$sOutput = wfMessage( $sResponse )->plain();
 		return $sOutput;
@@ -476,6 +489,7 @@ class ShoutBox extends BsExtensionMW {
 
 	public static function invalidateShoutBoxCache( $iArticleId ) {
 		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId ) );
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', 'totalCount' . $iArticleId ) );
 	}
 
 	/**
