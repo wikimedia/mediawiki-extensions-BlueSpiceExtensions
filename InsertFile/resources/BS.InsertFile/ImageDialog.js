@@ -177,6 +177,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		}
 		this.callParent(arguments);
 	},
+	onPnlExpand: function(panel, eOpts){
+		this.callParent(arguments);
+	},
 	onNbHeightChange: function( element, event ) {
 		if (this.btnKeepRatio.pressed && !this.isSetData) {
 			this.nbWidth.setValue(this.processRatio(0, element.lastValue));

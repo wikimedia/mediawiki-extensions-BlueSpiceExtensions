@@ -13,5 +13,8 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 		//two instances of BS.InsertFile.BaseDialog subclasses
 		this.configPanel.items = [];
 		this.callParent(arguments);
-	}
+	},
+	onPnlExpand: function(panel, eOpts){
+		this.callParent(arguments);
+	},
 });
