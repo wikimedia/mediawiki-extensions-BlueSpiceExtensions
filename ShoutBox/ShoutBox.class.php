@@ -271,8 +271,7 @@ class ShoutBox extends BsExtensionMW {
 			$oShoutBoxView->setOption( 'showmessageform', true );
 		}
 
-		$sShoutboxView = $oShoutBoxView->execute();
-		return $sShoutboxView;
+		return $oShoutBoxView;
 	}
 
 	/**
