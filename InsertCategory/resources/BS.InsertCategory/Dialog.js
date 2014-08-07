@@ -3,11 +3,11 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 	id: 'bs-insertcategory',
 	singleton: true,
 	layout: 'border',
-	height: 350,
-	width:500,
+	height: 450,
+	width:600,
 	modal: true,
 	title: mw.message('bs-insertcategory-title').plain(),
-	
+
 	isDirty: false,
 	afterInitComponent: function() {
 		this.strBoxSelect = Ext.create('Ext.data.JsonStore', {
@@ -30,7 +30,7 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 			/*}*/,
 			fields: ['text']
 		});
-		
+
 		this.bsCategories = Ext.create('BS.form.CategoryBoxSelect', {
 			fieldLabel: mw.message('bs-insertcategory-cat-label').plain(),
 			labelAlign: 'top',
@@ -42,7 +42,7 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 		this.bsCategoriesLabel = Ext.create( 'Ext.form.Label', {
 			html: '<div class="bs-insertcategory-hint">'+mw.message('bs-insertcategory-hint').plain()+'</div>'
 		});
-		
+
 		this.pnlMain = Ext.create( 'Ext.form.FormPanel', {
 			region: 'center',
 			bodyPadding: 5,
@@ -51,14 +51,14 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 				this.bsCategoriesLabel
 			]
 		});
-		
+
 		this.tpCategories = Ext.create('BS.InsertCategory.AsyncCategoryTreePanel', {
 			collapsible: true,
 			collapsed: false,
 			region: 'west'
 		});
 		this.tpCategories.on( 'itemclick', this.onItemClick, this );
-		
+
 		this.items = [
 			this.tpCategories,
 			this.pnlMain
