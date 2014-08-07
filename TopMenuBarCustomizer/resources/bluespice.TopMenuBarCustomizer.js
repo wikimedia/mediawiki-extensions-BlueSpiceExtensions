@@ -11,18 +11,22 @@
 
 $(document).ready(function(){
 	$('.menu-item-container').hover( function(){
-			$(this).siblings('ul.bs-apps-child').stop(true,true).slideDown('fast');
+			if( !$(this).hasClass('level-1') ) {
+				$(this).next('ul').css('top', ($(this).position().top) + 'px');
+				$(this).next('ul').css('left', ($(this).position().left + $(this).outerWidth()) + 'px');
+			}
+			$(this).next('ul').stop(true,true).fadeIn('fast');
 		},
 		function(){
-			$(this).siblings('ul.bs-apps-child').stop(true,true).delay(100).slideUp('fast');
+			$(this).siblings('ul.bs-apps-child').stop(true,true).delay(100).fadeOut('fast');
 		}
 	);
 
 	$('ul.bs-apps-child').hover( function(){
-			$(this).stop(true,true).slideDown('fast');
+			$(this).stop(true,true).fadeIn('fast');
 		},
 		function(){
-			$(this).stop(true,true).delay(100).slideUp('fast');
+			$(this).stop(true,true).delay(100).fadeOut('fast');
 		}
 	);
 });

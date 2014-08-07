@@ -11,18 +11,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-.bs-apps-child.level-3 {
-	left: 130px;
-	top: 0px;
-}
-.bs-apps-child.level-4 {
-	left: 130px;
-	top: 0px;
-}
-.bs-apps-child.level-5 {
-	left: 130px;
-	top: 0px;
-}
+
 #bs-apps ul.bs-apps-child li {
 	float: none;
 }
