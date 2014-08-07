@@ -952,7 +952,9 @@ class Review extends BsExtensionMW {
 		$oReviewView->setComment( "<em>{$sUserName}:</em> {$_step->comment}" );
 
 		wfRunHooks('BsReview::checkStatus::afterMessage', array($step, $oReviewView));
-		$aBodyViews['statebarbodyreview'] = $oReviewView;
+		if ( $oTitle->userCan( "workflowview", $oUser ) ) {
+			$aBodyViews['statebarbodyreview'] = $oReviewView;
+		}
 		return true;
 	}
 
@@ -1014,17 +1016,21 @@ class Review extends BsExtensionMW {
 		$sVote = $wgRequest->getVal('vote', '');
 		$sComment = $wgRequest->getVal('comment', '');
 
-		if (BsCore::checkAccessAdmission('workflowview') === false) {
-			return '';
-		}
-
-		if (empty($iArticleId) || empty($sVote)) {
+		if (empty($iArticleId) || empty($sVote) || (int) $iArticleId === 0) {
 			return wfMessage('bs-review-review-error')->plain();
 		}
 
-		$oReview = BsExtensionManager::getExtension('Review');
-		$oUser = RequestContext::getMain()->getUser();
 		$oTitle = Title::newFromID($iArticleId);
+		$oUser = RequestContext::getMain()->getUser();
+		//tbd: make bs-review-review-error more explicit
+		if ($oTitle === false || !$oTitle->exists() || $oUser === false){
+			return wfMessage('bs-review-review-error')->plain();
+		}
+		if ($oTitle->userCan("workflowview", $oUser)) {
+			return wfMessage('bs-review-error-insufficient-permissions', 'workflowview')->text();
+		}
+
+		$oReview = BsExtensionManager::getExtension('Review');
 		$sTitleText = $oTitle->getPrefixedText();
 		$sLink = BsLinkProvider::makeLink( $oTitle, $oTitle->getFullURL() );
 		$oNext = null;
