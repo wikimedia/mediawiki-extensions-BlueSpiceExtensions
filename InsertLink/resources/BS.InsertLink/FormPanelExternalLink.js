@@ -99,7 +99,7 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 		return bAcitve;
 	},
 	getData: function() {
-		var title = this.callParent();
+		var title = this.callParent().trim();
 
 		var desc = '';
 		if( title != '' ) {
