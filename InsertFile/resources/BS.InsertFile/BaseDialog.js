@@ -86,8 +86,9 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		});
 		this.stImageGrid.on( 'load', this.onStImageGridLoad, this );
 
+
 		this.sfFilter = Ext.create( 'Ext.ux.form.SearchField', {
-			fieldLabel: mw.message('bs-insertfile-labelFilter').plain(),
+			fieldLabel: mw.message('bs-insertfile-labelfilter').plain(),
 			width: 500,
 			labelWidth: 50,
 			store: this.stImageGrid,

@@ -264,6 +264,8 @@ class InsertFileAJAXBackend {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$sImageTable = $dbr->tableName( 'image' );
+		$sCategoryLinksTable = $dbr->tableName( 'categorylinks' );
+		$sPageTable = $dbr->tableName( 'page' );
 
 		wfRunHooks( 'BSInsertFileGetFilesBeforeQuery', array( &$aConds, &$aNameFilters ) );
 
@@ -271,6 +273,11 @@ class InsertFileAJAXBackend {
 		$sNameFilters = self::buildNameFiltersSQL( $aNameFilters, $wgDBtype );
 		if( !empty( $sNameFilters ) ) $aConds[] = $sNameFilters;
 		$sConds = implode( ' AND ', $aConds );
+
+		// Searching for images/files in categories with name $sCategoryFilter
+		// TODO SW: verify that this image is found by category, may be join in statement
+		$sCategoryFilter = self::buildNameFiltersSQL( $aNameFilters, $wgDBtype, 'cl_to' );
+		$sConds .= " OR i.img_name IN (SELECT page_title FROM $sCategoryLinksTable, $sPageTable where $sCategoryFilter and page_namespace=6 and page_id=cl_from) AND $sType";
 
 		if ( $wgDBtype == 'oracle' ) {
 			$sql =
@@ -309,10 +316,11 @@ class InsertFileAJAXBackend {
 		);
 
 		$res = $dbr->query( $sql );
+
 		foreach ( $res as $row ) {
 			$img = self::newFromName( $row->img_name );
 
-			$url = $img->getUrl();
+			$url = $img->createThumb( 48, 48 );//img size for preview in grid cell
 
 			if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
 				$url = SecureFileStore::secureStuff( $url, true );
@@ -337,14 +345,14 @@ class InsertFileAJAXBackend {
 	 * @param string $dbType
 	 * @return string A SQL fragment containing all filter conditions
 	 */
-	protected static function buildNameFiltersSQL( $nameFilters, $dbType ) {
+	protected static function buildNameFiltersSQL( $nameFilters, $dbType, $sTableName = 'i.img_name' ) {
 		//HINT: CONVERT is needed because field type is VARBINARY.
 		//Converting to UTF8 is just a heuristics. SQL is probably
 		//nonstandard.
-		$sFormat = "LOWER(CONVERT(i.img_name USING 'UTF8')) LIKE %s";
+		$sFormat = "LOWER(CONVERT($sTableName USING 'UTF8')) LIKE %s";
 
 		if( $dbType == 'oracle' || $dbType == 'postgres') {
-			$sFormat = "LOWER(i.img_name) LIKE %s";
+			$sFormat = "LOWER($sTableName) LIKE %s";
 		}
 		$dbr = wfGetDB( DB_SLAVE );
 		$aFormattedFilters = array();
