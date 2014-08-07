@@ -349,6 +349,10 @@ class Authors extends BsExtensionMW {
 			return false;
 		}
 
+		if ( !$oTitle->exists() ) {
+			return false;
+		}
+
 		// Do only display when user is allowed to read
 		if ( !$oTitle->userCan( 'read' ) ) {
 			return false;
