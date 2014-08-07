@@ -160,6 +160,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.configPanel.items.unshift(this.tfFileName);
 
 		this.pnlConfig = Ext.create('Ext.form.Panel', this.configPanel );
+		this.pnlConfig.on('expand', this.onPnlExpand, this);
 
 		this.items = [
 			this.gdImages,
@@ -174,6 +175,10 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		if( store.filters.items.length > 0 && records.length === 1 ) {
 			this.gdImages.getSelectionModel().select(0);
 		}
+	},
+
+	onPnlExpand: function(panel, eOpts){
+		$(document).trigger("onBsInsertFilePanelExpand", [this, panel, eOpts]);
 	},
 
 	btnUploadClick: function( sender, event ) {
