@@ -169,10 +169,11 @@ class Authors extends BsExtensionMW {
 			return true;
 		}
 
-		$oAuthorsView = $this->getAuthorsViewForAfterContent( $skin );
+		$aDetails = array();
+		$oAuthorsView = $this->getAuthorsViewForAfterContent( $skin, $aDetails );
 		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
 			'position' => 10,
-			'label' => wfMessage( 'bs-authors-title' )->text(),
+			'label' => wfMessage( 'bs-authors-title', $aDetails['count'], $aDetails['username'] )->text(),
 			'content' => $oAuthorsView
 		);
 		return true;
@@ -195,13 +196,14 @@ class Authors extends BsExtensionMW {
 			return true;
 		}
 
-		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate );
+		$aDetails = array();
+		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate, $aDetails );
 		$data .= $oAuthorsView->execute();
 
 		return true;
 	}
 
-	private function getAuthorsViewForAfterContent( $oSkin ) {
+	private function getAuthorsViewForAfterContent( $oSkin, &$aDetails ) {
 		$oTitle = $oSkin->getTitle();
 
 		//Read in config variables
@@ -220,10 +222,11 @@ class Authors extends BsExtensionMW {
 		$aData = BsCacheHelper::get( $sKey );
 
 		if ( $aData !== false ) {
-			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetched AuthorsView from cache' );
-			$oAuthorsView = $aData;
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetched AuthorsView and Details from cache' );
+			$oAuthorsView = $aData['view'];
+			$aDetails = $aData['details'];
 		} else {
-			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching AuthorsView from DB' );
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching AuthorsView and Details from DB' );
 			//HINT: Maybe we want to use MW interface Article::getContributors() to have better caching
 			//HINT2: Check if available in MW 1.17+
 			// SW: There is still no caching in WikiPage::getContributors()! 17.07.2014
@@ -250,10 +253,11 @@ class Authors extends BsExtensionMW {
 			}
 
 			$iCount = count( $aUserNames );
+			$aDetails['count'] = $iCount;
 
 			$sOriginatorUserName = $oTitle->getFirstRevision()->getUserText();
 			$sOriginatorUserName = $this->checkOriginatorForBlacklist(
-							$sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist
+				$sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist
 			);
 
 			if ( $iCount > 1 ) {
@@ -287,6 +291,7 @@ class Authors extends BsExtensionMW {
 					$i++;
 					continue;
 				}
+				$aDetails['username'] = $oAuthorUser->getName();
 
 				$oUserMiniProfileView = BsCore::getInstance()->getUserMiniProfile( $oAuthorUser, $aParams );
 				if ( $sPrintable == 'yes' ) {
@@ -312,7 +317,13 @@ class Authors extends BsExtensionMW {
 			}
 
 			$dbr->freeResult( $res );
-			BsCacheHelper::set( $sKey, $oAuthorsView );
+			BsCacheHelper::set(
+				$sKey,
+				array(
+					'view' => $oAuthorsView,
+					'details' => $aDetails
+				)
+			);
 		}
 
 		return $oAuthorsView;
