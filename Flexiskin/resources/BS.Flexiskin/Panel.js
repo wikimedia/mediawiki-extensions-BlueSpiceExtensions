@@ -71,7 +71,7 @@ Ext.define('BS.Flexiskin.Panel', {
 				id: checked ? this.grdMain.getStore().getAt(rowindex).getData().flexiskin_id : ""
 			},
 			success: function(response) {
-				window.location.reload()
+				window.location.reload();
 			},
 			scope: this
 		});
@@ -92,7 +92,7 @@ Ext.define('BS.Flexiskin.Panel', {
 		Ext.Ajax.request({
 			url: bs.util.getAjaxDispatcherUrl('Flexiskin::getFlexiskinConfig'),
 			params: {
-				id: this.selectedRow[0].getData().flexiskin_id,
+				id: this.selectedRow[0].getData().flexiskin_id
 			},
 			success: function(response) {
 				var responseObj = Ext.decode(response.responseText);
@@ -184,7 +184,7 @@ Ext.define('BS.Flexiskin.Panel', {
 			success: function(response, opts) {
 				var responseObj = Ext.decode(response.responseText);
 				if (responseObj.success === true) {
-					this.dlgSkinAdd.resetData()
+					this.dlgSkinAdd.resetData();
 					this.reloadStore();
 				} else {
 					bs.util.alert('bs-flexiskin-addskin-error',

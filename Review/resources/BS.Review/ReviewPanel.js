@@ -1,11 +1,11 @@
 Ext.define( 'BS.Review.ReviewPanel', {
 	extend: 'BS.Panel',
 	layout: 'form',
-	
+
 	afterInitComponent: function() {
 		var today = new Date();
 		var nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-		
+
 		this.dfStart = new Ext.create('Ext.form.field.Date',{
 			fieldLabel: mw.message('bs-review-lblstartdate' ).plain(),
 			margin: '0 5 0 0',
@@ -19,9 +19,9 @@ Ext.define( 'BS.Review.ReviewPanel', {
 			value: nextWeek,
 			labelAlign: 'right'
 		});
-		
+
 		this.gdSteps = Ext.create('BS.Review.StepsGrid');
-		
+
 		var items = [
 			{
 				xtype: 'fieldcontainer',
@@ -40,20 +40,20 @@ Ext.define( 'BS.Review.ReviewPanel', {
 
 		$(document).trigger( 'bsspecialreviewbeforecreateform', [items] );
 		$(document).trigger( 'BSReviewPanelAfterInitComponent', [this, items]);
-		
+
 		this.items = items;
-		
+
 		this.callParent();
 	},
-	
+
 	setData: function( obj ) {
 		this.callParent( arguments );
-		
+
 		if( this.currentData.startdate ) {
 			this.dfStart.setValue( new Date( this.currentData.startdate * 1000 ) );
 			this.dfEnd.setValue( new Date( this.currentData.enddate * 1000 ) );
 		}
-		
+
 		if( this.currentData.userCanEdit == false ) {
 			this.dfStart.disable();
 			this.dfEnd.disable();
@@ -64,21 +64,21 @@ Ext.define( 'BS.Review.ReviewPanel', {
 			this.gdSteps.setData( this.currentData.steps );
 		}
 	},
-	
+
 	getData: function() {
 		//TODO: refactor saveReview()!
 		return {
 			cmd: 'insert',
 			pid: this.currentData.page_id,
 			editable: true,
-                        sequential: true,
-                        abortable: true,
+			sequential: true,
+			abortable: true,
 			startdate: this.dfStart.getValue(),
-			enddate:   this.dfEnd.getValue(),
-			steps:     this.gdSteps.getData()
-		}
+			enddate: this.dfEnd.getValue(),
+			steps: this.gdSteps.getData()
+		};
 	},
-	
+
 	saveReview: function() {
 		obj = this.getData();
 
@@ -123,7 +123,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 						}
 						tmp = tmp + result.messages[i] + '<br />';
 					}
-					
+
 					bs.util.alert(
 						'bs-review-save-alert',
 						{
@@ -136,7 +136,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 			scope: this
 		});
 	},
-	
+
 	deleteReview: function() {
 		bs.util.confirm(
 			'bs-review-delete',
@@ -149,7 +149,7 @@ Ext.define( 'BS.Review.ReviewPanel', {
 			}
 		);
 	},
-	
+
 	doDeleteReview: function() {
 		Ext.Ajax.request({
 			url: bs.util.getAjaxDispatcherUrl( 'Review::doEditReview'),

@@ -124,7 +124,7 @@ Ext.define( 'BS.GroupManager.Panel', {
 	},
 	onRemoveGroupOk: function() {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var groupNames = new Array();
+		var groupNames = [];
 		for (var i = 0; i < selectedRow.length; i++){
 			groupNames.push(selectedRow[i].get( 'group_name' ));
 		}

@@ -64,7 +64,7 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 
 				var interwiki = $.inArray(parts.shift(), mw.config.get('BSInterWikiPrefixes', []));
 				if( interwiki > -1) {
-					this.cbInterWiki.setValue( mw.config.get('BSInterWikiPrefixes', [])[interwiki] )
+					this.cbInterWiki.setValue( mw.config.get('BSInterWikiPrefixes', [])[interwiki] );
 					this.tfPageTitle.setValue( parts.join( ':' ) );
 
 					if( obj.content.match( '|' ) ) {
@@ -117,7 +117,7 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 			page = this.tfPageTitle.getValue();
 		}
 
-		return { 
+		return {
 			title: title,
 			href: prefix+page,
 			type: this.linktype,
