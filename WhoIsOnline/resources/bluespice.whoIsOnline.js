@@ -2,7 +2,6 @@
  * Js for WhoIsOnline extension
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
-
  * @package    Bluespice_Extensions
  * @subpackage WhoIsOnline
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -39,7 +38,7 @@ BsWhoIsOnline = {
 
 		BSPing.registerListener('WhoIsOnline', BsWhoIsOnline.interval, [], BsWhoIsOnline.pingListener);
 	}
-}
+};
 
 mw.loader.using( 'ext.bluespice', function() {
 	BsWhoIsOnline.init();
