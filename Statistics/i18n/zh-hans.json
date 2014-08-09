@@ -33,6 +33,7 @@
 	"bs-statistics-diag-number-of-edits": "编辑数",
 	"bs-statistics-diag-edits-per-user": "每用户编辑数",
 	"bs-statistics-diag-search-queries": "搜索查询",
+	"bs-statistics-diag-search-queries-desc": "显示选定周期的搜索查询数。",
 	"bs-statistics-label-searchterm": "搜索关键词",
 	"bs-statistics-label-count": "数量",
 	"bs-statistics-label-maxhits": "最大结果数",

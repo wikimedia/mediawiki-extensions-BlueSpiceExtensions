@@ -64,6 +64,7 @@
 	"bs-insertfile-select-a-link": "Seleccionar o escribir un enlace",
 	"bs-insertfile-license": "Licencia",
 	"bs-insertfile-categories": "Categorías",
+	"bs-insertfile-linktext": "Texto que mostrar",
 	"bs-insertfile-no-link": "Sin enlace",
 	"bs-insertfile-error-no-medialink": "No se seleccionó ningún enlace de multimedia.",
 	"bs-insertfile-error-no-imagelink": "No se seleccionó ningún enlace de imagen.",

@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Imperadeiro98",
-			"Fúlvio"
+			"Fúlvio",
+			"Vitorvicentevalente"
 		]
 	},
 	"bs-authors-desc": "Exibe a imagem do perfil dos autores de uma página",
 	"prefs-authors": "Autores desta página",
-	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor|Autora}}|Autores}}",
 	"bs-authors-profileimage": "Imagem de perfil",
 	"bs-authors-profileimage-change": "Mudar a imagem de perfil",
 	"bs-authors-show-all-authors": "Mais autores disponíveis",

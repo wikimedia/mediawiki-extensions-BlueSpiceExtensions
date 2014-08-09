@@ -22,7 +22,7 @@
 	"bs-responsibleeditors-error-ajax-not-allowed": "拒绝访问。您未被授权执行此操作。",
 	"bs-responsibleeditors-contentactions-label": "更改职责",
 	"bs-responsibleeditors-statebartop-icon-alt": "这里有对此页面负责的编辑者",
-	"bs-responsibleeditors-statebarbody-headline": "责任{{PLURAL:$1|编辑者}}",
+	"bs-responsibleeditors-statebarbody-headline": "责任{{PLURAL:$1|{{GENDER:$2|编辑}}}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "提供的页面不存在。",
 	"bs-responsibleeditors-mail-subject-new-editor": "“$1”的责任已分配",
 	"bs-responsibleeditors-mail-subject-former-editor": "“$1”的责任已取消",

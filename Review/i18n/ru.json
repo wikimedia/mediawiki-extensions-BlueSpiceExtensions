@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-review-i-agree": "Согласен",
+	"bs-review-i-dismiss": "Не согласен",
+	"bs-review-comments": "Комментарии",
+	"bs-review-colstatus": "Статус",
+	"bs-review-colcomment": "Комментарий",
+	"bs-review-lblstartdate": "Дата начала",
+	"bs-review-lblenddate": "Дата окончания",
+	"bs-review-labelcomment": "Комментарий",
+	"bs-review-header-page-title": "Страница",
+	"bs-review-header-owner-name": "Владелец"
+}

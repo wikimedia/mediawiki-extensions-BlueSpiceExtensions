@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"prefs-pagetemplates": "Страничные шаблоны",
+	"bs-pagetemplatesadmin-label": "Страничные шаблоны",
+	"bs-pagetemplates-headerlabel": "Обозначение",
+	"bs-pagetemplates-headertargetnamespace": "Пространство имён",
+	"bs-pagetemplates-tipeditdetails": "Редактировать шаблон",
+	"bs-pagetemplates-tipaddtemplate": "Добавить шаблон",
+	"bs-pagetemplates-label-tpl": "Имя шаблона",
+	"bs-pagetemplates-label-desc": "Описание",
+	"bs-pagetemplates-label-targetns": "Пространство имён",
+	"bs-pagetemplates-label-article": "Шаблон"
+}

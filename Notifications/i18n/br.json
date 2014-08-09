@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Y-M D"
 		]
 	},
 	"prefs-notifications": "Kemennoù",
+	"bs-notifications-pref-notifynominor": "Kemenn ebet evit kemmoù dister",
 	"bs-notifications-pref-active": "Gweredekaat ar c'hemennoù",
 	"bs-echo-anon-user": "dizanv",
 	"bs-echo-unknown-user": "dianav",
@@ -18,5 +20,7 @@
 	"bs-notifications-email-move-subject": "Pajenn $1 {{GENDER:$2|dilec'hiet}} gant $2",
 	"bs-notifications-email-delete-subject": "Pajenn $1 {{GENDER:$2|dilamet}} gant $2",
 	"bs-notifications-email-delete": "Ar bajenn \"$1\" a oa bet {{GENDER:$2|dilamet}} gant $2.\n\nSetu amañ an abeg :\n$3",
-	"bs-notifications-email-addaccount-subject": "Implijer $1 krouet"
+	"bs-notifications-email-addaccount-subject": "Implijer $1 krouet",
+	"echo-category-title-bs-create-cat": "Kemennoù evit pajennoù nevez",
+	"echo-category-title-bs-edit-cat": "Kemennoù evit ar c'hemmoù"
 }

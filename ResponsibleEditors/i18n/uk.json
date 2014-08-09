@@ -22,7 +22,7 @@
 	"bs-responsibleeditors-error-ajax-not-allowed": "Доступ заборонено. Ви не авторизовані для виконання цієї дії.",
 	"bs-responsibleeditors-contentactions-label": "Змінити відповідальність",
 	"bs-responsibleeditors-statebartop-icon-alt": "Для цієї сторінки є відповідальний редактор",
-	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|Відповідальний редактор|Відповідальні редактори}}",
+	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|{{GENDER:$2|Відповідальний редактор|Відповідальна редакторка}}|Відповідальні редактори}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Даної сторінки не існує.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Відповідальність для «$1» призначено",
 	"bs-responsibleeditors-mail-text-new-editor": "$2 {{GENDER:$1|призначив|призначила}} Вас на «$3». Після входу на вікі, Ви можете відкрити сторінку за цим посиланням: $4. Якщо у Вас є якісь запитання, звертайтеся, будь ласка, до $2.",

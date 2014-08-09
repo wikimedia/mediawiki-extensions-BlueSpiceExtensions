@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Misibacsi"
+			"Misibacsi",
+			"Csega"
 		]
 	},
-	"bs-articleinfo-check-revision": "Új verzió van",
+	"bs-articleinfo-check-revision": "Új verzió érhető el",
 	"bs-articleinfo-check-revision-tooltip": "Oldal újratöltése",
 	"bs-articleinfo-statebartoplastedited": "Legutóbbi szerkesztés",
 	"bs-articleinfo-statebartoplasteditor": "Legutóbbi szerkesztő",

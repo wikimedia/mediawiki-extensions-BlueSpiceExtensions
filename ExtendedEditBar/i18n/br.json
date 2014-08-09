@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Y-M D"
 		]
 	},
 	"bs-extendededitbar-redirecttip": "Adkas",
 	"bs-extendededitbar-striketip": "Barrenniñ",
 	"bs-extendededitbar-entertip": "Lamm linenn",
 	"bs-extendededitbar-smalltip": "Bihan",
+	"bs-extendededitbar-smallsample": "Testennig",
+	"bs-extendededitbar-commentsample": "Evezhiadenn",
 	"bs-extendededitbar-gallerysamplepicture": "Skeudenn",
 	"bs-extendededitbar-gallerysamplecaption": "Alc'hwez",
 	"bs-extendededitbar-tabletip": "Ensoc'hañ un daolenn",

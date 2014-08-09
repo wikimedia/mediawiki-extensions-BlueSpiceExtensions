@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin"
+		]
+	},
+	"bs-flexiskin-left": "links",
+	"bs-flexiskin-right": "rechts",
+	"bs-flexiskin-center": "gecentreerd",
+	"bs-flexiskin-labelwidth": "Volledige breedte (in pixels)",
+	"bs-flexiskin-labelfullwidth": "Maximale breedte"
+}

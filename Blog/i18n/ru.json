@@ -17,6 +17,7 @@
 	"bs-blog-form-title-text": "Создать новую запись в блоге",
 	"bs-blog-form-button-text": "Создать",
 	"bs-blog-blog": "Блог",
+	"bs-blog-pref-showpermalink": "Показать постоянную ссылку",
 	"bs-blog-pref-sortby": "Сортировать по:",
 	"bs-blog-pref-imagerendermode": "Отображать изображения как:",
 	"bs-blog-pref-maxentrycharacters": "Количество слов в записи:"

@@ -5,13 +5,14 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-specialadmindashboard-label": "Instrumentpanel",
+	"bs-dashboards-desc": "Tillhandahåller kontrollpaneler för användare och administratörer",
+	"bs-specialadmindashboard-label": "Kontrollpanel",
 	"bs-dashboards-addportlet": "Lägg till portlet",
 	"bs-dashboards-portlets": "Portlets",
-	"prefs-dashboards": "Instrumentpaneler",
-	"bs-dashboards-pref-userdashboardonlogo": "Webbplatsens logotyp länkar till användarinstrumentpanel",
-	"admindashboard": "Admin-instrumentpanel",
-	"userdashboard": "Användar-instrumentpanel",
+	"prefs-dashboards": "Kontrollpaneler",
+	"bs-dashboards-pref-userdashboardonlogo": "Webbplatsens logotyp länkar till användarkontrollpanelen",
+	"admindashboard": "Admin-kontrollpanel",
+	"userdashboard": "Användar-kontrollpanel",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
 	"bs-dashboard-userportlet-calendar-description": "Kalender"
 }

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
+	"bs-insertlink": "Вставить ссылку",
 	"bs-insertlink-dialog-title": "Вставить ссылку",
 	"bs-insertlink-tab-wiki-page": "Вики-страница",
 	"bs-insertlink-tab-ext-link": "Внешняя ссылка",

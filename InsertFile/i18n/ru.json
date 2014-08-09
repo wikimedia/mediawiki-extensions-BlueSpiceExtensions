@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-insertfile-insert-image": "Вставить изображение",
+	"bs-insertfile-insert-file": "Вставить файл",
+	"bs-insertfile-button-image-title": "Вставить и отредактировать изображение",
+	"bs-insertfile-button-file-title": "Вставить или отредактировать файл",
+	"bs-insertfile-labelsort": "Сортировать по:",
+	"bs-insertfile-labelfilter": "Фильтр:",
+	"bs-insertfile-filename": "Имя файла",
+	"bs-insertfile-filesize": "Размер файла",
+	"bs-insertfile-lastmodified": "Свежие правки",
+	"bs-insertfile-labelupload": "Загрузить",
+	"bs-insertfile-details-title": "Подробности",
+	"bs-insertfile-labeldimensions": "Размер (ш x в)",
+	"bs-insertfile-labelalt": "Альтернативный текст",
+	"bs-insertfile-labelalign": "Выравнивание",
+	"bs-insertfile-labellink": "Ссылка",
+	"bs-insertfile-alignnone": "нет",
+	"bs-insertfile-alignleft": "слева",
+	"bs-insertfile-aligncenter": "по центру",
+	"bs-insertfile-alignright": "справа",
+	"bs-insertfile-labeltype": "Украшение",
+	"bs-insertfile-typenone": "нет",
+	"bs-insertfile-typethumb": "миниатюра",
+	"bs-insertfile-typeframe": "рамка",
+	"bs-insertfile-warning": "Внимание",
+	"bs-insertfile-error": "Ошибка",
+	"bs-insertfile-titlefile": "Вставить файл",
+	"bs-insertfile-titleimage": "Вставить изображение",
+	"bs-insertfile-tipkeepratio": "Сохранить пропорции",
+	"bs-insertfile-license": "Лицензия",
+	"bs-insertfile-categories": "Категории",
+	"bs-insertfile-linktext": "Отображаемый текст",
+	"bs-insertfile-upload-waitmessage": "Загрузка в процессе…"
+}

@@ -21,7 +21,7 @@
 	"bs-responsibleeditors-error-ajax-not-allowed": "Не сте овластени да го извршите ова дејство.",
 	"bs-responsibleeditors-contentactions-label": "Смени одговорност",
 	"bs-responsibleeditors-statebartop-icon-alt": "Страницава има одговорен уредник",
-	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|Одговорен уредник|Одговорни уредници}}",
+	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|Одговорен {{GENDER:$2|уредник}}|Одговорни уредници}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Дадената страница не постои.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Доделена одговорноста за „$1“",
 	"bs-responsibleeditors-mail-text-new-editor": "$2 {{GENDER:$1|ве назначи}} за одговорен уредник на страницата „$3\". Откако ќе се најавите, можете да ја отворите тука: $4. Ако имате некакви прашање, обратете се кај $2.",

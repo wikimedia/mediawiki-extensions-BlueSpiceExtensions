@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-csyntaxhighlight-pref-theme": "Тема:",
+	"bs-csyntaxhighlight-pref-gutter": "Показывать номера строк",
+	"bs-csyntaxhighlight-pref-toolbar": "Показывать панель инструментов"
+}

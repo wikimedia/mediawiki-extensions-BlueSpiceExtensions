@@ -2,12 +2,28 @@
 	"@metadata": {
 		"authors": [
 			"Аль-Гимравий",
-			"Умар"
+			"Умар",
+			"Okras"
 		]
 	},
 	"bs-statistics-diagram": "Запрос",
 	"bs-statistics-to": "К",
 	"bs-statistics-grain": "Интервал",
 	"bs-statistics-absolute": "абсолютный",
-	"bs-statistics-label-registration": "Регистрация"
+	"bs-statistics-year": "Год",
+	"bs-statistics-month": "Месяц",
+	"bs-statistics-week": "Календарная неделя",
+	"bs-statistics-day": "День",
+	"bs-statistics-list": "Список",
+	"bs-statistics-filters": "Фильтры",
+	"bs-statistics-diag-number-of-users": "Количество участников",
+	"bs-statistics-label-name": "Имя",
+	"bs-statistics-label-registration": "Регистрация",
+	"bs-statistics-diag-number-of-pages": "Количество страниц",
+	"bs-statistics-label-page": "Страница",
+	"bs-statistics-label-creator": "Автор",
+	"bs-statistics-diag-number-of-edits": "Число правок",
+	"bs-statistics-label-time": "Время",
+	"bs-statistics-filter-category": "Категория",
+	"bs-statistics-portletconfig-periodday": "Вчера"
 }

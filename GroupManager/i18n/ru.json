@@ -4,5 +4,8 @@
 			"Okras"
 		]
 	},
-	"bs-groupmanager-headergroup": "Группа"
+	"bs-groupmanager-headergroup": "Группа",
+	"bs-groupmanager-titlenewgroup": "Новая группа",
+	"bs-groupmanager-titleeditgroup": "Редактировать группу",
+	"bs-groupmanager-lablename": "Имя группы:"
 }

@@ -6,6 +6,9 @@
 		]
 	},
 	"prefs-review": "Adwelet",
+	"bs-review-review": "Adwelet",
+	"bs-review-menu-entry": "Kemmañ an adwel",
+	"bs-review-accepted": "Degemeret",
 	"bs-review-rejected": "Distaolet",
 	"bs-review-save-noid": "N'eus bet kaset ID pajenn ebet.",
 	"bs-review-save-norights": "N'emañ ket an aotre rekis ganeoc'h.",
@@ -15,6 +18,7 @@
 	"bs-review-not-allowed": "N'oc'h ket aotreet da vont d'ar bajenn-mañ.",
 	"bs-review-pref-shownameintooltip": "Diskouez anvioù ar berzhidi",
 	"bs-review-expired": "Aet d'e dermen",
+	"review": "Adwelet",
 	"bs-review-commentinputlabel": "Hoc'h evezhiadenn :",
 	"bs-review-comments": "Evezhiadennoù",
 	"bs-review-colstatus": "Statud",

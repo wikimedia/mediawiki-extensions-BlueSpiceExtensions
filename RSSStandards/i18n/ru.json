@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"SuperPuperSteve"
+			"SuperPuperSteve",
+			"Okras"
 		]
 	},
 	"bs-rssstandards-title-page": "Страница",
-	"bs-rssstandards-title-cat": "Категория"
+	"bs-rssstandards-title-cat": "Категория",
+	"bs-rssstandards-title-watch": "Список наблюдения"
 }

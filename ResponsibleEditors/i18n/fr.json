@@ -22,7 +22,7 @@
 	"bs-responsibleeditors-error-ajax-not-allowed": "Accès refusé. Vous n'êtes pas autorisé à effectuer cette action.",
 	"bs-responsibleeditors-contentactions-label": "Modifier la responsabilité",
 	"bs-responsibleeditors-statebartop-icon-alt": "Il y a un éditeur responsable pour cette page",
-	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|Éditeur responsable|Éditeurs responsables}}",
+	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|{{GENDER:$2|Éditeur|Éditrice}} responsable|Éditeurs responsables}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "La page donnée n'existe pas.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Responsabilité affectée à « $1 »",
 	"bs-responsibleeditors-mail-text-new-editor": "$2 vous a {{GENDER:$1|affecté}} à « $3 ». Après vous être connecté au wiki, vous pouvez ouvrir la page avec ce lien : $4. Si vous avez des questions, veuillez vous référer à $2.",

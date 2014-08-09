@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
 	"bs-rssfeeder-desc": "Crea tu propio canal RSS",
+	"rssfeeder": "Canales RSS",
 	"bs-rssfeeder-pagetext": "Puedes suscribirte a los siguientes canales RSS:",
 	"bs-rssfeeder-recent-changes": "Cambios recientes",
 	"bs-rssfeeder-pages": "Página",

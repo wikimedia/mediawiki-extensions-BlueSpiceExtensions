@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
 	"bs-pageaccess-desc": "Управление доступом на уровне страницы",
-	"bs-pageaccess-error-no-groups-given": "Группы не были указаны."
+	"bs-pageaccess-error-no-groups-given": "Группы не были указаны.",
+	"bs-pageaccess-error-not-member-of-given-groups": "Вы не является членом данных групп. Для того, чтобы предотвратить автоблокировку, сохранение было отключено.",
+	"bs-pageaccess-error-included-forbidden-template": "Вы пытались использовать шаблон «$1», к которому у вас нет доступа на чтение. Для того, чтобы предотвратить автоблокировку, сохранение было отключено."
 }

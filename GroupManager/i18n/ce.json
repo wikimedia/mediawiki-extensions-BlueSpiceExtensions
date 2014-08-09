@@ -6,5 +6,8 @@
 	},
 	"bs-groupmanager-label": "Тобан менеджер",
 	"bs-groupmanager-headergroup": "Тоба",
-	"bs-groupmanager-titlenewgroup": "Керла тоба"
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|ДӀаяккха тоба|ДӀаяха тобанаш}}",
+	"bs-groupmanager-titlenewgroup": "Керла тоба",
+	"bs-groupmanager-titleeditgroup": "Тае тоба",
+	"bs-groupmanager-lablename": "Тобан цӀе:"
 }

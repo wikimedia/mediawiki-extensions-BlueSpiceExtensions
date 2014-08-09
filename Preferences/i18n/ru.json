@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-preferences-desc": "Интерфейс администрирования для настройки BlueSpice",
+	"bs-preferences-label": "Настройки"
+}

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-smartlist-comment": "Комментарий: $1.",
+	"bs-smartlist-pref-comments": "Показать комментарий",
+	"bs-smartlist-pref-namespaces": "Пространство имён:",
+	"bs-smartlist-pref-categories": "Категории:",
+	"bs-smartlist-pref-period": "Период:",
+	"bs-smartlist-pref-order": "Сортировать по:",
+	"bs-smartlist-pref-sort": "Сортировать по:",
+	"bs-smartlist-sort-asc": "по возрастанию",
+	"bs-smartlist-sort-desc": "по убыванию",
+	"bs-smartlist-day": "День",
+	"bs-smartlist-week": "Неделя",
+	"bs-smartlist-month": "Месяц",
+	"bs-smartlist-time": "Время",
+	"bs-smartlist-title": "Заголовок",
+	"bs-smartlist-lastedits": "Мои правки"
+}

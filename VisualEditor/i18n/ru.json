@@ -1,11 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iluvatar"
+			"Iluvatar",
+			"Okras"
 		]
 	},
+	"prefs-visualeditor": "Визуальный редактор",
+	"bs-visualeditor-editbutton-hint": "Визуальный редактор",
 	"bs-visualeditor-contenttable": "Содержание",
 	"bs-visualeditor-bsactions-save": "Сохранить",
 	"bs-visualeditor-bsactions-headings": "Заголовки",
-	"bs-visualeditor-bsactions-heading4": "Заголовок 4"
+	"bs-visualeditor-bsactions-paragraph": "Абзац",
+	"bs-visualeditor-bsactions-heading2": "Заголовок 2",
+	"bs-visualeditor-bsactions-heading3": "Заголовок 3",
+	"bs-visualeditor-bsactions-heading4": "Заголовок 4",
+	"bs-visualeditor-bsactions-heading5": "Заголовок 5",
+	"bs-visualeditor-bsactions-heading6": "Заголовок 6"
 }

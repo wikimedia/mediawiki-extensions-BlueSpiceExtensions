@@ -4,6 +4,8 @@
 			"Sjoerddebruin"
 		]
 	},
+	"bs-countthings-chars-label": "Karakters",
+	"bs-countthings-words-label": "Woorden",
 	"bs-countthings-pages-label": "Pagina's",
 	"bs-countthings-error-no-input": "Geen pagina opgegeven."
 }

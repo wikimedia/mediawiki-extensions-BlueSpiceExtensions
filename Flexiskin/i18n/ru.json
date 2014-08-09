@@ -10,6 +10,14 @@
 	"bs-flexiskin-pref-logo": "Логотип:",
 	"bs-flexiskin-labeldesc": "Описание",
 	"bs-flexiskin-labelskins": "Шаблон",
+	"bs-flexiskin-labelbgcolor": "Цвет фона",
+	"bs-flexiskin-headerheader": "Заголовок",
 	"bs-flexiskin-labellogoupload": "Логотип",
-	"bs-flexiskin-labelbackgroundupload": "Фоновое изображение"
+	"bs-flexiskin-labelbackgroundupload": "Фоновое изображение",
+	"bs-flexiskin-labelcontent": "Положение содержания",
+	"bs-flexiskin-left": "слева",
+	"bs-flexiskin-right": "справа",
+	"bs-flexiskin-center": "по центру",
+	"bs-flexiskin-labelwidth": "Полная ширина (в пикселях)",
+	"bs-flexiskin-labelfullwidth": "Максимальная ширина"
 }

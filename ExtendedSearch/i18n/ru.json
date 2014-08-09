@@ -4,13 +4,25 @@
 			"Okras"
 		]
 	},
+	"bs-extendedsearch-desc": "Расширенный поиск",
+	"specialextendedsearch": "Расширенный поиск",
+	"prefs-extendedsearch": "Расширенный поиск",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Категория|Категории}}: $2",
 	"bs-extendedsearch-error": "Ошибка:",
 	"bs-extendedsearch-facet-category": "Категория",
 	"bs-extendedsearch-facet-editors": "Авторы",
 	"bs-extendedsearch-facet-namespace": "Пространство имён",
 	"bs-extendedsearch-facet-namespace-files": "Файлы",
 	"bs-extendedsearch-facet-namespace-extfiles": "Внешние файлы",
+	"bs-extendedsearch-sort-by": "Отсортировано по:",
+	"bs-extendedsearch-sort-title": "Заголовок",
+	"bs-extendedsearch-sort-ts": "Время",
+	"bs-extendedsearch-sort-type": "Тип",
+	"bs-extendedsearch-specialpage-form-return-to-simple": "Простая форма поиска",
+	"bs-extendedsearch-specialpage-form-expand-to-extended": "Расширенная форма поиска",
 	"bs-extendedsearch-pref-scope-text": "Полный текст",
+	"bs-extendedsearch-pref-scope-title": "Заголовок",
+	"bs-extendedsearch-about-to-start": "Начало…",
 	"bs-extendedsearch-create-index": "Пересоздать индекс",
 	"bs-extendedsearch-delete-index": "Удалить индекс",
 	"bs-extendedsearch-overwrite-index": "Перезаписать индекс",
@@ -25,6 +37,7 @@
 	"bs-extendedsearch-unknown": "Неизвестно",
 	"bs-extendedsearch-section": "Раздел",
 	"bs-extendedsearch-morelikethis": "Похожие страницы",
+	"bs-extendedsearch-redirect": "Перенаправление с: $1",
 	"bs-extendedsearch-more": "Ещё",
 	"bs-extendedsearch-fewer": "Меньше"
 }

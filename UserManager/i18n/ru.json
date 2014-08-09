@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-usermanager-headeremail": "Эл. почта",
+	"bs-usermanager-headergroups": "Группы",
+	"bs-usermanager-titleadduser": "Добавить пользователя",
+	"bs-usermanager-titleeditdetails": "Редактировать пользователя",
+	"bs-usermanager-labelnewpassword": "Пароль",
+	"bs-usermanager-labelpasswordcheck": "Подтвердите пароль",
+	"bs-usermanager-titledeleteuser": "Удалить пользователя"
+}

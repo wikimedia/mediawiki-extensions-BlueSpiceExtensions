@@ -27,6 +27,7 @@
 	"bs-wantedarticle-tag-default-title": "Páginas requeridas",
 	"bs-wantedarticle-pref-includelimit": "Número de sugerencias:",
 	"bs-wantedarticle-pref-deleteexisting": "Borrar las entradas existentes de la lista",
+	"bs-wantedarticle-pref-showcreate": "Mostrar el enlace «Crear»",
 	"bs-wantedarticle-pref-deleteoncreation": "Eliminar la entrada de la lista cuando se crea la página",
 	"bs-wantedarticle-pref-datasourcetemplatetitle": "Título de la plantilla para sugerencias:",
 	"bs-wantedarticle-pref-sort": "Ordenar por:",

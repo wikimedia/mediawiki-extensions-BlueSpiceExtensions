@@ -1,14 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Y-M D"
 		]
 	},
 	"bs-extendedsearch-error": "Fazi :",
 	"bs-extendedsearch-facet-category": "Rummad",
 	"bs-extendedsearch-facet-editors": "Aozerien",
+	"bs-extendedsearch-facet-namespace": "Esaouenn anv",
 	"bs-extendedsearch-facet-namespace-files": "Restroù",
 	"bs-extendedsearch-facet-type": "Furmad",
+	"bs-extendedsearch-facet-uncategorized": "Anrummatet",
 	"bs-extendedsearch-facet-namespace-extfiles": "Restroù diavaez",
 	"bs-extendedsearch-files": "Klask restroù",
 	"bs-extendedsearch-finished": "Echuet eo",

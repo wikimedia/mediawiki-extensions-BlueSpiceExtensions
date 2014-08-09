@@ -4,6 +4,16 @@
 			"Sjoerddebruin"
 		]
 	},
+	"bs-extendedsearch-desc": "Uitgebreid zoeken",
+	"specialextendedsearch": "Uitgebreid zoeken",
+	"prefs-extendedsearch": "Uitgebreid zoeken",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Categorie|Categorieën}}: $2",
+	"bs-extendedsearch-error": "Fout:",
+	"bs-extendedsearch-facet-category": "Categorie",
+	"bs-extendedsearch-facet-editors": "Auteurs",
+	"bs-extendedsearch-facet-namespace": "Naamruimte",
+	"bs-extendedsearch-facet-namespace-files": "Bestanden",
+	"bs-extendedsearch-facet-namespace-extfiles": "Externe bestanden",
 	"bs-extendedsearch-sort-by": "Gesorteerd op:",
 	"bs-extendedsearch-sort-relevance": "Relevantie",
 	"bs-extendedsearch-sort-title": "Titel",

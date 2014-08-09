@@ -6,5 +6,7 @@
 	},
 	"bs-countthings-chars-label": "Символы",
 	"bs-countthings-words-label": "Слова",
-	"bs-countthings-pages-label": "Страницы"
+	"bs-countthings-pages-label": "Страницы",
+	"bs-countthings-error-not-exist": "Страница «$1» не существует.",
+	"bs-countthings-tag-countusers-desc": "Показывает число участников."
 }
