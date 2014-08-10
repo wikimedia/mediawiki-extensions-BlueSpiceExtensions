@@ -197,74 +197,55 @@ class PageTemplates extends BsExtensionMW {
 		// if we are not on a wiki page, return. This is important when calling import scripts that try to create nonexistent pages, e.g. importImages
 		if ( !is_object( $oTitle ) ) return true;
 
-		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'PageTemplates', $oTitle->getPrefixedText() );
-		$aData = BsCacheHelper::get( $sKey );
-
 		$aRes = array();
 		$aOutNs = array();
+		$dbr = wfGetDB( DB_SLAVE );
 
-		if( $aData !== false ) {
-			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching PageTemplates from cache' );
-			list( $aRes, $sOut, $sOutAll ) = $aData;
-		} else {
-			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching PageTemplates from DB' );
-			$dbr = wfGetDB( DB_SLAVE );
-
-			$aConds = array();
-			if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
-				if ( $wgDBtype == 'postgres' ) {
-					$aConds[] = "pt_target_namespace IN ('" . $oTitle->getNamespace() . "', '-99')";
-				} else {
-					$aConds[] = 'pt_target_namespace IN (' . $oTitle->getNamespace() . ', -99)';
-				}
-			}
-
+		$aConds = array();
+		if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
 			if ( $wgDBtype == 'postgres' ) {
-				$aFields = array( "pt_template_title, pt_template_namespace, pt_label, pt_desc, pt_target_namespace" );
+				$aConds[] = "pt_target_namespace IN ('" . $oTitle->getNamespace() . "', '-99')";
 			} else {
-				$aFields = array( 'pt_template_title', 'pt_template_namespace', 'pt_label', 'pt_desc', 'pt_target_namespace' );
+				$aConds[] = 'pt_target_namespace IN (' . $oTitle->getNamespace() . ', -99)';
 			}
-
-			$res = $dbr->select(
-				array( 'bs_pagetemplate' ),
-				$aFields,
-				$aConds,
-				__METHOD__,
-				array( 'ORDER BY' => 'pt_label' )
-			);
-
-			// There is always one template for empty page it is added some lines beneath that
-			$iCount = $dbr->numRows( $res ) + 1;
-			$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->text();
-			$sOutAll = '';
-			$oTargetNsTitle = null;
-
-			$sOut .= '<br /><br /><ul><li>';
-			$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), array(), array( 'preload' => '' ) );
-			$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
-			$sOut .= '</li></ul>';
-
-			$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
-			$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
-			$vOrder = explode( '*', $vOrder );
-			$vOrder = array_map( 'trim', $vOrder );
-
-			if ( $res && $dbr->numRows( $res ) > 0 ) {
-				while ( $row = $dbr->fetchObject( $res ) ) {
-					$aRes[] = $row;
-				}
-			}
-			$dbr->freeResult( $res );
-			BsCacheHelper::set(
-				$sKey,
-				array(
-					$aRes,
-					$sOut,
-					$sOutAll
-				)
-			);
-
 		}
+
+		if ( $wgDBtype == 'postgres' ) {
+			$aFields = array( "pt_template_title, pt_template_namespace, pt_label, pt_desc, pt_target_namespace" );
+		} else {
+			$aFields = array( 'pt_template_title', 'pt_template_namespace', 'pt_label', 'pt_desc', 'pt_target_namespace' );
+		}
+
+		$res = $dbr->select(
+			array( 'bs_pagetemplate' ),
+			$aFields,
+			$aConds,
+			__METHOD__,
+			array( 'ORDER BY' => 'pt_label' )
+		);
+
+		// There is always one template for empty page it is added some lines beneath that
+		$iCount = $dbr->numRows( $res ) + 1;
+		$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->text();
+		$sOutAll = '';
+		$oTargetNsTitle = null;
+
+		$sOut .= '<br /><br /><ul><li>';
+		$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), array(), array( 'preload' => '' ) );
+		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
+		$sOut .= '</li></ul>';
+
+		$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
+		$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
+		$vOrder = explode( '*', $vOrder );
+		$vOrder = array_map( 'trim', $vOrder );
+
+		if ( $res && $dbr->numRows( $res ) > 0 ) {
+			while ( $row = $dbr->fetchObject( $res ) ) {
+				$aRes[] = $row;
+			}
+		}
+		$dbr->freeResult( $res );
 
 		foreach( $aRes as $row ) {
 			$oNsTitle = Title::makeTitle( $row->pt_template_namespace, $row->pt_template_title );
@@ -423,12 +404,5 @@ class PageTemplates extends BsExtensionMW {
 
 		return true;
 	}
-	/**
-	 * Invalidates PageTemplates cache for specific namespace
-	 * @param type $iNamespaceId
-	 * @return bool
-	 */
-	public static function invalidatePageTemplatesCache( $iNamespaceId ) {
-		return BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'PageTemplates', (int) $iNamespaceId )  );
-	}
+
 }

@@ -192,15 +192,15 @@ class PageTemplatesAdmin {
 		if ( empty( $iOldId ) ) {
 			if ( $aAnswer['success'] === true ) {
 				$oDbw->insert(
-						'bs_pagetemplate',
-						array(
-							'pt_label' => $sLabel,
-							'pt_desc' => $sDesc,
-							'pt_template_title' => $sTemplateName,
-							'pt_template_namespace' => $iTemplateNs,
-							'pt_target_namespace' => $iTargetNs,
-							'pt_sid' => 0,
-						));
+					'bs_pagetemplate',
+					array(
+						'pt_label' => $sLabel,
+						'pt_desc' => $sDesc,
+						'pt_template_title' => $sTemplateName,
+						'pt_template_namespace' => $iTemplateNs,
+						'pt_target_namespace' => $iTargetNs,
+						'pt_sid' => 0,
+					));
 				$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl-added' )->plain();
 			}
 		// and here we have edit template
@@ -236,8 +236,6 @@ class PageTemplatesAdmin {
 			}
 		}
 
-		PageTemplates::invalidatePageTemplatesCache( $iTargetNs );
-
 		return json_encode( $aAnswer );
 	}
 
@@ -267,7 +265,6 @@ class PageTemplatesAdmin {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
-		$oRow = $dbw->selectRow( 'bs_pagetemplate', 'pt_target_namespace', array( 'pt_id' => $iId ) );
 		$res = $dbw->delete( 'bs_pagetemplate', array( 'pt_id' => $iId ) );
 
 		if ( $res === false ) {
@@ -277,10 +274,6 @@ class PageTemplatesAdmin {
 
 		if ( $aAnswer['success'] ) {
 			$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl-deleted' )->plain();
-		}
-
-		if( $oRow ) {
-			PageTemplates::invalidatePageTemplatesCache( $oRow->pt_target_namespace );
 		}
 
 		return json_encode( $aAnswer );
