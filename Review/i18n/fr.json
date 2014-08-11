@@ -74,5 +74,6 @@
 	"bs-review-header-startdate": "Début",
 	"bs-review-header-enddate": "Fin",
 	"bs-review-confirm-delete-step": "Voulez-vous vraiment supprimer cette étape ?",
-	"bs-review-confirm-delete-review": "Voulez-vous vraiment supprimer cette relecture ?"
+	"bs-review-confirm-delete-review": "Voulez-vous vraiment supprimer cette relecture ?",
+	"bs-review-error-insufficient-permissions": "Vous n’avez pas le droit d’exécuter cette action (« $1 » est nécessaire)."
 }

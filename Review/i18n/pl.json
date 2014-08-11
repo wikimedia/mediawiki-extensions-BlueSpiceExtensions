@@ -26,5 +26,6 @@
 	"bs-review-header-accepted-text": "Stan",
 	"bs-review-header-startdate": "Start",
 	"bs-review-header-enddate": "Koniec",
-	"bs-review-confirm-delete-step": "Czy na pewno chcesz usunąć ten krok?"
+	"bs-review-confirm-delete-step": "Czy na pewno chcesz usunąć ten krok?",
+	"bs-review-error-insufficient-permissions": "Nie masz uprawnień, aby wykonać to działanie (potrzebne „$1”)."
 }
