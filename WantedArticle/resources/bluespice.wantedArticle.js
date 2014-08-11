@@ -99,7 +99,7 @@ BsWantedArticle = {
 			return false;
 		}
 
-		var aFoundChars = new Array();
+		var aFoundChars = [];
 		for ( var i=0; i < bsForbiddenCharsInArticleTitle.length; i++ ) {
 			if ( sArticleTitle.indexOf( bsForbiddenCharsInArticleTitle [i] ) != -1 ) {
 				aFoundChars.push( '"' + bsForbiddenCharsInArticleTitle [i] + '"' );
@@ -155,8 +155,8 @@ BsWantedArticle = {
 						currentObject.replaceWith(oData.view);
 						BsWantedArticle.toggleMoreHandler();
 					}
-				}
-			}
+				};
+			};
 			$.getJSON(
 				bs.util.getAjaxDispatcherUrl(
 					'WantedArticle::ajaxGetWantedArticles',
@@ -182,7 +182,7 @@ BsWantedArticle = {
 					$(this).parent().next().show();
 				} else {
 					$(this).hide();
-					$(this).next().show()
+					$(this).next().show();
 				}
 			});
 		}
@@ -196,12 +196,12 @@ BsWantedArticle = {
 		}
 
 	}
-}
+};
 
 $(document).ready(function(){
 	BsWantedArticle.config = {
 		urlBase: wgServer + wgScriptPath
-	}
+	};
 	BsWantedArticle.init();
 });
 

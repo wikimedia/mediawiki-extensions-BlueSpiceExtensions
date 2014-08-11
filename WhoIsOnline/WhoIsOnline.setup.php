@@ -7,7 +7,7 @@ $wgMessagesDirs['WhoIsOnline'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['WhoIsOnline'] = __DIR__ . '/languages/WhoIsOnline.i18n.php';
 
 $wgResourceModules['ext.bluespice.whoisonline'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/WhoIsOnline/resources/WhoIsOnline.js',
+	'scripts' => 'extensions/BlueSpiceExtensions/WhoIsOnline/resources/bluespice.whoIsOnline.js',
 	'position' => 'bottom',
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
