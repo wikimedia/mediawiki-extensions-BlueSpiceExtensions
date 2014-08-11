@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Cwlin0416"
 		]
 	},
 	"bs-insertlink-label-page": "頁面",
-	"bs-insertlink-select-a-namespace": "（頁面）"
+	"bs-insertlink-select-a-namespace": " (頁面)"
 }

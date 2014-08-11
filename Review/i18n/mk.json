@@ -74,5 +74,6 @@
 	"bs-review-header-startdate": "Почеток",
 	"bs-review-header-enddate": "Крај",
 	"bs-review-confirm-delete-step": "Дали навистина сакате да го избришете овој чекор?",
-	"bs-review-confirm-delete-review": "Дали навистина сакате да ја избришете оваа оценка?"
+	"bs-review-confirm-delete-review": "Дали навистина сакате да ја избришете оваа оценка?",
+	"bs-review-error-insufficient-permissions": "Немате дозвола да го извршите ова дејство (се бара „$1“)."
 }

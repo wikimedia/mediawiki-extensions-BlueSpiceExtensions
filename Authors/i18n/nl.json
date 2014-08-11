@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Niknetniko",
-			"SPQRobin"
+			"SPQRobin",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-authors-desc": "Toont auteurs van een pagina met hun afbeelding",
 	"prefs-authors": "Auteurs van deze pagina",
-	"bs-authors-title": "{{PLURAL:$1|Auteur|Auteurs}}",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Auteur}}|Auteurs}}",
 	"bs-authors-profileimage": "Profielafbeelding",
 	"bs-authors-profileimage-change": "Profielafbeelding wijzigen",
 	"bs-authors-show-all-authors": "Meer auteurs beschikbaar",

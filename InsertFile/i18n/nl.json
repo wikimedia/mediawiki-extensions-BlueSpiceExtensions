@@ -4,6 +4,8 @@
 			"Sjoerddebruin"
 		]
 	},
+	"bs-insertfile-insert-image": "Afbeelding invoegen",
+	"bs-insertfile-insert-file": "Bestand invoegen",
 	"bs-insertfile-warning": "Waarschuwing",
 	"bs-insertfile-of": "of"
 }

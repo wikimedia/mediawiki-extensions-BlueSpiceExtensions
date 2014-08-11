@@ -75,5 +75,6 @@
 	"bs-review-header-startdate": "Inicio",
 	"bs-review-header-enddate": "Fin",
 	"bs-review-confirm-delete-step": "¿Estás seguro de querer borrar este paso?",
-	"bs-review-confirm-delete-review": "¿Estás seguro de querer borrar esta revisión?"
+	"bs-review-confirm-delete-review": "¿Estás seguro de querer borrar esta revisión?",
+	"bs-review-error-insufficient-permissions": "No tienes permiso para ejecutar esta acción (se necesita «$1»)."
 }

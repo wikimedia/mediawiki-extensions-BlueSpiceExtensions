@@ -6,7 +6,7 @@
 	},
 	"bs-authors-desc": "显示页面作者的个人资料图片",
 	"prefs-authors": "此页面作者",
-	"bs-authors-title": "$1位作者",
+	"bs-authors-title": "$1位{{GENDER:$2|作者}}",
 	"bs-authors-profileimage": "描述图像",
 	"bs-authors-profileimage-change": "更改描述图像",
 	"bs-authors-show-all-authors": "更多作者可用",

@@ -50,5 +50,6 @@
 	"bs-review-header-startdate": "Ufank",
 	"bs-review-header-enddate": "Schluss",
 	"bs-review-confirm-delete-step": "Wëllt Dir dëse Schrëtt wierklech läschen?",
-	"bs-review-confirm-delete-review": "Wëllt Dir dës Bewäertung wierklech läschen?"
+	"bs-review-confirm-delete-review": "Wëllt Dir dës Bewäertung wierklech läschen?",
+	"bs-review-error-insufficient-permissions": "Dir hutt net d'Recht fir dës Aktioun ze maachen (\"$1\" gëtt gebraucht)."
 }

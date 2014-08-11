@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Shirayuki"
+			"Shirayuki",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-authors-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of authors extension",
 	"prefs-authors": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline of authors section preferences",
-	"bs-authors-title": "Headline of authors below page content\n*$1 is the number of authors - use for PLURAL distinction\n*$2 is the username - use for GENDER distinction",
+	"bs-authors-title": "Headline of authors below page content\n*$1 is the number of authors - use for PLURAL distinction\n*$2 is the username - use for GENDER distinction\n{{Identical|Author}}",
 	"bs-authors-profileimage": "Image title for profile image, used on user page",
 	"bs-authors-profileimage-change": "Text for change your profile image, shown on user page",
 	"bs-authors-show-all-authors": "Image title for more authors available, used if there are too many authors",

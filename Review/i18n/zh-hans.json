@@ -74,5 +74,6 @@
 	"bs-review-header-startdate": "开始",
 	"bs-review-header-enddate": "结束",
 	"bs-review-confirm-delete-step": "您真的希望删除此步骤？",
-	"bs-review-confirm-delete-review": "您真的希望删除此复核？"
+	"bs-review-confirm-delete-review": "您真的希望删除此复核？",
+	"bs-review-error-insufficient-permissions": "您没有权限执行此操作（需要“$1”）。"
 }

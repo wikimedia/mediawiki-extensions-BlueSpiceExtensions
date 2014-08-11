@@ -6,7 +6,7 @@
 	},
 	"bs-authors-desc": "Прикажува профилни слики на авторите на една страница",
 	"prefs-authors": "Автори на страницава",
-	"bs-authors-title": "{{PLURAL:$1|Автор|Автори}}",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Автор}}|Автори}}",
 	"bs-authors-profileimage": "Профилна слика",
 	"bs-authors-profileimage-change": "Промена на профилната слика",
 	"bs-authors-show-all-authors": "Промена на профилната слика",

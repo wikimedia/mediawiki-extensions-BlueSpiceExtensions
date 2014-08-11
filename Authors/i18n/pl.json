@@ -6,7 +6,7 @@
 		]
 	},
 	"prefs-authors": "Autorzy tej strony",
-	"bs-authors-title": "{{PLURAL:$1|Autor|Autorzy}}",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor|Autorka}}|Autorów}}",
 	"bs-authors-profileimage": "Avatar",
 	"bs-authors-profileimage-change": "Zmień avatar",
 	"bs-authors-show-all-authors": "Więcej autorów…",
