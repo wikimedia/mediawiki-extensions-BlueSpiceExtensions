@@ -158,6 +158,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 
 		this.configPanel.items.unshift(this.tfLinkText);
 		this.configPanel.items.unshift(this.tfFileName);
+		this.tfFileName.on('change', this.onFileNameChange, this);
 
 		this.pnlConfig = Ext.create('Ext.form.Panel', this.configPanel );
 		this.pnlConfig.on('expand', this.onPnlExpand, this);
@@ -175,6 +176,10 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		if( store.filters.items.length > 0 && records.length === 1 ) {
 			this.gdImages.getSelectionModel().select(0);
 		}
+	},
+
+	onFileNameChange: function( textfield, newValue, oldValue, eOpts ){
+		$(document).trigger("onBsInsertFileConfigPanelFileNameChange", [this, textfield, newValue, oldValue, eOpts]);
 	},
 
 	onPnlExpand: function(panel, eOpts){
