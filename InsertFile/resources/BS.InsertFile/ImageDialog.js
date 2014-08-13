@@ -177,7 +177,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		}
 		this.callParent(arguments);
 	},
-	onPnlExpand: function(panel, eOpts){
+	onPnlConfigExpand: function(panel, eOpts){
 		this.callParent(arguments);
 	},
 	onNbHeightChange: function( element, event ) {
