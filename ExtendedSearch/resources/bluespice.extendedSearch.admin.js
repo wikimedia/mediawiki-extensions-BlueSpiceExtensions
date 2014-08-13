@@ -34,7 +34,7 @@ processConfirm = function() {
 bsExtendedSearchStartCreate = function() {
 	try {
 		if ( !document.getElementById( 'BsExtendedSearchProgress' ) ) {
-			setTimeout( 'bsExtendedSearchStartCreate()', 100 );
+			setTimeout( bsExtendedSearchStartCreate, 100 );
 			return;
 		}
 	} catch(e) {}
@@ -44,32 +44,33 @@ bsExtendedSearchStartCreate = function() {
 	});
 
 	Ext.Ajax.request( { url: bs.util.getAjaxDispatcherUrl( 'ExtendedSearchAdmin::getProgressBar', [ "create" ] ), timeout: 60000 } );
-	setTimeout( 'bsExtendedSearchRequestProgress(0)', 500 );
+	setTimeout( bsExtendedSearchRequestProgress, 500 );
 };
 
 /**
  * Updates progress bar.
  * @var int count Number of progress bar iterations.
  */
-bsExtendedSearchRequestProgress = function( count ) {
+bsExtendedSearchRequestProgress = function() {
 	Ext.Ajax.request({
 		url: wgScriptPath + '/extensions/BlueSpiceExtensions/ExtendedSearch/includes/BuildIndex/index_progress.php',
 		success: function( response, opts ) {
 			var res = "";
-			if (response.responseText !== "")
+			if ( response.responseText !== "" ) {
 				res = Ext.decode( response.responseText );
-			finished = false;
+			}
+			var finished = false;
 			if ( typeof( res ) === 'object' ) {
-				if ( res[0] === "__FINISHED__" ) finished = true;
-				else {
-					if (res[0]) document.getElementById('BsExtendedSearchMode').innerHTML = res[0];
-					if (res[1]) document.getElementById('BsExtendedSearchMessage').innerHTML = res[1];
-					if (res[2]) progBar.updateProgress(res[2]/100);
+				if ( res[0] === "__FINISHED__" ) {
+					finished = true;
+				} else {
+					if ( res[0] ) document.getElementById( 'BsExtendedSearchMode' ).innerHTML = res[0];
+					if ( res[1] ) document.getElementById( 'BsExtendedSearchMessage' ).innerHTML = res[1];
+					if ( res[2] ) progBar.updateProgress( res[2] / 100 );
 				}
 			}
 			if ( !finished ) {
-				newcount = count + 1;
-				setTimeout('bsExtendedSearchRequestProgress('+newcount+')', 300);
+				setTimeout( bsExtendedSearchRequestProgress, 300 );
 			}
 		},
 		failure: function(response, opts) {}

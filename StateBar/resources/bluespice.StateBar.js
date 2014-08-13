@@ -18,7 +18,7 @@ BsStateBar = {
 	oStateBarView: null,
 	bAjaxCallComplete: false,
 	sStateBarBodyLoadView: '<div id="sStateBarBodyLoadView"><center><img src="' + wgScriptPath + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" /></center></div>',
-	aRegisteredToggleClickElements: new Array(),
+	aRegisteredToggleClickElements: [],
 	imagePathActive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_less.png',
 	imagePathInactive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_more.png',
 

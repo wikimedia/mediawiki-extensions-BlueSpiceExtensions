@@ -11,23 +11,12 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 	isDirty: false,
 	afterInitComponent: function() {
 		this.strBoxSelect = Ext.create('Ext.data.JsonStore', {
-			/*proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertMagic::ajaxGetData'),
-				reader: {
-					type: 'json',
-					root: 'categories',
-					idProperty: 'prefixedText'
-				}
-			},*/
-			data:/* {
-				categories: */[
+			data: [
 					{ text: 'Lorem', prefixedText: 'Kategorie:Lorem' },
 					{ text: 'Ipsum', prefixedText: 'Kategorie:Ipsum' },
 					{ text: 'dolor', prefixedText: 'Kategorie:dolor' },
 					{ text: 'sit', prefixedText: 'Kategorie:sit' }
-				]
-			/*}*/,
+				],
 			fields: ['text']
 		});
 

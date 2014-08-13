@@ -193,7 +193,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 	},
 	onDlgTemplateRemoveOk: function( data, namespace ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var ptIds = new Object();
+		var ptIds = {};
 		for (var i = 0; i < selectedRow.length; i++){
 			ptIds[selectedRow[i].get( 'id' )] = selectedRow[i].get( 'label' );
 		}
@@ -228,16 +228,15 @@ Ext.define( 'BS.PageTemplates.Panel', {
 	},
 	renderMsgSuccess: function( responseObj ) {
 		var successText = "";
-		if ( typeof(responseObj.message) !== "undefined" && typeof(responseObj.message.length) !== "undefined" && responseObj.message.length )
+		if ( typeof(responseObj.message) !== "undefined" && typeof(responseObj.message.length) !== "undefined" && responseObj.message.length ) {
 			successText = responseObj.message;
-		else{
-			var success = "", failure = new Object(), counterSuccess = 0, counterFailure = 0;
+		} else {
+			var success = "", failure = {}, counterSuccess = 0, counterFailure = 0;
 			$.each(responseObj, function(i, response){
 				if (response.success === true){
 					success += "<li>"+i+"</li>";
 					counterSuccess++;
-				}
-				else{
+				} else {
 					if (typeof(failure [response.errors[0]]) === "undefined")
 						failure [response.errors[0]] = {};
 					failure [response.errors[0]][i] = "<li>"+i+"</li>";
@@ -269,11 +268,11 @@ Ext.define( 'BS.PageTemplates.Panel', {
 				if ( typeof( responseObj.errors[i] ) !== 'string') continue;
 				message += responseObj.errors[i] + '<br />';
 			}
-			if (message === '')
-				message = mw.message("bs-pagetemplates-remove-message-unknown").plain()
+			if (message === '') {
+				message = mw.message("bs-pagetemplates-remove-message-unknown").plain();
+			}
 			bs.util.alert( 'UMfail', { text: message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
-		}
-		else if ( responseObj.message.length ) {
+		} else if ( responseObj.message.length ) {
 			bs.util.alert( 'UMfail', { text: responseObj.message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 		}
 	}

@@ -84,6 +84,6 @@ Ext.define( 'BS.ExtensionInfo.Panel', {
 		} else if ( sValue == 'stable') {
 			sCssClass = 'stable';
 		}
-		return '<span class="'+ sCssClass +'">' + sValue + '</span>';;
+		return '<span class="'+ sCssClass +'">' + sValue + '</span>';
 	}
 });

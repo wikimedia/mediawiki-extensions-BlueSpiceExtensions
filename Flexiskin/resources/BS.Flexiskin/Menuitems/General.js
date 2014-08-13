@@ -166,7 +166,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		this.tfDesc.setValue(data.config.desc);
 		this.setColor(this.pfBackgroundColor, data.config.backgroundColor);
 		this.tfCustomBackgroundColor.setValue(data.config.customBackgroundColor);
-		this.cgRepeatBackground.setValue(data.config.repeatBackground)
+		this.cgRepeatBackground.setValue(data.config.repeatBackground);
 		Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').setValue(data.config.backgroundImage);
 	},
 	setColor: function(el, clr) {

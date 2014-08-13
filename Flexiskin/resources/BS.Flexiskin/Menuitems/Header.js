@@ -78,6 +78,6 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 	},
 	setData: function(data) {
 		this.currentData = data;
-		Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(data.config.logo)
+		Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(data.config.logo);
 	}
 });

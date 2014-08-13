@@ -4,7 +4,6 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
-
  * @package    Bluespice_Extensions
  * @subpackage SaferEdit
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -101,7 +100,7 @@ BsSaferEditEditMode = {
 	 */
 	toggleDialog: function() {
 		/* this is to fix a strange IE bug */
-		setTimeout('BsSaferEditEditMode.getLostTexts()', 10);
+		setTimeout( BsSaferEditEditMode.getLostTexts, 10 );
 	},
 	/**
 	 * Renders SaferEdit restore dialogue. Data (HTML and WikiCode) is expected to be loaded already
@@ -280,7 +279,7 @@ BsSaferEditEditMode = {
 						BsSaferEditEditMode.savedHTML = unescape(oResponse.html);
 						BsSaferEditEditMode.savedWikiCode = unescape(oResponse.wiki);
 
-						setTimeout('BsSaferEditEditMode.show()', 10);
+						setTimeout( BsSaferEditEditMode.show, 10 );
 					}
 				);
 			}
@@ -329,9 +328,8 @@ BsSaferEditEditMode = {
 		} else {
 			if( BsSaferEditEditMode.bBackupCreated === true ) {
 				BsSaferEditEditMode.sendText( false );
-			}
-			else {
-				BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval);
+			} else {
+				BsSaferEditEditMode.timeout = setTimeout( BsSaferEditEditMode.saveText, BsSaferEditEditMode.interval);
 			}
 		}
 	},
@@ -349,8 +347,7 @@ BsSaferEditEditMode = {
 			),
 			function ( sResponseData ){
 				if ( sResponseData == "OK" ) {
-					//setTimeout('document.getElementById("hw_se_icon").style.display="none"', 200);
-					BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval); // TODO RBV (19.05.11 09:41): XHRResponse Abstraktion?
+					BsSaferEditEditMode.timeout = setTimeout( BsSaferEditEditMode.saveText, BsSaferEditEditMode.interval); // TODO RBV (19.05.11 09:41): XHRResponse Abstraktion?
 				}
 			}
 		);
