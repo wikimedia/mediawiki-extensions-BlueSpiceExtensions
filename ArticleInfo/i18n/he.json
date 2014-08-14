@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"איתן96"
+			"איתן96",
+			"ערן"
 		]
 	},
 	"prefs-articleinfo": "מידע על הדף",
@@ -14,10 +15,13 @@
 	"bs-articleinfo-hiddencats": "קטגוריות מוסתרות",
 	"bs-articleinfo-notemplates": "לא נמצאו תבניות",
 	"bs-articleinfo-templates": "תבניות",
+	"bs-articleinfo-subpages": "דפי משנה",
 	"bs-articleinfo-subpages-available": "ישנם דפי משנה עבור דף זה",
+	"bs-articleinfo-subpages-too-much": "יש יותר מ-100 עמודי משנה זמינים.",
 	"bs-articleinfo-check-revision": "גרסה חדשה זמינה",
 	"bs-articleinfo-check-revision-tooltip": "טען מחדש את הדף",
 	"bs-articleinfo-statebartoplastedited": "עריכה אחרונה",
+	"bs-articleinfo-statebartopcategories": "קטגוריות",
 	"bs-articleinfo-statebartopsubpages": "דפי משנה",
 	"bs-articleinfo-statebarbodycategories": "קטגוריות",
 	"bs-articleinfo-statebarbodysubpages": "דפי משנה",

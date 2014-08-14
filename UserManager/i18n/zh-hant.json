@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Cwlin0416"
+			"Cwlin0416",
+			"LNDDYL"
 		]
 	},
-	"bs-usermanager-headerusername": "使用者名稱",
+	"bs-usermanager-headerusername": "用戶名",
 	"bs-usermanager-headerrealname": "真實姓名",
 	"bs-usermanager-headeremail": "電子郵件",
 	"bs-usermanager-headergroups": "群組",

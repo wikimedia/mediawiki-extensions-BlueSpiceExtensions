@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Macofe",
-			"AVIADOR"
+			"AVIADOR",
+			"Amitie 10g"
 		]
 	},
 	"bs-extendedsearch-desc": "Búsqueda extendida",
@@ -56,9 +57,11 @@
 	"bs-extendedsearch-pref-indextypesspecial": "Indizar las páginas especiales del wiki",
 	"bs-extendedsearch-pref-limitresultdef": "Cantidad de resultados en la página especial:",
 	"bs-extendedsearch-pref-showcreatesugg": "Mostrar los enlaces «Crear» y «Sugerir» en la página especial",
+	"bs-extendedsearch-pref-showfacets": "Mostrar facetas en página especial",
 	"bs-extendedsearch-pref-showautocomplete": "Sugerir páginas coincidentes con el término de búsqueda",
 	"bs-extendedsearch-pref-externalrepo": "Indizar una carpeta externa:",
 	"bs-extendedsearch-pref-acentries": "Número de sugerencias coincidentes con el término de búsqueda:",
+	"bs-extendedsearch-pref-highlightsnippets": "Número de fragmentos de resaltado:",
 	"bs-extendedsearch-pref-indexfiletypes": "Indizar los archivos con determinadas extensiones:",
 	"bs-extendedsearch-pref-logging": "Evaluación estadística de las consultas de búsqueda",
 	"bs-extendedsearch-pref-logusers": "Registrar el nombre del usuario con las búsquedas",
@@ -66,6 +69,7 @@
 	"bs-extendedsearch-pref-showcresuginac": "Mostrar los enlaces «Crear» y «Sugerir» en las sugerencias",
 	"bs-extendedsearch-pref-solrserviceurl": "URL de Solr:",
 	"bs-extendedsearch-pref-setfocus": "Enfocar automáticamente el formulario de búsqueda (solamente páginas de contenido)",
+	"bs-extendedsearch-pref-numfacets": "Número de facetas:",
 	"bs-extendedsearch-pref-showmlt": "Mostrar páginas similares",
 	"bs-extendedsearch-pref-solrcore": "Instancia principal de Solr:",
 	"bs-extendedsearch-pref-mltns": "Espacios de nombres para \"{{int:bs-extendedsearch-morelikethis}}\":",

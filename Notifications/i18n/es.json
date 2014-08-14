@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"AVIADOR",
-			"Fitoschido"
+			"Fitoschido",
+			"Amitie 10g"
 		]
 	},
 	"bs-notifications-desc": "Envía notificaciones sobre cambios seleccionados por el usuario",
@@ -35,5 +36,6 @@
 	"echo-category-title-bs-edit-cat": "Notificación de ediciones",
 	"echo-category-title-bs-move-cat": "Notificación de traslados",
 	"echo-category-title-bs-delete-cat": "Notificación de páginas borradas",
-	"echo-category-title-bs-newuser-cat": "Notificación de usuarios nuevos (solo para administradores)"
+	"echo-category-title-bs-newuser-cat": "Notificación de usuarios nuevos (solo para administradores)",
+	"echo-category-title-bs-shoutbox-cat": "Notificación de mensajes en páginas vigiladas (shoutbox)"
 }

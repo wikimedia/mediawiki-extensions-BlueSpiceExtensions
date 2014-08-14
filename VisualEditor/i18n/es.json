@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Amitie 10g"
 		]
 	},
 	"bs-visualeditor-desc": "Editor WYSIWYG TinyMCE",
@@ -22,6 +23,7 @@
 	"bs-visualeditor-aligntop": "Arriba",
 	"bs-visualeditor-alignmiddle": "En medio",
 	"bs-visualeditor-alignbottom": "Abajo",
+	"bs-visualeditor-bsactions-wiki": "Wikitexto",
 	"bs-visualeditor-bsactions-linebreak": "Salto de línea",
 	"bs-visualeditor-bsactions-signature": "Firma",
 	"bs-visualeditor-bsactions-save": "Guardar",
