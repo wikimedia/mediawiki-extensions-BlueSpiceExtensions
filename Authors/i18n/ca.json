@@ -5,5 +5,5 @@
 		]
 	},
 	"prefs-authors": "Autors d’aquesta pàgina",
-	"bs-authors-title": "{{PLURAL:$1|Autor|Autors}}"
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor|Autora}}|Autors}}"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Edustus"
+			"Edustus",
+			"Fitoschido"
 		]
 	},
 	"bs-review-review": "Revisió",
@@ -11,5 +12,6 @@
 	"bs-review-colcomment": "Comentari",
 	"bs-review-labelcomment": "Comentari",
 	"bs-review-header-page-title": "Pàgina",
-	"bs-review-header-owner-name": "Propietari"
+	"bs-review-header-owner-name": "Propietari",
+	"bs-review-error-insufficient-permissions": "No teniu permís per executar aquesta acció (es necessita «$1»)."
 }

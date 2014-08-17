@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rodrigo codignoli"
+		]
+	},
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor|Autora}}|Autores}}"
+}

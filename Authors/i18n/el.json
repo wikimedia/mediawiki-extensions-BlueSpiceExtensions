@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geraki"
+		]
+	},
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Συντάκτης}}|Συντάκτες}}"
+}

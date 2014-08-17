@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pikne"
+		]
+	},
+	"bs-review-error-insufficient-permissions": "Sul pole selle toimingu jaoks vajalikku õigust \"$1\"."
+}

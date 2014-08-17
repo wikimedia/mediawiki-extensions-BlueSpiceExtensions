@@ -7,6 +7,7 @@
 	"bs-insertmagic-desc": "对编辑模式加入对话框以允许插入魔术字和标签",
 	"bs-insertmagic": "插入魔术字",
 	"bs-insertmagic-notoc": "隐藏表中内容。",
+	"bs-insertmagic-noeditsection": "隐藏标题旁的节编辑连接。",
 	"bs-insertmagic-nocontentconvert": "在有语言变种的wiki上不对页面显示的任何内容（字符和相位）进行语言转换。",
 	"bs-insertmagic-notitleconvert": "在有语言变种的wiki上不要执行标题的语言转换。",
 	"bs-insertmagic-index": "告诉搜索引擎索引页面。",
