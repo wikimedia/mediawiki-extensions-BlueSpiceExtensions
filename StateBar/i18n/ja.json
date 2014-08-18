@@ -6,5 +6,6 @@
 	},
 	"bs-statebar-desc": "ステータス バーを提供する",
 	"prefs-statebar": "ステータス バー",
-	"bs-statebar-pref-show": "ステータス バーを表示"
+	"bs-statebar-pref-show": "ステータス バーを表示",
+	"bs-statebar-viewtoggler": "詳細"
 }

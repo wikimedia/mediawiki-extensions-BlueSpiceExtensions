@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Omid.koli"
+		]
+	},
+	"bs-review-error-insufficient-permissions": "اجازه برای اجرای این عملکرد ندارید (\" $1 \" ضروری)."
+}

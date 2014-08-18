@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yatalu"
+			"Yatalu",
+			"Shirayuki"
 		]
 	},
 	"bs-statistics-year": "年",
 	"bs-statistics-month": "月",
 	"bs-statistics-day": "日",
+	"bs-statistics-not-allowed": "あなたには、必要な権限がありません。",
 	"bs-statistics-filter-category": "カテゴリ",
 	"bs-statistics-portlet-numberofedits": "編集回数"
 }
