@@ -73,7 +73,7 @@ class Avatars extends BsExtensionMW {
 		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-Avatars-pref-DefaultSize', 'int');
 		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-Avatars-pref-Generator', 'select');
 
-		$this->setHook('BSAdapterGetUserMiniProfileBeforeInit');
+		$this->setHook('BSCoreGetUserMiniProfileBeforeInit');
 		$this->setHook('BsAuthorPageProfileImageAfterInitFields');
 
 		# TODO: required rights? user->read?
@@ -106,10 +106,10 @@ class Avatars extends BsExtensionMW {
 	 * @param type $aParams
 	 * @return boolean
 	 */
-	public function onBSAdapterGetUserMiniProfileBeforeInit($oUserMiniProfileView, $oUser, $aParams) {
+	public function onBSCoreGetUserMiniProfileBeforeInit(&$oUserMiniProfileView, &$oUser, &$aParams) {
 		# Set anonymous image for anonymous or deleted users
 		if ($oUser->isAnon()) {
-			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DeletedUserImage'));
+			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DeletedUserImage'));
 			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
 			return true;
 		}
@@ -118,11 +118,11 @@ class Avatars extends BsExtensionMW {
 			return true;
 		# Set default image in read-only mode or thumb creation might get triggered
 		if (wfReadOnly()) {
-			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DefaultUserImage'));
+			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DefaultUserImage'));
 			return true;
 		}
 		# Set or generate user's avatar
-		$oUserMiniProfileView->setOption('userimagesrc', $this->generateAvatar($oUser, $aParams));
+		$oUserMiniProfileView->setUserImageSrc($this->generateAvatar($oUser, $aParams));
 		return true;
 	}
 
