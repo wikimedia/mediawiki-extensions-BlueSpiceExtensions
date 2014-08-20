@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-extendedsearch-desc": "Utökad sökning",
@@ -45,6 +46,7 @@
 	"bs-extendedsearch-searchfulltext": "Innehåller ...",
 	"bs-extendedsearch-pref-searchfiles": "Sök filer som standard",
 	"bs-extendedsearch-pref-defscopeuser": "Standard för sökning:",
+	"bs-extendedsearch-pref-scope-text": "Full text",
 	"bs-extendedsearch-pref-scope-title": "Titel",
 	"bs-extendedsearch-pref-indextypesrepo": "Indexerar uppladdade filer",
 	"bs-extendedsearch-pref-indextypeswiki": "Indexerar wikisidor",

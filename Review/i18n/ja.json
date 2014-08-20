@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-review-error-insufficient-permissions": "あなたにはこの操作を実行する権限がありません (「$1」が必要です)。"
+}

@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
 	"bs-securefilestore-desc": "Предотвращает несанкционированный доступ к файлам",
+	"prefs-securefilestore": "Безопасное хранение файлов",
+	"bs-securefilestore-pref-defaultdisposition": "Отображение файлов по умолчанию:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Обзор",
 	"bs-securefilestore-pref-defaultdisposition-external": "Внешние",
 	"bs-securefilestore-pref-dispositionattachment": "Типы внешних файлов:",

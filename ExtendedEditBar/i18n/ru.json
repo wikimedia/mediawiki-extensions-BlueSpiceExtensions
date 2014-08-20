@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Alexandr Efremov"
 		]
 	},
+	"bs-extendededitbar-desc": "Добавляет дополнительные кнопки в поле вики-редактирование",
 	"bs-extendededitbar-redirecttip": "Перенаправление",
 	"bs-extendededitbar-redirectsample": "Вставить текст",
 	"bs-extendededitbar-striketip": "Зачёркивание",
@@ -20,6 +22,8 @@
 	"bs-extendededitbar-gallerytip": "Вставить галерею изображений",
 	"bs-extendededitbar-gallerysamplepicture": "Изображение",
 	"bs-extendededitbar-gallerysamplecaption": "Подпись",
+	"bs-extendededitbar-quotetip": "Вставить блок цитируемого текста",
+	"bs-extendededitbar-quotesample": "Цитата",
 	"bs-extendededitbar-tabletip": "Вставить таблицу",
 	"bs-extendededitbar-tablesampleheader": "Заголовок",
 	"bs-extendededitbar-tablesamplerow": "Строка",

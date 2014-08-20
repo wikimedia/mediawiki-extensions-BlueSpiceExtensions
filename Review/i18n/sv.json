@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
 	"bs-review-date": "Några deltagare har inte röstat ännu.",
@@ -12,5 +13,6 @@
 	"bs-review-pref-shownameintooltip": "Visa namnen på deltagarna",
 	"bs-review-lblenddate": "Slutdatum",
 	"bs-review-labelcomment": "Kommentar",
-	"bs-review-header-enddate": "Slut"
+	"bs-review-header-enddate": "Slut",
+	"bs-review-error-insufficient-permissions": "Du saknar behörighet att utföra denna åtgärd (\"$1\" behövs)."
 }

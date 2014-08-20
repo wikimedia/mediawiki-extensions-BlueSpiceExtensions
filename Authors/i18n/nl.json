@@ -6,7 +6,7 @@
 			"Sjoerddebruin"
 		]
 	},
-	"bs-authors-desc": "Toont auteurs van een pagina met hun afbeelding",
+	"bs-authors-desc": "Toont de profielfoto van de auteurs van een pagina",
 	"prefs-authors": "Auteurs van deze pagina",
 	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Auteur}}|Auteurs}}",
 	"bs-authors-profileimage": "Profielafbeelding",

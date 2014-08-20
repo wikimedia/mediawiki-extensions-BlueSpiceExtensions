@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Alexandr Efremov"
 		]
 	},
+	"bs-insertmagic-desc": "Добавляет диалоговое окно для изменения режима, позволяет вставлять магические слова и теги",
+	"bs-insertmagic": "Вставить магическое слово",
+	"bs-insertmagic-notoc": "Скрывает содержание.",
+	"bs-insertmagic-forcetoc": "Заставляет содержание появиться в его нормальной позиции.",
+	"bs-insertmagic-toc": "Размещает содержание на текущем положении слова.",
+	"bs-insertmagic-noeditsection": "Скрывает ссылки на редактирование разделов рядом с заголовками.",
 	"bs-insertmagic-currentyear": "Текущий год",
 	"bs-insertmagic-type-variables": "Переменные"
 }

@@ -2,20 +2,28 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
+	"prefs-responsibleeditors": "Ansvariga redigerare",
 	"bs-responsibleeditors-pref-activatednamespaces": "Aktivera namnrymder:",
 	"bs-responsibleeditors-pref-echange": "Meddela när sidan har ändrats",
 	"bs-responsibleeditors-pref-emove": "Meddela när sidan har flyttats",
 	"bs-responsibleeditors-pref-autopermissions": "Automatisk tilldelning av rättigheter:",
+	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "Ansvariga redigerare",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Ansvariga redigerare",
 	"bs-responsibleeditors-error-ajax-invalid-parameter": "Ogiltiga värden angivna.",
 	"bs-responsibleeditors-error-ajax-not-allowed": "Åtkomst nekad. Du har inte behörighet att utföra denna åtgärd.",
+	"bs-responsibleeditors-contentactions-label": "Ändra ansvar",
+	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|Ansvarig {{GENDER:$2|redigerare}}|Ansvariga redigerare}}",
 	"bs-responsibleeditors-mail-subject-former-editor": "Ansvaret för \"$1\" återkallad",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "Sidan \"$1\" har {{GENDER:$2|redigerats}} av $3",
 	"bs-responsibleeditors-mail-subject-re-article-deleted": "Sidan \"$1\" har {{GENDER:$2|raderats}} av $3",
+	"responsibleeditors": "Ansvariga redigerare",
 	"bs-responsibleeditors-yourresponsibilities": "Ditt ansvar",
 	"action-responsibleeditors-viewspecialpage": "visa sidor som skyddas av \"ResponsibleEditors-Viewspecialpage\"-behörigheten",
+	"bs-responsibleeditors-title": "Ansvariga redigerare",
 	"bs-responsibleeditors-columnpage": "Sida",
 	"bs-responsibleeditors-columnnamespace": "Namnrymd",
 	"bs-responsibleeditors-rbdisplaymodeall": "Visa alla sidor",

@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Justincheng12345"
+			"Justincheng12345",
+			"Cwlin0416"
 		]
 	},
 	"bs-authors-desc": "顯示頁面作者的個人資料圖片",
 	"prefs-authors": "此頁面作者",
-	"bs-authors-title": "$1個作者",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|作者}}|作者}}",
 	"bs-authors-profileimage": "設定檔圖像",
 	"bs-authors-profileimage-change": "更改設定檔圖像",
 	"bs-authors-show-all-authors": "更多作者可用",

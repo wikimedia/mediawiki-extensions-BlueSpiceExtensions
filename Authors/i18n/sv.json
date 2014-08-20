@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
 	"bs-authors-desc": "Visar profilbilden för författare till en sida",
 	"prefs-authors": "Författarna till denna sida",
-	"bs-authors-title": "{{PLURAL:$1|Författare}}",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Författare}}}}",
 	"bs-authors-profileimage": "Profilbild",
 	"bs-authors-profileimage-change": "Ändra profilbild",
 	"bs-authors-show-all-authors": "Fler författare tillgängliga",
