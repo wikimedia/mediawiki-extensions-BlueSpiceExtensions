@@ -109,7 +109,7 @@ class Avatars extends BsExtensionMW {
 	public function onBSCoreGetUserMiniProfileBeforeInit(&$oUserMiniProfileView, &$oUser, &$aParams) {
 		# Set anonymous image for anonymous or deleted users
 		if ($oUser->isAnon()) {
-			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DeletedUserImage'));
+			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DeletedUserImage'));
 			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
 			return true;
 		}
@@ -119,11 +119,11 @@ class Avatars extends BsExtensionMW {
 		}
 		# Set default image in read-only mode or thumb creation might get triggered
 		if (wfReadOnly()) {
-			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DefaultUserImage'));
+			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DefaultUserImage'));
 			return true;
 		}
 		# Set or generate user's avatar
-		$oUserMiniProfileView->setOption('userimagesrc', $this->generateAvatar($oUser, $aParams));
+		$oUserMiniProfileView->setUserImageSrc($this->generateAvatar($oUser, $aParams));
 		return true;
 	}
 
