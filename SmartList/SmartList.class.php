@@ -709,7 +709,8 @@ class SmartList extends BsExtensionMW {
 			// TODO RBV (17.05.11 16:52): Put this into abstraction layer
 			if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
 				$aCategories = explode( ',', $aArgs['categories'] );
-				for ( $i = 0; $i < count( $aCategories ); $i++ ) {
+				$iCnt = count( $aCategories );
+				for ( $i = 0; $i < $iCnt; $i++ ) {
 					$aCategories[$i] = str_replace( ' ', '_', $aCategories[$i] );
 					$aCategories[$i] = "'" . trim( ucfirst( $aCategories[$i] ) ) . "'";
 				}
