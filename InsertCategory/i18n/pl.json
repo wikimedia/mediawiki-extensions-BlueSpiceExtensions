@@ -4,6 +4,8 @@
 			"Chrumps"
 		]
 	},
+	"bs-insertcategory-insertcat": "Wstaw kategorię",
+	"prefs-insertcategory": "Wstaw kategorię",
 	"bs-insertcategory-failure": "Błąd",
 	"bs-insertcategory-panel-title": "Kategorie"
 }

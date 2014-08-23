@@ -4,6 +4,10 @@
 			"Chrumps"
 		]
 	},
+	"bs-usermanager-desc": "Interfejs administracyjny do zarządzania użytkownikami",
+	"bs-usermanager-admin-nodelete": "Nie można usunąć konta administratora.",
+	"bs-usermanager-self-nodelete": "Nie możesz usunąć swojego konta.",
+	"bs-usermanager-db-error": "Wystąpił błąd bazy danych.",
 	"bs-usermanager-invalid-pwd": "Hasło jest nieprawidłowe.",
 	"bs-usermanager-invalid-uname": "Nazwa użytkownika jest nieprawidłowa.",
 	"bs-usermanager-invalid-email-gen": "Adres e-mail jest nieprawidłowy.",

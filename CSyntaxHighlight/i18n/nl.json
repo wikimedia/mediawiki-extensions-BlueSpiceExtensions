@@ -4,5 +4,7 @@
 			"Sjoerddebruin"
 		]
 	},
-	"prefs-csyntaxhighlight": "Syntaxhighlighter"
+	"prefs-csyntaxhighlight": "Syntaxhighlighter",
+	"bs-csyntaxhighlight-pref-gutter": "Regelnummers weergeven",
+	"bs-csyntaxhighlight-pref-toolbar": "Werkbalk weergeven"
 }

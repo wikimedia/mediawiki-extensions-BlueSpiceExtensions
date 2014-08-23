@@ -4,5 +4,9 @@
 			"Shirayuki"
 		]
 	},
+	"bs-review-header-page-title": "ページ",
+	"bs-review-header-owner-name": "所有者",
+	"bs-review-header-startdate": "開始",
+	"bs-review-header-enddate": "終了",
 	"bs-review-error-insufficient-permissions": "あなたにはこの操作を実行する権限がありません (「$1」が必要です)。"
 }

@@ -5,7 +5,8 @@
 			"Liuxinyu970226",
 			"Ата",
 			"Smuggli",
-			"Shirayuki"
+			"Shirayuki",
+			"Lokal Profil"
 		]
 	},
 	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension",
@@ -35,8 +36,8 @@
 	"bs-review-mail-invite-body": "Mail body that another user invited you to make a review of a page.\n*$1 is the real name of the which invited you \n*$2 is the username of the which invited you \n*$3 is the name of page which should be reviewed",
 	"bs-review-mail-comment": "Optional mail body that a comment was entered.\n* $1 is the comment.",
 	"bs-review-statebar-body-do-review": "Headline for the review section inside the state bar.",
-	"bs-review-i-agree": "Button label that you agree you reviwed this page\n{{Identical|Agree}}",
-	"bs-review-i-dismiss": "Button label that you disagree you reviwed this page\n{{Identical|Disagree}}",
+	"bs-review-i-agree": "Button label that you agree you reviewed this page\n{{Identical|Agree}}",
+	"bs-review-i-dismiss": "Button label that you disagree you reviewed this page\n{{Identical|Disagree}}",
 	"bs-review-not-allowed": "Error message that you are not allowed to access this page.",
 	"bs-review-created-review": "Log message that someone started a review on a page.\n*$1 is the username of the user\n*$2 is the name of the page as a link.",
 	"bs-review-modified-review": "Log message that someone changed a review on page.\n*$1 is the username of the user\n*$2 is the name of the page as a link.",

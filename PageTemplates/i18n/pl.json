@@ -5,6 +5,7 @@
 		]
 	},
 	"bs-pagetemplates-empty-page": "Pusta strona",
+	"bs-pagetemplates-tpl-label-empty": "Wprowadź etykietę",
 	"bs-pagetemplates-tpl-added": "Szablon został dodany.",
 	"bs-pagetemplates-invalid_pfx": "Prefiks jest nieprawidłowy.",
 	"bs-pagetemplates-dberror": "Wystąpił błąd bazy danych.",

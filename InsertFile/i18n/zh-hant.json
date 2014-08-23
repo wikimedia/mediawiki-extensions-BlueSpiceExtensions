@@ -10,6 +10,7 @@
 	"bs-insertfile-button-image-title": "插入或編輯圖片",
 	"bs-insertfile-button-file-title": "插入或編輯檔案",
 	"bs-insertfile-labelsort": "排序方式：",
+	"bs-insertfile-labelfilter": "過濾器：",
 	"bs-insertfile-filename": "檔案名稱",
 	"bs-insertfile-filesize": "檔案大小",
 	"bs-insertfile-lastmodified": "最近變更",

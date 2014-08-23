@@ -22,6 +22,7 @@
 	"bs-permissionmanager-labeltpled-delete": "Usuń",
 	"bs-permissionmanager-labeltpled-cancel": "Anuluj",
 	"bs-permissionmanager-msgtpled-success": "Szablon zapisany.",
+	"bs-permissionmanager-msgtpled-savefailure": "Szablon nie mógł zostać zapisany.",
 	"bs-permissionmanager-msgtpled-new": "Nazwa szablonu:",
 	"bs-permissionmanager-msgtpled-delete": "Szablon usunięty.",
 	"bs-permissionmanager-titletpled-new": "Utwórz szablon",

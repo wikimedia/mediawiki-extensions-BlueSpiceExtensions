@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-responsibleeditors-pref-autoassignonarticlecreation": "ページ作成の際に自動的に割り当てる",
+	"bs-responsibleeditors-pref-autopermissions": "自動的に割り当てる権限:",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "指定したページは存在しません。",
+	"action-responsibleeditors-viewspecialpage": "「ResponsibleEditors-Viewspecialpage」権限で保護されたページの閲覧"
+}

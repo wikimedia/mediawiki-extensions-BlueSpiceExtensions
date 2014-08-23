@@ -4,7 +4,9 @@
 			"Shirayuki"
 		]
 	},
+	"bs-articleinfo-desc": "ステータス バーにページについての情報を提供する",
 	"prefs-articleinfo": "ページ情報",
+	"bs-articleinfo-last-edited-tooltip": "最終編集",
 	"bs-articleinfo-categories": "カテゴリ",
 	"bs-articleinfo-all-categories-heading": "カテゴリ",
 	"bs-articleinfo-nocategories": "カテゴリが見つかりません。",

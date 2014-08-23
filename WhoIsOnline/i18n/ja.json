@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-whoisonline-nousers": "誰もログインしていません。",
+	"bs-whoisonline-widget-title": "オンラインの利用者",
+	"prefs-whoisonline": "オンラインの利用者",
+	"bs-whoisonline-pref-orderby-name": "名前"
+}

@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
 	"bs-permissionmanager-desc": "Administrationsgränssnittet för att hantera behörigheter",
+	"prefs-permissionmanager": "Rättighetshanterare",
+	"bs-permissionmanager-label": "Rättighetshanterare",
 	"bs-permissionmanager-grouping-global": "Namnrymdsoberoende behörigheter",
+	"bs-permissionmanager-grouping-local": "Namnrymdsspecifika rättigheter",
 	"bs-permissionmanager-btn-group-label": "Grupp:",
 	"bs-permissionmanager-header-permissions": "Behörigheter",
 	"bs-permissionmanager-header-global": "Wiki",
@@ -13,6 +17,7 @@
 	"bs-permissionmanager-header-group": "Grupp",
 	"bs-permissionmanager-btn-save-label": "Spara",
 	"bs-permissionmanager-btn-save-in-progress-label": "Sparar...",
+	"bs-permissionmanager-save-success": "Rättigheter sparade.",
 	"bs-permissionmanager-labeltemplates": "Mallar",
 	"bs-permissionmanager-btn-template-editor": "Redigera mallar",
 	"bs-permissionmanager-labeltpled": "Mall-redigeraren",
@@ -31,5 +36,8 @@
 	"bs-permissionmanager-msgtpled-deletefail": "Mallen kunde inte raderas.",
 	"bs-permissionmanager-titletpled-new": "Skapa mall",
 	"bs-permissionmanager-titletpled-edit": "Byt namn på mallen",
-	"bs-permissionmanager-titletpled-delete": "Radera mall"
+	"bs-permissionmanager-titletpled-delete": "Radera mall",
+	"bs-permissionmanager-pref-lockmode": "Aktivera låsläge",
+	"bs-permissionmanager-pref-skipsysns": "Hoppa över systemnamnrymden om låsläge är aktivt",
+	"bs-permissionmanager-pref-enablerealitycheck": "Aktivera rättighetskontroll"
 }

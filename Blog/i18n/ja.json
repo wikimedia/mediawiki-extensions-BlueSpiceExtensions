@@ -4,12 +4,16 @@
 			"Shirayuki"
 		]
 	},
+	"bs-blog-desc": "ブログ スタイルのページ一覧を表示する",
 	"prefs-blog": "ブログ",
+	"bs-blog-no-entries": "ブログ エントリがありません。",
 	"bs-blog-comments": "コメント",
 	"bs-blog-trackback": "トラックバック",
 	"bs-blog-permalink": "固定リンク",
+	"bs-blog-form-title-text": "ブログ エントリの作成",
 	"bs-blog-form-button-text": "作成",
 	"bs-blog-blog": "ブログ",
+	"bs-blog-pref-showlimit": "ブログ エントリ数:",
 	"bs-blog-pref-sortby": "並び順:",
 	"bs-blog-pref-imagerendermode": "画像の表示:"
 }

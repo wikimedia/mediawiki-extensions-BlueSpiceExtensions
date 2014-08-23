@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-securefilestore-pref-defaultdisposition": "既定でのファイルの表示:",
+	"bs-securefilestore-pref-dispositionattachment": "外部ファイルの種類:",
+	"bs-securefilestore-pref-dispositioninline": "ブラウザーで開くファイルの種類:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "常に表示するファイルの種類:"
+}

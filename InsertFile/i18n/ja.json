@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-insertfile-labelsort": "並び順:",
+	"bs-insertfile-filename": "ファイル名",
+	"bs-insertfile-filesize": "ファイルサイズ",
+	"bs-insertfile-lastmodified": "最近の更新",
+	"bs-insertfile-labelupload": "アップロード",
+	"bs-insertfile-details-title": "詳細",
+	"bs-insertfile-alignnone": "なし",
+	"bs-insertfile-categories": "カテゴリ"
+}

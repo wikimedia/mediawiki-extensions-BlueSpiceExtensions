@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Ата"
+			"Ата",
+			"Shirayuki"
 		]
 	},
 	"bs-readers-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of readers extension.",
@@ -18,5 +19,5 @@
 	"bs-readers-emptyinput": "Error text on special page for no page has been provided.",
 	"bs-readers-header-username": "Column headline for username\n{{Identical|Username}}",
 	"bs-readers-header-readerspath": "Used on special page, headline for reader\n{{Identical|Reader}}",
-	"bs-readers-header-ts": "Column headline for date\n{{Identical|Date}}"
+	"bs-readers-header-ts": "Column headline for \"time and date\".\n{{Identical|Date}}"
 }

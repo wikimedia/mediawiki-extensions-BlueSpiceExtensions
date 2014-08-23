@@ -4,6 +4,9 @@
 			"Shirayuki"
 		]
 	},
+	"bs-wikiadmin-desc": "BlueSpice の管理",
+	"bs-wikiadmin-notallowed": "あなたはこのページの使用を許可されていません。",
+	"wikiadmin": "BlueSpiceの管理",
 	"action-wikiadmin": "BlueSpice 管理ページの表示",
 	"right-wikiadmin": "BlueSpice 管理ページを表示"
 }

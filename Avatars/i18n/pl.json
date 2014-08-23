@@ -12,5 +12,6 @@
 	"bs-avatars-generate-complete": "Nowy awatar został wygenerowany.",
 	"bs-avatars-upload-title": "Zmiana zdjęcia w profilu",
 	"bs-avatars-upload-label": "Obrazek",
-	"bs-avatars-warning-title": "Ostrzeżenie"
+	"bs-avatars-warning-title": "Ostrzeżenie",
+	"bs-avatars-userimage-help": "np. Picture.jpg lub http://localhost/Picture.gif"
 }

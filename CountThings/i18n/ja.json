@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-countthings-error-not-exist": "ページ「$1」は存在しません。"
+}

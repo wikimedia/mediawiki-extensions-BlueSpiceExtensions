@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-checklist-desc": "チェックリストの機能を提供する",
+	"bs-checklist-menu-insert-checkbox": "チェックボックス"
+}

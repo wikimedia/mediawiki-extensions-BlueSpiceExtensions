@@ -6,6 +6,7 @@
 	},
 	"bs-universalexport-desc": "書き出しの機能を追加する",
 	"bs-universalexport-pref-metadatadefaults": "メタデータ (標準、JSON):",
+	"bs-universalexport-page-text-without-param-no-modules-registered": "登録されているモジュールはありません。",
 	"action-universalexport-export": "書き出しファイルの作成",
 	"right-universalexport-export": "書き出しファイルを作成"
 }

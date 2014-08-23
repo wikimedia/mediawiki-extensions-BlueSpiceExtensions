@@ -5,6 +5,8 @@
 		]
 	},
 	"bs-specialadmindashboard-label": "ダッシュボード",
+	"bs-dashboards-addportlet": "ポートレットの追加",
+	"bs-dashboards-portlets": "ポートレット",
 	"prefs-dashboards": "ダッシュボード",
 	"admindashboard": "管理者ダッシュボード",
 	"userdashboard": "利用者ダッシュボード"

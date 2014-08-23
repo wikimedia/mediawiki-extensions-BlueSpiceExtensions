@@ -5,7 +5,9 @@
 			"Sjoerddebruin"
 		]
 	},
+	"bs-extendededitbar-redirecttip": "Doorverwijzing",
 	"bs-extendededitbar-redirectsample": "Tekst invoegen",
+	"bs-extendededitbar-entertip": "Linebreak",
 	"bs-extendededitbar-uppertip": "Superscript",
 	"bs-extendededitbar-uppersample": "Superscript-tekst",
 	"bs-extendededitbar-lowertip": "Subscript",
@@ -17,6 +19,7 @@
 	"bs-extendededitbar-gallerytip": "Een fotogalerij invoegen",
 	"bs-extendededitbar-gallerysamplepicture": "Afbeelding",
 	"bs-extendededitbar-gallerysamplecaption": "Bijschrift",
+	"bs-extendededitbar-quotesample": "Blockquote",
 	"bs-extendededitbar-tabletip": "Tabel invoegen",
 	"bs-extendededitbar-tablesamplerow": "Rij",
 	"bs-extendededitbar-tablesamplecell": "Cel"

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "カスタマイズ可能な構文強調機能を追加する",
+	"bs-csyntaxhighlight-pref-autolinks": "URL をリンク化する",
+	"bs-csyntaxhighlight-pref-toolbar": "ツールバーを表示"
+}

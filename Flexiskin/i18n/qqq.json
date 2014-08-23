@@ -3,7 +3,8 @@
 		"authors": [
 			"Tobias Weichart <weichart@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Shirayuki"
 		]
 	},
 	"bs-flexiskin-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of flexi skin extension",
@@ -36,16 +37,16 @@
 	"bs-flexiskin-repeat-x": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for horizontal repeat",
 	"bs-flexiskin-repeat-y": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for vertical repeat",
 	"bs-flexiskin-repeat": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for horizontal and vertical repeat",
-	"bs-flexiskin-labelrepeatbackground": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], checkbox label for repeat background image",
+	"bs-flexiskin-labelrepeatbackground": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for select box for repeat background image.",
 	"bs-flexiskin-labelcustombgcolor": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for custom color",
 	"bs-flexiskin-headerposition": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], headline for position and size section\n{{Identical|Position and size}}",
 	"bs-flexiskin-labelnavigation": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for position of the navigation",
 	"bs-flexiskin-labelcontent": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for position of the content",
-	"bs-flexiskin-left": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for left\\n{{Identical|Left}}",
-	"bs-flexiskin-right": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for right\\n{{Identical|Right}}",
-	"bs-flexiskin-center": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for center\\n{{Identical|Center}}",
+	"bs-flexiskin-left": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for left.\n\nSee also:\n* {{msg-mw|Bs-flexiskin-right}}\n* {{msg-mw|Bs-flexiskin-center}}\n{{Identical|Left}}",
+	"bs-flexiskin-right": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for right.\n\nSee also:\n* {{msg-mw|Bs-flexiskin-left}}\n* {{msg-mw|Bs-flexiskin-center}}\n{{Identical|Right}}",
+	"bs-flexiskin-center": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for center.\n\nSee also:\n* {{msg-mw|Bs-flexiskin-left}}\n* {{msg-mw|Bs-flexiskin-right}}\n{{Identical|Center}}",
 	"bs-flexiskin-labelwidth": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for complete width (in pixels)",
-	"bs-flexiskin-labelfullwidth": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for maximum width",
+	"bs-flexiskin-labelfullwidth": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], checkbox label for maximum width",
 	"bs-flexiskin-error-nameempty": "Error message that you must enter a valid name for the skin you watn to create.",
 	"bs-flexiskin-error-templatenotexists": "Error message that the template you chose does not exist."
 }

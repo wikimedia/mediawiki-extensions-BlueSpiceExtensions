@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yatalu"
+			"Yatalu",
+			"Shirayuki"
 		]
 	},
-	"bs-rssfeeder-pages": "ページ"
+	"rssfeeder": "RSSフィーダー",
+	"bs-rssfeeder-pagetext": "以下の RSS フィードを購読できます:",
+	"bs-rssfeeder-recent-changes": "最近の更新",
+	"bs-rssfeeder-pages": "ページ",
+	"bs-rssfeeder-submit": "表示",
+	"bs-rssfeeder-rss": "RSS フィード",
+	"bs-extjs-rssfeeder-rss-title": "RSS の URL"
 }
