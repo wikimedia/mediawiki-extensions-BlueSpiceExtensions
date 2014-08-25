@@ -4,7 +4,7 @@
 			"Robert Vogel <vogel@hallowelt.biz>"
 		]
 	},
-	"bs-bluespiceprojectfeedbackhelper-desc": "Submit feedback about BlueSpice",
+	"bs-bluespiceprojectfeedbackhelper-desc": "Provides a fixed \"submit bugs\" panel at the bottom of the user interface",
 	"prefs-bluespiceprojectfeedbackhelper": "Feedback",
 	"bs-bluespiceprojectfeedbackhelper-hint": "Thank you for using '''BlueSpice'''. Please help us to improve the software and give us some [http://sourceforge.net/p/bluespice/discussion/1249667/ feedback]. Please report bugs to the [http://sourceforge.net/tracker/?func=add&group_id=358032&atid=1494709 bug tracker]. Thanks for your support!",
 	"bs-bluespiceprojectfeedbackhelper-active": "Active",

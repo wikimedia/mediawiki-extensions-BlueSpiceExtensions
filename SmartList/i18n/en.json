@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-smartlist-desc": "Provides additional information about the content and the users",
+	"bs-smartlist-desc": "Displays the last five changes of the wiki in a list",
 	"prefs-smartlist": "Smart list",
 	"bs-smartlist-recent-changes": "Recent changes",
 	"bs-smartlist-no-entries": "No results found.",

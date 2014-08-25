@@ -53,7 +53,7 @@ class Checklist extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Checklist',
-			EXTINFO::DESCRIPTION => 'Adds checklist functionality.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-checklist-desc' )->parse(),
 			EXTINFO::AUTHOR => 'Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

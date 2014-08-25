@@ -53,7 +53,7 @@ class BsPreferences extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Preferences',
-			EXTINFO::DESCRIPTION => 'Offers the possibility to admins, to configurate the whole wiki from a single SpecialPage',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-preferences-desc' )->parse(),
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

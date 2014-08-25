@@ -56,7 +56,7 @@ class UserManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'UserManager',
-			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting users.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-usermanager-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

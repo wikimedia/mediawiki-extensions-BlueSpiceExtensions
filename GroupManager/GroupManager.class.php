@@ -48,7 +48,7 @@ class GroupManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'GroupManager',
-			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deletig user groups and their rights',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-groupmanager-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

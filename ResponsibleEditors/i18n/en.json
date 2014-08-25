@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-responsibleeditors-desc": "Enables assignment of responsible editors to a page",
+	"bs-responsibleeditors-desc": "Enables MediaWiki to manage responsible editors for pages",
 	"prefs-responsibleeditors": "Responsible editors",
 	"bs-responsibleeditors-pref-activatednamespaces": "Enabled namespaces:",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Automatically assign on page creation",

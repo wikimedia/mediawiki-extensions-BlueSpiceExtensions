@@ -66,7 +66,7 @@ class SecureFileStore extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'SecureFileStore',
-			EXTINFO::DESCRIPTION => 'Prevent unauthorized access to files and images.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-securefilestore-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Marc Reymann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

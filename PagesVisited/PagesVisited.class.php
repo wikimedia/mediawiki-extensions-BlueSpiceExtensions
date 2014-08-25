@@ -65,7 +65,7 @@ class PagesVisited extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'PagesVisited',
-			EXTINFO::DESCRIPTION => 'Provides a personalized list of last visited pages.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-pagesvisited-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

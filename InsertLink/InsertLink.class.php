@@ -43,7 +43,7 @@ class InsertLink extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'InsertLink',
-			EXTINFO::DESCRIPTION => 'Dialog box to enter a link.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertlink-desc' )->parse(),
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

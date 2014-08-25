@@ -61,7 +61,7 @@ class SaferEdit extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'SaferEdit',
-			EXTINFO::DESCRIPTION => 'Intermediate saving of wiki edits.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-saferedit-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

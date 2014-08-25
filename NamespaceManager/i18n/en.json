@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-namespacemanager-desc": "Administration interface for managing namespaces",
+	"bs-namespacemanager-desc": "Administration interface for adding, editing and deleting namespaces",
 	"bs-namespacemanager-label": "Namespace manager",
 	"bs-namespacemanager-wrong-name": "The namespace contains invalid characters.",
 	"bs-namespacemanager-ns-exists": "The namespace already exists.",

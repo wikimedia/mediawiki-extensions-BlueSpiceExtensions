@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-universalexport-desc": "Adds export functions",
+	"bs-universalexport-desc": "Enables MediaWiki to export pages into different formats",
 	"prefs-universalexport": "Universal export",
 	"universalexport": "Universal export",
 	"bs-universalexport-pref-metadatadefaults": "Metadata (standard, JSON):",

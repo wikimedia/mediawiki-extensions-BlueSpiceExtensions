@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-visualeditor-desc": "TinyMCE WYSIWYG editor",
+	"bs-visualeditor-desc": "Visual editor for MediaWiki",
 	"prefs-visualeditor": "Visual editor",
 	"bs-visualeditor-editbutton-hint": "Visual Editor",
 	"bs-visualeditor-pref-disablens": "Disable in namespaces:",

@@ -53,7 +53,7 @@ class CountThings extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'CountThings',
-			EXTINFO::DESCRIPTION => 'Counts all kinds of things.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-countthings-desc' )->parse(),
 			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

@@ -49,7 +49,7 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'BlueSpiceProjectFeedbackHelper',
-			EXTINFO::DESCRIPTION => 'Provides a fixed \'submit bugs\' panel at the bottom of the user interface.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-bluespiceprojectfeedbackhelper-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

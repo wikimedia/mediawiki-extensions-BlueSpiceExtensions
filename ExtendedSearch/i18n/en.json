@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-extendedsearch-desc": "Extended search",
+	"bs-extendedsearch-desc": "Apache Solr (http://lucene.apache.org/solr/) based search plugin to extend the search functionality",
 	"specialextendedsearch": "Extended search",
 	"prefs-extendedsearch": "Extended search",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Category|Categories}}: $2",

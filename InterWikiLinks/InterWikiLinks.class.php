@@ -48,7 +48,7 @@ class InterWikiLinks extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InterWikiLinks',
-			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting interwiki links',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-interwikilinks-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

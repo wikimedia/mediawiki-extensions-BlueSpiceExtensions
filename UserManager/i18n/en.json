@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-usermanager-desc": "Administration interface for managing users",
+	"bs-usermanager-desc": "Administration interface for adding, editing and deleting users",
 	"bs-usermanager-admin-nodelete": "The administrator account cannot be deleted.",
 	"bs-usermanager-self-nodelete": "You cannot delete your account.",
 	"bs-usermanager-db-error": "A database error has occurred.",

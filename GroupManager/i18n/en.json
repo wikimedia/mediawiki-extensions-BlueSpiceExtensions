@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-groupmanager-desc": "Administration interface for managing groups",
+	"bs-groupmanager-desc": "Administration interface for adding, editing and deleting user groups and their rights",
 	"bs-groupmanager-grpexists": "The group already exists.",
 	"bs-groupmanager-grpadded": "The group has been added.",
 	"bs-groupmanager-grpedited": "The group has been edited.",

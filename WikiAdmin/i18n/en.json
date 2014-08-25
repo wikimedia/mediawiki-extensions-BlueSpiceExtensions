@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-wikiadmin-desc": "BlueSpice administration",
+	"bs-wikiadmin-desc": "Central point of administration for BlueSpice",
 	"bs-wikiadmin-notallowed": "You are not allowed to use this page.",
 	"wikiadmin": "BlueSpice administration",
 	"action-wikiadmin": "display BlueSpice administration pages",

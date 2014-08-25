@@ -115,7 +115,7 @@ class InsertMagic extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InsertMagic',
-			EXTINFO::DESCRIPTION => 'Provides a dialog box to add magicwords and tags to an articles content in edit mode.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertmagic-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

@@ -5,7 +5,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-flexiskin-desc": "Adds functionality to create skins",
+	"bs-flexiskin-desc": "Provides a page to manage flexiskins with customizing options",
 	"bs-flexiskin-label": "Skin",
 	"bs-flexiskin-defaultname": "Default",
 	"bs-flexiskin-defaultdesc": "Default skin template.",

@@ -80,7 +80,7 @@ class ShoutBox extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'ShoutBox',
-			EXTINFO::DESCRIPTION => 'Adds a parser function for embedding your own shoutbox.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-shoutbox-desc' )->parse(),
 			EXTINFO::AUTHOR => 'Karl Waldmannstetter, Markus Glaser',
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',

@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-readers-desc": "Displays readers of a page, and pages read by a user",
+	"bs-readers-desc": "Creates a list of the people who read a page",
 	"prefs-readers": "Readers",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Reader}}|Readers}}",
 	"readers-user": "Pages {{GENDER:$1|read}} by: $1",

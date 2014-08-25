@@ -59,7 +59,7 @@ class WatchList extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'WatchList',
-			EXTINFO::DESCRIPTION => 'Adds a watchlist widget',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-watchlist-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

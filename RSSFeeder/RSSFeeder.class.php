@@ -48,7 +48,7 @@ class RSSFeeder extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'RSSFeeder',
-			EXTINFO::DESCRIPTION => 'A extension to put out valid rss for every extension, which has a buildRss-function',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-rssfeeder-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

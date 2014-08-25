@@ -32,7 +32,7 @@ class RSSStandards extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'RSSStandards',
-			EXTINFO::DESCRIPTION => 'builds rss feeds based on different options',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-rssstandards-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

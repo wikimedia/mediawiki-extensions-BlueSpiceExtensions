@@ -4,7 +4,7 @@
             "Stephan Muggli <muggli@hallowelt.biz>"
         ]
     },
-    "bs-shoutbox-desc": "Adds a shoutbox after the content of a page",
+    "bs-shoutbox-desc": "Adds a parser function for embedding your own shoutbox",
     "prefs-shoutbox": "Shoutbox",
     "bs-shoutbox-title": "Shoutbox",
     "bs-shoutbox-message": "Message",
