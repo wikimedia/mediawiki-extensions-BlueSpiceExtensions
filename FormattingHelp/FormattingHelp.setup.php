@@ -3,6 +3,8 @@ BsExtensionManager::registerExtension('FormattingHelp', BsRUNLEVEL::FULL|BsRUNLE
 
 $GLOBALS['wgAutoloadClasses']['FormattingHelp'] = __DIR__ . '/FormattingHelp.class.php';
 
+$wgMessagesDirs['FormattingHelp'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['FormattingHelp'] = __DIR__ . '/languages/FormattingHelp.i18n.php';
 
 $aResourceModuleTemplate = array(
