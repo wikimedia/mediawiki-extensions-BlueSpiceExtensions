@@ -5,9 +5,9 @@
 			"Robert Vogel <vogel@hallowelt.biz>"
 		]
 	},
-	"bs-contextmenu-desc": "Zeigt für bestimmte Links ein Kontextmenü an.",
+	"bs-contextmenu-desc": "Zeigt für bestimmte Links ein Kontextmenü an",
 	"prefs-contextmenu": "Kontextmenü",
-	"bs-contextmenu-pref-modus": "Kontextmenü öffnen:",
+	"bs-contextmenu-pref-modus": "Kontextmenü öffnen (nicht für Mobile):",
 	"bs-contextmenu-pref-modus-just-right-mouse": "Durch Klicken der rechten Maustaste (Bei gedrückter Strg-Taste, öffnet das originale Browser-Menü)",
 	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Durch Klicken der rechten Maustaste bei gedrückter Strg-Taste (Normaler rechter Mausklick, öffnet das originale Browser-Menü)",
 	"bs-contextmenu-page-edit": "Seite bearbeiten",

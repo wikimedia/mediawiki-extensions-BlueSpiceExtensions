@@ -4,11 +4,11 @@
 			"Robert Vogel <vogel@hallowelt.biz>"
 		]
 	},
-	"bs-contextmenu-desc": "Provides context menus for various links.",
+	"bs-contextmenu-desc": "Provides context menus for various links",
 	"prefs-contextmenu": "Context menu",
-	"bs-contextmenu-pref-modus": "Open context menu by:",
-	"bs-contextmenu-pref-modus-just-right-mouse": "Just click on right mouse button (Holding down CTRL will show default browser context menu)",
-	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Hold down CTRL and click right mouse button (Normal right mouse button will show default browser menu)",
+	"bs-contextmenu-pref-modus": "Open context menu by (not for mobile):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Click on right mouse button (Pressing CTRL will show default browser context menu)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Click on right mouse button and pressing CTRL (Normal right mouse button will show default browser menu)",
 	"bs-contextmenu-page-edit": "Edit page",
 	"bs-contextmenu-page-delete": "Delete page",
 	"bs-contextmenu-page-move": "Move page",
