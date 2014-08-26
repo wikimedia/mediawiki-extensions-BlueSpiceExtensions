@@ -3,7 +3,7 @@
 require_once( __DIR__."/WikiAdmin/WikiAdmin.setup.php" );
 require_once( __DIR__."/ExtensionInfo/ExtensionInfo.setup.php" );
 require_once( __DIR__."/GroupManager/GroupManager.setup.php" );
-require_once( __DIR__."/InterWikiLinks/InterWikiLinks.setup.php" ); 
+require_once( __DIR__."/InterWikiLinks/InterWikiLinks.setup.php" );
 require_once( __DIR__."/NamespaceManager/NamespaceManager.setup.php" );
 require_once( __DIR__."/PermissionManager/PermissionManager.setup.php" );
 require_once( __DIR__."/Preferences/Preferences.setup.php" );
@@ -17,6 +17,7 @@ require_once( __DIR__."/Authors/Authors.setup.php" );
 require_once( __DIR__."/Blog/Blog.setup.php" );
 require_once( __DIR__."/BlueSpiceProjectFeedbackHelper/BlueSpiceProjectFeedbackHelper.setup.php" );
 require_once( __DIR__."/Checklist/Checklist.setup.php" );
+#require_once( __DIR__."/ContextMenu/ContextMenu.setup.php" );
 require_once( __DIR__."/CountThings/CountThings.setup.php" );
 require_once( __DIR__."/CSyntaxHighlight/CSyntaxHighlight.setup.php" );
 require_once( __DIR__."/Dashboards/Dashboards.setup.php" );
