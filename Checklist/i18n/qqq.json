@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Ата"
+			"Ата",
+			"Shirayuki"
 		]
 	},
 	"bs-checklist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of checklist extension",
@@ -11,7 +12,7 @@
 	"bs-checklist-menu-insert-checkbox": "Label for checkbox\n{{Identical|Checkbox}}",
 	"bs-checklist-dlg-insert-list-title": "{{int:bs-checklist-menu-insert-list-title}}",
 	"bs-checklist-dlg-insert-list-value-list": "Label for value list\n{{Identical|Value list}}",
-	"bs-checklist-tag-checklist-desc": "Text for renders a checkbox or select field. Available configuration attributes:",
+	"bs-checklist-tag-checklist-desc": "Text for renders a checkbox or select field. Available configuration attributes:\n{{Related|Bs-tag-desc}}",
 	"bs-checklist-tag-checklist-param-type": "Text for <code>type</code>: <code>list</code> renders a select list. \n\n\"type\" has to be lowercase",
 	"bs-checklist-tag-checklist-param-list": "Text for <code>list</code>: Name of the template with the available values. Parameter <code>type</code> must be set to <code>list</code>. \n \"list\" has to be lowercase",
 	"bs-checklist-tag-checklist-param-value": "Text for <code>value</code>: <code>checked</code> or a value out of the list template. \n\n\"value\" has to be lowercase"

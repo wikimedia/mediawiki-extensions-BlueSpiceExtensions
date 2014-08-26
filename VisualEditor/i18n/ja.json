@@ -5,8 +5,11 @@
 			"Shirayuki"
 		]
 	},
+	"bs-visualeditor-desc": "TinyMCE WYSIWYG エディター",
 	"prefs-visualeditor": "ビジュアルエディター",
 	"bs-visualeditor-editbutton-hint": "ビジュアルエディター",
+	"bs-visualeditor-pref-disablens": "無効にする名前空間:",
+	"bs-visualeditor-pref-use": "既定で WYSIWYG エディターを使用",
 	"bs-visualeditor-bsactions-headings": "見出し",
 	"bs-visualeditor-bsactions-heading2": "見出し 2",
 	"bs-visualeditor-bsactions-heading3": "見出し 3",

@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-blog-desc": "یک فهرست از صفحات به سبک وبلاگ نشان می‌دهد",
+	"prefs-blog": "وبلاگ",
+	"bs-blog-no-entries": "هیچ نوشته وبلاگی وجود ندارد.",
+	"bs-blog-comments": "دیدگاه‌ها",
+	"bs-blog-read-more": "بیشتر بخوانید",
+	"bs-blog-trackback": "دنبالک",
+	"bs-blog-permalink": "پیوند پایدار",
+	"bs-blog-show-all": "نمایش همه نوشته‌ها",
+	"bs-blog-form-inline-text": "عنوان ...",
+	"bs-blog-form-title-text": "ایجاد نوشته تازه وبلاگ",
+	"bs-blog-form-button-text": "ایجاد",
+	"bs-blog-blog": "وبلاگ",
+	"bs-blog-pref-moreinnewwindow": "بازکردن پنجره تازه برای بیشتر خواندن",
+	"bs-blog-pref-sortby": "ترتیب بر پایه:",
+	"bs-blog-pref-imagerendermode": "نمایش تصویر به عنوان:",
+	"bs-blog-pref-maxentrycharacters": "تعداد واژه‌های هر نوشته:",
+	"bs-blog-tag-blog-desc": "نمایش نوشته‌های وبلاگ در هر صفحه."
+}

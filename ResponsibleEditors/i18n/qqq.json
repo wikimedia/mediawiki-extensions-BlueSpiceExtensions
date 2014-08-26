@@ -55,7 +55,7 @@
 	"bs-responsibleeditors-rbdisplaymodeonlyassignedtext": "Option on special page for show only pages with responsibility already assigned",
 	"bs-responsibleeditors-rbdisplaymodeonlynotassigned": "Option on special page for show only pages without assigned responsibility",
 	"bs-responsibleeditors-rbdisplaymodeall": "Option on special page for show all pages",
-	"bs-responsibleeditors-cbnamespacesemptytext": "Text for select a namespace",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Placeholder for \"Namespace\" selector.",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Text for not assigned",
 	"log-name-bs-responsibleeditors": "Used in [[Special:Log]], label for responsible editors log",
 	"log-description-bs-responsibleeditors": "Used in [[Special:Log]], log description for editors responsible for pages."

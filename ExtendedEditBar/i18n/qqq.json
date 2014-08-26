@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"2nd-player"
+			"2nd-player",
+			"Shirayuki"
 		]
 	},
 	"bs-extendededitbar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended edit bar extension",
-	"bs-extendededitbar-redirecttip": "Text for redirect\n{{Identical|Redirect}}",
+	"bs-extendededitbar-redirecttip": "Tooltip for the button to insert a redirect.\n{{Identical|Redirect}}",
 	"bs-extendededitbar-redirectsample": "Text for insert text",
 	"bs-extendededitbar-striketip": "Text for strike",
 	"bs-extendededitbar-strikesample": "Text for strike-through text",
@@ -17,9 +18,9 @@
 	"bs-extendededitbar-lowersample": "Text for subscript text",
 	"bs-extendededitbar-smalltip": "Text for small",
 	"bs-extendededitbar-smallsample": "Text for small text",
-	"bs-extendededitbar-commenttip": "Text for insert hidden comment",
+	"bs-extendededitbar-commenttip": "Tooltip for the \"Insert hidden comment\" button.",
 	"bs-extendededitbar-commentsample": "Text for comment",
-	"bs-extendededitbar-gallerytip": "Text for insert a picture gallery",
+	"bs-extendededitbar-gallerytip": "Tooltip for the \"Insert a picture gallery\" button.",
 	"bs-extendededitbar-gallerysamplepicture": "Text for picture",
 	"bs-extendededitbar-gallerysamplecaption": "Text for caption",
 	"bs-extendededitbar-quotetip": "Text for insert a block of quoted text",

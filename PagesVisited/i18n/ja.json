@@ -11,5 +11,6 @@
 	"bs-pagesvisited-pref-widgetns": "名前空間:",
 	"bs-pagesvisited-pref-widgetsortodr": "並び順:",
 	"bs-pagesvisited-pref-sort-time": "日時",
-	"bs-pagesvisited-pref-sort-pagename": "ページ名"
+	"bs-pagesvisited-pref-sort-pagename": "ページ名",
+	"bs-pagesvisited-tag-pagesvisited-desc": "閲覧したページの一覧を表示する。"
 }

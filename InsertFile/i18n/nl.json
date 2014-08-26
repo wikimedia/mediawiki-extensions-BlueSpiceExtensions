@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"SPQRobin"
 		]
 	},
 	"bs-insertfile-insert-image": "Afbeelding invoegen",
 	"bs-insertfile-insert-file": "Bestand invoegen",
+	"bs-insertfile-filename": "Bestandsnaam",
+	"bs-insertfile-filesize": "Bestandsgrootte",
+	"bs-insertfile-lastmodified": "Recente wijzigingen",
+	"bs-insertfile-uploaddescfilelabel": "Samenvatting",
 	"bs-insertfile-warning": "Waarschuwing",
 	"bs-insertfile-of": "of"
 }

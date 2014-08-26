@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rtemis"
+			"Rtemis",
+			"Alirezaaa"
 		]
 	},
 	"bs-articleinfo-desc": " اطلاعاتی را درباره یک صفحه در نوار وضعیت نشان می‌دهد",
 	"prefs-articleinfo": "اطلاعات صفحه",
+	"bs-articleinfo-pref-CheckRevisionInterval": "بازه به روز رسانی به ثانیه:",
 	"bs-articleinfo-last-edited": "زمان سپری شده از آخرین تغییر",
 	"bs-articleinfo-last-edited-tooltip": "آخرین تغییر انجام گرفته",
 	"bs-articleinfo-last-editor": "آخرین {{GENDER:$1|ویرایش کننده}}",

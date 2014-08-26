@@ -8,6 +8,7 @@
 	"bs-dashboards-addportlet": "ポートレットの追加",
 	"bs-dashboards-portlets": "ポートレット",
 	"prefs-dashboards": "ダッシュボード",
+	"bs-dashboards-pref-userdashboardonlogo": "サイトのロゴのリンク先を利用者ダッシュボードにする",
 	"admindashboard": "管理者ダッシュボード",
 	"userdashboard": "利用者ダッシュボード"
 }

@@ -7,6 +7,7 @@
 	},
 	"bs-review-i-agree": "同意",
 	"bs-review-i-dismiss": "不同意",
+	"bs-review-expired": "已過期",
 	"bs-review-btnmoveup": "向上移動",
 	"bs-review-btnmovedown": "向下移動",
 	"bs-review-colstatus": "狀態",

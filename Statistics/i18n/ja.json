@@ -5,6 +5,7 @@
 			"Shirayuki"
 		]
 	},
+	"bs-statistics-desc": "拡張された統計機能を追加する",
 	"prefs-statistics": "拡張統計",
 	"extendedstatistics": "拡張統計",
 	"bs-statistics-mode": "モード",
@@ -13,9 +14,12 @@
 	"bs-statistics-week": "週",
 	"bs-statistics-day": "日",
 	"bs-statistics-not-allowed": "あなたには、必要な権限がありません。",
+	"bs-statistics-finish": "図表を作成",
+	"bs-statistics-filters": "絞り込み",
 	"bs-statistics-diag-number-of-users": "利用者数",
 	"bs-statistics-label-name": "名前",
 	"bs-statistics-diag-number-of-pages": "ページ数",
+	"bs-statistics-diag-number-of-pages-mw": "本文ページ数",
 	"bs-statistics-label-page": "ページ",
 	"bs-statistics-label-searchterm": "検索語句",
 	"bs-statistics-filter-category": "カテゴリ",

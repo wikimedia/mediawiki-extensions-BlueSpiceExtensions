@@ -7,6 +7,7 @@
 	},
 	"bs-responsibleeditors-pref-activatednamespaces": "Dostępne przestrzenie nazw:",
 	"bs-responsibleeditors-statebarbody-headline": "Odpowiedzialn{{PLURAL:$1|y edytor|i edytorzy}}",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Wskazana strona nie istnieje.",
 	"bs-responsibleeditors-columnpage": "Strona",
 	"bs-responsibleeditors-columnnamespace": "Przestrzeń nazw",
 	"bs-responsibleeditors-rbdisplaymodeall": "Pokaż wszystkie strony",

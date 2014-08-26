@@ -4,9 +4,14 @@
 			"Shirayuki"
 		]
 	},
+	"bs-extendedsearch-desc": "拡張検索",
+	"specialextendedsearch": "拡張検索",
+	"prefs-extendedsearch": "拡張検索",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|カテゴリ}}: $2",
+	"bs-extendedsearch-error": "エラー:",
 	"bs-extendedsearch-facet-category": "カテゴリ",
 	"bs-extendedsearch-facet-namespace": "名前空間",
+	"bs-extendedsearch-facet-namespace-files": "ファイル",
 	"bs-extendedsearch-nosearchterm": "検索語句を入力してください。",
 	"bs-extendedsearch-server-not-available": "検索サーバーを利用できません。",
 	"bs-extendedsearch-pref-defscopeuser": "既定の検索対象:",
@@ -14,7 +19,9 @@
 	"bs-extendedsearch-pref-scope-title": "ページ名",
 	"bs-extendedsearch-pref-solrserviceurl": "Solr の URL:",
 	"bs-extendedsearchadmin-label": "検索オプション",
+	"bs-extendedsearch-warning": "警告",
 	"bs-extendedsearch-ascending": "昇順",
 	"bs-extendedsearch-descending": "降順",
+	"bs-extendedsearch-unknown": "不明",
 	"bs-extendedsearch-recentsearchterms": "最近の検索語句"
 }

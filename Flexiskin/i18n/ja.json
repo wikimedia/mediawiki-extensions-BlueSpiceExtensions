@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Mfuji"
 		]
 	},
 	"bs-flexiskin-label": "外装",
@@ -10,11 +11,13 @@
 	"bs-flexiskin-error-fail-add-skin": "外装を作成できませんでした: $1",
 	"bs-flexiskin-error-delete-skin": "外装を削除できませんでした: $1",
 	"prefs-flexiskin": "外装",
+	"bs-flexiskin-pref-active": "有効な外装:",
 	"bs-flexiskin-pref-logo": "ロゴ:",
 	"bs-flexiskin-labelname": "名前",
 	"bs-flexiskin-labeldesc": "説明",
 	"bs-flexiskin-headergeneral": "全般",
 	"bs-flexiskin-dialogclose": "プレビューを本当に閉じますか?",
+	"bs-flexiskin-dialogreset": "外装は最後に保存した状態にリセットされます。続行しますか？",
 	"bs-flexiskin-confirmdeleteskin": "この外装を本当に削除しますか?",
 	"bs-flexiskin-titleaddskin": "外装の追加",
 	"bs-flexiskin-labelskins": "テンプレート",
@@ -30,5 +33,6 @@
 	"bs-flexiskin-left": "左",
 	"bs-flexiskin-right": "右",
 	"bs-flexiskin-center": "中央",
+	"bs-flexiskin-labelfullwidth": "最大幅",
 	"bs-flexiskin-error-nameempty": "作成する外装の有効な名前を入力してください。"
 }

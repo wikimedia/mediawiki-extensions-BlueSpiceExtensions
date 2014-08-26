@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rtemis"
+			"Rtemis",
+			"Alirezaaa"
 		]
 	},
 	"prefs-avatars": "آواتارها",
@@ -14,5 +15,11 @@
 	"bs-avatars-upload-label": "تصویر",
 	"bs-avatars-generate-new-label": "ایجاد آواتار جدید",
 	"bs-avatars-warning-title": "هشدار",
-	"bs-avatars-warning-text": "شما برای خودتان تصویری در ترجیحات تعیین کرده اند. آواتار آن را پاک می‌کند. می خواهید ادامه دهید؟"
+	"bs-avatars-warning-text": "شما برای خودتان تصویری در ترجیحات تعیین کرده اند. آواتار آن را پاک می‌کند. می خواهید ادامه دهید؟",
+	"bs-avatars-userimage-title": "تصویر از ویکی یا نشانی تصویر",
+	"bs-avatars-userimage-help": "به عنوان مثال Picture.jpg یا http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "نشانی یا تصویر از ویکی نامعتبر.",
+	"bs-avatars-set-userimage-saved": "تصویر کاربر با موفقیت ذخیره شد.",
+	"bs-avatars-file-upload-fieldset-title": "بارگذاری تصویر",
+	"bs-avatars-auto-generate-fieldset-title": "تولید خودکار نماد"
 }

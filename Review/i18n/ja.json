@@ -4,6 +4,10 @@
 			"Shirayuki"
 		]
 	},
+	"bs-review-comments": "コメント",
+	"bs-review-btnmoveup": "上に移動",
+	"bs-review-btnmovedown": "下に移動",
+	"bs-review-colcomment": "コメント",
 	"bs-review-header-page-title": "ページ",
 	"bs-review-header-owner-name": "所有者",
 	"bs-review-header-startdate": "開始",

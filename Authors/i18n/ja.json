@@ -11,5 +11,6 @@
 	"bs-authors-profileimage-change": "プロフィール画像を変更",
 	"bs-authors-pref-imageheight": "画像の高さ:",
 	"bs-authors-pref-imagewidth": "画像の幅:",
-	"bs-authors-pref-limit": "表示する作者数の上限:"
+	"bs-authors-pref-limit": "表示する作者数の上限:",
+	"bs-authors-pref-show": "作者を表示"
 }

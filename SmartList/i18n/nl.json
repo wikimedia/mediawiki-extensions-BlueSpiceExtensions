@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-smartlist-pref-namespaces": "Naamruimten:",
+	"bs-smartlist-pref-categories": "Categorieën:",
+	"bs-smartlist-pref-period": "Periode:",
+	"bs-smartlist-day": "Dag",
+	"bs-smartlist-week": "Week",
+	"bs-smartlist-month": "Maand",
+	"bs-smartlist-time": "Tijd"
+}

@@ -4,7 +4,6 @@
 			"Robert Vogel <vogel@hallowelt.biz>"
 		]
 	},
-
 	"bs-contextmenu-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of contextmenu extension",
 	"prefs-contextmenu": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for context menu section in preferences.\n{{Identical|Context menu}}",
 	"bs-contextmenu-pref-modus": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for modus:\n{{Identical|Modus}}",

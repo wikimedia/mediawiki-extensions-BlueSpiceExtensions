@@ -14,6 +14,7 @@
 	"bs-shoutbox-pref-numberofshouts": "Número de mensajes mostrados:",
 	"bs-shoutbox-pref-showage": "Mostrar la fecha de creación de un mensaje",
 	"bs-shoutbox-pref-showuser": "Mostrar el autor de un mensaje",
+	"bs-shoutbox-pref-allowarchive": "Permitir que los usuarios eliminen sus propias entradas",
 	"bs-shoutbox-archive-success": "Entrada borrada.",
 	"bs-shoutbox-archive-failure": "Se ha producido un error al intentar eliminar la entrada, por favor inténtalo nuevamente.",
 	"bs-shoutbox-archive-failure-user": "Únicamente el autor de las entradas puede eliminarlas.",

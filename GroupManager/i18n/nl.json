@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"SPQRobin"
 		]
 	},
-	"bs-groupmanager-headergroup": "Groep"
+	"bs-groupmanager-grpexists": "De groep bestaat al.",
+	"bs-groupmanager-grpadded": "De groep is toegevoegd.",
+	"bs-groupmanager-grpedited": "De groep is bewerkt.",
+	"bs-groupmanager-grpremoved": "De groep is verwijderd.",
+	"bs-groupmanager-headergroup": "Groep",
+	"bs-groupmanager-titlenewgroup": "Nieuwe groep",
+	"bs-groupmanager-titleeditgroup": "Groep bewerken",
+	"bs-groupmanager-lablename": "Groepsnaam:"
 }

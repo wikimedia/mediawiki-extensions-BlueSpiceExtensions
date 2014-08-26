@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wisdom"
+		]
+	},
+	"bs-review-error-insufficient-permissions": "Энэ үйлдлийг хийх эрх танд алга (\"$1\" шаардлагатай)."
+}

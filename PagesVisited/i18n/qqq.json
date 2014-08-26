@@ -16,5 +16,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by:\n{{Identical|Sort by}}",
 	"bs-pagesvisited-pref-sort-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for time\n{{Identical|Time}}",
 	"bs-pagesvisited-pref-sort-pagename": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for title\n{{Identical|Title}}",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Used in InsertMagic extension, tag description for show a list of pages you have visited."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Used in InsertMagic extension, tag description for show a list of pages you have visited.\n{{Related|Bs-tag-desc}}"
 }

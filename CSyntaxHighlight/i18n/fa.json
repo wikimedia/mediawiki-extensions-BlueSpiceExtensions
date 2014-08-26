@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-csyntaxhighlight-pref-theme": "پوسته:",
+	"bs-csyntaxhighlight-pref-gutter": "نشان‌دادن شماره خطوط",
+	"bs-csyntaxhighlight-pref-autolinks": "نشانی پیوندها",
+	"bs-csyntaxhighlight-pref-toolbar": "نشان‌دادن نوار ابزار"
+}

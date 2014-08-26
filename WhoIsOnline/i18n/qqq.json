@@ -14,9 +14,9 @@
 	"bs-whoisonline-pref-limitcount": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for maximum number of users shown:",
 	"bs-whoisonline-pref-orderby": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by:\n{{Identical|Sort by}}",
 	"bs-whoisonline-pref-maxidletime": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for time in seconds until a user is marked as offline:",
-	"bs-whoisonline-pref-orderby-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for uptime\n{{Identical|Uptime}}",
+	"bs-whoisonline-pref-orderby-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for uptime.\n\n\"Uptime\" is internally called \"onlinetime\" (Online time).\n{{Identical|Uptime}}",
 	"bs-whoisonline-pref-orderby-name": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for name\n{{Identical|Name}}",
 	"bs-whoisonline-pref-interval": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for update interval in seconds:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Used in InsertMagic extension, tag description for renders the number of currently logged in users.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Used in InsertMagic extension, tag description for renders a little fly-out list of currently logged in users.\n\nValid attributes:\n;<code>anchortext</code>: Explanation text for the text you want the fly-out to be attached to."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Used in InsertMagic extension, tag description for renders the number of currently logged in users.\n{{Related|Bs-tag-desc}}",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Used in InsertMagic extension, tag description for renders a little fly-out list of currently logged in users.\n{{Related|Bs-tag-desc}}"
 }

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"prefs-contextmenu": "Контекстно мени",
+	"bs-contextmenu-page-edit": "Уреди страница",
+	"bs-contextmenu-page-delete": "Избриши страница",
+	"bs-contextmenu-page-move": "Премести страница",
+	"bs-contextmenu-page-history": "Погл. историја",
+	"bs-contextmenu-page-protect": "Заштити страница",
+	"bs-contextmenu-page-purge": "Превчитај и прегледај",
+	"bs-contextmenu-page-info": "Инфо за страницата",
+	"bs-contextmenu-media-reupload": "Подигни нова верзија",
+	"bs-contextmenu-media-view-page": "Погл. опис и историја на податотеката",
+	"bs-contextmenu-user-mail": "Испрати пошта",
+	"bs-contextmenu-user-talk": "Остави порака во разговорот",
+	"bs-contextmenu-file-download": "Преземи"
+}

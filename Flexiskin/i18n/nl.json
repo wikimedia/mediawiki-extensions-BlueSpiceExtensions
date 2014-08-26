@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"SPQRobin"
 		]
 	},
+	"bs-flexiskin-labeldesc": "Beschrijving",
 	"bs-flexiskin-headergeneral": "Algemeen",
 	"bs-flexiskin-left": "links",
 	"bs-flexiskin-right": "rechts",

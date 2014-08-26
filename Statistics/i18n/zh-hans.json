@@ -28,6 +28,7 @@
 	"bs-statistics-label-name": "名称",
 	"bs-statistics-label-registration": "注册",
 	"bs-statistics-diag-number-of-pages": "页面数",
+	"bs-statistics-diag-number-of-pages-desc": "显示在选定周期内的页面总数。",
 	"bs-statistics-diag-number-of-pages-mw": "内容页面数",
 	"bs-statistics-label-page": "页面",
 	"bs-statistics-label-creator": "创建者",

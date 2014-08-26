@@ -13,6 +13,8 @@
 	"bs-statistics-label-page": "Pagina",
 	"bs-statistics-diag-number-of-edits": "Aantal bewerkingen",
 	"bs-statistics-filter-category": "Categorie",
+	"bs-statistics-portlet-numberofusers": "Aantal gebruikers",
+	"bs-statistics-portlet-numberofedits": "Aantal bewerkingen",
 	"bs-statistics-portlet-numberofpages": "Aantal pagina's",
 	"bs-statistics-portletconfig-periodday": "Gisteren"
 }
