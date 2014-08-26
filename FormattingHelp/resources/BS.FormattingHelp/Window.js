@@ -7,18 +7,17 @@ Ext.define('BS.FormattingHelp.Window', {
 
 	initComponent: function(){
 		this.setTitle( mw.message('bs-formattinghelp-formatting').plain() );
-		
+
 		this.pnlMain = Ext.create('Ext.Panel',{
 			id: 'bs-formattinghelp-content',
-			/*loader: {
-				url: bs.util.getAjaxDispatcherUrl( 'FormattingHelp::getFormattingHelp' )
-			},*/
-			html: mw.message('bs-formattinghelp-help-text').plain(),
+			loader: {
+				url: bs.util.getAjaxDispatcherUrl( 'FormattingHelp::getFormattingHelp' ),
+				autoLoad: true
+			},
+			html: '',
 			autoScroll: true
 		});
-		
-		//this.pnlMain.getLoader().load();
-		
+
 		this.items = [
 			this.pnlMain
 		];

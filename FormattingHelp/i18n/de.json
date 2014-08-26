@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-formattinghelp-desc": "Zeigt eine Text-Formatierhilfe an",
+	"bs-formattinghelp-formatting": "Formatierhilfe",
+	"bs-formattinghelp-help-syntax": "Schreibweise",
+	"bs-formattinghelp-help-example-text": "Text",
+	"bs-formattinghelp-help-bold": "Fett",
+	"bs-formattinghelp-help-italic": "Kursiv",
+	"bs-formattinghelp-help-whitespace": "Leerzeichen",
+	"bs-formattinghelp-help-nowiki": "Formatierung unterdrücken",
+	"bs-formattinghelp-help-color": "Farbiger Text",
+	"bs-formattinghelp-help-headline": "Überschrift",
+	"bs-formattinghelp-help-linebreak": "Zeilenumbruch",
+	"bs-formattinghelp-help-ul": "Unsortierte Liste",
+	"bs-formattinghelp-help-listitem": "Listenpunkt",
+	"bs-formattinghelp-help-subitem": "Unterpunkt",
+	"bs-formattinghelp-help-numberedlist": "Nummerierte Liste",
+	"bs-formattinghelp-help-link": "Interner Link",
+	"bs-formattinghelp-help-link-alt": "Interner Link mit Alternativtext",
+	"bs-formattinghelp-help-caption": "Beschriftung",
+	"bs-formattinghelp-help-extlink": "Externer Link",
+	"bs-formattinghelp-help-hr": "Horizontale Linie",
+	"bs-formattinghelp-help-template": "Vorlage",
+	"bs-formattinghelp-help-templatename": "Vorlagenname"
+}
