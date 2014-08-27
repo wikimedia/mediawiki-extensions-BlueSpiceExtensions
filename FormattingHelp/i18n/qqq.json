@@ -1,29 +1,30 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-formattinghelp-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of formatting help extension",
-	"bs-formattinghelp-formatting": "Title of formatting help window\n*{{Identical|formatting help}}",
-	"bs-formattinghelp-help-syntax": "Label for syntax\n*{{Identical|Syntax}}",
-	"bs-formattinghelp-help-example-text": "Text for text\n*{{Identical|text}}",
-	"bs-formattinghelp-help-bold": "Label for bold\n*{{Identical|bold}}",
-	"bs-formattinghelp-help-italic": "Label for italics\n*{{Identical|italics}}",
-	"bs-formattinghelp-help-whitespace": "Label for whitespace\n*{{Identical|whitespace}}",
-	"bs-formattinghelp-help-nowiki": "Label for prevent formatting\n*{{Identical|prevent formatting}}",
-	"bs-formattinghelp-help-color": "Label for colored text\n*{{Identical|colored text}}",
-	"bs-formattinghelp-help-headline": "Label and text for headline\n*{{Identical|headline}}",
-	"bs-formattinghelp-help-linebreak": "Label for line break\n*{{Identical|line break}}",
-	"bs-formattinghelp-help-ul": "Label for unordered list\n*{{Identical|unordered list}}",
-	"bs-formattinghelp-help-listitem": "Text for list item\n*{{Identical|list item}}",
-	"bs-formattinghelp-help-subitem": "Text for sub item\n*{{Identical|sub item}}",
-	"bs-formattinghelp-help-numberedlist": "Label for numbered list\n*{{Identical|numbered list}}",
-	"bs-formattinghelp-help-link": "Label for internal link\n*{{Identical|internal link}}",
+	"bs-formattinghelp-formatting": "Title of formatting help window\n{{Identical|formatting help}}",
+	"bs-formattinghelp-help-syntax": "Label for syntax\n{{Identical|Syntax}}",
+	"bs-formattinghelp-help-example-text": "Text for text\n{{Identical|Text}}",
+	"bs-formattinghelp-help-bold": "Label for bold\n{{Identical|Bold}}",
+	"bs-formattinghelp-help-italic": "Label for italics\n{{Identical|Italic}}",
+	"bs-formattinghelp-help-whitespace": "Label for whitespace\n{{Identical|Whitespace}}",
+	"bs-formattinghelp-help-nowiki": "Label for prevent formatting\n{{Identical|Prevent formatting}}",
+	"bs-formattinghelp-help-color": "Label for colored text\n{{Identical|Colored text}}",
+	"bs-formattinghelp-help-headline": "Label and text for headline\n{{Identical|Headline}}",
+	"bs-formattinghelp-help-linebreak": "Label for line break\n{{Identical|Line break}}",
+	"bs-formattinghelp-help-ul": "Label for unordered list\n{{Identical|Unordered list}}",
+	"bs-formattinghelp-help-listitem": "Text for list item\n{{Identical|List item}}",
+	"bs-formattinghelp-help-subitem": "Text for sub item\n{{Identical|Sub item}}",
+	"bs-formattinghelp-help-numberedlist": "Label for numbered list\n{{Identical|Numbered list}}",
+	"bs-formattinghelp-help-link": "Label for internal link\n{{Identical|Internal link}}",
 	"bs-formattinghelp-help-link-alt": "Label for internal link with alternative text",
-	"bs-formattinghelp-help-caption": "Text for caption\n*{{Identical|caption}}",
-	"bs-formattinghelp-help-extlink": "Label for external link\n*{{Identical|external link}}",
-	"bs-formattinghelp-help-hr": "Label for horizontal line\n*{{Identical|horizontal line}}",
-	"bs-formattinghelp-help-template": "Label for template\n*{{Identical|template}}",
-	"bs-formattinghelp-help-templatename": "Text for template name\n*{{Identical|template name}}"
+	"bs-formattinghelp-help-caption": "Text for caption\n{{Identical|Caption}}",
+	"bs-formattinghelp-help-extlink": "Label for external link\n{{Identical|External link}}",
+	"bs-formattinghelp-help-hr": "Label for horizontal line\n{{Identical|Horizontal line}}",
+	"bs-formattinghelp-help-template": "Label for template\n{{Identical|Template}}",
+	"bs-formattinghelp-help-templatename": "Text for template name\n{{Identical|Template name}}"
 }

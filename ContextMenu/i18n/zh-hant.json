@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-contextmenu-page-edit": "編輯頁面",
+	"bs-contextmenu-page-delete": "刪除頁面",
+	"bs-contextmenu-page-move": "移動頁面",
+	"bs-contextmenu-file-download": "下載檔案"
+}

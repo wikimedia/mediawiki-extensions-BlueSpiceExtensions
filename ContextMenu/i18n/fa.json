@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-contextmenu-page-edit": "ویرایش صفحه",
+	"bs-contextmenu-page-move": "انتقال صفحه",
+	"bs-contextmenu-page-info": "مشاهده صفحه اطلاعات",
+	"bs-contextmenu-media-reupload": "بارگذاری نسخه تازه",
+	"bs-contextmenu-user-talk": "در صفحه بحث پیام بگذارید",
+	"bs-contextmenu-file-download": "دریافت پرونده"
+}

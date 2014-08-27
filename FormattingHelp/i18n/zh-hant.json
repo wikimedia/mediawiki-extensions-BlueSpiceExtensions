@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "語法",
+	"bs-formattinghelp-help-example-text": "文字",
+	"bs-formattinghelp-help-bold": "粗體",
+	"bs-formattinghelp-help-italic": "斜體",
+	"bs-formattinghelp-help-caption": "說明",
+	"bs-formattinghelp-help-extlink": "外部連結"
+}

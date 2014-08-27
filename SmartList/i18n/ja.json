@@ -6,6 +6,7 @@
 		]
 	},
 	"prefs-smartlist": "スマート リスト",
+	"bs-smartlist-recent-changes": "最近の更新",
 	"bs-smartlist-invalid-namespaces": "指定した{{PLURAL:$1|名前空間}}は無効です: $2",
 	"bs-smartlist-pref-count": "項目数:",
 	"bs-smartlist-pref-comments": "コメントを表示",

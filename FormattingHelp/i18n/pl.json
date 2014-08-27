@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "Składnia",
+	"bs-formattinghelp-help-example-text": "Tekst",
+	"bs-formattinghelp-help-linebreak": "Podział wiersza",
+	"bs-formattinghelp-help-ul": "Lista nieuporządkowana",
+	"bs-formattinghelp-help-listitem": "Element listy",
+	"bs-formattinghelp-help-numberedlist": "Lista numerowana",
+	"bs-formattinghelp-help-link": "Link wewnętrzny",
+	"bs-formattinghelp-help-extlink": "Link zewnętrzny",
+	"bs-formattinghelp-help-hr": "Linia pozioma",
+	"bs-formattinghelp-help-template": "Szablon",
+	"bs-formattinghelp-help-templatename": "Nazwa szablonu"
+}

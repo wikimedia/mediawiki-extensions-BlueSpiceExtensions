@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-formattinghelp-desc": "显示文本格式的帮助",
+	"bs-formattinghelp-formatting": "格式帮助",
+	"bs-formattinghelp-help-syntax": "语法",
+	"bs-formattinghelp-help-example-text": "文本",
+	"bs-formattinghelp-help-bold": "粗体",
+	"bs-formattinghelp-help-italic": "斜体",
+	"bs-formattinghelp-help-whitespace": "空白",
+	"bs-formattinghelp-help-nowiki": "清空格式",
+	"bs-formattinghelp-help-color": "颜色文本",
+	"bs-formattinghelp-help-headline": "标题",
+	"bs-formattinghelp-help-linebreak": "换行符",
+	"bs-formattinghelp-help-ul": "无序列表",
+	"bs-formattinghelp-help-listitem": "列表项目",
+	"bs-formattinghelp-help-subitem": "子项目",
+	"bs-formattinghelp-help-numberedlist": "有序列表",
+	"bs-formattinghelp-help-link": "内部链接",
+	"bs-formattinghelp-help-link-alt": "有替代文本的内部链接",
+	"bs-formattinghelp-help-caption": "说明",
+	"bs-formattinghelp-help-extlink": "外部链接",
+	"bs-formattinghelp-help-hr": "水平线",
+	"bs-formattinghelp-help-template": "模板",
+	"bs-formattinghelp-help-templatename": "模板名"
+}
