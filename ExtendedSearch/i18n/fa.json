@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-extendedsearch-desc": "جستجوی گسترده",
+	"specialextendedsearch": "جستجوی گسترده",
+	"prefs-extendedsearch": "جستجوی گسترده",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|رده|رده‌ها}}: $2",
+	"bs-extendedsearch-curl-not-active": "افزونه cURL فعال نشده‌است.",
+	"bs-extendedsearch-error": "خطا:",
+	"bs-extendedsearch-facet-category": "رده",
+	"bs-extendedsearch-facet-editors": "نویسنده‌ها",
+	"bs-extendedsearch-facet-namespace": "فضای نام",
+	"bs-extendedsearch-facet-namespace-files": "پرونده‌ها",
+	"bs-extendedsearch-facet-type": "قالب",
+	"bs-extendedsearch-facet-uncategorized": "رده‌بندی‌نشده",
+	"bs-extendedsearch-facet-namespace-extfiles": "پرونده‌های خارجی",
+	"bs-extendedsearch-files": "جستجوی پرونده‌ها",
+	"bs-extendedsearch-finished": "پایان‌یافته",
+	"bs-extendedsearch-sort-by": "مرتب‌شده بر اساس:",
+	"bs-extendedsearch-sort-relevance": "ارتباط",
+	"bs-extendedsearch-sort-title": "عنوان",
+	"bs-extendedsearch-sort-ts": "زمان",
+	"bs-extendedsearch-sort-type": "نوع",
+	"bs-extendedsearch-specialpage-form-return-to-simple": "فرم ابتدایی جستجو",
+	"bs-extendedsearch-specialpage-form-expand-to-extended": "فرم گسترده جستجو",
+	"bs-extendedsearch-searchfulltext": "حاوی ...",
+	"bs-extendedsearch-pref-searchfiles": "جستجوی پیش‌فرض پرونده‌ها",
+	"bs-extendedsearch-pref-defscopeuser": "پیش‌فرض برای جستجو:",
+	"bs-extendedsearch-pref-scope-text": "متن کامل",
+	"bs-extendedsearch-pref-scope-title": "عنوان",
+	"bs-extendedsearch-pref-jumptotitle": "جستجوی تغییرمسیر پرس و جوها به صفحه مطابق اگر موجود است"
+}

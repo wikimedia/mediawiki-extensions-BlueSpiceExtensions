@@ -4,10 +4,12 @@
 			"Robby"
 		]
 	},
+	"prefs-contextmenu": "Kontextmenü",
 	"bs-contextmenu-page-edit": "Säit änneren",
 	"bs-contextmenu-page-delete": "Säit läschen",
 	"bs-contextmenu-page-move": "Säit réckelen",
 	"bs-contextmenu-page-protect": "Säit spären",
+	"bs-contextmenu-page-info": "Informatioune vun der Säit weisen",
 	"bs-contextmenu-media-reupload": "Nei Versioun eroplueden",
 	"bs-contextmenu-user-mail": "E-Mail schécken",
 	"bs-contextmenu-user-talk": "Message op d'Diskussiounssäit schreiwen",

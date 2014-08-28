@@ -3,12 +3,13 @@
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Robby"
+			"Robby",
+			"Shirayuki"
 		]
 	},
 	"bs-contextmenu-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of contextmenu extension",
 	"prefs-contextmenu": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for context menu section in preferences.\n{{Identical|Context menu}}",
-	"bs-contextmenu-pref-modus": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for modus:\n{{Identical|Modus}}",
+	"bs-contextmenu-pref-modus": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for modus:",
 	"bs-contextmenu-pref-modus-just-right-mouse": "Option in [[Special:Wiki_Admin&mode=Preferences]], radio button label for displaying the menu with a right click",
 	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Option in [[Special:Wiki_Admin&mode=Preferences]], radio button label for displaying the menu with a right click and CRTL key pressed",
 	"bs-contextmenu-page-edit": "Label for menu item that opens edit mode of a page\n{{Identical|Edit page}}",

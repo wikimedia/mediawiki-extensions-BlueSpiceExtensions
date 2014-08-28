@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-formattinghelp-desc": "Exibe ajuda para formatação de texto",
+	"bs-formattinghelp-formatting": "Ajuda de formatação",
+	"bs-formattinghelp-help-syntax": "Sintaxe",
+	"bs-formattinghelp-help-example-text": "Texto",
+	"bs-formattinghelp-help-bold": "Negrito",
+	"bs-formattinghelp-help-italic": "Itálico",
+	"bs-formattinghelp-help-whitespace": "Espaço em branco",
+	"bs-formattinghelp-help-nowiki": "Prevenir formatação",
+	"bs-formattinghelp-help-color": "Texto colorido",
+	"bs-formattinghelp-help-linebreak": "Quebra de linha",
+	"bs-formattinghelp-help-ul": "Lista desordenada",
+	"bs-formattinghelp-help-listitem": "Item de lista",
+	"bs-formattinghelp-help-subitem": "Subitem",
+	"bs-formattinghelp-help-numberedlist": "Lista numerada",
+	"bs-formattinghelp-help-link": "Ligação interna",
+	"bs-formattinghelp-help-link-alt": "Ligação interna com texto alternativo",
+	"bs-formattinghelp-help-caption": "Legenda",
+	"bs-formattinghelp-help-extlink": "Ligação externa",
+	"bs-formattinghelp-help-hr": "Linha Horizontal",
+	"bs-formattinghelp-help-template": "Predefinição",
+	"bs-formattinghelp-help-templatename": "Nome da predefinição"
+}

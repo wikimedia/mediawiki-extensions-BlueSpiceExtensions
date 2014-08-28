@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geopoet"
+		]
+	},
+	"bs-formattinghelp-desc": "Minapahiling nin katabangan para sa pampopormat na teksto",
+	"bs-formattinghelp-formatting": "Katabangan sa pagpopormat",
+	"bs-formattinghelp-help-syntax": "Sintaks",
+	"bs-formattinghelp-help-example-text": "Teksto",
+	"bs-formattinghelp-help-bold": "Mahibog",
+	"bs-formattinghelp-help-italic": "Italika",
+	"bs-formattinghelp-help-whitespace": "Espasyong blangko",
+	"bs-formattinghelp-help-nowiki": "Pugulon an pagpopormat",
+	"bs-formattinghelp-help-color": "Dekolor na teksto",
+	"bs-formattinghelp-help-headline": "Pamayuhang-linya",
+	"bs-formattinghelp-help-linebreak": "Kabaakan kan linya",
+	"bs-formattinghelp-help-ul": "Dae saludsod na listahan",
+	"bs-formattinghelp-help-listitem": "Lista nin aytem",
+	"bs-formattinghelp-help-subitem": "Subyidong aytem",
+	"bs-formattinghelp-help-numberedlist": "Numeradong listahan",
+	"bs-formattinghelp-help-link": "Panlaog na sugpon",
+	"bs-formattinghelp-help-link-alt": "Panlaog na sugpon na igwang alternatibong teksto",
+	"bs-formattinghelp-help-caption": "Kapsyon",
+	"bs-formattinghelp-help-extlink": "Panluwas na sugpon",
+	"bs-formattinghelp-help-hr": "Pahigdang linya",
+	"bs-formattinghelp-help-template": "Templato",
+	"bs-formattinghelp-help-templatename": "Templatong pangaran"
+}

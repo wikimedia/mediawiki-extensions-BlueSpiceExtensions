@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geopoet"
+		]
+	},
+	"bs-contextmenu-desc": "Minatao nin konteksto sa mga menu para sa kadakulon na mga kasurugponan",
+	"prefs-contextmenu": "Kontekstong menu",
+	"bs-contextmenu-pref-modus": "Bukas na konteksto kan menu sa paagi nin (bakong para sa mobil)",
+	"bs-contextmenu-page-edit": "Liwaton an pahina",
+	"bs-contextmenu-page-delete": "Puraon an pahina",
+	"bs-contextmenu-page-move": "Balyuhon an pahina",
+	"bs-contextmenu-page-history": "Tanawon an historiya nin pahina",
+	"bs-contextmenu-page-protect": "Protektahan an pahina",
+	"bs-contextmenu-page-info": "Tanawon an impormasyon nin pahina",
+	"bs-contextmenu-media-reupload": "Ikarga an baguhong bersyon",
+	"bs-contextmenu-media-view-page": "Tanawon an pahina kan deskripsyon nin sagunson asin historiya nin sagunson",
+	"bs-contextmenu-user-mail": "Ipadara an surat",
+	"bs-contextmenu-user-talk": "Magwalat nin mensahe sa pahina nin urulay",
+	"bs-contextmenu-file-download": "Kuahon an sagunson"
+}
