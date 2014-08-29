@@ -1,8 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Omid.koli"
+			"Omid.koli",
+			"Alirezaaa",
+			"Reza1615"
 		]
 	},
+	"prefs-review": "بازبینی",
+	"bs-review-review": "بازبینی",
+	"bs-review-menu-entry": "بازبینی ویرایش",
+	"bs-review-review-finished": "این صفحه بررسی شده‌است.",
+	"log-name-bs-review": "سیاههٔ بازبینی",
+	"review": "بازبینی",
+	"bs-review-btnmoveup": "حرکت به بالا",
+	"bs-review-btnmovedown": "حرکت به پایین",
+	"bs-review-colreviewer": "بازبین",
+	"bs-review-lblenddate": "تاریخ پایان",
 	"bs-review-error-insufficient-permissions": "اجازه برای اجرای این عملکرد ندارید (\" $1 \" ضروری)."
 }

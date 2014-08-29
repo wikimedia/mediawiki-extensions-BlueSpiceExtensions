@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-contextmenu-page-edit": "Aozañ ar bajenn",
+	"bs-contextmenu-page-delete": "Dilemel ar bajenn",
+	"bs-contextmenu-page-move": "Dilec'hiañ ar bajenn",
+	"bs-contextmenu-page-history": "Gwelet istor ar bajenn",
+	"bs-contextmenu-page-protect": "Gwareziñ ar bajenn",
+	"bs-contextmenu-user-mail": "Kas ur postel",
+	"bs-contextmenu-file-download": "Pellgargañ ar restr"
+}

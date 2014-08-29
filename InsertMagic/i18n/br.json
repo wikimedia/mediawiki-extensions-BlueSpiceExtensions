@@ -8,6 +8,8 @@
 	"bs-insertmagic": "Ensoc'hañ ur ger hud",
 	"bs-insertmagic-notoc": "Kuzhat an daolenn.",
 	"bs-insertmagic-index": "Lavaret d'ar c'hefluskerioù enklask menegeriñ ar bajenn.",
+	"bs-insertmagic-currentdayname": "Deiz eus ar sizhun (anv).",
+	"bs-insertmagic-currenttime": "Eur (er furmad EE:mm 24 eur).",
 	"bs-insertmagic-currentweek": "Sizhun (niver).",
 	"bs-insertmagic-sitename": "Anv al lec'hienn wiki.",
 	"bs-insertmagic-server": "URL an domani.",

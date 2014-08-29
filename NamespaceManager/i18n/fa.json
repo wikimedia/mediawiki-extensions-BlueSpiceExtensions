@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-namespacemanager-label-id": "شناسه",
+	"bs-namespacemanager-label-namespaces": "فضای نام",
+	"bs-namespacemanager-label-editable": "قابل تغییرنام",
+	"bs-namespacemanager-label-content": "در آمار",
+	"bs-namespacemanager-label-searchable": "جستجوی پیش‌فرض",
+	"bs-namespacemanager-label-subpages": "زیرصفحه‌ها",
+	"bs-namespacemanager-nsadded": "فضای نام اضافه شد.",
+	"bs-namespacemanager-nsremoved": "فضای نام حذف شد.",
+	"bs-namespacemanager-nsedited": "فضای نام ویرایش شد.",
+	"bs-namespacemanager-tipadd": "افزودن فضای نام",
+	"bs-namespacemanager-tipedit": "ویرایش فضای نام",
+	"bs-namespacemanager-tipremove": "حذف فضای نام",
+	"bs-namespacemanager-msgnoteditabledelete": "این فضای نام یک فضای نام سیستمی است و نمی‌تواند حذف شود.",
+	"bs-namespacemanager-labelnsname": "نام فضای نام",
+	"bs-namespacemanager-willdelete": "حذف خواهد شد",
+	"bs-namespacemanager-willmove": "به «{{int:bs-ns_main}}» منتقل خواهد شد",
+	"bs-namespacemanager-willmovesuffix": "به «{{int:bs-ns_main}}» با پسوند «{{int:bs-from-something}}» منتقل خواهد شد"
+}

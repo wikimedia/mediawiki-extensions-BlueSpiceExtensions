@@ -11,5 +11,7 @@
 	"bs-avatars-upload-title": "Cheñch skeudenn ar profil",
 	"bs-avatars-upload-label": "Skeudenn",
 	"bs-avatars-generate-new-label": "Krouiñ un avatar nevez",
-	"bs-avatars-warning-title": "Diwallit"
+	"bs-avatars-warning-title": "Diwallit",
+	"bs-avatars-userimage-title": "Skeudenn eus ar wiki pe URL ar skeudenn",
+	"bs-avatars-userimage-help": "da sk. Skeudenn.jpg or http://localhost/Skeudenn.gif"
 }

@@ -11,6 +11,8 @@
 	"bs-pagetemplates-tpl-desc-toolong": "Re hir eo an deskrivadur. Implijit 255 arouezenn d'ar muiañ, mar plij.",
 	"bs-pagetemplates-tpl-name-empty": "Merkit un anv patrom, mar plij.",
 	"bs-pagetemplates-tpl-added": "Ouzhpennet eo bet ar patrom.",
+	"bs-pagetemplates-invalid_pfx": "Direizh eo ar rakger.",
+	"bs-pagetemplates-nooldtpl": "N'eus ket bet gallet kavout ar patrom kozh.",
 	"bs-pagetemplates-tpl-edited": "Enrollet eo bet ar c'hemmoù.",
 	"bs-pagetemplates-tpl-deleted": "Dilamet eo bet ar patrom.",
 	"bs-pagetemplates-general-section": "Hollek",

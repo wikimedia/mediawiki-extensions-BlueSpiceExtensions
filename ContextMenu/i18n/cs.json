@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirek2"
+		]
+	},
+	"bs-contextmenu-page-edit": "Upravit stránku",
+	"bs-contextmenu-page-delete": "Smazat stránku",
+	"bs-contextmenu-page-move": "Přesunout stránku",
+	"bs-contextmenu-media-reupload": "Nahrát novou verzi",
+	"bs-contextmenu-user-mail": "Poslat e-mail",
+	"bs-contextmenu-file-download": "Stáhnout soubor"
+}

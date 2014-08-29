@@ -5,6 +5,7 @@
 			"Y-M D"
 		]
 	},
+	"prefs-smartlist": "Roll speredek",
 	"bs-smartlist-recent-changes": "Kemmoù graet nevez zo",
 	"bs-smartlist-no-entries": "N'eus bet kavet disoc'h ebet.",
 	"bs-smartlist-comment": "Evezhiadenn : $1.",
@@ -26,5 +27,6 @@
 	"bs-smartlist-title": "Titl",
 	"bs-smartlist-mostvisitedpages": "Pajennoù gwelet ar muiañ",
 	"bs-smartlist-mosteditedpages": "Pajennoù muiañ aozet",
-	"bs-smartlist-lastedits": "Ma aozadennoù"
+	"bs-smartlist-lastedits": "Ma aozadennoù",
+	"bs-smartlist-noedits": "N'eus bet kavet aozadenn ebet."
 }

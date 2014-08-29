@@ -5,6 +5,11 @@
 			"Y-M D"
 		]
 	},
+	"bs-extendedsearch-desc": "Klask astennet",
+	"specialextendedsearch": "Klask astennet",
+	"prefs-extendedsearch": "Klask astennet",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Rummad}} : $2",
+	"bs-extendedsearch-curl-not-active": "An astenn cURL n'eo ket gweredekaet.",
 	"bs-extendedsearch-error": "Fazi :",
 	"bs-extendedsearch-facet-category": "Rummad",
 	"bs-extendedsearch-facet-editors": "Aozerien",
@@ -21,6 +26,7 @@
 	"bs-extendedsearch-indexing-wiki-articles": "O venegeriñ pajennoù wiki",
 	"bs-extendedsearch-indexing-specialpages": "O venegeriñ pajennoù arbennik",
 	"bs-extendedsearch-search-category": "Klask er rummadoù :",
+	"bs-extendedsearch-search-editors": "Klask aozerien :",
 	"bs-extendedsearch-sort-by": "Renket dre :",
 	"bs-extendedsearch-sort-relevance": "Talvoudusted",
 	"bs-extendedsearch-sort-title": "Titl",
@@ -40,6 +46,7 @@
 	"bs-extendedsearch-index-error-deleting": "Fazi pa oad o tilemel ar meneger : $1",
 	"bs-extendedsearch-statistics": "Stadegoù",
 	"bs-extendedsearch-indexinginprogress": "Emeur o krouiñ ar meneger.",
+	"bs-extendedsearch-warning": "Diwallit",
 	"bs-extendedsearch-ascending": "War gresk",
 	"bs-extendedsearch-descending": "War zigresk",
 	"bs-extendedsearch-unknown": "Dianav",

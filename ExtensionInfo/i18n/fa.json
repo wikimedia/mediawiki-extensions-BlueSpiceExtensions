@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa",
+			"Reza1615"
+		]
+	},
+	"bs-extensioninfo-desc": "فهرست اطلاعات درباره افزونه‌های بارگذاری‌شده",
+	"bs-extensioninfo-label": "افزونه‌ها",
+	"bs-extensioninfo-software": "نرم‌افزار",
+	"bs-extensioninfo-version": "نسخه",
+	"extensioninfo": "افزونه‌ها",
+	"bs-extensioninfo-headerextname": "نام افزونه",
+	"bs-extensioninfo-headerversion": "نسخه",
+	"bs-extensioninfo-headerdesc": "توضیح",
+	"bs-extensioninfo-headerstatus": "وضعیت",
+	"bs-extensioninfo-headerpackage": "بسته‌بندی",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|عنصر|عنصر}}"
+}
