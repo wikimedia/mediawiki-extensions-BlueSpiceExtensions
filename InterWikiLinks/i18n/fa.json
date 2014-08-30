@@ -4,6 +4,9 @@
 			"Alirezaaa"
 		]
 	},
+	"bs-interwikilinks-desc": "رابط مدیریت برای افزودن، ویرایش و حذف پیوندهای میان‌ویکی",
+	"bs-interwikilinks-invalid-pfx-spc": "این پیشوند نامعتبر است. لطفاً از فاصله استفاده نکنید.",
+	"bs-interwikilinks-invalid-url-spc": "این نشانی نامعتبر است. لطفاً از فاصله استفاده نکنید.",
 	"bs-interwikilinks-label": "پیوندهای میان‌ویکی",
 	"bs-interwikilinks-link-created": "پیوند میان‌ویکی ایجاد شد.",
 	"bs-interwikilinks-link-added": "پیوند میان‌ویکی اضافه شد.",

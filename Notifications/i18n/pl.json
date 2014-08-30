@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Mateuszek045"
 		]
 	},
 	"prefs-notifications": "Powiadomienia",
 	"prefs-echo-extended": "Zaawansowane ustawienia systemu",
 	"bs-notifications-pref-notifynominor": "Bez powiadomień o drobnych zmianach",
 	"bs-notifications-pref-active": "Włącz powiadomienia",
+	"bs-echo-anon-user": "Anonimowy użytkownik",
+	"bs-echo-unknown-user": "nieznany",
 	"bs-echo-page-edit": "Strona [[:$1]] została zmieniona",
 	"bs-echo-page-create": "Strona [[:$1]] została utworzona",
 	"bs-echo-page-delete": "Strona [[:$1]] została skasowana",

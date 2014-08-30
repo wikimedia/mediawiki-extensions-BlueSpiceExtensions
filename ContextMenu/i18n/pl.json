@@ -10,7 +10,10 @@
 	"bs-contextmenu-page-move": "Przenieś stronę",
 	"bs-contextmenu-page-history": "Zobacz historię strony",
 	"bs-contextmenu-page-protect": "Zabezpiecz stronę",
+	"bs-contextmenu-page-info": "Zobacz informacje o stronie",
 	"bs-contextmenu-media-reupload": "Prześlij nową wersję",
+	"bs-contextmenu-media-view-page": "Zobacz stronę opis pliku i historię pliku",
+	"bs-contextmenu-user-mail": "Wyślij pocztę",
 	"bs-contextmenu-user-talk": "Zostaw wiadomość na stronie dyskusji",
 	"bs-contextmenu-file-download": "Pobierz plik"
 }

@@ -21,6 +21,7 @@
 	"bs-review-colreviewer": "Weryfikator",
 	"bs-review-colcomment": "Komentarz",
 	"bs-review-lblstartdate": "Data rozpoczęcia",
+	"bs-review-lblenddate": "Data zakończenia",
 	"bs-review-labelcomment": "Komentarz",
 	"bs-review-header-page-title": "Strona",
 	"bs-review-header-owner-name": "Właściciel",

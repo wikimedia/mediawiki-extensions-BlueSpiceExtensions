@@ -12,6 +12,8 @@
 	"bs-insertfile-details-title": "Szczegóły",
 	"bs-insertfile-labeldimensions": "Rozmiar (szer. x wys.)",
 	"bs-insertfile-labelalt": "Tekst alternatywny",
+	"bs-insertfile-labellink": "Link",
+	"bs-insertfile-typethumb": "miniatura",
 	"bs-insertfile-typeframe": "ramka",
 	"bs-insertfile-uploadimageemptytext": "Wybierz nowy obrazek ...",
 	"bs-insertfile-uploadimagefieldlabel": "Prześlij nowy obrazek",

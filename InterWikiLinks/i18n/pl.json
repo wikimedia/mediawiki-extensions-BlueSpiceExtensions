@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-interwikilinks-label": "Linki interwiki",
+	"bs-interwikilinks-link-created": "Link interwiki został utworzony.",
+	"bs-interwikilinks-link-added": "Link interwiki został dodany.",
+	"bs-interwikilinks-link-deleted": "Link interwiki został usunięty.",
+	"bs-interwikilinks-titleaddinterwikilink": "Dodaj link interwiki",
+	"bs-interwikilinks-titleeditinterwikilink": "Edytuj link interwiki",
+	"bs-interwikilinks-titledeleteinterwikilink": "Usuń link interwiki",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Czy na pewno chcesz usunąć ten link interwiki?",
+	"bs-interwikilinks-insertlink-tabtitle": "Link do innej wiki"
+}
