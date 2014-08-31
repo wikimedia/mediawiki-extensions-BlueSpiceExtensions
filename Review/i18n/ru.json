@@ -4,6 +4,7 @@
 			"Okras"
 		]
 	},
+	"bs-review-reviewed-till-extra": "Создано {{GENDER:$1|участником|участницей}} $2",
 	"bs-review-i-agree": "Согласен",
 	"bs-review-i-dismiss": "Не согласен",
 	"bs-review-comments": "Комментарии",
@@ -13,5 +14,7 @@
 	"bs-review-lblenddate": "Дата окончания",
 	"bs-review-labelcomment": "Комментарий",
 	"bs-review-header-page-title": "Страница",
-	"bs-review-header-owner-name": "Владелец"
+	"bs-review-header-owner-name": "Владелец",
+	"bs-review-header-startdate": "Начало",
+	"bs-review-header-enddate": "Конец"
 }

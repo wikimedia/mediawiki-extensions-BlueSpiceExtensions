@@ -7,5 +7,6 @@
 	},
 	"bs-rssstandards-title-page": "Страница",
 	"bs-rssstandards-title-cat": "Категория",
-	"bs-rssstandards-title-watch": "Список наблюдения"
+	"bs-rssstandards-title-watch": "Список наблюдения",
+	"bs-rssstandards-changes-from": "Правки {{GENDER:$1|участника|учасьницы}}: $1"
 }

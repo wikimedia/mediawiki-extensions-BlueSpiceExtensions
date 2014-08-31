@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
+	"bs-interwikilinks-label": "Интервики-ссылки",
 	"bs-interwikilinks-pfxexists": "Этот префикс уже существует.",
 	"bs-interwikilinks-headerprefix": "Префикс",
 	"bs-interwikilinks-titleaddinterwikilink": "Добавить интервики-ссылку",

@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Kaganer"
+			"Kaganer",
+			"Putnik"
 		]
 	},
 	"bs-articleinfo-desc": "Предоставляет сведения о странице в строке состояния",
-	"prefs-articleinfo": "Сведения о странице",
+	"prefs-articleinfo": "Сведения о странице",
 	"bs-articleinfo-pref-CheckRevisionInterval": "Интервал обновления (в секундах):",
 	"bs-articleinfo-last-edited": "Времени с последнего изменения",
 	"bs-articleinfo-last-edited-tooltip": "Последняя правка",

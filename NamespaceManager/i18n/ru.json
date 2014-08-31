@@ -5,5 +5,7 @@
 		]
 	},
 	"bs-namespacemanager-label-id": "ID",
-	"bs-namespacemanager-label-namespaces": "Пространство имён"
+	"bs-namespacemanager-label-namespaces": "Пространство имён",
+	"bs-namespacemanager-label-content": "В статистике",
+	"bs-namespacemanager-label-subpages": "Подстраницы"
 }

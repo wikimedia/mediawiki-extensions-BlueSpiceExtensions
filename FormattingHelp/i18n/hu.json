@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-formattinghelp-help-bold": "Félkövér",
+	"bs-formattinghelp-help-color": "Színes szöveg",
+	"bs-formattinghelp-help-headline": "Fejléc",
+	"bs-formattinghelp-help-listitem": "Listaelem",
+	"bs-formattinghelp-help-subitem": "Alelem",
+	"bs-formattinghelp-help-template": "Sablon"
+}

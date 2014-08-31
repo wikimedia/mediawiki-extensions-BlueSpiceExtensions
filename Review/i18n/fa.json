@@ -6,9 +6,13 @@
 			"Reza1615"
 		]
 	},
+	"bs-review-desc": "عملکرد بازبینی را می‌افزاید",
 	"prefs-review": "بازبینی",
 	"bs-review-review": "بازبینی",
 	"bs-review-menu-entry": "بازبینی ویرایش",
+	"bs-review-accepted": "پذیرفته‌شده",
+	"bs-review-rejected": "ردشده",
+	"bs-review-abstain": "ممتنع",
 	"bs-review-review-finished": "این صفحه بررسی شده‌است.",
 	"log-name-bs-review": "سیاههٔ بازبینی",
 	"review": "بازبینی",

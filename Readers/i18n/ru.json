@@ -4,6 +4,7 @@
 			"Okras"
 		]
 	},
+	"prefs-readers": "Читатели",
 	"bs-readers-header-username": "Имя участника",
 	"bs-readers-header-ts": "Дата"
 }

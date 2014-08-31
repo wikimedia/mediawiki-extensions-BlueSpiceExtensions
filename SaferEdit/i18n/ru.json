@@ -4,5 +4,7 @@
 			"Okras"
 		]
 	},
-	"bs-saferedit-restore": "Восстановить"
+	"bs-saferedit-restore": "Восстановить",
+	"bs-saferedit-safer-edit-topbar": "Восстановление",
+	"bs-saferedit-othersectiontitle": "Раздел для восстановления"
 }

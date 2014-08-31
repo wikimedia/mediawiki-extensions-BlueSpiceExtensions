@@ -5,6 +5,7 @@
 		]
 	},
 	"prefs-pagetemplates": "Страничные шаблоны",
+	"bs-pagetemplates-empty-page": "Пустая страница",
 	"bs-pagetemplatesadmin-label": "Страничные шаблоны",
 	"bs-pagetemplates-headerlabel": "Обозначение",
 	"bs-pagetemplates-headertargetnamespace": "Пространство имён",

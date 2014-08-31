@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-pagesvisited-desc": "یک فهرست شخصی از آخرین صفحات بازدیدشده فراهم می‌کند",
+	"prefs-pagesvisited": "صفحات بازدیدشده",
+	"bs-pagesvisited-widget-title": "صفحات بازدیدشده",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|فضای نام|فضاهای نام}} <code>$2</code> داده‌شده معتبر {{PLURAL:$1|نیست|نیستند}}.",
+	"bs-pagesvisited-pref-widgetlimit": "محدودیت ورودی‌ها:",
+	"bs-pagesvisited-pref-widgetns": "فضاهای نام:",
+	"bs-pagesvisited-pref-widgetsortodr": "ترتیب بر پایه:",
+	"bs-pagesvisited-pref-sort-time": "زمان",
+	"bs-pagesvisited-pref-sort-pagename": "عنوان",
+	"bs-pagesvisited-tag-pagesvisited-desc": "یک فهرست از صفحاتی که بازدید کردید نشان می‌دهد."
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-formattinghelp-help-example-text": "Текст",
+	"bs-formattinghelp-help-bold": "Полужирный",
+	"bs-formattinghelp-help-italic": "Наклонный",
+	"bs-formattinghelp-help-color": "Цветной текст",
+	"bs-formattinghelp-help-extlink": "Внешняя ссылка",
+	"bs-formattinghelp-help-template": "Шаблон",
+	"bs-formattinghelp-help-templatename": "Имя шаблона"
+}

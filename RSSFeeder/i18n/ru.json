@@ -4,7 +4,12 @@
 			"Okras"
 		]
 	},
+	"bs-rssfeeder-desc": "Создайте свой собственный RSS-канал",
+	"bs-rssfeeder-pagetext": "Вы можете подписаться на следующие RSS-каналы:",
+	"bs-rssfeeder-recent-changes": "Свежие правки",
 	"bs-rssfeeder-pages": "Страница",
 	"bs-rssfeeder-submit": "Показать",
-	"bs-rssfeeder-rss": "RSS-канал"
+	"bs-rssfeeder-rss": "RSS-канал",
+	"bs-rssfeeder-rss-desc": "Создайте свой собственный RSS-канал",
+	"bs-extjs-rssfeeder-rss-title": "URL-адрес RSS"
 }

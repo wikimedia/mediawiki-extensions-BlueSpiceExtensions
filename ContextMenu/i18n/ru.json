@@ -9,5 +9,6 @@
 	"bs-contextmenu-page-delete": "Удалить страницу",
 	"bs-contextmenu-page-move": "Переименовать страницу",
 	"bs-contextmenu-page-protect": "Защитить страницу",
-	"bs-contextmenu-media-reupload": "Загрузить новую версию"
+	"bs-contextmenu-media-reupload": "Загрузить новую версию",
+	"bs-contextmenu-file-download": "Загрузить файл"
 }

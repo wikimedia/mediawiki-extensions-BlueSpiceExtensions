@@ -6,6 +6,8 @@
 			"Okras"
 		]
 	},
+	"prefs-statistics": "Расширенная статистика",
+	"extendedstatistics": "Расширенная статистика",
 	"bs-statistics-diagram": "Запрос",
 	"bs-statistics-to": "К",
 	"bs-statistics-grain": "Интервал",
@@ -15,6 +17,7 @@
 	"bs-statistics-week": "Календарная неделя",
 	"bs-statistics-day": "День",
 	"bs-statistics-list": "Список",
+	"bs-statistics-finish": "Создать диаграмму",
 	"bs-statistics-filters": "Фильтры",
 	"bs-statistics-diag-number-of-users": "Количество участников",
 	"bs-statistics-label-name": "Имя",
@@ -23,7 +26,12 @@
 	"bs-statistics-label-page": "Страница",
 	"bs-statistics-label-creator": "Автор",
 	"bs-statistics-diag-number-of-edits": "Число правок",
+	"bs-statistics-label-count": "Количество",
+	"bs-statistics-label-maxhits": "Максимальный результат",
 	"bs-statistics-label-time": "Время",
 	"bs-statistics-filter-category": "Категория",
+	"bs-statistics-portlet-numberofusers": "Число участников",
+	"bs-statistics-portlet-numberofedits": "Число правок",
+	"bs-statistics-portlet-numberofpages": "Количество страниц",
 	"bs-statistics-portletconfig-periodday": "Вчера"
 }

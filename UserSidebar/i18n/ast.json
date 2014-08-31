@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-usersidebar-desc": "Amestar la llingüeta focu a la barra llateral",
+	"prefs-usersidebar": "Barra llateral d'usuariu",
+	"bs-usersidebar-userpagesettings-link-title": "Editar el conteníu del to focu",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} focu"
+}

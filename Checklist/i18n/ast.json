@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-checklist-desc": "Ufre la funcionalidá de llista de comprobación",
+	"bs-checklist-button-checkbox-title": "Elementos de la llista de comprobación",
+	"bs-checklist-menu-insert-list-title": "Inxertar llista",
+	"bs-checklist-menu-insert-checkbox": "Caxella de comprobación",
+	"bs-checklist-dlg-insert-list-value-list": "Llista de valores",
+	"bs-checklist-tag-checklist-desc": "Presenta una caxella de comprobación o un campu de seleición. Atributos de configuración disponibles:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> presenta una llista de seleición.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Nome de la plantía colos valores disponibles. El parámetru <code>type</code> tien de configurase como <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> o un valor fuera de la plantía de llista."
+}
