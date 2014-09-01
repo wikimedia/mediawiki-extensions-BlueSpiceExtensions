@@ -159,7 +159,7 @@ class ViewTopMenuItem extends ViewBaseElement {
 
 		$sOut = '';
 		$sOut .= '<li>';
-		$sOut .= "<a href='$this->sLink' title='$sTitle' class='".implode(' ', $aClasses)."' $sLinkTarget>$sText</a>";
+		$sOut .= "<a href='$this->sLink' class='".implode(' ', $aClasses)."' $sLinkTarget>$sText</a>";
 		if( !empty($this->aChildren) ) {
 			$sOut .= $this->rederChildItems();
 		}
