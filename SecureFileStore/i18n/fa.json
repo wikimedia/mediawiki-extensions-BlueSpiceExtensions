@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-securefilestore-desc": "از دسترسی غیرمجاز به پرونده‌ها جلوگیری می‌کند",
+	"prefs-securefilestore": "محفوظ نگه‌داشتن ذخیره پرونده",
+	"bs-securefilestore-pref-defaultdisposition": "نمایش پرونده‌ها به طور پیش‌فرض:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "مرورگر",
+	"bs-securefilestore-pref-defaultdisposition-external": "خارجی",
+	"bs-securefilestore-pref-dispositionattachment": "انواع پرونده خارجی:",
+	"bs-securefilestore-pref-dispositioninline": "انواع پرونده مرورگر:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "همیشه نمایش‌دادن این انواع پرونده:"
+}

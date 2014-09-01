@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-insertmagic": "Inserir un mot magic",
+	"bs-insertmagic-currentyear": "Annada actuala",
+	"bs-insertmagic-server": "URL del domeni.",
+	"bs-insertmagic-servername": "Nom de domeni.",
+	"bs-insertmagic-scriptpath": "Camin relatiu de l'escript.",
+	"bs-insertmagic-stylepath": "Estil de camin relatiu",
+	"bs-insertmagic-currentversion": "La version de MediaWiki del wiki.",
+	"bs-insertmagic-contentlanguage": "La lenga d’interfàcia per defaut del wiki.",
+	"bs-insertmagic-pageid": "Renvia l’identificant de la pagina.",
+	"bs-insertmagic-revisionid": "Identificant de revision unica.",
+	"bs-insertmagic-type-tags": "Balisas",
+	"bs-insertmagic-type-variables": "Variablas",
+	"bs-insertmagic-label-desc": "Descripcion"
+}

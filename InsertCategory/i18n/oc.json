@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-insertcategory-insertcat": "Inserir una categoria",
+	"prefs-insertcategory": "‎Inserir una categoria",
+	"bs-insertcategory-title": "Inserir una categoria",
+	"bs-insertcategory-cat-label": "Assignat :",
+	"bs-insertcategory-failure": "Error",
+	"bs-insertcategory-panel-title": "Categorias"
+}

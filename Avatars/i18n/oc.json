@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"prefs-avatars": "Avatars",
+	"bs-avatars-pref-generator": "Generador",
+	"bs-avatars-pref-defaultsize": "Talha per defaut en pixèls :",
+	"bs-avatars-upload-label": "Fòto",
+	"bs-avatars-warning-title": "Avertiment"
+}

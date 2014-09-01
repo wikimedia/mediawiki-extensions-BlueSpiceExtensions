@@ -12,6 +12,7 @@
 	"bs-extendedsearch-facet-category": "カテゴリ",
 	"bs-extendedsearch-facet-namespace": "名前空間",
 	"bs-extendedsearch-facet-namespace-files": "ファイル",
+	"bs-extendedsearch-facet-namespace-extfiles": "外部ファイル",
 	"bs-extendedsearch-nosearchterm": "検索語句を入力してください。",
 	"bs-extendedsearch-server-not-available": "検索サーバーを利用できません。",
 	"bs-extendedsearch-pref-defscopeuser": "既定の検索対象:",

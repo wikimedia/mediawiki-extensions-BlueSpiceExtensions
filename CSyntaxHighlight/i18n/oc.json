@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-csyntaxhighlight-pref-theme": "Tèma :",
+	"bs-csyntaxhighlight-pref-gutter": "Afichar los numèros de linha",
+	"bs-csyntaxhighlight-pref-autolinks": "URLs dels ligams",
+	"bs-csyntaxhighlight-pref-toolbar": "Afichar la barra d'aisinas"
+}

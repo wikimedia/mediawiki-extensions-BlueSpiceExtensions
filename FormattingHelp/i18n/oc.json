@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-formattinghelp-formatting": "Ajuda a la mesa en forma",
+	"bs-formattinghelp-help-syntax": "Sintaxi",
+	"bs-formattinghelp-help-example-text": "Tèxte",
+	"bs-formattinghelp-help-bold": "Gras",
+	"bs-formattinghelp-help-italic": "Italica",
+	"bs-formattinghelp-help-whitespace": "Espacis",
+	"bs-formattinghelp-help-nowiki": "Empachar la mesa en forma",
+	"bs-formattinghelp-help-color": "Tèxte colorat",
+	"bs-formattinghelp-help-headline": "Títol",
+	"bs-formattinghelp-help-linebreak": "Saut de linha",
+	"bs-formattinghelp-help-ul": "Lista pas ordenada",
+	"bs-formattinghelp-help-listitem": "Element de lista",
+	"bs-formattinghelp-help-subitem": "Soselement",
+	"bs-formattinghelp-help-numberedlist": "Lista numerotada",
+	"bs-formattinghelp-help-link": "Ligam intèrne",
+	"bs-formattinghelp-help-caption": "Legenda",
+	"bs-formattinghelp-help-extlink": "Ligam extèrne",
+	"bs-formattinghelp-help-hr": "Linha orizontala",
+	"bs-formattinghelp-help-template": "Modèl",
+	"bs-formattinghelp-help-templatename": "Nom del modèl"
+}

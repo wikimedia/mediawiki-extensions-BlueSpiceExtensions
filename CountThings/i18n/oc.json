@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-countthings-chars-label": "Caractèrs",
+	"bs-countthings-words-label": "Mots",
+	"bs-countthings-pages-label": "Paginas",
+	"bs-countthings-error-no-input": "Cap de pagina pas provesida"
+}

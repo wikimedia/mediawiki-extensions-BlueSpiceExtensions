@@ -4,6 +4,7 @@
 			"Shirayuki"
 		]
 	},
+	"bs-contextmenu-desc": "さまざまなリンクを含むコンテキスト メニューを提供する",
 	"prefs-contextmenu": "コンテキスト メニュー",
 	"bs-contextmenu-pref-modus": "コンテキスト メニューの開き方 (携帯機器以外):",
 	"bs-contextmenu-pref-modus-just-right-mouse": "右クリック (Ctrl+右クリック でブラウザー既定のコンテキスト メニュー)",

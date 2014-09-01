@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-extensioninfo-label": "Extensions",
+	"bs-extensioninfo-software": "Logicial",
+	"bs-extensioninfo-version": "Version",
+	"extensioninfo": "Extensions",
+	"bs-extensioninfo-headerextname": "Nom de l’extension",
+	"bs-extensioninfo-headerversion": "Version",
+	"bs-extensioninfo-headerdesc": "Descripcion",
+	"bs-extensioninfo-headerstatus": "Estatut",
+	"bs-extensioninfo-headerpackage": "Paquet",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element|elements}}"
+}

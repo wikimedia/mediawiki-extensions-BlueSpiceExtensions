@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-specialadmindashboard-label": "Tablèu de bòrd",
+	"bs-dashboards-addportlet": "Apondre un portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Tablèus de bòrd",
+	"bs-dashboard-userportlet-calendar-title": "Calendièr",
+	"bs-dashboard-userportlet-calendar-description": "Calendièr"
+}

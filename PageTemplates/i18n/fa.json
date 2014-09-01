@@ -24,6 +24,7 @@
 	"bs-pagetemplates-tpl-deleted": "این الگو حذف شد.",
 	"bs-pagetemplates-general-section": "عمومی",
 	"bs-pagetemplates-pref-excludens": "نشان ندادن الگوها در این فضاهای نام:",
+	"bs-pagetemplates-headerlabel": "برچسب",
 	"bs-pagetemplates-headertargetnamespace": "فضای نام",
 	"bs-pagetemplates-tipeditdetails": "ویرایش الگو",
 	"bs-pagetemplates-tipdeletetemplate": "حذف {{PLURAL:$1|الگو|الگوها}}",
@@ -35,6 +36,6 @@
 	"bs-pagetemplates-label-article": "الگو",
 	"bs-pagetemplates-confirm-deletetpl": "آیا مطمئنید می‌خواهید این الگو را حذف کنید؟",
 	"bs-pagetemplates-remove-message-unknown": "یک خطای غیر منتظره رخ داد، لطفاً دوباره تلاش کنید.",
-	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|الگوی|الگوهای} روبرو {{PLURAL:$1|حذف شد|حذف شدند}}: $2",
+	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|الگوی|الگوهای}} روبرو {{PLURAL:$1|حذف شد|حذف شدند}}: $2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|الگوی|الگوهای}} روبرو {{PLURAL:$1|نمی‌تواند حذف شود|نمی‌توانند حذف شوند}}: $2 (دلیل: $3)"
 }
