@@ -11,6 +11,7 @@
 	"bs-shoutbox-pref-numberofshouts": "Niver a gemennadennoù diskouezet :",
 	"bs-shoutbox-pref-showage": "Diskouez deiziad krouiñ ur gemennadenn",
 	"bs-shoutbox-pref-showuser": "Diskouez aozer ur gemennadenn",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|arouezenn}} a chom",
 	"bs-shoutbox-confirm-title": "Kadarnaat",
 	"bs-shoutbox-entermessage": "Skrivit ur gemennadenn, mar plij."
 }

@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Categoria|Categorie}}: $2",
+	"bs-extendedsearch-curl-not-active": "L'estensione cURL non è attiva.",
+	"bs-extendedsearch-error": "Errore:",
+	"bs-extendedsearch-facet-category": "Categoria",
+	"bs-extendedsearch-facet-editors": "Autori",
+	"bs-extendedsearch-facet-namespace": "Namespace",
+	"bs-extendedsearch-facet-namespace-files": "File",
+	"bs-extendedsearch-facet-type": "Formato",
+	"bs-extendedsearch-facet-uncategorized": "Non categorizzato",
+	"bs-extendedsearch-facet-namespace-extfiles": "File esterni",
+	"bs-extendedsearch-files": "Ricerca file",
+	"bs-extendedsearch-sort-title": "Titolo",
+	"bs-extendedsearch-sort-type": "Tipo",
+	"bs-extendedsearch-specialpage-form-return-to-simple": "Modulo di ricerca di base",
+	"bs-extendedsearch-specialpage-form-expand-to-extended": "Modulo di ricerca avanzata",
+	"bs-extendedsearch-searchfulltext": "Contenente...",
+	"bs-extendedsearch-pref-scope-title": "Titolo",
+	"bs-extendedsearch-statistics": "Statistiche",
+	"bs-extendedsearch-warning": "Attenzione",
+	"bs-extendedsearch-unknown": "Sconosciuto",
+	"bs-extendedsearch-section": "Sezione",
+	"bs-extendedsearch-morelikethis": "Pagine simili"
+}

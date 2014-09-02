@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Glavkos"
+			"Glavkos",
+			"Protnet"
 		]
 	},
 	"bs-insertfile-insert-image": "Εισαγωγή εικόνας",
@@ -9,7 +10,7 @@
 	"bs-insertfile-labelfilter": "Φίλτρο:",
 	"bs-insertfile-filesize": "Μέγεθος αρχείου",
 	"bs-insertfile-lastmodified": "Πρόσφατες αλλαγές",
-	"bs-insertfile-labelupload": "Επιφόρτωση",
+	"bs-insertfile-labelupload": "Ανέβασμα αρχείου",
 	"bs-insertfile-details-title": "Λεπτομέρειες",
 	"bs-insertfile-alignleft": "αριστερά",
 	"bs-insertfile-aligncenter": "κέντρο",

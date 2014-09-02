@@ -5,6 +5,9 @@
 		]
 	},
 	"prefs-wantedarticle": "Pajenn c'hoantaet",
+	"bs-wantedarticle-ajax-error-no-parameter": "N'eus bet pourchaset titl ebet evit ar bajenn.",
+	"bs-wantedarticle-page-removed": "Lamet eo bet ar bajenn \"$1\".",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Aliañ",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Krouiñ",
 	"bs-wantedarticle-single-textfield-defaulttext": "Titl ar bajenn",
 	"bs-wantedarticle-tag-more-linktext": "Muioc'h...",
@@ -15,5 +18,6 @@
 	"bs-wantedarticle-pref-sort-title": "Titl",
 	"bs-wantedarticle-pref-order-asc": "war gresk",
 	"bs-wantedarticle-pref-order-desc": "war zigresk",
-	"bs-wantedarticle-create-page": "Krouiñ ar bajenn \"$1\"."
+	"bs-wantedarticle-create-page": "Krouiñ ar bajenn \"$1\".",
+	"bs-wantedarticle-info-nothing-entered": "Pourchasit un titl reizh evit ar bajenn, mar plij."
 }

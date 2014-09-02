@@ -4,5 +4,22 @@
 			"Beta16"
 		]
 	},
-	"bs-permissionmanager-labeltpled-cancel": "Annulla"
+	"bs-permissionmanager-btn-group-label": "Gruppo:",
+	"bs-permissionmanager-header-global": "Wiki",
+	"bs-permissionmanager-header-namespaces": "Namespace",
+	"bs-permissionmanager-header-group": "Gruppo",
+	"bs-permissionmanager-btn-save-label": "Salva",
+	"bs-permissionmanager-labeltpled-desc": "Descrizione",
+	"bs-permissionmanager-labeltpled-add": "Nuovo",
+	"bs-permissionmanager-labeltpled-edit": "Modifica",
+	"bs-permissionmanager-labeltpled-delete": "Cancella",
+	"bs-permissionmanager-labeltpled-cancel": "Annulla",
+	"bs-permissionmanager-msgtpled-success": "Template salvato.",
+	"bs-permissionmanager-msgtpled-savefailure": "Il template non può essere salvato.",
+	"bs-permissionmanager-msgtpled-new": "Nome template:",
+	"bs-permissionmanager-msgtpled-delete": "Template cancellato.",
+	"bs-permissionmanager-msgtpled-deletefail": "Il template non può essere cancellato.",
+	"bs-permissionmanager-titletpled-new": "Crea template",
+	"bs-permissionmanager-titletpled-edit": "Rinomina template",
+	"bs-permissionmanager-titletpled-delete": "Cancella template"
 }

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "Sintassi",
+	"bs-formattinghelp-help-example-text": "Testo",
+	"bs-formattinghelp-help-bold": "Grassetto",
+	"bs-formattinghelp-help-italic": "Corsivo",
+	"bs-formattinghelp-help-extlink": "Collegamento esterno",
+	"bs-formattinghelp-help-hr": "Linea orizzontale",
+	"bs-formattinghelp-help-template": "Template",
+	"bs-formattinghelp-help-templatename": "Nome template"
+}

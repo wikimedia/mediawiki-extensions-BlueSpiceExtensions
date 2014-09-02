@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"prefs-csyntaxhighlight": "Evidenziatore di sintassi",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Visualizza i numeri di riga",
+	"bs-csyntaxhighlight-pref-toolbar": "Mostra barra degli strumenti"
+}

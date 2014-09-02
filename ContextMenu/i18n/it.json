@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-contextmenu-page-edit": "Modifica la pagina",
+	"bs-contextmenu-page-delete": "Cancella la pagina",
+	"bs-contextmenu-page-move": "Sposta la pagina",
+	"bs-contextmenu-page-history": "Vedi cronologia della pagina",
+	"bs-contextmenu-page-protect": "Proteggi la pagina",
+	"bs-contextmenu-page-info": "Vedi informazioni della pagina",
+	"bs-contextmenu-media-reupload": "Carica una nuova versione",
+	"bs-contextmenu-media-view-page": "Vedi pagina di descrizione del file e cronologia del file",
+	"bs-contextmenu-user-mail": "Invia email",
+	"bs-contextmenu-user-talk": "Lascia un messaggio sulla pagina di discussione",
+	"bs-contextmenu-file-download": "Scarica il file"
+}

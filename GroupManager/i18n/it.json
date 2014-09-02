@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-groupmanager-desc": "Interfaccia di amministrazione per la gestione dei gruppi",
+	"bs-groupmanager-grpexists": "Il gruppo esiste già.",
+	"bs-groupmanager-grpadded": "Il gruppo è stato aggiunto.",
+	"bs-groupmanager-grpedited": "Il gruppo è stato modificato.",
+	"bs-groupmanager-grpremoved": "Il gruppo è stato rimosso.",
+	"bs-groupmanager-label": "Gestione gruppi",
+	"bs-groupmanager-headergroup": "Gruppo",
+	"bs-groupmanager-tipremove": "Rimuovi {{PLURAL:$1|gruppo|gruppi}}",
+	"bs-groupmanager-titlenewgroup": "Nuovo gruppo",
+	"bs-groupmanager-titleeditgroup": "Modifica gruppo",
+	"bs-groupmanager-removegroup": "Sei sicuro di voler rimuovere {{PLURAL:$1|questo gruppo|questi gruppi}}?",
+	"bs-groupmanager-lablename": "Nome gruppo:"
+}

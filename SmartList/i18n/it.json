@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-smartlist-day": "Giorno",
+	"bs-smartlist-week": "Settimana",
+	"bs-smartlist-month": "Mese",
+	"bs-smartlist-time": "Ora",
+	"bs-smartlist-title": "Titolo"
+}

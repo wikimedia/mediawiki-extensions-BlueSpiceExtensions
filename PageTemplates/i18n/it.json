@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-pagetemplates-headerlabel": "Etichetta",
+	"bs-pagetemplates-headertargetnamespace": "Namespace",
+	"bs-pagetemplates-tipeditdetails": "Modifica template",
+	"bs-pagetemplates-tipdeletetemplate": "Cancella {{PLURAL:$1|template}}",
+	"bs-pagetemplates-tipaddtemplate": "Aggiungi template",
+	"bs-pagetemplates-label-tpl": "Nome template",
+	"bs-pagetemplates-label-desc": "Descrizione",
+	"bs-pagetemplates-label-targetns": "Namespace",
+	"bs-pagetemplates-label-article": "Template"
+}
