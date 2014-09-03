@@ -4,10 +4,13 @@
 			"Shirayuki"
 		]
 	},
+	"bs-review-review-error": "不明なエラーが発生しました。",
 	"bs-review-comments": "コメント",
 	"bs-review-btnmoveup": "上に移動",
 	"bs-review-btnmovedown": "下に移動",
+	"bs-review-colstatus": "状態",
 	"bs-review-colcomment": "コメント",
+	"bs-review-labelcomment": "コメント",
 	"bs-review-header-page-title": "ページ",
 	"bs-review-header-owner-name": "所有者",
 	"bs-review-header-startdate": "開始",

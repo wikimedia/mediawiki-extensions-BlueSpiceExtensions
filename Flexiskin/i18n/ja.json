@@ -5,11 +5,13 @@
 			"Mfuji"
 		]
 	},
+	"bs-flexiskin-desc": "外装を作成する機能を追加する",
 	"bs-flexiskin-label": "外装",
 	"bs-flexiskin-defaultname": "既定",
 	"bs-flexiskin-error-skinexists": "この名前の外装は既に存在します。",
 	"bs-flexiskin-error-fail-add-skin": "外装を作成できませんでした: $1",
 	"bs-flexiskin-error-delete-skin": "外装を削除できませんでした: $1",
+	"bs-flexiskin-not-allowed": "このページへのアクセスは許可されていません。",
 	"prefs-flexiskin": "外装",
 	"bs-flexiskin-pref-active": "有効な外装:",
 	"bs-flexiskin-pref-logo": "ロゴ:",
@@ -22,6 +24,7 @@
 	"bs-flexiskin-titleaddskin": "外装の追加",
 	"bs-flexiskin-labelskins": "テンプレート",
 	"bs-flexiskin-labelbgcolor": "背景色",
+	"bs-flexiskin-headerheader": "ヘッダー",
 	"bs-flexiskin-labellogoupload": "ロゴ",
 	"bs-flexiskin-labelbackgroundupload": "背景画像",
 	"bs-flexiskin-no-repeat": "繰り返さない",

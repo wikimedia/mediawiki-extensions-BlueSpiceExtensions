@@ -41,7 +41,7 @@
 	"bs-extendedsearch-search-help-multiselect": "Text for hold CTRL key to select multiple items.",
 	"bs-extendedsearch-search-namespace": "Text for search in the namespaces:",
 	"bs-extendedsearch-server-not-available": "Text for the search server is not available.",
-	"bs-extendedsearch-sort-by": "Text for sorted by:\n{{Identical|Sort by}}",
+	"bs-extendedsearch-sort-by": "Text for sorted by.\n\nFollowed by the following items:\n* {{msg-mw|Bs-extendedsearch-sort-relevance}}\n* {{msg-mw|Bs-extendedsearch-sort-title}}\n* {{msg-mw|Bs-extendedsearch-sort-ts}}\n* {{msg-mw|Bs-extendedsearch-sort-type}}\n{{Identical|Sort by}}",
 	"bs-extendedsearch-sort-relevance": "Text for relevance\n{{Identical|Relevance}}",
 	"bs-extendedsearch-sort-title": "Text for title\n{{Identical|Title}}",
 	"bs-extendedsearch-sort-ts": "Text for time\n{{Identical|Time}}",

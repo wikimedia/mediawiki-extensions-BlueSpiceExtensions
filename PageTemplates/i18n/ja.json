@@ -6,6 +6,7 @@
 	},
 	"bs-pagetemplates-desc": "ページ テンプレートの印が付けられたテンプレートの一覧を表示する",
 	"prefs-pagetemplates": "ページ テンプレート",
+	"bs-pagetemplates-empty-page": "空のページ",
 	"bs-pagetemplatesadmin-label": "ページ テンプレート",
 	"bs-pagetemplates-tpl-label-empty": "ラベルを入力してください。",
 	"bs-pagetemplates-tpl-name-empty": "テンプレート名を入力してください。",
