@@ -41,7 +41,7 @@ class ViewStateBar extends ViewBaseElement {
 		$aOut = array();
 		$aOut[] = '<div id="bs-statebar">';
 
-		$aOut[] = ' <a id="bs-statebar-viewtoggler" href="#" title="' . wfMessage('bs-statebar-viewtoggler-tooltip')->plain() . '" class="icon-menu2-after">';
+		$aOut[] = ' <a id="bs-statebar-viewtoggler" href="#" title="' . wfMessage('bs-statebar-viewtoggler-tooltip')->plain() . '" class="icon-arrow-down9-after">';
 		$aOut[] = '<span>' . wfMessage('bs-statebar-viewtoggler')->plain() . '</span>';
 		$aOut[] = ' </a>';
 
