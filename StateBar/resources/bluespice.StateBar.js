@@ -20,7 +20,7 @@ BsStateBar = {
 	sStateBarBodyLoadView: '<div id="sStateBarBodyLoadView"><center><img src="' + wgScriptPath + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" /></center></div>',
 	aRegisteredToggleClickElements: [],
 	imagePathActive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_less.png',
-	imagePathInactive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_more.png',
+	imagePathInactive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn-more.png',
 
 	getStateBarBody: function(){
 		if ( BsStateBar.bAjaxCallComplete === true ) return;
