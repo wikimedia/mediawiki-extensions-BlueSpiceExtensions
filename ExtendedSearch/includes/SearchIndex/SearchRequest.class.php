@@ -42,9 +42,6 @@ class SearchRequest {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->oRequest = RequestContext::getMain()->getRequest();
-		$this->setDefaults();
-		$this->processSettings();
-		$this->processInputs();
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -60,6 +57,12 @@ class SearchRequest {
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return self::$oInstance;
+	}
+
+	public function init() {
+		$this->setDefaults();
+		$this->processSettings();
+		$this->processInputs();
 	}
 
 	/**

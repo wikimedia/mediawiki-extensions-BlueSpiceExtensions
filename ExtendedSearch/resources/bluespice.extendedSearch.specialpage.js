@@ -203,7 +203,7 @@ BsExtendedSearchAjaxManager.prototype = {
 		}
 
 		// facets armed with attribute urldiff...
-		$( '[urldiff]' ).removeAttr( 'onchange' ).click( function() {
+		$( '[urldiff]' ).click( function() {
 			ExtendedSearchAjaxManager.changeRequestFacets( $( this ).attr( 'urldiff' ), $( this ).attr( 'checked' ) );
 		});
 
@@ -227,6 +227,7 @@ BsExtendedSearchAjaxManager.prototype = {
 		var length = aAllParams.length;
 		var urlParams = urldiff;
 		var hash = document.location.hash;
+
 		for ( var i = 0; i < length; i++ ) {
 			aKeyValue = aAllParams[i].split( '=' );
 			if ( i != length && document.location.hash != '' ) {

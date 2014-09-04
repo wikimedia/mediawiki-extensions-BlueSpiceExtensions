@@ -52,16 +52,6 @@
 class ExtendedSearch extends BsExtensionMW {
 
 	/**
-	 * Instance of BsExtendedSearchBase
-	 * @var Object
-	 */
-	protected $oExtendedSearchBase = null;
-	/**
-	 * Instance of BuildIndexMainControl
-	 * @var Object
-	 */
-	protected $oBuildIndexMainControl = null;
-	/**
 	 * Unique wiki id
 	 */
 	private $sWikiID = '';
@@ -148,9 +138,6 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
-		$this->oExtendedSearchBase = ExtendedSearchBase::getInstance( $this );
-		$this->oBuildIndexMainControl = BuildIndexMainControl::getInstance();
-
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -205,7 +192,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$oWidgetView
 			->setId( 'bs-extendedsearch-mlt' )
 			->setTitle( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() )
-			->setBody( $this->oExtendedSearchBase->getViewMoreLikeThis( $oTitle )->execute() )
+			->setBody( ExtendedSearchBase::getInstance( $this )->getViewMoreLikeThis( $oTitle )->execute() )
 			->setTooltip( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() )
 			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-extendedsearch-portlet' ) ); //For correct margin and fontsize
 
@@ -235,7 +222,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$oMltListView = new ViewStateBarBodyElement();
 		$oMltListView->setKey( 'MoreLikeThis' );
 		$oMltListView->setHeading( wfMessage( 'bs-extendedsearch-morelikethis' )->plain() );
-		$oMltListView->setBodyText( $this->oExtendedSearchBase->getViewMoreLikeThis( $oTitle )->execute() );
+		$oMltListView->setBodyText( ExtendedSearchBase::getInstance( $this )->getViewMoreLikeThis( $oTitle )->execute() );
 
 		$aBodyViews['statebarbodymorelikethis'] = $oMltListView;
 		return true;
@@ -366,7 +353,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onArticleDeleteComplete( &$oArticle, &$oUser, $sReason, $iID ) {
 		try {
-			$this->oBuildIndexMainControl->deleteFromIndexWiki( $iID );
+			BuildIndexMainControl::getInstance()->deleteFromIndexWiki( $iID );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onArticleDeleteComplete: '.$e->getMessage() );
 		}
@@ -382,7 +369,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onArticleSaveComplete( &$oArticle, &$oUser ) {
 		try {
-			$this->oBuildIndexMainControl->updateIndexWiki( $oArticle );
+			BuildIndexMainControl::getInstance()->updateIndexWiki( $oArticle );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onArticleSaveComplete: '.$e->getMessage() );
 		}
@@ -397,7 +384,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onArticleUndelete( $oTitle, $bCreate ) {
 		try {
-			$this->oBuildIndexMainControl->updateIndexWikiByTitleObject( $oTitle );
+			BuildIndexMainControl::getInstance()->updateIndexWikiByTitleObject( $oTitle );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onArticleUndelete: '.$e->getMessage() );
 		}
@@ -416,18 +403,18 @@ class ExtendedSearch extends BsExtensionMW {
 	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, &$oUser, $iOldID, $iNewID ) {
 		try {
 			// Moving article
-			$this->oBuildIndexMainControl->updateIndexWikiByTitleObject( $oNewtitle );
+			BuildIndexMainControl::getInstance()->updateIndexWikiByTitleObject( $oNewtitle );
 			// Check if redirect is created; 0 is no redirect
 			if ( $iNewID !== 0 ) {
-				$this->oBuildIndexMainControl->updateIndexWikiByTitleObject( $oTitle );
+				BuildIndexMainControl::getInstance()->updateIndexWikiByTitleObject( $oTitle );
 			}
 			// Moving file if namespace of title is the file namespace
 			if ( $oTitle->getNamespace() == NS_FILE ) {
 				$oOldFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
 				$oNewFile = RepoGroup::singleton()->findFile( $oNewtitle );
 
-				$this->oBuildIndexMainControl->deleteIndexFile( $oOldFile->getPath(), 'repo' );
-				$this->oBuildIndexMainControl->updateIndexFile( $oNewFile );
+				BuildIndexMainControl::getInstance()->deleteIndexFile( $oOldFile->getPath(), 'repo' );
+				BuildIndexMainControl::getInstance()->updateIndexFile( $oNewFile );
 			}
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onTitleMoveComplete: '.$e->getMessage() );
@@ -444,7 +431,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onFileUpload( $oFile, $bReupload = false, $bHasDescription = false ) {
 		try {
-			$this->oBuildIndexMainControl->updateIndexFile( $oFile );
+			BuildIndexMainControl::getInstance()->updateIndexFile( $oFile );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileUpload: '.$e->getMessage() );
 		}
@@ -462,7 +449,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
 		try {
-			$this->oBuildIndexMainControl->deleteIndexFile( $oFile->getPath(), 'repo' );
+			BuildIndexMainControl::getInstance()->deleteIndexFile( $oFile->getPath(), 'repo' );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileDeleteComplete: '.$e->getMessage() );
 		}
@@ -480,7 +467,7 @@ class ExtendedSearch extends BsExtensionMW {
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
 		try {
 			$oFile = wfFindFile( $oTitle );
-			$this->oBuildIndexMainControl->updateIndexFile( $oFile );
+			BuildIndexMainControl::getInstance()->updateIndexFile( $oFile );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileUndeleteComplete: '.$e->getMessage() );
 		}

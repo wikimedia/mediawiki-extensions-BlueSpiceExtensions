@@ -116,6 +116,7 @@ class ExtendedSearchBase {
 	 * @return ViewBaseElement View with inner content of search result page.
 	 */
 	public function renderSpecialpage() {
+		$this->oSearchRequest->init();
 		$this->oSearchOptions->readInSearchRequest();
 		$this->oSearchUriBuilder->init();
 
@@ -148,6 +149,7 @@ class ExtendedSearchBase {
 
 	public function getResults( $bAjax ) {
 		if ( $bAjax === true ) {
+			$this->oSearchRequest->init();
 			$this->oSearchOptions->readInSearchRequest();
 			$this->oSearchUriBuilder->init();
 		}
@@ -355,6 +357,7 @@ class ExtendedSearchBase {
 
 		$oSerachService = SearchService::getInstance();
 		$oSearchRequest = new SearchRequest();
+		$oSearchRequest->init();
 		$oSearchOptions = new SearchOptions( $oSearchRequest, RequestContext::getMain() );
 		$oSearchOptions->readInSearchRequest();
 

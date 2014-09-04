@@ -76,9 +76,16 @@ class BsSearchResult {
 		return $this->aData[$sKey];
 	}
 
+	/**
+	 * Creates a search result view
+	 * @param array $aMonitor reference of Monitor array from special page
+	 * @param int $iResults number of results
+	 * @param bool $bFuzzy whether it is a fuzzy query or not
+	 * @param bool $bFacet whether facets should be added or not
+	 * @return object search result view
+	 */
 	public function createSearchResult( &$aMonitor, $iResults, $bFuzzy, $bFacet ) {
 		$this->vSearchResult = new ViewSearchResult();
-		$this->vSearchResult->setOption( 'siteUri', $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::MLT ) );
 
 		if ( $bFuzzy && isset( $this->aData['spell'] ) ) {
 			$this->vSearchResult->addSpell( $this->aData['spell'] );
@@ -98,19 +105,23 @@ class BsSearchResult {
 
 		if ( $iResults == 0 ) return $this->vSearchResult;
 
-		$this->prepareNavigation( $iResults );
+		$this->createNavigation( $iResults );
 
 		if ( $bFacet ) {
 			$this->vSearchResult->setOption( 'showfacets' , $bFacet );
-			$this->prepareFacets();
+			$this->createFacets();
 		}
 
-		$this->prepareResults();
+		$this->createResults();
 
 		return $this->vSearchResult;
 	}
 
-	private function prepareNavigation( $iResults ) {
+	/**
+	 * Creates the navigation
+	 * @param int $iResults number of results found
+	 */
+	private function createNavigation( $iResults ) {
 		$aPaging = array();
 		$sSearchLimit = $this->oSearchOptions->getOption( 'searchLimit' );
 
@@ -153,7 +164,12 @@ class BsSearchResult {
 		$this->vSearchResult->setOption( 'sorting', $aSorting );
 	}
 
-	private function prepareFacets() {
+	/**
+	 * Creates the facets
+	 */
+	private function createFacets() {
+		$sSiteUri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::MLT );
+
 		// possible orders: count, name, checked
 		// possible directions: 1 = desc, -1 = asc
 		$aOrder = ( BsConfig::get( 'MW::SortAlph' ) )
@@ -206,7 +222,13 @@ class BsSearchResult {
 			if ( !is_null( $this->oResponse->facet_counts->facet_fields->{$sFacet} ) ) {
 				$oFacet->setOption( 'title', $aConfig['i18n'] );
 
-				$aFacets = array(); // alters to: array( 0 => array( 'checked' => true ), 1 => array( 'count' => 15 ), 999 => array( 'checked' => true, 'count' => 2 ) )
+				/* alters to:
+				 * array(
+				 *     0 => array( 'checked' => true ),
+				 *     1 => array( 'count' => 15 ),
+				 *     999 => array( 'checked' => true, 'count' => 2 )
+				 * )*/
+				$aFacets = array();
 				$aData = $this->oSearchOptions->getOption( $aConfig['option'] );
 
 				if ( !empty( $aData ) ) {
@@ -216,6 +238,7 @@ class BsSearchResult {
 					unset( $aData );
 				}
 
+				// Get all available facets
 				$aFacetsInRespsonse = $this->oResponse->facet_counts->facet_fields->{$sFacet};
 				foreach ( $aFacetsInRespsonse as $key => $count ) {
 					if ( $key == '_empty_' ) continue;
@@ -233,6 +256,7 @@ class BsSearchResult {
 					$aFacets[$key]['count'] = $count;
 				}
 
+				// Prepare available facets. Add some information for each facet
 				foreach ( $aFacets as $key => $attributes ) {
 					if ( !isset( $aFacets[$key]['count'] ) ) {
 						unset( $aFacets[$key] );
@@ -314,25 +338,28 @@ class BsSearchResult {
 				if ( $sFacet === 'namespace' ) {
 					$aReqNs = $this->oSearchOptions->getOption( 'namespaces' );
 					foreach ( $aReqNs as $ikey => $value ) {
-						if ( !in_array( $value, $aFacets ) ){
+						if ( !array_key_exists( $value, $aFacets ) ){
 							$aFacetAll[] = "{$aConfig['param']}[]=".$value;
+							$sSiteUri = str_replace( "&{$aConfig['param']}[]=$value", '', $sSiteUri );
 						}
 					}
 				}
 
 				$sFacetAll = implode( '&', $aFacetAll );
-				$oFacet->setOption( 'uri-facet-delete', $aConfig['url'].'&nosel=1' );
-				$oFacet->setOption(
-					'uri-facet-all',
-					$this->oSearchUriBuilder->buildUri( $aConfig['url'] ).'&'.$sFacetAll );
 				$oFacet->setOption( 'uri-facet-all-diff', $sFacetAll );
 			}
 
 			$this->vSearchResult->setFacet( $oFacet );
 		}
+
+		$this->vSearchResult->setOption( 'siteUri', $sSiteUri );
 	}
 
-	private function prepareResults() {
+	/**
+	 * Creates the results
+	 * @global type $wgScriptPath
+	 */
+	private function createResults() {
 		global $wgScriptPath;
 		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
 

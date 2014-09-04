@@ -239,7 +239,7 @@ class SearchOptions {
 	}
 
 	/**
-	 * Creates an array that can be used as a autocomplete search query to Solr.
+	 * Creates an array that can be used as a more like this search query to Solr.
 	 * @return array List of url parameters.
 	 */
 	public function getSolrMltQuery( $oTitle ) {
@@ -287,7 +287,7 @@ class SearchOptions {
 	}
 
 	/**
-	 * Retrieves parameters from defaults and search options.
+	 * Processes incoming search request
 	 */
 	public function readInSearchRequest() {
 		$this->aOptions['searchStringRaw'] = $this->oSearchRequest->sInput;
@@ -393,18 +393,14 @@ class SearchOptions {
 					$aTmp = array();
 					foreach ( $aNamespaces as $iNs ) {
 						if ( BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) === true ) {
-							$aTmp[] = $iNs;
+							$this->aOptions['namespaces'][] = $iNs;
 						}
-					}
-
-					if ( !empty( $aTmp ) ) {
-						$this->aOptions['namespaces'] = array_diff( $this->aOptions['namespaces'], $aTmp );
 					}
 				} else {
 					$bTagNamespace = true;
 					$aTmp = array();
 					foreach ( $this->aOptions['namespaces'] as $iNs ) {
-						if ( BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) === true ) {
+						if ( !BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) ) {
 							$aTmp[] = $iNs;
 						}
 					}
