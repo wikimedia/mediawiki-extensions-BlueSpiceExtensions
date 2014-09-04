@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"Platinawolf"
 		]
 	},
-	"bs-contextmenu-page-move": "Flytta sidan"
+	"bs-contextmenu-page-move": "Flytta sidan",
+	"bs-contextmenu-media-reupload": "Ladda upp ny version",
+	"bs-contextmenu-file-download": "Hämta filen"
 }

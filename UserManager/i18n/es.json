@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"Mor"
 		]
 	},
 	"bs-usermanager-desc": "Interfaz administrativa para gestionar usuarios",
@@ -28,5 +29,6 @@
 	"bs-usermanager-titleeditdetails": "Editar el usuario",
 	"bs-usermanager-labelnewpassword": "Contraseña",
 	"bs-usermanager-labelpasswordcheck": "Confirmar la contraseña",
-	"bs-usermanager-titledeleteuser": "Eliminar el usuario"
+	"bs-usermanager-titledeleteuser": "Eliminar el usuario",
+	"bs-usermanager-confirmdeleteuser": "¿Estás seguro de que quieres borrar a{{PLURAL:$1|este usuario|estos $1 usuarios}}?"
 }
