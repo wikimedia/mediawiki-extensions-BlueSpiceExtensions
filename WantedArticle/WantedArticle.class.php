@@ -212,7 +212,7 @@ class WantedArticle extends BsExtensionMW {
 			$oTitle = $aTitleList[$i];
 			$sWishTitle = BsStringHelper::shorten(
 				$oTitle->getPrefixedText(),
-				array( 'max-length' => 18, 'position' => 'middle' )
+				array( 'max-length' => 30, 'position' => 'middle' )
 			);
 			$aWikiCodeList[] = '*'.BsLinkProvider::makeEscapedWikiLinkForTitle( $oTitle, $sWishTitle );
 		}
