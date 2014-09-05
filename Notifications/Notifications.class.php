@@ -225,9 +225,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-edit',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
-			'email-body-batch-message' => 'hello again',
+			'email-body-batch-message' => 'bs-notifications-email-edit',
+			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
 			'icon' => 'bs-edit',
-//			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
 		$notifications['bs-create'] = array(
@@ -242,9 +242,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-new',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
-			'email-body-batch-message' => 'hello again',
+			'email-body-batch-message' => 'bs-notifications-email-new',
+			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
 			'icon' => 'bs-create',
-//			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
 		$notifications['bs-delete'] = array(
@@ -259,9 +259,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-delete',
 			'email-body-params' => array( 'titlelink', 'agent', 'deletereason' ),
-			'email-body-batch-message' => 'hello again',
+			'email-body-batch-message' => 'bs-notifications-email-delete',
+			'email-body-batch-params' => array( 'titlelink', 'agent', 'deletereason' ),
 			'icon' => 'bs-delete',
-//			'bundle' => array( 'web' => true, 'email' => true ),
 		);
 
 		$notifications['bs-move'] = array(
@@ -276,7 +276,8 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent', 'newtitle' ),
 			'email-body-message' => 'bs-notifications-email-move',
 			'email-body-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
-			'email-body-batch-message' => 'hello again',
+			'email-body-batch-message' => 'bs-notifications-email-move',
+			'email-body-batch-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
 			'icon' => 'bs-move',
 		);
 
@@ -292,7 +293,8 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'user' ),
 			'email-body-message' => 'bs-notifications-email-addaccount',
 			'email-body-params' => array( 'userlink' ),
-			'email-body-batch-message' => 'hello again',
+			'email-body-batch-message' => 'bs-notifications-email-addaccount',
+			'email-body-batch-params' => array( 'userlink' ),
 			'icon' => 'bs-newuser',
 		);
 
@@ -308,7 +310,8 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-shout',
 			'email-body-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
-			'email-body-batch-message' => 'hello again',
+			'email-body-batch-message' => 'bs-notifications-email-shout',
+			'email-body-batch-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
 			'icon' => 'bs-shoutbox',
 		);
 		return true;
