@@ -178,8 +178,7 @@ class ViewSearchResult extends ViewBaseElement {
 	 */
 	protected function makePagingDiv( $pageNo, $url = '', $bActive = false, $arrows = false ) {
 		$aStyleClasses = array(
-			'bs-extendedsearch-paging-no',
-			'bs-extendedsearch-default-textspacing'
+			'bs-extendedsearch-paging-no'
 		);
 		if ( $arrows ) $aStyleClasses[] = 'bs-extendedsearch-paging-arrows';
 		if ( $bActive ) $aStyleClasses[] = 'bs-extendedsearch-paging-no-active';

@@ -105,7 +105,7 @@ button.bs-search-button-specialpage {
 	width: 45% !important;
 	background-color: white !important;
 	margin-right: 4px;
-	padding-top: 4px !important;
+	padding: 4px 0 1px 3px !important;
 }
 
 #bs-extendedsearch-form-specialpage {
@@ -171,8 +171,8 @@ span#bs-extendedsearch-searchterm {
 
 .bs-extendedsearch-sorting-bar {
 	font-size: 1em !important;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
 	background-color: #F1F1F1;
 }
 
@@ -190,17 +190,18 @@ span#bs-extendedsearch-searchterm {
 	background-color: #F1F1F1;
 	border-color: #CCCCCC;
 	font-size: 1em !important;
+	padding: 1px 0;
 }
 
 .bs-extendedsearch-paging-no:hover,
 .bs-extendedsearch-paging-no-active {
-	background-color: #3E5389;
+	background-color: #98a7c4;
 	color: #FFFFFF;
 	border-color: #6481AC;
 }
 
 .bs-extendedsearch-default-textspacing {
-	padding-top: 5px;
+	padding: 2px 0;
 	height: 22px;
 }
 
@@ -244,29 +245,24 @@ span#bs-extendedsearch-searchterm {
 .bs-search-result-info {
 	font-size: 11px !important;
 	color: #666;
-	margin: 5px 0 0 28px;
+	margin: 0 0 0 32px;
 }
 .bs-search-result-info a {
 	font-size: 1em !important;
 }
 div.bs-search-hit-text {
-	margin: 7px 0 0 28px;
-	padding-top: 1px;
+	margin: 0 0 0 32px;
+	padding-top: 5px;
 	color: #666;
+	font-size: 0.9em !important;
 }
 div.bs-search-hit-text em {
 	color: #000;
 	font-style: normal;
 	font-weight: bold;
 }
-#hwstatus {
-	text-align:left;
-}
-#hwmode {
-	font-weight: bold;
-}
 .bs-facet-title {
-	font-size: 13px !important;
+	font-size: 0.9em !important;
 	background-color: #F1F1F1;
 	color: #555555;
 	margin: 0 0 7px 0;
@@ -291,7 +287,7 @@ span.bs-extendedsearch-result-title h3 em {
 .facetBarEntry {
 	padding-left: 3px;
 	line-height: 18px;
-	font-size: 11px !important;
+	font-size: 0.8em !important;
 }
 .facetBarEntry:hover {
 	background-color: #F8F8F8;
@@ -315,14 +311,14 @@ span.bs-extendedsearch-result-title h3 em {
 #bs-extendedsearch-all-filter-boxes input[type="checkbox"] +label {
 	margin-left: -15px;
 	clear: both;
-	padding: 5px 0 4px 19px;
+	padding: 0 0 0 18px;
 	/* @embed */
 	background: url("images/checkbox.png") left center no-repeat !important;
 }
 #bs-extendedsearch-all-filter-boxes div.facet-title input[type="checkbox"] +label {
 	margin-left: -15px;
 	clear: both;
-	padding: 5px 0 4px 19px;
+	padding: 0 0 0 18px;
 	/* @embed */
 	background: url("images/checkbox-title.png") left center no-repeat !important;
 }
