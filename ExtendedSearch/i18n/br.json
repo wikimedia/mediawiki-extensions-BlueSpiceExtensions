@@ -35,6 +35,7 @@
 	"bs-extendedsearch-pref-scope-text": "Testenn glok",
 	"bs-extendedsearch-pref-scope-title": "Titl",
 	"bs-extendedsearch-pref-indextypeswiki": "Menegeriñ ar pajennoù wiki",
+	"bs-extendedsearch-pref-solrserviceurl": "URL Solr :",
 	"bs-extendedsearch-pref-showmlt": "Diskouez pajennoù damheñvel",
 	"bs-extendedsearch-about-to-start": "O kregiñ...",
 	"bs-extendedsearch-index-successfully-deleted": "Dilamet eo bet ar meneger.",

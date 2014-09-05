@@ -88,7 +88,7 @@
 	"bs-extendedsearch-delete-lock": "Lockdatei löschen",
 	"bs-extendedsearch-warning": "Warnung",
 	"bs-extendedsearch-lockfiletext": "Lösche die Lockdatei nur, wenn du dir sicher bist, dass kein Indexierprozess läuft.",
-	"bs-extendedsearch-did-you-mean": "Meintest du $1?",
+	"bs-extendedsearch-did-you-mean": "Meintest du „$1“?",
 	"bs-extendedsearch-ascending": "Aufsteigend",
 	"bs-extendedsearch-descending": "Absteigend",
 	"bs-extendedsearch-unknown": "Unbekannt",

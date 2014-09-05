@@ -30,5 +30,5 @@
 	"bs-usermanager-labelnewpassword": "Contraseña",
 	"bs-usermanager-labelpasswordcheck": "Confirmar la contraseña",
 	"bs-usermanager-titledeleteuser": "Eliminar el usuario",
-	"bs-usermanager-confirmdeleteuser": "¿Estás seguro de que quieres borrar a{{PLURAL:$1|este usuario|estos $1 usuarios}}?"
+	"bs-usermanager-confirmdeleteuser": "¿Estás seguro de que quieres borrar a {{PLURAL:$1|este usuario|estos $1 usuarios}}?"
 }
