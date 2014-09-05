@@ -216,7 +216,7 @@ class WatchList extends BsExtensionMW {
 		$oWatchList = $this->fetchWatchlist(
 			$oCurrentUser,
 			$iCount,
-			20,
+			30,
 			$sOrder
 		);
 		$sWatchListWikiText = $oWatchList->execute();

@@ -376,7 +376,7 @@ class SmartList extends BsExtensionMW {
 		$oWidgetView
 			->setId( 'bs-smartlist-edits' )
 			->setTitle( wfMessage( 'bs-smartlist-lastedits' )->plain() )
-			->setBody( $this->getYourEdits( 5, 'widget' ) )
+			->setBody( $this->getYourEdits( 5, 'widget', 30 ) )
 			->setTooltip( wfMessage( 'bs-smartlist-lastedits' )->plain() )
 			->setAdditionalBodyClasses( array( 'bs-nav-links', 'bs-widgetbar-portlet' ) ); //For correct margin and fontsize
 
@@ -891,7 +891,7 @@ class SmartList extends BsExtensionMW {
 	 * Generates list of your edits
 	 * @return string list of edits
 	 */
-	public function getYourEdits( $iCount, $sOrigin = 'dashboard' ) {
+	public function getYourEdits( $iCount, $sOrigin = 'dashboard', $iDisplayLength = 18 ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
 
@@ -917,7 +917,7 @@ class SmartList extends BsExtensionMW {
 				if ( $sOrigin === 'dashboard' ) {
 					$sHtml = $oTitle->getPrefixedText();
 				} else {
-					$sHtml = BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => 18, 'position' => 'middle' ) );
+					$sHtml = BsStringHelper::shorten( $oTitle->getPrefixedText() , array( 'max-length' => $iDisplayLength, 'position' => 'middle' ) );
 				}
 				$sLink = Linker::link( $oTitle, $sHtml );
 				$aEdits[] = Html::openElement( 'li' ) . $sLink . Html::closeElement( 'li' );
