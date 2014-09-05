@@ -209,6 +209,7 @@ class SearchService extends SolrServiceAdapter {
 		$aParams['spellcheck'] = 'true';
 		$aParams['q'] = $sQuery;
 		$aParams['spellcheck.q'] = $sQuery;
+		$aParams['spellcheck.count'] = 1;
 
 		if ( $bIndexing === false ) {
 			$aParams['wt'] = self::SOLR_WRITER;
@@ -243,7 +244,7 @@ class SearchService extends SolrServiceAdapter {
 	 */
 	public function getSpellcheck( $sSearch, $aSearchOptions, $bIndexing = false ) {
 		try {
-			$oHits = $this->spellcheck( $sSearch, 0, 3, $aSearchOptions, $bIndexing );
+			$oHits = $this->spellcheck( $sSearch, 0, 1, $aSearchOptions, $bIndexing );
 		} catch ( Exception $e ) {
 			return false;
 		}
