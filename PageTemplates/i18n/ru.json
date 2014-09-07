@@ -14,5 +14,6 @@
 	"bs-pagetemplates-label-tpl": "Имя шаблона",
 	"bs-pagetemplates-label-desc": "Описание",
 	"bs-pagetemplates-label-targetns": "Пространство имён",
+	"bs-pagetemplates-label-tplns": "Пространство имён шаблона",
 	"bs-pagetemplates-label-article": "Шаблон"
 }

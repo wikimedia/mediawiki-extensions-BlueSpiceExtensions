@@ -7,6 +7,7 @@
 	"bs-review-reviewed-till-extra": "Создано {{GENDER:$1|участником|участницей}} $2",
 	"bs-review-i-agree": "Согласен",
 	"bs-review-i-dismiss": "Не согласен",
+	"bs-review-commentinputlabel": "Ваш комментарий:",
 	"bs-review-comments": "Комментарии",
 	"bs-review-colstatus": "Статус",
 	"bs-review-colcomment": "Комментарий",

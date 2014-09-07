@@ -4,7 +4,9 @@
 			"Okras"
 		]
 	},
+	"responsibleeditors": "Ответственные редакторы",
 	"action-responsibleeditors-viewspecialpage": "просмотр страниц, которые защищены правом «ResponsibleEditors-Viewspecialpage»",
 	"bs-responsibleeditors-columnpage": "Страница",
+	"bs-responsibleeditors-columnnamespace": "Пространство имён",
 	"bs-responsibleeditors-rbdisplaymodeall": "Показать все страницы"
 }

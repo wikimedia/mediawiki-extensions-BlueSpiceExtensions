@@ -21,6 +21,7 @@
 	"bs-permissionmanager-msgtpled-success": "Шаблон сохранён.",
 	"bs-permissionmanager-msgtpled-savefailure": "Шаблон не может быть сохранён.",
 	"bs-permissionmanager-msgtpled-saveonabort": "Вы хотите сейчас сохранить все данные?",
+	"bs-permissionmanager-msgtpled-delete": "Шаблон удалён.",
 	"bs-permissionmanager-titletpled-new": "Создать шаблон",
 	"bs-permissionmanager-titletpled-edit": "Переименовать шаблон",
 	"bs-permissionmanager-titletpled-delete": "Удалить шаблон"

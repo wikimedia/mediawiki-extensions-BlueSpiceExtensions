@@ -7,6 +7,8 @@
 	},
 	"prefs-visualeditor": "Визуальный редактор",
 	"bs-visualeditor-editbutton-hint": "Визуальный редактор",
+	"bs-visualeditor-pref-disablens": "Отключено в пространствах имён:",
+	"bs-visualeditor-no-summary": "Без описания изменений",
 	"bs-visualeditor-contenttable": "Содержание",
 	"bs-visualeditor-bsactions-wiki": "Викитекст",
 	"bs-visualeditor-bsactions-signature": "Подпись",

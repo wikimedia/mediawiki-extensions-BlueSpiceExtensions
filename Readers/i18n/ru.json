@@ -5,6 +5,8 @@
 		]
 	},
 	"prefs-readers": "Читатели",
+	"bs-readers-pagenotexists": "Страницы не существует.",
 	"bs-readers-header-username": "Имя участника",
+	"bs-readers-header-readerspath": "Читатель",
 	"bs-readers-header-ts": "Дата"
 }

@@ -26,6 +26,8 @@
 	"bs-statistics-label-page": "Страница",
 	"bs-statistics-label-creator": "Автор",
 	"bs-statistics-diag-number-of-edits": "Число правок",
+	"bs-statistics-diag-edits-per-user": "Количество правок на пользователя",
+	"bs-statistics-diag-search-queries": "Поисковые запросы",
 	"bs-statistics-label-count": "Количество",
 	"bs-statistics-label-maxhits": "Максимальный результат",
 	"bs-statistics-label-time": "Время",

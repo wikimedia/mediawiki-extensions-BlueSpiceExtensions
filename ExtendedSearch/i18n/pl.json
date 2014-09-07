@@ -8,6 +8,8 @@
 	"bs-extendedsearch-desc": "Wyszukiwanie zaawansowane",
 	"specialextendedsearch": "Wyszukiwanie zaawansowane",
 	"prefs-extendedsearch": "Wyszukiwanie zaawansowane",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategoria|Kategorie}}: $2",
+	"bs-extendedsearch-curl-not-active": "Rozszerzenie cURL nie jest aktywne.",
 	"bs-extendedsearch-error": "Błąd:",
 	"bs-extendedsearch-facet-category": "Kategoria",
 	"bs-extendedsearch-facet-editors": "Autorzy",

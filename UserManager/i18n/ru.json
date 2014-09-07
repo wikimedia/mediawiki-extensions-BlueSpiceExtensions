@@ -4,6 +4,8 @@
 			"Okras"
 		]
 	},
+	"bs-usermanager-headerusername": "Имя участника",
+	"bs-usermanager-headerrealname": "Настоящее имя",
 	"bs-usermanager-headeremail": "Эл. почта",
 	"bs-usermanager-headergroups": "Группы",
 	"bs-usermanager-titleadduser": "Добавить пользователя",

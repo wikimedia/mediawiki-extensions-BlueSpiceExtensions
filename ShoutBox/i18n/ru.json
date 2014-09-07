@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
 	"bs-shoutbox-message": "Сообщение",
 	"bs-shoutbox-loading": "Загрузка…",
 	"bs-shoutbox-pref-committimeinterval": "Время между двумя сообщениями (в секундах):",
 	"bs-shoutbox-pref-maxmessagelength": "Максимальная длина сообщения:",
+	"bs-shoutbox-archive-success": "Запись удалена.",
 	"bs-shoutbox-confirm-title": "Подтвердить",
 	"bs-shoutbox-entermessage": "Пожалуйста, введите сообщение."
 }

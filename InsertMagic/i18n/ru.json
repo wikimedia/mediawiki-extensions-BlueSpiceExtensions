@@ -12,6 +12,7 @@
 	"bs-insertmagic-toc": "Размещает содержание на текущем положении слова.",
 	"bs-insertmagic-noeditsection": "Скрывает ссылки на редактирование разделов рядом с заголовками.",
 	"bs-insertmagic-currentyear": "Текущий год",
+	"bs-insertmagic-type-tags": "Теги",
 	"bs-insertmagic-type-variables": "Переменные",
 	"bs-insertmagic-label-desc": "Описание"
 }

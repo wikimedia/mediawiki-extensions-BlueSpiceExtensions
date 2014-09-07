@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"HarpyWar",
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
 	"bs-wantedarticle-desc": "Предложить разыскиваемую страницу",
@@ -19,5 +20,6 @@
 	"bs-wantedarticle-pref-sort-time": "Время",
 	"bs-wantedarticle-pref-sort-title": "Заголовок",
 	"bs-wantedarticle-pref-order-asc": "По возрастанию",
-	"bs-wantedarticle-pref-order-desc": "По убыванию"
+	"bs-wantedarticle-pref-order-desc": "По убыванию",
+	"bs-wantedarticle-create-page": "Создать страницу «$1»."
 }

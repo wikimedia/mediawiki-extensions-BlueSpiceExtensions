@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Romaine"
 		]
 	},
+	"bs-formattinghelp-help-syntax": "Syntax",
 	"bs-formattinghelp-help-example-text": "Tekst",
 	"bs-formattinghelp-help-bold": "Vet",
 	"bs-formattinghelp-help-whitespace": "Witruimte",
@@ -13,6 +15,7 @@
 	"bs-formattinghelp-help-ul": "Ongeordende lijst",
 	"bs-formattinghelp-help-numberedlist": "Genummerde lijst",
 	"bs-formattinghelp-help-link": "Interne koppeling",
+	"bs-formattinghelp-help-link-alt": "Interne link met alternatieve tekst",
 	"bs-formattinghelp-help-caption": "Bijschrift",
 	"bs-formattinghelp-help-extlink": "Externe link",
 	"bs-formattinghelp-help-hr": "Horizontale lijn",
