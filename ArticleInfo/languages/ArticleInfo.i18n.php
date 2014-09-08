@@ -60,7 +60,7 @@ $messages['en'] = array(
 	'bs-articleinfo-extension-description' => 'Provides information about an article for status bar.',
 
 	'prefs-ArticleInfo' => 'ArticleInfo',
-	'bs-articleinfo-pref-CheckRevisionInterval' => 'Update intervall - revision (seconds)',
+	'bs-articleinfo-pref-CheckRevisionInterval' => 'Update interval - revision (seconds)',
 
 	'bs-articleinfo-last-edited' => 'Date of recent changes',
 	'bs-articleinfo-last-edited-tooltip' => 'Last edit',
