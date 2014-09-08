@@ -49,7 +49,7 @@ Ext.define( 'BS.Statistics.Chart', {
 			type: 'Category',
 			position: 'bottom',
 			fields: ['name'],
-			title: 'Bluespice'
+			title: mw.message('bs-statistics-label-time').plain()
 		});
 
 		this.series.push({
@@ -76,6 +76,10 @@ Ext.define( 'BS.Statistics.Chart', {
 	},
 	setData: function(data) {
 		this.store.loadData(data);
+	},
+	setAxes: function(axes){
+		this.axes.items[0].setTitle(axes.y !== null ? axes.y : mw.message('bs-statistics-label-count').plain());
+		this.axes.items[1].setTitle(axes.x !== null ? axes.x : mw.message('bs-statistics-label-time').plain());
 	},
 	setCategory: function(label) {
 		this.axes.getAt(1).title = label;

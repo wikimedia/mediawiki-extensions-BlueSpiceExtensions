@@ -81,7 +81,7 @@ Ext.define( 'BS.Statistics.Panel', {
 			]});
 
 		this.items = [
-			this.pnlFilters, 
+			this.pnlFilters,
 			this.pnlMain
 		];
 
@@ -102,6 +102,8 @@ Ext.define( 'BS.Statistics.Panel', {
 				this.crtMain.show();
 				//this.pnlMain.doLayout();
 				this.crtMain.setData(data);
+				if (typeof(result.axes) !== "undefined")
+					this.crtMain.setAxes(result.axes);
 				this.crtMain.setCategory(result.label);
 			}, this);
 			task.delay(100);
