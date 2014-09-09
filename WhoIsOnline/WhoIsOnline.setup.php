@@ -5,6 +5,7 @@ BsExtensionManager::registerExtension('WhoIsOnline', BsRUNLEVEL::FULL|BsRUNLEVEL
 $wgMessagesDirs['WhoIsOnline'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['WhoIsOnline'] = __DIR__ . '/languages/WhoIsOnline.i18n.php';
+$wgExtensionMessagesFiles['WhoIsOnlineMagic'] = __DIR__ . '/languages/WhoIsOnline.i18n.magic.php';
 
 $wgResourceModules['ext.bluespice.whoisonline'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/WhoIsOnline/resources/bluespice.whoIsOnline.js',
