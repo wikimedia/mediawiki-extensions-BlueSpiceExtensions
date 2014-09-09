@@ -48,7 +48,7 @@ class RSSFeeder extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'RSSFeeder',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-rssfeeder-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-rssfeeder-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

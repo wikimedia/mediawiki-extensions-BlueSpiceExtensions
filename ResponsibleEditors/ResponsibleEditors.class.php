@@ -44,7 +44,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'ResponsibleEditors',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-responsibleeditors-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-responsibleeditors-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

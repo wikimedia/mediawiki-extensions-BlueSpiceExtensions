@@ -59,7 +59,7 @@ class ExtensionInfo extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'ExtensionInfo',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-extensioninfo-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-extensioninfo-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

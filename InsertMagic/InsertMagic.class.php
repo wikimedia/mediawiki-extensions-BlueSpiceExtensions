@@ -115,7 +115,7 @@ class InsertMagic extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InsertMagic',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertmagic-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertmagic-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

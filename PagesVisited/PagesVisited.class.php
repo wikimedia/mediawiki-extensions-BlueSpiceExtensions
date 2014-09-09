@@ -65,7 +65,7 @@ class PagesVisited extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'PagesVisited',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-pagesvisited-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-pagesvisited-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -139,7 +139,7 @@ class PagesVisited extends BsExtensionMW {
 			'id' => 'bs:pagesvisited',
 			'type' => 'tag',
 			'name' => 'pagesvisited',
-			'desc' => wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->parse(),
+			'desc' => wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->escaped(),
 			'code' => '<bs:pagesvisited />',
 		);
 

@@ -200,7 +200,7 @@ class VisualEditor extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'VisualEditor',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-visualeditor-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-visualeditor-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

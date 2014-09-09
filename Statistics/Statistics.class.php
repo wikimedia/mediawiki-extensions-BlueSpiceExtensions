@@ -76,7 +76,7 @@ class Statistics extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Statistics',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-statistics-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-statistics-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

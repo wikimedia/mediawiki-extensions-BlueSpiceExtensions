@@ -60,7 +60,7 @@ class InsertCategory extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InsertCategory',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertcategory-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertcategory-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Stefan Widmann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

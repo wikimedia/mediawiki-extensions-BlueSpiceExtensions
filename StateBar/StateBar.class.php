@@ -57,7 +57,7 @@ class StateBar extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'StateBar',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-statebar-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-statebar-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

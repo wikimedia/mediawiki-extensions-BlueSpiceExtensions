@@ -52,7 +52,7 @@ class Blog extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Blog',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-blog-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-blog-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

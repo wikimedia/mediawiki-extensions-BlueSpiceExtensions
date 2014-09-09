@@ -67,7 +67,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'ExtendedSearch',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-extendedsearch-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-extendedsearch-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Stephan Muggli, Mathias Scheer, Markus Glaser',
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',

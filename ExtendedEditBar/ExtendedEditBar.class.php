@@ -58,7 +58,7 @@ class ExtendedEditBar extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'ExtendedEditBar',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-extendededitbar-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-extendededitbar-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'MediaWiki Extension, packaging by Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

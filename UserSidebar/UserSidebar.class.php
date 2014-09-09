@@ -55,7 +55,7 @@ class UserSidebar extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'UserSidebar',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-usersidebar-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-usersidebar-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht, Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

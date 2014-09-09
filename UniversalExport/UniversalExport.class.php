@@ -81,7 +81,7 @@ class UniversalExport extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'UniversalExport',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-universalexport-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-universalexport-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

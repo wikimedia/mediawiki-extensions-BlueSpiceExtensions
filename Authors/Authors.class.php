@@ -69,7 +69,7 @@ class Authors extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo          = array(
 			EXTINFO::NAME        => 'Authors',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-authors-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-authors-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

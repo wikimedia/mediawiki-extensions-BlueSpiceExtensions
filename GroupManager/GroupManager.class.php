@@ -48,7 +48,7 @@ class GroupManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'GroupManager',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-groupmanager-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-groupmanager-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

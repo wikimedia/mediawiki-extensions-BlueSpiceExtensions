@@ -51,7 +51,7 @@ class PageAccess extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'PageAccess',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-pageaccess-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-pageaccess-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Marc Reymann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

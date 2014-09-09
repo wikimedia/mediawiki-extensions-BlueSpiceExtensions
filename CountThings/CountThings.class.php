@@ -53,7 +53,7 @@ class CountThings extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'CountThings',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-countthings-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-countthings-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -98,7 +98,7 @@ class CountThings extends BsExtensionMW {
 			'id' => 'bs:countarticles',
 			'type' => 'tag',
 			'name' => 'countarticles',
-			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->parse(),
+			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped(),
 			'code' => '<bs:countarticles />',
 		);
 		
@@ -106,7 +106,7 @@ class CountThings extends BsExtensionMW {
 			'id' => 'bs:countusers',
 			'type' => 'tag',
 			'name' => 'countusers',
-			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->parse(),
+			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped(),
 			'code' => '<bs:countusers />',
 		);
 		
@@ -114,7 +114,7 @@ class CountThings extends BsExtensionMW {
 			'id' => 'bs:countcharacters',
 			'type' => 'tag',
 			'name' => 'countcharacters',
-			'desc' => wfMessage( 'bs-countthings-tag-countcharacters-desc' )->parse(),
+			'desc' => wfMessage( 'bs-countthings-tag-countcharacters-desc' )->escaped(),
 			'code' => '<bs:countcharacters>Article One,Article Two,Article Three</bs:countcharacters>',
 		);
 

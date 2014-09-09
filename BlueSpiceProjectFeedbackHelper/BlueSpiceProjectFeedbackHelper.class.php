@@ -49,7 +49,7 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'BlueSpiceProjectFeedbackHelper',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-bluespiceprojectfeedbackhelper-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-bluespiceprojectfeedbackhelper-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

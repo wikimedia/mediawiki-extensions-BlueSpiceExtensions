@@ -48,7 +48,7 @@ class InterWikiLinks extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InterWikiLinks',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-interwikilinks-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-interwikilinks-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

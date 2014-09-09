@@ -58,7 +58,7 @@ class PageTemplates extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'PageTemplates',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-pagetemplates-desc' )->parse(),
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-pagetemplates-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
