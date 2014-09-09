@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-statistics-desc": "Adds extended statistics functionality",
+	"bs-statistics-desc": "Statistics module for BlueSpice",
 	"prefs-statistics": "Extended statistics",
 	"extendedstatistics": "Extended statistics",
 	"bs-statistics-diagram": "Query",

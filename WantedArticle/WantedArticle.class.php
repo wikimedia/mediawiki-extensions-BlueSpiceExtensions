@@ -71,7 +71,7 @@ class WantedArticle extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'WantedArticle',
-			EXTINFO::DESCRIPTION => 'Add an article to the wanted article list.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-wantedarticle-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

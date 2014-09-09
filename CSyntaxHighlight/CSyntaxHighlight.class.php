@@ -96,7 +96,7 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'CSyntaxHighlight',
-			EXTINFO::DESCRIPTION => 'Adds customizable syntax highlighting functionality to BlueSpice. Based on SyntaxHighlighter by Alex Gorbatchev (http://alexgorbatchev.com/SyntaxHighlighter/)',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-csyntaxhighlight-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

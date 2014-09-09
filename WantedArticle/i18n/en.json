@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-wantedarticle-desc": "Suggest a wanted page",
+	"bs-wantedarticle-desc": "Add a page to the wanted page list",
 	"prefs-wantedarticle": "Wanted page",
 	"bs-wantedarticle-ajax-error-no-parameter": "No page title provided.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "The suggested page \"$1\" already exists.",

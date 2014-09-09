@@ -83,7 +83,7 @@ class WhoIsOnline extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'WhoIsOnline',
-			EXTINFO::DESCRIPTION => 'Displays a list of users who are currently online.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-whoisonline-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

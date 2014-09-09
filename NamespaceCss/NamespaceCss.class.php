@@ -43,7 +43,7 @@ class NamespaceCss extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'NamespaceCss',
-			EXTINFO::DESCRIPTION => 'Diff styles for namespaces in MW.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-namespacecss-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Tobias Weichart, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

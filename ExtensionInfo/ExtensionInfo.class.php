@@ -59,7 +59,7 @@ class ExtensionInfo extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'ExtensionInfo',
-			EXTINFO::DESCRIPTION => 'Information about active Hallo Welt! extensions.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-extensioninfo-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

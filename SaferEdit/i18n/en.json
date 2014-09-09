@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-saferedit-desc": "Intermediate saving of edits",
+	"bs-saferedit-desc": "Intermediate saving of wiki edits",
 	"prefs-saferedit": "Safer editing",
 	"bs-saferedit-restore": "Restore",
 	"bs-saferedit-safer-edit-tooltip": "A recovery version is available.",

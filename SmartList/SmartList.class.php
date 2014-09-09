@@ -53,7 +53,7 @@ class SmartList extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'SmartList',
-			EXTINFO::DESCRIPTION => 'Displays the last five changes of the wiki in a list.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-smartlist-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel, Patric Wirth, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

@@ -61,7 +61,7 @@ class UEModulePDF extends BsExtensionMW {
 
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'UEModulePDF',
-			EXTINFO::DESCRIPTION => 'Enables MediaWiki to export pages into PDF format.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-uemodulepdf-desc' )->parse(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

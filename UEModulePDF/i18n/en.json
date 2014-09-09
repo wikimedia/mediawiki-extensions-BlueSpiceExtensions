@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-uemodulepdf-desc": "Enables export to PDF",
+	"bs-uemodulepdf-desc": "Enables MediaWiki to export pages into PDF format",
 	"prefs-uemodulepdf": "Universal export PDF module",
 	"uemodulepdf": "Universal export PDF module",
 	"bs-uemodulepdf-pref-pdfserviceurl": "Backend URL:",
