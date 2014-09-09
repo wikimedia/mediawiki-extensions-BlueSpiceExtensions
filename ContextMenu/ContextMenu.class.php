@@ -135,13 +135,15 @@ class ContextMenu extends BsExtensionMW {
 	public function onLinkEnd( $skin, $target, $options, &$html, &$attribs, &$ret ) {
 		if( $target->getNamespace() == NS_USER && $target->isSubpage() === false ) {
 			$oUser = User::newFromName($target->getText());
-			$sMailAddress = $oUser->getEmail();
-			$attribs['data-bs-user-has-email']
-				= empty( $sMailAddress ) ? false : true ;
+			if ( $oUser instanceof User ) {
+				$sMailAddress = $oUser->getEmail();
+				$attribs['data-bs-user-has-email']
+					= empty( $sMailAddress ) ? false : true ;
 
-			//This is already in BSF, but it is only included when the anchor
-			//content is the same as the username
-			$attribs['data-bs-username'] = $target->getText();
+				//This is already in BSF, but it is only included when the anchor
+				//content is the same as the username
+				$attribs['data-bs-username'] = $target->getText();
+			}
 		}
 		if( $target->getNamespace() >= 0 && $target->isContentPage() ) {
 			$attribs['data-bs-is-contentpage'] = true;
