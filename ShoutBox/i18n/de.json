@@ -5,7 +5,7 @@
 			"Metalhead64"
 		]
 	},
-	"bs-shoutbox-desc": "Stellt eine Shoutbox unterhalb jeder Seite bereit",
+	"bs-shoutbox-desc": "Ergänzt eine Parserfunktion zur Einbettung deiner eigenen Shoutbox",
 	"prefs-shoutbox": "Shoutbox",
 	"bs-shoutbox-title": "Shoutbox",
 	"bs-shoutbox-message": "Mitteilung",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-rssfeeder-desc": "Erstelle eigene RSS-Feeds",
+	"bs-rssfeeder-desc": "Ergänzt eine Erweiterung zur Ausgabe von gültigem RSS für jede Erweiterung mit buildRss-Funktion",
 	"rssfeeder": "RSS Feeder",
 	"bs-rssfeeder-pagetext": "Folgende RSS-Feeds stehen zur Verfügung:",
 	"bs-rssfeeder-recent-changes": "Letzte Änderungen",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-namespacemanager-desc": "Administrationsoberfläche zum Erstellen und Bearbeiten von Rechten",
+	"bs-namespacemanager-desc": "Administrationsoberfläche zum Hinzufügen, Bearbeiten und Löschen von Namensräumen",
 	"bs-namespacemanager-label": "Namensraumverwaltung",
 	"bs-namespacemanager-wrong-name": "Der Namesraum enthält unzulässige Zeichen.",
 	"bs-namespacemanager-ns-exists": "Der Namesraum existiert bereits.",

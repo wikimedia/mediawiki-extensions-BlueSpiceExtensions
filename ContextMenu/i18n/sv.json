@@ -2,10 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"Lokal Profil",
-			"Platinawolf"
+			"Platinawolf",
+			"Freked"
 		]
 	},
+	"bs-contextmenu-page-edit": "Redigera sida",
+	"bs-contextmenu-page-delete": "Radera sida",
 	"bs-contextmenu-page-move": "Flytta sidan",
+	"bs-contextmenu-page-history": "Visa sidhistorik",
+	"bs-contextmenu-page-protect": "Skydda sida",
+	"bs-contextmenu-page-purge": "Rensa cache och visa sida",
+	"bs-contextmenu-page-info": "Visa sidinformation",
 	"bs-contextmenu-media-reupload": "Ladda upp ny version",
-	"bs-contextmenu-file-download": "Hämta filen"
+	"bs-contextmenu-media-view-page": "Visa filbeskrivningssida och filhistorik",
+	"bs-contextmenu-user-mail": "Skicka e-post",
+	"bs-contextmenu-user-talk": "Lämna meddelande på diskussionssidan",
+	"bs-contextmenu-file-download": "Ladda ner filen"
 }

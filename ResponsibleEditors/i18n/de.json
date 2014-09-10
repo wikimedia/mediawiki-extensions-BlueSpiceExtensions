@@ -5,7 +5,7 @@
 			"Metalhead64"
 		]
 	},
-	"bs-responsibleeditors-desc": "Erlaubt es Seiten verantwortliche Redakteure zuzuweisen",
+	"bs-responsibleeditors-desc": "Aktiviert MediaWiki zur Verwaltung verantwortlicher Redakteure für Seiten",
 	"prefs-responsibleeditors": "Verantwortliche Redakteure",
 	"bs-responsibleeditors-pref-activatednamespaces": "Aktiviert in Namensräumen:",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Verantwortung beim Anlegen einer Seite automatisch zuweisen",

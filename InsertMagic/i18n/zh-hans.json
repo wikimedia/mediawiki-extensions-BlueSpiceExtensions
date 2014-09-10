@@ -7,6 +7,7 @@
 	"bs-insertmagic-desc": "对编辑模式加入对话框以允许插入魔术字和标签",
 	"bs-insertmagic": "插入魔术字",
 	"bs-insertmagic-notoc": "隐藏表中内容。",
+	"bs-insertmagic-forcetoc": "强制目录出现在正常位置。",
 	"bs-insertmagic-noeditsection": "隐藏标题旁的节编辑连接。",
 	"bs-insertmagic-newsectionlink": "在“编辑”标签旁添加链接（默认加号），用于在讨论页添加新话题。",
 	"bs-insertmagic-nonewsectionlink": "移除讨论名字空间页面“编辑”标签旁的链接。",

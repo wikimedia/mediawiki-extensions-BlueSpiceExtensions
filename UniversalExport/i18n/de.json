@@ -5,7 +5,7 @@
 			"Metalhead64"
 		]
 	},
-	"bs-universalexport-desc": "Stellt verschiedene Exportfunktionen bereit",
+	"bs-universalexport-desc": "Aktiviert MediaWiki zum Exportieren von Seiten in verschiedene Formate",
 	"prefs-universalexport": "Universal Export",
 	"universalexport": "Universal Export",
 	"bs-universalexport-pref-metadatadefaults": "Metadaten (Standard, JSON):",

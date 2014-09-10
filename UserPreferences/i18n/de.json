@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-userpreferences-desc": "Generiert ein zusätzliches BlueSpice-Register in den Benutzereinstellungen"
+	"bs-userpreferences-desc": "Rendert das BlueSpice-Register in den Benutzereinstellungen"
 }

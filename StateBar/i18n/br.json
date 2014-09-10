@@ -6,6 +6,8 @@
 		]
 	},
 	"prefs-statebar": "Barrenn stad",
+	"bs-statebar-pref-show": "Diskwel ar varrenn statud",
 	"bs-statebar-viewtoggler": "MUNUDOÙ",
+	"bs-statebar-viewtoggler-tooltip": "Diskouez titouroù dre ar munud",
 	"bs-statebar-ajax-nobodyviews": "N'eus titour ebet."
 }

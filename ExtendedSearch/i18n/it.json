@@ -4,6 +4,9 @@
 			"Beta16"
 		]
 	},
+	"bs-extendedsearch-desc": "Ricerca avanzata",
+	"specialextendedsearch": "Ricerca avanzata",
+	"prefs-extendedsearch": "Ricerca avanzata",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Categoria|Categorie}}: $2",
 	"bs-extendedsearch-curl-not-active": "L'estensione cURL non è attiva.",
 	"bs-extendedsearch-error": "Errore:",
@@ -15,6 +18,7 @@
 	"bs-extendedsearch-facet-uncategorized": "Non categorizzato",
 	"bs-extendedsearch-facet-namespace-extfiles": "File esterni",
 	"bs-extendedsearch-files": "Ricerca file",
+	"bs-extendedsearch-sort-relevance": "Rilevanza",
 	"bs-extendedsearch-sort-title": "Titolo",
 	"bs-extendedsearch-sort-type": "Tipo",
 	"bs-extendedsearch-specialpage-form-return-to-simple": "Modulo di ricerca di base",
@@ -33,5 +37,10 @@
 	"bs-extendedsearch-warning": "Attenzione",
 	"bs-extendedsearch-unknown": "Sconosciuto",
 	"bs-extendedsearch-section": "Sezione",
-	"bs-extendedsearch-morelikethis": "Pagine simili"
+	"bs-extendedsearch-morelikethis": "Pagine simili",
+	"bs-extendedsearch-no-mlt-found": "Nessuna pagine simile trovata.",
+	"bs-extendedsearch-redirect": "Reindirizzamento da: $1",
+	"bs-extendedsearch-totalnoofarticles": "Numero di pagine da indicizzare: $1",
+	"bs-extendedsearch-more": "Altro",
+	"bs-extendedsearch-fewer": "Meno"
 }

@@ -5,5 +5,8 @@
 		]
 	},
 	"prefs-notifications": "Уведомления",
-	"bs-notifications-pref-active": "Включить уведомления"
+	"bs-notifications-pref-active": "Включить уведомления",
+	"bs-echo-page-newuser": "Участник $1 был создан.",
+	"bs-notifications-email-delete-subject": "Страница $1 {{GENDER:$2|удалена}} $2",
+	"bs-notifications-email-delete": "Страница $1 {{GENDER:$2|удалена}} участником $2.\n\nПричина:\n$3"
 }

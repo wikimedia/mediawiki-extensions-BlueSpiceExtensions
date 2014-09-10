@@ -5,7 +5,7 @@
 			"Metalhead64"
 		]
 	},
-	"bs-readers-desc": "Zeigt die Besucher einer Seite an.",
+	"bs-readers-desc": "Erstellt eine Liste mit Personen, die eine Seite lesen",
 	"prefs-readers": "Besucher dieser Seite",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Besucher|Besucherin}}|Besucher}}",
 	"readers-user": "Seiten besucht von: $1",

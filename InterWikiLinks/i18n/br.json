@@ -13,6 +13,7 @@
 	"bs-interwikilinks-nooldpfx": "N'eo ket bet kavet ar rakger kent.",
 	"bs-interwikilinks-nopfx": "Pourchasit ur rakger, mar plij.",
 	"bs-interwikilinks-nourl": "Pourchasir un URL, mar plij.",
+	"bs-interwikilinks-pfxtoolong": "Re hir eo ar rakger. Implijit 32 arouezenn d'ar muiañ, mar plij.",
 	"bs-interwikilinks-pfxexists": "Ar rakger-mañ zo anezhañ dija.",
 	"bs-interwikilinks-headerprefix": "Rakger",
 	"bs-interwikilinks-titleaddinterwikilink": "Ouzhpennañ ul liamm etrewiki",

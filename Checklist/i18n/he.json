@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eladk"
+			"Eladk",
+			"Guycn2"
 		]
 	},
+	"bs-checklist-desc": "סיפוק רשימות פונקציונליות",
 	"bs-checklist-button-checkbox-title": "רשימת פעולות לביצוע אלמנטים",
 	"bs-checklist-menu-insert-list-title": "הוספת רשימה",
 	"bs-checklist-menu-insert-checkbox": "תיבת סימון",
 	"bs-checklist-dlg-insert-list-value-list": "רשימת ערכים",
+	"bs-checklist-tag-checklist-desc": "סמנו תיבת סימון או בחרו שדה. תכונות תצורה זמינות:",
 	"bs-checklist-tag-checklist-param-type": "<code>סוג</code> :<code>רשימה</code> הופך לרשימת בחירה.",
 	"bs-checklist-tag-checklist-param-list": "<code>רשימה</code>: שם של תבנית עם ערכים זמינים. פרמטר <code>סוג</code> חייב להיות מוגדר ב <code>רשימה</code>.",
 	"bs-checklist-tag-checklist-param-value": "<code>ערך</code> :<code>נבדק</code> או ערך מחוץ לתבנית הרשימות."

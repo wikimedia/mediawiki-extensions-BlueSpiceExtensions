@@ -7,5 +7,11 @@
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "Пространство имён",
 	"bs-namespacemanager-label-content": "В статистике",
-	"bs-namespacemanager-label-subpages": "Подстраницы"
+	"bs-namespacemanager-label-subpages": "Подстраницы",
+	"bs-namespacemanager-tipadd": "Добавить пространство имён",
+	"bs-namespacemanager-tipedit": "Редактировать пространство имён",
+	"bs-namespacemanager-labelnsname": "Название пространства имён",
+	"bs-namespacemanager-willmove": "Будет переименовано в «{{int:bs-ns_main}}».",
+	"bs-namespacemanager-willmovesuffix": "Будет переименовано в «{{int:bs-ns_main}}» с суффиксом «{{int:bs-from-something}}».",
+	"bs-namespacemanager-pagepresent": "Страницы в этом пространстве имён:"
 }

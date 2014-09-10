@@ -7,7 +7,7 @@
 			"Metalhead64"
 		]
 	},
-	"bs-extendedsearch-desc": "Erweiterte Suche",
+	"bs-extendedsearch-desc": "Apache-[http://lucene.apache.org/solr/ Solr]-basiertes Such-Plugin zur Erweiterung der Suchfunktionalität",
 	"specialextendedsearch": "Erweiterte Suche",
 	"prefs-extendedsearch": "Erweiterte Suche",
 	"bs-extendedsearch-category-filter": "Kategorie{{PLURAL:$1||n}}: $2",

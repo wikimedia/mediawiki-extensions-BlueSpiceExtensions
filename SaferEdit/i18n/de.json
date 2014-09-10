@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-saferedit-desc": "Bearbeitungen an Seiten werden automatisch zwischengespeichert",
+	"bs-saferedit-desc": "Bearbeitungen an Wikiseiten werden automatisch zwischengespeichert",
 	"prefs-saferedit": "Sicheres Bearbeiten",
 	"bs-saferedit-restore": "Wiederherstellen",
 	"bs-saferedit-safer-edit-tooltip": "Es gibt eine Wiederherstellungsversion.",

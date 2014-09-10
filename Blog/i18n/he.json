@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Guycn2"
+		]
+	},
+	"bs-blog-desc": "הצגת רשימה של דפים בסגנון בלוג",
+	"prefs-blog": "בלוג",
+	"bs-blog-no-entries": "אין ערכי בלוג.",
+	"bs-blog-comments": "תגובות",
+	"bs-blog-read-more": "מידע נוסף",
+	"bs-blog-trackback": "הפניה",
+	"bs-blog-permalink": "קישור קבוע",
+	"bs-blog-show-all": "הצג את כל הערכים",
+	"bs-blog-form-inline-text": "כותרת ...",
+	"bs-blog-form-title-text": "יצירת ערך בלוג חדש",
+	"bs-blog-form-button-text": "יצירה",
+	"bs-blog-blog": "בלוג",
+	"bs-blog-pref-moreinnewwindow": "פתיחת חלון חדש עבור קבלת מידע נוסף",
+	"bs-blog-pref-newentryfieldposition": "תפקיד עבור הטופס של ערך הבלוג החדש:",
+	"bs-blog-pref-showall": "הצגת קישור לכל הערכים",
+	"bs-blog-pref-showinfo": "הצגת מידע עבור הערך",
+	"bs-blog-pref-showlimit": "מספר ערכי הבלוג:",
+	"bs-blog-pref-shownewentryfield": "הצגת טופס ליצירת ערך בלוג חדש",
+	"bs-blog-pref-showpermalink": "הצגת קישור קבוע",
+	"bs-blog-pref-sortby": "מיון לפי:",
+	"bs-blog-pref-imagerendermode": "הצגת תמונות כ:",
+	"bs-blog-pref-maxentrycharacters": "מספר המילים לכל ערך:",
+	"bs-blog-tag-blog-desc": "הצגת ערכי בלוג בכל דף."
+}

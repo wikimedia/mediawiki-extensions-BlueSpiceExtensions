@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-wantedarticle-desc": "Eine gewünschte Seite vorschlagen",
+	"bs-wantedarticle-desc": "Fügt eine Seite zur gewünschten Seitenliste hinzu",
 	"prefs-wantedarticle": "Gewünschte Seiten",
 	"bs-wantedarticle-ajax-error-no-parameter": "Es wurde kein Seitentitel angegeben.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Die Seite \"$1\" existiert bereits.",

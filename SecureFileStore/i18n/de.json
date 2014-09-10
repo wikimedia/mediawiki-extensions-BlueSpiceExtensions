@@ -5,7 +5,7 @@
 			"Metalhead64"
 		]
 	},
-	"bs-securefilestore-desc": "Ermöglicht die Verhinderung von nicht autorisiertem Zugriff auf Dateien",
+	"bs-securefilestore-desc": "Ermöglicht die Verhinderung von nicht autorisiertem Zugriff auf Dateien und Bilder",
 	"prefs-securefilestore": "Gesicherte Dateiablage",
 	"bs-securefilestore-pref-defaultdisposition": "Dateien standardmäßig darstellen:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Browser",

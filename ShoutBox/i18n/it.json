@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ankabel"
+			"Ankabel",
+			"Beta16"
 		]
 	},
 	"bs-shoutbox-message": "Messaggio",
@@ -9,5 +10,6 @@
 	"bs-shoutbox-pref-committimeinterval": "Tempo tra due messaggi (in secondi):",
 	"bs-shoutbox-pref-numberofshouts": "Numero di messaggi mostrati:",
 	"bs-shoutbox-pref-showuser": "Visualizza autore di un messaggio",
-	"bs-shoutbox-pref-allowarchive": "Gli utenti sono in grado di eliminare le proprie voci"
+	"bs-shoutbox-pref-allowarchive": "Gli utenti sono in grado di eliminare le proprie voci",
+	"bs-shoutbox-confirm-title": "Conferma"
 }

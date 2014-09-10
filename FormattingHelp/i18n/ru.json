@@ -4,10 +4,17 @@
 			"Okras"
 		]
 	},
+	"bs-formattinghelp-formatting": "Помощь по форматированию",
+	"bs-formattinghelp-help-syntax": "Синтаксис",
 	"bs-formattinghelp-help-example-text": "Текст",
 	"bs-formattinghelp-help-bold": "Полужирный",
 	"bs-formattinghelp-help-italic": "Наклонный",
+	"bs-formattinghelp-help-whitespace": "Пробел",
+	"bs-formattinghelp-help-nowiki": "Предотвращения форматирования",
 	"bs-formattinghelp-help-color": "Цветной текст",
+	"bs-formattinghelp-help-headline": "Заголовок",
+	"bs-formattinghelp-help-linebreak": "Разрыв строки",
+	"bs-formattinghelp-help-ul": "Неупорядоченный список",
 	"bs-formattinghelp-help-listitem": "Элемент списка",
 	"bs-formattinghelp-help-subitem": "Подпункт",
 	"bs-formattinghelp-help-numberedlist": "Нумерованный список",

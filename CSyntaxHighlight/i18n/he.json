@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Guycn2"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "הוספת תחביר הניתן להתאמה אישית עבור הדגשת פונקציונליות",
+	"prefs-csyntaxhighlight": "תחביר הדגשה",
+	"bs-csyntaxhighlight-pref-theme": "ערכת נושא:",
+	"bs-csyntaxhighlight-pref-gutter": "הצגת מספרי שורות",
+	"bs-csyntaxhighlight-pref-autolinks": "כתובות הקישור",
+	"bs-csyntaxhighlight-pref-toolbar": "הצגת סרגל הכלים"
+}

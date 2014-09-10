@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Smuggli"
+			"Smuggli",
+			"Metalhead64"
 		]
 	},
-	"bs-topmenubarcustomizer-desc": "Ermöglicht es, eigene oder vorhandene Menüpunkte zu bearbeiten oder zu erstellen.",
+	"bs-topmenubarcustomizer-desc": "Passt die obigen Menülinks an",
 	"prefs-topmenubarcustomizer": "Menü",
 	"bs-topmenubarcustomizer-pref-numberoflevels": "Anzahl verschachtelter Ebenen:",
 	"bs-topmenubarcustomizer-pref-numberofmainentries": "Anzahl von Einträgen auf der Hauptebene:",

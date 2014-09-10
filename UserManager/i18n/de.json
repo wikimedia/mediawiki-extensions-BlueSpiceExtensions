@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-usermanager-desc": "Administrationsoberfläche für das Verwalten von Benutzern",
+	"bs-usermanager-desc": "Administrationsoberfläche für das Hinzufügen, Bearbeiten und Löschen von Benutzern",
 	"bs-usermanager-admin-nodelete": "Der Administrator-Account kann nicht gelöscht werden.",
 	"bs-usermanager-self-nodelete": "Du kannst nicht dein Benutzerkonto löschen.",
 	"bs-usermanager-db-error": "Es ist ein Datenbankfehler aufgetreten.",

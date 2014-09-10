@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-hidetitle-desc": "Aggiunge la parola magica <code><nowiki>__HIDETITLE__</nowiki></code> per nascondere il titolo della pagina"
+}
