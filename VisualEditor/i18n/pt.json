@@ -4,6 +4,7 @@
 			"Vitorvicentevalente"
 		]
 	},
+	"bs-visualeditor-desc": "Editor Visual para MediaWiki",
 	"prefs-visualeditor": "Editor Visual",
 	"bs-visualeditor-editbutton-hint": "Editor Visual",
 	"bs-visualeditor-no-summary": "Sem resumo",

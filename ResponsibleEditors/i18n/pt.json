@@ -5,6 +5,7 @@
 			"Vitorvicentevalente"
 		]
 	},
+	"bs-responsibleeditors-desc": "Permite que o MediaWiki faça a gestão de editores responsáveis para páginas",
 	"prefs-responsibleeditors": "Editores responsáveis",
 	"bs-responsibleeditors-pref-echange": "Notificar-me quando a página tiver sido alterada",
 	"bs-responsibleeditors-pref-edelete": "Notificar-me quando a página tiver sido eliminada",

@@ -5,7 +5,7 @@
 			"Fúlvio"
 		]
 	},
-	"bs-universalexport-desc": "Adiciona funções de exportação",
+	"bs-universalexport-desc": "Permite que o MediaWiki exporte páginas em diferentes formatos",
 	"prefs-universalexport": "Exportação universal",
 	"universalexport": "Exportação universal",
 	"bs-universalexport-pref-metadatadefaults": "Metadados (padrão, JSON):",

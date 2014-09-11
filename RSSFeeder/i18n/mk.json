@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-rssfeeder-desc": "Направете ваш RSS-канал",
+	"bs-rssfeeder-desc": "Додаток за извод на важечки RSS за секој додаток, со buildRss-функција",
 	"rssfeeder": "RSS-канал",
 	"bs-rssfeeder-pagetext": "Можете да се претплатите на следниве RSS-канали:",
 	"bs-rssfeeder-recent-changes": "Скорешни промени",

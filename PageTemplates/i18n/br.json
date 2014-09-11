@@ -9,6 +9,7 @@
 	"bs-pagetemplates-empty-page-desc": "Kregiñ gant ur bajenn c'houllo.",
 	"bs-pagetemplatesadmin-label": "Patromoù pajenn",
 	"bs-pagetemplates-tpl-desc-toolong": "Re hir eo an deskrivadur. Implijit 255 arouezenn d'ar muiañ, mar plij.",
+	"bs-pagetemplates-tpl-label-toolong": "Re hir eo anv al label. Implijit 255 arouezenn d'ar muiañ, mar plij.",
 	"bs-pagetemplates-tpl-label-empty": "Merkit ul label, mar plij.",
 	"bs-pagetemplates-tpl-name-toolong": "Re hir eo anv ar patrom. Implijit 255 arouezenn d'ar muiañ, mar plij.",
 	"bs-pagetemplates-tpl-name-empty": "Merkit un anv patrom, mar plij.",

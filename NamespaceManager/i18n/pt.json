@@ -4,7 +4,7 @@
 			"Vitorvicentevalente"
 		]
 	},
-	"bs-namespacemanager-desc": "Interface de administração para gestão de domínios",
+	"bs-namespacemanager-desc": "Interface de administração para criar, editar e eliminar domínios",
 	"bs-namespacemanager-label": "Gestor de domínio",
 	"bs-namespacemanager-wrong-name": "O domínio contém caracteres inválidos.",
 	"bs-namespacemanager-ns-exists": "O domínio já existe.",

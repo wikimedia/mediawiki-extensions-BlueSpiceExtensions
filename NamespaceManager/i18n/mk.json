@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-namespacemanager-desc": "Администраторски посредник за раководење со именски простори",
+	"bs-namespacemanager-desc": "Администраторски посредник за додавање, измена и бришење на именски простори",
 	"bs-namespacemanager-label": "Раководител со именски простори",
 	"bs-namespacemanager-wrong-name": "Именскиот простор содржи неважечки знаци.",
 	"bs-namespacemanager-ns-exists": "Именскиот простор веќе постои.",

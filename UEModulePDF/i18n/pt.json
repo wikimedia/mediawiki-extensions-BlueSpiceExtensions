@@ -4,7 +4,7 @@
 			"Vitorvicentevalente"
 		]
 	},
-	"bs-uemodulepdf-desc": "Permite a exportação para PDF",
+	"bs-uemodulepdf-desc": "Permite que o MediaWiki exporte páginas em formato PDF",
 	"prefs-uemodulepdf": "Módulo de exportação universal PDF",
 	"uemodulepdf": "Módulo de exportação universal PDF",
 	"bs-uemodulepdf-pref-suppressns": "Ocultar prefixo do domínio no PDF",

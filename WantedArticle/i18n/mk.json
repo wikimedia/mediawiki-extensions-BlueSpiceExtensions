@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-wantedarticle-desc": "Предлага посакувана страница",
+	"bs-wantedarticle-desc": "Додава страница во списокот на барани",
 	"prefs-wantedarticle": "Посакувана страница",
 	"bs-wantedarticle-ajax-error-no-parameter": "Нема укажано наслов на страницата.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Предложената страница „$1“ веќе постои.",

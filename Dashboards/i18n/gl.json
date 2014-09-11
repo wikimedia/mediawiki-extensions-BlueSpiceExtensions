@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-dashboards-desc": "Proporciona paneis de control para usuarios e administradores",
+	"bs-specialadmindashboard-label": "Panel de control",
+	"bs-dashboards-addportlet": "Engadir un módulo",
+	"bs-dashboards-portlets": "Módulos",
+	"prefs-dashboards": "Paneis de control",
+	"bs-dashboards-pref-userdashboardonlogo": "O logo do sitio liga co panel do usuario",
+	"admindashboard": "Panel de administrador",
+	"userdashboard": "Panel de usuario",
+	"bs-dashboard-userportlet-calendar-title": "Calendario",
+	"bs-dashboard-userportlet-calendar-description": "Calendario"
+}

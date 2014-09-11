@@ -5,9 +5,11 @@
 			"Y-M D"
 		]
 	},
+	"bs-statistics-desc": "Modulenn stadegoù evit BlueSpice",
 	"bs-statistics-diagram": "Reked",
 	"bs-statistics-from": "A-berzh",
 	"bs-statistics-to": "Da",
+	"bs-statistics-grain": "Koulzad",
 	"bs-statistics-mode": "Mod",
 	"bs-statistics-aggregated": "strollet",
 	"bs-statistics-year": "Bloaz",

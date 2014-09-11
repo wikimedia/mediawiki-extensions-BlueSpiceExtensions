@@ -7,7 +7,7 @@
 	},
 	"bs-authors-desc": "Mostra as imaxes de perfil dos autores dunha páxina",
 	"prefs-authors": "Autores desta páxina",
-	"bs-authors-title": "{{PLURAL:$1|Autor|Autores}}",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor|Autora}}|Autores}}",
 	"bs-authors-profileimage": "Imaxe do perfil",
 	"bs-authors-profileimage-change": "Cambiar a imaxe do perfil",
 	"bs-authors-show-all-authors": "Máis autores dispoñibles",

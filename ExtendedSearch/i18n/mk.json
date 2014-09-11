@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-extendedsearch-desc": "Напредно пребарување",
+	"bs-extendedsearch-desc": "Приклучок за пребарување на основа на Apache Solr (http://lucene.apache.org/solr/) за напредни пребарувачки функции",
 	"specialextendedsearch": "Напредно пребарување",
 	"prefs-extendedsearch": "Напредно пребарување",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Категорија|Категории}}: $2",

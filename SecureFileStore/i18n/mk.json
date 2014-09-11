@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-securefilestore-desc": "Спречува неовластен пристап до податотеки",
+	"bs-securefilestore-desc": "Спречува неовластен пристап до податотеки и слики",
 	"prefs-securefilestore": "Безбеден склад на податотеки",
 	"bs-securefilestore-pref-defaultdisposition": "Прикажувај ги податотеките по основно:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Прелистувач",

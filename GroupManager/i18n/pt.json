@@ -4,7 +4,7 @@
 			"Vitorvicentevalente"
 		]
 	},
-	"bs-groupmanager-desc": "Interface de administração para gestão de grupos",
+	"bs-groupmanager-desc": "Interface de administração para criação, edição e eliminação de grupos de utilizador e gestão dos seus privilégios",
 	"bs-groupmanager-grpexists": "O grupo já existe.",
 	"bs-groupmanager-grpadded": "O grupo foi adicionado.",
 	"bs-groupmanager-grpedited": "O grupo foi editado.",

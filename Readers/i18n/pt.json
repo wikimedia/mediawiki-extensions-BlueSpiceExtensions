@@ -4,6 +4,7 @@
 			"Vitorvicentevalente"
 		]
 	},
+	"bs-readers-desc": "Cria uma lista de pessoas que lêem a página",
 	"prefs-readers": "Leitores",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Leitor|Leitora}}|Leitores}}",
 	"readers-user": "Páginas {{GENDER:$1|lidas}} por: $1",

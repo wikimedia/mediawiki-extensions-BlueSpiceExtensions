@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"HarpyWar",
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
-	"bs-uemodulepdf-desc": "Разрешить экспорт в PDF",
+	"bs-uemodulepdf-desc": "Разрешить MediaWiki экспортировать страницы в PDF-формат",
 	"prefs-uemodulepdf": "Универсальный модуль экспорта в PDF",
 	"uemodulepdf": "Универсальный модуль для экспорта в PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "Адрес бэкенда",

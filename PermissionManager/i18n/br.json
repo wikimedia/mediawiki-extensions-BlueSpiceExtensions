@@ -4,6 +4,8 @@
 			"Fohanno"
 		]
 	},
+	"prefs-permissionmanager": "Merour an aotreoù",
+	"bs-permissionmanager-label": "Merour an aotreoù",
 	"bs-permissionmanager-btn-group-label": "Strollad :",
 	"bs-permissionmanager-header-permissions": "Aotreoù",
 	"bs-permissionmanager-header-global": "Wiki",

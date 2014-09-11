@@ -4,10 +4,10 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-shoutbox-desc": "Додава брзи пораки веднаш под секоја страница",
+	"bs-shoutbox-desc": "Додава расчленувачка функција за вградување на сопствени брзи пораки",
 	"prefs-shoutbox": "Брзи пораки",
 	"bs-shoutbox-title": "Брзи пораки",
-	"bs-shoutbox-message": "Порака",
+	"bs-shoutbox-message": "Напишете нов коментар...",
 	"bs-shoutbox-shout": "Испрати",
 	"bs-shoutbox-no-entries": "Овде засега нема ништо.",
 	"bs-shoutbox-loading": "Вчитувам...",

@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-formattinghelp-desc": "Mostra a axuda para formatear texto",
+	"bs-formattinghelp-formatting": "Axuda co formato",
+	"bs-formattinghelp-help-syntax": "Sintaxe",
+	"bs-formattinghelp-help-example-text": "Texto",
+	"bs-formattinghelp-help-bold": "Negra",
+	"bs-formattinghelp-help-italic": "Cursiva",
+	"bs-formattinghelp-help-whitespace": "Espazo en branco",
+	"bs-formattinghelp-help-nowiki": "Evitar o formateo",
+	"bs-formattinghelp-help-color": "Texto coloreado",
+	"bs-formattinghelp-help-headline": "Cabeceira",
+	"bs-formattinghelp-help-linebreak": "Salto de liña",
+	"bs-formattinghelp-help-ul": "Lista sen ordenar",
+	"bs-formattinghelp-help-listitem": "Elemento de lista",
+	"bs-formattinghelp-help-subitem": "Subítem",
+	"bs-formattinghelp-help-numberedlist": "Lista numerada",
+	"bs-formattinghelp-help-link": "Ligazón interna",
+	"bs-formattinghelp-help-link-alt": "Ligazón interna con texto alternativo",
+	"bs-formattinghelp-help-caption": "Pé de foto",
+	"bs-formattinghelp-help-extlink": "Ligazón externa",
+	"bs-formattinghelp-help-hr": "Liña horizontal",
+	"bs-formattinghelp-help-template": "Modelo",
+	"bs-formattinghelp-help-templatename": "Nome do modelo"
+}

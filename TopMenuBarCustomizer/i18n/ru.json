@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
-	"bs-topmenubarcustomizer-desc": "Создание и редактирование существующих меню"
+	"bs-topmenubarcustomizer-desc": "Настройка ссылок верхнего меню"
 }

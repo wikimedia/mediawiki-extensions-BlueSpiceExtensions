@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-groupmanager-desc": "Административен посредник за раководење со групи",
+	"bs-groupmanager-desc": "Административен посредник додавање, измена и бришење на кориснички групи и нивните права",
 	"bs-groupmanager-grpexists": "Групата веќе постои.",
 	"bs-groupmanager-grpadded": "Групата е додадена.",
 	"bs-groupmanager-grpedited": "Групата е изменета.",

@@ -4,7 +4,7 @@
 			"Vitorvicentevalente"
 		]
 	},
-	"bs-securefilestore-desc": "Previne o acesso sem autorização a ficheiros",
+	"bs-securefilestore-desc": "Previne o acesso sem autorização a ficheiros e imagens",
 	"bs-securefilestore-pref-defaultdisposition-external": "Externo",
 	"bs-securefilestore-pref-dispositionattachment": "Tipos de ficheiros externos:",
 	"bs-securefilestore-pref-dispositioninline": "Tipos de ficheiros de navegador:",

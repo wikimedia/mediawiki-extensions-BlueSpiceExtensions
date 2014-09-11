@@ -15,6 +15,7 @@
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "N'eus ket eus ar bajenn roet.",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "Ar bajenn \"$1\" zo bet {{GENDER:$2|aozet}} gant $3",
 	"bs-responsibleeditors-mail-subject-re-article-deleted": "Ar bajenn \"$1\" zo bet {{GENDER:$2|dilamet}} gant $3",
+	"bs-responsibleeditors-mail-subject-re-article-moved": "Ar bajenn \"$1\" zo bet {{GENDER:$2|dilec'hiet}} gant $3",
 	"responsibleeditors": "Aozerien atebek",
 	"bs-responsibleeditors-title": "Aozerien atebek",
 	"bs-responsibleeditors-titleeditors": "Aozerien atebek",

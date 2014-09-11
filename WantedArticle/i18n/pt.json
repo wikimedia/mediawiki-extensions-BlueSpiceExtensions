@@ -4,7 +4,7 @@
 			"Vitorvicentevalente"
 		]
 	},
-	"bs-wantedarticle-desc": "Sugere uma página desejada",
+	"bs-wantedarticle-desc": "Adiciona uma página à lista de desejadas",
 	"prefs-wantedarticle": "Página desejada",
 	"bs-wantedarticle-ajax-error-no-parameter": "Não foi fornecido nenhum título para a página.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "A página sugerida \"$1\" já existe.",
