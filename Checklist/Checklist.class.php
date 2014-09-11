@@ -130,11 +130,104 @@ class Checklist extends BsExtensionMW {
 		return 'true';
 	}
 
+	public static function ajaxGetTemplateData() {
+		$aTemplateData = array();
+		$dbr = wfGetDB(DB_SLAVE);
+		$res = $dbr->select(
+			array( 'page' ),
+			array( 'page_namespace', 'page_title' ),
+			array(
+				'page_namespace' => NS_TEMPLATE
+			)
+		);
+
+		$aTitles = array();
+		foreach( $res as $row ) {
+			$oTitle = Title::makeTitle(
+				$row->page_namespace,
+				$row->page_title
+			);
+			// only add those titles that do have actual lists
+			$aListOptions = self::getListOptions( $oTitle->getFullText() );
+			if (sizeof( $aListOptions ) > 0 ) {
+				$aTitles[] = $oTitle->getFullText();
+			}
+		}
+		foreach ($aTitles as $sTitle ) {
+			$oTemplate = new stdClass();
+			$oTemplate->text = $sTitle;
+			$oTemplate->leaf = true;
+			$oTemplate->id = $sTitle;
+			$aTemplateData[] = $oTemplate;
+		}
+
+		return FormatJson::encode( $aTemplateData );
+	}
+
+	public static function ajaxGetItemStoreData() {
+		return FormatJson::encode( array() );
+	}
+
+	public static function ajaxSaveOptionsList( $sTitle, $aRecords ) {
+		//TODO: make safe
+		$oTitle = Title::newFromText( $sTitle );
+
+		$sContent = '';
+		foreach( $aRecords as $record ) {
+			$sContent .= '* '.$record."\n";
+		}
+
+		// TODO: i18n
+		$sSummary = "Updated list";
+
+		$oWikiPage = WikiPage::factory( $oTitle );
+		$oContentHandler = $oWikiPage->getContentHandler();
+		$oNewContent = $oContentHandler->makeContent($sContent, $oWikiPage->getTitle());
+		$oResult = $oWikiPage->doEditContent( $oNewContent, $sSummary );
+
+		//TODO: proper json answer
+		return FormatJson::encode( "OK" );
+	}
+
 	public static function getOptionsList() {
 		$oRequest = RequestContext::getMain()->getRequest();
 		$sList = $oRequest->getVal( 'listId', '' );
 		$theList = self::getListOptions( $sList );
-		return json_encode( $theList );
+		return FormatJson::encode( $theList );
+	}
+
+	public static function getAvailableOptions() {
+		$aTemplateData = array();
+		$dbr = wfGetDB(DB_SLAVE);
+		$res = $dbr->select(
+			array( 'page' ),
+			array( 'page_namespace', 'page_title' ),
+			array(
+				'page_namespace' => NS_TEMPLATE
+			)
+		);
+
+		$aAvailableOptions = array();
+		foreach( $res as $row ) {
+			$oTitle = Title::makeTitle(
+				$row->page_namespace,
+				$row->page_title
+			);
+			// only add those titles that do have actual lists
+			$aListOptions = self::getListOptions( $oTitle->getFullText() );
+			if (sizeof( $aListOptions ) > 0 ) {
+				$aAvailableOptions = array_merge($aAvailableOptions, $aListOptions);
+			}
+		}
+		foreach ($aAvailableOptions as $sOption ) {
+			$oTemplate = new stdClass();
+			$oTemplate->text = $sOption;
+			$oTemplate->leaf = true;
+			$oTemplate->id = $sOption;
+			$aTemplateData[] = $oTemplate;
+		}
+
+		return FormatJson::encode( $aTemplateData );
 	}
 
 	/*http://www.php.net/manual/en/function.preg-replace.php#112400*/
