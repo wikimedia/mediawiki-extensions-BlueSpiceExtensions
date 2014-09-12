@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-groupmanager-desc": "管理群组的管理界面",
+	"bs-groupmanager-desc": "用于添加、编辑和删除用户组及其权限的管理界面",
 	"bs-groupmanager-grpexists": "群组已存在。",
 	"bs-groupmanager-grpadded": "群组已加入。",
 	"bs-groupmanager-grpedited": "群组已编辑。",

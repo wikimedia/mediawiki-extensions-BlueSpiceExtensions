@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"FRacco"
 		]
 	},
-	"bs-groupmanager-desc": "Interfaccia di amministrazione per la gestione dei gruppi",
+	"bs-groupmanager-desc": "Interfaccia di amministrazione per aggiungere, modificare e cancellare gruppi utenti e relativi diritti",
 	"bs-groupmanager-grpexists": "Il gruppo esiste già.",
 	"bs-groupmanager-grpadded": "Il gruppo è stato aggiunto.",
 	"bs-groupmanager-grpedited": "Il gruppo è stato modificato.",

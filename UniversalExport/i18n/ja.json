@@ -4,7 +4,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-universalexport-desc": "書き出しの機能を追加する",
+	"bs-universalexport-desc": "MediaWiki がページをさまざまな形式で書き出せるようにする",
 	"bs-universalexport-pref-metadatadefaults": "メタデータ (標準、JSON):",
 	"bs-universalexport-page-text-without-param-no-modules-registered": "登録されているモジュールはありません。",
 	"bs-universalexport-tag-pagebreak-desc": "このタグは書き出し先の文書内で強制的に改行する (指定した書き出しモジュールが対応している場合)。",

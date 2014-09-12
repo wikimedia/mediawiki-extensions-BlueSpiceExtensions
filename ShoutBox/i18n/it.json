@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Ankabel",
-			"Beta16"
+			"Beta16",
+			"FRacco"
 		]
 	},
-	"bs-shoutbox-message": "Messaggio",
+	"bs-shoutbox-message": "Scrivi un nuovo commento...",
 	"bs-shoutbox-loading": "Caricamento...",
 	"bs-shoutbox-pref-committimeinterval": "Tempo tra due messaggi (in secondi):",
 	"bs-shoutbox-pref-numberofshouts": "Numero di messaggi mostrati:",

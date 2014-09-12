@@ -5,7 +5,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-visualeditor-desc": "TinyMCE WYSIWYG エディター",
+	"bs-visualeditor-desc": "MediaWiki 用のビジュアルエディター",
 	"prefs-visualeditor": "ビジュアルエディター",
 	"bs-visualeditor-editbutton-hint": "ビジュアルエディター",
 	"bs-visualeditor-pref-disablens": "無効にする名前空間:",

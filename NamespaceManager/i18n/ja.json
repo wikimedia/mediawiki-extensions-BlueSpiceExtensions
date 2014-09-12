@@ -4,7 +4,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-namespacemanager-desc": "名前空間を管理するインターフェイス",
+	"bs-namespacemanager-desc": "名前空間を追加/編集/削除する管理インターフェイス",
 	"bs-namespacemanager-ns-exists": "既に存在する名前空間です。",
 	"bs-namespacemanager-invalid-id": "有効な名前空間 ID がありません",
 	"bs-namespacemanager-label-id": "ID",

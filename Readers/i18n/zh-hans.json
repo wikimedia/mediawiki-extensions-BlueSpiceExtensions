@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-readers-desc": "显示页面读者和某用户阅读的页面",
+	"bs-readers-desc": "创建阅读某一页面的人的列表",
 	"prefs-readers": "读者",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|读者}}}}",
 	"readers-user": "页面被$1{{GENDER:$1|阅读}}",

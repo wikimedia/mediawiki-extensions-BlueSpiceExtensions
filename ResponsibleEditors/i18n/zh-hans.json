@@ -5,7 +5,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-responsibleeditors-desc": "启用对页面的责任编辑分配",
+	"bs-responsibleeditors-desc": "启用MediaWiki以管理页面的责任编辑",
 	"prefs-responsibleeditors": "责任编辑",
 	"bs-responsibleeditors-pref-activatednamespaces": "启用的名字空间：",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "页面创建时自动分配",

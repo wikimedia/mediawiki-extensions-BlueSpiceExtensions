@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Meshkov.a",
-			"Okras"
+			"Okras",
+			"Alexandr Efremov"
 		]
 	},
-	"bs-shoutbox-message": "Сообщение",
+	"bs-shoutbox-message": "Написать новый комментарий...",
 	"bs-shoutbox-loading": "Загрузка…",
 	"bs-shoutbox-pref-committimeinterval": "Время между двумя сообщениями (в секундах):",
 	"bs-shoutbox-pref-maxmessagelength": "Максимальная длина сообщения:",

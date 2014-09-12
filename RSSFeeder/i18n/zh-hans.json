@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-rssfeeder-desc": "创建您自己的RSS订阅源",
+	"bs-rssfeeder-desc": "为每一个有buildRss功能的扩展生成有效RSS的扩展",
 	"rssfeeder": "RSS订阅器",
 	"bs-rssfeeder-pagetext": "您可通过下面的RSS订阅源订阅：",
 	"bs-rssfeeder-recent-changes": "最近更改",

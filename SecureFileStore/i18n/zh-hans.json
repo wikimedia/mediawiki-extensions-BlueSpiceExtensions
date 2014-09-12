@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-securefilestore-desc": "阻止未经授权的对文件的访问",
+	"bs-securefilestore-desc": "阻止对文件和图片的未经授权的访问",
 	"prefs-securefilestore": "安全档案库",
 	"bs-securefilestore-pref-defaultdisposition": "默认显示文件：",
 	"bs-securefilestore-pref-defaultdisposition-brower": "浏览器",

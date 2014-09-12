@@ -10,7 +10,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-extendedsearch-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended search extension\n{{Identical|Extended search}}",
+	"bs-extendedsearch-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended search extension.",
 	"specialextendedsearch": "Special page name for extended search\n{{Identical|Extended search}}",
 	"prefs-extendedsearch": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for extended search section in preferences.\n{{Identical|Extended search}}",
 	"bs-extendedsearch-category-filter": "Text for {{PLURAL:$1|Category|Categories}}: $2\n* $1 - the number of categories - use for PLURAL distinction\n* $2 - a comma separated list of categories\n{{Identical|Category}}",

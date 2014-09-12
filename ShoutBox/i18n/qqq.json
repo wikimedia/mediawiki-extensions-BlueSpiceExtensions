@@ -11,7 +11,7 @@
 	"prefs-shoutbox": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for shout box section in preferences. \n {{Identical|Shoutbox}}",
 	"bs-shoutbox-title": "Fieldset legend for shoutbox\n{{Identical|Shoutbox}}",
 	"bs-shoutbox-message": "Default text in textarea for message, disappears when the user clicks in the textarea and asks the user to insert some text.",
-	"bs-shoutbox-shout": "Button to send the message",
+	"bs-shoutbox-shout": "Button to send the message\n{{Identical|Send}}",
 	"bs-shoutbox-no-entries": "Text for nothing here yet.",
 	"bs-shoutbox-loading": "Text for loading...\n{{Identical|Loading}}",
 	"bs-shoutbox-pref-committimeinterval": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for time between two messages (in seconds):",

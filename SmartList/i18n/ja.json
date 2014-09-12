@@ -5,6 +5,7 @@
 			"Shirayuki"
 		]
 	},
+	"bs-smartlist-desc": "ウィキの最近の変更を 5 件列挙する",
 	"prefs-smartlist": "スマート リスト",
 	"bs-smartlist-recent-changes": "最近の更新",
 	"bs-smartlist-invalid-namespaces": "指定した{{PLURAL:$1|名前空間}}は無効です: $2",

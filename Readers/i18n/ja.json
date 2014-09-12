@@ -4,7 +4,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-readers-desc": "ページの閲覧者や、利用者が閲覧したページを表示する",
+	"bs-readers-desc": "ページを閲覧した利用者の一覧を作成する",
 	"prefs-readers": "閲覧者",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|閲覧者}}|閲覧者}}",
 	"readers": "「$1」の閲覧者",

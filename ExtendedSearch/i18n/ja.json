@@ -4,7 +4,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-extendedsearch-desc": "拡張検索",
+	"bs-extendedsearch-desc": "検索機能を拡張する Apache Solr (http://lucene.apache.org/solr/) ベースの検索プラグイン",
 	"specialextendedsearch": "拡張検索",
 	"prefs-extendedsearch": "拡張検索",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|カテゴリ}}: $2",

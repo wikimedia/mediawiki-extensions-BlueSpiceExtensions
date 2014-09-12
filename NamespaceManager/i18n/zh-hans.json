@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-namespacemanager-desc": "用于管理名字空间的管理界面",
+	"bs-namespacemanager-desc": "用于添加、编辑和删除名字空间的管理界面",
 	"bs-namespacemanager-label": "名字空间管理器",
 	"bs-namespacemanager-wrong-name": "名字空间包含无效字符。",
 	"bs-namespacemanager-ns-exists": "名字空间已存在。",

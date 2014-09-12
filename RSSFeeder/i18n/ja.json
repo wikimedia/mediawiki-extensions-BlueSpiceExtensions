@@ -5,6 +5,7 @@
 			"Shirayuki"
 		]
 	},
+	"bs-rssfeeder-desc": "buildRss 関数を持つ拡張機能それぞれについて有効な RSS フィードを出力する拡張機能",
 	"rssfeeder": "RSSフィーダー",
 	"bs-rssfeeder-pagetext": "以下の RSS フィードを購読できます:",
 	"bs-rssfeeder-recent-changes": "最近の更新",

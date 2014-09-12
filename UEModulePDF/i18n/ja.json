@@ -4,7 +4,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-uemodulepdf-desc": "PDF に書き出せるようにする",
+	"bs-uemodulepdf-desc": "MediaWiki がページを PDF 形式で書き出せるようにする",
 	"bs-uemodulepdf-pref-pdfserviceurl": "バックエンドの URL:",
 	"bs-uemodulepdf-overview-desc": "ページ (特別ページおよび本文ページ) を PDF に書き出します。",
 	"bs-uemodulepdf-overview-webservice-state": "バックエンドの状態",

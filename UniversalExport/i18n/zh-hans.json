@@ -6,7 +6,7 @@
 			"NigelSoft"
 		]
 	},
-	"bs-universalexport-desc": "添加导出功能",
+	"bs-universalexport-desc": "启用MediaWiki以将页面导出成不同格式",
 	"prefs-universalexport": "通用输出",
 	"universalexport": "通用输出",
 	"bs-universalexport-pref-metadatadefaults": "元数据（标准的，基于JSON格式）：",

@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"SnowedEarth"
+			"SnowedEarth",
+			"Jean-Frédéric"
 		]
 	},
 	"bs-shoutbox-desc": "Ajoute une shoutbox après le contenu d’une page",
 	"prefs-shoutbox": "Shoutbox",
 	"bs-shoutbox-title": "Shoutbox",
 	"bs-shoutbox-message": "Message",
-	"bs-shoutbox-shout": "Le crier",
+	"bs-shoutbox-shout": "Envoyer",
 	"bs-shoutbox-no-entries": "Rien ici pour l'instant.",
 	"bs-shoutbox-loading": "Chargement en cours…",
 	"bs-shoutbox-pref-committimeinterval": "Durée entre deux messages (en secondes) :",

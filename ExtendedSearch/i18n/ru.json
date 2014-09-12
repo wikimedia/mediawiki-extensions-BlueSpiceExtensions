@@ -5,7 +5,7 @@
 			"Alexandr Efremov"
 		]
 	},
-	"bs-extendedsearch-desc": "Расширенный поиск",
+	"bs-extendedsearch-desc": "Подключите поиск на Apache Solr (http://lucene.apache.org/solr/) для продвинутых функций поиска",
 	"specialextendedsearch": "Расширенный поиск",
 	"prefs-extendedsearch": "Расширенный поиск",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Категория|Категории}}: $2",

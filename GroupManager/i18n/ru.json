@@ -5,7 +5,7 @@
 			"Alexandr Efremov"
 		]
 	},
-	"bs-groupmanager-desc": "Интерфейс администрирования для управления группами",
+	"bs-groupmanager-desc": "Административный интерфейс для дополнения, модификации и удаления групп пользователей и их прав",
 	"bs-groupmanager-grpexists": "Группа уже существует.",
 	"bs-groupmanager-grpadded": "Группа была добавлена.",
 	"bs-groupmanager-grpedited": "Группа была отредактирована.",

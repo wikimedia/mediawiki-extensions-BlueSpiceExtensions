@@ -5,7 +5,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-groupmanager-desc": "グループを管理するインターフェイス",
+	"bs-groupmanager-desc": "利用者グループとその権限を追加/編集/削除するための管理インターフェイス",
 	"bs-groupmanager-grpexists": "そのグループは既に存在します。",
 	"bs-groupmanager-grpadded": "グループを追加しました。",
 	"bs-groupmanager-grpedited": "グループを編集しました。",

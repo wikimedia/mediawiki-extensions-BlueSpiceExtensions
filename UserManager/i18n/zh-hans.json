@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-usermanager-desc": "管理用户的管理界面",
+	"bs-usermanager-desc": "用于添加、编辑和删除用户的管理界面",
 	"bs-usermanager-admin-nodelete": "管理员账户不能删除。",
 	"bs-usermanager-self-nodelete": "您不能删除您的账户。",
 	"bs-usermanager-db-error": "发生数据库错误。",

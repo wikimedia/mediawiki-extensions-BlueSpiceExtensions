@@ -6,5 +6,6 @@
 	},
 	"bs-checklist-desc": "チェックリストの機能を提供する",
 	"bs-checklist-menu-insert-checkbox": "チェックボックス",
+	"bs-checklist-dlg-insert-list-title": "チェックリストの挿入",
 	"bs-checklist-tag-checklist-desc": "チェックボックスや選択フィールドを描画する。利用できる属性:"
 }

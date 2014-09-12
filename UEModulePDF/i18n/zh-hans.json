@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-uemodulepdf-desc": "启用导出PDF",
+	"bs-uemodulepdf-desc": "启用MediaWiki以导出页面为PDF格式",
 	"prefs-uemodulepdf": "通用导出PDF模块",
 	"uemodulepdf": "通用导出PDF模块",
 	"bs-uemodulepdf-pref-pdfserviceurl": "后台URL：",

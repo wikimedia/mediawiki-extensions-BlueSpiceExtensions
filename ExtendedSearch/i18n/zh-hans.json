@@ -5,7 +5,7 @@
 			"Fengchao"
 		]
 	},
-	"bs-extendedsearch-desc": "扩展搜索",
+	"bs-extendedsearch-desc": "基于Apache Solr（http://lucene.apache.org/solr/）的搜索插件以增强搜索功能",
 	"specialextendedsearch": "扩展搜索",
 	"prefs-extendedsearch": "扩展搜索",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|分类}}：$2",

@@ -4,7 +4,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"bs-wantedarticle-desc": "建议需要的页面",
+	"bs-wantedarticle-desc": "将页面加入至待撰页面列表",
 	"prefs-wantedarticle": "需要的页面",
 	"bs-wantedarticle-ajax-error-no-parameter": "没提供页面标题。",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "建议的页面“$1”已存在。",

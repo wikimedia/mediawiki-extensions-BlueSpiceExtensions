@@ -5,7 +5,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-statistics-desc": "拡張された統計機能を追加する",
+	"bs-statistics-desc": "BlueSpice 用の統計モジュール",
 	"prefs-statistics": "拡張統計",
 	"extendedstatistics": "拡張統計",
 	"bs-statistics-mode": "モード",
