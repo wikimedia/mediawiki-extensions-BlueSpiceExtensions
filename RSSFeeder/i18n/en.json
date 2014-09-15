@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-rssfeeder-desc": "An extension to put out valid rss for every extension, which has a buildRss-function",
+	"bs-rssfeeder-desc": "An extension to output valid RSS for every extension, which has a buildRss-function",
 	"rssfeeder": "RSS feeder",
 	"bs-rssfeeder-pagetext": "You can subscribe to the following RSS feeds:",
 	"bs-rssfeeder-recent-changes": "Recent changes",
