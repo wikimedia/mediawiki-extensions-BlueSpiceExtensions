@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"SnowedEarth"
+			"SnowedEarth",
+			"Ltrlg"
 		]
 	},
-	"bs-responsibleeditors-desc": "Permet l’affectation des éditeurs responsables à une page",
+	"bs-responsibleeditors-desc": "Active la gestion par MediaWiki des éditeurs responsables des pages",
 	"prefs-responsibleeditors": "Éditeurs responsables",
 	"bs-responsibleeditors-pref-activatednamespaces": "Espaces de nom activés :",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Affecter automatiquement à la création de la page",

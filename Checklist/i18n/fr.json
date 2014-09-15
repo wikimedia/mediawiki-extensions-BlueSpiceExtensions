@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Jean-Frédéric"
+			"Jean-Frédéric",
+			"Elodark",
+			"Ltrlg"
 		]
 	},
 	"bs-checklist-desc": "Fournit une fonctionnalité de liste de contrôle",
@@ -15,5 +17,14 @@
 	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Nom du modèle avec les valeurs disponibles. Le paramètre <code>type</code> doit être fixé à <code>list</code>.",
 	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> ou une valeur du modèle de la liste.",
 	"bs-checklist-dlg-new-list": "Créer une nouvelle liste",
-	"bs-checklist-dlg-new-title": "Ajouter une nouvelle liste"
+	"bs-checklist-dlg-save-list": "Enregistrer les modifications apportées à la liste",
+	"bs-checklist-dlg-items-label": "Éléments de la liste",
+	"bs-checklist-dlg-items-emptytext": "Aucun élément dans cette liste",
+	"bs-checklist-dlg-items-hint": "Pour ajouter un nouvel élément, écrivez dans le champ ci-dessus et appuyez sur <kbd>Entrée</kbd>.",
+	"bs-checklist-dlg-panel-title": "Listes disponibles",
+	"bs-checklist-dlg-new-title": "Ajouter une nouvelle liste",
+	"bs-checklist-dlg-new-prompt": "Entrez un titre de liste",
+	"bs-checklist-alert": "Attention !",
+	"bs-checklist-confirm-dirty-title": "Modifications non enregistrées !",
+	"bs-checklist-confirm-dirty-text": "Les modifications apportées à la liste ne sont pas encore enregistrées. Êtes-vous sûr de vouloir supprimer ces modifications ?"
 }

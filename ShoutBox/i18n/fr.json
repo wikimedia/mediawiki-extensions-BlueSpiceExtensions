@@ -3,13 +3,14 @@
 		"authors": [
 			"Gomoko",
 			"SnowedEarth",
-			"Jean-Frédéric"
+			"Jean-Frédéric",
+			"Ltrlg"
 		]
 	},
 	"bs-shoutbox-desc": "Ajoute une shoutbox après le contenu d’une page",
 	"prefs-shoutbox": "Shoutbox",
 	"bs-shoutbox-title": "Shoutbox",
-	"bs-shoutbox-message": "Message",
+	"bs-shoutbox-message": "Écrire un commentaire…",
 	"bs-shoutbox-shout": "Envoyer",
 	"bs-shoutbox-no-entries": "Rien ici pour l'instant.",
 	"bs-shoutbox-loading": "Chargement en cours…",

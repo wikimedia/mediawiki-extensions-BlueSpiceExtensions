@@ -41,6 +41,7 @@
 	"bs-insertmagic-contentlanguage": "Wiki的默认界面语言。",
 	"bs-insertmagic-pageid": "返回页面标识符。",
 	"bs-insertmagic-pagesize": "[高开销] 返回特定页面的字节大小。使用<code>|R</code>以获取原始（未格式化）数值。",
+	"bs-insertmagic-protectionlevel": "输出当前页面指定操作的保护等级。",
 	"bs-insertmagic-revisionid": "唯一修订ID。",
 	"bs-insertmagic-revisionday": "日更改已作出（无填充数字）。",
 	"bs-insertmagic-revisionday2": "日更改已作出（零填充数字）。",

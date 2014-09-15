@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Ltrlg"
 		]
 	},
-	"bs-namespacemanager-desc": "Interface d’administration pour gérer les espaces de noms",
+	"bs-namespacemanager-desc": "Interface d’administration pour ajouter, modifier et supprimer des espaces de noms",
 	"bs-namespacemanager-label": "Gestionnaire d’espaces de noms",
 	"bs-namespacemanager-wrong-name": "L’espace de noms contient des caractères non valides.",
 	"bs-namespacemanager-ns-exists": "L’espace de noms existe déjà.",

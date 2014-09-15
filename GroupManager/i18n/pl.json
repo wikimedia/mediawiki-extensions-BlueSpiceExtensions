@@ -4,7 +4,7 @@
 			"Chrumps"
 		]
 	},
-	"bs-groupmanager-desc": "Interfejs administracyjny do zarządzania grupami",
+	"bs-groupmanager-desc": "Interfejs administracyjny do dodawania, edytowania i usuwania grup użytkowników i ich uprawnień",
 	"bs-groupmanager-grpexists": "Grupa już istnieje.",
 	"bs-groupmanager-grpadded": "Grupa została dodana.",
 	"bs-groupmanager-grpremoved": "Grupa została usunięta.",

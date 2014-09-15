@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Ltrlg"
 		]
 	},
-	"bs-securefilestore-desc": "Empêche l’accès non autorisé aux fichiers",
+	"bs-securefilestore-desc": "Empêche l’accès non autorisé aux fichiers et aux images",
 	"prefs-securefilestore": "Stockage de fichiers sécurisé",
 	"bs-securefilestore-pref-defaultdisposition": "Afficher les fichiers par défaut :",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Navigateur",

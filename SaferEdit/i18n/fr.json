@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Ltrlg"
 		]
 	},
-	"bs-saferedit-desc": "Enregistrement intermédiaire des modifications",
+	"bs-saferedit-desc": "Enregistrement intermédiaire des modifications du wiki",
 	"prefs-saferedit": "Édition plus sûre",
 	"bs-saferedit-restore": "Restaurer",
 	"bs-saferedit-safer-edit-tooltip": "Une version de récupération est disponible.",

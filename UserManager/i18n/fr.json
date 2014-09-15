@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"SnowedEarth"
+			"SnowedEarth",
+			"Ltrlg"
 		]
 	},
-	"bs-usermanager-desc": "Interface d’administration pour gérer les utilisateurs",
+	"bs-usermanager-desc": "Interface d’administration pour ajouter, modifier et supprimer des utilisateurs",
 	"bs-usermanager-admin-nodelete": "Le compte administrateur ne peut pas être supprimé.",
 	"bs-usermanager-self-nodelete": "Vous ne pouvez pas supprimer votre compte.",
 	"bs-usermanager-db-error": "Une erreur de base de données s’est produite.",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Ltrlg"
 		]
 	},
-	"bs-review-desc": "Ajoute la fonctionnalité de relecture",
+	"bs-review-desc": "Ajoute aux pages des fonctionnalité pour le travail",
 	"prefs-review": "Relire",
 	"bs-review-review": "Relecture",
 	"bs-review-menu-entry": "Modifier la relecture",

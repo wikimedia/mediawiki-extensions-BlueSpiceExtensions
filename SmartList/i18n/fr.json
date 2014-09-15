@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Wyz"
+			"Wyz",
+			"Ltrlg"
 		]
 	},
-	"bs-smartlist-desc": "Fournit des informations supplémentaires sur le contenu et les utilisateurs",
+	"bs-smartlist-desc": "Affiche une liste des cinq dernières modifications du wiki",
 	"prefs-smartlist": "Liste intelligente",
 	"bs-smartlist-recent-changes": "Modifications récentes",
 	"bs-smartlist-no-entries": "Aucun résultat trouvé.",

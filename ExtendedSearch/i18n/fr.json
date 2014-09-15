@@ -3,10 +3,11 @@
 		"authors": [
 			"Fany",
 			"Gomoko",
-			"Orikrin1998"
+			"Orikrin1998",
+			"Ltrlg"
 		]
 	},
-	"bs-extendedsearch-desc": "Recherche avancée",
+	"bs-extendedsearch-desc": "Plugin basé sur Apache Solr (http://lucene.apache.org/solr/) étendant la fonctionnalité de recherche",
 	"specialextendedsearch": "Recherche avancée",
 	"prefs-extendedsearch": "Recherche avancée",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Catégorie|Catégories}} : $2",

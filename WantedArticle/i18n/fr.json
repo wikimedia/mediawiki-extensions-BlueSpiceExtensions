@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"SnowedEarth"
+			"SnowedEarth",
+			"Ltrlg"
 		]
 	},
-	"bs-wantedarticle-desc": "Suggérer une page recherchée",
+	"bs-wantedarticle-desc": "Ajouter une page à la liste des pages souhaitées",
 	"prefs-wantedarticle": "Page recherchée",
 	"bs-wantedarticle-ajax-error-no-parameter": "Aucun titre de page fourni.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "La page « $1 » suggérée existe déjà.",

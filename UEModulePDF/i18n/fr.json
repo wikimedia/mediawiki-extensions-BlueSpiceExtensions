@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Ltrlg"
 		]
 	},
-	"bs-uemodulepdf-desc": "Permettre l’exportation en PDF",
+	"bs-uemodulepdf-desc": "Permettre l’exportation d pages par MediaWiki dans le format PDF",
 	"prefs-uemodulepdf": "Module universel d’exportation en PDF",
 	"uemodulepdf": "Module universel d’exportation en PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "URL du serveur :",

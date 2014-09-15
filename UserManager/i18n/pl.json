@@ -4,7 +4,7 @@
 			"Chrumps"
 		]
 	},
-	"bs-usermanager-desc": "Interfejs administracyjny do zarządzania użytkownikami",
+	"bs-usermanager-desc": "Interfejs administracyjny do dodawania, edytowania i usuwania użytkowników",
 	"bs-usermanager-admin-nodelete": "Nie można usunąć konta administratora.",
 	"bs-usermanager-self-nodelete": "Nie możesz usunąć swojego konta.",
 	"bs-usermanager-db-error": "Wystąpił błąd bazy danych.",

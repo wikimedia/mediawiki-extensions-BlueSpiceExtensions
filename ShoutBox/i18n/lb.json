@@ -4,7 +4,8 @@
 			"Robby"
 		]
 	},
-	"bs-shoutbox-message": "Message",
+	"bs-shoutbox-message": "Schreift eng nei Bemierkung...",
+	"bs-shoutbox-shout": "Schécken",
 	"bs-shoutbox-no-entries": "Nach näischt hei.",
 	"bs-shoutbox-loading": "Lueden...",
 	"bs-shoutbox-pref-committimeinterval": "Zäit tëscht zwee Messagen (a Sekonnen):",

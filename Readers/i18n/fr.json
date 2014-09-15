@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Ltrlg"
 		]
 	},
-	"bs-readers-desc": "Affiche les lecteurs d’une page, et les pages lues par un utilisateur",
+	"bs-readers-desc": "Crée une liste des lecteurs d’une page",
 	"prefs-readers": "Lecteurs",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Lecteur|Lectrice}}|Lecteurs}}",
 	"readers-user": "Pages {{GENDER:$1|lues}} par : $1",

@@ -5,7 +5,8 @@
 			"Matik7"
 		]
 	},
-	"bs-shoutbox-message": "Komunikat",
+	"bs-shoutbox-message": "Napisz nowy komentarz...",
+	"bs-shoutbox-shout": "Wyślij",
 	"bs-shoutbox-loading": "Ładowanie...",
 	"bs-shoutbox-pref-committimeinterval": "Czas pomiędzy dwoma wiadomościami (w sekundach):",
 	"bs-shoutbox-pref-maxmessagelength": "Maksymalna długość wiadomości:",

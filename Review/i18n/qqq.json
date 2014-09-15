@@ -6,7 +6,8 @@
 			"Ата",
 			"Smuggli",
 			"Shirayuki",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Nemo bis"
 		]
 	},
 	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension",
@@ -80,5 +81,5 @@
 	"bs-review-header-enddate": "Column headline for end\n{{Identical|End}}",
 	"bs-review-confirm-delete-step": "Text message if you want to delete a step of a review",
 	"bs-review-confirm-delete-review": "Text message if you want to delete the review",
-	"bs-review-error-insufficient-permissions": "Text message if user tries to do a review without the permissions.\n\nParameters:\n* $1 - the permission he's lacking"
+	"bs-review-error-insufficient-permissions": "Text message if user tries to do a review without the permissions.\n\nParameters:\n* $1 - the permission they're lacking"
 }

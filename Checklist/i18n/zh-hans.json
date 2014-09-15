@@ -18,9 +18,11 @@
 	"bs-checklist-dlg-save-list": "保存列表更改",
 	"bs-checklist-dlg-items-label": "列表中的项目",
 	"bs-checklist-dlg-items-emptytext": "此列表没有项目",
+	"bs-checklist-dlg-items-hint": "要加入一个新项目，在上方字段输入并点击<kbd>Enter</kbd>键。",
 	"bs-checklist-dlg-panel-title": "可用列表",
 	"bs-checklist-dlg-new-title": "添加新列表",
 	"bs-checklist-dlg-new-prompt": "输入列表标题",
 	"bs-checklist-alert": "小心！",
-	"bs-checklist-confirm-dirty-title": "未保存的更改！"
+	"bs-checklist-confirm-dirty-title": "未保存的更改！",
+	"bs-checklist-confirm-dirty-text": "您对清单做出修改但未保存。您确信您希望放弃更改么？"
 }
