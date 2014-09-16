@@ -6,7 +6,7 @@
 			"Okras"
 		]
 	},
-	"bs-wantedarticle-desc": "Предложить разыскиваемую страницу",
+	"bs-wantedarticle-desc": "Добавляет страницу в список разыскиваемых",
 	"prefs-wantedarticle": "Требуемые страницы",
 	"bs-wantedarticle-edit-comment-suggestion-added": "Предложение \"$1\" добавлено.",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Создать",

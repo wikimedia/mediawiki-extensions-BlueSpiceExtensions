@@ -6,7 +6,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-universalexport-desc": "Lägger till exportfunktioner",
+	"bs-universalexport-desc": "Möjliggör för MediaWiki att exportera sidor till olika format",
 	"prefs-universalexport": "Universalexport",
 	"universalexport": "Universalexport",
 	"bs-universalexport-pref-metadatadefaults": "Metadata (standard, JSON):",

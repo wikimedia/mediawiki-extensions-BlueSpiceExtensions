@@ -5,7 +5,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-wantedarticle-desc": "Föreslå en önskad sida",
+	"bs-wantedarticle-desc": "Lägg till en sida på listan över önskade sidor",
 	"prefs-wantedarticle": "Önskad sida",
 	"bs-wantedarticle-ajax-error-no-parameter": "Ingen sidtitel har angetts.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Den föreslagna sidan \"$1\" finns redan.",

@@ -6,7 +6,7 @@
 			"WikiPhoenix"
 		]
 	},
-	"bs-responsibleeditors-desc": "Möjliggör tilldelning av ansvariga redaktörer för en sida",
+	"bs-responsibleeditors-desc": "Möjliggör för MediaWiki att hantera ansvariga redaktörer för sidor",
 	"prefs-responsibleeditors": "Ansvariga redigerare",
 	"bs-responsibleeditors-pref-activatednamespaces": "Aktivera namnrymder:",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Tilldelar automatiskt när sidan skapas",

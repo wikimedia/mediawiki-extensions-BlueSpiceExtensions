@@ -4,7 +4,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-groupmanager-desc": "Administrationsgränssnittet för att hantera grupper",
+	"bs-groupmanager-desc": "Administrationsgränssnittet för att lägga till, redigera och radera användargrupper och deras rättigheter",
 	"bs-groupmanager-grpexists": "Gruppen finns redan.",
 	"bs-groupmanager-grpadded": "Gruppen har lagts till.",
 	"bs-groupmanager-grpedited": "Gruppen har redigerats.",

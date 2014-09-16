@@ -5,7 +5,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-uemodulepdf-desc": "Möjliggör export till PDF",
+	"bs-uemodulepdf-desc": "Möjliggör för MediaWiki att export sidor till PDF-format",
 	"prefs-uemodulepdf": "Universal PDF-modul för export",
 	"uemodulepdf": "Universal PDF-modul för export",
 	"bs-uemodulepdf-pref-templatepath": "Standardmall:",

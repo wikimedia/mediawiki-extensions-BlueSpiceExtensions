@@ -5,7 +5,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-readers-desc": "Visar läsarna av en sida och sidor läsa av en användare",
+	"bs-readers-desc": "Skapar en lista över de personer som läser en sida",
 	"prefs-readers": "Läsare",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Läsare}}|Läsare}}",
 	"readers-user": "Sidor som {{GENDER:$1|lästs}} av: $1",

@@ -1,11 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
+	"prefs-universalexport": "Универсальный экспорт",
+	"universalexport": "Универсальный экспорт",
+	"bs-universalexport-pref-metadatadefaults": "Метаданные (стандартные, JSON):",
+	"bs-universalexport-pref-metadataoverrides": "Метаданные (переопределённые, JSON):",
+	"bs-universalexport-page-title-without-param": "Универсальный экспорт: модули",
+	"bs-universalexport-page-title-on-error": "Универсальный экспорт: ошибка",
 	"bs-universalexport-widget-title": "Экспорт",
 	"bs-universalexport-widget-tooltip": "Экспорт текущей страницы",
 	"bs-universalexport-tag-pagebreak-text": "Разрыв страницы",
-	"bs-universalexport-tag-excludearticle-text": "Эта страница не может быть экспортирована."
+	"bs-universalexport-tag-excludearticle-text": "Эта страница не может быть экспортирована.",
+	"action-universalexport-export": "создание файла экспорта",
+	"right-universalexport-export": "Создание файла экспорта"
 }

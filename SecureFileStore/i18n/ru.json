@@ -5,7 +5,7 @@
 			"Okras"
 		]
 	},
-	"bs-securefilestore-desc": "Предотвращает несанкционированный доступ к файлам",
+	"bs-securefilestore-desc": "Предотвращает несанкционированный доступ к файлам и изображениям",
 	"prefs-securefilestore": "Безопасное хранение файлов",
 	"bs-securefilestore-pref-defaultdisposition": "Отображение файлов по умолчанию:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Обзор",

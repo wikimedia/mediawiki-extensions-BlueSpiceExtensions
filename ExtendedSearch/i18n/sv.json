@@ -6,7 +6,7 @@
 			"WikiPhoenix"
 		]
 	},
-	"bs-extendedsearch-desc": "Utökad sökning",
+	"bs-extendedsearch-desc": "Apache Solr (http://lucene.apache.org/solr/) baserad insticksmodul för sökning för att utöka sökfunktionaliteten",
 	"specialextendedsearch": "Utökad sökning",
 	"prefs-extendedsearch": "Utökad sökning",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategori|Kategorier}}: $2",

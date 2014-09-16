@@ -5,7 +5,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-usermanager-desc": "Administrationsgränssnittet för att hantera användare",
+	"bs-usermanager-desc": "Administrationsgränssnittet för att lägga till, redigera och radera användare",
 	"bs-usermanager-admin-nodelete": "Administratörskontot kan inte raderas.",
 	"bs-usermanager-self-nodelete": "Du kan inte radera ditt konto.",
 	"bs-usermanager-db-error": "Ett databasfel uppstod.",

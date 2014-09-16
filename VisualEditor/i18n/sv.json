@@ -5,7 +5,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-visualeditor-desc": "TinyMCE WYSIWYG-redigerare",
+	"bs-visualeditor-desc": "Visuell redigerare för MediaWiki",
 	"prefs-visualeditor": "Visual Editor",
 	"bs-visualeditor-editbutton-hint": "Visual Editor",
 	"bs-visualeditor-pref-disablens": "Inaktivera i namnrymder:",

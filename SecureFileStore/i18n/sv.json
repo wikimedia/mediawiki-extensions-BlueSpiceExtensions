@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
-	"bs-securefilestore-desc": "Förhindrar obehörig åtkomst till filer",
+	"bs-securefilestore-desc": "Förhindrar obehörig åtkomst till filer och bilder",
 	"prefs-securefilestore": "Säker filförvaring",
 	"bs-securefilestore-pref-defaultdisposition": "Visa filer som standard:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Webbläsare",

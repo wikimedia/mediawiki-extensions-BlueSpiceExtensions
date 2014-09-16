@@ -13,7 +13,7 @@
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Една PDF-страница",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Извези ја страницата како PDF.",
 	"bs-uemodulepdf-overview-title": "Преносен формат за документи (PDF)",
-	"bs-uemodulepdf-overview-desc": "Извезува страници (специјални и содржински) во PDF.",
+	"bs-uemodulepdf-overview-desc": "Извезува страници (службени и содржински) во PDF.",
 	"bs-uemodulepdf-overview-webservice-state": "Заднинска состојба",
 	"bs-uemodulepdf-overview-webservice-state-ok": "достапно",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "недостапно",

@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
-	"bs-userpreferences-desc": "Lägger till BlueSpice-fliken i inställningar"
+	"bs-userpreferences-desc": "Renderar BlueSpice-fliken i inställningar"
 }

@@ -6,7 +6,8 @@
 			"Robby",
 			"Shirayuki",
 			"Ата",
-			"Smuggli"
+			"Smuggli",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-responsibleeditors-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of responsible editors extension",
@@ -20,7 +21,7 @@
 	"bs-responsibleeditors-pref-emove": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for notify when page has been moved",
 	"bs-responsibleeditors-pref-autopermissions": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for automatic assignment of rights:",
 	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "Text for responsible editors \n{{Identical|Responsible editors}}",
-	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Text for responsible editors \n{{Identical|Responsible editors}}",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Text for responsible editors \n{{Identical|Responsible editor}}",
 	"bs-responsibleeditors-success-ajax": "Text for responsibility changed.",
 	"bs-responsibleeditors-error-ajax-invalid-parameter": "Text for invalid values provided.",
 	"bs-responsibleeditors-error-ajax-not-allowed": "Text for access denied. You are not authorized to perform this action.",
