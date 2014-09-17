@@ -27,7 +27,7 @@
 	"bs-responsibleeditors-error-ajax-not-allowed": "Text for access denied. You are not authorized to perform this action.",
 	"bs-responsibleeditors-contentactions-label": "Label text for change responsibility",
 	"bs-responsibleeditors-statebartop-icon-alt": "Image alternativ text for there is a responsible editor for this page",
-	"bs-responsibleeditors-statebarbody-headline": "Headline for responsible editors section. Parameters:\n*$1 - the number of responsible editors - use for PLURAL distinction\n*$2 - username of the responsible editor - use for GENDER distinction",
+	"bs-responsibleeditors-statebarbody-headline": "Headline for responsible editors section. Parameters:\n*$1 - the number of responsible editors - use for PLURAL distinction\n*$2 - username of the responsible editor - use for GENDER distinction\n{{Identical|Responsible editor}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Text for the given page does not exist.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Mail subject for responsibility for \"$1\" assigned. Parameters:\n* $1 - the page which got assigned",
 	"bs-responsibleeditors-mail-text-new-editor": "Mail text for $2 {{GENDER:$1|assigned}} you to \"$3\". After logging into the wiki you can open the page with this link: $4. If you have any questions please refer to $2. \n* $1 is the username of the user which made the assignment - use for GENDER distinction, \n* $2 is the real name of the user which made the assignment, \n* $3 is the page which got assigned, \n* $4 is the link URL of the page",
