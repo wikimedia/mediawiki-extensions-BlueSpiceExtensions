@@ -197,7 +197,11 @@ class WidgetBar extends BsExtensionMW {
 				$oView = $oWidgetListView->setWidgets(
 					$this->getDefaultWidgets( $aWidgetViews, $oUser, $oCurrentTitle )
 				);
-				return $oView;
+			} else {
+				// set widget list to empty when user cannot read the page
+				$oView = $oWidgetListView->setWidgets(
+					array()
+				);
 			}
 			return $oView;
 		}
