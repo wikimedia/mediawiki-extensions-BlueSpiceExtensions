@@ -272,6 +272,7 @@ class Authors extends BsExtensionMW {
 
 			$i = 0;
 			$iItems = 0;
+			$aDetails['username'] = '';
 			while ( $i < $iCount ) {
 				if ( $iItems > $iLimit ) {
 					break;
