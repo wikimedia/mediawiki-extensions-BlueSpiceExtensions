@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Cwlin0416"
 		]
 	},
-	"bs-echo-anon-user": "匿名"
+	"bs-echo-anon-user": "匿名",
+	"bs-echo-unknown-user": "不明"
 }
