@@ -8,7 +8,7 @@
 	"bs-extendedsearch-desc": "延伸搜尋",
 	"specialextendedsearch": "延伸搜尋",
 	"prefs-extendedsearch": "延伸搜尋",
-	"bs-extendedsearch-category-filter": "{{PLURAL:$1|分類|分類}}：$2",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|分類}}：$2",
 	"bs-extendedsearch-curl-not-active": "未開啟 cURL 擴充套件。",
 	"bs-extendedsearch-error": "錯誤：",
 	"bs-extendedsearch-facet-category": "分類",

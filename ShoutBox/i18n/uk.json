@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-shoutbox-desc": "Додає рупор після вмісту сторінки",
+	"bs-shoutbox-desc": "Додає функцію аналізатора для вбудування вашого власного мінічату",
 	"prefs-shoutbox": "Рупор",
 	"bs-shoutbox-title": "Рупор",
-	"bs-shoutbox-message": "Повідомлення",
-	"bs-shoutbox-shout": "Прокричати",
+	"bs-shoutbox-message": "Написати новий коментар...",
+	"bs-shoutbox-shout": "Надіслати",
 	"bs-shoutbox-no-entries": "Тут ще нічого немає.",
 	"bs-shoutbox-loading": "Завантаження…",
 	"bs-shoutbox-pref-committimeinterval": "Час між двома повідомленнями (у секундах):",

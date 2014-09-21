@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-groupmanager-desc": "Інтерфейс адміністрування для керування групами",
+	"bs-groupmanager-desc": "Адміністративний інтерфейс для додавання, редагування і видалення груп, користувачів та їхніх прав",
 	"bs-groupmanager-grpexists": "Група вже існує.",
 	"bs-groupmanager-grpadded": "Групу було додано.",
 	"bs-groupmanager-grpedited": "Групу було відредаговано.",

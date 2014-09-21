@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-preferences-desc": "Інтерфейс адміністрування для налаштування BlueSpice",
+	"bs-preferences-desc": "Пропонує можливість адміністраторам для налаштування усього вікі з єдиної спеціальної сторінки",
 	"bs-preferences-label": "Налаштування"
 }

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-extendedsearch-desc": "Розширений пошук",
+	"bs-extendedsearch-desc": "Під'єднайте пошук на Apache Solr (http://lucene.apache.org/solr/) для додаткових функцій пошуку",
 	"specialextendedsearch": "Розширений пошук",
 	"prefs-extendedsearch": "Розширений пошук",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Категорія|Категорії}}: $2",

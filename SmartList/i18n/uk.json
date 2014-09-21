@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-smartlist-desc": "Надає додаткову інформацію про вміст і користувачів",
+	"bs-smartlist-desc": "Відображає останні п'ять зміни у вікі списком",
 	"prefs-smartlist": "Смарт-список",
 	"bs-smartlist-recent-changes": "Нові редагування",
 	"bs-smartlist-no-entries": "Нічого не знайдено.",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-flexiskin-desc": "Додає функціональність для створення тем оформлення",
+	"bs-flexiskin-desc": "Забезпечує сторінку для керування гнучкими темами оформлення з налаштуванням параметрів",
 	"bs-flexiskin-label": "Тема оформлення",
 	"bs-flexiskin-defaultname": "Стандартна",
 	"bs-flexiskin-defaultdesc": "Шаблон оформлення за замовчуванням.",

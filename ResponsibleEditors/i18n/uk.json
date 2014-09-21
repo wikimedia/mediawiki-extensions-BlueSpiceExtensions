@@ -5,7 +5,7 @@
 			"Ата"
 		]
 	},
-	"bs-responsibleeditors-desc": "Дозволяє призначення відповідальних редакторів на сторінку",
+	"bs-responsibleeditors-desc": "Дозволяє MediaWiki управляти відповідальними редакторами для сторінок",
 	"prefs-responsibleeditors": "Відповідальні редактори",
 	"bs-responsibleeditors-pref-activatednamespaces": "Увімкнені простори назв:",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Автоматично призначати при створенні сторінки",

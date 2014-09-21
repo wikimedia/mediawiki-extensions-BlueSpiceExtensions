@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mykola Swarnyk"
+			"Mykola Swarnyk",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-statistics-desc": "Додає розширені функції відображення статистики",
+	"bs-statistics-desc": "Модуль статистики для BlueSpice",
 	"prefs-statistics": "Розширена статистика",
 	"extendedstatistics": "Розширена статистика",
 	"bs-statistics-diagram": "Запит",

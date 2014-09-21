@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-visualeditor-desc": "Редактор TinyMCE WYSIWYG",
+	"bs-visualeditor-desc": "Візуальний редактор для MediaWiki",
 	"prefs-visualeditor": "Візуальний редактор",
 	"bs-visualeditor-editbutton-hint": "Візуальний редактор",
 	"bs-visualeditor-pref-disablens": "Відключити у просторах назв:",

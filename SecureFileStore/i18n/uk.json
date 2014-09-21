@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-securefilestore-desc": "Запобігає несанкціонованому доступу до файлів",
+	"bs-securefilestore-desc": "Запобігає несанкціонованому доступу до файлів та зображень",
 	"prefs-securefilestore": "Захищене сховище файлів",
 	"bs-securefilestore-pref-defaultdisposition": "Відображення файлів за замовчуванням:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Браузер",

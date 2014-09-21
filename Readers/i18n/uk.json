@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-readers-desc": "Відображає читачів сторінки та сторінки, прочитані користувачем",
+	"bs-readers-desc": "Створює список людей, які читають сторінку",
 	"prefs-readers": "Читачі",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Читач|Читачка}}|Читачі}}",
 	"readers-user": "Сторінки {{GENDER:$1|прочитав|прочитала}}: $1",

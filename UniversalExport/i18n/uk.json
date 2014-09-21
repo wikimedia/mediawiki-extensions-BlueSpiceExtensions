@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-universalexport-desc": "Додає функції експорту",
+	"bs-universalexport-desc": "Дозволяє MediaWiki експортувати сторінки в різні формати",
 	"prefs-universalexport": "Універсальний експорт",
 	"universalexport": "Універсальний експорт",
 	"bs-universalexport-pref-metadatadefaults": "Метадані (стандарт, JSON):",

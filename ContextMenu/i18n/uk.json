@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andriykopanytsia"
+		]
+	},
+	"bs-contextmenu-desc": "Надає контекстне меню для різних посилань",
+	"prefs-contextmenu": "Контекстне меню",
+	"bs-contextmenu-pref-modus": "Відкрийте контекстне меню (не для мобільних):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Натисніть на праву кнопку миші (натискання Ctrl покаже типове контекстне меню у браузері)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Клацніть правою кнопкою мишки і натисніть Ctrl (нормальна права кнопка миші покаже типове меню в браузері)",
+	"bs-contextmenu-page-edit": "Редагувати сторінку",
+	"bs-contextmenu-page-delete": "Вилучити сторінку",
+	"bs-contextmenu-page-move": "Перемістити сторінку",
+	"bs-contextmenu-page-history": "Переглянути історію сторінки",
+	"bs-contextmenu-page-protect": "Захистити сторінку",
+	"bs-contextmenu-page-purge": "Очищення кешу і перегляд сторінки",
+	"bs-contextmenu-page-info": "Перегляд інформації про сторінку",
+	"bs-contextmenu-media-reupload": "Завантажити нову версію",
+	"bs-contextmenu-media-view-page": "Переглянути файл опису сторінки та файл історії",
+	"bs-contextmenu-user-mail": "Надіслати лист",
+	"bs-contextmenu-user-talk": "Залишити повідомлення на сторінках обговорення",
+	"bs-contextmenu-file-download": "Завантажити файл"
+}

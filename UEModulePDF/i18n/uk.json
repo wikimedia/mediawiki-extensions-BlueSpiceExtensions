@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"NataChe",
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-uemodulepdf-desc": "Дозволяє експортувати у PDF",
+	"bs-uemodulepdf-desc": "Дозволяє MediaWiki експортувати сторінки у формат PDF",
 	"prefs-uemodulepdf": "Універсальний модуль експорту PDF",
 	"uemodulepdf": "Універсальний модуль експорту PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "URL-адреса бекенду:",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-topmenubarcustomizer-desc": "Створення та редагування існуючих меню",
+	"bs-topmenubarcustomizer-desc": "Налаштування посилань верхнього меню",
 	"prefs-topmenubarcustomizer": "Налаштовувач меню",
 	"bs-topmenubarcustomizer-pref-numberoflevels": "Кількість вкладених шарів:",
 	"bs-topmenubarcustomizer-pref-numberofmainentries": "Записи на основному шарі:",

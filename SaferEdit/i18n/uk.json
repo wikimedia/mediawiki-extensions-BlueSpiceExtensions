@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-saferedit-desc": "Проміжне збереження редагувань",
+	"bs-saferedit-desc": "Проміжне збереження редагувань вікі",
 	"prefs-saferedit": "Безпечніше редагування",
 	"bs-saferedit-restore": "Відновити",
 	"bs-saferedit-safer-edit-tooltip": "Доступна відновлена версія.",

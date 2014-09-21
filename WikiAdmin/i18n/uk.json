@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-wikiadmin-desc": "Адміністрування BlueSpice",
+	"bs-wikiadmin-desc": "Центральна точка адміністрування для BlueSpice",
 	"bs-wikiadmin-notallowed": "Вам не дозволено використовувати цю сторінку.",
 	"wikiadmin": "Адміністрування BlueSpice",
 	"action-wikiadmin": "відображення сторінок адміністрування BlueSpice",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-namespacemanager-desc": "Інтерфейс адміністрування для керування просторами назв",
+	"bs-namespacemanager-desc": "Адміністративний інтерфейс для додавання, редагування та видалення просторів імен",
 	"bs-namespacemanager-label": "Керівник просторами назв",
 	"bs-namespacemanager-wrong-name": "Простір назв містить неприпустимі символи.",
 	"bs-namespacemanager-ns-exists": "Простір назв уже існує.",

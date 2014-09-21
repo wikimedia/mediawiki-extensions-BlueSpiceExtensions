@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Andriykopanytsia"
 		]
 	},
-	"bs-wantedarticle-desc": "Пропонувати потрібну сторінку",
+	"bs-wantedarticle-desc": "Додати сторінку до списку потрібних",
 	"prefs-wantedarticle": "Потрібна сторінка",
 	"bs-wantedarticle-ajax-error-no-parameter": "Не надано заголовку сторінки.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Пропонована сторінка «$1» вже існує.",
