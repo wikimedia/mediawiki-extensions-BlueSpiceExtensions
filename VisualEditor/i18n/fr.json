@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"SnowedEarth"
+			"SnowedEarth",
+			"Gomoko"
 		]
 	},
-	"bs-visualeditor-desc": "Editeur WYSIWYG TinyMCE",
+	"bs-visualeditor-desc": "Éditeur visuel pour MédiaWiki",
 	"prefs-visualeditor": "ÉditeurVisuel",
 	"bs-visualeditor-editbutton-hint": "ÉditeurVisuel",
 	"bs-visualeditor-pref-disablens": "Désactiver dans les espaces de noms :",

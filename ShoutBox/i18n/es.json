@@ -6,7 +6,8 @@
 			"Fitoschido"
 		]
 	},
-	"bs-shoutbox-message": "Mensaje",
+	"bs-shoutbox-message": "Escribe un comentario nuevo…",
+	"bs-shoutbox-shout": "Enviar",
 	"bs-shoutbox-no-entries": "No hay nada aquí todavía.",
 	"bs-shoutbox-loading": "Cargando...",
 	"bs-shoutbox-pref-committimeinterval": "Tiempo entre dos mensajes (en segundos):",

@@ -5,7 +5,7 @@
 			"Macofe"
 		]
 	},
-	"bs-uemodulepdf-desc": "Permite exportar a PDF",
+	"bs-uemodulepdf-desc": "Permite que MediaWiki exporte páginas en el formato PDF",
 	"prefs-uemodulepdf": "Módulo universal de exportación PDF",
 	"uemodulepdf": "Módulo universal de exportación PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "URL del motor:",

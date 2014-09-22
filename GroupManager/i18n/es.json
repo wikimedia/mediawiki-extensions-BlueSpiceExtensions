@@ -6,7 +6,7 @@
 			"Fitoschido"
 		]
 	},
-	"bs-groupmanager-desc": "Interfaz administrativa para gestionar grupos",
+	"bs-groupmanager-desc": "Interfaz administrativa para añadir, editar y eliminar grupos de usuarios y sus privilegios",
 	"bs-groupmanager-grpexists": "El grupo ya existe.",
 	"bs-groupmanager-grpadded": "Se añadió el grupo.",
 	"bs-groupmanager-grpedited": "Se ha editado el grupo.",

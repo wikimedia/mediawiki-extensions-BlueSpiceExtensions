@@ -6,7 +6,7 @@
 			"SnowedEarth"
 		]
 	},
-	"bs-universalexport-desc": "Ajoute les fonctions d’exportation",
+	"bs-universalexport-desc": "Permet à MédiaWiki d’exporter les pages sous différents formats",
 	"prefs-universalexport": "Exportation universelle",
 	"universalexport": "Exportation universelle",
 	"bs-universalexport-pref-metadatadefaults": "Métadonnées (standard, JSON) :",

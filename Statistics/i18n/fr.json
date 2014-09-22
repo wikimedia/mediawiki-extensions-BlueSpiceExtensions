@@ -5,7 +5,7 @@
 			"Gomoko"
 		]
 	},
-	"bs-statistics-desc": "Ajoute la fonctionnalité pour les statistiques étendues",
+	"bs-statistics-desc": "Module de statistiques pour BlueSpice",
 	"prefs-statistics": "Plus de statistiques",
 	"extendedstatistics": "Statistiques étendues",
 	"bs-statistics-diagram": "Requête",

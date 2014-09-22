@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
-	"bs-securefilestore-desc": "Evita el acceso no autorizado a archivos",
+	"bs-securefilestore-desc": "Evita el acceso no autorizado a archivos e imágenes",
 	"prefs-securefilestore": "Almacén seguro de archivos",
 	"bs-securefilestore-pref-defaultdisposition": "Mostrar archivos de forma predeterminada:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Navegador",

@@ -4,6 +4,6 @@
 			"Gomoko"
 		]
 	},
-	"bs-preferences-desc": "Interface d’administration pour configurer BlueSpice",
+	"bs-preferences-desc": "Offre la possibilité aux administrateurs de configurer l’ensemble du wiki depuis une unique page spéciale",
 	"bs-preferences-label": "Préférences"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"ProtoplasmaKid",
-			"AVIADOR"
+			"AVIADOR",
+			"Fitoschido"
 		]
 	},
 	"bs-checklist-desc": "Proporciona una lista de comprobación de la funcionalidad",
@@ -14,5 +15,11 @@
 	"bs-checklist-tag-checklist-desc": "Representa una casilla de verificación o un campo a seleccionar. Atributos de configuración disponibles:",
 	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> muestra una lista de selección.",
 	"bs-checklist-tag-checklist-param-list": "<code>lista</code>: Nombre de la plantilla con los valores disponibles. El parámetro <code>tipo</code> debe establecerse a <code>lista</code>.",
-	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> o un valor fuera de la plantilla de lista."
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> o un valor fuera de la plantilla de lista.",
+	"bs-checklist-dlg-new-list": "Crear una lista nueva",
+	"bs-checklist-dlg-save-list": "Guardar cambios en la lista",
+	"bs-checklist-dlg-items-label": "Elementos en la lista",
+	"bs-checklist-dlg-panel-title": "Listas disponibles",
+	"bs-checklist-dlg-new-title": "Añadir lista nueva",
+	"bs-checklist-alert": "¡Precaución!"
 }

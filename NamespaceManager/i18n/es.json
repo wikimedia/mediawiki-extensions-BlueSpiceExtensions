@@ -6,7 +6,7 @@
 			"Macofe"
 		]
 	},
-	"bs-namespacemanager-desc": "Interfaz administrativa para gestionar espacios de nombres",
+	"bs-namespacemanager-desc": "Interfaz administrativa para añadir, editar y eliminar espacios de nombres",
 	"bs-namespacemanager-label": "Gestor de espacios de nombres",
 	"bs-namespacemanager-wrong-name": "El espacio de nombres contiene caracteres no válidos.",
 	"bs-namespacemanager-ns-exists": "Ya existe el espacio de nombres.",

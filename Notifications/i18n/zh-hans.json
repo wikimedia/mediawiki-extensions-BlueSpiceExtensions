@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Duolaimi"
 		]
 	},
 	"bs-notifications-desc": "对用户选定的更改发送通知",
@@ -17,7 +18,7 @@
 	"bs-echo-page-delete": "页面[[:$1]]已删除",
 	"bs-echo-page-move": "页面[[:$1]]已移动",
 	"bs-echo-page-newuser": "用户$1已创建。",
-	"bs-echo-page-shoutbox": "站点[[:$1]]的一则新留言板消息。",
+	"bs-echo-page-shoutbox": "网站[[:$1]]上的一则新喊话器留言。",
 	"bs-notifications-email-new-subject": "页面$1由$2{{GENDER:$2|创建}}",
 	"bs-notifications-email-new": "页面“$1”由$2{{GENDER:$2|创建}}。\n评论：$3\n您可通过此链接访问页面：$4",
 	"bs-notifications-email-edit-subject": "页面$1由$2{{GENDER:$2|编辑}}",

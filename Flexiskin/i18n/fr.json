@@ -4,7 +4,7 @@
 			"Gomoko"
 		]
 	},
-	"bs-flexiskin-desc": "Ajoute une fonctionnalité pour créer des habillages",
+	"bs-flexiskin-desc": "Fournit une page pour gérer les habillages flexibles avec des options perosnnalisées",
 	"bs-flexiskin-label": "Habillage",
 	"bs-flexiskin-defaultname": "Par défaut",
 	"bs-flexiskin-defaultdesc": "Modèle d’habillage par défaut.",

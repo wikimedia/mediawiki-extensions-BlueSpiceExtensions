@@ -5,7 +5,7 @@
 			"Gomoko"
 		]
 	},
-	"bs-rssfeeder-desc": "Créer votre propre flux RSS",
+	"bs-rssfeeder-desc": "Une extension pour obtenir un RSS valide pour chaque extension qui a une fonction buildRss",
 	"rssfeeder": "Alimentation RSS",
 	"bs-rssfeeder-pagetext": "Vous pouvez vous abonner aux flux RSS suivants :",
 	"bs-rssfeeder-recent-changes": "Modifications récentes",

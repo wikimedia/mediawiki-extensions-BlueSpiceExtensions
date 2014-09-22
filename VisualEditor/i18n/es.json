@@ -5,7 +5,7 @@
 			"Amitie 10g"
 		]
 	},
-	"bs-visualeditor-desc": "Editor WYSIWYG TinyMCE",
+	"bs-visualeditor-desc": "Editor visual para MediaWiki",
 	"prefs-visualeditor": "Editor visual",
 	"bs-visualeditor-editbutton-hint": "Editor visual",
 	"bs-visualeditor-pref-disablens": "Desactivar en los espacios de nombres:",
