@@ -4,7 +4,7 @@
 			"Chrumps"
 		]
 	},
-	"bs-permissionmanager-desc": "Interfejs administracyjny do zarządzania uprawnieniami",
+	"bs-permissionmanager-desc": "Interfejs administracyjny do edycji uprawnień użytkowników",
 	"bs-permissionmanager-btn-group-label": "Grupa:",
 	"bs-permissionmanager-header-permissions": "Uprawnienia",
 	"bs-permissionmanager-header-global": "Wiki",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"McDutchie",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Smuggli"
 		]
 	},
 	"bs-visualeditor-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of visual editor extension",
@@ -15,14 +16,14 @@
 	"bs-visualeditor-no-summary": "Text for no summary \n{{Identical|no summary}}",
 	"bs-visualeditor-sortable": "Text for sortable \n{{Identical|sortable}}",
 	"bs-visualeditor-wikitable": "Text for standard \n{{Identical|Standard}}",
-	"bs-visualeditor-contenttable": "Text for content \n{{Identical|Content}}",
-	"bs-visualeditor-contenttable-black": "Text for content (black) \n{{Identical|Content}}",
-	"bs-visualeditor-contenttable-blue": "Text for content (blue) \n{{Identical|Content}}",
-	"bs-visualeditor-contenttable-darkblue": "Text for content (darkblue) \n{{Identical|Content}}",
-	"bs-visualeditor-cuscosky": "Text for cusco sky \n{{Identical|cusco sky}}",
-	"bs-visualeditor-casablanca": "Text for casablanca \n{{Identical|casablanca}}",
-	"bs-visualeditor-greyscale": "Text for greyscale \n{{Identical|Greyscale}}",
-	"bs-visualeditor-greyscale-narrow": "Text for greyscale (narrow) \n{{Identical|greyscale (narrow)}}",
+	"bs-visualeditor-contenttable": "Text for content. \"Content\" is the name of a table styling.\n{{Identical|Content}}",
+	"bs-visualeditor-contenttable-black": "Text for content (black). \"Content (black)\" is the name of a table styling.\n{{Identical|Content}}",
+	"bs-visualeditor-contenttable-blue": "Text for content (blue). \"Content (blue)\" is the name of a table styling.\n{{Identical|Content}}",
+	"bs-visualeditor-contenttable-darkblue": "Text for content (darkblue). \"Content (darkblue)\" is the name of a table styling. \n{{Identical|Content}}",
+	"bs-visualeditor-cuscosky": "Text for cusco sky. \"Cusco Sky\" is the name of a table styling.\n{{Identical|cusco sky}}",
+	"bs-visualeditor-casablanca": "Text for casablanca. \"Casablanca\" is the name of a table styling.\n{{Identical|casablanca}}",
+	"bs-visualeditor-greyscale": "Text for greyscale. \"Greyscale\" is the name of a table styling.\n{{Identical|Greyscale}}",
+	"bs-visualeditor-greyscale-narrow": "Text for greyscale (narrow). \"Greyscale (narrow)\" is the name of a table styling.\n{{Identical|greyscale (narrow)}}",
 	"bs-visualeditor-aligntop": "Text for top \n{{Identical|Top}}",
 	"bs-visualeditor-alignmiddle": "Text for middle \n{{Identical|Middle}}",
 	"bs-visualeditor-alignbottom": "Text for bottom \n{{Identical|Bottom}}",

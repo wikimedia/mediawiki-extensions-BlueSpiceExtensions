@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Duolaimi"
 		]
 	},
 	"bs-insertmagic-desc": "对编辑模式加入对话框以允许插入魔术字和标签",
@@ -32,7 +33,7 @@
 	"bs-insertmagic-currenthour": "小时（24小时制，零填充数字）。",
 	"bs-insertmagic-currentweek": "周（数字）。",
 	"bs-insertmagic-currenttimestamp": "时间戳格式：YYYYMMDDHHmmss。",
-	"bs-insertmagic-sitename": "wiki站点名称。",
+	"bs-insertmagic-sitename": "wiki的网站名称。",
 	"bs-insertmagic-server": "域URL。",
 	"bs-insertmagic-servername": "域名。",
 	"bs-insertmagic-scriptpath": "相关脚本路径。",

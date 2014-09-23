@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-checklist-desc": "Forni functionalitate de lista de controlo",
+	"bs-checklist-button-checkbox-title": "Elementos de lista de controlo",
+	"bs-checklist-menu-insert-list-title": "Inserer lista",
+	"bs-checklist-menu-insert-checkbox": "Quadrato de selection",
+	"bs-checklist-dlg-insert-list-title": "Inserer un lista de controlo",
+	"bs-checklist-dlg-insert-list-value-list": "Lista de valores"
+}
