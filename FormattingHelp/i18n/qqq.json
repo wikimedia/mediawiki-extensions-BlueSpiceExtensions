@@ -6,7 +6,7 @@
 		]
 	},
 	"bs-formattinghelp-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of formatting help extension",
-	"bs-formattinghelp-formatting": "Title of formatting help window\n{{Identical|formatting help}}",
+	"bs-formattinghelp-formatting": "Title of formatting help window\n{{Identical|Formatting help}}",
 	"bs-formattinghelp-help-syntax": "Label for syntax\n{{Identical|Syntax}}",
 	"bs-formattinghelp-help-example-text": "Text for text\n{{Identical|Text}}",
 	"bs-formattinghelp-help-bold": "Label for bold\n{{Identical|Bold}}",

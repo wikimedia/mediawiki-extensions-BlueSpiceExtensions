@@ -9,6 +9,10 @@
 	"bs-formattinghelp-help-bold": "粗體",
 	"bs-formattinghelp-help-italic": "斜體",
 	"bs-formattinghelp-help-listitem": "清單項目",
+	"bs-formattinghelp-help-numberedlist": "編號清單",
+	"bs-formattinghelp-help-link": "內部連結",
 	"bs-formattinghelp-help-caption": "說明",
-	"bs-formattinghelp-help-extlink": "外部連結"
+	"bs-formattinghelp-help-extlink": "外部連結",
+	"bs-formattinghelp-help-template": "樣版",
+	"bs-formattinghelp-help-templatename": "樣版名稱"
 }
