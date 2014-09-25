@@ -375,8 +375,10 @@ class Flexiskin extends BsExtensionMW {
 	private static function format_position($aConfig) {
 		$aReturn = "";
 		if ($aConfig->navigation == 'right') {
+			$aReturn[] = "#bs-application{position: relative;}";
 			$aReturn[] = "#bs-content-column{margin: 0 302px 0 0;}";
-			$aReturn[] = "#footer{margin: 0px 302px 5px 0px;}";
+			$aReturn[] = "#bs-nav-sections{right: 0; top: 30px;}";
+			$aReturn[] = "#footer{margin: 0px 302px 5px 0px}";
 		}
 		if ($aConfig->content != 'center') {
 			$aReturn[] = "#bs-wrapper{margin-" . $aConfig->content . ":0;}";
