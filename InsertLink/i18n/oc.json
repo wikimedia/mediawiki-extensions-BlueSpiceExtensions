@@ -4,6 +4,9 @@
 			"Cedric31"
 		]
 	},
+	"bs-insertlink": "Inserir un ligam",
+	"bs-insertlink-button-title": "Inserir/modificar un ligam",
+	"bs-insertlink-dialog-title": "Inserir un ligam",
 	"bs-insertlink-tab-wiki-page": "Pagina del wiki",
 	"bs-insertlink-tab-ext-link": "Ligam extèrne.",
 	"bs-insertlink-tab-email": "Ligam de corrièr electronic",

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia"
+		]
+	},
+	"bs-checklist-dlg-insert-list-title": "Masukkan senarai semak",
+	"bs-checklist-dlg-new-list": "Cipta senarai baru",
+	"bs-checklist-dlg-items-label": "Item-item dalam senarai",
+	"bs-checklist-dlg-items-emptytext": "Tiada item dalam senarai ini",
+	"bs-checklist-dlg-new-title": "Tambah senarai baru",
+	"bs-checklist-dlg-new-prompt": "Berikan tajuk senarai",
+	"bs-checklist-alert": "Awas!",
+	"bs-checklist-confirm-dirty-title": "Suntingan tidak disimpan!"
+}

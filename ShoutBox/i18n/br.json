@@ -4,7 +4,8 @@
 			"Fohanno"
 		]
 	},
-	"bs-shoutbox-message": "Kemennadenn",
+	"bs-shoutbox-message": "Skrivañ un evezhiadenn nevez...",
+	"bs-shoutbox-shout": "Kas",
 	"bs-shoutbox-no-entries": "N'eus netra amañ c'hoazh.",
 	"bs-shoutbox-loading": "O kargañ...",
 	"bs-shoutbox-pref-committimeinterval": "Amzer etre div gemennadenn (en eilennoù) :",

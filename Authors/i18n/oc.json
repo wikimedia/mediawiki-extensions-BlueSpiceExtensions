@@ -4,6 +4,7 @@
 			"Cedric31"
 		]
 	},
+	"prefs-authors": "Autors d'aquesta pagina",
 	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor}}|Autors}}",
 	"bs-authors-profileimage": "Imatge del perfil",
 	"bs-authors-profileimage-change": "Modificar l’imatge del perfil",

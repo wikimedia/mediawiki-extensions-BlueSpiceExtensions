@@ -13,6 +13,7 @@
 	"bs-wantedarticle-single-textfield-defaulttext": "Titl ar bajenn",
 	"bs-wantedarticle-tag-more-linktext": "Muioc'h...",
 	"bs-wantedarticle-tag-default-title": "Pajennoù c'hoantaet",
+	"bs-wantedarticle-pref-includelimit": "Niver a erbedadennoù :",
 	"bs-wantedarticle-pref-showcreate": "Diskouez al liamm krouiñ",
 	"bs-wantedarticle-pref-sort": "Renkañ dre :",
 	"bs-wantedarticle-pref-order": "Urzh :",
@@ -21,5 +22,6 @@
 	"bs-wantedarticle-pref-order-asc": "war gresk",
 	"bs-wantedarticle-pref-order-desc": "war zigresk",
 	"bs-wantedarticle-create-page": "Krouiñ ar bajenn \"$1\".",
+	"bs-wantedarticle-suggest-page": "Erbediñ ar bajenn \"$1\".",
 	"bs-wantedarticle-info-nothing-entered": "Pourchasit un titl reizh evit ar bajenn, mar plij."
 }
