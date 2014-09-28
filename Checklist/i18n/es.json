@@ -19,7 +19,9 @@
 	"bs-checklist-dlg-new-list": "Crear una lista nueva",
 	"bs-checklist-dlg-save-list": "Guardar cambios en la lista",
 	"bs-checklist-dlg-items-label": "Elementos en la lista",
+	"bs-checklist-dlg-items-emptytext": "No hay elementos en esta lista",
 	"bs-checklist-dlg-panel-title": "Listas disponibles",
 	"bs-checklist-dlg-new-title": "Añadir lista nueva",
-	"bs-checklist-alert": "¡Precaución!"
+	"bs-checklist-alert": "¡Precaución!",
+	"bs-checklist-confirm-dirty-title": "Hay cambios sin guardar"
 }
