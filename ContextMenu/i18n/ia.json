@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-contextmenu-desc": "Forni menus contextual pro varie ligamines",
+	"prefs-contextmenu": "Menu contextual",
+	"bs-contextmenu-pref-modus": "Aperir menu contextual per (non pro mobile):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Clicca sur le button dextre del mouse (premer CTRL monstrara le menu contextual normal del navigator)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Clicca sur le button dextre del mouse durante que tu preme CTRL (un clic dextre normal monstrara le menu contextual normal del navigator)",
+	"bs-contextmenu-page-edit": "Modificar pagina",
+	"bs-contextmenu-page-delete": "Deler pagina",
+	"bs-contextmenu-page-move": "Renominar pagina",
+	"bs-contextmenu-page-history": "Vider historia del pagina",
+	"bs-contextmenu-page-protect": "Proteger pagina",
+	"bs-contextmenu-page-purge": "Purgar cache e vider pagina",
+	"bs-contextmenu-page-info": "Vider info del pagina",
+	"bs-contextmenu-media-reupload": "Incargar nove version",
+	"bs-contextmenu-media-view-page": "Vider pagina de description del file e historia del file",
+	"bs-contextmenu-user-mail": "Inviar e-mail",
+	"bs-contextmenu-user-talk": "Lassar message in pagina de discussion",
+	"bs-contextmenu-file-download": "Discargar file"
+}

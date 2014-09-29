@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-extendedsearch-desc": "Plug-in a base de Apache Solr (http://lucene.apache.org/solr/) pro extender le functionalitate de recerca",
+	"specialextendedsearch": "Recerca extendite",
+	"prefs-extendedsearch": "Recerca extendite",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Categoria|Categorias}}: $2",
+	"bs-extendedsearch-curl-not-active": "Le extension cURL non es active.",
+	"bs-extendedsearch-error": "Error:",
+	"bs-extendedsearch-facet-category": "Categoria",
+	"bs-extendedsearch-facet-editors": "Autores",
+	"bs-extendedsearch-facet-namespace": "Spatio de nomines",
+	"bs-extendedsearch-facet-namespace-files": "Files",
+	"bs-extendedsearch-facet-type": "Formato",
+	"bs-extendedsearch-facet-uncategorized": "Sin categoria",
+	"bs-extendedsearch-facet-namespace-extfiles": "Files externe",
+	"bs-extendedsearch-files": "Cercar in files",
+	"bs-extendedsearch-file-protocol-not-activated": "Pro indexar le files ligate in paginas wiki, le protocollo \"file\" debe esser activate in tu wiki. Plus information se trova a: https://www.mediawiki.org/wiki/Manual:$wgUrlProtocols",
+	"bs-extendedsearch-finished": "Finite",
+	"bs-extendedsearch-fuzzy": "Un recerca exacte de \"$1\" non ha trovate resultatos. Il ha $2 {{PLURAL:$2|resultato|resultatos}} similar.",
+	"bs-extendedsearch-indexing-files-in-repo": "Indexation de files incargate",
+	"bs-extendedsearch-indexing-external-files-in-repo": "Indexation de files externe",
+	"bs-extendedsearch-indexing-linked-files": "Indexation de files ligate",
+	"bs-extendedsearch-indexing-wiki-articles": "Indexation de paginas wiki",
+	"bs-extendedsearch-indexing-specialpages": "Indexation de paginas special",
+	"bs-extendedsearch-invalid-query": "Le consulta non poteva esser processate.",
+	"bs-extendedsearch-nosearchterm": "Per favor, entra un termino a cercar.",
+	"bs-extendedsearch-result": "Le recerca de \"$1\" ha trovate $2 {{PLURAL:$2|resultato|resultatos}}.",
+	"bs-extendedsearch-result-caption": "$1 - $2 de $3 {{PLURAL:$3|resultato|resultatos}}",
+	"bs-extendedsearch-search-category": "Cercar in le categorias:",
+	"bs-extendedsearch-search-editors": "Cercar autores:",
+	"bs-extendedsearch-search-help-multiselect": "Mantene le clave CTRL premite pro seliger plure elementos.",
+	"bs-extendedsearch-search-namespace": "Cercar in le spatios de nomines:",
+	"bs-extendedsearch-server-not-available": "Le servitor de recerca non es disponibile.",
+	"bs-extendedsearch-sort-by": "Ordinate per:"
+}

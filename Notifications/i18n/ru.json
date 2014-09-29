@@ -5,8 +5,21 @@
 		]
 	},
 	"prefs-notifications": "Уведомления",
+	"bs-notifications-pref-notifyns": "Уведомлять только об изменениях в следующих пространствах имён:",
+	"bs-notifications-pref-notifynominor": "Нет уведомлений о малых правках",
 	"bs-notifications-pref-active": "Включить уведомления",
+	"bs-echo-anon-user": "аноним",
+	"bs-echo-unknown-user": "неизвестен",
 	"bs-echo-page-newuser": "Участник $1 был создан.",
 	"bs-notifications-email-delete-subject": "Страница $1 {{GENDER:$2|удалена}} $2",
-	"bs-notifications-email-delete": "Страница $1 {{GENDER:$2|удалена}} участником $2.\n\nПричина:\n$3"
+	"bs-notifications-email-delete": "Страница $1 {{GENDER:$2|удалена}} участником $2.\n\nПричина:\n$3",
+	"bs-notifications-email-addaccount-subject": "Участник $1 создан",
+	"bs-notifications-email-addaccount": "Участник $1 с настоящим именем $2 был создан.",
+	"bs-notifications-email-shout-subject": "$2 написал{{GENDER:$2||а}} сообщение на странице $1",
+	"bs-notifications-email-shout": "$2 написал{{GENDER:$2||а}} сообщение на странице $1.\n\nСообщение:\n$3\n\nВы можете посетить страницу, перейдя по этой ссылке:\n$4.",
+	"echo-category-title-bs-create-cat": "Уведомление о новых страницах",
+	"echo-category-title-bs-edit-cat": "Уведомление о правках",
+	"echo-category-title-bs-move-cat": "Уведомление о переименованиях",
+	"echo-category-title-bs-delete-cat": "Уведомление об удалениях",
+	"echo-category-title-bs-newuser-cat": "Уведомление о новых участниках (только для администраторов)"
 }

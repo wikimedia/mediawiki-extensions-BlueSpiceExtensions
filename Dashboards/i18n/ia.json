@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-dashboards-desc": "Forni pannellos de instrumentos pro usatores e administratores",
+	"bs-specialadmindashboard-label": "Pannello de instrumentos",
+	"bs-dashboards-addportlet": "Adder portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Pannellos de instrumentos",
+	"bs-dashboards-pref-userdashboardonlogo": "Logo del sito liga al pannello de instrumentos del usator",
+	"admindashboard": "Pannello de instrumentos administrative",
+	"userdashboard": "Pannello de instrumentos del usator",
+	"bs-dashboard-userportlet-calendar-title": "Calendario",
+	"bs-dashboard-userportlet-calendar-description": "Calendario"
+}

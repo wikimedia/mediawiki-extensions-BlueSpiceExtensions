@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-countthings-desc": "Forni statisticas a base de contento",
+	"bs-countthings-chars-label": "Characteres",
+	"bs-countthings-words-label": "Parolas",
+	"bs-countthings-pages-label": "Paginas",
+	"bs-countthings-error-no-input": "Nulle pagina fornite.",
+	"bs-countthings-error-invalid-mode": "Le modo \"$1\" non es valide. Per favor usa \"chars\" (characteres), \"words\" (parolas) o \"pages\" (paginas).",
+	"bs-countthings-error-not-exist": "Le pagina \"$1\" non existe.",
+	"bs-countthings-tag-countarticles-desc": "Monstra le numero de paginas.",
+	"bs-countthings-tag-countusers-desc": "Monstra le numero de usatores.",
+	"bs-countthings-tag-countcharacters-desc": "Monstra statisticas del contento del pagina date. Attributo de configuration disponibile:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Lo que debe esser contate: <code>chars</code> (characteres), <code>words</code> (parolas) o <code>pages</code> (paginas)."
+}

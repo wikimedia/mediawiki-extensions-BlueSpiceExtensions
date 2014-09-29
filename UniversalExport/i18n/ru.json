@@ -14,7 +14,10 @@
 	"bs-universalexport-widget-title": "Экспорт",
 	"bs-universalexport-widget-tooltip": "Экспорт текущей страницы",
 	"bs-universalexport-tag-pagebreak-text": "Разрыв страницы",
+	"bs-universalexport-tag-exclude-text": "Этот текст не будет экспортирован.",
 	"bs-universalexport-tag-excludearticle-text": "Эта страница не может быть экспортирована.",
+	"bs-universalexport-statebarbodyuniversalexportmeta": "Метаданные универсального экспорта",
+	"bs-universalexport-statebarbodyuniversalexportparams": "Параметр универсального экспорта",
 	"action-universalexport-export": "создание файла экспорта",
 	"right-universalexport-export": "Создание файла экспорта"
 }

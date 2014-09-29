@@ -4,7 +4,8 @@
 			"Okras"
 		]
 	},
-	"bs-rssfeeder-desc": "Создайте свой собственный RSS-канал",
+	"bs-rssfeeder-desc": "Расширение, позволяющее выводить RSS для любого другого расширения, имеющего buildRss-функцию",
+	"rssfeeder": "Формировальщик RSS",
 	"bs-rssfeeder-pagetext": "Вы можете подписаться на следующие RSS-каналы:",
 	"bs-rssfeeder-recent-changes": "Свежие правки",
 	"bs-rssfeeder-pages": "Страница",

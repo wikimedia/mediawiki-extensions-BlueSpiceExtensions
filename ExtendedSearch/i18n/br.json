@@ -43,6 +43,8 @@
 	"bs-extendedsearch-pref-scope-title": "Titl",
 	"bs-extendedsearch-pref-indextypesrepo": "Menegeriñ ar restroù ezporzhiet",
 	"bs-extendedsearch-pref-indextypeswiki": "Menegeriñ ar pajennoù wiki",
+	"bs-extendedsearch-pref-showfacets": "Diskouez an taligoù en ur bajenn ispisial",
+	"bs-extendedsearch-pref-indexfiletypes": "Menegeriñ ar restroù gant astennoù-restr zo :",
 	"bs-extendedsearch-pref-solrpingtime": "Amzer respont (en eilennoù) :",
 	"bs-extendedsearch-pref-solrserviceurl": "URL Solr :",
 	"bs-extendedsearch-pref-numfacets": "Niver a daloùigoù :",
@@ -68,6 +70,7 @@
 	"bs-extendedsearch-morelikethis": "Pajennoù damheñvel",
 	"bs-extendedsearch-recentsearchterms": "Termenoù klasket nevez zo",
 	"bs-extendedsearch-no-mlt-found": "N'eus bet kavet pajenn damheñvel ebet.",
+	"bs-extendedsearch-redirect": "Adkas eus : $1",
 	"bs-extendedsearch-totalnoofarticles": "Niver a bajennoù da venegeriñ : $1",
 	"bs-extendedsearch-more": "Muioc'h",
 	"bs-extendedsearch-fewer": "Nebeutoc'h"
