@@ -7,6 +7,8 @@
 	"prefs-wantedarticle": "Pajenn c'hoantaet",
 	"bs-wantedarticle-ajax-error-no-parameter": "N'eus bet pourchaset titl ebet evit ar bajenn.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Erbedet eo ar bajenn \"$1\" dija.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Erbedadenn \"$1\" ouzhpennet.",
+	"bs-wantedarticle-success-suggestion-entered": "Ouzhpennet eo bet hoc'h erbedadenn \"$1\".",
 	"bs-wantedarticle-page-removed": "Lamet eo bet ar bajenn \"$1\".",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Aliañ",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Krouiñ",

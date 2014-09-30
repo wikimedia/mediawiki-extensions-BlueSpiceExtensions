@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Baffo"
 		]
 	},
-	"bs-userpreferences-desc": "Aggiunge la scheda BlueSpice nelle preferenze"
+	"bs-userpreferences-desc": "Esegue il rendering della scheda BlueSpice nelle preferenze"
 }
