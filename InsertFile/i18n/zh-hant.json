@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cwlin0416",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"EagerLin"
 		]
 	},
 	"bs-insertfile-insert-image": "插入圖片",
@@ -13,7 +14,7 @@
 	"bs-insertfile-labelfilter": "過濾器：",
 	"bs-insertfile-filename": "檔案名稱",
 	"bs-insertfile-filesize": "檔案大小",
-	"bs-insertfile-lastmodified": "最近變更",
+	"bs-insertfile-lastmodified": "近期變更",
 	"bs-insertfile-labelupload": "上傳",
 	"bs-insertfile-details-title": "詳細資訊",
 	"bs-insertfile-labeldimensions": "尺寸 (w x h)",
