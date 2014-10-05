@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Violetanka"
 		]
 	},
+	"bs-wantedarticle-desc": "İstenen sayfalar listesine bir sayfa ekleyin",
 	"prefs-wantedarticle": "İstenen sayfa",
 	"bs-wantedarticle-ajax-error-no-parameter": "Sayfa başlığı girilmedi.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Önerilen \"$1\" sayfası zaten mevcut.",

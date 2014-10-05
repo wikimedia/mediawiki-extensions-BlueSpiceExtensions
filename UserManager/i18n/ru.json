@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
+	"bs-usermanager-desc": "Интерфейс администрирования для добавления, правки и удаления пользователей",
 	"bs-usermanager-headerusername": "Имя участника",
 	"bs-usermanager-headerrealname": "Настоящее имя",
 	"bs-usermanager-headeremail": "Эл. почта",

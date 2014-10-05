@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Striking Blue"
 		]
 	},
-	"bs-flexiskin-desc": "Добавляет функциональность для создания тем оформления",
+	"bs-flexiskin-desc": "Позволяет странице управлять flexiskins с настройкой параметров",
 	"bs-flexiskin-label": "Тема оформления",
 	"bs-flexiskin-defaultname": "По умолчанию",
 	"bs-flexiskin-defaultdesc": "Тема оформления по умолчанию.",

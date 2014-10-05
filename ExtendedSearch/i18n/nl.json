@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"Romaine"
+			"Romaine",
+			"SPQRobin"
 		]
 	},
 	"bs-extendedsearch-desc": "Uitgebreid zoeken",
@@ -30,6 +31,7 @@
 	"bs-extendedsearch-searchfulltext": "Bevat ...",
 	"bs-extendedsearch-pref-scope-text": "Volledige tekst",
 	"bs-extendedsearch-pref-scope-title": "Titel",
+	"bs-extendedsearch-pref-limitresultdef": "Aantal resultaten op speciale pagina:",
 	"bs-extendedsearch-delete-index": "Index verwijderen",
 	"bs-extendedsearch-overwrite-index": "Index overschrijven",
 	"bs-extendedsearch-status": "Status",

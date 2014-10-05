@@ -4,7 +4,7 @@
 			"Beta16"
 		]
 	},
-	"bs-extendedsearch-desc": "Ricerca avanzata",
+	"bs-extendedsearch-desc": "Plugin di ricerca basato su Apache Solr (http://lucene.apache.org/solr/) per estendere la funzionalità di ricerca",
 	"specialextendedsearch": "Ricerca avanzata",
 	"prefs-extendedsearch": "Ricerca avanzata",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Categoria|Categorie}}: $2",

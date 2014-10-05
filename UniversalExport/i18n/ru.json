@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Meshkov.a",
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
+	"bs-universalexport-desc": "Позволяет MediaWiki экспортировать страницы в различные форматы",
 	"prefs-universalexport": "Универсальный экспорт",
 	"universalexport": "Универсальный экспорт",
 	"bs-universalexport-pref-metadatadefaults": "Метаданные (стандартные, JSON):",

@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Iluvatar",
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
+	"bs-visualeditor-desc": "Визуальный редактор для MediaWiki",
 	"prefs-visualeditor": "Визуальный редактор",
 	"bs-visualeditor-editbutton-hint": "Визуальный редактор",
 	"bs-visualeditor-pref-disablens": "Отключено в пространствах имён:",

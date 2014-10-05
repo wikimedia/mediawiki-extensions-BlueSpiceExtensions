@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Violetanka"
 		]
 	},
+	"bs-visualeditor-desc": "MediaWiki için görsel düzenleyici",
 	"prefs-visualeditor": "Görsel Düzenleyici",
 	"bs-visualeditor-editbutton-hint": "Görsel Düzenleyici",
 	"bs-visualeditor-no-summary": "Özet yok",

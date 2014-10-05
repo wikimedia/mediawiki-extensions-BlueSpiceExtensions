@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Violetanka"
 		]
 	},
+	"bs-usermanager-desc": "Kullanıcı ekleme, düzenleme ve silme için yönetim arayüzü",
 	"bs-usermanager-self-nodelete": "Kullanıcı hesabınızı silemezsiniz.",
 	"bs-usermanager-enter-pwd": "Lütfen bir parola girin.",
 	"bs-usermanager-invalid-realname": "Gerçek ad geçersiz.",

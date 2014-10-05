@@ -5,6 +5,9 @@
 		]
 	},
 	"bs-namespacemanager-label-namespaces": "Naamruimte",
+	"bs-namespacemanager-nsadded": "De naamruimte is toegevoegd.",
+	"bs-namespacemanager-nsremoved": "De naamruimte is verwijderd.",
+	"bs-namespacemanager-nsedited": "De naamruimte is bewerkt.",
 	"bs-namespacemanager-tipadd": "Naamruimte toevoegen",
 	"bs-namespacemanager-tipedit": "Naamruimte bewerken",
 	"bs-namespacemanager-tipremove": "Naamruimte verwijderen"

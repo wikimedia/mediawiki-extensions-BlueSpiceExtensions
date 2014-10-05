@@ -3,10 +3,13 @@
 		"authors": [
 			"Meshkov.a",
 			"Okras",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Striking Blue"
 		]
 	},
+	"bs-shoutbox-desc": "Добавляет функцию для встраивания собственного шаутбокса",
 	"bs-shoutbox-message": "Написать новый комментарий...",
+	"bs-shoutbox-shout": "Отправить",
 	"bs-shoutbox-loading": "Загрузка…",
 	"bs-shoutbox-pref-committimeinterval": "Время между двумя сообщениями (в секундах):",
 	"bs-shoutbox-pref-maxmessagelength": "Максимальная длина сообщения:",

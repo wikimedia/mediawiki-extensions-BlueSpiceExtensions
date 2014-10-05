@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
-	"bs-userpreferences-desc": "Добавляет вкладку BlueSpice в настройки"
+	"bs-userpreferences-desc": "Отображает вкладку BlueSpice в настройках"
 }

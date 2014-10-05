@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
-	"bs-rssfeeder-desc": "Расширение, позволяющее выводить RSS для любого другого расширения, имеющего buildRss-функцию",
+	"bs-rssfeeder-desc": "Расширение, позволяющее выводить RSS для каждого расширения, имеющего функцию buildRss",
 	"rssfeeder": "Формировальщик RSS",
 	"bs-rssfeeder-pagetext": "Вы можете подписаться на следующие RSS-каналы:",
 	"bs-rssfeeder-recent-changes": "Свежие правки",

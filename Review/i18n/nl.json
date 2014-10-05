@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-review-commentinputlabel": "Uw opmerking:",
+	"bs-review-comments": "Opmerkingen",
+	"bs-review-colcomment": "Opmerking",
+	"bs-review-lblstartdate": "Begindatum",
+	"bs-review-lblenddate": "Einddatum",
+	"bs-review-labelcomment": "Opmerking",
+	"bs-review-header-page-title": "Pagina",
+	"bs-review-header-owner-name": "Eigenaar"
+}

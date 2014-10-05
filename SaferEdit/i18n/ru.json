@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
+	"bs-saferedit-desc": "Промежуточное сохранение правок wiki",
 	"bs-saferedit-restore": "Восстановить",
 	"bs-saferedit-safer-edit-topbar": "Восстановление",
 	"bs-saferedit-othersectiontitle": "Раздел для восстановления"

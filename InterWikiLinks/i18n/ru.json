@@ -2,10 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Meshkov.a",
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
+	"bs-interwikilinks-desc": "Административный интерфейс для добавления, правки и удаления ссылок интервики",
+	"bs-interwikilinks-invalid-pfx-spc": "Некорректный префикс. Пожалуйста, не используйте пробелы.",
+	"bs-interwikilinks-invalid-url-spc": "Некорректный URL. Пожалуйста, не используйте пробелы.",
 	"bs-interwikilinks-label": "Интервики-ссылки",
+	"bs-interwikilinks-link-created": "Была создана ссылка интервики.",
+	"bs-interwikilinks-link-added": "Ссылка интервики была добавлена.",
+	"bs-interwikilinks-link-deleted": "Ссылка интервики была удалена.",
+	"bs-interwikilinks-nooldpfx": "Предыдущий префикс не был найден.",
+	"bs-interwikilinks-nopfx": "Пожалуйста, укажите префикс.",
+	"bs-interwikilinks-nourl": "Пожалуйста, укажите URL.",
+	"bs-interwikilinks-pfxtoolong": "Префикс слишком длинный. Пожалуйста, используйте не более 32 символов.",
 	"bs-interwikilinks-pfxexists": "Этот префикс уже существует.",
 	"bs-interwikilinks-headerprefix": "Префикс",
 	"bs-interwikilinks-titleaddinterwikilink": "Добавить интервики-ссылку",

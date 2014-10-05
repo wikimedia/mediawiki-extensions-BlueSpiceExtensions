@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
+	"bs-smartlist-desc": "Отображает в списке последние пять изменений вики.",
 	"bs-smartlist-comment": "Комментарий: $1.",
 	"bs-smartlist-pref-comments": "Показать комментарий",
 	"bs-smartlist-pref-namespaces": "Пространство имён:",
