@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"SuperPuperSteve",
-			"Okras"
+			"Okras",
+			"Striking Blue"
 		]
 	},
+	"bs-rssstandards-desc": "Строит RSS каналы на основе различных опций",
 	"bs-rssstandards-title-page": "Страница",
 	"bs-rssstandards-title-cat": "Категория",
 	"bs-rssstandards-title-watch": "Список наблюдения",
