@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mykola Swarnyk"
+			"Mykola Swarnyk",
+			"Olion"
 		]
 	},
-	"bs-rssfeeder-desc": "Створити свій власний канал RSS",
+	"bs-rssfeeder-desc": "Розширення, що дозволяє виводити RSS тим розширенням, які мають функцію buildRss",
 	"rssfeeder": "Канал RSS",
 	"bs-rssfeeder-pagetext": "Ви можете підписатися на такі RSS-канали:",
 	"bs-rssfeeder-recent-changes": "Нещодавні зміни",
