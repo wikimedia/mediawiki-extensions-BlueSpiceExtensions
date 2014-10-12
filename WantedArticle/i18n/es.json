@@ -5,7 +5,7 @@
 			"Macofe"
 		]
 	},
-	"bs-wantedarticle-desc": "Sugerir una página requerida",
+	"bs-wantedarticle-desc": "Agregar una página a la lista de páginas requeridas",
 	"prefs-wantedarticle": "Página requerida",
 	"bs-wantedarticle-ajax-error-no-parameter": "No se proporcionó el título de la página.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Ya existe la página sugerida \"$1\".",

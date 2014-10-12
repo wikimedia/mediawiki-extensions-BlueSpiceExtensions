@@ -6,7 +6,7 @@
 			"Mor"
 		]
 	},
-	"bs-universalexport-desc": "Añade funciones de exportación",
+	"bs-universalexport-desc": "Permite que MediaWiki exporte páginas en distintos formatos",
 	"prefs-universalexport": "Exportación universal",
 	"universalexport": "Exportación universal",
 	"bs-universalexport-pref-metadatadefaults": "Metadatos (estándares, JSON):",

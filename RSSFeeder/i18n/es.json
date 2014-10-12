@@ -5,7 +5,7 @@
 			"Fitoschido"
 		]
 	},
-	"bs-rssfeeder-desc": "Crea tu propio canal RSS",
+	"bs-rssfeeder-desc": "Una extensión a obtener RSS válidos para cada extensión, que tiene una función buildRss",
 	"rssfeeder": "Canales RSS",
 	"bs-rssfeeder-pagetext": "Puedes suscribirte a los siguientes canales RSS:",
 	"bs-rssfeeder-recent-changes": "Cambios recientes",

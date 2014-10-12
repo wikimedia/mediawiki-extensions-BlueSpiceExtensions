@@ -8,7 +8,7 @@
 			"Amitie 10g"
 		]
 	},
-	"bs-responsibleeditors-desc": "Permite la asignación de editores responsables a una página",
+	"bs-responsibleeditors-desc": "Permite que MediaWiki gestionar los editores responsables de una página",
 	"prefs-responsibleeditors": "Editores responsables",
 	"bs-responsibleeditors-pref-activatednamespaces": "Espacios de nombres habilitados:",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Asignar automáticamente en la creación de la página",

@@ -5,7 +5,7 @@
 			"AVIADOR"
 		]
 	},
-	"bs-smartlist-desc": "Proporciona información adicional sobre el contenido y los usuarios",
+	"bs-smartlist-desc": "Muestra los últimos cinco cambios del wiki en una lista",
 	"prefs-smartlist": "Lista inteligente",
 	"bs-smartlist-recent-changes": "Cambios recientes",
 	"bs-smartlist-no-entries": "No se encontraron resultados.",

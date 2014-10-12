@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
-	"bs-preferences-desc": "Interfaz de administración para configurar BlueSpice",
+	"bs-preferences-desc": "Permite a los administradores configurar todo el wiki desde una única Página especial",
 	"bs-preferences-label": "Preferencias"
 }
