@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-extendedsearch-facet-category": "Kategoria",
+	"bs-extendedsearch-facet-editors": "Egileak",
+	"bs-extendedsearch-facet-namespace-files": "Fitxategiak",
+	"bs-extendedsearch-facet-type": "Formatua",
+	"bs-extendedsearch-statistics": "Estatistikak",
+	"bs-extendedsearch-did-you-mean": "\"$1\" esan nahi zenuen?",
+	"bs-extendedsearch-more": "Gehiago",
+	"bs-extendedsearch-fewer": "Gutxiago"
+}

@@ -6,6 +6,10 @@
 		]
 	},
 	"bs-smartlist-desc": "Отображает в списке последние пять изменений вики.",
+	"prefs-smartlist": "«Умный» список",
+	"bs-smartlist-recent-changes": "Свежие правки",
+	"bs-smartlist-no-entries": "Ничего не найдено.",
+	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|Данное пространство|Данные пространства}} имён неверно: $2.",
 	"bs-smartlist-comment": "Комментарий: $1.",
 	"bs-smartlist-pref-comments": "Показать комментарий",
 	"bs-smartlist-pref-namespaces": "Пространство имён:",

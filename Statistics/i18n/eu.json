@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-statistics-year": "Urtea",
+	"bs-statistics-month": "Hilabetea",
+	"bs-statistics-day": "Eguna",
+	"bs-statistics-list": "Zerrenda",
+	"bs-statistics-not-allowed": "Ez duzu beharrezko baimenik.",
+	"bs-statistics-finish": "Diagrama sortu",
+	"bs-statistics-filters": "Iragazkiak",
+	"bs-statistics-filter-category": "Kategoria",
+	"bs-statistics-portletconfig-periodday": "Atzo"
+}

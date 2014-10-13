@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-articleinfo-categories": "Kategoriak",
+	"bs-articleinfo-all-categories-heading": "Kategoriak",
+	"bs-articleinfo-nocategories": "Ez da kategoriarik aurkitu.",
+	"bs-articleinfo-hiddencats": "Kategoria ezkutuak",
+	"bs-articleinfo-notemplates": "Ez da txantiloirik aurkitu.",
+	"bs-articleinfo-templates": "Txantiloiak",
+	"bs-articleinfo-statebartopcategories": "Kategoriak",
+	"bs-articleinfo-statebarbodycategories": "Kategoriak",
+	"bs-articleinfo-statebarbodytemplates": "Txantiloiak"
+}

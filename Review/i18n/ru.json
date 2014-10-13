@@ -28,7 +28,7 @@
 	"bs-review-review-secondtime": "Проверка не может быть найдена. Возможно, вы пытаетесь проверить страницу ещё раз.",
 	"bs-review-review-saved": "Ваш голос сохранён.",
 	"bs-review-mail-link-to-page": "Перейдите по этой ссылке: $1",
-	"bs-review-mail-invite-header": "Пожалуйста, проверьте страницу \"$1\"",
+	"bs-review-mail-invite-header": "Пожалуйста, проверьте страницу «$1»",
 	"bs-review-mail-invite-body": "$1 has {{GENDER:$2|пригласил|пригласила}} вас проверить страницу \"$3\".",
 	"bs-review-mail-comment": "Был введён комментарий: \"$1\".",
 	"bs-review-statebar-body-do-review": "Пожалуйста, проверьте страницу",
@@ -71,5 +71,5 @@
 	"bs-review-header-enddate": "Конец",
 	"bs-review-confirm-delete-step": "Вы действительно хотите удалить этот шаг?",
 	"bs-review-confirm-delete-review": "Вы действительно хотите удалить этот обзор?",
-	"bs-review-error-insufficient-permissions": "У вас нет прав для совершения этого действия (необходимо \"$1\")."
+	"bs-review-error-insufficient-permissions": "У вас нет прав для совершения этого действия (необходимо «$1»)."
 }
