@@ -24,7 +24,7 @@ BsWantedArticle = {
 
 	init: function() {
 		//ExtendedSearch
-		$( '#bs-extendedsearch-suggest' ).live( 'click', function() { //Has to be "live" because #bs-extendedsearch-suggest may be changed via AJAX
+		$( '#bs-extendedsearch-suggest' ).on( 'click', function() { //Has to be "live" because #bs-extendedsearch-suggest may be changed via AJAX
 			//TODO: $.live() is deprecated since v1.7. Replace with $.on() as soon as we drop MW 1.17 support.
 			return BsWantedArticle.sendSuggestion( $( this ).attr( 'href' ).substr( 1 ) );
 		});
@@ -198,15 +198,15 @@ BsWantedArticle = {
 	}
 };
 
-$(document).ready(function(){
+mw.loader.using( 'ext.bluespice',function() {
 	BsWantedArticle.config = {
 		urlBase: wgServer + wgScriptPath
 	};
 	BsWantedArticle.init();
-});
+} );
 
 // Register with ExtendedSearch Autocomplete
-$(document).bind('BSExtendedSearchAutocompleteItemSelect', function( event, selectEvent, ui, status ){
+$(document).on('BSExtendedSearchAutocompleteItemSelect', function( event, selectEvent, ui, status ){
 	if ( ui.item.attr !== 'bs-extendedsearch-suggest' ) return;
 
 	BsWantedArticle.sendSuggestion( ui.item.value );
