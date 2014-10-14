@@ -15,6 +15,9 @@
 	"bs-smartlist-pref-namespaces": "Пространство имён:",
 	"bs-smartlist-pref-categories": "Категории:",
 	"bs-smartlist-pref-period": "Период:",
+	"bs-smartlist-pref-showminorchanges": "Показать малые правки",
+	"bs-smartlist-pref-showonlynewarticles": "Показывать только новые страницы",
+	"bs-smartlist-pref-trim": "Максимальная длина заголовка (в символах):",
 	"bs-smartlist-pref-order": "Сортировать по:",
 	"bs-smartlist-pref-sort": "Сортировать по:",
 	"bs-smartlist-sort-asc": "по возрастанию",
@@ -24,5 +27,11 @@
 	"bs-smartlist-month": "Месяц",
 	"bs-smartlist-time": "Время",
 	"bs-smartlist-title": "Заголовок",
-	"bs-smartlist-lastedits": "Мои правки"
+	"bs-smartlist-mostvisitedpages": "Наиболее часто просматриваемые страницы",
+	"bs-smartlist-mosteditedpages": "Самые часто редактируемые страницы",
+	"bs-smartlist-mostactiveusers": "Самые активные пользователи (по количеству правок)",
+	"bs-smartlist-lastedits": "Мои правки",
+	"bs-smartlist-noedits": "Правок не найдено.",
+	"bs-smartlist-mostactiveusersdesc": "Список наиболее активных пользователей, отсортированный по количеству правок.",
+	"bs-smartlist-lasteditsdesc": "Список страниц, которые вы редактировали."
 }

@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Robby",
 			"Ата",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Shirayuki"
 		]
 	},
 	"bs-shoutbox-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of shoutbox extension",
@@ -17,7 +18,7 @@
 	"bs-shoutbox-pref-committimeinterval": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for time between two messages (in seconds):",
 	"bs-shoutbox-pref-maxmessagelength": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for maximum length of a message:",
 	"bs-shoutbox-pref-numberofshouts": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for number of messages shown:",
-	"bs-shoutbox-pref-showage": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show creation date of a message",
+	"bs-shoutbox-pref-showage": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show creation date of a message.\n\nThis \"date\" means timestamp.",
 	"bs-shoutbox-pref-showuser": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show author of a message",
 	"bs-shoutbox-pref-allowarchive": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for user are able to delete their own entries",
 	"bs-shoutbox-pref-show": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for display shoutbox",
