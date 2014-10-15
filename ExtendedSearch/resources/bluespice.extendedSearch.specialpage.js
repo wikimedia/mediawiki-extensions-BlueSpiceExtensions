@@ -348,10 +348,11 @@ BsExtendedSearchAjaxManager.prototype = {
 	 * Search as you type results
 	 */
 	searchAsYouType: function() {
-		var inputField = $( '#bs-extendedsearch-inputfieldtext-specialpage' );
-		var url;
-		var thread;
-		var keys = new Array( 13, 17, 18, 20, 27, 32, 37, 38, 39, 40, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123 );
+		var inputField = $( '#bs-extendedsearch-inputfieldtext-specialpage' ),
+			url,
+			thread,
+			keys = new Array( 13, 17, 18, 20, 27, 32, 37, 38, 39, 40, 112,
+							113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123 );
 
 		inputField.keydown( function() {
 			clearTimeout( thread );
@@ -360,9 +361,13 @@ BsExtendedSearchAjaxManager.prototype = {
 		inputField.keyup( function( event ) {
 			clearTimeout( thread );
 			if ( $.inArray( event.which, keys ) > 0 ) return false;
-			if ( inputField.val() == '' ) return false;
+			if ( inputField.val() === '' ) return false;
 			url = wgServer + wgScriptPath +
 					'?search_scope=text&search_submit=1&q=' + encodeURIComponent( inputField.val() );
+
+			if ( typeof bsExtendedSearchSearchFiles !== 'undefined' ) {
+				url += '&search_files=' + ( bsExtendedSearchSearchFiles ) ? 1 : 0;
+			}
 			thread = setTimeout( function() { ExtendedSearchAjaxManager.ajaxMeANewResultsPlz( url ) }, 300 );
 		} );
 	}
