@@ -206,7 +206,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onBSStateBarAddSortBodyVars( &$aSortBodyVars ) {
-		$aSortBodyVars['statebarbodymorelikethis'] = wfMessage( 'bs-articleinfo-statebarbodymorelikethis' )->plain();
+		$aSortBodyVars['statebarbodymorelikethis'] = wfMessage( 'bs-extendedsearch-morelikethis' )->plain();
 		return true;
 	}
 
