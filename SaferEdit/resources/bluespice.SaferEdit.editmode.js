@@ -182,9 +182,9 @@ BsSaferEditEditMode = {
 	saveTextListener: function(result, Listener) {
 		var text = BsSaferEditEditMode.getText();
 
-		if( BsSaferEditEditMode.canceledByUser ) return;
+		if ( BsSaferEditEditMode.canceledByUser ) return;
 
-		if( BsSaferEditEditMode.oldText != text ) {
+		if ( BsSaferEditEditMode.oldText != text ) {
 			BsSaferEditEditMode.isDirty = true;
 			BsSaferEditEditMode.oldText = text;
 			BsSaferEditEditMode.bBackupCreated = true;
@@ -436,7 +436,7 @@ BsSaferEditEditMode = {
 	},
 
 	onToggleEditor: function(name, data) {
-		if( BsSaferEditEditMode.isUnsaved ) return;
+		if ( BsSaferEditEditMode.isUnsaved ) return;
 
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText( data );
 	},
@@ -453,22 +453,22 @@ BsSaferEditEditMode = {
 
 mw.loader.using( 'ext.bluespice', function() {
 	BsSaferEditEditMode.init();
-	if( mw.config.get('bsSaferEditHasTexts', false ) ) {
+	if ( mw.config.get('bsSaferEditHasTexts', false ) ) {
 		BsSaferEditEditMode.toggleDialog();
 	}
-	if( bsSaferEditWarnOnLeave && (typeof(alreadyBound) == 'undefined' || alreadyBound == false) ) {
-		$(window).bind( 'beforeunload', function() {
+	if ( bsSaferEditWarnOnLeave && (typeof(alreadyBound) == 'undefined' || alreadyBound == false) ) {
+		$(window).on( 'beforeunload', function() {
 			alreadyBound = true;
 			// if a string is returned, a dialog is displayed.
 			// if null is returned, nothing happenes and the page is left.
 			return BsSaferEditEditMode.checkSaved();
 		});
-		$('#editform').submit( function(){
+		$(document).on( 'submit', '#editform', function() {
 			BsSaferEditEditMode.isSubmit = true;
-		});
+		} );
 	}
 });
 
-$(document).bind('BSVisualEditorBeforeToggleEditor', BsSaferEditEditMode.onBeforeToggleEditor );
-$(document).bind('BSVisualEditorToggleEditor', BsSaferEditEditMode.onToggleEditor );
-$(document).bind('BSVisualEditorSavedText', BsSaferEditEditMode.onSavedText );
+$(document).on( 'BSVisualEditorBeforeToggleEditor', BsSaferEditEditMode.onBeforeToggleEditor );
+$(document).on( 'BSVisualEditorToggleEditor', BsSaferEditEditMode.onToggleEditor );
+$(document).on( 'BSVisualEditorSavedText', BsSaferEditEditMode.onSavedText );
