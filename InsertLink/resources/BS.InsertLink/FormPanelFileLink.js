@@ -17,18 +17,15 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 	beforeInitComponent: function() {
 		this.setTitle( mw.message('bs-insertlink-tab-ext-file').plain() );
 		this.on( 'beforeactivate', function(){
-			oApplet = document.createElement('applet');
-			oBody = document.getElementsByTagName('body')[0];
-			oApplet.setAttribute('code', 'HWFileChooserApplet.class');
-			oApplet.setAttribute('id', 'HWFileChooserApplet');
-			oApplet.setAttribute('name', 'HWFileChooserApplet');
-			oApplet.setAttribute('scriptable', 'true');
-			oApplet.setAttribute('mayscript', 'true');
-			oApplet.setAttribute('codebase', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertLink/resources/');
-			oApplet.setAttribute('style', 'width:0px;height:0px;padding:0;margin:0;');
-			oApplet.setAttribute('height', '1');
-			oApplet.setAttribute('width', '1');
-			oBody.appendChild(oApplet);
+			var applet = $("<applet>");
+			applet.attr('id', 'BsFileChooserApplet');
+			applet.attr('name', 'BsFileChooserApplet');
+			applet.attr('archive', wgScriptPath + '/extensions/BlueSpiceExtensions/InsertLink/vendor/BsFileChooserApplet.jar');
+			applet.attr('code', 'biz.hallowelt.InsertLink.BsFileChooserApplet.class');
+			applet.attr('width', '1');
+			applet.attr('height', '1');
+			applet.attr('mayscript', 'mayscript');
+			$("body").append(applet);
 		}, this);
 
 		this.tfTargetUrl = Ext.create( 'Ext.form.field.Text', {
@@ -41,12 +38,25 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 		this.btnSearchFile = Ext.create( 'Ext.button.Button', {
 			id: 'inputSearchFile',
 			text: mw.message('bs-insertlink-label-searchfile').plain(),
-			handler: function(){
-				document.HWFileChooserApplet.openDialog('onFileDialogFile', 'onFileDialogCancel');
+			handler: function() {
+				try {
+					var result = document.getElementById( 'BsFileChooserApplet' ).openDialog(mw.message( "bs-insertlink-select-a-page" ).plain());
+				} catch ( e ) {
+					bs.util.alert( 'bs-insertlink-no-applet',
+							{
+								text: mw.message( "bs-insertlink-no-applet" ).plain(),
+								titleMsg: 'bs-extjs-error'
+							}
+					);
+				}
+				result = $.parseJSON( result );
+				if ( result.success )
+					this.tfTargetUrl.setValue( result.path );
 			},
+			scope: this,
 			width: '25%'
 		});
-		
+
 		this.fcTargetFields = Ext.create('Ext.form.FieldContainer', {
 			 layout: 'hbox'
 		});
@@ -111,7 +121,7 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 		target = target.replace(/\\/g, '/');
 		target = target.replace(/ /g, '%20');
 
-		return { 
+		return {
 			title: title,
 			href: 'file:///' + target,
 			type: '',

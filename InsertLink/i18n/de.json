@@ -21,5 +21,6 @@
 	"bs-insertlink-label-searchfile": "Durchsuchen ...",
 	"bs-insertlink-select-a-page": "Ziel wählen ...",
 	"bs-insertlink-select-a-namespace": "(Seiten)",
-	"bs-insertlink-empty-field-text": "Um einen Link einzufügen muss ein Ziel angegeben werden."
+	"bs-insertlink-empty-field-text": "Um einen Link einzufügen muss ein Ziel angegeben werden.",
+	"bs-insertlink-no-applet": "Das Applet konnte nicht geladen werden. Bitte überprüfe deine Java-Installation."
 }

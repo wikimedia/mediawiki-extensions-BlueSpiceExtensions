@@ -22,5 +22,6 @@
 	"bs-insertlink-label-searchfile": "The text of the search file button.\n{{Identical|Search}}",
 	"bs-insertlink-select-a-page": "The empty message for the page drop down field",
 	"bs-insertlink-select-a-namespace": "The empty message for the namespace drop down field. Attention: this shows the mainspace label as default.\n{{Identical|Page}}",
-	"bs-insertlink-empty-field-text": "The error message when the link field was empty."
+	"bs-insertlink-empty-field-text": "The error message when the link field was empty.",
+	"bs-insertlink-no-applet": "Error message if the applet could not be loaded. Gives the user the advise to check the java settings."
 }
