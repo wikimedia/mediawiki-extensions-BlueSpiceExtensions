@@ -1,11 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer",
-			"Violetanka"
+			"Sayginer"
 		]
 	},
-	"bs-permissionmanager-desc": "Kullanıcı haklarının düzenlenmesi için yönetim arayüzü",
 	"bs-permissionmanager-label": "İzin yöneticisi",
 	"bs-permissionmanager-header-permissions": "İzinler",
 	"bs-permissionmanager-header-global": "Viki",

@@ -40,5 +40,6 @@
 	"bs-permissionmanager-titletpled-delete": "Window title for delete template",
 	"bs-permissionmanager-pref-lockmode": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for activate lockmode",
 	"bs-permissionmanager-pref-skipsysns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for skip system namespaces if lockmode is active",
-	"bs-permissionmanager-pref-enablerealitycheck": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for activate permission check"
+	"bs-permissionmanager-pref-enablerealitycheck": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for activate permission check",
+	"bs-PermissionManager-unsaved-changes": "Message for Warning about unsaved changes on page unload"
 }

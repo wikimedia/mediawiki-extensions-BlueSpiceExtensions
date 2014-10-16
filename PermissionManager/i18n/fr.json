@@ -2,11 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Fany",
-			"Gomoko",
-			"Ltrlg"
+			"Gomoko"
 		]
 	},
-	"bs-permissionmanager-desc": "Interface d’administration pour la modification des droits des utilisateurs",
+	"bs-permissionmanager-desc": "Interface d'administration pour la gestion des autorisations",
 	"prefs-permissionmanager": "Gestionnaire d'autorisations",
 	"bs-permissionmanager-label": "Gestionnaire d'autorisations",
 	"bs-permissionmanager-grouping-global": "Droits indépendants de l’espace de nom",

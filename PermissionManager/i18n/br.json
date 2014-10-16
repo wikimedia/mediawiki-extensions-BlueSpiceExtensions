@@ -4,8 +4,6 @@
 			"Fohanno"
 		]
 	},
-	"prefs-permissionmanager": "Merour an aotreoù",
-	"bs-permissionmanager-label": "Merour an aotreoù",
 	"bs-permissionmanager-btn-group-label": "Strollad :",
 	"bs-permissionmanager-header-permissions": "Aotreoù",
 	"bs-permissionmanager-header-global": "Wiki",
@@ -15,7 +13,6 @@
 	"bs-permissionmanager-save-success": "Aotreoù enrollet.",
 	"bs-permissionmanager-labeltemplates": "Patromoù",
 	"bs-permissionmanager-btn-template-editor": "Aozañ ar patromoù",
-	"bs-permissionmanager-labeltpled": "Aozer patromoù",
 	"bs-permissionmanager-labeltpled-desc": "Deskrivadur",
 	"bs-permissionmanager-labeltpled-active": "Oberiant",
 	"bs-permissionmanager-labeltpled-add": "Nevez",
@@ -31,7 +28,5 @@
 	"bs-permissionmanager-msgtpled-deletefail": "N'eus ket bet gallet dilemel ar patrom.",
 	"bs-permissionmanager-titletpled-new": "Krouiñ ur patrom",
 	"bs-permissionmanager-titletpled-edit": "Adenvel ar patrom",
-	"bs-permissionmanager-titletpled-delete": "Dilemel ar patrom",
-	"bs-permissionmanager-pref-lockmode": "Gweredekaat ar mod prennañ",
-	"bs-permissionmanager-pref-enablerealitycheck": "Gweredekaat ar gwiriañ aotreoù"
+	"bs-permissionmanager-titletpled-delete": "Dilemel ar patrom"
 }
