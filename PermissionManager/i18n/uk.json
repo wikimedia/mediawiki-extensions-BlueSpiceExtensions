@@ -1,11 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата",
-			"Andriykopanytsia"
+			"Ата"
 		]
 	},
-	"bs-permissionmanager-desc": "Адміністративний інтерфейс для редагування прав користувача",
+	"bs-permissionmanager-desc": "Інтерфейс адміністрування для керування дозволами",
 	"prefs-permissionmanager": "Менеджер дозволів",
 	"bs-permissionmanager-label": "Менеджер дозволів",
 	"bs-permissionmanager-grouping-global": "Дозволи, не залежні від простору назв",

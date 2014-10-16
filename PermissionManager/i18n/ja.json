@@ -4,7 +4,7 @@
 			"Shirayuki"
 		]
 	},
-	"bs-permissionmanager-desc": "利用者権限を編集するための管理インターフェイス",
+	"bs-permissionmanager-desc": "権限を管理するインターフェイス",
 	"bs-permissionmanager-btn-group-label": "グループ:",
 	"bs-permissionmanager-header-global": "ウィキ",
 	"bs-permissionmanager-header-namespaces": "名前空間",

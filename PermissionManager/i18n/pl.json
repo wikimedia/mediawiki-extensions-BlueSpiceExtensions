@@ -4,7 +4,6 @@
 			"Chrumps"
 		]
 	},
-	"bs-permissionmanager-desc": "Interfejs administracyjny do edycji uprawnień użytkowników",
 	"bs-permissionmanager-btn-group-label": "Grupa:",
 	"bs-permissionmanager-header-permissions": "Uprawnienia",
 	"bs-permissionmanager-header-global": "Wiki",
@@ -24,12 +23,8 @@
 	"bs-permissionmanager-labeltpled-cancel": "Anuluj",
 	"bs-permissionmanager-msgtpled-success": "Szablon zapisany.",
 	"bs-permissionmanager-msgtpled-savefailure": "Szablon nie mógł zostać zapisany.",
-	"bs-permissionmanager-msgtpled-saveonabort": "Czy chcesz teraz zapisać wszystkie dane?",
 	"bs-permissionmanager-msgtpled-new": "Nazwa szablonu:",
-	"bs-permissionmanager-msgtpled-edit": "Nazwa nowego szablonu:",
 	"bs-permissionmanager-msgtpled-delete": "Szablon usunięty.",
-	"bs-permissionmanager-msgtpled-deletefail": "Szablon nie mógł zostać usunięty.",
 	"bs-permissionmanager-titletpled-new": "Utwórz szablon",
-	"bs-permissionmanager-titletpled-edit": "Zmień nazwę szablonu",
 	"bs-permissionmanager-titletpled-delete": "Usuń szablon"
 }

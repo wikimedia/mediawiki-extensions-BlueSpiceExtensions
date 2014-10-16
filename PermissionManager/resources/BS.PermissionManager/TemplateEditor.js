@@ -1,21 +1,23 @@
-Ext.require('Ext.tree.Panel');
-Ext.require('BS.AlertDialog');
-Ext.require('BS.PromptDialog');
 Ext.define('BS.PermissionManager.TemplateEditor', {
 	extend: 'Ext.window.Window',
+	requires: [
+		'Ext.tree.Panel',
+		'BS.PromptDialog',
+		'BS.PermissionManager.store.TemplateTree',
+		'BS.PermissionManager.store.TemplatePermissions'
+	],
 	title: mw.message('bs-permissionmanager-labeltpled').plain(),
 	loadMask: false,
 	width: 500,
 	height: 450,
+	modal: true,
 	layout: 'border',
 	closeAction: 'hide',
 	_cleanState: true,
 	_hasChanged: false,
 	constructor: function(config) {
-		this._treeStore = config.treeStore || {};
-		this._permissionStore = config.permissionStore || {};
-		delete config.treeStore;
-		delete config.permissionStore;
+		this._treeStore = Ext.create('BS.PermissionManager.store.TemplateTree');
+		this._permissionStore = Ext.create('BS.PermissionManager.store.TemplatePermissions');
 		this.callParent([config]);
 	},
 	setCleanState: function(clean) {
@@ -45,7 +47,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 
 		if (typeof record != 'undefined') {
 
-			for (i in me._permissionStore.data.items) {
+			for (var i in me._permissionStore.data.items) {
 				var dataSet = me._permissionStore.data.items[i].data;
 				if (dataSet.enabled === true) {
 					newRecord.ruleSet.push(dataSet.name);
@@ -68,15 +70,24 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 						me._permissionStore.sync();
 						me._hasChanged = true;
 
-						Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(me._treeStore.getNodeById(newRecord.text));
-						Ext.create('BS.AlertDialog', {
-							text: mw.message('bs-permissionmanager-msgtpled-success').plain()
-						}).show();
+						var dataManager = Ext.create('BS.PermissionManager.data.Manager');
+						var gridRow = dataManager.buildTemplateForGrid(newRecord);
+						dataManager.addTemplate(newRecord);
+
+						Ext.data.StoreManager.lookup('bs-permissionmanager-permission-store').add(gridRow);
+
+						Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(
+							me._treeStore.getNodeById(newRecord.text)
+						);
+						bs.util.alert('bs-pm-save-tpl-success', {
+							textMsg: 'bs-permissionmanager-msgtpled-success'
+						});
 					} else {
-						Ext.create('BS.AlertDialog', {
+						bs.util.alert('bs-pm-save-tpl-error', {
 							text: result.msg
-						}).show();
+						});
 					}
+					me.hide();
 				},
 				failure: function(response) {
 					console.log(response);
@@ -85,7 +96,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 		}
 	},
 	discardChanges: function() {
-		Ext.getCmp('bs-template-editor-description').setRawValue('')
+		Ext.getCmp('bs-template-editor-description').setRawValue('');
 		this._permissionStore.each(function(record) {
 			record.set('enabled', false);
 		});
@@ -111,7 +122,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				if (record !== false) {
 					Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(record);
 				}
-			})
+			});
 			dialog.show();
 			return false;
 		}
@@ -129,15 +140,11 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				rootVisible: false,
 				margins: '0 0 5 0',
 				listeners: {
-					'select': function(rm, record, index, options) {
+					'select': function(rm, record) {
 						var data = [];
-						for (i in me._permissionStore.data.items) {
+						for (var i in me._permissionStore.data.items) {
 							var dataSet = me._permissionStore.data.items[i].data;
-							if (Ext.Array.contains(record.get('ruleSet'), dataSet.name)) {
-								dataSet.enabled = true;
-							} else {
-								dataSet.enabled = false;
-							}
+							dataSet.enabled = Ext.Array.contains(record.get('ruleSet'), dataSet.name);
 							data.push(dataSet);
 						}
 						me._permissionStore.loadRawData(data);
@@ -146,7 +153,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 						Ext.getCmp('pmTemplateEditorRemoveButton').enable();
 						me.setCleanState(true);
 					},
-					'beforeselect': function(rm, record, index, options) {
+					'beforeselect': function(rm, record) {
 						return me.noUnsavedChanges(record);
 					}
 				}
@@ -184,7 +191,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 								text: mw.message('bs-permissionmanager-labeltpled-active').plain(),
 								dataIndex: 'enabled',
 								listeners: {
-									'checkchange': function(column, rowIndex, checked, options) {
+									'checkchange': function() {
 										me.setCleanState(false);
 									}
 								}
@@ -199,10 +206,9 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 		me.bbar = [{
 				text: mw.message('bs-permissionmanager-labeltpled-add').plain(),
 				id: 'pmTemplateEditorAddButton',
-				handler: function(button, event) {
+				handler: function() {
 					if (me.noUnsavedChanges()) {
 						var dialog = Ext.create('BS.PromptDialog', {
-							title: mw.message('bs-permissionmanager-titletpled-new').plain(),
 							text: mw.message('bs-permissionmanager-msgtpled-new').plain()
 						});
 						dialog.on('ok', function(input) {
@@ -222,9 +228,8 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				text: mw.message('bs-permissionmanager-labeltpled-edit').plain(),
 				disabled: true,
 				id: 'pmTemplateEditorEditButton',
-				handler: function(button, event) {
+				handler: function() {
 					var dialog = Ext.create('BS.PromptDialog', {
-						title: mw.message('bs-permissionmanager-titletpled-edit').plain(),
 						text: mw.message('bs-permissionmanager-msgtpled-edit').plain()
 					});
 					dialog.on('ok', function(input) {
@@ -237,7 +242,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				text: mw.message('bs-permissionmanager-labeltpled-delete').plain(),
 				disabled: true,
 				id: 'pmTemplateEditorRemoveButton',
-				handler: function(button, event) {
+				handler: function() {
 					Ext.Ajax.request({
 						url: bs.util.getAjaxDispatcherUrl('PermissionManager::deleteTemplate'),
 						method: 'POST',
@@ -250,14 +255,13 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 								me.setCleanState(true);
 								me._permissionStore.sync();
 								me._hasChanged = true;
-								Ext.create('BS.AlertDialog', {
-									title: mw.message('bs-permissionmanager-titletpled-delete').plain(),
-									text: mw.message('bs-permissionmanager-msgtpled-delete').plain()
-								}).show();
+								bs.util.alert('bs-pm-delete-tpl-success', {
+									textMsg: 'bs-permissionmanager-msgtpled-delete'
+								});
 							} else {
-								Ext.create('BS.AlertDialog', {
+								bs.util.alert('bs-pm-delete-tpl-error', {
 									text: result.msg
-								}).show();
+								});
 							}
 						},
 						failure: function(response) {
@@ -269,12 +273,12 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				text: mw.message('bs-permissionmanager-btn-save-label').plain(),
 				disabled: true,
 				id: 'pmTemplateEditorSaveButton',
-				handler: function(button, event) {
+				handler: function() {
 					me.saveTemplate();
 				}
 			}, {
 				text: mw.message('bs-permissionmanager-labeltpled-cancel').plain(),
-				handler: function(button, event) {
+				handler: function() {
 					me.discardChanges();
 					me.hide();
 				}

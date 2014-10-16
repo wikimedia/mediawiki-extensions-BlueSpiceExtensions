@@ -7,7 +7,7 @@
 			"Amitie 10g"
 		]
 	},
-	"bs-permissionmanager-desc": "Interfaz administrativa para gestionar permisos de usuarios",
+	"bs-permissionmanager-desc": "Interfaz administrativa para gestionar permisos",
 	"prefs-permissionmanager": "Gestor de permisos",
 	"bs-permissionmanager-label": "Gestor de permisos",
 	"bs-permissionmanager-grouping-local": "Permisos específicos del espacio de nombres",

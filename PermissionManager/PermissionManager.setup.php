@@ -13,6 +13,7 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 	'styles' => 'extensions/BlueSpiceExtensions/PermissionManager/resources/bluespice.permissionManager.css',
 	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
+		'htmlform-reset',
 		'bs-permissionmanager-header-permissions',
 		'bs-permissionmanager-header-global',
 		'bs-permissionmanager-header-namespaces',
@@ -39,21 +40,19 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 		'bs-permissionmanager-msgtpled-delete',
 		'bs-permissionmanager-titletpled-new',
 		'bs-permissionmanager-titletpled-edit',
-		'bs-permissionmanager-titletpled-delete'
+		'bs-permissionmanager-titletpled-delete',
+		'bs-PermissionManager-unsaved-changes'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$GLOBALS['wgAutoloadClasses']['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
+$wgAutoloadClasses['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
 $wgAutoloadClasses['PermissionTemplates'] = __DIR__ . '/includes/PermissionTemplates.class.php';
-$wgAutoloadClasses['PMCheckUser'] = __DIR__ . '/includes/PMCheckUser.class.php';
 
-$wgAjaxExportList[] = 'PermissionManager::getAccessRules';
-$wgAjaxExportList[] = 'PermissionManager::getGroupAccessData';
-$wgAjaxExportList[] = 'PermissionManager::setAccessRules';
 $wgAjaxExportList[] = 'PermissionManager::setTemplateData';
 $wgAjaxExportList[] = 'PermissionManager::deleteTemplate';
+$wgAjaxExportList[] = 'PermissionManager::savePermissions';
 
 $wgExtensionFunctions[] = 'PermissionManager::setupLockmodePermissions';
 
@@ -61,6 +60,10 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'PermissionManager::getSchemaUpdates'
 
 if( !isset( $bsgPermissionManagerDefaultTemplates ) ) {
 	$bsgPermissionManagerDefaultTemplates = array();
+}
+
+if( !isset( $bsgPermissionManagerGroupSettingsFile ) ) {
+	$bsgPermissionManagerGroupSettingsFile = BSROOTDIR . DS . 'config' . DS . 'pm-settings.php';
 }
 
 $bsgPermissionManagerDefaultTemplates = array(
