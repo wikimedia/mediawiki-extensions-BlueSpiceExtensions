@@ -343,7 +343,7 @@ class RSSStandards extends BsExtensionMW {
 				$wgEnotifWatchlist, $wgShowUpdatedMarker, $wgEnotifWatchlist, $wgSitename;
 
 		$skin = RequestContext::getMain()->getSkin();
-		$specialTitle = $wgSitename . ' - ' . SpecialPage::getTitleFor( 'Watchlist' );
+		$specialTitle = SpecialPage::getTitleFor( 'Watchlist' );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		# Anons don't get a watchlist
@@ -352,10 +352,19 @@ class RSSStandards extends BsExtensionMW {
 			$user = User::newFromName( $_user );
 			$_hash = $wgRequest->getVal( 'h', '' );
 			if ( !( $user && $_hash == md5( $_user.$user->getToken().$user->getId() ) ) || $user->isAnon() ) {
-				$wgOut->setPageTitle( wfMessage( 'bs-rssstandards-watchnologin' )->plain() );
-				$llink = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogin' ), wfMessage( 'loginreqlink' )->plain(), 'returnto=' . $specialTitle->getPrefixedUrl() );
-				$wgOut->addHtml( wfMessage( 'watchlistanontext', $llink )->plain() );
-				return;
+				$oTitle = SpecialPage::getTitleFor( 'Userlogin' );
+				$sLink = Linker::link(
+					$oTitle,
+					wfMessage( 'loginreqlink' )->plain(),
+					array(),
+					array(
+						'returnto' => $specialTitle->getLocalUrl()
+					)
+				);
+
+				throw new ErrorPageError(
+					'bs-rssstandards-watchnologin', 'watchlistanontext', array( $sLink )
+				);
 			}
 		} else {
 			$user = $wgUser;
