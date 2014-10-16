@@ -20,5 +20,6 @@
 	"bs-insertlink-label-searchfile": "Пребарај...",
 	"bs-insertlink-select-a-page": "Изберете цел ...",
 	"bs-insertlink-select-a-namespace": "(Страници)",
-	"bs-insertlink-empty-field-text": "За да вметнете врска, ќе треба да ја укежете целната одредница."
+	"bs-insertlink-empty-field-text": "За да вметнете врска, ќе треба да ја укежете целната одредница.",
+	"bs-insertlink-no-applet": "Прилогчето не може да се вчита. Проверете ја воспоставката на Java."
 }

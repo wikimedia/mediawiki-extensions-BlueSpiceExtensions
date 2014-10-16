@@ -20,5 +20,6 @@
 	"bs-insertlink-label-searchfile": "検索 ...",
 	"bs-insertlink-select-a-page": "リンク先を選択 ...",
 	"bs-insertlink-select-a-namespace": "(ページ)",
-	"bs-insertlink-empty-field-text": "リンクを挿入するには、リンク先を指定する必要があります。"
+	"bs-insertlink-empty-field-text": "リンクを挿入するには、リンク先を指定する必要があります。",
+	"bs-insertlink-no-applet": "アプレットを読み込めませんでした。Java をインストールしていることを確認してください。"
 }

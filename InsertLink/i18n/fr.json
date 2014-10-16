@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Kc kennylau"
+			"Kc kennylau",
+			"Wladek92"
 		]
 	},
 	"bs-insertlink-desc": "Boîte de dialogue pour saisir un lien",
@@ -21,5 +22,6 @@
 	"bs-insertlink-label-searchfile": "Recherche …",
 	"bs-insertlink-select-a-page": "Choisir la cible …",
 	"bs-insertlink-select-a-namespace": "(Pages)",
-	"bs-insertlink-empty-field-text": "Pour insérer un lien, vous devriez spécifier une destination."
+	"bs-insertlink-empty-field-text": "Pour insérer un lien, vous devez spécifier une destination.",
+	"bs-insertlink-no-applet": "L'applet n'a pas pu être chargé. Veuillez vérifier votre installation de Java."
 }

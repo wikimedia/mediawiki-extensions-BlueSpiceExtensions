@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Les Meloures"
 		]
 	},
 	"bs-insertfile-insert-image": "Bild drasetzen",
@@ -37,8 +38,8 @@
 	"bs-insertfile-warning": "Warnung",
 	"bs-insertfile-allowedfiletypesare": "Valabe Fichierstype sinn:",
 	"bs-insertfile-error": "Feeler",
-	"bs-insertfile-errornofileextensiononupload": "De Fichier deen Dir erausgesicht huet huet keng Erweiderung.",
-	"bs-insertfile-errorWrongFileExtensionOnUpload": "De Fichier deen Dir erausgesicht huet huet keng valabel Fichiers-Erweiderung.",
+	"bs-insertfile-errornofileextensiononupload": "De Fichier deen Dir erausgesicht hutt, huet keng Erweiderung.",
+	"bs-insertfile-errorWrongFileExtensionOnUpload": "De Fichier deen Dir erausgesicht hutt, huet keng valabel Fichiers-Erweiderung.",
 	"bs-insertfile-uploadcomplete": "Äre Fichier gouf gespäichert.",
 	"bs-insertfile-titlefile": "Fichier drsetzen",
 	"bs-insertfile-titleimage": "Bild drasetzen",
