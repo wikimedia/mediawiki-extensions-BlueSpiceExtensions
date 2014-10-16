@@ -60,7 +60,7 @@ class ContextMenu extends BsExtensionMW {
 		$this->setHook('LinkEnd');
 		$this->setHook('ThumbnailBeforeProduceHTML');
 
-		BsConfig::registerVar( 'MW::ContextMenu::Modus', 'no-ctrl', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-contextmenu-pref-modus', 'radio' );
+		BsConfig::registerVar( 'MW::ContextMenu::Modus', 'ctrl', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-contextmenu-pref-modus', 'radio' );
 	}
 
 	/**
@@ -72,8 +72,8 @@ class ContextMenu extends BsExtensionMW {
 	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
 		return array(
 			'options' => array(
-				wfMessage( 'bs-contextmenu-pref-modus-just-right-mouse' )->text() => 'no-crtl',
 				wfMessage( 'bs-contextmenu-pref-modus-ctrl-and-right-mouse' )->text() => 'ctrl',
+				wfMessage( 'bs-contextmenu-pref-modus-just-right-mouse' )->text() => 'no-ctrl'
 			),
 		);
 	}
