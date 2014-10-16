@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-permissionmanager-desc": "Administrationsoberfläche zur Konfiguration von Rechten",
+	"bs-permissionmanager-desc": "Administrationsoberfläche zur Bearbeitung von Benutzerrechten",
 	"prefs-permissionmanager": "Rechteverwaltung",
 	"bs-permissionmanager-label": "Rechteverwaltung",
 	"bs-permissionmanager-grouping-global": "Namensraumübergreifende Rechte",
@@ -38,6 +39,5 @@
 	"bs-permissionmanager-titletpled-delete": "Vorlage löschen",
 	"bs-permissionmanager-pref-lockmode": "Lockmode aktivieren",
 	"bs-permissionmanager-pref-skipsysns": "Systemnamensräume bei eingschaltetem Lockmode ignorieren",
-	"bs-permissionmanager-pref-enablerealitycheck": "Rechteprüfung aktivieren",
-	"bs-PermissionManager-unsaved-changes": "Einige Änderungen wurden noch nicht gespeichert."
+	"bs-permissionmanager-pref-enablerealitycheck": "Rechteprüfung aktivieren"
 }

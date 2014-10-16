@@ -4,7 +4,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-permissionmanager-desc": "Administration interface for managing permissions",
+	"bs-permissionmanager-desc": "Administration interface for editing user rights",
 	"prefs-permissionmanager": "Permission manager",
 	"bs-permissionmanager-label": "Permission manager",
 	"bs-permissionmanager-grouping-global": "Namespace independent permissions",
@@ -38,6 +38,5 @@
 	"bs-permissionmanager-titletpled-delete": "Delete template",
 	"bs-permissionmanager-pref-lockmode": "Activate lockmode",
 	"bs-permissionmanager-pref-skipsysns": "Skip system namespaces if lockmode is active",
-	"bs-permissionmanager-pref-enablerealitycheck": "Activate permission check",
-	"bs-PermissionManager-unsaved-changes": "Some changes are not saved yet."
+	"bs-permissionmanager-pref-enablerealitycheck": "Activate permission check"
 }
