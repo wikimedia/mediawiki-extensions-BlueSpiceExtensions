@@ -11,66 +11,64 @@
  * @filesource
  */
 ( function( mw, $ ) {
-	$( function() {
-		mw.loader.using( 'jquery.ui.autocomplete', function() {
-			var cache = { };
-			var lastXhr = { };
+	mw.loader.using( 'jquery.ui.autocomplete', function() {
+		var cache = { };
+		var lastXhr = { };
 
-			if ( $( "#bs-extendedsearch-input, .bs-autocomplete-field" ).length < 1 )
-				return;
+		if ( $( "#bs-extendedsearch-input, .bs-autocomplete-field" ).length < 1 )
+			return;
 
-			var container = $( "<div id='bs-extendedsearch-autocomplete'></div>" );
-			$( "body" ).append( container );
-			$( "#bs-extendedsearch-input, .bs-autocomplete-field" ).autocomplete( {
-				appendTo: container,
-				position: {
-					my: "right top",
-					at: "right bottom"
-				},
-				source: function( req, setList ) {
-					if ( req.term in cache ) {
-						setList( cache[ req.term ] );
-					} else {
-						var url = bs.util.getAjaxDispatcherUrl(
-								'ExtendedSearchBase::getAutocompleteData',
-								[ encodeURIComponent( req.term ) ]
-								);
-						var lastXhr = $.ajax( {
-							url: url,
-							dataType: 'json',
-							success: function( response, textStatus, xhr ) {
-								if ( response == null || response.length == '0' ) {
-									$( '.ui-autocomplete' ).css( 'display', 'none' );
-								} else {
-									if ( xhr === lastXhr ) {
-										setList( response );
-									}
-									cache[ req.term ] = response;
+		var container = $( "<div id='bs-extendedsearch-autocomplete'></div>" );
+		$( "body" ).append( container );
+		$( "#bs-extendedsearch-input, .bs-autocomplete-field" ).autocomplete( {
+			appendTo: container,
+			position: {
+				my: "right top",
+				at: "right bottom"
+			},
+			source: function( req, setList ) {
+				if ( req.term in cache ) {
+					setList( cache[ req.term ] );
+				} else {
+					var url = bs.util.getAjaxDispatcherUrl(
+							'ExtendedSearchBase::getAutocompleteData',
+							[ encodeURIComponent( req.term ) ]
+							);
+					var lastXhr = $.ajax( {
+						url: url,
+						dataType: 'json',
+						success: function( response, textStatus, xhr ) {
+							if ( response == null || response.length == '0' ) {
+								$( '.ui-autocomplete' ).css( 'display', 'none' );
+							} else {
+								if ( xhr === lastXhr ) {
+									setList( response );
 								}
-							},
-							failure: function() {
+								cache[ req.term ] = response;
 							}
-						} );
-					}
-				},
-				focus: function( event, ui ) {
-					$( '.ui-corner-all' ).unbind( 'mouseleave' );
-				},
-				select: function( event, ui ) {
-					var status = { skipFurtherProcessing: false };
-					$( document ).trigger( 'BSExtendedSearchAutocompleteItemSelect', [ event, ui, status ] );
-					if ( status.skipFurtherProcessing )
-						return;
-					document.location.href = "" + ui.item.link;
+						},
+						failure: function() {
+						}
+					} );
 				}
-			} );
-
-			$.ui.autocomplete.prototype._renderItem = function( ul, item ) {
-				return $( "<li class='" + item.attr + "'></li>" )
-						.data( "item.autocomplete", item )
-						.append( "<a>" + item.label + "</a>" )
-						.appendTo( ul );
-			};
+			},
+			focus: function( event, ui ) {
+				$( '.ui-corner-all' ).unbind( 'mouseleave' );
+			},
+			select: function( event, ui ) {
+				var status = { skipFurtherProcessing: false };
+				$( document ).trigger( 'BSExtendedSearchAutocompleteItemSelect', [ event, ui, status ] );
+				if ( status.skipFurtherProcessing )
+					return;
+				document.location.href = "" + ui.item.link;
+			}
 		} );
+
+		$.ui.autocomplete.prototype._renderItem = function( ul, item ) {
+			return $( "<li class='" + item.attr + "'></li>" )
+					.data( "item.autocomplete", item )
+					.append( "<a>" + item.label + "</a>" )
+					.appendTo( ul );
+		};
 	} );
 }( mediaWiki, jQuery ) );
