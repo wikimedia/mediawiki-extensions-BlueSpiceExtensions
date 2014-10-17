@@ -22,5 +22,6 @@
 	"bs-insertlink-label-searchfile": "Поиск…",
 	"bs-insertlink-select-a-page": "Выберите цель...",
 	"bs-insertlink-select-a-namespace": "(Страницы)",
-	"bs-insertlink-empty-field-text": "Чтобы вставить ссылку, вы должны указать конечное назначение."
+	"bs-insertlink-empty-field-text": "Чтобы вставить ссылку, вы должны указать конечное назначение.",
+	"bs-insertlink-no-applet": "Не удалось загрузить этот апплет. Пожалуйста, проверьте правильность установки Java."
 }
