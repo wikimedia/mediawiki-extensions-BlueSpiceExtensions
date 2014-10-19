@@ -21,5 +21,6 @@
 	"bs-insertlink-label-searchfile": "搜索...",
 	"bs-insertlink-select-a-page": "选择目标......",
 	"bs-insertlink-select-a-namespace": "（页面）",
-	"bs-insertlink-empty-field-text": "您需要为您要插入的链接提供一个目标。"
+	"bs-insertlink-empty-field-text": "您需要为您要插入的链接提供一个目标。",
+	"bs-insertlink-no-applet": "不能加载小程序。请检查您的Java安装版本。"
 }

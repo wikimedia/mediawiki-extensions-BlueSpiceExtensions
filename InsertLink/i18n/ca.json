@@ -13,5 +13,6 @@
 	"bs-insertlink-label-description": "Descripció",
 	"bs-insertlink-label-file": "Fitxer",
 	"bs-insertlink-label-searchfile": "Cerca…",
-	"bs-insertlink-select-a-namespace": "(Pàgines)"
+	"bs-insertlink-select-a-namespace": "(Pàgines)",
+	"bs-insertlink-no-applet": "No s'ha pogut carregar la miniaplicació. Comproveu la instal·lació del Java."
 }
