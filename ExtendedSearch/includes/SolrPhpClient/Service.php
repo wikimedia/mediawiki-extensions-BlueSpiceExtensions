@@ -286,6 +286,7 @@ class Apache_Solr_Service
 	 */
 	protected function _sendRawGet($url, $timeout = FALSE)
 	{
+		$http_response_header = null;
 		//$http_response_header is set by file_get_contents
 		$response = new Apache_Solr_Response(@file_get_contents($url), $http_response_header, $this->_createDocuments, $this->_collapseSingleValueArrays);
 
