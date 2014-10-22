@@ -1044,18 +1044,14 @@ class SmartList extends BsExtensionMW {
 			}
 		}
 
-		if ( !empty( $sNs ) ) {
-			$iNamespaces = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $sNs );
-			if ( is_array( $iNamespaces ) ) {
-				foreach ( $iNamespaces as $iNamespace ) {
-					if ( $bAlltime === false ) {
-						$aConditions['wo_page_namespace'] = $iNamespace;
-					} else {
-						$aConditions['page_namespace'] = $iNamespace;
-					}
-				}
+		if ( !empty( $sNs ) || $sNs === '0') { // string 0 is empty
+			$aNamespaces = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $sNs );
+			if ( !empty( $aNamespaces ) ) {
+				$sField = $bAlltime ? 'page_namespace' : 'wo_page_namespace';
+				$aConditions[$sField] = $aNamespaces;
 			}
 		}
+
 		$res = $oDbr->select(
 			$aTables,
 			$aColumns,
