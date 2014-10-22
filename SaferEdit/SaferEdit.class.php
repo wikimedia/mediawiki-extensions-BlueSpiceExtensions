@@ -209,7 +209,7 @@ class SaferEdit extends BsExtensionMW {
 				$aTopViews['statebartopsaferedit'] = $this->makeStateBarTopSaferEdit( Article::newFromID($oTitle->getArticleID()), $oEdit->se_edit_section );
 			}
 
-			$iTime = date( "YmdHis", time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
+			$iTime = wfTimestamp( TS_MW, time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
 			if ( $oEdit->se_user_name != $oUser->getName() && $oEdit->se_timestamp > $iTime ) {
 				$aTopViews['statebartopsafereditediting'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name );
 			}
@@ -307,18 +307,18 @@ class SaferEdit extends BsExtensionMW {
 			"se_text" => $sText,
 		);
 		$aConditions = array(
-			"se_user_name"      => $sUsername,
-			"se_page_title"     => $oTitle->getDBkey(),
+			"se_user_name" => $sUsername,
+			"se_page_title" => $oTitle->getDBkey(),
 			"se_page_namespace" => $oTitle->getNamespace(),
-			"se_edit_section"   => $iSection,
+			"se_edit_section" => $iSection,
 		);
 		$aOptions = array( //needed for update reason
 			'ORDER BY' => 'se_id DESC',
 			'LIMIT' => 1,
 		);
 
-		if( $oRow = $db->selectRow($sTable, array( 'se_id' ), $aConditions, __METHOD__, $aOptions) ) {
-			if( empty($sText) ) unset($aFields['se_text']);
+		if ( $oRow = $db->selectRow( $sTable, array( 'se_id' ), $aConditions, __METHOD__, $aOptions ) ) {
+			if ( empty( $sText ) ) unset( $aFields['se_text'] );
 
 			$oTitle->invalidateCache();
 			return $db->update(
@@ -329,7 +329,7 @@ class SaferEdit extends BsExtensionMW {
 		}
 
 		$oTitle->invalidateCache();
-		return $db->insert($sTable, $aConditions + $aFields);
+		return $db->insert( $sTable, $aConditions + $aFields );
 	}
 
 	/**
@@ -393,6 +393,7 @@ class SaferEdit extends BsExtensionMW {
 			'',
 			array( "ORDER BY" => "se_id DESC" )
 		);
+
 		if ( $oDbw->numRows( $res ) > 0 ) {
 			$row = $oDbw->fetchRow( $res );
 
@@ -419,11 +420,13 @@ class SaferEdit extends BsExtensionMW {
 			} elseif ( strcmp( $sOrigText, urldecode($row['se_text'] ) ) == 0 ) {
 				$aData = array( "notexts" => "1" );
 			} else {
+				global $wgParser;
+				$oParserOptions = new ParserOptions();
 				$str = urldecode( $row['se_text'] );
 				$aData = array(
 					"time" => $oLang->time( $row['se_timestamp'] ),
 					"date" => $oLang->date( $row['se_timestamp'] ),
-					"html" => BsCore::getInstance()->parseWikiText( $str, RequestContext::getMain()->getTitle() ), //breaks on Mainpage
+					"html" => $wgParser->parse( $str, RequestContext::getMain()->getTitle(), $oParserOptions )->getText(), //breaks on Mainpage
 					"wiki" => $str,
 					"section" => $row['se_edit_section'],
 					"notexts" => 0
@@ -530,7 +533,7 @@ class SaferEdit extends BsExtensionMW {
 		if( !in_array($sRef, array('SaferEditIsSomeoneEditing', 'SaferEditSave')) ) return true;
 
 		$oTitle = Title::newFromText( $sTitle, $iNamespace );
-		if( is_null($oTitle) || !$oTitle->userCan('read') ) return true;
+		if ( is_null($oTitle) || !$oTitle->userCan('read') ) return true;
 
 		global $wgUser;
 
@@ -543,21 +546,24 @@ class SaferEdit extends BsExtensionMW {
 				$aSingleResult['someoneEditingView'] = $aSingleResult['safereditView'] = '';
 				$oArticle = Article::newFromID( $iArticleId );
 
+				$bUseSE = BsConfig::get( 'MW::SaferEdit::UseSE' );
+				$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 				foreach ( $aIntermediateEdits as $oEdit ) {
-					if ( BsConfig::get( 'MW::SaferEdit::UseSE' ) !== false && $oEdit->se_user_name == $wgUser->getName()
-						&& trim($oEdit->se_text) != trim( BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) ) ) {
+					if ( $bUseSE !== false && $oEdit->se_user_name == $wgUser->getName()
+						&& trim( $oEdit->se_text ) != trim( $sText ) ) {
 						$aSingleResult['safereditView'] = $this->makeStateBarTopSaferEdit( $oArticle, $oEdit->se_edit_section )->execute();
 					}
-					if ( $oEdit->se_user_name != $wgUser->getName() && $oEdit->se_timestamp > date( "YmdHis", time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 )) {
-						$aSingleResult['someoneEditingView'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name )
-							->execute();
+
+					$iDate = wfTimestamp( TS_MW, time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
+					if ( $oEdit->se_user_name != $wgUser->getName() && $oEdit->se_timestamp > $iDate ) {
+						$aSingleResult['someoneEditingView'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name )->execute();
 					}
 				}
 
 				break;
 			case 'SaferEditSave':
-				$iSection	= empty($aData[0]['section']) ? -1 : $aData[0]['section'];
-				$sText		= empty($aData[0]['text']) ?	'' : $aData[0]['text'];
+				$iSection = empty( $aData[0]['section'] ) ? -1 : $aData[0]['section'];
+				$sText = empty( $aData[0]['text'] ) ? '' : $aData[0]['text'];
 
 				$aSingleResult['success'] = $this->saveText(
 					$sText,
