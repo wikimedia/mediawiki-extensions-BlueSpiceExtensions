@@ -117,6 +117,13 @@ class Blog extends BsExtensionMW {
 	public function onBSTopMenuBarCustomizerRegisterNavigationSites( &$aNavigationSites ) {
 		global $wgScriptPath;
 
+		// Reset all other active markers if Blog is active
+		if ( BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ) ) {
+			for ($i = 0; $i < sizeof($aNavigationSites); $i++ ) {
+				$aNavigationSites[$i]["active"] = false;
+			}
+		}
+
 		$aNavigationSites[] = array(
 			'id' => 'nt-blog',
 			'href' => wfAppendQuery( $wgScriptPath.'/index.php', array(
