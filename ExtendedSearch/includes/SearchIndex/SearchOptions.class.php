@@ -321,16 +321,16 @@ class SearchOptions {
 		$this->aOptions['scope'] = $scope;
 
 		$aSearchTitle = array(
-			'titleWord:("' . $this->aOptions['searchStringOrig'] . '")^50',
-			'titleWord:(' . $this->aOptions['searchStringOrig'] . ')^10',
-			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')^1',
-			'redirects:(' . $this->aOptions['searchStringOrig'] . ')^0.1'
+			'titleWord:("' . $this->aOptions['searchStringOrig'] . '")^2',
+			'titleWord:(' . $this->aOptions['searchStringOrig'] . ')^2',
+			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
+			'redirects:(' . $this->aOptions['searchStringOrig'] . ')'
 		);
 
 		$aSearchText = array(
 			'textWord:(' . $this->aOptions['searchStringOrig'] .')^2',
-			'textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')^0.1',
-			'sections:(' . $this->aOptions['searchStringOrig'] . ')^0.1'
+			'textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
+			'sections:(' . $this->aOptions['searchStringOrig'] . ')'
 		);
 
 		$sSearchStringTitle = implode( ' OR ', $aSearchTitle );
