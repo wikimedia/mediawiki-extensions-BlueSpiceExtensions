@@ -7,7 +7,7 @@ Ext.define('BS.PermissionManager.grid.column.PermissionCheck', {
 		var cssPrefix = Ext.baseCSSPrefix;
 		var cls = [cssPrefix + 'grid-checkcolumn'];
 
-		if (record.get('type') === 2 && dataIndex !== 'userCan_Wiki') {
+		if (record.get('type') > 1 && dataIndex !== 'userCan_Wiki') {
 			cls = [];
 			return;
 		}
