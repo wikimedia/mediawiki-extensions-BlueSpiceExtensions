@@ -36,7 +36,8 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 	},
 	saveTemplate: function() {
 		var me = this;
-		var record = Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().getLastSelected();
+		var record = Ext.getCmp('bs-template-editor-treepanel')
+						.getSelectionModel().getLastSelected();
 		var newRecord = {
 			id: record.get('id'),
 			text: record.get('text'),
@@ -71,10 +72,11 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 						me._hasChanged = true;
 
 						var dataManager = Ext.create('BS.PermissionManager.data.Manager');
-						var gridRow = dataManager.buildTemplateForGrid(newRecord);
-						dataManager.addTemplate(newRecord);
+						dataManager.setTemplate(newRecord);
 
-						Ext.data.StoreManager.lookup('bs-permissionmanager-permission-store').add(gridRow);
+						Ext.data.StoreManager
+							.lookup('bs-permissionmanager-permission-store')
+							.loadRawData(dataManager.buildPermissionData().permissions);
 
 						Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(
 							me._treeStore.getNodeById(newRecord.text)
@@ -243,21 +245,43 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				disabled: true,
 				id: 'pmTemplateEditorRemoveButton',
 				handler: function() {
+					var record = Ext.getCmp('bs-template-editor-treepanel')
+									.getSelectionModel().getLastSelected(),
+						id = record.get('id');
+
 					Ext.Ajax.request({
 						url: bs.util.getAjaxDispatcherUrl('PermissionManager::deleteTemplate'),
 						method: 'POST',
 						params: {
-							id: Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().getLastSelected().get('id')
+							id: id
 						},
 						success: function(response) {
 							var result = Ext.JSON.decode(response.responseText);
 							if (result.success === true) {
 								me.setCleanState(true);
-								me._permissionStore.sync();
-								me._hasChanged = true;
-								bs.util.alert('bs-pm-delete-tpl-success', {
-									textMsg: 'bs-permissionmanager-msgtpled-delete'
-								});
+								try {
+									record.remove(true);
+								} catch(e) {
+									// this try-catch-finally block is a bad hack
+									// because ext always throws an exception
+									// when the record is removed from the tree
+									// store. we just throw that exception away
+									// here and go directly to finally.
+								} finally {
+									me._permissionStore.sync();
+									me._hasChanged = true;
+
+									bs.util.alert('bs-pm-delete-tpl-success', {
+										textMsg: 'bs-permissionmanager-msgtpled-delete'
+									});
+
+									var dataManager = Ext.create('BS.PermissionManager.data.Manager');
+									dataManager.deleteTemplate(id);
+
+									Ext.data.StoreManager
+										.lookup('bs-permissionmanager-permission-store')
+										.loadRawData(dataManager.buildPermissionData().permissions);
+								}
 							} else {
 								bs.util.alert('bs-pm-delete-tpl-error', {
 									text: result.msg

@@ -25,7 +25,8 @@ Ext.define('BS.PermissionManager.grid.Permissions', {
 					}
 				],
 				hideGroupedHeader: true,
-				enableGroupingMenu: false
+				enableGroupingMenu: false,
+				collapsible: false
 			}];
 
 		this.columns = Ext.create('BS.PermissionManager.data.Manager').getColumns();
