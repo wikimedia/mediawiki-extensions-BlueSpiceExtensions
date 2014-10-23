@@ -499,6 +499,8 @@ class PermissionManager extends BsExtensionMW {
 		wfRunHooks('BsNamespacemanageOnSavePermission', array(&$aNamespacePermissionLockdown, &$aGroupPermissions));
 		wfRunHooks('BsPermissionManager::writeGroupSettings', array(&$aNamespacePermissionLockdown, &$aGroupPermissions));
 
+		self::backupExistingSettings();
+
 		$sSaveContent = "<?php\n";
 		foreach ($aGroupPermissions as $sGroup => $aPermissions) {
 			foreach ($aPermissions as $sPermission => $bValue) {
@@ -539,6 +541,23 @@ class PermissionManager extends BsExtensionMW {
 				// TODO SU (04.07.11 12:06): i18n
 				'msg' => 'Not able to create or write "' . BSROOTDIR . DS . 'config' . DS . 'pm-settings.php".'
 			);
+		}
+	}
+
+	/**
+	 * creates a backup of the current pm-settings.php if it exists.
+	 *
+	 * @global string $bsgPermissionManagerGroupSettingsFile
+	 */
+	protected static function backupExistingSettings() {
+		global $bsgPermissionManagerGroupSettingsFile;
+
+		if(file_exists($bsgPermissionManagerGroupSettingsFile)) {
+			$timestamp = wfTimestampNow();
+			$backupFilename = "pm-settings-backup-{$timestamp}.php";
+			$backupFile = dirname($bsgPermissionManagerGroupSettingsFile)."/{$backupFilename}";
+
+			file_put_contents($backupFile, file_get_contents($bsgPermissionManagerGroupSettingsFile));
 		}
 	}
 }

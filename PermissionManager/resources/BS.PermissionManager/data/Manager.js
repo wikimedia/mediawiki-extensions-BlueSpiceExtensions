@@ -482,8 +482,6 @@
 			success: function (response) {
 				var result = Ext.JSON.decode(response.responseText);
 				if (result.success === true) {
-					Ext.data.StoreManager.lookup('bs-permissionmanager-permission-store').sync();
-
 					caller.unmask();
 					bs.util.alert('bs-pm-save-success', {
 						textMsg: 'bs-permissionmanager-save-success'
@@ -506,6 +504,14 @@
 					mw.config.set(
 						'bsPermissionManagerPermissionLockdown',
 						Ext.Object.merge({}, permissionLockdown));
+
+					// For performance reasons we don't sync every single record
+					// in the store, anymore but just recreate the whole dataset
+					// from the current settings. This bypasses a lot of checks
+					// and prevents browser freezing.
+					Ext.data.StoreManager
+						.lookup('bs-permissionmanager-permission-store')
+						.loadRawData(buildPermissionData().permissions);
 				} else {
 					caller.unmask();
 					bs.util.alert('bs-pm-save-error', {
@@ -520,12 +526,37 @@
 	}
 
 	/**
-	 * adds a template record to the template cache
+	 * adds or changes a template record
 	 *
 	 * @param {Ext.data.Model} record
 	 */
-	function addTemplate (record) {
-		permissionTemplates.push(record);
+	function setTemplate (record) {
+		if(record.id) {
+			var length = permissionTemplates.length;
+			for(var i = 0; i < length; i++) {
+				if(permissionTemplates[i].id == record.id) {
+					permissionTemplates[i] = record;
+					break;
+				}
+			}
+		} else {
+			permissionTemplates.push(record);
+		}
+	}
+
+	/**
+	 * removes a template record
+	 *
+	 * @param {number} id
+	 */
+	function deleteTemplate(id) {
+		var length = permissionTemplates.length;
+		for(var i = 0; i < length; i++) {
+			if(permissionTemplates[i].id == id) {
+				permissionTemplates.splice(i, 1);
+				break;
+			}
+		}
 	}
 
 	/**
@@ -825,7 +856,8 @@
 					isDirty[group] = 0;
 				}
 			},
-			addTemplate: addTemplate,
+			setTemplate: setTemplate,
+			deleteTemplate: deleteTemplate,
 			buildTemplateForGrid: buildTemplateForGrid,
 			buildPermissionData: buildPermissionData,
 			checkTemplate: checkTemplate,
