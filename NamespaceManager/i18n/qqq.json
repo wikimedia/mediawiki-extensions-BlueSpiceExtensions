@@ -28,7 +28,9 @@
 	"bs-namespacemanager-labelnsname": "Label for name.\n{{Identical|Namespace name}}",
 	"bs-namespacemanager-willdelete": "Checkbox label for will be deleted",
 	"bs-namespacemanager-willmove": "Checkbox label for will be moved into the namespace NS_MAIN.\n\nRefers to {{msg-mw|Bs-ns main}}.",
-	"bs-namespacemanager-willmovesuffix": "Checkbox label for will be moved into the namespace NS_MAIN with the suffix \"{{int:bs-from-something}}\".\n\nParameters:\n* $1 - the name of the namespace which will be deleted\nRefers to:\n* {{msg-mw|Bs-ns main}}\n* {{msg-mw|Bs-from-something}}",
+	"bs-namespacemanager-willmovesuffix": "Checkbox label for will be moved into the namespace NS_MAIN with the suffix \"$1\".\n\nParameters:\n* $1 - is the BlueSpice message \"bs-from-something\" which includes the name of the namespace which will be deleted\nRefers to:\n* {{msg-mw|Bs-ns main}}",
 	"bs-namespacemanager-deletewarning": "Text for are you sure that you want to delete this namespace? Deleting a namespace cannot be undone.",
-	"bs-namespacemanager-pagepresent": "Headline for pages in this namespace:\nHeadline for checkbox section"
+	"bs-namespacemanager-pagepresent": "Headline for pages in this namespace:\nHeadline for checkbox section",
+	"bs-namespacemanager-deletens-movepages": "Text for why a page was moved into NS_MAIN. Used as reason for moving a page. \n*$1 is the name of the namespace which was deleted. \n*Refers to {{msg-mw|Bs-ns main}}",
+	"bs-namespacemanager-deletens-deletepages": "Text for why a page was deleted. Used as reason for deleting a page.\n*$1 is the name of the namespace which was deleted."
 }

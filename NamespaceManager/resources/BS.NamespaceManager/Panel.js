@@ -19,8 +19,8 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		var fieldDefs = mw.config.get('bsNamespaceManagerMetaFields');
 		var fields = [];
 		var columns = [];
-		
-		//TODO: the "fieldDefs" should contain a "config" property that allows 
+
+		//TODO: the "fieldDefs" should contain a "config" property that allows
 		//for more settings than just the few ones we process here
 		for( var i = 0; i < fieldDefs.length; i++ ) {
 			var fieldDef = fieldDefs[i];
@@ -43,7 +43,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		}
 
 		$(document).trigger('BSNamespaceManagerInitCompontent', [this, fields, columns]);
-		
+
 		this.strMain = Ext.create( 'Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
@@ -81,7 +81,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 			this.dlgNamespaceAdd.on( 'ok', this.onDlgNamespaceAddOk, this );
 		}
 
-		//TODO: not nice. Decision on wether is "add" or "edit" shold be made 
+		//TODO: not nice. Decision on wether is "add" or "edit" shold be made
 		//by the dialog depending on the provided ID. I.e. -1 for "add"
 		this.active = 'add';
 		this.dlgNamespaceAdd.setTitle( mw.message( 'bs-namespacemanager-tipadd' ).plain() );
@@ -105,9 +105,9 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var editable = selectedRow[0].get( 'editable' );
 		if ( editable === false ) {
-			bs.util.alert( 
+			bs.util.alert(
 				'NMfail',
-				{ 
+				{
 					textMsg: 'bs-namespacemanager-msgnoteditabledelete',
 					titleMsg: 'bs-extjs-title-warning'
 				}
@@ -118,7 +118,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 			this.dlgNamespaceRemove = Ext.create(
 				'BS.NamespaceManager.NamespaceRemoveDialog',
 				{
-					id:"bs-namespacemanager-remove-dlg",
+					id: "bs-namespacemanager-remove-dlg",
 					nsName: selectedRow[0].get( 'name' )
 				}
 			);
@@ -131,7 +131,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		this.callParent( arguments );
 	},
 	onDlgNamespaceAddOk: function( sender, namespace ) {
-		var additionalSettings = this.getAdditionalSettings( namespace );	
+		var additionalSettings = this.getAdditionalSettings( namespace );
 		Ext.Ajax.request( {
 			url: bs.util.getAjaxDispatcherUrl(
 				'NamespaceManager::addNamespace',
@@ -223,13 +223,13 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	},
 	renderMsgSuccess: function( responseObj ) {
 		if ( responseObj.message.length ) {
-			bs.util.alert( 
-				'UMsuc',
+			bs.util.alert(
+				'bs-nm-suc',
 				{
 					text: responseObj.message,
 					titleMsg: 'bs-extjs-title-success'
-				}, 
-				{ 
+				},
+				{
 					ok: this.reloadStore,
 					scope: this
 				}
@@ -244,25 +244,25 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 				message = message + responseObj.errors[i].message + '<br />';
 			}
 			bs.util.alert(
-				'UMfail',
-				{ 
+				'bs-nm-fail',
+				{
 					text: message,
 					titleMsg: 'bs-extjs-title-warning'
 				},
-				{ 
+				{
 					ok: this.showDlgAgain,
 					scope: this
 				}
 			);
 			return;
 		} else if ( responseObj.message.length ) {
-			bs.util.alert( 
-				'UMfail',
-				{ 
+			bs.util.alert(
+				'bs-nm-fail',
+				{
 					text: responseObj.message,
 					titleMsg: 'bs-extjs-title-warning'
 				},
-				{ 
+				{
 					ok: this.showDlgAgain,
 					scope: this
 				}

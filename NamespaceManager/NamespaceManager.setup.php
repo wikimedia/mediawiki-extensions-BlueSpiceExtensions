@@ -21,7 +21,9 @@ $wgResourceModules['ext.bluespice.namespaceManager'] = array(
 		'bs-namespacemanager-willmovesuffix',
 		'bs-namespacemanager-deletewarning',
 		'bs-namespacemanager-pagepresent',
-		'bs-namespacemanager-label-editable'
+		'bs-namespacemanager-label-editable',
+		'bs-ns_main',
+		'bs-from-something'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
