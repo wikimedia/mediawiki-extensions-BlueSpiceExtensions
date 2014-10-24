@@ -199,21 +199,23 @@ class PermissionManager extends BsExtensionMW {
 				$bSave = true;
 			}
 
-			foreach ($wgNamespacePermissionLockdown as $iNsIndex => $aNsRights) {
-				foreach ($aNsRights as $sRight => $aGroups) {
-					if (!in_array(self::$sPmLockModeGroup, $aGroups))
-						continue;
-					$key = array_search(self::$sPmLockModeGroup, $aGroups);
-					if ($key !== false) {
-						unset($wgNamespacePermissionLockdown[$iNsIndex][$sRight][$key]);
-						if (empty($wgNamespacePermissionLockdown[$iNsIndex][$sRight])) {
-							unset($wgNamespacePermissionLockdown[$iNsIndex][$sRight]);
+			if ( is_array( $wgNamespacePermissionLockdown ) ) {
+				foreach ($wgNamespacePermissionLockdown as $iNsIndex => $aNsRights) {
+					foreach ($aNsRights as $sRight => $aGroups) {
+						if (!in_array(self::$sPmLockModeGroup, $aGroups))
+							continue;
+						$key = array_search(self::$sPmLockModeGroup, $aGroups);
+						if ($key !== false) {
+							unset($wgNamespacePermissionLockdown[$iNsIndex][$sRight][$key]);
+							if (empty($wgNamespacePermissionLockdown[$iNsIndex][$sRight])) {
+								unset($wgNamespacePermissionLockdown[$iNsIndex][$sRight]);
+							}
+							$bSave = true;
 						}
-						$bSave = true;
 					}
-				}
-				if (empty($wgNamespacePermissionLockdown[$iNsIndex])) {
-					unset($wgNamespacePermissionLockdown[$iNsIndex]);
+					if (empty($wgNamespacePermissionLockdown[$iNsIndex])) {
+						unset($wgNamespacePermissionLockdown[$iNsIndex]);
+					}
 				}
 			}
 
