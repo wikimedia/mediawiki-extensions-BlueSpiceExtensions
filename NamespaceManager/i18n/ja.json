@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"SkyDaisy9"
 		]
 	},
 	"bs-namespacemanager-desc": "名前空間を追加/編集/削除する管理インターフェイス",
@@ -19,5 +20,8 @@
 	"bs-namespacemanager-tipremove": "名前空間の除去",
 	"bs-namespacemanager-msgnoteditabledelete": "この名前空間はシステム名前空間であるため削除できません。",
 	"bs-namespacemanager-labelnsname": "名前空間名",
-	"bs-namespacemanager-deletewarning": "この名前空間を本当に削除しますか? 名前空間の削除は取り消せません。"
+	"bs-namespacemanager-willmovesuffix": "接尾語$1と\"{{int:bs-ns_main}}\"の中に移動させる",
+	"bs-namespacemanager-deletewarning": "この名前空間を本当に削除しますか? 名前空間の削除は取り消せません。",
+	"bs-namespacemanager-deletens-movepages": "名前空間 \"$1\" が消去されたため、このページは名前空間$1から名前空間\"{{int:bs-ns_main}}\"へ移動しました。",
+	"bs-namespacemanager-deletens-deletepages": "名前空間\"$1\"が消去されたため、このページは消去されました。"
 }

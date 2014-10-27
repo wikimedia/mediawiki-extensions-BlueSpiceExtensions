@@ -27,7 +27,7 @@
 	"bs-namespacemanager-labelnsname": "Назва простору назв",
 	"bs-namespacemanager-willdelete": "Буде видалено",
 	"bs-namespacemanager-willmove": "Буде перейменовано на «{{int:bs-ns_main}}»",
-	"bs-namespacemanager-willmovesuffix": "Буде перейменовано на «{{int:bs-ns_main}}» із суфіксом «{{int:bs-from-something}}»",
+	"bs-namespacemanager-willmovesuffix": "Буде перейменовано на «{{int:bs-ns_main}}» із суфіксом «$1»",
 	"bs-namespacemanager-deletewarning": "Ви дійсно бажаєте видалити цей простір назв? Видалення простору назв не можна скасувати.",
 	"bs-namespacemanager-pagepresent": "Сторінки в цьому просторі назв:"
 }

@@ -26,7 +26,7 @@
 	"bs-namespacemanager-labelnsname": "名字空间名",
 	"bs-namespacemanager-willdelete": "将被删除",
 	"bs-namespacemanager-willmove": "将移动至“{{int:bs-ns_main}}”",
-	"bs-namespacemanager-willmovesuffix": "将移动至“{{int:bs-ns_main}}”带后缀“{{int:bs-from-something}}”",
+	"bs-namespacemanager-willmovesuffix": "将移动至“{{int:bs-ns_main}}”带后缀“$1”",
 	"bs-namespacemanager-deletewarning": "您确定要删除此名字空间？删除名字空间不能恢复。",
 	"bs-namespacemanager-pagepresent": "此名字空间的页面："
 }

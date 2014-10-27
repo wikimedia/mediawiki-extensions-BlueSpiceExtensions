@@ -27,7 +27,7 @@
 	"bs-namespacemanager-labelnsname": "Namnrymdsnamn",
 	"bs-namespacemanager-willdelete": "Kommer att raderas",
 	"bs-namespacemanager-willmove": "Kommer att flyttas till \"{{int:bs-ns_main}}\"",
-	"bs-namespacemanager-willmovesuffix": "Kommer att flyttas till \"{{int:bs-ns_main}}\" med suffixet \"{{int:bs-from-something}}\"",
+	"bs-namespacemanager-willmovesuffix": "Kommer att flyttas till \"{{int:bs-ns_main}}\" med suffixet \"$1\"",
 	"bs-namespacemanager-deletewarning": "Är du säker på att du vill radera denna namnrymd? Radering av en namnrymd kan inte återställas.",
 	"bs-namespacemanager-pagepresent": "Sidor i denna namnrymd:"
 }

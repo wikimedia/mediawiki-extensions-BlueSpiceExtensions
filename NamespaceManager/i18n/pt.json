@@ -22,7 +22,7 @@
 	"bs-namespacemanager-labelnsname": "Nome do domínio",
 	"bs-namespacemanager-willdelete": "Será excluído",
 	"bs-namespacemanager-willmove": "Será movido para \"{{int:bs-ns_main}}\"",
-	"bs-namespacemanager-willmovesuffix": "Será movido para  \"{{int:bs-ns_main}}\" com o sufixo \"{{int:bs-from-something}}\"",
+	"bs-namespacemanager-willmovesuffix": "Será movido para  \"{{int:bs-ns_main}}\" com o sufixo \"$1\"",
 	"bs-namespacemanager-deletewarning": "Tem certeza que deseja eliminar este domínio? A exclusão de um domínio não pode ser desfeita.",
 	"bs-namespacemanager-pagepresent": "Páginas neste domínio:"
 }

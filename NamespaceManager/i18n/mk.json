@@ -26,7 +26,9 @@
 	"bs-namespacemanager-labelnsname": "Назив на именскиот простор",
 	"bs-namespacemanager-willdelete": "Ќе биде избришан",
 	"bs-namespacemanager-willmove": "Ќе биде преместен на „{{int:bs-ns_main}}“",
-	"bs-namespacemanager-willmovesuffix": "Ќе се премести на „{{int:bs-ns_main}}“ со наставката „{{int:bs-from-something}}“",
+	"bs-namespacemanager-willmovesuffix": "Ќе се премести на „{{int:bs-ns_main}}“ со наставката „$1“",
 	"bs-namespacemanager-deletewarning": "Дали сигурно сакате да го избришете овој именски простор? Ова е неповратно.",
-	"bs-namespacemanager-pagepresent": "Страници во овој именски простор:"
+	"bs-namespacemanager-pagepresent": "Страници во овој именски простор:",
+	"bs-namespacemanager-deletens-movepages": "Страницава е преместена од именскиот простор „$1“ во именскит простор „{{int:bs-ns_main}}“ бидејќи „$1“ е избришан.",
+	"bs-namespacemanager-deletens-deletepages": "Страницава е избришана бидејќи е избришан именскиот простор „$1“."
 }

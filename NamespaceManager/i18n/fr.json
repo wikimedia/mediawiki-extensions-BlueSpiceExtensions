@@ -27,7 +27,7 @@
 	"bs-namespacemanager-labelnsname": "Nom de l’espace de noms",
 	"bs-namespacemanager-willdelete": "Sera supprimé",
 	"bs-namespacemanager-willmove": "Sera déplacé dans « {{int:bs-ns_main}} »",
-	"bs-namespacemanager-willmovesuffix": "Sera déplacé dans « {{int:bs-ns_main}} » avec le suffixe « {{int:bs-from-something}} »",
+	"bs-namespacemanager-willmovesuffix": "Sera déplacé dans « {{int:bs-ns_main}} » avec le suffixe « $1 »",
 	"bs-namespacemanager-deletewarning": "Êtes-vous sûr de vouloir supprimer cet espace de noms ? La suppression d’un espace de noms ne peut pas être annulée.",
 	"bs-namespacemanager-pagepresent": "Pages dans cet espace de noms :"
 }

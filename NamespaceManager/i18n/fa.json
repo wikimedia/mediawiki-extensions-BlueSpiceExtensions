@@ -26,7 +26,7 @@
 	"bs-namespacemanager-labelnsname": "نام فضای نام",
 	"bs-namespacemanager-willdelete": "حذف خواهد شد",
 	"bs-namespacemanager-willmove": "به «{{int:bs-ns_main}}» منتقل خواهد شد",
-	"bs-namespacemanager-willmovesuffix": "به «{{int:bs-ns_main}}» با پسوند «{{int:bs-from-something}}» منتقل خواهد شد",
+	"bs-namespacemanager-willmovesuffix": "به «{{int:bs-ns_main}}» با پسوند «$1» منتقل خواهد شد",
 	"bs-namespacemanager-deletewarning": "آیا مطئنید می‌خواهید این فضای نام را حذف کنید؟ حذف یک فضای نام قابل بازگشت نیست.",
 	"bs-namespacemanager-pagepresent": "صفحات در این فضای نام:"
 }

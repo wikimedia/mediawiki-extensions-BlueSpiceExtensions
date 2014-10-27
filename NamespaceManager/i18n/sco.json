@@ -19,7 +19,7 @@
 	"bs-namespacemanager-tipremove": "Remuiv namespace",
 	"bs-namespacemanager-labelnsname": "Namespace name",
 	"bs-namespacemanager-willdelete": "Will be delytit",
-	"bs-namespacemanager-willmovesuffix": "Will be muived intae \"{{int:bs-ns_main}}\" wi the suffeex \"{{int:bs-from-something}}\"",
+	"bs-namespacemanager-willmovesuffix": "Will be muived intae \"{{int:bs-ns_main}}\" wi the suffeex \"$1\"",
 	"bs-namespacemanager-deletewarning": "Ar ye siccar that ye want tae delyte this namespace? Delytin ae namespace canna be onduin.",
 	"bs-namespacemanager-pagepresent": "Pages in this namespace:"
 }

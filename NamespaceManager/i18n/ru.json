@@ -27,7 +27,9 @@
 	"bs-namespacemanager-labelnsname": "Название пространства имён",
 	"bs-namespacemanager-willdelete": "Будет удалено",
 	"bs-namespacemanager-willmove": "Будет переименовано в «{{int:bs-ns_main}}».",
-	"bs-namespacemanager-willmovesuffix": "Будет переименовано в «{{int:bs-ns_main}}» с суффиксом «{{int:bs-from-something}}».",
+	"bs-namespacemanager-willmovesuffix": "Будет переименовано в «{{int:bs-ns_main}}» с суффиксом «$1».",
 	"bs-namespacemanager-deletewarning": "Вы уверены, что хотите удалить это пространство имён? Удаление пространства имён необратимо.",
-	"bs-namespacemanager-pagepresent": "Страницы в этом пространстве имён:"
+	"bs-namespacemanager-pagepresent": "Страницы в этом пространстве имён:",
+	"bs-namespacemanager-deletens-movepages": "Эта страница была перемещена из пространства имён «$1» в «{{int:bs-ns_main}}», поскольку пространство имён «$1» было удалено.",
+	"bs-namespacemanager-deletens-deletepages": "Эта страница была удалена, поскольку было удалено пространство имён «$1»."
 }

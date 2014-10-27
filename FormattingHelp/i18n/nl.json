@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
 	"bs-formattinghelp-help-syntax": "Syntax",
@@ -15,9 +16,9 @@
 	"bs-formattinghelp-help-ul": "Ongeordende lijst",
 	"bs-formattinghelp-help-numberedlist": "Genummerde lijst",
 	"bs-formattinghelp-help-link": "Interne koppeling",
-	"bs-formattinghelp-help-link-alt": "Interne link met alternatieve tekst",
+	"bs-formattinghelp-help-link-alt": "Interne koppeling met alternatieve tekst",
 	"bs-formattinghelp-help-caption": "Bijschrift",
-	"bs-formattinghelp-help-extlink": "Externe link",
+	"bs-formattinghelp-help-extlink": "Externe koppeling",
 	"bs-formattinghelp-help-hr": "Horizontale lijn",
 	"bs-formattinghelp-help-template": "Sjabloon",
 	"bs-formattinghelp-help-templatename": "Sjabloonnaam"
