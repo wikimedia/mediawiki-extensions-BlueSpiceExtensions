@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-permissionmanager-desc": "Адміністративний інтерфейс для редагування прав користувача",
+	"prefs-permissionmanager": "Менеджер дозволів",
+	"bs-permissionmanager-label": "Менеджер дозволів",
+	"bs-permissionmanager-grouping-global": "Дозволи, не залежні від простору назв",
+	"bs-permissionmanager-grouping-local": "Дозволи, залежні від простору назв",
+	"bs-permissionmanager-btn-group-label": "Група:",
+	"bs-permissionmanager-header-permissions": "Дозволи",
+	"bs-permissionmanager-header-global": "Вікі",
+	"bs-permissionmanager-header-namespaces": "Простори назв",
+	"bs-permissionmanager-header-group": "Група",
+	"bs-permissionmanager-btn-save-label": "Зберегти",
+	"bs-permissionmanager-btn-save-in-progress-label": "Збереження...",
+	"bs-permissionmanager-save-success": "Дозволи збережено.",
+	"bs-permissionmanager-labeltemplates": "Шаблони",
+	"bs-permissionmanager-btn-template-editor": "Редагувати шаблони",
+	"bs-permissionmanager-labeltpled": "Редактор шаблонів",
+	"bs-permissionmanager-labeltpled-desc": "Опис",
+	"bs-permissionmanager-labeltpled-active": "Активний",
+	"bs-permissionmanager-labeltpled-add": "Новий",
+	"bs-permissionmanager-labeltpled-edit": "Редагувати",
+	"bs-permissionmanager-labeltpled-delete": "Видалити",
+	"bs-permissionmanager-labeltpled-cancel": "Скасувати",
+	"bs-permissionmanager-msgtpled-success": "Шаблон збережено.",
+	"bs-permissionmanager-msgtpled-savefailure": "Не вдалося зберегти шаблон.",
+	"bs-permissionmanager-msgtpled-saveonabort": "Ви хочете зберегти зараз усі дані?",
+	"bs-permissionmanager-msgtpled-new": "Назва шаблону:",
+	"bs-permissionmanager-msgtpled-edit": "Нова назва шаблону:",
+	"bs-permissionmanager-msgtpled-delete": "Шаблон видалено.",
+	"bs-permissionmanager-msgtpled-deletefail": "Не вдалося видалити шаблон.",
+	"bs-permissionmanager-titletpled-new": "Створити шаблон",
+	"bs-permissionmanager-titletpled-edit": "Перейменувати шаблон",
+	"bs-permissionmanager-titletpled-delete": "Видалити шаблон",
+	"bs-permissionmanager-pref-lockmode": "Активувати lockmode",
+	"bs-permissionmanager-pref-skipsysns": "Пропустити системні простори назв, якщо активний lockmode",
+	"bs-permissionmanager-pref-enablerealitycheck": "Активувати перевірку дозволів"
+}

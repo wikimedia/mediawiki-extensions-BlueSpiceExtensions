@@ -2,18 +2,18 @@
 
 BsExtensionManager::registerExtension('PermissionManager', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['PermissionManager'] = __DIR__ . '/PermissionManager.i18n.php';
+$wgMessagesDirs['PermissionManager'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['PermissionManager'] = __DIR__ . '/languages/PermissionManager.i18n.php';
 
 $wgResourceModules['ext.bluespice.permissionManager'] = array(
 	'scripts' => array(
-		//'extensions/BlueSpiceExtensions/PermissionManager/resources/patch/deepEquals.js',
-		//'extensions/BlueSpiceExtensions/PermissionManager/resources/patch/ColumnSetterGetter.js',
-		//'extensions/BlueSpiceExtensions/PermissionManager/resources/patch/JsonPath.js',
 		'extensions/BlueSpiceExtensions/PermissionManager/resources/bluespice.permissionManager.js'
 	),
 	'styles' => 'extensions/BlueSpiceExtensions/PermissionManager/resources/bluespice.permissionManager.css',
 	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
+		'htmlform-reset',
 		'bs-permissionmanager-header-permissions',
 		'bs-permissionmanager-header-global',
 		'bs-permissionmanager-header-namespaces',
@@ -21,37 +21,38 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 		'bs-permissionmanager-btn-group-label',
 		'bs-permissionmanager-btn-save-label',
 		'bs-permissionmanager-btn-save-in-progress-label',
-		'bs-permissionmanager-btn-save-success',
+		'bs-permissionmanager-save-success',
 		'bs-permissionmanager-btn-template-editor',
-		'bs-permissionmanager-labelTemplateEditor',
-		'bs-permissionmanager-labelTemplateEditor-description',
-		'bs-permissionmanager-labelTemplateEditor-active',
-		'bs-permissionmanager-labelTemplateEditor-permissions',
-		'bs-permissionmanager-labelTemplates',
-		'bs-permissionmanager-template-editor-labelAdd',
-		'bs-permissionmanager-template-editor-labelEdit',
-		'bs-permissionmanager-template-editor-labelDelete',
-		'bs-permissionmanager-template-editor-labelSave',
-		'bs-permissionmanager-template-editor-labelCancel',
-		'bs-permissionmanager-template-editor-save-success',
-		'bs-permissionmanager-template-editor-saveOrAbort',
-		'bs-permissionmanager-template-editor-msgNew',
-		'bs-permissionmanager-template-editor-msgEdit',
-		'bs-permissionmanager-template-editor-delete-success' => 'Template successfully deleted',
+		'bs-permissionmanager-labeltpled',
+		'bs-permissionmanager-labeltpled-desc',
+		'bs-permissionmanager-labeltpled-active',
+		'bs-permissionmanager-labeltpled-permissions',
+		'bs-permissionmanager-labeltemplates',
+		'bs-permissionmanager-labeltpled-add',
+		'bs-permissionmanager-labeltpled-edit',
+		'bs-permissionmanager-labeltpled-delete',
+		'bs-permissionmanager-labeltpled-save',
+		'bs-permissionmanager-labeltpled-cancel',
+		'bs-permissionmanager-msgtpled-success',
+		'bs-permissionmanager-msgtpled-saveonabort',
+		'bs-permissionmanager-msgtpled-new',
+		'bs-permissionmanager-msgtpled-edit',
+		'bs-permissionmanager-msgtpled-delete',
+		'bs-permissionmanager-titletpled-new',
+		'bs-permissionmanager-titletpled-edit',
+		'bs-permissionmanager-titletpled-delete',
+		'bs-PermissionManager-unsaved-changes'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$GLOBALS['wgAutoloadClasses']['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
+$wgAutoloadClasses['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
 $wgAutoloadClasses['PermissionTemplates'] = __DIR__ . '/includes/PermissionTemplates.class.php';
-$wgAutoloadClasses['PMCheckUser'] = __DIR__ . '/includes/PMCheckUser.class.php';
 
-$wgAjaxExportList[] = 'PermissionManager::getAccessRules';
-$wgAjaxExportList[] = 'PermissionManager::getGroupAccessData';
-$wgAjaxExportList[] = 'PermissionManager::setAccessRules';
 $wgAjaxExportList[] = 'PermissionManager::setTemplateData';
 $wgAjaxExportList[] = 'PermissionManager::deleteTemplate';
+$wgAjaxExportList[] = 'PermissionManager::savePermissions';
 
 $wgExtensionFunctions[] = 'PermissionManager::setupLockmodePermissions';
 
@@ -59,6 +60,10 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'PermissionManager::getSchemaUpdates'
 
 if( !isset( $bsgPermissionManagerDefaultTemplates ) ) {
 	$bsgPermissionManagerDefaultTemplates = array();
+}
+
+if( !isset( $bsgPermissionManagerGroupSettingsFile ) ) {
+	$bsgPermissionManagerGroupSettingsFile = BSROOTDIR . DS . 'config' . DS . 'pm-settings.php';
 }
 
 $bsgPermissionManagerDefaultTemplates = array(

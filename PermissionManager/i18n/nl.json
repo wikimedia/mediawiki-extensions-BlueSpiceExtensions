@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-permissionmanager-btn-group-label": "Groep:",
+	"bs-permissionmanager-header-namespaces": "Naamruimten",
+	"bs-permissionmanager-header-group": "Groep",
+	"bs-permissionmanager-btn-save-label": "Opslaan",
+	"bs-permissionmanager-labeltpled-add": "Nieuw",
+	"bs-permissionmanager-labeltpled-cancel": "Annuleren"
+}
