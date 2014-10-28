@@ -25,7 +25,7 @@
 	"bs-shoutbox-archive-failure": "Произошла ошибка при попытке удалить запись. Пожалуйста, попробуйте ещё раз.",
 	"bs-shoutbox-archive-failure-user": "Записи могут быть удалены только их автором.",
 	"bs-shoutbox-switch-description": "Скрывает мини-чат на этой странице.",
-	"bs-shoutbox-charactersleft": "$1 символов{{PLURAL:$1||ов|а}} осталось",
+	"bs-shoutbox-charactersleft": "$1 символов{{PLURAL:$1||а|ов}} осталось",
 	"bs-shoutbox-confirm-text": "Вы действительно хотите удалить эту запись?",
 	"bs-shoutbox-confirm-title": "Подтвердить",
 	"bs-shoutbox-entermessage": "Пожалуйста, введите сообщение.",

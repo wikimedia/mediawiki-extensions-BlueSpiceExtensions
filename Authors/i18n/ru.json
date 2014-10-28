@@ -8,7 +8,7 @@
 	},
 	"bs-authors-desc": "Выводит картинку профиля для авторов страницы",
 	"prefs-authors": "Авторы этой страницы",
-	"bs-authors-title": "{{GENDER:$2|Автор{{PLURAL:$1||ов|а}}}}",
+	"bs-authors-title": "{{GENDER:$2|Автор{{PLURAL:$1||а|ов}}}}",
 	"bs-authors-profileimage": "Изображение в профиле",
 	"bs-authors-profileimage-change": "Изменить изображение в профиле",
 	"bs-authors-show-all-authors": "Есть и другие авторы",
