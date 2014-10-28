@@ -185,7 +185,7 @@ class SearchOptions {
 		);
 
 		$aOptions = array();
-		$aOptions['searchString'] = 'titleEdge:('.$sSolrSearchString.') OR titleWord:("'.$sSolrSearchString.'")';
+		$aOptions['searchString'] = 'titleEdge:('.$sSolrSearchString.') OR title:('.$sSolrSearchString.')';
 		$aOptions['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 
 		$aSolrAutocompleteQuery = array(
@@ -321,7 +321,7 @@ class SearchOptions {
 		$this->aOptions['scope'] = $scope;
 
 		$aSearchTitle = array(
-			'titleWord:("' . $this->aOptions['searchStringOrig'] . '")^2',
+			'title:(' . $this->aOptions['searchStringOrig'] . ')^2',
 			'titleWord:(' . $this->aOptions['searchStringOrig'] . ')^2',
 			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
 			'redirects:(' . $this->aOptions['searchStringOrig'] . ')'
