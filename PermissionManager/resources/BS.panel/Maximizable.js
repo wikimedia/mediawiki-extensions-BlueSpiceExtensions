@@ -4,11 +4,23 @@ Ext.define('BS.panel.Maximizable', {
 	shadow: false,
 	closable: false,
 	border: false,
+
 	oldX: 0,
 	oldY: 0,
+	bsRenderToTarget: null,
+
+	constructor: function( cfg ) {
+		this.bsRenderToTarget = Ext.get(cfg.renderTo);
+
+		cfg.height = cfg.height || this.bsRenderToTarget.getHeight();
+		cfg.width = cfg.width || this.bsRenderToTarget.getWidth();
+
+		cfg.renderTo = Ext.getBody();
+
+		this.callParent( arguments );
+	},
+
 	initComponent: function() {
-		this.height = Ext.get(this.renderTo).getHeight();
-		this.width = Ext.get(this.renderTo).getWidth();
 		this.maximizeTool = new Ext.panel.Tool({
 			type: 'maximize'
 		});
@@ -26,26 +38,29 @@ Ext.define('BS.panel.Maximizable', {
 		];
 
 		this.on('afterrender', this.onAfterRender, this);
+		Ext.get(window).on('resize', this.onWindowResize, this);
 
 		this.callParent(arguments);
 	},
 	onAfterRender: function(sender, eOpts) {
-		this.showAt(sender.container.getXY());
+		this.showAt(this.bsRenderToTarget.getXY());
 	},
 	onMaximizeToolClick: function() {
-		Ext.get(this.renderTo).addCls('fullscreen');
+		$('html').addClass('bs-maximizable-panel-fullscreen');
+		this.bsRenderToTarget.addCls('fullscreen');
 		this.updateSize();
 		this.maximizeTool.setVisible(false);
 		this.minimizeTool.setVisible(true);
-		this.showAt(Ext.get(this.renderTo).getXY());
+		this.showAt(this.bsRenderToTarget.getXY());
+
 	},
 	onMinimizeToolClick: function() {
-		Ext.get(this.renderTo).removeCls('fullscreen');
-
+		$('html').removeClass('bs-maximizable-panel-fullscreen');
+		this.bsRenderToTarget.removeCls('fullscreen');
 		this.updateSize();
 		this.maximizeTool.setVisible(true);
 		this.minimizeTool.setVisible(false);
-		this.showAt(Ext.get(this.renderTo).getXY());
+		this.showAt(this.bsRenderToTarget.getXY());
 	},
 	firstCall: true,
 	showAt: function(x, y) {
@@ -57,7 +72,12 @@ Ext.define('BS.panel.Maximizable', {
 		this.callParent(arguments);
 	},
 	updateSize: function() {
-		this.setHeight(Ext.get(this.renderTo).getHeight());
-		this.setWidth(Ext.get(this.renderTo).getWidth());
+		this.setHeight(this.bsRenderToTarget.getHeight());
+		this.setWidth(this.bsRenderToTarget.getWidth());
+	},
+	onWindowResize: function( event, target, eOpts ) {
+		this.setX( this.bsRenderToTarget.getX() );
+		this.setY( this.bsRenderToTarget.getY() );
+		this.updateSize();
 	}
 });
