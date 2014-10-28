@@ -41,7 +41,7 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 		'bs-permissionmanager-titletpled-new',
 		'bs-permissionmanager-titletpled-edit',
 		'bs-permissionmanager-titletpled-delete',
-		'bs-PermissionManager-unsaved-changes'
+		'bs-permissionmanager-unsaved-changes'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']

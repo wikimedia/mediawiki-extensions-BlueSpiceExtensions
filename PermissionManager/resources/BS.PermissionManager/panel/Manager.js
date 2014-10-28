@@ -15,13 +15,14 @@ Ext.define( 'BS.PermissionManager.panel.Manager', {
 		$(window).bind( 'beforeunload', function() {
 			var dataManager = Ext.create('BS.PermissionManager.data.Manager');
 			if(dataManager.isDirty()) {
+				var msg = mw.message('bs-permissionmanager-unsaved-changes').plain();
 				if(/chrome/.test(navigator.userAgent.toLowerCase())) { //chrome compatibility
-					return mw.message('bs-PermissionManager-unsaved-changes').plain();
+					return msg;
 				}
 				if(window.event) {
-					window.event.returnValue = mw.message('bs-PermissionManager-unsaved-changes').plain();
+					window.event.returnValue = msg;
 				} else {
-					return mw.message('bs-PermissionManager-unsaved-changes').plain();
+					return msg;
 				}
 			}
 		});

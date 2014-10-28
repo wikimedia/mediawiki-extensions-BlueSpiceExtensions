@@ -39,5 +39,6 @@
 	"bs-permissionmanager-titletpled-delete": "Vorlage löschen",
 	"bs-permissionmanager-pref-lockmode": "Lockmode aktivieren",
 	"bs-permissionmanager-pref-skipsysns": "Systemnamensräume bei eingschaltetem Lockmode ignorieren",
-	"bs-permissionmanager-pref-enablerealitycheck": "Rechteprüfung aktivieren"
+	"bs-permissionmanager-pref-enablerealitycheck": "Rechteprüfung aktivieren",
+	"bs-permissionmanager-unsaved-changes": "Es existieren ungespeicherte Änderungen. Willst du die Seite wirklich verlassen? Die ungespeicherten Änderungen gehen in diesem Fall verloren"
 }
