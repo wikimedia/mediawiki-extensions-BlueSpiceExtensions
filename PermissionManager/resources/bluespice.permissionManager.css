@@ -38,3 +38,8 @@
 	font-weight: bold;
 	border-left-color: #fff;
 }
+
+/* Part of BS.panel.Maximizable */
+html.bs-maximizable-panel-fullscreen {
+	overflow: hidden;
+}
