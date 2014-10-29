@@ -292,7 +292,10 @@ class Apache_Solr_Service
 
 		if ($response->getHttpStatus() != 200)
 		{
-			throw new Exception('"' . $response->getHttpStatus() . '" Status: ' . $response->getHttpStatusMessage(), $response->getHttpStatus());
+			throw new Exception(
+				'"' . $response->getHttpStatus() .'" Status: ' . $response->getHttpStatusMessage() . ' URL: ' . urldecode( $url ),
+				$response->getHttpStatus()
+			);
 		}
 
 		return $response;

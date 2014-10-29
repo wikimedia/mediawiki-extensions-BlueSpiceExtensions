@@ -290,15 +290,21 @@ class SearchOptions {
 	 * Processes incoming search request
 	 */
 	public function readInSearchRequest() {
-		global $wgCanonicalNamespaceNames, $wgExtraNamespaces;
+		global $wgCanonicalNamespaceNames, $wgExtraNamespaces, $wgContentNamespaces;
 		$this->aOptions['searchStringRaw'] = $this->oSearchRequest->sInput;
 		$this->aOptions['searchStringOrig'] = ExtendedSearchBase::preprocessSearchInput( $this->oSearchRequest->sInput );
 
 		self::$searchStringRaw = $this->aOptions['searchStringRaw'];
 
 		$sCustomerId = $this->getCustomerId();
-
+		$sLogOp = ' OR ';
 		$aFq = array();
+		$aBq = array();
+
+		$scope = ( BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' )
+			? 'title'
+			: 'text';
+		$this->aOptions['scope'] = $scope;
 
 		$vNamespace = $this->checkSearchstringForNamespace(
 			$this->aOptions['searchStringRaw'],
@@ -309,12 +315,6 @@ class SearchOptions {
 
 		$this->aOptions['searchStringWildcarded'] = SearchService::wildcardSearchstring( $this->aOptions['searchStringOrig'] );
 		$this->aOptions['searchStringForStatistics'] = $this->aOptions['searchStringWildcarded'];
-		$this->aOptions['bExtendedForm'] = $this->oSearchRequest->bExtendedForm;
-
-		$scope = ( BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' )
-			? 'title'
-			: 'text';
-		$this->aOptions['scope'] = $scope;
 
 		$aSearchTitle = array(
 			'title:(' . $this->aOptions['searchStringOrig'] . ')^2',
@@ -328,20 +328,20 @@ class SearchOptions {
 			'sections:(' . $this->aOptions['searchStringOrig'] . ')'
 		);
 
-		$sSearchStringTitle = implode( ' OR ', $aSearchTitle );
-		$sSearchStringText = implode( ' OR ', $aSearchText );
+		$sSearchStringTitle = implode( $sLogOp, $aSearchTitle );
+		$sSearchStringText = implode( $sLogOp, $aSearchText );
 
 		$this->aOptions['searchStringFinal'] = ( $this->aOptions['scope'] === 'title' )
 			? $sSearchStringTitle
-			: $sSearchStringTitle . ' OR ' . $sSearchStringText;
-
-		// $this->aOptions['namespaces'] HAS TO BE an array with numeric indices of type string!
-		$this->aOptions['namespaces'] = $this->oSearchRequest->aNamespaces;
+			: $sSearchStringTitle . $sLogOp . $sSearchStringText;
 
 		// filter query
 		$aFq[] = 'redirect:0';
 		$aFq[] = 'special:0';
 		$aFq[] = 'wiki:('.$sCustomerId.')';
+
+		// $this->aOptions['namespaces'] HAS TO BE an array with numeric indices of type string!
+		$this->aOptions['namespaces'] = $this->oSearchRequest->aNamespaces;
 
 		$aNamespaces = array_slice( $wgCanonicalNamespaceNames, 2 );
 		$aNamespaces = $aNamespaces + $wgExtraNamespaces;
@@ -434,35 +434,28 @@ class SearchOptions {
 
 		// $this->aOptions['cats'] = $this->oSearchRequest->sCat; // string, defaults to '' if 'search_cat' not set in REQUEST
 		$this->aOptions['cats'] = $this->oSearchRequest->sCategories; // array of strings or empty array
-
-		$sOperator = ' OR ';
 		if ( !empty( $this->aOptions['cats'] ) ) {
 			if ( isset( $this->oSearchRequest->sOperator ) ) {
 				switch ( $this->oSearchRequest->sOperator ) {
 					case 'AND':
-						$sOperator = ' AND ';
-						break;
-					case 'OR':
-						$sOperator = ' OR ';
+						$sLogOp = ' AND ';
 						break;
 					default:
 				}
 			}
 			$sFqCategories = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ca}' : '';
-			$sFqCategories .= 'cat:("' . implode( '"' . $sOperator . '"', $this->aOptions['cats'] ) . '")';
+			$sFqCategories .= 'cat:("' . implode( '"' . $sLogOp . '"', $this->aOptions['cats'] ) . '")';
 			$aFq[] = $sFqCategories;
 		}
 
 		$this->aOptions['type'] = $this->oSearchRequest->aType;
-
 		if ( !empty( $this->aOptions['type'] ) ) {
 			$sFqType = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ty}' : '';
-			$sFqType .= 'type:(' . implode( ' OR ', $this->aOptions['type'] ) . ')';
+			$sFqType .= 'type:("' . implode( '"' . $sLogOp . '"', $this->aOptions['type'] ) . '")';
 			$aFq[] = $sFqType;
 		}
 
 		$this->aOptions['editor'] = $this->oSearchRequest->sEditor;
-
 		if ( !empty( $this->aOptions['editor'] ) ) {
 			// there may be spaces in name of editor. solr analyses those to two
 			// terms (editor's names) thus we wrap the name into quotation marks
@@ -470,9 +463,16 @@ class SearchOptions {
 			//       at whitespace
 			// but: +editor:("Robert V" "Mathias S") is already split correctly!
 			$sFqEditor = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ed}' : '';
-			$sFqEditor .= 'editor:("' . implode( '"' . $sOperator . '"', $this->aOptions['editor'] ) . '")';
+			$sFqEditor .= 'editor:("' . implode( '"' . $sLogOp . '"', $this->aOptions['editor'] ) . '")';
 			$aFq[] = $sFqEditor;
 		}
+
+		// Boost query
+		foreach ( $wgContentNamespaces as $iNs ) {
+			$aBq[] = "namespace:{$iNs}^2";
+		}
+		// We want that files are also seen as a content namespace
+		$aBq[] = "namespace:999^2";
 
 		$searchLimit = BsConfig::get( 'MW::ExtendedSearch::LimitResults' );
 
@@ -482,13 +482,16 @@ class SearchOptions {
 		$this->aOptions['searchLimit'] = ( $searchLimit == 0 ) ? 15 : $searchLimit;
 		$this->aOptions['titleExists'] = $this->titleExists( $this->oSearchRequest->sInput );
 		$this->aOptions['format'] = $this->oSearchRequest->sFormat;
+		$this->aOptions['bExtendedForm'] = $this->oSearchRequest->bExtendedForm;
 
+		$this->aSearchOptions['defType'] = 'edismax';
 		$this->aSearchOptions['fl'] = 'uid,type,title,path,namespace,cat,ts,redirects,overall_type';
 		$this->aSearchOptions['fq'] = $aFq;
 		$this->aSearchOptions['sort'] = $this->aOptions['order'] . ' ' . $this->aOptions['asc'];
 		$this->aSearchOptions['hl'] = 'on';
 		$this->aSearchOptions['hl.fl'] = 'titleWord, titleReverse, sections, textWord, textReverse';
 		$this->aSearchOptions['hl.snippets'] = BsConfig::get( 'MW::ExtendedSearch::HighlightSnippets' );
+		$this->aSearchOptions['bq'] = implode( ' ', $aBq );
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) {
 			$this->aSearchOptions['facet'] = 'on';
