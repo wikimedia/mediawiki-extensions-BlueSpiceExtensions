@@ -4,7 +4,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @package    Bluespice_Extensions
+ * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
@@ -49,7 +49,7 @@ Ext.define( 'BS.Statistics.Chart', {
 			type: 'Category',
 			position: 'bottom',
 			fields: ['name'],
-			title: 'Bluespice'
+			title: 'BlueSpice'
 		});
 
 		this.series.push({

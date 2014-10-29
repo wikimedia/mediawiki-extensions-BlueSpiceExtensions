@@ -38,7 +38,8 @@ $wgResourceModules['ext.bluespice.statistics'] = array(
 		'bs-statistics-month',
 		'bs-statistics-week',
 		'bs-statistics-day',
-		'bs-statistics-label-count'
+		'bs-statistics-label-count',
+		'bs-statistics-label-time',
 	)
 ) + $aResourceModuleTemplate;
 
@@ -52,6 +53,7 @@ $wgResourceModules['ext.bluespice.statisticsPortlets'] = array(
 		'bs-statistics-portletconfig-periodday',
 		'bs-statistics-week',
 		'bs-statistics-month',
+		'bs-statistics-label-time',
 	)
 ) + $aResourceModuleTemplate;
 

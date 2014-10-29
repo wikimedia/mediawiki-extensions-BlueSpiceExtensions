@@ -3,7 +3,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @package    Bluespice_Extensions
+ * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
