@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Linforest"
 		]
 	},
 	"bs-permissionmanager-desc": "用于编辑用户权限的管理界面",
@@ -38,5 +39,6 @@
 	"bs-permissionmanager-titletpled-delete": "删除模板",
 	"bs-permissionmanager-pref-lockmode": "激活 lockmode",
 	"bs-permissionmanager-pref-skipsysns": "如果lockmode被激活则跳过系统名字空间",
-	"bs-permissionmanager-pref-enablerealitycheck": "激活权限检查"
+	"bs-permissionmanager-pref-enablerealitycheck": "激活权限检查",
+	"bs-permissionmanager-unsaved-changes": "存在尚未保存的更改。你确实想要现在离开此页面吗？这样将会丢失尚未保存的更改。"
 }

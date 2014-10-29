@@ -39,5 +39,6 @@
 	"bs-permissionmanager-titletpled-delete": "Удалить шаблон",
 	"bs-permissionmanager-pref-lockmode": "Активировать закрытый режим",
 	"bs-permissionmanager-pref-skipsysns": "Пропустить системные пространства имён, если включён закрытый режим",
-	"bs-permissionmanager-pref-enablerealitycheck": "Активировать проверку разрешений"
+	"bs-permissionmanager-pref-enablerealitycheck": "Активировать проверку разрешений",
+	"bs-permissionmanager-unsaved-changes": "Имеются несохранённые изменения. Вы действительно хотите покинуть страницу? Эти несохранённые изменения будут потеряны."
 }

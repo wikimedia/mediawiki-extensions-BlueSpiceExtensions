@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"SkyDaisy9"
 		]
 	},
 	"bs-permissionmanager-desc": "利用者権限を編集するための管理インターフェイス",
@@ -29,5 +30,6 @@
 	"bs-permissionmanager-titletpled-new": "テンプレートの作成",
 	"bs-permissionmanager-titletpled-edit": "テンプレート名の変更",
 	"bs-permissionmanager-titletpled-delete": "テンプレートの削除",
-	"bs-permissionmanager-pref-enablerealitycheck": "アクセス許可の確認を有効にする"
+	"bs-permissionmanager-pref-enablerealitycheck": "アクセス許可の確認を有効にする",
+	"bs-permissionmanager-unsaved-changes": "まだ保存されていない変更があります。このままページを閉じても本当によいですか。そうすると未保存の変更は失われます。"
 }

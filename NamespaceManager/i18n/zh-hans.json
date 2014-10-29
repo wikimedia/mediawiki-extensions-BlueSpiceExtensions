@@ -28,5 +28,7 @@
 	"bs-namespacemanager-willmove": "将移动至“{{int:bs-ns_main}}”",
 	"bs-namespacemanager-willmovesuffix": "将移动至“{{int:bs-ns_main}}”带后缀“$1”",
 	"bs-namespacemanager-deletewarning": "您确定要删除此名字空间？删除名字空间不能恢复。",
-	"bs-namespacemanager-pagepresent": "此名字空间的页面："
+	"bs-namespacemanager-pagepresent": "此名字空间的页面：",
+	"bs-namespacemanager-deletens-movepages": "此页面已从名字空间“$1”移动至“{{int:bs-ns_main}}”，因为名字空间“$1”已被删除。",
+	"bs-namespacemanager-deletens-deletepages": "此页面删除，因为名字空间“$1”已被删除。"
 }
