@@ -212,16 +212,14 @@ class UserSidebar extends BsExtensionMW {
 		$oUser = $sktemplate->getUser();
 		$oCurrentTitle = $sktemplate->getTitle();
 		$sEditLink = '';
-		if( $sktemplate->getUser()->isLoggedIn() === false ) {
+		if ( $oUser->isLoggedIn() === false ) {
 			$this->getDefaultWidgets( $aViews, $oUser, $oCurrentTitle );
-		}
-		else {
+		} else {
 			$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Sidebar' );
 
-			$sEditLinkText = wfMessage('bs-widget-edit')->text();
 			$sEditLink = Linker::link(
 				$oTitle,
-				Html::element( 'span', array(), $sEditLinkText ),
+				'',
 				array(
 					'id' => 'bs-usersidebar-edit',
 					'class' => 'icon-pencil'
@@ -232,12 +230,11 @@ class UserSidebar extends BsExtensionMW {
 				)
 			);
 
-			if( $oTitle->exists() === false ) {
+			if ( $oTitle->exists() === false ) {
 				$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
-			}
-			else {
+			}else {
 				$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
-				if( empty($aWidgets) ) {
+				if ( empty($aWidgets) ) {
 					$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
 				}
 
@@ -246,14 +243,13 @@ class UserSidebar extends BsExtensionMW {
 		}
 		$aOut = array();
 		$aOut[] = $sEditLink;
-		foreach( $aViews as $oView ) {
-			if( $oView instanceof ViewBaseElement ) {
+		foreach ( $aViews as $oView ) {
+			if ( $oView instanceof ViewBaseElement ) {
 				$aOut[] = $oView->execute();
 			}
 		}
 
-		global $wgDefaultSkin;
-		if ( $wgDefaultSkin == "bluespiceskin" ) {
+		if ( $sktemplate instanceof BsBaseTemplate ) {
 			$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
 				'position' => 20,
 				'label' => wfMessage( 'bs-tab_focus' )->plain(),

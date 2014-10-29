@@ -193,19 +193,19 @@ class WikiAdmin extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public static function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if( $sktemplate->getUser()->isAllowed('wikiadmin') === false ) {
+		if( $sktemplate->getUser()->isAllowed( 'wikiadmin' ) === false ) {
 			return true;
 		}
 
-		$oSpecialPage = SpecialPage::getTitleFor('WikiAdmin');
+		$oSpecialPage = SpecialPage::getTitleFor( 'WikiAdmin' );
 		$aRegisteredModules = WikiAdmin::getRegisteredModules();
 
+		$aOutSortable = array();
 		$aOut = array();
 		$aOut[] = '<ul>';
 
-		$aOutSortable = array();
 		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
-			$skeyLower = mb_strtolower($sModuleKey);
+			$skeyLower = mb_strtolower( $sModuleKey );
 			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
 			$sUrl = $oSpecialPage->getLocalURL( array( 'mode' => $sModuleKey ) );
 			//$sUrl = str_replace( '&', '&amp;', $sUrl );
@@ -221,12 +221,11 @@ class WikiAdmin extends BsExtensionMW {
 			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
 		}
 
-		ksort($aOutSortable);
-		$aOut[] = implode("\n", $aOutSortable).'</ul>';
+		ksort( $aOutSortable );
+		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
 		$aOut[] = '</ul>';
 
-		global $wgDefaultSkin;
-		if ( $wgDefaultSkin == "bluespiceskin" ) {
+		if ( $sktemplate instanceof BsBaseTemplate ) {
 			$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
 				'position' => 100,
 				'label' => wfMessage( 'bs-tab_admin' )->plain(),
