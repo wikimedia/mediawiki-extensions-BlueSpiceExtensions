@@ -372,6 +372,8 @@ class BsSearchResult {
 			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
 		);
 
+		$oParser = new Parser();
+
 		foreach ( $this->oResponse->response->docs as $oDocument ) {
 			//Show Page Title and link it
 			$sLinkIcon = $aImageLinks['default'];
@@ -421,7 +423,6 @@ class BsSearchResult {
 					);
 
 					if ( isset( $this->oResponse->highlighting->{$oDocument->uid}->sections ) ) {
-						$oParser = new Parser();
 						$sSection = strip_tags( $this->oResponse->highlighting->{$oDocument->uid}->sections[0], '<em>' );
 						$sSectionAnchor = $oParser->guessSectionNameFromWikiText( $sSection );
 						$sSectionLink = BsLinkProvider::makeLink( $oTitle, $sSection, array(), array(), array( 'known' ) );
@@ -434,7 +435,8 @@ class BsSearchResult {
 							$sSectionLink = str_replace( $aMatches[1], $sAnchor, $sSectionLink );
 						}
 
-						$sSearchLink .= ' <span class="bs-extendedsearch-sectionresult">('. wfMessage( 'bs-extendedsearch-section' )->plain() . $sSectionLink . ')</span>';
+						$sSearchLink .= ' <span class="bs-extendedsearch-sectionresult">('.
+							wfMessage( 'bs-extendedsearch-section' )->plain() . ' ' . $sSectionLink . ')</span>';
 					}
 				} elseif ( $this->oContext->getUser()->isAllowed( 'searchfiles' ) ) {
 					$sLinkIcon = ( isset( $aImageLinks[$oDocument->type] ) )

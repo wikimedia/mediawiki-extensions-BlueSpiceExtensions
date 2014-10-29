@@ -290,6 +290,7 @@ class SearchOptions {
 	 * Processes incoming search request
 	 */
 	public function readInSearchRequest() {
+		global $wgCanonicalNamespaceNames, $wgExtraNamespaces;
 		$this->aOptions['searchStringRaw'] = $this->oSearchRequest->sInput;
 		$this->aOptions['searchStringOrig'] = ExtendedSearchBase::preprocessSearchInput( $this->oSearchRequest->sInput );
 
@@ -298,9 +299,6 @@ class SearchOptions {
 		$sCustomerId = $this->getCustomerId();
 
 		$aFq = array();
-		$aFq[] = 'redirect:0';
-		$aFq[] = 'special:0';
-		$aFq[] = 'wiki:('.$sCustomerId.')';
 
 		$vNamespace = $this->checkSearchstringForNamespace(
 			$this->aOptions['searchStringRaw'],
@@ -311,13 +309,11 @@ class SearchOptions {
 
 		$this->aOptions['searchStringWildcarded'] = SearchService::wildcardSearchstring( $this->aOptions['searchStringOrig'] );
 		$this->aOptions['searchStringForStatistics'] = $this->aOptions['searchStringWildcarded'];
-		$this->aOptions['searchStrComp'] = array();
 		$this->aOptions['bExtendedForm'] = $this->oSearchRequest->bExtendedForm;
 
-		$scope = BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' ? 'title' : 'text';
-
-		if ( $this->oSearchRequest->sScope == 'title' ) $scope = 'title';
-		if ( $this->oSearchRequest->sScope == 'text' ) $scope = 'text';
+		$scope = ( BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' )
+			? 'title'
+			: 'text';
 		$this->aOptions['scope'] = $scope;
 
 		$aSearchTitle = array(
@@ -326,7 +322,6 @@ class SearchOptions {
 			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
 			'redirects:(' . $this->aOptions['searchStringOrig'] . ')'
 		);
-
 		$aSearchText = array(
 			'textWord:(' . $this->aOptions['searchStringOrig'] .')^2',
 			'textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
@@ -334,20 +329,20 @@ class SearchOptions {
 		);
 
 		$sSearchStringTitle = implode( ' OR ', $aSearchTitle );
-
 		$sSearchStringText = implode( ' OR ', $aSearchText );
 
-		$this->aOptions['searchStrComp']['searchStrInTitle'] = $sSearchStringTitle;
-		$this->aOptions['searchStrComp']['searchStrInFulltext'] = $sSearchStringText;
-
 		$this->aOptions['searchStringFinal'] = ( $this->aOptions['scope'] === 'title' )
-			? $this->aOptions['searchStrComp']['searchStrInTitle']
-			: implode( ' OR ', $this->aOptions['searchStrComp'] );
+			? $sSearchStringTitle
+			: $sSearchStringTitle . ' OR ' . $sSearchStringText;
 
 		// $this->aOptions['namespaces'] HAS TO BE an array with numeric indices of type string!
 		$this->aOptions['namespaces'] = $this->oSearchRequest->aNamespaces;
 
-		global $wgCanonicalNamespaceNames, $wgExtraNamespaces;
+		// filter query
+		$aFq[] = 'redirect:0';
+		$aFq[] = 'special:0';
+		$aFq[] = 'wiki:('.$sCustomerId.')';
+
 		$aNamespaces = array_slice( $wgCanonicalNamespaceNames, 2 );
 		$aNamespaces = $aNamespaces + $wgExtraNamespaces;
 

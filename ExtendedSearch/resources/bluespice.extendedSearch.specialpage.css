@@ -351,6 +351,7 @@ span.bs-extendedsearch-result-title h3 em {
 .bs-extendedsearch-sectionresult {
 	font-size: 12px !important;
 	font-weight: normal !important;
+	padding-left: 3px;
 }
 .bs-extendedsearch-sectionresult a{
 	font-size: 12px !important;
