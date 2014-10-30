@@ -20,7 +20,7 @@ $wgResourceModules['ext.bluespice.extendedsearch.autocomplete.style'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete'] = array(
-	'scripts' => 'bluespice.extendedSearch.autocompleteWidget.js',
+	'scripts' => 'bluespice.extendedSearch.autocomplete.js',
 	'dependencies' => array(
 		'jquery.ui.autocomplete'
 	),
