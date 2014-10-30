@@ -144,6 +144,23 @@ class ExtendedSearch extends BsExtensionMW {
 	}
 
 	/**
+	 * Hook-Handler for Hook 'OpenSearchUrls'
+	 * @param array §$aUrls array of urls for opensearch
+	 * @return boolean Always true
+	 */
+	public static function onOpenSearchUrls( &$aUrls ) {
+		$oSearch = SpecialPage::getTitleFor( 'ExtendedSearch' );
+		$aUrls = array(
+			array(
+				'type' => 'text/html',
+				'method' => 'get',
+				'template' => $oSearch->getCanonicalURL( 'q={searchTerms}' )
+			)
+		);
+		return true;
+	}
+
+	/**
 	 * Hook-Handler for Hook 'LoadExtensionSchemaUpdates'
 	 * @param object §updater Updater
 	 * @return boolean Always true

@@ -96,3 +96,4 @@ $wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/languages/Special
 $wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ExtendedSearch::getSchemaUpdates';
+$GLOBALS['wgHooks']['OpenSearchUrls'][] = 'ExtendedSearch::onOpenSearchUrls';
