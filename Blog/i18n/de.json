@@ -25,6 +25,7 @@
 	"bs-blog-pref-showpermalink": "Link Permalink anzeigen",
 	"bs-blog-pref-sortby": "Sortierung:",
 	"bs-blog-pref-imagerendermode": "Bilder anzeigen als:",
+	"bs-blog-pref-imagefloatdirection": "Textumfluss: Bildposition",
 	"bs-blog-pref-maxentrycharacters": "Anzahl darzustellender Wörter:",
 	"bs-blog-tag-blog-desc": "Zeigt Blog-Einträge auf jeder beliebigen Seite an."
 }
