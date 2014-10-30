@@ -115,8 +115,7 @@ class SearchIndex {
 				$query['searchOptions']
 			);
 		} catch ( Exception $e ) {
-			// bs-extendedsearch-invalid-query
-			if ( $e->getMessage() == '"0" Status: Communication Error' ) {
+			if ( stripos( $e->getMessage(), 'Communication Error' ) !== false ) {
 				$sUrl = SpecialPage::getTitleFor( 'Search' )->getFullURL();
 
 				$sParams = 'search='.urlencode( $this->oSearchOptions->getOption( 'searchStringRaw' ) );
@@ -129,6 +128,7 @@ class SearchIndex {
 				return $this->oContext->getOutput()->redirect( $sUrl, '404' );
 			}
 
+			wfDebugLog( 'ExtendedSearch', $e->getMessage() );
 			return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 		}
 
