@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Mywood",
-			"Impersonator 1"
+			"Impersonator 1",
+			"LNDDYL"
 		]
 	},
 	"bs-blog-desc": "显示博客样式的页面列表",
@@ -12,7 +13,7 @@
 	"bs-blog-comments": "评论",
 	"bs-blog-read-more": "了解更多",
 	"bs-blog-trackback": "引用通知",
-	"bs-blog-permalink": "永久链接",
+	"bs-blog-permalink": "固定链接",
 	"bs-blog-show-all": "显示所有博文",
 	"bs-blog-form-inline-text": "标题…",
 	"bs-blog-form-title-text": "创建新的博文",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Fany",
 			"Gomoko",
-			"Ltrlg"
+			"Ltrlg",
+			"Windes"
 		]
 	},
 	"bs-permissionmanager-desc": "Interface d’administration pour la modification des droits des utilisateurs",
@@ -40,5 +41,6 @@
 	"bs-permissionmanager-titletpled-delete": "Supprimer le modèle",
 	"bs-permissionmanager-pref-lockmode": "Activer le mode de verrouillage",
 	"bs-permissionmanager-pref-skipsysns": "Sauter les espaces de nom système si le mode de verrouillage est actif",
-	"bs-permissionmanager-pref-enablerealitycheck": "Activer la vérification des droits"
+	"bs-permissionmanager-pref-enablerealitycheck": "Activer la vérification des droits",
+	"bs-permissionmanager-unsaved-changes": "Il y a des modifications non enregistrées. Voulez-vous vraiment quitter la page maintenant ? Les modifications non enregistrées seront perdues."
 }
