@@ -6,5 +6,6 @@
 		]
 	},
 	"bs-echo-anon-user": "匿名",
-	"bs-echo-unknown-user": "不明"
+	"bs-echo-unknown-user": "不明",
+	"bs-echo-page-edit": "頁面 [[:$1]] 已被修改"
 }
