@@ -67,6 +67,7 @@
 	"bs-extendedsearch-section": "章節",
 	"bs-extendedsearch-morelikethis": "相似頁面",
 	"bs-extendedsearch-recentsearchterms": "最近搜尋條件",
+	"bs-extendedsearch-redirect": "重新導向自： $1",
 	"bs-extendedsearch-more": "更多",
 	"bs-extendedsearch-fewer": "更少"
 }
