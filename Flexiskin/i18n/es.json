@@ -6,7 +6,7 @@
 			"AVIADOR"
 		]
 	},
-	"bs-flexiskin-desc": "Agrega funcionalidad para crear apariencias",
+	"bs-flexiskin-desc": "Proporciona una página para administrar \"flexiskins\" con opciones de personalización",
 	"bs-flexiskin-label": "Apariencia",
 	"bs-flexiskin-defaultname": "Predeterminada",
 	"bs-flexiskin-defaultdesc": "Plantilla de apariencia predeterminada.",

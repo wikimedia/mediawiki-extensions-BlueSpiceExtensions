@@ -31,5 +31,5 @@
 	"bs-permissionmanager-titletpled-edit": "テンプレート名の変更",
 	"bs-permissionmanager-titletpled-delete": "テンプレートの削除",
 	"bs-permissionmanager-pref-enablerealitycheck": "アクセス許可の確認を有効にする",
-	"bs-permissionmanager-unsaved-changes": "まだ保存されていない変更があります。このままページを閉じても本当によいですか。そうすると未保存の変更は失われます。"
+	"bs-permissionmanager-unsaved-changes": "まだ保存されていない変更があります。このままページを閉じても本当によいですか。実行すると未保存の変更は失われます。"
 }

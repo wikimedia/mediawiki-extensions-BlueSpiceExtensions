@@ -7,7 +7,7 @@
 			"Amitie 10g"
 		]
 	},
-	"bs-extendedsearch-desc": "Búsqueda extendida",
+	"bs-extendedsearch-desc": "Complemento de búsqueda basado en Apache Solr (http://lucene.apache.org/solr/) para extender la funcionalidad de búsqueda",
 	"specialextendedsearch": "Búsqueda extendida",
 	"prefs-extendedsearch": "Búsqueda extendida",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Categoría|Categorías}}: $2",
