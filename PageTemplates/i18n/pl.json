@@ -28,6 +28,7 @@
 	"bs-pagetemplates-label-desc": "Opis",
 	"bs-pagetemplates-label-targetns": "Przestrzeń nazw",
 	"bs-pagetemplates-label-article": "Szablon",
+	"bs-pagetemplates-confirm-deletetpl": "Czy na pewno chcesz usunąć {{PLURAL:$1|ten szablon|te szablony}}?",
 	"bs-pagetemplates-remove-message-success": "Usunięto {{PLURAL:$1|następny szablon|następujące szablony}}: $2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Następujący szablon nie mógł zostać usunięty|Następujące szablony nie mogły zostać usunięte}}: $2 (Powód: $3)"
 }

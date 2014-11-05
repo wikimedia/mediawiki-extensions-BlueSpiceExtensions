@@ -12,6 +12,7 @@
 	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|Şablonu|Şablonları}} sil",
 	"bs-pagetemplates-tipaddtemplate": "Şablon ekle",
 	"bs-pagetemplates-label-article": "Şablon",
+	"bs-pagetemplates-confirm-deletetpl": "{{PLURAL:$1|Bu şablonu|Bu şablonları}} silmek istediğinize emin misiniz?",
 	"bs-pagetemplates-remove-message-unknown": "Beklenmeyen bir hata oluştu, lütfen tekrar deneyin.",
 	"bs-pagetemplates-remove-message-success": "Şu {{PLURAL:$1|şablon|şablonlar}} silindi: $2"
 }
