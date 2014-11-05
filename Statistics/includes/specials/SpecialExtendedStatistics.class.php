@@ -192,7 +192,14 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 			);
 			$i ++;
 		}
-		$aResult['label'] = wfMessage( 'bs-statistics-'.$oDiagram->getActualGrain() )->plain();
+
+		$aAvalableGrains = BsConfig::get( 'MW::Statistics::AvailableGrains' );
+		$sLabelMsgKey = 'bs-statistics-label-time';
+		if( isset($aAvalableGrains[$oDiagram->getActualGrain()]) ) {
+			$sLabelMsgKey = $aAvalableGrains[$oDiagram->getActualGrain()];
+		}
+
+		$aResult['label'] = wfMessage( $sLabelMsgKey )->plain();
 
 		$aResult['success'] = true;
 		return json_encode($aResult);

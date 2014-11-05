@@ -102,7 +102,7 @@ class Statistics extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
 		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers', array( 'WikiSysop' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-excludeusers', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 36, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-statistics-pref-maxnumberofintervals', 'int' );
+		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 366, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-statistics-pref-maxnumberofintervals', 'int' );
 
 		$aAvailableGrains = array(
 			'Y' => 'bs-statistics-year',
