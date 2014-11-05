@@ -88,18 +88,30 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'EditFormPreloadText' );
 
+		$this->setHook( 'PageContentSaveComplete', 'invalidateCacheOnArticleChange' );
+		$this->setHook( 'ArticleDeleteComplete', 'invalidateCacheOnArticleChange' );
+		$this->setHook( 'TitleMoveComplete', 'invalidateCacheOnTitleChange' );
+
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels', 2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberoflevels' );
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfMainEntries', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofmainentries', 'int' );
 		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries', 25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofsubentries', 'int' );
 	}
 
 	/**
-	 * Getter for the $aNavigationSites array - either from hook or TopBarMenu title
+	 * Getter for the $aNavigationSites array - either from hook, TopBarMenu title or cache
 	 * @global string $wgSitename
 	 * @return array
 	 */
 	public static function getNavigationSites() {
 		if( !is_null(self::$aNavigationSites) ) return self::$aNavigationSites;
+
+		$sKey = BsExtensionManager::getExtension('TopMenuBarCustomizer')
+					->getCacheKey( 'NavigationSitesData' );
+
+		self::$aNavigationSites = BsCacheHelper::get( $sKey );
+		if( self::$aNavigationSites !== false ) {
+			return self::$aNavigationSites;
+		}
 		self::$aNavigationSites = array();
 
 		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, 'TopBarMenu' );
@@ -108,10 +120,11 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			$sContent = BsPageContentProvider::getInstance()
 				->getContentFromTitle( $oTopBarMenuTitle );
 
-			// force unset Applications by create an empty page
+			// Force unset of all menu items by creating an empty page
 			if( !empty($sContent) ) {
 				self::$aNavigationSites = TopMenuBarCustomizerParser::getNavigationSites();
 			}
+			BsCacheHelper::set( $sKey , self::$aNavigationSites, 60*1440 );//max cache time 24h
 			return self::$aNavigationSites;
 		}
 
@@ -132,6 +145,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 
 		wfRunHooks('BSTopMenuBarCustomizerRegisterNavigationSites', array( &self::$aNavigationSites ));
 
+		BsCacheHelper::set( $sKey , self::$aNavigationSites, 60*1440 );//max cache time 24h
 		return self::$aNavigationSites;
 	}
 
@@ -141,7 +155,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 * @param Title $oTitle
 	 * @return boolean - always true
 	 */
-	public function onEditFormPreloadText($sText, $oTitle) {
+	public function onEditFormPreloadText( &$sText, $oTitle ) {
 		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, 'TopBarMenu' );
 		if( !$oTopBarMenuTitle || !$oTitle->equals($oTopBarMenuTitle) ) return true;
 
@@ -211,5 +225,21 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		$tpl->data['bs_navigation_sites'] = implode( "\n", $aOut );
 
 		return true;
+	}
+
+	public function invalidateCacheOnArticleChange( $oArticle ) {
+		return $this->invalidateCacheOnTitleChange( $oArticle->getTitle() );
+	}
+
+	public function invalidateCacheOnTitleChange( $oTitle ) {
+		if( !$oTitle->equals(Title::makeTitle(NS_MEDIAWIKI, 'TopBarMenu')) ) return true;
+		$this->invalidateCache();
+		return true;
+	}
+
+	public function invalidateCache() {
+		BsCacheHelper::invalidateCache(
+			$this->getCacheKey( 'NavigationSitesData' )
+		);
 	}
 }
