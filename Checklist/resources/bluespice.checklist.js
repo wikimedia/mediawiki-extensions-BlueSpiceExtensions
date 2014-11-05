@@ -22,11 +22,11 @@ BsChecklist = {
 	menuButton: false,
 	lastCommand: "mceBsCheckbox",
 	lastCommandKey: false,
-	
+
 	init: function () {
 		/*alert('check');*/
 	},
-			
+
 	click: function(elem) {
 		$.ajax({
 			type: "GET",
@@ -42,7 +42,7 @@ BsChecklist = {
 			}
 		});
 	},
-	
+
 	change: function(elem) {
 		elem.style.color=elem.options[elem.selectedIndex].style.color;
 		$.ajax({
@@ -59,12 +59,12 @@ BsChecklist = {
 			}
 		});
 	},
-	
+
 	getOptionsList: function(listId) {
 		if ( listId in BsChecklist.optionsLists ) {
 			return BsChecklist.optionsLists[listId];
 		}
-		
+
 		$.ajax({
 			type: "GET",
 			url: bs.util.getAjaxDispatcherUrl( 'Checklist::getOptionsList' ),
@@ -77,15 +77,15 @@ BsChecklist = {
 				BsChecklist.optionsLists[listId] = eval(result);
 			}
 		});
-		
+
 		return BsChecklist.optionsLists[listId];
 	},
-	
+
 	changeSelect: function(elem) {
 		var value = $(elem).find(":selected").text();
 		tinymce.activeEditor.dom.setAttrib(elem.parentNode, 'data-bs-value', value);
 	},
-	
+
 	makeCheckbox: function(checked) {
 		var innerText;
 		innerText = '<button contentEditable="false" class="bsClickableElement" ';
@@ -107,9 +107,9 @@ BsChecklist = {
 			var optionSet = options[i].split("|");
 			var optionValue = optionSet[0];
 			var optionColor = optionSet[1];
-			
+
 			if ( !selectedColor && optionColor ) selectedColor = 'style="color:'+optionColor+';" ';
-			
+
 			innerText += '<option ';
 			if ( optionColor ) innerText += 'style="color:'+optionColor+';" ';
 			if ( optionValue == valueText ) {
@@ -122,12 +122,12 @@ BsChecklist = {
 		innerText = innerText.replace("{color}", selectedColor);
 		return innerText;
 	},
-	
+
 	makeAndRegisterCheckboxSpecialTag: function(ed, checked) {
 		var id = ed.plugins.bswikicode.getSpecialTagList().length;
 		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist value="" />');
 		var node = ed.dom.create(
-				'span', 
+				'div',
 				{
 					'id'              : "bs_specialtag:@@@ST"+id+"@@@",
 					'class'           : "mceNonEditable tag",
@@ -136,16 +136,16 @@ BsChecklist = {
 					'data-bs-id'      : id,
 					'data-bs-value'   : "false",
 					'data-bs-cbtype'  : "checkbox"
-				}, 
+				},
 				BsChecklist.makeCheckbox(checked));
 		return node;
 	},
-	
+
 	makeAndRegisterSelectboxSpecialTag: function(ed, listname, value) {
 		var id = ed.plugins.bswikicode.getSpecialTagList().length;
 		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist type="list" value="" list="'+listname+'"/>');
 		var node = ed.dom.create(
-				'span', 
+				'div',
 				{
 					'id'              : "bs_specialtag:@@@ST"+id+"@@@",
 					'class'           : "mceNonEditable tag",
@@ -154,7 +154,7 @@ BsChecklist = {
 					'data-bs-id'      : id,
 					'data-bs-value'   : "false",
 					'data-bs-cbtype'  : "list"
-				}, 
+				},
 				BsChecklist.makeSelectbox(listname, value));
 		return node;
 	}
@@ -168,7 +168,7 @@ $(document).on( "BSVisualEditorRenderSpecialTag", function( event, sender, type,
 	if ( type != 'bs:checklist' ) return false;
 	var ed = tinymce.activeEditor;
 	var specialtag = ed.dom.createFragment(st[0]).childNodes[0];
-	
+
 	var cbt = ed.dom.getAttrib(specialtag, 'type', 'checkbox');
 	var valueText = ed.dom.getAttrib(specialtag, 'value', 'false');
 	var listText = ed.dom.getAttrib(specialtag, 'list', '');
@@ -183,12 +183,12 @@ $(document).on( "BSVisualEditorRenderSpecialTag", function( event, sender, type,
 	} else if (cbt == 'list' ) {
 		innerText = BsChecklist.makeSelectbox(listText, valueText);
 	}
-	
+
 	var moreAttribs = 'data-bs-value="'+valueText+'"';
 	moreAttribs += ' data-bs-cbtype="'+cbt+'"';
-	
+
 	return {
-		"innerText":innerText, 
+		"innerText":innerText,
 		"moreAttribs":moreAttribs
 	};
 });
@@ -213,11 +213,11 @@ $(document).on( "BSVisualEditorRecoverSpecialTag", function( event, sender, spec
 $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e, dataname){
 	if ( dataname == 'bs:checklist' ) {
 		var cbtype = ed.dom.getAttrib(e.target.parentNode, 'data-bs-cbtype');
-		
+
 		if ( !cbtype ) {
 			cbtype = 'checkbox';
 		}
-		
+
 		var value = ed.dom.getAttrib(e.target.parentNode, 'data-bs-value');
 
 		if (cbtype == 'checkbox' ) {
@@ -229,7 +229,7 @@ $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e,
 				ed.dom.setStyle(e.target, 'background-image', "url('"+BsChecklist.checkboxImageChecked+"')");
 			}
 		}
-		
+
 		ed.dom.setAttrib(e.target.parentNode, 'data-bs-value', value);
 	}
 });
@@ -237,9 +237,9 @@ $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e,
 $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, commands, menus) {
 	var t = plugin;
 	var ed = t.getEditor();
-	
-	
-	
+
+
+
 	menus.push({
 		menuId: 'bsChecklist',
 		menuConfig: {
@@ -247,11 +247,11 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 			cmd : 'mceBsChecklistLastCommand'
 		}
 	});
-	
+
 	var menuItems = [];
-	
+
 	menuItems.push({text: '-'});
-	
+
 	menuItems.push({
 		text: mw.message('bs-checklist-button_checkbox_title').plain(),
 		value: 'Checkbox',
@@ -261,7 +261,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 			ed.execCommand('mceBsCheckbox', false);
 		}
 	});
-	
+
 	menuItems.push({
 		text: mw.message('bs-checklist-menu_insert_list_title').plain(),
 		onclick: function() {
@@ -282,7 +282,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 			})
 		}
 	});
-	
+
 	ed.addButton('bscheckbox', {
 		title: mw.message('bs-checklist-button_checkbox_title').plain(),
 		cmd: 'mceBsChecklistLastCommand',
@@ -304,7 +304,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 				});
 			});
 		},
-		
+
 		onShow: function(e) {
 			var listKeys = [];
 			e.control.items().each(function(index,value) {
@@ -335,35 +335,27 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 
 	ed.addCommand('mceBsCheckbox', function(ui, value) {
 		//needed in FF, apparently to init selection
-		ed.selection.getBookmark();
 		//only insert if selection is collapsed
 		if ( ed.selection.isCollapsed() ) {
 			var node = BsChecklist.makeAndRegisterCheckboxSpecialTag(ed, false);
 			ed.dom.insertAfter(node, ed.selection.getNode());
 			//Place cursor to end
-			ed.selection.select(node, false);
-			ed.selection.collapse(false);
 		}
 		return;
 	});
-	
+
 	commands.push({
 		commandId: 'checkbox',
 		commandCallback: function(ui, v) {
 			this.execCommand('mceBsCheckbox', ui, v);
 		}
 	});
-	
+
 	ed.addCommand('mceBsSelectbox', function(ui, value) {
 		//needed in FF, apparently to init selection
-		ed.selection.getBookmark();
-		//only insert if selection is collapsed
 		if ( ed.selection.isCollapsed() ) {
 			var node = BsChecklist.makeAndRegisterSelectboxSpecialTag(ed, value, '');
 			ed.dom.insertAfter(node, ed.selection.getNode());
-			//Place cursor to end
-			ed.selection.select(node, false);
-			ed.selection.collapse(false);
 		}
 		return;
 	});
