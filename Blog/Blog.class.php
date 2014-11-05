@@ -103,6 +103,9 @@ class Blog extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Blog::MaxEntryCharacters', 1000, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-blog-pref-maxentrycharacters', 'int' );
 		// Defines how images should be rendered. Possible values: full|thumb|none
 		BsConfig::registerVar( 'MW::Blog::ImageRenderMode', 'thumb', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-imagerendermode', 'select' );
+		// Defines float direction of images when ImageRenderMode is thumb. Possible values: left|right|none
+		BsConfig::registerVar( 'MW::Blog::ThumbFloatDirection', 'right', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-imagefloatdirection', 'select' );
+
 		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'toggle' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -161,6 +164,15 @@ class Blog extends BsExtensionMW {
 					'options' => array(
 						'thumb' => 'thumb',
 						'full' => 'full',
+						'none' => 'none'
+					)
+				);
+				break;
+			case 'ThumbFloatDirection':
+				$aPrefs = array(
+					'options' => array(
+						'left' => 'left',
+						'right' => 'right',
 						'none' => 'none'
 					)
 				);
@@ -320,6 +332,7 @@ class Blog extends BsExtensionMW {
 		$bShowNewEntryField     = BsConfig::get( 'MW::Blog::ShowNewEntryField' );
 		$bNewEntryFieldPosition = BsConfig::get( 'MW::Blog::NewEntryFieldPosition' );
 		$sImageRenderMode       = BsConfig::get( 'MW::Blog::ImageRenderMode' );
+		$sImageFloatDirection   = BsConfig::get( 'MW::Blog::ThumbFloatDirection' );
 		$iMaxEntryCharacters    = BsConfig::get( 'MW::Blog::MaxEntryCharacters' );
 
 		// Trackbacks are not supported the way we intend it to be. From http://www.mediawiki.org/wiki/Manual:$wgUseTrackbacks
@@ -334,6 +347,7 @@ class Blog extends BsExtensionMW {
 		$argsBNewEntryField          = BsCore::sanitizeArrayEntry( $args, 'newentryfield',         $bShowNewEntryField,     BsPARAMTYPE::BOOL );
 		$argsSNewEntryFieldPosition  = BsCore::sanitizeArrayEntry( $args, 'newentryfieldposition', $bNewEntryFieldPosition, BsPARAMTYPE::STRING );
 		$argsSImageRenderMode        = BsCore::sanitizeArrayEntry( $args, 'imagerendermode',       $sImageRenderMode,       BsPARAMTYPE::STRING );
+		$argsSImageFloatDirection    = BsCore::sanitizeArrayEntry( $args, 'imagefloatdirection',   $sImageFloatDirection,   BsPARAMTYPE::STRING );
 		$argsIMaxEntryCharacters     = BsCore::sanitizeArrayEntry( $args, 'maxchars',              $iMaxEntryCharacters,    BsPARAMTYPE::INT );
 		$argsSSortBy                 = BsCore::sanitizeArrayEntry( $args, 'sort',            $sSortBy,          BsPARAMTYPE::STRING );
 		$argsBShowInfo               = BsCore::sanitizeArrayEntry( $args, 'showinfo',        $bShowInfo,        BsPARAMTYPE::BOOL );
@@ -359,6 +373,11 @@ class Blog extends BsExtensionMW {
 		}
 
 		$oValidationResult = BsValidator::isValid( 'SetItem', $argsSImageRenderMode, array( 'fullResponse' => true, 'setname' => 'imagerendermode', 'set' => array( 'full', 'thumb', 'none' ) ) );
+		if ( $oValidationResult->getErrorCode() ) {
+			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
+		}
+
+		$oValidationResult = BsValidator::isValid( 'SetItem', $argsSImageFloatDirection, array( 'fullResponse' => true, 'setname' => 'imagefloatdirection', 'set' => array( 'left', 'right', 'none' ) ) );
 		if ( $oValidationResult->getErrorCode() ) {
 			$oErrorListView->addItem( new ViewTagError( $oValidationResult->getI18N() ) );
 		}
@@ -479,7 +498,7 @@ class Blog extends BsExtensionMW {
 					break;
 				case 'thumb':
 				default:
-					$aContent = preg_replace( '/(\[\[('.$sNamespaceRegEx.'):[^\|\]]*)(\|)?(.*?)(\]\])/', '$1|thumb|none$3$4|150px$5', $aContent );
+					$aContent = preg_replace( '/(\[\[('.$sNamespaceRegEx.'):[^\|\]]*)(\|)?(.*?)(\]\])/', "$1|thumb|$argsSImageFloatDirection$3$4|150px$5", $aContent );
 					break;
 			}
 
