@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Smuggli"
 		]
 	},
 	"bs-responsibleeditors-desc": "Aktiviert MediaWiki zur Verwaltung verantwortlicher Redakteure für Seiten",
@@ -29,11 +30,11 @@
 	"bs-responsibleeditors-mail-subject-former-editor": "Verantwortlichkeit für die Seite \"$1\" entzogen",
 	"bs-responsibleeditors-mail-text-former-editor": "Soeben wurde Dir durch {{GENDER:$1|Herr|Frau|}} $2 die Verantwortlichkeit für die Seite \"$3\" entzogen. {{PLURAL:$5|Der neue verantwortliche Redakteur ist|Die neuen verantwortlichen Redakteure sind}}: $4 Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $6 Solltest Du Fragen zur Änderung der Verantwortlichkeit haben, wende Dich bitte an {{GENDER:$1|Herr|Frau|}} $2.",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "Die Seite \"$1\" wurde von {{GENDER:$2|Herr|Frau|}} $3 bearbeitet",
-	"bs-responsibleeditors-mail-text-re-article-changed": "Die Seite \"$1\", für den Du als verantwortlicher Redakteur eingetragen bist, wurde von {{GENDER:$2|Herr|Frau|}} $3 bearbeitet. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $4",
+	"bs-responsibleeditors-mail-text-re-article-changed": "Die Seite \"$1\", für die Du als verantwortlicher Redakteur eingetragen bist, wurde von {{GENDER:$2|Herr|Frau|}} $3 bearbeitet. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $4",
 	"bs-responsibleeditors-mail-subject-re-article-deleted": "Die Seite \"$1\" wurde von {{GENDER:$2|Herr|Frau|}} $3 gelöscht",
-	"bs-responsibleeditors-mail-text-re-article-deleted": "Die Seite \"$1\", für den Du als verantwortlicher Redakteur eingetragen bist, wurde von {{GENDER:$2|Herr|Frau|}} $3 gelöscht. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $4",
+	"bs-responsibleeditors-mail-text-re-article-deleted": "Die Seite \"$1\", für die Du als verantwortlicher Redakteur eingetragen bist, wurde von {{GENDER:$2|Herr|Frau|}} $3 gelöscht. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $4",
 	"bs-responsibleeditors-mail-subject-re-article-moved": "Die Seite \"$1\" wurde von {{GENDER:$2|Herr|Frau|}} $3 verschoben",
-	"bs-responsibleeditors-mail-text-re-article-moved": "Die Seite \"$1\", für den Du als verantwortlicher Redakteur eingetragen bist, wurde von {{GENDER:$3|Herr|Frau|}} $4 nach \"$2\" verschoben. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $5",
+	"bs-responsibleeditors-mail-text-re-article-moved": "Die Seite \"$1\", für die Du als verantwortlicher Redakteur eingetragen bist, wurde von {{GENDER:$3|Herr|Frau|}} $4 nach \"$2\" verschoben. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $5",
 	"responsibleeditors": "Verantwortliche Redakteure",
 	"bs-responsibleeditors-no-own-responsibilities": "Du bist für keine Seite der verantworliche Redakteur.",
 	"bs-responsibleeditors-yourresponsibilities": "Deine Verantwortlichkeiten",

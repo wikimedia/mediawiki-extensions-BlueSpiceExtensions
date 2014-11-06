@@ -25,6 +25,7 @@
 	"bs-blog-pref-showpermalink": "Прикажувај постојана врска",
 	"bs-blog-pref-sortby": "Подреди по:",
 	"bs-blog-pref-imagerendermode": "Прикажувај ги сликите како:",
+	"bs-blog-pref-imagefloatdirection": "Тек на текстот: Положба на сликата",
 	"bs-blog-pref-maxentrycharacters": "Број на зборови по ставка:",
 	"bs-blog-tag-blog-desc": "Прикажи блоговски записи на секоја страница"
 }

@@ -4,5 +4,9 @@
 			"Robin0van0der0vliet"
 		]
 	},
-	"bs-statistics-label-name": "Namme"
+	"bs-statistics-year": "Jier",
+	"bs-statistics-month": "Moanne",
+	"bs-statistics-day": "Dei",
+	"bs-statistics-label-name": "Namme",
+	"bs-statistics-filter-category": "Kategory"
 }
