@@ -874,80 +874,78 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @param string $sAction
 	 */
 	public static function notifyResponsibleEditors($aResponsibleEditorIds, $oUser, $aTitles, $sAction) {
-		if (empty($aResponsibleEditorIds)) return true;
+		if ( empty( $aResponsibleEditorIds ) ) return true;
 
-		$aResponsibleEditors = array();
-		foreach ($aResponsibleEditorIds as $iUserId) {
-			$oREUser = User::newFromId($iUserId);
+		foreach ( $aResponsibleEditorIds as $iUserId ) {
+			$oREUser = User::newFromId( $iUserId );
 			if ( $iUserId == $oUser->getId() ) continue;
-			if ( BsConfig::getVarForUser( "MW::ResponsibleEditors::E".ucfirst( $sAction ), $oREUser ) === true ) {
-				$aResponsibleEditors[] = $oREUser;
+			if ( BsConfig::getVarForUser( "MW::ResponsibleEditors::E".ucfirst( $sAction ), $oREUser ) === false ) {
+				continue;
 			}
+
+			$sUserRealName = BsCore::getInstance()->getUserDisplayName( $oUser );
+			$sUsername = $oUser->getName();
+			$sArticleName = $aTitles[0]->getText();
+			$sArticleLink = $aTitles[0]->getFullURL();
+			$sLanguageCode = $oREUser->getOption( 'language' );
+
+			switch( $sAction ) {
+				case 'change':
+					$sSubject = wfMessage(
+						'bs-responsibleeditors-mail-subject-re-article-changed',
+						$sArticleName,
+						$sUsername,
+						$sUserRealName
+					)->inLanguage( $sLanguageCode )->text();
+					$sMessage = wfMessage(
+						'bs-responsibleeditors-mail-text-re-article-changed',
+						$sArticleName,
+						$sUsername,
+						$sUserRealName,
+						$sArticleLink
+					)->inLanguage( $sLanguageCode )->text();
+					break;
+				case 'delete':
+					$sSubject = wfMessage(
+						'bs-responsibleeditors-mail-subject-re-article-deleted',
+						$sArticleName,
+						$sUsername,
+						$sUserRealName
+					)->inLanguage( $sLanguageCode )->text();
+					$sMessage = wfMessage(
+						'bs-responsibleeditors-mail-text-re-article-deleted',
+						$sArticleName,
+						$sUsername,
+						$sUserRealName,
+						$sArticleLink
+					)->inLanguage( $sLanguageCode )->text();
+					break;
+				case 'move':
+					$sSubject = wfMessage(
+						'bs-responsibleeditors-mail-subject-re-article-moved',
+						$sArticleName,
+						$sUsername,
+						$sUserRealName
+					)->inLanguage( $sLanguageCode )->text();
+					$sMessage = wfMessage(
+						'bs-responsibleeditors-mail-text-re-article-moved',
+						$sArticleName,
+						$aTitles[1]->getPrefixedText(),
+						$sUsername,
+						$sUserRealName,
+						$sArticleLink
+					)->inLanguage( $sLanguageCode )->text();
+					break;
+				default:
+					wfDebugLog(
+						'BS::ResponsibleEditors::notifyResponsibleEditors',
+						'Action "'.$sAction.'" is unknown. No mails sent.'
+					);
+					return;
+			}
+
+			BsMailer::getInstance( 'MW' )->send( $oREUser, $sSubject, $sMessage );
 		}
-
-		if ( empty( $aResponsibleEditors ) ) return true;
-
-		$sUserRealName = BsCore::getInstance()->getUserDisplayName( $oUser );
-		$sUsername = $oUser->getName();
-		$sArticleName = $aTitles[0]->getText();
-		$sArticleLink = $aTitles[0]->getFullURL();
-
-		switch( $sAction ) {
-			case 'change':
-				$sSubject = wfMessage(
-					'bs-responsibleeditors-mail-subject-re-article-changed',
-					$sArticleName,
-					$sUsername,
-					$sUserRealName
-				)->text();
-				$sMessage = wfMessage(
-					'bs-responsibleeditors-mail-text-re-article-changed',
-					$sArticleName,
-					$sUsername,
-					$sUserRealName,
-					$sArticleLink
-				)->text();
-				break;
-			case 'delete':
-				$sSubject = wfMessage(
-					'bs-responsibleeditors-mail-subject-re-article-deleted',
-					$sArticleName,
-					$sUsername,
-					$sUserRealName
-				)->text();
-				$sMessage = wfMessage(
-					'bs-responsibleeditors-mail-text-re-article-deleted',
-					$sArticleName,
-					$sUsername,
-					$sUserRealName,
-					$sArticleLink
-				)->text();
-				break;
-			case 'move':
-				$sSubject = wfMessage(
-					'bs-responsibleeditors-mail-subject-re-article-moved',
-					$sArticleName,
-					$sUsername,
-					$sUserRealName
-				)->text();
-				$sMessage = wfMessage(
-					'bs-responsibleeditors-mail-text-re-article-moved',
-					$sArticleName,
-					$aTitles[1]->getPrefixedText(),
-					$sUsername,
-					$sUserRealName,
-					$aTitles[1]->getFullURL()
-				)->text();
-				break;
-			default:
-				wfDebugLog(
-					'BS::ResponsibleEditors::notifyResponsibleEditors',
-					'Action "'.$sAction.'" is unknown. No mails sent.'
-				);
-				return;
-		}
-
-		BsMailer::getInstance( 'MW' )->send( $aResponsibleEditors, $sSubject, $sMessage );
 	}
 
 	public static function getResponsibleEditorsPortletData( $iCount, $iUserId ) {
