@@ -26,7 +26,7 @@
 	"bs-pagetemplates-label-targetns": "名前空間",
 	"bs-pagetemplates-label-tplns": "テンプレート名前空間",
 	"bs-pagetemplates-label-article": "テンプレート",
-	"bs-pagetemplates-confirm-deletetpl": "このテンプレートを本当に削除しますか?",
+	"bs-pagetemplates-confirm-deletetpl": "{{PLURAL:$1|このテンプレート|これらのテンプレート}}を本当に削除しますか?",
 	"bs-pagetemplates-remove-message-success": "以下の{{PLURAL:$1|テンプレート}}を削除しました: $2",
 	"bs-pagetemplates-remove-message-failure": "以下の{{PLURAL:$1|テンプレート}}を削除できませんでした: $2 (理由: $3)"
 }

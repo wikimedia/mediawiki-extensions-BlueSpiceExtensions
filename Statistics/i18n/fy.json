@@ -8,5 +8,6 @@
 	"bs-statistics-month": "Moanne",
 	"bs-statistics-day": "Dei",
 	"bs-statistics-label-name": "Namme",
-	"bs-statistics-filter-category": "Kategory"
+	"bs-statistics-filter-category": "Kategory",
+	"bs-statistics-portletconfig-periodday": "Juster"
 }

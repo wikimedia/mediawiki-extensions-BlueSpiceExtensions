@@ -36,7 +36,7 @@
 	"bs-pagetemplates-label-targetns": "名字空间",
 	"bs-pagetemplates-label-tplns": "模板名字空间",
 	"bs-pagetemplates-label-article": "模板",
-	"bs-pagetemplates-confirm-deletetpl": "您确信要删除此模板？",
+	"bs-pagetemplates-confirm-deletetpl": "您确信要删除{{PLURAL:$1|此|这些}}模板？",
 	"bs-pagetemplates-remove-message-unknown": "发生未知错误，请重试。",
 	"bs-pagetemplates-remove-message-success": "以下{{PLURAL:$1|模板}}已删除：$2",
 	"bs-pagetemplates-remove-message-failure": "以下{{PLURAL:$1|模板}}不能删除：$2（原因：$3）"
