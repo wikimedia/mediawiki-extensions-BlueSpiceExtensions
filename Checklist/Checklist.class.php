@@ -330,7 +330,7 @@ class Checklist extends BsExtensionMW {
 		$sSelectColor = '';
 		if (isset($args['type']) && $args['type'] == 'list' ) {
 			$sOut[] = "<select {color} ";
-			$sOut[] = "id='".$this->getNewCheckboxId()."' ";
+			$sOut[] = "id='bs-cb-".$this->getNewCheckboxId()."' ";
 			$sOut[] = "onchange='BsChecklist.change(this);' ";
 			$sOut[] = ">";
 
@@ -359,7 +359,7 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = "</select>";
 		} else {
 			$sOut[] = "<input type='checkbox' ";
-			$sOut[] = "id='".$this->getNewCheckboxId()."' ";
+			$sOut[] = "id='bs-cb-".$this->getNewCheckboxId()."' ";
 			$sOut[] = "onclick='BsChecklist.click(this);' ";
 			if (isset ($args['value'] ) && $args['value'] == 'checked') {
 				$sOut[] = "checked='checked' ";

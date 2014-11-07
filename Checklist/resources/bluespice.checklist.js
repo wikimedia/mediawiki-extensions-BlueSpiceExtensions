@@ -2,9 +2,8 @@
  * Js for ArticleInfo extension
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
-
  * @package    Bluespice_Extensions
- * @subpackage ArticleInfo
+ * @subpackage Checklist
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
@@ -113,8 +112,8 @@ BsChecklist = {
 			innerText += '<option ';
 			if ( optionColor ) innerText += 'style="color:'+optionColor+';" ';
 			if ( optionValue == valueText ) {
-				if ( optionColor ) selectedColor = 'style="color:'+optionColor+';" '
-				innerText += 'selected="selected"'
+				if ( optionColor ) selectedColor = 'style="color:'+optionColor+';" ';
+				innerText += 'selected="selected"';
 			}
 			innerText += '>'+optionValue+'</option>';
 		}
@@ -158,9 +157,9 @@ BsChecklist = {
 				BsChecklist.makeSelectbox(listname, value));
 		return node;
 	}
-}
+};
 
-$(document).ready(function() {
+mw.loader.using( 'ext.bluespice', function() {
 	BsChecklist.init();
 });
 
@@ -237,8 +236,6 @@ $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e,
 $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, commands, menus) {
 	var t = plugin;
 	var ed = t.getEditor();
-
-
 
 	menus.push({
 		menuId: 'bsChecklist',
