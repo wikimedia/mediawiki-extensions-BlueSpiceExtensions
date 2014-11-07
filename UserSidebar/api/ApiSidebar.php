@@ -32,7 +32,7 @@ class ApiSidebar extends ApiBase {
                     else
                         $sContent = $oView->execute();
                     $result['usersidebar'][$oView->getId()][] = $sContent;
-                    $apiResult->getResult()->setIndexedTagName($result['usersidebar'][$oView->getId()], 'content');
+                    $apiResult->setIndexedTagName($result['usersidebar'][$oView->getId()], 'content');
                 } else {
                     wfDebugLog( 'BS::Skin', 'BlueSpiceTemplate::printViews: Invalid view.' );
                 }
