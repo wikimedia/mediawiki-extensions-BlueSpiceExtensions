@@ -324,11 +324,13 @@ class NamespaceManager extends BsExtensionMW {
 		for ( $i = 0; $i < $iResults; $i++ ) {
 
 			$iNs = $aResults[$i]['id'];
-			$aResults[ $i ][ 'editable' ] = ( isset($bsSystemNamespaces[$iNs] ) ) ? false : (array_search( $iNs, $aUserNamespaces ) !== false);
-			$aResults[ $i ][ 'content' ] = (array_search( $iNs, $wgContentNamespaces ) !== false);
-			$aResults[ $i ][ 'searchable' ] = (isset( $wgNamespacesToBeSearchedDefault[ $iNs ] ) && $wgNamespacesToBeSearchedDefault[ $iNs ]);
-			$aResults[ $i ][ 'subpages' ] = (isset( $wgNamespacesWithSubpages[ $iNs ] ) && $wgNamespacesWithSubpages[ $iNs ]);
-			if ( array_search( $iNs, $aUserNamespaces ) !== false ) {
+			$aResults[$i][ 'editable' ] = ( isset( $bsSystemNamespaces[$iNs] ) )
+				? false
+				: in_array( $iNs, $aUserNamespaces );
+			$aResults[$i]['content'] = in_array( $iNs, $wgContentNamespaces );
+			$aResults[$i]['searchable'] = (isset( $wgNamespacesToBeSearchedDefault[$iNs] ) && $wgNamespacesToBeSearchedDefault[$iNs]);
+			$aResults[$i]['subpages'] = ( isset( $wgNamespacesWithSubpages[$iNs] ) && $wgNamespacesWithSubpages[$iNs] );
+			if ( in_array( $iNs, $aUserNamespaces ) ) {
 				$aResults[$i]['empty'] = $this->isNamespaceEmpty( $iNs );
 			}
 		}
@@ -477,7 +479,7 @@ class NamespaceManager extends BsExtensionMW {
 		}
 
 		if ( !isset( $bsSystemNamespaces[($iNS)] ) && strstr( $sNamespace, '_' . $wgContLang->getNsText( NS_TALK ) ) ) {
-				$aUserNamespaces[ $iNS ] = array(
+				$aUserNamespaces[$iNS] = array(
 					'name' => $aUserNamespaces[$iNS]['name'],
 					'alias' => str_replace( '_' . $wgContLang->getNsText( NS_TALK ), '_talk', $sNamespace ),
 				);
@@ -525,7 +527,7 @@ class NamespaceManager extends BsExtensionMW {
 		global $wgContLang;
 		$aUserNamespaces = self::getUserNamespaces( true );
 		$aNamespacesToRemove = array( array( $iNS, 0 ) );
-		$sNamespace = $aUserNamespaces[ $iNS ][ 'name' ];
+		$sNamespace = $aUserNamespaces[$iNS][ 'name' ];
 
 		if ( !strstr( $sNamespace, '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
 			if ( isset( $aUserNamespaces[ ($iNS + 1) ] ) && strstr( $aUserNamespaces[ ($iNS + 1) ][ 'name' ], '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
@@ -597,20 +599,25 @@ class NamespaceManager extends BsExtensionMW {
 		}
 		$sConfigContent = file_get_contents( BSROOTDIR . DS . 'config' . DS . 'nm-settings.php' );
 		$aUserNamespaces = array();
-		//if ( preg_match_all( '%// START Namespace ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*).*define\("NS_\1", ([0-9]*)\).*?// END Namespace \1%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
+		/*if ( preg_match_all(
+			'%// START Namespace ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*).*define\("NS_\1", ([0-9]*)\).*?// END Namespace \1%s',
+			$sConfigContent,
+			$aMatches,
+			PREG_PATTERN_ORDER ) ) {
+		 */
 		if ( preg_match_all( '%define\("NS_([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)", ([0-9]*)\)%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
 			$aUserNamespaces = $aMatches[ 2 ];
 		}
 		if ( $bFullDetails ) {
 			$aTmp = array();
 			foreach ( $aUserNamespaces as $iNS ) {
-				$aTmp[ $iNS ] = array(
-					'content' => ( array_search( $iNS, $wgContentNamespaces ) !== false ),
-					'subpages' => ( isset( $wgNamespacesWithSubpages[ $iNS ] ) && $wgNamespacesWithSubpages[ $iNS ] ),
-					'searched' => ( isset( $wgNamespacesToBeSearchedDefault[ $iNS ] ) && $wgNamespacesToBeSearchedDefault[ $iNS ] )
+				$aTmp[$iNS] = array(
+					'content' => in_array( $iNS, $wgContentNamespaces ),
+					'subpages' => ( isset( $wgNamespacesWithSubpages[$iNS] ) && $wgNamespacesWithSubpages[$iNS] ),
+					'searched' => ( isset( $wgNamespacesToBeSearchedDefault[$iNS] ) && $wgNamespacesToBeSearchedDefault[$iNS] )
 				);
 				if ( $iNS >= 100 ) {
-					$aTmp[ $iNS ]['name'] = $wgExtraNamespaces[ $iNS ];
+					$aTmp[$iNS]['name'] = $wgExtraNamespaces[$iNS];
 				}
 			}
 
