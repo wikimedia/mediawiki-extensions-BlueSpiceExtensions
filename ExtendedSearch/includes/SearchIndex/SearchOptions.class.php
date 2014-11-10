@@ -429,7 +429,7 @@ class SearchOptions {
 			$bTagNamespace = true;
 			$aFq[] = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) )
 				? '{!tag=na}namespace:("' . implode( '" "', $aFqNamespaces ) . '")'
-				: 'namespace:(' . implode( ' ', $aFqNamespaces ) . ')';
+				: 'namespace:("' . implode( '" "', $aFqNamespaces ) . '")';
 		}
 
 		// $this->aOptions['cats'] = $this->oSearchRequest->sCat; // string, defaults to '' if 'search_cat' not set in REQUEST
