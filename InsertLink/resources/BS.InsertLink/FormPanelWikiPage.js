@@ -17,57 +17,23 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 	beforeInitComponent: function() {
 		this.setTitle( mw.message('bs-insertlink-tab-wiki-page').plain() );
 
-		this.cbNamespace = Ext.create( 'BS.form.NamespaceCombo', {
-			name: 'inputNamespace',
-			excludeIds: [bs.ns.NS_MEDIA]
-		});
-		this.cbNamespace.on('select', this.onCbNamespaceSelect, this);
-
-		this.cbPageName = Ext.create( 'Ext.form.field.ComboBox', {
-			store: this.makePageStore(),
-			fieldLabel: mw.message('bs-insertlink-label-page').plain(),
-			displayField:'name',
-			typeAhead: true,
-			queryMode: 'local',
-			triggerAction: 'all',
-			allowBlank: false,
-			emptyText:mw.message('bs-insertlink-select-a-page').plain()
+		this.cbPageName = Ext.create( 'BS.form.field.TitleCombo', {
+			fieldLabel: mw.message('bs-insertlink-label-page').plain()
 		});
 
 		this.pnlMainConf.items = [
-			this.cbNamespace,
 			this.cbPageName
 		];
 
 		this.callParent(arguments);
 	},
 
-	makePageStore: function() {
-		return Ext.create( 'Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'InsertLink::getPage' ),
-				reader: {
-					type: 'json',
-					root: 'items'
-				}
-			},
-			autoLoad: true,
-			fields: ['name', 'label', 'ns']
-		});
-	},
-
-	onCbNamespaceSelect: function( field, record ) {
-		this.cbPageName.getStore().load({
-			params:{ ns: record[0].get('id') }
-		});
-	},
 	resetData: function() {
-		this.cbNamespace.reset();
 		this.cbPageName.reset();
 
 		this.callParent(arguments);
 	},
+
 	setData: function( obj ) {
 		var bActive = false;
 		var desc = false;
@@ -104,12 +70,8 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 				//Check if it is a available namespace or part of the title
 				var normNsText = namespace.toLowerCase().replace(' ', '_' );
 				var nsId = wgNamespaceIds[normNsText];
-				if ( !nsId ) {
-					this.cbPageName.setValue( namespace + ":" + parts.join( ':' ) );
-				} else {
-					this.cbNamespace.setValue( nsId );
-					this.cbPageName.setValue( parts.join( ':' ) );
-				}
+				this.cbPageName.setValue( namespace + ":" + parts.join( ':' ) );
+
 			} else {
 				this.cbPageName.setValue( link );
 			}
@@ -122,8 +84,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 				}
 				var link = new bs.wikiText.Link(obj.code);
 
-				this.cbPageName.setValue( link.getTitle() );
-				this.cbNamespace.setValue( link.getNsText() );
+				this.cbPageName.setValue( link.getPrefixedTitle() );
 				if( link.getTitle() !== link.getDisplayText() ) {
 					desc = link.getDisplayText();
 				}
@@ -144,29 +105,20 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			desc = '|'+title;
 		}
 
-		var ns = '';
-		var nsIndex = this.cbNamespace.getValue();
-		if( nsIndex !== bs.ns.NS_MAIN ) {
-			var ns = wgFormattedNamespaces[nsIndex]+':';
-		}
+		var value = this.cbPageName.getValue();
+
+		var text = value.getPrefixedText();
 
 		// Escape Category namespace (people want to link to the category page,
 		// not assign a category
-		if( nsIndex === bs.ns.NS_CATEGORY ) { //[[:Category:Title]]
-			ns = ':' + ns;
+		if( value.getNamespace() === bs.ns.NS_CATEGORY ) { //[[:Category:Title]]
+			text = ':' + text;
 		}
 
-		//var href = '';
-		var page = '';
-		if( this.cbPageName.getValue() ) {
-			page = this.cbPageName.getValue();
-			//href = mw.util.wikiGetlink(ns+page);
-		}
-
-		var code = '[[' + ns + page + desc + ']]';
+		var code = '[[' + text + desc + ']]';
 		return {
 			title: title,
-			href: ns+page,
+			href: text,
 			type: this.linktype,
 			code: code
 			//'class': ''
