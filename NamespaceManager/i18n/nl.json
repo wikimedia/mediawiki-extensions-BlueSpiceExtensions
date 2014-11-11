@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-namespacemanager-label-namespaces": "Naamruimte",
+	"bs-namespacemanager-label-content": "Inhoudnaamruimte",
 	"bs-namespacemanager-nsadded": "De naamruimte is toegevoegd.",
 	"bs-namespacemanager-nsremoved": "De naamruimte is verwijderd.",
 	"bs-namespacemanager-nsedited": "De naamruimte is bewerkt.",
