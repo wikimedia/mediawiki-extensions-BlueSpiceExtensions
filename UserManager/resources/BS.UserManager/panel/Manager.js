@@ -12,14 +12,12 @@
  * @filesource
  */
 
-Ext.define( 'BS.UserManager.Panel', {
+Ext.define( 'BS.UserManager.panel.Manager', {
 	extend: 'BS.CRUDGridPanel',
+	requires: [ 'BS.UserManager.dialog.User', 'BS.UserManager.dialog.UserGroups' ],
 	id: 'bs-usermanager-extgrid',
 	features: [],
 	initComponent: function() {
-		this.smMain = this.smMain || Ext.create( 'Ext.selection.RowModel', {
-			mode: "MULTI"
-		});
 		this.strMain = Ext.create( 'Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
@@ -33,12 +31,13 @@ Ext.define( 'BS.UserManager.Panel', {
 			},
 			autoLoad: true,
 			remoteSort: true,
-			fields: [ 'user_id', 'user_name', 'user_page', 'user_real_name', 'user_email', 'groups' ],
+			fields: [ 'user_id', 'user_name', 'user_page_link', 'user_real_name', 'user_email', 'groups' ],
 			sortInfo: {
 				field: 'id',
 				direction: 'ASC'
 			}
 		});
+
 		this.strGroups = Ext.create( 'Ext.data.JsonStore', {
 			fields: [ 'group', 'displayname' ],
 			proxy: {
@@ -66,27 +65,31 @@ Ext.define( 'BS.UserManager.Panel', {
 			header: mw.message('bs-usermanager-headerusername').plain(),
 			sortable: true,
 			dataIndex: 'user_name',
-			tpl: '<a href="{user_page}">{user_name}</a>'
+			tpl: '{user_page_link}',
+			flex: 1
 		} );
 		this.colRealName = Ext.create( 'Ext.grid.column.Template', {
 			id: 'userrealname',
 			header: mw.message('bs-usermanager-headerrealname').plain(),
 			sortable: true,
 			dataIndex: 'user_real_name',
-			tpl: '{user_real_name}'
+			tpl: '{user_real_name}',
+			flex: 1
 		} );
 		this.colEmail = Ext.create( 'Ext.grid.column.Column', {
 			id: this.getId()+'-useremail',
 			header: mw.message('bs-usermanager-headeremail').plain(),
 			sortable: true,
 			dataIndex: 'user_email',
-			renderer: this.renderEmail
+			renderer: this.renderEmail,
+			flex: 1
 		} );
 		this.colGroups = Ext.create( 'Ext.grid.column.Column', {
 			header: mw.message('bs-usermanager-headergroups').plain(),
 			dataIndex: 'groups',
 			renderer: this.renderGroups,
-			sortable: false
+			sortable: false,
+			flex: 1
 		} );
 		this.filters = Ext.create('Ext.ux.grid.FiltersFeature', {
 			encode: true,
@@ -120,14 +123,44 @@ Ext.define( 'BS.UserManager.Panel', {
 		];
 		this.callParent( arguments );
 	},
+
+	makeSelModel: function(){
+		this.smModel = Ext.create( 'Ext.selection.CheckboxModel', {
+			mode: "MULTI",
+			selType: 'checkboxmodel'
+		});
+		return this.smModel;
+	},
+
+	makeGridColumns: function() {
+		var columns = this.callParent(arguments);
+		return {
+			items: columns.items
+		};
+	},
+
 	renderGroups: function( value ) {
 		if ( value.length === 0 ) return '';
 
 		var html = '<ul class="bs-extjs-list">';
 		for ( var i = 0; i < value.length; i++ ) {
+			if( i === 2  ) {
+				html += '<li>' + mw.html.element(
+					'a',
+					{
+						href: '#',
+						class: 'bs-um-more-groups'
+					},
+					mw.message('bs-usermanager-groups-more').plain()
+				) + '</li>';
+				html += '</ul>';
+				html += '<ul class="bs-extjs-list bs-um-hidden-groups" style="display:none">';
+			}
+
 			html += '<li>' + value[i].displayname + '</li>';
 		}
 		html += '</ul>';
+
 		return html;
 	},
 	renderEmail: function( value ) {
@@ -135,9 +168,19 @@ Ext.define( 'BS.UserManager.Panel', {
 
 		return '<a href="mailto:' + value + '">' + value + '</a>';
 	},
+	onGrdMainRowClick: function( oSender, iRowIndex, oEvent ) {
+		this.callParent(arguments);
+		/*
+		 * We override base class functionality which disables edit button on
+		 * multi selection
+		 */
+		this.btnEdit.enable();
+	},
 	onBtnAddClick: function( oButton, oEvent ) {
 		if ( !this.dlgUserAdd ) {
-			this.dlgUserAdd = Ext.create( 'BS.UserManager.UserDialog', {strGroups:this.strGroups} );
+			this.dlgUserAdd = new BS.UserManager.dialog.User({
+				strGroups:this.strGroups
+			});
 			this.dlgUserAdd.on( 'ok', this.onDlgUserAddOk, this );
 		}
 
@@ -148,24 +191,44 @@ Ext.define( 'BS.UserManager.Panel', {
 		this.callParent( arguments );
 	},
 	onBtnEditClick: function( oButton, oEvent ) {
-		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		if ( !this.dlgUserEdit ) {
-			this.dlgUserEdit = Ext.create( 'BS.UserManager.UserDialog', {strGroups:this.strGroups} );
-			this.dlgUserEdit.on( 'ok', this.onDlgUserEditOk, this );
+		var selectedRows = this.grdMain.getSelectionModel().getSelection();
+		if( selectedRows.length > 1 ) { //Multiselect
+			if ( !this.dlgUserGroups ) {
+				this.dlgUserGroups = new BS.UserManager.dialog.UserGroups({
+					strGroups:this.strGroups
+				});
+				this.dlgUserGroups.on( 'ok', this.onDlgUserGroupsOk, this );
+			}
+
+			this.active = 'edit-multi-groups';
+			this.dlgUserGroups.setData( { groups: [] } );
+			this.dlgUserGroups.show();
+		}
+		else { //Single select
+			if ( !this.dlgUserEdit ) {
+				this.dlgUserEdit = new BS.UserManager.dialog.User({
+					strGroups:this.strGroups
+				});
+				this.dlgUserEdit.on( 'ok', this.onDlgUserEditOk, this );
+			}
+
+			this.active = 'edit';
+			this.dlgUserEdit.setTitle( mw.message( 'bs-usermanager-titleeditdetails' ).plain() );
+			this.dlgUserEdit.tfUserName.disable();
+			this.dlgUserEdit.setData( selectedRows[0].getData() );
+			this.dlgUserEdit.show();
 		}
 
-		this.active = 'edit';
-		this.dlgUserEdit.setTitle( mw.message( 'bs-usermanager-titleeditdetails' ).plain() );
-		this.dlgUserEdit.tfUserName.disable();
-		this.dlgUserEdit.setData( selectedRow[0].getData() );
-		this.dlgUserEdit.show();
 		this.callParent( arguments );
 	},
 	onBtnRemoveClick: function( oButton, oEvent ) {
 		bs.util.confirm(
 			'UMremove',
 			{
-				text: mw.message( 'bs-usermanager-confirmdeleteuser', this.grdMain.getSelectionModel().getSelection().length ).text(),
+				text: mw.message(
+					'bs-usermanager-confirmdeleteuser',
+					this.grdMain.getSelectionModel().getSelection().length
+				).text(),
 				title: mw.message( 'bs-usermanager-titledeleteuser' ).plain()
 			},
 			{
@@ -177,7 +240,7 @@ Ext.define( 'BS.UserManager.Panel', {
 	},
 	onRemoveUserOk: function() {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		for (var i = 0; i<selectedRow.length; i++){
+		for (var i = 0; i < selectedRow.length; i++){
 			var userId = selectedRow[i].get( 'user_id' );
 
 			Ext.Ajax.request( {
@@ -248,14 +311,35 @@ Ext.define( 'BS.UserManager.Panel', {
 			failure: function( response, opts ) {}
 		});
 	},
+	onDlgUserGroupsOk: function( sender, data ) {
+		var selectedRow = this.grdMain.getSelectionModel().getSelection();
+		var userIds = [];
+		for (var i = 0; i < selectedRow.length; i++){
+			userIds.push( selectedRow[i].get( 'user_id' ) );
+		}
+		Ext.Ajax.request( {
+			url: bs.util.getAjaxDispatcherUrl(
+				'UserManager::setUserGroups',
+				[ userIds, data.groups ]
+			),
+			scope: this,
+			method: 'post',
+			success: function( response, opts ) {
+				var responseObj = Ext.decode( response.responseText );
+				this.renderMsgSuccess( responseObj );
+			}
+		});
+	},
 	reloadStore: function() {
 		this.strMain.reload();
 	},
 	showDlgAgain: function() {
 		if ( this.active === 'add' ) {
 			this.dlgUserAdd.show();
-		} else {
+		} else if ( this.active === 'edit' ) {
 			this.dlgUserEdit.show();
+		} else if ( this.active === 'edit-multi-groups' ) {
+			this.dlgUserGroupsEdit.show();
 		}
 	},
 	renderMsgSuccess: function( responseObj ) {
@@ -266,7 +350,17 @@ Ext.define( 'BS.UserManager.Panel', {
 
 				message = message + responseObj.message[i] + '<br />';
 			}
-			bs.util.alert( 'UMsuc', { text: message, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+			bs.util.alert(
+				'UMsuc',
+				{
+					text: message,
+					titleMsg: 'bs-extjs-title-success' },
+				{
+					ok: this.reloadStore,
+					cancel: function() {},
+					scope: this
+				}
+			);
 		}
 	},
 	renderMsgFailure: function( responseObj ) {
@@ -276,7 +370,18 @@ Ext.define( 'BS.UserManager.Panel', {
 				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
 				message = message + responseObj.errors[i].message + '<br />';
 			}
-			bs.util.alert( 'UMfail', { text: message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			bs.util.alert(
+				'UMfail',
+				{
+					text: message,
+					titleMsg: 'bs-extjs-title-warning'
+				},
+				{
+					ok: this.showDlgAgain,
+					cancel: function() {},
+					scope: this
+				}
+			);
 		}
 	}
 } );
