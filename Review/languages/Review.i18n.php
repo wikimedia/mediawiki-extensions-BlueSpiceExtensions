@@ -146,6 +146,7 @@ $messages['en'] = array(
 	'bs-review-commentinputlabel'        => 'Your comment',
 	'bs-review-ownercomment'             => 'Comment of $1',
 	'bs-review-comments' => 'Comments',
+	'log-show-hide-bs-review' => '$1 review log',
 
 	//Permissions
 	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there
@@ -330,6 +331,7 @@ $messages['de'] = array(
 	'bs-review-commentinputlabel'        => 'Dein Kommentar',
 	'bs-review-ownercomment'             => 'Kommentar von $1',
 	'bs-review-comments' => 'Kommentare',
+	'log-show-hide-bs-review' => 'Review-Logbuch $1',
 
 	//Permissions
 	//'workflowedit' and 'workflowlist' don't need 'action-*'-messages as there
