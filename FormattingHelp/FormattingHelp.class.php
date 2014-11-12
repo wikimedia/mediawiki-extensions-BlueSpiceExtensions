@@ -99,7 +99,7 @@ class FormattingHelp extends BsExtensionMW {
 	public static function getFormattingHelp() {
 		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
 
-		$sOutput = "<table border='1'>
+		$sOutput = "<table id='bs-formattinghelp-table' class='wikitable'>
 			<thead>
 				<tr>
 					<th></th>
