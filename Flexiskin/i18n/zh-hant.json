@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Cwlin0416",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"LNDDYL"
 		]
 	},
 	"bs-flexiskin-label": "外觀",
 	"bs-flexiskin-defaultname": "預設",
-	"bs-flexiskin-defaultdesc": "預設外觀樣版。",
+	"bs-flexiskin-defaultdesc": "預設外觀樣板。",
 	"prefs-flexiskin": "外觀",
 	"bs-flexiskin-pref-active": "使用的外觀：",
 	"bs-flexiskin-pref-logo": "標誌：",
@@ -15,7 +16,7 @@
 	"bs-flexiskin-labeldesc": "描述",
 	"bs-flexiskin-headergeneral": "一般",
 	"bs-flexiskin-titleaddskin": "新增外觀",
-	"bs-flexiskin-labelskins": "樣版",
+	"bs-flexiskin-labelskins": "樣板",
 	"bs-flexiskin-labelbgcolor": "背景顏色",
 	"bs-flexiskin-headerheader": "標題",
 	"bs-flexiskin-labellogoupload": "標誌",

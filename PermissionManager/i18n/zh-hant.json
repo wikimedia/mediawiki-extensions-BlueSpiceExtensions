@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Cwlin0416"
+			"Cwlin0416",
+			"LNDDYL"
 		]
 	},
 	"bs-permissionmanager-btn-group-label": "群組：",
@@ -14,7 +15,7 @@
 	"bs-permissionmanager-btn-save-in-progress-label": "儲存中...",
 	"bs-permissionmanager-save-success": "已儲存權限。",
 	"bs-permissionmanager-labeltemplates": "模板",
-	"bs-permissionmanager-btn-template-editor": "編輯樣版",
+	"bs-permissionmanager-btn-template-editor": "編輯樣板",
 	"bs-permissionmanager-labeltpled": "樣版編輯器",
 	"bs-permissionmanager-labeltpled-desc": "描述",
 	"bs-permissionmanager-labeltpled-active": "啟用中",
