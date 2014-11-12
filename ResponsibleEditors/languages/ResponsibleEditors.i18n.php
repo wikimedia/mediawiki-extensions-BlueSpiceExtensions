@@ -79,6 +79,7 @@ After logging into the wiki you can open the article with this link:
 	'bs-responsibleeditors-yourresponsibilitiesdesc'                => 'List of articles witch you are responsible for',
 	// TODO: add rights- messages
 	'action-responsibleeditors-viewspecialpage'     => 'view pages which are protected with the "ResponsibleEditors-Viewspecialpage" right',
+	'log-name-bs-responsibleeditors' => 'Responsible editors log',
 
 	//JavaScript
 	'bs-responsibleeditors-availableEditors'=> 'Available editors',
@@ -116,7 +117,7 @@ $messages['de'] = array(
 	'ResponsibleEditors'                                                   => 'Verantwortliche Redakteure',
 	'prefs-ResponsibleEditors'                                             => 'Verantwortliche Redakteure',
 	'bs-responsibleeditors-extension-description'                          => 'Erlaubt es Artikeln verantwortliche Redakteure zuzuweisen.',
-	
+
 	//Prefs
 	'bs-responsibleeditors-pref-ActivatedNamespaces'                       => 'Aktiviert für Namensräume',
 	'bs-responsibleeditors-pref-AutoAssignOnArticleCreation'               => 'Verantwortung beim Anlegen einer Seite automatisch zuweisen',
@@ -156,7 +157,7 @@ Solltest Du Fragen zur Übertragung der Verantwortlichkeit auf Dich haben, wende
 	'bs-responsibleeditors-mail-subject-former-editor'                     => 'Verantwortlichkeit für Artikel "$1" entzogen',
 	'bs-responsibleeditors-mail-text-former-editor'                        => "Soeben wurde Dir durch den Benutzer $1 die Verantwortlichkeit für den Artikel \"$2\" entzogen.
 {{PLURAL:$4|Der neue verantwortliche Redakteur ist|Die neuen verantwortlichen Redakteure sind}}: $3
-		
+
 Nach Anmeldung am Wiki kannst Du den Artikel mit folgendem Link erreichen:
 	$5
 
@@ -164,12 +165,12 @@ Solltest Du Fragen zur Änderung der Verantwortlichkeit haben, wende Dich bitte 
 ",
 	'bs-responsibleeditors-mail-subject-re-article-changed'                => 'Der Artikel "$1" wurde von $2 bearbeitet',
 	'bs-responsibleeditors-mail-text-re-article-changed'                   => "Der Artikel \"$1\", für den Du als verantwortlicher Redakteur eingetragen bist, wurde von $2 bearbeitet
-		
+
 Nach Anmeldung am Wiki kannst Du den Artikel mit folgendem Link erreichen:
 	$3",
 	'bs-responsibleeditors-mail-subject-re-article-deleted'                => 'Der Artikel "$1" wurde von $2 gelöscht',
 	'bs-responsibleeditors-mail-text-re-article-deleted'                   => "Der Artikel \"$1\", für den Du als verantwortlicher Redakteur eingetragen bist, wurde von $2 gelöscht
-		
+
 Nach Anmeldung am Wiki kannst Du den Artikel mit folgendem Link erreichen:
 	$3",
 	'bs-responsibleeditors-mail-subject-re-article-moved'                  => 'Der Artikel "$1" wurde von $2 verschoben',
@@ -183,6 +184,7 @@ Nach Anmeldung am Wiki kannst Du den Artikel mit folgendem Link erreichen:
 	'bs-responsibleeditors-yourresponsibilities'                    => 'Deine Verantwortlichkeiten',
 	'bs-responsibleeditors-yourresponsibilitiesdesc'                => 'Liste der Artikel, für die du verantwortlich bist',
 	'action-responsibleeditors-viewspecialpage'                     => 'Seiten, die durch das "ResponsibleEditors-Viewspecialpage" Recht geschützt sind, aufzurufen',
+	'log-name-bs-responsibleeditors' => 'Verantwortliche Redakteure Logbuch',
 
 	// Javascript i18n
 	'bs-responsibleeditors-availableEditors' =>'Verfügbare Redakteure',
@@ -228,7 +230,7 @@ Nach Anmeldung am Wiki können Sie den Artikel mit folgendem Link erreichen:
 Sollten Sie Fragen zur Übertragung der Verantwortlichkeit auf Sie haben, wenden Sie sich bitte an $1.",
 	'bs-responsibleeditors-mail-text-former-editor'         => "Soeben wurde Ihnen durch den Benutzer $1 die Verantwortlichkeit für den Artikel \"$2\" entzogen.
 {{PLURAL:$4|Der neue verantwortliche Redakteur ist|Die neuen verantwortlichen Redakteure sind}}: $3
-		
+
 Nach Anmeldung am Wiki können Sie den Artikel mit folgendem Link erreichen:
 	$5
 
