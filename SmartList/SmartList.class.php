@@ -850,6 +850,7 @@ class SmartList extends BsExtensionMW {
 				if ( $aArgs['showtext'] && ( $iItems <= $aArgs['numwithtext'] ) ) {
 					$oSmartListListEntryView->setTemplate( '*[[:{NAMESPACE}:{TITLE}|{DISPLAYTITLE}]]{META}<br/>{TEXT}' . "\n" );
 					$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
+					$sText = Sanitizer::stripAllTags( $sText );
 					$sText = BsStringHelper::shorten( $sText, array( 'max-length' => $aArgs['trimtext'], 'position' => 'end' ) );
 					$sText = '<nowiki>' . $sText . '</nowiki>';
 				} else {
