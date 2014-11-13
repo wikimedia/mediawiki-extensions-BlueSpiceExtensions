@@ -78,6 +78,7 @@ class Blog extends BsExtensionMW {
 		$this->setHook( 'BSRSSFeederGetRegisteredFeeds' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSTopMenuBarCustomizerRegisterNavigationSites' );
+		$this->setHook( 'PageContentSaveComplete' );
 
 		// Trackback is not fully functional in MW and thus disabled.
 		BsConfig::registerVar( 'MW::Blog::ShowTrackback', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL );
@@ -195,6 +196,36 @@ class Blog extends BsExtensionMW {
 				break;
 		}
 		return $aPrefs;
+	}
+
+	/**
+	 * Invalidates blog caches
+	 * @param Article $article
+	 * @param User $user
+	 * @param Content $content
+	 * @param type $summary
+	 * @param type $isMinor
+	 * @param type $isWatch
+	 * @param type $section
+	 * @param type $flags
+	 * @param Revision $revision
+	 * @param Status $status
+	 * @param type $baseRevId
+	 * @return boolean
+	 */
+	public function onPageContentSaveComplete( $article, $user, $content, $summary,
+			$isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
+		if ( $article->getTitle()->getNamespace() !== NS_BLOG ) return true;
+
+		$sTagsKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', 'Tags' );
+		$aTagsData = BsCacheHelper::get( $sTagsKey );
+
+		// Invalidate all blog tag caches
+		BsCacheHelper::invalidateCache( $aTagsData );
+		// Invalidate blog tag cache
+		BsCacheHelper::invalidateCache( $sTagsKey );
+
+		return true;
 	}
 
 	public function onBSNamespaceManagerBeforeSetUsernamespaces( $classInstance, &$bsSystemNamespaces ) {
@@ -315,6 +346,12 @@ class Blog extends BsExtensionMW {
 			$oTitle = $this->getTitle();
 		}
 
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', $oTitle->getArticleID() );
+		$aData = BsCacheHelper::get( $sKey );
+
+		if ( $aData !== false ) {
+			return $aData;
+		}
 		// initialize local variables
 		$sOut = '';
 		$oErrorListView = new ViewTagErrorList( $this );
@@ -589,8 +626,24 @@ class Blog extends BsExtensionMW {
 			$oBlogView->setOption( 'parentpage', 'Blog/' );
 		}
 
+		$aKey = array( $sKey );
+		$sTagsKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', 'Tags' );
+		$aTagsData = BsCacheHelper::get( $sTagsKey );
+
+		if ( $aTagsData !== false ) {
+			if ( !in_array( $sKey, $aTagsData ) ) {
+				$aTagsData = array_merge( $aTagsData, $aKey );
+			}
+		} else {
+			$aTagsData = $aKey;
+		}
+
+		BsCacheHelper::set( $sTagsKey, $aTagsData, 86400 ); // one day
+
 		// actually create blog output
 		$sOut = $oBlogView->execute();
+		BsCacheHelper::set( $sKey, $sOut, 86400 ); // one day
+
 		return $sOut;
 	}
 
