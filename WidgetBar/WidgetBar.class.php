@@ -171,25 +171,23 @@ class WidgetBar extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		global $wgDefaultSkin;
 		$oCurrentTitle = $sktemplate->getTitle();
 		$oUser = $sktemplate->getUser();
+		$oView = $this->getWidgets( $oCurrentTitle, $oUser );
 
-		$oView = $this->getWidgets($oCurrentTitle, $oUser);
-
-
-		if ($wgDefaultSkin == "bluespiceskin")
+		if ( $sktemplate instanceof BsBaseTemplate ) {
 			$tpl->data['bs_dataBeforeContent']['bs-widgetbar'] = array(
 				'position' => 10,
-				'label' => wfMessage('prefs-widgetbar')->text(),
+				'label' => wfMessage( 'prefs-widgetbar' )->text(),
 				'content' => $oView
 			);
-		else
+		} else {
 			$tpl->data['prebodyhtml'] .= $oView;
+		}
 		return true;
 	}
 
-	protected function getWidgets($oCurrentTitle, $oUser) {
+	protected function getWidgets( $oCurrentTitle, $oUser ) {
 		$oWidgetListView = new ViewWidgetList();
 		$aWidgetViews = array();
 		if ( $oCurrentTitle->userCan( 'read' ) == false ) {

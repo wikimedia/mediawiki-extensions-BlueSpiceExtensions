@@ -199,10 +199,9 @@ class Readers extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		global $wgDefaultSkin;
 		if ( $this->checkContext() === false ||
 				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ||
-				$wgDefaultSkin != "bluespiceskin" ) {
+				!( $sktemplate instanceof BsBaseTemplate ) ) {
 			return true;
 		}
 		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
@@ -221,10 +220,9 @@ class Readers extends BsExtensionMW {
 	}
 
 	public function onSkinAfterContent( &$data, $sktemplate ) {
-		global $wgDefaultSkin;
 		if ( $this->checkContext() === false ||
 				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ||
-				$wgDefaultSkin == "bluespiceskin" ) {
+				$sktemplate instanceof BsBaseTemplate ) {
 			return true;
 		}
 		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {

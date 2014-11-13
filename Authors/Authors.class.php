@@ -164,8 +164,7 @@ class Authors extends BsExtensionMW {
 			return true;
 		}
 
-		global $wgDefaultSkin;
-		if ( $wgDefaultSkin != "bluespiceskin" ) {
+		if ( !( $sktemplate instanceof BsBaseTemplate ) ) {
 			return true;
 		}
 
@@ -181,7 +180,6 @@ class Authors extends BsExtensionMW {
 
 	/**
 	 * Hook-Handler for 'SkinAfterContent'. Adds Authors view to the end of the content.
-	 * @global String $wgDefaultSkin
 	 * @param String $data
 	 * @param Skin $sktemplate
 	 * @return boolean
@@ -191,8 +189,7 @@ class Authors extends BsExtensionMW {
 			return true;
 		}
 
-		global $wgDefaultSkin;
-		if ( $wgDefaultSkin == "bluespiceskin" ) {
+		if ( $sktemplate instanceof BsBaseTemplate ) {
 			return true;
 		}
 

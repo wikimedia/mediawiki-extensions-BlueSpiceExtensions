@@ -319,12 +319,11 @@ class StateBar extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		global $wgDefaultSkin;
-		if( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) {
+		if ( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) {
 			return true;
 		}
 
-		if( !is_null( $this->oRedirectTargetTitle ) ) {
+		if ( !is_null( $this->oRedirectTargetTitle ) ) {
 			$oTitle = $this->oRedirectTargetTitle;
 		}
 		wfRunHooks( 'BSStateBarBeforeTopViewAdd', array(
@@ -332,14 +331,14 @@ class StateBar extends BsExtensionMW {
 			$sktemplate->getTitle(), $sktemplate )
 		);
 
-		if( count( $this->aTopViews ) == 0 ) {
+		if ( count( $this->aTopViews ) == 0 ) {
 			// TODO RBV (01.07.11 18:26): Ain't this too late?
 			BsExtensionManager::removeContext( 'MW::StateBarShow' );
 			return true;
 		}
 
 		$aSortTopVars = BsConfig::get('MW::StateBar::SortTopVars');
-		if( !empty( $aSortTopVars ) ) {
+		if ( !empty( $aSortTopVars ) ) {
 			$this->aTopViews = $this->reorderViews( $this->aTopViews, $aSortTopVars );
 		}
 
@@ -348,15 +347,17 @@ class StateBar extends BsExtensionMW {
 			$oViewStateBar->addStateBarTopView( $oTopView );
 		}
 
-		if ($wgDefaultSkin == 'bluespiceskin')
+		if ( $sktemplate instanceof BsBaseTemplate ) {
 			$tpl->data['bs_dataBeforeContent']['bs-statebar'] = array(
 				'position' => 20,
 				'label' => wfMessage( 'prefs-statebar' )->text(),
 				'content' => $oViewStateBar
 			);
-		//this is the case when BlueSpice Skin is not active, so use vector methods.
-		else
+		} else {
+			//this is the case when BlueSpice Skin is not active, so use vector methods.
 			$tpl->data['prebodyhtml'] .= $oViewStateBar;
+		}
+
 		return true;
 	}
 

@@ -230,8 +230,7 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		global $wgDefaultSkin;
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || $wgDefaultSkin != "bluespiceskin" ) {
+		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || !( $sktemplate instanceof BsBaseTemplate ) ) {
 			return true;
 		}
 
@@ -245,14 +244,12 @@ class ShoutBox extends BsExtensionMW {
 
 	/**
 	 * Hook-Handler for 'SkinAfterContent'. Adds the ShoutboxView to the end of the content
-	 * @global String $wgDefaultSkin
 	 * @param String $data
 	 * @param Skin $sktemplate
 	 * @return boolean
 	 */
 	public function onSkinAfterContent( &$data, $sktemplate ) {
-		global $wgDefaultSkin;
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || $wgDefaultSkin == "bluespiceskin" ) {
+		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || $sktemplate instanceof BsBaseTemplate ) {
 			return true;
 		}
 		$oShoutboxView =  $this->getShoutboxViewForAfterContent( $sktemplate );
