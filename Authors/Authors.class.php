@@ -164,7 +164,7 @@ class Authors extends BsExtensionMW {
 			return true;
 		}
 
-		if ( !( $sktemplate instanceof BsBaseTemplate ) ) {
+		if ( !( $skin instanceof BsBaseTemplate ) ) {
 			return true;
 		}
 
