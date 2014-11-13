@@ -11,24 +11,12 @@
  * @filesource
  */
 
-#bs-formattinghelp-content table {
-	font-family: 'Courier New', monospace;
-	border-collapse: collapse;
-}
-#bs-formattinghelp-content table tr:nth-child(odd) {
-	background-color: #FDFDFD;
-}
-
-#bs-formattinghelp-content table tr td {
-	padding: 10px 5px;
-}
-
 #bs-editbutton-formattinghelp {
 	/*@embed*/
 	background-image: url(images/button_formatinghelp.png);
 }
 
-#bs-formattinghelp-content th, #bs-formattinghelp-content td{
-	padding: 10px 5px;
-	text-align: left;
+#bs-formattinghelp-table {
+	font-family: 'Courier New', monospace;
+	border-collapse: collapse;
 }

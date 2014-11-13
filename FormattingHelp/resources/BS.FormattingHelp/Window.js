@@ -4,6 +4,8 @@ Ext.define('BS.FormattingHelp.Window', {
 	closeAction: 'hide',
 	singleton: true,
 	id: 'bs-formattinghelp-window',
+	height: 600,
+	width: 600,
 
 	initComponent: function(){
 		this.setTitle( mw.message('bs-formattinghelp-formatting').plain() );
