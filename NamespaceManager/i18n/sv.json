@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Warrakkk"
 		]
 	},
 	"bs-namespacemanager-desc": "Administrationsgränssnittet för att redigera och radera namnrymder",
@@ -14,7 +15,7 @@
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "Namnrymd",
 	"bs-namespacemanager-label-editable": "Omdöpningsbar",
-	"bs-namespacemanager-label-content": "I statistik",
+	"bs-namespacemanager-label-content": "Innehållsnamnrymd",
 	"bs-namespacemanager-label-searchable": "Sök som standard",
 	"bs-namespacemanager-label-subpages": "Undersidor",
 	"bs-namespacemanager-nsadded": "Namnrymden har lagts till.",

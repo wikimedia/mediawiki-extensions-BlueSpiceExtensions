@@ -37,7 +37,7 @@
 	"bs-pagetemplates-label-targetns": "Espacio de nombres",
 	"bs-pagetemplates-label-tplns": "Espacio de nombres de plantilla",
 	"bs-pagetemplates-label-article": "Plantilla",
-	"bs-pagetemplates-confirm-deletetpl": "¿Estás seguro de querer eliminar esta plantilla?",
+	"bs-pagetemplates-confirm-deletetpl": "¿Estás seguro de querer eliminar {{PLURAL:$1|esta plantilla|estas plantillas}}?",
 	"bs-pagetemplates-remove-message-unknown": "Se produjo un error inesperado, por favor intentelo nuevamente.",
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|La siguiente plantilla fue borrada|Las siguientes plantillas fueron borradas}}:$2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|La siguiente plantilla no se pudo|Las siguientes plantillas no se pudieron}} borrar:$2(Motivo: $3)"

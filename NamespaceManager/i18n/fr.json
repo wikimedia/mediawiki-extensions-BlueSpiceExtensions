@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Ltrlg"
+			"Ltrlg",
+			"Macofe"
 		]
 	},
 	"bs-namespacemanager-desc": "Interface d’administration pour ajouter, modifier et supprimer des espaces de noms",
@@ -14,7 +15,7 @@
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "Espace de noms",
 	"bs-namespacemanager-label-editable": "Renommable",
-	"bs-namespacemanager-label-content": "Dans les statistiques",
+	"bs-namespacemanager-label-content": "Espace de noms du contenu",
 	"bs-namespacemanager-label-searchable": "Recherché par défaut",
 	"bs-namespacemanager-label-subpages": "Sous-pages",
 	"bs-namespacemanager-nsadded": "L’espace de noms a été ajouté.",

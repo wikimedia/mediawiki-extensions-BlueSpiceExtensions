@@ -3,7 +3,8 @@
 		"authors": [
 			"Jopparn",
 			"WikiPhoenix",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Warrakkk"
 		]
 	},
 	"bs-pagetemplates-desc": "Visar en lista över mallar markerade som sidmallar",
@@ -38,7 +39,7 @@
 	"bs-pagetemplates-label-targetns": "Namnrymd",
 	"bs-pagetemplates-label-tplns": "Mall-namnrymden",
 	"bs-pagetemplates-label-article": "Mall",
-	"bs-pagetemplates-confirm-deletetpl": "Är du säker på att du vill radera den här mallen?",
+	"bs-pagetemplates-confirm-deletetpl": "Är du säker på att du vill ta bort {{PLURAL:$1|denna mall|dessa mallar}}?",
 	"bs-pagetemplates-remove-message-unknown": "Ett oväntat fel uppstod, försök igen.",
 	"bs-pagetemplates-remove-message-success": "Följande {{PLURAL:$1|mall|mallar}} raderades: $2",
 	"bs-pagetemplates-remove-message-failure": "Följande {{PLURAL:$1|mall|mallar}} kunde inte raderas: $2 (Orsak: $3)"

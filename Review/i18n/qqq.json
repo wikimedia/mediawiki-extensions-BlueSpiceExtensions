@@ -10,7 +10,7 @@
 			"Nemo bis"
 		]
 	},
-	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension",
+	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension\nThe review functionality is really basic. For an existing page, reviewers can be added, which can give a vote in a period of time whether the content is okay or not.",
 	"prefs-review": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for review section in preferences.\n{{Identical|Review}}",
 	"bs-review-review": "Used as a window title and headline\n{{Identical|Review}}",
 	"bs-review-menu-entry": "Used in content actions menu as an anchor text\n{{Identical|Edit review}}",
