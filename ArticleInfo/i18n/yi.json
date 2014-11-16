@@ -4,7 +4,9 @@
 			"פוילישער"
 		]
 	},
+	"bs-articleinfo-desc": "באזארגט אינפארמאציע וועגן א בלאט אין סטאטוספאס",
 	"prefs-articleinfo": "בלאַט־אינפֿארמאַציע",
+	"bs-articleinfo-pref-CheckRevisionInterval": "דערהײַנטיקן אינטערוואל אין סעקונדעס:",
 	"bs-articleinfo-last-edited": "צײַט זײַט לעצטיקער ענדערונג",
 	"bs-articleinfo-last-edited-tooltip": "לעצטע רעדאקטירונג",
 	"bs-articleinfo-last-editor": "{{GENDER:$1|לעצטער רעדאַקטאָר|לעצטע רעדאַקטאָרין}}",

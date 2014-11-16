@@ -4,7 +4,8 @@
 			"SPQRobin",
 			"Ribert",
 			"Southparkfan",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Siebrand"
 		]
 	},
 	"prefs-avatars": "Avatar:",
@@ -20,7 +21,7 @@
 	"bs-avatars-userimage-title": "Foto van wiki of afbeeldings-URL",
 	"bs-avatars-userimage-help": "bijvoorbeeld Afbeelding.jpg of http://localhost/Afbeelding.gif",
 	"bs-avatars-set-userimage-failed": "Geen geldige URL of afbeelding van wiki.",
-	"bs-avatars-set-userimage-saved": "Profielfoto succesvol opgeslagen",
+	"bs-avatars-set-userimage-saved": "Profielfoto opgeslagen",
 	"bs-avatars-file-upload-fieldset-title": "Afbeelding uploaden",
 	"bs-avatars-auto-generate-fieldset-title": "Automatisch avatar genereren"
 }
