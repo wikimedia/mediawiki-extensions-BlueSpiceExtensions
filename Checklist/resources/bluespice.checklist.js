@@ -27,13 +27,17 @@ BsChecklist = {
 	},
 
 	click: function(elem) {
+		var id = elem.id;
+		id = id.split( "-" );
+		id = id.pop();
+
 		$.ajax({
 			type: "GET",
 			url: bs.util.getAjaxDispatcherUrl( 'Checklist::doChangeCheckItem' ),
 			data: {
-				pos:elem.id,
-				value:elem.checked,
-				articleId:mw.config.get('wgArticleId')
+				pos: id,
+				value: elem.checked,
+				articleId: mw.config.get('wgArticleId')
 			},
 			//dataType: 'html',
 			success: function(result){ // the returned value is passed back as a _result_
@@ -43,12 +47,15 @@ BsChecklist = {
 	},
 
 	change: function(elem) {
+		var id = elem.id;
+		id = id.split( "-" );
+		id = id.pop();
 		elem.style.color=elem.options[elem.selectedIndex].style.color;
 		$.ajax({
 			type: "GET",
 			url: bs.util.getAjaxDispatcherUrl( 'Checklist::doChangeCheckItem' ),
 			data: {
-				pos:elem.id,
+				pos: id,
 				value:$('#'+elem.id).find(":selected").text(),
 				articleId:mw.config.get('wgArticleId')
 			},
