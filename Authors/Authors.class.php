@@ -88,7 +88,6 @@ class Authors extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// Hooks
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
-		$this->setHook( 'SkinAfterContent' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
@@ -159,44 +158,22 @@ class Authors extends BsExtensionMW {
 	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
 	 * @return bool always true
 	 */
-	public function onSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
 		if ( $this->checkContext() === false ) {
 			return true;
 		}
 
-		if ( !( $skin instanceof BsBaseTemplate ) ) {
-			return true;
-		}
-
-		$aDetails = array();
-		$oAuthorsView = $this->getAuthorsViewForAfterContent( $skin, $aDetails );
-		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
-			'position' => 10,
-			'label' => wfMessage( 'bs-authors-title', $aDetails['count'], $aDetails['username'] )->text(),
-			'content' => $oAuthorsView
-		);
-		return true;
-	}
-
-	/**
-	 * Hook-Handler for 'SkinAfterContent'. Adds Authors view to the end of the content.
-	 * @param String $data
-	 * @param Skin $sktemplate
-	 * @return boolean
-	 */
-	public function onSkinAfterContent( &$data, $sktemplate ) {
-		if ( $this->checkContext() === false ) {
-			return true;
-		}
-
-		if ( $sktemplate instanceof BsBaseTemplate ) {
+		if ( !( $tpl instanceof BsBaseTemplate ) ) {
 			return true;
 		}
 
 		$aDetails = array();
 		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate, $aDetails );
-		$data .= $oAuthorsView->execute();
-
+		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
+			'position' => 10,
+			'label' => wfMessage( 'bs-authors-title', $aDetails['count'], $aDetails['username'] )->text(),
+			'content' => $oAuthorsView
+		);
 		return true;
 	}
 

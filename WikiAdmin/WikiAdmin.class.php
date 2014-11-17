@@ -225,7 +225,7 @@ class WikiAdmin extends BsExtensionMW {
 		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
 		$aOut[] = '</ul>';
 
-		if ( $sktemplate instanceof BsBaseTemplate ) {
+		if ( $tpl instanceof BsBaseTemplate ) {
 			$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
 				'position' => 100,
 				'label' => wfMessage( 'bs-tab_admin' )->plain(),

@@ -74,7 +74,6 @@ class Readers extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'SkinTemplateNavigation' );
-		$this->setHook( 'SkinAfterContent' );
 
 		$this->mCore->registerPermission( 'viewreaders' );
 
@@ -201,7 +200,7 @@ class Readers extends BsExtensionMW {
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
 		if ( $this->checkContext() === false ||
 				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ||
-				!( $sktemplate instanceof BsBaseTemplate ) ) {
+				!( $tpl instanceof BsBaseTemplate ) ) {
 			return true;
 		}
 		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
@@ -215,25 +214,6 @@ class Readers extends BsExtensionMW {
 			'label' => wfMessage( 'bs-readers-title' )->text(),
 			'content' => $oViewReaders
 		);
-
-		return true;
-	}
-
-	public function onSkinAfterContent( &$data, $sktemplate ) {
-		if ( $this->checkContext() === false ||
-				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ||
-				$sktemplate instanceof BsBaseTemplate ) {
-			return true;
-		}
-		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
-			return true;
-		}
-
-		$oViewReaders = $this->getReadersViewForAfterContent( $sktemplate->getTitle() );
-
-		if ( $oViewReaders instanceof ViewReaders ) {
-			$data .= $oViewReaders->execute();
-		}
 
 		return true;
 	}

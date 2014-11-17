@@ -347,7 +347,7 @@ class StateBar extends BsExtensionMW {
 			$oViewStateBar->addStateBarTopView( $oTopView );
 		}
 
-		if ( $sktemplate instanceof BsBaseTemplate ) {
+		if ( $tpl instanceof BsBaseTemplate ) {
 			$tpl->data['bs_dataBeforeContent']['bs-statebar'] = array(
 				'position' => 20,
 				'label' => wfMessage( 'prefs-statebar' )->text(),

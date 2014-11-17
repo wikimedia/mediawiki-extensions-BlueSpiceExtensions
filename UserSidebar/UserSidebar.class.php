@@ -249,7 +249,7 @@ class UserSidebar extends BsExtensionMW {
 			}
 		}
 
-		if ( $sktemplate instanceof BsBaseTemplate ) {
+		if ( $tpl instanceof BsBaseTemplate ) {
 			$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
 				'position' => 20,
 				'label' => wfMessage( 'bs-tab_focus' )->plain(),

@@ -175,7 +175,7 @@ class WidgetBar extends BsExtensionMW {
 		$oUser = $sktemplate->getUser();
 		$oView = $this->getWidgets( $oCurrentTitle, $oUser );
 
-		if ( $sktemplate instanceof BsBaseTemplate ) {
+		if ( $tpl instanceof BsBaseTemplate ) {
 			$tpl->data['bs_dataBeforeContent']['bs-widgetbar'] = array(
 				'position' => 10,
 				'label' => wfMessage( 'prefs-widgetbar' )->text(),
