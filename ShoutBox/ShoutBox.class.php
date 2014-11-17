@@ -100,7 +100,6 @@ class ShoutBox extends BsExtensionMW {
 
 		// Hooks
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
-		$this->setHook( 'SkinAfterContent' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
@@ -230,7 +229,7 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || !( $sktemplate instanceof BsBaseTemplate ) ) {
+		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || !( $tpl instanceof BsBaseTemplate ) ) {
 			return true;
 		}
 
@@ -239,23 +238,6 @@ class ShoutBox extends BsExtensionMW {
 			'label' => wfMessage( 'bs-shoutbox-title' )->text(),
 			'content' => $this->getShoutboxViewForAfterContent( $sktemplate )
 		);
-		return true;
-	}
-
-	/**
-	 * Hook-Handler for 'SkinAfterContent'. Adds the ShoutboxView to the end of the content
-	 * @param String $data
-	 * @param Skin $sktemplate
-	 * @return boolean
-	 */
-	public function onSkinAfterContent( &$data, $sktemplate ) {
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || $sktemplate instanceof BsBaseTemplate ) {
-			return true;
-		}
-		$oShoutboxView =  $this->getShoutboxViewForAfterContent( $sktemplate );
-		if ( $oShoutboxView instanceof ViewShoutBox ) {
-			$data .= $oShoutboxView->execute();
-		}
 		return true;
 	}
 
@@ -285,7 +267,7 @@ class ShoutBox extends BsExtensionMW {
 		if ( $iArticleId <= 0 )
 			return true;
 
-		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId );
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId, $iLimit );
 		$aData = BsCacheHelper::get( $sKey );
 
 		if ( $aData !== false ) {
@@ -412,7 +394,12 @@ class ShoutBox extends BsExtensionMW {
 
 		$vLastCommit = $oRequest->getSessionData( 'MW::ShoutBox::lastCommit' );
 		if ( is_numeric( $vLastCommit ) && $vLastCommit + $iCommitTimeInterval > $iCurrentCommit ) {
-			return json_encode( array( 'success' => false, 'msg' => 'bs-shoutbox-too-early' ) );
+			return FormatJson::encode(
+				array(
+					'success' => false,
+					'msg' => 'bs-shoutbox-too-early'
+				)
+			);
 		}
 		$oRequest->setSessionData( 'MW::ShoutBox::lastCommit', $iCurrentCommit );
 
@@ -430,20 +417,26 @@ class ShoutBox extends BsExtensionMW {
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
-				'bs_shoutbox', array(
-			'sb_page_id' => $iArticleId,
-			'sb_user_id' => $iUserId,
-			'sb_user_name' => $sNick,
-			'sb_message' => $sMessage,
-			'sb_timestamp' => $sTimestamp,
-			'sb_archived' => '0'
+				'bs_shoutbox',
+				array(
+					'sb_page_id' => $iArticleId,
+					'sb_user_id' => $iUserId,
+					'sb_user_name' => $sNick,
+					'sb_message' => $sMessage,
+					'sb_timestamp' => $sTimestamp,
+					'sb_archived' => '0'
 				)
 		); // TODO RBV (21.10.10 17:21): Send error / success to client.
 
 		wfRunHooks( 'BSShoutBoxAfterInsertShout', array( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) );
 
 		self::invalidateShoutBoxCache( $iArticleId );
-		return json_encode( array( 'success' => true, 'msg' => self::getShouts( $iArticleId, 0 ) ) );
+		return FormatJson::encode(
+			array(
+				'success' => true,
+				'msg' => self::getShouts( $iArticleId, 0 )
+			)
+		);
 	}
 
 	/**
@@ -507,7 +500,8 @@ class ShoutBox extends BsExtensionMW {
 		$oShoutboxView->setKey( 'Shoutbox' );
 		$oShoutboxView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/ShoutBox/resources/images/icon-shoutbox.png' );
 		$oShoutboxView->setIconAlt( wfMessage( 'bs-shoutbox-title' )->plain() );
-		$oShoutboxView->setText( self::getTotalShouts( $oTitle->getArticleID() ) );
+		$oShoutboxView->setText(wfMessage( 'bs-shoutbox-n-shouts',self::getTotalShouts( $oTitle->getArticleID() ) )->text() );
+		$oShoutboxView->setTextLink('#');
 		$aTopViews['statebartopshoutbox'] = $oShoutboxView;
 		return true;
 	}

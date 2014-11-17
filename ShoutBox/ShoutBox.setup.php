@@ -20,7 +20,8 @@ $wgResourceModules['ext.bluespice.shoutbox'] = array(
 		'bs-shoutbox-confirm-title',
 		'bs-shoutbox-entermessage',
 		'bs-shoutbox-too-early',
-		'bs-shoutbox-charactersleft'
+		'bs-shoutbox-charactersleft',
+		'bs-shoutbox-n-shouts'
 	),
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;

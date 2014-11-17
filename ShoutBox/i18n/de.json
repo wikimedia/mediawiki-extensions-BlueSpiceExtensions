@@ -27,5 +27,6 @@
 	"bs-shoutbox-confirm-text": "Möchtest du diesen Eintrag wirklich löschen?",
 	"bs-shoutbox-confirm-title": "Bestätigen",
 	"bs-shoutbox-entermessage": "Bitte gib eine Nachricht ein.",
-	"bs-shoutbox-too-early": "Bitte warte ein paar Sekunden, bevor du den nächsten Eintrag abschickst."
+	"bs-shoutbox-too-early": "Bitte warte ein paar Sekunden, bevor du den nächsten Eintrag abschickst.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}"
 }
