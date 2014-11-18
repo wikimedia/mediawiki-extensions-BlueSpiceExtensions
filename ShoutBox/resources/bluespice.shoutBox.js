@@ -90,8 +90,11 @@ BsShoutBox = {
 					BsShoutBox.characterCounter.text( mw.message( 'bs-shoutbox-charactersleft', BsShoutBox.textField.attr( 'maxlength' ) ).text() );
 					BsShoutBox.shoutboxTabCounter.text( $( "#bs-sb-count-all" ).text() );
 					//statebar element
-					if ($('#sb-Shoutbox-text').length !== 0)
-						$('#sb-Shoutbox-text').text( $( "#bs-sb-count-all" ).text() );
+					if ($('#sb-Shoutbox-text a').length !== 0) {
+						var nshoutsmsg = mw.message( 'bs-shoutbox-n-shouts', $( "#bs-sb-count-all" ).text() ).text();
+						$('#sb-Shoutbox-text a').text( nshoutsmsg );
+						$('#sb-Shoutbox-text a').attr( 'title', nshoutsmsg );
+					}
 					$( document ).trigger( "onBsShoutboxAfterUpdated", [ BsShoutBox ] );
 				}
 		);
@@ -194,4 +197,8 @@ mw.loader.using( 'ext.bluespice', function() {
 			}
 		} );
 	} );
+
+	$('#sb-Shoutbox-link').click( function() {
+		$("#bs-data-after-content").tabs('select','#bs-shoutbox');
+	});
 } );

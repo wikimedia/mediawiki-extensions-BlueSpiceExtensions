@@ -26,5 +26,6 @@
     "bs-shoutbox-confirm-text": "Do you really want to delete this entry?",
     "bs-shoutbox-confirm-title": "Confirm",
     "bs-shoutbox-entermessage": "Please enter a message.",
-    "bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry."
+    "bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry.",
+    "bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}"
 }
