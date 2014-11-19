@@ -3,7 +3,8 @@
 		"authors": [
 			"Lokal Profil",
 			"WikiPhoenix",
-			"Jopparn"
+			"Jopparn",
+			"Magol"
 		]
 	},
 	"bs-checklist-desc": "Tillhandahåller funktionalitet för checklista",
@@ -15,8 +16,11 @@
 	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> renderar en urvalslista.",
 	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Namnet på mallen med de tillgängliga värdena. Parametern <code>type</code> måste sättas till <code>list</code>.",
 	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> eller ett värde ur listmallen.",
+	"bs-checklist-dlg-new-list": "Skapa en ny lista",
+	"bs-checklist-dlg-save-list": "Spara ändringar till lista",
 	"bs-checklist-dlg-items-label": "Objekt i listan",
 	"bs-checklist-dlg-items-emptytext": "Inga objekt i listan",
+	"bs-checklist-dlg-items-hint": "För att lägga till en ny post, skriv i fältet ovan och tryck <kbd>Enter</kbd>.",
 	"bs-checklist-dlg-panel-title": "Tillgängliga listor",
 	"bs-checklist-dlg-new-title": "Lägg till ny lista",
 	"bs-checklist-dlg-new-prompt": "Ange en titel för lista",

@@ -3,9 +3,15 @@
 		"authors": [
 			"Lokal Profil",
 			"Platinawolf",
-			"Freked"
+			"Freked",
+			"Magol"
 		]
 	},
+	"bs-contextmenu-desc": "Ger snabbmenyer för olika länkar",
+	"prefs-contextmenu": "Snabbmeny",
+	"bs-contextmenu-pref-modus": "Öppna snabbmenyn genom att (inte för mobil):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Klicka på höger musknapp (Genom att hålla nere CTRL kommer den normala snabbmenyn för webbläsaren visas)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Klicka på höger musknapp och trycka CTRL (Normal högerklickning kommer att visa webbläsarens vanliga snabbmeny)",
 	"bs-contextmenu-page-edit": "Redigera sida",
 	"bs-contextmenu-page-delete": "Radera sida",
 	"bs-contextmenu-page-move": "Flytta sidan",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Jopparn"
+			"Jopparn",
+			"Magol"
 		]
 	},
 	"prefs-avatars": "Avatarer",
@@ -10,7 +11,7 @@
 	"bs-avatars-pref-generator": "Generator:",
 	"bs-avatars-pref-defaultsize": "Standardstorlek i bildpunkter:",
 	"bs-avatars-upload-complete": "Bilden laddades upp.",
-	"bs-avatars-generate-complete": "En ny avatar genererades.",
+	"bs-avatars-generate-complete": "En ny avatar har genererats.",
 	"bs-avatars-upload-title": "Ändra profilbild",
 	"bs-avatars-upload-label": "Bild",
 	"bs-avatars-generate-new-label": "Generera ny avatar",

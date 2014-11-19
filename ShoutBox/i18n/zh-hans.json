@@ -27,5 +27,6 @@
 	"bs-shoutbox-confirm-text": "您真的希望删除此消息？",
 	"bs-shoutbox-confirm-title": "确认",
 	"bs-shoutbox-entermessage": "请输入一条消息。",
-	"bs-shoutbox-too-early": "请等待几秒钟后再提交下一个条目。"
+	"bs-shoutbox-too-early": "请等待几秒钟后再提交下一个条目。",
+	"bs-shoutbox-n-shouts": "$1次喊话"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"WikiPhoenix",
 			"Lokal Profil",
-			"Jopparn"
+			"Jopparn",
+			"Magol"
 		]
 	},
 	"bs-blog-desc": "Visar en lista med sidor i blogg-stil",
@@ -27,6 +28,7 @@
 	"bs-blog-pref-showpermalink": "Visa länken för permanent länk",
 	"bs-blog-pref-sortby": "Sortera efter:",
 	"bs-blog-pref-imagerendermode": "Visa bilder som:",
+	"bs-blog-pref-imagefloatdirection": "Textflöde: Bildposition",
 	"bs-blog-pref-maxentrycharacters": "Antal ord per inlägg:",
 	"bs-blog-tag-blog-desc": "Visa blogginlägg på varje sida."
 }

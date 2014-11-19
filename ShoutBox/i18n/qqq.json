@@ -31,5 +31,5 @@
 	"bs-shoutbox-confirm-title": "Window title for confirm\n{{Identical|Confirm}}",
 	"bs-shoutbox-entermessage": "Text for please enter a message.",
 	"bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry.",
-	"bs-shoutbox-n-shouts": "Text for the number of shouts, used in StateBar\n*$1 is the number of shouts, also use this for PLURAL distinction"
+	"bs-shoutbox-n-shouts": "Text for the number of shouts, used in StateBar\n*$1 is the number of shouts, also use this for PLURAL distinction\n{{Identical|Shout}}"
 }
