@@ -501,7 +501,7 @@ class ShoutBox extends BsExtensionMW {
 		$oShoutboxView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/ShoutBox/resources/images/icon-shoutbox.png' );
 		$oShoutboxView->setIconAlt( wfMessage( 'bs-shoutbox-title' )->plain() );
 		$oShoutboxView->setText(wfMessage( 'bs-shoutbox-n-shouts',self::getTotalShouts( $oTitle->getArticleID() ) )->text() );
-		$oShoutboxView->setTextLink('#');
+		$oShoutboxView->setTextLink('#bs-shoutbox');
 		$aTopViews['statebartopshoutbox'] = $oShoutboxView;
 		return true;
 	}
