@@ -21,5 +21,6 @@
 	"bs-usermanager-titleeditdetails": "Editar utilizador(a)",
 	"bs-usermanager-labelnewpassword": "Palavra-passe",
 	"bs-usermanager-labelpasswordcheck": "Confirmar a palavra-passe",
-	"bs-usermanager-titledeleteuser": "Eliminar utilizador(a)"
+	"bs-usermanager-titledeleteuser": "Eliminar utilizador(a)",
+	"bs-usermanager-groups-more": "... mais"
 }

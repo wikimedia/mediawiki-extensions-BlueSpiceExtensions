@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Fengchao"
+			"Fengchao",
+			"LNDDYL"
 		]
 	},
 	"bs-extendedsearch-desc": "基于Apache Solr（http://lucene.apache.org/solr/）的搜索插件以增强搜索功能",
@@ -24,7 +25,7 @@
 	"bs-extendedsearch-fuzzy": "精确搜索“$1”没有结果。有{{PLURAL:$2|$2个类似的结果}}。",
 	"bs-extendedsearch-indexing-files-in-repo": "索引上传文件",
 	"bs-extendedsearch-indexing-external-files-in-repo": "索引外部文件",
-	"bs-extendedsearch-indexing-linked-files": "索引连入文件",
+	"bs-extendedsearch-indexing-linked-files": "索引链入文件",
 	"bs-extendedsearch-indexing-wiki-articles": "索引wiki页面",
 	"bs-extendedsearch-indexing-specialpages": "索引特殊页面",
 	"bs-extendedsearch-invalid-query": "无法处理此次查询。",

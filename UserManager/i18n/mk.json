@@ -28,5 +28,6 @@
 	"bs-usermanager-labelnewpassword": "Лозинка",
 	"bs-usermanager-labelpasswordcheck": "Потврдете ја лозинката",
 	"bs-usermanager-titledeleteuser": "Бришење на корисник",
-	"bs-usermanager-confirmdeleteuser": "Дали сте сигурни дека сакате да {{PLURAL:$1|го избришете корисников|ги избришете овие $1 корисници}}?"
+	"bs-usermanager-confirmdeleteuser": "Дали сте сигурни дека сакате да {{PLURAL:$1|го избришете корисников|ги избришете овие $1 корисници}}?",
+	"bs-usermanager-groups-more": "... повеќе"
 }

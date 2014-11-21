@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Darellur"
 		]
 	},
 	"bs-usermanager-desc": "Interfejs administracyjny do dodawania, edytowania i usuwania użytkowników",
@@ -18,5 +19,6 @@
 	"bs-usermanager-headergroups": "Grupy",
 	"bs-usermanager-titleadduser": "Dodaj użytkownika",
 	"bs-usermanager-labelnewpassword": "Hasło",
-	"bs-usermanager-labelpasswordcheck": "Potwierdź hasło"
+	"bs-usermanager-labelpasswordcheck": "Potwierdź hasło",
+	"bs-usermanager-groups-more": "... więcej"
 }

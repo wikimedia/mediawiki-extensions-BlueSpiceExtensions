@@ -28,6 +28,7 @@
 	"bs-blog-pref-showpermalink": "显示固定链接",
 	"bs-blog-pref-sortby": "排序方式：",
 	"bs-blog-pref-imagerendermode": "显示图片作为：",
+	"bs-blog-pref-imagefloatdirection": "文本流：图片位置",
 	"bs-blog-pref-maxentrycharacters": "每博文字数：",
 	"bs-blog-tag-blog-desc": "在任何页面显示博文。"
 }
