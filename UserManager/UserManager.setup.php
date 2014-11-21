@@ -22,7 +22,8 @@ $wgResourceModules['ext.bluespice.userManager'] = array(
 		'bs-usermanager-labelpasswordcheck',
 		'bs-usermanager-headergroups',
 		'bs-usermanager-titledeleteuser',
-		'bs-usermanager-confirmdeleteuser'
+		'bs-usermanager-confirmdeleteuser',
+		'bs-usermanager-groups-more'
 	),
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/UserManager/resources'
@@ -32,3 +33,4 @@ $wgAjaxExportList[] = 'UserManager::getUsers';
 $wgAjaxExportList[] = 'UserManager::addUser';
 $wgAjaxExportList[] = 'UserManager::editUser';
 $wgAjaxExportList[] = 'UserManager::deleteUser';
+$wgAjaxExportList[] = 'UserManager::setUserGroups';

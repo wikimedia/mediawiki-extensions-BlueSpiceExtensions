@@ -84,7 +84,7 @@ class UserManager extends BsExtensionMW {
 		$sDirection = $oStoreParams->getDirection();
 		$aFilters = $oStoreParams->getFilter();
 
-		$aSortingParams = json_decode( $sSort );
+		$aSortingParams = FormatJson::decode( $sSort );
 		if ( is_array( $aSortingParams ) ) {
 			$sSort = $aSortingParams[0]->property;
 			$sDirection = $aSortingParams[0]->direction;
@@ -155,7 +155,7 @@ class UserManager extends BsExtensionMW {
 			$tmp = array();
 			$tmp['user_id']        = $row->user_id;
 			$tmp['user_name']      = $row->user_name;
-			$tmp['user_page']      = $oUserTitle->getLocalURL();
+			$tmp['user_page_link'] = Linker::link( $oUserTitle, $row->user_name.' ' ); //The whitespace is to aviod automatic rewrite to user_real_name by BSF
 			$tmp['user_real_name'] = $row->user_real_name;
 			$tmp['user_email']     = $row->user_email == null ? '' : $row->user_email; //PW: Oracle returns null when field is emtpy
 			$tmp['groups']         = array();
@@ -179,7 +179,7 @@ class UserManager extends BsExtensionMW {
 		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
 		wfRunHooks( 'BSWikiAdminUserManagerBeforeUserListSend', array( $oUserManager, &$data ) );
 
-		return json_encode( $data );
+		return FormatJson::encode( $data );
 	}
 
 	/**
@@ -190,7 +190,7 @@ class UserManager extends BsExtensionMW {
 	public static function addUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
@@ -278,7 +278,7 @@ class UserManager extends BsExtensionMW {
 		}
 
 		if ( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
-			return json_encode( $aResponse );
+			return FormatJson::encode( $aResponse );
 		}
 
 		$oNewUser->addToDatabase();
@@ -338,7 +338,7 @@ class UserManager extends BsExtensionMW {
 			)
 		);
 
-		return json_encode( $aResponse );
+		return FormatJson::encode( $aResponse );
 	}
 
 	/**
@@ -354,7 +354,7 @@ class UserManager extends BsExtensionMW {
 	public static function editUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
@@ -457,7 +457,7 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save-successful' )->plain();
 		}
 
-		return json_encode( $aAnswer );
+		return FormatJson::encode( $aAnswer );
 	}
 
 	/**
@@ -467,21 +467,21 @@ class UserManager extends BsExtensionMW {
 	 * @return string json encoded response
 	 */
 	public static function deleteUser( $iUserId ) {
-		if ( wfReadOnly() ) {
-			global $wgReadOnly;
-			return json_encode( array(
-				'success' => false,
-				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() ),
-				'errors' => array(),
-			));
-		}
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
-
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'message' => array(),
+			'message' => array()
 		);
+
+		if ( wfReadOnly() ) {
+			global $wgReadOnly;
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-readonly', $wgReadOnly )->plain();
+		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-wikiadmin-notallowed' )->plain();
+		}
 
 		$oUser = User::newFromId( $iUserId );
 
@@ -502,7 +502,7 @@ class UserManager extends BsExtensionMW {
 		}
 
 		if( !$aAnswer['success'] ) {
-			return json_encode( $aAnswer );
+			return FormatJson::encode( $aAnswer );
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -529,17 +529,74 @@ class UserManager extends BsExtensionMW {
 		if ( ( $res === false ) || ( $res1 === false ) || ( $res2 === false ) || ( $res3 === false ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
-			return json_encode( $aAnswer );
+			return FormatJson::encode( $aAnswer );
 		}
 
 		$aAnswer['message'][] = wfMessage( 'bs-usermanager-user-deleted' )->plain();
 
-		return json_encode( $aAnswer );
+		return FormatJson::encode( $aAnswer );
+	}
+
+	public static function setUserGroups( $aUserIds, $aGroups ) {
+		$aAnswer = array(
+			'success' => true,
+			'errors' => array(),
+			'message' => array()
+		);
+
+		if ( wfReadOnly() ) {
+			global $wgReadOnly;
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-readonly', $wgReadOnly )->plain();
+		}
+
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-wikiadmin-notallowed' )->plain();
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+		$resDelGroups = $dbw->delete( 'user_groups',
+			array(
+				'ug_user' => $aUserIds
+			)
+		);
+
+		$resInsGroups = true;
+		if( is_array( $aGroups ) ) {
+			foreach ( $aGroups as $sGroup ) {
+				if ( in_array( $sGroup, self::$excludegroups ) ) {
+					continue;
+				}
+				foreach( $aUserIds as $iUserId ) {
+					$resInsGroups = $dbw->insert(
+							'user_groups',
+							array(
+								'ug_user' => (int)$iUserId,
+								'ug_group' => addslashes( $sGroup )
+							)
+					);
+					if( $resInsGroups === false ) {
+						break;
+					}
+				}
+			}
+		}
+
+		if ( $resDelGroups === false || $resInsGroups === false ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
+		}
+
+		if ( $aAnswer['success'] ) {
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save-successful' )->plain();
+		}
+
+		return FormatJson::encode( $aAnswer );
 	}
 
 	public function getForm( $firsttime = false ) {
 		$this->getOutput()->addModules( 'ext.bluespice.userManager' );
 		return '<div id="bs-usermanager-grid"></div>';
 	}
-
 }

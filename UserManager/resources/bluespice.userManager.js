@@ -10,6 +10,14 @@
  * @filesource
  */
 
-Ext.create( 'BS.UserManager.Panel', {
-	renderTo: 'bs-usermanager-grid'
-} );
+(function( mw, $, bs, d, undefined){
+	Ext.create( 'BS.UserManager.panel.Manager', {
+		renderTo: 'bs-usermanager-grid'
+	} );
+
+	$(d).on( 'click', '.bs-um-more-groups', function() {
+		$(this).parent('li').hide();
+		$(this).parents('ul').next('.bs-um-hidden-groups').show();
+		return false;
+	});
+})(mediaWiki, jQuery, blueSpice, document );

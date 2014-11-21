@@ -12,7 +12,7 @@
  * @filesource
  */
 
-Ext.define( 'BS.UserManager.UserDialog', {
+Ext.define( 'BS.UserManager.dialog.User', {
 	extend: 'BS.Window',
 	currentData: {},
 	selectedData: {},
@@ -56,7 +56,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 			labelAlign: 'right',
 			name: 'realname'
 		});
-		
+
 		this.cbGroups = Ext.create( 'Ext.ux.form.MultiSelect', {
 			fieldLabel: mw.message('bs-usermanager-headergroups').plain(),
 			labelWidth: 130,
@@ -106,7 +106,7 @@ Ext.define( 'BS.UserManager.UserDialog', {
 
 		return this.selectedData;
 	},
-			
+
 	getGroupsValue: function( data ) {
 		var groups = [];
 		for( var i = 0; i < data.length; i++ ) {
