@@ -7,6 +7,8 @@
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategory|Kategoryen}}: $2",
 	"bs-extendedsearch-error": "Flater:",
 	"bs-extendedsearch-facet-category": "Kategory",
+	"bs-extendedsearch-facet-namespace": "Nammeromte",
 	"bs-extendedsearch-facet-namespace-files": "Triemmen",
+	"bs-extendedsearch-warning": "Warskôging",
 	"bs-extendedsearch-more": "Mear"
 }
