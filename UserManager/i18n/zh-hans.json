@@ -28,5 +28,6 @@
 	"bs-usermanager-labelnewpassword": "密码",
 	"bs-usermanager-labelpasswordcheck": "确认密码",
 	"bs-usermanager-titledeleteuser": "删除用户",
-	"bs-usermanager-confirmdeleteuser": "您确信要删除{{PLURAL:$1|此|这$1位}}用户么？"
+	"bs-usermanager-confirmdeleteuser": "您确信要删除{{PLURAL:$1|此|这$1位}}用户么？",
+	"bs-usermanager-groups-more": "……更多"
 }
