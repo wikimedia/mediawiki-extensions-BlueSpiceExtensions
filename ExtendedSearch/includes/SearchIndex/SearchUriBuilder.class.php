@@ -4,23 +4,17 @@
  *
  * Part of BlueSpice for MediaWiki
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
 /**
- * Buildes URIs for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
+ * Buildes URIs
  */
 class SearchUriBuilder {
 
@@ -90,13 +84,13 @@ class SearchUriBuilder {
 	const ALL = 8191; // all but EXTENDED
 
 	/**
-	 * Currently determined search options.
-	 * @var SearchOptions Currently determined search options.
+	 * Instance of SearchOptions
+	 * @var object SearchOptions object
 	 */
 	protected $oSearchOptions = null;
 	/**
-	 * Currently determined search request.
-	 * @var SearchRequest Currently determined search request.
+	 * Instance of SearchRequest
+	 * @var object SearchRequest object
 	 */
 	protected $oSearchRequest = null;
 	/**
@@ -110,13 +104,13 @@ class SearchUriBuilder {
 	 */
 	protected $aCache = array();
 	/**
-	 * Instance of search service
-	 * @var object of search service
+	 * Instance of SearchUriBuilder
+	 * @var object SearchUriBuilder object
 	 */
 	protected static $oInstance = null;
 
 	/**
-	 * Constructor for SearchUriBuilderMW class
+	 * Constructor for SearchUriBuilder class
 	 * @param SearchOptions $oSearchOptions SearchOptions object
 	 */
 	public function __construct( $oSearchRequest, $oSearchOptions ) {

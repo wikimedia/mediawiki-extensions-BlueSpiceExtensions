@@ -4,22 +4,17 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
  * Abstract index builder for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 abstract class AbstractBuildIndexMwLinked extends AbstractBuildIndexLinked {
 

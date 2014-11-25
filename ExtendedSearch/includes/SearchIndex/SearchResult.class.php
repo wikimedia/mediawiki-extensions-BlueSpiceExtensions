@@ -11,13 +11,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
+ * BsSearchResult class
  */
 class BsSearchResult {
 
@@ -47,19 +43,22 @@ class BsSearchResult {
 	 */
 	protected $oSearchOptions = null;
 	/**
-	 * SearchUriBuilder object
-	 * @var SearchUriBuilder SearchUriBuilder object
+	 * Instance of SearchUriBuilder
+	 * @var object SearchUriBuilder object
 	 */
 	protected $oSearchUriBuilder = null;
 	/**
-	 * Maximum number of facet items
-	 * @var int Number
+	 * Maximum character length of facets
+	 * @var int Numberof characters
 	 */
 	protected $iMaxFacetLength = 20;
 
 	/**
 	 * Constructor for SearchResult class
-	 * @param ApacheSolrResponse $oResponse solr result set
+	 * @param object $oContext RequestContext
+	 * @param object $oSearchOptions SearchOptions
+	 * @param object $oSearchUriBuilder SearchUriBuilder
+	 * @param object $oResponse solr result set
 	 */
 	public function __construct( $oContext, $oSearchOptions, $oSearchUriBuilder, $oResponse ) {
 		$this->oContext = $oContext;
@@ -68,10 +67,17 @@ class BsSearchResult {
 		$this->oResponse = $oResponse;
 	}
 
+	/**
+	 * Setter for result specific data
+	 */
 	public function setData( $sKey, $vValue ) {
 		$this->aData[$sKey] = $vValue;
 	}
 
+	/**
+	 * Getter for result specific data
+	 * @return mixed Specific data for a given key
+	 */
 	public function getData( $sKey ) {
 		return $this->aData[$sKey];
 	}
@@ -122,44 +128,10 @@ class BsSearchResult {
 	 * @param int $iResults number of results found
 	 */
 	private function createNavigation( $iResults ) {
-		$aPaging = array();
-		$sSearchLimit = $this->oSearchOptions->getOption( 'searchLimit' );
-
-		$loopsCalculated = ( $iResults / $sSearchLimit ) + 1;
-		$this->vSearchResult->setOption( 'activePage', 1 );
-		$sUrl = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET );
-
-		for ( $i = 1; $i < $loopsCalculated; $i++ ) {
-			$sOffset = ( ( $i - 1 ) * $sSearchLimit );
-
-			if ( $sOffset == $this->oSearchOptions->getOption( 'offset' ) ) {
-				$this->vSearchResult->setOption( 'activePage', $i );
-			}
-
-			$aPaging[$i] = "{$sUrl}&search_offset={$sOffset}";
-		}
+		$aPaging = $this->getPaging( $iResults );
+		$aSorting = $this->getSorting();
 
 		$this->vSearchResult->setOption( 'pages', $aPaging );
-
-		$aSortTypes = array(
-			'titleSort' => 'bs-extendedsearch-sort-title',
-			'score' => 'bs-extendedsearch-sort-relevance',
-			'type' => 'bs-extendedsearch-sort-type',
-			'ts' => 'bs-extendedsearch-sort-ts'
-		);
-
-		$aSorting = array(
-			'sorttypes' => $aSortTypes,
-			'sortactive' => isset( $aSortTypes[$this->oSearchOptions->getOption( 'order' )] )
-					? $this->oSearchOptions->getOption( 'order' )
-					: 'score',
-			'sortdirection' => ( $this->oSearchOptions->getOption( 'asc' ) == 'asc' ) ? 'asc' : 'desc',
-			'sorturl' => $this->oSearchUriBuilder->buildUri(
-					SearchUriBuilder::ALL,
-					SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET
-				)
-			);
-
 		$this->vSearchResult->setOption( 'numFound', $iResults );
 		$this->vSearchResult->setOption( 'sorting', $aSorting );
 	}
@@ -215,6 +187,8 @@ class BsSearchResult {
 				)
 			)
 		);
+
+		wfRunHooks( 'BSExtendedSearchBeforeCreateFacets', array( &$aBaseFacets ) );
 
 		foreach ( $aBaseFacets as $sFacet => $aConfig ) {
 			$oFacet = new ViewSearchFacet();
@@ -357,27 +331,11 @@ class BsSearchResult {
 
 	/**
 	 * Creates the results
-	 * @global type $wgScriptPath
 	 */
 	private function createResults() {
-		global $wgScriptPath;
-		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
-
-		$aImageLinks = array(
-			'doc' => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
-			'ppt' => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
-			'xls' => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
-			'pdf' => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
-			'txt' => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
-			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
-		);
-
 		$oParser = new Parser();
 
 		foreach ( $this->oResponse->response->docs as $oDocument ) {
-			//Show Page Title and link it
-			$sLinkIcon = $aImageLinks['default'];
-
 			$iNamespace = ( $oDocument->namespace == '999' )
 				? NS_FILE
 				: $oDocument->namespace;
@@ -389,134 +347,40 @@ class BsSearchResult {
 				if ( !$oTitle->exists() ) continue;
 			}
 
-			$oSkin = RequestContext::getMain()->getSkin();
-			$sSearchLink = false;
+			$oSkin = $this->oContext->getSkin();
+			$sSearchLink = '';
+			$sIconPath = '';
+			wfRunHooks( 'BSExtendedSearchFormatLink', array( &$sSearchLink, $oDocument, $oSkin, &$sIconPath ) );
 
-			wfRunHooks( 'BSExtendedSearchFormatLink', array( &$sSearchLink, $oDocument, $oSkin, &$sLinkIcon ) );
-
-			if ( !$sSearchLink ) {
+			if ( empty( $sSearchLink ) ) {
 				if ( $oDocument->type == 'wiki' ) {
 					if ( !$oTitle->userCan( 'read' ) ) continue;
+					$sSearchLink = $this->getWikiLink( $oDocument, $oTitle, $oParser );
+					$sIcon = 'default';
 
-					$sHtml = null;
-					if ( isset( $this->oResponse->highlighting->{$oDocument->uid}->titleWord ) ) {
-						$sHtml = $this->oResponse->highlighting->{$oDocument->uid}->titleWord[0];
-					} elseif(  isset( $this->oResponse->highlighting->{$oDocument->uid}->titleReverse ) ) {
-						$sHtml = $this->oResponse->highlighting->{$oDocument->uid}->titleReverse[0];
-					}
-
-					if ( !is_null( $sHtml ) ) {
-						if ( $oDocument->namespace != '0' && $oDocument->namespace != '998' && $oDocument->namespace != '999' ) {
-							$sHtml = BsNamespaceHelper::getNamespaceName( $oDocument->namespace ). ':' . $sHtml;
-						}
-						$sHtml = str_replace ( '_', ' ', $sHtml );
-					}
-
-					$sSearchLink = BsLinkProvider::makeLink(
-						$oTitle,
-						$sHtml,
-						$aCustomAttribs = array(
-							'class' => 'bs-extendedsearch-result-headline'
-						),
-						array(),
-						array( 'known' )
-					);
-
-					if ( isset( $this->oResponse->highlighting->{$oDocument->uid}->sections ) ) {
-						$sSection = strip_tags( $this->oResponse->highlighting->{$oDocument->uid}->sections[0], '<em>' );
-						$sSectionAnchor = $oParser->guessSectionNameFromWikiText( $sSection );
-						$sSectionLink = BsLinkProvider::makeLink( $oTitle, $sSection, array(), array(), array( 'known' ) );
-
-						$aMatches = array();
-						preg_match( '#.*?href="(.*?)".*?#', $sSectionLink, $aMatches );
-
-						if ( isset( $aMatches[1] ) ) {
-							$sAnchor = $aMatches[1] . $sSectionAnchor;
-							$sSectionLink = str_replace( $aMatches[1], $sAnchor, $sSectionLink );
-						}
-
-						$sSearchLink .= ' <span class="bs-extendedsearch-sectionresult">('.
-							wfMessage( 'bs-extendedsearch-section' )->plain() . ' ' . $sSectionLink . ')</span>';
-					}
 				} elseif ( $this->oContext->getUser()->isAllowed( 'searchfiles' ) ) {
-					$sLinkIcon = ( isset( $aImageLinks[$oDocument->type] ) )
-						? $aImageLinks[$oDocument->type]
-						: $aImageLinks['default'];
-
-					if ( $oDocument->overall_type == 'repo' ) {
-						$sSearchLink = Linker::makeMediaLinkObj( $oTitle );
-					} elseif ( $oDocument->overall_type == 'special-linked' ) {
-						$sTitle = $oDocument->title;
-						$sLink = $oDocument->path;
-
-						$sSearchLink = Linker::makeExternalLink( $sLink, $sTitle, '' );
-						$sSearchLink = str_replace( '<a', '<a target="_blank"', $sSearchLink );
-					} else {
-						$sTitle = $oDocument->title;
-						$sLink = $oDocument->path;
-
-						$sSearchLink = '<a target="_blank" href="file:///' . $sLink . '">' . $sTitle . '</a>';
-					}
+					$sSearchLink = $this->getFileLink( $oDocument, $oTitle );
+					$sIcon = $oDocument->type;
 				} else {
 					continue;
 				}
 			}
 
 			$iCats = 0;
-			$catstr = '';
+			$sCats = '';
 			if ( isset( $oDocument->cat ) ) {
-				if ( is_array( $oDocument->cat ) ) {
-					$catlinks = array();
-					$iItems = 0;
-					foreach ( $oDocument->cat as $c ) {
-						if ( $c == 'notcategorized' ) continue;
-						$oCatTitle = Title::makeTitle( NS_CATEGORY, $c );
-						$catstr = BsLinkProvider::makeLink( $oCatTitle, $oCatTitle->getText() );
-
-						if ( $iItems === 3 ) {
-							$catlinks[] = BsLinkProvider::makeLink( $oTitle, '...' );
-							break;
-						} else {
-							$catlinks[] = $catstr;
-						}
-
-						$iItems++;
-					}
-					$catstr = implode( ', ', $catlinks );
-					$iCats = count( $catlinks );
-				} else {
-					if ( $oDocument->cat != 'notcategorized' ) {
-						$oCatTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
-						$catstr = BsLinkProvider::makeLink( $oCatTitle, $oCatTitle->getText() );
-					}
-					$iCats = 1;
-				}
+				$sCats = $this->getCategories( $oDocument, $oTitle, $iCats );
 			}
 
 			// If text is empty no Notice will be thrown
-			$aHighlightsnippets = null;
+			$aHighlightSnippets = '';
 			if ( $this->oSearchOptions->getOption( 'scope' ) != 'title' ) {
-				$oHighlightData = $this->oResponse->highlighting->{$oDocument->uid};
-				if ( isset( $oHighlightData->textWord ) ) {
-					$aHighlightsnippets = $oHighlightData->textWord;
-				} elseif ( isset( $oHighlightData->textReverse ) ) {
-					$aHighlightsnippets = $oHighlightData->textReverse;
-				}
+				$aHighlightSnippets = $this->getHighlightSnippets( $oDocument );
 			}
 
 			$sRedirect = '';
 			if ( isset( $oDocument->redirects ) ) {
-				if ( is_array( $oDocument->redirects ) ) {
-					$aRedirects = array();
-					foreach ( $oDocument->redirects as $sRedirect ) {
-						$oTitle = Title::newFromText( $sRedirect );
-						$aRedirects[] = BsLinkProvider::makeLink( $oTitle );
-					}
-					$sRedirect = wfMessage( 'bs-extendedsearch-redirect', implode( ', ', $aRedirects ) )->plain();
-				} else {
-					$oTitle = Title::newFromText( $oDocument->redirects );
-					$sRedirect = wfMessage( 'bs-extendedsearch-redirect', BsLinkProvider::makeLink( $oTitle ) )->plain();
-				}
+				$sRedirect = $this->getRedirects( $oDocument );
 			}
 
 			$sTimestamp = sprintf(
@@ -526,17 +390,219 @@ class BsSearchResult {
 			);
 
 			$aResultEntryDataSet = array(
-				'searchicon' => $sLinkIcon,
+				'iconpath' => $sIconPath,
+				'searchicon' => $sIcon,
 				'searchlink' => $sSearchLink,
 				'timestamp' => $sTimestamp,
-				'catstr' => $catstr,
+				'catstr' => $sCats,
 				'catno' => $iCats,
 				'redirect' => $sRedirect,
-				'highlightsnippets' => $aHighlightsnippets
+				'highlightsnippets' => $aHighlightSnippets
 			);
 
 			$this->vSearchResult->setResultEntry( $aResultEntryDataSet );
 		}
+	}
+
+	/**
+	 * Generates paging links
+	 * @param integer $iResults Number of Results
+	 * @return array Paging links
+	 */
+	private function getPaging( $iResults ) {
+		$aPaging = array();
+		$sSearchLimit = $this->oSearchOptions->getOption( 'searchLimit' );
+
+		$loopsCalculated = ( $iResults / $sSearchLimit ) + 1;
+		$this->vSearchResult->setOption( 'activePage', 1 );
+		$sUrl = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::OFFSET );
+
+		for ( $i = 1; $i < $loopsCalculated; $i++ ) {
+			$sOffset = ( ( $i - 1 ) * $sSearchLimit );
+
+			if ( $sOffset == $this->oSearchOptions->getOption( 'offset' ) ) {
+				$this->vSearchResult->setOption( 'activePage', $i );
+			}
+
+			$aPaging[$i] = "{$sUrl}&search_offset={$sOffset}";
+		}
+		return $aPaging;
+	}
+
+	/**
+	 * Generates sorting data
+	 * @return array Sorting data
+	 */
+	private function getSorting() {
+		$aSortTypes = array(
+			'titleSort' => 'bs-extendedsearch-sort-title',
+			'score' => 'bs-extendedsearch-sort-relevance',
+			'type' => 'bs-extendedsearch-sort-type',
+			'ts' => 'bs-extendedsearch-sort-ts'
+		);
+
+		$aSorting = array(
+			'sorttypes' => $aSortTypes,
+			'sortactive' => isset( $aSortTypes[$this->oSearchOptions->getOption( 'order' )] )
+					? $this->oSearchOptions->getOption( 'order' )
+					: 'score',
+			'sortdirection' => ( $this->oSearchOptions->getOption( 'asc' ) == 'asc' ) ? 'asc' : 'desc',
+			'sorturl' => $this->oSearchUriBuilder->buildUri(
+					SearchUriBuilder::ALL,
+					SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET
+				)
+			);
+		return $aSorting;
+	}
+
+	/**
+	 * Generate a link to a wiki page for a given result
+	 * @param object $oDocument Apache_Solr_Document
+	 * @param object $oTitle Title of wiki page
+	 * @param object $oParser Parser
+	 * @return string Anchor link to the wiki page
+	 */
+	private function getWikiLink( $oDocument, $oTitle, $oParser ) {
+		$sHtml = null;
+		if ( isset( $this->oResponse->highlighting->{$oDocument->uid}->titleWord ) ) {
+			$sHtml = $this->oResponse->highlighting->{$oDocument->uid}->titleWord[0];
+		} elseif( isset( $this->oResponse->highlighting->{$oDocument->uid}->titleReverse ) ) {
+			$sHtml = $this->oResponse->highlighting->{$oDocument->uid}->titleReverse[0];
+		}
+
+		if ( !is_null( $sHtml ) ) {
+			if ( $oDocument->namespace != '0' && $oDocument->namespace != '998' && $oDocument->namespace != '999' ) {
+				$sHtml = BsNamespaceHelper::getNamespaceName( $oDocument->namespace ). ':' . $sHtml;
+			}
+			$sHtml = str_replace ( '_', ' ', $sHtml );
+		}
+
+		$sSearchLink = Linker::link(
+			$oTitle,
+			$sHtml,
+			$aCustomAttribs = array(
+				'class' => 'bs-extendedsearch-result-headline'
+			),
+			array(),
+			array( 'known' )
+		);
+
+		if ( isset( $this->oResponse->highlighting->{$oDocument->uid}->sections ) ) {
+			$sSection = strip_tags( $this->oResponse->highlighting->{$oDocument->uid}->sections[0], '<em>' );
+			$sSectionAnchor = $oParser->guessSectionNameFromWikiText( $sSection );
+			$sSectionLink = BsLinkProvider::makeLink( $oTitle, $sSection, array(), array(), array( 'known' ) );
+
+			$aMatches = array();
+			preg_match( '#.*?href="(.*?)".*?#', $sSectionLink, $aMatches );
+
+			if ( isset( $aMatches[1] ) ) {
+				$sAnchor = $aMatches[1] . $sSectionAnchor;
+				$sSectionLink = str_replace( $aMatches[1], $sAnchor, $sSectionLink );
+			}
+
+			$sSearchLink .= ' <span class="bs-extendedsearch-sectionresult">('.
+				wfMessage( 'bs-extendedsearch-section' )->plain() . ' ' . $sSectionLink . ')</span>';
+		}
+		return $sSearchLink;
+	}
+
+	/**
+	 * Generates a media, external or file link for a given result
+	 * @param object $oDocument Apache_Solr_Document
+	 * @param object $oTitle Title of wiki page
+	 * @return string Anchor media, external or file link
+	 */
+	private function getFileLink( $oDocument, $oTitle ) {
+		if ( $oDocument->overall_type == 'repo' ) {
+			$sSearchLink = Linker::makeMediaLinkObj( $oTitle );
+		} elseif ( $oDocument->overall_type == 'special-linked' ) {
+			$sTitle = $oDocument->title;
+			$sLink = $oDocument->path;
+
+			$sSearchLink = Linker::makeExternalLink( $sLink, $sTitle, '' );
+			$sSearchLink = str_replace( '<a', '<a target="_blank"', $sSearchLink );
+		} else {
+			$sTitle = $oDocument->title;
+			$sLink = $oDocument->path;
+
+			$sSearchLink = '<a target="_blank" href="file:///' . $sLink . '">' . $sTitle . '</a>';
+		}
+		return $sSearchLink;
+	}
+
+	/**
+	 * Generates categories for a given result
+	 * @param object $oDocument Apache_Solr_Document
+	 * @param object $oTitle Title of wiki page
+	 * @return string Anchor media, external or file link
+	 */
+	private function getCategories( $oDocument, $oTitle, &$iCats ) {
+		$sCategories = '';
+		if ( is_array( $oDocument->cat ) ) {
+			$aCatLinks = array();
+			$iItems = 0;
+
+			foreach ( $oDocument->cat as $c ) {
+				if ( $c == 'notcategorized' ) continue;
+				$oCatTitle = Title::makeTitle( NS_CATEGORY, $c );
+				$sCategories = Linker::link( $oCatTitle, $oCatTitle->getText() );
+
+				if ( $iItems === 3 ) {
+					$aCatLinks[] = Linker::link( $oTitle, '...' );
+					break;
+				} else {
+					$aCatLinks[] = $sCategories;
+				}
+
+				$iItems++;
+			}
+
+			$sCategories = implode( ', ', $aCatLinks );
+			$iCats = count( $aCatLinks );
+		} else {
+			if ( $oDocument->cat != 'notcategorized' ) {
+				$oCatTitle = Title::makeTitle( NS_CATEGORY, $oDocument->cat );
+				$sCategories = Linker::link( $oCatTitle, $oCatTitle->getText() );
+			}
+			$iCats = 1;
+		}
+		return $sCategories;
+	}
+
+	/**
+	 * Generates highlight snippets for a given result
+	 * @param object $oDocument Apache_Solr_Document
+	 * @return array|string Highlight snippets array or empty string
+	 */
+	private function getHighlightSnippets( $oDocument ) {
+		$oHighlightData = $this->oResponse->highlighting->{$oDocument->uid};
+		$aHighlightSnippets = '';
+		if ( isset( $oHighlightData->textWord ) ) {
+			$aHighlightSnippets = $oHighlightData->textWord;
+		} elseif ( isset( $oHighlightData->textReverse ) ) {
+			$aHighlightSnippets = $oHighlightData->textReverse;
+		}
+		return $aHighlightSnippets;
+	}
+
+	/**
+	 * Generates redirect links for a given result
+	 * @param object $oDocument Apache_Solr_Document
+	 * @return string Redirect links
+	 */
+	private function getRedirects( $oDocument ) {
+		if ( is_array( $oDocument->redirects ) ) {
+			$aRedirects = array();
+			foreach ( $oDocument->redirects as $sRedirect ) {
+				$oTitle = Title::newFromText( $sRedirect );
+				$aRedirects[] = Linker::link( $oTitle );
+			}
+			$sRedirect = wfMessage( 'bs-extendedsearch-redirect', implode( ', ', $aRedirects ) )->plain();
+		} else {
+			$oTitle = Title::newFromText( $oDocument->redirects );
+			$sRedirect = wfMessage( 'bs-extendedsearch-redirect', Linker::link( $oTitle ) )->plain();
+		}
+		return $sRedirect;
 	}
 
 	/**

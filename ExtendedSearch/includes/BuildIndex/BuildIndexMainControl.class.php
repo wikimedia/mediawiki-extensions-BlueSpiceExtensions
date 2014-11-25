@@ -12,14 +12,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
  * Controls index building mechanism for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 class BuildIndexMainControl {
 
@@ -154,7 +149,8 @@ class BuildIndexMainControl {
 
 		if ( $bRedirect === true ) {
 			$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
-			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT )->getUltimateRedirectTarget();
+			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT );
+			$oRedirectTitle= $oRedirectTitle->getUltimateRedirectTarget();
 			if ( $oRedirectTitle instanceof Title ) {
 				$oArticle = new Article( $oRedirectTitle );
 				$this->updateIndexWiki( $oArticle );
@@ -172,16 +168,8 @@ class BuildIndexMainControl {
 		if ( strpos( $iPageTimestamp, '1970' ) === 0 ) $iPageTimestamp = wfTimestamp( TS_MW );
 
 		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument(
-			$sPageTitle,
-			$sPageContent,
-			$iPageID,
-			$iPageNamespace,
-			$iPageTimestamp,
-			$aPageCategories,
-			$aPageEditors,
-			$aRedirects,
-			$bRedirect,
-			$aSections
+			$sPageTitle, $sPageContent, $iPageID, $iPageNamespace, $iPageTimestamp,
+			$aPageCategories, $aPageEditors, $aRedirects, $bRedirect, $aSections
 		);
 
 		try {
@@ -701,9 +689,9 @@ class BuildIndexMainControl {
 	}
 
 	/**
-	 * Parses text to be valid for indeing
+	 * Generates plain text content of a given wiki page without WikiText or HTML tags
 	 * @param object $oTitle Title object
-	 * @return string Parsed text or empty on failure
+	 * @return string Plain text content
 	 */
 	public function prepareTextForIndex( Title $oTitle ) {
 		$sText = WikiPage::newFromID( $oTitle->getArticleID() )

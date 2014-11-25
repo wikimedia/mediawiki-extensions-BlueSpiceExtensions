@@ -4,22 +4,17 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
  * Abstract index builder for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 
@@ -72,8 +67,8 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 
 	/**
 	 * Compares two timestamps
-	 * @param string $timestamp1 MW timestamp
-	 * @param string $timestamp2 MW timestamp
+	 * @param string $iTimestamp1 MW timestamp
+	 * @param string $iTimestamp2 MW timestamp
 	 * @return bool True if timestamp1 is younger than timestamp2
 	 */
 	public function isTimestamp1YoungerThanTimestamp2( $iTimestamp1, $iTimestamp2 ) {
