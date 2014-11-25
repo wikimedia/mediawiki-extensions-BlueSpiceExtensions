@@ -29,5 +29,6 @@
 	"bs-usermanager-labelnewpassword": "Lösenord",
 	"bs-usermanager-labelpasswordcheck": "Bekräfta lösenord",
 	"bs-usermanager-titledeleteuser": "Radera användare",
-	"bs-usermanager-confirmdeleteuser": "Är du säker på att du vill ta bort {{PLURAL:$1|denna användare|dessa $1 användare}}?"
+	"bs-usermanager-confirmdeleteuser": "Är du säker på att du vill ta bort {{PLURAL:$1|denna användare|dessa $1 användare}}?",
+	"bs-usermanager-groups-more": "... fler"
 }
