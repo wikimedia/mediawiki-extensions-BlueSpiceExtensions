@@ -163,10 +163,6 @@ class Authors extends BsExtensionMW {
 			return true;
 		}
 
-		if ( !( $tpl instanceof BsBaseTemplate ) ) {
-			return true;
-		}
-
 		$aDetails = array();
 		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate, $aDetails );
 		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
