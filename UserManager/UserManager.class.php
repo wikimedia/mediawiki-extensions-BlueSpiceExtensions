@@ -373,12 +373,12 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['success'] = false;
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-idnotexist' )->plain(); // id_noexist = 'This user ID does not exist'
 		}
-		if ( $oUser->isValidPassword( $sPassword ) ) {
+		if ( !$oUser->isValidPassword( $sPassword ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'pass',
 				'message' => wfMessage( 'bs-usermanager-invalid-pwd' )->plain()
-			); // 'invalid_pwd' = 'The supplied password is invalid. Please do not use apostrophes or backslashes.'
+			);
 		}
 		if ( $sPassword !== $sRePassword ) {
 			$aAnswer['success'] = false;
