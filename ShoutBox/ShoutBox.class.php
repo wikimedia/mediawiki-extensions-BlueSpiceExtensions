@@ -229,7 +229,7 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) || !( $tpl instanceof BsBaseTemplate ) ) {
+		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) ) {
 			return true;
 		}
 

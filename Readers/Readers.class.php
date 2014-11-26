@@ -199,8 +199,7 @@ class Readers extends BsExtensionMW {
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
 		if ( $this->checkContext() === false ||
-				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ||
-				!( $tpl instanceof BsBaseTemplate ) ) {
+				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
 			return true;
 		}
 		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
