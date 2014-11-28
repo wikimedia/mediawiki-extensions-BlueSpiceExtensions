@@ -4,23 +4,16 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
- * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
- * Processes search request for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
+ * Processes a search request
  */
 class SearchRequest {
 
@@ -59,6 +52,9 @@ class SearchRequest {
 		return self::$oInstance;
 	}
 
+	/**
+	 * Read in the request parameters
+	 */
 	public function init() {
 		$this->setDefaults();
 		$this->processSettings();
@@ -73,7 +69,6 @@ class SearchRequest {
 		$this->sOrder = 'score';
 		$this->sAsc = 'desc';
 		$this->iOffset = 0;
-		$this->sFormat = 'html';
 		$this->bSearchFiles = false;
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -100,7 +95,6 @@ class SearchRequest {
 		$this->sAsc = $this->oRequest->getVal( 'search_asc', $this->sAsc );
 		$this->iOffset = $this->oRequest->getVal( 'search_offset', $this->iOffset ); // todo: type is int??
 		$this->sOrder = $this->oRequest->getVal( 'search_order', $this->sOrder );
-		$this->sFormat = $this->oRequest->getVal( 'search_format', $this->sFormat );
 		$this->sId = $this->oRequest->getVal( 'search_id', false );
 		$this->sInput = $this->oRequest->getVal( 'q', false );
 		$this->sHidden = $this->oRequest->getVal( 'search_hidden' );
@@ -121,15 +115,6 @@ class SearchRequest {
 		}
 
 		wfRunHooks( 'BSExtendedSearchRequestProcessInputs', array( &$this ) );
-	}
-
-	/**
-	 * Can we actually commit a search?
-	 * @return bool True if yes.
-	 */
-	public function isSearchable() {
-		$input  = $this->sInput; // take care:  empty( $this->sInput ) does not work 'cause of getter magic method
-		return (bool)( !empty( $input ) );
 	}
 
 }

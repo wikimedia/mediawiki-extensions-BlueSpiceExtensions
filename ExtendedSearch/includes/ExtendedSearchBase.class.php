@@ -5,11 +5,9 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @author     Mathias Scheer <scheer@hallowelt.biz>
- * @author     Markus Glaser <glaser@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -25,38 +23,38 @@
 class ExtendedSearchBase {
 
 	/**
-	 * Given context.
-	 * @var $oContext
+	 * Instance of RequestContext
+	 * @var object RequestContext
 	 */
 	protected $oContext = null;
 	/**
-	 * Instance of current search service.
-	 * @var $oSearchService
+	 * Instance of SearchService
+	 * @var object $oSearchService
 	 */
 	protected $oSearchService = null;
 	/**
-	 * Reference to instance of SearchRequest.
-	 * @var Object SearchRequest class.
+	 * Instance of SearchRequest.
+	 * @var object SearchRequest
 	 */
 	protected $oSearchRequest = null;
 	/**
-	 * Instance of current search options.
-	 * @var $oSearchService
+	 * Instance of SearchOptions.
+	 * @var object SearchOptions
 	 */
 	protected $oSearchOptions = null;
 	/**
-	 * Reference to instance of SearchUriBuilder.
-	 * @var Object SearchUriBuilder class.
+	 * Instance of SearchUriBuilder.
+	 * @var object SearchUriBuilder
 	 */
 	protected $oSearchUriBuilder = null;
 	/**
-	 * Reference to instance of SearchUriBuilder.
-	 * @var Object SearchUriBuilder class.
+	 * Instance of SearchIndex.
+	 * @var object SearchIndex.
 	 */
 	protected $oSearchIndex = null;
 	/**
 	 * Instance of ExtendedSearchBase
-	 * @var Object
+	 * @var object ExtendedSearchBase
 	 */
 	protected static $oInstance = null;
 
@@ -76,7 +74,8 @@ class ExtendedSearchBase {
 		$this->oSearchRequest = new SearchRequest();
 		$this->oSearchOptions = new SearchOptions( $this->oSearchRequest, $this->oContext );
 		$this->oSearchUriBuilder = new SearchUriBuilder( $this->oSearchRequest, $this->oSearchOptions );
-		$this->oSearchIndex = new SearchIndex( $this->oSearchService, $this->oSearchRequest, $this->oSearchOptions, $this->oSearchUriBuilder, $this->oContext );
+		$this->oSearchIndex = new SearchIndex( $this->oSearchService, $this->oSearchRequest,
+			$this->oSearchOptions, $this->oSearchUriBuilder, $this->oContext );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -147,28 +146,35 @@ class ExtendedSearchBase {
 		return $this->getResults( false );
 	}
 
+	/**
+	 * Starts a search request
+	 * @param boolean $bAjax Ajax request or not
+	 * @return object ViewBaseElement
+	 */
 	public function getResults( $bAjax ) {
 		if ( $bAjax === true ) {
 			$this->oSearchRequest->init();
 			$this->oSearchOptions->readInSearchRequest();
 			$this->oSearchUriBuilder->init();
 		}
+
+		$oView = new ViewBaseElement();
+		$oView->setId( 'bs-extendedsearch-specialpage-body' );
+		$aMonitor = array();
+
 		try {
-			$oView = new ViewBaseElement();
-			$oView->setId( 'bs-extendedsearch-specialpage-body' );
-			$aMonitor = array();
-
 			$oResultView = $this->search( $aMonitor );
-
-			$vNoOfResultsFound = new ViewNoOfResultsFound();
-			$vNoOfResultsFound->setOptions( $aMonitor );
-			$oView->addItem( $vNoOfResultsFound );
-
-			$oView->addItem( $oResultView );
 		} catch ( BsException $e ) {
 			if ( $e->getMessage() == 'redirect' ) return;
 			throw $e;
 		}
+
+		$vNoOfResultsFound = new ViewNoOfResultsFound();
+		$vNoOfResultsFound->setOptions( $aMonitor );
+
+		$oView->addItem( $vNoOfResultsFound );
+		$oView->addItem( $oResultView );
+
 		return $oView;
 	}
 
@@ -178,8 +184,6 @@ class ExtendedSearchBase {
 	 * @return ViewBaseElement View that describes search options.
 	 */
 	public function renderExtendedForm( &$aMonitor ) {
-		global $wgContLang;
-
 		$aHiddenFieldsInForm = array();
 		$aHiddenFieldsInForm['search_asc'] = $this->oSearchOptions->getOption( 'asc' );
 		$aHiddenFieldsInForm['search_order'] = $this->oSearchOptions->getOption( 'order' );// score|titleSort|type|ts
@@ -195,6 +199,19 @@ class ExtendedSearchBase {
 		);
 
 		$vOptionsFormWiki = $aMonitor->getOptionsForm( 'wiki', '' );
+		$this->getExtendedFormNamespacesAndFilesBox( $vOptionsFormWiki );
+
+		$this->getExtendedFormCategoriesBox( $vOptionsFormWiki );
+		$this->getExtendedFormEditorsBox( $vOptionsFormWiki );
+	}
+
+	/**
+	 * Get namespace and files box for extended form
+	 * @param object $vOptionsFormWiki ViewSearchExtendedOptionsForm
+	 * @global object $wgContLang Content language
+	 */
+	private function getExtendedFormNamespacesAndFilesBox( $vOptionsFormWiki ) {
+		global $wgContLang;
 		$vNamespaceBox = $vOptionsFormWiki->getBox( 'NAMESPACE-FIELD', 'bs-extendedsearch-search-namespace', 'na[]' );
 		$aMwNamespaces = $wgContLang->getNamespaces();
 		$aSelectedNamespaces = $this->oSearchOptions->getOption( 'namespaces' );
@@ -227,45 +244,58 @@ class ExtendedSearchBase {
 		$checkboxSearchFiles .= wfMessage( 'bs-extendedsearch-files' )->plain();
 
 		$vNamespaceBox->dirtyAppend( '<br />'.$checkboxSearchFiles );
+	}
 
-		$dbr = wfGetDB( DB_SLAVE ); // needed for categories and editors
-
-		$catRes = $dbr->select(
-				array( 'category' ),
-				array( 'cat_id', 'cat_title' ),
-				'',
-				null,
-				array( 'ORDER BY' => 'cat_title asc' )
+	/**
+	 * Get ncategories box for extended form
+	 * @param object $vOptionsFormWiki ViewSearchExtendedOptionsForm
+	 */
+	private function getExtendedFormCategoriesBox( $vOptionsFormWiki ) {
+		$oDbr = wfGetDB( DB_SLAVE );
+		$catRes = $oDbr->select(
+			array( 'category' ),
+			array( 'cat_id', 'cat_title' ),
+			'',
+			null,
+			array( 'ORDER BY' => 'cat_title asc' )
 		);
-		if ( $dbr->numRows( $catRes ) != 0 ) {
+
+		if ( $oDbr->numRows( $catRes ) != 0 ) {
 			$vCategoryBox = $vOptionsFormWiki->getBox( 'CATEGORY-FIELD', 'bs-extendedsearch-search-category', 'ca[]' );
 			$aSelectedCategories = $this->oSearchOptions->getOption( 'cats' );
-			while ( $catRow = $dbr->fetchObject( $catRes ) ) {
+			foreach ( $catRes as $row ) {
 				$vCategoryBox->addEntry(
-					$catRow->cat_title,
+					$row->cat_title,
 					array(
-						'value' => $catRow->cat_title,
-						'text' => $catRow->cat_title,
-						'selected' => in_array( $catRow->cat_title, $aSelectedCategories )
+						'value' => $row->cat_title,
+						'text' => $row->cat_title,
+						'selected' => in_array( $row->cat_title, $aSelectedCategories )
 					)
 				);
 			}
 		}
+		$oDbr->freeResult( $catRes );
+	}
 
-		$dbr->freeResult( $catRes );
-
+	/**
+	 * Get editors box for extended form
+	 * @param object $vOptionsFormWiki ViewSearchExtendedOptionsForm
+	 */
+	private function getExtendedFormEditorsBox( $vOptionsFormWiki ) {
+		$oDbr = wfGetDB( DB_SLAVE );
 		$vEditorsBox = $vOptionsFormWiki->getBox( 'EDITORS-FIELD', 'bs-extendedsearch-search-editors', 'ed[]' );
-		$edRes = $dbr->select(
+		$edRes = $oDbr->select(
 			array( 'revision' ),
-			array( 'DISTINCT rev_user_text' ),
+			array( 'DISTINCT rev_user' ),
 			'',
 			null,
 			array( 'ORDER BY' => 'rev_user_text' )
 		);
+
 		$aSelectedEditors = $this->oSearchOptions->getOption( 'editor' );
-		while ( $edRow = $dbr->fetchObject( $edRes ) ) {
-			$oUser = User::newFromName( $edRow->rev_user_text );
-			if ( !is_object( $oUser ) ) continue;
+		foreach ( $edRes as $row ) {
+			$oUser = User::newFromId( $row->rev_user );
+			if ( !is_object( $oUser ) || User::isIP( $oUser->getName() ) ) continue;
 
 			$vEditorsBox->addEntry(
 				$oUser->getName(),
@@ -276,12 +306,7 @@ class ExtendedSearchBase {
 				)
 			);
 		}
-
-		$dbr->freeResult( $edRes );
-
-		$vbe = new ViewBaseElement();
-		$vbe->setAutoElement( false );
-		return $vbe;
+		$oDbr->freeResult( $edRes );
 	}
 
 	/**
@@ -323,7 +348,11 @@ class ExtendedSearchBase {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// Uppercase reserved words for the lovely lucene
 		$sSearchString = mb_strtolower( $sSearchString );
-		$sSearchString = str_ireplace( array( ' and ', ' or ', ' not ' ), array( ' AND ', ' OR ', ' NOT ' ), ' '.$sSearchString.' ' );
+		$sSearchString = str_ireplace(
+			array( ' and ', ' or ', ' not ' ),
+			array( ' AND ', ' OR ', ' NOT ' ),
+			' '.$sSearchString.' '
+		);
 
 		if ( ( substr_count( $sSearchString, '"' ) % 2 ) != 0 ) {
 			$sSearchString = str_replace( '"', '\\"', $sSearchString );
@@ -348,6 +377,43 @@ class ExtendedSearchBase {
 	}
 
 	/**
+	 * For a given SearchInput (by the user) the Existence of an article with exactly this title is evaluated.
+	 * @param String $sParamSearchInput
+	 * @return boolean
+	 */
+	public static function titleExists( $sParamSearchInput, &$aOptions ) {
+		$sParamSearchInput = trim( $sParamSearchInput );
+		if ( empty( $sParamSearchInput ) ) return false;
+
+		/* Normalize $sParamSearchInput first:
+		 * - get rid of leading or trailing whitespace
+		 * - get rid of characters that are not permitted in the title (by mediawiki)
+		 * - get rid of more than one space at a time
+		 */
+		$thisTitleMightExist = trim( str_replace( BsCore::getForbiddenCharsInArticleTitle(), ' ', $sParamSearchInput ) );
+		do {
+			$beforeStrReplace = $thisTitleMightExist;
+			$thisTitleMightExist = str_replace( '  ', ' ', $thisTitleMightExist );
+		}
+		while ( $beforeStrReplace != $thisTitleMightExist );
+
+		$oTitle = Title::newFromText( $thisTitleMightExist );
+		if ( ( $oTitle !== null ) && $oTitle->exists() ) {
+			$aOptions['existingTitleObject'] = $oTitle;
+			return true;
+		}
+		// If first attempt to create a Title-Object without success...
+		// ... remove leading and trailing '"'-characters (solves Ticket#2010062310000113)
+		$oTitle = Title::newFromText( trim( $thisTitleMightExist, '"' ) );
+		if ( ( $oTitle !== null ) && $oTitle->exists() ){
+			$aOptions['existingTitleObject'] = $oTitle;
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Starts a search for Autocomplete
 	 * @param String $sSearchString The string to be searched for.
 	 * @return String JSON of search results.
@@ -355,94 +421,15 @@ class ExtendedSearchBase {
 	public static function getAutocompleteData( $sSearchString ) {
 		if ( self::isCurlActivated() === false ) return '';
 
-		$oSerachService = SearchService::getInstance();
-		$oSearchRequest = new SearchRequest();
-		$oSearchRequest->init();
-		$oSearchOptions = new SearchOptions( $oSearchRequest, RequestContext::getMain() );
-		$oSearchOptions->readInSearchRequest();
-
-		$sSearchString = urldecode( $sSearchString );
-		$sSolrSearchString = self::preprocessSearchInput( $sSearchString );
-
-		$aQuery = $oSearchOptions->getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString );
-
-		try {
-			$oHits = $oSerachService->search(
-				$aQuery['searchString'],
-				$aQuery['offset'],
-				$aQuery['searchLimit'],
-				$aQuery['searchOptions']
-			);
-		} catch ( Exception $e ) {
-			return '';
-		}
-
-		$oDocuments = $oHits->response->docs;
-
-		$bEscalateToFuzzy = ( $oHits->response->numFound == 0 ); // boolean!
-		// Escalate to fuzzy
-		if ( $bEscalateToFuzzy ) {
-			$oSearchOptions->setOption( 'scope', 'title' );
-
-			$aFuzzyQuery = $oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
-			$aFuzzyQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
-			$aFuzzyQuery['searchOptions']['facet'] = 'off';
-			$aFuzzyQuery['searchOptions']['hl'] = 'off';
-
-			try {
-				$oHits = $oSerachService->search(
-					$aFuzzyQuery['searchString'],
-					$aFuzzyQuery['offset'],
-					$aFuzzyQuery['searchLimit'],
-					$aFuzzyQuery['searchOptions']
-				);
-			} catch ( Exception $e ) {
-				return '';
-			}
-
-			$oDocuments = $oHits->response->docs;
-		}
+		$vNsSearch = false;
+		$oDocuments = self::searchAutocomplete( $sSearchString, $vNsSearch );
 
 		$aResults = array();
 		$iID = 0;
-
 		if ( !empty( $oDocuments ) ) {
-			$oTitle = null;
-			$sLabelText = '';
-
-			foreach ( $oDocuments as $oDoc ) {
-				if ( $oDoc->namespace != '999' ) {
-					$iNamespace = ( $oDoc->namespace == '1000' ) ? NS_SPECIAL : $oDoc->namespace;
-					$oTitle = Title::makeTitle( $iNamespace, $oDoc->title );
-				} else {
-					continue;
-				}
-
-				if ( !$oTitle->userCan( 'read' ) ) continue;
-
-				$sLabelText = self::highlightTitle( $oTitle, $sSearchString );
-
-				// Adding namespace
-				if ( $oTitle->getNamespace() !== NS_MAIN ) {
-					$sLabelText = BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ) . ':' .$sLabelText;
-				}
-
-				//If namespace is in searchstring remove it from display
-				if ( $aQuery['namespace'] !== false ) {
-					$sNamespace = BsNamespaceHelper::getNamespaceName( $aQuery['namespace'] );
-					$sLabelText = str_replace( $sNamespace.':', '', $sLabelText );
-				}
-
-				$oItem = new stdClass();
-				$oItem->id = ++$iID;
-				$oItem->value = $oTitle->getPrefixedText();
-				$oItem->label = $sLabelText;
-				$oItem->type = $oDoc->type;
-				$oItem->link = $oTitle->getFullURL();
-				$oItem->attr = '';
-
-				$aResults[] = $oItem;
-			}
+			self::generateAutocompleteResults(
+				$oDocuments, $sSearchString, $iID, $vNsSearch, $aResults
+			);
 		}
 
 		$iSearchfiles = ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) ? '1' : '0' ;
@@ -461,8 +448,8 @@ class ExtendedSearchBase {
 		$sLabel = wfMessage( 'bs-extendedsearch-searchfulltext' )->escaped() . '<br />';
 		$sLabel .= '<b>' . $sShortAndEscaped . '</b>';
 
-		$bTitleExists = $oSearchOptions->titleExists( $sSearchString );
-
+		$aOptions = array();
+		$bTitleExists = self::titleExists( $sSearchString, $aOptions );
 		$sEcpSearchString = self::sanitzeSearchString( $sSearchString );
 
 		wfRunHooks( 'BSExtendedSearchAutocomplete', array( &$aResults, $sSearchString, &$iID, $bTitleExists, $sEcpSearchString ) );
@@ -487,12 +474,117 @@ class ExtendedSearchBase {
 	}
 
 	/**
+	 * Starts a autocomplete search
+	 * @param string $sSearchString Reference to given search string
+	 * @param boolean $vNsSearch bool always false
+	 * @return array Array of Apache_Solr_Documents
+	 */
+	private static function searchAutocomplete( &$sSearchString, &$vNsSearch ) {
+		$oSerachService = SearchService::getInstance();
+		$oSearchRequest = new SearchRequest();
+		$oSearchRequest->init();
+		$oSearchOptions = new SearchOptions( $oSearchRequest, RequestContext::getMain() );
+		$oSearchOptions->readInSearchRequest();
+
+		$sSearchString = urldecode( $sSearchString );
+		$sSolrSearchString = self::preprocessSearchInput( $sSearchString );
+
+		$aQuery = $oSearchOptions->getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString );
+		try {
+			$oHits = $oSerachService->search(
+				$aQuery['searchString'],
+				$aQuery['offset'],
+				$aQuery['searchLimit'],
+				$aQuery['searchOptions']
+			);
+		} catch ( Exception $e ) {
+			return '';
+		}
+
+		$oDocuments = $oHits->response->docs;
+
+		if ( $aQuery['namespace'] !== false ) {
+			$vNsSearch = $aQuery['namespace'];
+		}
+
+		$bEscalateToFuzzy = ( $oHits->response->numFound == 0 ); // boolean!
+		// Escalate to fuzzy
+		if ( $bEscalateToFuzzy ) {
+			$oSearchOptions->setOption( 'scope', 'title' );
+
+			$aFuzzyQuery = $oSearchOptions->getSolrFuzzyQuery( $sSolrSearchString );
+			$aFuzzyQuery['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
+			$aFuzzyQuery['searchOptions']['facet'] = 'off';
+			$aFuzzyQuery['searchOptions']['hl'] = 'off';
+
+			try {
+				$oHits = $oSerachService->search(
+					$aFuzzyQuery['searchString'],
+					$aFuzzyQuery['offset'],
+					$aFuzzyQuery['searchLimit'],
+					$aFuzzyQuery['searchOptions']
+				);
+			} catch ( Exception $e ) {
+				return '';
+			}
+
+			$oDocuments = $oHits->response->docs;
+		}
+		return $oDocuments;
+	}
+
+	/**
+	 * Generates result entires for autocomplete
+	 * @param array $aDocuments Array of Apache_solr_Documents
+	 * @param string $sSearchString Given search string
+	 * @param integer $iNum Number of Results
+	 * @param mixed $vNsSearch false or integer namespace id
+	 * @param array $aResults Reference to results array
+	 */
+	private static function generateAutocompleteResults( $aDocuments, $sSearchString, $iNum, $vNsSearch, &$aResults ) {
+		$sLabelText = '';
+		foreach ( $aDocuments as $oDoc ) {
+			if ( $oDoc->namespace != '999' ) {
+				$iNamespace = ( $oDoc->namespace == '1000' ) ? NS_SPECIAL : $oDoc->namespace;
+				$oTitle = Title::makeTitle( $iNamespace, $oDoc->title );
+			} else {
+				continue;
+			}
+
+			if ( !$oTitle->userCan( 'read' ) ) continue;
+
+			$sLabelText = self::highlightTitle( $oTitle, $sSearchString );
+
+			// Adding namespace
+			if ( $oTitle->getNamespace() !== NS_MAIN ) {
+				$sLabelText = BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ) . ':' .$sLabelText;
+			}
+
+			//If namespace is in searchstring remove it from display
+			if ( $vNsSearch !== false ) {
+				$sNamespace = BsNamespaceHelper::getNamespaceName( $vNsSearch );
+				$sLabelText = str_replace( $sNamespace.':', '', $sLabelText );
+			}
+
+			$oItem = new stdClass();
+			$oItem->id = ++$iNum;
+			$oItem->value = $oTitle->getPrefixedText();
+			$oItem->label = $sLabelText;
+			$oItem->type = $oDoc->type;
+			$oItem->link = $oTitle->getFullURL();
+			$oItem->attr = '';
+
+			$aResults[] = $oItem;
+		}
+	}
+
+	/**
 	 * Highlights title for a given search string
 	 * @param object $oTitle Title which should be highlighted
 	 * @param string $sSearchString search string
 	 * @return string highlighted title
 	 */
-	public static function highlightTitle( $oTitle, $sSearchString ) {
+	private static function highlightTitle( $oTitle, $sSearchString ) {
 		$sPartOfTitle = '';
 		$sEscapedPattern = '';
 		$aSearchStringParts = array();
@@ -549,7 +641,7 @@ class ExtendedSearchBase {
 
 		$aMlt = array();
 		//$aMlt[] = implode( ', ', $oResults->interestingTerms );
-		if ( !empty( $oResults->response->docs ) ) {
+		if ( $oResults !== null && !empty( $oResults->response->docs ) ) {
 			foreach ( $oResults->response->docs as $oRes ) {
 				if ( count( $aMlt )  === 5 ) break;
 
@@ -564,12 +656,12 @@ class ExtendedSearchBase {
 				}
 
 				$sHtml = $oMltTitle->getPrefixedText();
-				$aMlt[] = BsLinkProvider::makeLink( $oMltTitle, $sHtml );
+				$aMlt[] = Linker::link( $oMltTitle, $sHtml );
 			}
 		}
 
 		if ( empty( $aMlt ) ) {
-			$aMlt[] = $oResults->errormessage;
+			$aMlt[] = wfMessage( 'bs-extendedsearch-no-mlt-found' )->text();
 		}
 		$oViewMlt->setOption( 'mlt', $aMlt );
 
@@ -635,21 +727,25 @@ class ExtendedSearchBase {
 		return implode( "\n", $aResults );
 	}
 
+	/**
+	 * Get more like this response
+	 * @param object $oTitle Title object
+	 * @return object null|Apache_Solr_Response
+	 */
 	public function getMltData( $oTitle ) {
 		$aMltQuery = $this->oSearchOptions->getSolrMltQuery( $oTitle );
-		$oResults = new stdClass();
 		try {
-			$oResults = $this->oSearchService->mlt(
+			$oResponse = $this->oSearchService->mlt(
 				$aMltQuery['searchString'],
 				$aMltQuery['offset'],
 				$aMltQuery['searchLimit'],
 				$aMltQuery['searchOptions']
 			);
 		} catch ( Exception $e ) {
-			$oResults->errormessage = wfMessage( 'bs-extendedsearch-no-mlt-found' )->plain();
+			return null;
 		}
 
-		return $oResults;
+		return $oResponse;
 	}
 
 }

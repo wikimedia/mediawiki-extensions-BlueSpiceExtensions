@@ -4,11 +4,10 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @package    BlueSpice_Core
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */

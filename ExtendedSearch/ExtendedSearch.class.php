@@ -24,30 +24,16 @@
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    2.22.0 stable
+ * @version    2.23.0 stable
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v1.20.1
- * - Fixed indexing of zipped doctypes
- * - Layout Improvments
- * - Serveral bug fixes
- * v1.20.0
- *
- * v1.0.0
- * - raised to stable
- * v0.1
- * - initial release
- */
 
 /**
- * Base class for ExtendedSearch extension
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
+ * Base class of ExtendedSearch extension
  */
 class ExtendedSearch extends BsExtensionMW {
 
@@ -103,7 +89,7 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowAutocomplete', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-showautocomplete', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreSugInAc', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-showcresuginac', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::AcEntries', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC,  'bs-extendedsearch-pref-acentries', 'int' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTyLinked', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextylinked', 'toggle' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTyLinked', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextylinked', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesRepo', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypesrepo', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesWiki', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypeswiki', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesSpecial', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypesspecial', 'toggle' );

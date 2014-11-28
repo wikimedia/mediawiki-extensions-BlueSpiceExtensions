@@ -4,6 +4,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @package    BlueSpice_Extensions

@@ -13,21 +13,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
 /**
- * User-Input is stored in a object of class SearchRequest
+ * The search request is stored in a object of class SearchRequest
  * All relevant data during searchtime can be found here in object of class SearchOptions
- * The class itself can generate all input for different solr-queries to be passed to
- * Apache_Solr_Service
- * @author Mathias
- */
-/**
- * Manages search options for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 class SearchOptions {
 
@@ -188,7 +176,7 @@ class SearchOptions {
 		$aOptions['searchString'] = 'titleEdge:('.$sSolrSearchString.') OR title:('.$sSolrSearchString.')';
 		$aOptions['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 
-		$aSolrAutocompleteQuery = array(
+		$aQuery = array(
 			'searchString' => $aOptions['searchString'],
 			'offset' => $this->aOptions['offset'],
 			'searchLimit' => $aOptions['searchLimit'],
@@ -196,7 +184,7 @@ class SearchOptions {
 			'namespace' => $vNamespace
 		);
 
-		return $aSolrAutocompleteQuery;
+		return $aQuery;
 	}
 
 	/**
@@ -480,8 +468,7 @@ class SearchOptions {
 		$this->aOptions['order'] = $this->oSearchRequest->sOrder;
 		$this->aOptions['asc'] = $this->oSearchRequest->sAsc;
 		$this->aOptions['searchLimit'] = ( $searchLimit == 0 ) ? 15 : $searchLimit;
-		$this->aOptions['titleExists'] = $this->titleExists( $this->oSearchRequest->sInput );
-		$this->aOptions['format'] = $this->oSearchRequest->sFormat;
+		$this->aOptions['titleExists'] = ExtendedSearchBase::titleExists( $this->oSearchRequest->sInput, $this->aOptions );
 		$this->aOptions['bExtendedForm'] = $this->oSearchRequest->bExtendedForm;
 
 		$this->aSearchOptions['defType'] = 'edismax';
@@ -561,43 +548,6 @@ class SearchOptions {
 			: 'namespace:(' . $iNamespace . ')';
 
 		return $iNamespace;
-	}
-
-	/**
-	 * For a given SearchInput (by the user) the Existence of an article with exactly this title is evaluated.
-	 * @param String $sParamSearchInput
-	 * @return boolean
-	 */
-	public function titleExists( $sParamSearchInput ) {
-		$sParamSearchInput = trim( $sParamSearchInput );
-		if ( empty( $sParamSearchInput ) ) return false;
-
-		/* Normalize $sParamSearchInput first:
-		 * - get rid of leading or trailing whitespace
-		 * - get rid of characters that are not permitted in the title (by mediawiki)
-		 * - get rid of more than one space at a time
-		 */
-		$thisTitleMightExist = trim( str_replace( BsCore::getForbiddenCharsInArticleTitle(), ' ', $sParamSearchInput ) );
-		do {
-			$beforeStrReplace = $thisTitleMightExist;
-			$thisTitleMightExist = str_replace( '  ', ' ', $thisTitleMightExist );
-		}
-		while ( $beforeStrReplace != $thisTitleMightExist );
-
-		$oTitle = Title::newFromText( $thisTitleMightExist );
-		if ( ( $oTitle !== null ) && $oTitle->exists() ) {
-			$this->aOptions['existingTitleObject'] = &$oTitle;
-			return true;
-		}
-		// If first attempt to create a Title-Object without success...
-		// ... remove leading and trailing '"'-characters (solves Ticket#2010062310000113)
-		$oTitle = Title::newFromText( trim( $thisTitleMightExist, '"' ) );
-		if ( ( $oTitle !== null ) && $oTitle->exists() ){
-			$this->aOptions['existingTitleObject'] = &$oTitle;
-			return true;
-		}
-
-		return false;
 	}
 
 }

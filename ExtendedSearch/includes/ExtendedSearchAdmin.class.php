@@ -51,12 +51,10 @@ class ExtendedSearchAdmin {
 
 	/**
 	 * Return progress information when update index is called.
-	 * called with action=remote&mod=ExtendedSearchAdmin&rf=getProgressBar
-	 * @param string $sOutput Ready rendered output
+	 * @param string $sMode which progress should be rendered
 	 */
-	public static function getProgressBar( $sParamMode ) {
-		// todo: add new mechanism
-		switch ( $sParamMode ) {
+	public static function getProgressBar( $sMode ) {
+		switch ( $sMode ) {
 			case 'createForm' :
 				$sOutput = ExtendedSearchAdmin::getInstance()->getCreateForm();
 				break;
@@ -67,11 +65,9 @@ class ExtendedSearchAdmin {
 				$sOutput = ExtendedSearchAdmin::getInstance()->getDeleteFeedback();
 				break;
 			case 'deleteLock':
-				$sOutput = ExtendedSearchAdmin::getInstance()->checkLockExistence( $sParamMode );
+				$sOutput = ExtendedSearchAdmin::getInstance()->checkLockExistence( $sMode );
 				break;
 		}
-
-		return ''.$sOutput;
 	}
 
 	/**

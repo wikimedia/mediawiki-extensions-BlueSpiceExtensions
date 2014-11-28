@@ -47,7 +47,17 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $aParam = false ) {
-		$aTemplate = array();
+		global $wgScriptPath;
+		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
+
+		$aImageLinks = array(
+			'doc' => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
+			'ppt' => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
+			'xls' => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
+			'pdf' => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
+			'txt' => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
+			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
+		);
 
 		$sHighlightSnippets = $this->getOption( 'highlightsnippets' );
 		if ( !empty( $sHighlightSnippets ) ) {
@@ -60,10 +70,16 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 			$aResultInfo[] = $this->getOption( 'redirect' );
 		}
 
+		$sIconPath = $this->getOption( 'iconpath' );
+		$sIcon = ( empty( $sIconPath ) )
+			? $aImageLinks[$this->getOption( 'searchicon' )]
+			: $sIconPath;
+
+		$aTemplate = array();
 		$aTemplate[] = '<div class="search-wrapper">';
 		$aTemplate[] = '<div class="bs-extendedsearch-result-head">';
 		$aTemplate[] = '<table><tr>';
-		$aTemplate[] = '<td><span class="bs-extendedsearch-result-icon">' . $this->getOption( 'searchicon' ) . '</span></td>';
+		$aTemplate[] = '<td><span class="bs-extendedsearch-result-icon">' . $sIcon . '</span></td>';
 		$aTemplate[] = '<td><span class="bs-extendedsearch-result-title"><h3>' . $this->getOption( 'searchlink' ) . '</h3></span></td>';
 		$aTemplate[] = '</tr></table>';
 		$aTemplate[] = '</div>';
@@ -73,7 +89,7 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 
 		$aTemplate[] = '</div>';
 
-		if ( $this->getOption( 'highlightsnippets' ) ) {
+		if ( !empty( $sHighlightSnippets ) ) {
 			$aTemplate[] = '<div class="bs-search-hit-text">' . $sHighlightSnippets . '</div>';
 		}
 

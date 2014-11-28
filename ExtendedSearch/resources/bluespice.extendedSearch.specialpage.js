@@ -351,7 +351,7 @@ BsExtendedSearchAjaxManager.prototype = {
 		var inputField = $( '#bs-extendedsearch-inputfieldtext-specialpage' ),
 			url,
 			thread,
-			keys = [ 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91, 112,
+			keys = [ 13, 16, 17, 18, 20, 27, 37, 38, 39, 40, 91, 112,
 					113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123 ];
 
 		inputField.keydown( function() {

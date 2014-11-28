@@ -4,21 +4,17 @@
  *
  * Part of BlueSpice for MediaWiki
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
 /**
- * Indexer for ExtendedSearch for MediaWiki
+ * Searcher for ExtendedSearch for MediaWiki
  * @package BlueSpice_Extensions
  * @subpackage ExtendedSearch
  */
@@ -26,38 +22,42 @@ class SearchIndex {
 
 	/**
 	 * Instance of SearchService
-	 * @var SearchService object of SearchService
+	 * @var SearchService object
 	 */
-	protected $oSearchService;
+	protected $oSearchService = null;
 	/**
 	 * Instance of SearchOptions
-	 * @var SearchOptions object of SearchOptions
+	 * @var object SearchOptions object
 	 */
-	protected $oSearchOptions;
+	protected $oSearchOptions = null;
 	/**
 	 * Instance of SearchRequest
-	 * @var SearchRequest object of SearchRequest
+	 * @var object SearchRequest object
 	 */
-	protected $oSearchRequest;
+	protected $oSearchRequest = null;
 	/**
 	 * RequestContext
-	 * @var RequestContext object of RequestContext
+	 * @var object RequestContext object
 	 */
 	protected $oContext;
 	/**
 	 * SearchUriBuilder object
-	 * @var SearchUriBuilder SearchUriBuilder object
+	 * @var object SearchUriBuilder object
 	 */
 	protected $oUriBuilder = null;
 	/**
-	 * Instance of search service
-	 * @var object of search service
+	 * Instance of SearchIndex
+	 * @var object SearchIndex object
 	 */
 	protected static $oInstance = null;
 
 	/**
-	 * Constructor for SearchIndexMW class
-	 * @param BsSearchService $searchServiceObject Current search service
+	 * Constructor for SearchIndex class
+	 * @param SearchService $oSearchService current search service
+	 * @param SearchRequest $oSearchRequest current search request
+	 * @param SearchOptions $oSearchOptions current search options
+	 * @param BsSearchUriBuilder $oSearchUriBuilder current search uri builder
+	 * @param RequestContext $oContext Current search service
 	 */
 	public function __construct( $oSearchService, $oSearchRequest, $oSearchOptions, $oSearchUriBuilder, $oContext ) {
 		$this->oSearchRequest = $oSearchRequest;
@@ -81,7 +81,6 @@ class SearchIndex {
 
 	/**
 	 * This functions searches the index for a given search term
-	 * @param BsSearchRequest $oSearchService Current search request
 	 * @param array &$aMonitor Set of options.
 	 * @return ViewSearchResult View that describes search results
 	 */
@@ -96,7 +95,7 @@ class SearchIndex {
 			);
 		}
 
-		if ( !$this->oSearchRequest->isSearchable() ) {
+		if ( empty( $this->oSearchRequest->sInput ) ) {
 			if ( $this->oSearchOptions->getOption( 'searchStringOrig' ) == '' ) {
 				return $this->createErrorMessageView( 'bs-extendedsearch-nosearchterm' );
 			} else {
@@ -109,17 +108,18 @@ class SearchIndex {
 		$query = $this->oSearchOptions->getSolrQuery();
 		try {
 			$oHits = $this->oSearchService->search(
-				$query['searchString'],
-				$query['offset'],
-				$query['searchLimit'],
-				$query['searchOptions']
+				$query['searchString'], $query['offset'],
+				$query['searchLimit'], $query['searchOptions']
 			);
 		} catch ( Exception $e ) {
 			if ( stripos( $e->getMessage(), 'Communication Error' ) !== false ) {
 				$sUrl = SpecialPage::getTitleFor( 'Search' )->getFullURL();
 
 				$sParams = 'search='.urlencode( $this->oSearchOptions->getOption( 'searchStringRaw' ) );
-				$sParams .= ( $this->oSearchOptions->getOption( 'scope' ) == 'title' ) ? '&go=' : '&fulltext=Search';
+				$sParams .= ( $this->oSearchOptions->getOption( 'scope' ) == 'title' )
+					? '&go='
+					: '&fulltext=Search';
+
 				foreach ( $this->oSearchOptions->getOption( 'namespaces' ) as $namespace ) {
 					$sParams .= "&ns{$namespace}=1";
 				}
@@ -135,24 +135,27 @@ class SearchIndex {
 		$iNumFound = $oHits->response->numFound;
 
 		$bFuzzy = ( $iNumFound == 0 );
-
 		// Make a fuzzy query
 		if ( $bFuzzy ) {
 			$aFuzzyQuery = $this->oSearchOptions->getSolrFuzzyQuery();
 			try {
 				$oHits = $this->oSearchService->search(
-					$aFuzzyQuery['searchString'],
-					$aFuzzyQuery['offset'],
-					$aFuzzyQuery['searchLimit'],
-					$aFuzzyQuery['searchOptions']
+					$aFuzzyQuery['searchString'], $aFuzzyQuery['offset'],
+					$aFuzzyQuery['searchLimit'], $aFuzzyQuery['searchOptions']
 				);
 			} catch ( Exception $e ) {
 				return $this->createErrorMessageView( 'bs-extendedsearch-invalid-query' );
 			}
 
 			$aSpell = array(
-				'sim' => $this->oSearchService->getSpellcheck( $this->oSearchOptions->getOption( 'searchStringRaw' ), $this->oSearchOptions->getSearchOptionsSim() ),
-				'url' => $this->oUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::INPUT | SearchUriBuilder::MLT | SearchUriBuilder::ORDER_ASC_OFFSET )
+				'sim' => $this->oSearchService->getSpellcheck(
+						$this->oSearchOptions->getOption( 'searchStringRaw' ),
+						$this->oSearchOptions->getSearchOptionsSim()
+					),
+				'url' => $this->oUriBuilder->buildUri(
+						SearchUriBuilder::ALL,
+						SearchUriBuilder::INPUT|SearchUriBuilder::MLT|SearchUriBuilder::ORDER_ASC_OFFSET
+					)
 			);
 
 			$iNumFound = $oHits->response->numFound;
@@ -220,5 +223,6 @@ class SearchIndex {
 		$res->addData( array( 'message' => wfMessage( $sMessage )->plain() ) );
 		return $res;
 	}
+
 
 }
