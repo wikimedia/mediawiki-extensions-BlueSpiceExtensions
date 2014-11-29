@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Toniher",
-			"Edustus"
+			"Edustus",
+			"Arnaugir"
 		]
 	},
+	"bs-visualeditor-desc": "Editor visual per a MediaWiki",
 	"bs-visualeditor-editbutton-hint": "Editor visual",
 	"bs-visualeditor-contenttable": "Contingut",
 	"bs-visualeditor-contenttable-black": "Contingut (negre)",
