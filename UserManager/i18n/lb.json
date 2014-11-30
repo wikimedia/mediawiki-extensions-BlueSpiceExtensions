@@ -26,5 +26,6 @@
 	"bs-usermanager-labelnewpassword": "Passwuert",
 	"bs-usermanager-labelpasswordcheck": "Passwuert confirméieren",
 	"bs-usermanager-titledeleteuser": "Benotzer läschen",
-	"bs-usermanager-confirmdeleteuser": "Sidd Dir sécher, datt Dir {{PLURAL:$1|dëse|dës $1}} Benotzer läsche wëllt?"
+	"bs-usermanager-confirmdeleteuser": "Sidd Dir sécher, datt Dir {{PLURAL:$1|dëse|dës $1}} Benotzer läsche wëllt?",
+	"bs-usermanager-groups-more": "... méi"
 }

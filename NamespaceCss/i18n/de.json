@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Purodha"
 		]
 	},
-	"bs-namespacecss-desc": "Namensraum spezifisches Aussehen"
+	"bs-namespacecss-desc": "Namensraumspezifisches Aussehen"
 }
