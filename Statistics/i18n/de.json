@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Mglaser"
 		]
 	},
 	"bs-statistics-desc": "Statistik-Modul für BlueSpice",
@@ -31,7 +32,7 @@
 	"bs-statistics-diag-number-of-pages": "Anzahl der Seiten",
 	"bs-statistics-diag-number-of-pages-desc": "Zeigt die Zahl aller Seiten, die im ausgewählten Zeitraum im Wiki erstellt wurden.",
 	"bs-statistics-diag-number-of-pages-mw": "Anzahl der Artikel",
-	"bs-statistics-diag-number-of-pages-mw-desc": "Zeigt die Zahl aller Seiten, die als Artikel gewertet werden und im ausgewählten Zeitraum im Wiki erstellt wurden. Ein Artikel befindet sich in einem auswertbaren Namespace und hat mindestens einen internen Link.",
+	"bs-statistics-diag-number-of-pages-mw-desc": "Zeigt die Zahl aller Seiten, die als Artikel gewertet werden und im ausgewählten Zeitraum im Wiki erstellt wurden. Ein Artikel befindet sich in einem auswertbaren Namensraum und hat mindestens einen internen Link.",
 	"bs-statistics-label-page": "Artikel",
 	"bs-statistics-label-creator": "Ersteller",
 	"bs-statistics-diag-number-of-edits": "Anzahl der Bearbeitungen",
