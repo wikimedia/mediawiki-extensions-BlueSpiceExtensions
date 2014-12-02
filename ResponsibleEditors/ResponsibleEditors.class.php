@@ -878,7 +878,8 @@ class ResponsibleEditors extends BsExtensionMW {
 		$sUserName    = BsExtensionManager::getExtension( 'ResponsibleEditors' )->mCore->getUserDisplayName( $oUser );
 		$sArticleName = $aTitles[0]->getText();
 		$sArticleLink = $aTitles[0]->getFullURL();
-
+		$sSubject = "";
+		$sMessage = "";
 		switch( $sAction ) {
 			case 'change':
 				$sSubject = wfMessage(
@@ -921,14 +922,36 @@ class ResponsibleEditors extends BsExtensionMW {
 				)->plain();
 				break;
 			default:
-				wfDebugLog(
-					'BS::ResponsibleEditors::notifyResponsibleEditors',
-					'Action "'.$sAction.'" is unknown. No mails sent.'
-				);
-				return;
+				$bResult = wfRunHooks("BsResponsibleEditorsnotifyResponsibleEditorUnknownAction", array(&$aResponsibleEditors, $oUser, &$aTitles[0], &$sAction, &$sSubject, &$sMessage));
+				if ($sSubject == "" || $sMessage == "" || $bResult === false){
+					wfDebugLog(
+						'BS::ResponsibleEditors',
+						'Error in notifyResponsibleEditors, action "'.$sAction.'" is unknown. No mails sent.'
+					);
+					return;
+				}
 		}
-
-		BsMailer::getInstance('MW')->send($aResponsibleEditors, $sSubject, $sMessage);
+		if (class_exists('Echo')){
+			foreach ($aResponsibleEditors as $oReUser){
+				if ($sAction == "change")
+					$sAction = "edit";
+				EchoEvent::create( array(
+					'type'  => 'bs-' . $sAction,
+					'title' => $aTitles[0],
+					'agent' => $oUser,
+					'extra' => array(
+							'summary'   => "",
+							'titlelink' => true,
+							'difflink'  => array( 'diffparams' => array() ),
+							'agentlink' => true,
+							'responsible-editor-id' => $oReUser->getId()
+						),
+				) );
+			}
+		}
+		else{
+			BsMailer::getInstance('MW')->send($aResponsibleEditors, $sSubject, $sMessage);
+		}
 	}
 
 	public static function getResponsibleEditorsPortletData( $iCount, $iUserId ) {
