@@ -244,7 +244,7 @@ class VisualEditor extends BsExtensionMW {
 	}
 
 	public function onBSExtendedEditBarBeforeEditToolbar(&$aRows, &$aButtonCfgs) {
-		if ($this->bShowToolbarIcon == false) {
+		if ( !$this->checkContext( $this->getTitle() ) ) {
 			return true;
 		}
 
