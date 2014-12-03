@@ -132,7 +132,12 @@ class SpecialUniversalExport extends BsSpecialPage {
 
 			BsUniversalExportHelper::getParamsFromQueryString( $this->aParams );
 
-			if ( $this->oRequestedTitle->userCan( 'universalexport-export' ) === false ) {
+			//Title::userCan always returns false on special pages (exept for createaccount action)
+			if( $this->oRequestedTitle->getNamespace() === NS_SPECIAL ) {
+				if( $this->getUser()->isAllowed('universalexport-export') !== true ) {
+					throw new Exception( 'bs-universalexport-error-permission');
+				}
+			} elseif( $this->oRequestedTitle->userCan( 'universalexport-export' ) === false ) {
 				throw new Exception( 'bs-universalexport-error-permission');
 			}
 
