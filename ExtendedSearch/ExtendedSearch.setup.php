@@ -15,6 +15,11 @@ $wgResourceModules['ext.bluespice.extendedsearch.focus'] = array(
 	'scripts' => 'bluespice.extendedSearch.focus.js',
 ) + $aResourceModuleTemplate;
 
+$wgResourceModules['ext.bluespice.extendedsearch.form'] = array(
+	'scripts' => 'bluespice.extendedSearch.form.js',
+	'styles' => 'bluespice.extendedSearch.form.css'
+) + $aResourceModuleTemplate;
+
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete.style'] = array(
 	'styles' => 'bluespice.extendedSearch.autocomplete.css'
 ) + $aResourceModuleTemplate;

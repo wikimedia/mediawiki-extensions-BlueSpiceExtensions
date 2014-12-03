@@ -172,6 +172,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$oOut->addModuleStyles( 'ext.bluespice.extendedsearch.autocomplete.style' );
 		$oOut->addModules( 'ext.bluespice.extendedsearch.autocomplete' );
 		$oOut->addModules( 'ext.bluespice.extendedsearch.focus' );
+		$oOut->addModules( 'ext.bluespice.extendedsearch.form' );
 		return true;
 	}
 
