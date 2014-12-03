@@ -29,5 +29,6 @@
 	"bs-usermanager-labelnewpassword": "Пароль",
 	"bs-usermanager-labelpasswordcheck": "Подтвердите пароль",
 	"bs-usermanager-titledeleteuser": "Удалить пользователя",
-	"bs-usermanager-confirmdeleteuser": "Вы уверены, что хотите удалить {{PLURAL:$1|этого участника|этих $1 участников}}?"
+	"bs-usermanager-confirmdeleteuser": "Вы уверены, что хотите удалить {{PLURAL:$1|этого участника|этих $1 участников}}?",
+	"bs-usermanager-groups-more": "…ещё"
 }
