@@ -17,7 +17,7 @@ $wgSpecialPages['ExtensionInfo'] = 'SpecialExtensionInfo';
 $wgResourceModules['ext.bluespice.extensioninfo.styles'] = array(
 	'styles' => 'bluespice.extensionInfo.css',
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/ExtensionInfo/resources',
-	'remoteExtPath' => 'BlueSpiceExtensions/ExtensionInfo/resources',
+	'remoteExtPath' => 'BlueSpiceExtensions/ExtensionInfo/resources'
 );
 
 $wgResourceModules['ext.bluespice.extensioninfo'] = array(
