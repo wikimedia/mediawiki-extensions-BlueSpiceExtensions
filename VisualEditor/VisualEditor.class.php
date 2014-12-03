@@ -68,7 +68,8 @@ class VisualEditor extends BsExtensionMW {
 			//"link" //Needed for "unlink"
 			//"autoresize",
 			"charmap",
-			"noneditable"
+			"noneditable",
+			"colorpicker"
 		),
 		'external_plugins' => array(
 			'bswikicode'  => '../tiny_mce_plugins/bswikicode/plugin.js',
