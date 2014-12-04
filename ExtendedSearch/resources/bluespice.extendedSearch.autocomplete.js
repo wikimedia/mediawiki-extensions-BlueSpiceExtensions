@@ -10,7 +10,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-mw.loader.using( 'jquery.ui.autocomplete', function() {
+mw.loader.using( [ 'jquery.ui.autocomplete', 'ext.bluespice.extendedsearch.form' ], function() {
 	var cache = [];
 	var lastXhr = {};
 
@@ -19,6 +19,7 @@ mw.loader.using( 'jquery.ui.autocomplete', function() {
 
 	var container = $( "<div id='bs-extendedsearch-autocomplete'></div>" );
 	$( "body" ).append( container );
+
 	$( "#bs-extendedsearch-input, .bs-autocomplete-field" ).autocomplete( {
 		appendTo: container,
 		position: {
