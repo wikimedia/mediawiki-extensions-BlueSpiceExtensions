@@ -296,6 +296,8 @@ class VisualEditor extends BsExtensionMW {
 			if ($tag == 'pre')
 				continue;
 			$allowedTags .= $tag . '[*],';
+			if ($tag == 'nowiki')
+				continue;
 			$specialTags .= $tag . '|';
 		}
 		$allowedTags .= 'div[*],';
@@ -305,7 +307,7 @@ class VisualEditor extends BsExtensionMW {
 
 		//TODO: There are duplicates!
 		$aDefaultTags = array(
-			"syntaxhighlight", "source", "infobox", "categorytree", "nowiki",
+			"syntaxhighlight", "source", "infobox", "categorytree",
 			"presentation", "includeonly", "onlyinclude", "noinclude",
 			"backlink", "gallery", "math", "video", "rss", "tagcloud"
 		);
