@@ -107,15 +107,10 @@ class WikiAdmin extends BsExtensionMW {
 	public static function &get( $name ) {
 		switch ( $name ) {
 			case 'ExcludeGroups': return self::$prExcludeGroups;
-				break;
 			case 'ExcludeDeleteGroups': return self::$prExcludeDeleteGroups;
-				break;
 			case 'ExcludeRights': return self::$prExcludeRights;
-				break;
 			case 'CommonRights': return self::$prCommonRights;
-				break;
 			case 'HardPerms': return self::$prHardPerms;
-				break;
 		}
 		return null;
 	}
@@ -221,6 +216,8 @@ class WikiAdmin extends BsExtensionMW {
 			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
 		}
 
+		$aOutSortable['Shop'] = self::getShopLink();
+
 		ksort( $aOutSortable );
 		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
 		$aOut[] = '</ul>';
@@ -236,5 +233,22 @@ class WikiAdmin extends BsExtensionMW {
 			$tpl->data['sidebar'][wfMessage( 'bs-tab_admin' )->plain()] = implode( "\n", $aOut );
 		}
 		return true;
+	}
+
+	/**
+	 * Returns a link to the BlueSpice shop
+	 * @return string Link to the shop
+	 */
+	private static function getShopLink() {
+		$sLink = Html::element(
+			'a',
+			array(
+				'id' => 'bs-admin-shop',
+				'href' => 'http://shop.blue-spice.org/',
+				'title' => wfMessage( 'bs-wikiadmin-shop' )->escaped()
+			),
+			wfMessage( 'bs-wikiadmin-shop' )->escaped()
+		);
+		return $sLink;
 	}
 }
