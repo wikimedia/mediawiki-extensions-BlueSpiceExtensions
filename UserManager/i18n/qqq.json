@@ -31,5 +31,5 @@
 	"bs-usermanager-titledeleteuser": "Window title for delete user\\n{{Identical|Delete user}}",
 	"bs-usermanager-confirmdeleteuser": "Text for are you sure, you want to delete {{PLURAL:$1|this user|these $1 users}}?\\n $1 is the number of users which will be deleted - use for PLURAL distinction.",
 	"bs-usermanager-groups-more": "Text of a link that expands the list of groups\n{{Identical|More}}",
-	"bs-usermanager-no-self-desysop" : "Text for the error message if a user tries to desysop themselves."
+	"bs-usermanager-no-self-desysop": "Text for the error message if a user tries to desysop themselves."
 }

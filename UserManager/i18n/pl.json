@@ -20,5 +20,6 @@
 	"bs-usermanager-titleadduser": "Dodaj użytkownika",
 	"bs-usermanager-labelnewpassword": "Hasło",
 	"bs-usermanager-labelpasswordcheck": "Potwierdź hasło",
-	"bs-usermanager-groups-more": "... więcej"
+	"bs-usermanager-groups-more": "... więcej",
+	"bs-usermanager-no-self-desysop": "Nie możesz odebrać sobie uprawnień administratora."
 }
