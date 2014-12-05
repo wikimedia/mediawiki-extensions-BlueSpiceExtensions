@@ -143,7 +143,10 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			var editor = plugin.getEditor();
 			var bookmark = editor.selection.getBookmark();
 			var image = this.selection.getNode();
-			var params = {};
+			var params = {
+				caption: '',
+				alt: ''
+			};
 
 			if( image.nodeName.toLowerCase() === 'img' ) {
 				var data = bs.util.makeAttributeObject( image );
