@@ -23,7 +23,8 @@ $wgResourceModules['ext.bluespice.userManager'] = array(
 		'bs-usermanager-headergroups',
 		'bs-usermanager-titledeleteuser',
 		'bs-usermanager-confirmdeleteuser',
-		'bs-usermanager-groups-more'
+		'bs-usermanager-groups-more',
+		'bs-usermanager-no-self-desysop'
 	),
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/UserManager/resources'
