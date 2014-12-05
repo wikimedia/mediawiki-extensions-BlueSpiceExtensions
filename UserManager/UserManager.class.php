@@ -188,6 +188,9 @@ class UserManager extends BsExtensionMW {
 	 * @return string json encoded response
 	 */
 	public static function addUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
+
+		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
 			return FormatJson::encode( array(
@@ -352,6 +355,8 @@ class UserManager extends BsExtensionMW {
 	 * @return string json encoded response
 	 */
 	public static function editUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
+		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
 			return FormatJson::encode( array(
@@ -373,7 +378,7 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['success'] = false;
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-idnotexist' )->plain(); // id_noexist = 'This user ID does not exist'
 		}
-		if ( !$oUser->isValidPassword( $sPassword ) ) {
+		if ( !empty( $sPassword ) && !$oUser->isValidPassword( $sPassword ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'pass',
@@ -399,6 +404,19 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['errors'][] = array(
 				'id' => 'email',
 				'message' => wfMessage( 'bs-usermanager-invalid-email-gen' )->plain()
+			);
+		}
+
+		global $wgUser;
+		if (
+			$wgUser->getId() == $oUser->getId() &&
+			in_array( 'sysop', $wgUser->getEffectiveGroups() ) &&
+			!in_array( 'sysop', $aGroups )
+		) {
+			$aAnswer['success'] = false;
+			$aAnswer['errors'][] = array(
+				'id' => 'groups',
+				'message' => wfMessage( 'bs-usermanager-no-self-desysop' )->plain()
 			);
 		}
 
@@ -538,6 +556,8 @@ class UserManager extends BsExtensionMW {
 	}
 
 	public static function setUserGroups( $aUserIds, $aGroups ) {
+		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
@@ -555,29 +575,44 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['message'][] =  wfMessage( 'bs-wikiadmin-notallowed' )->plain();
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$resDelGroups = $dbw->delete( 'user_groups',
-			array(
-				'ug_user' => $aUserIds
-			)
-		);
+		global $wgUser;
+		if (
+			in_array( $wgUser->getId(), $aUserIds ) &&
+			in_array( 'sysop', $wgUser->getEffectiveGroups() ) &&
+			!in_array( 'sysop', $aGroups )
+		) {
+			$aAnswer['success'] = false;
+			$aAnswer['errors'][] = array(
+				'id' => 'groups',
+				'message' => wfMessage( 'bs-usermanager-no-self-desysop' )->plain()
+			);
+		}
 
-		$resInsGroups = true;
-		if( is_array( $aGroups ) ) {
-			foreach ( $aGroups as $sGroup ) {
-				if ( in_array( $sGroup, self::$excludegroups ) ) {
-					continue;
-				}
-				foreach( $aUserIds as $iUserId ) {
-					$resInsGroups = $dbw->insert(
-							'user_groups',
-							array(
-								'ug_user' => (int)$iUserId,
-								'ug_group' => addslashes( $sGroup )
-							)
-					);
-					if( $resInsGroups === false ) {
-						break;
+		if ( $aAnswer['success'] ) {
+			$dbw = wfGetDB( DB_MASTER );
+			$resDelGroups = $dbw->delete( 'user_groups',
+				array(
+					'ug_user' => $aUserIds
+				)
+			);
+
+			$resInsGroups = true;
+			if( is_array( $aGroups ) ) {
+				foreach ( $aGroups as $sGroup ) {
+					if ( in_array( $sGroup, self::$excludegroups ) ) {
+						continue;
+					}
+					foreach( $aUserIds as $iUserId ) {
+						$resInsGroups = $dbw->insert(
+								'user_groups',
+								array(
+									'ug_user' => (int)$iUserId,
+									'ug_group' => addslashes( $sGroup )
+								)
+						);
+						if( $resInsGroups === false ) {
+							break;
+						}
 					}
 				}
 			}

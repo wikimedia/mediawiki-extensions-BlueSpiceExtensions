@@ -326,7 +326,11 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			method: 'post',
 			success: function( response, opts ) {
 				var responseObj = Ext.decode( response.responseText );
-				this.renderMsgSuccess( responseObj );
+				if ( responseObj.success === true ) {
+					this.renderMsgSuccess( responseObj );
+				} else {
+					this.renderMsgFailure( responseObj );
+				}
 			}
 		});
 	},
@@ -339,7 +343,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 		} else if ( this.active === 'edit' ) {
 			this.dlgUserEdit.show();
 		} else if ( this.active === 'edit-multi-groups' ) {
-			this.dlgUserGroupsEdit.show();
+			this.dlgUserGroups.show();
 		}
 	},
 	renderMsgSuccess: function( responseObj ) {
