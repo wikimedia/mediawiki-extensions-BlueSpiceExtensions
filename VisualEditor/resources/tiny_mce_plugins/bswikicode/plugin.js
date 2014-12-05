@@ -455,7 +455,7 @@ var BsWikiCode = function() {
 
 	function _links2html(text) {
 		// internal links
-		var links, link, linkParts, linkTarget, linkLabel, linkHtml,
+		var links, link, linkNoWrap, linkParts, linkTarget, linkLabel, linkHtml,
 			targetParts, fileExtension, targetTextParts, nsText, nsId,
 			linkTargetParts, protocol, targetText,
 			namespaces = mw.config.get('wgNamespaceIds'),
@@ -555,7 +555,9 @@ var BsWikiCode = function() {
 
 		if (links) {
 			for (i = 0; i < links.length; i++) {
-				link = links[i].substr(1, links[i].length - 2);
+				linkNoWrap = links[i].substr(1, links[i].length - 2);
+
+				link = linkNoWrap.replace(/^\s+|\s+$/gm,'');
 				linkParts = link.split(" ");
 				linkTarget = linkParts[0];
 				linkLabel = linkParts[0];
@@ -585,7 +587,7 @@ var BsWikiCode = function() {
 					encodeURI( linkTarget ),                                          //5
 					encodeURI( $('<div/>').text(linkLabel).html() )                   //6
 				);
-				text = text.replace("[" + link + "]", linkHtml);
+				text = text.replace("[" + linkNoWrap + "]", linkHtml);
 			}
 		}
 		return text;
