@@ -137,7 +137,8 @@ var BsWikiCode = function() {
 		var htmlImageObject = $('<img />').attr( me.makeDefaultImageAttributesObject() ),
 			wikiImageObject = me.makeWikiImageDataObject(),
 			parts = link.split("|"), part = '',
-			unsuffixedValue, dimensions, kvpair, key, value, src, imgParts;
+			unsuffixedValue, dimensions, kvpair, key, value, src, imgParts,
+			imgName;
 
 		wikiImageObject.imagename = parts[0];
 
@@ -319,11 +320,13 @@ var BsWikiCode = function() {
 		//We set a dummy url which contains the original filename as
 		//querystring parameter
 		imgParts = parts[0].split(':');
-		src = _imageDummyUrl + '?' + imgParts[1];
+		imgParts.shift(); //Throw away leading namespace prefix
+		imgName = imgParts.join(':'); //Reassemble image name
+		src = _imageDummyUrl + '?' + imgName;
 
 		//We have to save the name and url of the image to allow post process
 		//replacement of dummyUrls
-		_images.push({ imageName: imgParts[1], dummySrc: src });
+		_images.push({ imageName: imgName, dummySrc: src });
 
 		// image, resulting in a 404 error.
 		htmlImageObject.attr('src', src);
