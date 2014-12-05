@@ -35,6 +35,11 @@ var BsWikiCode = function() {
 		 *
 		 * @type Array
 		 */
+		_nowikiTags,
+		/**
+		 *
+		 * @type Array
+		 */
 		_templates,
 		/**
 		 *
@@ -1883,7 +1888,7 @@ var BsWikiCode = function() {
 	 * @param {String} text
 	 * @returns {String}
 	 */
-	function _preservePres(text) {
+	function _preservePres(text, skipnowiki) {
 		var i;
 
 		_preTags = false;
@@ -1903,6 +1908,19 @@ var BsWikiCode = function() {
 				text = text.replace(_preTagsSpace[i], "@@@PRE_SPACE" + i + "@@@");
 			}
 		}
+
+		if ( skipnowiki ) return text;
+
+		_nowikiTags = false;
+		//
+		_nowikiTags = text.match(/<nowiki>([\S\s]*?)<\/nowiki>/gmi);
+		if (_nowikiTags) {
+				for (i = 0; i < _nowikiTags.length; i++) {
+						text = text.replace(_nowikiTags[i], "@@@NOWIKI" + i + "@@@");
+						_nowikiTags[i] = _nowikiTags[i].replace( "\n",  "<span class='single_linebreak' style='background-color:lightgray'>&para;<\/span> " );
+				}
+		}
+
 
 		return text;
 	}
@@ -1945,6 +1963,22 @@ var BsWikiCode = function() {
 			}
 		}
 		_preTagsSpace = false;
+
+		//this is experimental support for nowiki
+		if (_nowikiTags) {
+				for (i = 0; i < _nowikiTags.length; i++) {
+						regex = '@@@NOWIKI' + i + '@@@';
+						replacer = new RegExp(regex, 'gmi');
+
+						// \n works in IE. In FF, this is not neccessary.
+						if ( navigator.appName == 'Microsoft Internet Explorer' ) {
+								text = text.replace(replacer, "\n" + _nowikiTags[i]);
+						} else {
+								text = text.replace(replacer, _nowikiTags[i]);
+						}
+				}
+		}
+		_nowikiTags = false;
 
 		return text;
 	}
@@ -2163,7 +2197,7 @@ var BsWikiCode = function() {
 		}
 
 		text = _convertPreWithSpacesToTinyMce(text);
-		text = _preservePres(text);
+		text = _preservePres(text, false);
 
 		do {
 			_processFlag = false;
