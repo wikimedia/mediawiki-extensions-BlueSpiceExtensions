@@ -9,5 +9,6 @@
 	"bs-wikiadmin-notallowed": "您不被允許使用此頁面。",
 	"wikiadmin": "BlueSpice管理",
 	"action-wikiadmin": "顯示 BlueSpice 管理頁面",
-	"right-wikiadmin": "顯示 BlueSpice 管理頁"
+	"right-wikiadmin": "顯示 BlueSpice 管理頁",
+	"bs-wikiadmin-shop": "商店"
 }
