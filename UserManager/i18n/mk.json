@@ -29,5 +29,6 @@
 	"bs-usermanager-labelpasswordcheck": "Потврдете ја лозинката",
 	"bs-usermanager-titledeleteuser": "Бришење на корисник",
 	"bs-usermanager-confirmdeleteuser": "Дали сте сигурни дека сакате да {{PLURAL:$1|го избришете корисников|ги избришете овие $1 корисници}}?",
-	"bs-usermanager-groups-more": "... повеќе"
+	"bs-usermanager-groups-more": "... повеќе",
+	"bs-usermanager-no-self-desysop": "Не можете самите да си го одземете администраторското право."
 }

@@ -29,5 +29,6 @@
 	"bs-usermanager-labelpasswordcheck": "确认密码",
 	"bs-usermanager-titledeleteuser": "删除用户",
 	"bs-usermanager-confirmdeleteuser": "您确信要删除{{PLURAL:$1|此|这$1位}}用户么？",
-	"bs-usermanager-groups-more": "……更多"
+	"bs-usermanager-groups-more": "……更多",
+	"bs-usermanager-no-self-desysop": "您不能移除您自己的管理员权限。"
 }
