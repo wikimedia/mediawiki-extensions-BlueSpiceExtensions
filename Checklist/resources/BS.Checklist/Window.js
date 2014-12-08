@@ -3,7 +3,7 @@ Ext.define( 'BS.Checklist.Window', {
 	id: 'bs-insertchecklist',
 	singleton: true,
 	layout: 'border',
-	height: 350,
+	height: 400,
 	width:500,
 	modal: true,
 	title: mw.message('bs-checklist-dlg-insert-list-title').plain(),
@@ -17,7 +17,7 @@ Ext.define( 'BS.Checklist.Window', {
 		});
 		this.btnNew.on( 'click', this.onBtnNewClick, this );
 
-		//this.buttons.unshift( this.btnNew );
+		this.buttons.unshift( this.btnNew );
 
 		this.btnSave = Ext.create( 'Ext.Button', {
 			text: mw.message('bs-checklist-dlg-save-list').plain(),
@@ -51,7 +51,7 @@ Ext.define( 'BS.Checklist.Window', {
 			items: [
 				this.bsListItems,
 				this.bsListItemsLabel,
-				this.btnNew,
+				//this.btnNew,
 				this.btnSave
 			]
 		});
