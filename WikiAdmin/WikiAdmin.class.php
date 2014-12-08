@@ -216,7 +216,7 @@ class WikiAdmin extends BsExtensionMW {
 			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
 		}
 
-		$aOutSortable['Shop'] = self::getShopLink();
+		$aOutSortable['Shop'] = self::getShopListItem();
 
 		ksort( $aOutSortable );
 		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
@@ -236,10 +236,10 @@ class WikiAdmin extends BsExtensionMW {
 	}
 
 	/**
-	 * Returns a link to the BlueSpice shop
+	 * Returns a list item with a link to the BlueSpice shop
 	 * @return string Link to the shop
 	 */
-	private static function getShopLink() {
+	private static function getShopListItem() {
 		$sLink = Html::element(
 			'a',
 			array(
@@ -249,6 +249,6 @@ class WikiAdmin extends BsExtensionMW {
 			),
 			wfMessage( 'bs-wikiadmin-shop' )->escaped()
 		);
-		return $sLink;
+		return '<li>'.$sLink.'</li>';
 	}
 }
