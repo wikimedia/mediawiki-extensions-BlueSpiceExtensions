@@ -8,7 +8,7 @@ $wgExtensionMessagesFiles['SmartList'] = __DIR__ . '/languages/SmartList.i18n.ph
 
 $GLOBALS['wgAutoloadClasses']['SmartList'] = __DIR__ . '/SmartList.class.php';
 
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'SmartList::getSchemaUpdates';
+$GLOBALS['wgHooks']['LoadExtensionSchemaUpdates'][] = 'SmartList::getSchemaUpdates';
 
 $wgAjaxExportList[] = 'SmartList::getMostVisitedPages';
 $wgAjaxExportList[] = 'SmartList::getMostEditedPages';
