@@ -24,7 +24,6 @@ $wgResourceModules['ext.bluespice.widgetbar'] = array(
 
 unset( $aResourceModuleTemplate );
 
-$wgAutoloadClasses['ViewWidget'] = __DIR__ . '/views/view.Widget.php';
 $wgAutoloadClasses['ViewWidgetError'] = __DIR__ . '/views/view.WidgetError.php';
 $wgAutoloadClasses['ViewWidgetErrorList'] = __DIR__ . '/views/view.WidgetErrorList.php';
 $wgAutoloadClasses['ViewWidgetList'] = __DIR__ . '/views/view.WidgetList.php';
