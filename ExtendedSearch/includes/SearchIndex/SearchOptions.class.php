@@ -305,7 +305,7 @@ class SearchOptions {
 		$this->aOptions['searchStringForStatistics'] = $this->aOptions['searchStringWildcarded'];
 
 		$aSearchTitle = array(
-			'title:(' . $this->aOptions['searchStringOrig'] . ')^2',
+			'title:(' . $this->aOptions['searchStringOrig'] . ')^5',
 			'titleWord:(' . $this->aOptions['searchStringOrig'] . ')^2',
 			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
 			'redirects:(' . $this->aOptions['searchStringOrig'] . ')'
