@@ -12,12 +12,12 @@ Ext.define( 'BS.Checklist.Window', {
 	preventDeselect: false,
 	afterInitComponent: function() {
 		this.btnNew = Ext.create( 'Ext.Button', {
-			text: mw.message('bs-checklist-dlg-new-list').plain(),
+			text: '+', //mw.message('bs-checklist-dlg-new-list').plain(),
 			id: this.getId()+'-btn-new'
 		});
 		this.btnNew.on( 'click', this.onBtnNewClick, this );
 
-		this.buttons.unshift( this.btnNew );
+		//this.buttons.unshift( this.btnNew );
 
 		this.btnSave = Ext.create( 'Ext.Button', {
 			text: mw.message('bs-checklist-dlg-save-list').plain(),
@@ -32,8 +32,6 @@ Ext.define( 'BS.Checklist.Window', {
 		});
 
 		this.bsListItems = Ext.create('BS.Checklist.ChecklistBoxSelect', {
-			fieldLabel: mw.message('bs-checklist-dlg-items-label').plain(),
-			labelAlign: 'top',
 			disabled: true,
 			//TODO: i18n
 			emptyText: mw.message('bs-checklist-dlg-items-emptytext').plain(),
@@ -47,6 +45,8 @@ Ext.define( 'BS.Checklist.Window', {
 		});
 
 		this.pnlMain = Ext.create( 'Ext.form.FormPanel', {
+			header: true,
+			title: mw.message('bs-checklist-dlg-items-label').plain(),
 			region: 'center',
 			bodyPadding: 5,
 			items: [
@@ -81,7 +81,10 @@ Ext.define( 'BS.Checklist.Window', {
 			collapsed: false,
 			singleExpand: true,
 			region: 'west',
-			id: 'bs-checklist-template-tree'
+			id: 'bs-checklist-template-tree',
+			tools: [
+				this.btnNew
+			]
 		});
 
 		this.templateTree.on( 'select', this.onSelect, this );
