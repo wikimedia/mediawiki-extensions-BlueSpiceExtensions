@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"EagerLin",
-			"Cwlin0416"
+			"Cwlin0416",
+			"LNDDYL"
 		]
 	},
-	"bs-insertcategory-desc": "對話框中輸入分類連結",
+	"bs-insertcategory-desc": "對話方塊中輸入分類連結",
 	"bs-insertcategory-insertcat": "插入分類",
 	"prefs-insertcategory": "插入分類",
 	"bs-insertcategory-title": "插入分類",
