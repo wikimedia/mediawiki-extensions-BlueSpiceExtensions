@@ -150,7 +150,7 @@ class Checklist extends BsExtensionMW {
 			// only add those titles that do have actual lists
 			$aListOptions = self::getListOptions( $oTitle->getFullText() );
 			if (sizeof( $aListOptions ) > 0 ) {
-				$aTitles[] = $oTitle->getFullText();
+				$aTitles[] = $oTitle->getText();
 			}
 		}
 		foreach ($aTitles as $sTitle ) {
@@ -169,8 +169,7 @@ class Checklist extends BsExtensionMW {
 	}
 
 	public static function ajaxSaveOptionsList( $sTitle, $aRecords ) {
-		//TODO: make safe
-		$oTitle = Title::newFromText( $sTitle );
+		$oTitle = Title::newFromText( $sTitle, NS_TEMPLATE );
 
 		$sContent = '';
 		foreach( $aRecords as $record ) {
@@ -295,7 +294,7 @@ class Checklist extends BsExtensionMW {
 
 	public static function getListOptions( $listTitle ) {
 		$aOptions = array();
-		$oTitle = Title::newFromText( $listTitle );
+		$oTitle = Title::newFromText( $listTitle, NS_TEMPLATE );
 		//echo $args['list']." ".$oTitle->getArticleID();
 		if ( is_object( $oTitle )) {
 			$oWikiPage = WikiPage::newFromID( $oTitle->getArticleID() );
