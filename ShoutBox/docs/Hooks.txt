@@ -13,3 +13,11 @@ $oShoutBoxView: ViewShoutBox object
 $iArticleId: The page_id of the article the shout belongs to.
 &$iLimit: The limit option.
 return bool false to break the following query.
+
+'EchoGetDefaultNotifiedUsers' Handler for EchoGetDefaultNotifiedUsers hook.
+$event: EchoEvent to get implicitly subscribed users for
+&$users Array to append implicitly subscribed users to.
+
+'BeforeCreateEchoEvent' Adds the Shoutbox mentions notification option
+&$notifications: The notifications options array
+&$notificationCategories: The notifications categories array

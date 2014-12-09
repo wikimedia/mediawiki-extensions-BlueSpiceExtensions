@@ -103,6 +103,9 @@ class ShoutBox extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
+		$this->setHook( 'BeforeCreateEchoEvent' );
+		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
+
 
 		// Permissions
 		$this->mCore->registerPermission( 'readshoutbox' );
@@ -217,6 +220,7 @@ class ShoutBox extends BsExtensionMW {
 
 		$oOutputPage->addModuleStyles( 'ext.bluespice.shoutbox.styles' );
 		$oOutputPage->addModules( 'ext.bluespice.shoutbox' );
+		$oOutputPage->addModules( 'ext.bluespice.shoutbox.mention' );
 
 		BsExtensionManager::setContext( 'MW::ShoutboxShow' );
 		return true;
@@ -272,7 +276,7 @@ class ShoutBox extends BsExtensionMW {
 
 		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId, $iLimit );
 		$aData = BsCacheHelper::get( $sKey );
-
+$aData = false;
 		if ( $aData !== false ) {
 			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching shouts from cache' );
 			$sOutput = $aData;
@@ -317,6 +321,7 @@ class ShoutBox extends BsExtensionMW {
 			while ( $row = $dbr->fetchRow( $res ) ) {
 				$oUser = User::newFromId( $row['sb_user_id'] );
 				$oProfile = BsCore::getInstance()->getUserMiniProfile( $oUser );
+				$sMessage = preg_replace_callback("#@(\w*)#", "self::replaceUsernameInMessage", $row['sb_message']);
 				$oShoutBoxMessageView = new ViewShoutBoxMessage();
 				if ( $bShowAge )
 					$oShoutBoxMessageView->setDate( BsFormatConverter::mwTimestampToAgeString( $row['sb_timestamp'], true ) );
@@ -324,7 +329,7 @@ class ShoutBox extends BsExtensionMW {
 					$oShoutBoxMessageView->setUsername( $row['sb_user_name'] );
 				$oShoutBoxMessageView->setUser( $oUser );
 				$oShoutBoxMessageView->setMiniProfile( $oProfile );
-				$oShoutBoxMessageView->setMessage( $row['sb_message'] );
+				$oShoutBoxMessageView->setMessage( $sMessage );
 				$oShoutBoxMessageView->setShoutID( $row['sb_id'] );
 				$oShoutBoxMessageListView->addItem( $oShoutBoxMessageView );
 				// Since we have one more shout than iLimit, we need to count :)
@@ -431,6 +436,7 @@ class ShoutBox extends BsExtensionMW {
 		); // TODO RBV (21.10.10 17:21): Send error / success to client.
 
 		wfRunHooks( 'BSShoutBoxAfterInsertShout', array( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) );
+		self::notify("insert", $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp);
 
 		self::invalidateShoutBoxCache( $iArticleId );
 		return FormatJson::encode(
@@ -509,6 +515,135 @@ class ShoutBox extends BsExtensionMW {
 		$oShoutboxView->setTextLink('#bs-shoutbox');
 		$aTopViews['statebartopshoutbox'] = $oShoutboxView;
 		return true;
+	}
+
+	/**
+	 * Notifies a User for different actions
+	 * @param String $sAction
+	 * @param int $iArticleId
+	 * @param int $iUserId
+	 * @param String $sNick
+	 * @param String $sMessage
+	 * @param String $sTimestamp
+	 */
+	public static function notify( $sAction, $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) {
+		switch ( $sAction ) {
+			case "insert":
+				$aUsers = self::getUsersMentioned( $sMessage );
+				if ( count( $aUsers ) < 1 )
+					break;
+				self::notifyUser( "mention", $aUsers, $iArticleId, $iUserId );
+		}
+	}
+
+	/**
+	 * Returns an array of users being mentioned in a shoutbox message
+	 * @param String $sMessage
+	 * @return array Array filled with users of type User
+	 */
+	public static function getUsersMentioned( $sMessage ) {
+		if ( empty( $sMessage ) )
+			return array();
+		$bResult = preg_match_all( "#@(\w*)#", $sMessage, $aMatches );
+		if ( $bResult === false || $bResult < 1 )
+			return array();
+		$aReturn = array();
+		foreach ( $aMatches[1] as $sUserName ) {
+			$aReturn [] = User::newFromName( $sUserName );
+		}
+		return $aReturn;
+	}
+
+	/**
+	 * Notifies all Users specified in the array via Echo extension if it's turned on
+	 * @param String $sAction
+	 * @param array $aUsers
+	 * @param int $iArticleId
+	 * @param int $iUserId
+	 */
+	public static function notifyUser( $sAction, $aUsers, $iArticleId, $iUserId ) {
+		if ( class_exists( 'EchoEvent' ) ) {
+			foreach ( $aUsers as $oUser ) {
+				EchoEvent::create( array(
+					'type' => 'bs-shoutbox-' . $sAction,
+					'title' => Article::newFromID( $iArticleId )->getTitle(),
+					'agent' => User::newFromId( $iUserId ),
+					'extra' => array(
+						'summary' => "",
+						'titlelink' => true,
+						'difflink' => array( 'diffparams' => array() ),
+						'agentlink' => true,
+						'mentioned-user-id' => $oUser->getId()
+					),
+				) );
+			}
+		} else {
+			$sSubject = wfMessage(
+					'bs-shoutbox-notifications-title-message-subject'
+					)->plain();
+			$oUser = User::newFromId( $iUserId );
+			$sMessage = wfMessage(
+					'bs-shoutbox-notifications-title-message-text', BsCore::getUserDisplayName($oUser), Linker::link( Article::newFromID( $iArticleId )->getTitle() ), Linker::link( $oUser )
+					)->plain();
+			BsMailer::getInstance( 'MW' )->send( $aUsers, $sSubject, $sMessage );
+		}
+	}
+
+	/**
+	 * Handler for EchoGetDefaultNotifiedUsers hook.
+	 * @param array $event EchoEvent to get implicitly subscribed users for
+	 * @param array &$users Array to append implicitly subscribed users to.
+	 * @return bool true in all cases
+	 */
+	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
+		switch ( $event->getType() ) {
+			case 'bs-shoutbox-mention':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['mentioned-user-id'] ) ) {
+					break;
+				}
+				$recipientId = $extra['mentioned-user-id'];
+				//really ugly, but newFromId appears to be broken...
+				$oDBr = wfGetDB( DB_SLAVE );
+				$row = $oDBr->selectRow( 'user', '*', array( 'user_id' => (int) $recipientId ) );
+				$recipient = User::newFromRow( $row );
+				$users[$recipientId] = $recipient;
+				break;
+		}
+		return true;
+	}
+
+	/**
+	 * Adds the Shoutbox mentions notification option
+	 * @param array $notifications
+	 * @param array $notificationCategories
+	 * @return boolean
+	 */
+	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
+		$notificationCategories['bs-shoutbox-mention-cat'] = array( 'priority' => 3 );
+		$notifications['bs-shoutbox-mention'] = array( // HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Defining_a_notification
+			'category' => 'bs-shoutbox-mention-cat',
+			'group' => 'neutral',
+			'formatter-class' => 'BsNotificationsFormatter',
+			'title-message' => 'bs-shoutbox-notifications-title-message-text',
+			'title-params' => array( 'agentlink', 'titlelink' ),
+			'flyout-message' => 'bs-shoutbox-notifications-title-message-text',
+			'title-params' => array( 'agentlink', 'titlelink' ),
+			'email-subject-message' => 'bs-shoutbox-notifications-title-message-subject',
+			'email-body-message' => 'bs-shoutbox-notifications-title-message-text',
+			'title-params' => array( 'agentlink', 'titlelink' ),
+		);
+		return true;
+	}
+
+	/**
+	 * Callback from preg_replace, replaces the mention with a link to the user page
+	 * @param array $sMatch
+	 * @return String The link to the user page
+	 */
+	public static function replaceUsernameInMessage( $sMatch ) {
+		$oUser = User::newFromName( $sMatch[1] );
+		return Linker::link( $oUser->getUserPage(), BsCore::getUserDisplayName( $oUser ) );
 	}
 
 }
