@@ -26,6 +26,21 @@ $wgResourceModules['ext.bluespice.shoutbox'] = array(
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 
+$wgResourceModules['ext.bluespice.shoutbox.mention'] = array(
+	'scripts' => array(
+		'jquery.textcomplete/jquery.textcomplete.min.js',
+		'bluespice.shoutBox.mention.js',
+	),
+	'styles' => 'jquery.textcomplete/jquery.textcomplete.css',
+	'dependencies' => array(
+		'ext.bluespice',
+		'ext.bluespice.shoutbox'
+	),
+	'position' => 'bottom'
+) + $aResourceModuleTemplate;
+
+$wgDefaultUserOptions["echo-subscriptions-web-bs-shoutbox-mention-cat"] = true;
+
 $wgResourceModules['ext.bluespice.shoutbox.styles'] = array(
 	'styles' => 'bluespice.shoutBox.css',
 ) + $aResourceModuleTemplate;

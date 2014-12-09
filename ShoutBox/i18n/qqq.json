@@ -31,5 +31,8 @@
 	"bs-shoutbox-confirm-title": "Window title for confirm\n{{Identical|Confirm}}",
 	"bs-shoutbox-entermessage": "Text for please enter a message.",
 	"bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry.",
-	"bs-shoutbox-n-shouts": "Text for the number of shouts, used in StateBar\n*$1 is the number of shouts, also use this for PLURAL distinction\n{{Identical|Shout}}"
+	"bs-shoutbox-n-shouts": "Text for the number of shouts, used in StateBar\n*$1 is the number of shouts, also use this for PLURAL distinction\n{{Identical|Shout}}",
+	"echo-category-title-bs-shoutbox-mention-cat": "text found in notifications, let's the user decide if he wants to be notified about a mention in a message in the shoutbox via web, mail or both",
+	"bs-shoutbox-notifications-title-message-subject": "notifications text used for e-mail if the user was mentioned in a shoutbox entry",
+	"bs-shoutbox-notifications-title-message-text": "text used in notifications in the wiki and as the mail body if the user was mentioned in a shoutbox entry \n*$1 the user being mentioned \n*$2 is the link to the user page of the user that mentioned another user. \n*$3 is the link to the page where the shoutbox entry was made."
 }

@@ -27,5 +27,8 @@
     "bs-shoutbox-confirm-title": "Confirm",
     "bs-shoutbox-entermessage": "Please enter a message.",
     "bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry.",
-    "bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}"
+    "bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}",
+    "echo-category-title-bs-shoutbox-mention-cat": "Notification for mention in a shout",
+    "bs-shoutbox-notifications-title-message-subject": "You've been mentioned",
+    "bs-shoutbox-notifications-title-message-text": "You've been {{GENDER:$1|mentioned}} by $2 in a shout on the page \"$3.\""
 }
