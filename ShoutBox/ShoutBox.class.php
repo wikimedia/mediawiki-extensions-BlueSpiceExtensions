@@ -267,6 +267,9 @@ class ShoutBox extends BsExtensionMW {
 		if ( $iArticleId <= 0 )
 			return true;
 
+		if ( $iLimit <= 0 )
+				$iLimit = BsConfig::get( 'MW::ShoutBox::NumberOfShouts' );
+
 		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId, $iLimit );
 		$aData = BsCacheHelper::get( $sKey );
 
@@ -275,8 +278,6 @@ class ShoutBox extends BsExtensionMW {
 			$sOutput = $aData;
 		} else {
 			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching shouts from DB' );
-			if ( $iLimit <= 0 )
-				$iLimit = BsConfig::get( 'MW::ShoutBox::NumberOfShouts' );
 
 			$sOutput = '';
 			//return false on hook handler to break here
@@ -336,7 +337,8 @@ class ShoutBox extends BsExtensionMW {
 			$iTotelShouts = self::getTotalShouts( $iArticleId );
 			$sOutput .= "<div id='bs-sb-count-all' style='display:none'>" . $iTotelShouts . "</div>";
 
-			BsCacheHelper::set( $sKey, $sOutput );
+			//expire after 5 minutes in order to keep time tracking somewhat up-to-date
+			BsCacheHelper::set( $sKey, $sOutput, 60*5 );
 			$dbr->freeResult( $res );
 		}
 		return $sOutput;
@@ -477,7 +479,10 @@ class ShoutBox extends BsExtensionMW {
 	}
 
 	public static function invalidateShoutBoxCache( $iArticleId ) {
-		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId ) );
+		// A better solution might be to store all possible limits and their values in one key.
+		for ( $iLimit = 0; $iLimit < 300; $iLimit++ ) {
+			BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId, $iLimit ) );
+		}
 		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', 'totalCount' . $iArticleId ) );
 	}
 
