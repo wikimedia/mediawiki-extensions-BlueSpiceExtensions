@@ -112,12 +112,13 @@ class UniversalExport extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		$this->setHook( 'BeforePageDisplay' );
 
+		global $wgBlueSpiceExtInfo;
 		//Configuration variables
 		$aMetadataDefaults = array(
-			'creator'  => 'Hallo Welt! Medienwerkstatt GmbH',
+			'creator' => 'Hallo Welt! Medienwerkstatt GmbH',
 		);
 		$aMetadataOverrides = array(
-			'producer' => 'UniversalExport 2.22 (BlueSpice for MediaWiki)'
+			'producer' => 'UniversalExport '.$wgBlueSpiceExtInfo['version'].' (BlueSpice for MediaWiki)'
 		);
 
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryWhitelist', $this->aCategoryWhitelist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
