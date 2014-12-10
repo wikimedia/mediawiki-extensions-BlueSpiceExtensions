@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-pagesvisited-desc": "Fornece uma lista personalizada das últimas páginas visitadas",
+	"prefs-pagesvisited": "Páginas visitadas",
+	"bs-pagesvisited-widget-title": "Páginas visitadas",
+	"bs-pagesvisited-pref-widgetns": "Domínios:",
+	"bs-pagesvisited-pref-widgetsortodr": "Ordenar por:",
+	"bs-pagesvisited-pref-sort-time": "Hora",
+	"bs-pagesvisited-pref-sort-pagename": "Título",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Exibe uma lista de páginas que visitou."
+}

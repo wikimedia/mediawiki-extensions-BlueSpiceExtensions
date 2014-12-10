@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"prefs-articleinfo": "Titouroù ar bajenn",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Koulzad hizivaat en eilennoù :",
+	"bs-articleinfo-last-edited-tooltip": "Kemm diwezhañ",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|skridaozer|skridaozerez}} ziwezhañ",
+	"bs-articleinfo-categories": "Rummadoù",
+	"bs-articleinfo-more-categories": "Rummadoù all zo da gaout",
+	"bs-articleinfo-all-categories-heading": "Rummadoù",
+	"bs-articleinfo-nocategories": "N'eus bet kavet rummad ebet.",
+	"bs-articleinfo-hiddencats": "Rummadoù kuzhet",
+	"bs-articleinfo-notemplates": "N'eus bet kavet patrom ebet.",
+	"bs-articleinfo-templates": "Patromoù",
+	"bs-articleinfo-subpages": "Ispajennoù",
+	"bs-articleinfo-subpages-available": "Ispajennoù zo evit ar bajenn-mañ",
+	"bs-articleinfo-subpages-too-much": "Ouzhpenn 100 ispajenn zo da gaout.",
+	"bs-articleinfo-check-revision": "Ur stumm nevez zo da gaout",
+	"bs-articleinfo-check-revision-tooltip": "Adkargañ ar bajenn",
+	"bs-articleinfo-statebartoplastedited": "Kemm diwezhañ",
+	"bs-articleinfo-statebartopcategories": "Rummadoù",
+	"bs-articleinfo-statebartopsubpages": "Ispajennoù",
+	"bs-articleinfo-statebarbodycategories": "Rummadoù",
+	"bs-articleinfo-statebarbodysubpages": "Ispajennoù",
+	"bs-articleinfo-statebarbodytemplates": "Patromoù"
+}

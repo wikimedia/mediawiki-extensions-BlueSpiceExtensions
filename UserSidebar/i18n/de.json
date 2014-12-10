@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-usersidebar-desc": "Fügt den Fokus Tab in der Navigation hinzu",
+	"prefs-usersidebar": "Benutzer Sidebar",
+	"bs-usersidebar-userpagesettings-link-title": "Inhalt von deinem Fokus bearbeiten",
+	"bs-usersidebar-userpagesettings-link-text": "Fokus {{GENDER:|bearbeiten}}"
+}

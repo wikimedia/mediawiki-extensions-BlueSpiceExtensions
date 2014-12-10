@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki"
+		]
+	},
+	"bs-insertlink-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert link extension",
+	"bs-insertlink": "Tooltip for the button.\n{{Identical|Insert link}}",
+	"bs-insertlink-button-title": "The tooltip for the button that opens the dialog. It is shown on mouse over.",
+	"bs-insertlink-dialog-title": "The title of the dialog window.\n{{Identical|Insert link}}",
+	"bs-insertlink-tab-wiki-page": "The title of the tab containing the controls of a wiki page link.\n{{Identical|Wiki page}}",
+	"bs-insertlink-tab-ext-link": "The title of the tab containing the controls of an external link.\n{{Identical|External link}}",
+	"bs-insertlink-tab-email": "The title of the tab containing the controls of an e-mail link",
+	"bs-insertlink-tab-ext-file": "The title of the tab containing the controls of external filesystem link",
+	"bs-insertlink-label-page": "The label of the page drop down field.\n{{Identical|Page}}",
+	"bs-insertlink-label-link": "The label of the link textfield.\n{{Identical|Link}}",
+	"bs-insertlink-label-mail": "The label of the mail textfield.\n{{Identical|E-mail address}}",
+	"bs-insertlink-label-description": "The label of the description textfield.\n{{Identical|Description}}",
+	"bs-insertlink-label-file": "The label of the file input field.\n{{Identical|File}}",
+	"bs-insertlink-label-searchfile": "The text of the search file button.\n{{Identical|Search}}",
+	"bs-insertlink-select-a-page": "The empty message for the page drop down field",
+	"bs-insertlink-select-a-namespace": "The empty message for the namespace drop down field. Attention: this shows the mainspace label as default.\n{{Identical|Page}}",
+	"bs-insertlink-empty-field-text": "The error message when the link field was empty.",
+	"bs-insertlink-no-applet": "Error message if the applet could not be loaded. Gives the user the advise to check the java settings."
+}

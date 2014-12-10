@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-authors-desc": "تصویر مشخصات را برای نویسنده‌های یک صفحه نشان می‌دهد",
+	"prefs-authors": "نویسنده‌های این صفحه",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|نویسنده}}|نویسنده‌ها}}",
+	"bs-authors-profileimage": "تصویر مشخصات",
+	"bs-authors-profileimage-change": "تغییر تصویر مشخصات",
+	"bs-authors-show-all-authors": "نویسنده‌های بیشتری در دسترس هستند",
+	"bs-authors-pref-imageheight": "بلندی تصویر:",
+	"bs-authors-pref-imagewidth": "پهنای تصویر:",
+	"bs-authors-pref-limit": "محدودیت نویسنده‌ها برای نمایش:",
+	"bs-authors-pref-show": "نمایش نویسنده‌ها",
+	"bs-authors-switch-description": "نویسنده‌ها را در این صفحه پنهان می‌کند."
+}

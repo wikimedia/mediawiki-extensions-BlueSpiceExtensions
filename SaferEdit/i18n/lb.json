@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-saferedit-desc": "Tëschespäichere vun Ännerunge vun der Wiki",
+	"bs-saferedit-restore": "Restauréieren",
+	"bs-saferedit-someone-editing": "D'Säit gëtt geännert",
+	"bs-saferedit-pref-warnonleave": "Mech warne wann ech d'Ännerung vun enger Säit verloossen, ouni Ännerunge gespäichert ze hunn",
+	"bs-saferedit-lastsavedversion": "Lescht gespäichert Versioun vum $1 - $2.",
+	"bs-saferedit-unsavedchanges": "Et gëtt net gespäichert Ännerungen."
+}

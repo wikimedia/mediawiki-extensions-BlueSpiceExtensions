@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-csyntaxhighlight-pref-gutter": "Zeilennummere weisen",
+	"bs-csyntaxhighlight-pref-toolbar": "Toolbar weisen"
+}

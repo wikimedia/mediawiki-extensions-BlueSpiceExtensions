@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cwlin0416",
+			"Liuxinyu970226",
+			"EagerLin"
+		]
+	},
+	"bs-insertfile-insert-image": "插入圖片",
+	"bs-insertfile-insert-file": "插入檔案",
+	"bs-insertfile-button-image-title": "插入或編輯圖片",
+	"bs-insertfile-button-file-title": "插入或編輯檔案",
+	"bs-insertfile-labelsort": "排序方式：",
+	"bs-insertfile-labelfilter": "過濾器：",
+	"bs-insertfile-filename": "檔案名稱",
+	"bs-insertfile-filesize": "檔案大小",
+	"bs-insertfile-lastmodified": "近期變更",
+	"bs-insertfile-labelupload": "上傳",
+	"bs-insertfile-details-title": "詳細資訊",
+	"bs-insertfile-labeldimensions": "尺寸 (w x h)",
+	"bs-insertfile-labelalt": "替代文字",
+	"bs-insertfile-labellink": "連結",
+	"bs-insertfile-alignnone": "無",
+	"bs-insertfile-alignleft": "左",
+	"bs-insertfile-aligncenter": "中",
+	"bs-insertfile-alignright": "右",
+	"bs-insertfile-typenone": "無",
+	"bs-insertfile-typeframe": "框架",
+	"bs-insertfile-typeborder": "邊框",
+	"bs-insertfile-uploadbuttontext": "瀏覽",
+	"bs-insertfile-uploadsubmitvalue": "上傳檔案",
+	"bs-insertfile-warning": "警告",
+	"bs-insertfile-error": "錯誤",
+	"bs-insertfile-of": "的",
+	"bs-insertfile-license": "授權條款",
+	"bs-insertfile-categories": "分類"
+}

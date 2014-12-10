@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Valepert",
+			"Beta16",
+			"Gianfranco"
+		]
+	},
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Non sono presenti voci di blog.",
+	"bs-blog-comments": "Commenti",
+	"bs-blog-read-more": "Per saperne di più",
+	"bs-blog-trackback": "Trackback",
+	"bs-blog-permalink": "Link permanente",
+	"bs-blog-show-all": "Mostra tutte le voci",
+	"bs-blog-form-inline-text": "Titolo...",
+	"bs-blog-form-button-text": "Crea",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-sortby": "Ordina per:"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-visualeditor-bsactions-signature": "Firma",
+	"bs-visualeditor-bsactions-save": "Salva",
+	"bs-visualeditor-bsactions-headings": "Intestazioni",
+	"bs-visualeditor-bsactions-paragraph": "Paragrafo",
+	"bs-visualeditor-bsactions-heading2": "Titolo 2",
+	"bs-visualeditor-bsactions-heading3": "Titolo 3",
+	"bs-visualeditor-bsactions-heading4": "Titolo 4",
+	"bs-visualeditor-bsactions-heading5": "Titolo 5",
+	"bs-visualeditor-bsactions-heading6": "Titolo 6"
+}

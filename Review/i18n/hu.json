@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"prefs-review": "Ellenőriz",
+	"bs-review-abstain": "Tartózkodott",
+	"bs-review-save-norights": "Nincs meg a szükséges jogosultságod.",
+	"bs-review-i-agree": "Elfogadom",
+	"bs-review-comments": "Hozzászólások",
+	"bs-review-btnmoveup": "Mozgatás felfelé",
+	"bs-review-btnmovedown": "Mozgatás lefelé",
+	"bs-review-colstatus": "Állapot",
+	"bs-review-colreviewer": "Lektor",
+	"bs-review-colcomment": "Megjegyzés",
+	"bs-review-header-page-title": "Lap",
+	"bs-review-header-startdate": "Kezdés"
+}

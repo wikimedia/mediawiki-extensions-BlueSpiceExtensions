@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-interwikilinks-desc": "Interface d’administration pour ajouter, modifier et supprimer les liens interwikis",
+	"bs-interwikilinks-invalid-pfx-spc": "Le préfixe n’est pas valide. Veuillez ne pas utiliser d’espaces.",
+	"bs-interwikilinks-invalid-url-spc": "L’URL n’est pas valide. Veuillez ne pas utiliser d’espaces.",
+	"bs-interwikilinks-label": "Liens interwiki",
+	"bs-interwikilinks-link-created": "Le lien interwiki a été créé.",
+	"bs-interwikilinks-link-added": "Le lien interwiki a été ajouté.",
+	"bs-interwikilinks-link-deleted": "Le lien interwiki a été supprimé.",
+	"bs-interwikilinks-nooldpfx": "Le préfixe précédent n’a pas été trouvé.",
+	"bs-interwikilinks-nopfx": "Veuillez fournir un préfixe.",
+	"bs-interwikilinks-nourl": "Veuillez fournir une URL.",
+	"bs-interwikilinks-pfxtoolong": "Le préfixe est trop long. Veuillez utiliser au maximum 32 caractères.",
+	"bs-interwikilinks-pfxexists": "Le préfixe existe déjà.",
+	"bs-interwikilinks-headerprefix": "Préfixe",
+	"bs-interwikilinks-titleaddinterwikilink": "Ajouter un lien interwiki",
+	"bs-interwikilinks-titleeditinterwikilink": "Modifier un lien interwiki",
+	"bs-interwikilinks-labelprefix": "Préfixe",
+	"bs-interwikilinks-titledeleteinterwikilink": "Supprimer un lien interwiki",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Êtes-vous sûr de vouloir supprimer ce lien interwiki ?",
+	"bs-interwikilinks-insertlink-tabtitle": "Lien vers un autre wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Préfixe",
+	"bs-interwikilink-select-a-prefix": "Choisir un préfixe"
+}

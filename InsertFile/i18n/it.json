@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-insertfile-insert-image": "Inserisci immagine",
+	"bs-insertfile-insert-file": "Inserisci file",
+	"bs-insertfile-button-image-title": "Inserisci o modifica immagine",
+	"bs-insertfile-button-file-title": "Inserisci o modifica file",
+	"bs-insertfile-labelsort": "Ordina per:",
+	"bs-insertfile-labelfilter": "Filtro:",
+	"bs-insertfile-filename": "Nome del file",
+	"bs-insertfile-filesize": "Dimensione del file",
+	"bs-insertfile-lastmodified": "Ultime modifiche",
+	"bs-insertfile-labelupload": "Carica",
+	"bs-insertfile-details-title": "Dettagli",
+	"bs-insertfile-labeldimensions": "Dimensioni (l x h)",
+	"bs-insertfile-labelalt": "Testo alternativo",
+	"bs-insertfile-labellink": "Collegamento",
+	"bs-insertfile-alignnone": "nessuno",
+	"bs-insertfile-alignleft": "sinistra",
+	"bs-insertfile-aligncenter": "centro",
+	"bs-insertfile-alignright": "destra",
+	"bs-insertfile-labeltype": "Decorazione",
+	"bs-insertfile-typenone": "nessuno",
+	"bs-insertfile-typethumb": "miniatura",
+	"bs-insertfile-uploadimageemptytext": "Scegli una nuova immagine...",
+	"bs-insertfile-uploadimagefieldlabel": "Carica una nuova immagine",
+	"bs-insertfile-uploadfileemptytext": "Scegli un nuovo file...",
+	"bs-insertfile-uploadfilefieldlabel": "Nome del file di destinazione",
+	"bs-insertfile-uploaddestfilelabel": "Nome di destinazione",
+	"bs-insertfile-uploadsubmitvalue": "Carica file",
+	"bs-insertfile-warning": "Attenzione",
+	"bs-insertfile-allowedfiletypesare": "Tipi di file validi sono:",
+	"bs-insertfile-error": "Errore",
+	"bs-insertfile-titlefile": "Inserisci file",
+	"bs-insertfile-titleimage": "Inserisci immagine",
+	"bs-insertfile-tipkeepratio": "Mantieni proporzioni",
+	"bs-insertfile-of": "di",
+	"bs-insertfile-license": "Licenza",
+	"bs-insertfile-categories": "Categorie"
+}

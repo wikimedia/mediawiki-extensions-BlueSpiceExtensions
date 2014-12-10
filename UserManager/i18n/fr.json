@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"SnowedEarth",
+			"Ltrlg"
+		]
+	},
+	"bs-usermanager-desc": "Interface d’administration pour ajouter, modifier et supprimer des utilisateurs",
+	"bs-usermanager-admin-nodelete": "Le compte administrateur ne peut pas être supprimé.",
+	"bs-usermanager-self-nodelete": "Vous ne pouvez pas supprimer votre compte.",
+	"bs-usermanager-db-error": "Une erreur de base de données s’est produite.",
+	"bs-usermanager-enter-pwd": "Veuillez entrer un mot de passe.",
+	"bs-usermanager-idnotexist": "Cet utilisateur n’existe pas.",
+	"bs-usermanager-invalid-pwd": "Le mot de passe n’est pas valide.",
+	"bs-usermanager-invalid-realname": "Le nom réel n’est pas valide.",
+	"bs-usermanager-invalid-uname": "Le nom d’utilisateur n’est pas valide.",
+	"bs-usermanager-invalid-email-gen": "L’adresse de courriel n’est pas valide.",
+	"bs-usermanager-label": "Gestionnaire des utilisateurs",
+	"bs-usermanager-user-added": "L’utilisateur a été ajouté.",
+	"bs-usermanager-user-deleted": "L’utilisateur a été supprimé.",
+	"bs-usermanager-user-exists": "Le nom d’utilisateur existe déjà.",
+	"bs-usermanager-save-successful": "Modifications enregistrées.",
+	"bs-usermanager-headerusername": "Nom d’utilisateur",
+	"bs-usermanager-headerrealname": "Nom réel",
+	"bs-usermanager-headeremail": "Courriel",
+	"bs-usermanager-headergroups": "Groupes",
+	"bs-usermanager-titleadduser": "Ajouter un utilisateur",
+	"bs-usermanager-titleeditdetails": "Modifier un utilisateur",
+	"bs-usermanager-labelnewpassword": "Mot de passe",
+	"bs-usermanager-labelpasswordcheck": "Confirmer le mot de passe",
+	"bs-usermanager-titledeleteuser": "Supprimer l’utilisateur",
+	"bs-usermanager-confirmdeleteuser": "Êtes-vous sûr de vouloir supprimer {{PLURAL:$1|cet utilisateur|ces $1 utilisateurs}} ?"
+}

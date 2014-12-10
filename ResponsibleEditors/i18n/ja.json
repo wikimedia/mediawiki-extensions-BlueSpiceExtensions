@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-responsibleeditors-pref-activatednamespaces": "有効にする名前空間:",
+	"bs-responsibleeditors-pref-autoassignonarticlecreation": "ページ作成の際に自動的に割り当てる",
+	"bs-responsibleeditors-pref-echange": "ページが変更された際に通知を受け取る",
+	"bs-responsibleeditors-pref-edelete": "ページが削除された際に通知を受け取る",
+	"bs-responsibleeditors-pref-emove": "ページが移動された際に通知を受け取る",
+	"bs-responsibleeditors-pref-autopermissions": "自動的に割り当てる権限:",
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "指定した値は無効です。",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "指定したページは存在しません。",
+	"action-responsibleeditors-viewspecialpage": "「ResponsibleEditors-Viewspecialpage」権限で保護されたページの閲覧",
+	"bs-responsibleeditors-availableeditors": "利用できる編集者",
+	"bs-responsibleeditors-assignededitors": "割り当てられた編集者",
+	"bs-responsibleeditors-columnpage": "ページ",
+	"bs-responsibleeditors-columnnamespace": "名前空間",
+	"bs-responsibleeditors-rbdisplaymodeall": "すべてのページを表示",
+	"bs-responsibleeditors-cbnamespacesemptytext": "名前空間を選択",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "未割り当て"
+}

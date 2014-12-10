@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Imperadeiro98",
+			"Fúlvio"
+		]
+	},
+	"bs-articleinfo-desc": "Fornece informação acerca de uma página na barra de status",
+	"prefs-articleinfo": "Informações da página",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalo de actualização em segundos:",
+	"bs-articleinfo-last-edited": "Tempo desde a última actualização",
+	"bs-articleinfo-last-edited-tooltip": "Última edição",
+	"bs-articleinfo-last-editor": "Últim{{GENDER:$1|o editor|a editora}}",
+	"bs-articleinfo-categories": "Categorias",
+	"bs-articleinfo-more-categories": "Mais categorias disponíveis",
+	"bs-articleinfo-all-categories-heading": "Categorias",
+	"bs-articleinfo-nocategories": "Nenhuma categoria foi encontrada.",
+	"bs-articleinfo-hiddencats": "Categorias ocultas",
+	"bs-articleinfo-notemplates": "Nenhuma predefinição foi encontrada.",
+	"bs-articleinfo-templates": "Predefinições",
+	"bs-articleinfo-subpages": "Subpáginas",
+	"bs-articleinfo-subpages-available": "Existem subpáginas desta página",
+	"bs-articleinfo-subpages-too-much": "Existem mais de 100 subpáginas disponíveis.",
+	"bs-articleinfo-check-revision": "Nova versão disponível",
+	"bs-articleinfo-check-revision-tooltip": "Recarregar página",
+	"bs-articleinfo-statebartoplastedited": "Edição recente",
+	"bs-articleinfo-statebartoplasteditor": "Editor(a) recente",
+	"bs-articleinfo-statebartopcategories": "Categorias",
+	"bs-articleinfo-statebartopsubpages": "Subpáginas",
+	"bs-articleinfo-statebarbodycategories": "Categorias",
+	"bs-articleinfo-statebarbodysubpages": "Subpáginas",
+	"bs-articleinfo-statebarbodytemplates": "Predefinições"
+}

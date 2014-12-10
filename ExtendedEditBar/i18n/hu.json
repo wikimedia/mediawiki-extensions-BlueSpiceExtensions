@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "Átirányítás",
+	"bs-extendededitbar-redirectsample": "Szöveg beillesztése",
+	"bs-extendededitbar-striketip": "Áthúzás",
+	"bs-extendededitbar-strikesample": "Áthúzott szöveg",
+	"bs-extendededitbar-entertip": "Sortörés",
+	"bs-extendededitbar-uppertip": "Felső index",
+	"bs-extendededitbar-lowertip": "Alsó index",
+	"bs-extendededitbar-smalltip": "Kicsi",
+	"bs-extendededitbar-smallsample": "Kicsi szöveg",
+	"bs-extendededitbar-commentsample": "Megjegyzés",
+	"bs-extendededitbar-gallerytip": "Képgaléria beillesztése",
+	"bs-extendededitbar-gallerysamplepicture": "Kép",
+	"bs-extendededitbar-quotetip": "Idézett szöveg blokk beillesztése",
+	"bs-extendededitbar-tabletip": "Táblázat beillesztése",
+	"bs-extendededitbar-tablesampleheader": "Fejléc",
+	"bs-extendededitbar-tablesamplerow": "Sor",
+	"bs-extendededitbar-tablesamplecell": "Cella"
+}

@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-notifications-desc": "آگاه‌سازی برای تغییرات انتخاب‌شده کاربر می‌فرستد",
+	"prefs-notifications": "آگاه‌سازی‌ها",
+	"prefs-echo-extended": "تنظیمات پیشرفته سیستم",
+	"bs-notifications-pref-notifyns": "آگاه‌رسانی فقط برای تغییرات این فضاهای نام:",
+	"bs-notifications-pref-notifynominor": "بدون آگاهی برای تغییرات جزئی",
+	"bs-notifications-pref-active": "فعال‌کردن آگاه‌سازی‌ها",
+	"bs-echo-anon-user": "ناشناس",
+	"bs-echo-unknown-user": "ناشناخته",
+	"bs-echo-page-edit": "صفحه [[:$1]] تغییر یافت",
+	"bs-echo-page-create": "صفحه [[:$1]] ایجاد شد",
+	"bs-echo-page-delete": "صفحه [[:$1]] حذف شد",
+	"bs-echo-page-move": "صفحه [[:$1]] منتقل گشت",
+	"bs-echo-page-newuser": "کاربر $1 ایجاد شد.",
+	"bs-notifications-email-new-subject": "صفحه $1 توسط $2 {{GENDER:$2|ساخته شد}}",
+	"bs-notifications-email-new": "صفحه «$1» توسط $2 {{GENDER:$2|ساخته شده‌است}}.\n\nدیدگاه:\n$3\nشما می‌توانید از صفحه با دنبال‌کردن پیوند زیر بازدید کنید:\n$4",
+	"bs-notifications-email-edit-subject": "صفحه $1 توسط $2 {{GENDER:$2|ویرایش شد}}",
+	"bs-notifications-email-edit": "صفحه $1 توسط $2 {{GENDER:$2|ویرایش شد}}.\n\nدیدگاه:\n$3\nشما می‌توانید از صفحه با دنبال‌کردن پیوند زیر بازدید کنید:\n$4\n\nاگر می‌خواهید فقط تغییرات را ببینید، پیوند زیر را دنبال کنید:\n$5",
+	"bs-notifications-email-move-subject": "صفحه $1 توسط $2 {{GENDER:$2|منتقل شد}}",
+	"bs-notifications-email-move": "صفحه $1 توسط $2 به $3 {{GENDER:$2|منتقل شد}}. شما می‌توانید از صفحه با دنبال‌کردن پیوند زیر بازدید کنید:\n$4",
+	"bs-notifications-email-delete-subject": "صفحه $1 توسط $2 {{GENDER:$2|حذف شد}}",
+	"bs-notifications-email-delete": "صفحه «$1» توسط $2 {{GENDER:$2|حذف شد}}\n\nدلیل حذف این بود:\n$3",
+	"bs-notifications-email-addaccount-subject": "کاربر $1 ایجاد شد",
+	"bs-notifications-email-addaccount": "کاربر $1 با نام واقعی $2 ایجاد شد.",
+	"bs-notifications-email-shout-subject": "$2 یک پیام در صفحه $1 {{GENDER:$2|ارسال کرد}}",
+	"bs-notifications-email-shout": "$2 یک پیام در صفحه «$1» {{GENDER:$2|ارسال کرد}}\n\nپیام:\n$3\n\nشما می‌توانید از صفحه با دنبال‌کردن پیوند زیر بازدید کنید:\n$4.",
+	"echo-category-title-bs-create-cat": "آگاه‌سازی برای صفحات تازه",
+	"echo-category-title-bs-edit-cat": "آگاه‌سازی برای ویرایش‌ها",
+	"echo-category-title-bs-move-cat": "آگاه‌سازی برای انتقال‌ها",
+	"echo-category-title-bs-delete-cat": "آگاه‌سازی برای حذف‌ها",
+	"echo-category-title-bs-newuser-cat": "آگاه‌سازی برای کاربران تازه (فقط مدیران)",
+	"echo-category-title-bs-shoutbox-cat": "آگاه‌سازی برای پیام‌ها در صفحه‌های پیگری (تابلوی گفتگو)"
+}

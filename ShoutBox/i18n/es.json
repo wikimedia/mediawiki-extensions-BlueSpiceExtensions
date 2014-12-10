@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"AVIADOR",
+			"Fitoschido"
+		]
+	},
+	"bs-shoutbox-message": "Escribe un comentario nuevo…",
+	"bs-shoutbox-shout": "Enviar",
+	"bs-shoutbox-no-entries": "No hay nada aquí todavía.",
+	"bs-shoutbox-loading": "Cargando...",
+	"bs-shoutbox-pref-committimeinterval": "Tiempo entre dos mensajes (en segundos):",
+	"bs-shoutbox-pref-maxmessagelength": "Longitud máxima de un mensaje:",
+	"bs-shoutbox-pref-numberofshouts": "Número de mensajes mostrados:",
+	"bs-shoutbox-pref-showage": "Mostrar la fecha de creación de un mensaje",
+	"bs-shoutbox-pref-showuser": "Mostrar el autor de un mensaje",
+	"bs-shoutbox-pref-allowarchive": "Permitir que los usuarios eliminen sus propias entradas",
+	"bs-shoutbox-archive-success": "Entrada borrada.",
+	"bs-shoutbox-archive-failure": "Se ha producido un error al intentar eliminar la entrada, por favor inténtalo nuevamente.",
+	"bs-shoutbox-archive-failure-user": "Únicamente el autor de las entradas puede eliminarlas.",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|carácter restante|caracteres restantes}}",
+	"bs-shoutbox-confirm-text": "¿Estás seguro de querer borrar esta entrada?",
+	"bs-shoutbox-confirm-title": "Confirmar",
+	"bs-shoutbox-entermessage": "Introduce un mensaje.",
+	"bs-shoutbox-too-early": "Por favor, espera unos segundos antes de enviar la siguiente entrada."
+}

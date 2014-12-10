@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Raymond",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-wikiadmin-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of wiki admin extension.",
+	"bs-wikiadmin-notallowed": "Text for you are not allowed to use this page.",
+	"wikiadmin": "Special page title for bluespice administration\n{{Identical|BlueSpice administration}}",
+	"action-wikiadmin": "{{doc-action|wikiadmin}}",
+	"right-wikiadmin": "{{doc-right|wikiadmin}}",
+	"bs-wikiadmin-shop": "Anchor text and title for Shop\n{{Identical|Shop}}"
+}

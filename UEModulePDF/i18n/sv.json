@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-uemodulepdf-desc": "Möjliggör för MediaWiki att export sidor till PDF-format",
+	"prefs-uemodulepdf": "Universal PDF-modul för export",
+	"uemodulepdf": "Universal PDF-modul för export",
+	"bs-uemodulepdf-pref-templatepath": "Standardmall:",
+	"bs-uemodulepdf-pref-suppressns": "Dölj namnrymdsprefix i PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Enkelsidig PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportera denna sida som PDF.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exporterar sidor (specialsidor och innehållssidor) till PDF.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "tillgänglig",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "ej tillgänglig",
+	"soap-service-url-not-valid": "URL:en till webbtjänsten för PDF-genererings är inte giltig. Kontrollera konfigurationen för wikin.",
+	"soap-service-url-not-set": "URL:en till webbtjänsten för PDF-genererings är inte angiven. Kontrollera konfigurationen för wikin."
+}

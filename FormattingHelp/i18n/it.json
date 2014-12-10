@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "Sintassi",
+	"bs-formattinghelp-help-example-text": "Testo",
+	"bs-formattinghelp-help-bold": "Grassetto",
+	"bs-formattinghelp-help-italic": "Corsivo",
+	"bs-formattinghelp-help-whitespace": "Spazio vuoto",
+	"bs-formattinghelp-help-color": "Testo colorato",
+	"bs-formattinghelp-help-headline": "Titolo",
+	"bs-formattinghelp-help-linebreak": "Interruzione di riga",
+	"bs-formattinghelp-help-ul": "Elenco puntato",
+	"bs-formattinghelp-help-numberedlist": "Elenco numerato",
+	"bs-formattinghelp-help-link": "Collegamento interno",
+	"bs-formattinghelp-help-link-alt": "Collegamento interno con testo alternativo",
+	"bs-formattinghelp-help-caption": "Didascalia",
+	"bs-formattinghelp-help-extlink": "Collegamento esterno",
+	"bs-formattinghelp-help-hr": "Linea orizzontale",
+	"bs-formattinghelp-help-template": "Template",
+	"bs-formattinghelp-help-templatename": "Nome template"
+}

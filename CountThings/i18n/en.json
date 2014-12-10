@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-countthings-desc": "Provides content based statistics",
+	"bs-countthings-chars-label": "Characters",
+	"bs-countthings-words-label": "Words",
+	"bs-countthings-pages-label": "Pages",
+	"bs-countthings-error-no-input": "No page provided.",
+	"bs-countthings-error-invalid-mode": "The mode \"$1\" is invalid. Please use \"chars\", \"words\", or \"pages\".",
+	"bs-countthings-error-not-exist": "The page \"$1\" does not exist.",
+	"bs-countthings-tag-countarticles-desc": "Displays the number of pages.",
+	"bs-countthings-tag-countusers-desc": "Displays the number of users.",
+	"bs-countthings-tag-countcharacters-desc": "Displays statistics of the given page content. Available configuration attribute:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: What should be counted <code>chars</code> (characters), <code>words</code> (words) or <code>pages</code> (pages)."
+}

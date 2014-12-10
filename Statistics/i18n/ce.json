@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"prefs-statistics": "Шуьйра статистика",
+	"extendedstatistics": "Шуьйра статистика",
+	"bs-statistics-diagram": "Дехар",
+	"bs-statistics-from": "Хьаьнгара",
+	"bs-statistics-to": "ТӀе",
+	"bs-statistics-grain": "Юкъ",
+	"bs-statistics-mode": "РогӀехь",
+	"bs-statistics-absolute": "дуьззина",
+	"bs-statistics-year": "Шо",
+	"bs-statistics-month": "Бутт",
+	"bs-statistics-week": "КӀиран календарь",
+	"bs-statistics-day": "Де",
+	"bs-statistics-finish": "Кхолла диаграмма",
+	"bs-statistics-filters": "Литтарш",
+	"bs-statistics-diag-number-of-users": "Декъашхойн дукхалла",
+	"bs-statistics-label-name": "ЦӀе",
+	"bs-statistics-label-registration": "ДӀаязбалар",
+	"bs-statistics-diag-number-of-pages": "АгӀонийн дукхалла",
+	"bs-statistics-label-page": "АгӀо",
+	"bs-statistics-label-creator": "Автор",
+	"bs-statistics-label-searchterm": "Лахаран хьал",
+	"bs-statistics-label-maxhits": "Максимум хилам",
+	"bs-statistics-label-time": "Хан",
+	"bs-statistics-filter-category": "Категори",
+	"bs-statistics-portlet-numberofusers": "Декъашхойн дукхалла",
+	"bs-statistics-portlet-numberofedits": "Нисдарийн дукхалла",
+	"bs-statistics-portlet-numberofpages": "АгӀонийн дукхалла",
+	"bs-statistics-portletconfig-periodday": "Селхана"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-countthings-desc": "提供基于统计信息的内容",
+	"bs-countthings-chars-label": "字符",
+	"bs-countthings-words-label": "字数",
+	"bs-countthings-pages-label": "页面",
+	"bs-countthings-error-no-input": "没有提供页面。",
+	"bs-countthings-error-invalid-mode": "模式“$1”无效。请使用\"chars\"、\"words\"或\"pages\"。",
+	"bs-countthings-error-not-exist": "页面“$1”不存在。",
+	"bs-countthings-tag-countarticles-desc": "显示页数。",
+	"bs-countthings-tag-countusers-desc": "显示用户数。",
+	"bs-countthings-tag-countcharacters-desc": "显示指定页面内容的统计。可用的配置属性有：",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>：什么<code>chars</code>（字符）、<code>words</code>（文字）或<code>pages</code>（页面）应该统计。"
+}

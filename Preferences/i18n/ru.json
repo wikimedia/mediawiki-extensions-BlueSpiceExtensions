@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Gazimagomedov"
+		]
+	},
+	"bs-preferences-desc": "Дает возможность администраторам настроить всю вики на одной спецстранице",
+	"bs-preferences-label": "Настройки"
+}

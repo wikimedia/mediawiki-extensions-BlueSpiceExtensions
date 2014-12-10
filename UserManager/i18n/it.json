@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-usermanager-db-error": "Si è verificato un errore sul database.",
+	"bs-usermanager-enter-pwd": "Si prega di inserire una password.",
+	"bs-usermanager-idnotexist": "Questo utente non esiste.",
+	"bs-usermanager-invalid-pwd": "La password non è valida.",
+	"bs-usermanager-invalid-realname": "Il nome vero non è valido.",
+	"bs-usermanager-invalid-uname": "Il nome utente non è valido.",
+	"bs-usermanager-invalid-email-gen": "L'indirizzo email non è valido.",
+	"bs-usermanager-user-added": "L'utente è stato aggiunto.",
+	"bs-usermanager-user-deleted": "L'utente è stato cancellato.",
+	"bs-usermanager-user-exists": "Il nome utente esiste già.",
+	"bs-usermanager-save-successful": "Modifiche salvate.",
+	"bs-usermanager-headerusername": "Nome utente",
+	"bs-usermanager-headerrealname": "Nome vero",
+	"bs-usermanager-headeremail": "Email",
+	"bs-usermanager-headergroups": "Gruppi",
+	"bs-usermanager-titleadduser": "Aggiungi utente",
+	"bs-usermanager-titleeditdetails": "Modifica utente",
+	"bs-usermanager-labelnewpassword": "Password",
+	"bs-usermanager-labelpasswordcheck": "Conferma password",
+	"bs-usermanager-titledeleteuser": "Cancella utente"
+}

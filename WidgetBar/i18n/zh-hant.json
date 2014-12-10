@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-widgetbar-desc": "加入小部件於用戶界面中",
+	"prefs-widgetbar": "小部件欄",
+	"bs-widgetbar-userpagesettings-headline": "小部件",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|編輯}}您的小部件內容：",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|編輯}}我的小部件",
+	"bs-widget-container-tooltip": "小部件",
+	"bs-widget-flyout-heading": "小部件"
+}

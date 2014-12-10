@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-dashboards-desc": "برای کاربران و مدیران داشبورد فراهم می‌کند",
+	"bs-specialadmindashboard-label": "داشبورد",
+	"bs-dashboards-addportlet": "افزودن پورتلت",
+	"bs-dashboards-portlets": "پورتلت‌ها",
+	"prefs-dashboards": "داشبوردها",
+	"bs-dashboards-pref-userdashboardonlogo": "نشان وب‌گاه به داشبورد کاربری پیوند می‌دهد",
+	"admindashboard": "داشبورد مدیریت",
+	"userdashboard": "داشبورد کاربری",
+	"bs-dashboard-userportlet-calendar-title": "تقویم",
+	"bs-dashboard-userportlet-calendar-description": "تقویم"
+}

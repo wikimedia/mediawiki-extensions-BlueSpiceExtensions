@@ -4,22 +4,17 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
  * Abstract index builder for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 
@@ -37,15 +32,15 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 	 */
 	public static function areYouAbleToRunWithSystemSettings( &$aErrorMessageKeys = array() ) {
 		global $wgUrlProtocols;
-		$urlProtocols = $wgUrlProtocols;
 		$bUrlProtocolFileActivated = false;
-		foreach ( $urlProtocols as $urlProtocol ) {
+		foreach ( $wgUrlProtocols as $urlProtocol ) {
 			if ( strpos( $urlProtocol, 'file:' ) === 0 ) {
 				$bUrlProtocolFileActivated = true;
 			}
 		}
-		if ( !$bUrlProtocolFileActivated )
-				$aErrorMessageKeys['bs-extendedsearch-file_protocol_not_activated'] = true;
+		if ( !$bUrlProtocolFileActivated ) {
+			$aErrorMessageKeys['bs-extendedsearch-file-protocol-not-activated'] = true;
+		}
 		return parent::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 	}
 
@@ -56,7 +51,7 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 	protected $sDbPrefix = '';
 	/**
 	 * Files in this path are not to be indexed.
-	 * @var string Path to be filtered 
+	 * @var string Path to be filtered
 	 */
 	// CR MRG (25.06.11 16:11): Sollte das nicht ein array werden?
 	protected $sLinkedPathFilter = null;
@@ -72,8 +67,8 @@ abstract class AbstractBuildIndexLinked extends AbstractBuildIndexFile {
 
 	/**
 	 * Compares two timestamps
-	 * @param string $timestamp1 MW timestamp
-	 * @param string $timestamp2 MW timestamp
+	 * @param string $iTimestamp1 MW timestamp
+	 * @param string $iTimestamp2 MW timestamp
 	 * @return bool True if timestamp1 is younger than timestamp2
 	 */
 	public function isTimestamp1YoungerThanTimestamp2( $iTimestamp1, $iTimestamp2 ) {

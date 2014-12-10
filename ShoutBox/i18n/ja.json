@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-shoutbox-desc": "自分の shoutbox を埋め込むパーサー関数を追加する",
+	"bs-shoutbox-message": "コメントを書いてください...",
+	"bs-shoutbox-shout": "送信",
+	"bs-shoutbox-loading": "読み込み中...",
+	"bs-shoutbox-pref-maxmessagelength": "メッセージの最大長:",
+	"bs-shoutbox-pref-numberofshouts": "表示するメッセージ数:",
+	"bs-shoutbox-pref-showage": "メッセージの作成日時を表示",
+	"bs-shoutbox-pref-showuser": "メッセージの作者を表示",
+	"bs-shoutbox-pref-allowarchive": "利用者が自身のエントリを削除できるようにする",
+	"bs-shoutbox-archive-success": "エントリを削除しました。",
+	"bs-shoutbox-archive-failure-user": "エントリはその作者のみが削除できます。",
+	"bs-shoutbox-charactersleft": "残り $1 {{PLURAL:$1|文字}}",
+	"bs-shoutbox-confirm-text": "このエントリを本当に削除しますか?",
+	"bs-shoutbox-confirm-title": "確認",
+	"bs-shoutbox-entermessage": "メッセージを入力してください。"
+}

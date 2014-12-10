@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nemo bis",
+			"Beta16"
+		]
+	},
+	"bs-insertlink": "Inserisci collegamento",
+	"bs-insertlink-button-title": "Inserisci/modifica collegamento",
+	"bs-insertlink-dialog-title": "Inserisci collegamento",
+	"bs-insertlink-tab-wiki-page": "Pagina wiki",
+	"bs-insertlink-tab-ext-link": "Collegamento esterno",
+	"bs-insertlink-label-page": "Pagina",
+	"bs-insertlink-label-link": "Collegamento",
+	"bs-insertlink-label-mail": "Indirizzo email",
+	"bs-insertlink-label-description": "Descrizione",
+	"bs-insertlink-label-file": "File",
+	"bs-insertlink-select-a-namespace": "(Pagine)"
+}

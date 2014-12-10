@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-insertmagic": "Inserir palavra mágica",
+	"bs-insertmagic-notoc": "Oculta a tabela de conteúdos.",
+	"bs-insertmagic-forcetoc": "Força a tabela de conteúdos a aparecer na sua posição normal.",
+	"bs-insertmagic-currentmonthname": "Presente mês (nome).",
+	"bs-insertmagic-currentdayname": "Dia da semana (nome).",
+	"bs-insertmagic-type-variables": "Variáveis"
+}

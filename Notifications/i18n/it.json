@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"prefs-notifications": "Notifiche",
+	"prefs-echo-extended": "Impostazioni di sistema avanzate",
+	"bs-echo-anon-user": "anonimo",
+	"bs-echo-unknown-user": "sconosciuto",
+	"bs-echo-page-edit": "La pagina [[:$1]] è stata modificata",
+	"bs-echo-page-create": "La pagina [[:$1]] è stata creata",
+	"bs-echo-page-delete": "La pagina [[:$1]] è stata cancellata",
+	"bs-echo-page-move": "La pagina [[:$1]] è stata spostata",
+	"bs-echo-page-newuser": "L'utente $1 è stato creato.",
+	"echo-category-title-bs-create-cat": "Notifica per le nuove pagine",
+	"echo-category-title-bs-edit-cat": "Notifica per le modifiche",
+	"echo-category-title-bs-move-cat": "Notifica per gli spostamenti",
+	"echo-category-title-bs-delete-cat": "Notifica per le cancellazioni",
+	"echo-category-title-bs-newuser-cat": "Notifica per i nuovi utenti (solo amministratori)",
+	"echo-category-title-bs-shoutbox-cat": "Notifica per i messaggi sulle pagine negli osservati speciali (shoutbox)"
+}

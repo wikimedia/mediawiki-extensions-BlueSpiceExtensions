@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-groupmanager-desc": "Административен посредник додавање, измена и бришење на кориснички групи и нивните права",
+	"bs-groupmanager-grpexists": "Групата веќе постои.",
+	"bs-groupmanager-grpadded": "Групата е додадена.",
+	"bs-groupmanager-grpedited": "Групата е изменета.",
+	"bs-groupmanager-grpremoved": "Групата е отстранета.",
+	"bs-groupmanager-label": "Раководител со групи",
+	"bs-groupmanager-invalid-name": "Името на групата содржи {{PLURAL:$1|содржи|}} неважечки {{PLURAL:$1|знак|знаци}}: $2",
+	"bs-groupmanager-invalid-name-length": "Името на групата не може да содржи повеќе од 16 знаци.",
+	"bs-groupmanager-invalid-name-numeric": "Името на групата мора да содржи барем еден знак.",
+	"bs-groupmanager-headergroup": "Група",
+	"bs-groupmanager-tipremove": "Отстрани {{PLURAL:$1|група|групи}}",
+	"bs-groupmanager-titlenewgroup": "Нова група",
+	"bs-groupmanager-titleeditgroup": "Измени група",
+	"bs-groupmanager-removegroup": "Дали сте сигурни дека сакате да {{PLURAL:$1|ја отстраните групава|ги отстраните групиве}}?",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|Избришана е следнава група|Избришани се следнаве групи}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "Не можев да {{PLURAL:$1|ја избришам следнава група|ги избришам следнаве групи}}: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Се јави неочекувана грешка. Обидете се повторно.",
+	"bs-groupmanager-lablename": "Име на групата:",
+	"bs-groupmanager-msgnoteditable": "Ова е системска група и затоа не може да се преименува.",
+	"bs-groupmanager-msgnotremovable": "Ова е системска група и затоа не може да се отстрани."
+}

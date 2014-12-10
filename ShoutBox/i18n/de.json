@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-shoutbox-desc": "Ergänzt eine Parserfunktion zur Einbettung deiner eigenen Shoutbox",
+	"prefs-shoutbox": "Shoutbox",
+	"bs-shoutbox-title": "Shoutbox",
+	"bs-shoutbox-message": "Verfasse einen neuen Kommentar …",
+	"bs-shoutbox-shout": "Senden",
+	"bs-shoutbox-no-entries": "Bisher wurden keine Mitteilungen gesendet.",
+	"bs-shoutbox-loading": "Lade...",
+	"bs-shoutbox-pref-committimeinterval": "Zeit zwischen zwei Eintragungen (Sekunden):",
+	"bs-shoutbox-pref-maxmessagelength": "Maximale Länge der Mittelungen",
+	"bs-shoutbox-pref-numberofshouts": "Anzahl der dargestellten Mitteilungen",
+	"bs-shoutbox-pref-showage": "Alter der Mitteilung anzeigen",
+	"bs-shoutbox-pref-showuser": "Sender der Mitteilung anzeigen",
+	"bs-shoutbox-pref-allowarchive": "Benutzer können ihre eigenen Einträge löschen",
+	"bs-shoutbox-pref-show": "Shoutbox anzeigen",
+	"bs-shoutbox-archive-success": "Eintrag wurde erfolgreich gelöscht.",
+	"bs-shoutbox-archive-failure": "Beim Löschen des Eintrags ist ein Fehler aufgetreten, bitte versuche es erneut.",
+	"bs-shoutbox-archive-failure-user": "Einträge können nur von deren Autor gelöscht werden.",
+	"bs-shoutbox-switch-description": "Shoutbox wird auf dieser Seite nicht angezeigt",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|Zeichen}} übrig",
+	"bs-shoutbox-confirm-text": "Möchtest du diesen Eintrag wirklich löschen?",
+	"bs-shoutbox-confirm-title": "Bestätigen",
+	"bs-shoutbox-entermessage": "Bitte gib eine Nachricht ein.",
+	"bs-shoutbox-too-early": "Bitte warte ein paar Sekunden, bevor du den nächsten Eintrag abschickst.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}"
+}

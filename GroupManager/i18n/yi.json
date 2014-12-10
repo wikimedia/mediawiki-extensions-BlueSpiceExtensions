@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"פוילישער"
+		]
+	},
+	"bs-groupmanager-headergroup": "גרופע",
+	"bs-groupmanager-tipremove": "אראפנעמען {{PLURAL:$1|גרופע|גרופעס}}",
+	"bs-groupmanager-titlenewgroup": "נײַע גרופע",
+	"bs-groupmanager-titleeditgroup": "רעדאקטירן גרופע",
+	"bs-groupmanager-lablename": "גרופע נאמען:"
+}

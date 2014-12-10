@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer",
+			"Violetanka"
+		]
+	},
+	"bs-wantedarticle-desc": "İstenen sayfalar listesine bir sayfa ekleyin",
+	"prefs-wantedarticle": "İstenen sayfa",
+	"bs-wantedarticle-ajax-error-no-parameter": "Sayfa başlığı girilmedi.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Önerilen \"$1\" sayfası zaten mevcut.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "\"$1\" sayfası daha önce önerilmiş.",
+	"bs-wantedarticle-page-removed": "$1 sayfası kaldırıldı.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Öner",
+	"bs-wantedarticle-single-textfield-defaulttext": "Sayfa başlığı",
+	"bs-wantedarticle-tag-more-linktext": "Daha fazla...",
+	"bs-wantedarticle-tag-default-title": "İstenen sayfalar",
+	"bs-wantedarticle-pref-includelimit": "Öneri sayısı:",
+	"bs-wantedarticle-pref-sort": "Sıralama ölçütü:",
+	"bs-wantedarticle-pref-order-desc": "azalan",
+	"bs-wantedarticle-create-page": "\"$1\" sayfasını oluştur.",
+	"bs-wantedarticle-suggest-page": "\"$1\" sayfasını öner.",
+	"bs-wantedarticle-info-nothing-entered": "Lütfen geçerli bir sayfa başlığı girin."
+}

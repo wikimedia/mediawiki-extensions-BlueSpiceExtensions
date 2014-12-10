@@ -2,13 +2,18 @@
 
 BsExtensionManager::registerExtension('WikiAdmin', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$GLOBALS['wgAutoloadClasses']['WikiAdmin'] = __DIR__ . '/WikiAdmin.class.php';
+
 $wgExtensionFunctions[] = 'WikiAdmin::loadModules';
 
-$wgExtensionMessagesFiles['WikiAdmin'] = __DIR__ . '/WikiAdmin.i18n.php';
+$wgMessagesDirs['WikiAdmin'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['WikiAdmin'] = __DIR__ . '/languages/WikiAdmin.i18n.php';
 
 // Specialpage and messages
-$wgAutoloadClasses['SpecialWikiAdmin'] = __DIR__ . '/SpecialWikiAdmin.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
-$wgSpecialPageGroups['SpecialWikiAdmin'] = 'bluespice';
-$wgExtensionMessagesFiles['WikiAdminAlias'] = __DIR__ . '/SpecialWikiAdmin.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
-$wgSpecialPages['SpecialWikiAdmin'] = 'SpecialWikiAdmin'; # Tell MediaWiki about the new special page and its class name
+$wgAutoloadClasses['SpecialWikiAdmin'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.class.php';
+$wgSpecialPageGroups['WikiAdmin'] = 'bluespice';
+$wgExtensionMessagesFiles['WikiAdminAlias'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.alias.php';
+$wgSpecialPages['WikiAdmin'] = 'SpecialWikiAdmin';
 
+$wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'WikiAdmin::onSkinTemplateOutputPageBeforeExec';

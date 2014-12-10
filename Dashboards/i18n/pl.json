@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-specialadmindashboard-label": "Panel",
+	"admindashboard": "Panel administratora",
+	"userdashboard": "Panel użytkownika",
+	"bs-dashboard-userportlet-calendar-title": "Kalendarz",
+	"bs-dashboard-userportlet-calendar-description": "Kalendarz"
+}

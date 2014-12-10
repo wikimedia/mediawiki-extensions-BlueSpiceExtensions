@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil"
+		]
+	},
+	"bs-countthings-desc": "Tillhandahåller innehållsbaserad statistik",
+	"bs-countthings-chars-label": "Tecken",
+	"bs-countthings-words-label": "Ord",
+	"bs-countthings-pages-label": "Sidor",
+	"bs-countthings-error-no-input": "Ingen sida angavs.",
+	"bs-countthings-error-invalid-mode": "Läget \"$1\" är ogiltigt. Vänligen använd \"chars\", \"words\", eller \"pages\".",
+	"bs-countthings-error-not-exist": "Sidan \"$1\" finns inte.",
+	"bs-countthings-tag-countarticles-desc": "Visar antalet sidor.",
+	"bs-countthings-tag-countusers-desc": "Visar antalet användare.",
+	"bs-countthings-tag-countcharacters-desc": "Visar statistik för den angivna sidans innehåll. Tillgängliga konfigurationsattribut:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Vad ska räknas <code>chars</code> (tecken), <code>words</code> (ord) eller <code>pages</code> (sidor)."
+}

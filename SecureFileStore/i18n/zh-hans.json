@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-securefilestore-desc": "阻止对文件和图片的未经授权的访问",
+	"prefs-securefilestore": "安全档案库",
+	"bs-securefilestore-pref-defaultdisposition": "默认显示文件：",
+	"bs-securefilestore-pref-defaultdisposition-brower": "浏览器",
+	"bs-securefilestore-pref-defaultdisposition-external": "外部",
+	"bs-securefilestore-pref-dispositionattachment": "外部文件类型：",
+	"bs-securefilestore-pref-dispositioninline": "浏览器文件类型：",
+	"bs-securefilestore-pref-fileextensionwhitelist": "总是显示这些文件类型："
+}

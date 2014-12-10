@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-watchlist-desc": "Додає віджет і теґ списку спостереження",
+	"bs-watchlist-title-sidebar": "Список спостереження",
+	"bs-watchlist-pref-widgetlimit": "Ліміт записів:",
+	"bs-watchlist-pref-widgetsortodr": "Сортувати за:",
+	"bs-watchlist-pref-sort-time": "Час",
+	"bs-watchlist-pref-sort-title": "Назва",
+	"bs-watchlist-tag-watchlist-desc": "Створює список сторінок, які є у вашому списку спостереження та мають невідображені зміни."
+}

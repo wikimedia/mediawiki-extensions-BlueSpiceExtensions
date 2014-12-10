@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"prefs-blog": "Blog",
+	"bs-blog-comments": "Hozzászólások",
+	"bs-blog-show-all": "Minden bejegyzés mutatása",
+	"bs-blog-form-inline-text": "Cím...",
+	"bs-blog-form-button-text": "Létrehoz",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-showinfo": "Információk a bejegyzésről",
+	"bs-blog-pref-showlimit": "Blogbejegyzések száma:",
+	"bs-blog-pref-maxentrycharacters": "Szavak száma bejegyzésenként:"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-saferedit-pref-shownameofeditinguser": "現在の編集者の名前を表示",
+	"bs-saferedit-pref-warnonleave": "変更を保存せずに編集画面から離れようとしたら警告",
+	"bs-saferedit-unsavedchanges": "保存していない変更があります。"
+}

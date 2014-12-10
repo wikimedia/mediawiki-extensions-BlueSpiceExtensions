@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-wantedarticle-desc": "将页面加入至待撰页面列表",
+	"prefs-wantedarticle": "需要的页面",
+	"bs-wantedarticle-ajax-error-no-parameter": "没提供页面标题。",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "建议的页面“$1”已存在。",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "页面“$1”已建议。",
+	"bs-wantedarticle-edit-comment-suggestion-added": "建议“$1”已添加。",
+	"bs-wantedarticle-success-suggestion-entered": "您的建议“$1”被加入。",
+	"bs-wantedarticle-sort-value-unknown": "有效值：标题和时间。",
+	"bs-wantedarticle-order-value-unknown": "有效值：ASC（{{int:bs-wantedarticle-pref-order-asc}}）和DESC（{{int:bs-wantedarticle-pref-order-desc}}）。",
+	"bs-wantedarticle-page-removed": "页面“$1”已移除。",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "建议",
+	"bs-wantedarticle-single-textfield-createbutton-text": "创建",
+	"bs-wantedarticle-single-textfield-defaulttext": "页面标题",
+	"bs-wantedarticle-tag-wantedarticle-desc": "显示待撰页面的列表。可用的配置属性：",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>：显示页面数。",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>：头条。",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>：按<code>ASC</code>（{{int:bs-wantedarticle-pref-order-asc}}）或<code>DESC</code>（{{int:bs-wantedarticle-pref-order-desc}}）排序",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>：按<code>title</code>或<code>time</code>排序。",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>：输出<code>list</code>或<code>quene</code>格式（逗号分隔）。",
+	"bs-wantedarticle-tag-more-linktext": "更多…",
+	"bs-wantedarticle-tag-default-title": "待撰页面",
+	"bs-wantedarticle-pref-includelimit": "建议数：",
+	"bs-wantedarticle-pref-deleteexisting": "从列表中删除现有记录",
+	"bs-wantedarticle-pref-showcreate": "显示创建链接",
+	"bs-wantedarticle-pref-deleteoncreation": "当页面创建时从列表移除记录",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "建议的模板标题：",
+	"bs-wantedarticle-pref-sort": "排序方式：",
+	"bs-wantedarticle-pref-order": "顺序：",
+	"bs-wantedarticle-pref-sort-time": "时间",
+	"bs-wantedarticle-pref-sort-title": "标题",
+	"bs-wantedarticle-pref-order-asc": "升序",
+	"bs-wantedarticle-pref-order-desc": "降序",
+	"bs-wantedarticle-create-page": "创建页面“$1”。",
+	"bs-wantedarticle-suggest-page": "建议页面“$1”。",
+	"bs-wantedarticle-info-nothing-entered": "请提供一个有效的页面标题。",
+	"bs-wantedarticle-title-invalid-chars": "以下字符在页面标题中{{PLURAL:$1|是}}无效的：$2"
+}

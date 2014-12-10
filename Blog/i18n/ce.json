@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-blog-no-entries": "Блог чохь цхьа дӀаяздар дац.",
+	"bs-blog-comments": "Къамелаш",
+	"bs-blog-read-more": "Еша ма-дарра",
+	"bs-blog-trackback": "Архив",
+	"bs-blog-permalink": "Гуттура йолу хьажорг",
+	"bs-blog-show-all": "Гайта массо дӀаяздарш",
+	"bs-blog-form-inline-text": "Корта ...",
+	"bs-blog-form-button-text": "Кхолла",
+	"bs-blog-blog": "Блог",
+	"bs-blog-pref-sortby": "Къастам бе:",
+	"bs-blog-pref-imagerendermode": "Гайта сурт санна:",
+	"bs-blog-pref-maxentrycharacters": "ДӀаяздар чура дешнийн дукхалла:"
+}

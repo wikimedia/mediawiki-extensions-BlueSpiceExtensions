@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix",
+			"Lokal Profil"
+		]
+	},
+	"bs-readers-desc": "Skapar en lista över de personer som läser en sida",
+	"prefs-readers": "Läsare",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Läsare}}|Läsare}}",
+	"readers-user": "Sidor som {{GENDER:$1|lästs}} av: $1",
+	"readers": "Läsare av \"$1\"",
+	"bs-readers-contentactions-label": "Visa läsare",
+	"bs-readers-pagenotexists": "Sidan finns inte.",
+	"bs-readers-pref-active": "Aktivera läsare",
+	"bs-readers-pref-numofreaders": "Antal läsare att visa:",
+	"bs-readers-emptyinput": "Ingen sida har angivits.",
+	"bs-readers-header-username": "Användarnamn",
+	"bs-readers-header-readerspath": "Läsare",
+	"bs-readers-header-ts": "Datum"
+}

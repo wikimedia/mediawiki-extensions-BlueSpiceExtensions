@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-statistics-year": "Jaar",
+	"bs-statistics-month": "Maand",
+	"bs-statistics-day": "Dag",
+	"bs-statistics-diag-number-of-users": "Aantal gebruikers",
+	"bs-statistics-label-name": "Naam",
+	"bs-statistics-diag-number-of-pages": "Aantal pagina's",
+	"bs-statistics-label-page": "Pagina",
+	"bs-statistics-diag-number-of-edits": "Aantal bewerkingen",
+	"bs-statistics-filter-category": "Categorie",
+	"bs-statistics-portlet-numberofusers": "Aantal gebruikers",
+	"bs-statistics-portlet-numberofedits": "Aantal bewerkingen",
+	"bs-statistics-portlet-numberofpages": "Aantal pagina's",
+	"bs-statistics-portletconfig-periodday": "Gisteren"
+}

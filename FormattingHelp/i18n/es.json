@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-formattinghelp-desc": "Muestra la ayuda para formatear texto",
+	"bs-formattinghelp-formatting": "Ayuda para el formato",
+	"bs-formattinghelp-help-syntax": "Sintaxis",
+	"bs-formattinghelp-help-example-text": "Texto",
+	"bs-formattinghelp-help-bold": "Negrita",
+	"bs-formattinghelp-help-italic": "Cursiva",
+	"bs-formattinghelp-help-nowiki": "Evitar el formato",
+	"bs-formattinghelp-help-color": "Texto coloreado",
+	"bs-formattinghelp-help-headline": "Encabezado",
+	"bs-formattinghelp-help-linebreak": "Salto de línea",
+	"bs-formattinghelp-help-ul": "Lista sin ordenar",
+	"bs-formattinghelp-help-listitem": "Elemento de la lista",
+	"bs-formattinghelp-help-subitem": "Subítem",
+	"bs-formattinghelp-help-numberedlist": "Lista numerada",
+	"bs-formattinghelp-help-link": "Enlace interno",
+	"bs-formattinghelp-help-link-alt": "Enlace interno con texto alternativo",
+	"bs-formattinghelp-help-caption": "Leyenda",
+	"bs-formattinghelp-help-extlink": "Enlace externo",
+	"bs-formattinghelp-help-hr": "Línea horizontal",
+	"bs-formattinghelp-help-template": "Plantilla",
+	"bs-formattinghelp-help-templatename": "Nombre de la plantilla"
+}

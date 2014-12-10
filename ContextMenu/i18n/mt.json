@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Leli Forte"
+		]
+	},
+	"bs-contextmenu-desc": "Jipprovdi l-menujiet tal-kuntest għall-ħoloq diversi",
+	"prefs-contextmenu": "Menù tal-kuntest",
+	"bs-contextmenu-pref-modus": "Iftaħ menù tal-kuntest permezz ta' (mhux għall-mowbajl):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Ikklikkja fuq buttuna tal-lemin tal-maws (jekk tagħfas CTRL jidher il-menù tal-kuntest tan-navigatur predeterminat)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Ikklikkja fuq buttuna tal-lemin tal-maws u agħfas CTRL (il-buttuna tal-lemin normali għandha turi l-menù tan-navigatur predeterminat)",
+	"bs-contextmenu-page-edit": "Editja l-paġna",
+	"bs-contextmenu-page-delete": "Ħassar il-paġna",
+	"bs-contextmenu-page-move": "Mexxi l-paġna",
+	"bs-contextmenu-page-history": "Ara l-kronoloġija tal-paġna",
+	"bs-contextmenu-page-protect": "Ipproteġi l-paġna",
+	"bs-contextmenu-page-purge": "Naddaf il-cache u ara l-paġna",
+	"bs-contextmenu-page-info": "Ara l-informazzjoni tal-paġna",
+	"bs-contextmenu-media-reupload": "Tella' l-verżjoni l-ġdida",
+	"bs-contextmenu-media-view-page": "Ara l-paġna tad-deskrizzjoni tal-fajl u l-kronoloġija tal-fajl",
+	"bs-contextmenu-user-mail": "Ibgħat ittra elettronika",
+	"bs-contextmenu-user-talk": "Ħalli messaġġ fuq il-paġna ta˙ diskussjoni",
+	"bs-contextmenu-file-download": "Niżżel il-fajl"
+}

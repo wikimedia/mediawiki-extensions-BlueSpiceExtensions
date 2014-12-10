@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-namespacemanager-desc": "Адміністративний інтерфейс для додавання, редагування та видалення просторів імен",
+	"bs-namespacemanager-label": "Керівник просторами назв",
+	"bs-namespacemanager-wrong-name": "Простір назв містить неприпустимі символи.",
+	"bs-namespacemanager-ns-exists": "Простір назв уже існує.",
+	"bs-namespacemanager-ns-length": "Простір назв повинен мати мінімальну довжину два символи.",
+	"bs-namespacemanager-invalid-id": "Неприпустимий ідентифікатор простору назв",
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Простір назв",
+	"bs-namespacemanager-label-editable": "Можна перейменувати",
+	"bs-namespacemanager-label-content": "У статистиці",
+	"bs-namespacemanager-label-searchable": "Пошук за замовчуванням",
+	"bs-namespacemanager-label-subpages": "Підсторінки",
+	"bs-namespacemanager-nsadded": "Простір назв було додано.",
+	"bs-namespacemanager-nsremoved": "Простір назв було вилучено.",
+	"bs-namespacemanager-nsedited": "Простір назв було редаговано.",
+	"bs-namespacemanager-tipadd": "Додати простір назв",
+	"bs-namespacemanager-tipedit": "Редагувати простір назв",
+	"bs-namespacemanager-tipremove": "Вилучити простір назв",
+	"bs-namespacemanager-msgnoteditabledelete": "Цей простір назв є системним простором назв, і йоно не можна вилучити.",
+	"bs-namespacemanager-labelnsname": "Назва простору назв",
+	"bs-namespacemanager-willdelete": "Буде видалено",
+	"bs-namespacemanager-willmove": "Буде перейменовано на «{{int:bs-ns_main}}»",
+	"bs-namespacemanager-willmovesuffix": "Буде перейменовано на «{{int:bs-ns_main}}» із суфіксом «$1»",
+	"bs-namespacemanager-deletewarning": "Ви дійсно бажаєте видалити цей простір назв? Видалення простору назв не можна скасувати.",
+	"bs-namespacemanager-pagepresent": "Сторінки в цьому просторі назв:"
+}

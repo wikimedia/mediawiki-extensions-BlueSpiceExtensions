@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-notifications-desc": "Испраќа известувања за промени одбрани од корисниците",
+	"prefs-notifications": "Известувања",
+	"prefs-echo-extended": "Напредни системски нагодувања",
+	"bs-notifications-pref-notifyns": "Известувај само за промени во овие именски простори:",
+	"bs-notifications-pref-notifynominor": "Не известувај за ситни промени",
+	"bs-notifications-pref-active": "Овозможи известувања",
+	"bs-echo-anon-user": "анонимни",
+	"bs-echo-unknown-user": "непознати",
+	"bs-echo-page-edit": "Страницата [[:$1]] е изменета",
+	"bs-echo-page-create": "Страницата [[:$1]] е создадена",
+	"bs-echo-page-delete": "Страницата [[:$1]] е избришана",
+	"bs-echo-page-move": "Страницата [[:$1]] е преместена",
+	"bs-echo-page-newuser": "Корисникот $1 е создаден.",
+	"bs-echo-page-shoutbox": "Нова брза порака на мрежното место [[:$1]].",
+	"bs-notifications-email-new-subject": "$2 ја {{GENDER:$2|создаде}} страницата $1",
+	"bs-notifications-email-new": "$2 ја {{GENDER:$2|создаде}} страницата „$1“.\n\nКоментар:\n $3 \nСтраницата можете да ја посетите тука:\n$4",
+	"bs-notifications-email-edit-subject": "$2 ја {{GENDER:$2|измени}} страницата $1",
+	"bs-notifications-email-edit": "$2 ја {{GENDER:$2|измени}} страницата „$1“.\n\nКоментар:\n$3 \nСтраницата можете да ја посетите тука:\n$4\nАко сакате да ги видете само измените, погледајте тука:\n$5",
+	"bs-notifications-email-move-subject": "$2 ја {{GENDER:$2|премести}} страницата $1",
+	"bs-notifications-email-move": "$2 ја {{GENDER:$2|премести}} страницата „$1“ на $3. Можете да ја посетите тука:\n$4",
+	"bs-notifications-email-delete-subject": "$2 ја {{GENDER:$2|избриша}} страницата $1",
+	"bs-notifications-email-delete": "$2 ја {{GENDER:$2|избриша}} страницата „$1“.\n\nНаведена е следнава причина:\n$3",
+	"bs-notifications-email-addaccount-subject": "Корисникот $1 е создаден",
+	"bs-notifications-email-addaccount": "Корисникот $1 со вистинско име $2 е создаден.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|напиша}} порака на страницата $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|напиша}} порака на страницата „$1“.\n\nПорака:\n$3\n\nСтраницата можете да ја посетите тука:\n$4.",
+	"echo-category-title-bs-create-cat": "Известување за нови страници",
+	"echo-category-title-bs-edit-cat": "Известување за направени измени",
+	"echo-category-title-bs-move-cat": "Известување за преместувања",
+	"echo-category-title-bs-delete-cat": "Известување за бришења",
+	"echo-category-title-bs-newuser-cat": "Известување за нови корисници (само администратори)",
+	"echo-category-title-bs-shoutbox-cat": "Известување за пораки на набљудувани страници (брзи пораки)"
+}

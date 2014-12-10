@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geraki"
+		]
+	},
+	"bs-review-error-insufficient-permissions": "Δεν έχετε την άδεια για να εκτελέσετε αυτήν την ενέργεια (χρειάζεται \"$1\")."
+}

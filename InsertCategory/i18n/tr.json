@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-insertcategory-insertcat": "Kategori ekle",
+	"prefs-insertcategory": "Kategori ekle",
+	"bs-insertcategory-failure": "Hata",
+	"bs-insertcategory-panel-title": "Kategoriler"
+}

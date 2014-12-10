@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-checklist-menu-insert-list-title": "Lëscht drasetzen",
+	"bs-checklist-dlg-insert-list-value-list": "Lëscht vu Wäerter",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list<code> generéiert e Select-Menü.",
+	"bs-checklist-dlg-new-list": "Eng nei Lëscht uleeën",
+	"bs-checklist-dlg-save-list": "Ännerungen an der Lëscht späicheren",
+	"bs-checklist-dlg-items-label": "Elementer an der Lëscht",
+	"bs-checklist-dlg-items-emptytext": "Keng Elementer an dëser Lëscht",
+	"bs-checklist-dlg-panel-title": "Disponibel Lëschten",
+	"bs-checklist-dlg-new-title": "Nei Lëscht dobäisetzen",
+	"bs-checklist-dlg-new-prompt": "En Titel vun enger Lëscht aginn",
+	"bs-checklist-alert": "Opgepasst!",
+	"bs-checklist-confirm-dirty-title": "Net-gespäichert Ännerungen!"
+}

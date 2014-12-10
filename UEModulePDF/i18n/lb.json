@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-uemodulepdf-pref-templatepath": "Standard Schabloun:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF Eenzelsäit",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Dës Säit als PDF exportéieren.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponibel",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "net disponibel"
+}

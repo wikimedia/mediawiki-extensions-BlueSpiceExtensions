@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Ribert",
+			"Southparkfan",
+			"Sjoerddebruin",
+			"Siebrand"
+		]
+	},
+	"prefs-avatars": "Avatar:",
+	"bs-avatars-desc": "Biedt algemene en individuele gebruikersfoto's",
+	"bs-avatars-pref-generator": "Generator",
+	"bs-avatars-pref-defaultsize": "Standaardgrootte in pixels:",
+	"bs-avatars-upload-complete": "De afbeelding is met succes geupload.",
+	"bs-avatars-generate-complete": "Een nieuwe avatar werd gegenereerd.",
+	"bs-avatars-upload-title": "Profielafbeelding wijzigen",
+	"bs-avatars-upload-label": "foto",
+	"bs-avatars-generate-new-label": "nieuwe avatar genereren",
+	"bs-avatars-warning-title": "Waarschuwing",
+	"bs-avatars-userimage-title": "Foto van wiki of afbeeldings-URL",
+	"bs-avatars-userimage-help": "bijvoorbeeld Afbeelding.jpg of http://localhost/Afbeelding.gif",
+	"bs-avatars-set-userimage-failed": "Geen geldige URL of afbeelding van wiki.",
+	"bs-avatars-set-userimage-saved": "Profielfoto opgeslagen",
+	"bs-avatars-file-upload-fieldset-title": "Afbeelding uploaden",
+	"bs-avatars-auto-generate-fieldset-title": "Automatisch avatar genereren"
+}

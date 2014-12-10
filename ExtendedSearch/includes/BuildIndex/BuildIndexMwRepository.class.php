@@ -4,6 +4,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @package    BlueSpice_Extensions
@@ -40,7 +41,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 
 	/**
 	 * Constructor for BuildIndexMwLinked class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate.
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
@@ -76,24 +77,8 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	 * @param unknown $ts Timestamp
 	 * @return Apache_Solr_Document
 	 */
-	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts ) {
-		$doc = $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $ts );
-		return $doc;
-	}
-
-	// duplicate of AbstractBuildIndexMwLinked
-	// they have no predecessor in common in bluespice-mw
-	// todo: externalize static, may be to AdapterMW
-	/**
-	 * Compares two timestamps
-	 * @param string $timestamp1 MW timestamp
-	 * @param string $timestamp2 MW timestamp
-	 * @return bool True if timestamp1 is younger than timestamp2
-	 */
-	public function isTimestamp1YoungerThanTimestamp2( $timestamp1, $timestamp2 ) {
-		$ts_unix1 = wfTimestamp( TS_UNIX, $timestamp1 );
-		$ts_unix2 = wfTimestamp( TS_UNIX, $timestamp2 );
-		return ( $ts_unix1 > $ts_unix2 );
+	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts, $sVirtualPath ) {
+		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualPath, $ts );
 	}
 
 	/**
@@ -102,68 +87,34 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	public function indexCrawledDocuments() {
 		while ( $document = $this->oDbr->fetchObject( $this->documentsDb ) ) {
 			$this->count++;
+
 			 if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
 			$this->writeLog( $document->img_name );
 
 			$docType = $this->mimeDecoding( $document->img_minor_mime, $document->img_name );
-			if ( !isset( $this->aFileTypes[$docType] ) || ( $this->aFileTypes[$docType] !== true ) ) {
-				$this->writeLog( ( 'Filetype not allowed: '.$docType.' ('.$document->img_name.')' ) );
-				continue;
-			}
+			if ( !$this->checkDocType( $docType, $document->img_name ) ) continue;
 
 			$oTitle = Title::newFromText( $document->img_name, NS_FILE );
 			$oFile = wfLocalFile( $oTitle );
-			$oFileRepoLocalRef = $oFile->getRepo()->getLocalReference( $oFile->getPath() );
-			if ( !is_null( $oFileRepoLocalRef ) ) {
-				$path = $oFileRepoLocalRef->getPath();
-			}
+			$sVirtualPath = $oFile->getPath();
+			$oFileRepoLocalRef = $oFile->getRepo()->getLocalReference( $sVirtualPath );
+			if ( is_null( $oFileRepoLocalRef ) ) continue;
+			$path = $oFileRepoLocalRef->getPath();
 
-			$repoFile = new SplFileInfo( $path ); // todo: check - might be urlencoded
-			try {
-				$repoFileSize = $repoFile->getSize(); // throws Exception if file does not exist
-			} catch ( Exception $e ) {
-				$this->writeLog( ( 'File does not exist: '.$document->img_name ) );
-				continue;
-			}
+			$repoFile = new SplFileInfo( $path );
+			if ( !$repoFile->isFile() ) continue;
 
-			if ( $this->sizeExceedsMaxDocSize( $repoFileSize ) ){
-				$this->writeLog( ('File exceeds max doc size and will not be indexed: '.$document->img_name) );
-				continue;
-			}
+			if ( $this->sizeExceedsMaxDocSize( $repoFile->getSize(), $document->img_name ) ) continue;
 
 			$repoFileRealPath = $repoFile->getRealPath();
-
-			try {
-				$uniqueIdForDocument = $this->oMainControl->getUniqueId( -1, $repoFileRealPath );
-				$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
-			} catch ( Exception $e ) {
-				$this->writeLog( 'Error indexing file '.$document->img_name.' with errormessage '.$e->getMessage() );
-				continue;
-			}
-
 			$timestampImage = $document->img_timestamp;
 
-			// If already indexed and timestamp is not newer => don't index it!
-			if ( $hitsDocumentInIndexWithSameUID->response->numFound != 0 ) {
-				// timestamps have different format => compare function to equalize both
-				$timestampIndexDoc = $hitsDocumentInIndexWithSameUID->response->docs[0]->ts;
-				if ( !$this->isTimestamp1YoungerThanTimestamp2( $timestampImage, $timestampIndexDoc ) ) {
-					$this->writeLog( ('Already in index: '.$document->img_name ) );
-					continue;
-				}
-			}
+			if ( $this->checkExistence( $sVirtualPath, 'repo', $timestampImage, $document->img_name ) ) continue;
 
-			$text = '';
-			try {
-				$text = $this->oMainControl->oSearchService->getFileText( $repoFileRealPath, $this->iTimeLimit );
-			} catch ( Exception $e ) { // Exception can be of type Exception OR BsException
-				$this->writeLog( ( 'Unable to extract document '.$document->img_name.', errormessage: '.$e->getMessage() ) );
-				error_log( $e->getMessage() );
-			}
+			$text = $this->getFileText( $repoFileRealPath, $document->img_name );
 
-			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage );
-
+			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage, $sVirtualPath );
 			if ( $doc ) {
 				// mode and ERROR_MSG_KEY are only passed for the case when addDocument fails
 				$this->oMainControl->addDocument( $doc, $this->mode, self::S_ERROR_MSG_KEY );

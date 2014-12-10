@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe",
+			"Themasterriot"
+		]
+	},
+	"bs-insertcategory-desc": "Cuadro de diálogo para introducir un enlace a categoría",
+	"bs-insertcategory-insertcat": "Insertar categoría",
+	"prefs-insertcategory": "Insertar categoría",
+	"bs-insertcategory-pref-withparents": "Insertar categoría con sus padres",
+	"bs-insertcategory-title": "Insertar categoría",
+	"bs-insertcategory-cat-label": "Asignada:",
+	"bs-insertcategory-success": "Inserción de categoría realizada con éxito",
+	"bs-insertcategory-failure": "Error",
+	"bs-insertcategory-hint": "Nota: para añadir una categoría, oprime la tecla Intro o finaliza la entrada con una coma.",
+	"bs-insertcategory-panel-title": "Categorías"
+}

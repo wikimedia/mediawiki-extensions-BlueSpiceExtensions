@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-extendededitbar-desc": "Provides additional buttons to the wiki edit field",
+	"bs-extendededitbar-redirecttip": "Redirect",
+	"bs-extendededitbar-redirectsample": "Insert text",
+	"bs-extendededitbar-striketip": "Strike",
+	"bs-extendededitbar-strikesample": "Strike-through text",
+	"bs-extendededitbar-entertip": "Line break",
+	"bs-extendededitbar-uppertip": "Superscript",
+	"bs-extendededitbar-uppersample": "Superscript text",
+	"bs-extendededitbar-lowertip": "Subscript",
+	"bs-extendededitbar-lowersample": "Subscript text",
+	"bs-extendededitbar-smalltip": "Small",
+	"bs-extendededitbar-smallsample": "Small text",
+	"bs-extendededitbar-commenttip": "Insert hidden comment",
+	"bs-extendededitbar-commentsample": "Comment",
+	"bs-extendededitbar-gallerytip": "Insert a picture gallery",
+	"bs-extendededitbar-gallerysamplepicture": "Picture",
+	"bs-extendededitbar-gallerysamplecaption": "Caption",
+	"bs-extendededitbar-quotetip": "Insert a block of quoted text",
+	"bs-extendededitbar-quotesample": "Block quote",
+	"bs-extendededitbar-tabletip": "Insert a table",
+	"bs-extendededitbar-tablesampleheader": "Header",
+	"bs-extendededitbar-tablesamplerow": "Row",
+	"bs-extendededitbar-tablesamplecell": "Cell"
+}

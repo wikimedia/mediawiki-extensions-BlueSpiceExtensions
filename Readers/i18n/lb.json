@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-readers-desc": "Stellt eng Lëscht op mat Leit déi eng Säit liesen.",
+	"prefs-readers": "Lieser",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Lieser|Lieserin}}|Lieser}}",
+	"readers-user": "Säite {{GENDER:$1|geliest}} vum: $1",
+	"readers": "Lieser vu(n) \"$1\"",
+	"bs-readers-contentactions-label": "Lieser weisen",
+	"bs-readers-pagenotexists": "Säit gëtt et net.",
+	"bs-readers-pref-active": "Lieser aktivéieren",
+	"bs-readers-pref-numofreaders": "Zuel vu Lieser déi gewise ginn:",
+	"bs-readers-emptyinput": "Et gouf keng Säit uginn.",
+	"bs-readers-header-username": "Benotzernumm",
+	"bs-readers-header-readerspath": "Lieser",
+	"bs-readers-header-ts": "Datum"
+}

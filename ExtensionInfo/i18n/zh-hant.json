@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"EagerLin",
+			"Cwlin0416"
+		]
+	},
+	"bs-extensioninfo-label": "擴充套件",
+	"bs-extensioninfo-software": "軟體",
+	"bs-extensioninfo-version": "版本",
+	"extensioninfo": "擴充套件",
+	"bs-extensioninfo-headerextname": "擴充套件名稱",
+	"bs-extensioninfo-headerversion": "版本",
+	"bs-extensioninfo-headerdesc": "描述",
+	"bs-extensioninfo-headerstatus": "狀態",
+	"bs-extensioninfo-headerpackage": "套件"
+}

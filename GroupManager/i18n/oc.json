@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-groupmanager-label": "Gestionari de grop",
+	"bs-groupmanager-headergroup": "Grop",
+	"bs-groupmanager-tipremove": "Suprimir {{PLURAL:$1|lo grop|los gropes}}",
+	"bs-groupmanager-titlenewgroup": "Grop novèl",
+	"bs-groupmanager-titleeditgroup": "Modificar lo grop",
+	"bs-groupmanager-lablename": "Nom del grop :"
+}

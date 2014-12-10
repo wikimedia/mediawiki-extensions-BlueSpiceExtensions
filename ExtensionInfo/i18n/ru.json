@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-extensioninfo-desc": "Информационный список о загруженных расширениях",
+	"bs-extensioninfo-label": "Расширения",
+	"bs-extensioninfo-software": "Программное обеспечение",
+	"bs-extensioninfo-version": "Версия",
+	"extensioninfo": "Расширения",
+	"bs-extensioninfo-headerextname": "Название расширения",
+	"bs-extensioninfo-headerversion": "Версия",
+	"bs-extensioninfo-headerdesc": "Описание",
+	"bs-extensioninfo-headerstatus": "Состояние",
+	"bs-extensioninfo-headerpackage": "Пакет",
+	"bs-extensioninfo-groupingtemplateviewtext": "Элемент{{PLURAL:$1||ы}}"
+}

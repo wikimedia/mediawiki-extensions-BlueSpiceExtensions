@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-insertcategory-desc": "Dialogo pro entrar un ligamine de categoria",
+	"bs-insertcategory-insertcat": "Inserer categoria",
+	"prefs-insertcategory": "Inserer categoria",
+	"bs-insertcategory-pref-withparents": "Inserer categoria con su genitores",
+	"bs-insertcategory-title": "Inserer categoria",
+	"bs-insertcategory-cat-label": "Assignate:",
+	"bs-insertcategory-success": "Addition de categoria succedite",
+	"bs-insertcategory-failure": "Error",
+	"bs-insertcategory-hint": "Nota: pro adder un categoria, tu debe premer le clave Enter o terminar le entrata con un comma.",
+	"bs-insertcategory-panel-title": "Categorias"
+}

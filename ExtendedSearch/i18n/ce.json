@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Категори|Категореш}}: $2",
+	"bs-extendedsearch-facet-category": "Категори",
+	"bs-extendedsearch-facet-namespace-files": "Файлаш",
+	"bs-extendedsearch-result-caption": "$1 - $2 $3 нах {{PLURAL:$3|хиллам}}",
+	"bs-extendedsearch-sort-ts": "Хан",
+	"bs-extendedsearch-sort-type": "Тайп",
+	"bs-extendedsearch-about-to-start": "Йолаялар…",
+	"bs-extendedsearch-more": "Кхин"
+}

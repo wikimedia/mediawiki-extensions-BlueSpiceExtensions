@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('ShoutBox', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['ShoutBox'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['ShoutBox'] = __DIR__ . '/languages/ShoutBox.i18n.php';
 $wgExtensionMessagesFiles['ShoutBoxMagic'] = __DIR__ . '/languages/ShoutBox.i18n.magic.php';
 
@@ -14,16 +16,18 @@ $wgResourceModules['ext.bluespice.shoutbox'] = array(
 	'scripts' => 'bluespice.shoutBox.js',
 	'dependencies' => 'ext.bluespice',
 	'messages' => array(
-		'bs-shoutbox-confirm_text',
-		'bs-shoutbox-confirm_title',
-		'bs-shoutbox-enterMessage',
-		'bs-shoutbox-too-early'
+		'bs-shoutbox-confirm-text',
+		'bs-shoutbox-confirm-title',
+		'bs-shoutbox-entermessage',
+		'bs-shoutbox-too-early',
+		'bs-shoutbox-charactersleft',
+		'bs-shoutbox-n-shouts'
 	),
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.shoutbox.styles'] = array(
-	'styles'  => 'bluespice.shoutBox.css',
+	'styles' => 'bluespice.shoutBox.css',
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

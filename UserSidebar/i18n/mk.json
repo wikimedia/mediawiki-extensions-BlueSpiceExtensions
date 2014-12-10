@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-usersidebar-desc": "Го додава јазичето за задршка во страничната лента",
+	"prefs-usersidebar": "Корисничка лента",
+	"bs-usersidebar-userpagesettings-link-title": "Уредете ја содржината на вашата задршка",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Уреди}} задршка"
+}

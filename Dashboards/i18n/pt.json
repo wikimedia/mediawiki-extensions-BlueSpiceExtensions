@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-dashboards-desc": "Fornece painéis de controlo para utilizadores e administradores",
+	"bs-specialadmindashboard-label": "Painel de controlo",
+	"bs-dashboards-addportlet": "Adicionar portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Painéis de controlo",
+	"bs-dashboards-pref-userdashboardonlogo": "O logótipo do sítio tem ligação ao painel de controlo de utilizador",
+	"admindashboard": "Painel de administrador",
+	"userdashboard": "Painel do utilizador",
+	"bs-dashboard-userportlet-calendar-title": "Calendário",
+	"bs-dashboard-userportlet-calendar-description": "Calendário"
+}

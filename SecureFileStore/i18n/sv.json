@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-securefilestore-desc": "Förhindrar obehörig åtkomst till filer och bilder",
+	"prefs-securefilestore": "Säker filförvaring",
+	"bs-securefilestore-pref-defaultdisposition": "Visa filer som standard:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Webbläsare",
+	"bs-securefilestore-pref-defaultdisposition-external": "Externa",
+	"bs-securefilestore-pref-dispositionattachment": "Externa filtyper:",
+	"bs-securefilestore-pref-dispositioninline": "Webbläsar-filtyper:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Visa alltid dessa filtyper:"
+}

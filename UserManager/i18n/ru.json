@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Striking Blue"
+		]
+	},
+	"bs-usermanager-desc": "Интерфейс администрирования для добавления, правки и удаления пользователей",
+	"bs-usermanager-admin-nodelete": "Учётная запись администратора не может быть удалена.",
+	"bs-usermanager-self-nodelete": "Вы не можете удалить свою собственную учётную запись.",
+	"bs-usermanager-db-error": "Произошла ошибка базы данных.",
+	"bs-usermanager-enter-pwd": "Пожалуйста, введите пароль.",
+	"bs-usermanager-idnotexist": "Такого участника не существует.",
+	"bs-usermanager-invalid-pwd": "Пароль неверен.",
+	"bs-usermanager-invalid-realname": "Такое настоящее имя участника недопустимо.",
+	"bs-usermanager-invalid-uname": "Такое имя участника недопустимо.",
+	"bs-usermanager-invalid-email-gen": "Недопустимый адрес электронной почты.",
+	"bs-usermanager-label": "Управление учётными записями",
+	"bs-usermanager-user-added": "Участник был добавлен.",
+	"bs-usermanager-user-deleted": "Участник был удалён.",
+	"bs-usermanager-user-exists": "Такое имя участника уже существует.",
+	"bs-usermanager-save-successful": "Изменения сохранены.",
+	"bs-usermanager-headerusername": "Имя участника",
+	"bs-usermanager-headerrealname": "Настоящее имя",
+	"bs-usermanager-headeremail": "Эл. почта",
+	"bs-usermanager-headergroups": "Группы",
+	"bs-usermanager-titleadduser": "Добавить пользователя",
+	"bs-usermanager-titleeditdetails": "Редактировать пользователя",
+	"bs-usermanager-labelnewpassword": "Пароль",
+	"bs-usermanager-labelpasswordcheck": "Подтвердите пароль",
+	"bs-usermanager-titledeleteuser": "Удалить пользователя",
+	"bs-usermanager-confirmdeleteuser": "Вы уверены, что хотите удалить {{PLURAL:$1|этого участника|этих $1 участников}}?",
+	"bs-usermanager-groups-more": "…ещё"
+}

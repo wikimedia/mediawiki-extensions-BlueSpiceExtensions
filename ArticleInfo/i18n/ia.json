@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-articleinfo-desc": "Forni information sur un pagina in le barra de stato",
+	"prefs-articleinfo": "Information sur le pagina",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervallo de actualisation in secundas:",
+	"bs-articleinfo-last-edited": "Tempore desde le ultime actualisation",
+	"bs-articleinfo-last-edited-tooltip": "Ultime modification",
+	"bs-articleinfo-last-editor": "Ultime {{GENDER:$1|redactor|redactrice}}",
+	"bs-articleinfo-categories": "Categorias",
+	"bs-articleinfo-more-categories": "Altere categorias disponibile",
+	"bs-articleinfo-all-categories-heading": "Categorias",
+	"bs-articleinfo-nocategories": "Nulle categoria trovate.",
+	"bs-articleinfo-hiddencats": "Categorias celate",
+	"bs-articleinfo-notemplates": "Nulle patrono trovate.",
+	"bs-articleinfo-templates": "Patronos",
+	"bs-articleinfo-subpages": "Subpaginas",
+	"bs-articleinfo-subpages-available": "Il ha subpaginas de iste pagina",
+	"bs-articleinfo-subpages-too-much": "Il ha plus de 100 subpaginas disponibile.",
+	"bs-articleinfo-check-revision": "Nove version disponibile",
+	"bs-articleinfo-check-revision-tooltip": "Recargar pagina",
+	"bs-articleinfo-statebartoplastedited": "Modification recente",
+	"bs-articleinfo-statebartoplasteditor": "Redactor recente",
+	"bs-articleinfo-statebartopcategories": "Categorias",
+	"bs-articleinfo-statebartopsubpages": "Subpaginas",
+	"bs-articleinfo-statebarbodycategories": "Categorias",
+	"bs-articleinfo-statebarbodysubpages": "Subpaginas",
+	"bs-articleinfo-statebarbodytemplates": "Patronos"
+}

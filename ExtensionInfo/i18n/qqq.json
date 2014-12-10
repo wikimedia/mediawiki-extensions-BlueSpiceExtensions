@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-extensioninfo-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extension info extension",
+	"bs-extensioninfo-label": "Anchor text in admin tab for extensions.\n{{Identical|Extension}}",
+	"bs-extensioninfo-software": "Table header for software\n{{Identical|Software}}",
+	"bs-extensioninfo-version": "Table header for version.\n{{Identical|Version}}",
+	"extensioninfo": "{{doc-special|ExtensionInfo}}\n{{Identical|Extension}}",
+	"bs-extensioninfo-headerextname": "Label for extension name",
+	"bs-extensioninfo-headerversion": "Label for version.\n{{Identical|Version}}",
+	"bs-extensioninfo-headerdesc": "Label for description.\n{{Identical|Description}}",
+	"bs-extensioninfo-headerstatus": "Label for status.\n{{Identical|Status}}",
+	"bs-extensioninfo-headerpackage": "Label for package",
+	"bs-extensioninfo-groupingtemplateviewtext": "Text for element/elements. Parameters:\n* $1 - the number of elements (extensions)"
+}

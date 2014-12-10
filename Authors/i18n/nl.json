@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Niknetniko",
+			"SPQRobin",
+			"Sjoerddebruin"
+		]
+	},
+	"bs-authors-desc": "Toont de profielfoto van de auteurs van een pagina",
+	"prefs-authors": "Auteurs van deze pagina",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Auteur}}|Auteurs}}",
+	"bs-authors-profileimage": "Profielafbeelding",
+	"bs-authors-profileimage-change": "Profielafbeelding wijzigen",
+	"bs-authors-show-all-authors": "Meer auteurs beschikbaar",
+	"bs-authors-pref-imageheight": "Afbeeldingshoogte:",
+	"bs-authors-pref-imagewidth": "Afbeeldingsbreedte:",
+	"bs-authors-pref-limit": "Limiet van auteurs om weer te geven:",
+	"bs-authors-pref-show": "Auteurs weergeven",
+	"bs-authors-switch-description": "Verbergt auteurs bij deze pagina."
+}

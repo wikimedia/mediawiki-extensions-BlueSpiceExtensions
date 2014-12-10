@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"HarpyWar",
+			"Meshkov.a",
+			"Okras"
+		]
+	},
+	"bs-uemodulepdf-desc": "Разрешить MediaWiki экспортировать страницы в PDF-формат",
+	"prefs-uemodulepdf": "Универсальный модуль экспорта в PDF",
+	"uemodulepdf": "Универсальный модуль для экспорта в PDF",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Адрес бэкенда",
+	"bs-uemodulepdf-pref-templatepath": "Стандартный шаблон:",
+	"bs-uemodulepdf-pref-suppressns": "Скрыть префикс пространства имен в PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Одна страница PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Экспортировать эту страницу в PDF.",
+	"bs-uemodulepdf-overview-title": "Формат переносимых документов (PDF)",
+	"bs-uemodulepdf-overview-desc": "Экспорт страниц в PDF (специальные страницы и страницы с контентом).",
+	"bs-uemodulepdf-overview-webservice-state": "Статус бэкенда",
+	"bs-uemodulepdf-overview-webservice-state-ok": "доступно",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "не доступно",
+	"soap-service-url-not-valid": "Адрес веб-службы по созданию PDF не действителен. Пожалуйста, проверьте настройки вики.",
+	"soap-service-url-not-set": "Не установлен адрес для веб-службы по созданию PDF. Пожалуйста, проверьте настройки вики.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Бэкенд веб интерфейса"
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-securefilestore-desc": "Спречува неовластен пристап до податотеки и слики",
+	"prefs-securefilestore": "Безбеден склад на податотеки",
+	"bs-securefilestore-pref-defaultdisposition": "Прикажувај ги податотеките по основно:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Прелистувач",
+	"bs-securefilestore-pref-defaultdisposition-external": "Надворешни",
+	"bs-securefilestore-pref-dispositionattachment": "Надворешни податотечни типови:",
+	"bs-securefilestore-pref-dispositioninline": "Прелистувачки податотечни типови:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Секогаш прикажува ги овие податотечни типови:"
+}

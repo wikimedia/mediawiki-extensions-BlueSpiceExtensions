@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-wikiadmin-desc": "Central point of administration for BlueSpice",
+	"bs-wikiadmin-notallowed": "You are not allowed to use this page.",
+	"wikiadmin": "BlueSpice administration",
+	"action-wikiadmin": "display BlueSpice administration pages",
+	"right-wikiadmin": "Display BlueSpice administration pages",
+	"bs-wikiadmin-shop": "Shop"
+}

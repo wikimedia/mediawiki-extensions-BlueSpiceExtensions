@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416",
+			"LNDDYL"
+		]
+	},
+	"prefs-readers": "讀者",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|讀者}}|讀者}}",
+	"readers": "\"$1\" 的讀者",
+	"bs-readers-header-username": "使用者名稱",
+	"bs-readers-header-readerspath": "讀者",
+	"bs-readers-header-ts": "日期"
+}

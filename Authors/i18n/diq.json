@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirzali"
+		]
+	},
+	"prefs-authors": "Nuştekarê nê meqaley",
+	"bs-authors-title": "{{PLURAL:$1|Nuştekar|Nuştekari}}",
+	"bs-authors-profileimage": "Resmê profili",
+	"bs-authors-profileimage-change": "Resmê profili bıvurne",
+	"bs-authors-pref-imageheight": "Berziya resımi:",
+	"bs-authors-pref-imagewidth": "Herayiya resımi:",
+	"bs-authors-pref-show": "Nuştekaran bımocne",
+	"bs-authors-switch-description": "Nê meqaley de nuştekaran nımneno."
+}

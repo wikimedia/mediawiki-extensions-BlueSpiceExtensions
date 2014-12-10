@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"bs-insertmagic": "Ensoc'hañ ur ger hud",
+	"bs-insertmagic-notoc": "Kuzhat an daolenn.",
+	"bs-insertmagic-index": "Lavaret d'ar c'hefluskerioù enklask menegeriñ ar bajenn.",
+	"bs-insertmagic-noindex": "Lavaret d'ar c'hefluskerioù enklask chom hep menegeriñ ar bajenn.",
+	"bs-insertmagic-currentdayname": "Deiz eus ar sizhun (anv).",
+	"bs-insertmagic-currenttime": "Eur (er furmad EE:mm 24 eur).",
+	"bs-insertmagic-currentweek": "Sizhun (niver).",
+	"bs-insertmagic-sitename": "Anv al lec'hienn wiki.",
+	"bs-insertmagic-server": "URL an domani.",
+	"bs-insertmagic-servername": "Anv an domani.",
+	"bs-insertmagic-revisionyear": "Bloaz ma oa bet graet ar c'hemm.",
+	"bs-insertmagic-type-tags": "Balizennoù",
+	"bs-insertmagic-type-variables": "Argemmennoù",
+	"bs-insertmagic-label-second": "2. Cheñch ar c'hod",
+	"bs-insertmagic-label-desc": "Deskrivadur"
+}

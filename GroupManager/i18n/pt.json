@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-groupmanager-desc": "Interface de administração para criação, edição e eliminação de grupos de utilizador e gestão dos seus privilégios",
+	"bs-groupmanager-grpexists": "O grupo já existe.",
+	"bs-groupmanager-grpadded": "O grupo foi adicionado.",
+	"bs-groupmanager-grpedited": "O grupo foi editado.",
+	"bs-groupmanager-grpremoved": "O grupo foi removido.",
+	"bs-groupmanager-label": "Gestor de grupos",
+	"bs-groupmanager-invalid-name-length": "O nome do grupo não pode ter mais de 16 caracteres.",
+	"bs-groupmanager-invalid-name-numeric": "O nome do grupo precisa de ter pelo menos um carácter.",
+	"bs-groupmanager-headergroup": "Grupo",
+	"bs-groupmanager-tipremove": "Remover {{PLURAL:$1|grupo|grupos}}",
+	"bs-groupmanager-titlenewgroup": "Novo grupo",
+	"bs-groupmanager-titleeditgroup": "Editar grupo",
+	"bs-groupmanager-removegroup": "Tem certeza que deseja remover {{PLURAL:$1|este grupo|estes grupos}}?",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|O seguinte grupo foi eliminado|Os seguintes grupos foram eliminados}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "Não foi possível eliminar {{PLURAL:$1|o seguinte grupo|os seguintes grupos}}: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Ocorreu um erro inesperado, por favor tente novamente.",
+	"bs-groupmanager-lablename": "Nome do grupo:",
+	"bs-groupmanager-msgnoteditable": "Este grupo é um grupo de sistema e não pode ser renomeado.",
+	"bs-groupmanager-msgnotremovable": "Este grupo é um grupo de sistema e não pode ser removido."
+}

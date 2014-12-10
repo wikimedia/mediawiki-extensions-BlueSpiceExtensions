@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-statebar-desc": "Предоставляет строку состояния",
+	"prefs-statebar": "Строка состояния",
+	"bs-statebar-pref-sortbodyvars": "Порядок в теле:",
+	"bs-statebar-pref-sorttopvars": "Порядок в верхней части:",
+	"bs-statebar-pref-show": "Отображать строку состояния",
+	"bs-statebar-viewtoggler": "ДЕТАЛИ",
+	"bs-statebar-viewtoggler-tooltip": "Показать подробную информацию",
+	"bs-statebar-switch-description": "Скрывает строку состояния на этой странице.",
+	"bs-statebar-ajax-nobodyviews": "Информация отсутствует."
+}

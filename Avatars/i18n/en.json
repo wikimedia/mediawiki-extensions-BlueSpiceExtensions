@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marc Reymann <reymann@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"prefs-avatars": "Avatars",
+	"bs-avatars-desc": "Provides generic and individual user pictures",
+	"bs-avatars-pref-generator": "Generator:",
+	"bs-avatars-pref-defaultsize": "Default size in pixel:",
+	"bs-avatars-upload-complete": "The picture was uploaded successfully.",
+	"bs-avatars-generate-complete": "A new avatar was generated.",
+	"bs-avatars-upload-title": "Change profile picture",
+	"bs-avatars-upload-label": "Picture",
+	"bs-avatars-generate-new-label": "Generate new avatar",
+	"bs-avatars-warning-title": "Warning",
+	"bs-avatars-warning-text": "You have set a user picture in your preferences. Using avatars will clear this setting. Do you want to proceed?",
+	"bs-avatars-userimage-title": "Picture from wiki or picture URL",
+	"bs-avatars-userimage-help": "e. g. Picture.jpg or http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "Not a valid URL or picture from wiki.",
+	"bs-avatars-set-userimage-saved": "User picture successfully saved.",
+	"bs-avatars-file-upload-fieldset-title": "Picture upload",
+	"bs-avatars-auto-generate-fieldset-title": "Auto generate avatar"
+}

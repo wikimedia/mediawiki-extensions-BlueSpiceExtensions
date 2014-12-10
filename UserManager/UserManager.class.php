@@ -56,7 +56,7 @@ class UserManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'UserManager',
-			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting users.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-usermanager-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -84,7 +84,7 @@ class UserManager extends BsExtensionMW {
 		$sDirection = $oStoreParams->getDirection();
 		$aFilters = $oStoreParams->getFilter();
 
-		$aSortingParams = json_decode( $sSort );
+		$aSortingParams = FormatJson::decode( $sSort );
 		if ( is_array( $aSortingParams ) ) {
 			$sSort = $aSortingParams[0]->property;
 			$sDirection = $aSortingParams[0]->direction;
@@ -155,7 +155,7 @@ class UserManager extends BsExtensionMW {
 			$tmp = array();
 			$tmp['user_id']        = $row->user_id;
 			$tmp['user_name']      = $row->user_name;
-			$tmp['user_page']      = $oUserTitle->getLocalURL();
+			$tmp['user_page_link'] = Linker::link( $oUserTitle, $row->user_name.' ' ); //The whitespace is to aviod automatic rewrite to user_real_name by BSF
 			$tmp['user_real_name'] = $row->user_real_name;
 			$tmp['user_email']     = $row->user_email == null ? '' : $row->user_email; //PW: Oracle returns null when field is emtpy
 			$tmp['groups']         = array();
@@ -179,7 +179,7 @@ class UserManager extends BsExtensionMW {
 		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
 		wfRunHooks( 'BSWikiAdminUserManagerBeforeUserListSend', array( $oUserManager, &$data ) );
 
-		return json_encode( $data );
+		return FormatJson::encode( $data );
 	}
 
 	/**
@@ -188,9 +188,12 @@ class UserManager extends BsExtensionMW {
 	 * @return string json encoded response
 	 */
 	public static function addUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
+
+		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
@@ -210,45 +213,45 @@ class UserManager extends BsExtensionMW {
 		);
 
 		$sUsername = ucfirst( $sUsername );
-		if ( User::isValidUserName( $sUsername ) === false ) { //TODO: Check if User::isCreatableName() is a better validation
+		if ( User::isCreatableName( $sUsername ) === false ) {
 			$aResponse['errors'][] = array(
 				'id' => 'username',
-				'message' => wfMessage( 'bs-usermanager-invalid_uname_gen' )->plain()
+				'message' => wfMessage( 'bs-usermanager-invalid-uname' )->plain()
 			);
 		}
 
-		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
+		if ( $sEmail != '' && Sanitizer::validateEmail( $sEmail ) === false ) {
 			$aResponse['errors'][] = array(
 				'id' => 'email',
-				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
+				'message' => wfMessage( 'bs-usermanager-invalid-email-gen' )->plain()
 			);
 		}
 
 		if ( $sPassword == '' ) {
 			$aResponse['errors'][] = array(
 				'id' => 'pass',
-				'message' => wfMessage( 'bs-usermanager-enter_pwd' )->plain()
+				'message' => wfMessage( 'bs-usermanager-enter-pwd' )->plain()
 			);
 		}
 
 		if ( strpos( $sRealname, '\\' ) ) {
 			$aResponse['errors'][] = array(
 				'id' => 'realname',
-				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
+				'message' => wfMessage( 'bs-usermanager-invalid-realname' )->plain()
 			);
 		}
 
 		if ( $sPassword != $sRePassword ) {
 			$aResponse['errors'][] = array(
 				'id' => 'repass',
-				'message' => wfMessage( 'bs-usermanager-pwd_nomatch' )->plain()
+				'message' => wfMessage( 'badretype' )->plain() // MW message
 			);
 		}
 
 		if ( strtolower( $sUsername ) == strtolower( $sPassword ) ) {
 			$aResponse['errors'][] = array(
 				'id' => 'pass',
-				'message' => wfMessage( 'bs-usermanager-user_pwd_match' )->plain()
+				'message' => wfMessage( 'password-name-match' )->plain() // MW message
 			);
 		}
 
@@ -256,7 +259,7 @@ class UserManager extends BsExtensionMW {
 		if ( $oNewUser == null ) { //Should not be neccessary as we check for username validity above
 			$aResponse['errors'][] = array(
 				'id' => 'username',
-				'message' => wfMessage( 'bs-usermanager-invalid_uname' )->plain()
+				'message' => wfMessage( 'bs-usermanager-invalid-uname' )->plain()
 			);
 		}
 
@@ -264,7 +267,7 @@ class UserManager extends BsExtensionMW {
 			if( $oNewUser->getId() != 0 ) {
 				$aResponse['errors'][] = array(
 					'id' => 'username',
-					'message' => wfMessage( 'bs-usermanager-user_exists' )->plain()
+					'message' => wfMessage( 'bs-usermanager-user-exists' )->plain()
 				);
 			}
 
@@ -272,13 +275,13 @@ class UserManager extends BsExtensionMW {
 				//TODO: $oNewUser->getPasswordValidity() returns a message key in case of error. Maybe we sould return this message.
 				$aResponse['errors'][] = array(
 					'id' => 'pass',
-					'message' => wfMessage( 'bs-usermanager-invalid_pwd' )->plain()
+					'message' => wfMessage( 'bs-usermanager-invalid-pwd' )->plain()
 				);
 			}
 		}
 
-		if( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
-			return json_encode( $aResponse );
+		if ( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
+			return FormatJson::encode( $aResponse );
 		}
 
 		$oNewUser->addToDatabase();
@@ -312,14 +315,14 @@ class UserManager extends BsExtensionMW {
 
 		if ( $resDelGroups === false || $resInsGroups === false ) {
 			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db_error' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
 		}
 
 		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 		$ssUpdate->doUpdate();
 
 		$aResponse['success'] = true;
-		$aResponse['message'][] = wfMessage( 'bs-usermanager-user_added' )->plain();
+		$aResponse['message'][] = wfMessage( 'bs-usermanager-user-added' )->plain();
 
 		$_SESSION['wsDomain'] = $tmpDomain;
 
@@ -338,7 +341,7 @@ class UserManager extends BsExtensionMW {
 			)
 		);
 
-		return json_encode( $aResponse );
+		return FormatJson::encode( $aResponse );
 	}
 
 	/**
@@ -352,9 +355,11 @@ class UserManager extends BsExtensionMW {
 	 * @return string json encoded response
 	 */
 	public static function editUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
+		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
+			return FormatJson::encode( array(
 				'success' => false,
 				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
 				) );
@@ -371,34 +376,47 @@ class UserManager extends BsExtensionMW {
 
 		if ( $oUser->getId() === 0 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-id_noexist' )->plain(); // id_noexist = 'This user ID does not exist'
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-idnotexist' )->plain(); // id_noexist = 'This user ID does not exist'
 		}
-		if ( strpos( $sPassword, '\\' ) ) {
+		if ( !empty( $sPassword ) && !$oUser->isValidPassword( $sPassword ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'pass',
-				'message' => wfMessage( 'bs-usermanager-invalid_pwd' )->plain()
-			); // 'invalid_pwd' = 'The supplied password is invalid. Please do not use apostrophes or backslashes.'
+				'message' => wfMessage( 'bs-usermanager-invalid-pwd' )->plain()
+			);
 		}
 		if ( $sPassword !== $sRePassword ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'newpass',
-				'message' => wfMessage( 'bs-usermanager-pwd_nomatch' )->plain()
+				'message' => wfMessage( 'badretype' )->plain() // MW message
 			);
 		}
 		if ( strpos( $sRealname, '\\' ) ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'realname',
-				'message' => wfMessage( 'bs-usermanager-invalid_realname' )->plain()
+				'message' => wfMessage( 'bs-usermanager-invalid-realname' )->plain()
 			);
 		}
-		if ( $sEmail != '' && User::isValidEmailAddr ( $sEmail ) === false ) {
+		if ( $sEmail != '' && Sanitizer::validateEmail( $sEmail ) === false ) {
 			$aAnswer['success'] = false;
 			$aAnswer['errors'][] = array(
 				'id' => 'email',
-				'message' => wfMessage( 'bs-usermanager-invalid_email_gen' )->plain()
+				'message' => wfMessage( 'bs-usermanager-invalid-email-gen' )->plain()
+			);
+		}
+
+		global $wgUser;
+		if (
+			$wgUser->getId() == $oUser->getId() &&
+			in_array( 'sysop', $wgUser->getEffectiveGroups() ) &&
+			!in_array( 'sysop', $aGroups )
+		) {
+			$aAnswer['success'] = false;
+			$aAnswer['errors'][] = array(
+				'id' => 'groups',
+				'message' => wfMessage( 'bs-usermanager-no-self-desysop' )->plain()
 			);
 		}
 
@@ -450,14 +468,14 @@ class UserManager extends BsExtensionMW {
 		if ( $res === false || $resDelGroups === false
 			|| !$resInsGroups || $resERealUser === false ) {
 			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db_error' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
 		}
 
 		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save_successful' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save-successful' )->plain();
 		}
 
-		return json_encode( $aAnswer );
+		return FormatJson::encode( $aAnswer );
 	}
 
 	/**
@@ -467,42 +485,42 @@ class UserManager extends BsExtensionMW {
 	 * @return string json encoded response
 	 */
 	public static function deleteUser( $iUserId ) {
-		if ( wfReadOnly() ) {
-			global $wgReadOnly;
-			return json_encode( array(
-				'success' => false,
-				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() ),
-				'errors' => array(),
-			));
-		}
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
-
 		$aAnswer = array(
 			'success' => true,
 			'errors' => array(),
-			'message' => array(),
+			'message' => array()
 		);
+
+		if ( wfReadOnly() ) {
+			global $wgReadOnly;
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-readonly', $wgReadOnly )->plain();
+		}
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-wikiadmin-notallowed' )->plain();
+		}
 
 		$oUser = User::newFromId( $iUserId );
 
 		if ( $oUser->getId() == 0 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-id_noexist' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-idnotexist' )->plain();
 		}
 
 		if ( $oUser->getId() == 1 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-admin_nodelete' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-admin-nodelete' )->plain();
 		}
 
 		global $wgUser;
 		if ( $oUser->getId() == $wgUser->getId() ) {
 			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-self_nodelete' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-self-nodelete' )->plain();
 		}
 
 		if( !$aAnswer['success'] ) {
-			return json_encode( $aAnswer );
+			return FormatJson::encode( $aAnswer );
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -523,23 +541,97 @@ class UserManager extends BsExtensionMW {
 
 		if ( $oUser->getUserPage()->exists() ) {
 			$oUserPageArticle = new Article( $oUser->getUserPage() );
-			$oUserPageArticle->doDelete( wfMessage( 'bs-usermanager-db_error' )->plain() );
+			$oUserPageArticle->doDelete( wfMessage( 'bs-usermanager-db-error' )->plain() );
 		}
 
 		if ( ( $res === false ) || ( $res1 === false ) || ( $res2 === false ) || ( $res3 === false ) ) {
 			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db_error' )->plain();
-			return json_encode( $aAnswer );
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
+			return FormatJson::encode( $aAnswer );
 		}
 
-		$aAnswer['message'][] = wfMessage( 'bs-usermanager-user_deleted' )->plain();
+		$aAnswer['message'][] = wfMessage( 'bs-usermanager-user-deleted' )->plain();
 
-		return json_encode( $aAnswer );
+		return FormatJson::encode( $aAnswer );
+	}
+
+	public static function setUserGroups( $aUserIds, $aGroups ) {
+		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+
+		$aAnswer = array(
+			'success' => true,
+			'errors' => array(),
+			'message' => array()
+		);
+
+		if ( wfReadOnly() ) {
+			global $wgReadOnly;
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-readonly', $wgReadOnly )->plain();
+		}
+
+		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] =  wfMessage( 'bs-wikiadmin-notallowed' )->plain();
+		}
+
+		global $wgUser;
+		if (
+			in_array( $wgUser->getId(), $aUserIds ) &&
+			in_array( 'sysop', $wgUser->getEffectiveGroups() ) &&
+			!in_array( 'sysop', $aGroups )
+		) {
+			$aAnswer['success'] = false;
+			$aAnswer['errors'][] = array(
+				'id' => 'groups',
+				'message' => wfMessage( 'bs-usermanager-no-self-desysop' )->plain()
+			);
+		}
+
+		if ( $aAnswer['success'] ) {
+			$dbw = wfGetDB( DB_MASTER );
+			$resDelGroups = $dbw->delete( 'user_groups',
+				array(
+					'ug_user' => $aUserIds
+				)
+			);
+
+			$resInsGroups = true;
+			if( is_array( $aGroups ) ) {
+				foreach ( $aGroups as $sGroup ) {
+					if ( in_array( $sGroup, self::$excludegroups ) ) {
+						continue;
+					}
+					foreach( $aUserIds as $iUserId ) {
+						$resInsGroups = $dbw->insert(
+								'user_groups',
+								array(
+									'ug_user' => (int)$iUserId,
+									'ug_group' => addslashes( $sGroup )
+								)
+						);
+						if( $resInsGroups === false ) {
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		if ( $resDelGroups === false || $resInsGroups === false ) {
+			$aAnswer['success'] = false;
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
+		}
+
+		if ( $aAnswer['success'] ) {
+			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save-successful' )->plain();
+		}
+
+		return FormatJson::encode( $aAnswer );
 	}
 
 	public function getForm( $firsttime = false ) {
 		$this->getOutput()->addModules( 'ext.bluespice.userManager' );
 		return '<div id="bs-usermanager-grid"></div>';
 	}
-
 }

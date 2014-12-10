@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente",
+			"Nemo bis"
+		]
+	},
+	"bs-flexiskin-desc": "Adiciona funcionalidade para criar temas",
+	"bs-flexiskin-error-skinexists": "Já existe um tema com este nome.",
+	"bs-flexiskin-error-fail-add-skin": "Um tema não pôde ser criado: $1.",
+	"bs-flexiskin-error-get-config": "Não foi possível carregar configuração: $1.",
+	"bs-flexiskin-error-delete-skin": "Não foi possível eliminar o tema: $1.",
+	"bs-flexiskin-not-allowed": "Não é permitido o acesso a esta página.",
+	"bs-flexiskin-pref-active": "Tema ativo:",
+	"bs-flexiskin-pref-logo": "Logótipo:",
+	"bs-flexiskin-labelname": "Nome",
+	"bs-flexiskin-labeldesc": "Descrição",
+	"bs-flexiskin-headergeneral": "Geral",
+	"bs-flexiskin-confirmdeleteskin": "Tem a certeza que pretende eliminar este tema?",
+	"bs-flexiskin-titleaddskin": "Adicionar tema",
+	"bs-flexiskin-headeractive": "Ativo",
+	"bs-flexiskin-labelbgcolor": "Cor de fundo",
+	"bs-flexiskin-headerheader": "Cabeçalho",
+	"bs-flexiskin-labellogoupload": "Logótipo",
+	"bs-flexiskin-labelbackgroundupload": "Imagem de fundo",
+	"bs-flexiskin-labelrepeatbackground": "Repetir a imagem de fundo",
+	"bs-flexiskin-labelcustombgcolor": "Cor personalizada",
+	"bs-flexiskin-headerposition": "Posição e tamanho",
+	"bs-flexiskin-labelcontent": "Posição do conteúdo",
+	"bs-flexiskin-error-nameempty": "Por favor, introduza um nome válido para o tema que pretende criar."
+}

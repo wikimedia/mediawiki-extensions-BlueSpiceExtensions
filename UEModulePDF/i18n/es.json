@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe"
+		]
+	},
+	"bs-uemodulepdf-desc": "Permite que MediaWiki exporte páginas en el formato PDF",
+	"prefs-uemodulepdf": "Módulo universal de exportación PDF",
+	"uemodulepdf": "Módulo universal de exportación PDF",
+	"bs-uemodulepdf-pref-pdfserviceurl": "URL del motor:",
+	"bs-uemodulepdf-pref-templatepath": "Plantilla estándar:",
+	"bs-uemodulepdf-pref-suppressns": "Ocultar el prefijo de espacio de nombres en el PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF de una sola página",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportar esta página como PDF.",
+	"bs-uemodulepdf-overview-title": "Formato de documento portátil (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exporta páginas (páginas especiales y páginas de contenido) a PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "Estado del motor",
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponible",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "no disponible",
+	"soap-service-url-not-valid": "La URL del servicio web generador de PDF no es válida. Comprueba la configuración del wiki.",
+	"soap-service-url-not-set": "La URL del servicio web generador de PDF no está establecida. Comprueba la configuración del wiki.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Interfaz web del motor"
+}

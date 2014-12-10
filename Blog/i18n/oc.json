@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"prefs-blog": "Blog",
+	"bs-blog-comments": "Comentaris",
+	"bs-blog-read-more": "Per ne saber mai",
+	"bs-blog-trackback": "Retroligam",
+	"bs-blog-permalink": "Ligam permanent",
+	"bs-blog-show-all": "Afichar totas las entradas",
+	"bs-blog-form-inline-text": "Títol…",
+	"bs-blog-form-button-text": "Crear",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-sortby": "Triar per :"
+}

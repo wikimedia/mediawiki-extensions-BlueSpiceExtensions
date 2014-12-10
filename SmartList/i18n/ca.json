@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edustus"
+		]
+	},
+	"bs-smartlist-comment": "Comentari: $1.",
+	"bs-smartlist-pref-sort": "Ordenar per:",
+	"bs-smartlist-day": "Dia",
+	"bs-smartlist-week": "Setmana",
+	"bs-smartlist-month": "Mes",
+	"bs-smartlist-lastedits": "Les meves edicions"
+}

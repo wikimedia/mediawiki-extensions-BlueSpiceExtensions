@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "構文",
+	"bs-formattinghelp-help-bold": "太字",
+	"bs-formattinghelp-help-italic": "斜体",
+	"bs-formattinghelp-help-linebreak": "改行",
+	"bs-formattinghelp-help-link": "内部リンク",
+	"bs-formattinghelp-help-link-alt": "代替テキスト付きの内部リンク",
+	"bs-formattinghelp-help-extlink": "外部リンク",
+	"bs-formattinghelp-help-hr": "水平線",
+	"bs-formattinghelp-help-template": "テンプレート",
+	"bs-formattinghelp-help-templatename": "テンプレート名"
+}

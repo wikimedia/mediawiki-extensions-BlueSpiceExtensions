@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"prefs-pagetemplates": "Predefinições",
+	"bs-pagetemplates-empty-page": "Página vazia",
+	"bs-pagetemplatesadmin-label": "Predefinições",
+	"bs-pagetemplates-tpl-desc-toolong": "A descrição é demasiado longa. Por favor, use um máximo de 255 carateres.",
+	"bs-pagetemplates-tpl-label-toolong": "O rótulo é demasiado longo. Por favor, use um máximo de 255 carateres.",
+	"bs-pagetemplates-tpl-label-empty": "Por favor, introduza um rótulo.",
+	"bs-pagetemplates-tpl-name-toolong": "O nome da predefinição é demasiado longo. Por favor, use um máximo de 255 carateres.",
+	"bs-pagetemplates-tpl-name-empty": "Por favor, insira um nome para a predefinição.",
+	"bs-pagetemplates-tpl-added": "A predefinição foi adicionada.",
+	"bs-pagetemplates-invalid_pfx": "O prefixo é inválido.",
+	"bs-pagetemplates-tpl-edited": "As alterações foram gravadas.",
+	"bs-pagetemplates-dberror": "Ocorreu um erro na base de dados.",
+	"bs-pagetemplates-tpl-deleted": "A predefinição foi eliminada.",
+	"bs-pagetemplates-general-section": "Geral",
+	"bs-pagetemplates-pref-excludens": "Não mostrar predefinições nestes domínios:",
+	"bs-pagetemplates-headerlabel": "Etiqueta",
+	"bs-pagetemplates-headertargetnamespace": "Domínio",
+	"bs-pagetemplates-tipeditdetails": "Editar predefinição",
+	"bs-pagetemplates-tipdeletetemplate": "Eliminar {{PLURAL:$1|predefinição|predefinições}}",
+	"bs-pagetemplates-tipaddtemplate": "Adicionar predefinição",
+	"bs-pagetemplates-label-desc": "Descrição",
+	"bs-pagetemplates-label-targetns": "Domínio",
+	"bs-pagetemplates-label-article": "Predefinição",
+	"bs-pagetemplates-confirm-deletetpl": "Tem a certeza que pretende eliminar {{PLURAL:$1|esta predefinição|estas predefinições}}?",
+	"bs-pagetemplates-remove-message-unknown": "Ocorreu um erro inesperado, por favor tente novamente.",
+	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|A seguinte predefinição foi eliminada|As seguintes predefinições foram eliminadas}}: $2",
+	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|A seguinte predefinição não pode ser eliminada|As seguintes predefinições não podem ser eliminadas}}: $2 (Motivo: $3)"
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-blog-desc": "Прикажува список на страници во стил на блог",
+	"prefs-blog": "Блог",
+	"bs-blog-no-entries": "Нема ставки во блогот.",
+	"bs-blog-comments": "Коментари",
+	"bs-blog-read-more": "Прочитајте повеќе",
+	"bs-blog-trackback": "Проследување",
+	"bs-blog-permalink": "Постојана врска",
+	"bs-blog-show-all": "Прикажи ги сите ставки",
+	"bs-blog-form-inline-text": "Наслов ...",
+	"bs-blog-form-title-text": "Создај нова ставка во блогот",
+	"bs-blog-form-button-text": "Создај",
+	"bs-blog-blog": "Блог",
+	"bs-blog-pref-moreinnewwindow": "Отворај нов прозорец за читање повеќе",
+	"bs-blog-pref-newentryfieldposition": "Положба на образецот за новиот блоговски запис:",
+	"bs-blog-pref-showall": "Прикажувај врска за сите ставки",
+	"bs-blog-pref-showinfo": "Прикажувај информации за ставката",
+	"bs-blog-pref-showlimit": "Број на блоговски записи:",
+	"bs-blog-pref-shownewentryfield": "Прикажувај образец за нов блоговски запис",
+	"bs-blog-pref-showpermalink": "Прикажувај постојана врска",
+	"bs-blog-pref-sortby": "Подреди по:",
+	"bs-blog-pref-imagerendermode": "Прикажувај ги сликите како:",
+	"bs-blog-pref-imagefloatdirection": "Тек на текстот: Положба на сликата",
+	"bs-blog-pref-maxentrycharacters": "Број на зборови по ставка:",
+	"bs-blog-tag-blog-desc": "Прикажи блоговски записи на секоја страница"
+}

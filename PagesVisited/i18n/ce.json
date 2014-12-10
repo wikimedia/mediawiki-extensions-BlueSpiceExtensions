@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-pagesvisited-desc": "Хьайн хьаьжанчу агӀонийн могӀам ба йиш хуьлуьйту.",
+	"prefs-pagesvisited": "Хьаьжина агӀонаш",
+	"bs-pagesvisited-widget-title": "Хьаьжина агӀонаш",
+	"bs-pagesvisited-error-nsnotvalid": "Нийса йоцу цӀерийн меттиг{{PLURAL:$1||s}} <code>$2</code> {{PLURAL:$1|is|are}}.",
+	"bs-pagesvisited-pref-widgetlimit": "ДӀаяздарийн доза тохар:",
+	"bs-pagesvisited-pref-widgetns": "ЦӀерийн ана:",
+	"bs-pagesvisited-pref-widgetsortodr": "Къастам бе:",
+	"bs-pagesvisited-pref-sort-time": "Хан",
+	"bs-pagesvisited-pref-sort-pagename": "Корта",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Хьо хьаьжна агӀонийн могӀам гойту."
+}

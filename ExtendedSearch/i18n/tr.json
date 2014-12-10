@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-extendedsearch-error": "Hata:",
+	"bs-extendedsearch-facet-category": "Kategori",
+	"bs-extendedsearch-facet-editors": "Yazarlar",
+	"bs-extendedsearch-finished": "Tamamlandı",
+	"bs-extendedsearch-nosearchterm": "Lütfen bir arama terimi girin.",
+	"bs-extendedsearch-search-help-multiselect": "Birden çok öğe seçmek için CTRL tuşunu basılı tutun.",
+	"bs-extendedsearch-server-not-available": "Arama sunucusu kullanılabilir değil.",
+	"bs-extendedsearch-sort-by": "Sıralama ölçütü:",
+	"bs-extendedsearch-sort-relevance": "Alaka düzeyi",
+	"bs-extendedsearch-sort-title": "Başlık",
+	"bs-extendedsearch-sort-ts": "Zaman",
+	"bs-extendedsearch-pref-scope-text": "Tam metin",
+	"bs-extendedsearch-about-to-start": "Başlatılıyor...",
+	"bs-extendedsearchadmin-label": "Arama seçenekleri",
+	"bs-extendedsearch-status": "Durum",
+	"bs-extendedsearch-statistics": "İstatistikler",
+	"bs-extendedsearch-warning": "Uyarı",
+	"bs-extendedsearch-did-you-mean": "Bunu mu demek istediniz \"$1\"?",
+	"bs-extendedsearch-morelikethis": "Benzer sayfalar",
+	"bs-extendedsearch-recentsearchterms": "Son arama terimleri",
+	"bs-extendedsearch-redirect": "Şuradan yönlendirildi: $1"
+}

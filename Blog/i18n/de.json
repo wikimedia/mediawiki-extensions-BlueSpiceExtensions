@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-blog-desc": "Seiten werden in chronologischer Reihenfolge als Blog-Einträge dargestellt",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Es sind keine Blog-Einträge vorhanden.",
+	"bs-blog-comments": "Kommentare",
+	"bs-blog-read-more": "Weiterlesen",
+	"bs-blog-trackback": "Trackback",
+	"bs-blog-permalink": "Permalink",
+	"bs-blog-show-all": "Alle Beiträge anzeigen",
+	"bs-blog-form-inline-text": "Titel ...",
+	"bs-blog-form-title-text": "Neuen Blogeintrag verfassen",
+	"bs-blog-form-button-text": "Erstellen",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Bei Klick auf weiterlesen ein neues Fenster öffnen",
+	"bs-blog-pref-newentryfieldposition": "Position des Formulars für neue Einträge:",
+	"bs-blog-pref-showall": "Link alle anzeigen darstellen",
+	"bs-blog-pref-showinfo": "Informationen über den Blogeintrag anzeigen",
+	"bs-blog-pref-showlimit": "Anzahl darzustellender Blog-Einträge:",
+	"bs-blog-pref-shownewentryfield": "Formular für neue Einträge anzeigen",
+	"bs-blog-pref-showpermalink": "Link Permalink anzeigen",
+	"bs-blog-pref-sortby": "Sortierung:",
+	"bs-blog-pref-imagerendermode": "Bilder anzeigen als:",
+	"bs-blog-pref-imagefloatdirection": "Textumfluss: Bildposition",
+	"bs-blog-pref-maxentrycharacters": "Anzahl darzustellender Wörter:",
+	"bs-blog-tag-blog-desc": "Zeigt Blog-Einträge auf jeder beliebigen Seite an."
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-whoisonline-desc": "显示当前在线的用户列表",
+	"bs-whoisonline-nousers": "没人登录。",
+	"bs-whoisonline-widget-title": "谁在线？",
+	"prefs-whoisonline": "谁在线？",
+	"bs-whoisonline-pref-limitcount": "最多显示的用户人数：",
+	"bs-whoisonline-pref-orderby": "排序方式：",
+	"bs-whoisonline-pref-maxidletime": "以秒为单位计时，直到有用户被标记脱机：",
+	"bs-whoisonline-pref-orderby-time": "运行总时",
+	"bs-whoisonline-pref-orderby-name": "名称",
+	"bs-whoisonline-pref-interval": "每秒更新间隔：",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "显示当前登录用户的人数。",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "显示飞行视觉的小型登录用户列表。\n有效属性：\n;<code>anchortext</code>：您希望呈现飞行的附加文字。"
+}

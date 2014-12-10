@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Leli Forte"
+		]
+	},
+	"bs-formattinghelp-desc": "Turi għajnuna għall-ifformattjar tat-test",
+	"bs-formattinghelp-formatting": "Għajnuna għall-format",
+	"bs-formattinghelp-help-syntax": "Sintassi",
+	"bs-formattinghelp-help-example-text": "Test",
+	"bs-formattinghelp-help-bold": "Tipa ħoxna",
+	"bs-formattinghelp-help-italic": "Tipa korsiva",
+	"bs-formattinghelp-help-whitespace": "Whitespace",
+	"bs-formattinghelp-help-nowiki": "Tippermettix il-format",
+	"bs-formattinghelp-help-color": "Test ikkulurit",
+	"bs-formattinghelp-help-headline": "Titlu",
+	"bs-formattinghelp-help-linebreak": "Qtugħ tal-linja",
+	"bs-formattinghelp-help-ul": "Lista bla ordni",
+	"bs-formattinghelp-help-numberedlist": "Lista numerata",
+	"bs-formattinghelp-help-link": "Ħolqa interna",
+	"bs-formattinghelp-help-link-alt": "Ħolqa interna b'test alternattiv",
+	"bs-formattinghelp-help-caption": "Deskrizzjoni",
+	"bs-formattinghelp-help-extlink": "Ħolqa esterna",
+	"bs-formattinghelp-help-hr": "Linja orizzontali",
+	"bs-formattinghelp-help-template": "Mudell",
+	"bs-formattinghelp-help-templatename": "Isem tal-mudell"
+}

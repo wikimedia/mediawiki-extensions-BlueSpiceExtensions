@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-shoutbox-message": "Verfassen Sie einen neuen Kommentar...",
+	"bs-shoutbox-archive-failure": "Beim Löschen des Eintrags ist ein Fehler aufgetreten, bitte versuchen Sie es erneut.",
+	"bs-shoutbox-confirm-text": "Möchten Sie diesen Eintrag wirklich löschen?",
+	"bs-shoutbox-entermessage": "Bitte geben Sie eine Nachricht ein.",
+	"bs-shoutbox-too-early": "Bitte warten Sie ein paar Sekunden, bevor Sie den nächsten Eintrag abschicken."
+}

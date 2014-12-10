@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-flexiskin-label": "Abilhatge",
+	"bs-flexiskin-defaultname": "Per defaut",
+	"prefs-flexiskin": "Abilhatge",
+	"bs-flexiskin-pref-active": "Abilhatge actiu :",
+	"bs-flexiskin-pref-logo": "Lògo :",
+	"bs-flexiskin-labelname": "Nom",
+	"bs-flexiskin-labeldesc": "Descripcion",
+	"bs-flexiskin-headergeneral": "General",
+	"bs-flexiskin-titleaddskin": "Apondre un abilhatge",
+	"bs-flexiskin-labelskins": "Modèl",
+	"bs-flexiskin-headeractive": "Actiu",
+	"bs-flexiskin-labelbgcolor": "Color de fons",
+	"bs-flexiskin-headerheader": "Entèsta",
+	"bs-flexiskin-labellogoupload": "Lògo",
+	"bs-flexiskin-labelbackgroundupload": "Imatge de fons",
+	"bs-flexiskin-no-repeat": "sens repeticion",
+	"bs-flexiskin-repeat-x": "repeticion orizontala",
+	"bs-flexiskin-repeat-y": "repeticion verticala",
+	"bs-flexiskin-repeat": "repeticion orizontala e verticala",
+	"bs-flexiskin-labelrepeatbackground": "Repetir l’imatge de fons",
+	"bs-flexiskin-labelcustombgcolor": "Color personalizada",
+	"bs-flexiskin-headerposition": "Posicion e talha",
+	"bs-flexiskin-labelnavigation": "Posicion de la navigacion",
+	"bs-flexiskin-labelcontent": "Posicion del contengut",
+	"bs-flexiskin-left": "esquèrra",
+	"bs-flexiskin-right": "drecha",
+	"bs-flexiskin-center": "centre",
+	"bs-flexiskin-labelwidth": "Largor totala (en pixèls)",
+	"bs-flexiskin-labelfullwidth": "Largor maximala"
+}

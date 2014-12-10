@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Robby",
+			"Liuxinyu970226",
+			"Shirayuki"
+		]
+	},
+	"bs-pagesvisited-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of pages visited extension",
+	"prefs-pagesvisited": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for pages visited section in preferences.\n{{Identical|Pages visited}}",
+	"bs-pagesvisited-widget-title": "Widget headline for pages visited\n {{Identical|Pages visited}}",
+	"bs-pagesvisited-error-nsnotvalid": "Text for given namespaces <code>$2</code> are not valid.\n\nParameters:\n* $1 - the number of namespaces for PLURAL distinction\n* $2 - the namespace or comma separated list of namespaces",
+	"bs-pagesvisited-pref-widgetlimit": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for limit of entries:",
+	"bs-pagesvisited-pref-widgetns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for namespaces:\n{{Identical|Namespace}}",
+	"bs-pagesvisited-pref-widgetsortodr": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by:\n{{Identical|Sort by}}",
+	"bs-pagesvisited-pref-sort-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for time\n{{Identical|Time}}",
+	"bs-pagesvisited-pref-sort-pagename": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for title\n{{Identical|Title}}",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Used in InsertMagic extension, tag description for show a list of pages you have visited.\n{{Related|Bs-tag-desc}}"
+}

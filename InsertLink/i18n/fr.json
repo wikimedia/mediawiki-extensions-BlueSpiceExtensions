@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Kc kennylau",
+			"Wladek92"
+		]
+	},
+	"bs-insertlink-desc": "Boîte de dialogue pour saisir un lien",
+	"bs-insertlink": "Insérer un lien",
+	"bs-insertlink-button-title": "Insérer/modifier un lien",
+	"bs-insertlink-dialog-title": "Insérer un lien",
+	"bs-insertlink-tab-wiki-page": "Page wiki",
+	"bs-insertlink-tab-ext-link": "Lien externe",
+	"bs-insertlink-tab-email": "Lien de courriel",
+	"bs-insertlink-tab-ext-file": "Lien vers un fichier",
+	"bs-insertlink-label-page": "Page",
+	"bs-insertlink-label-link": "Lien",
+	"bs-insertlink-label-mail": "Adresse de courriel",
+	"bs-insertlink-label-description": "Description",
+	"bs-insertlink-label-file": "Fichier",
+	"bs-insertlink-label-searchfile": "Recherche …",
+	"bs-insertlink-select-a-page": "Choisir la cible …",
+	"bs-insertlink-select-a-namespace": "(Pages)",
+	"bs-insertlink-empty-field-text": "Pour insérer un lien, vous devez spécifier une destination.",
+	"bs-insertlink-no-applet": "L'applet n'a pas pu être chargé. Veuillez vérifier votre installation de Java."
+}

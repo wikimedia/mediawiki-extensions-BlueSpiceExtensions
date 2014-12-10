@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-smartlist-recent-changes": "Керла нисдарш",
+	"bs-smartlist-no-entries": "ХӀума ца карийна.",
+	"bs-smartlist-comment": "Къамел: $1.",
+	"bs-smartlist-pref-comments": "Гайта къамел",
+	"bs-smartlist-pref-namespaces": "ЦӀерийн ана:",
+	"bs-smartlist-pref-categories": "Категореш:",
+	"bs-smartlist-pref-period": "Мур:",
+	"bs-smartlist-pref-order": "Къастам бе:",
+	"bs-smartlist-pref-sort": "Къастам бе:",
+	"bs-smartlist-sort-asc": "йоккха хиларца",
+	"bs-smartlist-sort-desc": "кӀезиг хиларца",
+	"bs-smartlist-day": "Де",
+	"bs-smartlist-week": "КӀира",
+	"bs-smartlist-month": "Бутт",
+	"bs-smartlist-time": "Хан",
+	"bs-smartlist-title": "ЦӀе",
+	"bs-smartlist-mosteditedpages": "Сих-сиха тайо агӀонаш",
+	"bs-smartlist-lastedits": "Сан нисдарш",
+	"bs-smartlist-noedits": "Нисдарш цакарий"
+}

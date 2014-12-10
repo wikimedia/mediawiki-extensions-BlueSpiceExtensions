@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-statebar-desc": "Fornisce una barra di stato",
+	"prefs-statebar": "Barra di stato",
+	"bs-statebar-pref-show": "Visualizza barra di stato",
+	"bs-statebar-viewtoggler": "DETTAGLI",
+	"bs-statebar-viewtoggler-tooltip": "Mostra informazioni dettagliate",
+	"bs-statebar-switch-description": "Nascondi la barra di stato in questa pagina.",
+	"bs-statebar-ajax-nobodyviews": "Nessuna informazione disponibile."
+}

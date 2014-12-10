@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix",
+			"Lokal Profil",
+			"Jopparn",
+			"Magol"
+		]
+	},
+	"bs-blog-desc": "Visar en lista med sidor i blogg-stil",
+	"prefs-blog": "Blogg",
+	"bs-blog-no-entries": "Det finns inga blogginlägg.",
+	"bs-blog-comments": "Kommentarer",
+	"bs-blog-read-more": "Läs mer",
+	"bs-blog-trackback": "Trackback",
+	"bs-blog-permalink": "Permanent länk",
+	"bs-blog-show-all": "Visa alla inlägg",
+	"bs-blog-form-inline-text": "Titel ...",
+	"bs-blog-form-title-text": "Skapa nytt blogginlägg",
+	"bs-blog-form-button-text": "Skapa",
+	"bs-blog-blog": "Blogg",
+	"bs-blog-pref-moreinnewwindow": "Öppna nytt fönster för att läsa mer",
+	"bs-blog-pref-newentryfieldposition": "Position för formuläret för ett nytt blogginlägg:",
+	"bs-blog-pref-showall": "Visa länk för alla poster",
+	"bs-blog-pref-showinfo": "Visa information om inlägget",
+	"bs-blog-pref-showlimit": "Antal blogginlägg:",
+	"bs-blog-pref-shownewentryfield": "Visa formulär för ny bloggpost",
+	"bs-blog-pref-showpermalink": "Visa länken för permanent länk",
+	"bs-blog-pref-sortby": "Sortera efter:",
+	"bs-blog-pref-imagerendermode": "Visa bilder som:",
+	"bs-blog-pref-imagefloatdirection": "Textflöde: Bildposition",
+	"bs-blog-pref-maxentrycharacters": "Antal ord per inlägg:",
+	"bs-blog-tag-blog-desc": "Visa blogginlägg på varje sida."
+}

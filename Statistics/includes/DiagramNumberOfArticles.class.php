@@ -74,7 +74,7 @@ class BsDiagramNumberOfArticles extends BsDiagram {
 									)
 								)
 								AND @BsFilterCategory";
-		$this->sListLabel = array( wfMsg( 'bs-statistics-label-article'), wfMsg( 'bs-statistics-label-creator'));
+		$this->sListLabel = array( wfMsg( 'bs-statistics-label-page'), wfMsg( 'bs-statistics-label-creator'));
 		$this->sMode = BsDiagram::MODE_AGGREGATED;
 
 		$this->addFilter( new BsFilterNamespace( $this, array( 0 ) ) );

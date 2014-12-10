@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"bs-insertmagic-notoc": "Fsheh tabelën e përmbajtjeve.",
+	"bs-insertmagic-servername": "Emri i Domain.",
+	"bs-insertmagic-revisionuser": "Emri i përdoruesit i cili i ka bërë ndryshimin më të fundit faqes,ose përdoruesi aktual duke parashikuar një ndryshim.",
+	"bs-insertmagic-type-tags": "Etiketa",
+	"bs-insertmagic-type-variables": "Variablat",
+	"bs-insertmagic-label-first": "1. Zgjidhni tag apo fjalë magjike",
+	"bs-insertmagic-label-second": "2. Modifiko kodin",
+	"bs-insertmagic-label-desc": "Përshkrim"
+}

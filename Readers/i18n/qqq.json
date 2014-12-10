@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226",
+			"Ата",
+			"Shirayuki"
+		]
+	},
+	"bs-readers-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of readers extension.",
+	"prefs-readers": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for readers section in preferences.\n{{Identical|Reader}}",
+	"bs-readers-title": "Headline below content for readers section\n*$1 is the number of readers for PLURAL distinction\n*$2 is the username of the user - use for GENDER distinction (singular only)\n{{Identical|Reader}}",
+	"readers-user": "Special page title for pages {{GENDER:$1|read}} by: $1\n\n* $1 is the username - use for GENDER distinction",
+	"readers": "Special page title for readers of \"$1\"\n*$1 is the page name",
+	"bs-readers-contentactions-label": "Anchor text for display readers\n{{Identical|Display readers}}",
+	"bs-readers-pagenotexists": "Error text on special page for page does not exist.",
+	"bs-readers-pref-active": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for activate readers",
+	"bs-readers-pref-numofreaders": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for number of readers to display:",
+	"bs-readers-emptyinput": "Error text on special page for no page has been provided.",
+	"bs-readers-header-username": "Column headline for username\n{{Identical|Username}}",
+	"bs-readers-header-readerspath": "Used on special page, headline for reader\n{{Identical|Reader}}",
+	"bs-readers-header-ts": "Column headline for \"time and date\".\n{{Identical|Date}}"
+}

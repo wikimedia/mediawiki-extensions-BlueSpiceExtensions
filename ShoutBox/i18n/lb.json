@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-shoutbox-message": "Schreift eng nei Bemierkung...",
+	"bs-shoutbox-shout": "Schécken",
+	"bs-shoutbox-no-entries": "Nach näischt hei.",
+	"bs-shoutbox-loading": "Lueden...",
+	"bs-shoutbox-pref-committimeinterval": "Zäit tëscht zwee Messagen (a Sekonnen):",
+	"bs-shoutbox-pref-maxmessagelength": "Maximal Längt vun engem Message:",
+	"bs-shoutbox-pref-numberofshouts": "Zuel vun de Messagen déi gewise ginn:",
+	"bs-shoutbox-pref-showuser": "Auteur vum Message weisen",
+	"bs-shoutbox-switch-description": "Verstoppt Shoutbox op dëser Säit",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|Zeechen}} iwwreg",
+	"bs-shoutbox-confirm-title": "Confirméieren",
+	"bs-shoutbox-entermessage": "Gitt w.e.g. e Message an."
+}

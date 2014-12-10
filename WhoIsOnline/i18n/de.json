@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-whoisonline-desc": "Zeigt eine Liste der User an, die momentan online sind",
+	"bs-whoisonline-nousers": "Es ist niemand angemeldet.",
+	"bs-whoisonline-widget-title": "Wer ist online?",
+	"prefs-whoisonline": "Wer ist online?",
+	"bs-whoisonline-pref-limitcount": "Maximale Zahl der angezeigten Nutzer:",
+	"bs-whoisonline-pref-orderby": "Sortieren nach:",
+	"bs-whoisonline-pref-maxidletime": "Zeit, nach der ein inaktiver Benutzer nicht mehr als Online angezeigt wird (Sekunden)",
+	"bs-whoisonline-pref-orderby-time": "Onlinezeit",
+	"bs-whoisonline-pref-orderby-name": "Name",
+	"bs-whoisonline-pref-interval": "Aktualisierungsintervall in Sekunden:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Gibt die Anzahl der Benutzer aus, die gerade angemeldet sind.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Stellt eine aufklappbare Liste der gerade angemeldeten Benutzer da.\n\nVerfügbare Parameter:\n;<code>anchortext</code>: Der Text, an dem die Liste ausklappt."
+}

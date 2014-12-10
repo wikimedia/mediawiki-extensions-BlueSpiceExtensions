@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Додава функција на прилагодлив подвлекувач на синтакса",
+	"prefs-csyntaxhighlight": "Подлекувач на синтакса",
+	"bs-csyntaxhighlight-pref-theme": "Изглед:",
+	"bs-csyntaxhighlight-pref-gutter": "Прикажувај броеви на редовите",
+	"bs-csyntaxhighlight-pref-autolinks": "Сврзувај URL-а",
+	"bs-csyntaxhighlight-pref-toolbar": "Прикажувај алатник"
+}

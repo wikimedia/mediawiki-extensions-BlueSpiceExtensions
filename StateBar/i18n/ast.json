@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-statebar-desc": "Ufre una barra d'estáu",
+	"prefs-statebar": "Barra d'estáu",
+	"bs-statebar-pref-sortbodyvars": "Orde del cuerpu:",
+	"bs-statebar-pref-sorttopvars": "Orde superior:",
+	"bs-statebar-pref-show": "Amosar la barra d'estáu",
+	"bs-statebar-viewtoggler": "DETALLES",
+	"bs-statebar-viewtoggler-tooltip": "Amosar información detallada",
+	"bs-statebar-switch-description": "Tapecer la barra d'estáu d'esta páxina.",
+	"bs-statebar-ajax-nobodyviews": "Nun hai información disponible."
+}

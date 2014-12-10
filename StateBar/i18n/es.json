@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Ihojose",
+			"Themasterriot"
+		]
+	},
+	"bs-statebar-desc": "Proporciona una barra de estado",
+	"prefs-statebar": "Barra de estado",
+	"bs-statebar-pref-sortbodyvars": "Orden de cuerpo:",
+	"bs-statebar-pref-sorttopvars": "Orden superior:",
+	"bs-statebar-pref-show": "Mostrar barra de estado",
+	"bs-statebar-viewtoggler": "DETALLES",
+	"bs-statebar-viewtoggler-tooltip": "Mostrar información detallada",
+	"bs-statebar-switch-description": "Ocultar la barra de estado de esta página.",
+	"bs-statebar-ajax-nobodyviews": "No hay información disponible."
+}

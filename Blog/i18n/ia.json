@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-blog-desc": "Monstra un lista de paginas in stilo de blog.",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Il non ha entratas de blog.",
+	"bs-blog-comments": "Commentos",
+	"bs-blog-read-more": "Leger plus",
+	"bs-blog-trackback": "Retroligamine",
+	"bs-blog-permalink": "Permaligamine",
+	"bs-blog-show-all": "Monstrar tote le entratas",
+	"bs-blog-form-inline-text": "Titulo ...",
+	"bs-blog-form-title-text": "Crear nove entrata de blog",
+	"bs-blog-form-button-text": "Crear",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Aperir un nove fenestra pro leger plus",
+	"bs-blog-pref-newentryfieldposition": "Position del formulario pro nove entrata de blog:",
+	"bs-blog-pref-showall": "Monstrar le ligamine a tote le entratas",
+	"bs-blog-pref-showinfo": "Monstrar information sur le entrata",
+	"bs-blog-pref-showlimit": "Numero de entratas de blog:",
+	"bs-blog-pref-shownewentryfield": "Monstrar le formulario pro nove entrata de blog",
+	"bs-blog-pref-showpermalink": "Monstrar ligamine a permaligamine",
+	"bs-blog-pref-sortby": "Ordinar per:",
+	"bs-blog-pref-imagerendermode": "Monstrar imagines como:",
+	"bs-blog-pref-maxentrycharacters": "Numero de parolas per entrata:",
+	"bs-blog-tag-blog-desc": "Monstrar entratas de blog in cata pagina."
+}

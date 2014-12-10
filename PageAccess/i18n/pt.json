@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fúlvio",
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-pageaccess-desc": "Controla o acesso em nível de página",
+	"bs-pageaccess-error-no-groups-given": "Nenhum grupo especificado.",
+	"bs-pageaccess-error-not-member-of-given-groups": "Não é um membro dos grupos citados. A gravação foi desativada a fim de evitar o bloqueio do seu acesso.",
+	"bs-pageaccess-error-included-forbidden-template": "Tentou utilizar a predefinição \"$1\", ao qual não tem acesso para leitura. A gravação foi desativada a fim de evitar o bloqueio do seu acesso.",
+	"bs-pageaccess-tag-groups-desc": "Especifique os grupos que devem ter acesso exclusivo a esta página. Separe os grupos com vírgula.",
+	"pageaccess": "Páginas asseguradas pela PageAccess"
+}

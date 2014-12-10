@@ -1,9 +1,9 @@
 <?php
 /**
  * This is the Preferences class.
- * 
+ *
  * The Preferences offers an easy way to manage the settings of BlueSpice.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,13 +17,12 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    2.22.0
-
  * @package    Bluespice_Extensions
  * @subpackage Preferences
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -34,7 +33,7 @@
 // Last review MRG (01.07.11 13:56)
 
 /* Changelog
- * 
+ *
  */
 
 /**
@@ -54,7 +53,7 @@ class BsPreferences extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Preferences',
-			EXTINFO::DESCRIPTION => 'Offers the possibility to admins, to configurate the whole wiki from a single SpecialPage',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-preferences-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -74,13 +73,14 @@ class BsPreferences extends BsExtensionMW {
 
 	/**
 	 * returns the formular for Preferences
-	 * @return string the formular string 
+	 * @return string the formular string
 	 */
 	public function getForm() {
 		if ( wfReadOnly() ) {
 			throw new ReadOnlyError;
 		}
 
+		$this->getOutput()->addModuleScripts( 'ext.bluespice.preferences' );
 		$this->getOutput()->addHTML( '<br />' );
 
 		$oRequest = $this->getRequest();
@@ -121,66 +121,43 @@ class BsPreferences extends BsExtensionMW {
 				continue;
 			}
 			if ( $options & BsConfig::NO_DEFAULT ) continue;
-			$adapter = strtoupper( $var->getAdapter() );
 			$extension = $var->getI18nExtension() ? $var->getI18nExtension() : 'BASE';
-			$aSortedVariables[$adapter][$extension][] = $var;
+			$aSortedVariables[$extension][] = $var;
 		}
 
-		foreach ( $aSortedVariables as $sAdapterName => $aExtensions ) {
+		foreach ( $aSortedVariables as $sExtensionName => $aExtensions ) {
 			if ( !count( $aExtensions ) ) continue;
-			// TODO MRG (01.07.11 14:06): Das versteh ich nicht. Was ist denn hier gemeint? Und warum hardgecoded?
-			// TODO SU (03.07.11 16:58): @MRG Das dient der Sortierung im Formular.
-			// Jede Sektion oder Untersektion ist ein Fieldset und bluespice deshalb, weil es ein BlueSpice-
-			// Formluar ist. bluespice ist in diesem Fall die Wurzel aller Fieldsets.
-			$sBaseSection = 'bluespice/' . $sAdapterName;
 
-			foreach ( $aExtensions as $sExtensionName => $aSettings ) {
+			foreach ( $aExtensions as $oVariable ) {
 				// if continue, then $oAdapterSetView is not added to output
-				if ( !count( $aSettings ) ) continue;
-				$sSection = $sBaseSection . '/' . $sExtensionName;
+				if ( !count( $oVariable ) ) continue;
+				$sSection = $sExtensionName;
 				$oExtension = BsExtensionManager::getExtension( $sExtensionName );
+				$field = $oVariable->getFieldDefinition( $sSection );
 
-				foreach ( $aSettings as $oVariable ) {
-					$field = array(
-						'type' => $oVariable->getFieldMapping(),
-						'label-message' => $oVariable->getI18nName(), // a system message
-						'section' => $sSection,
-						'default' => $oVariable->getValue()
-					);
-					// TODO MRG (01.07.11 14:08): Title und message ist für den Dialog?
-					// TODO SU (03.07.11 17:00): @MRG ja genau
-					if ( $oVariable->getFieldMapping() == 'multiselectplusadd' ) {
-						$field['options'] = $oVariable->getValue();
-						$field['title'] = 'toc-' . $oVariable->getName() . '-title';
-						$field['message'] = 'toc-' . $oVariable->getName() . '-message';
-					}
-					if ( $oVariable->getOptions() & BsConfig::USE_PLUGIN_FOR_PREFS ) {
+				if ( $oVariable->getOptions() & BsConfig::USE_PLUGIN_FOR_PREFS ) {
 
-						$oExtension = BsExtensionManager::getExtension( $sExtensionName );
-						$tmp = $oExtension->runPreferencePlugin( 'MW', $oVariable );
+					$oExtension = BsExtensionManager::getExtension( $sExtensionName );
+					$tmp = $oExtension->runPreferencePlugin( 'MW', $oVariable );
 
-						$field = array_merge( $field, $tmp );
-					}
-					$preferences[$oVariable->generateFieldId()] = $field;
+					$field = array_merge( $field, $tmp );
 				}
+				$preferences[$oVariable->generateFieldId()] = $field;
+
 			}
 		}
 		BsConfig::deliverUsersSettings( $orig_deliver );
 
-		BsCore::loadHtmlFormClass();
-
 		$oForm = new HTMLFormEx( $preferences, 'prefs' );
 		$oForm->setTitle( $this->getTitle() );
 		$oForm->addHiddenField( 'mode', 'Preferences' );
-		$oForm->setSubmitText( wfMessage( 'bs-preferences-button_save' )->plain() );
+		$oForm->setSubmitText( wfMessage( 'bs-extjs-save' )->plain() );
 		$oForm->setSubmitName( 'WikiAdminPreferencesSubmit' );
 		$oForm->setSubmitCallback( array( $this, 'savePreferences' ) );
 
 		$oForm->show();
 
 		$this->getOutput()->addHTML( '<br />' );
-
-		BsConfig::loadUserSettings( $this->getUser()->getName() );
 
 		return '';
 	}
@@ -191,7 +168,7 @@ class BsPreferences extends BsExtensionMW {
 	 */
 	public function savePreferences( $aData ) {
 		if ( wfReadOnly() ) {
-			$url = SpecialPage::getTitleFor( 'SpecialWikiAdmin' )->getFullURL( array(
+			$url = SpecialPage::getTitleFor( 'WikiAdmin' )->getFullURL( array(
 				'mode' => 'Preferences',
 				'success' => 0
 			) );
@@ -225,7 +202,7 @@ class BsPreferences extends BsExtensionMW {
 
 		BsConfig::saveSettings();
 
-		$url = SpecialPage::getTitleFor( 'SpecialWikiAdmin' )->getFullURL( array(
+		$url = SpecialPage::getTitleFor( 'WikiAdmin' )->getFullURL( array(
 			'mode' => 'Preferences',
 			'success' => 1
 		) );
@@ -241,6 +218,17 @@ class BsPreferences extends BsExtensionMW {
 	 */
 	protected function generateFieldId( $var ) {
 		return $var->getAdapter() . "_" . $var->getExtension() . "_" . $var->getName();
+	}
+
+	public static function onBeforePageDisplay( OutputPage &$out, &$skin ) {
+		if( !$out->getTitle()->isSpecial( 'WikiAdmin' ) ) return true;
+		if( strtolower( $out->getRequest()->getVal( 'mode' )  ) != 'preferences' ) return true;
+
+		$out->addInlineStyle(
+			'.bs-prefs legend{cursor:pointer;}'
+		);
+
+		return true;
 	}
 
 }

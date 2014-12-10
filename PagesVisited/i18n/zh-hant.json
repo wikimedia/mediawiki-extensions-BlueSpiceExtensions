@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416"
+		]
+	},
+	"bs-pagesvisited-error-nsnotvalid": "提供之命名空間<code>$2</code>{{PLURAL:$1|無效}}。",
+	"bs-pagesvisited-pref-widgetns": "命名空間：",
+	"bs-pagesvisited-pref-widgetsortodr": "排序方式：",
+	"bs-pagesvisited-pref-sort-time": "時間"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"SnowedEarth",
+			"Ltrlg",
+			"Crochet.david"
+		]
+	},
+	"bs-wikiadmin-desc": "Administration centrale de BlueSpice",
+	"bs-wikiadmin-notallowed": "Vous n’êtes pas autorisé à utiliser cette page.",
+	"wikiadmin": "Administration de BlueSpice",
+	"action-wikiadmin": "Afficher les pages d’administration de BlueSpice",
+	"right-wikiadmin": "Afficher les pages d’administration de BlueSpice",
+	"bs-wikiadmin-shop": "Boutique"
+}

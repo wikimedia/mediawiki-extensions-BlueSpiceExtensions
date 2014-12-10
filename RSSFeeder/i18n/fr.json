@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Orikrin1998",
+			"Gomoko"
+		]
+	},
+	"bs-rssfeeder-desc": "Une extension pour obtenir un RSS valide pour chaque extension qui a une fonction buildRss",
+	"rssfeeder": "Alimentation RSS",
+	"bs-rssfeeder-pagetext": "Vous pouvez vous abonner aux flux RSS suivants :",
+	"bs-rssfeeder-recent-changes": "Modifications récentes",
+	"bs-rssfeeder-pages": "Page",
+	"bs-rssfeeder-submit": "Afficher",
+	"bs-rssfeeder-rss": "Flux RSS",
+	"bs-rssfeeder-rss-desc": "Créer votre propre flux RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL du flux RSS"
+}

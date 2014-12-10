@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-whoisonline-pref-orderby": "Rendezés:",
+	"bs-whoisonline-pref-orderby-time": "Futási idő",
+	"bs-whoisonline-pref-orderby-name": "Név",
+	"bs-whoisonline-pref-interval": "Frissítési időköz másodpercben:"
+}

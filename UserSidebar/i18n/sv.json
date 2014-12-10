@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil"
+		]
+	},
+	"bs-usersidebar-desc": "Lägger till fokus-fliken till sidopanelen",
+	"prefs-usersidebar": "Sidopanelen för användare",
+	"bs-usersidebar-userpagesettings-link-title": "Redigera innehållet i ditt fokus",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Redigera}} fokus"
+}

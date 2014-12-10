@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-usermanager-desc": "用于添加、编辑和删除用户的管理界面",
+	"bs-usermanager-admin-nodelete": "管理员账户不能删除。",
+	"bs-usermanager-self-nodelete": "您不能删除您的账户。",
+	"bs-usermanager-db-error": "发生数据库错误。",
+	"bs-usermanager-enter-pwd": "请输入密码。",
+	"bs-usermanager-idnotexist": "此用户不存在。",
+	"bs-usermanager-invalid-pwd": "密码无效。",
+	"bs-usermanager-invalid-realname": "真实姓名无效。",
+	"bs-usermanager-invalid-uname": "用户名无效。",
+	"bs-usermanager-invalid-email-gen": "邮件地址无效。",
+	"bs-usermanager-label": "用户管理",
+	"bs-usermanager-user-added": "用户已添加。",
+	"bs-usermanager-user-deleted": "用户已删除。",
+	"bs-usermanager-user-exists": "用户已存在。",
+	"bs-usermanager-save-successful": "更改已保存。",
+	"bs-usermanager-headerusername": "用户名",
+	"bs-usermanager-headerrealname": "真实姓名",
+	"bs-usermanager-headeremail": "电子邮件",
+	"bs-usermanager-headergroups": "组",
+	"bs-usermanager-titleadduser": "添加用户",
+	"bs-usermanager-titleeditdetails": "编辑用户",
+	"bs-usermanager-labelnewpassword": "密码",
+	"bs-usermanager-labelpasswordcheck": "确认密码",
+	"bs-usermanager-titledeleteuser": "删除用户",
+	"bs-usermanager-confirmdeleteuser": "您确信要删除{{PLURAL:$1|此|这$1位}}用户么？",
+	"bs-usermanager-groups-more": "……更多",
+	"bs-usermanager-no-self-desysop": "您不能移除您自己的管理员权限。"
+}

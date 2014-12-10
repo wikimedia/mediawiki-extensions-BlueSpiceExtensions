@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-uemodulepdf-pref-pdfserviceurl": "Бэкендан адрес",
+	"bs-uemodulepdf-pref-templatepath": "Стандартан кеп:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Цхьа агӀо PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Экспорт йе хӀара агӀо PDF чу.",
+	"bs-uemodulepdf-overview-webservice-state": "Бэкендан статус",
+	"bs-uemodulepdf-overview-webservice-state-ok": "тӀекхочу",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "тӀекхочехь яц",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Интерфейсан бэкенд веб"
+}

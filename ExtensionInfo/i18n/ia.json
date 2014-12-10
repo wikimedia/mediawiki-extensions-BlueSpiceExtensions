@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-extensioninfo-desc": "Lista de information sur le extensiones cargate",
+	"bs-extensioninfo-label": "Extensiones",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Version",
+	"extensioninfo": "Extensiones",
+	"bs-extensioninfo-headerextname": "Nomine del extension",
+	"bs-extensioninfo-headerversion": "Version",
+	"bs-extensioninfo-headerdesc": "Description",
+	"bs-extensioninfo-headerstatus": "Stato",
+	"bs-extensioninfo-headerpackage": "Pacchetto",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elemento|elementos}}"
+}

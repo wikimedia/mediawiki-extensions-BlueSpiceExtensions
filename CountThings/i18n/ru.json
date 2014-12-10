@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Alexandr Efremov"
+		]
+	},
+	"bs-countthings-desc": "Предоставляет статистику на основании анализа содержания",
+	"bs-countthings-chars-label": "Символы",
+	"bs-countthings-words-label": "Слова",
+	"bs-countthings-pages-label": "Страницы",
+	"bs-countthings-error-no-input": "Страница не указан",
+	"bs-countthings-error-invalid-mode": "Режим \"$1\" не применяется. Пожалуйста, используйте \"chars\", \"words\" или \"pages\".",
+	"bs-countthings-error-not-exist": "Страница «$1» не существует.",
+	"bs-countthings-tag-countarticles-desc": "Показывает количество страниц.",
+	"bs-countthings-tag-countusers-desc": "Показывает число участников.",
+	"bs-countthings-tag-countcharacters-desc": "Показывает статистику данного содержания на странице. Доступные конфигурации атрибутов:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Что следует считать <code>chars</code> (символы), <code>words</code> (слова) или <code>pages</code> (страницы)."
+}

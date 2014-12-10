@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-groupmanager-grpexists": "Bez' ez eus eus ar strollad dija.",
+	"bs-groupmanager-grpadded": "Ouzhpennet eo bet ar strollad.",
+	"bs-groupmanager-grpedited": "Aozet eo bet ar strollad.",
+	"bs-groupmanager-grpremoved": "Lamet eo bet ar strollad.",
+	"bs-groupmanager-label": "Merour ar strollad",
+	"bs-groupmanager-invalid-name-length": "Ne c'hall ket bezañ ouzhpenn 16 arouezenn en anv ar strollad.",
+	"bs-groupmanager-headergroup": "Strollad",
+	"bs-groupmanager-tipremove": "Lemel {{PLURAL:$1|strollad|a strolladoù}}",
+	"bs-groupmanager-titlenewgroup": "Strollad nevez",
+	"bs-groupmanager-titleeditgroup": "Aozañ ar strollad",
+	"bs-groupmanager-removegroup": "Ha sur oc'h e fell deoc'h lemel {{PLURAL:$1|ar strollad-mañ|ar strolladoù-mañ}} ?",
+	"bs-groupmanager-removegroup-message-success": "Ar {{PLURAL:$1|strollad|strolladoù}}-mañ zo bet dilamet : $2",
+	"bs-groupmanager-removegroup-message-failure": "N'eus ket bet gallet dilemel ar {{PLURAL:$1|strollad|strolladoù}}-mañ : $2",
+	"bs-groupmanager-removegroup-message-unknown": "C'hoarvezet ez eus ur fazi dic'hortoz, esaeit en-dro, mar plij.",
+	"bs-groupmanager-lablename": "Anv ar strollad :",
+	"bs-groupmanager-msgnoteditable": "Ar strollad-mañ zo ur strollad reizhiad ha ne c'hall ket bezañ adanvet.",
+	"bs-groupmanager-msgnotremovable": "Ar strollad-mañ zo ur strollad reizhiad ha ne c'hall ket bezañ lamet."
+}

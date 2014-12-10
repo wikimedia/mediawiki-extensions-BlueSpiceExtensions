@@ -29,11 +29,11 @@ class NamespaceManager extends BsExtensionMW {
 		'searched' => false
 	);
 
-	public static $aSortConditions = array( 
+	public static $aSortConditions = array(
 		'sort' => '',
 		'dir' => ''
 	);
-	
+
 	public $aSortHelper = array(
 		'negative' => 0,
 		'positive' => 0
@@ -49,13 +49,13 @@ class NamespaceManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'NamespaceManager',
-			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting namespaces',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-namespacemanager-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stefan Widmann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array( 
+			EXTINFO::DEPS => array(
 				'bluespice' => '2.22.0',
 				'WikiAdmin' => '2.22.0',
 				'Preferences' => '2.22.0'
@@ -85,19 +85,19 @@ class NamespaceManager extends BsExtensionMW {
 		$this->setHook( 'NamespaceManager::writeNamespaceConfiguration', 'onWriteNamespaceConfiguration', true );
 
 		//CR, RBV: This is suposed to return all constants! Not just system NS.
-		//At the moment the implementation relies on an hardcoded mapping, 
+		//At the moment the implementation relies on an hardcoded mapping,
 		//which is bad. We need to change this and make it more generic!
 		$GLOBALS['bsSystemNamespaces'] = BsNamespaceHelper::getMwNamespaceConstants();
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-		
+
 	/**
 	* Add the sql file to database by executing the update.php
 	* @global type $wgDBtype
 	* @global array $wgExtNewTables
 	* @param DatabaseUpdater $du
-	* @return boolean 
+	* @return boolean
 	*/
 	public static function getSchemaUpdates( $updater ) {
 		global $wgExtPGNewFields, $wgDBtype;
@@ -150,7 +150,7 @@ class NamespaceManager extends BsExtensionMW {
 		} else {
 			$updater->addExtensionField(
 				'bs_namespacemanager_backup_page',
-				'page_content_model', 
+				'page_content_model',
 				$dir . 'bs_namespacemanager_backup_page.patch.sql'
 			);
 			$updater->addExtensionField(
@@ -171,7 +171,7 @@ class NamespaceManager extends BsExtensionMW {
 	/**
 	 * returns if NS is empty or not
 	 * @param type $iNamespaceId
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function isNamespaceEmpty( $iNamespaceId ) {
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
@@ -195,10 +195,10 @@ class NamespaceManager extends BsExtensionMW {
 		$this->getOutput()->addModules( 'ext.bluespice.namespaceManager' );
 		BsExtensionManager::setContext( 'MW::NamespaceManagerShow' );
 		$aMetaFields = array(
-			array( 
-				'name' => 'id', 
-				'type' => 'int', 
-				'sortable' => true, 
+			array(
+				'name' => 'id',
+				'type' => 'int',
+				'sortable' => true,
 				'label' => wfMessage( 'bs-namespacemanager-label-id' )->plain()
 			),
 			array(
@@ -210,7 +210,7 @@ class NamespaceManager extends BsExtensionMW {
 
 		wfRunHooks( 'NamespaceManager::getMetaFields', array( &$aMetaFields ) );
 		$this->getOutput()->addJsConfigVars('bsNamespaceManagerMetaFields', $aMetaFields);
-		
+
 		return '<div id="bs-namespacemanager-grid"></div>';
 	}
 
@@ -290,24 +290,24 @@ class NamespaceManager extends BsExtensionMW {
 	}
 
 	public function onGetMetaFields( &$aMetaFields ) {
-		$aMetaFields[] = array( 
-			'name' => 'editable', 
-			'type' => 'boolean', 
+		$aMetaFields[] = array(
+			'name' => 'editable',
+			'type' => 'boolean',
 			'label' => wfMessage( 'bs-namespacemanager-label-editable' )->plain()
 		);
-		$aMetaFields[] = array( 
-			'name' => 'subpages', 
-			'type' => 'boolean', 
+		$aMetaFields[] = array(
+			'name' => 'subpages',
+			'type' => 'boolean',
 			'label' => wfMessage( 'bs-namespacemanager-label-subpages' )->plain()
 		);
-		$aMetaFields[] = array( 
-			'name' => 'searchable', 
-			'type' => 'boolean', 
+		$aMetaFields[] = array(
+			'name' => 'searchable',
+			'type' => 'boolean',
 			'label' => wfMessage( 'bs-namespacemanager-label-searchable' )->plain()
 		);
-		$aMetaFields[] = array( 
-			'name' => 'content', 
-			'type' => 'boolean', 
+		$aMetaFields[] = array(
+			'name' => 'content',
+			'type' => 'boolean',
 			'label' => wfMessage( 'bs-namespacemanager-label-content' )->plain()
 		);
 
@@ -315,7 +315,7 @@ class NamespaceManager extends BsExtensionMW {
 	}
 
 	public function onGetNamespaceData( &$aResults ) {
-		global $wgNamespacesWithSubpages, $wgContentNamespaces, 
+		global $wgNamespacesWithSubpages, $wgContentNamespaces,
 				$wgNamespacesToBeSearchedDefault, $bsSystemNamespaces;
 		wfRunHooks( 'BSNamespaceManagerBeforeSetUsernamespaces', array( $this, &$bsSystemNamespaces ) );
 		$aUserNamespaces = self::getUserNamespaces();
@@ -324,11 +324,13 @@ class NamespaceManager extends BsExtensionMW {
 		for ( $i = 0; $i < $iResults; $i++ ) {
 
 			$iNs = $aResults[$i]['id'];
-			$aResults[ $i ][ 'editable' ] = ( isset($bsSystemNamespaces[$iNs] ) ) ? false : (array_search( $iNs, $aUserNamespaces ) !== false);
-			$aResults[ $i ][ 'content' ] = (array_search( $iNs, $wgContentNamespaces ) !== false);
-			$aResults[ $i ][ 'searchable' ] = (isset( $wgNamespacesToBeSearchedDefault[ $iNs ] ) && $wgNamespacesToBeSearchedDefault[ $iNs ]);
-			$aResults[ $i ][ 'subpages' ] = (isset( $wgNamespacesWithSubpages[ $iNs ] ) && $wgNamespacesWithSubpages[ $iNs ]);
-			if ( array_search( $iNs, $aUserNamespaces ) !== false ) {
+			$aResults[$i][ 'editable' ] = ( isset( $bsSystemNamespaces[$iNs] ) )
+				? false
+				: in_array( $iNs, $aUserNamespaces );
+			$aResults[$i]['content'] = in_array( $iNs, $wgContentNamespaces );
+			$aResults[$i]['searchable'] = (isset( $wgNamespacesToBeSearchedDefault[$iNs] ) && $wgNamespacesToBeSearchedDefault[$iNs]);
+			$aResults[$i]['subpages'] = ( isset( $wgNamespacesWithSubpages[$iNs] ) && $wgNamespacesWithSubpages[$iNs] );
+			if ( in_array( $iNs, $aUserNamespaces ) ) {
 				$aResults[$i]['empty'] = $this->isNamespaceEmpty( $iNs );
 			}
 		}
@@ -342,7 +344,7 @@ class NamespaceManager extends BsExtensionMW {
 	public function onEditNamespace( &$aNamespaceDefinition, &$iNs, $aAdditionalSettings, $bUseInternalDefaults ) {
 		if ( !$bUseInternalDefaults ) {
 			if ( empty( $aNamespaceDefinition[$iNs] ) ) $aNamespaceDefinition[$iNs] = array();
-			$aNamespaceDefinition[$iNs] += array( 
+			$aNamespaceDefinition[$iNs] += array(
 				'content'  => $aAdditionalSettings['content'],
 				'subpages' => $aAdditionalSettings['subpages'],
 				'searched' => $aAdditionalSettings['searchable'] );
@@ -401,13 +403,13 @@ class NamespaceManager extends BsExtensionMW {
 			if ( strlen( $sNamespace ) < 2 ) {
 				return FormatJson::encode( array(
 					'success' => false,
-					'message' => wfMessage( 'bs-namespacemanager-namespace_name_length' )->plain()
+					'message' => wfMessage( 'bs-namespacemanager-ns-length' )->plain()
 					) );
 			// TODO MRG (06.11.13 11:17): Unicodefähigkeit?
 			} else if ( !preg_match( '%^[a-zA-Z_\\x80-\\xFF][a-zA-Z0-9_\\x80-\\xFF]{1,99}$%i', $sNamespace ) ) {
 				return FormatJson::encode( array(
 					'success' => false,
-					'message' => wfMessage( 'bs-namespacemanager-wrong_namespace_name_format' )->plain()
+					'message' => wfMessage( 'bs-namespacemanager-wrong-name' )->plain()
 					) );
 			} else {
 				$aUserNamespaces[$iNS] = array( 'name' => $sNamespace );
@@ -427,12 +429,12 @@ class NamespaceManager extends BsExtensionMW {
 				return FormatJson::encode( self::setUserNamespaces( $aUserNamespaces ) );
 			}
 		} else {
-			// TODO SU (04.07.11 12:13): Aus Gründen der Lesbarkeit würde ich 
+			// TODO SU (04.07.11 12:13): Aus Gründen der Lesbarkeit würde ich
 			// das direkt in die obige foreach-Schleife packen und den else-
 			// Zweig hier weglassen.
 			return FormatJson::encode( array(
 					'success' => false,
-					'message' => wfMessage( 'bs-namespacemanager-namespace_already_exists' )->plain()
+					'message' => wfMessage( 'bs-namespacemanager-ns-exists' )->plain()
 				) );
 		}
 	}
@@ -460,24 +462,24 @@ class NamespaceManager extends BsExtensionMW {
 		if ( $iNS !== NS_MAIN && !$iNS ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-no_valid_namespace_id' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-invalid-id' )->plain()
 			) );
 		}
 		if ( strlen( $sNamespace ) < 2 ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-namespace_name_length' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-ns-length' )->plain()
 			) );
 		}
 		if ( $iNS !== NS_MAIN && $iNS !== NS_PROJECT && $iNS !== NS_PROJECT_TALK && !preg_match( '%^[a-zA-Z_\\x80-\\xFF][a-zA-Z0-9_\\x80-\\xFF]{1,99}$%', $sNamespace ) ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-wrong_namespace_name_format' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-wrong-name' )->plain()
 			) );
 		}
 
 		if ( !isset( $bsSystemNamespaces[($iNS)] ) && strstr( $sNamespace, '_' . $wgContLang->getNsText( NS_TALK ) ) ) {
-				$aUserNamespaces[ $iNS ] = array(
+				$aUserNamespaces[$iNS] = array(
 					'name' => $aUserNamespaces[$iNS]['name'],
 					'alias' => str_replace( '_' . $wgContLang->getNsText( NS_TALK ), '_talk', $sNamespace ),
 				);
@@ -518,18 +520,18 @@ class NamespaceManager extends BsExtensionMW {
 		if ( !$iNS ) {
 			return FormatJson::encode( array(
 				'success' => false,
-				'message' => wfMessage( 'bs-namespacemanager-no_valid_namespace_id' )->plain()
+				'message' => wfMessage( 'bs-namespacemanager-invalid-id' )->plain()
 				) );
 		}
 
 		global $wgContLang;
 		$aUserNamespaces = self::getUserNamespaces( true );
 		$aNamespacesToRemove = array( array( $iNS, 0 ) );
-		$sNamespace = $aUserNamespaces[ $iNS ][ 'name' ];
+		$sNamespace = $aUserNamespaces[$iNS][ 'name' ];
 
 		if ( !strstr( $sNamespace, '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
 			if ( isset( $aUserNamespaces[ ($iNS + 1) ] ) && strstr( $aUserNamespaces[ ($iNS + 1) ][ 'name' ], '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
-				$aNamespacesToRemove[ ] = array( ($iNS + 1), 1 );
+				$aNamespacesToRemove[] = array( ($iNS + 1), 1 );
 				$sNamespace = $aUserNamespaces[ ($iNS + 1) ][ 'name' ];
 			}
 		}
@@ -540,7 +542,8 @@ class NamespaceManager extends BsExtensionMW {
 		switch ( $iDoArticle ) {
 			case 0:
 				foreach ( $aNamespacesToRemove as $aNamespace ) {
-					if ( !NamespaceNuker::nukeNamespaceWithAllPages( $aNamespace[ 0 ] ) ) {
+					$iNs = $aNamespace[0];
+					if ( !NamespaceNuker::removeAllNamespacePages( $iNs, $aUserNamespaces[$iNs]['name'] ) ) {
 						$bErrors = true;
 					} else {
 						$aUserNamespaces[ $aNamespace[ 0 ] ] = false;
@@ -549,7 +552,8 @@ class NamespaceManager extends BsExtensionMW {
 				break;
 			case 1:
 				foreach ( $aNamespacesToRemove as $aNamespace ) {
-					if ( !NamespaceNuker::removeAllPages( $aNamespace[ 0 ], $sNamespace, $aNamespace[ 1 ] ) ) {
+					$iNs = $aNamespace[0];
+					if ( !NamespaceNuker::moveAllPagesIntoMain( $iNs, $aUserNamespaces[$iNs]['name'] ) ) {
 						$bErrors = true;
 					} else {
 						$aUserNamespaces[ $aNamespace[ 0 ] ] = false;
@@ -559,7 +563,8 @@ class NamespaceManager extends BsExtensionMW {
 			case 2:
 			default:
 				foreach ( $aNamespacesToRemove as $aNamespace ) {
-					if ( !NamespaceNuker::removeAllPagesWithSuffix( $aNamespace[ 0 ], $sNamespace, $aNamespace[ 1 ] ) ) {
+					$iNs = $aNamespace[0];
+					if ( !NamespaceNuker::moveAllPagesIntoMain( $iNs, $aUserNamespaces[$iNs]['name'], true ) ) {
 						$bErrors = true;
 					} else {
 						$aUserNamespaces[ $aNamespace[ 0 ] ] = false;
@@ -583,7 +588,7 @@ class NamespaceManager extends BsExtensionMW {
 	/**
 	 * Get all namespaces, which are created with the NamespaceManager.
 	 * @param boolean $bFullDetails should the complete configuration of the namespaces be loaded
-	 * @return array the namespace data 
+	 * @return array the namespace data
 	 */
 	protected static function getUserNamespaces( $bFullDetails = false ) {
 		global $wgExtraNamespaces, $wgNamespacesWithSubpages,
@@ -594,20 +599,25 @@ class NamespaceManager extends BsExtensionMW {
 		}
 		$sConfigContent = file_get_contents( BSROOTDIR . DS . 'config' . DS . 'nm-settings.php' );
 		$aUserNamespaces = array();
-		//if ( preg_match_all( '%// START Namespace ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*).*define\("NS_\1", ([0-9]*)\).*?// END Namespace \1%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
+		/*if ( preg_match_all(
+			'%// START Namespace ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*).*define\("NS_\1", ([0-9]*)\).*?// END Namespace \1%s',
+			$sConfigContent,
+			$aMatches,
+			PREG_PATTERN_ORDER ) ) {
+		 */
 		if ( preg_match_all( '%define\("NS_([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)", ([0-9]*)\)%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
 			$aUserNamespaces = $aMatches[ 2 ];
 		}
 		if ( $bFullDetails ) {
 			$aTmp = array();
 			foreach ( $aUserNamespaces as $iNS ) {
-				$aTmp[ $iNS ] = array(
-					'content' => ( array_search( $iNS, $wgContentNamespaces ) !== false ),
-					'subpages' => ( isset( $wgNamespacesWithSubpages[ $iNS ] ) && $wgNamespacesWithSubpages[ $iNS ] ),
-					'searched' => ( isset( $wgNamespacesToBeSearchedDefault[ $iNS ] ) && $wgNamespacesToBeSearchedDefault[ $iNS ] )
+				$aTmp[$iNS] = array(
+					'content' => in_array( $iNS, $wgContentNamespaces ),
+					'subpages' => ( isset( $wgNamespacesWithSubpages[$iNS] ) && $wgNamespacesWithSubpages[$iNS] ),
+					'searched' => ( isset( $wgNamespacesToBeSearchedDefault[$iNS] ) && $wgNamespacesToBeSearchedDefault[$iNS] )
 				);
 				if ( $iNS >= 100 ) {
-					$aTmp[ $iNS ]['name'] = $wgExtraNamespaces[ $iNS ];
+					$aTmp[$iNS]['name'] = $wgExtraNamespaces[$iNS];
 				}
 			}
 
@@ -622,7 +632,7 @@ class NamespaceManager extends BsExtensionMW {
 	 * @param array $aUserNamespaceDefinition the namespace configuration
 	 */
 	protected static function setUserNamespaces( $aUserNamespaceDefinition ) {
-		global $wgNamespacesWithSubpages, $wgContentNamespaces, 
+		global $wgNamespacesWithSubpages, $wgContentNamespaces,
 			$wgNamespacesToBeSearchedDefault, $bsSystemNamespaces;
 
 		$oNamespaceManager = BsExtensionManager::getExtension( 'NamespaceManager' );

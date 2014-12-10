@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"prefs-review": "Хьажар",
+	"bs-review-review": "Хьажар",
+	"bs-review-reviewed-till-extra": "{{GENDER:$1|Терахь}} $2",
+	"bs-review-review-error": "Ца довза гӀалат даьлла.",
+	"bs-review-i-agree": "Резахилар",
+	"bs-review-i-dismiss": "Дуьхьала",
+	"log-name-bs-review": "Хьажаран тептар",
+	"bs-review-expired": "Чекхъяла",
+	"review": "Хьажар",
+	"bs-review-commentinputlabel": "Хьан къамел:",
+	"bs-review-comments": "Къамелаш",
+	"bs-review-btnmoveup": "Лаккха яккха",
+	"bs-review-btnmovedown": "Лаха яккха",
+	"bs-review-colstatus": "Статус",
+	"bs-review-colreviewer": "Хьажар",
+	"bs-review-colcomment": "Къамел",
+	"bs-review-lblstartdate": "Долина терахь",
+	"bs-review-lblenddate": "Чаккхе терахь",
+	"bs-review-labelcomment": "Къамел",
+	"bs-review-header-page-title": "АгӀо",
+	"bs-review-header-owner-name": "Ерг",
+	"bs-review-header-accepted-text": "Пачхьалкх",
+	"bs-review-header-startdate": "Долор",
+	"bs-review-header-enddate": "Чекхъялар"
+}

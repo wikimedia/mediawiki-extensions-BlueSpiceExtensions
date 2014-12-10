@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Amitie 10g"
+		]
+	},
+	"bs-visualeditor-desc": "Editor visual para MediaWiki",
+	"prefs-visualeditor": "Editor visual",
+	"bs-visualeditor-editbutton-hint": "Editor visual",
+	"bs-visualeditor-pref-disablens": "Desactivar en los espacios de nombres:",
+	"bs-visualeditor-pref-use": "Usar el editor WYSIWYG de manera predeterminada",
+	"bs-visualeditor-save-message": "Se guardó la edición el $1 con el resumen «$2».",
+	"bs-visualeditor-no-summary": "Sin resumen",
+	"bs-visualeditor-sortable": "Clasificable",
+	"bs-visualeditor-wikitable": "Estándar",
+	"bs-visualeditor-contenttable": "Contenido",
+	"bs-visualeditor-contenttable-black": "Contenido (negro)",
+	"bs-visualeditor-contenttable-blue": "Contenido (azul)",
+	"bs-visualeditor-contenttable-darkblue": "Contenido (azul marino)",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Escala de grises",
+	"bs-visualeditor-aligntop": "Arriba",
+	"bs-visualeditor-alignmiddle": "En medio",
+	"bs-visualeditor-alignbottom": "Abajo",
+	"bs-visualeditor-bsactions-wiki": "Wikitexto",
+	"bs-visualeditor-bsactions-linebreak": "Salto de línea",
+	"bs-visualeditor-bsactions-signature": "Firma",
+	"bs-visualeditor-bsactions-save": "Guardar",
+	"bs-visualeditor-bsactions-headings": "Encabezados",
+	"bs-visualeditor-bsactions-paragraph": "Párrafo",
+	"bs-visualeditor-bsactions-heading2": "Encabezado 2",
+	"bs-visualeditor-bsactions-heading3": "Encabezado 3",
+	"bs-visualeditor-bsactions-heading4": "Encabezado 4",
+	"bs-visualeditor-bsactions-heading5": "Encabezado 5",
+	"bs-visualeditor-bsactions-heading6": "Encabezado 6",
+	"bs-visualeditor-switch-noeditor-desc": "Desactiva el editor visual en esta página."
+}

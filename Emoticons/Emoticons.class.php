@@ -77,7 +77,7 @@ class Emoticons extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Emoticons',
-			EXTINFO::DESCRIPTION => 'Renders emoticons in a text as images.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-emoticons-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Alex Wollangk, Marc Reymann, Sebastian Ulbricht, Mathias Scheer, Robert Vogel, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -96,8 +96,6 @@ class Emoticons extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'OutputPageBeforeHTML' );
 		$this->setHook( 'ArticleSave' );
-
-		BsConfig::registerVar( 'MW::Emoticons::PathToEmoticons', '/extensions/BlueSpiceExtensions/Emoticons/emoticons', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-emoticons-pref-PathToEmoticons' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -105,28 +103,43 @@ class Emoticons extends BsExtensionMW {
 	 * Hook-Handler for 'OutputPageBeforeHTML' (MediaWiki). Replaces Emoticon syntax with images.
 	 * @param ParserOutput $oParserOutput The ParserOutput object that corresponds to the page.
 	 * @param string $sText The text that will be displayed in HTML.
-	 * @global MWMemcached $wgMemc The MediaWiki Memcached object
 	 * @return bool Always true to keep hook running.
 	 */
 	public function onOutputPageBeforeHTML( &$oParserOutput, &$sText) {
-		global $wgMemc; //http://www.mediawiki.org/wiki/Memcached
+		global $wgScriptPath;
 
 		$sCurrentAction = $this->getRequest()->getVal( 'action', 'view' );
 		$oCurrentTitle  = $this->getTitle();
 
-		if( in_array( $sCurrentAction, array('edit', 'history', 'delete', 'watch') ) ) return true;
-		if( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;
+		if ( in_array( $sCurrentAction, array('edit', 'history', 'delete', 'watch') ) ) return true;
+		if ( in_array( $oCurrentTitle->getNamespace(), array( NS_SPECIAL, NS_MEDIAWIKI ) ) ) return true;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
-		$aMapping = $wgMemc->get( $sKey );
-		
-		if( $aMapping == false ) {
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Emoticons' );
+		$aMapping = BsCacheHelper::get( $sKey );
 
-			$sPathToEmoticons = BsConfig::get('MW::ScriptPath').BsConfig::get('MW::Emoticons::PathToEmoticons');
+		if ( $aMapping == false ) {
+			$sPathToEmoticons = $wgScriptPath . '/extensions/BlueSpiceExtensions/Emoticons/emoticons';
 
 			// Get the list of emoticons from the message system.
-			$sMappingContent = wfMessage('bs-emoticons-mapping')->plain();
+			$sMappingContent = "smile.png           :-)     :)
+								sad.png             :-(     :(
+								neutral.png         :-|     :|
+								angry.png           :-@     :@
+								wink.png            ;-)     ;)
+								smile-big.png       :D     :-D
+								thinking.png        :-/     :/
+								shut-mouth.png      :-X     :X
+								crying.png          :'(
+								shock.png           :-O
+								confused.png        :-S
+								glasses-cool.png    8-)
+								laugh.png           :lol:
+								yawn.png            (:|
+								good.png            :good:
+								bad.png             :bad:
+								embarrassed.png     :-[
+								shame.png           [-X     [-x";
 			if( empty( $sMappingContent ) ) return true; // If the content successfully loaded, do the replacement
 
 			$aMappingLines = explode( "\n", $sMappingContent );
@@ -155,9 +168,9 @@ class Emoticons extends BsExtensionMW {
 					}
 				}
 			}
-			
+
 			$aMapping = array('emoticons' => $aEmoticons, 'replacements' => $aImageReplacements );
-			$wgMemc->set( $sKey, $aMapping );
+			BsCacheHelper::set( $sKey, $aMapping );
 		}
 
 		$sText = str_replace( $aMapping['emoticons'], $aMapping['replacements'], $sText );
@@ -180,15 +193,12 @@ class Emoticons extends BsExtensionMW {
 	 * @return mixed Boolean true if syntax is okay or the saved article is not the MappingSourceArticle, String 'error-msg' if an error occurs.
 	 */
 	public function onArticleSave( $oArticle, $oUser, $sText, $sSummary, $bIsMinor, $bIsWatch, $iSection, &$iFlags, $oStatus ) {
-		
-		//TODO: error view does not work
-		
 		global $wgMemc;
 		$oMappingSourceTitle = Title::newFromText( 'bs-emoticons-mapping', NS_MEDIAWIKI );
 		if( !$oMappingSourceTitle->equals( $oArticle->getTitle() ) ) return true;
-		
+
 		$aLines = explode( "\n" , $sText );
-		
+
 		foreach( $aLines as $iLineNumber => $sLine ) {
 			$iLineNumber++;
 			$sLine = trim( $sLine ); //Remove leading space
@@ -202,7 +212,7 @@ class Emoticons extends BsExtensionMW {
 				$oErrorView->addData(
 					array( wfMessage( 'bs-emoticons-error-validation-missing-symbol', $iLineNumber, $aEmoticonHash[0] )->plain() )
 					);
-				
+
 				return $oErrorView->execute();
 			}
 			if( preg_match('#^.*?\.(jpg|jpeg|gif|png)$#si', $aEmoticonHash[0] ) === 0 ) {
@@ -210,7 +220,7 @@ class Emoticons extends BsExtensionMW {
 				$oErrorView->addData(
 					array( wfMessage( 'bs-emoticons-error-validation-imagename', $iLineNumber, $aEmoticonHash[0] )->plain() )
 				);
-				
+
 				return $oErrorView->execute();
 			}
 
@@ -225,9 +235,9 @@ class Emoticons extends BsExtensionMW {
 				}
 			}
 		}
-		
-		$sKey = wfMemcKey( 'BlueSpice', 'Emoticons' );
-		$wgMemc->delete( $sKey );
+
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'Emoticons' ) );
+
 		return true;
 	}
 }

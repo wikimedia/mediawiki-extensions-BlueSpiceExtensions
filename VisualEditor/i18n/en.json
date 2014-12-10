@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-visualeditor-desc": "Visual editor for MediaWiki",
+	"prefs-visualeditor": "Visual editor",
+	"bs-visualeditor-editbutton-hint": "Visual Editor",
+	"bs-visualeditor-pref-disablens": "Disable in namespaces:",
+	"bs-visualeditor-pref-use": "Use WYSIWYG editor by default",
+	"bs-visualeditor-save-message": "Saved revision at $1 with summary \"$2\".",
+	"bs-visualeditor-no-summary": "No summary",
+	"bs-visualeditor-sortable": "Sortable",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Content",
+	"bs-visualeditor-contenttable-black": "Content (black)",
+	"bs-visualeditor-contenttable-blue": "Content (blue)",
+	"bs-visualeditor-contenttable-darkblue": "Content (darkblue)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Greyscale",
+	"bs-visualeditor-greyscale-narrow": "Greyscale (narrow)",
+	"bs-visualeditor-aligntop": "Top",
+	"bs-visualeditor-alignmiddle": "Middle",
+	"bs-visualeditor-alignbottom": "Bottom",
+	"bs-visualeditor-bsactions-wiki": "Wikitext",
+	"bs-visualeditor-bsactions-switchgui": "Switch toolbar",
+	"bs-visualeditor-bsactions-linebreak": "Linebreak",
+	"bs-visualeditor-bsactions-signature": "Signature",
+	"bs-visualeditor-bsactions-save": "Save",
+	"bs-visualeditor-bsactions-headings": "Headings",
+	"bs-visualeditor-bsactions-paragraph": "Paragraph",
+	"bs-visualeditor-bsactions-heading2": "Heading 2",
+	"bs-visualeditor-bsactions-heading3": "Heading 3",
+	"bs-visualeditor-bsactions-heading4": "Heading 4",
+	"bs-visualeditor-bsactions-heading5": "Heading 5",
+	"bs-visualeditor-bsactions-heading6": "Heading 6",
+	"bs-visualeditor-switch-noeditor-desc": "Disables the visual editor on this page."
+}

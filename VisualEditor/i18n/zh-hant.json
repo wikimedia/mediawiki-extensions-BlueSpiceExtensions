@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416"
+		]
+	},
+	"prefs-visualeditor": "視覺化編輯器",
+	"bs-visualeditor-editbutton-hint": "視覺化編輯器",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-bsactions-wiki": "Wikitext",
+	"bs-visualeditor-bsactions-linebreak": "換行符號",
+	"bs-visualeditor-bsactions-signature": "簽名",
+	"bs-visualeditor-bsactions-save": "儲存",
+	"bs-visualeditor-bsactions-headings": "標題",
+	"bs-visualeditor-bsactions-paragraph": "段落",
+	"bs-visualeditor-bsactions-heading2": "標題 2",
+	"bs-visualeditor-bsactions-heading3": "標題 3",
+	"bs-visualeditor-bsactions-heading4": "標題 4",
+	"bs-visualeditor-bsactions-heading5": "標題 5",
+	"bs-visualeditor-bsactions-heading6": "標題 6"
+}

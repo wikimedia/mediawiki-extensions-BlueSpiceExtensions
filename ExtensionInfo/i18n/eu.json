@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-extensioninfo-label": "Luzapenak",
+	"bs-extensioninfo-software": "Softwarea",
+	"bs-extensioninfo-version": "Bertsioa",
+	"extensioninfo": "Luzapenak",
+	"bs-extensioninfo-headerextname": "Luzapenaren izena",
+	"bs-extensioninfo-headerversion": "Bertsioa",
+	"bs-extensioninfo-headerdesc": "Deskribapena",
+	"bs-extensioninfo-headerstatus": "Egoera"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"S8321414",
+			"LNDDYL",
+			"Cwlin0416"
+		]
+	},
+	"prefs-avatars": "頭像",
+	"bs-avatars-pref-generator": "產生器：",
+	"bs-avatars-pref-defaultsize": "畫素預設大小：",
+	"bs-avatars-upload-title": "更改基本資料圖片",
+	"bs-avatars-upload-label": "圖片",
+	"bs-avatars-warning-title": "警告",
+	"bs-avatars-userimage-help": "例如：圖片.jpg 或 http://localhost/圖片.gif",
+	"bs-avatars-file-upload-fieldset-title": "圖片上傳"
+}

@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "Przekierowanie",
+	"bs-extendededitbar-redirectsample": "Wstaw tekst",
+	"bs-extendededitbar-entertip": "Podział wiersza",
+	"bs-extendededitbar-uppertip": "Indeks górny",
+	"bs-extendededitbar-uppersample": "Tekst indeksu górnego",
+	"bs-extendededitbar-lowertip": "Indeks dolny",
+	"bs-extendededitbar-lowersample": "Tekst indeksu dolnego",
+	"bs-extendededitbar-commenttip": "Wstaw ukryty komentarz",
+	"bs-extendededitbar-commentsample": "Komentarz",
+	"bs-extendededitbar-gallerysamplepicture": "Obrazek",
+	"bs-extendededitbar-quotetip": "Wstaw blok cytowanego tekstu",
+	"bs-extendededitbar-quotesample": "Cytat blokowy",
+	"bs-extendededitbar-tabletip": "Wstaw tabelę",
+	"bs-extendededitbar-tablesampleheader": "Nagłówek",
+	"bs-extendededitbar-tablesamplerow": "Wiersz",
+	"bs-extendededitbar-tablesamplecell": "Komórka"
+}

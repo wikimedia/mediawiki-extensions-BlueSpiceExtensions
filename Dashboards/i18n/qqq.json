@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"NigelSoft",
+			"Robby",
+			"Shirayuki"
+		]
+	},
+	"bs-dashboards-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of dashboards extension",
+	"bs-specialadmindashboard-label": "Anchor text in admin tab for dashboard.\n{{Identical|Dashboard}}",
+	"bs-dashboards-addportlet": "Window title for add portlet",
+	"bs-dashboards-portlets": "Window title for portlets",
+	"prefs-dashboards": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline of dashboards section.\n{{Identical|Dashboard}}",
+	"bs-dashboards-pref-userdashboardonlogo": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for site logo links to user dashboard.\n\nThis option replaces the link target of site logo.",
+	"admindashboard": "Special page name for admin dashboard.\n\n\"admin\" is short for administrator.\n\nSee also:\n* {{msg-mw|Userdashboard}}",
+	"userdashboard": "Special page name for user dashboard.\n\nSee also:\n* {{msg-mw|Admindashboard}}",
+	"bs-dashboard-userportlet-calendar-title": "Portlet title for calendar\n{{Identical|Calendar}}",
+	"bs-dashboard-userportlet-calendar-description": "portlet description for calendar\n{{Identical|Calendar}}"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Themasterriot"
+		]
+	},
+	"bs-pageaccess-desc": "Controla el acceso a nivel de página",
+	"bs-pageaccess-error-no-groups-given": "No se especificó ningún grupo.",
+	"bs-pageaccess-error-not-member-of-given-groups": "No eres miembro de los grupos dados. Se desactivó el guardado para evitar que te bloquees el acceso.",
+	"bs-pageaccess-error-included-forbidden-template": "Has intentado usar la plantilla «$1» para la cual no tienes acceso de lectura. Se desactivó el guardado para evitar que te bloquees el acceso.",
+	"bs-pageaccess-tag-groups-desc": "Especifica los grupos que deben tener acceso exclusivo a esta página. Separa los distintos grupos con comas.",
+	"pageaccess": "Páginas aseguradas por PageAccess"
+}

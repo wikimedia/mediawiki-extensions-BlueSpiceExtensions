@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-dashboards-desc": "Stellt Dashboards für Benutzer und Administratoren zur Verfügung",
+	"bs-specialadmindashboard-label": "Dashboard",
+	"bs-dashboards-addportlet": "Portlet hinzufügen",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Dashboards",
+	"bs-dashboards-pref-userdashboardonlogo": "Logo der Website verlinkt auf das Benutzerdashboard",
+	"admindashboard": "Admin-Dashboard",
+	"userdashboard": "Benutzer-Dashboard",
+	"bs-dashboard-userportlet-calendar-title": "Kalender",
+	"bs-dashboard-userportlet-calendar-description": "Kalender"
+}

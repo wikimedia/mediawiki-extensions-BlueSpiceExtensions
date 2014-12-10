@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"NataChe",
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-uemodulepdf-desc": "Дозволяє MediaWiki експортувати сторінки у формат PDF",
+	"prefs-uemodulepdf": "Універсальний модуль експорту PDF",
+	"uemodulepdf": "Універсальний модуль експорту PDF",
+	"bs-uemodulepdf-pref-pdfserviceurl": "URL-адреса бекенду:",
+	"bs-uemodulepdf-pref-templatepath": "Стандартний шаблон:",
+	"bs-uemodulepdf-pref-suppressns": "Приховати префікс простору назв у PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Одна сторінка PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Експортувати цю сторінку у форматі PDF.",
+	"bs-uemodulepdf-overview-title": "Формат переносних документів (PDF)",
+	"bs-uemodulepdf-overview-desc": "Експортує сторінки (спеціальні сторінки та сторінки контенту) у PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "Статус бекенду",
+	"bs-uemodulepdf-overview-webservice-state-ok": "доступно",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "не доступний",
+	"soap-service-url-not-valid": "Неприпустима адреса веб-служби створення PDF. Будь ласка, перевірте налаштування вікі.",
+	"soap-service-url-not-set": "Не вказана адреса веб-служби створення PDF. Будь ласка, перевірте налаштування вікі.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Веб-інтерфейс бекенду"
+}

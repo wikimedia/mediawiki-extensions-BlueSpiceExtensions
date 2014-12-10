@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-articleinfo-desc": "Fornisce informazioni sulla pagina nella barra di stato",
+	"prefs-articleinfo": "Informazioni sulla pagina",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervallo di aggiornamento in secondi:",
+	"bs-articleinfo-last-edited": "Tempo dall'ultima modifca",
+	"bs-articleinfo-last-edited-tooltip": "Ultima modifica",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Ultimo editore|Ultima editrice|Ultimo/a editore/trice}}",
+	"bs-articleinfo-categories": "Categorie",
+	"bs-articleinfo-more-categories": "Altre categorie disponibili",
+	"bs-articleinfo-all-categories-heading": "Categorie",
+	"bs-articleinfo-nocategories": "Nessuna categoria trovata.",
+	"bs-articleinfo-hiddencats": "Categorie nascoste",
+	"bs-articleinfo-notemplates": "Nessun template trovato.",
+	"bs-articleinfo-templates": "Template",
+	"bs-articleinfo-subpages": "Sottopagine",
+	"bs-articleinfo-subpages-available": "Ci sono sottopagine per questa pagina",
+	"bs-articleinfo-subpages-too-much": "Ci sono più di 100 sottopagine disponibili.",
+	"bs-articleinfo-check-revision": "Nuova versione disponibile",
+	"bs-articleinfo-check-revision-tooltip": "Ricarica la pagina",
+	"bs-articleinfo-statebartoplastedited": "Modifica recente",
+	"bs-articleinfo-statebartoplasteditor": "Editore recente",
+	"bs-articleinfo-statebartopcategories": "Categorie",
+	"bs-articleinfo-statebartopsubpages": "Sottopagine",
+	"bs-articleinfo-statebarbodycategories": "Categorie",
+	"bs-articleinfo-statebarbodysubpages": "Sottopagine",
+	"bs-articleinfo-statebarbodytemplates": "Template"
+}

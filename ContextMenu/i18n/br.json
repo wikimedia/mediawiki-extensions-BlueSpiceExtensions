@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-contextmenu-desc": "Pourchas lañserioù kemperzhel evit liammoù a bep seurt",
+	"prefs-contextmenu": "Lañser kemperzhel",
+	"bs-contextmenu-page-edit": "Aozañ ar bajenn",
+	"bs-contextmenu-page-delete": "Dilemel ar bajenn",
+	"bs-contextmenu-page-move": "Dilec'hiañ ar bajenn",
+	"bs-contextmenu-page-history": "Gwelet istor ar bajenn",
+	"bs-contextmenu-page-protect": "Gwareziñ ar bajenn",
+	"bs-contextmenu-page-purge": "Spurjañ ar c'hrubuilh ha welet ar bajenn",
+	"bs-contextmenu-page-info": "Gwelet titouroù ar bajenn",
+	"bs-contextmenu-media-reupload": "Ezporzhiañ ar stumm nevez",
+	"bs-contextmenu-media-view-page": "Gwelet ar bajenn a zeskriv ar restr hag istor ar restr",
+	"bs-contextmenu-user-mail": "Kas ur postel",
+	"bs-contextmenu-user-talk": "Lezel ur gemennadenn war ar bajenn gaozeal",
+	"bs-contextmenu-file-download": "Pellgargañ ar restr"
+}

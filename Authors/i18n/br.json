@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"prefs-authors": "Aozerien ar bajenn-mañ",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Aozer|Aozerez}}}}",
+	"bs-authors-profileimage": "Skeudenn ar profil",
+	"bs-authors-profileimage-change": "Cheñch skeudenn ar profil",
+	"bs-authors-show-all-authors": "Aozerien ouzhpenn da gaout",
+	"bs-authors-pref-imageheight": "Sav ar skeudenn :",
+	"bs-authors-pref-imagewidth": "Ledander ar skeudenn :",
+	"bs-authors-pref-show": "Diskwel an aozerien",
+	"bs-authors-switch-description": "Kuzhat an aozerien war ar bajenn-mañ."
+}

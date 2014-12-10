@@ -17,9 +17,9 @@
 /**
  * This view renders a single ExtendedSearch facet.
  * @package    BlueSpice_Extensions
- * @subpackage ExtendedSearch 
+ * @subpackage ExtendedSearch
  */
-class ViewExtendedSearchFacetBox extends ViewBaseElement {
+class ViewSearchFacet extends ViewBaseElement {
 
 	/**
 	 * Number of checked facets. Used to determine whether overall checkbox should be checked as well
@@ -41,7 +41,7 @@ class ViewExtendedSearchFacetBox extends ViewBaseElement {
 	 * Add facet either to checked or unchecked set.
 	 * @param array $dataSet Set of facets.
 	 */
-	public function addData( array $dataSet ) {
+	public function setData( array $dataSet ) {
 		if ( isset( $dataSet['diff'] ) ) {
 			$dataSet['diff'] = ' urldiff="'.htmlspecialchars( $dataSet['diff'], ENT_QUOTES, 'UTF-8' ).'"';
 		}
@@ -69,7 +69,7 @@ class ViewExtendedSearchFacetBox extends ViewBaseElement {
 	 */
 	public function setTemplate( $template ) {
 		$out = '<div class="facetBarEntry" title="{title}">';
-		$out .= '<input type="checkbox"{checked} onchange="document.location=\'{uri}\';"{diff} class="searchcheckbox" />';
+		$out .= '<input type="checkbox"{checked} {diff} class="searchcheckbox" />';
 		$out .= '<label>{name-and-count}</label>';
 		$out .= '</div>';
 		parent::setTemplate( $out );
@@ -80,23 +80,17 @@ class ViewExtendedSearchFacetBox extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $params = false ) {
-		$this->setTemplate('');
-		$titleBar = '<div class="bs-facet-title bs-extendedsearch-default-textspacing">';
-		if ( $this->iEntriesChecked > 0 ) {
-			$checked = ' checked="checked"';
-			$uri = $this->getOption( 'uri-facet-delete' );
-		} else {
-			$checked = '';
-			$uri = $this->getOption( 'uri-facet-all' );
-		}
+		$this->setTemplate( '' );
 
-		$onchange = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
-		$titleBar .= '<input type="checkbox"' . $checked .
-				" onchange=\"document.location='{$onchange}'\"" .
-				' urldiff="'.$this->getOption( 'uri-facet-all-diff' ).'"></input>';
-		//'<input type="checkbox"'.$checked.' onchange="document.location=\''.$uri.'\';" urldiff="'.$this->getOption('uri-facet-all-diff').'" />';
-		$titleBar .= '&nbsp;<label>' . wfMessage( $this->getOption( 'i18n-key-facet-title' ) )->plain(). '</label>';
-		$titleBar .= '</div>';
+		$bChecked = ( $this->iEntriesChecked > 0 )
+			? true
+			: false;
+
+		$sFacetHead = '<div class="bs-facet-title bs-extendedsearch-default-textspacing">';
+		$sFacetHead .= Xml::check( '', $bChecked, array( 'urldiff' => $this->getOption( 'uri-facet-all-diff' ) ) );
+		$sFacetHead .= '<label>' . wfMessage( $this->getOption( 'title' ) )->plain(). '</label>';
+		$sFacetHead .= '</div>';
+
 		$this->addCompleteDataset( $this->aEntriesChecked );
 		$body = parent::execute();
 
@@ -118,7 +112,7 @@ class ViewExtendedSearchFacetBox extends ViewBaseElement {
 				$body .
 				Xml::closeElement( 'div' );
 
-		return $titleBar.$body;
+		return $sFacetHead.$body;
 	}
 
 }

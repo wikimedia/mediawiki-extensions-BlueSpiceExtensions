@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-hidetitle-desc": "Добавляет волшебное слово <code><nowiki>__HIDETITLE__</nowiki></code>, чтобы скрыть заголовок страницы"
+}

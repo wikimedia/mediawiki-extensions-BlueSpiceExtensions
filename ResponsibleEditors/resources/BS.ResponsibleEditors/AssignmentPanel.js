@@ -3,7 +3,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 	layout: 'form',
 	modal: true,
 	id: 'bs-resped-assignment-panel',
-	
+
 	afterInitComponent: function() {
 		this.strAvailableRespEds = Ext.create('Ext.data.JsonStore', {
 			proxy: {
@@ -25,8 +25,8 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 			store: this.strAvailableRespEds,
 			displayField: 'user_displayname',
 			valueField: 'user_id',
-			fromTitle: mw.message('bs-responsibleeditors-availableEditors').plain(),
-			toTitle: mw.message('bs-responsibleeditors-assignedEditors').plain(),
+			fromTitle: mw.message( 'bs-responsibleeditors-availableeditors' ).plain(),
+			toTitle: mw.message( 'bs-responsibleeditors-assignededitors' ).plain(),
 			height: 250
 		});
 
@@ -36,7 +36,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 
 		this.callParent();
 	},
-	
+
 	getData: function(){
 		this.currentData.editorIds = this.isRespEds.getValue();
 		return this.callParent();
@@ -44,12 +44,13 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 
 	setData: function( obj ){
 		this.callParent( arguments );
-		this.strAvailableRespEds.loadRawData( [], false );
-		this.strAvailableRespEds.load({
-			params: {
-				'rsargs[]': this.currentData.articleId
-			}
-		});
+		if( this.storeLoaded === false ) {
+			this.strAvailableRespEds.load({
+				params: {
+					'rsargs[]': this.currentData.articleId
+				}
+			});
+		}
 		//TODO: We need this very often. Maybe add to base class
 		if( !this.strAvailableRespEds.isLoading() ) {
 			this.isRespEds.setValue(
@@ -58,9 +59,11 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 		}
 	},
 
+	storeLoaded: false,
 	onStrAvailableRespEdsLoad: function( store, records, successful, eOpts ) {
+		this.storeLoaded = true;
 		if( this.currentData.editorIds ) {
-			this.isRespEds.setValue( 
+			this.isRespEds.setValue(
 				this.currentData.editorIds
 			);
 		}

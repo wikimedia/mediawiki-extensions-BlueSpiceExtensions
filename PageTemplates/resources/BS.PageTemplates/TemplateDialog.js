@@ -18,14 +18,14 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 	selectedData: {},
 	afterInitComponent: function() {
 		this.tfLabel = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message( 'bs-pagetemplates-labelLabel' ).plain(),
+			fieldLabel: mw.message( 'bs-pagetemplates-label-tpl' ).plain(),
 			labelWidth: 135,
 			labelAlign: 'right',
 			name: 'namespacename',
 			allowBlank: false
 		});
 		this.taDesc = Ext.create( 'Ext.form.field.TextArea', {
-			fieldLabel: mw.message( 'bs-pagetemplates-labelDescription' ).plain(),
+			fieldLabel: mw.message( 'bs-pagetemplates-label-desc' ).plain(),
 			labelWidth: 135,
 			labelAlign: 'right',
 			name: 'ta-desc',
@@ -34,13 +34,13 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 		});
 		this.cbTragetNamespace = Ext.create( 'BS.form.NamespaceCombo', {
 			labelWidth: 135,
-			fieldLabel: mw.message( 'bs-pagetemplates-labelTargetNamespace' ).plain(),
+			fieldLabel: mw.message( 'bs-pagetemplates-label-targetns' ).plain(),
 			includeAll: true
 		} );
 
 		this.cbTemplateNamespace = Ext.create( 'BS.form.NamespaceCombo', {
 			labelWidth: 135,
-			fieldLabel: mw.message( 'bs-pagetemplates-labelTemplateNamespace' ).plain()
+			fieldLabel: mw.message( 'bs-pagetemplates-label-tplns' ).plain()
 		} );
 		this.cbTemplateNamespace.setValue( bs.ns.NS_TEMPLATE );
 		this.cbTemplateNamespace.on( 'select', this.storePagesReload, this );
@@ -60,7 +60,7 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 		this.strPages.load( { params: { ns: this.cbTemplateNamespace.getValue() } } );
 
 		this.cbTemplate = Ext.create( 'Ext.form.ComboBox', {
-			fieldLabel: mw.message( 'bs-pagetemplates-labelArticle' ).plain(),
+			fieldLabel: mw.message( 'bs-pagetemplates-label-article' ).plain(),
 			labelWidth: 135,
 			labelAlign: 'right',
 			displayField: 'name',
@@ -83,6 +83,9 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 	},
 	storePagesReload: function( combo, records, eOpts ) {
 		this.strPages.load( { params: { ns: records[0].get( 'id' ) } } );
+	},
+	onBtnOKClick: function() {
+		this.fireEvent( 'ok', this, this.getData() );
 	},
 	resetData: function() {
 		this.tfLabel.reset();

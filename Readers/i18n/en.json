@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-readers-desc": "Creates a list of the people who read a page",
+	"prefs-readers": "Readers",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Reader}}|Readers}}",
+	"readers-user": "Pages {{GENDER:$1|read}} by: $1",
+	"readers": "Readers of \"$1\"",
+	"bs-readers-contentactions-label": "Display readers",
+	"bs-readers-pagenotexists": "Page does not exist.",
+	"bs-readers-pref-active": "Activate readers",
+	"bs-readers-pref-numofreaders": "Number of readers to display:",
+	"bs-readers-emptyinput": "No page has been provided.",
+	"bs-readers-header-username": "Username",
+	"bs-readers-header-readerspath": "Reader",
+	"bs-readers-header-ts": "Date"
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"bs-uemodulepdf-desc": "Mundëson eksportin në PDF",
+	"bs-uemodulepdf-pref-templatepath": "Standardi template:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF faqe e vetme",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Eksportojë këtë faqe si PDF.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "në dispozicion",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "nuk është në dispozicion"
+}

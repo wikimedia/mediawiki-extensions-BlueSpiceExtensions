@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Аль-Гимравий",
+			"Gazimagomedov"
+		]
+	},
+	"bs-statistics-to": "Рахъалде",
+	"bs-statistics-grain": "Жанисеб",
+	"bs-statistics-mode": "Куц",
+	"bs-statistics-absolute": "модуль",
+	"bs-statistics-year": "Сон",
+	"bs-statistics-month": "МоцI",
+	"bs-statistics-week": "Календарияб анкь",
+	"bs-statistics-day": "Къо",
+	"bs-statistics-finish": "Диаграмма гIуцIцIизе",
+	"bs-statistics-filters": "Фильтрал",
+	"bs-statistics-diag-number-of-users": "ГIахьалчагIазул къадар",
+	"bs-statistics-label-name": "ЦІар",
+	"bs-statistics-label-registration": "Регистрация",
+	"bs-statistics-diag-number-of-pages": "Гьумеразул номерал",
+	"bs-statistics-label-page": "Гьумер",
+	"bs-statistics-label-creator": "Автор",
+	"bs-statistics-diag-number-of-edits": "Хиса-басиязул къадар",
+	"bs-statistics-label-searchterm": "ЦIехолеб жо",
+	"bs-statistics-label-maxhits": "Киналго хIасилал",
+	"bs-statistics-filter-category": "Категория",
+	"bs-statistics-filter-searchscope": "ЦIех-рехалъул область",
+	"bs-statistics-portlet-numberofpages": "Гьумеразул къадар",
+	"bs-statistics-portlet-numberofeditsdesc": "Хиса-басиязул къадаралъул статистика",
+	"bs-statistics-portletconfig-periodday": "Сон"
+}

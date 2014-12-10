@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Meshkov.a",
+			"Alexandr Efremov"
+		]
+	},
+	"bs-blog-desc": "Отображает стиль блога для списка страниц",
+	"prefs-blog": "Блог",
+	"bs-blog-no-entries": "Нет ни одной записи в блоге.",
+	"bs-blog-comments": "Комментарии",
+	"bs-blog-read-more": "Читать подробнее",
+	"bs-blog-trackback": "Архив",
+	"bs-blog-permalink": "Постоянная ссылка",
+	"bs-blog-show-all": "Показать все записи",
+	"bs-blog-form-inline-text": "Заголовок ...",
+	"bs-blog-form-title-text": "Создать новую запись в блоге",
+	"bs-blog-form-button-text": "Создать",
+	"bs-blog-blog": "Блог",
+	"bs-blog-pref-moreinnewwindow": "Открыть новое окно для чтения дальше",
+	"bs-blog-pref-newentryfieldposition": "Расположение формы новой записи блога:",
+	"bs-blog-pref-showall": "Показать ссылки на все записи",
+	"bs-blog-pref-showinfo": "Показать информацию о записи",
+	"bs-blog-pref-showlimit": "Количество записей в блоге:",
+	"bs-blog-pref-shownewentryfield": "Показать форму новой записи блога",
+	"bs-blog-pref-showpermalink": "Показать постоянную ссылку",
+	"bs-blog-pref-sortby": "Сортировать по:",
+	"bs-blog-pref-imagerendermode": "Отображать изображения как:",
+	"bs-blog-pref-maxentrycharacters": "Количество слов в записи:",
+	"bs-blog-tag-blog-desc": "Показывать записи блога на каждой странице."
+}

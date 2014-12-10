@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gmelfi"
+		]
+	},
+	"bs-echo-page-create": "La pàggina [[:$1]] fu criata."
+}

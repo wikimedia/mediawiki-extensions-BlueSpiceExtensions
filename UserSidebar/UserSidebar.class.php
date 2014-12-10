@@ -27,22 +27,14 @@
 
  * @package    BlueSpice_Extensions
  * @subpackage UserSidebar
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
 
 /* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0.0
- * - Implemented keywords
- * - Raised to stable
- * v0.1
- * - initial release
+ * v2.23.0
  */
-
-// Last review MRG (01.07.11 02:24)
 
 /**
  * Base class for UserSidebar extension
@@ -58,21 +50,21 @@ class UserSidebar extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		//global $wgExtensionMessagesFiles;
-		//$wgExtensionMessagesFiles['UserSidebar'] = __DIR__ . '/UserSidebar.i18n.php';
-
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'UserSidebar',
-			EXTINFO::DESCRIPTION => 'Adds the focus tab to sidebar.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-usersidebar-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht, Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
+			EXTINFO::DEPS        => array(
+				'bluespice' => '2.22.0',
+				'WidgetBar' => 'default'
+			)
 		);
 		$this->mExtensionKey = 'MW::UserSidebar';
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -85,18 +77,32 @@ class UserSidebar extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		global $wgAPIModules;
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
-		$this->setHook( 'BSBlueSpiceSkinFocusSidebar' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'userCan', 'onUserCan' );
 		$this->setHook( 'GetPreferences' );
-
-		BsConfig::registerVar( 'MW::UserSidebar::UserPageSubPageTitle', 'Sidebar', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-usersidebar-pref-UserPageSubPageTitle' );
-		BsConfig::registerVar( 'MW::UserSidebar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-usersidebar-userpagesettings-link-title', 'link' );
+		$this->setHook( 'EditFormPreloadText' );
+		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'PageContentSaveComplete' );
 
 		$wgAPIModules['sidebar'] = 'ApiSidebar';
+
+		BsConfig::registerVar( 'MW::UserSidebar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-usersidebar-userpagesettings-link-title', 'link' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
+	/**
+	 *
+	 * @param OutputPage $oOutputPage
+	 * @param SkinTemplate $oSkinTemplate
+	 * @return boolean
+	 */
+	public function onBeforePageDisplay( $oOutputPage, $oSkinTemplate ) {
+		//Removed module to restore old functionality
+		//$oOutputPage->addModules( 'ext.bluespice.usersidebar' );
+
+		return true;
+	}
 
 	/**
 	 * Hook-Handler for 'userCan', prevents foreign access to a users sidebar settings
@@ -106,10 +112,14 @@ class UserSidebar extends BsExtensionMW {
 	 * @param bool $bResult Pointer to result returned if hook returns false. If null is returned,	userCan checks are continued by internal code.
 	 * @return bool false if the user accesses a UserSidebar Title of another user, true in all other cases.
 	 */
-	public function onUserCan( $oTitle, $oUser, $sAction, $bResult ){
-		if( $sAction != 'edit' ) return true;
-		if( $oTitle->getNamespace() != NS_USER || !$oTitle->isSubpage() ) return true;
-		if( strcasecmp( $oTitle->getSubpageText(), BsConfig::get( 'MW::UserSidebar::UserPageSubPageTitle' ) ) == 0 ){
+	public function onUserCan( $oTitle, $oUser, $sAction, $bResult ) {
+		if( $sAction != 'edit' ) {
+			return true;
+		}
+		if( $oTitle->getNamespace() != NS_USER || !$oTitle->isSubpage() ) {
+			return true;
+		}
+		if( strcasecmp( $oTitle->getSubpageText(), 'Sidebar' ) == 0 ) {
 			$oBasePage = Title::newFromText( $oTitle->getBaseText(), NS_USER );
 			if( !$oBasePage->equals( $oUser->getUserPage() ) ) {
 				$bResult = false;
@@ -126,9 +136,11 @@ class UserSidebar extends BsExtensionMW {
 	 * @return bool true always true to keep hook alive
 	 */
 	public function onGetPreferences( $oUser, &$aPreferences ) {
-		$sUserPageSubPageTitle    = BsConfig::get( 'MW::UserSidebar::UserPageSubPageTitle' );
-		$oUserSidebarArticleTitle = Title::makeTitle( NS_USER, $oUser->getName().'/'.$sUserPageSubPageTitle );
-		$aPreferences['MW_UserSidebar_LinkToEdit']['default'] = array( 'href' => $oUserSidebarArticleTitle->getEditURL(), 'content' => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->plain() );
+		$oUserSidebarArticleTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Sidebar' );
+		$aPreferences['MW_UserSidebar_LinkToEdit']['default'] = array(
+			'href' => $oUserSidebarArticleTitle->getEditURL(),
+			'content' => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->text()
+		);
 		return true;
 	}
 
@@ -140,8 +152,7 @@ class UserSidebar extends BsExtensionMW {
 	 * @return array The SettingsViews array with an andditional View object
 	 */
 	public function onUserPageSettings( $oUser, $oTitle, &$aSettingViews ){
-		$sUserPageSubPageTitle    = BsConfig::get( 'MW::UserSidebar::UserPageSubPageTitle' );
-		$oUserSidebarArticleTitle = Title::makeTitle( NS_USER, $oUser->getName().'/'.$sUserPageSubPageTitle );
+		$oUserSidebarArticleTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Sidebar' );
 
 		$oUserPageSettingsView = new ViewBaseElement();
 		$oUserPageSettingsView->setAutoWrap( '<div id="bs-usersidebar-settings" class="bs-userpagesettings-item">###CONTENT###</div>' );
@@ -150,46 +161,15 @@ class UserSidebar extends BsExtensionMW {
 		);
 		$oUserPageSettingsView->addData(
 			array(
-				'URL'      => htmlspecialchars( $oUserSidebarArticleTitle->getEditURL() ),
-				'TITLE'    => wfMessage( 'bs-usersidebar-userpagesettings-link-title' )->plain(),
-				'TEXT'     => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->plain(),
-				'IMGALT'   => wfMessage( 'bs-usersidebar-userpagesettings-headline' )->plain(),
-				'IMGSRC'   => $this->getImagePath().'bs-userpage-sidebar.png',
+				'URL' => htmlspecialchars( $oUserSidebarArticleTitle->getEditURL() ),
+				'TITLE' => wfMessage( 'bs-usersidebar-userpagesettings-link-title' )->plain(),
+				'TEXT' => wfMessage( 'bs-usersidebar-userpagesettings-link-text' )->text(),
+				'IMGALT' => wfMessage( 'bs-tab_focus' )->plain(),
+				'IMGSRC' => $this->getImagePath().'bs-userpage-sidebar.png',
 			)
 		);
 
 		$aSettingViews[] = $oUserPageSettingsView;
-		return true;
-	}
-
-	/**
-	 * Filter-Event-Handler for 'BSBlueSpiceSkinFocusSidebar'. Adds Widgets to the focus sidebar.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current User object
-	 * @param QuickTemplate $oQuickTemplate Current QuickTemplate object
-	 * @return array Filtered $aViews collection
-	 */
-	public function onBSBlueSpiceSkinFocusSidebar( &$aViews, $oUser, $oSkin ) {
-		if( $oUser->isLoggedIn() === false ) {
-			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
-			return true;
-		}
-
-		//$bEnableSidebarCache   = $this->mAdapter->get( 'EnableSidebarCache' ); //Currently not in use
-		//$bSidebarCacheExpiry   = $this->mAdapter->get( 'SidebarCacheExpiry' ); // TODO RBV (27.06.11 13:25): Use them for caching
-		$sTitle = BsConfig::get( 'MW::UserSidebar::UserPageSubPageTitle' );
-		$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/'.$sTitle );
-		if( $oTitle->exists() === false ) {
-			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
-			return true;
-		}
-		
-		$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
-		if( empty($aWidgets) ) {
-			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
-		}
-
-		$aViews = array_merge( $aViews, $aWidgets );
 		return true;
 	}
 
@@ -201,8 +181,131 @@ class UserSidebar extends BsExtensionMW {
 	 * @return array of WidgetView objects
 	 */
 	private function getDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		wfRunHooks( 'BSUserSidebarDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
+		if( $oUser->isLoggedIn() ) {
+			$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', $oTitle->getPrefixedDBkey() );
+		} else {
+			$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', 'default' );
+		}
+
+		$aData = BsCacheHelper::get( $sKey );
+
+		if( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching Widget views from cache' );
+			$aViews = $aData;
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching Widget views from DB' );
+			wfRunHooks( 'BSUserSidebarDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
+			BsCacheHelper::set( $sKey , $aViews, 60*15 );// invalidate cache after 15 minutes
+		}
+
 		return true;
 	}
 
+	/**
+	 * Adds Focus tab to main navigation
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		$aViews = array();
+		$oUser = $sktemplate->getUser();
+		$oCurrentTitle = $sktemplate->getTitle();
+		$sEditLink = '';
+		if ( $oUser->isLoggedIn() === false ) {
+			$this->getDefaultWidgets( $aViews, $oUser, $oCurrentTitle );
+		} else {
+			$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Sidebar' );
+
+			$sEditLink = Linker::link(
+				$oTitle,
+				'',
+				array(
+					'id' => 'bs-usersidebar-edit',
+					'class' => 'icon-pencil'
+				),
+				array(
+					'action' => 'edit',
+					'preload' => ''
+				)
+			);
+
+			if ( $oTitle->exists() === false ) {
+				$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
+			}else {
+				$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
+				if ( empty($aWidgets) ) {
+					$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
+				}
+
+				$aViews = array_merge( $aViews, $aWidgets );
+			}
+		}
+		$aOut = array();
+		$aOut[] = $sEditLink;
+		foreach ( $aViews as $oView ) {
+			if ( $oView instanceof ViewBaseElement ) {
+				$aOut[] = $oView->execute();
+			}
+		}
+
+		if ( $tpl instanceof BsBaseTemplate ) {
+			$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
+				'position' => 20,
+				'label' => wfMessage( 'bs-tab_focus' )->plain(),
+				'class' => 'icon-clipboard',
+				'content' => implode( "\n", $aOut )
+			);
+		} else {
+			$tpl->data['sidebar'][wfMessage( 'bs-tab_focus' )->plain()] = implode( "\n", $aOut );
+		}
+
+		return true;
+	}
+
+	/**
+	 * Fills default widget list definition into user's config page
+	 * @param string $text
+	 * @param Title $title
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onEditFormPreloadText( &$text, &$title ) {
+		if( !$title->equals(Title::makeTitle(NS_USER, $this->getUser()->getName().'/Sidebar')) ) {
+			return true;
+		}
+		$aViews = array();
+		$this->getDefaultWidgets($aViews, $this->getUser(), $title);
+		$aDefaultWidgetKeywords = array_keys($aViews);
+
+		$text = '* '. implode( "\n* ", $aDefaultWidgetKeywords );
+
+		return true;
+	}
+
+	/**
+	 * Invalidates user sidebar cache
+	 * @param Article $article
+	 * @param User $user
+	 * @param Content $content
+	 * @param type $summary
+	 * @param type $isMinor
+	 * @param type $isWatch
+	 * @param type $section
+	 * @param type $flags
+	 * @param Revision $revision
+	 * @param Status $status
+	 * @param type $baseRevId
+	 * @return boolean
+	 */
+	public static function onPageContentSaveComplete( $article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
+		if( !$article->getTitle()->equals( Title::newFromText( $user->getName().'/Sidebar', NS_USER) ) ) return true;
+
+		$aKeys = array(
+			BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', $article->getTitle()->getPrefixedDBkey() ),
+			BsCacheHelper::getCacheKey( 'BlueSpice', 'UserSidebar', 'default' ),
+		);
+		BsCacheHelper::invalidateCache( $aKeys );
+
+		return true;
+	}
 }

@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-contextmenu-desc": "Fournit des menus contextuels pour divers liens",
+	"prefs-contextmenu": "Menu contextuel",
+	"bs-contextmenu-pref-modus": "Ouvrir le menu contextuel par (pas pour les mobiles) :",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Cliquer sur le bouton droit (appuyer sur CTRL affichera le menu contextuel par défaut du navigateur)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Cliquer sur le bouton droit et appuyer sur CTRL (un clic droit normal affichera le menu contextuel par défaut du navigateur)",
+	"bs-contextmenu-page-edit": "Modifier la page",
+	"bs-contextmenu-page-delete": "Supprimer la page",
+	"bs-contextmenu-page-move": "Déplacer la page",
+	"bs-contextmenu-page-history": "Afficher l’historique de la page",
+	"bs-contextmenu-page-protect": "Protéger la page",
+	"bs-contextmenu-page-purge": "Purger le cache et afficher la page",
+	"bs-contextmenu-page-info": "Afficher les informations de la page",
+	"bs-contextmenu-media-reupload": "Télécharger la nouvelle version",
+	"bs-contextmenu-media-view-page": "Afficher la page de description du fichier et son historique",
+	"bs-contextmenu-user-mail": "Envoyer un courriel",
+	"bs-contextmenu-user-talk": "Laisser un message sur la page de discussion",
+	"bs-contextmenu-file-download": "Télécharger un fichier"
+}

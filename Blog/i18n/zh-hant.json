@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"LNDDYL",
+			"Cwlin0416"
+		]
+	},
+	"prefs-blog": "部落格",
+	"bs-blog-comments": "評論",
+	"bs-blog-read-more": "閱讀更多",
+	"bs-blog-permalink": "固定連結",
+	"bs-blog-show-all": "顯示所有項目",
+	"bs-blog-form-inline-text": "標題...",
+	"bs-blog-form-title-text": "建立新的部落格條目",
+	"bs-blog-form-button-text": "建立",
+	"bs-blog-blog": "部落格",
+	"bs-blog-pref-moreinnewwindow": "開啟新視窗以閱讀更多",
+	"bs-blog-pref-showall": "顯示所有項目連結",
+	"bs-blog-pref-showinfo": "顯示有關該條目的資訊",
+	"bs-blog-pref-showpermalink": "顯示固定連結",
+	"bs-blog-pref-sortby": "排序方式：",
+	"bs-blog-pref-imagerendermode": "顯示圖片為："
+}

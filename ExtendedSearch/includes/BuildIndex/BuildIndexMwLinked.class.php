@@ -4,6 +4,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @package    BlueSpice_Extensions
@@ -29,7 +30,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	const S_ERROR_MSG_KEY = 'error-indexing-linked';
 	/**
 	 * Pointer to current database connection
-	 * @var object Referenec to Database object 
+	 * @var object Referenec to Database object
 	 */
 	protected $oDbr;
 	/**
@@ -39,7 +40,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	protected $documentsDb = null;
 	/**
 	 * Constructor for BuildIndexMwLinked class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate. 
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		$this->oDbr = wfGetDB( DB_SLAVE );
@@ -71,12 +72,11 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	 * @param string $filename Filename of document to be indexed.
 	 * @param string $fileText The body of the wiki-page or the document
 	 * @param string $path Path to document if external (not in wiki). Might be empty or null
-	 * @param unknown $ts Timestamp
+	 * @param unknown $timestamp Timestamp
 	 * @return Apache_Solr_Document
 	 */
 	public function makeLinkedDocument( $type, $filename, &$fileText, $path, $timestamp ) {
-		$doc = $this->oMainControl->makeDocument( 'linked', $type, $filename, $fileText, -1, 998, $path, $timestamp );
-		return $doc;
+		return $this->oMainControl->makeDocument( 'external', $type, $filename, $fileText, -1, 998, $path, $path, $timestamp );
 	}
 
 	/**
@@ -91,54 +91,26 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 
 			$path = urldecode( $document->el_to );
 			$path = str_replace( "file:///", "", $path );
-
-			$ext = preg_split( '#[/\\.]+#', $path );
-			$ext = strtolower( array_pop( $ext ) );
-
-			$docType = $this->mimeDecoding( $ext ); // really needed for file extensions? or is it a relict from mw images (repo)
-			if ( !isset( $this->aFileTypes[$docType] ) || ( $this->aFileTypes[$docType] !== true ) ) {
-				$this->writeLog( ( 'Filetype not allowed: '.$docType.' ('.$path.')' ) );
-				continue;
-			}
-
-			$size = @filesize( urldecode( $path ) );
-			if ( $size === false ) {
-				$this->writeLog( ( 'File not accessible: '.$path ) );
-				continue;
-			}
-			if ( $this->sizeExceedsMaxDocSize( $size ) ){
-				$this->writeLog( ( 'File exceeds max doc size and will not be indexed: '.$document->el_to ) );
-				continue;
-			}
+			$fileInfo = new SplFileInfo( $path );
+			if ( !$fileInfo->isFile() ) continue;
 
 			$filename = explode( '/', $path );
 			$filename = array_pop( $filename );
 
+			if ( $this->sizeExceedsMaxDocSize( $fileInfo->getSize(), $filename ) ) continue;
+
+			$ext = preg_split( '#[/\\.]+#', $path );
+			$ext = strtolower( array_pop( $ext ) );
+			$docType = $this->mimeDecoding( $ext ); // really needed for file extensions? or is it a relict from mw images (repo)
+			if ( !$this->checkDocType( $docType, $filename ) ) continue;
+
 			$time = @filemtime( urldecode( $path ) );
 			$date = date( "YmdHis", $time );
 
-			// Check if the file is already indexed
-			try {
-				$uniqueIdForDocument = $this->oMainControl->getUniqueId( -1, $path );
-				$hitsDocumentInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForDocument, 0, 1 );
-			} catch ( Exception $e ) {
-				$this->writeLog( 'Error indexing file '.$document->el_to.' with errormessage '.$e->getMessage() );
-				continue;
-			}
+			if ( $this->checkExistence( $path, 'external', $date, $filename ) ) continue;
 
-			// If already indexed and timestamp is not newer => don't index it!
-			if ( $hitsDocumentInIndexWithSameUID->response->numFound != 0 ) {
-				// timestamps have different format => compare function to equalize both
-				$timestampIndexDoc = $hitsDocumentInIndexWithSameUID->response->docs[0]->ts;
-				if ( !$this->isTimestamp1YoungerThanTimestamp2( $date, $timestampIndexDoc ) ) {
-					$this->writeLog( ( 'Already in index: '.$document->el_to ) );
-					continue;
-				}
-			}
-
-			$fileInfo = new SplFileInfo( $path );
 			$fileRealPath = $fileInfo->getRealPath();
-			$fileText =& $this->oMainControl->oSearchService->getFileText( $fileRealPath );
+			$fileText = $this->getFileText( $fileRealPath, $filename );
 			$doc = $this->makeLinkedDocument( $docType, $filename, $fileText, $path, $date );
 			$this->writeLog( $path );
 			if ( $doc ) {

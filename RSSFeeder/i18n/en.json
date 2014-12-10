@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-rssfeeder-desc": "An extension to output valid RSS for every extension, which has a buildRss-function",
+	"rssfeeder": "RSS feeder",
+	"bs-rssfeeder-pagetext": "You can subscribe to the following RSS feeds:",
+	"bs-rssfeeder-recent-changes": "Recent changes",
+	"bs-rssfeeder-pages": "Page",
+	"bs-rssfeeder-submit": "Show",
+	"bs-rssfeeder-rss": "RSS feed",
+	"bs-rssfeeder-rss-desc": "Create your own RSS feed",
+	"bs-extjs-rssfeeder-rss-title": "RSS URL"
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-insertlink-dialog-title": "Чуйилла хьажораг",
+	"bs-insertlink-tab-wiki-page": "Вики агӀо",
+	"bs-insertlink-label-page": "АгӀо",
+	"bs-insertlink-label-mail": "Электронан почтан адрес",
+	"bs-insertlink-label-description": "Цуьнах лаьцна",
+	"bs-insertlink-label-file": "Файл",
+	"bs-insertlink-label-searchfile": "Лахар…",
+	"bs-insertlink-select-a-namespace": "(АгӀонаш)"
+}

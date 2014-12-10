@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-watchlist-desc": "加入监视列表小组件和标签",
+	"bs-watchlist-title-sidebar": "监视列表",
+	"bs-watchlist-pref-widgetlimit": "记录限制：",
+	"bs-watchlist-pref-widgetsortodr": "排序：",
+	"bs-watchlist-pref-sort-time": "时间",
+	"bs-watchlist-pref-sort-title": "标题",
+	"bs-watchlist-tag-watchlist-desc": "创建在您监视列表并没有太大变化的页面列表。"
+}

@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-wantedarticle-desc": "Додава страница во списокот на барани",
+	"prefs-wantedarticle": "Посакувана страница",
+	"bs-wantedarticle-ajax-error-no-parameter": "Нема укажано наслов на страницата.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Предложената страница „$1“ веќе постои.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Страницата „$1“ е веќе предложена.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Пердлогот „$1“ е доставен.",
+	"bs-wantedarticle-success-suggestion-entered": "Вашиот предлог „$1“ е доставен.",
+	"bs-wantedarticle-sort-value-unknown": "Важечки вредности се „title“ (наслов) и „time“ (време).",
+	"bs-wantedarticle-order-value-unknown": "Важечки вредности се: ASC ({{int:bs-wantedarticle-pref-order-asc}}) и DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
+	"bs-wantedarticle-page-removed": "Страницата „$1“ е отстранета.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Предложи",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Создај",
+	"bs-wantedarticle-single-textfield-defaulttext": "Наслов на страницата",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Испишува список на посакувани страници. Расположиви атрибути во поставката:",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>: Број на страници за приказ.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Заглавие.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Начин на подредување <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) или <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Подредување по <code>title</code> (наслов) или <code>time</code> (време).",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Формат на изводот <code>list</code> (список) или <code>quene</code> (одделено со запирки).",
+	"bs-wantedarticle-tag-more-linktext": "Повеќе ...",
+	"bs-wantedarticle-tag-default-title": "Посакувани страници",
+	"bs-wantedarticle-pref-includelimit": "Број на предлози:",
+	"bs-wantedarticle-pref-deleteexisting": "Бриши ги постоечките записи во списокот",
+	"bs-wantedarticle-pref-showcreate": "Прикажувај врска за создавање",
+	"bs-wantedarticle-pref-deleteoncreation": "Отстрани го записот од списокот кога ќе се создаде неговата страница",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Наслов на шаблонот за предлози:",
+	"bs-wantedarticle-pref-sort": "Подреди по:",
+	"bs-wantedarticle-pref-order": "Редослед:",
+	"bs-wantedarticle-pref-sort-time": "Време",
+	"bs-wantedarticle-pref-sort-title": "Наслов",
+	"bs-wantedarticle-pref-order-asc": "нагорен",
+	"bs-wantedarticle-pref-order-desc": "надолен",
+	"bs-wantedarticle-create-page": "Создади ја страницата „$1“.",
+	"bs-wantedarticle-suggest-page": "Предложи ја страницата „$1“.",
+	"bs-wantedarticle-info-nothing-entered": "Наведете важечки наслов на страницата.",
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Следниов знак не може да се користи|Следниве знаци не можат да се користат}} во наслов на страница: $2"
+}

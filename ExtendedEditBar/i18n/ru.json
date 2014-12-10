@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Alexandr Efremov"
+		]
+	},
+	"bs-extendededitbar-desc": "Добавляет дополнительные кнопки в поле вики-редактирование",
+	"bs-extendededitbar-redirecttip": "Перенаправление",
+	"bs-extendededitbar-redirectsample": "Вставить текст",
+	"bs-extendededitbar-striketip": "Зачёркивание",
+	"bs-extendededitbar-strikesample": "Зачёркнутый текст",
+	"bs-extendededitbar-entertip": "Разрыв строки",
+	"bs-extendededitbar-uppertip": "Надстрочный",
+	"bs-extendededitbar-uppersample": "Надстрочный текст",
+	"bs-extendededitbar-lowertip": "Подстрочный",
+	"bs-extendededitbar-lowersample": "Подстрочный текст",
+	"bs-extendededitbar-smalltip": "Маленький",
+	"bs-extendededitbar-smallsample": "Мелкий текст",
+	"bs-extendededitbar-commenttip": "Вставить скрытый комментарий",
+	"bs-extendededitbar-commentsample": "Комментарий",
+	"bs-extendededitbar-gallerytip": "Вставить галерею изображений",
+	"bs-extendededitbar-gallerysamplepicture": "Изображение",
+	"bs-extendededitbar-gallerysamplecaption": "Подпись",
+	"bs-extendededitbar-quotetip": "Вставить блок цитируемого текста",
+	"bs-extendededitbar-quotesample": "Цитата",
+	"bs-extendededitbar-tabletip": "Вставить таблицу",
+	"bs-extendededitbar-tablesampleheader": "Заголовок",
+	"bs-extendededitbar-tablesamplerow": "Строка",
+	"bs-extendededitbar-tablesamplecell": "Ячейка"
+}

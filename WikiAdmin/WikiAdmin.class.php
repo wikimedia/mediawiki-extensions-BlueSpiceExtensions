@@ -24,22 +24,11 @@
   * http://www.gnu.org/copyleft/gpl.html
   *
   * For further information visit http://www.blue-spice.org
-  * 
-  * Version information
-  * $LastChangedDate: 2013-06-25 11:17:54 +0200 (Di, 25 Jun 2013) $
-  * $LastChangedBy: rvogel $
-  * $Rev: 9912 $
-
   */
 
 /* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v0.1.0
- * FIRST CHANGES
+ * v2.23.0
  */
-  
- // Last review: (01.07.11 01:58)
 
 class WikiAdmin extends BsExtensionMW {
 
@@ -117,16 +106,11 @@ class WikiAdmin extends BsExtensionMW {
 	// TODO SU (04.07.11 11:09): Brauchen wir das noch?
 	public static function &get( $name ) {
 		switch ( $name ) {
-			case 'ExcludeGroups' :        return self::$prExcludeGroups;
-				break;
-			case 'ExcludeDeleteGroups' :  return self::$prExcludeDeleteGroups;
-				break;
-			case 'ExcludeRights' :        return self::$prExcludeRights;
-				break;
-			case 'CommonRights' :         return self::$prCommonRights;
-				break;
-			case 'HardPerms' :            return self::$prHardPerms;
-				break;
+			case 'ExcludeGroups': return self::$prExcludeGroups;
+			case 'ExcludeDeleteGroups': return self::$prExcludeDeleteGroups;
+			case 'ExcludeRights': return self::$prExcludeRights;
+			case 'CommonRights': return self::$prCommonRights;
+			case 'HardPerms': return self::$prHardPerms;
 		}
 		return null;
 	}
@@ -161,7 +145,7 @@ class WikiAdmin extends BsExtensionMW {
 	public static function loadModules() {
 		if ( !self::$prLoadModulesAndScripts ) return;
 		foreach( self::$prRegisteredModules as $name => $params ) {
-			self::$prRunningModules[$name] =& BsExtensionManager::getExtension( $name );
+			self::$prRunningModules[$name] = BsExtensionManager::getExtension( $name );
 		}
 		foreach( self::$prRegisteredModuleClasses as $name => $params ) {
 			self::$prRunningModules[$name] = new $name();
@@ -175,7 +159,7 @@ class WikiAdmin extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'WikiAdmin',
-			EXTINFO::DESCRIPTION => 'Central point of administration for BlueSpice',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-wikiadmin-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Mathias Scheer',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -195,5 +179,76 @@ class WikiAdmin extends BsExtensionMW {
 		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Adds WikiAdmin tab to main navigation
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
+	 */
+	public static function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if( $sktemplate->getUser()->isAllowed( 'wikiadmin' ) === false ) {
+			return true;
+		}
+
+		$oSpecialPage = SpecialPage::getTitleFor( 'WikiAdmin' );
+		$aRegisteredModules = WikiAdmin::getRegisteredModules();
+
+		$aOutSortable = array();
+		$aOut = array();
+		$aOut[] = '<ul>';
+
+		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
+			$skeyLower = mb_strtolower( $sModuleKey );
+			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
+			$sUrl = $oSpecialPage->getLocalURL( array( 'mode' => $sModuleKey ) );
+			//$sUrl = str_replace( '&', '&amp;', $sUrl );
+			$sLink = Html::element(
+				'a',
+				array(
+					'id' => 'bs-admin-'.$skeyLower,
+					'href' => $sUrl,
+					'title' => $sModulLabel
+				),
+				$sModulLabel
+			);
+			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
+		}
+
+		$aOutSortable['Shop'] = self::getShopListItem();
+
+		ksort( $aOutSortable );
+		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
+		$aOut[] = '</ul>';
+
+		if ( $tpl instanceof BsBaseTemplate ) {
+			$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
+				'position' => 100,
+				'label' => wfMessage( 'bs-tab_admin' )->plain(),
+				'class' => 'icon-cog',
+				'content' => implode( "\n", $aOut )
+			);
+		} else {
+			$tpl->data['sidebar'][wfMessage( 'bs-tab_admin' )->plain()] = implode( "\n", $aOut );
+		}
+		return true;
+	}
+
+	/**
+	 * Returns a list item with a link to the BlueSpice shop
+	 * @return string Link to the shop
+	 */
+	private static function getShopListItem() {
+		$sLink = Html::element(
+			'a',
+			array(
+				'id' => 'bs-admin-shop',
+				'href' => 'http://shop.blue-spice.org/',
+				'title' => wfMessage( 'bs-wikiadmin-shop' )->escaped()
+			),
+			wfMessage( 'bs-wikiadmin-shop' )->escaped()
+		);
+		return '<li>'.$sLink.'</li>';
 	}
 }

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer",
+			"Violetanka"
+		]
+	},
+	"bs-shoutbox-message": "Yeni bir yorum yazın...",
+	"bs-shoutbox-shout": "Gönder",
+	"bs-shoutbox-loading": "Yükleniyor...",
+	"bs-shoutbox-pref-numberofshouts": "Görüntülenen ileti sayısı:",
+	"bs-shoutbox-confirm-title": "Onayla"
+}

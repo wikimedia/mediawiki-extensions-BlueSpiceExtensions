@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-extendededitbar-desc": "Proporciona botóns adicionais para o campo de edición da wiki",
+	"bs-extendededitbar-redirecttip": "Redirección",
+	"bs-extendededitbar-redirectsample": "Inserir texto",
+	"bs-extendededitbar-striketip": "Riscar",
+	"bs-extendededitbar-strikesample": "Texto riscado",
+	"bs-extendededitbar-entertip": "Salto de liña",
+	"bs-extendededitbar-uppertip": "Superíndice",
+	"bs-extendededitbar-uppersample": "Texto en superíndice",
+	"bs-extendededitbar-lowertip": "Subíndice",
+	"bs-extendededitbar-lowersample": "Texto en subíndice",
+	"bs-extendededitbar-smalltip": "Pequeno",
+	"bs-extendededitbar-smallsample": "Texto pequeno",
+	"bs-extendededitbar-commenttip": "Inserir comentario oculto",
+	"bs-extendededitbar-commentsample": "Comentario",
+	"bs-extendededitbar-gallerytip": "Inserir galeria de imaxes",
+	"bs-extendededitbar-gallerysamplepicture": "Imaxe",
+	"bs-extendededitbar-gallerysamplecaption": "Pé de foto",
+	"bs-extendededitbar-quotetip": "Inserir bloque de texto citado",
+	"bs-extendededitbar-quotesample": "Bloque de cita",
+	"bs-extendededitbar-tabletip": "Inserir táboa",
+	"bs-extendededitbar-tablesampleheader": "Cabeceira",
+	"bs-extendededitbar-tablesamplerow": "Liña",
+	"bs-extendededitbar-tablesamplecell": "Cela"
+}

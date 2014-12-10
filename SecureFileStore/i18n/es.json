@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Fitoschido"
+		]
+	},
+	"bs-securefilestore-desc": "Evita el acceso no autorizado a archivos e imágenes",
+	"prefs-securefilestore": "Almacén seguro de archivos",
+	"bs-securefilestore-pref-defaultdisposition": "Mostrar archivos de forma predeterminada:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Navegador",
+	"bs-securefilestore-pref-defaultdisposition-external": "Externo",
+	"bs-securefilestore-pref-dispositionattachment": "Tipos de archivo externos:",
+	"bs-securefilestore-pref-dispositioninline": "Tipos de archivo del navegador:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Siempre mostrar estos tipos de archivo:"
+}

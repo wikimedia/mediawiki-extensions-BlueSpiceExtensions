@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-interwikilinks-invalid-pfx-spc": "接頭辞が無効です。空白を使用しないでください。",
+	"bs-interwikilinks-invalid-url-spc": "URL が無効です。空白を使用しないでください。",
+	"bs-interwikilinks-label": "ウィキ間リンク",
+	"bs-interwikilinks-link-created": "ウィキ間リンクを作成しました。",
+	"bs-interwikilinks-link-added": "ウィキ間リンクを追加しました。",
+	"bs-interwikilinks-link-deleted": "ウィキ間リンクを削除しました。",
+	"bs-interwikilinks-nopfx": "接頭辞を指定してください。",
+	"bs-interwikilinks-nourl": "URL を指定してください。",
+	"bs-interwikilinks-pfxexists": "この接頭辞は既に存在します。",
+	"bs-interwikilinks-headerprefix": "接頭辞",
+	"bs-interwikilinks-titleaddinterwikilink": "ウィキ間リンクの追加",
+	"bs-interwikilinks-titleeditinterwikilink": "ウィキ間リンクの編集",
+	"bs-interwikilinks-labelprefix": "接頭辞",
+	"bs-interwikilinks-titledeleteinterwikilink": "ウィキ間リンクの削除",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "このウィキ間リンクを本当に削除しますか?",
+	"bs-interwikilinks-insertlink-labelprefix": "接頭辞"
+}

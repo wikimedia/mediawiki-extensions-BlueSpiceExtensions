@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Ajoute une fonctionnalité de coloration syntaxique personnalisable",
+	"prefs-csyntaxhighlight": "Coloriseur syntaxique",
+	"bs-csyntaxhighlight-pref-theme": "Thème :",
+	"bs-csyntaxhighlight-pref-gutter": "Afficher les numéros de ligne",
+	"bs-csyntaxhighlight-pref-autolinks": "URLs des liens",
+	"bs-csyntaxhighlight-pref-toolbar": "Afficher la barre d’outils"
+}

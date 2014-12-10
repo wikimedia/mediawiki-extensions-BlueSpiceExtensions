@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Freked",
+			"Lokal Profil",
+			"Platinawolf"
+		]
+	},
+	"prefs-saferedit": "Säkrare redigering",
+	"bs-saferedit-restore": "Återställ",
+	"bs-saferedit-user-editing": "$1 {{GENDER:$1|redigerar}} sidan",
+	"bs-saferedit-someone-editing": "Sidan redigeras",
+	"bs-saferedit-lastsavedversion": "Senast sparad version från $1 - $2.",
+	"bs-saferedit-unsavedchanges": "Det finns osparade ändringar.",
+	"bs-saferedit-othersectiontitle": "Avsnitt att återställa",
+	"bs-saferedit-othersectiontext2": "Säkerhetskopian skapades $1 - $2.",
+	"bs-saferedit-othersectiontext3": "Vill du byta till det avsnittet?"
+}

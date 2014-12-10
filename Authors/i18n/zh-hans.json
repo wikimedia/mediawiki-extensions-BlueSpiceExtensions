@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-authors-desc": "显示页面作者的个人资料图片",
+	"prefs-authors": "此页面作者",
+	"bs-authors-title": "$1位{{GENDER:$2|作者}}",
+	"bs-authors-profileimage": "描述图像",
+	"bs-authors-profileimage-change": "更改描述图像",
+	"bs-authors-show-all-authors": "更多作者可用",
+	"bs-authors-pref-imageheight": "图像高度：",
+	"bs-authors-pref-imagewidth": "图像宽度：",
+	"bs-authors-pref-limit": "作者显示限制：",
+	"bs-authors-pref-show": "显示作者",
+	"bs-authors-switch-description": "在此页面隐藏作者。"
+}

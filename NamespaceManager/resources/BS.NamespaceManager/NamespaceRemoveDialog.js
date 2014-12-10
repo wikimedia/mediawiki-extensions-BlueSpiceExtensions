@@ -17,22 +17,21 @@ Ext.define( 'BS.NamespaceManager.NamespaceRemoveDialog', {
 	currentData: {},
 	selectedData: {},
 	afterInitComponent: function() {
-
+		var msg = mw.message( 'bs-from-something', this.nsName ).text();
 		this.rgNamespacenuker = Ext.create('Ext.form.RadioGroup', {
 			// Arrange radio buttons into two columns, distributed vertically
 			columns: 1,
 			vertical: true,
 			items: [
-				{ boxLabel: mw.message('bs-namespacemanager-willDelete').plain(), name: 'rb', inputValue: '0' },
-				{ boxLabel: mw.message('bs-namespacemanager-willMove').plain(), name: 'rb', inputValue: '1' },
-				{ boxLabel: mw.message('bs-namespacemanager-willMoveSuffix').plain(), name: 'rb', inputValue: '2' }
+				{ boxLabel: mw.message( 'bs-namespacemanager-willdelete' ).text(), name: 'rb', inputValue: '0' },
+				{ boxLabel: mw.message( 'bs-namespacemanager-willmove' ).text(), name: 'rb', inputValue: '1' },
+				{ boxLabel: mw.message( 'bs-namespacemanager-willmovesuffix', msg ).text(), name: 'rb', inputValue: '2' }
 			]
 		});
-
 		this.items = [{
-				html: mw.message( 'bs-namespacemanager-deletewarning' ).plain()
+				html: mw.message( 'bs-namespacemanager-deletewarning' ).text()
 			}, {
-				html: mw.message( 'bs-namespacemanager-articlesPresent' ).plain()
+				html: mw.message( 'bs-namespacemanager-pagepresent' ).text()
 			},
 			this.rgNamespacenuker
 		];

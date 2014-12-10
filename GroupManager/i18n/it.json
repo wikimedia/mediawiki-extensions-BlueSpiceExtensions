@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"FRacco"
+		]
+	},
+	"bs-groupmanager-desc": "Interfaccia di amministrazione per aggiungere, modificare e cancellare gruppi utenti e relativi diritti",
+	"bs-groupmanager-grpexists": "Il gruppo esiste già.",
+	"bs-groupmanager-grpadded": "Il gruppo è stato aggiunto.",
+	"bs-groupmanager-grpedited": "Il gruppo è stato modificato.",
+	"bs-groupmanager-grpremoved": "Il gruppo è stato rimosso.",
+	"bs-groupmanager-label": "Gestione gruppi",
+	"bs-groupmanager-invalid-name": "Il nome del gruppo contiene {{PLURAL:$1|un carattere|caratteri}} non {{PLURAL:$1|valido|validi}}: $2",
+	"bs-groupmanager-invalid-name-length": "Il nome del gruppo non può essere più lungo di 16 caratteri.",
+	"bs-groupmanager-invalid-name-numeric": "Il nome del gruppo deve avere almeno un carattere.",
+	"bs-groupmanager-headergroup": "Gruppo",
+	"bs-groupmanager-tipremove": "Rimuovi {{PLURAL:$1|gruppo|gruppi}}",
+	"bs-groupmanager-titlenewgroup": "Nuovo gruppo",
+	"bs-groupmanager-titleeditgroup": "Modifica gruppo",
+	"bs-groupmanager-removegroup": "Sei sicuro di voler rimuovere {{PLURAL:$1|questo gruppo|questi gruppi}}?",
+	"bs-groupmanager-lablename": "Nome gruppo:"
+}

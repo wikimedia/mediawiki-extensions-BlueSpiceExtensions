@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Boxmein"
+		]
+	},
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor}} |Autorid}}"
+}

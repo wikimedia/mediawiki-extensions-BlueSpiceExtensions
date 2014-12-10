@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-insertlink-dialog-title": "Insereix un enllaç",
+	"bs-insertlink-tab-wiki-page": "Pàgina del viqui",
+	"bs-insertlink-tab-ext-link": "Enllaç extern",
+	"bs-insertlink-label-page": "Pàgina",
+	"bs-insertlink-label-link": "Enllaç",
+	"bs-insertlink-label-mail": "Adreça electrònica",
+	"bs-insertlink-label-description": "Descripció",
+	"bs-insertlink-label-file": "Fitxer",
+	"bs-insertlink-label-searchfile": "Cerca…",
+	"bs-insertlink-select-a-namespace": "(Pàgines)",
+	"bs-insertlink-no-applet": "No s'ha pogut carregar la miniaplicació. Comproveu la instal·lació del Java."
+}

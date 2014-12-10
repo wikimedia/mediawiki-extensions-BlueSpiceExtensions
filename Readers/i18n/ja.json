@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-readers-desc": "ページを閲覧した利用者の一覧を作成する",
+	"prefs-readers": "閲覧者",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|閲覧者}}|閲覧者}}",
+	"readers": "「$1」の閲覧者",
+	"bs-readers-contentactions-label": "閲覧者を表示",
+	"bs-readers-pagenotexists": "ページが存在しません。",
+	"bs-readers-pref-numofreaders": "表示する閲覧者数:",
+	"bs-readers-emptyinput": "ページを指定していません。",
+	"bs-readers-header-username": "利用者名",
+	"bs-readers-header-readerspath": "閲覧者",
+	"bs-readers-header-ts": "日時"
+}

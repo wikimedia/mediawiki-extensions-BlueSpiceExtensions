@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"NigelSoft",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-shoutbox-desc": "加入解析器函数，用于嵌入您自己的留言版",
+	"prefs-shoutbox": "留言版",
+	"bs-shoutbox-title": "留言版",
+	"bs-shoutbox-message": "写一段新的评论……",
+	"bs-shoutbox-shout": "发送",
+	"bs-shoutbox-no-entries": "这里什么都没有。",
+	"bs-shoutbox-loading": "正在加载…",
+	"bs-shoutbox-pref-committimeinterval": "两消息之间的时间（以秒为单位）：",
+	"bs-shoutbox-pref-maxmessagelength": "一条消息的最大长度：",
+	"bs-shoutbox-pref-numberofshouts": "显示消息数：",
+	"bs-shoutbox-pref-showage": "显示消息的创建时间",
+	"bs-shoutbox-pref-showuser": "显示消息作者",
+	"bs-shoutbox-pref-allowarchive": "用户可以删除他们自己的消息",
+	"bs-shoutbox-pref-show": "显示留言板",
+	"bs-shoutbox-archive-success": "条目已删除。",
+	"bs-shoutbox-archive-failure": "尝试删除消息时出错，请重试。",
+	"bs-shoutbox-archive-failure-user": "消息只能被作者自己删除。",
+	"bs-shoutbox-switch-description": "在此页面隐藏留言板",
+	"bs-shoutbox-charactersleft": "$1个字符丢失",
+	"bs-shoutbox-confirm-text": "您真的希望删除此消息？",
+	"bs-shoutbox-confirm-title": "确认",
+	"bs-shoutbox-entermessage": "请输入一条消息。",
+	"bs-shoutbox-too-early": "请等待几秒钟后再提交下一个条目。",
+	"bs-shoutbox-n-shouts": "$1次喊话"
+}

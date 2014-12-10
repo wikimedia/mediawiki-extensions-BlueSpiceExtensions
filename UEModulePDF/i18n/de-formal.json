@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"soap-service-url-not-valid": "Die URL des Webservices für die PDF-Erzeugung ist nicht korrekt. Bitte überprüfen Sie die Wiki-Einstellungen.",
+	"soap-service-url-not-set": "Die URL des Webservices für die PDF-Erzeugung ist nicht gesetzt. Bitte überprüfen Sie die Wiki-Einstellungen."
+}

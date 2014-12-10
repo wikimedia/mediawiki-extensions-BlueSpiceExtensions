@@ -4,7 +4,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @package    Bluespice_Extensions
+ * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
@@ -20,14 +20,14 @@ Ext.define('BS.Statistics.StatisticsPortletConfig', {
 			fields: ['key', 'displaytitle'],
 			data: [
 				['day', mw.message('bs-statistics-portletconfig-periodday').plain()],
-				['week', mw.message('bs-statistics-portletconfig-periodweek').plain()],
-				['month', mw.message('bs-statistics-portletconfig-periodmonth').plain()],
+				['week', mw.message('bs-statistics-week').plain()],
+				['month', mw.message('bs-statistics-month').plain()],
 			]
 		});
 
 		this.cbInputPeriod = new Ext.create('Ext.form.field.ComboBox',{
 			store: this.strPeriod,
-			fieldLabel: mw.message('bs-statistics-portletconfig-periodlabel').plain(),
+			fieldLabel: mw.message('bs-extjs-portal-timespan').plain(),
 			labelAlign: 'right',
 			name: 'inputPeriod',
 			displayField: 'displaytitle',
@@ -83,7 +83,7 @@ Ext.define('BS.Statistics.StatisticsPortletConfig', {
 
 			this.msInputFilterNamespace = new Ext.create('Ext.ux.form.MultiSelect',{
 				store: this.storeNamespaceFilter,
-				fieldLabel: mw.message('bs-statistics-filter-namespace').plain(),
+				fieldLabel: mw.message('bs-ns').plain(),
 				labelAlign: 'right',
 				name: 'hwpFilterBsFilterNamespace[]',
 				displayField: 'displaytitle',

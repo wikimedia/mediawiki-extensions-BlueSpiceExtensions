@@ -6,7 +6,7 @@ class InsertFileAJAXBackend {
 		$oLicenses = new JsonLicenses();
 		return $oLicenses->getJsonOutput();
 	}
-	
+
 	/**
 	 * Calculate on which page an file is shown and put it to ajax output.
 	 * @param type $output The ajax output which have to be valid JSON.
@@ -15,7 +15,7 @@ class InsertFileAJAXBackend {
 		global $wgDBtype;
 		$oRequest = RequestContext::getMain()->getRequest();
 		$filename = $oRequest->getVal( 'filename', false );
-		$type     = $oRequest->getVal( 'type', 'image' );
+		$type = $oRequest->getVal( 'type', 'image' );
 		$pagesize = $oRequest->getInt( 'pagesize', 12 );
 
 		if ( strstr( $filename, 'index.php' ) ) {
@@ -81,13 +81,12 @@ class InsertFileAJAXBackend {
 				}
 				break;
 		}
-		
+
 		$res = $dbr->query( $sql );
 		if ( $res && $res->numRows() ) {
 			$row = $res->fetchObject();
 			$page = ceil( $row->rank / $pagesize );
-		}
-		else {
+		} else {
 			$page = 0;
 		}
 		return FormatJson::encode(
@@ -133,8 +132,7 @@ class InsertFileAJAXBackend {
 							 ORDER BY {$sql_sort}) tmp
 						ORDER BY tmp.img_timestamp DESC
 						LIMIT 1";
-			}
-			else {
+			} else {
 				$tbl = $dbr->tableName( 'image' );
 				$sql = "SELECT tmp.rank, tmp.img_name FROM
 							(SELECT @row:=@row+1 rank, i.img_name, i.img_timestamp
@@ -152,27 +150,24 @@ class InsertFileAJAXBackend {
 				$row = $res->fetchObject();
 				$page = ceil( $row->rank / $pagesize );
 				$filename = $row->img_name;
-			}
-			else {
+			} else {
 				$page = 0;
 			}
-		}
-		else {
+		} else {
 			if ( $type == 'image' ) {
 				$tbl = $dbr->tableName( 'image' );
 				$sql = "SELECT i.img_name, i.img_timestamp
 						 FROM {$tbl} i
 						 WHERE (i.img_major_mime = 'image' OR i.img_minor_mime = 'tiff')
 						 ORDER BY {$sql_sort}";
-			}
-			else {
+			} else {
 				$tbl = $dbr->tableName( 'image' );
 				$sql = "SELECT i.img_name, i.img_timestamp
 						 FROM {$tbl} i
 						 WHERE (i.img_major_mime != 'image' AND i.img_minor_mime != 'tiff')
 						 ORDER BY {$sql_sort}";
 			}
-			
+
 			$filename = '';
 
 			$res = $dbr->query( $sql );
@@ -189,8 +184,7 @@ class InsertFileAJAXBackend {
 				}
 				$page = ceil( $newestRow['rank'] / $pagesize );
 				$filename = $newestRow['filename'];
-			}
-			else {
+			} else {
 				$page = 0;
 			}
 		}
@@ -230,11 +224,11 @@ class InsertFileAJAXBackend {
 	public static function getFiles() {
 		$thumbs_width  = 128;
 		$thumbs_height = 128;
-		
+
 		$oStoreParams = BsExtJSStoreParams::newFromRequest();
 		$sFileType    = $oStoreParams->getRequest()->getVal('type', 'image');
 		//$aFileExtensions = $oStoreParams->getRequest()->getArray('type'); //TODO: For future use
-		
+
 		$sStart = $oStoreParams->getStart();
 		$sLimit = $oStoreParams->getLimit();
 
@@ -260,7 +254,7 @@ class InsertFileAJAXBackend {
 				$sType = "(i.img_major_mime != 'image' AND i.img_minor_mime != 'tiff')";
 				break;
 		}
-		
+
 		$aConds = array();
 		$aConds[] = $sType;
 
@@ -270,6 +264,8 @@ class InsertFileAJAXBackend {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$sImageTable = $dbr->tableName( 'image' );
+		$sCategoryLinksTable = $dbr->tableName( 'categorylinks' );
+		$sPageTable = $dbr->tableName( 'page' );
 
 		wfRunHooks( 'BSInsertFileGetFilesBeforeQuery', array( &$aConds, &$aNameFilters ) );
 
@@ -278,9 +274,14 @@ class InsertFileAJAXBackend {
 		if( !empty( $sNameFilters ) ) $aConds[] = $sNameFilters;
 		$sConds = implode( ' AND ', $aConds );
 
+		// Searching for images/files in categories with name $sCategoryFilter
+		// TODO SW: verify that this image is found by category, may be join in statement
+		$sCategoryFilter = self::buildNameFiltersSQL( $aNameFilters, $wgDBtype, 'cl_to' );
+		$sConds .= " OR i.img_name IN (SELECT page_title FROM $sCategoryLinksTable, $sPageTable where $sCategoryFilter and page_namespace=6 and page_id=cl_from) AND $sType";
+
 		if ( $wgDBtype == 'oracle' ) {
-			$sql = 
-				"SELECT * FROM 
+			$sql =
+				"SELECT * FROM
 					(
 						SELECT i.img_name, i.img_size, i.img_width, i.img_height, (ROUND(TO_DATE(TO_CHAR(i.img_timestamp, 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') - TO_DATE('19700101', 'YYYYMMDDHH24MISS')) * 86400) AS img_timestamp,
 								row_number() over (ORDER BY {$sSort}) rnk
@@ -288,16 +289,14 @@ class InsertFileAJAXBackend {
 						WHERE {$sConds}
 					)
 				WHERE rnk BETWEEN {$sStart}+1 AND " . ( $sStart + $sLimit );
-		}
-		elseif ( $wgDBtype == 'postgres' ) {
+		} elseif ( $wgDBtype == 'postgres' ) {
 			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, ROUND(DATE_PART('epoch', i.img_timestamp)) as img_timestamp
 				FROM {$sImageTable} i
 				WHERE {$sConds}
 				ORDER BY {$sSort}
 				OFFSET {$sStart}
 				LIMIT {$sLimit}";
-		}
-		else {
+		} else {
 			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, UNIX_TIMESTAMP(i.img_timestamp) as img_timestamp
 				FROM {$sImageTable} i
 				WHERE {$sConds}
@@ -305,7 +304,7 @@ class InsertFileAJAXBackend {
 				LIMIT {$sStart}, {$sLimit}";
 		}
 
-		$rowTotal = $dbr->selectRow( 
+		$rowTotal = $dbr->selectRow(
 			array( 'i' => 'image' ),
 			array( 'total' => 'COUNT(img_name)' ),
 			$sConds
@@ -317,11 +316,12 @@ class InsertFileAJAXBackend {
 		);
 
 		$res = $dbr->query( $sql );
+
 		foreach ( $res as $row ) {
 			$img = self::newFromName( $row->img_name );
 
-			$url = $img->getUrl();
-			
+			$url = $img->createThumb( 48, 48 );//img size for preview in grid cell
+
 			if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
 				$url = SecureFileStore::secureStuff( $url, true );
 			}
@@ -337,22 +337,22 @@ class InsertFileAJAXBackend {
 		}
 		return FormatJson::encode( $aOutput );
 	}
-	
-	
+
+
 	/**
 	 * Builds filter conditions for SQL query
 	 * @param array $nameFilters
 	 * @param string $dbType
 	 * @return string A SQL fragment containing all filter conditions
 	 */
-	protected static function buildNameFiltersSQL( $nameFilters, $dbType ) {
-		//HINT: CONVERT is needed because field type is VARBINARY. 
-		//Converting to UTF8 is just a heuristics. SQL is probably 
+	protected static function buildNameFiltersSQL( $nameFilters, $dbType, $sTableName = 'i.img_name' ) {
+		//HINT: CONVERT is needed because field type is VARBINARY.
+		//Converting to UTF8 is just a heuristics. SQL is probably
 		//nonstandard.
-		$sFormat = "LOWER(CONVERT(i.img_name USING 'UTF8')) LIKE %s";
+		$sFormat = "LOWER(CONVERT($sTableName USING 'UTF8')) LIKE %s";
 
 		if( $dbType == 'oracle' || $dbType == 'postgres') {
-			$sFormat = "LOWER(i.img_name) LIKE %s";
+			$sFormat = "LOWER($sTableName) LIKE %s";
 		}
 		$dbr = wfGetDB( DB_SLAVE );
 		$aFormattedFilters = array();
@@ -363,9 +363,9 @@ class InsertFileAJAXBackend {
 				$dbr->addQuotes('%'.strtolower($nameFilter).'%')
 			);
 		}
-		
+
 		$sNameFilters = implode( ' OR ', $aFormattedFilters );
-		
+
 		if( !empty($sNameFilters) ) {
 			$sNameFilters = '('.$sNameFilters.')';
 		}

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Constructeur",
+			"Gomoko"
+		]
+	},
+	"prefs-avatars": "Avatars",
+	"bs-avatars-desc": "Fournit des images de l’utilisateur génériques et individuelles",
+	"bs-avatars-pref-generator": "Générateur :",
+	"bs-avatars-pref-defaultsize": "Taille par défaut en pixel :",
+	"bs-avatars-upload-complete": "L’image a bien été téléchargée.",
+	"bs-avatars-generate-complete": "Un nouvel avatar a été généré.",
+	"bs-avatars-upload-title": "Modifier la photo du profil",
+	"bs-avatars-upload-label": "Photo",
+	"bs-avatars-generate-new-label": "Générer un nouvel avatar",
+	"bs-avatars-warning-title": "Avertissement",
+	"bs-avatars-warning-text": "Vous avez défini une image utilisateur dans vos préférences. Utiliser des avatars effacera ce paramètre. Voulez-vous continuer ?",
+	"bs-avatars-userimage-title": "Image du wiki ou URL de l’image",
+	"bs-avatars-userimage-help": "par ex. Picture.jpg ou http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "URL ou image du wiki non valide.",
+	"bs-avatars-set-userimage-saved": "Image de l’utilisateur correctement enregistrée.",
+	"bs-avatars-file-upload-fieldset-title": "Import de l’image",
+	"bs-avatars-auto-generate-fieldset-title": "Avatar auto-généré"
+}

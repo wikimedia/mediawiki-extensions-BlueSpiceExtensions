@@ -3,7 +3,7 @@
  * Statistics Extension for BlueSpice
  *
  * Adds statistical analysis to pages.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -32,7 +32,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
- 
+
 /* Changelog
  * v1.20.0
  * - MediaWiki I18N
@@ -76,7 +76,7 @@ class Statistics extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Statistics',
-			EXTINFO::DESCRIPTION => 'Statistics module for BlueSpice.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-statistics-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -101,21 +101,14 @@ class Statistics extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
-		//BsConfig::registerVar( 'MW::Statistics::DiagramDir',           'images/statistics',   BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING,       'bs-statistics-pref-DiagramDir' );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramWidth',         700,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramWidth', 'int' );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramHeight',        500,                   BsConfig::LEVEL_USER|BsConfig::TYPE_INT,            'bs-statistics-pref-DiagramHeight', 'int' );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramType',          'line',                BsConfig::LEVEL_USER|BsConfig::TYPE_STRING,         $this->mI18N );
-		//BsConfig::registerVar( 'MW::Statistics::DiagramType',          'line',                BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-statistics-pref-DiagramType', 'select' );
-		//BsConfig::registerVar( 'MW::Statistics::DefaultFrom',          '01 January 2010',     BsConfig::LEVEL_USER|BsConfig::TYPE_STRING,         'bs-statistics-pref-DefaultFrom' );
-		//BsConfig::registerVar( 'MW::Statistics::DisableCache',         true,                  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,         'bs-statistics-pref-DisableCache', 'toggle' );
+		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers', array( 'WikiSysop' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-excludeusers', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 366, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-statistics-pref-maxnumberofintervals', 'int' );
 
-		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers',         array( 'WikiSysop' ),  BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-ExcludeUsers', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 36,                    BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT,          'bs-statistics-pref-MaxNumberOfIntervals', 'int' );
 		$aAvailableGrains = array(
-			'Y' => 'bs-statistics-Y',
-			'm' => 'bs-statistics-m',
-			'W' => 'bs-statistics-W',
-			'd' => 'bs-statistics-d',
+			'Y' => 'bs-statistics-year',
+			'm' => 'bs-statistics-month',
+			'W' => 'bs-statistics-week',
+			'd' => 'bs-statistics-day',
 		);
 		BsConfig::registerVar( 'MW::Statistics::AvailableGrains', $aAvailableGrains, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED, 'bs-statistics-pref-AvailableGrains');
 
@@ -150,7 +143,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Returns list of available diagrams.
-	 * @return array List of diagram objects. 
+	 * @return array List of diagram objects.
 	 */
 	public static function getAvailableDiagrams() {
 		self::loadAvailableDiagrams();
@@ -215,7 +208,7 @@ class Statistics extends BsExtensionMW {
 		}
 	}
 
-	/** 
+	/**
 	 * Registers a tag "bs:infobox" with the parser. for legacy reasons witn HalloWiki, also "infobox" is supported. Called by ParserFirstCallInit hook
 	 * @param Parser $parser MediaWiki parser object
 	 * @return bool allow other hooked methods to be executed. always true
@@ -225,15 +218,15 @@ class Statistics extends BsExtensionMW {
 		$parser->setHook( 'bs:statistics:progress', array( &$this, 'onTagProgress' ) );
 		return true;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param OutputPage $oOutputPage
 	 * @param Skin $oSkin
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if( !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('AdminDashboard'))
-			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('SpecialWikiAdmin'))
+			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('WikiAdmin'))
 			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('UserDashboard'))
 		) return true;
 
@@ -263,13 +256,13 @@ class Statistics extends BsExtensionMW {
 
 		// substract 1 because one item is in the progressitem attribute
 		$iFraction = substr_count( $sText, $sFraction ) - 1;
-		
+
 		if ( $sBaseItem ) {
 			$iBase = substr_count( $sText, $sBaseItem ) - 1;
 		} else {
 			$iBase = $iBaseCount;
 		}
-		
+
 		$fPercent = $iFraction / $iBase;
 
 		$iWidthGreen = floor($iWidth * $fPercent);
@@ -284,12 +277,13 @@ class Statistics extends BsExtensionMW {
 	}
 
 	public function onBSExtendedSearchAdminButtons( $oSpecialPage, &$aSearchAdminButtons ) {
-		$sScriptPath = BsConfig::get( 'MW::ScriptPath' );
+		global $wgScriptPath;
+
 		$aSearchAdminButtons['Statistics'] = array(
 			'href' => SpecialPage::getTitleFor( 'ExtendedStatistics' )->getLinkUrl(),
 			'onclick' => '',
 			'label' => wfMessage( 'bs-extendedsearch-statistics' )->plain(),
-			'image' => "$sScriptPath/extensions/BlueSpiceExtensions/Statistics/resources/images/bs-searchstatistics.png"
+			'image' => "$wgScriptPath/extensions/BlueSpiceExtensions/Statistics/resources/images/bs-searchstatistics.png"
 		);
 
 		return true;
@@ -314,7 +308,7 @@ class Statistics extends BsExtensionMW {
 			foreach( $oDiagram->getFilters() as $key => $oFilter ) $aFilterKeys[] = $key;
 
 			$aResult['data'][] = array(
-				'key' => $oDiagram->getDiagramKey(), 
+				'key' => $oDiagram->getDiagramKey(),
 				'displaytitle' => $oDiagram->getTitle(),
 				'listable' => $oDiagram->isListable(),
 				'filters' => $aFilterKeys,
@@ -366,7 +360,7 @@ class Statistics extends BsExtensionMW {
 			return json_encode($aResult);
 		}
 
-		foreach( BsNamespaceHelper::getNamespacesForSelectOptions( array( -2,-1 ) ) as $key => $name ) 
+		foreach( BsNamespaceHelper::getNamespacesForSelectOptions( array( -2,-1 ) ) as $key => $name )
 			$aResult['data'][] = array( 'key' => $key, 'displaytitle' => $name );
 
 		$aResult['success'] = true;
@@ -387,7 +381,7 @@ class Statistics extends BsExtensionMW {
 			return json_encode($aResult);
 		}
 
-		//$aCategories[wfMsg( 'bs-statistics-all-categories' )] = '(all)';
+		//$aCategories[wfMsg( 'bs-ns_all' )] = '(all)';
 		$oDbr = wfGetDB( DB_SLAVE );
 		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );
 		while ( $oRow = $rRes->fetchObject() ) {
@@ -421,7 +415,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -435,7 +429,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -447,7 +441,7 @@ class Statistics extends BsExtensionMW {
 
 		/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -461,7 +455,7 @@ class Statistics extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -475,28 +469,28 @@ class Statistics extends BsExtensionMW {
 		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofusers' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[1][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofedits' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
 		$aPortalConfig[2][] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			)
 		);
@@ -508,38 +502,38 @@ class Statistics extends BsExtensionMW {
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfUsers',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofusers' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfUsers' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfUsersdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofusers' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofusersdesc' )->plain()
 		);
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfEdits',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofedits' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfEdits' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfEditsdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofedits' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofeditsdesc' )->plain()
 		);
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfArticles',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfArticles' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfArticlesdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofpagesdesc' )->plain()
 		);
 		$aPortlets[] = array(
 			'type'  => 'BS.Statistics.StatisticsPortletNumberOfPages',
 			'config' => array(
-				'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
+				'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
 				'inputPeriod' => 'week',
 			),
-			'title' => wfMessage( 'bs-statistics-portlet-NumberOfPages' )->plain(),
-			'description' => wfMessage( 'bs-statistics-portlet-NumberOfPagesdesc' )->plain()
+			'title' => wfMessage( 'bs-statistics-portlet-numberofpages' )->plain(),
+			'description' => wfMessage( 'bs-statistics-portlet-numberofpagesdesc' )->plain()
 		);
 
 		return true;

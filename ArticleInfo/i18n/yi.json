@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"פוילישער"
+		]
+	},
+	"bs-articleinfo-desc": "באזארגט אינפארמאציע וועגן א בלאט אין סטאטוספאס",
+	"prefs-articleinfo": "בלאַט־אינפֿארמאַציע",
+	"bs-articleinfo-pref-CheckRevisionInterval": "דערהײַנטיקן אינטערוואל אין סעקונדעס:",
+	"bs-articleinfo-last-edited": "צײַט זײַט לעצטיקער ענדערונג",
+	"bs-articleinfo-last-edited-tooltip": "לעצטע רעדאקטירונג",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|לעצטער רעדאַקטאָר|לעצטע רעדאַקטאָרין}}",
+	"bs-articleinfo-categories": "קאַטעגאָריעס",
+	"bs-articleinfo-more-categories": "פאראן נאך קאטעגאריעס",
+	"bs-articleinfo-all-categories-heading": "קאַטעגאָריעס",
+	"bs-articleinfo-nocategories": "קיין קאטעגאריעס נישט געטראפן",
+	"bs-articleinfo-hiddencats": "באהאלטענע קאטעגאריעס",
+	"bs-articleinfo-notemplates": "קיין מוסטערן נישט געטראפן.",
+	"bs-articleinfo-templates": "מוסטערן",
+	"bs-articleinfo-subpages": "אונטערבלעטער",
+	"bs-articleinfo-subpages-available": "דער דאזיקער בלאט האט אונטערבלעטער",
+	"bs-articleinfo-subpages-too-much": "עס זענען פאראן מער ווי 100 אונטערבלעטער.",
+	"bs-articleinfo-check-revision": "פאראן נייע ווערסיע",
+	"bs-articleinfo-check-revision-tooltip": "ווידער אויפלאדן בלאט",
+	"bs-articleinfo-statebartoplastedited": "לעצטיקע רעדאקטירונג",
+	"bs-articleinfo-statebartoplasteditor": "לעצטיקער רעדאקטאר",
+	"bs-articleinfo-statebartopcategories": "קאַטעגאָריעס",
+	"bs-articleinfo-statebartopsubpages": "אונטערבלעטער",
+	"bs-articleinfo-statebarbodycategories": "קאַטעגאָריעס",
+	"bs-articleinfo-statebarbodysubpages": "אונטערבלעטער",
+	"bs-articleinfo-statebarbodytemplates": "מוסטערן"
+}

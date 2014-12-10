@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Nie ma wpisów na blogu.",
+	"bs-blog-comments": "Komentarze",
+	"bs-blog-read-more": "Czytaj więcej",
+	"bs-blog-permalink": "Stałe łącze",
+	"bs-blog-show-all": "Pokaż wszystkie wpisy",
+	"bs-blog-form-inline-text": "Tytuł...",
+	"bs-blog-form-title-text": "Utwórz nowy wpis w blogu",
+	"bs-blog-form-button-text": "Utwórz",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-showlimit": "Liczba wpisów w blogu:",
+	"bs-blog-pref-sortby": "Sortuj według:",
+	"bs-blog-pref-imagerendermode": "Wyświetl obrazy jako:"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"L2212"
+		]
+	},
+	"bs-contextmenu-page-delete": "Burra pàgina",
+	"bs-contextmenu-page-history": "Ammustra s'istòria de sa pàgina",
+	"bs-contextmenu-page-protect": "Ampara pàgina",
+	"bs-contextmenu-media-reupload": "Càrriga versione noa",
+	"bs-contextmenu-media-view-page": "Ammustra sa descritzione de sa pàgina e s'istòria de su documentu",
+	"bs-contextmenu-user-talk": "Lassa unu messàgiu in sa pàgina de sas cuntierras",
+	"bs-contextmenu-file-download": "Iscàrriga documentu"
+}

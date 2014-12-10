@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-saferedit-user-editing": "$1 sta {{GENDER:$1|modificando}} la pagina",
+	"bs-saferedit-someone-editing": "La pagina è in fase di modifica",
+	"bs-saferedit-unsavedchanges": "Ci sono modifiche non salvate."
+}

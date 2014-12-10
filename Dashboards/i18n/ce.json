@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-dashboards-desc": "Куьйгалхошна а декъашхошна а урхаллин панель хуьлуьйту",
+	"bs-specialadmindashboard-label": "ГӀирсийн панель",
+	"bs-dashboards-addportlet": "ТӀетоха модуль",
+	"bs-dashboards-portlets": "Вовшахтуху модулаш",
+	"prefs-dashboards": "ГӀирсийн панелаш",
+	"bs-dashboards-pref-userdashboardonlogo": "Лого тӀе хьажоргаш декъашхочун урхаллин панелан",
+	"admindashboard": "Куьйгалхочун панель",
+	"userdashboard": "Декъашхочун панель",
+	"bs-dashboard-userportlet-calendar-title": "Календарь",
+	"bs-dashboard-userportlet-calendar-description": "Календарь"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"prefs-wantedarticle": "ページが存在しないリンク",
+	"bs-wantedarticle-tag-wantedarticle-desc": "ページが存在しないリンクの一覧を出力する。利用できる属性:",
+	"bs-wantedarticle-tag-default-title": "ページが存在しないリンク",
+	"bs-wantedarticle-pref-includelimit": "提案する件数:",
+	"bs-wantedarticle-pref-deleteexisting": "存在するエントリを一覧から削除",
+	"bs-wantedarticle-pref-showcreate": "作成するためのリンクを表示",
+	"bs-wantedarticle-pref-deleteoncreation": "ページが作成された際にエントリを一覧から除去",
+	"bs-wantedarticle-pref-sort": "並び順:",
+	"bs-wantedarticle-pref-sort-time": "日時",
+	"bs-wantedarticle-pref-order-asc": "昇順",
+	"bs-wantedarticle-pref-order-desc": "降順"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"SPQRobin"
+		]
+	},
+	"prefs-blog": "Blog",
+	"bs-blog-comments": "Reacties",
+	"bs-blog-read-more": "Lees meer",
+	"bs-blog-permalink": "Permanente koppeling",
+	"bs-blog-show-all": "Alle berichten weergeven",
+	"bs-blog-form-inline-text": "Titel ...",
+	"bs-blog-form-button-text": "Aanmaken",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-sortby": "Sorteren op:"
+}

@@ -49,7 +49,7 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'BlueSpiceProjectFeedbackHelper',
-			EXTINFO::DESCRIPTION => 'Provides a fixed \'submit bugs\' panel at the bottom of the user interface.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-bluespiceprojectfeedbackhelper-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -73,10 +73,10 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 		}
 
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent', 'onAfterArticleContent' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	
+
 	/**
 	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
 	 * @param OutputPage $oOutputPage
@@ -84,23 +84,32 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if ( BsConfig::get('MW::BlueSpiceProjectFeedbackHelper::Active') == false )
+		if ( BsConfig::get('MW::BlueSpiceProjectFeedbackHelper::Active') == false ) {
 			return true;
+		}
 		$oOutputPage->addModules('ext.bluespice.blueSpiceprojectfeedbackhelper');
 
 		return true;
 	}
 
 	/**
-	 * @param array $aViews
-	 * @param User $oCurrentUser
-	 * @param Title $oCurrentTitle
-	 * @return boolean
+	 * @param SkinTemplate $sktemplate a collection of views. Add the view that needs to be displayed
+	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
+	 * @return bool always true
 	 */
-	public function onAfterArticleContent( &$aViews, $oCurrentUser, $oCurrentTitle ) {
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
 		if ( BsConfig::get( 'MW::BlueSpiceProjectFeedbackHelper::Active' ) == false ) return true;
-		if ( !in_array( 'sysop', $oCurrentUser->getGroups() ) ) return true;
-		$aViews[] = new ViewBlueSpiceProjectFeedbackHelperPanel();
+		if ( !in_array( 'sysop', $sktemplate->getUser()->getGroups() ) ) {
+			return true;
+		}
+		$oView = new ViewBlueSpiceProjectFeedbackHelperPanel();
+
+		if( isset( $tpl->data['dataAfterContent'] ) ) {
+			$tpl->data['dataAfterContent'] .= $oView->execute();
+		} else {
+			$tpl->data['dataAfterContent'] = $oView->execute();
+		}
+
 		return true;
 	}
 
@@ -111,13 +120,13 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 		);
 		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) {
 			//PW TODO: add error message
-			return json_encode( $oResult );
+			return FormatJson::encode( $oResult );
 		}
 
 		BsConfig::set( 'MW::BlueSpiceProjectFeedbackHelper::Active', false );
 		BsConfig::saveSettings();
 		$oResult->success = true;
 
-		return json_encode( $oResult );
+		return FormatJson::encode( $oResult );
 	}
 }

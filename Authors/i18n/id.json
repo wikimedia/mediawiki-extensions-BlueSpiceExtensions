@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"bs-authors-desc": "Menampilkan foto profil untuk penulis halaman",
+	"prefs-authors": "Penulis halaman ini",
+	"bs-authors-title": "{{PLURAL:$1|Penulis|Penulis}}",
+	"bs-authors-profileimage": "Foto profil",
+	"bs-authors-profileimage-change": "Ubah foto profil",
+	"bs-authors-show-all-authors": "Penulis lain tersedia",
+	"bs-authors-pref-imageheight": "Tinggi gambar:",
+	"bs-authors-pref-imagewidth": "Lebar gambar:",
+	"bs-authors-pref-limit": "Batas penulis untuk menampilkan:",
+	"bs-authors-pref-show": "Tampilkan penulis",
+	"bs-authors-switch-description": "Sembunyikan penulis di halaman ini."
+}

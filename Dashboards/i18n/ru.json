@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shuba",
+			"HarpyWar",
+			"Meshkov.a"
+		]
+	},
+	"bs-dashboards-desc": "Предоставляет панель управления для пользователей и администраторов",
+	"bs-specialadmindashboard-label": "Панель инструментов",
+	"bs-dashboards-addportlet": "Добавить модуль",
+	"bs-dashboards-portlets": "Соединительные модули",
+	"prefs-dashboards": "Панели инструментов",
+	"bs-dashboards-pref-userdashboardonlogo": "Ссылки на лого для панели управления пользователя",
+	"admindashboard": "Панель администратора",
+	"userdashboard": "Панель пользователя",
+	"bs-dashboard-userportlet-calendar-title": "Календарь",
+	"bs-dashboard-userportlet-calendar-description": "Календарь"
+}

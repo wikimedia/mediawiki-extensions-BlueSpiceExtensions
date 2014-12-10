@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-formattinghelp-desc": "Affiche de l’aide sur la mise en forme du texte",
+	"bs-formattinghelp-formatting": "Aide à la mise en forme",
+	"bs-formattinghelp-help-syntax": "Syntaxe",
+	"bs-formattinghelp-help-example-text": "Texte",
+	"bs-formattinghelp-help-bold": "Gras",
+	"bs-formattinghelp-help-italic": "Italique",
+	"bs-formattinghelp-help-whitespace": "Espaces",
+	"bs-formattinghelp-help-nowiki": "Empêcher la mise en forme",
+	"bs-formattinghelp-help-color": "Texte coloré",
+	"bs-formattinghelp-help-headline": "Titre",
+	"bs-formattinghelp-help-linebreak": "Saut de ligne",
+	"bs-formattinghelp-help-ul": "Liste non ordonnée",
+	"bs-formattinghelp-help-listitem": "Élément de liste",
+	"bs-formattinghelp-help-subitem": "Sous-élément",
+	"bs-formattinghelp-help-numberedlist": "Liste numérotée",
+	"bs-formattinghelp-help-link": "Lien interne",
+	"bs-formattinghelp-help-link-alt": "Lien interne avec texte de substitution",
+	"bs-formattinghelp-help-caption": "Légende",
+	"bs-formattinghelp-help-extlink": "Lien externe",
+	"bs-formattinghelp-help-hr": "Ligne horizontale",
+	"bs-formattinghelp-help-template": "Modèle",
+	"bs-formattinghelp-help-templatename": "Nom du modèle"
+}

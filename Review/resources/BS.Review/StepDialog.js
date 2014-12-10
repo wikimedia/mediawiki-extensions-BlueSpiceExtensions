@@ -4,7 +4,7 @@ Ext.define( 'BS.Review.StepDialog', {
 	modal: true,
 
 	afterInitComponent: function() {
-		this.setTitle( mw.message('bs-review-titleAddReviewer' ).plain() );
+		this.setTitle( mw.message('bs-review-titleaddreviewer' ).plain() );
 		this.cbUsers = Ext.create( 'BS.form.UserCombo', {
 			anyMatch: true
 		} );
@@ -12,7 +12,7 @@ Ext.define( 'BS.Review.StepDialog', {
 
 		this.tfComment = Ext.create( 'Ext.form.TextField', {
 			labelAlign: 'right',
-			fieldLabel: mw.message('bs-review-labelComment').plain()
+			fieldLabel: mw.message('bs-review-labelcomment').plain()
 		});
 
 		this.items = [

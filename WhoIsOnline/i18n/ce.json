@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-whoisonline-nousers": "Системин чохь нах бац.",
+	"bs-whoisonline-widget-title": "Цхьа вуй/юй зӀенехь?",
+	"prefs-whoisonline": "Цхьа вуй/юй зӀенехь?",
+	"bs-whoisonline-pref-orderby": "Къастам бе:",
+	"bs-whoisonline-pref-orderby-time": "Белха хан",
+	"bs-whoisonline-pref-orderby-name": "ЦӀе",
+	"bs-whoisonline-pref-interval": "Карлаяккхаран юкъ секундашкахь:"
+}

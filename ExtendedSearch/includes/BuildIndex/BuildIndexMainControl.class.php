@@ -12,14 +12,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
  * Controls index building mechanism for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 class BuildIndexMainControl {
 
@@ -35,7 +30,7 @@ class BuildIndexMainControl {
 	public $iDocsInIndex = 1;
 	/**
 	 * Path to lock file.
-	 * @var string Path. 
+	 * @var string Path.
 	 */
 	public $sFilePathLockFile = '';
 	/**
@@ -65,9 +60,9 @@ class BuildIndexMainControl {
 	protected $sFilePathIndexProgTxt = '';
 	/**
 	 * Path to log file.
-	 * @var string Path. 
+	 * @var string Path.
 	 */
-	protected $sFilePathLogFile = '';
+	protected $sFilePathIndexLogFile = '';
 	/**
 	 * Unique ID that identifies a certain Wiki
 	 * @var string Unique ID
@@ -91,7 +86,7 @@ class BuildIndexMainControl {
 		$this->oSearchService = SearchService::getInstance();
 
 		$this->sFilePathIndexProgTxt = BSDATADIR.DS.'index_prog.txt';
-		$this->sFilePathLogFile = BSDATADIR.DS.'ExtendedSearch.log';
+		$this->sFilePathIndexLogFile = BSDATADIR.DS.'ExtendedSearchIndex.log';
 		$this->sFilePathLockFile = BSDATADIR.DS.'ExtendedSearch.lock';
 
 		//Possible values of PHP_SAPI (not all): apache, cgi (until PHP 5.3), cgi-fcgi, cli
@@ -152,18 +147,18 @@ class BuildIndexMainControl {
 		$aPageEditors = $this->getEditorsFromDbForCertainPageId( $iPageID );
 		$bRedirect = $oTitle->isRedirect();
 
-		$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
-
 		if ( $bRedirect === true ) {
-			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT )->getUltimateRedirectTarget();
+			$sPageContent = BsPageContentProvider::getInstance()->getContentFromRevision( $oRevision );
+			$oRedirectTitle = ContentHandler::makeContent( $sPageContent, null, CONTENT_MODEL_WIKITEXT );
+			$oRedirectTitle= $oRedirectTitle->getUltimateRedirectTarget();
 			if ( $oRedirectTitle instanceof Title ) {
 				$oArticle = new Article( $oRedirectTitle );
 				$this->updateIndexWiki( $oArticle );
 			}
 		}
 
-		$aSections = $this->extractEditSections( $sPageContent );
-		$sPageContent = $this->parseTextForIndex( $sPageContent, $oTitle );
+		$aSections = $this->extractEditSections( $oTitle );
+		$sPageContent = $this->prepareTextForIndex( $oTitle );
 
 		$aRedirects = $this->getRedirects( $oTitle );
 
@@ -172,19 +167,23 @@ class BuildIndexMainControl {
 		// do not use date( 'YmdHis' ); it does not return GMT but timestamp with timezone-offset
 		if ( strpos( $iPageTimestamp, '1970' ) === 0 ) $iPageTimestamp = wfTimestamp( TS_MW );
 
-		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument( $sPageTitle, $sPageContent, $iPageID, $iPageNamespace, $iPageTimestamp, $aPageCategories, $aPageEditors, $aRedirects, $bRedirect, $aSections );
+		$oSolrDocument = $oBuildIndexMwArticles->makeSingleDocument(
+			$sPageTitle, $sPageContent, $iPageID, $iPageNamespace, $iPageTimestamp,
+			$aPageCategories, $aPageEditors, $aRedirects, $bRedirect, $aSections
+		);
+
 		try {
 			$this->oSearchService->addDocument( $oSolrDocument );
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
 		try {
-			// Indexing file links 
+			// Indexing file links
 			$this->buildIndexLinked( '', $iPageID );
 		} catch ( Exception $e ) {}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 	}
 
 	/**
@@ -196,28 +195,28 @@ class BuildIndexMainControl {
 		try {
 			$oIndexFile->indexCrawledDocuments();
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 
 		return true;
 	}
 
 	/**
 	 * Triggers deletion of a specified file from search index.
-	 * @param int $id Article id of page to be deleted.
-	 * @param string $path path to the file.
+	 * @param int $sPath path to the file.
+	 * @param string $sOverallType overall type
 	 */
-	public function deleteIndexFile( $iID, $sPath ) {
-		$sUniqueID = $this->getUniqueId( $iID, $sPath );
+	public function deleteIndexFile( $sPath, $sOverallType ) {
+		$sUniqueID = $this->getUniqueId( $sPath, $sOverallType );
 		try {
-			$this->oSearchService->deleteByQuery( 'uid:'.$sUniqueID );
+			$this->oSearchService->deleteByQuery( 'uid:' . $sUniqueID );
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 
 		return true;
 	}
@@ -227,21 +226,21 @@ class BuildIndexMainControl {
 	 * @param int $iID Article id of page to be deleted.
 	 */
 	public function deleteFromIndexWiki( $iID ) {
-		$sUniqueID = $this->getUniqueId( $iID );
+		$sUniqueID = $this->getUniqueId( $iID, 'wiki' );
 		try {
 			$this->oSearchService->deleteById( $sUniqueID );
 		} catch ( Exception $e ) {
-			$this->logFile( 'write', __METHOD__ . ' - Error in _sendRawPost ' . $e->getMessage() );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost: ' . $e->getMessage() );
 		}
 
-		$this->commitAndOptimize();
+		$this->commitAndOptimize( false, true, false );
 
 		return true;
 	}
 
 	/**
 	 * Triggers search index update for a given title.
-	 * @param Title $title MediaWiki title object of article to be updated.
+	 * @param Title $oTitle MediaWiki title object of article to be updated.
 	 */
 	public function updateIndexWikiByTitleObject( $oTitle ) {
 		$oArticle = new Article( $oTitle );
@@ -321,7 +320,7 @@ class BuildIndexMainControl {
 		$everythingsOk = BuildIndexMwLinked::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 		if ( !$everythingsOk ) {
 			foreach ( $aErrorMessageKeys as $key => $value ) {
-				$this->writeLog( $sMode, wfMessage( $key )->plain(), 0 );
+				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' ' . wfMessage( $key )->plain() );
 			}
 			return;
 		}
@@ -347,7 +346,7 @@ class BuildIndexMainControl {
 		$everythingsOk = BuildIndexMwSpecialLinked::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 		if ( !$everythingsOk ) {
 			foreach ( $aErrorMessageKeys as $key => $value ) {
-				$this->writeLog( $sMode, wfMessage( $key )->plain(), 0 );
+				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' ' . wfMessage( $key )->plain() );
 			}
 			return;
 		}
@@ -376,44 +375,50 @@ class BuildIndexMainControl {
 		libxml_use_internal_errors( true );
 
 		ob_start();
-		ob_flush();
 
 		if ( !$this->bCommandLineMode ) header( "Content-Encoding: none" );
 
 		// todo: what if zlib.output_compression = On in php.ini
-		$this->logFile( 'create' );
 
-		$this->logFile( 'write', date( "d.m.Y H:i:s" ) . "\n" );
+		if ( file_exists( $this->sFilePathLockFile ) ) {
+			return wfMessage( 'bs-extendedsearch-indexinginprogress' )->plain();
+		}
+
+		// create lock file
+		$this->lockFile( 'createLock' );
+		// create log file
+		$this->logFile();
+		// create progress file
+		$this->progressFile( 'create' );
+
+		$this->write( '', date( "d.m.Y H:i:s" ) . "\n" );
 
 		$sRes = '';
 		try {
-			if ( file_exists( $this->sFilePathLockFile ) ) {
-				return $sRes = wfMessage( 'bs-extendedsearch-indexinginprogress' )->plain();
-			}
-			$this->lockFile( 'createLock' );
-
-			$this->buildIndexWiki( wfMessage( 'bs-extendedsearch-indexing_wiki_articles' )->plain() );
-			$this->buildIndexSpecial( wfMessage( 'bs-extendedsearch-indexing_specialpages' )->plain() );
-			$this->buildIndexRepo( wfMessage( 'bs-extendedsearch-indexing_files_in_repo' )->plain() );
-			$this->buildIndexLinked( wfMessage( 'bs-extendedsearch-indexing_linked_files' )->plain() );
-			$this->buildIndexExternalRepo( wfMessage( 'bs-extendedsearch-indexing_external_files_in_repo' )->plain() );
+			$this->buildIndexWiki( wfMessage( 'bs-extendedsearch-indexing-wiki-articles' )->plain() );
+			$this->buildIndexSpecial( wfMessage( 'bs-extendedsearch-indexing-specialpages' )->plain() );
+			$this->buildIndexRepo( wfMessage( 'bs-extendedsearch-indexing-files-in-repo' )->plain() );
+			$this->buildIndexLinked( wfMessage( 'bs-extendedsearch-indexing-linked-files' )->plain() );
+			$this->buildIndexExternalRepo( wfMessage( 'bs-extendedsearch-indexing-external-files-in-repo' )->plain() );
 
 			wfRunHooks( 'BSExtendedSearchBuildIndex', array( $this ) );
 		} catch ( BsException $e ) {
-			$this->logFile( 'deleteLock' );
+			$this->lockFile( 'deleteLock' );
 			$sRes .= "Instance ExtendedSearchBase returned following BsException in procedure buildIndex(): {$e->getMessage()}";
 		}
 
 		$this->commitAndOptimize( true );
 
-		$this->writeLog(
+		$this->write(
 			wfMessage( 'bs-extendedsearch-finished' )->plain(),
 			$this->iDocsInIndex . ' ' . wfMessage( 'bs-extendedsearch-docs-in-index' )->plain(),
 			100
 		);
-		$this->logFile( 'write', date( "d.m.Y H:i:s" ) );
+		$this->write( '', date( "d.m.Y H:i:s" ) );
 
-		$this->writeLog( 'unlink' );
+		// delete progress file
+		$this->progressFile( 'delete' );
+		// delete lock file
 		$this->lockFile( 'deleteLock' );
 
 		ob_end_clean();
@@ -435,11 +440,9 @@ class BuildIndexMainControl {
 		try {
 			$this->oSearchService->addDocument( $oSolrDocument );
 			$this->iDocsInIndex++;
-			wfRunHooks( 'BS:ExtendedSearch:AddDocumentLog', array( $oSolrDocument ) );
 		} catch ( Exception $ex ) {
-			if ( $iTryagain >= 2 ) { // todo: make no of retries configurable
-				$this->writeLog( $sMode, $sMessageOnError, 0 );
-				// todo: count documents, that have not been able to index and output this statistic
+			if ( $iTryagain >= 2 ) {
+				wfDebugLog( 'ExtendedSearch', __METHOD__ . ' ' . $sMessageOnError );
 			} else {
 				// maybe solr has had too much to do so it was not always able to answer
 				sleep( 3 ); // todo: make timespan to wait configurable
@@ -464,9 +467,15 @@ class BuildIndexMainControl {
 	 * @return Apache_Solr_Document
 	 */
 	public function makeDocument( $sOverallType, $sType, $sTitle, $sText, $iID, $iNamespace,
-			$vPath, $iTimestamp, $aCategories = array(), $aEditors = array(),
+			$vPath, $sVirtualPath, $iTimestamp, $aCategories = array(), $aEditors = array(),
 			$aRedirects = array(), $bIsRedirect = 0, $aSections = array(), $iIsSpecial = 0 ) {
 		$oDoc = new Apache_Solr_Document();
+
+		if ( empty( $sVirtualPath ) ) {
+			$oDoc->uid = $this->getUniqueId( $iID, $sOverallType );
+		} else {
+			$oDoc->uid = $this->getUniqueId( $sVirtualPath, $sOverallType );
+		}
 
 		$oDoc->wiki = $this->sCustomerId;
 		$oDoc->overall_type = $sOverallType;
@@ -478,7 +487,6 @@ class BuildIndexMainControl {
 		$oDoc->path = $vPath;
 		$oDoc->cat = $aCategories;
 		$oDoc->editor = $aEditors;
-		$oDoc->uid  = $this->getUniqueId( $iID, $vPath );
 		$oDoc->redirects = $aRedirects;
 		$oDoc->redirect = $bIsRedirect;
 		$oDoc->sections = $aSections;
@@ -496,11 +504,11 @@ class BuildIndexMainControl {
 			} else {
 				global $wgDBtype;
 				switch( $wgDBtype ) {
-					case 'oracle' : 
-						$oDoc->ts = preg_replace( "/(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2}):(\d{2}).(\d{6})/", "$3-$2-$1T$4:$5:$6Z", $iTimestamp ); 
+					case 'oracle' :
+						$oDoc->ts = preg_replace( "/(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2}):(\d{2}).(\d{6})/", "$3-$2-$1T$4:$5:$6Z", $iTimestamp );
 						break;
-					case 'postgres': 
-						$oDoc->ts = preg_replace( "/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})\+00/", "$1-$2-$3T$4:$5:$6Z", $iTimestamp ); 
+					case 'postgres':
+						$oDoc->ts = preg_replace( "/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})\+00/", "$1-$2-$3T$4:$5:$6Z", $iTimestamp );
 						break;
 				}
 			}
@@ -511,7 +519,7 @@ class BuildIndexMainControl {
 
 	/**
 	 * Reads out table %dbPrefix%categorylinks for certain page_id
-	 * @param int $pageId ID of article that category links should be read for.
+	 * @param int $iPageID ID of article that category links should be read for.
 	 * @return array Categorynames as values
 	 */
 	public function getCategoriesFromDbForCertainPageId( $iPageID ) {
@@ -537,7 +545,7 @@ class BuildIndexMainControl {
 
 	/**
 	 * Reads out table %dbPrefix%revision for certain page_id
-	 * @param int $pageId ID of article that revisions should be read for.
+	 * @param int $iPageID ID of article that revisions should be read for.
 	 * @return array editors as values
 	 */
 	public function getEditorsFromDbForCertainPageId( $iPageID ) {
@@ -568,152 +576,146 @@ class BuildIndexMainControl {
 
 	/**
 	 * Returns a unique id from parameter information.
-	 * @param int $iID Id of an article.
-	 * @param string $sPath Path to a file.
+	 * @param variable $vIdentifier Id of an article or path of a file.
+	 * @param string $sOverallType overall type
 	 * @return string The unique ID in the index for a given document-id/-title/-path
 	 */
-	public function getUniqueId( $iID, $sPath = null ) {
-		$sPath = str_replace( array( '/', '\\' ), '', $sPath );
-		if ( ( $iID == -1 ) && empty( $sPath ) )
-				throw new BsException( 'getUniqueId in BuildIndex has been called with $id == -1 and invalid $sPath: '.$sPath );
+	public function getUniqueId( $vIdentifier, $sOverallType ) {
+		if ( substr_count( $vIdentifier, '/' ) || substr_count( $vIdentifier, '\\' ) ) {
+			$vIdentifier = str_replace( array( '/', '\\' ) , '', $vIdentifier );
+		}
+		if ( empty( $vIdentifier ) || empty( $sOverallType ) )
+				throw new BsException( 'getUniqueId in BuildIndex has been called with empty $vIdentifier or empty $sOverallType' );
 		/* md5 encoding of $path has several advantages
 		 *    - almost unique and thus injective hash of any filepath
 		 *    - 32 alphanumeric characters [0-9,a-f] => thus robust for encoding
 		 *    - shorter and better performing than sha1 */
-		return $this->sCustomerId.'-'.( ( $iID == -1 ) ? md5( $sPath ) : $iID );
+		return md5( $this->sCustomerId . $vIdentifier . $sOverallType );
 	}
 
 	/**
-	 * Handles the search index lock file.
+	 * Handles the build index lock file.
 	 * @param string $sMode createLock, deleteLock
-	 * @return bool False if there is no logfile, true if no mode is given, no return value otherwise.
+	 * @return null
 	 */
-	public function lockFile( $sMode = '' ) {
-		if ( empty( $this->sFilePathLogFile ) ) return false;
-		if ( $sMode == '' ) return true;
-
+	public function lockFile( $sMode ) {
 		switch ( $sMode ) {
 			case 'createLock':
 				touch( $this->sFilePathLockFile );
-				return true;
+				break;
 			case 'deleteLock':
 				if ( file_exists( $this->sFilePathLockFile ) ) unlink( $this->sFilePathLockFile );
-				return true;
+				break;
 		}
 	}
 
 	/**
-	 * Handles the search index log file.
-	 * @param string $sMode delete, create, exists, is_writebale, write
-	 * @param string $sData Text to write to file.
-	 * @return bool False if there is no logfile, true if no mode is given, no return value otherwise.
+	 * Handles the build index log file.
+	 * @return null
 	 */
-	public function logFile( $sMode = '', $sData = '' ) {
-		if ( empty( $this->sFilePathLogFile ) ) return false;
-		if ( $sMode == '' ) return true;
-
-		switch ( $sMode ) {
-			case 'delete':
-				if ( $this->logFile( 'exists' ) ) unlink( $this->sFilePathLogFile );
-				return;
-			case 'create':
-				if ( $this->logFile( 'exists' ) ) $this->logFile( 'delete' );
-				touch( $this->sFilePathLogFile );
-				return true;
-			case 'exists':
-				return file_exists( $this->sFilePathLogFile );
-			case 'write':
-				if ( is_writable( $this->sFilePathLogFile ) ) {
-					$rFh = fopen( $this->sFilePathLogFile, 'a' );
-					fwrite( $rFh, $sData );
-					fclose( $rFh );
-				}
+	public function logFile() {
+		if ( !file_exists( $this->sFilePathIndexLogFile ) ){
+			touch( $this->sFilePathIndexLogFile );
+		} else {
+			unlink( $this->sFilePathIndexLogFile );
+			$this->logFile();
 		}
 	}
 
 	/**
-	 * Write log output
+	 * Handles the build index progress file.
+	 * @return null
+	 */
+	public function progressFile( $sMode ) {
+		if ( $sMode === 'create' ) {
+			if ( file_exists( $this->sFilePathIndexProgTxt ) ) {
+				unlink( $this->sFilePathIndexProgTxt );
+				$this->progressFile( 'create' );
+			} else {
+				touch( $this->sFilePathIndexProgTxt );
+			}
+		}
+		if ( $sMode === 'delete' ) {
+			if ( file_exists( $this->sFilePathIndexProgTxt ) ) {
+				unlink( $this->sFilePathIndexProgTxt );
+			}
+		}
+	}
+
+	/**
+	 * Writes output into the log file
+	 * @param string $sData text to write to file.
+	 * @return null
+	 */
+	public function writeLogOutput( $sData ) {
+		if ( is_writable( $this->sFilePathIndexLogFile ) ) {
+			$sData .= "\n";
+			file_put_contents( $this->sFilePathIndexLogFile, $sData, FILE_APPEND );
+		}
+	}
+
+	/**
+	 * Writes output into the progress file
+	 * @param string $sData text to write to file.
+	 * @return null
+	 */
+	public function writeProgressOutput( $sData ) {
+		if ( is_writable( $this->sFilePathIndexProgTxt ) ) {
+			file_put_contents( $this->sFilePathIndexProgTxt, $sData );
+		}
+	}
+
+	/**
+	 * Writes output to several files
 	 * @param string $sMode Information about the indexing area
 	 * @param string $sMessage Message to log.
 	 * @param string $sProgress Progress value between 0 and 100
-	 * @return void Returns no value if mode was unlink and no value otherwise.
+	 * @return null
 	 */
-	public function writeLog( $sMode, $sMessage = '', $sProgress = '' ) {
-		if ( $sMode == 'unlink' ) {
-			if ( !$this->bCommandLineMode ) sleep( 2 );
-			$this->writeLog( '__FINISHED__' );
-			if ( !$this->bCommandLineMode ) sleep( 2 );
-			unlink( $this->sFilePathIndexProgTxt );
-			return;
-		}
-
+	public function write( $sMode, $sMessage = '', $sProgress = '' ) {
 		$sMessage = addslashes( $sMessage );
 
-		$bExtendedSearchIndexVerbose = true;
-		if ( $bExtendedSearchIndexVerbose && $sMode != '__FINISHED__' ) {
-			$sOutput = "{$this->iDocsInIndex}: {$sMode}: {$sProgress}% - {$sMessage}";
+		$sOutput = ( !empty( $sMode ) )
+			? "{$this->iDocsInIndex}: {$sMode}: {$sProgress}% - {$sMessage}"
+			: $sMessage;
 
-			if ( $this->logFile() ) {
-				$this->logFile( 'write', "{$sOutput}\n" ); // output to logFile
-			}
-		}
+		$this->writeLogOutput( $sOutput );
 
-		// dont need index_prog.txt output on cmd
+		// dont need progess output on command line
 		if ( $this->bCommandLineMode ) return;
 
 		$sLine = '["'.$sMode.'", "'.$sMessage.'", "'.$sProgress.'"]';
-		$rFh = fopen( $this->sFilePathIndexProgTxt, 'w' ); // output one line to file, recreating file each time (for ajax progress bar)
-		fwrite( $rFh, $sLine );
-		fclose( $rFh );
+		$this->writeProgressOutput( $sLine );
 	}
 
 	/**
-	 * Parses text to be valid for indeing
-	 * @param string $sText Text to be parsed
+	 * Generates plain text content of a given wiki page without WikiText or HTML tags
 	 * @param object $oTitle Title object
-	 * @return string Parsed text or empty on failure
+	 * @return string Plain text content
 	 */
-	public function parseTextForIndex( $sText, $oTitle ) {
-		$sParsedText = '';
-		if ( empty( $sText ) || is_null( $oTitle ) ) return $sParsedText;
+	public function prepareTextForIndex( Title $oTitle ) {
+		$sText = WikiPage::newFromID( $oTitle->getArticleID() )
+				->getContent()
+				->getParserOutput( $oTitle )
+				->getText();
 
-		// find all tags and sorround them with pre tags
-		$sText = preg_replace_callback( '#<.*?>#', array( $this, 'preTags' ), $sText );
+		$sText = Sanitizer::stripAllTags( $sText );
+		$sText = str_replace( $this->aFragsToBeReplaced, ' ', $sText );
+		$sText = html_entity_decode( $sText );
 
-		// find all behaviour switches and replace them with nothing
-		$sText = preg_replace( '#__[A-Z_]+__#', '', $sText );
-
-		try {
-			$sParsedText = BsCore::getInstance()->parseWikiText( $sText, $oTitle );
-		} catch ( Exception $e ) {
-			return $sParsedText;
-		}
-
-		$sParsedText = strip_tags( $sParsedText );
-		$sParsedText = str_replace( $this->aFragsToBeReplaced, ' ', $sParsedText );
-		$sParsedText = html_entity_decode( $sParsedText );
-
-		return $sParsedText;
-	}
-
-	/**
-	 * Callback function to return every tag surrounded with pre tags to avoid parsing
-	 * @param array $aTags Array of matches
-	 * @return string pre surrounded tag
-	 */
-	public function preTags( $aTags ) {
-		return '<pre>' . $aTags[0] . '</pre>';
+		return $sText;
 	}
 
 	/**
 	 * Extracts the edit sections out of a given text
-	 * @param string $sText Text to be parsed
+	 * @param object $oTitle Text to be parsed
 	 * @return array array of sections
 	 */
-	public function extractEditSections( $sText ) {
+	public function extractEditSections( $oTitle ) {
 		$aSections = array();
-		if ( empty( $sText ) ) return $aSections;
+		if ( !( $oTitle instanceof Title ) ) return $aSections;
 
+		$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 		$aMatches  = array();
 		$aLines = explode( "\n", $sText );
 		foreach ( $aLines as $sLine ) {
@@ -746,10 +748,11 @@ class BuildIndexMainControl {
 	 * @param boolean $bOptimize optimize index or not
 	 * @return object Always null
 	 */
-	public function commitAndOptimize( $bOptimize = false ) {
+	public function commitAndOptimize( $bOptimize = false, $bWaitSearcher = true,
+		$bSoftCommit = false, $bExpungeDeletes = true ) {
 		// http://wiki.apache.org/solr/UpdateXmlMessages#A.22commit.22_and_.22optimize.22
 		try {
-			$this->oSearchService->commit( true, true, true, 60 );
+			$this->oSearchService->commit( $bWaitSearcher, $bSoftCommit, $bExpungeDeletes, 60 );
 
 			// Don't optimize on every call it is very expensive
 			if ( $bOptimize === true ) {

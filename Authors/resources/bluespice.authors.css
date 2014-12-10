@@ -4,7 +4,6 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
-
  * @package    BlueSpice_Extensions
  * @subpackage Authors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -22,9 +21,8 @@
 }
 
 .bs-authors .bs-userminiprofile {
-	float:left;
-	margin: 5px 5px 0px 0px;
-	padding: 2px 0 0 0;
+	float: left;
+	margin-right: 3px;
 }
 
 .bs-authors-originator {
@@ -40,7 +38,3 @@
     border: 2px #FFAE00 solid;
 }
 */
-
-.bs-authors-lasteditor {
-	margin-left: 5px;
-}

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-interwikilinks-invalid-url-spc": "D'URL ass net valabel. Benotzt w.e.g. keng Espacen.",
+	"bs-interwikilinks-label": "Interwiki-Linken",
+	"bs-interwikilinks-link-added": "Den Interwiki-Link gouf derbäigesat.",
+	"bs-interwikilinks-link-deleted": "Den Interwiki-Link gouf geläscht.",
+	"bs-interwikilinks-nooldpfx": "De virege Prefix gouf net fonnt.",
+	"bs-interwikilinks-nourl": "Gitt w.e.g. eng URL un.",
+	"bs-interwikilinks-pfxexists": "Dëse Prefix gëtt et schonn.",
+	"bs-interwikilinks-headerprefix": "Prefix",
+	"bs-interwikilinks-titleaddinterwikilink": "Interwiki-Link derbäisetzen",
+	"bs-interwikilinks-titleeditinterwikilink": "Interwiki-Link änneren",
+	"bs-interwikilinks-labelprefix": "Prefix",
+	"bs-interwikilinks-titledeleteinterwikilink": "Interwiki-Link läschen",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Sidd Dir sécher datt Dir dësen Interwiki-Link läsche wëllt?",
+	"bs-interwikilinks-insertlink-tabtitle": "Link an eng aner Wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefix"
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-pageaccess-desc": "ページ単位でアクセスを制御する",
+	"bs-pageaccess-tag-groups-desc": "このページに排他的にアクセスできるグループを指定する。カンマ区切りで複数のグループを指定できる。"
+}

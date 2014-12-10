@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"prefs-smartlist": "Okos lista",
+	"bs-smartlist-recent-changes": "Friss változtatások",
+	"bs-smartlist-pref-count": "Bejegyzések száma:",
+	"bs-smartlist-pref-comments": "Hozzászólás megjelenítése",
+	"bs-smartlist-pref-namespaces": "Névterek:",
+	"bs-smartlist-pref-categories": "Kategóriák:",
+	"bs-smartlist-pref-showminorchanges": "Kisebb módosítások mutatása",
+	"bs-smartlist-pref-sort": "Rendezés:",
+	"bs-smartlist-sort-asc": "növekvő",
+	"bs-smartlist-sort-desc": "csökkenő",
+	"bs-smartlist-month": "hónap",
+	"bs-smartlist-time": "Idő",
+	"bs-smartlist-title": "Cím",
+	"bs-smartlist-mosteditedpages": "Legtöbbször szerkesztett lapok",
+	"bs-smartlist-lastedits": "Szerkesztéseim",
+	"bs-smartlist-noedits": "Nem található szerkesztés."
+}

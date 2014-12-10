@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-responsibleeditors-error-ajax-not-allowed": "Accesso negato. Non sei autorizzato ad eseguire questa azione.",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "La pagina indicata non esiste.",
+	"action-responsibleeditors-viewspecialpage": "vedere pagine protette con il diritto \"ResponsibleEditors-Viewspecialpage\"",
+	"bs-responsibleeditors-columnpage": "Pagina",
+	"bs-responsibleeditors-columnnamespace": "Namespace",
+	"bs-responsibleeditors-rbdisplaymodeall": "Mostra tutte le pagine",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Seleziona un namespace",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Non assegnato"
+}

@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-notifications-desc": "Schéckt Informatiounen iwwer Ännerungen déi vun de Benotzer erausgesicht goufen",
+	"prefs-notifications": "Notifikatiounen",
+	"prefs-echo-extended": "Erweidert Systemastellungen",
+	"bs-notifications-pref-notifyns": "Mech nëmmen informéiere bei Ännerungen an dësen Nummräim:",
+	"bs-notifications-pref-notifynominor": "Keng Notifikatioun fir kleng Ännerungen",
+	"bs-notifications-pref-active": "Notifikatiounen aktivéieren",
+	"bs-echo-anon-user": "anonym",
+	"bs-echo-unknown-user": "onbekannt",
+	"bs-echo-page-edit": "D'Säit [[:$1]] gouf geännert",
+	"bs-echo-page-create": "D'Säit [[:$1]] gouf ugeluecht",
+	"bs-echo-page-delete": "D'Säit [[:$1]] gouf geläscht",
+	"bs-echo-page-move": "D'Säit [[:$1]] gouf geréckelt",
+	"bs-echo-page-newuser": "De Benotzer $1 gouf ugeluecht.",
+	"bs-notifications-email-new-subject": "Säit $1 {{GENDER:$2|ugeluecht}} vum $2",
+	"bs-notifications-email-edit-subject": "Säit $1 {{GENDER:$2|geännert}} vum $2",
+	"bs-notifications-email-edit": "D'Säit \"$1\" gouf vum $2 {{GENDER:$2|geännert}}.\n\nBemierkung:\n$3\nDir kënnt d'Säit op dësem Link besichen:\n$4.\n\nWann Dir nëmmen d'Ännerunge gesi wëllt, da gitt op dëse Link:\n$5",
+	"bs-notifications-email-move-subject": "Säit $1 {{GENDER:$2|geréckelt}} vum $2",
+	"bs-notifications-email-move": "D'Säit \"$1\" gouf vum $2 op $3 {{GENDER:$2|geréckelt}}. Dir kënnt d'Säit op dësem Link fannen: $4",
+	"bs-notifications-email-delete-subject": "Säit $1 {{GENDER:$2|geläscht}} vum $2",
+	"bs-notifications-email-delete": "D'Säit \"$1\" gouf vum $2 {{GENDER:$2|geläscht}}.\n\nDe Grond war:\n$3",
+	"bs-notifications-email-addaccount-subject": "Benotzer $1 gouf ugeluecht",
+	"bs-notifications-email-addaccount": "De Benotzer $1 mam richtegen Numm $2 gouf ugeluecht.",
+	"echo-category-title-bs-create-cat": "Notifikatioun fir nei Säiten",
+	"echo-category-title-bs-edit-cat": "Notifikatioun fir Ännerungen",
+	"echo-category-title-bs-move-cat": "Notifikatioun fir d'Réckelen",
+	"echo-category-title-bs-delete-cat": "Notifikatioun fir Läschungen"
+}

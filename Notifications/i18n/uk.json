@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-notifications-desc": "Надсилає cповіщення на обрані користувачем зміни",
+	"prefs-notifications": "Сповіщення",
+	"prefs-echo-extended": "Розширені налаштування системи",
+	"bs-notifications-pref-notifyns": "Сповіщати лише про зміни у цих просторах назв:",
+	"bs-notifications-pref-notifynominor": "Не сповіщати про незначні зміни",
+	"bs-notifications-pref-active": "Увімкнути сповіщення",
+	"bs-echo-anon-user": "анонім",
+	"bs-echo-unknown-user": "невідомо",
+	"bs-echo-page-edit": "Сторінку [[:$1]] було змінено",
+	"bs-echo-page-create": "Сторінку [[:$1]] було створено",
+	"bs-echo-page-delete": "Сторінку [[:$1]] було вилучено",
+	"bs-echo-page-move": "Сторінку [[:$1]] було перейменовано",
+	"bs-echo-page-newuser": "Користувач $1 був створений.",
+	"bs-echo-page-shoutbox": "Нове повідомлення рупора на сайті [[:$1]].",
+	"bs-notifications-email-new-subject": "Сторінку $1 {{GENDER:$2|створив|створила}} $2",
+	"bs-notifications-email-new": "Сторінку «$1» {{GENDER:$2|створив|створила}} $2.\n\nКоментар:\n $3 \nВи можете відвідати сторінку за цим посиланням:\n$4",
+	"bs-notifications-email-edit-subject": "Сторінку $1 {{GENDER:$2|редагував|редагувала}} $2",
+	"bs-notifications-email-edit": "Сторінку «$1» {{GENDER:$2|редагував|редагувала}} $2.\n\nКоментар:\n $3 \nВи можете відвідати сторінку за цим посиланням:\n$4.\n\nЯкщо Ви хочете лише переглянути зміни, перейдіть за цим посиланням:\n$5",
+	"bs-notifications-email-move-subject": "Сторінку $1 {{GENDER:$2|перейменував|перейменувала}} $2",
+	"bs-notifications-email-move": "Сторінку «$1» $2 {{GENDER:$2|перейменував|перейменувала}}  на $3. Ви можете відвідати сторінку за цим посиланням:\n$4",
+	"bs-notifications-email-delete-subject": "Сторінку $1 {{GENDER:$2|вилучив|вилучила}} $2",
+	"bs-notifications-email-delete": "Сторінку «$1» {{GENDER:$2|вилучив|вилучила}} $2.\n\nВказана причина:\n$3",
+	"bs-notifications-email-addaccount-subject": "Користувач $1 створений",
+	"bs-notifications-email-addaccount": "Користувач $1 зі справжнім іменем $2 було створено.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|написав|написала}} повідомлення на сторінці $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|написав|написала}} повідомлення на сторінці «$1».\n\nПовідомлення:\n$3\n\nВи можете відвідати сторінку за цим посиланням:\n$4.",
+	"echo-category-title-bs-create-cat": "Сповіщення про нові сторінки",
+	"echo-category-title-bs-edit-cat": "Сповіщення про редагування",
+	"echo-category-title-bs-move-cat": "Сповіщення про перейменування",
+	"echo-category-title-bs-delete-cat": "Сповіщення про вилучення",
+	"echo-category-title-bs-newuser-cat": "Сповіщення про нових користувачів (тільки для адміністраторів)",
+	"echo-category-title-bs-shoutbox-cat": "Сповіщення про повідомлення на відстежуваних сторінках (рупор)"
+}

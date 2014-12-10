@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-formattinghelp-desc": "راهنما را برای قالب‌بندی متن نشان می‌دهد",
+	"bs-formattinghelp-formatting": "قالب‌بندی راهنما",
+	"bs-formattinghelp-help-syntax": "نحو",
+	"bs-formattinghelp-help-example-text": "متن",
+	"bs-formattinghelp-help-bold": "پررنگ",
+	"bs-formattinghelp-help-italic": "مورب",
+	"bs-formattinghelp-help-whitespace": "فضای خالی",
+	"bs-formattinghelp-help-nowiki": "جلوگیری از قالب‌بندی",
+	"bs-formattinghelp-help-color": "متن رنگی",
+	"bs-formattinghelp-help-headline": "عنوان",
+	"bs-formattinghelp-help-linebreak": "خط شکسته",
+	"bs-formattinghelp-help-ul": "فهرست نامرتب",
+	"bs-formattinghelp-help-listitem": "فهرست آیتم",
+	"bs-formattinghelp-help-subitem": "زیرآیتم",
+	"bs-formattinghelp-help-numberedlist": "فهرست شماره‌ای",
+	"bs-formattinghelp-help-link": "پیوند درونی",
+	"bs-formattinghelp-help-link-alt": "پیوند درونی همراه متن جایگزین",
+	"bs-formattinghelp-help-caption": "عنوان",
+	"bs-formattinghelp-help-extlink": "پیوند به بیرون",
+	"bs-formattinghelp-help-hr": "خط افقی",
+	"bs-formattinghelp-help-template": "الگو",
+	"bs-formattinghelp-help-templatename": "نام الگو"
+}

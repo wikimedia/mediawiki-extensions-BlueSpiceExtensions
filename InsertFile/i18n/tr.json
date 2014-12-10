@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-insertfile-labelsort": "Sıralama ölçütü:",
+	"bs-insertfile-filename": "Dosya adı",
+	"bs-insertfile-filesize": "Dosya boyutu",
+	"bs-insertfile-labellink": "Bağlantı",
+	"bs-insertfile-uploadimageemptytext": "Yeni bir resim seçin...",
+	"bs-insertfile-uploadimagefieldlabel": "Yeni resim yükle",
+	"bs-insertfile-uploadfileemptytext": "Yeni bir dosya seçin...",
+	"bs-insertfile-warningupload": "Yüklenmeyi bekleyen bir dosya var. Bu pencereyi kapatmak istiyor musunuz?",
+	"bs-insertfile-errornofileextensiononupload": "Seçtiğiniz dosyanın uzantısı yok.",
+	"bs-insertfile-license": "Lisans",
+	"bs-insertfile-linktext": "Metin görüntüle"
+}

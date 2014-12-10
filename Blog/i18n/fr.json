@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fany",
+			"Gomoko"
+		]
+	},
+	"bs-blog-desc": "Affiche une liste de pages de style de blog",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Il n'y a pas d'entrées de blogs.",
+	"bs-blog-comments": "Commentaires",
+	"bs-blog-read-more": "Pour en savoir plus",
+	"bs-blog-trackback": "Rétrolien",
+	"bs-blog-permalink": "Lien permanent",
+	"bs-blog-show-all": "Afficher toutes les entrées",
+	"bs-blog-form-inline-text": "Titre...",
+	"bs-blog-form-title-text": "Créer une nouvelle entrée de blog",
+	"bs-blog-form-button-text": "Créer",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Ouvrir nouvelle fenêtre pour lire la suite",
+	"bs-blog-pref-newentryfieldposition": "Position du nouveau formulaire d'entrée de blog :",
+	"bs-blog-pref-showall": "Afficher le lien vers toutes les entrées",
+	"bs-blog-pref-showinfo": "Afficher les informations sur l'entrée",
+	"bs-blog-pref-showlimit": "Nombre d'entrées de blog :",
+	"bs-blog-pref-shownewentryfield": "Afficher le formulaire de la nouvelle entrée de blog",
+	"bs-blog-pref-showpermalink": "Afficher un lien vers lien permanent",
+	"bs-blog-pref-sortby": "Trier par :",
+	"bs-blog-pref-imagerendermode": "Afficher des images en tant que :",
+	"bs-blog-pref-maxentrycharacters": "Nombre de mots par entrée :",
+	"bs-blog-tag-blog-desc": "Afficher les entrées de blog sur chaque page."
+}

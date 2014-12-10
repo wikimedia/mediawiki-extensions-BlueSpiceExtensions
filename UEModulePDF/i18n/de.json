@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-uemodulepdf-desc": "Aktiviert MediaWiki zum Exportieren von Seiten in das PDF-Format",
+	"prefs-uemodulepdf": "Universal Export PDF Modul",
+	"uemodulepdf": "Universal Export PDF Modul",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Backend URL:",
+	"bs-uemodulepdf-pref-templatepath": "Standardvorlage:",
+	"bs-uemodulepdf-pref-suppressns": "Namensraum im PDF ausblenden",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF Einzelseite",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Diese Seite im PDF Format ausgeben.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exportiert Wikiseiten (Spezialseiten und Inhaltsseiten) nach Adobe PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "Status des Backends",
+	"bs-uemodulepdf-overview-webservice-state-ok": "erreichbar",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "nicht erreichbar",
+	"soap-service-url-not-valid": "Die URL des Webservices für die PDF-Erzeugung ist nicht korrekt. Bitte überprüfe die Wiki-Einstellungen.",
+	"soap-service-url-not-set": "Die URL des Webservices für die PDF-Erzeugung ist nicht gesetzt. Bitte überprüfe die Wiki-Einstellungen.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Backend Webinterface"
+}

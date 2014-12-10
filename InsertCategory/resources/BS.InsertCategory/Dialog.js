@@ -3,36 +3,25 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 	id: 'bs-insertcategory',
 	singleton: true,
 	layout: 'border',
-	height: 350,
-	width:500,
+	height: 450,
+	width:600,
 	modal: true,
 	title: mw.message('bs-insertcategory-title').plain(),
-	
+
 	isDirty: false,
 	afterInitComponent: function() {
 		this.strBoxSelect = Ext.create('Ext.data.JsonStore', {
-			/*proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertMagic::ajaxGetData'),
-				reader: {
-					type: 'json',
-					root: 'categories',
-					idProperty: 'prefixedText'
-				}
-			},*/
-			data:/* {
-				categories: */[
+			data: [
 					{ text: 'Lorem', prefixedText: 'Kategorie:Lorem' },
 					{ text: 'Ipsum', prefixedText: 'Kategorie:Ipsum' },
 					{ text: 'dolor', prefixedText: 'Kategorie:dolor' },
 					{ text: 'sit', prefixedText: 'Kategorie:sit' }
-				]
-			/*}*/,
+				],
 			fields: ['text']
 		});
-		
+
 		this.bsCategories = Ext.create('BS.form.CategoryBoxSelect', {
-			fieldLabel: mw.message('bs-insertcategory-cat_label').plain(),
+			fieldLabel: mw.message('bs-insertcategory-cat-label').plain(),
 			labelAlign: 'top',
 			id: 'bs-insertcategory-categorybox'
 		});
@@ -40,9 +29,9 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 		this.bsCategories.on( 'change', this.onChange, this );
 
 		this.bsCategoriesLabel = Ext.create( 'Ext.form.Label', {
-			html: '<div style="padding:3px; background-color:#e3e5eb;">'+mw.message('bs-insertcategory-hint').plain()+'</div>'
+			html: '<div class="bs-insertcategory-hint">'+mw.message('bs-insertcategory-hint').plain()+'</div>'
 		});
-		
+
 		this.pnlMain = Ext.create( 'Ext.form.FormPanel', {
 			region: 'center',
 			bodyPadding: 5,
@@ -51,14 +40,14 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 				this.bsCategoriesLabel
 			]
 		});
-		
+
 		this.tpCategories = Ext.create('BS.InsertCategory.AsyncCategoryTreePanel', {
 			collapsible: true,
 			collapsed: false,
 			region: 'west'
 		});
 		this.tpCategories.on( 'itemclick', this.onItemClick, this );
-		
+
 		this.items = [
 			this.tpCategories,
 			this.pnlMain

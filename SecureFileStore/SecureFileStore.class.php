@@ -66,7 +66,7 @@ class SecureFileStore extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'SecureFileStore',
-			EXTINFO::DESCRIPTION => 'Prevent unauthorized access to files and images.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-securefilestore-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Marc Reymann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -87,11 +87,11 @@ class SecureFileStore extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		BsExtensionManager::setContext( 'MW::SecureFileStore::Active' );
 		
-		BsConfig::registerVar( 'MW::SecureFileStore::Active',                 true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-Active' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition',     'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-DefaultDisposition', 'select' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline',      array( 'pdf' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionInline', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::SecureFileStore::DispositionAttachment',  array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-DispositionAttachment', 'multiselectplusadd' );
-		BsConfig::registerVar( 'MW::SecureFileStore::FileExtensionWhitelist', array(), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-FileExtensionWhitelist', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::SecureFileStore::Active', true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT );
+		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition', 'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-defaultdisposition', 'select' );
+		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline', array( 'pdf' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-dispositioninline', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::SecureFileStore::DispositionAttachment', array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-dispositionattachment', 'multiselectplusadd' );
+		BsConfig::registerVar( 'MW::SecureFileStore::FileExtensionWhitelist', array(), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-securefilestore-pref-fileextensionwhitelist', 'multiselectplusadd' );
 
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec', 'secureImages' );
 		$this->setHook( 'ExtendedSearchBeforeAjaxResponse', 'secureImages' );

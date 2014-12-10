@@ -53,15 +53,15 @@ class SpecialReview extends BsSpecialPage {
 		$oUser = User::newFromName( $sParameter );
 		if( $oUser && $oUser->getId() > 0 ) {
 			$sName = $oUser->getRealName();
-			$sName = empty($sName) ? $oUser->getName() : $oUser->getRealName().' ('.$oUser->getName().')';
-			$oOutputPage->setPagetitle( wfMessage( 'bs-review-specialreview-header', 1, $sName )->parse() );
+			$sName = empty( $sName ) ? $oUser->getName() : $oUser->getRealName().' ('.$oUser->getName().')';
+			$oOutputPage->setPagetitle( wfMessage( 'bs-review-specialreview-header', 1, $sName )->text() );
 			$oOutputPage->addJsConfigVars( 'bsSpecialReviewUserID', $oUser->getId() );
 			$oOutputPage->addJsConfigVars( 'bsSpecialReviewUserName', $oUser->getName() );
 		} else {
-			$oOutputPage->setPagetitle( wfMessage( 'bs-review-specialreview-header', 0)->parse() );
+			$oOutputPage->setPagetitle( wfMessage( 'bs-review-specialreview-header', 0 )->text() );
 		}
 
-		$oOutputPage->addHTML($sOut);
+		$oOutputPage->addHTML( $sOut );
 		$oOutputPage->addHTML(
 			Html::element( 'div', array( 'id' => 'bs-review-overview') )
 		);
@@ -69,7 +69,7 @@ class SpecialReview extends BsSpecialPage {
 	}
 
 	/**
-	 * 
+	 *
 	 * @global WebRequest $wgRequest
 	 * @return type
 	 */
@@ -95,7 +95,7 @@ class SpecialReview extends BsSpecialPage {
 		$aReviewList = self::filterReviewList(Review::getData(), $aFilter);
 		$aReviews = array();
 
-		foreach ($aReviewList as $arrKey => $row) {
+		foreach ( $aReviewList as $arrKey => $row ) {
 			$row += $row['array'];
 			if( $row['revs_status'] == '' ) {
 				$row['revs_status'] = 'pending';
@@ -110,9 +110,11 @@ class SpecialReview extends BsSpecialPage {
 			$oReview->rev_status_text = wfMessage( 'bs-review-' . $row['revs_status'])->plain();
 			$oReview->rejected = isset($row['rejected']) ? $row['rejected'] : false;
 			$oReview->accepted = isset($row['accepted']) ? $row['accepted'] : 0;
-			$oReview->accepted_text = 
-				wfMessage( 'bs-review-accepted' )->plain() . ': ' . 
-				$oReview->accepted . '/' . $row['total'] . '<br />'.
+			if ( !wfMessage( 'bs-review-' . $row['revs_status'] )->exists() ) {
+				wfDebugLog( 'BS::Review' , 'message key does not exist'. wfMessage( 'bs-review-' . $row['revs_status'] )->plain() );
+			}
+			$oReview->accepted_text =
+				wfMessage( 'bs-review-accepted', $oReview->accepted . '/' . $row['total'] )->plain() . '<br />'.
 				wfMessage( 'bs-review-' . $row['revs_status'])->plain();
 			$oReview->total = $row['total'];
 			$oReview->endtimetamp = $row['endtimestamp'];
@@ -142,13 +144,13 @@ class SpecialReview extends BsSpecialPage {
 			$oCurrentDate = DateTime::createFromFormat('YmdHis', wfTimestampNow());
 			$oEndDate = DateTime::createFromFormat('d.m.Y', $oReview->enddate);
 			if( $oEndDate && $oEndDate && $oEndDate < $oCurrentDate ) {
-				$oReview->accepted_text = 
-					wfMessage( 'bs-review-accepted' )->plain() . ': ' . 
+				$oReview->accepted_text =
+					wfMessage( 'bs-review-accepted' )->plain() . ': ' .
 					$oReview->accepted . '/' . $row['total'] . '<br />'.
 					wfMessage( 'bs-review-expired' )->plain();
 			} elseif( $bRejected ) {
-				$oReview->accepted_text = 
-					wfMessage( 'bs-review-accepted' )->plain() . ': ' . 
+				$oReview->accepted_text =
+					wfMessage( 'bs-review-accepted' )->plain() . ': ' .
 					$oReview->accepted . '/' . $row['total'] . '<br />'.
 					wfMessage( 'bs-review-denied' )->plain();
 			}

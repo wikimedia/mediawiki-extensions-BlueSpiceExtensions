@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-contextmenu-desc": "منوهای زمینه برای پیوندهای گوناگون فراهم می‌کند",
+	"prefs-contextmenu": "منوی زمینه",
+	"bs-contextmenu-pref-modus": "بازکردن منوی زمینه با (نه برای تلفن همراه):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "دکمه سمت راست موشواره را بفشارید (فشردن CTRL منوی زمینه پیش‌فرض مرورگر را نشان خواهد داد)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "روی دکمه سمت راست موشواره کلید کنید و CTRL را بفشارید (دکمه سمت راست موشواره به طور عادی منوی پیش‌فرض مرورگر را نشان خواهد داد)",
+	"bs-contextmenu-page-edit": "ویرایش صفحه",
+	"bs-contextmenu-page-delete": "حذف صفحه",
+	"bs-contextmenu-page-move": "انتقال صفحه",
+	"bs-contextmenu-page-history": "مشاهده تاریخچه صفحه",
+	"bs-contextmenu-page-protect": "محافظت از صفحه",
+	"bs-contextmenu-page-purge": "پاکسازی حافظه نهان و مشاهده صفحه",
+	"bs-contextmenu-page-info": "مشاهده صفحه اطلاعات",
+	"bs-contextmenu-media-reupload": "بارگذاری نسخه تازه",
+	"bs-contextmenu-media-view-page": "مشاهده صفحه توضیحات پرونده و تاریخچه پرونده",
+	"bs-contextmenu-user-mail": "ارسال رایانامه",
+	"bs-contextmenu-user-talk": "در صفحه بحث پیام بگذارید",
+	"bs-contextmenu-file-download": "دریافت پرونده"
+}

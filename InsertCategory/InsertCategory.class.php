@@ -26,7 +26,6 @@
  * @author     Sebastian Ulbricht
  * @author     Stefan Widmann <widmann@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage InsertCategory
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -61,7 +60,7 @@ class InsertCategory extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InsertCategory',
-			EXTINFO::DESCRIPTION => 'Dialogbox to enter a category link.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertcategory-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Stefan Widmann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -78,24 +77,22 @@ class InsertCategory extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
-		$this->setHook( 'SkinTemplateContentActions' );
-		$this->setHook( 'SkinTemplateNavigation::Universal', 'onSkinTemplateNavigationUniversal' );
+		$this->setHook( 'SkinTemplateNavigation' );
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'VisualEditorConfig' );
 
-		BsConfig::registerVar( 'MW::InsertCategory::CategoryNamespaceName', 'Category', BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT );
-		BsConfig::registerVar( 'MW::InsertCategory::WithParents', false, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-insertcategory-pref-WithParents', 'toggle' );
+		BsConfig::registerVar( 'MW::InsertCategory::WithParents', false, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-insertcategory-pref-withparents', 'toggle' );
 
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
-	
+
 	/**
 	 * adds the button that was added in the javascript
 	 * @param type $aConfigStandard
 	 * @param type $aConfigOverwrite
 	 * @param Array &$aLoaderUsingDeps reference
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
 		$aLoaderUsingDeps[] = 'ext.bluespice.insertcategory';
@@ -107,266 +104,86 @@ class InsertCategory extends BsExtensionMW {
 		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "hwinsertcategory" );
 		return true;
 	}
-	
+
 	/**
 	 *
 	 * @param OutputPage $out
 	 * @param Skin $skin
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public static function onBeforePageDisplay( &$out, &$skin ) {
 		$out->addModuleStyles('ext.bluespice.insertcategory.styles');
 		$out->addModules('ext.bluespice.insertcategory');
 		return true;
 	}
-	
+
 	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
 		$this->getOutput()->addModuleStyles('ext.bluespice.insertcategory.styles');
 		$this->getOutput()->addModules('ext.bluespice.insertcategory');
-		
+
 		$aRows[0]['dialogs'][10] = 'bs-editbutton-insertcategory';
 
 		$aButtonCfgs['bs-editbutton-insertcategory'] = array(
-			'tip' => wfMessage( 'bs-insertcategory-insert_category' )->plain()
+			'tip' => wfMessage( 'bs-insertcategory-insertcat' )->plain()
 		);
 		return true;
 	}
 
 	public static function addCategoriesToArticle( $iArticleId ) {
-		if ( BsCore::checkAccessAdmission( 'read' ) === false )
-				return json_encode( array( 'success' => false ) );
+		if ( BsCore::checkAccessAdmission( 'read' ) === false ) {
+			return FormatJson::encode( array( 'success' => false ) );
+		}
 
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
-			return json_encode( array(
-				'success' => false,
-				'msg' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
-			) );
+			return FormatJson::encode(
+				array(
+					'success' => false,
+					'msg' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
+				)
+			);
 		}
-		global $wgRequest;
 
-		$sTags = $wgRequest->getVal( 'categories', '' );
+		$sTags = RequestContext::getMain()->getRequest()->getVal( 'categories', '' );
 		$aTags = explode( ',', $sTags );
 
 		$oTitle = Title::newFromID( $iArticleId );
-		if ( $oTitle ) {
-			$oArticle = new Article( $oTitle );
-			$sText = $oArticle->getRawText();
-			$sText = preg_replace( '%(<br \/>)*\[\['.BsNamespaceHelper::getNamespaceName( NS_CATEGORY ).':(.)+?\]\]\n?%i', '', $sText );
-			$sText = trim( $sText );
+		if ( $oTitle->exists() ) {
+			$sCat = BsNamespaceHelper::getNamespaceName( NS_CATEGORY );
+			$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle, Revision::RAW );
+
 			foreach ( $aTags as $sTag ) {
-				$sText .= "\n\n[[".BsNamespaceHelper::getNamespaceName( NS_CATEGORY ).":$sTag]]";
+				if ( preg_match( '#\[\['.$sCat.':'.$sTag.'\]\]#i', $sText ) ) continue;
+				$sText .= "\n[[".$sCat.":$sTag]]";
 			}
 
+			$oArticle = new Article( $oTitle );
 			$oArticle->doEdit( $sText, '', EDIT_UPDATE | EDIT_MINOR );
 		}
 
-		return json_encode( array( 'success' => true ) );
+		return FormatJson::encode( array( 'success' => true ) );
 	}
 
 	/**
-	 * MediaWiki ContentActions hook. For more information please refer to <mediawiki>/docs/hooks.txt
-	 * @param Array $aContentActions This array is used within the skin to render the content actions menu
-	 * @return Boolean Always true for it is a MediwWiki Hook callback.
+	 * Adds the "Insert category" menu entry in view mode
+	 * @param SkinTemplate $sktemplate
+	 * @param array $links
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateContentActions( &$aContentActions) {
-		if( $this->getRequest()->getVal( 'action', 'view') != 'view' ) return true;
-		if( !$this->getTitle()->userCan( 'edit' ) ) return true;
-
-		$links = array( 'actions' => array() );
-		$this->onSkinTemplateNavigationUniversal( null, $links );
-		$aContentActions['insert_category'] = $links['actions']['insert_category'];
-
-		return true;
-	}
-	
-	/**
-	 * 
-	 * @param type $skin
-	 * @param type $links
-	 * @return boolean
-	 */
-	public function onSkinTemplateNavigationUniversal( $skin, &$links ) {
-		if( $this->getRequest()->getVal( 'action', 'view') != 'view' ) return true;
-		if ( $this->getTitle()->isSpecialPage() ) return true;
-		if ( !$this->getTitle()->userCan( 'edit' ) ) return true;
+	public function onSkinTemplateNavigation( &$sktemplate, &$links ) {
+		if ( $this->getRequest()->getVal( 'action', 'view') != 'view' ) {
+			return true;
+		}
+		if ( !$this->getTitle()->userCan( 'edit' ) ) {
+			return true;
+		}
 		$links['actions']['insert_category'] = array(
-			"text" => wfMessage( 'bs-insertcategory-insert_category' )->plain(),
-			"href" => '#',
-			"class" => false
+			'text' => wfMessage( 'bs-insertcategory-insertcat' )->text(),
+			'href' => '#',
+			'class' => false,
+			'id' => 'ca-insertcategory'
 		);
 
 		return true;
 	}
-
-	/**
-	 * Calculate the dataset of the category tree and put it to ajax output.
-	 */
-//	public static function getCategory() {
-//		if ( BsCore::checkAccessAdmission( 'read' ) === false ) return true;
-//		$aTreeData = array( );
-//		$aTempData = array(
-//			'parents' => array( ),
-//			'childs' => array( )
-//		);
-//		$aReferences = array( );
-//		$aCategories = array( );
-//
-//		$dbr = wfGetDB( DB_SLAVE );
-//
-//		/**
-//		 * Select all categories and their parent categories from categorylinks
-//		 */
-//		$res = $dbr->select(
-//			// Tables
-//			array( 'page', 'categorylinks' ),
-//			// Fields
-//			array( 'page_title AS cat_title', 'cl_to AS parent_title' ),
-//			// Conditions
-//			array( 'page_namespace' => NS_CATEGORY),
-//			__METHOD__,
-//			// Options
-//			array( 'ORDER BY page_title' ),
-//			// Joins
-//			array( 'categorylinks' => array( 'JOIN', 'page_id = cl_from' ), )
-//		);
-//
-//		while ( $row = $res->fetchRow() ) {
-//			// when a category don't have a parent category it is a parent category by itself
-//			if ( !$row[ 'parent_title' ] ) {
-//				$aTempData[ 'parents' ][ $row[ 'cat_title' ] ] = null;
-//			}
-//			// otherwise it has to be places under its parent category
-//			else {
-//				$aTempData[ 'childs' ][ $row[ 'cat_title' ] ][ ] = $row[ 'parent_title' ];
-//				// we save, which categories we allready did sort
-//			}
-//			$aCategories[ ] = "'" . addslashes( $row[ 'cat_title' ] ) . "'";
-//		}
-//
-//			$aCond = array(
-//			'page_namespace' => NS_CATEGORY
-//			);
-//		// categories we allready did sort, we don't want to get with the next queries
-//		$sCategoryCondition = '1';
-//		if ( count( $aCategories ) ) {
-//			$aCond[] = "page_title NOT IN (" . implode( ', ', $aCategories ) . ")";
-//		}
-//		/**
-//		 * Select all categories which have a category page and were not sorted allready before.
-//		 */
-//		$res = $dbr->select(
-//			// Tables
-//			array( 'page' ),
-//			// Fields
-//			array(
-//			'page_title AS cat_title'
-//			),
-//			// Conditions
-//			$aCond,
-//			__METHOD__
-//		);
-//
-//		/**
-//		 * Because we sorted all sub categories allready, all categories, we've found now, have to be parent categories
-//		 */
-//		while ( $row = $res->fetchRow() ) {
-//			$aTempData[ 'parents' ][ $row[ 'cat_title' ] ] = NULL;
-//			// we save the categories we found too
-//			$aCategories[ ] = "'" . addslashes( $row[ 'cat_title' ] ) . "'";
-//		}
-//
-//		// categories we allready did sort, we don't want to get with the next query
-//		$sCategoryCondition = '';
-//		$aCond = array();
-//		if ( count( $aCategories ) ) {
-//			$aCond[] = "cl_to NOT IN (" . implode( ', ', $aCategories ) . ")";
-//		}
-//
-//		/**
-//		 * At last we get all categories from categorylinks, we've not sorted now.
-//		 * That have to be parent categories too but they seems to have no category page yet.
-//		 */
-//		$res = $dbr->select(
-//			// Tables
-//			array( 'categorylinks' ),
-//			// Fields
-//			array( 'cl_to AS cat_title' ),
-//			// Conditions
-//			$aCond, __METHOD__,
-//			// Options
-//			array( 'GROUP BY' => 'cl_to' )
-//		);
-//
-//		/**
-//		 * Because we sorted all sub categories allready, all categories, we've found now, have to be parent categories
-//		 */
-//		while ( $row = $res->fetchRow() ) {
-//			$aTempData[ 'parents' ][ $row[ 'cat_title' ] ] = NULL;
-//			// we save the categories we found too
-//			$aCategories[ ] = "'" . addslashes( $row[ 'cat_title' ] ) . "'";
-//		}
-//
-//		// now we sort the categories alphabetical
-//		if ( isset( $aTempData[ 'parents' ] ) && is_array( $aTempData[ 'parents' ] ) ) {
-//			ksort( $aTempData[ 'parents' ], SORT_LOCALE_STRING );
-//		}
-//		if ( isset( $aTempData[ 'childs' ] ) && is_array( $aTempData[ 'childs' ] ) ) {
-//			ksort( $aTempData[ 'childs' ], SORT_LOCALE_STRING );
-//		}
-//
-//		// initial id for the category tree entries
-//		$iId = 1;
-//
-//		// first we add the parent categories to the tree
-//		if ( isset( $aTempData[ 'parents' ] ) ) {
-//			foreach ( $aTempData[ 'parents' ] as $sName => $sParentName ) {
-//				// we create an entry for this category in the tree
-//				$aTreeData[ $sName ] = array(
-//					'id' => $iId,
-//					'name' => addslashes( $sName ),
-//					'children' => null
-//				);
-//				// and save a reference to the entry in references
-//				$aReferences[ $sName ] = & $aTreeData[ $sName ];
-//
-//				$iId++;
-//			}
-//		}
-//
-//		/**
-//		 * Now we sort all child categories to their parents.
-//		 * Because all child categories should have at least one parent, we don't put the entries
-//		 * directly to the tree but to the children array of the reference of their parents.
-//		 */
-//		if ( count( $aTempData[ 'childs' ] ) ) {
-//			foreach ( $aTempData[ 'childs' ] as $sName => $aParentNames ) {
-//				// if there is no entry for this category in references, we create one
-//				if ( !isset( $aReferences[ $sName ] ) ) {
-//					$aReferences[ $sName ] = array(
-//						'id' => $iId,
-//						'name' => addslashes( $sName ),
-//						'children' => null
-//					);
-//				}
-//				// otherwise we update the entry data
-//				else {
-//					$aReferences[ $sName ][ 'id' ] = $iId;
-//					$aReferences[ $sName ][ 'name' ] = $sName;
-//				}
-//				// we save a reference of this category as a children of every of its parents
-//				foreach ( $aParentNames as $sParentName ) {
-//					$aReferences[ $sParentName ][ 'children' ][ ] = &$aReferences[ $sName ];
-//				}
-//				$iId++;
-//			}
-//		}
-//
-//		/**
-//		 * The treedata array should hold all categories now, which are linked to another over references.
-//		 * BsCore::buildTree build up the data to the right format for an ExtJS TreePanel now.
-//		 */
-//		return BsCore::buildTree( $aTreeData );
-//	}
-
 }

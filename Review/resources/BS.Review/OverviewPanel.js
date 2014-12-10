@@ -1,7 +1,7 @@
 Ext.define( 'BS.Review.OverviewPanel', {
 	extend: 'Ext.grid.Panel',
 	features: [],
-	viewConfig: { 
+	viewConfig: {
 		forceFit: true
 	},
 
@@ -22,7 +22,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			},
 			fields: [ 'rev_id', 'page_title', 'owner_name', 'owner_real_name',
 				'rev_status', 'rev_status_text', 'rejected',
-				'accepted', 'accepted_text', 'total', 'endtimetamp', 
+				'accepted', 'accepted_text', 'total', 'endtimetamp',
 				'assessors', 'startdate', 'enddate' ],
 			autoLoad: true
 		});
@@ -33,13 +33,13 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			},
 			items:[
 				{
-					header: mw.message('bs-review-header-page_title').plain(),
+					header: mw.message('bs-review-header-page-title').plain(),
 					dataIndex: 'page_title',
 					renderer: this.renderPageTitle,
 					sortable: false
 				},
 				{
-					header: mw.message('bs-review-header-owner_name').plain(),
+					header: mw.message('bs-review-header-owner-name').plain(),
 					dataIndex: 'owner_name',
 					renderer: this.renderOwner,
 					sortable: false
@@ -51,7 +51,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 					sortable: false
 				},
 				{
-					header: mw.message('bs-review-header-accepted_text').plain(),
+					header: mw.message('bs-review-header-accepted-text').plain(),
 					dataIndex: 'accepted_text',
 					sortable: false
 				},
@@ -85,22 +85,22 @@ Ext.define( 'BS.Review.OverviewPanel', {
 
 		this.features = [this.filters];
 
-		this.callParent(arguments)
+		this.callParent(arguments);
 	},
 
 	renderOwner: function( value, metaData, record, rowIndex, colIndex, store ) {
-            var ownerName = mw.config.get('bsSpecialReviewUserName', false);
-            var openTag = '';
-            var closeTag = '';
-            
-            if(ownerName && ownerName === value) {
-                openTag = '<span style="color: red">';
-                closeTag = '</span>';
-            }
-            
-            var content = record.get('owner_real_name') || value;
-            
-            return openTag + content + closeTag;
+		var ownerName = mw.config.get('bsSpecialReviewUserName', false);
+		var openTag = '';
+		var closeTag = '';
+
+		if(ownerName && ownerName === value) {
+			openTag = '<span style="color: red">';
+			closeTag = '</span>';
+		}
+
+		var content = record.get('owner_real_name') || value;
+
+		return openTag + content + closeTag;
 	},
 
 	renderPageTitle: function( cellValue, record ) {
@@ -114,7 +114,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 	},
 
 	renderAssessors: function( cellValue, record ) {
-                var ownerName = mw.config.get('bsSpecialReviewUserName', false);
+		var ownerName = mw.config.get('bsSpecialReviewUserName', false);
 		var table = '<table cellpadding="5">';
 		var row = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
 		for( var i = 0; i < cellValue.length; i++ ) {
@@ -135,16 +135,16 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			if( line.revs_status == -3 ) { //Was '0' before reject
 				status = '<div class="rv_no">'+status.format( 'rv_invalid' )+'</div>';
 			}
-                        
-                        var openTag = '';
-                        var closeTag = '';
-                        var content = line.real_name || line.name;
-                        
-                        if(ownerName && ownerName === line.name) {
-                            openTag = '<span style="color: red">';
-                            closeTag = '</span>';
-                        }
-                        
+
+			var openTag = '';
+			var closeTag = '';
+			var content = line.real_name || line.name;
+
+			if(ownerName && ownerName === line.name) {
+				openTag = '<span style="color: red">';
+				closeTag = '</span>';
+			}
+
 			table += row.format(
 				status,
 				openTag + content + closeTag,

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-preferences-desc": "Offers the possibility to admins, to configurate the whole wiki from a single SpecialPage",
+	"prefs-bluespice": "BlueSpice",
+	"bs-preferences-label": "Preferences"
+}

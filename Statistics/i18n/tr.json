@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"prefs-statistics": "Genişletilmiş istatistikler",
+	"extendedstatistics": "Genişletilmiş istatistikler",
+	"bs-statistics-year": "Yıl",
+	"bs-statistics-day": "Gün",
+	"bs-statistics-not-allowed": "Gerekli izne sahip değilsiniz.",
+	"bs-statistics-diag-number-of-users": "Kullanıcı sayısı",
+	"bs-statistics-diag-number-of-pages-desc": "Seçilen dönem içinde oluşturulan sayfaların toplam sayısını görüntüler.",
+	"bs-statistics-label-creator": "Oluşturan",
+	"bs-statistics-diag-number-of-edits": "Değişiklik sayısı",
+	"bs-statistics-diag-number-of-edits-desc": "Seçilen dönem içinde yapılan değişikliklerin toplam sayısını görüntüler.",
+	"bs-statistics-label-searchterm": "Arama terimi",
+	"bs-statistics-filter-category": "Kategori",
+	"bs-statistics-pref-excludeusers": "Şu kullanıcılar hariç:",
+	"bs-statistics-portlet-numberofusers": "Kullanıcı sayısı",
+	"bs-statistics-portlet-numberofedits": "Değişiklik sayısı",
+	"bs-statistics-portlet-numberofpages": "Sayfa sayısı",
+	"bs-statistics-portletconfig-periodday": "Dün"
+}

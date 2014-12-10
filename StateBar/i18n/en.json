@@ -1,0 +1,16 @@
+{
+    "@metadata": {
+        "authors": [
+            "Stephan Muggli <muggli@hallowelt.biz>"
+        ]
+    },
+    "bs-statebar-desc": "Provides a status bar",
+    "prefs-statebar": "Status bar",
+    "bs-statebar-pref-sortbodyvars": "Body order:",
+    "bs-statebar-pref-sorttopvars": "Top order:",
+    "bs-statebar-pref-show": "Display status bar",
+    "bs-statebar-viewtoggler": "DETAILS",
+    "bs-statebar-viewtoggler-tooltip": "Show detailed information",
+    "bs-statebar-switch-description": "Hides the status bar on this page.",
+    "bs-statebar-ajax-nobodyviews": "No information available."
+}

@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-namespacemanager-desc": "用于添加、编辑和删除名字空间的管理界面",
+	"bs-namespacemanager-label": "名字空间管理器",
+	"bs-namespacemanager-wrong-name": "名字空间包含无效字符。",
+	"bs-namespacemanager-ns-exists": "名字空间已存在。",
+	"bs-namespacemanager-ns-length": "名字空间必须最少2字符。",
+	"bs-namespacemanager-invalid-id": "没有有效的名字空间ID",
+	"bs-namespacemanager-label-id": "编号",
+	"bs-namespacemanager-label-namespaces": "名字空间",
+	"bs-namespacemanager-label-editable": "可重命名",
+	"bs-namespacemanager-label-content": "内容名字空间",
+	"bs-namespacemanager-label-searchable": "默认搜索",
+	"bs-namespacemanager-label-subpages": "子页面",
+	"bs-namespacemanager-nsadded": "名字空间已添加。",
+	"bs-namespacemanager-nsremoved": "名字空间已移除。",
+	"bs-namespacemanager-nsedited": "名字空间已编辑。",
+	"bs-namespacemanager-tipadd": "加入名字空间",
+	"bs-namespacemanager-tipedit": "编辑名字空间",
+	"bs-namespacemanager-tipremove": "移除名字空间",
+	"bs-namespacemanager-msgnoteditabledelete": "此名字空间是系统名字空间并不能删除。",
+	"bs-namespacemanager-labelnsname": "名字空间名",
+	"bs-namespacemanager-willdelete": "将被删除",
+	"bs-namespacemanager-willmove": "将移动至“{{int:bs-ns_main}}”",
+	"bs-namespacemanager-willmovesuffix": "将移动至“{{int:bs-ns_main}}”带后缀“$1”",
+	"bs-namespacemanager-deletewarning": "您确定要删除此名字空间？删除名字空间不能恢复。",
+	"bs-namespacemanager-pagepresent": "此名字空间的页面：",
+	"bs-namespacemanager-deletens-movepages": "此页面已从名字空间“$1”移动至“{{int:bs-ns_main}}”，因为名字空间“$1”已被删除。",
+	"bs-namespacemanager-deletens-deletepages": "此页面删除，因为名字空间“$1”已被删除。"
+}

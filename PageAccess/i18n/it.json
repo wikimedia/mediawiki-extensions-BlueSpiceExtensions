@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"PeppeAeco",
+			"Beta16"
+		]
+	},
+	"bs-pageaccess-desc": "Controlla l'accesso a livello di pagina",
+	"bs-pageaccess-error-no-groups-given": "Nessun gruppo è stato specificato.",
+	"bs-pageaccess-tag-groups-desc": "Specificare i gruppi che dovrebbero avere accesso esclusivo a questa pagina. Più gruppi possono essere separati da virgole.",
+	"pageaccess": "Pagine protette da PageAccess"
+}

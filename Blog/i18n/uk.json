@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-blog-desc": "Відображає список сторінок у стилі блогу",
+	"prefs-blog": "Блог",
+	"bs-blog-no-entries": "Немає записів у блозі.",
+	"bs-blog-comments": "Коментарі",
+	"bs-blog-read-more": "Читати далі",
+	"bs-blog-trackback": "Трекбек",
+	"bs-blog-permalink": "Постійне посилання",
+	"bs-blog-show-all": "Показати всі записи",
+	"bs-blog-form-inline-text": "Назва ...",
+	"bs-blog-form-title-text": "Створити новий запис блогу",
+	"bs-blog-form-button-text": "Створити",
+	"bs-blog-blog": "Блог",
+	"bs-blog-pref-moreinnewwindow": "Відкрити нове вікно для читання далі",
+	"bs-blog-pref-newentryfieldposition": "Розташування форми нового запису блогу:",
+	"bs-blog-pref-showall": "Показати посилання на всі записи",
+	"bs-blog-pref-showinfo": "Показати інформацію про запис",
+	"bs-blog-pref-showlimit": "Кількість записів у блозі:",
+	"bs-blog-pref-shownewentryfield": "Показати форму нового запису блогу",
+	"bs-blog-pref-showpermalink": "Показати постійне посилання",
+	"bs-blog-pref-sortby": "Сортувати за:",
+	"bs-blog-pref-imagerendermode": "Відображати зображення як:",
+	"bs-blog-pref-maxentrycharacters": "Кількість слів у записі:",
+	"bs-blog-tag-blog-desc": "Показувати записи блогу на кожній сторінці."
+}

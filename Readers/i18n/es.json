@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Fitoschido",
+			"AVIADOR"
+		]
+	},
+	"bs-readers-desc": "Crea una lista de las personas que leen una página",
+	"prefs-readers": "Lectores",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Lector|Lectora}}|Lectores}}",
+	"readers-user": "Páginas {{GENDER:$1|leídas}} por: $1",
+	"readers": "Lectores de \"$1\"",
+	"bs-readers-contentactions-label": "Mostrar lectores",
+	"bs-readers-pagenotexists": "No existe la página.",
+	"bs-readers-pref-active": "Activar lectores",
+	"bs-readers-pref-numofreaders": "Número de lectores a mostrarː",
+	"bs-readers-emptyinput": "No se proporcionó ninguna página.",
+	"bs-readers-header-username": "Nombre de usuario",
+	"bs-readers-header-readerspath": "Lector",
+	"bs-readers-header-ts": "Fecha"
+}

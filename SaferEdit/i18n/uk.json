@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-saferedit-desc": "Проміжне збереження редагувань вікі",
+	"prefs-saferedit": "Безпечніше редагування",
+	"bs-saferedit-restore": "Відновити",
+	"bs-saferedit-safer-edit-tooltip": "Доступна відновлена версія.",
+	"bs-saferedit-safer-edit-topbar": "Відновлення",
+	"bs-saferedit-user-editing": "$1 {{GENDER:$1|редагує}} сторінку",
+	"bs-saferedit-someone-editing": "Сторінка редагується",
+	"bs-saferedit-pref-interval": "Інтервал відновлених версій:",
+	"bs-saferedit-pref-shownameofeditinguser": "Показати ім'я поточного редактора",
+	"bs-saferedit-pref-warnonleave": "Попереджати мене, якщо я залишаю сторінку редагування з незбереженими змінами",
+	"bs-saferedit-pref-usese": "Активувати безпечніше редагування",
+	"bs-saferedit-statebartopsaferedit": "Безпечніше редагування",
+	"bs-saferedit-statebartopsafereditediting": "Безпечніше редагування — хтось редагує",
+	"bs-saferedit-lastsavedversion": "Остання збережена версія від $1 — $2.",
+	"bs-saferedit-unsavedchanges": "Є незбережені зміни.",
+	"bs-saferedit-othersectiontitle": "Розділ до відновлення",
+	"bs-saferedit-othersectiontext1": "Існує резервна копія іншого розділу.",
+	"bs-saferedit-othersectiontext2": "Резервну копію створено $1 — $2.",
+	"bs-saferedit-othersectiontext3": "Ви хочете перемкнутися на той розділ?"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-extensioninfo-desc": "Informationsliste über den eingebundenen Erweiterungen",
+	"bs-extensioninfo-label": "Erweiterungen",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Version",
+	"extensioninfo": "Erweiterungen",
+	"bs-extensioninfo-headerextname": "Name der Erweiterung",
+	"bs-extensioninfo-headerversion": "Version",
+	"bs-extensioninfo-headerdesc": "Beschreibung",
+	"bs-extensioninfo-headerstatus": "Status",
+	"bs-extensioninfo-headerpackage": "Paket",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|Element|Elemente}}"
+}

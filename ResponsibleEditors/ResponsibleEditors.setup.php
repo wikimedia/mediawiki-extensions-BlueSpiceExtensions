@@ -2,7 +2,9 @@
 
 BsExtensionManager::registerExtension('ResponsibleEditors', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['ResponsibleEditors']      = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
+$wgMessagesDirs['ResponsibleEditors'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['ResponsibleEditors'] = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
 $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages
@@ -26,8 +28,8 @@ $wgResourceModules['ext.bluespice.responsibleEditors.styles'] = array(
 $wgResourceModules['ext.bluespice.responsibleEditors'] = array(
 	'scripts' => 'bluespice.responsibleEditors.js',
 	'messages' => array(
-		'bs-responsibleeditors-availableEditors',
-		'bs-responsibleeditors-assignedEditors',
+		'bs-responsibleeditors-availableeditors',
+		'bs-responsibleeditors-assignededitors',
 		'bs-responsibleeditors-title',
 	),
 ) + $aResourceModuleTemplate;
@@ -39,42 +41,33 @@ $wgResourceModules['ext.bluespice.responsibleEditors.manager'] = array(
 		'ext.bluespice.extjs',
 	),
 	'messages' => array(
-		'bs-responsibleeditors-pnlDescriptionText',
-		'bs-responsibleeditors-pnlSucessText',
-		'bs-responsibleeditors-pnlFailureText',
 		'bs-responsibleeditors-cbLabelEditorList',
 		'bs-responsibleeditors-cbEmptyText',
 		'bs-responsibleeditors-loadMaskMessage',
-		'bs-responsibleeditors-columnHeaderArticle',
-		'bs-responsibleeditors-columnHeaderResponsibleEditor',
-		'bs-responsibleeditors-columnHeaderNamespace',
-		'bs-responsibleeditors-columnHeaderActions',
+		'bs-responsibleeditors-columnpage',
+		'bs-responsibleeditors-columnresponsibleeditor',
+		'bs-responsibleeditors-columnnamespace',
 		'bs-responsibleeditors-tipEditAssignment',
 		'bs-responsibleeditors-tipRemoveAssignement',
 		'bs-responsibleeditors-btnDisplayModeText',
-		'bs-responsibleeditors-rbDisplayModeOnlyAssignedText',
-		'bs-responsibleeditors-rbDisplayModeOnlyNotAssigned',
-		'bs-responsibleeditors-rbDisplayModeAll',
-		'bs-responsibleeditors-ptbDisplayMsgText',
-		'bs-responsibleeditors-ptbEmptyMsgText',
-		'bs-responsibleeditors-ptbBeforePageText',
-		'bs-responsibleeditors-ptbAfterPageText',
-		'bs-responsibleeditors-cbNamespacesEmptyText',
-		'bs-responsibleeditors-cbNamespacesLable',
+		'bs-responsibleeditors-rbdisplaymodeonlyassignedtext',
+		'bs-responsibleeditors-rbdisplaymodeonlynotassigned',
+		'bs-responsibleeditors-rbdisplaymodeall',
+		'bs-responsibleeditors-cbnamespacesemptytext',
 		'bs-responsibleeditors-confirmNavigationTitle',
 		'bs-responsibleeditors-confirmNavigationText',
-		'bs-responsibleeditors-columnResponsibleEditorNotSet'
+		'bs-responsibleeditors-columneesponsibleeditornotset'
 	)
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.responsibleEditors.bookshelfPlugin'] = array(
 	'scripts' => array(
-		'bluespice.responsibleEditors.BookshelfPlugin.js',		
+		'bluespice.responsibleEditors.BookshelfPlugin.js',
 	),
 	'dependencies' => 'ext.bluespice.responsibleEditors',
 	'messages' => array(
-		'bs-responsibleeditors-titleEditors',
-		'bs-responsibleeditors-cmChangeRespEditors',
+		'bs-responsibleeditors-titleeditors',
+		'bs-responsibleeditors-cmchangerespeditors',
 	)
 ) + $aResourceModuleTemplate;
 
@@ -98,6 +91,7 @@ $wgAjaxExportList[] = 'ResponsibleEditors::ajaxDeleteResponsibleEditorsForArticl
 $wgAjaxExportList[] = 'ResponsibleEditors::getResponsibleEditorsPortletData';
 
 $wgLogTypes[] = 'bs-responsibleeditors';
+$wgFilterLogTypes['bs-responsibleeditors'] = true;
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ResponsibleEditors::getSchemaUpdates';
 

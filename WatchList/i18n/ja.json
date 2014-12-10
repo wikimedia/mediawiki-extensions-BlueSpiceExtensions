@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-watchlist-title-sidebar": "ウォッチリスト",
+	"bs-watchlist-pref-widgetlimit": "項目数の上限:",
+	"bs-watchlist-pref-widgetsortodr": "並び順:",
+	"bs-watchlist-pref-sort-time": "日時",
+	"bs-watchlist-pref-sort-title": "ページ名"
+}

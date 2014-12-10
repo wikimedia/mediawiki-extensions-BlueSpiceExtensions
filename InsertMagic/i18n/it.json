@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-insertmagic-currentyear": "Anno attuale",
+	"bs-insertmagic-currentmonth": "Mese attuale (con zero iniziale).",
+	"bs-insertmagic-currentmonthname": "Mese attuale (nome).",
+	"bs-insertmagic-currentmonthnamegen": "Mese attuale (forma genitiva).",
+	"bs-insertmagic-currentmonthabbrev": "Mese attuale (abbreviazione).",
+	"bs-insertmagic-currentday": "Giorno del mese (senza zero iniziale).",
+	"bs-insertmagic-currentday2": "Giorno del mese (con zero iniziale).",
+	"bs-insertmagic-currentdow": "Giorno della settimana (senza zero iniziale), 0 (per domenica) a 6 (per sabato).",
+	"bs-insertmagic-currentdayname": "Giorno della settimana (nome).",
+	"bs-insertmagic-currenttime": "Ora (24 ore, formato HH:mm).",
+	"bs-insertmagic-currenthour": "Ora (24 ore, con zero iniziale).",
+	"bs-insertmagic-currentweek": "Settimana (numero).",
+	"bs-insertmagic-currenttimestamp": "Timestamp in formato YYYYMMDDHHmmss.",
+	"bs-insertmagic-sitename": "Il nome del sito wiki.",
+	"bs-insertmagic-server": "URL di dominio.",
+	"bs-insertmagic-servername": "Nome di dominio.",
+	"bs-insertmagic-label-desc": "Descrizione"
+}

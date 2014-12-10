@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Y-M D"
+		]
+	},
+	"prefs-smartlist": "Roll speredek",
+	"bs-smartlist-recent-changes": "Kemmoù graet nevez zo",
+	"bs-smartlist-no-entries": "N'eus bet kavet disoc'h ebet.",
+	"bs-smartlist-comment": "Evezhiadenn : $1.",
+	"bs-smartlist-pref-comments": "Diskouez an evezhiadenn",
+	"bs-smartlist-pref-namespaces": "Esaouennoù anv :",
+	"bs-smartlist-pref-categories": "Rummadoù :",
+	"bs-smartlist-pref-period": "Prantad :",
+	"bs-smartlist-pref-showminorchanges": "Diskouez ar c'hemmoù bihan",
+	"bs-smartlist-pref-showonlynewarticles": "Diskouez ar pajennoù nevez hepken",
+	"bs-smartlist-pref-showtext": "Diskouez endalc'had ar bajenn",
+	"bs-smartlist-pref-order": "Renkañ dre :",
+	"bs-smartlist-pref-sort": "Renkañ dre :",
+	"bs-smartlist-sort-asc": "war gresk",
+	"bs-smartlist-sort-desc": "war zigresk",
+	"bs-smartlist-day": "Deiz",
+	"bs-smartlist-week": "Sizhun",
+	"bs-smartlist-month": "Miz",
+	"bs-smartlist-time": "Eur",
+	"bs-smartlist-title": "Titl",
+	"bs-smartlist-tag-newbies-desc": "Diskwel an implijerien diwezhañ.",
+	"bs-smartlist-mostvisitedpages": "Pajennoù gwelet ar muiañ",
+	"bs-smartlist-mosteditedpages": "Pajennoù muiañ aozet",
+	"bs-smartlist-mostactiveusers": "Implijerien oberiantañ (dre aozadennoù)",
+	"bs-smartlist-lastedits": "Ma aozadennoù",
+	"bs-smartlist-noedits": "N'eus bet kavet aozadenn ebet."
+}

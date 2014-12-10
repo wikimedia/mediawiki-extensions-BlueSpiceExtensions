@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg"
+		]
+	},
+	"bs-saferedit-desc": "Enregistrement intermédiaire des modifications du wiki",
+	"prefs-saferedit": "Édition plus sûre",
+	"bs-saferedit-restore": "Restaurer",
+	"bs-saferedit-safer-edit-tooltip": "Une version de récupération est disponible.",
+	"bs-saferedit-safer-edit-topbar": "Récupération",
+	"bs-saferedit-user-editing": "$1 est en train de {{GENDER:$1|modifier}} la page",
+	"bs-saferedit-someone-editing": "La page est en cours de modification",
+	"bs-saferedit-pref-interval": "Intervalle entre les versions de récupération :",
+	"bs-saferedit-pref-shownameofeditinguser": "Afficher le nom de l’éditeur actuel",
+	"bs-saferedit-pref-warnonleave": "M’avertir quand je quitte une page avec des modifications non enregistrées",
+	"bs-saferedit-pref-usese": "Activer l’édition plus sûre",
+	"bs-saferedit-statebartopsaferedit": "Édition plus sûre",
+	"bs-saferedit-statebartopsafereditediting": "Édition plus sûre — quelqu’un est en cours de modification",
+	"bs-saferedit-lastsavedversion": "Dernière version enregistrée le $1 — $2.",
+	"bs-saferedit-unsavedchanges": "Il y a des modifications non enregistrées.",
+	"bs-saferedit-othersectiontitle": "Section à restaurer",
+	"bs-saferedit-othersectiontext1": "Il y a une sauvegarde d’une autre section.",
+	"bs-saferedit-othersectiontext2": "La sauvegarde a été créé le $1 — $2.",
+	"bs-saferedit-othersectiontext3": "Voulez-vous basculer vers cette section ?"
+}

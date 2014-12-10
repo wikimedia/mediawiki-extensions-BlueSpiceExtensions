@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-securefilestore-desc": "Ermöglicht die Verhinderung von nicht autorisiertem Zugriff auf Dateien und Bilder",
+	"prefs-securefilestore": "Gesicherte Dateiablage",
+	"bs-securefilestore-pref-defaultdisposition": "Dateien standardmäßig darstellen:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Browser",
+	"bs-securefilestore-pref-defaultdisposition-external": "Extern",
+	"bs-securefilestore-pref-dispositionattachment": "Externe Dateitypen:",
+	"bs-securefilestore-pref-dispositioninline": "Browser Dateitypen:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Diese Dateitypen immer anzeigen:"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-wikiadmin-desc": "Zentraler Verwaltungspunkt für BlueSpice",
+	"bs-wikiadmin-notallowed": "Du bist leider nicht berechtigt, diese Seite zu benutzen.",
+	"wikiadmin": "BlueSpice Administration",
+	"action-wikiadmin": "BlueSpice-Administrationsseiten anzuzeigen",
+	"right-wikiadmin": "BlueSpice Administrationsseiten darzustellen",
+	"bs-wikiadmin-shop": "Shop"
+}

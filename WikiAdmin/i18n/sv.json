@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-wikiadmin-desc": "Central punkt för administration för BlueSpice",
+	"bs-wikiadmin-notallowed": "Du har inte behörighet att använda denna sida.",
+	"wikiadmin": "BlueSpice administration",
+	"action-wikiadmin": "Visa BlueSpices administrationssidor",
+	"right-wikiadmin": "Visa BlueSpices administrationssidor"
+}

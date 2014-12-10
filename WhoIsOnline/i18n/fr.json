@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"SnowedEarth"
+		]
+	},
+	"bs-whoisonline-desc": "Affiche une liste d’utilisateurs actuellement en ligne",
+	"bs-whoisonline-nousers": "Personne n’est connecté.",
+	"bs-whoisonline-widget-title": "Qui est en ligne ?",
+	"prefs-whoisonline": "Qui est en ligne ?",
+	"bs-whoisonline-pref-limitcount": "Nombre maximum d’utilisateurs affichés :",
+	"bs-whoisonline-pref-orderby": "Trier par :",
+	"bs-whoisonline-pref-maxidletime": "Durée en secondes avant qu’un utilisateur ne soit marqué hors ligne :",
+	"bs-whoisonline-pref-orderby-time": "Durée de fonctionnement",
+	"bs-whoisonline-pref-orderby-name": "Nom",
+	"bs-whoisonline-pref-interval": "Intervalle de mise à jour en secondes :",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Affiche le nombre d’utilisateurs actuellement connectés.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Affiche une petite liste volante des utilisateurs actuellement connectés.\n\nAttributs valides :\n;<code>anchortext</code>: Le texte auquel vous voulez que soit attaché la fenêtre volante."
+}

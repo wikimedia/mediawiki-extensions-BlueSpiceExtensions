@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-wantedarticle-desc": "Eng Säit op d'Lëscht vun de gewënschte Säiten dobäisetzen",
+	"prefs-wantedarticle": "Gewënscht Säit",
+	"bs-wantedarticle-ajax-error-no-parameter": "Kee Säitentitel uginn.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Déi virgeschloe Säit \"$1\" gëtt et schonn.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "D'Säit \"$1\" gouf scho virgeschlo.",
+	"bs-wantedarticle-success-suggestion-entered": "Är Propos \"$1\" gouf derbäigesat.",
+	"bs-wantedarticle-page-removed": "D'Säit \"$1\" gouf ewechgeholl.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Virschloen",
+	"bs-wantedarticle-single-textfield-defaulttext": "Titel vun der Säit",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Iwwerschrëft.",
+	"bs-wantedarticle-tag-more-linktext": "Méi …",
+	"bs-wantedarticle-tag-default-title": "Gewënscht Säiten",
+	"bs-wantedarticle-pref-includelimit": "Zuel vun de Virschléi:",
+	"bs-wantedarticle-pref-sort": "Zortéieren no:",
+	"bs-wantedarticle-pref-order": "Reiefolleg:",
+	"bs-wantedarticle-pref-sort-time": "Zäit",
+	"bs-wantedarticle-pref-sort-title": "Titel",
+	"bs-wantedarticle-pref-order-asc": "vu kleng op grouss",
+	"bs-wantedarticle-pref-order-desc": "vu grouss op kleng",
+	"bs-wantedarticle-create-page": "Säit \"$1\" uleeën.",
+	"bs-wantedarticle-suggest-page": "Säit \"$1\" virschloen.",
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Dëst Zeechen ass|Dës Zeeche sinn}} net valabel fir an engem Säitentitel ze benotzen: $2"
+}

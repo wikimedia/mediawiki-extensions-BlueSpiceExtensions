@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226",
+			"Shirayuki"
+		]
+	},
+	"bs-interwikilinks-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of interwiki links extension",
+	"bs-interwikilinks-invalid-pfx-spc": "Text for the prefix is invalid. Please do not use spaces.",
+	"bs-interwikilinks-invalid-url-spc": "Text for the URL is invalid. Please do not use spaces.",
+	"bs-interwikilinks-label": "Anchor text in admin tab for interwiki links.\n{{Identical|Interwiki link}}",
+	"bs-interwikilinks-link-created": "Text for the interwiki link has been created.",
+	"bs-interwikilinks-link-added": "Text for the interwiki link has been added.",
+	"bs-interwikilinks-link-deleted": "Text for the interwiki link has been deleted.",
+	"bs-interwikilinks-nooldpfx": "Text for the previous prefix was not found.",
+	"bs-interwikilinks-nopfx": "Text for please supply a prefix.",
+	"bs-interwikilinks-nourl": "Text for please supply a URL.",
+	"bs-interwikilinks-pfxtoolong": "Text for the prefix is too long. Please use a maximum of 32 characters.",
+	"bs-interwikilinks-pfxexists": "Text for this prefix already exists.",
+	"bs-interwikilinks-headerprefix": "Label for prefix\n{{Identical|Prefix}}",
+	"bs-interwikilinks-headerurl": "{{optional}}\nLabel for URL.\n{{Identical|URL}}",
+	"bs-interwikilinks-titleaddinterwikilink": "Text for add interwiki link",
+	"bs-interwikilinks-titleeditinterwikilink": "Text for edit interwiki link",
+	"bs-interwikilinks-labelprefix": "Label for prefix\n{{Identical|Prefix}}",
+	"bs-interwikilinks-labelurl": "{{optional}}\nLabel for URL.\n{{Identical|URL}}",
+	"bs-interwikilinks-titledeleteinterwikilink": "Text for delete interwiki link",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Text for are you sure, you want delete this interwiki link?",
+	"bs-interwikilinks-insertlink-tabtitle": "Text for link in another wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Text for prefix\n{{Identical|Prefix}}",
+	"bs-interwikilink-select-a-prefix": "Text for choose prefix"
+}

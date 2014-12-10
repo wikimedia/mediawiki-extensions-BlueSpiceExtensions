@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Justincheng12345",
+			"Cwlin0416"
+		]
+	},
+	"bs-authors-desc": "顯示頁面作者的個人資料圖片",
+	"prefs-authors": "此頁面作者",
+	"bs-authors-title": "$1 位{{GENDER:$2|作者}}",
+	"bs-authors-profileimage": "設定檔圖像",
+	"bs-authors-profileimage-change": "更改設定檔圖像",
+	"bs-authors-show-all-authors": "更多作者可用",
+	"bs-authors-pref-imageheight": "圖像高度：",
+	"bs-authors-pref-imagewidth": "圖像寬度：",
+	"bs-authors-pref-limit": "顯示作者限制：",
+	"bs-authors-pref-show": "顯示作者",
+	"bs-authors-switch-description": "於此頁中隱藏作者。"
+}

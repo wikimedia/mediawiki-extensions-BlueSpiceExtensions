@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-uemodulepdf-desc": "Овозможува МедијаВики да извезува страници во PDF-формат",
+	"prefs-uemodulepdf": "Универзален извозен модул за PDF",
+	"uemodulepdf": "Универзален извозен модул за PDF",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Заднинска URL:",
+	"bs-uemodulepdf-pref-templatepath": "Стандарден шаблон:",
+	"bs-uemodulepdf-pref-suppressns": "Скривај ја претставката за именски простор во PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Една PDF-страница",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Извези ја страницата како PDF.",
+	"bs-uemodulepdf-overview-title": "Преносен формат за документи (PDF)",
+	"bs-uemodulepdf-overview-desc": "Извезува страници (службени и содржински) во PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "Заднинска состојба",
+	"bs-uemodulepdf-overview-webservice-state-ok": "достапно",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "недостапно",
+	"soap-service-url-not-valid": "URL-адресата до службата за PDF-испис е неважечка. Проверете ги поставките во викито.",
+	"soap-service-url-not-set": "URL-адресата до службата за PDF-испис не е зададена. Проверете ги поставките во викито.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Заднински семрежен посредник"
+}

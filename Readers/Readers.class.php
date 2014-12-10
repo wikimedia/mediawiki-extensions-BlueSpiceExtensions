@@ -50,7 +50,7 @@ class Readers extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Readers',
-			EXTINFO::DESCRIPTION => 'Creates a list of the people who read an article.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-readers-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -72,13 +72,11 @@ class Readers extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSBlueSpiceSkinBeforeArticleHeadline' );
-		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
-		$this->setHook( 'SkinTemplateContentActions' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'SkinTemplateNavigation' );
 
 		$this->mCore->registerPermission( 'viewreaders' );
 
-		BsConfig::registerVar( 'MW::Readers::UpOrDown', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-upordown', 'toggle' );
 		BsConfig::registerVar( 'MW::Readers::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-active', 'toggle' );
 		BsConfig::registerVar( 'MW::Readers::NumOfReaders', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-readers-pref-numofreaders', 'int' );
 
@@ -154,27 +152,38 @@ class Readers extends BsExtensionMW {
 	}
 
 	/**
-	 * MediaWiki ContentActions hook. For more information please refer to <mediawiki>/docs/hooks.txt
-	 * @param Array $aContentActions This array is used within the skin to render the content actions menu
-	 * @return Boolean Always true for it is a MediwWiki Hook callback.
+	 * Adds the "Readers" menu entry in view mode
+	 * @param SkinTemplate $sktemplate
+	 * @param array $links
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateContentActions( &$aContentActions ) {
-		if ( $this->checkContext() === false ) return true;
+	public function onSkinTemplateNavigation( &$sktemplate, &$links ) {
+		if ( $this->checkContext() === false ) {
+			return true;
+		}
 		//Check if menu entry has to be displayed
 		$oCurrentUser = $this->getUser();
-		if ( $oCurrentUser->isLoggedIn() === false ) return true;
+		if ( $oCurrentUser->isLoggedIn() === false ) {
+			return true;
+		}
 
 		$oCurrentTitle = $this->getTitle();
-		if ( $oCurrentTitle->exists() === false ) return true;
-		if ( $oCurrentTitle->getNamespace() === NS_SPECIAL ) return true;
-		if ( !$oCurrentTitle->userCan( 'viewreaders' ) ) return true;
+		if ( $oCurrentTitle->exists() === false ) {
+			return true;
+		}
 
-		$oSpecialPageWithParam = SpecialPage::getTitleFor( 'Readers', $oCurrentTitle->getPrefixedText());
+		if ( !$oCurrentTitle->userCan( 'viewreaders' ) ) {
+			return true;
+		}
+
+		$oSpecialPageWithParam = SpecialPage::getTitleFor(
+			'Readers', $oCurrentTitle->getPrefixedText()
+		);
 
 		//Add menu entry
-		$aContentActions['readersbutton'] = array(
+		$links['actions']['readers'] = array(
 			'class' => false,
-			'text' => wfMessage( 'bs-readers-contentactions-label' )->plain(),
+			'text' => wfMessage( 'bs-readers-contentactions-label' )->text(),
 			'href' => $oSpecialPageWithParam->getLocalURL(),
 			'id' => 'ca-readers'
 		);
@@ -183,37 +192,27 @@ class Readers extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinBeforeArticleContent'. Creates the StateBar. on articles.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return bool Always true to keep hook running.
+	 * Hook-Handler for 'SkinTemplateOutputPageBeforeExec'. Creates the Readers list below an article.
+	 * @param SkinTemplate $sktemplate a collection of views. Add the view that needs to be displayed
+	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
+	 * @return bool always true
 	 */
-	public function onBSBlueSpiceSkinBeforeArticleHeadline( &$aViews, $oUser, $oTitle ) {
-		if ( $this->checkContext() === false ) return true;
-		if ( !$oTitle->userCan( 'viewreaders' ) ) return true;
-		if ( BsConfig::get( 'MW::Readers::UpOrDown' ) === false ) return true;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if ( $this->checkContext() === false ||
+				!$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
+			return true;
+		}
+		if ( !$sktemplate->getTitle()->userCan( 'viewreaders' ) ) {
+			return true;
+		}
 
-		$oViewReaders = $this->generateViewReaders( $oTitle );
-		array_unshift( $aViews, $oViewReaders );
+		$oViewReaders = $this->getReadersViewForAfterContent( $sktemplate->getTitle() );
 
-		return true;
-	}
-
-	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinAfterArticleContent'. Creates the Readers list below an article.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return Boolean Always true to keep hook running.
-	 */
-	public function onBSBlueSpiceSkinAfterArticleContent( &$aViews, $oUser, $oTitle ) {
-		if ( $this->checkContext() === false ) return true;
-		if ( !$oTitle->userCan( 'viewreaders' ) ) return true;
-		if ( BsConfig::get( 'MW::Readers::UpOrDown' ) === true ) return true;
-
-		$oViewReaders = $this->generateViewReaders( $oTitle );
-		$aViews[] = $oViewReaders;
+		$tpl->data['bs_dataAfterContent']['bs-readers'] = array(
+			'position' => 20,
+			'label' => wfMessage( 'bs-readers-title' )->text(),
+			'content' => $oViewReaders
+		);
 
 		return true;
 	}
@@ -223,7 +222,7 @@ class Readers extends BsExtensionMW {
 	 * @param Title $oTitle Current title object
 	 * @return View Readers view
 	 */
-	private function generateViewReaders( $oTitle ) {
+	private function getReadersViewForAfterContent( $oTitle ) {
 		$oViewReaders = null;
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(
@@ -258,7 +257,7 @@ class Readers extends BsExtensionMW {
 
 	/**
 	 * Get the Users for specialpage, called via ajax
-	 * @param string $sOutput Output to return
+	 * @param string $sPage page title
 	 * @return bool Always true
 	 */
 	public static function getUsers( $sPage ) {

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"bs-statebar-desc": "Piedāvā statusa joslu",
+	"prefs-statebar": "Statusa josla",
+	"bs-statebar-pref-show": "Rādīt statusa joslu",
+	"bs-statebar-ajax-nobodyviews": "Informācija nav pieejama."
+}

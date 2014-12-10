@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-widgetbar-desc": "Lägger till widgets i användargränssnittet",
+	"prefs-widgetbar": "Widget-fält",
+	"bs-widgetbar-userpagesettings-headline": "Widgets",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Redigera}} innehållet för ditt widget-fält:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Redigera}} mitt widget-fält",
+	"bs-widget-container-tooltip": "Widgets",
+	"bs-widget-flyout-heading": "Widgets"
+}

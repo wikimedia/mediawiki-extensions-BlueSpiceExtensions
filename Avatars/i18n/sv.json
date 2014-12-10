@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix",
+			"Jopparn",
+			"Magol"
+		]
+	},
+	"prefs-avatars": "Avatarer",
+	"bs-avatars-desc": "Tillhandahåller allmänna och enskilda användarbilder",
+	"bs-avatars-pref-generator": "Generator:",
+	"bs-avatars-pref-defaultsize": "Standardstorlek i bildpunkter:",
+	"bs-avatars-upload-complete": "Bilden laddades upp.",
+	"bs-avatars-generate-complete": "En ny avatar har genererats.",
+	"bs-avatars-upload-title": "Ändra profilbild",
+	"bs-avatars-upload-label": "Bild",
+	"bs-avatars-generate-new-label": "Generera ny avatar",
+	"bs-avatars-warning-title": "Varning",
+	"bs-avatars-warning-text": "Du har valt en användarbild i dina inställningar. Använder du avatarer kommer den inställningen att ändras. Vill du fortsätta?",
+	"bs-avatars-userimage-title": "Bild från wiki eller bildwebbadress",
+	"bs-avatars-userimage-help": "t.ex. Bild.jpg eller http://lokalvard/Bild.gif",
+	"bs-avatars-set-userimage-failed": "Ingen giltig webbadress eller bild från wiki.",
+	"bs-avatars-set-userimage-saved": "Användarbilden sparades.",
+	"bs-avatars-file-upload-fieldset-title": "Bilduppladdning",
+	"bs-avatars-auto-generate-fieldset-title": "Autogenerera avatar"
+}

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa",
+			"Reza1615"
+		]
+	},
+	"bs-insertlink-desc": "پنجره محاوره‌ای برای واردکردن پیوند",
+	"bs-insertlink": "درج پیوند",
+	"bs-insertlink-button-title": "درج/ویرایش پیوند",
+	"bs-insertlink-dialog-title": "درج پیوند",
+	"bs-insertlink-tab-wiki-page": "صفحه ویکی",
+	"bs-insertlink-tab-ext-link": "پیوند به بیرون",
+	"bs-insertlink-tab-email": "پیوند رایانامه",
+	"bs-insertlink-tab-ext-file": "پیوند به پرونده",
+	"bs-insertlink-label-page": "صفحه",
+	"bs-insertlink-label-link": "پیوند",
+	"bs-insertlink-label-mail": "نشانی ایمیل",
+	"bs-insertlink-label-description": "توضیح",
+	"bs-insertlink-label-file": "پرونده",
+	"bs-insertlink-label-searchfile": "جستجو ...",
+	"bs-insertlink-select-a-page": "انتخاب هدف ...",
+	"bs-insertlink-select-a-namespace": "(صفحات)",
+	"bs-insertlink-empty-field-text": "برای درج یک پیوند باید مقصدی تعیین کنید."
+}

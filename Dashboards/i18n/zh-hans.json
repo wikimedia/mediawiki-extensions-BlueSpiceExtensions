@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"NigelSoft",
+			"Duolaimi"
+		]
+	},
+	"bs-dashboards-desc": "为用户和管理员提供仪表板",
+	"bs-specialadmindashboard-label": "仪表板",
+	"bs-dashboards-addportlet": "加入门户块",
+	"bs-dashboards-portlets": "门户块",
+	"prefs-dashboards": "仪表板",
+	"bs-dashboards-pref-userdashboardonlogo": "连接至用户控制面板的网站标志",
+	"admindashboard": "管理员控制面板",
+	"userdashboard": "用户仪表板",
+	"bs-dashboard-userportlet-calendar-title": "日历",
+	"bs-dashboard-userportlet-calendar-description": "日历"
+}

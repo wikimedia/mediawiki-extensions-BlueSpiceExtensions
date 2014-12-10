@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"bs-blog-desc": "Menampilkan daftar gaya blog halaman",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Tidak ada entri blog.",
+	"bs-blog-comments": "Komentar",
+	"bs-blog-read-more": "Baca lebih lanjut",
+	"bs-blog-trackback": "Lacak balik",
+	"bs-blog-permalink": "Pranala permanen",
+	"bs-blog-show-all": "Tampilkan semua entri",
+	"bs-blog-form-inline-text": "Judul ...",
+	"bs-blog-form-title-text": "Buat entri blog baru",
+	"bs-blog-form-button-text": "Buat",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Buka jendela baru untuk membaca lebih lanjut",
+	"bs-blog-pref-newentryfieldposition": "Posisi untuk formulir entri blog baru:",
+	"bs-blog-pref-showall": "Tampilkan semua pranala entri",
+	"bs-blog-pref-showinfo": "Tampilkan informasi mengenai entri",
+	"bs-blog-pref-showlimit": "Jumlah entri blog:",
+	"bs-blog-pref-shownewentryfield": "Tampilkan formulir entri blog baru",
+	"bs-blog-pref-showpermalink": "Tampilkan pranala permanen",
+	"bs-blog-pref-sortby": "Urut berdasarkan:",
+	"bs-blog-pref-imagerendermode": "Tampilkan gambar sebagai:",
+	"bs-blog-pref-maxentrycharacters": "Jumlah kata per entri:",
+	"bs-blog-tag-blog-desc": "Tampilkan entri blog di setiap halaman."
+}

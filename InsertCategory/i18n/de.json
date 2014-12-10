@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-insertcategory-desc": "Über ein Dialogfeld lassen sich Kategorien in eine Wikiseite einfügen",
+	"bs-insertcategory-insertcat": "Kategorie einfügen",
+	"prefs-insertcategory": "Kategorie einfügen",
+	"bs-insertcategory-pref-withparents": "Kategorie mit ihren übergeordneten Kategorien einfügen",
+	"bs-insertcategory-title": "Kategorie einfügen",
+	"bs-insertcategory-cat-label": "Zugewiesen:",
+	"bs-insertcategory-success": "Kategorie erfolgreich hinzugefügt",
+	"bs-insertcategory-failure": "Fehler",
+	"bs-insertcategory-hint": "Hinweis: Um eine Kategorie hinzuzufügen, musst Du Enter drücken oder die Eingabe mit einem Komma beenden.",
+	"bs-insertcategory-panel-title": "Kategorien"
+}

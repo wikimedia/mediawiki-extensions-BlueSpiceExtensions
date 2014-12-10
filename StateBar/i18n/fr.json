@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92",
+			"Gomoko"
+		]
+	},
+	"bs-statebar-desc": "Fournit une barre d'état",
+	"prefs-statebar": "Barre d'état",
+	"bs-statebar-pref-sortbodyvars": "Ordre du corps principal :",
+	"bs-statebar-pref-sorttopvars": "Ordre de niveau supérieur :",
+	"bs-statebar-pref-show": "Affichage de la barre d'état",
+	"bs-statebar-viewtoggler": "DÉTAILS",
+	"bs-statebar-viewtoggler-tooltip": "Afficher des informations détaillées",
+	"bs-statebar-switch-description": "Masque la barre d'État sur cette page.",
+	"bs-statebar-ajax-nobodyviews": "Aucune information disponible."
+}

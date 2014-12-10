@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-insertlink-desc": "Dialogruta för att ange en länk",
+	"bs-insertlink": "Infoga länk",
+	"bs-insertlink-button-title": "Infoga/redigera länk",
+	"bs-insertlink-dialog-title": "Infoga länk",
+	"bs-insertlink-tab-wiki-page": "Wiki-sida",
+	"bs-insertlink-tab-ext-link": "Extern länk",
+	"bs-insertlink-tab-email": "E-post-länk",
+	"bs-insertlink-tab-ext-file": "Länk till fil",
+	"bs-insertlink-label-page": "Sida",
+	"bs-insertlink-label-link": "Länk",
+	"bs-insertlink-label-mail": "E-postadress",
+	"bs-insertlink-label-description": "Beskrivning",
+	"bs-insertlink-label-file": "Fil",
+	"bs-insertlink-label-searchfile": "Sök ...",
+	"bs-insertlink-select-a-page": "Välj mål ...",
+	"bs-insertlink-select-a-namespace": "(Sidor)",
+	"bs-insertlink-empty-field-text": "För att infoga en länk måste du ange en destination."
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Fitoschido"
+		]
+	},
+	"bs-dashboards-desc": "Proporciona paneles para usuarios y administradores",
+	"bs-specialadmindashboard-label": "Panel",
+	"bs-dashboards-addportlet": "Añadir un módulo",
+	"bs-dashboards-portlets": "Módulos",
+	"prefs-dashboards": "Paneles",
+	"bs-dashboards-pref-userdashboardonlogo": "El logo del sitio enlaza con el panel del usuario",
+	"admindashboard": "Panel de administración",
+	"userdashboard": "Panel del usuario",
+	"bs-dashboard-userportlet-calendar-title": "Calendario",
+	"bs-dashboard-userportlet-calendar-description": "Calendario"
+}

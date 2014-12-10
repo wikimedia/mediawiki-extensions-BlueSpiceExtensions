@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-widgetbar-desc": "Додава елементи во корисничкиот посредник",
+	"prefs-widgetbar": "Лента со елементи",
+	"bs-widgetbar-userpagesettings-headline": "Елементи",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Уредување}} на содржината на мојот алатник со елементи:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Уредување}} на мојот алатник со елементи:",
+	"bs-widget-container-tooltip": "Елементи",
+	"bs-widget-flyout-heading": "Елементи"
+}

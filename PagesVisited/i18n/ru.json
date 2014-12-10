@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shuba",
+			"HarpyWar",
+			"Meshkov.a"
+		]
+	},
+	"bs-pagesvisited-desc": "Предоставляет собственный список последних посещенных страниц.",
+	"prefs-pagesvisited": "Посещенные страницы",
+	"bs-pagesvisited-widget-title": "Посещенные страницы",
+	"bs-pagesvisited-error-nsnotvalid": "Неверное пространство имен{{PLURAL:$1||s}} <code>$2</code> {{PLURAL:$1|is|are}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Ограничение записей:",
+	"bs-pagesvisited-pref-widgetns": "Пространство имён:",
+	"bs-pagesvisited-pref-widgetsortodr": "Сортировать по:",
+	"bs-pagesvisited-pref-sort-time": "Время",
+	"bs-pagesvisited-pref-sort-pagename": "Заголовок",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Отображает список страниц, которые Вы посетили."
+}

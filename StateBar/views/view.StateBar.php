@@ -41,21 +41,22 @@ class ViewStateBar extends ViewBaseElement {
 		$aOut = array();
 		$aOut[] = '<div id="bs-statebar">';
 
-		$aOut[] = ' <span id="bs-statebar-viewtoggler" style="line-height: 1.5em;" title="'.wfMessage( 'bs-statebar-viewtoggler-tooltip' )->plain().'" >';
-		$aOut[] = '<img id="bs-statebar-viewtoggler-image" src="'.$wgScriptPath.'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_more.png" />';
-		$aOut[] = '</span>';
+		$aOut[] = ' <a id="bs-statebar-viewtoggler" href="#" title="' . wfMessage('bs-statebar-viewtoggler-tooltip')->plain() . '" class="icon-arrow-down9-after">';
+		$aOut[] = '<span>' . wfMessage('bs-statebar-viewtoggler')->plain() . '</span>';
+		$aOut[] = ' </a>';
 
 		foreach( $this->mStateBarTopViews as $oStateBarTopView ) {
 			$aOut[] = $oStateBarTopView->execute();
 		}
 
-		$aOut[] = ' <div id="bs-statebar-view">';
+		$aOut[] = ' <div id="bs-statebar-view" class="clearfix">';
 
 		foreach( $this->mStateBarBodyViews as $oStateBarBodyView ) {
 			$aOut[] = $oStateBarBodyView->execute();
 		}
 
 		$aOut[] = ' </div>'; // #state_view
+		$aOut [] = "<div class='clearfix'></div>";
 		$aOut[] = '</div>'; //#page_state
 
 		return join( "\n", $aOut );

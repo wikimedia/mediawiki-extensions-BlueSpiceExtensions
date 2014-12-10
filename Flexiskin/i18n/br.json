@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Y-M D"
+		]
+	},
+	"bs-flexiskin-label": "Gwiskadur",
+	"bs-flexiskin-defaultname": "Dre ziouer",
+	"bs-flexiskin-defaultdesc": "Patrom gwiskadur dre ziouer.",
+	"bs-flexiskin-error-skinexists": "Ur gwiskadur en anv-se zo anezhañ dija.",
+	"bs-flexiskin-error-fail-add-skin": "N'eus ket bet gallet krouiñ ur gwiskadur : $1.",
+	"bs-flexiskin-reset-error": "N'eus ket bet gallet adderaouekaat ar c'hefluniadur : $1",
+	"bs-flexiskin-error-delete-skin": "N'eus ket bet gallet dilemel ar gwiskadur : $1.",
+	"bs-flexiskin-not-allowed": "Difennet eo mont d'ar bajenn-mañ.",
+	"prefs-flexiskin": "Gwiskadur",
+	"bs-flexiskin-pref-logo": "Logo :",
+	"bs-flexiskin-labelname": "Anv",
+	"bs-flexiskin-labeldesc": "Deskrivadur",
+	"bs-flexiskin-headergeneral": "Hollek",
+	"bs-flexiskin-dialogclose": "Ha sur oc'h e fell deoc'h serriñ ar rakwel ?",
+	"bs-flexiskin-confirmdeleteskin": "Ha sur oc'h e fell deoc'h diverkañ ar gwiskadur-mañ ?",
+	"bs-flexiskin-titleaddskin": "Ouzhpennañ ur gwiskadur",
+	"bs-flexiskin-labelskins": "Patrom",
+	"bs-flexiskin-headeractive": "Oberiant",
+	"bs-flexiskin-labelbgcolor": "Liv an drekleur",
+	"bs-flexiskin-headerheader": "Talbenn",
+	"bs-flexiskin-labellogoupload": "Logo",
+	"bs-flexiskin-labelbackgroundupload": "Skeudenn drekleur",
+	"bs-flexiskin-labelcustombgcolor": "Liv personelaet",
+	"bs-flexiskin-headerposition": "Lec'hiadur ha ment",
+	"bs-flexiskin-left": "kleiz",
+	"bs-flexiskin-right": "Ddhou",
+	"bs-flexiskin-center": "kreiz",
+	"bs-flexiskin-labelwidth": "Ledander en holl (e pikseloù)",
+	"bs-flexiskin-labelfullwidth": "Ledander brasañ",
+	"bs-flexiskin-error-nameempty": "Merkit un anv reizh evit ar gwiskadur a fell deoc'h krouiñ, mar plij.",
+	"bs-flexiskin-error-templatenotexists": "N'eus ket eus ar patrom choazet."
+}

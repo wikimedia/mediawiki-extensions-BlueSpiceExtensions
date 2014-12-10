@@ -150,25 +150,24 @@ class BsUniversalExportHelper {
 			$oBookmarkElement->setAttribute( 'href', '#'.$sHeadingJumpmark );
 
 			$sNodeName = strtolower( $oHeadingElement->parentNode->nodeName );
-			$iLevel = $aHeadingLevels[$sNodeName];
+			$iLevel = $aHeadingLevels[$sNodeName] + 1;
 			$iLevelDifference = $iLevel - $iParentLevel;
-			if( $iLevel > $iParentLevel ) {
+			if( $iLevelDifference > 0 ) { // e.g H2 -> H3 --> Walk down
 				for( $j = 0; $j < $iLevelDifference; $j++ ) {
 					if( $oParentBookmark->lastChild !== null ) {
 						$oParentBookmark = $oParentBookmark->lastChild;
-						$iParentLevel = $iLevel;
 					}
 				}
 			}
-			elseif( $iLevel < $iParentLevel ) {
-				for( $j = 0; $j > $iLevelDifference + 1; $j-- ) {
+			elseif( $iLevelDifference < 0 ) { // e.g H6 -> H3 --> Walk up
+				for( $j = 0; $j > $iLevelDifference; $j-- ) {
 					if( $oParentBookmark->parentNode !== null ) {
 						$oParentBookmark = $oParentBookmark->parentNode;
-						$iParentLevel = $iLevel;
 					}
 				}
 			}
-
+			//else if $iLevelDifference == 0 --> no traversal required
+			$iParentLevel = $iLevel;
 			$oParentBookmark->appendChild( $oBookmarkElement );
 
 			$oHeadingElementAnchor = self::findPreviousDOMElementSibling( $oHeadingElement, 'a' );

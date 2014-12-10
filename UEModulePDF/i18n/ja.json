@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-uemodulepdf-desc": "MediaWiki がページを PDF 形式で書き出せるようにする",
+	"bs-uemodulepdf-pref-pdfserviceurl": "バックエンドの URL:",
+	"bs-uemodulepdf-overview-desc": "ページ (特別ページおよび本文ページ) を PDF に書き出します。",
+	"bs-uemodulepdf-overview-webservice-state": "バックエンドの状態",
+	"bs-uemodulepdf-overview-webservice-state-ok": "利用可能",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "利用不可",
+	"soap-service-url-not-valid": "PDF を生成するウェブ サービスの URL が有効ではありません。ウィキの設定を確認してください。",
+	"soap-service-url-not-set": "PDF を生成するウェブ サービスの URL が設定されていません。ウィキの設定を確認してください。",
+	"bs-uemodulepdf-overview-webservice-webadmin": "バックエンドの Web インターフェイス:"
+}

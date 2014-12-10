@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"SnowedEarth"
+		]
+	},
+	"bs-pagesvisited-desc": "Fournit une liste personnalisée des dernières pages visitées",
+	"prefs-pagesvisited": "Pages visitées",
+	"bs-pagesvisited-widget-title": "Pages visitées",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|L’espace de nom|les espaces de nom}} <code>$2</code> {{PLURAL:$1|n’est|ne sont}} pas valide{{PLURAL:$1||s}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Limite d’entrées :",
+	"bs-pagesvisited-pref-widgetns": "Espaces de nom :",
+	"bs-pagesvisited-pref-widgetsortodr": "Trier par :",
+	"bs-pagesvisited-pref-sort-time": "Horodatage",
+	"bs-pagesvisited-pref-sort-pagename": "Titre",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Affiche une liste de pages que vous avez visitées."
+}

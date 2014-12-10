@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Alexandr Efremov",
+			"Striking Blue"
+		]
+	},
+	"bs-checklist-desc": "Обеспечивает функциональность контрольного списка",
+	"bs-checklist-button-checkbox-title": "Элементы контрольного списка",
+	"bs-checklist-menu-insert-list-title": "Вставить список",
+	"bs-checklist-menu-insert-checkbox": "Флажок",
+	"bs-checklist-dlg-insert-list-title": "Вставить контрольный список",
+	"bs-checklist-dlg-insert-list-value-list": "Список значений",
+	"bs-checklist-tag-checklist-desc": "Визуализирует галочку или поле выбора. Доступные атрибуты конфигурации:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> выдает список выборки select list.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: название шаблона с доступными значениями. Параметр <code>type</code> должно быть установлено как <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> или значение из шаблона списка.",
+	"bs-checklist-dlg-new-list": "Создать новый список",
+	"bs-checklist-dlg-save-list": "Сохранить изменения в список",
+	"bs-checklist-dlg-items-label": "Объекты в списке",
+	"bs-checklist-dlg-items-emptytext": "Нет элементов в этом списке",
+	"bs-checklist-dlg-items-hint": "Чтобы добавить новый элемент, заполните поле выше и нажмите <kbd>Ввод</kbd>.",
+	"bs-checklist-dlg-panel-title": "Доступные списки",
+	"bs-checklist-dlg-new-title": "Добавить новый список",
+	"bs-checklist-dlg-new-prompt": "Введите заголовок списка",
+	"bs-checklist-alert": "Внимание!",
+	"bs-checklist-confirm-dirty-title": "Несохранённые изменения!",
+	"bs-checklist-confirm-dirty-text": "Вы внесли в список изменения, которые ещё не были сохранены. Вы уверены, что хотите отменить изменения?"
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-shoutbox-desc": "Lägger till en tolkfunktion för att bädda in din egen shoutbox",
+	"prefs-shoutbox": "Shoutbox",
+	"bs-shoutbox-title": "Shoutbox",
+	"bs-shoutbox-message": "Skriv en ny kommentar...",
+	"bs-shoutbox-shout": "Skicka",
+	"bs-shoutbox-no-entries": "Ingenting här ännu.",
+	"bs-shoutbox-loading": "Laddar...",
+	"bs-shoutbox-pref-committimeinterval": "Tiden mellan två meddelanden (i sekunder):",
+	"bs-shoutbox-pref-maxmessagelength": "Maximal längd för ett meddelande:",
+	"bs-shoutbox-pref-numberofshouts": "Antal meddelanden som visas:",
+	"bs-shoutbox-pref-showage": "Visa skapandedatum för ett meddelande",
+	"bs-shoutbox-pref-showuser": "Visa författare till ett meddelande",
+	"bs-shoutbox-pref-allowarchive": "Användaren kan ta bort sina egna inlägg",
+	"bs-shoutbox-pref-show": "Visa shoutbox",
+	"bs-shoutbox-archive-success": "Inlägg raderat.",
+	"bs-shoutbox-archive-failure": "Ett fel uppstod då borttagning av inlägget försöktes, försök igen.",
+	"bs-shoutbox-archive-failure-user": "Inlägg kan endast tas bort av deras författare.",
+	"bs-shoutbox-switch-description": "Döljer shoutbox på den här sidan",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|tecken}} återstår",
+	"bs-shoutbox-confirm-text": "Vill du verkligen radera detta inlägg?",
+	"bs-shoutbox-confirm-title": "Bekräfta",
+	"bs-shoutbox-entermessage": "Skriv in ett meddelande.",
+	"bs-shoutbox-too-early": "Vänta några sekunder innan du skickar nästa inlägg."
+}

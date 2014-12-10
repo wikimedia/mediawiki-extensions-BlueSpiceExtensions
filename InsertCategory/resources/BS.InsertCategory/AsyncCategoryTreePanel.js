@@ -5,7 +5,7 @@ Ext.define( 'BS.InsertCategory.AsyncCategoryTreePanel', {
 			ptype: 'treeviewdragdrop'
 		}
 	},*/
-	width: 250,
+	width: 300,
 	title: mw.message( 'bs-insertcategory-panel-title' ).plain(),
 	useArrows: true,
 	rootVisible: false,
@@ -24,7 +24,7 @@ Ext.define( 'BS.InsertCategory.AsyncCategoryTreePanel', {
 			},
 			model: 'BS.model.Category'
 		});
-		
+
 		this.callParent();
 	}
 });

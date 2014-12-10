@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil"
+		]
+	},
+	"bs-formattinghelp-desc": "Visar hjälp för textformatering",
+	"bs-formattinghelp-formatting": "Formateringshjälp",
+	"bs-formattinghelp-help-syntax": "Syntax",
+	"bs-formattinghelp-help-example-text": "Text",
+	"bs-formattinghelp-help-bold": "Fet",
+	"bs-formattinghelp-help-italic": "Kursiv",
+	"bs-formattinghelp-help-whitespace": "Blanktecken",
+	"bs-formattinghelp-help-nowiki": "Förhindra formatering",
+	"bs-formattinghelp-help-color": "Färgad text",
+	"bs-formattinghelp-help-headline": "Rubrik",
+	"bs-formattinghelp-help-linebreak": "Radbrytning",
+	"bs-formattinghelp-help-ul": "Osorterad lista",
+	"bs-formattinghelp-help-listitem": "Listobjekt",
+	"bs-formattinghelp-help-subitem": "Underobjekt",
+	"bs-formattinghelp-help-numberedlist": "Numrerad lista",
+	"bs-formattinghelp-help-link": "Intern länk",
+	"bs-formattinghelp-help-link-alt": "Intern länk med alternativ text",
+	"bs-formattinghelp-help-caption": "Bildtext",
+	"bs-formattinghelp-help-extlink": "Extern länk",
+	"bs-formattinghelp-help-hr": "Horisontell linje",
+	"bs-formattinghelp-help-template": "Mall",
+	"bs-formattinghelp-help-templatename": "Mallnamn"
+}

@@ -51,7 +51,7 @@ class Flexiskin extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Flexiskin',
-			EXTINFO::DESCRIPTION => 'Provides a page to manage flexiskins with customizing options.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-flexiskin-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Tobias Weichart',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -62,13 +62,13 @@ class Flexiskin extends BsExtensionMW {
 			)
 		);
 		$this->mExtensionKey = 'MW::Flexiskin';
-		
+
 		WikiAdmin::registerModule( 'Flexiskin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_flexiskin_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-flexiskin-label'
 		) );
-		
+
 		wfProfileOut('BS::' . __METHOD__);
 	}
 
@@ -99,7 +99,7 @@ class Flexiskin extends BsExtensionMW {
 	public function runPreferencePlugin($sAdapterName, $oVariable) {
 		$aData = self::getFlexiskins(false);
 		$aResult = array('options' => array(
-				wfMessage('bs-flexiskin-defaultName')->plain() => 'default',
+				wfMessage('bs-flexiskin-defaultname')->plain() => 'default',
 		));
 		if (isset($aData['flexiskin']) && count($aData['flexiskin']) > 0)
 		foreach ($aData['flexiskin'] as $aConf) {
@@ -147,23 +147,23 @@ class Flexiskin extends BsExtensionMW {
 		$aData = json_decode(self::getVal('data'));
 		$oData = $aData[0];
 		if (is_null($oData->template))
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templateNotExists')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templatenotexists')->plain()));
 		if( empty($oData->template) )
 			$oData->template = 'default';
 
 		$sId = str_replace(" ", "_", strtolower($oData->name));
 		if (is_dir((self::$sFlexiskinPath . "/" . md5($sId)))) {
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinExists')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinexists')->plain()));
 		}
 		//PW(27.11.2013) TODO: add check template really exists before add
 		if( empty($oData->name) ) {
 			//PW(27.11.2013) TODO: add msg
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-nameEmpty')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-nameempty')->plain()));
 		}
 		if ( $oData->template != 'default'){
 			$oConfig = self::getFlexiskinConfig(true, $oData->template);
 			if (!$oConfig->isGood())
-				return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templateNotExists')->plain()));
+				return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templatenotexists')->plain()));
 			$oConf = json_decode($oConfig->getValue());
 			$oConf[0]->name = $oData->name;
 			$oConf[0]->desc = $oData->desc;
@@ -189,9 +189,9 @@ class Flexiskin extends BsExtensionMW {
 	}
 
 	private static function generateConfigFile($oData) {
-		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","customBackgroundColor":"333333","backgroundImage":"","repeatBackground":"no-repeat"},';
+		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","customBackgroundColor":"F4F4F4","backgroundImage":"","repeatBackground":"no-repeat"},';
 		$sConfig .= '{"id":"header","logo":""},';
-		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1000", "fullWidth":"0"}]';
+		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1222", "fullWidth":"0"}]';
 		return $sConfig;
 	}
 
@@ -270,7 +270,7 @@ class Flexiskin extends BsExtensionMW {
 		$aConfigs = json_decode($aData['data']);
 		$aFile = self::generateStyleFile($aConfigs);
 		if (self::$iOldId != self::$iNewId && is_dir(self::$sFlexiskinPath . DS . self::$iNewId) && file_exists(self::$sFlexiskinPath . DS . self::$iNewId . DS . "conf.json")) {
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinExists')->plain()));
+			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinexists')->plain()));
 		}
 		if (self::$iOldId != self::$iNewId && is_dir(self::$sFlexiskinPath . DS . self::$iOldId)) {
 			$oStatus = BsFileSystemHelper::renameFolder("flexiskin" . DS . self::$iOldId, "flexiskin" . DS . self::$iNewId);
@@ -292,7 +292,7 @@ class Flexiskin extends BsExtensionMW {
 	public static function uploadFile() {
 		global $wgRequest;
 		$oStatus = BsFileSystemHelper::uploadFile(self::getVal('name'), "flexiskin" . DS . self::getVal('id') . DS . "images");
-		
+
 		if (!$oStatus->isGood())
 			$aResult = json_encode(array('success' => false, 'msg' => "err_cd:" . $aStatus['status']));
 		else
@@ -318,21 +318,30 @@ class Flexiskin extends BsExtensionMW {
 		}
 		return implode(" \n", $aFile);
 	}
-	
-	public static function onBSGetLogo(&$sImg){
+
+	/**
+	 * Modifies the logo on runtime
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
+	 */
+	public static function onSkinTemplateOutputPageBeforeExec(&$sktemplate, &$tpl){
 		if (self::getVal('flexiskin') || BsConfig::get('MW::Flexiskin::Active') != '') {
 			$sId = self::getVal('flexiskin') != '' ? self::getVal('flexiskin') : BsConfig::get('MW::Flexiskin::Active');
 			if ($sId != "default"){
-				if (self::getVal("preview"))
-					$aResult = json_decode(self::getFlexiskinConfig(false, $sId, true));
-				else
-					$aResult = json_decode(self::getFlexiskinConfig(false, $sId, false));
-				$aConfig = json_decode($aResult->config);
-				if ($aConfig[1]->logo == "")
+				if (self::getVal("preview")) {
+					$aResult = FormatJson::decode(self::getFlexiskinConfig(false, $sId, true));
+				}
+				else {
+					$aResult = FormatJson::decode(self::getFlexiskinConfig(false, $sId, false));
+				}
+				$aConfig = FormatJson::decode($aResult->config);
+				if ($aConfig[1]->logo === "") {
 					return true;
+				}
 				$sPath = BS_DATA_PATH . "/flexiskin/" . $sId . "/images/";
-				$sImg = "<img src='".$sPath . $aConfig[1]->logo."' />";
-				return false;
+				$tpl->set( 'logopath', $sPath . $aConfig[1]->logo);
+				return true;
 			}
 			return true;
 		}
@@ -358,7 +367,7 @@ class Flexiskin extends BsExtensionMW {
 	private static function format_header($aConfig) {
 		global $wgRequest;
 		$aReturn = array();
-		
+
 		//$aReturn[] = "#bs-logo{background-image:url('images/".$aConfig->logo."');}";
 		return implode(" \n", $aReturn);
 	}
@@ -366,9 +375,10 @@ class Flexiskin extends BsExtensionMW {
 	private static function format_position($aConfig) {
 		$aReturn = "";
 		if ($aConfig->navigation == 'right') {
-			$aReturn[] = "#bs-left-column{float:right}";
-			$aReturn[] = "#bs-content-column{margin: 0 200px 0 0;}";
-			$aReturn[] = "#footer{margin: 20px 200px 0 0;}";
+			$aReturn[] = "#bs-application{position: relative;}";
+			$aReturn[] = "#bs-content-column{margin: 0 302px 0 0;}";
+			$aReturn[] = "#bs-nav-sections{right: 0; top: 30px;}";
+			$aReturn[] = "#footer{margin: 0px 302px 5px 0px}";
 		}
 		if ($aConfig->content != 'center') {
 			$aReturn[] = "#bs-wrapper{margin-" . $aConfig->content . ":0;}";
@@ -384,7 +394,7 @@ class Flexiskin extends BsExtensionMW {
 			$aReturn[] = "#bs-application{width:100%;}";
 			$aReturn[] = "#bs-wrapper{width:100%;min-width:100%;}";
 		}
-		
+
 		return implode(" \n", $aReturn);
 	}
 	private static function getVal($sVal, $sDefault = "", $bIsArray = false){
@@ -392,20 +402,20 @@ class Flexiskin extends BsExtensionMW {
 		$sValSearched = $wgRequest->getVal($sVal, $sDefault);
 		return /*self::sanitizeString(*/$sValSearched/*)*/;
 	}
-	
+
 	private static function getValues(){
 		global $wgRequest;
 		$aValSearched = $wgRequest->getValues();
 		return /*self::sanitizeArray(*/$aValSearched/*)*/;
 	}
-	
+
 	private static function sanitizeArray($aArray){
 		foreach ($aArray as $key => $sString){
 			$aReturn [$key] = is_array($sString) ? self::sanitizeArray($sString) : self::sanitizeString($sString);
 		}
 		return $aReturn;
 	}
-	
+
 	private static function sanitizeString($sString){
 		return htmlentities(str_replace('\\', "", str_replace('/', "", $sString)), ENT_NOQUOTES);
 	}

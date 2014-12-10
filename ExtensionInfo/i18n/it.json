@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"PeppeAeco",
+			"Beta16"
+		]
+	},
+	"bs-extensioninfo-desc": "Elenco informazioni sulle estensioni caricate",
+	"bs-extensioninfo-label": "Estensioni",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Versione",
+	"extensioninfo": "Estensioni",
+	"bs-extensioninfo-headerextname": "Nome dell'estensione",
+	"bs-extensioninfo-headerversion": "Versione",
+	"bs-extensioninfo-headerdesc": "Descrizione",
+	"bs-extensioninfo-headerstatus": "Stato",
+	"bs-extensioninfo-headerpackage": "Pacchetto",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elemento|elementi}}"
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"Romaine"
+		]
+	},
+	"bs-insertmagic-servername": "Domeinnaam.",
+	"bs-insertmagic-type-tags": "Tags",
+	"bs-insertmagic-type-variables": "Variabelen",
+	"bs-insertmagic-label-desc": "Beschrijving"
+}

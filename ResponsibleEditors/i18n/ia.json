@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-responsibleeditors-error-ajax-not-allowed": "Accesso refusate. Tu non es autorisate a exequer iste action.",
+	"bs-responsibleeditors-statebartop-icon-alt": "Il ha un editor responsabile pro iste pagina",
+	"action-responsibleeditors-viewspecialpage": "vider le paginas protegite con le derecto \"ResponsibleEditors-Viewspecialpage\"",
+	"bs-responsibleeditors-title": "Editores responsabile",
+	"bs-responsibleeditors-columnnamespace": "Spatio de nomines"
+}

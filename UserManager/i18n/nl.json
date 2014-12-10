@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-usermanager-idnotexist": "Deze gebruiker bestaat niet.",
+	"bs-usermanager-invalid-pwd": "Het wachtwoord is ongeldig.",
+	"bs-usermanager-invalid-uname": "De gebruikersnaam is ongeldig.",
+	"bs-usermanager-invalid-email-gen": "Het e-mailadres is ongeldig.",
+	"bs-usermanager-user-added": "De gebruiker is toegevoegd.",
+	"bs-usermanager-user-deleted": "De gebruiker is verwijderd.",
+	"bs-usermanager-user-exists": "De gebruikersnaam bestaat al.",
+	"bs-usermanager-headerusername": "Gebruikersnaam",
+	"bs-usermanager-headergroups": "Groepen",
+	"bs-usermanager-titleadduser": "Gebruiker toevoegen",
+	"bs-usermanager-labelnewpassword": "Wachtwoord",
+	"bs-usermanager-labelpasswordcheck": "Wachtwoord bevestigen",
+	"bs-usermanager-titledeleteuser": "Gebruiker verwijderen"
+}

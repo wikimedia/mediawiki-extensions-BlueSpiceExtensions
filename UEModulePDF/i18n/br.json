@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-uemodulepdf-pref-pdfserviceurl": "URL ar servijer :",
+	"bs-uemodulepdf-pref-templatepath": "Patrom standart :",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Ezporzhiañ ar bajenn-mañ er furmad PDF.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-webservice-state": "Stad ar servijer",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Etrefas web ar servijer"
+}

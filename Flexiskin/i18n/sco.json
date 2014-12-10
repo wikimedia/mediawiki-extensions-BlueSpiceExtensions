@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"John Reid"
+		]
+	},
+	"bs-flexiskin-label": "Skin",
+	"bs-flexiskin-defaultname": "Defaut",
+	"bs-flexiskin-defaultdesc": "Defaut skin template.",
+	"bs-flexiskin-error-skinexists": "Ae skin wi this name awreadie exeests.",
+	"bs-flexiskin-error-fail-add-skin": "Ae skin coudna be creautit: $1.",
+	"bs-flexiskin-reset-error": "Coudna reset confeeguration: $1.",
+	"bs-flexiskin-error-get-config": "Coudna laid confeeguration: $1.",
+	"bs-flexiskin-error-delete-skin": "Coudna delyte skin: $1.",
+	"bs-flexiskin-not-allowed": "Access ti this page is no alloued.",
+	"prefs-flexiskin": "Skin",
+	"bs-flexiskin-pref-logo": "Logo:",
+	"bs-flexiskin-labelname": "Name",
+	"bs-flexiskin-headergeneral": "General",
+	"bs-flexiskin-dialogclose": "Ar ye siccar that ye want tae claise the luikower?",
+	"bs-flexiskin-dialogreset": "The skin will be reset ti the hainmaist hained state. Dae ye want tae conteenue?",
+	"bs-flexiskin-confirmdeleteskin": "Ar ye siccar that ye want tae delyte this skin?",
+	"bs-flexiskin-headeractive": "Acteeve",
+	"bs-flexiskin-headerheader": "Heider",
+	"bs-flexiskin-labellogoupload": "Logo",
+	"bs-flexiskin-labelbackgroundupload": "Backgroond eemage",
+	"bs-flexiskin-no-repeat": "nae repeat",
+	"bs-flexiskin-repeat-x": "horizontal repeat",
+	"bs-flexiskin-repeat-y": "vertical repeat",
+	"bs-flexiskin-repeat": "horizontal n vertical repeat",
+	"bs-flexiskin-labelcustombgcolor": "Custom colour",
+	"bs-flexiskin-headerposition": "Poseetion n size",
+	"bs-flexiskin-labelnavigation": "Poseetion o the naveegation",
+	"bs-flexiskin-left": "cair",
+	"bs-flexiskin-right": "richt",
+	"bs-flexiskin-center": "center",
+	"bs-flexiskin-labelfullwidth": "Mucklest width",
+	"bs-flexiskin-error-nameempty": "Please enter ae valit name fer the skin that ye want tae creaute.",
+	"bs-flexiskin-error-templatenotexists": "The chosen template disna exeest."
+}

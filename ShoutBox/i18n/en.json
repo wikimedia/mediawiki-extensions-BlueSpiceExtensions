@@ -1,0 +1,31 @@
+{
+    "@metadata": {
+        "authors": [
+            "Stephan Muggli <muggli@hallowelt.biz>"
+        ]
+    },
+    "bs-shoutbox-desc": "Adds a parser function for embedding your own shoutbox",
+    "prefs-shoutbox": "Shoutbox",
+    "bs-shoutbox-title": "Shoutbox",
+    "bs-shoutbox-message": "Write a new comment...",
+    "bs-shoutbox-shout": "Send",
+    "bs-shoutbox-no-entries": "Nothing here yet.",
+    "bs-shoutbox-loading": "Loading...",
+    "bs-shoutbox-pref-committimeinterval": "Time between two messages (in seconds):",
+    "bs-shoutbox-pref-maxmessagelength": "Maximum length of a message:",
+    "bs-shoutbox-pref-numberofshouts": "Number of messages shown:",
+    "bs-shoutbox-pref-showage": "Show creation date of a message",
+    "bs-shoutbox-pref-showuser": "Show author of a message",
+    "bs-shoutbox-pref-allowarchive": "User are able to delete their own entries",
+    "bs-shoutbox-pref-show": "Display shoutbox",
+    "bs-shoutbox-archive-success": "Entry deleted.",
+    "bs-shoutbox-archive-failure": "An error occurred while trying to delete the entry, please try again.",
+    "bs-shoutbox-archive-failure-user": "Entries can only be deleted by their author.",
+    "bs-shoutbox-switch-description": "Hides shoutbox on this page",
+    "bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|character|characters}} left",
+    "bs-shoutbox-confirm-text": "Do you really want to delete this entry?",
+    "bs-shoutbox-confirm-title": "Confirm",
+    "bs-shoutbox-entermessage": "Please enter a message.",
+    "bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry.",
+    "bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}"
+}

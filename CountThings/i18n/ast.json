@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-countthings-desc": "Ufre estadístiques basaes nel conteníu",
+	"bs-countthings-chars-label": "Caráuteres",
+	"bs-countthings-words-label": "Palabres",
+	"bs-countthings-pages-label": "Páxines",
+	"bs-countthings-error-no-input": "Nun se dio nenguna páxina.",
+	"bs-countthings-error-invalid-mode": "El mou «$1» ye inválidu. Usa «chars» (caráuteres), «words» (palabres), o «pages» (páxines).",
+	"bs-countthings-error-not-exist": "La páxina «$1» nun esiste.",
+	"bs-countthings-tag-countarticles-desc": "Amuesa'l númberu de páxines.",
+	"bs-countthings-tag-countusers-desc": "Amuesa'l númberu d'usuarios.",
+	"bs-countthings-tag-countcharacters-desc": "Amuesa les estadístiques del conteníu de la páxina dada. Atributu de configuración disponible:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Lo qu'hai que contar <code>chars</code> (caráuteres), <code>words</code> (palabres) o <code>pages</code> (páxines)."
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki"
+		]
+	},
+	"bs-widgetbar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of widget bar extension",
+	"prefs-widgetbar": "Used in [[Special:Preferences]], headline of widget bar section on user page",
+	"bs-widgetbar-userpagesettings-headline": "Headline for widgets, shown in more menu.\n{{Identical|Widget}}",
+	"bs-widgetbar-userpagesettings-link-title": "Option in [[Special:Preferences]], label for edit the content of your widgetbar: - Use GENDER if needed.\n\nUsed as a label, not a link text.\n\nFollowed by {{msg-mw|Bs-widgetbar-userpagesettings-link-text}}.",
+	"bs-widgetbar-userpagesettings-link-text": "Option in [[Special:Preferences]], link text for edit my widget bar - Use GENDER if needed.\n\nPreceded by the label {{msg-mw|Bs-widgetbar-userpagesettings-link-title}}.",
+	"bs-widget-container-tooltip": "Image title for widgets.\n{{Identical|Widget}}",
+	"bs-widget-flyout-heading": "Heading for widgets.\n{{Identical|Widget}}"
+}

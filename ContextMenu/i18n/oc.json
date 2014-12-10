@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"prefs-contextmenu": "Menú contextual",
+	"bs-contextmenu-page-edit": "Modificar la pagina",
+	"bs-contextmenu-page-delete": "Suprimir la pagina",
+	"bs-contextmenu-page-move": "Desplaçar la pagina",
+	"bs-contextmenu-page-history": "Afichar l'istoric de la pagina",
+	"bs-contextmenu-page-protect": "Protegir la pagina",
+	"bs-contextmenu-user-mail": "Mandar un corrièr electronic",
+	"bs-contextmenu-file-download": "Telecargar un fichièr"
+}

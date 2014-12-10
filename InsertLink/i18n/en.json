@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-insertlink-desc": "Dialog box to enter a link",
+	"bs-insertlink": "Insert link",
+	"bs-insertlink-button-title": "Insert/edit link",
+	"bs-insertlink-dialog-title": "Insert link",
+	"bs-insertlink-tab-wiki-page": "Wiki page",
+	"bs-insertlink-tab-ext-link": "External link",
+	"bs-insertlink-tab-email": "Email-link",
+	"bs-insertlink-tab-ext-file": "Link to file",
+	"bs-insertlink-label-page": "Page",
+	"bs-insertlink-label-link": "Link",
+	"bs-insertlink-label-mail": "Email address",
+	"bs-insertlink-label-description": "Description",
+	"bs-insertlink-label-file": "File",
+	"bs-insertlink-label-searchfile": "Search ...",
+	"bs-insertlink-select-a-page": "Choose target ...",
+	"bs-insertlink-select-a-namespace": "(Pages)",
+	"bs-insertlink-empty-field-text": "To insert a link you need to state a destination.",
+	"bs-insertlink-no-applet": "The applet could not be loaded. Please check your Java installation."
+}

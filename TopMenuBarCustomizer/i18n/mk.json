@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Прилагодување на врските во менито најгоре",
+	"prefs-topmenubarcustomizer": "Прилагодувач на менија",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Број на вгнездени слоеви:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Ставки во главниот слој:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Светки во потслоевите:"
+}

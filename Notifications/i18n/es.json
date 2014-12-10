@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"AVIADOR",
+			"Fitoschido",
+			"Amitie 10g"
+		]
+	},
+	"bs-notifications-desc": "Envía notificaciones sobre cambios seleccionados por el usuario",
+	"prefs-notifications": "Notificaciones",
+	"prefs-echo-extended": "Configuración avanzada del sistema",
+	"bs-notifications-pref-notifyns": "Solo notificar los cambios en estos espacios de nombres:",
+	"bs-notifications-pref-notifynominor": "No notificar cambios menores",
+	"bs-notifications-pref-active": "Activar notificaciones",
+	"bs-echo-anon-user": "anónimo",
+	"bs-echo-unknown-user": "desconocido/a",
+	"bs-echo-page-edit": "Se modificó la página [[:$1]]",
+	"bs-echo-page-create": "Se creó la página [[:$1]]",
+	"bs-echo-page-delete": "Se borró la página [[:$1]]",
+	"bs-echo-page-move": "Se trasladó la página [[:$1]]",
+	"bs-echo-page-newuser": "Se ha creado el usuario $1.",
+	"bs-notifications-email-new-subject": "$2 {{GENDER:$2|creó}} la página $1",
+	"bs-notifications-email-new": "Se {{GENDER:$2|creó}} la página \"$1\" por $2.\n\nComentario:\n $3 \nPuedes visitar la página siguiendo este enlace:\n$4",
+	"bs-notifications-email-edit-subject": "Página $1 {{GENDER:$2|editada}} por $2",
+	"bs-notifications-email-edit": "Se {{GENDER:$2|editó}} la página \"$1\" por $2.\n\nComentario:\n $3 \nPuedes visitar la página siguiendo este enlace:\n$4.\n\nSi sólo quieres ver los cambios, sigue este enlaceː\n$5",
+	"bs-notifications-email-move-subject": "Página $1 {{GENDER:$2|trasladada}} por $2",
+	"bs-notifications-email-move": "Se {{GENDER:$2|trasladó}} la página \"$1\" hacia $3 por $2. Puedes visitar la página siguiendo este enlace:\n$4",
+	"bs-notifications-email-delete-subject": "$2 {{GENDER:$2|borró}} la página $1",
+	"bs-notifications-email-delete": "$2 {{GENDER:$2|borró}} la página «$1».\n\nEsta fue la razón:\n$3",
+	"bs-notifications-email-addaccount-subject": "Usuario $1 creado",
+	"bs-notifications-email-addaccount": "Se creó el usuario $1 con nombre real $2.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|publicó}} un mensaje en la página $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|publicó}} un mensaje en la página \"$1\".\n\nMensaje:\n$3\n\nPuedes visitar la página siguiendo este enlace:\n$4.",
+	"echo-category-title-bs-create-cat": "Notificación de páginas nuevas",
+	"echo-category-title-bs-edit-cat": "Notificación de ediciones",
+	"echo-category-title-bs-move-cat": "Notificación de traslados",
+	"echo-category-title-bs-delete-cat": "Notificación de páginas borradas",
+	"echo-category-title-bs-newuser-cat": "Notificación de usuarios nuevos (solo para administradores)",
+	"echo-category-title-bs-shoutbox-cat": "Notificación de mensajes en páginas vigiladas (shoutbox)"
+}

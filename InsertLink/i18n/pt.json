@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente",
+			"Fúlvio"
+		]
+	},
+	"bs-insertlink-desc": "Caixa de diálogo para inserir uma ligação",
+	"bs-insertlink": "Inserir ligação",
+	"bs-insertlink-button-title": "Inserir/editar ligação",
+	"bs-insertlink-dialog-title": "Inserir ligação",
+	"bs-insertlink-tab-wiki-page": "Página wiki",
+	"bs-insertlink-tab-ext-link": "Ligação externa",
+	"bs-insertlink-tab-email": "Ligação para correio eletrónico",
+	"bs-insertlink-tab-ext-file": "Ligação para ficheiro",
+	"bs-insertlink-label-page": "Página",
+	"bs-insertlink-label-link": "Ligação",
+	"bs-insertlink-label-mail": "Endereço de correio eletrónico",
+	"bs-insertlink-label-description": "Descrição",
+	"bs-insertlink-label-file": "Ficheiro",
+	"bs-insertlink-label-searchfile": "Pesquisar...",
+	"bs-insertlink-select-a-page": "Escolha o destino...",
+	"bs-insertlink-select-a-namespace": "(Páginas)",
+	"bs-insertlink-empty-field-text": "Para inserir uma ligação, deve definir um destinatário."
+}

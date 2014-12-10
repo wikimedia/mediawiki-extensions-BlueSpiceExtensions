@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"prefs-articleinfo": "Informatiounen iwwer d'Säit",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Aktualisatiouns-Intervall a Sekonnen:",
+	"bs-articleinfo-last-edited": "Zäit zanter der rezenster Ännerung",
+	"bs-articleinfo-last-edited-tooltip": "Lescht Ännerung",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Leschten Editeur|Lescht Editrice}}",
+	"bs-articleinfo-categories": "Kategorien",
+	"bs-articleinfo-more-categories": "Méi Kategorien disponibel",
+	"bs-articleinfo-all-categories-heading": "Kategorien",
+	"bs-articleinfo-nocategories": "Keng Kategorie fonnt.",
+	"bs-articleinfo-hiddencats": "Verstoppt Kategorien",
+	"bs-articleinfo-notemplates": "Keng Schabloune fonnt.",
+	"bs-articleinfo-templates": "Schablounen",
+	"bs-articleinfo-subpages": "Ënnersäiten",
+	"bs-articleinfo-subpages-available": "Et gëtt Ënnersäite fir dës Säit",
+	"bs-articleinfo-subpages-too-much": "Et si méi wéi 100 Ënnersäiten disponibel.",
+	"bs-articleinfo-check-revision": "Nei Versioun disponibel",
+	"bs-articleinfo-check-revision-tooltip": "Säit nei lueden",
+	"bs-articleinfo-statebartoplastedited": "Rezent Ännerung",
+	"bs-articleinfo-statebartoplasteditor": "Rezenten Editeur",
+	"bs-articleinfo-statebartopcategories": "Kategorien",
+	"bs-articleinfo-statebartopsubpages": "Ënnersäiten",
+	"bs-articleinfo-statebarbodycategories": "Kategorien",
+	"bs-articleinfo-statebarbodysubpages": "Ënnersäiten",
+	"bs-articleinfo-statebarbodytemplates": "Schablounen"
+}

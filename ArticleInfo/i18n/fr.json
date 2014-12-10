@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92"
+		]
+	},
+	"bs-articleinfo-desc": "Fournit des informations sur une page dans la barre d'État",
+	"prefs-articleinfo": "Information sur la page",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalle de mise à jour en secondes:",
+	"bs-articleinfo-last-edited": "Temps depuis le récent changement",
+	"bs-articleinfo-last-edited-tooltip": "Dernière modification",
+	"bs-articleinfo-last-editor": "Dernier  {{GENDER:$1| éditeur}}",
+	"bs-articleinfo-categories": "Catégories",
+	"bs-articleinfo-more-categories": "Autres catégories additionelles disponibles",
+	"bs-articleinfo-all-categories-heading": "Catégories",
+	"bs-articleinfo-nocategories": "Pas de catégories trouvées.",
+	"bs-articleinfo-hiddencats": "Catégories cachées",
+	"bs-articleinfo-notemplates": "Pas de modèles trouvés.",
+	"bs-articleinfo-templates": "Modèles",
+	"bs-articleinfo-subpages": "Sous-pages",
+	"bs-articleinfo-subpages-available": "Il existe des sous-pages pour cette page",
+	"bs-articleinfo-subpages-too-much": "Il y a plus de 100 sous-pages disponibles.",
+	"bs-articleinfo-check-revision": "Nouvelle version disponible",
+	"bs-articleinfo-check-revision-tooltip": "Recharger la page",
+	"bs-articleinfo-statebartoplastedited": "Dernières modifications",
+	"bs-articleinfo-statebartoplasteditor": "Dernier éditeur",
+	"bs-articleinfo-statebartopcategories": "Catégories",
+	"bs-articleinfo-statebartopsubpages": "Sous-pages",
+	"bs-articleinfo-statebarbodycategories": "Catégories",
+	"bs-articleinfo-statebarbodysubpages": "Sous-pages",
+	"bs-articleinfo-statebarbodytemplates": "Modèles"
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Engade funcionalidade de resaltado de sintaxe personalizable",
+	"prefs-csyntaxhighlight": "Resaltador de sintaxe",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Mostrar números de liña",
+	"bs-csyntaxhighlight-pref-autolinks": "Ligar as URL",
+	"bs-csyntaxhighlight-pref-toolbar": "Mostrar a caixa de ferramentas"
+}

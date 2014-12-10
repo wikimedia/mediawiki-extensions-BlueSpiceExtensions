@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"AVIADOR",
+			"Fitoschido"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Personalizar los enlaces del menú superior",
+	"prefs-topmenubarcustomizer": "Personalizador de menú",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Número de capas anidadas:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entradas en la capa principal:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entradas en las subcapas:"
+}

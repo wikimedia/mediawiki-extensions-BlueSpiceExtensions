@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"LNDDYL",
+			"Cwlin0416"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "重新導向",
+	"bs-extendededitbar-redirectsample": "插入文字",
+	"bs-extendededitbar-striketip": "刪除線",
+	"bs-extendededitbar-strikesample": "刪除線",
+	"bs-extendededitbar-entertip": "換行符號",
+	"bs-extendededitbar-uppertip": "上標",
+	"bs-extendededitbar-uppersample": "上標文字",
+	"bs-extendededitbar-lowertip": "下標",
+	"bs-extendededitbar-lowersample": "下標文字",
+	"bs-extendededitbar-smalltip": "小",
+	"bs-extendededitbar-smallsample": "小號文字",
+	"bs-extendededitbar-commenttip": "插入隱藏評論",
+	"bs-extendededitbar-commentsample": "評論",
+	"bs-extendededitbar-gallerytip": "插入圖片庫",
+	"bs-extendededitbar-gallerysamplepicture": "圖片",
+	"bs-extendededitbar-gallerysamplecaption": "標題",
+	"bs-extendededitbar-quotetip": "插入引用文字區塊",
+	"bs-extendededitbar-quotesample": "引用區塊",
+	"bs-extendededitbar-tabletip": "插入表格",
+	"bs-extendededitbar-tablesampleheader": "標題",
+	"bs-extendededitbar-tablesamplerow": "列",
+	"bs-extendededitbar-tablesamplecell": "儲存格"
+}

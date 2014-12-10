@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponibile",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "non disponibile"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mykola Swarnyk"
+		]
+	},
+	"bs-countthings-desc": "Надає статистику на підставі аналізу вмісту",
+	"bs-countthings-chars-label": "Символи",
+	"bs-countthings-words-label": "Слова",
+	"bs-countthings-pages-label": "Сторінок",
+	"bs-countthings-error-no-input": "Сторінка не вказана",
+	"bs-countthings-error-invalid-mode": "Режим \"$1\" не застосовується. Будь ласка, використовуйте \"chars\", \"words\" або \"pages\".",
+	"bs-countthings-error-not-exist": "Сторінка \"$1\" не існує.",
+	"bs-countthings-tag-countarticles-desc": "Показує кількість сторінок.",
+	"bs-countthings-tag-countusers-desc": "Показує кількість користувачів.",
+	"bs-countthings-tag-countcharacters-desc": "Показує статистику даного вмісту на сторінці. Доступні такі конфігурації атрибутів:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Що слід рахувати <code>chars</code> (символи), <code>words</code> (слова) чи <code>pages</code> (сторінки)."
+}

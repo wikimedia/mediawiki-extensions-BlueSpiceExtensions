@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-watchlist-desc": "Fügt ein Beobachtungsliste-Widget und Tag hinzu",
+	"bs-watchlist-title-sidebar": "Beobachtete Seiten",
+	"bs-watchlist-pref-widgetlimit": "Anzahl der Einträge:",
+	"bs-watchlist-pref-widgetsortodr": "Sortieren nach:",
+	"bs-watchlist-pref-sort-time": "Zeit",
+	"bs-watchlist-pref-sort-title": "Titel",
+	"bs-watchlist-tag-watchlist-desc": "Erstellt eine Liste von Seiten, die eine noch nicht gesehene Änderung beinhalten und sich auf deiner Beobachtungsliste befinden."
+}

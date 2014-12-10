@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-uemodulepdf-desc": "启用MediaWiki以导出页面为PDF格式",
+	"prefs-uemodulepdf": "通用导出PDF模块",
+	"uemodulepdf": "通用导出PDF模块",
+	"bs-uemodulepdf-pref-pdfserviceurl": "后台URL：",
+	"bs-uemodulepdf-pref-templatepath": "标准模板：",
+	"bs-uemodulepdf-pref-suppressns": "在PDF中隐藏名字空间",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF单一页面",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "导出此页面为PDF。",
+	"bs-uemodulepdf-overview-title": "便携文档格式（PDF）",
+	"bs-uemodulepdf-overview-desc": "导出页面（特殊页面和内容页面）为PDF。",
+	"bs-uemodulepdf-overview-webservice-state": "后台状态",
+	"bs-uemodulepdf-overview-webservice-state-ok": "可用",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "不可用",
+	"soap-service-url-not-valid": "连入PDF生成器服务的URL无效。请检查wiki配置。",
+	"soap-service-url-not-set": "连入PDF生成器服务的URL未设置。请检查wiki配置。",
+	"bs-uemodulepdf-overview-webservice-webadmin": "后台web界面"
+}

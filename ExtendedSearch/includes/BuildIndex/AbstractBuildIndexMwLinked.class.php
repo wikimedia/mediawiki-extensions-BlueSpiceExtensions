@@ -4,22 +4,17 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
  * Abstract index builder for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 abstract class AbstractBuildIndexMwLinked extends AbstractBuildIndexLinked {
 
@@ -37,8 +32,9 @@ abstract class AbstractBuildIndexMwLinked extends AbstractBuildIndexLinked {
 				$bUrlProtocolFileActivated = true;
 			}
 		}
-		if ( !$bUrlProtocolFileActivated )
-				$aErrorMessageKeys['bs-extendedsearch-file_protocol_not_activated'] = true;
+		if ( !$bUrlProtocolFileActivated ) {
+			$aErrorMessageKeys['bs-extendedsearch-file-protocol-not-activated'] = true;
+		}
 		return parent::areYouAbleToRunWithSystemSettings( $aErrorMessageKeys );
 	}
 
@@ -49,7 +45,7 @@ abstract class AbstractBuildIndexMwLinked extends AbstractBuildIndexLinked {
 	protected $sDbPrefix = '';
 	/**
 	 * Files in this path are not to be indexed.
-	 * @var string Path to be filtered 
+	 * @var string Path to be filtered
 	 */
 	// CR MRG (25.06.11 16:11): Sollte das nicht ein array werden?
 	protected $sLinkedPathFilter = null;

@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer",
+			"Violetanka"
+		]
+	},
+	"bs-visualeditor-desc": "MediaWiki için görsel düzenleyici",
+	"prefs-visualeditor": "Görsel Düzenleyici",
+	"bs-visualeditor-editbutton-hint": "Görsel Düzenleyici",
+	"bs-visualeditor-no-summary": "Özet yok",
+	"bs-visualeditor-bsactions-wiki": "Vikimetin",
+	"bs-visualeditor-bsactions-signature": "İmza",
+	"bs-visualeditor-bsactions-save": "Kaydet",
+	"bs-visualeditor-bsactions-headings": "Başlıklar",
+	"bs-visualeditor-bsactions-paragraph": "Paragraf",
+	"bs-visualeditor-bsactions-heading2": "Başlık 2",
+	"bs-visualeditor-bsactions-heading3": "Başlık 3",
+	"bs-visualeditor-bsactions-heading4": "Başlık 4",
+	"bs-visualeditor-bsactions-heading5": "Başlık 5",
+	"bs-visualeditor-bsactions-heading6": "Başlık 6",
+	"bs-visualeditor-switch-noeditor-desc": "Bu sayfada görsel düzenleyiciyi devre dışı bırakır."
+}

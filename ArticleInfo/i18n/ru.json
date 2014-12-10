@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Kaganer",
+			"Putnik"
+		]
+	},
+	"bs-articleinfo-desc": "Предоставляет сведения о странице в строке состояния",
+	"prefs-articleinfo": "Сведения о странице",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Интервал обновления (в секундах):",
+	"bs-articleinfo-last-edited": "Времени с последнего изменения",
+	"bs-articleinfo-last-edited-tooltip": "Последняя правка",
+	"bs-articleinfo-last-editor": "Последний {{GENDER:$1|редактор}}",
+	"bs-articleinfo-categories": "Категории",
+	"bs-articleinfo-more-categories": "Есть и другие категории",
+	"bs-articleinfo-all-categories-heading": "Категории",
+	"bs-articleinfo-nocategories": "Категории не найдены.",
+	"bs-articleinfo-hiddencats": "Скрытые категории",
+	"bs-articleinfo-notemplates": "Шаблоны не найдены.",
+	"bs-articleinfo-templates": "Шаблоны",
+	"bs-articleinfo-subpages": "Подстраницы",
+	"bs-articleinfo-subpages-available": "Для этой страницы есть подстраницы",
+	"bs-articleinfo-subpages-too-much": "Доступно более 100 подстраниц.",
+	"bs-articleinfo-check-revision": "Доступна новая версия",
+	"bs-articleinfo-check-revision-tooltip": "Перезагрузить страницу",
+	"bs-articleinfo-statebartoplastedited": "Последняя правка",
+	"bs-articleinfo-statebartoplasteditor": "Последний редактор",
+	"bs-articleinfo-statebartopcategories": "Категории",
+	"bs-articleinfo-statebartopsubpages": "Подстраницы",
+	"bs-articleinfo-statebarbodycategories": "Категории",
+	"bs-articleinfo-statebarbodysubpages": "Подстраницы",
+	"bs-articleinfo-statebarbodytemplates": "Шаблоны"
+}

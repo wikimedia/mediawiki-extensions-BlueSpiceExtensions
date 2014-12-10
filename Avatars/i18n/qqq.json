@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki"
+		]
+	},
+	"prefs-avatars": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for avatars section in preferences.\n{{Identical|Avatar}}",
+	"bs-avatars-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of avatars extension",
+	"bs-avatars-pref-generator": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for avatar generator:\n{{Identical|Generator}}",
+	"bs-avatars-pref-defaultsize": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for default size of avatar in pixel:",
+	"bs-avatars-upload-complete": "Text for the picture was uploaded successfully.",
+	"bs-avatars-generate-complete": "Text for a new avatar was generated.",
+	"bs-avatars-upload-title": "Window title for change profile picture",
+	"bs-avatars-upload-label": "Label for picture.\n{{Identical|Picture}}",
+	"bs-avatars-generate-new-label": "Label for the button to generate new avatar.",
+	"bs-avatars-warning-title": "Label for warning.\n{{Identical|Warning}}",
+	"bs-avatars-warning-text": "You have set a user picture in your preferences. Using avatars will clear this setting. Do you want to proceed?",
+	"bs-avatars-userimage-title": "Fieldset title for picture from wiki or picture URL",
+	"bs-avatars-userimage-help": "Help text for e.g. Picture.jpg or http://localhost/Picture.gif\n\nPicture.jpg is a example for a picture from the wiki\n\nhttp://localhost/Picture.gif is a example for a picture from URL",
+	"bs-avatars-set-userimage-failed": "Text for not a valid picture from wiki or picture URL.",
+	"bs-avatars-set-userimage-saved": "Text for user picture successfully saved.",
+	"bs-avatars-file-upload-fieldset-title": "Fieldset title for picture upload",
+	"bs-avatars-auto-generate-fieldset-title": "Fieldset title auto generate avatar"
+}

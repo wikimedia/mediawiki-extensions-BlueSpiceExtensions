@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-visualeditor-desc": "Візуальний редактор для MediaWiki",
+	"prefs-visualeditor": "Візуальний редактор",
+	"bs-visualeditor-editbutton-hint": "Візуальний редактор",
+	"bs-visualeditor-pref-disablens": "Відключити у просторах назв:",
+	"bs-visualeditor-pref-use": "Використовувати WYSIWYG-редактор за замовчуванням",
+	"bs-visualeditor-save-message": "Збережено версію у $1 з підсумком «$2».",
+	"bs-visualeditor-no-summary": "Без підсумку",
+	"bs-visualeditor-sortable": "З можливістю сортування",
+	"bs-visualeditor-wikitable": "Стандартно",
+	"bs-visualeditor-contenttable": "Вміст",
+	"bs-visualeditor-contenttable-black": "Вміст (чорний)",
+	"bs-visualeditor-contenttable-blue": "Вміст (блакитний)",
+	"bs-visualeditor-contenttable-darkblue": "Вміст (синій)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Касабланка",
+	"bs-visualeditor-greyscale": "Відтінки сірого",
+	"bs-visualeditor-greyscale-narrow": "Відтінки сірого (вузько)",
+	"bs-visualeditor-aligntop": "Зверху",
+	"bs-visualeditor-alignmiddle": "Посередині",
+	"bs-visualeditor-alignbottom": "Внизу",
+	"bs-visualeditor-bsactions-wiki": "Вікітекст",
+	"bs-visualeditor-bsactions-switchgui": "Перемикнути панель інструментів",
+	"bs-visualeditor-bsactions-linebreak": "Розрив рядка",
+	"bs-visualeditor-bsactions-signature": "Підпис",
+	"bs-visualeditor-bsactions-save": "Зберегти",
+	"bs-visualeditor-bsactions-headings": "Заголовки",
+	"bs-visualeditor-bsactions-paragraph": "Абзац",
+	"bs-visualeditor-bsactions-heading2": "Заголовок 2",
+	"bs-visualeditor-bsactions-heading3": "Заголовок 3",
+	"bs-visualeditor-bsactions-heading4": "Заголовок 4",
+	"bs-visualeditor-bsactions-heading5": "Заголовок 5",
+	"bs-visualeditor-bsactions-heading6": "Заголовок 6",
+	"bs-visualeditor-switch-noeditor-desc": "Вимикає візуальний редактор на цій сторінці."
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix",
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-insertcategory-desc": "Dialogruta för att ange en kategorilänk",
+	"bs-insertcategory-insertcat": "Infoga kategori",
+	"prefs-insertcategory": "Infoga kategori",
+	"bs-insertcategory-pref-withparents": "Infoga kategori med dess överordnade kategorier",
+	"bs-insertcategory-title": "Infoga kategori",
+	"bs-insertcategory-cat-label": "Tilldelad:",
+	"bs-insertcategory-success": "Framgångsrikt lagt till kategori",
+	"bs-insertcategory-failure": "Fel",
+	"bs-insertcategory-hint": "Obs: för att lägga till en kategori, måste du trycka enter eller avsluta inmatningen med ett kommatecken.",
+	"bs-insertcategory-panel-title": "Kategorier"
+}

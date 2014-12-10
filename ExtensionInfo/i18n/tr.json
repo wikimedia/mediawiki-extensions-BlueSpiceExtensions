@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-extensioninfo-software": "Yazılım",
+	"bs-extensioninfo-version": "Sürüm",
+	"extensioninfo": "Uzantılar",
+	"bs-extensioninfo-headerextname": "Uzantı adı",
+	"bs-extensioninfo-headerversion": "Sürüm"
+}

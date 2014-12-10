@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Alexandr Efremov",
+			"Striking Blue"
+		]
+	},
+	"bs-groupmanager-desc": "Административный интерфейс для добавления, правки и удаления групп пользователей и их прав",
+	"bs-groupmanager-grpexists": "Группа уже существует.",
+	"bs-groupmanager-grpadded": "Группа была добавлена.",
+	"bs-groupmanager-grpedited": "Группа была отредактирована.",
+	"bs-groupmanager-grpremoved": "Группа была изъята.",
+	"bs-groupmanager-label": "Менеджер групп",
+	"bs-groupmanager-invalid-name": "Название группы содержит недопустимы{{PLURAL:$1|й|е}} {{PLURAL:$1|символ|символы}}: $2",
+	"bs-groupmanager-invalid-name-length": "Название группы не может быть длиннее, чем 16 символов.",
+	"bs-groupmanager-invalid-name-numeric": "Название группы должна иметь по крайней мере один символ.",
+	"bs-groupmanager-headergroup": "Группа",
+	"bs-groupmanager-tipremove": "Удалить {{PLURAL:$1|группу|группы}}",
+	"bs-groupmanager-titlenewgroup": "Новая группа",
+	"bs-groupmanager-titleeditgroup": "Редактировать группу",
+	"bs-groupmanager-removegroup": "Вы уверены, что хотите удалить {{PLURAL:$1|эту группу|эти группы}}?",
+	"bs-groupmanager-removegroup-message-success": "Была изъята {{PLURAL:$1|следующая группа|следующие группы}} $2",
+	"bs-groupmanager-removegroup-message-failure": "Не удалось удалить {{PLURAL:$1|следующую группу|следующие группы}} $2",
+	"bs-groupmanager-removegroup-message-unknown": "Произошла непредвиденная ошибка, попробуйте еще ​​раз.",
+	"bs-groupmanager-lablename": "Имя группы:",
+	"bs-groupmanager-msgnoteditable": "Эта системная группа, и ее нельзя переименовать.",
+	"bs-groupmanager-msgnotremovable": "Это системная группа, и ее нельзя удалить."
+}

@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-usermanager-desc": "Interface de administração para adicionar, editar e eliminar utilizadores",
+	"bs-usermanager-self-nodelete": "Não pode eliminar a sua conta.",
+	"bs-usermanager-db-error": "Ocorreu um erro na base de dados.",
+	"bs-usermanager-enter-pwd": "Insira uma palavra-passe.",
+	"bs-usermanager-idnotexist": "Este utilizador não existe.",
+	"bs-usermanager-invalid-pwd": "A palavra-passe é inválida.",
+	"bs-usermanager-invalid-realname": "O nome verdadeiro é inválido.",
+	"bs-usermanager-invalid-uname": "O nome de utilizador(a) é inválido.",
+	"bs-usermanager-invalid-email-gen": "O endereço de correio eletrónico é inválido.",
+	"bs-usermanager-headerusername": "Nome de utilizador(a)",
+	"bs-usermanager-headerrealname": "Nome verdadeiro",
+	"bs-usermanager-headeremail": "Correio eletrónico",
+	"bs-usermanager-headergroups": "Grupos",
+	"bs-usermanager-titleadduser": "Adicionar utilizador(a)",
+	"bs-usermanager-titleeditdetails": "Editar utilizador(a)",
+	"bs-usermanager-labelnewpassword": "Palavra-passe",
+	"bs-usermanager-labelpasswordcheck": "Confirmar a palavra-passe",
+	"bs-usermanager-titledeleteuser": "Eliminar utilizador(a)",
+	"bs-usermanager-groups-more": "... mais"
+}

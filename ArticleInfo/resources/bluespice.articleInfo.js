@@ -52,6 +52,6 @@ BsArticleInfo = {
 	}
 };
 
-mw.loader.using('ext.bluespice', function() {
+mw.loader.using( [ 'ext.bluespice', 'mediawiki.jqueryMsg' ], function() {
 	BsArticleInfo.init();
 });

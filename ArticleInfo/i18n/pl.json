@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Wiochman"
+		]
+	},
+	"prefs-articleinfo": "Informacja o stronie",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Interwał aktualizacji (w sekundach):",
+	"bs-articleinfo-last-edited": "Czas od ostatniej zmiany",
+	"bs-articleinfo-last-edited-tooltip": "Ostatnia edycja",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Ostatni edytor|Ostatnia edytorka}}",
+	"bs-articleinfo-categories": "Kategorie",
+	"bs-articleinfo-all-categories-heading": "Kategorie",
+	"bs-articleinfo-nocategories": "Nie znaleziono kategorii.",
+	"bs-articleinfo-hiddencats": "Ukryte kategorie",
+	"bs-articleinfo-notemplates": "Nie znaleziono szablonu.",
+	"bs-articleinfo-templates": "Szablony",
+	"bs-articleinfo-subpages": "Podstrony",
+	"bs-articleinfo-check-revision": "Dostępna jest nowa wersja",
+	"bs-articleinfo-check-revision-tooltip": "Przeładuj stronę",
+	"bs-articleinfo-statebartoplastedited": "Ostatnia edycja",
+	"bs-articleinfo-statebartoplasteditor": "Ostatni edytor",
+	"bs-articleinfo-statebartopcategories": "Kategorie",
+	"bs-articleinfo-statebartopsubpages": "Podstrony",
+	"bs-articleinfo-statebarbodycategories": "Kategorie",
+	"bs-articleinfo-statebarbodysubpages": "Podstrony",
+	"bs-articleinfo-statebarbodytemplates": "Szablony"
+}

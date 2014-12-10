@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Guycn2"
+		]
+	},
+	"bs-insertmagic-newsectionlink": "הוספת קישור (\"+\" כברירת מחדל) לצד הלשונית \"עריכה\" כדי להוסיף פסקה חדשה בדף שאינו דף שיחה.",
+	"bs-insertmagic-nonewsectionlink": "הסרת הקישור ליד הלשונית \"עריכה\" בדפים במרחבי שיחה."
+}

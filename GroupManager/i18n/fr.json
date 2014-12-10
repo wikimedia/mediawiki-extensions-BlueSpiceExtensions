@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg"
+		]
+	},
+	"bs-groupmanager-desc": "Interface d’administration pour l’ajout, la modification et la suppression des groupes d’utilisateurs et des droits associés",
+	"bs-groupmanager-grpexists": "Le groupe existe déjà.",
+	"bs-groupmanager-grpadded": "La groupe a été ajouté.",
+	"bs-groupmanager-grpedited": "Le groupe a été modifié.",
+	"bs-groupmanager-grpremoved": "Le groupe a été supprimé.",
+	"bs-groupmanager-label": "Gestionnaire de groupe",
+	"bs-groupmanager-invalid-name": "Le nom du groupe contient {{PLURAL:$1|un caractère non valide|des caractères non valides}} : $2",
+	"bs-groupmanager-invalid-name-length": "Le nom du groupe ne peut pas dépasser 16 caractères.",
+	"bs-groupmanager-invalid-name-numeric": "Le nom du groupe doit comporter au moins un caractère.",
+	"bs-groupmanager-headergroup": "Groupe",
+	"bs-groupmanager-tipremove": "Supprimer {{PLURAL:$1|le groupe|les groupes}}",
+	"bs-groupmanager-titlenewgroup": "Nouveau groupe",
+	"bs-groupmanager-titleeditgroup": "Modifier le groupe",
+	"bs-groupmanager-removegroup": "Êtes-vous sûr de vouloir supprimer {{PLURAL:$1|ce groupe|ces groupes}} ?",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|Le groupe suivant a été supprimé|Les groupes suivants ont été supprimés}} : $2",
+	"bs-groupmanager-removegroup-message-failure": "{{PLURAL:$1|Le groupe suivant n’a pas pu être supprimé|Les groupes suivants n’ont pas pu être supprimés}} : $2",
+	"bs-groupmanager-removegroup-message-unknown": "Une erreur inattendue s’est produite, veuillez réessayer.",
+	"bs-groupmanager-lablename": "Nom du groupe :",
+	"bs-groupmanager-msgnoteditable": "Ce groupe est un groupe système et ne peut pas être renommé.",
+	"bs-groupmanager-msgnotremovable": "Ce groupe est un groupe système et ne peut pas être supprimé."
+}

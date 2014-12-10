@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226",
+			"Shirayuki"
+		]
+	},
+	"bs-groupmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of group manager extension",
+	"bs-groupmanager-grpexists": "Error message that the group you want to create already exists.",
+	"bs-groupmanager-grpadded": "Success message that the group has been added.",
+	"bs-groupmanager-grpedited": "Success message that the group has been edited.",
+	"bs-groupmanager-grpremoved": "Success message that the group has been removed.",
+	"bs-groupmanager-label": "Used in sidebar, anchor text for group manager\n{{Identical|Group manager}}",
+	"bs-groupmanager-invalid-name": "Error message that the group name contains an invalid character or invalid characters\n*$1 is the number of invalid characetares\n*$2 are the invalid characters",
+	"bs-groupmanager-invalid-name-length": "Error message that the group name cannot be longer than 16 characters.",
+	"bs-groupmanager-invalid-name-numeric": "Error message that the group name needs to have at least one character.",
+	"bs-groupmanager-headergroup": "Column headline for group\n{{Identical|Group}}",
+	"bs-groupmanager-tipremove": "Window title for remove group or groups\n*$1 is the number of groups which should be removed - use for PLURAL distinction",
+	"bs-groupmanager-titlenewgroup": "Window title for new group\n{{Identical|New group}}",
+	"bs-groupmanager-titleeditgroup": "Window title for edit group\n{{Identical|Edit group}}",
+	"bs-groupmanager-removegroup": "Text message if the user really wants di delete the selected group or groups\n*$1 is the number of groups which should be removed - use for PLURAL distinction",
+	"bs-groupmanager-removegroup-message-success": "Success message after deleting a group or a pair of groups.\n\nParameters:\n* $1 - the number of groups which should be removed - use for PLURAL distinction\n* $2 - list of groups\nSee also:\n* {{msg-mw|Bs-groupmanager-removegroup-message-failure}}",
+	"bs-groupmanager-removegroup-message-failure": "Failure message after deleting a group or a pair of groups.\n\nParameters:\n* $1 - the number of groups which should be removed - use for PLURAL distinction\n* $2 - list of groups\nSee also:\n* {{msg-mw|Bs-groupmanager-removegroup-message-success}}",
+	"bs-groupmanager-removegroup-message-unknown": "An unexpected error occurred while trying to delete a group.",
+	"bs-groupmanager-lablename": "Label for a input field thats contains the group name\n{{Identical|Group name}}",
+	"bs-groupmanager-msgnoteditable": "Error message that the group you want to edit is a system group and therefore cannot be renamed",
+	"bs-groupmanager-msgnotremovable": "Error message that the group you want to remove is a system group and therefore cannot be removed"
+}

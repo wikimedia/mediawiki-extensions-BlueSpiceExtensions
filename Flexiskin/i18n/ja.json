@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki",
+			"Mfuji"
+		]
+	},
+	"bs-flexiskin-desc": "外装を作成する機能を追加する",
+	"bs-flexiskin-label": "外装",
+	"bs-flexiskin-defaultname": "既定",
+	"bs-flexiskin-error-skinexists": "この名前の外装は既に存在します。",
+	"bs-flexiskin-error-fail-add-skin": "外装を作成できませんでした: $1",
+	"bs-flexiskin-error-delete-skin": "外装を削除できませんでした: $1",
+	"bs-flexiskin-not-allowed": "このページへのアクセスは許可されていません。",
+	"prefs-flexiskin": "外装",
+	"bs-flexiskin-pref-active": "有効な外装:",
+	"bs-flexiskin-pref-logo": "ロゴ:",
+	"bs-flexiskin-labelname": "名前",
+	"bs-flexiskin-labeldesc": "説明",
+	"bs-flexiskin-headergeneral": "全般",
+	"bs-flexiskin-dialogclose": "プレビューを本当に閉じますか?",
+	"bs-flexiskin-dialogreset": "外装は最後に保存した状態にリセットされます。続行しますか？",
+	"bs-flexiskin-confirmdeleteskin": "この外装を本当に削除しますか?",
+	"bs-flexiskin-titleaddskin": "外装の追加",
+	"bs-flexiskin-labelskins": "テンプレート",
+	"bs-flexiskin-labelbgcolor": "背景色",
+	"bs-flexiskin-headerheader": "ヘッダー",
+	"bs-flexiskin-labellogoupload": "ロゴ",
+	"bs-flexiskin-labelbackgroundupload": "背景画像",
+	"bs-flexiskin-no-repeat": "繰り返さない",
+	"bs-flexiskin-labelrepeatbackground": "背景画像の繰り返し",
+	"bs-flexiskin-labelcustombgcolor": "カスタム色",
+	"bs-flexiskin-headerposition": "位置とサイズ",
+	"bs-flexiskin-labelnavigation": "ナビゲーションの位置",
+	"bs-flexiskin-labelcontent": "本文の位置",
+	"bs-flexiskin-left": "左",
+	"bs-flexiskin-right": "右",
+	"bs-flexiskin-center": "中央",
+	"bs-flexiskin-labelfullwidth": "最大幅",
+	"bs-flexiskin-error-nameempty": "作成する外装の有効な名前を入力してください。"
+}

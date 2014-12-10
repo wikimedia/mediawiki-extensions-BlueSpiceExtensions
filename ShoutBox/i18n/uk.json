@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-shoutbox-desc": "Додає функцію аналізатора для вбудування вашого власного мінічату",
+	"prefs-shoutbox": "Рупор",
+	"bs-shoutbox-title": "Рупор",
+	"bs-shoutbox-message": "Написати новий коментар...",
+	"bs-shoutbox-shout": "Надіслати",
+	"bs-shoutbox-no-entries": "Тут ще нічого немає.",
+	"bs-shoutbox-loading": "Завантаження…",
+	"bs-shoutbox-pref-committimeinterval": "Час між двома повідомленнями (у секундах):",
+	"bs-shoutbox-pref-maxmessagelength": "Максимальна довжина повідомлення:",
+	"bs-shoutbox-pref-numberofshouts": "Кількість показаних повідомлень:",
+	"bs-shoutbox-pref-showage": "Показати дату створення повідомлення",
+	"bs-shoutbox-pref-showuser": "Показати автора повідомлення",
+	"bs-shoutbox-pref-allowarchive": "Користувачі можуть видалити свої власні записи",
+	"bs-shoutbox-pref-show": "Відображати рупор",
+	"bs-shoutbox-archive-success": "Запис видалено.",
+	"bs-shoutbox-archive-failure": "Сталася помилка при спробі видалити запис, будь ласка, спробуйте ще раз.",
+	"bs-shoutbox-archive-failure-user": "Записи можуть бути видалені тільки їх автором.",
+	"bs-shoutbox-switch-description": "Приховує рупор на цій сторінці",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|символ залишився|символів залишилося|символи залишилося}}",
+	"bs-shoutbox-confirm-text": "Ви дійсно хочете вилучити цей запис?",
+	"bs-shoutbox-confirm-title": "Підтвердити",
+	"bs-shoutbox-entermessage": "Будь ласка, введіть повідомлення.",
+	"bs-shoutbox-too-early": "Будь ласка, зачекайте кілька секунд перед відправкою наступного запису."
+}

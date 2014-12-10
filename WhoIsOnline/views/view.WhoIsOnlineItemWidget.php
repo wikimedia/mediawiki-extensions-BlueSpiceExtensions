@@ -43,27 +43,16 @@ class ViewWhoIsOnlineItemWidget extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $params = false ) {
-		if( empty( $this->sUserDisplayName ) ) {
+		if ( empty( $this->sUserDisplayName ) ) {
 			$this->sUserDisplayName = $this->sUserName;
 		}
 
+		$oUser = User::newFromName( $this->sUserName );
+		$sLink = BsLinkProvider::makeLink( $oUser->getUserPage(), $this->sUserDisplayName );
+
 		$aOut = array();
-
-		// TODO MRG (08.09.10 00:06): Use user image or MiniProfile
 		$aOut[] = '<li>';
-		if ( $this->getOption( 'renderLink' ) ) {
-			$aOut[] = sprintf(
-							'<a href="%s/index.php?title=User:%s" title="%s">%s</a>',
-							BsConfig::get( 'MW::ScriptPath' ),
-							$this->sUserName,
-							$this->sUserDisplayName,
-							BsStringHelper::shorten( $this->sUserDisplayName, array('max-length' => 50) )
-						);
-		}
-		else {
-			$aOut[] = $this->sUserDisplayName;
-		}
-
+		$aOut[] = $sLink;
 		$aOut[] = '</li>';
 
 		return implode( "", $aOut );

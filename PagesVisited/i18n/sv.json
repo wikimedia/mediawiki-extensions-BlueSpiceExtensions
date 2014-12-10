@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-pagesvisited-desc": "Ger en personlig lista över de senast besökta sidorna",
+	"prefs-pagesvisited": "Besökta sidor",
+	"bs-pagesvisited-widget-title": "Besökta sidor",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Den angivna namnrymden|De angivna namnrymderna}} <code>$2</code> är inte {{PLURAL:$1|giltig|giltiga}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Begränsning av inlägg:",
+	"bs-pagesvisited-pref-widgetns": "Namnrymder:",
+	"bs-pagesvisited-pref-widgetsortodr": "Sortera efter:",
+	"bs-pagesvisited-pref-sort-time": "Tid",
+	"bs-pagesvisited-pref-sort-pagename": "Titel",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Visar en lista över sidor som du besökt."
+}

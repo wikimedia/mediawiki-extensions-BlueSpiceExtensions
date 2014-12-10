@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Valepert",
+			"Beta16"
+		]
+	},
+	"bs-specialadmindashboard-label": "Cruscotto",
+	"prefs-dashboards": "Cruscotti",
+	"admindashboard": "Cruscotto amministrazione",
+	"userdashboard": "Cruscotto utente",
+	"bs-dashboard-userportlet-calendar-title": "Calendario",
+	"bs-dashboard-userportlet-calendar-description": "Calendario"
+}

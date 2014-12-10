@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Customize the top menu links",
+	"prefs-topmenubarcustomizer": "Menu customizer",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Number of nested layers:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entries on main layer:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entries on sub layers:"
+}

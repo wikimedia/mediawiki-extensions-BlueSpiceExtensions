@@ -4,7 +4,7 @@
  * Avatars extension for BlueSpice
  *
  * Provide generic and individual user images
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -53,7 +53,7 @@ class Avatars extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Avatars',
-			EXTINFO::DESCRIPTION => 'Provide generic and individual user images.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-avatars-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Marc Reymann',
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',
@@ -70,10 +70,10 @@ class Avatars extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn('BS::' . __METHOD__);
 
-		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-Avatars-pref-DefaultSize', 'int');
-		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-Avatars-pref-Generator', 'select');
+		BsConfig::registerVar('MW::Avatars::DefaultSize', 40, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-avatars-pref-defaultsize', 'int');
+		BsConfig::registerVar('MW::Avatars::Generator', 'InstantAvatar', BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-avatars-pref-generator', 'select');
 
-		$this->setHook('BSAdapterGetUserMiniProfileBeforeInit');
+		$this->setHook('BSCoreGetUserMiniProfileBeforeInit');
 		$this->setHook('BsAuthorPageProfileImageAfterInitFields');
 
 		# TODO: required rights? user->read?
@@ -106,23 +106,24 @@ class Avatars extends BsExtensionMW {
 	 * @param type $aParams
 	 * @return boolean
 	 */
-	public function onBSAdapterGetUserMiniProfileBeforeInit($oUserMiniProfileView, $oUser, $aParams) {
+	public function onBSCoreGetUserMiniProfileBeforeInit(&$oUserMiniProfileView, &$oUser, &$aParams) {
 		# Set anonymous image for anonymous or deleted users
 		if ($oUser->isAnon()) {
-			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DeletedUserImage'));
+			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DeletedUserImage'));
 			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
 			return true;
 		}
 		# If user has set MW image or URL return immediately
-		if ($oUser->getOption('MW::UserImage'))
+		if ($oUser->getOption('MW::UserImage')) {
 			return true;
+		}
 		# Set default image in read-only mode or thumb creation might get triggered
 		if (wfReadOnly()) {
-			$oUserMiniProfileView->setOption('userimagesrc', BsConfig::get('MW::DefaultUserImage'));
+			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DefaultUserImage'));
 			return true;
 		}
 		# Set or generate user's avatar
-		$oUserMiniProfileView->setOption('userimagesrc', $this->generateAvatar($oUser, $aParams));
+		$oUserMiniProfileView->setUserImageSrc($this->generateAvatar($oUser, $aParams));
 		return true;
 	}
 
@@ -130,7 +131,7 @@ class Avatars extends BsExtensionMW {
 	 * Show avatar on user page
 	 * @param ViewAuthorsUserPageProfileImageSetting $oView
 	 * @param User $oUser
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onBsAuthorPageProfileImageAfterInitFields($oView, $oUser) {
 		# If user has set MW image or URL return immediately
@@ -168,7 +169,7 @@ class Avatars extends BsExtensionMW {
 			));
 		} else {
 			$oUser = RequestContext::getMain()->getUser();
-			$oUser->setOption('MW::UserImage', serialize($sUserImage));
+			$oUser->setOption('MW::UserImage', $sUserImage);
 			$oUser->saveSettings();
 
 			return FormatJson::encode(array(
@@ -209,7 +210,7 @@ class Avatars extends BsExtensionMW {
 	/**
 	 * Generate an avatar image
 	 * @param User $oUser
-	 * @return string Relative URL to avatar image 
+	 * @return string Relative URL to avatar image
 	 */
 	public function generateAvatar($oUser, $aParams = array(), $bOverwrite = false) {
 		$iAvatarDefaultSize = BsConfig::get('MW::Avatars::DefaultSize');
@@ -234,7 +235,7 @@ class Avatars extends BsExtensionMW {
 					break;
 				case 'InstantAvatar':
 					require_once( __DIR__ . "/includes/lib/InstantAvatar/instantavatar.php" );
-					$iFontSize = round(18/40 * $iAvatarDefaultSize);
+					$iFontSize = round(18 / 40 * $iAvatarDefaultSize);
 					$oIA = new InstantAvatar(__DIR__ . '/includes/lib/InstantAvatar/Comfortaa-Regular.ttf', $iFontSize, $iAvatarDefaultSize, $iAvatarDefaultSize, 2, __DIR__ . '/includes/lib/InstantAvatar/glass.png');
 					if ($sUserRealName) {
 						preg_match_all('#(^| )(.)#u', $sUserRealName, $aMatches);

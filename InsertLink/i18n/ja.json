@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-insertlink-desc": "リンクを入力するダイアログボックス",
+	"bs-insertlink": "リンクを挿入",
+	"bs-insertlink-button-title": "リンクを挿入/編集",
+	"bs-insertlink-dialog-title": "リンクの挿入",
+	"bs-insertlink-tab-wiki-page": "ウィキページ",
+	"bs-insertlink-tab-ext-link": "外部リンク",
+	"bs-insertlink-tab-email": "メール リンク",
+	"bs-insertlink-tab-ext-file": "ファイルへのリンク",
+	"bs-insertlink-label-page": "ページ",
+	"bs-insertlink-label-link": "リンク",
+	"bs-insertlink-label-mail": "メールアドレス",
+	"bs-insertlink-label-description": "説明",
+	"bs-insertlink-label-file": "ファイル",
+	"bs-insertlink-label-searchfile": "検索 ...",
+	"bs-insertlink-select-a-page": "リンク先を選択 ...",
+	"bs-insertlink-select-a-namespace": "(ページ)",
+	"bs-insertlink-empty-field-text": "リンクを挿入するには、リンク先を指定する必要があります。",
+	"bs-insertlink-no-applet": "アプレットを読み込めませんでした。Java をインストールしていることを確認してください。"
+}

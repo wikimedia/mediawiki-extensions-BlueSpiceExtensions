@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa",
+			"Reza1615"
+		]
+	},
+	"bs-groupmanager-desc": "رابط مدیریت برای اداره گروه‌ها",
+	"bs-groupmanager-grpexists": "گروه پیش از این وجود دارد.",
+	"bs-groupmanager-grpadded": "گروه اضافه شد.",
+	"bs-groupmanager-grpedited": "گروه ویرایش شد.",
+	"bs-groupmanager-grpremoved": "گروه حذف شد.",
+	"bs-groupmanager-label": "مدیر گروه",
+	"bs-groupmanager-invalid-name": "نام گروه شامل {{PLURAL:$1|یک|}} {{PLURAL:$1|نویسه|نویسه}} نامعتبر است: $2",
+	"bs-groupmanager-invalid-name-length": "نام گروه نمی‌تواند بلندتر از ۱۶ نویسه باشد.",
+	"bs-groupmanager-invalid-name-numeric": "نام گروه نیاز دارد حداقل یک نویسه داشته باشد.",
+	"bs-groupmanager-headergroup": "گروه",
+	"bs-groupmanager-tipremove": "حذف {{PLURAL:$1|گروه|گروه}}",
+	"bs-groupmanager-titlenewgroup": "گروه تازه",
+	"bs-groupmanager-titleeditgroup": "ویرایش گروه",
+	"bs-groupmanager-removegroup": "آیا مطمئنید می‌خواهید {{PLURAL:$1|این گروه|این گروه‌ها}} را حذف کنید؟",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|گروه|گروه‌های}} روبرو حذف شدند: $2",
+	"bs-groupmanager-removegroup-message-failure": "{{PLURAL:$1|گروه|گروه‌های}} روبرو نمی‌تواند حذف شود: $2",
+	"bs-groupmanager-removegroup-message-unknown": "یک خطای غیر منتظره رخ داد، لطفاً دوباره تلاش کنید.",
+	"bs-groupmanager-lablename": "نام گروه:",
+	"bs-groupmanager-msgnoteditable": "این گروه یک گروه سیستمی است و نامش نمی‌تواند تغییر یابد.",
+	"bs-groupmanager-msgnotremovable": "این گروه یک گروه سیستمی است و نمی‌تواند حذف شود."
+}

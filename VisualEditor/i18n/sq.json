@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"prefs-visualeditor": "editori viziv",
+	"bs-visualeditor-editbutton-hint": "editori viziv",
+	"bs-visualeditor-no-summary": "Asnjë përmbledhje",
+	"bs-visualeditor-wikitable": "Standarte",
+	"bs-visualeditor-contenttable": "Përmbajtja",
+	"bs-visualeditor-contenttable-black": "Përmbajtja (e zezë)",
+	"bs-visualeditor-contenttable-blue": "Përmbajtja (blu)",
+	"bs-visualeditor-contenttable-darkblue": "Përmbajtja (blu e erret)",
+	"bs-visualeditor-alignmiddle": "Mesme",
+	"bs-visualeditor-alignbottom": "Fund",
+	"bs-visualeditor-bsactions-signature": "Firma",
+	"bs-visualeditor-bsactions-save": "Ruaje",
+	"bs-visualeditor-bsactions-headings": "Mbishkrimet",
+	"bs-visualeditor-bsactions-paragraph": "Paragraf",
+	"bs-visualeditor-bsactions-heading2": "Mbishkrimi 2",
+	"bs-visualeditor-bsactions-heading3": "Mbishkrimi 3",
+	"bs-visualeditor-bsactions-heading4": "Mbishkrimi 4",
+	"bs-visualeditor-bsactions-heading5": "Mbishkrimi 5",
+	"bs-visualeditor-bsactions-heading6": "Mbishkrimi 6",
+	"bs-visualeditor-switch-noeditor-desc": "Pamundëson  editorin viziv në këtë faqe."
+}

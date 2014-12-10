@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Aggiunge funzionalità di evidenziazione della sintassi personalizzabile",
+	"prefs-csyntaxhighlight": "Evidenziatore di sintassi",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Visualizza i numeri di riga",
+	"bs-csyntaxhighlight-pref-autolinks": "Collegamenti URL",
+	"bs-csyntaxhighlight-pref-toolbar": "Mostra barra degli strumenti"
+}

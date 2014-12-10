@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Duolaimi"
+		]
+	},
+	"bs-notifications-desc": "对用户选定的更改发送通知",
+	"prefs-notifications": "通知",
+	"prefs-echo-extended": "高级系统设置",
+	"bs-notifications-pref-notifyns": "只对这些名字空间通知：",
+	"bs-notifications-pref-notifynominor": "不对小修改通知",
+	"bs-notifications-pref-active": "启用通知",
+	"bs-echo-anon-user": "匿名",
+	"bs-echo-unknown-user": "未知",
+	"bs-echo-page-edit": "页面[[:$1]]已更改",
+	"bs-echo-page-create": "页面[[:$1]]已创建",
+	"bs-echo-page-delete": "页面[[:$1]]已删除",
+	"bs-echo-page-move": "页面[[:$1]]已移动",
+	"bs-echo-page-newuser": "用户$1已创建。",
+	"bs-echo-page-shoutbox": "网站[[:$1]]上的一则新喊话器留言。",
+	"bs-notifications-email-new-subject": "页面$1由$2{{GENDER:$2|创建}}",
+	"bs-notifications-email-new": "页面“$1”由$2{{GENDER:$2|创建}}。\n评论：$3\n您可通过此链接访问页面：$4",
+	"bs-notifications-email-edit-subject": "页面$1由$2{{GENDER:$2|编辑}}",
+	"bs-notifications-email-edit": "页面“$1”由$2{{GENDER:$2|编辑}}。\n评论：$3\n您可通过此链接访问页面：$4\n如果您只希望查看更改，点此：$5",
+	"bs-notifications-email-move-subject": "页面$1由$2{{GENDER:$2|移动}}",
+	"bs-notifications-email-move": "页面“$1”由$2{{GENDER:$2|移动}}至$3。您可通过此链接访问页面：$4",
+	"bs-notifications-email-delete-subject": "页面$1由$2{{GENDER:$2|删除}}",
+	"bs-notifications-email-delete": "页面“$1”由$2{{GENDER:$2|删除}}。原因：$3",
+	"bs-notifications-email-addaccount-subject": "用户$1被创建",
+	"bs-notifications-email-addaccount": "用户$1与真实姓名$2被创建。",
+	"bs-notifications-email-shout-subject": "$2在页面$1{{GENDER:$2|发布}}了一则消息",
+	"bs-notifications-email-shout": "$2在页面“$1”{{GENDER:$2|发布}}了一则消息。\n消息：$3\n您可通过此链接访问：$4。",
+	"echo-category-title-bs-create-cat": "对新页面的通知",
+	"echo-category-title-bs-edit-cat": "对编辑的通知",
+	"echo-category-title-bs-move-cat": "对移动的通知",
+	"echo-category-title-bs-delete-cat": "对删除的通知",
+	"echo-category-title-bs-newuser-cat": "对新用户的通知（仅限管理员）",
+	"echo-category-title-bs-shoutbox-cat": "对监视页面（留言板）消息的通知"
+}

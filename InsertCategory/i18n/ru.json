@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Alexandr Efremov"
+		]
+	},
+	"bs-insertcategory-desc": "Диалог ввода ссылки на категорию",
+	"bs-insertcategory-insertcat": "Добавить категорию",
+	"prefs-insertcategory": "Добавить категорию",
+	"bs-insertcategory-pref-withparents": "Вставить категорию с ее родительскими категориями",
+	"bs-insertcategory-title": "Добавить категорию",
+	"bs-insertcategory-cat-label": "Назначение:",
+	"bs-insertcategory-success": "Категория успешно добавлена",
+	"bs-insertcategory-failure": "Ошибка",
+	"bs-insertcategory-hint": "Примечание: чтобы добавить категорию, необходимо нажать клавишу enter или поставить запятую в конце записи.",
+	"bs-insertcategory-panel-title": "Категории"
+}

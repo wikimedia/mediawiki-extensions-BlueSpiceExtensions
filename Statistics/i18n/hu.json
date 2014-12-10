@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-statistics-mode": "Mód",
+	"bs-statistics-year": "Év",
+	"bs-statistics-month": "Hónap",
+	"bs-statistics-day": "Nap",
+	"bs-statistics-list": "Lista",
+	"bs-statistics-finish": "Diagram létrehozása",
+	"bs-statistics-label-name": "Név",
+	"bs-statistics-label-registration": "Regisztráció",
+	"bs-statistics-diag-number-of-pages": "Lapok száma",
+	"bs-statistics-label-page": "Lap",
+	"bs-statistics-label-count": "Számláló",
+	"bs-statistics-label-time": "Idő",
+	"bs-statistics-filter-category": "Kategória",
+	"bs-statistics-portletconfig-periodday": "Tegnap"
+}

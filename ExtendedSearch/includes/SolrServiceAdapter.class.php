@@ -4,11 +4,10 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @package    BlueSpice_Core
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -114,38 +113,11 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 	}
 
 	/**
-	 * Get a vaild curl handle.
-	 * @return resource Curl handle.
-	 */
-	protected function &getCurlHandle() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		if ( $this->curlConnectionCounter > 200 ) {
-			curl_close( $this->curlHandle );
-			$this->curlHandle = null;
-		}
-		if ( $this->curlHandle === null ) {
-			$this->curlHandle = curl_init(); // todo: function_exists('curl_init') not true on every installation => handle Exception
-			$this->curlConnectionCounter = 0;
-			//curl_setopt($this->curlHandle, CURLOPT_FRESH_CONNECT, 1); // Forces new http-connection
-			//curl_setopt($this->curlHandle, CURLOPT_FORBID_REUSE, 1);  // Closes http-connection after the request
-			//curl_setopt($this->curlHandle, CURLOPT_VERBOSE, 1);
-			curl_setopt( $this->curlHandle, CURLOPT_HEADER, true );
-			curl_setopt( $this->curlHandle, CURLOPT_HTTPHEADER, array( "Content-Type: text/xml; charset=utf-8", "Expect:" ) );
-			curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, true );
-			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYPEER, false ); // Allow self-signed certs
-			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYHOST, false ); // Allow certs that do not match the hostname
-		}
-		wfProfileOut( 'BS::'.__METHOD__ );
-
-		return $this->curlHandle;
-	}
-
-	/**
 	 * Central method for making a post operation against this Solr Server
 	 *
 	 * @param string $sUrl The URL to be requested
 	 * @param string $sRawPost Workload to be delivered
-	 * @param float $fTimeout Read timeout in seconds
+	 * @param float $iTimeLimit Read timeout in seconds
 	 * @param string $sContentType The content type to be included in the http-header
 	 * @return Apache_Solr_Response
 	 *
@@ -155,14 +127,14 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		try {
 			if ( $iTimeLimit === false ) {
-				$iTimeLimit = 20; 
+				$iTimeLimit = 20;
 			}
 
 			$ch = $this->getCurlHandle();
 			curl_setopt( $ch, CURLOPT_URL, $sUrl );
 			curl_setopt( $ch, CURLOPT_POST, true );
 			curl_setopt( $ch, CURLOPT_POSTFIELDS, $sRawPost );
-			curl_setopt( $ch, CURLOPT_TIMEOUT, $iTimeLimit ); // maximal exectuion time in seconds 
+			curl_setopt( $ch, CURLOPT_TIMEOUT, $iTimeLimit ); // maximal exectuion time in seconds
 
 			$data = curl_exec( $ch );
 			$this->curlConnectionCounter++;
@@ -172,14 +144,13 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 			$responseData = ( isset( $responseParts[1] ) ) ? $responseParts[1] : '';
 			$response = new Apache_Solr_Response( $responseData, $http_response_header, $this->_createDocuments, $this->_collapseSingleValueArrays );
 		} catch ( Exception $e ) {
-			error_log ( 'Exception raised in Search::_sendRawPost: ' . $e->getMessage() );
-			//Search::writeLog($mode, 'Exception raised in Search::_sendRawPost: ' . $e->getMessage(), 0);
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost ' . $e->getMessage() );
 			wfProfileOut( 'BS::'.__METHOD__ );
 			return new Apache_Solr_Response('');
 		}
 
 		if ( $response->getHttpStatus() != 200 ) {
-			BuildIndexMainControl::getInstance()->logFile( 'write', 'Error in _sendRawPost ' . var_export( $response, true ) );
+			wfDebugLog( 'ExtendedSearch', __METHOD__ . ' Error in _sendRawPost ' . var_export( $response, 1 ) );
 			wfProfileOut( 'BS::'.__METHOD__ );
 			throw new Exception( '"' . $response->getHttpStatus() . '" Status: ' . $response->getHttpStatusMessage(), $response->getHttpStatus() );
 		}
@@ -189,21 +160,22 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 	}
 
 	/**
-	 * Overwriting commit() in Service.php to get rid of optimize parameter in the rawPost string
-	 * (optimize doesn't look valid in this version of solr)
-	 * @param bool $bOptimize Not used currently.
-	 * @param bool $bWaitFlush Send commit with waitFlush attribute
-	 * @param bool $bWaitSearcher Send commit with waitSearcher attribute
+	 * Overwriting commit() in Service.php
+	 * @param bool $bWaitSearcher send commit with waitSearcher attribute
+	 * @param bool $bSoftCommit send commit with softCommit attribute
+	 * @param bool $bExpungeDeletes send commit with expungeDeletes attribute
 	 * @param int $iTimeout Seconds to wait for server response.
 	 * @return Apache_Solr_Response
 	 */
-	public function commit( $bOptimize = true, $bWaitFlush = true, $bWaitSearcher = true, $iTimeout = 3600 ) {
+	public function commit( $bWaitSearcher = true, $bSoftCommit = true, $bExpungeDeletes = true, $iTimeout = 3600 ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// http://wiki.apache.org/solr/UpdateXmlMessages
 
-		$searcherValue = $bWaitSearcher ? 'true' : 'false';
+		$bWS = ( $bWaitSearcher ) ? 'true' : 'false';
+		$bCS = ( $bSoftCommit ) ? 'true' : 'false';
+		$bED = ( $bExpungeDeletes ) ? 'true' : 'false';
 
-		$rawPost = '<commit waitSearcher="' . $searcherValue . '" />';
+		$rawPost = '<commit waitSearcher="' . $bWS . '" softCommit="' . $bCS . '" expungeDeletes="' . $bED . '" />';
 		wfProfileOut( 'BS::'.__METHOD__ );
 
 		return $this->_sendRawPost( $this->_updateUrl, $rawPost, $iTimeout );

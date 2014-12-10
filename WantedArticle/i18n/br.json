@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"prefs-wantedarticle": "Pajenn c'hoantaet",
+	"bs-wantedarticle-ajax-error-no-parameter": "N'eus bet pourchaset titl ebet evit ar bajenn.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Erbedet eo ar bajenn \"$1\" dija.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Erbedadenn \"$1\" ouzhpennet.",
+	"bs-wantedarticle-success-suggestion-entered": "Ouzhpennet eo bet hoc'h erbedadenn \"$1\".",
+	"bs-wantedarticle-page-removed": "Lamet eo bet ar bajenn \"$1\".",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Aliañ",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Krouiñ",
+	"bs-wantedarticle-single-textfield-defaulttext": "Titl ar bajenn",
+	"bs-wantedarticle-tag-more-linktext": "Muioc'h...",
+	"bs-wantedarticle-tag-default-title": "Pajennoù c'hoantaet",
+	"bs-wantedarticle-pref-includelimit": "Niver a erbedadennoù :",
+	"bs-wantedarticle-pref-showcreate": "Diskouez al liamm krouiñ",
+	"bs-wantedarticle-pref-sort": "Renkañ dre :",
+	"bs-wantedarticle-pref-order": "Urzh :",
+	"bs-wantedarticle-pref-sort-time": "Eur",
+	"bs-wantedarticle-pref-sort-title": "Titl",
+	"bs-wantedarticle-pref-order-asc": "war gresk",
+	"bs-wantedarticle-pref-order-desc": "war zigresk",
+	"bs-wantedarticle-create-page": "Krouiñ ar bajenn \"$1\".",
+	"bs-wantedarticle-suggest-page": "Erbediñ ar bajenn \"$1\".",
+	"bs-wantedarticle-info-nothing-entered": "Pourchasit un titl reizh evit ar bajenn, mar plij."
+}

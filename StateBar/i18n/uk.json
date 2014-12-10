@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Base",
+			"Mykola Swarnyk"
+		]
+	},
+	"bs-statebar-desc": "Надає рядок стану",
+	"prefs-statebar": "Рядок стану",
+	"bs-statebar-pref-sortbodyvars": "Порядок у тілі:",
+	"bs-statebar-pref-sorttopvars": "Порядок у верхній частині:",
+	"bs-statebar-pref-show": "Відобразити рядок стану",
+	"bs-statebar-viewtoggler": "Докладніше",
+	"bs-statebar-viewtoggler-tooltip": "Показати детальну інформацію",
+	"bs-statebar-switch-description": "Приховує рядок стану цієї сторінки.",
+	"bs-statebar-ajax-nobodyviews": "Інформація відсутня."
+}

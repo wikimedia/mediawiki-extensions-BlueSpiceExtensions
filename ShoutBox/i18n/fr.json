@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"SnowedEarth",
+			"Jean-Frédéric",
+			"Ltrlg"
+		]
+	},
+	"bs-shoutbox-desc": "Ajoute une fonction d’analyse pour intégrer votre propre shoutbox",
+	"prefs-shoutbox": "Shoutbox",
+	"bs-shoutbox-title": "Shoutbox",
+	"bs-shoutbox-message": "Écrire un commentaire…",
+	"bs-shoutbox-shout": "Envoyer",
+	"bs-shoutbox-no-entries": "Rien ici pour l'instant.",
+	"bs-shoutbox-loading": "Chargement en cours…",
+	"bs-shoutbox-pref-committimeinterval": "Durée entre deux messages (en secondes) :",
+	"bs-shoutbox-pref-maxmessagelength": "Longueur maximale d’un message :",
+	"bs-shoutbox-pref-numberofshouts": "Nombre de messages affichés :",
+	"bs-shoutbox-pref-showage": "Afficher la date de création d’un message",
+	"bs-shoutbox-pref-showuser": "Afficher l’auteur d’un message",
+	"bs-shoutbox-pref-allowarchive": "Les utilisateurs peuvent supprimer leurs propres entrées",
+	"bs-shoutbox-pref-show": "Afficher la shoutbox",
+	"bs-shoutbox-archive-success": "Entrée supprimée.",
+	"bs-shoutbox-archive-failure": "Une erreur s’est produite en essayant de supprimer l’entrée, veuillez réessayer.",
+	"bs-shoutbox-archive-failure-user": "Les entrées ne peuvent être supprimées que par leur auteur.",
+	"bs-shoutbox-switch-description": "Masque la shoutbox sur cette page",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|caractère restant|caractères restants}}",
+	"bs-shoutbox-confirm-text": "Voulez-vous vraiment supprimer cette entrée ?",
+	"bs-shoutbox-confirm-title": "Confirmer",
+	"bs-shoutbox-entermessage": "Veuillez entrer un message.",
+	"bs-shoutbox-too-early": "Veuillez attendre quelques secondes avant de soumettre l’entrée suivante."
+}

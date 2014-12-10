@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"bs-extendedsearch-facet-category": "Категорија",
+	"bs-extendedsearch-facet-editors": "Аутори",
+	"bs-extendedsearch-sort-relevance": "Релевантност",
+	"bs-extendedsearch-warning": "Упозорење",
+	"bs-extendedsearch-section": "Одељак"
+}

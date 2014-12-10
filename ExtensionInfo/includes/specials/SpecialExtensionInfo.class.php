@@ -5,7 +5,6 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
-
  * @package    BlueSpice_Extensions
  * @subpackage ExtensionInfo
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -16,12 +15,12 @@
 class SpecialExtensionInfo extends BsSpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'ExtensionInfo' );
+		parent::__construct( 'ExtensionInfo', 'wikiadmin' );
 	}
 
 	public function execute( $par ) {
 		parent::execute( $par );
-		$this->getOutput()->addModules('ext.bluespice.extensioninfo');
+		$this->getOutput()->addModules( 'ext.bluespice.extensioninfo' );
 		$this->getOutput()->addHtml( $this->getForm() );
 	}
 
@@ -29,7 +28,7 @@ class SpecialExtensionInfo extends BsSpecialPage {
 		$oViewExtensionInfoTable = new ViewExtensionInfoTable();
 
 		$aInfos = BsExtensionManager::getExtensionInformation();
-		ksort($aInfos);
+		ksort( $aInfos );
 
 		$oViewExtensionInfoTable->setExtensions( $aInfos );
 

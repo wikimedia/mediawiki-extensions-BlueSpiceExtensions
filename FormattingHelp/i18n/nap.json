@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"C.R."
+		]
+	},
+	"bs-formattinghelp-desc": "Fà vedé n'aiuto p' 'a furmattazione d' 'o testo",
+	"bs-formattinghelp-formatting": "Aiuto â furmattazione",
+	"bs-formattinghelp-help-example-text": "Testo",
+	"bs-formattinghelp-help-whitespace": "Spaziojanco",
+	"bs-formattinghelp-help-linebreak": "Zumpo 'e linea",
+	"bs-formattinghelp-help-numberedlist": "Lista nummerata",
+	"bs-formattinghelp-help-link-alt": "Link interno cu nu testo alternativo",
+	"bs-formattinghelp-help-extlink": "Jonte esterne",
+	"bs-formattinghelp-help-templatename": "Nomme d' 'o modello"
+}

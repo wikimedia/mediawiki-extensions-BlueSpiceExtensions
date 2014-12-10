@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Markus Glaser <glaser@hallowelt.biz>"
+		]
+	},
+	"bs-checklist-desc": "Ermöglicht die Erstellug von Checklisten",
+	"bs-checklist-button-checkbox-title": "Checklistenelemente",
+	"bs-checklist-menu-insert-list-title": "Liste einfügen",
+	"bs-checklist-menu-insert-checkbox": "Checkbox",
+	"bs-checklist-dlg-insert-list-title": "Eine Checkliste einfügen",
+	"bs-checklist-dlg-insert-list-value-list": "Werteliste",
+	"bs-checklist-tag-checklist-desc": "Erstellt eine Checkbox oder Select-Menü. Verfügbare Konfigurationsparameter sind:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list<code> erstellt ein Select-Menü.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Name der Vorlage, die die verfügbaren Werte beinhaltet. Parameter <code>type</code> mit dem Wert <code>list</code> muss gesetzt sein.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> oder ein Wert aus der Werte Vorlage.",
+	"bs-checklist-dlg-new-list": "Eine neue Liste erzeugen",
+	"bs-checklist-dlg-save-list": "Änderungen an der Liste speichern",
+	"bs-checklist-dlg-items-label": "Elemente der Liste",
+	"bs-checklist-dlg-items-emptytext": "Keine Elemente in der Liste",
+	"bs-checklist-dlg-items-hint": "Um ein neues Element hinzuzufügen, tippe im obigen Feld und drücke danach auf <kbd>Enter</kbd>.",
+	"bs-checklist-dlg-panel-title": "Verfügbare Listen",
+	"bs-checklist-dlg-new-title": "Neue Liste hinzufügen",
+	"bs-checklist-dlg-new-prompt": "Gib einen Listentitel ein",
+	"bs-checklist-alert": "Vorsicht!",
+	"bs-checklist-confirm-dirty-title": "Ungespeicherte Änderungen!",
+	"bs-checklist-confirm-dirty-text": "Du hast Änderungen an der Checkliste vorgenommen, die noch nicht gespeichert wurden. Bist du sicher, dass du die Änderungen verwerfen willst?"
+}

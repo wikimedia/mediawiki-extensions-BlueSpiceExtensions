@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-usermanager-desc": "Administration interface for adding, editing and deleting users",
+	"bs-usermanager-admin-nodelete": "The administrator account cannot be deleted.",
+	"bs-usermanager-self-nodelete": "You cannot delete your account.",
+	"bs-usermanager-db-error": "A database error has occurred.",
+	"bs-usermanager-enter-pwd": "Please enter a password.",
+	"bs-usermanager-idnotexist": "This user does not exist.",
+	"bs-usermanager-invalid-pwd": "The password is invalid.",
+	"bs-usermanager-invalid-realname": "The real name is invalid.",
+	"bs-usermanager-invalid-uname": "The username is invalid.",
+	"bs-usermanager-invalid-email-gen": "The email address is invalid.",
+	"bs-usermanager-label": "User manager",
+	"bs-usermanager-user-added": "The user has been added.",
+	"bs-usermanager-user-deleted": "The user has been deleted.",
+	"bs-usermanager-user-exists": "The username already exists.",
+	"bs-usermanager-save-successful": "Changes saved.",
+	"bs-usermanager-headerusername": "Username",
+	"bs-usermanager-headerrealname": "Real name",
+	"bs-usermanager-headeremail": "Email",
+	"bs-usermanager-headergroups": "Groups",
+	"bs-usermanager-titleadduser": "Add user",
+	"bs-usermanager-titleeditdetails": "Edit user",
+	"bs-usermanager-labelnewpassword": "Password",
+	"bs-usermanager-labelpasswordcheck": "Confirm password",
+	"bs-usermanager-titledeleteuser": "Delete user",
+	"bs-usermanager-confirmdeleteuser": "Are you sure, you want to delete {{PLURAL:$1|this user|these $1 users}}?",
+	"bs-usermanager-groups-more": "... more",
+	"bs-usermanager-no-self-desysop" : "You cannot take away your own sysop right."
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"bs-extensioninfo-label": "Paplašinājumi",
+	"bs-extensioninfo-software": "Programmatūra",
+	"bs-extensioninfo-version": "Versija",
+	"extensioninfo": "Paplašinājumi",
+	"bs-extensioninfo-headerversion": "Versija",
+	"bs-extensioninfo-headerdesc": "Apraksts",
+	"bs-extensioninfo-headerstatus": "Statuss",
+	"bs-extensioninfo-headerpackage": "Pakotne"
+}

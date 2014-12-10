@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "加入自定义语法高亮功能",
+	"prefs-csyntaxhighlight": "语法高亮",
+	"bs-csyntaxhighlight-pref-theme": "主题：",
+	"bs-csyntaxhighlight-pref-gutter": "显示行数",
+	"bs-csyntaxhighlight-pref-autolinks": "连接URL",
+	"bs-csyntaxhighlight-pref-toolbar": "显示工具栏"
+}

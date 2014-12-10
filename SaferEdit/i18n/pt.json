@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-saferedit-restore": "Restaurar",
+	"bs-saferedit-safer-edit-topbar": "Recuperação",
+	"bs-saferedit-user-editing": "$1 está {{GENDER:$1|a editar}} a página",
+	"bs-saferedit-someone-editing": "A página está a ser editada",
+	"bs-saferedit-pref-shownameofeditinguser": "Mostrar nome do editor atual",
+	"bs-saferedit-pref-warnonleave": "Avisar-me quando abandonar uma página com alterações por gravar",
+	"bs-saferedit-pref-usese": "Ativar edição segura",
+	"bs-saferedit-statebartopsaferedit": "Edição segura",
+	"bs-saferedit-statebartopsafereditediting": "Edição segura - alguém está a editar"
+}

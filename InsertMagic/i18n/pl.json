@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-insertmagic": "Wstaw słowo magiczne",
+	"bs-insertmagic-notoc": "Ukrywa spis treści.",
+	"bs-insertmagic-currentyear": "Obecny rok",
+	"bs-insertmagic-currentmonthname": "Obecny miesiąc (nazwa).",
+	"bs-insertmagic-currentmonthnamegen": "Obecny miesiąc (forma dopełniacza).",
+	"bs-insertmagic-currentmonthabbrev": "Obecny miesiąc (skrót).",
+	"bs-insertmagic-currentdayname": "Dzień tygodnia (nazwa).",
+	"bs-insertmagic-currentweek": "Tydzień (numer).",
+	"bs-insertmagic-servername": "Nazwa domeny.",
+	"bs-insertmagic-pageid": "Zwraca identyfikator strony.",
+	"bs-insertmagic-type-tags": "Znaczniki",
+	"bs-insertmagic-type-variables": "Zmienne",
+	"bs-insertmagic-label-desc": "Opis"
+}

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Matik7",
+			"Py64"
+		]
+	},
+	"bs-insertlink-desc": "Okno dialogowe do wprowadzenia adresu",
+	"bs-insertlink": "Wstaw link",
+	"bs-insertlink-button-title": "Wstaw/edytuj link",
+	"bs-insertlink-dialog-title": "Wstaw link",
+	"bs-insertlink-tab-wiki-page": "Strona wiki",
+	"bs-insertlink-tab-ext-link": "Link zewnętrzny",
+	"bs-insertlink-label-page": "Strona",
+	"bs-insertlink-label-mail": "Adres e‐mail",
+	"bs-insertlink-label-description": "Opis",
+	"bs-insertlink-label-file": "Plik",
+	"bs-insertlink-select-a-page": "Wybierz miejsce docelowe ...",
+	"bs-insertlink-select-a-namespace": "(Strony)",
+	"bs-insertlink-no-applet": "Aplet nie może zostać załadowany. Prosimy o sprawdzenia czy Java jest zainstalowana."
+}

@@ -38,7 +38,7 @@ Ext.define( 'BS.Readers.PathPanel', {
 
 		this.colPage = Ext.create( 'Ext.grid.column.Template', {
 			id: 'pvpage',
-			header: mw.message( 'bs-readers-headerUsername' ).plain(),
+			header: mw.message( 'bs-readers-header-username' ).plain(),
 			sortable: true,
 			dataIndex: 'pv_page',
 			tpl: '<a href="{pv_page}">{pv_page_title}</a>',
@@ -47,7 +47,7 @@ Ext.define( 'BS.Readers.PathPanel', {
 		} );
 		this.colTs = Ext.create( 'Ext.grid.column.Template', {
 			id: 'pvts',
-			header: mw.message( 'bs-readers-headerTs' ).plain(),
+			header: mw.message( 'bs-readers-header-ts' ).plain(),
 			sortable: true,
 			dataIndex: 'pv_ts',
 			tpl: '{pv_ts}',
@@ -58,6 +58,7 @@ Ext.define( 'BS.Readers.PathPanel', {
 			this.colPage,
 			this.colTs
 		];
+
 		this.callParent( arguments );
 	}
-} );
+});

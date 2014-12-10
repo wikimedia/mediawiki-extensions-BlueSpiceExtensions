@@ -68,7 +68,8 @@ class VisualEditor extends BsExtensionMW {
 			//"link" //Needed for "unlink"
 			//"autoresize",
 			"charmap",
-			"noneditable"
+			"noneditable",
+			"colorpicker"
 		),
 		'external_plugins' => array(
 			'bswikicode'  => '../tiny_mce_plugins/bswikicode/plugin.js',
@@ -122,6 +123,7 @@ class VisualEditor extends BsExtensionMW {
 		//apply in a correct manner. This may be dangerous.
 		'body_id' => 'bodyContent',
 		'autoresize_max_height' => 15000,
+		#'document_base_url' => $GLOBALS['wgServer'],
 		'style_formats' => array(
 			array('title' => 'Headers', 'items' => array(
 				array('title' => 'Header 2', 'format' => 'h2'),
@@ -164,6 +166,7 @@ class VisualEditor extends BsExtensionMW {
 				array('title' => 'bs-visualeditor-alignbottom', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'bottom') )
 			)),
 			array('title' => 'Pre', 'block' => 'pre', 'classes' => 'bs_pre_from_space'),
+			array('title' => 'Paragraph', 'block' => 'p')
 		),
 		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn'
 	);
@@ -198,9 +201,9 @@ class VisualEditor extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'VisualEditor',
-			EXTINFO::DESCRIPTION => 'Visual editor for MediaWiki.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-visualeditor-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => '2.22.1a',
+			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
@@ -208,19 +211,19 @@ class VisualEditor extends BsExtensionMW {
 		);
 		$this->mExtensionKey = 'MW::VisualEditor';
 
-		BsConfig::registerVar('MW::VisualEditor::disableNS', array(NS_MEDIAWIKI), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-visualeditor-pref-disableNS', 'multiselectex');
-		BsConfig::registerVar('MW::VisualEditor::defaultNoContextNS', array(NS_SPECIAL, NS_MEDIA, NS_FILE), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT, 'bs-visualeditor-pref-defaultNoContextNS', 'multiselectex');
+		BsConfig::registerVar( 'MW::VisualEditor::disableNS', array( NS_MEDIAWIKI ), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-visualeditor-pref-disablens', 'multiselectex');
+		BsConfig::registerVar( 'MW::VisualEditor::defaultNoContextNS', array( NS_SPECIAL, NS_MEDIA, NS_FILE ), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT );
 
-		BsConfig::registerVar('MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-SpecialTags');
-		BsConfig::registerVar('MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-AllowedTags');
+		BsConfig::registerVar( 'MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
 
-		BsConfig::registerVar('MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-Use', 'toggle');
-		BsConfig::registerVar('MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseLimited', 'toggle');
-		BsConfig::registerVar('MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseForceLimited', 'toggle');
+		BsConfig::registerVar( 'MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-use', 'toggle');
+		BsConfig::registerVar( 'MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
 
-		BsConfig::registerVar('MW::VisualEditor::DebugMode', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-DebugMode');
-		BsConfig::registerVar('MW::VisualEditor::GuiMode', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-GuiMode');
-		BsConfig::registerVar('MW::VisualEditor::GuiSwitchable', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-GuiSwitchable');
+		BsConfig::registerVar( 'MW::VisualEditor::DebugMode', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::GuiMode', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::GuiSwitchable', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
 
 		wfProfileOut('BS::' . __METHOD__);
 	}
@@ -230,35 +233,20 @@ class VisualEditor extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		$this->mCore->registerBehaviorSwitch(
-			'NOEDITOR', array($this, 'noEditorCallback')
+			'NOEDITOR', array( $this, 'noEditorCallback' )
 		);
 
 		// Hooks
 		$this->setHook( 'ParserAfterTidy' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'ResourceLoaderGetConfigVars' );
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 	}
 
-	/**
-	 *
-	 * @param array $vars
-	 * @return boolean
-	 */
-	public function onResourceLoaderGetConfigVars(&$vars) {
-		if (!BsConfig::get('MW::VisualEditor::Use') || !$this->bStartEditor) {
-			$vars['BsVisualEditorUseTidy'] = false;
-		} else {
-			$vars['BsVisualEditorUseTidy'] = true;
-		}
-
-		return true;
-	}
-
 	public function onBSExtendedEditBarBeforeEditToolbar(&$aRows, &$aButtonCfgs) {
-		if ($this->bShowToolbarIcon == false)
+		if ( !$this->checkContext( $this->getTitle() ) ) {
 			return true;
+		}
 
 		$aRows[0]['editing'][10] = 'bs-editbutton-visualeditor';
 
@@ -308,6 +296,8 @@ class VisualEditor extends BsExtensionMW {
 			if ($tag == 'pre')
 				continue;
 			$allowedTags .= $tag . '[*],';
+			if ($tag == 'nowiki')
+				continue;
 			$specialTags .= $tag . '|';
 		}
 		$allowedTags .= 'div[*],';
@@ -317,7 +307,7 @@ class VisualEditor extends BsExtensionMW {
 
 		//TODO: There are duplicates!
 		$aDefaultTags = array(
-			"syntaxhighlight", "source", "infobox", "categorytree", "nowiki",
+			"syntaxhighlight", "source", "infobox", "categorytree",
 			"presentation", "includeonly", "onlyinclude", "noinclude",
 			"backlink", "gallery", "math", "video", "rss", "tagcloud"
 		);
@@ -343,7 +333,9 @@ class VisualEditor extends BsExtensionMW {
 		}
 		$this->aConfigStandard['language'] = $language;
 
-		$aLoaderUsingDeps = array();
+		$aLoaderUsingDeps = array(
+			'ext.bluespice'
+		);
 		// TODO SW: use string flag as parameter to allow hookhandler to
 		// determin context. This will be usefull if hook gets called in
 		// another place
@@ -436,8 +428,7 @@ class VisualEditor extends BsExtensionMW {
 
 		$this->bStartEditor = false;
 		//Overwrite user setting
-		BsCore::registerClientScriptBlock(
-				$this->mExtensionKey, "bsVisualEditorUse=false;", 'NOEDITOR');
+		$this->getOutput()->addJsConfigVars('bsVisualEditorUse', false);
 		BsConfig::set('MW::VisualEditor::Use', false, true); //This seems to be too late
 	}
 
@@ -459,7 +450,7 @@ class VisualEditor extends BsExtensionMW {
 
 		$sReturnEditTime = wfTimestampNow();
 		if ($sSummary == 'false') {
-			$sSummary = wfMessage('bs-visualeditor-no-summary')->plain();
+			$sSummary = '/* '.wfMessage( 'bs-visualeditor-no-summary' )->plain().' */';
 		}
 
 		$oArticle = Article::newFromID($sArticleId);
@@ -478,7 +469,7 @@ class VisualEditor extends BsExtensionMW {
 		$sResult = '';
 		if (empty($oSaveResult->errors)) {
 			$sResult = 'ok';
-			$sMessage = wfMessage('bs-visualeditor-save-message', $sTime, $sSummary)->plain();
+			$sMessage = wfMessage( 'bs-visualeditor-save-message', $sTime, $sSummary )->plain();
 		} else {
 			$sResult = 'fail';
 			$sMessage = $oSaveResult->getMessage();

@@ -1,5 +1,9 @@
 <?php
 
-BsExtensionManager::registerExtension('WatchList',                       BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension('WatchList', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['WatchList'] = __DIR__ . '/WatchList.i18n.php';
+$GLOBALS['wgAutoloadClasses']['WatchList'] = __DIR__ . '/WatchList.class.php';
+
+$wgMessagesDirs['WatchList'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['WatchList'] = __DIR__ . '/languages/WatchList.i18n.php';

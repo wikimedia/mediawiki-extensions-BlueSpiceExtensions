@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fúlvio"
+		]
+	},
+	"bs-widgetbar-desc": "Adiciona widgets à interface do utilizador",
+	"prefs-widgetbar": "Barra de widgets",
+	"bs-widgetbar-userpagesettings-headline": "Widgets",
+	"bs-widgetbar-userpagesettings-link-title": "Editar o conteúdo de sua barra de ferramentas do widget:",
+	"bs-widgetbar-userpagesettings-link-text": "Editar minha barra de ferramentas do widget",
+	"bs-widget-container-tooltip": "Widgets",
+	"bs-widget-flyout-heading": "Widgets"
+}

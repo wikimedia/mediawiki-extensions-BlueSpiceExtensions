@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-rssfeeder-desc": "Додаток за извод на важечки RSS за секој додаток, со buildRss-функција",
+	"rssfeeder": "RSS-канал",
+	"bs-rssfeeder-pagetext": "Можете да се претплатите на следниве RSS-канали:",
+	"bs-rssfeeder-recent-changes": "Скорешни промени",
+	"bs-rssfeeder-pages": "Страница",
+	"bs-rssfeeder-submit": "Прикажи",
+	"bs-rssfeeder-rss": "RSS-канал",
+	"bs-rssfeeder-rss-desc": "Направете ваш RSS-канал",
+	"bs-extjs-rssfeeder-rss-title": "URL на RSS"
+}

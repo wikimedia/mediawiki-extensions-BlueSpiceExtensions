@@ -19,7 +19,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	buttons.push({
 		buttonId: 'bsmagic',
 		buttonConfig: {
-			title : mw.message('bs-insertmagic-dlg_title').plain(),
+			title : mw.message('bs-insertmagic-dlg-title').plain(),
 			cmd : 'mceBsMagic',
 			onPostRender: function() {
 				var self = this;
@@ -57,86 +57,83 @@ $(document).bind('hwbehavior-_setDisabled', function( event, plugin, setValue, l
 });
 
 var BsInsertMagicHelper = {
-	
 	getTypeFromText: function( text ) {
 		//What about tags containing variables? Or variables containing tags?
 		if( text.match(/<(.*?)>/gmi) ) { //TODO: find better test
 			return 'tag';
-		}
-		else if( text.match(/\{\{(.*?)\}\}/gmi) ) {
+		} else if( text.match(/\{\{(.*?)\}\}/gmi) ) {
 			return 'variable';
-		}
-		else if( text.match(/__(.*?)__/gmi) ){
+		} else if( text.match(/__(.*?)__/gmi) ){
 			return 'switch';
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-}
+};
 
 var BsInsertMagicWikiTextConnector = {
-	
 	getData: function() {
 		var currentCode = bs.util.selection.save();
 		var data = {
 			code: currentCode
-		}
+		};
 		return data;
 	},
 
 	applyData: function( sender, data ) {
 		bs.util.selection.restore( data.code );
 	}
-}
+};
 
 var BsInsertMagicVisualEditorConnector = {
 	data: {},
 	getData: function() {
 		var me = BsInsertMagicVisualEditorConnector;
-		me.bookmark = me.caller.selection.getBookmark();
 		var node = me.caller.selection.getNode();
 		//me.selection = me.caller.selection.getBookmark();
-		me.data.id   = node.getAttribute('data-bs-id');
+		me.data.isInsert = false;
+		me.data.id = node.getAttribute('data-bs-id');
 		me.data.type = node.getAttribute('data-bs-type');
 		me.data.name = node.getAttribute('data-bs-name');
 		var currentCode = '';
 
-		//TODO: Laufzeitproblem: onShow ist Store noch nicht unbedingt geladen 
-		//und Grid nicht unbedingt gerendert. --> selection speichern und 
+		//TODO: Laufzeitproblem: onShow ist Store noch nicht unbedingt geladen
+		//und Grid nicht unbedingt gerendert. --> selection speichern und
 		//StoreOnLoad Fokus und Selection setzen!
-		if( me.data.type == 'template' ) {
+		if ( me.data.type == 'template' ) {
 			var templates = me.caller.plugins.bswikicode.getTemplateList();
 			currentCode = templates[me.data.id];
-		}
-		else if(me.data.type == 'tag') {
+		} else if ( me.data.type == 'tag' ) {
 			var specialtags = me.caller.plugins.bswikicode.getSpecialTagList();
 			currentCode = specialtags[me.data.id];
-		}
-		else if(me.data.type == 'switch') {
+		} else if ( me.data.type == 'switch' ) {
 			var switches = me.caller.plugins.bswikicode.getSwitchList();
 			currentCode = switches[me.data.id];
 		}
-		me.data.code = currentCode
+
+		if ( currentCode === '' ) {
+			me.data.isInsert = true;
+		}
+
+		me.data.code = currentCode;
 		return me.data;
 	},
-	
+
 	applyData: function(  sender, data ) {
 		var me = BsInsertMagicVisualEditorConnector;
+		me.bookmark = me.caller.selection.getBookmark();
 		me.caller.selection.moveToBookmark( me.bookmark );
-		//me.caller.selection.moveToBookmark(me.selection);
 		var selectedNode = me.caller.selection.getNode();
 		var code = data.code;
 		var spanAttrs = {};
 		var spanContent = '';
 
 		me.data.type = BsInsertMagicHelper.getTypeFromText( code );
-		if( me.data.type == 'switch' ) {
+		if ( me.data.type == 'switch' ) {
 			var switches = me.caller.plugins.bswikicode.getSwitchList();
 			if( me.data.id ) {
 				switches[me.data.id] = code;
-			}
-			else {
+			} else {
 				me.data.id = switches.length;
 				switches.push(code);
 			}
@@ -148,13 +145,11 @@ var BsInsertMagicVisualEditorConnector = {
 				'data-bs-id': me.data.id
 			};
 			spanContent = '__ '+me.data.name+' __';
-		}
-		else if( me.data.type == 'variable') {
+		} else if ( me.data.type == 'variable') {
 			var templates = me.caller.plugins.bswikicode.getTemplateList();
-			if( me.data.id ) {
+			if ( me.data.id ) {
 				templates[me.data.id] = code;
-			}
-			else {
+			} else {
 				me.data.id = templates.length;
 				templates.push(code);
 			}
@@ -166,13 +161,11 @@ var BsInsertMagicVisualEditorConnector = {
 				'data-bs-id': me.data.id
 			};
 			spanContent = '{{ '+me.data.name+' }}';
-		}
-		else if( me.data.type == 'tag' ) {
+		} else if ( me.data.type == 'tag' ) {
 			var specialtags = me.caller.plugins.bswikicode.getSpecialTagList();
 			if( me.data.id ) {
 				specialtags[me.data.id] = code;
-			}
-			else {
+			} else {
 				me.data.id = specialtags.length;
 				specialtags.push(code);
 			}
@@ -188,15 +181,16 @@ var BsInsertMagicVisualEditorConnector = {
 		spanAttrs['class'] += ' mceNonEditable';
 
 		var newSpanNode = null;
-		if( selectedNode.nodeName.toLowerCase() == 'span' ) {
+		if ( selectedNode.nodeName.toLowerCase() == 'span') {
 			newSpanNode = me.caller.dom.create( 'span', spanAttrs, spanContent );
 			me.caller.dom.replace(newSpanNode, selectedNode);
 			//Place cursor to end
 			me.caller.selection.select(newSpanNode, false);
-		}
-		else {
-			newSpanNode = me.caller.dom.createHTML( 'span', spanAttrs, spanContent );
-			me.caller.insertContent(newSpanNode);
+		} else {
+			if ( me.data.isInsert ) {
+				newSpanNode = me.caller.dom.createHTML( 'span', spanAttrs, spanContent );
+				me.caller.insertContent(newSpanNode);
+			}
 		}
 
 		me.caller.selection.collapse(false);

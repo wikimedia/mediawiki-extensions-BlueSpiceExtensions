@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"bs-extendededitbar-desc": "Menyediakan tombol tambahan untuk bidang penyuntingan wiki",
+	"bs-extendededitbar-redirecttip": "Pengalihan",
+	"bs-extendededitbar-redirectsample": "Masukkan teks",
+	"bs-extendededitbar-striketip": "Coret",
+	"bs-extendededitbar-strikesample": "Teks coretan",
+	"bs-extendededitbar-entertip": "Pemisah baris",
+	"bs-extendededitbar-uppertip": "Tika atas",
+	"bs-extendededitbar-uppersample": "Teks tika atas",
+	"bs-extendededitbar-lowertip": "Tika bawah",
+	"bs-extendededitbar-lowersample": "Teks tika bawah",
+	"bs-extendededitbar-smalltip": "Kecil",
+	"bs-extendededitbar-smallsample": "Teks kecil",
+	"bs-extendededitbar-commenttip": "Masukkan komentar yang tersembunyi",
+	"bs-extendededitbar-commentsample": "Komentar",
+	"bs-extendededitbar-gallerytip": "Masukkan galeri foto",
+	"bs-extendededitbar-gallerysamplepicture": "Gambar",
+	"bs-extendededitbar-gallerysamplecaption": "Keterangan",
+	"bs-extendededitbar-quotetip": "Masukkan blok teks kutipan",
+	"bs-extendededitbar-quotesample": "Blok kutipan",
+	"bs-extendededitbar-tabletip": "Masukkan tabel",
+	"bs-extendededitbar-tablesampleheader": "Kepala",
+	"bs-extendededitbar-tablesamplerow": "Baris",
+	"bs-extendededitbar-tablesamplecell": "Sel"
+}

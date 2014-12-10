@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shield-9",
+			"Shirayuki"
+		]
+	},
+	"bs-notifications-desc": "利用者が選択した変更についての通知を送信する",
+	"prefs-notifications": "通知",
+	"prefs-echo-extended": "高度なシステム設定",
+	"bs-notifications-pref-notifynominor": "細部の編集について通知しない",
+	"bs-notifications-pref-active": "通知を有効化",
+	"bs-echo-anon-user": "匿名",
+	"bs-echo-unknown-user": "不明"
+}

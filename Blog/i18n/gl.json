@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-blog-desc": "Mostra unha lista de páxinas con estilo de blog",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Non hai entradas de blog.",
+	"bs-blog-comments": "Comentarios",
+	"bs-blog-read-more": "Ler máis",
+	"bs-blog-trackback": "Retroligazón",
+	"bs-blog-permalink": "Ligazón permanente",
+	"bs-blog-show-all": "Mostrar todas as entradas",
+	"bs-blog-form-inline-text": "Título...",
+	"bs-blog-form-title-text": "Crear nova entrada no blog",
+	"bs-blog-form-button-text": "Crear",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Abrir unha nova ventana para ler máis",
+	"bs-blog-pref-newentryfieldposition": "Posición para O formulario de nOva entrada de blog:",
+	"bs-blog-pref-showall": "Mostrar a ligazón de tódalas entradas",
+	"bs-blog-pref-showinfo": "Mostrar información sobre a entrada",
+	"bs-blog-pref-showlimit": "Número de entradas no blog:",
+	"bs-blog-pref-shownewentryfield": "Mostrar formulario de nova entrada de blog",
+	"bs-blog-pref-showpermalink": "Mostrar ligazón permanente",
+	"bs-blog-pref-sortby": "Ordenar por:",
+	"bs-blog-pref-imagerendermode": "Mostrar imaxes como:",
+	"bs-blog-pref-maxentrycharacters": "Número de palabras por entrada:",
+	"bs-blog-tag-blog-desc": "Mostrar entradas de blog en cada páxina."
+}

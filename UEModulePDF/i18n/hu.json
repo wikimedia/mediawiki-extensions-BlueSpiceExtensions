@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-uemodulepdf-pref-templatepath": "Standard sablon:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Lap exportálása PDF-be.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "elérhető",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "nem elérhető"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"NataChe",
+			"Ата"
+		]
+	},
+	"bs-pagesvisited-desc": "Відображає персоналізований список останніх відвіданих сторінок",
+	"prefs-pagesvisited": "Відвідані сторінки",
+	"bs-pagesvisited-widget-title": "Відвідані сторінки",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Заданий простір назв|Задані простори назв}} <code>$2</code> {{PLURAL:$1|не дійсний|не дійсні}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Ліміт записів:",
+	"bs-pagesvisited-pref-widgetns": "Простір назв:",
+	"bs-pagesvisited-pref-widgetsortodr": "Впорядкувати за:",
+	"bs-pagesvisited-pref-sort-time": "Час",
+	"bs-pagesvisited-pref-sort-pagename": "Заголовок",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Відображає список сторінок, які ви відвідали."
+}

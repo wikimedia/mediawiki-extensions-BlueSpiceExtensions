@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-dashboards-desc": "Става контролна табла за нови корисници и администратори",
+	"bs-specialadmindashboard-label": "Контролна табла",
+	"bs-dashboards-addportlet": "Додај поделок",
+	"bs-dashboards-portlets": "Поделоци",
+	"prefs-dashboards": "Контролни табли",
+	"bs-dashboards-pref-userdashboardonlogo": "Логото на мрежното место да води до корисничката контролна табла",
+	"admindashboard": "Администраторска контролна табла",
+	"userdashboard": "Корисничка контролна табла",
+	"bs-dashboard-userportlet-calendar-title": "Календар",
+	"bs-dashboard-userportlet-calendar-description": "Календар"
+}

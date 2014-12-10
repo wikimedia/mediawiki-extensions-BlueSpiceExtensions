@@ -23,27 +23,27 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 
 		//HINT: https://www.mediawiki.org/wiki/API:Upload#Uploading
 		this.fuFile = Ext.create('Ext.form.field.File', {
-			fieldLabel: mw.message('bs-insertfile-uploadFileFieldLabel').plain(),
-			buttonText: mw.message('bs-insertfile-uploadButtonText').plain(),
+			fieldLabel: mw.message('bs-insertfile-uploadfilefieldlabel').plain(),
+			buttonText: mw.message('bs-insertfile-uploadbuttontext').plain(),
 			id: this.getId()+'-file',
 			name: 'file',
-			emptyText: mw.message('bs-insertfile-uploadFileEmptyText').plain(),
+			emptyText: mw.message('bs-insertfile-uploadfileemptytext').plain(),
 			validator: this.validateFile,
 			validateOnChange: true
 		});
 		this.fuFile.on( 'change', this.fuFileChange, this );
 
 		this.tfFileName = Ext.create('Ext.form.TextField', {
-			fieldLabel: mw.message('bs-insertfile-uploadDestFileLabel').plain(),
+			fieldLabel: mw.message('bs-insertfile-uploaddestfilelabel').plain(),
 			id: this.getId()+'-filename',
 			name: 'filename'
 		});
 		this.tfFileName.on( 'change', this.tfFileNameChange, this );
 
 		this.taDescription = Ext.create('Ext.form.field.TextArea', {
-			fieldLabel: mw.message('bs-insertfile-uploadDescFileLabel').plain(),
+			fieldLabel: mw.message('bs-insertfile-uploaddescfilelabel').plain(),
 			id: this.getId()+'-text',
-			value: mw.message('bs-insertfile-upload-default-description').plain(),
+			value: '',
 			name: 'text'
 		});
 
@@ -98,13 +98,13 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		});
 
 		this.cbxWatch = Ext.create('Ext.form.field.Checkbox', {
-			boxLabel: mw.message('bs-insertfile-uploadWatchThisLabel').plain(),
+			boxLabel: mw.message('bs-insertfile-uploadwatchthislabel').plain(),
 			id: this.getId()+'watch_page',
 			name: 'watch'
 		});
 
 		this.cbxWarnings = Ext.create('Ext.form.field.Checkbox', {
-			boxLabel: mw.message('bs-insertfile-uploadIgnoreWarningsLabel').plain(),
+			boxLabel: mw.message('bs-insertfile-uploadignorewarningslabel').plain(),
 			id: this.getId()+'ignorewarnings',
 			name: 'ignorewarnings'
 		});
@@ -173,7 +173,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 					bs.util.alert(
 						this.getId()+'-existswarning',
 						{
-							title: 'Status',
+							titleMsg: 'bs-extjs-title-warning',
 							text: response.responseText
 						},
 						{
@@ -254,7 +254,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		//This is because MediaWikiApiCall overrides the onSuccess/onFailure
 		//methods of action "Submit"
 		this.getEl().mask(
-			mw.message('bs-insertfile-upload-waitMessage').plain(),
+			mw.message('bs-insertfile-upload-waitmessage').plain(),
 			Ext.baseCSSPrefix + 'mask-loading'
 		);
 	},
@@ -325,7 +325,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		});
 
 		if(!extensionFound) {
-			return mw.message('bs-insertfile-allowedFiletypesAre').plain()
+			return mw.message('bs-insertfile-allowedfiletypesare').plain()
 				+ " " + me.allowedFileExtensions.join(', ');
 		}
 

@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil"
+		]
+	},
+	"bs-groupmanager-desc": "Administrationsgränssnittet för att lägga till, redigera och radera användargrupper och deras rättigheter",
+	"bs-groupmanager-grpexists": "Gruppen finns redan.",
+	"bs-groupmanager-grpadded": "Gruppen har lagts till.",
+	"bs-groupmanager-grpedited": "Gruppen har redigerats.",
+	"bs-groupmanager-grpremoved": "Gruppen har tagits bort.",
+	"bs-groupmanager-label": "Grupphanterare",
+	"bs-groupmanager-invalid-name": "Gruppens namn innehåller {{PLURAL:$1|ett otillåtet tecken|otillåtna tecken}}: $2",
+	"bs-groupmanager-invalid-name-length": "Gruppens namn kan inte vara längre än 16 tecken.",
+	"bs-groupmanager-invalid-name-numeric": "Gruppens namn måste ha minst ett tecken.",
+	"bs-groupmanager-headergroup": "Grupp",
+	"bs-groupmanager-tipremove": "Ta bort {{PLURAL:$1|grupp|grupper}}",
+	"bs-groupmanager-titlenewgroup": "Ny grupp",
+	"bs-groupmanager-titleeditgroup": "Redigera grupp",
+	"bs-groupmanager-removegroup": "Är du säker på att du vill ta bort {{PLURAL:$1|denna grupp|dessa grupper}}?",
+	"bs-groupmanager-removegroup-message-success": "Följande {{PLURAL:$1|grupp|grupper}} raderades: $2",
+	"bs-groupmanager-removegroup-message-failure": "Följande {{PLURAL:$1|grupp|grupper}} kunde inte raderades: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Ett oväntat fel uppstod, försök igen.",
+	"bs-groupmanager-lablename": "Gruppnamn:",
+	"bs-groupmanager-msgnoteditable": "Denna grupp är en systemgrupp och kan inte döpas om.",
+	"bs-groupmanager-msgnotremovable": "Denna grupp är en systemgrupp och kan inte tas bort."
+}

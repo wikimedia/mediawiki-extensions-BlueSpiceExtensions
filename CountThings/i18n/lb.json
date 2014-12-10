@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-countthings-desc": "Liwwert Statistiken iwwer den Inhalt",
+	"bs-countthings-chars-label": "Zeechen",
+	"bs-countthings-words-label": "Wierder",
+	"bs-countthings-pages-label": "Säiten",
+	"bs-countthings-error-no-input": "Keng Säit uginn.",
+	"bs-countthings-error-not-exist": "D'Säit ''$1'' gëtt et net.",
+	"bs-countthings-tag-countarticles-desc": "Weist d'Zuel vun de Säiten.",
+	"bs-countthings-tag-countusers-desc": "Weist d'Zuel vun de Benotzer.",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Wat gezielt gi soll <code>chars</code> (Zeechen), <code>words</code> (wierder) oder <code>pages</code> (Säiten)."
+}

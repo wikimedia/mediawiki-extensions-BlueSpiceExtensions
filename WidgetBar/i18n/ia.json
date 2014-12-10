@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-widgetbar-desc": "Adde \"widgets\" al interfacie de usator",
+	"prefs-widgetbar": "Barra de widgets",
+	"bs-widgetbar-userpagesettings-headline": "Widgets",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Modificar}} le contento de tu barra de widgets:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Modificar}} mi barra de widgets",
+	"bs-widget-container-tooltip": "Widgets",
+	"bs-widget-flyout-heading": "Widgets"
+}

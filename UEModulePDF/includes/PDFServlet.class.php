@@ -35,11 +35,11 @@ class BsPDFServlet {
 		$sHtmlDOM = $oHtmlDOM->saveXML( $oHtmlDOM->documentElement );
 
 		//Save temporary
-		
+
 		$sTmpHtmlFile = BSDATADIR.DS.'UEModulePDF'.DS.$this->aParams['document-token'].'.html';
 		$sTmpPDFFile  = BSDATADIR.DS.'UEModulePDF'.DS.$this->aParams['document-token'].'.pdf';
 		file_put_contents( $sTmpHtmlFile, $sHtmlDOM );
-		
+
 		$aOptions = array(
 			'timeout' => 120,
 			'postData' => array(
@@ -49,10 +49,13 @@ class BsPDFServlet {
 				'wikiId'         => wfWikiID()
 			)
 		);
-		
+
 		if( BsConfig::get('MW::TestMode') ) {
 			$aOptions['postData']['debug'] = "true";
 		}
+
+		global $bsgUEModulePDFCURLOptions;
+		$aOptions = array_merge_recursive($aOptions, $bsgUEModulePDFCURLOptions);
 
 		wfRunHooks( 'BSUEModulePDFCreatePDFBeforeSend', array( $this, &$aOptions, $oHtmlDOM ) );
 
@@ -65,7 +68,7 @@ class BsPDFServlet {
 				$this->aParams['soap-service-url'].'/UploadAsset',
 				$aOptions
 		);
-		
+
 		//Now do the rendering
 		//We re-send the paramters but this time without the file.
 		unset( $aOptions['postData']['sourceHtmlFile'] );
@@ -79,14 +82,14 @@ class BsPDFServlet {
 		Http::$httpEngine = $vHttpEngine;
 
 		if( $vPdfByteArray == false ) {
-			wfDebugLog( 
+			wfDebugLog(
 				'BS::UEModulePDF',
 				'BsPDFServlet::createPDF: Failed creating "'.$this->aParams['document-token'].'"'
 			);
 		}
 
 		file_put_contents( $sTmpPDFFile, $vPdfByteArray );
-		
+
 		//Remove temporary file
 		if( !BsConfig::get('MW::TestMode') ) {
 			unlink( $sTmpHtmlFile );
@@ -101,7 +104,7 @@ class BsPDFServlet {
 	 */
 	protected function uploadFiles() {
 		foreach( $this->aFiles as $sType => $aFiles ) {
-			
+
 			//Backwards compatibility to old inconsitent PDFTemplates (having "STYLESHEET" as type but linnking to "stylesheets")
 			//TODO: Make conditional?
 			if( $sType == 'IMAGE' )      $sType = 'images';
@@ -112,7 +115,7 @@ class BsPDFServlet {
 				'documentToken' => $this->aParams['document-token'],
 				'wikiId'        => wfWikiID()
 			);
-			
+
 			$aErrors = array();
 			$iCounter = 0;
 			foreach( $aFiles as $sFileName => $sFilePath ) {
@@ -122,14 +125,14 @@ class BsPDFServlet {
 				}
 				$aPostData['file'.$iCounter++] = '@'.$sFilePath;
 			}
-			
+
 			if( !empty( $aErrors ) ) {
-				wfDebugLog( 
+				wfDebugLog(
 					'BS::UEModulePDF',
 					'BsPDFServlet::uploadFiles: Error trying to fetch files:'."\n". var_export( $aErrors, true )
 				);
 			}
-			
+
 			wfRunHooks( 'BSUEModulePDFUploadFilesBeforeSend', array( $this, &$aPostData, $sType ) );
 
 			$vHttpEngine = Http::$httpEngine;
@@ -142,43 +145,43 @@ class BsPDFServlet {
 				)
 			);
 			Http::$httpEngine = $vHttpEngine;
-			
+
 			if( $sResponse != false ) {
-				wfDebugLog( 
+				wfDebugLog(
 					'BS::UEModulePDF',
 					'BsPDFServlet::uploadFiles: Successfully added "'.$sType.'"'
 				);
-				wfDebugLog( 
+				wfDebugLog(
 					'BS::UEModulePDF',
 					FormatJson::encode( FormatJson::decode($sResponse), true )
 				);
 			}
 			else {
-				wfDebugLog( 
+				wfDebugLog(
 					'BS::UEModulePDF',
 					'BsPDFServlet::uploadFiles: Failed adding "'.$sType.'"'
 				);
 			}
 		}
 	}
-	
+
 	/**
 	 *
-	 * @var array 
+	 * @var array
 	 */
 	protected $aParams = array();
-	
+
 	/**
 	 *
-	 * @var array 
+	 * @var array
 	 */
 	protected $aFiles  = array();
 
 	/**
 	 * The contructor method forthis class.
-	 * @param array $aParams The params have to contain the key 
-	 * 'soap-service-url', with a valid URL to the webservice. They can 
-	 * contain a key 'soap-connection-options' for the SoapClient constructor 
+	 * @param array $aParams The params have to contain the key
+	 * 'soap-service-url', with a valid URL to the webservice. They can
+	 * contain a key 'soap-connection-options' for the SoapClient constructor
 	 * and a key 'resources' with al list of files to upload.
 	 * @throws UnexpectedValueException If 'soap-service-url' is not set or the Webservice is not available.
 	 */
@@ -194,7 +197,7 @@ class BsPDFServlet {
 		if( !BsConnectionHelper::urlExists( $this->aParams['soap-service-url'] ) ) {
 			throw new UnexpectedValueException( 'soap-service-url-not-valid' );
 		}
-		
+
 		//If a slash is last char, remove it.
 		if( substr($this->aParams['soap-service-url'], -1) == '/' ) {
 			$this->aParams['soap-service-url'] = substr($this->aParams['soap-service-url'], 0, -1);
@@ -202,7 +205,7 @@ class BsPDFServlet {
 	}
 
 	/**
-	 * Searches the DOM for <img>-Tags and <a> Tags with class 'internal', 
+	 * Searches the DOM for <img>-Tags and <a> Tags with class 'internal',
 	 * resolves the local filesystem path and adds it to $aFiles array.
 	 * @param DOMDocument $oHtml The markup to be searched.
 	 * @return boolean Well, always true.
@@ -241,7 +244,7 @@ class BsPDFServlet {
 			wfRunHooks( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, $sAbsoluteFileSystemPath, $sFileName, 'images' ) );
 			$this->aFiles['images'][$sFileName] =  $sAbsoluteFileSystemPath;
 		}
-		
+
 		$oDOMXPath = new DOMXPath( $oHtml );
 
 		/*
@@ -271,13 +274,13 @@ class BsPDFServlet {
 		if( $sUrl{0} !== '/' || strpos( $sUrl, $this->aParams['webroot-filesystempath'] ) === 0 ) {
 			return $sUrl; //not relative to webroot or absolute filesystempath
 		}
-		
+
 		$sScriptUrlDir = dirname( $_SERVER['SCRIPT_NAME'] );
 		$sScriptFSDir  = dirname( $_SERVER['SCRIPT_FILENAME'] );
 		if( strpos( $sScriptFSDir, $sScriptUrlDir) == 0 ){ //detect virtual path (webserver setting)
 			$sUrl = '/'.substr( $sUrl, strlen( $sScriptUrlDir ) );
 		}
-		
+
 		$sNewUrl = $this->aParams['webroot-filesystempath'].$sUrl; // TODO RBV (08.02.11 15:56): What about $wgUploadDirectory?
 		return $sNewUrl;
 	}

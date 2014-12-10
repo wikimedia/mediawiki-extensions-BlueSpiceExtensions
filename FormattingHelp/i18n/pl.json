@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-formattinghelp-desc": "Wyświetla pomoc na temat formatowanie tekstu",
+	"bs-formattinghelp-formatting": "Pomoc z formatowaniem",
+	"bs-formattinghelp-help-syntax": "Składnia",
+	"bs-formattinghelp-help-example-text": "Tekst",
+	"bs-formattinghelp-help-bold": "Pogrubienie",
+	"bs-formattinghelp-help-italic": "Kursywa",
+	"bs-formattinghelp-help-whitespace": "Znak niedrukowalny",
+	"bs-formattinghelp-help-color": "Tekst kolorowy",
+	"bs-formattinghelp-help-headline": "Nagłówek",
+	"bs-formattinghelp-help-linebreak": "Podział wiersza",
+	"bs-formattinghelp-help-ul": "Lista nieuporządkowana",
+	"bs-formattinghelp-help-listitem": "Element listy",
+	"bs-formattinghelp-help-numberedlist": "Lista numerowana",
+	"bs-formattinghelp-help-link": "Link wewnętrzny",
+	"bs-formattinghelp-help-link-alt": "Link wewnętrzny z tekstem alternatywnym",
+	"bs-formattinghelp-help-extlink": "Link zewnętrzny",
+	"bs-formattinghelp-help-hr": "Linia pozioma",
+	"bs-formattinghelp-help-template": "Szablon",
+	"bs-formattinghelp-help-templatename": "Nazwa szablonu"
+}

@@ -57,7 +57,7 @@ class StateBar extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'StateBar',
-			EXTINFO::DESCRIPTION => 'Provides a statebar.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-statebar-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -77,15 +77,12 @@ class StateBar extends BsExtensionMW {
 
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'BSBlueSpiceSkinBeforeArticleContent' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 
-		BsConfig::registerVar( 'MW::StateBar::Show', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-statebar-pref-donotshow', 'toggle' );
+		BsConfig::registerVar( 'MW::StateBar::Show', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-statebar-pref-show', 'toggle' );
 
-		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableOnPages', '', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-statebar-pref-disableonpages' );
-		/*Deprecated*/BsConfig::registerVar( 'MW::StateBar::DisableForSysops', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'bs-statebar-pref-disableforsysops', 'toggle' );
-
-		$this->mCore->registerBehaviorSwitch( 'NOSTATEBAR', array( $this, 'noStateBarCallback' ) );
+		$this->mCore->registerBehaviorSwitch( 'bs_nostatebar' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -95,6 +92,7 @@ class StateBar extends BsExtensionMW {
 	 */
 	private function registerSortVars() {
 		wfRunHooks( 'BSStateBarAddSortTopVars', array( &$this->aSortTopVars ) );
+
 		$aDefaultSortTopVars = array(
 			'statebartopresponsibleeditorsentries' => '',
 			'statebartopreview' => '',
@@ -107,9 +105,9 @@ class StateBar extends BsExtensionMW {
 		);
 		$this->aSortTopVars = array_merge( $aDefaultSortTopVars, $this->aSortTopVars );
 		$this->aSortTopVars = array_filter( $this->aSortTopVars ); //removes entries without value
-		BsConfig::registerVar( 'MW::StateBar::SortTopVars', $this->aSortTopVars , BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-statebar-pref-sorttopvars', 'multiselectsort' );
 
 		wfRunHooks( 'BSStateBarAddSortBodyVars', array( &$this->aSortBodyVars ) );
+
 		$aDefaultSortBodyVars = array (
 			'statebarbodyresponsibleeditorsentries' => '',
 			'statebarbodyreview' => '',
@@ -119,6 +117,8 @@ class StateBar extends BsExtensionMW {
 		);
 		$this->aSortBodyVars = array_merge( $aDefaultSortBodyVars, $this->aSortBodyVars );
 		$this->aSortBodyVars = array_filter( $this->aSortBodyVars ); //removes entries without value
+
+		BsConfig::registerVar( 'MW::StateBar::SortTopVars', $this->aSortTopVars , BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-statebar-pref-sorttopvars', 'multiselectsort' );
 		BsConfig::registerVar( 'MW::StateBar::SortBodyVars', $this->aSortBodyVars , BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-statebar-pref-sortbodyvars', 'multiselectsort' );
 	}
 
@@ -150,15 +150,6 @@ class StateBar extends BsExtensionMW {
 	}
 
 	/**
-	 * Callback for behaviorswitch
-	 */
-	public function noStateBarCallback() {
-		if ( $this->getRequest()->getVal( 'action', 'view' ) === 'edit' ) return;
-
-		BsExtensionManager::setContext( 'MW::StateBar:Hide' );
-	}
-
-	/**
 	 * AJAX interface for BlueSpice SateBar body views
 	 * @return string The JSON formatted response
 	 */
@@ -171,8 +162,9 @@ class StateBar extends BsExtensionMW {
 		);
 
 		$iArticleID = RequestContext::getMain()->getRequest()->getInt( 'articleID', 0 );
-		if( empty($iArticleID) ) {
-			return json_encode($aResult);
+		if( $iArticleID === 0 ) {
+			$aResult['message'] = wfMessage("bs-statebar-ajax-nobodyviews")->plain();
+			return FormatJson::encode($aResult);
 		}
 
 		$oStateBar = BsExtensionManager::getExtension( 'StateBar' );
@@ -184,6 +176,7 @@ class StateBar extends BsExtensionMW {
 				 //also prevents from get wrong data in redirect redirect
 		);
 		if( is_null($oTitle) ) {
+			$aResult['message'] = wfMessage("bs-statebar-ajax-nobodyviews")->plain();
 			return json_encode( $aResult );
 		}
 
@@ -206,7 +199,7 @@ class StateBar extends BsExtensionMW {
 
 		$aResult['views'] = $aExecutedBodyViews;
 		$aResult['success'] = true;
-		return json_encode( $aResult );
+		return FormatJson::encode( $aResult );
 	}
 
 	/**
@@ -257,7 +250,10 @@ class StateBar extends BsExtensionMW {
 		if ( $oTitle->userCan( 'read' ) === false ) return null;
 
 		if ( $bRedirect ) {
-			if ( BsExtensionManager::isContextActive( 'MW::StateBar:Hide' ) ) return null;
+			$vNoStatebar = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_nostatebar' );
+			if( $vNoStatebar === '' ) {
+				return null;
+			}
 			return $oTitle;
 		}
 
@@ -269,14 +265,18 @@ class StateBar extends BsExtensionMW {
 			if ( $oTitle->exists() ) {
 				return $this->checkContext( $oTitle, true );
 			} else {
-				/* if redirect points to none existing article
-				   you don't get redirected, so display StateBar
-				   HW#2014010710000128 */
+				/* If redirect points to none existing article
+				 * you don't get redirected, so display StateBar.
+				 *See HW#2014010710000128
+				 */
 				return true;
 			}
 		}
 
-		if ( BsExtensionManager::isContextActive( 'MW::StateBar:Hide' ) ) return null;
+		$vNoStatebar = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_nostatebar' );
+		if( $vNoStatebar === '' ) {
+			return null;
+		}
 		return $oTitle;
 	}
 
@@ -287,54 +287,58 @@ class StateBar extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if ( BsConfig::get( 'MW::StateBar::Show' ) === false ) return true;
+		if ( BsConfig::get( 'MW::StateBar::Show' ) === false ) {
+			return true;
+		}
 
-		$oTitle = $this->checkContext( $this->getTitle() );
-		if ( is_null( $oTitle ) ) return true;
+		global $wgTitle;
+		//PW(24.06.2014):
+		//make sure to use wgTitle to get possible redirect as early as possible!
+		//also prevents from get wrong data in redirect redirect
+		//please do not change!
+		$oTitle = $this->checkContext( $wgTitle );
+		/* PLEASE DO NOT CHANGE !!!!
+			$oTitle = $this->checkContext( $this->getTitle() );
+		*/
+
+		if ( is_null( $oTitle ) ) {
+			return true;
+		}
 
 		$oOutputPage->addModules( 'ext.bluespice.statebar' );
 		$oOutputPage->addModuleStyles( 'ext.bluespice.statebar.style' );
-
-		$aDisableOnSites = explode( ',',BsConfig::get( 'MW::StateBar::DisableOnPages' ) ); //Deprecated
-		if ( !empty( $aDisableOnSites ) ) {
-			$aUserGroups = $this->getUser()->getGroups();
-			if ( !in_array( 'sysop', $aUserGroups ) || BsConfig::get( 'MW::StateBar::DisableForSysops' ) == true ) { //Deprecated
-				$aUrlFriendlyTitles = array();
-				foreach ( $aDisableOnSites as $sPageTitle ) {
-					$aUrlFriendlyTitles[] = str_replace( ' ', '_', trim( $sPageTitle ) );
-				}
-				$oTitle = $oOutputPage->getTitle();
-				$sUrlFriendlyTitle = str_replace( ' ', '_', $oTitle->getPrefixedText() );
-				if ( in_array( $sUrlFriendlyTitle, $aUrlFriendlyTitles ) ) return true;
-			}
-		}
 
 		BsExtensionManager::setContext( 'MW::StateBarShow' );
 		return true;
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinBeforeArticleContent'. Creates the StateBar. on articles.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return bool Always true to keep hook running.
+	 * Creates the StateBar. on articles.
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
 	 */
-	public function onBSBlueSpiceSkinBeforeArticleContent( &$aViews, $oUser, $oTitle, $oSkinTemplate ) {
-		if( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) return true;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if ( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) {
+			return true;
+		}
 
-		if( !is_null( $this->oRedirectTargetTitle ) ) {
+		if ( !is_null( $this->oRedirectTargetTitle ) ) {
 			$oTitle = $this->oRedirectTargetTitle;
 		}
-		wfRunHooks("BSStateBarBeforeTopViewAdd", array( $this, &$this->aTopViews, $oUser, $oTitle, $oSkinTemplate ));
+		wfRunHooks( 'BSStateBarBeforeTopViewAdd', array(
+			$this, &$this->aTopViews, $sktemplate->getUser(),
+			$sktemplate->getTitle(), $sktemplate )
+		);
 
-		if( count( $this->aTopViews ) == 0 ) {
-			BsExtensionManager::removeContext( 'MW::StateBarShow' ); // TODO RBV (01.07.11 18:26): Ain't this too late?
+		if ( count( $this->aTopViews ) == 0 ) {
+			// TODO RBV (01.07.11 18:26): Ain't this too late?
+			BsExtensionManager::removeContext( 'MW::StateBarShow' );
 			return true;
 		}
 
 		$aSortTopVars = BsConfig::get('MW::StateBar::SortTopVars');
-		if( !empty( $aSortTopVars ) ) {
+		if ( !empty( $aSortTopVars ) ) {
 			$this->aTopViews = $this->reorderViews( $this->aTopViews, $aSortTopVars );
 		}
 
@@ -343,7 +347,17 @@ class StateBar extends BsExtensionMW {
 			$oViewStateBar->addStateBarTopView( $oTopView );
 		}
 
-		$aViews[] = $oViewStateBar;
+		if ( $tpl instanceof BsBaseTemplate ) {
+			$tpl->data['bs_dataBeforeContent']['bs-statebar'] = array(
+				'position' => 20,
+				'label' => wfMessage( 'prefs-statebar' )->text(),
+				'content' => $oViewStateBar
+			);
+		} else {
+			//this is the case when BlueSpice Skin is not active, so use vector methods.
+			$tpl->data['prebodyhtml'] .= $oViewStateBar;
+		}
+
 		return true;
 	}
 

@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eladk",
+			"Guycn2"
+		]
+	},
+	"bs-checklist-desc": "סיפוק רשימות פונקציונליות",
+	"bs-checklist-button-checkbox-title": "רשימת פעולות לביצוע אלמנטים",
+	"bs-checklist-menu-insert-list-title": "הוספת רשימה",
+	"bs-checklist-menu-insert-checkbox": "תיבת סימון",
+	"bs-checklist-dlg-insert-list-title": "הוספת רשימה",
+	"bs-checklist-dlg-insert-list-value-list": "רשימת ערכים",
+	"bs-checklist-tag-checklist-desc": "סמנו תיבת סימון או בחרו שדה. תכונות תצורה זמינות:",
+	"bs-checklist-tag-checklist-param-type": "<code>סוג</code> :<code>רשימה</code> הופך לרשימת בחירה.",
+	"bs-checklist-tag-checklist-param-list": "<code>רשימה</code>: שם של תבנית עם ערכים זמינים. פרמטר <code>סוג</code> חייב להיות מוגדר ב <code>רשימה</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>ערך</code> :<code>נבדק</code> או ערך מחוץ לתבנית הרשימות.",
+	"bs-checklist-dlg-new-list": "יצירת רשימה חדשה",
+	"bs-checklist-dlg-save-list": "שמירת שינויים ברשימה",
+	"bs-checklist-dlg-items-label": "פריטים ברשימה",
+	"bs-checklist-dlg-items-emptytext": "אין פריטים ברשימה זו",
+	"bs-checklist-dlg-items-hint": "כדי להוסיף פריט חדש, יש להקליד בשדה למעלה ולהקיש <kbd>Enter</kbd>.",
+	"bs-checklist-dlg-panel-title": "רשימות זמינות",
+	"bs-checklist-dlg-new-title": "הוספת רשימה חדשה",
+	"bs-checklist-dlg-new-prompt": "הזינו כותרת רשימה",
+	"bs-checklist-alert": "זהירות!",
+	"bs-checklist-confirm-dirty-title": "שינויים שלא נשמרו!",
+	"bs-checklist-confirm-dirty-text": "ביצעתם שינויים ברשימה שעדיין לא נשמרו. האם אתם בטוחים שברצונכם למחוק את השינויים?"
+}

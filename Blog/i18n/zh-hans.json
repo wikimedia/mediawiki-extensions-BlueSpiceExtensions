@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Mywood",
+			"Impersonator 1",
+			"LNDDYL"
+		]
+	},
+	"bs-blog-desc": "显示博客样式的页面列表",
+	"prefs-blog": "博客",
+	"bs-blog-no-entries": "这里没有博文。",
+	"bs-blog-comments": "评论",
+	"bs-blog-read-more": "了解更多",
+	"bs-blog-trackback": "引用通知",
+	"bs-blog-permalink": "固定链接",
+	"bs-blog-show-all": "显示所有博文",
+	"bs-blog-form-inline-text": "标题…",
+	"bs-blog-form-title-text": "创建新的博文",
+	"bs-blog-form-button-text": "创建",
+	"bs-blog-blog": "博客",
+	"bs-blog-pref-moreinnewwindow": "打开新窗口以阅读更多",
+	"bs-blog-pref-newentryfieldposition": "新博文表单位置：",
+	"bs-blog-pref-showall": "显示所有博文连接",
+	"bs-blog-pref-showinfo": "显示博文信息",
+	"bs-blog-pref-showlimit": "博文数目：",
+	"bs-blog-pref-shownewentryfield": "显示新博文表单",
+	"bs-blog-pref-showpermalink": "显示固定链接",
+	"bs-blog-pref-sortby": "排序方式：",
+	"bs-blog-pref-imagerendermode": "显示图片作为：",
+	"bs-blog-pref-imagefloatdirection": "文本流：图片位置",
+	"bs-blog-pref-maxentrycharacters": "每博文字数：",
+	"bs-blog-tag-blog-desc": "在任何页面显示博文。"
+}

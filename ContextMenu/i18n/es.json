@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"bs-contextmenu-desc": "Provee menús contextuales para varios enlaces",
+	"prefs-contextmenu": "Menú contextual",
+	"bs-contextmenu-pref-modus": "Abrir el menú contextual (no para móviles) mediante:",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Clic en el botón derecho del ratón (pulsando CTRL se mostrará el menú contextual del navegador predeterminado)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Clic en el botón derecho del ratón y pulsando CTRL (el botón derecho normal mostrará el menú del navegador predeterminado)",
+	"bs-contextmenu-page-edit": "Editar Página",
+	"bs-contextmenu-page-delete": "Borrar página",
+	"bs-contextmenu-page-move": "Mover página",
+	"bs-contextmenu-page-history": "Ver el historial de la página",
+	"bs-contextmenu-page-protect": "Proteger la página",
+	"bs-contextmenu-page-purge": "Purgar la caché y ver la página",
+	"bs-contextmenu-page-info": "Ver información de la página",
+	"bs-contextmenu-media-reupload": "Subir nueva versión",
+	"bs-contextmenu-media-view-page": "Ver página de descripción del archivo e historial del archivo",
+	"bs-contextmenu-user-mail": "Enviar correo electrónico",
+	"bs-contextmenu-user-talk": "Dejar un mensaje en la página de discusión",
+	"bs-contextmenu-file-download": "Descargar archivo"
+}

@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "ДӀасахьажор",
+	"bs-extendededitbar-redirectsample": "Дилла йоза",
+	"bs-extendededitbar-striketip": "ТӀехула сиз хьакхар",
+	"bs-extendededitbar-uppertip": "МогӀан лакхар",
+	"bs-extendededitbar-uppersample": "МогӀан лакхар йоза",
+	"bs-extendededitbar-lowertip": "МогӀан буха",
+	"bs-extendededitbar-lowersample": "МогӀан бухар йоза",
+	"bs-extendededitbar-smalltip": "Жима",
+	"bs-extendededitbar-smallsample": "Жима йоза",
+	"bs-extendededitbar-commenttip": "Дилла къайла къамел",
+	"bs-extendededitbar-commentsample": "Къамел",
+	"bs-extendededitbar-gallerysamplepicture": "Сурт",
+	"bs-extendededitbar-gallerysamplecaption": "КуьгтаӀор",
+	"bs-extendededitbar-tabletip": "Чуйилла таблица",
+	"bs-extendededitbar-tablesampleheader": "Корта",
+	"bs-extendededitbar-tablesamplerow": "МогӀа",
+	"bs-extendededitbar-tablesamplecell": "Ӏуьрг"
+}

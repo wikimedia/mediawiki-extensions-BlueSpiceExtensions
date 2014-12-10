@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edustus"
+		]
+	},
+	"bs-insertfile-insert-image": "Inserir una imatge",
+	"bs-insertfile-filename": "Nom del fitxer",
+	"bs-insertfile-alignleft": "esquerra",
+	"bs-insertfile-alignright": "dreta",
+	"bs-insertfile-labeltype": "Decoració",
+	"bs-insertfile-uploadimageemptytext": "Triar una imatge nova...",
+	"bs-insertfile-uploadimagefieldlabel": "Carregar una nova imatge",
+	"bs-insertfile-uploaddescfilelabel": "Resum",
+	"bs-insertfile-error": "Error",
+	"bs-insertfile-titleimage": "Inserir una imatge",
+	"bs-insertfile-of": "de",
+	"bs-insertfile-license": "Llicència",
+	"bs-insertfile-categories": "Categories",
+	"bs-insertfile-no-link": "No hi ha enllaç"
+}

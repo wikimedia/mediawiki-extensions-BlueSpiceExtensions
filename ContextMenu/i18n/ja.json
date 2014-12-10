@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-contextmenu-desc": "さまざまなリンクを含むコンテキスト メニューを提供する",
+	"prefs-contextmenu": "コンテキスト メニュー",
+	"bs-contextmenu-pref-modus": "コンテキスト メニューの開き方 (携帯機器以外):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "右クリック (Ctrl+右クリック でブラウザー既定のコンテキスト メニュー)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Ctrl+右クリック (右クリック でブラウザー既定のコンテキスト メニュー)",
+	"bs-contextmenu-page-edit": "ページを編集",
+	"bs-contextmenu-page-delete": "ページを削除",
+	"bs-contextmenu-page-move": "ページを移動",
+	"bs-contextmenu-page-history": "ページの履歴を閲覧",
+	"bs-contextmenu-page-protect": "ページを保護",
+	"bs-contextmenu-page-purge": "キャッシュを破棄してページを閲覧",
+	"bs-contextmenu-page-info": "ページ情報を閲覧",
+	"bs-contextmenu-user-mail": "メールを送信",
+	"bs-contextmenu-file-download": "ファイルをダウンロード"
+}

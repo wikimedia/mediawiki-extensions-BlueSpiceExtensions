@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-statistics-desc": "Modulo statistiche per BlueSpice",
+	"prefs-statistics": "Statistiche estese",
+	"extendedstatistics": "Statistiche estese",
+	"bs-statistics-diagram": "Interrogazione",
+	"bs-statistics-from": "Da",
+	"bs-statistics-to": "A",
+	"bs-statistics-grain": "Intervallo",
+	"bs-statistics-mode": "Modalità",
+	"bs-statistics-aggregated": "aggregato",
+	"bs-statistics-absolute": "assoluto",
+	"bs-statistics-year": "Anno",
+	"bs-statistics-month": "Mese",
+	"bs-statistics-week": "Settimana di calendario",
+	"bs-statistics-day": "Giorno",
+	"bs-statistics-list": "Elenco",
+	"bs-statistics-filters": "Filtri",
+	"bs-statistics-diag-number-of-users": "Numero di utenti",
+	"bs-statistics-label-name": "Nome",
+	"bs-statistics-label-registration": "Registrazione",
+	"bs-statistics-diag-number-of-pages": "Numero di pagine",
+	"bs-statistics-diag-number-of-pages-mw": "Numero di pagine di contenuto",
+	"bs-statistics-label-page": "Pagina",
+	"bs-statistics-diag-number-of-edits": "Numero di modifiche",
+	"bs-statistics-diag-edits-per-user": "Modifiche per utente",
+	"bs-statistics-filter-category": "Categoria",
+	"bs-statistics-filter-user": "Utenti esclusi",
+	"bs-statistics-pref-excludeusers": "Escludi questi utenti:",
+	"bs-statistics-portlet-numberofusers": "Numero di utenti",
+	"bs-statistics-portlet-numberofedits": "Numero di modifiche",
+	"bs-statistics-portlet-numberofpages": "Numero di pagine",
+	"bs-statistics-portlet-numberofusersdesc": "Statistica del numero di utenti.",
+	"bs-statistics-portlet-numberofeditsdesc": "Statistica del numero di modifiche.",
+	"bs-statistics-portlet-numberofpagesdesc": "Statistica del numero di pagine.",
+	"bs-statistics-portletconfig-periodday": "Ieri"
+}

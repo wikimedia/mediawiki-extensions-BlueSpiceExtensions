@@ -24,11 +24,11 @@ BsWantedArticle = {
 
 	init: function() {
 		//ExtendedSearch
-		$( '#bs-extendedsearch-suggest' ).live( 'click', function() { //Has to be "live" because #bs-extendedsearch-suggest may be changed via AJAX
+		$( '#bs-extendedsearch-suggest' ).on( 'click', function() { //Has to be "live" because #bs-extendedsearch-suggest may be changed via AJAX
 			//TODO: $.live() is deprecated since v1.7. Replace with $.on() as soon as we drop MW 1.17 support.
 			return BsWantedArticle.sendSuggestion( $( this ).attr( 'href' ).substr( 1 ) );
 		});
-		
+
 		this.oForms          = $( '.bs-wantedarticle-form' );
 		this.oTextFields     = $( '.bs-wantedarticle-composite-textfield' );
 		this.oCreateButtons  = $( '.bs-wantedarticle-createbutton' );
@@ -84,7 +84,7 @@ BsWantedArticle = {
 				return BsWantedArticle.sendSuggestion( sTitle );
 			}*/
 		});
-		
+
 		this.toggleMoreHandler();
 	},
 
@@ -93,13 +93,13 @@ BsWantedArticle = {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					text: 'bs-wantedarticle-info_nothing_entered'
+					text: 'bs-wantedarticle-info-nothing-entered'
 				}
 			);
 			return false;
 		}
 
-		var aFoundChars = new Array();
+		var aFoundChars = [];
 		for ( var i=0; i < bsForbiddenCharsInArticleTitle.length; i++ ) {
 			if ( sArticleTitle.indexOf( bsForbiddenCharsInArticleTitle [i] ) != -1 ) {
 				aFoundChars.push( '"' + bsForbiddenCharsInArticleTitle [i] + '"' );
@@ -109,8 +109,7 @@ BsWantedArticle = {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					text: mw.message('bs-wantedarticle-info_title_contains_invalid_characters' ).plain()
-							+ aFoundChars.join( ', ' )
+					text: mw.message('bs-wantedarticle-title-invalid-chars', aFoundChars.length, aFoundChars.join( ', ' ) ).plain()
 				}
 			);
 			return false;
@@ -119,9 +118,6 @@ BsWantedArticle = {
 	},
 
 	navigateToTarget: function( sArticleTitle ) {
-
-		//oForm.trigger( 'bs-wantedarticle-navigateToTarget' );
-
 		sArticleTitle = sArticleTitle.replace( ' ', '_' );
 		var sUrl = this.config.urlBase + '/index.php?title=' + encodeURIComponent( sArticleTitle );
 		document.location.href = sUrl;
@@ -130,13 +126,10 @@ BsWantedArticle = {
 	},
 
 	sendSuggestion: function( sArticleTitle ) {
-
-		//oForm.trigger( 'bs-wantedarticle-sendSuggestion' );
-
-		$.getJSON( 
+		$.getJSON(
 			bs.util.getAjaxDispatcherUrl( 'WantedArticle::ajaxAddWantedArticle', [ sArticleTitle ] ),
 			function( oData, oTextStatus ) {
-				bs.util.alert( 'WAsuc', { text: oData.message, title: 'Status' } );
+				bs.util.alert( 'WAsuc', { text: oData.message, titleMsg: 'bs-extjs-title-success' } );
 				if( oData.success == true ) {
 					BsWantedArticle.resetDefaults();
 					BsWantedArticle.reloadAllWantedArticleTags();
@@ -162,9 +155,9 @@ BsWantedArticle = {
 						currentObject.replaceWith(oData.view);
 						BsWantedArticle.toggleMoreHandler();
 					}
-				}
-			}
-			$.getJSON( 
+				};
+			};
+			$.getJSON(
 				bs.util.getAjaxDispatcherUrl(
 					'WantedArticle::ajaxGetWantedArticles',
 					[
@@ -189,11 +182,11 @@ BsWantedArticle = {
 					$(this).parent().next().show();
 				} else {
 					$(this).hide();
-					$(this).next().show()
+					$(this).next().show();
 				}
 			});
 		}
-		
+
 		if($('.togglemore-queue').width() !== null) {
 			// taken from view => onclick="$(this).hide();$(this).next().show(); return false;"
 			$('.togglemore-queue').click( function(){
@@ -201,19 +194,19 @@ BsWantedArticle = {
 				$(this).next().show();
 			});
 		}
-		
-	}
-}
 
-$(document).ready(function(){
+	}
+};
+
+mw.loader.using( 'ext.bluespice',function() {
 	BsWantedArticle.config = {
 		urlBase: wgServer + wgScriptPath
-	}
+	};
 	BsWantedArticle.init();
-});
+} );
 
 // Register with ExtendedSearch Autocomplete
-$(document).bind('BSExtendedSearchAutocompleteItemSelect', function( event, selectEvent, ui, status ){
+$(document).on('BSExtendedSearchAutocompleteItemSelect', function( event, selectEvent, ui, status ){
 	if ( ui.item.attr !== 'bs-extendedsearch-suggest' ) return;
 
 	BsWantedArticle.sendSuggestion( ui.item.value );

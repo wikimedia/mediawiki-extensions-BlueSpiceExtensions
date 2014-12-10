@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fúlvio",
+			"Vitorvicentevalente",
+			"Nemo bis"
+		]
+	},
+	"bs-responsibleeditors-desc": "Permite que o MediaWiki faça a gestão de editores responsáveis para páginas",
+	"prefs-responsibleeditors": "Editores responsáveis",
+	"bs-responsibleeditors-pref-echange": "Notificar-me quando a página tiver sido alterada",
+	"bs-responsibleeditors-pref-edelete": "Notificar-me quando a página tiver sido eliminada",
+	"bs-responsibleeditors-pref-emove": "Notificar-me quando a página tiver sido movida",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Editores responsáveis",
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "Valores fornecidos inválidos.",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Acesso negado. Não está autorizado a executar esta ação.",
+	"bs-responsibleeditors-statebartop-icon-alt": "Existe um editor responsável por esta página",
+	"bs-responsibleeditors-statebarbody-headline": "Editor{{PLURAL:$1||es}} responsáve{{PLURAL:$1|l|is}}",
+	"bs-responsibleeditors-mail-subject-re-article-changed": "A página \"$1\" foi {{GENDER:$2|editada}} por $3",
+	"bs-responsibleeditors-mail-subject-re-article-deleted": "A página \"$1\" foi {{GENDER:$2|eliminada}} por $3",
+	"bs-responsibleeditors-mail-subject-re-article-moved": "A página \"$1\" foi {{GENDER:$2|movida}} por $3",
+	"bs-responsibleeditors-yourresponsibilities": "As suas responsabilidades",
+	"action-responsibleeditors-viewspecialpage": "Visualizar as páginas protegidas pelo direito \"ResponsibleEditors-Viewspecialpage\"",
+	"bs-responsibleeditors-title": "Editores responsáveis",
+	"bs-responsibleeditors-titleeditors": "Editores responsáveis",
+	"bs-responsibleeditors-columnpage": "Página",
+	"bs-responsibleeditors-columnresponsibleeditor": "Editores responsáveis",
+	"bs-responsibleeditors-columnnamespace": "Domínio",
+	"bs-responsibleeditors-rbdisplaymodeall": "Mostrar todas as páginas",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Selecione um domínio",
+	"log-name-bs-responsibleeditors": "Registo de editores responsáveis",
+	"log-description-bs-responsibleeditors": "Este é um registo de editores responsáveis por páginas."
+}

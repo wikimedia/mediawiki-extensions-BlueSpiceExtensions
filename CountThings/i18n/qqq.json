@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226",
+			"Shirayuki"
+		]
+	},
+	"bs-countthings-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of count things extension",
+	"bs-countthings-chars-label": "Table headline for characters\n{{Identical|Character}}",
+	"bs-countthings-words-label": "Table headline for words\n{{Identical|Word}}",
+	"bs-countthings-pages-label": "Table headline for pages\n{{Identical|Page}}",
+	"bs-countthings-error-no-input": "Error message that no page was provided.",
+	"bs-countthings-error-invalid-mode": "{{doc-important|Do not translate <code>chars</code>, <code>words</code> and <code>pages</code>}}\nError message that the given mode is invalid. Valid modes are <code>chars</code>, <code>words</code>, or <code>pages</code>.\n*$1 is the given mode which is invalid.",
+	"bs-countthings-error-not-exist": "Error message that the given page does not exist.\n*$1 is the page which does not exist.",
+	"bs-countthings-tag-countarticles-desc": "Used in InsertMagic extension, tag description for displays the number of pages.\n{{Related|Bs-tag-desc}}",
+	"bs-countthings-tag-countusers-desc": "Used in InsertMagic extension, tag description for displays the number of users.\n{{Related|Bs-tag-desc}}",
+	"bs-countthings-tag-countcharacters-desc": "Used in InsertMagic extension, tag description for displays statistics of the given page content. Available configuration attribute:\n{{Related|Bs-tag-desc}}",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "Text for <code>mode</code>: What of the given page content should be counted <code>chars</code> (characters), <code>words</code> (words) or <code>pages</code> (pages)."
+}

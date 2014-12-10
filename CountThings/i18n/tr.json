@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-countthings-chars-label": "Karakterler",
+	"bs-countthings-tag-countarticles-desc": "Sayfa numaralarını görüntüler.",
+	"bs-countthings-tag-countusers-desc": "Kullanıcı sayısını görüntüler."
+}

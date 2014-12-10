@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Fitoschido"
+		]
+	},
+	"bs-rssfeeder-desc": "Una extensión a obtener RSS válidos para cada extensión, que tiene una función buildRss",
+	"rssfeeder": "Canales RSS",
+	"bs-rssfeeder-pagetext": "Puedes suscribirte a los siguientes canales RSS:",
+	"bs-rssfeeder-recent-changes": "Cambios recientes",
+	"bs-rssfeeder-pages": "Página",
+	"bs-rssfeeder-submit": "Mostrar",
+	"bs-rssfeeder-rss": "Canal RSS",
+	"bs-rssfeeder-rss-desc": "Crea tu propio canal RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL de RSS"
+}

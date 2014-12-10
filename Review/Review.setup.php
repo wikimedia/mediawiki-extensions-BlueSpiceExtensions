@@ -1,6 +1,8 @@
 <?php
 
-BsExtensionManager::registerExtension('Review', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
+BsExtensionManager::registerExtension( 'Review', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
+
+$wgMessagesDirs['Review'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['Review']      = __DIR__ . '/languages/Review.i18n.php';
 $wgExtensionMessagesFiles['ReviewAlias'] = __DIR__ . '/languages/SpecialReview.alias.php';
@@ -18,39 +20,15 @@ $wgResourceModules['ext.bluespice.review'] = array(
 	'scripts' => 'bluespice.review.js',
 	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
-		'bs-review-title',
-		'bs-review-updateRow',
-		'bs-review-cancelRow',
-		'bs-review-btnAddReviewer',
-		'bs-review-btnEditReviewer',
-		'bs-review-btnRemoveReviewer',
-		'bs-review-btnMoveUp',
-		'bs-review-btnMoveDown',
-		'bs-review-btnOk',
-		'bs-review-btnCancel',
-		'bs-review-colStatus',
-		'bs-review-colReviewer',
-		'bs-review-colDelegatedTo',
-		'bs-review-colComment',
-		'bs-review-lblStartdate',
-		'bs-review-lblEnddate',
-		'bs-review-btnCreate',
-		'bs-review-btnSave',
-		'bs-review-btnDelete',
-		'bs-review-btnCancel',
-		'bs-review-noReviewAssigned',
-		'bs-review-headerActions',
-		'bs-review-titleAddReviewer',
-		'bs-review-titleEditReviewer',
-		'bs-review-labelUsername',
-		'bs-review-labelComment',
-		'bs-review-titleStatus',
-		'bs-review-labelTemplate',
-		'bs-review-labelTemplateLoad',
-		'bs-review-labelTemplateSaveForMe',
-		'bs-review-labelTemplateSaveForAll',
-		'bs-review-labelTemplateDelete',
-		'bs-review-templateName',
+		'bs-review-btnmoveup',
+		'bs-review-btnmovedown',
+		'bs-review-colstatus',
+		'bs-review-colreviewer',
+		'bs-review-colcomment',
+		'bs-review-lblstartdate',
+		'bs-review-lblenddate',
+		'bs-review-titleaddreviewer',
+		'bs-review-labelcomment',
 		'bs-review-confirm-delete-step',
 		'bs-review-confirm-delete-review'
 	)
@@ -60,13 +38,12 @@ $wgResourceModules['ext.bluespice.review.overview'] = array(
 	'scripts' => 'bluespice.review.overview.js',
 	'dependencies' => 'ext.bluespice.review',
 	'messages' => array(
-		'bs-review-header-page_title',
-		'bs-review-header-owner_name',
+		'bs-review-header-page-title',
+		'bs-review-header-owner-name',
 		'bs-review-header-assessors',
-		'bs-review-header-accepted_text',
+		'bs-review-header-accepted-text',
 		'bs-review-header-startdate',
-		'bs-review-header-enddate',
-		'bs-review-overviewpanel-alloption',
+		'bs-review-header-enddate'
 	)
 ) + $aResourceModuleTemplate;
 
@@ -87,5 +64,8 @@ $wgAjaxExportList[] = 'Review::doEditReview';
 $wgAjaxExportList[] = 'Review::getVoteResponse';
 $wgAjaxExportList[] = 'Review::getUsers';
 $wgAjaxExportList[] = 'SpecialReview::ajaxGetOverview';
+
+$wgLogTypes[] = 'bs-review';
+$wgFilterLogTypes['bs-review'] = true;
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'Review::getSchemaUpdates';

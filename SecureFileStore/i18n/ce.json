@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-securefilestore-pref-defaultdisposition-brower": "Хьажар",
+	"bs-securefilestore-pref-defaultdisposition-external": "Арахьара",
+	"bs-securefilestore-pref-dispositioninline": "Файлийн тайпанаш хьажар:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Даиман гайта файлан хӀара тайпанаш:"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arg",
+			"SPQRobin"
+		]
+	},
+	"prefs-pagesvisited": "Bezochte pagina's",
+	"bs-pagesvisited-pref-widgetns": "Naamruimten:",
+	"bs-pagesvisited-pref-widgetsortodr": "Sorteren op:",
+	"bs-pagesvisited-pref-sort-time": "Tijd",
+	"bs-pagesvisited-pref-sort-pagename": "Titel",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Geeft een lijst van door u bezochte pagina's weer."
+}

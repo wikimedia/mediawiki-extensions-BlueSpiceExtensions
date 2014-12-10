@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-interwikilinks-desc": "Interfacie de administration pro adder, modificar e deler ligamines interwiki",
+	"bs-interwikilinks-invalid-pfx-spc": "Le prefixo es invalide. Per favor non usa spatios.",
+	"bs-interwikilinks-invalid-url-spc": "Le URL es invalide. Per favor non usa spatios.",
+	"bs-interwikilinks-label": "Ligamines interwiki",
+	"bs-interwikilinks-link-created": "Le ligamine interwiki ha essite create.",
+	"bs-interwikilinks-link-added": "Le ligamine interwiki ha essite addite.",
+	"bs-interwikilinks-link-deleted": "Le ligamine interwiki ha essite delite.",
+	"bs-interwikilinks-nooldpfx": "Le prefixo anterior non ha essite trovate.",
+	"bs-interwikilinks-nopfx": "Per favor specifica un prefixo.",
+	"bs-interwikilinks-nourl": "Per favor specifica un URL.",
+	"bs-interwikilinks-pfxtoolong": "Le prefixo es troppo longe. Per favor usa al maximo 32 characteres.",
+	"bs-interwikilinks-pfxexists": "Iste prefixo jam existe.",
+	"bs-interwikilinks-headerprefix": "Prefixo",
+	"bs-interwikilinks-titleaddinterwikilink": "Adder ligamine interwiki",
+	"bs-interwikilinks-titleeditinterwikilink": "Modificar ligamine interwiki",
+	"bs-interwikilinks-labelprefix": "Prefixo",
+	"bs-interwikilinks-titledeleteinterwikilink": "Deler ligamine interwiki",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Es tu secur de voler deler iste ligamine interwiki?",
+	"bs-interwikilinks-insertlink-tabtitle": "Ligamine verso un altere wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefixo",
+	"bs-interwikilink-select-a-prefix": "Selige prefixo"
+}

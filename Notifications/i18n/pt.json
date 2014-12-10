@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"prefs-notifications": "Notificações",
+	"prefs-echo-extended": "Configurações avançadas do sistema",
+	"bs-notifications-pref-notifyns": "Notificar-me apenas sobre alterações nestes domínios:",
+	"bs-notifications-pref-active": "Ativar notificações",
+	"bs-echo-anon-user": "anónimo",
+	"bs-echo-unknown-user": "desconhecido",
+	"bs-echo-page-edit": "A página [[:$1]] foi alterada",
+	"bs-echo-page-create": "A página [[:$1]] foi criada",
+	"bs-echo-page-delete": "A página [[:$1]] foi eliminada",
+	"bs-echo-page-move": "A página [[:$1]] foi movida",
+	"bs-notifications-email-new-subject": "Página $1 {{GENDER:$2|criada}} por $2",
+	"bs-notifications-email-edit-subject": "Página $1 {{GENDER:$2|editada}} por $2",
+	"bs-notifications-email-move-subject": "Página $1 {{GENDER:$2|movida}} por $2",
+	"bs-notifications-email-delete-subject": "Página $1 {{GENDER:$2|eliminada}} por $2",
+	"bs-notifications-email-delete": "A página \"$1\" foi {{GENDER:$2|eliminada}} por $2.\n\nO motivo dado foi o seguinte:\n$3",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|publicou}} uma mensagem na página $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|publicou}} uma mensagem na página \"$1\".\n\nMessagem:\n$3\n\nPode visitar a página ao seguir a seguinte ligação:\n$4."
+}

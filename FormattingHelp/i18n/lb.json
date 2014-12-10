@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-formattinghelp-desc": "Weist Hëllef fir Text ze formatéieren",
+	"bs-formattinghelp-formatting": "Hëllef beim Formatéieren",
+	"bs-formattinghelp-help-syntax": "Syntax",
+	"bs-formattinghelp-help-example-text": "Text",
+	"bs-formattinghelp-help-bold": "Fettgedréckt",
+	"bs-formattinghelp-help-italic": "Schréi",
+	"bs-formattinghelp-help-whitespace": "Espace",
+	"bs-formattinghelp-help-nowiki": "Formatéierung verhënneren",
+	"bs-formattinghelp-help-color": "Faarwegen Text",
+	"bs-formattinghelp-help-headline": "Iwwerschrëft",
+	"bs-formattinghelp-help-linebreak": "Zeilenëmbroch",
+	"bs-formattinghelp-help-ul": "Net-numeréiert Lëscht",
+	"bs-formattinghelp-help-listitem": "Element vun enger Lëscht",
+	"bs-formattinghelp-help-numberedlist": "Numeréiert Lëscht",
+	"bs-formattinghelp-help-link": "Interne Link",
+	"bs-formattinghelp-help-link-alt": "Interne Link mat alternativem Text",
+	"bs-formattinghelp-help-extlink": "Externe Link",
+	"bs-formattinghelp-help-hr": "Horizontal Linn",
+	"bs-formattinghelp-help-template": "Schabloun",
+	"bs-formattinghelp-help-templatename": "Numm vun der Schabloun"
+}

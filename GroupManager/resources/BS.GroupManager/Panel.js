@@ -5,6 +5,7 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Tobias Weichart <weichart@hallowelt.biz>
  * @package    Bluespice_Extensions
  * @subpackage GroupManager
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -36,14 +37,14 @@ Ext.define( 'BS.GroupManager.Panel', {
 
 		this.colGroupName = Ext.create( 'Ext.grid.column.Column', {
 			id: 'group_name',
-			header: mw.message('bs-groupmanager-headerGroupname').plain(),
+			header: mw.message('bs-groupmanager-headergroup').plain(),
 			sortable: true,
 			dataIndex: 'group_name',
 			flex: 1
 		} );
 		this.colAdditionalGroup = Ext.create( 'Ext.grid.column.Column', {
 			id: 'additional_group',
-			header: mw.message('bs-groupmanager-headerGroupname').plain(),
+			header: mw.message('bs-groupmanager-headergroup').plain(),
 			sortable: true,
 			dataIndex: 'additional_group',
 			hidden: true,
@@ -56,6 +57,13 @@ Ext.define( 'BS.GroupManager.Panel', {
 		];
 		this.callParent( arguments );
 	},
+	makeSelModel: function(){
+		this.smModel = Ext.create( 'Ext.selection.CheckboxModel', {
+			mode: "MULTI",
+			selType: 'checkboxmodel'
+		});
+		return this.smModel;
+	},
 	onBtnAddClick: function( oButton, oEvent ) {
 		if ( !this.dlgGroupAdd ) {
 			this.dlgGroupAdd = Ext.create( 'BS.GroupManager.GroupDialog', {
@@ -65,14 +73,14 @@ Ext.define( 'BS.GroupManager.Panel', {
 		}
 
 		this.active = 'add';
-		this.dlgGroupAdd.setTitle( mw.message( 'bs-groupmanager-titleNewGroup' ).plain() );
+		this.dlgGroupAdd.setTitle( mw.message( 'bs-groupmanager-titlenewgroup' ).plain() );
 		this.dlgGroupAdd.show();
 		this.callParent( arguments );
 	},
 	onBtnEditClick: function( oButton, oEvent ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		if ( !selectedRow[0].getData().additional_group ) {
-			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotEditable' ).plain(), title: 'Status' } );
+			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgnoteditable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
 			return;
 		}
 		if ( !this.dlgGroupEdit ) {
@@ -83,23 +91,29 @@ Ext.define( 'BS.GroupManager.Panel', {
 		}
 
 		this.active = 'edit';
-		this.dlgGroupEdit.setTitle( mw.message( 'bs-groupmanager-titleEditGroup' ).plain() );
+		this.dlgGroupEdit.setTitle( mw.message( 'bs-groupmanager-titleeditgroup' ).plain() );
 		this.dlgGroupEdit.setData( selectedRow[0].getData() );
 		this.dlgGroupEdit.show();
 		this.callParent( arguments );
 	},
 	onBtnRemoveClick: function( oButton, oEvent ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var additionalGroup = selectedRow[0].get( 'additional_group' );
+		var additionalGroup = false;
+		for(var i=0;i<selectedRow.length;i++){
+			if (selectedRow[i].get( 'additional_group' ) === true){
+				additionalGroup = true;
+				break;
+			}
+		}
 		if ( !additionalGroup ) {
-			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgNotRemovable' ).plain(), title: 'Status' } );
+			bs.util.alert( 'GMfail', { text: mw.message( 'bs-groupmanager-msgnotremovable' ).plain(), titleMsg: 'bs-extjs-title-warning' } );
 			return;
 		}
 		bs.util.confirm(
 			'bs-groupmanager-remove-dlg',
 			{
-				text: mw.message( 'bs-groupmanager-removeGroup' ).plain(),
-				title: mw.message( 'bs-groupmanager-tipRemove' ).plain()
+				text: mw.message( 'bs-groupmanager-removegroup', selectedRow.length).text(),
+				title: mw.message( 'bs-groupmanager-tipremove', selectedRow.length ).text()
 			},
 			{
 				ok: this.onRemoveGroupOk,
@@ -110,21 +124,25 @@ Ext.define( 'BS.GroupManager.Panel', {
 	},
 	onRemoveGroupOk: function() {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var groupName = selectedRow[0].get( 'group_name' );
+		var groupNames = [];
+		for (var i = 0; i < selectedRow.length; i++){
+			groupNames.push(selectedRow[i].get( 'group_name' ));
+		}
 
 		Ext.Ajax.request( {
 			url: bs.util.getAjaxDispatcherUrl(
-				'GroupManager::removeGroup',
-				[ groupName ]
+				'GroupManager::removeGroups',
+				[ groupNames ]
 			),
 			method: 'post',
 			scope: this,
 			success: function( response, opts ) {
 				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
+				if ( Object.keys(responseObj).length === groupNames.length ) {
 					this.renderMsgSuccess( responseObj );
 				} else {
-					this.renderMsgFailure( responseObj );
+					var failureObj = {success: false, message: mw.message("bs-groupmanager-removeGroup-message-unknown").plain()};
+					this.renderMsgFailure( failureObj );
 				}
 			}
 		});
@@ -183,13 +201,29 @@ Ext.define( 'BS.GroupManager.Panel', {
 		}
 	},
 	renderMsgSuccess: function( responseObj ) {
-		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMsuc', { text: responseObj.message, title: 'Status' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+		var successText = "";
+		if ( typeof(responseObj.message) !== "undefined" && typeof(responseObj.message.length) !== "undefined" && responseObj.message.length )
+			successText = responseObj.message;
+		else{
+			var success = "", failure = "", successCount = 0, failureCount = 0;
+			$.each(responseObj, function(i, response){
+				if (response.success === true){
+					success += "<li>"+i+"</li>";
+					successCount++;
+				}
+				else{
+					failure += "<li>"+i+"</li>";
+					failureCount++;
+				}
+			});
+			successText = success.length > 0 ? (mw.message("bs-groupmanager-removegroup-message-success", successCount, "<ul>"+success+"</ul>").text() + "<br/>") : "";
+			successText += failure.length > 0 ? (mw.message("bs-groupmanager-removegroup-message-failure", failureCount, "<ul>"+failure+"</ul>").text()) : "";
 		}
+		bs.util.alert( 'UMsuc', { text: successText, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 	},
 	renderMsgFailure: function( responseObj ) {
 		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMfail', { text: responseObj.message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMfail', { text: responseObj.message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
 		}
 	}
 } );

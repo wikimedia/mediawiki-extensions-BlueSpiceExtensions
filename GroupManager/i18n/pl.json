@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-groupmanager-desc": "Interfejs administracyjny do dodawania, edytowania i usuwania grup użytkowników i ich uprawnień",
+	"bs-groupmanager-grpexists": "Grupa już istnieje.",
+	"bs-groupmanager-grpadded": "Grupa została dodana.",
+	"bs-groupmanager-grpremoved": "Grupa została usunięta.",
+	"bs-groupmanager-label": "Menedżer grup",
+	"bs-groupmanager-invalid-name": "Nazwa grupy zawiera {{PLURAL:$1|nieprawidłowy znak|nieprawidłowe znaki}}: $2",
+	"bs-groupmanager-invalid-name-length": "Nazwa grupy nie może być dłuższa niż 16 znaków.",
+	"bs-groupmanager-invalid-name-numeric": "Nazwa grupy musi mieć co najmniej jeden znak.",
+	"bs-groupmanager-headergroup": "Grupa",
+	"bs-groupmanager-tipremove": "Usuwanie {{PLURAL:$1|grupy|grup}}",
+	"bs-groupmanager-titlenewgroup": "Nowa grupa",
+	"bs-groupmanager-titleeditgroup": "Edytuj grupę",
+	"bs-groupmanager-removegroup": "Czy na pewno chcesz usunąć {{PLURAL:$1|tę grupę|te grupy}}?",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|Została usunięta następująca grupa|Zostały usunięte następujące grupy}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "{{PLURAL:$1|Następująca grupa nie mogła zostać usunięta|Następujące grupy nie mogły zostać usunięte}}: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Wystąpił nieoczekiwany błąd, spróbuj ponownie.",
+	"bs-groupmanager-lablename": "Nazwa grupy:",
+	"bs-groupmanager-msgnoteditable": "To jest grupa systemowa i nie można zmienić jej nazwy.",
+	"bs-groupmanager-msgnotremovable": "To jest grupa systemowa i nie można jej usunąć."
+}

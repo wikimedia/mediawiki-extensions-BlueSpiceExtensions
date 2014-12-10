@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Swidmann",
+			"Metalhead64"
+		]
+	},
+	"bs-notifications-desc": "Sendet eine Benachrichtigung bei Änderungen",
+	"prefs-notifications": "Benachrichtigungen",
+	"prefs-echo-extended": "Erweiterte Benachrichtigungseinstellungen",
+	"bs-notifications-pref-notifyns": "Nur bei Bearbeitungen in diesen Namensräumen benachrichtigen:",
+	"bs-notifications-pref-notifynominor": "Keine Benachrichtigung bei geringfügigen Änderungen",
+	"bs-notifications-pref-active": "Benachrichtigungen aktivieren",
+	"bs-echo-anon-user": "Anonym",
+	"bs-echo-unknown-user": "Unbekannt",
+	"bs-echo-page-edit": "Die Seite [[:$1]] wurde bearbeitet",
+	"bs-echo-page-create": "Die Seite [[:$1]] wurde neu angelegt",
+	"bs-echo-page-delete": "Die Seite [[:$1]] wurde gelöscht",
+	"bs-echo-page-move": "Die Seite [[:$1]] wurde verschoben",
+	"bs-echo-page-newuser": "Der Benutzer $1 wurde neu angelegt.",
+	"bs-echo-page-shoutbox": "Auf der Seite [[:$1]] wurde eine ShoutBox-Mitteilung verfasst .",
+	"bs-notifications-email-new-subject": "Seite \"$1\" wurde von $2 {{GENDER:$2|angelegt}}",
+	"bs-notifications-email-new": "Die Seite \"$1\" wurde von $2 neu {{GENDER:$2|angelegt}}.\n\nKommentar:\n $3 \nDu kannst die Seite über diesen Link aufrufen:\n$4",
+	"bs-notifications-email-edit-subject": "Seite $1 wurde von $2 {{GENDER:$2|geändert}}",
+	"bs-notifications-email-edit": "Die Seite \"$1\" wurde von $2 {{GENDER:$2|geändert}}.\n\nKommentar:\n $3 \nDu kannst die Seite über diese URL aufrufen:\n$4.\n\nUm nur die Änderungen zu sehen, folge diesem Link:\n$5",
+	"bs-notifications-email-move-subject": "Seite $1 wurde von $2 {{GENDER:$2|verschoben}}",
+	"bs-notifications-email-move": "Die Seite \"$1\" wurde von $2 nach $3 {{GENDER:$2|verschoben}}.\n\nDu kannst die Seite über diese URL aufrufen:\n$4",
+	"bs-notifications-email-delete-subject": "Seite $1 wurde von $2 {{GENDER:$2|gelöscht}}",
+	"bs-notifications-email-delete": "Die Seite \"$1\" wurde von $2 {{GENDER:$2|gelöscht}}.\n\nAls Grund wurde angegeben:\n$3",
+	"bs-notifications-email-addaccount-subject": "Benutzer $1 wurde neu angelegt",
+	"bs-notifications-email-addaccount": "Der Benutzer $1 mit dem bürgerlichen Namen $2 wurde neu angelegt.",
+	"bs-notifications-email-shout-subject": "$2 hat auf der Seite $1 eine Nachricht {{GENDER:$2|hinterlassen}}",
+	"bs-notifications-email-shout": "$2 hat auf der Seite \"$1\" eine Nachricht {{GENDER:$2|hinterlassen}}.\n\nNachricht:\n$3\n\nDu kannst die Seite über diese URL aufrufen:\n$4",
+	"echo-category-title-bs-create-cat": "Benachrichtigung bei neuen Seiten",
+	"echo-category-title-bs-edit-cat": "Benachrichtigung beim Bearbeiten von Seiten",
+	"echo-category-title-bs-move-cat": "Benachrichtigung beim Verschieben von Seiten",
+	"echo-category-title-bs-delete-cat": "Benachrichtigung beim Löschen von Seiten",
+	"echo-category-title-bs-newuser-cat": "Benachrichtigung bei Anmeldung neuer Nutzer (nur für Administratoren)",
+	"echo-category-title-bs-shoutbox-cat": "Benachrichtigung bei Mitteilungen auf beobachteten Seiten (Shoutbox)"
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-review-save-nosteps": "Sie haben keine Schritte eingetragen.",
+	"bs-review-save-norights": "Sie haben nicht die erforderliche Berechtigung.",
+	"bs-review-review-secondtime": "Die Begutachtung konnte nicht gefunden werden. Möglicherweise versuchen Sie, diese Seite zum zweiten Mal zu begutachten",
+	"bs-review-mail-link-to-page": "Folgenden Sie diesem Link: $1",
+	"bs-review-mail-invite-header": "Bitte begutachten Sie diese Seite \"$1\"",
+	"bs-review-mail-invite-body": "$1 bittet Sie, den Artikel $2 zu begutachten.",
+	"bs-review-mail-comment": "Es wurde ein Kommentar für Sie eingetragen: \"$1\"",
+	"bs-review-statebar-body-do-review": "Bitte begutachten Sie diese Seite",
+	"bs-review-commentinputlabel": "Ihr Kommentar:",
+	"bs-review-confirm-delete-step": "Möchten Sie diesen Schritt wirklich löschen?",
+	"bs-review-confirm-delete-review": "Möchten Sie diese Begutachtung wirklich löschen?",
+	"bs-review-error-insufficient-permissions": "Sie haben nicht die benötigte Berechtigung, um diese Aktion auszuführen (\"$1\" wird benötigt)."
+}

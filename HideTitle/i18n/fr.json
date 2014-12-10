@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Constructeur",
+			"Gomoko"
+		]
+	},
+	"bs-hidetitle-desc": "Ajoute le mot magique <code><nowiki>__HIDETITLE__</nowiki></code> pour cacher le titre de la page"
+}

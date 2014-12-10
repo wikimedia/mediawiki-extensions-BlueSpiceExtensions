@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-visualeditor-desc": "Visueller Editor für MediaWiki",
+	"prefs-visualeditor": "Visueller Editor",
+	"bs-visualeditor-editbutton-hint": "Visueller Editor",
+	"bs-visualeditor-pref-disablens": "Deaktivieren in Namensräumen:",
+	"bs-visualeditor-pref-use": "WYSIWYG Editor standardmäßig aktivieren",
+	"bs-visualeditor-save-message": "Version gespeichert um $1 mit der Zusammenfassung \"$2\".",
+	"bs-visualeditor-no-summary": "Keine Zusammenfassung",
+	"bs-visualeditor-sortable": "Sortierbar",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Inhaltstabelle",
+	"bs-visualeditor-contenttable-black": "Inhaltstabelle (schwarz)",
+	"bs-visualeditor-contenttable-blue": "Inhaltstabelle (blau)",
+	"bs-visualeditor-contenttable-darkblue": "Inhaltstabelle (dunkelblau)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Graustufen",
+	"bs-visualeditor-greyscale-narrow": "Graustufen (schmal)",
+	"bs-visualeditor-aligntop": "Oben",
+	"bs-visualeditor-alignmiddle": "Mitte",
+	"bs-visualeditor-alignbottom": "Unten",
+	"bs-visualeditor-bsactions-wiki": "Wikitext",
+	"bs-visualeditor-bsactions-switchgui": "Werkzeugleiste umschalten",
+	"bs-visualeditor-bsactions-linebreak": "Zeilenumbruch",
+	"bs-visualeditor-bsactions-signature": "Signatur",
+	"bs-visualeditor-bsactions-save": "Speichern",
+	"bs-visualeditor-bsactions-headings": "Überschriften",
+	"bs-visualeditor-bsactions-paragraph": "Absatz",
+	"bs-visualeditor-bsactions-heading2": "Überschrift 2",
+	"bs-visualeditor-bsactions-heading3": "Überschrift 3",
+	"bs-visualeditor-bsactions-heading4": "Überschrift 4",
+	"bs-visualeditor-bsactions-heading5": "Überschrift 5",
+	"bs-visualeditor-bsactions-heading6": "Überschrift 6",
+	"bs-visualeditor-switch-noeditor-desc": "Deaktiviert den Visuellen Editor auf dieser Seite."
+}

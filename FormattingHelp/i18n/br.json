@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-formattinghelp-formatting": "Skoazell furmadiñ",
+	"bs-formattinghelp-help-syntax": "Ereadur",
+	"bs-formattinghelp-help-example-text": "Testenn",
+	"bs-formattinghelp-help-bold": "Tev",
+	"bs-formattinghelp-help-italic": "Italek",
+	"bs-formattinghelp-help-whitespace": "Esaouenn",
+	"bs-formattinghelp-help-nowiki": "Mirout da furmadiñ",
+	"bs-formattinghelp-help-color": "Testenn livet",
+	"bs-formattinghelp-help-headline": "Titl",
+	"bs-formattinghelp-help-linebreak": "Lamm linenn",
+	"bs-formattinghelp-help-ul": "Roll en dizurzh",
+	"bs-formattinghelp-help-numberedlist": "Roll niverennet",
+	"bs-formattinghelp-help-link": "Liamm diabarzh",
+	"bs-formattinghelp-help-caption": "Alc'hwez",
+	"bs-formattinghelp-help-extlink": "Liamm diavaez",
+	"bs-formattinghelp-help-hr": "Linenn a-blaen",
+	"bs-formattinghelp-help-template": "Patrom",
+	"bs-formattinghelp-help-templatename": "Anv ar patrom"
+}

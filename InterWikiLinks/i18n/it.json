@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ankabel",
+			"Beta16"
+		]
+	},
+	"bs-interwikilinks-invalid-url-spc": "L'URL non è valido. Si prega di non utilizzare spazi.",
+	"bs-interwikilinks-link-created": "Il collegamento interwiki è stato creato.",
+	"bs-interwikilinks-pfxexists": "Questo prefisso esiste già.",
+	"bs-interwikilinks-headerprefix": "Prefisso",
+	"bs-interwikilinks-labelprefix": "Prefisso",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Sei sicuro di voler eliminare questo collegamento interwiki?",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefisso"
+}

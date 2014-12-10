@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-shoutbox-message": "Язде керла къамел...",
+	"bs-shoutbox-shout": "ДӀадахьийта",
+	"bs-shoutbox-no-entries": "Кхузахь хӀума яц.",
+	"bs-shoutbox-loading": "Чуйолуш…",
+	"bs-shoutbox-pref-numberofshouts": "Гуш болу хаамийн дукхалла:",
+	"bs-shoutbox-pref-showuser": "Хааман автор гайта",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|символ|символаш}} харцахьа",
+	"bs-shoutbox-confirm-title": "Бакъдан"
+}

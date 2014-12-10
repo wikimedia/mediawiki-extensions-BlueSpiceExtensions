@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Iluvatar",
+			"Okras",
+			"Striking Blue"
+		]
+	},
+	"bs-visualeditor-desc": "Визуальный редактор для MediaWiki",
+	"prefs-visualeditor": "Визуальный редактор",
+	"bs-visualeditor-editbutton-hint": "Визуальный редактор",
+	"bs-visualeditor-pref-disablens": "Отключено в пространствах имён:",
+	"bs-visualeditor-pref-use": "Использовать визуальный редактор по умолчанию",
+	"bs-visualeditor-save-message": "Сохранение версии $1 с описанием «$2».",
+	"bs-visualeditor-no-summary": "Без описания изменений",
+	"bs-visualeditor-sortable": "Сортируемый",
+	"bs-visualeditor-wikitable": "Стандартный",
+	"bs-visualeditor-contenttable": "Содержание",
+	"bs-visualeditor-contenttable-black": "Содержание (чёрный)",
+	"bs-visualeditor-contenttable-blue": "Содержание (синий)",
+	"bs-visualeditor-contenttable-darkblue": "Содержание (тёмно-синий)",
+	"bs-visualeditor-cuscosky": "Небо Куско",
+	"bs-visualeditor-casablanca": "Касабланка",
+	"bs-visualeditor-greyscale": "Оттенки серого",
+	"bs-visualeditor-greyscale-narrow": "Оттенки серого (узкая)",
+	"bs-visualeditor-aligntop": "Сверху",
+	"bs-visualeditor-alignmiddle": "Посредине",
+	"bs-visualeditor-alignbottom": "Снизу",
+	"bs-visualeditor-bsactions-wiki": "Викитекст",
+	"bs-visualeditor-bsactions-switchgui": "Переключатель панели инструментов",
+	"bs-visualeditor-bsactions-linebreak": "Разрыв строки",
+	"bs-visualeditor-bsactions-signature": "Подпись",
+	"bs-visualeditor-bsactions-save": "Сохранить",
+	"bs-visualeditor-bsactions-headings": "Заголовки",
+	"bs-visualeditor-bsactions-paragraph": "Абзац",
+	"bs-visualeditor-bsactions-heading2": "Заголовок 2",
+	"bs-visualeditor-bsactions-heading3": "Заголовок 3",
+	"bs-visualeditor-bsactions-heading4": "Заголовок 4",
+	"bs-visualeditor-bsactions-heading5": "Заголовок 5",
+	"bs-visualeditor-bsactions-heading6": "Заголовок 6",
+	"bs-visualeditor-switch-noeditor-desc": "Отключает визуальный редактор на этой странице."
+}

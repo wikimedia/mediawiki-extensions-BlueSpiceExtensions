@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Smuggli"
+		]
+	},
+	"bs-extendedsearch-file-protocol-not-activated": "Um verlinkte Dateien innerhalb von Wiki Seiten indexieren zu können, muss das \"file\" Protokoll in Ihrem Wiki aktiviert sein.  Weitere Informationen finden Sie hier http://www.mediawiki.org/wiki/Manual:$wgUrlProtocols.",
+	"bs-extendedsearch-nosearchterm": "Bitte geben Sie einen Suchbegriff ein.",
+	"bs-extendedsearch-lockfiletext": "Löschen Sie die Lockdatei nur, wenn Sie sich sicher sind, dass kein Indexierprozess läuft.",
+	"bs-extendedsearch-did-you-mean": "Meinten Sie \"$1\"?"
+}

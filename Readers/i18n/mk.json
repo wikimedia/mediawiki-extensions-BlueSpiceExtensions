@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-readers-desc": "Создава список на луѓе што читаат дадена страница",
+	"prefs-readers": "Читатели",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Читател}}|Читатели}}",
+	"readers-user": "Страници {{GENDER:$1|прочитани}} од: $1",
+	"readers": "Читатели на „$1“",
+	"bs-readers-contentactions-label": "Прикажи читатели",
+	"bs-readers-pagenotexists": "Страницата не постои.",
+	"bs-readers-pref-active": "Активирај читатели",
+	"bs-readers-pref-numofreaders": "Број на читатели за приказ:",
+	"bs-readers-emptyinput": "Нема укажано страница.",
+	"bs-readers-header-username": "Корисничко име",
+	"bs-readers-header-readerspath": "Читател",
+	"bs-readers-header-ts": "Датум"
+}

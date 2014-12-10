@@ -2,6 +2,8 @@
 
 BsExtensionManager::registerExtension('Dashboards', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
+$wgMessagesDirs['Dashboards'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['Dashboards'] = __DIR__ . '/languages/Dashboards.i18n.php';
 $wgExtensionMessagesFiles['DashboardsAlias'] = __DIR__.'/languages/Dashboards.alias.php';
 
@@ -29,7 +31,6 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'Dashboards::getSchemaUpdates';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP.'/extensions/BlueSpiceExtensions/Dashboards/resources',
-	//'remoteBasePath' => &$GLOBALS['wgScriptPath'],
 	'remoteExtPath' => 'BlueSpiceExtensions/Dashboards/resources',
 );
 

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"bs-dashboards-desc": "Menyediakan dasbor untuk pengguna dan pengurus",
+	"bs-specialadmindashboard-label": "Dasbor",
+	"bs-dashboards-addportlet": "Tambahkan portlet",
+	"bs-dashboards-portlets": "Portlet",
+	"prefs-dashboards": "Dasbor",
+	"bs-dashboards-pref-userdashboardonlogo": "Pranala logo situs untuk dasbor pengguna",
+	"admindashboard": "Dasbor pengurus",
+	"userdashboard": "Dasbor pengguna",
+	"bs-dashboard-userportlet-calendar-title": "Kalender",
+	"bs-dashboard-userportlet-calendar-description": "Kalender"
+}

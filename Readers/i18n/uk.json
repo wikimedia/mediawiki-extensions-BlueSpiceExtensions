@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-readers-desc": "Створює список людей, які читають сторінку",
+	"prefs-readers": "Читачі",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Читач|Читачка}}|Читачі}}",
+	"readers-user": "Сторінки {{GENDER:$1|прочитав|прочитала}}: $1",
+	"readers": "Читачі «$1»",
+	"bs-readers-contentactions-label": "Показувати читачів",
+	"bs-readers-pagenotexists": "Сторінка не існує.",
+	"bs-readers-pref-active": "Активувати читачів",
+	"bs-readers-pref-numofreaders": "Кількість читачів для відображення:",
+	"bs-readers-emptyinput": "Сторінка не була надана.",
+	"bs-readers-header-username": "Ім'я користувача",
+	"bs-readers-header-readerspath": "Читач",
+	"bs-readers-header-ts": "Дата"
+}

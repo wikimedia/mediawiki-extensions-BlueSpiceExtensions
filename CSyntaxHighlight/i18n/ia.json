@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Adde functionalitate de coloration syntactic personalisabile",
+	"prefs-csyntaxhighlight": "Coloration syntactic",
+	"bs-csyntaxhighlight-pref-theme": "Thema:",
+	"bs-csyntaxhighlight-pref-gutter": "Monstrar numeros de linea",
+	"bs-csyntaxhighlight-pref-autolinks": "Facer ligamines de URLs",
+	"bs-csyntaxhighlight-pref-toolbar": "Monstrar instrumentario"
+}

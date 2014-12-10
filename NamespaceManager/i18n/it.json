@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Namespace",
+	"bs-namespacemanager-label-subpages": "Sottopagine",
+	"bs-namespacemanager-tipadd": "Aggiungi namespace",
+	"bs-namespacemanager-tipedit": "Modifica namespace",
+	"bs-namespacemanager-tipremove": "Rimuovi namespace",
+	"bs-namespacemanager-labelnsname": "Nome del namespace",
+	"bs-namespacemanager-pagepresent": "Pagine in questo namespace:"
+}

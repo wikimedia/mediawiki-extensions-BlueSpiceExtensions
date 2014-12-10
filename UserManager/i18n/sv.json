@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-usermanager-desc": "Administrationsgränssnittet för att lägga till, redigera och radera användare",
+	"bs-usermanager-admin-nodelete": "Administratörskontot kan inte raderas.",
+	"bs-usermanager-self-nodelete": "Du kan inte radera ditt konto.",
+	"bs-usermanager-db-error": "Ett databasfel uppstod.",
+	"bs-usermanager-enter-pwd": "Ange ett lösenord.",
+	"bs-usermanager-idnotexist": "Denna användare existerar inte.",
+	"bs-usermanager-invalid-pwd": "Lösenordet är ogiltigt.",
+	"bs-usermanager-invalid-realname": "Det riktiga namnet är ogiltigt.",
+	"bs-usermanager-invalid-uname": "Användarnamnet är ogiltigt.",
+	"bs-usermanager-invalid-email-gen": "E-postadressen är ogiltig.",
+	"bs-usermanager-label": "Användaradministrering",
+	"bs-usermanager-user-added": "Användaren har lagts till.",
+	"bs-usermanager-user-deleted": "Användaren har raderats.",
+	"bs-usermanager-user-exists": "Användarnamnet existerar redan.",
+	"bs-usermanager-save-successful": "Ändringarna sparade.",
+	"bs-usermanager-headerusername": "Användarnamn",
+	"bs-usermanager-headerrealname": "Riktigt namn",
+	"bs-usermanager-headeremail": "E-post",
+	"bs-usermanager-headergroups": "Grupper",
+	"bs-usermanager-titleadduser": "Lägg till användare",
+	"bs-usermanager-titleeditdetails": "Redigera användare",
+	"bs-usermanager-labelnewpassword": "Lösenord",
+	"bs-usermanager-labelpasswordcheck": "Bekräfta lösenord",
+	"bs-usermanager-titledeleteuser": "Radera användare",
+	"bs-usermanager-confirmdeleteuser": "Är du säker på att du vill ta bort {{PLURAL:$1|denna användare|dessa $1 användare}}?",
+	"bs-usermanager-groups-more": "... fler"
+}

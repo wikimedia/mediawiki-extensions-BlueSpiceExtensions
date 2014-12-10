@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"LNDDYL",
+			"Cwlin0416"
+		]
+	},
+	"bs-shoutbox-message": "訊息",
+	"bs-shoutbox-loading": "讀取中...",
+	"bs-shoutbox-confirm-title": "確認"
+}

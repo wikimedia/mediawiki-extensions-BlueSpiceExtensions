@@ -27,7 +27,7 @@ class BsFilterNamespace extends BsMultiSelectFilter {
 	public function __construct( $oDiagram, $aDefaultValues ) {
 		parent::__construct( $oDiagram, $aDefaultValues );
 
-		$this->sLabel = wfMsg( 'bs-statistics-filter-namespace' );
+		$this->sLabel = wfMsg( 'bs-ns' );
 		$this->aAvailableValues = $this->loadAvailableValues();
 		$this->aDefaultValues = array( 0 );
 	}

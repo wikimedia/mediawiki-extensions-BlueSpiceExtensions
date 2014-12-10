@@ -36,14 +36,14 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 
 		this.colIWLPrefix = Ext.create( 'Ext.grid.column.Column', {
 			id: 'iwl_prefix',
-			header: mw.message('bs-interwikilinks-headerPrefix').plain(),
+			header: mw.message('bs-interwikilinks-headerprefix').plain(),
 			sortable: true,
 			dataIndex: 'iwl_prefix',
 			flex: 1
 		} );
 		this.colIWLUrl = Ext.create( 'Ext.grid.column.Column', {
 			id: 'iwl_url',
-			header: mw.message('bs-interwikilinks-headerUrl').plain(),
+			header: mw.message('bs-interwikilinks-headerurl').plain(),
 			sortable: true,
 			dataIndex: 'iwl_url',
 			flex: 1
@@ -63,7 +63,7 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 
 		this.active = 'add';
 		this.editmode = false;
-		this.dlgIWLAdd.setTitle( mw.message( 'bs-interwikilinks-titleAddInterWikiLink' ).plain() );
+		this.dlgIWLAdd.setTitle( mw.message( 'bs-interwikilinks-titleaddinterwikilink' ).plain() );
 		this.dlgIWLAdd.show();
 		this.callParent( arguments );
 	},
@@ -76,7 +76,7 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		this.active = 'edit';
 		this.editmode = true;
-		this.dlgIWLEdit.setTitle( mw.message( 'bs-interwikilinks-titleEditInterWikiLink' ).plain() );
+		this.dlgIWLEdit.setTitle( mw.message( 'bs-interwikilinks-titleeditinterwikilink' ).plain() );
 		this.dlgIWLEdit.setData( selectedRow[0].getData() );
 		this.dlgIWLEdit.show();
 		this.callParent( arguments );
@@ -85,8 +85,8 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 		bs.util.confirm(
 			'GMremove',
 			{
-				text: mw.message( 'bs-interwikilinks-confirmDeleteInterWikiLink' ).plain(),
-				title: mw.message( 'bs-interwikilinks-titleDeleteInterWikiLink' ).plain()
+				text: mw.message( 'bs-interwikilinks-confirmdeleteinterwikilink' ).plain(),
+				title: mw.message( 'bs-interwikilinks-titledeleteinterwikilink' ).plain()
 			},
 			{
 				ok: this.onRemoveIWLOk,
@@ -177,7 +177,7 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 	},
 	renderMsgSuccess: function( responseObj ) {
 		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMsuc', { text: responseObj.message, title: 'Status' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMsuc', { text: responseObj.message, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
 		}
 	},
 	renderMsgFailure: function( responseObj ) {
@@ -187,7 +187,7 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
 				message = message + responseObj.errors[i].message + '<br />';
 			}
-			bs.util.alert( 'UMfail', { text: message, title: 'Status' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
+			bs.util.alert( 'UMfail', { text: message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
 		}
 	}
 } );

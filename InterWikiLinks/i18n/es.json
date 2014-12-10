@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe",
+			"AVIADOR"
+		]
+	},
+	"bs-interwikilinks-desc": "Interfaz administrativa para añadir, editar y eliminar enlaces interwikis",
+	"bs-interwikilinks-invalid-pfx-spc": "El prefijo no es válido. No uses espacios.",
+	"bs-interwikilinks-invalid-url-spc": "La URL no es válida. No uses espacios.",
+	"bs-interwikilinks-label": "Enlaces interwikis",
+	"bs-interwikilinks-link-created": "Se ha creado el enlace interwiki.",
+	"bs-interwikilinks-link-added": "Se ha añadido el enlace interwiki.",
+	"bs-interwikilinks-link-deleted": "Se ha eliminado el enlace interwiki.",
+	"bs-interwikilinks-nooldpfx": "No se encontró el prefijo anterior.",
+	"bs-interwikilinks-nopfx": "Suministra un prefijo.",
+	"bs-interwikilinks-nourl": "Especifica una URL.",
+	"bs-interwikilinks-pfxtoolong": "El prefijo es demasiado largo. Usa 32 caracteres como máximo.",
+	"bs-interwikilinks-pfxexists": "Este prefijo ya existe.",
+	"bs-interwikilinks-headerprefix": "Prefijo",
+	"bs-interwikilinks-titleaddinterwikilink": "Agregar un enlace interwiki",
+	"bs-interwikilinks-titleeditinterwikilink": "Editar enlace interwiki",
+	"bs-interwikilinks-labelprefix": "Prefijo",
+	"bs-interwikilinks-titledeleteinterwikilink": "Eliminar enlace interwiki",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "¿Estás seguro de que deseas eliminar este enlace interwiki?",
+	"bs-interwikilinks-insertlink-tabtitle": "Enlazar a otra wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefijo",
+	"bs-interwikilink-select-a-prefix": "Elegir prefijo"
+}

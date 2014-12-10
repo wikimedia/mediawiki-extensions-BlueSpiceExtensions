@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"SPQRobin"
+		]
+	},
+	"bs-countthings-chars-label": "Karakters",
+	"bs-countthings-words-label": "Woorden",
+	"bs-countthings-pages-label": "Pagina's",
+	"bs-countthings-error-no-input": "Geen pagina opgegeven.",
+	"bs-countthings-error-not-exist": "De pagina \"$1\" bestaat niet.",
+	"bs-countthings-tag-countarticles-desc": "Geeft het aantal pagina's weer.",
+	"bs-countthings-tag-countusers-desc": "Geeft het aantal gebruikers weer."
+}

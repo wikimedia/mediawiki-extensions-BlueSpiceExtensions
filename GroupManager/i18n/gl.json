@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-groupmanager-grpexists": "O grupo xa existe.",
+	"bs-groupmanager-grpadded": "O grupo foi engadido.",
+	"bs-groupmanager-grpedited": "O grupo foi editado.",
+	"bs-groupmanager-grpremoved": "O grupo foi borrado.",
+	"bs-groupmanager-label": "Xestor de grupos"
+}

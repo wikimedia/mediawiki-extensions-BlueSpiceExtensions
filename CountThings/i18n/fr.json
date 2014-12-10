@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Orikrin1998",
+			"Gomoko"
+		]
+	},
+	"bs-countthings-desc": "Fournit des statistiques basées sur le contenu",
+	"bs-countthings-chars-label": "Caractères",
+	"bs-countthings-words-label": "Mots",
+	"bs-countthings-pages-label": "Pages",
+	"bs-countthings-error-no-input": "Aucune page fournie.",
+	"bs-countthings-error-invalid-mode": "Le mode \" $1 \" n'est pas valide. Merci d'utiliser « chars », « words » ou « pages ».",
+	"bs-countthings-error-not-exist": "La page « $1 » n’existe pas.",
+	"bs-countthings-tag-countarticles-desc": "Affiche le nombre de pages.",
+	"bs-countthings-tag-countusers-desc": "Affiche le nombre d'utilisateurs.",
+	"bs-countthings-tag-countcharacters-desc": "Affiche les statistiques du contenu de la page donnée. Attribut de configuration disponible :",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code> : Ce qui doit être compté comme <code>chars</code> (caractères), <code>words</code> (mots) ou <code>pages</code> (pages)."
+}

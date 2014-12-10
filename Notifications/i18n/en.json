@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Swidmann"
+		]
+	},
+	"bs-notifications-desc": "Sends notifications on user selected changes",
+	"prefs-notifications": "Notifications",
+	"prefs-echo-extended": "Advanced system settings",
+	"bs-notifications-pref-notifyns": "Only notify for changes in these namespaces:",
+	"bs-notifications-pref-notifynominor": "No notification for minor changes",
+	"bs-notifications-pref-active": "Enable notifications",
+	"bs-echo-anon-user": "anonymous",
+	"bs-echo-unknown-user": "unknown",
+	"bs-echo-page-edit": "The page [[:$1]] has been changed",
+	"bs-echo-page-create": "The page  [[:$1]] was created",
+	"bs-echo-page-delete": "The page [[:$1]] has been deleted",
+	"bs-echo-page-move": "The page [[:$1]] has been moved",
+	"bs-echo-page-newuser": "The user $1 was created.",
+	"bs-echo-page-shoutbox": "A new ShoutBox message on the site [[:$1]].",
+	"bs-notifications-email-new-subject": "Page $1 {{GENDER:$2|created}} by $2",
+	"bs-notifications-email-new": "The page \"$1\" was {{GENDER:$2|created}} by $2.\n\nComment:\n $3 \nYou can visit the page following this link:\n$4\n",
+	"bs-notifications-email-edit-subject": "Page $1 {{GENDER:$2|edited}} by $2",
+	"bs-notifications-email-edit": "The page \"$1\" was {{GENDER:$2|edited}} by $2.\n\nComment:\n $3 \nYou can visit the page following this link:\n$4.\n\nIf you only want to see the changes, follow this link:\n$5\n",
+	"bs-notifications-email-move-subject": "Page $1 {{GENDER:$2|moved}} by $2",
+	"bs-notifications-email-move": "The page \"$1\" was {{GENDER:$2|moved}} to $3 by $2. You can visit the page following this link:\n$4\n",
+	"bs-notifications-email-delete-subject": "Page $1 {{GENDER:$2|deleted}} by $2",
+	"bs-notifications-email-delete": "The page \"$1\" was {{GENDER:$2|deleted}} by $2.\n\nThis was the reason:\n$3",
+	"bs-notifications-email-addaccount-subject": "User $1 created",
+	"bs-notifications-email-addaccount": "The user $1 with real name $2 was created.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|posted}} a message on page $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|posted}} a message on page \"$1\".\n\nMessage:\n$3\n\nYou can visit the page following this link:\n$4.\n",
+	"echo-category-title-bs-create-cat": "Notification for new pages",
+	"echo-category-title-bs-edit-cat": "Notification for edits",
+	"echo-category-title-bs-move-cat": "Notification for moves",
+	"echo-category-title-bs-delete-cat": "Notification for deletions",
+	"echo-category-title-bs-newuser-cat": "Notification for new users (administrators only)",
+	"echo-category-title-bs-shoutbox-cat": "Notification for messages on watched pages (shoutbox)"
+}

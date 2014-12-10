@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-interwikilinks-desc": "加入、编辑和删除跨wiki连接的管理员界面",
+	"bs-interwikilinks-invalid-pfx-spc": "前缀无效，请不要使用空格。",
+	"bs-interwikilinks-invalid-url-spc": "URL无效，请不要使用空格。",
+	"bs-interwikilinks-label": "跨wiki连接",
+	"bs-interwikilinks-link-created": "跨wiki连接已创建。",
+	"bs-interwikilinks-link-added": "跨wiki连接已加入。",
+	"bs-interwikilinks-link-deleted": "跨wiki连接已删除。",
+	"bs-interwikilinks-nooldpfx": "找不到之前的前缀。",
+	"bs-interwikilinks-nopfx": "请提供前缀。",
+	"bs-interwikilinks-nourl": "请提供URL。",
+	"bs-interwikilinks-pfxtoolong": "前缀太长。请使用最多32个字符。",
+	"bs-interwikilinks-pfxexists": "此前缀已存在。",
+	"bs-interwikilinks-headerprefix": "前缀",
+	"bs-interwikilinks-titleaddinterwikilink": "加入跨wiki链接",
+	"bs-interwikilinks-titleeditinterwikilink": "编辑跨wiki连接",
+	"bs-interwikilinks-labelprefix": "前缀",
+	"bs-interwikilinks-titledeleteinterwikilink": "删除跨wiki链接",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "您确定您要删除此wiki连接？",
+	"bs-interwikilinks-insertlink-tabtitle": "连接至其他wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "前缀",
+	"bs-interwikilink-select-a-prefix": "选择前缀"
+}

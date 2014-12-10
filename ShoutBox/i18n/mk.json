@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-shoutbox-desc": "Додава расчленувачка функција за вградување на сопствени брзи пораки",
+	"prefs-shoutbox": "Брзи пораки",
+	"bs-shoutbox-title": "Брзи пораки",
+	"bs-shoutbox-message": "Напишете нов коментар...",
+	"bs-shoutbox-shout": "Испрати",
+	"bs-shoutbox-no-entries": "Овде засега нема ништо.",
+	"bs-shoutbox-loading": "Вчитувам...",
+	"bs-shoutbox-pref-committimeinterval": "Време помеѓу две пораки (во секунди):",
+	"bs-shoutbox-pref-maxmessagelength": "Максимална должина на пораката:",
+	"bs-shoutbox-pref-numberofshouts": "Колку пораки да се прикажуваат:",
+	"bs-shoutbox-pref-showage": "Прикажувај кога е создадена пораката",
+	"bs-shoutbox-pref-showuser": "Прикажувај го авторот на пораката",
+	"bs-shoutbox-pref-allowarchive": "Корисникот да може да брише свои ставки",
+	"bs-shoutbox-pref-show": "Прикажувај брзи пораки",
+	"bs-shoutbox-archive-success": "Ставката е избришана.",
+	"bs-shoutbox-archive-failure": "Се јави грешка при обидот за бришење на ставката. Обидете се повторно.",
+	"bs-shoutbox-archive-failure-user": "Ставките може да ги бришат само нивните автори.",
+	"bs-shoutbox-switch-description": "Ги скрива брзите пораки на страницава",
+	"bs-shoutbox-charactersleft": "{{PLURAL:$1|преостанува еден знак|преостануваат $1 знаци}}",
+	"bs-shoutbox-confirm-text": "Дали навистина сакате да ја избришете ставката?",
+	"bs-shoutbox-confirm-title": "Потврди",
+	"bs-shoutbox-entermessage": "Внесете порака",
+	"bs-shoutbox-too-early": "Почекајте неколку секунди пред да ја поднесете следната.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|брза порака|брзи пораки}}"
+}

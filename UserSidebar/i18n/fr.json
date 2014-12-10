@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-usersidebar-desc": "Ajoute l’onglet d’intérêt à la barre latérale",
+	"prefs-usersidebar": "Barre latérale utilisateur",
+	"bs-usersidebar-userpagesettings-link-title": "Modifier le contenu de vos centres d’intérêt",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Modifier}} l’intérêt"
+}

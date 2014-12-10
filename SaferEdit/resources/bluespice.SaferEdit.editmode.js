@@ -4,7 +4,6 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
-
  * @package    Bluespice_Extensions
  * @subpackage SaferEdit
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -62,10 +61,15 @@ BsSaferEditEditMode = {
 	 */
 	win: false,
 	/**
-	 * Timestamp of saved version in restore dialogue
+	 * Time of saved version in restore dialogue
 	 * @var string Rendered timestamp, currently age of stored release
 	 */
-	savedTS: '',
+	savedTime: '',
+	/**
+	 * Date of saved version in restore dialogue
+	 * @var string Rendered timestamp, currently age of stored release
+	 */
+	savedDate: '',
 	/**
 	 * Rendered HTML of saved version that is displayed in restore dialogue
 	 * @var string Rendered HTML
@@ -96,7 +100,7 @@ BsSaferEditEditMode = {
 	 */
 	toggleDialog: function() {
 		/* this is to fix a strange IE bug */
-		setTimeout('BsSaferEditEditMode.getLostTexts()', 10);
+		setTimeout( BsSaferEditEditMode.getLostTexts, 10 );
 	},
 	/**
 	 * Renders SaferEdit restore dialogue. Data (HTML and WikiCode) is expected to be loaded already
@@ -115,7 +119,7 @@ BsSaferEditEditMode = {
 					items: [
 						{
 							xtype: 'tbtext',
-							text: mw.message('bs-saferedit-lastSavedVersion').plain() + BsSaferEditEditMode.savedTS
+							text: mw.message('bs-saferedit-lastsavedversion', BsSaferEditEditMode.savedDate, BsSaferEditEditMode.savedTime).plain()
 						}
 					]
 				}, {
@@ -135,7 +139,7 @@ BsSaferEditEditMode = {
 				},
 				scope: this
 			},{
-				text: mw.message('bs-saferedit-cancel').plain(),
+				text: mw.message('bs-extjs-cancel').plain(),
 				handler: function(){
 					BsSaferEditEditMode.cancelSaferEdit();
 					BsSaferEditEditMode.canceledByUser = false;
@@ -178,9 +182,9 @@ BsSaferEditEditMode = {
 	saveTextListener: function(result, Listener) {
 		var text = BsSaferEditEditMode.getText();
 
-		if( BsSaferEditEditMode.canceledByUser ) return;
+		if ( BsSaferEditEditMode.canceledByUser ) return;
 
-		if( BsSaferEditEditMode.oldText != text ) {
+		if ( BsSaferEditEditMode.oldText != text ) {
 			BsSaferEditEditMode.isDirty = true;
 			BsSaferEditEditMode.oldText = text;
 			BsSaferEditEditMode.bBackupCreated = true;
@@ -189,14 +193,14 @@ BsSaferEditEditMode = {
 				text = '';
 			}
 		}
-		BSPing.registerListener( 
-			'SaferEditSave', 
-			BsSaferEditEditMode.interval, 
+		BSPing.registerListener(
+			'SaferEditSave',
+			BsSaferEditEditMode.interval,
 			[{
 				text: text,
 				section: bsSaferEditEditSection
-			}], 
-			BsSaferEditEditMode.saveTextListener 
+			}],
+			BsSaferEditEditMode.saveTextListener
 		);
 	},
 
@@ -209,11 +213,8 @@ BsSaferEditEditMode = {
 			'bs-saferedit',
 			{
 				titleMsg: 'bs-saferedit-othersectiontitle',
-				text: mw.message('bs-saferedit-othersectiontext1').plain() + 
-					'<br/>' + 
-					mw.message('bs-saferedit-othersectiontext2').plain() + 
-					BsSaferEditEditMode.savedTS + 
-					'<br />' + 
+				text: mw.message('bs-saferedit-othersectiontext1').plain() + '<br/>' +
+					mw.message('bs-saferedit-othersectiontext2', BsSaferEditEditMode.savedDate, BsSaferEditEditMode.savedTime ).plain() + '<br />' +
 					mw.message('bs-saferedit-othersectiontext3').plain()
 			},
 			{
@@ -227,16 +228,16 @@ BsSaferEditEditMode = {
 			}
 		);
 	},
-	
+
 	getText: function( mode ) {
 		var text = '';
 
 		switch (mode) {
 			case "VisualEditor":
-				text = $('wpTextbox1').val(); 
+				text = $('wpTextbox1').val();
 				break;
 			case "MW":
-				text = tinyMCE.activeEditor.getContent({save:true}); 
+				text = tinyMCE.activeEditor.getContent({save:true});
 				break;
 			default: //detect
 				if( typeof VisualEditorMode !== 'undefined' && VisualEditorMode ) {
@@ -267,16 +268,18 @@ BsSaferEditEditMode = {
 
 						if ( oResponse.notexts == "1" ) return;
 						if ( oResponse.savedOtherSection == "1" ) {
-							BsSaferEditEditMode.savedTS = oResponse.ts;
+							BsSaferEditEditMode.savedTime = oResponse.time;
+							BsSaferEditEditMode.savedDate = oResponse.date;
 							BsSaferEditEditMode.redirect = oResponse.redirect;
 							BsSaferEditEditMode.showRedirect();
 							return;
 						}
-						BsSaferEditEditMode.savedTS = oResponse.ts;
+						BsSaferEditEditMode.savedTime = oResponse.time;
+						BsSaferEditEditMode.savedDate = oResponse.date;
 						BsSaferEditEditMode.savedHTML = unescape(oResponse.html);
 						BsSaferEditEditMode.savedWikiCode = unescape(oResponse.wiki);
 
-						setTimeout('BsSaferEditEditMode.show()', 10);
+						setTimeout( BsSaferEditEditMode.show, 10 );
 					}
 				);
 			}
@@ -296,7 +299,7 @@ BsSaferEditEditMode = {
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText();
 		var links = document.getElementsByTagName( "a" );
 		for ( i = 0; i < links.length; i++ ) {
-			if ( links[i].innerHTML == mw.message('bs-saferedit-cancel').plain() || links[i].innerHTML == "Cancel" ) {
+			if ( links[i].innerHTML == mw.message('bs-extjs-cancel').plain() || links[i].innerHTML == "Cancel" ) {
 				links[i].onclick = BsSaferEditEditMode.cancelSaferEdit;
 			}
 		}
@@ -314,7 +317,7 @@ BsSaferEditEditMode = {
 	 */
 	saveText: function() {
 		var text = BsSaferEditEditMode.getText();
-		
+
 		if( BsSaferEditEditMode.canceledByUser ) return;
 
 		if( BsSaferEditEditMode.oldText != text ) {
@@ -325,9 +328,8 @@ BsSaferEditEditMode = {
 		} else {
 			if( BsSaferEditEditMode.bBackupCreated === true ) {
 				BsSaferEditEditMode.sendText( false );
-			}
-			else {
-				BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval);
+			} else {
+				BsSaferEditEditMode.timeout = setTimeout( BsSaferEditEditMode.saveText, BsSaferEditEditMode.interval);
 			}
 		}
 	},
@@ -345,8 +347,7 @@ BsSaferEditEditMode = {
 			),
 			function ( sResponseData ){
 				if ( sResponseData == "OK" ) {
-					//setTimeout('document.getElementById("hw_se_icon").style.display="none"', 200);
-					BsSaferEditEditMode.timeout = setTimeout("BsSaferEditEditMode.saveText()", BsSaferEditEditMode.interval); // TODO RBV (19.05.11 09:41): XHRResponse Abstraktion?
+					BsSaferEditEditMode.timeout = setTimeout( BsSaferEditEditMode.saveText, BsSaferEditEditMode.interval); // TODO RBV (19.05.11 09:41): XHRResponse Abstraktion?
 				}
 			}
 		);
@@ -408,7 +409,7 @@ BsSaferEditEditMode = {
 
 	hasUnsavedChanges: function(mode) {
 		var text = BsSaferEditEditMode.getText( mode );
-		
+
 		if ( text.trim() != BsSaferEditEditMode.origText.trim() ) {
 			BsSaferEditEditMode.isUnsaved = true;
 			return true;
@@ -423,20 +424,19 @@ BsSaferEditEditMode = {
 	checkSaved: function() {
 		if ( !BsSaferEditEditMode.isSubmit && BsSaferEditEditMode.hasUnsavedChanges("-") ) {
 			if(/chrome/.test(navigator.userAgent.toLowerCase())) { //chrome compatibility
-				return mw.message('bs-saferedit-unsavedChanges').plain();
+				return mw.message('bs-saferedit-unsavedchanges').plain();
 			}
 			if(window.event) {
-				window.event.returnValue = mw.message('bs-saferedit-unsavedChanges').plain();
-			}
-			else {
-				return mw.message('bs-saferedit-unsavedChanges').plain();
+				window.event.returnValue = mw.message('bs-saferedit-unsavedchanges').plain();
+			} else {
+				return mw.message('bs-saferedit-unsavedchanges').plain();
 			}
 		}
 		// do not return anything, not even null. otherwise IE will display the dialogue
 	},
 
 	onToggleEditor: function(name, data) {
-		if( BsSaferEditEditMode.isUnsaved ) return;
+		if ( BsSaferEditEditMode.isUnsaved ) return;
 
 		BsSaferEditEditMode.origText = BsSaferEditEditMode.getText( data );
 	},
@@ -453,22 +453,22 @@ BsSaferEditEditMode = {
 
 mw.loader.using( 'ext.bluespice', function() {
 	BsSaferEditEditMode.init();
-	if( mw.config.get('bsSaferEditHasTexts', false ) ) {
+	if ( mw.config.get('bsSaferEditHasTexts', false ) ) {
 		BsSaferEditEditMode.toggleDialog();
 	}
-	if( bsSaferEditWarnOnLeave && (typeof(alreadyBound) == 'undefined' || alreadyBound == false) ) {
-		$(window).bind( 'beforeunload', function() {
+	if ( bsSaferEditWarnOnLeave && (typeof(alreadyBound) == 'undefined' || alreadyBound == false) ) {
+		$(window).on( 'beforeunload', function() {
 			alreadyBound = true;
 			// if a string is returned, a dialog is displayed.
 			// if null is returned, nothing happenes and the page is left.
 			return BsSaferEditEditMode.checkSaved();
 		});
-		$('#editform').submit( function(){
+		$(document).on( 'submit', '#editform', function() {
 			BsSaferEditEditMode.isSubmit = true;
-		});
+		} );
 	}
 });
 
-$(document).bind('BSVisualEditorBeforeToggleEditor', BsSaferEditEditMode.onBeforeToggleEditor );
-$(document).bind('BSVisualEditorToggleEditor', BsSaferEditEditMode.onToggleEditor );
-$(document).bind('BSVisualEditorSavedText', BsSaferEditEditMode.onSavedText );
+$(document).on( 'BSVisualEditorBeforeToggleEditor', BsSaferEditEditMode.onBeforeToggleEditor );
+$(document).on( 'BSVisualEditorToggleEditor', BsSaferEditEditMode.onToggleEditor );
+$(document).on( 'BSVisualEditorSavedText', BsSaferEditEditMode.onSavedText );

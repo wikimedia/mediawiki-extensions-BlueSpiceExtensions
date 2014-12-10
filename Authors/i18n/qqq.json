@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-authors-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of authors extension",
+	"prefs-authors": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline of authors section preferences",
+	"bs-authors-title": "Headline of authors below page content\n*$1 is the number of authors - use for PLURAL distinction\n*$2 is the username - use for GENDER distinction\n{{Identical|Author}}",
+	"bs-authors-profileimage": "Image title for profile image, used on user page",
+	"bs-authors-profileimage-change": "Text for change your profile image, shown on user page",
+	"bs-authors-show-all-authors": "Image title for more authors available, used if there are too many authors",
+	"bs-authors-pref-imageheight": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for height of image:\n{{Identical|Image height}}",
+	"bs-authors-pref-imagewidth": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for width of image:\n{{Identical|Image width}}",
+	"bs-authors-pref-limit": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for how much authors should be displayed:",
+	"bs-authors-pref-show": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for display authors",
+	"bs-authors-switch-description": "Behaviour switch __NOAUTHORS__ description for hiding authors on this page, shown in InsertMagic."
+}

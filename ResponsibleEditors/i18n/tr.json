@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer",
+			"Violetanka"
+		]
+	},
+	"bs-responsibleeditors-desc": "MediaWiki'nin sayfalar için sorumlu editörleri yönetmesine olanak sağlar",
+	"bs-responsibleeditors-pref-echange": "Sayfa değiştirildiğinde bildir",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Erişim engellendi. Bu eylemi gerçekleştirme yetkiniz yok.",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Belirtilen sayfa mevcut değil."
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-extensioninfo-desc": "読み込まれた拡張機能についての情報の一覧",
+	"bs-extensioninfo-label": "拡張機能",
+	"bs-extensioninfo-software": "ソフトウェア",
+	"bs-extensioninfo-version": "バージョン",
+	"extensioninfo": "拡張機能",
+	"bs-extensioninfo-headerextname": "拡張機能名",
+	"bs-extensioninfo-headerversion": "バージョン",
+	"bs-extensioninfo-headerdesc": "説明",
+	"bs-extensioninfo-headerstatus": "状態",
+	"bs-extensioninfo-headerpackage": "パッケージ",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|項目}}"
+}

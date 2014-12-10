@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a",
+			"Okras"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Настройка ссылок верхнего меню",
+	"prefs-topmenubarcustomizer": "Настройщик меню",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Количество вложенных слоёв:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Элементов на главном слое:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Элементов на дополнительных слоях:"
+}

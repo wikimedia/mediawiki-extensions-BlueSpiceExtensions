@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-articleinfo-desc": "ステータス バーにページについての情報を提供する",
+	"prefs-articleinfo": "ページ情報",
+	"bs-articleinfo-pref-CheckRevisionInterval": "更新間隔 (秒):",
+	"bs-articleinfo-last-edited-tooltip": "最終編集",
+	"bs-articleinfo-categories": "カテゴリ",
+	"bs-articleinfo-all-categories-heading": "カテゴリ",
+	"bs-articleinfo-nocategories": "カテゴリが見つかりません。",
+	"bs-articleinfo-hiddencats": "隠しカテゴリ",
+	"bs-articleinfo-notemplates": "テンプレートが見つかりません。",
+	"bs-articleinfo-templates": "テンプレート",
+	"bs-articleinfo-subpages": "下位ページ",
+	"bs-articleinfo-check-revision-tooltip": "ページを再読み込み",
+	"bs-articleinfo-statebartopcategories": "カテゴリ",
+	"bs-articleinfo-statebartopsubpages": "下位ページ",
+	"bs-articleinfo-statebarbodycategories": "カテゴリ",
+	"bs-articleinfo-statebarbodysubpages": "下位ページ",
+	"bs-articleinfo-statebarbodytemplates": "テンプレート"
+}

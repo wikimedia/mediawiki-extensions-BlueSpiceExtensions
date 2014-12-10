@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg"
+		]
+	},
+	"bs-readers-desc": "Crée une liste des lecteurs d’une page",
+	"prefs-readers": "Lecteurs",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Lecteur|Lectrice}}|Lecteurs}}",
+	"readers-user": "Pages {{GENDER:$1|lues}} par : $1",
+	"readers": "Lecteurs de « $1 »",
+	"bs-readers-contentactions-label": "Afficher les lecteurs",
+	"bs-readers-pagenotexists": "La page n’existe pas.",
+	"bs-readers-pref-active": "Lecteurs actifs",
+	"bs-readers-pref-numofreaders": "Nombre de lecteurs à afficher :",
+	"bs-readers-emptyinput": "Aucune page n’a été fournie.",
+	"bs-readers-header-username": "Nom d’utilisateur",
+	"bs-readers-header-readerspath": "Lecteur",
+	"bs-readers-header-ts": "Date"
+}

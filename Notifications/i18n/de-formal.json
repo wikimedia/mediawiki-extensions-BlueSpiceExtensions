@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Swidmann"
+		]
+	},
+	"bs-notifications-email-new": "Die Seite \"$1\" wurde von $2 neu {{GENDER:$2|angelegt}}.\n\nKommentar:\n$3\n\nSie können den Artikel über diesen Link aufrufen:\n$4",
+	"bs-notifications-email-edit": "Die Seite \"$1\" wurde von $2 {{GENDER:$2|geändert}}.\n\nKommentar:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4.\n\nUm nur die Änderungen zu sehen, folgen Sie diesem Link:\n$5",
+	"bs-notifications-email-move": "Die Seite \"$1\" wurde von $2 nach $3 {{GENDER:$2|verschoben}}.\n\nSie können den Artikel über diese URL aufrufen:\n$4",
+	"bs-notifications-email-shout": "$2 hat auf der Seite \"$1\" eine Nachricht {{GENDER:$2|hinterlassen}}.\n\nNachricht:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4"
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-blog-desc": "Displays a blog style list of pages",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "There are no blog entries.",
+	"bs-blog-comments": "Comments",
+	"bs-blog-read-more": "Read more",
+	"bs-blog-trackback": "Trackback",
+	"bs-blog-permalink": "Permalink",
+	"bs-blog-show-all": "Show all entries",
+	"bs-blog-form-inline-text": "Title ...",
+	"bs-blog-form-title-text": "Create new blog entry",
+	"bs-blog-form-button-text": "Create",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Open new window for read more",
+	"bs-blog-pref-newentryfieldposition": "Position for the new blog entry form:",
+	"bs-blog-pref-showall": "Show all entries link",
+	"bs-blog-pref-showinfo": "Show information about the entry",
+	"bs-blog-pref-showlimit": "Number of blog entries:",
+	"bs-blog-pref-shownewentryfield": "Show new blog entry form",
+	"bs-blog-pref-showpermalink": "Show permalink link",
+	"bs-blog-pref-sortby": "Sort by:",
+	"bs-blog-pref-imagerendermode": "Display pictures as:",
+	"bs-blog-pref-imagefloatdirection": "Text flow: Image position",
+	"bs-blog-pref-maxentrycharacters": "Number of words per entry:",
+	"bs-blog-tag-blog-desc": "Display blog entries on every page."
+}

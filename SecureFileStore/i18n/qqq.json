@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Robby",
+			"Shirayuki",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-securefilestore-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of secure file store extension",
+	"prefs-securefilestore": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for secure file store section in preferences.",
+	"bs-securefilestore-pref-defaultdisposition": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for display files by default:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for browser\n{{Identical|Browser}}",
+	"bs-securefilestore-pref-defaultdisposition-external": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for external\n{{Identical|External}}",
+	"bs-securefilestore-pref-dispositionattachment": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for external file types:",
+	"bs-securefilestore-pref-dispositioninline": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for browser file types:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for always display these file types:"
+}

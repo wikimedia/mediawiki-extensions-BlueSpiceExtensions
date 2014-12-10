@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-insertlink-desc": "Über ein Dialogfeld werden Links, z.B. zu bestehenden Seiten, eingebunden",
+	"bs-insertlink": "Link einfügen",
+	"bs-insertlink-button-title": "Link einfügen/bearbeiten",
+	"bs-insertlink-dialog-title": "Link einfügen",
+	"bs-insertlink-tab-wiki-page": "Wiki-Seite",
+	"bs-insertlink-tab-ext-link": "Externer Link",
+	"bs-insertlink-tab-email": "E-Mail-Link",
+	"bs-insertlink-tab-ext-file": "Link auf Datei",
+	"bs-insertlink-label-page": "Seite",
+	"bs-insertlink-label-link": "Link",
+	"bs-insertlink-label-mail": "E-Mail Adresse",
+	"bs-insertlink-label-description": "Beschreibung",
+	"bs-insertlink-label-file": "Datei",
+	"bs-insertlink-label-searchfile": "Durchsuchen ...",
+	"bs-insertlink-select-a-page": "Ziel wählen ...",
+	"bs-insertlink-select-a-namespace": "(Seiten)",
+	"bs-insertlink-empty-field-text": "Um einen Link einzufügen muss ein Ziel angegeben werden.",
+	"bs-insertlink-no-applet": "Das Applet konnte nicht geladen werden. Bitte überprüfe deine Java-Installation."
+}

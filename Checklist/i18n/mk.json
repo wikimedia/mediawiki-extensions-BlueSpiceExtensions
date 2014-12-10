@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-checklist-desc": "Дава можност за поставување на штикларнички избор",
+	"bs-checklist-button-checkbox-title": "Штикларнички ставки",
+	"bs-checklist-menu-insert-list-title": "Вметни список",
+	"bs-checklist-menu-insert-checkbox": "Штикларник",
+	"bs-checklist-dlg-insert-list-title": "Вметни контролен список",
+	"bs-checklist-dlg-insert-list-value-list": "Список на вредности",
+	"bs-checklist-tag-checklist-desc": "Дава штикларник или изборно поле. Расположиви атрибути за задавање:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> дава изборен список.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Назив на шаблонот со расположивите вредности. На параметарот <code>type</code> мора да му се зададе <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> или вредност од шаблонот со вредности.",
+	"bs-checklist-dlg-new-list": "Создај нов список",
+	"bs-checklist-dlg-save-list": "Зачувај измени",
+	"bs-checklist-dlg-items-label": "Ставки на списокот",
+	"bs-checklist-dlg-items-emptytext": "Нема ставки на списоков",
+	"bs-checklist-dlg-items-hint": "За да додадете нова ставка, напишете ја во полето погоре и стиснете <kbd>Enter</kbd>.",
+	"bs-checklist-dlg-panel-title": "Расположиви списоци",
+	"bs-checklist-dlg-new-title": "Додај нов список",
+	"bs-checklist-dlg-new-prompt": "Внесете наслов на списокот",
+	"bs-checklist-alert": "Внимание!",
+	"bs-checklist-confirm-dirty-title": "Незачувани промени!",
+	"bs-checklist-confirm-dirty-text": "Направивте промени во списокот, но не ги зачувавте. Дали сигурно сакате да ги отфрлите?"
+}

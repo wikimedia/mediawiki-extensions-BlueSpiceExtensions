@@ -4,23 +4,17 @@
  *
  * Part of BlueSpice for MediaWiki
  *
+ * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * - initial commit
- */
 /**
- * Controls article index building mechanism for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
+ * Wiki page indexing mechanism
  */
 class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
@@ -31,7 +25,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 	/**
 	 * Pointer to current database connection
-	 * @var object Referenec to Database object 
+	 * @var object Referenec to Database object
 	 */
 	protected $oDbr = null;
 	/**
@@ -47,7 +41,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 	/**
 	 * Constructor for BuildIndexMwArticles class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate. 
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
@@ -63,8 +57,8 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 		$this->oDocumentsDb = $this->oDbr->select( 'page', 'page_id', array(), __METHOD__ );
 		$this->totalNoDocumentsCrawled = $this->oDbr->numRows( $this->oDocumentsDb );
 
-		$sMessage = wfMessage( 'bs-extendedsearch-totalnoofarticles' )->plain() . ': ' . $this->totalNoDocumentsCrawled . "\n";
-		$this->oMainControl->logFile( 'write', $sMessage );
+		$sMessage = wfMessage( 'bs-extendedsearch-totalnoofarticles', $this->totalNoDocumentsCrawled )->plain() . "\n";
+		$this->oMainControl->write( '', $sMessage );
 
 		return $this->totalNoDocumentsCrawled;
 	}
@@ -83,11 +77,9 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	public function makeSingleDocument( $sPageTitle, $sContent, $iPageID, $sPageNamespace,
 			$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections ) {
 
-		$oSolrDocument = $this->oMainControl->makeDocument(
-				'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '',
+		return $this->oMainControl->makeDocument(
+				'wiki', 'wiki', $sPageTitle, $sContent, $iPageID, $sPageNamespace, '', '',
 				$iTimestamp, $aCategories, $aEditors, $aRedirects, $bIsRedirect, $aSections );
-
-		return $oSolrDocument;
 	}
 
 	/**
@@ -103,7 +95,6 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 		}
 
 		$this->oDocumentsDb = $this->oDbr->select( 'page', 'page_id', array(), __METHOD__, $sOptions );
-		sleep( 2 );
 	}
 
 	/**
@@ -132,9 +123,8 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 				$bIsRedirect = $oTitle->isRedirect();
 
-				$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
-				$sContent = $this->oMainControl->parseTextForIndex( $sText, $oTitle );
-				$aSections = $this->oMainControl->extractEditSections( $sText );
+				$sContent = $this->oMainControl->prepareTextForIndex( $oTitle );
+				$aSections = $this->oMainControl->extractEditSections( $oTitle );
 				$aRedirects = $this->oMainControl->getRedirects( $oTitle );
 
 				$iTimestamp = $oTitle->getTouched();

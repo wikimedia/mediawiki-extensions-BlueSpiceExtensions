@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ankabel",
+			"Beta16",
+			"FRacco"
+		]
+	},
+	"bs-shoutbox-message": "Scrivi un nuovo commento...",
+	"bs-shoutbox-shout": "Invia",
+	"bs-shoutbox-loading": "Caricamento...",
+	"bs-shoutbox-pref-committimeinterval": "Tempo tra due messaggi (in secondi):",
+	"bs-shoutbox-pref-numberofshouts": "Numero di messaggi mostrati:",
+	"bs-shoutbox-pref-showuser": "Visualizza autore di un messaggio",
+	"bs-shoutbox-pref-allowarchive": "Gli utenti sono in grado di eliminare le proprie voci",
+	"bs-shoutbox-confirm-title": "Conferma"
+}

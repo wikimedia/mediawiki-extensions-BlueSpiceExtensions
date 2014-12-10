@@ -1,6 +1,8 @@
 <?php
 
-BsExtensionManager::registerExtension('ExtendedSearch', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
+BsExtensionManager::registerExtension( 'ExtendedSearch', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE );
+
+$wgMessagesDirs['ExtendedSearch'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['ExtendedSearch'] = __DIR__ . '/languages/ExtendedSearch.i18n.php';
 
@@ -9,12 +11,21 @@ $aResourceModuleTemplate = array(
 	'remoteExtPath' => 'BlueSpiceExtensions/ExtendedSearch/resources'
 );
 
+$wgResourceModules['ext.bluespice.extendedsearch.focus'] = array(
+	'scripts' => 'bluespice.extendedSearch.focus.js',
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.extendedsearch.form'] = array(
+	'scripts' => 'bluespice.extendedSearch.form.js',
+	'styles' => 'bluespice.extendedSearch.form.css'
+) + $aResourceModuleTemplate;
+
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete.style'] = array(
 	'styles' => 'bluespice.extendedSearch.autocomplete.css'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete'] = array(
-	'scripts' => 'bluespice.extendedSearch.autocompleteWidget.js',
+	'scripts' => 'bluespice.extendedSearch.autocomplete.js',
 	'dependencies' => array(
 		'jquery.ui.autocomplete'
 	),
@@ -39,8 +50,8 @@ $wgResourceModules['ext.bluespice.extendedsearch.specialpage'] = array(
 unset( $aResourceModuleTemplate );
 
 $wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
-$wgAjaxExportList[] = 'ExtendedSearch::getAutocompleteData';
-$wgAjaxExportList[] = 'ExtendedSearch::getRecentSearchTerms';
+$wgAjaxExportList[] = 'ExtendedSearchBase::getAutocompleteData';
+$wgAjaxExportList[] = 'ExtendedSearchBase::getRecentSearchTerms';
 
 $wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
 
@@ -70,22 +81,24 @@ $wgAutoloadClasses['SearchIndex'] = __DIR__ . '/includes/SearchIndex/SearchIndex
 $wgAutoloadClasses['SearchOptions'] = __DIR__ . '/includes/SearchIndex/SearchOptions.class.php';
 $wgAutoloadClasses['SearchRequest'] = __DIR__ . '/includes/SearchIndex/SearchRequest.class.php';
 $wgAutoloadClasses['SearchUriBuilder'] = __DIR__ . '/includes/SearchIndex/SearchUriBuilder.class.php';
+$wgAutoloadClasses['BsSearchResult'] = __DIR__ . '/includes/SearchIndex/SearchResult.class.php';
 
 $wgAutoloadClasses['ViewSearchExtendedOptionsForm'] = __DIR__ . '/views/view.SearchExtendedOptionsForm.php';
 $wgAutoloadClasses['ViewSearchResult'] = __DIR__ . '/views/view.SearchResult.php';
 $wgAutoloadClasses['ViewNoOfResultsFound'] = __DIR__ . '/views/view.NoOfResultsFound.php';
 $wgAutoloadClasses['ViewExtendedSearchFormPage'] = __DIR__ . '/views/view.ExtendedSearchFormPage.php';
 $wgAutoloadClasses['ViewSearchMultivalueField'] = __DIR__ . '/views/view.SearchMultivalueField.php';
-$wgAutoloadClasses['ViewExtendedSearchFacetBox'] = __DIR__ . '/views/view.ExtendedSearchFacetBox.php';
+$wgAutoloadClasses['ViewSearchFacet'] = __DIR__ . '/views/view.ExtendedSearchFacetBox.php';
 $wgAutoloadClasses['ViewSearchSuggest'] = __DIR__ . '/views/view.SearchSuggest.php';
 $wgAutoloadClasses['ViewSpell'] = __DIR__ . '/views/view.Spell.php';
 $wgAutoloadClasses['ViewMoreLikeThis'] = __DIR__ . '/views/view.MoreLikeThis.php';
 $wgAutoloadClasses['ViewExtendedSearchResultEntry'] = __DIR__ . '/views/view.ExtendedSearchResultEntry.php';
 
 // Specialpage and messages
-$wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
+$wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.class.php';
 $wgSpecialPageGroups['SpecialExtendedSearch'] = 'bluespice';
-$wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
-$wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch'; # Tell MediaWiki about the new special page and its class name
+$wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/languages/SpecialExtendedSearch.alias.php';
+$wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ExtendedSearch::getSchemaUpdates';
+$GLOBALS['wgHooks']['OpenSearchUrls'][] = 'ExtendedSearch::onOpenSearchUrls';

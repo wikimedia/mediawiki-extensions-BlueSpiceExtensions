@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a",
+			"Okras",
+			"Alexandr Efremov"
+		]
+	},
+	"bs-insertlink-desc": "Диалоговое окно для ввода ссылки",
+	"bs-insertlink": "Вставить ссылку",
+	"bs-insertlink-button-title": "Вставить/Редактировать ссылку",
+	"bs-insertlink-dialog-title": "Вставить ссылку",
+	"bs-insertlink-tab-wiki-page": "Вики-страница",
+	"bs-insertlink-tab-ext-link": "Внешняя ссылка",
+	"bs-insertlink-tab-email": "Ссылка электронной почты",
+	"bs-insertlink-tab-ext-file": "Ссылка на файл",
+	"bs-insertlink-label-page": "Страница",
+	"bs-insertlink-label-link": "Ссылка",
+	"bs-insertlink-label-mail": "Адрес электронной почты",
+	"bs-insertlink-label-description": "Описание",
+	"bs-insertlink-label-file": "Файл",
+	"bs-insertlink-label-searchfile": "Поиск…",
+	"bs-insertlink-select-a-page": "Выберите цель...",
+	"bs-insertlink-select-a-namespace": "(Страницы)",
+	"bs-insertlink-empty-field-text": "Чтобы вставить ссылку, вы должны указать конечное назначение.",
+	"bs-insertlink-no-applet": "Не удалось загрузить этот апплет. Пожалуйста, проверьте правильность установки Java."
+}

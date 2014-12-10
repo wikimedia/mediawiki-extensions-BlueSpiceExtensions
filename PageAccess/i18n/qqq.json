@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marc Reymann <reymann@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki"
+		]
+	},
+	"bs-pageaccess-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page access extension",
+	"bs-pageaccess-error-no-groups-given": "Text for no groups were specified.",
+	"bs-pageaccess-error-not-member-of-given-groups": "Text for you're not a member of the given groups. In order to prevent you from locking yourself out, saving was disabled.",
+	"bs-pageaccess-error-included-forbidden-template": "Text for you've tried to use the template \"$1\" to which you don't have read access. In order to prevent you from locking yourself out, saving was disabled.",
+	"bs-pageaccess-tag-groups-desc": "Used in InsertMagic extension, tag description for specify the groups that should have exclusive access to this page. Multiple groups can be separated by commas.\n{{Related|Bs-tag-desc}}",
+	"pageaccess": "{{doc-special|PageAccess}}"
+}

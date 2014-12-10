@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-preferences-desc": "Bietet die Möglichkeit für Administratoren, das ganze Wiki mit einer einzigen Spezialseite zu konfigurieren",
+	"prefs-bluespice": "BlueSpice",
+	"bs-preferences-label": "Einstellungen"
+}

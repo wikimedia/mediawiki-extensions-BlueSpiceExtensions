@@ -48,7 +48,7 @@ class InterWikiLinks extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InterWikiLinks',
-			EXTINFO::DESCRIPTION => 'Administration interface for adding, editing and deleting interwiki links',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-interwikilinks-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -190,17 +190,17 @@ class InterWikiLinks extends BsExtensionMW {
 
 		if ( strlen( $iw_prefix ) > 32 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-pfx_2long' )->plain() );
+			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-pfxtoolong' )->plain() );
 		}
 
 		if ( $iw_prefix == '' ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-no_pfx' )->plain() );
+			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-nopfx' )->plain() );
 		}
 
 		if ( $iw_url == '' ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => wfMessage( 'bs-interwikilinks-no_url' )->plain() );
+			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => wfMessage( 'bs-interwikilinks-nourl' )->plain() );
 		}
 
 		$oValidationResult = BsValidator::isValid( 'Url', $iw_url, array( 'fullResponse' => true ) );
@@ -214,12 +214,12 @@ class InterWikiLinks extends BsExtensionMW {
 			|| substr_count( $iw_prefix, '&' )
 			|| substr_count( $iw_prefix, ':' ) ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-invalid_pfx_spc' )->plain() );
+			$aAnswer['errors'][] = array('id' => 'iweditprefix', 'message' => wfMessage( 'bs-interwikilinks-invalid-pfx-spc' )->plain() );
 		}
 
 		if ( strpos( $iw_url, ' ' ) ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => wfMessage( 'bs-interwikilinks-invalid_url_spc' )->plain() );
+			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => wfMessage( 'bs-interwikilinks-invalid-url-spc' )->plain() );
 		}
 
 		if ( $bEditMode == 'true' ) {
@@ -235,12 +235,12 @@ class InterWikiLinks extends BsExtensionMW {
 		if ( $bEditMode == 'false' ) {
 			if ( $num_row >= 1 ) {
 				$aAnswer['success'] = false;
-				$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-pfx_exists' )->plain() );
+				$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-pfxexists' )->plain() );
 			}
 		} else {
 			if ( $num_row < 1 ) {
 				$aAnswer['success'] = false;
-				$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-no_old_pfx' )->plain() );
+				$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-nooldpfx' )->plain() );
 			}
 		}
 
@@ -260,7 +260,7 @@ class InterWikiLinks extends BsExtensionMW {
 					array( 'iw_prefix' => $iw_old_prefix )
 				);
 			}
-			$aAnswer['message'][] = $bEditMode ? wfMessage( 'bs-interwikilinks-link_added' )->plain() : wfMessage( 'bs-interwikilinks-link_created' )->plain();
+			$aAnswer['message'][] = $bEditMode ? wfMessage( 'bs-interwikilinks-link-added' )->plain() : wfMessage( 'bs-interwikilinks-link-created' )->plain();
 		}
 		
 		self::purgeTitles( $iw_prefix );
@@ -297,11 +297,11 @@ class InterWikiLinks extends BsExtensionMW {
 
 		if ( $res1 === false ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-no_url' )->plain() );
+			$aAnswer['errors'][] = array( 'message' => wfMessage( 'bs-interwikilinks-nourl' )->plain() );
 		}
 
 		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-interwikilinks-link_deleted' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-interwikilinks-link-deleted' )->plain();
 		}
 		
 		self::purgeTitles( $iw_prefix );

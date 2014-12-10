@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Sebastian Wallroth",
+			"Metalhead64"
+		]
+	},
+	"bs-widgetbar-desc": "Fügt der Oberfläche das Widget-Flyout hinzu",
+	"prefs-widgetbar": "Widget bar",
+	"bs-widgetbar-userpagesettings-headline": "Widgets",
+	"bs-widgetbar-userpagesettings-link-title": "Inhalt deiner Widgetbar {{GENDER:|bearbeiten}}:",
+	"bs-widgetbar-userpagesettings-link-text": "Meine Widget-Symbolleiste {{GENDER:|bearbeiten}}",
+	"bs-widget-container-tooltip": "Widgets",
+	"bs-widget-flyout-heading": "Widgets"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-extensioninfo-label": "Шордарш",
+	"bs-extensioninfo-version": "Верси",
+	"bs-extensioninfo-headerversion": "Верси",
+	"bs-extensioninfo-headerdesc": "Цуьнах лаьцна",
+	"bs-extensioninfo-headerstatus": "Статус",
+	"bs-extensioninfo-headerpackage": "Пакет",
+	"bs-extensioninfo-groupingtemplateviewtext": "Элемент{{PLURAL:$1||аш}}"
+}

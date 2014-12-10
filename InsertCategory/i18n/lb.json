@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-insertcategory-desc": "Dialog fir eng Kategorie anzeginn",
+	"bs-insertcategory-insertcat": "Kategorie drasetzen",
+	"prefs-insertcategory": "Kategorie drasetzen",
+	"bs-insertcategory-title": "Kategorie drasetzen",
+	"bs-insertcategory-success": "Kategorie gouf derbäigesat",
+	"bs-insertcategory-failure": "Feeler",
+	"bs-insertcategory-hint": "Informatioun: fir eng Kategorie dobäizesetze klickt 'Enter' oder schléisst Är Propos mat engem Komma of.",
+	"bs-insertcategory-panel-title": "Kategorien"
+}

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-readers-desc": "创建阅读某一页面的人的列表",
+	"prefs-readers": "读者",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|读者}}}}",
+	"readers-user": "页面被$1{{GENDER:$1|阅读}}",
+	"readers": "“$1”的读者",
+	"bs-readers-contentactions-label": "显示读者",
+	"bs-readers-pagenotexists": "页面不存在。",
+	"bs-readers-pref-active": "活跃读者",
+	"bs-readers-pref-numofreaders": "显示的读者数：",
+	"bs-readers-emptyinput": "未提供页面。",
+	"bs-readers-header-username": "用户名",
+	"bs-readers-header-readerspath": "读者",
+	"bs-readers-header-ts": "日期"
+}

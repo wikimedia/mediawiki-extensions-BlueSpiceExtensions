@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-contextmenu-page-edit": "Sayfayı değiştir",
+	"bs-contextmenu-page-delete": "Sayfayı sil",
+	"bs-contextmenu-page-move": "Sayfayı taşı",
+	"bs-contextmenu-page-history": "Sayfa geçmişini görüntüle",
+	"bs-contextmenu-page-protect": "Sayfayı korumaya al",
+	"bs-contextmenu-page-purge": "Ön belleği temizle ve sayfayı görüntüle",
+	"bs-contextmenu-page-info": "Sayfa bilgilerini görüntüle",
+	"bs-contextmenu-media-reupload": "Yeni sürüm yükle",
+	"bs-contextmenu-media-view-page": "Dosya açıklama sayfası ve geçmişini görüntüle",
+	"bs-contextmenu-user-mail": "E-posta gönder",
+	"bs-contextmenu-file-download": "Dosyayı indir"
+}

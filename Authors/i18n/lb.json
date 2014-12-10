@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-authors-desc": "Weist d'Profilbild vun den Auteure vun enger Säit",
+	"prefs-authors": "Auteure vun dëser Säit",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Auteur}}|Auteuren}}",
+	"bs-authors-profileimage": "Profilbild",
+	"bs-authors-profileimage-change": "Profilbild änneren",
+	"bs-authors-show-all-authors": "Méi Auteuren disponibel",
+	"bs-authors-pref-imageheight": "Héicht vum Bild:",
+	"bs-authors-pref-imagewidth": "Breet vum Bild:",
+	"bs-authors-pref-limit": "Maximal Zuel vun Auteuren déi gewise ginn:",
+	"bs-authors-pref-show": "Auteure weisen",
+	"bs-authors-switch-description": "Verstoppt d'Auteure op dëser Säit."
+}

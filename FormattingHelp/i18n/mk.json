@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-formattinghelp-desc": "Прикажува помош за форматирање на текстот",
+	"bs-formattinghelp-formatting": "Помош со форматирање",
+	"bs-formattinghelp-help-syntax": "Синтакса",
+	"bs-formattinghelp-help-example-text": "Текст",
+	"bs-formattinghelp-help-bold": "Задебелено",
+	"bs-formattinghelp-help-italic": "Закосено",
+	"bs-formattinghelp-help-whitespace": "Празно место",
+	"bs-formattinghelp-help-nowiki": "Спречи форматирање",
+	"bs-formattinghelp-help-color": "Обоен текст",
+	"bs-formattinghelp-help-headline": "Заглавие",
+	"bs-formattinghelp-help-linebreak": "Нов ред",
+	"bs-formattinghelp-help-ul": "Неподреден список",
+	"bs-formattinghelp-help-listitem": "Ставка во списокот",
+	"bs-formattinghelp-help-subitem": "Потставка во списокот",
+	"bs-formattinghelp-help-numberedlist": "Список со редни броеви",
+	"bs-formattinghelp-help-link": "Внатрешна врска",
+	"bs-formattinghelp-help-link-alt": "Внатрешна врска со алтернативен текст",
+	"bs-formattinghelp-help-caption": "Опис",
+	"bs-formattinghelp-help-extlink": "Надворешна врска",
+	"bs-formattinghelp-help-hr": "Хоризонтална линија",
+	"bs-formattinghelp-help-template": "Шаблон",
+	"bs-formattinghelp-help-templatename": "Назив на шаблонот"
+}

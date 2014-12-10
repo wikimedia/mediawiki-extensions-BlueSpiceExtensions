@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-dashboards-desc": "Tillhandahåller kontrollpaneler för användare och administratörer",
+	"bs-specialadmindashboard-label": "Kontrollpanel",
+	"bs-dashboards-addportlet": "Lägg till portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Kontrollpaneler",
+	"bs-dashboards-pref-userdashboardonlogo": "Webbplatsens logotyp länkar till användarkontrollpanelen",
+	"admindashboard": "Admin-kontrollpanel",
+	"userdashboard": "Användar-kontrollpanel",
+	"bs-dashboard-userportlet-calendar-title": "Kalender",
+	"bs-dashboard-userportlet-calendar-description": "Kalender"
+}

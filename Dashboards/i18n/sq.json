@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gertakapllani"
+		]
+	},
+	"bs-specialadmindashboard-label": "Pulti",
+	"bs-dashboards-addportlet": "Shtoni portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"admindashboard": "Admin pult",
+	"userdashboard": "Përdoruesit e pultit",
+	"bs-dashboard-userportlet-calendar-title": "Kalendari",
+	"bs-dashboard-userportlet-calendar-description": "Kalendari"
+}

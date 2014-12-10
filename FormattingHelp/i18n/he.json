@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Guycn2"
+		]
+	},
+	"bs-formattinghelp-desc": "הצגת עזרה עבור עיצוב טקסט",
+	"bs-formattinghelp-formatting": "עזרה בעיצוב",
+	"bs-formattinghelp-help-syntax": "תחביר",
+	"bs-formattinghelp-help-example-text": "טקסט",
+	"bs-formattinghelp-help-bold": "הדגשה",
+	"bs-formattinghelp-help-italic": "הטיה",
+	"bs-formattinghelp-help-whitespace": "רווח לבן",
+	"bs-formattinghelp-help-nowiki": "מניעת עיצוב",
+	"bs-formattinghelp-help-color": "טקסט צבוע",
+	"bs-formattinghelp-help-headline": "כותרת",
+	"bs-formattinghelp-help-linebreak": "מעבר שורה",
+	"bs-formattinghelp-help-ul": "רשימה בלתי־ממוינת",
+	"bs-formattinghelp-help-listitem": "פריט רשימה",
+	"bs-formattinghelp-help-subitem": "פריט משנה",
+	"bs-formattinghelp-help-numberedlist": "רשימה ממוספרת",
+	"bs-formattinghelp-help-link": "קישור פנימי",
+	"bs-formattinghelp-help-link-alt": "קישור פנימי עם טקסט חלופי",
+	"bs-formattinghelp-help-caption": "כיתוב",
+	"bs-formattinghelp-help-extlink": "קישור חיצוני",
+	"bs-formattinghelp-help-hr": "קו אופקי",
+	"bs-formattinghelp-help-template": "תבנית",
+	"bs-formattinghelp-help-templatename": "שם התבנית"
+}

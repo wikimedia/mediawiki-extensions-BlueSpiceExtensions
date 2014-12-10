@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Sebastian Wallroth"
+		]
+	},
+	"bs-articleinfo-desc": "Zeigt Informationen über einen Artikel in der Statusleiste an",
+	"prefs-articleinfo": "Seiteninformationen",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Aktualisierungsintervall in Sekunden",
+	"bs-articleinfo-last-edited": "Zeit seit der letzten Änderung",
+	"bs-articleinfo-last-edited-tooltip": "Letzte Bearbeitung",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Letzter Bearbeiter|Letzte Bearbeiterin}}",
+	"bs-articleinfo-categories": "Kategorien",
+	"bs-articleinfo-more-categories": "Es sind weitere Kategorien vorhanden",
+	"bs-articleinfo-all-categories-heading": "Kategorien",
+	"bs-articleinfo-nocategories": "Keine Kategorien gefunden.",
+	"bs-articleinfo-hiddencats": "Versteckte Kategorien",
+	"bs-articleinfo-notemplates": "Keine Vorlagen gefunden.",
+	"bs-articleinfo-templates": "Vorlagen",
+	"bs-articleinfo-subpages": "Unterseiten",
+	"bs-articleinfo-subpages-available": "Zu dieser Seite existieren Unterseiten",
+	"bs-articleinfo-subpages-too-much": "Es sind mehr als 100 Unterseiten verfügbar.",
+	"bs-articleinfo-check-revision": "Neue Version verfügbar",
+	"bs-articleinfo-check-revision-tooltip": "Seite neu laden",
+	"bs-articleinfo-statebartoplastedited": "Letzte Änderung",
+	"bs-articleinfo-statebartoplasteditor": "Letzter Bearbeiter",
+	"bs-articleinfo-statebartopcategories": "Kategorien",
+	"bs-articleinfo-statebartopsubpages": "Unterseiten",
+	"bs-articleinfo-statebarbodycategories": "Kategorien",
+	"bs-articleinfo-statebarbodysubpages": "Unterseiten",
+	"bs-articleinfo-statebarbodytemplates": "Vorlagen"
+}

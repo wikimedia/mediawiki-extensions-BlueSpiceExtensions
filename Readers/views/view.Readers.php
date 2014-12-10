@@ -37,17 +37,20 @@ class ViewReaders extends ViewBaseElement {
 		}
 
 		$sReadersList = '';
-		$iReaders = count( $this->mItems );
+		$iReaders = count( $this->_mItems );
+		$aOptions = array();
 		foreach ( $this->_mItems as $oMiniProfile ) {
+			$aOptions = $oMiniProfile->getOptions();
 			$oMiniProfile->setOption( 'classes', array( 'bs-readers-profile' ) );
 			$sReadersList .= $oMiniProfile->execute();
 		}
 
+		$sUsername = $aOptions['user']->getName();
 		$aOut = array();
 		$aOut[] = '<div class="bs-readers">';
 		$aOut[] = '  <fieldset>';
 		$aOut[] = '    <legend>';
-		$aOut[] = wfMessage( 'bs-readers-title', $iReaders )->text();
+		$aOut[] = wfMessage( 'bs-readers-title', $iReaders, $sUsername )->text();
 		$aOut[] = '    </legend>';
 		$aOut[] = $sReadersList;
 		$aOut[] = '  </fieldset>';

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-usermanager-desc": "Administrationsoberfläche für das Hinzufügen, Bearbeiten und Löschen von Benutzern",
+	"bs-usermanager-admin-nodelete": "Der Administrator-Account kann nicht gelöscht werden.",
+	"bs-usermanager-self-nodelete": "Du kannst nicht dein Benutzerkonto löschen.",
+	"bs-usermanager-db-error": "Es ist ein Datenbankfehler aufgetreten.",
+	"bs-usermanager-enter-pwd": "Bitte gib ein Passwort ein.",
+	"bs-usermanager-idnotexist": "Dieser Benutzer existiert nicht.",
+	"bs-usermanager-invalid-pwd": "Das Passwort ist unzulässig.",
+	"bs-usermanager-invalid-realname": "Der echt Name ist unzulässig.",
+	"bs-usermanager-invalid-uname": "Der Benutzername ist unzulässig.",
+	"bs-usermanager-invalid-email-gen": "Die E-Mail-Adresse ist unzulässig.",
+	"bs-usermanager-label": "Benutzerverwaltung",
+	"bs-usermanager-user-added": "Der Benutzer wurde hinzugefügt.",
+	"bs-usermanager-user-deleted": "Der Benutzer wurde gelöscht.",
+	"bs-usermanager-user-exists": "Der Benutzername ist schon vorhanden.",
+	"bs-usermanager-save-successful": "Änderungen gespeichert.",
+	"bs-usermanager-headerusername": "Benutzername",
+	"bs-usermanager-headerrealname": "Echter Name",
+	"bs-usermanager-headeremail": "E-Mail",
+	"bs-usermanager-headergroups": "Gruppen",
+	"bs-usermanager-titleadduser": "Benutzer hinzufügen",
+	"bs-usermanager-titleeditdetails": "Benutzer bearbeiten",
+	"bs-usermanager-labelnewpassword": "Passwort",
+	"bs-usermanager-labelpasswordcheck": "Passwort bestätigen",
+	"bs-usermanager-titledeleteuser": "Benutzer löschen",
+	"bs-usermanager-confirmdeleteuser": "Bist du sicher, dass du {{PLURAL:$1|diesen|diese $1}} Benutzer löschen willst?",
+	"bs-usermanager-groups-more": "... mehr",
+	"bs-usermanager-no-self-desysop": "Du kannst dir nicht selbst das Sysop recht nehmen."
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-statebar-desc": "ステータス バーを提供する",
+	"prefs-statebar": "ステータス バー",
+	"bs-statebar-pref-show": "ステータス バーを表示",
+	"bs-statebar-viewtoggler": "詳細",
+	"bs-statebar-viewtoggler-tooltip": "詳細情報を表示",
+	"bs-statebar-ajax-nobodyviews": "利用できる情報はありません。"
+}

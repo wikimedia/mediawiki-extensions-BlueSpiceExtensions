@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-insertlink": "Inserir un ligam",
+	"bs-insertlink-button-title": "Inserir/modificar un ligam",
+	"bs-insertlink-dialog-title": "Inserir un ligam",
+	"bs-insertlink-tab-wiki-page": "Pagina del wiki",
+	"bs-insertlink-tab-ext-link": "Ligam extèrne.",
+	"bs-insertlink-tab-email": "Ligam de corrièr electronic",
+	"bs-insertlink-tab-ext-file": "Ligam cap a un fichièr",
+	"bs-insertlink-label-page": "Pagina",
+	"bs-insertlink-label-link": "Ligam",
+	"bs-insertlink-label-mail": "Adreça de corrièr electronic",
+	"bs-insertlink-label-description": "Descripcion",
+	"bs-insertlink-label-file": "Fichièr",
+	"bs-insertlink-label-searchfile": "Recèrca...",
+	"bs-insertlink-select-a-page": "Causir la cibla …",
+	"bs-insertlink-select-a-namespace": "(Paginas)"
+}

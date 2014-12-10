@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226",
+			"Robby",
+			"Shirayuki"
+		]
+	},
+	"bs-whoisonline-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of who is online extension",
+	"bs-whoisonline-nousers": "Text for nobody is logged in.",
+	"bs-whoisonline-widget-title": "Widget headline for who is online?\n {{Identical|Who is online?}}",
+	"prefs-whoisonline": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for who is online section.",
+	"bs-whoisonline-pref-limitcount": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for maximum number of users shown:",
+	"bs-whoisonline-pref-orderby": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by:\n{{Identical|Sort by}}",
+	"bs-whoisonline-pref-maxidletime": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for time in seconds until a user is marked as offline:",
+	"bs-whoisonline-pref-orderby-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for uptime.\n\n\"Uptime\" is internally called \"onlinetime\" (Online time).\n{{Identical|Uptime}}",
+	"bs-whoisonline-pref-orderby-name": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for name\n{{Identical|Name}}",
+	"bs-whoisonline-pref-interval": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for update interval in seconds:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Used in InsertMagic extension, tag description for renders the number of currently logged in users.\n{{Related|Bs-tag-desc}}",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Used in InsertMagic extension, tag description for renders a little fly-out list of currently logged in users.\n{{Related|Bs-tag-desc}}"
+}

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"פוילישער"
+		]
+	},
+	"prefs-visualeditor": "וויזועל־רעדאקטירער",
+	"bs-visualeditor-sortable": "סארטירבאר",
+	"bs-visualeditor-wikitable": "סטאנדארט",
+	"bs-visualeditor-contenttable": "אינהאַלט",
+	"bs-visualeditor-contenttable-blue": "אינהאלט (בלוי)",
+	"bs-visualeditor-casablanca": "קאסאבלאנקא",
+	"bs-visualeditor-aligntop": "אויבן",
+	"bs-visualeditor-alignbottom": "אונטן",
+	"bs-visualeditor-bsactions-wiki": "וויקיטעקסט",
+	"bs-visualeditor-bsactions-save": "אויפֿהיטן",
+	"bs-visualeditor-bsactions-headings": "קעפלעך",
+	"bs-visualeditor-bsactions-heading2": "קעפל 2",
+	"bs-visualeditor-bsactions-heading4": "קעפל 4"
+}

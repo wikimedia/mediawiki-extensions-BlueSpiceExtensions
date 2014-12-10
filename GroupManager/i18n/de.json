@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-groupmanager-desc": "Administrationsoberfläche zum Hinzufügen, Bearbeiten und Löschen von Benutzergruppen und ihrer Rechte",
+	"bs-groupmanager-grpexists": "Die Gruppe ist bereits vorhanden.",
+	"bs-groupmanager-grpadded": "Die Gruppe wurde hinzugefügt.",
+	"bs-groupmanager-grpedited": "Die Gruppe wurde bearbeitet.",
+	"bs-groupmanager-grpremoved": "Die Gruppe wurde gelöscht.",
+	"bs-groupmanager-label": "Gruppenverwaltung",
+	"bs-groupmanager-invalid-name": "Der Gruppenname enthält {{PLURAL:$1|ein|}} nicht erlaubte{{PLURAL:$1|s|}} Zeichen: $2",
+	"bs-groupmanager-invalid-name-length": "Der Gruppenname darf nicht länger als 16 Zeichen lang sein.",
+	"bs-groupmanager-invalid-name-numeric": "Der Gruppenname muss minderstens einen Buchstaben beinhalten.",
+	"bs-groupmanager-headergroup": "Gruppen",
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|Gruppe|Gruppen}} löschen",
+	"bs-groupmanager-titlenewgroup": "Gruppe hinzufügen",
+	"bs-groupmanager-titleeditgroup": "Gruppe bearbeiten",
+	"bs-groupmanager-removegroup": "Willst du die {{PLURAL:$1|Gruppe|Gruppen}} wirklich löschen?",
+	"bs-groupmanager-removegroup-message-success": "Folgende {{PLURAL:$1|Gruppe wurde|Gruppen wurden}} gelöscht: $2",
+	"bs-groupmanager-removegroup-message-failure": "Folgende {{PLURAL:$1|Gruppe konnte|Gruppen konnten}} nicht gelöscht werden: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Ein unbekannter Fehler ist aufgetreten, bitte versuche es erneut.",
+	"bs-groupmanager-lablename": "Gruppenname:",
+	"bs-groupmanager-msgnoteditable": "Dies ist eine Systemgruppe und kann nicht umbenannt werden.",
+	"bs-groupmanager-msgnotremovable": "Dies ist eine Systemgruppe und kann nicht gelöscht werden."
+}

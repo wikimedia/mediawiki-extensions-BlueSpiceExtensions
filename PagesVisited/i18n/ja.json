@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"prefs-pagesvisited": "閲覧したページ",
+	"bs-pagesvisited-widget-title": "閲覧したページ",
+	"bs-pagesvisited-error-nsnotvalid": "指定した{{PLURAL:$1|名前空間}} <code>$2</code> は有効ではありません。",
+	"bs-pagesvisited-pref-widgetlimit": "項目数の上限:",
+	"bs-pagesvisited-pref-widgetns": "名前空間:",
+	"bs-pagesvisited-pref-widgetsortodr": "並び順:",
+	"bs-pagesvisited-pref-sort-time": "日時",
+	"bs-pagesvisited-pref-sort-pagename": "ページ名",
+	"bs-pagesvisited-tag-pagesvisited-desc": "閲覧したページの一覧を表示する。"
+}

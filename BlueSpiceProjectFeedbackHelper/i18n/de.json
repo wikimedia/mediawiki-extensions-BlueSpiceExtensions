@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>"
+		]
+	},
+	"bs-bluespiceprojectfeedbackhelper-desc": "Feedback über BlueSpice abgeben",
+	"prefs-bluespiceprojectfeedbackhelper": "Feedback",
+	"bs-bluespiceprojectfeedbackhelper-hint": "Wir freuen uns, dass du '''BlueSpice''' verwendest. Bitte hilf uns die Software zu verbessern und gib uns ein kurzes [http://sourceforge.net/p/bluespice/discussion/1249667/ Feedback]. Fehler teilst du uns am besten durch den [http://sourceforge.net/tracker/?func=add&group_id=358032&atid=1494709 BugTracker] mit. Wenn du über aktuelle Entwicklungen, Tipps und Tricks auf dem Laufenden gehalten werden möchtest, dann folge uns doch auf einem dieser Kanäle: [http://www.facebook.com/BlueSpice.for.MediaWiki Facebook], [http://twitter.com/BlueSpiceTweets Twitter], [http://www.youtube.com/BlueSpiceVideo YouTube], [http://plus.google.com/102189038724381341308 G+], [http://blog.blue-spice.org Blog]. Vielen Dank für deine Unterstützung!",
+	"bs-bluespiceprojectfeedbackhelper-active": "Aktiv",
+	"bs-bluespiceprojectfeedbackhelper-closebutton": "Schließen",
+	"bs-bluespiceprojectfeedbackhelper-confirm": "Möchtest du diesen Hinweis deaktivieren? Wenn du auf \"Abbrechen\" klickst wird er in sieben Tagen wieder angezeigt."
+}

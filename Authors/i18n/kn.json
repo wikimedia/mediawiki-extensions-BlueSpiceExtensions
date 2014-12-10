@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"VASANTH S.N."
+		]
+	},
+	"bs-authors-desc": "ಪುಟದ ಲೇಖಕರನ್ನು ಅವರ ಭಾವಚಿತ್ರದೊಂದಿಗೆ ಪ್ರದರ್ಶಿಸುತ್ತದೆ",
+	"prefs-authors": "ಈ ಲೇಖನದ ಲೇಖಕರು",
+	"bs-authors-title": "{{PLURAL:$1|ಲೇಖಕ|ಲೇಖಕರು}}",
+	"bs-authors-profileimage": "ವ್ಯಕ್ತಿ ಚಿತ್ರ",
+	"bs-authors-profileimage-change": "ವ್ಯಕ್ತಿಚಿತ್ರದ ಭಾವಚಿತ್ರವನ್ನು ಬದಲಾಯಿಸಿ",
+	"bs-authors-show-all-authors": "ಹೆಚ್ಚಿನ ಲೇಖಕರು ಲಭ್ಯ",
+	"bs-authors-pref-imageheight": "ಭಾವಚಿತ್ರದ ಎತ್ತರ:",
+	"bs-authors-pref-imagewidth": "ಭಾವಚಿತ್ರದ ಅಗಲ:",
+	"bs-authors-pref-limit": "ಪ್ರದರ್ಶಿಸುವ ಲೇಖಕರ ಮಿತಿ:",
+	"bs-authors-pref-show": "ಲೇಖಕರನ್ನು ಪ್ರಕಟಪಡಿಸಿ",
+	"bs-authors-switch-description": "ಈ ಲೇಖನದಲ್ಲಿ ಲೇಖಕರನ್ನು ಅಡಗಿಸಲಾಗುತ್ತಿದೆ."
+}

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Mcervera",
+			"Macofe"
+		]
+	},
+	"bs-authors-desc": "Muestra las imágenes de perfil de los autores de una página",
+	"prefs-authors": "Autores de esta página",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor|Autora}}|Autores}}",
+	"bs-authors-profileimage": "Imagen de perfil",
+	"bs-authors-profileimage-change": "Cambiar imagen de perfil",
+	"bs-authors-show-all-authors": "Más autores disponibles",
+	"bs-authors-pref-imageheight": "Altura de la imagen:",
+	"bs-authors-pref-imagewidth": "Anchura de la imagen:",
+	"bs-authors-pref-limit": "Límite de autores que mostrar:",
+	"bs-authors-pref-show": "Mostrar autores",
+	"bs-authors-switch-description": "Oculta los autores de esta página."
+}

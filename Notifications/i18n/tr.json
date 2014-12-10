@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"prefs-echo-extended": "Gelişmiş sistem ayarları",
+	"bs-notifications-pref-active": "Bildirimleri etkinleştir",
+	"bs-echo-page-create": "[[:$1]] sayfası oluşturuldu"
+}

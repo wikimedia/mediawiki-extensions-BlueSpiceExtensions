@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"bs-interwikilinks-invalid-pfx-spc": "Az előtag érvénytelen. Kérjük, ne használj szóközöket.",
+	"bs-interwikilinks-invalid-url-spc": "Az URL érvénytelen. Kérjük, ne használj szóközöket.",
+	"bs-interwikilinks-label": "Interwiki hivatkozások",
+	"bs-interwikilinks-link-created": "Interwiki link létrehozva.",
+	"bs-interwikilinks-link-deleted": "Az interwiki link törölve.",
+	"bs-interwikilinks-pfxexists": "Ez az előtag már létezik.",
+	"bs-interwikilinks-headerprefix": "Előtag",
+	"bs-interwikilinks-titleaddinterwikilink": "Interwiki hivatkozás hozzáadása",
+	"bs-interwikilinks-labelprefix": "Előtag",
+	"bs-interwikilinks-titledeleteinterwikilink": "Interwiki hivatkozás törlése",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Biztosan törölni szeretnéd ezt az interwiki hivatkozást?",
+	"bs-interwikilinks-insertlink-tabtitle": "Link másik wikihez",
+	"bs-interwikilinks-insertlink-labelprefix": "Előtag",
+	"bs-interwikilink-select-a-prefix": "Előtag választása"
+}

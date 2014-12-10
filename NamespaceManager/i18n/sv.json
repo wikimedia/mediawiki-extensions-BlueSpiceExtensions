@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix",
+			"Lokal Profil",
+			"Warrakkk"
+		]
+	},
+	"bs-namespacemanager-desc": "Administrationsgränssnittet för att redigera och radera namnrymder",
+	"bs-namespacemanager-label": "Namnrymdshanterare",
+	"bs-namespacemanager-wrong-name": "Namnrymden innehåller ogiltiga tecken.",
+	"bs-namespacemanager-ns-exists": "Namnrymden finns redan.",
+	"bs-namespacemanager-ns-length": "Namnrymden måste ha en längd av minst två tecken.",
+	"bs-namespacemanager-invalid-id": "Inget giltigt namnrymds-ID",
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Namnrymd",
+	"bs-namespacemanager-label-editable": "Omdöpningsbar",
+	"bs-namespacemanager-label-content": "Innehållsnamnrymd",
+	"bs-namespacemanager-label-searchable": "Sök som standard",
+	"bs-namespacemanager-label-subpages": "Undersidor",
+	"bs-namespacemanager-nsadded": "Namnrymden har lagts till.",
+	"bs-namespacemanager-nsremoved": "Namnrymden har tagits bort.",
+	"bs-namespacemanager-nsedited": "Namnrymden har redigerats.",
+	"bs-namespacemanager-tipadd": "Lägg till namnrymd",
+	"bs-namespacemanager-tipedit": "Redigera namnrymd",
+	"bs-namespacemanager-tipremove": "Ta bort namnrymd",
+	"bs-namespacemanager-msgnoteditabledelete": "Denna namnrymd är en systemnamnrymd och kan inte raderas.",
+	"bs-namespacemanager-labelnsname": "Namnrymdsnamn",
+	"bs-namespacemanager-willdelete": "Kommer att raderas",
+	"bs-namespacemanager-willmove": "Kommer att flyttas till \"{{int:bs-ns_main}}\"",
+	"bs-namespacemanager-willmovesuffix": "Kommer att flyttas till \"{{int:bs-ns_main}}\" med suffixet \"$1\"",
+	"bs-namespacemanager-deletewarning": "Är du säker på att du vill radera denna namnrymd? Radering av en namnrymd kan inte återställas.",
+	"bs-namespacemanager-pagepresent": "Sidor i denna namnrymd:"
+}

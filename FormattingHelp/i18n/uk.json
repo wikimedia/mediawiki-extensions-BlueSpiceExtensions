@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andriykopanytsia"
+		]
+	},
+	"bs-formattinghelp-desc": "Відображає довідку із форматування тексту",
+	"bs-formattinghelp-formatting": "Довідка з форматування",
+	"bs-formattinghelp-help-syntax": "Синтаксис",
+	"bs-formattinghelp-help-example-text": "Текст",
+	"bs-formattinghelp-help-bold": "Жирний",
+	"bs-formattinghelp-help-italic": "Курсив",
+	"bs-formattinghelp-help-whitespace": "Пробіл",
+	"bs-formattinghelp-help-nowiki": "Запобігання форматуванню",
+	"bs-formattinghelp-help-color": "Кольоровий текст",
+	"bs-formattinghelp-help-headline": "Заголовок",
+	"bs-formattinghelp-help-linebreak": "Розрив рядка",
+	"bs-formattinghelp-help-ul": "Невпорядкований список",
+	"bs-formattinghelp-help-listitem": "Елемент списку",
+	"bs-formattinghelp-help-subitem": "Підпункт",
+	"bs-formattinghelp-help-numberedlist": "Нумерований список",
+	"bs-formattinghelp-help-link": "Внутрішнє посилання",
+	"bs-formattinghelp-help-link-alt": "Внутрішнє посилання з альтернативним текстом",
+	"bs-formattinghelp-help-caption": "Підпис",
+	"bs-formattinghelp-help-extlink": "Зовнішнє посилання",
+	"bs-formattinghelp-help-hr": "Горизонтальна лінія",
+	"bs-formattinghelp-help-template": "Шаблон",
+	"bs-formattinghelp-help-templatename": "Назва шаблону"
+}

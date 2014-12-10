@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-pagesvisited-desc": "Provides a personalized list of the last visited pages",
+	"prefs-pagesvisited": "Pages visited",
+	"bs-pagesvisited-widget-title": "Pages visited",
+	"bs-pagesvisited-error-nsnotvalid": "Given {{PLURAL:$1|namespace|namespaces}} <code>$2</code> {{PLURAL:$1|is|are}} not valid.",
+	"bs-pagesvisited-pref-widgetlimit": "Limit of entries:",
+	"bs-pagesvisited-pref-widgetns": "Namespaces:",
+	"bs-pagesvisited-pref-widgetsortodr": "Sort by:",
+	"bs-pagesvisited-pref-sort-time": "Time",
+	"bs-pagesvisited-pref-sort-pagename": "Title",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Displays a list of pages you have visited."
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Liuxinyu970226",
+			"Nemo bis"
+		]
+	},
+	"bs-formattinghelp-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of formatting help extension",
+	"bs-formattinghelp-formatting": "Title of formatting help window\n{{Identical|Formatting help}}",
+	"bs-formattinghelp-help-syntax": "Label for syntax\n{{Identical|Syntax}}",
+	"bs-formattinghelp-help-example-text": "Text for text\n{{Identical|Text}}",
+	"bs-formattinghelp-help-bold": "Label for bold\n{{Identical|Bold}}",
+	"bs-formattinghelp-help-italic": "Label for italics\n{{Identical|Italic}}",
+	"bs-formattinghelp-help-whitespace": "Label for whitespace\n{{Identical|Whitespace}}",
+	"bs-formattinghelp-help-nowiki": "Label for prevent formatting\n{{Identical|Prevent formatting}}",
+	"bs-formattinghelp-help-color": "Label for colored text\n{{Identical|Colored text}}",
+	"bs-formattinghelp-help-headline": "Label and text for headline\n{{Identical|Headline}}",
+	"bs-formattinghelp-help-linebreak": "Label for line break\n{{Identical|Line break}}",
+	"bs-formattinghelp-help-ul": "Label for unordered list\n{{Identical|Unordered list}}",
+	"bs-formattinghelp-help-listitem": "Text for an item of a list. This is part of an example code.\n\n<pre>\n* List item\n* List item\n</pre>",
+	"bs-formattinghelp-help-subitem": "Text for sub item\n{{Identical|Sub item}}",
+	"bs-formattinghelp-help-numberedlist": "Label for numbered list\n{{Identical|Numbered list}}",
+	"bs-formattinghelp-help-link": "Label for internal link\n{{Identical|Internal link}}",
+	"bs-formattinghelp-help-link-alt": "Label for internal link with alternative text",
+	"bs-formattinghelp-help-caption": "Text for caption\n{{Identical|Caption}}",
+	"bs-formattinghelp-help-extlink": "Label for external link\n{{Identical|External link}}",
+	"bs-formattinghelp-help-hr": "Label for horizontal line\n{{Identical|Horizontal line}}",
+	"bs-formattinghelp-help-template": "Label for template\n{{Identical|Template}}",
+	"bs-formattinghelp-help-templatename": "Text for template name\n{{Identical|Template name}}"
+}

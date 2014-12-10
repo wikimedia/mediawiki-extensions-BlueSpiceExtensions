@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-extendededitbar-desc": "提供额外按钮到wiki编辑字段",
+	"bs-extendededitbar-redirecttip": "重定向",
+	"bs-extendededitbar-redirectsample": "插入文本",
+	"bs-extendededitbar-striketip": "删除线",
+	"bs-extendededitbar-strikesample": "删除线文本",
+	"bs-extendededitbar-entertip": "换行符",
+	"bs-extendededitbar-uppertip": "上标",
+	"bs-extendededitbar-uppersample": "上标文字",
+	"bs-extendededitbar-lowertip": "下标",
+	"bs-extendededitbar-lowersample": "下标文字",
+	"bs-extendededitbar-smalltip": "小",
+	"bs-extendededitbar-smallsample": "小号",
+	"bs-extendededitbar-commenttip": "插入隐藏评论",
+	"bs-extendededitbar-commentsample": "评论",
+	"bs-extendededitbar-gallerytip": "插入图集",
+	"bs-extendededitbar-gallerysamplepicture": "图片",
+	"bs-extendededitbar-gallerysamplecaption": "说明",
+	"bs-extendededitbar-quotetip": "插入引用文本块",
+	"bs-extendededitbar-quotesample": "引用块",
+	"bs-extendededitbar-tabletip": "插入表格",
+	"bs-extendededitbar-tablesampleheader": "首段",
+	"bs-extendededitbar-tablesamplerow": "行",
+	"bs-extendededitbar-tablesamplecell": "单元格"
+}

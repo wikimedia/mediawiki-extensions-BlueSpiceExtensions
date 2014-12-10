@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-visualeditor-desc": "MediaWiki的可视化编辑器",
+	"prefs-visualeditor": "可视化编辑器",
+	"bs-visualeditor-editbutton-hint": "可视化编辑器",
+	"bs-visualeditor-pref-disablens": "禁用于以下名字空间：",
+	"bs-visualeditor-pref-use": "默认使用所见即所得编辑器",
+	"bs-visualeditor-save-message": "已保存修订$1，摘要“$2”。",
+	"bs-visualeditor-no-summary": "没有摘要",
+	"bs-visualeditor-sortable": "可排序",
+	"bs-visualeditor-wikitable": "标准",
+	"bs-visualeditor-contenttable": "内容",
+	"bs-visualeditor-contenttable-black": "内容（黑色）",
+	"bs-visualeditor-contenttable-blue": "内容（蓝色）",
+	"bs-visualeditor-contenttable-darkblue": "内容（深蓝色）",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "卡萨布兰卡",
+	"bs-visualeditor-greyscale": "灰度",
+	"bs-visualeditor-greyscale-narrow": "灰度（窄型）",
+	"bs-visualeditor-aligntop": "顶部",
+	"bs-visualeditor-alignmiddle": "中部",
+	"bs-visualeditor-alignbottom": "底部",
+	"bs-visualeditor-bsactions-wiki": "wiki文本",
+	"bs-visualeditor-bsactions-switchgui": "切换工具栏",
+	"bs-visualeditor-bsactions-linebreak": "换行符",
+	"bs-visualeditor-bsactions-signature": "签名",
+	"bs-visualeditor-bsactions-save": "保存",
+	"bs-visualeditor-bsactions-headings": "标题",
+	"bs-visualeditor-bsactions-paragraph": "段落",
+	"bs-visualeditor-bsactions-heading2": "标题2",
+	"bs-visualeditor-bsactions-heading3": "标题3",
+	"bs-visualeditor-bsactions-heading4": "标题4",
+	"bs-visualeditor-bsactions-heading5": "标题5",
+	"bs-visualeditor-bsactions-heading6": "标题6",
+	"bs-visualeditor-switch-noeditor-desc": "在此页面禁用可视化编辑器。"
+}

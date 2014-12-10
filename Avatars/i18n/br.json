@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Y-M D"
+		]
+	},
+	"prefs-avatars": "Avataroù",
+	"bs-avatars-pref-generator": "Ganer :",
+	"bs-avatars-pref-defaultsize": "Ment dre ziouer e pikseloù :",
+	"bs-avatars-upload-complete": "Ezporzhiet eo bet ar skeudenn evel ma oa dleet.",
+	"bs-avatars-generate-complete": "Krouet ez eus bet un avatar nevez.",
+	"bs-avatars-upload-title": "Cheñch skeudenn ar profil",
+	"bs-avatars-upload-label": "Skeudenn",
+	"bs-avatars-generate-new-label": "Krouiñ un avatar nevez",
+	"bs-avatars-warning-title": "Diwallit",
+	"bs-avatars-userimage-title": "Skeudenn eus ar wiki pe URL ar skeudenn",
+	"bs-avatars-userimage-help": "da sk. Skeudenn.jpg or http://localhost/Skeudenn.gif",
+	"bs-avatars-set-userimage-saved": "Enrollet skeudenn an implijer evel ma oa dleet.",
+	"bs-avatars-file-upload-fieldset-title": "Ezporzhiadur skeudenn"
+}

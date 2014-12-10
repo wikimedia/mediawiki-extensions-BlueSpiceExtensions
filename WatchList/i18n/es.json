@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Amitie 10g"
+		]
+	},
+	"bs-watchlist-desc": "Añade un widget de Lista de seguimiento y lo marca",
+	"bs-watchlist-title-sidebar": "Lista de seguimiento",
+	"bs-watchlist-pref-widgetlimit": "Límite de entradas:",
+	"bs-watchlist-pref-widgetsortodr": "Ordenar por:",
+	"bs-watchlist-pref-sort-time": "Hora",
+	"bs-watchlist-pref-sort-title": "Título",
+	"bs-watchlist-tag-watchlist-desc": "Crea una lista de páginas en el que están en tu Lista de seguimiento y tiene cambios para no videntes."
+}

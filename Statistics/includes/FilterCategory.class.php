@@ -67,7 +67,7 @@ class BsFilterCategory extends BsMultiSelectFilter {
 	public function loadAvailableValues() {
 		$aCategories = array();
 		// TODO MRG (20.02.11 23:51): i18n geht noch nicht so recht
-		$aCategories[wfMsg( 'bs-statistics-all-categories' )] = '(all)';
+		$aCategories[wfMsg( 'bs-ns_all' )] = '(all)';
 		// TODO MRG (22.12.10 01:19): Greift auf MW zu
 		$oDbr = wfGetDB( DB_SLAVE );
 		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );

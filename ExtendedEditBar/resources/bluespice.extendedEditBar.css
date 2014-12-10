@@ -22,6 +22,7 @@ a.bs-button-32:hover {
 #bs-extendededitbar {
 	background-color: #ebebeb;
 	border: 1px solid #9e9e9e;
+	line-height: 0;
 }
 
 #bs-extendededitbar div.group {

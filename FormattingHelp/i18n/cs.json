@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirek2"
+		]
+	},
+	"bs-formattinghelp-desc": "Zobrazí nápovědu pro formátování textu",
+	"bs-formattinghelp-help-example-text": "Text",
+	"bs-formattinghelp-help-italic": "Kurzíva",
+	"bs-formattinghelp-help-color": "Barevný text",
+	"bs-formattinghelp-help-listitem": "Položka seznamu",
+	"bs-formattinghelp-help-link": "Interní odkaz",
+	"bs-formattinghelp-help-caption": "Popisek",
+	"bs-formattinghelp-help-extlink": "Externí odkaz",
+	"bs-formattinghelp-help-hr": "Vodorovná čára",
+	"bs-formattinghelp-help-template": "Šablona",
+	"bs-formattinghelp-help-templatename": "Název šablony"
+}

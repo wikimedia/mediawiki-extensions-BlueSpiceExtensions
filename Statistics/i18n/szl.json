@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Krol111"
+		]
+	},
+	"prefs-statistics": "Rozszerzůne sztatystyki",
+	"extendedstatistics": "Rozszerzůne sztatystyki",
+	"bs-statistics-diagram": "Zapytańy",
+	"bs-statistics-from": "Uod",
+	"bs-statistics-to": "Do",
+	"bs-statistics-grain": "Interwał",
+	"bs-statistics-mode": "Tryb",
+	"bs-statistics-absolute": "cołkym",
+	"bs-statistics-year": "Rok",
+	"bs-statistics-month": "Mieśůnc",
+	"bs-statistics-week": "Kalyndarzowy tydźyń",
+	"bs-statistics-day": "Dźyń",
+	"bs-statistics-list": "Lista",
+	"bs-statistics-not-allowed": "Ńy mosz uodpedńich uprowńyń.",
+	"bs-statistics-finish": "Zbajstluj djagram",
+	"bs-statistics-filters": "Filtery",
+	"bs-statistics-diag-number-of-users": "Wjelość używoczy",
+	"bs-statistics-label-name": "Mjano",
+	"bs-statistics-label-registration": "Regisztracyjo",
+	"bs-statistics-diag-number-of-pages": "Wjelość zajt",
+	"bs-statistics-diag-number-of-pages-mw": "Wjelość artikli",
+	"bs-statistics-label-page": "Zajta",
+	"bs-statistics-label-creator": "Twůrca",
+	"bs-statistics-diag-number-of-edits": "Wjelość sprowjyń",
+	"bs-statistics-diag-edits-per-user": "Sprowjyńa pro używocza",
+	"bs-statistics-label-maxhits": "Maksymalno skupina wyńikůw",
+	"bs-statistics-label-time": "Czos",
+	"bs-statistics-filter-category": "Kategoryjo",
+	"bs-statistics-filter-searchscope": "Raum szukańo",
+	"bs-statistics-filter-user": "Ńyrachowane używocze",
+	"bs-statistics-portlet-numberofusers": "Wjelość używoczy",
+	"bs-statistics-portlet-numberofedits": "Wjelość edycyji",
+	"bs-statistics-portlet-numberofpages": "Wjelość zajt",
+	"bs-statistics-portlet-numberofusersdesc": "Sztatystyki wjelośći używoczy",
+	"bs-statistics-portlet-numberofeditsdesc": "Sztatystyki wjelośći sprowjyń",
+	"bs-statistics-portletconfig-periodday": "Wczorej"
+}

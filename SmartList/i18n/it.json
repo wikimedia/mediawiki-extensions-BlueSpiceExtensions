@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-smartlist-pref-comments": "Mostra commento",
+	"bs-smartlist-pref-namespaces": "Namespace:",
+	"bs-smartlist-pref-categories": "Categorie:",
+	"bs-smartlist-pref-period": "Periodo:",
+	"bs-smartlist-pref-showminorchanges": "Mostra le modifiche minori",
+	"bs-smartlist-pref-showonlynewarticles": "Mostra solo le nuove pagine",
+	"bs-smartlist-pref-trim": "Lunghezza massima del titolo (in caratteri):",
+	"bs-smartlist-pref-showtext": "Mostra il contenuto della pagina",
+	"bs-smartlist-pref-trimtext": "Lunghezza massima del contenuto di una pagina (in caratteri)",
+	"bs-smartlist-pref-order": "Ordina per:",
+	"bs-smartlist-pref-sort": "Ordina per:",
+	"bs-smartlist-day": "Giorno",
+	"bs-smartlist-week": "Settimana",
+	"bs-smartlist-month": "Mese",
+	"bs-smartlist-time": "Ora",
+	"bs-smartlist-title": "Titolo"
+}

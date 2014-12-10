@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-contextmenu-desc": "为多个链接提供上下文菜单",
+	"prefs-contextmenu": "上下文菜单",
+	"bs-contextmenu-pref-modus": "打开上下文菜单通过（不适用于手机）：",
+	"bs-contextmenu-pref-modus-just-right-mouse": "点击鼠标右键（按下CTRL将显示默认默认浏览器上下文菜单）",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "同时点击鼠标右键和CTRL键（单击鼠标右键将显示默认浏览器菜单）",
+	"bs-contextmenu-page-edit": "编辑页面",
+	"bs-contextmenu-page-delete": "删除页面",
+	"bs-contextmenu-page-move": "移动页面",
+	"bs-contextmenu-page-history": "查看页面历史",
+	"bs-contextmenu-page-protect": "保护页面",
+	"bs-contextmenu-page-purge": "刷新缓存并查看页面",
+	"bs-contextmenu-page-info": "查看页面信息",
+	"bs-contextmenu-media-reupload": "上传新版本",
+	"bs-contextmenu-media-view-page": "查看文件描述页和文件历史",
+	"bs-contextmenu-user-mail": "发送邮件",
+	"bs-contextmenu-user-talk": "在讨论页留下信息",
+	"bs-contextmenu-file-download": "下载文件"
+}

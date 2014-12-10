@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Guycn2"
+		]
+	},
+	"bs-contextmenu-desc": "מספק תפריטים תלויי-הקשר עבור קישורים שונים",
+	"prefs-contextmenu": "תפריט הֶקשר",
+	"bs-contextmenu-pref-modus": "פתיחת תפריט הקשר (לא עובד עבור מכשירים ניידים):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "לחצו על לחצן העכבר הימני (הקשה על CTRL תציג תפריט הקשר של דפדפן ברירת המחדל)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "לחצו על לחצן העכבר הימני והחזיקו את המקש CTRL (לחיצה רגילה על לחצן העכבר הימני תציג תפריט של דפדפן ברירת המחדל)",
+	"bs-contextmenu-page-edit": "עריכת הדף",
+	"bs-contextmenu-page-delete": "מחיקת הדף",
+	"bs-contextmenu-page-move": "העברת דף",
+	"bs-contextmenu-page-history": "הצגת ההיסטוריה של הדף",
+	"bs-contextmenu-page-protect": "הגנה על הדף",
+	"bs-contextmenu-page-purge": "רענון המטמון והצגת הדף",
+	"bs-contextmenu-page-info": "הצגת מידע על הדף",
+	"bs-contextmenu-media-reupload": "העלאת גרסה חדשה",
+	"bs-contextmenu-media-view-page": "הצגת דף תיאור הקובץ וההיסטוריה שלו",
+	"bs-contextmenu-user-mail": "שליחת דוא\"ל",
+	"bs-contextmenu-user-talk": "השארת הודעה בדף השיחה",
+	"bs-contextmenu-file-download": "הורדת קובץ"
+}

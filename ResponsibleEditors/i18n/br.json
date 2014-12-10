@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"prefs-responsibleeditors": "Aozerien atebek",
+	"bs-responsibleeditors-pref-edelete": "Kemenn pa vez dilamet ur bajenn",
+	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "Aozerien atebek",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Aozerien atebek",
+	"bs-responsibleeditors-success-ajax": "Atebegezh cheñchet.",
+	"bs-responsibleeditors-contentactions-label": "Cheñch an atebegezh",
+	"bs-responsibleeditors-statebartop-icon-alt": "Bez' ez eus un aozer atebek evit ar bajenn-mañ",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "N'eus ket eus ar bajenn roet.",
+	"bs-responsibleeditors-mail-subject-re-article-changed": "Ar bajenn \"$1\" zo bet {{GENDER:$2|aozet}} gant $3",
+	"bs-responsibleeditors-mail-subject-re-article-deleted": "Ar bajenn \"$1\" zo bet {{GENDER:$2|dilamet}} gant $3",
+	"bs-responsibleeditors-mail-subject-re-article-moved": "Ar bajenn \"$1\" zo bet {{GENDER:$2|dilec'hiet}} gant $3",
+	"responsibleeditors": "Aozerien atebek",
+	"bs-responsibleeditors-title": "Aozerien atebek",
+	"bs-responsibleeditors-titleeditors": "Aozerien atebek",
+	"bs-responsibleeditors-columnpage": "Pajenn",
+	"bs-responsibleeditors-columnresponsibleeditor": "Aozerien atebek",
+	"bs-responsibleeditors-columnnamespace": "Esaouenn anv",
+	"bs-responsibleeditors-rbdisplaymodeall": "Diskouez an holl bajennoù",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "N'eo ket deverket"
+}

@@ -18,7 +18,7 @@ Ext.define( 'BS.GroupManager.GroupDialog', {
 	selectedData: {},
 	afterInitComponent: function() {
 		this.tfGroupName = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message( 'bs-groupmanager-lableName' ).plain(),
+			fieldLabel: mw.message( 'bs-groupmanager-lablename' ).plain(),
 			labelWidth: 85,
 			labelAlign: 'right',
 			name: 'groupname',
@@ -28,7 +28,7 @@ Ext.define( 'BS.GroupManager.GroupDialog', {
 		this.items = [
 			this.tfGroupName
 		];
-		
+
 		this.callParent(arguments);
 	},
 	resetData: function() {
@@ -42,7 +42,7 @@ Ext.define( 'BS.GroupManager.GroupDialog', {
 	},
 	getData: function() {
 		this.selectedData.group_name = this.tfGroupName.getValue();
-		this.selectedData.group_name_old = this.currentData.group_name
+		this.selectedData.group_name_old = this.currentData.group_name;
 
 		return this.selectedData;
 	}

@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"bs-visualeditor-desc": "Aozer WYSIWYG TinyMCE",
+	"prefs-visualeditor": "Gwelaozer",
+	"bs-visualeditor-editbutton-hint": "Gwelaozer",
+	"bs-visualeditor-pref-disablens": "Diweredekaat en esaouennoù anv :",
+	"bs-visualeditor-pref-use": "Implijout an aozer WYSIWYG dre ziouer",
+	"bs-visualeditor-no-summary": "Diverrañ ebet",
+	"bs-visualeditor-sortable": "A c'haller renkañ",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Danvez",
+	"bs-visualeditor-contenttable-black": "Danvez (du)",
+	"bs-visualeditor-contenttable-blue": "Danvez (glas)",
+	"bs-visualeditor-contenttable-darkblue": "Danvez (glas teñval)",
+	"bs-visualeditor-cuscosky": "Oabl Cusco",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Arlivioù gris",
+	"bs-visualeditor-greyscale-narrow": "Arlivioù gris (strizh)",
+	"bs-visualeditor-aligntop": "Krec'h",
+	"bs-visualeditor-alignmiddle": "Kreiz",
+	"bs-visualeditor-alignbottom": "Traoñ",
+	"bs-visualeditor-bsactions-wiki": "Wikitestenn",
+	"bs-visualeditor-bsactions-switchgui": "Cheñch barrenn ostilhoù",
+	"bs-visualeditor-bsactions-linebreak": "Lamm linenn",
+	"bs-visualeditor-bsactions-signature": "Sinadur",
+	"bs-visualeditor-bsactions-save": "Enrollañ",
+	"bs-visualeditor-bsactions-headings": "Talbennoù",
+	"bs-visualeditor-bsactions-paragraph": "Rannbennad",
+	"bs-visualeditor-bsactions-heading2": "Titl 2",
+	"bs-visualeditor-bsactions-heading3": "Titl 3",
+	"bs-visualeditor-bsactions-heading4": "Talbenn 4",
+	"bs-visualeditor-bsactions-heading5": "Titl 5",
+	"bs-visualeditor-bsactions-heading6": "Titl 6"
+}

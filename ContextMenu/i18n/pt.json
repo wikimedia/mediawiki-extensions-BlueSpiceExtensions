@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-contextmenu-page-edit": "Editar página",
+	"bs-contextmenu-page-delete": "Eliminar página",
+	"bs-contextmenu-page-move": "Mover página",
+	"bs-contextmenu-page-history": "Ver histórico",
+	"bs-contextmenu-page-protect": "Proteger página",
+	"bs-contextmenu-page-purge": "Atualizar ''cache'' e ver página",
+	"bs-contextmenu-page-info": "Ver informação da página",
+	"bs-contextmenu-media-reupload": "Carregar nova versão",
+	"bs-contextmenu-media-view-page": "Ver página de descrição e histórico do ficheiro",
+	"bs-contextmenu-user-mail": "Enviar correio electrónico",
+	"bs-contextmenu-user-talk": "Deixar mensagem na página de discussão",
+	"bs-contextmenu-file-download": "Descarregar ficheiro"
+}

@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a",
+			"Okras",
+			"Alexandr Efremov",
+			"Striking Blue"
+		]
+	},
+	"bs-shoutbox-desc": "Добавляет функцию для встраивания собственного мини-чата",
+	"prefs-shoutbox": "Шутбокс",
+	"bs-shoutbox-title": "Мини-чат",
+	"bs-shoutbox-message": "Написать новый комментарий…",
+	"bs-shoutbox-shout": "Отправить",
+	"bs-shoutbox-no-entries": "Пока здесь ничего нет.",
+	"bs-shoutbox-loading": "Загрузка…",
+	"bs-shoutbox-pref-committimeinterval": "Время между двумя сообщениями (в секундах):",
+	"bs-shoutbox-pref-maxmessagelength": "Максимальная длина сообщения:",
+	"bs-shoutbox-pref-numberofshouts": "Количество сообщений для показа:",
+	"bs-shoutbox-pref-showage": "Показывать дату создания сообщения",
+	"bs-shoutbox-pref-showuser": "Показывать автора сообщения",
+	"bs-shoutbox-pref-allowarchive": "Участник может удалять свои собственные записи",
+	"bs-shoutbox-pref-show": "Показать мини-чат",
+	"bs-shoutbox-archive-success": "Запись удалена.",
+	"bs-shoutbox-archive-failure": "Произошла ошибка при попытке удалить запись. Пожалуйста, попробуйте ещё раз.",
+	"bs-shoutbox-archive-failure-user": "Записи могут быть удалены только их автором.",
+	"bs-shoutbox-switch-description": "Скрывает мини-чат на этой странице.",
+	"bs-shoutbox-charactersleft": "$1 символов{{PLURAL:$1||а|ов}} осталось",
+	"bs-shoutbox-confirm-text": "Вы действительно хотите удалить эту запись?",
+	"bs-shoutbox-confirm-title": "Подтвердить",
+	"bs-shoutbox-entermessage": "Пожалуйста, введите сообщение.",
+	"bs-shoutbox-too-early": "Пожалуйста подождите несколько секунд, прежде чем оставить следующую запись."
+}

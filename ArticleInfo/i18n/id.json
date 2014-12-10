@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"C5st4wr6ch",
+			"Arifin.wijaya"
+		]
+	},
+	"bs-articleinfo-desc": "Memberikan informasi tentang halaman di bilah status",
+	"prefs-articleinfo": "Informasi halaman",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Perbarui interval dalam hitungan detik:",
+	"bs-articleinfo-last-edited": "Waktu sejak perubahan terbaru",
+	"bs-articleinfo-last-edited-tooltip": "Suntingan terakhir",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Penyunting}} terakhir",
+	"bs-articleinfo-categories": "Kategori",
+	"bs-articleinfo-more-categories": "Kategori lain yang tersedia",
+	"bs-articleinfo-all-categories-heading": "Kategori",
+	"bs-articleinfo-nocategories": "Kategori tidak ditemukan.",
+	"bs-articleinfo-hiddencats": "Kategori tersembunyi",
+	"bs-articleinfo-notemplates": "Templat tidak ditemukan.",
+	"bs-articleinfo-templates": "Templat",
+	"bs-articleinfo-subpages": "Subhalaman",
+	"bs-articleinfo-subpages-available": "Ada subhalaman untuk halaman ini",
+	"bs-articleinfo-subpages-too-much": "Ada lebih dari 100 subhalaman yang tersedia.",
+	"bs-articleinfo-check-revision": "Versi baru tersedia",
+	"bs-articleinfo-check-revision-tooltip": "Muat ulang halaman",
+	"bs-articleinfo-statebartoplastedited": "Suntingan terbaru",
+	"bs-articleinfo-statebartoplasteditor": "Penyunting terbaru",
+	"bs-articleinfo-statebartopcategories": "Kategori",
+	"bs-articleinfo-statebartopsubpages": "Subhalaman",
+	"bs-articleinfo-statebarbodycategories": "Kategori",
+	"bs-articleinfo-statebarbodysubpages": "Subhalaman",
+	"bs-articleinfo-statebarbodytemplates": "Templat"
+}

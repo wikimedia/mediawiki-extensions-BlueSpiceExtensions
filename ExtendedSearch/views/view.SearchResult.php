@@ -19,7 +19,7 @@
 /**
  * This view renders the ExtendedSearch results page.
  * @package    BlueSpice_Extensions
- * @subpackage ExtendedSearch 
+ * @subpackage ExtendedSearch
  */
 class ViewSearchResult extends ViewBaseElement {
 
@@ -28,11 +28,6 @@ class ViewSearchResult extends ViewBaseElement {
 	 * @var string HTML output.
 	 */
 	protected $sOut = '';
-	/**
-	 * List of messages to be rendered.
-	 * @var array List of strings.
-	 */
-	protected $aMessages = array();
 	/**
 	 * Contain view for search entry.
 	 * @var ViewExtendedSearchResultEntry View for search entry.
@@ -48,7 +43,7 @@ class ViewSearchResult extends ViewBaseElement {
 	 * Adds data to the current result entry view.
 	 * @param array $aDataSet List of result items.
 	 */
-	public function addResultEntry( $aDataSet ) {
+	public function setResultEntry( $aDataSet ) {
 		$vResultEntry = new ViewExtendedSearchResultEntry();
 		$vResultEntry->setOptions( $aDataSet );
 		$this->aResultEntryView[] = $vResultEntry->execute();
@@ -75,33 +70,11 @@ class ViewSearchResult extends ViewBaseElement {
 	}
 
 	/**
-	 * Adds a message to be displayed.
-	 * @param string $key Key for the message.
-	 * @param string $message The message in HTML.
-	 */
-	public function addMessage( $key, $message ) {
-		$this->aMessages[$key] = $message;
-	}
-
-	/**
 	 * Adds additional output to page.
 	 * @param string $aOutputToAdd HTML that shall be displayed.
 	 */
 	public function addOutput( $aOutputToAdd ) {
 		$this->out .= $aOutputToAdd;
-	}
-
-	/**
-	 * Prepares a message for direct output.
-	 * @param string $message The message that should be prepared.
-	 * @return string The modified message.
-	 */
-	protected function secureMessage( $message ) {
-		$search = array( "&lt;b&gt;", "&lt;/b&gt;", "&lt;i&gt;", "&lt;/i&gt;" );
-		$replace = array( "<b>", "</b>", "<i>", "</i>" ); // these tags may be contained in i18n messages
-		$secure = htmlentities( $message, ENT_QUOTES, 'UTF-8' );
-
-		return str_replace( $search, $replace, $secure ); // primitive whitelisting
 	}
 
 	/**
@@ -111,8 +84,6 @@ class ViewSearchResult extends ViewBaseElement {
 	public function execute( $param = false ) {
 		$aOut = array();
 		$aOut[] = parent::execute();
-		foreach ( $this->aMessages as $message )
-			$aOut[] = '<p>'.$this->secureMessage( $message )."</p>\n"; // primitive whitelisting
 
 		$aOut[] = $this->sOut;
 		if ( !empty( $this->aResultEntryView ) ) {
@@ -123,7 +94,7 @@ class ViewSearchResult extends ViewBaseElement {
 				$aOut[] = Xml::element(
 					'div',
 					array(
-						'id'=> 'bs-extendedsearch-siteuri',
+						'id' => 'bs-extendedsearch-siteuri',
 						'siteuri' => $this->getOption( 'siteUri' )
 					),
 					'',
@@ -207,8 +178,7 @@ class ViewSearchResult extends ViewBaseElement {
 	 */
 	protected function makePagingDiv( $pageNo, $url = '', $bActive = false, $arrows = false ) {
 		$aStyleClasses = array(
-			'bs-extendedsearch-paging-no',
-			'bs-extendedsearch-default-textspacing'
+			'bs-extendedsearch-paging-no'
 		);
 		if ( $arrows ) $aStyleClasses[] = 'bs-extendedsearch-paging-arrows';
 		if ( $bActive ) $aStyleClasses[] = 'bs-extendedsearch-paging-no-active';
@@ -275,10 +245,14 @@ class ViewSearchResult extends ViewBaseElement {
 	 */
 	protected function getSortingBar() {
 		$aSorting = $this->getOption( 'sorting' );
-		$aOut = '<span style="float: left;">';
-		$aOut .= $this->getNumberOfPageItems() . ' ';
-		$aOut .= wfMessage( 'bs-extendedsearch-sort-by' )->plain();
-		$aOut .= '&nbsp;';
+		$aOut = array();
+		$aOut[] = '<span class="bs-extendedsearch-sorting-results">';
+		$aOut[] = $this->getNumberOfPageItems();
+		$aOut[] = '</span>';
+
+		$aOut[] = '<span class="bs-extendedsearch-sorting-sortby">';
+		$aOut[] = wfMessage( 'bs-extendedsearch-sort-by' )->plain();
+
 		// 'titleSort', 'score', 'type', 'ts'
 		$iItems = count( $aSorting['sorttypes'] );
 		$iNum = 1;
@@ -288,67 +262,71 @@ class ViewSearchResult extends ViewBaseElement {
 			if ( $bActive ) {
 				$sDirection = ( $aSorting['sortdirection'] == 'asc' ) ? 'desc' : 'asc';
 				$sDirectionMessage = ( $aSorting['sortdirection'] == 'asc' )
-					? wfMessage( 'bs-extendedsearch-asc' )->plain()
-					: wfMessage( 'bs-extendedsearch-desc' )->plain();
+					? wfMessage( 'bs-extendedsearch-ascending' )->plain()
+					: wfMessage( 'bs-extendedsearch-descending' )->plain();
 
 				global $wgScriptPath;
-				$sIcon = '<img src="' . $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
-				$sIcon .= ( $aSorting['sortdirection'] == 'asc' ) ? 'arrow_up.png' : 'arrow_down.png';
-				$sIcon .= '" title="' . $sDirectionMessage . '" alt="' . $sDirectionMessage . '" />&nbsp;';
+				$sIcon .= '" title="' . $sDirectionMessage . '" alt="' . $sDirectionMessage . '" />';
+				$sImg = ( $aSorting['sortdirection'] == 'asc' ) ? 'arrow_up.png' : 'arrow_down.png';
+				$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
+				$sIcon = Html::element(
+					'img',
+					array(
+						'src' => $sImgPath . $sImg,
+						'title' => $sDirectionMessage,
+						'alt' => $sDirectionMessage
+					)
+				);
 			} else {
 				// $direction = $sortDirection todo: think it over: if sort order is changed from score to time, the order should be reset!
 				$sDirection = ( in_array( $sort, array( 'titleSort', 'type' ) ) ) ? 'asc' : 'desc';
 				$sIcon = '';
 			}
 
-			if ( $bActive ) $aOut .= '<b>';
+			if ( $bActive ) $aOut[] = '<b>';
 
-			$aOut .= Html::element(
-					'a',
-					array( 'href' => $aSorting['sorturl'].'&search_asc='.$sDirection.'&search_order='.$sort.'&search_origin=search_form_body' ),
-					wfMessage( $sMessage )->plain()
+			$aOut[] = Html::element(
+				'a',
+				array( 'href' => $aSorting['sorturl'].'&search_asc='.$sDirection.'&search_order='.$sort ),
+				wfMessage( $sMessage )->plain()
 			);
 
-			$aOut .= '&nbsp;' . $sIcon;
+			$aOut[] = $sIcon;
 
-			if ( $bActive ) $aOut .= '</b>';
+			if ( $bActive ) $aOut[] = '</b>';
 			if ( $iNum < $iItems ) {
-				$aOut .= '|&nbsp;';
+				$aOut[] = '|';
 			}
 			$iNum++;
 		}
 
-		$aOut .= '</span>';
+		$aOut[] = '</span>';
 
-		return $aOut;
+		return implode( "\n" , $aOut );
 	}
 
-	/**
-	 * Generates a facet box view.
-	 * @return ViewExtendedSearchFacetBox Generated facet box view.
-	 */
-	public function generateViewFacetBox() {
-		$oNewBox = new ViewExtendedSearchFacetBox();
-		$this->aFacetBoxes[] = $oNewBox;
-
-		return $oNewBox;
+	public function setFacet( $oFacet ) {
+		$this->aFacetBoxes[] = $oFacet;
 	}
 
+	public function getFacets() {
+		return $this->aFacetBoxes;
+	}
 	/**
 	 * Returns the range of numbers which articles are displayed
 	 * @return string range.
 	 */
 	public function getNumberOfPageItems() {
 		$iNumOfResults = BsConfig::get( 'MW::ExtendedSearch::LimitResults' );
-		$iBegin        = ( ( $this->getOption( 'activePage' ) - 1 ) * $iNumOfResults ) + 1;
-		$iEnd          = $this->getOption( 'activePage' ) * $iNumOfResults;
+		$iBegin = ( ( $this->getOption( 'activePage' ) - 1 ) * $iNumOfResults ) + 1;
+		$iEnd = $this->getOption( 'activePage' ) * $iNumOfResults;
+		$iNumFound = $this->getOption( 'numFound' );
 
-		if ( $this->getOption( 'numFound' ) < $iEnd ) {
-			$iEnd = $this->getOption( 'numFound' );
+		if ( $iNumFound < $iEnd ) {
+			$iEnd = $iNumFound;
 		}
 
-		return $iBegin .' - ' . $iEnd . ' ' . wfMessage( 'bs-extendedsearch-outof' )->plain()
-				. ' ' . $this->getOption( 'numFound' ) . ' ' . wfMessage( 'bs-extendedsearch-result-caption' )->plain() . ' ';
+		return wfMessage( 'bs-extendedsearch-result-caption', $iBegin, $iEnd, $iNumFound )->text();
 	}
 
 }

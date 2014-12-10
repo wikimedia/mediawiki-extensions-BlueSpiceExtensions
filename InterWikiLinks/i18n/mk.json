@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-interwikilinks-desc": "Раководен посредник за додавање, измена и бришење на меѓујазични врски",
+	"bs-interwikilinks-invalid-pfx-spc": "Претставката е неважечка. Не користете празни места.",
+	"bs-interwikilinks-invalid-url-spc": "URL-адресата е неважечка. Не користете празни места.",
+	"bs-interwikilinks-label": "Меѓујазични врски",
+	"bs-interwikilinks-link-created": "Меѓујазичната врска е создадена.",
+	"bs-interwikilinks-link-added": "Меѓујазичната врска е додадена.",
+	"bs-interwikilinks-link-deleted": "Меѓујазичната врска е избришана.",
+	"bs-interwikilinks-nooldpfx": "Не ја најдов претходната претставка.",
+	"bs-interwikilinks-nopfx": "Укажете претставка.",
+	"bs-interwikilinks-nourl": "Укажете URL.",
+	"bs-interwikilinks-pfxtoolong": "Претставката е предолга. Може да има највеќе 32 знаци.",
+	"bs-interwikilinks-pfxexists": "Претставката веќе постои.",
+	"bs-interwikilinks-headerprefix": "Претставка",
+	"bs-interwikilinks-titleaddinterwikilink": "Додај меѓујазична врска",
+	"bs-interwikilinks-titleeditinterwikilink": "Измени меѓујазична вркса",
+	"bs-interwikilinks-labelprefix": "Претставка",
+	"bs-interwikilinks-titledeleteinterwikilink": "Избриши меѓујазична врска",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Дали сигурно сакате да ја избришете оваа меѓујазична врска?",
+	"bs-interwikilinks-insertlink-tabtitle": "Врска до друго вики",
+	"bs-interwikilinks-insertlink-labelprefix": "Претставка",
+	"bs-interwikilink-select-a-prefix": "Изберете претставка"
+}

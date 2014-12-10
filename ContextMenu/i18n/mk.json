@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-contextmenu-desc": "Дава контекстни менија за разни врски",
+	"prefs-contextmenu": "Контекстно мени",
+	"bs-contextmenu-pref-modus": "Отвори контекстно мени (не е за мобилен)",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Со стискање на десното копче на глушецот (стискајќи на Crtl ќе ви се прикаже стандардното контекстно мени во прелистувачот)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Со стискање на десното копче на глушецот и притискање на Ctrl (нормално стискање на десно копче на глушецот ќе го покаже стандардното мени во прелистувачот)",
+	"bs-contextmenu-page-edit": "Уреди страница",
+	"bs-contextmenu-page-delete": "Избриши страница",
+	"bs-contextmenu-page-move": "Премести страница",
+	"bs-contextmenu-page-history": "Погл. историја",
+	"bs-contextmenu-page-protect": "Заштити страница",
+	"bs-contextmenu-page-purge": "Превчитај и прегледај",
+	"bs-contextmenu-page-info": "Инфо за страницата",
+	"bs-contextmenu-media-reupload": "Подигни нова верзија",
+	"bs-contextmenu-media-view-page": "Погл. опис и историја на податотеката",
+	"bs-contextmenu-user-mail": "Испрати пошта",
+	"bs-contextmenu-user-talk": "Остави порака во разговорот",
+	"bs-contextmenu-file-download": "Преземи"
+}

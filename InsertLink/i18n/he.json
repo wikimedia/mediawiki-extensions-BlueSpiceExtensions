@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"SGTTechnologicBunny",
+			"Guycn2"
+		]
+	},
+	"bs-insertlink-desc": "תיבת דיאלוג להזנת קישור",
+	"bs-insertlink": "הוסף קישור",
+	"bs-insertlink-button-title": "הוספת/עריכת קישור",
+	"bs-insertlink-dialog-title": "הוספת קישור",
+	"bs-insertlink-tab-wiki-page": "דף וויקי",
+	"bs-insertlink-tab-ext-link": "קישור חיצוני",
+	"bs-insertlink-tab-email": "קישור דוא\"ל",
+	"bs-insertlink-tab-ext-file": "קשר לקובץ",
+	"bs-insertlink-label-page": "דף",
+	"bs-insertlink-label-link": "קישור",
+	"bs-insertlink-label-mail": "כתובת דוא\"ל",
+	"bs-insertlink-label-description": "תיאור",
+	"bs-insertlink-label-file": "קובץ",
+	"bs-insertlink-label-searchfile": "חיפוש...",
+	"bs-insertlink-select-a-page": "בחר יעד...",
+	"bs-insertlink-select-a-namespace": "(דפים)",
+	"bs-insertlink-empty-field-text": "כדי להוסיף קישור עליך לציין יעד.",
+	"bs-insertlink-no-applet": "לא הייתה אפשרות לטעון את היישומון. אנא בִדקו את התקנת ה־Java שלכם."
+}

@@ -72,7 +72,7 @@ BsExtendedSearchAjaxManager.prototype = {
 	getUri: function() {
 		var out = [];
 		for ( key in ExtendedSearchAjaxManager.oUrlParams ) {
-			if ( typeof( ExtendedSearchAjaxManager.oUrlParams[key] ) == 'object' 
+			if ( typeof( ExtendedSearchAjaxManager.oUrlParams[key] ) == 'object'
 				&& ( ExtendedSearchAjaxManager.oUrlParams[key] instanceof Array ) ) {
 
 				for ( key2 in ExtendedSearchAjaxManager.oUrlParams[key] ){
@@ -95,7 +95,6 @@ BsExtendedSearchAjaxManager.prototype = {
 	ajaxifyUri: function( uriIn ) {
 		var uriParts = uriIn.split( '?' );
 		var uriOut = bs.util.getAjaxDispatcherUrl( 'ExtendedSearch::getRequestJson' );
-		uriOut += '&search_origin=ajax';
 
 		if ( 1 in uriParts ) {
 			var uriParams = uriParts[1].split( '&' );
@@ -103,7 +102,7 @@ BsExtendedSearchAjaxManager.prototype = {
 			for ( i in uriParams ) {
 				if ( typeof( uriParams[i] ) != 'string' ) continue;
 				key = uriParams[i].split( '=' )[0].toLowerCase();
-				if ( key == 'title' || key == 'search_origin' ) continue;
+				if ( key == 'title' ) continue;
 				uriOut += '&' + uriParams[i];
 			}
 		}
@@ -190,7 +189,6 @@ BsExtendedSearchAjaxManager.prototype = {
 		}
 		ExtendedSearchAjaxManager.addParamToUrl( 'action', 'ajax' );
 		ExtendedSearchAjaxManager.addParamToUrl( 'rs', 'ExtendedSearch::getRequestJson' );
-		ExtendedSearchAjaxManager.addParamToUrl( 'search_origin', 'ajax' );
 	},
 
 	/**
@@ -205,7 +203,7 @@ BsExtendedSearchAjaxManager.prototype = {
 		}
 
 		// facets armed with attribute urldiff...
-		$( '[urldiff]' ).removeAttr( 'onchange' ).change( function() {
+		$( '[urldiff]' ).click( function() {
 			ExtendedSearchAjaxManager.changeRequestFacets( $( this ).attr( 'urldiff' ), $( this ).attr( 'checked' ) );
 		});
 
@@ -213,14 +211,6 @@ BsExtendedSearchAjaxManager.prototype = {
 			// if middle button is pressed don't use ajax (allows opening in new tab)
 			if ( event.which == 2 ) {
 				return true;
-			}
-
-			if ( $( this ).attr( 'href' ).indexOf( 'search_origin=uri_builder' ) == -1 ) {
-				return true;
-			} else {
-				event.preventDefault();
-				ExtendedSearchAjaxManager.ajaxMeANewResultsPlz( $( this ).attr( 'href' ) );
-				return false;
 			}
 		});
 		this.spinnerResize();
@@ -237,7 +227,8 @@ BsExtendedSearchAjaxManager.prototype = {
 		var length = aAllParams.length;
 		var urlParams = urldiff;
 		var hash = document.location.hash;
-		for ( var i=0; i<length; i++ ) {
+
+		for ( var i = 0; i < length; i++ ) {
 			aKeyValue = aAllParams[i].split( '=' );
 			if ( i != length && document.location.hash != '' ) {
 				urlParams = '&' + urldiff;
@@ -259,6 +250,9 @@ BsExtendedSearchAjaxManager.prototype = {
 				}
 				ExtendedSearchAjaxManager.stripParamFromUrl( aKeyValue[0], aKeyValue[1] );
 			}
+		}
+		if ( !checked ) {
+			ExtendedSearchAjaxManager.addParamToUrl( 'nosel', '1' );
 		}
 		ExtendedSearchAjaxManager.ajaxMeANewResultsPlz();
 	},
@@ -294,13 +288,13 @@ BsExtendedSearchAjaxManager.prototype = {
 	 */
 	spinnerResize: function() {
 		var spinner = $( '#bs-extendedsearch-spinner' );
-		spinner.height( $( '#bs-extendedsearch-results' ).height());
-		var offset = $( '#bs-extendedsearch-results' ).offset();
+		spinner.height( $( '#bs-extendedsearch-specialpage-body' ).height());
+		var offset = $( '#bs-extendedsearch-specialpage-body' ).offset();
 		if ( !offset ) return;
 		offset.top += $( window ).scrollTop();
 		offset.left += $( window ).scrollLeft();
 		spinner.offset( offset );
-		spinner.width($( '#bs-extendedsearch-results' ).width());
+		spinner.width($( '#bs-extendedsearch-specialpage-body' ).width());
 	},
 
 	/**
@@ -354,10 +348,11 @@ BsExtendedSearchAjaxManager.prototype = {
 	 * Search as you type results
 	 */
 	searchAsYouType: function() {
-		var inputField = $( '#bs-extendedsearch-inputfieldtext-specialpage' );
-		var url;
-		var thread;
-		var keys = new Array( 13, 17, 18, 20, 27, 32, 37, 38, 39, 40, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123 );
+		var inputField = $( '#bs-extendedsearch-inputfieldtext-specialpage' ),
+			url,
+			thread,
+			keys = [ 13, 16, 17, 18, 20, 27, 37, 38, 39, 40, 91, 112,
+					113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123 ];
 
 		inputField.keydown( function() {
 			clearTimeout( thread );
@@ -366,9 +361,14 @@ BsExtendedSearchAjaxManager.prototype = {
 		inputField.keyup( function( event ) {
 			clearTimeout( thread );
 			if ( $.inArray( event.which, keys ) > 0 ) return false;
-			if ( inputField.val() == '' ) return false;
+			if ( inputField.val() === '' ) return false;
 			url = wgServer + wgScriptPath +
-					'?search_origin=search_form_body&search_scope=text&search_submit=1&searchasyoutype=1&search_input=' + encodeURIComponent( inputField.val() );
+					'?search_scope=text&search_submit=1&q=' + encodeURIComponent( inputField.val() );
+
+			if ( typeof bsExtendedSearchSearchFiles !== 'undefined' && bsExtendedSearchSearchFiles ) {
+				url += '&search_files=1';
+			}
+
 			thread = setTimeout( function() { ExtendedSearchAjaxManager.ajaxMeANewResultsPlz( url ) }, 300 );
 		} );
 	}
@@ -382,11 +382,11 @@ $(document).ready( function() {
 	ExtendedSearchAjaxManager = new BsExtendedSearchAjaxManager();
 	ExtendedSearchAjaxManager.init();
 
-	$("#bs-extendedsearch-checkbox-searchfiles").change(function() {
-		if ($(this).is(':checked')) {
-			$('#bs-extendedsearch-input-searchfiles').val('1');
+	$("#bs-extendedsearch-checkbox-searchfiles").change( function() {
+		if ( $( this ).is( ':checked' ) ) {
+			$( '#bs-extendedsearch-input-searchfiles' ).val( '1' );
 		} else {
-			$('#bs-extendedsearch-input-searchfiles').val('0');
+			$('#bs-extendedsearch-input-searchfiles').val( '0' );
 		}
 	});
 });

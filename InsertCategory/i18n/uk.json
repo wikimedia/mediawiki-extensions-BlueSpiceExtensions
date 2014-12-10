@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-insertcategory-desc": "Діалог введення посилання на категорію",
+	"bs-insertcategory-insertcat": "Вставити категорію",
+	"prefs-insertcategory": "Вставити категорію",
+	"bs-insertcategory-pref-withparents": "Вставити категорію з її батьківськими категоріями",
+	"bs-insertcategory-title": "Вставити категорію",
+	"bs-insertcategory-cat-label": "Призначення:",
+	"bs-insertcategory-success": "Додавання категорії успішне",
+	"bs-insertcategory-failure": "Помилка",
+	"bs-insertcategory-hint": "Примітка: щоб додати категорію, необхідно натиснути клавішу enter або поставити кому у кінці запису.",
+	"bs-insertcategory-panel-title": "Категорії"
+}

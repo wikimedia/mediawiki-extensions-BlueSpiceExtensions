@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"LNDDYL",
+			"Cwlin0416"
+		]
+	},
+	"bs-specialadmindashboard-label": "資訊面板",
+	"prefs-dashboards": "資訊面板",
+	"admindashboard": "管理者資訊面板",
+	"userdashboard": "使用者資訊面板",
+	"bs-dashboard-userportlet-calendar-title": "行事曆",
+	"bs-dashboard-userportlet-calendar-description": "行事曆"
+}

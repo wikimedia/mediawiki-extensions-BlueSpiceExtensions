@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente",
+			"Fúlvio"
+		]
+	},
+	"bs-extendededitbar-desc": "Adiciona botões adicionais ao campo de edição da wiki",
+	"bs-extendededitbar-redirecttip": "Redirecionamento",
+	"bs-extendededitbar-redirectsample": "Inserir texto",
+	"bs-extendededitbar-striketip": "Rasurar",
+	"bs-extendededitbar-strikesample": "Texto rasurado",
+	"bs-extendededitbar-entertip": "Quebra de linha",
+	"bs-extendededitbar-uppertip": "Superior à linha",
+	"bs-extendededitbar-uppersample": "Texto superior à linha",
+	"bs-extendededitbar-lowertip": "Inferior à linha",
+	"bs-extendededitbar-lowersample": "Texto inferior à linha",
+	"bs-extendededitbar-smalltip": "Pequeno",
+	"bs-extendededitbar-smallsample": "Texto pequeno",
+	"bs-extendededitbar-commenttip": "Inserir comentário oculto",
+	"bs-extendededitbar-commentsample": "Comentário",
+	"bs-extendededitbar-gallerytip": "Inserir galeria de imagens",
+	"bs-extendededitbar-gallerysamplepicture": "Imagem",
+	"bs-extendededitbar-gallerysamplecaption": "Legenda",
+	"bs-extendededitbar-quotetip": "Inserir bloco de citação de texto",
+	"bs-extendededitbar-quotesample": "Citação",
+	"bs-extendededitbar-tabletip": "Inserir tabela",
+	"bs-extendededitbar-tablesampleheader": "Cabeçalho",
+	"bs-extendededitbar-tablesamplerow": "Linha",
+	"bs-extendededitbar-tablesamplecell": "Célula"
+}

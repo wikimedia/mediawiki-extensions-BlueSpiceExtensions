@@ -4,23 +4,15 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
- * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * - initial commit
- */
 /**
  * Controls repository index building mechanism for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 
@@ -37,7 +29,7 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 
 	/**
 	 * Constructor for BuildIndexMwLinked class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate.
+	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
@@ -87,84 +79,34 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 	 * @return Apache_Solr_sFile
 	 */
 	public function makeRepoDocument( $sType, $sFilename, &$sText, $sRealPath, $vTimestamp ) {
-		$oSolrDocument = $this->oMainControl->makeDocument( '', $sType, $sFilename, $sText, -1, 998, $sRealPath, $vTimestamp );
-		return $oSolrDocument;
-	}
-
-	// duplicate of AbstractBuildIndexMwLinked
-	// they have no predecessor in common in bluespice-mw
-	// todo: externalize static, may be to AdapterMW
-	/**
-	 * Compares two timestamps
-	 * @param string $sTimestamp1 MW timestamp
-	 * @param string $sTimestamp2 MW timestamp
-	 * @return bool True if sTimestamp1 is younger than timestamp2
-	 */
-	public function isTimestamp1YoungerThanTimestamp2( $sTimestamp1, $sTimestamp2 ) {
-		$ts_unix1 = wfTimestamp( TS_UNIX, $sTimestamp1 );
-		$ts_unix2 = wfTimestamp( TS_UNIX, $sTimestamp2 );
-		return ( $ts_unix1 > $ts_unix2 );
+		return $this->oMainControl->makeDocument( 'external', $sType, $sFilename, $sText, -1, 998, $sRealPath, $sRealPath, $vTimestamp );
 	}
 
 	/**
 	 * Indexes all sFiles that were found in crawl() method.
 	 */
 	public function indexCrawledDocuments() {
-
 		foreach ( $this->aFiles as $sFile ) {
 			$oRepoFile = new SplFileInfo( $sFile );
+			if ( !$oRepoFile->isFile() ) continue;
 
+			$sFileName = $oRepoFile->getFilename();
 			$sDocType = $this->mimeDecoding( $oRepoFile->getExtension() );
-			if ( !isset( $this->aFileTypes[$sDocType] ) || ( $this->aFileTypes[$sDocType] !== true ) ) {
-				$this->writeLog( ( 'Filetype not allowed: '.$sDocType.' ('.$oRepoFile->getFilename() .')' ) );
-				continue;
-			}
+			if ( !$this->checkDocType( $sDocType, $sFileName ) ) continue;
 
 			if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit );
 
-			try {
-				$repoFileSize = $oRepoFile->getSize(); // throws Exception if file does not exist
-			} catch ( Exception $e ) {
-				$this->writeLog( ( 'File does not exist: '.$oRepoFile->getFilename() ) );
-				continue;
-			}
-			if ( $this->sizeExceedsMaxDocSize( $repoFileSize ) ) {
-				$this->writeLog( ( 'File exceeds max doc size and will not be indexed: '.$oRepoFile->getFilename() ) );
-				continue;
-			}
+			if ( $this->sizeExceedsMaxDocSize( $oRepoFile->getSize(), $sFileName ) ) continue;
 
 			$sRepoFileRealPath = $oRepoFile->getRealPath();
-
-			try {
-				$uniqueIdForFile = $this->oMainControl->getUniqueId( -1, $sRepoFileRealPath );
-				$hitssFileInIndexWithSameUID = $this->oMainControl->oSearchService->search( 'uid:'.$uniqueIdForFile, 0, 1 );
-			} catch ( Exception $e ) {
-				$this->writeLog( 'Error indexing file '.$oRepoFile->getFilename().' with errormessage '.$e->getMessage() );
-				continue;
-			}
-
 			$timestampImage = wfTimestamp( TS_ISO_8601, $oRepoFile->getMTime() );
 
-			// If already indexed and timestamp is not newer => don't index it!
-			if ( $hitssFileInIndexWithSameUID->response->numFound != 0 ) {
-				// timestamps have different format => compare function to equalize both
-				$timestampIndexDoc = $hitssFileInIndexWithSameUID->response->docs[0]->ts;
-				if ( !$this->isTimestamp1YoungerThanTimestamp2( $timestampImage, $timestampIndexDoc ) ) {
-					$this->writeLog( ('Already in index: '.$oRepoFile->getFilename() ) );
-					continue;
-				}
-			}
+			if ( $this->checkExistence( $sRepoFileRealPath, 'external', $timestampImage, $sFileName ) ) continue;
 
-			$text = '';
-			try {
-				$text = $this->oMainControl->oSearchService->getFileText( $sRepoFileRealPath, $this->iTimeLimit );
-			} catch ( Exception $e ) { // Exception can be of type Exception OR BsException
-				$this->writeLog( ( 'Unable to extract file '.$oRepoFile->getFilename().', errormessage: '.$e->getMessage() ) );
-				error_log( $e->getMessage() );
-			}
+			$text = $this->getFileText( $sRepoFileRealPath, $sFileName );
 
-			$doc = $this->makeRepoDocument( $sDocType, utf8_encode( $oRepoFile->getFilename() ), $text, utf8_encode( $sRepoFileRealPath ), $timestampImage );
-			$this->writeLog( $oRepoFile->getFilename() );
+			$doc = $this->makeRepoDocument( $sDocType, utf8_encode( $sFileName ), $text, utf8_encode( $sRepoFileRealPath ), $timestampImage );
+			$this->writeLog( $sFileName );
 
 			wfRunHooks( 'BSExtendedSearchBeforeAddExternalFile', array( $this, $oRepoFile, &$doc ) );
 

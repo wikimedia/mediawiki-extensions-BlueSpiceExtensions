@@ -53,7 +53,7 @@ class Dashboards extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Dashboards',
-			EXTINFO::DESCRIPTION => 'Provides dashboards for normal users and admins.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-dashboards-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -80,7 +80,7 @@ class Dashboards extends BsExtensionMW {
 	public function  initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		BsConfig::registerVar('MW::Dashboards::UserDashboardOnLogo', false, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL, 'bs-dashboards-pref-UserDashboardOnLogo', 'toggle');
+		BsConfig::registerVar('MW::Dashboards::UserDashboardOnLogo', false, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL, 'bs-dashboards-pref-userdashboardonlogo', 'toggle');
 
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'ParserFirstCallInit' );
@@ -289,7 +289,7 @@ class Dashboards extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @global OutputPage $wgOut
 	 * @param type $aPortlets
 	 * @return boolean

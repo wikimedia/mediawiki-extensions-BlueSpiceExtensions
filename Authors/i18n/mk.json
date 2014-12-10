@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-authors-desc": "Прикажува профилни слики на авторите на една страница",
+	"prefs-authors": "Автори на страницава",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Автор}}|Автори}}",
+	"bs-authors-profileimage": "Профилна слика",
+	"bs-authors-profileimage-change": "Промена на профилната слика",
+	"bs-authors-show-all-authors": "Промена на профилната слика",
+	"bs-authors-pref-imageheight": "Висина на сликата:",
+	"bs-authors-pref-imagewidth": "Ширина на сликата:",
+	"bs-authors-pref-limit": "Колку највеќе автори да се прикажуваат:",
+	"bs-authors-pref-show": "Прикажувај автори",
+	"bs-authors-switch-description": "Ги сокрива авторите на страницава."
+}

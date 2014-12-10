@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki",
+			"2nd-player"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "転送",
+	"bs-extendededitbar-striketip": "取り消し線",
+	"bs-extendededitbar-entertip": "改行",
+	"bs-extendededitbar-uppertip": "上付き",
+	"bs-extendededitbar-lowertip": "下付き",
+	"bs-extendededitbar-commenttip": "隠しコメントを挿入",
+	"bs-extendededitbar-commentsample": "コメント",
+	"bs-extendededitbar-gallerytip": "画像ギャラリーを挿入",
+	"bs-extendededitbar-gallerysamplepicture": "画像",
+	"bs-extendededitbar-gallerysamplecaption": "キャプション",
+	"bs-extendededitbar-tabletip": "表を挿入",
+	"bs-extendededitbar-tablesampleheader": "見出し",
+	"bs-extendededitbar-tablesamplerow": "行",
+	"bs-extendededitbar-tablesamplecell": "セル"
+}

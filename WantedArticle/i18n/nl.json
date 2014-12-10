@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"SPQRobin"
+		]
+	},
+	"bs-wantedarticle-desc": "Een pagina aan een lijst met gewenste pagina's toevoegen",
+	"bs-wantedarticle-page-removed": "De pagina \"$1\" is verwijderd.",
+	"bs-wantedarticle-pref-sort-title": "Titel"
+}

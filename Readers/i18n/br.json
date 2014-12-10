@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-readers-desc": "Krouiñ ur roll eus an dud a lenn ur bajenn",
+	"prefs-readers": "Lennerien",
+	"readers-user": "Pajennoù {{GENDER:$1|lennet}} gant : $1",
+	"readers": "Lennerien eus \"$1\"",
+	"bs-readers-contentactions-label": "Diskwel al lennerien",
+	"bs-readers-pagenotexists": "N'eus ket eus ar bajenn.",
+	"bs-readers-pref-active": "Gweredekaat al lennerien",
+	"bs-readers-pref-numofreaders": "Niver a lennerien da ziskwel :",
+	"bs-readers-emptyinput": "N'eus bet pourchaset pajenn ebet.",
+	"bs-readers-header-username": "Anv implijer",
+	"bs-readers-header-readerspath": "Lenner",
+	"bs-readers-header-ts": "Deiziad"
+}

@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-checklist-desc": "提供清单功能",
+	"bs-checklist-button-checkbox-title": "清单元素",
+	"bs-checklist-menu-insert-list-title": "插入列表",
+	"bs-checklist-menu-insert-checkbox": "复选框",
+	"bs-checklist-dlg-insert-list-title": "插入一个清单",
+	"bs-checklist-dlg-insert-list-value-list": "值列表",
+	"bs-checklist-tag-checklist-desc": "呈现复选框或选择字段。可用配置属性：",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>：<code>list</code>渲染选择列表。",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>：带有效值的模板名。参数<code>type</code>必须设置为<code>list</code>。",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>：<code>checked</code>或列表模板以外的值。",
+	"bs-checklist-dlg-new-list": "创造一个新列表",
+	"bs-checklist-dlg-save-list": "保存列表更改",
+	"bs-checklist-dlg-items-label": "列表中的项目",
+	"bs-checklist-dlg-items-emptytext": "此列表没有项目",
+	"bs-checklist-dlg-items-hint": "要加入一个新项目，在上方字段输入并点击<kbd>Enter</kbd>键。",
+	"bs-checklist-dlg-panel-title": "可用列表",
+	"bs-checklist-dlg-new-title": "添加新列表",
+	"bs-checklist-dlg-new-prompt": "输入列表标题",
+	"bs-checklist-alert": "小心！",
+	"bs-checklist-confirm-dirty-title": "未保存的更改！",
+	"bs-checklist-confirm-dirty-text": "您对清单做出修改但未保存。您确信您希望放弃更改么？"
+}

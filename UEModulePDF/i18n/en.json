@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-uemodulepdf-desc": "Enables MediaWiki to export pages into PDF format",
+	"prefs-uemodulepdf": "Universal export PDF module",
+	"uemodulepdf": "Universal export PDF module",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Backend URL:",
+	"bs-uemodulepdf-pref-templatepath": "Standard template:",
+	"bs-uemodulepdf-pref-suppressns": "Hide namespace prefix in PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF single page",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Export this page as PDF.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exports pages (special pages and content pages) to PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "Backend state",
+	"bs-uemodulepdf-overview-webservice-state-ok": "available",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "not available",
+	"soap-service-url-not-valid": "The URL to the PDF generating web service is not valid. Please check the wiki configuration.",
+	"soap-service-url-not-set": "The URL to the PDF generating web service is not set. Please check the wiki configuration.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Backend web interface"
+}

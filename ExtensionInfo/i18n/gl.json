@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-extensioninfo-desc": "Lista de información sobre as extensións cargadas",
+	"bs-extensioninfo-label": "Extensións",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Versión",
+	"extensioninfo": "Extensións",
+	"bs-extensioninfo-headerextname": "Nome da extensión",
+	"bs-extensioninfo-headerversion": "Versión",
+	"bs-extensioninfo-headerdesc": "Descrición",
+	"bs-extensioninfo-headerstatus": "Estado",
+	"bs-extensioninfo-headerpackage": "Paquete",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elemento|elementos}}"
+}

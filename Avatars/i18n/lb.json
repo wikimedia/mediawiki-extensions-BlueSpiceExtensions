@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"prefs-avatars": "Avataren",
+	"bs-avatars-pref-defaultsize": "Standard-Gréisst a Pixel:",
+	"bs-avatars-upload-complete": "D'Bild gouf eropgelueden.",
+	"bs-avatars-upload-title": "Profilbild änneren",
+	"bs-avatars-upload-label": "Bild",
+	"bs-avatars-warning-title": "Warnung",
+	"bs-avatars-userimage-title": "Bild vun der Wiki oder URL vum Bild",
+	"bs-avatars-userimage-help": "z.B. Picture.jpg oder http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "URL oder Bild vun der Wiki net valabel.",
+	"bs-avatars-set-userimage-saved": "Benotzer-Bild gouf gespäichert.",
+	"bs-avatars-file-upload-fieldset-title": "Bild eroplueden"
+}

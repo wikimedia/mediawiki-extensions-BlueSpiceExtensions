@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"prefs-notifications": "Notificacions",
+	"bs-echo-anon-user": "anonim",
+	"bs-echo-unknown-user": "desconegut",
+	"bs-echo-page-edit": "La pagina [[:$1]] es estada modificada",
+	"bs-echo-page-create": "La pagina [[:$1]] es estada creada",
+	"bs-echo-page-delete": "La pagina [[:$1]] es estada suprimida",
+	"bs-echo-page-move": "La pagina [[:$1]] es estada desplaçada",
+	"bs-echo-page-newuser": "L’utilizaire $1 es estat creat.",
+	"bs-notifications-email-new-subject": "Pagina $1 {{GENDER:$2|creada}} per $2",
+	"bs-notifications-email-edit-subject": "Pagina $1 {{GENDER:$2|modificada}} per $2",
+	"bs-notifications-email-move-subject": "Pagina $1 {{GENDER:$2|desplaçada}} per $2",
+	"bs-notifications-email-delete-subject": "Pagina $1 {{GENDER:$2|suprimida}} per $2",
+	"bs-notifications-email-addaccount-subject": "Utilizaire $1 creat"
+}

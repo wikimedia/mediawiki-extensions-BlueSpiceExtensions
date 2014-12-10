@@ -96,10 +96,10 @@ var BsInsertCategoryViewHelper = {
 			success: function( response, opts ) {
 				var obj = Ext.decode(response.responseText);
 				if ( obj.success ) {
-					Ext.Msg.alert('Status', mw.msg('bs-insertcategory-success'));
+					bs.util.alert( 'ICsuc', { textMsg: 'bs-insertcategory-success', titleMsg: 'bs-extjs-title-success' } );
 					window.location.reload( true );
 				} else {
-					Ext.Msg.alert(mw.msg('bs-insertcategory-failure'), obj.msg);
+					bs.util.alert( 'ICsuc', { textMsg: 'bs-insertcategory-failure', titleMsg: 'bs-extjs-title-warning' } );
 				}
 			},
 			failure: function() {},
@@ -163,7 +163,7 @@ var BsInsertCategoryWysiwygEditorHelper = {
 	},
 
 	setCategories: function( categories ) {
-		var regexCat = /(<br \/>)*\[\[(?:k|c)ategor(?:ie|y):(.)+?\]\]\n?/ig;
+		var regexCat = new RegExp('(<br \/>)*\\[\\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':..*?\\]\\]', 'ig'); ///(<br \/>)*\[\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':(.+?)\]\]/ig;
 		var tags = '';
 		var text = tinyMCE.activeEditor.getContent();
 		text = text.replace(regexCat, "");

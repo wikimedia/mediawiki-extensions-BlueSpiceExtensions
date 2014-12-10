@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416",
+			"LNDDYL"
+		]
+	},
+	"bs-usermanager-headerusername": "使用者名稱",
+	"bs-usermanager-headerrealname": "真實姓名",
+	"bs-usermanager-headeremail": "電子郵件",
+	"bs-usermanager-headergroups": "群組",
+	"bs-usermanager-titleadduser": "新增使用者",
+	"bs-usermanager-titleeditdetails": "編輯使用者",
+	"bs-usermanager-labelnewpassword": "密碼",
+	"bs-usermanager-labelpasswordcheck": "確認密碼",
+	"bs-usermanager-titledeleteuser": "刪除使用者"
+}

@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-smartlist-recent-changes": "Rezent Ännerungen",
+	"bs-smartlist-no-entries": "Näischt fonnt.",
+	"bs-smartlist-comment": "Bemierkung: $1",
+	"bs-smartlist-pref-comments": "Bemierkung weisen",
+	"bs-smartlist-pref-namespaces": "Nummraim:",
+	"bs-smartlist-pref-categories": "Kategorien:",
+	"bs-smartlist-pref-period": "Period:",
+	"bs-smartlist-pref-showminorchanges": "Kleng Ännerunge weisen",
+	"bs-smartlist-pref-showonlynewarticles": "Nëmmen nei Säite weisen",
+	"bs-smartlist-pref-trim": "Maximal Längt vum Titel (an Zeechen):",
+	"bs-smartlist-pref-showtext": "Inhalt vun der Säit weisen",
+	"bs-smartlist-pref-trimtext": "Maximal Längt vum Säiteninhalt (an Zeechen)",
+	"bs-smartlist-pref-order": "Zortéieren no:",
+	"bs-smartlist-pref-sort": "Zortéieren no:",
+	"bs-smartlist-pref-shownamespace": "Säitentitel mam Nummraum weisen",
+	"bs-smartlist-sort-asc": "vu kleng op grouss",
+	"bs-smartlist-sort-desc": "vu grouss op kleng",
+	"bs-smartlist-day": "Dag",
+	"bs-smartlist-week": "Woch",
+	"bs-smartlist-month": "Mount",
+	"bs-smartlist-time": "Zäit",
+	"bs-smartlist-title": "Titel",
+	"bs-smartlist-tag-smartlist-desc": "Weist astellbar Informatioun iwwer rezent Ännerungen",
+	"bs-smartlist-tag-newbies-desc": "Déi lescht Benotzer weisen.",
+	"bs-smartlist-tag-toplist-desc": "Weist eng Lëscht vun de Säiten déi am dackste gekuckt goufen.",
+	"bs-smartlist-mostvisitedpages": "Am meeschte gekuckt Säiten",
+	"bs-smartlist-mosteditedpages": "Am dackste geännert Säiten",
+	"bs-smartlist-mostactiveusers": "Aktivst Benotzer (no der Zuel vun Ännerunge)",
+	"bs-smartlist-lastedits": "Meng Ännerungen",
+	"bs-smartlist-noedits": "Keng Ännerunge fonnt.",
+	"bs-smartlist-mostactiveusersdesc": "Lëscht vun den aktive Benotzer zortéiert no der Zuel vun hiren Ännerungen.",
+	"bs-smartlist-mosteditedpagesdesc": "Lëscht vun de Säiten déi am dackste geännert goufen zortéiert no der Zuel vun hiren Ännerungen.",
+	"bs-smartlist-mostvisitedpagesdesc": "Lëscht vun de Säiten déi am dackste gewise goufen zortéiert no der Zuel wéi dacks se gewise gouf.",
+	"bs-smartlist-lasteditsdesc": "Lëscht vu Säiten déi Dir geännert hutt."
+}

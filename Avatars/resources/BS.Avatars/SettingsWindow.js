@@ -35,17 +35,17 @@ Ext.define('BS.Avatars.SettingsWindow', {
 			padding: "0 5 0 0"
 		});
 		this.bUserImage = Ext.create('Ext.Button', {
-			text: mw.message('bs-avatars-userimage-save-button').plain(),
+			text: mw.message('bs-extjs-save').plain(),
 			flex:0.5
 		});
 		this.bUserImage.on('click', this.tfUserImageClick, this);
 		this.fsUserImage = Ext.create('Ext.form.FieldSet', {
-			title: mw.message('bs-avatars-user-image-fieldset-title').plain(),
+			title: mw.message('bs-avatars-userimage-title').plain(),
 			collapsible: true,
 			collapsed: true,
 			items: [{
 					xtype: 'fieldcontainer',
-					// fieldLabel: mw.message('bs-avatars-userimage-label').plain(),
+					// fieldLabel: mw.message('bs-avatars-userimage-title').plain(),
 					layout: 'hbox',
 					defaults: {
 						flex: 1,
@@ -74,7 +74,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 			]
 		});
 		this.bCancel = Ext.create('Ext.Button', {
-			text: mw.message('bs-avatars-cancel-button').plain()
+			text: mw.message('bs-extjs-cancel').plain()
 		});
 		this.bCancel.on('click', this.btnCancelClick, this);
 		this.items = [
@@ -104,7 +104,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 						'AMsuc',
 						{
 							text: response,
-							title: 'Status'
+							titleMsg: 'bs-extjs-title-success'
 						},
 				{
 					ok: function() {
@@ -122,7 +122,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 		if (mw.user.options.get('MW::UserImage')) {
 			bs.util.confirm('AMwarn2', {
 				text: mw.message('bs-avatars-warning-text').plain(),
-				title: mw.message('bs-avatars-warning-label').plain()},
+				title: mw.message('bs-avatars-warning-title').plain()},
 			{
 				ok: callback,
 				scope: this
@@ -148,10 +148,10 @@ Ext.define('BS.Avatars.SettingsWindow', {
 				var response = Ext.decode(response.responseText);
 				if (!response.success) {
 					bs.util.alert(
-							'AMUsuc',
+							'AMUfail',
 							{
 								text: response.message[0],
-								title: 'Status'
+								titleMsg: 'bs-extjs-title-warning'
 							},
 					{
 						ok: function() {
@@ -167,7 +167,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 							'AMUsuc',
 							{
 								text: response.message[0],
-								title: 'Status'
+								titleMsg: 'bs-extjs-title-success'
 							},
 					{
 						ok: function() {

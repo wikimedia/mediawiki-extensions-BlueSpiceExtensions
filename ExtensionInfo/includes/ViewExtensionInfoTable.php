@@ -16,13 +16,13 @@
 /**
  * This view renders the ExtensionInfo table.
  * @package    BlueSpice_Extensions
- * @subpackage ExtensionInfo 
+ * @subpackage ExtensionInfo
  */
 class ViewExtensionInfoTable extends ViewBaseElement {
 
 	/**
 	 * List of all extensions
-	 * @var array Contains an array of Extension info elements as they are declared in the constructor of each extension 
+	 * @var array Contains an array of Extension info elements as they are declared in the constructor of each extension
 	 */
 	protected $mExtensions = array();
 
@@ -56,35 +56,35 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 			if ( !isset( $aExtension[EXTINFO::NAME] ) ) continue;
 
 			$aExtensionInfoArray = array(
-				'name'        => array(
+				'name' => array(
 					$aExtension[EXTINFO::NAME],
 					$this->getHelpdeskUrl($aExtension)
 				),
-				'version'     => ( $aExtension[EXTINFO::VERSION] === 'default' ) ? $wgBlueSpiceExtInfo['version'] : $aExtension[EXTINFO::VERSION],
-				'package'     => (  !isset( $aExtension[EXTINFO::PACKAGE] ) || $aExtension[EXTINFO::PACKAGE] === 'default' ) ? $wgBlueSpiceExtInfo['package'] : $aExtension[EXTINFO::PACKAGE],
-				'description' => $this->getExtensionDescription( $aExtension ),
-				'status'      => ( $aExtension[EXTINFO::STATUS] === 'default' ) ? $wgBlueSpiceExtInfo['status'] : $aExtension[EXTINFO::STATUS],
+				'version' => ( $aExtension[EXTINFO::VERSION] === 'default' ) ? $wgBlueSpiceExtInfo['version'] : $aExtension[EXTINFO::VERSION],
+				'package' => ( !isset( $aExtension[EXTINFO::PACKAGE] ) || $aExtension[EXTINFO::PACKAGE] === 'default' ) ? $wgBlueSpiceExtInfo['package'] : $aExtension[EXTINFO::PACKAGE],
+				//'description' => wfMessage( $aExtension[EXTINFO::DESCRIPTION] )->plain(), Future use
+				'description' => $aExtension[EXTINFO::DESCRIPTION],
+				'status' => ( $aExtension[EXTINFO::STATUS] === 'default' ) ? $wgBlueSpiceExtInfo['status'] : $aExtension[EXTINFO::STATUS],
 			);
 
 			$aExtensionInfo[] = $aExtensionInfoArray;
 		}
 
-		RequestContext::getMain()->getOutput()->addJsConfigVars(
-				'aExtensionInfo', $aExtensionInfo
-		);
+		RequestContext::getMain()->getOutput()->addJsConfigVars( 'aExtensionInfo', $aExtensionInfo );
 		$sCreditsLink = ' (<a href="' . SpecialPage::getTitleFor( 'SpecialCredits' )->getFullURL() . '">Credits</a>)';
 
 		$sVersion = $wgBlueSpiceExtInfo['version'].( ( $wgBlueSpiceExtInfo['status'] !== 'stable' ) ? ' '.$wgBlueSpiceExtInfo['status'] : '' );
+
 		$aOut = array();
-		$aOut[] = '<table class="softwaretable">';
-		$aOut[] = '  <tr>';
-		$aOut[] = '    <th style="width:30%; height:18px;">'.wfMessage( 'bs-extensioninfo-software' )->plain().'</th>';
-		$aOut[] = '    <th>'.wfMessage( 'bs-extensioninfo-version' )->plain().'</th>';
-		$aOut[] = '  </tr>';
-		$aOut[] = '  <tr>';
-		$aOut[] = '    <td><a title="'.$wgBlueSpiceExtInfo['url'].'" href="'.$wgBlueSpiceExtInfo['url'].'">'.$wgBlueSpiceExtInfo['name'].'</a>'.$sCreditsLink.'</td>';
-		$aOut[] = '    <td>'.$sVersion.'</td>';
-		$aOut[] = '  </tr>';
+		$aOut[] = '<table class="bs-softwaretable">';
+		$aOut[] = '<tr>';
+		$aOut[] = '<th>'.wfMessage( 'bs-extensioninfo-software' )->plain().'</th>';
+		$aOut[] = '<th>'.wfMessage( 'bs-extensioninfo-version' )->plain().'</th>';
+		$aOut[] = '</tr>';
+		$aOut[] = '<tr>';
+		$aOut[] = '<td><a title="'.$wgBlueSpiceExtInfo['url'].'" href="'.$wgBlueSpiceExtInfo['url'].'">'.$wgBlueSpiceExtInfo['name'].'</a>'.$sCreditsLink.'</td>';
+		$aOut[] = '<td>'.$sVersion.'</td>';
+		$aOut[] = '</tr>';
 		$aOut[] = '</table>';
 		$aOut[] = '<div id="bs-extensioninfo-grid"></div>';
 
@@ -99,26 +99,10 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 	private function getHelpdeskUrl( $aExtensionInfo ) {
 		//(09.05.2012)PW: added helpdeskurls to mI18n-files
 		//$baseUrl = BsConfig::get('MW::ExtensionInfo::HelpdeskBaseUrl');
-		$baseUrl = wfMessage( 'bs-extensioninfo-HelpdeskBaseUrl' )->plain();
+		$baseUrl = 'http://help.blue-spice.org/index.php';
 		$sExtensionName = $aExtensionInfo[EXTINFO::NAME];
 		$sUrl = $baseUrl . '/' . $sExtensionName;
 		return $sUrl;
-	}
-
-	/**
-	 * Fetches the description of an extension.
-	 * @param array $aExtensionInfo An array that is declared in the constructor of an extension
-	 * @return string The description of an extension 
-	 */
-	private function getExtensionDescription( $aExtensionInfo ) {
-		if ( !key_exists( EXTINFO::DESCRIPTION, $aExtensionInfo ) ) return '';
-		$sExtensionName               = strtolower( $aExtensionInfo[EXTINFO::NAME] );
-		$sExtensionDescriptionI18NKey = 'extension-description';
-		$sDescription                 = wfMessage( 'bs-' . $sExtensionName . '-' .  $sExtensionDescriptionI18NKey )->plain();
-		if ($sDescription == $sExtensionDescriptionI18NKey ) {
-			$sDescription = $aExtensionInfo[EXTINFO::DESCRIPTION];
-		}
-		return $sDescription;
 	}
 
 }

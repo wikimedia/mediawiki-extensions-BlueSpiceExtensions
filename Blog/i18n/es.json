@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Fitoschido"
+		]
+	},
+	"bs-blog-desc": "Muestra una lista de páginas con estilo blog",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "No hay entradas de blog.",
+	"bs-blog-comments": "Comentarios",
+	"bs-blog-read-more": "Leer más",
+	"bs-blog-trackback": "Retroenlace",
+	"bs-blog-permalink": "Enlace permanente",
+	"bs-blog-show-all": "Mostrar todas las entradas",
+	"bs-blog-form-inline-text": "Título…",
+	"bs-blog-form-title-text": "Crear nueva entrada en el blog",
+	"bs-blog-form-button-text": "Crear",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Abrir una ventana nueva para leer más",
+	"bs-blog-pref-newentryfieldposition": "Posición para el formulario de nueva entrada de blog:",
+	"bs-blog-pref-showall": "Mostrar el enlace de todas las entradas",
+	"bs-blog-pref-showinfo": "Mostrar información sobre la entrada",
+	"bs-blog-pref-showlimit": "Número de entradas en el blog:",
+	"bs-blog-pref-shownewentryfield": "Mostrar formulario de nueva entrada de blog",
+	"bs-blog-pref-showpermalink": "Mostrar enlace permanente",
+	"bs-blog-pref-sortby": "Ordenar por:",
+	"bs-blog-pref-imagerendermode": "Mostrar imágenes como:",
+	"bs-blog-pref-maxentrycharacters": "Número de palabras por entrada:",
+	"bs-blog-tag-blog-desc": "Mostrar entradas de blog en cada página."
+}

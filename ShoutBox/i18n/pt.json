@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-shoutbox-desc": "Adiciona uma função de analisador para incorporar a sua própria caixa de mensagens",
+	"prefs-shoutbox": "Caixa de mensagens",
+	"bs-shoutbox-title": "Caixa de mensagens",
+	"bs-shoutbox-message": "Escrever novo comentário...",
+	"bs-shoutbox-shout": "Enviar",
+	"bs-shoutbox-no-entries": "Nenhuma mensagem ainda.",
+	"bs-shoutbox-loading": "A carregar...",
+	"bs-shoutbox-pref-committimeinterval": "Tempo entre duas mensagens (em segundos):",
+	"bs-shoutbox-pref-maxmessagelength": "Comprimento máximo de uma mensagem:",
+	"bs-shoutbox-pref-numberofshouts": "Número de mensagens mostradas:",
+	"bs-shoutbox-pref-showage": "Mostrar data de criação de uma mensagem",
+	"bs-shoutbox-pref-showuser": "Mostrar o autor de uma mensagem",
+	"bs-shoutbox-pref-allowarchive": "O(a) utilizador(a) é capaz de eliminar as suas próprias entradas",
+	"bs-shoutbox-pref-show": "Mostrar caixa de mensagens",
+	"bs-shoutbox-archive-success": "Entrada eliminada.",
+	"bs-shoutbox-archive-failure": "Ocorreu um erro ao tentar eliminar a entrada, por favor tente novamente.",
+	"bs-shoutbox-archive-failure-user": "As entradas só podem ser eliminados pelo seu autor.",
+	"bs-shoutbox-switch-description": "Oculta a caixa de mensagens nesta página",
+	"bs-shoutbox-charactersleft": "Falta{{PLURAL:$1|m}} $1 {{PLURAL:$1|carácter|caracteres}}",
+	"bs-shoutbox-confirm-text": "Tem a certeza que pretende eliminar esta entrada?",
+	"bs-shoutbox-confirm-title": "Confirmar",
+	"bs-shoutbox-entermessage": "Introduza uma mensagem.",
+	"bs-shoutbox-too-early": "Por favor, aguarde alguns segundos antes de enviar a próxima entrada."
+}

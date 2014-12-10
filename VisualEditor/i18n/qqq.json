@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"McDutchie",
+			"Liuxinyu970226",
+			"Smuggli"
+		]
+	},
+	"bs-visualeditor-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of visual editor extension",
+	"prefs-visualeditor": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for visual editor section in preferences.\\n\n{{Identical|VisualEditor}}",
+	"bs-visualeditor-editbutton-hint": "Tooltip text for visual editor \n{{Identical|VisualEditor}}",
+	"bs-visualeditor-pref-disablens": "Disable in namespaces:",
+	"bs-visualeditor-pref-use": "Use WYSIWYG editor by default",
+	"bs-visualeditor-save-message": "Text for saved revision at $1 with summary \"$2\". \n* $1 is the date when revision was created \n* $2 is the summary of the revision",
+	"bs-visualeditor-no-summary": "Text for no summary \n{{Identical|no summary}}",
+	"bs-visualeditor-sortable": "Text for sortable \n{{Identical|sortable}}",
+	"bs-visualeditor-wikitable": "Text for standard \n{{Identical|Standard}}",
+	"bs-visualeditor-contenttable": "Text for content. \"Content\" is the name of a table styling.\n{{Identical|Content}}",
+	"bs-visualeditor-contenttable-black": "Text for content (black). \"Content (black)\" is the name of a table styling.\n{{Identical|Content}}",
+	"bs-visualeditor-contenttable-blue": "Text for content (blue). \"Content (blue)\" is the name of a table styling.\n{{Identical|Content}}",
+	"bs-visualeditor-contenttable-darkblue": "Text for content (darkblue). \"Content (darkblue)\" is the name of a table styling. \n{{Identical|Content}}",
+	"bs-visualeditor-cuscosky": "Text for cusco sky. \"Cusco Sky\" is the name of a table styling.\n{{Identical|cusco sky}}",
+	"bs-visualeditor-casablanca": "Text for casablanca. \"Casablanca\" is the name of a table styling.\n{{Identical|casablanca}}",
+	"bs-visualeditor-greyscale": "Text for greyscale. \"Greyscale\" is the name of a table styling.\n{{Identical|Greyscale}}",
+	"bs-visualeditor-greyscale-narrow": "Text for greyscale (narrow). \"Greyscale (narrow)\" is the name of a table styling.\n{{Identical|greyscale (narrow)}}",
+	"bs-visualeditor-aligntop": "Text for top \n{{Identical|Top}}",
+	"bs-visualeditor-alignmiddle": "Text for middle \n{{Identical|Middle}}",
+	"bs-visualeditor-alignbottom": "Text for bottom \n{{Identical|Bottom}}",
+	"bs-visualeditor-bsactions-wiki": "Text for wikitext \n{{Identical|Wikitext}}",
+	"bs-visualeditor-bsactions-switchgui": "Text for switch toolbar",
+	"bs-visualeditor-bsactions-linebreak": "Text for linebreak \n{{Identical|Linebreak}}",
+	"bs-visualeditor-bsactions-signature": "Text for signature \n{{Identical|Signature}}",
+	"bs-visualeditor-bsactions-save": "Text for save \n{{Identical|Save}}",
+	"bs-visualeditor-bsactions-headings": "Text for headings \n{{Identical|Heading}}",
+	"bs-visualeditor-bsactions-paragraph": "Text for paragraph \n{{Identical|Paragraph}}",
+	"bs-visualeditor-bsactions-heading2": "Text for heading 2 \n{{Identical|Heading}}",
+	"bs-visualeditor-bsactions-heading3": "Text for heading 3 \n{{Identical|Heading}}",
+	"bs-visualeditor-bsactions-heading4": "Text for heading 4 \n{{Identical|Heading}}",
+	"bs-visualeditor-bsactions-heading5": "Text for heading 5 \n{{Identical|Heading}}",
+	"bs-visualeditor-bsactions-heading6": "Text for heading 6 \n{{Identical|Heading}}",
+	"bs-visualeditor-switch-noeditor-desc": "Text for disables the visual editor on this page."
+}

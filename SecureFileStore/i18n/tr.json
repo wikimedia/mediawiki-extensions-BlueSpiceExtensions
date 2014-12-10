@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer",
+			"Violetanka"
+		]
+	},
+	"bs-securefilestore-desc": "Dosya ve görüntülere yetkisiz erişimi engeller",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Tarayıcı",
+	"bs-securefilestore-pref-dispositioninline": "Tarayıcı dosya türleri:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Şu dosya türlerini her zaman görüntüle:"
+}

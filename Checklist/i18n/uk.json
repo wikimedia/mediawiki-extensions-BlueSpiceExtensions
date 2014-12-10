@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-checklist-desc": "Забезпечує функціональність контрольного списку",
+	"bs-checklist-button-checkbox-title": "Елементи контрольного списку",
+	"bs-checklist-menu-insert-list-title": "Вставити список",
+	"bs-checklist-menu-insert-checkbox": "Галочка",
+	"bs-checklist-dlg-insert-list-title": "Вставити контрольний список",
+	"bs-checklist-dlg-insert-list-value-list": "Список значень",
+	"bs-checklist-tag-checklist-desc": "Візуалізує галочку або поле вибору. Доступні атрибути конфігурації:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> видає список вибіркиa select list.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: назва шаблону з доступними значеннями. Параметр <code>type</code> має бути встановлено як <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> або значення із шаблону списку.",
+	"bs-checklist-dlg-new-list": "Створити новий список",
+	"bs-checklist-dlg-save-list": "Зберегти зміни у список",
+	"bs-checklist-dlg-items-label": "Елементи у списку",
+	"bs-checklist-dlg-items-emptytext": "Немає елементів у цьому списку",
+	"bs-checklist-dlg-items-hint": "Для того щоб додати новий елемент, введіть у поле вище і натисніть <kbd>Enter</kbd>.",
+	"bs-checklist-dlg-panel-title": "Доступні списки",
+	"bs-checklist-dlg-new-title": "Додати новий список",
+	"bs-checklist-dlg-new-prompt": "Введіть назву списку",
+	"bs-checklist-alert": "Увага!",
+	"bs-checklist-confirm-dirty-title": "Незбережені зміни!",
+	"bs-checklist-confirm-dirty-text": "Вами внесено зміни в контрольний список, які ще не збережені. Ви справді хочете відхилити ці зміни?"
+}

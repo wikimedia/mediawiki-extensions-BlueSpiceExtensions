@@ -39,10 +39,10 @@ $(document).ready(function(){
 			BS.InsertFile.FileDialog.show( me );
 			BS.InsertFile.FileDialog.setData( data );
 		});
-		
+
 		return false;
 	});
-	
+
 	$('#bs-editbutton-insertimage').click(function( e ){
 		e.preventDefault();
 		var me = this;
@@ -57,7 +57,7 @@ $(document).ready(function(){
 				var wikiLink = new bs.wikiText.Link( data );
 				bs.util.selection.restore( wikiLink.toString() );
 			});
-			
+
 			var data = {};
 			var selection = bs.util.selection.save();
 			if( selection !== '' ) {
@@ -86,22 +86,19 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	var t = plugin;
 	var ed = t.editor;
 
-	//Insert mage	
+	//Insert mage
 	menus.push({
 		menuId: 'bsContextImage',
 		menuConfig: {
-			text: mw.message('bs-insertfile-button_image_title').plain(),
+			text: mw.message('bs-insertfile-button-image-title').plain(),
 			icon: 'image',
 			cmd : 'mceBsImage'
 		}
 	});
-	
-	
-	
 	buttons.push({
 		buttonId: 'bsimage',
 		buttonConfig: {
-			title : mw.message('bs-insertfile-button_image_title').plain(),
+			title : mw.message('bs-insertfile-button-image-title').plain(),
 			cmd : 'mceBsImage',
 			icon: 'image',
 			onPostRender: function() {
@@ -123,7 +120,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	buttons.push({
 		buttonId: 'bsfile',
 		buttonConfig: {
-			title : mw.message('bs-insertfile-button_file_title').plain(),
+			title : mw.message('bs-insertfile-button-file-title').plain(),
 			cmd : 'mceBsFile',
 			onPostRender: function() {
 				var self = this;
@@ -146,8 +143,11 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			var editor = plugin.getEditor();
 			var bookmark = editor.selection.getBookmark();
 			var image = this.selection.getNode();
-			var params = {};
-			
+			var params = {
+				caption: '',
+				alt: ''
+			};
+
 			if( image.nodeName.toLowerCase() === 'img' ) {
 				var data = bs.util.makeAttributeObject( image );
 				params = bs.util.unprefixDataAttributeObject(data);
@@ -156,12 +156,10 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			Ext.require('BS.InsertFile.ImageDialog', function(){
 				BS.InsertFile.ImageDialog.clearListeners();
 				BS.InsertFile.ImageDialog.on( 'ok', function( sender, data ) {
-					var editor = plugin.getEditor();
 					editor.selection.moveToBookmark(bookmark);
-					var node = editor.selection.getNode();
 					var imgAttrs = this.plugins.bswikicode.makeDefaultImageAttributesObject();
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
-					//Manually prefix with NS_IMAGE. I wonder if this should 
+					//Manually prefix with NS_IMAGE. I wonder if this should
 					//be done within the dialog.
 					data.imagename = formattedNamespaces[bs.ns.NS_IMAGE]+':'+data.imagename;
 					var classAddition = '';
@@ -174,12 +172,15 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 						styleAddition += ' width: '+data.sizewidth+'px;';
 						imgAttrs['width'] = data.sizewidth;
 					}
-					//TODO: This is ugly stuff from "bswikicode". Find better 
+					//TODO: This is ugly stuff from "bswikicode". Find better
 					//solution in the year 2017.
 					if( data.thumb == true || data.frame == true ) {
-						imgAttrs['data-bs-width'] = 180; //HARDCODED 180px --> we should use user option!
+						imgAttrs['data-bs-width'] = ( imgAttrs['width'] ) ? imgAttrs['width'] : 180; //HARDCODED 180px --> we should use user option!
 						classAddition += ' thumb';
-						styleAddition += ' border: 1px solid #CCC; width: 180px;'; //HARDCODED 180px
+						styleAddition += ' border: 1px solid #CCC;'; //HARDCODED 180px
+						if ( !data.sizewidth ) {
+							styleAddition += ' width: '+imgAttrs['data-bs-width']+'px;'
+						}
 						//A thumb floats right by default
 						if( data.align == 'none' ) {
 							styleAddition += ' float: right; clear:right; margin-left: 1.4em';
@@ -209,26 +210,29 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 						this.dom.replace(newImgNode, image);
 						//Place cursor to end
 						this.selection.select(newImgNode, false);
-					}
-					else {
+					} else {
 						newImgNode = this.dom.createHTML( 'img', imgAttrs );
 						//this.selection.setContent(newImgNode);
 						editor.insertContent(newImgNode);
 					}
-					
+
 					this.selection.collapse(false);
 				}, this);
-				
+
 				BS.InsertFile.ImageDialog.show();
+				params.caption = params.caption.replace("@@PIPE@@", "|");
+				params.alt = params.alt.replace("@@PIPE@@", "|");
 				BS.InsertFile.ImageDialog.setData( params );
 			}, this);
 		}
 	});
-	
+
 	commands.push({
 		commandId: 'mceBsFile',
 		commandCallback: function() {
 			var anchor = this.selection.getNode();
+			var editor = plugin.getEditor();
+			var bookmark = editor.selection.getBookmark();
 			var params = {
 				caption: this.selection.getContent(),
 				displayText: this.selection.getContent()
@@ -247,6 +251,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			Ext.require('BS.InsertFile.FileDialog', function(){
 				BS.InsertFile.FileDialog.clearListeners();
 				BS.InsertFile.FileDialog.on( 'ok', function(sender, data) {
+					editor.selection.moveToBookmark(bookmark);
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 					var nsText = formattedNamespaces[bs.ns.NS_MEDIA];
 					var prefixedTitle = nsText + ':' + data.title;
@@ -267,17 +272,17 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					}
 					else {
 						newAnchor = this.dom.createHTML( 'a', anchorAttrs, displayText );
-						this.insertContent(newAnchor);
+						editor.insertContent(newAnchor);
 					}
 					this.selection.collapse(false);
 				}, this);
-				
+
 				BS.InsertFile.FileDialog.show();
 				BS.InsertFile.FileDialog.setData( params );
 			}, this);
 		}
 	});
-	
+
 	//Override default command "mceImage"
 	commands.push({
 		commandId: 'mceImage',
@@ -285,7 +290,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			this.execCommand( 'mceHwImage', ui );
 		}
 	});
-	
+
 	//Override default command "mceAdvImage"
 	commands.push({
 		commandId: 'mceAdvImage',
@@ -293,24 +298,22 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			this.execCommand( 'mceHwImage', ui );
 		}
 	});
-	
+
 	return;
-	
+
 	//This is old code. Not sure if needed for TinyMCE 4
 	ed.onNodeChange.add(function(ed, cm, element, c, o) {
 		cm.setActive(  'bsimage', element.nodeName == 'IMG');
 		cm.setDisabled('bsimage', element.nodeName == 'A');
 		if (element.nodeName == 'A') {
 			if ( t.elementIsCategoryAnchor( element ) ) {
-				cm.setActive(  'bsfile', false);
+				cm.setActive( 'bsfile', false);
 				cm.setDisabled('bsfile', true);
-			}
-			else if ( t.elementIsMediaAnchor( element ) ) {
-				cm.setActive(  'bsfile', true);
-				cm.setActive(  'bsfile', false); //Why twice?
+			} else if ( t.elementIsMediaAnchor( element ) ) {
+				cm.setActive( 'bsfile', true);
+				cm.setActive( 'bsfile', false); //Why twice?
 				cm.setDisabled('bsfile', false);
-			}
-			else {
+			} else {
 				cm.setDisabled('bsfile', true);
 			}
 		}

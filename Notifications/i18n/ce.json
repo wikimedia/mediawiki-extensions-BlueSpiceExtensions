@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"prefs-notifications": "Хаамаш",
+	"bs-echo-unknown-user": "хууш дац",
+	"bs-echo-page-create": "[[:$1]] агӀонгахь кхоьллина"
+}

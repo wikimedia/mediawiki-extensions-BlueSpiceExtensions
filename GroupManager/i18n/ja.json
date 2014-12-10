@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shield-9",
+			"Shirayuki"
+		]
+	},
+	"bs-groupmanager-desc": "利用者グループとその権限を追加/編集/削除するための管理インターフェイス",
+	"bs-groupmanager-grpexists": "そのグループは既に存在します。",
+	"bs-groupmanager-grpadded": "グループを追加しました。",
+	"bs-groupmanager-grpedited": "グループを編集しました。",
+	"bs-groupmanager-grpremoved": "グループを除去しました。",
+	"bs-groupmanager-headergroup": "グループ",
+	"bs-groupmanager-titlenewgroup": "グループの新規作成",
+	"bs-groupmanager-titleeditgroup": "グループを編集",
+	"bs-groupmanager-removegroup": "{{PLURAL:$1|このグループ|これらのグループ}}を本当に除去しますか?",
+	"bs-groupmanager-removegroup-message-success": "以下の{{PLURAL:$1|グループ}}を削除しました: $2",
+	"bs-groupmanager-removegroup-message-failure": "以下の{{PLURAL:$1|グループ}}を削除できませんでした: $2",
+	"bs-groupmanager-lablename": "グループ名:",
+	"bs-groupmanager-msgnoteditable": "このグループはシステム グループであるため名前を変更できません。",
+	"bs-groupmanager-msgnotremovable": "このグループはシステム グループであるため除去できません。"
+}

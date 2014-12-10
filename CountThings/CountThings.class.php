@@ -53,7 +53,7 @@ class CountThings extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'CountThings',
-			EXTINFO::DESCRIPTION => 'Counts all kinds of things.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-countthings-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -98,7 +98,7 @@ class CountThings extends BsExtensionMW {
 			'id' => 'bs:countarticles',
 			'type' => 'tag',
 			'name' => 'countarticles',
-			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->parse(),
+			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped(),
 			'code' => '<bs:countarticles />',
 		);
 		
@@ -106,7 +106,7 @@ class CountThings extends BsExtensionMW {
 			'id' => 'bs:countusers',
 			'type' => 'tag',
 			'name' => 'countusers',
-			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->parse(),
+			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped(),
 			'code' => '<bs:countusers />',
 		);
 		
@@ -114,7 +114,7 @@ class CountThings extends BsExtensionMW {
 			'id' => 'bs:countcharacters',
 			'type' => 'tag',
 			'name' => 'countcharacters',
-			'desc' => wfMessage( 'bs-countthings-tag-countcharacters-desc' )->parse(),
+			'desc' => wfMessage( 'bs-countthings-tag-countcharacters-desc' )->escaped(),
 			'code' => '<bs:countcharacters>Article One,Article Two,Article Three</bs:countcharacters>',
 		);
 
@@ -162,7 +162,7 @@ class CountThings extends BsExtensionMW {
 	public function onMagicWordBsCountCharacters( $input, $args, $parser ) {
 		$parser->disableCache();
 		if ( empty( $input ) ) {
-			$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-countchars-no-input' )->plain() );
+			$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-no-input' )->plain() );
 			return $oErrorView->execute();
 		}
 
@@ -174,7 +174,7 @@ class CountThings extends BsExtensionMW {
 		$bValidModeProvided = false;
 		foreach( $aModes as $sMode ) {
 			if( !in_array( $sMode, $aAvailableModes ) ){
-				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-countchars-invalid-mode', $sMode )->plain() );
+				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-invalid-mode', $sMode )->plain() );
 				$sOut .= $oErrorView->execute();
 				continue;
 			}
@@ -186,7 +186,7 @@ class CountThings extends BsExtensionMW {
 		foreach( $aTitleTexts as $sTitleText ) {
 			$oTitle = Title::newFromText( trim( $sTitleText ) );
 			if( $oTitle == null || $oTitle->exists() == false ) {
-				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-countchars-title-does-not-exist', $sTitleText )->plain() );
+				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-not-exist', $sTitleText )->plain() );
 				$sOut .= $oErrorView->execute();
 				continue;
 			}

@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-responsibleeditors-pref-activatednamespaces": "Ageschalt Nummräim:",
+	"bs-responsibleeditors-pref-emailnotificationonresponsibilitychange": "Beim Ännere vun der Responsabilitéit informéieren",
+	"bs-responsibleeditors-pref-echange": "Informéiere wann d'Säit geännert gouf",
+	"bs-responsibleeditors-pref-edelete": "Informéiere wann d'Säit geläscht gouf",
+	"bs-responsibleeditors-pref-emove": "Informéiere wann d'Säit geréckelt gouf",
+	"bs-responsibleeditors-success-ajax": "Responsabilitéit geännert.",
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "Net valabel Wäerter uginn.",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Dir sidd net autoriséiert dës Aktioun ze maachen.",
+	"bs-responsibleeditors-contentactions-label": "Responsabilitéit änneren",
+	"bs-responsibleeditors-statebartop-icon-alt": "Et gëtt e responsabelen Editeur fir dës Säit",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "D'Säit, déi ugi gouf, gëtt et net.",
+	"bs-responsibleeditors-mail-subject-re-article-changed": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|geännert}}",
+	"bs-responsibleeditors-mail-subject-re-article-deleted": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|gelänscht}}",
+	"bs-responsibleeditors-mail-subject-re-article-moved": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|geréckelt}}",
+	"bs-responsibleeditors-yourresponsibilities": "Är Verantwortung",
+	"bs-responsibleeditors-yourresponsibilitiesdesc": "Lëscht vu Säite fir déi Dir responsabel sidd.",
+	"bs-responsibleeditors-columnpage": "Säit",
+	"bs-responsibleeditors-columnnamespace": "Nummraum",
+	"bs-responsibleeditors-rbdisplaymodeall": "All Säite weisen",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Sicht en Nummraum eraus"
+}

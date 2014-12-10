@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marc Reymann <reymann@hallowelt.biz>",
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-avatars-warning-text": "Sie haben bereits ein Bild in Ihren Einstellungen hinterlegt. Wenn Sie Avatare benutzen, wird diese Einstellung zurückgesetzt. Möchten Sie fortfahren?"
+}

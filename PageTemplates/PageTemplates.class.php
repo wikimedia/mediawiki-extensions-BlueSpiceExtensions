@@ -58,7 +58,7 @@ class PageTemplates extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'PageTemplates',
-			EXTINFO::DESCRIPTION => 'Displays a list of templates marked as page templates.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-pagetemplates-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -90,15 +90,12 @@ class PageTemplates extends BsExtensionMW {
 		$this->setHook( 'MessagesPreLoad' );
 		$this->setHook( 'ParserFirstCallInit' );
 
-		// Show pages with similar titles when creating pages
-		BsConfig::registerVar( 'MW::PageTemplates::ShowSimilar', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL,        'bs-pagetemplates-ShowSimilar' );
 		// Do not use page template mechanism for these pages
-		BsConfig::registerVar( 'MW::PageTemplates::ExcludeNs', array( -2,-1,6,7,8,9,10,11,14,15 ),
-								BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagetemplates-ExcludeNs', 'multiselectex' );
+		BsConfig::registerVar( 'MW::PageTemplates::ExcludeNs', array( -2,-1,6,7,8,9,10,11,14,15 ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagetemplates-pref-excludens', 'multiselectex' );
 		// Force page to be created in target namespace
-		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-ForceNamespace', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-forcenamespace', 'toggle' );
 		// Hide template if page is not in target namespace
-		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,      'bs-pagetemplates-HideIfNotInTargetNs', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-hideifnotintargetns', 'toggle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -110,9 +107,8 @@ class PageTemplates extends BsExtensionMW {
 	public static function getSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
 			'bs_pagetemplate',
-			__DIR__.DS.'PageTemplates.sql'
+			__DIR__.DS.'db'.DS.'PageTemplates.sql'
 		);
-
 		return true;
 	}
 
@@ -126,15 +122,15 @@ class PageTemplates extends BsExtensionMW {
 		}
 
 		$aPrefs = array(
-				'type' => 'multiselectex',
-				'options' => $aNamespaces,
+			'type' => 'multiselectex',
+			'options' => $aNamespaces,
 		);
 		return $aPrefs;
 	}
 
 	/**
-	 * Automatically modifies "noarticletext" message. Otherwise, you would 
-	 * have to modify MediaWiki:noarticletext in the wiki, wich causes 
+	 * Automatically modifies "noarticletext" message. Otherwise, you would
+	 * have to modify MediaWiki:noarticletext in the wiki, wich causes
 	 * installation overhead.
 	 * @param string $sKey The message key. Note that it comes ucfirst and can be an i18n version (e.g. Noarticletext/de-formal)
 	 * @param string $sMessage This variable is called by reference and modified.
@@ -152,8 +148,8 @@ class PageTemplates extends BsExtensionMW {
 		}
 
 		/*
-		 * As we are in view mode but we present the user only links to 
-		 * edit/create mode we do a preemptive check wether or not th user 
+		 * As we are in view mode but we present the user only links to
+		 * edit/create mode we do a preemptive check wether or not th user
 		 * also has edit/create permission
 		 */
 		if ( !$oTitle->userCan( 'edit' ) ) {
@@ -201,23 +197,9 @@ class PageTemplates extends BsExtensionMW {
 		// if we are not on a wiki page, return. This is important when calling import scripts that try to create nonexistent pages, e.g. importImages
 		if ( !is_object( $oTitle ) ) return true;
 
-		// TODO RBV (18.05.11 08:53): Coding Conventions bei Variablen. View? BaseView mit Template?
-		$sOut = wfMessage( 'bs-pagetemplates-choose-template' )->plain();
+		$aRes = array();
 		$aOutNs = array();
-		$sOutAll = '';
-		$oTargetNsTitle = null;
-
 		$dbr = wfGetDB( DB_SLAVE );
-
-		$sOut .= '<br /><br /><ul><li>';
-		$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), $aCostumAttr = array(), array( 'preload' => '' ) );
-		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
-		$sOut .= '</li></ul>';
-
-		$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
-		$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
-		$vOrder = explode( '*', $vOrder );
-		$vOrder = array_map( 'trim', $vOrder );
 
 		$aConds = array();
 		if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
@@ -242,56 +224,75 @@ class PageTemplates extends BsExtensionMW {
 			array( 'ORDER BY' => 'pt_label' )
 		);
 
+		// There is always one template for empty page it is added some lines beneath that
+		$iCount = $dbr->numRows( $res ) + 1;
+		$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->text();
+		$sOutAll = '';
+		$oTargetNsTitle = null;
+
+		$sOut .= '<br /><br /><ul><li>';
+		$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), array(), array( 'preload' => '' ) );
+		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
+		$sOut .= '</li></ul>';
+
+		$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
+		$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
+		$vOrder = explode( '*', $vOrder );
+		$vOrder = array_map( 'trim', $vOrder );
+
 		if ( $res && $dbr->numRows( $res ) > 0 ) {
 			while ( $row = $dbr->fetchObject( $res ) ) {
-				$oNsTitle = Title::makeTitle( $row->pt_template_namespace, $row->pt_template_title );
-
-				// TODO MRG (06.09.11 12:53): -99 is "all namespaces". Pls use a more telling constant
-				if ( ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) && $row->pt_target_namespace != "-99" )
-					|| $row->pt_target_namespace == $oTitle->getNamespace()
-					|| BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
-
-					$sNamespaceName = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace );
-					if ( !isset( $aOutNs[$sNamespaceName] ) ) {
-						$aOutNs[$sNamespaceName] = array();
-					}
-
-					if ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) ) {
-						$oTargetNsTitle = Title::makeTitle( $row->pt_target_namespace, $oTitle->getText() );
-					} else {
-						$oTargetNsTitle = $oTitle;
-					}
-
-					$sLink = BsLinkProvider::makeLink(
-						$oTargetNsTitle,
-						$row->pt_label,
-						array(),
-						array( 'preload' => $oNsTitle->getPrefixedText() )
-					);
-					$sLink = '<li>' . $sLink;
-					if ( $row->pt_desc ) $sLink .= '<br/>' . $row->pt_desc;
-					$sLink .= '</li>';
-
-					$aOutNs[$sNamespaceName][] = array(
-						'link' => $sLink,
-						'id' => $row->pt_target_namespace
-					);
-				} elseif ( $row->pt_target_namespace == "-99" ) {
-					$sLink = BsLinkProvider::makeLink(
-						$oTitle,
-						$row->pt_label,
-						array(),
-						array( 'preload' => $oNsTitle->getPrefixedText() )
-					);
-					$sOutAll .= '<li>' . $sLink;
-
-					if ( $row->pt_desc ) $sOutAll .= '<br />' . $row->pt_desc;
-
-					$sOutAll .= '</li>';
-				}
+				$aRes[] = $row;
 			}
+		}
+		$dbr->freeResult( $res );
 
-			$dbr->freeResult( $res );
+		foreach( $aRes as $row ) {
+			$oNsTitle = Title::makeTitle( $row->pt_template_namespace, $row->pt_template_title );
+
+			// TODO MRG (06.09.11 12:53): -99 is "all namespaces". Pls use a more telling constant
+			if ( ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) && $row->pt_target_namespace != "-99" )
+				|| $row->pt_target_namespace == $oTitle->getNamespace()
+				|| BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
+
+				$sNamespaceName = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace );
+				if ( !isset( $aOutNs[$sNamespaceName] ) ) {
+					$aOutNs[$sNamespaceName] = array();
+				}
+
+				if ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) ) {
+					$oTargetNsTitle = Title::makeTitle( $row->pt_target_namespace, $oTitle->getText() );
+				} else {
+					$oTargetNsTitle = $oTitle;
+				}
+
+				$sLink = BsLinkProvider::makeLink(
+					$oTargetNsTitle,
+					$row->pt_label,
+					array(),
+					array( 'preload' => $oNsTitle->getPrefixedText() )
+				);
+				$sLink = '<li>' . $sLink;
+				if ( $row->pt_desc ) $sLink .= '<br/>' . $row->pt_desc;
+				$sLink .= '</li>';
+
+				$aOutNs[$sNamespaceName][] = array(
+					'link' => $sLink,
+					'id' => $row->pt_target_namespace
+				);
+			} elseif ( $row->pt_target_namespace == "-99" ) {
+				$sLink = BsLinkProvider::makeLink(
+					$oTitle,
+					$row->pt_label,
+					array(),
+					array( 'preload' => $oNsTitle->getPrefixedText() )
+				);
+				$sOutAll .= '<li>' . $sLink;
+
+				if ( $row->pt_desc ) $sOutAll .= '<br />' . $row->pt_desc;
+
+				$sOutAll .= '</li>';
+			}
 		}
 
 		if ( !empty( $vOrder ) ) {
@@ -403,4 +404,5 @@ class PageTemplates extends BsExtensionMW {
 
 		return true;
 	}
+
 }

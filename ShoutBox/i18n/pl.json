@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Matik7"
+		]
+	},
+	"bs-shoutbox-message": "Napisz nowy komentarz...",
+	"bs-shoutbox-shout": "Wyślij",
+	"bs-shoutbox-loading": "Ładowanie...",
+	"bs-shoutbox-pref-committimeinterval": "Czas pomiędzy dwoma wiadomościami (w sekundach):",
+	"bs-shoutbox-pref-maxmessagelength": "Maksymalna długość wiadomości:",
+	"bs-shoutbox-archive-success": "Wpis usunięty.",
+	"bs-shoutbox-charactersleft": "Pozostał{{PLURAL:$1||o}} $1 {{PLURAL:$1|znak|znaków}}",
+	"bs-shoutbox-confirm-text": "Czy na pewno chcesz usunąć ten wpis?",
+	"bs-shoutbox-confirm-title": "Potwierdź"
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Personnaliser les liens du menu en haut",
+	"prefs-topmenubarcustomizer": "Personnalisation des menus",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Nombre de couches imbriquées :",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entrées dans la couche principale :",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entrées dans les sous-couches :"
+}

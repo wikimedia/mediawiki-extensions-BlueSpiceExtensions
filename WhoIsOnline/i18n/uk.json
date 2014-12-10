@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"NataChe",
+			"Ата"
+		]
+	},
+	"bs-whoisonline-desc": "Виводить список користувачів, які зараз онлайн",
+	"bs-whoisonline-nousers": "Ніхто не ввійшов у систему.",
+	"bs-whoisonline-widget-title": "Хто на сайті?",
+	"prefs-whoisonline": "Хто на сайті?",
+	"bs-whoisonline-pref-limitcount": "Максимальна кількість показаних користувачів:",
+	"bs-whoisonline-pref-orderby": "Впорядкувати за:",
+	"bs-whoisonline-pref-maxidletime": "Час у секундах до того, як користувач позначається як офлайн:",
+	"bs-whoisonline-pref-orderby-time": "Час безперервної робити:",
+	"bs-whoisonline-pref-orderby-name": "Ім'я",
+	"bs-whoisonline-pref-interval": "Інтервал оновлення в секундах:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Видає кількість користувачів, які зараз у системі.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Видає невеликий випадний список користувачів, які зараз у системі.\n\nДопустимі атрибути:\n;<code>anchortext</code>: Текст, до якого Ви хочете, щоб випадних список був прикріплений."
+}

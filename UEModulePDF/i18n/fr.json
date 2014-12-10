@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg"
+		]
+	},
+	"bs-uemodulepdf-desc": "Permettre l’exportation d pages par MediaWiki dans le format PDF",
+	"prefs-uemodulepdf": "Module universel d’exportation en PDF",
+	"uemodulepdf": "Module universel d’exportation en PDF",
+	"bs-uemodulepdf-pref-pdfserviceurl": "URL du serveur :",
+	"bs-uemodulepdf-pref-templatepath": "Modèle standard :",
+	"bs-uemodulepdf-pref-suppressns": "Masquer le préfixe de l’espace de nom en PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Page unique de PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exporter cette page en PDF.",
+	"bs-uemodulepdf-overview-title": "Format de Document Portable (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exporte les pages (pages spéciales et de contenu) en PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "État du serveur",
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponible",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "indisponible",
+	"soap-service-url-not-valid": "L’URL du service web de génération du PDF n’est pas valide. Veuillez vérifier la configuration du wiki.",
+	"soap-service-url-not-set": "L’URL du service web de génération du PDF n’est pas définie. Veuillez vérifier la configuration du wiki.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Interface web du serveur"
+}

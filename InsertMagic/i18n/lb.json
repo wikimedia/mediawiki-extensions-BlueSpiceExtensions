@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-insertmagic": "Magescht Wuert drasetzen",
+	"bs-insertmagic-notoc": "Verstoppt d'Inhaltsverzeechnes.",
+	"bs-insertmagic-noeditsection": "Verstopp d'Ännerungslinken nieft den Iwwerschrëften.",
+	"bs-insertmagic-notitleconvert": "Op Wiki mat Sproochvariante, maacht keng Iwwersetzung vum Titel.",
+	"bs-insertmagic-index": "Suchmaschinne soen d'Säit ze indexéieren",
+	"bs-insertmagic-noindex": "Suchmaschinne soen d'Säit net ze indexéieren",
+	"bs-insertmagic-currentyear": "Aktuellt Joer",
+	"bs-insertmagic-currentmonth": "Aktuelle Mount (Zuel mat Null virdrun).",
+	"bs-insertmagic-currentmonthname": "Aktuelle Mount (Numm).",
+	"bs-insertmagic-currentmonthnamegen": "Aktuelle Mount (Numm am Genitiv)",
+	"bs-insertmagic-currentmonthabbrev": "Aktuelle Mount (Ofkierzung).",
+	"bs-insertmagic-currentday": "Dag vum Mount (Zuel ouni Null virdrun).",
+	"bs-insertmagic-currentday2": "Dag vum Mount (Zuel mat Null virdrun).",
+	"bs-insertmagic-currentdayname": "Dag vun der Woch (Numm).",
+	"bs-insertmagic-currenttime": "Zäit (24-Stonne-Format SS:mm).",
+	"bs-insertmagic-currenthour": "Stonn (24-Stonne-Format, mat enger Null virdrun)",
+	"bs-insertmagic-currentweek": "Woch (Nummer)",
+	"bs-insertmagic-currenttimestamp": "Zäitstempel am Format JJJJMMDDSSmmss.",
+	"bs-insertmagic-sitename": "Den Numm vum Site vun der Wiki.",
+	"bs-insertmagic-servername": "Numm vum Domain.",
+	"bs-insertmagic-currentversion": "D'MediaWiki Versioun vun dëser Wiki.",
+	"bs-insertmagic-contentlanguage": "D'Standard-Interface-Sprooch vun der Wiki.",
+	"bs-insertmagic-revisionday": "Dag vun der Ännerung (keng Null virdrun)",
+	"bs-insertmagic-revisionday2": "Dag vun der Ännerung (Zuel mat Null virdrun)",
+	"bs-insertmagic-revisionmonth": "Mount vun der Ännerung (Zuel ouni Null virdrun)",
+	"bs-insertmagic-revisionmonth1": "Mount vun der Ännerung (Zuel ouni Null virdrun)",
+	"bs-insertmagic-revisionyear": "Joer vun der Ännerung.",
+	"bs-insertmagic-revisiontimestamp": "Zäitstempel vun der Ännerung.",
+	"bs-insertmagic-dlg-title": "Magescht Wuert oder Tag drasetzen",
+	"bs-insertmagic-type-variables": "Variabelen",
+	"bs-insertmagic-label-second": "2. Code änneren",
+	"bs-insertmagic-label-desc": "Beschreiwung"
+}

@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"SPQRobin"
+		]
+	},
+	"bs-insertfile-insert-image": "Afbeelding invoegen",
+	"bs-insertfile-insert-file": "Bestand invoegen",
+	"bs-insertfile-labelsort": "Sorteren op:",
+	"bs-insertfile-labelfilter": "Filter:",
+	"bs-insertfile-filename": "Bestandsnaam",
+	"bs-insertfile-filesize": "Bestandsgrootte",
+	"bs-insertfile-lastmodified": "Recente wijzigingen",
+	"bs-insertfile-details-title": "Details",
+	"bs-insertfile-uploaddescfilelabel": "Samenvatting",
+	"bs-insertfile-uploadwatchthislabel": "Dit bestand volgen",
+	"bs-insertfile-uploadignorewarningslabel": "Alle waarschuwingen negeren",
+	"bs-insertfile-uploadsubmitvalue": "Bestand uploaden",
+	"bs-insertfile-errorloading": "Er is een fout opgetreden tijdens het laden van bestanden.",
+	"bs-insertfile-warning": "Waarschuwing",
+	"bs-insertfile-allowedfiletypesare": "Geldige bestandstypen zijn:",
+	"bs-insertfile-error": "Fout",
+	"bs-insertfile-errornofileextensiononupload": "Het bestand dat u gekozen heeft heeft geen extensie.",
+	"bs-insertfile-of": "of",
+	"bs-insertfile-license": "Licentie",
+	"bs-insertfile-categories": "Categorieën"
+}

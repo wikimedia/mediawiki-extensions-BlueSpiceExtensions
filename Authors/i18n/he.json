@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"ערן",
+			"Guycn2"
+		]
+	},
+	"bs-authors-desc": "מציג את תמונת הפרופיל עבור מחברים של דף",
+	"prefs-authors": "מחברי הדף",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|מחבר|מחברת}}|מחברים}}",
+	"bs-authors-profileimage": "תמונת הפרופיל",
+	"bs-authors-profileimage-change": "שינוי תמונת הפרופיל",
+	"bs-authors-show-all-authors": "מחברים נוספים זמינים",
+	"bs-authors-pref-imageheight": "גובה התמונה:",
+	"bs-authors-pref-imagewidth": "רוחב התמונה:",
+	"bs-authors-pref-limit": "מספר המחברים להצגה:",
+	"bs-authors-pref-show": "הצגת מחברים",
+	"bs-authors-switch-description": "הסתרת המחברים בדף זה."
+}

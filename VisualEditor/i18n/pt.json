@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-visualeditor-desc": "Editor Visual para MediaWiki",
+	"prefs-visualeditor": "Editor Visual",
+	"bs-visualeditor-editbutton-hint": "Editor Visual",
+	"bs-visualeditor-no-summary": "Sem resumo",
+	"bs-visualeditor-contenttable": "Conteúdo",
+	"bs-visualeditor-bsactions-wiki": "Texto wiki",
+	"bs-visualeditor-bsactions-linebreak": "Quebra de linha",
+	"bs-visualeditor-bsactions-signature": "Assinatura",
+	"bs-visualeditor-bsactions-save": "Gravar",
+	"bs-visualeditor-bsactions-headings": "Cabeçalhos",
+	"bs-visualeditor-bsactions-paragraph": "Parágrafo",
+	"bs-visualeditor-bsactions-heading2": "Cabeçalho 2",
+	"bs-visualeditor-bsactions-heading3": "Cabeçalho 3",
+	"bs-visualeditor-bsactions-heading4": "Cabeçalho 4",
+	"bs-visualeditor-bsactions-heading5": "Cabeçalho 5",
+	"bs-visualeditor-bsactions-heading6": "Cabeçalho 6",
+	"bs-visualeditor-switch-noeditor-desc": "Desativa o Editor Visual nesta página."
+}

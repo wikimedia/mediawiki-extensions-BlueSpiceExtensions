@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-rssstandards-title-page": "Pagina",
+	"bs-rssstandards-title-own": "Eigen bijdragen",
+	"bs-rssstandards-title-cat": "Categorie",
+	"bs-rssstandards-title-watch": "Volglijst",
+	"bs-rssstandards-link-text-watch": "Recente wijzigingen van de laatste {{PLURAL:$1|dag|$1 dagen}}.",
+	"bs-rssstandards-changes-from": "Wijzigingen {{GENDER:$1|door}}: $1"
+}

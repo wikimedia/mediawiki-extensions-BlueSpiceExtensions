@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm",
+			"Toliño"
+		]
+	},
+	"bs-articleinfo-desc": "Proporciona información sobre unha páxina na barra de estado",
+	"prefs-articleinfo": "Información da páxina",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalo de actualización en segundos:",
+	"bs-articleinfo-last-edited": "Tempo desde a última actualización",
+	"bs-articleinfo-last-edited-tooltip": "Última edición",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Último editor|Última editora}}",
+	"bs-articleinfo-categories": "Categorías",
+	"bs-articleinfo-more-categories": "Máis categorías dispoñibles",
+	"bs-articleinfo-all-categories-heading": "Categorías",
+	"bs-articleinfo-nocategories": "Non se atoparon categorías.",
+	"bs-articleinfo-hiddencats": "Categorías ocultas",
+	"bs-articleinfo-notemplates": "Non se atoparon modelos.",
+	"bs-articleinfo-templates": "Modelos",
+	"bs-articleinfo-subpages": "Subpáxinas",
+	"bs-articleinfo-subpages-available": "Existen subpáxinas desta páxina",
+	"bs-articleinfo-subpages-too-much": "Hai máis de 100 subpáxinas dispoñibles.",
+	"bs-articleinfo-check-revision": "Hai unha nova versión dispoñible",
+	"bs-articleinfo-check-revision-tooltip": "Recargar a páxina",
+	"bs-articleinfo-statebartoplastedited": "Edición recente",
+	"bs-articleinfo-statebartoplasteditor": "Editor recente",
+	"bs-articleinfo-statebartopcategories": "Categorías",
+	"bs-articleinfo-statebartopsubpages": "Subpáxinas",
+	"bs-articleinfo-statebarbodycategories": "Categorías",
+	"bs-articleinfo-statebarbodysubpages": "Subpáxinas",
+	"bs-articleinfo-statebarbodytemplates": "Modelos"
+}

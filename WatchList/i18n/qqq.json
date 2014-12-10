@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Robby",
+			"Liuxinyu970226",
+			"Shirayuki"
+		]
+	},
+	"bs-watchlist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of watchlist extension",
+	"bs-watchlist-title-sidebar": "Headline for watchlist \n{{Identical|Watchlist}}",
+	"bs-watchlist-pref-widgetlimit": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for limit of entries:",
+	"bs-watchlist-pref-widgetsortodr": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for sort by\n{{Identical|Sort by}}",
+	"bs-watchlist-pref-sort-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option for time\n{{Identical|Time}}",
+	"bs-watchlist-pref-sort-title": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option for title\n{{Identical|Title}}",
+	"bs-watchlist-tag-watchlist-desc": "Used in InsertMagic extension, tag description for creates a list of pages which are on your watchlist and have a non-sighted change.\n{{Related|Bs-tag-desc}}"
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Ешархо}}|Ешархой}}",
+	"bs-readers-pagenotexists": "Ишта агӀо яц",
+	"bs-readers-header-username": "Декъашхочун цӀе",
+	"bs-readers-header-readerspath": "Корта",
+	"bs-readers-header-ts": "Терахь"
+}

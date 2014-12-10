@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-wantedarticle-desc": "Add a page to the wanted page list",
+	"prefs-wantedarticle": "Wanted page",
+	"bs-wantedarticle-ajax-error-no-parameter": "No page title provided.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "The suggested page \"$1\" already exists.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "The page \"$1\" is already suggested.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Suggestion \"$1\" added.",
+	"bs-wantedarticle-success-suggestion-entered": "Your suggestion \"$1\" has been added.",
+	"bs-wantedarticle-sort-value-unknown": "Valid values are: title and time.",
+	"bs-wantedarticle-order-value-unknown": "Valid values are: ASC ({{int:bs-wantedarticle-pref-order-asc}}) and DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
+	"bs-wantedarticle-page-removed": "The page \"$1\" has been removed.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Suggest",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Create",
+	"bs-wantedarticle-single-textfield-defaulttext": "Page title",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Renders a list of wanted pages. Available configuration attributes:",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>: Number of pages to display.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Headline.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Sort order <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) or <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Sort by <code>title</code> or <code>time</code>.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Output format <code>list</code> or <code>quene</code> (comma separated).",
+	"bs-wantedarticle-tag-more-linktext": "More ...",
+	"bs-wantedarticle-tag-default-title": "Wanted pages",
+	"bs-wantedarticle-pref-includelimit": "Number of suggestions:",
+	"bs-wantedarticle-pref-deleteexisting": "Delete existing entries from list",
+	"bs-wantedarticle-pref-showcreate": "Show create link",
+	"bs-wantedarticle-pref-deleteoncreation": "Remove entry from list when page is created",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Template title for suggestions:",
+	"bs-wantedarticle-pref-sort": "Sort by:",
+	"bs-wantedarticle-pref-order": "Order:",
+	"bs-wantedarticle-pref-sort-time": "Time",
+	"bs-wantedarticle-pref-sort-title": "Title",
+	"bs-wantedarticle-pref-order-asc": "ascending",
+	"bs-wantedarticle-pref-order-desc": "descending",
+	"bs-wantedarticle-create-page": "Create page \"$1\".",
+	"bs-wantedarticle-suggest-page": "Suggest page \"$1\".",
+	"bs-wantedarticle-info-nothing-entered": "Please provide a valid page title.",
+	"bs-wantedarticle-title-invalid-chars": "The following {{PLURAL:$1|character is|characters are}} not valid for use in a page title: $2"
+}

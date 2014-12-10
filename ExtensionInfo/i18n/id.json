@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"bs-extensioninfo-desc": "Daftar informasi tentang pengaya yang dimuat",
+	"bs-extensioninfo-label": "Pengaya",
+	"bs-extensioninfo-software": "Perangkat lunak",
+	"bs-extensioninfo-version": "Versi",
+	"extensioninfo": "Pengaya",
+	"bs-extensioninfo-headerextname": "Nama pengaya",
+	"bs-extensioninfo-headerversion": "Versi",
+	"bs-extensioninfo-headerdesc": "Deskripsi",
+	"bs-extensioninfo-headerstatus": "Status",
+	"bs-extensioninfo-headerpackage": "Paket",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elemen|elemen}}"
+}

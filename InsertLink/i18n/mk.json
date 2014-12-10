@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-insertlink-desc": "Дијаложно поле за внесување на врска",
+	"bs-insertlink": "Вметни врска",
+	"bs-insertlink-button-title": "Вметни/измени врска",
+	"bs-insertlink-dialog-title": "Вметни врска",
+	"bs-insertlink-tab-wiki-page": "Викистраница",
+	"bs-insertlink-tab-ext-link": "Надворешна врска",
+	"bs-insertlink-tab-email": "Врска за е-пошта",
+	"bs-insertlink-tab-ext-file": "Врска до податотека",
+	"bs-insertlink-label-page": "Страница",
+	"bs-insertlink-label-link": "Врска",
+	"bs-insertlink-label-mail": "Е-пошта",
+	"bs-insertlink-label-description": "Опис",
+	"bs-insertlink-label-file": "Податотека",
+	"bs-insertlink-label-searchfile": "Пребарај...",
+	"bs-insertlink-select-a-page": "Изберете цел ...",
+	"bs-insertlink-select-a-namespace": "(Страници)",
+	"bs-insertlink-empty-field-text": "За да вметнете врска, ќе треба да ја укежете целната одредница.",
+	"bs-insertlink-no-applet": "Прилогчето не може да се вчита. Проверете ја воспоставката на Java."
+}

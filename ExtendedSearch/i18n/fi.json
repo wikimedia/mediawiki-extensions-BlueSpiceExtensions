@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nike"
+		]
+	},
+	"bs-extendedsearch-desc": "Laajennettu haku",
+	"bs-extendedsearch-curl-not-active": "CURL-laajennus ei ole käytössä.",
+	"bs-extendedsearch-facet-namespace": "Nimiavaruus",
+	"bs-extendedsearch-indexing-wiki-articles": "Sivuja indeksoidaan",
+	"bs-extendedsearch-sort-relevance": "Asiaankuuluvuus",
+	"bs-extendedsearch-pref-scope-text": "Koko teksti",
+	"bs-extendedsearch-pref-showautocomplete": "Näytä täydennysvalikko",
+	"bs-extendedsearch-statistics": "Tilastot",
+	"bs-extendedsearch-morelikethis": "Samankaltaiset sivut"
+}

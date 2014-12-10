@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-checklist-menu-insert-list-title": "Inserir lista",
+	"bs-checklist-dlg-insert-list-title": "Insira lista de verificação",
+	"bs-checklist-dlg-insert-list-value-list": "Lista de valores",
+	"bs-checklist-dlg-new-list": "Criar nova lista",
+	"bs-checklist-dlg-items-label": "Itens na lista",
+	"bs-checklist-dlg-items-emptytext": "Nenhum item nesta lista",
+	"bs-checklist-dlg-items-hint": "Para adicionar um novo item, escreva-o no campo acima e pressione a tecla <kbd>Enter</kbd>.",
+	"bs-checklist-dlg-panel-title": "Listas disponíveis",
+	"bs-checklist-dlg-new-title": "Adicionar nova lista",
+	"bs-checklist-dlg-new-prompt": "Introduza um título para a lista",
+	"bs-checklist-alert": "Atenção!"
+}

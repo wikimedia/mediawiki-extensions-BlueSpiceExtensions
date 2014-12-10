@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-readers-desc": "خوانندگان یک صفحه، و صفحاتی که توسط یک کاربر خوانده شده‌اند را نشان می‌دهد",
+	"prefs-readers": "خوانندگان",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|خواننده}}|خوانندگان}}",
+	"readers-user": "صفحات {{GENDER:$1|خوانده‌شده}} توسط: $1",
+	"readers": "خوانندگان «$1»",
+	"bs-readers-contentactions-label": "نمایش خوانندگان",
+	"bs-readers-pagenotexists": "صفحه وجود ندارد.",
+	"bs-readers-pref-active": "فعال‌کردن خوانندگان",
+	"bs-readers-pref-numofreaders": "تعداد خوانندگان برای نمایش:",
+	"bs-readers-emptyinput": "هیچ صفحه‌ای ارائه نشده‌است.",
+	"bs-readers-header-username": "نام کاربری",
+	"bs-readers-header-readerspath": "خواننده",
+	"bs-readers-header-ts": "تاریخ"
+}

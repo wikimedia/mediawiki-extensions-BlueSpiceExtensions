@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Striking Blue"
+		]
+	},
+	"bs-notifications-desc": "Отправляет нотификации о выбранных пользователем изменениях",
+	"prefs-notifications": "Уведомления",
+	"prefs-echo-extended": "Дополнительные параметры системы",
+	"bs-notifications-pref-notifyns": "Уведомлять только об изменениях в следующих пространствах имён:",
+	"bs-notifications-pref-notifynominor": "Не уведомлять о малых изменениях",
+	"bs-notifications-pref-active": "Включить уведомления",
+	"bs-echo-anon-user": "аноним",
+	"bs-echo-unknown-user": "неизвестен",
+	"bs-echo-page-edit": "Страница [[:$1]] была изменена",
+	"bs-echo-page-create": "Страница [[:$1]] была создана",
+	"bs-echo-page-delete": "Страница [[:$1]] была удалена",
+	"bs-echo-page-move": "Страница [[:$1]] была перемещена",
+	"bs-echo-page-newuser": "Участник $1 был создан.",
+	"bs-echo-page-shoutbox": "Новое сообщение в шаутбоксе на сайте [[:$1]].",
+	"bs-notifications-email-new-subject": "Страница $1 {{GENDER:$2|создана}} $2",
+	"bs-notifications-email-new": "Страница \"$1\" была {{GENDER:$2|создана}} $2.\n\nКомментарий:\n$3 \nЧтобы посетить страницу, перейдите по этой ссылке:\n$4",
+	"bs-notifications-email-edit-subject": "Страница $1 {{GENDER:$2|отредактирована}} $2",
+	"bs-notifications-email-edit": "Страница \"$1\" была {{GENDER:$2|отредактирована}} $2.\n\nКомментарий:\n$3 \nЧтобы посетить страницу, перейдите по этой ссылке:\n$4\n\nЧтобы посмотреть изменения, перейдите по этой ссылке:\n$5",
+	"bs-notifications-email-move-subject": "Страница $1 {{GENDER:$2|перемещена}} $2",
+	"bs-notifications-email-move": "Страница \"$1\" была {{GENDER:$2|перемещена}} $3 $2. Чтобы посетить страницу, перейдите по ссылке:\n$4",
+	"bs-notifications-email-delete-subject": "Страница $1 {{GENDER:$2|удалена}} $2",
+	"bs-notifications-email-delete": "Страница $1 {{GENDER:$2|удалена}} участником $2.\n\nПричина:\n$3",
+	"bs-notifications-email-addaccount-subject": "Участник $1 создан",
+	"bs-notifications-email-addaccount": "Участник $1 с настоящим именем $2 был создан.",
+	"bs-notifications-email-shout-subject": "$2 написал{{GENDER:$2||а}} сообщение на странице $1",
+	"bs-notifications-email-shout": "$2 написал{{GENDER:$2||а}} сообщение на странице $1.\n\nСообщение:\n$3\n\nВы можете посетить страницу, перейдя по этой ссылке:\n$4.",
+	"echo-category-title-bs-create-cat": "Уведомление о новых страницах",
+	"echo-category-title-bs-edit-cat": "Уведомление о правках",
+	"echo-category-title-bs-move-cat": "Уведомлять о перемещениях",
+	"echo-category-title-bs-delete-cat": "Уведомление об удалениях",
+	"echo-category-title-bs-newuser-cat": "Уведомление о новых участниках (только для администраторов)",
+	"echo-category-title-bs-shoutbox-cat": "Уведомление о сообщениях на посещённых страницах (шаутбокс)"
+}

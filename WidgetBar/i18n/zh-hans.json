@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-widgetbar-desc": "加入挂件至用户界面",
+	"prefs-widgetbar": "挂件栏",
+	"bs-widgetbar-userpagesettings-headline": "挂件",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|编辑}}您的挂件工具栏的内容：",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|编辑}}我的挂件工具栏",
+	"bs-widget-container-tooltip": "挂件",
+	"bs-widget-flyout-heading": "挂件"
+}

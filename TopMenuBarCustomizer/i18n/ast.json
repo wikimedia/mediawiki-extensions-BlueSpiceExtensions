@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Crear y editar menús esistentes",
+	"prefs-topmenubarcustomizer": "Personalizador del menú",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Númberu de capes añeraes:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entraes na capa principal:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entraes en capes secundaries:"
+}

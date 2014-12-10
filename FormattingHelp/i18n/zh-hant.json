@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"LNDDYL"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "語法",
+	"bs-formattinghelp-help-example-text": "文字",
+	"bs-formattinghelp-help-bold": "粗體",
+	"bs-formattinghelp-help-italic": "斜體",
+	"bs-formattinghelp-help-listitem": "清單項目",
+	"bs-formattinghelp-help-numberedlist": "編號清單",
+	"bs-formattinghelp-help-link": "內部連結",
+	"bs-formattinghelp-help-caption": "說明",
+	"bs-formattinghelp-help-extlink": "外部連結",
+	"bs-formattinghelp-help-template": "樣板",
+	"bs-formattinghelp-help-templatename": "樣板名稱"
+}

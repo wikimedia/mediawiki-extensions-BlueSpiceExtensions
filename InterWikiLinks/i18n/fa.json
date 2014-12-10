@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-interwikilinks-desc": "رابط مدیریت برای افزودن، ویرایش و حذف پیوندهای میان‌ویکی",
+	"bs-interwikilinks-invalid-pfx-spc": "این پیشوند نامعتبر است. لطفاً از فاصله استفاده نکنید.",
+	"bs-interwikilinks-invalid-url-spc": "این نشانی نامعتبر است. لطفاً از فاصله استفاده نکنید.",
+	"bs-interwikilinks-label": "پیوندهای میان‌ویکی",
+	"bs-interwikilinks-link-created": "پیوند میان‌ویکی ایجاد شد.",
+	"bs-interwikilinks-link-added": "پیوند میان‌ویکی اضافه شد.",
+	"bs-interwikilinks-link-deleted": "پیوند میان‌ویکی حذف شد.",
+	"bs-interwikilinks-nooldpfx": "پیشوند پیشین یافت نشد.",
+	"bs-interwikilinks-nopfx": "لطفاً یک پیشوند تدارک ببینید.",
+	"bs-interwikilinks-nourl": "لطفاً یک نشانی تدارک ببینید.",
+	"bs-interwikilinks-pfxtoolong": "پیشوند خیلی طولانی است. لطفاً از حداکثر ۳۲ نویسه استفاده کنید.",
+	"bs-interwikilinks-pfxexists": "این پیشوند از پیش وجود دارد.",
+	"bs-interwikilinks-headerprefix": "پیشوند",
+	"bs-interwikilinks-titleaddinterwikilink": "افزودن پیوند میان‌ویکی",
+	"bs-interwikilinks-titleeditinterwikilink": "ویرایش پیوند میان‌ویکی",
+	"bs-interwikilinks-labelprefix": "پیشوند",
+	"bs-interwikilinks-titledeleteinterwikilink": "حذف پیوند میان‌ویکی",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "آیا مطمئنید، می‌خواهید این پیوند میان‌ویکی را حذف کنید؟",
+	"bs-interwikilinks-insertlink-tabtitle": "پیوند به ویکی دیگر",
+	"bs-interwikilinks-insertlink-labelprefix": "پیشوند",
+	"bs-interwikilink-select-a-prefix": "انتخاب پیشوند"
+}

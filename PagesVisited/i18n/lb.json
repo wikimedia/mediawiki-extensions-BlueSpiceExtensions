@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"prefs-pagesvisited": "Besicht Säiten",
+	"bs-pagesvisited-widget-title": "Besicht Säiten",
+	"bs-pagesvisited-pref-widgetns": "Nummraim:",
+	"bs-pagesvisited-pref-widgetsortodr": "Zortéieren no:",
+	"bs-pagesvisited-pref-sort-time": "Zäit",
+	"bs-pagesvisited-pref-sort-pagename": "Titel",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Weist eng Lëscht vu Säiten déi Dir besicht hutt."
+}

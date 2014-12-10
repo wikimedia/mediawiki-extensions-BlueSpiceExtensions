@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-uemodulepdf-pref-templatepath": "Szablon standardowy:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Pojedyncza strona PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Eksportuj tę stronę w formacie PDF."
+}

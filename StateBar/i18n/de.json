@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64",
+			"Sebastian Wallroth"
+		]
+	},
+	"bs-statebar-desc": "Zeigt eine Statusleiste an",
+	"prefs-statebar": "Statusleiste",
+	"bs-statebar-pref-sortbodyvars": "Body Reihenfolge:",
+	"bs-statebar-pref-sorttopvars": "Top Reihenfolge:",
+	"bs-statebar-pref-show": "Statusleiste anzeigen",
+	"bs-statebar-viewtoggler": "DETAILS",
+	"bs-statebar-viewtoggler-tooltip": "Detailierte Informationen anzeigen",
+	"bs-statebar-switch-description": "Blendet die Statusleiste auf dieser Seite aus.",
+	"bs-statebar-ajax-nobodyviews": "Keine Informationen verfügbar."
+}

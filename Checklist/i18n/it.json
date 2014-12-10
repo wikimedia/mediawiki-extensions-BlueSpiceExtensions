@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-checklist-menu-insert-checkbox": "Casella di controllo",
+	"bs-checklist-dlg-new-list": "Crea un nuovo elenco",
+	"bs-checklist-dlg-save-list": "Salva le modifiche all'elenco",
+	"bs-checklist-dlg-items-label": "Elementi nell'elenco",
+	"bs-checklist-dlg-panel-title": "Elenchi disponibili",
+	"bs-checklist-dlg-new-title": "Aggiungi nuovo elenco"
+}

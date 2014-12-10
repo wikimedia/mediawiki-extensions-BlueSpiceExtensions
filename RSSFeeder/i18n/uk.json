@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mykola Swarnyk",
+			"Olion"
+		]
+	},
+	"bs-rssfeeder-desc": "Розширення, що дозволяє виводити RSS тим розширенням, які мають функцію buildRss",
+	"rssfeeder": "Канал RSS",
+	"bs-rssfeeder-pagetext": "Ви можете підписатися на такі RSS-канали:",
+	"bs-rssfeeder-recent-changes": "Нещодавні зміни",
+	"bs-rssfeeder-pages": "Сторінка",
+	"bs-rssfeeder-submit": "Показати",
+	"bs-rssfeeder-rss": "RSS-канал",
+	"bs-rssfeeder-rss-desc": "Створити свій власний RSS-канал",
+	"bs-extjs-rssfeeder-rss-title": "URL-адреса RSS"
+}

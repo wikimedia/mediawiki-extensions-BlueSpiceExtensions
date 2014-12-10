@@ -1,3 +1,45 @@
+#panelPermissionManager {
+	height: 500px;
+}
+
+#panelPermissionManager.fullscreen {
+	height: auto !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
 .allowed {
 	background-color: greenyellow !important;
+}
+
+/* HINT: http://www.sencha.com/forum/showthread.php?89050-Displaying-grid-header-fields-form-grid-vertically&p=424452&viewfull=1#post424452 */
+.x-column-header.vertical {
+	height: 100px!important;
+}
+
+.x-column-header.vertical {
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	width: 75px;
+}
+
+.ext-ie .x-column-header.vertical {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	position: absolute;
+	left: 25px;
+	bottom: 20px;
+}
+
+.x-column-header.vertical {
+	text-align: right;
+	font-weight: bold;
+	border-left-color: #fff;
+}
+
+/* Part of BS.panel.Maximizable */
+html.bs-maximizable-panel-fullscreen {
+	overflow: hidden;
 }

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Amitie 10g"
+		]
+	},
+	"bs-usersidebar-desc": "Agrega la pestaña de foco a la barra lateral",
+	"prefs-usersidebar": "Barra lateral del usuario",
+	"bs-usersidebar-userpagesettings-link-title": "Editar el contenido de tu foco",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} foco"
+}

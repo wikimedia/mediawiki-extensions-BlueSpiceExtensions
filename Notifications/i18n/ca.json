@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edustus"
+		]
+	},
+	"prefs-notifications": "Notificacions",
+	"bs-notifications-pref-active": "Habilitar les notificacions",
+	"bs-echo-anon-user": "anònim",
+	"bs-echo-unknown-user": "desconegut"
+}

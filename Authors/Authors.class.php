@@ -24,7 +24,6 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @version    2.22.0
-
  * @package    BlueSpice_Extensions
  * @subpackage Authors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -70,7 +69,7 @@ class Authors extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo          = array(
 			EXTINFO::NAME        => 'Authors',
-			EXTINFO::DESCRIPTION => 'Displays authors of an article with image.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-authors-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -88,16 +87,17 @@ class Authors extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// Hooks
-		$this->setHook( 'BSBlueSpiceSkinAfterArticleContent' );
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BS:UserPageSettings', 'onUserPageSettings' );
+		$this->setHook( 'PageContentSave' );
 
-		BsConfig::registerVar( 'MW::Authors::Blacklist',   array( 'MediaWiki default' ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING, 'bs-authors-pref-blacklist' );
+		BsConfig::registerVar( 'MW::Authors::Blacklist',   array( 'MediaWiki default' ), BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
 		BsConfig::registerVar( 'MW::Authors::ImageHeight', 40,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-imageheight', 'int' );
 		BsConfig::registerVar( 'MW::Authors::ImageWidth',  40,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-imagewidth', 'int' );
 		BsConfig::registerVar( 'MW::Authors::Limit',       10,                           BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-authors-pref-limit', 'int' );
-		BsConfig::registerVar( 'MW::Authors::MoreImage',   'more-users_v2.png',          BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-authors-pref-moreimage' );
+		BsConfig::registerVar( 'MW::Authors::MoreImage',   'more-users_v2.png',          BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
 		BsConfig::registerVar( 'MW::Authors::Show',        true,                         BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-authors-pref-show', 'toggle' );
 
 		$this->mCore->registerBehaviorSwitch( 'bs_noauthors' );
@@ -153,95 +153,151 @@ class Authors extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for 'BSBlueSpiceSkinAfterArticleContent'. Creates the authors list below an article.
-	 * @param array $aViews Array of views to be rendered in skin
-	 * @param User $oUser Current user object
-	 * @param Title $oTitle Current title object
-	 * @return Boolean Always true to keep hook running.
+	 * Hook-Handler for 'SkinTemplateOutputPageBeforeExec'. Creates the authors list below an article.
+	 * @param SkinTemplate $sktemplate a collection of views. Add the view that needs to be displayed
+	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
+	 * @return bool always true
 	 */
-	public function onBSBlueSpiceSkinAfterArticleContent( &$aViews, $oUser, $oTitle ) {
-		if ( $this->checkContext() === false ) return true;
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		if ( $this->checkContext() === false ) {
+			return true;
+		}
+
+		$aDetails = array();
+		$oAuthorsView = $this->getAuthorsViewForAfterContent( $sktemplate, $aDetails );
+		$tpl->data['bs_dataAfterContent']['bs-authors'] = array(
+			'position' => 10,
+			'label' => wfMessage( 'bs-authors-title', $aDetails['count'], $aDetails['username'] )->text(),
+			'content' => $oAuthorsView
+		);
+		return true;
+	}
+
+	private function getAuthorsViewForAfterContent( $oSkin, &$aDetails ) {
+		$oTitle = $oSkin->getTitle();
 
 		//Read in config variables
-		$iLimit     = BsConfig::get( 'MW::Authors::Limit' );
+		$iLimit = BsConfig::get( 'MW::Authors::Limit' );
 		$aBlacklist = BsConfig::get( 'MW::Authors::Blacklist' );
 		$sMoreImage = BsConfig::get( 'MW::Authors::MoreImage' );
 
 		$aParams = array();
-		$aParams['width']  = BsConfig::get( 'MW::Authors::ImageWidth' );
+		$aParams['width'] = BsConfig::get( 'MW::Authors::ImageWidth' );
 		$aParams['height'] = BsConfig::get( 'MW::Authors::ImageHeight' );
 
-		$sPrintable = $this->getRequest()->getVal( 'printable', 'no' );
+		$sPrintable = $oSkin->getRequest()->getVal( 'printable', 'no' );
 		$iArticleId = $oTitle->getArticleID();
 
-		//HINT: Maybe we want to use MW interface Article::getContributors() to have better caching
-		//HINT2: Check if available in MW 1.17+
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			array( 'revision' ),
-			array( 'rev_user_text', 'MAX(rev_timestamp) AS ts' ),
-			array( 'rev_page' => $iArticleId ),
-			__METHOD__,
-			array(
+		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Authors', $iArticleId );
+		$aData = BsCacheHelper::get( $sKey );
+
+		if ( $aData !== false ) {
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetched AuthorsView and Details from cache' );
+			$oAuthorsView = $aData['view'];
+			$aDetails = $aData['details'];
+		} else {
+			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching AuthorsView and Details from DB' );
+			//HINT: Maybe we want to use MW interface Article::getContributors() to have better caching
+			//HINT2: Check if available in MW 1.17+
+			// SW: There is still no caching in WikiPage::getContributors()! 17.07.2014
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+					array( 'revision' ), array( 'rev_user_text', 'MAX(rev_timestamp) AS ts' ), array( 'rev_page' => $iArticleId ), __METHOD__, array(
 				'GROUP BY' => 'rev_user_text',
-				'ORDER BY' => 'ts ASC'
-			)
-		);
+				'ORDER BY' => 'ts DESC'
+					)
+			);
 
-		$iRows = $res->numRows();
-		if ( $iRows == 0 ) return true;
-
-		$oAuthorsView = new ViewAuthors();
-		if ( $sPrintable == 'yes' ) $oAuthorsView->setOption( 'print', true );
-
-		$aUserNames = array();
-		foreach( $res as $row ) {
-			$aUserNames[] = $row->rev_user_text;
-		}
-
-		$sOriginatorUserName = $oTitle->getFirstRevision()->getUserText();
-		$sOriginatorUserName = $this->checkOriginatorForBlacklist( $sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist );
-		if ( $aUserNames[0] != $sOriginatorUserName ) array_unshift( $aUserNames, $sOriginatorUserName );
-
-		$bUseEllipsis = false;
-		$iCount = count( $aUserNames );
-		if ( $iCount > $iLimit ) $bUseEllipsis = true;
-
-		if ( $bUseEllipsis ) {
-			$iLength = $iCount - $iLimit + 1; //The plus 1 is for the '//--MORE--//' entry
-			array_splice( $aUserNames, 1, $iLength, '//--MORE--//' ); // '//--MORE--//' is an invalid username. Therefore we won't get problems in later processing.
-			$iCount = count( $aUserNames );
-		}
-
-		for ( $i = 0; $i < $iCount; $i++ ) {
-			$sUserName = $aUserNames[$i];
-			if ( $sUserName == '//--MORE--//' ) {
-				$oMoreAuthorsView = $this->mCore->getUserMiniProfile( new User(), $aParams );
-				$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
-				$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ).'/'.$sMoreImage );
-				$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array('action' => 'edit') ) );
-				$oMoreAuthorsView->setOption( 'classes', array('bs-authors-more-icon') );
-				if ( $sPrintable == 'yes' ) $oMoreAuthorsView->setOption( 'print', true );
-
-				$oAuthorsView->addItem( $oMoreAuthorsView );
-				continue;
+			if ( $res->numRows() == 0 ) {
+				return true;
 			}
 
-			$oAuthorUser = User::newFromName( $sUserName );
+			$oAuthorsView = new ViewAuthors();
+			if ( $sPrintable == 'yes' ) {
+				$oAuthorsView->setOption( 'print', true );
+			}
 
-			if ( !is_object( $oAuthorUser ) ) continue; // If the username was invalid... Should never happen, because the value comes from the DB.
-			if ( in_array( $oAuthorUser->getName(), $aBlacklist ) ) continue; // Check for blacklisting
+			$aUserNames = array();
+			foreach ( $res as $row ) {
+				$aUserNames[] = $row->rev_user_text;
+			}
 
-			$oUserMiniProfileView = $this->mCore->getUserMiniProfile( $oAuthorUser, $aParams );
-			if ( $sPrintable   == 'yes' )  $oUserMiniProfileView->setOption( 'print', true );
+			$iCount = count( $aUserNames );
+			$aDetails['count'] = $iCount;
 
-			$oAuthorsView->addItem( $oUserMiniProfileView );
+			$sOriginatorUserName = $oTitle->getFirstRevision()->getUserText();
+			$sOriginatorUserName = $this->checkOriginatorForBlacklist(
+				$sOriginatorUserName, $oTitle->getFirstRevision(), $aBlacklist
+			);
+
+			if ( $iCount > 1 ) {
+				array_unshift( $aUserNames, $sOriginatorUserName );
+				$iCount++;
+			}
+
+			$bAddMore = false;
+			if ( $iCount > $iLimit ) {
+				$bAddMore = true;
+			}
+
+			$i = 0;
+			$iItems = 0;
+			$aDetails['username'] = '';
+			while ( $i < $iCount ) {
+				if ( $iItems > $iLimit ) {
+					break;
+				}
+				$sUserName = $aUserNames[$i];
+
+				if ( User::isIP( $sUserName ) ) {
+					unset( $aUserNames[$i] );
+					$i++;
+					continue;
+				}
+
+				$oAuthorUser = User::newFromName( $sUserName );
+
+				if ( !is_object( $oAuthorUser ) || in_array( $oAuthorUser->getName(), $aBlacklist ) ) {
+					unset( $aUserNames[$i] );
+					$i++;
+					continue;
+				}
+				$aDetails['username'] = $oAuthorUser->getName();
+
+				$oUserMiniProfileView = BsCore::getInstance()->getUserMiniProfile( $oAuthorUser, $aParams );
+				if ( $sPrintable == 'yes' ) {
+					$oUserMiniProfileView->setOption( 'print', true );
+				}
+
+				$iItems++;
+				$i++;
+				$oAuthorsView->addItem( $oUserMiniProfileView );
+			}
+
+			if ( $bAddMore === true ) {
+				$oMoreAuthorsView = BsCore::getInstance()->getUserMiniProfile( new User(), $aParams );
+				$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
+				$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ) . '/' . $sMoreImage );
+				$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array( 'action' => 'history' ) ) );
+				$oMoreAuthorsView->setOption( 'classes', array( 'bs-authors-more-icon' ) );
+				if ( $sPrintable == 'yes' ) {
+					$oMoreAuthorsView->setOption( 'print', true );
+				}
+
+				$oAuthorsView->addItem( $oMoreAuthorsView );
+			}
+
+			$dbr->freeResult( $res );
+			BsCacheHelper::set(
+				$sKey,
+				array(
+					'view' => $oAuthorsView,
+					'details' => $aDetails
+				)
+			);
 		}
 
-		$dbr->freeResult( $res );
-
-		array_unshift( $aViews, $oAuthorsView );
-		return true;
+		return $oAuthorsView;
 	}
 
 	/**
@@ -266,13 +322,23 @@ class Authors extends BsExtensionMW {
 	 * @return bool
 	 */
 	private function checkContext() {
-		if ( BsConfig::get( 'MW::Authors::Show' ) === false ) return false;
+		if ( BsConfig::get( 'MW::Authors::Show' ) === false ) {
+			return false;
+		}
 
 		$oTitle = $this->getTitle();
-		if ( !is_object( $oTitle ) ) return false;
+		if ( !is_object( $oTitle ) ) {
+			return false;
+		}
+
+		if ( !$oTitle->exists() ) {
+			return false;
+		}
 
 		// Do only display when user is allowed to read
-		if ( !$oTitle->userCan( 'read' ) ) return false;
+		if ( !$oTitle->userCan( 'read' ) ) {
+			return false;
+		}
 
 		// Do only display in view mode
 		if ( $this->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
@@ -286,8 +352,28 @@ class Authors extends BsExtensionMW {
 
 		// Do not display if __NOAUTHORS__ keyword is found
 		$vNoAuthors = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_noauthors' );
-		if( $vNoAuthors === '' ) return false;
+		if( $vNoAuthors === '' ) {
+			return false;
+		}
 
+		return true;
+	}
+
+	/**
+	 * Invalidates cache for authors
+	 * @param WikiPage $wikiPage
+	 * @param User $user
+	 * @param Content $content
+	 * @param type $summary
+	 * @param type $isMinor
+	 * @param type $isWatch
+	 * @param type $section
+	 * @param type $flags
+	 * @param Status $status
+	 * @return boolean
+	 */
+	public static function onPageContentSave( $wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $status ) {
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'Authors', $wikiPage->getTitle()->getArticleID() ) );
 		return true;
 	}
 }

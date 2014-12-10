@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Alexandr Efremov"
+		]
+	},
+	"bs-contextmenu-desc": "Предоставляет контекстное меню для различных ссылок",
+	"prefs-contextmenu": "Контекстное меню",
+	"bs-contextmenu-pref-modus": "Откройте контекстное меню на (не для мобильных устройств)",
+	"bs-contextmenu-pref-modus-just-right-mouse": "При нажатии на правую кнопку мыши (нажав Crtl покажет контекстное меню по умолчанию в браузере)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "При нажатии на правую кнопку мыши и нажатия Ctrl (нормально зажимая правую кнопку мыши покажет стандартное меню в браузере)",
+	"bs-contextmenu-page-edit": "Редактировать страницу",
+	"bs-contextmenu-page-delete": "Удалить страницу",
+	"bs-contextmenu-page-move": "Переименовать страницу",
+	"bs-contextmenu-page-history": "Просмотр истории страницы",
+	"bs-contextmenu-page-protect": "Защитить страницу",
+	"bs-contextmenu-page-purge": "Очистка кэша и просмотр страницы",
+	"bs-contextmenu-page-info": "Посмотреть информацию о странице",
+	"bs-contextmenu-media-reupload": "Загрузить новую версию",
+	"bs-contextmenu-media-view-page": "Посмотреть описание и историю",
+	"bs-contextmenu-user-mail": "Отправить сообщение",
+	"bs-contextmenu-user-talk": "Оставить сообщение в чате",
+	"bs-contextmenu-file-download": "Загрузить файл"
+}

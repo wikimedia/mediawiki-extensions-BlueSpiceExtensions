@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-interwikilinks-desc": "Інтерфейс адміністрування для додавання, редагування та вилучення інтервікі-посилань",
+	"bs-interwikilinks-invalid-pfx-spc": "Неприпусимий префікс. Будь ласка, не використовуйте пробілів.",
+	"bs-interwikilinks-invalid-url-spc": "Неприпустима URL-адреса. Будь ласка, не використовуйте пробілів.",
+	"bs-interwikilinks-label": "Інтервікі-посилання",
+	"bs-interwikilinks-link-created": "Створено інтервікі-посилання.",
+	"bs-interwikilinks-link-added": "Додано інтервікі-посилання.",
+	"bs-interwikilinks-link-deleted": "Вилучено інтервікі-посилання.",
+	"bs-interwikilinks-nooldpfx": "Попередній префікс не знайдено.",
+	"bs-interwikilinks-nopfx": "Будь ласка, поставте префікс.",
+	"bs-interwikilinks-nourl": "Будь ласка, вкажіть URL-адресу.",
+	"bs-interwikilinks-pfxtoolong": "Префікс надто довгий. Будь ласка, використайте не більше 32-х символів.",
+	"bs-interwikilinks-pfxexists": "Цей префікс уже існує.",
+	"bs-interwikilinks-headerprefix": "Префікс",
+	"bs-interwikilinks-titleaddinterwikilink": "Додати інтервікі-посилання",
+	"bs-interwikilinks-titleeditinterwikilink": "Редагувати інтервікі-посилання",
+	"bs-interwikilinks-labelprefix": "Префікс",
+	"bs-interwikilinks-titledeleteinterwikilink": "Видалити інтервікі-посилання",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Ви впевнені, що хочете видалити це інтервікі-посилання?",
+	"bs-interwikilinks-insertlink-tabtitle": "Посилання на іншу вікі",
+	"bs-interwikilinks-insertlink-labelprefix": "Префікс",
+	"bs-interwikilink-select-a-prefix": "Виберіть префікс"
+}

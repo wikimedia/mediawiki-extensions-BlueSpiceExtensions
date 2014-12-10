@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"פוילישער"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "ווענדונג",
+	"bs-extendededitbar-striketip": "אויסשטרײַכן",
+	"bs-extendededitbar-uppertip": "הייבונג",
+	"bs-extendededitbar-uppersample": "געהויבענער טעקסט",
+	"bs-extendededitbar-lowertip": "נידעריקונג",
+	"bs-extendededitbar-lowersample": "גענידערטער טעקסט",
+	"bs-extendededitbar-smallsample": "קליינער טעקסט",
+	"bs-extendededitbar-commentsample": "הערה",
+	"bs-extendededitbar-gallerytip": "אײַנגעבן בילד גאלעריע",
+	"bs-extendededitbar-gallerysamplecaption": "באַשרײַבונג",
+	"bs-extendededitbar-tabletip": "צולייגן טאַבעלע",
+	"bs-extendededitbar-tablesamplecell": "צעל"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-extensioninfo-label": "Extensions",
+	"bs-extensioninfo-software": "Programari",
+	"bs-extensioninfo-version": "Versió",
+	"extensioninfo": "Extensions",
+	"bs-extensioninfo-headerextname": "Nom de l’extensió",
+	"bs-extensioninfo-headerversion": "Versió",
+	"bs-extensioninfo-headerdesc": "Descripció",
+	"bs-extensioninfo-headerstatus": "Estat",
+	"bs-extensioninfo-headerpackage": "Paquet",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element|elements}}"
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"StephDC"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "文法",
+	"bs-formattinghelp-help-bold": "粗",
+	"bs-formattinghelp-help-italic": "斜",
+	"bs-formattinghelp-help-whitespace": "空白",
+	"bs-formattinghelp-help-extlink": "鏈外",
+	"bs-formattinghelp-help-template": "模"
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe"
+		]
+	},
+	"bs-extendededitbar-desc": "Proporciona botones adicionales para el campo de edición del wiki",
+	"bs-extendededitbar-redirecttip": "Redirección",
+	"bs-extendededitbar-redirectsample": "Insertar texto",
+	"bs-extendededitbar-striketip": "Tachar",
+	"bs-extendededitbar-strikesample": "Texto tachado",
+	"bs-extendededitbar-entertip": "Salto de línea",
+	"bs-extendededitbar-uppertip": "Superíndice",
+	"bs-extendededitbar-uppersample": "Texto en superíndice",
+	"bs-extendededitbar-lowertip": "Subíndice",
+	"bs-extendededitbar-lowersample": "Texto en subíndice",
+	"bs-extendededitbar-smalltip": "Reducir",
+	"bs-extendededitbar-smallsample": "Texto pequeño",
+	"bs-extendededitbar-commenttip": "Insertar comentario oculto",
+	"bs-extendededitbar-commentsample": "Comentario",
+	"bs-extendededitbar-gallerytip": "Insertar galería de imágenes",
+	"bs-extendededitbar-gallerysamplepicture": "Imagen",
+	"bs-extendededitbar-gallerysamplecaption": "Pie",
+	"bs-extendededitbar-quotetip": "Insertar bloque de texto citado",
+	"bs-extendededitbar-quotesample": "Bloque de cita",
+	"bs-extendededitbar-tabletip": "Insertar una tabla",
+	"bs-extendededitbar-tablesampleheader": "Encabezado",
+	"bs-extendededitbar-tablesamplerow": "Fila",
+	"bs-extendededitbar-tablesamplecell": "Celda"
+}

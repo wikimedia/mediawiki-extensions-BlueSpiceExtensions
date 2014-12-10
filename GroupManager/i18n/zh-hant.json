@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cwlin0416"
+		]
+	},
+	"bs-groupmanager-label": "群組管理者",
+	"bs-groupmanager-headergroup": "群組",
+	"bs-groupmanager-titlenewgroup": "新增群組",
+	"bs-groupmanager-titleeditgroup": "編輯群組",
+	"bs-groupmanager-lablename": "群組名稱："
+}

@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"AVIADOR",
+			"Fitoschido"
+		]
+	},
+	"bs-groupmanager-desc": "Interfaz administrativa para añadir, editar y eliminar grupos de usuarios y sus privilegios",
+	"bs-groupmanager-grpexists": "El grupo ya existe.",
+	"bs-groupmanager-grpadded": "Se añadió el grupo.",
+	"bs-groupmanager-grpedited": "Se ha editado el grupo.",
+	"bs-groupmanager-grpremoved": "Se ha eliminado el grupo.",
+	"bs-groupmanager-label": "Gestor de grupos",
+	"bs-groupmanager-invalid-name": "El nombre del grupo contiene {{PLURAL:$1|un carácter inválido|caracteres inválidos}}: $2",
+	"bs-groupmanager-invalid-name-length": "El nombre del grupo no puede tener más de 16 caracteres.",
+	"bs-groupmanager-invalid-name-numeric": "El nombre del grupo debe tener al menos un carácter.",
+	"bs-groupmanager-headergroup": "Grupo",
+	"bs-groupmanager-tipremove": "Eliminar {{PLURAL:$1|grupo|grupos}}",
+	"bs-groupmanager-titlenewgroup": "Nuevo grupo",
+	"bs-groupmanager-titleeditgroup": "Editar grupo",
+	"bs-groupmanager-removegroup": "¿Estás seguro de que quieres eliminar {{PLURAL:$1|este grupo|estos grupos}}?",
+	"bs-groupmanager-removegroup-message-success": "Se {{PLURAL:$1|eliminó el siguiente grupo|eliminaron los siguientes grupos}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "No se {{PLURAL:$1|pudo|pudieron}} eliminar {{PLURAL:$1|el siguiente grupo|los siguientes grupos}}: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Se produjo un error inesperado, por favor inténtalo otra vez.",
+	"bs-groupmanager-lablename": "Nombre del grupo:",
+	"bs-groupmanager-msgnoteditable": "Este grupo es un grupo de sistema y no se puede renombrar.",
+	"bs-groupmanager-msgnotremovable": "Este grupo es un grupo de sistema y no se puede eliminar."
+}

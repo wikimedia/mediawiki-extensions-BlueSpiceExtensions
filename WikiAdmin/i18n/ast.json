@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-wikiadmin-desc": "Alministración de BlueSpice",
+	"bs-wikiadmin-notallowed": "Nun tienes permisu pa usar esta páxina.",
+	"wikiadmin": "Alministración de BlueSpice",
+	"action-wikiadmin": "amosar les páxines d'alministración de BlueSpice",
+	"right-wikiadmin": "Amosar les páxines d'alministración de BlueSpice"
+}

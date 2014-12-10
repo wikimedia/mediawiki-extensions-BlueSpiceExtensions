@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-wikiadmin-desc": "Централизирано раководење со BlueSpice",
+	"bs-wikiadmin-notallowed": "Не ви е дозволено да ја користите страницава.",
+	"wikiadmin": "Раководење со BlueSpice",
+	"action-wikiadmin": "приказ на раководни страници за BlueSpice",
+	"right-wikiadmin": "Приказ на раководни страници за BlueSpiceа",
+	"bs-wikiadmin-shop": "Дуќан"
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix",
+			"Lokal Profil"
+		]
+	},
+	"bs-extendededitbar-desc": "Tillhandahåller ytterligare knappar till wikins redigeringsfält",
+	"bs-extendededitbar-redirecttip": "Omdirigera",
+	"bs-extendededitbar-redirectsample": "Infoga text",
+	"bs-extendededitbar-striketip": "Stryk",
+	"bs-extendededitbar-strikesample": "Genomstruken text",
+	"bs-extendededitbar-entertip": "Radbrytning",
+	"bs-extendededitbar-uppertip": "Upphöjd",
+	"bs-extendededitbar-uppersample": "Upphöjd text",
+	"bs-extendededitbar-lowertip": "Nedsänkt",
+	"bs-extendededitbar-lowersample": "Nedsänkt text",
+	"bs-extendededitbar-smalltip": "Liten",
+	"bs-extendededitbar-smallsample": "Liten text",
+	"bs-extendededitbar-commenttip": "Infoga dold kommentar",
+	"bs-extendededitbar-commentsample": "Kommentar",
+	"bs-extendededitbar-gallerytip": "Infoga ett bildgalleri",
+	"bs-extendededitbar-gallerysamplepicture": "Bild",
+	"bs-extendededitbar-gallerysamplecaption": "Bildtext",
+	"bs-extendededitbar-quotetip": "Infoga ett block av citerad text",
+	"bs-extendededitbar-quotesample": "Blockcitat",
+	"bs-extendededitbar-tabletip": "Infoga en tabell",
+	"bs-extendededitbar-tablesampleheader": "Rubrik",
+	"bs-extendededitbar-tablesamplerow": "Rad",
+	"bs-extendededitbar-tablesamplecell": "Cell"
+}

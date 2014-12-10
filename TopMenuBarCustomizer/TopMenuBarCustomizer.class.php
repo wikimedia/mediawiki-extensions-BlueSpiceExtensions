@@ -17,13 +17,12 @@
 * You should have received a copy of the GNU General Public License along
 * with this program; if not, write to the Free Software Foundation, Inc.,
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
+*
 * This file is part of BlueSpice for MediaWiki
 * For further information visit http://www.blue-spice.org
 *
 * @author     Patric Wirth <wirth@hallowelt.biz>
-* @version    2.22.0
-
+* @version    2.23.0
 * @package    Bluespice_Extensions
 * @subpackage TopMenuBarCustomizer
 * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -34,11 +33,30 @@
 /**
  * v1.20.0
  * - MediaWiki I18N
+ * v2.23.0
+ * - Complete makeover
  */
 
 class TopMenuBarCustomizer extends BsExtensionMW {
-	private $aOldApps = array();
-	private $aApps = array();
+	/**
+	 *
+	 * @var array
+	 */
+	public static $aNavigationSiteTemplate = array(
+		'id' => '',
+		'href' => '',
+		'text' => '',
+		'active' => false,
+		'level' => 1,
+		'containsactive' => false,
+		'external' => false,
+	);
+
+	/**
+	 *
+	 * @var array
+	 */
+	private static $aNavigationSites = null;
 
 	/**
 	 * Constructor of TopMenuBarCustomizer class
@@ -49,13 +67,13 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'TopMenuBarCustomizer',
-			EXTINFO::DESCRIPTION => 'Customize the Top Menu Links.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-topmenubarcustomizer-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
+			EXTINFO::DEPS        => array( 'bluespice' => '2.23.0' )
 		);
 
 		$this->mExtensionKey = 'TopMenuBarCustomizer';
@@ -66,25 +84,69 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 */
 	public function initExt() {
 		//TODO: Add some error massages on article save (more than 5 entrys etc.)
-		$this->setHook('BSBlueSpiceSkin:ApplicationList','onBlueSpiceSkinApplicationList', true);
-		$this->setHook('BeforePageDisplay');
-		$this->setHook('EditFormPreloadText');
+		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'EditFormPreloadText' );
 
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels',       2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfLevels' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::DataSourceTitle',     'TopBarMenu', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING, 'bs-topmenubarcustomizer-pref-DataSourceTitle' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfMainEntries', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfMainEntries', 'int' );
-		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries',  25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-NumberOfSubEntries', 'int' );
+		$this->setHook( 'PageContentSaveComplete', 'invalidateCacheOnArticleChange' );
+		$this->setHook( 'ArticleDeleteComplete', 'invalidateCacheOnArticleChange' );
+		$this->setHook( 'TitleMoveComplete', 'invalidateCacheOnTitleChange' );
+
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NuberOfLevels', 2, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberoflevels' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfMainEntries', 10, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofmainentries', 'int' );
+		BsConfig::registerVar('MW::TopMenuBarCustomizer::NumberOfSubEntries', 25, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-topmenubarcustomizer-pref-numberofsubentries', 'int' );
 	}
 
 	/**
-	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook.
-	 * @param OutputPage $oOutputPage
-	 * @param Skin $oSkin
-	 * @return bool
+	 * Getter for the $aNavigationSites array - either from hook, TopBarMenu title or cache
+	 * @global string $wgSitename
+	 * @return array
 	 */
-	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		$oOutputPage->addModules('ext.bluespice.topmenubarcustomizer');
-		return true;
+	public static function getNavigationSites() {
+		if( !is_null(self::$aNavigationSites) ) return self::$aNavigationSites;
+
+		$sKey = BsExtensionManager::getExtension('TopMenuBarCustomizer')
+					->getCacheKey( 'NavigationSitesData' );
+
+		self::$aNavigationSites = BsCacheHelper::get( $sKey );
+		if( self::$aNavigationSites !== false ) {
+			return self::$aNavigationSites;
+		}
+		self::$aNavigationSites = array();
+
+		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, 'TopBarMenu' );
+
+		if( !is_null($oTopBarMenuTitle) && $oTopBarMenuTitle->exists() ) {
+			$sContent = BsPageContentProvider::getInstance()
+				->getContentFromTitle( $oTopBarMenuTitle );
+
+			// Force unset of all menu items by creating an empty page
+			if( !empty($sContent) ) {
+				self::$aNavigationSites = TopMenuBarCustomizerParser::getNavigationSites();
+			}
+			BsCacheHelper::set( $sKey , self::$aNavigationSites, 60*1440 );//max cache time 24h
+			return self::$aNavigationSites;
+		}
+
+		global $wgSitename;
+		$oCurrentTitle = RequestContext::getMain()->getTitle();
+		$oMainPage = Title::newMainPage();
+
+		self::$aNavigationSites[] = array(
+			'id' => 'wiki',
+			'href' => $oMainPage->getFullURL(),
+			'text' => $wgSitename,
+			'active' => $oCurrentTitle->equals( $oMainPage ),
+			'level' => 1,
+			'containsactive' => false,
+			'external' => false,
+			'children' => array(),
+		);
+
+		wfRunHooks('BSTopMenuBarCustomizerRegisterNavigationSites', array( &self::$aNavigationSites ));
+
+		BsCacheHelper::set( $sKey , self::$aNavigationSites, 60*1440 );//max cache time 24h
+		return self::$aNavigationSites;
 	}
 
 	/**
@@ -93,62 +155,63 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	 * @param Title $oTitle
 	 * @return boolean - always true
 	 */
-	public function onEditFormPreloadText($sText, $oTitle) {
-		if( !$oTitle->equals(Title::newFromText(BsConfig::get('MW::TopMenuBarCustomizer::DataSourceTitle'), NS_MEDIAWIKI)) ) return true;
+	public function onEditFormPreloadText( &$sText, $oTitle ) {
+		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, 'TopBarMenu' );
+		if( !$oTopBarMenuTitle || !$oTitle->equals($oTopBarMenuTitle) ) return true;
 
-		global $wgUser;
-		$aApplications = BsConfig::get('MW::Applications');
-		$sCurrentApplicationContext = BsConfig::get('MW::ApplicationContext');
-		$aOut = array();
-		wfRunHooks( 'BSBlueSpiceSkin:ApplicationList', array( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $this ) );
-
-		foreach($aApplications as $aApplication) {
-			$sText .= "*{$aApplication['name']}\n";
+		$aNavigationSites = self::getNavigationSites();
+		if( empty($aNavigationSites) ) {
+			return true;
 		}
+
+		$sText = TopMenuBarCustomizerParser::toWikiText( $aNavigationSites, $sText );
 
 		return true;
 	}
 
 	/**
-	 * Hook-Handler for BSBlueSpiceSkin:ApplicationList
-	 * @param Array $aApplications
-	 * @param String $sCurrentApplicationContext
-	 * @param User $wgUser
-	 * @param Array $aOut
-	 * @param Object $oSender
-	 * @return boolean - false to stop BSBlueSpiceSkin:ApplicationList hook in skin
+	 * Hook-Handle for MW hook BeforePageDisplay - Sets modules if needed
+	 * @param OutputPage $out
+	 * @param Skin $skin
+	 * @return boolean - always true
 	 */
-	public function onBlueSpiceSkinApplicationList( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $oSender){
-		//re-run applications hook, so later called extensions can register applications after this method returns false
-		if( $oSender === $this) return true;
-		wfRunHooks( 'BSBlueSpiceSkin:ApplicationList', array( &$aApplications, &$sCurrentApplicationContext, $wgUser, &$aOut, $this ) );
-
-		$sSourceTitle = BsConfig::get('MW::TopMenuBarCustomizer::DataSourceTitle');
-		$oTopBarMenuTitle = Title::makeTitle( NS_MEDIAWIKI, $sSourceTitle );
-		if( is_null($oTopBarMenuTitle ) || !$oTopBarMenuTitle->exists() ) return true;
-
-		$newAppList = BsPageContentProvider::getInstance()->getContentFromTitle( $oTopBarMenuTitle );
-
-		// force unset Applications by create an empty page
-		if( $newAppList === "" ) {
-			$aKeys = array_keys( $aApplications );
-			foreach($aKeys as $key) {
-				unset( $aApplications[$key] );
-			}
-			return false;
+	public function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		$aNavigationSites = self::getNavigationSites();
+		if( empty($aNavigationSites) ) {
+			return true;
 		}
-		$this->aOldApps = $aApplications;
-		$aLines = explode( "\n", trim( $newAppList ) );
-		$this->aApps = $this->parseArticleContentLines( $aLines );
-		
-		$aOut[] = '<div id="bs-apps">';
-		$aOut[] =	'<ul>';
-		foreach( $this->aApps as $aApp ) {
-			$oMainItem = new ViewTopMenuItemMain();
+
+		$out->addModules( 'ext.bluespice.topmenubarcustomizer' );
+		$out->addModuleStyles( 'ext.bluespice.topmenubarcustomizer.styles' );
+		return true;
+	}
+
+	/**
+	 * Overrides existing bs_navigation_topbar
+	 * @param SkinTemplate $sktemplate
+	 * @param BaseTemplate $tpl
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ){
+		if( !isset($tpl->data['bs_navigation_sites']) ) return true;
+
+		$aNavigationSites = self::getNavigationSites();
+		if( empty($aNavigationSites) ) {
+			unset( $tpl->data['bs_navigation_sites'] );
+			return true;
+		}
+
+		wfRunHooks('BSTopMenuBarCustomizerBeforeRenderNavigationSites', array( &$aNavigationSites ));
+
+		$aOut= array();
+		$aOut[] = HTML::openElement( 'ul' );
+		foreach( self::getNavigationSites() as $aApp ) {
+			$aApp = array_merge(self::$aNavigationSiteTemplate, $aApp);
+			$oMainItem = new ViewTopMenuItem();
 			$oMainItem->setLevel( $aApp['level'] );
-			$oMainItem->setName( $aApp['name'] );
-			$oMainItem->setLink( $aApp['url'] );
-			$oMainItem->setDisplaytitle( $aApp['displaytitle'] );
+			$oMainItem->setName( $aApp['id'] );
+			$oMainItem->setLink( $aApp['href'] );
+			$oMainItem->setDisplaytitle( $aApp['text'] );
 			$oMainItem->setActive( $aApp['active'] );
 			$oMainItem->setContainsActive( $aApp['containsactive'] );
 			$oMainItem->setExternal( $aApp['external'] );
@@ -157,145 +220,26 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			}
 			$aOut[] = $oMainItem->execute();
 		}
-		$aOut[] =	'</ul>';
-		$aOut[] = '</div>';
+		$aOut[] = HTML::closeElement( 'ul' );
 
-		return false;
+		$tpl->data['bs_navigation_sites'] = implode( "\n", $aOut );
+
+		return true;
 	}
 
-	/**
-	 * Returns recursively all parsed menu items (apps)
-	 * @param type $aLines
-	 * @param type $aApps
-	 * @param type $iPassed
-	 * @return Array
-	 */
-	private function parseArticleContentLines( $aLines, $aApps = array(), $iPassed = 0 ) {
-		$iAllowedLevels = BsConfig::get('MW::TopMenuBarCustomizer::NuberOfLevels');
-		$iMaxEntrys = $iPassed === 0 ? BsConfig::get('MW::TopMenuBarCustomizer::NumberOfMainEntries') -1 : BsConfig::get('MW::TopMenuBarCustomizer::NumberOfSubEntries') -1;
-
-		if($iAllowedLevels < 1 || $iMaxEntrys < 1) return $aApps;
-
-		$iPassed++;
-		$aChildLines = array();
-		$i = 0;
-		for( $i; $i < count($aLines); $i++ ) {
-			$aLines[$i] = trim($aLines[$i]);
-			//prevents from lines without * and list starts without parent item
-			if ( strpos( $aLines[$i], '*' ) !== 0 || (strpos( $aLines[$i], '**' ) === 0 &&  $i == 0)) {
-				continue;
-			}
-
-			if ( strpos( $aLines[$i], '**' ) === 0 ) {
-				if($iPassed < $iAllowedLevels) {
-					$aChildLines[] = substr($aLines[$i], 1);
-				}
-				continue;
-			}
-			if( !empty($aChildLines) ) {
-				$iLastKey = key( array_slice( $aApps, -1, 1, TRUE ) );
-				$aApps[$iLastKey]['children'] = $this->parseArticleContentLines( $aChildLines, array() ,$iPassed );
-				foreach( $aApps[$iLastKey]['children'] as $aChildApps ) {
-					if( !$aChildApps['active'] && !$aChildApps['containsactive'] ) continue;
-					$aApps[$iLastKey]['containsactive'] = true;
-					break;
-				}
-				$aChildLines = array();
-			}
-			
-			if( count($aApps) > $iMaxEntrys) continue;
-
-			$aApp = $this->parseSingleLine( substr($aLines[$i], 1) );
-			if( empty($aApp) ) continue;
-			
-			$aApp['level'] = $iPassed;
-			$aApps[] = $aApp;
-		}
-		//add childern to the last element
-		if( !empty($aChildLines) ) {
-			$iLastKey = key( array_slice( $aApps, -1, 1, TRUE ) );
-			$aApps[$iLastKey]['children'] = $this->parseArticleContentLines( $aChildLines, array() ,$iPassed );
-			foreach( $aApps[$iLastKey]['children'] as $aChildApps ) {
-				if( !$aChildApps['active'] && !$aChildApps['containsactive'] ) continue;
-				$aApps[$iLastKey]['containsactive'] = true;
-				break;
-			}
-		}
-
-		return $aApps;
+	public function invalidateCacheOnArticleChange( $oArticle ) {
+		return $this->invalidateCacheOnTitleChange( $oArticle->getTitle() );
 	}
-	
-	/**
-	 * Parses a single menu item
-	 * @global Title $wgTitle
-	 * @param String $sLine
-	 * @return Array - Single parsed menu item (app)
-	 */
-	private function parseSingleLine( $sLine ) {
-		global $wgTitle, $wgServer, $wgScriptPath;;
-		$newApp = array(
-			'name' => '',
-			'url' => '',
-			'displaytitle' => '',
-			'active' => false,
-			'containsactive' => false,
-			'external' => false,
+
+	public function invalidateCacheOnTitleChange( $oTitle ) {
+		if( !$oTitle->equals(Title::makeTitle(NS_MEDIAWIKI, 'TopBarMenu')) ) return true;
+		$this->invalidateCache();
+		return true;
+	}
+
+	public function invalidateCache() {
+		BsCacheHelper::invalidateCache(
+			$this->getCacheKey( 'NavigationSitesData' )
 		);
-		
-		$aAppParts = explode( '|', trim ( $sLine ) );
-		foreach( $aAppParts as $key => $val ) {
-			$aAppParts[$key ] = trim( $val );
-		}
-		if( empty($aAppParts[0]) ) return array();
-		$newApp['name'] = $aAppParts[0];
-
-		if( !empty( $aAppParts[1] ) ) {
-			$aParsedUrl = wfParseUrl( $aAppParts[1] );
-			if( $aParsedUrl !== false ) {
-				if(preg_match('# |\\*#',$aParsedUrl['host'])) {
-					//$sParseError = $newApp; not in use
-				}
-				if( $aParsedUrl['scheme'] == 'http' || $aParsedUrl['scheme'] == 'https' ) {
-					$sQuery = !empty( $aParsedUrl['query'] ) ? '?'.$aParsedUrl['query'] : '';
-					$newApp['url'] = $aParsedUrl['scheme'].$aParsedUrl['delimiter'].$aParsedUrl['host'].$aParsedUrl['path'].$sQuery;
-					$newApp['external'] = true;
-				} 
-			} else if( strpos($aAppParts[1], '?') === 0 ) { //?action=blog
-				$newApp['url'] = $wgServer.$wgScriptPath.'/'.$aAppParts[1];
-			} else {
-				$oTitle = Title::newFromText( trim($aAppParts[1]) );
-				if( is_null($oTitle) ) {
-					//$sParseError = $newApp; not in use
-				} else {
-					$newApp['url'] = $oTitle->getFullURL();
-					if( $oTitle->equals($wgTitle) ) {
-						$newApp['active'] = true;
-					}
-				}
-			}
-		} else {
-			$newApp['url'] = $wgServer.$wgScriptPath;
-		}
-
-		if( !empty( $aAppParts[2] ) ) {
-			$newApp['displaytitle'] = $aAppParts[2];
-		}
-
-		//get old menu entries with the same id
-		foreach($this->aOldApps as $key => $aOldApp) {
-			if( $aOldApp['name'] == $newApp['name'] ) {
-				if( empty($aAppParts[1]) ) {
-					//no new url given - use old url
-					$newApp['url'] = $aOldApp['url'];
-				}
-				if( empty($aAppParts[2]) ) {
-					//no new display title - use old displaytitle
-					$newApp['displaytitle'] = $aOldApp['displaytitle'];
-				}
-				break;
-			}
-		}
-
-		return $newApp;
 	}
 }

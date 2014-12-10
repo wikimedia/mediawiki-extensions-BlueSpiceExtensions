@@ -2,15 +2,13 @@
 
 BsExtensionManager::registerExtension('Avatars', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['Avatars'] = __DIR__ . '/languages/Avatars.i18n.php';
-$wgExtensionMessagesFiles['AvatarsAlias'] = __DIR__ . '/languages/SpecialAvatars.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
+$wgMessagesDirs['Avatars'] = __DIR__ . '/i18n';
 
-$wgAutoloadClasses['SpecialAvatars'] = __DIR__ . '/includes/specials/SpecialAvatars.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
-$wgAutoloadClasses['Avatars'] = __DIR__ . '/Avatars.class.php';
+$wgExtensionMessagesFiles['Avatars'] = __DIR__ . '/languages/Avatars.i18n.php';
+
+$GLOBALS['wgAutoloadClasses']['Avatars'] = __DIR__ . '/Avatars.class.php';
 
 $wgHooks['BeforePageDisplay'][] = "Avatars::onBeforePageDisplay";
-#$wgSpecialPageGroups['Avatars'] = 'bluespice';
-#$wgSpecialPages['Avatars'] = 'SpecialAvatars'; # Tell MediaWiki about the new special page and its class name
 
 $wgResourceModules['ext.bluespice.avatars.js'] = array(
 	'scripts' => array(
@@ -20,16 +18,14 @@ $wgResourceModules['ext.bluespice.avatars.js'] = array(
 		'bs-avatars-upload-title',
 		'bs-avatars-upload-label',
 		'bs-avatars-generate-new-label',
-		'bs-avatars-warning-label',
+		'bs-avatars-warning-title',
 		'bs-avatars-warning-text',
-		'bs-avatars-userimage-label',
+		'bs-avatars-userimage-title',
 		'bs-avatars-set-userimage-failed',
 		'bs-avatars-set-userimage-saved',
-		'bs-avatars-userimage-save-button',
 		'bs-avatars-userimage-help',
-		'bs-avatars-cancel-button',
 		'bs-avatars-file-upload-fieldset-title',
-		'bs-avatars-user-image-fieldset-title',
+		'bs-avatars-userimage-title',
 		'bs-avatars-auto-generate-fieldset-title'
 	),
 	'localBasePath' => $IP,

@@ -35,7 +35,7 @@ class ViewWantedArticleTag extends ViewBaseElement {
 						.' data-count="'.$this->mCount.'"'
 						.' data-order="'.$this->mOrder.'"'
 						.' data-sort="'.$this->mSort.'"';
-		
+
 		foreach( $this->mListEntries as $oTitle ){
 			$sLink = sprintf( '<a class="internal %s" href="%s" title="%s">%s</a>',
 				$oTitle->exists() == false ? 'new' : '',
@@ -73,9 +73,9 @@ class ViewWantedArticleTag extends ViewBaseElement {
 		if( !empty ( $aHiddenList ) ) {
 			if( $this->mType == 'queue' ) {
 				$aOut[] = sprintf( ', <a class="togglemore-queue" href="javascript:void(0);" title="%s">%s</a>',
-						wfMsg( 'bs-wantedarticle-tag-more-linktext' ),
-						wfMsg( 'bs-wantedarticle-tag-more-linktext' )
-						);
+					wfMessage( 'bs-wantedarticle-tag-more-linktext' )->text(),
+					wfMessage( 'bs-wantedarticle-tag-more-linktext' )->text()
+				);
 				$aOut[] = '<span style="display:none">';
 				$aOut[] = '<span class="bs-wantedarticle-suggestion">';
 				$aOut[] = implode( '</span>, <span class="bs-wantedarticle-suggestion">', $aHiddenList );
@@ -84,9 +84,9 @@ class ViewWantedArticleTag extends ViewBaseElement {
 			}
 			else {
 				$aOut[] = sprintf( '<a class="togglemore" href="javascript:void(0)" title="%s">%s</a>',
-						wfMsg( 'bs-wantedarticle-tag-more-linktext' ),
-						wfMsg( 'bs-wantedarticle-tag-more-linktext' )
-						);
+					wfMessage( 'bs-wantedarticle-tag-more-linktext' )->text(),
+					wfMessage( 'bs-wantedarticle-tag-more-linktext' )->text()
+				);
 				$aOut[] = '<ul style="display:none">';
 				$aOut[] = '  <li class="bs-wantedarticle-suggestion">';
 				$aOut[] = implode( '</li><li class="bs-wantedarticle-suggestion">', $aHiddenList );
@@ -94,7 +94,7 @@ class ViewWantedArticleTag extends ViewBaseElement {
 				$aOut[] = '</ul>';
 			}
 		}
-		
+
 		$aOut[] = '</div>';
 		return implode( "\n", $aOut);
 	}

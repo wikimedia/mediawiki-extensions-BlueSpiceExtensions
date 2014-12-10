@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416",
+			"LNDDYL"
+		]
+	},
+	"bs-permissionmanager-btn-group-label": "群組：",
+	"bs-permissionmanager-header-permissions": "權限",
+	"bs-permissionmanager-header-global": "Wiki",
+	"bs-permissionmanager-header-namespaces": "命名空間",
+	"bs-permissionmanager-header-group": "群組",
+	"bs-permissionmanager-btn-save-label": "儲存",
+	"bs-permissionmanager-btn-save-in-progress-label": "儲存中...",
+	"bs-permissionmanager-save-success": "已儲存權限。",
+	"bs-permissionmanager-labeltemplates": "模板",
+	"bs-permissionmanager-btn-template-editor": "編輯樣板",
+	"bs-permissionmanager-labeltpled": "樣版編輯器",
+	"bs-permissionmanager-labeltpled-desc": "描述",
+	"bs-permissionmanager-labeltpled-active": "啟用中",
+	"bs-permissionmanager-labeltpled-add": "新增",
+	"bs-permissionmanager-labeltpled-edit": "編輯",
+	"bs-permissionmanager-labeltpled-delete": "刪除",
+	"bs-permissionmanager-labeltpled-cancel": "取消"
+}

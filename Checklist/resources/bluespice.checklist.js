@@ -2,9 +2,8 @@
  * Js for ArticleInfo extension
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
-
  * @package    Bluespice_Extensions
- * @subpackage ArticleInfo
+ * @subpackage Checklist
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
@@ -22,19 +21,23 @@ BsChecklist = {
 	menuButton: false,
 	lastCommand: "mceBsCheckbox",
 	lastCommandKey: false,
-	
+
 	init: function () {
 		/*alert('check');*/
 	},
-			
+
 	click: function(elem) {
+		var id = elem.id;
+		id = id.split( "-" );
+		id = id.pop();
+
 		$.ajax({
 			type: "GET",
 			url: bs.util.getAjaxDispatcherUrl( 'Checklist::doChangeCheckItem' ),
 			data: {
-				pos:elem.id,
-				value:elem.checked,
-				articleId:mw.config.get('wgArticleId')
+				pos: id,
+				value: elem.checked,
+				articleId: mw.config.get('wgArticleId')
 			},
 			//dataType: 'html',
 			success: function(result){ // the returned value is passed back as a _result_
@@ -42,14 +45,17 @@ BsChecklist = {
 			}
 		});
 	},
-	
+
 	change: function(elem) {
+		var id = elem.id;
+		id = id.split( "-" );
+		id = id.pop();
 		elem.style.color=elem.options[elem.selectedIndex].style.color;
 		$.ajax({
 			type: "GET",
 			url: bs.util.getAjaxDispatcherUrl( 'Checklist::doChangeCheckItem' ),
 			data: {
-				pos:elem.id,
+				pos: id,
 				value:$('#'+elem.id).find(":selected").text(),
 				articleId:mw.config.get('wgArticleId')
 			},
@@ -59,12 +65,12 @@ BsChecklist = {
 			}
 		});
 	},
-	
-	getOptionsList: function(listId) {
-		if ( listId in BsChecklist.optionsLists ) {
+
+	getOptionsList: function(listId, forceReload) {
+		if ( !forceReload && listId in BsChecklist.optionsLists ) {
 			return BsChecklist.optionsLists[listId];
 		}
-		
+
 		$.ajax({
 			type: "GET",
 			url: bs.util.getAjaxDispatcherUrl( 'Checklist::getOptionsList' ),
@@ -77,15 +83,15 @@ BsChecklist = {
 				BsChecklist.optionsLists[listId] = eval(result);
 			}
 		});
-		
+
 		return BsChecklist.optionsLists[listId];
 	},
-	
+
 	changeSelect: function(elem) {
 		var value = $(elem).find(":selected").text();
 		tinymce.activeEditor.dom.setAttrib(elem.parentNode, 'data-bs-value', value);
 	},
-	
+
 	makeCheckbox: function(checked) {
 		var innerText;
 		innerText = '<button contentEditable="false" class="bsClickableElement" ';
@@ -107,14 +113,14 @@ BsChecklist = {
 			var optionSet = options[i].split("|");
 			var optionValue = optionSet[0];
 			var optionColor = optionSet[1];
-			
+
 			if ( !selectedColor && optionColor ) selectedColor = 'style="color:'+optionColor+';" ';
-			
+
 			innerText += '<option ';
 			if ( optionColor ) innerText += 'style="color:'+optionColor+';" ';
 			if ( optionValue == valueText ) {
-				if ( optionColor ) selectedColor = 'style="color:'+optionColor+';" '
-				innerText += 'selected="selected"'
+				if ( optionColor ) selectedColor = 'style="color:'+optionColor+';" ';
+				innerText += 'selected="selected"';
 			}
 			innerText += '>'+optionValue+'</option>';
 		}
@@ -122,12 +128,12 @@ BsChecklist = {
 		innerText = innerText.replace("{color}", selectedColor);
 		return innerText;
 	},
-	
+
 	makeAndRegisterCheckboxSpecialTag: function(ed, checked) {
 		var id = ed.plugins.bswikicode.getSpecialTagList().length;
 		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist value="" />');
 		var node = ed.dom.create(
-				'span', 
+				'span',
 				{
 					'id'              : "bs_specialtag:@@@ST"+id+"@@@",
 					'class'           : "mceNonEditable tag",
@@ -136,16 +142,16 @@ BsChecklist = {
 					'data-bs-id'      : id,
 					'data-bs-value'   : "false",
 					'data-bs-cbtype'  : "checkbox"
-				}, 
+				},
 				BsChecklist.makeCheckbox(checked));
 		return node;
 	},
-	
+
 	makeAndRegisterSelectboxSpecialTag: function(ed, listname, value) {
 		var id = ed.plugins.bswikicode.getSpecialTagList().length;
 		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist type="list" value="" list="'+listname+'"/>');
 		var node = ed.dom.create(
-				'span', 
+				'span',
 				{
 					'id'              : "bs_specialtag:@@@ST"+id+"@@@",
 					'class'           : "mceNonEditable tag",
@@ -154,13 +160,13 @@ BsChecklist = {
 					'data-bs-id'      : id,
 					'data-bs-value'   : "false",
 					'data-bs-cbtype'  : "list"
-				}, 
+				},
 				BsChecklist.makeSelectbox(listname, value));
 		return node;
 	}
-}
+};
 
-$(document).ready(function() {
+mw.loader.using( 'ext.bluespice', function() {
 	BsChecklist.init();
 });
 
@@ -168,7 +174,7 @@ $(document).on( "BSVisualEditorRenderSpecialTag", function( event, sender, type,
 	if ( type != 'bs:checklist' ) return false;
 	var ed = tinymce.activeEditor;
 	var specialtag = ed.dom.createFragment(st[0]).childNodes[0];
-	
+
 	var cbt = ed.dom.getAttrib(specialtag, 'type', 'checkbox');
 	var valueText = ed.dom.getAttrib(specialtag, 'value', 'false');
 	var listText = ed.dom.getAttrib(specialtag, 'list', '');
@@ -183,12 +189,12 @@ $(document).on( "BSVisualEditorRenderSpecialTag", function( event, sender, type,
 	} else if (cbt == 'list' ) {
 		innerText = BsChecklist.makeSelectbox(listText, valueText);
 	}
-	
+
 	var moreAttribs = 'data-bs-value="'+valueText+'"';
 	moreAttribs += ' data-bs-cbtype="'+cbt+'"';
-	
+
 	return {
-		"innerText":innerText, 
+		"innerText":innerText,
 		"moreAttribs":moreAttribs
 	};
 });
@@ -213,11 +219,11 @@ $(document).on( "BSVisualEditorRecoverSpecialTag", function( event, sender, spec
 $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e, dataname){
 	if ( dataname == 'bs:checklist' ) {
 		var cbtype = ed.dom.getAttrib(e.target.parentNode, 'data-bs-cbtype');
-		
+
 		if ( !cbtype ) {
 			cbtype = 'checkbox';
 		}
-		
+
 		var value = ed.dom.getAttrib(e.target.parentNode, 'data-bs-value');
 
 		if (cbtype == 'checkbox' ) {
@@ -229,7 +235,7 @@ $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e,
 				ed.dom.setStyle(e.target, 'background-image', "url('"+BsChecklist.checkboxImageChecked+"')");
 			}
 		}
-		
+
 		ed.dom.setAttrib(e.target.parentNode, 'data-bs-value', value);
 	}
 });
@@ -237,23 +243,21 @@ $(document).on( "BSVisualEditorClickSpecialTag", function( event, sender, ed, e,
 $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, commands, menus) {
 	var t = plugin;
 	var ed = t.getEditor();
-	
-	
-	
+
 	menus.push({
 		menuId: 'bsChecklist',
 		menuConfig: {
-			text: mw.message('bs-checklist-menu_insert_checkbox').plain(),
+			text: mw.message('bs-checklist-menu-insert-checkbox').plain(),
 			cmd : 'mceBsChecklistLastCommand'
 		}
 	});
-	
+
 	var menuItems = [];
-	
+
 	menuItems.push({text: '-'});
-	
+
 	menuItems.push({
-		text: mw.message('bs-checklist-button_checkbox_title').plain(),
+		text: mw.message('bs-checklist-button-checkbox-title').plain(),
 		value: 'Checkbox',
 		onclick:function(){
 			BsChecklist.lastCommand = 'mceBsCheckbox';
@@ -261,30 +265,27 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 			ed.execCommand('mceBsCheckbox', false);
 		}
 	});
-	
+
 	menuItems.push({
-		text: mw.message('bs-checklist-menu_insert_list_title').plain(),
+		text: mw.message('bs-checklist-menu-insert-list-title').plain(),
 		onclick: function() {
 			// Open window
-			ed.windowManager.open({
-				title: mw.message('bs-checklist-dlg_insert_list_title').plain(),
-				body: [{
-						type: 'textbox',
-						name: 'title',
-						label: mw.message('bs-checklist-dlg_insert_list_value_list').plain()
-				}],
-				onsubmit: function(e) {
-					// Insert content when the window form is submitted
+			var me = this;
+
+			Ext.require('BS.Checklist.Window', function(){
+				BS.Checklist.Window.on('ok', function(sender, data){
 					BsChecklist.lastCommand = 'mceBsSelectbox';
-					BsChecklist.lastCommandKey = e.data.title;
-					ed.execCommand('mceBsSelectbox', false, e.data.title);
-				}
-			})
+					BsChecklist.lastCommandKey = data;
+					ed.execCommand('mceBsSelectbox', false, data);
+
+				});
+				BS.Checklist.Window.show( me );
+			});
 		}
 	});
-	
+
 	ed.addButton('bscheckbox', {
-		title: mw.message('bs-checklist-button_checkbox_title').plain(),
+		title: mw.message('bs-checklist-button-checkbox-title').plain(),
 		cmd: 'mceBsChecklistLastCommand',
 		type: 'splitbutton',
 		//icon: 'image',
@@ -304,7 +305,7 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 				});
 			});
 		},
-		
+
 		onShow: function(e) {
 			var listKeys = [];
 			e.control.items().each(function(index,value) {
@@ -346,14 +347,14 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 		}
 		return;
 	});
-	
+
 	commands.push({
 		commandId: 'checkbox',
 		commandCallback: function(ui, v) {
 			this.execCommand('mceBsCheckbox', ui, v);
 		}
 	});
-	
+
 	ed.addCommand('mceBsSelectbox', function(ui, value) {
 		//needed in FF, apparently to init selection
 		ed.selection.getBookmark();

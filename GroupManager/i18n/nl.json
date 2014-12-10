@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"SPQRobin"
+		]
+	},
+	"bs-groupmanager-grpexists": "De groep bestaat al.",
+	"bs-groupmanager-grpadded": "De groep is toegevoegd.",
+	"bs-groupmanager-grpedited": "De groep is bewerkt.",
+	"bs-groupmanager-grpremoved": "De groep is verwijderd.",
+	"bs-groupmanager-headergroup": "Groep",
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|Groep|Groepen}} verwijderen",
+	"bs-groupmanager-titlenewgroup": "Nieuwe groep",
+	"bs-groupmanager-titleeditgroup": "Groep bewerken",
+	"bs-groupmanager-removegroup": "Weet u zeker dat u deze {{PLURAL:$1|groep|groepen}} wilt verwijderen?",
+	"bs-groupmanager-removegroup-message-success": "De volgende {{PLURAL:$1|groep werd|groepen werden}} verwijderd: $2",
+	"bs-groupmanager-removegroup-message-failure": "De volgende {{PLURAL:$1|groep kon|groepen konden}} niet worden verwijderd: $2",
+	"bs-groupmanager-lablename": "Groepsnaam:"
+}

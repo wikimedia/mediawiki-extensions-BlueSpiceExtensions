@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente",
+			"Fúlvio"
+		]
+	},
+	"prefs-avatars": "Imagens de perfil",
+	"bs-avatars-desc": "Fornece imagens de utilizador genéricas e individuais",
+	"bs-avatars-pref-generator": "Gerador:",
+	"bs-avatars-pref-defaultsize": "Tamanho padrão em pixeis:",
+	"bs-avatars-upload-complete": "A foto foi carregada com sucesso.",
+	"bs-avatars-generate-complete": "Foi gerada uma imagem de perfil.",
+	"bs-avatars-upload-title": "Alterar imagem de perfil",
+	"bs-avatars-upload-label": "Imagem",
+	"bs-avatars-generate-new-label": "Gerar nova imagem de perfil",
+	"bs-avatars-warning-title": "Aviso",
+	"bs-avatars-warning-text": "Definiu uma imagem de utilizador nas suas preferências. Ao utilizar imagens de perfil vai redefinir essa configuração. Deseja continuar?",
+	"bs-avatars-userimage-title": "Imagem da wiki ou URL da imagem",
+	"bs-avatars-userimage-help": "ex. Imagem.jpg ou http://localhost/Imagem.gif",
+	"bs-avatars-set-userimage-failed": "Não é uma imagem da wiki ou URL de imagem válida.",
+	"bs-avatars-set-userimage-saved": "Imagem de utilizador salva com sucesso.",
+	"bs-avatars-file-upload-fieldset-title": "Carregar imagem",
+	"bs-avatars-auto-generate-fieldset-title": "Gerar automaticamente uma imagem de perfil"
+}

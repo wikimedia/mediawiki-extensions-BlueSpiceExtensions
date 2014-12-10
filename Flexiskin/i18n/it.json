@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-flexiskin-desc": "Fornisce una pagina per gestire flexiskins con opzioni di personalizzazione",
+	"bs-flexiskin-label": "Skin",
+	"bs-flexiskin-defaultname": "Predefinito",
+	"prefs-flexiskin": "Skin",
+	"bs-flexiskin-pref-active": "Skin attiva:",
+	"bs-flexiskin-pref-logo": "Logo",
+	"bs-flexiskin-labelname": "Nome",
+	"bs-flexiskin-labeldesc": "Descrizione",
+	"bs-flexiskin-headergeneral": "Generale",
+	"bs-flexiskin-titleaddskin": "Aggiungi skin",
+	"bs-flexiskin-labelskins": "Template",
+	"bs-flexiskin-headeractive": "Attivo",
+	"bs-flexiskin-labelbgcolor": "Colore di sfondo",
+	"bs-flexiskin-headerheader": "Intestazione",
+	"bs-flexiskin-labellogoupload": "Logo",
+	"bs-flexiskin-labelbackgroundupload": "Immagine di sfondo",
+	"bs-flexiskin-no-repeat": "nessuna ripetizione",
+	"bs-flexiskin-repeat-x": "ripetizione orizzontale",
+	"bs-flexiskin-repeat-y": "ripetizione verticale",
+	"bs-flexiskin-repeat": "ripetizione orizzontale e verticale",
+	"bs-flexiskin-labelrepeatbackground": "Ripeti l'immagine di sfondo",
+	"bs-flexiskin-labelcustombgcolor": "Colore personalizzato",
+	"bs-flexiskin-headerposition": "Posizione e dimensioni",
+	"bs-flexiskin-labelnavigation": "Posizione della navigazione",
+	"bs-flexiskin-labelcontent": "Posizione del contenuto",
+	"bs-flexiskin-left": "sinistra",
+	"bs-flexiskin-right": "destra",
+	"bs-flexiskin-center": "centro",
+	"bs-flexiskin-labelfullwidth": "Larghezza massima"
+}

@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"WikiPhoenix",
+			"Lokal Profil"
+		]
+	},
+	"bs-notifications-desc": "Skickar meddelanden vid av användaren valda ändringar",
+	"prefs-notifications": "Meddelanden",
+	"prefs-echo-extended": "Avancerade systeminställningar",
+	"bs-notifications-pref-notifyns": "Meddela enbart för ändringar i dessa namnrymder:",
+	"bs-notifications-pref-notifynominor": "Inga meddelanden för mindre ändringar",
+	"bs-notifications-pref-active": "Aktivera meddelanden",
+	"bs-echo-anon-user": "anonym",
+	"bs-echo-unknown-user": "okänd",
+	"bs-echo-page-edit": "Sidan [[:$1]] har ändrats",
+	"bs-echo-page-create": "Sidan [[:$1]] har skapats",
+	"bs-echo-page-delete": "Sidan [[:$1]] har raderats",
+	"bs-echo-page-move": "Sidan [[:$1]] har flyttats",
+	"bs-echo-page-newuser": "Användaren $1 har skapats.",
+	"bs-echo-page-shoutbox": "Ett nytt ShoutBox-meddelande på webbplatsen [[:$1]].",
+	"bs-notifications-email-new-subject": "Sida $1 {{GENDER:$2|skapades}} av $2",
+	"bs-notifications-email-new": "Sidan \"$1\" har {{GENDER:$2|skapats}} av $2.\n\nKommentar:\n $3 \nDu kan besöka sidan med följande länk:\n$4",
+	"bs-notifications-email-edit-subject": "Sidan $1 {{GENDER:$2|redigerades}} av $2",
+	"bs-notifications-email-edit": "Sidan \"$1\" har {{GENDER:$2|redigerades}} av $2.\n\nKommentar:\n $3 \nDu kan besöka sidan med följande länk:\n$4\n\nOm du bara vill se ändringarna kan du följa denna länk:\n$5",
+	"bs-notifications-email-move-subject": "Sidan $1 {{GENDER:$2|flyttades}} av $2",
+	"bs-notifications-email-move": "Sidan \"$1\" har {{GENDER:$2|flyttats}} till $3 av $2. Du kan besöka sidan med följande länk:\n$4",
+	"bs-notifications-email-delete-subject": "Sidan $1 {{GENDER:$2|raderades}} av $2",
+	"bs-notifications-email-delete": "Sidan \"$1\" har {{GENDER:$2|raderats}} av $2.\n\nDetta var anledningen:\n$3",
+	"bs-notifications-email-addaccount-subject": "Användaren $1 har skapats",
+	"bs-notifications-email-addaccount": "Användaren $1 med det riktiga namnet $2 har skapats.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|lade upp}} ett meddelande på sidan $1",
+	"bs-notifications-email-shout": "$2 har {{GENDER:$2|lagt upp}} ett meddelande på sidan \"$1\".\n\nMeddelande:\n$3\n\nDu kan besöka sidan med följande länk:\n$4.",
+	"echo-category-title-bs-create-cat": "Meddelanden för nya sidor",
+	"echo-category-title-bs-edit-cat": "Meddelanden för redigeringar",
+	"echo-category-title-bs-move-cat": "Meddelanden för flyttar",
+	"echo-category-title-bs-delete-cat": "Meddelanden för raderingar",
+	"echo-category-title-bs-newuser-cat": "Meddelanden för nya användare (endast administratörer)",
+	"echo-category-title-bs-shoutbox-cat": "Meddelanden för meddelanden på bevakade sidor (shoutbox)"
+}

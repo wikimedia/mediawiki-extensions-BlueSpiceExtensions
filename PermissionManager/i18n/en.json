@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-permissionmanager-desc": "Administration interface for editing user rights",
+	"prefs-permissionmanager": "Permission manager",
+	"bs-permissionmanager-label": "Permission manager",
+	"bs-permissionmanager-grouping-global": "Namespace independent permissions",
+	"bs-permissionmanager-grouping-local": "Namespace specific permissions",
+	"bs-permissionmanager-btn-group-label": "Group:",
+	"bs-permissionmanager-header-permissions": "Permissions",
+	"bs-permissionmanager-header-global": "Wiki",
+	"bs-permissionmanager-header-namespaces": "Namespaces",
+	"bs-permissionmanager-header-group": "Group",
+	"bs-permissionmanager-btn-save-label": "Save",
+	"bs-permissionmanager-btn-save-in-progress-label": "Saving ...",
+	"bs-permissionmanager-save-success": "Permissions saved.",
+	"bs-permissionmanager-labeltemplates": "Templates",
+	"bs-permissionmanager-btn-template-editor": "Edit templates",
+	"bs-permissionmanager-labeltpled": "Template editor",
+	"bs-permissionmanager-labeltpled-desc": "Description",
+	"bs-permissionmanager-labeltpled-active": "Active",
+	"bs-permissionmanager-labeltpled-add": "New",
+	"bs-permissionmanager-labeltpled-edit": "Edit",
+	"bs-permissionmanager-labeltpled-delete": "Delete",
+	"bs-permissionmanager-labeltpled-cancel": "Cancel",
+	"bs-permissionmanager-msgtpled-success": "Template saved.",
+	"bs-permissionmanager-msgtpled-savefailure": "Template could not be saved.",
+	"bs-permissionmanager-msgtpled-saveonabort": "Do you want to save all data now?",
+	"bs-permissionmanager-msgtpled-new": "Template name:",
+	"bs-permissionmanager-msgtpled-edit": "New template name:",
+	"bs-permissionmanager-msgtpled-delete": "Template deleted.",
+	"bs-permissionmanager-msgtpled-deletefail": "Template could not be deleted.",
+	"bs-permissionmanager-titletpled-new": "Create template",
+	"bs-permissionmanager-titletpled-edit": "Rename template",
+	"bs-permissionmanager-titletpled-delete": "Delete template",
+	"bs-permissionmanager-pref-lockmode": "Activate lockmode",
+	"bs-permissionmanager-pref-skipsysns": "Skip system namespaces if lockmode is active",
+	"bs-permissionmanager-pref-enablerealitycheck": "Activate permission check",
+	"bs-permissionmanager-unsaved-changes": "There are unsaved changes. Do you really want to leave the page now? The unsaved changes will be lost."
+}

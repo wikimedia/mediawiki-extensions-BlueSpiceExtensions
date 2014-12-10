@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-articleinfo-desc": "提供关于状态栏中页面的信息",
+	"prefs-articleinfo": "页面信息",
+	"bs-articleinfo-pref-CheckRevisionInterval": "更新间隔秒数：",
+	"bs-articleinfo-last-edited": "最近更改后的时间",
+	"bs-articleinfo-last-edited-tooltip": "最近编辑",
+	"bs-articleinfo-last-editor": "最后{{GENDER:$1|编辑者}}",
+	"bs-articleinfo-categories": "分类",
+	"bs-articleinfo-more-categories": "更多分类可用",
+	"bs-articleinfo-all-categories-heading": "分类",
+	"bs-articleinfo-nocategories": "找不到分类。",
+	"bs-articleinfo-hiddencats": "隐藏分类",
+	"bs-articleinfo-notemplates": "找不到模板。",
+	"bs-articleinfo-templates": "模板",
+	"bs-articleinfo-subpages": "子页面",
+	"bs-articleinfo-subpages-available": "有此页面的子页面",
+	"bs-articleinfo-subpages-too-much": "有超过100个子页面可用。",
+	"bs-articleinfo-check-revision": "新版本可用",
+	"bs-articleinfo-check-revision-tooltip": "刷新页面",
+	"bs-articleinfo-statebartoplastedited": "最近编辑",
+	"bs-articleinfo-statebartoplasteditor": "最近编辑者",
+	"bs-articleinfo-statebartopcategories": "分类",
+	"bs-articleinfo-statebartopsubpages": "子页面",
+	"bs-articleinfo-statebarbodycategories": "分类",
+	"bs-articleinfo-statebarbodysubpages": "子页面",
+	"bs-articleinfo-statebarbodytemplates": "模板"
+}

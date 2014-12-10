@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"सरोज कुमार ढकाल"
+		]
+	},
+	"prefs-articleinfo": "पृष्ठ जानकारी",
+	"bs-articleinfo-pref-CheckRevisionInterval": "अन्तराल सेकेन्डमा लेख्नुहोस् :",
+	"bs-articleinfo-last-edited": "अन्तिम सम्पादन पछिको देखिको समय",
+	"bs-articleinfo-last-edited-tooltip": "अन्तिम सम्पादन",
+	"bs-articleinfo-last-editor": "अन्तिम {{GENDER:$1|सम्पादनकर्ता}}",
+	"bs-articleinfo-categories": "श्रेणीहरू",
+	"bs-articleinfo-more-categories": "थप श्रेणीहरू उपलब्ध छ",
+	"bs-articleinfo-all-categories-heading": "श्रेणीहरू",
+	"bs-articleinfo-nocategories": "कुनै श्रेणी फेला परेन ।",
+	"bs-articleinfo-hiddencats": "लुकाइएका श्रेणीहरू",
+	"bs-articleinfo-templates": "ढाँचा (टेम्प्लेट)",
+	"bs-articleinfo-subpages": "सहपृष्ठहरू",
+	"bs-articleinfo-subpages-available": "यो पृष्ठका सहपृष्ठहरू छन्",
+	"bs-articleinfo-check-revision": "नयाँ संस्करण उपलब्ध छ",
+	"bs-articleinfo-check-revision-tooltip": "पृष्ठ पुन: लोड गर्नुहोस्",
+	"bs-articleinfo-statebartoplastedited": "हालका सम्पादन",
+	"bs-articleinfo-statebartoplasteditor": "हालको सम्पादक",
+	"bs-articleinfo-statebartopcategories": "श्रेणीहरू",
+	"bs-articleinfo-statebartopsubpages": "सहपृष्ठहरू",
+	"bs-articleinfo-statebarbodycategories": "श्रेणीहरू",
+	"bs-articleinfo-statebarbodysubpages": "सहपृष्ठहरू",
+	"bs-articleinfo-statebarbodytemplates": "ढाँचाहरू (टेम्प्लेट)"
+}

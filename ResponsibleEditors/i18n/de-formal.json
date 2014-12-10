@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Smuggli"
+		]
+	},
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "Es wurden unzulässige Werte übergeben.",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Sie sind nicht berechtigt diese Aktion durchzuführen.",
+	"bs-responsibleeditors-mail-text-new-editor": "Soeben wurden Ihnen durch {{GENDER:$1|Herr|Frau|}} $2 die Verantwortlichkeit für die Seite \"$3\" übertragen. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $4 Sollten Sie Fragen zur Übertragung der Verantwortlichkeit haben, wenden Sie sich bitte an {{GENDER:$1|Herr|Frau|}} $2.",
+	"bs-responsibleeditors-mail-text-former-editor": "Soeben wurde Ihnen durch {{GENDER:$1|Herr|Frau|}} $2 die Verantwortlichkeit für die Seite \"$3\" entzogen. {{PLURAL:$5|Der neue verantwortliche Redakteur ist|Die neuen verantwortlichen Redakteure sind}}: $4 Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $6 Sollten Sie Fragen zur Änderung der Verantwortlichkeit haben, wenden Sie sich bitte an {{GENDER:$1|Herr|Frau|}} $2.",
+	"bs-responsibleeditors-mail-text-re-article-changed": "Die Seite \"$1\", für die Sie als verantwortlicher Redakteur eingetragen sind, wurde von {{GENDER:$2|Herr|Frau|}} $3 bearbeitet. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $4",
+	"bs-responsibleeditors-mail-text-re-article-deleted": "Die Seite \"$1\", für die Sie als verantwortlicher Redakteur eingetragen sind, wurde von {{GENDER:$2|Herr|Frau|}} $3 gelöscht. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $4",
+	"bs-responsibleeditors-mail-text-re-article-moved": "Die Seite \"$1\", für die Sie als verantwortlicher Redakteur eingetragen sind, wurde von {{GENDER:$3|Herr|Frau|}} $4 nach \"$2\" verschoben. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $5",
+	"bs-responsibleeditors-no-own-responsibilities": "Sie sind für keine Seite der verantworliche Redakteur.",
+	"bs-responsibleeditors-yourresponsibilities": "Ihre Verantwortlichkeiten",
+	"bs-responsibleeditors-yourresponsibilitiesdesc": "Liste der Seiten, für die Sie verantworlich sind."
+}

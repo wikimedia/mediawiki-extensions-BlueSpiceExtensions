@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-extendededitbar-desc": "دکمه‌های اضافی برای زمینه ویرایش ویکی ارائه می‌کند",
+	"bs-extendededitbar-redirecttip": "تغییرمسیر",
+	"bs-extendededitbar-redirectsample": "درج متن",
+	"bs-extendededitbar-striketip": "خط‌زدن",
+	"bs-extendededitbar-strikesample": "خط‌زدن روی متن",
+	"bs-extendededitbar-entertip": "خط شکسته",
+	"bs-extendededitbar-uppertip": "بالانویس",
+	"bs-extendededitbar-uppersample": "متن بالانویس",
+	"bs-extendededitbar-lowertip": "زیرنویس",
+	"bs-extendededitbar-lowersample": "متن زیرنویس",
+	"bs-extendededitbar-smalltip": "کوچک",
+	"bs-extendededitbar-smallsample": "متن کوچک",
+	"bs-extendededitbar-commenttip": "درج دیدگاه پنهان",
+	"bs-extendededitbar-commentsample": "دیدگاه",
+	"bs-extendededitbar-gallerytip": "قراردادن یک گالری عکس",
+	"bs-extendededitbar-gallerysamplepicture": "تصویر",
+	"bs-extendededitbar-gallerysamplecaption": "عنوان",
+	"bs-extendededitbar-quotetip": "درج یک قطعه متن نقل‌شده",
+	"bs-extendededitbar-quotesample": "قطعه نقل قول",
+	"bs-extendededitbar-tabletip": "درج یک جدول",
+	"bs-extendededitbar-tablesampleheader": "سربرگ",
+	"bs-extendededitbar-tablesamplerow": "ردیف",
+	"bs-extendededitbar-tablesamplecell": "سلول"
+}

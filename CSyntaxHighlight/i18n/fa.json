@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "عملکرد برجسته‌کردن نحو قابل تنظیم را می‌افزاید",
+	"prefs-csyntaxhighlight": "برجسته‌کننده نحو",
+	"bs-csyntaxhighlight-pref-theme": "پوسته:",
+	"bs-csyntaxhighlight-pref-gutter": "نشان‌دادن شماره خطوط",
+	"bs-csyntaxhighlight-pref-autolinks": "نشانی پیوندها",
+	"bs-csyntaxhighlight-pref-toolbar": "نشان‌دادن نوار ابزار"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-checklist-dlg-new-list": "Nieuwe lijst aanmaken",
+	"bs-checklist-dlg-panel-title": "Beschikbare lijsten",
+	"bs-checklist-dlg-new-title": "Nieuwe lijst toevoegen",
+	"bs-checklist-confirm-dirty-title": "Niet-opgeslagen wijzigingen!"
+}

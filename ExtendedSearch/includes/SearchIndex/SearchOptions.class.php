@@ -13,21 +13,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
 /**
- * User-Input is stored in a object of class SearchRequest
+ * The search request is stored in a object of class SearchRequest
  * All relevant data during searchtime can be found here in object of class SearchOptions
- * The class itself can generate all input for different solr-queries to be passed to
- * Apache_Solr_Service
- * @author Mathias
- */
-/**
- * Manages search options for ExtendedSearch for MediaWiki
- * @package BlueSpice_Extensions
- * @subpackage ExtendedSearch
  */
 class SearchOptions {
 
@@ -36,6 +24,7 @@ class SearchOptions {
 	 * @var string The original search string
 	 */
 	public static $searchStringRaw = '';
+
 	/**
 	 * Unique ID in order to distinguish this wiki in the index from others.
 	 * @var string A unique ID
@@ -65,7 +54,8 @@ class SearchOptions {
 	 * Request Context
 	 * @var RequestContext RequestContext object
 	 */
-	protected $oRequestContext;
+	protected $oRequestContext = null;
+
 	/**
 	 * Instance of search service
 	 * @var object of search service
@@ -74,10 +64,11 @@ class SearchOptions {
 
 	/**
 	 * Constructor  for SearchOptions class
-	 * @param BsSearchService $searchService Reference to search service.
+	 * @param SearchRequest $oSearchRequest search request
 	 */
-	public function __construct() {
-		$this->readInSearchRequest();
+	public function __construct( $oSearchRequest, $oContext ) {
+		$this->oSearchRequest = $oSearchRequest;
+		$this->oRequestContext = $oContext;
 	}
 
 	/**
@@ -132,7 +123,7 @@ class SearchOptions {
 
 	/**
 	 * Get complete options array
-	 * @return array List of options 
+	 * @return array List of options
 	 */
 	public function getOptionsArray(){
 		return $this->aOptions;
@@ -169,20 +160,31 @@ class SearchOptions {
 	 * Creates an array that can be used as a autocomplete search query to Solr.
 	 * @return array List of url parameters.
 	 */
-	public function getSolrAutocompleteQuery() {
+	public function getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString ) {
 		$aSearchOptions = array();
 		$aSearchOptions['fl'] = 'type,title,namespace';
 		$aSearchOptions['fq'] = array( 'wiki:(' . $this->getCustomerId() . ')' );
 		$aSearchOptions['sort'] = $this->aSearchOptions['sort'];
 
-		$aSolrAutocompleteQuery = array(
-			'searchString' => $this->aOptions['searchStringFinal'],
-			'offset' => $this->aOptions['offset'],
-			'searchLimit' => $this->aOptions['searchLimit'],
-			'searchOptions' => $aSearchOptions
+		$vNamespace = $this->checkSearchstringForNamespace(
+			$sSearchString,
+			$sSolrSearchString,
+			$aSearchOptions['fq']
 		);
 
-		return $aSolrAutocompleteQuery;
+		$aOptions = array();
+		$aOptions['searchString'] = 'titleEdge:('.$sSolrSearchString.') OR title:('.$sSolrSearchString.')';
+		$aOptions['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
+
+		$aQuery = array(
+			'searchString' => $aOptions['searchString'],
+			'offset' => $this->aOptions['offset'],
+			'searchLimit' => $aOptions['searchLimit'],
+			'searchOptions' => $aSearchOptions,
+			'namespace' => $vNamespace
+		);
+
+		return $aQuery;
 	}
 
 	/**
@@ -195,7 +197,7 @@ class SearchOptions {
 		// Prefix, wildcard and fuzzy queries aren't analyzed, and thus won't match synonyms
 		if ( empty( $sSearchString ) ) {
 			$fuzzySearchString = $this->aOptions['searchStringOrig'];
-		} else { 
+		} else {
 			$fuzzySearchString = $sSearchString;
 		}
 
@@ -225,7 +227,7 @@ class SearchOptions {
 	}
 
 	/**
-	 * Creates an array that can be used as a autocomplete search query to Solr.
+	 * Creates an array that can be used as a more like this search query to Solr.
 	 * @return array List of url parameters.
 	 */
 	public function getSolrMltQuery( $oTitle ) {
@@ -239,9 +241,8 @@ class SearchOptions {
 		$aSearchOptions['fq'][] = $sFqNamespaces;
 
 		$aSearchOptions['mlt'] = 'true';
-		$aSearchOptions['mlt.fl'] = 'titleMlt,textMlt'; // todo: titleWord, textWord
+		$aSearchOptions['mlt.fl'] = 'textMlt'; // todo: titleWord, textWord
 		$aSearchOptions['mlt.boost'] = 'true';
-		$aSearchOptions['mlt.qf'] = 'titleMlt^10.0 textMlt^0.1';
 		$aSearchOptions['mlt.mindf'] = '5';
 		$aSearchOptions['mlt.mintf'] = '3';
 		$aSearchOptions['mlt.maxqt'] = '15';
@@ -266,241 +267,183 @@ class SearchOptions {
 	 */
 	public function getSearchOptionsSim() {
 		return array(
-				'fl' => 'title,namespace,score',
-				'fq' => array( 'overall_type:wiki', "wiki:".$this->getCustomerId() ),
-				'spellcheck' => 'true',
-				'spellcheck.collate' => 'true'
-			);
+			'fl' => 'title,namespace,score',
+			'fq' => array( 'overall_type:wiki', "wiki:".$this->getCustomerId() ),
+			'spellcheck' => 'true',
+			'spellcheck.collate' => 'true'
+		);
 	}
 
 	/**
-	 * Retrieves parameters from defaults and search options.
+	 * Processes incoming search request
 	 */
-	protected function readInSearchRequest() {
-		$this->oRequestContext = RequestContext::getMain();
-		$oSearchRequest = SearchRequest::getInstance();
-
-		$this->aOptions['searchStringRaw']  = $oSearchRequest->sInput;
-		$this->aOptions['searchOrigin'] = $oSearchRequest->sOrigin;
-		$this->aOptions['searchStringOrig'] = SearchService::preprocessSearchInput( $oSearchRequest->sInput );
+	public function readInSearchRequest() {
+		global $wgCanonicalNamespaceNames, $wgExtraNamespaces, $wgContentNamespaces;
+		$this->aOptions['searchStringRaw'] = $this->oSearchRequest->sInput;
+		$this->aOptions['searchStringOrig'] = ExtendedSearchBase::preprocessSearchInput( $this->oSearchRequest->sInput );
 
 		self::$searchStringRaw = $this->aOptions['searchStringRaw'];
 
-		$vNamespace = ExtendedSearchBase::getInstance()->checkSearchstringForNamespace( $this->aOptions['searchStringRaw'], $this->aOptions['searchStringOrig'] );
+		$sCustomerId = $this->getCustomerId();
+		$sLogOp = ' OR ';
+		$aFq = array();
+		$aBq = array();
+
+		$scope = ( BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' )
+			? 'title'
+			: 'text';
+		$this->aOptions['scope'] = $scope;
+
+		$vNamespace = $this->checkSearchstringForNamespace(
+			$this->aOptions['searchStringRaw'],
+			$this->aOptions['searchStringOrig'],
+			$aFq,
+			BsConfig::get( 'MW::ExtendedSearch::ShowFacets' )
+		);
 
 		$this->aOptions['searchStringWildcarded'] = SearchService::wildcardSearchstring( $this->aOptions['searchStringOrig'] );
 		$this->aOptions['searchStringForStatistics'] = $this->aOptions['searchStringWildcarded'];
-		$this->aOptions['searchStrComp'] = array();
-		$this->aOptions['bExtendedForm'] = $oSearchRequest->bExtendedForm;
-
-		$scope = BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' ? 'title' : 'text';
-
-		if ( $oSearchRequest->sScope == 'title' ) $scope = 'title';
-		if ( $oSearchRequest->sScope == 'text' ) $scope = 'text';
-		$this->aOptions['scope'] = $scope;
-
-		// titleWord, titleReverse, textWord, textReverse sind "analyzed" (u.a. gestemmt)
-		// Wird ein Query mit Wilcards ausgeführt, wird darauf vom Solr kein Analyzer angewendet => der Treffer liegt dann also wahrscheinlicher im Feld *Reverse
-
-		global $wgContLang;
-		$sLanguage = $wgContLang->getCode();
-		if ( $sLanguage === 'de' || $sLanguage === 'de-formal' ) {
-			$sLang = 'de';
-		} else {
-			$sLang = 'en';
-		}
-
-		// require stopword lists for sentence recognation
-		require( 'Stopwords_'.$sLang.'.php' );
-
-		$aSerachTerms = explode( ' ', $this->aOptions['searchStringRaw'] );
-		$sChar = '';
-
-		// If entered search term has more than 4 words it will be checked for real sentence
-		if ( count( $aSerachTerms ) > 3 ) {
-			$iOccurences = 0;
-			foreach ( $aSerachTerms as $sTerm ) {
-				$sTerm = mb_strtolower( $sTerm );
-
-				if ( in_array( $sTerm, $aStopwords ) ) {
-					$iOccurences++;
-				}
-			}
-
-			// More than two words of the search term are on the stopword list
-			// it is handeled as as a sentence ans will be a phrasequery
-			if ( $iOccurences >= 2 ) {
-				$sChar = '"';
-			}
-		}
 
 		$aSearchTitle = array(
-			'titleWord:("' . $this->aOptions['searchStringOrig'] . '")^50',
-			'titleWord:(' . $sChar . $this->aOptions['searchStringOrig'] . $sChar . ')^20',
+			'title:(' . $this->aOptions['searchStringOrig'] . ')^5',
+			'titleWord:(' . $this->aOptions['searchStringOrig'] . ')^2',
 			'titleReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
-			'redirects:(' . $sChar . $this->aOptions['searchStringOrig'] . $sChar . ')'
+			'redirects:(' . $this->aOptions['searchStringOrig'] . ')'
 		);
-
 		$aSearchText = array(
-			'textWord:(' . $sChar . $this->aOptions['searchStringOrig'] . $sChar .')',
-			'textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')^0.1',
-			'sections:('. $sChar . $this->aOptions['searchStringOrig'] . $sChar . ')'
+			'textWord:(' . $this->aOptions['searchStringOrig'] .')^2',
+			'textReverse:(' . $this->aOptions['searchStringWildcarded'] . ')',
+			'sections:(' . $this->aOptions['searchStringOrig'] . ')'
 		);
 
-		$sSearchStringTitle = implode( ' OR ', $aSearchTitle );
-
-		$sSearchStringText = implode( ' OR ', $aSearchText );
-
-		$this->aOptions['searchStrComp']['searchStrInTitle'] = $sSearchStringTitle;
-		$this->aOptions['searchStrComp']['searchStrInFulltext'] = $sSearchStringText;
+		$sSearchStringTitle = implode( $sLogOp, $aSearchTitle );
+		$sSearchStringText = implode( $sLogOp, $aSearchText );
 
 		$this->aOptions['searchStringFinal'] = ( $this->aOptions['scope'] === 'title' )
-			? $this->aOptions['searchStrComp']['searchStrInTitle']
-			: implode( ' OR ', $this->aOptions['searchStrComp'] );
+			? $sSearchStringTitle
+			: $sSearchStringTitle . $sLogOp . $sSearchStringText;
 
-		$sCustomerId = $this->getCustomerId();
-
-		$aFq = array();
+		// filter query
 		$aFq[] = 'redirect:0';
 		$aFq[] = 'special:0';
 		$aFq[] = 'wiki:('.$sCustomerId.')';
 
 		// $this->aOptions['namespaces'] HAS TO BE an array with numeric indices of type string!
-		$this->aOptions['namespaces'] = $oSearchRequest->aNamespaces;
-		$this->aOptions['sayt'] = $oSearchRequest->sSearchAsYouType;
+		$this->aOptions['namespaces'] = $this->oSearchRequest->aNamespaces;
 
-		global $wgCanonicalNamespaceNames, $wgExtraNamespaces;
 		$aNamespaces = array_slice( $wgCanonicalNamespaceNames, 2 );
 		$aNamespaces = $aNamespaces + $wgExtraNamespaces;
-		$oUser = $this->oRequestContext->getUser();
 
 		$bTagNamespace = false;
-		if ( empty( $this->aOptions['namespaces'] ) && $vNamespace === false ) {
-			$this->aOptions['namespaces'] = array();
+		if ( $vNamespace === false ) {
+			$this->aOptions['files'] = ( $this->oSearchRequest->bSearchFiles === true )
+				? true
+				: false;
 
-			// Main
-			if ( BsNamespaceHelper::checkNamespacePermission( NS_MAIN, 'read' ) !== false ) {
-				$this->aOptions['namespaces'][] = '' . NS_MAIN;
-			}
+			$oUser = RequestContext::getMain()->getUser();
+			if ( !$oUser->getOption( 'searcheverything' ) ) {
+				if ( empty( $this->aOptions['namespaces'] ) && $this->oSearchRequest->bNoSelect === false ) {
+					$this->aOptions['namespaces'] = array();
 
-			// Namespace 1000 are specialpages
-			$this->aOptions['namespaces'][] = '1000';
+					$aOptions = $oUser->getOptions();
+					foreach ( $aOptions as $sOpt => $sValue ) {
+						if ( strpos( $sOpt, 'searchNs' ) !== false && $sValue == true ) {
+							$this->aOptions['namespaces'][] = '' . str_replace( 'searchNs', '', $sOpt );
+						}
+					}
 
-			if ( in_array( $this->aOptions['searchOrigin'], array( 'search_form_body', 'uri_builder', 'ajax' ) )
-				|| $oUser->getOption( 'searcheverything' ) == 1 ) {
+					$aAllowedTypes = explode( ',' , BsConfig::get( 'MW::ExtendedSearch::IndexFileTypes' ) );
+					$aAllowedTypes = array_map( 'trim', $aAllowedTypes );
+					$aSearchFilesFacet = array_intersect( $this->oSearchRequest->aType, $aAllowedTypes );
 
-				foreach ( $aNamespaces as $key => $value ) {
-					if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false ) continue;
-
-					$this->aOptions['namespaces'][] = '' . $key;
+					if ( ( $this->aOptions['files'] === true || !empty( $aSearchFilesFacet ) )
+						&& $oUser->isAllowed( 'searchfiles' ) ) {
+						$this->aOptions['namespaces'][] = '999';
+						$this->aOptions['namespaces'][] = '998';
+					}
+				} else {
+					$bTagNamespace = true;
+					$aTmp = array();
+					foreach ( $this->aOptions['namespaces'] as $iNs ) {
+						if ( BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) === true ) {
+							$aTmp[] = $iNs;
+						}
+					}
+					$this->aOptions['namespaces'] = $aTmp;
 				}
 			} else {
-				wfRunHooks( 'BSExtendedSearchEmptyNamespacesElse', array( $this, $oSearchRequest ) );
-				global $wgNamespacesToBeSearchedDefault;
+				if ( empty( $this->aOptions['namespaces'] ) ) {
+					$aTmp = array();
+					foreach ( $aNamespaces as $iNs ) {
+						if ( BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) === true ) {
+							$this->aOptions['namespaces'][] = $iNs;
+						}
+					}
+				} else {
+					$bTagNamespace = true;
+					$aTmp = array();
+					foreach ( $this->aOptions['namespaces'] as $iNs ) {
+						if ( !BsNamespaceHelper::checkNamespacePermission( $iNs, 'read' ) ) {
+							$aTmp[] = $iNs;
+						}
+					}
 
-				foreach ( $aNamespaces as $key => $value ) {
-					if ( $oUser->getBoolOption( 'searchNs'.$key, false )
-						|| isset( $wgNamespacesToBeSearchedDefault[$key] ) ) {
-						if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false ) continue;
-						$this->aOptions['namespaces'][] = '' . $key;
+					if ( !empty( $aTmp ) ) {
+						$this->aOptions['namespaces'] = array_diff( $this->aOptions['namespaces'], $aTmp );
 					}
 				}
 			}
-
-			if ( ( $oSearchRequest->bSearchFiles === true && $oUser->isAllowed( 'searchfiles' ) )
-				|| $this->aOptions['sayt'] == 1 ) {
-				$this->aOptions['namespaces'][] = '998 999';
-			}
-
-			$this->aOptions['namespaces'] = array_unique( $this->aOptions['namespaces'] );
-		}
-
-		/*
-		 * If checkbox "search_files" is unchecked in the search form, this value is NOT PASSED AT ALL!
-		 * In that case it is not possible to set $this->sFiles = $this->sDefaultSearchFiles, because the User probably wanted files not to be searched AND $this->sDefaultSearchFiles could be set to 'files'$
-		 * Thus a hidden field was added to the search form with name="search_origin" and value="search_form_body"
-		 * If that field can be read with the POST-data, the DefaultSearchFiles has to be omitted
-		 */
-		if ( $oSearchRequest->bSearchFiles === true ) {
-			$this->aOptions['files'] = true;
 		} else {
-			$this->aOptions['files'] = false;
+			$bTagNamespace = true;
+			$this->aOptions['namespaces'][] = '' . $vNamespace;
 		}
 
-		if ( $vNamespace === false && ( !empty( $this->aOptions['namespaces'] ) || $this->aOptions['files'] === true ) ) {
-			// todo (according to Markus): files should not be coded as namespace
-			// => i.e. modify solr's schema
-			$aFqNamespaces = array();
+		$this->aOptions['namespaces'] = array_unique( $this->aOptions['namespaces'] );
 
-			if ( empty( $this->aOptions['namespaces'] ) && $this->aOptions['searchOrigin'] != 'uri_builder' ) {
-				// if NO namespace selected search ALL namespaces
-				// namespace 0 not in keys of wgCanonicalNamespaceNames
-				// todo: just wondering: if NO namespace selected just SKIP +namespace(..)! Or is there a problem with namespace 999?
-				foreach ( $aNamespaces as $sNamespace => $value ) {
-					if ( BsNamespaceHelper::checkNamespacePermission( $na, 'read' ) === false ) continue;
-					$aFqNamespaces[] = $sNamespace;
-				}
-			} else {
-				foreach ( $this->aOptions['namespaces'] as $sNamespace ) {
-					$aFqNamespaces[] = $sNamespace;
-					if ( $sNamespace == '999' ) $filesAlreadyAddedInLoopBefore = true;
+		if ( !empty( $this->aOptions['namespaces'] ) ) {
+			$aFqNamespaces = array();
+			foreach ( $this->aOptions['namespaces'] as $sNamespace ) {
+				$aFqNamespaces[] = $sNamespace;
+				if ( $sNamespace == '999' ) {
+					$filesAlreadyAddedInLoopBefore = true;
 				}
 			}
 
-			if ( !isset( $filesAlreadyAddedInLoopBefore ) && $this->aOptions['files'] === true && $oUser->isAllowed( 'searchfiles' ) ) {
+			if ( !isset( $filesAlreadyAddedInLoopBefore ) && $this->aOptions['files'] === true
+				&& $oUser->isAllowed( 'searchfiles' ) ) {
 				$aFqNamespaces[] = '999';
 			}
 
 			$bTagNamespace = true;
 			$aFq[] = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) )
-				? '{!tag=na}namespace:(' . implode( ' ', $aFqNamespaces ) . ')'
-				: 'namespace:(' . implode( ' ', $aFqNamespaces ) . ')';
+				? '{!tag=na}namespace:("' . implode( '" "', $aFqNamespaces ) . '")'
+				: 'namespace:("' . implode( '" "', $aFqNamespaces ) . '")';
 		}
 
-		if ( empty( $oSearchRequest->aNamespaces ) && $this->aOptions['searchOrigin'] != 'titlebar' ) {
-			$this->aOptions['namespaces'] = array();
-		}
-
-		if ( $vNamespace !== false ) {
-			$bTagNamespace = true;
-			$aFq[] = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) )
-				? '{!tag=na}namespace:(' . implode( ' ', $vNamespace ) . ')'
-				: 'namespace:(' . implode( ' ', $vNamespace ) . ')';
-			$this->aOptions['namespaces'][] = '' . $vNamespace . '';
-		}
-		// $this->aOptions['cats'] = $oSearchRequest->sCat; // string, defaults to '' if 'search_cat' not set in REQUEST
-		$this->aOptions['cats'] = $oSearchRequest->sCategories; // array of strings or empty array
-
+		// $this->aOptions['cats'] = $this->oSearchRequest->sCat; // string, defaults to '' if 'search_cat' not set in REQUEST
+		$this->aOptions['cats'] = $this->oSearchRequest->sCategories; // array of strings or empty array
 		if ( !empty( $this->aOptions['cats'] ) ) {
-			if ( isset( $oSearchRequest->sOperator ) ) {
-				switch ( $oSearchRequest->sOperator ) {
-					case 'AND': 
-						$sOperator = ' AND ';
-						break;
-					case 'OR':
-						$sOperator = ' OR ';
+			if ( isset( $this->oSearchRequest->sOperator ) ) {
+				switch ( $this->oSearchRequest->sOperator ) {
+					case 'AND':
+						$sLogOp = ' AND ';
 						break;
 					default:
-						$sOperator = ' OR ';
 				}
-			} else {
-				$sOperator = ' OR ';
 			}
 			$sFqCategories = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ca}' : '';
-			$sFqCategories .= 'cat:(' . implode( $sOperator, $this->aOptions['cats'] ) . ')';
+			$sFqCategories .= 'cat:("' . implode( '"' . $sLogOp . '"', $this->aOptions['cats'] ) . '")';
 			$aFq[] = $sFqCategories;
 		}
 
-		$this->aOptions['type'] = $oSearchRequest->sType;
-
+		$this->aOptions['type'] = $this->oSearchRequest->aType;
 		if ( !empty( $this->aOptions['type'] ) ) {
 			$sFqType = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ty}' : '';
-			$sFqType .= 'type:(' . implode( $sOperator, $this->aOptions['type'] ) . ')';
+			$sFqType .= 'type:("' . implode( '"' . $sLogOp . '"', $this->aOptions['type'] ) . '")';
 			$aFq[] = $sFqType;
 		}
 
-		$this->aOptions['editor'] = $oSearchRequest->sEditor;
-
+		$this->aOptions['editor'] = $this->oSearchRequest->sEditor;
 		if ( !empty( $this->aOptions['editor'] ) ) {
 			// there may be spaces in name of editor. solr analyses those to two
 			// terms (editor's names) thus we wrap the name into quotation marks
@@ -508,25 +451,34 @@ class SearchOptions {
 			//       at whitespace
 			// but: +editor:("Robert V" "Mathias S") is already split correctly!
 			$sFqEditor = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) ? '{!tag=ed}' : '';
-			$sFqEditor .= 'editor:(' . implode( $sOperator, $this->aOptions['editor'] ) . ')';
+			$sFqEditor .= 'editor:("' . implode( '"' . $sLogOp . '"', $this->aOptions['editor'] ) . '")';
 			$aFq[] = $sFqEditor;
 		}
 
+		// Boost query
+		foreach ( $wgContentNamespaces as $iNs ) {
+			$aBq[] = "namespace:{$iNs}^2";
+		}
+		// We want that files are also seen as a content namespace
+		$aBq[] = "namespace:999^2";
+
 		$searchLimit = BsConfig::get( 'MW::ExtendedSearch::LimitResults' );
 
-		$this->aOptions['offset'] = $oSearchRequest->iOffset;
-		$this->aOptions['order'] = $oSearchRequest->sOrder;
-		$this->aOptions['asc'] = $oSearchRequest->sAsc;
+		$this->aOptions['offset'] = $this->oSearchRequest->iOffset;
+		$this->aOptions['order'] = $this->oSearchRequest->sOrder;
+		$this->aOptions['asc'] = $this->oSearchRequest->sAsc;
 		$this->aOptions['searchLimit'] = ( $searchLimit == 0 ) ? 15 : $searchLimit;
-		$this->aOptions['titleExists'] = $this->titleExists( $oSearchRequest->sInput );
-		$this->aOptions['format'] = $oSearchRequest->sFormat;
+		$this->aOptions['titleExists'] = ExtendedSearchBase::titleExists( $this->oSearchRequest->sInput, $this->aOptions );
+		$this->aOptions['bExtendedForm'] = $this->oSearchRequest->bExtendedForm;
 
+		$this->aSearchOptions['defType'] = 'edismax';
 		$this->aSearchOptions['fl'] = 'uid,type,title,path,namespace,cat,ts,redirects,overall_type';
 		$this->aSearchOptions['fq'] = $aFq;
 		$this->aSearchOptions['sort'] = $this->aOptions['order'] . ' ' . $this->aOptions['asc'];
 		$this->aSearchOptions['hl'] = 'on';
 		$this->aSearchOptions['hl.fl'] = 'titleWord, titleReverse, sections, textWord, textReverse';
 		$this->aSearchOptions['hl.snippets'] = BsConfig::get( 'MW::ExtendedSearch::HighlightSnippets' );
+		$this->aSearchOptions['bq'] = implode( ' ', $aBq );
 
 		if ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) ) {
 			$this->aSearchOptions['facet'] = 'on';
@@ -554,40 +506,48 @@ class SearchOptions {
 	}
 
 	/**
-	 * For a given SearchInput (by the user) the Existence of an article with exactly this title is evaluated.
-	 * @param String $sParamSearchInput
-	 * @return boolean
+	 * Reads in searchstring and checks if a namespace is in it
+	 * @param string $sSearchString given searchstring
+	 * @param string $sSolrSearchString the solr searchstring
+	 * @param array $aQueryFq solr filter query
+	 * @param boolean $bWtihTag flag for tagging
+	 * @return int|boolean id of namespace or false
 	 */
-	public function titleExists( $sParamSearchInput ) {
-		$sParamSearchInput = trim( $sParamSearchInput );
-		if ( empty( $sParamSearchInput ) ) return false;
-
-		/* Normalize $sParamSearchInput first:
-		 * - get rid of leading or trailing whitespace
-		 * - get rid of characters that are not permitted in the title (by mediawiki)
-		 * - get rid of more than one space at a time
-		 */
-		$thisTitleMightExist = trim( str_replace( BsCore::getForbiddenCharsInArticleTitle(), ' ', $sParamSearchInput ) );
-		do {
-			$beforeStrReplace = $thisTitleMightExist;
-			$thisTitleMightExist = str_replace( '  ', ' ', $thisTitleMightExist );
-		}
-		while ( $beforeStrReplace != $thisTitleMightExist );
-
-		$oTitle = Title::newFromText( $thisTitleMightExist );
-		if ( ( $oTitle !== null ) && $oTitle->exists() ) {
-			$this->aOptions['existingTitleObject'] = &$oTitle;
-			return true;
-		}
-		// If first attempt to create a Title-Object without success...
-		// ... remove leading and trailing '"'-characters (solves Ticket#2010062310000113)
-		$oTitle = Title::newFromText( trim( $thisTitleMightExist, '"' ) );
-		if ( ( $oTitle !== null ) && $oTitle->exists() ){
-			$this->aOptions['existingTitleObject'] = &$oTitle;
-			return true;
+	public function checkSearchstringForNamespace( $sSearchString, &$sSolrSearchString, &$aQueryFq, $bWtihTag = false ) {
+		if ( empty( $sSearchString ) ) {
+			return false;
 		}
 
-		return false;
+		if ( substr_count( $sSearchString, ':' ) === 0 ) {
+			return false;
+		}
+
+		$aParts = explode( ':', $sSearchString );
+		if ( count( $aParts ) !== 2 ) {
+			return false;
+		}
+
+		if ( empty( $aParts[0] ) || empty( $aParts[1] ) ) {
+			return false;
+		}
+
+		$iNamespace = BsNamespaceHelper::getNamespaceIndex( $aParts[0] );
+		if ( empty( $iNamespace ) || !is_int( $iNamespace ) ) {
+			return false;
+		}
+
+		// Check for special namespace
+		if ( $iNamespace === NS_SPECIAL ) {
+			$iNamespace = 1000;
+		}
+
+		$sSolrSearchString = $aParts[1];
+
+		$aQueryFq[] = ( $bWtihTag )
+			? '{!tag=na}namespace:(' . $iNamespace . ')'
+			: 'namespace:(' . $iNamespace . ')';
+
+		return $iNamespace;
 	}
 
 }

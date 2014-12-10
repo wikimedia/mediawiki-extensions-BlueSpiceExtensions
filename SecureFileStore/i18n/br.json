@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-securefilestore-pref-defaultdisposition": "Diskwel ar restroù dre ziouer :",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Merdeer",
+	"bs-securefilestore-pref-defaultdisposition-external": "Diavaez",
+	"bs-securefilestore-pref-dispositionattachment": "Seurtoù restroù diavaez :",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Diskwel atav ar seurtoù restroù-mañ :"
+}

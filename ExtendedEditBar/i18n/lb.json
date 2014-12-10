@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "Viruleeden",
+	"bs-extendededitbar-redirectsample": "Text drasetzen",
+	"bs-extendededitbar-striketip": "Duerchsträichen",
+	"bs-extendededitbar-smalltip": "Kleng",
+	"bs-extendededitbar-smallsample": "Klengen Text",
+	"bs-extendededitbar-commenttip": "Verstoppt Bemierkung drasetzen",
+	"bs-extendededitbar-commentsample": "Bemierkung",
+	"bs-extendededitbar-gallerytip": "Eng Billergalerie drasetzen",
+	"bs-extendededitbar-gallerysamplepicture": "Bild",
+	"bs-extendededitbar-gallerysamplecaption": "Beschreiwung",
+	"bs-extendededitbar-tabletip": "Eng Tabell drasetzen",
+	"bs-extendededitbar-tablesampleheader": "Iwwerschrëft",
+	"bs-extendededitbar-tablesamplerow": "Rei",
+	"bs-extendededitbar-tablesamplecell": "Zell"
+}

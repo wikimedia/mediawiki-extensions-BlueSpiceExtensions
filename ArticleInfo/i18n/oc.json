@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"prefs-articleinfo": "Informacion sus la pagina",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Interval de mesa a jorn en segondas:",
+	"bs-articleinfo-last-edited-tooltip": "Darrièr cambiament",
+	"bs-articleinfo-last-editor": "Darrièr {{GENDER:$1| editor}}",
+	"bs-articleinfo-categories": "Categorias",
+	"bs-articleinfo-more-categories": "Autras categorias addicionalas disponiblas",
+	"bs-articleinfo-all-categories-heading": "Categorias",
+	"bs-articleinfo-nocategories": "Cap de categoria pas trobada",
+	"bs-articleinfo-hiddencats": "Categorias amagadas",
+	"bs-articleinfo-notemplates": "Cap de modèl pas trobat.",
+	"bs-articleinfo-templates": "Modèls",
+	"bs-articleinfo-subpages": "Sospaginas",
+	"bs-articleinfo-check-revision-tooltip": "Recargar la pagina",
+	"bs-articleinfo-statebartoplastedited": "Darrièrs cambiaments",
+	"bs-articleinfo-statebartoplasteditor": "Editor recent",
+	"bs-articleinfo-statebartopcategories": "Categorias",
+	"bs-articleinfo-statebartopsubpages": "Sospaginas",
+	"bs-articleinfo-statebarbodycategories": "Categorias",
+	"bs-articleinfo-statebarbodysubpages": "Sospaginas",
+	"bs-articleinfo-statebarbodytemplates": "Modèls"
+}

@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-insertfile-insert-image": "画像を挿入",
+	"bs-insertfile-insert-file": "ファイルを挿入",
+	"bs-insertfile-nomatch": "該当するものはありません",
+	"bs-insertfile-labelsort": "並び順:",
+	"bs-insertfile-labelfilter": "絞り込み:",
+	"bs-insertfile-filename": "ファイル名",
+	"bs-insertfile-filesize": "ファイルサイズ",
+	"bs-insertfile-lastmodified": "最近の更新",
+	"bs-insertfile-labelupload": "アップロード",
+	"bs-insertfile-details-title": "詳細",
+	"bs-insertfile-labeldimensions": "サイズ (幅x高さ)",
+	"bs-insertfile-labelalt": "代替テキスト",
+	"bs-insertfile-labelalign": "配置",
+	"bs-insertfile-labellink": "リンク",
+	"bs-insertfile-alignnone": "なし",
+	"bs-insertfile-alignleft": "左",
+	"bs-insertfile-aligncenter": "中央",
+	"bs-insertfile-alignright": "右",
+	"bs-insertfile-typenone": "なし",
+	"bs-insertfile-uploadbuttontext": "参照",
+	"bs-insertfile-uploaddescfilelabel": "要約",
+	"bs-insertfile-uploadwatchthislabel": "このファイルをウォッチ",
+	"bs-insertfile-uploadignorewarningslabel": "あらゆる警告を無視",
+	"bs-insertfile-warning": "警告",
+	"bs-insertfile-titlefile": "ファイルの挿入",
+	"bs-insertfile-titleimage": "画像の挿入",
+	"bs-insertfile-tipkeepratio": "縦横比を維持",
+	"bs-insertfile-license": "ライセンス",
+	"bs-insertfile-categories": "カテゴリ",
+	"bs-insertfile-linktext": "表示テキスト",
+	"bs-insertfile-no-link": "リンクなし"
+}

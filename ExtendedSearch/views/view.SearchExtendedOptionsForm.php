@@ -23,7 +23,7 @@
 /**
  * This view renders the ExtendedSearch extended options page.
  * @package    BlueSpice_Extensions
- * @subpackage ExtendedSearch 
+ * @subpackage ExtendedSearch
  */
 class ViewSearchExtendedOptionsForm extends ViewBaseElement {
 
@@ -48,7 +48,7 @@ class ViewSearchExtendedOptionsForm extends ViewBaseElement {
 	 * Renders a single options box.
 	 * @param String $sFieldName Name of options field, e.g. namespace
 	 * @param String $sI18nKeyName Internationalized name of field for display.
-	 * @param String $urlFieldName Link of field.
+	 * @param String $sUrlFieldName Link of field.
 	 * @return ViewSearchMultivalueField View that describes the output.
 	 */
 	public function &getBox( $sFieldName, $sI18nKeyName, $sUrlFieldName ) {

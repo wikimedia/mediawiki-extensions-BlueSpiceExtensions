@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Freked",
+			"Lokal Profil",
+			"Platinawolf"
+		]
+	},
+	"prefs-smartlist": "Smart lista",
+	"bs-smartlist-recent-changes": "Senaste ändringar",
+	"bs-smartlist-no-entries": "Inga resultat hittades.",
+	"bs-smartlist-comment": "Kommentar:  $1.",
+	"bs-smartlist-pref-comments": "Visa kommentar",
+	"bs-smartlist-pref-namespaces": "Namnrymder:",
+	"bs-smartlist-pref-categories": "Kategorier:",
+	"bs-smartlist-pref-period": "Period:",
+	"bs-smartlist-pref-showminorchanges": "Visa mindre ändringar",
+	"bs-smartlist-pref-showonlynewarticles": "Visa endast nya sidor",
+	"bs-smartlist-pref-trim": "Maximal längd på titeln (i antal tecken):",
+	"bs-smartlist-pref-showtext": "Visa innehållet på sidan",
+	"bs-smartlist-pref-trimtext": "Maximal längd på sidans innehåll (i antal tecken)",
+	"bs-smartlist-pref-order": "Sortera efter:",
+	"bs-smartlist-pref-sort": "Sortera efter:",
+	"bs-smartlist-sort-asc": "stigande",
+	"bs-smartlist-sort-desc": "fallande",
+	"bs-smartlist-day": "Dag",
+	"bs-smartlist-week": "Vecka",
+	"bs-smartlist-month": "Månad",
+	"bs-smartlist-time": "Tid",
+	"bs-smartlist-title": "Titel",
+	"bs-smartlist-tag-smartlist-desc": "Visar konfigurerbar information om senaste ändringar.",
+	"bs-smartlist-tag-newbies-desc": "Visar de senaste användarna.",
+	"bs-smartlist-tag-toplist-desc": "Visar en lista över de mest visade sidorna.",
+	"bs-smartlist-mostvisitedpages": "Mest besökta sidor",
+	"bs-smartlist-mosteditedpages": "Mest redigerade sidor",
+	"bs-smartlist-mostactiveusers": "Mest aktiva användare (antal redigeringar)",
+	"bs-smartlist-lastedits": "Mina redigeringar",
+	"bs-smartlist-noedits": "Inga redigeringar hittades.",
+	"bs-smartlist-lasteditsdesc": "Lista över sidor som du har redigerat."
+}

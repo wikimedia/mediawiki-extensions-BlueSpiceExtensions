@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-uemodulepdf-desc": "Permite que o MediaWiki exporte páginas em formato PDF",
+	"prefs-uemodulepdf": "Módulo de exportação universal PDF",
+	"uemodulepdf": "Módulo de exportação universal PDF",
+	"bs-uemodulepdf-pref-suppressns": "Ocultar prefixo do domínio no PDF",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exporta páginas (páginas especiais e de conteúdo) para PDF.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponível",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "não disponível"
+}

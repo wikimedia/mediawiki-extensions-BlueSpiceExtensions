@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-widgetbar-desc": "Додає віджети до користувацького інтерфейсу",
+	"prefs-widgetbar": "Панель віджетів",
+	"bs-widgetbar-userpagesettings-headline": "Віджети",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Відредагуйте}} вміст своєї панелі віджетів:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Редагувати}} мою панель віджетів",
+	"bs-widget-container-tooltip": "Віджети",
+	"bs-widget-flyout-heading": "Віджети"
+}

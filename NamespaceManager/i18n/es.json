@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"AVIADOR",
+			"Fitoschido",
+			"Macofe"
+		]
+	},
+	"bs-namespacemanager-desc": "Interfaz administrativa para añadir, editar y eliminar espacios de nombres",
+	"bs-namespacemanager-label": "Gestor de espacios de nombres",
+	"bs-namespacemanager-wrong-name": "El espacio de nombres contiene caracteres no válidos.",
+	"bs-namespacemanager-ns-exists": "Ya existe el espacio de nombres.",
+	"bs-namespacemanager-ns-length": "El espacio de nombres debe tener dos caracteres como mínimo.",
+	"bs-namespacemanager-invalid-id": "No es un identificador válido de espacio de nombres",
+	"bs-namespacemanager-label-id": "Id.",
+	"bs-namespacemanager-label-namespaces": "Espacio de nombres",
+	"bs-namespacemanager-label-editable": "Renombrable",
+	"bs-namespacemanager-label-content": "Espacio de nombres del contenido",
+	"bs-namespacemanager-label-searchable": "Buscar de manera predeterminada",
+	"bs-namespacemanager-label-subpages": "Subpáginas",
+	"bs-namespacemanager-nsadded": "Se ha añadido el espacio de nombres.",
+	"bs-namespacemanager-nsremoved": "Se ha borrado el espacio de nombres.",
+	"bs-namespacemanager-nsedited": "Se ha editado el espacio de nombres.",
+	"bs-namespacemanager-tipadd": "Añadir espacio de nombres",
+	"bs-namespacemanager-tipedit": "Editar espacio de nombres",
+	"bs-namespacemanager-tipremove": "Eliminar espacio de nombres",
+	"bs-namespacemanager-msgnoteditabledelete": "Este espacio de nombres es un espacio de nombres del sistema y no se puede eliminar.",
+	"bs-namespacemanager-labelnsname": "Nombre del espacio de nombres",
+	"bs-namespacemanager-willdelete": "Se eliminará",
+	"bs-namespacemanager-willmove": "Se moverá a «{{int:bs-ns_main}}»",
+	"bs-namespacemanager-willmovesuffix": "Se moverá a «{{int:bs-ns_main}}» con el sufijo «$1»",
+	"bs-namespacemanager-deletewarning": "¿Estás seguro de que quieres eliminar este espacio de nombres? No se podrá deshacer esta acción.",
+	"bs-namespacemanager-pagepresent": "Páginas en este espacio de nombres:"
+}

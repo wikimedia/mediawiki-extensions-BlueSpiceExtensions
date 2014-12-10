@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416",
+			"EagerLin"
+		]
+	},
+	"bs-smartlist-recent-changes": "近期變更",
+	"bs-smartlist-pref-namespaces": "命名空間：",
+	"bs-smartlist-pref-categories": "分類：",
+	"bs-smartlist-pref-sort": "排序方式：",
+	"bs-smartlist-sort-asc": "升冪",
+	"bs-smartlist-sort-desc": "降冪",
+	"bs-smartlist-day": "日",
+	"bs-smartlist-week": "週",
+	"bs-smartlist-month": "月",
+	"bs-smartlist-time": "時間",
+	"bs-smartlist-title": "標題"
+}

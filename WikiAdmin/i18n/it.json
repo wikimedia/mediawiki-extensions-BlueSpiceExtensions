@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gianfranco",
+			"Beta16"
+		]
+	},
+	"bs-wikiadmin-desc": "Punto centrale di amministrazione per BlueSpice",
+	"bs-wikiadmin-notallowed": "Non sei autorizzato a utilizzare questa pagina.",
+	"wikiadmin": "Amministrazione BlueSpice",
+	"action-wikiadmin": "visualizza le pagine di amministrazione di BlueSpice",
+	"right-wikiadmin": "Visualizza le pagine di amministrazione di BlueSpice"
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-securefilestore-desc": "Prevents unauthorized access to files and images",
+	"prefs-securefilestore": "Secure file store",
+	"bs-securefilestore-pref-defaultdisposition": "Display files by default:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Browser",
+	"bs-securefilestore-pref-defaultdisposition-external": "External",
+	"bs-securefilestore-pref-dispositionattachment": "External file types:",
+	"bs-securefilestore-pref-dispositioninline": "Browser file types:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Always display these file types:"
+}

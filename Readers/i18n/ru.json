@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Striking Blue"
+		]
+	},
+	"bs-readers-desc": "Создаёт список людей, читающих страницу",
+	"prefs-readers": "Читатели",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Читатель|Читательница}}|Читатели}}",
+	"readers-user": "Страницы {{GENDER:$1|прочитаны}}: $1",
+	"readers": "Читатели \"$1\"",
+	"bs-readers-contentactions-label": "Отобразить читателей",
+	"bs-readers-pagenotexists": "Страницы не существует.",
+	"bs-readers-pref-active": "Активные читатели",
+	"bs-readers-pref-numofreaders": "Количество читателей для отображения:",
+	"bs-readers-emptyinput": "Страница не была предоставлена.",
+	"bs-readers-header-username": "Имя участника",
+	"bs-readers-header-readerspath": "Читатель",
+	"bs-readers-header-ts": "Дата"
+}

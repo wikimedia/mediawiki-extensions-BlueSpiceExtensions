@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Matma Rex",
+			"Alan ffm",
+			"Mateuszek045"
+		]
+	},
+	"prefs-avatars": "Awatary",
+	"bs-avatars-desc": "Zawiera ogólne i indywidualne zdjęcia użytkownika",
+	"bs-avatars-pref-generator": "Generator:",
+	"bs-avatars-pref-defaultsize": "Domyślny rozmiar w pikselach:",
+	"bs-avatars-upload-complete": "Obrazek został pomyślnie przesłany.",
+	"bs-avatars-generate-complete": "Nowy awatar został wygenerowany.",
+	"bs-avatars-upload-title": "Zmiana zdjęcia w profilu",
+	"bs-avatars-upload-label": "Obrazek",
+	"bs-avatars-generate-new-label": "Utwórz nowy awatar",
+	"bs-avatars-warning-title": "Ostrzeżenie",
+	"bs-avatars-userimage-title": "Zdjęcie z wiki lub pod adresem URL",
+	"bs-avatars-userimage-help": "np. Picture.jpg lub http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "Nieprawidłowy adres URL lub obraz z wiki.",
+	"bs-avatars-set-userimage-saved": "Zdjęcie użytkownika pomyślnie zapisane.",
+	"bs-avatars-file-upload-fieldset-title": "Ładowanie obrazu",
+	"bs-avatars-auto-generate-fieldset-title": "Automatyczne tworzenie awatara"
+}

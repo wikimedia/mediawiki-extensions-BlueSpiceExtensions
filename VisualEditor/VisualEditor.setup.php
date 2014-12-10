@@ -2,7 +2,11 @@
 
 BsExtensionManager::registerExtension('VisualEditor', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['VisualEditor']      = __DIR__ . '/languages/VisualEditor.i18n.php';
+$GLOBALS['wgAutoloadClasses']['VisualEditor'] = __DIR__ . '/VisualEditor.class.php';
+
+$wgMessagesDirs['VisualEditor'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['VisualEditor'] = __DIR__ . '/languages/VisualEditor.i18n.php';
 $wgExtensionMessagesFiles['VisualEditorMagic'] = __DIR__ . '/languages/VisualEditor.i18n.magic.php';
 
 $wgAjaxExportList[] = 'VisualEditor::doSaveArticle';

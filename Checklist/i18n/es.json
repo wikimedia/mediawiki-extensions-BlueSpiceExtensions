@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"ProtoplasmaKid",
+			"AVIADOR",
+			"Fitoschido"
+		]
+	},
+	"bs-checklist-desc": "Proporciona una lista de comprobación de la funcionalidad",
+	"bs-checklist-button-checkbox-title": "Lista de comprobación de elementos",
+	"bs-checklist-menu-insert-list-title": "Insertar lista",
+	"bs-checklist-menu-insert-checkbox": "Casilla de verificación",
+	"bs-checklist-dlg-insert-list-value-list": "Lista de valores",
+	"bs-checklist-tag-checklist-desc": "Representa una casilla de verificación o un campo a seleccionar. Atributos de configuración disponibles:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> muestra una lista de selección.",
+	"bs-checklist-tag-checklist-param-list": "<code>lista</code>: Nombre de la plantilla con los valores disponibles. El parámetro <code>tipo</code> debe establecerse a <code>lista</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> o un valor fuera de la plantilla de lista.",
+	"bs-checklist-dlg-new-list": "Crear una lista nueva",
+	"bs-checklist-dlg-save-list": "Guardar cambios en la lista",
+	"bs-checklist-dlg-items-label": "Elementos en la lista",
+	"bs-checklist-dlg-items-emptytext": "No hay elementos en esta lista",
+	"bs-checklist-dlg-panel-title": "Listas disponibles",
+	"bs-checklist-dlg-new-title": "Añadir lista nueva",
+	"bs-checklist-dlg-new-prompt": "Ingresa un título para la lista",
+	"bs-checklist-alert": "¡Precaución!",
+	"bs-checklist-confirm-dirty-title": "Hay cambios sin guardar"
+}

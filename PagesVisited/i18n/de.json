@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-pagesvisited-desc": "Stellt eine personalisierte Liste der zuletzt besuchten Seiten zur Verfügung",
+	"prefs-pagesvisited": "Besuchte Seiten",
+	"bs-pagesvisited-widget-title": "Besuchte Seiten",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Der|Die}} angegebene{{PLURAL:$1||n}} Namens{{PLURAL:$1|raum|räume}} <code>$2</code> {{PLURAL:$1|ist|sind}} nicht gültig.",
+	"bs-pagesvisited-pref-widgetlimit": "Anzahl der Einträge:",
+	"bs-pagesvisited-pref-widgetns": "Anzuzeigende Namensräume:",
+	"bs-pagesvisited-pref-widgetsortodr": "Sortieren nach:",
+	"bs-pagesvisited-pref-sort-time": "Zeit",
+	"bs-pagesvisited-pref-sort-pagename": "Titel",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Gibt eine Liste mit Seiten aus, die du besucht hast."
+}

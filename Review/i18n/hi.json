@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"संजीव कुमार"
+		]
+	},
+	"bs-review-error-insufficient-permissions": "आपके पास इसे निष्पादित करने की अनुमति नहीं है (आपको $1 की आवश्यकता है)"
+}

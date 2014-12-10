@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"פוילישער"
+		]
+	},
+	"bs-insertlink": "אַרײַנשטעלן לינק",
+	"bs-insertlink-dialog-title": "אַרײַנשטעלן לינק",
+	"bs-insertlink-tab-wiki-page": "וויקי בלאט",
+	"bs-insertlink-tab-ext-link": "דרויסנדיקער לינק",
+	"bs-insertlink-tab-email": "בליצפאסט־לינק",
+	"bs-insertlink-label-page": "בלאַט",
+	"bs-insertlink-label-link": "לינק",
+	"bs-insertlink-label-mail": "בליצפּאָסט אַדרעס",
+	"bs-insertlink-label-description": "באַשרײַבונג",
+	"bs-insertlink-label-file": "טעקע",
+	"bs-insertlink-label-searchfile": "זוכן…",
+	"bs-insertlink-select-a-namespace": "(בלעטער)"
+}

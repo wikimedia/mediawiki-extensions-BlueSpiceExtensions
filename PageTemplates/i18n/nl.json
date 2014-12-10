@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-pagetemplates-empty-page": "Lege pagina",
+	"bs-pagetemplates-tpl-edited": "Uw wijzigingen zijn opgeslagen",
+	"bs-pagetemplates-dberror": "Er is een databasefout opgetreden.",
+	"bs-pagetemplates-tpl-deleted": "Het sjabloon is verwijderd.",
+	"bs-pagetemplates-general-section": "Algemeen",
+	"bs-pagetemplates-headertargetnamespace": "Naamruimte",
+	"bs-pagetemplates-label-targetns": "Naamruimte"
+}

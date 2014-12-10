@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "命名空間",
+	"bs-namespacemanager-label-subpages": "子頁",
+	"bs-namespacemanager-tipadd": "加入命名空間",
+	"bs-namespacemanager-labelnsname": "命名空間名稱",
+	"bs-namespacemanager-willmove": "將移動至 \"{{int:bs-ns_main}}\"",
+	"bs-namespacemanager-willmovesuffix": "將移動至 \"{{int:bs-ns_main}}\" 帶字尾 \"$1\""
+}

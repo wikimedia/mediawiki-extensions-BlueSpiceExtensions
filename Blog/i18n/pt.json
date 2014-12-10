@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente",
+			"Fúlvio"
+		]
+	},
+	"bs-blog-desc": "Mostra uma lista de páginas ao estilo de blogue",
+	"prefs-blog": "Blogue",
+	"bs-blog-no-entries": "Não existem entradas de blogue.",
+	"bs-blog-comments": "Comentários",
+	"bs-blog-read-more": "Ler mais",
+	"bs-blog-trackback": "Trackback",
+	"bs-blog-permalink": "Ligação permanente",
+	"bs-blog-show-all": "Mostrar todas as entradas",
+	"bs-blog-form-inline-text": "Título...",
+	"bs-blog-form-title-text": "Criar nova entrada de blogue",
+	"bs-blog-form-button-text": "Criar",
+	"bs-blog-blog": "Blogue",
+	"bs-blog-pref-moreinnewwindow": "Abrir nova janela para ler mais",
+	"bs-blog-pref-newentryfieldposition": "Posição do formulário para nova entrada de blogue:",
+	"bs-blog-pref-showall": "Mostrar ligação de todas as entradas",
+	"bs-blog-pref-showinfo": "Mostrar informações sobre a entrada",
+	"bs-blog-pref-showlimit": "Número de entradas do blogue:",
+	"bs-blog-pref-shownewentryfield": "Mostrar novo formulário de entrada de blogue",
+	"bs-blog-pref-showpermalink": "Mostrar ligação permanente",
+	"bs-blog-pref-sortby": "Ordenar por:",
+	"bs-blog-pref-imagerendermode": "Mostrar imagens como:",
+	"bs-blog-pref-maxentrycharacters": "Número de palavras por entrada:",
+	"bs-blog-tag-blog-desc": "Mostra as entradas de blogue em cada página."
+}

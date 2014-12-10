@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa"
+		]
+	},
+	"bs-checklist-desc": "قابلیت فهرست بازبینی را فراهم می‌کند",
+	"bs-checklist-button-checkbox-title": "عناصر فهرست بازبینی",
+	"bs-checklist-menu-insert-list-title": "قراردادن فهرست",
+	"bs-checklist-menu-insert-checkbox": "کادر انتخاب",
+	"bs-checklist-dlg-insert-list-value-list": "فهرست مقدار",
+	"bs-checklist-tag-checklist-desc": "یک کادر انتخاب یا زمینه انتخاب ارائه می‌کند. ویژگی‌های پیکربندی در دسترس:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> یک فهرست انتخاب ارائه می‌کند.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: نام الگو همراه مقادیر در دسترس. پارامتر <code>type</code> باید <code>list</code> تعیین شود.",
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> یا یک مقدار خارج از الگوی فهرست."
+}

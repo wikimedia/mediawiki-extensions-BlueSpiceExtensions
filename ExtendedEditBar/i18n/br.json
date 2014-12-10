@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Y-M D"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "Adkas",
+	"bs-extendededitbar-redirectsample": "Ensoc'hañ testenn",
+	"bs-extendededitbar-striketip": "Barrenniñ",
+	"bs-extendededitbar-strikesample": "Testenn barrennet",
+	"bs-extendededitbar-entertip": "Lamm linenn",
+	"bs-extendededitbar-uppertip": "Usskrid",
+	"bs-extendededitbar-uppersample": "Testenn en usskrid",
+	"bs-extendededitbar-lowertip": "Isskrid",
+	"bs-extendededitbar-lowersample": "Testenn en isskrid",
+	"bs-extendededitbar-smalltip": "Bihan",
+	"bs-extendededitbar-smallsample": "Testennig",
+	"bs-extendededitbar-commenttip": "Ensoc'hañ un evezhiadenn kuzhet",
+	"bs-extendededitbar-commentsample": "Evezhiadenn",
+	"bs-extendededitbar-gallerytip": "Ensoc'hañ ur skeudennaoueg",
+	"bs-extendededitbar-gallerysamplepicture": "Skeudenn",
+	"bs-extendededitbar-gallerysamplecaption": "Alc'hwez",
+	"bs-extendededitbar-quotetip": "Ensoc'hañ ur bloc'had testenn meneget",
+	"bs-extendededitbar-quotesample": "Bloc'had meneg",
+	"bs-extendededitbar-tabletip": "Ensoc'hañ un daolenn",
+	"bs-extendededitbar-tablesampleheader": "Talbenn",
+	"bs-extendededitbar-tablesamplerow": "Linenn",
+	"bs-extendededitbar-tablesamplecell": "Kell"
+}

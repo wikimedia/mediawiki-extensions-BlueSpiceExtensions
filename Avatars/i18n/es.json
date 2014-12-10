@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Miguel2706",
+			"Themasterriot"
+		]
+	},
+	"prefs-avatars": "Avatares",
+	"bs-avatars-desc": "Proporciona imágenes genéricas e individuales de un usuario",
+	"bs-avatars-pref-generator": "Generador:",
+	"bs-avatars-pref-defaultsize": "Tamaño predeterminado en píxeles:",
+	"bs-avatars-upload-complete": "La imagen se cargó correctamente.",
+	"bs-avatars-generate-complete": "Se generó un nuevo avatar.",
+	"bs-avatars-upload-title": "Cambiar la imagen del perfil",
+	"bs-avatars-upload-label": "Imagen",
+	"bs-avatars-generate-new-label": "Generar nuevo avatar",
+	"bs-avatars-warning-title": "Atención",
+	"bs-avatars-warning-text": "Se ha establecido una imagen de usuario en sus preferencias. El uso de avatares borrará este ajuste. ¿Desea continuar?",
+	"bs-avatars-userimage-title": "Imagen del wiki o URL a imagen",
+	"bs-avatars-userimage-help": "p. ej., Imagen.jpg o http://localhost/Imagen.gif",
+	"bs-avatars-set-userimage-failed": "No es una URL o imagen válida de una wiki.",
+	"bs-avatars-set-userimage-saved": "Se guardó la imagen de usuario correctamente.",
+	"bs-avatars-file-upload-fieldset-title": "Carga de imagen",
+	"bs-avatars-auto-generate-fieldset-title": "Generar avatar automáticamente"
+}

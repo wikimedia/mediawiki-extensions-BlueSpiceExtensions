@@ -4,14 +4,17 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 
 	singleton: true,
 	id: 'bs-InsertFile-dlg-window',
-	title: mw.message('bs-insertfile-titleFile').plain(),
-	
+	title: mw.message('bs-insertfile-titlefile').plain(),
+
 	storeFileType: 'file',
-	
+
 	initComponent: function() {
-		//this is neccessary to avoid strange cross-referencing between the 
+		//this is neccessary to avoid strange cross-referencing between the
 		//two instances of BS.InsertFile.BaseDialog subclasses
 		this.configPanel.items = [];
 		this.callParent(arguments);
-	}
+	},
+	onPnlConfigExpand: function(panel, eOpts){
+		this.callParent(arguments);
+	},
 });

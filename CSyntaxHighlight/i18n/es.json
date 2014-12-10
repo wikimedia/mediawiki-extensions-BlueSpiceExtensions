@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Fitoschido"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Añade funcionalidad de resaltado de sintaxis personalizable",
+	"prefs-csyntaxhighlight": "Resaltador de sintaxis",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Mostrar números de línea",
+	"bs-csyntaxhighlight-pref-autolinks": "Enlazar las URL",
+	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de herramientas"
+}

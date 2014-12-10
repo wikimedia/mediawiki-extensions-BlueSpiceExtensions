@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-insertcategory-desc": "カテゴリのリンクを入力するダイアログ",
+	"bs-insertcategory-insertcat": "カテゴリを挿入",
+	"prefs-insertcategory": "カテゴリの挿入",
+	"bs-insertcategory-pref-withparents": "親カテゴリも含めてカテゴリを挿入",
+	"bs-insertcategory-title": "カテゴリの挿入",
+	"bs-insertcategory-cat-label": "割り当て済み:",
+	"bs-insertcategory-success": "カテゴリを追加しました",
+	"bs-insertcategory-failure": "エラー",
+	"bs-insertcategory-hint": "注: カテゴリを追加するには、Enter キーを押すか、またはカンマで区切ってください。",
+	"bs-insertcategory-panel-title": "カテゴリ"
+}

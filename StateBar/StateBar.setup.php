@@ -2,7 +2,12 @@
 
 BsExtensionManager::registerExtension('StateBar', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
+$GLOBALS['wgAutoloadClasses']['StateBar'] = __DIR__ . '/StateBar.class.php';
+
+$wgMessagesDirs['StateBar'] = __DIR__ . '/i18n';
+
 $wgExtensionMessagesFiles['StateBar'] = __DIR__.'/languages/StateBar.i18n.php';
+$wgExtensionMessagesFiles['StateBarMagic'] = __DIR__ . '/languages/StateBar.i18n.magic.php';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => 'extensions/BlueSpiceExtensions/StateBar/resources/',

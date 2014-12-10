@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meshkov.a",
+			"Okras"
+		]
+	},
+	"bs-wikiadmin-desc": "Центральная точка администрирования BlueSpice",
+	"bs-wikiadmin-notallowed": "Вы не можете использовать эту страницу.",
+	"wikiadmin": "Администрирование BlueSpice",
+	"action-wikiadmin": "отобразить страницу администрирования BlueSpice",
+	"right-wikiadmin": "Отображение страницы администрирования BlueSpice"
+}

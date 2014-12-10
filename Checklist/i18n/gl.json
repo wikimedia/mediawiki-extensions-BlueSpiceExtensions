@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-checklist-desc": "Proporciona unha lista de comprobación da funcionalidade",
+	"bs-checklist-button-checkbox-title": "Lista de comprobación de elementos",
+	"bs-checklist-menu-insert-list-title": "Inserir lista",
+	"bs-checklist-menu-insert-checkbox": "Caixa de verificación",
+	"bs-checklist-dlg-insert-list-value-list": "Lista de valores",
+	"bs-checklist-tag-checklist-desc": "Mostra unha casilla de verificación ou un campo a seleccionar. Atributos de configuración dispoñibles:",
+	"bs-checklist-tag-checklist-param-type": "<code>tipo</code>: <code>lista</code> mostra unha lista de selección.",
+	"bs-checklist-tag-checklist-param-list": "<code>lista</code>: Nome do modelo cos valores dispoñibles. O parámetro <code>tipo</code> debe establecerse co valor <code>lista</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>valor</code>: <code>marcado</code> ou un valor fóra do modelo de lista."
+}

@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Luckas"
+		]
+	},
+	"bs-articleinfo-last-edited-tooltip": "Última edição",
+	"bs-articleinfo-last-editor": "Últim{{GENDER:$1|o editor|a editora}}",
+	"bs-articleinfo-categories": "Categorias",
+	"bs-articleinfo-more-categories": "Mais categorias disponíveis",
+	"bs-articleinfo-all-categories-heading": "Categorias",
+	"bs-articleinfo-nocategories": "Nenhuma categoria encontrada.",
+	"bs-articleinfo-hiddencats": "Categorias ocultas",
+	"bs-articleinfo-templates": "Predefinições",
+	"bs-articleinfo-subpages": "Subpáginas",
+	"bs-articleinfo-statebartopcategories": "Categorias",
+	"bs-articleinfo-statebartopsubpages": "Subpáginas",
+	"bs-articleinfo-statebarbodycategories": "Categorias",
+	"bs-articleinfo-statebarbodysubpages": "Subpáginas",
+	"bs-articleinfo-statebarbodytemplates": "Predefinições"
+}

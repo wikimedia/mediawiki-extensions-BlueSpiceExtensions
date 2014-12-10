@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416"
+		]
+	},
+	"bs-review-abstain": "投棄權票",
+	"bs-review-i-agree": "同意",
+	"bs-review-i-dismiss": "不同意",
+	"bs-review-expired": "已過期",
+	"review": "複審",
+	"right-workflowedit": "建立與編輯複查",
+	"bs-review-btnmoveup": "向上移動",
+	"bs-review-btnmovedown": "向下移動",
+	"bs-review-colstatus": "狀態",
+	"bs-review-lblstartdate": "開始日期",
+	"bs-review-lblenddate": "結束日期",
+	"bs-review-header-page-title": "頁面",
+	"bs-review-header-owner-name": "擁有者",
+	"bs-review-header-accepted-text": "狀態",
+	"bs-review-header-startdate": "開始",
+	"bs-review-header-enddate": "結束"
+}

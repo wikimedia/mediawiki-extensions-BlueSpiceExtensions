@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"NigelSoft"
+		]
+	},
+	"bs-statebar-desc": "提供一个状态栏",
+	"prefs-statebar": "状态栏",
+	"bs-statebar-pref-sortbodyvars": "主体顺序：",
+	"bs-statebar-pref-sorttopvars": "置顶顺序：",
+	"bs-statebar-pref-show": "显示状态栏",
+	"bs-statebar-viewtoggler": "详细信息",
+	"bs-statebar-viewtoggler-tooltip": "显示详细信息",
+	"bs-statebar-switch-description": "在此页隐藏状态栏。",
+	"bs-statebar-ajax-nobodyviews": "没有可用信息。"
+}

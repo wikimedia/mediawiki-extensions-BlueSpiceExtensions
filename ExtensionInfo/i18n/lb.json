@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-extensioninfo-label": "Erweiderungen",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Versioun",
+	"extensioninfo": "Erweiderungen",
+	"bs-extensioninfo-headerextname": "Numm vun der Erweiderung",
+	"bs-extensioninfo-headerversion": "Versioun",
+	"bs-extensioninfo-headerdesc": "Beschreiwung",
+	"bs-extensioninfo-headerstatus": "Status",
+	"bs-extensioninfo-headerpackage": "Pak",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|Element|Elementer}}"
+}

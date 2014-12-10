@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tobias Weichart<weichart@hallowelt.biz>",
+			"Robert Vogel <vogel@hallowelt.biz>"
+		]
+	},
+	"bs-contextmenu-desc": "Zeigt für bestimmte Links ein Kontextmenü an",
+	"prefs-contextmenu": "Kontextmenü",
+	"bs-contextmenu-pref-modus": "Kontextmenü öffnen (nicht für Mobile):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Durch Klicken der rechten Maustaste (Bei gedrückter Strg-Taste, öffnet das originale Browser-Menü)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Durch Klicken der rechten Maustaste bei gedrückter Strg-Taste (Normaler rechter Mausklick, öffnet das originale Browser-Menü)",
+	"bs-contextmenu-page-edit": "Seite bearbeiten",
+	"bs-contextmenu-page-delete": "Seite löschen",
+	"bs-contextmenu-page-move": "Seite verschieben",
+	"bs-contextmenu-page-history": "Versionsgeschichte der Seite anzeigen",
+	"bs-contextmenu-page-protect": "Seite schützen",
+	"bs-contextmenu-page-purge": "Seitencache leeren und Seite anzeigen",
+	"bs-contextmenu-page-info": "Seiten-Informationen anzeigen",
+	"bs-contextmenu-media-reupload": "Neue Version dieser Datei hochladen",
+	"bs-contextmenu-media-view-page": "Dateibeschreibungsseite und Versionen anzeigen",
+	"bs-contextmenu-user-mail": "E-Mail schreiben",
+	"bs-contextmenu-user-talk": "Eine Nachicht auf der Benutzerdiskussionsseite hinterlassen",
+	"bs-contextmenu-file-download": "Datei herunterladen"
+}

@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Macofe"
+		]
+	},
+	"bs-wantedarticle-desc": "Agregar una página a la lista de páginas requeridas",
+	"prefs-wantedarticle": "Página requerida",
+	"bs-wantedarticle-ajax-error-no-parameter": "No se proporcionó el título de la página.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Ya existe la página sugerida \"$1\".",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "La página \"$1\" ya fue sugerida.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Se añadió la sugerencia «$1».",
+	"bs-wantedarticle-success-suggestion-entered": "Se añadió tu sugerencia \"$1\".",
+	"bs-wantedarticle-sort-value-unknown": "Los valores válidos son: título y tiempo.",
+	"bs-wantedarticle-order-value-unknown": "Los valores válidos son: ASC ({{int:bs-wantedarticle-pref-order-asc}}) y DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
+	"bs-wantedarticle-page-removed": "La página \"$1\" ha sido eliminada.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Sugerir",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Crear",
+	"bs-wantedarticle-single-textfield-defaulttext": "Título de página",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>: Número de páginas que mostrar.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>título</code>: Titular.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Orden <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) o <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Ordenar por <code>title</code> o <code>time</code>.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Formato de salida <code>list</code> o <code>quene</code> (separado por comas).",
+	"bs-wantedarticle-tag-more-linktext": "Más...",
+	"bs-wantedarticle-tag-default-title": "Páginas requeridas",
+	"bs-wantedarticle-pref-includelimit": "Número de sugerencias:",
+	"bs-wantedarticle-pref-deleteexisting": "Borrar las entradas existentes de la lista",
+	"bs-wantedarticle-pref-showcreate": "Mostrar el enlace «Crear»",
+	"bs-wantedarticle-pref-deleteoncreation": "Eliminar la entrada de la lista cuando se crea la página",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Título de la plantilla para sugerencias:",
+	"bs-wantedarticle-pref-sort": "Ordenar por:",
+	"bs-wantedarticle-pref-order": "Orden:",
+	"bs-wantedarticle-pref-sort-time": "Tiempo",
+	"bs-wantedarticle-pref-sort-title": "Título",
+	"bs-wantedarticle-pref-order-asc": "ascendente",
+	"bs-wantedarticle-pref-order-desc": "descendente",
+	"bs-wantedarticle-create-page": "Crear página \"$1\".",
+	"bs-wantedarticle-suggest-page": "Página sugerida \"$1\".",
+	"bs-wantedarticle-info-nothing-entered": "Proporciona un título de página válido.",
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|El siguiente carácter no es válido|Los siguientes caracteres no son válidos}} para usarse en un título de página: $2"
+}

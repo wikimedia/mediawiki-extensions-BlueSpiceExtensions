@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Y-M D"
+		]
+	},
+	"bs-statistics-desc": "Modulenn stadegoù evit BlueSpice",
+	"bs-statistics-diagram": "Reked",
+	"bs-statistics-from": "A-berzh",
+	"bs-statistics-to": "Da",
+	"bs-statistics-grain": "Koulzad",
+	"bs-statistics-mode": "Mod",
+	"bs-statistics-aggregated": "strollet",
+	"bs-statistics-year": "Bloaz",
+	"bs-statistics-month": "Miz",
+	"bs-statistics-day": "Deiz",
+	"bs-statistics-list": "Roll",
+	"bs-statistics-not-allowed": "N'emañ ket an aotre rekis ganeoc'h.",
+	"bs-statistics-finish": "Krouiñ un diagramm",
+	"bs-statistics-filters": "Siloù",
+	"bs-statistics-diag-number-of-users": "Niver a implijerien",
+	"bs-statistics-label-name": "Anv",
+	"bs-statistics-label-registration": "Enskrivadur",
+	"bs-statistics-diag-number-of-pages": "Niver a bajennoù",
+	"bs-statistics-label-page": "Pajenn",
+	"bs-statistics-label-creator": "Krouer",
+	"bs-statistics-diag-number-of-edits": "Niver a gemmoù",
+	"bs-statistics-diag-edits-per-user": "Kemm dre implijer",
+	"bs-statistics-label-count": "Kont",
+	"bs-statistics-label-time": "Eur",
+	"bs-statistics-filter-category": "Rummad",
+	"bs-statistics-filter-user": "Implijerien skarzhet kuit",
+	"bs-statistics-pref-excludeusers": "Skarzhañ an implijerien-mañ kuit :",
+	"bs-statistics-portlet-numberofusers": "Niver a implijerien",
+	"bs-statistics-portlet-numberofedits": "Niver a gemmoù",
+	"bs-statistics-portlet-numberofpages": "Niver a bajennoù",
+	"bs-statistics-portletconfig-periodday": "Dec'h"
+}

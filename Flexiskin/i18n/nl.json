@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"SPQRobin",
+			"Romaine"
+		]
+	},
+	"bs-flexiskin-pref-logo": "Logo:",
+	"bs-flexiskin-labelname": "Naam",
+	"bs-flexiskin-labeldesc": "Beschrijving",
+	"bs-flexiskin-headergeneral": "Algemeen",
+	"bs-flexiskin-labelskins": "Sjabloon",
+	"bs-flexiskin-headeractive": "Actief",
+	"bs-flexiskin-labelbgcolor": "Achtergrondkleur",
+	"bs-flexiskin-labellogoupload": "Logo",
+	"bs-flexiskin-labelbackgroundupload": "Achtergrondafbeelding",
+	"bs-flexiskin-no-repeat": "geen herhaling",
+	"bs-flexiskin-repeat-x": "horizontale herhaling",
+	"bs-flexiskin-repeat-y": "verticale herhaling",
+	"bs-flexiskin-repeat": "horizontale en verticale herhaling",
+	"bs-flexiskin-labelrepeatbackground": "Achtergrondafbeelding herhalen",
+	"bs-flexiskin-labelcustombgcolor": "Aangepaste kleur",
+	"bs-flexiskin-headerposition": "Positie en grootte",
+	"bs-flexiskin-labelnavigation": "Positie van de navigatie",
+	"bs-flexiskin-labelcontent": "Positie van de inhoud",
+	"bs-flexiskin-left": "links",
+	"bs-flexiskin-right": "rechts",
+	"bs-flexiskin-center": "gecentreerd",
+	"bs-flexiskin-labelwidth": "Volledige breedte (in pixels)",
+	"bs-flexiskin-labelfullwidth": "Maximale breedte"
+}

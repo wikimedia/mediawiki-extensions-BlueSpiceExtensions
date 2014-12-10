@@ -96,7 +96,7 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'CSyntaxHighlight',
-			EXTINFO::DESCRIPTION => 'Adds customizable syntax highlighting functionality to BlueSpice. Based on SyntaxHighlighter by Alex Gorbatchev (http://alexgorbatchev.com/SyntaxHighlighter/)',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-csyntaxhighlight-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -119,13 +119,10 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$this->setHook( 'SkinAfterBottomScripts' );
 
 		// TODO RBV (12.04.11 15:47): Provide all config possibilities of SyntaxHighlighter...
-		//User variables
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::Theme',     'Default', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-csyntaxhighlight-pref-Theme', 'select' );
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::Gutter',    true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-Gutter', 'toggle' );
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::AutoLinks', true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-AutoLinks', 'toggle' );
-
-		//Admin variables
-		BsConfig::registerVar( 'MW::CSyntaxHighlight::Toolbar',   false,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-Toolbar', 'toggle' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::Theme',     'Default', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-csyntaxhighlight-pref-theme', 'select' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::Gutter',    true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-gutter', 'toggle' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::AutoLinks', true,      BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-autolinks', 'toggle' );
+		BsConfig::registerVar( 'MW::CSyntaxHighlight::Toolbar',   false,     BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-csyntaxhighlight-pref-toolbar', 'toggle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -147,12 +144,13 @@ class CSyntaxHighlight extends BsExtensionMW {
 	}
 
 	public function onOutputPageBeforeHTML( $oParserOutput, $sText ) {
+		global $wgScriptPath;
 		// TODO RBV (13.07.11 15:44): Better recognition...
-		if( strpos( $sText, '<pre class="brush:' ) === false ) return true;
+		if ( strpos( $sText, '<pre class="brush:' ) === false ) return true;
 
 		BsExtensionManager::setContext( 'MW::CSyntaxHighlight' );
 
-		$sBrushScriptPath = BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
+		$sBrushScriptPath = $wgScriptPath.'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
 
 		$sTheme = BsConfig::get('MW::CSyntaxHighlight::Theme');
 		$sStyleBlock = '<link rel="stylesheet" href="' . $sBrushScriptPath .
@@ -165,10 +163,11 @@ class CSyntaxHighlight extends BsExtensionMW {
 	}
 
 	public function onSkinAfterBottomScripts( $oSkin, &$bottomScriptText ) {
-		$sBrushScriptPath = BsConfig::get( 'MW::ScriptPath' ).'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
+		global $wgScriptPath;
+		$sBrushScriptPath = $wgScriptPath.'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
 
 		$aAutoloaderParams = array();
-		foreach( $this->aBrushes as $sBrushName => $aAliases ) {
+		foreach ( $this->aBrushes as $sBrushName => $aAliases ) {
 			//HINT: http://alexgorbatchev.com/SyntaxHighlighter/manual/api/autoloader.html
 			$aAutoloaderParams[] = '["'.implode( '","', $aAliases ).'","'.$sBrushScriptPath.'/shBrush'.$sBrushName.'.js" ]';
 		}
@@ -181,9 +180,9 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$aScriptBlock[] = 'SyntaxHighlighter.autoloader( ';
 		$aScriptBlock[] = implode( ",\n", $aAutoloaderParams );
 		$aScriptBlock[] = ');';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"]    = bsCSyntaxHighlightToolbar;';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"] = bsCSyntaxHighlightToolbar;';
 		$aScriptBlock[] = 'SyntaxHighlighter.defaults["auto-links"] = bsCSyntaxHighlightAutoLinks;';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"]     = bsCSyntaxHighlightGutter;';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"] = bsCSyntaxHighlightGutter;';
 		$aScriptBlock[] = 'SyntaxHighlighter.all();';
 		$aScriptBlock[] = '});';
 		$aScriptBlock[] = '</script>';

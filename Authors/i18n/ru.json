@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Meshkov.a",
+			"Eroha"
+		]
+	},
+	"bs-authors-desc": "Выводит картинку профиля для авторов страницы",
+	"prefs-authors": "Авторы этой страницы",
+	"bs-authors-title": "{{GENDER:$2|Автор{{PLURAL:$1||а|ов}}}}",
+	"bs-authors-profileimage": "Изображение в профиле",
+	"bs-authors-profileimage-change": "Изменить изображение в профиле",
+	"bs-authors-show-all-authors": "Есть и другие авторы",
+	"bs-authors-pref-imageheight": "Высота изображения:",
+	"bs-authors-pref-imagewidth": "Ширина изображения:",
+	"bs-authors-pref-limit": "Ограничение на количество отображаемых авторов:",
+	"bs-authors-pref-show": "Отображать авторов",
+	"bs-authors-switch-description": "Скрывает авторов этой страницы."
+}

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-wantedarticle-desc": "Adiciona uma página à lista de desejadas",
+	"prefs-wantedarticle": "Página desejada",
+	"bs-wantedarticle-ajax-error-no-parameter": "Não foi fornecido nenhum título para a página.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "A página sugerida \"$1\" já existe.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "A página \"$1\" já foi sugerida.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Sugestão \"$1\" adicionada.",
+	"bs-wantedarticle-success-suggestion-entered": "A sua sugestão \"$1\" foi adicionada.",
+	"bs-wantedarticle-order-value-unknown": "Os valores válidos são: ASC ({{int:bs-wantedarticle-pref-order-asc}}) e DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
+	"bs-wantedarticle-page-removed": "A página \"$1\" foi removida.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Sugerir",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Criar",
+	"bs-wantedarticle-single-textfield-defaulttext": "Título da página",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Apresenta uma lista de páginas desejadas. Atributos de configuração disponíveis:",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>ordem</code>: Ordenar por <code>título</code> ou <code>hora</code>.",
+	"bs-wantedarticle-tag-more-linktext": "Mais ...",
+	"bs-wantedarticle-tag-default-title": "Páginas desejadas",
+	"bs-wantedarticle-pref-includelimit": "Número de sugestões:",
+	"bs-wantedarticle-pref-deleteoncreation": "Remover entrada da lista quando a página for criada",
+	"bs-wantedarticle-pref-sort": "Ordenar por:",
+	"bs-wantedarticle-pref-order": "Ordem:",
+	"bs-wantedarticle-pref-sort-time": "Hora",
+	"bs-wantedarticle-pref-sort-title": "Título",
+	"bs-wantedarticle-pref-order-asc": "ascendente",
+	"bs-wantedarticle-pref-order-desc": "descendente",
+	"bs-wantedarticle-create-page": "Criar a página \"$1\".",
+	"bs-wantedarticle-suggest-page": "Página sugerida \"$1\".",
+	"bs-wantedarticle-info-nothing-entered": "Por favor, forneça um título válido para a página.",
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|O caráter seguinte não é válido|Os seguintes carateres não são válidos}} para uso no título de uma página: $2"
+}

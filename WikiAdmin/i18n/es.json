@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Amitie 10g",
+			"Fitoschido"
+		]
+	},
+	"bs-wikiadmin-desc": "Punto central de gestión de BlueSpice",
+	"bs-wikiadmin-notallowed": "No tienes permitido usar esta página.",
+	"action-wikiadmin": "mostrar páginas de administración de BlueSpice",
+	"right-wikiadmin": "Mostrar páginas de administración de BlueSpice"
+}

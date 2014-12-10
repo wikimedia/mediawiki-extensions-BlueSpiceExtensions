@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-extendededitbar-desc": "Дава дополнителни копчиња во полето на уредување",
+	"bs-extendededitbar-redirecttip": "Пренасочување",
+	"bs-extendededitbar-redirectsample": "Вметнување текст",
+	"bs-extendededitbar-striketip": "Прецртување",
+	"bs-extendededitbar-strikesample": "Прецртан текст",
+	"bs-extendededitbar-entertip": "Нов ред",
+	"bs-extendededitbar-uppertip": "Горен индекс",
+	"bs-extendededitbar-uppersample": "Текст во горен индекс",
+	"bs-extendededitbar-lowertip": "Долен индекс",
+	"bs-extendededitbar-lowersample": "Текст во долен индекс",
+	"bs-extendededitbar-smalltip": "Мали",
+	"bs-extendededitbar-smallsample": "Мал текст",
+	"bs-extendededitbar-commenttip": "Вметни скриен коментар",
+	"bs-extendededitbar-commentsample": "Коментар",
+	"bs-extendededitbar-gallerytip": "Вметни галерија со слики",
+	"bs-extendededitbar-gallerysamplepicture": "Слика",
+	"bs-extendededitbar-gallerysamplecaption": "Опис",
+	"bs-extendededitbar-quotetip": "Вметни цитат",
+	"bs-extendededitbar-quotesample": "Цитат",
+	"bs-extendededitbar-tabletip": "Вметни табела",
+	"bs-extendededitbar-tablesampleheader": "Заглавие",
+	"bs-extendededitbar-tablesamplerow": "Ред",
+	"bs-extendededitbar-tablesamplecell": "Ќелија"
+}

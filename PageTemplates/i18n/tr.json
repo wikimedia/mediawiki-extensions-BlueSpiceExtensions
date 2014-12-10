@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-pagetemplatesadmin-label": "Sayfa şablonları",
+	"bs-pagetemplates-tpl-name-empty": "Lütfen bir şablon adı girin.",
+	"bs-pagetemplates-tpl-edited": "Değişiklikler kaydedildi.",
+	"bs-pagetemplates-tpl-deleted": "Şablon silindi.",
+	"bs-pagetemplates-tipeditdetails": "Şablonu düzenle",
+	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|Şablonu|Şablonları}} sil",
+	"bs-pagetemplates-tipaddtemplate": "Şablon ekle",
+	"bs-pagetemplates-label-article": "Şablon",
+	"bs-pagetemplates-confirm-deletetpl": "{{PLURAL:$1|Bu şablonu|Bu şablonları}} silmek istediğinize emin misiniz?",
+	"bs-pagetemplates-remove-message-unknown": "Beklenmeyen bir hata oluştu, lütfen tekrar deneyin.",
+	"bs-pagetemplates-remove-message-success": "Şu {{PLURAL:$1|şablon|şablonlar}} silindi: $2"
+}

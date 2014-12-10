@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-pagesvisited-desc": "Дава лично прилагоден список на скорешно посетените страници",
+	"prefs-pagesvisited": "Посетени страници",
+	"bs-pagesvisited-widget-title": "Посетени страници",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Укажаниот именски простор|Укажаните именски простори}} <code>$2</code> не {{PLURAL:$1|е|се}} важечки.",
+	"bs-pagesvisited-pref-widgetlimit": "Ограничување на записи:",
+	"bs-pagesvisited-pref-widgetns": "Именски простори:",
+	"bs-pagesvisited-pref-widgetsortodr": "Подреди по:",
+	"bs-pagesvisited-pref-sort-time": "Време",
+	"bs-pagesvisited-pref-sort-pagename": "Наслов",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Прикажува список на страници што се ти посетиле."
+}

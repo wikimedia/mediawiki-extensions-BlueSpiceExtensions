@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-groupmanager-desc": "Адміністративний інтерфейс для додавання, редагування і видалення груп, користувачів та їхніх прав",
+	"bs-groupmanager-grpexists": "Група вже існує.",
+	"bs-groupmanager-grpadded": "Групу було додано.",
+	"bs-groupmanager-grpedited": "Групу було відредаговано.",
+	"bs-groupmanager-grpremoved": "Групу було вилучено.",
+	"bs-groupmanager-label": "Менеджер груп",
+	"bs-groupmanager-invalid-name": "Назва групи містить недопустим{{PLURAL:$1|ий|і}} {{PLURAL:$1|символ|символи}}: $2",
+	"bs-groupmanager-invalid-name-length": "Назва групи не може бути довшою, ніж 16 символів.",
+	"bs-groupmanager-invalid-name-numeric": "Назва групи повинна мати принаймні один символ.",
+	"bs-groupmanager-headergroup": "Група",
+	"bs-groupmanager-tipremove": "Вилучити {{PLURAL:$1|групу|групи}}",
+	"bs-groupmanager-titlenewgroup": "Нова група",
+	"bs-groupmanager-titleeditgroup": "Редагувати групу",
+	"bs-groupmanager-removegroup": "Ви впевнені, що хочете вилучити {{PLURAL:$1|цю групу|ці групи}}?",
+	"bs-groupmanager-removegroup-message-success": "Було вилучено {{PLURAL:$1|таку групу|такі групи}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "Не вдалося вилучити {{PLURAL:$1|таку групу|такі групи}}: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Сталася неочікувана помилка, спробуйте ще раз.",
+	"bs-groupmanager-lablename": "Назва групи:",
+	"bs-groupmanager-msgnoteditable": "Ця група системна, і її не можна перейменувати.",
+	"bs-groupmanager-msgnotremovable": "Ця група системна, і її не можна вилучити."
+}

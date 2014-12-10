@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>",
+			"Liuxinyu970226",
+			"Robby",
+			"Shirayuki"
+		]
+	},
+	"bs-contextmenu-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of contextmenu extension",
+	"prefs-contextmenu": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for context menu section in preferences.\n{{Identical|Context menu}}",
+	"bs-contextmenu-pref-modus": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for modus:",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Option in [[Special:Wiki_Admin&mode=Preferences]], radio button label for displaying the menu with a right click",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Option in [[Special:Wiki_Admin&mode=Preferences]], radio button label for displaying the menu with a right click and CRTL key pressed",
+	"bs-contextmenu-page-edit": "Label for menu item that opens edit mode of a page\n{{Identical|Edit page}}",
+	"bs-contextmenu-page-delete": "Label for menu item that opens delete dialog of a page\n{{Identical|Delete page}}",
+	"bs-contextmenu-page-move": "Label for menu item that opens move dialog of a page\n{{Identical|Move page}}",
+	"bs-contextmenu-page-history": "Label for menu item that opens history view of a page",
+	"bs-contextmenu-page-protect": "Label for menu item that opens protect dialog of a page",
+	"bs-contextmenu-page-purge": "Label for menu item that purges page cache and opens view mode of a page",
+	"bs-contextmenu-page-info": "Label for menu item that that opens detailed information dialog of a page",
+	"bs-contextmenu-media-reupload": "Label for menu item that that opens re-upload dialog of a file",
+	"bs-contextmenu-media-view-page": "Label for menu item that that opens the description page of a file",
+	"bs-contextmenu-user-mail": "Label for menu item that that opens e-mail dialog for a user",
+	"bs-contextmenu-user-talk": "Label for menu item that that opens talk page of user in edit mode",
+	"bs-contextmenu-file-download": "Label for menu item that that opens download link of a file\n{{Identical|Download}}"
+}

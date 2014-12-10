@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-namespacemanager-desc": "Администраторски посредник за додавање, измена и бришење на именски простори",
+	"bs-namespacemanager-label": "Раководител со именски простори",
+	"bs-namespacemanager-wrong-name": "Именскиот простор содржи неважечки знаци.",
+	"bs-namespacemanager-ns-exists": "Именскиот простор веќе постои.",
+	"bs-namespacemanager-ns-length": "Именскиот простор мора да има барем два знака.",
+	"bs-namespacemanager-invalid-id": "Не претставува важечка назнака за именски простор",
+	"bs-namespacemanager-label-id": "Назнака",
+	"bs-namespacemanager-label-namespaces": "Именски простор",
+	"bs-namespacemanager-label-editable": "Преименливо",
+	"bs-namespacemanager-label-content": "Содржински именски простор:",
+	"bs-namespacemanager-label-searchable": "Пребарување по основно",
+	"bs-namespacemanager-label-subpages": "Потстраници",
+	"bs-namespacemanager-nsadded": "Именскиот простор е додаден.",
+	"bs-namespacemanager-nsremoved": "Именскиот простор е отстранет.",
+	"bs-namespacemanager-nsedited": "Именскиот простор е изменет.",
+	"bs-namespacemanager-tipadd": "Додај именски простор",
+	"bs-namespacemanager-tipedit": "Измени именски простор",
+	"bs-namespacemanager-tipremove": "Отстрани именски простор",
+	"bs-namespacemanager-msgnoteditabledelete": "Овој именски простор е системски и затоа не може да се избрише.",
+	"bs-namespacemanager-labelnsname": "Назив на именскиот простор",
+	"bs-namespacemanager-willdelete": "Ќе биде избришан",
+	"bs-namespacemanager-willmove": "Ќе биде преместен на „{{int:bs-ns_main}}“",
+	"bs-namespacemanager-willmovesuffix": "Ќе се премести на „{{int:bs-ns_main}}“ со наставката „$1“",
+	"bs-namespacemanager-deletewarning": "Дали сигурно сакате да го избришете овој именски простор? Ова е неповратно.",
+	"bs-namespacemanager-pagepresent": "Страници во овој именски простор:",
+	"bs-namespacemanager-deletens-movepages": "Страницава е преместена од именскиот простор „$1“ во именскит простор „{{int:bs-ns_main}}“ бидејќи „$1“ е избришан.",
+	"bs-namespacemanager-deletens-deletepages": "Страницава е избришана бидејќи е избришан именскиот простор „$1“."
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Smuggli",
+			"Metalhead64"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Passt die obigen Menülinks an",
+	"prefs-topmenubarcustomizer": "Menü",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Anzahl verschachtelter Ebenen:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Anzahl von Einträgen auf der Hauptebene:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Anzahl von Einträgen auf Unterebenen:"
+}

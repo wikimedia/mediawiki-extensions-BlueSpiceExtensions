@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-flexiskin-dialogclose": "Ön izlemeyi kapatmak istediğinizden emin misiniz?",
+	"bs-flexiskin-labelskins": "Şablon",
+	"bs-flexiskin-headerheader": "Başlık",
+	"bs-flexiskin-labelbackgroundupload": "Arka plan resmi",
+	"bs-flexiskin-headerposition": "Konum ve boyut",
+	"bs-flexiskin-left": "sol",
+	"bs-flexiskin-right": "sağ",
+	"bs-flexiskin-center": "orta",
+	"bs-flexiskin-labelfullwidth": "En fazla genişlik",
+	"bs-flexiskin-error-templatenotexists": "Seçilen şablon mevcut değil."
+}

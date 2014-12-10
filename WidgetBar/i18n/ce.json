@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"bs-widgetbar-desc": "Лелош йолу интерфейсан тӀетуху виджеташ",
+	"prefs-widgetbar": "Виджетийн меню",
+	"bs-widgetbar-userpagesettings-headline": "Виджеташ",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Табе}} хьайн виджетийн панелан чулацам:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Тае}} сан виджетийн панель",
+	"bs-widget-container-tooltip": "Виджеташ",
+	"bs-widget-flyout-heading": "Виджеташ"
+}

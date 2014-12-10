@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"Romaine",
+			"Siebrand"
+		]
+	},
+	"bs-formattinghelp-help-syntax": "Syntax",
+	"bs-formattinghelp-help-example-text": "Tekst",
+	"bs-formattinghelp-help-bold": "Vet",
+	"bs-formattinghelp-help-whitespace": "Witruimte",
+	"bs-formattinghelp-help-nowiki": "Opmaak voorkomen",
+	"bs-formattinghelp-help-color": "Gekleurde tekst",
+	"bs-formattinghelp-help-headline": "Koptekst",
+	"bs-formattinghelp-help-ul": "Ongeordende lijst",
+	"bs-formattinghelp-help-numberedlist": "Genummerde lijst",
+	"bs-formattinghelp-help-link": "Interne koppeling",
+	"bs-formattinghelp-help-link-alt": "Interne koppeling met alternatieve tekst",
+	"bs-formattinghelp-help-caption": "Bijschrift",
+	"bs-formattinghelp-help-extlink": "Externe koppeling",
+	"bs-formattinghelp-help-hr": "Horizontale lijn",
+	"bs-formattinghelp-help-template": "Sjabloon",
+	"bs-formattinghelp-help-templatename": "Sjabloonnaam"
+}

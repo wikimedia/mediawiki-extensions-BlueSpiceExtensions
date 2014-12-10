@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-groupmanager-desc": "用于添加、编辑和删除用户组及其权限的管理界面",
+	"bs-groupmanager-grpexists": "群组已存在。",
+	"bs-groupmanager-grpadded": "群组已加入。",
+	"bs-groupmanager-grpedited": "群组已编辑。",
+	"bs-groupmanager-grpremoved": "群组已移除。",
+	"bs-groupmanager-label": "群组管理器",
+	"bs-groupmanager-invalid-name": "此群组名包含{{PLURAL:$1|一个|多个}}无效字符：$2",
+	"bs-groupmanager-invalid-name-length": "群组名不能超过16个字符。",
+	"bs-groupmanager-invalid-name-numeric": "群组名需要至少一个字符。",
+	"bs-groupmanager-headergroup": "群组",
+	"bs-groupmanager-tipremove": "移除{{PLURAL:$1|群组}}",
+	"bs-groupmanager-titlenewgroup": "新群组",
+	"bs-groupmanager-titleeditgroup": "编辑群组",
+	"bs-groupmanager-removegroup": "您确信您要移除{{PLURAL:$1|此|这些}}群组么？",
+	"bs-groupmanager-removegroup-message-success": "以下{{PLURAL:$1|群组}}已删除：$2",
+	"bs-groupmanager-removegroup-message-failure": "以下{{PLURAL:$1|群组}}不能删除：$2",
+	"bs-groupmanager-removegroup-message-unknown": "发生未知错误，请重试。",
+	"bs-groupmanager-lablename": "群组名：",
+	"bs-groupmanager-msgnoteditable": "此群组是系统群组并不能重命名。",
+	"bs-groupmanager-msgnotremovable": "此群组是系统群组并不能移除。"
+}

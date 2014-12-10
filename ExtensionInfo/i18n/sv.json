@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil",
+			"WikiPhoenix"
+		]
+	},
+	"bs-extensioninfo-desc": "Informationslista för laddade tillägg",
+	"bs-extensioninfo-label": "Tillägg",
+	"bs-extensioninfo-software": "Programvara",
+	"bs-extensioninfo-version": "Version",
+	"extensioninfo": "Tillägg",
+	"bs-extensioninfo-headerextname": "Tilläggets namn",
+	"bs-extensioninfo-headerversion": "Version",
+	"bs-extensioninfo-headerdesc": "Beskrivning",
+	"bs-extensioninfo-headerstatus": "Status",
+	"bs-extensioninfo-headerpackage": "Paket",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element}}"
+}

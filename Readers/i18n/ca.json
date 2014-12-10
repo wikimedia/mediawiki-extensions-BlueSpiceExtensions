@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edustus"
+		]
+	},
+	"prefs-readers": "Lectors",
+	"readers": "Lectors de \"$1\"",
+	"bs-readers-pagenotexists": "La pàgina no existeix",
+	"bs-readers-header-username": "Nom d'usuari",
+	"bs-readers-header-readerspath": "Lector",
+	"bs-readers-header-ts": "Data"
+}

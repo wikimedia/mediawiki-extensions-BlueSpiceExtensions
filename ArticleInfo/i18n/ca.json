@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"prefs-articleinfo": "Informació de la pàgina",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Interval d’actualització en segons:",
+	"bs-articleinfo-categories": "Categories",
+	"bs-articleinfo-all-categories-heading": "Categories",
+	"bs-articleinfo-nocategories": "No s’han trobat categories.",
+	"bs-articleinfo-templates": "Plantilles",
+	"bs-articleinfo-subpages": "Subpàgines",
+	"bs-articleinfo-check-revision": "Hi ha una versió nova disponible",
+	"bs-articleinfo-statebartopcategories": "Categories",
+	"bs-articleinfo-statebartopsubpages": "Subpàgines",
+	"bs-articleinfo-statebarbodycategories": "Categories",
+	"bs-articleinfo-statebarbodysubpages": "Subpàgines",
+	"bs-articleinfo-statebarbodytemplates": "Plantilles"
+}

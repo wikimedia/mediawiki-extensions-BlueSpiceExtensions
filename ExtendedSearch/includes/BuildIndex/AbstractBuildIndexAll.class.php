@@ -4,27 +4,21 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @package    BlueSpice_Core
+ * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v0.1
- * FIRST CHANGES
- */
+
 /**
- * Indexer builder for ExtendedSearch
- * @package BlueSpice_Core
- * @subpackage ExtendedSearch
+ * Abstract index builder
  */
 abstract class AbstractBuildIndexAll {
 
 	/**
-	 * Instance of build index controller
+	 * Instance of BuildIndexMainControl
 	 * @var BsBuildIndexMainControl
 	 */
 	protected $oMainControl = null;
@@ -97,7 +91,7 @@ abstract class AbstractBuildIndexAll {
 
 	/**
 	 * Checks whether system settings are ok for a build run.
-	 * 
+	 *
 	 * if not implemented by child classes
 	 * OR if implemented and called via
 	 * parent::areYouAbleToRunWithSystemSettings
@@ -125,7 +119,7 @@ abstract class AbstractBuildIndexAll {
 	 */
 	public function writeLog( $sMessage = '', $sMode = null ){
 		if ( $sMode === null ) $sMode = $this->mode;
-		$this->oMainControl->writeLog( $sMode, $sMessage, $this->getProgress() );
+		$this->oMainControl->write( $sMode, $sMessage, $this->getProgress() );
 	}
 
 }

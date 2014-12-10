@@ -286,12 +286,16 @@ class Apache_Solr_Service
 	 */
 	protected function _sendRawGet($url, $timeout = FALSE)
 	{
+		$http_response_header = null;
 		//$http_response_header is set by file_get_contents
 		$response = new Apache_Solr_Response(@file_get_contents($url), $http_response_header, $this->_createDocuments, $this->_collapseSingleValueArrays);
 
 		if ($response->getHttpStatus() != 200)
 		{
-			throw new Exception('"' . $response->getHttpStatus() . '" Status: ' . $response->getHttpStatusMessage(), $response->getHttpStatus());
+			throw new Exception(
+				'"' . $response->getHttpStatus() .'" Status: ' . $response->getHttpStatusMessage() . ' URL: ' . urldecode( $url ),
+				$response->getHttpStatus()
+			);
 		}
 
 		return $response;
@@ -717,8 +721,8 @@ class Apache_Solr_Service
 	    return $this->_sendRawGet($updateURL);
 	}
 
-	
-	
+
+
 	/**
 	 * Add a Solr Document to the index
 	 *
@@ -730,13 +734,12 @@ class Apache_Solr_Service
 	 *
 	 * @throws Exception If an error occurs during the service call
 	 */
-	public function addDocument(Apache_Solr_Document $document, $allowDups = false, $overwritePending = true, $overwriteCommitted = true)
+	public function addDocument( Apache_Solr_Document $document, $bOverwrite = true )
 	{
-		$dupValue = $allowDups ? 'true' : 'false';
-		$pendingValue = $overwritePending ? 'true' : 'false';
-		$committedValue = $overwriteCommitted ? 'true' : 'false';
+		$bOw = ( $bOverwrite ) ? 'true' : 'false';
 
-		$rawPost = '<add allowDups="' . $dupValue . '" overwritePending="' . $pendingValue . '" overwriteCommitted="' . $committedValue . '">';
+		$rawPost = '<add overwrite="' . $bOw . '">';
+
 		$rawPost .= $this->_documentToXmlFragment($document);
 		$rawPost .= '</add>';
 
@@ -754,13 +757,11 @@ class Apache_Solr_Service
 	 *
 	 * @throws Exception If an error occurs during the service call
 	 */
-	public function addDocuments($documents, $allowDups = false, $overwritePending = true, $overwriteCommitted = true)
+	public function addDocuments($documents, $bOverwrite = true )
 	{
-		$dupValue = $allowDups ? 'true' : 'false';
-		$pendingValue = $overwritePending ? 'true' : 'false';
-		$committedValue = $overwriteCommitted ? 'true' : 'false';
+		$bOw = ( $bOverwrite ) ? 'true' : 'false';
 
-		$rawPost = '<add allowDups="' . $dupValue . '" overwritePending="' . $pendingValue . '" overwriteCommitted="' . $committedValue . '">';
+		$rawPost = '<add overwrite="' . $bOw . '">';
 
 		foreach ($documents as $document)
 		{
@@ -810,6 +811,9 @@ class Apache_Solr_Service
 						$fieldBoost = false;
 					}
 
+					if ( !mb_check_encoding( $multivalue, 'UTF-8' ) ) {
+						$multivalue = utf8_encode( $multivalue );
+					}
 					$multivalue = htmlspecialchars($multivalue, ENT_NOQUOTES, 'UTF-8');
 
 					$xml .= '>' . $multivalue . '</field>';
@@ -817,7 +821,7 @@ class Apache_Solr_Service
 			}
 			else
 			{
-				
+
 				$xml .= '<field name="' . $key . '"';
 
 				if ($fieldBoost !== false)
@@ -825,6 +829,9 @@ class Apache_Solr_Service
 					$xml .= ' boost="' . $fieldBoost . '"';
 				}
 
+				if ( !mb_check_encoding( $value, 'UTF-8' ) ) {
+					$value = utf8_encode( $value );
+				}
 				$value = htmlspecialchars($value, ENT_NOQUOTES, 'UTF-8');
 
 				$xml .= '>' . $value . '</field>';
@@ -834,28 +841,6 @@ class Apache_Solr_Service
 		$xml .= '</doc>';
 
 		return $xml;
-	}
-
-	/**
-	 * Send a commit command.  Will be synchronous unless both wait parameters are set to false.
-	 *
-	 * @param boolean $optimize Defaults to true
-	 * @param boolean $waitFlush Defaults to true
-	 * @param boolean $waitSearcher Defaults to true
-	 * @param float $timeout Maximum expected duration (in seconds) of the commit operation on the server (otherwise, will throw a communication exception). Defaults to 1 hour
-	 * @return Apache_Solr_Response
-	 *
-	 * @throws Exception If an error occurs during the service call
-	 */
-	public function commit($optimize = true, $waitFlush = true, $waitSearcher = true, $timeout = 3600)
-	{
-		$optimizeValue = $optimize ? 'true' : 'false';
-		$flushValue = $waitFlush ? 'true' : 'false';
-		$searcherValue = $waitSearcher ? 'true' : 'false';
-
-        $rawPost = '<commit optimize="' . $optimizeValue . '" waitFlush="' . $flushValue . '" waitSearcher="' . $searcherValue . '" />';
-
-		return $this->_sendRawPost($this->_updateUrl, $rawPost, $timeout);
 	}
 
 	/**
@@ -884,13 +869,10 @@ class Apache_Solr_Service
 	 */
 	public function deleteById($id, $fromPending = true, $fromCommitted = true)
 	{
-		$pendingValue = $fromPending ? 'true' : 'false';
-		$committedValue = $fromCommitted ? 'true' : 'false';
-
 		//escape special xml characters
 		$id = htmlspecialchars($id, ENT_NOQUOTES, 'UTF-8');
 
-		$rawPost = '<delete fromPending="' . $pendingValue . '" fromCommitted="' . $committedValue . '"><id>' . $id . '</id></delete>';
+		$rawPost = '<delete><id>' . $id . '</id></delete>';
 
 		return $this->delete($rawPost);
 	}
@@ -907,13 +889,10 @@ class Apache_Solr_Service
 	 */
 	public function deleteByQuery($rawQuery, $fromPending = true, $fromCommitted = true)
 	{
-		$pendingValue = $fromPending ? 'true' : 'false';
-		$committedValue = $fromCommitted ? 'true' : 'false';
-
 		// escape special xml characters
 		$rawQuery = htmlspecialchars($rawQuery, ENT_NOQUOTES, 'UTF-8');
 
-		$rawPost = '<delete fromPending="' . $pendingValue . '" fromCommitted="' . $committedValue . '"><query>' . $rawQuery . '</query></delete>';
+		$rawPost = '<delete><query>' . $rawQuery . '</query></delete>';
 
 		return $this->delete($rawPost);
 	}
@@ -931,10 +910,7 @@ class Apache_Solr_Service
 	 */
 	public function optimize($waitSearcher = true, $timeout = 3600)
 	{
-		$searcherValue = $waitSearcher ? 'true' : 'false';
-
-		$rawPost = '<optimize waitSearcher="' . $searcherValue . '" />';
-
+		$rawPost = '<optimize />';
 		return $this->_sendRawPost($this->_updateUrl, $rawPost, $timeout);
 	}
 

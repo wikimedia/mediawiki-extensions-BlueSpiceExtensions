@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-widgetbar-desc": "Aggiunge widget all'interfaccia utente",
+	"prefs-widgetbar": "Barra dei widget",
+	"bs-widgetbar-userpagesettings-headline": "Widget",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Modifica}} il contenuto della tua barra dei widget:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Modifica}} la barra dei widget",
+	"bs-widget-container-tooltip": "Widget",
+	"bs-widget-flyout-heading": "Widget"
+}

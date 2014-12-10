@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"prefs-csyntaxhighlight": "Podświetlanie składni",
+	"bs-csyntaxhighlight-pref-gutter": "Pokaż numery linii",
+	"bs-csyntaxhighlight-pref-toolbar": "Pokaż pasek narzędzi"
+}

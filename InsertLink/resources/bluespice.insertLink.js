@@ -11,11 +11,11 @@
  * @filesource
  */
 
-//PW(28.09.2013) TODO: use FormPanelFileLink context 
+//PW(28.09.2013) TODO: use FormPanelFileLink context
 onFileDialogFile = function(path) {
 	Ext.getCmp('BSInserLinkTargetUrl').setValue(path);
 };
-//PW(28.09.2013) TODO: use FormPanelFileLink context 
+//PW(28.09.2013) TODO: use FormPanelFileLink context
 onFileDialogCancel = function() {
 };
 
@@ -29,8 +29,8 @@ $(document).ready(function() {
 			BS.InsertLink.Window.on('cancel', bs.util.selection.reset);
 			BsInsertLinkWikiTextConnector.getData();
 			BS.InsertLink.Window.setData(
-					BsInsertLinkWikiTextConnector.getData()
-					);
+				BsInsertLinkWikiTextConnector.getData()
+			);
 			BS.InsertLink.Window.show(me);
 		});
 	});
@@ -41,7 +41,7 @@ $(document).bind('BsVisualEditorActionsInit', function(event, plugin, buttons, c
 		buttonId: 'bslink',
 		buttonConfig: {
 			icon: 'link',
-			title: mw.message('bs-insertlink-button_title').plain(),
+			title: mw.message('bs-insertlink-button-title').plain(),
 			cmd: 'mceBsLink'
 		}
 	});
@@ -60,7 +60,7 @@ $(document).bind('BsVisualEditorActionsInit', function(event, plugin, buttons, c
 	menus.push({
 		menuId: 'bsContextLink',
 		menuConfig: {
-			text: mw.message('bs-insertlink-button_title').plain(),
+			text: mw.message('bs-insertlink-button-title').plain(),
 			icon: 'link',
 			cmd: 'mceBsLink'
 		}
@@ -108,8 +108,7 @@ var BsInsertLinkWikiTextConnector = {
 		if (data.href === "" || data.href === "mailto:" || data.href === "href://") {
 			bs.util.alert('bs-insertLink-empty-field',
 					{
-						text: mw.message("bs-insertLink-empty-field-text").plain(),
-						titleMsg: 'bs-insertLink-empty-field-title'
+						text: mw.message( 'bs-insertlink-empty-field-text' ).plain()
 					}, {
 				ok: function() {
 					BS.InsertLink.Window.show('bslink');
@@ -146,7 +145,12 @@ var BsInsertLinkVisualEditorConnector = {
 			data.raw = editor.dom.getOuterHTML(link);
 			data.type = editor.dom.getAttrib(link, "data-bs-type");
 			// This is a jquery workaround to strip the tags from link.innerHTML
-			data.content = $("<p>" + link.innerHTML + "</p>").text();
+			data.content = '';
+			for( var i = 0; i < link.childNodes.length; i++ ) {
+				if( link.childNodes[i].nodeType === document.TEXT_NODE ) {
+					data.content += link.childNodes[i].nodeValue;
+				}
+			}
 			data.link = link;
 		}
 		else {
@@ -176,25 +180,6 @@ var BsInsertLinkVisualEditorConnector = {
 
 		if (node.nodeName.toLowerCase() === 'a') {
 			newAnchor = editor.dom.create(
-					'a',
-					{
-						'title': data.title ? data.title : data.href,
-						'href': "bs://" + data.href,
-						'data-mce-href': data.href,
-						//'class': data.class,
-						'data-bs-type': data.type,
-						'data-bs-wikitext': code
-					},
-			data.title ? data.title : data.href
-					);
-			editor.dom.replace(newAnchor, node);
-			editor.selection.select(newAnchor, false);
-			editor.selection.collapse(false);
-
-			return;
-		}
-
-		newAnchor = editor.dom.createHTML(
 				'a',
 				{
 					'title': data.title ? data.title : data.href,
@@ -204,8 +189,27 @@ var BsInsertLinkVisualEditorConnector = {
 					'data-bs-type': data.type,
 					'data-bs-wikitext': code
 				},
-		data.title ? data.title : data.href
-				);
+				data.title ? data.title : data.href
+			);
+			editor.dom.replace(newAnchor, node);
+			editor.selection.select(newAnchor, false);
+			editor.selection.collapse(false);
+
+			return;
+		}
+
+		newAnchor = editor.dom.createHTML(
+			'a',
+			{
+				'title': data.title ? data.title : data.href,
+				'href': "bs://" + data.href,
+				'data-mce-href': data.href,
+				//'class': data.class,
+				'data-bs-type': data.type,
+				'data-bs-wikitext': code
+			},
+			data.title ? data.title : data.href
+		);
 
 		editor.insertContent(newAnchor);
 		//editor.selection.select(newAnchor, false);

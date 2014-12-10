@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416"
+		]
+	},
+	"bs-echo-anon-user": "匿名",
+	"bs-echo-unknown-user": "不明",
+	"bs-echo-page-edit": "頁面 [[:$1]] 已被修改",
+	"echo-category-title-bs-create-cat": "新頁面的通知"
+}

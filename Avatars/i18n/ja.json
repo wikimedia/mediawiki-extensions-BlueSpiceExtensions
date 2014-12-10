@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"prefs-avatars": "アバター",
+	"bs-avatars-desc": "汎用的で個別的な利用者画像を提供する",
+	"bs-avatars-pref-generator": "ジェネレーター:",
+	"bs-avatars-pref-defaultsize": "既定のサイズ (ピクセル):",
+	"bs-avatars-upload-complete": "画像をアップロードしました。",
+	"bs-avatars-generate-complete": "新しいアバターを生成しました。",
+	"bs-avatars-upload-title": "プロフィール画像の変更",
+	"bs-avatars-upload-label": "画像",
+	"bs-avatars-generate-new-label": "新しいアバターを生成",
+	"bs-avatars-warning-title": "警告",
+	"bs-avatars-warning-text": "あなたは個人設定で利用者画像を設定しています。アバターを使用すると、この設定が消去されます。本当に続行しますか?",
+	"bs-avatars-userimage-title": "ウィキ内の画像名、または画像の URL",
+	"bs-avatars-userimage-help": "例: Picture.jpg または http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "有効な URL ではないか、またはウィキ内の画像ではありません。",
+	"bs-avatars-set-userimage-saved": "利用者の画像を保存しました。",
+	"bs-avatars-file-upload-fieldset-title": "画像のアップロード",
+	"bs-avatars-auto-generate-fieldset-title": "アバターの自動生成"
+}

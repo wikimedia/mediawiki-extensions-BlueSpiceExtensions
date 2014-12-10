@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente",
+			"Nemo bis"
+		]
+	},
+	"bs-rssfeeder-desc": "Criar o seu próprio feed RSS",
+	"bs-rssfeeder-pagetext": "Pode subscrever os seguintes feeds RSS:",
+	"bs-rssfeeder-recent-changes": "Mudanças recentes",
+	"bs-rssfeeder-pages": "Página",
+	"bs-rssfeeder-submit": "Mostrar",
+	"bs-rssfeeder-rss": "Feed RSS",
+	"bs-rssfeeder-rss-desc": "Criar o seu próprio feed RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL do RSS"
+}

@@ -18,7 +18,7 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 	selectedData: {},
 	afterInitComponent: function() {
 		this.tfNamespaceName = Ext.create( 'Ext.form.TextField', {
-			fieldLabel: mw.message( 'bs-namespacemanager-labelNamespaceName' ).plain(),
+			fieldLabel: mw.message( 'bs-namespacemanager-labelnsname' ).plain(),
 			labelWidth: 130,
 			labelAlign: 'right',
 			name: 'namespacename',

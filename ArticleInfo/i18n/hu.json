@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Misibacsi",
+			"Csega"
+		]
+	},
+	"bs-articleinfo-check-revision": "Új verzió érhető el",
+	"bs-articleinfo-check-revision-tooltip": "Oldal újratöltése",
+	"bs-articleinfo-statebartoplastedited": "Legutóbbi szerkesztés",
+	"bs-articleinfo-statebartoplasteditor": "Legutóbbi szerkesztő",
+	"bs-articleinfo-statebartopcategories": "Kategóriák",
+	"bs-articleinfo-statebartopsubpages": "Allapok",
+	"bs-articleinfo-statebarbodycategories": "Kategóriák",
+	"bs-articleinfo-statebarbodysubpages": "Allapok",
+	"bs-articleinfo-statebarbodytemplates": "Sablonok"
+}

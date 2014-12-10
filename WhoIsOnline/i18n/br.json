@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-whoisonline-nousers": "N'eus den kevreet ebet.",
+	"bs-whoisonline-widget-title": "Piv zo enlinenn ?",
+	"prefs-whoisonline": "Piv zo enlinenn ?",
+	"bs-whoisonline-pref-limitcount": "Niver uhelañ a implijerien diskouezet :",
+	"bs-whoisonline-pref-orderby": "Renkañ dre :",
+	"bs-whoisonline-pref-orderby-time": "Amzer mont en-dro",
+	"bs-whoisonline-pref-orderby-name": "Anv",
+	"bs-whoisonline-pref-interval": "Koulzad hizivaat en eilennoù :"
+}

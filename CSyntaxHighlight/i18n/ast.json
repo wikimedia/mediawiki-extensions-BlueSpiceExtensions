@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Amiesta la carauterística de resaltáu de sintaxis personalizable",
+	"prefs-csyntaxhighlight": "Resaltador de sintaxis",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Amosar númberos de llinia",
+	"bs-csyntaxhighlight-pref-autolinks": "URLs del enllaz",
+	"bs-csyntaxhighlight-pref-toolbar": "Amosar barra de ferramientes"
+}

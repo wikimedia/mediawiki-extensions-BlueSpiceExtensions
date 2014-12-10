@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-dashboards-desc": "利用者向けおよび管理者向けのダッシュボードを提供する",
+	"bs-specialadmindashboard-label": "ダッシュボード",
+	"bs-dashboards-addportlet": "ポートレットの追加",
+	"bs-dashboards-portlets": "ポートレット",
+	"prefs-dashboards": "ダッシュボード",
+	"bs-dashboards-pref-userdashboardonlogo": "サイトのロゴのリンク先を利用者ダッシュボードにする",
+	"admindashboard": "管理者ダッシュボード",
+	"userdashboard": "利用者ダッシュボード",
+	"bs-dashboard-userportlet-calendar-title": "カレンダー",
+	"bs-dashboard-userportlet-calendar-description": "カレンダー"
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Sjoerddebruin",
+			"Romaine"
+		]
+	},
+	"bs-extensioninfo-label": "Uitbreidingen",
+	"bs-extensioninfo-software": "Software",
+	"bs-extensioninfo-version": "Versie",
+	"extensioninfo": "Uitbreidingen",
+	"bs-extensioninfo-headerextname": "Naam van de uitbreiding",
+	"bs-extensioninfo-headerversion": "Versie",
+	"bs-extensioninfo-headerdesc": "Beschrijving",
+	"bs-extensioninfo-headerstatus": "Status",
+	"bs-extensioninfo-headerpackage": "Pakket",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element|elementen}}"
+}

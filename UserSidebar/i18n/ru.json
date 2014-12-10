@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alexandr Efremov"
+		]
+	},
+	"bs-usersidebar-desc": "Добавляет вкладку фокус на боковую панель",
+	"prefs-usersidebar": "Боковая панель пользователя",
+	"bs-usersidebar-userpagesettings-link-title": "Редактировать содержимое Вашего фокуса",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Редактировать}} фокус"
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Y-M D"
+		]
+	},
+	"prefs-notifications": "Kemennoù",
+	"prefs-echo-extended": "Arventennoù reizhiad araokaet",
+	"bs-notifications-pref-notifynominor": "Kemenn ebet evit kemmoù dister",
+	"bs-notifications-pref-active": "Gweredekaat ar c'hemennoù",
+	"bs-echo-anon-user": "dizanv",
+	"bs-echo-unknown-user": "dianav",
+	"bs-echo-page-edit": "Kemmet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-create": "Krouet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-delete": "Dilamet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-move": "Dilec'hiet eo bet ar bajenn [[:$1]]",
+	"bs-echo-page-newuser": "Krouet eo bet an implijer $1.",
+	"bs-notifications-email-new-subject": "Pajenn $1 {{GENDER:$2|krouet}} gant $2",
+	"bs-notifications-email-edit-subject": "Pajenn $1 {{GENDER:$2|aozet}} gant $2",
+	"bs-notifications-email-move-subject": "Pajenn $1 {{GENDER:$2|dilec'hiet}} gant $2",
+	"bs-notifications-email-delete-subject": "Pajenn $1 {{GENDER:$2|dilamet}} gant $2",
+	"bs-notifications-email-delete": "Ar bajenn \"$1\" a oa bet {{GENDER:$2|dilamet}} gant $2.\n\nSetu amañ an abeg :\n$3",
+	"bs-notifications-email-addaccount-subject": "Implijer $1 krouet",
+	"bs-notifications-email-addaccount": "An implijer $1, e wir anv $2, zo bet krouet.",
+	"bs-notifications-email-shout-subject": "$2 {{GENDER:$2|en deus|he deus}} postet ur gemennadenn war ar bajenn $1",
+	"bs-notifications-email-shout": "$2 {{GENDER:$2|en deus|he deus}} postet ur gemennadenn war ar bajenn \"$1\".\n\nKemennadenn :\n$3\n\nGallout a rit gweladenniñ ar bajenn gant mont da-heul al liamm-mañ :\n$4.",
+	"echo-category-title-bs-create-cat": "Kemennoù evit pajennoù nevez",
+	"echo-category-title-bs-edit-cat": "Kemennoù evit ar c'hemmoù",
+	"echo-category-title-bs-newuser-cat": "Kemenn evit an implijerien nevez (merourien hepken)"
+}

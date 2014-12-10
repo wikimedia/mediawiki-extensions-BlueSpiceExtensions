@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe",
+			"Fitoschido"
+		]
+	},
+	"bs-countthings-desc": "Proporciona estadísticas basadas en contenido",
+	"bs-countthings-chars-label": "Caracteres",
+	"bs-countthings-words-label": "Palabras",
+	"bs-countthings-pages-label": "Páginas",
+	"bs-countthings-error-no-input": "No se proporcionó una página.",
+	"bs-countthings-error-invalid-mode": "El modo «$1» no es válido. Usa «chars» (caracteres), «words» (palabras), o «pages» (páginas).",
+	"bs-countthings-error-not-exist": "La página «$1» no existe.",
+	"bs-countthings-tag-countarticles-desc": "Muestra el número de páginas.",
+	"bs-countthings-tag-countusers-desc": "Muestra el número de usuarios.",
+	"bs-countthings-tag-countcharacters-desc": "Muestra las estadísticas de los contenidos de la página dada. Atributo de configuración disponible:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Lo que debe contarse <code>chars</code> (caracteres), <code>words</code> (palabras) o <code>pages</code> (páginas)."
+}

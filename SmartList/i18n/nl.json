@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin"
+		]
+	},
+	"bs-smartlist-recent-changes": "Recente wijzigingen",
+	"bs-smartlist-no-entries": "Geen resultaten gevonden.",
+	"bs-smartlist-invalid-namespaces": "De opgegeven {{PLURAL:$1|naamruimte is|naamruimten zijn}} ongeldig: $2",
+	"bs-smartlist-comment": "Opmerking: $1.",
+	"bs-smartlist-pref-comments": "Opmerking weergeven",
+	"bs-smartlist-pref-namespaces": "Naamruimten:",
+	"bs-smartlist-pref-categories": "Categorieën:",
+	"bs-smartlist-pref-period": "Periode:",
+	"bs-smartlist-pref-showminorchanges": "Kleine wijzigingen weergeven",
+	"bs-smartlist-pref-showonlynewarticles": "Alleen nieuwe pagina's weergeven",
+	"bs-smartlist-pref-order": "Sorteren op:",
+	"bs-smartlist-pref-sort": "Sorteren op:",
+	"bs-smartlist-day": "Dag",
+	"bs-smartlist-week": "Week",
+	"bs-smartlist-month": "Maand",
+	"bs-smartlist-time": "Tijd",
+	"bs-smartlist-title": "Titel",
+	"bs-smartlist-lastedits": "Mijn bewerkingen",
+	"bs-smartlist-noedits": "Geen bewerkingen gevonden."
+}

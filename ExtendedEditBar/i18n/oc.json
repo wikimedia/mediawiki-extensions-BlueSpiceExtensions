@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"bs-extendededitbar-redirecttip": "Redirigir",
+	"bs-extendededitbar-redirectsample": "Inserir de tèxte",
+	"bs-extendededitbar-striketip": "Raiar",
+	"bs-extendededitbar-strikesample": "Tèxte raiat",
+	"bs-extendededitbar-entertip": "Saut de linha",
+	"bs-extendededitbar-uppertip": "Exponent",
+	"bs-extendededitbar-uppersample": "Tèxte en exponent",
+	"bs-extendededitbar-lowertip": "Indici",
+	"bs-extendededitbar-lowersample": "Tèxte en indici",
+	"bs-extendededitbar-smalltip": "Pichon",
+	"bs-extendededitbar-smallsample": "Tèxte pichon",
+	"bs-extendededitbar-commentsample": "Comentari",
+	"bs-extendededitbar-gallerysamplepicture": "Fòto",
+	"bs-extendededitbar-gallerysamplecaption": "Legenda",
+	"bs-extendededitbar-quotesample": "Blòt de citacion",
+	"bs-extendededitbar-tabletip": "Inserir un tablèu",
+	"bs-extendededitbar-tablesampleheader": "Entèsta",
+	"bs-extendededitbar-tablesamplerow": "Linha",
+	"bs-extendededitbar-tablesamplecell": "Cellula"
+}

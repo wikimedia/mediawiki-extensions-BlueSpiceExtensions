@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Pio387"
+		]
+	},
+	"bs-namespacemanager-desc": "Interfejs administracyjny do dodawania, edytowania i usuwania przestrzeni nazw",
+	"bs-namespacemanager-label": "Menedżer przestrzeni nazw",
+	"bs-namespacemanager-wrong-name": "Przestrzeń nazw posiada nieprawidłowe znaki.",
+	"bs-namespacemanager-ns-exists": "Przestrzeń nazw już istnieje.",
+	"bs-namespacemanager-ns-length": "Przestrzeń nazw musi mieć co najmniej dwa znaki długości.",
+	"bs-namespacemanager-invalid-id": "Nieprawidłowy identyfikator przestrzeni nazw",
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Przestrzeń nazw",
+	"bs-namespacemanager-label-editable": "Możliwość zmiany nazwy",
+	"bs-namespacemanager-label-content": "W statystykach",
+	"bs-namespacemanager-label-searchable": "Wyszukiwanie domyślne",
+	"bs-namespacemanager-label-subpages": "Podstrony",
+	"bs-namespacemanager-nsadded": "Przestrzeń nazw została dodana.",
+	"bs-namespacemanager-nsremoved": "Przestrzeń nazw została usunięta.",
+	"bs-namespacemanager-tipadd": "Dodawanie przestrzeni nazw",
+	"bs-namespacemanager-tipedit": "Edycja przestrzeni nazw",
+	"bs-namespacemanager-tipremove": "Usuń przestrzeń nazw",
+	"bs-namespacemanager-msgnoteditabledelete": "Ta przestrzeń nazw jest przestrzenią systemową i nie może być usunięta.",
+	"bs-namespacemanager-labelnsname": "Nazwa przestrzeni nazw",
+	"bs-namespacemanager-deletewarning": "Czy na pewno chcesz usunąć tę przestrzeń nazw? Tego kroku nie można cofnąć.",
+	"bs-namespacemanager-pagepresent": "Strony w tej przestrzeni nazw:"
+}

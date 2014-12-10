@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg",
+			"Macofe"
+		]
+	},
+	"bs-namespacemanager-desc": "Interface d’administration pour ajouter, modifier et supprimer des espaces de noms",
+	"bs-namespacemanager-label": "Gestionnaire d’espaces de noms",
+	"bs-namespacemanager-wrong-name": "L’espace de noms contient des caractères non valides.",
+	"bs-namespacemanager-ns-exists": "L’espace de noms existe déjà.",
+	"bs-namespacemanager-ns-length": "L’espace de noms doit avoir une longueur minimale de deux caractères.",
+	"bs-namespacemanager-invalid-id": "ID d’espace de noms non valide",
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Espace de noms",
+	"bs-namespacemanager-label-editable": "Renommable",
+	"bs-namespacemanager-label-content": "Espace de noms du contenu",
+	"bs-namespacemanager-label-searchable": "Recherché par défaut",
+	"bs-namespacemanager-label-subpages": "Sous-pages",
+	"bs-namespacemanager-nsadded": "L’espace de noms a été ajouté.",
+	"bs-namespacemanager-nsremoved": "L’espace de noms a été supprimé.",
+	"bs-namespacemanager-nsedited": "L’espace de noms a été modifié.",
+	"bs-namespacemanager-tipadd": "Ajouter l’espace de noms",
+	"bs-namespacemanager-tipedit": "Modifier l’espace de noms",
+	"bs-namespacemanager-tipremove": "Supprimer l’espace de noms",
+	"bs-namespacemanager-msgnoteditabledelete": "Cet espace de noms est un espace de noms système, qui ne peut pas être supprimé.",
+	"bs-namespacemanager-labelnsname": "Nom de l’espace de noms",
+	"bs-namespacemanager-willdelete": "Sera supprimé",
+	"bs-namespacemanager-willmove": "Sera déplacé dans « {{int:bs-ns_main}} »",
+	"bs-namespacemanager-willmovesuffix": "Sera déplacé dans « {{int:bs-ns_main}} » avec le suffixe « $1 »",
+	"bs-namespacemanager-deletewarning": "Êtes-vous sûr de vouloir supprimer cet espace de noms ? La suppression d’un espace de noms ne peut pas être annulée.",
+	"bs-namespacemanager-pagepresent": "Pages dans cet espace de noms :"
+}

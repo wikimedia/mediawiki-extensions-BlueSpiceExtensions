@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Namoroka"
+		]
+	},
+	"bs-statebar-desc": "상태 표시줄 제공하기",
+	"prefs-statebar": "상태 표시줄",
+	"bs-statebar-pref-sortbodyvars": "본문 순서:"
+}

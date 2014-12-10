@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg"
+		]
+	},
+	"bs-securefilestore-desc": "Empêche l’accès non autorisé aux fichiers et aux images",
+	"prefs-securefilestore": "Stockage de fichiers sécurisé",
+	"bs-securefilestore-pref-defaultdisposition": "Afficher les fichiers par défaut :",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Navigateur",
+	"bs-securefilestore-pref-defaultdisposition-external": "Externe",
+	"bs-securefilestore-pref-dispositionattachment": "Types de fichier externes :",
+	"bs-securefilestore-pref-dispositioninline": "Types de fichier du navigateur :",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Toujours afficher ces types de fichier :"
+}

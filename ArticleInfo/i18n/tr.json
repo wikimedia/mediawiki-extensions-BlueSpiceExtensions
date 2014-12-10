@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-articleinfo-last-edited-tooltip": "Son düzenleme",
+	"bs-articleinfo-categories": "Kategoriler",
+	"bs-articleinfo-all-categories-heading": "Kategoriler",
+	"bs-articleinfo-nocategories": "Hiçbir kategori bulunamadı.",
+	"bs-articleinfo-hiddencats": "Gizli kategoriler",
+	"bs-articleinfo-notemplates": "Şablon bulunamadı.",
+	"bs-articleinfo-templates": "Şablonlar",
+	"bs-articleinfo-subpages": "Alt sayfalar",
+	"bs-articleinfo-subpages-available": "Bu sayfa için alt sayfalar vardır",
+	"bs-articleinfo-subpages-too-much": "100'den fazla alt sayfa mevcut.",
+	"bs-articleinfo-check-revision": "Yeni sürüm mevcut",
+	"bs-articleinfo-check-revision-tooltip": "Sayfayı yeniden yükle",
+	"bs-articleinfo-statebartopcategories": "Kategoriler",
+	"bs-articleinfo-statebartopsubpages": "Alt sayfalar",
+	"bs-articleinfo-statebarbodycategories": "Kategoriler",
+	"bs-articleinfo-statebarbodysubpages": "Alt sayfalar",
+	"bs-articleinfo-statebarbodytemplates": "Şablonlar"
+}

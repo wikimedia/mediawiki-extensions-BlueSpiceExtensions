@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"SuperPuperSteve",
+			"Meshkov.a",
+			"Okras"
+		]
+	},
+	"bs-watchlist-desc": "Добавляет виджет списка наблюдения и теги",
+	"bs-watchlist-title-sidebar": "Список наблюдения",
+	"bs-watchlist-pref-widgetlimit": "Ограничение записей:",
+	"bs-watchlist-pref-widgetsortodr": "Сортировать по:",
+	"bs-watchlist-pref-sort-time": "Время",
+	"bs-watchlist-pref-sort-title": "Заголовок",
+	"bs-watchlist-tag-watchlist-desc": "Создает список страниц, которые находятся в вашем списке наблюдения и при этом имеют непросмотренные изменения."
+}

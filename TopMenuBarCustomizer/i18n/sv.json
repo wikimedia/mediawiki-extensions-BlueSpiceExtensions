@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Anpassa länkarna i toppmenyn",
+	"prefs-topmenubarcustomizer": "Meny-anpassare",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Antal kapslade lager:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Inlägg på huvudlagret:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Inlägg på underlager:"
+}

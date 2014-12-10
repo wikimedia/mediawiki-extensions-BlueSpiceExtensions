@@ -23,7 +23,7 @@ class PageTemplatesAdmin {
 
 	/**
 	 * Back reference to base extension.
-	 * @var BsExtensionMW 
+	 * @var BsExtensionMW
 	 */
 	protected $oExtension;
 
@@ -33,7 +33,7 @@ class PageTemplatesAdmin {
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
-		$this->oExtension = BsExtensionManager::getExtension( 'PageTemplates' ); 
+		$this->oExtension = BsExtensionManager::getExtension( 'PageTemplates' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -101,17 +101,17 @@ class PageTemplatesAdmin {
 			case 'template':
 				$sSortField = 'pt_template_title';
 				break;
-			default: 
+			default:
 				$sSortField = 'pt_label';
 				break;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
-			array( 'bs_pagetemplate' ), 
-			array( 'pt_id', 'pt_label', 'pt_desc', 'pt_target_namespace', 'pt_template_title', 'pt_template_namespace'  ), 
-			array(), 
-			'', 
+			array( 'bs_pagetemplate' ),
+			array( 'pt_id', 'pt_label', 'pt_desc', 'pt_target_namespace', 'pt_template_title', 'pt_template_namespace'  ),
+			array(),
+			__METHOD__,
 			array( 'ORDER BY' => $sSortField . ' ' . $sDirection, 'LIMIT' => $iLimit, 'OFFSET' => $iStart )
 		);
 
@@ -139,7 +139,7 @@ class PageTemplatesAdmin {
 	}
 
 	/**
-	 * Creates or changes a template 
+	 * Creates or changes a template
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public static function doEditTemplate( $iOldId, $sTemplateName, $sLabel, $sDesc, $iTargetNs, $iTemplateNs ) {
@@ -163,27 +163,27 @@ class PageTemplatesAdmin {
 		// TODO RBV (18.05.11 09:19): Use validators
 		if ( strlen( $sDesc ) >= 255 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['desc'] = wfMessage( 'bs-pagetemplates-desc_2long' )->plain();
+			$aAnswer['errors']['desc'] = wfMessage( 'bs-pagetemplates-tpl-desc-toolong' )->plain();
 		}
 
 		if ( strlen( $sLabel ) >= 255 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['label'] = wfMessage( 'bs-pagetemplates-label_2long' )->plain();
+			$aAnswer['errors']['label'] = wfMessage( 'bs-pagetemplates-tpl-label-toolong' )->plain();
 		}
 
 		if ( strlen( $sLabel ) == 0 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['label'] = wfMessage( 'bs-pagetemplates-label_empty' )->plain();
+			$aAnswer['errors']['label'] = wfMessage( 'bs-pagetemplates-tpl-label-empty' )->plain();
 		}
 
 		if ( strlen( $sTemplateName ) >= 255 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['templateName'] = wfMessage( 'bs-pagetemplates-templatename_2long' )->plain();
+			$aAnswer['errors']['templateName'] = wfMessage( 'bs-pagetemplates-tpl-name-toolong' )->plain();
 		}
 
 		if ( strlen( $sTemplateName ) == 0 ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors']['templateName'] = wfMessage( 'bs-pagetemplates-templatename_empty' )->plain();
+			$aAnswer['errors']['templateName'] = wfMessage( 'bs-pagetemplates-tpl-name-empty' )->plain();
 		}
 
 		$oDbw = wfGetDB( DB_MASTER );
@@ -192,16 +192,16 @@ class PageTemplatesAdmin {
 		if ( empty( $iOldId ) ) {
 			if ( $aAnswer['success'] === true ) {
 				$oDbw->insert(
-						'bs_pagetemplate',
-						array(
-							'pt_label' => $sLabel,
-							'pt_desc' => $sDesc,
-							'pt_template_title' => $sTemplateName,
-							'pt_template_namespace' => $iTemplateNs,
-							'pt_target_namespace' => $iTargetNs,
-							'pt_sid' => 0,
-						));
-				$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl_added' )->plain();
+					'bs_pagetemplate',
+					array(
+						'pt_label' => $sLabel,
+						'pt_desc' => $sDesc,
+						'pt_template_title' => $sTemplateName,
+						'pt_template_namespace' => $iTemplateNs,
+						'pt_target_namespace' => $iTargetNs,
+						'pt_sid' => 0,
+					));
+				$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl-added' )->plain();
 			}
 		// and here we have edit template
 		} else {
@@ -209,7 +209,7 @@ class PageTemplatesAdmin {
 			$iNumRow = $oDbw->numRows( $rRes );
 			if ( !$iNumRow ) {
 				$aAnswer['success'] = false;
-				$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-no_old_tpl' )->plain();
+				$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-nooldtpl' )->plain();
 			}
 
 			if ( $aAnswer['success'] === true ) {
@@ -227,12 +227,12 @@ class PageTemplatesAdmin {
 
 				if ( $rRes === false ) {
 					$aAnswer['success'] = false;
-					$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-db_error' )->plain();
+					$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-dberror' )->plain();
 				}
 			}
 
 			if ( $aAnswer['success'] ) {
-				$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl_edited' )->plain();
+				$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl-edited' )->plain();
 			}
 		}
 
@@ -240,7 +240,7 @@ class PageTemplatesAdmin {
 	}
 
 	/**
-	 * Deletes a template 
+	 * Deletes a template
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public static function doDeleteTemplate( $iId ) {
@@ -261,7 +261,7 @@ class PageTemplatesAdmin {
 
 		if ( empty( $iId ) ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-no_id' )->plain();
+			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-no-id' )->plain();
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -269,14 +269,24 @@ class PageTemplatesAdmin {
 
 		if ( $res === false ) {
 			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-db_error' )->plain();
+			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-dberror' )->plain();
 		}
 
 		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl_deleted' )->plain();
+			$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl-deleted' )->plain();
 		}
 
 		return json_encode( $aAnswer );
+	}
+
+	public static function doDeleteTemplates($aId){
+		$output = array();
+		if (is_array($aId) && count($aId) > 0){
+			foreach($aId as $sId => $sName){
+				$output [$sName] = FormatJson::decode(self::doDeleteTemplate($sId));
+			}
+		}
+		return FormatJson::encode($output);
 	}
 
 }

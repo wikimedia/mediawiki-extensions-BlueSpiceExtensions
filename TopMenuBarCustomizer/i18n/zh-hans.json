@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "自定义顶部菜单链接",
+	"prefs-topmenubarcustomizer": "菜单定制器",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "嵌套层数：",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "主层上的记录：",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "子层上的记录："
+}

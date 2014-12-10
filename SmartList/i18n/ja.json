@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"2nd-player",
+			"Shirayuki"
+		]
+	},
+	"bs-smartlist-desc": "ウィキの最近の変更を 5 件列挙する",
+	"prefs-smartlist": "スマート リスト",
+	"bs-smartlist-recent-changes": "最近の更新",
+	"bs-smartlist-invalid-namespaces": "指定した{{PLURAL:$1|名前空間}}は無効です: $2",
+	"bs-smartlist-pref-count": "項目数:",
+	"bs-smartlist-pref-comments": "コメントを表示",
+	"bs-smartlist-pref-namespaces": "名前空間:",
+	"bs-smartlist-pref-categories": "カテゴリ:",
+	"bs-smartlist-pref-period": "期間:",
+	"bs-smartlist-pref-showminorchanges": "細部の編集を表示",
+	"bs-smartlist-pref-showonlynewarticles": "新しいページのみを表示",
+	"bs-smartlist-pref-trim": "ページ名の最大文字数:",
+	"bs-smartlist-pref-showtext": "ページの本文を表示",
+	"bs-smartlist-pref-trimtext": "ページ本文の最大文字数:",
+	"bs-smartlist-pref-sort": "並び順:",
+	"bs-smartlist-pref-shownamespace": "ページ名を名前空間付きで表示",
+	"bs-smartlist-sort-asc": "昇順",
+	"bs-smartlist-sort-desc": "降順",
+	"bs-smartlist-day": "日",
+	"bs-smartlist-week": "週",
+	"bs-smartlist-month": "月",
+	"bs-smartlist-tag-newbies-desc": "最新の利用者を表示する。",
+	"bs-smartlist-tag-toplist-desc": "最も閲覧されているページの一覧を表示する。",
+	"bs-smartlist-mostvisitedpages": "最も閲覧されているページ",
+	"bs-smartlist-mosteditedpages": "最も編集されているページ",
+	"bs-smartlist-lastedits": "自分の編集",
+	"bs-smartlist-noedits": "編集が見つかりません。"
+}

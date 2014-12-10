@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"bs-pagesvisited-desc": "Ziyaret edilen son sayfaların, kişiselleştirilmiş bir listesini oluşturur",
+	"prefs-pagesvisited": "Ziyaret edilen sayfalar",
+	"bs-pagesvisited-widget-title": "Ziyaret edilen sayfalar",
+	"bs-pagesvisited-pref-widgetsortodr": "Sıralama ölçütü:",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Ziyaret ettiğiniz sayfaların listesini görüntüler."
+}

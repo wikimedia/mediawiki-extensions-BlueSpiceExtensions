@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64",
+			"Purodha"
+		]
+	},
+	"bs-hidetitle-desc": "Führt das magische Wort <code><nowiki>__HIDETITLE__</nowiki></code> ein, mit dem sich Seitentitel verbergen lassen"
+}

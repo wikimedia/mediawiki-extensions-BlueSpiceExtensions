@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-insertmagic-defaultsort": "Used for categorising pages, sets a default category sort key.",
+	"bs-insertmagic-type-switches": "Behaviour switches"
+}

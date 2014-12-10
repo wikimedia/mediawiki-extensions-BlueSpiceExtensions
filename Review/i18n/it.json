@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"bs-review-date": "Non tutti i partecipanti hanno votato ancora.",
+	"bs-review-agreed": "Tutti i partecipanti sono d'accordo.",
+	"bs-review-denied-disagreed": "Almeno uno dei partecipanti è in disaccordo.",
+	"bs-review-accepted": "Accettato",
+	"bs-review-rejected": "Respinto",
+	"bs-review-abstain": "Astenuto",
+	"bs-review-review-finished": "Questa pagina è stata revisionata.",
+	"bs-review-reviewed-till-extra": "{{GENDER:$1|Creato}} da $2",
+	"bs-review-save-error": "Si è verificato un errore durante il salvataggio.",
+	"bs-review-review-error": "Si è verificato un errore sconosciuto.",
+	"bs-review-review-saved": "Il tuo voto è stato salvato.",
+	"bs-review-commentinputlabel": "Il tuo commento:",
+	"bs-review-comments": "Commenti",
+	"bs-review-btnmoveup": "Sposta su",
+	"bs-review-btnmovedown": "Sposta giù",
+	"bs-review-colstatus": "Stato",
+	"bs-review-colreviewer": "Revisore",
+	"bs-review-colcomment": "Commento",
+	"bs-review-lblstartdate": "Data inizio",
+	"bs-review-lblenddate": "Data fine",
+	"bs-review-titleaddreviewer": "Aggiungi revisore",
+	"bs-review-labelcomment": "Commento",
+	"bs-review-header-page-title": "Pagina",
+	"bs-review-header-owner-name": "Proprietario",
+	"bs-review-header-accepted-text": "Stato",
+	"bs-review-header-startdate": "Inizio",
+	"bs-review-header-enddate": "Fine"
+}

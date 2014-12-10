@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"bs-extensioninfo-desc": "Roll titouroù diwar-benn an astennoù karget",
+	"bs-extensioninfo-label": "Astennoù",
+	"bs-extensioninfo-software": "Meziant",
+	"bs-extensioninfo-version": "Stumm",
+	"extensioninfo": "Astennoù",
+	"bs-extensioninfo-headerextname": "Anv an astenn",
+	"bs-extensioninfo-headerversion": "Stumm",
+	"bs-extensioninfo-headerdesc": "Deskrivadur",
+	"bs-extensioninfo-headerstatus": "Statud",
+	"bs-extensioninfo-headerpackage": "Pakad",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elfenn|a elfennoù}}"
+}

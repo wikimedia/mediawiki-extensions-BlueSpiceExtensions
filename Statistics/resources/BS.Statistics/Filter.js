@@ -4,7 +4,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @package    Bluespice_Extensions
+ * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
@@ -97,10 +97,10 @@ Ext.define( 'BS.Statistics.Filter', {
 		this.storeAvailableGrains = new Ext.create('Ext.data.ArrayStore', {
 			fields: ['key', 'displaytitle'],
 			data: [
-				['Y', mw.message('bs-statistics-Y').plain()],
-				['m', mw.message('bs-statistics-m').plain()],
-				['W', mw.message('bs-statistics-W').plain()],
-				['d', mw.message('bs-statistics-d').plain()]
+				['Y', mw.message('bs-statistics-year').plain()],
+				['m', mw.message('bs-statistics-month').plain()],
+				['W', mw.message('bs-statistics-week').plain()],
+				['d', mw.message('bs-statistics-day').plain()]
 			]
 		});
 
@@ -154,7 +154,7 @@ Ext.define( 'BS.Statistics.Filter', {
 
 		this.msInputFilterNamespace = new Ext.create('Ext.ux.form.MultiSelect',{
 			store: this.storeNamespaceFilter,
-			fieldLabel: mw.message('bs-statistics-filter-namespace').plain(),
+			fieldLabel: mw.message('bs-ns').plain(),
 			labelAlign: 'right',
 			name: 'hwpFilterBsFilterNamespace[]',
 			displayField: 'displaytitle',
@@ -221,7 +221,7 @@ Ext.define( 'BS.Statistics.Filter', {
 		this.cbInputDepictionGrain.select('W');
 
 		this.btnOK = new Ext.create( 'Ext.Button', {
-			text: mw.message('bs-statistics-continue-step-3').plain(),
+			text: mw.message('bs-statistics-finish').plain(),
 			id: 'bs-statistics-filterpanel-submit'
 		});
 		this.btnOK.addListener( 'click', this.btnOKclicked, this);
@@ -316,10 +316,10 @@ Ext.define( 'BS.Statistics.Filter', {
 		this.fireEvent('saved', this, action.result.data, action.result);
 		this.collapse();
 		if( action.result.message === undefined || action.result.message == '') return;
-		Ext.Msg.alert('Status', action.result.message);
+		bs.util.alert( 'STAsuc', { text: action.result.message, titleMsg: 'bs-extjs-title-success' } );
 	},
 	fpFailure: function( form, action ) {
 		if( action.result.message === undefined || action.result.message == '') return;
-		Ext.Msg.alert('Status', action.result.message);
+		bs.util.alert( 'STAfail', { text: action.result.message, titleMsg: 'bs-extjs-title-success' } );
 	}
 });

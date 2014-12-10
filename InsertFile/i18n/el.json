@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Glavkos",
+			"Protnet"
+		]
+	},
+	"bs-insertfile-insert-image": "Εισαγωγή εικόνας",
+	"bs-insertfile-insert-file": "Εισαγωγή αρχείου",
+	"bs-insertfile-labelfilter": "Φίλτρο:",
+	"bs-insertfile-filesize": "Μέγεθος αρχείου",
+	"bs-insertfile-lastmodified": "Πρόσφατες αλλαγές",
+	"bs-insertfile-labelupload": "Ανέβασμα αρχείου",
+	"bs-insertfile-details-title": "Λεπτομέρειες",
+	"bs-insertfile-alignleft": "αριστερά",
+	"bs-insertfile-aligncenter": "κέντρο",
+	"bs-insertfile-alignright": "δεξιά",
+	"bs-insertfile-labeltype": "Διακόσμηση",
+	"bs-insertfile-typenone": "καμία",
+	"bs-insertfile-typethumb": "μικρογραφία",
+	"bs-insertfile-typeframe": "πλαίσιο"
+}

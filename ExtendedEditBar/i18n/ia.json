@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-extendededitbar-desc": "Forni buttones additional pro le campo de modification del wiki",
+	"bs-extendededitbar-redirecttip": "Rediriger",
+	"bs-extendededitbar-redirectsample": "Inserer texto",
+	"bs-extendededitbar-striketip": "Cancellar",
+	"bs-extendededitbar-strikesample": "Texto cancellate",
+	"bs-extendededitbar-entertip": "Ruptura de linea",
+	"bs-extendededitbar-uppertip": "Superscripto",
+	"bs-extendededitbar-uppersample": "Texto in superscripto",
+	"bs-extendededitbar-lowertip": "Subscripto",
+	"bs-extendededitbar-lowersample": "Texto in subscripto",
+	"bs-extendededitbar-smalltip": "Micre",
+	"bs-extendededitbar-smallsample": "Texto micre",
+	"bs-extendededitbar-commenttip": "Inserer commento celate",
+	"bs-extendededitbar-commentsample": "Commento",
+	"bs-extendededitbar-gallerytip": "Inserer un galeria de imagines",
+	"bs-extendededitbar-gallerysamplepicture": "Imagine",
+	"bs-extendededitbar-gallerysamplecaption": "Legenda",
+	"bs-extendededitbar-quotetip": "Inserer un bloco de texto citate",
+	"bs-extendededitbar-quotesample": "Bloco de citation",
+	"bs-extendededitbar-tabletip": "Inserer un tabella",
+	"bs-extendededitbar-tablesampleheader": "Capite",
+	"bs-extendededitbar-tablesamplerow": "Linea",
+	"bs-extendededitbar-tablesamplecell": "Cellula"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Cwlin0416"
+		]
+	},
+	"bs-countthings-chars-label": "字元",
+	"bs-countthings-words-label": "單字",
+	"bs-countthings-pages-label": "頁面"
+}

@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bluedeck",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-insertlink-desc": "输入连接的对话框",
+	"bs-insertlink": "插入链接",
+	"bs-insertlink-button-title": "插入或编辑链接",
+	"bs-insertlink-dialog-title": "插入链接",
+	"bs-insertlink-tab-wiki-page": "维基页面",
+	"bs-insertlink-tab-ext-link": "外部链接",
+	"bs-insertlink-tab-email": "电子邮件链接",
+	"bs-insertlink-tab-ext-file": "链接至文件",
+	"bs-insertlink-label-page": "页面",
+	"bs-insertlink-label-link": "链接",
+	"bs-insertlink-label-mail": "邮件地址",
+	"bs-insertlink-label-description": "描述",
+	"bs-insertlink-label-file": "文件",
+	"bs-insertlink-label-searchfile": "搜索...",
+	"bs-insertlink-select-a-page": "选择目标......",
+	"bs-insertlink-select-a-namespace": "（页面）",
+	"bs-insertlink-empty-field-text": "您需要为您要插入的链接提供一个目标。",
+	"bs-insertlink-no-applet": "不能加载小程序。请检查您的Java安装版本。"
+}

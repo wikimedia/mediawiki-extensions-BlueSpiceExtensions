@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin"
+		]
+	},
+	"bs-contextmenu-page-edit": "Pagina bewerken",
+	"bs-contextmenu-page-delete": "Pagina verwijderen",
+	"bs-contextmenu-page-move": "Pagina hernoemen",
+	"bs-contextmenu-page-history": "Paginageschiedenis bekijken",
+	"bs-contextmenu-page-protect": "Pagina beveiligen",
+	"bs-contextmenu-page-purge": "Cache leegmaken en pagina bekijken",
+	"bs-contextmenu-page-info": "Paginagegevens bekijken",
+	"bs-contextmenu-media-reupload": "Nieuwe versie uploaden",
+	"bs-contextmenu-user-mail": "E-mail verzenden",
+	"bs-contextmenu-user-talk": "Bericht achterlaten op overlegpagina",
+	"bs-contextmenu-file-download": "Bestand downloaden"
+}

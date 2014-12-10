@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-countthings-error-not-exist": "ページ「$1」は存在しません。",
+	"bs-countthings-tag-countarticles-desc": "ページ数を表示する。",
+	"bs-countthings-tag-countusers-desc": "利用者数を表示する。",
+	"bs-countthings-tag-countcharacters-desc": "指定したページの本文の統計を表示する。利用できる属性:"
+}

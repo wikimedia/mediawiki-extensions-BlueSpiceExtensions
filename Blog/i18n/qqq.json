@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Shirayuki",
+			"Robby",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-blog-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of blog extension",
+	"prefs-blog": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for blog section in preferences.\n{{Identical|Blog}}",
+	"bs-blog-no-entries": "Text for there are no blog entries.",
+	"bs-blog-comments": "Anchor title for comments.\n{{Identical|Comment}}",
+	"bs-blog-read-more": "Anchor title for read more\n{{Identical|Read more}}",
+	"bs-blog-trackback": "Anchor title for trackback",
+	"bs-blog-permalink": "Anchor title for permalink.\n{{Identical|Permalink}}",
+	"bs-blog-show-all": "Anchor title for show all entries",
+	"bs-blog-form-inline-text": "input field default text for title ...\n{{Identical|Title}}",
+	"bs-blog-form-title-text": "Headline for create new blog entry",
+	"bs-blog-form-button-text": "Button label for create.\n{{Identical|Create}}",
+	"bs-blog-blog": "Text for blog.\n{{Identical|Blog}}",
+	"bs-blog-pref-moreinnewwindow": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for open new window for read more",
+	"bs-blog-pref-newentryfieldposition": " Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for position for the new blog entry form:",
+	"bs-blog-pref-showall": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show all entries link",
+	"bs-blog-pref-showinfo": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show information about the entry",
+	"bs-blog-pref-showlimit": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for number of blog entries:",
+	"bs-blog-pref-shownewentryfield": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show new blog entry form",
+	"bs-blog-pref-showpermalink": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show permalink link",
+	"bs-blog-pref-sortby": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences].\n\nUsed as label for the select box having the following items (hard-coded):\n* creation\n* title\n{{Identical|Sort by}}",
+	"bs-blog-pref-imagerendermode": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences].\n\nUsed as label for the select box having the following items (hard-coded):\n* thumb\n* full\n* none",
+	"bs-blog-pref-imagefloatdirection": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences].\n\nUsed as label for the select box having the following items (hard-coded):\n* left\n* right\n* none",
+	"bs-blog-pref-maxentrycharacters": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for number of words per entry:",
+	"bs-blog-tag-blog-desc": "Used in InsertMagic extension, tag description for display blog entries on every page.\n{{Related|Bs-tag-desc}}"
+}

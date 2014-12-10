@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Niknetniko",
+			"Sjoerddebruin",
+			"McDutchie",
+			"Ribert"
+		]
+	},
+	"bs-articleinfo-desc": "Toont informatie over een pagina in de statusbalk.",
+	"prefs-articleinfo": "Paginagegevens",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Interval voor bijwerken, in seconden:",
+	"bs-articleinfo-last-edited": "Tijd sinds recente wijziging",
+	"bs-articleinfo-last-edited-tooltip": "Laatste bewerking",
+	"bs-articleinfo-last-editor": "Laatste {{GENDER:$1|bewerker}}",
+	"bs-articleinfo-categories": "Categorieën",
+	"bs-articleinfo-more-categories": "Meer categorieën beschikbaar",
+	"bs-articleinfo-all-categories-heading": "Categorieën",
+	"bs-articleinfo-nocategories": "Geen categorieën gevonden.",
+	"bs-articleinfo-hiddencats": "Verborgen categorieën",
+	"bs-articleinfo-notemplates": "Geen sjablonen gevonden.",
+	"bs-articleinfo-templates": "Sjablonen",
+	"bs-articleinfo-subpages": "Subpagina's",
+	"bs-articleinfo-subpages-available": "Er zijn subpagina's voor deze pagina",
+	"bs-articleinfo-subpages-too-much": "Er zijn meer dan 100 subpagina's beschikbaar.",
+	"bs-articleinfo-check-revision": "Nieuwe versie beschikbaar",
+	"bs-articleinfo-check-revision-tooltip": "Pagina opnieuw laden",
+	"bs-articleinfo-statebartoplastedited": "Recente bewerking",
+	"bs-articleinfo-statebartoplasteditor": "Recente editor",
+	"bs-articleinfo-statebartopcategories": "Categorieën",
+	"bs-articleinfo-statebartopsubpages": "Subpagina's",
+	"bs-articleinfo-statebarbodycategories": "Categorieën",
+	"bs-articleinfo-statebarbodysubpages": "Subpagina's",
+	"bs-articleinfo-statebarbodytemplates": "Sjablonen"
+}

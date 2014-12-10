@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
+		]
+	},
+	"bs-readers-desc": "Erstellt eine Liste mit Personen, die eine Seite lesen",
+	"prefs-readers": "Besucher dieser Seite",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Besucher|Besucherin}}|Besucher}}",
+	"readers-user": "Seiten besucht von: $1",
+	"readers": "Besucher der Seite: $1",
+	"bs-readers-contentactions-label": "Besucher anzeigen",
+	"bs-readers-pagenotexists": "Es wurde keine Seite übergeben.",
+	"bs-readers-pref-active": "Besucher dieser Seite aktivieren.",
+	"bs-readers-pref-numofreaders": "Anzahl der anzuzeigenden Besucher:",
+	"bs-readers-emptyinput": "Du musste einen Seite angeben.",
+	"bs-readers-header-username": "Benutzername",
+	"bs-readers-header-readerspath": "Leser",
+	"bs-readers-header-ts": "Datum"
+}

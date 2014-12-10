@@ -25,16 +25,6 @@
  *
  * For further information visit http://www.blue-spice.org
  */
-/* Changelog
- * v1.20.0
- *
- * v1.0.0
- * -raised to stable
- * v0.1
- * -initial commit
- */
-
-// Last review MRG (01.07.11 12:22)
 
 /**
  * Class for link assistent
@@ -53,7 +43,7 @@ class InsertLink extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'InsertLink',
-			EXTINFO::DESCRIPTION => 'Dialogbox to enter a link.',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertlink-desc' )->escaped(),
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -74,13 +64,9 @@ class InsertLink extends BsExtensionMW {
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'VisualEditorConfig' );
 
-		BsConfig::registerVar('MW::InsertLink::ShowFilelink', true, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT, 'bs-insertlink-pref-ShowFilelink', 'toggle');
-		BsConfig::registerVar('MW::InsertLink::UseFilelinkApplet', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT);
-		BsConfig::registerVar('MW::InsertLink::ExcludeNs', array(), BsConfig::LEVEL_PRIVATE);
-
 		wfProfileOut('BS::InsertLink::initExt');
 	}
-	
+
 	/**
 	 * Hook Handler for VisualEditorConfig Hook
 	 * @param Array $aConfigStandard reference
@@ -90,10 +76,10 @@ class InsertLink extends BsExtensionMW {
 	 */
 	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
 		$aLoaderUsingDeps[] = 'ext.bluespice.insertlink';
-		
+
 		$iIndexStandard = array_search( 'bssignature',$aConfigStandard["toolbar1"] );
 		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bslink" );
-		
+
 		// Add context menu entry
 		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsContextLink bsContextUnlink', $aConfigStandard["contextmenu"] );
 		return true;
@@ -102,7 +88,7 @@ class InsertLink extends BsExtensionMW {
 	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
 		$this->getOutput()->addModuleStyles('ext.bluespice.insertlink.styles');
 		$this->getOutput()->addModules('ext.bluespice.insertlink');
-		
+
 		$aRows[0]['dialogs'][40] = 'bs-editbutton-insertlink';
 
 		$aButtonCfgs['bs-editbutton-insertlink'] = array(
@@ -149,32 +135,6 @@ class InsertLink extends BsExtensionMW {
 		}
 		$aResult['success'] = true;
 
-		return json_encode( $aResult );
-	}
-
-	/**
-	 * Get all visible namespaces and put it to ajax output.
-	 * @param type $output The ajax output which have to be valid JSON.
-	 */
-	public static function getNamespace() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		global $wgContLang;
-
-		$output = '{identifier:"name", items: [';
-		foreach ($wgContLang->getNamespaces() as $ns) {
-			$nsIndex = $wgContLang->getNsIndex( $ns );
-			if (in_array($nsIndex, BsConfig::get('MW::InsertLink::ExcludeNs')))
-				continue;
-			$oTestTitle = Title::newFromText($ns . ':Test');
-			if (is_object($oTestTitle) && $oTestTitle->userCan('read')) {
-				$output .= '{name:"' . BsNamespaceHelper::getNamespaceName($nsIndex) . '", label:"' . BsNamespaceHelper::getNamespaceName($nsIndex) . '", ns:"' . $nsIndex . '"},';
-			}
-		}
-		if (strrpos($output, ',') == strlen($output) - 1)
-			$output = substr($output, 0, strlen($output) - 1);
-		$output .= ']}';
-
-		return $output;
-		// TODO MRG (01.07.11 12:24): Use json_encode
+		return FormatJson::encode( $aResult );
 	}
 }

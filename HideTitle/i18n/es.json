@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Themasterriot"
+		]
+	},
+	"bs-hidetitle-desc": "Añade la palabra mágica <code><nowiki>__HIDETITLE__</nowiki></code> para ocultar el título de la página"
+}

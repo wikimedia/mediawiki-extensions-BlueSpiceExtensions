@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Adds customizable syntax highlighting functionality",
+	"prefs-csyntaxhighlight": "Syntax highlighter",
+	"bs-csyntaxhighlight-pref-theme": "Theme:",
+	"bs-csyntaxhighlight-pref-gutter": "Show line numbers",
+	"bs-csyntaxhighlight-pref-autolinks": "Link URLs",
+	"bs-csyntaxhighlight-pref-toolbar": "Show toolbar"
+}

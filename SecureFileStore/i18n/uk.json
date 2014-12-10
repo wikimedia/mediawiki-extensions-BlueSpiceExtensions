@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-securefilestore-desc": "Запобігає несанкціонованому доступу до файлів та зображень",
+	"prefs-securefilestore": "Захищене сховище файлів",
+	"bs-securefilestore-pref-defaultdisposition": "Відображення файлів за замовчуванням:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Браузер",
+	"bs-securefilestore-pref-defaultdisposition-external": "Зовнішні",
+	"bs-securefilestore-pref-dispositionattachment": "Типів зовнішніх файлів:",
+	"bs-securefilestore-pref-dispositioninline": "Типи файлів браузера:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Завжди відображати ці типи файлів:"
+}

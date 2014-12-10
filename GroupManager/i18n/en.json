@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-groupmanager-desc": "Administration interface for adding, editing and deleting user groups and their rights",
+	"bs-groupmanager-grpexists": "The group already exists.",
+	"bs-groupmanager-grpadded": "The group has been added.",
+	"bs-groupmanager-grpedited": "The group has been edited.",
+	"bs-groupmanager-grpremoved": "The group has been removed.",
+	"bs-groupmanager-label": "Group manager",
+	"bs-groupmanager-invalid-name": "The group name contains {{PLURAL:$1|an|}} invalid {{PLURAL:$1|character|characters}}: $2",
+	"bs-groupmanager-invalid-name-length": "The group name cannot be longer than 16 characters.",
+	"bs-groupmanager-invalid-name-numeric": "The group name needs to have at least one character.",
+	"bs-groupmanager-headergroup": "Group",
+	"bs-groupmanager-tipremove": "Remove {{PLURAL:$1|group|groups}}",
+	"bs-groupmanager-titlenewgroup": "New group",
+	"bs-groupmanager-titleeditgroup": "Edit group",
+	"bs-groupmanager-removegroup": "Are you sure you want to remove {{PLURAL:$1|this group|these groups}}?",
+	"bs-groupmanager-removegroup-message-success": "The following {{PLURAL:$1|group was|groups were}} deleted: $2",
+	"bs-groupmanager-removegroup-message-failure": "The following {{PLURAL:$1|group|groups}} could not be deleted: $2",
+	"bs-groupmanager-removegroup-message-unknown": "An unexpected error occurred, please try again.",
+	"bs-groupmanager-lablename": "Group name:",
+	"bs-groupmanager-msgnoteditable": "This group is a system group and cannot be renamed.",
+	"bs-groupmanager-msgnotremovable": "This group is a system group and cannot be removed."
+}

@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-interwikilinks-desc": "Etrefas merañ da ouzhpennañ, aozañ ha dilemel al lialloù etrewiki",
+	"bs-interwikilinks-invalid-pfx-spc": "Direizh eo ar rakger. Na implijit ket esaouennoù, mar plij.",
+	"bs-interwikilinks-invalid-url-spc": "Direizh eo an URL. Na implijit ket esaouennoù, mar plij.",
+	"bs-interwikilinks-label": "Liammoù etrewiki",
+	"bs-interwikilinks-link-created": "Krouet eo bet al liamm etrewiki.",
+	"bs-interwikilinks-link-added": "Ouzhpennet eo bet al liamm etrewiki.",
+	"bs-interwikilinks-link-deleted": "Dilamet eo bet al liamm etrewiki.",
+	"bs-interwikilinks-nooldpfx": "N'eo ket bet kavet ar rakger kent.",
+	"bs-interwikilinks-nopfx": "Pourchasit ur rakger, mar plij.",
+	"bs-interwikilinks-nourl": "Pourchasir un URL, mar plij.",
+	"bs-interwikilinks-pfxtoolong": "Re hir eo ar rakger. Implijit 32 arouezenn d'ar muiañ, mar plij.",
+	"bs-interwikilinks-pfxexists": "Ar rakger-mañ zo anezhañ dija.",
+	"bs-interwikilinks-headerprefix": "Rakger",
+	"bs-interwikilinks-titleaddinterwikilink": "Ouzhpennañ ul liamm etrewiki",
+	"bs-interwikilinks-titleeditinterwikilink": "Aozañ al liamm etrewiki",
+	"bs-interwikilinks-labelprefix": "Rakger",
+	"bs-interwikilinks-titledeleteinterwikilink": "Dilemel al liamm etrewiki",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Ha sur oc'h e fell deoc'h dilemel al liamm interwiki-mañ ?",
+	"bs-interwikilinks-insertlink-tabtitle": "Liamm war-zu ur wiki all",
+	"bs-interwikilinks-insertlink-labelprefix": "Rakger",
+	"bs-interwikilink-select-a-prefix": "Choaz ur rakger"
+}

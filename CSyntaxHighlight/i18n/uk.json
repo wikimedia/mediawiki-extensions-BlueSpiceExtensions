@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"bs-csyntaxhighlight-desc": "Додає налаштовувані функції підсвічування синтаксису",
+	"prefs-csyntaxhighlight": "Підсвічування синтаксису",
+	"bs-csyntaxhighlight-pref-theme": "Тема:",
+	"bs-csyntaxhighlight-pref-gutter": "Показати номери рядків",
+	"bs-csyntaxhighlight-pref-autolinks": "URL-посилання",
+	"bs-csyntaxhighlight-pref-toolbar": "Показати панель інструментів"
+}

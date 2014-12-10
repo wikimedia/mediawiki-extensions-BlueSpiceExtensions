@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-namespacemanager-desc": "Interface de administração para criar, editar e eliminar domínios",
+	"bs-namespacemanager-label": "Gestor de domínio",
+	"bs-namespacemanager-wrong-name": "O domínio contém caracteres inválidos.",
+	"bs-namespacemanager-ns-exists": "O domínio já existe.",
+	"bs-namespacemanager-ns-length": "O nome do domínio tem de ter um mínimo de dois caracteres.",
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Domínio",
+	"bs-namespacemanager-label-subpages": "Subpáginas",
+	"bs-namespacemanager-nsadded": "O domínio foi adicionado.",
+	"bs-namespacemanager-nsremoved": "O domínio foi removido.",
+	"bs-namespacemanager-nsedited": "O domínio foi editado.",
+	"bs-namespacemanager-tipadd": "Adicionar domínio",
+	"bs-namespacemanager-tipedit": "Editar domínio",
+	"bs-namespacemanager-tipremove": "Remover domínio",
+	"bs-namespacemanager-msgnoteditabledelete": "Este domínio é um domínio do sistema e não pode ser eliminado.",
+	"bs-namespacemanager-labelnsname": "Nome do domínio",
+	"bs-namespacemanager-willdelete": "Será excluído",
+	"bs-namespacemanager-willmove": "Será movido para \"{{int:bs-ns_main}}\"",
+	"bs-namespacemanager-willmovesuffix": "Será movido para  \"{{int:bs-ns_main}}\" com o sufixo \"$1\"",
+	"bs-namespacemanager-deletewarning": "Tem certeza que deseja eliminar este domínio? A exclusão de um domínio não pode ser desfeita.",
+	"bs-namespacemanager-pagepresent": "Páginas neste domínio:"
+}

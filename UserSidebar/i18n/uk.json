@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата",
+			"Andriykopanytsia"
+		]
+	},
+	"bs-usersidebar-desc": "Додає вкладку фокус на бічну панель",
+	"prefs-usersidebar": "Бічна панель користувача",
+	"bs-usersidebar-userpagesettings-link-title": "Редагувати вміст Ваш фокусу",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Редагувати}} фокус"
+}

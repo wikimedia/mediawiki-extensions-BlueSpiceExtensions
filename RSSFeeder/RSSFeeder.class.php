@@ -48,7 +48,7 @@ class RSSFeeder extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'RSSFeeder',
-			EXTINFO::DESCRIPTION => 'A extension to put out valid rss for every extension, which has a buildRss-function',
+			EXTINFO::DESCRIPTION => wfMessage( 'bs-rssfeeder-desc' )->escaped(),
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -90,14 +90,14 @@ class RSSFeeder extends BsExtensionMW {
 	 */
 	public function onBSDashboardsAdminDashboardPortalPortlets( &$aPortlets ) {
 		$aPortlets[] = array(
-						'type' => 'BS.RSSFeeder.RSSPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
-							'height' => 660,
-							'rssurl' => 'http://blog.blue-spice.org/feed/'
-						),
-						'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
-						'description' => wfMessage( 'bs-dashboards-rss-desc' )->plain()
+			'type' => 'BS.RSSFeeder.RSSPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+				'height' => 660,
+				'rssurl' => 'http://blog.blue-spice.org/feed/'
+			),
+			'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+			'description' => wfMessage( 'bs-rssfeeder-rss-desc' )->plain()
 		);
 
 		return true;
@@ -132,14 +132,14 @@ class RSSFeeder extends BsExtensionMW {
 	 */
 	public function onBSDashboardsUserDashboardPortalPortlets( &$aPortlets ) {
 		$aPortlets[] = array(
-						'type' => 'BS.RSSFeeder.RSSPortlet',
-						'config' => array(
-							'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
-							'height' => 610,
-							'rssurl' => 'http://blog.blue-spice.org/feed/'
-						),
-						'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
-						'description' => wfMessage( 'bs-dashboards-rss-desc' )->plain()
+			'type' => 'BS.RSSFeeder.RSSPortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+				'height' => 610,
+				'rssurl' => 'http://blog.blue-spice.org/feed/'
+			),
+			'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
+			'description' => wfMessage( 'bs-rssfeeder-rss-desc' )->plain()
 		);
 
 		return true;

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Robby",
+			"Ата",
+			"Liuxinyu970226",
+			"Shirayuki"
+		]
+	},
+	"bs-shoutbox-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of shoutbox extension",
+	"prefs-shoutbox": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for shout box section in preferences. \n{{Identical|Shoutbox}}",
+	"bs-shoutbox-title": "Fieldset legend for shoutbox\n{{Identical|Shoutbox}}",
+	"bs-shoutbox-message": "Default text in textarea for message, disappears when the user clicks in the textarea and asks the user to insert some text.",
+	"bs-shoutbox-shout": "Button to send the message\n{{Identical|Send}}",
+	"bs-shoutbox-no-entries": "Text for nothing here yet.",
+	"bs-shoutbox-loading": "Text for loading...\n{{Identical|Loading}}",
+	"bs-shoutbox-pref-committimeinterval": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for time between two messages (in seconds):",
+	"bs-shoutbox-pref-maxmessagelength": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for maximum length of a message:",
+	"bs-shoutbox-pref-numberofshouts": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for number of messages shown:",
+	"bs-shoutbox-pref-showage": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show creation date of a message.\n*This \"date\" means timestamp.",
+	"bs-shoutbox-pref-showuser": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show author of a message",
+	"bs-shoutbox-pref-allowarchive": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for user are able to delete their own entries",
+	"bs-shoutbox-pref-show": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for display shoutbox",
+	"bs-shoutbox-archive-success": "Text for entry deleted.",
+	"bs-shoutbox-archive-failure": "Text for an error occurred while trying to delete the entry, please try again.",
+	"bs-shoutbox-archive-failure-user": "Text for entries can only be deleted by their author.",
+	"bs-shoutbox-switch-description": "Used in InsertMagic extension, tag description for hides shoutbox on this page",
+	"bs-shoutbox-charactersleft": "Text for $1 character{{PLURAL:$1||s}} \n*$1 is the number of characters left, also use this for PLURAL distinction",
+	"bs-shoutbox-confirm-text": "Text for do you really want to delete this entry?",
+	"bs-shoutbox-confirm-title": "Window title for confirm\n{{Identical|Confirm}}",
+	"bs-shoutbox-entermessage": "Text for please enter a message.",
+	"bs-shoutbox-too-early": "Please wait a few seconds before submitting the next entry.",
+	"bs-shoutbox-n-shouts": "Text for the number of shouts, used in StateBar\n*$1 is the number of shouts, also use this for PLURAL distinction\n{{Identical|Shout}}"
+}

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-hidetitle-desc": "ページ名を非表示にするためのマジックワード <code><nowiki>__HIDETITLE__</nowiki></code> を追加する"
+}

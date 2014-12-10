@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Csega"
+		]
+	},
+	"prefs-pagesvisited": "Meglátogatott oldalak",
+	"bs-pagesvisited-widget-title": "Meglátogatott oldalak",
+	"bs-pagesvisited-pref-widgetns": "Névterek:",
+	"bs-pagesvisited-pref-widgetsortodr": "Rendezés:",
+	"bs-pagesvisited-pref-sort-time": "Idő",
+	"bs-pagesvisited-pref-sort-pagename": "Cím"
+}

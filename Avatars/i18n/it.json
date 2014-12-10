@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"PeppeAeco"
+		]
+	},
+	"bs-avatars-pref-generator": "Generatore:",
+	"bs-avatars-pref-defaultsize": "Dimensioni predefinite, pixel:",
+	"bs-avatars-upload-complete": "L'immagine è stata caricata con successo.",
+	"bs-avatars-generate-complete": "Un nuovo avatar è stato generato.",
+	"bs-avatars-upload-title": "Cambia immagine del profilo",
+	"bs-avatars-upload-label": "Immagine",
+	"bs-avatars-generate-new-label": "Genera un nuovo avatar",
+	"bs-avatars-warning-title": "Attenzione",
+	"bs-avatars-userimage-title": "Immagine da wiki o URL immagine",
+	"bs-avatars-userimage-help": "ad esempio Picture.jpg o http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-saved": "L'immagine dell'utente salvata con successo.",
+	"bs-avatars-file-upload-fieldset-title": "Caricamento immagine",
+	"bs-avatars-auto-generate-fieldset-title": "Generazione automatica avatar"
+}

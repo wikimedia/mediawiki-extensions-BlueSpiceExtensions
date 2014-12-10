@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"2nd-player",
+			"Shirayuki",
+			"Liuxinyu970226"
+		]
+	},
+	"bs-extendededitbar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended edit bar extension",
+	"bs-extendededitbar-redirecttip": "Tooltip for the button to insert a redirect.\n{{Identical|Redirect}}",
+	"bs-extendededitbar-redirectsample": "Text for insert text",
+	"bs-extendededitbar-striketip": "Text for strike\n{{Identical|Strike}}",
+	"bs-extendededitbar-strikesample": "Text for strike-through text",
+	"bs-extendededitbar-entertip": "Text for line break\n{{Identical|Line break}}",
+	"bs-extendededitbar-uppertip": "Text for superscript\n{{Identical|Superscript}}",
+	"bs-extendededitbar-uppersample": "Text for superscript text",
+	"bs-extendededitbar-lowertip": "Text for subscript\n{{Identical|Subscript}}",
+	"bs-extendededitbar-lowersample": "Text for subscript text",
+	"bs-extendededitbar-smalltip": "Text for small\n{{Identical|Small}}",
+	"bs-extendededitbar-smallsample": "Text for small text",
+	"bs-extendededitbar-commenttip": "Tooltip for the \"Insert hidden comment\" button.",
+	"bs-extendededitbar-commentsample": "Text for comment\n{{Identical|Comment}}",
+	"bs-extendededitbar-gallerytip": "Tooltip for the \"Insert a picture gallery\" button.",
+	"bs-extendededitbar-gallerysamplepicture": "Text for picture\n{{Identical|Picture}}",
+	"bs-extendededitbar-gallerysamplecaption": "Text for caption\n{{Identical|Caption}}",
+	"bs-extendededitbar-quotetip": "Text for insert a block of quoted text",
+	"bs-extendededitbar-quotesample": "Text for block quote",
+	"bs-extendededitbar-tabletip": "Text for insert a table",
+	"bs-extendededitbar-tablesampleheader": "Text for header\n{{Identical|Header}}",
+	"bs-extendededitbar-tablesamplerow": "Text for row\n{{Identical|Row}}",
+	"bs-extendededitbar-tablesamplecell": "Text for cell\n{{Identical|Cell}}"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"prefs-wantedarticle": "Оьшуш йолу агӀонаш",
+	"bs-wantedarticle-edit-comment-suggestion-added": "\"$1\" тӀетоьхна.",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Кхоллар",
+	"bs-wantedarticle-single-textfield-defaulttext": "АгӀона корта",
+	"bs-wantedarticle-tag-more-linktext": "Кхин дӀа…",
+	"bs-wantedarticle-pref-sort": "Къастам бе:",
+	"bs-wantedarticle-pref-order": "Къепе",
+	"bs-wantedarticle-pref-sort-time": "Хан",
+	"bs-wantedarticle-pref-sort-title": "Корта",
+	"bs-wantedarticle-pref-order-asc": "йоккха хиларца",
+	"bs-wantedarticle-pref-order-desc": "кӀезиг хиларца"
+}

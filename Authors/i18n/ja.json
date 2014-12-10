@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"bs-authors-desc": "ページの作者のプロフィール画像を表示する",
+	"prefs-authors": "このページの作者",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|作者}}|作者}}",
+	"bs-authors-profileimage": "プロフィール画像",
+	"bs-authors-profileimage-change": "プロフィール画像を変更",
+	"bs-authors-pref-imageheight": "画像の高さ:",
+	"bs-authors-pref-imagewidth": "画像の幅:",
+	"bs-authors-pref-limit": "表示する作者数の上限:",
+	"bs-authors-pref-show": "作者を表示"
+}

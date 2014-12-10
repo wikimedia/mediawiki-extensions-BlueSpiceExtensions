@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno"
+		]
+	},
+	"bs-shoutbox-message": "Skrivañ un evezhiadenn nevez...",
+	"bs-shoutbox-shout": "Kas",
+	"bs-shoutbox-no-entries": "N'eus netra amañ c'hoazh.",
+	"bs-shoutbox-loading": "O kargañ...",
+	"bs-shoutbox-pref-committimeinterval": "Amzer etre div gemennadenn (en eilennoù) :",
+	"bs-shoutbox-pref-maxmessagelength": "Hirder ur gemennadenn d'ar muiañ :",
+	"bs-shoutbox-pref-numberofshouts": "Niver a gemennadennoù diskouezet :",
+	"bs-shoutbox-pref-showage": "Diskouez deiziad krouiñ ur gemennadenn",
+	"bs-shoutbox-pref-showuser": "Diskouez aozer ur gemennadenn",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|arouezenn}} a chom",
+	"bs-shoutbox-confirm-title": "Kadarnaat",
+	"bs-shoutbox-entermessage": "Skrivit ur gemennadenn, mar plij."
+}

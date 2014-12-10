@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-userpreferences-desc": "Renders the BlueSpice tab in preferences"
+}

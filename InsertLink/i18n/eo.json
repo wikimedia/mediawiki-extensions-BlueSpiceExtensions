@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tlustulimu"
+		]
+	},
+	"bs-insertlink-desc": "Dialoga kampo por enigi ligilon",
+	"bs-insertlink": "Enmeti ligilon",
+	"bs-insertlink-button-title": "Enmeti/redakti ligilon",
+	"bs-insertlink-dialog-title": "Enmeti ligilon",
+	"bs-insertlink-tab-wiki-page": "Vikia paĝo",
+	"bs-insertlink-tab-ext-link": "Ekstera ligilo",
+	"bs-insertlink-tab-email": "Retpoŝta ligilo",
+	"bs-insertlink-tab-ext-file": "Ligilo al dosiero",
+	"bs-insertlink-label-page": "Paĝo",
+	"bs-insertlink-label-link": "Ligilo",
+	"bs-insertlink-label-mail": "Retpoŝtadreso",
+	"bs-insertlink-label-description": "Priskribo",
+	"bs-insertlink-label-file": "Dosiero",
+	"bs-insertlink-label-searchfile": "Serĉi ...",
+	"bs-insertlink-select-a-page": "Elekti celon ...",
+	"bs-insertlink-select-a-namespace": "(Paĝoj)",
+	"bs-insertlink-empty-field-text": "Por enmeti ligilon, vi devas aldoni celon."
+}

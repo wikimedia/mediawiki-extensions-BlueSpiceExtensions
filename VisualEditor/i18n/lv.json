@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"prefs-visualeditor": "Vizuālais redaktors",
+	"bs-visualeditor-editbutton-hint": "Vizuālais redaktors",
+	"bs-visualeditor-pref-disablens": "Atslēgt vārdtelpās:",
+	"bs-visualeditor-no-summary": "Nav kopsavilkuma",
+	"bs-visualeditor-contenttable": "Saturs",
+	"bs-visualeditor-contenttable-black": "Saturs (melns)",
+	"bs-visualeditor-bsactions-wiki": "Vikiteksts",
+	"bs-visualeditor-bsactions-switchgui": "Pārslēgt rīkjoslu",
+	"bs-visualeditor-bsactions-signature": "Paraksts",
+	"bs-visualeditor-bsactions-save": "Saglabāt",
+	"bs-visualeditor-bsactions-headings": "Virsraksti",
+	"bs-visualeditor-bsactions-paragraph": "Rindkopa",
+	"bs-visualeditor-bsactions-heading3": "Virsraksts 3",
+	"bs-visualeditor-bsactions-heading4": "Virsraksts 4",
+	"bs-visualeditor-bsactions-heading5": "Virsraksts 5",
+	"bs-visualeditor-bsactions-heading6": "Virsraksts 6"
+}

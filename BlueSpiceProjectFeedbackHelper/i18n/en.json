@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>"
+		]
+	},
+	"bs-bluespiceprojectfeedbackhelper-desc": "Provides a fixed \"submit bugs\" panel at the bottom of the user interface",
+	"prefs-bluespiceprojectfeedbackhelper": "Feedback",
+	"bs-bluespiceprojectfeedbackhelper-hint": "Thank you for using '''BlueSpice'''. Please help us to improve the software and give us some [http://sourceforge.net/p/bluespice/discussion/1249667/ feedback]. Please report bugs to the [http://sourceforge.net/tracker/?func=add&group_id=358032&atid=1494709 bug tracker]. Thanks for your support!",
+	"bs-bluespiceprojectfeedbackhelper-active": "Active",
+	"bs-bluespiceprojectfeedbackhelper-closebutton": "Close",
+	"bs-bluespiceprojectfeedbackhelper-confirm": "Do you want to disable this hint? If you click \"Cancel\" it will be hidden for seven days."
+}
