@@ -144,17 +144,24 @@ class InsertCategory extends BsExtensionMW {
 			);
 		}
 
-		$sTags = RequestContext::getMain()->getRequest()->getVal( 'categories', '' );
-		$aTags = explode( ',', $sTags );
+		$sTags = RequestContext::getMain()->getRequest()->getVal( 'categories' );
+		$aTags = ( empty( $sTags ) )
+			? array()
+			: explode( ',', $sTags );
 
 		$oTitle = Title::newFromID( $iArticleId );
 		if ( $oTitle->exists() ) {
 			$sCat = BsNamespaceHelper::getNamespaceName( NS_CATEGORY );
 			$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle, Revision::RAW );
 
-			foreach ( $aTags as $sTag ) {
-				if ( preg_match( '#\[\['.$sCat.':'.$sTag.'\]\]#i', $sText ) ) continue;
-				$sText .= "\n[[".$sCat.":$sTag]]";
+			// Remove all before adding
+			$sPattern = '#^\[\['.$sCat.':.*?\]\]#im';
+			$sText = preg_replace( $sPattern, '', $sText );
+
+			if ( !empty( $aTags ) ) {
+				foreach ( $aTags as $sTag ) {
+					$sText .= "\n[[".$sCat.":$sTag]]";
+				}
 			}
 
 			$oArticle = new Article( $oTitle );
