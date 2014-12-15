@@ -149,20 +149,20 @@ class WatchList extends BsExtensionMW {
 		$oErrorListView = new ViewTagErrorList( $this );
 		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 1000) );
 		if ( $oValidationICount->getErrorCode() ) {
-			$oErrorListView->addItem( 
+			$oErrorListView->addItem(
 				new ViewTagError( 'count: '.wfMsg( $oValidationICount->getI18N() ) )
 			);
 		}
 
 		$oValidationIMaxTitleLength = BsValidator::isValid( 'IntegerRange', $iMaxTitleLength, array('fullResponse' => true, 'lowerBoundary' => 5, 'upperBoundary' => 500) );
 		if ( $oValidationIMaxTitleLength->getErrorCode() ) {
-			$oErrorListView->addItem( 
+			$oErrorListView->addItem(
 				new ViewTagError( 'maxtitlelength: '.wfMsg( $oValidationIMaxTitleLength->getI18N() ) )
 			);
 		}
 
 		if( !in_array( $sOrder, array( 'pagename', 'time' ) ) ) {
-			$oErrorListView->addItem( 
+			$oErrorListView->addItem(
 				new ViewTagError( 'order: '.wfMsg( 'bs-watchlist-string-validation-not-valid' ) )
 			);
 		}
@@ -215,7 +215,7 @@ class WatchList extends BsExtensionMW {
 		$sWatchListWikiText = $oWatchList->execute();
 		if (  empty( $sWatchListWikiText ) ) return $oUserSidebarView;
 
-		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText ), $this->getTitle() );
+		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText, $this->getTitle(), true), $this->getTitle() );
 
 		return $oUserSidebarView;
 	}
