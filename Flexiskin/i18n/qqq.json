@@ -39,7 +39,7 @@
 	"bs-flexiskin-repeat": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for horizontal and vertical repeat",
 	"bs-flexiskin-labelrepeatbackground": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for select box for repeat background image.",
 	"bs-flexiskin-labelcustombgcolor": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for custom color",
-	"bs-flexiskin-headerposition": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], headline for position and size section\n{{Identical|Position and size}}",
+	"bs-flexiskin-headerposition": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], headline for position and size section",
 	"bs-flexiskin-labelnavigation": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for position of the navigation",
 	"bs-flexiskin-labelcontent": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for position of the content",
 	"bs-flexiskin-left": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for left.\n\nSee also:\n* {{msg-mw|Bs-flexiskin-right}}\n* {{msg-mw|Bs-flexiskin-center}}\n{{Identical|Left}}",
