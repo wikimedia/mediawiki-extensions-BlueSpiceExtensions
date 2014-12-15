@@ -224,7 +224,7 @@ class WatchList extends BsExtensionMW {
 			return $oUserSidebarView;
 		}
 
-		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText, $this->getTitle() ) );
+		$oUserSidebarView->setBody( $this->mCore->parseWikiText( $sWatchListWikiText, $this->getTitle(), true), $this->getTitle() );
 
 		return $oUserSidebarView;
 	}
