@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"SnowedEarth",
-			"Ltrlg"
+			"Ltrlg",
+			"Grind24"
 		]
 	},
 	"bs-usermanager-desc": "Interface d’administration pour ajouter, modifier et supprimer des utilisateurs",
@@ -30,5 +31,6 @@
 	"bs-usermanager-labelnewpassword": "Mot de passe",
 	"bs-usermanager-labelpasswordcheck": "Confirmer le mot de passe",
 	"bs-usermanager-titledeleteuser": "Supprimer l’utilisateur",
-	"bs-usermanager-confirmdeleteuser": "Êtes-vous sûr de vouloir supprimer {{PLURAL:$1|cet utilisateur|ces $1 utilisateurs}} ?"
+	"bs-usermanager-confirmdeleteuser": "Êtes-vous sûr de vouloir supprimer {{PLURAL:$1|cet utilisateur|ces $1 utilisateurs}} ?",
+	"bs-usermanager-groups-more": "... plus"
 }
