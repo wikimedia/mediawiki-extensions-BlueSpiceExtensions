@@ -29,5 +29,6 @@
 	"bs-shoutbox-confirm-text": "Voulez-vous vraiment supprimer cette entrée ?",
 	"bs-shoutbox-confirm-title": "Confirmer",
 	"bs-shoutbox-entermessage": "Veuillez entrer un message.",
-	"bs-shoutbox-too-early": "Veuillez attendre quelques secondes avant de soumettre l’entrée suivante."
+	"bs-shoutbox-too-early": "Veuillez attendre quelques secondes avant de soumettre l’entrée suivante.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Cri|Cris}}"
 }

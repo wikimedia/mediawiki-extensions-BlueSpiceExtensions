@@ -26,6 +26,7 @@
 	"bs-blog-pref-showpermalink": "Afficher un lien vers lien permanent",
 	"bs-blog-pref-sortby": "Trier par :",
 	"bs-blog-pref-imagerendermode": "Afficher des images en tant que :",
+	"bs-blog-pref-imagefloatdirection": "Flux de texte : Position de l’image",
 	"bs-blog-pref-maxentrycharacters": "Nombre de mots par entrée :",
 	"bs-blog-tag-blog-desc": "Afficher les entrées de blog sur chaque page."
 }
