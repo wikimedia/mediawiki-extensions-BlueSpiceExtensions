@@ -5,8 +5,19 @@
 			"Cwlin0416"
 		]
 	},
+	"bs-insertlink-desc": "輸入連結的對話框",
+	"bs-insertlink": "插入連結",
+	"bs-insertlink-button-title": "插入/編輯連結",
+	"bs-insertlink-dialog-title": "插入連結",
+	"bs-insertlink-tab-wiki-page": "Wiki 頁面",
 	"bs-insertlink-tab-ext-link": "外部連結",
+	"bs-insertlink-tab-ext-file": "連結至檔案",
 	"bs-insertlink-label-page": "頁面",
 	"bs-insertlink-label-link": "連結",
+	"bs-insertlink-label-mail": "電子郵件位址",
+	"bs-insertlink-label-description": "描述",
+	"bs-insertlink-label-file": "檔案",
+	"bs-insertlink-label-searchfile": "搜尋 ...",
+	"bs-insertlink-select-a-page": "選擇目標 ...",
 	"bs-insertlink-select-a-namespace": "(頁面)"
 }

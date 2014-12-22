@@ -4,6 +4,9 @@
 			"Cwlin0416"
 		]
 	},
+	"bs-insertmagic-server": "網域 URL。",
+	"bs-insertmagic-servername": "網域名稱。",
+	"bs-insertmagic-type-tags": "標籤",
 	"bs-insertmagic-type-variables": "變數",
 	"bs-insertmagic-label-desc": "描述"
 }

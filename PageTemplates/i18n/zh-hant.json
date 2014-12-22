@@ -2,11 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"LNDDYL"
+			"LNDDYL",
+			"Cwlin0416"
 		]
 	},
+	"bs-pagetemplates-headerlabel": "標籤",
 	"bs-pagetemplates-headertargetnamespace": "命名空間",
-	"bs-pagetemplates-tipaddtemplate": "增加模板",
-	"bs-pagetemplates-label-tpl": "模板名稱",
-	"bs-pagetemplates-label-article": "模板"
+	"bs-pagetemplates-tipeditdetails": "編輯樣板",
+	"bs-pagetemplates-tipaddtemplate": "增加樣板",
+	"bs-pagetemplates-label-tpl": "樣板名稱",
+	"bs-pagetemplates-label-targetns": "命名空間",
+	"bs-pagetemplates-label-tplns": "樣板命名空間",
+	"bs-pagetemplates-label-article": "樣板"
 }
