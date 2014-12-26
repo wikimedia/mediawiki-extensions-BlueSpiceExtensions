@@ -6,5 +6,6 @@
 	},
 	"bs-usermanager-headerusername": "Brûkersnamme",
 	"bs-usermanager-headeremail": "E-mail",
-	"bs-usermanager-labelnewpassword": "Wachtwurd"
+	"bs-usermanager-labelnewpassword": "Wachtwurd",
+	"bs-usermanager-groups-more": "... mear"
 }
