@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-namespacemanager-desc": "Interfaz administrativa para engadir, editar e eliminar espazos de nomes",
+	"bs-namespacemanager-label": "Xestor de espazos de nomes",
+	"bs-namespacemanager-wrong-name": "O espazo de nomes contén caracteres non válidos.",
+	"bs-namespacemanager-ns-exists": "Xa existe o espazo de nomes.",
+	"bs-namespacemanager-ns-length": "O espazo de nomes debe ter dous caracteres como mínimo.",
+	"bs-namespacemanager-invalid-id": "Non é un identificador válido de espazo de nomes",
+	"bs-namespacemanager-label-id": "Identificador",
+	"bs-namespacemanager-label-namespaces": "Espazo de nomes",
+	"bs-namespacemanager-label-editable": "Renomeable",
+	"bs-namespacemanager-label-content": "Espazo de nomes do contido",
+	"bs-namespacemanager-label-searchable": "Buscar por defecto",
+	"bs-namespacemanager-label-subpages": "Subpáxinas",
+	"bs-namespacemanager-nsadded": "O espazo de nomes foi engadido.",
+	"bs-namespacemanager-nsremoved": "O espazo de nomes foi borrado.",
+	"bs-namespacemanager-nsedited": "O espazo de nomes foi editado.",
+	"bs-namespacemanager-tipadd": "Engadir espazo de nomes",
+	"bs-namespacemanager-tipedit": "Editar espazo de nomes",
+	"bs-namespacemanager-tipremove": "Eliminar espazo de nomes",
+	"bs-namespacemanager-msgnoteditabledelete": "Este espazo de nomes é un espazo de nomes do sistema e non se pode eliminar.",
+	"bs-namespacemanager-labelnsname": "Nome do espazo de nomes",
+	"bs-namespacemanager-willdelete": "Será borrado",
+	"bs-namespacemanager-willmove": "Será movido a \"{{int:bs-ns_main}}\"",
+	"bs-namespacemanager-willmovesuffix": "Será movido a  \"{{int:bs-ns_main}}\" co sufixo \"$1\"",
+	"bs-namespacemanager-deletewarning": "Estás seguro de que quere eliminar este espazo de nomes? Non se poderá desfacer esta acción.",
+	"bs-namespacemanager-pagepresent": "Páxinas neste espazo de nomes:"
+}

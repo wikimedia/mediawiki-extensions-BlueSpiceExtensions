@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-interwikilinks-desc": "Interface administrativa para engadir, editar e eliminar ligazóns interwiki",
+	"bs-interwikilinks-invalid-pfx-spc": "O prefixo é inválido. Por favor, non use espazos.",
+	"bs-interwikilinks-invalid-url-spc": "A URL é inválida. Por favor, non use espazos.",
+	"bs-interwikilinks-label": "Ligazóns interwikis",
+	"bs-interwikilinks-link-created": "Creouse a ligazón interwiki.",
+	"bs-interwikilinks-link-added": "Engadiuse a ligazón interwiki.",
+	"bs-interwikilinks-link-deleted": "Borrouse a ligazón interwiki.",
+	"bs-interwikilinks-nooldpfx": "O prefixo anterior non foi encontrado.",
+	"bs-interwikilinks-nopfx": "Por favor, proporcione un prefixo.",
+	"bs-interwikilinks-nourl": "Por favor, proporcione un URL.",
+	"bs-interwikilinks-pfxtoolong": "O prefixo é demasiado longo. Por favor, utilice un máximo de 32 caracteres.",
+	"bs-interwikilinks-pfxexists": "Este prefixo xa existe.",
+	"bs-interwikilinks-headerprefix": "Prefixo",
+	"bs-interwikilinks-titleaddinterwikilink": "Engadir ligazón interwiki",
+	"bs-interwikilinks-titleeditinterwikilink": "Editar ligazón interwiki",
+	"bs-interwikilinks-labelprefix": "Prefixo",
+	"bs-interwikilinks-titledeleteinterwikilink": "Eliminar ligazón interwiki",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Está seguro de que desexa eliminar esta ligazón interwiki?",
+	"bs-interwikilinks-insertlink-tabtitle": "Ligar a outra wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefixo",
+	"bs-interwikilink-select-a-prefix": "Escolla o prefixo"
+}

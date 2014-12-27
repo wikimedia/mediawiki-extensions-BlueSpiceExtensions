@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-insertlink-desc": "Caixa de diálogo para inserir unha ligazón",
+	"bs-insertlink": "Inserir ligazón",
+	"bs-insertlink-button-title": "Inserir/editar ligazón",
+	"bs-insertlink-dialog-title": "Inserir ligazón",
+	"bs-insertlink-tab-wiki-page": "Páxina wiki",
+	"bs-insertlink-tab-ext-link": "Ligazón externa",
+	"bs-insertlink-tab-email": "Ligazón a correo",
+	"bs-insertlink-tab-ext-file": "Ligazón a ficheiro",
+	"bs-insertlink-label-page": "Páxina",
+	"bs-insertlink-label-link": "Ligazón",
+	"bs-insertlink-label-mail": "Enderezo de correo electrónico",
+	"bs-insertlink-label-description": "Descrición",
+	"bs-insertlink-label-file": "Ficheiro",
+	"bs-insertlink-label-searchfile": "Procurar...",
+	"bs-insertlink-select-a-page": "Escoller destino…",
+	"bs-insertlink-select-a-namespace": "(Páxinas)",
+	"bs-insertlink-empty-field-text": "Para inserir unha ligazón é necesario definir o destino.",
+	"bs-insertlink-no-applet": "O applet non pode cargarse. Revise a súa instalación Java."
+}

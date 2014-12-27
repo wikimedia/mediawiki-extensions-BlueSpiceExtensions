@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-pageaccess-desc": "Controla o acceso a nivel de páxina",
+	"bs-pageaccess-error-no-groups-given": "Non se especificou ningún grupo.",
+	"bs-pageaccess-error-not-member-of-given-groups": "No é membro dos grupos dados. Desactivouse o gardado para evitar que se bloquee o acceso.",
+	"bs-pageaccess-error-included-forbidden-template": "Tentou utilizar o modelo \"$1\", para o que non ten acceso para leitura. A gravación foi desativada para evitar o bloqueo do seu acceso.",
+	"bs-pageaccess-tag-groups-desc": "Especifique os grupos que deben ter acceso exclusivo a esta páxina. Separe os distintos grupos con comas.",
+	"pageaccess": "Páxinas aseguradas por PageAccess"
+}

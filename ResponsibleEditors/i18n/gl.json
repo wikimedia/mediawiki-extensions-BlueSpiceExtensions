@@ -1,8 +1,28 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"Elisardojm"
 		]
 	},
+	"bs-responsibleeditors-desc": "Permite que MediaWiki xestione os editores responsables dunha páxina",
+	"prefs-responsibleeditors": "Editores responsables",
+	"bs-responsibleeditors-pref-activatednamespaces": "Espazos de nomes habilitados:",
+	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Asignar automaticamente na creación da páxina",
+	"bs-responsibleeditors-pref-emailnotificationonresponsibilitychange": "Notificar ante cambio de responsabilidades",
+	"bs-responsibleeditors-pref-responsibleeditormaychangeassignment": "Engadir páxinas ás listas de seguimento de editores responsables",
+	"bs-responsibleeditors-pref-echange": "Notificar cando se modifique a páxina",
+	"bs-responsibleeditors-pref-edelete": "Notificar cando se borre a páxina",
+	"bs-responsibleeditors-pref-emove": "Notificar cando se borre a páxina",
+	"bs-responsibleeditors-pref-autopermissions": "Asignación automatica de dereitos:",
+	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "Editores responsables",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Editores responsables",
+	"bs-responsibleeditors-success-ajax": "Responsabilidades modificadas.",
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "O valor proporcionado non é válido.",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Acceso denegado. Non ten autorización para levar a cabo esa acción.",
+	"bs-responsibleeditors-contentactions-label": "Cambiar responsabilidade",
+	"bs-responsibleeditors-statebartop-icon-alt": "Existe un editor responsable desta páxina",
+	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|{{GENDER:$2|Editor|Editora}} responsable|Editores responsables}}",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "A páxina indicada non existe.",
 	"action-responsibleeditors-viewspecialpage": "ver as páxinas que están protexidas co dereito \"ResponsibleEditors-Viewspecialpage\""
 }
