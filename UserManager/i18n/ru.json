@@ -30,5 +30,6 @@
 	"bs-usermanager-labelpasswordcheck": "Подтвердите пароль",
 	"bs-usermanager-titledeleteuser": "Удалить пользователя",
 	"bs-usermanager-confirmdeleteuser": "Вы уверены, что хотите удалить {{PLURAL:$1|этого участника|этих $1 участников}}?",
-	"bs-usermanager-groups-more": "…ещё"
+	"bs-usermanager-groups-more": "…ещё",
+	"bs-usermanager-no-self-desysop": "Вы не можете снять сами с себя администраторские права."
 }
