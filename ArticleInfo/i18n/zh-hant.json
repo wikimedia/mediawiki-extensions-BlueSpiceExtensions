@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Cwlin0416"
+			"Cwlin0416",
+			"LNDDYL"
 		]
 	},
 	"bs-articleinfo-desc": "提供有關狀態列中之頁面資訊",
@@ -17,7 +18,7 @@
 	"bs-articleinfo-nocategories": "找不到分類。",
 	"bs-articleinfo-hiddencats": "隱藏分類",
 	"bs-articleinfo-notemplates": "找不到樣板。",
-	"bs-articleinfo-templates": "樣板",
+	"bs-articleinfo-templates": "模板",
 	"bs-articleinfo-subpages": "子頁",
 	"bs-articleinfo-subpages-available": "有此頁面之子頁",
 	"bs-articleinfo-subpages-too-much": "超過 100 個子頁可用。",
