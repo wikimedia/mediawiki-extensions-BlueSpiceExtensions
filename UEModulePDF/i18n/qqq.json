@@ -13,6 +13,7 @@
 	"uemodulepdf": "Special page name for universal export PDF module.",
 	"bs-uemodulepdf-pref-pdfserviceurl": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for backend URL:\n{{Identical|Backend URL}}",
 	"bs-uemodulepdf-pref-templatepath": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for standard template:",
+	"bs-uemodulepdf-pref-templatedir": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for directory path to templates:",
 	"bs-uemodulepdf-pref-suppressns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for hide namespace prefix in PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Text for PDF single page",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Text for export this page as PDF.",
