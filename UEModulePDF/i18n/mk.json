@@ -9,6 +9,7 @@
 	"uemodulepdf": "Универзален извозен модул за PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "Заднинска URL:",
 	"bs-uemodulepdf-pref-templatepath": "Стандарден шаблон:",
+	"bs-uemodulepdf-pref-templatedir": "Шаблонска папка:",
 	"bs-uemodulepdf-pref-suppressns": "Скривај ја претставката за именски простор во PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Една PDF-страница",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Извези ја страницата како PDF.",

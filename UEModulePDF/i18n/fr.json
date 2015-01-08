@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Ltrlg"
+			"Ltrlg",
+			"0x010C"
 		]
 	},
 	"bs-uemodulepdf-desc": "Permettre l’exportation d pages par MediaWiki dans le format PDF",
@@ -10,6 +11,7 @@
 	"uemodulepdf": "Module universel d’exportation en PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "URL du serveur :",
 	"bs-uemodulepdf-pref-templatepath": "Modèle standard :",
+	"bs-uemodulepdf-pref-templatedir": "Chemin du modèle :",
 	"bs-uemodulepdf-pref-suppressns": "Masquer le préfixe de l’espace de nom en PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Page unique de PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exporter cette page en PDF.",
