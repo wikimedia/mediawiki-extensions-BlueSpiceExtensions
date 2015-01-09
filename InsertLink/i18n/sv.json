@@ -21,5 +21,6 @@
 	"bs-insertlink-label-searchfile": "Sök ...",
 	"bs-insertlink-select-a-page": "Välj mål ...",
 	"bs-insertlink-select-a-namespace": "(Sidor)",
-	"bs-insertlink-empty-field-text": "För att infoga en länk måste du ange en destination."
+	"bs-insertlink-empty-field-text": "För att infoga en länk måste du ange en destination.",
+	"bs-insertlink-no-applet": "Applet kunde inte laddas. Vänligen kontrollera din Java-installation."
 }
