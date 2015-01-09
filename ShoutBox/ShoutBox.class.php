@@ -134,7 +134,7 @@ class ShoutBox extends BsExtensionMW {
 		global $wgDBtype, $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
 		$sDir = __DIR__ . DS;
 
-		if ( $wgDBtype == 'mysql' ) {
+		if ( $wgDBtype == 'mysql') {
 			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/mysql/ShoutBox.sql' );
 			$wgExtNewIndexes[] = array( 'bs_shoutbox', 'sb_page_id', $sDir . 'db/mysql/ShoutBox.patch.sb_page_id.index.sql' );
 			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_user_id', $sDir . 'db/mysql/ShoutBox.patch.sb_user_id.sql' );
@@ -144,6 +144,8 @@ class ShoutBox extends BsExtensionMW {
 			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_title', $sDir . 'db/mysql/ShoutBox.patch.sb_title.sql' );
 			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_touched', $sDir . 'db/mysql/ShoutBox.patch.sb_touched.sql' );
 			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_parent_id', $sDir . 'db/mysql/ShoutBox.patch.sb_parent_id.sql' );
+		} elseif ( $wgDBtype == 'sqlite' ) {
+			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/mysql/ShoutBox.sql' );
 		} elseif ( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/postgres/ShoutBox.pg.sql' );
 			$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/postgres/ShoutBox.patch.sb_archived.pg.sql' );

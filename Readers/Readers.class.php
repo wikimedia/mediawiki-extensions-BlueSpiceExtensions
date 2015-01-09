@@ -139,7 +139,6 @@ class Readers extends BsExtensionMW {
 		);
 
 		$aNewRow = array();
-		$aNewRow['readers_id'] = 0;
 		$aNewRow['readers_user_id'] = $oUser->getId();
 		$aNewRow['readers_user_name'] = $oUser->getName();
 		$aNewRow['readers_page_id'] = $oTitle->getArticleID();

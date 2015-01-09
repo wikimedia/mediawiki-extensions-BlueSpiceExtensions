@@ -122,7 +122,7 @@ class InsertFileAJAXBackend {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		if ( $wgDBtype == 'mysql' ) {
+		if ( $wgDBtype == 'mysql' || $wgDBtype == 'sqlite' ) {
 			if ( $type == 'image' ) {
 				$tbl = $dbr->tableName( 'image' );
 				$sql = "SELECT tmp.rank, tmp.img_name FROM
@@ -283,21 +283,21 @@ class InsertFileAJAXBackend {
 			$sql =
 				"SELECT * FROM
 					(
-						SELECT i.img_name, i.img_size, i.img_width, i.img_height, (ROUND(TO_DATE(TO_CHAR(i.img_timestamp, 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') - TO_DATE('19700101', 'YYYYMMDDHH24MISS')) * 86400) AS img_timestamp,
+						SELECT i.img_name, i.img_size, i.img_width, i.img_height, i.img_timestamp,
 								row_number() over (ORDER BY {$sSort}) rnk
 						FROM {$sImageTable} i
 						WHERE {$sConds}
 					)
 				WHERE rnk BETWEEN {$sStart}+1 AND " . ( $sStart + $sLimit );
 		} elseif ( $wgDBtype == 'postgres' ) {
-			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, ROUND(DATE_PART('epoch', i.img_timestamp)) as img_timestamp
+			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, i.img_timestamp
 				FROM {$sImageTable} i
 				WHERE {$sConds}
 				ORDER BY {$sSort}
 				OFFSET {$sStart}
 				LIMIT {$sLimit}";
 		} else {
-			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, UNIX_TIMESTAMP(i.img_timestamp) as img_timestamp
+			$sql = "SELECT i.img_name, i.img_size, i.img_width, i.img_height, i.img_timestamp
 				FROM {$sImageTable} i
 				WHERE {$sConds}
 				ORDER BY {$sSort}
@@ -330,7 +330,7 @@ class InsertFileAJAXBackend {
 				'name'    => $row->img_name,
 				'url'     => $url,
 				'size'    => $row->img_size,
-				'lastmod' => $row->img_timestamp,
+				'lastmod' => wfTimestamp(TS_UNIX, $row->img_timestamp),
 				'width'   => $row->img_width,
 				'height'  => $row->img_height
 			);
@@ -351,7 +351,7 @@ class InsertFileAJAXBackend {
 		//nonstandard.
 		$sFormat = "LOWER(CONVERT($sTableName USING 'UTF8')) LIKE %s";
 
-		if( $dbType == 'oracle' || $dbType == 'postgres') {
+		if( $dbType == 'oracle' || $dbType == 'postgres' || $dbType == 'sqlite') {
 			$sFormat = "LOWER($sTableName) LIKE %s";
 		}
 		$dbr = wfGetDB( DB_SLAVE );

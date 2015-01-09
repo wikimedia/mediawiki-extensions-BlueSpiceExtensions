@@ -11,7 +11,7 @@
 -- @filesource
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/bs_shoutbox(
-	`sb_id`        int(5)           NOT NULL auto_increment,
+	`sb_id`        int(5)           NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`sb_page_id`   int(10)          NOT NULL default 0,        /* foreign key to page.page_id */
 	`sb_user_id`   int(10) unsigned NOT NULL default 0,        /* foreign key to user.user_id */
 	`sb_timestamp` varchar(16)      NOT NULL default '',       /* timestamp YmdHis */
@@ -20,8 +20,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/bs_shoutbox(
 	`sb_archived`  BOOLEAN          NOT NULL default 0,
 	`sb_title`     varbinary(255)   NOT NULL default '',
 	`sb_touched`   varchar(14)      NOT NULL default '',
-	`sb_parent_id` int(5) unsigned  NOT NULL default 0,
-	PRIMARY KEY (`sb_id`)
+	`sb_parent_id` int(5) unsigned  NOT NULL default 0
 )/*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/sb_page_id ON /*$wgDBprefix*/bs_shoutbox (sb_page_id);
