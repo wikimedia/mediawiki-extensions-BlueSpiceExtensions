@@ -143,6 +143,9 @@ class WhoIsOnline extends BsExtensionMW {
 			$wgExtNewIndexes[] = array( 'bs_whoisonline', 'wo_page_namespace', $sDir . 'db/mysql/whoisonline.patch.wo_page_namespace.index.sql' );
 			$wgExtNewIndexes[] = array( 'bs_whoisonline', 'wo_timestamp',      $sDir . 'db/mysql/whoisonline.patch.wo_timestamp.index.sql' );
 
+		} elseif( $wgDBtype == 'sqlite' ) {
+			$wgExtNewTables[] = array( 'bs_whoisonline', $sDir . 'whoisonline.sql' );
+
 		} elseif( $wgDBtype == 'postgres' ) {
 
 			$wgExtNewTables[] = array( 'bs_whoisonline', $sDir . 'whoisonline.pg.sql' );

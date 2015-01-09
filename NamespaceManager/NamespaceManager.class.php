@@ -147,7 +147,7 @@ class NamespaceManager extends BsExtensionMW {
 				'rev_content_model',
 				$dir . 'bs_namespacemanager_backup_revision.patch2.pg.sql'
 			);
-		} else {
+		} elseif ( $wgDBtype != 'sqlite' ) { /* Do not apply patches to sqlite */
 			$updater->addExtensionField(
 				'bs_namespacemanager_backup_page',
 				'page_content_model',
