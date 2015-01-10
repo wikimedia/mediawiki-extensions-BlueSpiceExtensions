@@ -5,7 +5,7 @@
 		]
 	},
 	"prefs-authors": "Šā raksta autori",
-	"bs-authors-title": "{{PLURAL:$1|Autors|Autori}}",
+	"bs-authors-title": "{{PLURAL:$1|Autori|Autors|Autori}}",
 	"bs-authors-profileimage": "Profila attēls",
 	"bs-authors-profileimage-change": "Mainīt profila attēlu",
 	"bs-authors-pref-imageheight": "Attēla augstums:",
