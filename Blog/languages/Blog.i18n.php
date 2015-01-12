@@ -44,7 +44,9 @@ $messages['en'] = array(
 	'bs-blog-pref-ImageRenderMode'            => 'Display pictures',
 	'bs-blog-pref-MaxEntryCharacters'         => 'Number of displayed words',
 	'bs-blog-pref-ShowTagFormWhenNotLoggedIn' => 'Show insert form also for not registed users',
-	'bs-blog-tag-blog-desc'                   => 'This tag provides you the opportunity to display blog entry on every page.'
+	'bs-blog-tag-blog-desc'                   => 'This tag provides you the opportunity to display blog entry on every page.',
+	'bs-blog-tag-blogtime-desc'               => 'This tag provides you the opportunity to set a custom timestamp for blog entries.',
+	'bs-blog-tag-blogtime-err'                => 'The format has to be YYYYMMDDHHmm i.e. for 12. Jan. 2013 15:43 the timestamps looks like: 201301121543',
 );
 
 $messages['de'] = array(
@@ -76,7 +78,9 @@ $messages['de'] = array(
 	'bs-blog-pref-ImageRenderMode'            => 'Bilder anzeigen',
 	'bs-blog-pref-MaxEntryCharacters'         => 'Anzahl darzustellender Wörter ',
 	'bs-blog-pref-ShowTagFormWhenNotLoggedIn' => 'Erstellformular auch für nicht angemeldete Benutzer anzeigen',
-	'bs-blog-tag-blog-desc'                   => 'Dieser Tag stellt die Funktionalität bereit, auf jeder Seite sich Blog Einträge anzeigen zulassen.'
+	'bs-blog-tag-blog-desc'                   => 'Dieser Tag stellt die Funktionalität bereit, auf jeder Seite sich Blog Einträge anzeigen zulassen.',
+	'bs-blog-tag-blogtime-desc'               => 'Dieser Tag stellt die Funktionalität bereit, für Blogeinträge einen benutzerdefinierten Zeitstempel zu setzen.',
+	'bs-blog-tag-blogtime-err'                => 'Das Format ist YYYYMMDDHHmm d. h. für den 12. Jan. 2013 15:43 muss der Zeitstempel wie folgt angegeben sein: 201301121543',
 );
 
 $messages['de-formal'] = array();

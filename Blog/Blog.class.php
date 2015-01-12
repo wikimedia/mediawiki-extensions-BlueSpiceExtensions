@@ -231,6 +231,9 @@ class Blog extends BsExtensionMW {
 		$parser->setHook( 'more', array( &$this, 'onMore' ) );
 		$parser->setHook( 'bs:blog', array( &$this, 'onBlog' ) );
 		$parser->setHook( 'bs:blog:more', array( &$this, 'onMore' ) );
+		// get timestamp for custom sorting
+		$parser->setHook( 'blog:time', array( &$this, 'onBlogTime' ) );
+		$parser->setHook( 'bs:blog:time', array( &$this, 'onBlogTime' ) );
 		return true;
 	}
 
@@ -251,6 +254,14 @@ class Blog extends BsExtensionMW {
 			'code' => '<bs:blog />',
 		);
 
+		$oResponse->result[] = array(
+			'id' => 'bs:blog:time',
+			'type' => 'tag',
+			'name' => 'blogtime',
+			'desc' => wfMessage( 'bs-blog-tag-blogtime-desc' )->plain(),
+			'code' => '<bs:blog:time />',
+		);
+
 		return true;
 	}
 
@@ -263,6 +274,38 @@ class Blog extends BsExtensionMW {
 	 */
 	public function onMore( $input, $args, $parser ) {
 		$parser->disableCache();
+		return '';
+	}
+
+	public function onBlogTime( $input, $args, $parser ) {
+		$oDate = null;
+		if( !isset($args['time']) ) {
+			//Deprecated: <bs:blog:time timestamp />
+			//Use: <bs:blog:time time=timestamp />
+			$aKeys = array_keys($args);
+			foreach( $aKeys as $sKey ) {
+				if( !is_numeric($sKey) || strlen( $sKey ) !== 12 ) {
+					continue;
+				}
+				if( !$oDate = DateTime::createFromFormat('YmdHi', $sKey) ) {
+					continue;
+				} else {
+					wfDeprecated(__METHOD__, '2.22.2');
+					break;
+				}
+			}
+		} else {
+			$oDate = DateTime::createFromFormat( 'YmdHi', $args['time'] );
+		}
+		if( empty($oDate) ) {
+			$oErrorListView = new ViewTagErrorList( $this );
+			$oErrorListView->addItem( new ViewTagError(
+				wfMessage('bs-blog-tag-blogtime-err')->plain() )
+			);
+			return $oErrorListView->execute();
+		}
+
+		$parser->getOutput()->setProperty( 'blogtime', $oDate->format('YmdHis') );
 		return '';
 	}
 
@@ -409,27 +452,53 @@ class Blog extends BsExtensionMW {
 			$aArticleIds = 0;
 		}
 
-		// get blog entries
-		$aOptions = array();
-		if ( !$argsSSortBy || $argsSSortBy == 'creation' ) {
-			$aOptions['ORDER BY'] = 'page_id DESC';
-		} elseif ( $argsSSortBy == 'title' ) {
-			$aOptions['ORDER BY'] = 'page_title ASC';
-		}
-
 		$aTables = array( 'page' );
-		$sFiels = '';
+		$aFields = array( 'entry_page_id' => 'page_id' );
 		$aConditions = array();
+		$aOptions = array();
+		$aJoins = array();
 
 		$dbr = wfGetDB( DB_SLAVE );
 
+		// get blog entries
+		if( $argsSSortBy == 'title' ) {
+			$aOptions['ORDER BY'] = 'page_title ASC';
+		} else {
+			//Creation: Also fetch possible custom timestamps from page_props table
+			$aOptions['ORDER BY'] = 'entry_timestamp DESC';
+			$aOptions['GROUP BY'] = 'page_id';
+
+			global $wgDBtype;
+			switch( $wgDBtype ) {
+				case 'oracle':
+					$aFields['entry_timestamp'] = "NVL( pp_value, rev_timestamp )";
+					$aConditions[] = "NVL( pp_value, rev_timestamp ) < ".wfTimestampNow();
+					break;
+				case 'mssql':
+					$aFields['entry_timestamp'] = "ISNULL( pp_value, rev_timestamp )";
+					$aConditions[] = "ISNULL( pp_value, rev_timestamp ) < ".wfTimestampNow();
+					break;
+				case 'postgres':
+					$aFields['entry_timestamp'] = "NULLIF( pp_value, rev_timestamp )";
+					$aConditions[] = "NULLIF( pp_value, rev_timestamp ) < ".wfTimestampNow();
+					break;
+				default: //MySQL, SQLite
+					//use pp_value if exists
+					$aFields['entry_timestamp'] = "IFNULL( pp_value, rev_timestamp )";
+					//also do not list future entries with timestamp
+					$aConditions[] = "IFNULL( pp_value, rev_timestamp ) < ".wfTimestampNow();
+			}
+			$aTables[] = 'revision';
+			$aTables[] = 'page_props';
+			$aConditions[] = 'rev_page = page_id';
+			$aJoins['page_props'] = array( 'LEFT JOIN', "pp_page = rev_page AND pp_propname = 'blogtime'" );
+		}
+
 		if ( $argsSCategory ) {
 			$aTables[] = 'categorylinks';
-			$sFiels = 'cl_from AS entry_page_id';
 			$aConditions['cl_to'] = $argsSCategory;
 			$aConditions[] = 'cl_from = page_id';
 		} else {
-			$sFiels = 'page_id AS entry_page_id';
 			if ( $argsModeNamespace === 'ns' ) {
 				$aConditions['page_id'] = $aArticleIds;
 			}
@@ -438,10 +507,11 @@ class Blog extends BsExtensionMW {
 
 		$res = $dbr->select(
 			$aTables,
-			$sFiels,
+			$aFields,
 			$aConditions,
 			__METHOD__,
-			$aOptions
+			$aOptions,
+			$aJoins
 		);
 
 		$iNumberOfEntries = $dbr->numRows( $res );
