@@ -149,8 +149,4 @@ class ApiFeedExtendedSearch extends ApiBase {
 	public function getHelpUrls() {
 		return 'http://help.blue-spice.org/index.php/ExtendedSearch';
 	}
-
-	public function getVersion() {
-		return __CLASS__;
-	}
 }
