@@ -213,7 +213,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		$aAvailablePermissions = BsConfig::get( 'MW::ResponsibleEditors::AutoPermissions' );
 		if ( empty( $aAvailablePermissions ) ) return true;
 
-		BsGroupHelper::addTemporaryGroupToUser( $oUser, 'tmprespeditors', $aAvailablePermissions );
+		BsGroupHelper::addTemporaryGroupToUser( $oUser, 'tmprespeditors', $aAvailablePermissions, $oTitle );
 		return true;
 	}
 
