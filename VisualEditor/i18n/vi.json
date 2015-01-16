@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dinhxuanduyet"
+		]
+	},
+	"bs-visualeditor-desc": "Trình biên tập trực quan cho MediaWiki",
+	"prefs-visualeditor": "Trình biên tập trực quan",
+	"bs-visualeditor-editbutton-hint": "Trình biên tập trực quan",
+	"bs-visualeditor-pref-disablens": "Vô hiệu trong  không gian tên:",
+	"bs-visualeditor-pref-use": "Sử dụng trình biên tập WYSIWYG làm mặc định",
+	"bs-visualeditor-save-message": "Lưu chỉnh sửa tại $1 với bản tóm tắt \"$2\".",
+	"bs-visualeditor-no-summary": "không có tóm lược",
+	"bs-visualeditor-sortable": "Có thể phân loại được",
+	"bs-visualeditor-wikitable": "Chuẩn",
+	"bs-visualeditor-contenttable": "Nội dung",
+	"bs-visualeditor-contenttable-black": "Nội dung (màu đen)",
+	"bs-visualeditor-contenttable-blue": "Nội dung (màu xanh da trời)",
+	"bs-visualeditor-contenttable-darkblue": "Nội dung (màu xanh da trời-tối)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Greyscale",
+	"bs-visualeditor-greyscale-narrow": "Greyscale (hẹp)",
+	"bs-visualeditor-aligntop": "Đầu trang",
+	"bs-visualeditor-alignmiddle": "Ở giữa",
+	"bs-visualeditor-alignbottom": "Cuối trang",
+	"bs-visualeditor-bsactions-wiki": "Mã wiki",
+	"bs-visualeditor-bsactions-switchgui": "Thanh công cụ chuyển đổi",
+	"bs-visualeditor-bsactions-linebreak": "Xuống dòng",
+	"bs-visualeditor-bsactions-signature": "Chữ ký",
+	"bs-visualeditor-bsactions-save": "Lưu",
+	"bs-visualeditor-bsactions-headings": "Đề mục",
+	"bs-visualeditor-bsactions-paragraph": "Đoạn văn",
+	"bs-visualeditor-bsactions-heading2": "Đề mục cấp 2",
+	"bs-visualeditor-bsactions-heading3": "Đề mục cấp 3",
+	"bs-visualeditor-bsactions-heading4": "Đề mục cấp 4",
+	"bs-visualeditor-bsactions-heading5": "Đề mục cấp 5",
+	"bs-visualeditor-bsactions-heading6": "Đề mục cấp 6",
+	"bs-visualeditor-switch-noeditor-desc": "Cấm trình biên dịch trực quan trên trang này."
+}
