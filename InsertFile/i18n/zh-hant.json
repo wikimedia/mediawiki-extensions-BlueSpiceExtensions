@@ -32,7 +32,7 @@
 	"bs-insertfile-uploadimageemptytext": "選擇新圖片 ...",
 	"bs-insertfile-uploadimagefieldlabel": "上傳新圖片",
 	"bs-insertfile-uploadfileemptytext": "選擇新檔案 ...",
-	"bs-insertfile-uploadfilefieldlabel": "目地檔案名稱：",
+	"bs-insertfile-uploadfilefieldlabel": "目地檔案名稱",
 	"bs-insertfile-uploaddestfilelabel": "目標名稱",
 	"bs-insertfile-uploaddescfilelabel": "摘要",
 	"bs-insertfile-uploadwatchthislabel": "監視此檔案",
