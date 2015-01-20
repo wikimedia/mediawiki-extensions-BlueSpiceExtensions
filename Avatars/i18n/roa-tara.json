@@ -4,5 +4,9 @@
 			"Joetaras"
 		]
 	},
-	"bs-avatars-pref-generator": "Generatore:"
+	"prefs-avatars": "Stemme",
+	"bs-avatars-pref-generator": "Generatore:",
+	"bs-avatars-upload-label": "Fote",
+	"bs-avatars-generate-new-label": "Genere 'nu stemme nuève",
+	"bs-avatars-warning-title": "Avvertimende"
 }
