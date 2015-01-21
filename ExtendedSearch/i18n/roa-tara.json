@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"specialextendedsearch": "Ricerche estese",
+	"prefs-extendedsearch": "Ricerche estese",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Categorije}}: $2",
+	"bs-extendedsearch-curl-not-active": "L'estenzione cURL non g'è attivate.",
+	"bs-extendedsearch-error": "Errore:",
+	"bs-extendedsearch-facet-category": "Categorije",
+	"bs-extendedsearch-facet-editors": "Auture",
+	"bs-extendedsearch-facet-namespace": "Namespace",
+	"bs-extendedsearch-facet-namespace-files": "File",
+	"bs-extendedsearch-facet-type": "Formate",
+	"bs-extendedsearch-facet-uncategorized": "Senza categorije",
+	"bs-extendedsearch-facet-namespace-extfiles": "File de fore",
+	"bs-extendedsearch-files": "Cirche pe le file",
+	"bs-extendedsearch-more": "De cchiù",
+	"bs-extendedsearch-fewer": "De mene"
+}
