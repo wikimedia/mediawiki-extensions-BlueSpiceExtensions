@@ -20,7 +20,7 @@
 	"bs-statistics-list": "Lista",
 	"bs-statistics-not-allowed": "Não tem a permissão necessária.",
 	"bs-statistics-filters": "Filtros",
-	"bs-statistics-interval-too-big": "O intervalo é muito grande. Não deve conter mais de 35 passos de intervalo.",
+	"bs-statistics-interval-too-big": "O intervalo é muito grande. Não deve conter mais de $1 passos de intervalo.",
 	"bs-statistics-diag-number-of-users": "Número de utilizadores",
 	"bs-statistics-label-name": "Nome",
 	"bs-statistics-label-registration": "Registo",

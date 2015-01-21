@@ -148,8 +148,12 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 		}
 
 		$intervals = Interval::getIntervalsFromDiagram( $oDiagram );
-		if( count( $intervals ) > BsConfig::get( 'MW::Statistics::MaxNumberOfIntervals' ) ) {
-			$aResult['message'] = wfMessage( 'bs-statistics-interval-too-big' )->plain();
+		$iMaxIntervals = BsConfig::get( 'MW::Statistics::MaxNumberOfIntervals' );
+		if( count( $intervals ) > $iMaxIntervals ) {
+			$aResult['message'] = wfMessage( 'bs-statistics-interval-too-big' )
+				->numParams( $iMaxIntervals )
+				->parse();
+
 			return json_encode($aResult);
 		}
 		//set_time_limit( 60 );

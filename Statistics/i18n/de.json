@@ -24,7 +24,7 @@
 	"bs-statistics-not-allowed": "Du hast nicht die erforderlichen Rechte.",
 	"bs-statistics-finish": "Diagramm erstellen",
 	"bs-statistics-filters": "Filter",
-	"bs-statistics-interval-too-big": "Das Intervall ist zu groß gewählt. Es darf maximal 35 Intervall-Schritte enthalten.",
+	"bs-statistics-interval-too-big": "Das Intervall ist zu groß gewählt. Es darf maximal {{PLURAL:$1|$1 Intervall-Schritt|$1 Intervall-Schritte}} enthalten.",
 	"bs-statistics-diag-number-of-users": "Anzahl der Nutzer",
 	"bs-statistics-diag-number-of-users-desc": "Zeigt die Zahl der Nutzer, die sich im ausgewählten Zeitraum registriert haben.",
 	"bs-statistics-label-name": "Name",

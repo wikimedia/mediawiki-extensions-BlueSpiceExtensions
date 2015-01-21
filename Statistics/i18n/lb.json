@@ -22,7 +22,7 @@
 	"bs-statistics-not-allowed": "Dir hutt net déi néideg Rechter.",
 	"bs-statistics-finish": "Diagramm maachen",
 	"bs-statistics-filters": "Filteren",
-	"bs-statistics-interval-too-big": "Den Intervall ass ze grouss. En däerf aus net méi wéi 35 Intervall-Schrëtt bestoen.",
+	"bs-statistics-interval-too-big": "Den Intervall ass ze grouss. En däerf aus net méi wéi $1 Intervall-Schrëtt bestoen.",
 	"bs-statistics-diag-number-of-users": "Zuel vun de Benotzer",
 	"bs-statistics-diag-number-of-users-desc": "Weist d'Zuel vu Benotzer déi an der erausgesichter Period ugeluecht goufen.",
 	"bs-statistics-label-name": "Numm",

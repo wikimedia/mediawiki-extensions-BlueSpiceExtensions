@@ -23,7 +23,7 @@
 	"bs-statistics-not-allowed": "Vous n’avez pas la permission requise.",
 	"bs-statistics-finish": "Créer un diagramme",
 	"bs-statistics-filters": "Filtres",
-	"bs-statistics-interval-too-big": "L'intervalle est trop grand. Il ne doit pas contenir plus de 35 étapes d'intervalle.",
+	"bs-statistics-interval-too-big": "L'intervalle est trop grand. Il ne doit pas contenir plus de {{PLURAL:$1|$1 étape|$1 étapes}} d'intervalle.",
 	"bs-statistics-diag-number-of-users": "Nombre d'utilisateurs",
 	"bs-statistics-diag-number-of-users-desc": "Affiche le nombre d’utilisateurs qui ont été créés au cours de la période choisie.",
 	"bs-statistics-label-name": "Nom",
