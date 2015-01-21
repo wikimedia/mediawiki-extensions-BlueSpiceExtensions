@@ -305,6 +305,13 @@ class PermissionManager extends BsExtensionMW {
 
 		wfRunHooks('BsPermissionManager::beforeLoadPermissions', array(&$aJsVars));
 
+		//Make sure a new group without any explicit permissions is converted into an object!
+		//Without any key => value it would be converted into an empty array.
+		foreach( $aJsVars['bsPermissionManagerGroupPermissions'] as $sGroup => $aPermissions ) {
+			if( !empty($aPermissions) ) continue;
+			$aJsVars['bsPermissionManagerGroupPermissions'][$sGroup] = (object) array();
+		}
+
 		$this->getOutput()->addJsConfigVars($aJsVars);
 
 		return '<div id="panelPermissionManager" style="height: 500px"></div>';
