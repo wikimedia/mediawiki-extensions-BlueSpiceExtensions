@@ -8,5 +8,7 @@
 	"bs-avatars-pref-generator": "Generatore:",
 	"bs-avatars-upload-label": "Fote",
 	"bs-avatars-generate-new-label": "Genere 'nu stemme nuève",
-	"bs-avatars-warning-title": "Avvertimende"
+	"bs-avatars-warning-title": "Avvertimende",
+	"bs-avatars-file-upload-fieldset-title": "Fote carecate",
+	"bs-avatars-auto-generate-fieldset-title": "Stemme auto generate"
 }
