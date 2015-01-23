@@ -258,17 +258,17 @@ class StateBar extends BsExtensionMW {
 		global $wgRequest;
 		if ( $oTitle->isRedirect() && $wgRequest->getVal( 'redirect' ) != 'no' ) {
 			//check again for redirect target
-			$oTitle = BsArticleHelper::getInstance( $oTitle )->getTitleFromRedirectRecurse();
-			$this->oRedirectTargetTitle = $oTitle;
-			if ( $oTitle->exists() ) {
-				return $this->checkContext( $oTitle, true );
-			} else {
-				/* If redirect points to none existing article
-				 * you don't get redirected, so display StateBar.
-				 *See HW#2014010710000128
-				 */
-				return true;
+			$this->oRedirectTargetTitle =
+				BsArticleHelper::getInstance( $oTitle )->getTitleFromRedirectRecurse();
+			/* If redirect points to none existing article
+			* you don't get redirected, so display StateBar.
+			* See HW#2014010710000128
+			*/
+			if( is_null($this->oRedirectTargetTitle) || !$this->oRedirectTargetTitle->exists() ) {
+				return $oTitle;
 			}
+
+			return $this->checkContext( $this->oRedirectTargetTitle, true );
 		}
 
 		$vNoStatebar = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_nostatebar' );
