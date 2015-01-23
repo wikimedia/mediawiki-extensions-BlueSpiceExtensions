@@ -17,7 +17,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	storeFileType: 'image',
 
 	initComponent: function() {
-		this.cbPages = Ext.create( 'Ext.form.ComboBox', {
+		this.cbPages = Ext.create( 'BS.form.field.TitleCombo', {
 			width: 350,
 			margin: '0 5 0 0'
 		});
@@ -219,7 +219,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			caption: this.tfLinkText.getValue(),
 			sizeheight: false,
 			sizewidth: false,
-			link: this.cbPages.getValue(),
+			link: this.cbPages.getRawValue(),
 			alt: this.tfAlt.getValue(),
 			thumb: false,
 			border: false,
