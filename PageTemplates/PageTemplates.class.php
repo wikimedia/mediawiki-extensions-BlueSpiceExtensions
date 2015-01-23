@@ -133,8 +133,8 @@ class PageTemplates extends BsExtensionMW {
 	}
 
 	/**
-	 * Automatically modifies "noarticletext" message. Otherwise, you would 
-	 * have to modify MediaWiki:noarticletext in the wiki, wich causes 
+	 * Automatically modifies "noarticletext" message. Otherwise, you would
+	 * have to modify MediaWiki:noarticletext in the wiki, wich causes
 	 * installation overhead.
 	 * @param string $sKey The message key. Note that it comes ucfirst and can be an i18n version (e.g. Noarticletext/de-formal)
 	 * @param string $sMessage This variable is called by reference and modified.
@@ -152,8 +152,8 @@ class PageTemplates extends BsExtensionMW {
 		}
 
 		/*
-		 * As we are in view mode but we present the user only links to 
-		 * edit/create mode we do a preemptive check wether or not th user 
+		 * As we are in view mode but we present the user only links to
+		 * edit/create mode we do a preemptive check wether or not th user
 		 * also has edit/create permission
 		 */
 		if ( !$oTitle->userCan( 'edit' ) ) {
@@ -202,7 +202,7 @@ class PageTemplates extends BsExtensionMW {
 		if ( !is_object( $oTitle ) ) return true;
 
 		// TODO RBV (18.05.11 08:53): Coding Conventions bei Variablen. View? BaseView mit Template?
-		$sOut = wfMessage( 'bs-pagetemplates-choose-template' )->plain();
+		$sOut = wfMessage( 'bs-pagetemplates-choose-template' )->parse();
 		$aOutNs = array();
 		$sOutAll = '';
 		$oTargetNsTitle = null;
