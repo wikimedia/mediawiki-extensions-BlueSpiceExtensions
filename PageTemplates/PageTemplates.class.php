@@ -226,7 +226,7 @@ class PageTemplates extends BsExtensionMW {
 
 		// There is always one template for empty page it is added some lines beneath that
 		$iCount = $dbr->numRows( $res ) + 1;
-		$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->text();
+		$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->parse();
 		$sOutAll = '';
 		$oTargetNsTitle = null;
 
