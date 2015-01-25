@@ -4,10 +4,13 @@
 			"Cedric31"
 		]
 	},
+	"bs-insertcategory-desc": "Bóstia de dialòg per entrar un ligam de categoria",
 	"bs-insertcategory-insertcat": "Inserir una categoria",
 	"prefs-insertcategory": "‎Inserir una categoria",
+	"bs-insertcategory-pref-withparents": "Inserir una categoria amb sos parents",
 	"bs-insertcategory-title": "Inserir una categoria",
 	"bs-insertcategory-cat-label": "Assignat :",
+	"bs-insertcategory-success": "Categoria aponduda corrèctament",
 	"bs-insertcategory-failure": "Error",
 	"bs-insertcategory-panel-title": "Categorias"
 }

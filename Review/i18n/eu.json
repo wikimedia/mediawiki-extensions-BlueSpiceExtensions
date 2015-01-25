@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-review-save-error": "Errore bat gertatu da gordetzean.",
+	"bs-review-review-saved": "Zure boza gorde da.",
+	"bs-review-commentinputlabel": "Zure iruzkina:",
+	"bs-review-comments": "Iruzkinak",
+	"bs-review-colstatus": "Egoera",
+	"bs-review-lblstartdate": "Hasiera data",
+	"bs-review-lblenddate": "Amaiera data",
+	"bs-review-header-owner-name": "Jabea"
+}

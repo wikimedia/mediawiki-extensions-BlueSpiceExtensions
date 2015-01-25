@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Egilea}}|Egileak}}"
+}

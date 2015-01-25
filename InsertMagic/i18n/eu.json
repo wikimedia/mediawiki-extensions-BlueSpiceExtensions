@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-insertmagic-currentyear": "Egungo urtea",
+	"bs-insertmagic-currentmonth": "Egungo hilabetea (bi zifrako zenbakia).",
+	"bs-insertmagic-currentmonthname": "Egungo hilabetea (izena).",
+	"bs-insertmagic-currentmonthnamegen": "Egungo hilabetea (genitiboa).",
+	"bs-insertmagic-currentmonthabbrev": "Egungo hilabetea (laburdura).",
+	"bs-insertmagic-currentweek": "Astea (zenbakia).",
+	"bs-insertmagic-type-tags": "Etiketak",
+	"bs-insertmagic-type-variables": "Aldagaiak",
+	"bs-insertmagic-label-desc": "Deskribapena"
+}

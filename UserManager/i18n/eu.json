@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-usermanager-headergroups": "Taldeak",
+	"bs-usermanager-labelnewpassword": "Pasahitza",
+	"bs-usermanager-labelpasswordcheck": "Berretsi pasahitza",
+	"bs-usermanager-titledeleteuser": "Ezabatu erabiltzailea",
+	"bs-usermanager-confirmdeleteuser": "Ziur zaude {{PLURAL:$1|erabiltzaile hau ezabatu nahi duzula|$1 erabiltzaile hauek ezabatu nahi dituzula}}?",
+	"bs-usermanager-groups-more": "... gehiago"
+}
