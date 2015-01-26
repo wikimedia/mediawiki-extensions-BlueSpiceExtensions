@@ -159,7 +159,7 @@ class WikiAdmin extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'WikiAdmin',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-wikiadmin-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-wikiadmin-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Mathias Scheer',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

@@ -77,7 +77,7 @@ class Emoticons extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Emoticons',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-emoticons-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-emoticons-desc',
 			EXTINFO::AUTHOR      => 'Alex Wollangk, Marc Reymann, Sebastian Ulbricht, Mathias Scheer, Robert Vogel, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

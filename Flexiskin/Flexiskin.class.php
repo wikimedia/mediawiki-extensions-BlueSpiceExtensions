@@ -51,7 +51,7 @@ class Flexiskin extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Flexiskin',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-flexiskin-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-flexiskin-desc',
 			EXTINFO::AUTHOR => 'Tobias Weichart',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

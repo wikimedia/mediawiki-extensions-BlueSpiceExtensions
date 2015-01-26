@@ -61,7 +61,7 @@ class SaferEdit extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'SaferEdit',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-saferedit-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-saferedit-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

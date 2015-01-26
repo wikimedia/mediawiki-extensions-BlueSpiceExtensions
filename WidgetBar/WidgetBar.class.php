@@ -56,7 +56,7 @@ class WidgetBar extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'WidgetBar',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-widgetbar-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-widgetbar-desc',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

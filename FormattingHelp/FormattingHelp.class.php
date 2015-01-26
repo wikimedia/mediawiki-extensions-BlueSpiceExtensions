@@ -57,7 +57,7 @@ class FormattingHelp extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'FormattingHelp',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-formattinghelp-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-formattinghelp-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

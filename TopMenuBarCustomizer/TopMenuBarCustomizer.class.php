@@ -67,7 +67,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'TopMenuBarCustomizer',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-topmenubarcustomizer-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-topmenubarcustomizer-desc',
 			EXTINFO::AUTHOR      => 'Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

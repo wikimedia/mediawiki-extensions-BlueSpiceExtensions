@@ -3,7 +3,7 @@
  * InterWiki Links extension for BlueSpice for MediaWiki
  *
  * Administration interface for adding, editing and deleting interwiki links
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -30,7 +30,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
- 
+
 /**
  * Main class for InterWikiLinks extension
  * @package BlueSpice_Extensions
@@ -48,7 +48,7 @@ class InterWikiLinks extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InterWikiLinks',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-interwikilinks-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-interwikilinks-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -75,7 +75,7 @@ class InterWikiLinks extends BsExtensionMW {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param OutputPage $oOutputPage
 	 * @param Skin $oSkin
 	 * @return boolean - always true
@@ -90,17 +90,17 @@ class InterWikiLinks extends BsExtensionMW {
 
 	public function getInterWikiLinkPrefixes() {
 		$oDbr = wfGetDB( DB_SLAVE );
-		$rRes = $oDbr->select( 
-				'interwiki', 
-				'iw_prefix', 
-				'', 
-				'', 
+		$rRes = $oDbr->select(
+				'interwiki',
+				'iw_prefix',
+				'',
+				'',
 				array( "ORDER BY" => "iw_prefix" )
 		);
-		
+
 		$aInterWikiPrefixes = array();
 		while( $o = $oDbr->fetchObject($rRes) ) $aInterWikiPrefixes[] = $o->iw_prefix;
-		
+
 		return $aInterWikiPrefixes;
 	}
 	/*
@@ -125,29 +125,29 @@ class InterWikiLinks extends BsExtensionMW {
 		$data = array();
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 
-				'interwiki', 
-				'*', 
-				'', 
-				'', 
+		$res = $dbr->select(
+				'interwiki',
+				'*',
+				'',
+				'',
 				array( "ORDER BY" => "iw_prefix" )
 		);
 		$data['totalCount'] = $dbr->numRows( $res );
 
 		global $wgDBtype, $wgDBprefix;
 		if ( $wgDBtype == 'oracle' ) {
-			$res = $dbr->query( "SELECT * FROM 
-									(SELECT iw_prefix,iw_url,iw_api,iw_wikiid,iw_local,iw_trans,row_number() over (order by iw_prefix ASC) rnk  
-										FROM \"".strtoupper( $wgDBprefix )."INTERWIKI\"  
-									) 
+			$res = $dbr->query( "SELECT * FROM
+									(SELECT iw_prefix,iw_url,iw_api,iw_wikiid,iw_local,iw_trans,row_number() over (order by iw_prefix ASC) rnk
+										FROM \"".strtoupper( $wgDBprefix )."INTERWIKI\"
+									)
 									where rnk BETWEEN ".($iStart+1)." AND ".($iLimit + $iStart)
 						);
 		} else {
-			$res = $dbr->select( 
-					'interwiki', 
-					'*', 
-					'', 
-					'', 
+			$res = $dbr->select(
+					'interwiki',
+					'*',
+					'',
+					'',
 					array(
 						"ORDER BY" => "iw_prefix",
 						"LIMIT" => $iLimit,
@@ -209,8 +209,8 @@ class InterWikiLinks extends BsExtensionMW {
 			$aAnswer['errors'][] = array('id' => 'iwediturl', 'message' => $oValidationResult->getI18N() );
 		}
 
-		if ( substr_count( $iw_prefix, ' ' ) 
-			|| substr_count( $iw_prefix, '"' ) 
+		if ( substr_count( $iw_prefix, ' ' )
+			|| substr_count( $iw_prefix, '"' )
 			|| substr_count( $iw_prefix, '&' )
 			|| substr_count( $iw_prefix, ':' ) ) {
 			$aAnswer['success'] = false;
@@ -262,7 +262,7 @@ class InterWikiLinks extends BsExtensionMW {
 			}
 			$aAnswer['message'][] = $bEditMode ? wfMessage( 'bs-interwikilinks-link-added' )->plain() : wfMessage( 'bs-interwikilinks-link-created' )->plain();
 		}
-		
+
 		self::purgeTitles( $iw_prefix );
 
 		return FormatJson::encode( $aAnswer );
@@ -303,7 +303,7 @@ class InterWikiLinks extends BsExtensionMW {
 		if ( $aAnswer['success'] ) {
 			$aAnswer['message'][] = wfMessage( 'bs-interwikilinks-link-deleted' )->plain();
 		}
-		
+
 		self::purgeTitles( $iw_prefix );
 
 		return FormatJson::encode( $aAnswer );
@@ -316,7 +316,7 @@ class InterWikiLinks extends BsExtensionMW {
 			array('iwl_from', 'iwl_prefix'),
 			array('iwl_prefix' => $iw_prefix)
 		);
-		
+
 		foreach( $res as $row ) {
 			$oTitle = Title::newFromID( $row->iwl_from );
 			if( $oTitle instanceof Title == false ) continue;

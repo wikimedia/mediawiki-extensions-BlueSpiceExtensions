@@ -85,7 +85,7 @@ class PermissionManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'PermissionManager',
-			EXTINFO::DESCRIPTION => 'Administration interface for editing user rights',
+			EXTINFO::DESCRIPTION => 'bs-permissionmanager-desc',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht',
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',

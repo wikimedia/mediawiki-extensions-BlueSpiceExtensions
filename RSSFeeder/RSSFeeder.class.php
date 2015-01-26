@@ -1,9 +1,9 @@
 <?php
 /**
  * This is the RSSFeeder class.
- * 
+ *
  * The RSSFeeder offers different Feeds.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -48,7 +48,7 @@ class RSSFeeder extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'RSSFeeder',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-rssfeeder-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-rssfeeder-desc',
 			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -84,7 +84,7 @@ class RSSFeeder extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -105,7 +105,7 @@ class RSSFeeder extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -126,7 +126,7 @@ class RSSFeeder extends BsExtensionMW {
 
 		/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalPortlets
-	 * 
+	 *
 	 * @param array &$aPortlets reference to array portlets
 	 * @return boolean always true to keep hook alive
 	 */
@@ -147,7 +147,7 @@ class RSSFeeder extends BsExtensionMW {
 
 	/**
 	 * Hook Handler for BSDashboardsAdminDashboardPortalConfig
-	 * 
+	 *
 	 * @param object $oCaller caller instance
 	 * @param array &$aPortalConfig reference to array portlet configs
 	 * @param boolean $bIsDefault default
@@ -203,7 +203,7 @@ class RSSFeeder extends BsExtensionMW {
 
 	/**
 	 * returns an array of all registered feed plugings
-	 * @return array 
+	 * @return array
 	 */
 	public static function getRegisteredFeeds() {
 		wfRunHooks( 'BSRSSFeederGetRegisteredFeeds', array( &self::$aFeeds ) );

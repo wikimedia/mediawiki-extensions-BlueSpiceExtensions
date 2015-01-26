@@ -50,7 +50,7 @@ class Readers extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Readers',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-readers-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-readers-desc',
 			EXTINFO::AUTHOR      => 'Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

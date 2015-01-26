@@ -61,7 +61,7 @@ class UEModulePDF extends BsExtensionMW {
 
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'UEModulePDF',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-uemodulepdf-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-uemodulepdf-desc',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
