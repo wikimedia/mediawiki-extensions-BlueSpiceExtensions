@@ -53,7 +53,7 @@ class CountThings extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'CountThings',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-countthings-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-countthings-desc',
 			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -72,11 +72,11 @@ class CountThings extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-	
+
 	/**
 	 *
 	 * @param Parser $parser
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function onParserFirstCallInit( &$parser ) {
 		$parser->setHook( 'bs:countarticles', array( &$this, 'onMagicWordBsCountArticles' ) );
@@ -101,7 +101,7 @@ class CountThings extends BsExtensionMW {
 			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped(),
 			'code' => '<bs:countarticles />',
 		);
-		
+
 		$oResponse->result[] = array(
 			'id' => 'bs:countusers',
 			'type' => 'tag',
@@ -109,7 +109,7 @@ class CountThings extends BsExtensionMW {
 			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped(),
 			'code' => '<bs:countusers />',
 		);
-		
+
 		$oResponse->result[] = array(
 			'id' => 'bs:countcharacters',
 			'type' => 'tag',
@@ -135,14 +135,14 @@ class CountThings extends BsExtensionMW {
 	 * @param type $input
 	 * @param type $args
 	 * @param Parser $parser
-	 * @return type 
+	 * @return type
 	 */
 	public function onMagicWordBsCountUsers( $input, $args, $parser ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'user', 'user_id' );
 		$out = $dbr->numRows( $res );
 		$dbr->freeResult( $res );
-		
+
 		//This is a bugfix for the case that somebody writes a wrong empty tag.
 		// <bs:countusers> instead of <bs:countusers />
 		//TODO: Do we really need to catch errors like this?
@@ -157,7 +157,7 @@ class CountThings extends BsExtensionMW {
 	 * @param type $input
 	 * @param type $args
 	 * @param Parser $parser
-	 * @return type 
+	 * @return type
 	 */
 	public function onMagicWordBsCountCharacters( $input, $args, $parser ) {
 		$parser->disableCache();

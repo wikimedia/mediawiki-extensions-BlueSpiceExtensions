@@ -96,7 +96,7 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'CSyntaxHighlight',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-csyntaxhighlight-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-csyntaxhighlight-desc',
 			EXTINFO::AUTHOR      => 'Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

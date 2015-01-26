@@ -53,7 +53,7 @@ class Dashboards extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Dashboards',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-dashboards-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-dashboards-desc',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

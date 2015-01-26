@@ -53,7 +53,7 @@ class BsPreferences extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Preferences',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-preferences-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-preferences-desc',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

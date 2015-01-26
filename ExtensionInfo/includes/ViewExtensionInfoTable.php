@@ -63,7 +63,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 				'version' => ( $aExtension[EXTINFO::VERSION] === 'default' ) ? $wgBlueSpiceExtInfo['version'] : $aExtension[EXTINFO::VERSION],
 				'package' => ( !isset( $aExtension[EXTINFO::PACKAGE] ) || $aExtension[EXTINFO::PACKAGE] === 'default' ) ? $wgBlueSpiceExtInfo['package'] : $aExtension[EXTINFO::PACKAGE],
 				//'description' => wfMessage( $aExtension[EXTINFO::DESCRIPTION] )->plain(), Future use
-				'description' => $aExtension[EXTINFO::DESCRIPTION],
+				'description' => wfMessage( $aExtension[EXTINFO::DESCRIPTION] )->escaped(),
 				'status' => ( $aExtension[EXTINFO::STATUS] === 'default' ) ? $wgBlueSpiceExtInfo['status'] : $aExtension[EXTINFO::STATUS],
 			);
 

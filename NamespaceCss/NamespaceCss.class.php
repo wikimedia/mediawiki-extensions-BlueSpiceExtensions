@@ -3,7 +3,7 @@
  * NamespaceCss extension for BlueSpice
  *
  * Use different CSS-Styles in Namespaces by add page MediaWiki:'NAMESPACENAME'_css
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -43,7 +43,7 @@ class NamespaceCss extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'NamespaceCss',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-namespacecss-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-namespacecss-desc',
 			EXTINFO::AUTHOR      => 'Robert Vogel, Tobias Weichart, Patric Wirth',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

@@ -51,7 +51,7 @@ class PageAccess extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'PageAccess',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-pageaccess-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-pageaccess-desc',
 			EXTINFO::AUTHOR => 'Marc Reymann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -75,7 +75,7 @@ class PageAccess extends BsExtensionMW {
 
 	public function onArticleSave( &$article, &$user, &$text, &$summary, $minor, $watchthis, $sectionanchor, &$flags, &$status ) {
 		# Prevent user from locking himself out of his own page
-		$oEditInfo = $article->prepareTextForEdit( $text, null, $user ); 
+		$oEditInfo = $article->prepareTextForEdit( $text, null, $user );
 		$sAccessGroups = $oEditInfo->output->getProperty( 'bs-page-access' );
 		if ( !$this->checkAccessGroups( $user, $sAccessGroups ) ) {
 			$err[0] = 'bs-pageaccess-error-not-member-of-given-groups';
