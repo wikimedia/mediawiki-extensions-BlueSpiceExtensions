@@ -156,6 +156,9 @@ class PageTemplates extends BsExtensionMW {
 		 * edit/create mode we do a preemptive check wether or not th user
 		 * also has edit/create permission
 		 */
+		if ( $oTitle->isSpecialPage() ) {
+			return true;
+		}
 		if ( !$oTitle->userCan( 'edit' ) ) {
 			throw new PermissionsError( 'edit' );
 		} elseif ( !$oTitle->userCan( 'createpage' ) ) {
