@@ -10,7 +10,10 @@
 	"bs-articleinfo-hiddencats": "Kategoria ezkutuak",
 	"bs-articleinfo-notemplates": "Ez da txantiloirik aurkitu.",
 	"bs-articleinfo-templates": "Txantiloiak",
+	"bs-articleinfo-subpages": "Azpiorrialdeak",
 	"bs-articleinfo-statebartopcategories": "Kategoriak",
+	"bs-articleinfo-statebartopsubpages": "Azpiorrialdeak",
 	"bs-articleinfo-statebarbodycategories": "Kategoriak",
+	"bs-articleinfo-statebarbodysubpages": "Azpiorrialdeak",
 	"bs-articleinfo-statebarbodytemplates": "Txantiloiak"
 }
