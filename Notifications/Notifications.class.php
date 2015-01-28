@@ -185,7 +185,28 @@ class Notifications extends BsExtensionMW {
 		return true;
 	}
 
-	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
+	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
+		$sIconPath = 'BlueSpiceExtensions/Notifications/icons/';
+		$icons = array_merge( $icons, array(
+			'bs-edit' => array(
+				'path' => $sIconPath.'edit.png'
+			),
+			'bs-create' => array(
+				'path' => $sIconPath.'create.png'
+			),
+			'bs-delete' => array(
+				'path' => $sIconPath.'delete.png'
+			),
+			'bs-move' => array(
+				'path' => $sIconPath.'move.png'
+			),
+			'bs-newuser' => array(
+				'path' => $sIconPath.'newuser.png'
+			),
+			'bs-shoutbox' => array(
+				'path' => $sIconPath.'shoutbox.png'
+			),
+		) );
 		// category definition via self::$aNotificationCategories
 		//  HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Notification_category_parameters
 		foreach( self::$aNotificationCategories as $sCategory => $aCategoryDefinition ) {
@@ -204,9 +225,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-edit',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
-			'email-body-batch-message' => 'hello again',
-			'icon' => 'edit',
-//			'bundle' => array( 'web' => true, 'email' => true ),
+			'email-body-batch-message' => 'bs-notifications-email-edit',
+			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
+			'icon' => 'bs-edit',
 		);
 
 		$notifications['bs-create'] = array(
@@ -221,9 +242,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-new',
 			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
-			'email-body-batch-message' => 'hello again',
-			'icon' => 'create',
-//			'bundle' => array( 'web' => true, 'email' => true ),
+			'email-body-batch-message' => 'bs-notifications-email-new',
+			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
+			'icon' => 'bs-create',
 		);
 
 		$notifications['bs-delete'] = array(
@@ -238,9 +259,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-delete',
 			'email-body-params' => array( 'titlelink', 'agent', 'deletereason' ),
-			'email-body-batch-message' => 'hello again',
-			'icon' => 'delete',
-//			'bundle' => array( 'web' => true, 'email' => true ),
+			'email-body-batch-message' => 'bs-notifications-email-delete',
+			'email-body-batch-params' => array( 'titlelink', 'agent', 'deletereason' ),
+			'icon' => 'bs-delete',
 		);
 
 		$notifications['bs-move'] = array(
@@ -255,8 +276,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent', 'newtitle' ),
 			'email-body-message' => 'bs-notifications-email-move',
 			'email-body-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
-			'email-body-batch-message' => 'hello again',
-			'icon' => 'move',
+			'email-body-batch-message' => 'bs-notifications-email-move',
+			'email-body-batch-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
+			'icon' => 'bs-move',
 		);
 
 		$notifications['bs-newuser'] = array(
@@ -271,8 +293,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'user' ),
 			'email-body-message' => 'bs-notifications-email-addaccount',
 			'email-body-params' => array( 'userlink' ),
-			'email-body-batch-message' => 'hello again',
-			'icon' => 'newuser',
+			'email-body-batch-message' => 'bs-notifications-email-addaccount',
+			'email-body-batch-params' => array( 'userlink' ),
+			'icon' => 'bs-newuser',
 		);
 
 		$notifications['bs-shoutbox'] = array(
@@ -287,8 +310,9 @@ class Notifications extends BsExtensionMW {
 			'email-subject-params' => array( 'title', 'agent' ),
 			'email-body-message' => 'bs-notifications-email-shout',
 			'email-body-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
-			'email-body-batch-message' => 'hello again',
-			'icon' => 'shoutbox',
+			'email-body-batch-message' => 'bs-notifications-email-shout',
+			'email-body-batch-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
+			'icon' => 'bs-shoutbox',
 		);
 		return true;
 	}

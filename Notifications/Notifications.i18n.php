@@ -46,7 +46,7 @@ $messages['en'] = array(
 	'bs-echo-flyout-page-newuser'				=> 'The User [[$1]] was created.',
 	'bs-echo-page-shoutbox'						=> 'On the site [[$1]] was a new ShoutBox-Message created .',
 	'bs-echo-flyout-page-shoutbox'				=> 'On the site [[$1]] was a new ShoutBox-Message created .',
-	
+
 	// Email subject
 	'bs-echo-email-subject-page-edit'			=> 'The site [[$1]] has been changed by [[$2]]',
 	'bs-echo-email-subject-page-create'			=> 'The site [[$1]] has been created',
@@ -66,19 +66,19 @@ $messages['en'] = array(
 	// Email batch
 	'bs-echo-emailbatch-subject-page-edit'		=> 'The wiki pages were edited',
 	'bs-echo-emailbatch-body-page-edit'			=> 'The site [[$1]] was edited by $2', // entspricht bs-echo-flyout-*******
-	
+
 	'bs-echo-emailbatch-subject-page-create'	=> 'The wiki pages were created',
 	'bs-echo-emailbatch-body-page-create'		=> 'The site [[$1]] was created by $2',
-	
+
 	'bs-echo-emailbatch-subject-page-delete'	=> 'The wiki pages were deleted',
 	'bs-echo-emailbatch-body-page-delete'		=> 'The site [[$1]] was deleted by $2',
-	
+
 	'bs-echo-emailbatch-subject-page-move'		=> 'The wiki pages were moved',
 	'bs-echo-emailbatch-body-page-move'			=> 'The site [[$1]] was moved by $2',
-	
+
 	'bs-echo-emailbatch-subject-page-newuser'	=> 'A new User was created',
 	'bs-echo-emailbatch-body-page-newuser'		=> 'On the site [[$1]] was a new user created by $2',
-	
+
 	'bs-echo-emailbatch-subject-page-shoutbox'	=> 'On the site was a new ShoutBox-Message created',
 	'bs-echo-emailbatch-body-page-shoutbox'		=> 'On the site [[$1]] was a new ShoutBox-Message created by $2',
 	// END HERE -------------------------------------------------------------- //
@@ -97,15 +97,16 @@ $messages['en'] = array(
 	'bs-notifications-email-shout-subject'      => "$2 posted a message on page $1",
 	'bs-notifications-email-shout'              => "$2 posted a message on page $1.\n\nMessage:\n$3\n\n You can visit the page following this link:\n$4.\n",
 	'prefs-Notifications'                       => 'Notifications',
-	'bs-notifications-pref-notifynew'           => 'Notification for new pages',
-	'bs-notifications-pref-notifyedit'          => 'Notification for edits',
-	'bs-notifications-pref-notifymove'          => 'Notification for moves',
-	'bs-notifications-pref-notifydelete'        => 'Notification for deletion',
+	'echo-category-title-bs-create-cat'           => 'Notification for new pages',
+	'echo-category-title-bs-edit-cat'          => 'Notification for edits',
+	'echo-category-title-bs-move-cat'          => 'Notification for moves',
+	'echo-category-title-bs-delete-cat'        => 'Notification for deletion',
 	'bs-notifications-pref-notifynominor'       => 'No notification for minor changes',
-	'bs-notifications-pref-notifyuser'          => 'Notification for new users (only for sysops)',
+	'echo-category-title-bs-newuser-cat'          => 'Notification for new users (only for sysops)',
 	'bs-notifications-pref-notifyns'            => 'Only notify for changes in these namespaces',
-	'bs-notifications-pref-notifyshout'         => 'Notification for messages on watched pages(shoutbox)',
-	'bs-notifications-pref-active'              => 'Enable Notification'
+	'echo-category-title-bs-shoutbox-cat'         => 'Notification for messages on watched pages(shoutbox)',
+	'bs-notifications-pref-active'              => 'Enable Notification',
+
 );
 
 $messages['de'] = array(
@@ -124,7 +125,7 @@ $messages['de'] = array(
 	'echo-dismiss-title-bs-move'				=> 'Seiten verschoben',
 	'echo-dismiss-title-bs-newuser'				=> 'Neue Benutzer ',
 	'echo-dismiss-title-bs-shoutbox'			=> 'Shoutbox Messages',
-	
+
 	'bs-echo-anon-user'							=> "'''Anonym'''",
 	'bs-echo-unknown-user'						=> "'''Unbekannt'''",
 	'bs-echo-page-edit'							=> 'Die Seite [[$1]] wurde bearbeitet',
@@ -159,19 +160,19 @@ $messages['de'] = array(
 	// Email batch
 	'bs-echo-emailbatch-subject-page-edit'		=> 'Im Wiki wurden Seiten bearbeitet',
 	'bs-echo-emailbatch-body-page-edit'			=> 'Die Seite [[$1]] wurde von $2 bearbeitet', // entspricht bs-echo-flyout-*******
-	
+
 	'bs-echo-emailbatch-subject-page-create'	=> 'Im Wiki wurden neue Seiten angelegt',
 	'bs-echo-emailbatch-body-page-create'		=> 'Die Seite [[$1]] wurde von $2 neu angelegt',
-	
+
 	'bs-echo-emailbatch-subject-page-delete'=> 'Im Wiki wurden Seiten gelöscht',
 	'bs-echo-emailbatch-body-page-delete'	=> 'Die Seite [[$1]] wurde von $2 gelöscht',
-	
+
 	'bs-echo-emailbatch-subject-page-move'	=> 'Im Wiki wurden Seiten bewegt',
 	'bs-echo-emailbatch-body-page-move'		=> 'Die Seite [[$1]] wurde von $2 bewegt',
-	
+
 	'bs-echo-emailbatch-subject-page-newuser'=> 'Auf der Seite wurde ein neuer Benutzer angelegt',
 	'bs-echo-emailbatch-body-page-newuser'	=> 'Auf der Seite [[$1]] wurde von $2 ein neuer Benutzer angelegt',
-	
+
 	'bs-echo-emailbatch-subject-page-shoutbox'=> 'Auf der Seite wurde eine ShoutBox-Mitteilung verfasst',
 	'bs-echo-emailbatch-body-page-shoutbox'	=> 'Auf der Seite [[$1]] wurde von $2 eine ShoutBox-Mitteilung verfasst',
 	// END HERE -------------------------------------------------------------- //
@@ -190,16 +191,16 @@ $messages['de'] = array(
 	'bs-notifications-email-shout-subject'      => "$2 hat auf der Seite $1 eine Nachricht hinterlassen",
 	'bs-notifications-email-shout'              => "$2 hat auf der Seite $1 eine Nachricht hinterlassen.\n\nNachricht:\n$3\n\nDu kannst den Artikel über diese URL aufrufen:\n$4\n",
 	'prefs-Notifications'                       => 'Benachrichtigungen',
-	'bs-notifications-pref-notifynew'           => 'Benachrichtigung bei neuen Seiten',
-	'bs-notifications-pref-notifyedit'          => 'Benachrichtigung beim Bearbeiten von Seiten',
-	'bs-notifications-pref-notifymove'          => 'Benachrichtigung beim Verschieben von Seiten',
-	'bs-notifications-pref-notifydelete'        => 'Benachrichtigung beim Löschen von Seiten',
+	'echo-category-title-bs-create-cat'           => 'Benachrichtigung bei neuen Seiten',
+	'echo-category-title-bs-edit-cat'          => 'Benachrichtigung beim Bearbeiten von Seiten',
+	'echo-category-title-bs-move-cat'          => 'Benachrichtigung beim Verschieben von Seiten',
+	'echo-category-title-bs-delete-cat'        => 'Benachrichtigung beim Löschen von Seiten',
 	'bs-notifications-pref-notifynominor'       => 'Keine Benachrichtigung bei geringfügigen Änderungen',
-	'bs-notifications-pref-notifyuser'          => 'Benachrichtigung bei Anmeldung neuer Nutzer (nur für Administratoren)',
+	'echo-category-title-bs-newuser-cat'          => 'Benachrichtigung bei Anmeldung neuer Nutzer (nur für Administratoren)',
 	'bs-notifications-pref-notifyns'            => 'Nur bei Bearbeitungen in diesen Namespaces benachrichtigen',
-	'bs-notifications-pref-notifyshout'         => 'Benachrichtigung bei Mitteilungen auf beobachteten Seiten (Shoutbox)',
+	'echo-category-title-bs-shoutbox-cat'         => 'Benachrichtigung bei Mitteilungen auf beobachteten Seiten (Shoutbox)',
 	'bs-notifications-pref-active'              => 'Benachrichtigungen aktivieren'
-	
+
 );
 
 $messages['de-formal'] = array(
