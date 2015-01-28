@@ -1,5 +1,5 @@
 Ext.define('BS.Flexiskin.Menuitems.General', {
-	extend: 'Ext.Panel',
+	extend: 'BS.Flexiskin.menu.BaseItem',
 	title: mw.message('bs-flexiskin-headerGeneral').plain(),
 	layout: 'form',
 	currentData: {},
@@ -53,7 +53,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		});
 		this.tfCustomBackgroundColor.on("blur", function(el){
 			var isOk  = /(^#?[0-9A-F]{6}$)|(^#?[0-9A-F]{3}$)/i.test(el.getValue());
-			Ext.getCmp("bs-flexiskin-preview-menu-general").setColor(Ext.getCmp("bs-flexiskin-preview-menu-general").pfBackgroundColor, el.getValue());
+			Ext.getCmp("bs-flexiskin-preview-menu-general").setColor(Ext.getCmp("bs-flexiskin-preview-menu-general").pfBackgroundColor, el.getValue(), this.tfCustomBackgroundColor);
 			if (isOk)
 				Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
 		});
@@ -98,6 +98,9 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			this.ufBackgroundUpload,
 			this.cgRepeatBackground
 		];
+
+		$(document).trigger("BSFlexiskinMenuGeneralInitComponent", [this, this.items]);
+
 		this.callParent(arguments);
 	},
 	btnUploadClick: function(el, form) {
@@ -158,18 +161,20 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			backgroundImage: Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').getValue(),
 			repeatBackground: this.cgRepeatBackground.getValue()
 		};
+		$(document).trigger("BSFlexiskinMenuGeneralGetData", [this, data]);
 		return data;
 	},
 	setData: function(data) {
 		this.currentData = data;
 		this.tfName.setValue(data.config.name);
 		this.tfDesc.setValue(data.config.desc);
-		this.setColor(this.pfBackgroundColor, data.config.backgroundColor);
+		this.setColor(this.pfBackgroundColor, data.config.backgroundColor, this.tfCustomBackgroundColor);
 		this.tfCustomBackgroundColor.setValue(data.config.customBackgroundColor);
 		this.cgRepeatBackground.setValue(data.config.repeatBackground)
 		Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').setValue(data.config.backgroundImage);
+		$(document).trigger("BSFlexiskinMenuGeneralSetData", [this, data]);
 	},
-	setColor: function(el, clr) {
+	setColor: function(el, clr, textfield) {
 		if( typeof clr == "undefined" || clr == null) return;
 
 		var bFound = false;
@@ -180,7 +185,9 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			}
 		});
 		if (bFound == false){
-			this.tfCustomBackgroundColor.setValue(clr);
+			if (textfield){
+				textfield.setValue(clr);
+			}
 			el.clear();
 		}
 		else

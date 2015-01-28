@@ -1,5 +1,5 @@
 Ext.define('BS.Flexiskin.Menuitems.Header', {
-	extend: 'BS.Panel',
+	extend: 'BS.Flexiskin.menu.BaseItem',
 	title: mw.message('bs-flexiskin-headerHeader').plain(),
 	layout: 'form',
 	currentData: {},
@@ -17,6 +17,9 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 		this.items = [
 			this.ufLogoUpload
 		];
+
+		$(document).trigger("BSFlexiskinMenuHeaderInitComponent", [this, this.items]);
+
 		this.afterInitComponent();
 		this.callParent(arguments);
 	},
@@ -74,10 +77,12 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 			id: 'header',
 			logo: Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').getValue()
 		};
+		$(document).trigger("BSFlexiskinMenuHeaderGetData", [this, data]);
 		return data;
 	},
 	setData: function(data) {
 		this.currentData = data;
 		Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(data.config.logo)
+		$(document).trigger("BSFlexiskinMenuHeaderSetData", [this, data]);
 	}
 });
