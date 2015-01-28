@@ -135,14 +135,18 @@ class BsPDFServlet {
 
 			wfRunHooks( 'BSUEModulePDFUploadFilesBeforeSend', array( $this, &$aPostData, $sType ) );
 
+			$aOptions = array(
+				'timeout' => 120,
+				'postData' => $aPostData
+			);
+
+			global $bsgUEModulePDFCURLOptions;
+			$aOptions = array_merge_recursive($aOptions, $bsgUEModulePDFCURLOptions);
 			$vHttpEngine = Http::$httpEngine;
 			Http::$httpEngine = 'curl';
 			$sResponse = Http::post(
 				$this->aParams['soap-service-url'].'/UploadAsset',
-				array(
-					'timeout' => 120,
-					'postData' => $aPostData
-				)
+				$aOptions
 			);
 			Http::$httpEngine = $vHttpEngine;
 
