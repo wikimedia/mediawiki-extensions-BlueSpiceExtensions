@@ -66,7 +66,7 @@ class ArticleInfo extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'ArticleInfo',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-articleinfo-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-articleinfo-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

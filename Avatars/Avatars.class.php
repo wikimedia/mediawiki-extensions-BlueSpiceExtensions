@@ -53,7 +53,7 @@ class Avatars extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Avatars',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-avatars-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-avatars-desc',
 			EXTINFO::AUTHOR => 'Marc Reymann',
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',

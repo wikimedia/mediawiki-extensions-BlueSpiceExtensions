@@ -49,7 +49,7 @@ class NamespaceManager extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'NamespaceManager',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-namespacemanager-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-namespacemanager-desc',
 			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stefan Widmann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

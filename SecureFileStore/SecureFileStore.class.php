@@ -3,7 +3,7 @@
  * SecureFileStore extension for BlueSpice
  *
  * Prevent unauthorized access to files and images.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * 
+ *
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
@@ -66,7 +66,7 @@ class SecureFileStore extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'SecureFileStore',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-securefilestore-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-securefilestore-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Marc Reymann',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
@@ -86,7 +86,7 @@ class SecureFileStore extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		BsExtensionManager::setContext( 'MW::SecureFileStore::Active' );
-		
+
 		BsConfig::registerVar( 'MW::SecureFileStore::Active', true, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT );
 		BsConfig::registerVar( 'MW::SecureFileStore::DefaultDisposition', 'inline', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-securefilestore-pref-defaultdisposition', 'select' );
 		BsConfig::registerVar( 'MW::SecureFileStore::DispositionInline', array( 'pdf' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-securefilestore-pref-dispositioninline', 'multiselectplusadd' );
@@ -115,7 +115,7 @@ class SecureFileStore extends BsExtensionMW {
 	 * Replaces links to files with links to secure file dispatcher.
 	 * @param object $oObject needed by hook
 	 * @param object $oText reference to skin template object
-	 * @return bool hook must return true 
+	 * @return bool hook must return true
 	 */
 	public function secureImages( $oObject, &$oText ) {
 		if ( !BsConfig::get( 'MW::SecureFileStore::Active' ) ) return true;
@@ -126,7 +126,7 @@ class SecureFileStore extends BsExtensionMW {
 	/**
 	 * Replaces links to files with links to secure file dispatcher.
 	 * @param string $sText HTML source text
-	 * @return string HTML with replaced links 
+	 * @return string HTML with replaced links
 	 */
 	public static function secureFilesInText( $sText ) {
 		if ( !BsConfig::get( 'MW::SecureFileStore::Active' ) ) return $sText;
@@ -137,7 +137,7 @@ class SecureFileStore extends BsExtensionMW {
 	 * Replaces links to files with links to secure file dispatcher.
 	 * @param string $sText HTML source text
 	 * @param bool $bIsUrl switches replacement mode
-	 * @return string HTML with replaced links 
+	 * @return string HTML with replaced links
 	 */
 	public static function secureStuff( $sText, $bIsUrl = false ) {
 		global $wgScriptPath, $wgUploadPath;
@@ -201,7 +201,7 @@ class SecureFileStore extends BsExtensionMW {
 		// At this point we have a valid and readable file path in $sFilePath.
 		// Now create a File object to get some properties
 
-		if ( strstr( $sFilePath, 'thumb' ) ) $sFindFileName = preg_replace( "#(\d*px-)#", '', $sFileName ); 
+		if ( strstr( $sFilePath, 'thumb' ) ) $sFindFileName = preg_replace( "#(\d*px-)#", '', $sFileName );
 		else $sFindFileName = $sFileName;
 
 		$aOptions = array( 'time' => false );

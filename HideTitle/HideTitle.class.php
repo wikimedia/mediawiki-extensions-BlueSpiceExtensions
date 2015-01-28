@@ -43,7 +43,7 @@ class HideTitle extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'HideTitle',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-hidetitle-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-hidetitle-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

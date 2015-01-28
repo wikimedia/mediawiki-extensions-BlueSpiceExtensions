@@ -67,7 +67,7 @@ class Notifications extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Notifications',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-notifications-desc' )->text(),
+			EXTINFO::DESCRIPTION => 'bs-notifications-desc',
 			EXTINFO::AUTHOR      => array( '[https://www.mediawiki.org/wiki/User:Swidmann Stefan Widmann]' ),
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

@@ -57,7 +57,7 @@ class Review extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Review',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-review-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-review-desc',
 			EXTINFO::AUTHOR => 'Markus Glaser',
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',

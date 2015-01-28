@@ -61,7 +61,7 @@ class InsertFile extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'InsertFile',
-			EXTINFO::DESCRIPTION => wfMessage( 'bs-insertfile-desc' )->escaped(),
+			EXTINFO::DESCRIPTION => 'bs-insertfile-desc',
 			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Robert Vogel',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',

@@ -39,7 +39,7 @@ class ContextMenu extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::PARSERHOOK;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'ContextMenu',
-			EXTINFO::DESCRIPTION => wfMessage('bs-contextmenu-desc')->plain(),
+			EXTINFO::DESCRIPTION => 'bs-contextmenu-desc',
 			EXTINFO::AUTHOR => 'Tobias Weichart',
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',
