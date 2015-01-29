@@ -4,7 +4,9 @@
 			"Subi"
 		]
 	},
+	"bs-usermanager-headerrealname": "Benetako izena",
 	"bs-usermanager-headergroups": "Taldeak",
+	"bs-usermanager-titleadduser": "Gehitu erabiltzailea",
 	"bs-usermanager-labelnewpassword": "Pasahitza",
 	"bs-usermanager-labelpasswordcheck": "Berretsi pasahitza",
 	"bs-usermanager-titledeleteuser": "Ezabatu erabiltzailea",

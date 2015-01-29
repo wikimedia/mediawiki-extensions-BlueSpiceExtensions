@@ -4,5 +4,9 @@
 			"Subi"
 		]
 	},
+	"bs-smartlist-recent-changes": "Aldaketa berriak",
+	"bs-smartlist-no-entries": "Ez da emaitzarik aurkitu.",
+	"bs-smartlist-comment": "Iruzkina: $1.",
+	"bs-smartlist-pref-comments": "Erakutsi iruzkina",
 	"bs-smartlist-pref-categories": "Kategoriak:"
 }
