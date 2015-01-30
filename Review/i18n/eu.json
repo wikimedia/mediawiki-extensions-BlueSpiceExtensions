@@ -5,7 +5,10 @@
 		]
 	},
 	"bs-review-save-error": "Errore bat gertatu da gordetzean.",
+	"bs-review-review-error": "Errore ezezagun bat gertatu da.",
 	"bs-review-review-saved": "Zure boza gorde da.",
+	"bs-review-i-agree": "Ados",
+	"bs-review-i-dismiss": "Ez nago ados",
 	"bs-review-commentinputlabel": "Zure iruzkina:",
 	"bs-review-comments": "Iruzkinak",
 	"bs-review-colstatus": "Egoera",
