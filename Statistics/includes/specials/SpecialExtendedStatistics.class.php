@@ -40,9 +40,9 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 			$sData = $wgRequest->getVal('svg', '');
 			if( !empty($sData) ) {
 				switch( $par ) {
-					case 'export-png': 
+					case 'export-png':
 						return $this->exportPNG( $sData );
-					case 'export-svg': 
+					case 'export-svg':
 						return $this->exportSVG( $sData );
 				}
 			}
@@ -60,9 +60,9 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 
 		return true;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @global User $wgUser
 	 * @global WebRequest $wgRequest
 	 * @return type
@@ -85,14 +85,14 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 		$sFrom		= $wgRequest->getVal('inputFrom', '');
 		$sMode		= $wgRequest->getVal('rgInputDepictionMode', '');
 		$sTo		= $wgRequest->getVal('inputTo', '');
-		
+
 		$aAvailableDiagrams = Statistics::getAvailableDiagrams();
 		$aAllowedDiaKeys = array_keys($aAvailableDiagrams);
 
 		if( empty($sDiagram) ) $aResult["errors"]['inputDiagrams'] = wfMessage('bs-statistics-err-emptyinput')->plain();
 		elseif( !in_array($sDiagram, $aAllowedDiaKeys) ) $aResult["errors"]['inputDiagrams'] = wfMessage('bs-statistics-err-unknowndia')->plain();
 
-		if( !array_key_exists($sGrain, BsConfig::get('MW::Statistics::AvailableGrains')) ) 
+		if( !array_key_exists($sGrain, BsConfig::get('MW::Statistics::AvailableGrains')) )
 			$aResult["errors"]['InputDepictionGrain'] = wfMessage('bs-statistics-err-unknowngrain')->plain();
 
 		if( empty($sFrom) ) $aResult["errors"]['inputFrom'] = wfMessage('bs-statistics-err-emptyinput')->plain();
@@ -108,7 +108,7 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 
 		if( empty($sMode) ) $aResult["errors"]['rgInputDepictionMode'] = wfMessage('bs-statistics-err-emptyinput')->plain();
 		elseif( !in_array($sMode, array('absolute', 'aggregated', 'list')) ) $aResult["errors"]['rgInputDepictionMode'] = wfMessage('bs-statistics-err-unknownmode')->plain();
-		elseif( !isset($aResult["errors"]['inputDiagrams']) && $sMode == 'list' && !$aAvailableDiagrams[$sDiagram]->isListable()) 
+		elseif( !isset($aResult["errors"]['inputDiagrams']) && $sMode == 'list' && !$aAvailableDiagrams[$sDiagram]->isListable())
 			$aResult["errors"]['rgInputDepictionMode'] = wfMessage('bs-statistics-err-modeunsupported')->plain();
 
 		if( !empty($aResult['errors']) ) {
@@ -126,7 +126,7 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 
 		switch ( $oDiagram->getActualGrain() ) {
 			// Here, only those grains are listed where label code differs from grain code.
-			case 'm' : $oDiagram->setModLabel( 'M' ); break;
+			case 'm' : $oDiagram->setModLabel( 'M y' ); break;
 			case 'd' : $oDiagram->setModLabel( 'd.m' ); break;
 			//default  : $oDiagram->modLabel = false;
 		}
@@ -146,11 +146,11 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 				$oReader->db   = $wgDBname;
 				break;
 		}
-		
+
 		$intervals = Interval::getIntervalsFromDiagram( $oDiagram );
 		if( count( $intervals ) > BsConfig::get( 'MW::Statistics::MaxNumberOfIntervals' ) ) {
 			$aResult['message'] = wfMessage( 'bs-statistics-interval-too-big' )->plain();
-			return json_encode($aResult); 
+			return json_encode($aResult);
 		}
 		//set_time_limit( 60 );
 		// TODO MRG (20.12.10 00:01): already called before
@@ -231,7 +231,7 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 				intval( $wgRequest->getVal('width', 600) ),
 				intval( $wgRequest->getVal('height', 400) ),
 				wfEscapeShellArg( $sCacheDir.'/'.$sFileName.$sFileExt ),
-				wfEscapeShellArg( $sCacheDir ) 
+				wfEscapeShellArg( $sCacheDir )
 			),
 			$wgSVGConverters[$wgSVGConverter]
 		)." 2>&1";

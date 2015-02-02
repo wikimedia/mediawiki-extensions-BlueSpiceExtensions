@@ -16,7 +16,7 @@
 /**
  * Describes search query diagram for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class BsDiagramSearches extends BsDiagram {
 
@@ -31,7 +31,7 @@ class BsDiagramSearches extends BsDiagram {
 		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
 		$this->sTitley = wfMsg( 'bs-statistics-label-count');
 		$this->sActualGrain = "m";
-		$this->sModLabel = "M";
+		$this->sModLabel = "M y";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
 		$this->bListable = true;
 		$this->sSqlWhatForDiagram = "count(stats_term)";

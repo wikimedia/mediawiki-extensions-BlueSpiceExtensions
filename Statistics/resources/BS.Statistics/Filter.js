@@ -192,16 +192,16 @@ Ext.define( 'BS.Statistics.Filter', {
 			vertical: false,
 			allowBlank: false
 		});
-		this.rgInputDepictionMode.add({ 
+		this.rgInputDepictionMode.add({
 			boxLabel: mw.message('bs-statistics-absolute').plain(),
 			labelAlign: 'right',
-			name: 'rgInputDepictionMode', 
+			name: 'rgInputDepictionMode',
 			inputValue: 'absolute'
 		});
-		this.rgInputDepictionMode.add({ 
+		this.rgInputDepictionMode.add({
 			boxLabel: mw.message('bs-statistics-aggregated').plain(),
 			labelAlign: 'right',
-			name: 'rgInputDepictionMode', 
+			name: 'rgInputDepictionMode',
 			inputValue: 'aggregated'
 		});
 
@@ -251,9 +251,9 @@ Ext.define( 'BS.Statistics.Filter', {
 		this.activateFilterByKeys( record[0].get('filters') );
 
 		if( record[0].get('listable') ) {
-			this.rgInputDepictionMode.add({ 
-				boxLabel: mw.message('bs-statistics-list').plain(), 
-				name: 'rgInputDepictionMode', 
+			this.rgInputDepictionMode.add({
+				boxLabel: mw.message('bs-statistics-list').plain(),
+				name: 'rgInputDepictionMode',
 				inputValue: 'list'
 			});
 		}
@@ -275,14 +275,14 @@ Ext.define( 'BS.Statistics.Filter', {
 	},
 	removeAdditionalModes: function () {
 		this.rgInputDepictionMode.removeAll();
-		this.rgInputDepictionMode.add({ 
-			boxLabel: mw.message('bs-statistics-absolute').plain(), 
-			name: 'rgInputDepictionMode', 
+		this.rgInputDepictionMode.add({
+			boxLabel: mw.message('bs-statistics-absolute').plain(),
+			name: 'rgInputDepictionMode',
 			inputValue: 'absolute'
 		});
-		this.rgInputDepictionMode.add({ 
-			boxLabel: mw.message('bs-statistics-aggregated').plain(), 
-			name: 'rgInputDepictionMode', 
+		this.rgInputDepictionMode.add({
+			boxLabel: mw.message('bs-statistics-aggregated').plain(),
+			name: 'rgInputDepictionMode',
 			inputValue: 'aggregated'
 		});
 	},
@@ -319,7 +319,8 @@ Ext.define( 'BS.Statistics.Filter', {
 		bs.util.alert( 'STAsuc', { text: action.result.message, titleMsg: 'bs-extjs-title-success' } );
 	},
 	fpFailure: function( form, action ) {
+		this.fireEvent('failed', this, action.result.message, action.result);
 		if( action.result.message === undefined || action.result.message == '') return;
-		bs.util.alert( 'STAfail', { text: action.result.message, titleMsg: 'bs-extjs-title-success' } );
+		bs.util.alert( 'STAfail', { text: action.result.message, titleMsg: 'bs-extjs-title-warning' } );
 	}
 });

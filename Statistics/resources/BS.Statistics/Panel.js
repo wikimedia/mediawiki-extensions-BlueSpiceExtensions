@@ -21,6 +21,7 @@ Ext.define( 'BS.Statistics.Panel', {
 	initComponent: function() {
 		this.pnlFilters = Ext.create('BS.Statistics.Filter');
 		this.pnlFilters.on('saved', this.onPnlFiltersSaved, this);
+		this.pnlFilters.on('failed', this.onPnlFiltersFailed, this);
 		this.pnlFilters.on('btnOKBeforeSend', this.filtersBtnOKBeforeSend, this)
 
 		this.crtMain = Ext.create('BS.Statistics.Chart');
@@ -81,7 +82,7 @@ Ext.define( 'BS.Statistics.Panel', {
 			]});
 
 		this.items = [
-			this.pnlFilters, 
+			this.pnlFilters,
 			this.pnlMain
 		];
 
@@ -92,6 +93,9 @@ Ext.define( 'BS.Statistics.Panel', {
 			mw.message('bs-extjs-loading').plain(),
 			Ext.baseCSSPrefix + 'mask-loading'
 		);
+	},
+	onPnlFiltersFailed: function(sender, message, result) {
+		this.getEl().unmask();
 	},
 	onPnlFiltersSaved: function(sender, data, result) {
 		this.getEl().unmask();
