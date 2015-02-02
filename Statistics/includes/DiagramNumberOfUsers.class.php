@@ -15,7 +15,7 @@
 /**
  * Describes number of users diagram for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class BsDiagramNumberOfUsers extends BsDiagram {
 
@@ -31,7 +31,7 @@ class BsDiagramNumberOfUsers extends BsDiagram {
 		$this->sTitlex = wfMessage( 'bs-statistics-label-time' )->plain();
 		$this->sTitley = wfMessage( 'bs-statistics-label-count' )->plain();
 		$this->sActualGrain = "m";
-		$this->sModLabel = "M";
+		$this->sModLabel = "M y";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
 		$this->bListable = true;
 		$this->sSqlWhatForDiagram = "count(user_id)";
