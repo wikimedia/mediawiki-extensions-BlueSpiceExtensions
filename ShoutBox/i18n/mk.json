@@ -22,7 +22,7 @@
 	"bs-shoutbox-archive-failure": "Се јави грешка при обидот за бришење на ставката. Обидете се повторно.",
 	"bs-shoutbox-archive-failure-user": "Ставките може да ги бришат само нивните автори.",
 	"bs-shoutbox-switch-description": "Ги скрива брзите пораки на страницава",
-	"bs-shoutbox-charactersleft": "{{PLURAL:$1|преостанува еден знак|преостануваат $1 знаци}}",
+	"bs-shoutbox-charactersleft": "{{PLURAL:$1|преостанува уште еден знак|преостануваат уште $1 знаци}}",
 	"bs-shoutbox-confirm-text": "Дали навистина сакате да ја избришете ставката?",
 	"bs-shoutbox-confirm-title": "Потврди",
 	"bs-shoutbox-entermessage": "Внесете порака",

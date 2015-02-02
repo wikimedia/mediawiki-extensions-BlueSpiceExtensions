@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
 	"bs-interwikilinks-desc": "Interface administrativa para engadir, editar e eliminar ligazóns interwiki",
@@ -18,7 +19,7 @@
 	"bs-interwikilinks-pfxexists": "Este prefixo xa existe.",
 	"bs-interwikilinks-headerprefix": "Prefixo",
 	"bs-interwikilinks-titleaddinterwikilink": "Engadir ligazón interwiki",
-	"bs-interwikilinks-titleeditinterwikilink": "Editar ligazón interwiki",
+	"bs-interwikilinks-titleeditinterwikilink": "Editar a ligazón interwiki",
 	"bs-interwikilinks-labelprefix": "Prefixo",
 	"bs-interwikilinks-titledeleteinterwikilink": "Eliminar ligazón interwiki",
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Está seguro de que desexa eliminar esta ligazón interwiki?",

@@ -20,5 +20,6 @@
 	"bs-insertlink-label-searchfile": "Buscar…",
 	"bs-insertlink-select-a-page": "Elegir destino…",
 	"bs-insertlink-select-a-namespace": "(Páginas)",
-	"bs-insertlink-empty-field-text": "Para insertar un enlace es necesario definir el destino."
+	"bs-insertlink-empty-field-text": "Para insertar un enlace es necesario definir el destino.",
+	"bs-insertlink-no-applet": "No se pudo cargar la miniaplicación. Comprueba la instalación de Java."
 }
