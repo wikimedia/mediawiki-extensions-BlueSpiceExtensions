@@ -287,6 +287,11 @@ class Review extends BsExtensionMW {
 			$wgExtNewIndexes[] = array('bs_review_steps', 'revs_user_id', $sDir . 'db/oracle/review.patch.user_id.index.oci.sql');
 			$wgExtNewIndexes[] = array('bs_review_steps', 'revs_status', $sDir . 'db/oracle/review.patch.status.index.oci.sql');
 			$wgExtNewIndexes[] = array('bs_review_templates', 'revt_name', $sDir . 'db/oracle/review.patch.name.index.oci.sql');
+		} elseif ($wgDBtype == 'sqlite') {
+			$updater->addExtensionTable(
+				'bs_review',
+				$sDir . 'db/mysql/review.sql'
+			);
 		}
 		return true;
 	}

@@ -11,9 +11,8 @@
 -- @filesource
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/bs_permission_templates (
-  `tpl_id` int(10) unsigned NOT NULL auto_increment,
-  `tpl_name` varchar(100) collate utf8_bin NOT NULL,
+  `tpl_id` int(10) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `tpl_name` varchar(255) NOT NULL,
   `tpl_data` blob NOT NULL,
-  `tpl_description` text collate utf8_bin NOT NULL,
-  PRIMARY KEY  (`tpl_id`)
+  `tpl_description` mediumblob NOT NULL
 )/*$wgDBTableOptions*/;
