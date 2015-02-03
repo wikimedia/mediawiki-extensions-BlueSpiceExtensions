@@ -316,17 +316,12 @@
 		if (checkTemplate(ruleSet) === NOT_ALLOWED) {
 			return NOT_ALLOWED;
 		}
-		var permission = ALLOWED_EXPLICIT;
 		for (var i = 0, setlen = ruleSet.length; i < setlen; i++) {
-			var check = checkPermissionInNamespace(ruleSet[i], namespace);
-			if (check === NOT_ALLOWED) {
-				return check;
-			}
-			if (check === ALLOWED_IMPLICIT) {
-				permission = check;
+			if (checkPermissionInNamespace(ruleSet[i], namespace) === NOT_ALLOWED) {
+				return NOT_ALLOWED;
 			}
 		}
-		return permission;
+		return ALLOWED_EXPLICIT;
 	}
 
 	/**
@@ -560,8 +555,8 @@
 	}
 
 	/**
-	 * Here we define out dynamic model. We override {@see Ext.data.Model} and
-	 * add some custom business logig to handle our three possible states and
+	 * Here we define our dynamic model. We override {@see Ext.data.Model} and
+	 * add some custom business logic to handle our three possible states and
 	 * transform them into binary states to enable the grid to work them as
 	 * checkboxes.
 	 * @override Ext.data.Model
@@ -605,12 +600,12 @@
 		 */
 		set: function (fieldName, newValue, justCheck) {
 			var me = this,
-				data = me[me.persistenceProperty],
+				data = me.data,
 				fields = me.fields,
 				modified = me.modified,
-				id = data['right'],
-				type = data['type'],
-				ruleSet = data['ruleSet'],
+				id = data.right,
+				type = data.type,
+				ruleSet = data.ruleSet,
 				namespace = parseInt(fieldName.substring(8)), //fieldName = "userCan_23454" || "userCan_Wiki"
 				currentValue, field, key, modifiedFieldNames, name,
 				ns, namespaceId, rule, right, record, value;
@@ -627,30 +622,39 @@
 			if (type) { // HERE STARTS THE LOGIC FOR RIGHTS
 				me.beginEdit();
 				if (namespace === false) {
-					// We need to check here for the current setting because
-					// "newValue" always is a boolean value but we need the three
-					// level value, a namespace specific field can have.
-					value = checkPermission(id);
-					// A field can have the value ALLOWED_EXPLICIT, ALLOWED_IMPLICITE
-					// and NOT_ALLOWED, whereof ALLOWED_EXPLICIT is the only value
-					// which shows as a checked checkbox.
-					if (value < ALLOWED_EXPLICIT) {
-						// So if the field has any of the other values then it
-						// means that the user want to check it.
-						value = ALLOWED_EXPLICIT;
-					} else {
-						// Otherwise the user wants to uncheck it.
-						value = NOT_ALLOWED;
-					}
+                    // newValue can either be a boolean or an int. If it is an int,
+                    // we don't need to convert it because it already represents one of
+                    // the triple state values. Otherwise, we convert it into a triple
+                    // state value.
+                    if(Ext.isBoolean(newValue)) {
+                        value = checkPermission(id);
+                        // A field can have the value ALLOWED_EXPLICIT, ALLOWED_IMPLICITE
+                        // and NOT_ALLOWED, whereof ALLOWED_EXPLICIT is the only value
+                        // which shows as a checked checkbox.
+                        if (value < ALLOWED_EXPLICIT) {
+                            // So if the field has any of the other values then it
+                            // means that the user want to check it.
+                            value = ALLOWED_EXPLICIT;
+                        } else {
+                            // Otherwise the user wants to uncheck it.
+                            value = NOT_ALLOWED;
+                        }
+                    } else {
+                        value = newValue;
+                    }
 					setPermission(id, value);
 				} else {
 					// same logic as above
-					value = checkPermissionInNamespace(id, namespace);
-					if (value < ALLOWED_EXPLICIT) {
-						value = ALLOWED_EXPLICIT;
-					} else {
-						value = NOT_ALLOWED;
-					}
+                    if(Ext.isBoolean(newValue)) {
+                        value = checkPermissionInNamespace(id, namespace);
+                        if (value < ALLOWED_EXPLICIT) {
+                            value = ALLOWED_EXPLICIT;
+                        } else {
+                            value = NOT_ALLOWED;
+                        }
+                    } else {
+                        value = newValue;
+                    }
 					setPermissionInNamespace(id, namespace, value);
 				}
 
