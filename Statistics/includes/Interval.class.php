@@ -16,14 +16,14 @@
 /**
  * Describes an interval for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class Interval {
 
 	/**
 	 * Shortcut for getting a series of Intervals from a diagram
 	 * @param object Diagram $oDiagram
-	 * @return object Interval 
+	 * @return object Interval
 	 */
 	public static function getIntervalsFromDiagram( $oDiagram ) {
 		return Interval::getIntervals( $oDiagram->getActualGrain(), $oDiagram->getStartTime(), $oDiagram->getEndTime(), $oDiagram->getModLabel() );
@@ -35,7 +35,7 @@ class Interval {
 	 * @param string $offset Date string
 	 * @param string $limit Date string
 	 * @param string $modLabel Date format item, e.g. "M" for "Jan, Feb"
-	 * @return Interval 
+	 * @return Interval
 	 */
 	public static function getIntervals( $step="W", $offset='05/01/2007', $limit='01/31/2009', $modLabel=false ) {
 		$intervals=array();
@@ -79,7 +79,7 @@ class Interval {
 		//var_dump($intervals);
 		return $intervals;
 	}
-	
+
     /**
 	 * Lower interval boundary
 	 * @var string Date string

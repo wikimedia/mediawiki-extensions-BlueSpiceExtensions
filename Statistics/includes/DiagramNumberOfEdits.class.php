@@ -16,7 +16,7 @@
 /**
  * Describes number of edits for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class BsDiagramNumberOfEdits extends BsDiagram {
 
@@ -31,7 +31,7 @@ class BsDiagramNumberOfEdits extends BsDiagram {
 		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
 		$this->sTitley = wfMsg( 'bs-statistics-label-count');
 		$this->sActualGrain = "m";
-		$this->sModLabel = "M";
+		$this->sModLabel = "M y";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
 		$this->bListable = false;
 		$this->sSqlWhatForDiagram = "count(DISTINCT rev_id)";

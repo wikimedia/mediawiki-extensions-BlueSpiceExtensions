@@ -16,7 +16,7 @@
 /**
  * Describes edits per user for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class BsDiagramEditsPerUser extends BsDiagram {
 
@@ -31,7 +31,7 @@ class BsDiagramEditsPerUser extends BsDiagram {
 		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
 		$this->sTitley = wfMsg( 'bs-statistics-label-count');
 		$this->sActualGrain = "m";
-		$this->sModLabel = "M";
+		$this->sModLabel = "M y";
 		$this->sFormatX = "%01.1f";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
 		$this->bListable = false;
