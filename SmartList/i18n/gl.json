@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo"
+		]
+	},
+	"bs-smartlist-recent-changes": "Cambios recentes",
+	"bs-smartlist-no-entries": "Non se atopou ningún resultado.",
+	"bs-smartlist-pref-namespaces": "Espazos de nomes:",
+	"bs-smartlist-pref-categories": "Categorías:",
+	"bs-smartlist-pref-period": "Período:",
+	"bs-smartlist-pref-showonlynewarticles": "Mostras só páxinas novas",
+	"bs-smartlist-pref-order": "Ordenar por:",
+	"bs-smartlist-day": "Día",
+	"bs-smartlist-week": "Semana",
+	"bs-smartlist-month": "Mes",
+	"bs-smartlist-title": "Título",
+	"bs-smartlist-lastedits": "As miñas edicións"
+}

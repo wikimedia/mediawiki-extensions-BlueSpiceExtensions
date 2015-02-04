@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo"
+		]
+	},
+	"bs-statistics-day": "Día",
+	"bs-statistics-label-name": "Nome",
+	"bs-statistics-label-page": "Páxina",
+	"bs-statistics-label-creator": "Creador",
+	"bs-statistics-diag-number-of-edits": "Número de edicións",
+	"bs-statistics-filter-category": "Categoría",
+	"bs-statistics-portlet-numberofusers": "Número de usuarios",
+	"bs-statistics-portlet-numberofedits": "Número de edicións",
+	"bs-statistics-portlet-numberofpages": "Número de páxinas",
+	"bs-statistics-portletconfig-periodday": "Onte"
+}

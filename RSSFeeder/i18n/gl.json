@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo"
+		]
+	},
+	"bs-rssfeeder-pages": "Páxina",
+	"bs-rssfeeder-submit": "Mostrar",
+	"bs-rssfeeder-rss": "Fonte de novas RSS",
+	"bs-rssfeeder-rss-desc": "Crear a súa propia fonte de novas RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL do RSS"
+}

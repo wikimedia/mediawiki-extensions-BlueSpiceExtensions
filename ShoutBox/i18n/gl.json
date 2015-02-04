@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo"
+		]
+	},
+	"bs-shoutbox-shout": "Enviar",
+	"bs-shoutbox-loading": "Cargando...",
+	"bs-shoutbox-confirm-title": "Confirmar"
+}

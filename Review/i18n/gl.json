@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo"
+		]
+	},
+	"bs-review-menu-entry": "Editar revisión",
+	"bs-review-accepted": "Aceptado",
+	"bs-review-rejected": "Rexeitado",
+	"bs-review-save-removed": "A revisión foi eliminada.",
+	"bs-review-review-error": "Houbo un erro descoñecido.",
+	"bs-review-commentinputlabel": "O seu comentario:",
+	"bs-review-comments": "Comentarios",
+	"bs-review-colstatus": "Estado",
+	"bs-review-colreviewer": "Revisor",
+	"bs-review-colcomment": "Comentar",
+	"bs-review-lblstartdate": "Data de comezo",
+	"bs-review-lblenddate": "Data de fin",
+	"bs-review-titleaddreviewer": "Engadir revisor",
+	"bs-review-header-page-title": "Páxina",
+	"bs-review-header-owner-name": "Propietario",
+	"bs-review-header-startdate": "Comezo",
+	"bs-review-header-enddate": "Fin",
+	"bs-review-confirm-delete-step": "Está seguro de querer borrar este paso?",
+	"bs-review-confirm-delete-review": "Está seguro de querer borrar esta revisión?"
+}

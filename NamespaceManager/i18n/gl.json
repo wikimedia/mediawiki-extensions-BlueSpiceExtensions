@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"bs-namespacemanager-desc": "Interfaz administrativa para engadir, editar e eliminar espazos de nomes",
@@ -28,5 +29,7 @@
 	"bs-namespacemanager-willmove": "Será movido a \"{{int:bs-ns_main}}\"",
 	"bs-namespacemanager-willmovesuffix": "Será movido a  \"{{int:bs-ns_main}}\" co sufixo \"$1\"",
 	"bs-namespacemanager-deletewarning": "Estás seguro de que quere eliminar este espazo de nomes? Non se poderá desfacer esta acción.",
-	"bs-namespacemanager-pagepresent": "Páxinas neste espazo de nomes:"
+	"bs-namespacemanager-pagepresent": "Páxinas neste espazo de nomes:",
+	"bs-namespacemanager-deletens-movepages": "Esta páxina moveuse dende o espazo de nomes \"$1\" ao espazo de nomes \"{{int:bs-ns_main}}\", xa que o espazo de nomes\"$1\" foi eliminado",
+	"bs-namespacemanager-deletens-deletepages": "Esta páxina foi eliminada, xa que o nome de espazos \"$1\" foi eliminado."
 }

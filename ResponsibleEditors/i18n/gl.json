@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Toliño",
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"bs-responsibleeditors-desc": "Permite que MediaWiki xestione os editores responsables dunha páxina",
@@ -24,5 +25,8 @@
 	"bs-responsibleeditors-statebartop-icon-alt": "Existe un editor responsable desta páxina",
 	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|{{GENDER:$2|Editor|Editora}} responsable|Editores responsables}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "A páxina indicada non existe.",
-	"action-responsibleeditors-viewspecialpage": "ver as páxinas que están protexidas co dereito \"ResponsibleEditors-Viewspecialpage\""
+	"action-responsibleeditors-viewspecialpage": "ver as páxinas que están protexidas co dereito \"ResponsibleEditors-Viewspecialpage\"",
+	"bs-responsibleeditors-columnpage": "Páxina",
+	"bs-responsibleeditors-columnnamespace": "Espazo de nomes",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Non asignado"
 }
