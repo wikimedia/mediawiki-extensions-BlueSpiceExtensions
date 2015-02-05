@@ -335,7 +335,14 @@ class Flexiskin extends BsExtensionMW {
 				if ($aConfig[1]->logo == "")
 					return true;
 				$sPath = BS_DATA_PATH . "/flexiskin/" . $sId . "/images/";
-				$sImg = "<img src='".$sPath . $aConfig[1]->logo."' />";
+				$sPageName = "";
+				global $wgSitename;
+				$oTitle = Title::newMainPage();
+				if ( !is_null( $oTitle ) ) {
+					$sPageName = $oTitle->getText() . " - ";
+				}
+				$sPageName .= $wgSitename;
+				$sImg = "<img src='" . $sPath . $aConfig[1]->logo . "' alt='" . $sPageName . "'/>";
 				return false;
 			}
 			return true;
