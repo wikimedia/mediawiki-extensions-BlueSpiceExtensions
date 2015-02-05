@@ -1,4 +1,4 @@
-Ext.define('BS.Flexiskin.Menuitems.Header', {
+Ext.define('BS.Flexiskin.menu.HeaderItem', {
 	extend: 'BS.Flexiskin.menu.BaseItem',
 	title: mw.message('bs-flexiskin-headerHeader').plain(),
 	layout: 'form',
@@ -20,7 +20,6 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 
 		$(document).trigger("BSFlexiskinMenuHeaderInitComponent", [this, this.items]);
 
-		this.afterInitComponent();
 		this.callParent(arguments);
 	},
 	btnUploadClick: function(el, form) {

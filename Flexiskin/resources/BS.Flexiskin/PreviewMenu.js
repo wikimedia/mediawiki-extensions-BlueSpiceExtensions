@@ -37,9 +37,9 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 			]
 		}];
 		this.items = [
-			Ext.create("BS.Flexiskin.Menuitems.General"),
-			Ext.create("BS.Flexiskin.Menuitems.Header"),
-			Ext.create("BS.Flexiskin.Menuitems.Position")
+			Ext.create("BS.Flexiskin.menu.GeneralItem"),
+			Ext.create("BS.Flexiskin.menu.HeaderItem"),
+			Ext.create("BS.Flexiskin.menu.PositionItem")
 		];
 		$(document).trigger("BSFlexiskinPreviewMenuInitComponent", [this, this.items]);
 
@@ -65,7 +65,7 @@ Ext.define('BS.Flexiskin.PreviewMenu', {
 		for (var i = 0; i < items.length; i++) {
 			items[i].setData( {skinId : obj.skinId, config: obj.config[i]} );
 		}
-		$(document).trigger("BSFlexiskinMenuPreviewSetData", [this, data]);
+		$(document).trigger("BSFlexiskinMenuPreviewSetData", [this, this.items]);
 		//this.callParent( arguments );
 	},
 	btnSaveClick: function() {

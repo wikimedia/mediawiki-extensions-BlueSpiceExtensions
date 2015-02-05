@@ -1,4 +1,4 @@
-Ext.define('BS.Flexiskin.Menuitems.General', {
+Ext.define('BS.Flexiskin.menu.GeneralItem', {
 	extend: 'BS.Flexiskin.menu.BaseItem',
 	title: mw.message('bs-flexiskin-headerGeneral').plain(),
 	layout: 'form',
@@ -173,24 +173,5 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		this.cgRepeatBackground.setValue(data.config.repeatBackground)
 		Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').setValue(data.config.backgroundImage);
 		$(document).trigger("BSFlexiskinMenuGeneralSetData", [this, data]);
-	},
-	setColor: function(el, clr, textfield) {
-		if( typeof clr == "undefined" || clr == null) return;
-
-		var bFound = false;
-		clr = clr.replace('#', "");
-		Ext.Array.each(el.colors, function(val) {
-			if (clr == val) {
-				bFound = true;
-			}
-		});
-		if (bFound == false){
-			if (textfield){
-				textfield.setValue(clr);
-			}
-			el.clear();
-		}
-		else
-			el.select(clr);
 	}
 });

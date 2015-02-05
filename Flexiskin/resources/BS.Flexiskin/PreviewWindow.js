@@ -15,10 +15,10 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 
 	//Custom Setting
 	currentData: {},
-	
+
 	initComponent: function() {
 		this.pnlMenu = Ext.create("BS.Flexiskin.PreviewMenu");
-		
+
 		this.cpIframe = Ext.create( 'Ext.Component', {
 			xtype: "component",
 			region: 'center',
@@ -29,7 +29,7 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 			},
 			scope: this
 		});
-		
+
 		this.items = [
 			this.pnlMenu,
 			this.cpIframe
@@ -37,30 +37,30 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 
 		this.on('show', this.onShow, this);
 		//this.on('afterrender', this.onAfterRender, this);
-		
+
 		this.callParent(arguments);
 	},
-	
+
 	onShow: function() {
 		Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
 		Ext.get('bs-flexiskin-preview-frame').on('load', function() {
 			Ext.getCmp('bs-flexiskin-preview-frame').setLoading(false);
 		});
 		this.setWidth(Ext.getBody().getWidth());
-		
+
 		this.callParent(arguments);
 	},
-	
-	
-	
+
+
+
 	setData: function( obj ) {
 		this.currentData = obj;
-		Ext.getCmp('bs-flexiskin-preview-frame').autoEl.src = 
+		Ext.getCmp('bs-flexiskin-preview-frame').autoEl.src =
 				mw.util.wikiScript() +"?"+ $.param({
 					flexiskin: this.currentData.skinId
 			});
 		if( this.rendered ) {
-			Ext.getCmp('bs-flexiskin-preview-frame').autoEl.src = 
+			Ext.getCmp('bs-flexiskin-preview-frame').autoEl.src =
 				mw.util.wikiScript() +"?"+ $.param({
 					flexiskin: this.currentData.skinId
 			});
