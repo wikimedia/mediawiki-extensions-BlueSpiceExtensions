@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"1AnuraagPandey"
+		]
+	},
+	"prefs-articleinfo": "पन्ना कय जानकारी",
+	"bs-articleinfo-last-edited-tooltip": "अन्तिम सम्पादन",
+	"bs-articleinfo-last-editor": "अन्तिम {{GENDER:$1|सम्पादनकर्ता}}",
+	"bs-articleinfo-categories": "श्रेणी",
+	"bs-articleinfo-all-categories-heading": "श्रेणी",
+	"bs-articleinfo-templates": "साँचा",
+	"bs-articleinfo-subpages": "सहपन्ना",
+	"bs-articleinfo-statebartopcategories": "श्रेणी",
+	"bs-articleinfo-statebartopsubpages": "सहपन्ना",
+	"bs-articleinfo-statebarbodycategories": "श्रेणी",
+	"bs-articleinfo-statebarbodysubpages": "सहपन्ना",
+	"bs-articleinfo-statebarbodytemplates": "साँचा"
+}
