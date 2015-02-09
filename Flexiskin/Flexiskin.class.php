@@ -192,6 +192,10 @@ class Flexiskin extends BsExtensionMW {
 		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","customBackgroundColor":"F4F4F4","backgroundImage":"","repeatBackground":"no-repeat"},';
 		$sConfig .= '{"id":"header","logo":""},';
 		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1222", "fullWidth":"0"}]';
+		$bReturn = wfRunHooks( "BSFlexiskinGenerateConfigFile", array( $oData, &$sConfig ) );
+		if ( !$bReturn ) {
+			return "[{}]";
+		}
 		return $sConfig;
 	}
 
@@ -361,6 +365,7 @@ class Flexiskin extends BsExtensionMW {
 		else
 			$aReturn[] = "body{background-image:none !important;}";
 		$aReturn[] = "body{background-repeat:".$aConfig->repeatBackground . " !important;}";
+		wfRunHooks("BSFlexiskinFormatterGeneral", array(&$aConfig, &$aReturn));
 		return implode(" \n", $aReturn);
 	}
 
@@ -369,6 +374,7 @@ class Flexiskin extends BsExtensionMW {
 		$aReturn = array();
 
 		//$aReturn[] = "#bs-logo{background-image:url('images/".$aConfig->logo."');}";
+		wfRunHooks("BSFlexiskinFormatterHeader", array(&$aConfig, &$aReturn));
 		return implode(" \n", $aReturn);
 	}
 
@@ -394,6 +400,7 @@ class Flexiskin extends BsExtensionMW {
 			$aReturn[] = "#bs-application{width:100%;}";
 			$aReturn[] = "#bs-wrapper{width:100%;min-width:100%;}";
 		}
+		wfRunHooks("BSFlexiskinFormatterPosition", array(&$aConfig, &$aReturn));
 
 		return implode(" \n", $aReturn);
 	}
