@@ -1,5 +1,5 @@
-Ext.define('BS.Flexiskin.Menuitems.Header', {
-	extend: 'BS.Panel',
+Ext.define('BS.Flexiskin.menu.HeaderItem', {
+	extend: 'BS.Flexiskin.menu.BaseItem',
 	title: mw.message('bs-flexiskin-headerheader').plain(),
 	layout: 'form',
 	currentData: {},
@@ -17,7 +17,9 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 		this.items = [
 			this.ufLogoUpload
 		];
-		this.afterInitComponent();
+
+		$(document).trigger("BSFlexiskinMenuHeaderInitComponent", [this, this.items]);
+
 		this.callParent(arguments);
 	},
 	btnUploadClick: function(el, form) {
@@ -74,10 +76,12 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 			id: 'header',
 			logo: Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').getValue()
 		};
+		$(document).trigger("BSFlexiskinMenuHeaderGetData", [this, data]);
 		return data;
 	},
 	setData: function(data) {
 		this.currentData = data;
 		Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(data.config.logo);
+		$(document).trigger("BSFlexiskinMenuHeaderSetData", [this, data]);
 	}
 });
