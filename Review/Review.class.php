@@ -1026,7 +1026,7 @@ class Review extends BsExtensionMW {
 		if ($oTitle === false || !$oTitle->exists() || $oUser === false){
 			return wfMessage('bs-review-review-error')->plain();
 		}
-		if ($oTitle->userCan("workflowview", $oUser)) {
+		if (!$oTitle->userCan("workflowview", $oUser)) {
 			return wfMessage('bs-review-error-insufficient-permissions', 'workflowview')->text();
 		}
 
