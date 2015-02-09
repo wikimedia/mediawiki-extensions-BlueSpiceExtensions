@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Banjo"
+			"Banjo",
+			"Fisterraeomar"
 		]
 	},
 	"bs-shoutbox-shout": "Enviar",
 	"bs-shoutbox-loading": "Cargando...",
-	"bs-shoutbox-confirm-title": "Confirmar"
+	"bs-shoutbox-confirm-title": "Confirmar",
+	"bs-shoutbox-notifications-title-message-subject": "Foi vostede mencionado por alguén"
 }
