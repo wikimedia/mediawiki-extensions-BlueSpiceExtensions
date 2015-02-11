@@ -90,7 +90,8 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
-		$this->setHook( 'BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd' );
+		$this->setHook( 'BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd', true );
+		$this->setHook( 'RevisionAjaxReviewBeforeParams' );
 		$this->setHook( 'BSPageAccessAddAdditionalAccessGroups', 'onPageAccessAddAdditionalAccessGroups' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
@@ -187,6 +188,82 @@ class ResponsibleEditors extends BsExtensionMW {
 	}
 
 	/**
+	 * Add the given User to a temporary group if he is a responsible editor
+	 * for the given Title. This group will have special permissions for the
+	 * Title's namespace. The group assignment exists only during the current
+	 * request. This method needs to be called before a permission check is
+	 * performed on the Title.
+	 * @param Title $oTitle
+	 * @param User $oUser
+	 * @return boolean
+	 */
+	public function applyTempPermissionsForRespEditor( Title $oTitle, User $oUser ) {
+		$iArticleID = $oTitle->getArticleID();
+		$aResponsibleEditorsIDs = $this->getResponsibleEditorIdsByArticleId( $iArticleID );
+
+		if ( !in_array( $oUser->getId(), $aResponsibleEditorsIDs ) ){
+			return false;
+		}
+
+		$aAvailablePermissions = BsConfig::get( 'MW::ResponsibleEditors::AutoPermissions' );
+		if ( empty( $aAvailablePermissions ) ) {
+			return false;
+		}
+
+		BsGroupHelper::addTemporaryGroupToUser(
+			$oUser,
+			'tmprespeditors',
+			$aAvailablePermissions,
+			$oTitle
+		);
+
+		return true;
+	}
+
+	/**
+	 * Hook handler for FlaggedRevs RevisionReview overwrite.
+	 * ATTENTION: This is a handler for a custom hook in FlaggedRevsConnector!
+	 * It will be removed in next version!
+	 * @param FRCRevisionReview $oRevisionReview
+	 * @param Title $oTitle
+	 * @param type $aArgs
+	 * @return boolean
+	 * @deprecated since version 1.22
+	 */
+	public function onRevisionAjaxReviewBeforeParams( $oRevisionReview, &$oTitle, &$aArgs ) {
+		//MW BeforeInitialize hook is not present in ajax calls, so apply
+		//possible permissions for responsible editors in this context
+		if( is_null($oTitle) ) {
+			foreach( $aArgs as $sArg ) {
+				$set = explode( '|', $sArg, 2 );
+				if( count( $set ) != 2 ) {
+					continue;
+				}
+
+				list( $sKey, $vVal ) = $set;
+				if( $sKey != 'target' ) {
+					continue;
+				}
+
+				$oTitle = Title::newFromURL( $vVal );
+				break;
+			}
+		}
+		if( is_null($oTitle) || !$oTitle->exists() ) {
+			return true;
+		}
+
+		$aActivatedNamespaces = BsConfig::get('MW::ResponsibleEditors::ActivatedNamespaces');
+		if ( !in_array($oTitle->getNamespace(), $aActivatedNamespaces) ) {
+			return true;
+		}
+
+		global $wgUser;
+		$this->applyTempPermissionsForRespEditor( $oTitle, $wgUser );
+		return true;
+	}
+
+	/**
 	 * Hook-Handler for MediaWiki hook BeforeInitialize
 	 * @global array $wgGroupPermissions
 	 * @global User $wgUser
@@ -199,21 +276,12 @@ class ResponsibleEditors extends BsExtensionMW {
 	 * @return boolean Always true
 	 */
 	public function onBeforeInitialize( &$oTitle, $article, &$output, &$oUser, $request, $mediaWiki ) {
-		if ( !$oTitle->exists() ) return true;
+		if( is_null($oTitle) || !$oTitle->exists() ) return true;
 
 		$aActivatedNamespaces = BsConfig::get('MW::ResponsibleEditors::ActivatedNamespaces');
-		if ( !is_array( $aActivatedNamespaces ) ) return true;
 		if ( !in_array($oTitle->getNamespace(), $aActivatedNamespaces) ) return true;
 
-		$iArticleID = $oTitle->getArticleID();
-		$aResponsibleEditorsIDs = $this->getResponsibleEditorIdsByArticleId( $iArticleID );
-
-		if ( !in_array( $oUser->getId(), $aResponsibleEditorsIDs ) ) return true;
-
-		$aAvailablePermissions = BsConfig::get( 'MW::ResponsibleEditors::AutoPermissions' );
-		if ( empty( $aAvailablePermissions ) ) return true;
-
-		BsGroupHelper::addTemporaryGroupToUser( $oUser, 'tmprespeditors', $aAvailablePermissions, $oTitle );
+		$this->applyTempPermissionsForRespEditor( $oTitle, $oUser );
 		return true;
 	}
 
@@ -275,7 +343,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		return $aPrefs;
 	}
 
-		/**
+	/**
 	 * Hook Handler for BSDashboardsUserDashboardPortalPortlets
 	 *
 	 * @param array &$aPortlets reference to array portlets
@@ -429,6 +497,11 @@ class ResponsibleEditors extends BsExtensionMW {
 			return true;
 		if ($oTitle->exists() == false)
 			return true;
+
+		//MW BeforeInitialize hook is not present in ajax calls, so apply
+		//possible permissions for responsible editors in this context
+		$this->applyTempPermissionsForRespEditor( $oTitle, $oUser );
+
 		$oResponsibleEditorsView = $this->makeStateBarBodyResponsibleEditorsEntries($oTitle->getArticleID());
 		if( !$oResponsibleEditorsView ) return true;
 
