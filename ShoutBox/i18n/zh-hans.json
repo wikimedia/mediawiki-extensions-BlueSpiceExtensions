@@ -29,5 +29,7 @@
 	"bs-shoutbox-entermessage": "请输入一条消息。",
 	"bs-shoutbox-too-early": "请等待几秒钟后再提交下一个条目。",
 	"bs-shoutbox-n-shouts": "$1次喊话",
-	"bs-shoutbox-notifications-title-message-subject": "您曾提到"
+	"echo-category-title-bs-shoutbox-mention-cat": "通知一次喊叫中的提及",
+	"bs-shoutbox-notifications-title-message-subject": "您曾提到",
+	"bs-shoutbox-notifications-title-message-text": "您被$2在页面“$3”的一次喊叫中{{GENDER:$1|提及}}。"
 }
