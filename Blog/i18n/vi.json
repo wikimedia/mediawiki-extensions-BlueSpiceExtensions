@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dinhxuanduyet"
+		]
+	},
+	"bs-blog-desc": "Hiển thị một danh sách phong cách của trang",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Không có bài viết blog nào.",
+	"bs-blog-comments": "Bình luận",
+	"bs-blog-read-more": "Đọc thêm",
+	"bs-blog-form-title-text": "Tạo một bài viết blog mới",
+	"bs-blog-form-button-text": "Tạo",
+	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Mở cửa sổ mới để đọc thêm",
+	"bs-blog-pref-showlimit": "Số lượng các bài viết blog:",
+	"bs-blog-tag-blog-desc": "Hiển thị các bài viết blog trên mọi trang."
+}

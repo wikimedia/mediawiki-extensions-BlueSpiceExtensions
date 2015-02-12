@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Jenniesarina"
 		]
 	},
 	"bs-shoutbox-desc": "Lägger till en tolkfunktion för att bädda in din egen shoutbox",
@@ -27,5 +28,6 @@
 	"bs-shoutbox-confirm-text": "Vill du verkligen radera detta inlägg?",
 	"bs-shoutbox-confirm-title": "Bekräfta",
 	"bs-shoutbox-entermessage": "Skriv in ett meddelande.",
-	"bs-shoutbox-too-early": "Vänta några sekunder innan du skickar nästa inlägg."
+	"bs-shoutbox-too-early": "Vänta några sekunder innan du skickar nästa inlägg.",
+	"bs-shoutbox-notifications-title-message-subject": "Du har blivit omnämnd"
 }

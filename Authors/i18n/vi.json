@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dinhxuanduyet"
+		]
+	},
+	"bs-authors-profileimage": "Hình thẻ",
+	"bs-authors-profileimage-change": "Thay đổi hình thẻ",
+	"bs-authors-show-all-authors": "Thêm tác giả hợp lệ",
+	"bs-authors-pref-imageheight": "Chiều cao hình ảnh:",
+	"bs-authors-pref-imagewidth": "Chiều rộng hình ảnh:",
+	"bs-authors-pref-limit": "Giới hạn các tác giả để hiển thị:",
+	"bs-authors-pref-show": "Hiển thị tác giả"
+}
