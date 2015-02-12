@@ -585,7 +585,7 @@ $aData = false;
 					)->plain();
 			$oUser = User::newFromId( $iUserId );
 			$sMessage = wfMessage(
-					'bs-shoutbox-notifications-title-message-text', BsCore::getUserDisplayName($oUser), Linker::link( Article::newFromID( $iArticleId )->getTitle() ), Linker::link( $oUser )
+					'bs-shoutbox-notifications-title-message-text', $oUser, BsCore::getUserDisplayName($oUser), Linker::link( Article::newFromID( $iArticleId )->getTitle() ), Linker::link( $oUser )
 					)->plain();
 			BsMailer::getInstance( 'MW' )->send( $aUsers, $sSubject, $sMessage );
 		}
@@ -628,12 +628,12 @@ $aData = false;
 			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
 			'title-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agentlink', 'titlelink' ),
+			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
 			'flyout-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agentlink', 'titlelink' ),
+			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
 			'email-subject-message' => 'bs-shoutbox-notifications-title-message-subject',
 			'email-body-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agentlink', 'titlelink' ),
+			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
 		);
 		return true;
 	}
