@@ -382,8 +382,8 @@ class SearchOptions {
 				}
 
 				$aDiff = array_diff( array_keys( $aNamespaces ), $this->aOptions['namespaces'] );
-				if ( empty( $aDiff ) ) {
-					$this->aOptions['namespaces'] = array();
+				if ( !empty( $aDiff ) ) {
+					$this->aOptions['namespaces'] = array_values($aDiff);
 				}
 			} else {
 				wfRunHooks( 'BSExtendedSearchEmptyNamespacesElse', array( $this, $oSearchRequest ) );
@@ -450,10 +450,6 @@ class SearchOptions {
 			$aFq[] = ( BsConfig::get( 'MW::ExtendedSearch::ShowFacets' ) )
 				? '{!tag=na}namespace:(' . implode( ' ', $aFqNamespaces ) . ')'
 				: 'namespace:(' . implode( ' ', $aFqNamespaces ) . ')';
-		}
-
-		if ( empty( $oSearchRequest->aNamespaces ) && $this->aOptions['searchOrigin'] != 'titlebar' ) {
-			$this->aOptions['namespaces'] = array();
 		}
 
 		if ( $vNamespace !== false ) {
