@@ -17,7 +17,7 @@
 	"bs-articleinfo-all-categories-heading": "分類",
 	"bs-articleinfo-nocategories": "找不到分類。",
 	"bs-articleinfo-hiddencats": "隱藏分類",
-	"bs-articleinfo-notemplates": "找不到樣板。",
+	"bs-articleinfo-notemplates": "找不到模板。",
 	"bs-articleinfo-templates": "模板",
 	"bs-articleinfo-subpages": "子頁",
 	"bs-articleinfo-subpages-available": "有此頁面之子頁",
@@ -30,5 +30,5 @@
 	"bs-articleinfo-statebartopsubpages": "子頁",
 	"bs-articleinfo-statebarbodycategories": "分類",
 	"bs-articleinfo-statebarbodysubpages": "子頁",
-	"bs-articleinfo-statebarbodytemplates": "樣板"
+	"bs-articleinfo-statebarbodytemplates": "模板"
 }

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sengwan"
+			"Sengwan",
+			"Saimawnkham"
 		]
 	},
 	"bs-visualeditor-wikitable": "လၵ်းၸဵင်",
-	"bs-visualeditor-aligntop": "ၼူိဝ်",
-	"bs-visualeditor-bsactions-save": "ၵဵပ်းဝႆ့"
+	"bs-visualeditor-aligntop": "ၼိူဝ်",
+	"bs-visualeditor-bsactions-save": "ၵဵပ်းသိမ်း"
 }

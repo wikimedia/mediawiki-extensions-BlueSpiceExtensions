@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sengwan"
+			"Sengwan",
+			"Saimawnkham"
 		]
 	},
 	"bs-insertmagic-currentweek": "ဝူင်ႈ (တူဝ်ၼပ့်)",
-	"bs-insertmagic-label-second": "ႄမးၶုိၼ်းၶူတ့်",
-	"bs-insertmagic-label-desc": "ေၶႃႈသပ်းလႅင်း"
+	"bs-insertmagic-label-second": "႒. မူၼ်ႉမႄးၶူတ်ႉ",
+	"bs-insertmagic-label-desc": "ၶေႃႈသပ်းလႅင်း"
 }
