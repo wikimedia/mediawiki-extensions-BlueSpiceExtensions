@@ -548,7 +548,7 @@ class PermissionManager extends BsExtensionMW {
 			return array(
 				'success' => false,
 				// TODO SU (04.07.11 12:06): i18n
-				'msg' => 'Not able to create or write "' . BSROOTDIR . DS . 'config' . DS . 'pm-settings.php".'
+				'msg' => 'Not able to create or write "' . $bsgPermissionManagerGroupSettingsFile . '".'
 			);
 		}
 	}
@@ -561,12 +561,12 @@ class PermissionManager extends BsExtensionMW {
 	protected static function backupExistingSettings() {
 		global $bsgPermissionManagerGroupSettingsFile;
 
-		if(file_exists($bsgPermissionManagerGroupSettingsFile)) {
+		if( file_exists( $bsgPermissionManagerGroupSettingsFile ) ) {
 			$timestamp = wfTimestampNow();
 			$backupFilename = "pm-settings-backup-{$timestamp}.php";
-			$backupFile = dirname($bsgPermissionManagerGroupSettingsFile)."/{$backupFilename}";
+			$backupFile = dirname( $bsgPermissionManagerGroupSettingsFile )."/{$backupFilename}";
 
-			file_put_contents($backupFile, file_get_contents($bsgPermissionManagerGroupSettingsFile));
+			file_put_contents( $backupFile, file_get_contents( $bsgPermissionManagerGroupSettingsFile ) );
 		}
 	}
 }

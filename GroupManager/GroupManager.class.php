@@ -308,7 +308,8 @@ class GroupManager extends BsExtensionMW {
 
 		$sSaveContent .= "\n\$wgGroupPermissions = array_merge(\$wgGroupPermissions, \$wgAdditionalGroups);";
 
-		$res = file_put_contents( BSROOTDIR.DS.'config'.DS.'gm-settings.php', $sSaveContent );
+		$sConfigFile = BSCONFIGDIR . DS . 'gm-settings.php';
+		$res = file_put_contents( $sConfigFile, $sSaveContent );
 		if ( $res ) {
 			return array(
 				'success' => true,
@@ -318,7 +319,7 @@ class GroupManager extends BsExtensionMW {
 			return array(
 				'success' => false,
 				// TODO SU (04.07.11 11:44): i18n
-				'message' => 'Not able to create or write file "'.BSROOTDIR.DS.'config'.DS.'gm-settings.php".'
+				'message' => 'Not able to create or write file "' . $sConfigFile . '".'
 			);
 		}
 	}

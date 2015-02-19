@@ -589,10 +589,11 @@ class NamespaceManager extends BsExtensionMW {
 		global $wgExtraNamespaces, $wgNamespacesWithSubpages,
 				$wgContentNamespaces, $wgNamespacesToBeSearchedDefault;
 
-		if ( !file_exists( BSROOTDIR . DS . 'config' . DS . 'nm-settings.php' ) ) {
+		$sConfigFile = BSCONFIGDIR . DS . 'nm-settings.php';
+		if ( !file_exists( $sConfigFile ) ) {
 			return array();
 		}
-		$sConfigContent = file_get_contents( BSROOTDIR . DS . 'config' . DS . 'nm-settings.php' );
+		$sConfigContent = file_get_contents( $sConfigFile );
 		$aUserNamespaces = array();
 		//if ( preg_match_all( '%// START Namespace ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*).*define\("NS_\1", ([0-9]*)\).*?// END Namespace \1%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
 		if ( preg_match_all( '%define\("NS_([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)", ([0-9]*)\)%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
@@ -667,7 +668,9 @@ class NamespaceManager extends BsExtensionMW {
 				$sSaveContent .= "// END Namespace {$sDefName}\n\n";
 			}
 		}
-		$res = file_put_contents( BSROOTDIR . DS . 'config' . DS . 'nm-settings.php', $sSaveContent );
+
+		$sConfigFile = BSCONFIGDIR . DS . 'nm-settings.php';
+		$res = file_put_contents( $sConfigFile, $sSaveContent );
 
 		if ( $res ) {
 			return array(
@@ -678,7 +681,7 @@ class NamespaceManager extends BsExtensionMW {
 		return array(
 			'success' => false,
 			// TODO SU (04.07.11 12:05): i18n
-			'message' => 'Not able to create or write "' . BSROOTDIR . DS . 'config' . DS . 'nm-settings.php".'
+			'message' => 'Not able to create or write "' . $sConfigFile. '".'
 		);
 	}
 
