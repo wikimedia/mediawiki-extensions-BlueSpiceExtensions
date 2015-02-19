@@ -63,7 +63,7 @@ if( !isset( $bsgPermissionManagerDefaultTemplates ) ) {
 }
 
 if( !isset( $bsgPermissionManagerGroupSettingsFile ) ) {
-	$bsgPermissionManagerGroupSettingsFile = BSROOTDIR . DS . 'config' . DS . 'pm-settings.php';
+	$bsgPermissionManagerGroupSettingsFile = BSCONFIGDIR . DS . 'pm-settings.php';
 }
 
 $bsgPermissionManagerDefaultTemplates = array(
