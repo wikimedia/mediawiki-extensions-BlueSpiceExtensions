@@ -16,13 +16,13 @@
 /**
  * Reads data from database for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class MySQLDbReader extends StatsDataProvider {
-	
+
 	/**
 	 * Database server host
-	 * @var string 
+	 * @var string
 	 */
 	public $host;
 	/**
@@ -59,9 +59,12 @@ class MySQLDbReader extends StatsDataProvider {
 
 		$sql = str_replace("@period", "BETWEEN '".$interval->getStartTS("YmdHis")."' AND '".$interval->getEndTS("YmdHis")."' ", $sql);
 		$sql = str_replace("@start", " '".$interval->getStartTS("YmdHis")."' ", $sql);
-		$sql = str_replace("@end", " '".$interval->getEndTS("YmdHis")."' ", $sql); 
+		$sql = str_replace("@end", " '".$interval->getEndTS("YmdHis")."' ", $sql);
 
 		$res = mysql_query($sql);
+		if (!$res){
+			return 0;
+		}
 		$row = mysql_fetch_array($res);
 
 		$item = $row[0];
@@ -90,6 +93,9 @@ class MySQLDbReader extends StatsDataProvider {
 		$sql = str_replace("@end", " '".$interval->getEndTS("YmdHis")."' ", $sql);
 //echo '<br>'.$sql;
 		$res = mysql_query($sql);
+		if (!$res){
+			return $uniqueValues;
+		}
 
 		while ($row = mysql_fetch_array($res)) {
 			$rowArr = array();
@@ -97,7 +103,7 @@ class MySQLDbReader extends StatsDataProvider {
 				$rowArr[] = $row[$i];
 			$uniqueValues[] = $rowArr;
 		}
-		
+
 
 
 
