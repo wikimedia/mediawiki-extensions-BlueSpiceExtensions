@@ -48,7 +48,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 	 * @return string The rendered HTML of the extension list
 	 */
 	public function execute( $params = false ) {
-		global $wgBlueSpiceExtInfo;
+		global $wgBlueSpiceExtInfo, $wgVersion;
 
 		$aExtensionInfo = array();
 		foreach ( $this->mExtensions as $aExtension ) {
@@ -84,6 +84,11 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		$aOut[] = '<tr>';
 		$aOut[] = '<td><a title="'.$wgBlueSpiceExtInfo['url'].'" href="'.$wgBlueSpiceExtInfo['url'].'">'.$wgBlueSpiceExtInfo['name'].'</a>'.$sCreditsLink.'</td>';
 		$aOut[] = '<td>'.$sVersion.'</td>';
+		$aOut[] = '</tr>';
+		$aOut[] = '<tr>';
+		$aOut[] = '<td><a title="Mediawiki" href="http://www.mediawiki.org/"> Mediawiki </a></td>';
+		$oTitle = SpecialPage::getTitleFor( "Version" );
+		$aOut[] = '<td><a title="' . $oTitle->getFullText() . '" href="' . $oTitle->getFullURL() . '">' . $wgVersion . '</a></td>';
 		$aOut[] = '</tr>';
 		$aOut[] = '</table>';
 		$aOut[] = '<div id="bs-extensioninfo-grid"></div>';
