@@ -24,7 +24,7 @@
 	"bs-statistics-not-allowed": "Error message used in [[Special:ExtendedStatistics]], to notify the user that he has not the necessary permissions for some actions.",
 	"bs-statistics-finish": "Used in [[Special:ExtendedStatistics]], button label for create diagram\n{{Identical|Create diagram}}",
 	"bs-statistics-filters": "Used in [[Special:ExtendedStatistics]], headline for filters section\n{{Identical|Filter}}",
-	"bs-statistics-interval-too-big": "Error message that the interval is too big.\n*$1 is the number of maximum interval steps - use for PLURAL distinction.",
+	"bs-statistics-interval-too-big": "Error message that the interval is too big. It should not contain more than 35 interval steps.",
 	"bs-statistics-diag-number-of-users": "Option in [[Special:ExtendedStatistics]], label for number of users.\n{{Identical|Number of users}}",
 	"bs-statistics-diag-number-of-users-desc": "Description message for number of users option.",
 	"bs-statistics-label-name": "Used in [[Special:ExtendedStatistics]], label for name\n{{Identical|Name}}",
