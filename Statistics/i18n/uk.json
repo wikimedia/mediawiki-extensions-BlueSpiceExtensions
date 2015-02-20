@@ -23,7 +23,7 @@
 	"bs-statistics-not-allowed": "У вас немає необхідного дозволу.",
 	"bs-statistics-finish": "Створити діаграму",
 	"bs-statistics-filters": "Фільтри",
-	"bs-statistics-interval-too-big": "Завеликий інтервал. Він не повинен становити понад 35 кроків.",
+	"bs-statistics-interval-too-big": "Завеликий інтервал. Він не повинен становити понад $1 кроків.",
 	"bs-statistics-diag-number-of-users": "Кількість користувачів",
 	"bs-statistics-diag-number-of-users-desc": "Показує кількість облікових записів, створених протягом вибраного періоду.",
 	"bs-statistics-label-name": "Назва",

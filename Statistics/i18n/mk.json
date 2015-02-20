@@ -22,7 +22,7 @@
 	"bs-statistics-not-allowed": "Ја немате потребната дозвола.",
 	"bs-statistics-finish": "Создај дијаграм",
 	"bs-statistics-filters": "Филтри",
-	"bs-statistics-interval-too-big": "Интервалот е преголем. Не смее да содржи повеќе од 35 чекори.",
+	"bs-statistics-interval-too-big": "Интервалот е преголем. Не смее да содржи повеќе од $1 чекори.",
 	"bs-statistics-diag-number-of-users": "Број на корисници",
 	"bs-statistics-diag-number-of-users-desc": "Го прикажува бројот на корисници создадени во избраниот период.",
 	"bs-statistics-label-name": "Име",
