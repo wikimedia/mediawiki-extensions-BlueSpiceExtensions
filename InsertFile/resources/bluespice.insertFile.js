@@ -14,6 +14,7 @@ $(document).ready(function(){
 				delete( data.src );
 				var wikiLink = new bs.wikiText.Link( data );
 				bs.util.selection.restore( wikiLink.toString() );
+				BS.InsertFile.FileDialog.setData({});
 			});
 
 			var data = {};
@@ -56,6 +57,7 @@ $(document).ready(function(){
 				delete( data.src );
 				var wikiLink = new bs.wikiText.Link( data );
 				bs.util.selection.restore( wikiLink.toString() );
+				BS.InsertFile.ImageDialog.setData({});
 			});
 
 			var data = {};
