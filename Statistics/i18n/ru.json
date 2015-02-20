@@ -24,7 +24,7 @@
 	"bs-statistics-not-allowed": "У вас нет необходимых прав.",
 	"bs-statistics-finish": "Создать диаграмму",
 	"bs-statistics-filters": "Фильтры",
-	"bs-statistics-interval-too-big": "Интервал слишком велик. Он не должен содержать более $1 интервальных шагов.",
+	"bs-statistics-interval-too-big": "Интервал слишком велик. Он не должен содержать более 35 интервальных шагов.",
 	"bs-statistics-diag-number-of-users": "Количество участников",
 	"bs-statistics-diag-number-of-users-desc": "Показывает число учётных записей пользователей, созданных в течение выбранного периода.",
 	"bs-statistics-label-name": "Имя",

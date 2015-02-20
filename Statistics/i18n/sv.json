@@ -22,7 +22,7 @@
 	"bs-statistics-not-allowed": "Du saknar nödvändig behörighet.",
 	"bs-statistics-finish": "Skapa diagram",
 	"bs-statistics-filters": "Filter",
-	"bs-statistics-interval-too-big": "Intervallet är för stor. Det bör inte innehålla mer än $1 intervallsteg.",
+	"bs-statistics-interval-too-big": "Intervallet är för stor. Det bör inte innehålla mer än 35 intervallsteg.",
 	"bs-statistics-diag-number-of-users": "Antal användare",
 	"bs-statistics-diag-number-of-users-desc": "Visar antalet användare som skapades inom den valda perioden.",
 	"bs-statistics-label-name": "Namn",
