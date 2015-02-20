@@ -101,7 +101,8 @@ BsChecklist = {
 		} else {
 			innerText += BsChecklist.checkboxImage;
 		}
-		innerText += '\');" />';
+		// Do not use short notation for closing tag (/>), as it breaks IE
+		innerText += '\');" ></button>';
 		return innerText;
 	},
 
@@ -131,7 +132,7 @@ BsChecklist = {
 
 	makeAndRegisterCheckboxSpecialTag: function(ed, checked) {
 		var id = ed.plugins.bswikicode.getSpecialTagList().length;
-		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist value="" />');
+		ed.plugins.bswikicode.pushSpecialTagList('<bs:checklist value="" />');
 		var node = ed.dom.create(
 				'span',
 				{
@@ -149,7 +150,7 @@ BsChecklist = {
 
 	makeAndRegisterSelectboxSpecialTag: function(ed, listname, value) {
 		var id = ed.plugins.bswikicode.getSpecialTagList().length;
-		ed.plugins.bswikicode.getSpecialTagList().push('<bs:checklist type="list" value="" list="'+listname+'"/>');
+		ed.plugins.bswikicode.pushSpecialTagList('<bs:checklist type="list" value="" list="'+listname+'"/>');
 		var node = ed.dom.create(
 				'span',
 				{
