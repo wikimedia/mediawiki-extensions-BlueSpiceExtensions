@@ -2247,6 +2247,10 @@ var BsWikiCode = function() {
 		return _specialtags;
 	};
 
+	this.pushSpecialTagList = function( item ) {
+		_specialtags.push( item );
+	}
+
 	this.getTemplateList = function() {
 		return _templates;
 	};
