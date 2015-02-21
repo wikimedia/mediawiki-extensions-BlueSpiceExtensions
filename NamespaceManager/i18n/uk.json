@@ -14,7 +14,7 @@
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "Простір назв",
 	"bs-namespacemanager-label-editable": "Можна перейменувати",
-	"bs-namespacemanager-label-content": "У статистиці",
+	"bs-namespacemanager-label-content": "Простір назв вмісту",
 	"bs-namespacemanager-label-searchable": "Пошук за замовчуванням",
 	"bs-namespacemanager-label-subpages": "Підсторінки",
 	"bs-namespacemanager-nsadded": "Простір назв було додано.",
@@ -29,5 +29,7 @@
 	"bs-namespacemanager-willmove": "Буде перейменовано на «{{int:bs-ns_main}}»",
 	"bs-namespacemanager-willmovesuffix": "Буде перейменовано на «{{int:bs-ns_main}}» із суфіксом «$1»",
 	"bs-namespacemanager-deletewarning": "Ви дійсно бажаєте видалити цей простір назв? Видалення простору назв не можна скасувати.",
-	"bs-namespacemanager-pagepresent": "Сторінки в цьому просторі назв:"
+	"bs-namespacemanager-pagepresent": "Сторінки в цьому просторі назв:",
+	"bs-namespacemanager-deletens-movepages": "Ця сторінка була переміщена з простору назв «$1» у простір назв «{{int:bs-ns_main}}», тому що простір назв «$1» було вилучено.",
+	"bs-namespacemanager-deletens-deletepages": "Ця сторінка була вилучена, тому що було вилучено простір назв «$1»."
 }

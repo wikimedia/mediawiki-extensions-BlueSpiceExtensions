@@ -39,5 +39,6 @@
 	"bs-permissionmanager-titletpled-delete": "Видалити шаблон",
 	"bs-permissionmanager-pref-lockmode": "Активувати lockmode",
 	"bs-permissionmanager-pref-skipsysns": "Пропустити системні простори назв, якщо активний lockmode",
-	"bs-permissionmanager-pref-enablerealitycheck": "Активувати перевірку дозволів"
+	"bs-permissionmanager-pref-enablerealitycheck": "Активувати перевірку дозволів",
+	"bs-permissionmanager-unsaved-changes": "Є незбережені зміни. Ви дійсно хочете покинути сторінку зараз? Незбережені зміни будуть втрачені."
 }
