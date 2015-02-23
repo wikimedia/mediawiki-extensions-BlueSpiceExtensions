@@ -286,6 +286,10 @@ class VisualEditor extends BsExtensionMW {
 	public function onParserAfterTidy(&$oParser) {
 		global $wgLang, $wgOut;
 
+		$sAction = $wgOut->getRequest()->getVal('action', 'view');
+		if ($sAction != 'edit' && $sAction != 'preview' && $sAction != 'submit')
+			return true;
+
 		if ($this->bTagsCollected) return true;
 		$this->bTagsCollected = true;
 
