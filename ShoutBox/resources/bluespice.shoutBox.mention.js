@@ -2,7 +2,7 @@ $( document ).ready( function () {
 	var BSShoutboxMentions = {
 		mentions: [ ],
 		//matches whole words starting with @
-		match: /\B@(\w*)$/,
+		match: /\B@(\S*)$/,
 		search: function ( term, callback ) {
 			//if the mentions array is empty get a list of all users available
 			//first trigger with the @ in the shoutbox to not overload requests

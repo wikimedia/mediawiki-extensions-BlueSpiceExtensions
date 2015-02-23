@@ -323,7 +323,7 @@ $aData = false;
 			while ( $row = $dbr->fetchRow( $res ) ) {
 				$oUser = User::newFromId( $row['sb_user_id'] );
 				$oProfile = BsCore::getInstance()->getUserMiniProfile( $oUser );
-				$sMessage = preg_replace_callback("#@(\w*)#", "self::replaceUsernameInMessage", $row['sb_message']);
+				$sMessage = preg_replace_callback("#@(\S*)#", "self::replaceUsernameInMessage", $row['sb_message']);
 				$oShoutBoxMessageView = new ViewShoutBoxMessage();
 				if ( $bShowAge )
 					$oShoutBoxMessageView->setDate( BsFormatConverter::mwTimestampToAgeString( $row['sb_timestamp'], true ) );
@@ -546,7 +546,7 @@ $aData = false;
 	public static function getUsersMentioned( $sMessage ) {
 		if ( empty( $sMessage ) )
 			return array();
-		$bResult = preg_match_all( "#@(\w*)#", $sMessage, $aMatches );
+		$bResult = preg_match_all( "#@(\S*)#", $sMessage, $aMatches );
 		if ( $bResult === false || $bResult < 1 )
 			return array();
 		$aReturn = array();
