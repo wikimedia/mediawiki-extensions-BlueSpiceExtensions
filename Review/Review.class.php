@@ -91,9 +91,9 @@ class Review extends BsExtensionMW {
 		$this->setHook('BeforePageDisplay');
 		$this->setHook('SkinTemplateOutputPageBeforeExec');
 
-		$this->mCore->registerPermission('workflowview', array('user'));
-		$this->mCore->registerPermission('workflowedit');
-		$this->mCore->registerPermission('workflowlist');
+		$this->mCore->registerPermission( 'workflowview', array( 'user' ), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'workflowedit', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'workflowlist', array(), array( 'type' => 'global' ) );
 
 		global $wgLogActionsHandlers;
 		$wgLogActionsHandlers['bs-review/create'] = array($this, 'logCreate');

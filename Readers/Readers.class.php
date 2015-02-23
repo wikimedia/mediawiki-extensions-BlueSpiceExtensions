@@ -75,7 +75,7 @@ class Readers extends BsExtensionMW {
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'SkinTemplateNavigation' );
 
-		$this->mCore->registerPermission( 'viewreaders' );
+		$this->mCore->registerPermission( 'viewreaders', array(), array( 'type' => 'global' ) );
 
 		BsConfig::registerVar( 'MW::Readers::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-active', 'toggle' );
 		BsConfig::registerVar( 'MW::Readers::NumOfReaders', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-readers-pref-numofreaders', 'int' );

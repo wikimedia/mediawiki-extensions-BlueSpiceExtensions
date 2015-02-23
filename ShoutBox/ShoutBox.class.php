@@ -108,9 +108,9 @@ class ShoutBox extends BsExtensionMW {
 
 
 		// Permissions
-		$this->mCore->registerPermission( 'readshoutbox' );
-		$this->mCore->registerPermission( 'writeshoutbox' );
-		$this->mCore->registerPermission( 'archiveshoutbox' );
+		$this->mCore->registerPermission( 'readshoutbox', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'writeshoutbox', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'archiveshoutbox', array(), array( 'type' => 'global' ) );
 
 		$this->mCore->registerBehaviorSwitch( 'bs_noshoutbox' );
 

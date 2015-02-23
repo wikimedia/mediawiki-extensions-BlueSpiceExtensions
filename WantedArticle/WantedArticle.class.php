@@ -97,7 +97,7 @@ class WantedArticle extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BeforePageDisplay' );
 
-		$this->mCore->registerPermission( 'wantedarticle-suggest' );
+		$this->mCore->registerPermission( 'wantedarticle-suggest', array(), array( 'type' => 'namespace' ) );
 
 		BsConfig::registerVar( 'MW::WantedArticle::DataSourceTemplateTitle', 'WantedArticles', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-wantedarticle-pref-datasourcetemplatetitle' );
 		BsConfig::registerVar( 'MW::WantedArticle::IncludeLimit', 10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-wantedarticle-pref-includelimit', 'int' );
