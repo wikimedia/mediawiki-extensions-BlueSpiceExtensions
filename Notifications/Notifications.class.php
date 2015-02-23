@@ -480,7 +480,7 @@ class Notifications extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec(&$sktemplate, &$tpl){
-		if (!isset($tpl->data['personal_urls']['notifications'])) {
+		if (!isset($tpl->data['personal_urls']['notifications']) || $tpl instanceof BsBaseTemplate != true) {
 			return true;
 		}
 
