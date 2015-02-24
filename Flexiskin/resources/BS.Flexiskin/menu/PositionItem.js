@@ -1,5 +1,5 @@
-Ext.define('BS.Flexiskin.item.PositionItem', {
-	extend: 'BS.Flexiskin.item.BaseItem',
+Ext.define('BS.Flexiskin.menu.PositionItem', {
+	extend: 'BS.Flexiskin.menu.BaseItem',
 	title: mw.message('bs-flexiskin-headerPosition').plain(),
 	layout: 'form',
 	currentData: {},
