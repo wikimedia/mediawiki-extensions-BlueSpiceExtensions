@@ -71,11 +71,11 @@ class ViewAuthorsUserPageProfileImageSetting extends ViewBaseElement {
 	public function setCurrentUser( $oUser ) {
 		$this->oUser = $oUser;
 	}
-	
+
 	public function setImagePath( $sImagePath ) {
 		$this->sImagePath = $sImagePath;
 	}
-	
+
 	public function getImagePath() {
 		return $this->sImagePath;
 	}
@@ -91,7 +91,7 @@ class ViewAuthorsUserPageProfileImageSetting extends ViewBaseElement {
 
 		//Is it a URL? Some external image?
 		$aParsedUrl = parse_url( $sUserImage );
-		if ( $sUserImage{0} == '/' || isset( $aParsedUrl['scheme'] ) ) {
+		if ( !empty($sUserImage) && ($sUserImage{0} == '/' || isset( $aParsedUrl['scheme'] )) ) {
 			$this->sImageUploadPath = SpecialPage::getTitleFor( 'Preferences' )->getLinkUrl();
 
 			$aPathInfo = pathinfo( $aParsedUrl['path'] );
