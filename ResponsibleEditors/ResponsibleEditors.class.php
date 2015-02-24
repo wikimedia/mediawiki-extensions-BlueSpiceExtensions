@@ -988,7 +988,7 @@ class ResponsibleEditors extends BsExtensionMW {
 
 	public function onSuperListGetFieldDefinitions(&$aFields) {
 		$aFields[] = array(
-			'name' => 'responsible_editors'
+			'name' => 'responsible_editors',
 		);
 		return true;
 	}
@@ -997,6 +997,11 @@ class ResponsibleEditors extends BsExtensionMW {
 		$aColumns[] = array(
 			'header' => wfMessage( 'bs-responsibleeditors-assignededitors' )->escaped(),
 			'dataIndex' => 'responsible_editors',
+			'id' => 'responsible_editors',
+			'filter' => array(
+				'type' => 'string'
+			),
+			'width' => 200,
 			'hidden' => true
 		);
 		return true;
