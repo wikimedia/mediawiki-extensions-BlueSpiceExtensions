@@ -565,6 +565,7 @@ class SmartList extends BsExtensionMW {
 		$aArgs['showns'] = BsCore::sanitizeArrayEntry( $aArgs, 'showns', true, BsPARAMTYPE::BOOL );
 		$aArgs['numwithtext'] = BsCore::sanitizeArrayEntry( $aArgs, 'numwithtext', 100, BsPARAMTYPE::INT );
 		$aArgs['meta'] = BsCore::sanitizeArrayEntry( $aArgs, 'meta', false, BsPARAMTYPE::BOOL );
+		$aArgs['target'] = BsCore::sanitizeArrayEntry( $aArgs, 'target', '', BsPARAMTYPE::STRING );
 
 		$oSmartListView = new ViewBaseElement();
 		if ( !empty( $aArgs['heading'] ) ) {
@@ -819,8 +820,102 @@ class SmartList extends BsExtensionMW {
 				$iCount++;
 			}
 			$dbr->freeResult( $res );
+
+		} elseif( $aArgs['mode'] == 'whatlinkshere' ) {
+			//PW(25.02.2015) TODO:
+			//There could be filters - see Special:Whatlinkshere
+
+			$oTargetTitle = empty( $aArgs['target'] )
+				? $this->getContext()->getTitle()
+				: Title::newFromText( $aArgs['target'] )
+			;
+
+			if( is_null($oTargetTitle) ) {
+				$oErrorListView->addItem(
+					new ViewTagError(
+						wfMessage( 'bs-smartlist-invalid-target' )->text()
+					)
+				);
+				return $oErrorListView->execute();
+			}
+
+			$oDbr = wfGetDB( DB_SLAVE );
+			$aTables = array(
+				'pagelinks',
+				'page',
+			);
+			$aFields = array(
+				'title' => 'page_title',
+				'namespace' => 'page_namespace',
+			);
+			$aConditions = array(
+				"page_id = pl_from",
+				"pl_namespace = {$oTargetTitle->getNamespace()}",
+				"pl_from NOT IN ({$oTargetTitle->getArticleID()})",
+				"pl_title = '{$oTargetTitle->getDBkey()}'",
+			);
+			$aOptions = array();
+
+			try {
+				$aNamespaceIds = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString(
+					$aArgs['namespaces']
+				);
+				$aConditions['page_namespace'] = $aNamespaceIds;
+			} catch ( BsInvalidNamespaceException $ex ) {
+				$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
+				$oErrorListView->addItem(
+					new ViewTagError(
+						wfMessage( 'bs-smartlist-invalid-namespaces' )
+							->numParams( count( $ex->getListOfInvalidNamespaces() ) )
+							->params( $sInvalidNamespaces )
+							->text()
+					)
+				);
+				return $oErrorListView->execute();
+			}
+
+			//Default: time
+			$aOptions['ORDER BY'] = $aArgs['sort'] == 'title'
+				? 'page_title'
+				: 'page_id'
+			;
+
+			//Default DESC
+			$aOptions['ORDER BY'] .= $aArgs['order'] == 'ASC'
+				? ' ASC'
+				: ' DESC'
+			;
+
+			$oRes = $oDbr->select(
+				$aTables,
+				$aFields,
+				$aConditions,
+				__METHOD__,
+				$aOptions
+			);
+
+			$iCount = 0;
+			foreach( $oRes as $o ) {
+				if( $iCount == $aArgs['count'] ) {
+					break;
+				}
+
+				$oTitle = Title::makeTitleSafe( $o->namespace, $o->title );
+				if( !$oTitle || !$oTitle->quickUserCan( 'read' ) ) {
+					continue;
+				}
+
+				$aObjectList[] = $o;
+				$iCount++;
+			}
+
+			$oDbr->freeResult( $oRes );
+
 		} else {
-			wfRunHooks( 'BSSmartListCustomMode', array( &$aObjectList, $aArgs ) );
+			wfRunHooks( 'BSSmartListCustomMode', array(
+				&$aObjectList,
+				$aArgs
+			));
 		}
 
 		if ( $oErrorListView->hasEntries() ) {

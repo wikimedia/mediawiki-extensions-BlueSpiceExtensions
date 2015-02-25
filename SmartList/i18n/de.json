@@ -10,6 +10,7 @@
 	"bs-smartlist-recent-changes": "Letzte Änderungen",
 	"bs-smartlist-no-entries": "Es konnten keine Ergebnisse gefunden werden.",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|Der angegebene Namensraum ist|Die angegebenen Namensräume sind}} fehlerhaft: $2.",
+	"bs-smartlist-invalid-target": "Das angegebene Ziel ist kein gültiger Seitentitel",
 	"bs-smartlist-comment": "Kommentar: $1.",
 	"bs-smartlist-pref-count": "Anzahl Einträge:",
 	"bs-smartlist-pref-comments": "Zeige Kommentar",
