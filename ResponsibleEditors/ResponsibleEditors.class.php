@@ -102,9 +102,9 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->setHook( 'SuperList::queryPagesWithFilter', 'onSuperListQueryPagesWithFilter' );
 		$this->setHook( 'SuperList::buildDataSets', 'onSuperListBuildDataSets' );
 
-		$this->mCore->registerPermission( 'responsibleeditors-changeresponsibility' );
-		$this->mCore->registerPermission( 'responsibleeditors-viewspecialpage' );
-		$this->mCore->registerPermission( 'responsibleeditors-takeresponsibility', array( 'user' ) );
+		$this->mCore->registerPermission( 'responsibleeditors-changeresponsibility', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'responsibleeditors-viewspecialpage', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'responsibleeditors-takeresponsibility', array( 'user' ), array( 'type' => 'global' ) );
 		wfProfileOut('BS::' . __METHOD__);
 	}
 

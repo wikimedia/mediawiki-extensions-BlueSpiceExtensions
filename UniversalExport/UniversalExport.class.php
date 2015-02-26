@@ -129,7 +129,7 @@ class UniversalExport extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsOverrides',   $this->aParamsOverrides,    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 
 		//Permissions
-		$this->mCore->registerPermission( 'universalexport-export' );
+		$this->mCore->registerPermission( 'universalexport-export', array(), array( 'type' => 'namespace' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

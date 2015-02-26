@@ -87,7 +87,7 @@ class Flexiskin extends BsExtensionMW {
 			if ($sId != "default")
 				$wgOut->addHeadItem('flexiskin', "<link rel='stylesheet' href='" . $wgUploadPath . "/bluespice/flexiskin/" . $sId . "/style" . (self::getVal('preview', '') != "" ? '.tmp' : '') . ".css'>");
 		}
-		$this->mCore->registerPermission('flexiskinedit');
+		$this->mCore->registerPermission( 'flexiskinedit', array(), array( 'type' => 'global' ) );
 		wfProfileOut('BS::' . __METHOD__);
 	}
 

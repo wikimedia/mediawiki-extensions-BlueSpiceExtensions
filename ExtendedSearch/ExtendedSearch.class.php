@@ -124,7 +124,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
-		$this->mCore->registerPermission( 'searchfiles', array( 'user' ) );
+		$this->mCore->registerPermission( 'searchfiles', array( 'user' ), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

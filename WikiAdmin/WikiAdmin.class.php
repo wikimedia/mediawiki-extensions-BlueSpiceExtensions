@@ -176,7 +176,7 @@ class WikiAdmin extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		self::$prLoadModulesAndScripts = true;
-		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ) );
+		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

@@ -97,7 +97,7 @@ class SecureFileStore extends BsExtensionMW {
 		$this->setHook( 'ExtendedSearchBeforeAjaxResponse', 'secureImages' );
 		$this->setHook( 'SiteNoticeAfter', 'onSiteNoticeAfter' );
 
-		$this->mCore->registerPermission( 'viewfiles', array( 'user' ) );
+		$this->mCore->registerPermission( 'viewfiles', array( 'user' ), array( 'type' => 'global' ) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
