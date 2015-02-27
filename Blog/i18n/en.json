@@ -27,5 +27,7 @@
 	"bs-blog-pref-imagerendermode": "Display pictures as:",
 	"bs-blog-pref-imagefloatdirection": "Text flow: Image position",
 	"bs-blog-pref-maxentrycharacters": "Number of words per entry:",
-	"bs-blog-tag-blog-desc": "Display blog entries on every page."
+	"bs-blog-tag-blog-desc": "Display blog entries on every page.",
+	"bs-blog-tag-blogtime-desc": "This tag provides you the opportunity to set a custom timestamp for blog entries.",
+	"bs-blog-tag-blogtime-err": "The format has to be YYYYMMDDHHmm i.e. for 12. Jan. 2013 15:43 the timestamps looks like: 201301121543"
 }
