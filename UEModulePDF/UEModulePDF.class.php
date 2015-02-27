@@ -221,7 +221,29 @@ class UEModulePDF extends BsExtensionMW {
 			'class' => 'icon-file-pdf'
 		);
 
-		$template->data['bs_title_actions'][] = $aContentActions;
+		if ( $template instanceof BsBaseTemplate ) {
+			$template->data['bs_title_actions'][] = $aContentActions;
+		} else {
+			//this is the case when BlueSpice Skin is not active, so use vector methods.
+			$template->data['prebodyhtml'] = Html::rawElement(
+					"span",
+					array('class' => 'bs-ta-uemodulepdf-container'),
+						Html::rawElement(
+							'a',
+							array(
+								'href' => $aContentActions['href'],
+								'title' => $aContentActions['title'],
+								'class' => $aContentActions['class'],
+								'id' => $aContentActions['id']
+							),
+							Html::element(
+								'span',
+								array(),
+								$aContentActions['text']
+							)
+						)
+					);
+		}
 		return true;
 	}
 }
