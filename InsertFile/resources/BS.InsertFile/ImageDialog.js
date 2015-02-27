@@ -226,12 +226,9 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			frame: false,
 			//VisualEditor stuff
 			imagename: this.tfFileName.getValue(),
+			noLink: this.cbxNoLink.getValue(),
 			src: Ext.htmlDecode(this.hdnUrl.getValue()) //Ext.htmlDecode(): this feels like the wrong place...
 		});
-
-		if(this.cbxNoLink.getValue() === true ) {
-			cfg.link = '';
-		}
 
 		var format = this.rgFormat.getValue();
 		format = format['img-type'];
@@ -339,12 +336,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.link !== '' && obj.link !== false && obj.link !== 'false' ) {
 			this.cbPages.setValue( obj.link );
 		}
-
-		if( obj.link === '' ) {
-			this.cbxNoLink.setValue(true);
-		} else {
-			this.cbxNoLink.setValue(false);
+		if (obj.nolink === true){
+			this.cbPages.disable( );
 		}
+		else{
+			this.cbPages.enable( );
+		}
+
+		this.cbxNoLink.setValue(obj.nolink);
 
 		this.hdnUrl.setValue( obj.src );
 		this.isSetData = false;
