@@ -810,12 +810,6 @@ class Review extends BsExtensionMW {
 			}
 			$sIcon .= ".png";
 
-			//This hook is too late for OutputPage::addJsConfigVars
-			$this->getOutput()->addHTML(
-					Html::inlineScript(
-							'var bsReview = ' . Xml::encodeJsVar($this->makeJSDataObject($oRev)) . ';'
-					)
-			);
 			$aTopViews['statebartopreview'] = $this->makeStateBarTopReview($sIcon);
 		}
 		return true;
@@ -827,37 +821,47 @@ class Review extends BsExtensionMW {
 	 * @param BsReviewProcess $oReview
 	 * @return \stdClass
 	 */
-	protected function makeJSDataObject($oReview) {
-		//TODO: Allow injection of data by ExtendedReview or other extensions
+	protected function makeJSDataObject( $oReview ) {
+		//Defaults
 		$oData = new stdClass();
-		$oData->startdate = strtotime($oReview->startdate);
-		$oData->enddate = strtotime($oReview->enddate);
-		$oData->owner_user_id = $oReview->getOwner();
-		$oData->owner_user_name = User::newFromId($oReview->getOwner())->getName();
-		$oData->page_id = $oReview->getPid();
-		$oData->page_prefixed_text = Title::newFromID($oReview->getPid())->getPrefixedText();
-		$oData->editable = $oReview->isEditable();
-		$oData->sequential = $oReview->isSequential();
-		$oData->abortable = $oReview->isAbortWhenDenied();
-		$oData->steps = array();
 
-		foreach ($oReview->steps as $oStep) {
-			if ($oStep instanceof BsReviewProcessStep == false)
-				continue;
-
-			$oUser = User::newFromId($oStep->user);
-
-			$aStep = array(
-				'user_id' => $oStep->user,
-				'user_name' => $oUser->getName(),
-				'user_display_name' => BsCore::getUserDisplayName($oUser),
-				'comment' => $oStep->comment,
-				'status' => $oStep->status,
-				'sort_id' => $oStep->sort_id,
-			);
-
-			$oData->steps[] = $aStep;
+		$oTitle = $this->getContext()->getTitle();
+		if( !is_null($oTitle) ) {
+			$oData->page_id =$oTitle->getArticleID();
 		}
+
+		if( $oReview !== false ) {
+			$oData->startdate = strtotime($oReview->startdate);
+			$oData->enddate = strtotime($oReview->enddate);
+			$oData->owner_user_id = $oReview->getOwner();
+			$oData->owner_user_name = User::newFromId($oReview->getOwner())->getName();
+			$oData->page_id = $oReview->getPid();
+			$oData->page_prefixed_text = Title::newFromID($oReview->getPid())->getPrefixedText();
+			$oData->editable = $oReview->isEditable();
+			$oData->sequential = $oReview->isSequential();
+			$oData->abortable = $oReview->isAbortWhenDenied();
+			$oData->steps = array();
+
+			foreach ($oReview->steps as $oStep) {
+				if ($oStep instanceof BsReviewProcessStep == false)
+					continue;
+
+				$oUser = User::newFromId($oStep->user);
+
+				$aStep = array(
+					'user_id' => $oStep->user,
+					'user_name' => $oUser->getName(),
+					'user_display_name' => BsCore::getUserDisplayName($oUser),
+					'comment' => $oStep->comment,
+					'status' => $oStep->status,
+					'sort_id' => $oStep->sort_id,
+				);
+
+				$oData->steps[] = $aStep;
+			}
+		}
+
+		wfRunHooks( 'BsReviewAfterMakeJSDataObject', array( $oReview, &$oData ) );
 
 		return $oData;
 	}
@@ -1196,6 +1200,14 @@ class Review extends BsExtensionMW {
 
 		$bUserCanEdit = $out->getTitle()->userCan('workflowedit');
 		$out->addJsConfigVars('bsReviewUserCanEdit', $bUserCanEdit);
+
+		$oRev = BsReviewProcess::newFromPid(
+			$out->getTitle()->getArticleID()
+		);
+		$out->addJsConfigVars(
+			'bsReview',
+			$this->makeJSDataObject( $oRev )
+		);
 
 		return true;
 	}
