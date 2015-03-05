@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Cwlin0416"
+			"Cwlin0416",
+			"LNDDYL"
 		]
 	},
 	"bs-insertlink-desc": "輸入連結的對話框",
@@ -14,7 +15,7 @@
 	"bs-insertlink-tab-ext-file": "連結至檔案",
 	"bs-insertlink-label-page": "頁面",
 	"bs-insertlink-label-link": "連結",
-	"bs-insertlink-label-mail": "電子郵件位址",
+	"bs-insertlink-label-mail": "電子郵箱地址",
 	"bs-insertlink-label-description": "描述",
 	"bs-insertlink-label-file": "檔案",
 	"bs-insertlink-label-searchfile": "搜尋 ...",
