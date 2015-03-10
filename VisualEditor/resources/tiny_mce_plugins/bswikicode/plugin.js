@@ -341,7 +341,7 @@ var BsWikiCode = function() {
 
 		for (var i = 0; i < images.length; i++) {
 			var image, htmlImageObject, wikiImageObject,
-				attributes, attribute, wikiText,
+				attributes, attribute, wikiText, imageCaption,
 				size, property, value;
 
 			image = images[i];
@@ -405,6 +405,7 @@ var BsWikiCode = function() {
 
 			// Build wikitext
 			wikiText = [];
+			imageCaption = false;
 			wikiText.push(wikiImageObject.imagename);
 			for (property in wikiImageObject) {
 				if ($.inArray(property, ['imagename', 'thumbsize']) !== -1) {
@@ -444,13 +445,22 @@ var BsWikiCode = function() {
 					wikiText.push(property + '=' + value);
 					continue;
 				}
-				if ($.inArray(property, ['caption', 'align']) !== -1) {
+				if ( property == 'align' ) {
 					wikiText.push(value);
+					continue;
+				}
+				if ( property == 'caption' ) {
+					imageCaption = value;
 					continue;
 				}
 				if (value === "true") {
 					wikiText.push(property); //frame, border, thumb, left, right...
 				}
+			}
+
+			// make sure image caption comes in the end
+			if ( imageCaption ) {
+				wikiText.push( imageCaption );
 			}
 
 			text = text.replace(image, '[[' + wikiText.join('|').replace("@@PIPE@@", '|') + ']]');
