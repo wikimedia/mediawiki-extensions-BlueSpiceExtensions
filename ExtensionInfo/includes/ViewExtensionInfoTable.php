@@ -86,7 +86,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		$aOut[] = '<td>'.$sVersion.'</td>';
 		$aOut[] = '</tr>';
 		$aOut[] = '<tr>';
-		$aOut[] = '<td><a title="Mediawiki" href="http://www.mediawiki.org/"> Mediawiki </a></td>';
+		$aOut[] = '<td><a title="MediaWiki" href="http://www.mediawiki.org/"> MediaWiki </a></td>';
 		$oTitle = SpecialPage::getTitleFor( "Version" );
 		$aOut[] = '<td><a title="' . $oTitle->getFullText() . '" href="' . $oTitle->getFullURL() . '">' . $wgVersion . '</a></td>';
 		$aOut[] = '</tr>';
