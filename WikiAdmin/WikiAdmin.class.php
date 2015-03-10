@@ -217,6 +217,7 @@ class WikiAdmin extends BsExtensionMW {
 		}
 
 		$aOutSortable['Shop'] = self::getShopListItem();
+		$aOutSortable['MediaWiki'] = self::getMediaWikiSpecialPageItem();
 
 		ksort( $aOutSortable );
 		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
@@ -251,4 +252,22 @@ class WikiAdmin extends BsExtensionMW {
 		);
 		return '<li>'.$sLink.'</li>';
 	}
+
+	/**
+	 * Returns a list item, which links to MediaWiki Specialpages
+	 * @return string $sLink to Mediawiki SpecialPages
+	 */
+	private static function getMediaWikiSpecialPageItem() {
+		$sLink = Html::element(
+					'a',
+					array(
+						'id' => 'bs-admin-mediawiki-specialpages',
+						'href' => SpecialPage::getTitleFor('Specialpages')->getLocalURL(),
+						'title' => wfmessage( 'bs-wikiadmin-mediawiki-specialpages-title' )->escaped()
+					),
+					wfMessage( 'bs-wikiadmin-mediawiki-specialpages-text' )->escaped()
+		);
+		return $sLink;
+	}
+
 }

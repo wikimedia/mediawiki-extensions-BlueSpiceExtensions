@@ -10,5 +10,7 @@
 	"wikiadmin": "BlueSpice Administration",
 	"action-wikiadmin": "BlueSpice-Administrationsseiten anzuzeigen",
 	"right-wikiadmin": "BlueSpice Administrationsseiten darzustellen",
-	"bs-wikiadmin-shop": "Shop"
+	"bs-wikiadmin-shop": "Shop",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Spezialseiten",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Listet alle MediaWiki Spezialseiten"
 }
