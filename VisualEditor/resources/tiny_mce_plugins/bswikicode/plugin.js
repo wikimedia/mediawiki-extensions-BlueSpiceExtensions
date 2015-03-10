@@ -631,6 +631,9 @@ var BsWikiCode = function() {
 				if (inner) {
 					label = inner[1];
 					label = label.replace(/<br.*?\/>/gi, '');
+					// label comes with encoded html entities, so we need to decode this here.
+					// Otherwise, resolution of special characters like umlauts won't work.
+					label = $('<textarea />').html(label).text();
 				}
 
 				//TODO: Maybe we should relay on classes instead?
