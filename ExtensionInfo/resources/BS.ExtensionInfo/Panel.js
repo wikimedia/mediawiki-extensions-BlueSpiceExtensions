@@ -53,7 +53,7 @@ Ext.define( 'BS.ExtensionInfo.Panel', {
 
 		this.features = [
 			Ext.create('Ext.grid.feature.Grouping',{
-				groupHeaderTpl: '{text} ({[values.rows.length]} ' + mw.message( 'bs-extensioninfo-groupingtemplateviewtext', '{[values.rows.length]}' ).text() + ')'
+				groupHeaderTpl: '{name} ({[values.rows.length]} ' + mw.message( 'bs-extensioninfo-groupingtemplateviewtext', '{[values.rows.length]}' ).text() + ')'
 			})
 		];
 
