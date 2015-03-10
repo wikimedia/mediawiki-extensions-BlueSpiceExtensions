@@ -2197,6 +2197,34 @@ var BsWikiCode = function() {
 			text = text.replace(/<span class="toggletext">([\s\S]*?)<\/span>/gmi, '$1');
 		}
 
+		// mark templates in table headers, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\{\|.*?)(\{\{(.*?)\}\})(.*?)$/gmi)) {
+			text = text.replace(/^(\{\|.*?)(\{\{(.*?)\}\})(.*?)$/gmi, '$1 data-bs-table-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in row definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\|-.*?)(\{\{(.*?)\}\})(.*?)$/gmi)) {
+			text = text.replace(/^(\|-.*?)(\{\{(.*?)\}\})(.*?)$/gmi, '$1 data-bs-tr-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in header definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(!.*?)(\{\{(.*?)\}\})(.*?\|)/gmi)) {
+			text = text.replace(/^(!.*?)(\{\{(.*?)\}\})(.*?\|)/gmi, '$1 data-bs-th-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in cell definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\|.*?)(\{\{(.*?)\}\})(.*?\|)/gmi)) {
+			text = text.replace(/^(\|.*?)(\{\{(.*?)\}\})(.*?\|)/gmi, '$1 data-bs-td-tpl'+i+'="$3"$4');
+			i++;
+		}
+
 		//special tags before pres prevents spaces in special tags like GeSHi to take effect
 		text = _preserveSpecialTags(text);
 
@@ -2280,6 +2308,9 @@ var BsWikiCode = function() {
 			}
 
 			e.content = _recoverSpecialTags(e.content);
+
+			// cleanup templates in table markers
+			e.content = e.content.replace(/data-bs-t.*?-tpl.*?="(.*?)"/gmi, "{{$1}}");
 		}
 
 	}
