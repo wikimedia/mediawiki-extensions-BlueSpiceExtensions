@@ -1,12 +1,12 @@
 /**
  * VisualEditor extension
- * 
+ *
  * Wiki code to HTML and vice versa parser
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
  * @version    2.22.0
- 
+
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -41,7 +41,7 @@ var BsActions = function() {
 			editor.on('init', bindStateListener);
 		}
 	}
-	
+
 	function handleVisibilityState(ctrl, selector) {
 		var editor = tinyMCE.activeEditor;
 		function bindStateListener() {
@@ -63,11 +63,11 @@ var BsActions = function() {
 		/*jshint validthis:true*/
 		handleDisabledState(this, 'table');
 	}
-	
+
 	function postRenderVisibilityTable() {
 		handleVisibilityState(this, 'TABLE');
 	}
-	
+
 	function postRenderSave() {
 		var self = this;
 
@@ -187,7 +187,7 @@ var BsActions = function() {
 		};
 		return info;
 	};
-	
+
 	/**
 	 * There is a incompatibility between fullscreen and autoresize plugin. So after changing
 	 * to fullscreen, we need to restore the scrollbar
@@ -240,7 +240,7 @@ var BsActions = function() {
 			text: mw.message('bs-visualeditor-bsactions-heading6').plain(),
 			onclick : function() { ed.execCommand('FormatBlock', false, 'h6'); }
 		});
-		
+
 		menus = [{
 				menuId: 'bstableprops',
 				menuConfig: {
@@ -270,7 +270,7 @@ var BsActions = function() {
 				menuItem: ed.menuItems['column'],
 				menuOnPostRender: postRenderVisibilityTable
 			}];
-	
+
 		//HINT: TinyMCE I18N seems not wo work. Using MediaWiki I18N
 		buttons = [{
 				buttonId: 'bssave',
@@ -409,7 +409,7 @@ var BsActions = function() {
 						_editor.selection.select(node, false);
 						_editor.selection.collapse(false);
 					}
-				}	
+				}
 			}];
 
 		//Give other extensions the chance to alter buttons and commands
