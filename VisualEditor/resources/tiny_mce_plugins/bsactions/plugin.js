@@ -247,7 +247,7 @@ var BsActions = function() {
 					text: 'Table properties',
 					context: 'table',
 					onPostRender:  postRenderVisibilityTable,
-					cmd: 'mceInsertTable'
+					cmd: 'mceTableProps'
 				}
 			}, {
 				menuId: 'bsdeletetable',
