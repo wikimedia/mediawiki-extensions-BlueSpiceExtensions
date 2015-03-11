@@ -9,5 +9,7 @@
 	"wikiadmin": "BlueSpice管理员",
 	"action-wikiadmin": "显示BlueSpice管理员页面",
 	"right-wikiadmin": "显示BlueSpice管理员页面",
-	"bs-wikiadmin-shop": "商店"
+	"bs-wikiadmin-shop": "商店",
+	"bs-wikiadmin-mediawiki-specialpages-text": "特殊页面",
+	"bs-wikiadmin-mediawiki-specialpages-title": "列出所有MediaWiki特殊页面"
 }
