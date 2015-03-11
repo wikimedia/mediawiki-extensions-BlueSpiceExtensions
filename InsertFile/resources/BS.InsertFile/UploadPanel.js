@@ -29,7 +29,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			name: 'file',
 			emptyText: mw.message('bs-insertfile-uploadfileemptytext').plain(),
 			validator: this.validateFile,
-			validateOnChange: true
+			validateOnChange: true,
+			clearOnSubmit: false
 		});
 		this.fuFile.on( 'change', this.fuFileChange, this );
 
@@ -42,6 +43,15 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 
 		this.taDescription = Ext.create('Ext.form.field.TextArea', {
 			fieldLabel: mw.message('bs-insertfile-uploaddescfilelabel').plain(),
+			id: this.getId()+'-description',
+			value: '',
+			//name: 'text',
+			submitValue: false
+		});
+
+		//This hidden field will store the combined data of this.storeLicenses,
+		//this.taDescription and this.bsCategories on submit
+		this.hfText = Ext.create('Ext.form.field.Hidden', {
 			id: this.getId()+'-text',
 			value: '',
 			name: 'text'
@@ -61,7 +71,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 				type: this.storeFileType
 			},
 			remoteSort: true,
-			fields: ['text', 'value', 'indent']
+			fields: ['text', 'value', 'indent'],
+			submitValue: false
 		});
 
 		this.cbLicences = Ext.create('Ext.form.ComboBox',{
@@ -100,7 +111,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		this.cbxWatch = Ext.create('Ext.form.field.Checkbox', {
 			boxLabel: mw.message('bs-insertfile-uploadwatchthislabel').plain(),
 			id: this.getId()+'watch_page',
-			name: 'watch'
+			name: 'watchlist',
+			inputValue: 'watch'
 		});
 
 		this.cbxWarnings = Ext.create('Ext.form.field.Checkbox', {
@@ -111,8 +123,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 
 		this.bsCategories = Ext.create( 'BS.form.CategoryBoxSelect', {
 			id: this.getId()+'categories',
-			name: 'categories',
-			fieldLabel: mw.message('bs-insertfile-categories').plain()
+			fieldLabel: mw.message('bs-insertfile-categories').plain(),
+			submitValue: false
 		});
 
 		this.fsDetails = Ext.create( 'Ext.form.FieldSet', {
@@ -205,6 +217,9 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		return true;
 	},
 
+	//PW(12.03.2015) TODO: Make a second ajax request to edit file description
+	//(text), cause mediawiki api for action upload does not allow to change an
+	//existing text while uploading.
 	uploadFile: function( sessionKeyForReupload ) {
 		var desc = this.taDescription.getValue();
 		var licence = this.cbLicences.getValue();
@@ -222,7 +237,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			});
 			desc += "\n" + categoryLink.toString();
 		}
-		this.taDescription.setValue( desc );
+		this.hfText.setValue(desc);
 
 		this.cbLicences.disable(); //To prevent the form from submitting a generated name
 
@@ -267,6 +282,18 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			.documentElement.getElementsByTagName('error').item(0);
 
 		if( errorTag !== null ) {
+			//Mw API only renders un-localized windows-nonascii-filename
+			if( errorTag.getAttribute('invalidparameter') === "filename" ) {
+				if( errorTag.getAttribute('info').indexOf('windows-nonascii-filename') >= 0 ) {
+					bs.util.alert(
+						this.getId()+'-error', {
+							title: mw.message('bs-insertfile-error').plain(),
+							text: mw.message('windows-nonascii-filename').plain()
+						}
+					);
+					return;
+				}
+			}
 			bs.util.alert(
 				this.getId()+'-error',
 				{
