@@ -27,5 +27,7 @@
 	"bs-blog-pref-imagerendermode": "Bilder anzeigen als:",
 	"bs-blog-pref-imagefloatdirection": "Textumfluss: Bildposition",
 	"bs-blog-pref-maxentrycharacters": "Anzahl darzustellender Wörter:",
-	"bs-blog-tag-blog-desc": "Zeigt Blog-Einträge auf jeder beliebigen Seite an."
+	"bs-blog-tag-blog-desc": "Zeigt Blog-Einträge auf jeder beliebigen Seite an.",
+	"bs-blog-tag-blogtime-desc": "Dieser Tag stellt die Funktionalität bereit, für Blogeinträge einen benutzerdefinierten Zeitstempel zu setzen.",
+	"bs-blog-tag-blogtime-err": "Das Format ist YYYYMMDDHHmm d. h. für den 12. Jan. 2013 15:43 muss der Zeitstempel wie folgt angegeben sein: 201301121543"
 }
