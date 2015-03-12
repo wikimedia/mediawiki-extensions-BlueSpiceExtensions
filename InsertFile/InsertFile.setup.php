@@ -83,7 +83,8 @@ $wgResourceModules['ext.bluespice.insertFile'] = array(
 		'bs-insertfile-linktext',
 		'bs-insertfile-no-link',
 		'bs-insertfile-error-no-imagelink',
-		'bs-insertfile-error-no-medialink'
+		'bs-insertfile-error-no-medialink',
+		'windows-nonascii-filename',
 	)
 ) + $aResourceModuleTemplate;
 
