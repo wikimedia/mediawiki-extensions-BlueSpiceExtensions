@@ -344,7 +344,7 @@ class PermissionManager extends BsExtensionMW {
 					);
 				}
 				$aConfig = $bsgPermissionConfig[$sRight];
-				$bGlobalPermission = $aConfig['type'] == 'global' ? true : false;
+				$bGlobalPermission = (isset($aConfig['type']) && $aConfig['type'] == 'global') ? true : false;
 				$aMetadata[] = array(
 					'right' => $sRight,
 					'type' => $bGlobalPermission ? 2 : 1,
