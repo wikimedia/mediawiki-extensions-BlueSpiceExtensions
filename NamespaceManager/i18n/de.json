@@ -3,10 +3,11 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Metalhead64",
-			"Mglaser"
+			"Mglaser",
+			"Osnard"
 		]
 	},
-	"bs-namespacemanager-desc": "Administrationsoberfläche zum Hinzufügen, Bearbeiten und Löschen von Namensräumen",
+	"bs-namespacemanager-desc": "Administrationsoberfläche zum Hinzufügen, Bearbeiten und Löschen von Namensräumen und deren Spezifikationen",
 	"bs-namespacemanager-label": "Namensraumverwaltung",
 	"bs-namespacemanager-wrong-name": "Der Namensraum enthält unzulässige Zeichen.",
 	"bs-namespacemanager-ns-exists": "Der Namensraum existiert bereits.",

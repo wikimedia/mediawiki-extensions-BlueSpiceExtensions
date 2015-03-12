@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Osnard"
 		]
 	},
-	"bs-groupmanager-desc": "Administrationsoberfläche zum Hinzufügen, Bearbeiten und Löschen von Benutzergruppen und ihrer Rechte",
+	"bs-groupmanager-desc": "Administrationsoberfläche zum Hinzufügen, Bearbeiten und Löschen von Benutzergruppen",
 	"bs-groupmanager-grpexists": "Die Gruppe ist bereits vorhanden.",
 	"bs-groupmanager-grpadded": "Die Gruppe wurde hinzugefügt.",
 	"bs-groupmanager-grpedited": "Die Gruppe wurde bearbeitet.",
