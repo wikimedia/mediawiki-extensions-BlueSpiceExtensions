@@ -707,16 +707,6 @@ class SmartList extends BsExtensionMW {
 		if ( $aArgs['mode'] == 'recentchanges' ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$aConditions = array();
-			// TODO RBV (17.05.11 16:52): Put this into abstraction layer
-			if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
-				$aCategories = explode( ',', $aArgs['categories'] );
-				$iCnt = count( $aCategories );
-				for ( $i = 0; $i < $iCnt; $i++ ) {
-					$aCategories[$i] = str_replace( ' ', '_', $aCategories[$i] );
-					$aCategories[$i] = "'" . trim( ucfirst( $aCategories[$i] ) ) . "'";
-				}
-				$aArgs['categories'] = implode( ',', $aCategories );
-			}
 
 			switch ( $aArgs['period'] ) {
 				case 'month': $sMinTimestamp = $dbr->timestamp( time() - 30 * 24 * 60 * 60 );
@@ -744,15 +734,7 @@ class SmartList extends BsExtensionMW {
 				);
 			}
 
-			if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
-				if ( $aArgs['categoryMode'] == 'OR' ) {
-					$aConditions[] = 'rc_cur_id IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to IN (' . $aArgs['categories'] . ') )';
-				} else {
-					foreach ( $aCategories as $sCategory ) {
-						$aConditions[] = 'rc_cur_id IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to = ' . $sCategory . ' )';
-					}
-				}
-			}
+			$this->makeCategoriesFilterCondition( $aConditions, $aArgs, 'rc_cur_id' );
 
 			switch ( $aArgs['sort'] ) {
 				case 'title':
@@ -839,7 +821,7 @@ class SmartList extends BsExtensionMW {
 				return $oErrorListView->execute();
 			}
 
-			$oDbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$aTables = array(
 				'pagelinks',
 				'page',
@@ -874,6 +856,8 @@ class SmartList extends BsExtensionMW {
 				return $oErrorListView->execute();
 			}
 
+			$this->makeCategoriesFilterCondition( $aConditions, $aArgs, 'page_id' );
+
 			//Default: time
 			$aOptions['ORDER BY'] = $aArgs['sort'] == 'title'
 				? 'page_title'
@@ -886,7 +870,7 @@ class SmartList extends BsExtensionMW {
 				: ' DESC'
 			;
 
-			$oRes = $oDbr->select(
+			$res = $dbr->select(
 				$aTables,
 				$aFields,
 				$aConditions,
@@ -895,27 +879,26 @@ class SmartList extends BsExtensionMW {
 			);
 
 			$iCount = 0;
-			foreach( $oRes as $o ) {
+			foreach( $res as $row ) {
 				if( $iCount == $aArgs['count'] ) {
 					break;
 				}
 
-				$oTitle = Title::makeTitleSafe( $o->namespace, $o->title );
+				$oTitle = Title::makeTitleSafe( $row->namespace, $row->title );
 				if( !$oTitle || !$oTitle->quickUserCan( 'read' ) ) {
 					continue;
 				}
 
-				$aObjectList[] = $o;
+				$aObjectList[] = $row;
 				$iCount++;
 			}
 
-			$oDbr->freeResult( $oRes );
+			$dbr->freeResult( $res );
 
 		} else {
-			wfRunHooks( 'BSSmartListCustomMode', array(
-				&$aObjectList,
-				$aArgs
-			));
+			wfRunHooks(
+				'BSSmartListCustomMode', array( &$aObjectList, $aArgs, $this )
+			);
 		}
 
 		if ( $oErrorListView->hasEntries() ) {
@@ -1334,6 +1317,27 @@ class SmartList extends BsExtensionMW {
 		$aConditions = array( 'rev_timestamp >= '.$iTimeStamp );
 
 		return true;
+	}
+
+	public function makeCategoriesFilterCondition( &$aConditions, $aArgs, $sPageIdFileName) {
+		if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
+			$aCategories = explode( ',', $aArgs['categories'] );
+			$iCnt = count( $aCategories );
+			for ( $i = 0; $i < $iCnt; $i++ ) {
+				$aCategories[$i] = str_replace( ' ', '_', $aCategories[$i] );
+				$aCategories[$i] = "'" . trim( ucfirst( $aCategories[$i] ) ) . "'";
+			}
+			$aArgs['categories'] = implode( ',', $aCategories );
+
+			$dbr = wfGetDB( DB_SLAVE );
+			if ( $aArgs['categoryMode'] == 'OR' ) {
+				$aConditions[] = $sPageIdFileName.' IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to IN (' . $aArgs['categories'] . ') )';
+			} else {
+				foreach ( $aCategories as $sCategory ) {
+					$aConditions[] = $sPageIdFileName.' IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to = ' . $sCategory . ' )';
+				}
+			}
+		}
 	}
 
 }
