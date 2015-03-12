@@ -314,7 +314,7 @@ class VisualEditor extends BsExtensionMW {
 		$aDefaultTags = array(
 			"syntaxhighlight", "source", "infobox", "categorytree",
 			"presentation", "includeonly", "onlyinclude", "noinclude",
-			"backlink", "gallery", "math", "video", "rss", "tagcloud"
+			"backlink", "gallery", "math", "video", "rss", "tagcloud", "code"
 		);
 		$this->aConfigStandard["specialtaglist"] = BsConfig::get('MW::VisualEditor::SpecialTags')
 				. implode('|', $aDefaultTags);
