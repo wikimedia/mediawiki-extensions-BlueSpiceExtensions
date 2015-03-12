@@ -85,5 +85,6 @@
 	"bs-review-header-enddate": "End",
 	"bs-review-confirm-delete-step": "Do you really want to delete this step?",
 	"bs-review-confirm-delete-review": "Do you really want to delete this review?",
-	"bs-review-error-insufficient-permissions": "You don't have the permission to execute this action (\"$1\" needed)."
+	"bs-review-error-insufficient-permissions": "You don't have the permission to execute this action (\"$1\" needed).",
+	"echo-category-title-bs-review-complete-cat": "Notification for completing a review"
 }
