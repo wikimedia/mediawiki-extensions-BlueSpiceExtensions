@@ -13,6 +13,7 @@
 	"bs-smartlist-recent-changes": "Headline of recent changes list\n{{Identical|Recent changes}}",
 	"bs-smartlist-no-entries": "Text message that no entries were found.",
 	"bs-smartlist-invalid-namespaces": "Error message that one or more of the given namespaces are invalid.\n*$1 is the number of invalid namespaces - use for PLURAL distinction\n*$2 is the invalid namespace or a comma separated list of invalid namepsaces",
+	"bs-smartlist-invalid-target": "Error message that the given target parameter is not a valid page title.",
 	"bs-smartlist-comment": "Text message for comment section for every entry.\n*$1 is the comment\n{{Identical|Comment}}",
 	"bs-smartlist-pref-count": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for number of entries:",
 	"bs-smartlist-pref-comments": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show comment",
