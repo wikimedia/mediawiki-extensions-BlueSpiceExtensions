@@ -93,6 +93,7 @@ class UEModulePDF extends BsExtensionMW {
 		$this->setHook('BSUniversalExportGetWidget');
 		$this->setHook('BSUniversalExportSpecialPageExecute');
 		$this->setHook('SkinTemplateOutputPageBeforeExec');
+		$this->setHook('BaseTemplateToolbox');
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -200,7 +201,58 @@ class UEModulePDF extends BsExtensionMW {
 		return true;
 	}
 
-	public function onSkinTemplateOutputPageBeforeExec(&$skin, &$template){
+	/**
+	 * Hook to insert the PDF-Export link if BlueSpiceSkin is active
+	 * @param SkinTemplate $oSkin
+	 * @param QuickTemplate $oTemplate
+	 * @return boolean
+	 */
+	public function onSkinTemplateOutputPageBeforeExec( &$oSkin, &$oTemplate ) {
+		if ( !$oTemplate instanceof BsBaseTemplate ) {
+			return true;
+		}
+
+		$oTemplate->data['bs_title_actions'][] = $this->buildContentAction();
+
+		return true;
+	}
+
+	/**
+	 * Hook to be executed when the Vector Skin is activated to add the PDF-Export Link to the Toolbox
+	 * @param SkinTemplate $oTemplate
+	 * @param Array $aToolbox
+	 * @return boolean
+	 */
+	public function onBaseTemplateToolbox( &$oTemplate, &$aToolbox ) {
+		$oTitle = RequestContext::getMain()->getTitle();
+		//if the BlueSpiceSkin is activated we don't need to add the Link to the Toolbox,
+		//onSkinTemplateOutputPageBeforeExec will handle it
+		if ( $oTemplate instanceof BsBaseTemplate || !$oTitle->isContentPage() ) {
+			return true;
+		}
+
+		//if "print" is set insert pdf export afterwards
+		if ( isset( $aToolbox['print'] ) ) {
+			$aToolboxNew = array();
+			foreach ( $aToolbox as $sKey => $aValue ) {
+				$aToolboxNew[$sKey] = $aValue;
+				if ( $sKey === "print" ) {
+					$aToolboxNew['uemodulepdf'] = $this->buildContentAction();
+				}
+			}
+			$aToolbox = $aToolboxNew;
+		} else {
+			$aToolbox['uemodulepdf'] = $this->buildContentAction();
+		}
+
+		return true;
+	}
+
+	/**
+	 * Builds the ContentAction Array fort the current page
+	 * @return Array The ContentAction Array
+	 */
+	private function buildContentAction() {
 		$aCurrentQueryParams = $this->getRequest()->getValues();
 		if ( isset( $aCurrentQueryParams['title'] ) ) {
 			$sTitle = $aCurrentQueryParams['title'];
@@ -213,37 +265,13 @@ class UEModulePDF extends BsExtensionMW {
 			unset( $aCurrentQueryParams['title'] );
 		}
 		$aCurrentQueryParams['ue[module]'] = 'pdf';
-		$aContentActions = array(
+		return array(
 			'id' => 'bs-ta-uemodulepdf',
 			'href' => $oSpecialPage->getLinkUrl( $aCurrentQueryParams ),
 			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->text(),
-			'text' => wfMessage('bs-uemodulepdf-widgetlink-single-no-attachments-text')->text(),
+			'text' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->text(),
 			'class' => 'icon-file-pdf'
 		);
-
-		if ( $template instanceof BsBaseTemplate ) {
-			$template->data['bs_title_actions'][] = $aContentActions;
-		} else {
-			//this is the case when BlueSpice Skin is not active, so use vector methods.
-			$template->data['prebodyhtml'] = Html::rawElement(
-					"span",
-					array('class' => 'bs-ta-uemodulepdf-container'),
-						Html::rawElement(
-							'a',
-							array(
-								'href' => $aContentActions['href'],
-								'title' => $aContentActions['title'],
-								'class' => $aContentActions['class'],
-								'id' => $aContentActions['id']
-							),
-							Html::element(
-								'span',
-								array(),
-								$aContentActions['text']
-							)
-						)
-					);
-		}
-		return true;
 	}
+
 }
