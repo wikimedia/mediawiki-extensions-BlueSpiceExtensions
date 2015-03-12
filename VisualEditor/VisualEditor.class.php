@@ -169,6 +169,7 @@ class VisualEditor extends BsExtensionMW {
 			array('title' => 'Paragraph', 'block' => 'p')
 		),
 		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn'
+		// do not use table_class_list, as this breaks any existing classes upon editing
 	);
 
 	/**
