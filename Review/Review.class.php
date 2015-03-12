@@ -1008,7 +1008,8 @@ class Review extends BsExtensionMW {
 			'id' => 'pi-review',
 			'href' => SpecialPage::getTitleFor('Review', $oUser->getName() )->getLocalURL(),
 			'text' => $iCountReviews ."|". $iCountFinishedReviews,
-			'class' => 'icon-eye'
+			'class' => 'icon-eye',
+			'active' => $iCountReviews > 0 ? true : false
 		);
 
 		return true;
