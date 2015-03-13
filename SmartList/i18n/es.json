@@ -10,6 +10,7 @@
 	"bs-smartlist-recent-changes": "Cambios recientes",
 	"bs-smartlist-no-entries": "No se encontraron resultados.",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|El espacio de nombres dado no es válido|Los espacios de nombres dados no son válidos}}: $2.",
+	"bs-smartlist-invalid-target": "El objetivo dado no es un título de página válido",
 	"bs-smartlist-comment": "Commentario: $1.",
 	"bs-smartlist-pref-count": "Número de entradas:",
 	"bs-smartlist-pref-comments": "Mostrar comentario",

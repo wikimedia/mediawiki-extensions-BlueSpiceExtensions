@@ -9,6 +9,7 @@
 	"bs-smartlist-recent-changes": "Скорешни промени",
 	"bs-smartlist-no-entries": "Не пронајдов ништо.",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|Дадениот именски простор е|Дадените именски простори се}} неважечки: $2.",
+	"bs-smartlist-invalid-target": "Укажаната цел не претставува важечки наслов на страница",
 	"bs-smartlist-comment": "Коментар: $1.",
 	"bs-smartlist-pref-count": "Број на ставки:",
 	"bs-smartlist-pref-comments": "Прикажувај коментар",

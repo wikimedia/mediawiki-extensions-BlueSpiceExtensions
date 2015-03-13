@@ -7,5 +7,6 @@
 	"bs-wikiadmin-desc": "Centralny punkt zarządzania BlueSpice",
 	"bs-wikiadmin-notallowed": "Nie masz uprawnień, aby skorzystać z tej strony.",
 	"wikiadmin": "Administracja BlueSpice",
-	"bs-wikiadmin-shop": "Sklep"
+	"bs-wikiadmin-shop": "Sklep",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Strony specjalne"
 }

@@ -30,5 +30,7 @@
 	"bs-blog-pref-imagerendermode": "显示图片作为：",
 	"bs-blog-pref-imagefloatdirection": "文本流：图片位置",
 	"bs-blog-pref-maxentrycharacters": "每博文字数：",
-	"bs-blog-tag-blog-desc": "在任何页面显示博文。"
+	"bs-blog-tag-blog-desc": "在任何页面显示博文。",
+	"bs-blog-tag-blogtime-desc": "此标签给您提供为您的日志设置自定义时间戳的机会。",
+	"bs-blog-tag-blogtime-err": "格式应为YYYYMMDDHHmm，也就是对于2013年1月12日，时间戳应为：201301121543"
 }
