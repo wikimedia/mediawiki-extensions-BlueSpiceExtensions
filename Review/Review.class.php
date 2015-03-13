@@ -777,6 +777,8 @@ class Review extends BsExtensionMW {
 	/**
 	 * Hook-Handler for Hook 'BSStateBarBeforeTopViewAdd'
 	 * @param StateBar $oStateBar
+	 * @param User $oUser
+	 * @param Title $oTitle
 	 * @param array $aTopViews
 	 * @return boolean Always true to keep hook running
 	 */
@@ -810,6 +812,15 @@ class Review extends BsExtensionMW {
 					}
 				}
 			}
+
+			$aNextUsers = $oRev->getNextUsers();
+			foreach( $aNextUsers as $aNextUser ) {
+				if( (int)$aNextUser['id'] === $oUser->getId() ) {
+					$sIcon = "bs-infobar-workflow-active";
+					break;
+				}
+			}
+
 			$sIcon .= ".png";
 
 			$aTopViews['statebartopreview'] = $this->makeStateBarTopReview($sIcon);
@@ -960,7 +971,7 @@ class Review extends BsExtensionMW {
 
 		$oReviewView->setVotable( true );
 		$sUserName = BsCore::getUserDisplayName($oUser);
-		$oReviewView->setComment( "<em>{$sUserName}:</em> {$_step->comment}" );
+		$oReviewView->setComment( "<em>{$sUserName}:</em> {$step->comment}" );
 
 		wfRunHooks('BsReview::checkStatus::afterMessage', array($step, $oReviewView));
 		if ( $oTitle->userCan( "workflowview", $oUser ) ) {

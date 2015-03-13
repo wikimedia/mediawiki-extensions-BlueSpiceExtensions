@@ -27,6 +27,14 @@
 	height:24px;
 }
 
+.rv_active {
+	background-repeat:no-repeat;
+	/*@embed*/
+	background-image:url(images/bs-infobar-workflow-active.png);
+	width:24px;
+	height:24px;
+}
+
 .rv_unknown {
 	background-repeat:no-repeat;
 	/*@embed*/
