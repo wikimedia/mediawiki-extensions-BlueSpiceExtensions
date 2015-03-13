@@ -19,6 +19,7 @@
 	"bs-review-denied-disagreed": "Error message that at least one participant has disagreed on a review.",
 	"bs-review-accepted": "Text message that a number of reviewer has accepted the review.\n*$1 is the number of users which have accepted\n{{Identical|Accepted}}",
 	"bs-review-rejected": "Text message that a number of reviewer has rejected the review.\n*$1 is the number of users which have rejected\n{{Identical|Rejected}}",
+	"bs-review-pending": "Text message that a review is not yet finished.",
 	"bs-review-abstain": "Text message that a number of reviewer has abstained the review.\n*$1 is the number of users which have abstained\n{{Identical|Abstained}}",
 	"bs-review-review-finished": "Success message that this page has been reviewed.",
 	"bs-review-reviewed-till": "Text message that this page is being reviewed for some time.\n*$1 is the start date\n*$2 is the end date",

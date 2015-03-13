@@ -15,6 +15,7 @@
 	"bs-review-denied-disagreed": "Mindestens einer der Beteiligten hat abgelehnt.",
 	"bs-review-accepted": "Akzeptiert",
 	"bs-review-rejected": "Abgelehnt",
+	"bs-review-pending": "In Arbeit",
 	"bs-review-abstain": "Enthalten",
 	"bs-review-review-finished": "Diese Seite wurde begutachtet.",
 	"bs-review-reviewed-till": "Diese Seite wird von $1 bis $2 begutachtet.",

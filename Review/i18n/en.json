@@ -13,6 +13,7 @@
 	"bs-review-denied-disagreed": "At least one participant has disagreed.",
 	"bs-review-accepted": "Accepted",
 	"bs-review-rejected": "Rejected",
+	"bs-review-pending": "Pending",
 	"bs-review-abstain": "Abstained",
 	"bs-review-review-finished": "This page has been reviewed.",
 	"bs-review-reviewed-till": "This page is being reviewed from $1 to $2.",
