@@ -145,6 +145,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			this.fsDetails
 		];
 		var detailsItems = [
+			this.hfText,
 			this.bsCategories,
 			this.taDescription,
 			this.cbLicences,
