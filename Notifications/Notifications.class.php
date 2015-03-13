@@ -290,11 +290,11 @@ class Notifications extends BsExtensionMW {
 			'flyout-message' => 'bs-notifications-email-addaccount-subject',
 			'flyout-params' => array( 'userlink' ),
 			'email-subject-message' => 'bs-notifications-email-addaccount-subject',
-			'email-subject-params' => array( 'user' ),
+			'email-subject-params' => array( 'username' ),
 			'email-body-message' => 'bs-notifications-email-addaccount',
-			'email-body-params' => array( 'userlink' ),
+			'email-body-params' => array( 'userlink', 'username' ),
 			'email-body-batch-message' => 'bs-notifications-email-addaccount',
-			'email-body-batch-params' => array( 'userlink' ),
+			'email-body-batch-params' => array( 'userlink','username' ),
 			'icon' => 'bs-newuser',
 		);
 
@@ -464,6 +464,7 @@ class Notifications extends BsExtensionMW {
 			// TODO SW: implement own notifications formatter
 			'extra'	=> array(
 				'user'	=> $oUser->getName(),
+				'username'	=> isset($aUserDetails['realname']) ? $aUserDetails['realname'] : $aUserDetails['username'],
 				'userlink'	=> true,
 			)
 		) );

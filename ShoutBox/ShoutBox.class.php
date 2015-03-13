@@ -627,13 +627,14 @@ $aData = false;
 			'category' => 'bs-shoutbox-mention-cat',
 			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
-			'title-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'title-message' => 'bs-shoutbox-notifications-title-message-subject',
 			'flyout-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'flyout-params' => array( 'agent', 'agentlink', 'titlelink' ),
 			'email-subject-message' => 'bs-shoutbox-notifications-title-message-subject',
 			'email-body-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'email-body-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'email-body-batch-message' => 'bs-shoutbox-notifications-title-message-text',
+			'email-body-batch-params' => array( 'agent', 'agentlink', 'titlelink' ),
 		);
 		return true;
 	}

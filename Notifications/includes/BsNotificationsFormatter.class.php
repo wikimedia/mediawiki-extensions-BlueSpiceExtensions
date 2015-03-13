@@ -91,6 +91,10 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 			$aExtra = $event->getExtra();
 			$sMessage = $aExtra['shoutmsg'];
 			$message->params( $sMessage );
+		}  else if( $param === 'username' ) {
+			$aExtra = $event->getExtra();
+			$sMessage = $aExtra['username'];
+			$message->params( $sMessage );
 		} else {
 			parent::processParam( $event, $param, $message, $user );
 		}
