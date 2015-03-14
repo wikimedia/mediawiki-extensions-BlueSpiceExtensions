@@ -10,6 +10,7 @@
 	"bs-review-menu-entry": "Bewäertung änneren",
 	"bs-review-accepted": "Akzeptéiert",
 	"bs-review-rejected": "Refuséiert",
+	"bs-review-pending": "Am Suspens",
 	"bs-review-review-finished": "Dës Säit gouf bewäert.",
 	"bs-review-reviewed-till": "Dës Säit gëtt vum $1 bis de(n) $2 bewäert.",
 	"bs-review-reviewed-till-extra": "{{GENDER:$1|Ugeluecht}} vum $2",
