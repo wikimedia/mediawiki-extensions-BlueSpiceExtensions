@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Ltrlg"
+			"Ltrlg",
+			"Thibaut120094"
 		]
 	},
 	"bs-review-desc": "Ajoute aux pages des fonctionnalité pour le travail",
@@ -14,6 +15,7 @@
 	"bs-review-denied-disagreed": "Au moins un participant n’est pas d’accord.",
 	"bs-review-accepted": "Accepté",
 	"bs-review-rejected": "Refusé",
+	"bs-review-pending": "En attente",
 	"bs-review-abstain": "Abstenu",
 	"bs-review-review-finished": "Cette page a été relue.",
 	"bs-review-reviewed-till": "Cette page a été relue du $1 au $2.",
