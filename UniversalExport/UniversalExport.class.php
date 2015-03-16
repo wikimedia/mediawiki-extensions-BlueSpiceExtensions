@@ -22,32 +22,13 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UniversalExport
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.1.0
- * - Support for attachments
- * - Removed Beta state
- * v1.0.0b
- * - Reset version numbering
- * - Reset to beta
- * v3.1.0
- * - Raised to stable
- * - Added events
- * - Changed configuration
- * v3.0.0b
- * - Initial release
- * - Port from HalloWiki Sunrise 1.9
-*/
 
 /**
  * Base class for UniversalExport extension

@@ -25,33 +25,13 @@
  * @author     Mathias Scheer <Scheer@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage WantedArticle
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0.0
- * - Stable state
- * - Implemented new Functional Design
- * v0.3.1b
- * - Added support for <noinclude> Tag
- * v0.3.0b
- * - Great parts refactored
- * - Removed unused code segments
- * v0.2.0a
- * - Refactored code
- * - Added better I18N
- * - Improved error handling in js
- * v0.1.0a
- * FIRST CHANGES
-*/
 
 /**
  * Base class for WantedArticle extension

@@ -23,32 +23,13 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Authors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
-  * v1.20.0
-  *
-  * v1.0.0
-  * - Stable state
-  * - Adjusted to fit Functional Desgin
-  * v0.3
-  * - added view class
-  * v0.2.1
-  * - Removed DEFINEs and added them to standard config.
-  * - Little code refactoring / beautifing
-  * v0.2
-  * - output is created directly as html
-  * - default image is shipped with extension
-  * - some i18n
-  * v0.1
-  * - initial version
-  */
 
 //Last review MRG (30.06.11 10:25)
 

@@ -22,25 +22,12 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v1.20.0
- * - Added feature "Suppress namespace"
- * v1.1.0
- * - Support for attachments
- * - Rebuild a lot of code
- * - Added template support
- * - Reduced use of deprecated BsEventDispatcher
- * v1.0.0
- * - Initial release
  */
 
 /**

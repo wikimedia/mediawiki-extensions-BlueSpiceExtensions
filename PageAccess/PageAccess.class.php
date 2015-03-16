@@ -1,12 +1,9 @@
 <?php
 
 /**
- * BlueSpice for MediaWiki
- * Extension: PageAccess
- * Description: Controls access on page level.
- * Authors: Marc Reymann
+ * PageAccess extension for BlueSpice
  *
- * Copyright (C) 2010 Hallo Welt! – Medienwerkstatt GmbH, All rights reserved.
+ * Controls access on page level.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,26 +11,24 @@
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
  *
+ * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * Version information
- * $LastChangedDate: 2013-06-21 15:41:20 +0200 (Fr, 21 Jun 2013) $
- * $LastChangedBy: mreymann $
- * $Rev: 9848 $
-
- */
-/* Changelog
- * v1.20.0
- * - initial release
+ * @author     Marx Reymann <reymann@hallowelt.biz>
+ * @version    2.23.1
+ * @package    Bluespice_Extensions
+ * @subpackage PageAccess
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
  */
 
 /**

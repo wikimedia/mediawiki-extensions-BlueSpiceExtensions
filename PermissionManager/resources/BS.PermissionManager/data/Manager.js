@@ -22,7 +22,6 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
- * @version    2.23.0
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

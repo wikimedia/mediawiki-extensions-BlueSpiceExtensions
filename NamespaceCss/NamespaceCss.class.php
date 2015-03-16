@@ -22,8 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage NamespaceCss
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

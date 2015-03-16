@@ -25,21 +25,12 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
  * @author     Stefan Widmann <widmann@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage InsertCategory
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v1.20.0
- *
- * v1.0.0
- * - Raised to stable
- * - Code review
- * v0.1
- * FIRST CHANGES
  */
 
 // Last review RBV (30.06.11 8:40)

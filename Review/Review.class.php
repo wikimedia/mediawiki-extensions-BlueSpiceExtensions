@@ -23,15 +23,14 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    2.22.0
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Review
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v2.23.0
  */
 
 /**

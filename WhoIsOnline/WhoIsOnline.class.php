@@ -23,45 +23,12 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage WhoIsOnline
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v1.20.0
- * - Added hook handler for InsertMagic
- * v1.1.0
- * - Added indexes to table to improve performance
- * - Added profile statements
- * - Reduced number of logging actions
- * v1.0.0
- * - Raised to stable
- * - Implemented Widget Keyword
- * v0.6
- * - Applied new coding conventions
- * - Logs SpecialPages too
- * v0.5
- * - introduced views
- * - improved error handling
- * v0.4
- * - fixed bug that if whoisonline-table not existant bluespice breaks
- * v0.3
- * - reactivated tooltip
- * - added widget hook
- * v0.2.0b
- * - Refactored / beautified code
- * - Changed SELECT querys, so they return only datasets which are not older than 10 Minutes
- * - Added new configuration variable MW::WhoIsOnline::MaxIdleTime, which
- *   tells the extenstion how long a user is allowed to be idle before being
- *   removed from the 'who's online' list.
- * - Table cleanup after 30 days ( = 720 hours )
- * - New database table scheme
- * - TO DO: Discuss wether a a minimalistic database scheme (id, user_id, page_id, timesamp) would be sufficient.
- * v0.1
- * - initial release
  */
 
 /**

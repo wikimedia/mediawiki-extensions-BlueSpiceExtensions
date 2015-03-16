@@ -22,20 +22,13 @@
 * For further information visit http://www.blue-spice.org
 *
 * @author     Patric Wirth <wirth@hallowelt.biz>
-* @version    2.23.0
 * @package    Bluespice_Extensions
+* @version    2.23.1
 * @subpackage TopMenuBarCustomizer
 * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
 * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
 * @filesource
 */
-
-/**
- * v1.20.0
- * - MediaWiki I18N
- * v2.23.0
- * - Complete makeover
- */
 
 class TopMenuBarCustomizer extends BsExtensionMW {
 	/**
