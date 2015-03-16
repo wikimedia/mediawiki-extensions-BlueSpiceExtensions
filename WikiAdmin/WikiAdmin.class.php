@@ -217,7 +217,7 @@ class WikiAdmin extends BsExtensionMW {
 		}
 
 		$aOutSortable['Shop'] = self::getShopListItem();
-		$aOutSortable['MediaWiki'] = self::getMediaWikiSpecialPageItem();
+		$aOutSortable['SpecialPages'] = self::getMediaWikiSpecialPageItem();
 
 		ksort( $aOutSortable );
 		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
