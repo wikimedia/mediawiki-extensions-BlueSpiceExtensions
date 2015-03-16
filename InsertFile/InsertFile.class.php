@@ -24,23 +24,13 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
- * @version    2.22.0 stable
-
+ * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage InsertFile
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v1.20.0
- *
- * v1.1.0
- * Added external ExtJS resources and components
- * v1.0.0
- * - raised to stable
- * v0.1
- * - initial commit
  */
 
 /**

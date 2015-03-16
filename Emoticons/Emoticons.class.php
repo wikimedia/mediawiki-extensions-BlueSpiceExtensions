@@ -27,33 +27,12 @@
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Emoticons
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v1.20.0
- * - Added support for MediaWiki message system
- * - Removed LoadExtensionSchemaUpdates hook / code
- * - Moved Mapping to Emoticons.i18n.php
- * v1.1.0
- * - Added support for Memcached Server
- * - Removed configuration setting for mapping source article
- * - Mapping source article now is added with update.php
- * v1.0.1
- * - Added input validation on MappingSourceArticle
- * v1.0.0
- * - Works fine, no changes.
- * v0.2.0
- * - Added views
- * - Code refactored
- * v0.1.0
- * FIRST CHANGES
  */
 
 // Last review MRG (30.06.11 10:34)

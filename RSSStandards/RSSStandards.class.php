@@ -1,24 +1,35 @@
 <?php
-
 /**
- * blue spice for MediaWiki
- * Extension: RSSNamespace
+ * This is the RSSStandards class.
  *
- * Copyright (C) 2010 Hallo Welt! � Medienwerkstatt GmbH, All rights reserved.
+ * The RSSStandards provides various feeds
  *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
+ *
+ * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
+ * @version    2.23.1
+ * @package    Bluespice_Extensions
+ * @subpackage RSSStandards
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
  */
 
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.1.0
- * - Fixed bugs
- * v1.0.0
- * - raised to stable
- * v0.1
- * FIRST CHANGES
-*/
 // TODO SU (04.07.11 10:37): Userhash für alle Links
 // Last review MRG (01.07.11 14:37)
 // TODO: make RSSStandards methods more generic

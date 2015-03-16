@@ -22,24 +22,12 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage SaferEdit
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.1.0
- * - Added indexes to table for improved performance
- * v1.0.0
- * - Raised to stable, due to EXTINFO::STATUS
- * - Code Review
- * v0.1
- * - initial commit
  */
 
 /**

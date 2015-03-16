@@ -23,8 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Marc Reymann <reymann@hallowelt.biz>
- * @version    2.22.0 stable
- * @version    $Id$
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Avatars
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
