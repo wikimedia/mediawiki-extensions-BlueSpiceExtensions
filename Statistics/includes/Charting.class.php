@@ -117,6 +117,7 @@ class BsCharting {
 		//$out .= $oDiagram->getFilterText();
 		//$out .= "<br>n = ".count( $data );
 		//$out .= "</div>";
+		wfRunHooks( 'BSStatisticsBeforeDrawTable', array( &$oDiagram, &$label, &$data, &$out) );
 		$out .= "<table width='80%' id='StatisticsTableView' border='0' cellspacing='0' cellpadding='4' class='sortable'>";
 		if ($label) {
 			$out .= '<thead><tr>';
