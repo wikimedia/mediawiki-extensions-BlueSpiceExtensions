@@ -28,5 +28,7 @@
 	"bs-blog-pref-imagerendermode": "Afficher des images en tant que :",
 	"bs-blog-pref-imagefloatdirection": "Flux de texte : Position de l’image",
 	"bs-blog-pref-maxentrycharacters": "Nombre de mots par entrée :",
-	"bs-blog-tag-blog-desc": "Afficher les entrées de blog sur chaque page."
+	"bs-blog-tag-blog-desc": "Afficher les entrées de blog sur chaque page.",
+	"bs-blog-tag-blogtime-desc": "Cette balise vous donne la possibilité de mettre un horodatage personnalisé aux entrées du blog.",
+	"bs-blog-tag-blogtime-err": "Le format doit être AAAAMMJJHHmm c.-à-d. pour le 12 Jan. 2013 15:43 l’horodatage ressemblera à: 201301121543"
 }
