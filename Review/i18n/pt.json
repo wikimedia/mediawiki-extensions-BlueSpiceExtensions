@@ -12,6 +12,7 @@
 	"bs-review-date": "Nem todos os participantes votaram ainda.",
 	"bs-review-agreed": "Todos os participantes concordaram.",
 	"bs-review-denied-disagreed": "Um participante, pelo menos, discordou.",
+	"bs-review-pending": "Pendente",
 	"bs-review-review-finished": "Esta página foi revista.",
 	"bs-review-reviewed-till": "Esta página será revista entre $1 e $2.",
 	"bs-review-reviewed-till-extra": "{{GENDER:$1|Criada}} por $2",
