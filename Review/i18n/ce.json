@@ -8,6 +8,7 @@
 	"bs-review-review": "Таллар",
 	"bs-review-reviewed-till-extra": "{{GENDER:$1|Терахь}} $2",
 	"bs-review-review-error": "Ца довза гӀалат даьлла.",
+	"bs-review-mail-finish-and-review-header": "$1 Хьажар чекхдели",
 	"bs-review-i-agree": "Резахилар",
 	"bs-review-i-dismiss": "Дуьхьала",
 	"log-name-bs-review": "Хьажаран тептар",
