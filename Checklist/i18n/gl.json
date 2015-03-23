@@ -23,5 +23,6 @@
 	"bs-checklist-dlg-new-title": "Engadir lista nova",
 	"bs-checklist-dlg-new-prompt": "Engadir un título para a lista",
 	"bs-checklist-alert": "Atención!",
-	"bs-checklist-confirm-dirty-title": "Hai cambios sen gardar!"
+	"bs-checklist-confirm-dirty-title": "Hai cambios sen gardar!",
+	"bs-checklist-confirm-dirty-text": "Fixo modificacións na lista que aínda non se gardaron. Está seguro de que quere perder os cambios?"
 }

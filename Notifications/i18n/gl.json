@@ -17,6 +17,7 @@
 	"bs-echo-page-delete": "A páxina [[:$1]] foi borrada",
 	"bs-echo-page-move": "A páxina [[:$1]] foi movida",
 	"bs-echo-page-newuser": "Creouse o usuario $1.",
+	"bs-echo-page-shoutbox": "Unha nova mensaxe de ShoutBox no sitio [[:$1]].",
 	"bs-notifications-email-new-subject": "$2 {{GENDER:$2|creou}} a páxina $1",
 	"bs-notifications-email-new": "{{GENDER:$2|Creouse}} a páxina \"$1\" por $2.\n\nComentario:\n $3 \nPode visitar a páxina seguindo esta ligazón:\n$4",
 	"bs-notifications-email-edit-subject": "Páxina $1 {{GENDER:$2|editada}} por $2",
