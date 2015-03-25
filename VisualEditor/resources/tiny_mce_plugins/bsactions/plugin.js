@@ -86,7 +86,7 @@ var BsActions = function() {
 
 		text = tinyMCE.activeEditor.getContent({save: true});
 
-		if (text === '') {
+		if ( typeof text === 'undefined' || text === '') {
 			return; // @todo Nothing to save. Disable button instead.
 		}
 
@@ -113,6 +113,7 @@ var BsActions = function() {
 		ajaxUrl = bs.util.getAjaxDispatcherUrl('VisualEditor::doSaveArticle');
 
 		$(document).trigger('BSVisualEditorBeforeArticleSave', [this, ajaxParams, ajaxUrl]);
+
 		Ext.Ajax.request({
 			method: 'post',
 			params: ajaxParams,
@@ -120,6 +121,15 @@ var BsActions = function() {
 			success: function(response, opts) {
 				$(document).trigger('BSVisualEditorAfterArticleSave', [this, true, response, opts]);
 				var json = Ext.decode(response.responseText);
+
+				if( typeof json.saveresult === 'undefined' || json.saveresult === 'fail') {
+					if( typeof json.message !== 'undefined' && json.message !== '' ) {
+						mw.notify( json.message );
+						$('#mw-js-message').html('<div>' + json.message + '</div>').show(); //TODO: Use jsMsg() or newer interfaces (message bubbles)
+						$('#mw-js-message').stop().css("background-color", "#FFFF9C").animate({backgroundColor: "#FCFCFC"}, 1500);
+					}
+					return;
+				}
 				$("input[name=wpEdittime]").val(json.edittime);
 				$("input[name=wpStarttime]").val(json.starttime);
 				mw.notify( json.message );
