@@ -1,9 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
+	"bs-statistics-desc": "Módulo de estatísticas para BlueSpice",
+	"prefs-statistics": "Estatísticas ampliadas",
+	"extendedstatistics": "Estatísticas ampliadas",
+	"bs-statistics-diagram": "Consulta",
+	"bs-statistics-from": "De",
+	"bs-statistics-to": "Para",
+	"bs-statistics-grain": "Intervalo",
+	"bs-statistics-mode": "Modo",
+	"bs-statistics-aggregated": "engadidos",
 	"bs-statistics-day": "Día",
 	"bs-statistics-label-name": "Nome",
 	"bs-statistics-label-page": "Páxina",
