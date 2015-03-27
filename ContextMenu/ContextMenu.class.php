@@ -123,7 +123,12 @@ class ContextMenu extends BsExtensionMW {
 	public function onLinkerMakeMediaLinkFile( $title, $file, &$html, &$attribs, &$ret ) {
 
 		$attribs['data-bs-title'] = $title->getPrefixedText();
-		$attribs['data-bs-filename'] = $file->getName();
+		if( $file instanceof File ) {
+			$attribs['data-bs-filename'] = $file->getName();
+		}
+		else {
+			$attribs['data-bs-filename'] = $title->getText();
+		}
 
 		return true;
 	}
