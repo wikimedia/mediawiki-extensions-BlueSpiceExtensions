@@ -19,9 +19,9 @@
  * @subpackage UEModulePDF
  */
 class BsPDFTemplateProvider {
-	
+
 	/**
-	 * Provides a array suitable for the MediaWiki HtmlFormField class 
+	 * Provides a array suitable for the MediaWiki HtmlFormField class
 	 * HtmlSelectField.
 	 * @param array $aParams Has to contain the 'template-path' that has to be
 	 * searched for valid templates.
@@ -45,13 +45,13 @@ class BsPDFTemplateProvider {
 			wfDebugLog( 'BS::UEModulePDF', 'BsPDFTemplateProvider::getTemplatesForSelectOptions: Error: '.$e->getMessage() );
 			return array( '-' => '-' );
 		}
-		
+
 		return $aOptions;
-		
+
 	}
-	
+
 	/**
-	 * Reads in a template file to a DOMDocuments and collects additional 
+	 * Reads in a template file to a DOMDocuments and collects additional
 	 * information.
 	 * @param array $aParams Has to contain a valid 'template' entry.
 	 * @return array with the DOMDocument and some references.
@@ -77,23 +77,23 @@ class BsPDFTemplateProvider {
 		$oTemplateDOM = new DOMDocument();
 		$oTemplateDOM->formatOutput = true;
 		$oTemplateDOM->load( $sTemplateMarkup );
-		
+
 		$oHeadElement  = $oTemplateDOM->getElementsByTagName( 'head' )->item( 0 );
 		$oBodyElement  = $oTemplateDOM->getElementsByTagName( 'body' )->item( 0 );
 		$oTitleElement = $oTemplateDOM->getElementsByTagName( 'title' )->item( 0 );
-		
+
 		$aResources = array();
 		foreach( $aTemplate['resources'] as $sType => $aFiles ) {
 			foreach( $aFiles as $sFile ){
 				$aResources[$sType][basename($sFile)] = $sTemplatePath.'/'.$sFile;
 			}
 		}
-		
+
 		//Substitue MSG elements
 		$oMsgTags = $oTemplateDOM->getElementsByTagName( 'msg' );
 
 		//Get the message data; If not available use "en" as fallback
-		$aMsgs = isset($aTemplate['messages'][$aParams['language']]) 
+		$aMsgs = isset($aTemplate['messages'][$aParams['language']])
 		? $aTemplate['messages'][$aParams['language']]
 		: $aTemplate['messages']['en'];
 
@@ -109,10 +109,10 @@ class BsPDFTemplateProvider {
 			$oMsgTag->parentNode->replaceChild( $oReplacmentElement, $oMsgTag );
 			$i--;
 		}
-		
+
 		//Substitute META elements
 		$oMetaTags = $oTemplateDOM->getElementsByTagName( 'meta' );
-		
+
 		$i = $oMetaTags->length - 1;
 		while( $i > -1 ){
 			$oMetaTag = $oMetaTags->item($i);
@@ -134,7 +134,7 @@ class BsPDFTemplateProvider {
 			$oMetaTag->setAttribute( 'content', $sValue );
 			$oHeadElement->appendChild( $oMetaTag );
 		}
-		
+
 		//Find CONTENT elements
 		$oContentTags = $oTemplateDOM->getElementsByTagName( 'content' );
 		$aContentTagRefs = array();
@@ -142,11 +142,11 @@ class BsPDFTemplateProvider {
 			$sKey = $oContentTag->getAttribute('key');
 			$aContentTagRefs[$sKey] = $oContentTag;
 		}
-		
+
 		//Create a bookmarks tag within the head element;
 		$oBookmarksNode = $oTemplateDOM->createElement( 'bookmarks' );
 		$oHeadElement->appendChild( $oBookmarksNode );
-		
+
 		//Get additional stylesheets from wiki context
 		$aStyleBlocks = array();
 		global $wgUseSiteCss;
@@ -159,12 +159,16 @@ class BsPDFTemplateProvider {
 
 		foreach( $aStyleBlocks as $sBlockName => $sCss ) {
 			$sCss = "\n/* ".$sBlockName." */\n".$sCss."\n";
-			$oStyleElement = $oTemplateDOM->createElement( 'style',  $sCss );
+
+			$oStyleElement = $oTemplateDOM->createElement( 'style' );
+			$oStyleElement->appendChild(
+				$oTemplateDOM->createCDATASection( $sCss )
+			);
 			$oStyleElement->setAttribute( 'type', 'text/css' );
 			$oStyleElement->setAttribute( 'rel', 'stylesheet' );
 			$oHeadElement->appendChild( $oStyleElement );
 		}
-		
+
 		return array(
 			'resources' => $aResources,
 			'dom'       => $oTemplateDOM,

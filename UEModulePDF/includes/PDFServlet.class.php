@@ -44,9 +44,10 @@ class BsPDFServlet {
 			'timeout' => 120,
 			'postData' => array(
 				'fileType' => '', //Need to stay empty so UploadAsset servlet saves file to document root directory
-				'documentToken'  => $this->aParams['document-token'],
+				'documentToken' => $this->aParams['document-token'],
+				'sourceHtmlFile_name' => basename( $sTmpHtmlFile ),
 				'sourceHtmlFile' => '@'.$sTmpHtmlFile,
-				'wikiId'         => wfWikiID()
+				'wikiId' => wfWikiID()
 			)
 		);
 
@@ -65,8 +66,8 @@ class BsPDFServlet {
 		//Upload HTML source
 		//TODO: Handle $sResponse
 		$sResponse = Http::post(
-				$this->aParams['soap-service-url'].'/UploadAsset',
-				$aOptions
+			$this->aParams['soap-service-url'].'/UploadAsset',
+			$aOptions
 		);
 
 		//Now do the rendering
@@ -123,7 +124,9 @@ class BsPDFServlet {
 					$aErrors[] = $sFilePath;
 					continue;
 				}
-				$aPostData['file'.$iCounter++] = '@'.$sFilePath;
+				$aPostData['file'.$iCounter.'_name'] = $sFileName;
+				$aPostData['file'.$iCounter] = '@'.$sFilePath;
+				$iCounter++;
 			}
 
 			if( !empty( $aErrors ) ) {
@@ -142,6 +145,7 @@ class BsPDFServlet {
 
 			global $bsgUEModulePDFCURLOptions;
 			$aOptions = array_merge_recursive($aOptions, $bsgUEModulePDFCURLOptions);
+
 			$vHttpEngine = Http::$httpEngine;
 			Http::$httpEngine = 'curl';
 			$sResponse = Http::post(
