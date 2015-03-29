@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Mjbmr"
 		]
 	},
 	"bs-contextmenu-desc": "منوهای زمینه برای پیوندهای گوناگون فراهم می‌کند",
@@ -18,7 +19,7 @@
 	"bs-contextmenu-page-info": "مشاهده صفحه اطلاعات",
 	"bs-contextmenu-media-reupload": "بارگذاری نسخه تازه",
 	"bs-contextmenu-media-view-page": "مشاهده صفحه توضیحات پرونده و تاریخچه پرونده",
-	"bs-contextmenu-user-mail": "ارسال رایانامه",
+	"bs-contextmenu-user-mail": "ارسال ایمیل",
 	"bs-contextmenu-user-talk": "در صفحه بحث پیام بگذارید",
 	"bs-contextmenu-file-download": "دریافت پرونده"
 }
