@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-usersidebar-desc": "Engade a lapela de foco á barra lateral",
+	"prefs-usersidebar": "Barra lateral de usuario",
+	"bs-usersidebar-userpagesettings-link-title": "Editar o contido do seu interese",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} interés"
+}

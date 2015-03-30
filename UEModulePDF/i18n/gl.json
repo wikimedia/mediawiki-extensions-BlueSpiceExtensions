@@ -1,9 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
+	"prefs-uemodulepdf": "Módulo universal de exportación PDF",
+	"uemodulepdf": "Módulo universal de exportación PDF",
+	"bs-uemodulepdf-pref-pdfserviceurl": "URL do servidor:",
+	"bs-uemodulepdf-pref-templatepath": "Modelo estándar:",
+	"bs-uemodulepdf-pref-templatedir": "Directorio do modelo:",
+	"bs-uemodulepdf-pref-suppressns": "Ocultar o prefixo do espazo de nomes no PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF dunha soa páxina",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportar esta páxina a un PDF.",
-	"bs-uemodulepdf-overview-title": "Formato de Documento Portable (PDF)"
+	"bs-uemodulepdf-overview-title": "Formato de Documento Portable (PDF)",
+	"bs-uemodulepdf-overview-webservice-state": "Estado do servidor",
+	"bs-uemodulepdf-overview-webservice-state-ok": "dispoñible",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "non dispoñible",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Interface web do servidor"
 }

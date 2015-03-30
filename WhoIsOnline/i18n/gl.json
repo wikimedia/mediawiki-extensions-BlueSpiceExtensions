@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-whoisonline-desc": "Muestra unha lista de usuarios que están actualmente en liña",
+	"bs-whoisonline-nousers": "Niguén está conectado.",
+	"bs-whoisonline-widget-title": "Quen está en liña?",
+	"prefs-whoisonline": "Quen está en liña?",
+	"bs-whoisonline-pref-limitcount": "Número máximo de usuarios mostrados:",
+	"bs-whoisonline-pref-orderby": "Ordenar por:",
+	"bs-whoisonline-pref-maxidletime": "Tempo en segundos ata que un usuario sexa marcado como sen conexión:",
+	"bs-whoisonline-pref-orderby-time": "Duración",
+	"bs-whoisonline-pref-orderby-name": "Nome",
+	"bs-whoisonline-pref-interval": "Intervalo de actualización en segundos:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Mostra o número de usuarios actualmente conectados."
+}

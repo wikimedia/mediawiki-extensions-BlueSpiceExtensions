@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-watchlist-desc": "Engade un widget e unha marca de lista de vixilancia",
+	"bs-watchlist-title-sidebar": "Lista de vixilancia",
+	"bs-watchlist-pref-widgetlimit": "Límite de entradas:",
+	"bs-watchlist-pref-widgetsortodr": "Ordenar por:",
+	"bs-watchlist-pref-sort-time": "Hora",
+	"bs-watchlist-pref-sort-title": "Título"
+}
