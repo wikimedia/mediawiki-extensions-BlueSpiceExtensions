@@ -10,6 +10,7 @@
 	"uemodulepdf": "Módulo universal de exportación PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "URL del motor:",
 	"bs-uemodulepdf-pref-templatepath": "Plantilla estándar:",
+	"bs-uemodulepdf-pref-templatedir": "Directorio de plantilla:",
 	"bs-uemodulepdf-pref-suppressns": "Ocultar el prefijo de espacio de nombres en el PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF de una sola página",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportar esta página como PDF.",

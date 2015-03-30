@@ -24,7 +24,7 @@
  * @author     Stephan Muggli <muggli@hallowelt.biz>
  * @author     Mathias Scheer <scheer@hallowelt.biz>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    2.23.0 stable
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -124,7 +124,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
-		$this->mCore->registerPermission( 'searchfiles', array( 'user' ) );
+		$this->mCore->registerPermission( 'searchfiles', array( 'user' ), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

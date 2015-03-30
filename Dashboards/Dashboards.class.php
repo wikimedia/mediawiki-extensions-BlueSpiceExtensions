@@ -23,18 +23,13 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Dashboards
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - initial release
-*/
 
 /**
  * Base class for Dashboards extension

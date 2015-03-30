@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-pagesvisited-desc": "Proporciona unha lista personalizada das últimas páxinas visitadas",
+	"prefs-pagesvisited": "Páxinas visitadas",
+	"bs-pagesvisited-widget-title": "Páxinas visitadas",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|O espazo|Os espazos}} de nomes <code>$2</code> non {{PLURAL:$1|é válido|son válidos}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Límite de entradas:",
+	"bs-pagesvisited-pref-widgetns": "Espazos de nomes:",
+	"bs-pagesvisited-pref-widgetsortodr": "Ordenar por:",
+	"bs-pagesvisited-pref-sort-time": "Tempo",
+	"bs-pagesvisited-pref-sort-pagename": "Título",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Mostra unha lista de páxinas que visitou."
+}

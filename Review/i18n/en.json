@@ -13,6 +13,7 @@
 	"bs-review-denied-disagreed": "At least one participant has disagreed.",
 	"bs-review-accepted": "Accepted",
 	"bs-review-rejected": "Rejected",
+	"bs-review-pending": "Pending",
 	"bs-review-abstain": "Abstained",
 	"bs-review-review-finished": "This page has been reviewed.",
 	"bs-review-reviewed-till": "This page is being reviewed from $1 to $2.",
@@ -30,6 +31,16 @@
 	"bs-review-mail-invite-header": "Please review the page \"$1\"",
 	"bs-review-mail-invite-body": "$1 has {{GENDER:$2|invited}} you to review the page \"$3\".",
 	"bs-review-mail-comment": "A comment was entered: \"$1\".",
+	"bs-review-mail-accept-header": "$1 has {{GENDER:$2|accepted}} $3",
+	"bs-review-mail-accept-body": "the user $1 has {{GENDER:$2|reacted}} to your review and {{GENDER:$2|accepted}} the changes.",
+	"bs-review-mail-deny-header": "$1 has {{GENDER:$2|rejected}} $3",
+	"bs-review-mail-deny-body": "the user $1 has {{GENDER:$2|reacted}} to your review and {{GENDER:$2|rejected}} the changes.",
+	"bs-review-mail-deny-and-restart-header": "$1 has {{GENDER:$2|rejected}} $3",
+	"bs-review-mail-deny-and-restart-body": "the user $1 has {{GENDER:$2|reacted}} to your review and {{GENDER:$2|rejected}} the changes. The review will be restarted automatically.",
+	"bs-review-mail-finish-header": "Review finished",
+	"bs-review-mail-finish-body": "the user $1 has {{GENDER:$2|reacted}} to your review on \"$3\" and {{GENDER:$2|accepted}} the changes. The review is now finished.\n\n",
+	"bs-review-mail-finish-and-review-header": "$1 Review finished",
+	"bs-review-mail-finish-and-review-body": "the user $1 has {{GENDER:$2|reacted}} to your review on \"$3\" and {{GENDER:$2|accepted}} the changes. The review is now finished and got marked as stable.\n\n",
 	"bs-review-statebar-body-do-review": "Please review this page",
 	"bs-review-i-agree": "Agree",
 	"bs-review-i-dismiss": "Disagree",
@@ -75,5 +86,6 @@
 	"bs-review-header-enddate": "End",
 	"bs-review-confirm-delete-step": "Do you really want to delete this step?",
 	"bs-review-confirm-delete-review": "Do you really want to delete this review?",
-	"bs-review-error-insufficient-permissions": "You don't have the permission to execute this action (\"$1\" needed)."
+	"bs-review-error-insufficient-permissions": "You don't have the permission to execute this action (\"$1\" needed).",
+	"echo-category-title-bs-review-complete-cat": "Notification for completing a review"
 }

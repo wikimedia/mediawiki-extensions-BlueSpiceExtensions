@@ -14,5 +14,6 @@
 	"bs-usermanager-titleeditdetails": "編輯使用者",
 	"bs-usermanager-labelnewpassword": "密碼",
 	"bs-usermanager-labelpasswordcheck": "確認密碼",
-	"bs-usermanager-titledeleteuser": "刪除使用者"
+	"bs-usermanager-titledeleteuser": "刪除使用者",
+	"bs-usermanager-groups-more": "... 更多"
 }

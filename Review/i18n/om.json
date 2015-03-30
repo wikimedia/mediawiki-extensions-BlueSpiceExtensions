@@ -13,6 +13,8 @@
 	"bs-review-review-error": "Dogoggorri hin beekkamne uummame:",
 	"bs-review-review-saved": "Filannoon kee olkaawwameera",
 	"bs-review-mail-invite-header": "Maaloo, fuula \"$1\" gulaali",
+	"bs-review-mail-finish-header": "Keeddeebiin xumurame",
+	"bs-review-mail-finish-and-review-header": "$1 Keeddeebiin xumurame",
 	"bs-review-statebar-body-do-review": "Maaloo fuula kana gulaali",
 	"bs-review-i-agree": "Fudhe",
 	"bs-review-i-dismiss": "Hin fudhadhu",

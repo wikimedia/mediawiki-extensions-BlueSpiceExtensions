@@ -15,5 +15,6 @@
 	"bs-shoutbox-switch-description": "Verstoppt Shoutbox op dëser Säit",
 	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|Zeechen}} iwwreg",
 	"bs-shoutbox-confirm-title": "Confirméieren",
-	"bs-shoutbox-entermessage": "Gitt w.e.g. e Message an."
+	"bs-shoutbox-entermessage": "Gitt w.e.g. e Message an.",
+	"bs-shoutbox-notifications-title-message-subject": "Dir gouft ernimmt"
 }

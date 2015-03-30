@@ -116,7 +116,13 @@ class BsPDFPageProvider {
 			$oAPI = new ApiMain( $aAPIParams );
 			$oAPI->execute();
 
-			$aResult = $oAPI->getResultData();
+			if ( defined( 'ApiResult::META_CONTENT' ) ) {
+				$aResult = $oAPI->getResult()->getResultData();
+				$aResult = ApiResult::transformForBC( $aResult );
+				$aResult = ApiResult::removeMetadata( $aResult );
+			} else {
+				$aResult = $oAPI->getResultData();
+			}
 
 			foreach($aResult['parse']['categories'] as $aCat ) {
 				$aCategories[] = $aCat['*'];

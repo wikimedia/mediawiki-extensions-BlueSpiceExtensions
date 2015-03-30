@@ -23,15 +23,14 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    2.22.0
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Review
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v2.23.0
  */
 
 /**
@@ -91,9 +90,9 @@ class Review extends BsExtensionMW {
 		$this->setHook('BeforePageDisplay');
 		$this->setHook('SkinTemplateOutputPageBeforeExec');
 
-		$this->mCore->registerPermission('workflowview', array('user'));
-		$this->mCore->registerPermission('workflowedit');
-		$this->mCore->registerPermission('workflowlist');
+		$this->mCore->registerPermission( 'workflowview', array( 'user' ), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'workflowedit', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'workflowlist', array(), array( 'type' => 'global' ) );
 
 		global $wgLogActionsHandlers;
 		$wgLogActionsHandlers['bs-review/create'] = array($this, 'logCreate');
@@ -341,7 +340,8 @@ class Review extends BsExtensionMW {
 
 	/**
 	 * Wrapper method for the process of sending notification mails
-	 *
+	 * DEPRECATED - Use own functionallity instead!
+	 * @deprecated since version 2.23.1
 	 * @param string $sType a key which identifies the messages keys for the mail (accept, decline etc)
 	 * @param User $oReceiver the user object of the user which should get the notification
 	 * @param array $aParams additional parameters for the message
@@ -350,6 +350,7 @@ class Review extends BsExtensionMW {
 	 */
 	public static function sendNotification($sType, $oReceiver, $aParams = array(), $sRelatedLink = null, $oInvolvedUser = null) {
 		global $wgSitename;
+		wfDeprecated( __METHOD__, '2.23.1' );
 
 		// save the basic message key for this mail
 		$sBaseMessageKey = "bs-review-mail-" . strtolower($sType);
@@ -775,6 +776,8 @@ class Review extends BsExtensionMW {
 	/**
 	 * Hook-Handler for Hook 'BSStateBarBeforeTopViewAdd'
 	 * @param StateBar $oStateBar
+	 * @param User $oUser
+	 * @param Title $oTitle
 	 * @param array $aTopViews
 	 * @return boolean Always true to keep hook running
 	 */
@@ -808,6 +811,15 @@ class Review extends BsExtensionMW {
 					}
 				}
 			}
+
+			$aNextUsers = $oRev->getNextUsers();
+			foreach( $aNextUsers as $aNextUser ) {
+				if( (int)$aNextUser['id'] === $oUser->getId() ) {
+					$sIcon = "bs-infobar-workflow-active";
+					break;
+				}
+			}
+
 			$sIcon .= ".png";
 
 			$aTopViews['statebartopreview'] = $this->makeStateBarTopReview($sIcon);
@@ -958,7 +970,7 @@ class Review extends BsExtensionMW {
 
 		$oReviewView->setVotable( true );
 		$sUserName = BsCore::getUserDisplayName($oUser);
-		$oReviewView->setComment( "<em>{$sUserName}:</em> {$_step->comment}" );
+		$oReviewView->setComment( "<em>{$sUserName}:</em> {$step->comment}" );
 
 		wfRunHooks('BsReview::checkStatus::afterMessage', array($step, $oReviewView));
 		if ( $oTitle->userCan( "workflowview", $oUser ) ) {
@@ -1008,7 +1020,8 @@ class Review extends BsExtensionMW {
 			'id' => 'pi-review',
 			'href' => SpecialPage::getTitleFor('Review', $oUser->getName() )->getLocalURL(),
 			'text' => $iCountReviews ."|". $iCountFinishedReviews,
-			'class' => 'icon-eye'
+			'class' => 'icon-eye',
+			'active' => $iCountReviews > 0 ? true : false
 		);
 
 		return true;
@@ -1040,8 +1053,6 @@ class Review extends BsExtensionMW {
 		}
 
 		$oReview = BsExtensionManager::getExtension('Review');
-		$sTitleText = $oTitle->getPrefixedText();
-		$sLink = BsLinkProvider::makeLink( $oTitle, $oTitle->getFullURL() );
 		$oNext = null;
 
 		$dbw = wfGetDB(DB_MASTER);
@@ -1100,7 +1111,6 @@ class Review extends BsExtensionMW {
 		// Identify owner
 		$oReviewProcess = BsReviewProcess::newFromPid($iArticleId);
 		$oOwner = User::newFromID($oReviewProcess->getOwner());
-		$sOwnerMail = $oOwner->getEmail();
 
 		$sUserName = BsCore::getUserDisplayName($oUser);
 		$sOwnerName = BsCore::getUserDisplayName($oOwner);
@@ -1124,18 +1134,67 @@ class Review extends BsExtensionMW {
 
 		$oTitle->invalidateCache();
 
+		if( $sVote == 'no' && $oReviewProcess->isSequential() ) {
+			$oReviewProcess->reset( $sComment );
+		}
+
+		//PW(09.03.2015): Echo notifications
+		//Notify the owner of the revie, that a user did some action
+		// if the receiver deactivated mail notifications, we stop right here
+		if (!BsConfig::getVarForUser('MW::Review::EmailNotifyReviewer', $oOwner->getName())) {
+			// Unfortunately, there is no way of verifying the result :(
+			return wfMessage('bs-review-review-saved')->plain();
+		}
+
+		$aParams = array(
+			BsCore::getUserDisplayName( $oUser ),
+			$oUser->getName(),
+			$oTitle->getPrefixedText(),
+		);
+
 		if ($sVote == 'yes') {
-			self::sendNotification('accept', $oOwner, array($sTitleText, date('Y-m-d')), $sLink, $oUser);
+			$sSubject = wfMessage( "bs-review-mail-accept-header", $aParams )
+				->inLanguage( $oOwner->getOption('language') )
+				->text()
+			;
+			$sMessage = wfMessage( "bs-review-mail-accept-body", $aParams )
+				->inLanguage( $oOwner->getOption('language') )
+				->text()
+			;
 		} elseif ($sVote == 'no') {
 			if ($oReviewProcess->isSequential()) {
-				$oReviewProcess->reset($sComment);
-				self::sendNotification('deny-and-restart', $oOwner, array($sTitleText, date('Y-m-d')), $sLink, $oUser);
+				$sSubject = wfMessage( "bs-review-mail-deny-and-restart-header", $aParams )
+					->inLanguage( $oOwner->getOption('language') )
+					->text()
+				;
+				$sMessage = wfMessage( "bs-review-mail-deny-and-restart-body", $aParams )
+					->inLanguage( $oOwner->getOption('language') )
+					->text()
+				;
 			} else {
-				self::sendNotification('deny', $oOwner, array($sTitleText, date('Y-m-d')), $sLink, $oUser);
+				$sSubject = wfMessage( "bs-review-mail-deny-header", $aParams )
+					->inLanguage( $oOwner->getOption('language') )
+					->text()
+				;
+				$sMessage = wfMessage( "bs-review-mail-deny-body", $aParams )
+					->inLanguage( $oOwner->getOption('language') )
+					->text()
+				;
 			}
 		}
 
+		$sMessage .= wfMessage( 'bs-review-mail-link-to-page', $oTitle->getFullURL() )
+			->inLanguage( $oOwner->getOption('language') )
+			->text()
+		;
+
+		BsMailer::getInstance('MW')->send( $oOwner, $sSubject, $sMessage );
+
 		wfRunHooks('BsReview::getVoteResponseOnMailAction', array($row, $oTitle, $oOwner));
+
+		if( $oReviewProcess->isFinished() === false ) {
+			return wfMessage('bs-review-review-saved')->plain();
+		}
 
 		// Let flagged revision know that it's all goooooood (or not approved)
 		$bResult = true;
@@ -1143,16 +1202,44 @@ class Review extends BsExtensionMW {
 		if ($bResult) {
 			if ($oReviewProcess->isFinished() == 'status') {
 				if (!$oUser->isAllowed('review')) {
-					self::sendNotification('finish', $oOwner, array($sTitleText), $sLink);
+					$sSubject = wfMessage( "bs-review-mail-finish-header", $aParams )
+						->inLanguage( $oOwner->getOption('language') )
+						->text()
+					;
+					$sMessage = wfMessage( "bs-review-mail-finish-body", $aParams )
+						->inLanguage( $oOwner->getOption('language') )
+						->text()
+					;
 				} else {
-					self::sendNotification('finish-and-review', $oOwner, array($sTitleText), $sLink);
+					$sSubject = wfMessage( "bs-review-mail-finish-and-review-header", $aParams )
+						->inLanguage( $oOwner->getOption('language') )
+						->text()
+					;
+					$sMessage = wfMessage( "bs-review-mail-finish-and-review-body", $aParams )
+						->inLanguage( $oOwner->getOption('language') )
+						->text()
+					;
 				}
 			}
 		} else {
-			if ($sOwnerMail) {
-				self::sendNotification('finish-no-flagged-revs', $oOwner, array($sTitleText), $sLink);
-			}
+			//This is probably handled somewhere else
+			//return wfMessage('bs-review-review-saved')->plain();
+			$sSubject = wfMessage( "bs-review-mail-finish-header", $aParams )
+				->inLanguage( $oOwner->getOption('language') )
+				->text()
+			;
+			$sMessage = wfMessage( "bs-review-mail-finish-body", $aParams )
+				->inLanguage( $oOwner->getOption('language') )
+				->text()
+			;
 		}
+
+		$sMessage .= wfMessage( 'bs-review-mail-link-to-page', $oTitle->getFullURL() )
+			->inLanguage( $oOwner->getOption('language') )
+			->text()
+		;
+
+		BsMailer::getInstance('MW')->send( $oOwner, $sSubject, $sMessage );
 
 		// Unfortunately, there is no way of verifying the result :(
 		return wfMessage('bs-review-review-saved')->plain();
@@ -1222,7 +1309,7 @@ class Review extends BsExtensionMW {
 
 		// Identify owner
 		$oOwner = User::newFromId( $oReviewProcess->getOwner() );
-		$sOwnerName = $this->mCore->getUserDisplayName( $oOwner );
+		$sOwnerRealName = BsCore::getUserDisplayName( $oOwner );
 
 		$oTitle = Title::newFromID( $oReviewProcess->pid );
 		$sTitleText = $oTitle->getPrefixedText();
@@ -1241,25 +1328,29 @@ class Review extends BsExtensionMW {
 			}
 
 			// Identify reviewer
+			//PW(10.03.2015): Echo notifications
 			$sReviewerMail = $oReviewer->getEmail();
 			if ( !$sReviewerMail ) continue;
 
 			$sReviewerLang = $oReviewer->getOption('language');
 
-			$sSubject = wfMessage(
-							'bs-review-mail-invite-header', $sTitleText
-					)->inLanguage( $sReviewerLang )->plain();
+			$sSubject = wfMessage( 'bs-review-mail-invite-header', $sTitleText )
+				->inLanguage( $sReviewerLang )
+				->text()
+			;
 
-			$sMsg = wfMessage(
-							'bs-review-mail-invite-body', $sOwnerName, $oOwner->getName(), $sTitleText
-					)->inLanguage( $sReviewerLang )->plain();
+			$sMsg = wfMessage( 'bs-review-mail-invite-body', $sOwnerRealName, $oOwner->getName(), $sTitleText )
+				->inLanguage( $sReviewerLang )
+				->text()
+			;
 
 			$sMsg .= "\n\n" . $sLink;
 
 			if ($aReviewer['comment']) {
-				$sMsg .= "\n". wfMessage(
-								'bs-review-mail-comment', $aReviewer['comment']
-						)->inLanguage( $sReviewerLang )->plain();
+				$sMsg .= "\n". wfMessage( 'bs-review-mail-comment', $aReviewer['comment'] )
+					->inLanguage( $sReviewerLang )
+					->text()
+				;
 			}
 
 			//Send mail to next user in queue

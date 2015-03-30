@@ -9,6 +9,7 @@
 	"bs-smartlist-recent-changes": "Recent changes",
 	"bs-smartlist-no-entries": "No results found.",
 	"bs-smartlist-invalid-namespaces": "The given {{PLURAL:$1|namespace is|namespaces are}} invalid: $2.",
+	"bs-smartlist-invalid-target": "The given target is not a valid page title",
 	"bs-smartlist-comment": "Comment: $1.",
 	"bs-smartlist-pref-count": "Number of entries:",
 	"bs-smartlist-pref-comments": "Show comment",

@@ -4,9 +4,24 @@
 			"Elisardojm"
 		]
 	},
+	"bs-groupmanager-desc": "Interface administrativa para engadir, editar e eliminar grupos de usuarios e os seus privilexios",
 	"bs-groupmanager-grpexists": "O grupo xa existe.",
 	"bs-groupmanager-grpadded": "O grupo foi engadido.",
 	"bs-groupmanager-grpedited": "O grupo foi editado.",
 	"bs-groupmanager-grpremoved": "O grupo foi borrado.",
-	"bs-groupmanager-label": "Xestor de grupos"
+	"bs-groupmanager-label": "Xestor de grupos",
+	"bs-groupmanager-invalid-name": "O nome do grupo contén {{PLURAL:$1|un carácter inválido|caracteres inválidos}}: $2",
+	"bs-groupmanager-invalid-name-length": "O nome do grupo non pode ter máis de 16 caracteres.",
+	"bs-groupmanager-invalid-name-numeric": "O nome do grupo debe ter polo menos un caracter.",
+	"bs-groupmanager-headergroup": "Grupo",
+	"bs-groupmanager-tipremove": "Eliminar {{PLURAL:$1|grupo|grupos}}",
+	"bs-groupmanager-titlenewgroup": "Novo grupo",
+	"bs-groupmanager-titleeditgroup": "Editar grupo",
+	"bs-groupmanager-removegroup": "¿Está seguro de que queres eliminar {{PLURAL:$1|este grupo|estos grupos}}?",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|Eliminouse o seguinte grupo|Elimináronse os seguintes grupos}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "{{PLURAL:$1|O seguinte grupo|Os seguintes grupos}}  non puideron eliminarse: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Ocorreu un erro inesperado, por favor ténteo outra vez.",
+	"bs-groupmanager-lablename": "Nome do grupo:",
+	"bs-groupmanager-msgnoteditable": "Este grupo é un grupo de sistema e non se pode renomear.",
+	"bs-groupmanager-msgnotremovable": "Este grupo é un grupo de sistema e non pode eliminarse."
 }

@@ -32,6 +32,10 @@
     padding: 0px;
 }
 
+div.bs-blog-item {
+	clear: both;
+}
+
 .bs-blog-item-info {
     margin: 5px 0 5px 0;
 	font-size: 12px;

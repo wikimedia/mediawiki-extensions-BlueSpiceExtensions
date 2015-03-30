@@ -20,18 +20,13 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Readers
  * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v2.22.0
- * - initial release
-*/
 
 /**
  * Readers extension
@@ -75,7 +70,7 @@ class Readers extends BsExtensionMW {
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'SkinTemplateNavigation' );
 
-		$this->mCore->registerPermission( 'viewreaders' );
+		$this->mCore->registerPermission( 'viewreaders', array(), array( 'type' => 'global' ) );
 
 		BsConfig::registerVar( 'MW::Readers::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-readers-pref-active', 'toggle' );
 		BsConfig::registerVar( 'MW::Readers::NumOfReaders', 10, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-readers-pref-numofreaders', 'int' );

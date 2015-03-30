@@ -23,7 +23,7 @@
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @author     Markus Glaser <glaser@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage GroupManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

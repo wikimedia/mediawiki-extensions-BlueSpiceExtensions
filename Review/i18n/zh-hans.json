@@ -13,6 +13,7 @@
 	"bs-review-denied-disagreed": "至少一位参与者表示不同意。",
 	"bs-review-accepted": "已接受",
 	"bs-review-rejected": "已拒绝",
+	"bs-review-pending": "待处理",
 	"bs-review-abstain": "已弃权",
 	"bs-review-review-finished": "此页面已复核。",
 	"bs-review-reviewed-till": "此页面正从$1至$2复核。",
@@ -30,6 +31,16 @@
 	"bs-review-mail-invite-header": "请复核页面“$1”",
 	"bs-review-mail-invite-body": "$1{{GENDER:$2|邀请}}您复核页面“$3”。",
 	"bs-review-mail-comment": "已输入评论：“$1”。",
+	"bs-review-mail-accept-header": "$1{{GENDER:$2|同意了}}$3",
+	"bs-review-mail-accept-body": "用户$1{{GENDER:$2|反应了}}您的复核，并{{GENDER:$2|同意了}}更改。",
+	"bs-review-mail-deny-header": "$1{{GENDER:$2|拒绝了}}$3",
+	"bs-review-mail-deny-body": "用户$1{{GENDER:$2|反应了}}您的复核，并{{GENDER:$2|拒绝了}}更改。",
+	"bs-review-mail-deny-and-restart-header": "$1{{GENDER:$2|拒绝了}}$3",
+	"bs-review-mail-deny-and-restart-body": "用户$1{{GENDER:$2|反应了}}您的复核，并{{GENDER:$2|拒绝了}}更改。复核将自动被恢复。",
+	"bs-review-mail-finish-header": "复核结束",
+	"bs-review-mail-finish-body": "用户$1{{GENDER:$2|反应了}}您在“$3”的复核，并{{GENDER:$2|同意了}}更改。复核现已结束。",
+	"bs-review-mail-finish-and-review-header": "$1复核结束",
+	"bs-review-mail-finish-and-review-body": "用户$1{{GENDER:$2|反应了}}您在“$3”的复核，并{{GENDER:$2|同意了}}更改。复核现已结束并已被标记为稳定。",
 	"bs-review-statebar-body-do-review": "请复核此页",
 	"bs-review-i-agree": "同意",
 	"bs-review-i-dismiss": "不同意",
@@ -75,5 +86,6 @@
 	"bs-review-header-enddate": "结束",
 	"bs-review-confirm-delete-step": "您真的希望删除此步骤？",
 	"bs-review-confirm-delete-review": "您真的希望删除此复核？",
-	"bs-review-error-insufficient-permissions": "您没有权限执行此操作（需要“$1”）。"
+	"bs-review-error-insufficient-permissions": "您没有权限执行此操作（需要“$1”）。",
+	"echo-category-title-bs-review-complete-cat": "完成复核时的通知"
 }

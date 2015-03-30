@@ -25,15 +25,12 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage SmartList
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v2.23.0
  */
 
 /**
@@ -565,6 +562,7 @@ class SmartList extends BsExtensionMW {
 		$aArgs['showns'] = BsCore::sanitizeArrayEntry( $aArgs, 'showns', true, BsPARAMTYPE::BOOL );
 		$aArgs['numwithtext'] = BsCore::sanitizeArrayEntry( $aArgs, 'numwithtext', 100, BsPARAMTYPE::INT );
 		$aArgs['meta'] = BsCore::sanitizeArrayEntry( $aArgs, 'meta', false, BsPARAMTYPE::BOOL );
+		$aArgs['target'] = BsCore::sanitizeArrayEntry( $aArgs, 'target', '', BsPARAMTYPE::STRING );
 
 		$oSmartListView = new ViewBaseElement();
 		if ( !empty( $aArgs['heading'] ) ) {
@@ -706,16 +704,6 @@ class SmartList extends BsExtensionMW {
 		if ( $aArgs['mode'] == 'recentchanges' ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$aConditions = array();
-			// TODO RBV (17.05.11 16:52): Put this into abstraction layer
-			if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
-				$aCategories = explode( ',', $aArgs['categories'] );
-				$iCnt = count( $aCategories );
-				for ( $i = 0; $i < $iCnt; $i++ ) {
-					$aCategories[$i] = str_replace( ' ', '_', $aCategories[$i] );
-					$aCategories[$i] = "'" . trim( ucfirst( $aCategories[$i] ) ) . "'";
-				}
-				$aArgs['categories'] = implode( ',', $aCategories );
-			}
 
 			switch ( $aArgs['period'] ) {
 				case 'month': $sMinTimestamp = $dbr->timestamp( time() - 30 * 24 * 60 * 60 );
@@ -743,15 +731,7 @@ class SmartList extends BsExtensionMW {
 				);
 			}
 
-			if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
-				if ( $aArgs['categoryMode'] == 'OR' ) {
-					$aConditions[] = 'rc_cur_id IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to IN (' . $aArgs['categories'] . ') )';
-				} else {
-					foreach ( $aCategories as $sCategory ) {
-						$aConditions[] = 'rc_cur_id IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to = ' . $sCategory . ' )';
-					}
-				}
-			}
+			$this->makeCategoriesFilterCondition( $aConditions, $aArgs, 'rc_cur_id' );
 
 			switch ( $aArgs['sort'] ) {
 				case 'title':
@@ -819,8 +799,103 @@ class SmartList extends BsExtensionMW {
 				$iCount++;
 			}
 			$dbr->freeResult( $res );
+
+		} elseif( $aArgs['mode'] == 'whatlinkshere' ) {
+			//PW(25.02.2015) TODO:
+			//There could be filters - see Special:Whatlinkshere
+
+			$oTargetTitle = empty( $aArgs['target'] )
+				? $this->getContext()->getTitle()
+				: Title::newFromText( $aArgs['target'] )
+			;
+
+			if( is_null($oTargetTitle) ) {
+				$oErrorListView->addItem(
+					new ViewTagError(
+						wfMessage( 'bs-smartlist-invalid-target' )->text()
+					)
+				);
+				return $oErrorListView->execute();
+			}
+
+			$dbr = wfGetDB( DB_SLAVE );
+			$aTables = array(
+				'pagelinks',
+				'page',
+			);
+			$aFields = array(
+				'title' => 'page_title',
+				'namespace' => 'page_namespace',
+			);
+			$aConditions = array(
+				"page_id = pl_from",
+				"pl_namespace = {$oTargetTitle->getNamespace()}",
+				"pl_from NOT IN ({$oTargetTitle->getArticleID()})",
+				"pl_title = '{$oTargetTitle->getDBkey()}'",
+			);
+			$aOptions = array();
+
+			try {
+				$aNamespaceIds = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString(
+					$aArgs['namespaces']
+				);
+				$aConditions['page_namespace'] = $aNamespaceIds;
+			} catch ( BsInvalidNamespaceException $ex ) {
+				$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
+				$oErrorListView->addItem(
+					new ViewTagError(
+						wfMessage( 'bs-smartlist-invalid-namespaces' )
+							->numParams( count( $ex->getListOfInvalidNamespaces() ) )
+							->params( $sInvalidNamespaces )
+							->text()
+					)
+				);
+				return $oErrorListView->execute();
+			}
+
+			$this->makeCategoriesFilterCondition( $aConditions, $aArgs, 'page_id' );
+
+			//Default: time
+			$aOptions['ORDER BY'] = $aArgs['sort'] == 'title'
+				? 'page_title'
+				: 'page_id'
+			;
+
+			//Default DESC
+			$aOptions['ORDER BY'] .= $aArgs['order'] == 'ASC'
+				? ' ASC'
+				: ' DESC'
+			;
+
+			$res = $dbr->select(
+				$aTables,
+				$aFields,
+				$aConditions,
+				__METHOD__,
+				$aOptions
+			);
+
+			$iCount = 0;
+			foreach( $res as $row ) {
+				if( $iCount == $aArgs['count'] ) {
+					break;
+				}
+
+				$oTitle = Title::makeTitleSafe( $row->namespace, $row->title );
+				if( !$oTitle || !$oTitle->quickUserCan( 'read' ) ) {
+					continue;
+				}
+
+				$aObjectList[] = $row;
+				$iCount++;
+			}
+
+			$dbr->freeResult( $res );
+
 		} else {
-			wfRunHooks( 'BSSmartListCustomMode', array( &$aObjectList, $aArgs ) );
+			wfRunHooks(
+				'BSSmartListCustomMode', array( &$aObjectList, $aArgs, $this )
+			);
 		}
 
 		if ( $oErrorListView->hasEntries() ) {
@@ -1239,6 +1314,27 @@ class SmartList extends BsExtensionMW {
 		$aConditions = array( 'rev_timestamp >= '.$iTimeStamp );
 
 		return true;
+	}
+
+	public function makeCategoriesFilterCondition( &$aConditions, $aArgs, $sPageIdFileName) {
+		if ( $aArgs['categories'] != '-' && $aArgs['categories'] != '' ) {
+			$aCategories = explode( ',', $aArgs['categories'] );
+			$iCnt = count( $aCategories );
+			for ( $i = 0; $i < $iCnt; $i++ ) {
+				$aCategories[$i] = str_replace( ' ', '_', $aCategories[$i] );
+				$aCategories[$i] = "'" . trim( ucfirst( $aCategories[$i] ) ) . "'";
+			}
+			$aArgs['categories'] = implode( ',', $aCategories );
+
+			$dbr = wfGetDB( DB_SLAVE );
+			if ( $aArgs['categoryMode'] == 'OR' ) {
+				$aConditions[] = $sPageIdFileName.' IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to IN (' . $aArgs['categories'] . ') )';
+			} else {
+				foreach ( $aCategories as $sCategory ) {
+					$aConditions[] = $sPageIdFileName.' IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to = ' . $sCategory . ' )';
+				}
+			}
+		}
 	}
 
 }

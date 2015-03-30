@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-insertfile-lastmodified": "Aldaketa berriak",
+	"bs-insertfile-labelupload": "Igo",
+	"bs-insertfile-details-title": "Xehetasunak",
+	"bs-insertfile-uploadbuttontext": "Arakatu",
+	"bs-insertfile-uploadimageemptytext": "Aukeratu irudi berri bat ...",
+	"bs-insertfile-uploadimagefieldlabel": "Igo irudi berria",
+	"bs-insertfile-uploadfileemptytext": "Aukeratu irudi berri bat ...",
+	"bs-insertfile-uploadsubmitvalue": "Igo fitxategia",
+	"bs-insertfile-error": "Errorea",
+	"bs-insertfile-errornofileextensiononupload": "Aukeratu duzun fitxategiak ez du fitxategi-luzapenik.",
+	"bs-insertfile-errorWrongFileExtensionOnUpload": "Aukeratu duzun fitxategiak ez du baliozko fitxategi-luzapenik.",
+	"bs-insertfile-errorWrongFileTypeOnUpload": "Aukeratu duzun fitxategia ez da baliozko fitxategi-mota.",
+	"bs-insertfile-uploadcomplete": "Zure fitxategia ondo gorde da.",
+	"bs-insertfile-license": "Lizentzia",
+	"bs-insertfile-categories": "Kategoriak",
+	"bs-insertfile-linktext": "Erakutsi testua"
+}

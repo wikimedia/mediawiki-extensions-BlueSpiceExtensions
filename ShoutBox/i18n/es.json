@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"AVIADOR",
-			"Fitoschido"
+			"Fitoschido",
+			"Awesomecat5"
 		]
 	},
 	"bs-shoutbox-message": "Escribe un comentario nuevo…",
@@ -23,5 +24,8 @@
 	"bs-shoutbox-confirm-text": "¿Estás seguro de querer borrar esta entrada?",
 	"bs-shoutbox-confirm-title": "Confirmar",
 	"bs-shoutbox-entermessage": "Introduce un mensaje.",
-	"bs-shoutbox-too-early": "Por favor, espera unos segundos antes de enviar la siguiente entrada."
+	"bs-shoutbox-too-early": "Por favor, espera unos segundos antes de enviar la siguiente entrada.",
+	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención en un grito",
+	"bs-shoutbox-notifications-title-message-subject": "Te han mencionado",
+	"bs-shoutbox-notifications-title-message-text": "Llevas {{GÉNERO: $1 | mencionada}} \". $3\" por $2 en un grito en la página"
 }

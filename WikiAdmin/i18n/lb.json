@@ -6,5 +6,7 @@
 	},
 	"bs-wikiadmin-desc": "Zentrale Punkt fir d'Gestioun vu BlueSpice",
 	"bs-wikiadmin-notallowed": "Dir däerft dës Säit net benotzen.",
-	"wikiadmin": "BlueSpice Gestioun"
+	"wikiadmin": "BlueSpice Gestioun",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Spezialsäiten",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Lëscht vun alle MediaWiki Spezialsäiten"
 }

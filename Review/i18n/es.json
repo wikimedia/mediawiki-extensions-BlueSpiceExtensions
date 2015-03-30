@@ -15,6 +15,7 @@
 	"bs-review-denied-disagreed": "Al menos un participante ha discrepado.",
 	"bs-review-accepted": "Aceptada",
 	"bs-review-rejected": "Rechazada",
+	"bs-review-pending": "Pendiente",
 	"bs-review-abstain": "Abstenciones",
 	"bs-review-review-finished": "Esta página ha sido revisada.",
 	"bs-review-reviewed-till": "Esta página está siendo revisada desde el $1 hasta el $2 .",
@@ -32,6 +33,16 @@
 	"bs-review-mail-invite-header": "Revisa la página \"$1\"",
 	"bs-review-mail-invite-body": "$1 te ha {{GENDER:$2|invitado}} a revisar la página \"$3\".",
 	"bs-review-mail-comment": "Se ingresó un comentario: \"$1\".",
+	"bs-review-mail-accept-header": "$1 ha {{GENDER:$2|aceptado}} a $3",
+	"bs-review-mail-accept-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión y {{GENDER:$2|aceptó}} los cambios.",
+	"bs-review-mail-deny-header": "$1 ha {{GENDER:$2|rechazado}} a $3",
+	"bs-review-mail-deny-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión y {{GENDER:$2|rechazó}} los cambios.",
+	"bs-review-mail-deny-and-restart-header": "$1 ha {{GENDER:$2|rechazado}} a $3",
+	"bs-review-mail-deny-and-restart-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión y {{GENDER:$2|rechazó}} los cambios. La revisión se reiniciará automáticamente.",
+	"bs-review-mail-finish-header": "Terminó la revisión",
+	"bs-review-mail-finish-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión de \"$3\" y {{GENDER:$2|aceptó}} los cambios. La revisión está finalizada.",
+	"bs-review-mail-finish-and-review-header": "Terminó la revisión de $1",
+	"bs-review-mail-finish-and-review-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión de \"$3\" y {{GENDER:$2|aceptó}} los cambios. La revisión está finalizada y se marcó como estable.",
 	"bs-review-statebar-body-do-review": "Por favor revisa esta página",
 	"bs-review-i-agree": "Aceptar",
 	"bs-review-i-dismiss": "En desacuerdo",
@@ -76,5 +87,6 @@
 	"bs-review-header-enddate": "Fin",
 	"bs-review-confirm-delete-step": "¿Estás seguro de querer borrar este paso?",
 	"bs-review-confirm-delete-review": "¿Estás seguro de querer borrar esta revisión?",
-	"bs-review-error-insufficient-permissions": "No tienes permiso para ejecutar esta acción (se necesita «$1»)."
+	"bs-review-error-insufficient-permissions": "No tienes permiso para ejecutar esta acción (se necesita «$1»).",
+	"echo-category-title-bs-review-complete-cat": "Notificación al completar un revisión"
 }

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"bs-countthings-words-label": "Parole",
+	"bs-countthings-pages-label": "Pàggene",
+	"bs-countthings-error-no-input": "Nisicuna pàgene date."
+}

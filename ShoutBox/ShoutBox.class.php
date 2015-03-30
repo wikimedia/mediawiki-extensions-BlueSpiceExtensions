@@ -23,41 +23,14 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Tobias Weichart <weichart@hallowelt.biz>
  * @author     Karl Waldmanstetter
- * @version    2.22.0 stable
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.1.0
- * - Added new column for user_id
- * - Added User images
- * - Added indexes to table for improved performance
- * - Reworked some code
- * v1.0.0
- * - raised to stable
- * - removed a lot of unneccessary code.
- * v0.4.2
- * - no Shoutbox if title cannot be viewed by user
- * v0.4.1
- * - reworked some outputs
- * v0.4
- * - not displayed in edit mode
- * v0.3
- * - shouts per article
- * v0.2.1
- * - code beautifying
- * - added sanitizer to insert function
- * v0.2
- * - added view classes
- * v0.1
- * - initial release
  */
 
 //Last Code Review RBV (30.06.2011)
@@ -108,9 +81,9 @@ class ShoutBox extends BsExtensionMW {
 
 
 		// Permissions
-		$this->mCore->registerPermission( 'readshoutbox' );
-		$this->mCore->registerPermission( 'writeshoutbox' );
-		$this->mCore->registerPermission( 'archiveshoutbox' );
+		$this->mCore->registerPermission( 'readshoutbox', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'writeshoutbox', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'archiveshoutbox', array(), array( 'type' => 'global' ) );
 
 		$this->mCore->registerBehaviorSwitch( 'bs_noshoutbox' );
 
@@ -627,13 +600,14 @@ $aData = false;
 			'category' => 'bs-shoutbox-mention-cat',
 			'group' => 'neutral',
 			'formatter-class' => 'BsNotificationsFormatter',
-			'title-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'title-message' => 'bs-shoutbox-notifications-title-message-subject',
 			'flyout-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'flyout-params' => array( 'agent', 'agentlink', 'titlelink' ),
 			'email-subject-message' => 'bs-shoutbox-notifications-title-message-subject',
 			'email-body-message' => 'bs-shoutbox-notifications-title-message-text',
-			'title-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'email-body-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'email-body-batch-message' => 'bs-shoutbox-notifications-title-message-text',
+			'email-body-batch-params' => array( 'agent', 'agentlink', 'titlelink' ),
 		);
 		return true;
 	}

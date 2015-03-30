@@ -5,5 +5,8 @@
 		]
 	},
 	"bs-shoutbox-message": "Tulis komen baru...",
-	"bs-shoutbox-shout": "Hantar"
+	"bs-shoutbox-shout": "Hantar",
+	"echo-category-title-bs-shoutbox-mention-cat": "Pemberitahuan bagi sebutan nama dalam pesanan",
+	"bs-shoutbox-notifications-title-message-subject": "Nama anda telah disebut",
+	"bs-shoutbox-notifications-title-message-text": "Nama anda telah {{GENDER:$1|disebut}} oleh $2 dalam satu pesanan di laman \"$3.\""
 }

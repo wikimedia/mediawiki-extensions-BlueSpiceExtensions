@@ -1,12 +1,9 @@
 <?php
 
 /**
- * blue spice for MediaWiki
- * Extension: UserPreferences
- * Description: Renders the blue spice tab in preferences
- * Authors: Sebastian Ulbricht
+ * UserPreferences Extension for BlueSpice
  *
- * Copyright (C) 2010 Hallo Welt! � Medienwerkstatt GmbH, All rights reserved.
+ * Renders the blue spice tab in preferences
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,34 +11,26 @@
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
  *
+ * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
- *
- * Version information
- * $LastChangedDate: 2013-06-14 14:09:29 +0200 (Fr, 14 Jun 2013) $
- * $LastChangedBy: pwirth $
- * $Rev: 9745 $
 
- */
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0.0
- * - raised to stable
- * v0.3.0b
- * - Code Review (2010-10-01)
- * - Refactored Code for compliance to new coding conventions
- * v0.2.0b
- * - Refactored / beautified code
- * - Using new database table scheme from WhosOnline Extension
+ * @author     Sebastian Ulbricht
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @version    2.23.1
+ * @package    BlueSpice_Extensions
+ * @subpackage UserPreferences
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
  */
 
 // Last review MRG (13.10.10 23:23)

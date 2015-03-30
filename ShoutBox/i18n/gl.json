@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo",
+			"Fisterraeomar",
+			"Elisardojm"
+		]
+	},
+	"bs-shoutbox-desc": "Engade unha función analítica para a incorporación da súa propia caixa de mensaxes curtas",
+	"prefs-shoutbox": "Caixa de mensaxes curtas",
+	"bs-shoutbox-title": "Caixa de mensaxes curtas",
+	"bs-shoutbox-message": "Escribir un novo comentario...",
+	"bs-shoutbox-shout": "Enviar",
+	"bs-shoutbox-no-entries": "Non hai nada aquí aínda.",
+	"bs-shoutbox-loading": "Cargando...",
+	"bs-shoutbox-pref-committimeinterval": "Tempo entre dúas mensaxes (en segundos):",
+	"bs-shoutbox-pref-maxmessagelength": "Lonxitude máxima dunha mensaxe:",
+	"bs-shoutbox-pref-numberofshouts": "Número de mensaxes mostradas:",
+	"bs-shoutbox-pref-showage": "Mostrar a data de creación dunha mensaxe",
+	"bs-shoutbox-pref-showuser": "Mostrar o autor dunha mensaxe",
+	"bs-shoutbox-pref-allowarchive": "Permitir que os usuarios eliminen as súas propias entradas",
+	"bs-shoutbox-pref-show": "Mostrar caixa de mensaxes curtas",
+	"bs-shoutbox-archive-success": "Entrada borrada.",
+	"bs-shoutbox-archive-failure": "Houbo un erro ó intentar eliminar a entrada, por favor inténteo de novo.",
+	"bs-shoutbox-archive-failure-user": "As entradas só poden ser eliminadas polo seu autor.",
+	"bs-shoutbox-switch-description": "Oculta a caixa de mensaxes curtas nesta páxina",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|caracter restante|caracteres restantes}}",
+	"bs-shoutbox-confirm-text": "Está seguro de querer borrar esta entrada?",
+	"bs-shoutbox-confirm-title": "Confirmar",
+	"bs-shoutbox-entermessage": "Introduza unha mensaxe.",
+	"bs-shoutbox-too-early": "Por favor, agarde uns segundos antes de enviar a seguinte entrada.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Mensaxe|Mensaxes}}",
+	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención nunha mensaxe curta",
+	"bs-shoutbox-notifications-title-message-subject": "Foi vostede mencionado por alguén"
+}

@@ -23,23 +23,12 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage ExtensionInfo
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
-* v1.20.0:
- *
- * v1.0:
- * - Using ExtJS to render table
- * - Grouping and sorting is now possible
- * v0.1.1b style-information (table) moved to view.ExtensionInfoTable.php and ExtensionInfo.css
- * v0.1
- * - initial commit
  */
 
 /**

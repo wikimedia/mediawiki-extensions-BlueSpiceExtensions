@@ -11,6 +11,7 @@
 	"uemodulepdf": "Універсальний модуль експорту PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "URL-адреса бекенду:",
 	"bs-uemodulepdf-pref-templatepath": "Стандартний шаблон:",
+	"bs-uemodulepdf-pref-templatedir": "Каталог шаблону:",
 	"bs-uemodulepdf-pref-suppressns": "Приховати префікс простору назв у PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Одна сторінка PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Експортувати цю сторінку у форматі PDF.",

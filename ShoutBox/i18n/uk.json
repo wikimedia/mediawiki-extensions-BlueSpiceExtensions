@@ -27,5 +27,7 @@
 	"bs-shoutbox-confirm-text": "Ви дійсно хочете вилучити цей запис?",
 	"bs-shoutbox-confirm-title": "Підтвердити",
 	"bs-shoutbox-entermessage": "Будь ласка, введіть повідомлення.",
-	"bs-shoutbox-too-early": "Будь ласка, зачекайте кілька секунд перед відправкою наступного запису."
+	"bs-shoutbox-too-early": "Будь ласка, зачекайте кілька секунд перед відправкою наступного запису.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|репліка|репліки|реплік}}",
+	"bs-shoutbox-notifications-title-message-subject": "Вас було згадано"
 }

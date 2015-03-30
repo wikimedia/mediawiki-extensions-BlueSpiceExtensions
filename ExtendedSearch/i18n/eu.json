@@ -4,12 +4,22 @@
 			"Subi"
 		]
 	},
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategoria|Kategoriak}}: $2",
+	"bs-extendedsearch-error": "Errorea:",
 	"bs-extendedsearch-facet-category": "Kategoria",
 	"bs-extendedsearch-facet-editors": "Egileak",
 	"bs-extendedsearch-facet-namespace-files": "Fitxategiak",
 	"bs-extendedsearch-facet-type": "Formatua",
+	"bs-extendedsearch-sort-title": "Izenburua",
+	"bs-extendedsearch-sort-ts": "Ordua",
+	"bs-extendedsearch-sort-type": "Mota",
+	"bs-extendedsearch-about-to-start": "Abiatzen...",
+	"bs-extendedsearchadmin-label": "Bilaketa aukerak",
+	"bs-extendedsearch-status": "Egoera",
 	"bs-extendedsearch-statistics": "Estatistikak",
 	"bs-extendedsearch-did-you-mean": "\"$1\" esan nahi zenuen?",
+	"bs-extendedsearch-unknown": "Ezezaguna",
+	"bs-extendedsearch-morelikethis": "Antzeko orrialdeak",
 	"bs-extendedsearch-more": "Gehiago",
 	"bs-extendedsearch-fewer": "Gutxiago"
 }

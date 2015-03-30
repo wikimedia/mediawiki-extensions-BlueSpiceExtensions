@@ -17,7 +17,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	storeFileType: 'image',
 
 	initComponent: function() {
-		this.cbPages = Ext.create( 'Ext.form.ComboBox', {
+		this.cbPages = Ext.create( 'BS.form.field.TitleCombo', {
 			width: 350,
 			margin: '0 5 0 0'
 		});
@@ -219,19 +219,16 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			caption: this.tfLinkText.getValue(),
 			sizeheight: false,
 			sizewidth: false,
-			link: this.cbPages.getValue(),
+			link: this.cbPages.getRawValue(),
 			alt: this.tfAlt.getValue(),
 			thumb: false,
 			border: false,
 			frame: false,
 			//VisualEditor stuff
 			imagename: this.tfFileName.getValue(),
+			noLink: this.cbxNoLink.getValue(),
 			src: Ext.htmlDecode(this.hdnUrl.getValue()) //Ext.htmlDecode(): this feels like the wrong place...
 		});
-
-		if(this.cbxNoLink.getValue() === true ) {
-			cfg.link = '';
-		}
 
 		var format = this.rgFormat.getValue();
 		format = format['img-type'];
@@ -339,12 +336,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.link !== '' && obj.link !== false && obj.link !== 'false' ) {
 			this.cbPages.setValue( obj.link );
 		}
-
-		if( obj.link === '' ) {
-			this.cbxNoLink.setValue(true);
-		} else {
-			this.cbxNoLink.setValue(false);
+		if (obj.nolink === true){
+			this.cbPages.disable( );
 		}
+		else{
+			this.cbPages.enable( );
+		}
+
+		this.cbxNoLink.setValue(obj.nolink);
 
 		this.hdnUrl.setValue( obj.src );
 		this.isSetData = false;

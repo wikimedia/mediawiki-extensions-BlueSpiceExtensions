@@ -23,24 +23,13 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage PagesVisited
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
-  * v1.20.0
-  *
-  * v1.0.0
-  * - Optimized database access -> only whoisonline tables gets fetched
-  * - Using BlueSpice view architecture
-  * v0.2.0b
-  * - Refactored / beautified code
-  * - Using new database table scheme from WhoIsOnline Extension
-  */
 
 /**
  * Base class for PagesVisited extension

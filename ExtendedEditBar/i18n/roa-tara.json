@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"bs-extendededitbar-commentsample": "Commende",
+	"bs-extendededitbar-gallerytip": "'Nzerisce 'na gallerie de fote",
+	"bs-extendededitbar-gallerysamplepicture": "Fote",
+	"bs-extendededitbar-gallerysamplecaption": "'Ndestazione",
+	"bs-extendededitbar-quotetip": "'Nzerisce 'nu blocche de teste citate",
+	"bs-extendededitbar-quotesample": "Blocche de citazione",
+	"bs-extendededitbar-tabletip": "'Nzerisce 'na tabbelle",
+	"bs-extendededitbar-tablesampleheader": "Testate",
+	"bs-extendededitbar-tablesamplerow": "Righe",
+	"bs-extendededitbar-tablesamplecell": "Celle"
+}

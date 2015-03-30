@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Osnard"
 		]
 	},
-	"bs-countthings-desc": "Stellt Inhaltsbasierte Statistiken bereit",
+	"bs-countthings-desc": "Stellt inhaltsbasierte Statistiken bereit",
 	"bs-countthings-chars-label": "Zeichen",
 	"bs-countthings-words-label": "Wörter",
 	"bs-countthings-pages-label": "Seiten",

@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Y-M D"
 		]
 	},
 	"bs-wikiadmin-desc": "Meradur BlueSpice",
 	"bs-wikiadmin-notallowed": "N'oc'h ket aotreet da implijout ar bajenn-mañ.",
 	"wikiadmin": "Meradur BlueSpice",
-	"right-wikiadmin": "Diskwel ar pajennoù merañ BlueSpice"
+	"right-wikiadmin": "Diskwel ar pajennoù merañ BlueSpice",
+	"bs-wikiadmin-shop": "Stal"
 }

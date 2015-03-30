@@ -25,18 +25,13 @@
  *
  * For further information visit http://www.blue-spice.org
  *
- * Version information
- * $LastChangedDate: 2013-06-14 14:09:29 +0200 (Fr, 14 Jun 2013) $
- * $LastChangedBy: pwirth $
- * $Rev: 9745 $
-
- */
-/* Changelog
- * v1.20.0
- * - Added hook handler fpr InsertMagic
- * v0.1
- * - initial release
- */
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @version    2.23.1
+ * @package    BlueSpice_Extensions
+ * @subpackage CountThings
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
 
 /**
  * CountThings adds 3 tags, used in WikiMarkup as follows:

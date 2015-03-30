@@ -9,5 +9,6 @@
 	"bs-wikiadmin-notallowed": "Вы не можете использовать эту страницу.",
 	"wikiadmin": "Администрирование BlueSpice",
 	"action-wikiadmin": "отобразить страницу администрирования BlueSpice",
-	"right-wikiadmin": "Отображение страницы администрирования BlueSpice"
+	"right-wikiadmin": "Отображение страницы администрирования BlueSpice",
+	"bs-wikiadmin-shop": "Магазин"
 }

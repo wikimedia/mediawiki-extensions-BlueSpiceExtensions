@@ -22,10 +22,13 @@
 	"bs-shoutbox-archive-failure": "Се јави грешка при обидот за бришење на ставката. Обидете се повторно.",
 	"bs-shoutbox-archive-failure-user": "Ставките може да ги бришат само нивните автори.",
 	"bs-shoutbox-switch-description": "Ги скрива брзите пораки на страницава",
-	"bs-shoutbox-charactersleft": "{{PLURAL:$1|преостанува еден знак|преостануваат $1 знаци}}",
+	"bs-shoutbox-charactersleft": "{{PLURAL:$1|преостанува уште еден знак|преостануваат уште $1 знаци}}",
 	"bs-shoutbox-confirm-text": "Дали навистина сакате да ја избришете ставката?",
 	"bs-shoutbox-confirm-title": "Потврди",
 	"bs-shoutbox-entermessage": "Внесете порака",
 	"bs-shoutbox-too-early": "Почекајте неколку секунди пред да ја поднесете следната.",
-	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|брза порака|брзи пораки}}"
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|брза порака|брзи пораки}}",
+	"echo-category-title-bs-shoutbox-mention-cat": "Известување за спомнување во брза порака",
+	"bs-shoutbox-notifications-title-message-subject": "Спомнати сте",
+	"bs-shoutbox-notifications-title-message-text": "$2 ве {{GENDER:$1|спомна}} во брза порака на страницата „$3“."
 }

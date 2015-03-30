@@ -9,6 +9,7 @@
 	"uemodulepdf": "Universal export PDF module",
 	"bs-uemodulepdf-pref-pdfserviceurl": "Backend URL:",
 	"bs-uemodulepdf-pref-templatepath": "Standard template:",
+	"bs-uemodulepdf-pref-templatedir": "Template directory:",
 	"bs-uemodulepdf-pref-suppressns": "Hide namespace prefix in PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF single page",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Export this page as PDF.",

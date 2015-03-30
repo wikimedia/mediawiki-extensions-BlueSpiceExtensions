@@ -21,7 +21,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				}
 			},
 			fields: [ 'rev_id', 'page_title', 'owner_name', 'owner_real_name',
-				'rev_status', 'rev_status_text', 'rejected',
+				'rev_status', 'rev_status_text', 'rev_sequential', 'rejected',
 				'accepted', 'accepted_text', 'total', 'endtimetamp',
 				'assessors', 'startdate', 'enddate' ],
 			autoLoad: true
@@ -90,35 +90,47 @@ Ext.define( 'BS.Review.OverviewPanel', {
 
 	renderOwner: function( value, metaData, record, rowIndex, colIndex, store ) {
 		var ownerName = mw.config.get('bsSpecialReviewUserName', false);
-		var openTag = '';
-		var closeTag = '';
 
+		var title = new mw.Title( value, bs.ns.NS_USER );
+		var style = '';
 		if(ownerName && ownerName === value) {
-			openTag = '<span style="color: red">';
-			closeTag = '</span>';
+			style = 'font-weight:bold';
 		}
 
 		var content = record.get('owner_real_name') || value;
 
-		return openTag + content + closeTag;
-	},
-
-	renderPageTitle: function( cellValue, record ) {
 		return mw.html.element(
-			"a",
+			'a',
 			{
-				href: mw.util.wikiGetlink( cellValue )
+				'href': title.getUrl(),
+				'style': style,
+				'data-bs-username': value,
+				'data-bs-title': title.getPrefixedText()
 			},
-			cellValue
+			content
 		);
 	},
 
-	renderAssessors: function( cellValue, record ) {
+	renderPageTitle: function( value, metaData, record, rowIndex, colIndex, store ) {
+		return mw.html.element(
+			"a",
+			{
+				'data-bs-title': value,
+				'href': mw.util.wikiGetlink( value )
+			},
+			value
+		);
+	},
+
+	renderAssessors: function( value, metaData, record, rowIndex, colIndex, store ) {
 		var ownerName = mw.config.get('bsSpecialReviewUserName', false);
 		var table = '<table cellpadding="5">';
 		var row = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
-		for( var i = 0; i < cellValue.length; i++ ) {
-			var line = cellValue[i];
+		var findActive = true;
+		var isSequential = record.get( 'rev_sequential' );
+
+		for( var i = 0; i < value.length; i++ ) {
+			var line = value[i];
 			var status = '<div class="{0}"></div>';
 			if( line.revs_status == 0 ) {
 				status = status.format( 'rv_no' );
@@ -127,7 +139,20 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				status = status.format( 'rv_yes' );
 			}
 			if( line.revs_status == -1 ) {
-				status = status.format( 'rv_unknown' );
+				//We only want to highlight the line(s) where the current user
+				//is required to take action
+				if( isSequential && i > 0 ) {
+					var lastLine = value[ i - 1 ];
+					if( lastLine.revs_status != 1 ) {
+						findActive = false;
+					}
+				}
+				if( findActive && ownerName && ownerName === line.name) {
+					status = status.format( 'rv_active' );
+				}
+				else {
+					status = status.format( 'rv_unknown' );
+				}
 			}
 			if( line.revs_status == -2 ) { //Was '1' before reject, see BsReviewProcess::reset()
 				status = '<div class="rv_yes">'+status.format( 'rv_invalid' )+'</div>';
@@ -139,15 +164,24 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			var openTag = '';
 			var closeTag = '';
 			var content = line.real_name || line.name;
-
+			var title = new mw.Title( line.name, bs.ns.NS_USER );
+			var style = '';
 			if(ownerName && ownerName === line.name) {
-				openTag = '<span style="color: red">';
-				closeTag = '</span>';
+				style = 'font-weight:bold';
 			}
 
 			table += row.format(
 				status,
-				openTag + content + closeTag,
+				mw.html.element(
+					'a',
+					{
+						'href': title.getUrl(),
+						'style': style,
+						'data-bs-username': line.name,
+						'data-bs-title': title.getPrefixedText()
+					},
+					content
+				),
 				line.timestamp || ''
 			);
 		}

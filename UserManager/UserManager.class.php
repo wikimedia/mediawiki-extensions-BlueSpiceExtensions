@@ -23,22 +23,13 @@
  *
  * @author     Sebastian Ulbricht
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    2.22.0 stable
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UserManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-/* Changelog
- * v1.20.0
- * - Added page size field in paging toolbar for dynamic page sizes
- * - MediaWiki I18N
- * v1.1.0
- * - Implemented remote sort
- * v0.1
- * FIRST CHANGES
-*/
 
 // Last review MRG (01.07.11 15:25)
 

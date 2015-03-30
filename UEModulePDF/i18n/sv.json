@@ -9,6 +9,7 @@
 	"prefs-uemodulepdf": "Universal PDF-modul för export",
 	"uemodulepdf": "Universal PDF-modul för export",
 	"bs-uemodulepdf-pref-templatepath": "Standardmall:",
+	"bs-uemodulepdf-pref-templatedir": "Mallkatalog:",
 	"bs-uemodulepdf-pref-suppressns": "Dölj namnrymdsprefix i PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Enkelsidig PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportera denna sida som PDF.",

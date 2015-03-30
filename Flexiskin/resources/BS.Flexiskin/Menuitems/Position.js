@@ -1,5 +1,5 @@
-Ext.define('BS.Flexiskin.menu.PositionItem', {
-	extend: 'BS.Flexiskin.menu.BaseItem',
+Ext.define('BS.Flexiskin.Menuitems.Position', {
+	extend: 'BS.Panel',
 	title: mw.message('bs-flexiskin-headerposition').plain(),
 	layout: 'form',
 	currentData: {},
@@ -63,7 +63,7 @@ Ext.define('BS.Flexiskin.menu.PositionItem', {
 			labelWidth: 100,
 			labelAlign: 'left',
 			name: 'fullWidth',
-			handler: this.onCbFullWidthChange,
+			handler: this.onCbFullWidthChange, 
 			scope: this
 		});
 		this.tfWidth.on('keyup', function() {
@@ -76,9 +76,6 @@ Ext.define('BS.Flexiskin.menu.PositionItem', {
 			this.tfWidth,
 			this.cbFullWidth
 		];
-
-		$(document).trigger("BSFlexiskinMenuPositionInitComponent", [this, this.items]);
-
 		this.callParent(arguments);
 	},
 	onCbFullWidthChange: function( sender, checked ) {
@@ -98,7 +95,6 @@ Ext.define('BS.Flexiskin.menu.PositionItem', {
 			width: this.tfWidth.getValue(),
 			fullWidth: this.cbFullWidth.getValue()
 		};
-		$(document).trigger("onBSFlexiskinMenuPositionGetData", [this, data]);
 		return data;
 	},
 	setData: function(data) {
@@ -107,6 +103,5 @@ Ext.define('BS.Flexiskin.menu.PositionItem', {
 		this.cgContent.setValue(this.currentData.config.content);
 		this.tfWidth.setValue(this.currentData.config.width);
 		this.cbFullWidth.setValue(this.currentData.config.fullWidth);
-		$(document).trigger("onBSFlexiskinMenuPositionSetData", [this, data]);
 	}
 });

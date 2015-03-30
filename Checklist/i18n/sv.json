@@ -11,6 +11,7 @@
 	"bs-checklist-button-checkbox-title": "Checklistelement",
 	"bs-checklist-menu-insert-list-title": "Infoga lista",
 	"bs-checklist-menu-insert-checkbox": "Kryssruta",
+	"bs-checklist-dlg-insert-list-title": "Infoga en checklista",
 	"bs-checklist-dlg-insert-list-value-list": "Värdelista",
 	"bs-checklist-tag-checklist-desc": "Skapar en kryssruta eller en valmeny. Tillgängliga konfigurationsattribut:",
 	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> renderar en urvalslista.",

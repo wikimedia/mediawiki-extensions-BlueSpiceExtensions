@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-saferedit-desc": "Gravación intermedia dos cambios da wiki",
+	"prefs-saferedit": "Edición máis segura",
+	"bs-saferedit-restore": "Restaurar",
+	"bs-saferedit-safer-edit-tooltip": "Está dispoñible unha versión de recuperación.",
+	"bs-saferedit-safer-edit-topbar": "Recuperación",
+	"bs-saferedit-user-editing": "$1 está {{GENDER:$1|editando}} a páxina",
+	"bs-saferedit-someone-editing": "A páxina está a ser editada",
+	"bs-saferedit-pref-interval": "Intervalo da versión de recuperación:",
+	"bs-saferedit-pref-shownameofeditinguser": "Mostrar o nome do editor actual",
+	"bs-saferedit-pref-warnonleave": "Avisádeme cando deixe unha páxina de edición cos cambios sen gardar",
+	"bs-saferedit-pref-usese": "Activar edición máis segura",
+	"bs-saferedit-statebartopsaferedit": "Edición máis segura",
+	"bs-saferedit-statebartopsafereditediting": "Edición máis segura - alguén está editando",
+	"bs-saferedit-lastsavedversion": "A última versión gardada é do $1 ás $2.",
+	"bs-saferedit-unsavedchanges": "Hai cambios sen gardar.",
+	"bs-saferedit-othersectiontitle": "Sección a restaurar",
+	"bs-saferedit-othersectiontext1": "Hai unha copia de seguridade doutra sección.",
+	"bs-saferedit-othersectiontext2": "Creouse a copia de seguridade o $1 ás $2.",
+	"bs-saferedit-othersectiontext3": "Quere cambiar a esa sección?"
+}

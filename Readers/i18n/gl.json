@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-readers-desc": "Crea unha lista das persoas que len unha páxina",
+	"prefs-readers": "Lectores",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Lector|Lectora}}|Lectores}}",
+	"readers-user": "Páxinas {{GENDER:$1|lidas}} por: $1",
+	"readers": "Lectores de \"$1\"",
+	"bs-readers-contentactions-label": "Mostrar lectores",
+	"bs-readers-pagenotexists": "A páxina non existe.",
+	"bs-readers-pref-active": "Activar lectores",
+	"bs-readers-pref-numofreaders": "Número de lectores a mostrarː",
+	"bs-readers-emptyinput": "Non se proporcionou ningunha páxina.",
+	"bs-readers-header-username": "Nome de usuario",
+	"bs-readers-header-readerspath": "Lector",
+	"bs-readers-header-ts": "Data"
+}

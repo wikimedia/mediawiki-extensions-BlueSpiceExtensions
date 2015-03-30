@@ -36,7 +36,7 @@
 	"bs-pagetemplates-label-targetns": "Простір назв",
 	"bs-pagetemplates-label-tplns": "Простір назв шаблону",
 	"bs-pagetemplates-label-article": "Шаблон",
-	"bs-pagetemplates-confirm-deletetpl": "Ви дійсно бажаєте видалити цей шаблон?",
+	"bs-pagetemplates-confirm-deletetpl": "Ви дійсно бажаєте вилучити {{PLURAL:$1|цей шаблон|ці шаблони}}?",
 	"bs-pagetemplates-remove-message-unknown": "Сталася неочікувана помилка, спробуйте ще раз.",
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|Наступний шаблон|Наступні шаблони}} було видалено:$2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Наступний шаблон|Наступні шаблони}} не можна видалити:$2(Причина:$3)"

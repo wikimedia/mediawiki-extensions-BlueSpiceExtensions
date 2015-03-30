@@ -3,10 +3,11 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Metalhead64",
-			"Sebastian Wallroth"
+			"Sebastian Wallroth",
+			"Osnard"
 		]
 	},
-	"bs-statebar-desc": "Zeigt eine Statusleiste an",
+	"bs-statebar-desc": "Zeigt eine Statusleiste mit Informationen über den Artikel an",
 	"prefs-statebar": "Statusleiste",
 	"bs-statebar-pref-sortbodyvars": "Body Reihenfolge:",
 	"bs-statebar-pref-sorttopvars": "Top Reihenfolge:",

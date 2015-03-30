@@ -24,6 +24,15 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * For further information visit http://www.blue-spice.org
+ * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @version    2.23.1
+ * @package    BlueSpice_Extensions
+ * @subpackage InsertFile
+ * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
  */
 
 /**

@@ -25,21 +25,12 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
  * @author     Stefan Widmann <widmann@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage InsertCategory
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-/* Changelog
- * v1.20.0
- *
- * v1.0.0
- * - Raised to stable
- * - Code review
- * v0.1
- * FIRST CHANGES
  */
 
 // Last review RBV (30.06.11 8:40)
@@ -144,17 +135,24 @@ class InsertCategory extends BsExtensionMW {
 			);
 		}
 
-		$sTags = RequestContext::getMain()->getRequest()->getVal( 'categories', '' );
-		$aTags = explode( ',', $sTags );
+		$sTags = RequestContext::getMain()->getRequest()->getVal( 'categories' );
+		$aTags = ( empty( $sTags ) )
+			? array()
+			: explode( ',', $sTags );
 
 		$oTitle = Title::newFromID( $iArticleId );
 		if ( $oTitle->exists() ) {
 			$sCat = BsNamespaceHelper::getNamespaceName( NS_CATEGORY );
 			$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle, Revision::RAW );
 
-			foreach ( $aTags as $sTag ) {
-				if ( preg_match( '#\[\['.$sCat.':'.$sTag.'\]\]#i', $sText ) ) continue;
-				$sText .= "\n[[".$sCat.":$sTag]]";
+			// Remove all before adding
+			$sPattern = '#^\[\['.$sCat.':.*?\]\]#im';
+			$sText = preg_replace( $sPattern, '', $sText );
+
+			if ( !empty( $aTags ) ) {
+				foreach ( $aTags as $sTag ) {
+					$sText .= "\n[[".$sCat.":$sTag]]";
+				}
 			}
 
 			$oArticle = new Article( $oTitle );

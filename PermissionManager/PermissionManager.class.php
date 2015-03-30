@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
- * @version    2.23.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -53,27 +53,6 @@ class PermissionManager extends BsExtensionMW {
 	 * @var array
 	 */
 	protected static $aInvisibleGroups = array('Sysop');
-	/**
-	 * @var array
-	 */
-	protected static $aGlobalPermissions = array(
-		"apihighlimits", "autoconfirmed", "autopatrol", "bigdelete", "block",
-		"blockemail", "bot", "browsearchive", "createaccount", "editinterface",
-		"editusercssjs", "editusercss", "edituserjs", "hideuser", "import",
-		"importupload", "ipblock-exempt", "move-rootuserpages",
-		"override-export-depth", "passwordreset", "proxyunbannable",
-		"sendemail", "siteadmin", "unblockself", "userrights",
-		"userrights-interwiki", "writeapi", "skipcaptcha", "renameuser", "viewfiles",
-		"searchfiles", "wikiadmin"
-	);
-	/**
-	 * @var array Holds all rights which are protected. Protected rights have to be applied to at least one real group
-	 *            and get applied automatically to the sysop group, if no other group hold them.
-	 */
-	protected static $aProtectedPermissions = array(
-		'read', 'siteadmin', 'wikiadmin'
-	);
-
 	/**
 	 * Constructor of PermissionManager
 	 */
@@ -345,23 +324,37 @@ class PermissionManager extends BsExtensionMW {
 		return $aMetadata;
 	}
 
+	/**
+	 * This is to check if a right is global or local. This is stored in the
+	 * $aMetadata to creates categorys in the Permission Manager form
+	 * @global Array $bsgPermissionConfig stores various configurations for rights
+	 * @return Array $aMetadata stores values needed in the permissionmanager getForm()
+	 * i.e. if a right is global or local.
+	 */
 	protected static function buildRightsMetadata() {
+		global $bsgPermissionConfig;
 		$aRights = User::getAllRights();
 		$aMetadata = array();
-
 		natsort( $aRights );
-		foreach($aRights as $sRight) {
-			$bGlobalPermission = in_array( $sRight, self::$aGlobalPermissions );
-			$aMetadata[] = array(
-				'right' => $sRight,
-				'type' => $bGlobalPermission ? 2 : 1,
-				'typeHeader' => $bGlobalPermission
-					? wfMessage('bs-permissionmanager-grouping-global')->plain()
-					: wfMessage('bs-permissionmanager-grouping-local')->plain()
-			);
+		if ( is_array( $aRights ) ) {
+			foreach ( $aRights as $sRight ) {
+				if ( !isset( $bsgPermissionConfig[$sRight] ) ) {
+					$bsgPermissionConfig[$sRight] = array(
+						'type' => 'namespace'
+					);
+				}
+				$aConfig = $bsgPermissionConfig[$sRight];
+				$bGlobalPermission = (isset($aConfig['type']) && $aConfig['type'] == 'global') ? true : false;
+				$aMetadata[] = array(
+					'right' => $sRight,
+					'type' => $bGlobalPermission ? 2 : 1,
+					'typeHeader' => $bGlobalPermission
+						? wfMessage('bs-permissionmanager-grouping-global')->plain()
+						: wfMessage('bs-permissionmanager-grouping-local')->plain()
+				);
+			}
 		}
-
-		wfRunHooks('BsPermissionManager::buildRightsMetadata', array(&$aMetadata));
+		wfRunHooks( 'BsPermissionManager::buildRightsMetadata', array( &$aMetadata ) );
 
 		return $aMetadata;
 	}
@@ -455,21 +448,30 @@ class PermissionManager extends BsExtensionMW {
 
 	/**
 	 * Prevents that the wiki gets accidentally inaccessible for all users.
-	 * All rights which are noted in @see PermissionManager::$aProtectedPermssions will be applied automatically to the
-	 * sysop group, if no other group holds them.
-	 *
+	 * Some of the rights which are pre-set in the $bsgPermissionConfig have
+	 * a config array, which prevents the Lockdown to be enabled on these rights.
 	 * @param array $aGroupPermissions
 	 */
-	protected static function preventPermissionLockout(&$aGroupPermissions) {
-		foreach(self::$aProtectedPermissions as $sRight) {
-			$isSet = false;
-			foreach($aGroupPermissions as $aDataset) {
-				if(isset($aDataset[$sRight]) && $aDataset[$sRight]) {
-					$isSet = true;
+	protected static function preventPermissionLockout( &$aGroupPermissions ) {
+		global $bsgPermissionConfig;
+		$aRights = User::getAllRights();
+		if ( !is_array( $aRights ) ) {
+			return;
+		}
+		foreach ( $aRights as $sRight ) {
+			if ( isset( $bsgPermissionConfig[$sRight]['preventLockout'] ) ) {
+				$bIsSet = false;
+				if ( is_array( $aGroupPermissions ) ) {
+					foreach ( $aGroupPermissions as $aDataset ) {
+						if ( isset( $aDataset[$sRight] ) && $aDataset[$sRight] ) {
+							$bIsSet = true;
+							continue;
+						}
+					}
+					if ( !$bIsSet ) {
+						$aGroupPermissions['sysop'][$sRight] = true;
+					}
 				}
-			}
-			if(!$isSet) {
-				$aGroupPermissions['sysop'][$sRight] = true;
 			}
 		}
 	}

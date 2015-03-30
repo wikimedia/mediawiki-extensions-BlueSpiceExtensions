@@ -23,21 +23,12 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     MediaWiki Extension
- * @version    2.22.0 stable
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedEditBar
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v1.20.0
- *
- * v1.0.0
- * - raised to stable
- * v0.1
- * - initial release
  */
 
 /**

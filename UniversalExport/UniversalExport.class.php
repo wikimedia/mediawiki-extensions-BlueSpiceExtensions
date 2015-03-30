@@ -22,32 +22,13 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UniversalExport
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.1.0
- * - Support for attachments
- * - Removed Beta state
- * v1.0.0b
- * - Reset version numbering
- * - Reset to beta
- * v3.1.0
- * - Raised to stable
- * - Added events
- * - Changed configuration
- * v3.0.0b
- * - Initial release
- * - Port from HalloWiki Sunrise 1.9
-*/
 
 /**
  * Base class for UniversalExport extension
@@ -112,12 +93,13 @@ class UniversalExport extends BsExtensionMW {
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		$this->setHook( 'BeforePageDisplay' );
 
+		global $wgBlueSpiceExtInfo;
 		//Configuration variables
 		$aMetadataDefaults = array(
-			'creator'  => 'Hallo Welt! Medienwerkstatt GmbH',
+			'creator' => 'Hallo Welt! Medienwerkstatt GmbH',
 		);
 		$aMetadataOverrides = array(
-			'producer' => 'UniversalExport 2.22 (BlueSpice for MediaWiki)'
+			'producer' => 'UniversalExport '.$wgBlueSpiceExtInfo['version'].' (BlueSpice for MediaWiki)'
 		);
 
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryWhitelist', $this->aCategoryWhitelist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );
@@ -128,7 +110,7 @@ class UniversalExport extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::UniversalExport::ParamsOverrides',   $this->aParamsOverrides,    BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_MIXED );
 
 		//Permissions
-		$this->mCore->registerPermission( 'universalexport-export' );
+		$this->mCore->registerPermission( 'universalexport-export', array(), array( 'type' => 'namespace' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}

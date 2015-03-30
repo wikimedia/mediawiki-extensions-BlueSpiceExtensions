@@ -1,34 +1,35 @@
 <?php
 
 /**
-  * blue spice for MediaWiki
-  * Extension: WikiAdmin
-  * Description: Central point of administration for blue spice
-  * Authors: Central point of administration for blue spice
-  *
-  * Copyright (C) 2010 Hallo Welt! � Medienwerkstatt GmbH, All rights reserved.
-  *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation; either version 2 of the License, or
-  * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-  * GNU General Public License for more details.
-  *
-  * You should have received a copy of the GNU General Public License along
-  * with this program; if not, write to the Free Software Foundation, Inc.,
-  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-  * http://www.gnu.org/copyleft/gpl.html
-  *
-  * For further information visit http://www.blue-spice.org
+ * UserManager Extension for BlueSpice
+ *
+ * Central point of administration for BlueSpice
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * This file is part of BlueSpice for MediaWiki
+ * For further information visit http://www.blue-spice.org
+ *
+ * @author     Sebastian Ulbricht
+ * @version    2.23.1
+ * @package    BlueSpice_Extensions
+ * @subpackage WikiAdmin
+ * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
   */
-
-/* Changelog
- * v2.23.0
- */
 
 class WikiAdmin extends BsExtensionMW {
 
@@ -176,7 +177,7 @@ class WikiAdmin extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
 		self::$prLoadModulesAndScripts = true;
-		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ) );
+		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -217,6 +218,7 @@ class WikiAdmin extends BsExtensionMW {
 		}
 
 		$aOutSortable['Shop'] = self::getShopListItem();
+		$aOutSortable['SpecialPages'] = self::getMediaWikiSpecialPageItem();
 
 		ksort( $aOutSortable );
 		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
@@ -251,4 +253,22 @@ class WikiAdmin extends BsExtensionMW {
 		);
 		return '<li>'.$sLink.'</li>';
 	}
+
+	/**
+	 * Returns a list item, which links to MediaWiki Specialpages
+	 * @return string $sLink to Mediawiki SpecialPages
+	 */
+	private static function getMediaWikiSpecialPageItem() {
+		$sLink = Html::element(
+					'a',
+					array(
+						'id' => 'bs-admin-mediawiki-specialpages',
+						'href' => SpecialPage::getTitleFor('Specialpages')->getLocalURL(),
+						'title' => wfmessage( 'bs-wikiadmin-mediawiki-specialpages-title' )->escaped()
+					),
+					wfMessage( 'bs-wikiadmin-mediawiki-specialpages-text' )->escaped()
+		);
+		return $sLink;
+	}
+
 }

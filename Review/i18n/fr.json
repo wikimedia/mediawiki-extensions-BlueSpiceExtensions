@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Ltrlg"
+			"Ltrlg",
+			"Thibaut120094"
 		]
 	},
 	"bs-review-desc": "Ajoute aux pages des fonctionnalité pour le travail",
@@ -14,6 +15,7 @@
 	"bs-review-denied-disagreed": "Au moins un participant n’est pas d’accord.",
 	"bs-review-accepted": "Accepté",
 	"bs-review-rejected": "Refusé",
+	"bs-review-pending": "En attente",
 	"bs-review-abstain": "Abstenu",
 	"bs-review-review-finished": "Cette page a été relue.",
 	"bs-review-reviewed-till": "Cette page a été relue du $1 au $2.",
@@ -31,6 +33,16 @@
 	"bs-review-mail-invite-header": "Veuillez relire la page « $1 »",
 	"bs-review-mail-invite-body": "$1 vous {{GENDER:$2|a invité}} à relire la page « $3 ».",
 	"bs-review-mail-comment": "Un commentaire a été saisi : « $1 ».",
+	"bs-review-mail-accept-header": "$1 a {{GENDER:$2|accepté}} $3",
+	"bs-review-mail-accept-body": "l’utilisateur $1 a {{GENDER:$2|réagi}} à votre relecture et a {{GENDER:$2|accepté}} les modifications.",
+	"bs-review-mail-deny-header": "$1 a {{GENDER:$2|rejeté}} $3",
+	"bs-review-mail-deny-body": "l’utilisateur $1 a {{GENDER:$2|réagi}} à votre relecture et a {{GENDER:$2|rejeté}} les modifications.",
+	"bs-review-mail-deny-and-restart-header": "$1 a {{GENDER:$2|rejeté}} $3",
+	"bs-review-mail-deny-and-restart-body": "l’utilisateur $1 a {{GENDER:$2|réagi}} à votre relecture et a {{GENDER:$2|rejeté}} les modifications. La relecture sera automatiquement recommencée.",
+	"bs-review-mail-finish-header": "Relecture terminée",
+	"bs-review-mail-finish-body": "l’utilisateur $1 a {{GENDER:$2|réagi}} à votre relecture de « $3 » et a {{GENDER:$2|accepté}} les modifications. La relecture est désormais terminée.",
+	"bs-review-mail-finish-and-review-header": "$1 Relecture terminée",
+	"bs-review-mail-finish-and-review-body": "l’utilisateur $1 a {{GENDER:$2|réagi}} à votre relecture de « $3 » et a {{GENDER:$2|accepté}} les modifications. La relecture est désormais terminée et il sera marqué comme stable.",
 	"bs-review-statebar-body-do-review": "Veuillez relire cette page",
 	"bs-review-i-agree": "Accepté",
 	"bs-review-i-dismiss": "Désapprouvé",
@@ -76,5 +88,6 @@
 	"bs-review-header-enddate": "Fin",
 	"bs-review-confirm-delete-step": "Voulez-vous vraiment supprimer cette étape ?",
 	"bs-review-confirm-delete-review": "Voulez-vous vraiment supprimer cette relecture ?",
-	"bs-review-error-insufficient-permissions": "Vous n’avez pas le droit d’exécuter cette action (« $1 » est nécessaire)."
+	"bs-review-error-insufficient-permissions": "Vous n’avez pas le droit d’exécuter cette action (« $1 » est nécessaire).",
+	"echo-category-title-bs-review-complete-cat": "Notification de fin de relecture"
 }

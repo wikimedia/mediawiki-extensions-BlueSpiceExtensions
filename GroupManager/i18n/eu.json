@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-groupmanager-headergroup": "Taldea",
+	"bs-groupmanager-tipremove": "Kendu {{PLURAL:$1|taldea|taldeak}}",
+	"bs-groupmanager-titlenewgroup": "Talde berria",
+	"bs-groupmanager-titleeditgroup": "Editatu taldea",
+	"bs-groupmanager-removegroup-message-success": "Ondorengo {{PLURAL:$1|taldea ezabatu da|taldeak ezabatu dira}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "Ondorengo {{PLURAL:$1|taldea ezin izan da|taldeak ezin izan dira}} ezabatu: $2",
+	"bs-groupmanager-lablename": "Taldearen izena:"
+}

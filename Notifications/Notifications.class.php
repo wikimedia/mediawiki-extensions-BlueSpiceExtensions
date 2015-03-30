@@ -22,18 +22,12 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Stefan Widmann <widmann@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Notifications
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v2.22.0
- * - initial release
  */
 
 /**
@@ -290,11 +284,11 @@ class Notifications extends BsExtensionMW {
 			'flyout-message' => 'bs-notifications-email-addaccount-subject',
 			'flyout-params' => array( 'userlink' ),
 			'email-subject-message' => 'bs-notifications-email-addaccount-subject',
-			'email-subject-params' => array( 'user' ),
+			'email-subject-params' => array( 'username' ),
 			'email-body-message' => 'bs-notifications-email-addaccount',
-			'email-body-params' => array( 'userlink' ),
+			'email-body-params' => array( 'userlink', 'username' ),
 			'email-body-batch-message' => 'bs-notifications-email-addaccount',
-			'email-body-batch-params' => array( 'userlink' ),
+			'email-body-batch-params' => array( 'userlink','username' ),
 			'icon' => 'bs-newuser',
 		);
 
@@ -464,6 +458,7 @@ class Notifications extends BsExtensionMW {
 			// TODO SW: implement own notifications formatter
 			'extra'	=> array(
 				'user'	=> $oUser->getName(),
+				'username'	=> isset($aUserDetails['realname']) ? $aUserDetails['realname'] : $aUserDetails['username'],
 				'userlink'	=> true,
 			)
 		) );
@@ -480,7 +475,7 @@ class Notifications extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec(&$sktemplate, &$tpl){
-		if (!isset($tpl->data['personal_urls']['notifications'])) {
+		if (!isset($tpl->data['personal_urls']['notifications']) || $tpl instanceof BsBaseTemplate != true) {
 			return true;
 		}
 

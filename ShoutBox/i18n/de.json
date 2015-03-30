@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Osnard"
 		]
 	},
-	"bs-shoutbox-desc": "Ergänzt eine Parserfunktion zur Einbettung deiner eigenen Shoutbox",
+	"bs-shoutbox-desc": "Ergänzt eine Parserfunktion zur Einbettung deiner eigenen Kommentarbox",
 	"prefs-shoutbox": "Shoutbox",
 	"bs-shoutbox-title": "Shoutbox",
 	"bs-shoutbox-message": "Verfasse einen neuen Kommentar …",

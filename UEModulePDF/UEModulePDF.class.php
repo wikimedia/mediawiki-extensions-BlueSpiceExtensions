@@ -22,25 +22,12 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UEModulePDF
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v1.20.0
- * - Added feature "Suppress namespace"
- * v1.1.0
- * - Support for attachments
- * - Rebuild a lot of code
- * - Added template support
- * - Reduced use of deprecated BsEventDispatcher
- * v1.0.0
- * - Initial release
  */
 
 /**
@@ -87,7 +74,7 @@ class UEModulePDF extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-suppressns', 'toggle' );
 		/* This setting is no longer needed. We do not provide the old bn2pdf.war anymore */
 		BsConfig::registerVar( 'MW::UEModulePDF::Backend', 'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS );
-		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath', 'extensions/BlueSpiceFoundation/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-templatepath' );
+		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath', 'extensions/BlueSpiceExtensions/UEModulePDF/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-templatedir' );
 
 		//Hooks
 		$this->setHook('BSUniversalExportGetWidget');
@@ -273,4 +260,5 @@ class UEModulePDF extends BsExtensionMW {
 			'class' => 'icon-file-pdf'
 		);
 	}
+
 }

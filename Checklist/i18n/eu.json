@@ -4,5 +4,8 @@
 			"Subi"
 		]
 	},
-	"bs-checklist-dlg-new-list": "Zerrenda berria sortu"
+	"bs-checklist-menu-insert-list-title": "Txertatu zerrenda",
+	"bs-checklist-dlg-new-list": "Zerrenda berria sortu",
+	"bs-checklist-alert": "Kontuz!",
+	"bs-checklist-confirm-dirty-title": "Gorde gabeko aldaketak daude!"
 }

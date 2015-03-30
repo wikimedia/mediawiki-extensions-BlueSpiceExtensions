@@ -25,7 +25,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
  * @author     Stefan Widmann <widmann@hallowelt.biz>
- * @version    2.22.0 stable
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage VisualEditor
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -169,6 +169,7 @@ class VisualEditor extends BsExtensionMW {
 			array('title' => 'Paragraph', 'block' => 'p')
 		),
 		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn'
+		// do not use table_class_list, as this breaks any existing classes upon editing
 	);
 
 	/**
@@ -313,7 +314,7 @@ class VisualEditor extends BsExtensionMW {
 		$aDefaultTags = array(
 			"syntaxhighlight", "source", "infobox", "categorytree",
 			"presentation", "includeonly", "onlyinclude", "noinclude",
-			"backlink", "gallery", "math", "video", "rss", "tagcloud"
+			"backlink", "gallery", "math", "video", "rss", "tagcloud", "code"
 		);
 		$this->aConfigStandard["specialtaglist"] = BsConfig::get('MW::VisualEditor::SpecialTags')
 				. implode('|', $aDefaultTags);

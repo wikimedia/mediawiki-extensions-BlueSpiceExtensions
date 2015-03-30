@@ -24,23 +24,12 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Tobias Weichart <weichart@hallowelt.biz>
  * @author     Patric Wirth <wirth@hallowelt.biz>
- * @version    2.22.0 stable
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0.0
- * - raised to stable
- * v0.1
- * - initial commit
- * - still buggy, some filters are not set correctly
  */
 
 /**

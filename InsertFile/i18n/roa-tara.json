@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"bs-insertfile-insert-image": "'Nzerisce 'n'immaggine",
+	"bs-insertfile-insert-file": "'Nzerisce 'nu file",
+	"bs-insertfile-button-image-title": "'Nzerisce o cange 'n'immaggine",
+	"bs-insertfile-button-file-title": "'Nzerisce o cange 'nu file",
+	"bs-insertfile-uploadsdisabled": "Le carecaminde sò disabbilitate sus a sta uicchi.",
+	"bs-insertfile-filename": "Nome d'u file",
+	"bs-insertfile-uploadfilefieldlabel": "Nome d'u file de destinazione"
+}

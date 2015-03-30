@@ -22,19 +22,12 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage WidgetBar
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * v1.0.0
- * - initial release
  */
 
 /**

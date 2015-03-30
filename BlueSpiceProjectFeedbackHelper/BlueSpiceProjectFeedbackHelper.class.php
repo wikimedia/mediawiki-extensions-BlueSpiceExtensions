@@ -23,22 +23,13 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage BlueSpiceProjectFeedbackHelper
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
- * - Only show to Sysops
- * - Added Link to feedback form
- * v0.1.0b
- * FIRST CHANGES
-*/
 
 class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 	public function __construct() {

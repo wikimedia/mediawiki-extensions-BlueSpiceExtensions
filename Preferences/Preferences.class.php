@@ -22,7 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage Preferences
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -31,10 +31,6 @@
  */
 
 // Last review MRG (01.07.11 13:56)
-
-/* Changelog
- *
- */
 
 /**
  * the Preferences class

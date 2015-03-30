@@ -23,23 +23,13 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Marc Reymann
- * @version    2.22.0 stable
-
+ * @version    2.231
  * @package    BlueSpice_Extensions
  * @subpackage SecureFileStore
  * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- * - MediaWiki I18N
-  * v1.0.0
-  * - Code Review
-  * v0.1
-  * - initial release
-  */
 
 //Last Code Review RBV (30.06.2011)
 
@@ -97,7 +87,7 @@ class SecureFileStore extends BsExtensionMW {
 		$this->setHook( 'ExtendedSearchBeforeAjaxResponse', 'secureImages' );
 		$this->setHook( 'SiteNoticeAfter', 'onSiteNoticeAfter' );
 
-		$this->mCore->registerPermission( 'viewfiles', array( 'user' ) );
+		$this->mCore->registerPermission( 'viewfiles', array( 'user' ), array( 'type' => 'global' ) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

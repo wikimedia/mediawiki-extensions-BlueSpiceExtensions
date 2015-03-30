@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-insertcategory-desc": "Xanela para engadir unha ligazón a unha categoría",
+	"bs-insertcategory-insertcat": "Inserir categoría",
+	"prefs-insertcategory": "Inserir categoría",
+	"bs-insertcategory-pref-withparents": "Inserir categoría cos seus pais",
+	"bs-insertcategory-title": "Inserir categoría",
+	"bs-insertcategory-cat-label": "Asignada:",
+	"bs-insertcategory-success": "Inserción de categoría realizada con éxito",
+	"bs-insertcategory-failure": "Erro",
+	"bs-insertcategory-hint": "Nota: para engadir unha categoría, prena na tecla Intro ou finalice a entrada cunha coma.",
+	"bs-insertcategory-panel-title": "Categorías"
+}

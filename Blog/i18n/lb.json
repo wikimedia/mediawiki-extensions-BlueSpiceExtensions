@@ -11,5 +11,6 @@
 	"bs-blog-blog": "Blog",
 	"bs-blog-pref-moreinnewwindow": "Eng nei Fënster opmaache fir méi ze liesen",
 	"bs-blog-pref-sortby": "Zortéieren no:",
-	"bs-blog-pref-imagerendermode": "Biller weisen als:"
+	"bs-blog-pref-imagerendermode": "Biller weisen als:",
+	"bs-blog-tag-blogtime-err": "De Format ass JJJJMMDDSSmm espou datt z. Bsp. fir den 12. Januar 2013 ëm 15:43 den Zäitstempel 201301121543 ass"
 }

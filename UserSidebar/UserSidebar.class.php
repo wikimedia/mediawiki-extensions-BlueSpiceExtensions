@@ -23,17 +23,12 @@
  *
  * @author     Sebastian Ulbricht
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.22.0
-
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UserSidebar
  * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
- */
-
-/* Changelog
- * v2.23.0
  */
 
 /**

@@ -15,6 +15,7 @@
 	"bs-review-denied-disagreed": "Mindestens einer der Beteiligten hat abgelehnt.",
 	"bs-review-accepted": "Akzeptiert",
 	"bs-review-rejected": "Abgelehnt",
+	"bs-review-pending": "In Arbeit",
 	"bs-review-abstain": "Enthalten",
 	"bs-review-review-finished": "Diese Seite wurde begutachtet.",
 	"bs-review-reviewed-till": "Diese Seite wird von $1 bis $2 begutachtet.",
@@ -32,6 +33,16 @@
 	"bs-review-mail-invite-header": "Bitte begutachte diese Seite \"$1\"",
 	"bs-review-mail-invite-body": "$1 {{GENDER:$2|bittet}} dich, die Seite „$3“ zu begutachten.",
 	"bs-review-mail-comment": "Es wurde ein Kommentar für Dich eingetragen: \"$1\".",
+	"bs-review-mail-accept-header": "$1 hat dem Artikel $3 {{GENDER:$2|zugestimmt}}",
+	"bs-review-mail-accept-body": "der Benutzer $1 hat auf Deine Begutachtungsanfrage {{GENDER:$2|reagiert}} und den Änderungen {{GENDER:$2|zugestimmt}}.",
+	"bs-review-mail-deny-header": "$1 hat den Artikel $3 {{GENDER:$2|abgelehnt}}",
+	"bs-review-mail-deny-body": "der Benutzer $1 hat auf Deine Begutachtungsanfrage {{GENDER:$2|reagiert}} und die Änderungen {{GENDER:$2|abgelehnt}}.",
+	"bs-review-mail-deny-and-restart-header": "$1 hat den Artikel $3 {{GENDER:$2|abgelehnt}}",
+	"bs-review-mail-deny-and-restart-body": "der Benutzer $1 hat auf Deine Begutachtungsanfrage {{GENDER:$2|reagiert}} und die Änderungen {{GENDER:$2|abgelehnt}}. Die Begutachtung wird automatisch neu gestartet.",
+	"bs-review-mail-finish-header": "Begutachtung abgeschlossen",
+	"bs-review-mail-finish-body": "der Benutzer $1 hat auf Deine Begutachtungsanfrage für \"$3\" {{GENDER:$2|reagiert}} und den Änderungen {{GENDER:$2|zugestimmt}}. Die Begutachtung ist damit abgeschloßen.",
+	"bs-review-mail-finish-and-review-header": "$1 Begutachtung abgeschlossen",
+	"bs-review-mail-finish-and-review-body": "der Benutzer $1 hat auf Deine Begutachtungsanfrage für \"$3\" {{GENDER:$2|reagiert}} und den Änderungen {{GENDER:$2|zugestimmt}}. Die Begutachtung ist damit abgeschloßen und der Artikel wurde als \"geprüft\" markiert.",
 	"bs-review-statebar-body-do-review": "Bitte begutachte diese Seite",
 	"bs-review-i-agree": "Ich stimme zu",
 	"bs-review-i-dismiss": "Ich lehne ab",
@@ -77,5 +88,6 @@
 	"bs-review-header-enddate": "Ende",
 	"bs-review-confirm-delete-step": "Möchtest du diesen Schritt wirklich löschen?",
 	"bs-review-confirm-delete-review": "Möchtest du diese Begutachtung wirklich löschen?",
-	"bs-review-error-insufficient-permissions": "Du hast nicht die benötigte Berechtigung, um diese Aktion auszuführen (\"$1\" wird benötigt)."
+	"bs-review-error-insufficient-permissions": "Du hast nicht die benötigte Berechtigung, um diese Aktion auszuführen (\"$1\" wird benötigt).",
+	"echo-category-title-bs-review-complete-cat": "Benachrichtigung beim Abschließen einer Begutachtung"
 }

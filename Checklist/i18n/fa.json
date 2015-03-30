@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Reza1615"
 		]
 	},
 	"bs-checklist-desc": "قابلیت فهرست بازبینی را فراهم می‌کند",
@@ -12,5 +13,9 @@
 	"bs-checklist-tag-checklist-desc": "یک کادر انتخاب یا زمینه انتخاب ارائه می‌کند. ویژگی‌های پیکربندی در دسترس:",
 	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> یک فهرست انتخاب ارائه می‌کند.",
 	"bs-checklist-tag-checklist-param-list": "<code>list</code>: نام الگو همراه مقادیر در دسترس. پارامتر <code>type</code> باید <code>list</code> تعیین شود.",
-	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> یا یک مقدار خارج از الگوی فهرست."
+	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> یا یک مقدار خارج از الگوی فهرست.",
+	"bs-checklist-dlg-panel-title": "فهرست‌های موجود",
+	"bs-checklist-dlg-new-title": "افزودن فهرست جدید",
+	"bs-checklist-dlg-new-prompt": "واردکردن نام فهرست",
+	"bs-checklist-alert": "هشدار!"
 }

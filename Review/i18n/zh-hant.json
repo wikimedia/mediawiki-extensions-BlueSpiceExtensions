@@ -2,15 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Cwlin0416"
+			"Cwlin0416",
+			"Wehwei"
 		]
 	},
+	"prefs-review": "審查",
+	"bs-review-review": "審查",
+	"bs-review-pending": "待處理",
 	"bs-review-abstain": "投棄權票",
 	"bs-review-i-agree": "同意",
 	"bs-review-i-dismiss": "不同意",
 	"bs-review-expired": "已過期",
-	"review": "複審",
-	"right-workflowedit": "建立與編輯複查",
+	"review": "審查",
+	"right-workflowedit": "建立與編輯審查",
 	"bs-review-btnmoveup": "向上移動",
 	"bs-review-btnmovedown": "向下移動",
 	"bs-review-colstatus": "狀態",

@@ -9,5 +9,7 @@
 	"bs-wikiadmin-desc": "Punto central de gestión de BlueSpice",
 	"bs-wikiadmin-notallowed": "No tienes permitido usar esta página.",
 	"action-wikiadmin": "mostrar páginas de administración de BlueSpice",
-	"right-wikiadmin": "Mostrar páginas de administración de BlueSpice"
+	"right-wikiadmin": "Mostrar páginas de administración de BlueSpice",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Páginas especiales",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Lista todas las páginas especiales de MediaWiki"
 }

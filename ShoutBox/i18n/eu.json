@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"bs-shoutbox-message": "Idatzi iruzkin berria...",
+	"bs-shoutbox-shout": "Bidali",
+	"bs-shoutbox-loading": "Kargatzen...",
+	"bs-shoutbox-confirm-text": "Ziur zaude sarrera hau ezabatu nahi duzula?"
+}

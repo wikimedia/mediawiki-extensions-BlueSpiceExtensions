@@ -23,31 +23,13 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @version    2.22.0
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage ArticleInfo
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-
-/* Changelog
- * v1.20.0
- *
- * v1.1.0
- * - Added subpages info (new FD)
- * v1.0.0
- * - Stable state
- * - Added events
- * v0.3.0b
- * - Renewed StatusBar architecture
- * - Modified views
- * - Date is now clickable and links to the articles historypage
- * v0.2.0b
- * - Added views
- * v0.1.0b
- * FIRST CHANGES
-*/
 
 /**
  * Base class for ArticleInfo extension

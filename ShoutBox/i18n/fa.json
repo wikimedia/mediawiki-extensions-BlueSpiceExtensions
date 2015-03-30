@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rtemis"
+			"Rtemis",
+			"Reza1615"
 		]
 	},
-	"bs-shoutbox-loading": "در حال بارگذاری..."
+	"prefs-shoutbox": "صفحه تمرین",
+	"bs-shoutbox-title": "صفحه تمرین",
+	"bs-shoutbox-shout": "بفرست",
+	"bs-shoutbox-loading": "در حال بارگذاری...",
+	"bs-shoutbox-confirm-title": "تائید"
 }

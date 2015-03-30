@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo",
+			"Elisardojm"
+		]
+	},
+	"bs-rssfeeder-desc": "Unha extensión para obter RSS válidos para cada extensión, que ten unha función buildRss",
+	"rssfeeder": "Fonte de novas RSS",
+	"bs-rssfeeder-pagetext": "Pode subscribirse ás seguintes canles RSS:",
+	"bs-rssfeeder-recent-changes": "Cambios recentes",
+	"bs-rssfeeder-pages": "Páxina",
+	"bs-rssfeeder-submit": "Mostrar",
+	"bs-rssfeeder-rss": "Fonte de novas RSS",
+	"bs-rssfeeder-rss-desc": "Crear a súa propia fonte de novas RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL do RSS"
+}

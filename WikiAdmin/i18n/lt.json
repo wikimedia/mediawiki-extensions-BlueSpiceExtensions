@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gediminas"
+			"Gediminas",
+			"Pofka"
 		]
 	},
-	"bs-wikiadmin-shop": "Parduotuvė"
+	"bs-wikiadmin-shop": "Parduotuvė",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Specialūs puslapiai"
 }

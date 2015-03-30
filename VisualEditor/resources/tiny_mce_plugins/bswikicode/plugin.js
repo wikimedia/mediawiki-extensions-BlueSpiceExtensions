@@ -341,7 +341,7 @@ var BsWikiCode = function() {
 
 		for (var i = 0; i < images.length; i++) {
 			var image, htmlImageObject, wikiImageObject,
-				attributes, attribute, wikiText,
+				attributes, attribute, wikiText, imageCaption,
 				size, property, value;
 
 			image = images[i];
@@ -405,6 +405,7 @@ var BsWikiCode = function() {
 
 			// Build wikitext
 			wikiText = [];
+			imageCaption = false;
 			wikiText.push(wikiImageObject.imagename);
 			for (property in wikiImageObject) {
 				if ($.inArray(property, ['imagename', 'thumbsize']) !== -1) {
@@ -444,13 +445,22 @@ var BsWikiCode = function() {
 					wikiText.push(property + '=' + value);
 					continue;
 				}
-				if ($.inArray(property, ['caption', 'align']) !== -1) {
+				if ( property == 'align' ) {
 					wikiText.push(value);
+					continue;
+				}
+				if ( property == 'caption' ) {
+					imageCaption = value;
 					continue;
 				}
 				if (value === "true") {
 					wikiText.push(property); //frame, border, thumb, left, right...
 				}
+			}
+
+			// make sure image caption comes in the end
+			if ( imageCaption ) {
+				wikiText.push( imageCaption );
 			}
 
 			text = text.replace(image, '[[' + wikiText.join('|').replace("@@PIPE@@", '|') + ']]');
@@ -631,6 +641,9 @@ var BsWikiCode = function() {
 				if (inner) {
 					label = inner[1];
 					label = label.replace(/<br.*?\/>/gi, '');
+					// label comes with encoded html entities, so we need to decode this here.
+					// Otherwise, resolution of special characters like umlauts won't work.
+					label = $('<textarea />').html(label).text();
 				}
 
 				//TODO: Maybe we should relay on classes instead?
@@ -2184,6 +2197,34 @@ var BsWikiCode = function() {
 			text = text.replace(/<span class="toggletext">([\s\S]*?)<\/span>/gmi, '$1');
 		}
 
+		// mark templates in table headers, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\{\|.*?)(\{\{(.*?)\}\})(.*?)$/gmi)) {
+			text = text.replace(/^(\{\|.*?)(\{\{(.*?)\}\})(.*?)$/gmi, '$1 data-bs-table-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in row definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\|-.*?)(\{\{(.*?)\}\})(.*?)$/gmi)) {
+			text = text.replace(/^(\|-.*?)(\{\{(.*?)\}\})(.*?)$/gmi, '$1 data-bs-tr-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in header definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(!.*?)(\{\{(.*?)\}\})(.*?\|)/gmi)) {
+			text = text.replace(/^(!.*?)(\{\{(.*?)\}\})(.*?\|)/gmi, '$1 data-bs-th-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in cell definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\|.*?)(\{\{(.*?)\}\})(.*?\|)/gmi)) {
+			text = text.replace(/^(\|.*?)(\{\{(.*?)\}\})(.*?\|)/gmi, '$1 data-bs-td-tpl'+i+'="$3"$4');
+			i++;
+		}
+
 		//special tags before pres prevents spaces in special tags like GeSHi to take effect
 		text = _preserveSpecialTags(text);
 
@@ -2267,6 +2308,9 @@ var BsWikiCode = function() {
 			}
 
 			e.content = _recoverSpecialTags(e.content);
+
+			// cleanup templates in table markers
+			e.content = e.content.replace(/data-bs-t.*?-tpl.*?="(.*?)"/gmi, "{{$1}}");
 		}
 
 	}

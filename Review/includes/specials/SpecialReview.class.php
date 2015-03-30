@@ -107,6 +107,7 @@ class SpecialReview extends BsSpecialPage {
 			$oReview->owner_name = $row['owner_name'];
 			$oReview->owner_real_name = $row['owner_real_name'];
 			$oReview->rev_status = $row['revs_status'];
+			$oReview->rev_sequential = $row['rev_sequential'];
 			$oReview->rev_status_text = wfMessage( 'bs-review-' . $row['revs_status'])->plain();
 			$oReview->rejected = isset($row['rejected']) ? $row['rejected'] : false;
 			$oReview->accepted = isset($row['accepted']) ? $row['accepted'] : 0;
@@ -114,7 +115,7 @@ class SpecialReview extends BsSpecialPage {
 				wfDebugLog( 'BS::Review' , 'message key does not exist'. wfMessage( 'bs-review-' . $row['revs_status'] )->plain() );
 			}
 			$oReview->accepted_text =
-				wfMessage( 'bs-review-accepted', $oReview->accepted . '/' . $row['total'] )->plain() . '<br />'.
+				wfMessage( 'bs-review-accepted' )->plain() . ':' . $oReview->accepted . '/' . $row['total'] . '<br />'.
 				wfMessage( 'bs-review-' . $row['revs_status'])->plain();
 			$oReview->total = $row['total'];
 			$oReview->endtimetamp = $row['endtimestamp'];

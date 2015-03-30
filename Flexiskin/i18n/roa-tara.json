@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"bs-flexiskin-label": "Skin",
+	"bs-flexiskin-defaultname": "De base",
+	"bs-flexiskin-defaultdesc": "Template d'u skin de base.",
+	"bs-flexiskin-left": "sinistre",
+	"bs-flexiskin-right": "destre",
+	"bs-flexiskin-center": "cendre"
+}

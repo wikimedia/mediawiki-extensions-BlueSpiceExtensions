@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"bs-articleinfo-desc": "Dèje 'mbormaziune sus a 'na pàgene jndr'à barre de state",
+	"prefs-articleinfo": "'Mbormaziune d'a pàgene",
+	"bs-articleinfo-pref-CheckRevisionInterval": "'Ndervalle de aggiornamende in seconde:",
+	"bs-articleinfo-last-edited": "Tiembe da l'urteme cangiamende",
+	"bs-articleinfo-last-edited-tooltip": "Urteme cangiamende",
+	"bs-articleinfo-last-editor": "Urteme {{GENDER:$1|cangiatore}}",
+	"bs-articleinfo-categories": "Categorije",
+	"bs-articleinfo-more-categories": "Cchiù categorije disponibbile",
+	"bs-articleinfo-all-categories-heading": "Categorije",
+	"bs-articleinfo-nocategories": "Nisciuna categorije acchiate.",
+	"bs-articleinfo-hiddencats": "Categorije scunnute",
+	"bs-articleinfo-notemplates": "Nisciune template acchiate.",
+	"bs-articleinfo-templates": "Template",
+	"bs-articleinfo-subpages": "Sottopàggene",
+	"bs-articleinfo-subpages-available": "Stonne sottopàggene pe sta pàgene",
+	"bs-articleinfo-subpages-too-much": "Stonne cchiù de 100 sottopàggene disponibbile.",
+	"bs-articleinfo-check-revision": "Versiona nove disponibbile",
+	"bs-articleinfo-check-revision-tooltip": "Recareche 'a pàgene",
+	"bs-articleinfo-statebartoplastedited": "Urteme cangiaminde",
+	"bs-articleinfo-statebartoplasteditor": "Urteme cangiatore",
+	"bs-articleinfo-statebartopcategories": "Categorije",
+	"bs-articleinfo-statebartopsubpages": "Sottopàggene",
+	"bs-articleinfo-statebarbodycategories": "Categorije",
+	"bs-articleinfo-statebarbodysubpages": "Sottopàggene",
+	"bs-articleinfo-statebarbodytemplates": "Template"
+}

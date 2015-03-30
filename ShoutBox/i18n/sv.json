@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Jenniesarina",
+			"WikiPhoenix"
 		]
 	},
 	"bs-shoutbox-desc": "Lägger till en tolkfunktion för att bädda in din egen shoutbox",
@@ -27,5 +29,9 @@
 	"bs-shoutbox-confirm-text": "Vill du verkligen radera detta inlägg?",
 	"bs-shoutbox-confirm-title": "Bekräfta",
 	"bs-shoutbox-entermessage": "Skriv in ett meddelande.",
-	"bs-shoutbox-too-early": "Vänta några sekunder innan du skickar nästa inlägg."
+	"bs-shoutbox-too-early": "Vänta några sekunder innan du skickar nästa inlägg.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|rop}}",
+	"echo-category-title-bs-shoutbox-mention-cat": "Avisering för omnämnande i ett rop",
+	"bs-shoutbox-notifications-title-message-subject": "Du har blivit omnämnd",
+	"bs-shoutbox-notifications-title-message-text": "Du har {{GENDER:$1|nämnts}} av $2 i ett rop på sidan \"$3.\""
 }

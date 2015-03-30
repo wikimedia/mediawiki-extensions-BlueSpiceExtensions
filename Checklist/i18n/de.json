@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Markus Glaser <glaser@hallowelt.biz>"
+			"Markus Glaser <glaser@hallowelt.biz>",
+			"Osnard"
 		]
 	},
-	"bs-checklist-desc": "Ermöglicht die Erstellug von Checklisten",
+	"bs-checklist-desc": "Ermöglicht das Erstellen von Checklisten",
 	"bs-checklist-button-checkbox-title": "Checklistenelemente",
 	"bs-checklist-menu-insert-list-title": "Liste einfügen",
 	"bs-checklist-menu-insert-checkbox": "Checkbox",

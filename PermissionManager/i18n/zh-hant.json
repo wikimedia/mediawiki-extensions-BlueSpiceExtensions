@@ -6,6 +6,8 @@
 			"LNDDYL"
 		]
 	},
+	"prefs-permissionmanager": "權限管理者",
+	"bs-permissionmanager-label": "權限管理者",
 	"bs-permissionmanager-btn-group-label": "群組：",
 	"bs-permissionmanager-header-permissions": "權限",
 	"bs-permissionmanager-header-global": "Wiki",
@@ -15,12 +17,14 @@
 	"bs-permissionmanager-btn-save-in-progress-label": "儲存中...",
 	"bs-permissionmanager-save-success": "已儲存權限。",
 	"bs-permissionmanager-labeltemplates": "模板",
-	"bs-permissionmanager-btn-template-editor": "編輯樣板",
-	"bs-permissionmanager-labeltpled": "樣版編輯器",
+	"bs-permissionmanager-btn-template-editor": "編輯模板",
+	"bs-permissionmanager-labeltpled": "模板編輯器",
 	"bs-permissionmanager-labeltpled-desc": "描述",
 	"bs-permissionmanager-labeltpled-active": "啟用中",
 	"bs-permissionmanager-labeltpled-add": "新增",
 	"bs-permissionmanager-labeltpled-edit": "編輯",
 	"bs-permissionmanager-labeltpled-delete": "刪除",
-	"bs-permissionmanager-labeltpled-cancel": "取消"
+	"bs-permissionmanager-labeltpled-cancel": "取消",
+	"bs-permissionmanager-msgtpled-new": "模板名稱：",
+	"bs-permissionmanager-titletpled-new": "建立模板"
 }

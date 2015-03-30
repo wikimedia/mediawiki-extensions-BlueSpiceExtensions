@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"prefs-readers": "Irakurleak",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Irakurlea}}|Irakurleak}}",
+	"bs-readers-header-ts": "Data"
+}
