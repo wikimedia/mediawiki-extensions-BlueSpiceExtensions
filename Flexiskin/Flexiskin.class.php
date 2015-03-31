@@ -294,7 +294,7 @@ class Flexiskin extends BsExtensionMW {
 		$oStatus = BsFileSystemHelper::uploadFile(self::getVal('name'), "flexiskin" . DS . self::getVal('id') . DS . "images");
 
 		if (!$oStatus->isGood())
-			$aResult = json_encode(array('success' => false, 'msg' => "err_cd:" . $aStatus['status']));
+			$aResult = json_encode(array('success' => false, 'msg' => "err_cd:" . $oStatus->getMessage()));
 		else
 			$aResult = json_encode(array('success' => true, 'name' => $oStatus->getValue()));
 		$oAjaxResponse = new AjaxResponse( $aResult );
@@ -313,7 +313,9 @@ class Flexiskin extends BsExtensionMW {
 			$aConfigs = json_decode($aConfigs);
 		foreach ($aConfigs as $aConfig) {
 			$func = "Flexiskin::format_" . $aConfig->id;
-			if (is_callable($func))
+			$bReturn = wfRunHooks("BSFlexiskinGenerateStyleFile", array(&$func, &$aConfig));
+
+			if ( $bReturn === true && is_callable($func))
 				$aFile[] = call_user_func($func, $aConfig);
 		}
 		return implode(" \n", $aFile);
