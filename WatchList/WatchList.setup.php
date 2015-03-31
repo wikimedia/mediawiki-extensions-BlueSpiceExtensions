@@ -4,6 +4,6 @@ BsExtensionManager::registerExtension('WatchList', BsRUNLEVEL::FULL|BsRUNLEVEL::
 
 $GLOBALS['wgAutoloadClasses']['WatchList'] = __DIR__ . '/WatchList.class.php';
 
-$wgMessagesDirs['WatchList'] = __DIR__ . '/i18n';
+$wgMessagesDirs['BSWatchList'] = __DIR__ . '/i18n'; //TODO: Must not be WatchList, somehting's overriding here otherwise
 
 $wgExtensionMessagesFiles['WatchList'] = __DIR__ . '/languages/WatchList.i18n.php';
