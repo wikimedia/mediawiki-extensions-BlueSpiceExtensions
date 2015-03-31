@@ -31,5 +31,6 @@
 	"bs-shoutbox-too-early": "Por favor, agarde uns segundos antes de enviar a seguinte entrada.",
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Mensaxe|Mensaxes}}",
 	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención nunha mensaxe curta",
-	"bs-shoutbox-notifications-title-message-subject": "Foi vostede mencionado por alguén"
+	"bs-shoutbox-notifications-title-message-subject": "Foi vostede mencionado por alguén",
+	"bs-shoutbox-notifications-title-message-text": "Fuches {{GENDER:$1|mencionado}} por $2 nunha conversa na páxina \"$3.\""
 }

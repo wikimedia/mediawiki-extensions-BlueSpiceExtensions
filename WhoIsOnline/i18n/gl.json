@@ -14,5 +14,6 @@
 	"bs-whoisonline-pref-orderby-time": "Duración",
 	"bs-whoisonline-pref-orderby-name": "Nome",
 	"bs-whoisonline-pref-interval": "Intervalo de actualización en segundos:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Mostra o número de usuarios actualmente conectados."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Mostra o número de usuarios actualmente conectados.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Mostra unha pequena lista despregable de usuarios conectados.\n\nOs atributos válidos son:\n;<code>anchortext</code>: o texto ó que deberá anexarse a lista despregable."
 }

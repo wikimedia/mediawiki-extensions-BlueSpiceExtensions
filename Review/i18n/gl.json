@@ -46,6 +46,7 @@
 	"bs-review-i-dismiss": "Discordo",
 	"bs-review-not-allowed": "Non ten permiso para acceder a esta páxina.",
 	"bs-review-created-review": "$1 {{GENDER:$1|creou}} unha revisión da páxina \"$2\".",
+	"bs-review-modified-review": "$1 {{GENDER:$1|cambiou}} unha revisión da páxina \"$2\".",
 	"bs-review-deleted-review": "$1 {{GENDER:$1|borrou}} unha revisión da páxina \"$2\".",
 	"bs-review-approved-review": "$1 {{GENDER:$1|aceptou}} unha revisión da páxina \"$2\".",
 	"bs-review-denied-review": "$1 {{GENDER:$1|rexeitou}} unha revisión da páxina \"$2\".",
