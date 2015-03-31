@@ -495,7 +495,7 @@ class SmartList extends BsExtensionMW {
 		$aTmpViews = array();
 		$this->onBSWidgetBarGetDefaultWidgets( $aTmpViews, null, null );
 
-		return $aTmpViews;
+		return $aTmpViews['SMARTLIST'];
 	}
 
 	/**
