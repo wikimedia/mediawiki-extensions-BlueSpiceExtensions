@@ -211,7 +211,8 @@ class Blog extends BsExtensionMW {
 	 */
 	public function onPageContentSaveComplete( $article, $user, $content, $summary,
 			$isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
-		if ( $article->getTitle()->getNamespace() !== NS_BLOG ) return true;
+		# TODO: Cache must also be invalidated on other occasions like blog tags for subpages or categories.
+		if ( !in_array( $article->getTitle()->getNamespace(), array( NS_BLOG, NS_BLOG_TALK) ) ) return true;
 
 		$sTagsKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', 'Tags' );
 		$aTagsData = BsCacheHelper::get( $sTagsKey );
