@@ -8,5 +8,9 @@
 	"bs-echo-anon-user": "匿名",
 	"bs-echo-unknown-user": "不明",
 	"bs-echo-page-edit": "頁面 [[:$1]] 已被修改",
-	"echo-category-title-bs-create-cat": "新頁面的通知"
+	"echo-category-title-bs-create-cat": "新頁面的通知",
+	"echo-category-title-bs-edit-cat": "編輯通知",
+	"echo-category-title-bs-move-cat": "移動通知",
+	"echo-category-title-bs-delete-cat": "刪除通知",
+	"echo-category-title-bs-newuser-cat": "新使用者通知 (僅限管理員)"
 }

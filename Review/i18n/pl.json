@@ -13,6 +13,7 @@
 	"bs-review-mail-link-to-page": "Kliknij w ten link: $1",
 	"bs-review-mail-accept-header": "$1 {{GENDER:$2|zaakceptował|zaakceptowała}} $3",
 	"bs-review-mail-deny-header": "$1 {{GENDER:$2|odrzucił|odrzuciła}} $3",
+	"bs-review-mail-deny-and-restart-header": "$1 {{GENDER:$2|odrzucił|odrzuciła}} $3",
 	"bs-review-i-agree": "Akceptuję",
 	"bs-review-not-allowed": "Nie masz uprawnień, aby korzystać z tej strony.",
 	"bs-review-commentinputlabel": "Twój komentarz:",

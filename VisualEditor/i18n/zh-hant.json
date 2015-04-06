@@ -5,13 +5,27 @@
 			"Cwlin0416"
 		]
 	},
+	"bs-visualeditor-desc": "MediaWiki 的視覺化編輯器",
 	"prefs-visualeditor": "視覺化編輯器",
 	"bs-visualeditor-editbutton-hint": "視覺化編輯器",
+	"bs-visualeditor-pref-disablens": "停用的命名空間：",
+	"bs-visualeditor-pref-use": "預設使用 WYSIWYG 編輯器",
+	"bs-visualeditor-save-message": "已儲存修訂於 $1，摘要為 \"$2\"。",
 	"bs-visualeditor-no-summary": "無摘要",
+	"bs-visualeditor-sortable": "可排序",
+	"bs-visualeditor-wikitable": "標準",
 	"bs-visualeditor-contenttable": "內容",
+	"bs-visualeditor-contenttable-black": "內容 (黑)",
+	"bs-visualeditor-contenttable-blue": "內容 (藍)",
+	"bs-visualeditor-contenttable-darkblue": "內容 (深藍)",
 	"bs-visualeditor-cuscosky": "Cusco Sky",
-	"bs-visualeditor-aligntop": "頂部",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Greyscale",
+	"bs-visualeditor-aligntop": "置頂",
+	"bs-visualeditor-alignmiddle": "置中",
+	"bs-visualeditor-alignbottom": "置底",
 	"bs-visualeditor-bsactions-wiki": "Wikitext",
+	"bs-visualeditor-bsactions-switchgui": "切換工具列",
 	"bs-visualeditor-bsactions-linebreak": "換行符號",
 	"bs-visualeditor-bsactions-signature": "簽名",
 	"bs-visualeditor-bsactions-save": "儲存",
@@ -21,5 +35,6 @@
 	"bs-visualeditor-bsactions-heading3": "標題 3",
 	"bs-visualeditor-bsactions-heading4": "標題 4",
 	"bs-visualeditor-bsactions-heading5": "標題 5",
-	"bs-visualeditor-bsactions-heading6": "標題 6"
+	"bs-visualeditor-bsactions-heading6": "標題 6",
+	"bs-visualeditor-switch-noeditor-desc": "在此頁面停用視覺編輯器"
 }

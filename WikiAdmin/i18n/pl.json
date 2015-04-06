@@ -8,5 +8,6 @@
 	"bs-wikiadmin-notallowed": "Nie masz uprawnień, aby skorzystać z tej strony.",
 	"wikiadmin": "Administracja BlueSpice",
 	"bs-wikiadmin-shop": "Sklep",
-	"bs-wikiadmin-mediawiki-specialpages-text": "Strony specjalne"
+	"bs-wikiadmin-mediawiki-specialpages-text": "Strony specjalne",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Lista wszystkich stron specjalnych MediaWiki"
 }

@@ -6,6 +6,8 @@
 		]
 	},
 	"bs-shoutbox-message": "訊息",
+	"bs-shoutbox-shout": "傳送",
 	"bs-shoutbox-loading": "讀取中...",
-	"bs-shoutbox-confirm-title": "確認"
+	"bs-shoutbox-confirm-title": "確認",
+	"bs-shoutbox-entermessage": "請輸入訊息。"
 }
