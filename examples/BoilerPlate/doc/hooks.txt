@@ -1,0 +1,6 @@
+'BoilerPlateSomeHook': Does something. And here we describe what it does.
+$user: the User object being used
+$title: the Title object
+&$someArray: a array holding stuff.
+             Some more description.
+&$msg: the message identifier for abort reason (new in 1.18, not available before 1.18)
