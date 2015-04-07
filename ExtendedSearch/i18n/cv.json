@@ -4,6 +4,8 @@
 			"Chuvash2014"
 		]
 	},
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Категори|Категорисем}}: $2",
+	"bs-extendedsearch-search-category": "Категоринче шырани:",
 	"bs-extendedsearch-sort-ts": "Вăхăт",
 	"bs-extendedsearch-fewer": "Сахалрах"
 }
