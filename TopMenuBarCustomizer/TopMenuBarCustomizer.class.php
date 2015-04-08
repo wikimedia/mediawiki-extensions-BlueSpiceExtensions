@@ -194,7 +194,10 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			return true;
 		}
 
-		wfRunHooks('BSTopMenuBarCustomizerBeforeRenderNavigationSites', array( &$aNavigationSites ));
+		$bResult = wfRunHooks('BSTopMenuBarCustomizerBeforeRenderNavigationSites', array( &$aNavigationSites ));
+		if ($bResult === false){
+			return true;
+		}
 
 		$aOut= array();
 		$aOut[] = HTML::openElement( 'ul' );
