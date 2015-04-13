@@ -543,6 +543,10 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onTagSmartList( $sInput, $aArgs, $oParser ) {
 		$oParser->disableCache();
+		foreach( $aArgs as $sArg => $sVal ) {
+			//Allow Magic Words (Variables) and Parser Functions as arguments
+			$aArgs[$sArg] = $oParser->recursivePreprocess( $sVal );
+		}
 
 		//Get arguments
 		$aArgs['count'] = BsCore::sanitizeArrayEntry( $aArgs, 'count', 5, BsPARAMTYPE::INT );
