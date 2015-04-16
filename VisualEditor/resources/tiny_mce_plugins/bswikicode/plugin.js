@@ -128,7 +128,7 @@ var BsWikiCode = function() {
 			'border': 0,
 			//'width': _userThumbsize,
 			//HAD: display:inline-block; //Future: only CSS class
-			'style':"margin: 0.5em 0 0.8em 0; padding: 3px; cursor:pointer;"
+			'style':"cursor:move;"
 		};
 	};
 
