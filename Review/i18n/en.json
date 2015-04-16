@@ -53,6 +53,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|finished}} a review to page \"$2\".",
 	"log-name-bs-review": "Review log",
 	"log-description-bs-review": "This is a log of pages which are or were under review.",
+	"log-show-hide-bs-review": "$1 review log",
 	"bs-review-pref-checkowner": "Only the owner of a review can change it",
 	"bs-review-pref-shownameintooltip": "Show names of the participants",
 	"bs-review-pref-emailnotifyowner": "Notify the owner of a review about changes",
