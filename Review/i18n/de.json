@@ -55,6 +55,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|schloss}} die Begutachtung für die Seite \"$2\" ab.",
 	"log-name-bs-review": "Begutachtung-Logbuch",
 	"log-description-bs-review": "Logbuch von Seiten, die Begutachtet werden oder wurden.",
+	"log-show-hide-bs-review": "Begutachtung-Logbuch $1",
 	"bs-review-pref-checkowner": "Eine Begutachtung kann nur durch ihren Besitzer verändert werden",
 	"bs-review-pref-shownameintooltip": "Namen der Beteiligten anzeigen",
 	"bs-review-pref-emailnotifyowner": "Bei Änderungen einer Begutachtung den Besitzer benachrichtigen",

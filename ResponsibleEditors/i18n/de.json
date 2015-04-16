@@ -55,5 +55,6 @@
 	"bs-responsibleeditors-cbnamespacesemptytext": "Namensraum auswählen",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Nicht zugewiesen.",
 	"log-name-bs-responsibleeditors": "Verantwortliche Redakteure-Logbuch",
-	"log-description-bs-responsibleeditors": "Logbuch von Redakteuren die für gewisse Seiten verantwortlich sind."
+	"log-description-bs-responsibleeditors": "Logbuch von Redakteuren die für gewisse Seiten verantwortlich sind.",
+	"log-show-hide-bs-responsibleeditors": "Verantwortliche Redakteure-Logbuch $1"
 }
