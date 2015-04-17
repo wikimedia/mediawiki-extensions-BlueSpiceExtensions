@@ -41,6 +41,7 @@
 	"bs-review-mail-finish-header": "Rematou a revisión",
 	"bs-review-mail-finish-body": "{{GENDER:$2|o usuario|a usuaria}} $1 {{GENDER:$2|reaccionou}} á súa revisión de \"$3\" e {{GENDER:$2|aceptou}} os cambios. A revisión está finalizada.",
 	"bs-review-mail-finish-and-review-header": "$1 Revisión rematada",
+	"bs-review-mail-finish-and-review-body": "{{GENDER:$2|o usuario|a usuaria}} $1 {{GENDER:$2|reaccionou}} á súa revisión de \"$3\" e {{GENDER:$2|aceptou}} os cambios. A revisión está rematada e marcouse como estable.",
 	"bs-review-statebar-body-do-review": "Por favor, revise esta páxina",
 	"bs-review-i-agree": "Concordo",
 	"bs-review-i-dismiss": "Discordo",
