@@ -17,6 +17,7 @@
 	"bs-insertmagic-currentmonthabbrev": "Aktuelle Mount (Ofkierzung).",
 	"bs-insertmagic-currentday": "Dag vum Mount (Zuel ouni Null virdrun).",
 	"bs-insertmagic-currentday2": "Dag vum Mount (Zuel mat Null virdrun).",
+	"bs-insertmagic-currentdow": "Dag vun der Woch (ouni Null virdrun), 0 (fir Sonndeg) bis 6 (fir Samschdeg).",
 	"bs-insertmagic-currentdayname": "Dag vun der Woch (Numm).",
 	"bs-insertmagic-currenttime": "Zäit (24-Stonne-Format SS:mm).",
 	"bs-insertmagic-currenthour": "Stonn (24-Stonne-Format, mat enger Null virdrun)",
