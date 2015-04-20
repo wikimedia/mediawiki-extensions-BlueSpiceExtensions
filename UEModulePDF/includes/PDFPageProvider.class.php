@@ -117,9 +117,11 @@ class BsPDFPageProvider {
 			$oAPI->execute();
 
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$aResult = $oAPI->getResult()->getResultData();
-				$aResult = ApiResult::transformForBC( $aResult );
-				$aResult = ApiResult::removeMetadata( $aResult );
+				$aResult = $oAPI->getResult()->getResultData( null, array(
+					'BC' => array(),
+					'Types' => array(),
+					'Strip' => 'all',
+				) );
 			} else {
 				$aResult = $oAPI->getResultData();
 			}
