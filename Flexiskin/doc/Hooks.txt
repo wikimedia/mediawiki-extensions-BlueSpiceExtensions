@@ -1,0 +1,24 @@
+==Flexiskin.class.php==
+
+'BSFlexiskinGenerateConfigFile':
+ $oData:
+ &$aConfig:
+
+'BSFlexiskinGenerateStyleFile':
+ &$func:
+ &$aConfig:
+
+
+==FlexiskinFormatter.class.php==
+
+'BSFlexiskinFormatterGeneral':
+ &$aConfig:
+ &$aReturn:
+
+'BSFlexiskinFormatterHeader':
+ &$aConfig:
+ &$aReturn:
+
+'BSFlexiskinFormatterPosition':
+ &$aConfig:
+ &$aReturn:

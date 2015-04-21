@@ -8,11 +8,8 @@ $wgExtensionMessagesFiles['Flexiskin'] = __DIR__ . '/languages/Flexiskin.i18n.ph
 $wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/languages/Flexiskin.alias.php';
 
 $GLOBALS['wgAutoloadClasses']['Flexiskin'] = __DIR__ . '/Flexiskin.class.php';
-$wgAutoloadClasses['SpecialFlexiskin'] = __DIR__ . '/includes/specials/SpecialFlexiskin.php';
 
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = "Flexiskin::onSkinTemplateOutputPageBeforeExec";
-
-$wgSpecialPageGroups['Flexiskin'] = 'bluespice';
 
 $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'scripts' => array(
@@ -61,21 +58,16 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$wgAjaxExportList[] = 'Flexiskin::getFlexiskins';
-$wgAjaxExportList[] = 'Flexiskin::saveFlexiskin';
-$wgAjaxExportList[] = 'Flexiskin::saveFlexiskinPreview';
-$wgAjaxExportList[] = 'Flexiskin::getFlexiskinConfig';
-$wgAjaxExportList[] = 'Flexiskin::deleteFlexiskin';
-$wgAjaxExportList[] = 'Flexiskin::addFlexiskin';
-$wgAjaxExportList[] = 'Flexiskin::activateFlexiskin';
-$wgAjaxExportList[] = 'Flexiskin::resetFlexiskin';
-$wgAjaxExportList[] = 'Flexiskin::uploadFile';
+$wgAutoloadClasses['FlexiskinApi'] = __DIR__ . '/includes/FlexiskinApi.class.php';
+$wgAPIModules['flexiskin'] = 'FlexiskinApi';
+$wgAutoloadClasses['FlexiskinFormatter'] = __DIR__ . '/includes/FlexiskinFormatter.class.php';
+
 $wgEditPageFrameOptions = "SAMEORIGIN";
 
 $wgForeignFileRepos[] = array(
-    'class' => 'FSRepo',
-    'name' => 'Flexiskin',
-    'directory' => BS_DATA_DIR . '/Flexiskin/',
-    'hashLevels' => 0,
-    'url' => BS_DATA_PATH . '/Flexiskin',
+	'class' => 'FSRepo',
+	'name' => 'Flexiskin',
+	'directory' => BS_DATA_DIR . '/Flexiskin/',
+	'hashLevels' => 0,
+	'url' => BS_DATA_PATH . '/Flexiskin',
 );

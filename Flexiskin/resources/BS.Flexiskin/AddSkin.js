@@ -8,11 +8,16 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 			fields: [ 'flexiskin_id', 'flexiskin_name' ],
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Flexiskin::getFlexiskins' ),
+				url: mw.util.wikiScript('api'),
 				reader: {
 					type: 'json',
 					root: 'flexiskin',
 					idProperty: 'flexiskin_id'
+				},
+				extraParams: {
+					action: 'flexiskin',
+					type: 'get',
+					format: 'json'
 				}
 			},
 			autoLoad: true
@@ -35,7 +40,7 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 			name: 'desc',
 			id: 'bs-flexiskin-add-dlg-desc'
 		});
-		
+
 		this.cbSkins = Ext.create( 'Ext.form.field.ComboBox', {
 			fieldLabel: mw.message('bs-flexiskin-labelskins').plain(),
 			labelWidth: 130,
@@ -92,7 +97,7 @@ Ext.define( 'BS.Flexiskin.AddSkin', {
 		});
 		this.cbSkins.setValue('default');
 	},
-			
+
 	getSkinsValue: function( data ) {
 		var skins = [];
 		for( var i = 0; i < data.length; i++ ) {

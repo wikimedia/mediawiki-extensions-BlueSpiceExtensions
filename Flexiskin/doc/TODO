@@ -1,0 +1,18 @@
+* check / remove todos
+* check if foreign file repo is still needed
+
+from https://gerrit.wikimedia.org/r/#/c/182449/4 Patch Set 2 (RV):
+I recommend to use a "dummy" RL module to indicate a "preview" request from the iFrame.
+When the 'flexiskin' parameter is set in the requested URL and it is not the 'current active' id, just do something like
+ public function onBeforePageDisplay( /* ... */) {
+     //...
+     $out->addModuleStyles( 'bluespice.flexiskin.dummy.'.$sId );
+     //...
+ }
+This module could then be a custom implementation of class ResourceLoaderModule which includes the requires stylings/resources.
+Maybe you could also work with
+ ResourceLoaderGetStartupModules
+or
+ ResourceLoaderRegisterModules
+hook.
+This could also be a good approach for "normal" flexiskin loading. By this you could avoid using OutPutPage::addHeadItem in the initExt-method

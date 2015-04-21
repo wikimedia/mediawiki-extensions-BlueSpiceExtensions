@@ -46,5 +46,15 @@
 	"bs-flexiskin-labelwidth": "Complete width (in pixels)",
 	"bs-flexiskin-labelfullwidth": "Maximum width",
 	"bs-flexiskin-error-nameempty": "Please enter a valid name for the skin you want to create.",
-	"bs-flexiskin-error-templatenotexists": "The chosen template does not exist."
+	"bs-flexiskin-error-templatenotexists": "The chosen template does not exist.",
+	"bs-flexiskin-api-desc": "API interface for the Bluespice extension Flexiskin.",
+	"bs-flexiskin-api-type-desc": "The action to be executed, e.g. \"delete\". Default is \"get\"",
+	"bs-flexiskin-api-mode-desc": "The actions mode, e.g. \"config\". Default is \"flexiskin\".",
+	"bs-flexiskin-api-id-desc": "The ID if the Flexiskin (optional).",
+	"bs-flexiskin-api-data-desc": "A data array (optional).",
+	"bs-flexiskin-api-preview-desc": "Choose to display the preview mode or not (optional).",
+	"bs-flexiskin-api-example-desc": "Returns the current configuration of a Flexiskin.",
+	"bs-flexiskin-api-error-save": "An error occurred while trying to save. Reason: \"$1\"",
+	"bs-flexiskin-api-error-invalid-action": "This action does not exist.",
+	"bs-flexiskin-api-error-missing-param": "The following parameter is missing: \"$1\""
 }

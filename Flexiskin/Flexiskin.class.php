@@ -38,28 +38,22 @@
  */
 class Flexiskin extends BsExtensionMW {
 
-	private static $iOldId = "";
-	private static $iNewId = "";
-	public static $sFlexiskinPath = "";
-
 	/**
 	 * Contructor of the Flexiskin class
 	 */
 	public function __construct() {
-		wfProfileIn('BS::' . __METHOD__);
+		wfProfileIn( 'BS::' . __METHOD__ );
 		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
+		$this->mExtensionType = EXTTYPE::OTHER;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'Flexiskin',
 			EXTINFO::DESCRIPTION => 'bs-flexiskin-desc',
 			EXTINFO::AUTHOR => 'Tobias Weichart',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
+			EXTINFO::VERSION => 'default',
+			EXTINFO::STATUS => 'default',
+			EXTINFO::PACKAGE => 'default',
 			EXTINFO::URL => 'http://www.hallowelt.biz',
-			EXTINFO::DEPS => array(
-				'bluespice' => '2.22.0'
-			)
+			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::Flexiskin';
 
@@ -69,255 +63,160 @@ class Flexiskin extends BsExtensionMW {
 			'message' => 'bs-flexiskin-label'
 		) );
 
-		wfProfileOut('BS::' . __METHOD__);
+		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
 	/**
 	 * Initialization of ArticleInfo extension
 	 */
 	public function initExt() {
-		global $wgOut, $wgRequest, $wgUploadPath;
-		wfProfileIn('BS::' . __METHOD__);
+		global $wgOut, $wgUploadPath;
+		wfProfileIn( 'BS::' . __METHOD__ );
 		//$this->mCore->registerPermission('flexiskinchange');
-		self::$sFlexiskinPath = BsFileSystemHelper::getDataDirectory('flexiskin') . DS;
-		BsConfig::registerVar('MW::Flexiskin::Active', "default", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-active', 'select');
-		BsConfig::registerVar('MW::Flexiskin::Logo', "", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-logo', 'text');
-		if (self::getVal('flexiskin') || BsConfig::get('MW::Flexiskin::Active') != '') {
-			$sId = self::getVal('flexiskin') != '' ? self::getVal('flexiskin') : BsConfig::get('MW::Flexiskin::Active');
-			if ($sId != "default")
-				$wgOut->addHeadItem('flexiskin', "<link rel='stylesheet' href='" . $wgUploadPath . "/bluespice/flexiskin/" . $sId . "/style" . (self::getVal('preview', '') != "" ? '.tmp' : '') . ".css'>");
+		BsConfig::registerVar( 'MW::Flexiskin::Active', "default", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-active', 'select' );
+		BsConfig::registerVar( 'MW::Flexiskin::Logo', "", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-logo', 'text' );
+		$sFlexiskin = $this->getRequest()->getVal( 'flexiskin' );
+		if ( $sFlexiskin || BsConfig::get( 'MW::Flexiskin::Active' ) != '' ) {
+			$sId = $sFlexiskin != '' ? $sFlexiskin : BsConfig::get( 'MW::Flexiskin::Active' );
+			if ( $sId != "default" ) {
+				$bIsTemp = $this->getRequest()->getBool( 'preview', false );
+				$this->addCssFile( $sId, $bIsTemp );
+			}
 		}
 		$this->mCore->registerPermission( 'flexiskinedit', array(), array( 'type' => 'global' ) );
 		wfProfileOut('BS::' . __METHOD__);
 	}
 
-	public function getForm( $firsttime = false ) {
-		$this->getOutput()->addModules("ext.bluespice.flexiskin");
+	/**
+	 * Replaces the BlueSpiceSkin screen.less file with the one specified by the parameters
+	 * @global string $wgResourceModules
+	 * @global string $wgStyleDirectory
+	 * @global string $wgUploadDirectory
+	 * @param string $sFlexiskinId
+	 * @param int $bIsTemp
+	 * @return boolean true of replaced correctly, otherwise false
+	 */
+	public function addCssFile( $sFlexiskinId, $bIsTemp = false ) {
+		global $wgResourceModules, $wgUploadPath, $wgUploadDirectory;
+		$oStatus = BsFileSystemHelper::ensureDataDirectory("flexiskin/" . $sFlexiskinId);
+		if ( $oStatus->isGood() ) {
+			return false;
+		}
+		$sFilePath = BsFileSystemHelper::getDataPath("flexiskin/" . $sFlexiskinId);
+		$sFilePath .= "/screen" . ($bIsTemp ? '.tmp' : '') . ".less";
+		if ( !isset( $wgResourceModules['skins.bluespiceskin'] ) ||
+				!isset( $wgResourceModules['skins.bluespiceskin']['styles'] ) ) {
+			return false;
+		}
+		foreach ( $wgResourceModules['skins.bluespiceskin']['styles'] as $iIndex => $sStylePath ) {
+			//check if element ends with "screen.less"
+			if ( strpos( $sStylePath, "screen.less", strlen( $sStylePath ) - strlen( "screen.less" ) ) === false ) {
+				continue;
+			}
+			$wgResourceModules['skins.bluespiceskin']['styles'][$iIndex] = ".." . $sFilePath;
+			return true;
+		}
+		return false;
+	}
+
+	public function getForm() {
+		$this->getOutput()->addModules( "ext.bluespice.flexiskin" );
 		return '<div id="bs-flexiskin-container"></div>';
 	}
 
-	public function runPreferencePlugin($sAdapterName, $oVariable) {
-		$aData = self::getFlexiskins(false);
-		$aResult = array('options' => array(
-				wfMessage('bs-flexiskin-defaultname')->plain() => 'default',
-		));
-		if (isset($aData['flexiskin']) && count($aData['flexiskin']) > 0)
-		foreach ($aData['flexiskin'] as $aConf) {
-			$aResult['options'][$aConf['flexiskin_name']] = $aConf['flexiskin_id'];
+	public function runPreferencePlugin( $sAdapterName, BsConfig $oVariable ) {
+		if (substr($oVariable->getKey(), 0, 13) != "MW::Flexiskin"){
+			return array();
+		}
+
+		$api = new ApiMain(
+				new DerivativeRequest(
+				$this->getRequest(), array(
+			'action' => 'flexiskin',
+			'type' => 'get'
+				), false
+				), true
+		);
+		$oResult = $api->execute();
+		$aData = $api->getResultData();
+		$aResult = array( 'options' => array(
+				wfMessage( 'bs-flexiskin-defaultname' )->plain() => 'default',
+			) );
+		if ( isset( $aData['flexiskin'] ) && count( $aData['flexiskin'] ) > 0 ) {
+			foreach ( $aData['flexiskin'] as $aConf ) {
+				$aResult['options'][$aConf['flexiskin_name']] = $aConf['flexiskin_id'];
+			}
 		}
 		return $aResult;
 	}
 
-	public static function getFlexiskins($bEncode = true) {
-		$sActiveSkin = BsConfig::get('MW::Flexiskin::Active');
-		BsFileSystemHelper::ensureDataDirectory("flexiskin" . DS );
-		if ($handle = opendir(BS_DATA_DIR . DS . "flexiskin")) {
-			while (false !== ($entry = readdir($handle))) {
-				if ($entry != "." && $entry != "..") {
-					$oStatus = BsFileSystemHelper::getFileContent("conf.json", "flexiskin" . DS . $entry);
-					if (!$oStatus->isGood())
-						continue;
-					$aFile = json_decode($oStatus->getValue());
-					//PW(27.11.2013) TODO: this should not be needed!
-					if (!isset($aFile[0]) || !is_object($aFile[0]))
-						continue;
-					$aData ['flexiskin'][] = array(
-						'flexiskin_id' => $entry,
-						'flexiskin_name' => $aFile[0]->name,
-						'flexiskin_desc' => $aFile[0]->desc,
-						'flexiskin_active' => $sActiveSkin == $entry ? true : false
-					);
-				}
+	public static function generateConfigFile( $oData ) {
+		$aConfig = array();
+		$aConfig [] = array(
+			"id" => "general",
+			"name" => $oData->name,
+			"desc" => $oData->desc,
+			"backgroundColor" => "F4F4F4",
+			"customBackgroundColor" => "F4F4F4",
+			"repeatBackground" => "no-repeat"
+		);
+		$aConfig [] = array(
+			"id" => "header",
+			"logo" => ""
+		);
+		$aConfig [] = array(
+			"id" => "position",
+			"navigation" => "left",
+			"content" => "center",
+			"width" => "1222",
+			"fullWidth" => "0"
+		);
+		$bReturn = wfRunHooks( "BSFlexiskinGenerateConfigFile", array( $oData, &$aConfig ) );
+		if ( !$bReturn ) {
+			return array();
+		}
+		return FormatJson::encode($aConfig);
+	}
+
+	public static function generateScreenFile($bIsTmp = false){
+		$aScreenFile = array();
+		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/variables.less';";
+		$aScreenFile[] = "@import 'variables.".($bIsTmp ? "tmp." : "")."less';";
+		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/screen.layout.less';";
+		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/components.less';";
+		return implode("\n", $aScreenFile);
+	}
+
+	public static function generateStyleFile( $aConfigs ) {
+		$aFile = array();
+		if ( !is_array( $aConfigs ) ) {
+			$aConfigs = FormatJson::decode( $aConfigs );
+		}
+		$aFile[] = '@bs-skin-path: "../../../../skins/BlueSpiceSkin/resources/";';
+		$sNewId = self::getFlexiskinIdFromConfig($aConfigs);
+		foreach ( $aConfigs as $aConfig ) {
+			$func = "FlexiskinFormatter::format_" . $aConfig->id;
+			$bReturn = wfRunHooks( "BSFlexiskinGenerateStyleFile", array( &$func, &$aConfig ) );
+
+			if ( $bReturn === true && is_callable( $func ) ) {
+				$aFile[] = call_user_func_array( $func, array( $aConfig, $sNewId) );
 			}
-			closedir($handle);
+			else{
+				wfDebug("BS::Flexiskin method " . $func . " could not be called.");
+			}
 		}
-		$aData['totalCount'] = isset($aData['flexiskin']) ? count($aData['flexiskin']) : 0;
-
-		return $bEncode ? json_encode($aData) : $aData;
+		return implode( " \n", $aFile );
 	}
-
-	public static function activateFlexiskin() {
-		global $wgRequest;
-		BsConfig::set("MW::Flexiskin::Active", self::getVal('id', ''));
-		BsConfig::saveSettings();
-		return json_encode(array('success' => true));
-	}
-
-	public static function addFlexiskin() {
-		$aData = json_decode(self::getVal('data'));
-		$oData = $aData[0];
-		if (is_null($oData->template))
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templatenotexists')->plain()));
-		if( empty($oData->template) )
-			$oData->template = 'default';
-
-		$sId = str_replace(" ", "_", strtolower($oData->name));
-		if (is_dir((self::$sFlexiskinPath . "/" . md5($sId)))) {
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinexists')->plain()));
-		}
-		//PW(27.11.2013) TODO: add check template really exists before add
-		if( empty($oData->name) ) {
-			//PW(27.11.2013) TODO: add msg
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-nameempty')->plain()));
-		}
-		if ( $oData->template != 'default'){
-			$oConfig = self::getFlexiskinConfig(true, $oData->template);
-			if (!$oConfig->isGood())
-				return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-templatenotexists')->plain()));
-			$oConf = json_decode($oConfig->getValue());
-			$oConf[0]->name = $oData->name;
-			$oConf[0]->desc = $oData->desc;
-			$sConfigFile = json_encode($oConf);
-		}
-		else $sConfigFile = self::generateConfigFile($oData);
-
-		$oStatus = BsFileSystemHelper::saveToDataDirectory('conf.json', $sConfigFile, "flexiskin" . DS . md5($sId));
-		if (!$oStatus->isGood()) {
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-fail-add-skin', self::getErrorMessage($oStatus))->plain()));
-		}
-		if ( $oData->template != 'default' ){
-			$oStatus = BsFileSystemHelper::copyFile('style.css', "flexiskin" . DS . $oData->template, "flexiskin" . DS . md5($sId));
-			$oStatus = BsFileSystemHelper::copyFolder("images", "flexiskin" . DS . $oData->template, "flexiskin" . DS . md5($sId));
+	
+	public static function getFlexiskinIdFromConfig($aConfig){
+		if (is_array($aConfig) && isset($aConfig[0]) && isset($aConfig[0]->name)){
+			$sName = str_replace(" ", "_", strtolower($aConfig[0]->name));
+			$sNewId = md5($sName);
+			return $sNewId;
 		}
 		else{
-			$oStatus = BsFileSystemHelper::saveToDataDirectory('style.css', self::generateStyleFile($sConfigFile), "flexiskin" . DS . md5($sId));
+			return null;
 		}
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-fail-add-skin', self::getErrorMessage($oStatus))->plain()));
-		BsFileSystemHelper::ensureDataDirectory("flexiskin" . DS . md5($sId) . DS . "images");
-		return json_encode(array('success' => true));
-	}
-
-	private static function generateConfigFile($oData) {
-		$sConfig = '[{"id":"general","name":"' . $oData->name . '","desc":"' . $oData->desc . '","backgroundColor":"F4F4F4","customBackgroundColor":"F4F4F4","backgroundImage":"","repeatBackground":"no-repeat"},';
-		$sConfig .= '{"id":"header","logo":""},';
-		$sConfig .= '{"id":"position","navigation":"left","content":"center","width":"1222", "fullWidth":"0"}]';
-		return $sConfig;
-	}
-
-	public static function getFlexiskinConfig($bReturnStatus = false, $sId = "", $bIsPreview = false) {
-		global $wgRequest;
-		$iId = $sId == "" ? self::getVal('id') : $sId;
-		if ($bIsPreview)
-			$oStatus = BsFileSystemHelper::getFileContent("conf.tmp.json", "flexiskin" . DS . $iId);
-		else
-			$oStatus = BsFileSystemHelper::getFileContent("conf.json", "flexiskin" . DS . $iId);
-		if ($bReturnStatus)
-			return $oStatus;
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-get-config', self::getErrorMessage($oStatus))->plain()));
-		return json_encode(array('success' => true, 'config' => $oStatus->getValue()));
-	}
-
-	public static function deleteFlexiskin() {
-		global $wgRequest;
-		$iId = self::getVal('skinId');
-		$oStatus = BsFileSystemHelper::deleteFolder("flexiskin" . DS . $iId);
-		if (BsConfig::get("MW::Flexiskin::Active") == $iId){
-			BsConfig::set("MW::Flexiskin::Active", "");
-			BsConfig::saveSettings();
-		}
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-delete-skin', self::getErrorMessage($oStatus))->plain()));
-		else
-			return json_encode(array('success' => true));
-	}
-
-	public static function saveFlexiskinPreview() {
-		global $wgRequest, $wgScriptPath;
-		$aData = self::getValues();
-		$aFile = "";
-		$aConfigs = json_decode($aData['data']);
-		$aFile = self::generateStyleFile($aConfigs);
-		/* foreach ($aConfigs as $aConfig) {
-		  $func = "Flexiskin::format_" . $aConfig->id;
-		  if (is_callable($func))
-		  $aFile[] = call_user_func($func, $aConfig);
-		  } */
-		$sId = self::getVal('id');
-		$oStatus = BsFileSystemHelper::saveToDataDirectory("style.tmp.css", $aFile, "flexiskin" . DS . $sId);
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-error-save-preview", self::getErrorMessage($oStatus))->plain()));
-		$oStatus = BsFileSystemHelper::saveToDataDirectory("conf.tmp.json", $aData['data'], "flexiskin" . DS . $sId);
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-error-save-preview", self::getErrorMessage($oStatus))->plain()));
-		return json_encode(array('success' => true, 'src' => $wgScriptPath . "/index.php?flexiskin=" . self::getVal('id') . "&preview=true"));
-	}
-
-	public static function resetFlexiskin() {
-		global $wgRequest, $wgScriptPath;
-		$sId = self::getVal('id');
-		$oStatus = BsFileSystemHelper::deleteFile("style.tmp.css", "flexiskin" . DS . $sId);
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-reset-error", self::getErrorMessage($oStatus))->plain()));
-		$oStatus = BsFileSystemHelper::deleteFile("conf.tmp.json", "flexiskin" . DS . $sId);
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-reset-error", self::getErrorMessage($oStatus))->plain()));
-		$oStatus = self::getFlexiskinConfig(true);
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-reset-error", self::getErrorMessage($oStatus))->plain()));
-		return json_encode(array(
-			'success' => true,
-			'src' => $wgScriptPath . "/index.php?flexiskin=" . self::getVal('id'),
-			'data' => array('skinId' => $sId, 'config' => $oStatus->getValue())
-		));
-	}
-
-	public static function saveFlexiskin() {
-		global $wgRequest, $wgScriptPath;
-		$aData = self::getValues();
-		self::$iOldId = $aData['id'];
-		$aConfigs = json_decode($aData['data']);
-		$aFile = self::generateStyleFile($aConfigs);
-		if (self::$iOldId != self::$iNewId && is_dir(self::$sFlexiskinPath . DS . self::$iNewId) && file_exists(self::$sFlexiskinPath . DS . self::$iNewId . DS . "conf.json")) {
-			return json_encode(array('success' => false, 'msg' => wfMessage('bs-flexiskin-error-skinexists')->plain()));
-		}
-		if (self::$iOldId != self::$iNewId && is_dir(self::$sFlexiskinPath . DS . self::$iOldId)) {
-			$oStatus = BsFileSystemHelper::renameFolder("flexiskin" . DS . self::$iOldId, "flexiskin" . DS . self::$iNewId);
-			if (!$oStatus->isGood())
-				return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-error-save", self::getErrorMessage($oStatus))->plain()));
-		}
-		//may happen
-		if (!is_dir(self::$sFlexiskinPath . "/" . self::$iNewId))
-			mkdir(self::$sFlexiskinPath . "/" . self::$iNewId);
-		$oStatus = BsFileSystemHelper::saveToDataDirectory("style.css", $aFile, "flexiskin" . DS . self::$iNewId);
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-error-save", self::getErrorMessage($oStatus))->plain()));
-		$oStatus = BsFileSystemHelper::saveToDataDirectory("conf.json", $aData['data'], "flexiskin" . DS . self::$iNewId);
-		if (!$oStatus->isGood())
-			return json_encode(array('success' => false, 'msg' => wfMessage("bs-flexiskin-error-save", self::getErrorMessage($oStatus))->plain()));
-		return json_encode(array('success' => true, 'id' => self::$iNewId, 'src' => $wgScriptPath . "/index.php?flexiskin=" . self::$iNewId));
-	}
-
-	public static function uploadFile() {
-		global $wgRequest;
-		$oStatus = BsFileSystemHelper::uploadFile(self::getVal('name'), "flexiskin" . DS . self::getVal('id') . DS . "images");
-
-		if (!$oStatus->isGood())
-			$aResult = json_encode(array('success' => false, 'msg' => "err_cd:" . $oStatus->getMessage()));
-		else
-			$aResult = json_encode(array('success' => true, 'name' => $oStatus->getValue()));
-		$oAjaxResponse = new AjaxResponse( $aResult );
-		$oAjaxResponse->setContentType( 'text/html' );
-		return $oAjaxResponse;
-	}
-
-	private static function getErrorMessage(Status $oStatus) {
-		$aMsg = $oStatus->getErrorsArray();
-		return $aMsg[0];
-	}
-
-	private static function generateStyleFile($aConfigs) {
-		$aFile = array();
-		if (!is_array($aConfigs))
-			$aConfigs = json_decode($aConfigs);
-		foreach ($aConfigs as $aConfig) {
-			$func = "Flexiskin::format_" . $aConfig->id;
-			$bReturn = wfRunHooks("BSFlexiskinGenerateStyleFile", array(&$func, &$aConfig));
-			if ( $bReturn === true && is_callable($func))
-				$aFile[] = call_user_func($func, $aConfig);
-		}
-		return implode(" \n", $aFile);
 	}
 
 	/**
@@ -326,22 +225,39 @@ class Flexiskin extends BsExtensionMW {
 	 * @param BaseTemplate $tpl
 	 * @return boolean Always true to keep hook running
 	 */
-	public static function onSkinTemplateOutputPageBeforeExec(&$sktemplate, &$tpl){
-		if (self::getVal('flexiskin') || BsConfig::get('MW::Flexiskin::Active') != '') {
-			$sId = self::getVal('flexiskin') != '' ? self::getVal('flexiskin') : BsConfig::get('MW::Flexiskin::Active');
-			if ($sId != "default"){
-				if (self::getVal("preview")) {
-					$aResult = FormatJson::decode(self::getFlexiskinConfig(false, $sId, true));
+	public static function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+		$sFlexiskin = $sktemplate->getRequest()->getVal( 'flexiskin' );
+		if ( $sFlexiskin || BsConfig::get( 'MW::Flexiskin::Active' ) != '' ) {
+			$sId = $sFlexiskin != '' ? $sFlexiskin : BsConfig::get( 'MW::Flexiskin::Active' );
+			if ( $sId != "default" ) {
+				$bPreview = $sktemplate->getRequest()->getVal( 'preview', false );
+				$api = new ApiMain(
+						new DerivativeRequest(
+							$sktemplate->getRequest(),
+							array(
+								'action' => 'flexiskin',
+								'type' => 'get',
+								'mode' => 'config',
+								'id' => $sId,
+								'preview' => $bPreview
+							),
+							false
+						),
+						true
+				);
+				$api->execute();
+				$aResult = $api->getResultData();
+				$oResult = FormatJson::decode( $aResult['flexiskin'] );
+				if ($oResult->success === false){
+					return true;
 				}
-				else {
-					$aResult = FormatJson::decode(self::getFlexiskinConfig(false, $sId, false));
-				}
-				$aConfig = FormatJson::decode($aResult->config);
-				if ($aConfig[1]->logo === "") {
+				$aConfig = FormatJson::decode($oResult->config);
+				$sLogo = BsConfig::get("MW::Flexiskin::Logo");
+				if ( $sLogo == "" ) {
 					return true;
 				}
 				$sPath = BS_DATA_PATH . "/flexiskin/" . $sId . "/images/";
-				$tpl->set( 'logopath', $sPath . $aConfig[1]->logo);
+				$tpl->set( 'logopath', $sPath . $sLogo );
 				return true;
 			}
 			return true;
@@ -349,75 +265,4 @@ class Flexiskin extends BsExtensionMW {
 		return true;
 	}
 
-	private static function format_general($aConfig) {
-		$aReturn = "";
-		$sName = str_replace(" ", "_", strtolower($aConfig->name));
-		self::$iNewId = md5($sName);
-		if ($aConfig->customBackgroundColor == "" && (ctype_xdigit($aConfig->customBackgroundColor)))
-			$aReturn[] = "body{background-color:#" . $aConfig->backgroundColor . " !important;}";
-		else
-			$aReturn[] = "body{background-color:#" . $aConfig->customBackgroundColor . " !important;}";
-		if ($aConfig->backgroundImage != "")
-			$aReturn[] = "body{background-image:url('images/" . $aConfig->backgroundImage . "') !important;}";
-		else
-			$aReturn[] = "body{background-image:none !important;}";
-		$aReturn[] = "body{background-repeat:".$aConfig->repeatBackground . " !important;}";
-		return implode(" \n", $aReturn);
-	}
-
-	private static function format_header($aConfig) {
-		global $wgRequest;
-		$aReturn = array();
-
-		//$aReturn[] = "#bs-logo{background-image:url('images/".$aConfig->logo."');}";
-		return implode(" \n", $aReturn);
-	}
-
-	private static function format_position($aConfig) {
-		$aReturn = "";
-		if ($aConfig->navigation == 'right') {
-			$aReturn[] = "#bs-application{position: relative;}";
-			$aReturn[] = "#bs-content-column{margin: 0 302px 0 0;}";
-			$aReturn[] = "#bs-nav-sections{right: 0; top: 30px;}";
-			$aReturn[] = "#footer{margin: 0px 302px 5px 0px}";
-		}
-		if ($aConfig->content != 'center') {
-			$aReturn[] = "#bs-wrapper{margin-" . $aConfig->content . ":0;}";
-		}
-		if ($aConfig->fullWidth == 0){
-			$aReturn[] = "#bs-menu-top{width:" . (int) $aConfig->width . "px;}";
-			$aReturn[] = "#bs-application{width:" . (int) $aConfig->width . "px;}";
-			$aReturn[] = "#bs-wrapper{width:" . (int) $aConfig->width . "px;min-width:" . (int) $aConfig->width . "px;}";
-			//$aReturn[] = "#bs-tools-container{width:" . ((int) $aConfig->width - 200 + 28) . "px;margin-left:-" . ((int) $aConfig->width - 246) . "px}";
-		}
-		else{
-			$aReturn[] = "#bs-menu-top{width:100%;}";
-			$aReturn[] = "#bs-application{width:100%;}";
-			$aReturn[] = "#bs-wrapper{width:100%;min-width:100%;}";
-		}
-
-		return implode(" \n", $aReturn);
-	}
-	private static function getVal($sVal, $sDefault = "", $bIsArray = false){
-		global $wgRequest;
-		$sValSearched = $wgRequest->getVal($sVal, $sDefault);
-		return /*self::sanitizeString(*/$sValSearched/*)*/;
-	}
-
-	private static function getValues(){
-		global $wgRequest;
-		$aValSearched = $wgRequest->getValues();
-		return /*self::sanitizeArray(*/$aValSearched/*)*/;
-	}
-
-	private static function sanitizeArray($aArray){
-		foreach ($aArray as $key => $sString){
-			$aReturn [$key] = is_array($sString) ? self::sanitizeArray($sString) : self::sanitizeString($sString);
-		}
-		return $aReturn;
-	}
-
-	private static function sanitizeString($sString){
-		return htmlentities(str_replace('\\', "", str_replace('/', "", $sString)), ENT_NOQUOTES);
-	}
 }

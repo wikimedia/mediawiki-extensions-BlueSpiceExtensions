@@ -3,10 +3,11 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 	title: mw.message('bs-flexiskin-headerheader').plain(),
 	layout: 'form',
 	currentData: {},
+	parent: null,
 	id: 'bs-flexiskin-preview-menu-header',
 	initComponent: function() {
 		this.ufLogoUpload = Ext.create('BS.form.UploadPanel', {
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
+			url: mw.util.wikiScript('api'),
 			uploadFormName: 'logo',
 			uploadFieldLabel: mw.message('bs-flexiskin-labellogoupload').plain(),
 			uploadLabelWidth: 50,
@@ -21,19 +22,26 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 		this.callParent(arguments);
 	},
 	btnUploadClick: function(el, form) {
-		if (!form.isValid())
+		if (!form.isValid()){
 			return;
-		form.submit({
+		}
+		var me = this;
+		form.doAction(Ext.create('BS.form.action.MediaWikiApiCall', {
+			form: form,
 			params: {
+				action: 'flexiskin',
+				type: 'upload',
+				mode: 'file',
 				id: this.currentData.skinId,
-				name: 'logo'
+				name: 'logo',
+				format: 'json'
 			},
-			waitMsg: mw.message('bs-extjs-uploading').plain(),
-			success: function(fp, o) {
-				var responseObj = o.result;
+			success: function(response, action) {
+				var responseObj = Ext.decode(response.responseText);
+				responseObj = Ext.decode(responseObj.flexiskin);
 				if (responseObj.success === true) {
 					Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(responseObj.name);
-					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+					me.parent.onItemStateChange();
 				} else {
 					bs.util.alert('bs-flexiskin-saveskin-error',
 							{
@@ -50,18 +58,23 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 				}
 			},
 			scope: this
-		});
+		}));
 	},
 	btnResetClick: function(el) {
+		var me = this;
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
+			url: mw.util.wikiScript('api'),
 			params: {
+				action: 'flexiskin',
+				type: 'upload',
+				mode: 'file',
 				id: this.currentData.skinId,
-				name: ''
+				name: '',
+				format: 'json'
 			},
 			callback: function(response) {
 				Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue("");
-				Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+				me.parent.onItemStateChange();
 			},
 			scope: this
 		});
