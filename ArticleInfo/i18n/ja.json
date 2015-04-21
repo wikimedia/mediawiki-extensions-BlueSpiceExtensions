@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"2nd-player"
 		]
 	},
 	"bs-articleinfo-desc": "ステータス バーにページについての情報を提供する",
@@ -15,6 +16,7 @@
 	"bs-articleinfo-notemplates": "テンプレートが見つかりません。",
 	"bs-articleinfo-templates": "テンプレート",
 	"bs-articleinfo-subpages": "下位ページ",
+	"bs-articleinfo-subpages-available": "このページには下位ページがあります",
 	"bs-articleinfo-check-revision-tooltip": "ページを再読み込み",
 	"bs-articleinfo-statebartopcategories": "カテゴリ",
 	"bs-articleinfo-statebartopsubpages": "下位ページ",

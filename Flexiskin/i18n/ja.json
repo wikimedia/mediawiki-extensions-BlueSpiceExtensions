@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"Mfuji"
+			"Mfuji",
+			"2nd-player"
 		]
 	},
 	"bs-flexiskin-desc": "外装を作成する機能を追加する",
@@ -37,5 +38,6 @@
 	"bs-flexiskin-right": "右",
 	"bs-flexiskin-center": "中央",
 	"bs-flexiskin-labelfullwidth": "最大幅",
-	"bs-flexiskin-error-nameempty": "作成する外装の有効な名前を入力してください。"
+	"bs-flexiskin-error-nameempty": "作成する外装の有効な名前を入力してください。",
+	"bs-flexiskin-error-templatenotexists": "選択されたテンプレートは存在しません。"
 }
