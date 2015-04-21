@@ -32,5 +32,5 @@
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}",
 	"echo-category-title-bs-shoutbox-mention-cat": "Benachrichtigung bei Erwähnung in einer Nachricht in der Shoutbox",
 	"bs-shoutbox-notifications-title-message-subject": "Du wurdest in einer Nachricht in der Shoutbox erwähnt.",
-	"bs-shoutbox-notifications-title-message-text": "Du wurdest von $2 in einer Nachricht auf der Seite \"$3\" {{GENDER:$1|erwähnt}}."
+	"bs-shoutbox-notifications-title-message-text": "Du wurdest von $4 in einer Nachricht auf der Seite \"$5\" {{GENDER:$1|erwähnt}}.\n\nDu kannst den Artikel über diese URL aufrufen:\n$3"
 }
