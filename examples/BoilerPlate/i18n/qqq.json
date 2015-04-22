@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>"
+		]
+	},
+	"bs-boilerplate-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of boilerplate extension",
+	"prefs-boilerplate": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for BoilerPlate section in preferences.",
+	"bs-boilerplate-pref-modus": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for modus:",
+	"bs-boilerplate-pref-modus-yes": "Option in [[Special:Wiki_Admin&mode=Preferences]], radio button label for boolean value 'yes'",
+	"bs-boilerplate-pref-modus-no": "Option in [[Special:Wiki_Admin&mode=Preferences]], radio button label for for boolean value 'no'",
+	"bs-boilerplate-somekey": "Some screen text that has to be described here"
+}

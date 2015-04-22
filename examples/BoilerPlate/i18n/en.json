@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>"
+		]
+	},
+	"bs-boilerplate-desc": "An extension boilerplate for developers",
+	"prefs-boilerplate": "BoilerPlate",
+	"bs-boilerplate-pref-modus": "Do it?",
+	"bs-boilerplate-pref-modus-yes": "Yes",
+	"bs-boilerplate-pref-modus-no": "No",
+	"bs-boilerplate-somekey" : "Some value"
+}
