@@ -53,6 +53,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|заврши}} оценка за страницата „$2“.",
 	"log-name-bs-review": "Дневник на оценувања",
 	"log-description-bs-review": "Ова е дневник на страници што се оценуваат или се оценувале",
+	"log-show-hide-bs-review": "$1 дневник на оценки",
 	"bs-review-pref-checkowner": "Оценката може да ја измени само нејзиниот давател",
 	"bs-review-pref-shownameintooltip": "Прикажувај ги имињата на учесниците",
 	"bs-review-pref-emailnotifyowner": "Извести го давателот на оценката за изршени промени",

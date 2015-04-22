@@ -45,5 +45,15 @@
 	"bs-flexiskin-labelwidth": "Целосна ширина (во пиксели)",
 	"bs-flexiskin-labelfullwidth": "Макс. ширина",
 	"bs-flexiskin-error-nameempty": "Укажете важечко име на рувото што сакате да го создадете.",
-	"bs-flexiskin-error-templatenotexists": "Одбраниот шаблон не постои."
+	"bs-flexiskin-error-templatenotexists": "Одбраниот шаблон не постои.",
+	"bs-flexiskin-api-desc": "Изврнички посредник за додатокот Flexiskin за BlueSpice.",
+	"bs-flexiskin-api-type-desc": "Дејството што треба да се изврши, како на пр. „delete“. По основно: „get“",
+	"bs-flexiskin-api-mode-desc": "Режимот на дејствата, како на пр. „config“. По основно: „flexiskin“.",
+	"bs-flexiskin-api-id-desc": "Назнака на Flexiskin (незадолжително).",
+	"bs-flexiskin-api-data-desc": "Податочна низа (незадолжително)",
+	"bs-flexiskin-api-preview-desc": "Дали да се прикажува прегледниот режим (незадолжително).",
+	"bs-flexiskin-api-example-desc": "Ја дава тековната поставеност на даден Flexiskin.",
+	"bs-flexiskin-api-error-save": "Настана грешка при зачувувањето. Причина: „$1“",
+	"bs-flexiskin-api-error-invalid-action": "Ова дејство не постои.",
+	"bs-flexiskin-api-error-missing-param": "Недостасува следниов параметар: „$1“"
 }

@@ -47,5 +47,10 @@
 	"bs-flexiskin-labelwidth": "Anchura completa (en píxeles)",
 	"bs-flexiskin-labelfullwidth": "Anchura máxima",
 	"bs-flexiskin-error-nameempty": "Escribe un nombre válido para la apariencia que deseas crear.",
-	"bs-flexiskin-error-templatenotexists": "La plantilla elegida no existe."
+	"bs-flexiskin-error-templatenotexists": "La plantilla elegida no existe.",
+	"bs-flexiskin-api-desc": "Interfaz API para Flexiskin, la extensión de Bluespice.",
+	"bs-flexiskin-api-type-desc": "La acción que ejecutar. Por ejemplo \"delete\" (borrar). Por omisión es \"get\" (obtener).",
+	"bs-flexiskin-api-example-desc": "Devuelve la configuración actual de un Flexiskin.",
+	"bs-flexiskin-api-error-save": "Se ha producido un error al intentar guardar. La razón: \"$1\"",
+	"bs-flexiskin-api-error-invalid-action": "Esta acción no existe."
 }
