@@ -59,6 +59,7 @@
 	"bs-review-finished-review": "Log message that someone finished a review on page.\n*$1 is the username of the user\n*$2 is the name of the page as a link.",
 	"log-name-bs-review": "Used in [[Special:Log]], headline for review log",
 	"log-description-bs-review": "Used in [[Special:Log]], log description for BlueSpice review log.",
+	"log-show-hide-bs-review": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
 	"bs-review-pref-checkowner": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for only the owner of a review can change it",
 	"bs-review-pref-shownameintooltip": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for show names of the participants",
 	"bs-review-pref-emailnotifyowner": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for notify the owner of a review about changes",

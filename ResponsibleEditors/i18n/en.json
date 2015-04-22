@@ -53,5 +53,6 @@
 	"bs-responsibleeditors-cbnamespacesemptytext": "Select a namespace",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Not assigned",
 	"log-name-bs-responsibleeditors": "Responsible editors log",
-	"log-description-bs-responsibleeditors": "This is a log of editors responsible for pages."
+	"log-description-bs-responsibleeditors": "This is a log of editors responsible for pages.",
+	"log-show-hide-bs-responsibleeditors": "$1 responsible editors log"
 }
