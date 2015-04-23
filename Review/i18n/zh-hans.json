@@ -53,6 +53,7 @@
 	"bs-review-finished-review": "$1{{GENDER:$1|完成}}页面“$2”的复核。",
 	"log-name-bs-review": "复核日志",
 	"log-description-bs-review": "这是正在或曾被复核页面的日志。",
+	"log-show-hide-bs-review": "$1复核日志",
 	"bs-review-pref-checkowner": "只有复核的所有者可以更改它",
 	"bs-review-pref-shownameintooltip": "显示参与者名字",
 	"bs-review-pref-emailnotifyowner": "通知修订的所有者关于更改",

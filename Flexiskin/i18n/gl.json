@@ -48,6 +48,10 @@
 	"bs-flexiskin-error-nameempty": "Por favor, introduza un nome válido para a aparencia que quere crear.",
 	"bs-flexiskin-error-templatenotexists": "O modelo escollido non existe.",
 	"bs-flexiskin-api-type-desc": "Acción a executar, p. ex. \"delete\" (borrar). Por defecto es \"get\" (obter).",
+	"bs-flexiskin-api-data-desc": "Unha matriza de datos (opcional).",
+	"bs-flexiskin-api-preview-desc": "Escolla se visualizar o modo de previsualización ou non (opcional).",
+	"bs-flexiskin-api-example-desc": "Devolve a configuración actual dun Flexiskin.",
+	"bs-flexiskin-api-error-save": "Houbo un erro ó gardar. Motivo: \"$1\"",
 	"bs-flexiskin-api-error-invalid-action": "Esta acción non existe.",
 	"bs-flexiskin-api-error-missing-param": "Falta o seguinte parámetro: \"$1\""
 }

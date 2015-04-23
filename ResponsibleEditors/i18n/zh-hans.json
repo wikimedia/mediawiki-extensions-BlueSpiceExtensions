@@ -54,5 +54,6 @@
 	"bs-responsibleeditors-cbnamespacesemptytext": "选择名字空间",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "未分配",
 	"log-name-bs-responsibleeditors": "责任编辑日志",
-	"log-description-bs-responsibleeditors": "这是页面编辑者责任的日志。"
+	"log-description-bs-responsibleeditors": "这是页面编辑者责任的日志。",
+	"log-show-hide-bs-responsibleeditors": "$1责任编辑日志"
 }

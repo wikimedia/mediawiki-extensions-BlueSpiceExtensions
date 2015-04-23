@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-authors-desc": "Prikaže sliko profila avtorjev strani",
+	"prefs-authors": "Avtorji te strani",
+	"bs-authors-profileimage": "Slika profila",
+	"bs-authors-profileimage-change": "Spremeni sliko profila",
+	"bs-authors-show-all-authors": "Na voljo je več avtorjev"
+}

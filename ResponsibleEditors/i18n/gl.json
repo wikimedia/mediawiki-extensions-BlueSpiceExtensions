@@ -54,5 +54,6 @@
 	"bs-responsibleeditors-cbnamespacesemptytext": "Seleccionar un espazo de nomes",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Non asignado",
 	"log-name-bs-responsibleeditors": "Rexistro de editores responsables",
-	"log-description-bs-responsibleeditors": "Este é un rexistro de editores responsables de páxinas."
+	"log-description-bs-responsibleeditors": "Este é un rexistro de editores responsables de páxinas.",
+	"log-show-hide-bs-responsibleeditors": "$1 rexistro de editores responsables"
 }

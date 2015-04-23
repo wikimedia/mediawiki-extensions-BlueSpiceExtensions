@@ -54,6 +54,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|rematou}} unha revisión da páxina \"$2\".",
 	"log-name-bs-review": "Rexistro de revisións",
 	"log-description-bs-review": "Este é un rexistro das páxinas que están ou estiveron baixo revisión.",
+	"log-show-hide-bs-review": "$1 rexistro de revisións",
 	"bs-review-pref-checkowner": "Só o propietario dunha revisión pode cambiala",
 	"bs-review-pref-shownameintooltip": "Mostrar os nomes dos participantes",
 	"bs-review-pref-emailnotifyowner": "Notificar ó dono dunha revisión dos cambios",
