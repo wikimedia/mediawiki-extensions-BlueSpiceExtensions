@@ -49,7 +49,7 @@
 	"bs-flexiskin-error-nameempty": "Escribe un nombre válido para la apariencia que deseas crear.",
 	"bs-flexiskin-error-templatenotexists": "La plantilla elegida no existe.",
 	"bs-flexiskin-api-desc": "Interfaz de API de la extensión Flexiskin de Bluespice.",
-	"bs-flexiskin-api-type-desc": "La acción que ejecutar. Por ejemplo \"delete\" (borrar). Por omisión es \"get\" (obtener).",
+	"bs-flexiskin-api-type-desc": "La acción que ejecutar, p. ej., «delete» (‘borrar’). La predeterminada es «get» (‘obtener’).",
 	"bs-flexiskin-api-example-desc": "Devuelve la configuración actual de un Flexiskin.",
 	"bs-flexiskin-api-error-save": "Se produjo un error al guardar. Motivo: «$1»",
 	"bs-flexiskin-api-error-invalid-action": "Esta acción no existe."

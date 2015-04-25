@@ -38,6 +38,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|concluiu}} uma revisão para a página \"$2\".",
 	"log-name-bs-review": "Registo de revisão",
 	"log-description-bs-review": "Este é um registo de páginas que estão ou estiveram sob análise.",
+	"log-show-hide-bs-review": "$1 registo de revisões",
 	"bs-review-pref-checkowner": "Somente o responsável por uma revisão pode alterá-la",
 	"bs-review-pref-shownameintooltip": "Mostrar nomes dos participantes",
 	"bs-review-pref-emailnotifyowner": "Notificar o responsável de uma revisão sobre as alterações",
