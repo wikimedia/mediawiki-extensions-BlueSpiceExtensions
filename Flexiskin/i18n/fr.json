@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"ChaudLeChocolat"
 		]
 	},
 	"bs-flexiskin-desc": "Fournit une page pour gérer les habillages flexibles avec des options perosnnalisées",
@@ -45,5 +46,6 @@
 	"bs-flexiskin-labelwidth": "Largeur totale (en pixels)",
 	"bs-flexiskin-labelfullwidth": "Largeur maximale",
 	"bs-flexiskin-error-nameempty": "Veuillez entrer un nom valide pour l’habillage que vous souhaitez créer.",
-	"bs-flexiskin-error-templatenotexists": "Le modèle choisi n’existe pas."
+	"bs-flexiskin-error-templatenotexists": "Le modèle choisi n’existe pas.",
+	"bs-flexiskin-api-error-invalid-action": "Cette action n'existe pas."
 }
