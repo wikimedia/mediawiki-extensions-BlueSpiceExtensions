@@ -9,6 +9,5 @@
 	"bs-notifications-email-move": "Die Seite \"$1\" wurde von $5 nach $3 {{GENDER:$2|verschoben}}.\n\nSie können den Artikel über diese URL aufrufen:\n$4",
 	"bs-notifications-email-delete": "Die Seite \"$4\" wurde von $5 {{GENDER:$2|gelöscht}}.\n\nAls Grund wurde angegeben:\n$3\n\nSie können die Seite über diese URL aufrufen:\n$1",
 	"bs-notifications-email-addaccount": "{{GENDER:$2|Der Benutzer|Die Benutzerin|Das Benutzerkonto}} $3 wurde neu {{GENDER:$2|angelegt}}.\n\nSie können {{GENDER:$2|seine|ihre|die}} Benutzerseite über diese URL aufrufen:\n$1",
-	"bs-notifications-email-shout": "$5 hat auf der Seite \"$1\" eine Nachricht {{GENDER:$2|hinterlassen}}.\n\nNachricht:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4",
-	"echo-email-footer-default": "$2\n\nUm zu steuern, welche E-Mails wir Ihnen senden, nutzen Sie Ihre Einstellungen:\n{{canonicalurl:{{#special:Preferences}}#mw-prefsection-echo}}\n\n$1"
+	"bs-notifications-email-shout": "$5 hat auf der Seite \"$1\" eine Nachricht {{GENDER:$2|hinterlassen}}.\n\nNachricht:\n$3\n\nSie können den Artikel über diese URL aufrufen:\n$4"
 }

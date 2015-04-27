@@ -55,7 +55,7 @@
 	"bs-flexiskin-api-data-desc": "Ein Array aus Daten, optional.",
 	"bs-flexiskin-api-preview-desc": "Parameter für die Angabe, ob es der Preview-Modus ist oder nicht, optional.",
 	"bs-flexiskin-api-example-desc": "Liefert die aktuelle Konfiguration eines Flexiskins.",
-	"bs-flexiskin-api-error-save": "Beim speichern ist ein Fehler aufgetreten (Grund: \"$1\")",
+	"bs-flexiskin-api-error-save": "Beim Speichern ist ein Fehler aufgetreten (Grund: „$1“)",
 	"bs-flexiskin-api-error-invalid-action": "Diese Aktion existiert nicht.",
 	"bs-flexiskin-api-error-missing-param": "Der folgende Parameter fehlt: \"$1\""
 }
