@@ -587,6 +587,7 @@ class SmartList extends BsExtensionMW {
 			)
 		);
 
+		$oParser->getOutput()->setProperty( 'bs-smartlist', FormatJson::encode( $aArgs ) );
 		return $oSmartListView->execute();
 	}
 
@@ -1043,6 +1044,7 @@ class SmartList extends BsExtensionMW {
 		}
 
 		$oDbr->freeResult( $res );
+		$oParser->getOutput()->setProperty( 'bs-newbies', FormatJson::encode( $aArgs ) );
 		return implode( ', ', $aOut );
 	}
 
@@ -1056,6 +1058,7 @@ class SmartList extends BsExtensionMW {
 	public function onTagToplist( $sInput, $aArgs, $oParser ) {
 		$oParser->disableCache();
 
+		$oParser->getOutput()->setProperty( 'bs-toplist', FormatJson::encode( $aArgs ) );
 		return $this->getToplist( $sInput, $aArgs, $oParser );
 	}
 
