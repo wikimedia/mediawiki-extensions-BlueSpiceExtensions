@@ -22,6 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Stefan Widmann <widmann@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.biz>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Notifications
@@ -62,7 +63,10 @@ class Notifications extends BsExtensionMW {
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Notifications',
 			EXTINFO::DESCRIPTION => 'bs-notifications-desc',
-			EXTINFO::AUTHOR      => array( '[https://www.mediawiki.org/wiki/User:Swidmann Stefan Widmann]' ),
+			EXTINFO::AUTHOR      => array(
+				'[https://www.mediawiki.org/wiki/User:Swidmann Stefan Widmann]',
+				'Patric Wirth',
+			),
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
@@ -83,6 +87,7 @@ class Notifications extends BsExtensionMW {
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'TitleMoveComplete' );
 		$this->setHook( 'BSUserManagerAfterAddUser' );
+		$this->setHook( 'AddNewAccount' );
 		$this->setHook( 'BSShoutBoxAfterInsertShout' );
 		$this->setHook( 'BeforeCreateEchoEvent' );
 		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
@@ -90,6 +95,7 @@ class Notifications extends BsExtensionMW {
 		$this->setHook( 'UserSaveOptions' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'EchoAbortEmailNotification' );
 
 		// Variables
 		BsConfig::registerVar( 'MW::Notifications::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-notifications-pref-active', 'toggle' );
@@ -204,6 +210,10 @@ class Notifications extends BsExtensionMW {
 		// category definition via self::$aNotificationCategories
 		//  HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Notification_category_parameters
 		foreach( self::$aNotificationCategories as $sCategory => $aCategoryDefinition ) {
+			//Hide admin-only notifications
+			if( $sCategory == 'bs-newuser-cat' && !$this->getUser()->isAllowed('wikiadmin') ) {
+				continue;
+			}
 			$notificationCategories[$sCategory] = $aCategoryDefinition;
 		}
 
@@ -214,13 +224,14 @@ class Notifications extends BsExtensionMW {
 			'title-message' => 'bs-echo-page-edit',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-edit-subject',
-			'flyout-params' => array( 'titlelink', 'agentlink' ),
+			// params are wrong, but email subject is in use here...
+			'flyout-params' => array( 'titlelink', 'agentlink', 'agentlink' ),
 			'email-subject-message' => 'bs-notifications-email-edit-subject',
-			'email-subject-params' => array( 'title', 'agent' ),
+			'email-subject-params' => array( 'title', 'agent', 'realname' ),
 			'email-body-message' => 'bs-notifications-email-edit',
-			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
+			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink', 'realname' ),
 			'email-body-batch-message' => 'bs-notifications-email-edit',
-			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
+			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink', 'realname' ),
 			'icon' => 'bs-edit',
 		);
 
@@ -231,13 +242,14 @@ class Notifications extends BsExtensionMW {
 			'title-message' => 'bs-echo-page-create',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-new-subject',
-			'flyout-params' => array( 'titlelink', 'agentlink' ),
+			// params are wrong, but email subject is in use here...
+			'flyout-params' => array( 'titlelink', 'agentlink', 'agentlink'  ),
 			'email-subject-message' => 'bs-notifications-email-new-subject',
-			'email-subject-params' => array( 'title', 'agent' ),
+			'email-subject-params' => array( 'title', 'agent', 'realname'  ),
 			'email-body-message' => 'bs-notifications-email-new',
-			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
+			'email-body-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink', 'realname' ),
 			'email-body-batch-message' => 'bs-notifications-email-new',
-			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink' ),
+			'email-body-batch-params' => array( 'title', 'agent', 'summary', 'titlelink', 'difflink', 'realname'  ),
 			'icon' => 'bs-create',
 		);
 
@@ -248,13 +260,14 @@ class Notifications extends BsExtensionMW {
 			'title-message' => 'bs-echo-page-delete',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-delete-subject',
-			'flyout-params' => array( 'titlelink', 'agentlink' ),
+			// params are wrong, but email subject is in use here...
+			'flyout-params' => array( 'titlelink', 'agentlink', 'agentlink' ),
 			'email-subject-message' => 'bs-notifications-email-delete-subject',
-			'email-subject-params' => array( 'title', 'agent' ),
+			'email-subject-params' => array( 'title', 'agent', 'realname' ),
 			'email-body-message' => 'bs-notifications-email-delete',
-			'email-body-params' => array( 'titlelink', 'agent', 'deletereason' ),
+			'email-body-params' => array( 'titlelink', 'agent', 'deletereason', 'title','realname' ),
 			'email-body-batch-message' => 'bs-notifications-email-delete',
-			'email-body-batch-params' => array( 'titlelink', 'agent', 'deletereason' ),
+			'email-body-batch-params' => array( 'titlelink', 'agent', 'deletereason', 'title', 'realname' ),
 			'icon' => 'bs-delete',
 		);
 
@@ -265,32 +278,37 @@ class Notifications extends BsExtensionMW {
 			'title-message' => 'bs-echo-page-move',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-move-subject',
-			'flyout-params' => array( 'title', 'agentlink', 'newtitlelink' ),
+			// params are wrong, but email subject is in use here...
+			'flyout-params' => array( 'title', 'agentlink', 'newtitlelink', 'agentlink' ),
 			'email-subject-message' => 'bs-notifications-email-move-subject',
-			'email-subject-params' => array( 'title', 'agent', 'newtitle' ),
+			'email-subject-params' => array( 'title', 'agent', 'newtitle', 'realname' ),
 			'email-body-message' => 'bs-notifications-email-move',
-			'email-body-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
+			'email-body-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink', 'realname' ),
 			'email-body-batch-message' => 'bs-notifications-email-move',
-			'email-body-batch-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink' ),
+			'email-body-batch-params' => array( 'title', 'agent', 'newtitle', 'newtitlelink', 'realname' ),
 			'icon' => 'bs-move',
 		);
 
-		$notifications['bs-newuser'] = array(
-			'category' => 'bs-newuser-cat',
-			'group' => 'neutral',
-			'formatter-class' => 'BsNotificationsFormatter',
-			'title-message' => 'bs-echo-page-newuser',
-			'title-params' => array( 'userlink' ),
-			'flyout-message' => 'bs-notifications-email-addaccount-subject',
-			'flyout-params' => array( 'userlink' ),
-			'email-subject-message' => 'bs-notifications-email-addaccount-subject',
-			'email-subject-params' => array( 'username' ),
-			'email-body-message' => 'bs-notifications-email-addaccount',
-			'email-body-params' => array( 'userlink', 'username' ),
-			'email-body-batch-message' => 'bs-notifications-email-addaccount',
-			'email-body-batch-params' => array( 'userlink','username' ),
-			'icon' => 'bs-newuser',
-		);
+		//Hide admin-only notifications
+		if( $this->getUser()->isAllowed('wikiadmin') ) {
+			$notifications['bs-newuser'] = array(
+				'category' => 'bs-newuser-cat',
+				'group' => 'neutral',
+				'formatter-class' => 'BsNotificationsFormatter',
+				'title-message' => 'bs-echo-page-newuser',
+				'title-params' => array( 'userlink' ),
+				'flyout-message' => 'bs-notifications-email-addaccount-subject',
+				// params are wrong, but email subject is in use here...
+				'flyout-params' => array( 'userlink', 'userlink' ),
+				'email-subject-message' => 'bs-notifications-email-addaccount-subject',
+				'email-subject-params' => array( 'username', 'realname' ),
+				'email-body-message' => 'bs-notifications-email-addaccount',
+				'email-body-params' => array( 'userlink', 'username', 'realname' ),
+				'email-body-batch-message' => 'bs-notifications-email-addaccount',
+				'email-body-batch-params' => array( 'userlink', 'username', 'realname' ),
+				'icon' => 'bs-newuser',
+			);
+		}
 
 		$notifications['bs-shoutbox'] = array(
 			'category' => 'bs-shoutbox-cat',
@@ -299,15 +317,43 @@ class Notifications extends BsExtensionMW {
 			'title-message' => 'bs-echo-page-shoutbox',
 			'title-params' => array( 'title' ),
 			'flyout-message' => 'bs-notifications-email-shout-subject',
-			'flyout-params' => array( 'titlelink', 'agentlink' ),
+			// params are wrong, but email subject is in use here...
+			'flyout-params' => array( 'titlelink', 'agentlink', 'agentlink' ),
 			'email-subject-message' => 'bs-notifications-email-shout-subject',
-			'email-subject-params' => array( 'title', 'agent' ),
+			'email-subject-params' => array( 'title', 'agent', 'realname' ),
 			'email-body-message' => 'bs-notifications-email-shout',
-			'email-body-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
+			'email-body-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink', 'realname' ),
 			'email-body-batch-message' => 'bs-notifications-email-shout',
-			'email-body-batch-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink' ),
+			'email-body-batch-params' => array( 'title', 'agent', 'shoutmsg', 'titlelink', 'realname' ),
 			'icon' => 'bs-shoutbox',
 		);
+
+		//Echo default Notifications for using BsNotificationsFormatter
+		$aMWNotifications = array(
+			'welcome',
+			'edit-user-talk',
+			'reverted',
+			'page-linked',
+			'mention',
+			'user-rights',
+		);
+		//Deactivate Notifications, cause they did not work
+		$aDeactivateNotifications = array(
+			'page-linked' => 'article-linked',
+			'reverted' => 'reverted',
+			'mention' => 'mention',
+		);
+		foreach($aMWNotifications as $sKey) {
+			if( isset($aDeactivateNotifications[$sKey]) ) {
+				unset( $aMWNotifications[$sKey] );
+				unset( $notificationCategories[$aDeactivateNotifications[$sKey]] );
+				continue;
+			}
+			if( !isset($notifications[$sKey]) ) {
+				continue;
+			}
+			$notifications[$sKey]['formatter-class'] = 'BsNotificationsFormatter';
+		}
 		return true;
 	}
 
@@ -338,7 +384,8 @@ class Notifications extends BsExtensionMW {
 			'title' => Title::newFromID( $iArticleId ),
 			'agent'	=> $wgUser,
 			'extra' => array(
-				'shoutmsg' => $sMessage
+				'shoutmsg' => $sMessage,
+				'realname' => BsCore::getUserDisplayName( $wgUser ),
 			)
 		) );
 
@@ -375,6 +422,8 @@ class Notifications extends BsExtensionMW {
 				'extra'	=> array(
 					'summary'	=>	$summary,
 					'titlelink' => true,
+					'realname' => BsCore::getUserDisplayName( $user ),
+					'difflink' => '',
 				),
 			) );
 			return true;
@@ -389,6 +438,7 @@ class Notifications extends BsExtensionMW {
 					'titlelink'	=>	true,
 					'difflink'	=>	is_object( $revision ) ? array( 'diffparams' => array( 'diff' => $revision->getId(), 'oldid' => $revision->getPrevious()->getId() ) ): array( 'diffparams' => array() ),
 					'agentlink' => true,
+					'realname' => BsCore::getUserDisplayName( $user ),
 				),
 		) );
 
@@ -412,7 +462,9 @@ class Notifications extends BsExtensionMW {
 			'title' => $article->getTitle(),
 			'agent'	=> $user,
 			'extra' => array(
-				'deletereason' => $reason
+				'deletereason' => $reason,
+				'title' => $article->getTitle()->getText(),
+				'realname' => BsCore::getUserDisplayName( $user ),
 			),
 		) );
 
@@ -438,6 +490,7 @@ class Notifications extends BsExtensionMW {
 			'agent'	=> $user,
 			'extra' => array(
 				'newtitle' => $newtitle,
+				'realname' => BsCore::getUserDisplayName( $user ),
 			)
 		) );
 
@@ -458,11 +511,39 @@ class Notifications extends BsExtensionMW {
 			// TODO SW: implement own notifications formatter
 			'extra'	=> array(
 				'user'	=> $oUser->getName(),
-				'username'	=> isset($aUserDetails['realname']) ? $aUserDetails['realname'] : $aUserDetails['username'],
+				'username'	=> $aUserDetails['username'],
 				'userlink'	=> true,
+				'realname' => empty( $aUserDetails['realname'] )
+					? $aUserDetails['username']
+					: $aUserDetails['realname'],
 			)
 		) );
 
+
+		wfProfileOut( 'BS::'.__METHOD__ );
+		return true;
+	}
+
+	/**
+	 * Sends a notification after adding an user.
+	 * @param User $oUser
+	 * @param Boolean $bByEmail
+	 * @return bool allow other hooked methods to be executed. Always true.
+	 */
+	public function onAddNewAccount( $oUser, $bByEmail ) {
+		wfProfileIn( 'BS::'.__METHOD__ );
+
+		if( $oUser->isAllowed( 'bot' ) ) return true;
+		EchoEvent::create( array(
+			'type' => 'bs-newuser',
+			// TODO SW: implement own notifications formatter
+			'extra' => array(
+				'user' => $oUser->getName(),
+				'username' => $oUser->getName(),
+				'userlink' => true,
+				'realname' => BsCore::getUserDisplayName( $oUser ),
+			)
+		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
@@ -499,6 +580,38 @@ class Notifications extends BsExtensionMW {
 				'ext.bluespice.notifications'
 			)
 		);
+		return true;
+	}
+
+	/**
+	 * Override notification method due to missing hook, pendant to onEchoAbortEmailNotification
+	 * @param User $user
+	 * @param EchoEvent $event
+	 * @return boolean
+	 */
+	public static function notifyWithNotification( $user, $event ) {
+		//New user notification is only for admins
+		if( $event->getType() == 'bs-newuser' ) {
+			if( !$user->isAllowed( 'wikiadmin' ) ) {
+				return false;
+			}
+		}
+		EchoNotifier::notifyWithNotification( $user, $event );
+	}
+
+	/**
+	 * Hook for email notification
+	 * @param User $user
+	 * @param EchoEvent $event
+	 * @return boolean
+	 */
+	public function onEchoAbortEmailNotification( $user, $event ) {
+		//New user notification is only for admins
+		if( $event->getType() == 'bs-newuser' ) {
+			if( !$user->isAllowed( 'wikiadmin' ) ) {
+				return false;
+			}
+		}
 		return true;
 	}
 

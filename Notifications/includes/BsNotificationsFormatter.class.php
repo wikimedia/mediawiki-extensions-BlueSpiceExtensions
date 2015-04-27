@@ -5,7 +5,7 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Stefan Widmann <widmann@hallowelt.biz>
-
+ * @author     Patric Wirth <wirth@hallowelt.biz>
  * @package    BlueSpice_Extensions
  * @subpackage Notifications
  * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -16,6 +16,52 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 
 	public function __construct( $params ) {
 		parent::__construct( $params );
+	}
+
+	/**
+	 * Create text version and/or html version for email notification
+	 *
+	 * @param $event EchoEvent
+	 * @param $user User
+	 * @param $type string deprecated
+	 * @return array
+	 */
+	protected function formatEmail( $event, $user, $type ) {
+		// Email should be always sent in user language
+		$this->language = $user->getOption( 'language' );
+
+		// Email digest
+		if ( $this->distributionType === 'emaildigest' ) {
+			return $this->formatEmailDigest( $event, $user );
+		}
+
+		// Echo single email
+		$emailSingle = new BsEchoEmailSingle( $this, $event, $user );
+
+		$textEmailFormatter = new BsEchoTextEmailFormatter( $emailSingle );
+		global $wgSitename;
+		$content = array(
+			// Single email subject, there is no need to to escape it for either html
+			// or text email since it's always treated as plain text by mail client
+			'subject' => "[$wgSitename] ".$this->formatFragment( $this->email['subject'], $event, $user )->text(),
+			// Single email text body
+			'body' => $textEmailFormatter->formatEmail(),
+		);
+
+		$format = MWEchoNotifUser::newFromUser( $user )->getEmailFormat();
+		if ( $format == EchoHooks::EMAIL_FORMAT_HTML ) {
+			$htmlEmailFormatter = new EchoHTMLEmailFormatter( $emailSingle );
+			$outputFormat = $this->outputFormat;
+			$this->setOutputFormat( 'htmlemail' );
+			// Add single email html body if user prefers html format
+			$content['body'] = array (
+				'text' => $content['body'],
+				'html' => $htmlEmailFormatter->formatEmail()
+			);
+			$this->setOutputFormat( $outputFormat );
+		}
+
+		return $content;
 	}
 
 	/**
@@ -39,7 +85,10 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 			);
 		} else if ( $param === 'difflink' ) {
 			$aEvent = $event->getExtra();
-			$diffparams = $aEvent['difflink']['diffparams'];
+			$diffparams = isset($aEvent['difflink'])
+				? $aEvent['difflink']['diffparams']
+				: ''
+			;
 
 			$this->setDiffLink(
 				$event,
@@ -91,9 +140,13 @@ class BsNotificationsFormatter extends EchoBasicFormatter {
 			$aExtra = $event->getExtra();
 			$sMessage = $aExtra['shoutmsg'];
 			$message->params( $sMessage );
-		}  else if( $param === 'username' ) {
+		} else if( $param === 'username' ) {
 			$aExtra = $event->getExtra();
 			$sMessage = $aExtra['username'];
+			$message->params( $sMessage );
+		} else if( $param === 'realname' ) {
+			$aExtra = $event->getExtra();
+			$sMessage = $aExtra['realname'];
 			$message->params( $sMessage );
 		} else {
 			parent::processParam( $event, $param, $message, $user );

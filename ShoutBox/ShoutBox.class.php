@@ -538,6 +538,7 @@ $aData = false;
 	 */
 	public static function notifyUser( $sAction, $aUsers, $iArticleId, $iUserId ) {
 		if ( class_exists( 'EchoEvent' ) ) {
+			$oCurrentUser = RequestContext::getMain()->getUser();
 			foreach ( $aUsers as $oUser ) {
 				EchoEvent::create( array(
 					'type' => 'bs-shoutbox-' . $sAction,
@@ -548,11 +549,14 @@ $aData = false;
 						'titlelink' => true,
 						'difflink' => array( 'diffparams' => array() ),
 						'agentlink' => true,
-						'mentioned-user-id' => $oUser->getId()
+						'mentioned-user-id' => $oUser->getId(),
+						'realname' => BsCore::getUserDisplayName($oCurrentUser),
+						'title' => Article::newFromID( $iArticleId )->getTitle()->getText(),
 					),
 				) );
 			}
 		} else {
+			//PW(23.04.2015): TODO - get rid of BsMailer | Echo is required
 			$sSubject = wfMessage(
 					'bs-shoutbox-notifications-title-message-subject'
 					)->plain();
@@ -566,7 +570,7 @@ $aData = false;
 
 	/**
 	 * Handler for EchoGetDefaultNotifiedUsers hook.
-	 * @param array $event EchoEvent to get implicitly subscribed users for
+	 * @param EchoEvent $event EchoEvent to get implicitly subscribed users for
 	 * @param array &$users Array to append implicitly subscribed users to.
 	 * @return bool true in all cases
 	 */
@@ -583,6 +587,7 @@ $aData = false;
 				$row = $oDBr->selectRow( 'user', '*', array( 'user_id' => (int) $recipientId ) );
 				$recipient = User::newFromRow( $row );
 				$users[$recipientId] = $recipient;
+				//$event->setExtra('username', $recipient->);
 				break;
 		}
 		return true;
@@ -605,9 +610,9 @@ $aData = false;
 			'flyout-params' => array( 'agent', 'agentlink', 'titlelink' ),
 			'email-subject-message' => 'bs-shoutbox-notifications-title-message-subject',
 			'email-body-message' => 'bs-shoutbox-notifications-title-message-text',
-			'email-body-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'email-body-params' => array( 'agent', 'agentlink', 'titlelink', 'realname', 'title' ),
 			'email-body-batch-message' => 'bs-shoutbox-notifications-title-message-text',
-			'email-body-batch-params' => array( 'agent', 'agentlink', 'titlelink' ),
+			'email-body-batch-params' => array( 'agent', 'agentlink', 'titlelink', 'realname', 'title' ),
 		);
 		return true;
 	}
