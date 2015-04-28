@@ -135,7 +135,6 @@ class Notifications extends BsExtensionMW {
 			'type'			=> 'toggle',
 			'label-message'	=> 'bs-notifications-pref-active',
 			'section'		=> 'echo/echo-extended',
-			'default'		=> true,
 		);
 
 		// ugly workaraound for mw's handling of get default options from multivaluefields
