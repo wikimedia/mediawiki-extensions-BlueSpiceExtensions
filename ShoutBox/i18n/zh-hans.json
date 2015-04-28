@@ -31,5 +31,5 @@
 	"bs-shoutbox-n-shouts": "$1次喊话",
 	"echo-category-title-bs-shoutbox-mention-cat": "通知一次喊叫中的提及",
 	"bs-shoutbox-notifications-title-message-subject": "您曾提到",
-	"bs-shoutbox-notifications-title-message-text": "您被$2在页面“$3”的一次喊叫中{{GENDER:$1|提及}}。"
+	"bs-shoutbox-notifications-title-message-text": "您被$4在页面“$5”的一次喊叫中{{GENDER:$1|提及}}。\n\n您可以通过此链接访问页面：$3。"
 }
