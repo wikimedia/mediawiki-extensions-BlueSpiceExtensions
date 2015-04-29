@@ -28,7 +28,7 @@
 	"bs-notifications-email-move-subject": "Página $1 {{GENDER:$2|trasladada}} por $4",
 	"bs-notifications-email-move": "Se {{GENDER:$2|trasladó}} la página \"$1\" hacia $3 por $2. Puedes visitar la página siguiendo este enlace:\n$4",
 	"bs-notifications-email-delete-subject": "$3 {{GENDER:$2|borró}} la página $1",
-	"bs-notifications-email-delete": "$5 {{GENDER:$2|borró}} la página «$1».\n\nEsta fue la razón:\n$3",
+	"bs-notifications-email-delete": "$5 {{GENDER:$2|borró}} la página «$4».\n\nMotivo:\n$3",
 	"bs-notifications-email-addaccount-subject": "Usuario $2 {{GENDER:$1|creado}}",
 	"bs-notifications-email-addaccount": "Se creó el usuario $1 con nombre real $3.\n\nPuedes visitar {{GENDER:$2|su|su|la}} página de usuario siguiendo este enlace: $1",
 	"bs-notifications-email-shout-subject": "$3 {{GENDER:$2|publicó}} un mensaje en la página $1",

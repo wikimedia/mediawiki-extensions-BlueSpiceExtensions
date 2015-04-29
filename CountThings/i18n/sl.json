@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-countthings-desc": "Omogoča statistiko vsebine",
+	"bs-countthings-chars-label": "Znaki",
+	"bs-countthings-words-label": "Besede",
+	"bs-countthings-pages-label": "Strani",
+	"bs-countthings-error-no-input": "Ni podane strani.",
+	"bs-countthings-error-invalid-mode": "Način \"$1\" ni veljaven. Prosimo, uporabite \"chars\", \"words\" ali \"pages\".",
+	"bs-countthings-error-not-exist": "Stran \"$1\" ne obstaja.",
+	"bs-countthings-tag-countarticles-desc": "Prikaže število strani.",
+	"bs-countthings-tag-countusers-desc": "Prikaže število uporabnikov.",
+	"bs-countthings-tag-countcharacters-desc": "Prikaže statistiko vsebine podane strani. Konfiguracijski atribut, ki je na voljo:"
+}

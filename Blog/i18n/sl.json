@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-blog-desc": "Prikaže strani v obliki blog seznama",
+	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Ni zapisov v blogu.",
+	"bs-blog-comments": "Pripombe",
+	"bs-blog-read-more": "Več o tem",
+	"bs-blog-trackback": "Sledenje",
+	"bs-blog-permalink": "Trajna povezava",
+	"bs-blog-show-all": "Prikaži vse zapise",
+	"bs-blog-form-inline-text": "Naslov ...",
+	"bs-blog-form-title-text": "Ustvari nov zapis v dnevniku",
+	"bs-blog-form-button-text": "Ustvari",
+	"bs-blog-blog": "Dnevnik",
+	"bs-blog-pref-moreinnewwindow": "Odpri novo okno pri kliku na \"Več o tem\"",
+	"bs-blog-pref-newentryfieldposition": "Položaj obrazca novega dnevniškega vpisa:",
+	"bs-blog-pref-showall": "Prikaži vse povezave zapisov",
+	"bs-blog-pref-showinfo": "Prikaži informacijo o zapisu",
+	"bs-blog-pref-showlimit": "Število dnevniških zapisov:",
+	"bs-blog-pref-shownewentryfield": "Prikaži obrazec novega dnevniškega zapisa",
+	"bs-blog-pref-showpermalink": "Prikaži povezavo trajne povezave",
+	"bs-blog-pref-sortby": "Razvrsti po:",
+	"bs-blog-pref-imagerendermode": "Prikaži slike kot:",
+	"bs-blog-pref-imagefloatdirection": "Tok besedila: Položaj slike",
+	"bs-blog-pref-maxentrycharacters": "Število besed na zapis:",
+	"bs-blog-tag-blog-desc": "Prikaži dnevniške zapise na vsaki strani.",
+	"bs-blog-tag-blogtime-desc": "Ta oznaka omogoča lastno nastavitev časovne oznake dnevniških zapisov.",
+	"bs-blog-tag-blogtime-err": "Zapis mora biti v obliki LLLLMMDDUUmm. Npr.: časovni žig datuma in ure 12. januar 2013 15:43 se zapiše kot 201301121543."
+}

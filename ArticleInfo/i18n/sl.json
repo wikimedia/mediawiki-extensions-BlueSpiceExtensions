@@ -9,6 +9,7 @@
 	"bs-articleinfo-pref-CheckRevisionInterval": "Interval posodobitev v sekundah:",
 	"bs-articleinfo-last-edited": "Čas od zadnje spremembe",
 	"bs-articleinfo-last-edited-tooltip": "Zadnje urejanje",
+	"bs-articleinfo-last-editor": "Zadnji {{GENDER:$1|urednik}}",
 	"bs-articleinfo-categories": "Kategorije",
 	"bs-articleinfo-more-categories": "Na voljo je več kategorij",
 	"bs-articleinfo-all-categories-heading": "Kategorije",

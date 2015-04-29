@@ -8,5 +8,9 @@
 	"prefs-authors": "Avtorji te strani",
 	"bs-authors-profileimage": "Slika profila",
 	"bs-authors-profileimage-change": "Spremeni sliko profila",
-	"bs-authors-show-all-authors": "Na voljo je več avtorjev"
+	"bs-authors-show-all-authors": "Na voljo je več avtorjev",
+	"bs-authors-pref-imagewidth": "Širina slike:",
+	"bs-authors-pref-limit": "Število avtorjev za prikaz:",
+	"bs-authors-pref-show": "Prikaži avtorje",
+	"bs-authors-switch-description": "Skrije avtorje na tej strani."
 }

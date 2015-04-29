@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cvanca"
+		]
+	},
+	"bs-notifications-email-edit-subject": "Stránku $1 {{GENDER:$2|editoval uživatel|editovala uživatelka}} $3",
+	"bs-notifications-email-delete-subject": "Stránku $1 {{GENDER:$2|smazal uživatel|smazala uživatelka}} $3",
+	"bs-notifications-email-shout-subject": "$3 {{GENDER:$2|zanechal|zanechala}} zprávu na stránce $1"
+}

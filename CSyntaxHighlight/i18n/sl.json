@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"prefs-csyntaxhighlight": "Označevalnik sintakse",
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Prikaži številke vrstic",
+	"bs-csyntaxhighlight-pref-autolinks": "Ustvari povezave URL",
+	"bs-csyntaxhighlight-pref-toolbar": "Prikaži orodno vrstico"
+}
