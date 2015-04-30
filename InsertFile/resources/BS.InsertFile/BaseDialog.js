@@ -34,22 +34,22 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.conf = {
 			columns: {
 				items: [{
-					dataIndex: 'url',
+					dataIndex: 'img_thumbnail',
 					renderer: this.renderThumb,
 					width: 56,
 					sortable: false
 				},{
 					text: mw.message('bs-insertfile-filename').plain(),
-					dataIndex: 'name',
+					dataIndex: 'img_name',
 					flex: 1
 				},{
 					text: mw.message('bs-insertfile-filesize').plain(),
-					dataIndex: 'size',
+					dataIndex: 'img_size',
 					renderer:this.renderSize,
 					width: 100
 				},{
 					text: mw.message('bs-insertfile-lastmodified').plain(),
-					dataIndex: 'lastmod',
+					dataIndex: 'page_touched',
 					renderer:this.renderLastModified,
 					width: 150
 				}],
@@ -66,21 +66,29 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			leadingBufferZone: 60,
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertFileAJAXBackend::getFiles'),
+				url: mw.util.wikiScript('api'),
 				reader: {
 					type: 'json',
-					root: 'images',
-					idProperty: 'name'
+					root: 'results',
+					idProperty: 'img_name',
+					totalProperty: 'total'
 				},
 				extraParams: {
-					type: this.storeFileType
+					format: 'json',
+					action: 'bs-filebackend-store',
+					filter: Ext.encode([{
+						type: 'string',
+						comparison: 'eq',
+						field: 'img_major_mime',
+						value: this.storeFileType
+					}])
 				}
 			},
 			remoteFilter: true,
 			autoLoad: true,
-			fields: ['name', 'lastmod', 'url', 'size', 'width', 'height' ],
+			fields: ['img_name', 'page_touched', 'img_thumbnail', 'img_size', 'img_width', 'img_height' ],
 			sortInfo: {
-				field: 'lastmod',
+				field: 'page_touched',
 				direction: 'ASC'
 			}
 		});
@@ -228,14 +236,6 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	},
 
 	renderThumb: function( url ) {
-		/*return mw.html.element(
-			'img',
-			{
-				src: url,
-				height: 48,
-				width: 48
-			}
-		);*/
 		return '<img src="'+url+'" height="48" width="48" />';
 	},
 
@@ -244,14 +244,16 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	},
 
 	renderLastModified: function( lastmod ){
+		//mw timestamp to date params
+		var aDate = lastmod.match(new RegExp('.{1,2}', 'g'));
 		return Ext.Date.format(
-			new Date(lastmod * 1000),
+			new Date(aDate[0] + aDate[1], aDate[2], aDate[3], aDate[4], aDate[5], aDate[6] ),
 			'd.m.Y G:i'
 		);
 	},
 
 	onGdImagesSelect: function( grid, record, index, eOpts ){
-		this.tfFileName.setValue( record.get('name') );
+		this.tfFileName.setValue( record.get('img_name') );
 		this.pnlConfig.expand();
 	},
 
