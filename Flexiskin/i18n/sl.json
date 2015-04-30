@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-flexiskin-label": "Koža",
+	"bs-flexiskin-defaultname": "Privzeto",
+	"bs-flexiskin-defaultdesc": "Privzeta predloga kože.",
+	"bs-flexiskin-error-skinexists": "Koža s tem imenom že obstaja.",
+	"bs-flexiskin-error-fail-add-skin": "Ni mogoče ustvariti kože: $1.",
+	"bs-flexiskin-reset-error": "Ni mogoče ponastaviti konfiguracije: $1.",
+	"bs-flexiskin-error-get-config": "Ni mogoče naložiti konfiguracije: $1.",
+	"bs-flexiskin-error-delete-skin": "Ni mogoče izbrisati kože: $1.",
+	"bs-flexiskin-not-allowed": "Dostop do te strani ni dovoljen.",
+	"prefs-flexiskin": "Koža",
+	"bs-flexiskin-pref-active": "Aktivna koža:",
+	"bs-flexiskin-pref-logo": "Logotip:",
+	"bs-flexiskin-labelname": "Ime",
+	"bs-flexiskin-labeldesc": "Opis",
+	"bs-flexiskin-headergeneral": "Splošno",
+	"bs-flexiskin-dialogclose": "Ali ste prepričani, da želite zapreti predogled?"
+}

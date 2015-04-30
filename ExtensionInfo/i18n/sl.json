@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-extensioninfo-desc": "Seznam informacij o naloženih razširitvah",
+	"bs-extensioninfo-label": "Razširitve",
+	"bs-extensioninfo-software": "Programska oprema",
+	"bs-extensioninfo-version": "Različica",
+	"extensioninfo": "Razširitve",
+	"bs-extensioninfo-headerextname": "Ime razširitve",
+	"bs-extensioninfo-headerversion": "Različica",
+	"bs-extensioninfo-headerdesc": "Opis",
+	"bs-extensioninfo-headerstatus": "Stanje",
+	"bs-extensioninfo-headerpackage": "Paket",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|element|2=elementa|3=elementi|4=elementi|elementov}}"
+}

@@ -22,6 +22,7 @@
 	"bs-pagetemplates-dberror": "Ocorreu un erro na base de datos.",
 	"bs-pagetemplates-tpl-deleted": "O modelo foi borrado.",
 	"bs-pagetemplates-general-section": "Xeral",
+	"bs-pagetemplates-choose-template": "Esta páxina aínda non existe. Pode crear unha páxina nova. Se non quere facer isto, prema no botón de volver do seu navegador para volver á última páxina visitada.\n\nPode escoller {{PLURAL:$1|o seguinte modelo|un dos seguintes modelos}}:",
 	"bs-pagetemplates-pref-excludens": "Non mostrar modelos nestos espazos de nomes:",
 	"bs-pagetemplates-pref-forcenamespace": "Forzar espazo de nomes de destino",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Ocultar modelo se a páxina non se vai a crear no espazo de nomes de destino",

@@ -16,6 +16,9 @@
 	"bs-echo-page-delete": "Strona [[:$1]] została skasowana",
 	"bs-echo-page-move": "Strona [[:$1]] została przeniesiona",
 	"bs-echo-page-newuser": "Użytkownik $1 został utworzony.",
+	"bs-notifications-email-new-subject": "Strona $1 {{GENDER:$2|utworzona}} przez $3",
+	"bs-notifications-email-move-subject": "Strona $1 {{GENDER:$2|przeniesiona}} przez $4",
+	"bs-notifications-email-delete-subject": "Strona $1 {{GENDER:$2|usunięta}} przez $3",
 	"bs-notifications-email-delete": "Strona „$4” została {{GENDER:$2|usunięta}} przez $5.\n\nPowód usunięcia to:\n$3",
 	"echo-category-title-bs-create-cat": "Powiadomienie o nowych stronach"
 }

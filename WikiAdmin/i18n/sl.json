@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-wikiadmin-desc": "Osrednja točka skrbništva BlueSpice",
+	"bs-wikiadmin-notallowed": "Ne smete uporabljati te strani.",
+	"wikiadmin": "Skrbništvo BlueSpice",
+	"action-wikiadmin": "prikaz skrbniških strani BlueSpice",
+	"right-wikiadmin": "Prikaži skrbniške strani BlueSpice",
+	"bs-wikiadmin-shop": "Trgovina",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Posebne strani",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Seznam vseh posebnih strani MediaWiki"
+}

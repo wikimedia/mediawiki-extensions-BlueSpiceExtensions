@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-notifications-email-new-subject": "De Sigg „$1“ aanjalaat {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $3.",
+	"bs-notifications-email-edit-subject": "De Sigg „$1“ verändert {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $3",
+	"bs-notifications-email-move-subject": "De Sigg „$1“ ömjenannt {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $4.",
+	"bs-notifications-email-move": "De Sigg „$1“ ömjenannt op „$3“ {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $5. Mer kann övver dä Lengk $4 belohre.",
+	"bs-notifications-email-delete-subject": "De Sigg „$1“ fottjeschmeße {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $3"
+}
