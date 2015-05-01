@@ -3,7 +3,8 @@
 		"authors": [
 			"Matik7",
 			"Pio387",
-			"Chrumps"
+			"Chrumps",
+			"Devwebtel"
 		]
 	},
 	"bs-review-save-error": "Wystąpił błąd podczas zapisywania.",
@@ -16,6 +17,7 @@
 	"bs-review-mail-deny-and-restart-header": "$1 {{GENDER:$2|odrzucił|odrzuciła}} $3",
 	"bs-review-i-agree": "Akceptuję",
 	"bs-review-not-allowed": "Nie masz uprawnień, aby korzystać z tej strony.",
+	"log-show-hide-bs-review": "Rejestr oznaczania $1",
 	"bs-review-commentinputlabel": "Twój komentarz:",
 	"bs-review-comments": "Komentarze",
 	"bs-review-btnmoveup": "Do góry",

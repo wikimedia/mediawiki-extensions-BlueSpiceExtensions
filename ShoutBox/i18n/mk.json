@@ -30,5 +30,5 @@
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|брза порака|брзи пораки}}",
 	"echo-category-title-bs-shoutbox-mention-cat": "Известување за спомнување во брза порака",
 	"bs-shoutbox-notifications-title-message-subject": "Спомнати сте",
-	"bs-shoutbox-notifications-title-message-text": "$2 ве {{GENDER:$1|спомна}} во брза порака на страницата „$3“."
+	"bs-shoutbox-notifications-title-message-text": "$4 ве {{GENDER:$1|спомна}} во брза порака на страницата „$5“.\n\nМожете да ја посетите на следнава врска:\n$3."
 }
