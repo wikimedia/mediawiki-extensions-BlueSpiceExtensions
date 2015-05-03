@@ -7,12 +7,20 @@
 		]
 	},
 	"prefs-avatars": "頭像",
+	"bs-avatars-desc": "提供通用且各別使用者的圖片",
 	"bs-avatars-pref-generator": "產生器：",
 	"bs-avatars-pref-defaultsize": "畫素預設大小：",
 	"bs-avatars-upload-complete": "已成功上傳圖片。",
+	"bs-avatars-generate-complete": "已產生新的頭像。",
 	"bs-avatars-upload-title": "更改基本資料圖片",
 	"bs-avatars-upload-label": "圖片",
+	"bs-avatars-generate-new-label": "產生新頭像",
 	"bs-avatars-warning-title": "警告",
+	"bs-avatars-warning-text": "您已於您的個人偏好設定使用者圖片。 使用頭像將會清除現有的設定。 您是否要繼續？",
+	"bs-avatars-userimage-title": "圖片取自 wiki 或圖片 URL",
 	"bs-avatars-userimage-help": "例如：圖片.jpg 或 http://localhost/圖片.gif",
-	"bs-avatars-file-upload-fieldset-title": "圖片上傳"
+	"bs-avatars-set-userimage-failed": "無效的 URL 或自 wiki 的圖片。",
+	"bs-avatars-set-userimage-saved": "已成功儲存使用者圖片。",
+	"bs-avatars-file-upload-fieldset-title": "圖片上傳",
+	"bs-avatars-auto-generate-fieldset-title": "自動產生頭像"
 }
