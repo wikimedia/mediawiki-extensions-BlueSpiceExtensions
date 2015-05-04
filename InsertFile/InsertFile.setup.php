@@ -10,10 +10,7 @@ $GLOBALS['wgAutoloadClasses']['InsertFile'] = __DIR__ . '/InsertFile.class.php';
 $wgAutoloadClasses['JsonLicenses']          = __DIR__ . '/includes/JsonLicenses.php';
 $wgAutoloadClasses['InsertFileAJAXBackend'] = __DIR__ . '/includes/InsertFileAJAXBackend.php';
 
-$wgAjaxExportList[] = 'InsertFileAJAXBackend::getFilePage';
-$wgAjaxExportList[] = 'InsertFileAJAXBackend::getFiles';
 $wgAjaxExportList[] = 'InsertFileAJAXBackend::getLicenses';
-$wgAjaxExportList[] = 'InsertFileAJAXBackend::getExistsWarning';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__ . '/resources',

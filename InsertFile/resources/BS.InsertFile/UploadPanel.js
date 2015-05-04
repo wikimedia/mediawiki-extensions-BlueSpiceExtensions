@@ -176,31 +176,36 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 	},
 
 	tfFileNameChange: function(field, value) {
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl( 'InsertFileAJAXBackend::getExistsWarning', [ value ] ),
-			success: function(response, options) {
-				if(!(response.responseText.trim() === ''
-					|| response.responseText === '&#160;'
-					|| response.responseText === '&nbsp;')) {
-
-					bs.util.alert(
-						this.getId()+'-existswarning',
-						{
-							titleMsg: 'bs-extjs-title-warning',
-							text: response.responseText
-						},
-						{
-							ok: function() {
-								//User is noticed. Now let's set the
-								//ignore warnings flag automatically
-								this.cbxWarnings.setValue(true);
-							},
-							scope: this
-						}
-					);
+		var Api = new mw.Api();
+		var me = this;
+		Api.get({
+			action: 'query',
+			format: 'json',
+			titles: 'File:' + value,
+			prop: 'imageinfo',
+			iiprop: 'uploadwarning',
+			indexpageids: ''
+		}).done( function ( response ) {
+			if( response.query.pageids[0] === "-1" ) {
+				return null;
+			}
+			bs.util.alert(
+				me.getId()+'-existswarning',
+				{
+					titleMsg: 'bs-extjs-title-warning',
+					text: response.query.pages[response.query.pageids[0]]
+						.imageinfo[0]
+						.html
+				},
+				{
+					ok: function() {
+						//User is noticed. Now let's set the
+						//ignore warnings flag automatically
+						me.cbxWarnings.setValue(true);
+					},
+					scope: me
 				}
-			},
-			scope: this
+			);
 		});
 	},
 
