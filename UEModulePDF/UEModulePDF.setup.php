@@ -2,7 +2,15 @@
 
 BsExtensionManager::registerExtension( 'UEModulePDF', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE );
 
+/**
+ * Allows modification for CURL request. E.g. setting an CA file for HTTPS
+ */
 $bsgUEModulePDFCURLOptions = array();
+
+/**
+ * This value is considered when asseta are being uploaded to the PDF service
+ */
+$bsgUEModulePDFUploadThreshold = 50 * 1024 * 1024;
 
 $wgMessagesDirs['UEModulePDF'] = __DIR__ . '/i18n';
 
