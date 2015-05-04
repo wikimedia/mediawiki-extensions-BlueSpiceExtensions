@@ -65,6 +65,7 @@
 	"bs-extendedsearch-pref-solrpingtime": "Čas ping-a (v sekundah):",
 	"bs-extendedsearch-pref-showcresuginac": "Prikaži povezavi kreiranja in predloga v predlogih",
 	"bs-extendedsearch-pref-solrserviceurl": "Povezava URL do strežnika Solr:",
+	"bs-extendedsearch-pref-setfocus": "Samodejno pomakni iskalni obrazec v ospredje (samo vsebinske strani)",
 	"bs-extendedsearch-pref-numfacets": "Število facet-ov:",
 	"bs-extendedsearch-pref-showmlt": "Prikaži podobne strani",
 	"bs-extendedsearch-pref-solrcore": "Ime instance jedra strežnika Solr:",

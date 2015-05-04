@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-insertcategory-desc": "Pogovorno okno za vnos povezave kategorije",
+	"bs-insertcategory-insertcat": "Vstavi kategorijo",
+	"prefs-insertcategory": "Vstavi kategorijo",
+	"bs-insertcategory-pref-withparents": "Vstavi kategorijo skupaj s starši",
+	"bs-insertcategory-title": "Vstavljanje kategorije",
+	"bs-insertcategory-cat-label": "Dodeljeno:",
+	"bs-insertcategory-success": "Dodajanje kategorije uspešno",
+	"bs-insertcategory-failure": "Napaka",
+	"bs-insertcategory-hint": "Opomba: za dodajanje kategorije pritisnite tipko ENTER ali zaključite vnos z vejico.",
+	"bs-insertcategory-panel-title": "Kategorije"
+}
