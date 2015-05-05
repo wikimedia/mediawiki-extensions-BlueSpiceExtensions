@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alojz.tic"
+		]
+	},
+	"bs-insertmagic": "Vstavite čarobno besedo",
+	"bs-insertmagic-notoc": "Skrije kazalo.",
+	"bs-insertmagic-forcetoc": "Prisili kazalo, da se pojavi na normalnem položaju.",
+	"bs-insertmagic-toc": "Postavi kazalo na trenutni položaj besede.",
+	"bs-insertmagic-nonewsectionlink": "Odstrani povezavo poleg zavihka \"uredi\" na straneh v imenskih prostorih za pogovor.",
+	"bs-insertmagic-currentyear": "Trenutno leto",
+	"bs-insertmagic-currentmonthnamegen": "Trenutni mesec (v genitivu).",
+	"bs-insertmagic-currenttime": "Čas (v 24-urnem HH:mm formatu).",
+	"bs-insertmagic-currentweek": "Teden (število).",
+	"bs-insertmagic-sitename": "Ime wiki strani.",
+	"bs-insertmagic-servername": "Ime domene.",
+	"bs-insertmagic-stylepath": "Relativna pot.",
+	"bs-insertmagic-currentversion": "Wiki'jeva MediaWiki različica.",
+	"bs-insertmagic-revisionyear": "Leto spremembe.",
+	"bs-insertmagic-type-variables": "Spremenljivke"
+}
