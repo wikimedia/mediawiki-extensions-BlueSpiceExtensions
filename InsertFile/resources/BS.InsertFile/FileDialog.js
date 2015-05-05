@@ -16,12 +16,6 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 	},
 	afterInitComponent: function() {
 		this.callParent(arguments);
-		this.stImageGrid.proxy.extraParams.filter = Ext.encode([{
-			type: 'string',
-			comparison: 'neq',
-			field: 'img_major_mime',
-			value: 'image'
-		}]);
 	},
 	onPnlConfigExpand: function(panel, eOpts){
 		this.callParent(arguments);

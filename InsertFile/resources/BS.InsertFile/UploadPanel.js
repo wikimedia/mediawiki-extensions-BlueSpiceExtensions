@@ -60,7 +60,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		this.storeLicenses = Ext.create( 'Ext.data.Store', {
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertFileAJAXBackend::getLicenses'),
+				url: bs.util.getAjaxDispatcherUrl('InsertFile::getLicenses'),
 				reader: {
 					type: 'json',
 					root: 'items',
@@ -140,8 +140,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		});
 
 		this.panelItems = [
-			this.tfFileName,
 			this.fuFile,
+			this.tfFileName,
 			this.fsDetails
 		];
 		var detailsItems = [
