@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alojz.tic"
+		]
+	},
+	"bs-pagesvisited-desc": "Zagotavlja osebni seznam nazadnje obiskanih strani",
+	"prefs-pagesvisited": "Obiskane strani",
+	"bs-pagesvisited-widget-title": "Obiskane strani",
+	"bs-pagesvisited-pref-widgetlimit": "Omejitev vnosov:",
+	"bs-pagesvisited-pref-widgetns": "Imenski prostor:",
+	"bs-pagesvisited-pref-widgetsortodr": "Razvrsti po:",
+	"bs-pagesvisited-pref-sort-time": "Čas",
+	"bs-pagesvisited-pref-sort-pagename": "Naslov",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Prikaže seznam strani, ki ste jih obiskali."
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alojz.tic"
+		]
+	},
+	"bs-responsibleeditors-yourresponsibilities": "Vaše odgovornosti",
+	"bs-responsibleeditors-yourresponsibilitiesdesc": "Seznam strani, za katere ste odgovorni.",
+	"bs-responsibleeditors-columnpage": "Stran",
+	"bs-responsibleeditors-columnnamespace": "Imenski prostor",
+	"bs-responsibleeditors-rbdisplaymodeonlyassignedtext": "Pokaži samo strani, za katere je odgovornost že dodeljena",
+	"bs-responsibleeditors-rbdisplaymodeonlynotassigned": "Prikaži le strani brez navedenih odgovornosti",
+	"bs-responsibleeditors-rbdisplaymodeall": "Prikaži vse strani",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Izberite imenski prostor",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Ni dodeljena"
+}

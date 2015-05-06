@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alojz.tic"
+		]
+	},
+	"bs-notifications-desc": "Pošilja obvestila ob uporabniško izbranih spremembah",
+	"prefs-notifications": "Obvestila",
+	"prefs-echo-extended": "Napredne sistemske nastavitve",
+	"bs-notifications-pref-notifyns": "Obveščaj le ob spremembah v naslednjih imenskih prostorih:",
+	"bs-notifications-pref-notifynominor": "Ni obveščanja ob manjših spremembah",
+	"bs-notifications-pref-active": "Omogočite obvestila",
+	"bs-echo-anon-user": "anonimen",
+	"bs-echo-unknown-user": "neznan",
+	"bs-echo-page-edit": "Stran [[:$1]] je bila spremenjena",
+	"bs-echo-page-create": "Stran [[:$1]] je bila ustvarjena",
+	"bs-echo-page-delete": "Stran [[:$1]] je bila izbrisana",
+	"bs-echo-page-move": "Stran [[:$1]] je bila prestavljena",
+	"bs-echo-page-newuser": "Uporabnika $1 je bil ustvarjen.",
+	"echo-category-title-bs-create-cat": "Obvestilo za nove strani",
+	"echo-category-title-bs-edit-cat": "Obvestilo za spremembe",
+	"echo-category-title-bs-move-cat": "Obvestilo za prestavljanja",
+	"echo-category-title-bs-delete-cat": "Obvestilo za brisanja",
+	"echo-category-title-bs-newuser-cat": "Obvestilo za nove uporabnike (le skrbniki)",
+	"echo-category-title-bs-shoutbox-cat": "Obvestilo za sporočila na ogledanih straneh (shoutbox)"
+}

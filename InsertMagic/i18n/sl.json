@@ -18,5 +18,9 @@
 	"bs-insertmagic-stylepath": "Relativna pot.",
 	"bs-insertmagic-currentversion": "Wiki'jeva MediaWiki različica.",
 	"bs-insertmagic-revisionyear": "Leto spremembe.",
-	"bs-insertmagic-type-variables": "Spremenljivke"
+	"bs-insertmagic-type-variables": "Spremenljivke",
+	"bs-insertmagic-type-switches": "Vedenjska stikala",
+	"bs-insertmagic-label-first": "1. Izberite oznako ali čarobno besedo",
+	"bs-insertmagic-label-second": "2. Spremenite kodo",
+	"bs-insertmagic-label-desc": "Opis"
 }
