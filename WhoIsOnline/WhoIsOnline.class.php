@@ -362,9 +362,9 @@ class WhoIsOnline extends BsExtensionMW {
 		foreach( $aWhoIsOnline as $oWhoIsOnline) {
 			if( $iLimit > 0 && $iCount > $iLimit ) break;
 
-			$oUser = User::newFromName( $oWhoIsOnline->wo_user_name );
+			$oUser = User::newFromId( $oWhoIsOnline->wo_user_id );
 			$oWhoIsOnlineItemWidgetView = new ViewWhoIsOnlineItemWidget();
-			$oWhoIsOnlineItemWidgetView->setUserName( $oUser->getName() );
+			$oWhoIsOnlineItemWidgetView->setUser( $oUser );
 			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mCore->getUserDisplayName( $oUser ) );
 			$oWhoIsOnlineWidgetView->addItem( $oWhoIsOnlineItemWidgetView );
 			$iCount++;
@@ -395,9 +395,9 @@ class WhoIsOnline extends BsExtensionMW {
 
 		$aSingleResult['portletItems'] = array();
 		foreach ( $aWhoIsOnline as $oWhoIsOnline ) {
-			$oUser = User::newFromName( $oWhoIsOnline->wo_user_name );
+			$oUser = User::newFromId( $oWhoIsOnline->wo_user_id );
 			$oWhoIsOnlineItemWidgetView = new ViewWhoIsOnlineItemWidget();
-			$oWhoIsOnlineItemWidgetView->setUserName( $oUser->getName() );
+			$oWhoIsOnlineItemWidgetView->setUser( $oUser );
 			$oWhoIsOnlineItemWidgetView->setUserDisplayName( $this->mCore->getUserDisplayName( $oUser ) );
 			$aSingleResult['portletItems'][] = $oWhoIsOnlineItemWidgetView->execute();
 		}
@@ -431,7 +431,7 @@ class WhoIsOnline extends BsExtensionMW {
 			'bs_whoisonline'
 		);
 		$aFields = array(
-			'wo_user_name'
+			'wo_user_id', 'wo_user_name'
 		);
 		$aConditions = array(
 			'wo_timestamp > '.( time() - $sMaxIdle )
