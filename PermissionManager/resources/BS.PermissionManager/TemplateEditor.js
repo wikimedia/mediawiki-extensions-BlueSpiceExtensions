@@ -142,9 +142,9 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				rootVisible: false,
 				margins: '0 0 5 0',
 				listeners: {
-					'select': function(rm, record) {
-						var data = [];
-						for (var i in me._permissionStore.data.items) {
+					'select': function ( rm, record ) {
+						var data = [ ];
+						for ( var i in me._permissionStore.data.items ) {
 							var dataSet = me._permissionStore.data.items[i].data;
 							dataSet.enabled = Ext.Array.contains(record.get('ruleSet'), dataSet.name);
 							data.push(dataSet);
@@ -247,8 +247,12 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				handler: function() {
 					var record = Ext.getCmp('bs-template-editor-treepanel')
 									.getSelectionModel().getLastSelected(),
-						id = record.get('id');
-
+							id = record.get( 'id' );
+					//id == 0 if the template hasn't been saved yet
+					if ( id === 0 ) {
+						record.remove( );
+						return true;
+					}
 					Ext.Ajax.request({
 						url: bs.util.getAjaxDispatcherUrl('PermissionManager::deleteTemplate'),
 						method: 'POST',
