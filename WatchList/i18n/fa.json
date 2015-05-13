@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dalba"
+		]
+	},
+	"bs-watchlist-title-sidebar": "فهرست پی‌گیری‌ها",
+	"bs-watchlist-pref-widgetlimit": "محدودیت ورودی‌ها:",
+	"bs-watchlist-pref-widgetsortodr": "مرتب‌سازی بر پایهٔ:",
+	"bs-watchlist-pref-sort-time": "زمان",
+	"bs-watchlist-pref-sort-title": "عنوان"
+}

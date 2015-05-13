@@ -2,9 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Dalba"
 		]
 	},
+	"prefs-smartlist": "فهرست هوشمند",
+	"bs-smartlist-recent-changes": "تغییرات اخیر",
+	"bs-smartlist-no-entries": "هیچ نتیجه‌ای یافت نشد.",
 	"bs-smartlist-pref-comments": "نمایش دیدگاه‌ها",
-	"bs-smartlist-pref-order": "ترتیب بر اساس:"
+	"bs-smartlist-pref-order": "ترتیب بر اساس:",
+	"bs-smartlist-pref-sort": "مرتب‌سازی بر پایهٔ:",
+	"bs-smartlist-day": "روز",
+	"bs-smartlist-week": "هفته",
+	"bs-smartlist-month": "ماه",
+	"bs-smartlist-time": "زمان",
+	"bs-smartlist-title": "عنوان",
+	"bs-smartlist-lastedits": "ویرایش‌های من",
+	"bs-smartlist-noedits": "هیچ ویرایشی یافت نشد."
 }

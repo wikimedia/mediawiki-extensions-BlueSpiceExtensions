@@ -3,10 +3,11 @@
 		"authors": [
 			"SuperPuperSteve",
 			"Okras",
-			"Striking Blue"
+			"Striking Blue",
+			"Kaganer"
 		]
 	},
-	"bs-rssstandards-desc": "Строит RSS каналы на основе различных опций",
+	"bs-rssstandards-desc": "Строит каналы RSS на основе различных опций",
 	"bs-rssstandards-desc-rc": "Лента с обзором последних изменений в вики",
 	"bs-rssstandards-title-page": "Страница",
 	"bs-rssstandards-desc-page": "Лента с обзором последних изменений на странице.",

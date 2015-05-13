@@ -2,11 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Dalba"
 		]
 	},
+	"prefs-visualeditor": "ویرایشگر دیداری",
+	"bs-visualeditor-editbutton-hint": "ویرایشگر دیداری",
+	"bs-visualeditor-no-summary": "بدون خلاصه",
+	"bs-visualeditor-wikitable": "استاندارد",
 	"bs-visualeditor-contenttable": "محتوا",
+	"bs-visualeditor-aligntop": "بالا",
 	"bs-visualeditor-alignmiddle": "میانه",
+	"bs-visualeditor-alignbottom": "پایین",
 	"bs-visualeditor-bsactions-wiki": "ویکی‌متن",
 	"bs-visualeditor-bsactions-paragraph": "پاراگراف",
 	"bs-visualeditor-bsactions-heading2": "سرعنوان ۲",

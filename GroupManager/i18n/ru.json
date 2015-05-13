@@ -3,10 +3,11 @@
 		"authors": [
 			"Okras",
 			"Alexandr Efremov",
-			"Striking Blue"
+			"Striking Blue",
+			"Kaganer"
 		]
 	},
-	"bs-groupmanager-desc": "Административный интерфейс для добавления, правки и удаления групп пользователей и их прав",
+	"bs-groupmanager-desc": "Административный интерфейс для добавления, правки и удаления групп участников и их прав",
 	"bs-groupmanager-grpexists": "Группа уже существует.",
 	"bs-groupmanager-grpadded": "Группа была добавлена.",
 	"bs-groupmanager-grpedited": "Группа была отредактирована.",
