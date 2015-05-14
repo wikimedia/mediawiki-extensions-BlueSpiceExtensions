@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Robby",
-			"Shirayuki"
+			"Shirayuki",
+			"Nemo bis"
 		]
 	},
 	"bs-whoisonline-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of who is online extension",
@@ -18,5 +19,5 @@
 	"bs-whoisonline-pref-orderby-name": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], option label for name\n{{Identical|Name}}",
 	"bs-whoisonline-pref-interval": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for update interval in seconds:",
 	"bs-whoisonline-tag-whoisonlinecount-desc": "Used in InsertMagic extension, tag description for renders the number of currently logged in users.\n{{Related|Bs-tag-desc}}",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Used in InsertMagic extension, tag description for renders a little fly-out list of currently logged in users.\n{{Related|Bs-tag-desc}}"
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Description of a tag which produces a little popup list of users who are currently logged in.\n{{Related|Bs-tag-desc}}"
 }
