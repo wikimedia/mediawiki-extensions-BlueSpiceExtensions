@@ -11,6 +11,7 @@
 	"bs-insertmagic-currentmonthnamegen": "Obecny miesiąc (forma dopełniacza).",
 	"bs-insertmagic-currentmonthabbrev": "Obecny miesiąc (skrót).",
 	"bs-insertmagic-currentdayname": "Dzień tygodnia (nazwa).",
+	"bs-insertmagic-currenttime": "Czas (format 24-godzinny GG:mm).",
 	"bs-insertmagic-currentweek": "Tydzień (numer).",
 	"bs-insertmagic-servername": "Nazwa domeny.",
 	"bs-insertmagic-pageid": "Zwraca identyfikator strony.",
