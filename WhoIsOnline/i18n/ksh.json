@@ -15,5 +15,5 @@
 	"bs-whoisonline-pref-orderby-name": "Nahme",
 	"bs-whoisonline-pref-interval": "De Sekonde zwesche em neu aanzeije:",
 	"bs-whoisonline-tag-whoisonlinecount-desc": "Zeisch de Aanzahl vun de Metmaacher, wä em Momang derbei es.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Renders a little fly-out list of currently logged in users.\n\nValid attributes:\n;<code>anchortext</code>: The text you want the fly-out to be attached to.\n<!-- \nhttps://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-whoisonline-tag-whoisonlinepopup-desc/qqq\n-->"
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Määd en kleine Leß med de Metmaacher, di em Momang enjeogg sin.\n\nJöltijje Parramehtere:\n;<code>anchortext</code>: Dä Täx, dä doh schteiht, woh de de Leß aanjezeijsch weed."
 }

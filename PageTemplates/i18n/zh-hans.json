@@ -31,7 +31,7 @@
 	"bs-pagetemplates-tipeditdetails": "编辑模板",
 	"bs-pagetemplates-tipdeletetemplate": "删除{{PLURAL:$1|模板}}",
 	"bs-pagetemplates-tipaddtemplate": "加入模板",
-	"bs-pagetemplates-label-tpl": "模板名",
+	"bs-pagetemplates-label-tpl": "模板名称",
 	"bs-pagetemplates-label-desc": "描述",
 	"bs-pagetemplates-label-targetns": "名字空间",
 	"bs-pagetemplates-label-tplns": "模板名字空间",
