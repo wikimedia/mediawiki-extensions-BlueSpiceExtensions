@@ -40,5 +40,6 @@
 	"bs-permissionmanager-titletpled-delete": "Eliminar la plantilla",
 	"bs-permissionmanager-pref-lockmode": "Activar modo de bloqueo",
 	"bs-permissionmanager-pref-skipsysns": "Saltar mensajes de espacio de nombres del sistema si el modo de bloqueo está activado",
-	"bs-permissionmanager-pref-enablerealitycheck": "Activar la comprobación de permisos"
+	"bs-permissionmanager-pref-enablerealitycheck": "Activar la comprobación de permisos",
+	"bs-permissionmanager-unsaved-changes": "Hay cambios sin guardar. ¿Quieres abandonar la página ahora? Se perderá cualquier cambio no guardado."
 }

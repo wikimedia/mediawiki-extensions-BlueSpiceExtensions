@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dinhxuanduyet"
+		]
+	},
+	"bs-notifications-email-addaccount-subject": "Người dùng $2 {{GENDER:$1|đã được tạo}}"
+}

@@ -5,6 +5,8 @@
 		]
 	},
 	"bs-permissionmanager-header-namespaces": "Nammeromten",
+	"bs-permissionmanager-btn-save-label": "Bewarje",
+	"bs-permissionmanager-labeltpled-add": "Nij",
 	"bs-permissionmanager-labeltpled-edit": "Bewurkje",
 	"bs-permissionmanager-labeltpled-cancel": "Annulearje"
 }

@@ -31,5 +31,6 @@
 	"bs-usermanager-labelpasswordcheck": "Confirmar la contraseña",
 	"bs-usermanager-titledeleteuser": "Eliminar el usuario",
 	"bs-usermanager-confirmdeleteuser": "¿Estás seguro de que quieres borrar a {{PLURAL:$1|este usuario|estos $1 usuarios}}?",
-	"bs-usermanager-groups-more": "... más"
+	"bs-usermanager-groups-more": "... más",
+	"bs-usermanager-no-self-desysop": "No puedes quitarte tu propio privilegio administrativo."
 }

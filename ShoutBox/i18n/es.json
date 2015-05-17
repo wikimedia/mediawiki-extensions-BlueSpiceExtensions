@@ -4,7 +4,8 @@
 			"Macofe",
 			"AVIADOR",
 			"Fitoschido",
-			"Awesomecat5"
+			"Awesomecat5",
+			"Ryo567"
 		]
 	},
 	"bs-shoutbox-message": "Escribe un comentario nuevo…",
@@ -27,5 +28,5 @@
 	"bs-shoutbox-too-early": "Por favor, espera unos segundos antes de enviar la siguiente entrada.",
 	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención en un grito",
 	"bs-shoutbox-notifications-title-message-subject": "Te han mencionado",
-	"bs-shoutbox-notifications-title-message-text": "Llevas {{GÉNERO: $1 | mencionada}} \". $3\" por $2 en un grito en la página"
+	"bs-shoutbox-notifications-title-message-text": "$4 te ha {{GENDER:$1|mencionado}} en la página \"$5\".\n\nPuedes visitar la página siguiendo este enlace:\n$3."
 }

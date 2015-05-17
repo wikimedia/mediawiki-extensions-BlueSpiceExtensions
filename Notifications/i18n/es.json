@@ -21,6 +21,7 @@
 	"bs-echo-page-delete": "Se borró la página [[:$1]]",
 	"bs-echo-page-move": "Se trasladó la página [[:$1]]",
 	"bs-echo-page-newuser": "Se ha creado el usuario $1.",
+	"bs-echo-page-shoutbox": "Un mensaje nuevo de ShoutBox en el sitio [[:$1]].",
 	"bs-notifications-email-new-subject": "$3 {{GENDER:$2|creó}} la página $1",
 	"bs-notifications-email-new": "$6 {{GENDER:$2|creó}} la página \"$1\".\n\nComentario:\n $3 \nPuedes visitar la página siguiendo este enlace:\n$4",
 	"bs-notifications-email-edit-subject": "$3 {{GENDER:$2|editó}} la página $1",
