@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Macofe",
-			"AVIADOR"
+			"AVIADOR",
+			"Ryo567"
 		]
 	},
 	"bs-flexiskin-desc": "Proporciona una página para administrar \"flexiskins\" con opciones de personalización",
@@ -50,7 +51,10 @@
 	"bs-flexiskin-error-templatenotexists": "La plantilla elegida no existe.",
 	"bs-flexiskin-api-desc": "Interfaz de API de la extensión Flexiskin de Bluespice.",
 	"bs-flexiskin-api-type-desc": "La acción que ejecutar, p. ej., «delete» (‘borrar’). La predeterminada es «get» (‘obtener’).",
+	"bs-flexiskin-api-mode-desc": "El modo de acción, por ejemplo: \"config\". El predeterminado es \"flexiskin\".",
+	"bs-flexiskin-api-id-desc": "La ID si está el \"flexiskin\" (opcional).",
 	"bs-flexiskin-api-data-desc": "Una matriz de datos (opcional).",
+	"bs-flexiskin-api-preview-desc": "Elige si mostrar una vista previa o no (opcional).",
 	"bs-flexiskin-api-example-desc": "Devuelve la configuración actual de un Flexiskin.",
 	"bs-flexiskin-api-error-save": "Se produjo un error al guardar. Motivo: «$1»",
 	"bs-flexiskin-api-error-invalid-action": "Esta acción no existe.",

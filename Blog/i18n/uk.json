@@ -25,6 +25,9 @@
 	"bs-blog-pref-showpermalink": "Показати постійне посилання",
 	"bs-blog-pref-sortby": "Сортувати за:",
 	"bs-blog-pref-imagerendermode": "Відображати зображення як:",
+	"bs-blog-pref-imagefloatdirection": "Потік тексту: положення зображення",
 	"bs-blog-pref-maxentrycharacters": "Кількість слів у записі:",
-	"bs-blog-tag-blog-desc": "Показувати записи блогу на кожній сторінці."
+	"bs-blog-tag-blog-desc": "Показувати записи блогу на кожній сторінці.",
+	"bs-blog-tag-blogtime-desc": "Цей тег дає Вам можливість встановити власну часову мітку для записів блогу.",
+	"bs-blog-tag-blogtime-err": "Формат повинен бути YYYYMMDDHHmm? тобто для 12. Січ. 2013 15:43 мітка часу виглядає таким чином: 201301121543"
 }

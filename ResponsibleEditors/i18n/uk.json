@@ -54,5 +54,6 @@
 	"bs-responsibleeditors-cbnamespacesemptytext": "Виберіть простір назв",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Не призначено",
 	"log-name-bs-responsibleeditors": "Журнал відповідальних редакторів",
-	"log-description-bs-responsibleeditors": "Це журнал редакторів, відповідальних за сторінки."
+	"log-description-bs-responsibleeditors": "Це журнал редакторів, відповідальних за сторінки.",
+	"log-show-hide-bs-responsibleeditors": "$1 журнал відповідальних редакторів"
 }

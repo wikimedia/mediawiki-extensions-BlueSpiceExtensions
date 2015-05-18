@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alojz.tic"
+			"Alojz.tic",
+			"Skalcaa"
 		]
 	},
+	"bs-review-desc": "Omogoči funkcionalnost poteka dela (tj. workflow) na straneh",
 	"prefs-review": "Pregledano",
 	"bs-review-review": "Pregledano",
 	"bs-review-menu-entry": "Uredi pregled",
@@ -16,14 +18,25 @@
 	"bs-review-abstain": "Vzdržanih",
 	"bs-review-review-finished": "Ta stran je bila pregledana.",
 	"bs-review-reviewed-till": "Ta stran je bila pregledana od $1 do $2.",
+	"bs-review-reviewed-till-extra": "Ustvaril{{GENDER:$1||a}} $2",
+	"bs-review-save-success": "Pregled je bil dodeljen.",
 	"bs-review-save-error": "Med shranjevanjem je prišlo do napake.",
 	"bs-review-save-removed": "Pregled je bil izbrisan.",
+	"bs-review-save-nosteps": "Ni vnešenih korakov pregleda.",
 	"bs-review-save-noid": "ID strani ni bil poslan.",
 	"bs-review-save-norights": "Nimate potrebnih dovoljenj.",
 	"bs-review-review-error": "Prišlo je do neznane napake.",
+	"bs-review-review-secondtime": "Pregleda ni bilo mogoče najti. Mogoče poskušate ponovno prikazati stran za pregled.",
 	"bs-review-review-saved": "Vaš glas je bil shranjen.",
 	"bs-review-mail-link-to-page": "Sledite tej povezavi: $1",
 	"bs-review-mail-invite-header": "Prosimo, preglejte stran \"$1\"",
+	"bs-review-mail-invite-body": "$1 vas je povabil{{GENDER:$2||a}}, da pregledate stran \"$3\".",
+	"bs-review-mail-comment": "Komentar je bil vnešen: \"$1\".",
+	"bs-review-mail-accept-header": "$1 je sprejel{{GENDER:$2||a}} $3",
+	"bs-review-mail-accept-body": "uporabni{{GENDER:$2|k|ca}} $1 se je odzval{{GENDER:$2||a}} na vaš pregled in sprejel{{GENDER:$2||a}} spremembe.",
+	"bs-review-mail-deny-header": "$1 je zavrnil{{GENDER:$2||a}} $3",
+	"bs-review-mail-deny-body": "uporabni{{GENDER:$2|k|ca}} $1 se je odzval{{GENDER:$2||a}} na vaš pregled in zavrnil{{GENDER:$2||a}} vaše spremembe.",
+	"bs-review-mail-deny-and-restart-header": "$1 je zavrnil{{GENDER:$2||a}} $3",
 	"bs-review-mail-finish-header": "Pregled končan",
 	"bs-review-mail-finish-and-review-header": "$1 Pregled končan",
 	"bs-review-statebar-body-do-review": "Prosimo, preglejte to stran",
@@ -46,6 +59,7 @@
 	"bs-review-colcomment": "Komentar",
 	"bs-review-lblstartdate": "Datum začetka",
 	"bs-review-lblenddate": "Datum zaključka",
+	"bs-review-titleaddreviewer": "Dodaj pregledovalca",
 	"bs-review-labelcomment": "Komentar",
 	"bs-review-header-page-title": "Stran",
 	"bs-review-header-owner-name": "Lastnik",

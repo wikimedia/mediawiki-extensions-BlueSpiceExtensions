@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alojz.tic"
+			"Alojz.tic",
+			"Skalcaa"
 		]
 	},
+	"bs-responsibleeditors-pref-activatednamespaces": "Omogočeni imenski prostori:",
+	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "Odgovorni uredniki",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Odgovorni uredniki",
 	"bs-responsibleeditors-yourresponsibilities": "Vaše odgovornosti",
 	"bs-responsibleeditors-yourresponsibilitiesdesc": "Seznam strani, za katere ste odgovorni.",
 	"bs-responsibleeditors-columnpage": "Stran",

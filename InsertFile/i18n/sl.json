@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alojz.tic"
+			"Alojz.tic",
+			"Skalcaa"
 		]
 	},
 	"bs-insertfile-desc": "Pogovorno okno za nalaganje datotek in vstavljanje povezav na datoteke",
@@ -64,5 +65,7 @@
 	"bs-insertfile-categories": "Kategorije",
 	"bs-insertfile-linktext": "Prikaz besedila",
 	"bs-insertfile-no-link": "Ni povezave",
+	"bs-insertfile-error-no-medialink": "Ni izbrana nobena povezava medijskih vsebin.",
+	"bs-insertfile-error-no-imagelink": "Ni izbrana nobena povezava slike.",
 	"bs-insertfile-upload-waitmessage": "Nalaganje se izvaja ..."
 }

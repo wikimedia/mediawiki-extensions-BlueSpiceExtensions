@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alojz.tic"
+			"Alojz.tic",
+			"Skalcaa"
 		]
 	},
 	"bs-pagesvisited-desc": "Zagotavlja osebni seznam nazadnje obiskanih strani",
 	"prefs-pagesvisited": "Obiskane strani",
 	"bs-pagesvisited-widget-title": "Obiskane strani",
+	"bs-pagesvisited-error-nsnotvalid": "Dan{{PLURAL:$1| imenski prostor|a imenska prostora|i imenski prostori}} {{PLURAL:$1|ni veljaven|nista veljavna|niso veljavni}}: <code>$2</code>",
 	"bs-pagesvisited-pref-widgetlimit": "Omejitev vnosov:",
 	"bs-pagesvisited-pref-widgetns": "Imenski prostor:",
 	"bs-pagesvisited-pref-widgetsortodr": "Razvrsti po:",

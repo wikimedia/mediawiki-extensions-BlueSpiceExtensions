@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alojz.tic"
+			"Alojz.tic",
+			"Skalcaa"
 		]
 	},
+	"bs-interwikilinks-desc": "Skrbniški vmesnik za dodajanje, urejanje in brisanje notranjih povezav wiki.",
 	"bs-interwikilinks-invalid-pfx-spc": "Predpona je neveljavna. Prosimo, ne uporabljajte presledkov.",
 	"bs-interwikilinks-invalid-url-spc": "URL ni veljaven. Prosimo, ne uporabljajte presledkov.",
 	"bs-interwikilinks-label": "Interwiki povezave",

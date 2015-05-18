@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alojz.tic"
+			"Alojz.tic",
+			"Skalcaa"
 		]
 	},
 	"bs-insertlink-desc": "Pogovorno okno za vnos povezave",
@@ -10,6 +11,7 @@
 	"bs-insertlink-dialog-title": "Vstavi povezavo",
 	"bs-insertlink-tab-wiki-page": "Wiki stran",
 	"bs-insertlink-tab-ext-link": "Zunanja povezava",
+	"bs-insertlink-tab-email": "Povezava e-pošte",
 	"bs-insertlink-tab-ext-file": "Povezava na datoteko",
 	"bs-insertlink-label-page": "Stran",
 	"bs-insertlink-label-link": "Povezava",
