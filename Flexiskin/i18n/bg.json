@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"DCLXVI"
+		]
+	},
+	"bs-flexiskin-label": "Облик",
+	"prefs-flexiskin": "Облик",
+	"bs-flexiskin-pref-logo": "Лого:",
+	"bs-flexiskin-labelname": "Име",
+	"bs-flexiskin-labeldesc": "Описание",
+	"bs-flexiskin-labelskins": "Шаблон"
+}

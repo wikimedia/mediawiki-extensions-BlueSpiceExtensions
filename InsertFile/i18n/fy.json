@@ -6,6 +6,8 @@
 	},
 	"bs-insertfile-filename": "Triemnamme",
 	"bs-insertfile-filesize": "Triemgrutte",
+	"bs-insertfile-alignnone": "gjin",
+	"bs-insertfile-typenone": "gjin",
 	"bs-insertfile-uploadbuttontext": "Blêdzje",
 	"bs-insertfile-warning": "Warskôging",
 	"bs-insertfile-error": "Flater",

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Prilagoditev povezav vrhnjega menija",
+	"prefs-topmenubarcustomizer": "Prilagoditev menija",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Število ugnezdenih plasti:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Vpisi na glavni plasti:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Vpisi na podplasteh:"
+}

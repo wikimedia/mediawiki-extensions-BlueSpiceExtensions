@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"DCLXVI"
+		]
+	},
+	"bs-extensioninfo-label": "Разширения",
+	"bs-extensioninfo-software": "Софтуер",
+	"bs-extensioninfo-version": "Версия",
+	"extensioninfo": "Разширения",
+	"bs-extensioninfo-headerversion": "Версия",
+	"bs-extensioninfo-headerdesc": "Описание",
+	"bs-extensioninfo-headerstatus": "Статут",
+	"bs-extensioninfo-headerpackage": "Пакет"
+}
