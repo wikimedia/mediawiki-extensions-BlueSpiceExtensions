@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Reza1615"
 		]
 	},
 	"bs-interwikilinks-desc": "رابط مدیریت برای افزودن، ویرایش و حذف پیوندهای میان‌ویکی",
@@ -17,9 +18,11 @@
 	"bs-interwikilinks-pfxtoolong": "پیشوند خیلی طولانی است. لطفاً از حداکثر ۳۲ نویسه استفاده کنید.",
 	"bs-interwikilinks-pfxexists": "این پیشوند از پیش وجود دارد.",
 	"bs-interwikilinks-headerprefix": "پیشوند",
+	"bs-interwikilinks-headerurl": "نشانی اینترنتی",
 	"bs-interwikilinks-titleaddinterwikilink": "افزودن پیوند میان‌ویکی",
 	"bs-interwikilinks-titleeditinterwikilink": "ویرایش پیوند میان‌ویکی",
 	"bs-interwikilinks-labelprefix": "پیشوند",
+	"bs-interwikilinks-labelurl": "نشانی اینترنتی",
 	"bs-interwikilinks-titledeleteinterwikilink": "حذف پیوند میان‌ویکی",
 	"bs-interwikilinks-confirmdeleteinterwikilink": "آیا مطمئنید، می‌خواهید این پیوند میان‌ویکی را حذف کنید؟",
 	"bs-interwikilinks-insertlink-tabtitle": "پیوند به ویکی دیگر",

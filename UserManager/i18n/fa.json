@@ -10,6 +10,7 @@
 	"bs-usermanager-save-successful": "تغییرات ذخیره‌شد.",
 	"bs-usermanager-headerusername": "نام کاربری",
 	"bs-usermanager-headerrealname": "نام واقعی",
+	"bs-usermanager-headeremail": "رایانامه",
 	"bs-usermanager-headergroups": "گروه‌ها",
 	"bs-usermanager-titleadduser": "افزودن کاربر",
 	"bs-usermanager-titleeditdetails": "ویرایش کاربر",

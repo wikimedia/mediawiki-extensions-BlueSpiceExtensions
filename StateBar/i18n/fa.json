@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dalba"
+			"Dalba",
+			"Reza1615"
 		]
 	},
 	"bs-statebar-desc": "یک نوار وضعیت فراهم می‌آورد",
-	"prefs-statebar": "نوار وضعیت"
+	"prefs-statebar": "نوار وضعیت",
+	"bs-statebar-ajax-nobodyviews": "اطلاعاتی موجود نیست."
 }

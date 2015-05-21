@@ -9,6 +9,7 @@
 	"bs-statistics-diagram": "کوئری",
 	"bs-statistics-from": "از",
 	"bs-statistics-to": "به",
+	"bs-statistics-absolute": "مطلق",
 	"bs-statistics-year": "سال",
 	"bs-statistics-month": "ماه",
 	"bs-statistics-week": "هفتهٔ تقویمی",
@@ -29,5 +30,6 @@
 	"bs-statistics-filter-category": "رده",
 	"bs-statistics-filter-searchscope": "گسترهٔ‌ جستجو",
 	"bs-statistics-portlet-numberofedits": "شمار ویرایش‌ها",
+	"bs-statistics-portlet-numberofpages": "تعداد صفحه‌ها",
 	"bs-statistics-portletconfig-periodday": "دیروز"
 }
