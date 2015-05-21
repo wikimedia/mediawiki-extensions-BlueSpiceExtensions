@@ -75,6 +75,7 @@ class Blog extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSTopMenuBarCustomizerRegisterNavigationSites' );
 		$this->setHook( 'PageContentSaveComplete' );
+		$this->setHook( 'ArticleDeleteComplete' );
 
 		// Trackback is not fully functional in MW and thus disabled.
 		BsConfig::registerVar( 'MW::Blog::ShowTrackback', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL );
@@ -222,6 +223,36 @@ class Blog extends BsExtensionMW {
 		// Invalidate blog tag cache
 		BsCacheHelper::invalidateCache( $sTagsKey );
 
+		return true;
+	}
+
+	/**
+	 * Invalidate blog cache
+	 * @param WikiPage $article
+	 * @param User $user
+	 * @param String $reason
+	 * @param Integer $id
+	 * @param Content $content
+	 * @param type $logEntry
+	 * @return boolean
+	 */
+	public function onArticleDeleteComplete( &$article, User &$user, $reason, $id, $content, $logEntry ) {
+		# TODO: Cache must also be invalidated on other occasions like blog tags
+		# for subpages or categories.
+		if ( !in_array($article->getTitle()->getNamespace(), array(
+			NS_BLOG,
+			NS_BLOG_TALK
+		)) ){
+			return true;
+		}
+
+		$sTagsKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', 'Tags' );
+		$aTagsData = BsCacheHelper::get( $sTagsKey );
+
+		// Invalidate all blog tag caches
+		BsCacheHelper::invalidateCache( $aTagsData );
+		// Invalidate blog tag cache
+		BsCacheHelper::invalidateCache( $sTagsKey );
 		return true;
 	}
 
@@ -400,7 +431,6 @@ class Blog extends BsExtensionMW {
 			return $aData;
 		}
 		// initialize local variables
-		$sOut = '';
 		$oErrorListView = new ViewTagErrorList( $this );
 		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
 
@@ -588,11 +618,11 @@ class Blog extends BsExtensionMW {
 		$iLoop = 0;
 		foreach( $res as $row ) {
 			// prepare data for view class
-			$oTitle = Title::newFromID( $row->entry_page_id );
-			if ( !$oTitle->userCan( 'read' ) ) { $iNumberOfEntries--; continue; }
+			$oEntryTitle = Title::newFromID( $row->entry_page_id );
+			if ( !$oEntryTitle->userCan( 'read' ) ) { $iNumberOfEntries--; continue; }
 
 			$bMore = false;
-			$aContent = preg_split( '#<(bs:blog:)?more */>#', BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ) );
+			$aContent = preg_split( '#<(bs:blog:)?more */>#', BsPageContentProvider::getInstance()->getContentFromTitle( $oEntryTitle ) );
 			if ( sizeof( $aContent ) > 1 ) $bMore = true;
 			$aContent = trim( $aContent[0] );
 			// Prevent recursive rendering of blog tag
@@ -627,7 +657,7 @@ class Blog extends BsExtensionMW {
 			$resComment = $dbr->selectRow(
 				'revision',
 				'COUNT( rev_id ) AS cnt',
-				array( 'rev_page' => $oTitle->getTalkPage()->getArticleID() )
+				array( 'rev_page' => $oEntryTitle->getTalkPage()->getArticleID() )
 			);
 
 			$iCount = $resComment->cnt;
@@ -647,26 +677,26 @@ class Blog extends BsExtensionMW {
 			//TODO: magic_call?
 
 			if ( $argsModeNamespace === 'ns' ) {
-				$sTitle = substr( $oTitle->getText(), 5 );
+				$sTitle = substr( $oEntryTitle->getText(), 5 );
 			} else {
-				$sTitle = $oTitle->getText();
+				$sTitle = $oEntryTitle->getText();
 			}
 
 			$aTalkParams = array();
-			if ( !$oTitle->getTalkPage()->exists() ) {
+			if ( !$oEntryTitle->getTalkPage()->exists() ) {
 				$aTalkParams = array( 'action' => 'edit' );
 			}
 
-			$oRevision = Revision::newFromTitle( $oTitle );
+			$oRevision = Revision::newFromTitle( $oEntryTitle );
 			$oBlogItemView->setTitle( $sTitle );
 			$oBlogItemView->setRevId( $oRevision->getId() );
-			$oBlogItemView->setURL( $oTitle->getLocalURL() );
-			$oBlogItemView->setTalkURL( $oTitle->getTalkPage()->getLocalURL( $aTalkParams ) );
+			$oBlogItemView->setURL( $oEntryTitle->getLocalURL() );
+			$oBlogItemView->setTalkURL( $oEntryTitle->getTalkPage()->getLocalURL( $aTalkParams ) );
 			$oBlogItemView->setTalkCount( $iCount );
-			$oBlogItemView->setTrackbackUrl( $oTitle->getLocalURL() );
+			$oBlogItemView->setTrackbackUrl( $oEntryTitle->getLocalURL() );
 
 			if ( $bShowInfo ) {
-				$oFirstRevision = $oTitle->getFirstRevision();
+				$oFirstRevision = $oEntryTitle->getFirstRevision();
 				$sTimestamp = $oFirstRevision->getTimestamp();
 				$sLocalDateTimeString = BsFormatConverter::timestampToAgeString( wfTimestamp( TS_UNIX,$sTimestamp ) );
 				$oBlogItemView->setEntryDate( $sLocalDateTimeString );
@@ -700,23 +730,33 @@ class Blog extends BsExtensionMW {
 			$oBlogView->setOption( 'parentpage', 'Blog/' );
 		}
 
-		$aKey = array( $sKey );
-		$sTagsKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', 'Tags' );
-		$aTagsData = BsCacheHelper::get( $sTagsKey );
-
-		if ( $aTagsData !== false ) {
-			if ( !in_array( $sKey, $aTagsData ) ) {
-				$aTagsData = array_merge( $aTagsData, $aKey );
-			}
-		} else {
-			$aTagsData = $aKey;
-		}
-
-		BsCacheHelper::set( $sTagsKey, $aTagsData, 86400 ); // one day
-
 		// actually create blog output
 		$sOut = $oBlogView->execute();
-		BsCacheHelper::set( $sKey, $sOut, 86400 ); // one day
+
+		//Use cache only in NS_BLOG - there is curently no functionality to
+		//figure out in what type of blog tag a entry is showen and why
+		//(coditions). Possible blog by categories or subpages...
+		//Needs rework.
+		if ( in_array($oTitle->getNamespace(), array(NS_BLOG,NS_BLOG_TALK)) ) {
+			$aKey = array( $sKey );
+			$sTagsKey = BsCacheHelper::getCacheKey(
+				'BlueSpice',
+				'Blog',
+				'Tags'
+			);
+			$aTagsData = BsCacheHelper::get( $sTagsKey );
+
+			if ( $aTagsData !== false ) {
+				if ( !in_array( $sKey, $aTagsData ) ) {
+					$aTagsData = array_merge( $aTagsData, $aKey );
+				}
+			} else {
+				$aTagsData = $aKey;
+			}
+
+			BsCacheHelper::set( $sTagsKey, $aTagsData, 60*1440 ); // one day
+			BsCacheHelper::set( $sKey, $sOut, 60*1440 ); // one day
+		}
 
 		return $sOut;
 	}
