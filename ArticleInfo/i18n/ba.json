@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Рустам Нурыев"
+		]
+	},
+	"bs-articleinfo-desc": "Бит тураһында статус юлында мәғлүмәт бирә",
+	"prefs-articleinfo": "Бит тураһында мәғлүмәт",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Яңыртыу арауыға (секундтарҙа):",
+	"bs-articleinfo-last-edited": "Һуңғы яңыртыуҙан һуң ваҡыт",
+	"bs-articleinfo-last-edited-tooltip": "Һуңғы үҙгәртеү",
+	"bs-articleinfo-last-editor": "Һуңғы {{GENDER:$1|мөхәррир}}",
+	"bs-articleinfo-categories": "Категориялар",
+	"bs-articleinfo-more-categories": "Башҡа категориялар ҙа бар",
+	"bs-articleinfo-all-categories-heading": "Категориялар",
+	"bs-articleinfo-nocategories": "Категориялар табылмаған.",
+	"bs-articleinfo-hiddencats": "Йәшерен категориялар",
+	"bs-articleinfo-notemplates": "Ҡалыптар табылмаған.",
+	"bs-articleinfo-templates": "Ҡалыптар",
+	"bs-articleinfo-subpages": "Түбән биттәр",
+	"bs-articleinfo-subpages-available": "Был бит өсөн түбән биттәр бар",
+	"bs-articleinfo-subpages-too-much": "100-ҙән ашыу түбән бит асыҡ",
+	"bs-articleinfo-check-revision": "Яңы төр асыҡ",
+	"bs-articleinfo-check-revision-tooltip": "Битте яңынан тейәргә",
+	"bs-articleinfo-statebartoplastedited": "Һуңғы үҙгәртеү",
+	"bs-articleinfo-statebartoplasteditor": "Һуңғы мөхәррир",
+	"bs-articleinfo-statebartopcategories": "Категориялар",
+	"bs-articleinfo-statebartopsubpages": "Түбән биттәр",
+	"bs-articleinfo-statebarbodycategories": "Категориялар",
+	"bs-articleinfo-statebarbodysubpages": "Түбән биттәр",
+	"bs-articleinfo-statebarbodytemplates": "Ҡалыптар"
+}

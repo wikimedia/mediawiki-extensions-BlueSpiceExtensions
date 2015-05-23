@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"bs-interwikilinks-headerprefix": "Voorvoegsel",
+	"bs-interwikilinks-titleaddinterwikilink": "Interwikikoppeling toevoegen",
+	"bs-interwikilinks-titleeditinterwikilink": "Interwikikoppeling bewerken",
+	"bs-interwikilinks-labelprefix": "Voorvoegsel",
+	"bs-interwikilinks-titledeleteinterwikilink": "Interwikilink verwijderen",
+	"bs-interwikilinks-insertlink-labelprefix": "Voorvoegsel",
+	"bs-interwikilink-select-a-prefix": "Kies voorvoegsel"
+}

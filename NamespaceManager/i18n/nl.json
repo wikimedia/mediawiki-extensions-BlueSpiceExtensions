@@ -2,15 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Siebrand"
 		]
 	},
+	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "Naamruimte",
+	"bs-namespacemanager-label-editable": "Te hernoemen",
 	"bs-namespacemanager-label-content": "Inhoudnaamruimte",
+	"bs-namespacemanager-label-subpages": "Subpagina's",
 	"bs-namespacemanager-nsadded": "De naamruimte is toegevoegd.",
 	"bs-namespacemanager-nsremoved": "De naamruimte is verwijderd.",
 	"bs-namespacemanager-nsedited": "De naamruimte is bewerkt.",
 	"bs-namespacemanager-tipadd": "Naamruimte toevoegen",
 	"bs-namespacemanager-tipedit": "Naamruimte bewerken",
-	"bs-namespacemanager-tipremove": "Naamruimte verwijderen"
+	"bs-namespacemanager-tipremove": "Naamruimte verwijderen",
+	"bs-namespacemanager-labelnsname": "Naamruimtenaam",
+	"bs-namespacemanager-willdelete": "Wordt verwijderd"
 }

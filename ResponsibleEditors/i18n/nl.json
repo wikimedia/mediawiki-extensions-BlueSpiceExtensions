@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Siebrand"
 		]
 	},
-	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "De opgegeven pagina bestaat niet."
+	"prefs-responsibleeditors": "Verantwoordelijk bewerkers",
+	"bs-responsibleeditors-pref-activatednamespaces": "Ingeschakelde naamruimten:",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "De opgegeven pagina bestaat niet.",
+	"bs-responsibleeditors-columnpage": "Pagina",
+	"bs-responsibleeditors-columnresponsibleeditor": "Verantwoordelijk bewerkers",
+	"bs-responsibleeditors-columnnamespace": "Naamruimte",
+	"bs-responsibleeditors-rbdisplaymodeall": "Alle pagina's weergeven",
+	"bs-responsibleeditors-cbnamespacesemptytext": "Selecteer een naamruimte",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Niet toegewezen"
 }

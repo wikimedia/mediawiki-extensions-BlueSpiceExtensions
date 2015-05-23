@@ -11,7 +11,7 @@
 	"bs-permissionmanager-desc": "Interfaz administrativa para gestionar permisos de usuarios",
 	"prefs-permissionmanager": "Gestor de permisos",
 	"bs-permissionmanager-label": "Gestor de permisos",
-	"bs-permissionmanager-grouping-global": "Permisos del espacio de nombre independiente.",
+	"bs-permissionmanager-grouping-global": "Permisos independientes del espacio de nombres.",
 	"bs-permissionmanager-grouping-local": "Permisos específicos del espacio de nombres",
 	"bs-permissionmanager-btn-group-label": "Grupo:",
 	"bs-permissionmanager-header-permissions": "Permisos",

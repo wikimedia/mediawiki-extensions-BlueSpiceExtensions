@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-countthings-desc": "Suteikia turiniu pagrįstą statistiką",
+	"bs-countthings-chars-label": "Simboliai",
+	"bs-countthings-words-label": "Žodžiai",
+	"bs-countthings-pages-label": "Puslapiai",
+	"bs-countthings-error-no-input": "Puslapis nepateiktas.",
+	"bs-countthings-error-invalid-mode": "Režimas \"$1\" yra negalimas. Prašome naudoti \"chars\", \"words\", ar \"pages\".",
+	"bs-countthings-error-not-exist": "Puslapis \"$1\" neegzistuoja.",
+	"bs-countthings-tag-countarticles-desc": "Rodyti puslapių skaičių.",
+	"bs-countthings-tag-countusers-desc": "Rodyti vartotojų skaičių."
+}

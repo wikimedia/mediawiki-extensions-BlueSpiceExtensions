@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"बिप्लब आनन्द"
+		]
+	},
+	"bs-interwikilinks-desc": "अन्तरविकि लिङ्क जोड्ने, सम्पादन गर्ने तथा मेट्ने प्रवन्धक अवतरण",
+	"bs-interwikilinks-invalid-pfx-spc": "यो उपसर्ग अमान्य छ। कृपया स्पेसको प्रयोग नगर्नुहोला।",
+	"bs-interwikilinks-invalid-url-spc": "यो युआरयल अमान्य छ। कृपया स्पेसको प्रयोग नगर्नुहोला।",
+	"bs-interwikilinks-label": "अन्तरविकि लिङ्कहरू",
+	"bs-interwikilinks-link-created": "अन्तरविकि लिङ्क सृजना गरियो।",
+	"bs-interwikilinks-link-added": "अन्तरविकि लिङ्क जोडियो।",
+	"bs-interwikilinks-link-deleted": "अन्तरविकि लिङ्क मेटियो।",
+	"bs-interwikilinks-nooldpfx": "पछिल्लो उपसर्ग खोज्न सकिएन।",
+	"bs-interwikilinks-nopfx": "कृपया एउटा उपसर्ग दिनुहोस।",
+	"bs-interwikilinks-nourl": "कृपया एउटा युआरयल दिनुहोस।",
+	"bs-interwikilinks-pfxtoolong": "यो उपसर्ग धेरै लामो भयो। कृपया बढीमा ३२ क्यारेक्टरको उपसर्ग प्रयोग गर्नुहोस।",
+	"bs-interwikilinks-pfxexists": "उपसर्ग पहिले देखि छ।",
+	"bs-interwikilinks-headerprefix": "उपसर्ग",
+	"bs-interwikilinks-titleaddinterwikilink": "अन्तरविकि लिङ्क जोड्ने",
+	"bs-interwikilinks-titleeditinterwikilink": "अन्तरविकि लिङ्क सम्पादन गर्ने",
+	"bs-interwikilinks-labelprefix": "उपसर्ग",
+	"bs-interwikilinks-titledeleteinterwikilink": "अन्तरविकि लिङ्क मेट्ने",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "के तपाईं साचिक्कै यो अन्तरविकि लिङ्कलाई मेट्न चाहनुहुन्छ?",
+	"bs-interwikilinks-insertlink-tabtitle": "अन्य विकिसँग लिङ्क गर्ने",
+	"bs-interwikilinks-insertlink-labelprefix": "उपसर्ग",
+	"bs-interwikilink-select-a-prefix": "उपसर्ग छान्ने"
+}

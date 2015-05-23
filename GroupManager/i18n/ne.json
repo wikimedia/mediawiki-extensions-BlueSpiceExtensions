@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"बिप्लब आनन्द"
+		]
+	},
+	"bs-groupmanager-desc": "समूहहरू जोड्न, सम्पादन गर्न तथा मेट्न प्रवन्धक अवतरण",
+	"bs-groupmanager-grpexists": "समूह पहिले देखि नै छ।",
+	"bs-groupmanager-grpadded": "यो समूह जोडिएको छ।",
+	"bs-groupmanager-grpedited": "यो समूह सम्पादन गरिएको छ।",
+	"bs-groupmanager-grpremoved": "यो समूह मेटिएको छ।",
+	"bs-groupmanager-label": "समूह प्रवन्धक",
+	"bs-groupmanager-invalid-name-length": "यस समूहको नाम १६ क्यारेक्टर भन्दा बढी हुनु हुँदैन।",
+	"bs-groupmanager-invalid-name-numeric": "यो समूह नाम कमसेकम एक क्यारेटरको हुनु आवश्यक छ।",
+	"bs-groupmanager-headergroup": "समूह",
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|समूह|समूहहरू}} हटाउने",
+	"bs-groupmanager-titlenewgroup": "नयाँ समूह",
+	"bs-groupmanager-titleeditgroup": "समूह सम्पादन",
+	"bs-groupmanager-removegroup": "के तपाईं साचिक्कै {{PLURAL:$1|यो समूह|यी समूहहरू}}लाई मेट्न चाहनुहुन्छ?",
+	"bs-groupmanager-removegroup-message-unknown": "अमान्य त्रुटि उत्पन्न भयो, कृपया पुन प्रयास गर्नुहोला।",
+	"bs-groupmanager-lablename": "समूह नाम:"
+}

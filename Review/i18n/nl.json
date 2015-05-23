@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Siebrand"
 		]
 	},
+	"prefs-review": "Controleren",
+	"bs-review-review": "Controleren",
+	"bs-review-accepted": "Geaccepteerd",
+	"bs-review-rejected": "Afgewezen",
+	"bs-review-pending": "In behandeling",
+	"bs-review-abstain": "Onthouden",
+	"bs-review-review-finished": "Deze pagina is gecontroleerd.",
 	"bs-review-commentinputlabel": "Uw opmerking:",
 	"bs-review-comments": "Opmerkingen",
 	"bs-review-colcomment": "Opmerking",

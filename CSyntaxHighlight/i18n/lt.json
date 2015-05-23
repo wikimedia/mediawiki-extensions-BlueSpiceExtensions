@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Rodyti eilučių numerius",
+	"bs-csyntaxhighlight-pref-autolinks": "Nuorodų URL",
+	"bs-csyntaxhighlight-pref-toolbar": "Rodyti įrankių juostą"
+}

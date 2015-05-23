@@ -3,16 +3,24 @@
 		"authors": [
 			"Sjoerddebruin",
 			"SPQRobin",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
+	"bs-flexiskin-label": "Vormgeving",
+	"bs-flexiskin-defaultname": "Standaard",
+	"bs-flexiskin-defaultdesc": "Standaard vormgevingssjabloon.",
+	"prefs-flexiskin": "Vormgeving",
+	"bs-flexiskin-pref-active": "Actieve vormgeving:",
 	"bs-flexiskin-pref-logo": "Logo:",
 	"bs-flexiskin-labelname": "Naam",
 	"bs-flexiskin-labeldesc": "Beschrijving",
 	"bs-flexiskin-headergeneral": "Algemeen",
+	"bs-flexiskin-titleaddskin": "Vormgeving toevoegen",
 	"bs-flexiskin-labelskins": "Sjabloon",
 	"bs-flexiskin-headeractive": "Actief",
 	"bs-flexiskin-labelbgcolor": "Achtergrondkleur",
+	"bs-flexiskin-headerheader": "Koptekst",
 	"bs-flexiskin-labellogoupload": "Logo",
 	"bs-flexiskin-labelbackgroundupload": "Achtergrondafbeelding",
 	"bs-flexiskin-no-repeat": "geen herhaling",

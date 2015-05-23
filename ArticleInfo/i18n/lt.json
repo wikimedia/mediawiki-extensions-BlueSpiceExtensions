@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-articleinfo-desc": "Suteikia informaciją apie puslapį būsenos juostoje",
+	"prefs-articleinfo": "Puslapio informacija",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Atnaujinimo intervalas sekundėmis:",
+	"bs-articleinfo-last-edited": "Laikas nuo paskutinio pakeitimo",
+	"bs-articleinfo-last-edited-tooltip": "Paskutinis taisymas",
+	"bs-articleinfo-last-editor": "Paskutinis {{GENDER:$1|redaguotojas|redaguotoja}}",
+	"bs-articleinfo-categories": "Kategorijos",
+	"bs-articleinfo-more-categories": "Daugiau kategorijų",
+	"bs-articleinfo-all-categories-heading": "Kategorijos",
+	"bs-articleinfo-nocategories": "Kategorijų nerasta.",
+	"bs-articleinfo-hiddencats": "Paslėptos kategorijos",
+	"bs-articleinfo-notemplates": "Nerasta jokių šablonų.",
+	"bs-articleinfo-templates": "Šablonai",
+	"bs-articleinfo-subpages": "Popuslapiai",
+	"bs-articleinfo-subpages-available": "Šiame puslapyje yra popuslapių",
+	"bs-articleinfo-subpages-too-much": "Prieinama daugiau nei 100 popuslapių.",
+	"bs-articleinfo-check-revision": "Galima nauja versija",
+	"bs-articleinfo-check-revision-tooltip": "Perkrauti puslapį",
+	"bs-articleinfo-statebartoplastedited": "Naujausias redagavimas",
+	"bs-articleinfo-statebartoplasteditor": "Naujausias redaktorius",
+	"bs-articleinfo-statebartopcategories": "Kategorijos",
+	"bs-articleinfo-statebartopsubpages": "Popuslapiai",
+	"bs-articleinfo-statebarbodycategories": "Kategorijos",
+	"bs-articleinfo-statebarbodysubpages": "Popuslapiai",
+	"bs-articleinfo-statebarbodytemplates": "Šablonai"
+}

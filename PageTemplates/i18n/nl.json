@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Siebrand"
 		]
 	},
 	"bs-pagetemplates-empty-page": "Lege pagina",
@@ -9,6 +10,13 @@
 	"bs-pagetemplates-dberror": "Er is een databasefout opgetreden.",
 	"bs-pagetemplates-tpl-deleted": "Het sjabloon is verwijderd.",
 	"bs-pagetemplates-general-section": "Algemeen",
+	"bs-pagetemplates-headerlabel": "Label",
 	"bs-pagetemplates-headertargetnamespace": "Naamruimte",
-	"bs-pagetemplates-label-targetns": "Naamruimte"
+	"bs-pagetemplates-tipeditdetails": "Sjabloon bewerken",
+	"bs-pagetemplates-tipaddtemplate": "Sjabloon toevoegen",
+	"bs-pagetemplates-label-tpl": "Sjabloonnaam",
+	"bs-pagetemplates-label-desc": "Beschrijving",
+	"bs-pagetemplates-label-targetns": "Naamruimte",
+	"bs-pagetemplates-label-tplns": "Sjabloonnaamruimte",
+	"bs-pagetemplates-label-article": "Sjabloon"
 }

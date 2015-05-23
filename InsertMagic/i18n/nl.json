@@ -2,9 +2,27 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
+	"bs-insertmagic": "Magisch woord toevoegen",
+	"bs-insertmagic-notoc": "Inhoudsopgave verbergen.",
+	"bs-insertmagic-currentyear": "Huidige jaar",
+	"bs-insertmagic-currentmonth": "Huidige maand (met voorloopnul)",
+	"bs-insertmagic-currentmonthname": "Huidige maand (naam).",
+	"bs-insertmagic-currentmonthnamegen": "Huidige maand (genitiefvorm).",
+	"bs-insertmagic-currentmonthabbrev": "Huidige maand (afkorting).",
+	"bs-insertmagic-currentday": "Dag van de maand (zonder voorloopnul).",
+	"bs-insertmagic-currentday2": "Dag van de maand (met voorloopnul).",
+	"bs-insertmagic-currentdow": "Dag van de week (getal), 0 (zondag) tot en met 6 (zaterdag).",
+	"bs-insertmagic-currentdayname": "Dag van de week (naam).",
+	"bs-insertmagic-currenttime": "Tijd (24-uur UU:mm-opmaak).",
+	"bs-insertmagic-currenthour": "Uur (24-uur met voorloopnul).",
+	"bs-insertmagic-currentweek": "Week (getal).",
+	"bs-insertmagic-currenttimestamp": "Tijdstempel in de opmaak Jjjjmmdduummss.",
+	"bs-insertmagic-sitename": "Sitenaam van de wiki.",
+	"bs-insertmagic-server": "URL van domein.",
 	"bs-insertmagic-servername": "Domeinnaam.",
 	"bs-insertmagic-type-tags": "Tags",
 	"bs-insertmagic-type-variables": "Variabelen",

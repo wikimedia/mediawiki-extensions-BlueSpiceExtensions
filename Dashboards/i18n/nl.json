@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Arg",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Siebrand"
 		]
 	},
 	"bs-specialadmindashboard-label": "Dashboard",
+	"bs-dashboards-portlets": "Portlets",
 	"prefs-dashboards": "Dashboards",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
 	"bs-dashboard-userportlet-calendar-description": "Kalender"

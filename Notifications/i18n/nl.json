@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"bs-echo-anon-user": "anoniem",
+	"bs-echo-unknown-user": "onbekend"
+}

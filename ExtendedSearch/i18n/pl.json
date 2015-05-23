@@ -27,6 +27,7 @@
 	"bs-extendedsearch-result-caption": "$1 - $2 z $3 {{PLURAL:$3|wyniku|wyników}}",
 	"bs-extendedsearch-search-category": "Szukaj w kategoriach:",
 	"bs-extendedsearch-search-editors": "Szukaj autorów:",
+	"bs-extendedsearch-search-namespace": "Szukaj w przestrzeniach nazw:",
 	"bs-extendedsearch-sort-by": "Posortowane według:",
 	"bs-extendedsearch-sort-relevance": "Znaczenie",
 	"bs-extendedsearch-sort-title": "Tytuł",

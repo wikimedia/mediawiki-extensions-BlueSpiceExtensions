@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-contextmenu-page-edit": "Redaguoti puslapį",
+	"bs-contextmenu-page-delete": "Trinti puslapį",
+	"bs-contextmenu-page-move": "Perkelti puslapį",
+	"bs-contextmenu-page-history": "Peržiūrėti puslapio istoriją",
+	"bs-contextmenu-page-protect": "Apsaugoti puslapį",
+	"bs-contextmenu-page-info": "Peržiūrėti puslapio info",
+	"bs-contextmenu-media-reupload": "Įkelti naują versiją",
+	"bs-contextmenu-media-view-page": "Pežiūrėti failo aprašymo puslapį ir failo istroiją",
+	"bs-contextmenu-user-mail": "Siųsti laišką",
+	"bs-contextmenu-user-talk": "Palikti pranešimą aptarimo puslapyje",
+	"bs-contextmenu-file-download": "Atsisiųsti failą"
+}

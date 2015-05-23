@@ -3,7 +3,8 @@
 		"authors": [
 			"Sjoerddebruin",
 			"Romaine",
-			"SPQRobin"
+			"SPQRobin",
+			"Siebrand"
 		]
 	},
 	"bs-extendedsearch-desc": "Uitgebreid zoeken",
@@ -15,6 +16,7 @@
 	"bs-extendedsearch-facet-editors": "Auteurs",
 	"bs-extendedsearch-facet-namespace": "Naamruimte",
 	"bs-extendedsearch-facet-namespace-files": "Bestanden",
+	"bs-extendedsearch-facet-type": "Indeling",
 	"bs-extendedsearch-facet-uncategorized": "Niet gecategoriseerd",
 	"bs-extendedsearch-facet-namespace-extfiles": "Externe bestanden",
 	"bs-extendedsearch-files": "Bestanden zoeken",

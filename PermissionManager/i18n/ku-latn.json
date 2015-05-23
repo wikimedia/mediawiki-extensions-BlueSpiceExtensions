@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"George Animal"
+			"George Animal",
+			"Bikarhêner"
 		]
 	},
 	"bs-permissionmanager-btn-group-label": "Kom:",
@@ -18,7 +19,7 @@
 	"bs-permissionmanager-labeltpled-add": "Nû",
 	"bs-permissionmanager-labeltpled-edit": "Biguherîne",
 	"bs-permissionmanager-labeltpled-delete": "Jê bibe",
-	"bs-permissionmanager-labeltpled-cancel": "Beta bike",
+	"bs-permissionmanager-labeltpled-cancel": "Betal bike",
 	"bs-permissionmanager-msgtpled-success": "Şablon hate tomarkirin.",
 	"bs-permissionmanager-msgtpled-savefailure": "Şablon nikaribû bê tomarkirin.",
 	"bs-permissionmanager-msgtpled-saveonabort": "Tu dixwazî niha hemû daneyan tomar bikî?",
