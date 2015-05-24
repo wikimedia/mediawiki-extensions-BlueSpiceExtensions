@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-authors-desc": "Zeijsch Bellder ussem Profihl  vun de Schrihver vun en Sigg aan.",
+	"prefs-authors": "De Schriiver aan heh dä Sigg",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Schriiver}}|Schriiver}}",
+	"bs-authors-profileimage": "E Beld för em Profihl",
+	"bs-authors-profileimage-change": "Donn dat Beld för em Profihl wähßelle",
+	"bs-authors-show-all-authors": "Et sinn_er noch mih Schrihver doh",
+	"bs-authors-pref-imageheight": "Däm Beld sing Hühde:",
+	"bs-authors-pref-imagewidth": "Däm Beld sing Breijde:",
+	"bs-authors-pref-limit": "De jrühßte Aanzahl Schrihver zom Aanzeije:",
+	"bs-authors-pref-show": "De Schrihver anzeije:",
+	"bs-authors-switch-description": "De Schrihver op heh dä Sigg nit aanzeije:"
+}
