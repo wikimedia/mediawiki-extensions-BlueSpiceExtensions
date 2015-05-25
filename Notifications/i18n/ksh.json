@@ -4,9 +4,27 @@
 			"Purodha"
 		]
 	},
+	"bs-notifications-desc": "Scheck Meddeijlonge övver Änderonge wi vum Metmaacher usjesöhk",
+	"prefs-notifications": "Meddeijlonge",
+	"bs-notifications-pref-notifyns": "Meddeijlonge blohß övver Änderonge en heh dä Appachtemangs:",
+	"bs-notifications-pref-notifynominor": "Kein Meddeijlonge övver de klein Minn_Änderonge",
+	"bs-notifications-pref-active": "Meddeijlonge ennschallde",
+	"bs-echo-anon-user": "namheloßß",
+	"bs-echo-unknown-user": "onbikannt",
+	"bs-echo-page-edit": "De Sigg [[:$1]] wood jeänndert",
+	"bs-echo-page-create": "De Sigg [[:$1]] wood aanjelaht",
+	"bs-echo-page-delete": "De Sigg [[:$1]] wood fott jeschmeße",
+	"bs-echo-page-move": "De Sigg [[:$1]] wood ömjenannt",
+	"bs-echo-page-newuser": "Dä Metmaacher [[:$1]] wood aanjelaat",
+	"bs-echo-page-shoutbox": "En neu ShoutBox-Nohreesch op dä ẞait [[:$1]].",
 	"bs-notifications-email-new-subject": "De Sigg „$1“ aanjalaat {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $3.",
+	"bs-notifications-email-new": "De Sigg „$1“ wood aanjelaat {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $6.\n\n{{int:summary}}:\n $3\nMer kann se övver heh dä Lengk belohre:\n$4",
 	"bs-notifications-email-edit-subject": "De Sigg „$1“ verändert {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $3",
 	"bs-notifications-email-move-subject": "De Sigg „$1“ ömjenannt {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $4.",
 	"bs-notifications-email-move": "De Sigg „$1“ ömjenannt op „$3“ {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $5. Mer kann övver dä Lengk $4 belohre.",
-	"bs-notifications-email-delete-subject": "De Sigg „$1“ fottjeschmeße {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $3"
+	"bs-notifications-email-delete-subject": "De Sigg „$1“ fottjeschmeße {{GENDER:$2|vum|vum|vumm Metmaacher|vun dä|vum}} $3",
+	"echo-category-title-bs-create-cat": "Meddeijlonge övver neu Sigge",
+	"echo-category-title-bs-edit-cat": "Meddeijlonge övver Ännderonge",
+	"echo-category-title-bs-move-cat": "Meddeijlonge övver ömjenannte Sigge",
+	"echo-category-title-bs-newuser-cat": "Meddeijlonge övver neu Metmaacher (blohß aan de Wikki_Köhbeße)"
 }

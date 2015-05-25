@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-checklist-menu-insert-list-title": "Donn en Leß ennföhje",
+	"bs-checklist-menu-insert-checkbox": "Käßje zum Aankrüzze",
+	"bs-checklist-dlg-insert-list-title": "Donn en Leß met Käßje zum Aankrüzze ennföhje",
+	"bs-checklist-dlg-insert-list-value-list": "<!-- Donn en -->Leß met Wääte <!-- ennföhje -->",
+	"bs-checklist-dlg-new-list": "Donn en neuje Leß aanlähje",
+	"bs-checklist-dlg-save-list": "Donn de Änderonge aan dä Leß faßhallde",
+	"bs-checklist-dlg-items-label": "Pongkte en dä Leß",
+	"bs-checklist-dlg-items-emptytext": "En dä Leß es nix dren",
+	"bs-checklist-dlg-panel-title": "Verföhschbahre Leßte",
+	"bs-checklist-dlg-new-title": "Donn en neu Leß dobei",
+	"bs-checklist-dlg-new-prompt": "Jivv en Övverschreff för di Leß en.",
+	"bs-checklist-alert": "Oppjepaß!",
+	"bs-checklist-confirm-dirty-title": "Änderonge sin nit faßjehallde!",
+	"bs-checklist-confirm-dirty-text": "Do hät Änderonge aan dä Pröövleßß jemaht di noch nit faßjelahhde sin. Wells De di Äderonge verhaftesch fottjeschmeße han? <!--  https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-checklist-confirm-dirty-text/ksh -->"
+}

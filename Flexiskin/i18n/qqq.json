@@ -4,7 +4,8 @@
 			"Tobias Weichart <weichart@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Shirayuki"
+			"Shirayuki",
+			"Purodha"
 		]
 	},
 	"bs-flexiskin-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of flexi skin extension",
@@ -12,7 +13,7 @@
 	"bs-flexiskin-defaultname": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for the default skin template\\n{{Identical|Default}}",
 	"bs-flexiskin-defaultdesc": "Description message for the default template.",
 	"bs-flexiskin-error-skinexists": "Error message that a skin with the same name already exists.",
-	"bs-flexiskin-error-fail-add-skin": "Error message that the skin could not be created:\\n*$1 is the reason why the skin could not be created.",
+	"bs-flexiskin-error-fail-add-skin": "Error message that the skin could not be created:\n* $1 is the reason why the skin could not be created.",
 	"bs-flexiskin-reset-error": "Error message that the configuration of the skin could not be reset:\\n*$1 is the reason why the configuration could not be reset.",
 	"bs-flexiskin-error-get-config": "Error message that the configuration of the skin could not be loaded:\\n*$1 is the reason why the configuration could not be loaded.",
 	"bs-flexiskin-error-delete-skin": "Error message that the skin could not deleted\\n*$1 is the reason why the skin could not be deleted.",

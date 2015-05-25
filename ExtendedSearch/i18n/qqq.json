@@ -7,7 +7,8 @@
 			"Robby",
 			"Smuggli",
 			"Ата",
-			"Shirayuki"
+			"Shirayuki",
+			"Purodha"
 		]
 	},
 	"bs-extendedsearch-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended search extension.",
@@ -72,7 +73,7 @@
 	"bs-extendedsearch-pref-showcresuginac": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for show create and suggest links in autocomplete",
 	"bs-extendedsearch-pref-solrserviceurl": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for solr URL:",
 	"bs-extendedsearch-pref-setfocus": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for automatically focus search form (pages only)",
-	"bs-extendedsearch-pref-numfacets": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for number of facets on special page:",
+	"bs-extendedsearch-pref-numfacets": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for number of facets on the special page.",
 	"bs-extendedsearch-pref-showmlt": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for show similar pages",
 	"bs-extendedsearch-pref-solrcore": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for solr core instance:",
 	"bs-extendedsearch-pref-mltns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text.\n\nRefers to {{msg-mw|Bs-extendedsearch-morelikethis}}.",

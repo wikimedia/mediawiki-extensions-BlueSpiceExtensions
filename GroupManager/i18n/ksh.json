@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-groupmanager-grpexists": "Di Jropp jidd_et ald.",
+	"bs-groupmanager-grpadded": "Di Jropp es derbei jedonn.",
+	"bs-groupmanager-grpedited": "Di Jropp es verändert.",
+	"bs-groupmanager-grpremoved": "Di Jropp es fott jescmeße.",
+	"bs-groupmanager-label": "Jroppeverwalldong",
+	"bs-groupmanager-headergroup": "Jropp",
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|Jrop|Jroppe|Jropp}} fottschmiiße",
+	"bs-groupmanager-titlenewgroup": "Neu Jropp",
+	"bs-groupmanager-titleeditgroup": "Jropp ändere",
+	"bs-groupmanager-removegroup": "Wells De heh di {{PLURAL:$1|Jropp|Jroppe|Jropp}} verhaftersch fottschmiiße?",
+	"bs-groupmanager-removegroup-message-success": "Heh di {{PLURAL:$1|Jropp|Jroppe|Jropp}} sn jäz  fottjeschmeße: $2",
+	"bs-groupmanager-removegroup-message-failure": "Heh di {{PLURAL:$1|Jropp|Jroppe|Jropp}} lehße sesch nit fottschmiiße: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Ene Fähler es opjetrodde, woh mer nit met jerääschnet han. Bes esu johd un versöhg est norr_ens.",
+	"bs-groupmanager-lablename": "Jroppe_Nahme:"
+}
