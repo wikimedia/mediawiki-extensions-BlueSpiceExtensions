@@ -18,7 +18,7 @@
 	"bs-extendedsearch-facet-namespace-extfiles": "Datteije vun ußerhallef",
 	"bs-extendedsearch-files": "Search files <!--  https://translatewiki.net/wiki/Thread:Support/New_localization_project_for_Shawiya_(shy)/reply -->",
 	"bs-extendedsearch-finished": "Fähdesch",
-	"bs-extendedsearch-indexing-specialpages": "Indexing {{int:specialpages}} !!FUZZY!!",
+	"bs-extendedsearch-indexing-specialpages": "Indexing {{int:specialpages}} ",
 	"bs-extendedsearch-invalid-query": "Di Frohch kunnte mer nit beärrbeide.",
 	"bs-extendedsearch-nosearchterm": "Bes esu johd un jivve Täx för noh ze söhke en.",
 	"bs-extendedsearch-search-category": "Söhg en de Saachjroppe:",

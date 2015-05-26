@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"2nd-player",
 			"Shirayuki",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Purodha"
 		]
 	},
 	"bs-extendededitbar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended edit bar extension",
@@ -20,7 +21,7 @@
 	"bs-extendededitbar-smalltip": "Text for small\n{{Identical|Small}}",
 	"bs-extendededitbar-smallsample": "Text for small text",
 	"bs-extendededitbar-commenttip": "Tooltip for the \"Insert hidden comment\" button.",
-	"bs-extendededitbar-commentsample": "Text for comment\n{{Identical|Comment}}",
+	"bs-extendededitbar-commentsample": "Prompt for comment\n{{Identical|Comment}}",
 	"bs-extendededitbar-gallerytip": "Tooltip for the \"Insert a picture gallery\" button.",
 	"bs-extendededitbar-gallerysamplepicture": "Text for picture\n{{Identical|Picture}}",
 	"bs-extendededitbar-gallerysamplecaption": "Text for caption\n{{Identical|Caption}}",

@@ -89,5 +89,6 @@
 	"bs-review-header-enddate": "Закінчення",
 	"bs-review-confirm-delete-step": "Ви дійсно хочете вилучити цей крок?",
 	"bs-review-confirm-delete-review": "Ви справді хочете видалити цей відгук?",
-	"bs-review-error-insufficient-permissions": "У вас немає прав на вчинення цієї дії (необхідно \"$1\")."
+	"bs-review-error-insufficient-permissions": "У вас немає прав на вчинення цієї дії (необхідно \"$1\").",
+	"echo-category-title-bs-review-complete-cat": "Сповіщення про завершення огляду"
 }
