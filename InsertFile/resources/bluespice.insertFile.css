@@ -33,3 +33,10 @@ li.x-boundlist-item.indent-1 {
 .bs-ve-image.thumb.center {
 	width: auto;
 }
+
+.bs-insertfile-icon {
+	width: 48px;
+	height: 48px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
