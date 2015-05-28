@@ -1,8 +1,8 @@
 /**
- * This files defines the basic settings for pages and defines the available 
- * areas (marginboxes) for content placement. It also sets up the most 
+ * This files defines the basic settings for pages and defines the available
+ * areas (marginboxes) for content placement. It also sets up the most
  * important components for Paged Media, like page breaks, page counters, etc.
- * 
+ *
  * Additional Information about CSS for Paged Media can be found at:
  *  - http://www.w3.org/TR/2003/WD-css3-page-20030909/
  *  - http://www.w3.org/TR/css3-page/
@@ -84,10 +84,11 @@
 
 .bs-rotated, .rotated {
     page: rotated;
+    width: 25.8cm; /* DIN A4 landscape minus margins minus some space :) : 29.7 - 1 - 2.5 - 0.4 */
     page-break-before: right;
     page-break-after: always;
 }
-		
+
 .bs-narrow, .narrow {
     page: narrow;
     page-break-before: always;
@@ -133,8 +134,8 @@
 
 /* Common Elements */
 body {
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
     border: 0;
 }
 
