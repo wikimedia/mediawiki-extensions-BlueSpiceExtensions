@@ -3,14 +3,18 @@
 		"authors": [
 			"SPQRobin",
 			"Sjoerddebruin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-insertcategory-desc": "Het dialoogvenster voor het invoeren van een categorie link",
 	"bs-insertcategory-insertcat": "Categorie invoegen",
 	"prefs-insertcategory": "Categorie invoegen",
+	"bs-insertcategory-pref-withparents": "Categorie invoegen met haar ouders",
 	"bs-insertcategory-title": "Categorie invoegen",
 	"bs-insertcategory-cat-label": "Toegewezen:",
 	"bs-insertcategory-success": "Categorie toegevoegd",
 	"bs-insertcategory-failure": "Fout",
+	"bs-insertcategory-hint": "Opmerking: voor het toevoegen van een categorie, je moet druk op enter of beëindigen van uw inschrijving met een komma.",
 	"bs-insertcategory-panel-title": "Categorieën"
 }

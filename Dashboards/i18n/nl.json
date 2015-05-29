@@ -3,12 +3,18 @@
 		"authors": [
 			"Arg",
 			"Sjoerddebruin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-dashboards-desc": "Biedt dashboards voor gebruikers en beheerders",
 	"bs-specialadmindashboard-label": "Dashboard",
+	"bs-dashboards-addportlet": "Voeg portlet",
 	"bs-dashboards-portlets": "Portlets",
 	"prefs-dashboards": "Dashboards",
+	"bs-dashboards-pref-userdashboardonlogo": "Een logo van deze Site links naar andere gebruiker dashboard",
+	"admindashboard": "Admin dashboard",
+	"userdashboard": "Gebruikersdashboard",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
 	"bs-dashboard-userportlet-calendar-description": "Kalender"
 }

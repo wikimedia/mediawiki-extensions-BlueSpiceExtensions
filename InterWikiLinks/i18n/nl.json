@@ -1,14 +1,29 @@
 {
 	"@metadata": {
 		"authors": [
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-interwikilinks-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen van interwiki-links",
+	"bs-interwikilinks-invalid-pfx-spc": "De prefix is ongeldig. Gebruik geen spaties.",
+	"bs-interwikilinks-invalid-url-spc": "De URL is ongeldig. Gebruik geen spaties.",
+	"bs-interwikilinks-label": "Interwikilinks",
+	"bs-interwikilinks-link-created": "De interwiki link is gemaakt.",
+	"bs-interwikilinks-link-added": "De interwiki-link toegevoegd.",
+	"bs-interwikilinks-link-deleted": "De interwiki link is verwijderd.",
+	"bs-interwikilinks-nooldpfx": "De vorige prefix is niet gevonden.",
+	"bs-interwikilinks-nopfx": "Gelieve een voorvoegsel.",
+	"bs-interwikilinks-nourl": "Gelieve een URL.",
+	"bs-interwikilinks-pfxtoolong": "De prefix is te lang. Gebruik een maximaal 32 tekens.",
+	"bs-interwikilinks-pfxexists": "Dit voorvoegsel bestaat al.",
 	"bs-interwikilinks-headerprefix": "Voorvoegsel",
 	"bs-interwikilinks-titleaddinterwikilink": "Interwikikoppeling toevoegen",
 	"bs-interwikilinks-titleeditinterwikilink": "Interwikikoppeling bewerken",
 	"bs-interwikilinks-labelprefix": "Voorvoegsel",
 	"bs-interwikilinks-titledeleteinterwikilink": "Interwikilink verwijderen",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Bent u zeker dat u wilt verwijderen in dit interwiki link?",
+	"bs-interwikilinks-insertlink-tabtitle": "Link naar een andere wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Voorvoegsel",
 	"bs-interwikilink-select-a-prefix": "Kies voorvoegsel"
 }

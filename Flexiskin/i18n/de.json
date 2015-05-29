@@ -49,7 +49,7 @@
 	"bs-flexiskin-labelfullwidth": "Maximale Breite",
 	"bs-flexiskin-error-nameempty": "Bitte gib einen validen Namen für den Skin den du erstellen möchtest ein.",
 	"bs-flexiskin-error-templatenotexists": "Das ausgewählte Template existiert nicht.",
-	"bs-flexiskin-api-desc": "API der BlueSpice-Erweiterung Flexiskin.",
+	"bs-flexiskin-api-desc": "API der BlueSpice-Erweiterung „Flexiskin“.",
 	"bs-flexiskin-api-type-desc": "Die auszuführende Aktion, z.B. 'delete'. Standard ist 'get'",
 	"bs-flexiskin-api-mode-desc": "Der Modus der Aktion, z.B. 'config'. Standard ist 'flexiskin'.",
 	"bs-flexiskin-api-id-desc": "Die ID des Flexiskins, optional.",

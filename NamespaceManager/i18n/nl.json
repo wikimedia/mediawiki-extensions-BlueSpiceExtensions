@@ -3,13 +3,21 @@
 		"authors": [
 			"SPQRobin",
 			"Sjoerddebruin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-namespacemanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen naamruimten",
+	"bs-namespacemanager-label": "Naamruimte manager",
+	"bs-namespacemanager-wrong-name": "De naamruimte bevat ongeldige tekens.",
+	"bs-namespacemanager-ns-exists": "De naamruimte bestaat al.",
+	"bs-namespacemanager-ns-length": "De naamruimte moet een minimale lengte hebben van twee tekens.",
+	"bs-namespacemanager-invalid-id": "Geen geldig naamruimte-ID",
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "Naamruimte",
 	"bs-namespacemanager-label-editable": "Te hernoemen",
 	"bs-namespacemanager-label-content": "Inhoudnaamruimte",
+	"bs-namespacemanager-label-searchable": "Zoek standaard",
 	"bs-namespacemanager-label-subpages": "Subpagina's",
 	"bs-namespacemanager-nsadded": "De naamruimte is toegevoegd.",
 	"bs-namespacemanager-nsremoved": "De naamruimte is verwijderd.",
@@ -17,6 +25,13 @@
 	"bs-namespacemanager-tipadd": "Naamruimte toevoegen",
 	"bs-namespacemanager-tipedit": "Naamruimte bewerken",
 	"bs-namespacemanager-tipremove": "Naamruimte verwijderen",
+	"bs-namespacemanager-msgnoteditabledelete": "Deze naam is een systeem naamruimte en kan niet worden verwijderd.",
 	"bs-namespacemanager-labelnsname": "Naamruimtenaam",
-	"bs-namespacemanager-willdelete": "Wordt verwijderd"
+	"bs-namespacemanager-willdelete": "Wordt verwijderd",
+	"bs-namespacemanager-willmove": "Zal verplaatst worden naar \"{{int:bs-ns_main}}\"",
+	"bs-namespacemanager-willmovesuffix": "Zal verplaatst worden naar \"{{int:bs-ns_main}} ' met het achtervoegsel \"$1\"",
+	"bs-namespacemanager-deletewarning": "Bent u zeker dat u wilt verwijderen deze naamruimte? Het verwijderen van een naamruimte kan niet ongedaan worden gemaakt.",
+	"bs-namespacemanager-pagepresent": "Pagina ' s in deze naamruimte:",
+	"bs-namespacemanager-deletens-movepages": "Deze pagina is verplaatst van de naamruimte \"$1\" naamruimte \"{{int:bs-ns_main}}\", omdat de naamruimte \"$1\" is verwijderd.",
+	"bs-namespacemanager-deletens-deletepages": "Deze pagina is verwijderd, omdat de naamruimte \"$1\" is verwijderd."
 }

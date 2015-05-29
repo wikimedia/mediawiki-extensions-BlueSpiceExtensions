@@ -3,11 +3,16 @@
 		"authors": [
 			"Sjoerddebruin",
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-insertfile-desc": "Het dialoogvenster bestanden uploaden en invoegen van een link naar een bestand",
 	"bs-insertfile-insert-image": "Afbeelding invoegen",
 	"bs-insertfile-insert-file": "Bestand invoegen",
+	"bs-insertfile-button-image-title": "Invoegen of bewerken afbeelding",
+	"bs-insertfile-button-file-title": "Invoegen of bewerken bestand",
+	"bs-insertfile-uploadsdisabled": "Uploaden is niet mogelijk in deze wiki.",
 	"bs-insertfile-nomatch": "Geen resultaten",
 	"bs-insertfile-labelsort": "Sorteren op:",
 	"bs-insertfile-labelfilter": "Filter:",
@@ -41,9 +46,18 @@
 	"bs-insertfile-uploadsubmitvalue": "Bestand uploaden",
 	"bs-insertfile-errorloading": "Er is een fout opgetreden tijdens het laden van bestanden.",
 	"bs-insertfile-warning": "Waarschuwing",
+	"bs-insertfile-warningupload": "Er is een file te wachten voor het uploaden. Wil je echt om dit venster te sluiten?",
 	"bs-insertfile-allowedfiletypesare": "Geldige bestandstypen zijn:",
 	"bs-insertfile-error": "Fout",
 	"bs-insertfile-errornofileextensiononupload": "Het bestand dat u gekozen heeft heeft geen extensie.",
+	"bs-insertfile-errornofileextensionondestination": "Het doel u gekozen naam heeft geen extensie.",
+	"bs-insertfile-errorWrongFileExtensionOnUpload": "Het bestand dat u hebt gekozen is niet geldig bestands extensie.",
+	"bs-insertfile-errorWrongImageTypeOnUpload": "Het bestand dat u hebt gekozen is niet toegestaan een afbeelding van het type.",
+	"bs-insertfile-errorWrongFileTypeOnUpload": "Het bestand dat u hebt gekozen is niet toegestaan bestandstype.",
+	"bs-insertfile-errorWrongFileExtensionOnDestination": "Het doel u gekozen naam heeft geen geldige extensie.",
+	"bs-insertfile-errorwrongimagetypeondestination": "Het doel u gekozen naam is niet toegestaan beeld-extensie.",
+	"bs-insertfile-errorwrongfiletypeondestination": "Het doel u gekozen naam heeft geen geldige extensie.",
+	"bs-insertfile-uploadcomplete": "Uw bestand is opgeslagen succesvol.",
 	"bs-insertfile-titlefile": "Bestand toevoegen",
 	"bs-insertfile-titleimage": "Afbeelding invoegen",
 	"bs-insertfile-tipkeepratio": "Verhoudingen behouden",
@@ -52,5 +66,8 @@
 	"bs-insertfile-license": "Licentie",
 	"bs-insertfile-categories": "Categorieën",
 	"bs-insertfile-linktext": "Tekst weergeven",
-	"bs-insertfile-no-link": "Geen koppeling"
+	"bs-insertfile-no-link": "Geen koppeling",
+	"bs-insertfile-error-no-medialink": "Geen media-link geselecteerd.",
+	"bs-insertfile-error-no-imagelink": "Geen afbeelding link geselecteerd.",
+	"bs-insertfile-upload-waitmessage": "Uploaden in progress ..."
 }

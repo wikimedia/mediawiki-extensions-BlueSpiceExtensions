@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Esketti"
 		]
 	},
+	"bs-contextmenu-desc": "Biedt context-menu ' s voor verschillende links",
+	"prefs-contextmenu": "Context menu",
+	"bs-contextmenu-pref-modus": "Open het contextmenu door (niet voor mobiel):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Klik op de rechtermuisknop (CTRL zal te zien zijn standaard browser context menu)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Klik op de rechter muisknop te drukken en te drukken op CTRL (Normale rechter muis knop standaard menu browser)",
 	"bs-contextmenu-page-edit": "Pagina bewerken",
 	"bs-contextmenu-page-delete": "Pagina verwijderen",
 	"bs-contextmenu-page-move": "Pagina hernoemen",
@@ -12,6 +18,7 @@
 	"bs-contextmenu-page-purge": "Cache leegmaken en pagina bekijken",
 	"bs-contextmenu-page-info": "Paginagegevens bekijken",
 	"bs-contextmenu-media-reupload": "Nieuwe versie uploaden",
+	"bs-contextmenu-media-view-page": "Bekijk de beschrijving van het bestand pagina-en file history",
 	"bs-contextmenu-user-mail": "E-mail verzenden",
 	"bs-contextmenu-user-talk": "Bericht achterlaten op overlegpagina",
 	"bs-contextmenu-file-download": "Bestand downloaden"

@@ -2,10 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-permissionmanager-desc": "Administratie-interface voor het bewerken van gebruikersrechten",
+	"prefs-permissionmanager": "Toestemming manager",
+	"bs-permissionmanager-label": "Toestemming manager",
+	"bs-permissionmanager-grouping-global": "Naamruimte onafhankelijke machtigingen",
+	"bs-permissionmanager-grouping-local": "Naamruimte specifieke machtigingen",
 	"bs-permissionmanager-btn-group-label": "Groep:",
+	"bs-permissionmanager-header-permissions": "Rechten",
 	"bs-permissionmanager-header-global": "Wiki",
 	"bs-permissionmanager-header-namespaces": "Naamruimten",
 	"bs-permissionmanager-header-group": "Groep",
@@ -14,6 +21,7 @@
 	"bs-permissionmanager-save-success": "Rechten opgeslagen.",
 	"bs-permissionmanager-labeltemplates": "Sjablonen",
 	"bs-permissionmanager-btn-template-editor": "Sjablonen bewerken",
+	"bs-permissionmanager-labeltpled": "Tekstverwerker voor sjablonen",
 	"bs-permissionmanager-labeltpled-desc": "Beschrijving",
 	"bs-permissionmanager-labeltpled-active": "Actief",
 	"bs-permissionmanager-labeltpled-add": "Nieuw",
@@ -22,11 +30,16 @@
 	"bs-permissionmanager-labeltpled-cancel": "Annuleren",
 	"bs-permissionmanager-msgtpled-success": "Sjabloon opgeslagen.",
 	"bs-permissionmanager-msgtpled-savefailure": "Het sjabloon kon niet worden opgeslagen.",
+	"bs-permissionmanager-msgtpled-saveonabort": "Wilt u voor het opslaan van alle data nu?",
 	"bs-permissionmanager-msgtpled-new": "Sjabloonnaam:",
 	"bs-permissionmanager-msgtpled-edit": "Nieuwe sjabloonnaam:",
 	"bs-permissionmanager-msgtpled-delete": "Sjabloon verwijderd.",
 	"bs-permissionmanager-msgtpled-deletefail": "Het sjabloon kon niet worden verwijderd.",
 	"bs-permissionmanager-titletpled-new": "Sjabloon aanmaken",
 	"bs-permissionmanager-titletpled-edit": "Sjabloon hernoemen",
-	"bs-permissionmanager-titletpled-delete": "Sjabloon verwijderen"
+	"bs-permissionmanager-titletpled-delete": "Sjabloon verwijderen",
+	"bs-permissionmanager-pref-lockmode": "Activeren lockmode",
+	"bs-permissionmanager-pref-skipsysns": "Overslaan systeem naamruimten als lockmode actief",
+	"bs-permissionmanager-pref-enablerealitycheck": "Activeren toestemming controleren",
+	"bs-permissionmanager-unsaved-changes": "Er niet opgeslagen wijzigingen zijn. Wil je echt naar de pagina verlaat nu? De niet-opgeslagen wijzigingen zullen verloren gaan."
 }

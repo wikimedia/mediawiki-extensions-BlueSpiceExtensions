@@ -2,11 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-responsibleeditors-desc": "Laat MediaWiki verantwoordelijk voor het beheren van de redactie voor pagina ' s",
 	"prefs-responsibleeditors": "Verantwoordelijk bewerkers",
 	"bs-responsibleeditors-pref-activatednamespaces": "Ingeschakelde naamruimten:",
+	"bs-responsibleeditors-pref-autoassignonarticlecreation": "Automatisch toewijzen op pagina maken",
+	"bs-responsibleeditors-pref-emailnotificationonresponsibilitychange": "Melden op verantwoordelijkheid wijzigen",
+	"bs-responsibleeditors-pref-responsibleeditormaychangeassignment": "Pagina ' s toevoegen aan de verantwoordelijke van de redactie van zoeklijsten",
+	"bs-responsibleeditors-pref-echange": "Op de hoogte stellen wanneer de pagina is veranderd",
+	"bs-responsibleeditors-pref-edelete": "Op de hoogte stellen wanneer de pagina is verwijderd",
+	"bs-responsibleeditors-pref-emove": "Op de hoogte stellen wanneer de pagina is verplaatst",
+	"bs-responsibleeditors-pref-autopermissions": "Automatische toekenning van rechten:",
+	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "Verantwoordelijk bewerkers",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "De opgegeven pagina bestaat niet.",
 	"bs-responsibleeditors-columnpage": "Pagina",
 	"bs-responsibleeditors-columnresponsibleeditor": "Verantwoordelijk bewerkers",

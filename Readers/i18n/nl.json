@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-readers-desc": "Maakt een lijst van de mensen die het lezen van een pagina",
 	"prefs-readers": "Lezers",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Lezer}}|Lezers}}",
 	"readers-user": "Pagina's {{GENDER:$1|gelezen}} door: $1",

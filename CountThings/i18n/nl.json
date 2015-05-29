@@ -2,14 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"SPQRobin"
+			"SPQRobin",
+			"Esketti"
 		]
 	},
+	"bs-countthings-desc": "Biedt content-based statistieken",
 	"bs-countthings-chars-label": "Karakters",
 	"bs-countthings-words-label": "Woorden",
 	"bs-countthings-pages-label": "Pagina's",
 	"bs-countthings-error-no-input": "Geen pagina opgegeven.",
+	"bs-countthings-error-invalid-mode": "De modus \"$1'is ongeldig. Gebruik de \"tekens\", \"woorden\", of \"pagina ' s\".",
 	"bs-countthings-error-not-exist": "De pagina \"$1\" bestaat niet.",
 	"bs-countthings-tag-countarticles-desc": "Geeft het aantal pagina's weer.",
-	"bs-countthings-tag-countusers-desc": "Geeft het aantal gebruikers weer."
+	"bs-countthings-tag-countusers-desc": "Geeft het aantal gebruikers weer.",
+	"bs-countthings-tag-countcharacters-desc": "Geeft statistieken van de pagina inhoud. Beschikbare configuratie-eigenschap:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>modus</code>: Wat moet worden geteld <code>tekens</code> (tekens), <code>woorden</code> (woorden) of <code>pagina 's</code> (pagina' s)."
 }

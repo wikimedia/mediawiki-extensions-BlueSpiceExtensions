@@ -1,9 +1,40 @@
 {
 	"@metadata": {
 		"authors": [
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-notifications-desc": "Stuurt meldingen op door de gebruiker geselecteerde wijzigingen",
+	"prefs-notifications": "Meldingen",
+	"prefs-echo-extended": "De geavanceerde systeem instellingen",
+	"bs-notifications-pref-notifyns": "Alleen melden voor wijzigingen in deze naamruimten:",
+	"bs-notifications-pref-notifynominor": "Geen aanmelding voor kleine wijzigingen",
+	"bs-notifications-pref-active": "Meldingen inschakelen",
 	"bs-echo-anon-user": "anoniem",
-	"bs-echo-unknown-user": "onbekend"
+	"bs-echo-unknown-user": "onbekend",
+	"bs-echo-page-edit": "De pagina [[:$1]] is gewijzigd",
+	"bs-echo-page-create": "De pagina [[:$1]] is gemaakt",
+	"bs-echo-page-delete": "De pagina [[:$1]] is verwijderd",
+	"bs-echo-page-move": "De pagina [[:$1]] is verplaatst",
+	"bs-echo-page-newuser": "De gebruiker $1 is aangemaakt.",
+	"bs-echo-page-shoutbox": "Een nieuwe ShoutBox bericht op de site van [[:$1]].",
+	"bs-notifications-email-new-subject": "Pagina $1 {{GENDER:$2|gemaakt}} $3",
+	"bs-notifications-email-new": "De pagina \"$1\" is {{GENDER:$2|gemaakt}} $6.\n!\nOpmerking:\n $3 \nU kunt een bezoek de pagina met de volgende link:\n$4",
+	"bs-notifications-email-edit-subject": "Pagina $1 {{GENDER:$2|bewerkt}} $3",
+	"bs-notifications-email-edit": "De pagina \"$1\" is {{GENDER:$2|bewerkt}} $6.\n!\nOpmerking:\n $3 \nU kunt een bezoek de pagina met de volgende link:\n$4.\n!\nAls u alleen de wijzigingen wilt zien, volg deze link\n$5",
+	"bs-notifications-email-move-subject": "Pagina $1 {{GENDER:$2|verplaatst}} $4",
+	"bs-notifications-email-move": "De pagina \"$1\" is {{GENDER:$2|verplaatst}} naar $3 en $  door $5. U kunt een bezoek de pagina met de volgende link:\n$4",
+	"bs-notifications-email-delete-subject": "Pagina $1 {{GENDER:$2|verwijderd}} $3",
+	"bs-notifications-email-delete": "De pagina \"$4\" was {{GENDER:$2|verwijderd}} $5.\n!\nDit was de reden\n$3",
+	"bs-notifications-email-addaccount-subject": "Gebruiker $2 {{GENDER:$1|gemaakt}}",
+	"bs-notifications-email-addaccount": "{{GENDER:$2|gebruiker}} $3 was gemaakt.\n!\nU kunt een bezoek {{GENDER:$2|zijn|haar|de}} - gebruiker pagina de volgende link:\n$1",
+	"bs-notifications-email-shout-subject": "$3 {{GENDER:$2|gepost}} een bericht op de pagina $1",
+	"bs-notifications-email-shout": "$5 {{GENDER:$2|gepost}} een bericht op de pagina \"$1\".\n!\nBericht:\n$3\n!\nU kunt een bezoek de pagina met de volgende link:\n$4.",
+	"echo-category-title-bs-create-cat": "Melding voor nieuwe pagina ' s",
+	"echo-category-title-bs-edit-cat": "Kennisgeving voor bewerkingen",
+	"echo-category-title-bs-move-cat": "Kennisgeving voor verplaatsingen",
+	"echo-category-title-bs-delete-cat": "De aanmelding voor de verwijderingen",
+	"echo-category-title-bs-newuser-cat": "Melding voor nieuwe gebruikers (alleen voor beheerders)",
+	"echo-category-title-bs-shoutbox-cat": "De aanmelding voor de berichten op bekeken pagina ' s (shoutbox)"
 }

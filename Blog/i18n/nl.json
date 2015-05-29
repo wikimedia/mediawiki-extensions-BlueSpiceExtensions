@@ -2,16 +2,34 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"SPQRobin"
+			"SPQRobin",
+			"Esketti"
 		]
 	},
+	"bs-blog-desc": "Geeft een blog style lijst van pagina ' s",
 	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Er is geen blog.",
 	"bs-blog-comments": "Reacties",
 	"bs-blog-read-more": "Lees meer",
+	"bs-blog-trackback": "Trackback",
 	"bs-blog-permalink": "Permanente koppeling",
 	"bs-blog-show-all": "Alle berichten weergeven",
 	"bs-blog-form-inline-text": "Titel ...",
+	"bs-blog-form-title-text": "Maak nieuwe blog",
 	"bs-blog-form-button-text": "Aanmaken",
 	"bs-blog-blog": "Blog",
-	"bs-blog-pref-sortby": "Sorteren op:"
+	"bs-blog-pref-moreinnewwindow": "Open nieuw venster lees meer",
+	"bs-blog-pref-newentryfieldposition": "Positie voor de nieuwe blog-entry formulier:",
+	"bs-blog-pref-showall": "Alle berichten weergeven",
+	"bs-blog-pref-showinfo": "Toon informatie over het item",
+	"bs-blog-pref-showlimit": "Aantal blog entries:",
+	"bs-blog-pref-shownewentryfield": "Nieuwe blog-entry-formulier",
+	"bs-blog-pref-showpermalink": "Toon permalink link",
+	"bs-blog-pref-sortby": "Sorteren op:",
+	"bs-blog-pref-imagerendermode": "Afbeeldingen weergeven",
+	"bs-blog-pref-imagefloatdirection": "Tekst flow: de beeldpositie",
+	"bs-blog-pref-maxentrycharacters": "Aantal woorden per invoer:",
+	"bs-blog-tag-blog-desc": "Display blogberichten op elke pagina.",
+	"bs-blog-tag-blogtime-desc": "Deze tag geeft u de mogelijkheid om een aangepaste tijdstempel voor de blog-entries.",
+	"bs-blog-tag-blogtime-err": "Het formaat te worden YYYYMMDDHHmm d.w.z. voor 12. Jan. 2013 15:43 de tijdstempels eruit ziet: 201301121543"
 }

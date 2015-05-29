@@ -3,9 +3,11 @@
 		"authors": [
 			"SPQRobin",
 			"Sjoerddebruin",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-extendededitbar-desc": "Biedt extra knoppen op het bewerk-veld",
 	"bs-extendededitbar-redirecttip": "Doorverwijzing",
 	"bs-extendededitbar-redirectsample": "Tekst invoegen",
 	"bs-extendededitbar-striketip": "Doorhalen",
@@ -22,6 +24,7 @@
 	"bs-extendededitbar-gallerytip": "Een fotogalerij invoegen",
 	"bs-extendededitbar-gallerysamplepicture": "Afbeelding",
 	"bs-extendededitbar-gallerysamplecaption": "Bijschrift",
+	"bs-extendededitbar-quotetip": "Plaats een blok van geciteerde tekst",
 	"bs-extendededitbar-quotesample": "Blockquote",
 	"bs-extendededitbar-tabletip": "Tabel invoegen",
 	"bs-extendededitbar-tablesampleheader": "Koptekst",

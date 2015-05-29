@@ -3,9 +3,11 @@
 		"authors": [
 			"SPQRobin",
 			"Sjoerddebruin",
-			"Romaine"
+			"Romaine",
+			"Esketti"
 		]
 	},
+	"bs-extensioninfo-desc": "Lijst met informatie over de geladen extensies",
 	"bs-extensioninfo-label": "Uitbreidingen",
 	"bs-extensioninfo-software": "Software",
 	"bs-extensioninfo-version": "Versie",

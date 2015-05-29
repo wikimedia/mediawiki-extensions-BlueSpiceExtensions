@@ -3,9 +3,11 @@
 		"authors": [
 			"Sjoerddebruin",
 			"Romaine",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-formattinghelp-desc": "Hiermee wordt help-informatie voor de opmaak van de tekst",
 	"bs-formattinghelp-formatting": "Hulp bij opmaak",
 	"bs-formattinghelp-help-syntax": "Syntax",
 	"bs-formattinghelp-help-example-text": "Tekst",

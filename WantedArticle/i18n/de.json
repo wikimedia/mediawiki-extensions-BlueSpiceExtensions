@@ -10,7 +10,7 @@
 	"bs-wantedarticle-desc": "Listet eine neu erstellte Seite in der Liste der gewünschten Seiten auf",
 	"prefs-wantedarticle": "Gewünschte Seiten",
 	"bs-wantedarticle-ajax-error-no-parameter": "Es wurde kein Seitentitel angegeben.",
-	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Die Seite „$1“ existiert bereits.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Die Seite „$1“ ist bereits vorhanden.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Die Seite „$1“ wurde bereits vorgeschlagen.",
 	"bs-wantedarticle-edit-comment-suggestion-added": "Vorschlag „$1“ eingetragen.",
 	"bs-wantedarticle-success-suggestion-entered": "Dein Vorschlag „$1“ wurde eingetragen.",
