@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Esketti"
 		]
 	},
-	"prefs-usersidebar": "Gebruikerszijbalk"
+	"bs-usersidebar-desc": "Voegt de focus op het tabblad zijbalk",
+	"prefs-usersidebar": "Gebruikerszijbalk",
+	"bs-usersidebar-userpagesettings-link-title": "Het bewerken van de inhoud van uw focus",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Edit}} focus"
 }
