@@ -84,10 +84,12 @@
 	"bs-review-labelcomment": "Opmerking",
 	"bs-review-header-page-title": "Pagina",
 	"bs-review-header-owner-name": "Eigenaar",
+	"bs-review-header-assessors": "Assessoren",
 	"bs-review-header-accepted-text": "Staat",
 	"bs-review-header-startdate": "Starten",
 	"bs-review-header-enddate": "Eind",
 	"bs-review-confirm-delete-step": "Wilt u echt te verwijderen van deze stap?",
 	"bs-review-confirm-delete-review": "Wilt u echt te verwijderen van deze review?",
-	"bs-review-error-insufficient-permissions": "U hebt niet de toestemming voor het uitvoeren van deze actie (\"$1\" nodig)."
+	"bs-review-error-insufficient-permissions": "U hebt niet de toestemming voor het uitvoeren van deze actie (\"$1\" nodig).",
+	"echo-category-title-bs-review-complete-cat": "Aanmelding voor het invullen van een review"
 }

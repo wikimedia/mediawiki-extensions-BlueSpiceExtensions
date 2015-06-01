@@ -1,10 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Esketti"
 		]
 	},
+	"bs-watchlist-desc": "Voegt een watchlist widget en tag",
 	"bs-watchlist-title-sidebar": "Volglijst",
+	"bs-watchlist-pref-widgetlimit": "Beperken van gegevens in:",
 	"bs-watchlist-pref-widgetsortodr": "Sorteren op:",
-	"bs-watchlist-pref-sort-title": "Titel"
+	"bs-watchlist-pref-sort-time": "Tijd",
+	"bs-watchlist-pref-sort-title": "Titel",
+	"bs-watchlist-tag-watchlist-desc": "Maakt een lijst van pagina ' s die op je volglijst en hebben een niet-ziende wijzigen."
 }

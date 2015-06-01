@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Ebraminio"
 		]
 	},
 	"bs-notifications-desc": "آگاه‌سازی برای تغییرات انتخاب‌شده کاربر می‌فرستد",
@@ -9,7 +10,7 @@
 	"prefs-echo-extended": "تنظیمات پیشرفته سیستم",
 	"bs-notifications-pref-notifyns": "آگاه‌رسانی فقط برای تغییرات این فضاهای نام:",
 	"bs-notifications-pref-notifynominor": "بدون آگاهی برای تغییرات جزئی",
-	"bs-notifications-pref-active": "فعال‌کردن آگاه‌سازی‌ها",
+	"bs-notifications-pref-active": "فعال کردن آگاه‌سازی‌ها",
 	"bs-echo-anon-user": "ناشناس",
 	"bs-echo-unknown-user": "ناشناخته",
 	"bs-echo-page-edit": "صفحه [[:$1]] تغییر یافت",

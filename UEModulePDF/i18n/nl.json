@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Esketti"
+		]
+	},
+	"bs-uemodulepdf-desc": "Laat MediaWiki te exporteren pagina ' s in PDF-formaat",
+	"prefs-uemodulepdf": "Universele exporteren van PDF-module",
+	"uemodulepdf": "Universele exporteren van PDF-module",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Backend URL:",
+	"bs-uemodulepdf-pref-templatepath": "Standaard template:",
+	"bs-uemodulepdf-pref-templatedir": "Template:",
+	"bs-uemodulepdf-pref-suppressns": "Verbergen namespace prefix in PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF van één pagina",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exporteer deze pagina als PDF.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Exporteert de pagina 's (speciale pagina' s en content pagina ' s) naar PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "Backend staat",
+	"bs-uemodulepdf-overview-webservice-state-ok": "Beschikbaar",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "Niet beschikbaar",
+	"soap-service-url-not-valid": "De URL naar de PDF genereren van web service is niet geldig. Raadpleeg de wiki-configuratie.",
+	"soap-service-url-not-set": "De URL naar de PDF genereren van web service is niet ingesteld. Raadpleeg de wiki-configuratie.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Backend web interface"
+}

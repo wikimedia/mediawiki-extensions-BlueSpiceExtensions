@@ -1,8 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Esketti"
 		]
 	},
-	"prefs-saferedit": "Veiliger bewerken"
+	"bs-saferedit-desc": "Tussentijdse het opslaan van wiki bewerkingen",
+	"prefs-saferedit": "Veiliger bewerken",
+	"bs-saferedit-restore": "Terugplaatsen",
+	"bs-saferedit-safer-edit-tooltip": "Een recovery versie is beschikbaar.",
+	"bs-saferedit-safer-edit-topbar": "Herstel",
+	"bs-saferedit-user-editing": "$1 is {{GENDER:$1|bewerking}} van de pagina",
+	"bs-saferedit-someone-editing": "De pagina wordt bewerkt",
+	"bs-saferedit-pref-interval": "Recovery versie interval:",
+	"bs-saferedit-pref-shownameofeditinguser": "Toon de naam van de huidige editor",
+	"bs-saferedit-pref-warnonleave": "Waarschuwen als u een bewerkte pagina wilt verlaten die nog niet is opgeslagen",
+	"bs-saferedit-pref-usese": "Activeren veiliger bewerken",
+	"bs-saferedit-statebartopsaferedit": "Veiliger bewerken",
+	"bs-saferedit-statebartopsafereditediting": "Veiliger bewerken - iemand bewerken",
+	"bs-saferedit-lastsavedversion": "Laatst opgeslagen versie van $1 - $2.",
+	"bs-saferedit-unsavedchanges": "Er niet opgeslagen wijzigingen zijn.",
+	"bs-saferedit-othersectiontitle": "Sectie herstellen",
+	"bs-saferedit-othersectiontext1": "Er is een back-up van een andere sectie.",
+	"bs-saferedit-othersectiontext2": "De back-up is gemaakt op een $1 - $2.",
+	"bs-saferedit-othersectiontext3": "Wilt u om over te schakelen naar die sectie te gaan?"
 }
