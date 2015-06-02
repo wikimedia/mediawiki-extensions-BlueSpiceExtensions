@@ -173,7 +173,7 @@ class PermissionManager extends BsExtensionMW {
 		global $wgAdditionalGroups, $wgGroupPermissions, $wgNamespacePermissionLockdown;
 		if (!BsConfig::get('MW::PermissionManager::Lockmode')) {
 			$bSave = false;
-			if (isset($wgGroupPermissions[self::$sPmLockModeGroup])) {
+			if (isset($wgGroupPermissions[self::$sPmLockModeGroup]) && !empty($wgGroupPermissions[self::$sPmLockModeGroup]) ) {
 				unset($wgGroupPermissions[self::$sPmLockModeGroup]);
 				$bSave = true;
 			}
