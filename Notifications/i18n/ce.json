@@ -6,5 +6,6 @@
 	},
 	"prefs-notifications": "Хаамаш",
 	"bs-echo-unknown-user": "хууш дац",
-	"bs-echo-page-create": "[[:$1]] агӀонгахь кхоьллина"
+	"bs-echo-page-create": "[[:$1]] агӀонгахь кхоьллина",
+	"bs-echo-page-delete": "[[:$1]] агӀо дӀаяьккхина"
 }
