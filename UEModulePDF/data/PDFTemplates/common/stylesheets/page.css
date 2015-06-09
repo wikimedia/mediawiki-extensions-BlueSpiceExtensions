@@ -83,92 +83,93 @@
 @page ultrawide { size: 58.4cm 21cm; }
 
 .bs-rotated, .rotated {
-    page: rotated;
-    width: 25.8cm; /* DIN A4 landscape minus margins minus some space :) : 29.7 - 1 - 2.5 - 0.4 */
-    page-break-before: right;
-    page-break-after: always;
+	page: rotated;
+	width: 25.8cm; /* DIN A4 landscape minus margins minus some space :) : 29.7 - 1 - 2.5 - 0.4 */
+	page-break-before: right;
+	page-break-after: always;
 }
 
 .bs-narrow, .narrow {
-    page: narrow;
-    page-break-before: always;
-    page-break-after: always;
+	page: narrow;
+	page-break-before: always;
+	page-break-after: always;
 }
 
 .bs-ultrawide, .ultrawide {
-    page: ultrawide;
-    page-break-before: always;
-    page-break-after: always;
+	page: ultrawide;
+	page-break-before: always;
+	page-break-after: always;
 }
 
 /* Generated content elements */
 .bs-currentpagenumber:after,
 .currentpagenumber:after {
-    content: counter( page );
+	content: counter( page );
 }
 
 .bs-totalpagescount:after,
 .totalpagescount:after {
-    content: counter( pages );
+	content: counter( pages );
 }
 
 .bs-universalexport-pagebreak,
 .bs-pagebreak,
 .pagebreak {
-    page-break-after: always;
-    visibility: hidden;
+	page-break-after: always;
+	visibility: hidden;
 }
 
 .bs-section,
 .bs-custompage,
 .bs-page-content {
-    page-break-after: always;
-    clear: both;
+	page-break-after: always;
+	clear: both;
 }
 
 .bs-section:last-child,
 .bs-custompage:last-child,
 .bs-page-content:last-child {
-    page-break-after: avoid;
+	page-break-after: avoid;
 }
 
 /* Common Elements */
 body {
-    margin: 0;
-    padding: 0;
-    border: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 div, p, ul, ol, dl {
-    orphans: 3 !important;
-    widows: 5 !important;
-    page-break-inside: avoid;
+	orphans: 3 !important;
+	widows: 5 !important;
+	page-break-inside: avoid;
 }
 
 img, ul, ol, dl {
-    page-break-before: avoid;
+	page-break-before: avoid;
 }
 
 /* MediaWiki specific? --> mediawiki.css */
 div.thumb {
-    page-break-before: avoid;
-    page-break-inside: avoid;
+	page-break-before: avoid;
+	page-break-inside: avoid;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    page-break-after: avoid;
+	page-break-after: avoid;
+	clear:both;
 }
 
 table {
-    clear: both; /* Is this wise? Prevents floating thumbs from overlapping into tables and TOC table */
-    -fs-table-paginate: paginate; /* special xhtmlrenderer (flying saucer -> fs) property */
-    page-break-inside: avoid;
+	clear: both; /* Is this wise? Prevents floating thumbs from overlapping into tables and TOC table */
+	-fs-table-paginate: paginate; /* special xhtmlrenderer (flying saucer -> fs) property */
+	page-break-inside: avoid;
 }
 
 thead {
-    page-break-after: avoid;
+	page-break-after: avoid;
 }
 
 tbody {
-    inside: avoid;
+	inside: avoid;
 }
