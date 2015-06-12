@@ -1524,7 +1524,7 @@ var BsWikiCode = function() {
 						if (listTag.length > 0) {
 							text = text.replace(/<\/blockquote>/, "\n" + listTag + " ");
 						} else {
-							text = text.replace(/<\/blockquote>/, "");
+							text = text.replace(/<\/blockquote>/, "\n");
 						}
 					}
 					break;
