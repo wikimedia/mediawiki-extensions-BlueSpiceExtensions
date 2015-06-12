@@ -353,16 +353,18 @@ class VisualEditor extends BsExtensionMW {
 			)
 		);
 
-		foreach(  $this->aConfigStandard['style_formats'] as &$aStyles ){
+		foreach( $this->aConfigStandard['style_formats'] as &$aStyles ){
 			foreach ( $aStyles as $key => &$val ){
-				if ( $key == "title" ) {
-					$oMsg = wfMessage($val);
+				if ( $key === "title" ) {
+					$oMsg = wfMessage( $val );
+					if ( $oMsg->exists() ) {
+						$val = $oMsg->plain();
+					}
 				}
-				if ( $oMsg->exists() ) {
-					$val = $oMsg->plain();
-				} elseif ( $key == "items" && is_array($val) ){
+
+				if ( $key === "items" && is_array($val) ){
 					foreach ( $val as &$item ) {
-						$oMsg = wfMessage($item['title']);
+						$oMsg = wfMessage( $item['title'] );
 						if ( $oMsg->exists() ) {
 							$item['title'] = $oMsg->plain();
 						}
