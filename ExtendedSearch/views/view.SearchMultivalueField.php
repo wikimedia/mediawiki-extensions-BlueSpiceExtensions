@@ -68,9 +68,11 @@ class ViewSearchMultivalueField extends ViewBaseElement {
 		$sEntries = '';
 		foreach ( $this->entries as $datasetArray ) {
 			$bSelected = false;
-			if ( isset( $datasetArray['selected'] ) && $datasetArray['selected'] === true ) $bSelected = true;
+			if ( isset( $datasetArray['selected'] ) && $datasetArray['selected'] === true ) {
+				$bSelected = true;
+			}
 			$sEntries .= Xml::option( 
-				htmlentities( $datasetArray['text'], ENT_QUOTES, 'UTF-8' ),
+				htmlspecialchars( $datasetArray['text'], ENT_QUOTES, 'UTF-8' ),
 				$datasetArray['value'],
 				$bSelected
 			);
