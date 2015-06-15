@@ -540,6 +540,10 @@ $aData = false;
 		if ( class_exists( 'EchoEvent' ) ) {
 			$oCurrentUser = RequestContext::getMain()->getUser();
 			foreach ( $aUsers as $oUser ) {
+				#if you're mentioning yourself don't send notification
+				if ( $oUser->getId() === $iUserId ) {
+					continue;
+				}
 				EchoEvent::create( array(
 					'type' => 'bs-shoutbox-' . $sAction,
 					'title' => Article::newFromID( $iArticleId )->getTitle(),
