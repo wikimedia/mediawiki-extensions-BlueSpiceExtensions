@@ -84,7 +84,8 @@ BsStateBar = {
 	},
 
 	viewTogglerClick: function( inputObject ) {
-		inputObject.click(function(){
+		inputObject.click( function ( e ) {
+			e.preventDefault();
 			BsStateBar.oStateBarView.slideToggle( 'fast' );
 			$('#bs-statebar-viewtoggler').toggleClass('open');
 			BsStateBar.getStateBarBody();
