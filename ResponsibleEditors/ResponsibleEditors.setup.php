@@ -12,7 +12,6 @@ $GLOBALS['wgAutoloadClasses']['ResponsibleEditors'] = __DIR__ . '/ResponsibleEdi
 $wgAutoloadClasses['BsResponsibleEditor'] = __DIR__ . '/includes/BsResponsibleEditor.php';
 $wgAutoloadClasses['SpecialResponsibleEditors'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.class.php';
 
-$wgSpecialPageGroups['ResponsibleEditors'] = 'bluespice';
 $wgSpecialPages['ResponsibleEditors'] = 'SpecialResponsibleEditors';
 
 $aResourceModuleTemplate = array(

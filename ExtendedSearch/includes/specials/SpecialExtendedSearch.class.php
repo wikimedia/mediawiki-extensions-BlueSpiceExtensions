@@ -42,4 +42,7 @@ class SpecialExtendedSearch extends BsSpecialPage {
 
 	}
 
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

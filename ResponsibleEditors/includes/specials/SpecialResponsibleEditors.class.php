@@ -213,4 +213,8 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 
 		BsMailer::getInstance('MW')->send( $aRemovedEditors, $sSubject, $sMessage );
 	}
+
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

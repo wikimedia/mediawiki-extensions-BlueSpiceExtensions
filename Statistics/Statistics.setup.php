@@ -82,7 +82,6 @@ $wgAutoloadClasses['Interval'] = __DIR__ . '/includes/Interval.class.php';
 $wgAutoloadClasses['BsCharting'] = __DIR__ . '/includes/Charting.class.php';
 
 $wgAutoloadClasses['SpecialExtendedStatistics'] = __DIR__ . '/includes/specials/SpecialExtendedStatistics.class.php'; # Location of the SpecialMyExtension class (Tell MediaWiki to load this file)
-$wgSpecialPageGroups['ExtendedStatistics'] = 'bluespice';
 $wgExtensionMessagesFiles['ExtendedStatisticsAlias'] = __DIR__ . '/includes/specials/SpecialExtendedStatistics.alias.php'; # Location of an aliases file (Tell MediaWiki to load this file)
 $wgSpecialPages['ExtendedStatistics'] = 'SpecialExtendedStatistics'; # Tell MediaWiki about the new special page and its class name
 

@@ -15,10 +15,10 @@ $wgAPIListModules['bsboilerplate'] = 'ApiQueryBoilerPlate';
 If you have any SpecialPages in your extension place the source files here.
 Don't forget to register them with the MediaWiki autoloader in the setup file.
 You will also need an aliases file for proper i18n of your special page.
+Override SpecialPage::getGroupName to 'bluespice'.
 
 ```php
 $GLOBALS['wgAutoloadClasses']['BoilerPlate'] = __DIR__ . '/includes/SpecialBoilerPlate.php';
-$wgSpecialPageGroups['BoilerPlate'] = 'bluespice';
 $wgSpecialPages['BoilerPlate'] = 'SpecialBoilerPlate';
 ```
 
