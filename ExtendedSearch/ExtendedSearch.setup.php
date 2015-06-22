@@ -96,7 +96,6 @@ $wgAutoloadClasses['ViewExtendedSearchResultEntry'] = __DIR__ . '/views/view.Ext
 
 // Specialpage and messages
 $wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.class.php';
-$wgSpecialPageGroups['SpecialExtendedSearch'] = 'bluespice';
 $wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/languages/SpecialExtendedSearch.alias.php';
 $wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch';
 

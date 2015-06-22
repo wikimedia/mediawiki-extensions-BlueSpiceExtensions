@@ -17,9 +17,6 @@ $wgAutoloadClasses['DashboardConfigTable'] = __DIR__.'/includes/DashboardConfigT
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';
 
-$wgSpecialPageGroups['AdminDashboard'] = 'bluespice';
-$wgSpecialPageGroups['UserDashboard']  = 'bluespice';
-
 $wgAjaxExportList[] = 'Dashboards::saveAdminDashboardConfig';
 $wgAjaxExportList[] = 'Dashboards::saveUserDashboardConfig';
 $wgAjaxExportList[] = 'Dashboards::saveTagDashboardConfig';

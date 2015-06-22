@@ -39,4 +39,8 @@ class SpecialPageAccess extends BsSpecialPage {
 			$oOutputPage->addHtml( "<br/>" );
 		}
 	}
+
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

@@ -11,8 +11,6 @@ $wgAutoloadClasses['SpecialReaders']  = __DIR__.'/includes/specials/SpecialReade
 
 $wgSpecialPages['Readers'] = 'SpecialReaders';
 
-$wgSpecialPageGroups['Readers'] = 'bluespice';
-
 $wgAjaxExportList[] = 'Readers::getUsers';
 $wgAjaxExportList[] = 'Readers::getData';
 

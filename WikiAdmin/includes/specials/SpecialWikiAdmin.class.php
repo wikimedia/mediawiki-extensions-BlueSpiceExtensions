@@ -63,4 +63,7 @@ class SpecialWikiAdmin extends BsSpecialPage {
 		return $form;
 	}
 
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

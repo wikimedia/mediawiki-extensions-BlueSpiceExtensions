@@ -12,7 +12,6 @@ $wgExtensionMessagesFiles['RSSFeederAlias'] = __DIR__ . '/languages/SpecialRSSFe
 $wgAutoloadClasses['SpecialRSSFeeder'] = __DIR__ . '/includes/specials/SpecialRSSFeeder.class.php';
 $wgAutoloadClasses['RSSCreator'] = __DIR__ . '/includes/RSSCreator.class.php';
 
-$wgSpecialPageGroups['RSSFeeder'] = 'bluespice';
 $wgSpecialPages['RSSFeeder'] = 'SpecialRSSFeeder';
 
 $wgAjaxExportList[] = 'RSSFeeder::getRSS';

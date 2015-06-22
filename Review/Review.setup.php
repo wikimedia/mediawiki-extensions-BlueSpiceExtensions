@@ -56,8 +56,6 @@ $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessSt
 
 $wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.StateBarBodyElementReview.php';
 
-$wgSpecialPageGroups['Review'] = 'bluespice';
-
 $wgSpecialPages['Review'] = 'SpecialReview';
 
 $wgAjaxExportList[] = 'Review::doEditReview';

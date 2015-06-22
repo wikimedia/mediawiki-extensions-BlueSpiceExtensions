@@ -11,7 +11,6 @@ $wgExtensionMessagesFiles['ExtensionInfoAlias'] = __DIR__ . '/languages/SpecialE
 $wgAutoloadClasses['SpecialExtensionInfo'] = __DIR__ . '/includes/specials/SpecialExtensionInfo.class.php';
 $wgAutoloadClasses['ViewExtensionInfoTable'] = __DIR__ . '/includes/ViewExtensionInfoTable.php';
 
-$wgSpecialPageGroups['ExtensionInfo'] = 'bluespice';
 $wgSpecialPages['ExtensionInfo'] = 'SpecialExtensionInfo';
 
 $wgResourceModules['ext.bluespice.extensioninfo.styles'] = array(

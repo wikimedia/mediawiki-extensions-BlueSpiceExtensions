@@ -261,4 +261,8 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 
 		return true;
 	}
+
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

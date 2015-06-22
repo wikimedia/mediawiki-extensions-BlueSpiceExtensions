@@ -75,4 +75,7 @@ class SpecialRSSFeeder extends BsSpecialPage {
 		return $oChannel->buildOutput();
 	}*/
 
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

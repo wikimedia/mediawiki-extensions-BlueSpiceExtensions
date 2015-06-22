@@ -35,4 +35,7 @@ class SpecialExtensionInfo extends BsSpecialPage {
 		return $oViewExtensionInfoTable->execute();
 	}
 
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }
