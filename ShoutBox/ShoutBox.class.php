@@ -336,6 +336,7 @@ class ShoutBox extends BsExtensionMW {
 		if ( strlen( $sMessage ) > BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ) ) {
 			$sMessage = substr( $sMessage, 0, BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ) );
 		}
+		$sMessage = htmlspecialchars( $sMessage, ENT_QUOTES, 'UTF-8' );
 
 		// TODO MRG (08.09.10 01:57): error message
 		if ( $iArticleId <= 0 ) return false;
