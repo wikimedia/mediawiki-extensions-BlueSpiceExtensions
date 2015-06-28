@@ -4,10 +4,11 @@
 			"Shirayuki",
 			"Mfuji",
 			"2nd-player",
-			"赤城。"
+			"赤城。",
+			"Sujiniku"
 		]
 	},
-	"bs-flexiskin-desc": "外装を作成する機能を追加する",
+	"bs-flexiskin-desc": "カスタム オプションで flexiskins を管理するためのページを提供する",
 	"bs-flexiskin-label": "外装",
 	"bs-flexiskin-defaultname": "既定",
 	"bs-flexiskin-error-skinexists": "この名前の外装は既に存在します。",
