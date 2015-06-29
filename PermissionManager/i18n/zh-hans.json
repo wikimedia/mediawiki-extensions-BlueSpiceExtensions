@@ -18,7 +18,7 @@
 	"bs-permissionmanager-btn-save-label": "保存",
 	"bs-permissionmanager-btn-save-in-progress-label": "保存中…",
 	"bs-permissionmanager-save-success": "权限已保存。",
-	"bs-permissionmanager-labeltemplates": "模版",
+	"bs-permissionmanager-labeltemplates": "模板",
 	"bs-permissionmanager-btn-template-editor": "编辑模板",
 	"bs-permissionmanager-labeltpled": "模板编辑器",
 	"bs-permissionmanager-labeltpled-desc": "说明",
