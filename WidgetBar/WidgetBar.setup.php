@@ -19,6 +19,7 @@ $wgResourceModules['ext.bluespice.widgetbar.style'] = array(
 
 $wgResourceModules['ext.bluespice.widgetbar'] = array(
 	'scripts' => 'bluespice.widgetBar.js',
+	'dependencies' => array ( 'jquery.cookie' ),
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 

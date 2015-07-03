@@ -16,7 +16,8 @@ $aResourceModuleTemplate = array(
 );
 
 $wgResourceModules['ext.bluespice.preferences'] = array(
-	'scripts' => 'bluespice.preferences.js'
-) + $aResourceModuleTemplate;
+	'scripts' => 'bluespice.preferences.js',
+	'dependencies' => array ( 'jquery.cookie' ),
+	) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

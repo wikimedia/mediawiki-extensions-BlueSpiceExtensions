@@ -9,6 +9,7 @@ $wgExtensionMessagesFiles['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/langua
 $wgResourceModules['ext.bluespice.blueSpiceprojectfeedbackhelper'] = array(
 	'styles' => 'extensions/BlueSpiceExtensions/BlueSpiceProjectFeedbackHelper/resources/bluespice.blueSpiceProjectFeedbackHelper.css',
 	'scripts' => 'extensions/BlueSpiceExtensions/BlueSpiceProjectFeedbackHelper/resources/bluespice.blueSpiceProjectFeedbackHelper.js',
+	'dependencies' => array ( 'jquery.cookie' ),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
