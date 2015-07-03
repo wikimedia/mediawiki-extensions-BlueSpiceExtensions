@@ -31,47 +31,47 @@ a.bs-button-32:hover {
 	border: 1px solid #cfcfcf
 }
 
-#mw-editbutton-bold {
+#bs-extendededitbar #mw-editbutton-bold {
 	/*@embed*/
 	background-image: url(images/button_format-bold.png);
 }
 
-#mw-editbutton-italic {
+#bs-extendededitbar #mw-editbutton-italic {
 	/*@embed*/
 	background-image: url(images/button_format-italic.png);
 }
 
-#mw-editbutton-headline {
+#bs-extendededitbar #mw-editbutton-headline {
 	/*@embed*/
 	background-image: url(images/button_format-h2.png);
 }
 
-#mw-editbutton-link {
+#bs-extendededitbar #mw-editbutton-link {
 	/*@embed*/
 	background-image: url(images/button_internal-link.png);
 }
 
-#mw-editbutton-extlink {
+#bs-extendededitbar #mw-editbutton-extlink {
 	/*@embed*/
 	background-image: url(images/button_external-link.png);
 }
 
-#mw-editbutton-strike {
+#bs-extendededitbar #mw-editbutton-strike {
 	/*@embed*/
 	background-image: url(images/button_format-struck.png);
 }
 
-#mw-editbutton-image {
+#bs-extendededitbar #mw-editbutton-image {
 	/*@embed*/
 	background-image: url(images/button_filelink.png);
 }
 
-#mw-editbutton-media {
+#bs-extendededitbar #mw-editbutton-media {
 	/*@embed*/
 	background-image: url(images/button_medialink.png);
 }
 
-#mw-editbutton-signature {
+#bs-extendededitbar #mw-editbutton-signature {
 	/*@embed*/
 	background-image: url(images/button_signatur.png);
 }
