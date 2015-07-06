@@ -188,9 +188,10 @@ class GroupManager extends BsExtensionMW {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
 			return FormatJson::encode( array(
-				'success' => false,
-				'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
-				) );
+					'success' => false,
+					'message' => wfMessage( 'bs-readonly', $wgReadOnly )->plain()
+				)
+			);
 		}
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
 
@@ -215,10 +216,26 @@ class GroupManager extends BsExtensionMW {
 			$wgAdditionalGroups[$sGroup] = false;
 			$wgAdditionalGroups[$sNewGroup] = true;
 
-			$result = BsExtensionManager::getExtension( 'GroupManager' )->saveData();
-			if ( $result['success'] === false ) {
-				return FormatJson::encode( $result );
+			$dbw = wfGetDB( DB_MASTER );
+			$res = $dbw->update(
+				'user_groups',
+				array(
+					'ug_group' => $sNewGroup
+				),
+				array(
+					'ug_group' => $sGroup
+				)
+			);
+
+			if( $res === false ) {
+				return FormatJson::encode( array(
+						'success' => false,
+						'message' => wfMessage( 'bs-groupmanager-removegroup-message-unknown' )->plain()
+					)
+				);
 			}
+
+			$result = BsExtensionManager::getExtension( 'GroupManager' )->saveData();
 
 			wfRunHooks( "BSGroupManagerGroupNameChanged", array( $sGroup, $sNewGroup, &$result ) );
 			if ( $result['success'] === false ) {
@@ -252,21 +269,35 @@ class GroupManager extends BsExtensionMW {
 
 		if ($sGroup) {
 			if (!isset($wgAdditionalGroups[$sGroup])) {
-				return FormatJson::encode(array(
-					'success' => false,
-					'message' => wfMessage('bs-groupmanager-msgnotremovable')->plain()
-						)
+				return FormatJson::encode( array(
+						'success' => false,
+						'message' => wfMessage('bs-groupmanager-msgnotremovable')->plain()
+					)
 				);
 			}
 
 			$wgAdditionalGroups[$sGroup] = false;
-			BsExtensionManager::getExtension( 'GroupManager' )->saveData();
+			$dbw = wfGetDB( DB_MASTER );
+			$res = $dbw->delete(
+				'user_groups',
+				array(
+					'ug_group' => $sGroup
+				)
+			);
+			if( $res === false ) {
+				return FormatJson::encode( array(
+						'success' => false,
+						'message' => wfMessage( 'bs-groupmanager-removegroup-message-unknown' )->plain()
+					)
+				);
+			}
+
+			$result = BsExtensionManager::getExtension( 'GroupManager' )->saveData();
 
 			wfRunHooks( "BSGroupManagerGroupDeleted", array( $sGroup, &$result ) );
 			if ( $result['success'] === false ) {
 				return FormatJson::encode( $result );
 			}
-
 		}
 
 		return $output;
