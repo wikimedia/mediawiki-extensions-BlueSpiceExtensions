@@ -32,6 +32,7 @@ class FlexiskinApi extends ApiBase {
 		if (!$oStatus->isGood()){
 			return array();
 		}
+		$aData = array ();
 		if ( $handle = opendir( $oStatus->getValue() ) ) {
 			while ( false !== ($entry = readdir( $handle )) ) {
 				if ( $entry != "." && $entry != ".." ) {
