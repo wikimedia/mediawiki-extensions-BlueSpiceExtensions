@@ -17,6 +17,5 @@ CREATE TABLE /*$wgDBprefix*/bs_saferedit (
   se_page_title     text           default NULL,             /* foreign key to page.page_title */
   se_page_namespace int            default 0,                /* foreign key to page.page_namespaec */
   se_edit_section   int            default -1,
-  se_timestamp      varchar(16)    default NULL,             /* YmdHis */
-  se_text           text
+  se_timestamp      varchar(16)    default NULL             /* YmdHis */
 );

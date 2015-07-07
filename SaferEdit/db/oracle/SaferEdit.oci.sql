@@ -17,8 +17,7 @@ CREATE TABLE /*$wgDBprefix*/bs_saferedit (
 	se_page_title		VARCHAR2(510),
 	se_page_namespace	NUMBER NOT NULL,
 	se_edit_section		NUMBER NOT NULL,
-	se_timestamp		VARCHAR2(16) NOT NULL,
-	se_text				LONG NOT NULL
+	se_timestamp		VARCHAR2(16) NOT NULL
 );
 ALTER TABLE /*$wgDBprefix*/bs_saferedit ADD CONSTRAINT /*$wgDBprefix*/bs_saferedit_pk PRIMARY KEY (se_id);
 
