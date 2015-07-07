@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-usermanager-desc": "Administrationsgränssnittet för att lägga till, redigera och radera användare",
@@ -30,5 +31,6 @@
 	"bs-usermanager-labelpasswordcheck": "Bekräfta lösenord",
 	"bs-usermanager-titledeleteuser": "Radera användare",
 	"bs-usermanager-confirmdeleteuser": "Är du säker på att du vill ta bort {{PLURAL:$1|denna användare|dessa $1 användare}}?",
-	"bs-usermanager-groups-more": "... fler"
+	"bs-usermanager-groups-more": "... fler",
+	"bs-usermanager-no-self-desysop": "Du kan inte ta bort dina egna administratörsrättigheter."
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Jopparn",
 			"Lokal Profil",
-			"Dan Koehl"
+			"Dan Koehl",
+			"WikiPhoenix"
 		]
 	},
 	"bs-wikiadmin-desc": "Central punkt för administration för BlueSpice",
@@ -11,5 +12,6 @@
 	"wikiadmin": "BlueSpice administration",
 	"action-wikiadmin": "Visa BlueSpices administrationssidor",
 	"right-wikiadmin": "Visa BlueSpices administrationssidor",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Specialsidor",
 	"bs-wikiadmin-mediawiki-specialpages-title": "Listar alla MediaWiki särskilda sidor"
 }
