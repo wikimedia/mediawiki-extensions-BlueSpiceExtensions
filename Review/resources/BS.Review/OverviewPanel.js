@@ -125,7 +125,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 	renderAssessors: function( value, metaData, record, rowIndex, colIndex, store ) {
 		var ownerName = mw.config.get('bsSpecialReviewUserName', false);
 		var table = '<table cellpadding="5">';
-		var row = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
+		var row = '<tr><td>{0}</td><td>{1} ({2})</td></tr>';
 		var findActive = true;
 		var isSequential = record.get( 'rev_sequential' );
 
