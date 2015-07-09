@@ -482,7 +482,7 @@ class Review extends BsExtensionMW {
 	 */
 	public function logCreate($type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks = false) {
 		$oUser = $this->getUser();
-		return wfMessage( 'bs-review-created-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->plain();
+		return wfMessage( 'bs-review-created-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->text();
 	}
 
 	// TODO RBV (30.06.11 13:07): Maybe a callback function would have done the trick, that chooses the return value according to $action?
@@ -498,7 +498,7 @@ class Review extends BsExtensionMW {
 	 */
 	public function logModify($type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks = false) {
 		$oUser = $this->getUser();
-		return wfMessage( 'bs-review-modified-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->plain();
+		return wfMessage( 'bs-review-modified-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->text();
 	}
 
 	/**
@@ -513,7 +513,7 @@ class Review extends BsExtensionMW {
 	 */
 	public function logDelete($type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks = false) {
 		$oUser = $this->getUser();
-		return wfMessage( 'bs-review-deleted-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->plain();
+		return wfMessage( 'bs-review-deleted-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->text();
 	}
 
 	/**
@@ -528,7 +528,7 @@ class Review extends BsExtensionMW {
 	 */
 	public function logApprove($type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks = false) {
 		$oUser = $this->getUser();
-		return wfMessage( 'bs-review-approved-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->plain();
+		return wfMessage( 'bs-review-approved-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->text();
 	}
 
 	/**
@@ -543,7 +543,7 @@ class Review extends BsExtensionMW {
 	 */
 	public function logDeny($type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks = false) {
 		$oUser = $this->getUser();
-		return wfMessage( 'bs-review-denied-review',$oUser->getName(), Linker::link( $title, $title->getText() ) )->plain();
+		return wfMessage( 'bs-review-denied-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->text();
 	}
 
 	/**
@@ -558,7 +558,7 @@ class Review extends BsExtensionMW {
 	 */
 	public function logFinish($type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks = false) {
 		$oUser = $this->getUser();
-		return wfMessage( 'bs-review-finished-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->plain();
+		return wfMessage( 'bs-review-finished-review', $oUser->getName(), Linker::link( $title, $title->getText() ) )->text();
 	}
 
 	/**
