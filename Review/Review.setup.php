@@ -36,7 +36,10 @@ $wgResourceModules['ext.bluespice.review'] = array(
 
 $wgResourceModules['ext.bluespice.review.overview'] = array(
 	'scripts' => 'bluespice.review.overview.js',
-	'dependencies' => 'ext.bluespice.review',
+	'dependencies' => array (
+		'ext.bluespice.review',
+		'mediawiki.Title'
+	),
 	'messages' => array(
 		'bs-review-header-page-title',
 		'bs-review-header-owner-name',
