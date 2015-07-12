@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
 	"bs-extendedsearch-desc": "Plugin de busca baseado en Apache Solr (http://lucene.apache.org/solr/) para expandir as funcións de busca",
@@ -90,7 +91,7 @@
 	"bs-extendedsearch-descending": "Descendente",
 	"bs-extendedsearch-unknown": "Descoñecido",
 	"bs-extendedsearch-section": "Sección",
-	"bs-extendedsearch-morelikethis": "Páginas semellantes",
+	"bs-extendedsearch-morelikethis": "Páxinas similares",
 	"bs-extendedsearch-recentsearchterms": "Termos de busca recentes",
 	"bs-extendedsearch-recentsearchtermsdesc": "Lista dos termos buscados recentemente nesta wiki, ordenados por cantidade.",
 	"bs-extendedsearch-no-mlt-found": "Non se atopou ningunha páxina semellante.",
