@@ -57,6 +57,7 @@ $GLOBALS['wgAutoloadClasses']['Review'] = __DIR__ . '/Review.class.php';
 $wgAutoloadClasses['SpecialReview'] = __DIR__ . '/includes/specials/SpecialReview.class.php';
 $wgAutoloadClasses['BsReviewProcess'] = __DIR__ . '/includes/ReviewProcess.class.php';
 $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessStep.class.php';
+$wgAutoloadClasses['ReviewFormatter'] = __DIR__ . '/includes/ReviewFormatter.class.php';
 
 $wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.StateBarBodyElementReview.php';
 

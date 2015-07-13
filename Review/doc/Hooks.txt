@@ -32,11 +32,6 @@ $oTitle:
 'getVoteResponse'.
  &$data:
 
-'BsReview::getVoteResponseOnMailAction':
-$row:
- $oTitle:
- $oOwner:
-
 'BSReviewRunPreferencePlugin':
 &$sAdapterName: 
 &$oVariable:
