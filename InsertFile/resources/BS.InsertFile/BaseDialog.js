@@ -2,8 +2,14 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	extend: 'BS.Window',
 	requires: [
 		'Ext.data.Store', 'Ext.form.TextField', 'Ext.ux.form.SearchField',
-		'BS.InsertFile.UploadDialog', 'Ext.Button', 'Ext.toolbar.Toolbar',
-		'Ext.grid.Panel', 'Ext.form.Panel'
+		'Ext.Button', 'Ext.toolbar.Toolbar', 'Ext.grid.Panel', 'Ext.form.Panel',
+		'Ext.ux.grid.FiltersFeature',
+		//Unfortunately 'Ext.ux.grid.FiltersFeature' only 'uses' those classes, but not 'requires' them...
+		'Ext.ux.grid.menu.ListMenu', 'Ext.ux.grid.menu.RangeMenu',
+		'Ext.ux.grid.filter.BooleanFilter', 'Ext.ux.grid.filter.DateFilter',
+		'Ext.ux.grid.filter.DateTimeFilter', 'Ext.ux.grid.filter.ListFilter',
+		'Ext.ux.grid.filter.NumericFilter', 'Ext.ux.grid.filter.StringFilter',
+		'BS.InsertFile.UploadDialog', 'BS.model.File'
 	],
 	modal: true,
 	bodyPadding: 0,
@@ -33,28 +39,33 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	afterInitComponent: function() {
 		this.conf = {
 			columns: {
-				items: [{
-					dataIndex: 'url',
+				items: [
+				{
+					dataIndex: 'file_thumbnail_url',
 					renderer: this.renderThumb,
 					width: 56,
-					sortable: false
+					sortable: false,
+					filterable: false
 				},{
 					text: mw.message('bs-insertfile-filename').plain(),
-					dataIndex: 'name',
+					dataIndex: 'file_display_text',
 					flex: 1
 				},{
 					text: mw.message('bs-insertfile-filesize').plain(),
-					dataIndex: 'size',
+					dataIndex: 'file_size',
 					renderer:this.renderSize,
 					width: 100
 				},{
 					text: mw.message('bs-insertfile-lastmodified').plain(),
-					dataIndex: 'lastmod',
+					dataIndex: 'file_timestamp',
 					renderer:this.renderLastModified,
-					width: 150
-				}],
+					width: 150,
+					filterable: false //TODO: Use DateTimeFilter (needs to be supported by BSF)
+				}
+			],
 				defaults: {
-					tdCls: 'bs-if-cell'
+					tdCls: 'bs-if-cell',
+					filterable: true
 				}
 			}
 		};
@@ -63,29 +74,30 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			height: 200,
 			buffered: true, // allow the grid to interact with the paging scroller by buffering
 			pageSize: 20,
-			leadingBufferZone: 60,
+			leadingBufferZone: 20,
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertFileAJAXBackend::getFiles'),
+				url: mw.util.wikiScript('api'),
 				reader: {
 					type: 'json',
-					root: 'images',
-					idProperty: 'name'
+					root: 'results',
+					idProperty: 'file_name',
+					totalProperty: 'total'
 				},
 				extraParams: {
-					type: this.storeFileType
+					format: 'json',
+					action: 'bs-filebackend-store'
 				}
 			},
 			remoteFilter: true,
 			autoLoad: true,
-			fields: ['name', 'lastmod', 'url', 'size', 'width', 'height' ],
+			model: 'BS.model.File',
 			sortInfo: {
-				field: 'lastmod',
+				field: 'file_timestamp',
 				direction: 'ASC'
 			}
 		});
 		this.stImageGrid.on( 'load', this.onStImageGridLoad, this );
-
 
 		this.sfFilter = Ext.create( 'Ext.ux.form.SearchField', {
 			fieldLabel: mw.message('bs-insertfile-labelfilter').plain(),
@@ -130,12 +142,15 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			items: toolBarItems
 		});
 
+		var filterFeature = this.makeGridFilterFeatureConfig();
+
 		this.gdImages = Ext.create('Ext.grid.Panel', {
 			region: 'center',
 			collapsible: false,
 			store: this.stImageGrid,
 			loadMask: true,
 			dockedItems: this.tbGridTools,
+			features: [ new Ext.ux.grid.FiltersFeature(filterFeature) ],
 			selModel: {
 				pruneRemoved: false
 			},
@@ -147,6 +162,9 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		});
 
 		this.gdImages.on( 'select', this.onGdImagesSelect, this );
+		this.gdImages.on( 'afterrender', function(){
+			this.gdImages.filters.createFilters(); //This is required to have out default filters be applied on load!
+		}, this );
 
 		this.tfFileName = Ext.create('Ext.form.TextField', {
 			readOnly: true,
@@ -169,6 +187,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			this.pnlConfig
 		];
 
+		$(document).trigger("BSInsertFileInsertBaseDialogAfterInit", [this, this.items]);
 		this.callParent(arguments);
 	},
 
@@ -193,6 +212,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 
 	dlgUploadOKClick: function( dialog, upload ){
 		this.stImageGrid.reload();
+		this.resetFilters();
 		this.sfFilter.setValue( upload.filename );
 	},
 
@@ -211,6 +231,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.tfLinkText.reset();
 
 		if( obj.title ) {
+			this.resetFilters();
 			this.tfFileName.setValue( obj.title );
 			this.sfFilter.setValue( obj.title );
 			this.sfFilter.onTrigger2Click();
@@ -227,16 +248,13 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.callParent( arguments );
 	},
 
-	renderThumb: function( url ) {
-		/*return mw.html.element(
-			'img',
-			{
-				src: url,
-				height: 48,
-				width: 48
-			}
-		);*/
-		return '<img src="'+url+'" height="48" width="48" />';
+	renderThumb: function( url, meta, record ) {
+		var attribs = {
+			class: 'bs-insertfile-icon',
+			style: 'background-image:url('+url+')'
+		};
+
+		return mw.html.element( 'div', attribs );
 	},
 
 	renderSize: function( size ){
@@ -244,14 +262,11 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	},
 
 	renderLastModified: function( lastmod ){
-		return Ext.Date.format(
-			new Date(lastmod * 1000),
-			'd.m.Y G:i'
-		);
+		return Ext.Date.format( lastmod, 'd.m.Y G:i' );
 	},
 
 	onGdImagesSelect: function( grid, record, index, eOpts ){
-		this.tfFileName.setValue( record.get('name') );
+		this.tfFileName.setValue( record.get('file_name') );
 		this.pnlConfig.expand();
 	},
 
@@ -261,5 +276,26 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			return selectedRecords[0];
 		}
 		return null;
+	},
+
+	makeGridFilterFeatureConfig: function() {
+		return {
+			ftype: 'filters',
+			encode: true,
+			autoReload: true,
+			filters: [
+				{
+					active: true,
+					dataIndex: 'file_mimetype',
+					type: 'string',
+					value: { 'nct': 'image/' } //unfortunately there is no "not starts with"
+				}
+			]
+		};
+	},
+
+	resetFilters: function () {
+		this.gdImages.filters.clearFilters(); //We disable all filters...
+		this.gdImages.filters.getFilter('file_mimetype').setActive(true);//... and reenable the mime_type filter to have normal behavior
 	}
 });

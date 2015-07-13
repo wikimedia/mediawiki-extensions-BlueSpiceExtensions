@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Kaganer"
 		]
 	},
 	"bs-insertfile-desc": "Диалог загрузки файлов и вставки ссылки на файл",
@@ -65,7 +66,7 @@
 	"bs-insertfile-categories": "Категории",
 	"bs-insertfile-linktext": "Отображаемый текст",
 	"bs-insertfile-no-link": "Нет ссылки",
-	"bs-insertfile-error-no-medialink": "Медиа ссылка не выбрана.",
+	"bs-insertfile-error-no-medialink": "Не выбрана ссылка на медиафайл.",
 	"bs-insertfile-error-no-imagelink": "Ссылка на изображение не выбрано.",
 	"bs-insertfile-upload-waitmessage": "Загрузка в процессе…"
 }

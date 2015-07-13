@@ -14,7 +14,10 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 		this.configPanel.items = [];
 		this.callParent(arguments);
 	},
-	onPnlConfigExpand: function(panel, eOpts){
+	afterInitComponent: function() {
 		this.callParent(arguments);
 	},
+	onPnlConfigExpand: function(panel, eOpts){
+		this.callParent(arguments);
+	}
 });

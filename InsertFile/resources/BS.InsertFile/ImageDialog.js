@@ -170,8 +170,8 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			if( this.nbWidth.getValue() === null && this.nbHeight.getValue() === null ) {
 				var record = records[0];
 				this.isSetData = true;
-				this.nbWidth.setValue(+record.get('width'));
-				this.nbHeight.setValue(+record.get('height'));
+				this.nbWidth.setValue(+record.get('file_width'));
+				this.nbHeight.setValue(+record.get('file_height'));
 				this.isSetData = false;
 			}
 		}
@@ -195,8 +195,8 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if ((w === 0 && h === 0) || record === null ) {
 			return 0;
 		}
-		var orgW = record.get('width');
-		var orgH = record.get('height');
+		var orgW = record.get('file_width');
+		var orgH = record.get('file_height');
 
 		if (w === 0) {
 			return Math.round(orgW / (orgH / h));
@@ -271,7 +271,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 
 		var height = this.nbHeight.getValue();
 		var width = this.nbWidth.getValue();
-		if( height != record.get('height') || width != record.get('width') ) {
+		if( height != record.get('file_height') || width != record.get('file_width') ) {
 			cfg.sizeheight = height;
 			cfg.sizewidth = width;
 		}
@@ -352,12 +352,12 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.callParent(arguments);
 
-		this.hdnUrl.setValue( record.get('url') );
+		this.hdnUrl.setValue( record.get('file_thumbnail_url') );
 		//This is to avoid an overriding of the dimension that may have been
 		//set by this.setData()
 		if( grid.getStore().filters.items.length === 0 || grid.getStore().getCount() !== 1 ) {
-			this.nbWidth.setValue( record.get('width') );
-			this.nbHeight.setValue( record.get('height') );
+			this.nbWidth.setValue( record.get('file_width') );
+			this.nbHeight.setValue( record.get('file_height') );
 		}
 		$(document).trigger("BSInsertFileInsertImageDialogAfterImageSelect", [this, grid, record, index]);
 	},
@@ -381,5 +381,11 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		else {
 			this.tfLinkText.disable();
 		}
+	},
+
+	makeGridFilterFeatureConfig: function() {
+		var filtersCfg = this.callParent( arguments );
+		filtersCfg.filters[0].value = { 'sw': 'image/' }; //Set to "starts with"; value is 'image/' defined by base class
+		return filtersCfg;
 	}
 });
