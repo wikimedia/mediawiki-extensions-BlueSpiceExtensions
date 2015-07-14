@@ -376,8 +376,25 @@ class Notifications extends BsExtensionMW {
 	public function onBSShoutBoxAfterInsertShout( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		global $wgUser; // TODO SW: use user id
-		if ( $wgUser->isAllowed( 'bot' ) ) return true;
+		if ( $wgUser->isAllowed( 'bot' ) ) {
+			return true;
+		}
 
+		#check if users are mentioned in post
+		$oShoutbox = BsExtensionManager::getExtension( "ShoutBox" );
+		$aUsers = $oShoutbox::getUsersMentioned( $sMessage );
+		$bNotify = false;
+		#if there is any user in the post mentioned that is not the poster himself
+		#trigger the watched article notification
+		foreach ( $aUsers as $oUser ) {
+			if ( $oUser->getId() !== $iUserId ) {
+				$bNotify = true;
+				break;
+			}
+		}
+		if ( $bNotify === false ) {
+			return true;
+		}
 		EchoEvent::create( array(
 			'type' => 'bs-shoutbox',
 			'title' => Title::newFromID( $iArticleId ),
