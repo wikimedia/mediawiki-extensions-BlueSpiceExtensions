@@ -26,7 +26,7 @@
 	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|{{GENDER:$2|Editor|Editora}} responsable|Editores responsables}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "A páxina indicada non existe.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Responsabilidades asignadas a \"$1\"",
-	"bs-responsibleeditors-mail-text-new-editor": "$2 {{GENDER:$1|asignouno}} a \"$3\". Despois de conectarse á wiki pode abrir a páxina con esta ligazón: $4. Se ten algunha pregunta, por favor, contacte con $2.",
+	"bs-responsibleeditors-mail-text-new-editor": "$2 {{GENDER:$1|asignoulle}} \"$3\". Despois de conectarse ao wiki pode abrir a páxina con esta ligazón: $4. Se ten algunha pregunta, por favor, contacte con $2.",
 	"bs-responsibleeditors-mail-subject-former-editor": "Responsabilidades suprimidas a \"$1\"",
 	"bs-responsibleeditors-mail-text-former-editor": "$2 {{GENDER:$1|suprimiu}} a responsabilidade da páxina \"$3\".  {{PLURAL:$5|O novo editor responsable é|Os novos editores responsables son}}: $4. Despois de conectarse á wiki pode abrir a páxina con esta ligazón: $6. Se ten calquera dúbida, por favor contacte con $2.",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "A páxina \"$1\" foi {{GENDER:$2|editada}} por $3",

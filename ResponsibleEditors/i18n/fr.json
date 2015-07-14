@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"SnowedEarth",
-			"Ltrlg"
+			"Ltrlg",
+			"Wladek92"
 		]
 	},
 	"bs-responsibleeditors-desc": "Active la gestion par MediaWiki des éditeurs responsables des pages",
@@ -55,5 +56,6 @@
 	"bs-responsibleeditors-cbnamespacesemptytext": "Sélectionnez un espace de noms",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Non affectée",
 	"log-name-bs-responsibleeditors": "Journal des éditeurs responsables",
-	"log-description-bs-responsibleeditors": "Ceci est un journal des éditeurs responsables de pages."
+	"log-description-bs-responsibleeditors": "Ceci est un journal des éditeurs responsables de pages.",
+	"log-show-hide-bs-responsibleeditors": "Journal des éditeurs responsables de $1"
 }
