@@ -16,7 +16,8 @@
 	$(document).on( 'click', 'a#bs-editbutton-formattinghelp', function(e){
 		e.preventDefault();
 		
-		Ext.require( 'BS.FormattingHelp.Window', function() {
+		Ext.require( 'BS.FormattingHelp.Window', function () {
+			BS.FormattingHelp.Window.maxHeight = Ext.getBody().getViewSize().height;
 			BS.FormattingHelp.Window.show();
 		});
 		
