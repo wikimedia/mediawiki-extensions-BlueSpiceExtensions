@@ -28,8 +28,9 @@ BsSaferEdit = {
 	init: function() {
 		this.interval = bsSaferEditInterval * 1000;
 
-		if( this.interval < 1000 ) return;
-		if( $('#bs-statebar').length < 1 ) return;
+		if ( this.interval < 1000 || $( '#bs-statebar' ).length < 1 ) {
+			return;
+		}
 		BSPing.registerListener( 'SaferEditIsSomeoneEditing', BsSaferEdit.interval, [], BsSaferEdit.someoneIsEditingListener );
 	},
 

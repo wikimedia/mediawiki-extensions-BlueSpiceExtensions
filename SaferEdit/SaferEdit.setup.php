@@ -35,7 +35,3 @@ $wgResourceModules['ext.bluespice.saferedit.editmode'] = array(
 );
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'SaferEdit::getSchemaUpdates';
-
-$wgAjaxExportList[] = 'SaferEdit::doCancelSaferEdit';
-$wgAjaxExportList[] = 'SaferEdit::getLostTexts';
-$wgAjaxExportList[] = 'SaferEdit::saveText';
