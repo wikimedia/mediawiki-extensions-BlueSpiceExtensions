@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alojz.tic",
-			"Skalcaa"
+			"Skalcaa",
+			"Yerpo"
 		]
 	},
 	"bs-responsibleeditors-desc": "Omogoči MediaWikiju urejanje odgovornih urednikov strani",
@@ -25,7 +26,7 @@
 	"bs-responsibleeditors-statebarbody-headline": "Odgovorn{{PLURAL:$1|{{GENDER:$2|i urednik|a urednica}}|{{GENDER:$2|i uredniki|e urednice}}}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Podana stran ne obstaja.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Odgovornost za \"$1\" dodeljena",
-	"bs-responsibleeditors-mail-text-new-editor": "$2 vas je dodelil{{GENDER:$1||a}} za \"$3\". Po prijavi v wiki lahko odprete stran s klikom na ta link: $4. Če imate kakršno koli vprašanje, se prosim, obrnite na $2.",
+	"bs-responsibleeditors-mail-text-new-editor": "$2 vas je dodelil{{GENDER:$1||a}} za \"$3\". Po prijavi v wiki lahko odprete stran s klikom na ta link: $4. Če imate kakršnokoli vprašanje, se prosim, obrnite na $2.",
 	"bs-responsibleeditors-mail-subject-former-editor": "Odgovornost za \"$1\" preklicana",
 	"bs-responsibleeditors-mail-text-former-editor": "$2 je preklical{{GENDER:$1||a}} odgovornost za stran \"$3\". Novi odgovorni urednik{{PLURAL:$5| je|i so}}: $4. Po prijavi v wiki lahko odprete stran  s klikom na to povezavo: $6. Če imate kakršnakoli vprašanja, se prosimo, obrnite na $2.",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "$3 je uredil{{GENDER:$2||a}} stran \"$1\"",
