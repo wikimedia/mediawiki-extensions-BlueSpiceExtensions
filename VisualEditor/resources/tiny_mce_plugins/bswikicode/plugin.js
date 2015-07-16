@@ -1089,11 +1089,13 @@ var BsWikiCode = function() {
 			emptyLineAfter = false,
 			lastLine = false;
 
+                //Walk trough text line by line
 		for (var i = 0; i < lines.length; i++) {
 			// Prevent REDIRECT from being rendered as list
 			line = lines[i].match(/^(\*|#(?!REDIRECT)|:|;)+/);
 			lastLine = (i == lines.length - 1);
 
+                        //Special Line --
 			if (line && line !== '') {
 				lines[i] = lines[i].replace(/^(\*|#|:|;)*\s*(.*?)$/gmi, "$2");
 				if (line[0].indexOf(':') === 0) {
@@ -1124,7 +1126,7 @@ var BsWikiCode = function() {
 					inParagraph = false;
 				}
 
-			} else {
+			} else { //Normal Line processing
 				emptyLine = lines[i].match(/^(\s|&nbsp;)*$/);
 				if (emptyLine) {
 					emptyLineCount++;
@@ -1320,7 +1322,7 @@ var BsWikiCode = function() {
 		text = text + "\n";
 
 		// process block levels
-		text = _blockLevels2html(text);
+		text = _blockLevels2html(text); //TODO: Fix missing break here, add <br /> for simple linebreaks
 
 		// @todo check this, might be unneccessary
 		text = text.replace(/<div style='text-align:left'>(.*?)<\/div>/gmi, "<div align='left'>$1</div>");
@@ -2245,7 +2247,7 @@ var BsWikiCode = function() {
 
 		do {
 			_processFlag = false;
-			text = text.replace(/(^|\n)([^\n]+)\n([^\n]{1,5})/gi, __preserveSingleLinebreaks);
+			text = text.replace(/(^|\n|\b)([^\n]+)\n([^\n]{1,5})/gi, __preserveSingleLinebreaks);
 
 		} while (_processFlag);
 
