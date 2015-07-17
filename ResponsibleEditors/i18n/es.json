@@ -29,9 +29,9 @@
 	"bs-responsibleeditors-statebarbody-headline": "{{PLURAL:$1|{{GENDER:$2|Editor|Editora}} responsable|Editores responsables}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "La página proporcionada no existe.",
 	"bs-responsibleeditors-mail-subject-new-editor": "Responsabilidades para \"$1\" asignadas",
-	"bs-responsibleeditors-mail-text-new-editor": "$2 {{GENDER:$1|te ha asignado}} a \"$3\". Una vez hayas iniciado sesión en la wiki puedes abrir la página con este enlace: $4. Por favor, si tienes alguna pregunta dirígete a $2.",
+	"bs-responsibleeditors-mail-text-new-editor": "$2 {{GENDER:$1|te ha asignado}} a \"$3\". Una vez hayas iniciado sesión en la wiki puedes abrir la página con este enlace: $4. Si tienes alguna pregunta dirígete a $2.",
 	"bs-responsibleeditors-mail-subject-former-editor": "Responsabilidad(es) para \"$1\" revocada(s)",
-	"bs-responsibleeditors-mail-text-former-editor": "$2 {{GENDER:$1|ha revocado}} tu responsabilidad en \"$3\". {{PLURAL:$5|El nuevo editor responsable es|Los nuevos editores responsables son}}: $4. Una vez hayas iniciado sesión en la wiki puedes abrir la página con este enlace: $6. Por favor, si tienes alguna pregunta dirígete a $2.",
+	"bs-responsibleeditors-mail-text-former-editor": "$2 {{GENDER:$1|ha revocado}} tu responsabilidad en \"$3\". {{PLURAL:$5|El nuevo editor responsable es|Los nuevos editores responsables son}}: $4. Una vez hayas iniciado sesión en la wiki puedes abrir la página con este enlace: $6. Si tienes alguna pregunta dirígete a $2.",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "$3 {{GENDER:$2|editó}} la página «$1»",
 	"bs-responsibleeditors-mail-text-re-article-changed": "La página \"$1\", en la que estabas como responsable de edición, ha sido {{GENDER:$2|editada}} por $3. Una vez hayas iniciado sesión en la wiki puedes abrir la página desde este enlace: $4",
 	"bs-responsibleeditors-mail-subject-re-article-deleted": "$3 {{GENDER:$2|eliminó}} la página «$1»",
@@ -59,5 +59,5 @@
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Sin asignar",
 	"log-name-bs-responsibleeditors": "Registro de editores responsables",
 	"log-description-bs-responsibleeditors": "Este es un registro de los editores responsables de páginas.",
-	"log-show-hide-bs-responsibleeditors": "Registro de $1 editores responsables"
+	"log-show-hide-bs-responsibleeditors": "$1 el registro de editores responsables"
 }
