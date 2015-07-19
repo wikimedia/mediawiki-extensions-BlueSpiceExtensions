@@ -24,7 +24,7 @@
 	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|carácter restante|caracteres restantes}}",
 	"bs-shoutbox-confirm-text": "¿Estás seguro de querer borrar esta entrada?",
 	"bs-shoutbox-confirm-title": "Confirmar",
-	"bs-shoutbox-entermessage": "Introduce un mensaje.",
+	"bs-shoutbox-entermessage": "Escribe un mensaje.",
 	"bs-shoutbox-too-early": "Por favor, espera unos segundos antes de enviar la siguiente entrada.",
 	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención en un grito",
 	"bs-shoutbox-notifications-title-message-subject": "Te han mencionado",
