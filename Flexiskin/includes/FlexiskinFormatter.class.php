@@ -10,11 +10,12 @@ class FlexiskinFormatter {
 		else{
 			$aReturn[] = "body{background-color:#" . $aConfig->customBackgroundColor . " !important;}";
 		}
-		if ( $aConfig->backgroundImage != "" ){
+		if ( isset( $aConfig->backgroundImage ) && $aConfig->backgroundImage != "" ) {
 			$aReturn[] = "body{background-image:url('images/" . $aConfig->backgroundImage . "') !important;}";
 		}
-		else{
-			$aReturn[] = "body{background-image:none !important;}";
+		else {
+			$sPath = RequestContext::getMain()->getSkin()->getSkinStylePath( "resources/images/desktop/bg-lo.png" );
+			$aReturn[] = "body{background-image:url('" . $sPath . "') !important;}";
 		}
 		$aReturn[] = "body{background-repeat:" . $aConfig->repeatBackground . " !important;}";
 		wfRunHooks( "BSFlexiskinFormatterGeneral", array( &$aConfig, &$aReturn ) );
