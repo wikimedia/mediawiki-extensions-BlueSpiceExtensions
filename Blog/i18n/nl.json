@@ -3,14 +3,15 @@
 		"authors": [
 			"Sjoerddebruin",
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-blog-desc": "Geeft een blog style lijst van pagina ' s",
 	"prefs-blog": "Blog",
 	"bs-blog-no-entries": "Er is geen blog.",
 	"bs-blog-comments": "Reacties",
-	"bs-blog-read-more": "Lees meer",
+	"bs-blog-read-more": "meer lezen",
 	"bs-blog-trackback": "Trackback",
 	"bs-blog-permalink": "Permanente koppeling",
 	"bs-blog-show-all": "Alle berichten weergeven",
@@ -18,7 +19,7 @@
 	"bs-blog-form-title-text": "Maak nieuwe blog",
 	"bs-blog-form-button-text": "Aanmaken",
 	"bs-blog-blog": "Blog",
-	"bs-blog-pref-moreinnewwindow": "Open nieuw venster lees meer",
+	"bs-blog-pref-moreinnewwindow": "In nieuw venster openen om meer te lezen",
 	"bs-blog-pref-newentryfieldposition": "Positie voor de nieuwe blog-entry formulier:",
 	"bs-blog-pref-showall": "Alle berichten weergeven",
 	"bs-blog-pref-showinfo": "Toon informatie over het item",

@@ -5,6 +5,9 @@
 			"Cwlin0416"
 		]
 	},
+	"prefs-notifications": "通知",
+	"prefs-echo-extended": "進階系統設定",
+	"bs-notifications-pref-active": "開啟通知",
 	"bs-echo-anon-user": "匿名",
 	"bs-echo-unknown-user": "不明",
 	"bs-echo-page-edit": "頁面 [[:$1]] 已被修改",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Ltrlg",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Wladek92"
 		]
 	},
 	"bs-review-desc": "Ajoute aux pages des fonctionnalité pour le travail",
@@ -55,6 +56,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|a terminé}} une relecture sur la page « $2 ».",
 	"log-name-bs-review": "Journal de relecture",
 	"log-description-bs-review": "Voici un journal des pages qui sont ou ont été en relecture.",
+	"log-show-hide-bs-review": "$1 l’historique des relectures",
 	"bs-review-pref-checkowner": "Seul le propriétaire d’une relecture peut la modifier",
 	"bs-review-pref-shownameintooltip": "Afficher les noms des participants",
 	"bs-review-pref-emailnotifyowner": "Notifier le propriétaire d’une relecture des modifications",

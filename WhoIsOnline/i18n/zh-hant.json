@@ -5,8 +5,16 @@
 			"Liuxinyu970226"
 		]
 	},
+	"bs-whoisonline-desc": "顯示目前上線的使用者清單",
+	"bs-whoisonline-nousers": "沒有人登入。",
+	"bs-whoisonline-widget-title": "誰在線上？",
 	"prefs-whoisonline": "誰在線上？",
+	"bs-whoisonline-pref-limitcount": "顯示使用者的最大數量：",
 	"bs-whoisonline-pref-orderby": "排序方式：",
+	"bs-whoisonline-pref-maxidletime": "標記使用者為離線的時間 (秒)：",
 	"bs-whoisonline-pref-orderby-time": "執行時間",
-	"bs-whoisonline-pref-orderby-name": "名稱"
+	"bs-whoisonline-pref-orderby-name": "名稱",
+	"bs-whoisonline-pref-interval": "更新間隔 (秒)：",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "顯示目前登入的使用者數量。",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "顯示目前登入使用者的小型飛行清單。\n\n有效的屬性\n;<code>anchortext</code>：您希望要附加至飛行清單的文字。"
 }

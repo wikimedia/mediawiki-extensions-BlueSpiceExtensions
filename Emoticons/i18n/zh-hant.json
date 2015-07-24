@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cwlin0416"
+		]
+	},
+	"bs-emoticons-desc": "以圖片顯示文字中的表情為",
+	"bs-emoticons-error-validation-missing-symbol": "第 $1 行錯誤：沒有圖片 \"$2\" 的符號。",
+	"bs-emoticons-error-validation-imagename": "第 $1 行錯誤：圖片名稱 \"$2\" 無效。"
+}

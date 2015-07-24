@@ -42,7 +42,7 @@
 	"bs-responsibleeditors-no-own-responsibilities": "No existen páginas de las cuales seas el editor responsable.",
 	"bs-responsibleeditors-yourresponsibilities": "Tus responsabilidades",
 	"bs-responsibleeditors-yourresponsibilitiesdesc": "Lista de las páginas de las eres responsable.",
-	"action-responsibleeditors-viewspecialpage": "Ver las paginas que están protegidas por el \"ResponsibleEditors-Viewspecialpage\" derecho",
+	"action-responsibleeditors-viewspecialpage": "ver las páginas que están protegidas con el permiso \"ResponsibleEditors-Viewspecialpage\"",
 	"right-responsibleeditors-viewspecialpage": "Utilizar la extensión de editores responsables",
 	"bs-responsibleeditors-availableeditors": "Editores disponibles",
 	"bs-responsibleeditors-assignededitors": "Editores asignados",

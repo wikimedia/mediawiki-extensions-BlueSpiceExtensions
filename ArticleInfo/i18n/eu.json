@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
+	"prefs-articleinfo": "Orri honen datuak",
+	"bs-articleinfo-last-edited-tooltip": "Azken edizioa",
 	"bs-articleinfo-categories": "Kategoriak",
 	"bs-articleinfo-all-categories-heading": "Kategoriak",
 	"bs-articleinfo-nocategories": "Ez da kategoriarik aurkitu.",

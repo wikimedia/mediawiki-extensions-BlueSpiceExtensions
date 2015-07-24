@@ -4,5 +4,8 @@
 			"Cwlin0416"
 		]
 	},
-	"prefs-usersidebar": "使用者側邊欄"
+	"bs-usersidebar-desc": "加入焦點頁籤至側邊欄",
+	"prefs-usersidebar": "使用者側邊欄",
+	"bs-usersidebar-userpagesettings-link-title": "編輯您的焦點內容",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|編輯}}焦點"
 }
