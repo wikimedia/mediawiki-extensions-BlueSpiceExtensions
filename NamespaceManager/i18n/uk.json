@@ -5,7 +5,7 @@
 			"Andriykopanytsia"
 		]
 	},
-	"bs-namespacemanager-desc": "Адміністративний інтерфейс для додавання, редагування та видалення просторів імен",
+	"bs-namespacemanager-desc": "Адміністративний інтерфейс для додавання, редагування та видалення просторів назв",
 	"bs-namespacemanager-label": "Керівник просторами назв",
 	"bs-namespacemanager-wrong-name": "Простір назв містить неприпустимі символи.",
 	"bs-namespacemanager-ns-exists": "Простір назв уже існує.",
