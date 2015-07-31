@@ -284,7 +284,7 @@ class BsPDFServlet {
 		}
 
 		$sScriptUrlDir = dirname( $_SERVER['SCRIPT_NAME'] );
-		$sScriptFSDir  = dirname( $_SERVER['SCRIPT_FILENAME'] );
+		$sScriptFSDir  = str_replace( '\\', '/', dirname( $_SERVER['SCRIPT_FILENAME'] ) );
 		if( strpos( $sScriptFSDir, $sScriptUrlDir) == 0 ){ //detect virtual path (webserver setting)
 			$sUrl = '/'.substr( $sUrl, strlen( $sScriptUrlDir ) );
 		}
