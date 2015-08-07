@@ -6,7 +6,8 @@
 			"Southparkfan",
 			"Sjoerddebruin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"McDutchie"
 		]
 	},
 	"prefs-avatars": "Avatar:",
@@ -19,7 +20,7 @@
 	"bs-avatars-upload-label": "foto",
 	"bs-avatars-generate-new-label": "nieuwe avatar genereren",
 	"bs-avatars-warning-title": "Waarschuwing",
-	"bs-avatars-warning-text": "U heeft ingesteld dat een gebruiker een foto in uw voorkeuren. Met behulp van avatars wijzigt u deze instelling. Wilt u doorgaan?",
+	"bs-avatars-warning-text": "Je hebt een gebruikersafbeelding ingesteld in je voorkeuren. Gebruik je avatars, dan wordt die gewist. Wil je doorgaan?",
 	"bs-avatars-userimage-title": "Foto van wiki of afbeeldings-URL",
 	"bs-avatars-userimage-help": "bijvoorbeeld Afbeelding.jpg of http://localhost/Afbeelding.gif",
 	"bs-avatars-set-userimage-failed": "Geen geldige URL of afbeelding van wiki.",

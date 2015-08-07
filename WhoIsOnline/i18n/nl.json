@@ -2,19 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"McDutchie"
 		]
 	},
 	"bs-whoisonline-desc": "Geeft een lijst weer met gebruikers die nu online zijn",
 	"bs-whoisonline-nousers": "Niemand is ingelogd.",
-	"bs-whoisonline-widget-title": "Wie is er online",
-	"prefs-whoisonline": "Wie is er online",
-	"bs-whoisonline-pref-limitcount": "Maximum aantal gebruikers weergegeven:",
+	"bs-whoisonline-widget-title": "Wie is er online?",
+	"prefs-whoisonline": "Wie is er online?",
+	"bs-whoisonline-pref-limitcount": "Maximumaantal gebruikers om weer te geven:",
 	"bs-whoisonline-pref-orderby": "Sorteren op:",
-	"bs-whoisonline-pref-maxidletime": "Tijd in seconden totdat een door de gebruiker is gemarkeerd als offline:",
+	"bs-whoisonline-pref-maxidletime": "Tijd in seconden totdat een gebruiker als offline wordt gemarkeerd:",
 	"bs-whoisonline-pref-orderby-time": "Uptime",
 	"bs-whoisonline-pref-orderby-name": "Naam",
-	"bs-whoisonline-pref-interval": "Update-interval in seconden:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Geeft het aantal gebruikers weer die nu zijn ingelogd",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Maakt een kleine fly-out lijst van ingelogde gebruikers.\n\nGeldig kenmerken:\n;<code>anchortext</code>: De tekst die u wilt het fly-out te worden bevestigd."
+	"bs-whoisonline-pref-interval": "Tijd tussen bijwerkingen in seconden:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Geeft het aantal weer van de gebruikers die nu zijn ingelogd.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Geeft een opklapbaar lijstje weer met de momenteel ingelogde gebruikers.\n\nMogelijke parameters:\n;<code>anchortext</code>: De tekst waaraan het lijstje moet worden verankerd."
 }
