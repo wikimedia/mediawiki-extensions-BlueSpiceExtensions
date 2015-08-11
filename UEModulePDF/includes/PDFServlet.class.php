@@ -224,8 +224,8 @@ class BsPDFServlet {
 			// TODO RBV (05.04.12 11:48): Check if urlencode has side effects
 			$oImageElement->setAttribute( 'src', 'images/'.urlencode($sSrcFilename) );
 			$sFileName = $sSrcFilename;
-			wfRunHooks( 'BSUEModulePDFFindFiles', array( $this, $oImageElement, $sAbsoluteFileSystemPath, $sFileName, 'images' ) );
-			wfRunHooks( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, $sAbsoluteFileSystemPath, $sFileName, 'images' ) );
+			wfRunHooks( 'BSUEModulePDFFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
+			wfRunHooks( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
 			$this->aFiles['images'][$sFileName] =  $sAbsoluteFileSystemPath;
 		}
 
