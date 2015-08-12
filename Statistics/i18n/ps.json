@@ -4,6 +4,12 @@
 			"Ahmed-Najib-Biabani-Ibrahimkhel"
 		]
 	},
+	"bs-statistics-year": "کال",
+	"bs-statistics-month": "مياشت",
+	"bs-statistics-day": "ورځ",
 	"bs-statistics-list": "لړليک",
-	"bs-statistics-label-page": "مخ"
+	"bs-statistics-filters": "چاڼگران",
+	"bs-statistics-label-name": "نوم",
+	"bs-statistics-label-page": "مخ",
+	"bs-statistics-filter-category": "وېشنيزه"
 }
