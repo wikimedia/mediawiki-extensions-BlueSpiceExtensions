@@ -2321,7 +2321,11 @@ var BsWikiCode = function() {
 		var internalLinks = [];
 		var internalLinksTitles = [];
 		$(this.dom.doc).find('a.bs-internal-link').each(function(){
-			internalLinksTitles.push( $(this).attr('href') );
+			var href = $(this).attr('data-mce-href');
+			if( !href ) {
+				href = $(this).attr('href');
+			}
+			internalLinksTitles.push( href );
 			internalLinks.push($(this));
 		});
 
