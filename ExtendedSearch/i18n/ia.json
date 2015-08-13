@@ -39,5 +39,12 @@
 	"bs-extendedsearch-sort-relevance": "Relevantia",
 	"bs-extendedsearch-sort-title": "Titulo",
 	"bs-extendedsearch-sort-ts": "Hora",
-	"bs-extendedsearch-sort-type": "Typo"
+	"bs-extendedsearch-sort-type": "Typo",
+	"bs-extendedsearch-specialpage-form-return-to-simple": "Formulario de recerca simple",
+	"bs-extendedsearch-specialpage-form-expand-to-extended": "Formulario de recerca avantiate",
+	"bs-extendedsearch-searchfulltext": "Que contine ...",
+	"bs-extendedsearch-pref-searchfiles": "Cercar files como predefinition",
+	"bs-extendedsearch-pref-defscopeuser": "Valor predefinite pro le recerca:",
+	"bs-extendedsearch-pref-scope-text": "Texto complete",
+	"bs-extendedsearch-pref-scope-title": "Titulo"
 }
