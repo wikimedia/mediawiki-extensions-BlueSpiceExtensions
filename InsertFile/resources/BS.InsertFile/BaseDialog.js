@@ -73,8 +73,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.stImageGrid = Ext.create('Ext.data.Store', {
 			height: 200,
 			buffered: true, // allow the grid to interact with the paging scroller by buffering
-			pageSize: 20,
-			leadingBufferZone: 20,
+			pageSize: 50000,
 			proxy: {
 				type: 'ajax',
 				url: mw.util.wikiScript('api'),
@@ -150,6 +149,11 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			store: this.stImageGrid,
 			loadMask: true,
 			dockedItems: this.tbGridTools,
+			plugins: {
+				ptype: 'bufferedrenderer',
+				trailingBufferZone: 20,
+				leadingBufferZone: 20
+			},
 			features: [ new Ext.ux.grid.FiltersFeature(filterFeature) ],
 			selModel: {
 				pruneRemoved: false
