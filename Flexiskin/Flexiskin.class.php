@@ -90,16 +90,14 @@ class Flexiskin extends BsExtensionMW {
 	/**
 	 * Replaces the BlueSpiceSkin screen.less file with the one specified by the parameters
 	 * @global string $wgResourceModules
-	 * @global string $wgStyleDirectory
-	 * @global string $wgUploadDirectory
 	 * @param string $sFlexiskinId
 	 * @param int $bIsTemp
 	 * @return boolean true of replaced correctly, otherwise false
 	 */
 	public function addCssFile( $sFlexiskinId, $bIsTemp = false ) {
-		global $wgResourceModules, $wgUploadPath, $wgUploadDirectory;
-		$oStatus = BsFileSystemHelper::ensureDataDirectory("flexiskin/" . $sFlexiskinId);
-		if ( $oStatus->isGood() ) {
+		global $wgResourceModules;
+		$oStatus = BsFileSystemHelper::ensureDataDirectory( "flexiskin/" . $sFlexiskinId );
+		if ( !$oStatus->isGood() ) {
 			return false;
 		}
 		$sFilePath = BsFileSystemHelper::getDataPath("flexiskin/" . $sFlexiskinId);
