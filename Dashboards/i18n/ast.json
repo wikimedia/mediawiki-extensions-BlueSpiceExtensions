@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-dashboards-desc": "Ufre tableros pa usuarios y alministradores",
+	"bs-specialadmindashboard-label": "Tableru",
+	"bs-dashboards-addportlet": "Amestar un módulu",
+	"bs-dashboards-portlets": "Módulos",
+	"prefs-dashboards": "Tableros",
+	"bs-dashboards-pref-userdashboardonlogo": "El logo del sitiu enllaza al panel del usuariu",
+	"admindashboard": "Tableru d'alministrador",
+	"userdashboard": "Tableru d'usuariu",
+	"bs-dashboard-userportlet-calendar-title": "Calendariu",
+	"bs-dashboard-userportlet-calendar-description": "Calendariu"
+}
