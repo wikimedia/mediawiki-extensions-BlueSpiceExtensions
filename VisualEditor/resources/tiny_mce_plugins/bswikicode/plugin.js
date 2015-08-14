@@ -2329,6 +2329,12 @@ var BsWikiCode = function() {
 			internalLinks.push($(this));
 		});
 
+		$(document).trigger( 'BSVisualEditorLoadContentBeforeCheckLinks', [
+			this,
+			internalLinksTitles,
+			internalLinks
+		]);
+
 		if( internalLinksTitles.length == 0 ) return;
 
 		$.getJSON(

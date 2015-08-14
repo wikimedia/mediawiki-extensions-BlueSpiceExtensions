@@ -9,6 +9,25 @@
  * @filesource
  */
 
+$(document).bind('BSVisualEditorLoadContentBeforeCheckLinks', function(event, editor, internalLinksTitles, internalLinks) {
+	var interWikiLinks = mw.config.get('BSInterWikiPrefixes', []);
+	if( interWikiLinks.length < 1 ) {
+		return;
+	}
+
+	for( var i = 0; i < internalLinksTitles.length; i++) {
+		var pref = internalLinksTitles[i].split(':');
+		if( pref.length < 2 ) {
+			continue;
+		}
+		pref = pref[0];
+		if( $.inArray( pref, interWikiLinks ) === -1 ) {
+			continue;
+		}
+		internalLinksTitles.splice(i, 1);
+	}
+});
+
 $(document).bind('BsInsertLinkWindowBeforeAddTabs', function( event, window, items ){
 	var storeData = [];
 	for(var i = 0; i < mw.config.get('BSInterWikiPrefixes', []).length; i++) {
