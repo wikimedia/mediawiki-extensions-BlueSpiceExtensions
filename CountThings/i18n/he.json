@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Guycn2"
+			"Guycn2",
+			"LaG roiL"
 		]
 	},
-	"bs-countthings-desc": "סיפוק תוכן מבוסס סטטיסטיקה"
+	"bs-countthings-desc": "סיפוק תוכן מבוסס סטטיסטיקה",
+	"bs-countthings-words-label": "מילים",
+	"bs-countthings-pages-label": "דפים",
+	"bs-countthings-error-no-input": "לא ניתן דף.",
+	"bs-countthings-tag-countarticles-desc": "מציג את מספר הדפים.",
+	"bs-countthings-tag-countusers-desc": "מציג את מספר המשתמשים."
 }
