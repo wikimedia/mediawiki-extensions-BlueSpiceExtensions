@@ -190,20 +190,19 @@ BsSaferEditEditMode = {
 
 mw.loader.using( 'ext.bluespice', function() {
 	BsSaferEditEditMode.init();
-	if ( bsSaferEditWarnOnLeave && (typeof(alreadyBound) == 'undefined' || alreadyBound == false) ) {
-		$( window ).on( 'beforeunload', function ( e ) {
-			alreadyBound = true;
-			// if a string is returned, a dialog is displayed.
-			// if null is returned, nothing happenes and the page is left.
+	if ( bsSaferEditWarnOnLeave && ( typeof ( alreadyBound ) == 'undefined' || alreadyBound == false ) ) {
+		window.onbeforeunload = function ( e ) {
+			var e = e || window.event;
 			var bReturn = BsSaferEditEditMode.checkSaved();
-			if ( bReturn !== null ) {
-				return bReturn;
+			if ( bReturn === null ) {
+				return;
 			}
-			// do not return anything, not even null. otherwise IE will display the dialogue
-			e.preventDefault();
-			e.stopImmediatePropagation();
-		});
-		$(document).on( 'submit', '#editform', function() {
+			if ( e ) {
+				e.returnValue = bReturn;
+			}
+			return bReturn;
+		};
+		$( document ).on( 'submit', '#editform', function () {
 			BsSaferEditEditMode.isSubmit = true;
 		} );
 	}
