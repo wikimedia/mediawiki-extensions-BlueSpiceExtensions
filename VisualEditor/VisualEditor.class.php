@@ -53,6 +53,7 @@ class VisualEditor extends BsExtensionMW {
 	 */
 	private $aConfigStandard = array(
 		'selector' => '#wpTextbox1',
+		'paste_word_valid_elements' => 'b,strong,i,em,h1,h2,h3,h4,h5,table,thead,tfoot,tr,th,td,ol,ul,li,a,sub,sup,strike,br,del,div,p',
 		'plugins' => array(
 			"lists",
 			//"emoticons",
