@@ -200,7 +200,7 @@ BsWantedArticle = {
 
 mw.loader.using( 'ext.bluespice',function() {
 	BsWantedArticle.config = {
-		urlBase: wgServer + wgScriptPath
+		urlBase: mw.config.get( "wgServer" ) + mw.config.get( "wgScriptPath" )
 	};
 	BsWantedArticle.init();
 } );

@@ -29,10 +29,12 @@ BsArticleInfo = {
 
 		BsArticleInfo.checkRevisionInterval = bsArticleInfoCheckRevisionInterval*1000;
 		if( BsArticleInfo.checkRevisionInterval < 1000 ) return;
-		if( wgCurRevisionId < 1 ) return;
+		if ( mw.config.get( "wgCurRevisionId" ) < 1 ) {
+			return;
+		}
 
 		if( $('#bs-statebar').length < 1 ) return;
-		BSPing.registerListener('ArticleInfo', BsArticleInfo.checkRevisionInterval, ['checkRevision', wgAction], BsArticleInfo.checkRevisionListener);
+		BSPing.registerListener( 'ArticleInfo', BsArticleInfo.checkRevisionInterval, [ 'checkRevision', mw.config.get( "wgAction" ) ], BsArticleInfo.checkRevisionListener );
 	},
 
 	updateLastEdited: function() {
@@ -44,7 +46,7 @@ BsArticleInfo = {
 	checkRevisionListener: function( result, Listener) {
 		if( result.success !== true ) return;
 		if( result.newRevision !== true ) {
-			BSPing.registerListener('ArticleInfo', BsArticleInfo.checkRevisionInterval, ['checkRevision', wgAction], BsArticleInfo.checkRevisionListener);
+			BSPing.registerListener( 'ArticleInfo', BsArticleInfo.checkRevisionInterval, [ 'checkRevision', mw.config.get( "wgAction" ) ], BsArticleInfo.checkRevisionListener );
 			return;
 		}
 

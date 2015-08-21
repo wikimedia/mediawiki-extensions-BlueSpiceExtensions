@@ -118,7 +118,7 @@
 		var titleParts = title.split('.');
 		var fileExtension = titleParts[titleParts.length-1];
 
-		if( wgFileExtensions.indexOf(fileExtension) === -1 ) {
+		if ( mw.config.get( "wgFileExtensions" ).indexOf( fileExtension ) === -1 ) {
 			return true;
 		}
 

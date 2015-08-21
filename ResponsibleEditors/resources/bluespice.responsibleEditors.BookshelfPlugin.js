@@ -31,7 +31,7 @@ $(document).bind('BSBookshelfBookManagerInitComponent', function( event, sender,
 
 	oConf.actionColumnItems.push(
 		{
-			icon: wgScriptPath+'/extensions/BlueSpiceExtensions/ResponsibleEditors/resources/images/user_edit.png',
+				icon: mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/ResponsibleEditors/resources/images/user_edit.png',
 			tooltip: mw.message( 'bs-responsibleeditors-cmchangerespeditors' ).plain(),
 			handler: function(grid, rowIndex, colIndex) {
 				var page_id = sender.jstrBookData.getAt( rowIndex ).get( 'page_id' );

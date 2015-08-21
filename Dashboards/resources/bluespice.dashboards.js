@@ -20,7 +20,7 @@ mw.loader.using('ext.bluespice.dashboards', function(){
 	}
 
 	if ( typeof bsPortalConfigLocation !== 'undefined' ) {
-		var image = '<img src="'+ wgScriptPath + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-m_add.png" />';
+		var image = '<img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-m_add.png" />';
 		var text = $( 'h1.firstHeading' ).html();
 		var anchor = $( 'h1.firstHeading' ).html( 
 			text + '<a href="#" id="bs-dashboard-add">' + image + '</a>'

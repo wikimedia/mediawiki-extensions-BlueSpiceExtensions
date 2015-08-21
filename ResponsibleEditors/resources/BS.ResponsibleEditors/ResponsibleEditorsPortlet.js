@@ -15,14 +15,14 @@ Ext.define( 'BS.ResponsibleEditors.ResponsibleEditorsPortlet', {
 	portletConfigClass: 'BS.ResponsibleEditors.ResponsibleEditorsPortletConfig',
 
 	initComponent: function() {
-		this.contentUrl = bs.util.getAjaxDispatcherUrl( 'ResponsibleEditors::getResponsibleEditorsPortletData', [ this.portletItemCount, wgUserId ] );
+		this.contentUrl = bs.util.getAjaxDispatcherUrl( 'ResponsibleEditors::getResponsibleEditorsPortletData', [ this.portletItemCount, mw.config.get( "wgUserId" ) ] );
 		this.callParent(arguments);
 	},
 
 	setPortletConfig: function( cfg ) {
 		this.callParent(arguments);
 		this.cContent.getLoader().load({
-			url: bs.util.getAjaxDispatcherUrl( 'ResponsibleEditors::getResponsibleEditorsPortletData', [ this.portletItemCount, wgUserId ] )
+			url: bs.util.getAjaxDispatcherUrl( 'ResponsibleEditors::getResponsibleEditorsPortletData', [ this.portletItemCount, mw.config.get( "wgUserId" ) ] )
 		});
 	}
 } );

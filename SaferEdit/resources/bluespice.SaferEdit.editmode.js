@@ -113,8 +113,12 @@ BsSaferEditEditMode = {
 	 * Conducts neccessary preparations of edit form and starts intermediate saving
 	 */
 	init: function() {
-		if ( wgAction == "edit" || wgAction == "submit" ) BsSaferEditEditMode.editMode = true;
-		if ( wgCanonicalNamespace == "Special" ) BsSaferEditEditMode.editMode = false;
+		if ( mw.config.get( "wgAction" ) == "edit" || mw.config.get( "wgAction" ) == "submit" ) {
+			BsSaferEditEditMode.editMode = true;
+		}
+		if ( mw.config.get( "wgCanonicalNamespace" ) == "Special" ) {
+			BsSaferEditEditMode.editMode = false;
+		}
 
 		if ( !BsSaferEditEditMode.editMode ) {
 			return;

@@ -45,7 +45,7 @@ Ext.define( 'BS.InsertLink.Window', {
 			this.fpnlMailTo
 		];
 
-		if ( wgUrlProtocols.indexOf( 'file' ) !== -1 ) {
+		if ( mw.config.get( "wgUrlProtocols" ).indexOf( 'file' ) !== -1 ) {
 			this.fpnlFileLink = Ext.create( 'BS.InsertLink.FormPanelFileLink', {} );
 			items.push( this.fpnlFileLink );
 		}
