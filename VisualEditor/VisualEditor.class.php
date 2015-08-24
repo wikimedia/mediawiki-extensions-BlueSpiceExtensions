@@ -188,9 +188,7 @@ class VisualEditor extends BsExtensionMW {
 			'bscategory', 'bschecklist', 'bslinebreak', '|', 'fullscreen'
 		)
 	);
-	private $aMergeToString = array(
-		'plugins', 'toolbar1', 'toolbar2'
-	);
+
 	protected $bShowToolbarIcon = true;
 
 	/**
@@ -295,93 +293,16 @@ class VisualEditor extends BsExtensionMW {
 		if ($this->bTagsCollected) return true;
 		$this->bTagsCollected = true;
 
-		$tags = $oParser->getTags();
-		$allowedTags = '';
-		$specialTags = '';
-		foreach ($tags as $tag) {
-			if ($tag == 'pre')
-				continue;
-			$allowedTags .= $tag . '[*],';
-			if ($tag == 'nowiki')
-				continue;
-			$specialTags .= $tag . '|';
-		}
-		$allowedTags .= 'div[*],';
+		$aConfigs = $this->makeConfig( $oParser );
 
-		BsConfig::set('MW::VisualEditor::SpecialTags', $specialTags);
-		BsConfig::set('MW::VisualEditor::AllowedTags', $allowedTags);
+		$this->aConfigStandard = $aConfigs['standard']; //Legacy
+		$this->aConfigOverwrite = $aConfigs['overwrite']; //Legacy
 
-		//TODO: There are duplicates!
-		$aDefaultTags = array(
-			"syntaxhighlight", "source", "infobox", "categorytree",
-			"presentation", "includeonly", "onlyinclude", "noinclude",
-			"backlink", "gallery", "math", "video", "rss", "tagcloud", "code"
-		);
-		$this->aConfigStandard["specialtaglist"] = BsConfig::get('MW::VisualEditor::SpecialTags')
-				. implode('|', $aDefaultTags);
-
-		$this->aConfigStandard["extended_valid_elements"] = BsConfig::get('MW::VisualEditor::AllowedTags')
-				. implode('[*],', $aDefaultTags);
-
-		// find the right language file
-		$language = $wgLang->getCode();
-		$langDir = __DIR__ . DS . 'resources' . DS . 'tinymce' . DS . 'langs';
-		if (!file_exists("{$langDir}" . DS . "{$language}.js")) {
-			//i don't know what language files use underscores, but i'll leave it here
-			$aLanguage = explode('_', $language);
-			if (count($aLanguage)<2)
-				$aLanguage = explode('-', $language);
-			if (file_exists("{$langDir}" . DS . "{$aLanguage[0]}.js")) {
-				$language = $aLanguage[0];
-			} else {
-				$language = 'en';
-			}
-		}
-		$this->aConfigStandard['language'] = $language;
-
-		$aLoaderUsingDeps = array(
-			'ext.bluespice'
-		);
-		// TODO SW: use string flag as parameter to allow hookhandler to
-		// determin context. This will be usefull if hook gets called in
-		// another place
-		wfRunHooks(
-			'VisualEditorConfig',
-			array(
-				&$this->aConfigStandard,
-				&$this->aConfigOverwrite,
-				&$aLoaderUsingDeps
-			)
-		);
-
-		foreach( $this->aConfigStandard['style_formats'] as &$aStyles ){
-			foreach ( $aStyles as $key => &$val ){
-				if ( $key === "title" ) {
-					$oMsg = wfMessage( $val );
-					if ( $oMsg->exists() ) {
-						$val = $oMsg->plain();
-					}
-				}
-
-				if ( $key === "items" && is_array($val) ){
-					foreach ( $val as &$item ) {
-						$oMsg = wfMessage( $item['title'] );
-						if ( $oMsg->exists() ) {
-							$item['title'] = $oMsg->plain();
-						}
-					}
-				}
-			}
-		}
-
-		$this->aConfigStandard = $this->_prepareConfig($this->aConfigStandard);
-		$this->aConfigOverwrite = $this->_prepareConfig($this->aConfigOverwrite);
-
-		$wgOut->addJsConfigVars('BsVisualEditorConfigDefault', $this->aConfigStandard);
+		$wgOut->addJsConfigVars('BsVisualEditorConfigDefault', $aConfigs['standard']);
 		$wgOut->addJsConfigVars('BsVisualEditorConfigAlternative', array_merge(
-			$this->aConfigStandard, $this->aConfigOverwrite
+			$aConfigs['standard'], $aConfigs['overwrite']
 		));
-		$wgOut->addJsConfigVars('BsVisualEditorLoaderUsingDeps', $aLoaderUsingDeps);
+		$wgOut->addJsConfigVars('BsVisualEditorLoaderUsingDeps', $aConfigs['module_deps']);
 
 		return true;
 	}
@@ -390,8 +311,8 @@ class VisualEditor extends BsExtensionMW {
 		$tmp = array();
 
 		foreach ($config as $key => $value) {
-			if (in_array($key, $this->aMergeToString)) {
-				$tmp[$key] = join(' ', $value);
+			if ( in_array ( $key, array( 'plugins', 'toolbar1', 'toolbar2') ) ) {
+				$tmp[$key] = implode(' ', $value);
 			} else {
 				$tmp[$key] = $value;
 			}
@@ -568,4 +489,113 @@ class VisualEditor extends BsExtensionMW {
 		return true;
 	}
 
+
+	/**
+	 * Assembles the overall configuration for VisualEditor. This consists of
+	 * - TinyMCE consig standard:
+	 * - TinyMCE config overwrite:
+	 * - ResourceLoader dependencies:
+	 *
+	 * It is intentionally 'public' to allow other extensions to create and
+	 * modify their own configs and to create own TinyMCE instances
+	 * @param Parser $oParser
+	 * @param string $sLangCode
+	 * @return array
+	 */
+	public function makeConfig( $oParser, $sLangCode = null ) {
+		if( $sLangCode == null ) {
+			$sLangCode = $this->getLanguage()->getCode();
+		}
+
+		$aConfigs = array(
+			'standard' => $this->aConfigStandard + array(
+				'specialtaglist' => '',
+				'extended_valid_elements' => ''
+			),
+			'overwrite' => $this->aConfigOverwrite,
+			'module_deps' => array(
+				'ext.bluespice'
+			)
+		);
+
+		$aExtensionTags = $oParser->getTags(); //TODO: Use, or at least fall back to API "action=query&meta=siteinfo&siprop=extensiontags"
+		$sAllowedTags = '';
+		$sSpecialTags = '';
+		foreach ( $aExtensionTags as $sTagName ) {
+			if ( $sTagName == 'pre' ) {
+				continue;
+			}
+			$sAllowedTags .= $sTagName . '[*],';
+			if ($sTagName == 'nowiki') {
+				continue;
+			}
+			$sSpecialTags .= $sTagName . '|';
+		}
+		$sAllowedTags .= 'div[*],';
+
+		//This is a bad place...
+		BsConfig::set('MW::VisualEditor::SpecialTags', $sSpecialTags);
+		BsConfig::set('MW::VisualEditor::AllowedTags', $sAllowedTags);
+
+		$aDefaultTags = array(
+			"includeonly", "onlyinclude", "noinclude", "gallery", "code", //Definitively MediaWiki core
+			"presentation", "backlink",  "math", "video" //Maybe legacy extension tags? Potential duplicates!
+		);
+
+		$aConfigs['standard']["specialtaglist"] = $sSpecialTags . implode('|', $aDefaultTags);
+		$aConfigs['standard']["extended_valid_elements"] = $sAllowedTags . implode('[*],', $aDefaultTags);
+
+		//Find the right language file
+		$sLangDir = __DIR__ . '/resources/tinymce/langs';
+		if (!file_exists("{$sLangDir}/{$sLangCode}.js")) {
+			//I don't know what language files use underscores, but I'll leave it here
+			$aLanguage = explode('_', $sLangCode);
+			if ( count( $aLanguage ) < 2 ) {
+				$aLanguage = explode('-', $sLangCode);
+			}
+			if ( file_exists("{$sLangDir}/{$aLanguage[0]}.js") ) {
+				$sLangCode = $aLanguage[0];
+			} else {
+				$sLangCode = 'en';
+			}
+		}
+		$aConfigs['standard']['language'] = $sLangCode;
+
+		// TODO SW: use string flag as parameter to allow hookhandler to
+		// determin context. This will be usefull if hook gets called in
+		// another place
+		wfRunHooks(
+			'VisualEditorConfig',
+			array(
+				&$aConfigs['standard'],
+				&$aConfigs['overwrite'],
+				&$aConfigs['module_deps']
+			)
+		);
+
+		foreach( $aConfigs['standard']['style_formats'] as &$aStyles ){
+			foreach ( $aStyles as $key => &$val ){
+				if ( $key === "title" ) {
+					$oMsg = wfMessage( $val );
+					if ( $oMsg->exists() ) {
+						$val = $oMsg->plain();
+					}
+				}
+
+				if ( $key === "items" && is_array($val) ){
+					foreach ( $val as &$item ) {
+						$oMsg = wfMessage( $item['title'] );
+						if ( $oMsg->exists() ) {
+							$item['title'] = $oMsg->plain();
+						}
+					}
+				}
+			}
+		}
+
+		$aConfigs['standard'] = $this->_prepareConfig($aConfigs['standard']);
+		$aConfigs['overwrite'] = $this->_prepareConfig($aConfigs['overwrite']);
+
+		return $aConfigs;
+	}
 }
