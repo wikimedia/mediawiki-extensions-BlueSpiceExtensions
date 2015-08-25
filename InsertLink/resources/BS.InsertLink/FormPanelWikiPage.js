@@ -44,7 +44,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 
 		if ( obj.type && obj.type === this.linktype ) { //VisualEditor
 			var link = String( obj.href );
-			link = link.replace( wgServer + "/", "" );
+			link = link.replace( mw.config.get( "wgServer" ) + "/", "" );
 			link = unescape(link);
 
 			if( link === desc ) {
@@ -69,7 +69,7 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 				var namespace = parts.shift();
 				//Check if it is a available namespace or part of the title
 				var normNsText = namespace.toLowerCase().replace(' ', '_' );
-				var nsId = wgNamespaceIds[normNsText];
+				var nsId = mw.config.get( "wgNamespaceIds" )[normNsText];
 				this.cbPageName.setValue( namespace + ":" + parts.join( ':' ) );
 
 			} else {

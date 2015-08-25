@@ -127,7 +127,7 @@ BsExtendedSearchAjaxManager.prototype = {
 	 *Collapse facetboxes
 	 */
 	collapseFacets: function() {
-		var imagepath = wgScriptPath+'/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
+		var imagepath = mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images/';
 
 		$( '.bs-extendedsearch-facetbox-container' ).each( function() {
 			var elements = $(this).find('div[class=facetBarEntry]').length;
@@ -176,7 +176,7 @@ BsExtendedSearchAjaxManager.prototype = {
 		 *  - instead action=remote&mod=ExtendedSearch&rf=getRequestJson
 		 *  - value of search_origin is overriden with 'ajax'
 		 */
-		ExtendedSearchAjaxManager.oUrlBase = wgScriptPath + '/';
+		ExtendedSearchAjaxManager.oUrlBase = mw.config.get( "wgScriptPath" ) + '/';
 		if ( 1 in uriParts ) {
 			var uriParams = uriParts[1].split( '&' );
 			var aKeyValue;
@@ -362,7 +362,7 @@ BsExtendedSearchAjaxManager.prototype = {
 			clearTimeout( thread );
 			if ( $.inArray( event.which, keys ) > 0 ) return false;
 			if ( inputField.val() === '' ) return false;
-			url = wgServer + wgScriptPath +
+			url = mw.config.get( "wgServer" ) + mw.config.get( "wgScriptPath" ) +
 					'?search_scope=text&search_submit=1&q=' + encodeURIComponent( inputField.val() );
 
 			if ( typeof bsExtendedSearchSearchFiles !== 'undefined' && bsExtendedSearchSearchFiles ) {

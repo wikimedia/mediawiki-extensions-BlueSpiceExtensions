@@ -20,7 +20,7 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 			var applet = $("<applet>");
 			applet.attr('id', 'BsFileChooserApplet');
 			applet.attr('name', 'BsFileChooserApplet');
-			applet.attr('archive', wgScriptPath + '/extensions/BlueSpiceExtensions/InsertLink/vendor/BsFileChooserApplet.jar');
+			applet.attr( 'archive', mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/InsertLink/vendor/BsFileChooserApplet.jar' );
 			applet.attr('code', 'biz.hallowelt.InsertLink.BsFileChooserApplet.class');
 			applet.attr('width', '1');
 			applet.attr('height', '1');

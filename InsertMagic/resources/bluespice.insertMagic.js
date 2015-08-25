@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	Ext.Loader.setPath( 'BS.InsertMagic', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertMagic/resources/BS.InsertMagic');
+	Ext.Loader.setPath( 'BS.InsertMagic', mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/InsertMagic/resources/BS.InsertMagic' );
 
 	$('a#bs-editbutton-insertmagic').on('click', function(){
 		var me = this;

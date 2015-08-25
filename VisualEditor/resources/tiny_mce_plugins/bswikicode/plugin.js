@@ -2142,7 +2142,7 @@ var BsWikiCode = function() {
 					var images = ed.getBody().getElementsByTagName('img');
 					for( var i = 0; i < images.length; i++ ) {
 						//We process only matching nodes
-						if ( decodeURI( images[i].src ) !== wgServer+_imageDummyUrl+'?'+data.file ) {
+						if ( decodeURI( images[i].src ) !== mw.config.get( "wgServer" ) + _imageDummyUrl + '?' + data.file ) {
 							continue;
 						}
 

@@ -80,7 +80,7 @@ BsShoutBox = {
 		BsShoutBox.ajaxLoader.fadeIn();
 
 		this.msgList.load(
-				bs.util.getAjaxDispatcherUrl( 'ShoutBox::getShouts', [ wgArticleId, sblimit ] ),
+				bs.util.getAjaxDispatcherUrl( 'ShoutBox::getShouts', [ mw.config.get( "wgArticleId" ), sblimit ] ),
 				function( data ) {
 					BsShoutBox.msgList.slideDown();
 					BsShoutBox.btnSend.blur().removeAttr( 'disabled' ); //reactivate the send button
@@ -104,7 +104,7 @@ BsShoutBox = {
 		$( document ).trigger( "onBsShoutboxBeforeArchived", [ BsShoutBox ] );
 		BsShoutBox.ajaxLoader.fadeIn();
 		$.post(
-				bs.util.getAjaxDispatcherUrl( 'ShoutBox::archiveShout', [ iShoutID, wgArticleId ] ),
+				bs.util.getAjaxDispatcherUrl( 'ShoutBox::archiveShout', [ iShoutID, mw.config.get( "wgArticleId" ) ] ),
 				function( data ) {
 					BsShoutBox.updateShoutbox();
 					$( "#bs-sb-error" ).html( data ).fadeIn().delay( "1500" ).fadeOut();
@@ -164,7 +164,7 @@ mw.loader.using( 'ext.bluespice', function() {
 		BsShoutBox.textField.blur().attr( 'disabled', 'disabled' );
 
 		$.post(
-				bs.util.getAjaxDispatcherUrl( 'ShoutBox::insertShout', [ wgArticleId, sMessage ] ),
+				bs.util.getAjaxDispatcherUrl( 'ShoutBox::insertShout', [ mw.config.get( "wgArticleId" ), sMessage ] ),
 				function( data ) {
 					var responseObj = $.parseJSON( data );
 					if ( responseObj.success === false ) {

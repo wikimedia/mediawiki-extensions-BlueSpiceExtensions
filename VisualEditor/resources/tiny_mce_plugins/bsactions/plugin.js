@@ -99,10 +99,10 @@ var BsActions = function() {
 		}
 
 		ajaxParams = {
-			articleId: wgArticleId,
-			username: escape(wgUserName),
-			pageName: wgPageName,
-			namespace: wgNamespaceNumber,
+			articleId: mw.config.get( "wgArticleId" ),
+			username: escape( mw.config.get( "wgUserName" ) ),
+			pageName: mw.config.get( "wgPageName" ),
+			namespace: mw.config.get( "wgNamespaceNumber" ),
 			starttime: $("input[name=wpStarttime]").val(),
 			edittime: $("input[name=wpEdittime]").val(),
 			editsection: $("input[name=wpSection]").val(),
