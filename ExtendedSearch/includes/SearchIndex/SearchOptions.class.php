@@ -289,7 +289,8 @@ class SearchOptions {
 		$aFq = array();
 		$aBq = array();
 
-		$scope = ( BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) == 'title' )
+		$oRequest = RequestContext::getMain()->getRequest();
+		$scope = $oRequest->getVal( 'search_scope', BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' ) ) == 'title'
 			? 'title'
 			: 'text';
 		$this->aOptions['scope'] = $scope;
