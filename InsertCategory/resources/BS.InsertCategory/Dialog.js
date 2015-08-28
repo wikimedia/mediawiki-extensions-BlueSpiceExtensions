@@ -56,7 +56,19 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 	},
 	onItemClick: function( tree, record, item, index, e, eOpts ) {
 		this.isDirty = true;
-		this.bsCategories.addValue( [record.data.text] );
+		if ( mw.config.get( 'BSInsertCategoryWithParents' ) ) {
+			this.addValuesFromRecord( record );
+		}
+		else {
+			this.bsCategories.addValue( [ record.data.text ] );
+		}
+	},
+	addValuesFromRecord: function ( record ) {
+		//parentNode is null if there is no parent, internalId "src" is the root of the categories
+		if ( typeof ( record.parentNode ) !== "null" && record.parentNode.internalId !== "src" ) {
+			this.addValuesFromRecord( record.parentNode );
+		}
+		this.bsCategories.addValue( [ record.data.text ] );
 	},
 	onSelect: function( sender, records) {
 		this.isDirty = true;
