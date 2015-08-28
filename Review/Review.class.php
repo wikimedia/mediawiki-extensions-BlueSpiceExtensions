@@ -1354,7 +1354,7 @@ class Review extends BsExtensionMW {
 			}
 
 			//Send mail to next user in queue
-			return BsMailer::getInstance( 'MW' )->send($oReviewer, $sSubject, $sMsg);
+			BsMailer::getInstance( 'MW' )->send($oReviewer, $sSubject, $sMsg);
 		}
 	}
 
