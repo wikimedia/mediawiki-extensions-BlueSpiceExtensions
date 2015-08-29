@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"아라",
-			"콩가루"
+			"콩가루",
+			"Revi"
 		]
 	},
 	"bs-visualeditor-desc": "미디어위키를 위한 시각편집기",
@@ -37,5 +38,5 @@
 	"bs-visualeditor-bsactions-heading4": "4단계 문단 제목",
 	"bs-visualeditor-bsactions-heading5": "5단계 문단 제목",
 	"bs-visualeditor-bsactions-heading6": "6단계 문단 제목",
-	"bs-visualeditor-switch-noeditor-desc": "이 문서에서 보이는 편집기를 비활성화합니다."
+	"bs-visualeditor-switch-noeditor-desc": "이 문서에서 시각편집기를 비활성화합니다."
 }
