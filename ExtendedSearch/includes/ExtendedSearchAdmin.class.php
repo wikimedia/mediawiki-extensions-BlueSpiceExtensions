@@ -65,7 +65,8 @@ class ExtendedSearchAdmin {
 				$sOutput = ExtendedSearchAdmin::getInstance()->getDeleteFeedback();
 				break;
 			case 'deleteLock':
-				$sOutput = ExtendedSearchAdmin::getInstance()->checkLockExistence( $sMode );
+				$sOutput = (string) ExtendedSearchAdmin::getInstance()
+					->checkLockExistence( $sMode );
 				break;
 			default:
 				$sOutput = '';
