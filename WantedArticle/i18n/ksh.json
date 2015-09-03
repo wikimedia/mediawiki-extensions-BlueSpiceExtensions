@@ -17,6 +17,7 @@
 	"bs-wantedarticle-single-textfield-defaulttext": "Dä Sigg ier Övverschreff",
 	"bs-wantedarticle-tag-wantedarticle-desc": "Jidd en Leß met de jewönschte Sigge uß.\nVerfööschbaa Eijeschaffte för dem Enschtälle:",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>Zahl</code>: Aanzahl Sigge zom Aanzeile.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Output format <code>list</code> or <code>quene</code> (comma separated).\n<!-- https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-wantedarticle-tag-wantedarticle-desc-param-type/ksh  -->",
 	"bs-wantedarticle-tag-more-linktext": "Mih&nbsp;…",
 	"bs-wantedarticle-tag-default-title": "Jesescherte Sigge",
 	"bs-wantedarticle-pref-includelimit": "Aanzahl Vörschlähsch:",
