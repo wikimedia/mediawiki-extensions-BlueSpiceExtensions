@@ -46,5 +46,6 @@
 	"bs-extendedsearch-pref-searchfiles": "Cercar files como predefinition",
 	"bs-extendedsearch-pref-defscopeuser": "Valor predefinite pro le recerca:",
 	"bs-extendedsearch-pref-scope-text": "Texto complete",
-	"bs-extendedsearch-pref-scope-title": "Titulo"
+	"bs-extendedsearch-pref-scope-title": "Titulo",
+	"bs-extendedsearch-pref-jumptotitle": "Le recercas mena directemente al pagina correspondente si existe"
 }

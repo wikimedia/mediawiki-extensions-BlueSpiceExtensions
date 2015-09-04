@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gertakapllani"
+			"Gertakapllani",
+			"Ammartivari"
 		]
 	},
+	"bs-visualeditor-desc": "Redaktuesi vizual për MediaWikin",
 	"prefs-visualeditor": "editori viziv",
 	"bs-visualeditor-editbutton-hint": "editori viziv",
 	"bs-visualeditor-no-summary": "Asnjë përmbledhje",
