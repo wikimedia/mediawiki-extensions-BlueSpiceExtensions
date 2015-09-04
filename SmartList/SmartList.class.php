@@ -1100,23 +1100,19 @@ class SmartList extends BsExtensionMW {
 		}
 
 		if ( !empty( $sCat ) ) {
-			if ( substr_count( $sCat , ',') > 0 ) {
-				$aCategories = explode( ',', $sCat );
-				$aCategories = array_map( 'trim', $aCategories );
-				$sCategory = $aCategories[0];
-			} else {
-				$sCategory = $sCat;
-			}
+			$aCategories = explode( ',', $sCat );
+			$aCategories = array_map('trim', $aCategories);
+			$aCategories = str_replace(' ', '_',$aCategories);
 
 			if ( $bAlltime === false ) {
 				$aColumns[] = 'wo_page_id';
 				$aJoinConditions = array( 'categorylinks' => array( 'INNER JOIN ', 'wo_page_id = cl_from' ) );
 				$aTables[]            = 'categorylinks';
-				$aConditions['cl_to'] = $sCategory;
+				$aConditions['cl_to'] = $aCategories;
 			} else {
 				$aTables[]            = 'categorylinks';
 				$aConditions[]        = 'page_id = cl_from';
-				$aConditions['cl_to'] = $sCategory;
+				$aConditions['cl_to'] = $aCategories;
 			}
 		}
 
@@ -1150,6 +1146,7 @@ class SmartList extends BsExtensionMW {
 			}
 
 			$aList = array();
+			$aInList = array();
 			$iCurrCount = 0;
 			if ( $bAlltime === false ) {
 				foreach ( $res as $row ) {
@@ -1166,7 +1163,10 @@ class SmartList extends BsExtensionMW {
 							continue;
 						}
 					}
-
+					if( in_array( $oTitle->getPrefixedText(), $aInList ) ) {
+						continue;
+					}
+					$aInList[] = $oTitle->getPrefixedText();
 					$sLink = BsLinkProvider::makeLink( $oTitle );
 					$aList['<li>'. $sLink . ' (' . $row->page_counter . ')</li>'] = (int)$row->page_counter;
 					$iCurrCount++;
@@ -1188,6 +1188,11 @@ class SmartList extends BsExtensionMW {
 						$aResult  = array_diff( $aPrefixedCategories, $aParents );
 						if ( !empty( $aResult ) ) continue;
 					}
+
+					if( in_array( $oTitle->getPrefixedText(), $aInList ) ) {
+						continue;
+					}
+					$aInList[] = $oTitle->getPrefixedText();
 
 					$sLink = BsLinkProvider::makeLink( $oTitle );
 					$aList[] = '<li>' . $sLink . ' (' . $row->page_counter . ')</li>';
