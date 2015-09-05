@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Inkowik"
+			"Inkowik",
+			"Metalhead64"
 		]
 	},
 	"bs-blog-desc": "Seiten werden in chronologischer Reihenfolge als Blog-Einträge dargestellt",
@@ -19,7 +20,7 @@
 	"bs-blog-blog": "Blog",
 	"bs-blog-pref-moreinnewwindow": "Bei Klick auf weiterlesen ein neues Fenster öffnen",
 	"bs-blog-pref-newentryfieldposition": "Position des Formulars für neue Einträge:",
-	"bs-blog-pref-showall": "Link alle anzeigen darstellen",
+	"bs-blog-pref-showall": "„Alle Einträge“-Link anzeigen",
 	"bs-blog-pref-showinfo": "Informationen über den Blogeintrag anzeigen",
 	"bs-blog-pref-showlimit": "Anzahl darzustellender Blog-Einträge:",
 	"bs-blog-pref-shownewentryfield": "Formular für neue Einträge anzeigen",
