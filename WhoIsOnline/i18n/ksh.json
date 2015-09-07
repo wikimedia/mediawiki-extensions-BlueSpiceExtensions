@@ -15,5 +15,5 @@
 	"bs-whoisonline-pref-orderby-name": "Nahme",
 	"bs-whoisonline-pref-interval": "De Sekonde zwesche em neu aanzeije:",
 	"bs-whoisonline-tag-whoisonlinecount-desc": "Zeisch de Aanzahl vun de Metmaacher, wä em Momang derbei es.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Määd en kleine Leß med de Metmaacher, di em Momang enjeogg sin.\n\nJöltijje Parramehtere:\n;<code>anchortext</code>: Dä Täx, dä doh schteiht, woh de de Leß aanjezeijsch weed."
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Määd en kleine Oppklapp_Leß med de Metmaacher, di em Momang enjelogg sin.\n\nJöltijje Parramehtere:\n;<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">anchortext</code>: Dä Täx, dä doh schteiht, woh de Leß aanjezeijsch weed."
 }
