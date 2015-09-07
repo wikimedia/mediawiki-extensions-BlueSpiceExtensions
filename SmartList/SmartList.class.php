@@ -808,7 +808,6 @@ class SmartList extends BsExtensionMW {
 		} elseif( $aArgs['mode'] == 'whatlinkshere' ) {
 			//PW(25.02.2015) TODO:
 			//There could be filters - see Special:Whatlinkshere
-
 			$oTargetTitle = empty( $aArgs['target'] )
 				? $this->getContext()->getTitle()
 				: Title::newFromText( $aArgs['target'] )
@@ -1333,8 +1332,12 @@ class SmartList extends BsExtensionMW {
 			$aCategories = explode( ',', $aArgs['categories'] );
 			$iCnt = count( $aCategories );
 			for ( $i = 0; $i < $iCnt; $i++ ) {
-				$aCategories[$i] = str_replace( ' ', '_', $aCategories[$i] );
-				$aCategories[$i] = "'" . trim( ucfirst( $aCategories[$i] ) ) . "'";
+				$oCategory = Category::newFromName( trim( $aCategories[$i] ) );
+				if( $oCategory === false ) {
+					unset( $aCategories[$i] );
+					continue;
+				}
+				$aCategories[$i] = "'" . $oCategory->getName() . "'" ;
 			}
 			$aArgs['categories'] = implode( ',', $aCategories );
 
