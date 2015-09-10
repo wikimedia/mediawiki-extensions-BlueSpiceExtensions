@@ -161,13 +161,4 @@ h1, h2, h3, h4, h5, h6 {
 table {
     clear: both; /* Is this wise? Prevents floating thumbs from overlapping into tables and TOC table */
     -fs-table-paginate: paginate; /* special xhtmlrenderer (flying saucer -> fs) property */
-    page-break-inside: avoid;
-}
-
-thead {
-    page-break-after: avoid;
-}
-
-tbody {
-    inside: avoid;
 }
