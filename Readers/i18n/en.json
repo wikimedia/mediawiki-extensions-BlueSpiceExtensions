@@ -16,5 +16,6 @@
 	"bs-readers-emptyinput": "No page has been provided.",
 	"bs-readers-header-username": "Username",
 	"bs-readers-header-readerspath": "Reader",
-	"bs-readers-header-ts": "Date"
+	"bs-readers-header-ts": "Date",
+	"bs-readers-header-page": "Page"
 }
