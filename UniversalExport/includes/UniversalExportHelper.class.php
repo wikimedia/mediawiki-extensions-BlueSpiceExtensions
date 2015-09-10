@@ -103,33 +103,33 @@ class BsUniversalExportHelper {
 
 		//HINT: http://calibre-ebook.com/user_manual/xpath.html
 		$oBodyContentXPath = new DOMXPath( $oPageDOM );
-		$oHeadingElements  = $oBodyContentXPath->query(
+		$oHeadingElements = $oBodyContentXPath->query(
 			"//*[contains(@class, 'firstHeading') "
-			."or contains(@class, 'mw-headline') "
-			."and not(contains(@class, 'mw-headline-'))]"
+			. "or contains(@class, 'mw-headline') "
+			. "and not(contains(@class, 'mw-headline-'))]"
 		);
 
 		//By convention the first <h1> in the PageDOM is the title of the page
-		$oPageTitleBookmarkElement    = $oBookmarksDOM->createElement( 'bookmark' );
-		$oPageTitleHeadingElement     = $oHeadingElements->item( 0 );
+		$oPageTitleBookmarkElement = $oBookmarksDOM->createElement( 'bookmark' );
+		$oPageTitleHeadingElement = $oHeadingElements->item( 0 );
 		$sPageTitleHeadingTextContent = trim( $oPageTitleHeadingElement->textContent );
 
 		//By convention previousSibling is an Anchor-Tag (see BsPageContentProvider)
 		//TODO: check for null
 		$sPageTitleHeadingJumpmark = self::findPreviousDOMElementSibling( $oPageTitleHeadingElement, 'a' )->getAttribute( 'name' );
 		$oPageTitleBookmarkElement->setAttribute( 'name', $sPageTitleHeadingTextContent );
-		$oPageTitleBookmarkElement->setAttribute( 'href', '#'.$sPageTitleHeadingJumpmark );
+		$oPageTitleBookmarkElement->setAttribute( 'href', '#' . $sPageTitleHeadingJumpmark );
 
 		//Adapt MediaWiki TOC #1
 		$oTocTableElement = $oBodyContentXPath->query( "//*[@id='toc']" );
-		$oTableOfContentsAnchors = array();
+		$oTableOfContentsAnchors = array ();
 		if ( $oTocTableElement->length > 0 ) { //Is a TOC available?
 			// HINT: http://de.selfhtml.org/xml/darstellung/xpathsyntax.htm#position_bedingungen
 			// - recursive descent operator = getElementsByTag
 			$oTableOfContentsAnchors = $oBodyContentXPath->query( "//*[@id='toc']//a" );
-			$oTocTableElement->item( 0 )->setAttribute( 'id', 'toc-'.$sPageTitleHeadingJumpmark ); //make id unique
-			$oTocTitleElement = $oBodyContentXPath->query( "//*[@id='toctitle']" )->item(0);
-			$oTocTitleElement->setAttribute( 'id', 'toctitle-'.$sPageTitleHeadingJumpmark ); //make id unique;
+			$oTocTableElement->item( 0 )->setAttribute( 'id', 'toc-' . $sPageTitleHeadingJumpmark ); //make id unique
+			$oTocTitleElement = $oBodyContentXPath->query( "//*[@id='toctitle']" )->item( 0 );
+			$oTocTitleElement->setAttribute( 'id', 'toctitle-' . $sPageTitleHeadingJumpmark ); //make id unique;
 			$oTocTitleElement->setAttribute( 'class', 'toctitle' );
 		}
 
@@ -137,31 +137,30 @@ class BsUniversalExportHelper {
 		$oParentBookmark = $oPageTitleBookmarkElement;
 		$iParentLevel = 0;
 		$aHeadingLevels = array_flip(
-			array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' )
+			array ( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' )
 		);
 		for ( $i = 1; $i < $oHeadingElements->length; $i++ ) {
-			$oHeadingElement     = $oHeadingElements->item( $i );
+			$oHeadingElement = $oHeadingElements->item( $i );
 			$sHeadingTextContent = trim( $oHeadingElement->textContent );
 			//In $sPageTitleHeadingJumpmark there is the PageTitle AND the RevisionId incorporated
-			$sHeadingJumpmark    = 'bs-ue-jumpmark-'.md5( $sPageTitleHeadingJumpmark.$sHeadingTextContent );
+			$sHeadingJumpmark = 'bs-ue-jumpmark-' . md5( $sPageTitleHeadingJumpmark . $sHeadingTextContent );
 
 			$oBookmarkElement = $oBookmarksDOM->createElement( 'bookmark' );
 			$oBookmarkElement->setAttribute( 'name', $sHeadingTextContent );
-			$oBookmarkElement->setAttribute( 'href', '#'.$sHeadingJumpmark );
+			$oBookmarkElement->setAttribute( 'href', '#' . $sHeadingJumpmark );
 
 			$sNodeName = strtolower( $oHeadingElement->parentNode->nodeName );
 			$iLevel = $aHeadingLevels[$sNodeName] + 1;
 			$iLevelDifference = $iLevel - $iParentLevel;
-			if( $iLevelDifference > 0 ) { // e.g H2 -> H3 --> Walk down
-				for( $j = 0; $j < $iLevelDifference; $j++ ) {
-					if( $oParentBookmark->lastChild !== null ) {
+			if ( $iLevelDifference > 0 ) { // e.g H2 -> H3 --> Walk down
+				for ( $j = 0; $j < $iLevelDifference; $j++ ) {
+					if ( $oParentBookmark->lastChild !== null ) {
 						$oParentBookmark = $oParentBookmark->lastChild;
 					}
 				}
-			}
-			elseif( $iLevelDifference < 0 ) { // e.g H6 -> H3 --> Walk up
-				for( $j = 0; $j > $iLevelDifference; $j-- ) {
-					if( $oParentBookmark->parentNode !== null ) {
+			} elseif ( $iLevelDifference < 0 ) { // e.g H6 -> H3 --> Walk up
+				for ( $j = 0; $j > $iLevelDifference; $j-- ) {
+					if ( $oParentBookmark->parentNode !== null ) {
 						$oParentBookmark = $oParentBookmark->parentNode;
 					}
 				}
@@ -171,22 +170,22 @@ class BsUniversalExportHelper {
 			$oParentBookmark->appendChild( $oBookmarkElement );
 
 			$oHeadingElementAnchor = self::findPreviousDOMElementSibling( $oHeadingElement, 'a' );
-			if( $oHeadingElementAnchor !== null ) {
+			if ( $oHeadingElementAnchor !== null ) {
 
 				$sOrigialNameValue = $oHeadingElementAnchor->getAttribute( 'name' );
 				$oHeadingElementAnchor->setAttribute( 'name', $sHeadingJumpmark );
 
 				//Adapt MediaWiki TOC #2
 				// TODO RBV (01.02.11 14:58): Make this better
-				foreach( $oTableOfContentsAnchors as $oTOCAnchorElement ) {
-					if( $oTOCAnchorElement->getAttribute( 'href' ) == '#'.$sOrigialNameValue ) {
-						$oTOCAnchorElement->setAttribute( 'href', '#'.$sHeadingJumpmark );
+				foreach ( $oTableOfContentsAnchors as $oTOCAnchorElement ) {
+					if ( $oTOCAnchorElement->getAttribute( 'href' ) == '#' . $sOrigialNameValue ) {
+						$oTOCAnchorElement->setAttribute( 'href', '#' . $sHeadingJumpmark );
 					}
 				}
 			} else {
 				//Inject a new anchor for the PDF bookmarks
 				$oNewAnchorTag = $oPageDOM->createElement( 'a' );
-				$oNewAnchorTag->setAttribute( 'name' , $sHeadingJumpmark );
+				$oNewAnchorTag->setAttribute( 'name', $sHeadingJumpmark );
 				$oHeadingElement->insertBefore( $oNewAnchorTag );
 			}
 		}
