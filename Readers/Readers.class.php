@@ -265,7 +265,13 @@ class Readers extends BsExtensionMW {
 		$sSort = $oStoreParams->getSort( 'MAX(readers_ts)' );
 		$sDirection = $oStoreParams->getDirection();
 
-		if ( $sSort == 'user_page' ) $sSort = 'readers_user_name';
+		if ( $sSort == 'user_name' ) {
+			$sSort = 'readers_user_name';
+		} elseif ( $sSort == 'user_ts' ) {
+			$sSort = 'readers_ts';
+		} elseif ( $sSort == 'user_readers' ) {
+			$sSort = 'readers_user_name';
+		}
 
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(
@@ -365,21 +371,31 @@ class Readers extends BsExtensionMW {
 		$iLimit = $oStoreParams->getLimit();
 		$iStart = $oStoreParams->getStart();
 		$sSort = $oStoreParams->getSort( 'MAX(readers_ts)' );
+		$sDirection = $oStoreParams->getDirection();
 
-		if ( $sSort == 'user_page' ) $sSort = 'readers_user_name';
+		if ( $sSort == 'pv_page' ) {
+			$sSort = 'page_title';
+		} elseif ( $sSort == 'pv_ts' ) {
+			$sSort = 'MAX( readers_ts )';
+		}
 
 		$res = $oDbr->select(
-				array( 'bs_readers', 'page' ),
-				array( 'readers_page_id', 'MAX(readers_ts) as readers_ts' ),
-				array( 'readers_user_id' => $iUserID ),
-				__METHOD__,
-				array(
-					'GROUP BY' => 'readers_page_id',
-					'ORDER BY' => 'MAX(readers_ts) DESC',
-					'LIMIT' => $iLimit,
-					'OFFSET' => $iStart
-				),
-				array( 'page' => array( 'INNER JOIN', 'readers_page_id = page_id' ) )
+			array( 'page', 'bs_readers' ),
+			array(
+				'page_title', 'readers_page_id', 'readers_user_name',
+				'MAX( readers_ts ) as readers_ts'
+			),
+			array(
+				'readers_page_id = page_id',
+				'readers_user_id' => $iUserID
+			),
+			__METHOD__,
+			array(
+				'GROUP BY' => 'readers_page_id',
+				'ORDER BY' => $sSort . " " . $sDirection,
+				'LIMIT' => $iLimit,
+				'OFFSET' => $iStart
+			)
 		);
 
 		$aPages = array();
