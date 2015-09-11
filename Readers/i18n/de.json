@@ -17,5 +17,6 @@
 	"bs-readers-emptyinput": "Du musste einen Seite angeben.",
 	"bs-readers-header-username": "Benutzername",
 	"bs-readers-header-readerspath": "Leser",
-	"bs-readers-header-ts": "Datum"
+	"bs-readers-header-ts": "Datum",
+	"bs-readers-header-page": "Seite"
 }

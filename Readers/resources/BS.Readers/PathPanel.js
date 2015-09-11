@@ -38,7 +38,7 @@ Ext.define( 'BS.Readers.PathPanel', {
 
 		this.colPage = Ext.create( 'Ext.grid.column.Template', {
 			id: 'pvpage',
-			header: mw.message( 'bs-readers-header-username' ).plain(),
+			header: mw.message( 'bs-readers-header-page' ).plain(),
 			sortable: true,
 			dataIndex: 'pv_page',
 			tpl: '<a href="{pv_page}">{pv_page_title}</a>',
