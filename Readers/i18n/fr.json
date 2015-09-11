@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Ltrlg"
+			"Ltrlg",
+			"Macofe"
 		]
 	},
 	"bs-readers-desc": "Crée une liste des lecteurs d’une page",
@@ -17,5 +18,6 @@
 	"bs-readers-emptyinput": "Aucune page n’a été fournie.",
 	"bs-readers-header-username": "Nom d’utilisateur",
 	"bs-readers-header-readerspath": "Lecteur",
-	"bs-readers-header-ts": "Date"
+	"bs-readers-header-ts": "Date",
+	"bs-readers-header-page": "Page"
 }

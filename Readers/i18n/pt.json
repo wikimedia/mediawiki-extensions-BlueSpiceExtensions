@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Macofe"
 		]
 	},
 	"bs-readers-desc": "Cria uma lista de pessoas que lêem a página",
@@ -16,5 +17,6 @@
 	"bs-readers-emptyinput": "Não foi fornecida nenhuma página.",
 	"bs-readers-header-username": "Nome de utilizador(a)",
 	"bs-readers-header-readerspath": "Leitor",
-	"bs-readers-header-ts": "Data"
+	"bs-readers-header-ts": "Data",
+	"bs-readers-header-page": "Página"
 }

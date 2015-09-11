@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Yatalu",
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
 	"bs-rssfeeder-desc": "buildRss 関数を持つ拡張機能それぞれについて有効な RSS フィードを出力する拡張機能",
@@ -12,5 +13,6 @@
 	"bs-rssfeeder-pages": "ページ",
 	"bs-rssfeeder-submit": "表示",
 	"bs-rssfeeder-rss": "RSS フィード",
+	"bs-rssfeeder-rss-desc": "自身のRSSフェードを作成",
 	"bs-extjs-rssfeeder-rss-title": "RSS の URL"
 }

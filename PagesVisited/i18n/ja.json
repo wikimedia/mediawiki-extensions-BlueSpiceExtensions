@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
+	"bs-pagesvisited-desc": "最後に訪問したページのパーソナライズされたリストを提供します",
 	"prefs-pagesvisited": "閲覧したページ",
 	"bs-pagesvisited-widget-title": "閲覧したページ",
 	"bs-pagesvisited-error-nsnotvalid": "指定した{{PLURAL:$1|名前空間}} <code>$2</code> は有効ではありません。",

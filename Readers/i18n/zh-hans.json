@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Cosine02"
 		]
 	},
 	"bs-readers-desc": "创建阅读某一页面的人的列表",
@@ -16,5 +17,6 @@
 	"bs-readers-emptyinput": "未提供页面。",
 	"bs-readers-header-username": "用户名",
 	"bs-readers-header-readerspath": "读者",
-	"bs-readers-header-ts": "日期"
+	"bs-readers-header-ts": "日期",
+	"bs-readers-header-page": "页面"
 }

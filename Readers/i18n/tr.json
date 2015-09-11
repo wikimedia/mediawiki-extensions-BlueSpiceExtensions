@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Violetanka"
+			"Violetanka",
+			"KorkmazO"
 		]
 	},
-	"bs-readers-desc": "Bir sayfayı okuyan insanların listesini oluşturur"
+	"bs-readers-desc": "Bir sayfayı okuyan insanların listesini oluşturur",
+	"bs-readers-header-page": "Sayfa"
 }

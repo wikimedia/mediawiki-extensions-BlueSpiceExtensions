@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
 	"bs-extendededitbar-entertip": "Lerro-jauzia",
-	"bs-extendededitbar-smallsample": "Testu txikia"
+	"bs-extendededitbar-smallsample": "Testu txikia",
+	"bs-extendededitbar-gallerytip": "Txertatu argazki galeria"
 }

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Macofe"
 		]
 	},
-	"bs-readers-header-username": "Nome utente"
+	"bs-readers-header-username": "Nome utente",
+	"bs-readers-header-page": "Pagina"
 }
