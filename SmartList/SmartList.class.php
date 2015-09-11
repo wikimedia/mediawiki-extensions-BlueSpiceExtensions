@@ -915,7 +915,7 @@ class SmartList extends BsExtensionMW {
 				$sTitle = $oTitle->getText();
 				if ( BsConfig::get('MW::SmartList::Comments' ) ) {
 					$sComment = ( strlen( $row->comment ) > 50 ) ? substr( $row->comment, 0, 50 ) . '...' : $row->comment;
-					$sComment = wfMessage( 'bs-smartlist-comment' )->params( $sComment )->plain();
+					$sComment = wfMessage( 'bs-smartlist-comment' )->params( $sComment )->escaped();
 				}
 				if ( isset( $aArgs['meta'] ) && $aArgs['meta'] == true ) {
 					$sMeta = ' - <i>('.$row->username.', '.$this->getLanguage()->date( $row->time, true, true ).')</i>';
