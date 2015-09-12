@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Josve05a"
 		]
 	},
 	"bs-readers-desc": "Skapar en lista över de personer som läser en sida",
@@ -17,5 +18,6 @@
 	"bs-readers-emptyinput": "Ingen sida har angivits.",
 	"bs-readers-header-username": "Användarnamn",
 	"bs-readers-header-readerspath": "Läsare",
-	"bs-readers-header-ts": "Datum"
+	"bs-readers-header-ts": "Datum",
+	"bs-readers-header-page": "Sida"
 }
