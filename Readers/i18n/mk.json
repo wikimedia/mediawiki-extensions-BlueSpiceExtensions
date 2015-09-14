@@ -16,5 +16,6 @@
 	"bs-readers-emptyinput": "Нема укажано страница.",
 	"bs-readers-header-username": "Корисничко име",
 	"bs-readers-header-readerspath": "Читател",
-	"bs-readers-header-ts": "Датум"
+	"bs-readers-header-ts": "Датум",
+	"bs-readers-header-page": "Страница"
 }
