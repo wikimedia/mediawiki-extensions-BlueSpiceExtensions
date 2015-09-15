@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Dars"
 		]
 	},
 	"bs-readers-desc": "Створює список людей, які читають сторінку",
@@ -17,5 +18,6 @@
 	"bs-readers-emptyinput": "Сторінка не була надана.",
 	"bs-readers-header-username": "Ім'я користувача",
 	"bs-readers-header-readerspath": "Читач",
-	"bs-readers-header-ts": "Дата"
+	"bs-readers-header-ts": "Дата",
+	"bs-readers-header-page": "Сторінка"
 }
