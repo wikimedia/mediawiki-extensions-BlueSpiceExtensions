@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Ebraminio"
+			"Ebraminio",
+			"Reza1615"
 		]
 	},
 	"bs-readers-desc": "خوانندگان یک صفحه، و صفحاتی که توسط یک کاربر خوانده شده‌اند را نشان می‌دهد",
@@ -17,5 +18,6 @@
 	"bs-readers-emptyinput": "هیچ صفحه‌ای ارائه نشده است.",
 	"bs-readers-header-username": "نام کاربری",
 	"bs-readers-header-readerspath": "خواننده",
-	"bs-readers-header-ts": "تاریخ"
+	"bs-readers-header-ts": "تاریخ",
+	"bs-readers-header-page": "صفحه"
 }
