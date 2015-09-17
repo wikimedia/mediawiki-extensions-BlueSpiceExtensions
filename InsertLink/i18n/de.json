@@ -6,7 +6,9 @@
 		]
 	},
 	"bs-insertlink-desc": "Über ein Dialogfeld werden Links, z.B. zu bestehenden Seiten, eingebunden",
+	"prefs-insertlink": "Link einfügen",
 	"bs-insertlink": "Link einfügen",
+	"bs-insertlink-pref-enable-java": "Aktiviere Java Applet",
 	"bs-insertlink-button-title": "Link einfügen/bearbeiten",
 	"bs-insertlink-dialog-title": "Link einfügen",
 	"bs-insertlink-tab-wiki-page": "Wiki-Seite",
