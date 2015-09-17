@@ -41,5 +41,5 @@
 	"bs-permissionmanager-pref-lockmode": "Activeren lockmode",
 	"bs-permissionmanager-pref-skipsysns": "Overslaan systeem naamruimten als lockmode actief",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activeren toestemming controleren",
-	"bs-permissionmanager-unsaved-changes": "Er niet opgeslagen wijzigingen zijn. Wil je echt naar de pagina verlaat nu? De niet-opgeslagen wijzigingen zullen verloren gaan."
+	"bs-permissionmanager-unsaved-changes": "Er zijn niet opgeslagen wijzigingen. Wilt u echt de pagina verlaten? De niet-opgeslagen wijzigingen gaan dan verloren."
 }

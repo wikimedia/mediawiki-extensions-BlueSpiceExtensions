@@ -46,7 +46,7 @@
 	"bs-insertfile-uploadsubmitvalue": "Bestand uploaden",
 	"bs-insertfile-errorloading": "Er is een fout opgetreden tijdens het laden van bestanden.",
 	"bs-insertfile-warning": "Waarschuwing",
-	"bs-insertfile-warningupload": "Er is een file te wachten voor het uploaden. Wil je echt om dit venster te sluiten?",
+	"bs-insertfile-warningupload": "Er moet nog een bestand geüpload worden. Wilt u dit venster echt sluiten?",
 	"bs-insertfile-allowedfiletypesare": "Geldige bestandstypen zijn:",
 	"bs-insertfile-error": "Fout",
 	"bs-insertfile-errornofileextensiononupload": "Het bestand dat u gekozen heeft heeft geen extensie.",

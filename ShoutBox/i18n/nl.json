@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-shoutbox-desc": "Voegt een parserfunctie toe om uw eigen shoutbox te kunnen toevoegen",
@@ -31,5 +32,5 @@
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Schreeuwen|Roept}}",
 	"echo-category-title-bs-shoutbox-mention-cat": "De aanmelding voor de vermelding in een shout",
 	"bs-shoutbox-notifications-title-message-subject": "U bent genoemd",
-	"bs-shoutbox-notifications-title-message-text": "Je heb het {{GENDER:$1|vermeld}} $4 in een tweet op de pagina \"$5.\"\n!\nU kunt een bezoek de pagina met de volgende link:\n$3."
+	"bs-shoutbox-notifications-title-message-text": "U {{GENDER:$1|bent}} vermeld door $4 op de pagina \"$5.\"\n\nBezoek de pagina via deze koppeling:\n$3."
 }

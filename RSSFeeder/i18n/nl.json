@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-rssfeeder-desc": "Een uitbreiding van de output geldig RSS voor elke extensie, die heeft een buildRss-functie",
@@ -12,6 +13,6 @@
 	"bs-rssfeeder-pages": "Pagina",
 	"bs-rssfeeder-submit": "Weergeven",
 	"bs-rssfeeder-rss": "RSS-invoer",
-	"bs-rssfeeder-rss-desc": "Maak je eigen RSS-feed",
+	"bs-rssfeeder-rss-desc": "Maak uw eigen RSS-feed",
 	"bs-extjs-rssfeeder-rss-title": "RSS-URL"
 }

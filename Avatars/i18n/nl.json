@@ -20,7 +20,7 @@
 	"bs-avatars-upload-label": "foto",
 	"bs-avatars-generate-new-label": "nieuwe avatar genereren",
 	"bs-avatars-warning-title": "Waarschuwing",
-	"bs-avatars-warning-text": "Je hebt een gebruikersafbeelding ingesteld in je voorkeuren. Gebruik je avatars, dan wordt die gewist. Wil je doorgaan?",
+	"bs-avatars-warning-text": "U hebt een gebruikersafbeelding ingesteld in uw voorkeuren. Gebruikt u avatars, dan wordt die gewist. Wilt u doorgaan?",
 	"bs-avatars-userimage-title": "Foto van wiki of afbeeldings-URL",
 	"bs-avatars-userimage-help": "bijvoorbeeld Afbeelding.jpg of http://localhost/Afbeelding.gif",
 	"bs-avatars-set-userimage-failed": "Geen geldige URL of afbeelding van wiki.",

@@ -48,7 +48,7 @@
 	"bs-flexiskin-center": "gecentreerd",
 	"bs-flexiskin-labelwidth": "Volledige breedte (in pixels)",
 	"bs-flexiskin-labelfullwidth": "Maximale breedte",
-	"bs-flexiskin-error-nameempty": "Voer een geldige naam in voor de skin die je wilt maken.",
+	"bs-flexiskin-error-nameempty": "Voer een geldige naam in voor het uiterlijk dat u wilt maken.",
 	"bs-flexiskin-error-templatenotexists": "Het gekozen sjabloon bestaat niet.",
 	"bs-flexiskin-api-desc": "API-interface voor de Bluespice uitbreiding Flexiskin.",
 	"bs-flexiskin-api-type-desc": "De actie die moet worden uitgevoerd, bijvoorbeeld \"verwijderen\". Standaard is \"get\"",

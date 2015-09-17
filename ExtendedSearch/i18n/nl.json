@@ -88,7 +88,7 @@
 	"bs-extendedsearch-indexinginprogress": "De index wordt gemaakt op het moment.",
 	"bs-extendedsearch-delete-lock": "Verwijderen lock-file",
 	"bs-extendedsearch-warning": "Waarschuwing",
-	"bs-extendedsearch-lockfiletext": "Alsjeblieft, alleen verwijderen van de lock-file als je zeker bent dat de indexering niet in de vooruitgang.",
+	"bs-extendedsearch-lockfiletext": "Verwijder het lockbestand alstublieft alleen als u zeker weet dat er geen indexering wordt uitgevoerd.",
 	"bs-extendedsearch-did-you-mean": "Bedoelde u $1?",
 	"bs-extendedsearch-ascending": "Oplopend",
 	"bs-extendedsearch-descending": "Aflopend",
