@@ -100,6 +100,7 @@ BsWantedArticle = {
 		}
 
 		var aFoundChars = [];
+		var bsForbiddenCharsInArticleTitle = mw.config.get( 'bsForbiddenCharsInArticleTitle' );
 		for ( var i=0; i < bsForbiddenCharsInArticleTitle.length; i++ ) {
 			if ( sArticleTitle.indexOf( bsForbiddenCharsInArticleTitle [i] ) != -1 ) {
 				aFoundChars.push( '"' + bsForbiddenCharsInArticleTitle [i] + '"' );

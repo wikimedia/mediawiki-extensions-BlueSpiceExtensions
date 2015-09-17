@@ -7,7 +7,7 @@ Ext.define( 'BS.Dashboards.PortletCatalog', {
 
 	afterInitComponent: function() {
 		//this.buttons = []; //We don't need buttons as we use drag and drop
-		if ( bsPortalConfigLocation === 'AdminDashboard' ) {
+		if ( mw.config.get( 'bsPortalConfigLocation' ) === 'AdminDashboard' ) {
 			this.ajaxDispatcherUrl = 'Dashboards::getAdminDashboardConfig';
 		} else {
 			this.ajaxDispatcherUrl = 'Dashboards::getUserDashboardConfig';

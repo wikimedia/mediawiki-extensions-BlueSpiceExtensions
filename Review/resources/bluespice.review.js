@@ -16,7 +16,7 @@
 */
 
 (function(mw, $, bs, undefined){
-	
+
 	//Wire up content action link
 	$('#ca-review').find('a').on( 'click', function( e ) {
 		e.preventDefault();
@@ -27,11 +27,12 @@
 			BS.Review.Dialog.on( 'ok', function( btn, data ){
 				window.location.reload();
 			});
-			
-			var data = { 
+
+			var data = {
 				page_id: mw.config.get('wgArticleId'),
 				steps: []
 			};
+			var bsReview = mw.config.get( 'bsReview' );
 			if( typeof bsReview != 'undefined' ) {
 				data = bsReview;
 			}
@@ -43,7 +44,7 @@
 
 		return false;
 	});
-	
+
 	//Wire up accept/decline links
 	$(document).on('click', 'a#bs-review-ok', function() {
 		$.ajax({

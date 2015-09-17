@@ -170,9 +170,9 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$aScriptBlock[] = 'SyntaxHighlighter.autoloader( ';
 		$aScriptBlock[] = implode( ",\n", $aAutoloaderParams );
 		$aScriptBlock[] = ');';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"] = bsCSyntaxHighlightToolbar;';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["auto-links"] = bsCSyntaxHighlightAutoLinks;';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"] = bsCSyntaxHighlightGutter;';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"] = mw.config.get( "bsCSyntaxHighlightToolbar" );';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["auto-links"] = mw.config.get( "bsCSyntaxHighlightAutoLinks" );';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"] = mw.config.get( "bsCSyntaxHighlightGutter" );';
 		$aScriptBlock[] = 'SyntaxHighlighter.all();';
 		$aScriptBlock[] = '});';
 		$aScriptBlock[] = '</script>';

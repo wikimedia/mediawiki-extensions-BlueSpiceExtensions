@@ -27,7 +27,7 @@ BsArticleInfo = {
 			BsArticleInfo.updateLastEdited();
 		}
 
-		BsArticleInfo.checkRevisionInterval = bsArticleInfoCheckRevisionInterval*1000;
+		BsArticleInfo.checkRevisionInterval = mw.config.get( 'bsArticleInfoCheckRevisionInterval' ) * 1000;
 		if( BsArticleInfo.checkRevisionInterval < 1000 ) return;
 		if ( mw.config.get( "wgCurRevisionId" ) < 1 ) {
 			return;

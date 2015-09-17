@@ -26,7 +26,7 @@ BsSaferEdit = {
 	 * Conducts neccessary preparations of edit form and starts intermediate saving
 	 */
 	init: function() {
-		this.interval = bsSaferEditInterval * 1000;
+		this.interval = mw.config.get( 'bsSaferEditInterval' ) * 1000;
 
 		if ( this.interval < 1000 || $( '#bs-statebar' ).length < 1 ) {
 			return;
