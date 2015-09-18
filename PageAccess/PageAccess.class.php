@@ -89,6 +89,26 @@ class PageAccess extends BsExtensionMW {
 			}
 		}
 
+		$dbr = wfGetDB( DB_SLAVE );
+		$sAccessGroupsOld = $dbr->selectField(
+			'page_props', 'pp_value', array (
+			'pp_page' => $article->getTitle()->getArticleID(),
+			'pp_propname' => 'bs-page-access'
+			), __METHOD__ );
+
+		if ( $sAccessGroups != $sAccessGroupsOld ) {
+			// Create a log entry for the change on the page-access settings
+			$oTitle = $article->getTitle();
+			$oUser = RequestContext::getMain()->getUser();
+			$oLogger = new ManualLogEntry( 'bs-pageaccess', 'change' );
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+			$oLogger->setParameters( array (
+				'4::accessGroups' => $sAccessGroups
+			) );
+			$oLogger->insert();
+		}
+
 		# All seems good. Let user save.
 		return true;
 	}

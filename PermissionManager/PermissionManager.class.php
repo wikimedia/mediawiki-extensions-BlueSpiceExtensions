@@ -530,7 +530,7 @@ class PermissionManager extends BsExtensionMW {
 	}
 
 	protected static function writeGroupSettings( $aGroupPermissions, $aNamespacePermissionLockdown ) {
-		global $bsgPermissionManagerGroupSettingsFile;
+		global $bsgPermissionManagerGroupSettingsFile, $wgGroupPermissions, $wgNamespacePermissionLockdown;
 
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
@@ -547,10 +547,19 @@ class PermissionManager extends BsExtensionMW {
 
 		self::backupExistingSettings();
 
+		// we save all groups which settings changed in this array
+		$aDiffGroups = array();
+
 		$sSaveContent = "<?php\n";
 		foreach ( $aGroupPermissions as $sGroup => $aPermissions ) {
 			foreach ( $aPermissions as $sPermission => $bValue ) {
 				$sSaveContent .= "\$wgGroupPermissions['{$sGroup}']['{$sPermission}'] = " . ( $bValue ? 'true' : 'false' ) . ";\n";
+				// check if settings for the given group changed
+				if( !isset( $wgGroupPermissions[ $sGroup ] )
+						|| !isset( $wgGroupPermissions[ $sGroup ][ $sPermission ] )
+						|| $wgGroupPermissions[ $sGroup ][ $sPermission ] != $bValue ) {
+					$aDiffGroups[ $sGroup ] = true;
+				}
 			}
 		}
 
@@ -571,6 +580,11 @@ class PermissionManager extends BsExtensionMW {
 					if ( $sPermission == 'read' ) {
 						$isReadLockdown = true;
 					}
+					// check if settings for any group changed
+					$aLocalDiffGroups = array_diff( $aGroups, $wgNamespacePermissionLockdown[ $sNsConstant ][ $sPermission ] );
+					foreach( $aLocalDiffGroups as $sDiffGroup ) {
+						$aDiffGroups[ $sDiffGroup ] = true;
+					}
 				}
 				if ( $isReadLockdown ) {
 					$sSaveContent .= "\$wgNonincludableNamespaces[] = $sNsConstant;\n";
@@ -580,6 +594,21 @@ class PermissionManager extends BsExtensionMW {
 
 		$res = file_put_contents( $bsgPermissionManagerGroupSettingsFile, $sSaveContent );
 		if ( $res ) {
+			// Create a log entry for any group which permissions changed
+			$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
+			$oUser = RequestContext::getMain()->getUser();
+
+			foreach( $aDiffGroups as $sDiffGroup => $bFlag ) {
+				if( $bFlag ) {
+					$oLogger = new ManualLogEntry( 'bs-permission-manager', 'modify' );
+					$oLogger->setPerformer( $oUser );
+					$oLogger->setTarget( $oTitle );
+					$oLogger->setParameters( array(
+							'4::diffGroup' => $sDiffGroup
+					) );
+					$oLogger->insert();
+				}
+			}
 			return array( 'success' => true );
 		} else {
 			return array(

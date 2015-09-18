@@ -134,9 +134,33 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		$dbw->commit();
 		self::notifyAffectedUsers( $aNewEditorIds, $aRemovedEditorIds, $aUntouchedEditorIds, $iArticleId );
 
+
+		$oTitle = Title::newFromID( $iArticleId );
+		$oUser = RequestContext::getMain()->getUser();
+		foreach( $aNewEditorIds as $iNewEditorId ) {
+			$oEditor = User::newFromId( $iNewEditorId );
+			$oLogger = new ManualLogEntry( 'bs-responsible-editors', 'add' );
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+			$oLogger->setParameters( array(
+					'4::editor' => $oEditor->getName()
+			) );
+			$oLogger->insert();
+		}
+		foreach( $aRemovedEditorIds as $iRemovedEditorId ) {
+			$oEditor = User::newFromId( $iRemovedEditorId );
+			$oLogger = new ManualLogEntry( 'bs-responsible-editors', 'remove' );
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+			$oLogger->setParameters( array(
+					'4::editor' => $oEditor->getName()
+			) );
+			$oLogger->insert();
+		}
+
 		$oRequestedTitle->invalidateCache();
 
-		return FormatJson::encode(array('success' => true));
+		return FormatJson::encode( array( 'success' => true ) );
 	}
 
 	/**

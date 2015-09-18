@@ -26,5 +26,11 @@
 	"bs-checklist-dlg-new-prompt": "Gib einen Listentitel ein",
 	"bs-checklist-alert": "Vorsicht!",
 	"bs-checklist-confirm-dirty-title": "Ungespeicherte Änderungen!",
-	"bs-checklist-confirm-dirty-text": "Du hast Änderungen an der Checkliste vorgenommen, die noch nicht gespeichert wurden. Bist du sicher, dass du die Änderungen verwerfen willst?"
+	"bs-checklist-confirm-dirty-text": "Du hast Änderungen an der Checkliste vorgenommen, die noch nicht gespeichert wurden. Bist du sicher, dass du die Änderungen verwerfen willst?",
+	"log-name-bs-checklist": "Checkbox-Logbuch",
+	"log-description-bs-checklist": "Logbuch von Änderungen an Checkboxen auf Seiten.",
+	"log-show-hide-bs-checklist": "$1 Checkbox-Logbuch",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|hat}} die Checkbox #$4 auf $3 angehakt",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|hat}} die Checkbox #$4 auf $3 abgehakt",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|hat}} in der Auswahlliste #$4 den Wert \"$5\" auf $3 ausgewählt"
 }

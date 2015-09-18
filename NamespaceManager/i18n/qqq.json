@@ -32,5 +32,12 @@
 	"bs-namespacemanager-deletewarning": "Text for are you sure that you want to delete this namespace? Deleting a namespace cannot be undone.",
 	"bs-namespacemanager-pagepresent": "Headline for pages in this namespace:\nHeadline for checkbox section",
 	"bs-namespacemanager-deletens-movepages": "Text for why a page was moved into NS_MAIN. Used as reason for moving a page. \n*$1 is the name of the namespace which was deleted. \n*Refers to {{msg-mw|Bs-ns main}}",
-	"bs-namespacemanager-deletens-deletepages": "Text for why a page was deleted. Used as reason for deleting a page.\n*$1 is the name of the namespace which was deleted."
+	"bs-namespacemanager-deletens-deletepages": "Text for why a page was deleted. Used as reason for deleting a page.\n*$1 is the name of the namespace which was deleted.",
+	"log-name-bs-namespace-manager": "Used in [[Special:Log]], title of the log type",
+	"log-description-bs-namespace-manager": "Used in [[Special:Log]], description of the log type",
+	"log-show-hide-bs-namespace-manager": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
+	"logentry-bs-namespace-manager-create": "Log message about the creation of a new namespace.\nParameters:\n* $4 - name of the namespace",
+	"logentry-bs-namespace-manager-modify": "Log message about changes in the settings of a namespace.\nParameters:\n* $4 - name of the namespace",
+	"logentry-bs-namespace-manager-rename": "Log message about changes of the name of a namespace.\nParameters:\n* $4 - old name of the namespace\n* $5 - new name of the namespace",
+	"logentry-bs-namespace-manager-remove": "Log message about the removal of a namespace.\nParameters:\n* $4 - name of the namespace"
 }

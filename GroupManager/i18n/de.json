@@ -25,5 +25,11 @@
 	"bs-groupmanager-removegroup-message-unknown": "Ein unbekannter Fehler ist aufgetreten, bitte versuche es erneut.",
 	"bs-groupmanager-lablename": "Gruppenname:",
 	"bs-groupmanager-msgnoteditable": "Dies ist eine Systemgruppe und kann nicht umbenannt werden.",
-	"bs-groupmanager-msgnotremovable": "Dies ist eine Systemgruppe und kann nicht gelöscht werden."
+	"bs-groupmanager-msgnotremovable": "Dies ist eine Systemgruppe und kann nicht gelöscht werden.",
+	"log-name-bs-group-manager": "Gruppenverwaltung-Logbuch",
+	"log-description-bs-group-manager": "Logbuch von Änderungen an den Benutzergruppen.",
+	"log-show-hide-bs-group-manager": "$1 Gruppenverwaltung-Logbuch",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|hat}} die Gruppe $4 angelegt",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|hat}} die Gruppe $4 in $5 umbenannt",
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|hat}} die Gruppe $4 gelöscht"
 }

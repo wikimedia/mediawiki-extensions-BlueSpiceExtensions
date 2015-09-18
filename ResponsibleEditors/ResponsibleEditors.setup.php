@@ -91,8 +91,9 @@ $wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetListOfResponsibleEditorsForArt
 $wgAjaxExportList[] = 'ResponsibleEditors::ajaxDeleteResponsibleEditorsForArticle';
 $wgAjaxExportList[] = 'ResponsibleEditors::getResponsibleEditorsPortletData';
 
-$wgLogTypes[] = 'bs-responsibleeditors';
-$wgFilterLogTypes['bs-responsibleeditors'] = true;
+$wgLogTypes[] = 'bs-responsible-editors';
+$wgFilterLogTypes['bs-responsible-editors'] = true;
+$wgLogActionsHandlers['bs-responsible-editors/*'] = 'LogFormatter';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ResponsibleEditors::getSchemaUpdates';
 

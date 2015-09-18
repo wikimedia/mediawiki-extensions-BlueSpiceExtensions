@@ -25,5 +25,11 @@
 	"bs-groupmanager-removegroup-message-unknown": "An unexpected error occurred while trying to delete a group.",
 	"bs-groupmanager-lablename": "Label for a input field thats contains the group name\n{{Identical|Group name}}",
 	"bs-groupmanager-msgnoteditable": "Error message that the group you want to edit is a system group and therefore cannot be renamed",
-	"bs-groupmanager-msgnotremovable": "Error message that the group you want to remove is a system group and therefore cannot be removed"
+	"bs-groupmanager-msgnotremovable": "Error message that the group you want to remove is a system group and therefore cannot be removed",
+	"log-name-bs-group-manager": "Used in [[Special:Log]], title of the log type",
+	"log-description-bs-group-manager": "Used in [[Special:Log]], description of the log type",
+	"log-show-hide-bs-group-manager": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
+	"logentry-bs-group-manager-create": "Log message about the creation of a new group.\nParameters:\n* $4 - name of the group",
+	"logentry-bs-group-manager-modify": "Log message about changes of the name of a group.\nParameters:\n* $4 - old name of the group\n* $5 - new name of the group",
+	"logentry-bs-group-manager-remove": "Log message about the removal of a group.\nParameters:\n* $4 - name of the group"
 }
