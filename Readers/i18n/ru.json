@@ -18,5 +18,6 @@
 	"bs-readers-emptyinput": "Страница не была предоставлена.",
 	"bs-readers-header-username": "Имя участника",
 	"bs-readers-header-readerspath": "Читатель",
-	"bs-readers-header-ts": "Дата"
+	"bs-readers-header-ts": "Дата",
+	"bs-readers-header-page": "Страница"
 }

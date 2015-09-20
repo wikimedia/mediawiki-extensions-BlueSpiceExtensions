@@ -10,5 +10,6 @@
 	"wikiadmin": "Администрирование BlueSpice",
 	"action-wikiadmin": "отобразить страницу администрирования BlueSpice",
 	"right-wikiadmin": "Отображение страницы администрирования BlueSpice",
-	"bs-wikiadmin-shop": "Магазин"
+	"bs-wikiadmin-shop": "Магазин",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Спецстраницы"
 }

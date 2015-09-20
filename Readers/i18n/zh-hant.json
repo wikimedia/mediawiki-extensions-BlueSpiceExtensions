@@ -15,5 +15,6 @@
 	"bs-readers-pref-numofreaders": "顯示讀者數量：",
 	"bs-readers-header-username": "使用者名稱",
 	"bs-readers-header-readerspath": "讀者",
-	"bs-readers-header-ts": "日期"
+	"bs-readers-header-ts": "日期",
+	"bs-readers-header-page": "頁面"
 }
