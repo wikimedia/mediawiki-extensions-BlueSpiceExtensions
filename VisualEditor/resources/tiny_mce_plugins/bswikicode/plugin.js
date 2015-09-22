@@ -596,8 +596,8 @@ var BsWikiCode = function() {
 					}
 				}
 
-				if (type === "internal_link") {
-					if (target === label ) { //TinyMCE3: tinymce.activeEditor.dom.decode(label)
+				if ( type === "internal_link" ) {
+					if ( target === tinymce.DOM.decode( label ) ) { //TinyMCE3: tinymce.activeEditor.dom.decode(label)
 						linkwiki = "[[" + target + "]]";
 					} else {
 						linkwiki = "[[" + target + "|" + label + "]]";
