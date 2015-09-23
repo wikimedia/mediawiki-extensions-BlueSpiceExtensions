@@ -70,17 +70,42 @@ class Flexiskin extends BsExtensionMW {
 	 * Initialization of ArticleInfo extension
 	 */
 	public function initExt() {
-		global $wgOut, $wgUploadPath;
 		wfProfileIn( 'BS::' . __METHOD__ );
 		//$this->mCore->registerPermission('flexiskinchange');
 		BsConfig::registerVar( 'MW::Flexiskin::Active', "default", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-active', 'select' );
 		BsConfig::registerVar( 'MW::Flexiskin::Logo', "", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-logo', 'text' );
-		$sFlexiskin = $this->getRequest()->getVal( 'flexiskin' );
-		if ( $sFlexiskin || BsConfig::get( 'MW::Flexiskin::Active' ) != '' ) {
+		$sFlexiskin = $this->getRequest()->getVal( 'flexiskin', '' );
+		$sPreviewSkin = RequestContext::getMain()->getRequest()->getCookie( "sPreviewSkin", null, false );
+		$oResponse = $this->getRequest()->response();
+		$oRequest = $this->getRequest();
+		//this statemenet is just for setting the cookie, this is why we need to do some checks here
+		//check if the request comes via index.php, flexiskin is set in query and if you are in view mode (block some ajax requests)
+		if ( strpos( wfGetScriptUrl(), "index.php" ) !== false && $sFlexiskin !== "" && $oRequest->getVal( 'action', 'view' ) === 'view' ) {
+			$bIsTemp = (bool) $oRequest->getBool( 'preview', false );
+			//is it in preview mode?
+			//set the cookie
+			if ( $bIsTemp ) {
+				$oResponse->setcookie( "sPreviewSkin", $sFlexiskin );
+				$sPreviewSkin = $sFlexiskin;
+			//or just unset it
+			} else {
+				$oResponse->setcookie( "sPreviewSkin", false, 1 );
+				$sPreviewSkin = false;
+			}
+		}
+		$sFlexiskin = $sFlexiskin == '' ? $sPreviewSkin : $sFlexiskin;
+		if ( $sFlexiskin != "" || BsConfig::get( 'MW::Flexiskin::Active' ) != '' || $sPreviewSkin ) {
 			$sId = $sFlexiskin != '' ? $sFlexiskin : BsConfig::get( 'MW::Flexiskin::Active' );
-			if ( $sId != "default" ) {
-				$bIsTemp = $this->getRequest()->getBool( 'preview', false );
-				$this->addCssFile( $sId, $bIsTemp );
+			if ( $sId != "default" || $sPreviewSkin !== false ) {
+				$this->addCssFile( $sId, $sPreviewSkin !== false );
+				if ( $sPreviewSkin ) {
+					//reset resource loader cache for preview
+					global $wgResourceLoaderMaxage;
+					$wgResourceLoaderMaxage = array (
+						'versioned' => array ( 'server' => 1, 'client' => 1 ),
+						'unversioned' => array ( 'server' => 1, 'client' => 1 ),
+					);
+				}
 			}
 		}
 		$this->mCore->registerPermission( 'flexiskinedit', array(), array( 'type' => 'global' ) );
