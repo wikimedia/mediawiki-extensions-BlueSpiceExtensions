@@ -19,7 +19,7 @@ BsSaferEditEditMode = {
 	 * Time between two intermediate saves
 	 * @var integer time in seconds
 	 */
-	interval: bsSaferEditInterval * 1000,
+	interval: mw.config.get( 'bsSaferEditInterval' ) * 1000,
 	/**
 	 * Pointer to javascript timeout callback, needed to cancel timeout when changes are saved
 	 * @var pointer javascript timeout callback
@@ -103,7 +103,7 @@ BsSaferEditEditMode = {
 			'SaferEditSave',
 			0,
 			[{
-						section: bsSaferEditEditSection,
+						section: mw.config.get( 'bsSaferEditEditSection' ),
 						bUnsavedChanges: BsSaferEditEditMode.hasUnsavedChanges( )
 			}],
 				BsSaferEditEditMode.startSaving

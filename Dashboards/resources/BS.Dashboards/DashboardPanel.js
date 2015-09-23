@@ -3,7 +3,7 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 
 	//Custom Settings
 	saveConfigBackend: {
-		rs: bsPortalConfigSavebackend,
+		rs: mw.config.get( 'bsPortalConfigSavebackend' ),
 		additionalArgs: []
 	},
 	cmPortlets: false,

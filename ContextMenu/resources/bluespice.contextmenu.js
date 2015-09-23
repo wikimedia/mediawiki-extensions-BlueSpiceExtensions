@@ -73,7 +73,7 @@
 
 		var username = anchor.data('bs-username');
 
-		if( bsUserCanSendMail && anchor.data('bs-user-has-email') ) {
+		if( mw.config.get( 'bsUserCanSendMail' ) && anchor.data('bs-user-has-email') ) {
 			items.push({
 				text: mw.message('bs-contextmenu-user-mail').plain(),
 				href: bs.util.wikiGetlink(

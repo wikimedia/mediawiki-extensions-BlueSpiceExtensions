@@ -34,7 +34,7 @@ Ext.define('BS.PermissionManager.tree.Groups', {
 		this.store = new Ext.data.TreeStore({
 			storeId: 'bs-pm-group-tree',
 			model: 'BS.PermissionManager.model.Group',
-			root: bsPermissionManagerGroupsTree
+			root: mw.config.get( 'bsPermissionManagerGroupsTree' )
 		});
 		this.callParent(arguments);
 	}

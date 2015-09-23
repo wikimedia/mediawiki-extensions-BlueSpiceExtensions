@@ -11,6 +11,8 @@ $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/Spe
 $GLOBALS['wgAutoloadClasses']['ResponsibleEditors'] = __DIR__ . '/ResponsibleEditors.class.php';
 $wgAutoloadClasses['BsResponsibleEditor'] = __DIR__ . '/includes/BsResponsibleEditor.php';
 $wgAutoloadClasses['SpecialResponsibleEditors'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.class.php';
+$wgAutoloadClasses['ApiResponsibleEditorsStore'] = __DIR__ . '/includes/api/ApiResponsibleEditorsStore.class.php';
+$wgAutoloadClasses['ApiResponsibleEditorsTasks'] = __DIR__ . '/includes/api/ApiResponsibleEditorsTasks.class.php';
 
 $wgSpecialPages['ResponsibleEditors'] = 'SpecialResponsibleEditors';
 
@@ -22,7 +24,7 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.responsibleEditors.styles'] = array(
 	'styles' => 'bluespice.responsibleEditors.css',
-) + $aResourceModuleTemplate;;
+) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.responsibleEditors'] = array(
 	'scripts' => 'bluespice.responsibleEditors.js',

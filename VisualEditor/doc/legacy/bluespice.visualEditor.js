@@ -41,21 +41,22 @@ mw.loader.using('ext.bluespice.visualEditor', function() {
 	$('#edit_button').click(function(){
 		toggleEditorMode('wpTextbox1');
 	});
-	
-	for( plugin in bsVisualEditorTinyMCEPlugins ) {
+
+	var bsVisualEditorTinyMCEPlugins = mw.config.get( 'bsVisualEditorTinyMCEPlugins' );
+	for( var plugin in bsVisualEditorTinyMCEPlugins ) {
 		tinyMCE.PluginManager.load(
 			plugin,
 			mw.config.get('wgScriptPath') + bsVisualEditorTinyMCEPlugins[plugin]
 		);
 	}
 
-	// merge(extends/overwrites) standard config with overwrite config 
-	// if a property of the first object is itself an object or array, 
-	// it will be completely overwritten by a property with the same key 
+	// merge(extends/overwrites) standard config with overwrite config
+	// if a property of the first object is itself an object or array,
+	// it will be completely overwritten by a property with the same key
 	// in the second object.
 	var temp = {};
 	var currentSiteCSS = [];
-	//We collect the CSS Links from this document and set them as content_css 
+	//We collect the CSS Links from this document and set them as content_css
 	//for TinyMCE
 	$('link[rel=stylesheet]').each(function(){
 		var cssBaseURL = '';
@@ -64,26 +65,33 @@ mw.loader.using('ext.bluespice.visualEditor', function() {
 		if( cssUrl.startsWith( '/' ) ) cssBaseURL = mw.config.get('wgServer');
 		currentSiteCSS.push( cssBaseURL + cssUrl );
 	});
-	bsVisualEditorConfigStandard.content_css = currentSiteCSS.join(',')
+
+	var bsVisualEditorConfigStandard = mw.config.get( 'bsVisualEditorConfigStandard' );
+	var bsVisualEditorConfigOverwrite = mw.config.get( 'bsVisualEditorConfigOverwrite' );
+	var bsVisualEditorTinyMCETableStyles = mw.config.get( 'bsVisualEditorTinyMCETableStyles' );
+
+	bsVisualEditorConfigStandard.content_css = currentSiteCSS.join(',');
 	bsVisualEditorConfigStandard.table_styles = bsVisualEditorTinyMCETableStyles;
 	var lang = mw.user.options.get('language');
-	lang = lang == 'de-formal' ? 'de': lang;
+	lang = lang === 'de-formal' ? 'de': lang;
 	bsVisualEditorConfigStandard.language = lang;
 
 	$.extend(true, temp, bsVisualEditorConfigStandard, bsVisualEditorConfigOverwrite);
 	bsVisualEditorConfigOverwrite = temp;
-	
+
 	//We need to set the baseURL to alow lazy loading of tinyMCE plugins
 	tinymce.baseURL = mw.config.get('wgScriptPath')+'/extensions/BlueSpiceExtensions/VisualEditor/resources/tiny_mce';
-	if( bsVisualEditorConfigOverwrite && (bsVisualEditorUseLimited || bsVisualEditorUseForceLimited) ) {
-		tinymce.init(bsVisualEditorConfigOverwrite);
-		bsVisualEditorGuiMode = 'bn';
+	var bsVisualEditorUseLimited = mw.config.get( 'bsVisualEditorUseLimited' );
+	var bsVisualEditorUseForceLimited = mw.config.get( 'bsVisualEditorUseForceLimited' );
+	if( bsVisualEditorConfigOverwrite && ( bsVisualEditorUseLimited || bsVisualEditorUseForceLimited ) ) {
+		tinymce.init( bsVisualEditorConfigOverwrite );
+		mw.config.set( 'bsVisualEditorGuiMode', 'bn' );
 	} else {
-		tinymce.init(bsVisualEditorConfigStandard);
-		bsVisualEditorGuiMode = 'tm';
+		tinymce.init( bsVisualEditorConfigStandard );
+		mw.config.set( 'bsVisualEditorGuiMode', 'tm' );
 	}
-	if(bsVisualEditorConfigOverwrite) {
-		bsVisualEditorGuiSwitchable = true;
+	if( bsVisualEditorConfigOverwrite ) {
+		mw.config.set( 'bsVisualEditorGuiSwitchable', true );
 	}
 });
 /**
@@ -131,18 +139,18 @@ toggleEditorMode = function(sEditorID) {
  * Switches betwenn full and reduced mode of the editor.
  */
 toggleGuiMode = function() {
-	if(bsVisualEditorGuiSwitchable) {
+	if( mw.config.get( 'bsVisualEditorGuiSwitchable' ) ) {
 		tinymce.execCommand('mceRemoveControl', false, 'wpTextbox1');
 		if(document.getElementById('toolbar')) {document.getElementById('toolbar').style.display = "block";}
 		if(document.getElementById('hw-toolbar')) {document.getElementById('hw-toolbar').style.display = "block";}
 		VisualEditorMode = false;
-		if(bsVisualEditorGuiMode == 'bn') {
-			tinymce.init(bsVisualEditorConfigStandard);
-			bsVisualEditorGuiMode = 'tm';
+		if( mw.config.get( 'bsVisualEditorGuiMode' ) === 'bn') {
+			tinymce.init( mw.config.get( 'bsVisualEditorConfigStandard' ) );
+			mw.config.set( 'bsVisualEditorGuiMode', 'tm' );
 		}
 		else {
-			tinymce.init(bsVisualEditorConfigOverwrite);
-			bsVisualEditorGuiMode = 'bn';
+			tinymce.init( mw.config.get( 'bsVisualEditorConfigOverwrite' ) );
+			mw.config.set( 'bsVisualEditorGuiMode', 'bn' );
 		}
 		tinymce.execCommand('mceAddControl', false, 'wpTextbox1');
 		if(document.getElementById('toolbar')) {document.getElementById('toolbar').style.display = "none";}
@@ -155,7 +163,7 @@ toggleGuiMode = function() {
 }
 
 BsVisualEditor = {
-	//Init loadMask and loadMaskTask with minimal stub objects to avoid code 
+	//Init loadMask and loadMaskTask with minimal stub objects to avoid code
 	//breaking in case of IE8 runtime error
 	loadMask: {
 		show: function() {},
@@ -171,7 +179,7 @@ BsVisualEditor = {
 		if (bsVisualEditorUse == true) {
 			setTimeout("startEditor()", 100);
 		}
-		
+
 		//TODO: User TinyMCE LoadMask: http://www.tinymce.com/wiki.php/API3:method.tinymce.Editor.setProgressState
 	},
 
@@ -179,21 +187,21 @@ BsVisualEditor = {
 	* Starts the editor, but only after toolbars are rendered.
 	*/
 	startEditor: function() {
-		
+
 	},
-	
+
 	/**
 	* Actually displays the editor and removes the toolbars.
 	*/
 	toggleEditorMode: function(sEditorID) {
-		
+
 	},
 
 	/**
 	* Switches betwenn full and reduced mode of the editor.
 	*/
 	toggleGuiMode: function() {
-		
+
 	}
 }
 
