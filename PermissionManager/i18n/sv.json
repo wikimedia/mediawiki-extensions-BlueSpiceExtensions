@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-permissionmanager-desc": "Administrationsgränssnittet för att redigera användarrättigheter",
@@ -39,5 +40,6 @@
 	"bs-permissionmanager-titletpled-delete": "Radera mall",
 	"bs-permissionmanager-pref-lockmode": "Aktivera låsläge",
 	"bs-permissionmanager-pref-skipsysns": "Hoppa över systemnamnrymden om låsläge är aktivt",
-	"bs-permissionmanager-pref-enablerealitycheck": "Aktivera rättighetskontroll"
+	"bs-permissionmanager-pref-enablerealitycheck": "Aktivera rättighetskontroll",
+	"bs-permissionmanager-unsaved-changes": "Det finns osparade ändringar. Vill du verkligen lämna sidan nu? De osparade ändringarna kommer att försvinna."
 }

@@ -8,10 +8,12 @@
 			"WikiPhoenix"
 		]
 	},
+	"bs-smartlist-desc": "Visar de fem senaste ändringarna på wikin i en lista",
 	"prefs-smartlist": "Smart lista",
 	"bs-smartlist-recent-changes": "Senaste ändringar",
 	"bs-smartlist-no-entries": "Inga resultat hittades.",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|Den angivna namnrymden är ogiltig|De angivna namnrymderna är ogiltiga}}: $2.",
+	"bs-smartlist-invalid-target": "Det angiva målet är inte en giltig sidtitel",
 	"bs-smartlist-comment": "Kommentar:  $1.",
 	"bs-smartlist-pref-count": "Antal poster:",
 	"bs-smartlist-pref-comments": "Visa kommentar",
