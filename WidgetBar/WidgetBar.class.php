@@ -73,7 +73,7 @@ class WidgetBar extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'EditFormPreloadText' );
 
-		BsConfig::registerVar( 'MW::WidgetBar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-widgetbar-userpagesettings-link-title', 'link' );
+		BsConfig::registerVar( 'MW::WidgetBar::LinkToEdit', array ( 'href' => '', 'content' => '' ), BsConfig::LEVEL_USER | BsConfig::NO_DEFAULT, 'bs-widgetbar-userpagesettings-link-title', 'link' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
