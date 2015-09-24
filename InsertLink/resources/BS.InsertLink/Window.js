@@ -46,7 +46,7 @@ Ext.define( 'BS.InsertLink.Window', {
 		];
 
 		if ( mw.config.get( "wgUrlProtocols" ).indexOf( 'file' ) !== -1 ) {
-			this.fpnlFileLink = Ext.create( 'BS.InsertLink.FormPanelFileLink', {} );
+			this.fpnlFileLink = Ext.create( 'BS.InsertLink.FormPanelFileLink', { bIsJavaEnabled: mw.config.get( 'bsInsertLinkEnableJava' ) } );
 			items.push( this.fpnlFileLink );
 		}
 
