@@ -3,11 +3,12 @@
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Shirayuki"
+			"Shirayuki",
+			"Robby"
 		]
 	},
 	"bs-insertlink-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert link extension",
-	"prefs-insertlink": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for insert link section in preferences",
+	"prefs-insertlink": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for insert link section in preferences\n{{Identical|Insert link}}",
 	"bs-insertlink": "Tooltip for the button.\n{{Identical|Insert link}}",
 	"bs-insertlink-pref-enable-java": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for usage of java",
 	"bs-insertlink-button-title": "The tooltip for the button that opens the dialog. It is shown on mouse over.",
