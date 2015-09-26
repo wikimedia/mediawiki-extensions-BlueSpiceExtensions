@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Alojz.tic",
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-insertlink-desc": "Pogovorno okno za vnos povezave",
+	"prefs-insertlink": "Vstavi povezavo",
 	"bs-insertlink": "Vstavi povezavo",
+	"bs-insertlink-pref-enable-java": "Omogoči javansko aplikacijo",
 	"bs-insertlink-button-title": "Vstavi/uredi povezavo",
 	"bs-insertlink-dialog-title": "Vstavi povezavo",
 	"bs-insertlink-tab-wiki-page": "Wiki stran",

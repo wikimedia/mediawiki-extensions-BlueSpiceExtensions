@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Kc kennylau",
-			"Yueman"
+			"Yueman",
+			"Ktchankt"
 		]
 	},
 	"bs-insertlink-desc": "輸入連結嘅對話盒",
+	"prefs-insertlink": "插連結",
 	"bs-insertlink": "插入連結",
+	"bs-insertlink-pref-enable-java": "啟用Java applet",
 	"bs-insertlink-button-title": "插入或者修改連結",
 	"bs-insertlink-dialog-title": "插入連結",
 	"bs-insertlink-tab-wiki-page": "維基頁面",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alojz.tic",
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-readers-desc": "Ustvari seznam ljudi, ki berejo stran",
@@ -17,5 +18,6 @@
 	"bs-readers-emptyinput": "Podana ni bila nobena stran.",
 	"bs-readers-header-username": "Uporabniško ime",
 	"bs-readers-header-readerspath": "Bralec",
-	"bs-readers-header-ts": "Datum"
+	"bs-readers-header-ts": "Datum",
+	"bs-readers-header-page": "Stran"
 }
