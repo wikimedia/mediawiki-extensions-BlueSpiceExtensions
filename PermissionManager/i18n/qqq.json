@@ -41,5 +41,6 @@
 	"bs-permissionmanager-pref-lockmode": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for activate lockmode",
 	"bs-permissionmanager-pref-skipsysns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for skip system namespaces if lockmode is active",
 	"bs-permissionmanager-pref-enablerealitycheck": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for activate permission check",
-	"bs-permissionmanager-unsaved-changes": "Hint about data loss when a user leaves the page without saving her/his changes"
+	"bs-permissionmanager-unsaved-changes": "Hint about data loss when a user leaves the page without saving her/his changes",
+	"bs-permissionmanager-error-lockout": "Error message for changes in settings that couldn't be saved, because some essential rights are not enabled for any user group."
 }

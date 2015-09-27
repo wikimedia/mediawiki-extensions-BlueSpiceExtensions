@@ -457,31 +457,38 @@ class PermissionManager extends BsExtensionMW {
 		$mStatus = wfRunHooks( 'BsPermissionManager::beforeSavePermissions', array( &$aLockdown, &$aGroupPermissions ) );
 
 		if ( $mStatus === true ) {
+			$mStatus = self::preventPermissionLockout($aGroupPermissions);
+		}
+
+		if ( $mStatus === true ) {
 			return FormatJson::encode(
 					self::writeGroupSettings( $aGroupPermissions, $aLockdown )
 			);
-		} else {
-			return FormatJson::encode(
-					array(
-							'success' => false,
-							'msg' => $mStatus
-					)
-			);
 		}
+
+		return FormatJson::encode( array(
+				'success' => false,
+				'msg' => $mStatus
+		) );
 	}
 
 	/**
 	 * Prevents that the wiki gets accidentally inaccessible for all users.
 	 * Some of the rights which are pre-set in the $bsgPermissionConfig have
-	 * a config array, which prevents the Lockdown to be enabled on these rights.
+	 * a the flag "preventLockout" set to true. This makes it impossible to
+	 * save the permission settings if not at least one group has these rights enabled.
+	 *
 	 * @param array $aGroupPermissions
+	 * @return bool|String
 	 */
 	protected static function preventPermissionLockout( &$aGroupPermissions ) {
 		global $bsgPermissionConfig;
+
 		$aRights = User::getAllRights();
 		if ( !is_array( $aRights ) ) {
-			return;
+			return false;
 		}
+
 		foreach ( $aRights as $sRight ) {
 			if ( isset( $bsgPermissionConfig[ $sRight ][ 'preventLockout' ] ) ) {
 				$bIsSet = false;
@@ -489,15 +496,19 @@ class PermissionManager extends BsExtensionMW {
 					foreach ( $aGroupPermissions as $aDataset ) {
 						if ( isset( $aDataset[ $sRight ] ) && $aDataset[ $sRight ] ) {
 							$bIsSet = true;
-							continue;
+							continue 2;
 						}
 					}
 					if ( !$bIsSet ) {
-						$aGroupPermissions[ 'sysop' ][ $sRight ] = true;
+						return Message::newFromKey('bs-permissionmanager-error-lockout')
+								->params($sRight)
+								->plain();
 					}
 				}
 			}
 		}
+
+		return true;
 	}
 
 	protected static function getTemplateRules() {
