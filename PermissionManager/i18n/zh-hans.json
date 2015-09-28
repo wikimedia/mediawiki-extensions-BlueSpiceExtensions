@@ -40,5 +40,6 @@
 	"bs-permissionmanager-pref-lockmode": "激活 lockmode",
 	"bs-permissionmanager-pref-skipsysns": "如果lockmode被激活则跳过系统名字空间",
 	"bs-permissionmanager-pref-enablerealitycheck": "激活权限检查",
-	"bs-permissionmanager-unsaved-changes": "存在尚未保存的更改。你确实想要现在离开此页面吗？这样将会丢失尚未保存的更改。"
+	"bs-permissionmanager-unsaved-changes": "存在尚未保存的更改。你确实想要现在离开此页面吗？这样将会丢失尚未保存的更改。",
+	"bs-permissionmanager-error-lockout": "至少一个组必须拥有权限“$1”。\n更改不能被保存。"
 }

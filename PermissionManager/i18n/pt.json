@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Jkb8"
 		]
 	},
-	"bs-permissionmanager-desc": "Interface de administração para a edição de privilégios de utilizador"
+	"bs-permissionmanager-desc": "Interface de administração para a edição de privilégios de utilizador",
+	"bs-permissionmanager-error-lockout": "Pelo menos um grupo deve ter o direito de \"$1\".\nNão foi possível salvar as alterações."
 }
