@@ -268,7 +268,7 @@ class WikiAdmin extends BsExtensionMW {
 					),
 					wfMessage( 'bs-wikiadmin-mediawiki-specialpages-text' )->escaped()
 		);
-		return $sLink;
+		return '<li>'.$sLink.'</li>';
 	}
 
 }
