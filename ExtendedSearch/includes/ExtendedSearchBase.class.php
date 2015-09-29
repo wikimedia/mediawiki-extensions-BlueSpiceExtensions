@@ -371,6 +371,11 @@ class ExtendedSearchBase {
 			$sSearchString
 		);
 		$sSearchString = trim( $sSearchString );
+
+		wfRunHooks( 'BSExtendedSearchBaseAfterPreprocessSearchInput', array(
+			&$sSearchString
+		));
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 
 		return $sSearchString;
