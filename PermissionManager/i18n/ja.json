@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"SkyDaisy9"
+			"SkyDaisy9",
+			"2nd-player"
 		]
 	},
 	"bs-permissionmanager-desc": "利用者権限を編集するための管理インターフェイス",
@@ -31,5 +32,6 @@
 	"bs-permissionmanager-titletpled-edit": "テンプレート名の変更",
 	"bs-permissionmanager-titletpled-delete": "テンプレートの削除",
 	"bs-permissionmanager-pref-enablerealitycheck": "アクセス許可の確認を有効にする",
-	"bs-permissionmanager-unsaved-changes": "保存していない変更があります。このままページを閉じても本当によいですか。実行すると未保存の変更は失われます。"
+	"bs-permissionmanager-unsaved-changes": "保存していない変更があります。このままページを閉じても本当によいですか。実行すると未保存の変更は失われます。",
+	"bs-permissionmanager-error-lockout": "少なくとも1つの利用者グループが \"$1\" 権限を持たなければなりません。\n変更を保存できませんでした。"
 }
