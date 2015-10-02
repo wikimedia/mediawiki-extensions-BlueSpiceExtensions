@@ -98,12 +98,20 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 
 			if ( $this->sizeExceedsMaxDocSize( $oRepoFile->getSize(), $sFileName ) ) continue;
 
-			$sRepoFileRealPath = $oRepoFile->getRealPath();
+			//Insert URL to Filename
+			$sURL = BsConfig::get( 'MW::ExtendedSearch::ExternalRepoUrl' );
+			//Replace realpath with webserver url only if $sUrl is set, otherwise work as before
+			if($sURL == ""){
+			    $sRepoFileRealPath = "file:///" . $oRepoFile->getRealPath();
+			}else{
+			    $sRepoFileRealPath = $sURL . "/" . $oRepoFile->getFilename();
+			}
+
 			$timestampImage = wfTimestamp( TS_ISO_8601, $oRepoFile->getMTime() );
 
-			if ( $this->checkExistence( $sRepoFileRealPath, 'external', $timestampImage, $sFileName ) ) continue;
+			if ( $this->checkExistence( $oRepoFile->getRealPath(), 'external', $timestampImage, $sFileName ) ) continue;
 
-			$text = $this->getFileText( $sRepoFileRealPath, $sFileName );
+			$text = $this->getFileText( $oRepoFile->getRealPath(), $sFileName );
 
 			$doc = $this->makeRepoDocument( $sDocType, utf8_encode( $sFileName ), $text, utf8_encode( $sRepoFileRealPath ), $timestampImage );
 			$this->writeLog( $sFileName );

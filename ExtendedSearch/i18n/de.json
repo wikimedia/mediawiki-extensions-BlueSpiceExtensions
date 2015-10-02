@@ -60,6 +60,7 @@
 	"bs-extendedsearch-pref-showfacets": "Facettensuche aktivieren",
 	"bs-extendedsearch-pref-showautocomplete": "Seiten mit dem passenden Suchbegriff vorschlagen",
 	"bs-extendedsearch-pref-externalrepo": "Externes Verzeichnis indexieren:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL zum externen Verzeichnis:",
 	"bs-extendedsearch-pref-acentries": "Anzahl der Vorschläge mit dem passenden Suchbegriff:",
 	"bs-extendedsearch-pref-highlightsnippets": "Anzahl gefundener Textpassagen auf der Spezialseite:",
 	"bs-extendedsearch-pref-indexfiletypes": "Dateien mit bestimmten Dateierweiterungen indexieren:",

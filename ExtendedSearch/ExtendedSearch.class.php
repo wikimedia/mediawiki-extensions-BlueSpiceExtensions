@@ -94,6 +94,7 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesWiki', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypeswiki', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::IndexTypesSpecial', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indextypesspecial', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ExternalRepo', '', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-externalrepo' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::ExternalRepoUrl', '', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-externalrepo-url' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefScopeUser', 'text', BsConfig::TYPE_STRING|BsConfig::LEVEL_USER|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-defscopeuser', 'select' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::HighlightSnippets', '3', BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-highlightsnippets', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::LogUsers', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logusers', 'toggle' );

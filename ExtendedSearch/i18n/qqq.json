@@ -64,6 +64,7 @@
 	"bs-extendedsearch-pref-showfacets": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for show facets on special page",
 	"bs-extendedsearch-pref-showautocomplete": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label text for show autocomplete menu",
 	"bs-extendedsearch-pref-externalrepo": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for index external directory:",
+	"bs-extendedsearch-pref-externalrepo-url": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for Web-URL of external directory, replace server path:",
 	"bs-extendedsearch-pref-acentries": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for number of results in autocomplete:",
 	"bs-extendedsearch-pref-highlightsnippets": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for number of highlight snippets:",
 	"bs-extendedsearch-pref-indexfiletypes": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for file extensions to be indexed:",
