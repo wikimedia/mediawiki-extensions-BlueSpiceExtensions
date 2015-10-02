@@ -57,6 +57,7 @@
 	"bs-extendedsearch-pref-showfacets": "Show facets on special page",
 	"bs-extendedsearch-pref-showautocomplete": "Suggest pages matching search term",
 	"bs-extendedsearch-pref-externalrepo": "Index external directory:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL for external directory:",
 	"bs-extendedsearch-pref-acentries": "Number of suggestions matching search term:",
 	"bs-extendedsearch-pref-highlightsnippets": "Number of highlight snippets:",
 	"bs-extendedsearch-pref-indexfiletypes": "Index files with certain file extensions:",

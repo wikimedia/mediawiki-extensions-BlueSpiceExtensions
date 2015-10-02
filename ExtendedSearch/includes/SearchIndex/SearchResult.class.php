@@ -525,7 +525,7 @@ class BsSearchResult {
 			$sTitle = $oDocument->title;
 			$sLink = $oDocument->path;
 
-			$sSearchLink = '<a target="_blank" href="file:///' . $sLink . '">' . $sTitle . '</a>';
+			$sSearchLink = '<a target="_blank" href="' . $sLink . '">' . $sTitle . '</a>';
 		}
 		return $sSearchLink;
 	}
