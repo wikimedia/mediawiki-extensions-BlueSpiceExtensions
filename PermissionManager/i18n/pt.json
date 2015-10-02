@@ -6,5 +6,5 @@
 		]
 	},
 	"bs-permissionmanager-desc": "Interface de administração para a edição de privilégios de utilizador",
-	"bs-permissionmanager-error-lockout": "Pelo menos um grupo deve ter o direito de \"$1\".\nNão foi possível salvar as alterações."
+	"bs-permissionmanager-error-lockout": "Pelo menos um grupo deve ter o privilégio de \"$1\".\nNão foi possível gravar as alterações."
 }
