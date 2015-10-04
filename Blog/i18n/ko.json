@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"prefs-blog": "블로그",
+	"bs-blog-read-more": "더 읽어보기",
+	"bs-blog-trackback": "트랙백",
+	"bs-blog-permalink": "고유링크",
+	"bs-blog-form-button-text": "만들기",
+	"bs-blog-blog": "블로그",
+	"bs-blog-pref-showpermalink": "고유링크 보기",
+	"bs-blog-pref-sortby": "정렬 기준:"
+}
