@@ -55,7 +55,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Alle Seiten",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Namensraum auswählen",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Nicht zugewiesen.",
-	"log-name-bs-responsibleeditors": "Verantwortliche Redakteure-Logbuch",
-	"log-description-bs-responsibleeditors": "Logbuch von Redakteuren die für gewisse Seiten verantwortlich sind.",
-	"log-show-hide-bs-responsibleeditors": "Verantwortliche Redakteure-Logbuch $1"
+	"log-name-bs-responsible-editors": "Verantwortliche Redakteure-Logbuch",
+	"log-description-bs-responsible-editors": "Logbuch von Redakteuren die für gewisse Seiten verantwortlich sind.",
+	"log-show-hide-bs-responsible-editors": "$1 Verantwortliche Redakteure-Logbuch",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|hat}} $4 als {{GENDER:$4|Redakteur|Redakteurin}} zu $3 hinzugefügt",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|hat}} $4 als {{GENDER:$4|Redakteur|Redakteurin}} zu $3 entfernt"
 }

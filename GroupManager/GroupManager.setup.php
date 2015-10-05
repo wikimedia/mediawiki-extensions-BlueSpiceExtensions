@@ -33,3 +33,7 @@ $wgAjaxExportList[] = 'GroupManager::addGroup';
 $wgAjaxExportList[] = 'GroupManager::editGroup';
 $wgAjaxExportList[] = 'GroupManager::removeGroup';
 $wgAjaxExportList[] = 'GroupManager::removeGroups';
+
+$wgLogTypes[] = 'bs-group-manager';
+$wgFilterLogTypes['bs-group-manager'] = true;
+$wgLogActionsHandlers['bs-group-manager/*'] = 'LogFormatter';

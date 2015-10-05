@@ -40,3 +40,7 @@ $wgAjaxExportList[] = 'NamespaceManager::deleteNamespace';
 $wgAjaxExportList[] = 'NamespaceManager::isNamespaceEmpty';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'NamespaceManager::getSchemaUpdates';
+
+$wgLogTypes[] = 'bs-namespace-manager';
+$wgFilterLogTypes['bs-namespace-manager'] = true;
+$wgLogActionsHandlers['bs-namespace-manager/*'] = 'LogFormatter';

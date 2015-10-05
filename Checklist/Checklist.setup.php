@@ -50,3 +50,7 @@ $wgAjaxExportList[] = 'Checklist::ajaxSaveOptionsList';
 $wgAjaxExportList[] = 'Checklist::ajaxGetItemStoreData';
 $wgAjaxExportList[] = 'Checklist::getAvailableOptions';
 #$wgAutoloadClasses['ViewChecklistCheck'] = __DIR__ . '/views/view.ChecklistCheck.php';
+
+$wgLogTypes[] = 'bs-checklist';
+$wgFilterLogTypes['bs-checklist'] = true;
+$wgLogActionsHandlers['bs-checklist/*'] = 'LogFormatter';

@@ -158,3 +158,7 @@ $bsgPermissionManagerDefaultTemplates = array(
 			'workflowedit', // still in use?
 	)
 ) + $bsgPermissionManagerDefaultTemplates;
+
+$wgLogTypes[] = 'bs-permission-manager';
+$wgFilterLogTypes['bs-permission-manager'] = true;
+$wgLogActionsHandlers['bs-permission-manager/*'] = 'LogFormatter';

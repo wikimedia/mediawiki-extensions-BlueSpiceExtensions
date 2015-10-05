@@ -52,7 +52,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Show all pages",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Select a namespace",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Not assigned",
-	"log-name-bs-responsibleeditors": "Responsible editors log",
-	"log-description-bs-responsibleeditors": "This is a log of editors responsible for pages.",
-	"log-show-hide-bs-responsibleeditors": "$1 responsible editors log"
+	"log-name-bs-responsible-editors": "Responsible editors log",
+	"log-description-bs-responsible-editors": "This is a log of editors responsible for pages.",
+	"log-show-hide-bs-responsible-editors": "$1 responsible editors log",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|has added}} $4 as {{GENDER:$4|editor}} for $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|has removed}} $4 as {{GENDER:$4|editor}} for $3"
 }

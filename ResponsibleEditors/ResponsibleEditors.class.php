@@ -109,7 +109,6 @@ class ResponsibleEditors extends BsExtensionMW {
 		wfProfileOut('BS::' . __METHOD__);
 	}
 
-
 	/**
 	 * Adds the 'ext.bluespice.responsibleeditors' module to the OutputPage
 	 * @param OutputPage $out

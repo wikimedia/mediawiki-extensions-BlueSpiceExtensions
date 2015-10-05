@@ -40,5 +40,9 @@
 	"bs-permissionmanager-pref-skipsysns": "Skip system namespaces if lockmode is active",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activate permission check",
 	"bs-permissionmanager-unsaved-changes": "There are unsaved changes. Do you really want to leave the page now? The unsaved changes will be lost.",
-	"bs-permissionmanager-error-lockout": "At least one group must own the right \"$1\".\nChanges couldn't be saved."
+	"bs-permissionmanager-error-lockout": "At least one group must own the right \"$1\".\nChanges couldn't be saved.",
+	"log-name-bs-permission-manager": "Permission manager log",
+	"log-description-bs-permission-manager": "This is a log of changes in the group permissions.",
+	"log-show-hide-bs-permission-manager": "$1 permission manager log",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|has}} changed the permissions of the group $4"
 }

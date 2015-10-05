@@ -448,7 +448,22 @@ class NamespaceManager extends BsExtensionMW {
 				$bUseInternalDefaults = true;
 				wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $aAdditionalSettings, $bUseInternalDefaults ) );
 
-				return FormatJson::encode( self::setUserNamespaces( $aUserNamespaces ) );
+				$aResult = self::setUserNamespaces( $aUserNamespaces );
+
+				if($aResult[ 'success' ] === true) {
+					// Create a log entry for the creation of the namespace
+					$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
+					$oUser = RequestContext::getMain()->getUser();
+					$oLogger = new ManualLogEntry( 'bs-namespace-manager', 'create' );
+					$oLogger->setPerformer( $oUser );
+					$oLogger->setTarget( $oTitle );
+					$oLogger->setParameters( array(
+							'4::namespace' => $sNamespace
+					) );
+					$oLogger->insert();
+				}
+
+				return FormatJson::encode( $aResult );
 			}
 		} else {
 			// TODO SU (04.07.11 12:13): Aus Gründen der Lesbarkeit würde ich
@@ -500,9 +515,15 @@ class NamespaceManager extends BsExtensionMW {
 			) );
 		}
 
+		if( isset( $bsSystemNamespaces[$iNS] ) ) {
+			$sOriginalNamespaceName = $bsSystemNamespaces[ $iNS ];
+		} else {
+			$sOriginalNamespaceName = $aUserNamespaces[ $iNS ][ 'name' ];
+		}
+
 		if ( !isset( $bsSystemNamespaces[($iNS)] ) && strstr( $sNamespace, '_' . $wgContLang->getNsText( NS_TALK ) ) ) {
-				$aUserNamespaces[$iNS] = array(
-					'name' => $aUserNamespaces[$iNS]['name'],
+				$aUserNamespaces[ $iNS ] = array(
+					'name' => $aUserNamespaces[ $iNS ][ 'name' ],
 					'alias' => str_replace( '_' . $wgContLang->getNsText( NS_TALK ), '_talk', $sNamespace ),
 				);
 			wfRunHooks( 'NamespaceManager::editNamespace', array( &$aUserNamespaces, &$iNS, $aAdditionalSettings, false ) );
@@ -519,7 +540,27 @@ class NamespaceManager extends BsExtensionMW {
 		}
 
 		$aResult = self::setUserNamespaces( $aUserNamespaces );
-		$aResult['message'] = wfMessage( 'bs-namespacemanager-nsedited' )->plain();
+		if( $aResult[ 'success' ] === true ) {
+			// Create a log entry for the modification of the namespace
+			$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
+			$oUser = RequestContext::getMain()->getUser();
+			if( $sOriginalNamespaceName == $sNamespace ) {
+				$oLogger = new ManualLogEntry( 'bs-namespace-manager', 'modify' );
+				$oLogger->setParameters( array(
+						'4::namespaceName' => $sOriginalNamespaceName
+				) );
+			} else {
+				$oLogger = new ManualLogEntry( 'bs-namespace-manager', 'rename' );
+				$oLogger->setParameters( array(
+						'4::namespaceName' => $sOriginalNamespaceName,
+						'5::newNamespaceName' => $sNamespace
+				) );
+			}
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+
+			$oLogger->insert();
+		}
 
 		return FormatJson::encode( $aResult );
 	}
@@ -549,7 +590,7 @@ class NamespaceManager extends BsExtensionMW {
 		global $wgContLang;
 		$aUserNamespaces = self::getUserNamespaces( true );
 		$aNamespacesToRemove = array( array( $iNS, 0 ) );
-		$sNamespace = $aUserNamespaces[$iNS][ 'name' ];
+		$sOriginalNamespace = $sNamespace = $aUserNamespaces[ $iNS ][ 'name' ];
 
 		if ( !strstr( $sNamespace, '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
 			if ( isset( $aUserNamespaces[ ($iNS + 1) ] ) && strstr( $aUserNamespaces[ ($iNS + 1) ][ 'name' ], '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
@@ -597,7 +638,18 @@ class NamespaceManager extends BsExtensionMW {
 
 		if ( !$bErrors ) {
 			$aResult = self::setUserNamespaces( $aUserNamespaces );
-			$aResult['message'] = wfMessage( 'bs-namespacemanager-nsremoved' )->plain();
+			if($aResult[ 'success' ] === true) {
+				// Create a log entry for the removal of the namespace
+				$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
+				$oUser = RequestContext::getMain()->getUser();
+				$oLogger = new ManualLogEntry( 'bs-namespace-manager', 'remove' );
+				$oLogger->setPerformer( $oUser );
+				$oLogger->setTarget( $oTitle );
+				$oLogger->setParameters( array(
+						'4::namespace' => $sOriginalNamespace
+				) );
+				$oLogger->insert();
+			}
 			return FormatJson::encode( $aResult );
 		} else {
 			return FormatJson::encode( array(
