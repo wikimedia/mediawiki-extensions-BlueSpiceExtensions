@@ -41,5 +41,9 @@
 	"bs-permissionmanager-pref-skipsysns": "如果lockmode被激活则跳过系统名字空间",
 	"bs-permissionmanager-pref-enablerealitycheck": "激活权限检查",
 	"bs-permissionmanager-unsaved-changes": "存在尚未保存的更改。你确实想要现在离开此页面吗？这样将会丢失尚未保存的更改。",
-	"bs-permissionmanager-error-lockout": "至少一个组必须拥有权限“$1”。\n更改不能被保存。"
+	"bs-permissionmanager-error-lockout": "至少一个组必须拥有权限“$1”。\n更改不能被保存。",
+	"log-name-bs-permission-manager": "权限管理器日志",
+	"log-description-bs-permission-manager": "这是组前行中的更改日志。",
+	"log-show-hide-bs-permission-manager": "$1权限管理器日志",
+	"logentry-bs-permission-manager-modify": "$1{{GENDER:$2|已更改}}组$4的权限"
 }

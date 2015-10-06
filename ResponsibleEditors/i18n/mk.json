@@ -52,7 +52,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Сите страници",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Изберете именски простор",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Недоделена",
-	"log-name-bs-responsibleeditors": "Дневник на одговорни уредници",
-	"log-description-bs-responsibleeditors": "Ова е дневник на уредници одговорни за страници.",
-	"log-show-hide-bs-responsibleeditors": "$1 дневник на одговорни уредници"
+	"log-name-bs-responsible-editors": "Дневник на одговорни уредници",
+	"log-description-bs-responsible-editors": "Ова е дневник на уредници одговорни за страници.",
+	"log-show-hide-bs-responsible-editors": "$1 дневник на одговорни уредници",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|го додаде|ја додаде|го додаде корисникот}} $4 како {{GENDER:$4|уредник}} на $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|го отстрани|ја отстрани|го отстрани корисникот}} $4 како {{GENDER:$4|уредник}} на $3"
 }

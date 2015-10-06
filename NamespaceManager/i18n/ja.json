@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"SkyDaisy9"
+			"SkyDaisy9",
+			"2nd-player"
 		]
 	},
 	"bs-namespacemanager-desc": "名前空間を追加/編集/削除する管理インターフェイス",
@@ -23,5 +24,6 @@
 	"bs-namespacemanager-willmovesuffix": "接尾語$1と\"{{int:bs-ns_main}}\"の中に移動させる",
 	"bs-namespacemanager-deletewarning": "この名前空間を本当に削除しますか? 名前空間の削除は取り消せません。",
 	"bs-namespacemanager-deletens-movepages": "名前空間「$1」が消去されたため、このページは名前空間「$1」から名前空間「{{int:bs-ns_main}}」へ移動しました。",
-	"bs-namespacemanager-deletens-deletepages": "名前空間「$1」が消去されたため、このページも消去されました。"
+	"bs-namespacemanager-deletens-deletepages": "名前空間「$1」が消去されたため、このページも消去されました。",
+	"log-description-bs-namespace-manager": "これは、名前空間の変更記録です。"
 }

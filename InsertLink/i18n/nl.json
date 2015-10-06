@@ -3,11 +3,14 @@
 		"authors": [
 			"SPQRobin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-insertlink-desc": "Het dialoogvenster voor het invoeren van een link",
+	"prefs-insertlink": "Koppeling invoegen",
 	"bs-insertlink": "Koppeling toevoegen",
+	"bs-insertlink-pref-enable-java": "Java-applet activeren",
 	"bs-insertlink-button-title": "Koppeling toevoegen of bewerken",
 	"bs-insertlink-dialog-title": "Koppeling invoegen",
 	"bs-insertlink-tab-wiki-page": "Wikipagina",

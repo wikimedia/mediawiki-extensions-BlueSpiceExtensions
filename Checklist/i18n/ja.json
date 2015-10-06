@@ -17,5 +17,8 @@
 	"bs-checklist-dlg-panel-title": "利用可能なリスト",
 	"bs-checklist-dlg-new-title": "リストの新規作成",
 	"bs-checklist-confirm-dirty-title": "保存していません!",
-	"bs-checklist-confirm-dirty-text": "チェックリストの変更内容をまだ保存していません。変更内容を本当に破棄しますか?"
+	"bs-checklist-confirm-dirty-text": "チェックリストの変更内容をまだ保存していません。変更内容を本当に破棄しますか?",
+	"log-description-bs-checklist": "ページのチェックボックスの変更記録。",
+	"logentry-bs-checklist-checked": "$1 が $3 のチェックボックス #$4 に{{GENDER:$2|チェックを入れました}}",
+	"logentry-bs-checklist-unchecked": "$1 が $3 のチェックボックス #$4 の{{GENDER:$2|チェックを外しました}}"
 }

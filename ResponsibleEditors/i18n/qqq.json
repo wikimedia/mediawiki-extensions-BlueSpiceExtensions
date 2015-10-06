@@ -58,9 +58,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Option on special page for show all pages",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Placeholder for \"Namespace\" selector.",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Text for not assigned",
-	"log-name-bs-responsibleeditors": "Used in [[Special:Log]], label for responsible editors log",
-	"log-description-bs-responsibleeditors": "Used in [[Special:Log]], log description for editors responsible for pages.",
-	"log-show-hide-bs-responsibleeditors": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
+	"log-name-bs-responsible-editors": "Used in [[Special:Log]], label for responsible editors log",
+	"log-description-bs-responsible-editors": "Used in [[Special:Log]], log description for editors responsible for pages.",
+	"log-show-hide-bs-responsible-editors": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
 	"logentry-bs-responsible-editors-add": "Log message about adding a new editor to a page.\nParameters:\n* $4 - name of the editor",
 	"logentry-bs-responsible-editors-remove": "Log message about removing an editor from a page.\nParameters:\n* $4 - name of the editor"
 }

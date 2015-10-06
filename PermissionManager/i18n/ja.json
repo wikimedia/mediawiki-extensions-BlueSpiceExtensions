@@ -34,5 +34,6 @@
 	"bs-permissionmanager-titletpled-delete": "テンプレートの削除",
 	"bs-permissionmanager-pref-enablerealitycheck": "アクセス許可の確認を有効にする",
 	"bs-permissionmanager-unsaved-changes": "保存していない変更があります。このままページを閉じても本当によいですか。実行すると未保存の変更は失われます。",
-	"bs-permissionmanager-error-lockout": "少なくとも1つの利用者グループが \"$1\" 権限を持たなければなりません。\n変更を保存できませんでした。"
+	"bs-permissionmanager-error-lockout": "少なくとも1つの利用者グループが \"$1\" 権限を持たなければなりません。\n変更を保存できませんでした。",
+	"log-description-bs-permission-manager": "このページは利用者グループの権限の変更記録です。"
 }

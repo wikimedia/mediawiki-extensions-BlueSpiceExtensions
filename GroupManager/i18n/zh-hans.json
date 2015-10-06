@@ -23,5 +23,11 @@
 	"bs-groupmanager-removegroup-message-unknown": "发生未知错误，请重试。",
 	"bs-groupmanager-lablename": "群组名：",
 	"bs-groupmanager-msgnoteditable": "此群组是系统群组并不能重命名。",
-	"bs-groupmanager-msgnotremovable": "此群组是系统群组并不能移除。"
+	"bs-groupmanager-msgnotremovable": "此群组是系统群组并不能移除。",
+	"log-name-bs-group-manager": "群组管理器日志",
+	"log-description-bs-group-manager": "这是用户组更改的日志。",
+	"log-show-hide-bs-group-manager": "$1群组管理器日志",
+	"logentry-bs-group-manager-create": "$1{{GENDER:$2|已创建}}组$4",
+	"logentry-bs-group-manager-modify": "$1{{GENDER:$2|已更改}}组$4至$5",
+	"logentry-bs-group-manager-remove": "$1{{GENDER:$2|已移除}}组$4"
 }

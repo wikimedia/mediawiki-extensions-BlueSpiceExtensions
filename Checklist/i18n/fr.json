@@ -4,7 +4,8 @@
 			"Gomoko",
 			"Jean-Frédéric",
 			"Elodark",
-			"Ltrlg"
+			"Ltrlg",
+			"Wladek92"
 		]
 	},
 	"bs-checklist-desc": "Fournit une fonctionnalité de liste de contrôle",
@@ -27,5 +28,9 @@
 	"bs-checklist-dlg-new-prompt": "Entrez un titre de liste",
 	"bs-checklist-alert": "Attention !",
 	"bs-checklist-confirm-dirty-title": "Modifications non enregistrées !",
-	"bs-checklist-confirm-dirty-text": "Les modifications apportées à la liste ne sont pas encore enregistrées. Êtes-vous sûr de vouloir supprimer ces modifications ?"
+	"bs-checklist-confirm-dirty-text": "Les modifications apportées à la liste ne sont pas encore enregistrées. Êtes-vous sûr de vouloir supprimer ces modifications ?",
+	"log-name-bs-checklist": "Journal de la coche",
+	"log-show-hide-bs-checklist": "Journal de coche $1",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|a coché}} la boîte #$4 sur $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|a sélectionné}} la valeur \"$5\" dans la bo^te de selection #$4 sur $3"
 }

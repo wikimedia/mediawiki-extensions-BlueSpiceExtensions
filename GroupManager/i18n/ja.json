@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shield-9",
-			"Shirayuki"
+			"Shirayuki",
+			"2nd-player"
 		]
 	},
 	"bs-groupmanager-desc": "利用者グループとその権限を追加/編集/削除するための管理インターフェイス",
@@ -18,5 +19,6 @@
 	"bs-groupmanager-removegroup-message-failure": "以下の{{PLURAL:$1|グループ}}を削除できませんでした: $2",
 	"bs-groupmanager-lablename": "グループ名:",
 	"bs-groupmanager-msgnoteditable": "このグループはシステム グループであるため名前を変更できません。",
-	"bs-groupmanager-msgnotremovable": "このグループはシステム グループであるため除去できません。"
+	"bs-groupmanager-msgnotremovable": "このグループはシステム グループであるため除去できません。",
+	"log-description-bs-group-manager": "これは、利用者グループへの変更の記録です。"
 }

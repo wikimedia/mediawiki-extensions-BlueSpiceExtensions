@@ -17,5 +17,11 @@
 	"bs-groupmanager-removegroup-message-success": "Heh di {{PLURAL:$1|Jropp|Jroppe|Jropp}} sn jäz  fottjeschmeße: $2",
 	"bs-groupmanager-removegroup-message-failure": "Heh di {{PLURAL:$1|Jropp|Jroppe|Jropp}} lehße sesch nit fottschmiiße: $2",
 	"bs-groupmanager-removegroup-message-unknown": "Ene Fähler es opjetrodde, woh mer nit met jerääschnet han. Bes esu johd un versöhg est norr_ens.",
-	"bs-groupmanager-lablename": "Jroppe_Nahme:"
+	"bs-groupmanager-lablename": "Jroppe_Nahme:",
+	"log-name-bs-group-manager": "Logbohch övver de Jroppeverwalldong",
+	"log-description-bs-group-manager": "Logbohch vun de Änderonge aan Metmaacherjroppe.",
+	"log-show-hide-bs-group-manager": "$1 et Logbohch övver de Jroppeverwalldong",
+	"logentry-bs-group-manager-create": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Jropp $4 aanjelaat.",
+	"logentry-bs-group-manager-modify": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Jropp $4 op $5 ömmjenannt.",
+	"logentry-bs-group-manager-remove": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Jropp $4 fottjeschmeße."
 }

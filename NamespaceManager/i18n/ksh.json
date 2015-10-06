@@ -25,5 +25,12 @@
 	"bs-namespacemanager-labelnsname": "Dämm Appachtemang singe Nahme",
 	"bs-namespacemanager-willdelete": "Weed fott jeschmeße",
 	"bs-namespacemanager-pagepresent": "Sigge en heh däm Appachtemang:",
-	"bs-namespacemanager-deletens-deletepages": "Heh di Sigg wohd fottjeschmeße, weil dat Appachtemang „$1“ fottjeschmeße woode es."
+	"bs-namespacemanager-deletens-deletepages": "Heh di Sigg wohd fottjeschmeße, weil dat Appachtemang „$1“ fottjeschmeße woode es.",
+	"log-name-bs-namespace-manager": "Logbohch övver de Verwalldong vun de Appachtemangs",
+	"log-description-bs-namespace-manager": "Logbohch vun de Ännderonge aan de Appachtemangs.",
+	"log-show-hide-bs-namespace-manager": "$1 et Logbohch övver de Verwalldong vun de Appachtemangs",
+	"logentry-bs-namespace-manager-create": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hädd et Appachtemang $4 aanjelaat.",
+	"logentry-bs-namespace-manager-modify": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Enschtällonge för et Appachtemang $4 veränndert.",
+	"logentry-bs-namespace-manager-rename": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hädd_et Appachtemang $4 op $5 omjenannt.",
+	"logentry-bs-namespace-manager-remove": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hädd_et Appachtemang $4 fott jeschmeße."
 }
