@@ -41,5 +41,7 @@
 	"bs-permissionmanager-pref-lockmode": "Aktivera låsläge",
 	"bs-permissionmanager-pref-skipsysns": "Hoppa över systemnamnrymden om låsläge är aktivt",
 	"bs-permissionmanager-pref-enablerealitycheck": "Aktivera rättighetskontroll",
-	"bs-permissionmanager-unsaved-changes": "Det finns osparade ändringar. Vill du verkligen lämna sidan nu? De osparade ändringarna kommer att försvinna."
+	"bs-permissionmanager-unsaved-changes": "Det finns osparade ändringar. Vill du verkligen lämna sidan nu? De osparade ändringarna kommer att försvinna.",
+	"log-description-bs-permission-manager": "Detta är en ändringslogg i gruppen behörigheter.",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|har}} ändrat behörigheterna för gruppen $4"
 }

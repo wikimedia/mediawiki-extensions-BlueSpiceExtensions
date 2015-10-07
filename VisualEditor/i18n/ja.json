@@ -12,6 +12,7 @@
 	"bs-visualeditor-pref-use": "既定で WYSIWYG エディターを使用",
 	"bs-visualeditor-bsactions-wiki": "ウィキテキスト",
 	"bs-visualeditor-bsactions-linebreak": "改行",
+	"bs-visualeditor-bsactions-signature": "署名",
 	"bs-visualeditor-bsactions-save": "保存",
 	"bs-visualeditor-bsactions-headings": "見出し",
 	"bs-visualeditor-bsactions-paragraph": "段落",

@@ -27,6 +27,9 @@
 	"bs-groupmanager-msgnoteditable": "Ce groupe est un groupe système et ne peut pas être renommé.",
 	"bs-groupmanager-msgnotremovable": "Ce groupe est un groupe système et ne peut pas être supprimé.",
 	"log-name-bs-group-manager": "Journal du gestionnaire de groupe",
+	"log-description-bs-group-manager": "Ceci est un journal des modifications des groupes utilisateur.",
 	"log-show-hide-bs-group-manager": "Journal du gestionnaire de groupe $1",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|a créé}} le groupe $4",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|a renommé}} le groupe $4 en $5",
 	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|a supprimé}} le groupe $4"
 }

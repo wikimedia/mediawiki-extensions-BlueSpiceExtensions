@@ -26,5 +26,8 @@
 	"bs-checklist-dlg-new-title": "Lägg till ny lista",
 	"bs-checklist-dlg-new-prompt": "Ange en titel för lista",
 	"bs-checklist-alert": "Varning!",
-	"bs-checklist-confirm-dirty-title": "Osparade ändringar!"
+	"bs-checklist-confirm-dirty-title": "Osparade ändringar!",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|har markerat}} kryssruta nummer $4 på $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|har avmarkerat}} kryssruta nummer $4 till $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|har markerat}} värdet \"$5\" i rullgardinsmeny nummer $4 på $3"
 }

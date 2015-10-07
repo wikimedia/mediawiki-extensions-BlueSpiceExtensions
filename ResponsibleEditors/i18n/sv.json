@@ -54,6 +54,8 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Visa alla sidor",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Välj en namnrymd",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Ej tilldelad",
-	"log-name-bs-responsibleeditors": "Logg för ansvariga redaktörer",
-	"log-description-bs-responsibleeditors": "Detta är loggen för ansvariga redaktörer för sidor"
+	"log-name-bs-responsible-editors": "Logg för ansvariga redaktörer",
+	"log-description-bs-responsible-editors": "Detta är loggen för ansvariga redaktörer för sidor",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|har lagt till}} $4 som {{GENDER:$4|redigerare}} för $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|har tagit bort}} $4 som {{GENDER:$4|redigerare}} för $3"
 }

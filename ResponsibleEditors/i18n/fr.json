@@ -55,7 +55,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Afficher toutes les pages",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Sélectionnez un espace de noms",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Non affectée",
-	"log-name-bs-responsibleeditors": "Journal des éditeurs responsables",
-	"log-description-bs-responsibleeditors": "Ceci est un journal des éditeurs responsables de pages.",
-	"log-show-hide-bs-responsibleeditors": "Journal des éditeurs responsables de $1"
+	"log-name-bs-responsible-editors": "Journal des éditeurs responsables",
+	"log-description-bs-responsible-editors": "Ceci est un journal des éditeurs responsables de pages.",
+	"log-show-hide-bs-responsible-editors": "Journal des éditeurs responsables de $1",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|a ajouté}} $4 comme {{GENDER:$4|éditeur|éditrice}} pour $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|a supprimé}} $4 comme {{GENDER:$4|éditeur|éditrice}} pour $3"
 }

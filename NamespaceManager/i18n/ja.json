@@ -3,14 +3,19 @@
 		"authors": [
 			"Shirayuki",
 			"SkyDaisy9",
-			"2nd-player"
+			"2nd-player",
+			"Sujiniku"
 		]
 	},
 	"bs-namespacemanager-desc": "名前空間を追加/編集/削除する管理インターフェイス",
+	"bs-namespacemanager-label": "名前空間マネージャ",
+	"bs-namespacemanager-wrong-name": "名前空間名が無効な文字を含んでいます。",
 	"bs-namespacemanager-ns-exists": "既に存在する名前空間です。",
+	"bs-namespacemanager-ns-length": "名前空間名は2文字以上でなければなりません。",
 	"bs-namespacemanager-invalid-id": "有効な名前空間 ID がありません",
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "名前空間",
+	"bs-namespacemanager-label-content": "本文名前空間",
 	"bs-namespacemanager-label-searchable": "既定の検索対象",
 	"bs-namespacemanager-label-subpages": "下位ページ",
 	"bs-namespacemanager-nsadded": "名前空間を追加しました。",
@@ -25,5 +30,11 @@
 	"bs-namespacemanager-deletewarning": "この名前空間を本当に削除しますか? 名前空間の削除は取り消せません。",
 	"bs-namespacemanager-deletens-movepages": "名前空間「$1」が消去されたため、このページは名前空間「$1」から名前空間「{{int:bs-ns_main}}」へ移動しました。",
 	"bs-namespacemanager-deletens-deletepages": "名前空間「$1」が消去されたため、このページも消去されました。",
-	"log-description-bs-namespace-manager": "これは、名前空間の変更記録です。"
+	"log-name-bs-namespace-manager": "名前空間マネージャ記録",
+	"log-description-bs-namespace-manager": "これは、名前空間の変更記録です。",
+	"log-show-hide-bs-namespace-manager": "$1 名前空間マネージャ記録",
+	"logentry-bs-namespace-manager-create": "$1 は名前空間 $4 を{{GENDER:$2|作成しました}}",
+	"logentry-bs-namespace-manager-modify": "$1 は名前空間 $4 の設定を{{GENDER:$2|変更しました}}",
+	"logentry-bs-namespace-manager-rename": "$1 は名前空間 $4 を $5 に{{GENDER:$2|改名しました}}",
+	"logentry-bs-namespace-manager-remove": "$1 は名前空間 $4 を{{GENDER:$2|除去しました}}"
 }

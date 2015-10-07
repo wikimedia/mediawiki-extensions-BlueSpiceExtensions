@@ -53,7 +53,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "显示所有页面",
 	"bs-responsibleeditors-cbnamespacesemptytext": "选择名字空间",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "未分配",
-	"log-name-bs-responsibleeditors": "责任编辑日志",
-	"log-description-bs-responsibleeditors": "这是页面编辑者责任的日志。",
-	"log-show-hide-bs-responsibleeditors": "$1责任编辑日志"
+	"log-name-bs-responsible-editors": "责任编辑日志",
+	"log-description-bs-responsible-editors": "这是页面编辑者责任的日志。",
+	"log-show-hide-bs-responsible-editors": "$1责任编辑日志",
+	"logentry-bs-responsible-editors-add": "$1已为$3{{GENDER:$2|添加}}$4作为{{GENDER:$4|编辑者}}",
+	"logentry-bs-responsible-editors-remove": "$1已将$4从$3的{{GENDER:$4|编辑者}}中{{GENDER:$2|移除}}"
 }
