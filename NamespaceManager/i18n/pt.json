@@ -24,5 +24,11 @@
 	"bs-namespacemanager-willmove": "Será movido para \"{{int:bs-ns_main}}\"",
 	"bs-namespacemanager-willmovesuffix": "Será movido para  \"{{int:bs-ns_main}}\" com o sufixo \"$1\"",
 	"bs-namespacemanager-deletewarning": "Tem certeza que deseja eliminar este domínio? A exclusão de um domínio não pode ser desfeita.",
-	"bs-namespacemanager-pagepresent": "Páginas neste domínio:"
+	"bs-namespacemanager-pagepresent": "Páginas neste domínio:",
+	"log-name-bs-namespace-manager": "Registo de gestão de domínios",
+	"log-description-bs-namespace-manager": "Este é um registo de alterações aos domínios.",
+	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|criou}} o domínio $4",
+	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|alterou}} as configurações do domínio $4",
+	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|renomeou}} o domínio $4 para $5",
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|removeu}} o domínio $4"
 }

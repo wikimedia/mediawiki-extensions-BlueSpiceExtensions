@@ -22,5 +22,10 @@
 	"bs-groupmanager-removegroup-message-unknown": "Ocorreu um erro inesperado, por favor tente novamente.",
 	"bs-groupmanager-lablename": "Nome do grupo:",
 	"bs-groupmanager-msgnoteditable": "Este grupo é um grupo de sistema e não pode ser renomeado.",
-	"bs-groupmanager-msgnotremovable": "Este grupo é um grupo de sistema e não pode ser removido."
+	"bs-groupmanager-msgnotremovable": "Este grupo é um grupo de sistema e não pode ser removido.",
+	"log-name-bs-group-manager": "Registo de gestão de grupos",
+	"log-description-bs-group-manager": "Este é um registo de alterações aos grupos de utilizadores.",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|criou}} o grupo $4",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|renomeou}} o grupo $4 para $5",
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|removeu}} o grupo $4"
 }

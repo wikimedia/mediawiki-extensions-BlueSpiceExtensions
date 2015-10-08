@@ -24,5 +24,10 @@
 	"bs-checklist-dlg-new-prompt": "Engadir un título para a lista",
 	"bs-checklist-alert": "Atención!",
 	"bs-checklist-confirm-dirty-title": "Hai cambios sen gardar!",
-	"bs-checklist-confirm-dirty-text": "Fixo modificacións na lista que aínda non se gardaron. Está seguro de que quere perder os cambios?"
+	"bs-checklist-confirm-dirty-text": "Fixo modificacións na lista que aínda non se gardaron. Está seguro de que quere perder os cambios?",
+	"log-description-bs-checklist": "Rexistro de cambios nas caixas de verificación das páxinas.",
+	"log-show-hide-bs-checklist": "Rexistro de caixa de verificación $1",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|marcou}} a caixa de verificación #$4 en $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|desmarcou}} a caixa de verificación #$4 en $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|seleccionou}} o valor \"$5\" na caixa de selección #$4 en $3"
 }

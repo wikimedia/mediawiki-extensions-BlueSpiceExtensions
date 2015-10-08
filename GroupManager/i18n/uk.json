@@ -24,5 +24,11 @@
 	"bs-groupmanager-removegroup-message-unknown": "Сталася неочікувана помилка, спробуйте ще раз.",
 	"bs-groupmanager-lablename": "Назва групи:",
 	"bs-groupmanager-msgnoteditable": "Ця група системна, і її не можна перейменувати.",
-	"bs-groupmanager-msgnotremovable": "Ця група системна, і її не можна вилучити."
+	"bs-groupmanager-msgnotremovable": "Ця група системна, і її не можна вилучити.",
+	"log-name-bs-group-manager": "Журнал менеджера груп",
+	"log-description-bs-group-manager": "Це журнал змін у групах користувачів.",
+	"log-show-hide-bs-group-manager": "$1 журнал менеджера груп",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|створив|створила}} групу $4",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|перейменував|перейменувала}} групу $4 на $5",
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|вилучив|вилучила}} групу $4"
 }

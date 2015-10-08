@@ -28,6 +28,8 @@
 	"bs-responsibleeditors-columnnamespace": "Domínio",
 	"bs-responsibleeditors-rbdisplaymodeall": "Mostrar todas as páginas",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Selecione um domínio",
-	"log-name-bs-responsibleeditors": "Registo de editores responsáveis",
-	"log-description-bs-responsibleeditors": "Este é um registo de editores responsáveis por páginas."
+	"log-name-bs-responsible-editors": "Registo de editores responsáveis",
+	"log-description-bs-responsible-editors": "Este é um registo de editores responsáveis por páginas.",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|adicionou}} $4 como {{GENDER:$4|editor|editora|editor(a)}} de $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|removeu}} $4 como {{GENDER:$4|editor|editora|editor(a)}} de $3"
 }

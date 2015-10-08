@@ -31,5 +31,12 @@
 	"bs-namespacemanager-deletewarning": "Ви дійсно бажаєте видалити цей простір назв? Видалення простору назв не можна скасувати.",
 	"bs-namespacemanager-pagepresent": "Сторінки в цьому просторі назв:",
 	"bs-namespacemanager-deletens-movepages": "Ця сторінка була переміщена з простору назв «$1» у простір назв «{{int:bs-ns_main}}», тому що простір назв «$1» було вилучено.",
-	"bs-namespacemanager-deletens-deletepages": "Ця сторінка була вилучена, тому що було вилучено простір назв «$1»."
+	"bs-namespacemanager-deletens-deletepages": "Ця сторінка була вилучена, тому що було вилучено простір назв «$1».",
+	"log-name-bs-namespace-manager": "Журнал керування просторами назв",
+	"log-description-bs-namespace-manager": "Це журнал змін у просторах назв.",
+	"log-show-hide-bs-namespace-manager": "$1 журнал керування просторами назв",
+	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|створив|створила}} простір назв $4",
+	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|змінив|змінила}} налаштування простору назв $4",
+	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|перейменував|перейменувала}} простір назв $4 на $5",
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|вилучив|вилучила}} простір назв $4"
 }

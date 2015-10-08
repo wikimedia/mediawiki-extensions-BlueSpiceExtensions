@@ -44,7 +44,7 @@
 	"bs-review-mail-finish-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión de \"$3\" y {{GENDER:$2|aceptó}} los cambios. La revisión está finalizada.",
 	"bs-review-mail-finish-and-review-header": "Terminó la revisión de $1",
 	"bs-review-mail-finish-and-review-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión de \"$3\" y {{GENDER:$2|aceptó}} los cambios. La revisión está finalizada y se marcó como estable.",
-	"bs-review-statebar-body-do-review": "Por favor revisa esta página",
+	"bs-review-statebar-body-do-review": "Revisa esta página",
 	"bs-review-i-agree": "Aceptar",
 	"bs-review-i-dismiss": "En desacuerdo",
 	"bs-review-not-allowed": "No tienes permitido acceder a esta página.",

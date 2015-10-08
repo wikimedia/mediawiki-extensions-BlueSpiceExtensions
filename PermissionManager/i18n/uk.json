@@ -40,5 +40,10 @@
 	"bs-permissionmanager-pref-lockmode": "Активувати lockmode",
 	"bs-permissionmanager-pref-skipsysns": "Пропустити системні простори назв, якщо активний lockmode",
 	"bs-permissionmanager-pref-enablerealitycheck": "Активувати перевірку дозволів",
-	"bs-permissionmanager-unsaved-changes": "Є незбережені зміни. Ви дійсно хочете покинути сторінку зараз? Незбережені зміни будуть втрачені."
+	"bs-permissionmanager-unsaved-changes": "Є незбережені зміни. Ви дійсно хочете покинути сторінку зараз? Незбережені зміни будуть втрачені.",
+	"bs-permissionmanager-error-lockout": "Принаймні одна група повинна мати право «$1».\nЗмінити не можна зберегти.",
+	"log-name-bs-permission-manager": "Журнал менеджера дозволів",
+	"log-description-bs-permission-manager": "Це журнал змін дозволів групи.",
+	"log-show-hide-bs-permission-manager": "$1 журнал менеджера дозволів",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|змінив|змінила}} дозволи групи $4"
 }

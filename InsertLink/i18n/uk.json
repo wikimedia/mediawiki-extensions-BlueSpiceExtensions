@@ -5,7 +5,9 @@
 		]
 	},
 	"bs-insertlink-desc": "Діалогове вікно для введення посилання",
+	"prefs-insertlink": "Вставити посилання",
 	"bs-insertlink": "Вставити посилання",
+	"bs-insertlink-pref-enable-java": "Увімкнути аплет Java",
 	"bs-insertlink-button-title": "Вставити/редагувати посилання",
 	"bs-insertlink-dialog-title": "Вставити посилання",
 	"bs-insertlink-tab-wiki-page": "Вікі-сторінка",
