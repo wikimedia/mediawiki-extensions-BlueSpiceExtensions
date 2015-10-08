@@ -26,6 +26,9 @@
 #bs-apps ul.bs-apps-child li {
 	float: none;
 }
+#bs-apps ul.bs-apps-child li a{
+	white-space: nowrap;
+}
 ul .bs-apps-child {
 	display:none;
 	position: absolute;
