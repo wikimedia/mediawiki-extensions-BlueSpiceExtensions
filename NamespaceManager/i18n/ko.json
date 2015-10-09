@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-namespacemanager-label": "이름공간 관리자",
+	"bs-namespacemanager-wrong-name": "이 이름공간은 올바르지 않은 문자를 포함합니다.",
+	"bs-namespacemanager-ns-exists": "이 이름공간은 이미 존재합니다.",
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "이름공간",
+	"bs-namespacemanager-nsadded": "이름공간이 추가되었습니다.",
+	"bs-namespacemanager-nsremoved": "이름공간이 제거되었습니다.",
+	"bs-namespacemanager-nsedited": "이름공간이 편집되었습니다.",
+	"bs-namespacemanager-tipadd": "이름공간 추가",
+	"bs-namespacemanager-tipedit": "이름공간 편집",
+	"bs-namespacemanager-labelnsname": "이름공간 이름",
+	"log-name-bs-namespace-manager": "이름공간 관리자 기록"
+}
