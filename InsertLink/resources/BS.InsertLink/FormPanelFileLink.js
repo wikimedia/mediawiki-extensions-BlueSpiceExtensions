@@ -14,9 +14,13 @@
 Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 	extend: 'BS.InsertLink.FormPanelBase',
 	protocols: ['file:///'],
+	bIsJavaEnabled: false,
 	beforeInitComponent: function() {
 		this.setTitle( mw.message('bs-insertlink-tab-ext-file').plain() );
 		this.on( 'beforeactivate', function(){
+			if ( !this.bIsJavaEnabled ) {
+			    return;
+			}
 			var applet = $("<applet>");
 			applet.attr('id', 'BsFileChooserApplet');
 			applet.attr('name', 'BsFileChooserApplet');
@@ -33,7 +37,7 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 			name: 'inputTargetUrl',
 			fieldLabel: mw.message('bs-insertlink-label-file').plain(),
 			value: '',
-			width: '75%'
+			width: this.bIsJavaEnabled ? '75%' : '100%'
 		});
 		this.btnSearchFile = Ext.create( 'Ext.button.Button', {
 			id: 'inputSearchFile',
@@ -61,7 +65,9 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 			 layout: 'hbox'
 		});
 		this.fcTargetFields.add(this.tfTargetUrl);
-		this.fcTargetFields.add(this.btnSearchFile);
+		if ( this.bIsJavaEnabled ) {
+		    this.fcTargetFields.add(this.btnSearchFile);
+		}
 
 		this.pnlMainConf.items = [];
 		this.pnlMainConf.items.push(this.fcTargetFields);

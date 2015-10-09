@@ -73,6 +73,8 @@ class InsertLink extends BsExtensionMW {
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'VisualEditorConfig' );
 
+		BsConfig::registerVar( 'MW::InsertLink::EnableJava', false, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-insertlink-pref-enable-java', 'toggle' );
+
 		wfProfileOut('BS::InsertLink::initExt');
 	}
 
@@ -103,6 +105,7 @@ class InsertLink extends BsExtensionMW {
 		$aButtonCfgs['bs-editbutton-insertlink'] = array(
 			'tip' => wfMessage( 'bs-insertlink' )->plain()
 		);
+		$this->getOutput()->addJsConfigVars( 'bsInsertLinkEnableJava', BsConfig::get( 'MW::InsertLink::EnableJava' ) );
 		return true;
 	}
 
