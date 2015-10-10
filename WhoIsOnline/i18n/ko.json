@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-whoisonline-nousers": "아무도 로그인하지 않았습니다.",
+	"bs-whoisonline-pref-orderby": "정렬 기준:",
+	"bs-whoisonline-pref-orderby-name": "이름",
+	"bs-whoisonline-pref-interval": "초 단위로 갱신하기:"
+}

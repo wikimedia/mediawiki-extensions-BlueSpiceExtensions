@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-interwikilinks-label": "인터위키 링크",
+	"bs-interwikilinks-link-created": "인터위키 링크를 만들었습니다.",
+	"bs-interwikilinks-link-added": "인터위키 링크를 추가했습니다.",
+	"bs-interwikilinks-link-deleted": "인터위키 링크를 삭제했습니다.",
+	"bs-interwikilinks-nopfx": "접두어를 입력하세요.",
+	"bs-interwikilinks-nourl": "URL을 입력하세요.",
+	"bs-interwikilinks-pfxtoolong": "이 접두어는 너무 깁니다. 최대 32글자를 사용해주세요.",
+	"bs-interwikilinks-pfxexists": "이 접두어는 이미 존재합니다.",
+	"bs-interwikilinks-headerprefix": "접두어",
+	"bs-interwikilinks-titleaddinterwikilink": "인터위키 링크 추가",
+	"bs-interwikilinks-titleeditinterwikilink": "인터위키 링크 편집",
+	"bs-interwikilinks-labelprefix": "접두어",
+	"bs-interwikilinks-titledeleteinterwikilink": "인터위키 링크 삭제",
+	"bs-interwikilinks-insertlink-labelprefix": "접두어"
+}
