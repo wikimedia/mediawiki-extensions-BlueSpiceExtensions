@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"아라"
+			"아라",
+			"Hwangjy9"
 		]
 	},
-	"bs-insertfile-typeborder": "테두리"
+	"bs-insertfile-labelsort": "정렬 기준:",
+	"bs-insertfile-labelfilter": "필터:",
+	"bs-insertfile-filename": "파일 이름",
+	"bs-insertfile-filesize": "파일 크기",
+	"bs-insertfile-lastmodified": "최근 바뀜",
+	"bs-insertfile-labelupload": "올리기",
+	"bs-insertfile-details-title": "자세한 사항",
+	"bs-insertfile-labellink": "링크",
+	"bs-insertfile-alignnone": "없음",
+	"bs-insertfile-typeborder": "테두리",
+	"bs-insertfile-uploadsubmitvalue": "파일 올리기"
 }

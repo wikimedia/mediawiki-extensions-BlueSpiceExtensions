@@ -44,5 +44,9 @@
 	"bs-permissionmanager-pref-skipsysns": "Omitir los espacios de nombres del sistema si el modo de bloqueo está activado",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activar la comprobación de permisos",
 	"bs-permissionmanager-unsaved-changes": "Hay cambios sin guardar. ¿Quieres abandonar la página ahora? Se perderá cualquier cambio no guardado.",
-	"bs-permissionmanager-error-lockout": "Al menos un grupo debe tener el permiso \"$1\".\nNo se pudieron guardar los cambios."
+	"bs-permissionmanager-error-lockout": "Al menos un grupo debe tener el permiso \"$1\".\nNo se pudieron guardar los cambios.",
+	"log-name-bs-permission-manager": "Registro del gestor de permisos",
+	"log-description-bs-permission-manager": "Este es un registro de los cambios en los permisos de grupo.",
+	"log-show-hide-bs-permission-manager": "$1 el registro del gestor de permisos",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|ha cambiado}} los permisos del grupo $4"
 }

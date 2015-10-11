@@ -57,7 +57,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Mostrar todas las páginas",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Selecciona un espacio de nombres",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Sin asignar",
-	"log-name-bs-responsibleeditors": "Registro de editores responsables",
-	"log-description-bs-responsibleeditors": "Este es un registro de los editores responsables de páginas.",
-	"log-show-hide-bs-responsibleeditors": "$1 el registro de editores responsables"
+	"log-name-bs-responsible-editors": "Registro de editores responsables",
+	"log-description-bs-responsible-editors": "Este es un registro de los editores responsables de páginas.",
+	"log-show-hide-bs-responsible-editors": "$1 el registro de editores responsables",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|ha añadido}} a $4 como {{GENDER:$4|editor|editora}} de $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|ha eliminado}} a $4 como {{GENDER:$4|editor|editora}} de $3"
 }

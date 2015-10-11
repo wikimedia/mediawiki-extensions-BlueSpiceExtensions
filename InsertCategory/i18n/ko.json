@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Tyey",
-			"아라"
+			"아라",
+			"Hwangjy9"
 		]
 	},
+	"bs-insertcategory-insertcat": "분류 넣기",
 	"prefs-insertcategory": "분류 넣기",
 	"bs-insertcategory-title": "분류 넣기",
 	"bs-insertcategory-failure": "오류",

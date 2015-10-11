@@ -27,5 +27,11 @@
 	"bs-checklist-dlg-new-prompt": "Ingresa un título para la lista",
 	"bs-checklist-alert": "¡Precaución!",
 	"bs-checklist-confirm-dirty-title": "Hay cambios sin guardar",
-	"bs-checklist-confirm-dirty-text": "Has realizado modificaciones en la lista de comprobación que todavía no se han guardado. ¿Quieres descartarlas?"
+	"bs-checklist-confirm-dirty-text": "Has realizado modificaciones en la lista de comprobación que todavía no se han guardado. ¿Quieres descartarlas?",
+	"log-name-bs-checklist": "Registro de casillas",
+	"log-description-bs-checklist": "Registro de los cambios de casillas en las páginas.",
+	"log-show-hide-bs-checklist": "$1 el registro de casillas",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|ha marcado}} la casilla #$4 en $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|ha desmarcado}} la casilla #$4 en $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|ha seleccionado}} el valor de \"$5\" en la casilla #$4 en $3"
 }

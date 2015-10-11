@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|분류}}: $2",
+	"bs-extendedsearch-curl-not-active": "cURL 확장 기능이 활성화되지 않았습니다.",
+	"bs-extendedsearch-error": "오류:",
+	"bs-extendedsearch-facet-category": "분류",
+	"bs-extendedsearch-facet-editors": "저자",
+	"bs-extendedsearch-facet-namespace": "이름공간",
+	"bs-extendedsearch-facet-namespace-files": "파일",
+	"bs-extendedsearch-facet-type": "형식",
+	"bs-extendedsearch-facet-uncategorized": "분류되지 않음",
+	"bs-extendedsearch-sort-title": "제목",
+	"bs-extendedsearch-sort-ts": "시간",
+	"bs-extendedsearch-pref-scope-title": "제목",
+	"bs-extendedsearch-unknown": "알 수 없음",
+	"bs-extendedsearch-more": "더 보기"
+}

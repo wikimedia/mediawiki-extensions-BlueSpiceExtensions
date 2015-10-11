@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Namoroka",
-			"아라"
+			"아라",
+			"Hwangjy9"
 		]
 	},
 	"bs-authors-desc": "문서 작성자의 프로필 사진 보기",
 	"prefs-authors": "이 문서의 작성자",
-	"bs-authors-title": "{{PLURAL:$1|작성자}}",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|작성자}}|작성자}}",
 	"bs-authors-profileimage": "프로필 사진",
 	"bs-authors-profileimage-change": "프로필 사진 바꾸기",
 	"bs-authors-show-all-authors": "더 많은 작성자들이 있습니다",
