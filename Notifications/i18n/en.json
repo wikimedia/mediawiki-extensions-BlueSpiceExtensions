@@ -13,7 +13,7 @@
 	"bs-echo-anon-user": "anonymous",
 	"bs-echo-unknown-user": "unknown",
 	"bs-echo-page-edit": "The page [[:$1]] has been changed",
-	"bs-echo-page-create": "The page  [[:$1]] was created",
+	"bs-echo-page-create": "The page [[:$1]] was created",
 	"bs-echo-page-delete": "The page [[:$1]] has been deleted",
 	"bs-echo-page-move": "The page [[:$1]] has been moved",
 	"bs-echo-page-newuser": "The user $1 was created.",
