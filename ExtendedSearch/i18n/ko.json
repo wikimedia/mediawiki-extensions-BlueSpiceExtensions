@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Yearning"
 		]
 	},
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|분류}}: $2",
-	"bs-extendedsearch-curl-not-active": "cURL 확장 기능이 활성화되지 않았습니다.",
+	"bs-extendedsearch-curl-not-active": "cURL 확장 기능이 작동하지 않습니다.",
 	"bs-extendedsearch-error": "오류:",
 	"bs-extendedsearch-facet-category": "분류",
 	"bs-extendedsearch-facet-editors": "저자",

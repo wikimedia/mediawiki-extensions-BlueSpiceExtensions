@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Yearning"
 		]
 	},
 	"bs-contextmenu-page-edit": "문서 편집",
@@ -15,5 +16,5 @@
 	"bs-contextmenu-media-view-page": "파일 설명과 파일 역사 보기",
 	"bs-contextmenu-user-mail": "메일 보내기",
 	"bs-contextmenu-user-talk": "토론 문서에 메시지 남기기",
-	"bs-contextmenu-file-download": "파일 다운로드"
+	"bs-contextmenu-file-download": "파일 내려받기"
 }

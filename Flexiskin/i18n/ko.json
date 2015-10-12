@@ -3,13 +3,14 @@
 		"authors": [
 			"SeoJeongHo",
 			"아라",
-			"Hwangjy9"
+			"Hwangjy9",
+			"Yearning"
 		]
 	},
 	"bs-flexiskin-label": "스킨",
 	"bs-flexiskin-defaultname": "기본값",
 	"prefs-flexiskin": "스킨",
-	"bs-flexiskin-pref-active": "활성화된 스킨:",
+	"bs-flexiskin-pref-active": "사용중인 스킨:",
 	"bs-flexiskin-pref-logo": "로고:",
 	"bs-flexiskin-labelname": "이름",
 	"bs-flexiskin-labeldesc": "설명",
