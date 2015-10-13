@@ -7,7 +7,8 @@
 			"Smuggli",
 			"Shirayuki",
 			"Lokal Profil",
-			"Nemo bis"
+			"Nemo bis",
+			"Umherirrender"
 		]
 	},
 	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension\nThe review functionality is really basic. For an existing page, reviewers can be added, which can give a vote in a period of time whether the content is okay or not.",
@@ -73,8 +74,8 @@
 	"action-workflowview": "{{doc-action|workflowview}}",
 	"action-workflowedit": "{{doc-action|workflowedit}}",
 	"action-workflowlist": "{{doc-action|workflowlist}}",
-	"right-workflowview": "{{doc-right|workflowlist}}",
-	"right-workflowedit": "{{doc-right|workflowlist}}",
+	"right-workflowview": "{{doc-right|workflowview}}",
+	"right-workflowedit": "{{doc-right|workflowedit}}",
 	"right-workflowlist": "{{doc-right|workflowlist}}",
 	"bs-review-btnmoveup": "Tooltip for move up\n{{Identical|Move up}}",
 	"bs-review-btnmovedown": "Tooltip for move down\n{{Identical|Move up}}",
