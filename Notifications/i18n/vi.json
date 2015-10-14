@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dinhxuanduyet"
+			"Dinhxuanduyet",
+			"Nguyen Quynh Chau"
 		]
 	},
+	"bs-echo-page-create": "Trang [[:$1]] đã được tạo",
 	"bs-notifications-email-addaccount-subject": "Người dùng $2 {{GENDER:$1|đã được tạo}}"
 }
