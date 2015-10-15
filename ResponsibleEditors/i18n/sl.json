@@ -54,7 +54,7 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Prikaži vse strani",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Izberite imenski prostor",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Ni dodeljena",
-	"log-name-bs-responsibleeditors": "Dnevnik odgovornih urednikov",
-	"log-description-bs-responsibleeditors": "To je dnevnik urednikov odgovornih za strani.",
-	"log-show-hide-bs-responsibleeditors": "$1 dnevnik odgovornih urednikov"
+	"log-name-bs-responsible-editors": "Dnevnik odgovornih urednikov",
+	"log-description-bs-responsible-editors": "To je dnevnik urednikov odgovornih za strani.",
+	"log-show-hide-bs-responsible-editors": "$1 dnevnik odgovornih urednikov"
 }

@@ -54,7 +54,7 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Alle pagina's weergeven",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Selecteer een naamruimte",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Niet toegewezen",
-	"log-name-bs-responsibleeditors": "Verantwoordelijk redactie log",
-	"log-description-bs-responsibleeditors": "Dit is een overzicht van redacteuren verantwoordelijk voor pagina ' s.",
-	"log-show-hide-bs-responsibleeditors": "$1 verantwoordelijk redactie log"
+	"log-name-bs-responsible-editors": "Verantwoordelijk redactie log",
+	"log-description-bs-responsible-editors": "Dit is een overzicht van redacteuren verantwoordelijk voor pagina ' s.",
+	"log-show-hide-bs-responsible-editors": "$1 verantwoordelijk redactie log"
 }
