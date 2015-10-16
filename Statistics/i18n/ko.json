@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-statistics-desc": "BlueSpice의 통계 모듈",
+	"bs-statistics-diagram": "쿼리",
+	"bs-statistics-list": "목록",
+	"bs-statistics-filters": "필터",
+	"bs-statistics-diag-number-of-users": "사용자 수",
+	"bs-statistics-label-name": "이름",
+	"bs-statistics-label-registration": "등록",
+	"bs-statistics-diag-number-of-pages": "문서 수",
+	"bs-statistics-label-page": "문서",
+	"bs-statistics-label-creator": "만든이",
+	"bs-statistics-diag-number-of-edits": "편집 수",
+	"bs-statistics-label-time": "시간",
+	"bs-statistics-filter-category": "분류",
+	"bs-statistics-portlet-numberofusers": "사용자 수",
+	"bs-statistics-portlet-numberofedits": "편집 수",
+	"bs-statistics-portlet-numberofpages": "문서 수",
+	"bs-statistics-portlet-numberofusersdesc": "사용자 수의 통계입니다.",
+	"bs-statistics-portlet-numberofeditsdesc": "편집 수의 통계입니다.",
+	"bs-statistics-portlet-numberofpagesdesc": "문서 수의 통계입니다.",
+	"bs-statistics-portletconfig-periodday": "어제"
+}
