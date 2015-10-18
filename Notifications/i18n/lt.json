@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zygimantus"
+		]
+	},
+	"bs-echo-page-create": "Puslapis [[:$1]] buvo sukurtas"
+}
