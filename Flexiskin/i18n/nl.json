@@ -14,7 +14,7 @@
 	"bs-flexiskin-defaultdesc": "Standaard vormgevingssjabloon.",
 	"bs-flexiskin-error-skinexists": "Een huid met deze naam bestaat al.",
 	"bs-flexiskin-error-fail-add-skin": "Een huid kan niet worden gemaakt: $1.",
-	"bs-flexiskin-reset-error": "Kon niet reset configuratie: $1.",
+	"bs-flexiskin-reset-error": "De instellingen konden niet gewist worden: $1.",
 	"bs-flexiskin-error-get-config": "Kon niet geladen configuratie: $1.",
 	"bs-flexiskin-error-delete-skin": "Kan niet verwijderen van de huid: $1.",
 	"bs-flexiskin-not-allowed": "De toegang tot deze pagina is niet toegestaan.",

@@ -32,6 +32,6 @@
 	"bs-blog-pref-imagefloatdirection": "Tekstomloop: Positie afbeelding",
 	"bs-blog-pref-maxentrycharacters": "Aantal woorden per artikel:",
 	"bs-blog-tag-blog-desc": "Blogartikelen weergeven op elke pagina.",
-	"bs-blog-tag-blogtime-desc": "Deze tag geeft u de mogelijkheid om een aangepaste tijdstempel voor de blog-entries.",
+	"bs-blog-tag-blogtime-desc": "Dit label biedt de mogelijkheid om een aangepaste tijdstempel in te stellen voor blogberichten.",
 	"bs-blog-tag-blogtime-err": "Het formaat te worden YYYYMMDDHHmm d.w.z. voor 12. Jan. 2013 15:43 de tijdstempels eruit ziet: 201301121543"
 }

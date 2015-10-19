@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-checklist-desc": "Biedt checklist functionaliteit",
@@ -25,5 +26,7 @@
 	"bs-checklist-dlg-new-prompt": "Geef een titel lijst",
 	"bs-checklist-alert": "Let op!",
 	"bs-checklist-confirm-dirty-title": "Niet-opgeslagen wijzigingen!",
-	"bs-checklist-confirm-dirty-text": "U aanpassingen aan de checklist die zijn nog niet opgeslagen. Weet u zeker dat u wilt om de wijzigingen te negeren?"
+	"bs-checklist-confirm-dirty-text": "U aanpassingen aan de checklist die zijn nog niet opgeslagen. Weet u zeker dat u wilt om de wijzigingen te negeren?",
+	"log-name-bs-checklist": "Logboek vinkvakjes",
+	"log-show-hide-bs-checklist": "Logboek vinkvakjes $1"
 }

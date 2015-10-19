@@ -65,7 +65,7 @@
 	"bs-extendedsearch-pref-highlightsnippets": "Aantal hoogtepunt fragmenten:",
 	"bs-extendedsearch-pref-indexfiletypes": "Index-bestanden met bepaalde extensies:",
 	"bs-extendedsearch-pref-logging": "Statistische evaluatie van zoekopdrachten",
-	"bs-extendedsearch-pref-logusers": "Log gebruikersnaam met zoekopdrachten",
+	"bs-extendedsearch-pref-logusers": "Gebruikersnaam in logboek met zoekopdrachten opnemen",
 	"bs-extendedsearch-pref-solrpingtime": "Ping tijd (in seconden):",
 	"bs-extendedsearch-pref-showcresuginac": "Toon maken en suggereer koppelingen in suggesties",
 	"bs-extendedsearch-pref-solrserviceurl": "Solr URL:",

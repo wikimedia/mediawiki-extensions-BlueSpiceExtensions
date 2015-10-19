@@ -7,7 +7,7 @@
 			"Esketti"
 		]
 	},
-	"bs-insertmagic-desc": "Voegt u een dialoogvenster voor het bewerken mode die toestaat om de invoeging van magische woorden en tags",
+	"bs-insertmagic-desc": "Voegt een dialoogvenster toe voor het bewerken en toevoegen van magische woorden en labels",
 	"bs-insertmagic": "Magisch woord toevoegen",
 	"bs-insertmagic-notoc": "Inhoudsopgave verbergen.",
 	"bs-insertmagic-forcetoc": "Dwingt de inhoudsopgave weergegeven in de normale positie.",
@@ -56,15 +56,15 @@
 	"bs-insertmagic-revisionuser": "De gebruikersnaam van de gebruiker die de meest recente wijziging van de pagina, of de huidige gebruiker bij het bekijken van een verandering.",
 	"bs-insertmagic-displaytitle": "Formaat van de huidige pagina ' s titel kop.",
 	"bs-insertmagic-defaultsort": "Gebruikt voor het categoriseren van pagina ' s, stelt een default category sort-toets.",
-	"bs-insertmagic-gallery": "Een galerij maken van miniaturen met de <code><gallery></code> - tag.",
+	"bs-insertmagic-gallery": "Maak een galerij van miniaturen met het label <code>&lt;gallery&gt;</code>.",
 	"bs-insertmagic-nowiki": "Ontsnappen wiki-opmaak.",
 	"bs-insertmagic-noinclude": "Alles wat tussen <code><noinclude></code> en <code></noinclude></code> wordt verwerkt en verschijnt alleen als de pagina wordt direct bekeken, het zal niet worden opgenomen of worden vervangen.",
 	"bs-insertmagic-includeonly": "De converse is <code><includeonly></code>.",
-	"bs-insertmagic-dlg-title": "Plaats magic word-of-tag",
-	"bs-insertmagic-type-tags": "Tags",
+	"bs-insertmagic-dlg-title": "Magisch woord of label toevoegen",
+	"bs-insertmagic-type-tags": "Labels",
 	"bs-insertmagic-type-variables": "Variabelen",
 	"bs-insertmagic-type-switches": "Gedrag schakelaars",
-	"bs-insertmagic-label-first": "1. Kies tag of magic word",
+	"bs-insertmagic-label-first": "1. Kies een label of magisch woord",
 	"bs-insertmagic-label-second": "2. Wijzig code",
 	"bs-insertmagic-label-desc": "Beschrijving"
 }

@@ -33,5 +33,7 @@
 	"bs-namespacemanager-deletewarning": "Bent u zeker dat u wilt verwijderen deze naamruimte? Het verwijderen van een naamruimte kan niet ongedaan worden gemaakt.",
 	"bs-namespacemanager-pagepresent": "Pagina ' s in deze naamruimte:",
 	"bs-namespacemanager-deletens-movepages": "Deze pagina is verplaatst van de naamruimte \"$1\" naamruimte \"{{int:bs-ns_main}}\", omdat de naamruimte \"$1\" is verwijderd.",
-	"bs-namespacemanager-deletens-deletepages": "Deze pagina is verwijderd, omdat de naamruimte \"$1\" is verwijderd."
+	"bs-namespacemanager-deletens-deletepages": "Deze pagina is verwijderd, omdat de naamruimte \"$1\" is verwijderd.",
+	"log-name-bs-namespace-manager": "Logboek naamruimtebeheer",
+	"log-show-hide-bs-namespace-manager": "Logboek naamruimtebeheer $1"
 }

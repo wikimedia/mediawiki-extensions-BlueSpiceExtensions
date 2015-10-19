@@ -3,11 +3,12 @@
 		"authors": [
 			"SPQRobin",
 			"Esketti",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"bs-whoisonline-desc": "Geeft een lijst weer met gebruikers die nu online zijn",
-	"bs-whoisonline-nousers": "Niemand is ingelogd.",
+	"bs-whoisonline-nousers": "Niemand is aangemeld.",
 	"bs-whoisonline-widget-title": "Wie is er online?",
 	"prefs-whoisonline": "Wie is er online?",
 	"bs-whoisonline-pref-limitcount": "Maximumaantal gebruikers om weer te geven:",
@@ -16,6 +17,6 @@
 	"bs-whoisonline-pref-orderby-time": "Uptime",
 	"bs-whoisonline-pref-orderby-name": "Naam",
 	"bs-whoisonline-pref-interval": "Tijd tussen bijwerkingen in seconden:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Geeft het aantal weer van de gebruikers die nu zijn ingelogd.",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Geeft het aantal aangemelde gebruikers weer.",
 	"bs-whoisonline-tag-whoisonlinepopup-desc": "Geeft een opklapbaar lijstje weer met de momenteel ingelogde gebruikers.\n\nMogelijke parameters:\n;<code>anchortext</code>: De tekst waaraan het lijstje moet worden verankerd."
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-universalexport-desc": "Laat MediaWiki te exporteren pagina ' s naar verschillende formaten",
@@ -19,8 +20,8 @@
 	"bs-universalexport-tag-exclude-text": "Deze tekst zal niet worden geëxporteerd.",
 	"bs-universalexport-tag-hidetitle-text": "De titel van deze pagina wordt niet zichtbaar in de uitvoer.",
 	"bs-universalexport-tag-excludearticle-text": "Deze pagina kan niet worden geëxporteerd.",
-	"bs-universalexport-tag-pagebreak-desc": "Als dit wordt ondersteund door de gekozen export module, deze tag zorgt ervoor dat een pagina-einde in het geëxporteerde document.",
-	"bs-universalexport-tag-noexport-desc": "De inhoud van deze tag zal niet worden geëxporteerd.",
+	"bs-universalexport-tag-pagebreak-desc": "Als ondersteund door de gekozen exportmodule, dan forceert dit label een nieuwe pagina in het exportdocument.",
+	"bs-universalexport-tag-noexport-desc": "Inhoud binnen dit label wordt niet geëxporteerd.",
 	"bs-universalexport-tag-meta-desc": "Toe te voegen willekeurige meta gegevens aan een geëxporteerde document.",
 	"bs-universalexport-tag-params-desc": "Laat u toe om speciale parameters voor de export, of de parameter zal worden beoordeeld, is afhankelijk van het gekozen export module.",
 	"bs-universalexport-error-requested-export-module-not-found": "De gevraagde formaat niet konden worden geproduceerd.",

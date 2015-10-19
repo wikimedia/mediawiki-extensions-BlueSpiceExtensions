@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-pageaccess-desc": "Regelt de toegang op pagina niveau",
@@ -9,5 +10,7 @@
 	"bs-pageaccess-error-not-member-of-given-groups": "U bent geen lid van de gegeven groepen. Om te voorkomen dat u het vergrendelen van jezelf, het opslaan is uitgeschakeld.",
 	"bs-pageaccess-error-included-forbidden-template": "U hebt geprobeerd het gebruik van de sjabloon \"$1\" waar u het niet gelezen hebben toegang. Om te voorkomen dat u het vergrendelen van jezelf, het opslaan is uitgeschakeld.",
 	"bs-pageaccess-tag-groups-desc": "Geef de groepen die hebben exclusieve toegang tot deze pagina. Meerdere groepen kunnen worden gescheiden door komma ' s.",
-	"pageaccess": "Pagina ' s zijn beveiligd door PageAccess"
+	"pageaccess": "Pagina ' s zijn beveiligd door PageAccess",
+	"log-name-bs-pageaccess": "Paginatoegangslogboek",
+	"log-show-hide-bs-pageaccess": "Paginatoegangslogboek $1"
 }
