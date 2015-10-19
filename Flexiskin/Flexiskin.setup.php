@@ -18,9 +18,6 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'styles' => array(
 		'extensions/BlueSpiceExtensions/Flexiskin/resources/bluespice.flexiskin.css',
 	),
-	'dependencies' => array(
-		'ext.bluespice.extjs'
-	),
 	'messages' => array(
 		'bs-flexiskin-labelname',
 		'bs-flexiskin-labeldesc',
