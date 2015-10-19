@@ -13,8 +13,6 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.checklist'] = array(
 	'scripts' => array(
-		'BS.Checklist/Checklist.js',
-		'BS.Checklist/ChecklistBoxSelect.js',
 		'bluespice.checklist.js',
 	),
 	'messages' => array(
