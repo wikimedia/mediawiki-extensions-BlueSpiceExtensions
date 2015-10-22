@@ -22,16 +22,18 @@ onFileDialogCancel = function() {
 $(document).ready(function() {
 	$('#bs-editbutton-insertlink').on('click', function() {
 		var me = this;
-		Ext.require('BS.InsertLink.Window', function() {
-			BS.InsertLink.Window.resetData();
-			BS.InsertLink.Window.clearListeners();
-			BS.InsertLink.Window.on('ok', BsInsertLinkWikiTextConnector.applyData, this);
-			BS.InsertLink.Window.on('cancel', bs.util.selection.reset);
-			BsInsertLinkWikiTextConnector.getData();
-			BS.InsertLink.Window.setData(
-				BsInsertLinkWikiTextConnector.getData()
-			);
-			BS.InsertLink.Window.show(me);
+		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+			Ext.require('BS.InsertLink.Window', function() {
+				BS.InsertLink.Window.resetData();
+				BS.InsertLink.Window.clearListeners();
+				BS.InsertLink.Window.on('ok', BsInsertLinkWikiTextConnector.applyData, this);
+				BS.InsertLink.Window.on('cancel', bs.util.selection.reset);
+				BsInsertLinkWikiTextConnector.getData();
+				BS.InsertLink.Window.setData(
+					BsInsertLinkWikiTextConnector.getData()
+				);
+				BS.InsertLink.Window.show(me);
+			});
 		});
 	});
 });
@@ -86,16 +88,18 @@ $(document).bind('BsVisualEditorActionsInit', function(event, plugin, buttons, c
 		commandId: 'mceBsLink',
 		commandCallback: function() {
 			var editor = tinyMCE.activeEditor;
-
-			Ext.require('BS.InsertLink.Window', function() {
-				BS.InsertLink.Window.clearListeners();
-				BS.InsertLink.Window.on('ok', BsInsertLinkVisualEditorConnector.applyData, this, plugin, editor);
-				BS.InsertLink.Window.resetData();
-				BS.InsertLink.Window.setData(
-						BsInsertLinkVisualEditorConnector.getData(plugin, editor)
-						);
-				BS.InsertLink.Window.show('bslink');
-			}, this);
+			var me = this;
+			mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+				Ext.require('BS.InsertLink.Window', function() {
+					BS.InsertLink.Window.clearListeners();
+					BS.InsertLink.Window.on('ok', BsInsertLinkVisualEditorConnector.applyData, this, plugin, editor);
+					BS.InsertLink.Window.resetData();
+					BS.InsertLink.Window.setData(
+							BsInsertLinkVisualEditorConnector.getData(plugin, editor)
+							);
+					BS.InsertLink.Window.show('bslink');
+				}, me);
+			});
 		}
 	});
 });

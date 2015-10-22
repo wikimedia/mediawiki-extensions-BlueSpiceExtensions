@@ -9,7 +9,6 @@ $wgExtensionMessagesFiles['InterWikiLinks'] = __DIR__ . '/languages/InterWikiLin
 
 $wgResourceModules['ext.bluespice.interWikiLinks'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/InterWikiLinks/resources/bluespice.interWikiLinks.js',
-	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
 		'bs-interwikilinks-headerprefix',
 		'bs-interwikilinks-headerurl',
@@ -25,7 +24,6 @@ $wgResourceModules['ext.bluespice.interWikiLinks'] = array(
 );
 $wgResourceModules['bluespice.insertLink.interWikiLinks'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/InterWikiLinks/resources/bluespice.insertLink.interWikiLinks.js',
-	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
 		'bs-interwikilinks-insertlink-tabtitle',
 		'bs-interwikilinks-insertlink-labelprefix',

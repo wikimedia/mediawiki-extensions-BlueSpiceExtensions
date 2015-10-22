@@ -30,17 +30,19 @@ $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons,
 			events.preventDefault();
 			var me = this;
 
-			Ext.require('BS.InsertCategory.Dialog', function(){
-				BS.InsertCategory.Dialog.clearListeners();
-				BS.InsertCategory.Dialog.on('ok', function(sender, data){
-					if ( BS.InsertCategory.Dialog.isDirty ) {
-						BsInsertCategoryWysiwygEditorHelper.setCategories( data );
-					}
+			mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+				Ext.require('BS.InsertCategory.Dialog', function(){
+					BS.InsertCategory.Dialog.clearListeners();
+					BS.InsertCategory.Dialog.on('ok', function(sender, data){
+						if ( BS.InsertCategory.Dialog.isDirty ) {
+							BsInsertCategoryWysiwygEditorHelper.setCategories( data );
+						}
+					});
+					BS.InsertCategory.Dialog.setData(
+						BsInsertCategoryWysiwygEditorHelper.getCategories()
+					);
+					BS.InsertCategory.Dialog.show( me );
 				});
-				BS.InsertCategory.Dialog.setData(
-					BsInsertCategoryWysiwygEditorHelper.getCategories()
-				);
-				BS.InsertCategory.Dialog.show( me );
 			});
 		}
 	});
@@ -52,18 +54,20 @@ $(document).ready(function() {
 	$('#ca-insert_category').find('a').on( 'click', function( e ) {
 		e.preventDefault();
 		var me = this;
-		Ext.require('BS.InsertCategory.Dialog', function(){
-			BS.InsertCategory.Dialog.clearListeners();
-			BS.InsertCategory.Dialog.on( 'ok', function ( sender, data ) {
-				if ( BS.InsertCategory.Dialog.isDirty ) {
-					BsInsertCategoryViewHelper.setCategories( data );
-					return false;
-				}
-			} );
-			BS.InsertCategory.Dialog.setData(
-				BsInsertCategoryViewHelper.getCategories()
-			);
-			BS.InsertCategory.Dialog.show( me );
+		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+			Ext.require('BS.InsertCategory.Dialog', function(){
+				BS.InsertCategory.Dialog.clearListeners();
+				BS.InsertCategory.Dialog.on( 'ok', function ( sender, data ) {
+					if ( BS.InsertCategory.Dialog.isDirty ) {
+						BsInsertCategoryViewHelper.setCategories( data );
+						return false;
+					}
+				} );
+				BS.InsertCategory.Dialog.setData(
+					BsInsertCategoryViewHelper.getCategories()
+				);
+				BS.InsertCategory.Dialog.show( me );
+			});
 		});
 	});
 
@@ -71,18 +75,19 @@ $(document).ready(function() {
 	$('#bs-editbutton-insertcategory').on( 'click', function( e ) {
 		e.preventDefault();
 		var me = this;
-
-		Ext.require('BS.InsertCategory.Dialog', function(){
-			BS.InsertCategory.Dialog.clearListeners();
-			BS.InsertCategory.Dialog.on('ok', function(sender, data){
-				if ( BS.InsertCategory.Dialog.isDirty ) {
-					BsInsertCategoryWikiEditorHelper.setCategories( data );
-				}
+		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+			Ext.require('BS.InsertCategory.Dialog', function(){
+				BS.InsertCategory.Dialog.clearListeners();
+				BS.InsertCategory.Dialog.on('ok', function(sender, data){
+					if ( BS.InsertCategory.Dialog.isDirty ) {
+						BsInsertCategoryWikiEditorHelper.setCategories( data );
+					}
+				});
+				BS.InsertCategory.Dialog.setData(
+					BsInsertCategoryWikiEditorHelper.getCategories()
+				);
+				BS.InsertCategory.Dialog.show( me );
 			});
-			BS.InsertCategory.Dialog.setData(
-				BsInsertCategoryWikiEditorHelper.getCategories()
-			);
-			BS.InsertCategory.Dialog.show( me );
 		});
 	});
 
@@ -95,21 +100,23 @@ var BsInsertCategoryViewHelper = {
 	},
 
 	setCategories: function( categories ) {
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl( 'InsertCategory::addCategoriesToArticle', [ mw.config.get( "wgArticleId" ) ] ),
-			success: function( response, opts ) {
-				var obj = Ext.decode(response.responseText);
-				if ( obj.success ) {
-					bs.util.alert( 'ICsuc', { textMsg: 'bs-insertcategory-success', titleMsg: 'bs-extjs-title-success' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesOk } );
-				} else {
-					bs.util.alert( 'ICsuc', { textMsg: obj.msg, titleMsg: 'bs-extjs-title-warning' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesFailure } );
+		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+			Ext.Ajax.request({
+				url: bs.util.getAjaxDispatcherUrl( 'InsertCategory::addCategoriesToArticle', [ mw.config.get( "wgArticleId" ) ] ),
+				success: function( response, opts ) {
+					var obj = Ext.decode(response.responseText);
+					if ( obj.success ) {
+						bs.util.alert( 'ICsuc', { textMsg: 'bs-insertcategory-success', titleMsg: 'bs-extjs-title-success' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesOk } );
+					} else {
+						bs.util.alert( 'ICsuc', { textMsg: obj.msg, titleMsg: 'bs-extjs-title-warning' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesFailure } );
+					}
+				},
+				failure: function() {},
+				params: {
+					page_name: mw.config.get( "wgPageName" ),
+					categories: categories.join(',')
 				}
-			},
-			failure: function() {},
-			params: {
-				page_name: mw.config.get( "wgPageName" ),
-				categories: categories.join(',')
-			}
+			});
 		});
 	},
 	onSetCategoriesOk: function () {

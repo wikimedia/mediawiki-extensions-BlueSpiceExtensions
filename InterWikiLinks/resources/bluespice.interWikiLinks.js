@@ -9,13 +9,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
- 
+
  /* Changelog
   * v0.1
   * - initial commit
   */
- 
 
-Ext.create( 'BS.InterWikiLinks.Panel', {
-	renderTo: 'InterWikiLinksGrid'
-} );
+mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+	Ext.create( 'BS.InterWikiLinks.Panel', {
+		renderTo: 'InterWikiLinksGrid'
+	} );
+});

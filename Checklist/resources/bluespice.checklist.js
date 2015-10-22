@@ -272,15 +272,16 @@ $(document).on('BsVisualEditorActionsInit', function(event, plugin, buttons, com
 		onclick: function() {
 			// Open window
 			var me = this;
+			mw.loader.using('ext.bluespice.extjs').done(function() {
+				Ext.require('BS.Checklist.Window', function(){
+					BS.Checklist.Window.on('ok', function(sender, data){
+						BsChecklist.lastCommand = 'mceBsSelectbox';
+						BsChecklist.lastCommandKey = data;
+						ed.execCommand('mceBsSelectbox', false, data);
 
-			Ext.require('BS.Checklist.Window', function(){
-				BS.Checklist.Window.on('ok', function(sender, data){
-					BsChecklist.lastCommand = 'mceBsSelectbox';
-					BsChecklist.lastCommandKey = data;
-					ed.execCommand('mceBsSelectbox', false, data);
-
+					});
+					BS.Checklist.Window.show( me );
 				});
-				BS.Checklist.Window.show( me );
 			});
 		}
 	});
