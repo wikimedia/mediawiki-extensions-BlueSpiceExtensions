@@ -3,7 +3,8 @@
 		"authors": [
 			"Sjoerddebruin",
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-wantedarticle-desc": "Een pagina aan een lijst met gewenste pagina's toevoegen",
@@ -18,7 +19,7 @@
 	"bs-wantedarticle-page-removed": "De pagina \"$1\" is verwijderd.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Voorstellen",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Aanmaken",
-	"bs-wantedarticle-single-textfield-defaulttext": "Paginatitel",
+	"bs-wantedarticle-single-textfield-defaulttext": "Paginanaam",
 	"bs-wantedarticle-tag-wantedarticle-desc": "Maakt een lijst van gevraagde pagina ' s. Beschikbare configuratie-eigenschappen:",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>tellen</code>: Aantal pagina ' s weer te geven.",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>titel</code>: Headline.",
@@ -35,11 +36,11 @@
 	"bs-wantedarticle-pref-sort": "Sorteren op:",
 	"bs-wantedarticle-pref-order": "Orde",
 	"bs-wantedarticle-pref-sort-time": "Tijd",
-	"bs-wantedarticle-pref-sort-title": "Titel",
+	"bs-wantedarticle-pref-sort-title": "Naam",
 	"bs-wantedarticle-pref-order-asc": "Oplopend",
 	"bs-wantedarticle-pref-order-desc": "Aflopend",
 	"bs-wantedarticle-create-page": "Maak de pagina \"$1\".",
 	"bs-wantedarticle-suggest-page": "Stel voor de pagina \"$1\".",
-	"bs-wantedarticle-info-nothing-entered": "Vul een geldige paginatitel in",
+	"bs-wantedarticle-info-nothing-entered": "Geef een geldig paginanaam op.",
 	"bs-wantedarticle-title-invalid-chars": "De volgende {{PLURAL:$1|karakter|karakters}} is niet geldig voor gebruik op een pagina titel: $2"
 }

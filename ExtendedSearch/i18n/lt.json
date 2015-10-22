@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Zygimantus"
 		]
 	},
 	"specialextendedsearch": "Išplėstinė paieška",
@@ -16,5 +17,6 @@
 	"bs-extendedsearch-facet-uncategorized": "Ne kategorijoje",
 	"bs-extendedsearch-facet-namespace-extfiles": "Išoriniai failai",
 	"bs-extendedsearch-files": "Ieškoti failų",
-	"bs-extendedsearch-finished": "Baigta"
+	"bs-extendedsearch-finished": "Baigta",
+	"bs-extendedsearch-pref-externalrepo-url": "URL išorinei direktorijai:"
 }

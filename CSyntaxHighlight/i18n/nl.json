@@ -6,10 +6,10 @@
 			"Esketti"
 		]
 	},
-	"bs-csyntaxhighlight-desc": "Voegt aanpasbare syntax highlighting functionaliteit",
+	"bs-csyntaxhighlight-desc": "Voegt aanpasbare accentueringsfunctionaliteit toe",
 	"prefs-csyntaxhighlight": "Syntaxhighlighter",
 	"bs-csyntaxhighlight-pref-theme": "Vormgeving:",
 	"bs-csyntaxhighlight-pref-gutter": "Regelnummers weergeven",
-	"bs-csyntaxhighlight-pref-autolinks": "Link-Urls",
+	"bs-csyntaxhighlight-pref-autolinks": "Koppeling-URL's",
 	"bs-csyntaxhighlight-pref-toolbar": "Werkbalk weergeven"
 }

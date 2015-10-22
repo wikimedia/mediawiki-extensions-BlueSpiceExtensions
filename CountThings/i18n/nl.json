@@ -3,18 +3,19 @@
 		"authors": [
 			"Sjoerddebruin",
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
-	"bs-countthings-desc": "Biedt content-based statistieken",
+	"bs-countthings-desc": "Biedt inhoudgebaseerde statistieken",
 	"bs-countthings-chars-label": "Karakters",
 	"bs-countthings-words-label": "Woorden",
 	"bs-countthings-pages-label": "Pagina's",
 	"bs-countthings-error-no-input": "Geen pagina opgegeven.",
-	"bs-countthings-error-invalid-mode": "De modus \"$1'is ongeldig. Gebruik de \"tekens\", \"woorden\", of \"pagina ' s\".",
+	"bs-countthings-error-invalid-mode": "De modus \"$1\" is ongeldig. Gebruik de \"chars\", \"words\", of \"pages\".",
 	"bs-countthings-error-not-exist": "De pagina \"$1\" bestaat niet.",
 	"bs-countthings-tag-countarticles-desc": "Geeft het aantal pagina's weer.",
 	"bs-countthings-tag-countusers-desc": "Geeft het aantal gebruikers weer.",
-	"bs-countthings-tag-countcharacters-desc": "Geeft statistieken van de pagina inhoud. Beschikbare configuratie-eigenschap:",
-	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>modus</code>: Wat moet worden geteld <code>tekens</code> (tekens), <code>woorden</code> (woorden) of <code>pagina 's</code> (pagina' s)."
+	"bs-countthings-tag-countcharacters-desc": "Geeft statistieken weer over een gegeven pagina. Beschikbare eigenschap:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: wat moet worden geteld <code>chars</code> (tekens), <code>words</code> (woorden) or <code>pages</code> (pagina's)."
 }

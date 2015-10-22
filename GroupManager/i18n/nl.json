@@ -21,7 +21,7 @@
 	"bs-groupmanager-titlenewgroup": "Nieuwe groep",
 	"bs-groupmanager-titleeditgroup": "Groep bewerken",
 	"bs-groupmanager-removegroup": "Weet u zeker dat u deze {{PLURAL:$1|groep|groepen}} wilt verwijderen?",
-	"bs-groupmanager-removegroup-message-success": "De volgende {{PLURAL:$1|groep werd|groepen werden}} verwijderd: $2",
+	"bs-groupmanager-removegroup-message-success": "De volgende {{PLURAL:$1|groep is|groepen zijn}} verwijderd: $2",
 	"bs-groupmanager-removegroup-message-failure": "De volgende {{PLURAL:$1|groep kon|groepen konden}} niet worden verwijderd: $2",
 	"bs-groupmanager-removegroup-message-unknown": "Er is een onverwachte fout opgetreden, probeer het a.u.b. opnieuw.",
 	"bs-groupmanager-lablename": "Groepsnaam:",

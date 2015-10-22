@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aursani"
+		]
+	},
+	"bs-echo-page-create": "صفحو بعنوان [[$1]] سرجيو ويو."
+}

@@ -14,7 +14,7 @@
 	"bs-echo-anon-user": "anoniem",
 	"bs-echo-unknown-user": "onbekend",
 	"bs-echo-page-edit": "De pagina [[:$1]] is gewijzigd",
-	"bs-echo-page-create": "De pagina [[:$1]] is gemaakt",
+	"bs-echo-page-create": "De pagina [[:$1]] is aangemaakt",
 	"bs-echo-page-delete": "De pagina [[:$1]] is verwijderd",
 	"bs-echo-page-move": "De pagina [[:$1]] is verplaatst",
 	"bs-echo-page-newuser": "De gebruiker $1 is aangemaakt.",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Swidmann",
-			"Metalhead64"
+			"Metalhead64",
+			"J. 'mach' wust"
 		]
 	},
 	"bs-notifications-desc": "Sendet eine Benachrichtigung bei Änderungen",
@@ -28,7 +29,7 @@
 	"bs-notifications-email-delete-subject": "Seite $1 wurde von $3 {{GENDER:$2|gelöscht}}",
 	"bs-notifications-email-delete": "Die Seite \"$4\" wurde von $5 {{GENDER:$2|gelöscht}}.\n\nAls Grund wurde angegeben:\n$3\n\nDu kannst die Seite über diese URL aufrufen:\n$4",
 	"bs-notifications-email-addaccount-subject": "Benutzer $2 wurde neu {{GENDER:$1|angelegt}}",
-	"bs-notifications-email-addaccount": "{{GENDER:$2|Der Benutzer|Die Benutzerin}} $3 wurde erstellt.\n\nDu kannst {{GENDER:$2|seine|ihre|die}} Benutzerseite durch das Folgen dieses Links besuchen:\n$1",
+	"bs-notifications-email-addaccount": "{{GENDER:$2|Der Benutzer|Die Benutzerin}} $3 wurde erstellt.\n\nDu kannst {{GENDER:$2|seine|ihre}} Benutzerseite durch das Folgen dieses Links besuchen:\n$1",
 	"bs-notifications-email-shout-subject": "$3 hat auf der Seite $1 eine Nachricht {{GENDER:$2|hinterlassen}}",
 	"bs-notifications-email-shout": "$5 hat auf der Seite \"$1\" eine Nachricht {{GENDER:$2|hinterlassen}}.\n\nNachricht:\n$3\n\nDu kannst die Seite über diese URL aufrufen:\n$4",
 	"echo-category-title-bs-create-cat": "Benachrichtigung bei neuen Seiten",

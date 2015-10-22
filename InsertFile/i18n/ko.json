@@ -18,5 +18,5 @@
 	"bs-insertfile-typeborder": "테두리",
 	"bs-insertfile-uploadsubmitvalue": "파일 올리기",
 	"bs-insertfile-uploadcomplete": "파일을 성공적으로 저장했습니다.",
-	"bs-insertfile-upload-waitmessage": "파일 올리기 진행 중 ..."
+	"bs-insertfile-upload-waitmessage": "파일을 올리는 중 ..."
 }

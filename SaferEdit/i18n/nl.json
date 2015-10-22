@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-saferedit-desc": "Tussentijdse het opslaan van wiki bewerkingen",
@@ -13,7 +14,7 @@
 	"bs-saferedit-user-editing": "$1 is {{GENDER:$1|bewerking}} van de pagina",
 	"bs-saferedit-someone-editing": "De pagina wordt bewerkt",
 	"bs-saferedit-pref-interval": "Recovery versie interval:",
-	"bs-saferedit-pref-shownameofeditinguser": "Toon de naam van de huidige editor",
+	"bs-saferedit-pref-shownameofeditinguser": "Naam van de huidige bewerker weergeven",
 	"bs-saferedit-pref-warnonleave": "Waarschuwen als u een bewerkte pagina wilt verlaten die nog niet is opgeslagen",
 	"bs-saferedit-pref-usese": "Activeren veiliger bewerken",
 	"bs-saferedit-statebartopsaferedit": "Veiliger bewerken",

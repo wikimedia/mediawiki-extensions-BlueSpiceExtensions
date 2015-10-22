@@ -12,7 +12,7 @@
 	"readers-user": "Pagina's {{GENDER:$1|gelezen}} door: $1",
 	"readers": "Lezers van \"$1\"",
 	"bs-readers-contentactions-label": "Lezers weergeven",
-	"bs-readers-pagenotexists": "Pagina bestaat niet.",
+	"bs-readers-pagenotexists": "De pagina bestaat niet.",
 	"bs-readers-pref-active": "Lezers activeren",
 	"bs-readers-pref-numofreaders": "Aantal weer te geven lezers:",
 	"bs-readers-emptyinput": "Er is geen pagina opgegeven.",

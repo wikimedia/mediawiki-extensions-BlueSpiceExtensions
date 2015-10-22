@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-insertlink-desc": "Dialogruta för att ange en länk",
+	"prefs-insertlink": "Infoga länk",
 	"bs-insertlink": "Infoga länk",
+	"bs-insertlink-pref-enable-java": "Aktivera Java-applet",
 	"bs-insertlink-button-title": "Infoga/redigera länk",
 	"bs-insertlink-dialog-title": "Infoga länk",
 	"bs-insertlink-tab-wiki-page": "Wiki-sida",

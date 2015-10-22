@@ -41,6 +41,7 @@
 	"bs-extendedsearch-pref-indextypeswiki": "Indeksowanie stron wiki",
 	"bs-extendedsearch-pref-indextypesspecial": "Indeksowanie stron specjalnych",
 	"bs-extendedsearch-pref-limitresultdef": "Liczba wyników na stronie specjalnej:",
+	"bs-extendedsearch-pref-externalrepo-url": "Adres URL katalogu zewnętrznego:",
 	"bs-extendedsearch-pref-showmlt": "Pokaż podobne strony",
 	"bs-extendedsearch-about-to-start": "Trwa uruchamianie...",
 	"bs-extendedsearch-index-successfully-deleted": "Indeks został usunięty.",
