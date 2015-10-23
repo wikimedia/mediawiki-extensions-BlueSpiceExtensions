@@ -59,6 +59,7 @@
 	"bs-extendedsearch-pref-showfacets": "在特殊页面显示方面",
 	"bs-extendedsearch-pref-showautocomplete": "建议页面匹配搜索关键词",
 	"bs-extendedsearch-pref-externalrepo": "索引外部目录：",
+	"bs-extendedsearch-pref-externalrepo-url": "外部目录的URL：",
 	"bs-extendedsearch-pref-acentries": "匹配搜索关键词的建议数：",
 	"bs-extendedsearch-pref-highlightsnippets": "突出片段数：",
 	"bs-extendedsearch-pref-indexfiletypes": "索引如下扩展名的文件：",

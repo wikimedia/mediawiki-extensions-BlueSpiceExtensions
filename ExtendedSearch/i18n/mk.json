@@ -57,6 +57,7 @@
 	"bs-extendedsearch-pref-showfacets": "Прикажувај аспекти во службена страница",
 	"bs-extendedsearch-pref-showautocomplete": "Предлагај страници што одговараат на бараното",
 	"bs-extendedsearch-pref-externalrepo": "Индексирај надворешна папка:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL за надворешна папка:",
 	"bs-extendedsearch-pref-acentries": "Број на предлози за пребараното:",
 	"bs-extendedsearch-pref-highlightsnippets": "Број на нагласени извадоци:",
 	"bs-extendedsearch-pref-indexfiletypes": "Индексирај податотеки со извесни наставки:",
