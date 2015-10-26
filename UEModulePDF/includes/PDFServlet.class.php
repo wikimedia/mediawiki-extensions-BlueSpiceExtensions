@@ -46,7 +46,7 @@ class BsPDFServlet {
 				'fileType' => '', //Need to stay empty so UploadAsset servlet saves file to document root directory
 				'documentToken' => $this->aParams['document-token'],
 				'sourceHtmlFile_name' => basename( $sTmpHtmlFile ),
-				'sourceHtmlFile' => '@'.$sTmpHtmlFile,
+				'sourceHtmlFile' => class_exists( 'CURLFile' ) ? new CURLFile( $sTmpHtmlFile ) : '@'.$sTmpHtmlFile,
 				'wikiId' => wfWikiID()
 			)
 		);
@@ -141,7 +141,7 @@ class BsPDFServlet {
 				}
 
 				$aPostFiles['file'.$iCounter.'_name'] = $sFileName;
-				$aPostFiles['file'.$iCounter] = '@'.$sFilePath;
+				$aPostFiles['file'.$iCounter] = class_exists( 'CURLFile' ) ? new CURLFile( $sFilePath ) : '@'.$sFilePath;
 				$iCounter++;
 				$iCurrentUploadSize += $iFileSize;
 			}
