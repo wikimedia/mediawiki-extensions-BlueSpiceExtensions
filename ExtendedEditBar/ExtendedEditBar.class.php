@@ -54,7 +54,7 @@ class ExtendedEditBar extends BsExtensionMW {
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'http://www.blue-spice.org',
+			EXTINFO::URL         => 'https://help.bluespice.com/index.php/ExtendedEditbar',
 			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
 		);
 		$this->mExtensionKey = 'MW::ExtendedEditBar';

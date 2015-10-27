@@ -91,7 +91,7 @@ class CSyntaxHighlight extends BsExtensionMW {
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'http://www.hallowelt.biz',
+			EXTINFO::URL         => 'https://help.bluespice.com/index.php/CSyntaxHighlight',
 			EXTINFO::DEPS        => array(
 										'bluespice' => '2.22.0'
 										)
