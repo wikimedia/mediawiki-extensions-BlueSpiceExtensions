@@ -126,7 +126,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		$oMainPage = Title::newMainPage();
 
 		self::$aNavigationSites[] = array(
-			'id' => 'wiki',
+			'id' => 'nt-wiki',
 			'href' => $oMainPage->getFullURL(),
 			'text' => $wgSitename,
 			'active' => $oCurrentTitle->equals( $oMainPage ),
@@ -204,13 +204,16 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		foreach( self::getNavigationSites() as $aApp ) {
 			$aApp = array_merge(self::$aNavigationSiteTemplate, $aApp);
 			$oMainItem = new ViewTopMenuItem();
-			$oMainItem->setLevel( $aApp['level'] );
-			$oMainItem->setName( $aApp['id'] );
-			$oMainItem->setLink( $aApp['href'] );
-			$oMainItem->setDisplaytitle( $aApp['text'] );
-			$oMainItem->setActive( $aApp['active'] );
-			$oMainItem->setContainsActive( $aApp['containsactive'] );
-			$oMainItem->setExternal( $aApp['external'] );
+			$oMainItem
+				->setName( $aApp['id'] )
+				->setLink( $aApp['href'] )
+				->setLevel( $aApp['level'] )
+				->setActive( $aApp['active'] )
+				->setExternal( $aApp['external'] )
+				->setAnchorID( $aApp['id'] )
+				->setDisplaytitle( $aApp['text'] )
+				->setContainsActive( $aApp['containsactive'] )
+			;
 			if( !empty($aApp['children']) ) {
 				$oMainItem->setChildren( $aApp['children'] );
 			}
