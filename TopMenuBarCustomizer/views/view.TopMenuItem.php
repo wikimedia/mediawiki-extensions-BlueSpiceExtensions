@@ -26,6 +26,11 @@ class ViewTopMenuItem extends ViewBaseElement {
 	 */
 	protected $iLevel = 1;
 	/**
+	 * Item AnchorID
+	 * @var string
+	 */
+	protected $sAnchorID = '';
+	/**
 	 * Name of the item
 	 * @var string
 	 */
@@ -71,65 +76,91 @@ class ViewTopMenuItem extends ViewBaseElement {
 	/**
 	 * Sets the level property
 	 * @param integer $iLevel
+	 * @return ViewTopMenuItem
 	 */
 	public function setLevel( $iLevel ) {
 		$this->iLevel = $iLevel;
+		return $this;
+	}
+
+	/**
+	 * Sets the sAnchorID property
+	 * @param string sAnchorID
+	 * @return ViewTopMenuItem
+	 */
+	public function setAnchorID( $sAnchorID ) {
+		$this->sAnchorID = $sAnchorID;
+		return $this;
 	}
 
 	/**
 	 * Sets the name property
 	 * @param string $sName
+	 * @return ViewTopMenuItem
 	 */
 	public function setName( $sName ) {
 		$this->sName = $sName;
+		return $this;
 	}
 
 	/**
 	 * Sets the display title property
 	 * @param string $sDisplayTitle
+	 * @return ViewTopMenuItem
 	 */
 	public function setDisplaytitle( $sDisplayTitle ) {
 		$this->sDisplayTitle = $sDisplayTitle;
+		return $this;
 	}
 
 	/**
 	 * Sets the Link property
 	 * @param string $sLink
+	 * @return ViewTopMenuItem
 	 */
 	public function setLink( $sLink ) {
 		$this->sLink = $sLink;
+		return $this;
 	}
 
 	/**
 	 * Sets the active property
 	 * @param boolean $bActive
+	 * @return ViewTopMenuItem
 	 */
 	public function setActive( $bActive ) {
 		$this->bActive = $bActive;
+		return $this;
 	}
 
 	/**
 	 * Sets the contains active property
 	 * @param boolean $bContainsActive
+	 * @return ViewTopMenuItem
 	 */
 	public function setContainsActive( $bContainsActive ) {
 		$this->bContainsActive = $bContainsActive;
+		return $this;
 	}
 
 	/**
 	 * Sets the external property
 	 * @param boolean $bExternal
+	 * @return ViewTopMenuItem
 	 */
 	public function setExternal( $bExternal ) {
 		$this->bExternal = $bExternal;
+		return $this;
 	}
 
 	/**
 	 * Sets the children property
 	 * @param boolean $aChildren
+	 * @return ViewTopMenuItem
 	 */
 	public function setChildren( $aChildren ) {
 		$this->aChildren = $aChildren;
+		return $this;
 	}
 
 	/**
@@ -140,26 +171,39 @@ class ViewTopMenuItem extends ViewBaseElement {
 	public function execute( $aParams = false ) {
 		$aClasses = array();
 
-		$aClasses[] = empty($this->aChildren) ? 'menu-item-single' : 'menu-item-container';
+		$aClasses[] = empty( $this->aChildren )
+			? 'menu-item-single'
+			: 'menu-item-container'
+		;
 		$aClasses[] = "level-$this->iLevel";
 		if( $this->bContainsActive) $aClasses[] = 'contains-active';
 		if( $this->bActive) $aClasses[] = 'active';
+		$sClasses = 'class="'.implode(' ', $aClasses).'"';
 
-		$sTitle = $sText = empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle;
+		$sTitle = $sText = empty( $this->sDisplayTitle )
+			? $this->sName
+			: $this->sDisplayTitle
+		;
 		if( wfMessage($sTitle)->exists() ) {
 			$sTitle = $sText = wfMessage($sTitle)->plain();
+		}
+		$sAnchorID = $this->sAnchorID;
+		if( !empty($sAnchorID) ) {
+			$sAnchorID = "id='".Sanitizer::escapeId($sAnchorID)."'";
 		}
 
 		global $wgExternalLinkTarget;
 
 		$sLinkTarget = '';
 		if( $this->bExternal && !empty($wgExternalLinkTarget) ) {
-			$sLinkTarget = 'target="'.$wgExternalLinkTarget.'"';
+			$sLinkTarget = "target='$wgExternalLinkTarget'";
 		}
 
 		$sOut = '';
 		$sOut .= '<li>';
-		$sOut .= "<a href='$this->sLink' class='".implode(' ', $aClasses)."' $sLinkTarget>$sText</a>";
+		$sOut .= "<a href='$this->sLink' $sAnchorID $sClasses $sLinkTarget>";
+		$sOut .= $sText;
+		$sOut .= "</a>";
 		if( !empty($this->aChildren) ) {
 			$sOut .= $this->rederChildItems();
 		}
@@ -171,16 +215,22 @@ class ViewTopMenuItem extends ViewBaseElement {
 		$aOut[] ='<ul class="bs-apps-child level-'.($this->iLevel+1).'">';
 
 		foreach( $this->aChildren as $aApp ) {
-			$aApp = array_merge(TopMenuBarCustomizer::$aNavigationSiteTemplate, $aApp);
+			$aApp = array_merge(
+				TopMenuBarCustomizer::$aNavigationSiteTemplate,
+				$aApp
+			);
 
 			$oItem = new ViewTopMenuItem();
-			$oItem->setLevel( $aApp['level'] );
-			$oItem->setName( $aApp['id'] );
-			$oItem->setLink( $aApp['href'] );
-			$oItem->setActive( $aApp['active'] );
-			$oItem->setExternal( $aApp['external'] );
-			$oItem->setDisplaytitle( $aApp['text'] );
-			$oItem->setContainsActive( $aApp['containsactive'] );
+			$oItem
+				->setName( $aApp['id'] )
+				->setLink( $aApp['href'] )
+				->setLevel( $aApp['level'] )
+				->setActive( $aApp['active'] )
+				->setExternal( $aApp['external'] )
+				->setAnchorID( $aApp['id'] )
+				->setDisplaytitle( $aApp['text'] )
+				->setContainsActive( $aApp['containsactive'] )
+			;
 			if( !empty($aApp['children']) ) {
 				$oItem->setChildren( $aApp['children'] );
 			}
