@@ -31,6 +31,11 @@ class ViewTopMenuItem extends ViewBaseElement {
 	 */
 	protected $sName = '';
 	/**
+	 * AnchorID of the item
+	 * @var string
+	 */
+	protected $sAnchorID = '';
+	/**
 	 * Displayname of the item
 	 * @var string
 	 */
@@ -60,6 +65,13 @@ class ViewTopMenuItem extends ViewBaseElement {
 	 * @var array
 	 */
 	protected $aChildren = array();
+	/**
+	 * Sets the AnchorID property
+	 * @param string $sAnchorID
+	 */
+	public function setAnchorID( $sAnchorID ) {
+		$this->sAnchorID = $sAnchorID;
+	}
 
 	/**
 	 * Constructor
@@ -147,9 +159,14 @@ class ViewTopMenuItem extends ViewBaseElement {
 		$sLinkTarget = '';
 		if( $this->bExternal && !empty($wgExternalLinkTarget) ) $sLinkTarget = 'target="'.$wgExternalLinkTarget.'"';
 
+		$sAnchorID = $this->sAnchorID;
+		if( !empty($sAnchorID) ) {
+			$sAnchorID = "id='$sAnchorID'";
+		}
+
 		$aOut = array();
 		$aOut[] = '<li>';
-		$aOut[] =	'<a href="'.$this->sLink .'" title="'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'" class="'.$sClass.'" '.$sLinkTarget.'>'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'</a>';
+		$aOut[] =	'<a href="'.$this->sLink .'" '.$sAnchorID.' title="'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'" class="'.$sClass.'" '.$sLinkTarget.'>'.( empty($this->sDisplayTitle) ? $this->sName : $this->sDisplayTitle ).'</a>';
 		if( !empty($this->aChildren) ) {
 			$aOut[] = $this->rederChildItems();
 		}
@@ -168,6 +185,7 @@ class ViewTopMenuItem extends ViewBaseElement {
 			$oItem->setDisplaytitle( $aApp['displaytitle'] );
 			$oItem->setActive( $aApp['active'] );
 			$oItem->setContainsActive( $aApp['containsactive'] );
+			$oItem->setAnchorID( Sanitizer::escapeId($aApp['name']) );
 			if( !empty($aApp['children']) ) {
 				$oItem->setChildren( $aApp['children'] );
 			}

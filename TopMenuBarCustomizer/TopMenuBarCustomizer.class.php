@@ -152,6 +152,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			$oMainItem->setActive( $aApp['active'] );
 			$oMainItem->setContainsActive( $aApp['containsactive'] );
 			$oMainItem->setExternal( $aApp['external'] );
+			$oMainItem->setAnchorID( Sanitizer::escapeId($aApp['name']) );
 			if( !empty($aApp['children']) ) {
 				$oMainItem->setChildren( $aApp['children'] );
 			}
