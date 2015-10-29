@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the main description file for the template. It contains all 
+ * This is the main description file for the template. It contains all
  * information necessary to load and process the template.
  */
 
@@ -8,27 +8,25 @@ return array(
 
 	/* A brief description. This information may be used in the user interface */
 	'info' => array(
-		'name'      => 'BlueSpice Draft',
+		'name'      => 'BlueSpice Landscape',
 		'author'    => 'Hallo Welt!',
 		'copyright' => 'Hallo Welt! - Medienwerkstatt GmbH',
 		'url'       => 'http://www.hallowelt.biz',
-		'description'      => 'This is the default BlueSpice Draft PDF Template'
+		'description'      => 'This is the default BlueSpice PDF Template for landscape orientation'
 	),
 
 	/**
-	 * The following resources are used in the conversion from xhtml to PDF. 
+	 * The following resources are used in the conversion from xhtml to PDF.
 	 * You may reference them in your template files
 	 */
 	'resources' => array(
-		'ATTACHMENT' => array(
-			'attachments/Disclaimer.txt'
-			),
+		'ATTACHMENT' => array(), //Some extra attachments to be included in every eport file
 		'STYLESHEET' => array(
 			'../common/stylesheets/page.css',
 			'../common/stylesheets/mediawiki.css',
-			'../BlueSpice/stylesheets/styles.css', //Inherit from BlueSpice
+			'stylesheets/styles.css',
 			'../common/stylesheets/geshi-php.css',
-			'stylesheets/draft.css',
+			'../common/stylesheets/bluespice.css',
 			'../common/stylesheets/fonts.css',
 			//'../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',
@@ -41,32 +39,30 @@ return array(
 			'../common/fonts/DejaVuSansMono-BoldOblique.ttf'
 		),
 		'IMAGE' => array(
-			'../BlueSpice/images/bs-header.jpg',
-			'images/bs-draft.png'
+			'images/bs-header.jpg',
+			'images/bs-page-background.png'
 		)
 	),
-	
-	/* http://markmail.org/message/3or4xlburtrd34lz <-- TABELLEN MIT BODERCOLLAPSE */
 
 	/**
 	 * Here you can define messages for internationalization of your template.
 	 */
 	'messages' => array(
 		'en' => array(
-			'desc'        => 'This is the default draft PDFTemplate of BlueSpice for single article export.',
-			'exportdate'  => 'Export date:',
+			'desc'        => 'This is the default PDFTemplate for landscape orientation of BlueSpice for single article export.',
+			'exportdate'  => 'Export:',
 			'page'        => 'Page ',
 			'of'          => ' of ',
 			'disclaimer'  => 'This document was created with BlueSpice'
 		),
 		'de' => array(
-			'desc'        => 'Dies ist das Standard-Entwurfs-PDFTemplate von BlueSpice für den Export einzelner Artikel.',
+			'desc'        => 'Dies ist das Standard-PDFTemplate für Querformat von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
 			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'),
 		'de-formal' => array(
-			'desc'        => 'Dies ist das Standard-Entwurfs-PDFTemplate von BlueSpice für den Export einzelner Artikel.',
+			'desc'        => 'Dies ist das Standard-PDFTemplate für Querformat von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
