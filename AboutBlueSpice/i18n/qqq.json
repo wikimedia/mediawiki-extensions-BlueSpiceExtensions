@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Markus Glaser <glaser@hallowelt.com>"
+		]
+	},
+	"bs-aboutbluespice-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of AboutBlueSpice extension",
+	"bs-aboutbluespice-about-bluespice": "Label for menu item in various menus",
+	"aboutbluespice": "Label for special page in list of special pages",
+	"prefs-aboutbluespice": "Header for extension's preferences settings",
+	"bs-aboutbluespice-show-menu-links": "Label for option to show the \"{{int:bs-aboutbluespice-about-bluespice}}\" link in top and main menu"
+}
