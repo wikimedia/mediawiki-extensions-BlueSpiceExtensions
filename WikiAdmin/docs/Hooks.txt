@@ -1,0 +1,4 @@
+==WikiAdmin.class.php==
+
+'BSWikiAdminMenuItems': Allow other extensions to add to the admin menu.
+&$aOutSortable: Hashed array of menu links. Add HTML link.
