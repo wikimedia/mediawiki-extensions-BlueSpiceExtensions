@@ -108,7 +108,7 @@ dd {
 }
 
 abbr, acronym, .explain {
-	border-bottom: 1px dotted black;
+	border-bottom: 0.1mm dotted black;
 	color: black;
 	background: none;
 	cursor: help;
@@ -170,7 +170,7 @@ div.thumb {
     width: auto;
 }
 div.thumbinner {
-    border: 1px solid #ccc;
+    border: 0.1mm solid #ccc;
     padding: 3px !important;
     background-color: #f9f9f9;
     font-size: 94%;
@@ -179,7 +179,7 @@ div.thumbinner {
 }
 
 html .thumbimage {
-    border: 1px solid #ccc;
+    border: 0.1mm solid #ccc;
 }
 
 html .thumbcaption {
@@ -239,7 +239,7 @@ span.texhtml {
 }
 
 .bluebox {
-    border: 1px solid #608E91;
+    border: 0.1mm solid #608E91;
     margin: 1em 0em 1em 0em;
     empty-cells:show;
     padding:3px;
@@ -249,7 +249,7 @@ span.texhtml {
 .box-green {
      margin: 0;
      margin-bottom:10px;
-     border: 1px solid #237E14;
+     border: 0.1mm solid #237E14;
      padding: .3em .6em 0em .6em;
      background-color: #DEFEBB;
 }
@@ -257,7 +257,7 @@ span.texhtml {
 .box-beige {
      margin: 0;
      margin-bottom:10px;
-     border: 1px solid #000000;
+     border: 0.1mm solid #000000;
      padding: .3em .6em 0em .6em;
      background-color: #E0B978;
 }
@@ -282,7 +282,7 @@ span.texhtml {
 .firstHeading, h1, h2, h3, h4, h5, h6 {
 	background: none;
 	text-decoration: none;
-	border-bottom:1px solid #aaaaaa;
+	border-bottom: 0.2mm solid #aaaaaa;
 	page-break-after: avoid;
 }
 
@@ -349,13 +349,13 @@ table {
 .wikitable {
     margin: 1em 1em 1em 0;
     background: #f9f9f9;
-    border: 1px #aaa solid;
+    border: 0.1mm #aaa solid;
     border-collapse: collapse;
     color: black;
 }
 
 .wikitable th, .wikitable td {
-    border: 1px #aaa solid;
+    border: 0.1mm #aaa solid;
     padding: 0.2em;
 }
 
@@ -368,29 +368,29 @@ table {
 }
 
 .contenttable,
-.contenttable-black, 
-.contenttable-blue, 
+.contenttable-black,
+.contenttable-blue,
 .contenttable-darkblue {
   width: 100% !important;
-  border: 1px #ccc solid;
+  border: 0.1mm #ccc solid;
   border-spacing: 0;
 }
 
 .contenttable td,.contenttable tr {
-  border: 1px #ccc solid;
+  border: 0.1mm #ccc solid;
   padding: 0 4px 0 4px;
   border-spacing: 0;
 }
 
 
 .contenttable, .sortable {
-    border: 1px solid #CCCCCC;
+    border: 0.1mm solid #CCCCCC;
     border-collapse: collapse;
     border-spacing: 0;
 }
 
 .contenttable td, .contenttable tr, .sortable td, .sortable tr {
-    border: 1px solid #CCCCCC;
+    border: 0.1mm solid #CCCCCC;
     border-collapse: collapse;
     border-spacing: 0;
     padding: 0 4px;
@@ -398,54 +398,54 @@ table {
 
 .contenttable th, .sortable th {
     background-color: #E0E0E0;
-    border: 1px solid #CCCCCC;
+    border: 0.1mm solid #CCCCCC;
     padding: 0 4px;
 }
 
 .contenttable-black td, .contenttable-black tr {
-    border: 1px solid #000000;
+    border: 0.1mm solid #000000;
     border-collapse: collapse;
     border-spacing: 0;
     padding: 4px;
 }
 .contenttable-black th {
     background-color: #E0E0E0;
-    border: 1px solid #000000;
+    border: 0.1mm solid #000000;
     padding: 4px;
 }
 .contenttable-blue {
-    border: 1px solid #B1B9CF;
+    border: 0.1mm solid #B1B9CF;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 }
 .contenttable-blue td, .contenttable-blue tr {
-    border: 1px solid #B1B9CF;
+    border: 0.1mm solid #B1B9CF;
     border-collapse: collapse;
     border-spacing: 0;
     padding: 4px;
 }
 .contenttable-blue th {
     background-color: #EFF3F9;
-    border: 1px solid #B1B9CF;
+    border: 0.1mm solid #B1B9CF;
     color: #3E5389;
     padding: 4px;
 }
 .contenttable-darkblue {
-    border: 1px solid #B1B9CF;
+    border: 0.1mm solid #B1B9CF;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 }
 .contenttable-darkblue td, .contenttable-darkblue tr {
-    border: 1px solid #B1B9CF;
+    border: 0.1mm solid #B1B9CF;
     border-collapse: collapse;
     border-spacing: 0;
     padding: 4px;
 }
 .contenttable-darkblue th {
     background-color: #3E5389;
-    border: 1px solid #B1B9CF;
+    border: 0.1mm solid #B1B9CF;
     color: #FFFFFF;
     padding: 4px;
 }
@@ -455,7 +455,7 @@ table {
 }
 
 #toc, .toc, .mw-warning {
-	border: 1px solid #aaa;
+	border: 0.1mm solid #aaa;
 	background-color: #f9f9f9;
 	padding: 5px;
 	font-size: 95%;
@@ -487,7 +487,7 @@ table {
 }
 
 #toc a:after, .toc a:after {
-    content: leader('.') target-counter(attr(href), page);
+	content: leader('.') target-counter(attr(href), page);
 }
 
 /*
@@ -501,7 +501,7 @@ a[href]:after {
 li.gallerybox {
 	vertical-align: top;
 	background-color: #f9f9f9;
-	border: solid 2px white;
+	border: solid 0.2mm white;
 	display: -moz-inline-box;
 }
 
@@ -526,7 +526,7 @@ li.gallerycaption {
 
 li.gallerybox div.thumb {
 	text-align: center;
-	border: 1px solid #ccc;
+	border: 0.2mm solid #ccc;
 	margin: 2px;
 }
 
@@ -539,3 +539,13 @@ div.gallerytext {
 div.patrollink {
 	display: none;
 }
+
+/* Select box hack START */
+ select > option {
+	display:none;
+}
+
+select > option[selected] {
+	display: inline-block;
+}
+/*  Select box hack END */
