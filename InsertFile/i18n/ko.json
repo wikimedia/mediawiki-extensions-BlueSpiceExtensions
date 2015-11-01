@@ -16,7 +16,15 @@
 	"bs-insertfile-labellink": "링크",
 	"bs-insertfile-alignnone": "없음",
 	"bs-insertfile-typeborder": "테두리",
+	"bs-insertfile-uploaddescfilelabel": "요약",
+	"bs-insertfile-uploadwatchthislabel": "이 파일 주시하기",
+	"bs-insertfile-uploadignorewarningslabel": "모든 경고 무시하기",
 	"bs-insertfile-uploadsubmitvalue": "파일 올리기",
+	"bs-insertfile-errorloading": "파일을 불러오는 동안 오류가 발생했습니다.",
+	"bs-insertfile-warning": "경고",
+	"bs-insertfile-error": "오류",
 	"bs-insertfile-uploadcomplete": "파일을 성공적으로 저장했습니다.",
+	"bs-insertfile-license": "라이선스",
+	"bs-insertfile-categories": "분류",
 	"bs-insertfile-upload-waitmessage": "파일을 올리는 중 ..."
 }

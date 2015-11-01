@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-pagetemplates-headertargetnamespace": "이름공간",
+	"bs-pagetemplates-tipeditdetails": "틀 편집",
+	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|틀}} 삭제",
+	"bs-pagetemplates-tipaddtemplate": "틀 추가",
+	"bs-pagetemplates-label-tpl": "틀 이름",
+	"bs-pagetemplates-label-desc": "설명",
+	"bs-pagetemplates-label-targetns": "이름공간",
+	"bs-pagetemplates-label-article": "틀"
+}
