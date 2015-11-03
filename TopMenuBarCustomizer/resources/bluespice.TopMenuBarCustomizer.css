@@ -33,3 +33,6 @@ ul .bs-apps-child {
 .bs-apps-child a:hover{
 	background: none;
 }
+.bs-apps-child a{
+	white-space: nowrap;
+}
