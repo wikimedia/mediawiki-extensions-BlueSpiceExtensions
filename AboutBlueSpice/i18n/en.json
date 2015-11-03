@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Markus Glaser <glaser@hallowelt.com>"
+		]
+	},
+	"bs-aboutbluespice-desc": "Information about BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "About BlueSpice",
+	"aboutbluespice": "About BlueSpice",
+	"prefs-aboutbluespice": "About BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Show link \"{{int:bs-aboutbluespice-about-bluespice}}\" in top and main menu"
+}

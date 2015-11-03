@@ -12,6 +12,7 @@ require_once( __DIR__."/UserManager/UserManager.setup.php" );
 //Other Extendsions
 require_once( __DIR__."/StateBar/StateBar.setup.php" );
 require_once( __DIR__."/RSSFeeder/RSSFeeder.setup.php" );
+require_once( __DIR__."/AboutBlueSpice/AboutBlueSpice.setup.php" );
 require_once( __DIR__."/ArticleInfo/ArticleInfo.setup.php" );
 require_once( __DIR__."/Authors/Authors.setup.php" );
 require_once( __DIR__."/Blog/Blog.setup.php" );
