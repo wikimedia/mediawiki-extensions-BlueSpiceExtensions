@@ -51,7 +51,7 @@ class BoilerPlate extends BsExtensionMW {
 			EXTINFO::VERSION => 'default', // 'default' means in sync with BlueSpiceFoundation
 			EXTINFO::STATUS => 'default', // 'default' means in sync with BlueSpiceFoundation
 			EXTINFO::PACKAGE => 'default', // 'default' means in the free version of BlueSpice
-			EXTINFO::URL => 'http://www.hallowelt.com'
+			EXTINFO::URL => 'https://help.bluespice.com/index.php/How_to_become_a_BlueSpice_hacker'
 		);
 		// Unique key to identify the extension in various places, e.g. cache
 		$this->mExtensionKey = 'MW::BoilerPlate';

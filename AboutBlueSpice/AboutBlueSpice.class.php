@@ -46,7 +46,7 @@ class AboutBlueSpice extends BsExtensionMW {
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'http://www.hallowelt.com',
+			EXTINFO::URL => 'https://help.bluespice.com/index.php/AboutBlueSpice',
 			EXTINFO::DEPS => array ( 'bluespice' => '2.23.1' )
 		);
 		$this->mExtensionKey = 'MW::AboutBluespice';
