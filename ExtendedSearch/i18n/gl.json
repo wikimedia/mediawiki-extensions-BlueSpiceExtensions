@@ -58,6 +58,7 @@
 	"bs-extendedsearch-pref-showfacets": "Mostrar facetas en páxina especial",
 	"bs-extendedsearch-pref-showautocomplete": "Suxerir páxinas coincidentes co termo da procura",
 	"bs-extendedsearch-pref-externalrepo": "Idexar unha carpeta externa:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL de directorio externo:",
 	"bs-extendedsearch-pref-acentries": "Número de suxerencias coincidentes co termo da procura:",
 	"bs-extendedsearch-pref-highlightsnippets": "Número de fragmentos resaltados:",
 	"bs-extendedsearch-pref-indexfiletypes": "Indexar os ficheiros con determinadas extensións:",

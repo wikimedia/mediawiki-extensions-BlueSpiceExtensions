@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"bs-aboutbluespice-desc": "有关BlueSpice的信息。",
+	"bs-aboutbluespice-about-bluespice": "关于BlueSpice",
+	"aboutbluespice": "关于BlueSpice",
+	"prefs-aboutbluespice": "关于BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "在顶部和主菜单显示链接“{{int:bs-aboutbluespice-about-bluespice}}”"
+}
