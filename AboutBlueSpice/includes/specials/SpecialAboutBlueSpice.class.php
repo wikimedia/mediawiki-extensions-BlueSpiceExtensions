@@ -36,10 +36,10 @@ class SpecialAboutBlueSpice extends BsSpecialPage {
 		$sLang = $this->getLanguage()->getCode();
 		switch ( substr( $sLang, 0, 2 ) ) {
 			case "de" :
-				$sUrl = "http://de.bluespice.com";
+				$sUrl = "http://de.bluespice.com/about-bluespice/";
 				break;
 			default :
-				$sUrl = "http://www.bluespice.com";
+				$sUrl = "http://bluespice.com/about-bluespice/";
 		};
 
 		$sOutHTML = '<iframe src="' . $sUrl . '" id="aboutbluespiceremote" style="width:100%;border:0px;min-height:400px;"></iframe>';
