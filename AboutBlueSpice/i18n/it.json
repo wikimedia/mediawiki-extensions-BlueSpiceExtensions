@@ -4,5 +4,8 @@
 			"Beta16"
 		]
 	},
-	"bs-aboutbluespice-desc": "Informazioni su BlueSpice."
+	"bs-aboutbluespice-desc": "Informazioni su BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "Su BlueSpice",
+	"aboutbluespice": "Su BlueSpice",
+	"prefs-aboutbluespice": "Su BlueSpice"
 }
