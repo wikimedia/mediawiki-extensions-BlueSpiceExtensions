@@ -222,33 +222,37 @@
 			return true;
 		}
 
-		var items = [];
+		mw.loader.using( 'ext.bluespice.extjs', function() {
+			var items = [];
 
-		var mediaItems = makeMediaItems( anchor );
-		if( mediaItems.length > 0 ) {
-			items = appendSection( items, mediaItems );
-		}
+			var mediaItems = makeMediaItems( anchor );
+			if( mediaItems.length > 0 ) {
+				items = appendSection( items, mediaItems );
+			}
 
-		var userItems = makeUserItems( anchor );
-		if( userItems.length > 0 ) {
-			items = appendSection( items, userItems );
-		}
+			var userItems = makeUserItems( anchor );
+			if( userItems.length > 0 ) {
+				items = appendSection( items, userItems );
+			}
 
-		var fileItems = makeFileItems( anchor );
-		if( fileItems.length > 0 ) {
-			items = appendSection( items, fileItems );
-		}
+			var fileItems = makeFileItems( anchor );
+			if( fileItems.length > 0 ) {
+				items = appendSection( items, fileItems );
+			}
 
-		var pageItems = makePageItems( anchor );
-		if( pageItems.length > 0 ) {
-			items = appendSection( items, pageItems );
-		}
+			var pageItems = makePageItems( anchor );
+			if( pageItems.length > 0 ) {
+				items = appendSection( items, pageItems );
+			}
 
-		if( items.length === 0 ) {
-			return true;
-		}
+			if( items.length === 0 ) {
+				return true;
+			}
 
-		return showMenu( anchor, items, e );
+			showMenu( anchor, items, e );
+		});
+
+		return false;
 	});
 
 })( mediaWiki, jQuery, blueSpice);
