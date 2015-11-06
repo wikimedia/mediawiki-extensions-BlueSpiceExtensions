@@ -85,20 +85,16 @@
 .bs-rotated, .rotated {
 	page: rotated;
 	width: 25.8cm; /* DIN A4 landscape minus margins minus some space :) : 29.7 - 1 - 2.5 - 0.4 */
-	page-break-before: right;
-	page-break-after: always;
 }
 
 .bs-narrow, .narrow {
 	page: narrow;
-	page-break-before: always;
-	page-break-after: always;
+	width: 5.1cm; /* width minus margins minus some space: 9 - 1 - 2.5 - 0.4 */
 }
 
 .bs-ultrawide, .ultrawide {
 	page: ultrawide;
-	page-break-before: always;
-	page-break-after: always;
+	width: 55.5cm; /* Double DIN A4 landscape minus margins minus some space: 58.4 - 1 - 2.5 - 0.4 */
 }
 
 /* Generated content elements */
@@ -163,13 +159,5 @@ h1, h2, h3, h4, h5, h6 {
 table {
 	clear: both; /* Is this wise? Prevents floating thumbs from overlapping into tables and TOC table */
 	-fs-table-paginate: paginate; /* special xhtmlrenderer (flying saucer -> fs) property */
-	page-break-inside: avoid;
 }
 
-thead {
-	page-break-after: avoid;
-}
-
-tbody {
-	page-break-inside: avoid;
-}
