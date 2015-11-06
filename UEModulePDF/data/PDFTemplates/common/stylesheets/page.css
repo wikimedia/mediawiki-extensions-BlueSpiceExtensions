@@ -84,20 +84,17 @@
 
 .bs-rotated, .rotated {
     page: rotated;
-    page-break-before: right;
-    page-break-after: always;
+    width: 25.8cm; /* DIN A4 landscape minus margins minus some space :) : 29.7 - 1 - 2.5 - 0.4 */
 }
 		
 .bs-narrow, .narrow {
     page: narrow;
-    page-break-before: always;
-    page-break-after: always;
+    width: 5.1cm; /* width minus margins minus some space: 9 - 1 - 2.5 - 0.4 */
 }
 
 .bs-ultrawide, .ultrawide {
     page: ultrawide;
-    page-break-before: always;
-    page-break-after: always;
+    width: 55.5cm; /* Double DIN A4 landscape minus margins minus some space: 58.4 - 1 - 2.5 - 0.4 */
 }
 
 /* Generated content elements */
