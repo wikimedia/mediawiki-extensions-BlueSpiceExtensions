@@ -56,5 +56,7 @@
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Non asignado",
 	"log-name-bs-responsible-editors": "Rexistro de editores responsables",
 	"log-description-bs-responsible-editors": "Este é un rexistro de editores responsables de páxinas.",
-	"log-show-hide-bs-responsible-editors": "$1 rexistro de editores responsables"
+	"log-show-hide-bs-responsible-editors": "$1 rexistro de editores responsables",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|engadíu}} a $4 como {{GENDER:$4|editor|editora}} de $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|eliminou}} a $4 como {{GENDER:$4|editor|editora}} de $3"
 }

@@ -25,6 +25,7 @@
 	"bs-checklist-alert": "Atención!",
 	"bs-checklist-confirm-dirty-title": "Hai cambios sen gardar!",
 	"bs-checklist-confirm-dirty-text": "Fixo modificacións na lista que aínda non se gardaron. Está seguro de que quere perder os cambios?",
+	"log-name-bs-checklist": "Rexistro de caixas de verificación",
 	"log-description-bs-checklist": "Rexistro de cambios nas caixas de verificación das páxinas.",
 	"log-show-hide-bs-checklist": "Rexistro de caixa de verificación $1",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|marcou}} a caixa de verificación #$4 en $3",
