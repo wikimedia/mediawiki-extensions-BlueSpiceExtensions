@@ -24,5 +24,11 @@
 	"bs-checklist-dlg-new-prompt": "Escribe un títulu pa la llista",
 	"bs-checklist-alert": "¡Cuidáu!",
 	"bs-checklist-confirm-dirty-title": "¡Hai cambios sin guardar!",
-	"bs-checklist-confirm-dirty-text": "Ficisti cambios na llista qu'inda nun se guardaron. ¿Tas seguru de que quies descartar los cambios?"
+	"bs-checklist-confirm-dirty-text": "Ficisti cambios na llista qu'inda nun se guardaron. ¿Tas seguru de que quies descartar los cambios?",
+	"log-name-bs-checklist": "Rexistru de cuadros de comprobación",
+	"log-description-bs-checklist": "Rexistru de los cambeos nos cuadros de comprobación de les páxines.",
+	"log-show-hide-bs-checklist": "$1 el rexistru de cuadros de comprobación",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|marcó}}'l cuadru n<sup>u</sup>$4 en $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|desmarcó}}'l cuadru n<sup>u</sup>$4 en $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|seleicionó}}'l valor «$5» nel cuadru n<sup>u</sup>$4 de $3"
 }
