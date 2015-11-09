@@ -42,7 +42,7 @@ class SpecialAboutBlueSpice extends BsSpecialPage {
 				$sUrl = "http://bluespice.com/about-bluespice/";
 		};
 
-		$sOutHTML = '<iframe src="' . $sUrl . '" id="aboutbluespiceremote" style="width:100%;border:0px;min-height:400px;"></iframe>';
+		$sOutHTML = '<iframe src="' . $sUrl . '" id="aboutbluespiceremote" name="aboutbluespiceremote" style="width:100%;border:0px;min-height:1200px;"></iframe>';
 
 		$oOutputPage = $this->getOutput();
 
