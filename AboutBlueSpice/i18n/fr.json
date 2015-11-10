@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"bs-aboutbluespice-desc": "Information sur BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "À propos de BlueSpice",
+	"aboutbluespice": "À propos de BlueSpice",
+	"prefs-aboutbluespice": "À propos de BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Afficher le lien « {{int:bs-aboutbluespice-about-bluespice}} » dans le menu du haut et principal"
+}

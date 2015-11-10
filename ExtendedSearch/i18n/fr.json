@@ -60,6 +60,7 @@
 	"bs-extendedsearch-pref-showfacets": "Afficher les facettes dans une page spéciale",
 	"bs-extendedsearch-pref-showautocomplete": "Suggérer des pages correspondant au terme de recherche",
 	"bs-extendedsearch-pref-externalrepo": "Indexer le répertoire externe :",
+	"bs-extendedsearch-pref-externalrepo-url": "URL pour le répertoire externe :",
 	"bs-extendedsearch-pref-acentries": "Nombre de suggestions correspondant au terme de recherche :",
 	"bs-extendedsearch-pref-highlightsnippets": "Nombre d’extraits mis en surbrillance :",
 	"bs-extendedsearch-pref-indexfiletypes": "Indexer les fichiers avec certaines extensions :",
