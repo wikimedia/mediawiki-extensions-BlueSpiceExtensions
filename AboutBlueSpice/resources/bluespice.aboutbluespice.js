@@ -36,7 +36,7 @@ $(function () {
 	var sAboutBlueSpiceMainLink = mw.html.element(
 			'a',
 			{
-				href: mw.util.getUrl('Special:AboutBlueSpice'),
+				href: mw.util.getUrl('Special:About_BlueSpice'),
 				class: 'menu-item-single level-1'
 			},
 			new mw.html.Raw(
