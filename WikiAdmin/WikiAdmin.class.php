@@ -221,7 +221,7 @@ class WikiAdmin extends BsExtensionMW {
 		$aOutSortable['SpecialPages'] = self::getMediaWikiSpecialPageItem();
 
 		ksort( $aOutSortable );
-		$aOut[] = implode( "\n", $aOutSortable ).'</ul>';
+		$aOut[] = implode( "\n", $aOutSortable );
 		$aOut[] = '</ul>';
 
 		if ( $tpl instanceof BsBaseTemplate ) {
