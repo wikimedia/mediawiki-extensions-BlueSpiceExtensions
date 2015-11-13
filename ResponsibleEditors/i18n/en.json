@@ -56,5 +56,22 @@
 	"log-description-bs-responsible-editors": "This is a log of editors responsible for pages.",
 	"log-show-hide-bs-responsible-editors": "$1 responsible editors log",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|has added}} $4 as {{GENDER:$4|editor}} for $3",
-	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|has removed}} $4 as {{GENDER:$4|editor}} for $3"
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|has removed}} $4 as {{GENDER:$4|editor}} for $3",
+	"echo-category-title-bs-responsible-editors-action-cat": "Responsible editors - Actions",
+	"echo-category-title-bs-responsible-editors-assignment-cat": "Responsible editors - Assignments",
+	"notification-bs-responsibleeditors-assign-summary": "[[User:$1|$1]] {{GENDER:$1|assigned}} you as responsible editor to $3",
+	"notification-bs-responsibleeditors-assign-subject": "Responsibility for \"$2\" assigned",
+	"notification-bs-responsibleeditors-assign-body": "$1 {{GENDER:$1|assigned}} you to \"$2\". After logging into the wiki you can open the page with this link: $3. If you have any questions please refer to $1.",
+	"notification-bs-responsibleeditors-revoke-summary": "[[User:$1|$1]] {{GENDER:$1|revoked}} the responsibility for the page $3",
+	"notification-bs-responsibleeditors-revoke-subject": "Responsibility for \"$2\" revoked",
+	"notification-bs-responsibleeditors-revoke-body": "$1 {{GENDER:$1|revoked}} the responsibility for the page \"$2\". After logging into the wiki you can open the page with this link: $3. If you have any questions please refer to $1.",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] has {{GENDER:$1|edited}} $3",
+	"notification-bs-responsibleeditors-change-subject": "The page \"$2\" has been {{GENDER:$1|edited}} by $1",
+	"notification-bs-responsibleeditors-change-body": "The page \"$2\" for which you are assigned as a responsible editor has been {{GENDER:$1|edited}} by $1. After logging into the wiki you can open the page with this link: $3",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] has {{GENDER:$1|deleted}} $3",
+	"notification-bs-responsibleeditors-delete-subject": "The page \"$2\" has been {{GENDER:$1|deleted}} by $1",
+	"notification-bs-responsibleeditors-delete-body": "The page \"$2\" for which you are assigned as a responsible editor has been {{GENDER:$1|deleted}} by $1. After logging into the wiki you can open the page with this link: $3",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|moved}} $3 to $5",
+	"notification-bs-responsibleeditors-move-subject": "The page \"$2\" has been {{GENDER:$1|moved}} by $1",
+	"notification-bs-responsibleeditors-move-body": "The page \"$2\" for which you are assigned as a responsible editor has been {{GENDER:$1|moved}} to \"$4\" by $1. After logging into the wiki you can open the page with this link: $5"
 }

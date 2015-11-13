@@ -10,5 +10,6 @@
 	"bs-shoutbox-entermessage": "Bitte geben Sie eine Nachricht ein.",
 	"bs-shoutbox-too-early": "Bitte warten Sie ein paar Sekunden, bevor Sie den nächsten Eintrag abschicken.",
 	"bs-shoutbox-notifications-title-message-subject": "Sie wurden in einer Nachricht in der Shoutbox erwähnt.",
-	"bs-shoutbox-notifications-title-message-text": "Sie wurden von $4 in einer Nachricht auf der Seite \"$5\" {{GENDER:$1|erwähnt}}.\n\nSie können den Artikel über diese URL aufrufen:\n$3"
+	"bs-shoutbox-notifications-title-message-text": "Sie wurden von $4 in einer Nachricht auf der Seite \"$5\" {{GENDER:$1|erwähnt}}.\n\nSie können den Artikel über diese URL aufrufen:\n$3",
+	"bs-shoutbox-notifications-summary": "[[Benutzer:$1|$1]] {{GENDER:$1|hat}} Sie in einer Nachricht auf $3 erwähnt."
 }

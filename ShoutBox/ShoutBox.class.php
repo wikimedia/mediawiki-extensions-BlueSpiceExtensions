@@ -76,7 +76,6 @@ class ShoutBox extends BsExtensionMW {
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
-		$this->setHook( 'BeforeCreateEchoEvent' );
 		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
 
 
@@ -95,6 +94,18 @@ class ShoutBox extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ShoutBox::Show', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-shoutbox-pref-show', 'toggle' );
 		BsConfig::registerVar( 'MW::ShoutBox::AllowArchive', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-shoutbox-pref-allowarchive', 'toggle' );
 		BsConfig::registerVar( 'MW::ShoutBox::MaxMessageLength', 255, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-shoutbox-pref-maxmessagelength', 'int' );
+
+		BSNotifications::registerNotificationCategory( 'bs-shoutbox-mention-cat' );
+		BSNotifications::registerNotification(
+			'bs-shoutbox-mention',
+			'bs-shoutbox-mention-cat',
+			'bs-shoutbox-notifications-summary',
+			array( 'agent', 'title', 'titlelink' ),
+			'bs-shoutbox-notifications-title-message-subject',
+			array(),
+			'bs-shoutbox-notifications-summary',
+			array( 'agent', 'title', 'titlelink' )
+		);
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
@@ -538,39 +549,29 @@ $aData = false;
 	 * @param int $iUserId
 	 */
 	public static function notifyUser( $sAction, $aUsers, $iArticleId, $iUserId ) {
-		if ( class_exists( 'EchoEvent' ) ) {
-			$oCurrentUser = RequestContext::getMain()->getUser();
-			foreach ( $aUsers as $oUser ) {
-				#if you're mentioning yourself don't send notification
-				if ( $oUser->getId() === $iUserId ) {
-					continue;
-				}
-				EchoEvent::create( array(
-					'type' => 'bs-shoutbox-' . $sAction,
-					'title' => Article::newFromID( $iArticleId )->getTitle(),
-					'agent' => User::newFromId( $iUserId ),
-					'extra' => array(
-						'summary' => "",
-						'titlelink' => true,
-						'difflink' => array( 'diffparams' => array() ),
-						'agentlink' => true,
-						'mentioned-user-id' => $oUser->getId(),
-						'realname' => BsCore::getUserDisplayName($oCurrentUser),
-						'title' => Article::newFromID( $iArticleId )->getTitle()->getText(),
-					),
-				) );
+		$oCurrentUser = RequestContext::getMain()->getUser();
+		$sCurrentUserName = BsUserHelper::getUserDisplayName($oCurrentUser);
+		$oTitle = Article::newFromID($iArticleId)->getTitle();
+		$sTitleText = $oTitle->getText();
+		$oAgent = User::newFromId($iUserId);
+
+		foreach ( $aUsers as $oUser ) {
+			#if you're mentioning yourself don't send notification
+			if ( $oUser->getId() === $iUserId ) {
+				continue;
 			}
-		} else {
-			//PW(23.04.2015): TODO - get rid of BsMailer | Echo is required
-			$sSubject = wfMessage(
-					'bs-shoutbox-notifications-title-message-subject'
-					)->plain();
-			$oUser = User::newFromId( $iUserId );
-			$sMessage = wfMessage(
-					'bs-shoutbox-notifications-title-message-text', $oUser, BsCore::getUserDisplayName($oUser), Linker::link( Article::newFromID( $iArticleId )->getTitle() ), Linker::link( $oUser )
-					)->plain();
-			BsMailer::getInstance( 'MW' )->send( $aUsers, $sSubject, $sMessage );
+			BSNotifications::notify(
+				"bs-shoutbox-{$sAction}",
+				$oAgent,
+				$oTitle,
+				array(
+					'mentioned-user-id' => $oUser->getId(),
+					'realname' => $sCurrentUserName,
+					'title' => $sTitleText
+				)
+			);
 		}
+
 	}
 
 	/**
@@ -587,38 +588,9 @@ $aData = false;
 					break;
 				}
 				$recipientId = $extra['mentioned-user-id'];
-				//really ugly, but newFromId appears to be broken...
-				$oDBr = wfGetDB( DB_SLAVE );
-				$row = $oDBr->selectRow( 'user', '*', array( 'user_id' => (int) $recipientId ) );
-				$recipient = User::newFromRow( $row );
-				$users[$recipientId] = $recipient;
-				//$event->setExtra('username', $recipient->);
+				$users[$recipientId] = User::newFromId($recipientId);
 				break;
 		}
-		return true;
-	}
-
-	/**
-	 * Adds the Shoutbox mentions notification option
-	 * @param array $notifications
-	 * @param array $notificationCategories
-	 * @return boolean
-	 */
-	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
-		$notificationCategories['bs-shoutbox-mention-cat'] = array( 'priority' => 3 );
-		$notifications['bs-shoutbox-mention'] = array( // HINT: http://www.mediawiki.org/wiki/Echo_(Notifications)/Developer_guide#Defining_a_notification
-			'category' => 'bs-shoutbox-mention-cat',
-			'group' => 'neutral',
-			'formatter-class' => 'BsNotificationsFormatter',
-			'title-message' => 'bs-shoutbox-notifications-title-message-subject',
-			'flyout-message' => 'bs-shoutbox-notifications-title-message-text',
-			'flyout-params' => array( 'agent', 'agentlink', 'titlelink' ),
-			'email-subject-message' => 'bs-shoutbox-notifications-title-message-subject',
-			'email-body-message' => 'bs-shoutbox-notifications-title-message-text',
-			'email-body-params' => array( 'agent', 'agentlink', 'titlelink', 'realname', 'title' ),
-			'email-body-batch-message' => 'bs-shoutbox-notifications-title-message-text',
-			'email-body-batch-params' => array( 'agent', 'agentlink', 'titlelink', 'realname', 'title' ),
-		);
 		return true;
 	}
 
@@ -629,7 +601,7 @@ $aData = false;
 	 */
 	public static function replaceUsernameInMessage( $sMatch ) {
 		$oUser = User::newFromName( $sMatch[1] );
-		return Linker::link( $oUser->getUserPage(), BsCore::getUserDisplayName( $oUser ) );
+		return Linker::link( $oUser->getUserPage(), BsUserHelper::getUserDisplayName( $oUser ) );
 	}
 
 }

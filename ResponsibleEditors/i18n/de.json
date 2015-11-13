@@ -59,5 +59,22 @@
 	"log-description-bs-responsible-editors": "Logbuch von Redakteuren die für gewisse Seiten verantwortlich sind.",
 	"log-show-hide-bs-responsible-editors": "$1 Verantwortliche Redakteure-Logbuch",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|hat}} $4 als {{GENDER:$4|Redakteur|Redakteurin}} zu $3 hinzugefügt",
-	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|hat}} $4 als {{GENDER:$4|Redakteur|Redakteurin}} zu $3 entfernt"
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|hat}} $4 als {{GENDER:$4|Redakteur|Redakteurin}} zu $3 entfernt",
+	"echo-category-title-bs-responsible-editors-action-cat": "Verantwortliche Redakteure - Aktionen",
+	"echo-category-title-bs-responsible-editors-assignment-cat": "Verantwortliche Redakteure - Zuweisungen",
+	"notification-bs-responsibleeditors-assign-summary": "[[Benutzer:$1|$1]] {{GENDER:$1|hat}} dir die Verantwortung für $3 übertragen",
+	"notification-bs-responsibleeditors-assign-subject": "Verantwortlichkeit für die Seite \"$2\" übertragen",
+	"notification-bs-responsibleeditors-assign-body": "Soeben {{GENDER:$1|wurde}} Dir durch $1 die Verantwortlichkeit für die Seite \"$2\" übertragen. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $3 Solltest Du Fragen zur Übertragung der Verantwortlichkeit auf Dich haben, wende Dich bitte an $1.",
+	"notification-bs-responsibleeditors-revoke-summary": "[[Benutzer:$1|$1]] {{GENDER:$1|hat}} dir die Verantwortung für $3 entzogen",
+	"notification-bs-responsibleeditors-revoke-subject": "Verantwortlichkeit für die Seite \"$2\" entzogen",
+	"notification-bs-responsibleeditors-revoke-body": "Soeben {{GENDER:$1|wurde}} Dir durch $1 die Verantwortlichkeit für die Seite \"$2\" entzogen. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $3 Solltest Du Fragen zur Änderung der Verantwortlichkeit haben, wende Dich bitte an $1.",
+	"notification-bs-responsibleeditors-change-summary": "[[Benutzer:$1|$1]] hat $3 {{GENDER:$1|bearbeitet}}",
+	"notification-bs-responsibleeditors-change-subject": "Die Seite \"$2\" wurde von $1 {{GENDER:$1|bearbeitet}}",
+	"notification-bs-responsibleeditors-change-body": "Die Seite \"$2\", für die Du als verantwortlicher Redakteur eingetragen bist, wurde von $1 {{GENDER:$1|bearbeitet}}. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $3",
+	"notification-bs-responsibleeditors-delete-summary": "[[Benutzer:$1|$1]] hat $3 {{GENDER:$1|gelöscht}}",
+	"notification-bs-responsibleeditors-delete-subject": "Die Seite \"$2\" wurde von $1 {{GENDER:$1|gelöscht}}",
+	"notification-bs-responsibleeditors-delete-body": "Die Seite \"$2\", für die Du als verantwortlicher Redakteur eingetragen bist, wurde von $1 {{GENDER:$1|gelöscht}}. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $3",
+	"notification-bs-responsibleeditors-move-summary": "[[Benutzer:$1|$1]] hat $3 nach $5 {{GENDER:$1|verschoben}}",
+	"notification-bs-responsibleeditors-move-subject": "Die Seite \"$2\" wurde von $1 {{GENDER:$1|verschoben}}",
+	"notification-bs-responsibleeditors-move-body": "Die Seite \"$2\", für die Du als verantwortlicher Redakteur eingetragen bist, wurde von $1 nach \"$4\" {{GENDER:$1|verschoben}}. Nach Anmeldung am Wiki kannst Du die Seite mit folgendem Link erreichen: $5"
 }

@@ -30,5 +30,6 @@
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Shout|Shouts}}",
 	"echo-category-title-bs-shoutbox-mention-cat": "Notification for mention in a shout",
 	"bs-shoutbox-notifications-title-message-subject": "You've been mentioned",
-	"bs-shoutbox-notifications-title-message-text": "You've been {{GENDER:$1|mentioned}} by $4 in a shout on the page \"$5.\"\n\nYou can visit the page following this link:\n$3.\n"
+	"bs-shoutbox-notifications-title-message-text": "You've been {{GENDER:$1|mentioned}} by $4 in a shout on the page \"$5.\"\n\nYou can visit the page following this link:\n$3.\n",
+	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|mentioned}} you in a shout on $3."
 }
