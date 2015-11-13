@@ -121,12 +121,17 @@ class Flexiskin extends BsExtensionMW {
 	 */
 	public function addCssFile( $sFlexiskinId, $bIsTemp = false ) {
 		global $wgResourceModules;
+		global $wgScriptPath;
+
 		$oStatus = BsFileSystemHelper::ensureDataDirectory( "flexiskin/" . $sFlexiskinId );
 		if ( !$oStatus->isGood() ) {
 			return false;
 		}
+
 		$sFilePath = BsFileSystemHelper::getDataPath("flexiskin/" . $sFlexiskinId);
 		$sFilePath .= "/screen" . ($bIsTemp ? '.tmp' : '') . ".less";
+		$sFilePath = str_replace($wgScriptPath, "..", $sFilePath);
+
 		if ( !isset( $wgResourceModules['skins.bluespiceskin'] ) ||
 				!isset( $wgResourceModules['skins.bluespiceskin']['styles'] ) ) {
 			return false;
@@ -136,7 +141,7 @@ class Flexiskin extends BsExtensionMW {
 			if ( strpos( $sStylePath, "screen.less", strlen( $sStylePath ) - strlen( "screen.less" ) ) === false ) {
 				continue;
 			}
-			$wgResourceModules['skins.bluespiceskin']['styles'][$iIndex] = ".." . $sFilePath;
+			$wgResourceModules['skins.bluespiceskin']['styles'][$iIndex] = $sFilePath;
 			return true;
 		}
 		return false;
