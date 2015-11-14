@@ -11,5 +11,6 @@
 	"bs-responsibleeditors-columnpage": "Strona",
 	"bs-responsibleeditors-columnnamespace": "Przestrzeń nazw",
 	"bs-responsibleeditors-rbdisplaymodeall": "Pokaż wszystkie strony",
-	"bs-responsibleeditors-cbnamespacesemptytext": "Wybierz przestrzeń nazw"
+	"bs-responsibleeditors-cbnamespacesemptytext": "Wybierz przestrzeń nazw",
+	"notification-bs-responsibleeditors-delete-subject": "$1 {{GENDER:$1|usunął|usunęła}} „$2”"
 }

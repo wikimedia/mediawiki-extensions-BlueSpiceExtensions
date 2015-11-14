@@ -13,5 +13,7 @@
 	"bs-review-lblstartdate": "پيل نېټه",
 	"bs-review-lblenddate": "پای نېټه",
 	"bs-review-labelcomment": "تبصره",
-	"bs-review-header-page-title": "مخ"
+	"bs-review-header-page-title": "مخ",
+	"echo-category-title-bs-review-action-cat": "بياکتنه - چارې",
+	"notification-bs-review-payload-comment": "تبصره: \"$1\""
 }

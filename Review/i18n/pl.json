@@ -34,5 +34,9 @@
 	"bs-review-header-startdate": "Start",
 	"bs-review-header-enddate": "Koniec",
 	"bs-review-confirm-delete-step": "Czy na pewno chcesz usunąć ten krok?",
-	"bs-review-error-insufficient-permissions": "Nie masz uprawnień, aby wykonać to działanie (potrzebne „$1”)."
+	"bs-review-error-insufficient-permissions": "Nie masz uprawnień, aby wykonać to działanie (potrzebne „$1”).",
+	"notification-bs-review-payload-comment": "Komentarz: „$1”",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|zaakceptował|zaakceptowała|zaakceptował(a)}} „$2”",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|odrzucił|odrzuciła|odrzucił(a)}} „$2”",
+	"notification-bs-review-deny-and-restart-subject": "$1 {{GENDER:$1|odrzucił|odrzuciła|odrzucił(a)}} „$2”"
 }
