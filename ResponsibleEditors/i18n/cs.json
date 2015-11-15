@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cvanca"
+		]
+	},
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] {{GENDER:$1|smazal|smazala}} $3",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|přesunul|přesunula}} $3 na $5"
+}

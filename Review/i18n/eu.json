@@ -14,5 +14,7 @@
 	"bs-review-colstatus": "Egoera",
 	"bs-review-lblstartdate": "Hasiera data",
 	"bs-review-lblenddate": "Amaiera data",
-	"bs-review-header-owner-name": "Jabea"
+	"bs-review-header-owner-name": "Jabea",
+	"notification-bs-review-payload-comment": "Iruzkina: \"$1\"",
+	"notification-bs-review-assign-subject": "Mesedez, berrikusi \"$2\" orrialdea"
 }

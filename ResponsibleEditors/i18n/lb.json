@@ -16,12 +16,18 @@
 	"bs-responsibleeditors-statebartop-icon-alt": "Et gëtt e responsabelen Editeur fir dës Säit",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "D'Säit, déi ugi gouf, gëtt et net.",
 	"bs-responsibleeditors-mail-subject-re-article-changed": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|geännert}}",
-	"bs-responsibleeditors-mail-subject-re-article-deleted": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|gelänscht}}",
+	"bs-responsibleeditors-mail-subject-re-article-deleted": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|geläscht}}",
 	"bs-responsibleeditors-mail-subject-re-article-moved": "D'Säit \"$1\" gouf vum $3 {{GENDER:$2|geréckelt}}",
 	"bs-responsibleeditors-yourresponsibilities": "Är Verantwortung",
 	"bs-responsibleeditors-yourresponsibilitiesdesc": "Lëscht vu Säite fir déi Dir responsabel sidd.",
 	"bs-responsibleeditors-columnpage": "Säit",
 	"bs-responsibleeditors-columnnamespace": "Nummraum",
 	"bs-responsibleeditors-rbdisplaymodeall": "All Säite weisen",
-	"bs-responsibleeditors-cbnamespacesemptytext": "Sicht en Nummraum eraus"
+	"bs-responsibleeditors-cbnamespacesemptytext": "Sicht en Nummraum eraus",
+	"echo-category-title-bs-responsible-editors-action-cat": "Responsabel Editeuren - Aktiounen",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] huet $3 {{GENDER:$1|geännert}}",
+	"notification-bs-responsibleeditors-change-subject": "D'Säit \"$2\" gouf vum $1 {{GENDER:$2|geännert}}",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] huet $3 {{GENDER:$1|geläscht}}",
+	"notification-bs-responsibleeditors-delete-subject": "D'Säit \"$2\" gouf vum $1 {{GENDER:$2|geläscht}}",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] hat $3 op $5 {{GENDER:$1|geréckelt}}"
 }

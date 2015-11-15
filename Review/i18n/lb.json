@@ -57,5 +57,10 @@
 	"bs-review-header-enddate": "Schluss",
 	"bs-review-confirm-delete-step": "Wëllt Dir dëse Schrëtt wierklech läschen?",
 	"bs-review-confirm-delete-review": "Wëllt Dir dës Bewäertung wierklech läschen?",
-	"bs-review-error-insufficient-permissions": "Dir hutt net d'Recht fir dës Aktioun ze maachen (\"$1\" gëtt gebraucht)."
+	"bs-review-error-insufficient-permissions": "Dir hutt net d'Recht fir dës Aktioun ze maachen (\"$1\" gëtt gebraucht).",
+	"echo-category-title-bs-review-action-cat": "Nokucken - Aktiounen",
+	"notification-bs-review-payload-comment": "Bemierkung: \"$1\"",
+	"notification-bs-review-assign-subject": "Kuckt d'Säit \"$2\" w.e.g. no",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|huet}} \"$2\" akzeptéiert",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|huet}} \"$2\" refuséiert"
 }
