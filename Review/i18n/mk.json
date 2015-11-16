@@ -88,5 +88,12 @@
 	"bs-review-confirm-delete-step": "Дали навистина сакате да го избришете овој чекор?",
 	"bs-review-confirm-delete-review": "Дали навистина сакате да ја избришете оваа оценка?",
 	"bs-review-error-insufficient-permissions": "Немате дозвола да го извршите ова дејство (се бара „$1“).",
-	"echo-category-title-bs-review-complete-cat": "Известување за завршен преглед"
+	"echo-category-title-bs-review-complete-cat": "Известување за завршен преглед",
+	"echo-category-title-bs-review-assignment-cat": "Преглед — Назначувања",
+	"echo-category-title-bs-review-action-cat": "Преглед — Дејства",
+	"notification-bs-review-payload-comment": "Коментар: „$1“",
+	"notification-bs-review-assign-summary": "[[User:$1|$1]] {{GENDER:$1|ве покани}} да ја прегледате страницата $3",
+	"notification-bs-review-assign-subject": "Прегледајте ја страницата „$2“",
+	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|заврши}} со прегледување на страницата „$2“",
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|заврши}} со прегледување на „$2“. Страницата автоматски е обележана како стабилна."
 }

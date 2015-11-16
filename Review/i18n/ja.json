@@ -22,6 +22,7 @@
 	"notification-bs-review-assign-subject": "ページ「$2」を査読してください",
 	"notification-bs-review-deny-subject": "$1が「$2」を{{GENDER:$1|拒否しました}}",
 	"notification-bs-review-deny-and-restart-subject": "$1 が「$2」を{{GENDER:$1|拒否しました}}",
+	"notification-bs-review-finish-summary": "[[User:$1|$1]]が$3の査読プロセスを{{GENDER:$1|終了しました}}",
 	"notification-bs-review-finish-subject": "$1が「$2」の査読を{{GENDER:$1|終了しました}}",
 	"notification-bs-review-finish-and-autoflag-subject": "$1が「$2」の査読を{{GENDER:$1|終了しました}}"
 }

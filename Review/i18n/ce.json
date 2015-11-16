@@ -28,5 +28,6 @@
 	"bs-review-header-owner-name": "Ерг",
 	"bs-review-header-accepted-text": "Пачхьалкх",
 	"bs-review-header-startdate": "Долор",
-	"bs-review-header-enddate": "Чекхъялар"
+	"bs-review-header-enddate": "Чекхъялар",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|юхатоьхна}} \"$2\""
 }
