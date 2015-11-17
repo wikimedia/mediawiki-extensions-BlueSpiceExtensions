@@ -59,5 +59,22 @@
 	"log-description-bs-responsible-editors": "Ceci est un journal des éditeurs responsables de pages.",
 	"log-show-hide-bs-responsible-editors": "Journal des éditeurs responsables de $1",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|a ajouté}} $4 comme {{GENDER:$4|éditeur|éditrice}} pour $3",
-	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|a supprimé}} $4 comme {{GENDER:$4|éditeur|éditrice}} pour $3"
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|a supprimé}} $4 comme {{GENDER:$4|éditeur|éditrice}} pour $3",
+	"echo-category-title-bs-responsible-editors-action-cat": "Éditeurs responsables — Actions",
+	"echo-category-title-bs-responsible-editors-assignment-cat": "Éditeurs responsables — Affectations",
+	"notification-bs-responsibleeditors-assign-summary": "[[User:$1|$1]] vous {{GENDER:$1|a affecté}} comme éditeur responsable sur $3",
+	"notification-bs-responsibleeditors-assign-subject": "Responsabilité affectée pour « $2 »",
+	"notification-bs-responsibleeditors-assign-body": "$1 vous {{GENDER:$1|a affecté}} à « $2 ». Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $3. Si vous avez des questions, veuillez vous référer à $1.",
+	"notification-bs-responsibleeditors-revoke-summary": "[[User:$1|$1]] {{GENDER:$1|a révoqué}} la responsabilité pour la page $3",
+	"notification-bs-responsibleeditors-revoke-subject": "Responsabilité révoquée pour « $2 »",
+	"notification-bs-responsibleeditors-revoke-body": "$1 {{GENDER:$1|a révoqué}} la responsabilité pour la page « $2 ». Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $3. Si vous avez des questions, veuillez vous référer à $1.",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] a {{GENDER:$1|modifié}} $3",
+	"notification-bs-responsibleeditors-change-subject": "La page « $2 » a été {{GENDER:$1|modifiée}} par $1",
+	"notification-bs-responsibleeditors-change-body": "La page « $2 » à laquelle vous avez été affecté comme éditeur responsable a été {{GENDER:$1|modifiée}} par $1. Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $3",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] a {{GENDER:$1|supprimé}} $3",
+	"notification-bs-responsibleeditors-delete-subject": "La page « $2 » a été {{GENDER:$1|supprimée}} par $1",
+	"notification-bs-responsibleeditors-delete-body": "La page « $2 » à laquelle vous avez été affecté comme éditeur responsable a été {{GENDER:$1|supprimée}} par $1. Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $3",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|a renommé}} $3 en $5",
+	"notification-bs-responsibleeditors-move-subject": "La page « $2 » a été {{GENDER:$1|déplacée}} par $1",
+	"notification-bs-responsibleeditors-move-body": "La page « $2 » à laquelle vous avez été affecté comme éditeur responsable a été {{GENDER:$1|déplacée}} en « $4 » par $1. Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $5"
 }

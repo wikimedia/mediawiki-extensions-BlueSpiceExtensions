@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Sayginer",
-			"Violetanka"
+			"Violetanka",
+			"HakanIST"
 		]
 	},
 	"bs-review-desc": "Sayfalara iş akışı işlevini ekler",
 	"bs-review-save-norights": "Gerekli izne sahip değilsiniz.",
 	"bs-review-review-saved": "Oyunuz kaydedildi.",
 	"bs-review-btnmoveup": "Yukarı taşı",
-	"bs-review-btnmovedown": "Aşağı taşı"
+	"bs-review-btnmovedown": "Aşağı taşı",
+	"echo-category-title-bs-review-action-cat": "İncele - İşlemler"
 }

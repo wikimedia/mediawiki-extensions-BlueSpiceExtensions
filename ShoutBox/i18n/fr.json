@@ -35,5 +35,6 @@
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Cri|Cris}}",
 	"echo-category-title-bs-shoutbox-mention-cat": "Notification à mentionner dans une shoutbox",
 	"bs-shoutbox-notifications-title-message-subject": "Vous avez été mentionné",
-	"bs-shoutbox-notifications-title-message-text": "Vous avez été {{GENDER:$1|mentionné}} par $4 dans une discussion sur la page \"$5.\"\n\nVous pouvez visiter la page en suivant le lien suivant: \n\n$3."
+	"bs-shoutbox-notifications-title-message-text": "Vous avez été {{GENDER:$1|mentionné}} par $4 dans une discussion sur la page \"$5.\"\n\nVous pouvez visiter la page en suivant le lien suivant: \n\n$3.",
+	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] vous {{GENDER:$1|a mentionné}} dans un appel sur $3."
 }
