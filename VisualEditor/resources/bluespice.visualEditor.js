@@ -3,7 +3,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    1.20.0
- 
+
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -12,16 +12,19 @@
  */
 
 offsetTop = 0;
+$(document).on('change', '#wpTextbox1' ,function() {
+	$(this).data("text-changed", true);
+});
 $(window).scroll(function(){
 	var toobar = $('.mce-stack-layout-item').first();
 	if( toobar.length == 0 ) return;
 	if(offsetTop == 0){
 		offsetTop = $('#editform').position().top; //toobar.position().top;
 	}
-	
+
 	if( $(document).scrollTop() > offsetTop ) { //window.scrollY
 		if( toobar.hasClass('bs-ve-fixed') == false ) {
-			
+
 			toobar.addClass('bs-ve-fixed');
 			toobar.width( toobar.parent().width() );
 		}
@@ -47,7 +50,7 @@ $(document).on('VisualEditor::instanceHide', function(event, editorId) {
 
 function bs_initVisualEditor() {
 	var currentSiteCSS = [];
-	//We collect the CSS Links from this document and set them as content_css 
+	//We collect the CSS Links from this document and set them as content_css
 	//for TinyMCE
 
 	$('link[rel=stylesheet]').each(function(){
@@ -69,7 +72,7 @@ function bs_initVisualEditor() {
 		});
 	}
 
-	if ( mw.config.get('bsVisualEditorUse') !== false 
+	if ( mw.config.get('bsVisualEditorUse') !== false
 		&& mw.user.options.get('MW::VisualEditor::Use') === true ) {
 			VisualEditor.startEditors();
 			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);

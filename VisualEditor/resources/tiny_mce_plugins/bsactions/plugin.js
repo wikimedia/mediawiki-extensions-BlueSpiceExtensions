@@ -72,8 +72,16 @@ var BsActions = function() {
 		var self = this;
 
 		tinyMCE.activeEditor.on('nodeChange', function() {
-			self.disabled(tinyMCE.activeEditor.getParam("save_enablewhendirty", true) && !tinyMCE.activeEditor.isDirty());
+		    //HW: LV - Save nodeChange state between MW Editor and BSVisualEditor for active save button
+		    $(tinyMCE.activeEditor.getElement()).data("text-changed", true);
+		    self.disabled(
+				tinyMCE.activeEditor.getParam("save_enablewhendirty", true) && !tinyMCE.activeEditor.isDirty()
+		    );
 		});
+		//HW: LV - Save nodeChange state between MW Editor and BSVisualEditor for active save button
+		if($(tinyMCE.activeEditor.getElement()).data("text-changed")){
+		    tinyMCE.activeEditor.isNotDirty = false;
+		}
 	}
 
 	function postRenderCell() {
