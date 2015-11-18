@@ -182,8 +182,8 @@ class FlexiskinApi extends ApiBase {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( 'bs-flexiskin-api-error-missing-param', 'id' )->plain() ) );
 		}
 
-		$oStatus = BsFileSystemHelper::deleteFolder( "flexiskin" . DS . $iId );
-		if ( BsConfig::get( "MW::Flexiskin::Active" ) == $iId ) {
+		$oStatus = BsFileSystemHelper::deleteFolder( "flexiskin" . DS . $sId );
+		if ( BsConfig::get( "MW::Flexiskin::Active" ) == $sId ) {
 			BsConfig::set( "MW::Flexiskin::Active", "" );
 			BsConfig::saveSettings();
 		}
