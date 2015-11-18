@@ -33,5 +33,10 @@
 	"bs-namespacemanager-deletens-movepages": "Esta páxina moveuse dende o espazo de nomes \"$1\" ao espazo de nomes \"{{int:bs-ns_main}}\", xa que o espazo de nomes\"$1\" foi eliminado",
 	"bs-namespacemanager-deletens-deletepages": "Esta páxina foi eliminada, xa que o nome de espazos \"$1\" foi eliminado.",
 	"log-name-bs-namespace-manager": "Rexistro de xestión de espazos de nomes",
-	"log-description-bs-namespace-manager": "Este é un rexistro dos cambios nos espazos de nomes."
+	"log-description-bs-namespace-manager": "Este é un rexistro dos cambios nos espazos de nomes.",
+	"log-show-hide-bs-namespace-manager": "$1 o rexistro do xestor de espazos de nomes",
+	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|creou}} o espazo de nomes $4",
+	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|cambiou}} a configuración do espazo de nomes $4",
+	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|renomeou}} o espazo de nomes $4 a $5",
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|eliminou}} o espazo de nomes $4"
 }

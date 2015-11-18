@@ -91,5 +91,8 @@
 	"bs-review-confirm-delete-step": "¿Estás seguro de querer borrar este paso?",
 	"bs-review-confirm-delete-review": "¿Estás seguro de querer borrar esta revisión?",
 	"bs-review-error-insufficient-permissions": "No tienes permiso para ejecutar esta acción (se necesita «$1»).",
-	"echo-category-title-bs-review-complete-cat": "Notificación al completar un revisión"
+	"echo-category-title-bs-review-complete-cat": "Notificación al completar un revisión",
+	"notification-bs-review-payload-comment": "Comentario: \"$1\"",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|ha aceptado}} \"$2\"",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|ha rechazado}} \"$2\""
 }

@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"echo-category-title-bs-responsible-editors-action-cat": "जबाबदार संपादक - क्रिया",
+	"echo-category-title-bs-responsible-editors-assignment-cat": "जबाबदार संपादक - नेमलेली कामे",
+	"notification-bs-responsibleeditors-assign-summary": "[[User:$1|$1]] ने $3 वर, एक जबाबदार संपादक म्हणून {{GENDER:$1|आपली नेमणूक केली}}",
+	"notification-bs-responsibleeditors-assign-subject": "\"$2\" करीता जबाबदारी नेमून दिली",
+	"notification-bs-responsibleeditors-assign-body": "$1 ने आपणास \"$2\" या पानाकरीताची जबाबदारी {{GENDER:$1|नेमून दिली}}आपणया विकिवर सनोंद प्रवेशुन व खालील दुवा अनुसरुन त्या पानास उघडू शकता:$3. आपणास याबाबत काही प्रश्न विचारावयाचे असतील तर कृपया $1 ला ते कळवा.",
+	"notification-bs-responsibleeditors-revoke-summary": "[[User:$1|$1]] ने $3 करीताची जबाबदारी {{GENDER:$1|रद्द केली}}",
+	"notification-bs-responsibleeditors-revoke-subject": "\"$2\" वरची जबाबदारी रद्द केली",
+	"notification-bs-responsibleeditors-revoke-body": "$1 ने \"$2\" पानाकरीताची जबाबदारी {{GENDER:$1|रद्द केली}}आपण सनोंद प्रवेशुन व खालील दुवा अनुसरुन त्या पानास उघडू शकता:$3. आपणास याबाबत काही प्रश्न विचारावयाचे असतील तर कृपया $1 ला ते कळवा.",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]]ने $3 ला {{GENDER:$1|संपादित केले}}",
+	"notification-bs-responsibleeditors-change-subject": "$1 द्वारा \"$2\" हे पान {{GENDER:$1|संपादिल्या गेले}}",
+	"notification-bs-responsibleeditors-change-body": "\"$2\" हे पान, ज्यास आपणास जबाबदार संपादक म्हणून नेमण्यात आले होते, ते $1 ने संपादित केले आहे. या विकिवरील सनोंद  प्रवेशानंतर, आपण ते पान या दुव्याद्वारे उघडू शकता:$3",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] ने $3 {{GENDER:$1|वगळले}}",
+	"notification-bs-responsibleeditors-delete-subject": "\"$2\" हे पान $1 ने {{GENDER:$1|वगळले आहे}}",
+	"notification-bs-responsibleeditors-delete-body": "\"$2\" हे पान, ज्यास आपणास जबाबदार संपादक म्हणून नेमण्यात आले होते, ते $1 ने वगळले आहे. या विकिवरील सनोंद  प्रवेशानंतर, आपण ते पान या दुव्याद्वारे उघडू शकता:$3",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] ने $3 ला $5 मध्ये {{GENDER:$1|स्थानांतरीत केले}}",
+	"notification-bs-responsibleeditors-move-subject": "\"$2\" हे पान $1 द्वारे {{GENDER:$1|स्थानांतरीत केल्या गेले आहे}}",
+	"notification-bs-responsibleeditors-move-body": "\"$2\" हे पान, ज्यास आपणास जबाबदार संपादक म्हणून नेमण्यात आले आहे, ते $1 ने \"$4\" ला {{GENDER:$1|स्थानांतरीत केले आहे}}. या विकिवरील सनोंद  प्रवेशानंतर, आपण ते पान या दुव्याद्वारे उघडू शकता:$5"
+}

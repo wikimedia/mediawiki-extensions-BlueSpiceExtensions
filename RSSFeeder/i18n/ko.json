@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Revi"
 		]
 	},
+	"rssfeeder": "RSS 피드",
 	"bs-rssfeeder-pagetext": "다음 RSS 피드를 구독할 수 있습니다:",
 	"bs-rssfeeder-recent-changes": "최근 바뀜",
 	"bs-rssfeeder-pages": "문서",

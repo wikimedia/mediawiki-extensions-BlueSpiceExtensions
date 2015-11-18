@@ -7,5 +7,6 @@
 	"bs-aboutbluespice-desc": "Información sobre BlueSpice.",
 	"bs-aboutbluespice-about-bluespice": "Sobre BlueSpice",
 	"aboutbluespice": "Sobre BlueSpice",
-	"prefs-aboutbluespice": "Sobre BlueSpice"
+	"prefs-aboutbluespice": "Sobre BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Mostrar ligazón \"{{int:bs-aboutbluespice-about-bluespice}}\" no menú principal"
 }

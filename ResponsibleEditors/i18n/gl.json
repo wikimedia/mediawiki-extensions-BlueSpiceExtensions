@@ -58,5 +58,9 @@
 	"log-description-bs-responsible-editors": "Este é un rexistro de editores responsables de páxinas.",
 	"log-show-hide-bs-responsible-editors": "$1 rexistro de editores responsables",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|engadíu}} a $4 como {{GENDER:$4|editor|editora}} de $3",
-	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|eliminou}} a $4 como {{GENDER:$4|editor|editora}} de $3"
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|eliminou}} a $4 como {{GENDER:$4|editor|editora}} de $3",
+	"echo-category-title-bs-responsible-editors-assignment-cat": "Editores responsábeis - Tarefas",
+	"notification-bs-responsibleeditors-assign-subject": "Responsabilidade para \"$2\" asignada",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] {{GENDER:$1|editou}} $3",
+	"notification-bs-responsibleeditors-change-subject": "A páxina \"$2\" foi  {{GENDER:$1|modificada}} por $1"
 }

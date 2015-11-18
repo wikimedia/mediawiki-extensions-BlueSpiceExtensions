@@ -61,5 +61,6 @@
 	"log-description-bs-responsible-editors": "Este es un registro de los editores responsables de páginas.",
 	"log-show-hide-bs-responsible-editors": "$1 el registro de editores responsables",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|ha añadido}} a $4 como {{GENDER:$4|editor|editora}} de $3",
-	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|ha eliminado}} a $4 como {{GENDER:$4|editor|editora}} de $3"
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|ha eliminado}} a $4 como {{GENDER:$4|editor|editora}} de $3",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] ha {{GENDER:$1|editado}} $3"
 }

@@ -90,5 +90,6 @@
 	"bs-review-confirm-delete-step": "Vill du verkligen radera detta steg?",
 	"bs-review-confirm-delete-review": "Vill du verkligen radera denna utvärdering?",
 	"bs-review-error-insufficient-permissions": "Du saknar behörighet att utföra denna åtgärd (\"$1\" behövs).",
-	"echo-category-title-bs-review-complete-cat": "Meddelande när en granskning slutförs"
+	"echo-category-title-bs-review-complete-cat": "Meddelande när en granskning slutförs",
+	"notification-bs-review-payload-comment": "Kommentar: \"$1\""
 }
