@@ -4,5 +4,9 @@
 			"Purodha"
 		]
 	},
+	"bs-aboutbluespice-desc": "Aanjahbe övver et <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Blou Jewöhz“\">Blue-Spice</i>-Zohsazprojramme.",
+	"bs-aboutbluespice-about-bluespice": "Aanjahbe övver de <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Blou Jewöhz“\">Blue-Spice</i>-Zohsazprojramme.",
+	"aboutbluespice": "Övver de <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Blou Jewöhz“\">Blue-Spice</i>-Zohsazprojramme.",
+	"prefs-aboutbluespice": "Enschtällonge vun de <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Blou Jewöhz“\">Blue-Spice</i>-Zohsazprojramme.",
 	"bs-aboutbluespice-show-menu-links": "Donn dä Lengk \"{{int:bs-aboutbluespice-about-bluespice}}\" bovve un em Houpmenüh enmblände"
 }

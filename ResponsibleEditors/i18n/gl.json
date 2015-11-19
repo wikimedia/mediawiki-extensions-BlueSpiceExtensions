@@ -59,8 +59,14 @@
 	"log-show-hide-bs-responsible-editors": "$1 rexistro de editores responsables",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|engadíu}} a $4 como {{GENDER:$4|editor|editora}} de $3",
 	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|eliminou}} a $4 como {{GENDER:$4|editor|editora}} de $3",
+	"echo-category-title-bs-responsible-editors-action-cat": "Editores responsábeis - Accións",
 	"echo-category-title-bs-responsible-editors-assignment-cat": "Editores responsábeis - Tarefas",
 	"notification-bs-responsibleeditors-assign-subject": "Responsabilidade para \"$2\" asignada",
+	"notification-bs-responsibleeditors-revoke-subject": "Responsabilidades suprimidas para \"$2\"",
 	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] {{GENDER:$1|editou}} $3",
-	"notification-bs-responsibleeditors-change-subject": "A páxina \"$2\" foi  {{GENDER:$1|modificada}} por $1"
+	"notification-bs-responsibleeditors-change-subject": "A páxina \"$2\" foi  {{GENDER:$1|modificada}} por $1",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] {{GENDER:$1|eliminou}} $3",
+	"notification-bs-responsibleeditors-delete-subject": "A páxina \"$2\" foi {{GENDER:$1|borrada}} por $1",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|moveu}} $3 a $5",
+	"notification-bs-responsibleeditors-move-subject": "A páxina \"$2\" foi {{GENDER:$1|movida}} por $1"
 }
