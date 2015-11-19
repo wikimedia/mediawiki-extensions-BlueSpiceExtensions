@@ -138,7 +138,6 @@ body {
 div, p, ul, ol, dl {
 	orphans: 3 !important;
 	widows: 5 !important;
-	page-break-inside: avoid;
 }
 
 img, ul, ol, dl {
