@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"echo-category-title-bs-review-action-cat": "Revisión - Aiciones",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|refugó}} «$2»"
+}

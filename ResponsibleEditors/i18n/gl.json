@@ -65,8 +65,11 @@
 	"notification-bs-responsibleeditors-revoke-subject": "Responsabilidades suprimidas para \"$2\"",
 	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] {{GENDER:$1|editou}} $3",
 	"notification-bs-responsibleeditors-change-subject": "A páxina \"$2\" foi  {{GENDER:$1|modificada}} por $1",
+	"notification-bs-responsibleeditors-change-body": "A páxina \"$2\" na que está asignado como editor responsable foi {{GENDER:$1|editada}} por $1. Despois de conectarse á wiki, pode abrir a páxina con esta ligazón: $3",
 	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] {{GENDER:$1|eliminou}} $3",
 	"notification-bs-responsibleeditors-delete-subject": "A páxina \"$2\" foi {{GENDER:$1|borrada}} por $1",
+	"notification-bs-responsibleeditors-delete-body": "A páxina \"$2\" na que está asignado como editor responsable foi {{GENDER:$1|borrada}} por $1. Despois de conectarse á wiki, pode abrir a páxina con esta ligazón: $3",
 	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|moveu}} $3 a $5",
-	"notification-bs-responsibleeditors-move-subject": "A páxina \"$2\" foi {{GENDER:$1|movida}} por $1"
+	"notification-bs-responsibleeditors-move-subject": "A páxina \"$2\" foi {{GENDER:$1|movida}} por $1",
+	"notification-bs-responsibleeditors-move-body": "A páxina \"$2\" na que está asignado como editor responsable foi {{GENDER:$1|movida}} a \"$4\" por $1. Despois de conectarse á wiki, pode abrir a páxina con esta ligazón: $5"
 }
