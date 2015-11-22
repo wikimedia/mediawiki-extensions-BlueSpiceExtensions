@@ -29,5 +29,6 @@
 	"notification-bs-responsibleeditors-change-subject": "D'Säit \"$2\" gouf vum $1 {{GENDER:$2|geännert}}",
 	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] huet $3 {{GENDER:$1|geläscht}}",
 	"notification-bs-responsibleeditors-delete-subject": "D'Säit \"$2\" gouf vum $1 {{GENDER:$2|geläscht}}",
-	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] hat $3 op $5 {{GENDER:$1|geréckelt}}"
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] hat $3 op $5 {{GENDER:$1|geréckelt}}",
+	"notification-bs-responsibleeditors-move-subject": "D'Säit \"$2\" gouf vum $1 {{GENDER:$1|geréckelt}}"
 }
