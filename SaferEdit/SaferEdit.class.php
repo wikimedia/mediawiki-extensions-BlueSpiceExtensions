@@ -378,8 +378,7 @@ class SaferEdit extends BsExtensionMW {
 			case 'SaferEditIsSomeoneEditing':
 				$aSingleResult['success'] = true;
 				$aIntermediateEdits = $this->getIntermediateEditsForCurrentTitle( $oTitle );
-				$bHasUnsavedChanges = empty( $aData[0]['bUnsavedChanges'] ) || $aData[0]['bUnsavedChanges'] == false ? false : true;
-				if ( empty( $aIntermediateEdits ) || !$bHasUnsavedChanges ) {
+				if ( empty( $aIntermediateEdits ) ) {
 					return true;
 				}
 
