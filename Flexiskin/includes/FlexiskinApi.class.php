@@ -399,4 +399,7 @@ class FlexiskinApi extends ApiBase {
 		);
 	}
 
+	public function isReadMode() {
+		return false;
+	}
 }
