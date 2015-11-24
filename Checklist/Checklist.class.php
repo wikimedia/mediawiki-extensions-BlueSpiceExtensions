@@ -352,6 +352,9 @@ class Checklist extends BsExtensionMW {
 		if (isset($args['list'])) {
 			$aOptions = $this->getListOptions( $args['list'] );
 		}
+		if( !isset($args['value']) || $args['value'] === 'false' ) {
+			$args['value'] = '';
+		}
 
 		//$aOptions = array("grün", "blau", "gelb", "rot");
 		$sSelectColor = '';
@@ -360,6 +363,8 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = "id='bs-cb-".$this->getNewCheckboxId()."' ";
 			$sOut[] = "onchange='BsChecklist.change(this);' ";
 			$sOut[] = ">";
+
+			$bDefault = empty($args['value']) ? true : false;
 
 			foreach ( $aOptions as $sOption ) {
 				$aOptionSet = explode("|", $sOption);
@@ -373,7 +378,8 @@ class Checklist extends BsExtensionMW {
 				if (isset ($aOptionSet[1])) {
 					$sOut[] = "style='color:".$aOptionSet[1].";' ";
 				}
-				if (isset ($args['value'] ) && $args['value'] == $sOption ) {
+				if( $bDefault || $args['value'] == $sOption ) {
+					$bDefault = false;
 					$sOut[] = "selected='selected'";
 					if (isset ($aOptionSet[1])) {
 						$sSelectColor = "style='color:".$aOptionSet[1].";' ";
@@ -388,7 +394,7 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = "<input type='checkbox' ";
 			$sOut[] = "id='bs-cb-".$this->getNewCheckboxId()."' ";
 			$sOut[] = "onclick='BsChecklist.click(this);' ";
-			if (isset ($args['value'] ) && $args['value'] == 'checked') {
+			if( $args['value'] == 'checked' ) {
 				$sOut[] = "checked='checked' ";
 			}
 			$sOut[] = "/>";
