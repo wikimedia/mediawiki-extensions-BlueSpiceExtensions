@@ -537,6 +537,17 @@ class Blog extends BsExtensionMW {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
+		if ( $argsSCategory ) {
+			$aTables[] = 'categorylinks';
+			$aConditions['cl_to'] = $argsSCategory;
+			$aConditions[] = 'cl_from = page_id';
+		} else {
+			if ( $argsModeNamespace === 'ns' ) {
+				$aConditions['page_id'] = $aArticleIds;
+			}
+			$aConditions['page_namespace'] = $argsINamespace;
+		}
+
 		// get blog entries
 		if( $argsSSortBy == 'title' ) {
 			$aOptions['ORDER BY'] = 'page_title ASC';
@@ -569,17 +580,6 @@ class Blog extends BsExtensionMW {
 			$aTables[] = 'page_props';
 			$aConditions[] = 'rev_page = page_id';
 			$aJoins['page_props'] = array( 'LEFT JOIN', "pp_page = rev_page AND pp_propname = 'blogtime'" );
-		}
-
-		if ( $argsSCategory ) {
-			$aTables[] = 'categorylinks';
-			$aConditions['cl_to'] = $argsSCategory;
-			$aConditions[] = 'cl_from = page_id';
-		} else {
-			if ( $argsModeNamespace === 'ns' ) {
-				$aConditions['page_id'] = $aArticleIds;
-			}
-			$aConditions['page_namespace'] = $argsINamespace;
 		}
 
 		$res = $dbr->select(
