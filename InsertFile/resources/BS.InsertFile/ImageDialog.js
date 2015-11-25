@@ -352,7 +352,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.callParent(arguments);
 
-		this.hdnUrl.setValue( record.get('file_thumbnail_url') );
+		this.hdnUrl.setValue( record.get('file_url') );
 		//This is to avoid an overriding of the dimension that may have been
 		//set by this.setData()
 		if( grid.getStore().filters.items.length === 0 || grid.getStore().getCount() !== 1 ) {
