@@ -141,6 +141,9 @@ BsSaferEditEditMode = {
 	},
 	hasUnsavedChanges: function ( mode ) {
 		if ( typeof ( VisualEditor ) !== "undefined" && VisualEditor._editorMode === "tiny" ) {
+			if (!tinyMCE.activeEditor ) {
+				return null;
+			}
 			BsSaferEditEditMode.isUnsaved = tinyMCE.activeEditor.isDirty();
 			return BsSaferEditEditMode.isUnsaved;
 		}
