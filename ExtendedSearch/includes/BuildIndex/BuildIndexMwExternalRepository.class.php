@@ -99,12 +99,13 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 			if ( $this->sizeExceedsMaxDocSize( $oRepoFile->getSize(), $sFileName ) ) continue;
 
 			//Insert URL to Filename
+			$rURL = BsConfig::get( 'MW::ExtendedSearch::ExternalRepo' );
 			$sURL = BsConfig::get( 'MW::ExtendedSearch::ExternalRepoUrl' );
 			//Replace realpath with webserver url only if $sUrl is set, otherwise work as before
 			if($sURL == ""){
 			    $sRepoFileRealPath = "file:///" . $oRepoFile->getRealPath();
 			}else{
-			    $sRepoFileRealPath = $sURL . "/" . $oRepoFile->getFilename();
+			    $sRepoFileRealPath = $this->getFilePath( $rURL, $sURL, $oRepoFile );
 			}
 
 			$timestampImage = wfTimestamp( TS_ISO_8601, $oRepoFile->getMTime() );
@@ -122,6 +123,29 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 				// mode and ERROR_MSG_KEY are only passed for the case when addsFile fails
 				$this->oMainControl->addDocument( $doc, $this->mode, self::S_ERROR_MSG_KEY );
 			}
+		}
+	}
+	/**
+	 * Get Path for File
+	 */
+	public function getFilePath( $rURL, $sURL, $file ){
+		//Check if comma separated dir given
+		$arrRepos = explode( ',', $rURL );
+		$arrReposURL = explode( ',', $sURL );
+		//search repo-repoUrl pair and create right path
+		if(
+			sizeof( $arrRepos ) > 1 &&
+			sizeof( $arrReposURL ) > 1 &&
+			sizeof( $arrRepos ) == sizeof( $arrReposURL )
+		){
+			while( list( $key, $repo ) = each( $arrRepos ) ){
+				if( strstr( $file->getRealPath(), $repo ) ){
+				//end search with return if match
+				return $arrReposURL[$key] . "/" . $file->getFilename();
+				}
+			}
+	    } else {
+			return $sURL . "/" . $file->getFilename();
 		}
 	}
 
