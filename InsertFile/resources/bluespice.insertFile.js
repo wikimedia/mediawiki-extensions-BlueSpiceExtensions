@@ -181,7 +181,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 						classAddition += ' thumb';
 						styleAddition += ' border: 1px solid #CCC;'; //HARDCODED 180px
 						if ( !data.sizewidth ) {
-							styleAddition += ' width: '+imgAttrs['data-bs-width']+'px;'
+							styleAddition += ' width: '+imgAttrs['data-bs-width']+'px;';
 						}
 						//A thumb floats right by default
 						if( data.align == 'none' ) {
