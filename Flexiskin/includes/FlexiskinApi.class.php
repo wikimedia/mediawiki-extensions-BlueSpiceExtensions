@@ -117,6 +117,20 @@ class FlexiskinApi extends ApiBase {
 	 */
 	public function savePreview() {
 		global $wgScriptPath;
+
+		$sPreviewTimestamp = $this->getRequest()->getSessionData( 'PreviewTimestamp' );
+
+		$sId = $this->getMain()->getVal( 'id', '' );
+		if ( $sId == "" ) {
+			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( 'bs-flexiskin-api-error-missing-param', 'id' )->plain() ) );
+		}
+		$delVariablesStatus = BsFileSystemHelper::deleteFile( "variables." . $sPreviewTimestamp . ".tmp.less", "flexiskin" . DS . $sId );
+		$delConfStatus = BsFileSystemHelper::deleteFile( "conf." . $sPreviewTimestamp . ".tmp.json", "flexiskin" . DS . $sId );
+		$delScreenStatus = BsFileSystemHelper::deleteFile( "screen." . $sPreviewTimestamp . ".tmp.less", "flexiskin" . DS . $sId );
+
+		$sPreviewTimestamp = time();
+		$this->getRequest()->setSessionData( 'PreviewTimestamp', $sPreviewTimestamp );
+
 		$sId = $this->getMain()->getVal( 'id', '' );
 		if ( $sId == "" ) {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( 'bs-flexiskin-api-error-missing-param', 'id' )->plain() ) );
@@ -124,11 +138,17 @@ class FlexiskinApi extends ApiBase {
 		$aData = $this->getMain()->getVal( 'data', array() );
 		$aConfigs = FormatJson::decode( $aData );
 		$aFile = Flexiskin::generateStyleFile( $aConfigs );
-		$oStatus = BsFileSystemHelper::saveToDataDirectory( "variables.tmp.less", $aFile, "flexiskin" . DS . $sId );
+		$sScreen = Flexiskin::generateScreenFile( true );
+
+		$oStatus = BsFileSystemHelper::saveToDataDirectory( "variables." . $sPreviewTimestamp . ".tmp.less", $aFile, "flexiskin" . DS . $sId );
 		if ( !$oStatus->isGood() ) {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( "bs-flexiskin-api-error-save-preview", $this->getErrorMessage( $oStatus ) )->plain() ) );
 		}
-		$oStatus = BsFileSystemHelper::saveToDataDirectory( "conf.tmp.json", $aData, "flexiskin" . DS . $sId );
+		$oStatus = BsFileSystemHelper::saveToDataDirectory( "conf." . $sPreviewTimestamp . ".tmp.json", $aData, "flexiskin" . DS . $sId );
+		if ( !$oStatus->isGood() ) {
+			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( "bs-flexiskin-api-error-save-preview", $this->getErrorMessage( $oStatus ) )->plain() ) );
+		}
+		$oStatus = BsFileSystemHelper::saveToDataDirectory( "screen." . $sPreviewTimestamp . ".tmp.less", $sScreen, "flexiskin" . DS . $sId );
 		if ( !$oStatus->isGood() ) {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( "bs-flexiskin-api-error-save-preview", $this->getErrorMessage( $oStatus ) )->plain() ) );
 		}
@@ -164,13 +184,16 @@ class FlexiskinApi extends ApiBase {
 	 * @return Status The status object
 	 */
 	public function getConfigFromId( $sId, $bPreview = false ) {
+
+		$sPreviewTimestamp = $this->getRequest()->getSessionData('PreviewTimestamp');
+
 		if ( $bPreview ) {
-			$oStatus = BsFileSystemHelper::getFileContent( "conf.tmp.json", "flexiskin" . DS . $sId );
+			$oStatus = BsFileSystemHelper::getFileContent( "conf." . $sPreviewTimestamp . ".tmp.json", "flexiskin" . DS . $sId );
 		} else {
 			$oStatus = BsFileSystemHelper::getFileContent( "conf.json", "flexiskin" . DS . $sId );
 		}
 		return $oStatus;
-	}
+}
 
 	/**
 	 * Deletes a flexiskin defined by id via request parameter
@@ -199,6 +222,13 @@ class FlexiskinApi extends ApiBase {
 	 * @return String encoded result JSON string
 	 */
 	public function addFlexiskin() {
+
+		if ( $this->getRequest()->getSessionData( 'PreviewTimestamp' ) !== NULL ) {
+			$sPreviewTimestamp = $this->getRequest()->getSessionData( 'PreviewTimestamp' );
+		} else {
+			$sPreviewTimestamp = time();
+		}
+
 		$aData = FormatJson::decode( $this->getMain()->getVal( 'data', "" ) );
 		$oData = $aData[0];
 
@@ -243,7 +273,7 @@ class FlexiskinApi extends ApiBase {
 			$oStatus = BsFileSystemHelper::saveToDataDirectory( 'variables.less', Flexiskin::generateStyleFile( $sConfigFile ), "flexiskin" . DS . md5( $sId ) );
 		}
 		$oStatus = BsFileSystemHelper::saveToDataDirectory('screen.less', Flexiskin::generateScreenFile(), "flexiskin" . DS . md5($sId));
-		$oStatus = BsFileSystemHelper::saveToDataDirectory('screen.tmp.less', Flexiskin::generateScreenFile(true), "flexiskin" . DS . md5($sId));
+		$oStatus = BsFileSystemHelper::saveToDataDirectory('screen.' . $sPreviewTimestamp . '.tmp.less', Flexiskin::generateScreenFile(true), "flexiskin" . DS . md5($sId));
 		//tbd: check 1st, 2nd and 3rd status
 		if ( !$oStatus->isGood() ) {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( 'bs-flexiskin-error-fail-add-skin', $this->getErrorMessage( $oStatus ) )->plain() ) );
@@ -270,15 +300,23 @@ class FlexiskinApi extends ApiBase {
 	 */
 	public function resetFlexiskin() {
 		global $wgScriptPath;
+
+		$sPreviewTimestamp = $this->getRequest()->getSessionData( 'PreviewTimestamp' );
+		//$this->getRequest()->setSessionData("sPreviewSkin", NULL);
+
 		$sId = $this->getMain()->getVal( 'id', '' );
 		if ( $sId == "" ) {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( 'bs-flexiskin-api-error-missing-param', 'id' )->plain() ) );
 		}
-		$oStatus = BsFileSystemHelper::deleteFile( "variables.tmp.less", "flexiskin" . DS . $sId );
+		$oStatus = BsFileSystemHelper::deleteFile( "variables." . $sPreviewTimestamp . ".tmp.less", "flexiskin" . DS . $sId );
 		if ( !$oStatus->isGood() ) {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( "bs-flexiskin-reset-error", $this->getErrorMessage( $oStatus ) )->plain() ) );
 		}
-		$oStatus = BsFileSystemHelper::deleteFile( "conf.tmp.json", "flexiskin" . DS . $sId );
+		$oStatus = BsFileSystemHelper::deleteFile( "conf." . $sPreviewTimestamp . ".tmp.json", "flexiskin" . DS . $sId );
+		if ( !$oStatus->isGood() ) {
+			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( "bs-flexiskin-reset-error", $this->getErrorMessage( $oStatus ) )->plain() ) );
+		}
+		$oStatus = BsFileSystemHelper::deleteFile( "screen." . $sPreviewTimestamp . ".tmp.less", "flexiskin" . DS . $sId );
 		if ( !$oStatus->isGood() ) {
 			return FormatJson::encode( array( 'success' => false, 'msg' => wfMessage( "bs-flexiskin-reset-error", $this->getErrorMessage( $oStatus ) )->plain() ) );
 		}
