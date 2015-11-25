@@ -45,6 +45,48 @@ class PermissionManager extends BsExtensionMW {
 	/**
 	 * @var array
 	 */
+	public static $aSysopDefaultPermissions = array(
+		'block' => true,
+		'createaccount' => true,
+		'delete' => true,
+		'bigdelete' => true,
+		'deletedhistory' => true,
+		'deletedtext' => true,
+		'undelete' => true,
+		'editinterface' => true,
+		'editusercss' => true,
+		'edituserjs' => true,
+		'import' => true,
+		'importupload' => true,
+		'move' => true,
+		'move-subpages' => true,
+		'move-rootuserpages' => true,
+		'patrol' => true,
+		'autopatrol' => true,
+		'protect' => true,
+		'editprotected' => true,
+		'proxyunbannable' => true,
+		'rollback' => true,
+		'upload' => true,
+		'reupload' => true,
+		'reupload-shared' => true,
+		'unwatchedpages' => true,
+		'autoconfirmed' => true,
+		'editsemiprotected' => true,
+		'ipblock-exempt' => true,
+		'blockemail' => true,
+		'markbotedits' => true,
+		'apihighlimits' => true,
+		'browsearchive' => true,
+		'noratelimit' => true,
+		'movefile' => true,
+		'unblockself' => true,
+		'suppressredirect' => true,
+		'wikiadmin' => true
+	);
+	/**
+	 * @var array
+	 */
 	protected static $aGroups = array();
 	protected static $aBuiltInGroups = array(
 			'autoconfirmed', 'emailconfirmed', 'bot', 'sysop', 'bureaucrat', 'developer'
@@ -188,13 +230,23 @@ class PermissionManager extends BsExtensionMW {
 				unset( $wgGroupPermissions[ self::$sPmLockModeGroup ] );
 				$bSave = true;
 			}
+			// reset sysop group permissions
+			$wgGroupPermissions['sysop'] = self::$aSysopDefaultPermissions;
 
 			if ( is_array( $wgNamespacePermissionLockdown ) ) {
 				foreach ( $wgNamespacePermissionLockdown as $iNsIndex => $aNsRights ) {
 					foreach ( $aNsRights as $sRight => $aGroups ) {
-						if ( !in_array( self::$sPmLockModeGroup, $aGroups ) )
+						if ( !in_array( self::$sPmLockModeGroup, $aGroups ) && !in_array( 'sysop', $aGroups ) )
 							continue;
 						$key = array_search( self::$sPmLockModeGroup, $aGroups );
+						if ( $key !== false ) {
+							unset( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ][ $key ] );
+							if ( empty( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ] ) ) {
+								unset( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ] );
+							}
+							$bSave = true;
+						}
+						$key = array_search( 'sysop', $aGroups );
 						if ( $key !== false ) {
 							unset( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ][ $key ] );
 							if ( empty( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ] ) ) {
@@ -230,18 +282,26 @@ class PermissionManager extends BsExtensionMW {
 			foreach ( $aAvailablePermissions as $permissionName ) {
 				if ( !isset( $wgGroupPermissions[ self::$sPmLockModeGroup ][ $permissionName ] ) ) {
 					$wgGroupPermissions[ self::$sPmLockModeGroup ][ $permissionName ] = true;
+					$wgGroupPermissions[ 'sysop' ][ $permissionName ] = true;
 					$bSave = true;
 				}
 				if ( isset( $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] ) ) {
 					if ( !in_array( self::$sPmLockModeGroup, $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] ) ) {
 						$wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] = array_unique(
-								array_merge( $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ], array( self::$sPmLockModeGroup )
-								)
+							array_merge( $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ], array( self::$sPmLockModeGroup )
+							)
+						);
+						$bSave = true;
+					}
+					if ( !in_array( 'sysop', $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] ) ) {
+						$wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] = array_unique(
+							array_merge( $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ], array( 'sysop' )
+							)
 						);
 						$bSave = true;
 					}
 				} else {
-					$wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] = array( self::$sPmLockModeGroup );
+					$wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] = array( self::$sPmLockModeGroup, 'sysop' );
 					$bSave = true;
 				}
 			}
@@ -493,7 +553,11 @@ class PermissionManager extends BsExtensionMW {
 			if ( isset( $bsgPermissionConfig[ $sRight ][ 'preventLockout' ] ) ) {
 				$bIsSet = false;
 				if ( is_array( $aGroupPermissions ) ) {
-					foreach ( $aGroupPermissions as $aDataset ) {
+					foreach ( $aGroupPermissions as $sGroupName => $aDataset ) {
+						// no user can be in the lock mode group so we don't care if it has the right or not
+						if( $sGroupName == self::$sPmLockModeGroup ) {
+							continue;
+						}
 						if ( isset( $aDataset[ $sRight ] ) && $aDataset[ $sRight ] ) {
 							$bIsSet = true;
 							continue 2;
@@ -581,9 +645,13 @@ class PermissionManager extends BsExtensionMW {
 						$isReadLockdown = true;
 					}
 					// check if settings for any group changed
-					$aLocalDiffGroups = array_diff( $aGroups, $wgNamespacePermissionLockdown[ $sNsConstant ][ $sPermission ] );
-					foreach( $aLocalDiffGroups as $sDiffGroup ) {
-						$aDiffGroups[ $sDiffGroup ] = true;
+					if( isset( $wgNamespacePermissionLockdown[$sNsConstant] )
+						&& isset( $wgNamespacePermissionLockdown[$sNsConstant][$sPermission] )
+					) {
+						$aLocalDiffGroups = array_diff( $aGroups, $wgNamespacePermissionLockdown[ $sNsConstant ][ $sPermission ] );
+						foreach ( $aLocalDiffGroups as $sDiffGroup ) {
+							$aDiffGroups[ $sDiffGroup ] = true;
+						}
 					}
 				}
 				if ( $isReadLockdown ) {
