@@ -1412,6 +1412,7 @@ var BsWikiCode = function() {
 		//underline needs no conversion
 		text = text.replace(/<strike>(.*?)<\/strike>/gi, "<s>$1</s>");
 		text = text.replace(/<span style="text-decoration: line-through;">(.*?)<\/span>/gi, "<s>$1</s>");
+		text = text.replace(/<span style="text-decoration: underline;">(.*?)<\/span>/gi, "<u>$1</u>");
 		//sub and sup need no conversion
 
 		text = text.replace(/<br class="bs_emptyline_first"[^>]*>/gmi, "@@br_emptyline_first@@");
