@@ -60,12 +60,14 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 		this.currentData = obj;
 		this.cpIframe.autoEl.src =
 				mw.util.wikiScript() +"?"+ $.param({
-					flexiskin: this.currentData.skinId
+					flexiskin: this.currentData.skinId,
+					useskin: 'flexiskin'
 			});
 		if( this.rendered ) {
 			this.cpIframe.autoEl.src =
 				mw.util.wikiScript() +"?"+ $.param({
-					flexiskin: this.currentData.skinId
+					flexiskin: this.currentData.skinId,
+					useskin: 'flexiskin'
 			});
 		}
 		this.pnlMenu.setData( obj);

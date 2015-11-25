@@ -91,7 +91,7 @@ Ext.define( 'BS.Flexiskin.PreviewMenu', {
 				responseObj = Ext.decode( responseObj.flexiskin );
 				if ( responseObj.success === true ) {
 					me.parent.cpIframe.setLoading();
-					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
+					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&useskin=flexiskin" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
 					this.currentData.skinId = responseObj.id;
 				} else {
 					bs.util.alert( 'bs-flexiskin-saveskin-error',
@@ -172,7 +172,7 @@ Ext.define( 'BS.Flexiskin.PreviewMenu', {
 				if ( responseObj.success === true ) {
 					this.setLoading();
 					me.parent.cpIframe.setLoading();
-					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
+					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&useskin=flexiskin" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
 					responseObj.data.config = Ext.decode( responseObj.data.config );
 					this.setData( responseObj.data );
 				} else {
@@ -215,7 +215,7 @@ Ext.define( 'BS.Flexiskin.PreviewMenu', {
 				responseObj = Ext.decode( responseObj.flexiskin );
 				if ( responseObj.success === true ) {
 					me.parent.cpIframe.setLoading();
-					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
+					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&useskin=flexiskin" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
 				} else {
 					bs.util.alert( 'bs-flexiskin-saveskinpreview-error',
 							{

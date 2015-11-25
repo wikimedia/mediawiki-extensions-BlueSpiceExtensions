@@ -71,25 +71,33 @@ class Flexiskin extends BsExtensionMW {
 	 */
 	public function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
-		//$this->mCore->registerPermission('flexiskinchange');
 		BsConfig::registerVar( 'MW::Flexiskin::Active', "default", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-active', 'select' );
 		BsConfig::registerVar( 'MW::Flexiskin::Logo', "", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-logo', 'text' );
+
 		$sFlexiskin = $this->getRequest()->getVal( 'flexiskin', '' );
-		$sPreviewSkin = RequestContext::getMain()->getRequest()->getCookie( "sPreviewSkin", null, false );
+		if( $this->getRequest()->getSessionData( "sPreviewSkin" ) !== NULL){
+			$sPreviewSkin = $this->getRequest()->getSessionData( "sPreviewSkin" );
+		} else {
+			$sPreviewSkin = FALSE;
+		}
+
 		$oResponse = $this->getRequest()->response();
 		$oRequest = $this->getRequest();
 		//this statemenet is just for setting the cookie, this is why we need to do some checks here
 		//check if the request comes via index.php, flexiskin is set in query and if you are in view mode (block some ajax requests)
+
+		$sPreview = false;
+		$sFlexiskin = $sFlexiskin == '' ? $sPreviewSkin : $sFlexiskin;
 		if ( strpos( wfGetScriptUrl(), "index.php" ) !== false && $sFlexiskin !== "" && $oRequest->getVal( 'action', 'view' ) === 'view' ) {
 			$bIsTemp = (bool) $oRequest->getBool( 'preview', false );
 			//is it in preview mode?
-			//set the cookie
+			//set the session
 			if ( $bIsTemp ) {
-				$oResponse->setcookie( "sPreviewSkin", $sFlexiskin );
+				$this->getRequest()->setSessionData( "sPreviewSkin", $sFlexiskin );
 				$sPreviewSkin = $sFlexiskin;
 			//or just unset it
 			} else {
-				$oResponse->setcookie( "sPreviewSkin", false, 1 );
+				$this->getRequest()->setSessionData( "sPreviewSkin", NULL );
 				$sPreviewSkin = false;
 			}
 		}
@@ -123,13 +131,14 @@ class Flexiskin extends BsExtensionMW {
 		global $wgResourceModules;
 		global $wgScriptPath;
 
+		$sPreviewTimestamp = $this->getRequest()->getSessionData( 'PreviewTimestamp' );
 		$oStatus = BsFileSystemHelper::ensureDataDirectory( "flexiskin/" . $sFlexiskinId );
 		if ( !$oStatus->isGood() ) {
 			return false;
 		}
 
 		$sFilePath = BsFileSystemHelper::getDataPath("flexiskin/" . $sFlexiskinId);
-		$sFilePath .= "/screen" . ($bIsTemp ? '.tmp' : '') . ".less";
+		$sFilePath .= "/screen" . ($bIsTemp ? '.' . $sPreviewTimestamp . '.tmp' : '') . ".less";
 		$sFilePath = str_replace($wgScriptPath, "..", $sFilePath);
 
 		if ( !isset( $wgResourceModules['skins.bluespiceskin'] ) ||
@@ -142,6 +151,7 @@ class Flexiskin extends BsExtensionMW {
 				continue;
 			}
 			$wgResourceModules['skins.bluespiceskin']['styles'][$iIndex] = $sFilePath;
+
 			return true;
 		}
 		return false;
@@ -207,9 +217,10 @@ class Flexiskin extends BsExtensionMW {
 	}
 
 	public static function generateScreenFile($bIsTmp = false){
+		$sPreviewTimestamp = RequestContext::getMain()->getRequest()->getSessionData( 'PreviewTimestamp' );
 		$aScreenFile = array();
 		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/variables.less';";
-		$aScreenFile[] = "@import 'variables.".($bIsTmp ? "tmp." : "")."less';";
+		$aScreenFile[] = "@import 'variables.".($bIsTmp ? $sPreviewTimestamp . ".tmp." : "")."less';";
 		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/screen.layout.less';";
 		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/components.less';";
 		return implode("\n", $aScreenFile);
