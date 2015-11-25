@@ -29,6 +29,9 @@ $wgResourceModules['ext.bluespice.insertMagic'] = array(
 		'bs-insertmagic-label-second',
 		'bs-insertmagic-label-third',
 		'bs-insertmagic-label-desc'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 

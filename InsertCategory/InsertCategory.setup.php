@@ -22,6 +22,9 @@ $wgResourceModules['ext.bluespice.insertcategory'] = array(
 		'bs-insertcategory-failure',
 		'bs-insertcategory-hint',
 		'bs-insertcategory-panel-title'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 

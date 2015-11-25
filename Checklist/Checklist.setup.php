@@ -32,6 +32,9 @@ $wgResourceModules['ext.bluespice.checklist'] = array(
 		'bs-checklist-alert',
 		'bs-checklist-confirm-dirty-title',
 		'bs-checklist-confirm-dirty-text'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 

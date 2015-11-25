@@ -33,6 +33,9 @@ $wgResourceModules['ext.bluespice.insertlink'] = array(
 		'bs-insertlink-empty-field-text',
 		'bs-insertlink-applet-title',
 		'bs-insertlink-no-applet'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 
