@@ -1,6 +1,8 @@
 <?php
 BsExtensionManager::registerExtension( 'TopMenuBarCustomizer', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
 
+$bsgTopMenuCustomizerCheckRead = true;
+
 $aResourceModuleTemplate = array(
 	'dependencies' => 'ext.bluespice',
 	'localBasePath' => "$IP/extensions/BlueSpiceExtensions/TopMenuBarCustomizer/resources",

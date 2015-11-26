@@ -164,11 +164,16 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 
 	/**
 	 * Hook-Handle for MW hook BeforePageDisplay - Sets modules if needed
+	 * @global boolean $bsgTopMenuCustomizerCheckRead
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 * @return boolean - always true
 	 */
 	public function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		global $bsgTopMenuCustomizerCheckRead;
+		if( $bsgTopMenuCustomizerCheckRead && !$out->getUser()->isAllowed('read') ) {
+			return true;
+		}
 		$aNavigationSites = self::getNavigationSites();
 		if( empty($aNavigationSites) ) {
 			return true;
@@ -181,12 +186,19 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 
 	/**
 	 * Overrides existing bs_navigation_topbar
+	 * @global boolean $bsgTopMenuCustomizerCheckRead
 	 * @param SkinTemplate $sktemplate
 	 * @param BaseTemplate $tpl
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ){
-		if( !isset($tpl->data['bs_navigation_sites']) ) return true;
+		global $bsgTopMenuCustomizerCheckRead;
+		if( $bsgTopMenuCustomizerCheckRead && !$sktemplate->getUser()->isAllowed('read') ) {
+			return true;
+		}
+		if( !isset($tpl->data['bs_navigation_sites']) ) {
+			return true;
+		}
 
 		$aNavigationSites = self::getNavigationSites();
 		if( empty($aNavigationSites) ) {
