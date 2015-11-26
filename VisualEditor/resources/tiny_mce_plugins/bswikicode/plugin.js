@@ -752,6 +752,13 @@ var BsWikiCode = function() {
 		// in first pass, some double empty lines remain, therefore, a second pass is necessary
 		text = text.replace(/\n\n/gmi, "\n@@blindline@@\n");
 		text = text.replace(/\n\n/gmi, "\n@@blindline@@\n");
+
+		// images or links in tables may contain | in their attributes, esp. in bs-data-*. These
+		// need to be properly escaped in order not to interfere with table syntax
+		while (text.match(/(\<[^\>]*?)(\|)([^\>]*?\>)/g)) {
+			text = text.replace(/(\<[^\>]*?)(\|)([^\>]*?\>)/g, "$1@@pipe@@$3");
+		}
+
 		lines = text.split(/\n/);
 
 		for (var i = 0; i < lines.length; i++) {
@@ -931,6 +938,7 @@ var BsWikiCode = function() {
 
 		text = lines.join("\n");
 		text = text.replace(/@@blindline@@/gmi, '');
+		text = text.replace(/@@pipe@@/gmi, '|');
 
 		return text;
 	}
