@@ -145,6 +145,11 @@ var BsWikiCode = function() {
 		for (var i = 1; i < parts.length; i++) {
 			part = parts[i];
 			if (part.endsWith('px')) {
+				if( wikiImageObject.frame === true ) {
+					//See mediawiki.org/wiki/Help:Images#Size_and_frame
+					//frame ignores size
+					continue;
+				}
 				// 100x200px -> 100x200
 				unsuffixedValue = part.substr(0, part.length - 2);
 				// 100x200 -> [100],[200]
@@ -194,9 +199,9 @@ var BsWikiCode = function() {
 
 			if ($.inArray(part, ['frame', 'gerahmt']) !== -1) {
 				wikiImageObject.frame = true;
-				//wikiImageObject.sizewidth = false;
-				//wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc
-				//this was removed due to mediawiki behaviour, frame + sizes DOES work
+				wikiImageObject.sizewidth = false;
+				wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc (link above)
+
 				continue;
 			}
 
@@ -290,7 +295,8 @@ var BsWikiCode = function() {
 				'clear' : 'none', //by thumb'
 				'display': 'block',
 				'margin-left': 'auto',
-				'margin-right': 'auto'
+				'margin-right': 'auto',
+				'width': 'auto'
 			});
 		} else if (wikiImageObject.right === true) {
 			htmlImageObject.addClass('tright');
