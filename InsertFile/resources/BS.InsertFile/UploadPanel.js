@@ -37,6 +37,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		this.tfFileName = Ext.create('Ext.form.TextField', {
 			fieldLabel: mw.message('bs-insertfile-uploaddestfilelabel').plain(),
 			id: this.getId()+'-filename',
+			maskRe: /[^\/\?\*\"\#\<\>\|\\]/,
 			name: 'filename'
 		});
 		this.tfFileName.on( 'change', this.tfFileNameChange, this );
@@ -175,13 +176,13 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		this.tfFileName.fireEvent('change', this.tfFileName, value);
 	},
 
-	tfFileNameChange: function(field, value) {
+	tfFileNameChange: function( sender, newValue, oldValue, eOpts ) {
 		var Api = new mw.Api();
 		var me = this;
 		Api.get({
 			action: 'query',
 			format: 'json',
-			titles: 'File:' + value,
+			titles: 'File:' + newValue,
 			prop: 'imageinfo',
 			iiprop: 'uploadwarning',
 			indexpageids: ''
