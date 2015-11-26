@@ -12,5 +12,7 @@
 	"bs-responsibleeditors-columnnamespace": "Namespace",
 	"bs-responsibleeditors-rbdisplaymodeall": "Mostra tutte le pagine",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Seleziona un namespace",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "Non assegnato"
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Non assegnato",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] {{GENDER:$1|ha cancellato}} $3",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|ha spostato}} $3 a $5"
 }
