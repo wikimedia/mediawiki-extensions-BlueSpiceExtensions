@@ -147,7 +147,7 @@ var BsWikiCode = function() {
 			if (part.endsWith('px')) {
 				// 100x200px -> 100x200
 				unsuffixedValue = part.substr(0, part.length - 2);
-				// 100x200 -> [100],[200]
+				// 100x200 -> [100,200]
 				dimensions = unsuffixedValue.split('x');
 				if (dimensions.length === 2) {
 					wikiImageObject.sizewidth = (dimensions[0] === '') ? false : dimensions[0];
@@ -355,7 +355,7 @@ var BsWikiCode = function() {
 				if (attribute.startsWith('data-bs-') === false) {
 					continue;
 				}
-				property = attribute.substr(8, attribute.length);
+				property = attribute.substr(8, attribute.length); //cut off 'data-bs-'
 				wikiImageObject[property] = attributes[j].value;
 			}
 
@@ -411,16 +411,24 @@ var BsWikiCode = function() {
 				if ($.inArray(property, ['imagename', 'thumbsize']) !== -1) {
 					continue; //Filter non-wiki data
 				}
-				if ($.inArray(property, ['left', 'right', 'center']) !== -1) {
+				if ($.inArray(property, ['left', 'right', 'center', 'nolink']) !== -1) {
 					continue; //Not used stuff
 				}
 
 				value = wikiImageObject[property];
 				//"link" may be intentionally empty. Therefore we have to
 				//check it _before_ "value is empty?"
-				if (property == 'link' && value !== 'false' && value !== false ) {
-					wikiText.push(property + '=' + value);
-					continue;
+				if ( property === 'link' ) {
+					//If the 'nolink' flag is set, we need to discard a
+					//maybe set value of 'link'
+					if( wikiImageObject.nolink === 'true' ) {
+						wikiText.push( property + '=' );
+						continue;
+					}
+					if ( value === 'false' || value === false ) {
+						continue;
+					}
+					wikiText.push( property + '=' + value );
 				}
 
 				if( value == null || value == false
