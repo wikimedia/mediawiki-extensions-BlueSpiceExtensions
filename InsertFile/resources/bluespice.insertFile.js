@@ -176,7 +176,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					}
 					//TODO: This is ugly stuff from "bswikicode". Find better
 					//solution in the year 2017.
-					if( data.thumb == true || data.frame == true ) {
+					if( data.thumb === true || data.frame === true ) {
 						imgAttrs['data-bs-width'] = ( imgAttrs['width'] ) ? imgAttrs['width'] : 180; //HARDCODED 180px --> we should use user option!
 						classAddition += ' thumb';
 						styleAddition += ' border: 1px solid #CCC;'; //HARDCODED 180px
