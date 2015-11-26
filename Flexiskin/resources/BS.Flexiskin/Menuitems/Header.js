@@ -1,5 +1,6 @@
 Ext.define('BS.Flexiskin.Menuitems.Header', {
-	extend: 'BS.Panel',
+	extend: 'Ext.Panel',
+	require: ['BS.form.action.MediaWikiApiCall'],
 	title: mw.message('bs-flexiskin-headerheader').plain(),
 	layout: 'form',
 	currentData: {},
@@ -10,7 +11,7 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 			url: mw.util.wikiScript('api'),
 			uploadFormName: 'logo',
 			uploadFieldLabel: mw.message('bs-flexiskin-labellogoupload').plain(),
-			uploadLabelWidth: 50,
+			uploadLabelWidth: 100,
 			uploadResetButton: true
 		});
 		this.ufLogoUpload.on('reset', this.btnResetClick, this);
@@ -18,7 +19,6 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 		this.items = [
 			this.ufLogoUpload
 		];
-		this.afterInitComponent();
 		this.callParent(arguments);
 	},
 	btnUploadClick: function(el, form) {
@@ -59,6 +59,7 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 			},
 			scope: this
 		}));
+		this.ufLogoUpload.btnReset.enable();
 	},
 	btnResetClick: function(el) {
 		var me = this;
@@ -78,6 +79,7 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 			},
 			scope: this
 		});
+		this.ufLogoUpload.btnReset.disable();
 	},
 	afterInitComponent: function() {
 
@@ -91,6 +93,9 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 	},
 	setData: function(data) {
 		this.currentData = data;
+		if ( typeof ( data.config.logo ) !== 'undefined' && data.config.logo !== "" ) {
+			this.ufLogoUpload.btnReset.enable();
+		}
 		Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(data.config.logo);
 	}
 });

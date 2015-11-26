@@ -1,5 +1,6 @@
 Ext.define('BS.Flexiskin.Menuitems.Position', {
-	extend: 'BS.Panel',
+	extend: 'Ext.Panel',
+	require: ['BS.form.action.MediaWikiApiCall'],
 	title: mw.message('bs-flexiskin-headerposition').plain(),
 	layout: 'form',
 	currentData: {},
