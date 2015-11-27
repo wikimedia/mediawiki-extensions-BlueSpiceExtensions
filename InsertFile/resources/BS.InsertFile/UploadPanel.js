@@ -315,7 +315,32 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		//create a suitable JS object from the XML response to be compatible
 		var uploadTag = response.responseXML
 			.documentElement.getElementsByTagName('upload').item(0);
+
 		var imageinfoTag = uploadTag.getElementsByTagName('imageinfo').item(0);
+
+		var warningsTag = uploadTag.getElementsByTagName('warnings').item(0);
+		if( warningsTag !== null && imageinfoTag === null ) {
+			var duplicate = warningsTag.getElementsByTagName('duplicate');
+			if( duplicate !== null && duplicate.length > 0 ) {
+				var dupUrls = [];
+				$.each(duplicate, function() {
+					dupUrls.push( "File:"+this.textContent );
+				});
+				this.duplicateWarning({
+					titles: dupUrls
+				});
+				return;
+			}
+			// Unknown warnings
+			bs.util.alert(
+				this.getId()+'-warning',
+				{
+					title: mw.message('bs-insertfile-error').plain(),
+					text: $(warningsTag).html()
+				}
+			);
+			return;
+		}
 
 		var imageinfo = {};
 		if( imageinfoTag.attributes ) {
@@ -368,5 +393,58 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		}
 
 		return true;
+	},
+
+	duplicateWarning: function( params ) {
+		var Api = new mw.Api();
+		var me = this;
+		params = $.extend({
+			action: 'query',
+			format: 'json',
+			titles: [],
+			prop: 'imageinfo',
+			iiprop: 'url|uploadwarning',
+			iiurlwidth: 64,
+			indexpageids: ''
+		}, params);
+		params.titles = params.titles.join('|');
+
+		Api.get(params).done( function ( response ) {
+			var text = '';
+			var count = 0;
+			for( var i in response.query.pages ) {
+				if( i < 0 ) {
+					continue;
+				}
+				count ++;
+				var href = response.query.pages[i].imageinfo[0].descriptionurl;
+				var src = response.query.pages[i].imageinfo[0].thumburl;
+				var title = response.query.pages[i].title;
+				text += "<div class='thumbinner' style='width:62px; float:left'>"
+					+"<a target='_blank' class='image' href="+href+" title="+title+">"
+					+"<img src='"+src+"' />"
+					+"</a>"
+					+"</div>"
+				;
+			}
+
+			bs.util.alert(
+				me.getId()+'-existswarning',
+				{
+					titleMsg: 'bs-extjs-title-warning',
+					text: mw.message('file-exists-duplicate',count).text()
+						+ '<br />'
+						+ '<div style="clear:both">' + text + '</div>'
+				},
+				{
+					ok: function() {
+						//User is noticed. Now let's set the
+						//ignore warnings flag automatically
+						me.cbxWarnings.setValue(true);
+					},
+					scope: me
+				}
+			);
+		});
 	}
 });

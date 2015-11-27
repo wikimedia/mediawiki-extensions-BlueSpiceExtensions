@@ -81,6 +81,7 @@ $wgResourceModules['ext.bluespice.insertFile'] = array(
 		'bs-insertfile-error-no-imagelink',
 		'bs-insertfile-error-no-medialink',
 		'windows-nonascii-filename',
+		'file-exists-duplicate'
 	),
 	'dependencies' => array(
 		'ext.bluespice.extjs'
