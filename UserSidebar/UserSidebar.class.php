@@ -203,8 +203,11 @@ class UserSidebar extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		$aViews = array();
 		$oUser = $sktemplate->getUser();
+		if( !$oUser->isLoggedIn() ) {
+			return true;
+		}
+		$aViews = array();
 		$oCurrentTitle = $sktemplate->getTitle();
 		$sEditLink = '';
 		if ( $oUser->isLoggedIn() === false ) {
