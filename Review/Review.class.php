@@ -1122,6 +1122,7 @@ class Review extends BsExtensionMW {
 			$oReviewView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/Review/resources/images/' . $sIcon );
 			$oReviewView->setIconAlt( wfMessage( 'bs-review-review' )->plain() );
 			$oReviewView->setText( wfMessage( 'bs-review-review' )->plain() );
+			$oReviewView->setIconTogglesBody( true );
 		}
 
 		return $oReviewView;
@@ -1368,16 +1369,6 @@ class Review extends BsExtensionMW {
 		//if( $out->getTitle()->userCan('workflowread') == false ) return true;
 
 		$out->addModules( 'ext.bluespice.review' );
-
-		//PW TODO: find better way
-		//this always was loaded too late, no matter what dependency or position
-		$out->addScript(
-			'<script>' .
-			"$(document).on( 'BsStateBarRegisterToggleClickElements', function(event, aRegisteredToggleClickElements) {" .
-			"aRegisteredToggleClickElements.push($('#sb-Review'));" .
-			"});" .
-			'</script>'
-		);
 
 		$bUserCanEdit = $out->getTitle()->userCan( 'workflowedit' );
 		$out->addJsConfigVars( 'bsReviewUserCanEdit', $bUserCanEdit );

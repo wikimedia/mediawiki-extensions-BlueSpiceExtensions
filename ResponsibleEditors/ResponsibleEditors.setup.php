@@ -25,6 +25,7 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.responsibleEditors.styles'] = array(
 	'styles' => 'bluespice.responsibleEditors.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.responsibleEditors'] = array(

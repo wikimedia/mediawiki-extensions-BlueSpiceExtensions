@@ -29,7 +29,8 @@ $wgResourceModules['ext.bluespice.insertcategory'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.insertcategory.styles'] = array(
-	'styles' => 'bluespice.insertCategory.css'
+	'styles' => 'bluespice.insertCategory.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

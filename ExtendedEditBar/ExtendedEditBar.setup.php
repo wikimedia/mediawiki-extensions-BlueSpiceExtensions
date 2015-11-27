@@ -19,7 +19,8 @@ $wgResourceModules['ext.bluespice.extendeditbar'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendeditbar.styles'] = array(
-	'styles' => 'bluespice.extendedEditBar.css'
+	'styles' => 'bluespice.extendedEditBar.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

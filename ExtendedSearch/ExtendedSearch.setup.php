@@ -21,7 +21,8 @@ $wgResourceModules['ext.bluespice.extendedsearch.form'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete.style'] = array(
-	'styles' => 'bluespice.extendedSearch.autocomplete.css'
+	'styles' => 'bluespice.extendedSearch.autocomplete.css',
+	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete'] = array(
@@ -36,7 +37,8 @@ $wgResourceModules['ext.bluespice.extendedsearch.admin'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.specialpage.style'] = array(
-	'styles' => 'bluespice.extendedSearch.specialpage.css'
+	'styles' => 'bluespice.extendedSearch.specialpage.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.specialpage'] = array(

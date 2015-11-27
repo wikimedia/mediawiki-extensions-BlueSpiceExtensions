@@ -61,7 +61,8 @@ $wgResourceModules['ext.bluespice.visualEditor'] = array(
 $wgResourceModules['ext.bluespice.visualEditor.styles'] = array(
 	'styles' => array(
 		'bluespice.visualEditor.css',
-	)
+	),
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

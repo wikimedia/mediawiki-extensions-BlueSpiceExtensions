@@ -37,6 +37,7 @@ $wgResourceModules['ext.bluespice.insertMagic'] = array(
 
 $wgResourceModules['ext.bluespice.insertMagic.styles'] = array(
 	'styles' => 'bluespice.insertMagic.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

@@ -25,7 +25,8 @@ $aResourceModuleTemplate = array(
 $wgResourceModules['ext.bluespice.readers.styles'] = array(
 	'styles' => array(
 		'bluespice.readers.css'
-	)
+	),
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.readers.specialreaders'] = array(

@@ -22,7 +22,8 @@ $aResourceModuleTemplate = array(
 
 // Styles to be embedded by resource loader
 $wgResourceModules['ext.bluespice.boilerPlate.styles'] = array(
-	'styles' => 'bluespice.boilerPlate.less'
+	'styles' => 'bluespice.boilerPlate.less',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 // Scripts to be embedded by resource loader

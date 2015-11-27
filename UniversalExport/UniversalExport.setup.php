@@ -19,6 +19,7 @@ $wgSpecialPages['UniversalExport'] = 'SpecialUniversalExport';
 
 $wgResourceModules['ext.bluespice.universalExport.css'] = array(
 	'styles' => 'bluespice.universalExport.css',
+	'position' => 'top',
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/UniversalExport/resources'
 );
