@@ -1,86 +1,83 @@
 //Wire up buttons in ExtendedEditbar
-$(document).ready(function(){
-
-	$('#bs-editbutton-insertfile').click(function( e ){
-		e.preventDefault();
-		var me = this;
-		Ext.require('BS.InsertFile.FileDialog', function(){
-			BS.InsertFile.FileDialog.clearListeners();
-			BS.InsertFile.FileDialog.on( 'cancel', bs.util.selection.reset );
-			BS.InsertFile.FileDialog.on( 'ok', function( dialog, data ) {
-				var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
-				data.nsText = formattedNamespaces[bs.ns.NS_MEDIA];
-				data.caption = data.displayText;
-				delete( data.src );
-				var wikiLink = new bs.wikiText.Link( data );
-				bs.util.selection.restore( wikiLink.toString() );
-				BS.InsertFile.FileDialog.setData({});
-			});
-
-			var data = {};
-			var selection = bs.util.selection.save();
-			if( selection !== '' ) {
-				var wikiLink = new bs.wikiText.Link( selection );
-				if( wikiLink.getNsId() !== bs.ns.NS_MEDIA ) {
-					bs.util.alert(
-						'bs-insertfile-selection-alert',
-						{
-							textMsg: 'bs-insertfile-error-no-medialink'
-						}
-					);
-					return;
-				}
-				data = {
-					title: wikiLink.getTitle(),
-					displayText: wikiLink.getDisplayText(),
-					caption: wikiLink.getCaption() //Same as getDisplayText()
-				};
-			}
-
-			BS.InsertFile.FileDialog.show( me );
-			BS.InsertFile.FileDialog.setData( data );
+$(document).on( 'click', '#bs-editbutton-insertfile', function( e ){
+	e.preventDefault();
+	var me = this;
+	Ext.require('BS.InsertFile.FileDialog', function(){
+		BS.InsertFile.FileDialog.clearListeners();
+		BS.InsertFile.FileDialog.on( 'cancel', bs.util.selection.reset );
+		BS.InsertFile.FileDialog.on( 'ok', function( dialog, data ) {
+			var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
+			data.nsText = formattedNamespaces[bs.ns.NS_MEDIA];
+			data.caption = data.displayText;
+			delete( data.src );
+			var wikiLink = new bs.wikiText.Link( data );
+			bs.util.selection.restore( wikiLink.toString() );
+			BS.InsertFile.FileDialog.setData({});
 		});
 
-		return false;
-	});
-
-	$('#bs-editbutton-insertimage').click(function( e ){
-		e.preventDefault();
-		var me = this;
-		Ext.require('BS.InsertFile.ImageDialog', function(){
-			BS.InsertFile.ImageDialog.clearListeners();
-			BS.InsertFile.ImageDialog.on( 'cancel', bs.util.selection.reset );
-			BS.InsertFile.ImageDialog.on( 'ok',function( dialog, data ) {
-				var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
-				data.nsText = formattedNamespaces[bs.ns.NS_IMAGE];
-				delete( data.imagename ); //Not recognized by wikiText.Link
-				delete( data.src );
-				var wikiLink = new bs.wikiText.Link( data );
-				bs.util.selection.restore( wikiLink.toString() );
-				BS.InsertFile.ImageDialog.setData({});
-			});
-
-			var data = {};
-			var selection = bs.util.selection.save();
-			if( selection !== '' ) {
-				var wikiLink = new bs.wikiText.Link( selection );
-				if( wikiLink.getNsId() !== bs.ns.NS_IMAGE ) {
-					bs.util.alert(
-						'bs-insertfile-selection-alert',
-						{
-							textMsg: 'bs-insertfile-error-no-imagelink'
-						}
-					);
-					return;
-				}
-				data = wikiLink.getRawProperties();
+		var data = {};
+		var selection = bs.util.selection.save();
+		if( selection !== '' ) {
+			var wikiLink = new bs.wikiText.Link( selection );
+			if( wikiLink.getNsId() !== bs.ns.NS_MEDIA ) {
+				bs.util.alert(
+					'bs-insertfile-selection-alert',
+					{
+						textMsg: 'bs-insertfile-error-no-medialink'
+					}
+				);
+				return;
 			}
+			data = {
+				title: wikiLink.getTitle(),
+				displayText: wikiLink.getDisplayText(),
+				caption: wikiLink.getCaption() //Same as getDisplayText()
+			};
+		}
 
-			BS.InsertFile.ImageDialog.show( me );
-			BS.InsertFile.ImageDialog.setData( data );
-		});
-		return false;
+		BS.InsertFile.FileDialog.show( me );
+		BS.InsertFile.FileDialog.setData( data );
 	});
+
+	return false;
+});
+
+$(document).on( 'click', '#bs-editbutton-insertimage', function( e ){
+	e.preventDefault();
+	var me = this;
+	Ext.require('BS.InsertFile.ImageDialog', function(){
+		BS.InsertFile.ImageDialog.clearListeners();
+		BS.InsertFile.ImageDialog.on( 'cancel', bs.util.selection.reset );
+		BS.InsertFile.ImageDialog.on( 'ok',function( dialog, data ) {
+			var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
+			data.nsText = formattedNamespaces[bs.ns.NS_IMAGE];
+			delete( data.imagename ); //Not recognized by wikiText.Link
+			delete( data.src );
+			var wikiLink = new bs.wikiText.Link( data );
+			bs.util.selection.restore( wikiLink.toString() );
+			BS.InsertFile.ImageDialog.setData({});
+		});
+
+		var data = {};
+		var selection = bs.util.selection.save();
+		if( selection !== '' ) {
+			var wikiLink = new bs.wikiText.Link( selection );
+			if( wikiLink.getNsId() !== bs.ns.NS_IMAGE ) {
+				bs.util.alert(
+					'bs-insertfile-selection-alert',
+					{
+						textMsg: 'bs-insertfile-error-no-imagelink'
+					}
+				);
+				return;
+			}
+			data = wikiLink.getRawProperties();
+		}
+
+		BS.InsertFile.ImageDialog.show( me );
+		BS.InsertFile.ImageDialog.setData( data );
+	});
+	return false;
 });
 
 // Register buttons with hwactions plugin of VisualEditor
