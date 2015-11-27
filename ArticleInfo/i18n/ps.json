@@ -4,5 +4,16 @@
 			"Ahmed-Najib-Biabani-Ibrahimkhel"
 		]
 	},
-	"bs-articleinfo-all-categories-heading": "وېشنيزې"
+	"prefs-articleinfo": "د مخ مالومات",
+	"bs-articleinfo-last-edited-tooltip": "وروستی سمون",
+	"bs-articleinfo-last-editor": "وروستی {{GENDER:$1|سمونگر}}",
+	"bs-articleinfo-categories": "وېشنيزې",
+	"bs-articleinfo-all-categories-heading": "وېشنيزې",
+	"bs-articleinfo-templates": "کينډۍ",
+	"bs-articleinfo-subpages": "څېرمه مخونه",
+	"bs-articleinfo-statebartopcategories": "وېشنيزې",
+	"bs-articleinfo-statebartopsubpages": "څېرمه مخونه",
+	"bs-articleinfo-statebarbodycategories": "وېشنيزې",
+	"bs-articleinfo-statebarbodysubpages": "څېرمه مخونه",
+	"bs-articleinfo-statebarbodytemplates": "کينډۍ"
 }

@@ -4,8 +4,25 @@
 			"Ahmed-Najib-Biabani-Ibrahimkhel"
 		]
 	},
+	"bs-extendedsearch-facet-category": "وېشنيزه",
+	"bs-extendedsearch-facet-editors": "ليکوالان",
+	"bs-extendedsearch-facet-namespace": "نوم-تشيال",
+	"bs-extendedsearch-facet-namespace-files": "دوتنې",
+	"bs-extendedsearch-facet-type": "بڼه",
+	"bs-extendedsearch-files": "دوتنې پلټل",
+	"bs-extendedsearch-sort-by": "اوډون ډول:",
+	"bs-extendedsearch-sort-relevance": "اړوندتيا",
+	"bs-extendedsearch-sort-title": "سرليک",
+	"bs-extendedsearch-sort-ts": "وخت",
+	"bs-extendedsearch-sort-type": "ډول",
+	"bs-extendedsearch-pref-scope-text": "بشپړ متن",
+	"bs-extendedsearch-pref-scope-title": "سرليک",
+	"bs-extendedsearch-about-to-start": "پيلېږي...",
 	"bs-extendedsearch-status": "دريځ",
 	"bs-extendedsearch-statistics": "شمار",
+	"bs-extendedsearch-warning": "گواښنه",
 	"bs-extendedsearch-did-you-mean": "آيا  \"$1\" مو موخه وه؟",
+	"bs-extendedsearch-section": "برخه",
+	"bs-extendedsearch-morelikethis": "ورته مخونه",
 	"bs-extendedsearch-more": "نور"
 }

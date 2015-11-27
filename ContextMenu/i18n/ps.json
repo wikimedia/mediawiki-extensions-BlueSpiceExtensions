@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"bs-contextmenu-page-edit": "مخ سمول",
+	"bs-contextmenu-page-delete": "مخ ړنگول",
+	"bs-contextmenu-page-move": "مخ لېږدول",
+	"bs-contextmenu-page-history": "مخ پېښليک کتل",
+	"bs-contextmenu-page-protect": "مخ ژغورل",
+	"bs-contextmenu-page-info": "مخ مالومات کتل",
+	"bs-contextmenu-user-mail": "برېښليک لېږل",
+	"bs-contextmenu-file-download": "دوتنه ښکته کول"
+}
