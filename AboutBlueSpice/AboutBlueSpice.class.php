@@ -58,6 +58,8 @@ class AboutBlueSpice extends BsExtensionMW {
 		// Hooks
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSWikiAdminMenuItems' );
+		$this->setHook( 'BSTopMenuBarCustomizerRegisterNavigationSites' );
+		$this->setHook( 'SkinBuildSidebar' );
 
 		BsConfig::registerVar( 'MW::AboutBlueSpice::ShowMenuLinks', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-aboutbluespice-show-menu-links', 'toggle' );
 
@@ -83,6 +85,9 @@ class AboutBlueSpice extends BsExtensionMW {
 	 * @return string Link to the "About BlueSpice" special page
 	 */
 	public static function onBSWikiAdminMenuItems( &$aOutSortable ) {
+		if ( !BsConfig::get( 'MW::AboutBlueSpice::ShowMenuLinks' )) {
+			return true;
+		}
 		$oSpecialPage = SpecialPage::getTitleFor( 'AboutBlueSpice' );
 		$sLink = Html::element(
 				'a',
@@ -97,4 +102,46 @@ class AboutBlueSpice extends BsExtensionMW {
 		return true;
 	}
 
+	/**
+	 * Adds entry to navigation sites
+	 * @param array $aNavigationSites
+	 * @return boolean - always true
+	 */
+	public function onBSTopMenuBarCustomizerRegisterNavigationSites( &$aNavigationSites ) {
+		if ( !BsConfig::get( 'MW::AboutBlueSpice::ShowMenuLinks' )) {
+			return true;
+		}
+
+		$oSpecialPage = SpecialPage::getTitleFor( 'AboutBlueSpice' );
+
+		$aNavigationSites[] = array(
+			'id' => 'nt-aboutbluespice',
+			'href' => $oSpecialPage->getLocalURL(),
+			'active' => false,
+			'level' => 1,
+			'text' => wfMessage( 'bs-aboutbluespice-about-bluespice' )->plain()
+		);
+		return true;
+	}
+
+	/**
+	 * Adds entry to main navigation
+	 * @param object $oSkinTemplate - not used
+	 * @param array $aLinks - unrendered list of links
+	 * @return boolean - always true
+	 */
+	public function onSkinBuildSidebar( $oSkinTemplate, &$aLinks ) {
+		if ( !BsConfig::get( 'MW::AboutBlueSpice::ShowMenuLinks' )) {
+			return true;
+		}
+		$oSpecialPage = SpecialPage::getTitleFor( 'AboutBlueSpice' );
+
+		$aLinks[ "navigation" ][] = array(
+			'id' => 'n-aboutbluespice',
+			'href' => $oSpecialPage->getLocalURL(),
+			'text' => wfMessage( 'bs-aboutbluespice-about-bluespice' )->plain()
+		);
+
+		return true;
+	}
 }

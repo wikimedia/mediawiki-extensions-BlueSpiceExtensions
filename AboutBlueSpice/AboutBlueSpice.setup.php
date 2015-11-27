@@ -16,12 +16,8 @@ $aResourceModuleTemplate = array (
 );
 
 $wgResourceModules['ext.bluespice.aboutbluespice'] = array (
-	'scripts' => array (
-		'bluespice.aboutbluespice.js'
-	),
-	'messages' => array (
-		'bs-aboutbluespice-about-bluespice'
-	)
+	'styles' => 'bluespice.aboutbluespice.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResoureModuleTemplate );
