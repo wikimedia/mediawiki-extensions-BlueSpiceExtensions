@@ -88,7 +88,8 @@ $wgResourceModules['ext.bluespice.insertFile'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.insertFile.styles'] = array(
-	'styles' => 'bluespice.insertFile.css'
+	'styles' => 'bluespice.insertFile.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

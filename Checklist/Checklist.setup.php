@@ -40,6 +40,7 @@ $wgResourceModules['ext.bluespice.checklist'] = array(
 
 $wgResourceModules['ext.bluespice.checklist.styles'] = array(
 	'styles' => 'bluespice.checklist.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

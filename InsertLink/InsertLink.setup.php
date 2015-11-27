@@ -41,6 +41,7 @@ $wgResourceModules['ext.bluespice.insertlink'] = array(
 
 $wgResourceModules['ext.bluespice.insertlink.styles'] = array(
 	'styles' => 'bluespice.insertLink.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

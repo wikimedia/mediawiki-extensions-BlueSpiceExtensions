@@ -13,7 +13,8 @@ $aResourceModuleTemplate = array(
 );
 
 $wgResourceModules['ext.bluespice.review.styles'] = array(
-	'styles' => 'bluespice.review.css'
+	'styles' => 'bluespice.review.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.review'] = array(

@@ -11,7 +11,8 @@ $wgExtensionMessagesFiles['BlogNamespaces'] = __DIR__ . '/languages/Blog.namespa
 $wgResourceModules['ext.bluespice.blog'] = array(
 	'styles' => 'extensions/BlueSpiceExtensions/Blog/resources/bluespice.blog.css',
 	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'remoteBasePath' => &$GLOBALS['wgScriptPath'],
+	'position' => 'top'
 );
 
 $GLOBALS['wgAutoloadClasses']['Blog'] = __DIR__ . '/Blog.class.php';
