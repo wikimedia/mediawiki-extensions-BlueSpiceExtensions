@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Aursani"
 		]
 	},
-	"bs-aboutbluespice-desc": "نيري مصالحي بابت معلومات.",
-	"bs-aboutbluespice-about-bluespice": "نيري مصالحي بابت",
-	"aboutbluespice": "نيري مصالحي بابت",
-	"prefs-aboutbluespice": "نيري مصالحي بابت"
+	"bs-aboutbluespice-desc": "BlueSpice بابت معلومات.",
+	"bs-aboutbluespice-about-bluespice": "BlueSpice بابت",
+	"aboutbluespice": "BlueSpice بابت",
+	"prefs-aboutbluespice": "BlueSpice بابت"
 }
