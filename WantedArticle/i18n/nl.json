@@ -2,10 +2,45 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"SPQRobin"
+			"SPQRobin",
+			"Esketti",
+			"Siebrand"
 		]
 	},
 	"bs-wantedarticle-desc": "Een pagina aan een lijst met gewenste pagina's toevoegen",
+	"prefs-wantedarticle": "Niet-bestaande pagina's met koppelingen",
+	"bs-wantedarticle-ajax-error-no-parameter": "Er is geen paginanaam opgegeven.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "De voorgestelde pagina \"$1\" bestaat al.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "De pagina \"$1\" is al voorgesteld.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Suggestie \"$1\" toegevoegd.",
+	"bs-wantedarticle-success-suggestion-entered": "Uw suggestie \"$1\" is toegevoegd.",
+	"bs-wantedarticle-sort-value-unknown": "Geldige waarden zijn: titel en tijd.",
+	"bs-wantedarticle-order-value-unknown": "Geldige waarden zijn: ASC ({{int:bs-wantedarticle-pref-om-asc}}) en DESC ({{int:bs-wantedarticle-pref-om-desc}}).",
 	"bs-wantedarticle-page-removed": "De pagina \"$1\" is verwijderd.",
-	"bs-wantedarticle-pref-sort-title": "Titel"
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Voorstellen",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Aanmaken",
+	"bs-wantedarticle-single-textfield-defaulttext": "Paginanaam",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Maakt een lijst van gevraagde pagina ' s. Beschikbare configuratie-eigenschappen:",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>tellen</code>: Aantal pagina ' s weer te geven.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>titel</code>: Headline.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>bestellen</code>: Sorteervolgorde <code>ASC</code> ({{int:bs-wantedarticle-pref-om-asc}}) of <code>DESC</code> ({{int:bs-wantedarticle-pref-om-desc}})",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sorteren</code>: Sorteren op <code>titel</code> of <code>tijd</code>.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Output formaat <code>lijst</code> of <code>quene</code> (komma gescheiden).",
+	"bs-wantedarticle-tag-more-linktext": "Meer...",
+	"bs-wantedarticle-tag-default-title": "Niet-bestaande pagina's met koppelingen",
+	"bs-wantedarticle-pref-includelimit": "Aantal suggesties:",
+	"bs-wantedarticle-pref-deleteexisting": "Het verwijderen van bestaande items uit de lijst",
+	"bs-wantedarticle-pref-showcreate": "Toon link maken",
+	"bs-wantedarticle-pref-deleteoncreation": "Item verwijderen uit de lijst wanneer de pagina is gemaakt",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Sjabloon titel voor suggesties:",
+	"bs-wantedarticle-pref-sort": "Sorteren op:",
+	"bs-wantedarticle-pref-order": "Orde",
+	"bs-wantedarticle-pref-sort-time": "Tijd",
+	"bs-wantedarticle-pref-sort-title": "Naam",
+	"bs-wantedarticle-pref-order-asc": "Oplopend",
+	"bs-wantedarticle-pref-order-desc": "Aflopend",
+	"bs-wantedarticle-create-page": "Maak de pagina \"$1\".",
+	"bs-wantedarticle-suggest-page": "Stel voor de pagina \"$1\".",
+	"bs-wantedarticle-info-nothing-entered": "Geef een geldig paginanaam op.",
+	"bs-wantedarticle-title-invalid-chars": "De volgende {{PLURAL:$1|karakter|karakters}} is niet geldig voor gebruik op een pagina titel: $2"
 }

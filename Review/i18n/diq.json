@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Mirzali",
-			"Marmase"
+			"Marmase",
+			"Gorizon"
 		]
 	},
 	"prefs-review": "Çımraraviyarnayış",
 	"bs-review-review": "Çımraraviyarnayış",
 	"review": "Çımraraviyarnayış",
-	"bs-review-colstatus": "Weziyet"
+	"bs-review-colstatus": "Weziyet",
+	"echo-category-title-bs-review-action-cat": "Verasayış-Hereketi"
 }

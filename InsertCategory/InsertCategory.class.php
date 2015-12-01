@@ -104,7 +104,8 @@ class InsertCategory extends BsExtensionMW {
 	 */
 	public static function onBeforePageDisplay( &$out, &$skin ) {
 		$out->addModuleStyles('ext.bluespice.insertcategory.styles');
-		$out->addModules('ext.bluespice.insertcategory');
+		$out->addModules( 'ext.bluespice.insertcategory' );
+		$out->addJsConfigVars( 'BSInsertCategoryWithParents', BsConfig::get( 'MW::InsertCategory::WithParents' ) );
 		return true;
 	}
 
@@ -141,25 +142,33 @@ class InsertCategory extends BsExtensionMW {
 			: explode( ',', $sTags );
 
 		$oTitle = Title::newFromID( $iArticleId );
-		if ( $oTitle->exists() ) {
-			$sCat = BsNamespaceHelper::getNamespaceName( NS_CATEGORY );
-			$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle, Revision::RAW );
+		if ( is_null( $oTitle ) || !$oTitle->exists() ) {
+			$oRequest = RequestContext::getMain()->getRequest();
+			$sPageName = $oRequest->getVal( "page_name", "" );
+			$oTitle = Title::newFromText( $sPageName );
+		}
+		$sCat = BsNamespaceHelper::getNamespaceName( NS_CATEGORY );
+		$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle, Revision::RAW );
 
-			// Remove all before adding
-			$sPattern = '#^\[\['.$sCat.':.*?\]\]#im';
-			$sText = preg_replace( $sPattern, '', $sText );
+		// Remove all before adding
+		$sPattern = '#^\[\[' . $sCat . ':.*?\]\]#im';
+		$sText = preg_replace( $sPattern, '', $sText );
 
-			if ( !empty( $aTags ) ) {
-				foreach ( $aTags as $sTag ) {
-					$sText .= "\n[[".$sCat.":$sTag]]";
-				}
+		if ( !empty( $aTags ) ) {
+			foreach ( $aTags as $sTag ) {
+				$sText .= "\n[[" . $sCat . ":$sTag]]";
 			}
-
-			$oArticle = new Article( $oTitle );
-			$oArticle->doEdit( $sText, '', EDIT_UPDATE | EDIT_MINOR );
 		}
 
-		return FormatJson::encode( array( 'success' => true ) );
+		$oWikiPage = new WikiPage( $oTitle );
+		$oUser = RequestContext::getMain()->getUser();
+		$oContent = new WikitextContent( $sText );
+		$oStatus = $oWikiPage->doEditContent( $oContent, "", 0, false, $oUser );
+		if ( !$oStatus->isGood() ) {
+			return FormatJson::encode( array ( 'success' => false, 'msg' => $oStatus->getMessage() ) );
+		}
+
+		return FormatJson::encode( array ( 'success' => true ) );
 	}
 
 	/**

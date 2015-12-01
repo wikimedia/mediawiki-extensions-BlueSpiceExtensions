@@ -145,9 +145,14 @@ var BsWikiCode = function() {
 		for (var i = 1; i < parts.length; i++) {
 			part = parts[i];
 			if (part.endsWith('px')) {
+				if( wikiImageObject.frame === true ) {
+					//See mediawiki.org/wiki/Help:Images#Size_and_frame
+					//frame ignores size
+					continue;
+				}
 				// 100x200px -> 100x200
 				unsuffixedValue = part.substr(0, part.length - 2);
-				// 100x200 -> [100],[200]
+				// 100x200 -> [100,200]
 				dimensions = unsuffixedValue.split('x');
 				if (dimensions.length === 2) {
 					wikiImageObject.sizewidth = (dimensions[0] === '') ? false : dimensions[0];
@@ -194,9 +199,9 @@ var BsWikiCode = function() {
 
 			if ($.inArray(part, ['frame', 'gerahmt']) !== -1) {
 				wikiImageObject.frame = true;
-				//wikiImageObject.sizewidth = false;
-				//wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc
-				//this was removed due to mediawiki behaviour, frame + sizes DOES work
+				wikiImageObject.sizewidth = false;
+				wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc (link above)
+
 				continue;
 			}
 
@@ -290,7 +295,8 @@ var BsWikiCode = function() {
 				'clear' : 'none', //by thumb'
 				'display': 'block',
 				'margin-left': 'auto',
-				'margin-right': 'auto'
+				'margin-right': 'auto',
+				'width': 'auto'
 			});
 		} else if (wikiImageObject.right === true) {
 			htmlImageObject.addClass('tright');
@@ -355,7 +361,7 @@ var BsWikiCode = function() {
 				if (attribute.startsWith('data-bs-') === false) {
 					continue;
 				}
-				property = attribute.substr(8, attribute.length);
+				property = attribute.substr(8, attribute.length); //cut off 'data-bs-'
 				wikiImageObject[property] = attributes[j].value;
 			}
 
@@ -411,16 +417,24 @@ var BsWikiCode = function() {
 				if ($.inArray(property, ['imagename', 'thumbsize']) !== -1) {
 					continue; //Filter non-wiki data
 				}
-				if ($.inArray(property, ['left', 'right', 'center']) !== -1) {
+				if ($.inArray(property, ['left', 'right', 'center', 'nolink']) !== -1) {
 					continue; //Not used stuff
 				}
 
 				value = wikiImageObject[property];
 				//"link" may be intentionally empty. Therefore we have to
 				//check it _before_ "value is empty?"
-				if (property == 'link' && value !== 'false' && value !== false ) {
-					wikiText.push(property + '=' + value);
-					continue;
+				if ( property === 'link' ) {
+					//If the 'nolink' flag is set, we need to discard a
+					//maybe set value of 'link'
+					if( wikiImageObject.nolink === 'true' ) {
+						wikiText.push( property + '=' );
+						continue;
+					}
+					if ( value === 'false' || value === false ) {
+						continue;
+					}
+					wikiText.push( property + '=' + value );
 				}
 
 				if( value == null || value == false
@@ -752,6 +766,13 @@ var BsWikiCode = function() {
 		// in first pass, some double empty lines remain, therefore, a second pass is necessary
 		text = text.replace(/\n\n/gmi, "\n@@blindline@@\n");
 		text = text.replace(/\n\n/gmi, "\n@@blindline@@\n");
+
+		// images or links in tables may contain | in their attributes, esp. in bs-data-*. These
+		// need to be properly escaped in order not to interfere with table syntax
+		while (text.match(/(\<[^\>]*?)(\|)([^\>]*?\>)/g)) {
+			text = text.replace(/(\<[^\>]*?)(\|)([^\>]*?\>)/g, "$1@@pipe@@$3");
+		}
+
 		lines = text.split(/\n/);
 
 		for (var i = 0; i < lines.length; i++) {
@@ -931,6 +952,7 @@ var BsWikiCode = function() {
 
 		text = lines.join("\n");
 		text = text.replace(/@@blindline@@/gmi, '');
+		text = text.replace(/@@pipe@@/gmi, '|');
 
 		return text;
 	}
@@ -1412,6 +1434,7 @@ var BsWikiCode = function() {
 		//underline needs no conversion
 		text = text.replace(/<strike>(.*?)<\/strike>/gi, "<s>$1</s>");
 		text = text.replace(/<span style="text-decoration: line-through;">(.*?)<\/span>/gi, "<s>$1</s>");
+		text = text.replace(/<span style="text-decoration: underline;">(.*?)<\/span>/gi, "<u>$1</u>");
 		//sub and sup need no conversion
 
 		text = text.replace(/<br class="bs_emptyline_first"[^>]*>/gmi, "@@br_emptyline_first@@");
@@ -2142,7 +2165,7 @@ var BsWikiCode = function() {
 					var images = ed.getBody().getElementsByTagName('img');
 					for( var i = 0; i < images.length; i++ ) {
 						//We process only matching nodes
-						if ( decodeURI( images[i].src ) !== wgServer+_imageDummyUrl+'?'+data.file ) {
+						if ( decodeURI( images[i].src ) !== mw.config.get( "wgServer" ) + _imageDummyUrl + '?' + data.file ) {
 							continue;
 						}
 

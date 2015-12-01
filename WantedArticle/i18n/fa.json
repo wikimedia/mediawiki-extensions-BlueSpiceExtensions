@@ -2,9 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Dalba"
 		]
 	},
 	"bs-wantedarticle-ajax-error-no-parameter": "هیچ عنوان صفحه‌ای ارائه نشده‌است.",
-	"bs-wantedarticle-single-textfield-defaulttext": "عنوان صفحه"
+	"bs-wantedarticle-single-textfield-createbutton-text": "ساختن",
+	"bs-wantedarticle-single-textfield-defaulttext": "عنوان صفحه",
+	"bs-wantedarticle-tag-more-linktext": "بیشتر...",
+	"bs-wantedarticle-tag-default-title": "صفحه‌های مورد نیاز",
+	"bs-wantedarticle-pref-sort": "مرتب‌سازی بر پایهٔ:",
+	"bs-wantedarticle-pref-order": "سفارش:",
+	"bs-wantedarticle-pref-sort-time": "زمان",
+	"bs-wantedarticle-pref-sort-title": "عنوان",
+	"bs-wantedarticle-pref-order-asc": "صعودی",
+	"bs-wantedarticle-pref-order-desc": "نزولی"
 }

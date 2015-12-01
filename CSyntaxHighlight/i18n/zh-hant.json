@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"LNDDYL"
+			"LNDDYL",
+			"Cwlin0416"
 		]
 	},
+	"bs-csyntaxhighlight-desc": "加入自訂語法強調顯示的功能",
+	"prefs-csyntaxhighlight": "語法強調顯示器",
 	"bs-csyntaxhighlight-pref-theme": "主題：",
+	"bs-csyntaxhighlight-pref-gutter": "顯示行號",
 	"bs-csyntaxhighlight-pref-autolinks": "連結 URL",
 	"bs-csyntaxhighlight-pref-toolbar": "顯示工具列"
 }

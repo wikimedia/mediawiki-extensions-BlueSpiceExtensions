@@ -11,8 +11,10 @@ $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/Spe
 $GLOBALS['wgAutoloadClasses']['ResponsibleEditors'] = __DIR__ . '/ResponsibleEditors.class.php';
 $wgAutoloadClasses['BsResponsibleEditor'] = __DIR__ . '/includes/BsResponsibleEditor.php';
 $wgAutoloadClasses['SpecialResponsibleEditors'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.class.php';
+$wgAutoloadClasses['ApiResponsibleEditorsStore'] = __DIR__ . '/includes/api/ApiResponsibleEditorsStore.class.php';
+$wgAutoloadClasses['ApiResponsibleEditorsTasks'] = __DIR__ . '/includes/api/ApiResponsibleEditorsTasks.class.php';
+$wgAutoloadClasses['ResponsibleEditorFormatter'] = __DIR__ . '/includes/ResponsibleEditorFormatter.class.php';
 
-$wgSpecialPageGroups['ResponsibleEditors'] = 'bluespice';
 $wgSpecialPages['ResponsibleEditors'] = 'SpecialResponsibleEditors';
 
 $aResourceModuleTemplate = array(
@@ -23,7 +25,8 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.responsibleEditors.styles'] = array(
 	'styles' => 'bluespice.responsibleEditors.css',
-) + $aResourceModuleTemplate;;
+	'position' => 'top'
+) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.responsibleEditors'] = array(
 	'scripts' => 'bluespice.responsibleEditors.js',
@@ -90,8 +93,9 @@ $wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetListOfResponsibleEditorsForArt
 $wgAjaxExportList[] = 'ResponsibleEditors::ajaxDeleteResponsibleEditorsForArticle';
 $wgAjaxExportList[] = 'ResponsibleEditors::getResponsibleEditorsPortletData';
 
-$wgLogTypes[] = 'bs-responsibleeditors';
-$wgFilterLogTypes['bs-responsibleeditors'] = true;
+$wgLogTypes[] = 'bs-responsible-editors';
+$wgFilterLogTypes['bs-responsible-editors'] = true;
+$wgLogActionsHandlers['bs-responsible-editors/*'] = 'LogFormatter';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ResponsibleEditors::getSchemaUpdates';
 

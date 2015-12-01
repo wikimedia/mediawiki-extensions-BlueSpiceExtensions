@@ -3,17 +3,24 @@
 		"authors": [
 			"Sjoerddebruin",
 			"Romaine",
-			"Siebrand"
+			"Siebrand",
+			"Esketti"
 		]
 	},
-	"bs-formattinghelp-help-syntax": "Syntax",
+	"bs-formattinghelp-desc": "Hiermee wordt help-informatie voor de opmaak van de tekst",
+	"bs-formattinghelp-formatting": "Hulp bij opmaak",
+	"bs-formattinghelp-help-syntax": "Syntaxis",
 	"bs-formattinghelp-help-example-text": "Tekst",
 	"bs-formattinghelp-help-bold": "Vet",
+	"bs-formattinghelp-help-italic": "Cursief",
 	"bs-formattinghelp-help-whitespace": "Witruimte",
 	"bs-formattinghelp-help-nowiki": "Opmaak voorkomen",
 	"bs-formattinghelp-help-color": "Gekleurde tekst",
 	"bs-formattinghelp-help-headline": "Koptekst",
+	"bs-formattinghelp-help-linebreak": "Regeleinde",
 	"bs-formattinghelp-help-ul": "Ongeordende lijst",
+	"bs-formattinghelp-help-listitem": "Lijstitem",
+	"bs-formattinghelp-help-subitem": "Subitem",
 	"bs-formattinghelp-help-numberedlist": "Genummerde lijst",
 	"bs-formattinghelp-help-link": "Interne koppeling",
 	"bs-formattinghelp-help-link-alt": "Interne koppeling met alternatieve tekst",

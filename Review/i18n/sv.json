@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-review-desc": "Lägger arbetsflödesfunktionalitet till sidor",
@@ -14,6 +15,7 @@
 	"bs-review-denied-disagreed": "Minst en deltagare är inte överens.",
 	"bs-review-accepted": "Accepterat",
 	"bs-review-rejected": "Avvisad",
+	"bs-review-pending": "Pågående",
 	"bs-review-abstain": "Avstod",
 	"bs-review-review-finished": "Denna sida har utvärderats.",
 	"bs-review-reviewed-till": "Denna sida utvärderas från $1 till $2.",
@@ -31,6 +33,16 @@
 	"bs-review-mail-invite-header": "Vänligen utvärdera sidan \"$1\"",
 	"bs-review-mail-invite-body": "$1 har {{GENDER:$2|bjudit in}} dig att utvärdera sidan \"$3\".",
 	"bs-review-mail-comment": "En kommentar angavs: \"$1\".",
+	"bs-review-mail-accept-header": "$1 har {{GENDER:$2|accepterat}} $3",
+	"bs-review-mail-accept-body": "användaren $1 {{GENDER:$2|reagerade}} på din granskning och {{GENDER:$2|accepterade}} ändringarna.",
+	"bs-review-mail-deny-header": "$1 har {{GENDER:$2|avvisat}} $3",
+	"bs-review-mail-deny-body": "användaren $1 {{GENDER:$2|reagerade}} på din granskning och {{GENDER:$2|avvisade}} ändringarna.",
+	"bs-review-mail-deny-and-restart-header": "$1 har {{GENDER:$2|avvisat}} $3",
+	"bs-review-mail-deny-and-restart-body": "användaren $1 {{GENDER:$2|reagerade}} på din granskning och {{GENDER:$2|avvisade}} ändringarna. Granskningen kommer att startas om automatiskt.",
+	"bs-review-mail-finish-header": "Granskning slutförd",
+	"bs-review-mail-finish-body": "användaren $1 {{GENDER:$2|reagerade}} på din granskning av \"$3\" och {{GENDER:$2|accepterade}} ändringarna. Granskningen är nu slutförd.",
+	"bs-review-mail-finish-and-review-header": "$1 Granskning slutförd",
+	"bs-review-mail-finish-and-review-body": "användaren $1 {{GENDER:$2|reagerade}} på din granskning av \"$3\" och {{GENDER:$2|accepterade}} ändringarna. Granskningen är nu slutförd och har märkts som stabil.",
 	"bs-review-statebar-body-do-review": "Vänligen läs igenom denna sida",
 	"bs-review-i-agree": "Håller med",
 	"bs-review-i-dismiss": "Håller inte med",
@@ -43,6 +55,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|avslutade}} en utvärdering av sida \"$2\".",
 	"log-name-bs-review": "Utvärderingslogg",
 	"log-description-bs-review": "Detta är en logg med sidor som är eller var under utvärdering.",
+	"log-show-hide-bs-review": "$1 granskningslogg",
 	"bs-review-pref-checkowner": "Endast ägaren av en utvärdering kan ändra den",
 	"bs-review-pref-shownameintooltip": "Visa namnen på deltagarna",
 	"bs-review-pref-emailnotifyowner": "Meddela ägaren av en utvärdering om förändringar",
@@ -76,5 +89,7 @@
 	"bs-review-header-enddate": "Slut",
 	"bs-review-confirm-delete-step": "Vill du verkligen radera detta steg?",
 	"bs-review-confirm-delete-review": "Vill du verkligen radera denna utvärdering?",
-	"bs-review-error-insufficient-permissions": "Du saknar behörighet att utföra denna åtgärd (\"$1\" behövs)."
+	"bs-review-error-insufficient-permissions": "Du saknar behörighet att utföra denna åtgärd (\"$1\" behövs).",
+	"echo-category-title-bs-review-complete-cat": "Meddelande när en granskning slutförs",
+	"notification-bs-review-payload-comment": "Kommentar: \"$1\""
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-dashboards-desc": "Suteikia valdymo skydus vartotojams ir administratoriams",
+	"bs-specialadmindashboard-label": "Valdymo skydas",
+	"prefs-dashboards": "Valdymo skydai",
+	"admindashboard": "Administratorius skydelis",
+	"userdashboard": "Vartotojo skydelis",
+	"bs-dashboard-userportlet-calendar-title": "Kalendorius",
+	"bs-dashboard-userportlet-calendar-description": "Kalendorius"
+}

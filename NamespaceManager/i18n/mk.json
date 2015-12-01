@@ -30,5 +30,12 @@
 	"bs-namespacemanager-deletewarning": "Дали сигурно сакате да го избришете овој именски простор? Ова е неповратно.",
 	"bs-namespacemanager-pagepresent": "Страници во овој именски простор:",
 	"bs-namespacemanager-deletens-movepages": "Страницава е преместена од именскиот простор „$1“ во именскит простор „{{int:bs-ns_main}}“ бидејќи „$1“ е избришан.",
-	"bs-namespacemanager-deletens-deletepages": "Страницава е избришана бидејќи е избришан именскиот простор „$1“."
+	"bs-namespacemanager-deletens-deletepages": "Страницава е избришана бидејќи е избришан именскиот простор „$1“.",
+	"log-name-bs-namespace-manager": "Раководен дневник за именски простори",
+	"log-description-bs-namespace-manager": "Ова е дневник на измени направени во именски простори.",
+	"log-show-hide-bs-namespace-manager": "$1 раководен дневник за именски простори",
+	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|го создаде}} именскиот простор $4",
+	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|ги измени}} поставките за именскиот простор $4",
+	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|го преименуваше}} именскиот простор $4 во $5",
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|го отстрани}} именскиот простор $4"
 }

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-permissionmanager-btn-group-label": "그룹:",
+	"bs-permissionmanager-header-global": "위키",
+	"bs-permissionmanager-header-namespaces": "이름공간",
+	"bs-permissionmanager-header-group": "그룹",
+	"bs-permissionmanager-btn-save-label": "저장",
+	"bs-permissionmanager-btn-save-in-progress-label": "저장 중 ...",
+	"bs-permissionmanager-labeltemplates": "틀",
+	"bs-permissionmanager-labeltpled-desc": "설명"
+}

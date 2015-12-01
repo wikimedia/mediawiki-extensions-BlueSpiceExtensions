@@ -11,8 +11,6 @@ $wgAutoloadClasses['SpecialReaders']  = __DIR__.'/includes/specials/SpecialReade
 
 $wgSpecialPages['Readers'] = 'SpecialReaders';
 
-$wgSpecialPageGroups['Readers'] = 'bluespice';
-
 $wgAjaxExportList[] = 'Readers::getUsers';
 $wgAjaxExportList[] = 'Readers::getData';
 
@@ -27,7 +25,8 @@ $aResourceModuleTemplate = array(
 $wgResourceModules['ext.bluespice.readers.styles'] = array(
 	'styles' => array(
 		'bluespice.readers.css'
-	)
+	),
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.readers.specialreaders'] = array(
@@ -54,8 +53,8 @@ $wgResourceModules['ext.bluespice.readers.specialreaderspath'] = array(
 	),
 	'position' => 'bottom',
 	'messages' => array(
-		'bs-readers-header-username',
 		'bs-readers-header-readerspath',
-		'bs-readers-header-ts'
+		'bs-readers-header-ts',
+		'bs-readers-header-page'
 	)
 ) + $aResourceModuleTemplate;

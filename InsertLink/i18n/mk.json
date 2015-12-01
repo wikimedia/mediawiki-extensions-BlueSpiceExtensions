@@ -5,7 +5,9 @@
 		]
 	},
 	"bs-insertlink-desc": "Дијаложно поле за внесување на врска",
+	"prefs-insertlink": "Вметни врска",
 	"bs-insertlink": "Вметни врска",
+	"bs-insertlink-pref-enable-java": "Овозможи го прилогот за Java",
 	"bs-insertlink-button-title": "Вметни/измени врска",
 	"bs-insertlink-dialog-title": "Вметни врска",
 	"bs-insertlink-tab-wiki-page": "Викистраница",

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-whoisonline-desc": "Prikaže seznam trenutno prijavljenih uporabnikov",
+	"bs-whoisonline-nousers": "Nihče ni prijavljen.",
+	"bs-whoisonline-widget-title": "Kdo je prijavljen?",
+	"prefs-whoisonline": "Kdo je prijavljen?",
+	"bs-whoisonline-pref-limitcount": "Najvišje število prikazanih uporabnikov:",
+	"bs-whoisonline-pref-orderby": "Razvrsti po:",
+	"bs-whoisonline-pref-maxidletime": "Čas v sekundah, ko je uporabnik označen kot odjavljen.",
+	"bs-whoisonline-pref-orderby-time": "Čas delovanja",
+	"bs-whoisonline-pref-orderby-name": "Ime",
+	"bs-whoisonline-pref-interval": "Interval posodobitev v sekundah:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Prikaže število trenutno prijavljenih uporabnikov.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Prikaže pojavni meni trenutno prijavljenih uporabnikov.\n\nVeljavni atributi:\n;<code>tekst</code>: Tekst na katerega se veže pojavni meni."
+}

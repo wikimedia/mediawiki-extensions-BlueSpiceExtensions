@@ -1,10 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-csyntaxhighlight-desc": "Voegt aanpasbare accentueringsfunctionaliteit toe",
 	"prefs-csyntaxhighlight": "Syntaxhighlighter",
+	"bs-csyntaxhighlight-pref-theme": "Vormgeving:",
 	"bs-csyntaxhighlight-pref-gutter": "Regelnummers weergeven",
+	"bs-csyntaxhighlight-pref-autolinks": "Koppeling-URL's",
 	"bs-csyntaxhighlight-pref-toolbar": "Werkbalk weergeven"
 }

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-usersidebar-desc": "Doda fokusni zavihek v stransko vrstico",
+	"prefs-usersidebar": "Uporabniška stranska vrstica",
+	"bs-usersidebar-userpagesettings-link-title": "Uredi vsebino fokusa",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Uredi}} fokus"
+}

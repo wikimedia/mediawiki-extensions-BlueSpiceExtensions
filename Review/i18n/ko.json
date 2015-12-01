@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-review-desc": "문서에 워크플로우 함수를 추가합니다",
+	"prefs-review": "검토",
+	"bs-review-review": "검토",
+	"bs-review-accepted": "승인함",
+	"bs-review-rejected": "거부됨",
+	"bs-review-pending": "보류 중",
+	"bs-review-review-finished": "이 문서는 검토되었습니다.",
+	"bs-review-reviewed-till": "이 문서는 $1부터 $2까지 검토되었습니다.",
+	"bs-review-reviewed-till-extra": "$2 사용자가 {{GENDER:$1|생성함}}",
+	"bs-review-save-removed": "검토가 삭제되었습니다.",
+	"bs-review-mail-accept-header": "$1 사용자가 $3 문서를 {{GENDER:$2|승인했습니다}}",
+	"bs-review-mail-deny-header": "$1 사용자가 $3 문서를 {{GENDER:$2|거부했습니다}}",
+	"bs-review-mail-deny-and-restart-header": "$1 사용자가 $3 문서를 {{GENDER:$2|거부했습니다}}",
+	"bs-review-i-agree": "동의",
+	"bs-review-created-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|만들었습니다}}.",
+	"bs-review-modified-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|바꾸었습니다}}.",
+	"bs-review-deleted-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|삭제했습니다}}.",
+	"bs-review-approved-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|승인했습니다}}.",
+	"bs-review-denied-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|거부했습니다}}.",
+	"bs-review-finished-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|마쳤습니다}}.",
+	"log-name-bs-review": "검토 기록",
+	"log-show-hide-bs-review": "문서 검토 기록 $1",
+	"bs-review-header-startdate": "시작",
+	"bs-review-header-enddate": "끝"
+}

@@ -3,7 +3,8 @@
 		"authors": [
 			"Omid.koli",
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Dalba"
 		]
 	},
 	"bs-review-desc": "عملکرد بازبینی را می‌افزاید",
@@ -36,6 +37,7 @@
 	"bs-review-mail-accept-header": "$1 $3 را {{GENDER:$2|تائید کرد}}",
 	"bs-review-mail-deny-header": "$1 $3 را {{GENDER:$2|رد کرد}}",
 	"bs-review-mail-deny-and-restart-header": "$1 $3 را {{GENDER:$2|رد کرد}}",
+	"bs-review-mail-finish-header": "بازبینی پایان یافت",
 	"bs-review-statebar-body-do-review": "لطفاً این صفحه را بازبینی کنید",
 	"bs-review-i-agree": "موافقم",
 	"bs-review-i-dismiss": "مخالفم",
@@ -48,6 +50,7 @@
 	"bs-review-finished-review": "$1 یک بازبینی برای صفحهٔ «$2» {{GENDER:$1|تمام کرد}}.",
 	"log-name-bs-review": "سیاههٔ بازبینی",
 	"log-description-bs-review": "این سیاهه‌ای از صفحاتی است که تحت بازبینی هستند یا بودند.",
+	"log-show-hide-bs-review": "سیاههٔ بازبینی $1",
 	"bs-review-pref-checkowner": "فقط صاحب یک بازبینی می‌تواند تغییرش دهد",
 	"bs-review-pref-shownameintooltip": "نمایش نام‌های شرکت‌کنندگان",
 	"bs-review-pref-emailnotifyowner": "به صاحب یک بازبینی در مورد تغییرات اطلاع‌دادن",

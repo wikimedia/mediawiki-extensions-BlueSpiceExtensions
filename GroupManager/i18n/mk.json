@@ -23,5 +23,11 @@
 	"bs-groupmanager-removegroup-message-unknown": "Се јави неочекувана грешка. Обидете се повторно.",
 	"bs-groupmanager-lablename": "Име на групата:",
 	"bs-groupmanager-msgnoteditable": "Ова е системска група и затоа не може да се преименува.",
-	"bs-groupmanager-msgnotremovable": "Ова е системска група и затоа не може да се отстрани."
+	"bs-groupmanager-msgnotremovable": "Ова е системска група и затоа не може да се отстрани.",
+	"log-name-bs-group-manager": "Раководен дневник за групи",
+	"log-description-bs-group-manager": "Ова е дневник на промеи направени во кориснички групи.",
+	"log-show-hide-bs-group-manager": "$1 раководен дневник",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|ја создаде}} групата $4",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|ја преименуваше}} групата $4 во $5",
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|ја отстрани}} групата $4"
 }

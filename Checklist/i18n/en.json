@@ -25,5 +25,11 @@
 	"bs-checklist-dlg-new-prompt" : "Enter a list title",
 	"bs-checklist-alert" : "Caution!",
 	"bs-checklist-confirm-dirty-title" : "Unsaved changes!",
-	"bs-checklist-confirm-dirty-text" : "You made modifications to the checklist that are not yet saved. Are you sure you want to discard the changes?"
+	"bs-checklist-confirm-dirty-text" : "You made modifications to the checklist that are not yet saved. Are you sure you want to discard the changes?",
+	"log-name-bs-checklist": "Checkbox log",
+	"log-description-bs-checklist": "Log of changes on checkboxes on pages.",
+	"log-show-hide-bs-checklist": "$1 checkbox log",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|has checked}} checkbox #$4 on $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|has unchecked}} checkbox #$4 to $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|has selected}} the value \"$5\" in select box #$4 on $3"
 }

@@ -158,9 +158,9 @@ class GroupManager extends BsExtensionMW {
 		// TODO SU (04.07.11 11:40): global sind leider hier noch nötig, da werte in den globals geändert werden müssen.
 		global $wgGroupPermissions, $wgAdditionalGroups;
 
-		$output = FormatJson::encode( array(
+		$output = array(
 			'success' => true,
-			'message' => wfMessage( 'bs-groupmanager-grpadded' )->plain() )
+			'message' => wfMessage( 'bs-groupmanager-grpadded' )->plain()
 		);
 
 		if ( array_key_exists( $sGroup, $wgAdditionalGroups ) ) {
@@ -172,12 +172,25 @@ class GroupManager extends BsExtensionMW {
 		}
 
 		if ( !empty( $sGroup ) ) {
-			if ( isset( $wgGroupPermissions[$sGroup] ) ) {
-				return $output;
+			if ( !isset( $wgGroupPermissions[ $sGroup ] ) ) {
+				$wgAdditionalGroups[ $sGroup ] = true;
+				$output = BsExtensionManager::getExtension( 'GroupManager' )->saveData();
 			}
-			$wgAdditionalGroups[$sGroup] = true;
-			return FormatJson::encode( BsExtensionManager::getExtension( 'GroupManager' )->saveData() );
+			if( $output[ 'success' ] === true ) {
+				// Create a log entry for the creation of the group
+				$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
+				$oUser = RequestContext::getMain()->getUser();
+				$oLogger = new ManualLogEntry( 'bs-group-manager', 'create' );
+				$oLogger->setPerformer( $oUser );
+				$oLogger->setTarget( $oTitle );
+				$oLogger->setParameters( array(
+						'4::group' => $sGroup
+				) );
+				$oLogger->insert();
+			}
 		}
+
+		return FormatJson::encode( $output );
 	}
 
 	/**
@@ -243,6 +256,18 @@ class GroupManager extends BsExtensionMW {
 			}
 		}
 
+		// Create a log entry for the change of the group
+		$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
+		$oUser = RequestContext::getMain()->getUser();
+		$oLogger = new ManualLogEntry( 'bs-group-manager', 'modify' );
+		$oLogger->setPerformer( $oUser );
+		$oLogger->setTarget( $oTitle );
+		$oLogger->setParameters( array(
+				'4::group' => $sGroup,
+				'5::newGroup' => $sNewGroup
+		) );
+		$oLogger->insert();
+
 		return $output;
 	}
 
@@ -299,6 +324,17 @@ class GroupManager extends BsExtensionMW {
 				return FormatJson::encode( $result );
 			}
 		}
+
+		// Create a log entry for the removal of the group
+		$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
+		$oUser = RequestContext::getMain()->getUser();
+		$oLogger = new ManualLogEntry( 'bs-group-manager', 'remove' );
+		$oLogger->setPerformer( $oUser );
+		$oLogger->setTarget( $oTitle );
+		$oLogger->setParameters( array(
+				'4::group' => $sGroup
+		) );
+		$oLogger->insert();
 
 		return $output;
 	}

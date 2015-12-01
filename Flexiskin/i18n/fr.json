@@ -1,7 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"ChaudLeChocolat",
+			"Lucky",
+			"TomT0m"
 		]
 	},
 	"bs-flexiskin-desc": "Fournit une page pour gérer les habillages flexibles avec des options perosnnalisées",
@@ -45,5 +48,15 @@
 	"bs-flexiskin-labelwidth": "Largeur totale (en pixels)",
 	"bs-flexiskin-labelfullwidth": "Largeur maximale",
 	"bs-flexiskin-error-nameempty": "Veuillez entrer un nom valide pour l’habillage que vous souhaitez créer.",
-	"bs-flexiskin-error-templatenotexists": "Le modèle choisi n’existe pas."
+	"bs-flexiskin-error-templatenotexists": "Le modèle choisi n’existe pas.",
+	"bs-flexiskin-api-desc": "API de l'extension Bluespice Flexiskin",
+	"bs-flexiskin-api-type-desc": "Action à effectuer, par ex. \"supprimer\". Par défaut \"get\"",
+	"bs-flexiskin-api-mode-desc": "Le mode des actions, par exemple «config». Par défaut «flexiskin».",
+	"bs-flexiskin-api-id-desc": "L'identifiant dans le cas d'un Flexiskin (facultatif).",
+	"bs-flexiskin-api-data-desc": "Un tableau de données (en option).",
+	"bs-flexiskin-api-preview-desc": "Choisir d'afficher ou pas le mode d'aperçu (en option).",
+	"bs-flexiskin-api-example-desc": "Retourne la configuration actuelle d'un Flexiskin.",
+	"bs-flexiskin-api-error-save": "Une erreur s'est produite lors de la tentative de sauvegarde. Erreur: \"$1\"",
+	"bs-flexiskin-api-error-invalid-action": "Cette action n'existe pas.",
+	"bs-flexiskin-api-error-missing-param": "Le paramètre suivant est manquant: \"$1\""
 }

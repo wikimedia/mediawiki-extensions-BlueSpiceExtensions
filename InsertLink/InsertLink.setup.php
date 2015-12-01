@@ -33,11 +33,15 @@ $wgResourceModules['ext.bluespice.insertlink'] = array(
 		'bs-insertlink-empty-field-text',
 		'bs-insertlink-applet-title',
 		'bs-insertlink-no-applet'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.insertlink.styles'] = array(
 	'styles' => 'bluespice.insertLink.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

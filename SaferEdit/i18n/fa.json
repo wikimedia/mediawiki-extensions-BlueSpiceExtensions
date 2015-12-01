@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Ebraminio"
 		]
 	},
 	"bs-saferedit-desc": "ذخیره متوسط ویرایش‌ها",
@@ -14,7 +15,7 @@
 	"bs-saferedit-pref-interval": "فاصله نسخه بازیابی:",
 	"bs-saferedit-pref-shownameofeditinguser": "نمایش نام ویراستار کنونی",
 	"bs-saferedit-pref-warnonleave": "هنگامی که من صفحه ویرایش را با تغییرات ذخیره‌نشده ترک می‌کردم آگاه کن",
-	"bs-saferedit-pref-usese": "فعال‌کردن ویرایش امن‌تر",
+	"bs-saferedit-pref-usese": "فعال کردن ویرایش امن‌تر",
 	"bs-saferedit-statebartopsaferedit": "ویرایش امن‌تر",
 	"bs-saferedit-statebartopsafereditediting": "ویرایش امن‌تر - کسی در حال ویرایش است",
 	"bs-saferedit-lastsavedversion": "آخرین نسخه ذخیره‌شده از $1 - $2.",

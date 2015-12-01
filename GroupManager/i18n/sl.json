@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-groupmanager-desc": "Skrbniški vmesnik za dodajanje, urejanje in brisanje uporabniških skupin ter njihovih pravic",
+	"bs-groupmanager-grpexists": "Skupina že obstaja.",
+	"bs-groupmanager-grpadded": "Skupina je bila dodana.",
+	"bs-groupmanager-grpedited": "Skupina je bila urejena.",
+	"bs-groupmanager-grpremoved": "Skupina je bila odstranjena.",
+	"bs-groupmanager-label": "Skrbnik skupine",
+	"bs-groupmanager-invalid-name": "Ime skupine vsebuje {{PLURAL:$1|neveljaven|neveljavne}} {{PLURAL:$1|znak|znake}}: $2",
+	"bs-groupmanager-invalid-name-length": "Ime skupine ne more biti daljše od 16 znakov.",
+	"bs-groupmanager-invalid-name-numeric": "Ime skupine mora vsebovati vsaj en znak.",
+	"bs-groupmanager-headergroup": "Skupina",
+	"bs-groupmanager-tipremove": "Odstrani {{PLURAL:$1|1=skupino|2=skupini|skupine}}",
+	"bs-groupmanager-titlenewgroup": "Nova skupina",
+	"bs-groupmanager-titleeditgroup": "Urejanje skupine",
+	"bs-groupmanager-removegroup": "Ali ste prepričani, da želite odstraniti {{PLURAL:$1|1=to skupino|2=ti skupini|te skupine}}?",
+	"bs-groupmanager-removegroup-message-success": "Sledeč{{PLURAL:$1|1=a skupina je bila izbrisana|2=i skupini sta bili izbrisani|e skupine so bile izbrisane}}: $2",
+	"bs-groupmanager-removegroup-message-failure": "Sledeč{{PLURAL:$1|1=a skupina ne more biti izbrisana|2=i skupini ne moreta biti izbrisani|e skupine ne morejo biti izbrisane}}: $2",
+	"bs-groupmanager-removegroup-message-unknown": "Prišlo je do nepričakovane napake. Prosimo, poskusite ponovno.",
+	"bs-groupmanager-lablename": "Ime skupine:",
+	"bs-groupmanager-msgnoteditable": "Ta skupina je sistemska skupina in ne more biti preimenovana.",
+	"bs-groupmanager-msgnotremovable": "Ta skupina je sistemska skupina in ne more biti odstranjena."
+}

@@ -2,16 +2,36 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"SPQRobin"
+			"SPQRobin",
+			"Esketti",
+			"Siebrand",
+			"McDutchie"
 		]
 	},
+	"bs-blog-desc": "Geeft een lijst van pagina's weer in blogstijl",
 	"prefs-blog": "Blog",
+	"bs-blog-no-entries": "Er zijn geen blogberichten.",
 	"bs-blog-comments": "Reacties",
-	"bs-blog-read-more": "Lees meer",
+	"bs-blog-read-more": "meer lezen",
+	"bs-blog-trackback": "Trackback",
 	"bs-blog-permalink": "Permanente koppeling",
 	"bs-blog-show-all": "Alle berichten weergeven",
-	"bs-blog-form-inline-text": "Titel ...",
+	"bs-blog-form-inline-text": "Naam...",
+	"bs-blog-form-title-text": "Nieuw blogbericht aanmaken",
 	"bs-blog-form-button-text": "Aanmaken",
 	"bs-blog-blog": "Blog",
-	"bs-blog-pref-sortby": "Sorteren op:"
+	"bs-blog-pref-moreinnewwindow": "In nieuw venster openen om meer te lezen",
+	"bs-blog-pref-newentryfieldposition": "Positie voor het formulier nieuw blogbericht:",
+	"bs-blog-pref-showall": "Koppeling \"Alle berichten\" weergeven",
+	"bs-blog-pref-showinfo": "Informatie weergeven over het item",
+	"bs-blog-pref-showlimit": "Aantal blogberichten:",
+	"bs-blog-pref-shownewentryfield": "Formulier nieuw blogbericht weergeven",
+	"bs-blog-pref-showpermalink": "Permanente koppeling weergeven",
+	"bs-blog-pref-sortby": "Sorteren op:",
+	"bs-blog-pref-imagerendermode": "Afbeeldingen weergeven als:",
+	"bs-blog-pref-imagefloatdirection": "Tekstomloop: positie afbeelding",
+	"bs-blog-pref-maxentrycharacters": "Aantal woorden per bericht:",
+	"bs-blog-tag-blog-desc": "Blogberichten weergeven op elke pagina.",
+	"bs-blog-tag-blogtime-desc": "Dit label biedt de mogelijkheid om een aangepaste tijdstempel in te stellen voor blogberichten.",
+	"bs-blog-tag-blogtime-err": "Het formaat te worden YYYYMMDDHHmm d.w.z. voor 12. Jan. 2013 15:43 de tijdstempels eruit ziet: 201301121543"
 }

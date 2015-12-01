@@ -20,7 +20,7 @@
 	"bs-insertmagic-nocontentconvert": "En wikis con variantes de la lengua, no realizar ninguna conversión de contenido del lenguaje (carácter y fase) en presentación de página.",
 	"bs-insertmagic-notitleconvert": "En las wikis con variantes de idioma, no lleve a cabo la conversión de idioma en el título.",
 	"bs-insertmagic-end": "Marca explícitamente el final de la página para impedir que MediaWiki elimine los espacios en blanco (finales).",
-	"bs-insertmagic-index": "Indicar que los motores de búsqueda deben indizar la página.",
+	"bs-insertmagic-index": "Indicar a los motores de búsqueda que deben indizar la página.",
 	"bs-insertmagic-noindex": "Indicar a los motores de búsqueda que no indicen la página.",
 	"bs-insertmagic-staticredirect": "En las páginas de redirección, no permita que MediaWiki actualice automáticamente el enlace cuando alguien mueve una página y comprueba.",
 	"bs-insertmagic-currentyear": "Año actual",

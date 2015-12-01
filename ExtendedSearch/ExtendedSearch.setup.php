@@ -21,7 +21,8 @@ $wgResourceModules['ext.bluespice.extendedsearch.form'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete.style'] = array(
-	'styles' => 'bluespice.extendedSearch.autocomplete.css'
+	'styles' => 'bluespice.extendedSearch.autocomplete.css',
+	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.autocomplete'] = array(
@@ -36,7 +37,8 @@ $wgResourceModules['ext.bluespice.extendedsearch.admin'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.specialpage.style'] = array(
-	'styles' => 'bluespice.extendedSearch.specialpage.css'
+	'styles' => 'bluespice.extendedSearch.specialpage.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.specialpage'] = array(
@@ -96,7 +98,6 @@ $wgAutoloadClasses['ViewExtendedSearchResultEntry'] = __DIR__ . '/views/view.Ext
 
 // Specialpage and messages
 $wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.class.php';
-$wgSpecialPageGroups['SpecialExtendedSearch'] = 'bluespice';
 $wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/languages/SpecialExtendedSearch.alias.php';
 $wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch';
 

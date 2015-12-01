@@ -24,5 +24,11 @@
 	"bs-checklist-dlg-new-prompt": "输入列表标题",
 	"bs-checklist-alert": "小心！",
 	"bs-checklist-confirm-dirty-title": "未保存的更改！",
-	"bs-checklist-confirm-dirty-text": "您对清单做出修改但未保存。您确信您希望放弃更改么？"
+	"bs-checklist-confirm-dirty-text": "您对清单做出修改但未保存。您确信您希望放弃更改么？",
+	"log-name-bs-checklist": "复选框日志",
+	"log-description-bs-checklist": "页面上对复选框的更改的日志。",
+	"log-show-hide-bs-checklist": "$1复选框日志",
+	"logentry-bs-checklist-checked": "$1在$3{{GENDER:$2|勾选}}了复选框#$4",
+	"logentry-bs-checklist-unchecked": "$1{{GENDER:$2|取消勾选}}了复选框#$4至$3",
+	"logentry-bs-checklist-selected": "$1在$3的下拉选框#$4{{GENDER:$2|选择}}了值“$5”"
 }

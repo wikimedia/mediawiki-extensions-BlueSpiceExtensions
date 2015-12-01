@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Kaganer"
 		]
 	},
 	"bs-extendedsearch-desc": "Подключите поиск на Apache Solr (http://lucene.apache.org/solr/) для продвинутых функций поиска",
@@ -29,7 +30,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Индексирование специальных страниц",
 	"bs-extendedsearch-invalid-query": "Не удалось обработать запрос.",
 	"bs-extendedsearch-nosearchterm": "Пожалуйста, введите условие поиска.",
-	"bs-extendedsearch-result": "Поиск \"$1\" нашел $2 {{PLURAL:$2|результат|результатов|результаты}}.",
+	"bs-extendedsearch-result": "Поиск «$1» дал $2 {{PLURAL:$2|результат|результата|результатов}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 из $3 результат{{PLURAL:$3||ов}}",
 	"bs-extendedsearch-search-category": "Поиск в категории:",
 	"bs-extendedsearch-search-editors": "Искать авторов:",

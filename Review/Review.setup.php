@@ -13,13 +13,14 @@ $aResourceModuleTemplate = array(
 );
 
 $wgResourceModules['ext.bluespice.review.styles'] = array(
-	'styles' => 'bluespice.review.css'
+	'styles' => 'bluespice.review.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.review'] = array(
 	'scripts' => 'bluespice.review.js',
-	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
+		'bs-review-review',
 		'bs-review-btnmoveup',
 		'bs-review-btnmovedown',
 		'bs-review-colstatus',
@@ -37,6 +38,7 @@ $wgResourceModules['ext.bluespice.review'] = array(
 $wgResourceModules['ext.bluespice.review.overview'] = array(
 	'scripts' => 'bluespice.review.overview.js',
 	'dependencies' => array (
+		'ext.bluespice.extjs',
 		'ext.bluespice.review',
 		'mediawiki.Title'
 	),
@@ -56,10 +58,9 @@ $GLOBALS['wgAutoloadClasses']['Review'] = __DIR__ . '/Review.class.php';
 $wgAutoloadClasses['SpecialReview'] = __DIR__ . '/includes/specials/SpecialReview.class.php';
 $wgAutoloadClasses['BsReviewProcess'] = __DIR__ . '/includes/ReviewProcess.class.php';
 $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessStep.class.php';
+$wgAutoloadClasses['ReviewFormatter'] = __DIR__ . '/includes/ReviewFormatter.class.php';
 
 $wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.StateBarBodyElementReview.php';
-
-$wgSpecialPageGroups['Review'] = 'bluespice';
 
 $wgSpecialPages['Review'] = 'SpecialReview';
 

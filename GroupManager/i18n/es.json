@@ -22,8 +22,14 @@
 	"bs-groupmanager-removegroup": "¿Estás seguro de que quieres eliminar {{PLURAL:$1|este grupo|estos grupos}}?",
 	"bs-groupmanager-removegroup-message-success": "Se {{PLURAL:$1|eliminó el siguiente grupo|eliminaron los siguientes grupos}}: $2",
 	"bs-groupmanager-removegroup-message-failure": "No se {{PLURAL:$1|pudo|pudieron}} eliminar {{PLURAL:$1|el siguiente grupo|los siguientes grupos}}: $2",
-	"bs-groupmanager-removegroup-message-unknown": "Se produjo un error inesperado, por favor inténtalo otra vez.",
+	"bs-groupmanager-removegroup-message-unknown": "Se produjo un error inesperado. Inténtalo de nuevo.",
 	"bs-groupmanager-lablename": "Nombre del grupo:",
 	"bs-groupmanager-msgnoteditable": "Este grupo es un grupo de sistema y no se puede renombrar.",
-	"bs-groupmanager-msgnotremovable": "Este grupo es un grupo de sistema y no se puede eliminar."
+	"bs-groupmanager-msgnotremovable": "Este grupo es un grupo de sistema y no se puede eliminar.",
+	"log-name-bs-group-manager": "Registro del gestor de grupos",
+	"log-description-bs-group-manager": "Este es un registro de cambios en los grupos de usuarios.",
+	"log-show-hide-bs-group-manager": "$1 el registro del gestor de grupos",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|ha creado}} el grupo $4",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|ha renombrado}} el grupo $4 a $5",
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|ha eliminado}} el grupo $4"
 }

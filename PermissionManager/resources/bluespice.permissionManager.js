@@ -1,6 +1,6 @@
 Ext.Loader.setPath(
 	'BS.panel.Maximizable',
-	wgScriptPath + '/extensions/BlueSpiceExtensions/PermissionManager' +
+		mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/PermissionManager' +
 	'/resources/BS.panel/Maximizable.js'
 );
 

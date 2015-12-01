@@ -17,9 +17,6 @@ $wgAutoloadClasses['DashboardConfigTable'] = __DIR__.'/includes/DashboardConfigT
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';
 
-$wgSpecialPageGroups['AdminDashboard'] = 'bluespice';
-$wgSpecialPageGroups['UserDashboard']  = 'bluespice';
-
 $wgAjaxExportList[] = 'Dashboards::saveAdminDashboardConfig';
 $wgAjaxExportList[] = 'Dashboards::saveUserDashboardConfig';
 $wgAjaxExportList[] = 'Dashboards::saveTagDashboardConfig';
@@ -36,19 +33,27 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.dashboards'] = array(
 	'scripts' => array(
-		'bluespice.dashboards.js',
+		'bluespice.dashboards.main.js',
+	),
+	'messages' => array(
+		'tooltip-p-logo'
+	)
+) + $aResourceModuleTemplate;
+
+$wgResourceModules['ext.bluespice.dashboards.portletCatalog'] = array(
+	'scripts' => array(
+		'bluespice.dashboards.portletcatalog.js'
 	),
 	'styles' => array(
 		'bluespice.dashboards.css'
 	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
+	),
 	'messages' => array(
-		'tooltip-p-logo',
 		'bs-dashboards-addportlet',
 		'bs-dashboards-portlets',
 		'bs-extjs-rssfeeder-rss-title'
-	),
-	'dependencies' => array(
-		'ext.bluespice.extjs.BS.portal'
 	)
 ) + $aResourceModuleTemplate;
 
@@ -60,7 +65,7 @@ $wgResourceModules['ext.bluespice.dashboards.userDashboard'] = array(
 		//'extensions/BlueSpiceExtensions/Dashboards/resources/bluespice.dashboards.css',
 	),
 	'dependencies' => array(
-		'ext.bluespice.dashboards'
+		'ext.bluespice.dashboards.portletCatalog'
 	),
 	'messages' => array(
 		//Default portlets user
@@ -77,7 +82,7 @@ $wgResourceModules['ext.bluespice.dashboards.adminDashboard'] = array(
 		//'extensions/BlueSpiceExtensions/Dashboards/resources/bluespice.dashboards.css',
 	),
 	'dependencies' => array(
-		'ext.bluespice.dashboards'
+		'ext.bluespice.dashboards.portletCatalog'
 	),
 	'messages' => array(
 	)

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Esketti"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Het aanpassen van het menu bovenaan links",
+	"prefs-topmenubarcustomizer": "Menu customizer",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Aantal geneste lagen:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Vermeldingen op de belangrijkste laag:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Vermeldingen op sub-lagen:"
+}

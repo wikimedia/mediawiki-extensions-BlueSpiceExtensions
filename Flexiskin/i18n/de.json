@@ -3,7 +3,8 @@
 		"authors": [
 			"Tobias Weichart <weichart@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Purodha"
 		]
 	},
 	"bs-flexiskin-desc": "Ergänzt eine Seite zur Verwaltung von Flexiskins mit benutzerdefinierten Optionen",
@@ -47,5 +48,15 @@
 	"bs-flexiskin-labelwidth": "Gesamtbreite (in Pixel)",
 	"bs-flexiskin-labelfullwidth": "Maximale Breite",
 	"bs-flexiskin-error-nameempty": "Bitte gib einen validen Namen für den Skin den du erstellen möchtest ein.",
-	"bs-flexiskin-error-templatenotexists": "Das ausgewählte Template existiert nicht."
+	"bs-flexiskin-error-templatenotexists": "Das ausgewählte Template existiert nicht.",
+	"bs-flexiskin-api-desc": "API der BlueSpice-Erweiterung „Flexiskin“.",
+	"bs-flexiskin-api-type-desc": "Die auszuführende Aktion, z.B. 'delete'. Standard ist 'get'",
+	"bs-flexiskin-api-mode-desc": "Der Modus der Aktion, z.B. 'config'. Standard ist 'flexiskin'.",
+	"bs-flexiskin-api-id-desc": "Die ID des Flexiskins, optional.",
+	"bs-flexiskin-api-data-desc": "Ein Array aus Daten, optional.",
+	"bs-flexiskin-api-preview-desc": "Parameter für die Angabe, ob es der Preview-Modus ist oder nicht, optional.",
+	"bs-flexiskin-api-example-desc": "Liefert die aktuelle Konfiguration eines Flexiskins.",
+	"bs-flexiskin-api-error-save": "Beim Speichern ist ein Fehler aufgetreten (Grund: „$1“)",
+	"bs-flexiskin-api-error-invalid-action": "Diese Aktion existiert nicht.",
+	"bs-flexiskin-api-error-missing-param": "Der folgende Parameter fehlt: \"$1\""
 }

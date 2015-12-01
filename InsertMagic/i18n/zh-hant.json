@@ -4,8 +4,14 @@
 			"Cwlin0416"
 		]
 	},
+	"bs-insertmagic": "插入魔術字",
+	"bs-insertmagic-notoc": "隱藏目錄。",
 	"bs-insertmagic-server": "網域 URL。",
 	"bs-insertmagic-servername": "網域名稱。",
+	"bs-insertmagic-scriptpath": "相對 Script 路徑。",
+	"bs-insertmagic-stylepath": "相對樣式路徑。",
+	"bs-insertmagic-currentversion": "此 wiki 的 MediaWiki 版本。",
+	"bs-insertmagic-contentlanguage": "此 wiki 的預設介面語言。",
 	"bs-insertmagic-type-tags": "標籤",
 	"bs-insertmagic-type-variables": "變數",
 	"bs-insertmagic-label-desc": "描述"

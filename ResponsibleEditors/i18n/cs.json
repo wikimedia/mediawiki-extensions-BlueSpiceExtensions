@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cvanca",
+			"Mormegil"
+		]
+	},
+	"notification-bs-responsibleeditors-assign-subject": "Zodpovědnost za „$2“ přiřazena",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] {{GENDER:$1|editoval|editovala}} $3",
+	"notification-bs-responsibleeditors-change-subject": "$1 {{GENDER:$1|editoval|editovala}} stránku „$2“",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] {{GENDER:$1|smazal|smazala}} $3",
+	"notification-bs-responsibleeditors-delete-subject": "Stránku „$2“ {{GENDER:$1|smazal|smazala}} $1",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|přesunul|přesunula}} $3 na $5",
+	"notification-bs-responsibleeditors-move-subject": "Stránku „$2“ {{GENDER:$1|přesunul|přesunula}} $1"
+}

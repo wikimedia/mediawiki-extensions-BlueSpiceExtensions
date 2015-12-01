@@ -1,11 +1,33 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Esketti",
+			"Siebrand"
 		]
 	},
+	"bs-checklist-desc": "Biedt checklistfunctionaliteit",
+	"bs-checklist-button-checkbox-title": "Checklistelementen",
+	"bs-checklist-menu-insert-list-title": "Lijst invoegen",
+	"bs-checklist-menu-insert-checkbox": "Selectievakje",
+	"bs-checklist-dlg-insert-list-title": "Plaats een checklist",
+	"bs-checklist-dlg-insert-list-value-list": "Lijst met waarden",
+	"bs-checklist-tag-checklist-desc": "Maakt een selectievakje of selectieveld. Beschikbare eigenschappen:",
+	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> geeft selectielijst.",
+	"bs-checklist-tag-checklist-param-list": "<code>list</code>: naam van de sjabloon met de beschikbare waarden. Parameter <code>type</code> moet ingesteld worden op <code>list</code>.",
+	"bs-checklist-tag-checklist-param-value": "<code>waarde</code>: <code>checked</code> of een waarde uit de lijstsjabloon.",
 	"bs-checklist-dlg-new-list": "Nieuwe lijst aanmaken",
+	"bs-checklist-dlg-save-list": "Wijzigingen opslaan in een lijst",
+	"bs-checklist-dlg-items-label": "Items in lijst",
+	"bs-checklist-dlg-items-emptytext": "Geen items in deze lijst",
+	"bs-checklist-dlg-items-hint": "Om een nieuw item toe te voegen, typt u in het veld en drukt u op <kbd>Enter</kbd>.",
 	"bs-checklist-dlg-panel-title": "Beschikbare lijsten",
 	"bs-checklist-dlg-new-title": "Nieuwe lijst toevoegen",
-	"bs-checklist-confirm-dirty-title": "Niet-opgeslagen wijzigingen!"
+	"bs-checklist-dlg-new-prompt": "Geef een lijstnaam op",
+	"bs-checklist-alert": "Let op!",
+	"bs-checklist-confirm-dirty-title": "Niet-opgeslagen wijzigingen!",
+	"bs-checklist-confirm-dirty-text": "Uw aanpassingen aan de checklist zijn nog niet opgeslagen. Weet u zeker dat u de wijzigingen wilt negeren?",
+	"log-name-bs-checklist": "Logboek vinkvakjes",
+	"log-description-bs-checklist": "Logboek met wijzigingen in selectievakjes op pagina's.",
+	"log-show-hide-bs-checklist": "Logboek vinkvakjes $1"
 }

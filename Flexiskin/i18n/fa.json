@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Dalba"
 		]
 	},
 	"bs-flexiskin-desc": "عملکرد ایجاد پوسته را می‌افزاید",
@@ -45,5 +46,6 @@
 	"bs-flexiskin-labelwidth": "پهنای کامل (به پیکسل)",
 	"bs-flexiskin-labelfullwidth": "حداکثر پهنا",
 	"bs-flexiskin-error-nameempty": "لطفاً یک نام معتبر برای پوسته‌ای که می‌خواهید بسازید وارد کنید.",
-	"bs-flexiskin-error-templatenotexists": "قالب انتخاب‌شده وجود ندارد."
+	"bs-flexiskin-error-templatenotexists": "قالب انتخاب‌شده وجود ندارد.",
+	"bs-flexiskin-api-error-invalid-action": "این عمل وجود ندارد."
 }

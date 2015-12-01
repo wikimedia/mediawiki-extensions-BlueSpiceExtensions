@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-extensioninfo-desc": "Leß met Ennfommazjuhn övver de jelahde Zohsazprojramme",
+	"bs-extensioninfo-label": "Zohsazprojramme",
+	"bs-extensioninfo-software": "ẞoffwäer",
+	"bs-extensioninfo-version": "Väsjohn",
+	"extensioninfo": "Zohsazprojramme",
+	"bs-extensioninfo-headerextname": "Däm Zohsazprojramm singe Nahme",
+	"bs-extensioninfo-headerversion": "Väsjohn",
+	"bs-extensioninfo-headerdesc": "Beschrevve met",
+	"bs-extensioninfo-headerstatus": "Zohschtand",
+	"bs-extensioninfo-headerpackage": "Pakätt",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|Ällemänt|Ällemänte|Ällemänt}}"
+}

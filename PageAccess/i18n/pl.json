@@ -4,5 +4,6 @@
 			"Chrumps"
 		]
 	},
-	"bs-pageaccess-error-no-groups-given": "Grupy nie zostały określone."
+	"bs-pageaccess-error-no-groups-given": "Grupy nie zostały określone.",
+	"log-description-bs-pageaccess": "Jest to rejestr zmian w ustawieniach dostępu do strony."
 }

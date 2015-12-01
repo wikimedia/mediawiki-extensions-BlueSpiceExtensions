@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"2nd-player"
 		]
 	},
 	"bs-extendedsearch-desc": "検索機能を拡張する Apache Solr (http://lucene.apache.org/solr/) ベースの検索プラグイン",
@@ -34,6 +35,7 @@
 	"bs-extendedsearch-pref-defscopeuser": "既定の検索対象:",
 	"bs-extendedsearch-pref-scope-text": "全文",
 	"bs-extendedsearch-pref-scope-title": "ページ名",
+	"bs-extendedsearch-pref-externalrepo-url": "外部ディレクトリのURL:",
 	"bs-extendedsearch-pref-solrserviceurl": "Solr の URL:",
 	"bs-extendedsearch-pref-setfocus": "フォーカスを検索フォームに自動的に移動 (本文ページのみ)",
 	"bs-extendedsearchadmin-label": "検索オプション",

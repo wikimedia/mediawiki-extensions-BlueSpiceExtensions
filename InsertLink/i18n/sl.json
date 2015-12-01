@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alojz.tic",
+			"Skalcaa",
+			"Dbc334"
+		]
+	},
+	"bs-insertlink-desc": "Pogovorno okno za vnos povezave",
+	"prefs-insertlink": "Vstavi povezavo",
+	"bs-insertlink": "Vstavi povezavo",
+	"bs-insertlink-pref-enable-java": "Omogoči javansko aplikacijo",
+	"bs-insertlink-button-title": "Vstavi/uredi povezavo",
+	"bs-insertlink-dialog-title": "Vstavi povezavo",
+	"bs-insertlink-tab-wiki-page": "Wiki stran",
+	"bs-insertlink-tab-ext-link": "Zunanja povezava",
+	"bs-insertlink-tab-email": "Povezava e-pošte",
+	"bs-insertlink-tab-ext-file": "Povezava na datoteko",
+	"bs-insertlink-label-page": "Stran",
+	"bs-insertlink-label-link": "Povezava",
+	"bs-insertlink-label-mail": "E-poštni naslov",
+	"bs-insertlink-label-description": "Opis",
+	"bs-insertlink-label-file": "Datoteka",
+	"bs-insertlink-label-searchfile": "Iskanje ...",
+	"bs-insertlink-select-a-page": "Izberite cilj ...",
+	"bs-insertlink-select-a-namespace": "(Strani)",
+	"bs-insertlink-empty-field-text": "Če želite vstaviti povezavo, morate navesti cilj.",
+	"bs-insertlink-no-applet": "Appleta ni mogoče naložiti. Prosimo, preverite vašo namestitev Jave."
+}

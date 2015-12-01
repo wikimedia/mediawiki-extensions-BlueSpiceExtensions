@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Sujiniku"
 		]
 	},
 	"bs-responsibleeditors-pref-activatednamespaces": "有効にする名前空間:",
@@ -19,5 +20,11 @@
 	"bs-responsibleeditors-columnnamespace": "名前空間",
 	"bs-responsibleeditors-rbdisplaymodeall": "すべてのページを表示",
 	"bs-responsibleeditors-cbnamespacesemptytext": "名前空間を選択",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "未割り当て"
+	"bs-responsibleeditors-columneesponsibleeditornotset": "未割り当て",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]]が$3を{{GENDER:$1|編集しました}}",
+	"notification-bs-responsibleeditors-change-subject": "ページ「$2」は$1によって削除されました",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]]が$3を{{GENDER:$1|消去しました}}",
+	"notification-bs-responsibleeditors-delete-subject": "ページ「$2」は$1によって削除されました",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]]が$3を$5に{{GENDER:$1|移動しました}}",
+	"notification-bs-responsibleeditors-move-subject": "ページ「$2」は$1によって移動されました"
 }

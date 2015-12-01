@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cvanca",
+			"Mormegil"
+		]
+	},
+	"notification-bs-review-payload-comment": "Komentář: „$1“",
+	"notification-bs-review-assign-subject": "Zkontrolujte prosím stránku „$2“",
+	"notification-bs-review-accept-summary": "[[User:$1|$1]] {{GENDER:$1|přijal|přijala}} obsah stránky $3",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|přijal|přijala}} \"$2\"",
+	"notification-bs-review-deny-summary": "[[User:$1|$1]] {{GENDER:$1|odmítl|odmítla}} obsah v $3",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|odmítl|odmítla}} „$2“",
+	"notification-bs-review-deny-and-restart-subject": "$1 {{GENDER:$1|odmítl|odmítla}} „$2“",
+	"notification-bs-review-finish-summary": "[[User:$1|$1]] {{GENDER:$1|dokončil|dokončila}} kontrolu $3",
+	"notification-bs-review-finish-subject": "$1 {{GENDER:$1|dokončil|dokončila}} kontrolu „$2“",
+	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|dokončil|dokončila}} kontrolu „$2“"
+}

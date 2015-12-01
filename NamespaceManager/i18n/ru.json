@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Striking Blue"
+			"Striking Blue",
+			"Kaganer"
 		]
 	},
 	"bs-namespacemanager-desc": "Административный интерфейс для добавления, правки и удаления имён",
@@ -23,7 +24,7 @@
 	"bs-namespacemanager-tipadd": "Добавить пространство имён",
 	"bs-namespacemanager-tipedit": "Редактировать пространство имён",
 	"bs-namespacemanager-tipremove": "Удалить пространство имён.",
-	"bs-namespacemanager-msgnoteditabledelete": "Это пространство имён является системным и не может быть удалено.",
+	"bs-namespacemanager-msgnoteditabledelete": "Это системное пространство имён, которое не может быть удалено.",
 	"bs-namespacemanager-labelnsname": "Название пространства имён",
 	"bs-namespacemanager-willdelete": "Будет удалено",
 	"bs-namespacemanager-willmove": "Будет переименовано в «{{int:bs-ns_main}}».",

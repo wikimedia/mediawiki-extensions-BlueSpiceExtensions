@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alojz.tic",
+			"Skalcaa"
+		]
+	},
+	"bs-interwikilinks-desc": "Skrbniški vmesnik za dodajanje, urejanje in brisanje notranjih povezav wiki.",
+	"bs-interwikilinks-invalid-pfx-spc": "Predpona je neveljavna. Prosimo, ne uporabljajte presledkov.",
+	"bs-interwikilinks-invalid-url-spc": "URL ni veljaven. Prosimo, ne uporabljajte presledkov.",
+	"bs-interwikilinks-label": "Interwiki povezave",
+	"bs-interwikilinks-link-created": "Interwiki povezava je bila ustvarjena.",
+	"bs-interwikilinks-link-added": "Interwiki povezava je bila dodana.",
+	"bs-interwikilinks-link-deleted": "Interwiki povezava je bila izbrisana.",
+	"bs-interwikilinks-nooldpfx": "Prejšnja predpona ni bila najdena.",
+	"bs-interwikilinks-nopfx": "Prosimo, priskrbite predpono.",
+	"bs-interwikilinks-nourl": "Prosimo, priskrbite URL.",
+	"bs-interwikilinks-pfxtoolong": "Predpona je predolga. Prosimo, uporabite največ 32 znakov.",
+	"bs-interwikilinks-pfxexists": "Ta predpona že obstaja.",
+	"bs-interwikilinks-headerprefix": "Predpona",
+	"bs-interwikilinks-titleaddinterwikilink": "Dodajanje interwiki povezave",
+	"bs-interwikilinks-titleeditinterwikilink": "Urejanje interwiki povezave",
+	"bs-interwikilinks-labelprefix": "Predpona",
+	"bs-interwikilinks-titledeleteinterwikilink": "Brisanje interwiki povezave",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Ali ste prepričani, da želite izbrisati to interwiki povezavo?",
+	"bs-interwikilinks-insertlink-tabtitle": "Povezava v drug wiki",
+	"bs-interwikilinks-insertlink-labelprefix": "Predpona",
+	"bs-interwikilink-select-a-prefix": "Izberite predpono"
+}

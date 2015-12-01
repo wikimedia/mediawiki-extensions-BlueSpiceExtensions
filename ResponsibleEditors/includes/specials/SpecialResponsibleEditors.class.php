@@ -99,7 +99,6 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 
 		$aRemovedEditorIds   = array_diff($aCurrentEditorIds, $aEditors);
 		$aNewEditorIds       = array_diff($aEditors, $aCurrentEditorIds);
-		$aUntouchedEditorIds = array_intersect($aCurrentEditorIds, $aEditors);
 
 		if( !empty($aNewEditorIds) && BsConfig::get('MW::ResponsibleEditors::AddArticleToREWatchLists') == true ) {
 			foreach($aNewEditorIds as $iUserId) {
@@ -132,85 +131,40 @@ class SpecialResponsibleEditors extends BsSpecialPage {
 		}
 
 		$dbw->commit();
-		self::notifyAffectedUsers( $aNewEditorIds, $aRemovedEditorIds, $aUntouchedEditorIds, $iArticleId );
+
+		$oTitle = Title::newFromID( $iArticleId );
+		$oUser = RequestContext::getMain()->getUser();
+
+		BSNotifications::notify( 'bs-responsible-editors-assign', $oUser, $oTitle, array( 'affected-users' => $aNewEditorIds ) );
+		BSNotifications::notify( 'bs-responsible-editors-revoke', $oUser, $oTitle, array( 'affected-users' => $aRemovedEditorIds ) );
+
+		foreach( $aNewEditorIds as $iNewEditorId ) {
+			$oEditor = User::newFromId( $iNewEditorId );
+			$oLogger = new ManualLogEntry( 'bs-responsible-editors', 'add' );
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+			$oLogger->setParameters( array(
+					'4::editor' => $oEditor->getName()
+			) );
+			$oLogger->insert();
+		}
+		foreach( $aRemovedEditorIds as $iRemovedEditorId ) {
+			$oEditor = User::newFromId( $iRemovedEditorId );
+			$oLogger = new ManualLogEntry( 'bs-responsible-editors', 'remove' );
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+			$oLogger->setParameters( array(
+					'4::editor' => $oEditor->getName()
+			) );
+			$oLogger->insert();
+		}
 
 		$oRequestedTitle->invalidateCache();
 
-		return FormatJson::encode(array('success' => true));
+		return FormatJson::encode( array( 'success' => true ) );
 	}
 
-	/**
-	 *
-	 * @global User $wgUser
-	 * @param array $aNewEditorIds
-	 * @param array $aRemovedEditorIds
-	 * @param array $aUntouchedEditorIds
-	 * @param int $iArticleId
-	 * @return void
-	 */
-	public static function notifyAffectedUsers( $aNewEditorIds, $aRemovedEditorIds, $aUntouchedEditorIds, $iArticleId ) {
-		global $wgUser;
-		if( BsConfig::get( 'MW::ResponsibleEditors::EMailNotificationOnResponsibilityChange' ) != true ) return;
-
-		$oCore = BsCore::getInstance();
-
-		$oArticleTitle = Title::newFromID( $iArticleId );
-		$sArticleName  = $oArticleTitle->getPrefixedText();
-		$sArticleLink  = $oArticleTitle->getFullURL();
-		$sChangingUserName = $oCore->getUserDisplayName( $wgUser );
-		$sUsername = $wgUser->getName();
-
-		//Notify new editors
-		$aNewEditors = array();
-		foreach($aNewEditorIds as $iUserId ) {
-			if( $wgUser->getId() == $iUserId ) continue; //Skip notification if user changes responsibility himself
-			$oUser = User::newFromId( $iUserId );
-			$aNewEditors[] = $oUser;
-		}
-
-		$sSubject = wfMessage( 'bs-responsibleeditors-mail-subject-new-editor', $sArticleName )->text();
-		$sMessage = wfMessage( 'bs-responsibleeditors-mail-text-new-editor', $sUsername, $sChangingUserName, $sArticleName, $sArticleLink )->text();
-
-		BsMailer::getInstance('MW')->send( $aNewEditors, $sSubject, $sMessage );
-
-		//Notify untouched editors
-		$aUntouchedEditors = array();
-		foreach( $aUntouchedEditorIds as $iUserId ) {
-			if( $wgUser->getId() == $iUserId ) continue; //Skip notification if user changes responsibility himself
-			$aUntouchedEditors[] = User::newFromId( $iUserId );
-		}
-
-		//Notify removed editors
-		$aRemovedEditors = array();
-		if( empty( $aRemovedEditorIds ) ) return;
-		foreach( $aRemovedEditorIds as $iUserId ) {
-			if( $wgUser->getId() == $iUserId ) continue; //Skip notification if user changes responsibility himself
-			$oUser = User::newFromId( $iUserId );
-			$aRemovedEditors[] = $oUser;
-		}
-
-		$aCurrentRespEdNames = array();
-		$aCurrentRespEdIds = $aUntouchedEditorIds + $aNewEditorIds;
-		foreach( $aCurrentRespEdIds as $oCurrentRespEdUserId ) {
-			$aCurrentRespEdNames[] = $oCore->getUserDisplayName(
-				User::newFromId( $oCurrentRespEdUserId )
-			);
-		}
-
-		$sSubject = wfMessage(
-			'bs-responsibleeditors-mail-subject-former-editor',
-			$sArticleName
-		)->plain();
-		$sMessage = wfMessage(
-			'bs-responsibleeditors-mail-text-former-editor',
-			$sUsername,
-			$sChangingUserName,
-			$sArticleName,
-			implode( ', ', $aCurrentRespEdNames ),
-			count( $aCurrentRespEdNames ),
-			$sArticleLink
-		)->text();
-
-		BsMailer::getInstance('MW')->send( $aRemovedEditors, $sSubject, $sMessage );
+	protected function getGroupName() {
+		return 'bluespice';
 	}
 }

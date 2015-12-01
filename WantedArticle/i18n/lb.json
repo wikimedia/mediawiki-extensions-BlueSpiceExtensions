@@ -10,6 +10,7 @@
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Déi virgeschloe Säit \"$1\" gëtt et schonn.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "D'Säit \"$1\" gouf scho virgeschlo.",
 	"bs-wantedarticle-success-suggestion-entered": "Är Propos \"$1\" gouf derbäigesat.",
+	"bs-wantedarticle-sort-value-unknown": "Valabel Wäerter sinn: Titel an Zäit.",
 	"bs-wantedarticle-page-removed": "D'Säit \"$1\" gouf ewechgeholl.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Virschloen",
 	"bs-wantedarticle-single-textfield-defaulttext": "Titel vun der Säit",
@@ -17,6 +18,7 @@
 	"bs-wantedarticle-tag-more-linktext": "Méi …",
 	"bs-wantedarticle-tag-default-title": "Gewënscht Säiten",
 	"bs-wantedarticle-pref-includelimit": "Zuel vun de Virschléi:",
+	"bs-wantedarticle-pref-datasourcetemplatetitle": "Titel vun der Schabloun fir Virschléi:",
 	"bs-wantedarticle-pref-sort": "Zortéieren no:",
 	"bs-wantedarticle-pref-order": "Reiefolleg:",
 	"bs-wantedarticle-pref-sort-time": "Zäit",
@@ -25,5 +27,6 @@
 	"bs-wantedarticle-pref-order-desc": "vu grouss op kleng",
 	"bs-wantedarticle-create-page": "Säit \"$1\" uleeën.",
 	"bs-wantedarticle-suggest-page": "Säit \"$1\" virschloen.",
+	"bs-wantedarticle-info-nothing-entered": "Gitt w.e.g. e gültege Säiten-Titel un.",
 	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Dëst Zeechen ass|Dës Zeeche sinn}} net valabel fir an engem Säitentitel ze benotzen: $2"
 }

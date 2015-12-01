@@ -25,5 +25,11 @@
 	"bs-checklist-dlg-new-prompt": "Введіть назву списку",
 	"bs-checklist-alert": "Увага!",
 	"bs-checklist-confirm-dirty-title": "Незбережені зміни!",
-	"bs-checklist-confirm-dirty-text": "Вами внесено зміни в контрольний список, які ще не збережені. Ви справді хочете відхилити ці зміни?"
+	"bs-checklist-confirm-dirty-text": "Вами внесено зміни в контрольний список, які ще не збережені. Ви справді хочете відхилити ці зміни?",
+	"log-name-bs-checklist": "Журнал галочок",
+	"log-description-bs-checklist": "Журнал змін галочок на сторінках.",
+	"log-show-hide-bs-checklist": "$1 журнал галочок",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|поставив|поставила}} галочку #$4 на $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|зняв|зняла}} галочку #$4 з $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|обрав|обрала}} значення «$5» у перемикачі #$4 на $3"
 }

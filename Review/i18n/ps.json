@@ -4,14 +4,16 @@
 			"Ahmed-Najib-Biabani-Ibrahimkhel"
 		]
 	},
-	"prefs-review": "مخکتنه",
-	"bs-review-review": "مخکتنه",
-	"review": "مخکتنه",
+	"prefs-review": "بياکتنه",
+	"bs-review-review": "بياکتنه",
+	"review": "بياکتنه",
 	"bs-review-comments": "تبصرې",
 	"bs-review-colstatus": "دريځ",
 	"bs-review-colcomment": "تبصره",
 	"bs-review-lblstartdate": "پيل نېټه",
 	"bs-review-lblenddate": "پای نېټه",
 	"bs-review-labelcomment": "تبصره",
-	"bs-review-header-page-title": "مخ"
+	"bs-review-header-page-title": "مخ",
+	"echo-category-title-bs-review-action-cat": "بياکتنه - چارې",
+	"notification-bs-review-payload-comment": "تبصره: \"$1\""
 }

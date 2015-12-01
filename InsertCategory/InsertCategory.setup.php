@@ -22,11 +22,15 @@ $wgResourceModules['ext.bluespice.insertcategory'] = array(
 		'bs-insertcategory-failure',
 		'bs-insertcategory-hint',
 		'bs-insertcategory-panel-title'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.insertcategory.styles'] = array(
-	'styles' => 'bluespice.insertCategory.css'
+	'styles' => 'bluespice.insertCategory.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

@@ -217,6 +217,9 @@ class WikiAdmin extends BsExtensionMW {
 			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
 		}
 
+		// Allow other extensions to add to the admin menu
+		Hooks::run( 'BSWikiAdminMenuItems', array ( &$aOutSortable ) );
+
 		$aOutSortable['Shop'] = self::getShopListItem();
 		$aOutSortable['SpecialPages'] = self::getMediaWikiSpecialPageItem();
 

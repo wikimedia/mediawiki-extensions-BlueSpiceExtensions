@@ -72,8 +72,16 @@ var BsActions = function() {
 		var self = this;
 
 		tinyMCE.activeEditor.on('nodeChange', function() {
-			self.disabled(tinyMCE.activeEditor.getParam("save_enablewhendirty", true) && !tinyMCE.activeEditor.isDirty());
+		    //HW: LV - Save nodeChange state between MW Editor and BSVisualEditor for active save button
+		    $(tinyMCE.activeEditor.getElement()).data("text-changed", true);
+		    self.disabled(
+				tinyMCE.activeEditor.getParam("save_enablewhendirty", true) && !tinyMCE.activeEditor.isDirty()
+		    );
 		});
+		//HW: LV - Save nodeChange state between MW Editor and BSVisualEditor for active save button
+		if($(tinyMCE.activeEditor.getElement()).data("text-changed")){
+		    tinyMCE.activeEditor.isNotDirty = false;
+		}
 	}
 
 	function postRenderCell() {
@@ -86,7 +94,7 @@ var BsActions = function() {
 
 		text = tinyMCE.activeEditor.getContent({save: true});
 
-		if (text === '') {
+		if ( typeof text === 'undefined' || text === '') {
 			return; // @todo Nothing to save. Disable button instead.
 		}
 
@@ -99,10 +107,10 @@ var BsActions = function() {
 		}
 
 		ajaxParams = {
-			articleId: wgArticleId,
-			username: escape(wgUserName),
-			pageName: wgPageName,
-			namespace: wgNamespaceNumber,
+			articleId: mw.config.get( "wgArticleId" ),
+			username: escape( mw.config.get( "wgUserName" ) ),
+			pageName: mw.config.get( "wgPageName" ),
+			namespace: mw.config.get( "wgNamespaceNumber" ),
 			starttime: $("input[name=wpStarttime]").val(),
 			edittime: $("input[name=wpEdittime]").val(),
 			editsection: $("input[name=wpSection]").val(),
@@ -113,6 +121,7 @@ var BsActions = function() {
 		ajaxUrl = bs.util.getAjaxDispatcherUrl('VisualEditor::doSaveArticle');
 
 		$(document).trigger('BSVisualEditorBeforeArticleSave', [this, ajaxParams, ajaxUrl]);
+
 		Ext.Ajax.request({
 			method: 'post',
 			params: ajaxParams,
@@ -120,6 +129,15 @@ var BsActions = function() {
 			success: function(response, opts) {
 				$(document).trigger('BSVisualEditorAfterArticleSave', [this, true, response, opts]);
 				var json = Ext.decode(response.responseText);
+
+				if( typeof json.saveresult === 'undefined' || json.saveresult === 'fail') {
+					if( typeof json.message !== 'undefined' && json.message !== '' ) {
+						mw.notify( json.message );
+						$('#mw-js-message').html('<div>' + json.message + '</div>').show(); //TODO: Use jsMsg() or newer interfaces (message bubbles)
+						$('#mw-js-message').stop().css("background-color", "#FFFF9C").animate({backgroundColor: "#FCFCFC"}, 1500);
+					}
+					return;
+				}
 				$("input[name=wpEdittime]").val(json.edittime);
 				$("input[name=wpStarttime]").val(json.starttime);
 				mw.notify( json.message );

@@ -4,7 +4,8 @@
 			"Tobias Weichart <weichart@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Shirayuki"
+			"Shirayuki",
+			"Purodha"
 		]
 	},
 	"bs-flexiskin-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of flexi skin extension",
@@ -12,7 +13,7 @@
 	"bs-flexiskin-defaultname": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for the default skin template\\n{{Identical|Default}}",
 	"bs-flexiskin-defaultdesc": "Description message for the default template.",
 	"bs-flexiskin-error-skinexists": "Error message that a skin with the same name already exists.",
-	"bs-flexiskin-error-fail-add-skin": "Error message that the skin could not be created:\\n*$1 is the reason why the skin could not be created.",
+	"bs-flexiskin-error-fail-add-skin": "Error message that the skin could not be created:\n* $1 is the reason why the skin could not be created.",
 	"bs-flexiskin-reset-error": "Error message that the configuration of the skin could not be reset:\\n*$1 is the reason why the configuration could not be reset.",
 	"bs-flexiskin-error-get-config": "Error message that the configuration of the skin could not be loaded:\\n*$1 is the reason why the configuration could not be loaded.",
 	"bs-flexiskin-error-delete-skin": "Error message that the skin could not deleted\\n*$1 is the reason why the skin could not be deleted.",
@@ -48,5 +49,15 @@
 	"bs-flexiskin-labelwidth": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], label for complete width (in pixels)",
 	"bs-flexiskin-labelfullwidth": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], checkbox label for maximum width",
 	"bs-flexiskin-error-nameempty": "Error message that you must enter a valid name for the skin you watn to create.",
-	"bs-flexiskin-error-templatenotexists": "Error message that the template you chose does not exist."
+	"bs-flexiskin-error-templatenotexists": "Error message that the template you chose does not exist.",
+	"bs-flexiskin-api-desc": "Description of the api module.",
+	"bs-flexiskin-api-type-desc": "{{doc-important|Do not translate quoted examples in this message.}}\nDescription of the type parameter for the api with an example and the default value.",
+	"bs-flexiskin-api-mode-desc": "{{doc-important|Do not translate quoted examples in this message.}}\nDescription of the mode parameter for the api with an example and the default value.",
+	"bs-flexiskin-api-id-desc": "Description of the id parameter for the api with an example and the default value.",
+	"bs-flexiskin-api-data-desc": "Description of the data parameter for the api with an example and the default value.",
+	"bs-flexiskin-api-preview-desc": "Description of the preview parameter for the api with an example and the default value.",
+	"bs-flexiskin-api-example-desc": "Description text for the example found via api.php.",
+	"bs-flexiskin-api-error-save": "Error message showing up when an error occurres while saving the flexiskin \\n*$1 the reason the saving didn't work",
+	"bs-flexiskin-api-error-invalid-action": "Error message that the given type/mode compination does not exist.",
+	"bs-flexiskin-api-error-missing-param": "A needed parameter is missing\\n*$1 is the parameter missing."
 }

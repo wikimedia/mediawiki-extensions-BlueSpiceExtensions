@@ -28,5 +28,11 @@
 	"bs-checklist-dlg-new-prompt": "Text for the add new list prompt",
 	"bs-checklist-alert": "Title for the alert that shows up when something went wrong\n{{Identical|Caution}}",
 	"bs-checklist-confirm-dirty-title": "Title for the confirm dialogue for unsaved changes",
-	"bs-checklist-confirm-dirty-text": "Title for the confirm dialogue for unsaved changes. Phrase it in a way that the 'yes' option is the one where the users loose their changes"
+	"bs-checklist-confirm-dirty-text": "Title for the confirm dialogue for unsaved changes. Phrase it in a way that the 'yes' option is the one where the users loose their changes",
+	"log-name-bs-checklist": "Used in [[Special:Log]], title of the log type",
+	"log-description-bs-checklist": "Used in [[Special:Log]], description of the log type",
+	"log-show-hide-bs-checklist": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
+	"logentry-bs-checklist-checked": "Log message about checking a check box on a page.\nParameters:\n* $4 - number of the checkbox",
+	"logentry-bs-checklist-unchecked": "Log message about unchecking a check box on a page.\nParameters:\n* $4 - number of the checkbox",
+	"logentry-bs-checklist-selected": "Log message about selecting a value in a select box on a page.\nParameters:\n* $4 - number of the checkbox\n* $5 - selected value"
 }

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|ليکوال}}|ليکوالان}}",
+	"bs-authors-profileimage": "د پېژنليک انځور",
+	"bs-authors-profileimage-change": "پېژنليک انځور بدلول"
+}

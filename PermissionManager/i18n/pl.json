@@ -31,5 +31,8 @@
 	"bs-permissionmanager-msgtpled-deletefail": "Szablon nie mógł zostać usunięty.",
 	"bs-permissionmanager-titletpled-new": "Utwórz szablon",
 	"bs-permissionmanager-titletpled-edit": "Zmień nazwę szablonu",
-	"bs-permissionmanager-titletpled-delete": "Usuń szablon"
+	"bs-permissionmanager-titletpled-delete": "Usuń szablon",
+	"bs-permissionmanager-error-lockout": "Co najmniej jedna grupa musi posiadać uprawnienie „$1”.\nZmiany nie mogą zostać zapisane.",
+	"log-description-bs-permission-manager": "Jest to rejestr zmian w uprawnieniach grupy.",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|zmienił|zmieniła|zmienił(a)}} uprawnienia grupy $4"
 }

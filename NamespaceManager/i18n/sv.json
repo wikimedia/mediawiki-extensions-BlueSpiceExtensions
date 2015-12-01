@@ -30,5 +30,12 @@
 	"bs-namespacemanager-willmove": "Kommer att flyttas till \"{{int:bs-ns_main}}\"",
 	"bs-namespacemanager-willmovesuffix": "Kommer att flyttas till \"{{int:bs-ns_main}}\" med suffixet \"$1\"",
 	"bs-namespacemanager-deletewarning": "Är du säker på att du vill radera denna namnrymd? Radering av en namnrymd kan inte återställas.",
-	"bs-namespacemanager-pagepresent": "Sidor i denna namnrymd:"
+	"bs-namespacemanager-pagepresent": "Sidor i denna namnrymd:",
+	"bs-namespacemanager-deletens-deletepages": "Denna sida har raderats, eftersom namnrymden \"$1\" raderades.",
+	"log-name-bs-namespace-manager": "Logg för namnrymdshantering",
+	"log-description-bs-namespace-manager": "Detta är en ändringslogg för namnrymderna.",
+	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|har ändrat}} namnrymden $4",
+	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|har ändrat}} inställningarna för namnrymden $4",
+	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|har namnändrat}} namnrymden $4 till $5",
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|har tagit bort}} namnrymden $4"
 }

@@ -7,7 +7,9 @@
 		]
 	},
 	"bs-insertlink-desc": "Диалоговое окно для ввода ссылки",
+	"prefs-insertlink": "Вставить ссылку",
 	"bs-insertlink": "Вставить ссылку",
+	"bs-insertlink-pref-enable-java": "Включить Java-апплеты",
 	"bs-insertlink-button-title": "Вставить/Редактировать ссылку",
 	"bs-insertlink-dialog-title": "Вставить ссылку",
 	"bs-insertlink-tab-wiki-page": "Вики-страница",

@@ -22,5 +22,9 @@
 	"bs-groupmanager-removegroup-message-unknown": "Wystąpił nieoczekiwany błąd, spróbuj ponownie.",
 	"bs-groupmanager-lablename": "Nazwa grupy:",
 	"bs-groupmanager-msgnoteditable": "To jest grupa systemowa i nie można zmienić jej nazwy.",
-	"bs-groupmanager-msgnotremovable": "To jest grupa systemowa i nie można jej usunąć."
+	"bs-groupmanager-msgnotremovable": "To jest grupa systemowa i nie można jej usunąć.",
+	"log-description-bs-group-manager": "To jest rejestr zmian grup użytkowników.",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|utworzył|utworzyła|utworzył(a)}} grupę $4",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|zmienił|zmieniła|zmienił(a)}} nazwę grupy $4 na $5",
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|usunął|usunęła}} grupę $4"
 }

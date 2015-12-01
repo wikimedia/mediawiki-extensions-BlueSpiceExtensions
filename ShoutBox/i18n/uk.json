@@ -29,5 +29,7 @@
 	"bs-shoutbox-entermessage": "Будь ласка, введіть повідомлення.",
 	"bs-shoutbox-too-early": "Будь ласка, зачекайте кілька секунд перед відправкою наступного запису.",
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|репліка|репліки|реплік}}",
-	"bs-shoutbox-notifications-title-message-subject": "Вас було згадано"
+	"echo-category-title-bs-shoutbox-mention-cat": "Сповіщення про згадку в репліці",
+	"bs-shoutbox-notifications-title-message-subject": "Вас було згадано",
+	"bs-shoutbox-notifications-title-message-text": "Вас {{GENDER:$1|згадав|згадала}} $4 у репліці на сторінці «$5».\n\nВи можете відвідати сторінку, перейшовши за посиланням:\n$3."
 }

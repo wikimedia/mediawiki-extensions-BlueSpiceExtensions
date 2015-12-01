@@ -1,8 +1,10 @@
 Ext.define('BS.Flexiskin.Menuitems.Position', {
-	extend: 'BS.Panel',
+	extend: 'Ext.Panel',
+	require: ['BS.form.action.MediaWikiApiCall'],
 	title: mw.message('bs-flexiskin-headerposition').plain(),
 	layout: 'form',
 	currentData: {},
+	parent: null,
 	id: 'bs-flexiskin-preview-menu-position',
 	initComponent: function() {
 		var nav_pos = Ext.create('Ext.data.Store', {
@@ -63,7 +65,7 @@ Ext.define('BS.Flexiskin.Menuitems.Position', {
 			labelWidth: 100,
 			labelAlign: 'left',
 			name: 'fullWidth',
-			handler: this.onCbFullWidthChange, 
+			handler: this.onCbFullWidthChange,
 			scope: this
 		});
 		this.tfWidth.on('keyup', function() {

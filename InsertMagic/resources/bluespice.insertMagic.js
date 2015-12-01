@@ -1,16 +1,16 @@
 $(document).ready(function(){
-	Ext.Loader.setPath( 'BS.InsertMagic', wgScriptPath+'/extensions/BlueSpiceExtensions/InsertMagic/resources/BS.InsertMagic');
-
 	$('a#bs-editbutton-insertmagic').on('click', function(){
 		var me = this;
-		Ext.require('BS.InsertMagic.Window', function(){
-			BS.InsertMagic.Window.clearListeners();
-			BS.InsertMagic.Window.on( 'ok', BsInsertMagicWikiTextConnector.applyData );
+		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+			Ext.require('BS.InsertMagic.Window', function(){
+				BS.InsertMagic.Window.clearListeners();
+				BS.InsertMagic.Window.on( 'ok', BsInsertMagicWikiTextConnector.applyData );
 
-			BS.InsertMagic.Window.setData(
-				BsInsertMagicWikiTextConnector.getData()
-			);
-			BS.InsertMagic.Window.show( me );
+				BS.InsertMagic.Window.setData(
+					BsInsertMagicWikiTextConnector.getData()
+				);
+				BS.InsertMagic.Window.show( me );
+			});
 		});
 	});
 });
@@ -38,16 +38,19 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 	commands.push({
 		commandId: 'mceBsMagic',
 		commandCallback: function() {
-			Ext.require('BS.InsertMagic.Window', function(){
-				BS.InsertMagic.Window.clearListeners();
-				BsInsertMagicVisualEditorConnector.caller = this;
-				BS.InsertMagic.Window.on( 'ok', BsInsertMagicVisualEditorConnector.applyData );
+			var me = this;
+			mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+				Ext.require('BS.InsertMagic.Window', function(){
+					BS.InsertMagic.Window.clearListeners();
+					BsInsertMagicVisualEditorConnector.caller = this;
+					BS.InsertMagic.Window.on( 'ok', BsInsertMagicVisualEditorConnector.applyData );
 
-				BS.InsertMagic.Window.setData(
-					BsInsertMagicVisualEditorConnector.getData()
-				);
-				BS.InsertMagic.Window.show( 'bsmagic' );
-			}, this);
+					BS.InsertMagic.Window.setData(
+						BsInsertMagicVisualEditorConnector.getData()
+					);
+					BS.InsertMagic.Window.show( 'bsmagic' );
+				}, me);
+			});
 		}
 	});
 });

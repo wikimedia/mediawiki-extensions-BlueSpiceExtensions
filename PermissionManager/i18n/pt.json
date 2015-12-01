@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Jkb8"
 		]
 	},
-	"bs-permissionmanager-desc": "Interface de administração para a edição de privilégios de utilizador"
+	"bs-permissionmanager-desc": "Interface de administração para a edição de privilégios de utilizador",
+	"bs-permissionmanager-error-lockout": "Pelo menos um grupo deve ter o privilégio de \"$1\".\nNão foi possível gravar as alterações.",
+	"log-name-bs-permission-manager": "Registo de gestão de permissões",
+	"log-description-bs-permission-manager": "Este é um registo de alterações às permissões dos grupos.",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|alterou}} as permissões do grupo $4"
 }

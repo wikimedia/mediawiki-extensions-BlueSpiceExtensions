@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
 	"bs-formattinghelp-help-syntax": "Sintaxia",
 	"bs-formattinghelp-help-example-text": "Testua",
+	"bs-formattinghelp-help-bold": "Lodia",
+	"bs-formattinghelp-help-italic": "Etzana",
 	"bs-formattinghelp-help-whitespace": "Zuriunea",
 	"bs-formattinghelp-help-linebreak": "Lerro-jauzia",
 	"bs-formattinghelp-help-template": "Txantiloia"

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"बिप्लब आनन्द"
+		]
+	},
+	"bs-extensioninfo-desc": "लोड गरिएका एक्सटेन्सनहरूको जानकारी सूची",
+	"bs-extensioninfo-label": "एक्सटेन्सनहरू",
+	"bs-extensioninfo-software": "सफ्टवेयर",
+	"bs-extensioninfo-version": "संसकरण",
+	"extensioninfo": "एक्सटेन्सनहरू",
+	"bs-extensioninfo-headerextname": "एक्सटेन्सन नाम",
+	"bs-extensioninfo-headerversion": "संस्करण",
+	"bs-extensioninfo-headerdesc": "विवरण",
+	"bs-extensioninfo-headerstatus": "अवस्था",
+	"bs-extensioninfo-headerpackage": "प्याकेज",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|तत्व|तत्वहरू}}"
+}

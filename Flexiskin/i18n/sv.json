@@ -46,5 +46,11 @@
 	"bs-flexiskin-labelwidth": "Komplett bredd (i bildpunkter)",
 	"bs-flexiskin-labelfullwidth": "Maximal bredd",
 	"bs-flexiskin-error-nameempty": "Vänligen ange ett giltigt namn för det utseende du vill skapa.",
-	"bs-flexiskin-error-templatenotexists": "Den valda mallen finns inte."
+	"bs-flexiskin-error-templatenotexists": "Den valda mallen finns inte.",
+	"bs-flexiskin-api-type-desc": "Handlingen att utföra, t.ex. \"delete\". Standard är \"get\"",
+	"bs-flexiskin-api-mode-desc": "Handlingsläget, t.ex. \"config\". Standard är \"flexiskin\".",
+	"bs-flexiskin-api-id-desc": "ID för Flexiskin (valfritt).",
+	"bs-flexiskin-api-data-desc": "En dataarray (valfritt).",
+	"bs-flexiskin-api-error-invalid-action": "Denna handling finns inte.",
+	"bs-flexiskin-api-error-missing-param": "Följande parameter saknas: \"$1\""
 }

@@ -362,14 +362,24 @@ class VisualEditor extends BsExtensionMW {
 	}
 
 	/**
-	 *
+	 * PW(25.03.2015) TODO: Use API
 	 * @global User $wgUser
 	 * @global Language $wgLang
 	 * @return string
 	 */
 	public static function doSaveArticle() {
-		if (BsCore::checkAccessAdmission('read') === false)
-			return true;
+		$aResult = $aOutput = array(
+			'saveresult' => 'fail',
+			'message' => '',
+			'edittime' => '',
+			'summary' => '',
+			'starttime' => wfTimestamp(TS_MW, time() + 2),
+		);
+		if (BsCore::checkAccessAdmission('read') === false) {
+			$aResult['message'] = wfMessage( 'bs-permissionerror' )->plain();
+			return FormatJson::encode( $aResult );
+		}
+
 		global $wgLang, $wgRequest;
 		$sArticleId = $wgRequest->getInt('articleId', 0);
 		$sText = $wgRequest->getVal('text', '');
@@ -382,37 +392,36 @@ class VisualEditor extends BsExtensionMW {
 			$sSummary = '/* '.wfMessage( 'bs-visualeditor-no-summary' )->plain().' */';
 		}
 
-		$oArticle = Article::newFromID($sArticleId);
-		if ( $oArticle === null ) {
-			$oArticle = new Article(Title::newFromText($sPageName));
+		//PW(25.03.2015) TODO: Use Wikipage
+		$oArticle = Article::newFromID( $sArticleId );
+		if( is_null($oArticle) ) {
+			$oTitle = Title::newFromText( $sPageName );
+			if( is_null($oTitle) || !$oTitle->exists() ) {
+				$aResult['message'] = wfMessage( 'badtitle' )->plain();
+				return FormatJson::encode( $aResult );
+			}
+			$oArticle = new Article( $oTitle );
 		}
 
 		if ($iSection) {
 			$sText = $oArticle->replaceSection($iSection, $sText);
 		}
 
+		//PW(25.03.2015) TODO: Deprecated since MW 1.21 use
+		//Wikipage::doEditContent instead
 		$oSaveResult = $oArticle->doEdit($sText, $sSummary);
 
-		$sTime = $wgLang->timeanddate($sReturnEditTime, true);
-		$sMessage = '';
-		$sResult = '';
-		if (empty($oSaveResult->errors)) {
-			$sResult = 'ok';
-			$sMessage = wfMessage( 'bs-visualeditor-save-message', $sTime, $sSummary )->plain();
+		if( $oSaveResult->isGood() ) {
+			$sTime = $wgLang->timeanddate($sReturnEditTime, true);
+			$aResult['edittime'] = $sReturnEditTime;
+			$aResult['saveresult'] = 'ok';
+			$aResult['message'] = wfMessage( 'bs-visualeditor-save-message', $sTime, $sSummary )->plain();
+			$aResult['summary'] = $sSummary;
 		} else {
-			$sResult = 'fail';
-			$sMessage = $oSaveResult->getMessage();
+			$aResult['message'] = $oSaveResult->getMessage()->plain();
 		}
 
-		$aOutput = array(
-			'saveresult' => $sResult, //$oSaveResult->getMessage(),//$sSaveResultCode,
-			'message' => $sMessage, //wfMessage( 'bs-visualeditor-save-message', $sTime, $sSummary )->plain(),
-			'edittime' => $sReturnEditTime,
-			'summary' => $sSummary,
-			'starttime' => wfTimestamp(TS_MW, time() + 2)
-		);
-
-		return FormatJson::encode($aOutput);
+		return FormatJson::encode( $aResult );
 	}
 
 	public static function checkLinks($links) {

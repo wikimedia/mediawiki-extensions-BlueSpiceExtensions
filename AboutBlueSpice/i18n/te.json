@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chaduvari"
+		]
+	},
+	"bs-aboutbluespice-desc": "BlueSpice గురించిన సమాచారం.",
+	"bs-aboutbluespice-about-bluespice": "BlueSpice గురించి",
+	"aboutbluespice": "BlueSpice గురించి",
+	"prefs-aboutbluespice": "బ్లూస్పైస్ గురించి",
+	"bs-aboutbluespice-show-menu-links": "టాప్ మెనూ, ప్రధాన మెనూల్లో \"{{int:bs-aboutbluespice-about-bluespice}}\" లింకును చూపించు"
+}

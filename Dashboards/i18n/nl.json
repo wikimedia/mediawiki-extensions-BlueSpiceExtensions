@@ -2,11 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Arg",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Siebrand",
+			"Esketti"
 		]
 	},
+	"bs-dashboards-desc": "Biedt dashboards voor gebruikers en beheerders",
 	"bs-specialadmindashboard-label": "Dashboard",
+	"bs-dashboards-addportlet": "Portlet toevoegen",
+	"bs-dashboards-portlets": "Portlets",
 	"prefs-dashboards": "Dashboards",
+	"bs-dashboards-pref-userdashboardonlogo": "Sitelogo wordt een koppeling naar het gebruikersdashboard",
+	"admindashboard": "Beheerdersdashboard",
+	"userdashboard": "Gebruikersdashboard",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
 	"bs-dashboard-userportlet-calendar-description": "Kalender"
 }

@@ -4,10 +4,11 @@
 			"Niknetniko",
 			"Sjoerddebruin",
 			"McDutchie",
-			"Ribert"
+			"Ribert",
+			"Siebrand"
 		]
 	},
-	"bs-articleinfo-desc": "Toont informatie over een pagina in de statusbalk.",
+	"bs-articleinfo-desc": "Geeft informatie over een pagina in een statusbalk",
 	"prefs-articleinfo": "Paginagegevens",
 	"bs-articleinfo-pref-CheckRevisionInterval": "Interval voor bijwerken, in seconden:",
 	"bs-articleinfo-last-edited": "Tijd sinds recente wijziging",
@@ -26,7 +27,7 @@
 	"bs-articleinfo-check-revision": "Nieuwe versie beschikbaar",
 	"bs-articleinfo-check-revision-tooltip": "Pagina opnieuw laden",
 	"bs-articleinfo-statebartoplastedited": "Recente bewerking",
-	"bs-articleinfo-statebartoplasteditor": "Recente editor",
+	"bs-articleinfo-statebartoplasteditor": "Recente bewerker",
 	"bs-articleinfo-statebartopcategories": "Categorieën",
 	"bs-articleinfo-statebartopsubpages": "Subpagina's",
 	"bs-articleinfo-statebarbodycategories": "Categorieën",

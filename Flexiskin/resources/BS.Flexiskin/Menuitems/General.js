@@ -1,8 +1,10 @@
 Ext.define('BS.Flexiskin.Menuitems.General', {
 	extend: 'Ext.Panel',
+	require: ['BS.form.action.MediaWikiApiCall'],
 	title: mw.message('bs-flexiskin-headergeneral').plain(),
 	layout: 'form',
 	currentData: {},
+	parent: null,
 	id: 'bs-flexiskin-preview-menu-general',
 	initComponent: function() {
 		this.tfName = Ext.create('Ext.form.TextField', {
@@ -13,7 +15,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			allowBlank: false
 		});
 		this.tfName.on("blur", function(el){
-			Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+			this.parent.onItemStateChange();
 		});
 		this.tfDesc = Ext.create('Ext.form.TextField', {
 			fieldLabel: mw.message('bs-flexiskin-labeldesc').plain(),
@@ -23,7 +25,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			allowBlank: false
 		});
 		this.tfDesc.on("blur", function(){
-			Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+			this.parent.onItemStateChange();
 		});
 		this.pfBackgroundColor = Ext.create('Ext.picker.Color', {
 			value: '', // initial selected color
@@ -31,7 +33,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			listeners: {
 				select: function(picker, selColor) {
 					this.tfCustomBackgroundColor.setValue(selColor.replace("#", ""));
-					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+					this.parent.onItemStateChange();
 				},
 				scope: this
 			}
@@ -51,19 +53,21 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			name: 'customBackgroundColor',
 			allowBlank: true
 		});
+		var me = this;
 		this.tfCustomBackgroundColor.on("blur", function(el){
 			var isOk  = /(^#?[0-9A-F]{6}$)|(^#?[0-9A-F]{3}$)/i.test(el.getValue());
-			Ext.getCmp("bs-flexiskin-preview-menu-general").setColor(Ext.getCmp("bs-flexiskin-preview-menu-general").pfBackgroundColor, el.getValue());
+			me.setColor(me.pfBackgroundColor, el.getValue());
 			if (isOk)
-				Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+				this.parent.onItemStateChange();
 		});
 		this.ufBackgroundUpload = Ext.create('BS.form.UploadPanel', {
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
+			url: mw.util.wikiScript('api'),
 			uploadFormName: 'background',
 			uploadFieldLabel: mw.message('bs-flexiskin-labelbackgroundupload').plain(),
 			uploadLabelWidth: 100,
 			uploadResetButton: true
-		});
+		} );
+		this.ufBackgroundUpload.on( 'reset', this.btnResetClick, this );
 		var rep_back_pos = Ext.create('Ext.data.Store', {
 			fields: ['repeating', 'val'],
 			data: [
@@ -81,7 +85,7 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 			valueField: 'repeating',
 			listeners: {
 				'select': function(cb, rec) {
-					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+					this.parent.onItemStateChange();
 				},
 				scope: this
 			},
@@ -101,19 +105,26 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		this.callParent(arguments);
 	},
 	btnUploadClick: function(el, form) {
-		if (!form.isValid())
+		if (!form.isValid()){
 			return;
-		form.submit({
+		}
+		var me = this;
+		form.doAction(Ext.create('BS.form.action.MediaWikiApiCall', {
+			form: form,
 			params: {
+				action: 'flexiskin',
+				type: 'upload',
+				mode: 'file',
 				id: this.currentData.skinId,
-				name: 'background'
+				name: 'background',
+				format: 'json'
 			},
-			waitMsg: mw.message('bs-extjs-uploading').plain(),
-			success: function(fp, o) {
-				var responseObj = o.result;
+			success: function(response, action) {
+				var responseObj = Ext.decode(response.responseText);
+				responseObj = Ext.decode(responseObj.flexiskin);
 				if (responseObj.success === true) {
 					Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').setValue(responseObj.name);
-					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+					me.parent.onItemStateChange();
 				} else {
 					bs.util.alert('bs-flexiskin-saveskin-error',
 							{
@@ -130,23 +141,28 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 				}
 			},
 			scope: this
-		});
-		Ext.getCmp('bs-extjs-uploadCombo-background-reset-btn').enable();
+		}));
+		this.ufBackgroundUpload.btnReset.enable();
 	},
 	btnResetClick: function(el) {
+		var me = this;
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
+			url: mw.util.wikiScript('api'),
 			params: {
+				action: 'flexiskin',
+				type: 'upload',
+				mode: 'file',
 				id: this.currentData.skinId,
-				name: ''
+				name: '',
+				format: 'json'
 			},
 			callback: function(response) {
 				Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').setValue("");
-				Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+				me.parent.onItemStateChange();
 			},
 			scope: this
 		});
-		Ext.getCmp('bs-extjs-uploadCombo-background-reset-btn').disable();
+		this.ufBackgroundUpload.btnReset.disable();
 	},
 	getData: function() {
 		var data = {
@@ -166,7 +182,10 @@ Ext.define('BS.Flexiskin.Menuitems.General', {
 		this.tfDesc.setValue(data.config.desc);
 		this.setColor(this.pfBackgroundColor, data.config.backgroundColor);
 		this.tfCustomBackgroundColor.setValue(data.config.customBackgroundColor);
-		this.cgRepeatBackground.setValue(data.config.repeatBackground);
+		this.cgRepeatBackground.setValue( data.config.repeatBackground );
+		if ( typeof ( data.config.backgroundImage ) !== 'undefined' && data.config.backgroundImage !== "" ) {
+			this.ufBackgroundUpload.btnReset.enable();
+		}
 		Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').setValue(data.config.backgroundImage);
 	},
 	setColor: function(el, clr) {

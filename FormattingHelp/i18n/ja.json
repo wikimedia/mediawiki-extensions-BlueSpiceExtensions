@@ -1,13 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"2nd-player"
 		]
 	},
 	"bs-formattinghelp-help-syntax": "構文",
 	"bs-formattinghelp-help-bold": "太字",
 	"bs-formattinghelp-help-italic": "斜体",
+	"bs-formattinghelp-help-headline": "見出し",
 	"bs-formattinghelp-help-linebreak": "改行",
+	"bs-formattinghelp-help-ul": "番号なし箇条書き",
+	"bs-formattinghelp-help-numberedlist": "番号付き箇条書き",
 	"bs-formattinghelp-help-link": "内部リンク",
 	"bs-formattinghelp-help-link-alt": "代替テキスト付きの内部リンク",
 	"bs-formattinghelp-help-extlink": "外部リンク",

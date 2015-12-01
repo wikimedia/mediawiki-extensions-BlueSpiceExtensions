@@ -15,7 +15,8 @@ $aResourceModuleTemplate = array(
 );
 
 $wgResourceModules['ext.bluespice.statebar.style'] = array(
-	'styles'  => 'bluespice.StateBar.css'
+	'styles'  => 'bluespice.StateBar.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.statebar'] = array(

@@ -69,7 +69,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	},
 	renderIcon: function( value ) {
 		//TODO: make CSS class icon
-		var icon = '<img src="' + wgScriptPath + '/extensions/BlueSpiceFoundation/resources/bluespice/images/{0}"/>';
+		var icon = '<img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/{0}"/>';
 		if ( value === false ) {
 			return icon.format( 'bs-cross.png');
 		}

@@ -97,6 +97,9 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 
 			$oTitle = Title::newFromText( $document->img_name, NS_FILE );
 			$oFile = wfLocalFile( $oTitle );
+			if( is_null( $oFile ) ) {
+				continue;
+			}
 			$sVirtualPath = $oFile->getPath();
 			$oFileRepoLocalRef = $oFile->getRepo()->getLocalReference( $sVirtualPath );
 			if ( is_null( $oFileRepoLocalRef ) ) continue;

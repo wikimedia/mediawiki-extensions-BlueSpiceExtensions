@@ -39,5 +39,10 @@
 	"bs-permissionmanager-pref-lockmode": "Активирај заклучен режим",
 	"bs-permissionmanager-pref-skipsysns": "Изоставај ги системските именски простори ако е активиран заклучниот режим",
 	"bs-permissionmanager-pref-enablerealitycheck": "Активирај проверка на дозволи",
-	"bs-permissionmanager-unsaved-changes": "Имате незачувани промени. Дали навистина сакате да ја напуштите страницата сега? Притоа ќе ги изгубите незачуваните промени."
+	"bs-permissionmanager-unsaved-changes": "Имате незачувани промени. Дали навистина сакате да ја напуштите страницата сега? Притоа ќе ги изгубите незачуваните промени.",
+	"bs-permissionmanager-error-lockout": "Барем една група мора да го има правото „$1“.\nНе можев да ги зачувам промените.",
+	"log-name-bs-permission-manager": "Раководен дневник за дозволи",
+	"log-description-bs-permission-manager": "Ова е дневник на промени во поставките за групните права.",
+	"log-show-hide-bs-permission-manager": "$1 раководен дневник за дозволи",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|ѝ ги измени}} дозволите на групата $4"
 }

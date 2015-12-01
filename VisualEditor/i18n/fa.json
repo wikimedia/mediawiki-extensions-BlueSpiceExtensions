@@ -2,16 +2,41 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Dalba"
 		]
 	},
+	"bs-visualeditor-desc": "ویرایشگر دیداری برای مدیاویکی",
+	"prefs-visualeditor": "ویرایشگر دیداری",
+	"bs-visualeditor-editbutton-hint": "ویرایشگر دیداری",
+	"bs-visualeditor-pref-disablens": "غیرفعال‌سازی در فضاهای نام:",
+	"bs-visualeditor-pref-use": "استفاده از ویرایشگر WYSIWYG به عنوان پیش‌فرض",
+	"bs-visualeditor-save-message": "ذخیرهٔ نسخه در  $1 با خلاصه ویرایش $2",
+	"bs-visualeditor-no-summary": "بدون خلاصه",
+	"bs-visualeditor-sortable": "قابل مرتب‌سازی",
+	"bs-visualeditor-wikitable": "استاندارد",
 	"bs-visualeditor-contenttable": "محتوا",
+	"bs-visualeditor-contenttable-black": "محتوی (سیاه)",
+	"bs-visualeditor-contenttable-blue": "محتوی (آبی)",
+	"bs-visualeditor-contenttable-darkblue": "محتوی (سورمه‌ای)",
+	"bs-visualeditor-cuscosky": "آسمان کوسکو",
+	"bs-visualeditor-casablanca": "کازابلانکا",
+	"bs-visualeditor-greyscale": "محدودهٔ خاکستری",
+	"bs-visualeditor-greyscale-narrow": "محدودهٔ خاکستری (باریک)",
+	"bs-visualeditor-aligntop": "بالا",
 	"bs-visualeditor-alignmiddle": "میانه",
+	"bs-visualeditor-alignbottom": "پایین",
 	"bs-visualeditor-bsactions-wiki": "ویکی‌متن",
+	"bs-visualeditor-bsactions-switchgui": "تعویض نوار ابزار",
+	"bs-visualeditor-bsactions-linebreak": "خطشکن",
+	"bs-visualeditor-bsactions-signature": "امضاء",
+	"bs-visualeditor-bsactions-save": "ذخیره",
+	"bs-visualeditor-bsactions-headings": "بالاسری‌ها",
 	"bs-visualeditor-bsactions-paragraph": "پاراگراف",
 	"bs-visualeditor-bsactions-heading2": "سرعنوان ۲",
 	"bs-visualeditor-bsactions-heading3": "سرعنوان ۳",
 	"bs-visualeditor-bsactions-heading4": "سرعنوان ۴",
 	"bs-visualeditor-bsactions-heading5": "سرعنوان ۵",
-	"bs-visualeditor-bsactions-heading6": "سرعنوان ۶"
+	"bs-visualeditor-bsactions-heading6": "سرعنوان ۶",
+	"bs-visualeditor-switch-noeditor-desc": "غیرفعال کردن ویرایشگر دیداری در این صفحه."
 }

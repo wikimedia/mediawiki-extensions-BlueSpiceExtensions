@@ -16,5 +16,6 @@
 	"bs-readers-emptyinput": "Et gouf keng Säit uginn.",
 	"bs-readers-header-username": "Benotzernumm",
 	"bs-readers-header-readerspath": "Lieser",
-	"bs-readers-header-ts": "Datum"
+	"bs-readers-header-ts": "Datum",
+	"bs-readers-header-page": "Säit"
 }

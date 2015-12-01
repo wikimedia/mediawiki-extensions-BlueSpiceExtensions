@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-groupmanager-grpexists": "그룹이 이미 존재합니다.",
+	"bs-groupmanager-grpadded": "그룹이 추가되었습니다.",
+	"bs-groupmanager-grpedited": "그룹이 편집되었습니다.",
+	"bs-groupmanager-grpremoved": "그룹이 제거되었습니다.",
+	"bs-groupmanager-label": "그룹 관리자",
+	"bs-groupmanager-invalid-name": "그룹 이름이 올바르지 않은 {{PLURAL:$1|문자}}를 포함하고 있습니다: $2",
+	"bs-groupmanager-invalid-name-length": "그룹 이름은 16글자를 넘을 수 없습니다.",
+	"bs-groupmanager-invalid-name-numeric": "그룹 이름은 적어도 한 글자 이상이어야 합니다.",
+	"bs-groupmanager-headergroup": "그룹",
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|그룹}} 제거",
+	"bs-groupmanager-titlenewgroup": "새 그룹",
+	"bs-groupmanager-titleeditgroup": "그룹 편집",
+	"bs-groupmanager-lablename": "그룹 이름:",
+	"bs-groupmanager-msgnoteditable": "이 그룹은 시스템 그룹이고 이름을 바꿀 수 없습니다.",
+	"bs-groupmanager-msgnotremovable": "이 그룹은 시스템 그룹이고 제거할 수 없습니다.",
+	"log-name-bs-group-manager": "그룹 관리자 기록",
+	"log-show-hide-bs-group-manager": "그룹 관리자 기록을 $1",
+	"logentry-bs-group-manager-create": "$1 사용자가 $4 그룹을 {{GENDER:$2|만들었습니다}}",
+	"logentry-bs-group-manager-modify": "$1 사용자가 $4 그룹의 이름을 $5(으)로 {{GENDER:$2|바꾸었습니다}}",
+	"logentry-bs-group-manager-remove": "$1 사용자가 $4 그룹을 {{GENDER:$2|제거했습니다}}"
+}

@@ -1,15 +1,17 @@
 Ext.define('BS.Flexiskin.Menuitems.Header', {
-	extend: 'BS.Panel',
+	extend: 'Ext.Panel',
+	require: ['BS.form.action.MediaWikiApiCall'],
 	title: mw.message('bs-flexiskin-headerheader').plain(),
 	layout: 'form',
 	currentData: {},
+	parent: null,
 	id: 'bs-flexiskin-preview-menu-header',
 	initComponent: function() {
 		this.ufLogoUpload = Ext.create('BS.form.UploadPanel', {
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
+			url: mw.util.wikiScript('api'),
 			uploadFormName: 'logo',
 			uploadFieldLabel: mw.message('bs-flexiskin-labellogoupload').plain(),
-			uploadLabelWidth: 50,
+			uploadLabelWidth: 100,
 			uploadResetButton: true
 		});
 		this.ufLogoUpload.on('reset', this.btnResetClick, this);
@@ -17,23 +19,29 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 		this.items = [
 			this.ufLogoUpload
 		];
-		this.afterInitComponent();
 		this.callParent(arguments);
 	},
 	btnUploadClick: function(el, form) {
-		if (!form.isValid())
+		if (!form.isValid()){
 			return;
-		form.submit({
+		}
+		var me = this;
+		form.doAction(Ext.create('BS.form.action.MediaWikiApiCall', {
+			form: form,
 			params: {
+				action: 'flexiskin',
+				type: 'upload',
+				mode: 'file',
 				id: this.currentData.skinId,
-				name: 'logo'
+				name: 'logo',
+				format: 'json'
 			},
-			waitMsg: mw.message('bs-extjs-uploading').plain(),
-			success: function(fp, o) {
-				var responseObj = o.result;
+			success: function(response, action) {
+				var responseObj = Ext.decode(response.responseText);
+				responseObj = Ext.decode(responseObj.flexiskin);
 				if (responseObj.success === true) {
 					Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(responseObj.name);
-					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+					me.parent.onItemStateChange();
 				} else {
 					bs.util.alert('bs-flexiskin-saveskin-error',
 							{
@@ -50,21 +58,28 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 				}
 			},
 			scope: this
-		});
+		}));
+		this.ufLogoUpload.btnReset.enable();
 	},
 	btnResetClick: function(el) {
+		var me = this;
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::uploadFile'),
+			url: mw.util.wikiScript('api'),
 			params: {
+				action: 'flexiskin',
+				type: 'upload',
+				mode: 'file',
 				id: this.currentData.skinId,
-				name: ''
+				name: '',
+				format: 'json'
 			},
 			callback: function(response) {
 				Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue("");
-				Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
+				me.parent.onItemStateChange();
 			},
 			scope: this
 		});
+		this.ufLogoUpload.btnReset.disable();
 	},
 	afterInitComponent: function() {
 
@@ -78,6 +93,9 @@ Ext.define('BS.Flexiskin.Menuitems.Header', {
 	},
 	setData: function(data) {
 		this.currentData = data;
+		if ( typeof ( data.config.logo ) !== 'undefined' && data.config.logo !== "" ) {
+			this.ufLogoUpload.btnReset.enable();
+		}
 		Ext.getCmp('bs-extjs-uploadCombo-logo-hidden-field').setValue(data.config.logo);
 	}
 });

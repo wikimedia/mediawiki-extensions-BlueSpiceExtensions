@@ -15,16 +15,20 @@ Ext.define('BS.Flexiskin.Panel', {
 	extend: 'BS.CRUDGridPanel',
 	id: 'bs-flexiskin-panel',
 	initComponent: function() {
-		//this.gpMainConf = { cls: 'bs-extjs-flexiskin-grid' };
 		this.strMain = Ext.create('Ext.data.JsonStore', {
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('Flexiskin::getFlexiskins'),
+				url: mw.util.wikiScript('api'),
 				reader: {
 					type: 'json',
 					root: 'flexiskin',
 					idProperty: 'flexiskin_id',
 					totalProperty: 'totalCount'
+				},
+				extraParams: {
+					action: 'flexiskin',
+					type: 'get',
+					format: 'json'
 				}
 			},
 			autoLoad: true,
@@ -66,9 +70,12 @@ Ext.define('BS.Flexiskin.Panel', {
 	},
 	onCheckActiveChange: function(oCheckBox, rowindex, checked) {
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::activateFlexiskin'),
+			url: mw.util.wikiScript('api'),
 			params: {
-				id: checked ? this.grdMain.getStore().getAt(rowindex).getData().flexiskin_id : ""
+				action: 'flexiskin',
+				type: 'activate',
+				id: checked ? this.grdMain.getStore().getAt(rowindex).getData().flexiskin_id : "",
+				format: 'json'
 			},
 			success: function(response) {
 				window.location.reload();
@@ -90,12 +97,17 @@ Ext.define('BS.Flexiskin.Panel', {
 	onBtnEditClick: function(oButton, oEvent) {
 		this.selectedRow = this.grdMain.getSelectionModel().getSelection();
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::getFlexiskinConfig'),
+			url: mw.util.wikiScript('api'),
 			params: {
-				id: this.selectedRow[0].getData().flexiskin_id
+				action: 'flexiskin',
+				type: 'get',
+				mode: 'config',
+				id: this.selectedRow[0].getData().flexiskin_id,
+				format: 'json'
 			},
 			success: function(response) {
 				var responseObj = Ext.decode(response.responseText);
+				responseObj = Ext.decode(responseObj.flexiskin);
 				if (responseObj.success === false) {
 					bs.util.alert('bs-flexiskin-get-config-error',
 					{
@@ -145,13 +157,17 @@ Ext.define('BS.Flexiskin.Panel', {
 		var skinId = selectedRow[0].get('flexiskin_id');
 
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::deleteFlexiskin'),
+			url: mw.util.wikiScript('api'),
 			params: {
-				skinId: skinId
+				action: 'flexiskin',
+				type: 'delete',
+				id: skinId,
+				format: 'json'
 			},
 			scope: this,
 			success: function(response, opts) {
 				var responseObj = Ext.decode(response.responseText);
+				responseObj = Ext.decode( responseObj.flexiskin );
 				if (responseObj.success === false) {
 					bs.util.alert('bs-flexiskin-deleteskin-error',
 					{
@@ -176,13 +192,17 @@ Ext.define('BS.Flexiskin.Panel', {
 	onDlgSkinAdd: function(data, user) {
 		var datas = this.getAddSkinData();
 		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::addFlexiskin'),
+			url: mw.util.wikiScript('api'),
 			params: {
-				data: Ext.encode(datas)
+				action: 'flexiskin',
+				type: 'add',
+				data: Ext.encode(datas),
+				format: 'json'
 			},
 			scope: this,
 			success: function(response, opts) {
 				var responseObj = Ext.decode(response.responseText);
+				responseObj = Ext.decode( responseObj.flexiskin );
 				if (responseObj.success === true) {
 					this.dlgSkinAdd.resetData();
 					this.reloadStore();

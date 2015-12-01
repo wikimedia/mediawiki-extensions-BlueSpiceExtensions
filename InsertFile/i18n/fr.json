@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Urhixidur"
 		]
 	},
 	"bs-insertfile-desc": "Boîte de dialogue pour importer des fichiers et insérer un lien de fichier",
@@ -16,7 +17,7 @@
 	"bs-insertfile-filename": "Nom de fichier",
 	"bs-insertfile-filesize": "Taille de fichier",
 	"bs-insertfile-lastmodified": "Modifications récentes",
-	"bs-insertfile-labelupload": "Télécharger",
+	"bs-insertfile-labelupload": "Téléverser",
 	"bs-insertfile-details-title": "Détails",
 	"bs-insertfile-labeldimensions": "Taille (l x h)",
 	"bs-insertfile-labelalt": "Texte de remplacement",

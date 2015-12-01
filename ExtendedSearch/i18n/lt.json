@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200",
+			"Zygimantus"
+		]
+	},
+	"specialextendedsearch": "Išplėstinė paieška",
+	"prefs-extendedsearch": "Išplėstinė paieška",
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategorija|Kategorijos}}: $2",
+	"bs-extendedsearch-error": "Klaida:",
+	"bs-extendedsearch-facet-category": "Kategorija",
+	"bs-extendedsearch-facet-editors": "Autoriai",
+	"bs-extendedsearch-facet-namespace": "Vardų sritis",
+	"bs-extendedsearch-facet-namespace-files": "Failai",
+	"bs-extendedsearch-facet-type": "Formatas",
+	"bs-extendedsearch-facet-uncategorized": "Ne kategorijoje",
+	"bs-extendedsearch-facet-namespace-extfiles": "Išoriniai failai",
+	"bs-extendedsearch-files": "Ieškoti failų",
+	"bs-extendedsearch-finished": "Baigta",
+	"bs-extendedsearch-pref-externalrepo-url": "URL išorinei direktorijai:"
+}

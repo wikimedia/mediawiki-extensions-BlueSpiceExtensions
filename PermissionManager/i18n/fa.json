@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Ebraminio"
 		]
 	},
 	"bs-permissionmanager-desc": "رابط مدیریت برای اداره دسترسی‌ها",
@@ -38,5 +39,5 @@
 	"bs-permissionmanager-titletpled-delete": "حذف الگو",
 	"bs-permissionmanager-pref-lockmode": "فعال‌سازی حالت قفل",
 	"bs-permissionmanager-pref-skipsysns": "پرش به فضاهای نام سیستم اگر حالت قفل فعال است",
-	"bs-permissionmanager-pref-enablerealitycheck": "فعال‌کردن بررسی دسترسی"
+	"bs-permissionmanager-pref-enablerealitycheck": "فعال کردن بررسی دسترسی"
 }

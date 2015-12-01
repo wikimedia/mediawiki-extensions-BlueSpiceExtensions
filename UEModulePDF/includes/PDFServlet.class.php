@@ -104,72 +104,48 @@ class BsPDFServlet {
 	 * Uploads all files found in the markup by the "findFiles" method.
 	 */
 	protected function uploadFiles() {
-		foreach( $this->aFiles as $sType => $aFiles ) {
+		global $bsgUEModulePDFUploadThreshold;
 
-			//Backwards compatibility to old inconsitent PDFTemplates (having "STYLESHEET" as type but linnking to "stylesheets")
+		foreach( $this->aFiles as $sType => $aFiles ) {
+			//Backwards compatibility to old inconistent PDFTemplates (having
+			//"STYLESHEET" as type but linking to "stylesheets")
 			//TODO: Make conditional?
 			if( $sType == 'IMAGE' )      $sType = 'images';
 			if( $sType == 'STYLESHEET' ) $sType = 'stylesheets';
 
 			$aPostData = array(
-				'fileType'		=> $sType,
+				'fileType'	=> $sType,
 				'documentToken' => $this->aParams['document-token'],
 				'wikiId'        => wfWikiID()
 			);
 
 			$aErrors = array();
+			$aPostFiles = array();
 			$iCounter = 0;
+			$iCurrentUploadSize = 0;
 			foreach( $aFiles as $sFileName => $sFilePath ) {
 				if( file_exists( $sFilePath) == false ) {
 					$aErrors[] = $sFilePath;
 					continue;
 				}
-				$aPostData['file'.$iCounter.'_name'] = $sFileName;
-				$aPostData['file'.$iCounter] = class_exists( 'CURLFile' ) ? new CURLFile( $sFilePath ) : '@'.$sFilePath;
+
+				$iFileSize = filesize( $sFilePath );
+				if( $iCurrentUploadSize >= $bsgUEModulePDFUploadThreshold ) {
+					$this->doFilesUpload( array_merge( $aPostFiles , $aPostData), $aErrors );
+
+					//Reset all loop variables
+					$aErrors = array();
+					$aPostFiles = array();
+					$iCounter = 0;
+					$iCurrentUploadSize = $iFileSize;
+				}
+
+				$aPostFiles['file'.$iCounter.'_name'] = $sFileName;
+				$aPostFiles['file'.$iCounter] = class_exists( 'CURLFile' ) ? new CURLFile( $sFilePath ) : '@'.$sFilePath;
 				$iCounter++;
+				$iCurrentUploadSize += $iFileSize;
 			}
-
-			if( !empty( $aErrors ) ) {
-				wfDebugLog(
-					'BS::UEModulePDF',
-					'BsPDFServlet::uploadFiles: Error trying to fetch files:'."\n". var_export( $aErrors, true )
-				);
-			}
-
-			wfRunHooks( 'BSUEModulePDFUploadFilesBeforeSend', array( $this, &$aPostData, $sType ) );
-
-			$aOptions = array(
-				'timeout' => 120,
-				'postData' => $aPostData
-			);
-
-			global $bsgUEModulePDFCURLOptions;
-			$aOptions = array_merge_recursive($aOptions, $bsgUEModulePDFCURLOptions);
-
-			$vHttpEngine = Http::$httpEngine;
-			Http::$httpEngine = 'curl';
-			$sResponse = Http::post(
-				$this->aParams['soap-service-url'].'/UploadAsset',
-				$aOptions
-			);
-			Http::$httpEngine = $vHttpEngine;
-
-			if( $sResponse != false ) {
-				wfDebugLog(
-					'BS::UEModulePDF',
-					'BsPDFServlet::uploadFiles: Successfully added "'.$sType.'"'
-				);
-				wfDebugLog(
-					'BS::UEModulePDF',
-					FormatJson::encode( FormatJson::decode($sResponse), true )
-				);
-			}
-			else {
-				wfDebugLog(
-					'BS::UEModulePDF',
-					'BsPDFServlet::uploadFiles: Failed adding "'.$sType.'"'
-				);
-			}
+			$this->doFilesUpload( array_merge( $aPostFiles, $aPostData ), $aErrors ); //For last iteration contents
 		}
 	}
 
@@ -292,5 +268,52 @@ class BsPDFServlet {
 		$sNewUrl = $this->aParams['webroot-filesystempath'].$sUrl; // TODO RBV (08.02.11 15:56): What about $wgUploadDirectory?
 		return $sNewUrl;
 	}
+
+	protected function doFilesUpload( $aPostData, $aErrors = array() ) {
+		global $bsgUEModulePDFCURLOptions;
+		$aOptions = array(
+			'timeout' => 120,
+		);
+		$aOptions = array_merge_recursive( $aOptions, $bsgUEModulePDFCURLOptions );
+
+		$sType = $aPostData['fileType'];
+
+		if( !empty( $aErrors ) ) {
+			wfDebugLog(
+				'BS::UEModulePDF',
+				'BsPDFServlet::uploadFiles: Error trying to fetch files:'."\n". var_export( $aErrors, true )
+			);
+		}
+
+		wfRunHooks( 'BSUEModulePDFUploadFilesBeforeSend', array( $this, &$aPostData, $sType ) );
+
+		$aOptions['postData'] = $aPostData;
+
+		$vHttpEngine = Http::$httpEngine;
+		Http::$httpEngine = 'curl';
+		$sResponse = Http::post(
+			$this->aParams['soap-service-url'].'/UploadAsset',
+			$aOptions
+		);
+		Http::$httpEngine = $vHttpEngine;
+
+		if( $sResponse != false ) {
+			wfDebugLog(
+				'BS::UEModulePDF',
+				'BsPDFServlet::uploadFiles: Successfully added "'.$sType.'"'
+			);
+			wfDebugLog(
+				'BS::UEModulePDF',
+				FormatJson::encode( FormatJson::decode($sResponse), true )
+			);
+		}
+		else {
+			wfDebugLog(
+				'BS::UEModulePDF',
+				'BsPDFServlet::uploadFiles: Failed adding "'.$sType.'"'
+			);
+		}
+	}
+
 	//</editor-fold>
 }

@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"bs-articleinfo-desc": "स्थिती-कांबीवर(स्टेटस्-बार)पानाबद्दल माहिती पुरविते",
+	"prefs-articleinfo": "पानाची माहिती",
+	"bs-articleinfo-pref-CheckRevisionInterval": "अपभारण अंतराल सेकंदामध्ये:",
+	"bs-articleinfo-last-edited": "अलीकडील बदलापासूनचा वेळ",
+	"bs-articleinfo-last-edited-tooltip": "शेवटचे संपादन",
+	"bs-articleinfo-last-editor": "मागील {{GENDER:$1|संपादक}}",
+	"bs-articleinfo-categories": "वर्ग",
+	"bs-articleinfo-more-categories": "अधिक वर्ग उपलब्ध आहेत",
+	"bs-articleinfo-all-categories-heading": "वर्ग",
+	"bs-articleinfo-nocategories": "कोणतेही वर्ग सापडले नाहीत.",
+	"bs-articleinfo-hiddencats": "लपविलेले वर्ग",
+	"bs-articleinfo-notemplates": "साचे सापडले नाहीत.",
+	"bs-articleinfo-templates": "साचे",
+	"bs-articleinfo-subpages": "उपपाने",
+	"bs-articleinfo-subpages-available": "या पानास उपपाने आहेत",
+	"bs-articleinfo-subpages-too-much": "१०० पेक्षा अधिक उपपाने उपलब्ध आहेत.",
+	"bs-articleinfo-check-revision": "नविन आवृत्ती उपलब्ध आहे",
+	"bs-articleinfo-check-revision-tooltip": "पानाचे पुनर्भारण करा",
+	"bs-articleinfo-statebartoplastedited": "अलीकडील संपादन",
+	"bs-articleinfo-statebartoplasteditor": "अलीकडील संपादक",
+	"bs-articleinfo-statebartopcategories": "वर्ग",
+	"bs-articleinfo-statebartopsubpages": "उपपाने",
+	"bs-articleinfo-statebarbodycategories": "वर्ग",
+	"bs-articleinfo-statebarbodysubpages": "उपपाने",
+	"bs-articleinfo-statebarbodytemplates": "साचे"
+}

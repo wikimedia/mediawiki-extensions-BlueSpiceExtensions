@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sujiniku",
+			"2nd-player"
+		]
+	},
+	"bs-aboutbluespice-desc": "BlueSpice についての情報。",
+	"bs-aboutbluespice-about-bluespice": "BlueSpice について",
+	"aboutbluespice": "BlueSpice について",
+	"prefs-aboutbluespice": "BlueSpice について",
+	"bs-aboutbluespice-show-menu-links": "「{{int:bs-aboutbluespice-about-bluespice}}」リンクをページ上部とメインメニューに表示する"
+}

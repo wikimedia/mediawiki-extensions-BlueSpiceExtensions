@@ -40,5 +40,10 @@
 	"bs-permissionmanager-pref-lockmode": "Lockmode aktivieren",
 	"bs-permissionmanager-pref-skipsysns": "Systemnamensräume bei eingschaltetem Lockmode ignorieren",
 	"bs-permissionmanager-pref-enablerealitycheck": "Rechteprüfung aktivieren",
-	"bs-permissionmanager-unsaved-changes": "Es existieren ungespeicherte Änderungen. Willst du die Seite wirklich verlassen? Die ungespeicherten Änderungen gehen in diesem Fall verloren"
+	"bs-permissionmanager-unsaved-changes": "Es existieren ungespeicherte Änderungen. Willst du die Seite wirklich verlassen? Die ungespeicherten Änderungen gehen in diesem Fall verloren",
+	"bs-permissionmanager-error-lockout": "Mindestens eine Benutzergruppe muss das Recht \"$1\" besitzen.\nDie Änderungen konnten nicht gespeichert werden.",
+	"log-name-bs-permission-manager": "Rechteverwaltung-Logbuch",
+	"log-description-bs-permission-manager": "Logbuch von Änderungen an den Gruppenberechtigungen.",
+	"log-show-hide-bs-permission-manager": "$1 Rechteverwaltung-Logbuch",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|hat}} die Rechte für Gruppe $4 geändert"
 }

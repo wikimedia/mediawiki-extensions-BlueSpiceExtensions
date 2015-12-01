@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alojz.tic",
+			"Skalcaa",
+			"Dbc334"
+		]
+	},
+	"bs-readers-desc": "Ustvari seznam ljudi, ki berejo stran",
+	"prefs-readers": "Bralci",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Bralec}}|Bralci}}",
+	"readers-user": "Strani {{GENDER:$1|branje}}: $1",
+	"readers": "Bralci \"$1\"",
+	"bs-readers-contentactions-label": "Prikaži bralce",
+	"bs-readers-pagenotexists": "Stran ne obstaja.",
+	"bs-readers-pref-active": "Aktiviraj bralce",
+	"bs-readers-pref-numofreaders": "Število bralcev za prikaz:",
+	"bs-readers-emptyinput": "Podana ni bila nobena stran.",
+	"bs-readers-header-username": "Uporabniško ime",
+	"bs-readers-header-readerspath": "Bralec",
+	"bs-readers-header-ts": "Datum",
+	"bs-readers-header-page": "Stran"
+}

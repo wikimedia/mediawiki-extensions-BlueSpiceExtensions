@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-saferedit-desc": "Zwescheschpeijschere vu Änderonge aan Sigge em Wikki",
+	"prefs-saferedit": "Sescherer Änndere",
+	"bs-saferedit-restore": "Zeröckholle",
+	"bs-saferedit-safer-edit-tooltip": "En Väsjohn zom Zerökholle es doh.",
+	"bs-saferedit-safer-edit-topbar": "Zerökholle",
+	"bs-saferedit-user-editing": "{{GENDER:$1|Dä|Dat|Dä Metmaacher|De|Dat}} $1 es di Sigg aam ändere.",
+	"bs-saferedit-someone-editing": "Di Sigg es jrahd en Ärbeid.",
+	"bs-saferedit-pref-interval": "Recovery version interval: <!--  https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-saferedit-pref-interval/ksh -->",
+	"bs-saferedit-pref-shownameofeditinguser": "Zeijsch der Nahme vun däm Metmaacher, dä jrahd aam ändere es.",
+	"bs-saferedit-pref-warnonleave": "Donn mesch ennfommehre, wann esch Sigg e verlohße well, woh min Änderonge noch nit faßjehallde sin.",
+	"bs-saferedit-pref-usese": "Donn et sescherere Änndere ennschallde",
+	"bs-saferedit-statebartopsaferedit": "Sescherer Änndere",
+	"bs-saferedit-statebartopsafereditediting": "Sescherer Änndere - ed es eine aam schriive",
+	"bs-saferedit-lastsavedversion": "De läzde faßjehallde Väsjohn es vum $1 öm $2 Uhr.",
+	"bs-saferedit-unsavedchanges": "Et jidd onjesescherte Änderonge.",
+	"bs-saferedit-othersectiontitle": "Dä Affschnedd zom zerök holle",
+	"bs-saferedit-othersectiontext1": "mer han en Sescherong vun enem anndere Affschnett.",
+	"bs-saferedit-othersectiontext2": "De Sescherong es vum $1 öm $2 Uhr.",
+	"bs-saferedit-othersectiontext3": "Wells De en dä Affschnett wähßelle?"
+}

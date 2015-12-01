@@ -1,212 +1,238 @@
-Ext.define('BS.Flexiskin.PreviewMenu', {
+Ext.define( 'BS.Flexiskin.PreviewMenu', {
 	extend: 'Ext.Panel',
 	border: false,
 	width: 400,
 	layout: 'accordion',
 	region: 'west',
-	currentData: {},
+	currentData: { },
+	parent: null,
 	id: 'bs-flexiskin-preview-menu',
-
-	initComponent: function() {
-		this.btnSave = Ext.create("Ext.Button", {
+	initComponent: function () {
+		this.btnSave = Ext.create( "Ext.Button", {
 			id: 'bs-flexiskin-preview-menu-save',
-			text: mw.message('bs-extjs-save').plain(),
+			text: mw.message( 'bs-extjs-save' ).plain(),
 			disabled: true
-		});
-		this.btnSave.on('click', this.btnSaveClick, this);
-		this.btnClose = Ext.create("Ext.Button", {
+		} );
+		this.btnSave.on( 'click', this.btnSaveClick, this );
+		this.btnClose = Ext.create( "Ext.Button", {
 			id: 'bs-flexiskin-preview-menu-close',
-			text: mw.message('bs-extjs-close').plain()
-		});
-		this.btnClose.on('click', this.btnCloseClick, this);
-		this.btnReset = Ext.create("Ext.Button", {
+			text: mw.message( 'bs-extjs-close' ).plain()
+		} );
+		this.btnClose.on( 'click', this.btnCloseClick, this );
+		this.btnReset = Ext.create( "Ext.Button", {
 			id: 'bs-flexiskin-preview-menu-reset',
-			text: mw.message('bs-extjs-reset').plain(),
+			text: mw.message( 'bs-extjs-reset' ).plain(),
 			disabled: true
-		});
-		this.btnReset.on('click', this.btnResetClick, this);
-		this.dockedItems = [{
-			id: 'bs-flexiskin-preview-menu-toolbar',
-			xtype: 'toolbar',
-			dock: 'top',
-			ui: 'footer',
-			items: [
-				this.btnSave,
-				this.btnClose,
-				this.btnReset
-			]
-		}];
+		} );
+		this.btnReset.on( 'click', this.btnResetClick, this );
+		this.dockedItems = [ {
+				id: 'bs-flexiskin-preview-menu-toolbar',
+				xtype: 'toolbar',
+				dock: 'top',
+				ui: 'footer',
+				items: [
+					this.btnSave,
+					this.btnClose,
+					this.btnReset
+				]
+			} ];
 		this.items = [
-			Ext.create("BS.Flexiskin.Menuitems.General"),
-			Ext.create("BS.Flexiskin.Menuitems.Header"),
-			Ext.create("BS.Flexiskin.Menuitems.Position")
+			Ext.create( "BS.Flexiskin.Menuitems.General", {
+				parent: this
+			} ),
+			Ext.create( "BS.Flexiskin.Menuitems.Header", {
+				parent: this
+			} ),
+			Ext.create( "BS.Flexiskin.Menuitems.Position", {
+				parent: this
+			} )
 		];
 
-		this.afterInitComponent(arguments);
-		this.callParent(arguments);
+		this.afterInitComponent( arguments );
+		this.callParent( arguments );
 	},
-	afterInitComponent: function() {
+	afterInitComponent: function () {
 		//this.on('afterrender', this.setData, this);
 	},
-	getData: function() {
-		var data = [];
-		var items = Ext.isArray(this.items) ? this.items : this.items.items;
-		for (var i = 0; i < items.length; i++) {
-			if (typeof (items[i].getData) !== 'undefined')
-			data.push(items[i].getData());
+	getData: function () {
+		var data = [ ];
+		var items = Ext.isArray( this.items ) ? this.items : this.items.items;
+		for ( var i = 0; i < items.length; i++ ) {
+			if ( typeof ( items[i].getData ) !== 'undefined' )
+				data.push( items[i].getData() );
 		}
 		return data;
 	},
-	setData: function( obj ) {
+	setData: function ( obj ) {
 		this.currentData = obj;
-		var items = Ext.isArray(this.items) ? this.items : this.items.items;
-		for (var i = 0; i < items.length; i++) {
-			items[i].setData( {skinId : obj.skinId, config: obj.config[i]} );
+		var items = Ext.isArray( this.items ) ? this.items : this.items.items;
+		for ( var i = 0; i < items.length; i++ ) {
+			items[i].setData( { skinId: obj.skinId, config: obj.config[i] } );
 		}
-		
+
 		//this.callParent( arguments );
 	},
-	btnSaveClick: function() {
-		this.setLoading(mw.message('bs-extjs-saving').plain());
+	btnSaveClick: function () {
+		this.setLoading( mw.message( 'bs-extjs-saving' ).plain() );
 		var data = this.getData();
 		this.btnReset.disable();
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::saveFlexiskin'),
+		var me = this;
+		Ext.Ajax.request( {
+			url: mw.util.wikiScript( 'api' ),
 			params: {
-			data: Ext.encode(data),
-			id: this.currentData.skinId
+				action: 'flexiskin',
+				type: 'save',
+				data: Ext.encode( data ),
+				id: this.currentData.skinId,
+				format: 'json'
 			},
-			success: function(response) {
-			var responseObj = Ext.decode(response.responseText);
-			if (responseObj.success === true) {
-				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
-				this.currentData.skinId = responseObj.id;
-			} else {
-				bs.util.alert('bs-flexiskin-saveskin-error',
-					{
-					text: responseObj.msg,
-					titleMsg: 'bs-extjs-error'
-					}, {
-				ok: function() {
-				},
-				cancel: function() {
-				},
-				scope: this
+			success: function ( response ) {
+				var responseObj = Ext.decode( response.responseText );
+				responseObj = Ext.decode( responseObj.flexiskin );
+				if ( responseObj.success === true ) {
+					me.parent.cpIframe.setLoading();
+					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&useskin=flexiskin" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
+					this.currentData.skinId = responseObj.id;
+				} else {
+					bs.util.alert( 'bs-flexiskin-saveskin-error',
+							{
+								text: responseObj.msg,
+								titleMsg: 'bs-extjs-error'
+							}, {
+						ok: function () {
+						},
+						cancel: function () {
+						},
+						scope: this
+					}
+					);
 				}
-				);
-			}
-			this.setLoading(false);
+				this.setLoading( false );
 
 			},
 			scope: this
-		});
+		} );
 	},
-	btnCloseClick: function() {
+	btnCloseClick: function () {
+		var me = this;
 		bs.util.confirm(
-			'bs-flexiskin-config-close',
-			{
-				titleMsg: 'bs-extjs-warning',
-				textMsg: 'bs-flexiskin-dialogclose'
-			},
+				'bs-flexiskin-config-close',
+				{
+					titleMsg: 'bs-extjs-warning',
+					textMsg: 'bs-flexiskin-dialogclose'
+				},
 		{
-			ok: function() {
-				Ext.Ajax.request({
-					url: bs.util.getAjaxDispatcherUrl('Flexiskin::resetFlexiskin'),
+			ok: function () {
+				Ext.Ajax.request( {
+					url: mw.util.wikiScript( 'api' ),
 					params: {
-					id: Ext.getCmp('bs-flexiskin-preview-menu').currentData.skinId
+						action: 'flexiskin',
+						type: 'reset',
+						id: me.currentData.skinId,
+						format: 'json'
 					},
 					scope: this
-				});
-				Ext.getCmp('bs-flexiskin-config-window').hide();
-				Ext.getCmp('bs-flexiskin-panel').reloadStore();
+				} );
+				me.parent.hide();
+				Ext.getCmp( 'bs-flexiskin-panel' ).reloadStore();
 			}
 		}
 		);
 	},
-	btnResetClick: function() {
+	btnResetClick: function () {
 		bs.util.confirm(
-			'bs-flexiskin-config-close',
-			{
-				titleMsg: 'bs-extjs-warning',
-				textMsg: 'bs-flexiskin-dialogreset'
-			},
+				'bs-flexiskin-config-close',
+				{
+					titleMsg: 'bs-extjs-warning',
+					textMsg: 'bs-flexiskin-dialogreset'
+				},
 		{
-			ok: function() {
-			this.btnResetClickOk();
+			ok: function () {
+				this.btnResetClickOk();
 			}, scope: this
 		}
 		);
 	},
-	btnResetClickOk: function() {
+	btnResetClickOk: function () {
 		this.setLoading( );
 		this.btnSave.disable();
 		this.btnReset.disable();
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::resetFlexiskin'),
+		var me = this;
+		Ext.Ajax.request( {
+			url: mw.util.wikiScript( 'api' ),
 			params: {
-			id: this.currentData.skinId
+				action: 'flexiskin',
+				type: 'reset',
+				id: this.currentData.skinId,
+				format: 'json'
 			},
-			success: function(response) {
-			var responseObj = Ext.decode(response.responseText);
-			if (responseObj.success === true) {
-				this.setLoading();
-				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
-				responseObj.data.config = Ext.decode(responseObj.data.config);
-				this.setData(responseObj.data);
-			} else {
-				bs.util.alert('bs-flexiskin-addskin-error',
-					{
-					text: responseObj.msg,
-					titleMsg: 'bs-extjs-error'
-					}, {
-				ok: function() {
-				},
-				cancel: function() {
-				},
-				scope: this
+			success: function ( response ) {
+				var responseObj = Ext.decode( response.responseText );
+				responseObj = Ext.decode( responseObj.flexiskin );
+				if ( responseObj.success === true ) {
+					this.setLoading();
+					me.parent.cpIframe.setLoading();
+					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&useskin=flexiskin" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
+					responseObj.data.config = Ext.decode( responseObj.data.config );
+					this.setData( responseObj.data );
+				} else {
+					bs.util.alert( 'bs-flexiskin-addskin-error',
+							{
+								text: responseObj.msg,
+								titleMsg: 'bs-extjs-error'
+							}, {
+						ok: function () {
+						},
+						cancel: function () {
+						},
+						scope: this
+					}
+					);
 				}
-				);
-			}
-			this.setLoading(false);
+				this.setLoading( false );
 			},
 			scope: this
-		});
+		} );
 	},
-	onItemStateChange: function() {
+	onItemStateChange: function () {
 		//this.setLoading( mw.message('bs-extjs-saving').plain());
 		var data = this.getData();
 		this.btnSave.enable();
 		this.btnReset.enable();
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('Flexiskin::saveFlexiskinPreview'),
+		var me = this;
+		Ext.Ajax.request( {
+			url: mw.util.wikiScript( 'api' ),
 			params: {
-			data: Ext.encode(data),
-			id: this.currentData.skinId
+				action: 'flexiskin',
+				type: 'save',
+				mode: 'preview',
+				data: Ext.encode( data ),
+				id: this.currentData.skinId,
+				format: 'json'
 			},
-			success: function(response) {
-			var responseObj = Ext.decode(response.responseText);
-			if (responseObj.success === true) {
-				Ext.getCmp('bs-flexiskin-preview-frame').setLoading();
-				Ext.get('bs-flexiskin-preview-frame').dom.src = responseObj.src + "&" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
-			} else {
-				bs.util.alert('bs-flexiskin-saveskinpreview-error',
-					{
-					text: responseObj.msg,
-					titleMsg: 'bs-extjs-error'
-					}, {
-				ok: function() {
-				},
-				cancel: function() {
-				},
-				scope: this
+			success: function ( response ) {
+				var responseObj = Ext.decode( response.responseText );
+				responseObj = Ext.decode( responseObj.flexiskin );
+				if ( responseObj.success === true ) {
+					me.parent.cpIframe.setLoading();
+					me.parent.cpIframe.getEl().dom.src = responseObj.src + "&useskin=flexiskin" + ( new Date() ).getTime() + Math.floor( Math.random() * 1000000 );
+				} else {
+					bs.util.alert( 'bs-flexiskin-saveskinpreview-error',
+							{
+								text: responseObj.msg,
+								titleMsg: 'bs-extjs-error'
+							}, {
+						ok: function () {
+						},
+						cancel: function () {
+						},
+						scope: this
+					}
+					);
 				}
-				);
-			}
-			this.setLoading(false);
+				this.setLoading( false );
 			},
 			scope: this
-		});
+		} );
 	}
-});
+} );

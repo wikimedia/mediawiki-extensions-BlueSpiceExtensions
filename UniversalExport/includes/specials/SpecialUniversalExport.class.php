@@ -213,4 +213,8 @@ class SpecialUniversalExport extends BsSpecialPage {
 
 		echo $aFile['content'];
 	}
+
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

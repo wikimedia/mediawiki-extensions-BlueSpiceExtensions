@@ -13,18 +13,18 @@
 
 Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 	extend: 'BS.InsertLink.FormPanelBase',
-	protocols: ['file:///'],
+	protocols: [ 'file:///' ],
 	bIsJavaEnabled: false,
 	beforeInitComponent: function() {
 		this.setTitle( mw.message('bs-insertlink-tab-ext-file').plain() );
-		this.on( 'beforeactivate', function(){
+		this.on( 'beforeactivate', function () {
 			if ( !this.bIsJavaEnabled ) {
-			    return;
+				return;
 			}
 			var applet = $("<applet>");
 			applet.attr('id', 'BsFileChooserApplet');
 			applet.attr('name', 'BsFileChooserApplet');
-			applet.attr('archive', wgScriptPath + '/extensions/BlueSpiceExtensions/InsertLink/vendor/BsFileChooserApplet.jar');
+			applet.attr( 'archive', mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/InsertLink/vendor/BsFileChooserApplet.jar' );
 			applet.attr('code', 'biz.hallowelt.InsertLink.BsFileChooserApplet.class');
 			applet.attr('width', '1');
 			applet.attr('height', '1');
@@ -64,9 +64,9 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 		this.fcTargetFields = Ext.create('Ext.form.FieldContainer', {
 			 layout: 'hbox'
 		});
-		this.fcTargetFields.add(this.tfTargetUrl);
+		this.fcTargetFields.add( this.tfTargetUrl );
 		if ( this.bIsJavaEnabled ) {
-		    this.fcTargetFields.add(this.btnSearchFile);
+			this.fcTargetFields.add( this.btnSearchFile );
 		}
 
 		this.pnlMainConf.items = [];

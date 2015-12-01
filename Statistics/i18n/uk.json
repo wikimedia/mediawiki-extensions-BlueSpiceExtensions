@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mykola Swarnyk",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Ата"
 		]
 	},
 	"bs-statistics-desc": "Модуль статистики для BlueSpice",
@@ -36,7 +37,7 @@
 	"bs-statistics-label-creator": "Автор",
 	"bs-statistics-diag-number-of-edits": "Кількість редагувань",
 	"bs-statistics-diag-number-of-edits-desc": "Показує загальну кількість редагувань, зроблених за обраний період.",
-	"bs-statistics-diag-edits-per-user": "Правок на одного користувача",
+	"bs-statistics-diag-edits-per-user": "Редагувань на одного користувача",
 	"bs-statistics-diag-edits-per-user-desc": "Показує середню кількість редагувань, зроблених одним користувачем протягом вибраного періоду.",
 	"bs-statistics-diag-search-queries": "Пошукові запити",
 	"bs-statistics-diag-search-queries-desc": "Показує кількість пошукових запитів протягом вибраного періоду.",
@@ -53,7 +54,7 @@
 	"bs-statistics-portlet-numberofedits": "Кількість редагувань",
 	"bs-statistics-portlet-numberofpages": "Кількість сторінок",
 	"bs-statistics-portlet-numberofusersdesc": "Статистика кількості користувачів.",
-	"bs-statistics-portlet-numberofeditsdesc": "Статистика кількості правок.",
+	"bs-statistics-portlet-numberofeditsdesc": "Статистика кількості редагувань.",
 	"bs-statistics-portlet-numberofpagesdesc": "Статистика кількості сторінок.",
 	"bs-statistics-portletconfig-periodday": "Вчора"
 }

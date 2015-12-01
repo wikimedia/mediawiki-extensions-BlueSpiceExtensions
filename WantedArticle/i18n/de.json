@@ -3,19 +3,20 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Metalhead64",
-			"Osnard"
+			"Osnard",
+			"Purodha"
 		]
 	},
 	"bs-wantedarticle-desc": "Listet eine neu erstellte Seite in der Liste der gewünschten Seiten auf",
 	"prefs-wantedarticle": "Gewünschte Seiten",
 	"bs-wantedarticle-ajax-error-no-parameter": "Es wurde kein Seitentitel angegeben.",
-	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Die Seite \"$1\" existiert bereits.",
-	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Die Seite \"$1\" wurde bereits vorgeschlagen.",
-	"bs-wantedarticle-edit-comment-suggestion-added": "Vorschlag \"$1\" wurde eingetragen.",
-	"bs-wantedarticle-success-suggestion-entered": "Dein \"$1\" Vorschlag wurde eingetragen.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Die Seite „$1“ ist bereits vorhanden.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Die Seite „$1“ wurde bereits vorgeschlagen.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Vorschlag „$1“ eingetragen.",
+	"bs-wantedarticle-success-suggestion-entered": "Dein Vorschlag „$1“ wurde eingetragen.",
 	"bs-wantedarticle-sort-value-unknown": "Es sind nur die Werte \"title\" (Seitentitel) und \"time\" (Zeit) gültig.",
 	"bs-wantedarticle-order-value-unknown": "Es sind nur die Werte \"ASC\" (aufsteigend) und \"DESC\" (absteigend) gültig.",
-	"bs-wantedarticle-page-removed": "Die Seite \"$1\" wurde von der Liste entfernt.",
+	"bs-wantedarticle-page-removed": "Die Seite „$1“ wurde von der Liste entfernt.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Vorschlagen",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Erstellen",
 	"bs-wantedarticle-single-textfield-defaulttext": "Seitentitel",

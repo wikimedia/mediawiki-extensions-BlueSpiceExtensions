@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Tyey",
-			"아라"
+			"아라",
+			"Hwangjy9"
 		]
 	},
+	"prefs-avatars": "아바타",
 	"bs-avatars-upload-title": "프로필 사진 바꾸기",
 	"bs-avatars-upload-label": "사진",
 	"bs-avatars-warning-title": "경고",

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"bs-aboutbluespice-desc": "Informacje o BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "O BlueSpice",
+	"aboutbluespice": "O BlueSpice",
+	"prefs-aboutbluespice": "O BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Wyświetlanie linku „{{int:bs-aboutbluespice-about-bluespice}}” na górze i w menu głównym"
+}

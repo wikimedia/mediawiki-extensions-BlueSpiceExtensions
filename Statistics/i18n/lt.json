@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zygimantus"
+		]
+	},
+	"bs-statistics-desc": "Statistikos modulis BlueSpice",
+	"prefs-statistics": "Išplėsta statistika",
+	"extendedstatistics": "Išplėsta statistika",
+	"bs-statistics-diagram": "Užklausa",
+	"bs-statistics-from": "Nuo",
+	"bs-statistics-to": "Kam",
+	"bs-statistics-grain": "Intervalas",
+	"bs-statistics-mode": "Rėžimas",
+	"bs-statistics-absolute": "absoliutus",
+	"bs-statistics-year": "Metai",
+	"bs-statistics-month": "Mėnuo",
+	"bs-statistics-week": "Kalendorinė savaitė",
+	"bs-statistics-day": "Diena",
+	"bs-statistics-list": "Sąrašas",
+	"bs-statistics-not-allowed": "Jūs neturite būtino leidimo.",
+	"bs-statistics-finish": "Sukurti diagramą",
+	"bs-statistics-filters": "Filtrai",
+	"bs-statistics-diag-number-of-users": "Vartotojų skaičius",
+	"bs-statistics-label-name": "Pavadinimas",
+	"bs-statistics-label-registration": "Registracija",
+	"bs-statistics-diag-number-of-pages": "Puslapių skaičius",
+	"bs-statistics-diag-number-of-pages-mw": "Turinio puslapių skaičius",
+	"bs-statistics-label-page": "Puslapis",
+	"bs-statistics-label-creator": "Autorius",
+	"bs-statistics-diag-number-of-edits": "Pakeitimų skaičius",
+	"bs-statistics-label-searchterm": "Paieškos terminas",
+	"bs-statistics-label-time": "Laikas",
+	"bs-statistics-filter-category": "Kategorija",
+	"bs-statistics-pref-excludeusers": "Išskirti šie vartotojai:",
+	"bs-statistics-portlet-numberofusers": "Vartotojų skaičius",
+	"bs-statistics-portlet-numberofedits": "Pakeitimų skaičius",
+	"bs-statistics-portlet-numberofpages": "Puslapių skaičius",
+	"bs-statistics-portletconfig-periodday": "Vakar"
+}

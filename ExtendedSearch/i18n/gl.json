@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
 	"bs-extendedsearch-desc": "Plugin de busca baseado en Apache Solr (http://lucene.apache.org/solr/) para expandir as funcións de busca",
@@ -57,6 +58,7 @@
 	"bs-extendedsearch-pref-showfacets": "Mostrar facetas en páxina especial",
 	"bs-extendedsearch-pref-showautocomplete": "Suxerir páxinas coincidentes co termo da procura",
 	"bs-extendedsearch-pref-externalrepo": "Idexar unha carpeta externa:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL de directorio externo:",
 	"bs-extendedsearch-pref-acentries": "Número de suxerencias coincidentes co termo da procura:",
 	"bs-extendedsearch-pref-highlightsnippets": "Número de fragmentos resaltados:",
 	"bs-extendedsearch-pref-indexfiletypes": "Indexar os ficheiros con determinadas extensións:",
@@ -90,7 +92,7 @@
 	"bs-extendedsearch-descending": "Descendente",
 	"bs-extendedsearch-unknown": "Descoñecido",
 	"bs-extendedsearch-section": "Sección",
-	"bs-extendedsearch-morelikethis": "Páginas semellantes",
+	"bs-extendedsearch-morelikethis": "Páxinas similares",
 	"bs-extendedsearch-recentsearchterms": "Termos de busca recentes",
 	"bs-extendedsearch-recentsearchtermsdesc": "Lista dos termos buscados recentemente nesta wiki, ordenados por cantidade.",
 	"bs-extendedsearch-no-mlt-found": "Non se atopou ningunha páxina semellante.",

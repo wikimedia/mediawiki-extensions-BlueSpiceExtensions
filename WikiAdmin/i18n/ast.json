@@ -4,9 +4,12 @@
 			"Xuacu"
 		]
 	},
-	"bs-wikiadmin-desc": "Alministración de BlueSpice",
+	"bs-wikiadmin-desc": "Puntu central d'alministración de BlueSpice",
 	"bs-wikiadmin-notallowed": "Nun tienes permisu pa usar esta páxina.",
 	"wikiadmin": "Alministración de BlueSpice",
 	"action-wikiadmin": "amosar les páxines d'alministración de BlueSpice",
-	"right-wikiadmin": "Amosar les páxines d'alministración de BlueSpice"
+	"right-wikiadmin": "Amosar les páxines d'alministración de BlueSpice",
+	"bs-wikiadmin-shop": "Tienda",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Páxines especiales",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Llista toles páxines especiales de MediaWiki"
 }

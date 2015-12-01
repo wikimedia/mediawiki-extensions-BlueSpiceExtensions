@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-formattinghelp-desc": "Prikaže pomoč za oblikovanje besedila",
+	"bs-formattinghelp-formatting": "Pomoč oblikovanja",
+	"bs-formattinghelp-help-syntax": "Sintaksa",
+	"bs-formattinghelp-help-example-text": "Besedilo",
+	"bs-formattinghelp-help-bold": "Krepko",
+	"bs-formattinghelp-help-italic": "Ležeče",
+	"bs-formattinghelp-help-whitespace": "Presledek",
+	"bs-formattinghelp-help-nowiki": "Prepreči oblikovanje",
+	"bs-formattinghelp-help-color": "Obarvano besedilo",
+	"bs-formattinghelp-help-headline": "Naslov",
+	"bs-formattinghelp-help-linebreak": "Prelom vrstice",
+	"bs-formattinghelp-help-ul": "Neurejen seznam",
+	"bs-formattinghelp-help-listitem": "Element seznama",
+	"bs-formattinghelp-help-subitem": "Podelement",
+	"bs-formattinghelp-help-numberedlist": "Oštevilčen seznam",
+	"bs-formattinghelp-help-link": "Notranja povezava",
+	"bs-formattinghelp-help-link-alt": "Notranja povezava z dodatnim besedilom",
+	"bs-formattinghelp-help-caption": "Napis",
+	"bs-formattinghelp-help-extlink": "Zunanja povezava",
+	"bs-formattinghelp-help-hr": "Vodoravna črta",
+	"bs-formattinghelp-help-template": "Predloga",
+	"bs-formattinghelp-help-templatename": "Ime predloge"
+}

@@ -15,11 +15,11 @@ $wgAutoloadClasses['BsUniversalExportModule'] = __DIR__ . '/includes/UniversalEx
 $wgAutoloadClasses['BsUniversalExportHelper'] = __DIR__ . '/includes/UniversalExportHelper.class.php';
 $wgAutoloadClasses['BsUniversalExportTagLibrary'] = __DIR__ . '/includes/UniversalExportTagLibrary.class.php';
 
-$wgSpecialPageGroups['UniversalExport'] = 'bluespice';
 $wgSpecialPages['UniversalExport'] = 'SpecialUniversalExport';
 
 $wgResourceModules['ext.bluespice.universalExport.css'] = array(
 	'styles' => 'bluespice.universalExport.css',
+	'position' => 'top',
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/UniversalExport/resources'
 );

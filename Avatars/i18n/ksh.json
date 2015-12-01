@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"prefs-avatars": "Avvatahre",
+	"bs-avatars-desc": "Brängk alljemeine un spezjälle Bellder vun Metmaacher.",
+	"bs-avatars-pref-generator": "Jennerahtor:",
+	"bs-avatars-pref-defaultsize": "De Schtandattjrühße en Pixelle:",
+	"bs-avatars-upload-complete": "Dat Belld wohd huhjelahde.",
+	"bs-avatars-generate-complete": "Ene neueje Avvataa wood automattesch opjeboud.",
+	"bs-avatars-upload-title": "Donn et Beld em Profihl tuusche",
+	"bs-avatars-upload-label": "Belld",
+	"bs-avatars-generate-new-label": "Donn ene neueje Avvataa automattesch opboue",
+	"bs-avatars-warning-title": "Opjepaß",
+	"bs-avatars-warning-text": "Do häs en Dinge Enschtällonge e Metmaacher_Belld dren. Avvatahre ennzesäze weed dat fott maache. Wels de verhaftesch dermet wigger maache?",
+	"bs-avatars-userimage-title": "E Belld uss_em Wikki udder ene <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Uniform Ressource Locator\">URL</i> vun enem Beld",
+	"bs-avatars-userimage-help": "för e Beijschpell „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">Picture.jpg</code>“ udder „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">http://localhost/Picture.gif</code>“",
+	"bs-avatars-set-userimage-failed": "Kein jölltejje <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Uniform Ressource Locator\">URL</i> udder Beld vum Wikki",
+	"bs-avatars-set-userimage-saved": "Dat Belld vum Metmaacher es faßjehallde.",
+	"bs-avatars-file-upload-fieldset-title": "Belld huhlahde",
+	"bs-avatars-auto-generate-fieldset-title": "Ene Avvataa automattesch opboue"
+}

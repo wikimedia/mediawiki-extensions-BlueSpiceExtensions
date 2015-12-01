@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"prefs-avatars": "Avatarai",
+	"bs-avatars-pref-generator": "Generatorius:",
+	"bs-avatars-pref-defaultsize": "Numatytasis dydis pikseliais:",
+	"bs-avatars-upload-complete": "Nuotrauka buvo įkelta sėkmingai.",
+	"bs-avatars-generate-complete": "Naujas avataras buvo sugeneruotas.",
+	"bs-avatars-upload-title": "Keisti profilio nuotrauka",
+	"bs-avatars-upload-label": "Nuotrauka",
+	"bs-avatars-generate-new-label": "Generuoti naują avatarą",
+	"bs-avatars-warning-title": "Įspėjimas",
+	"bs-avatars-userimage-title": "Nuotrauka iš viki ar nuotraukos URL",
+	"bs-avatars-userimage-help": "pvz. Nuotrauka.jbg arba http://localhost/Nuotrauka.gif",
+	"bs-avatars-set-userimage-failed": "Neteisingas URL ar nuotrauka iš viki.",
+	"bs-avatars-set-userimage-saved": "Vartotojo nuotrauka sėkmingai išsaugota.",
+	"bs-avatars-file-upload-fieldset-title": "Nuotraukos įkėlimas",
+	"bs-avatars-auto-generate-fieldset-title": "Automatiškai generuoti avatarą"
+}

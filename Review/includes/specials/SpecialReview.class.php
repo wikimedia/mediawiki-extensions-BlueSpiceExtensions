@@ -229,4 +229,8 @@ class SpecialReview extends BsSpecialPage {
 		}
 		return false;
 	}
+
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

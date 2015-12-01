@@ -10,6 +10,7 @@
 	"bs-smartlist-recent-changes": "Нові редагування",
 	"bs-smartlist-no-entries": "Нічого не знайдено.",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|Поданий простір назв|Подані простори назв}}: $2.",
+	"bs-smartlist-invalid-target": "Вказана ціль не є дійсною назвою сторінки",
 	"bs-smartlist-comment": "Коментар: $1.",
 	"bs-smartlist-pref-count": "Кількість записів:",
 	"bs-smartlist-pref-comments": "Показати коментар",

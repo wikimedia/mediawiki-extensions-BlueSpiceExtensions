@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Niknetniko"
+			"Niknetniko",
+			"Esketti"
 		]
 	},
 	"bs-statebar-desc": "Biedt een statusbalk",
 	"prefs-statebar": "Statusbalk",
+	"bs-statebar-pref-sortbodyvars": "Lichaam om:",
+	"bs-statebar-pref-sorttopvars": "Top volgorde:",
 	"bs-statebar-pref-show": "Statusbalk weergeven",
+	"bs-statebar-viewtoggler": "DETAILS",
 	"bs-statebar-viewtoggler-tooltip": "Gedetailleerde informatie weergeven",
 	"bs-statebar-switch-description": "Verbergt de statusbalk op deze pagina.",
 	"bs-statebar-ajax-nobodyviews": "Geen informatie beschikbaar."

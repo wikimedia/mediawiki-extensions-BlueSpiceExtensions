@@ -94,8 +94,6 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 
-		// Echo extension hooks
-		$this->setHook( 'BeforeCreateEchoEvent' );
 		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
 
 		$this->setHook( 'SuperList::getFieldDefinitions', 'onSuperListGetFieldDefinitions' );
@@ -106,9 +104,64 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->mCore->registerPermission( 'responsibleeditors-changeresponsibility', array(), array( 'type' => 'global' ) );
 		$this->mCore->registerPermission( 'responsibleeditors-viewspecialpage', array(), array( 'type' => 'global' ) );
 		$this->mCore->registerPermission( 'responsibleeditors-takeresponsibility', array( 'user' ), array( 'type' => 'global' ) );
+
+		BSNotifications::registerNotificationCategory( 'bs-responsible-editors-assignment-cat' );
+		BSNotifications::registerNotificationCategory( 'bs-responsible-editors-action-cat' );
+		BSNotifications::registerNotification(
+			'bs-responsible-editors-assign',
+			'bs-responsible-editors-assignment-cat',
+			'notification-bs-responsibleeditors-assign-summary',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-assign-subject',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-assign-body',
+			array('agent', 'title', 'titlelink')
+		);
+		BSNotifications::registerNotification(
+			'bs-responsible-editors-revoke',
+			'bs-responsible-editors-assignment-cat',
+			'notification-bs-responsibleeditors-revoke-summary',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-revoke-subject',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-revoke-body',
+			array('agent', 'title', 'titlelink')
+		);
+		BSNotifications::registerNotification(
+			'bs-responsible-editors-change',
+			'bs-responsible-editors-action-cat',
+			'notification-bs-responsibleeditors-change-summary',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-change-subject',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-change-body',
+			array('agent', 'title', 'titlelink')
+		);
+		BSNotifications::registerNotification(
+			'bs-responsible-editors-delete',
+			'bs-responsible-editors-action-cat',
+			'notification-bs-responsibleeditors-delete-summary',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-delete-subject',
+			array('agent', 'title', 'titlelink'),
+			'notification-bs-responsibleeditors-delete-body',
+			array('agent', 'title', 'titlelink')
+		);
+		BSNotifications::registerNotification(
+			'bs-responsible-editors-move',
+			'bs-responsible-editors-action-cat',
+			'notification-bs-responsibleeditors-move-summary',
+			array('agent', 'title', 'titlelink', 'newtitle', 'newtitlelink'),
+			'notification-bs-responsibleeditors-move-subject',
+			array('agent', 'title', 'titlelink', 'newtitle', 'newtitlelink'),
+			'notification-bs-responsibleeditors-move-body',
+			array('agent', 'title', 'titlelink', 'newtitle', 'newtitlelink'),
+			array(
+				'formatter-class' => 'ResponsibleEditorFormatter'
+			)
+		);
 		wfProfileOut('BS::' . __METHOD__);
 	}
-
 
 	/**
 	 * Adds the 'ext.bluespice.responsibleeditors' module to the OutputPage
@@ -949,76 +1002,16 @@ class ResponsibleEditors extends BsExtensionMW {
 	public static function notifyResponsibleEditors($aResponsibleEditorIds, $oUser, $aTitles, $sAction) {
 		if ( empty( $aResponsibleEditorIds ) ) return true;
 
-		foreach ( $aResponsibleEditorIds as $iUserId ) {
-			$oREUser = User::newFromId( $iUserId );
-			if ( $iUserId == $oUser->getId() ) continue;
-			if ( BsConfig::getVarForUser( "MW::ResponsibleEditors::E".ucfirst( $sAction ), $oREUser ) === false ) {
-				continue;
-			}
+		BSNotifications::notify(
+			"bs-responsible-editors-{$sAction}",
+			$oUser,
+			$aTitles[0],
+			array(
+				'affected-users' => $aResponsibleEditorIds,
+				'titles' => $aTitles
+			)
+		);
 
-			$sUserRealName = BsCore::getInstance()->getUserDisplayName( $oUser );
-			$sUsername = $oUser->getName();
-			$sArticleName = $aTitles[0]->getText();
-			$sArticleLink = $aTitles[0]->getFullURL();
-			$sLanguageCode = $oREUser->getOption( 'language' );
-
-			switch( $sAction ) {
-				case 'change':
-					$sSubject = wfMessage(
-						'bs-responsibleeditors-mail-subject-re-article-changed',
-						$sArticleName,
-						$sUsername,
-						$sUserRealName
-					)->inLanguage( $sLanguageCode )->text();
-					$sMessage = wfMessage(
-						'bs-responsibleeditors-mail-text-re-article-changed',
-						$sArticleName,
-						$sUsername,
-						$sUserRealName,
-						$sArticleLink
-					)->inLanguage( $sLanguageCode )->text();
-					break;
-				case 'delete':
-					$sSubject = wfMessage(
-						'bs-responsibleeditors-mail-subject-re-article-deleted',
-						$sArticleName,
-						$sUsername,
-						$sUserRealName
-					)->inLanguage( $sLanguageCode )->text();
-					$sMessage = wfMessage(
-						'bs-responsibleeditors-mail-text-re-article-deleted',
-						$sArticleName,
-						$sUsername,
-						$sUserRealName,
-						$sArticleLink
-					)->inLanguage( $sLanguageCode )->text();
-					break;
-				case 'move':
-					$sSubject = wfMessage(
-						'bs-responsibleeditors-mail-subject-re-article-moved',
-						$sArticleName,
-						$sUsername,
-						$sUserRealName
-					)->inLanguage( $sLanguageCode )->text();
-					$sMessage = wfMessage(
-						'bs-responsibleeditors-mail-text-re-article-moved',
-						$sArticleName,
-						$aTitles[1]->getPrefixedText(),
-						$sUsername,
-						$sUserRealName,
-						$sArticleLink
-					)->inLanguage( $sLanguageCode )->text();
-					break;
-				default:
-					wfDebugLog(
-						'BS::ResponsibleEditors::notifyResponsibleEditors',
-						'Action "'.$sAction.'" is unknown. No mails sent.'
-					);
-					return;
-			}
-
-			BsMailer::getInstance( 'MW' )->send( $oREUser, $sSubject, $sMessage );
-		}
 	}
 
 	public static function getResponsibleEditorsPortletData( $iCount, $iUserId ) {
@@ -1049,13 +1042,23 @@ class ResponsibleEditors extends BsExtensionMW {
 		return implode( '', $aResults );
 	}
 
-	public function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories ) {
-		/* implement */
-		return true;
-	}
-
 	public function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
-		/* implement */
+		switch ( $event->getType() ) {
+			case 'bs-responsible-editors-assign':
+			case 'bs-responsible-editors-revoke':
+			case 'bs-responsible-editors-change':
+			case 'bs-responsible-editors-delete':
+			case 'bs-responsible-editors-move':
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['affected-users'] ) ) {
+					break;
+				}
+				$aAffectedUsers = $extra['affected-users'];
+				foreach($aAffectedUsers as $iUserId) {
+					$users[$iUserId] = User::newFromId($iUserId);
+				}
+				break;
+		}
 		return true;
 	}
 

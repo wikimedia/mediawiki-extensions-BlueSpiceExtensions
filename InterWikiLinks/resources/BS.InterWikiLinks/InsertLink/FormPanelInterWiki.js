@@ -55,7 +55,7 @@ Ext.define( 'BS.InterWikiLinks.InsertLink.FormPanelInterWiki', {
 		//overwrites FormPanelWikiPage tab
 		if( obj.type && obj.type == this.linktype ) {
 			var link = String(obj.href);
-			link = link.replace(wgServer+"/", "");
+			link = link.replace( mw.config.get( "wgServer" ) + "/", "" );
 			link = unescape(link);
 
 			if ( link.match( ':' ) ) {

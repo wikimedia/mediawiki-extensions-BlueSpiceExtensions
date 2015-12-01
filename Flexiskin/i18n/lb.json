@@ -41,5 +41,6 @@
 	"bs-flexiskin-labelwidth": "Gesamtbreet (a Pixel)",
 	"bs-flexiskin-labelfullwidth": "Maximal Breet",
 	"bs-flexiskin-error-nameempty": "Gitt w.e.g. e valabelen Numm a fir d'Ausgesinn dat Dir uleeë wëllt.",
-	"bs-flexiskin-error-templatenotexists": "Déi eruagesicht Schabloun gëtt et net!"
+	"bs-flexiskin-error-templatenotexists": "Déi eruagesicht Schabloun gëtt et net!",
+	"bs-flexiskin-api-error-invalid-action": "Dës Aktioun gëtt et net."
 }

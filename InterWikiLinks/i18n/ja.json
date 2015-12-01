@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"2nd-player"
 		]
 	},
+	"bs-interwikilinks-desc": "ウィキ間リンクを追加/編集/削除する管理インターフェイス",
 	"bs-interwikilinks-invalid-pfx-spc": "接頭辞が無効です。空白を使用しないでください。",
 	"bs-interwikilinks-invalid-url-spc": "URL が無効です。空白を使用しないでください。",
 	"bs-interwikilinks-label": "ウィキ間リンク",
@@ -19,5 +21,7 @@
 	"bs-interwikilinks-labelprefix": "接頭辞",
 	"bs-interwikilinks-titledeleteinterwikilink": "ウィキ間リンクの削除",
 	"bs-interwikilinks-confirmdeleteinterwikilink": "このウィキ間リンクを本当に削除しますか?",
-	"bs-interwikilinks-insertlink-labelprefix": "接頭辞"
+	"bs-interwikilinks-insertlink-tabtitle": "他のWikiへのリンク",
+	"bs-interwikilinks-insertlink-labelprefix": "接頭辞",
+	"bs-interwikilink-select-a-prefix": "接頭辞を選択"
 }

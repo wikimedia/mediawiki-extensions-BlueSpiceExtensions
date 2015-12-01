@@ -2,14 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"Mfuji"
+			"Mfuji",
+			"2nd-player",
+			"赤城。",
+			"Sujiniku"
 		]
 	},
-	"bs-flexiskin-desc": "外装を作成する機能を追加する",
+	"bs-flexiskin-desc": "カスタム オプションで flexiskins を管理するためのページを提供する",
 	"bs-flexiskin-label": "外装",
 	"bs-flexiskin-defaultname": "既定",
 	"bs-flexiskin-error-skinexists": "この名前の外装は既に存在します。",
 	"bs-flexiskin-error-fail-add-skin": "外装を作成できませんでした: $1",
+	"bs-flexiskin-error-get-config": "設定を読み込めませんでした: $1",
 	"bs-flexiskin-error-delete-skin": "外装を削除できませんでした: $1",
 	"bs-flexiskin-not-allowed": "このページへのアクセスは許可されていません。",
 	"prefs-flexiskin": "外装",
@@ -37,5 +41,12 @@
 	"bs-flexiskin-right": "右",
 	"bs-flexiskin-center": "中央",
 	"bs-flexiskin-labelfullwidth": "最大幅",
-	"bs-flexiskin-error-nameempty": "作成する外装の有効な名前を入力してください。"
+	"bs-flexiskin-error-nameempty": "作成する外装の有効な名前を入力してください。",
+	"bs-flexiskin-error-templatenotexists": "選択されたテンプレートは存在しません。",
+	"bs-flexiskin-api-desc": "Bluespice 拡張機能 Flexiskin のAPIインターフェース。",
+	"bs-flexiskin-api-type-desc": "実行する操作 (例えば, \"delete\")。既定では\"get\"",
+	"bs-flexiskin-api-mode-desc": "操作のモード。 例:\"config\"。既定値は\"flexiskin\"です。",
+	"bs-flexiskin-api-example-desc": "Flexiskin の現在の設定を返す。",
+	"bs-flexiskin-api-error-save": "保存中にエラーが発生しました。 理由: $1",
+	"bs-flexiskin-api-error-invalid-action": "この操作は存在しません。"
 }

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-insertlink": "Donn ene Lengk ennföhje",
+	"bs-insertlink-button-title": "Donn ene Lengk ennföhje udder änndere",
+	"bs-insertlink-dialog-title": "Donn ene Lengk ennföhje",
+	"bs-insertlink-tab-wiki-page": "En Wikki_Sigg",
+	"bs-insertlink-tab-ext-link": "Ene Lengk noh ußerhallef vum Wiki",
+	"bs-insertlink-tab-email": "Ene Lengk för en <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„de eläktrohnesche Poß“\">e-mail</i>",
+	"bs-insertlink-tab-ext-file": "ene Lengk obb en Datteij",
+	"bs-insertlink-label-page": "Sigg",
+	"bs-insertlink-label-link": "Lengk",
+	"bs-insertlink-label-mail": "En Addräß för de <i lang=\"en\">e-mail</i>",
+	"bs-insertlink-label-description": "Beschrevve!!FUZZYY!!",
+	"bs-insertlink-label-file": "Datteij",
+	"bs-insertlink-label-searchfile": "Söhk&nbsp…",
+	"bs-insertlink-select-a-page": "Donn e Zihl ußsöhke&nbsp;…",
+	"bs-insertlink-select-a-namespace": "(Sigge)"
+}

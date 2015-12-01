@@ -5,7 +5,9 @@
 		]
 	},
 	"bs-insertlink-desc": "Caixa de diálogo para inserir unha ligazón",
+	"prefs-insertlink": "Inserir ligazón",
 	"bs-insertlink": "Inserir ligazón",
+	"bs-insertlink-pref-enable-java": "Habilitar applet de Java",
 	"bs-insertlink-button-title": "Inserir/editar ligazón",
 	"bs-insertlink-dialog-title": "Inserir ligazón",
 	"bs-insertlink-tab-wiki-page": "Páxina wiki",

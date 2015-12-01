@@ -29,11 +29,15 @@ $wgResourceModules['ext.bluespice.insertMagic'] = array(
 		'bs-insertmagic-label-second',
 		'bs-insertmagic-label-third',
 		'bs-insertmagic-label-desc'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.insertMagic.styles'] = array(
 	'styles' => 'bluespice.insertMagic.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

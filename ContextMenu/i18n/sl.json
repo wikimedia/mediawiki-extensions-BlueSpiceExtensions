@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-contextmenu-desc": "Ponuja kontekstne menije za različne povezave",
+	"prefs-contextmenu": "Pojavni meni",
+	"bs-contextmenu-pref-modus": "Odpri pojavni meni z (ne velja za mobilne naprave):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "S klikom desne miškine tipke (pritisk na gumb CTRL prikaže privzeti pojavni meni brskalnika)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "S klikom desne miškine tipke in pritiskom na gumb CTRL (uporaba desnega miškinega gumba prikaže privzeti meni brskalnika)",
+	"bs-contextmenu-page-edit": "Uredi stran",
+	"bs-contextmenu-page-delete": "Izbriši stran",
+	"bs-contextmenu-page-move": "Premakni stran",
+	"bs-contextmenu-page-history": "Prikaži zgodovino strani",
+	"bs-contextmenu-page-protect": "Zaščiti stran",
+	"bs-contextmenu-page-purge": "Izbriši predpomnilnik in pogled strani",
+	"bs-contextmenu-page-info": "Prikaži informacije o strani",
+	"bs-contextmenu-media-reupload": "Naloži novo različico",
+	"bs-contextmenu-media-view-page": "Prikaži opis in zgodovino datoteke",
+	"bs-contextmenu-user-mail": "Pošlji pošto",
+	"bs-contextmenu-user-talk": "Pusti sporočilo na pogovorni strani",
+	"bs-contextmenu-file-download": "Prenesi datoteko"
+}

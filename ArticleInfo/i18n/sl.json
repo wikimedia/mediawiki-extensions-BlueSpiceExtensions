@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-articleinfo-desc": "Prikazuje informacije o strani v statusni vrstici",
+	"prefs-articleinfo": "Podatki o strani",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Interval posodobitev v sekundah:",
+	"bs-articleinfo-last-edited": "Čas od zadnje spremembe",
+	"bs-articleinfo-last-edited-tooltip": "Zadnje urejanje",
+	"bs-articleinfo-last-editor": "Zadnji {{GENDER:$1|urednik}}",
+	"bs-articleinfo-categories": "Kategorije",
+	"bs-articleinfo-more-categories": "Na voljo je več kategorij",
+	"bs-articleinfo-all-categories-heading": "Kategorije",
+	"bs-articleinfo-nocategories": "Ni najdenih kategorij.",
+	"bs-articleinfo-hiddencats": "Skrite kategorije",
+	"bs-articleinfo-notemplates": "Ni najdenih predlog.",
+	"bs-articleinfo-templates": "Predloge",
+	"bs-articleinfo-subpages": "Podstrani",
+	"bs-articleinfo-subpages-available": "Za to stran obstajajo podstrani",
+	"bs-articleinfo-subpages-too-much": "Na voljo je več kot 100 podstrani.",
+	"bs-articleinfo-check-revision": "Na voljo je nova različica",
+	"bs-articleinfo-check-revision-tooltip": "Osveži stran",
+	"bs-articleinfo-statebartoplastedited": "Zadnjem urejanju",
+	"bs-articleinfo-statebartoplasteditor": "Zadnjem uredniku",
+	"bs-articleinfo-statebartopcategories": "Kategorije",
+	"bs-articleinfo-statebartopsubpages": "Podstrani",
+	"bs-articleinfo-statebarbodycategories": "Kategorije",
+	"bs-articleinfo-statebarbodysubpages": "Podstrani",
+	"bs-articleinfo-statebarbodytemplates": "Predloge"
+}

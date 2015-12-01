@@ -1,20 +1,35 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin"
+			"SPQRobin",
+			"Esketti"
 		]
 	},
+	"bs-usermanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen van gebruikers",
+	"bs-usermanager-admin-nodelete": "De administrator-account kan niet worden verwijderd.",
+	"bs-usermanager-self-nodelete": "Kunt u niet verwijderen van uw account.",
+	"bs-usermanager-db-error": "Er is een databasefout opgetreden.",
+	"bs-usermanager-enter-pwd": "Geef een wachtwoord op.",
 	"bs-usermanager-idnotexist": "Deze gebruiker bestaat niet.",
 	"bs-usermanager-invalid-pwd": "Het wachtwoord is ongeldig.",
+	"bs-usermanager-invalid-realname": "De volledige naam van de gebruiker is ongeldig.",
 	"bs-usermanager-invalid-uname": "De gebruikersnaam is ongeldig.",
 	"bs-usermanager-invalid-email-gen": "Het e-mailadres is ongeldig.",
+	"bs-usermanager-label": "Gebruikersbeheer",
 	"bs-usermanager-user-added": "De gebruiker is toegevoegd.",
 	"bs-usermanager-user-deleted": "De gebruiker is verwijderd.",
 	"bs-usermanager-user-exists": "De gebruikersnaam bestaat al.",
+	"bs-usermanager-save-successful": "De wijzigingen zijn opgeslagen.",
 	"bs-usermanager-headerusername": "Gebruikersnaam",
+	"bs-usermanager-headerrealname": "Echte naam",
+	"bs-usermanager-headeremail": "E-mail",
 	"bs-usermanager-headergroups": "Groepen",
 	"bs-usermanager-titleadduser": "Gebruiker toevoegen",
+	"bs-usermanager-titleeditdetails": "Gebruiker bewerken",
 	"bs-usermanager-labelnewpassword": "Wachtwoord",
 	"bs-usermanager-labelpasswordcheck": "Wachtwoord bevestigen",
-	"bs-usermanager-titledeleteuser": "Gebruiker verwijderen"
+	"bs-usermanager-titledeleteuser": "Gebruiker verwijderen",
+	"bs-usermanager-confirmdeleteuser": "Bent u zeker dat u wilt verwijderen {{PLURAL:$1|deze gebruiker|de volgende $1 gebruikers}}?",
+	"bs-usermanager-groups-more": "... meer",
+	"bs-usermanager-no-self-desysop": "U kunt niet uw eigen moderator recht."
 }

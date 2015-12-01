@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-authors-desc": "Rodo puslapio autorių profilio nuotraukas",
+	"prefs-authors": "Šio puslapio autoriai",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autorius}}|Autoriai}}",
+	"bs-authors-profileimage": "Profilio nuotrauka",
+	"bs-authors-profileimage-change": "Keisti profilio nuotrauka",
+	"bs-authors-show-all-authors": "Yra daugiau autorių",
+	"bs-authors-pref-imageheight": "Vaizdo aukštis:",
+	"bs-authors-pref-imagewidth": "Vaizdo plotis:",
+	"bs-authors-pref-limit": "Autorių rodinio limitas:",
+	"bs-authors-pref-show": "Rodyti autorius",
+	"bs-authors-switch-description": "Slėpti autorius šiame puslapyje."
+}

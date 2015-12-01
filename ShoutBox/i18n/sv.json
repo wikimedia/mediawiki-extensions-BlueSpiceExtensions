@@ -33,5 +33,5 @@
 	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|rop}}",
 	"echo-category-title-bs-shoutbox-mention-cat": "Avisering för omnämnande i ett rop",
 	"bs-shoutbox-notifications-title-message-subject": "Du har blivit omnämnd",
-	"bs-shoutbox-notifications-title-message-text": "Du har {{GENDER:$1|nämnts}} av $2 i ett rop på sidan \"$3.\""
+	"bs-shoutbox-notifications-title-message-text": "Du har {{GENDER:$1|nämnts}} av $4 i ett rop på sidan \"$5.\"\n\nDu kan besöka sidan via denna länk:\n$3."
 }

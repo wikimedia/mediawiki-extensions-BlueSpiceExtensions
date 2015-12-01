@@ -7,7 +7,8 @@
 			"Smuggli",
 			"Shirayuki",
 			"Lokal Profil",
-			"Nemo bis"
+			"Nemo bis",
+			"Umherirrender"
 		]
 	},
 	"bs-review-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of review extension\nThe review functionality is really basic. For an existing page, reviewers can be added, which can give a vote in a period of time whether the content is okay or not.",
@@ -73,8 +74,8 @@
 	"action-workflowview": "{{doc-action|workflowview}}",
 	"action-workflowedit": "{{doc-action|workflowedit}}",
 	"action-workflowlist": "{{doc-action|workflowlist}}",
-	"right-workflowview": "{{doc-right|workflowlist}}",
-	"right-workflowedit": "{{doc-right|workflowlist}}",
+	"right-workflowview": "{{doc-right|workflowview}}",
+	"right-workflowedit": "{{doc-right|workflowedit}}",
 	"right-workflowlist": "{{doc-right|workflowlist}}",
 	"bs-review-btnmoveup": "Tooltip for move up\n{{Identical|Move up}}",
 	"bs-review-btnmovedown": "Tooltip for move down\n{{Identical|Move up}}",
@@ -94,5 +95,26 @@
 	"bs-review-confirm-delete-step": "Text message if you want to delete a step of a review",
 	"bs-review-confirm-delete-review": "Text message if you want to delete the review",
 	"bs-review-error-insufficient-permissions": "Text message if user tries to do a review without the permissions.\n\nParameters:\n* $1 - the permission they're lacking",
-	"echo-category-title-bs-review-complete-cat": "Settings message for notify on completing a review"
+	"echo-category-title-bs-review-complete-cat": "Settings message for notify on completing a review",
+	"echo-category-title-bs-review-assignment-cat": "Label for assignment messages, used in [[Special:Preferences#mw-prefsection-echo]]",
+	"echo-category-title-bs-review-action-cat": "Label for action messages, used in [[Special:Preferences#mw-prefsection-echo]]",
+	"notification-bs-review-payload-comment": "Template to include review comments as payload into notifications\n\nParameters:\n* $1 - the comment as submitted by the user",
+	"notification-bs-review-assign-summary": "Notification about invitation to review a page - flyout/archive page\n\nParameters:\n* $1 - name of the user requesting a review\n* $2 - name of page\n* $3 - link to page",
+	"notification-bs-review-assign-subject": "Notification about invitation to review a page - email subject\n\nParameters:\n* $1 - name of the user requesting a review (unused)\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-assign-body": "Notification about invitation to review a page - email body\n\nParameters:\n* $1 - name of the user requesting a review\n* $2 - name of page\n* $3 - link to page",
+	"notification-bs-review-accept-summary": "Notification about reviewer accept changes - flyout/archive page\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page (unused)\n* $3 - link to page",
+	"notification-bs-review-accept-subject": "Notification about reviewer accept changes - email subject\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-accept-body": "Notification about reviewer accept changes - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-deny-summary": "Notification about reviewer reject changes - flyout/archive page\n\nParameters:\n* $1 - name of the user rejecting a review\n* $2 - name of page (unused)\n* $3 - link to page",
+	"notification-bs-review-deny-subject": "Notification about reviewer reject changes - email subject\n\nParameters:\n* $1 - name of the user rejecting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-deny-body": "Notification about reviewer reject changes - email body\n\nParameters:\n* $1 - name of the user rejecting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-deny-and-restart-summary": "Notification about reviewer reject changes and restarts review - flyout/archive page\n\nParameters:\n* $1 - name of the user rejecting a review\n* $2 - name of page (unused)\n* $3 - link to page",
+	"notification-bs-review-deny-and-restart-subject": "Notification about reviewer reject changes and restarts review - email subject\n\nParameters:\n* $1 - name of the user rejecting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-deny-and-restart-body": "Notification about reviewer reject changes and restarts review - email body\n\nParameters:\n* $1 - name of the user rejecting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-finish-summary": "Notification about reviewer finishes review - flyout/archive page\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page (unused)\n* $3 - link to page",
+	"notification-bs-review-finish-subject": "Notification about reviewer finishes review - email subject\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-finish-body": "Notification about reviewer finishes review - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-finish-and-autoflag-summary": "Notification about reviewer finishes review and autoflags as stable - flyout/archive page\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page (unused)\n* $3 - link to page",
+	"notification-bs-review-finish-and-autoflag-subject": "Notification about reviewer finishes review and autoflags as stable - email subject\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"notification-bs-review-finish-and-autoflag-body": "Notification about reviewer finishes review and autoflags as stable - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)"
 }

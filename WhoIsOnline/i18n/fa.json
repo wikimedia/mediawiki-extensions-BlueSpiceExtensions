@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dalba",
+			"Reza1615"
+		]
+	},
+	"bs-whoisonline-pref-orderby": "ترتیب بر پایه:",
+	"bs-whoisonline-pref-orderby-time": "زمان به‌کار",
+	"bs-whoisonline-pref-orderby-name": "نام",
+	"bs-whoisonline-pref-interval": "بازه به روز رسانی به ثانیه:"
+}

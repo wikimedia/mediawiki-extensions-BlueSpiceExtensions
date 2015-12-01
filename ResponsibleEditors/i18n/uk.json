@@ -53,6 +53,9 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Показати всі сторінки",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Виберіть простір назв",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Не призначено",
-	"log-name-bs-responsibleeditors": "Журнал відповідальних редакторів",
-	"log-description-bs-responsibleeditors": "Це журнал редакторів, відповідальних за сторінки."
+	"log-name-bs-responsible-editors": "Журнал відповідальних редакторів",
+	"log-description-bs-responsible-editors": "Це журнал редакторів, відповідальних за сторінки.",
+	"log-show-hide-bs-responsible-editors": "$1 журнал відповідальних редакторів",
+	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|додав|додала}} $4 як {{GENDER:$4|редактора}} для $3",
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|вилучив|вилучила}} $4 як {{GENDER:$4|редактора}} для $3"
 }

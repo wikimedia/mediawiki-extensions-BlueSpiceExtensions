@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Sujiniku"
 		]
 	},
 	"bs-readers-desc": "ページを閲覧した利用者の一覧を作成する",
@@ -14,5 +15,6 @@
 	"bs-readers-emptyinput": "ページを指定していません。",
 	"bs-readers-header-username": "利用者名",
 	"bs-readers-header-readerspath": "閲覧者",
-	"bs-readers-header-ts": "日時"
+	"bs-readers-header-ts": "日時",
+	"bs-readers-header-page": "ページ"
 }

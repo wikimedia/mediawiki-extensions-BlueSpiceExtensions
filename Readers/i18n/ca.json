@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Edustus"
+			"Edustus",
+			"Vriullop"
 		]
 	},
 	"prefs-readers": "Lectors",
@@ -9,5 +10,6 @@
 	"bs-readers-pagenotexists": "La pàgina no existeix",
 	"bs-readers-header-username": "Nom d'usuari",
 	"bs-readers-header-readerspath": "Lector",
-	"bs-readers-header-ts": "Data"
+	"bs-readers-header-ts": "Data",
+	"bs-readers-header-page": "Pàgina"
 }

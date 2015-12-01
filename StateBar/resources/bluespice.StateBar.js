@@ -17,10 +17,10 @@ BsStateBar = {
 	oViewToggler: null,
 	oStateBarView: null,
 	bAjaxCallComplete: false,
-	sStateBarBodyLoadView: '<div id="sStateBarBodyLoadView"><center><img src="' + wgScriptPath + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" /></center></div>',
+	sStateBarBodyLoadView: '<div id="sStateBarBodyLoadView"><center><img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-ajax-loader-bar-blue.gif" /></center></div>',
 	aRegisteredToggleClickElements: [],
-	imagePathActive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_less.png',
-	imagePathInactive: wgScriptPath+'/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn-more.png',
+	imagePathActive: mw.config.get( "wgScriptPath" ) + '/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn_less.png',
+	imagePathInactive: mw.config.get( "wgScriptPath" ) + '/skins/BlueSpiceSkin/resources/images/desktop/statusbar-btn-more.png',
 
 	getStateBarBody: function(){
 		if ( BsStateBar.bAjaxCallComplete === true ) return;
@@ -33,12 +33,12 @@ BsStateBar = {
 		var params = {
 			action:'ajax',
 			rs:'StateBar::ajaxCollectBodyViews',
-			articleID: wgArticleId
+			articleID: mw.config.get( "wgArticleId" )
 		};
 
 		$(document).trigger( 'BsStateBarBodyBeforeLoad', [params] );
 		$.getJSON(
-			wgScriptPath + '/index.php',
+			mw.config.get( "wgScriptPath" ) + '/index.php',
 			params,
 			function( result ) {
 				$(document).trigger( 'BsStateBarBodyLoad', [result] );

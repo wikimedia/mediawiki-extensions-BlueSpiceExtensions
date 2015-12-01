@@ -80,4 +80,7 @@ class SpecialReaders extends BsSpecialPage {
 		return '<div id="bs-readerspath-grid"></div>';
 	}
 
+	protected function getGroupName() {
+		return 'bluespice';
+	}
 }

@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"bs-insertlink-desc": "Cuadro de diálogo para insertar un enlace",
+	"prefs-insertlink": "Insertar enlace",
 	"bs-insertlink": "Insertar enlace",
+	"bs-insertlink-pref-enable-java": "Habilitar applet de Java",
 	"bs-insertlink-button-title": "Insertar o editar enlace",
 	"bs-insertlink-dialog-title": "Insertar enlace",
 	"bs-insertlink-tab-wiki-page": "Página del wiki",

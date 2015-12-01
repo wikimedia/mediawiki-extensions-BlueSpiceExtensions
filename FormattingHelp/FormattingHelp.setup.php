@@ -23,6 +23,7 @@ $wgResourceModules['ext.bluespice.formattinghelp'] = array(
 
 $wgResourceModules['ext.bluespice.formattinghelp.styles'] = array(
 	'styles' => 'bluespice.formattinghelp.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset($aResourceModuleTemplate);

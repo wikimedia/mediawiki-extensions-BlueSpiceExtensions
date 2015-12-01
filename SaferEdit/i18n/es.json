@@ -3,9 +3,11 @@
 		"authors": [
 			"Fitoschido",
 			"Macofe",
-			"AVIADOR"
+			"AVIADOR",
+			"Ryo567"
 		]
 	},
+	"bs-saferedit-desc": "Intermediario de guardado de ediciones de la wiki",
 	"prefs-saferedit": "Edición más segura",
 	"bs-saferedit-restore": "Restaurar",
 	"bs-saferedit-safer-edit-tooltip": "Está disponible una versión de recuperación.",

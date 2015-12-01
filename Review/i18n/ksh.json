@@ -5,11 +5,15 @@
 		]
 	},
 	"bs-review-desc": "Brängk för de Sigge em Wikki ene eijfaache Afflouf för et Beärbeide.",
+	"bs-review-accepted": "Aanjenumme",
+	"bs-review-rejected": "Affjelehnt",
 	"bs-review-pending": "Aam wahde",
+	"bs-review-abstain": "Änthallde",
 	"bs-review-mail-accept-header": "{{GENDER:$2|Dä|Dat|Dä Metmaacher|De|Dat}} di Sigg „$3“ aanjenumme",
 	"bs-review-mail-accept-body": "{{GENDER:$2|dä|dat|dä Metmaacher|de|dat}} $1 hät Ding Änderonge aanjenumme",
 	"bs-review-mail-deny-header": "{{GENDER:$2|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät de Sigg „$3“ afjelehnt",
 	"bs-review-mail-deny-body": "{{GENDER:$2|dä|dat|dä Metmaacher|de|dat}} $1 hät Ding Änderonge afjelehnt",
 	"bs-review-mail-deny-and-restart-header": "{{GENDER:$2|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät de Sigg „$3“ afjelehnt",
-	"bs-review-mail-finish-and-review-header": "Et Nohlohre vun dä Sigg „$1“ es fähdesch."
+	"bs-review-mail-finish-and-review-header": "Et Nohlohre vun dä Sigg „$1“ es fähdesch.",
+	"notification-bs-review-deny-subject": "{{GENDER:$1|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät „$2“ affjelähnt."
 }

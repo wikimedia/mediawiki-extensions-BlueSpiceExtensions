@@ -16,5 +16,6 @@
 	"bs-readers-emptyinput": "Non se proporcionou ningunha páxina.",
 	"bs-readers-header-username": "Nome de usuario",
 	"bs-readers-header-readerspath": "Lector",
-	"bs-readers-header-ts": "Data"
+	"bs-readers-header-ts": "Data",
+	"bs-readers-header-page": "Páxina"
 }

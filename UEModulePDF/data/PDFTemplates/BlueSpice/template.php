@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the main description file for the template. It contains all 
+ * This is the main description file for the template. It contains all
  * information necessary to load and process the template.
  */
 
@@ -16,7 +16,7 @@ return array(
 	),
 
 	/**
-	 * The following resources are used in the conversion from xhtml to PDF. 
+	 * The following resources are used in the conversion from xhtml to PDF.
 	 * You may reference them in your template files
 	 */
 	'resources' => array(
@@ -26,6 +26,7 @@ return array(
 			'../common/stylesheets/mediawiki.css',
 			'stylesheets/styles.css',
 			'../common/stylesheets/geshi-php.css',
+			'../common/stylesheets/bluespice.css',
 			'../common/stylesheets/fonts.css',
 			//'../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',

@@ -13,8 +13,6 @@ $aResourceModuleTemplate = array(
 
 $wgResourceModules['ext.bluespice.checklist'] = array(
 	'scripts' => array(
-		'BS.Checklist/Checklist.js',
-		'BS.Checklist/ChecklistBoxSelect.js',
 		'bluespice.checklist.js',
 	),
 	'messages' => array(
@@ -34,11 +32,15 @@ $wgResourceModules['ext.bluespice.checklist'] = array(
 		'bs-checklist-alert',
 		'bs-checklist-confirm-dirty-title',
 		'bs-checklist-confirm-dirty-text'
+	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
 	)
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.checklist.styles'] = array(
 	'styles' => 'bluespice.checklist.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );
@@ -50,3 +52,7 @@ $wgAjaxExportList[] = 'Checklist::ajaxSaveOptionsList';
 $wgAjaxExportList[] = 'Checklist::ajaxGetItemStoreData';
 $wgAjaxExportList[] = 'Checklist::getAvailableOptions';
 #$wgAutoloadClasses['ViewChecklistCheck'] = __DIR__ . '/views/view.ChecklistCheck.php';
+
+$wgLogTypes[] = 'bs-checklist';
+$wgFilterLogTypes['bs-checklist'] = true;
+$wgLogActionsHandlers['bs-checklist/*'] = 'LogFormatter';

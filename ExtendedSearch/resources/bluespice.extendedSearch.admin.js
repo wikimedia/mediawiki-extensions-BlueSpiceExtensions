@@ -53,7 +53,7 @@ bsExtendedSearchStartCreate = function() {
  */
 bsExtendedSearchRequestProgress = function() {
 	Ext.Ajax.request({
-		url: wgScriptPath + '/extensions/BlueSpiceExtensions/ExtendedSearch/includes/BuildIndex/index_progress.php',
+		url: mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/ExtendedSearch/includes/BuildIndex/index_progress.php',
 		success: function( response, opts ) {
 			var res = "";
 			if ( response.responseText !== "" ) {

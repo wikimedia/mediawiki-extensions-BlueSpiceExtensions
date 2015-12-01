@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"Fitoschido",
-			"AVIADOR"
+			"AVIADOR",
+			"Ryo567"
 		]
 	},
 	"bs-review-desc": "Añade funcionalidad de flujo de trabajo a las páginas",
@@ -43,7 +44,7 @@
 	"bs-review-mail-finish-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión de \"$3\" y {{GENDER:$2|aceptó}} los cambios. La revisión está finalizada.",
 	"bs-review-mail-finish-and-review-header": "Terminó la revisión de $1",
 	"bs-review-mail-finish-and-review-body": "{{GENDER:$2|el usuario|la usuaria}} $1 ha {{GENDER:$2|reaccionado}} a tu revisión de \"$3\" y {{GENDER:$2|aceptó}} los cambios. La revisión está finalizada y se marcó como estable.",
-	"bs-review-statebar-body-do-review": "Por favor revisa esta página",
+	"bs-review-statebar-body-do-review": "Revisa esta página",
 	"bs-review-i-agree": "Aceptar",
 	"bs-review-i-dismiss": "En desacuerdo",
 	"bs-review-not-allowed": "No tienes permitido acceder a esta página.",
@@ -55,11 +56,13 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|terminó}} una revisión de la página \"$2\".",
 	"log-name-bs-review": "Registro de revisión",
 	"log-description-bs-review": "Este es un registro de las páginas que están o estuvieron bajo revisión.",
+	"log-show-hide-bs-review": "$1 el registro de revisión",
 	"bs-review-pref-checkowner": "Sólo el propietario de una revisión puede cambiarla",
 	"bs-review-pref-shownameintooltip": "Mostrar los nombres de los participantes",
 	"bs-review-pref-emailnotifyowner": "Notificar al dueño de una revisión sobre los cambios",
 	"bs-review-pref-emailnotifyreviewer": "Notificar al revisor de una revisión sobre los cambios",
 	"bs-review-expired": "Caducada",
+	"bs-review-denied": "Devuelto para volver a revisarse",
 	"review": "Revisión",
 	"bs-review-specialreview-header": "{{PLURAL:$1|Revisiones de $2|Resumen de revisiones}}",
 	"bs-review-commentinputlabel": "Tu comentarioː",
@@ -88,5 +91,8 @@
 	"bs-review-confirm-delete-step": "¿Estás seguro de querer borrar este paso?",
 	"bs-review-confirm-delete-review": "¿Estás seguro de querer borrar esta revisión?",
 	"bs-review-error-insufficient-permissions": "No tienes permiso para ejecutar esta acción (se necesita «$1»).",
-	"echo-category-title-bs-review-complete-cat": "Notificación al completar un revisión"
+	"echo-category-title-bs-review-complete-cat": "Notificación al completar un revisión",
+	"notification-bs-review-payload-comment": "Comentario: \"$1\"",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|ha aceptado}} \"$2\"",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|ha rechazado}} \"$2\""
 }

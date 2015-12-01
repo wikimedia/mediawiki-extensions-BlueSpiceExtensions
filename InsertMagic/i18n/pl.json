@@ -11,10 +11,14 @@
 	"bs-insertmagic-currentmonthnamegen": "Obecny miesiąc (forma dopełniacza).",
 	"bs-insertmagic-currentmonthabbrev": "Obecny miesiąc (skrót).",
 	"bs-insertmagic-currentdayname": "Dzień tygodnia (nazwa).",
+	"bs-insertmagic-currenttime": "Czas (format 24-godzinny GG:mm).",
 	"bs-insertmagic-currentweek": "Tydzień (numer).",
 	"bs-insertmagic-servername": "Nazwa domeny.",
 	"bs-insertmagic-pageid": "Zwraca identyfikator strony.",
+	"bs-insertmagic-dlg-title": "Wstaw magiczne słowo lub znacznik",
 	"bs-insertmagic-type-tags": "Znaczniki",
 	"bs-insertmagic-type-variables": "Zmienne",
+	"bs-insertmagic-label-first": "1. Wybierz znacznik lub magiczne słowo",
+	"bs-insertmagic-label-second": "2. Zmień kod",
 	"bs-insertmagic-label-desc": "Opis"
 }

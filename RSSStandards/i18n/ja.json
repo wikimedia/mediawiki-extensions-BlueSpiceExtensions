@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
 	"bs-rssstandards-desc": "さまざまな指定に基づいて RSS フィードを構築する",
@@ -15,5 +16,6 @@
 	"bs-rssstandards-title-watch": "ウォッチリスト",
 	"bs-rssstandards-desc-watch": "ウォッチリストに登録しているページの概要を含むフィード。",
 	"bs-rssstandards-link-text-watch": "過去{{PLURAL:$1|1日|$1日間}}の最近の更新",
-	"bs-rssstandards-desc-ns": "名前空間の最近の更新の概要を含むフィード。"
+	"bs-rssstandards-desc-ns": "名前空間の最近の更新の概要を含むフィード。",
+	"bs-rssstandards-changes-from": "$1 {{GENDER:$1|によって}}変更"
 }

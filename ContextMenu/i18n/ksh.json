@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-contextmenu-desc": "Deiht för divärse Lengks  context Menühs en et Wikki",
+	"prefs-contextmenu": " Context Menüh",
+	"bs-contextmenu-pref-modus": " Context Menüh opmaache övver (ävver nit för Mobihljerähte):",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Klek der rääschte Knobb op der Maus. Derbei op „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">CTRL</code>“ udder „<code lang=\"de\" xml:lang=\"de\" dir=\"ltr\">Strg</code>“ dröke zeijsch et schtandattmähßejje  Context Menüh vum Brauser.",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Klek der rääschte Knobb op der Maus un derbei „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">CTRL</code>“ udder „<code lang=\"de\" xml:lang=\"de\" dir=\"ltr\">Strg</code>“ dröke. Ene nomahle klek zeijsch et schtandattmähßejje  Context Menüh vum Brauser.",
+	"bs-contextmenu-page-edit": "Donn di Sigg änndere",
+	"bs-contextmenu-page-delete": "Donn di Sigg fott schmiiße",
+	"bs-contextmenu-page-move": "Donn di Sigg ömbenänne",
+	"bs-contextmenu-page-history": "Donn dä Sigg ier Verjangeheid belohre",
+	"bs-contextmenu-page-protect": "Donn en Sigg schöze.",
+	"bs-contextmenu-page-purge": "Donn der Zwescheschpeijscher läddesch maache un dann di Sigg belohre",
+	"bs-contextmenu-page-info": "Aanjahbe övver de Sigg aanzeije",
+	"bs-contextmenu-media-reupload": "En neuje Väsjohn huhlahde",
+	"bs-contextmenu-media-view-page": "Donn de Aanjahbe övver di Sigg un dä ier Verjangeheid aanzeije",
+	"bs-contextmenu-user-mail": "Donn en <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„de eläktrohnesche Poß“\">e-mail</i> scheke",
+	"bs-contextmenu-user-talk": "Donn en Nohreesch op di Klaafsigg",
+	"bs-contextmenu-file-download": "Dattei eronger lahde"
+}

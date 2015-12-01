@@ -7,8 +7,12 @@
 	},
 	"bs-pageaccess-desc": "Controls access on page level",
 	"bs-pageaccess-error-no-groups-given": "No groups were specified.",
-	"bs-pageaccess-error-not-member-of-given-groups": "You're not a member of the given groups. In order to prevent you from locking yourself out, saving was disabled.",
-	"bs-pageaccess-error-included-forbidden-template": "You've tried to use the template \"$1\" to which you don't have read access. In order to prevent you from locking yourself out, saving was disabled.",
+	"bs-pageaccess-error-not-member-of-given-groups": "You are not a member of the given groups. In order to prevent you from locking yourself out, saving was disabled.",
+	"bs-pageaccess-error-included-forbidden-template": "You have tried to use the template \"$1\" to which you do not have read access. In order to prevent you from locking yourself out, saving was disabled.",
 	"bs-pageaccess-tag-groups-desc": "Specify the groups that should have exclusive access to this page. Multiple groups can be separated by commas.",
-	"pageaccess": "Pages secured by PageAccess"
+	"pageaccess": "Pages secured by PageAccess",
+	"log-name-bs-pageaccess": "Page access log",
+	"log-description-bs-pageaccess": "This is a log of changes in the page access settings.",
+	"log-show-hide-bs-pageaccess": "$1 page access log",
+	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|has changed}} the access permissions of $3 to \"$4\""
 }

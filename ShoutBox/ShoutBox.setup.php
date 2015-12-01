@@ -43,6 +43,7 @@ $wgDefaultUserOptions["echo-subscriptions-web-bs-shoutbox-mention-cat"] = true;
 
 $wgResourceModules['ext.bluespice.shoutbox.styles'] = array(
 	'styles' => 'bluespice.shoutBox.css',
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.biz>",
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-insertlink-desc": "Über ein Dialogfeld werden Links, z.B. zu bestehenden Seiten, eingebunden",
 	"prefs-insertlink": "Link einfügen",
 	"bs-insertlink": "Link einfügen",
-	"bs-insertlink-pref-enable-java": "Aktiviere Java Applet",
+	"bs-insertlink-pref-enable-java": "Java-Applet aktivieren",
 	"bs-insertlink-button-title": "Link einfügen/bearbeiten",
 	"bs-insertlink-dialog-title": "Link einfügen",
 	"bs-insertlink-tab-wiki-page": "Wiki-Seite",

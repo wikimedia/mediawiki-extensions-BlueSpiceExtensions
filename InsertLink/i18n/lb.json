@@ -5,7 +5,9 @@
 		]
 	},
 	"bs-insertlink-desc": "Dialog-Këscht fir e Link anzeginn",
+	"prefs-insertlink": "Link drasetzen",
 	"bs-insertlink": "Link drasetzen",
+	"bs-insertlink-pref-enable-java": "Java-Applet aktivéieren",
 	"bs-insertlink-button-title": "Link drasetzen/änneren",
 	"bs-insertlink-dialog-title": "Link drasetzen",
 	"bs-insertlink-tab-wiki-page": "Wiki-Säit",

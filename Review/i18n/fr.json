@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Ltrlg",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Wladek92"
 		]
 	},
 	"bs-review-desc": "Ajoute aux pages des fonctionnalité pour le travail",
@@ -55,6 +56,7 @@
 	"bs-review-finished-review": "$1 {{GENDER:$1|a terminé}} une relecture sur la page « $2 ».",
 	"log-name-bs-review": "Journal de relecture",
 	"log-description-bs-review": "Voici un journal des pages qui sont ou ont été en relecture.",
+	"log-show-hide-bs-review": "$1 l’historique des relectures",
 	"bs-review-pref-checkowner": "Seul le propriétaire d’une relecture peut la modifier",
 	"bs-review-pref-shownameintooltip": "Afficher les noms des participants",
 	"bs-review-pref-emailnotifyowner": "Notifier le propriétaire d’une relecture des modifications",
@@ -89,5 +91,26 @@
 	"bs-review-confirm-delete-step": "Voulez-vous vraiment supprimer cette étape ?",
 	"bs-review-confirm-delete-review": "Voulez-vous vraiment supprimer cette relecture ?",
 	"bs-review-error-insufficient-permissions": "Vous n’avez pas le droit d’exécuter cette action (« $1 » est nécessaire).",
-	"echo-category-title-bs-review-complete-cat": "Notification de fin de relecture"
+	"echo-category-title-bs-review-complete-cat": "Notification de fin de relecture",
+	"echo-category-title-bs-review-assignment-cat": "Relecture — Affectations",
+	"echo-category-title-bs-review-action-cat": "Relecture — Actions",
+	"notification-bs-review-payload-comment": "Commentaire : « $1 »",
+	"notification-bs-review-assign-summary": "[[User:$1|$1]] vous {{GENDER:$1|a invité}} à relire $3",
+	"notification-bs-review-assign-subject": "Veuillez relire la page « $2 »",
+	"notification-bs-review-assign-body": "$1 vous {{GENDER:$1|a invité}} à relire « $2 ». Après vous être connecté au wiki, vous pourrez trouver la page en suivant ce lien : $3",
+	"notification-bs-review-accept-summary": "[[User:$1|$1]] {{GENDER:$1|a accepté}} le contenu de $3",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|a accepté}} « $2 »",
+	"notification-bs-review-accept-body": "$1 {{GENDER:$1|a réagi}} à votre relecture sur « $2 » et {{GENDER:$1|a accepté}} les modifications.",
+	"notification-bs-review-deny-summary": "[[User:$1|$1]] {{GENDER:$1|a rejeté}} le contenu de $3",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|a rejeté}} « $2 »",
+	"notification-bs-review-deny-body": "$1 {{GENDER:$1|a réagi}} à votre relecture de « $2 » et {{GENDER:$1|a rejeté}} les modifications.",
+	"notification-bs-review-deny-and-restart-summary": "[[User:$1|$1]] {{GENDER:$1|a rejeté}} le contenu de $3 et a redémarré automatiquement le processus de relecture",
+	"notification-bs-review-deny-and-restart-subject": "$1 {{GENDER:$1|a rejeté}} « $2 »",
+	"notification-bs-review-deny-and-restart-body": "$1 {{GENDER:$1|a réagi}} à votre relecture de « $2 » et {{GENDER:$1|a rejeté}} les modifications. La relecture sera redémarrée automatiquement.",
+	"notification-bs-review-finish-summary": "[[User:$1|$1]] {{GENDER:$1|a terminé}} le processus de relecture de $3",
+	"notification-bs-review-finish-subject": "$1 {{GENDER:$1|a terminé}} la relecture de « $2 »",
+	"notification-bs-review-finish-body": "$1 {{GENDER:$1|a terminé}} votre relecture de « $2 ». Veuillez vérifier les résultats du processus de relecture.",
+	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|a terminé}} le processus de relecture et a marqué automatiquement $3 comme stable",
+	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|a terminé}} la relecture de « $2 »",
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|a terminé}} votre relecture de « $2 ». La page a été automatiquement marquée comme stable."
 }

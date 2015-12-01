@@ -39,5 +39,10 @@
 	"bs-permissionmanager-pref-lockmode": "Activar modo de bloqueo",
 	"bs-permissionmanager-pref-skipsysns": "Saltar mensaxes de espazo de nomes do sistema se o modo de bloqueo está activado",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activar a comprobación de permisos",
-	"bs-permissionmanager-unsaved-changes": "Hai cambios sen gardar. Realmente quere marchar agora da páxina? Os cambios sen gardar perderanse."
+	"bs-permissionmanager-unsaved-changes": "Hai cambios sen gardar. Realmente quere marchar agora da páxina? Os cambios sen gardar perderanse.",
+	"bs-permissionmanager-error-lockout": "Polo menos un grupo debe ter o permiso \"$1\".\nNon se puideron guardar os cambios.",
+	"log-name-bs-permission-manager": "Rexistro do xestor de permisos",
+	"log-description-bs-permission-manager": "Este é un rexistro dos cambios nos permisos de grupo.",
+	"log-show-hide-bs-permission-manager": "$1 o rexistro do xestor de permisos",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|cambiou}} os permisos do grupo $4"
 }

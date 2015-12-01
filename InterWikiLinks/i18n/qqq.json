@@ -3,10 +3,11 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Shirayuki"
+			"Shirayuki",
+			"Nemo bis"
 		]
 	},
-	"bs-interwikilinks-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of interwiki links extension",
+	"bs-interwikilinks-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of [[mw:Extension:BlueSpice/Featurelist#I|interwiki links]] extension",
 	"bs-interwikilinks-invalid-pfx-spc": "Text for the prefix is invalid. Please do not use spaces.",
 	"bs-interwikilinks-invalid-url-spc": "Text for the URL is invalid. Please do not use spaces.",
 	"bs-interwikilinks-label": "Anchor text in admin tab for interwiki links.\n{{Identical|Interwiki link}}",

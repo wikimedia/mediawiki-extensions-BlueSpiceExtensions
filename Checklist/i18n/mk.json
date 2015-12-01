@@ -24,5 +24,11 @@
 	"bs-checklist-dlg-new-prompt": "Внесете наслов на списокот",
 	"bs-checklist-alert": "Внимание!",
 	"bs-checklist-confirm-dirty-title": "Незачувани промени!",
-	"bs-checklist-confirm-dirty-text": "Направивте промени во списокот, но не ги зачувавте. Дали сигурно сакате да ги отфрлите?"
+	"bs-checklist-confirm-dirty-text": "Направивте промени во списокот, но не ги зачувавте. Дали сигурно сакате да ги отфрлите?",
+	"log-name-bs-checklist": "Дневник на штикларници",
+	"log-description-bs-checklist": "Дневник на промени во штикларници на страници",
+	"log-show-hide-bs-checklist": "$1 дневник на штикларници",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|го штиклираше}} кутивчето бр. $4 на $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|го отштиклираше}} кутивчето бр. $4 на $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|ја одбра}} вредноста „$5“ во изборникот бр. $4 на $3"
 }

@@ -4,12 +4,14 @@
 			"Fitoschido",
 			"Macofe",
 			"AVIADOR",
-			"Amitie 10g"
+			"Amitie 10g",
+			"Ryo567"
 		]
 	},
 	"bs-permissionmanager-desc": "Interfaz administrativa para gestionar permisos de usuarios",
 	"prefs-permissionmanager": "Gestor de permisos",
 	"bs-permissionmanager-label": "Gestor de permisos",
+	"bs-permissionmanager-grouping-global": "Permisos independientes del espacio de nombres.",
 	"bs-permissionmanager-grouping-local": "Permisos específicos del espacio de nombres",
 	"bs-permissionmanager-btn-group-label": "Grupo:",
 	"bs-permissionmanager-header-permissions": "Permisos",
@@ -39,6 +41,12 @@
 	"bs-permissionmanager-titletpled-edit": "Renombrar plantilla",
 	"bs-permissionmanager-titletpled-delete": "Eliminar la plantilla",
 	"bs-permissionmanager-pref-lockmode": "Activar modo de bloqueo",
-	"bs-permissionmanager-pref-skipsysns": "Saltar mensajes de espacio de nombres del sistema si el modo de bloqueo está activado",
-	"bs-permissionmanager-pref-enablerealitycheck": "Activar la comprobación de permisos"
+	"bs-permissionmanager-pref-skipsysns": "Omitir los espacios de nombres del sistema si el modo de bloqueo está activado",
+	"bs-permissionmanager-pref-enablerealitycheck": "Activar la comprobación de permisos",
+	"bs-permissionmanager-unsaved-changes": "Hay cambios sin guardar. ¿Quieres abandonar la página ahora? Se perderá cualquier cambio no guardado.",
+	"bs-permissionmanager-error-lockout": "Al menos un grupo debe tener el permiso \"$1\".\nNo se pudieron guardar los cambios.",
+	"log-name-bs-permission-manager": "Registro del gestor de permisos",
+	"log-description-bs-permission-manager": "Este es un registro de los cambios en los permisos de grupo.",
+	"log-show-hide-bs-permission-manager": "$1 el registro del gestor de permisos",
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|ha cambiado}} los permisos del grupo $4"
 }

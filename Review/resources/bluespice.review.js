@@ -16,34 +16,36 @@
 */
 
 (function(mw, $, bs, undefined){
-	
+
 	//Wire up content action link
 	$('#ca-review').find('a').on( 'click', function( e ) {
 		e.preventDefault();
 		var me = this;
+		mw.loader.using('ext.bluespice.extjs').done(function(){
+			Ext.require( 'BS.Review.Dialog', function(){
+				BS.Review.Dialog.clearListeners();
+				BS.Review.Dialog.on( 'ok', function( btn, data ){
+					window.location.reload();
+				});
 
-		Ext.require( 'BS.Review.Dialog', function(){
-			BS.Review.Dialog.clearListeners();
-			BS.Review.Dialog.on( 'ok', function( btn, data ){
-				window.location.reload();
+				var data = {
+					page_id: mw.config.get('wgArticleId'),
+					steps: []
+				};
+				var bsReview = mw.config.get( 'bsReview' );
+				if( typeof bsReview != 'undefined' ) {
+					data = bsReview;
+				}
+				data.userCanEdit = mw.config.get('bsReviewUserCanEdit');
+
+				BS.Review.Dialog.setData( data );
+				BS.Review.Dialog.show( me );
 			});
-			
-			var data = { 
-				page_id: mw.config.get('wgArticleId'),
-				steps: []
-			};
-			if( typeof bsReview != 'undefined' ) {
-				data = bsReview;
-			}
-			data.userCanEdit = mw.config.get('bsReviewUserCanEdit');
-
-			BS.Review.Dialog.setData( data );
-			BS.Review.Dialog.show( me );
 		});
 
 		return false;
 	});
-	
+
 	//Wire up accept/decline links
 	$(document).on('click', 'a#bs-review-ok', function() {
 		$.ajax({

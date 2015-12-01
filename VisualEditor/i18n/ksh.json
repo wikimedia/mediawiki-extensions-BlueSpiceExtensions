@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-visualeditor-desc": "Der <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Projramm för ‚seeschbaa‘ aan Täxte jät ze änndere“\">VisualEditor</i> för mehdijaWikki.",
+	"prefs-visualeditor": "\n<i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Projramm för ‚seeschbaa‘ aan Täxte jät ze änndere“\">VisualEditor</i>",
+	"bs-visualeditor-editbutton-hint": "\n<i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Projramm för ‚seeschbaa‘ aan Täxte jät ze änndere“\">VisualEditor</i>",
+	"bs-visualeditor-pref-disablens": "Verbeede en dä Appachtemangs:",
+	"bs-visualeditor-no-summary": "kein Zersammevaßong",
+	"bs-visualeditor-sortable": "Zottehrbaa",
+	"bs-visualeditor-wikitable": "Nommahl",
+	"bs-visualeditor-contenttable": "Enhalld",
+	"bs-visualeditor-contenttable-black": "Enhalld (en Schwazz)",
+	"bs-visualeditor-contenttable-blue": "Enhalld (en Blou)",
+	"bs-visualeditor-contenttable-darkblue": "Enhalld (en duuster Blou)",
+	"bs-visualeditor-cuscosky": "Der Hemmel vun Kußkoh",
+	"bs-visualeditor-casablanca": "Kassablangka",
+	"bs-visualeditor-greyscale": "Jrouschtohfe",
+	"bs-visualeditor-greyscale-narrow": "Jrouschtohfe en schmahl",
+	"bs-visualeditor-aligntop": "Bovve",
+	"bs-visualeditor-alignmiddle": "Medde",
+	"bs-visualeditor-alignbottom": "Onge",
+	"bs-visualeditor-bsactions-wiki": "Wikkitäx",
+	"bs-visualeditor-bsactions-switchgui": "Donn de Wärkzüschleß ömschallde",
+	"bs-visualeditor-bsactions-linebreak": "Et Ängk vun ener Reih <!--  https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-visualeditor-bsactions-linebreak/ksh -->",
+	"bs-visualeditor-bsactions-signature": "„Ongerschreff“",
+	"bs-visualeditor-bsactions-save": "Faßhallde <!-- https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-visualeditor-bsactions-save/ksh  -->",
+	"bs-visualeditor-bsactions-headings": "Övverschreffte",
+	"bs-visualeditor-bsactions-paragraph": "Afschnett",
+	"bs-visualeditor-bsactions-heading2": "Övverschreff 2",
+	"bs-visualeditor-bsactions-heading3": "Övverschreff 3",
+	"bs-visualeditor-bsactions-heading4": "Övverschreff 4",
+	"bs-visualeditor-bsactions-heading5": "Övverschreff 5",
+	"bs-visualeditor-bsactions-heading6": "Övverschreff 6",
+	"bs-visualeditor-switch-noeditor-desc": "Schaldt dä <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Projramm för ‚seeschbaa‘ aan Täxte jät ze änndere“\">VisualEditor</i> för heh di Sigg uß."
+}

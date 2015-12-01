@@ -25,6 +25,7 @@
 	"bs-extendedsearch-indexing-linked-files": "索引連入檔案",
 	"bs-extendedsearch-indexing-wiki-articles": "正在建立 Wiki 頁面索引",
 	"bs-extendedsearch-indexing-specialpages": "正在建立特殊頁面索引",
+	"bs-extendedsearch-nosearchterm": "請輸入搜尋關鍵字。",
 	"bs-extendedsearch-search-category": "搜尋分類：",
 	"bs-extendedsearch-search-editors": "搜尋作者：",
 	"bs-extendedsearch-search-help-multiselect": "按住 CTRL 鍵選擇多個項目。",

@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-visualeditor-desc": "Editor visual pa MediaWiki",
+	"prefs-visualeditor": "Editor visual",
+	"bs-visualeditor-editbutton-hint": "Editor visual",
+	"bs-visualeditor-pref-disablens": "Desactivar nos espacios de nomes:",
+	"bs-visualeditor-pref-use": "Usar l'editor WYSIWYG de mou predetermináu",
+	"bs-visualeditor-save-message": "Guardóse la edición el $1 col resume «$2».",
+	"bs-visualeditor-no-summary": "Sin resume",
+	"bs-visualeditor-sortable": "Ordenable",
+	"bs-visualeditor-wikitable": "Estándar",
+	"bs-visualeditor-contenttable": "Conteníu",
+	"bs-visualeditor-contenttable-black": "Conteníu (prietu)",
+	"bs-visualeditor-contenttable-blue": "Conteníu (azul)",
+	"bs-visualeditor-contenttable-darkblue": "Conteníu (azul marín)",
+	"bs-visualeditor-cuscosky": "Cielu de Cusco",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Escala de buxos",
+	"bs-visualeditor-greyscale-narrow": "Escala de buxos (estrechu)",
+	"bs-visualeditor-aligntop": "Arriba",
+	"bs-visualeditor-alignmiddle": "En medio",
+	"bs-visualeditor-alignbottom": "Abaxo",
+	"bs-visualeditor-bsactions-wiki": "Testu wiki",
+	"bs-visualeditor-bsactions-switchgui": "Cambiar de barra de ferramientes",
+	"bs-visualeditor-bsactions-linebreak": "Saltu de llinia",
+	"bs-visualeditor-bsactions-signature": "Robla",
+	"bs-visualeditor-bsactions-save": "Guardar",
+	"bs-visualeditor-bsactions-headings": "Testeres",
+	"bs-visualeditor-bsactions-paragraph": "Párrafu",
+	"bs-visualeditor-bsactions-heading2": "Testera 2",
+	"bs-visualeditor-bsactions-heading3": "Testera 3",
+	"bs-visualeditor-bsactions-heading4": "Testera 4",
+	"bs-visualeditor-bsactions-heading5": "Testera 5",
+	"bs-visualeditor-bsactions-heading6": "Testera 6",
+	"bs-visualeditor-switch-noeditor-desc": "Desactiva l'editor visual nesta páxina."
+}

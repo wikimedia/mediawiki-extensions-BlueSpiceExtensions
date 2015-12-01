@@ -100,6 +100,7 @@ BsWantedArticle = {
 		}
 
 		var aFoundChars = [];
+		var bsForbiddenCharsInArticleTitle = mw.config.get( 'bsForbiddenCharsInArticleTitle' );
 		for ( var i=0; i < bsForbiddenCharsInArticleTitle.length; i++ ) {
 			if ( sArticleTitle.indexOf( bsForbiddenCharsInArticleTitle [i] ) != -1 ) {
 				aFoundChars.push( '"' + bsForbiddenCharsInArticleTitle [i] + '"' );
@@ -200,7 +201,7 @@ BsWantedArticle = {
 
 mw.loader.using( 'ext.bluespice',function() {
 	BsWantedArticle.config = {
-		urlBase: wgServer + wgScriptPath
+		urlBase: mw.config.get( "wgServer" ) + mw.config.get( "wgScriptPath" )
 	};
 	BsWantedArticle.init();
 } );

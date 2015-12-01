@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"bs-authors-desc": "पानाच्या लेखकाचे संक्षिप्त-वर्णनातील चित्र दर्शविते",
+	"prefs-authors": "पानाचे लेखक",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|लेखक}}}}",
+	"bs-authors-profileimage": "संक्षिप्त-वर्णनातील चित्र",
+	"bs-authors-profileimage-change": "संक्षिप्त-वर्णनातील चित्र बदला",
+	"bs-authors-show-all-authors": "अधिक लेखक उपलब्ध आहेत",
+	"bs-authors-pref-imageheight": "चित्राची उंची:",
+	"bs-authors-pref-imagewidth": "चित्राची रुंदी:",
+	"bs-authors-pref-limit": "लेखक दर्शविण्याची मर्यादा:",
+	"bs-authors-pref-show": "लेखक दर्शवा",
+	"bs-authors-switch-description": "या पानाचे लेखक लपविते."
+}

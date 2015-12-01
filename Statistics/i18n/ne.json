@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"बिप्लब आनन्द"
+		]
+	},
+	"prefs-statistics": "विस्तारित तथ्याङ्कहरू",
+	"extendedstatistics": "विस्तारित तथ्याङ्कहरू",
+	"bs-statistics-diagram": "जाँच्ने",
+	"bs-statistics-from": "देखि",
+	"bs-statistics-to": "लाई",
+	"bs-statistics-grain": "अन्तराल",
+	"bs-statistics-mode": "मोड",
+	"bs-statistics-aggregated": "समग्र",
+	"bs-statistics-absolute": "पूर्ण",
+	"bs-statistics-year": "वर्ष",
+	"bs-statistics-month": "महिना",
+	"bs-statistics-week": "क्यालेन्डर हप्ता",
+	"bs-statistics-day": "दिन",
+	"bs-statistics-list": "सूची",
+	"bs-statistics-not-allowed": "तपाईंसँग आवश्यक अनुमति छैन।",
+	"bs-statistics-finish": "चित्र निर्माण गर्ने",
+	"bs-statistics-filters": "फिल्टरहरू",
+	"bs-statistics-diag-number-of-users": "प्रयोगकर्ता संख्या",
+	"bs-statistics-label-name": "नाम",
+	"bs-statistics-label-registration": "पञ्जिकरण",
+	"bs-statistics-diag-number-of-pages": "पृष्ठहरूको संख्या",
+	"bs-statistics-diag-number-of-pages-mw": "सामग्री पृष्ठहरूको संख्या",
+	"bs-statistics-label-page": "पृष्ठ",
+	"bs-statistics-label-creator": "निर्माता",
+	"bs-statistics-diag-number-of-edits": "सम्पादन संख्या",
+	"bs-statistics-diag-edits-per-user": "सम्पादन प्रति प्रयोगकर्ता",
+	"bs-statistics-label-searchterm": "खोज पद",
+	"bs-statistics-label-count": "गणना",
+	"bs-statistics-label-maxhits": "अधिक परिणाम",
+	"bs-statistics-label-time": "समय",
+	"bs-statistics-filter-category": "श्रेणी",
+	"bs-statistics-portlet-numberofusers": "प्रयोगकर्ता संख्या",
+	"bs-statistics-portlet-numberofedits": "सम्पादन संख्या",
+	"bs-statistics-portlet-numberofpages": "पृष्ठहरूको संख्या",
+	"bs-statistics-portletconfig-periodday": "हिजो"
+}

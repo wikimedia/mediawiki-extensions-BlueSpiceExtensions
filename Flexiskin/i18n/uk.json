@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Alex Blokha"
 		]
 	},
 	"bs-flexiskin-desc": "Забезпечує сторінку для керування гнучкими темами оформлення з налаштуванням параметрів",
@@ -46,5 +47,15 @@
 	"bs-flexiskin-labelwidth": "Повна ширина (у пікселях)",
 	"bs-flexiskin-labelfullwidth": "Максимальна ширина",
 	"bs-flexiskin-error-nameempty": "Будь ласка, введіть припустиме ім'я для теми, яку Ви хочете створити.",
-	"bs-flexiskin-error-templatenotexists": "Вибраного шаблону не існує."
+	"bs-flexiskin-error-templatenotexists": "Вибраного шаблону не існує.",
+	"bs-flexiskin-api-desc": "API-інтерфейс для розширення Bluespice Flexiskin.",
+	"bs-flexiskin-api-type-desc": "Дію, яку буде виконано, наприклад, «delete». За замовчуванням це «get»",
+	"bs-flexiskin-api-mode-desc": "Режим дій, наприклад, «config». За замовчуванням це «flexiskin».",
+	"bs-flexiskin-api-id-desc": "ID, якщо Flexiskin (необов'язково).",
+	"bs-flexiskin-api-data-desc": "Масив даних (необов'язково).",
+	"bs-flexiskin-api-preview-desc": "Вибрати, відображати режим попереднього перегляду чи ні (необов'язково).",
+	"bs-flexiskin-api-example-desc": "Повертає поточну конфігурацію Flexiskin.",
+	"bs-flexiskin-api-error-save": "Сталася помилка при спробі зберегти. Причина: «$1»",
+	"bs-flexiskin-api-error-invalid-action": "Така дія не існує.",
+	"bs-flexiskin-api-error-missing-param": "Бракує параметра: «$1»"
 }

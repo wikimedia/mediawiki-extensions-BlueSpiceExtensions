@@ -47,5 +47,6 @@
 	"bs-flexiskin-labelwidth": "Полная ширина (в пикселях)",
 	"bs-flexiskin-labelfullwidth": "Максимальная ширина",
 	"bs-flexiskin-error-nameempty": "Пожалуйста, введите допустимое имя для темы оформления, которую Вы хотите создать.",
-	"bs-flexiskin-error-templatenotexists": "Выбранный шаблон не существует."
+	"bs-flexiskin-error-templatenotexists": "Выбранный шаблон не существует.",
+	"bs-flexiskin-api-error-invalid-action": "Это действие не существует."
 }

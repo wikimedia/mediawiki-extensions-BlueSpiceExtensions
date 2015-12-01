@@ -10,5 +10,7 @@
 	"wikiadmin": "BlueSpice 管理",
 	"action-wikiadmin": "顯示 BlueSpice 管理頁面",
 	"right-wikiadmin": "顯示 BlueSpice 管理頁",
-	"bs-wikiadmin-shop": "商店"
+	"bs-wikiadmin-shop": "商店",
+	"bs-wikiadmin-mediawiki-specialpages-text": "特殊頁面",
+	"bs-wikiadmin-mediawiki-specialpages-title": "列出所有 MediaWiki 特殊頁面"
 }

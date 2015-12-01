@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Sujiniku"
 		]
 	},
 	"bs-review-desc": "ワークフロー機能をページに追加する",
@@ -16,5 +17,12 @@
 	"bs-review-header-owner-name": "所有者",
 	"bs-review-header-startdate": "開始",
 	"bs-review-header-enddate": "終了",
-	"bs-review-error-insufficient-permissions": "あなたにはこの操作を実行する権限がありません (「$1」が必要です)。"
+	"bs-review-error-insufficient-permissions": "あなたにはこの操作を実行する権限がありません (「$1」が必要です)。",
+	"notification-bs-review-payload-comment": "コメント: 「$1」",
+	"notification-bs-review-assign-subject": "ページ「$2」を査読してください",
+	"notification-bs-review-deny-subject": "$1が「$2」を{{GENDER:$1|拒否しました}}",
+	"notification-bs-review-deny-and-restart-subject": "$1 が「$2」を{{GENDER:$1|拒否しました}}",
+	"notification-bs-review-finish-summary": "[[User:$1|$1]]が$3の査読プロセスを{{GENDER:$1|終了しました}}",
+	"notification-bs-review-finish-subject": "$1が「$2」の査読を{{GENDER:$1|終了しました}}",
+	"notification-bs-review-finish-and-autoflag-subject": "$1が「$2」の査読を{{GENDER:$1|終了しました}}"
 }

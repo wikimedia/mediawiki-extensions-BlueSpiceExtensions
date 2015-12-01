@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-articleinfo-desc": "Deiht Ennfommazjuhne övver en Sigg en de Zohschtands_Reih.",
+	"prefs-articleinfo": "Ennfommazjuhne övver en Sigg.",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Noh wi vill Sekonde obb ene neuje Schtand bränge:",
+	"bs-articleinfo-last-edited": "Zigg zigg de läzde Änderong",
+	"bs-articleinfo-last-edited-tooltip": "De läzde Änderong",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Der läzde Schriiver|De läzde Schriiverėn|Der läzde Schriiver|De läzde Schriiverėn|De läzde Schriiver}}",
+	"bs-articleinfo-categories": "Saachjroppe",
+	"bs-articleinfo-more-categories": "Et sinn_er noch mih Saachjroppe doh",
+	"bs-articleinfo-all-categories-heading": "Saachjroppe",
+	"bs-articleinfo-nocategories": "Kein saachjroppe jefonge",
+	"bs-articleinfo-hiddencats": "Verschtoche Saachjroppe",
+	"bs-articleinfo-notemplates": "Kein Schablohne jefonge.",
+	"bs-articleinfo-templates": "Schablohne",
+	"bs-articleinfo-subpages": "Ongersigge",
+	"bs-articleinfo-subpages-available": "Heh di Sigg hädd Ongersigge",
+	"bs-articleinfo-subpages-too-much": "Heh di Sigg hät övver hondert Ongersigge.",
+	"bs-articleinfo-check-revision": "En neu Väsjohn es ze han",
+	"bs-articleinfo-check-revision-tooltip": "de Sigg neu lahde",
+	"bs-articleinfo-statebartoplastedited": "De läzde Änderong",
+	"bs-articleinfo-statebartoplasteditor": "Der läzde Schriiver",
+	"bs-articleinfo-statebartopcategories": "Saachjroppe",
+	"bs-articleinfo-statebartopsubpages": "Ongersigge",
+	"bs-articleinfo-statebarbodycategories": "Saachjroppe",
+	"bs-articleinfo-statebarbodysubpages": "Ongersigge",
+	"bs-articleinfo-statebarbodytemplates": "Schablohne"
+}

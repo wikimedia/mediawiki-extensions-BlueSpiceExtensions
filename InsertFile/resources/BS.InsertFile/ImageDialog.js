@@ -214,19 +214,26 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 
 	getData: function() {
 		var cfg = this.callParent(arguments);
+
+		var noLink = this.cbxNoLink.getValue();
+		var link = this.cbPages.getRawValue();
+		if( noLink || link === '' ) {
+			link = false;
+		}
+
 		Ext.apply(cfg, {
 			//bs.wikiText.Link stuff
 			caption: this.tfLinkText.getValue(),
 			sizeheight: false,
 			sizewidth: false,
-			link: this.cbPages.getRawValue(),
+			link: link ,
 			alt: this.tfAlt.getValue(),
 			thumb: false,
 			border: false,
 			frame: false,
 			//VisualEditor stuff
 			imagename: this.tfFileName.getValue(),
-			noLink: this.cbxNoLink.getValue(),
+			noLink: noLink,
 			src: Ext.htmlDecode(this.hdnUrl.getValue()) //Ext.htmlDecode(): this feels like the wrong place...
 		});
 
@@ -336,14 +343,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		if( obj.link !== '' && obj.link !== false && obj.link !== 'false' ) {
 			this.cbPages.setValue( obj.link );
 		}
-		if (obj.nolink === true){
+		if( obj.nolink === true || obj.link === '' ){
 			this.cbPages.disable( );
+			this.cbxNoLink.setValue(true);
 		}
-		else{
+		else {
 			this.cbPages.enable( );
+			this.cbxNoLink.setValue(false);
 		}
-
-		this.cbxNoLink.setValue(obj.nolink);
 
 		this.hdnUrl.setValue( obj.src );
 		this.isSetData = false;
@@ -352,7 +359,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	onGdImagesSelect: function( grid, record, index, eOpts ){
 		this.callParent(arguments);
 
-		this.hdnUrl.setValue( record.get('file_thumbnail_url') );
+		this.hdnUrl.setValue( record.get('file_url') );
 		//This is to avoid an overriding of the dimension that may have been
 		//set by this.setData()
 		if( grid.getStore().filters.items.length === 0 || grid.getStore().getCount() !== 1 ) {

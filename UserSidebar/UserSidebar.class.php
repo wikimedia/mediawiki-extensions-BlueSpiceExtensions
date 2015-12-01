@@ -81,7 +81,7 @@ class UserSidebar extends BsExtensionMW {
 
 		$wgAPIModules['sidebar'] = 'ApiSidebar';
 
-		BsConfig::registerVar( 'MW::UserSidebar::LinkToEdit', array('href' => '', 'content' => ''), BsConfig::LEVEL_USER, 'bs-usersidebar-userpagesettings-link-title', 'link' );
+		BsConfig::registerVar( 'MW::UserSidebar::LinkToEdit', array ( 'href' => '', 'content' => '' ), BsConfig::LEVEL_USER | BsConfig::NO_DEFAULT, 'bs-usersidebar-userpagesettings-link-title', 'link' );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -203,8 +203,11 @@ class UserSidebar extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		$aViews = array();
 		$oUser = $sktemplate->getUser();
+		if( !$oUser->isLoggedIn() ) {
+			return true;
+		}
+		$aViews = array();
 		$oCurrentTitle = $sktemplate->getTitle();
 		$sEditLink = '';
 		if ( $oUser->isLoggedIn() === false ) {

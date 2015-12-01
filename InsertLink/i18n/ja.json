@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Sujiniku"
 		]
 	},
 	"bs-insertlink-desc": "リンクを入力するダイアログボックス",
+	"prefs-insertlink": "リンク挿入",
 	"bs-insertlink": "リンクを挿入",
+	"bs-insertlink-pref-enable-java": "JAVAアプレットを有効化",
 	"bs-insertlink-button-title": "リンクを挿入/編集",
 	"bs-insertlink-dialog-title": "リンクの挿入",
 	"bs-insertlink-tab-wiki-page": "ウィキページ",

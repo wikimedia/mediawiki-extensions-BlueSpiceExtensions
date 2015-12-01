@@ -11,13 +11,13 @@ $wgExtensionMessagesFiles['ExtensionInfoAlias'] = __DIR__ . '/languages/SpecialE
 $wgAutoloadClasses['SpecialExtensionInfo'] = __DIR__ . '/includes/specials/SpecialExtensionInfo.class.php';
 $wgAutoloadClasses['ViewExtensionInfoTable'] = __DIR__ . '/includes/ViewExtensionInfoTable.php';
 
-$wgSpecialPageGroups['ExtensionInfo'] = 'bluespice';
 $wgSpecialPages['ExtensionInfo'] = 'SpecialExtensionInfo';
 
 $wgResourceModules['ext.bluespice.extensioninfo.styles'] = array(
 	'styles' => 'bluespice.extensionInfo.css',
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/ExtensionInfo/resources',
-	'remoteExtPath' => 'BlueSpiceExtensions/ExtensionInfo/resources'
+	'remoteExtPath' => 'BlueSpiceExtensions/ExtensionInfo/resources',
+	'position' => 'top'
 );
 
 $wgResourceModules['ext.bluespice.extensioninfo'] = array(
@@ -31,7 +31,7 @@ $wgResourceModules['ext.bluespice.extensioninfo'] = array(
 		'bs-extensioninfo-groupingtemplateviewtext'
 	),
 	'dependencies' => array(
-		'mediawiki.jqueryMsg'
+		'ext.bluespice.extjs'
 	),
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/ExtensionInfo/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/ExtensionInfo/resources',

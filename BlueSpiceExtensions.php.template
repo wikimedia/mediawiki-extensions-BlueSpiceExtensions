@@ -12,6 +12,7 @@ require_once( __DIR__."/UserManager/UserManager.setup.php" );
 //Other Extendsions
 require_once( __DIR__."/StateBar/StateBar.setup.php" );
 require_once( __DIR__."/RSSFeeder/RSSFeeder.setup.php" );
+require_once( __DIR__."/AboutBlueSpice/AboutBlueSpice.setup.php" );
 require_once( __DIR__."/ArticleInfo/ArticleInfo.setup.php" );
 require_once( __DIR__."/Authors/Authors.setup.php" );
 require_once( __DIR__."/Blog/Blog.setup.php" );
@@ -30,7 +31,6 @@ require_once( __DIR__."/InsertFile/InsertFile.setup.php" );
 require_once( __DIR__."/InsertLink/InsertLink.setup.php" );
 require_once( __DIR__."/InsertMagic/InsertMagic.setup.php" );
 require_once( __DIR__."/NamespaceCss/NamespaceCss.setup.php" );
-require_once( __DIR__."/Notifications/Notifications.setup.php" );
 require_once( __DIR__."/PageAccess/PageAccess.setup.php" );
 require_once( __DIR__."/PagesVisited/PagesVisited.setup.php" );
 require_once( __DIR__."/SecureFileStore/SecureFileStore.setup.php" );

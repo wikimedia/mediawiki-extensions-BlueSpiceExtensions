@@ -1,9 +1,33 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Fringio"
 		]
 	},
+	"bs-visualeditor-desc": "Editor visuale per MediaWiki",
+	"prefs-visualeditor": "Visual editor",
+	"bs-visualeditor-editbutton-hint": "Visual Editor",
+	"bs-visualeditor-pref-disablens": "Disabilita nei namespace:",
+	"bs-visualeditor-pref-use": "Utilizza l'editor WYSIWYG come predefinito",
+	"bs-visualeditor-save-message": "Salvato revisione a $1 con oggetto \"$2\".",
+	"bs-visualeditor-no-summary": "Nessun oggetto",
+	"bs-visualeditor-sortable": "Ordinabile",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Contenuto",
+	"bs-visualeditor-contenttable-black": "Contenuto (nero)",
+	"bs-visualeditor-contenttable-blue": "Contenuto (blu)",
+	"bs-visualeditor-contenttable-darkblue": "Contenuto (darkblue)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Scala di grigi",
+	"bs-visualeditor-greyscale-narrow": "Scala di grigi (stretta)",
+	"bs-visualeditor-aligntop": "In alto",
+	"bs-visualeditor-alignmiddle": "A metà",
+	"bs-visualeditor-alignbottom": "In fondo",
+	"bs-visualeditor-bsactions-wiki": "Wikitesto",
+	"bs-visualeditor-bsactions-switchgui": "Cambia barra degli strumenti",
+	"bs-visualeditor-bsactions-linebreak": "A capo",
 	"bs-visualeditor-bsactions-signature": "Firma",
 	"bs-visualeditor-bsactions-save": "Salva",
 	"bs-visualeditor-bsactions-headings": "Intestazioni",
@@ -12,5 +36,6 @@
 	"bs-visualeditor-bsactions-heading3": "Titolo 3",
 	"bs-visualeditor-bsactions-heading4": "Titolo 4",
 	"bs-visualeditor-bsactions-heading5": "Titolo 5",
-	"bs-visualeditor-bsactions-heading6": "Titolo 6"
+	"bs-visualeditor-bsactions-heading6": "Titolo 6",
+	"bs-visualeditor-switch-noeditor-desc": "Disabilita l'editor visuale su questa pagina."
 }

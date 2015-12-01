@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-statebar-desc": "Sorresch för ene Zohschtandsballke.",
+	"prefs-statebar": "Zohschtands_Reihj",
+	"bs-statebar-pref-sortbodyvars": "De Reijefollsch em Houpberätt:",
+	"bs-statebar-pref-sorttopvars": "De Reijefollsch em Kopp:",
+	"bs-statebar-pref-show": "Zeisch de Zohschtands_Reihj aan",
+	"bs-statebar-viewtoggler": "<spam style=\"text-transform:uppercase\">Eijnzelheijte</span>",
+	"bs-statebar-viewtoggler-tooltip": "Zeisch de ußföhrlesche Ennfommazjuhne",
+	"bs-statebar-switch-description": "Verschtisch de Zohschtands_Reihj op heh dä Sigg.",
+	"bs-statebar-ajax-nobodyviews": "Mer han kein Ennfommazjuhne."
+}

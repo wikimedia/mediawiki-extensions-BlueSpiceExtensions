@@ -2,15 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"Tyey",
-			"아라"
+			"아라",
+			"Hwangjy9"
 		]
 	},
+	"bs-extendededitbar-redirecttip": "넘겨주기",
 	"bs-extendededitbar-redirectsample": "텍스트 넣기",
+	"bs-extendededitbar-striketip": "취소선",
+	"bs-extendededitbar-uppertip": "위 첨자",
+	"bs-extendededitbar-lowertip": "아래 첨자",
+	"bs-extendededitbar-smalltip": "작게",
 	"bs-extendededitbar-smallsample": "작은 글자",
-	"bs-extendededitbar-commentsample": "덧글",
+	"bs-extendededitbar-commentsample": "댓글",
 	"bs-extendededitbar-gallerytip": "사진 갤러리 넣기",
 	"bs-extendededitbar-gallerysamplepicture": "사진",
 	"bs-extendededitbar-gallerysamplecaption": "설명",
 	"bs-extendededitbar-tablesampleheader": "머리글",
+	"bs-extendededitbar-tablesamplerow": "행",
 	"bs-extendededitbar-tablesamplecell": "셀"
 }

@@ -7,7 +7,9 @@
 		]
 	},
 	"bs-insertlink-desc": "Boîte de dialogue pour saisir un lien",
+	"prefs-insertlink": "Insérer un lien",
 	"bs-insertlink": "Insérer un lien",
+	"bs-insertlink-pref-enable-java": "Activer l’applet Java",
 	"bs-insertlink-button-title": "Insérer/modifier un lien",
 	"bs-insertlink-dialog-title": "Insérer un lien",
 	"bs-insertlink-tab-wiki-page": "Page wiki",

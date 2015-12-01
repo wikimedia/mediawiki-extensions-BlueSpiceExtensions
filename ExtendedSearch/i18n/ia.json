@@ -35,5 +35,17 @@
 	"bs-extendedsearch-search-help-multiselect": "Mantene le clave CTRL premite pro seliger plure elementos.",
 	"bs-extendedsearch-search-namespace": "Cercar in le spatios de nomines:",
 	"bs-extendedsearch-server-not-available": "Le servitor de recerca non es disponibile.",
-	"bs-extendedsearch-sort-by": "Ordinate per:"
+	"bs-extendedsearch-sort-by": "Ordinate per:",
+	"bs-extendedsearch-sort-relevance": "Relevantia",
+	"bs-extendedsearch-sort-title": "Titulo",
+	"bs-extendedsearch-sort-ts": "Hora",
+	"bs-extendedsearch-sort-type": "Typo",
+	"bs-extendedsearch-specialpage-form-return-to-simple": "Formulario de recerca simple",
+	"bs-extendedsearch-specialpage-form-expand-to-extended": "Formulario de recerca avantiate",
+	"bs-extendedsearch-searchfulltext": "Que contine ...",
+	"bs-extendedsearch-pref-searchfiles": "Cercar files como predefinition",
+	"bs-extendedsearch-pref-defscopeuser": "Valor predefinite pro le recerca:",
+	"bs-extendedsearch-pref-scope-text": "Texto complete",
+	"bs-extendedsearch-pref-scope-title": "Titulo",
+	"bs-extendedsearch-pref-jumptotitle": "Le recercas mena directemente al pagina correspondente si existe"
 }

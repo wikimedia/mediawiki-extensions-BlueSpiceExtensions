@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-aboutbluespice-desc": "Информации за BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "За BlueSpice",
+	"aboutbluespice": "За BlueSpice",
+	"prefs-aboutbluespice": "За BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Пркажувај ја врската „{{int:bs-aboutbluespice-about-bluespice}}“ најгоре во главното мени"
+}

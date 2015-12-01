@@ -13,8 +13,8 @@ BsWhoIsOnline = {
 	interval: 0,
 	limit: 0,
 	init: function() {
-		BsWhoIsOnline.interval = bsWhoIsOnlineInterval*1000;
-		BsWhoIsOnline.limit = bsWhoIsOnlineLimitCount;
+		BsWhoIsOnline.interval = mw.config.get( 'bsWhoIsOnlineInterval' ) * 1000;
+		BsWhoIsOnline.limit = mw.config.get( 'bsWhoIsOnlineLimitCount' );
 		if(BsWhoIsOnline.interval < 1) return;
 
 		BSPing.registerListener('WhoIsOnline', BsWhoIsOnline.interval, [], BsWhoIsOnline.pingListener);

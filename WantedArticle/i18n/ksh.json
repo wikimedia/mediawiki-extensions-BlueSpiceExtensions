@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"bs-wantedarticle-desc": "Donn en Sigg en de leß met de jewönschte Sigge",
+	"prefs-wantedarticle": "Jewönschte Sigg",
+	"bs-wantedarticle-ajax-error-no-parameter": "Kein Övverschreff för en Sigg wood aanjejovve. <!--  https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-wantedarticle-ajax-error-no-parameter/ksh -->",
+	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "De vörjeschlahre Sigg „$1“ jidd_et ald.",
+	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "De Sigg „$1“ es ald vörjeschlahre.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "Der Vörschlahch „$1“ es derbei jedonn.",
+	"bs-wantedarticle-success-suggestion-entered": "Dinge Vörschlahch „$1“ es derbei jedonn.",
+	"bs-wantedarticle-page-removed": "Der Sigg „$1“ es fott jenumme.",
+	"bs-wantedarticle-single-textfield-suggestbutton-text": "Lohß Jonn!",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Aanlähje",
+	"bs-wantedarticle-single-textfield-defaulttext": "Dä Sigg ier Övverschreff",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Jidd en Leß met de jewönschte Sigge uß.\nVerfööschbaa Eijeschaffte för dem Enschtälle:",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>Zahl</code>: Aanzahl Sigge zom Aanzeile.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Output format <code>list</code> or <code>quene</code> (comma separated).\n<!-- https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-wantedarticle-tag-wantedarticle-desc-param-type/ksh  -->",
+	"bs-wantedarticle-tag-more-linktext": "Mih&nbsp;…",
+	"bs-wantedarticle-tag-default-title": "Jesescherte Sigge",
+	"bs-wantedarticle-pref-includelimit": "Aanzahl Vörschlähsch:",
+	"bs-wantedarticle-pref-sort": "Zottehr noh:",
+	"bs-wantedarticle-pref-sort-time": "Zigg",
+	"bs-wantedarticle-pref-sort-title": "Övverschreff",
+	"bs-wantedarticle-pref-order-asc": "nomahl eröm zottehre",
+	"bs-wantedarticle-pref-order-desc": "rökwääts zottehre",
+	"bs-wantedarticle-create-page": "Donn de Sigg „$1“ aanlähje.",
+	"bs-wantedarticle-suggest-page": "Donn de Sigg „$1“ vörschlonn.",
+	"bs-wantedarticle-info-nothing-entered": "Bes esu johd un jivv en jöltejje Övverschreff för en Sigg aan."
+}

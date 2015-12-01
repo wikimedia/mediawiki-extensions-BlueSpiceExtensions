@@ -3,7 +3,8 @@
 		"authors": [
 			"Matik7",
 			"Pio387",
-			"Chrumps"
+			"Chrumps",
+			"Devwebtel"
 		]
 	},
 	"bs-review-save-error": "Wystąpił błąd podczas zapisywania.",
@@ -13,8 +14,10 @@
 	"bs-review-mail-link-to-page": "Kliknij w ten link: $1",
 	"bs-review-mail-accept-header": "$1 {{GENDER:$2|zaakceptował|zaakceptowała}} $3",
 	"bs-review-mail-deny-header": "$1 {{GENDER:$2|odrzucił|odrzuciła}} $3",
+	"bs-review-mail-deny-and-restart-header": "$1 {{GENDER:$2|odrzucił|odrzuciła}} $3",
 	"bs-review-i-agree": "Akceptuję",
 	"bs-review-not-allowed": "Nie masz uprawnień, aby korzystać z tej strony.",
+	"log-show-hide-bs-review": "Rejestr oznaczania $1",
 	"bs-review-commentinputlabel": "Twój komentarz:",
 	"bs-review-comments": "Komentarze",
 	"bs-review-btnmoveup": "Do góry",
@@ -31,5 +34,10 @@
 	"bs-review-header-startdate": "Start",
 	"bs-review-header-enddate": "Koniec",
 	"bs-review-confirm-delete-step": "Czy na pewno chcesz usunąć ten krok?",
-	"bs-review-error-insufficient-permissions": "Nie masz uprawnień, aby wykonać to działanie (potrzebne „$1”)."
+	"bs-review-error-insufficient-permissions": "Nie masz uprawnień, aby wykonać to działanie (potrzebne „$1”).",
+	"notification-bs-review-payload-comment": "Komentarz: „$1”",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|zaakceptował|zaakceptowała|zaakceptował(a)}} „$2”",
+	"notification-bs-review-deny-summary": "[[User:$1|$1]] {{GENDER:$1|odrzucił|odrzuciła|odrzucił(a)}} treść z $3",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|odrzucił|odrzuciła|odrzucił(a)}} „$2”",
+	"notification-bs-review-deny-and-restart-subject": "$1 {{GENDER:$1|odrzucił|odrzuciła|odrzucił(a)}} „$2”"
 }

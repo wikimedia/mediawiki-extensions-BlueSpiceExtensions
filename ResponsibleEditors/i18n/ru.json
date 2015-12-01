@@ -53,6 +53,6 @@
 	"bs-responsibleeditors-rbdisplaymodeall": "Показать все страницы",
 	"bs-responsibleeditors-cbnamespacesemptytext": "Выбрать пространство имён",
 	"bs-responsibleeditors-columneesponsibleeditornotset": "Не назначено",
-	"log-name-bs-responsibleeditors": "Журнал ответственных редакторов",
-	"log-description-bs-responsibleeditors": "Это журнал редакторов, ответственных за страницы."
+	"log-name-bs-responsible-editors": "Журнал ответственных редакторов",
+	"log-description-bs-responsible-editors": "Это журнал редакторов, ответственных за страницы."
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sator"
+		]
+	},
+	"bs-contextmenu-page-edit": "Orria aldatu",
+	"bs-contextmenu-page-delete": "Orrialdea ezabatu",
+	"bs-contextmenu-page-move": "Mugitu orria",
+	"bs-contextmenu-page-history": "Ikusi orriaren historia",
+	"bs-contextmenu-page-protect": "Proiektu orrialdea",
+	"bs-contextmenu-user-mail": "Posta elektroniko bat bidali",
+	"bs-contextmenu-file-download": "Download file"
+}

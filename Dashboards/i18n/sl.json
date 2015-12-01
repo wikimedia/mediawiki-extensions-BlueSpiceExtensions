@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-dashboards-desc": "Ponuja nadzorno ploščo uporabnikom in skrbnikom",
+	"bs-specialadmindashboard-label": "Nadzorna plošča",
+	"bs-dashboards-addportlet": "Dodaj portlet",
+	"bs-dashboards-portlets": "Portleti",
+	"prefs-dashboards": "Nadzorne plošče",
+	"bs-dashboards-pref-userdashboardonlogo": "Logo strani je povezava na uporabniško nadzorno ploščo",
+	"admindashboard": "Skrbniška nadzorna plošča",
+	"userdashboard": "Uporabniška nadzorna plošča",
+	"bs-dashboard-userportlet-calendar-title": "Koledar",
+	"bs-dashboard-userportlet-calendar-description": "Koledar"
+}

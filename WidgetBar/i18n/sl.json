@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skalcaa"
+		]
+	},
+	"bs-widgetbar-desc": "Doda gradnike widget na uporabniški vmesnik",
+	"prefs-widgetbar": "Vrstica gradnikov widget",
+	"bs-widgetbar-userpagesettings-headline": "Gradniki widget",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Uredi}} vsebino svoje vrstice gradnikov widget:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Uredi}} mojo vrstico gradnikov widget",
+	"bs-widget-container-tooltip": "Gradniki widget",
+	"bs-widget-flyout-heading": "Gradniki widget"
+}

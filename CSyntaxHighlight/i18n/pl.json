@@ -5,6 +5,7 @@
 		]
 	},
 	"prefs-csyntaxhighlight": "Podświetlanie składni",
+	"bs-csyntaxhighlight-pref-theme": "Motyw:",
 	"bs-csyntaxhighlight-pref-gutter": "Pokaż numery linii",
 	"bs-csyntaxhighlight-pref-toolbar": "Pokaż pasek narzędzi"
 }

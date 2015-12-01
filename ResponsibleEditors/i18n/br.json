@@ -23,5 +23,6 @@
 	"bs-responsibleeditors-columnresponsibleeditor": "Aozerien atebek",
 	"bs-responsibleeditors-columnnamespace": "Esaouenn anv",
 	"bs-responsibleeditors-rbdisplaymodeall": "Diskouez an holl bajennoù",
-	"bs-responsibleeditors-columneesponsibleeditornotset": "N'eo ket deverket"
+	"bs-responsibleeditors-columneesponsibleeditornotset": "N'eo ket deverket",
+	"notification-bs-responsibleeditors-change-subject": "{{GENDER:$1|Kemmet}} eo bet ar bajenn \"$2\" gant $1"
 }

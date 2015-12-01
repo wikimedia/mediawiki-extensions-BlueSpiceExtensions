@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"DCLXVI"
+		]
+	},
+	"bs-articleinfo-last-edited-tooltip": "Последна редакция",
+	"bs-articleinfo-all-categories-heading": "Категории",
+	"bs-articleinfo-hiddencats": "Скрити категории",
+	"bs-articleinfo-templates": "Шаблони",
+	"bs-articleinfo-statebartopcategories": "Категории",
+	"bs-articleinfo-statebarbodycategories": "Категории",
+	"bs-articleinfo-statebarbodytemplates": "Шаблони"
+}

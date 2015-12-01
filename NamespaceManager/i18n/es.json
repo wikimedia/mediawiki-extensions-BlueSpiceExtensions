@@ -3,7 +3,8 @@
 		"authors": [
 			"AVIADOR",
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"Ryo567"
 		]
 	},
 	"bs-namespacemanager-desc": "Interfaz administrativa para añadir, editar y eliminar espacios de nombres",
@@ -28,7 +29,16 @@
 	"bs-namespacemanager-labelnsname": "Nombre del espacio de nombres",
 	"bs-namespacemanager-willdelete": "Se eliminará",
 	"bs-namespacemanager-willmove": "Se moverá a «{{int:bs-ns_main}}»",
-	"bs-namespacemanager-willmovesuffix": "Se moverá a «{{int:bs-ns_main}}» con el sufijo «$1»",
+	"bs-namespacemanager-willmovesuffix": "Se trasladará a «{{int:bs-ns_main}}» con el sufijo «$1»",
 	"bs-namespacemanager-deletewarning": "¿Estás seguro de que quieres eliminar este espacio de nombres? No se podrá deshacer esta acción.",
-	"bs-namespacemanager-pagepresent": "Páginas en este espacio de nombres:"
+	"bs-namespacemanager-pagepresent": "Páginas en este espacio de nombres:",
+	"bs-namespacemanager-deletens-movepages": "Esta página se ha trasladado desde el espacio de nombres \"$1\" a \"{{int:bs-ns_main}}\", porque \"$1\" se ha eliminado.",
+	"bs-namespacemanager-deletens-deletepages": "Esta página se borró debido al borrado del espacio de nombres «$1».",
+	"log-name-bs-namespace-manager": "Registro del gestor de espacios de nombres",
+	"log-description-bs-namespace-manager": "Este es un registro de los cambios en los espacios de nombres.",
+	"log-show-hide-bs-namespace-manager": "$1 el registro del gestor de espacios de nombres",
+	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|ha creado}} el espacio de nombres $4",
+	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|ha cambiado}} la configuración del espacio de nombres $4",
+	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|ha renombrado}} el espacio de nombres $4 a $5",
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|ha eliminado}} el espacio de nombres $4"
 }

@@ -166,15 +166,13 @@ class CSyntaxHighlight extends BsExtensionMW {
 		$aScriptBlock[] = '<script type="text/javascript" src="' . $sBrushScriptPath . '/shCore.js"></script>';
 		$aScriptBlock[] = '<script type="text/javascript" src="' . $sBrushScriptPath . '/shAutoloader.js"></script>';
 		$aScriptBlock[] = '<script type="text/javascript">';
-		$aScriptBlock[] = 'mw.loader.using("ext.bluespice", function(){';
 		$aScriptBlock[] = 'SyntaxHighlighter.autoloader( ';
 		$aScriptBlock[] = implode( ",\n", $aAutoloaderParams );
 		$aScriptBlock[] = ');';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"] = bsCSyntaxHighlightToolbar;';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["auto-links"] = bsCSyntaxHighlightAutoLinks;';
-		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"] = bsCSyntaxHighlightGutter;';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["toolbar"] = ' . FormatJson::encode( BsConfig::get( 'MW::CSyntaxHighlight::Toolbar' ) ) . ';';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["auto-links"] = ' . FormatJson::encode( BsConfig::get( 'MW::CSyntaxHighlight::AutoLinks' ) ) . ';';
+		$aScriptBlock[] = 'SyntaxHighlighter.defaults["gutter"] = ' . FormatJson::encode( BsConfig::get( 'MW::CSyntaxHighlight::Gutter' ) ) . ';';
 		$aScriptBlock[] = 'SyntaxHighlighter.all();';
-		$aScriptBlock[] = '});';
 		$aScriptBlock[] = '</script>';
 
 		$bottomScriptText .= implode( "\n", $aScriptBlock );

@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hwangjy9"
+		]
+	},
+	"bs-usermanager-admin-nodelete": "관리자 계정은 삭제할 수 없습니다.",
+	"bs-usermanager-self-nodelete": "당신의 계정은 삭제할 수 없습니다.",
+	"bs-usermanager-db-error": "데이터베이스 오류가 발생했습니다.",
+	"bs-usermanager-enter-pwd": "비밀번호를 입력하세요.",
+	"bs-usermanager-idnotexist": "이 사용자는 존재하지 않습니다.",
+	"bs-usermanager-invalid-pwd": "비밀번호가 올바르지 않습니다.",
+	"bs-usermanager-invalid-realname": "실명이 올바르지 않습니다.",
+	"bs-usermanager-invalid-uname": "사용자 이름이 올바르지 않습니다.",
+	"bs-usermanager-invalid-email-gen": "이메일 주소가 올바르지 않습니다.",
+	"bs-usermanager-label": "사용자 관리자",
+	"bs-usermanager-user-added": "사용자가 추가되었습니다.",
+	"bs-usermanager-user-deleted": "사용자가 삭제되었습니다.",
+	"bs-usermanager-user-exists": "이 사용자 이름은 이미 존재합니다.",
+	"bs-usermanager-save-successful": "바뀜을 저장했습니다.",
+	"bs-usermanager-headerusername": "사용자 이름",
+	"bs-usermanager-headerrealname": "실명",
+	"bs-usermanager-headeremail": "이메일",
+	"bs-usermanager-headergroups": "그룹",
+	"bs-usermanager-titleadduser": "사용자 추가",
+	"bs-usermanager-titleeditdetails": "사용자 편집",
+	"bs-usermanager-labelnewpassword": "비밀번호",
+	"bs-usermanager-labelpasswordcheck": "비밀번호 확인",
+	"bs-usermanager-titledeleteuser": "사용자 삭제"
+}

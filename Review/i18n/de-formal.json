@@ -20,5 +20,12 @@
 	"bs-review-commentinputlabel": "Ihr Kommentar:",
 	"bs-review-confirm-delete-step": "Möchten Sie diesen Schritt wirklich löschen?",
 	"bs-review-confirm-delete-review": "Möchten Sie diese Begutachtung wirklich löschen?",
-	"bs-review-error-insufficient-permissions": "Sie haben nicht die benötigte Berechtigung, um diese Aktion auszuführen (\"$1\" wird benötigt)."
+	"bs-review-error-insufficient-permissions": "Sie haben nicht die benötigte Berechtigung, um diese Aktion auszuführen (\"$1\" wird benötigt).",
+	"notification-bs-review-assign-summary": "[[Benutzer:$1|$1]] {{GENDER:$1|bittet}} Sie, $3 zu begutachten",
+	"notification-bs-review-assign-subject": "Bitte begutachten Sie \"$2\"",
+	"notification-bs-review-assign-body": "$1 {{GENDER:$1|bittet}} Sie, \"$2\" zu begutachten. Nach Anmeldung am Wiki können Sie die Seite mit folgendem Link erreichen: $3",
+	"notification-bs-review-accept-body": "$1 {{GENDER:$1|hat}} auf Ihre Bitte um Begutachtung von \"$2\" reagiert und hat den Änderungen zugestimmt.",
+	"notification-bs-review-deny-body": "$1 {{GENDER:$1|hat}} auf Ihre Bitte um Begutachtung von \"$2\" reagiert und hat die Änderungen abgelehnt.",
+	"notification-bs-review-deny-and-restart-body": "$1 {{GENDER:$1|hat}} auf Ihre Bitte um Begutachtung von \"$2\" reagiert und hat die Änderungen abgelehnt. Dadurch wurde der Begutachtungsprozess automatisch neugestartet.",
+	"notification-bs-review-finish-body": "$1 {{GENDER:$1|hat}} die Begutachtung von \"$2\" beendet. Bitte überprüfen Sie die Abstimmungsergebnisse."
 }

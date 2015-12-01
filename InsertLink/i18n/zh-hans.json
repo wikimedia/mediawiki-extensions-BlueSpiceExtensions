@@ -6,7 +6,9 @@
 		]
 	},
 	"bs-insertlink-desc": "输入连接的对话框",
+	"prefs-insertlink": "插入链接",
 	"bs-insertlink": "插入链接",
+	"bs-insertlink-pref-enable-java": "启用Java小程序",
 	"bs-insertlink-button-title": "插入或编辑链接",
 	"bs-insertlink-dialog-title": "插入链接",
 	"bs-insertlink-tab-wiki-page": "维基页面",
