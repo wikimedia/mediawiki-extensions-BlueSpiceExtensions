@@ -1,27 +1,28 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gorizon"
+			"Gorizon",
+			"Mirzali"
 		]
 	},
 	"bs-visualeditor-desc": "Qande MediaWiki Visual Vırnoğ",
 	"prefs-visualeditor": "Visual vurnoğ",
 	"bs-visualeditor-editbutton-hint": "Visual vurnoğ",
-	"bs-visualeditor-pref-disablens": "Canamede bıasne:",
-	"bs-visualeditor-pref-use": "WYSIWYG vurnoğ de hesobyaye karıne",
-	"bs-visualeditor-no-summary": "Xulasa çınyo",
-	"bs-visualeditor-sortable": "Kılmbar",
+	"bs-visualeditor-pref-disablens": "Canameyan de memocne:",
+	"bs-visualeditor-pref-use": "Xeta de weşankarê WYSIWYGyi bıgurene",
+	"bs-visualeditor-no-summary": "Xulasa çıniya",
+	"bs-visualeditor-sortable": "Rêzebiyaye",
 	"bs-visualeditor-wikitable": "Standard",
 	"bs-visualeditor-contenttable": "Zerrek",
 	"bs-visualeditor-contenttable-black": "Zerrek (siya)",
-	"bs-visualeditor-contenttable-blue": "Zerrek (mawi)",
-	"bs-visualeditor-contenttable-darkblue": "Zerrek (çığmawi)",
-	"bs-visualeditor-cuscosky": "Mawiye azmin",
-	"bs-visualeditor-casablanca": "Casablanca",
-	"bs-visualeditor-greyscale": "Gri skala",
-	"bs-visualeditor-greyscale-narrow": "Gri skala (teng)",
+	"bs-visualeditor-contenttable-blue": "Zerrek (kewe)",
+	"bs-visualeditor-contenttable-darkblue": "Zerrek (keweyo tari)",
+	"bs-visualeditor-cuscosky": "Keweyê Asmêni",
+	"bs-visualeditor-casablanca": "Kazablanka",
+	"bs-visualeditor-greyscale": "Dereceyo gewr",
+	"bs-visualeditor-greyscale-narrow": "Dereceyo gewr (teng)",
 	"bs-visualeditor-aligntop": "Ser",
-	"bs-visualeditor-alignmiddle": "Werte",
+	"bs-visualeditor-alignmiddle": "Miyan",
 	"bs-visualeditor-alignbottom": "Bın",
 	"bs-visualeditor-bsactions-wiki": "Wikimetın"
 }
