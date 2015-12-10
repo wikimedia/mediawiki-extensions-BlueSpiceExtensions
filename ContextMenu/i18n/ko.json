@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Hwangjy9",
-			"Yearning"
+			"Yearning",
+			"Revi"
 		]
 	},
 	"bs-contextmenu-page-edit": "문서 편집",
 	"bs-contextmenu-page-delete": "문서 삭제",
-	"bs-contextmenu-page-move": "문서 옮기기",
+	"bs-contextmenu-page-move": "문서 이동",
 	"bs-contextmenu-page-history": "문서 역사 보기",
 	"bs-contextmenu-page-protect": "문서 보호",
 	"bs-contextmenu-page-purge": "캐시를 갱신하고 문서 보기",

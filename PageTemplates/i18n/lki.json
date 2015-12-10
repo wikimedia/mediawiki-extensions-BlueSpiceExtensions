@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lakzon"
+		]
+	},
+	"bs-pagetemplates-tpl-desc-toolong": "این توضیح خیلی طولانی است. لطفاً از حداکثر طول ۲۵۵ نویسه استفاده کنید.",
+	"bs-pagetemplates-tpl-label-empty": "لطفاً یک پیشوند وارد کنید.",
+	"bs-pagetemplates-headerlabel": "برچسب",
+	"bs-pagetemplates-label-desc": "توضیحةل"
+}
