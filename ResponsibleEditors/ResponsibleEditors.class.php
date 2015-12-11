@@ -296,7 +296,7 @@ class ResponsibleEditors extends BsExtensionMW {
 					continue;
 				}
 
-				$oTitle = Title::newFromURL( $vVal );
+				$oTitle = Title::newFromText( $vVal );
 				break;
 			}
 		}
