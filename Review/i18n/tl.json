@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stranger195"
+			"Stranger195",
+			"Leeheonjin"
 		]
 	},
 	"bs-review-mail-accept-header": "{{GENDER:$2|Pinayagan}} ni $1 ang $3",
@@ -14,5 +15,16 @@
 	"bs-review-mail-finish-body": "Ang tagagamit na si $1 ay {{GENDER:$2|nagreak}} sa iyong review sa \"$3\" at {{GENDER:$2|pumayag}} sa pagbabago. Tapos na ang review.",
 	"bs-review-mail-finish-and-review-header": "$1 Tapos na ang review",
 	"bs-review-mail-finish-and-review-body": "Ang tagagamit na si $1 ay {{GENDER:$2|nagreak}} sa iyong review sa \"$3\" at {{GENDER:$2|pumayag}} sa pagbabago. Tapos na ang review at namarkahan nang istable.",
-	"echo-category-title-bs-review-complete-cat": "Notipikasyon sa pagkumpleto ng isang review"
+	"echo-category-title-bs-review-complete-cat": "Notipikasyon sa pagkumpleto ng isang review",
+	"echo-category-title-bs-review-assignment-cat": "Repaso - Mga takda",
+	"echo-category-title-bs-review-action-cat": "Repaso - Mga kilos/aksyon",
+	"notification-bs-review-payload-comment": "Komentaryo: \"$1\"",
+	"notification-bs-review-assign-summary": "{{GENDER:$1|Inanyayahan}} ka ni [[User:$1|$1]] na repasuhin ang $3",
+	"notification-bs-review-assign-subject": "Mangyaring repasuhin (''review'') ang pahinang \"$2\"",
+	"notification-bs-review-accept-subject": "{{GENDER:$1|Tinanggap na}} ni $1 ang \"$2\"",
+	"notification-bs-review-deny-summary": "{{GENDER:$1|Tinanggihan}} ni [[User:$1|$1]] ang nilalaman ng $3",
+	"notification-bs-review-deny-and-restart-summary": "{{GENDER:$1|Tinanggihan}} ni [[User:$1|$1]] ang nilalaman ng $3 at kusang sinimulang muli ang prosesong pagrerepaso",
+	"notification-bs-review-deny-and-restart-subject": "{{GENDER:$1|Tinanggihan}} ni $1 ang \"$2\"",
+	"notification-bs-review-finish-summary": "{{GENDER:$1|Natapos na ni [[User:$1|$1]] ang prosesong pagrerepaso ng $3",
+	"notification-bs-review-finish-subject": "{{GENDER:$1|Natapos na}} ni $1 ang pag-repaso ng \"$2\""
 }
