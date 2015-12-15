@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Huji"
 		]
 	},
-	"bs-securefilestore-desc": "از دسترسی غیرمجاز به پرونده‌ها جلوگیری می‌کند",
+	"bs-securefilestore-desc": "از دسترسی غیرمجاز به پرونده‌ها و تصاویر جلوگیری می‌کند",
 	"prefs-securefilestore": "محفوظ نگه‌داشتن ذخیره پرونده",
 	"bs-securefilestore-pref-defaultdisposition": "نمایش پرونده‌ها به طور پیش‌فرض:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "مرورگر",

@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Ebraminio"
+			"Ebraminio",
+			"Huji"
 		]
 	},
-	"bs-permissionmanager-desc": "رابط مدیریت برای اداره دسترسی‌ها",
+	"bs-permissionmanager-desc": "رابط مدیریتی برای ویرایش اختیارات کاربران",
 	"prefs-permissionmanager": "مدیر دسترسی",
 	"bs-permissionmanager-label": "مدیر دسترسی",
 	"bs-permissionmanager-grouping-global": "دسترسی‌های مستقل فضای نام",

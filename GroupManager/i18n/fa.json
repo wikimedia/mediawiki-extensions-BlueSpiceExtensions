@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Huji"
 		]
 	},
-	"bs-groupmanager-desc": "رابط مدیریت برای اداره گروه‌ها",
+	"bs-groupmanager-desc": "رابط مدیریتی برای افزودن، ویرایش و حذف گروه‌های کاربری و اختیارات آنها",
 	"bs-groupmanager-grpexists": "گروه پیش از این وجود دارد.",
 	"bs-groupmanager-grpadded": "گروه اضافه شد.",
 	"bs-groupmanager-grpedited": "گروه ویرایش شد.",

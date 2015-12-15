@@ -3,10 +3,11 @@
 		"authors": [
 			"Alirezaaa",
 			"Ebraminio",
-			"Reza1615"
+			"Reza1615",
+			"Huji"
 		]
 	},
-	"bs-readers-desc": "خوانندگان یک صفحه، و صفحاتی که توسط یک کاربر خوانده شده‌اند را نشان می‌دهد",
+	"bs-readers-desc": "فهرستی از کاربرانی که یک صفحه را خوانده‌اند می‌سازد",
 	"prefs-readers": "خوانندگان",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|خواننده}}|خوانندگان}}",
 	"readers-user": "صفحات {{GENDER:$1|خوانده‌شده}} توسط: $1",

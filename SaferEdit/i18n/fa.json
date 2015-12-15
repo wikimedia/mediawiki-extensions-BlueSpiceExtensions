@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Ebraminio"
+			"Ebraminio",
+			"Huji"
 		]
 	},
-	"bs-saferedit-desc": "ذخیره متوسط ویرایش‌ها",
+	"bs-saferedit-desc": "ذخیره بینابینی ویرایش‌ها در ویکی",
 	"prefs-saferedit": "ویرایش امن‌تر",
 	"bs-saferedit-restore": "بازیابی",
 	"bs-saferedit-safer-edit-tooltip": "یک نسخه بازیابی در دسترس است.",
