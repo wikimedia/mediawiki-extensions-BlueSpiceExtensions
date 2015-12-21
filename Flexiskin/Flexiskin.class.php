@@ -95,7 +95,7 @@ class Flexiskin extends BsExtensionMW {
 			if ( $bIsTemp ) {
 				$this->getRequest()->setSessionData( "sPreviewSkin", $sFlexiskin );
 				$sPreviewSkin = $sFlexiskin;
-			//or just unset it
+				//or just unset it
 			} else {
 				$this->getRequest()->setSessionData( "sPreviewSkin", NULL );
 				$sPreviewSkin = false;
@@ -139,10 +139,14 @@ class Flexiskin extends BsExtensionMW {
 
 		$sFilePath = BsFileSystemHelper::getDataPath("flexiskin/" . $sFlexiskinId);
 		$sFilePath .= "/screen" . ($bIsTemp ? '.' . $sPreviewTimestamp . '.tmp' : '') . ".less";
-		$sFilePath = str_replace($wgScriptPath, "..", $sFilePath);
+		if(defined('WIKI_FARMING')) {
+			$sFilePath = '../..' . $sFilePath;
+		} else {
+			$sFilePath = str_replace($wgScriptPath, "..", $sFilePath);
+		}
 
 		if ( !isset( $wgResourceModules['skins.bluespiceskin'] ) ||
-				!isset( $wgResourceModules['skins.bluespiceskin']['styles'] ) ) {
+			!isset( $wgResourceModules['skins.bluespiceskin']['styles'] ) ) {
 			return false;
 		}
 		foreach ( $wgResourceModules['skins.bluespiceskin']['styles'] as $iIndex => $sStylePath ) {
@@ -168,18 +172,18 @@ class Flexiskin extends BsExtensionMW {
 		}
 
 		$api = new ApiMain(
-				new DerivativeRequest(
+			new DerivativeRequest(
 				$this->getRequest(), array(
-			'action' => 'flexiskin',
-			'type' => 'get'
-				), false
-				), true
+				'action' => 'flexiskin',
+				'type' => 'get'
+			), false
+			), true
 		);
 		$oResult = $api->execute();
 		$aData = $api->getResultData();
 		$aResult = array( 'options' => array(
-				wfMessage( 'bs-flexiskin-defaultname' )->plain() => 'default',
-			) );
+			wfMessage( 'bs-flexiskin-defaultname' )->plain() => 'default',
+		) );
 		if ( isset( $aData['flexiskin'] ) && count( $aData['flexiskin'] ) > 0 ) {
 			foreach ( $aData['flexiskin'] as $aConf ) {
 				$aResult['options'][$aConf['flexiskin_name']] = $aConf['flexiskin_id'];
@@ -219,10 +223,15 @@ class Flexiskin extends BsExtensionMW {
 	public static function generateScreenFile($bIsTmp = false){
 		$sPreviewTimestamp = RequestContext::getMain()->getRequest()->getSessionData( 'PreviewTimestamp' );
 		$aScreenFile = array();
-		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/variables.less';";
+		if(defined('WIKI_FARMING')) {
+			$sPathPrefix = '../../../../..';
+		} else {
+			$sPathPrefix = '../../../..';
+		}
+		$aScreenFile[] = "@import '{$sPathPrefix}/skins/BlueSpiceSkin/resources/variables.less';";
 		$aScreenFile[] = "@import 'variables.".($bIsTmp ? $sPreviewTimestamp . ".tmp." : "")."less';";
-		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/screen.layout.less';";
-		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/components.less';";
+		$aScreenFile[] = "@import '{$sPathPrefix}/skins/BlueSpiceSkin/resources/screen.layout.less';";
+		$aScreenFile[] = "@import '{$sPathPrefix}/skins/BlueSpiceSkin/resources/components.less';";
 		return implode("\n", $aScreenFile);
 	}
 
@@ -231,7 +240,12 @@ class Flexiskin extends BsExtensionMW {
 		if ( !is_array( $aConfigs ) ) {
 			$aConfigs = FormatJson::decode( $aConfigs );
 		}
-		$aFile[] = '@bs-skin-path: "../../../../skins/BlueSpiceSkin/resources/";';
+		if(defined('WIKI_FARMING')) {
+			$sPathPrefix = '../../../../..';
+		} else {
+			$sPathPrefix = '../../../..';
+		}
+		$aFile[] = '@bs-skin-path: "' . $sPathPrefix . '/skins/BlueSpiceSkin/resources/";';
 		$sNewId = self::getFlexiskinIdFromConfig($aConfigs);
 		foreach ( $aConfigs as $aConfig ) {
 			$func = "FlexiskinFormatter::format_" . $aConfig->id;
@@ -246,7 +260,7 @@ class Flexiskin extends BsExtensionMW {
 		}
 		return implode( " \n", $aFile );
 	}
-	
+
 	public static function getFlexiskinIdFromConfig($aConfig){
 		if (is_array($aConfig) && isset($aConfig[0]) && isset($aConfig[0]->name)){
 			$sName = str_replace(" ", "_", strtolower($aConfig[0]->name));
@@ -271,18 +285,18 @@ class Flexiskin extends BsExtensionMW {
 			if ( $sId != "default" ) {
 				$bPreview = $sktemplate->getRequest()->getVal( 'preview', false );
 				$api = new ApiMain(
-						new DerivativeRequest(
-							$sktemplate->getRequest(),
-							array(
-								'action' => 'flexiskin',
-								'type' => 'get',
-								'mode' => 'config',
-								'id' => $sId,
-								'preview' => $bPreview
-							),
-							false
+					new DerivativeRequest(
+						$sktemplate->getRequest(),
+						array(
+							'action' => 'flexiskin',
+							'type' => 'get',
+							'mode' => 'config',
+							'id' => $sId,
+							'preview' => $bPreview
 						),
-						true
+						false
+					),
+					true
 				);
 				$api->execute();
 				$aResult = $api->getResultData();
