@@ -1,0 +1,12 @@
+{
+    "name": "hallowelt/bluespice-extensions",
+    "description": "This package consists of a number of separate MediaWiki extensions that depend on hallowelt/bluespice-foundation",
+    "authors": [
+        {
+            "name": "Hallo Welt! Medienwerkstatt GmbH",
+            "email": "info@hallowelt.com",
+            "homepage": "http://www.hallowelt.com"
+        }
+    ],
+    "require": {}
+}
