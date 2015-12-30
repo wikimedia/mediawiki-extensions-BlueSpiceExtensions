@@ -7,6 +7,7 @@
 	},
 	"bs-review-desc": "ワークフロー機能をページに追加する",
 	"bs-review-review-error": "不明なエラーが発生しました。",
+	"bs-review-review-saved": "あなたの投票は保存されました",
 	"bs-review-comments": "コメント",
 	"bs-review-btnmoveup": "上に移動",
 	"bs-review-btnmovedown": "下に移動",
