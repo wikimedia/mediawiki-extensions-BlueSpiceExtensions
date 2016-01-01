@@ -48,7 +48,7 @@
 	"bs-insertfile-allowedfiletypesare": "有效的文件类型有：",
 	"bs-insertfile-error": "错误",
 	"bs-insertfile-errornofileextensiononupload": "您选择的文件没有扩展名。",
-	"bs-insertfile-errornofileextensionondestination": "您选择的目标名称没有扩展名。",
+	"bs-insertfile-errornofileextensionondestination": "您选择的目标名称没有文件扩展名。",
 	"bs-insertfile-errorWrongFileExtensionOnUpload": "您选择的文件没有有效扩展名。",
 	"bs-insertfile-errorWrongImageTypeOnUpload": "您选择的文件不是允许的图像格式。",
 	"bs-insertfile-errorWrongFileTypeOnUpload": "您选择的文件不是允许的文件格式。",
