@@ -334,8 +334,7 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return false|\ViewStateBarTopElementCategoryShortList
 	 */
 	private function makeStateBarTopCategories( $oTitle ) {
-		global $wgOut, $wgUser;
-		$aCurrentPagesCategories = $wgOut->getCategoryLinks();
+		$aCurrentPagesCategories = $this->getOutput()->getCategoryLinks();
 		if( empty( $aCurrentPagesCategories ) ) return false;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -356,7 +355,7 @@ class ArticleInfo extends BsExtensionMW {
 			$iLoopCount++;
 		}
 
-		if ( $wgUser->getBoolOption( 'showhiddencats' ) ) {
+		if ( $this->getUser()->getBoolOption( 'showhiddencats' ) ) {
 			foreach ( $aCurrentPagesCategories['hidden'] as $iKey => $sValue ) {
 				if( $iLoopCount < 3 ) $oCategoriesLinks->addCategory( $sValue );
 				$aAllCategoriesWithUrls[] = $sValue; //But all for the body element
@@ -386,7 +385,6 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return false|\ViewStateBarBodyElement
 	 */
 	private function makeStateBarBodyCategories( $oTitle ) {
-		global $wgUser;
 		$aCurrentPagesCategories = $oTitle->getParentCategories();
 		if ( empty( $aCurrentPagesCategories ) ) return false;
 
@@ -430,7 +428,7 @@ class ArticleInfo extends BsExtensionMW {
 			$sCategories = '<ul>' . $sAllCategoriesWithUrls . '</ul>';
 		}
 
-		if ( $wgUser->getBoolOption( 'showhiddencats' ) ) {
+		if ( $this->getUser()->getBoolOption( 'showhiddencats' ) ) {
 			if ( !empty( $sAllCategoriesWithUrls ) ) {
 				$sCategories .= '<h4>' . wfMessage( 'bs-articleinfo-hiddencats' )->plain() . '</h4>'.
 								'<ul>' . $sAllCategoriesWithUrls . '</ul>';
@@ -505,12 +503,10 @@ class ArticleInfo extends BsExtensionMW {
 
 	/**
 	 *
-	 * @global User $wgUser
 	 * @param Title $oTitle
 	 * @return false|\ViewStateBarBodyElement
 	 */
 	private function makeStateBarBodySubPages( $oTitle ) {
-		global $wgUser;
 		if ( $oTitle->hasSubpages() == false ) return false;
 
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -530,7 +526,7 @@ class ArticleInfo extends BsExtensionMW {
 			$oList->setTemplate( '<li style="{STYLE}">&rarr; {LINK}</li>' );
 
 			foreach ( $aSubpages as $oTitle ) {
-				$sLink = $wgUser->getSkin()->link( $oTitle, $oTitle->getSubpageText() );
+				$sLink = $this->getSkin()->link( $oTitle, $oTitle->getSubpageText() );
 				$sStyle = 'margin-left:'.( count( explode( '/', $oTitle->getText() ) ) - 1 ).'em';
 				$oList->addData( array( 'LINK' => $sLink, 'STYLE' => $sStyle ) );
 			}

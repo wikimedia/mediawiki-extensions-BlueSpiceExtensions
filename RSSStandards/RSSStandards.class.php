@@ -384,7 +384,7 @@ class RSSStandards extends BsExtensionMW {
 		$wgOut->setPageTitle( wfMessage( 'bs-rssstandards-watchlist' )->plain() );
 
 		$sub  = wfMessage( 'watchlistfor', $user->getName() )->parse();
-		$sub .= '<br />' . WatchlistEditor::buildTools( $user->getSkin() );
+		$sub .= '<br />' . WatchlistEditor::buildTools( $this->getSkin() );
 		$wgOut->setSubtitle( $sub );
 
 		if( ( $mode = WatchlistEditor::getMode( $wgRequest, $par ) ) !== false ) {
