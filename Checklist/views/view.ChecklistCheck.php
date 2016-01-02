@@ -47,11 +47,10 @@ class ViewCountCharacters extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $params = false ) {
-		global $wgUser;
 		$aOut = array();
 		$aOut[] = '<div class="bs-countcharacters" title="'.$this->oTitle->getText().'">';
 		$aOut[] = '  <table class="wikitable">';
-		$aOut[] = '    <tr><th colspan="2">'.$wgUser->getSkin()->link( $this->oTitle ).'</th></tr>';
+		$aOut[] = '    <tr><th colspan="2">'.Linker::link( $this->oTitle ).'</th></tr>';
 		if( $this->iChars != -1 )
 			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-countchars-chars-label' )->plain().'</th><td>'.$this->iChars.'</td></tr>';
 		if( $this->iWords != -1 )
