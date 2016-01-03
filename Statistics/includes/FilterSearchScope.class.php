@@ -28,7 +28,7 @@ class BsFilterSearchScope extends BsSelectFilter {
 	public function __construct( $oDiagram, $aDefaultValues ) {
 		parent::__construct( $oDiagram, $aDefaultValues );
 
-		$this->sLabel = wfMsg( 'bs-statistics-filter-searchscope' );
+		$this->sLabel = wfMessage( 'bs-statistics-filter-searchscope' )->text();
 		$this->aAvailableValues = array( 'title', 'text', 'files', 'all' );
 		$this->aDefaultValues = array( 'all' );
 	}

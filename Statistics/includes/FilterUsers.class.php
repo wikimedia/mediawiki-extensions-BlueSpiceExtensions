@@ -28,7 +28,7 @@ class BsFilterUsers extends BsMultiSelectFilter {
 	public function __construct( $oDiagram, $aDefaultValues = null ) {
 		parent::__construct( $oDiagram, $aDefaultValues );
 
-		$this->sLabel = wfMsg( 'bs-statistics-filter-user' );
+		$this->sLabel = wfMessage( 'bs-statistics-filter-user' )->text();
 		$this->aAvailableValues = $this->loadAvailableValues();
 		$this->aDefaultValues = BsConfig::get( 'MW::Statistics::ExcludeUsers' );
 	}

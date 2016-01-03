@@ -118,7 +118,7 @@ class ArticleInfo extends BsExtensionMW {
 		$aSortTopVars['statebartopsubpages'] = wfMessage( 'bs-articleinfo-statebartopsubpages' )->plain();
 		//postponed
 		//HINT: http://84.16.252.165/otrs24/index.pl?Action=AgentTicketZoom;TicketID=3980;ArticleID=22500#22173
-		//$aSortTopVars['statebartoparticleviews']	= wfMsg( 'bs-articleinfo-statebartoparticleviews' );
+		//$aSortTopVars['statebartoparticleviews']	= wfMessage( 'bs-articleinfo-statebartoparticleviews' )->text();
 		return true;
 	}
 

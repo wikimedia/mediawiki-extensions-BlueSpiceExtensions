@@ -28,7 +28,7 @@ class BsFilterCategory extends BsMultiSelectFilter {
 	public function __construct( $oDiagram, $aDefaultValues = null ) {
 		parent::__construct( $oDiagram, $aDefaultValues );
 
-		$this->sLabel = wfMsg( 'bs-statistics-filter-category' );
+		$this->sLabel = wfMessage( 'bs-statistics-filter-category' )->text();
 		$this->aAvailableValues = $this->loadAvailableValues();
 		$this->aDefaultValues = array();
 	}
@@ -67,7 +67,7 @@ class BsFilterCategory extends BsMultiSelectFilter {
 	public function loadAvailableValues() {
 		$aCategories = array();
 		// TODO MRG (20.02.11 23:51): i18n geht noch nicht so recht
-		$aCategories[wfMsg( 'bs-ns_all' )] = '(all)';
+		$aCategories[wfMessage( 'bs-ns_all' )->text()] = '(all)';
 		// TODO MRG (22.12.10 01:19): Greift auf MW zu
 		$oDbr = wfGetDB( DB_SLAVE );
 		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );

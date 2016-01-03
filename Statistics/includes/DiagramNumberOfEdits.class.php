@@ -26,10 +26,10 @@ class BsDiagramNumberOfEdits extends BsDiagram {
 	public function __construct() {
 		parent::__construct();
 
-		$this->sTitle = wfMsg( 'bs-statistics-diag-number-of-edits');
-		$this->sDescription = wfMsg( 'bs-statistics-diag-number-of-edits-desc');
-		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
-		$this->sTitley = wfMsg( 'bs-statistics-label-count');
+		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-edits')->text();
+		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-edits-desc')->text();
+		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
+		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M y";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
@@ -52,7 +52,7 @@ class BsDiagramNumberOfEdits extends BsDiagram {
 								)
 								AND NOT rev_user_text IN (@BsFilterUsers)
 								AND @BsFilterCategory";
-		//$this->sListLabel = array(wfMsg( 'label-article'), wfMsg( 'label-creator'));
+		//$this->sListLabel = array(wfMessage( 'label-article')->text(), wfMessage( 'label-creator')->text());
 		$this->sMode = BsDiagram::MODE_ABSOLUTE;
 
 		$this->addFilter( new BsFilterNamespace( $this, array( 0 ) ) );

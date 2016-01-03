@@ -370,7 +370,7 @@ class Statistics extends BsExtensionMW {
 			return json_encode($aResult);
 		}
 
-		//$aCategories[wfMsg( 'bs-ns_all' )] = '(all)';
+		//$aCategories[wfMessage( 'bs-ns_all' )->text()] = '(all)';
 		$oDbr = wfGetDB( DB_SLAVE );
 		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );
 		while ( $oRow = $rRes->fetchObject() ) {

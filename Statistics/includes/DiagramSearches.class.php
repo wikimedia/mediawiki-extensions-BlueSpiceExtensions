@@ -26,10 +26,10 @@ class BsDiagramSearches extends BsDiagram {
 	public function __construct() {
 		parent::__construct();
 
-		$this->sTitle = wfMsg( 'bs-statistics-diag-search-queries');
-		$this->sDescription = wfMsg( 'bs-statistics-diag-search-queries-desc');
-		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
-		$this->sTitley = wfMsg( 'bs-statistics-label-count');
+		$this->sTitle = wfMessage( 'bs-statistics-diag-search-queries')->text();
+		$this->sDescription = wfMessage( 'bs-statistics-diag-search-queries-desc')->text();
+		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
+		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M y";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
@@ -38,7 +38,7 @@ class BsDiagramSearches extends BsDiagram {
 		$this->sSqlWhatForList = "stats_term, count(stats_term) as x, max(stats_hits)";
 		$this->sSqlFromWhere = "FROM #__bs_searchstats WHERE stats_ts @period AND @BsFilterSearchScope";
 		$this->sSqlOptionsForList = "GROUP BY stats_term";
-		$this->sListLabel = array( wfMsg( 'bs-statistics-label-searchterm' ), wfMsg( 'bs-statistics-label-count' ), wfMsg( 'bs-statistics-label-maxhits' ) );
+		$this->sListLabel = array( wfMessage( 'bs-statistics-label-searchterm' )->text(), wfMessage( 'bs-statistics-label-count' )->text(), wfMessage( 'bs-statistics-label-maxhits' )->text() );
 		$this->sMode = BsDiagram::MODE_AGGREGATED;
 
 		$this->addFilter( new BsFilterSearchScope( $this, array( "title" ) ) );
