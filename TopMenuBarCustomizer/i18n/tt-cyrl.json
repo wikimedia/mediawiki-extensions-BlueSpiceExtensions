@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ильнар"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Өске меню сылтамаларын көйләү",
+	"prefs-topmenubarcustomizer": "Меню көйләүче",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Өстәлгән катлар саны:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Төп кат өлешләре:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Өстәлмә кат өлешләре"
+}
