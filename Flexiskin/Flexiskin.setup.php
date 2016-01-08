@@ -2,14 +2,23 @@
 
 BsExtensionManager::registerExtension( 'Flexiskin', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE );
 
-$wgMessagesDirs['Flexiskin'] = __DIR__ . '/i18n';
+$GLOBALS['wgAutoloadClasses']['Flexiskin'] = __DIR__ . '/Flexiskin.class.php';
 
+$wgHooks['BeforePageDisplay'][] = "Flexiskin::onBeforePageDisplay";
+$wgHooks['ResourceLoaderRegisterModules'][] = "Flexiskin::onResourceLoaderRegisterModules";
+
+$wgMessagesDirs['Flexiskin'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['Flexiskin'] = __DIR__ . '/languages/Flexiskin.i18n.php';
 $wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/languages/Flexiskin.alias.php';
 
-$GLOBALS['wgAutoloadClasses']['Flexiskin'] = __DIR__ . '/Flexiskin.class.php';
+$wgAutoloadClasses['FlexiskinApi'] = __DIR__ . '/includes/FlexiskinApi.class.php';
+$wgAutoloadClasses['FlexiskinFormatter'] = __DIR__ . '/includes/FlexiskinFormatter.class.php';
+$wgAutoloadClasses['ResourceLoaderFlexiskinModule'] = __DIR__ . '/includes/resourceloader/ResourceLoaderFlexiskinModule.php';
+$wgAutoloadClasses['ResourceLoaderFlexiskinPreviewModule'] = __DIR__ . '/includes/resourceloader/ResourceLoaderFlexiskinPreviewModule.php';
 
-$wgHooks['SkinTemplateOutputPageBeforeExec'][] = "Flexiskin::onSkinTemplateOutputPageBeforeExec";
+$wgResourceModules['ext.bluespice.flexiskin.skin.preview'] =  array(
+	'class' => 'ResourceLoaderFlexiskinPreviewModule'
+);
 
 $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'scripts' => array(
@@ -55,9 +64,7 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$wgAutoloadClasses['FlexiskinApi'] = __DIR__ . '/includes/FlexiskinApi.class.php';
 $wgAPIModules['flexiskin'] = 'FlexiskinApi';
-$wgAutoloadClasses['FlexiskinFormatter'] = __DIR__ . '/includes/FlexiskinFormatter.class.php';
 
 $wgEditPageFrameOptions = "SAMEORIGIN";
 

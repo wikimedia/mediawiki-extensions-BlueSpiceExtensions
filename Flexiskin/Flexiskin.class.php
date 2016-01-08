@@ -52,8 +52,7 @@ class Flexiskin extends BsExtensionMW {
 			EXTINFO::VERSION => 'default',
 			EXTINFO::STATUS => 'default',
 			EXTINFO::PACKAGE => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/FlexiSkin',
-			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
+			EXTINFO::URL => 'https://help.bluespice.com/index.php/FlexiSkin'
 		);
 		$this->mExtensionKey = 'MW::Flexiskin';
 
@@ -67,94 +66,16 @@ class Flexiskin extends BsExtensionMW {
 	}
 
 	/**
-	 * Initialization of ArticleInfo extension
+	 * Initialization of Flexiskin extension
 	 */
 	public function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
+
 		BsConfig::registerVar( 'MW::Flexiskin::Active', "default", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-active', 'select' );
-		BsConfig::registerVar( 'MW::Flexiskin::Logo', "", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-logo', 'text' );
-
-		$sFlexiskin = $this->getRequest()->getVal( 'flexiskin', '' );
-		if( $this->getRequest()->getSessionData( "sPreviewSkin" ) !== NULL){
-			$sPreviewSkin = $this->getRequest()->getSessionData( "sPreviewSkin" );
-		} else {
-			$sPreviewSkin = FALSE;
-		}
-
-		$oResponse = $this->getRequest()->response();
-		$oRequest = $this->getRequest();
-		//this statemenet is just for setting the cookie, this is why we need to do some checks here
-		//check if the request comes via index.php, flexiskin is set in query and if you are in view mode (block some ajax requests)
-
-		$sPreview = false;
-		$sFlexiskin = $sFlexiskin == '' ? $sPreviewSkin : $sFlexiskin;
-		if ( strpos( wfGetScriptUrl(), "index.php" ) !== false && $sFlexiskin !== "" && $oRequest->getVal( 'action', 'view' ) === 'view' ) {
-			$bIsTemp = (bool) $oRequest->getBool( 'preview', false );
-			//is it in preview mode?
-			//set the session
-			if ( $bIsTemp ) {
-				$this->getRequest()->setSessionData( "sPreviewSkin", $sFlexiskin );
-				$sPreviewSkin = $sFlexiskin;
-			//or just unset it
-			} else {
-				$this->getRequest()->setSessionData( "sPreviewSkin", NULL );
-				$sPreviewSkin = false;
-			}
-		}
-		$sFlexiskin = $sFlexiskin == '' ? $sPreviewSkin : $sFlexiskin;
-		if ( $sFlexiskin != "" || BsConfig::get( 'MW::Flexiskin::Active' ) != '' || $sPreviewSkin ) {
-			$sId = $sFlexiskin != '' ? $sFlexiskin : BsConfig::get( 'MW::Flexiskin::Active' );
-			if ( $sId != "default" || $sPreviewSkin !== false ) {
-				$this->addCssFile( $sId, $sPreviewSkin !== false );
-				if ( $sPreviewSkin ) {
-					//reset resource loader cache for preview
-					global $wgResourceLoaderMaxage;
-					$wgResourceLoaderMaxage = array (
-						'versioned' => array ( 'server' => 1, 'client' => 1 ),
-						'unversioned' => array ( 'server' => 1, 'client' => 1 ),
-					);
-				}
-			}
-		}
+		BsConfig::registerVar( 'MW::Flexiskin::Logo', "", BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_STRING );
 		$this->mCore->registerPermission( 'flexiskinedit', array(), array( 'type' => 'global' ) );
-		wfProfileOut('BS::' . __METHOD__);
-	}
 
-	/**
-	 * Replaces the BlueSpiceSkin screen.less file with the one specified by the parameters
-	 * @global string $wgResourceModules
-	 * @param string $sFlexiskinId
-	 * @param int $bIsTemp
-	 * @return boolean true of replaced correctly, otherwise false
-	 */
-	public function addCssFile( $sFlexiskinId, $bIsTemp = false ) {
-		global $wgResourceModules;
-		global $wgScriptPath;
-
-		$sPreviewTimestamp = $this->getRequest()->getSessionData( 'PreviewTimestamp' );
-		$oStatus = BsFileSystemHelper::ensureDataDirectory( "flexiskin/" . $sFlexiskinId );
-		if ( !$oStatus->isGood() ) {
-			return false;
-		}
-
-		$sFilePath = BsFileSystemHelper::getDataPath("flexiskin/" . $sFlexiskinId);
-		$sFilePath .= "/screen" . ($bIsTemp ? '.' . $sPreviewTimestamp . '.tmp' : '') . ".less";
-		$sFilePath = str_replace($wgScriptPath, "..", $sFilePath);
-
-		if ( !isset( $wgResourceModules['skins.bluespiceskin'] ) ||
-				!isset( $wgResourceModules['skins.bluespiceskin']['styles'] ) ) {
-			return false;
-		}
-		foreach ( $wgResourceModules['skins.bluespiceskin']['styles'] as $iIndex => $sStylePath ) {
-			//check if element ends with "screen.less"
-			if ( strpos( $sStylePath, "screen.less", strlen( $sStylePath ) - strlen( "screen.less" ) ) === false ) {
-				continue;
-			}
-			$wgResourceModules['skins.bluespiceskin']['styles'][$iIndex] = $sFilePath;
-
-			return true;
-		}
-		return false;
+		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
 	public function getForm() {
@@ -168,12 +89,15 @@ class Flexiskin extends BsExtensionMW {
 		}
 
 		$api = new ApiMain(
-				new DerivativeRequest(
-				$this->getRequest(), array(
-			'action' => 'flexiskin',
-			'type' => 'get'
-				), false
-				), true
+			new DerivativeRequest(
+				$this->getRequest(),
+				array(
+					'action' => 'flexiskin',
+					'type' => 'get'
+				),
+				false
+			),
+			true
 		);
 		$oResult = $api->execute();
 		$aData = $api->getResultData();
@@ -213,40 +137,9 @@ class Flexiskin extends BsExtensionMW {
 		if ( !$bReturn ) {
 			return array();
 		}
-		return FormatJson::encode($aConfig);
+		return FormatJson::encode( $aConfig, true );
 	}
 
-	public static function generateScreenFile($bIsTmp = false){
-		$sPreviewTimestamp = RequestContext::getMain()->getRequest()->getSessionData( 'PreviewTimestamp' );
-		$aScreenFile = array();
-		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/variables.less';";
-		$aScreenFile[] = "@import 'variables.".($bIsTmp ? $sPreviewTimestamp . ".tmp." : "")."less';";
-		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/screen.layout.less';";
-		$aScreenFile[] = "@import '../../../../skins/BlueSpiceSkin/resources/components.less';";
-		return implode("\n", $aScreenFile);
-	}
-
-	public static function generateStyleFile( $aConfigs ) {
-		$aFile = array();
-		if ( !is_array( $aConfigs ) ) {
-			$aConfigs = FormatJson::decode( $aConfigs );
-		}
-		$aFile[] = '@bs-skin-path: "../../../../skins/BlueSpiceSkin/resources/";';
-		$sNewId = self::getFlexiskinIdFromConfig($aConfigs);
-		foreach ( $aConfigs as $aConfig ) {
-			$func = "FlexiskinFormatter::format_" . $aConfig->id;
-			$bReturn = wfRunHooks( "BSFlexiskinGenerateStyleFile", array( &$func, &$aConfig ) );
-
-			if ( $bReturn === true && is_callable( $func ) ) {
-				$aFile[] = call_user_func_array( $func, array( $aConfig, $sNewId) );
-			}
-			else{
-				wfDebug("BS::Flexiskin method " . $func . " could not be called.");
-			}
-		}
-		return implode( " \n", $aFile );
-	}
-	
 	public static function getFlexiskinIdFromConfig($aConfig){
 		if (is_array($aConfig) && isset($aConfig[0]) && isset($aConfig[0]->name)){
 			$sName = str_replace(" ", "_", strtolower($aConfig[0]->name));
@@ -259,49 +152,40 @@ class Flexiskin extends BsExtensionMW {
 	}
 
 	/**
-	 * Modifies the logo on runtime
-	 * @param SkinTemplate $sktemplate
-	 * @param BaseTemplate $tpl
-	 * @return boolean Always true to keep hook running
+	 *
+	 * @param OutputPage $out
+	 * @return boolean
 	 */
-	public static function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		$sFlexiskin = $sktemplate->getRequest()->getVal( 'flexiskin' );
-		if ( $sFlexiskin || BsConfig::get( 'MW::Flexiskin::Active' ) != '' ) {
-			$sId = $sFlexiskin != '' ? $sFlexiskin : BsConfig::get( 'MW::Flexiskin::Active' );
-			if ( $sId != "default" ) {
-				$bPreview = $sktemplate->getRequest()->getVal( 'preview', false );
-				$api = new ApiMain(
-						new DerivativeRequest(
-							$sktemplate->getRequest(),
-							array(
-								'action' => 'flexiskin',
-								'type' => 'get',
-								'mode' => 'config',
-								'id' => $sId,
-								'preview' => $bPreview
-							),
-							false
-						),
-						true
-				);
-				$api->execute();
-				$aResult = $api->getResultData();
-				$oResult = FormatJson::decode( $aResult['flexiskin'] );
-				if ($oResult->success === false){
-					return true;
-				}
-				$aConfig = FormatJson::decode($oResult->config);
-				$sLogo = BsConfig::get("MW::Flexiskin::Logo");
-				if ( $sLogo == "" ) {
-					return true;
-				}
-				$sPath = BS_DATA_PATH . "/flexiskin/" . $sId . "/images/";
-				$tpl->set( 'logopath', $sPath . $sLogo );
-				return true;
-			}
-			return true;
+	public static function onBeforePageDisplay( &$out ) {
+		$inPreviewMode = $out->getRequest()->getBool( 'preview' );
+
+		if( $inPreviewMode && $out->getRequest()->getVal( 'flexiskin' ) !== null ) {
+			$out->getRequest()->setSessionData( 'flexiskin', $out->getRequest()->getVal( 'flexiskin' ) );
+			$out->addModuleStyles( 'ext.bluespice.flexiskin.skin.preview' );
 		}
+		else {
+			$out->addModuleStyles( Flexiskin::generateDynamicModuleStyleName() );
+		}
+
 		return true;
 	}
 
+	/**
+	 *
+	 * @param ResourceLoader $resourceLoader
+	 * @return boolean
+	 */
+	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
+		$resourceLoader->register(
+			Flexiskin::generateDynamicModuleStyleName(),
+			array(
+				'class' => 'ResourceLoaderFlexiskinModule'
+			)
+		);
+		return true;
+	}
+
+	public static function generateDynamicModuleStyleName(){
+		return 'ext.bluespice.flexiskin.skin.' . BsConfig::get( 'MW::Flexiskin::Active' );
+	}
 }
