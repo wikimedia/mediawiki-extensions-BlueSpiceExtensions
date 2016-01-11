@@ -6,6 +6,13 @@
  * settings. You should copy 'BlueSpiceExtensions.default.php' as a
  * starting point
  */
+
+if ( file_exists( __DIR__ . '/vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php' ) ) {
+	require_once __DIR__ . '/vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php';
+} elseif ( file_exists( __DIR__ . '/../../vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php' ) ) {
+	require_once __DIR__ . '/../../vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php';
+}
+
 if ( file_exists( __DIR__ . '/BlueSpiceExtensions.local.php' ) ) {
 	require_once __DIR__ . '/BlueSpiceExtensions.local.php';
 } else {

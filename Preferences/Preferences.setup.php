@@ -11,13 +11,15 @@ $wgExtensionMessagesFiles['Preferences'] = __DIR__ . '/languages/Preferences.i18
 $wgHooks['BeforePageDisplay'][] = "BsPreferences::onBeforePageDisplay";
 
 $aResourceModuleTemplate = array(
-	'localBasePath' => 'extensions/BlueSpiceExtensions/Preferences/resources/',
-	'remoteExtPath' => 'BlueSpiceExtensions/Preferences/resources'
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'BlueSpiceExtensions/Preferences'
 );
 
 $wgResourceModules['ext.bluespice.preferences'] = array(
-	'scripts' => 'bluespice.preferences.js',
-	'dependencies' => array ( 'jquery.cookie' ),
-	) + $aResourceModuleTemplate;
+	'scripts' => 'resources/bluespice.preferences.js',
+	'dependencies' => array(
+		'jquery.cookie'
+	),
+) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

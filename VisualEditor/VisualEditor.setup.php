@@ -26,9 +26,6 @@ $wgResourceModules['ext.bluespice.visualEditor.tinymce'] = array(
 		'tinymce/tinymce.jquery.js',
 		'tinymce.startup.js'
 	),
-	'dependencies' => array(
-		'jquery'
-	),
 	'messages' => array(
 		'bs-visualeditor-bsactions-wiki',
 		'bs-visualeditor-bsactions-switchgui',

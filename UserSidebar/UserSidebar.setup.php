@@ -11,10 +11,10 @@ $wgExtensionMessagesFiles['UserSidebar'] = __DIR__ . '/languages/UserSidebar.i18
 $wgAutoloadClasses['ApiSidebar'] = __DIR__ . '/api/ApiSidebar.php';
 
 $aResourceModuleTemplate = array(
-	'localBasePath' => 'extensions/BlueSpiceExtensions/UserSidebar/resources/',
-	'remoteExtPath' => 'BlueSpiceExtensions/UserSidebar/resources'
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'BlueSpiceExtensions/UserSidebar'
 );
 
 $wgResourceModules['ext.bluespice.usersidebar'] = array(
-	'scripts'  => 'bluespice.userSidebar.js'
+	'scripts'  => 'resources/bluespice.userSidebar.js'
 ) + $aResourceModuleTemplate;
