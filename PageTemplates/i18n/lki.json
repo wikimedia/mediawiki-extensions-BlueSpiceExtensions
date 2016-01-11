@@ -26,7 +26,7 @@
 	"bs-pagetemplates-pref-excludens": "نشان ندادن الگوها در این فضاهای نام:",
 	"bs-pagetemplates-headerlabel": "برچسب",
 	"bs-pagetemplates-headertargetnamespace": "فضای نام",
-	"bs-pagetemplates-tipeditdetails": "دةسکاری الگو",
+	"bs-pagetemplates-tipeditdetails": "دەسکاری الگو",
 	"bs-pagetemplates-tipdeletetemplate": "حذف {{PLURAL:$1|الگو|الگوها}}",
 	"bs-pagetemplates-tipaddtemplate": "افزودن الگو",
 	"bs-pagetemplates-label-tpl": "نام الگو",
