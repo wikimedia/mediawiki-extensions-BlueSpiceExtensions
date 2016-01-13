@@ -3,14 +3,15 @@
 		"authors": [
 			"SPQRobin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-pagetemplates-desc": "Hiermee geeft u een lijst van sjablonen die gemarkeerd zijn als pagina-sjablonen",
-	"prefs-pagetemplates": "Paginasjabloon",
+	"prefs-pagetemplates": "Paginasjablonen",
 	"bs-pagetemplates-empty-page": "Lege pagina",
 	"bs-pagetemplates-empty-page-desc": "Beginnen met een lege pagina.",
-	"bs-pagetemplatesadmin-label": "Paginasjabloon",
+	"bs-pagetemplatesadmin-label": "Paginasjablonen",
 	"bs-pagetemplates-tpl-desc-toolong": "De beschrijving is te lang. Gebruik een maximale lengte van 255 tekens.",
 	"bs-pagetemplates-tpl-label-toolong": "Het label is te lang. Gebruik een maximale lengte van 255 tekens.",
 	"bs-pagetemplates-tpl-label-empty": "Voer een label in.",

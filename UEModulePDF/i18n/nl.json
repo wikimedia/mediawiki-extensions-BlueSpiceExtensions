@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-uemodulepdf-desc": "Laat MediaWiki te exporteren pagina ' s in PDF-formaat",
@@ -9,7 +10,7 @@
 	"uemodulepdf": "Universele exporteren van PDF-module",
 	"bs-uemodulepdf-pref-pdfserviceurl": "Backend URL:",
 	"bs-uemodulepdf-pref-templatepath": "Standaard template:",
-	"bs-uemodulepdf-pref-templatedir": "Template:",
+	"bs-uemodulepdf-pref-templatedir": "Sjabloonmap:",
 	"bs-uemodulepdf-pref-suppressns": "Verbergen namespace prefix in PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF van één pagina",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exporteer deze pagina als PDF.",

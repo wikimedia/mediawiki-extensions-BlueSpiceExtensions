@@ -3,11 +3,12 @@
 		"authors": [
 			"SPQRobin",
 			"Esketti",
-			"Siebrand"
+			"Siebrand",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-smartlist-desc": "Geeft de laatste vijf wijzigingen van de wiki in een lijst",
-	"prefs-smartlist": "Slimme list",
+	"prefs-smartlist": "Slimme lijst",
 	"bs-smartlist-recent-changes": "Recente wijzigingen",
 	"bs-smartlist-no-entries": "Geen resultaten gevonden.",
 	"bs-smartlist-invalid-namespaces": "De opgegeven {{PLURAL:$1|naamruimte is|naamruimten zijn}} ongeldig: $2.",

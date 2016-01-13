@@ -3,14 +3,15 @@
 		"authors": [
 			"SPQRobin",
 			"Esketti",
-			"Siebrand"
+			"Siebrand",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-checklist-desc": "Biedt checklistfunctionaliteit",
 	"bs-checklist-button-checkbox-title": "Checklistelementen",
 	"bs-checklist-menu-insert-list-title": "Lijst invoegen",
 	"bs-checklist-menu-insert-checkbox": "Selectievakje",
-	"bs-checklist-dlg-insert-list-title": "Plaats een checklist",
+	"bs-checklist-dlg-insert-list-title": "Een checklist invoegen",
 	"bs-checklist-dlg-insert-list-value-list": "Lijst met waarden",
 	"bs-checklist-tag-checklist-desc": "Maakt een selectievakje of selectieveld. Beschikbare eigenschappen:",
 	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> geeft selectielijst.",
