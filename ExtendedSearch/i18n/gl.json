@@ -67,7 +67,7 @@
 	"bs-extendedsearch-pref-solrpingtime": "Tempo de ping (en segundos):",
 	"bs-extendedsearch-pref-showcresuginac": "Mostrar as ligazóns «Crear» e «Suxerir» nas suxerencias",
 	"bs-extendedsearch-pref-solrserviceurl": "URL de Solr:",
-	"bs-extendedsearch-pref-setfocus": "Saltar automáticamente ó formulario de procuras (só páxinas de contido)",
+	"bs-extendedsearch-pref-setfocus": "Saltar automaticamente ó formulario de procuras (só páxinas de contido)",
 	"bs-extendedsearch-pref-numfacets": "Número de facetas:",
 	"bs-extendedsearch-pref-showmlt": "Mostrar páxinas similares",
 	"bs-extendedsearch-pref-solrcore": "Instancia principal de Solr:",
