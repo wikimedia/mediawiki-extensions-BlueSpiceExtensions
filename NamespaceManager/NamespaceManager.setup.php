@@ -7,8 +7,7 @@ $wgMessagesDirs['NamespaceManager'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['NamespaceManager'] = __DIR__ . '/languages/NamespaceManager.i18n.php';
 
 $wgResourceModules['ext.bluespice.namespaceManager'] = array(
-	'scripts' => 'extensions/BlueSpiceExtensions/NamespaceManager/resources/bluespice.namespaceManager.js',
-	'styles' => 'extensions/BlueSpiceExtensions/NamespaceManager/resources/bluespice.namespaceManager.namespaceManagerTreeview.css',
+	'scripts' => 'resources/bluespice.namespaceManager.js',
 	'dependencies' => 'ext.bluespice.extjs',
 	'messages' => array(
 		'bs-namespacemanager-tipadd',
@@ -25,8 +24,8 @@ $wgResourceModules['ext.bluespice.namespaceManager'] = array(
 		'bs-ns_main',
 		'bs-from-something'
 	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'BlueSpiceExtensions/NamespaceManager'
 );
 
 $GLOBALS['wgAutoloadClasses']['NamespaceManager'] = __DIR__ . '/NamespaceManager.class.php';

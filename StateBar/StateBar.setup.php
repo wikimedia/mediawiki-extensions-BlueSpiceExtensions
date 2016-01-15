@@ -10,17 +10,17 @@ $wgExtensionMessagesFiles['StateBar'] = __DIR__.'/languages/StateBar.i18n.php';
 $wgExtensionMessagesFiles['StateBarMagic'] = __DIR__ . '/languages/StateBar.i18n.magic.php';
 
 $aResourceModuleTemplate = array(
-	'localBasePath' => 'extensions/BlueSpiceExtensions/StateBar/resources/',
-	'remoteExtPath' => 'BlueSpiceExtensions/StateBar/resources'
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'BlueSpiceExtensions/StateBar'
 );
 
 $wgResourceModules['ext.bluespice.statebar.style'] = array(
-	'styles'  => 'bluespice.StateBar.css',
+	'styles'  => 'resources/bluespice.StateBar.css',
 	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.statebar'] = array(
-	'scripts' => 'bluespice.StateBar.js',
+	'scripts' => 'resources/bluespice.StateBar.js',
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;
 

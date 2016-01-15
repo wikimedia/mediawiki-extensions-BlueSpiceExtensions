@@ -35,7 +35,7 @@ td.mceToolbar {
 }
 
 .mceItemHiddenSpellWord {
-	background: url("tiny_mce/plugins/spellchecker/img/wline.gif") repeat-x bottom left;
+	/* background: url("tiny_mce/plugins/spellchecker/img/wline.gif") repeat-x bottom left;*/
 	cursor:default;
 }
 

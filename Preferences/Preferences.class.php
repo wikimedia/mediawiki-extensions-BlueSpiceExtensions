@@ -76,7 +76,7 @@ class BsPreferences extends BsExtensionMW {
 			throw new ReadOnlyError;
 		}
 
-		$this->getOutput()->addModuleScripts( 'ext.bluespice.preferences' );
+		$this->getOutput()->addModules( 'ext.bluespice.preferences' );
 		$this->getOutput()->addHTML( '<br />' );
 
 		$oRequest = $this->getRequest();

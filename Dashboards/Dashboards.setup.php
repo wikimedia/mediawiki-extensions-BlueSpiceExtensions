@@ -11,8 +11,6 @@ $GLOBALS['wgAutoloadClasses']['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['SpecialAdminDashboard'] = __DIR__.'/includes/specials/SpecialAdminDashboard.php';
 $wgAutoloadClasses['SpecialUserDashboard'] = __DIR__.'/includes/specials/SpecialUserDashboard.php';
-$wgAutoloadClasses['DashboardConfigRow'] = __DIR__.'/includes/DashboardConfigRow.php';
-$wgAutoloadClasses['DashboardConfigTable'] = __DIR__.'/includes/DashboardConfigTable.php';
 
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';
@@ -48,7 +46,7 @@ $wgResourceModules['ext.bluespice.dashboards.portletCatalog'] = array(
 		'bluespice.dashboards.css'
 	),
 	'dependencies' => array(
-		'ext.bluespice.extjs'
+		'ext.bluespice.extjs.BS.portal'
 	),
 	'messages' => array(
 		'bs-dashboards-addportlet',

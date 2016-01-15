@@ -21,7 +21,7 @@
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
  * @version    1.0.0
-
+ *
  * @package    Bluespice_Extensions
  * @subpackage RSSFeeder
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.

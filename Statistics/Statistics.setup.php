@@ -1,11 +1,11 @@
 <?php
 BsExtensionManager::registerExtension('Statistics', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['Statistcs'] = __DIR__ . '/Statistcs.class.php';
+$GLOBALS['wgAutoloadClasses']['Statistics'] = __DIR__ . '/Statistics.class.php';
 
-$wgMessagesDirs['Statistcs'] = __DIR__ . '/i18n';
+$wgMessagesDirs['Statistics'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['Statistcs'] = __DIR__ . '/languages/Statistics.i18n.php';
+$wgExtensionMessagesFiles['Statistics'] = __DIR__ . '/languages/Statistics.i18n.php';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__ . '/resources',
