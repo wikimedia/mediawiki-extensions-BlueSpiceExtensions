@@ -24,15 +24,15 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 			name: 'namespacename',
 			allowBlank: false
 		});
-		
+
 		this.items = [
 			this.tfNamespaceName
 		];
 		this.checkboxControls = {};
-		
+
 		//TODO: this is not nice since it introduces an dependency
 		var fieldDefs = mw.config.get('bsNamespaceManagerMetaFields');
-		
+
 		for( var i = 0; i < fieldDefs.length; i++ ) {
 			var fieldDef = fieldDefs[i];
 			if( fieldDef.type !== 'boolean' || fieldDef.name === 'editable' ) {
@@ -58,7 +58,7 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 	},
 	setData: function( obj ) {
 		this.currentData = obj;
-		
+
 		if(this.currentData.editable) {
 			this.tfNamespaceName.enable();
 		}

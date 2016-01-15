@@ -14,7 +14,7 @@ $this:
 
 'BSNamespaceManagerBeforeSetUsernamespaces':
 $this:
-&$bsSystemNamespaces:
+&$bsgSystemNamespaces:
 
 'NamespaceManager::editNamespace':
 &$aUserNamespaces[ $iNS ]:
@@ -24,14 +24,14 @@ $this:
 
 'BSNamespaceManagerBeforeSetUsernamespaces':
 $this:
-&$bsSystemNamespaces:
+&$bsgSystemNamespaces:
 
 'NamespaceManager::editNamespace':
 &$aUserNamespaces[ $iNS ]:
 
 'BSNamespaceManagerBeforeSetUsernamespaces':
  $this:
- &$bsSystemNamespaces:
+ &$bsgSystemNamespaces:
 
 'NamespaceManager::writeNamespaceConfiguration':
 &$sSaveContent:
