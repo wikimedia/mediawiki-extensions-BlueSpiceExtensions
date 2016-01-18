@@ -6,6 +6,8 @@
 	},
 	"bs-insertfile-labelfilter": "Литтар:",
 	"bs-insertfile-typenone": "хӀахӀа",
+	"bs-insertfile-uploadfileemptytext": "Харжа керла файл...",
+	"bs-insertfile-uploadsubmitvalue": "Файл чуяккхар",
 	"bs-insertfile-error": "ГӀалат",
 	"bs-insertfile-of": "чура"
 }
