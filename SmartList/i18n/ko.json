@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Revi"
 		]
 	},
+	"bs-smartlist-desc": "위키의 가장 최근 다섯 편집을 목록으로 표시",
+	"prefs-smartlist": "스마트리스트",
+	"bs-smartlist-recent-changes": "최근 바뀜",
+	"bs-smartlist-no-entries": "결과가 없습니다.",
 	"bs-smartlist-pref-sort": "정렬 기준:"
 }
