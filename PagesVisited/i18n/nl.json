@@ -4,12 +4,13 @@
 			"Arg",
 			"SPQRobin",
 			"Esketti",
-			"Siebrand"
+			"Siebrand",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-pagesvisited-desc": "Voegt een gepersonaliseerde lijst van de laatstbezochte pagina's",
 	"prefs-pagesvisited": "Bezochte pagina's",
-	"bs-pagesvisited-widget-title": "Pagina ' s bezocht",
+	"bs-pagesvisited-widget-title": "Pagina's bezocht",
 	"bs-pagesvisited-error-nsnotvalid": "Gegeven {{PLURAL:$1|namespace|naamruimten}} <code>$2</code> {{PLURAL:$1|is|zijn}} is niet geldig.",
 	"bs-pagesvisited-pref-widgetlimit": "Beperken van gegevens in:",
 	"bs-pagesvisited-pref-widgetns": "Naamruimten:",

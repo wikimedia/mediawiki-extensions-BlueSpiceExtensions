@@ -3,7 +3,8 @@
 		"authors": [
 			"SPQRobin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-permissionmanager-desc": "Administratie-interface voor het bewerken van gebruikersrechten",
@@ -21,7 +22,7 @@
 	"bs-permissionmanager-save-success": "Rechten opgeslagen.",
 	"bs-permissionmanager-labeltemplates": "Sjablonen",
 	"bs-permissionmanager-btn-template-editor": "Sjablonen bewerken",
-	"bs-permissionmanager-labeltpled": "Tekstverwerker voor sjablonen",
+	"bs-permissionmanager-labeltpled": "Sjabloonbewerker",
 	"bs-permissionmanager-labeltpled-desc": "Beschrijving",
 	"bs-permissionmanager-labeltpled-active": "Actief",
 	"bs-permissionmanager-labeltpled-add": "Nieuw",

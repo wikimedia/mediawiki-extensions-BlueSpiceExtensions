@@ -4,7 +4,9 @@
 			"SPQRobin",
 			"Siebrand",
 			"Robin0van0der0vliet",
-			"Esketti"
+			"Esketti",
+			"Robin van der Vliet",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-review-desc": "Voegt workflow functionaliteit om pagina ' s",
@@ -20,7 +22,7 @@
 	"bs-review-abstain": "Onthouden",
 	"bs-review-review-finished": "Deze pagina is gecontroleerd.",
 	"bs-review-reviewed-till": "Deze pagina wordt momenteel herzien van $1 om $2.",
-	"bs-review-reviewed-till-extra": "{{GENDER:$1|Gemaakt}} $2",
+	"bs-review-reviewed-till-extra": "{{GENDER:$1|Gemaakt}} door $2",
 	"bs-review-save-success": "De review is toegewezen.",
 	"bs-review-save-error": "Er is een fout opgetreden tijdens het opslaan.",
 	"bs-review-save-removed": "De review is verwijderd.",
@@ -74,7 +76,7 @@
 	"right-workflowedit": "maken en bewerken beoordelingen",
 	"right-workflowlist": "bekijk de lijst met beoordelingen",
 	"bs-review-btnmoveup": "Omhoog",
-	"bs-review-btnmovedown": "Omlaag verplaatsen",
+	"bs-review-btnmovedown": "Omlaag",
 	"bs-review-colstatus": "Status",
 	"bs-review-colreviewer": "Controleur",
 	"bs-review-colcomment": "Reactie",
@@ -87,7 +89,7 @@
 	"bs-review-header-assessors": "Assessoren",
 	"bs-review-header-accepted-text": "Staat",
 	"bs-review-header-startdate": "Starten",
-	"bs-review-header-enddate": "Eind",
+	"bs-review-header-enddate": "Beëindigen",
 	"bs-review-confirm-delete-step": "Wilt u echt te verwijderen van deze stap?",
 	"bs-review-confirm-delete-review": "Wilt u echt te verwijderen van deze review?",
 	"bs-review-error-insufficient-permissions": "U hebt niet de toestemming voor het uitvoeren van deze actie (\"$1\" nodig).",

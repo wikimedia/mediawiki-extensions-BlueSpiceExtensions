@@ -69,5 +69,5 @@
 	"bs-insertfile-no-link": "Geen koppeling",
 	"bs-insertfile-error-no-medialink": "Geen media-link geselecteerd.",
 	"bs-insertfile-error-no-imagelink": "Geen afbeelding link geselecteerd.",
-	"bs-insertfile-upload-waitmessage": "Uploaden in progress ..."
+	"bs-insertfile-upload-waitmessage": "Aan het uploaden ..."
 }
