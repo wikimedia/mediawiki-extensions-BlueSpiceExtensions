@@ -279,7 +279,7 @@ class ArticleInfo extends BsExtensionMW {
 		$sArticleHistoryPageLink = $oArticle->getTitle()->getLinkURL(
 			array(
 				'diff'   => 0,
-				'action' => 'historysubmit'
+				'oldid' => $iOldId
 			)
 		);
 
