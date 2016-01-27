@@ -28,6 +28,7 @@ return array(
 			'../common/stylesheets/geshi-php.css',
 			'../common/stylesheets/bluespice.css',
 			'../common/stylesheets/fonts.css',
+			'../common/stylesheets/mediawiki.action.history.diff.css',
 			//'../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',
 			'../common/fonts/DejaVuSans-Bold.ttf',
