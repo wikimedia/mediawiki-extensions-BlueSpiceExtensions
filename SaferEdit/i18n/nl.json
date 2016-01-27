@@ -12,7 +12,7 @@
 	"bs-saferedit-restore": "Terugplaatsen",
 	"bs-saferedit-safer-edit-tooltip": "Een recovery versie is beschikbaar.",
 	"bs-saferedit-safer-edit-topbar": "Herstel",
-	"bs-saferedit-user-editing": "$1 is {{GENDER:$1|bewerking}} van de pagina",
+	"bs-saferedit-user-editing": "$1 is de pagina {{GENDER:$1|aan het bewerken}}",
 	"bs-saferedit-someone-editing": "De pagina wordt bewerkt",
 	"bs-saferedit-pref-interval": "Recovery versie interval:",
 	"bs-saferedit-pref-shownameofeditinguser": "Naam van de huidige bewerker weergeven",

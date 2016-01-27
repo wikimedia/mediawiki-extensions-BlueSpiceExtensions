@@ -4,7 +4,8 @@
 			"SPQRobin",
 			"Sjoerddebruin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Edoderoo"
 		]
 	},
 	"bs-namespacemanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen naamruimten",
@@ -31,7 +32,7 @@
 	"bs-namespacemanager-willmove": "Zal verplaatst worden naar \"{{int:bs-ns_main}}\"",
 	"bs-namespacemanager-willmovesuffix": "Zal verplaatst worden naar \"{{int:bs-ns_main}} ' met het achtervoegsel \"$1\"",
 	"bs-namespacemanager-deletewarning": "Bent u zeker dat u wilt verwijderen deze naamruimte? Het verwijderen van een naamruimte kan niet ongedaan worden gemaakt.",
-	"bs-namespacemanager-pagepresent": "Pagina ' s in deze naamruimte:",
+	"bs-namespacemanager-pagepresent": "Pagina's in deze naamruimte:",
 	"bs-namespacemanager-deletens-movepages": "Deze pagina is verplaatst van de naamruimte \"$1\" naamruimte \"{{int:bs-ns_main}}\", omdat de naamruimte \"$1\" is verwijderd.",
 	"bs-namespacemanager-deletens-deletepages": "Deze pagina is verwijderd, omdat de naamruimte \"$1\" is verwijderd.",
 	"log-name-bs-namespace-manager": "Logboek naamruimtebeheer",

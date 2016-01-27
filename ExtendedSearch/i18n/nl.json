@@ -5,7 +5,8 @@
 			"Romaine",
 			"SPQRobin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Edoderoo"
 		]
 	},
 	"bs-extendedsearch-desc": "Op Apache Solr (http://lucene.apache.org/solr/) gebaseerde zoekplug-in om de zoekfuncties uit te breiden",
@@ -74,15 +75,15 @@
 	"bs-extendedsearch-pref-showmlt": "Toon gelijkwaardige pagina ' s",
 	"bs-extendedsearch-pref-solrcore": "Solr core exemplaar:",
 	"bs-extendedsearch-pref-mltns": "Naamruimten voor \"{{int:bs-extendedsearch-morelikethis}}\":",
-	"bs-extendedsearch-about-to-start": "Beginnen...",
+	"bs-extendedsearch-about-to-start": "Begonnen...",
 	"bs-extendedsearch-index-successfully-deleted": "De index is verwijderd.",
-	"bs-extendedsearch-create-index": "Re-create index",
+	"bs-extendedsearch-create-index": "Index opnieuw aanmaken",
 	"bs-extendedsearch-delete-index": "Index verwijderen",
 	"bs-extendedsearch-overwrite-index": "Index overschrijven",
 	"bs-extendedsearch-docs-in-index": "documenten geïndexeerd.",
 	"bs-extendedsearchadmin-label": "Zoekopties",
 	"bs-extendedsearch-status": "Status",
-	"bs-extendedsearch-index-error-deleting": "Fout tijdens het verwijderen van de index: $1",
+	"bs-extendedsearch-index-error-deleting": "Fout tijdens het verwijderen van index: $1",
 	"bs-extendedsearch-no-success-deleting": "Uitzondering gegooid tijdens het verwijderen van de index: $1",
 	"bs-extendedsearch-statistics": "Statistieken",
 	"bs-extendedsearch-indexinginprogress": "De index wordt gemaakt op het moment.",
