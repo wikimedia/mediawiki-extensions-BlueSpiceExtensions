@@ -195,11 +195,27 @@ class BsPDFServlet {
 	 * @return boolean Well, always true.
 	 */
 	protected function findFiles( &$oHtml ) {
+		global $wgServer, $wgThumbnailScriptPath, $wgUploadPath, $wgScriptPath;
+
+		$aForPreg = array(
+			$wgServer,
+			$wgThumbnailScriptPath . "?f=",
+			$wgUploadPath,
+			$wgScriptPath
+		);
+
 		//Find all images
 		$oImageElements = $oHtml->getElementsByTagName( 'img' );
 		foreach( $oImageElements as $oImageElement ) {
 			$sSrcUrl      = urldecode( $oImageElement->getAttribute( 'src' ) );
-			$sSrcFilename = basename( $sSrcUrl );
+
+			//Extracting the filename
+			foreach( $aForPreg as $sForPreg ) {
+				$sSrcUrl = preg_replace( "#" . preg_quote( $sForPreg ,"/") . "#", '', $sSrcUrl );
+				$sSrcUrl = preg_replace( '/(&.*)/','', $sSrcUrl );
+			};
+
+			$sSrcFilename = wfBaseName( $sSrcUrl );
 
 			$bIsThumb = UploadBase::isThumbName($sSrcFilename);
 			$sTmpFilename = $sSrcFilename;
