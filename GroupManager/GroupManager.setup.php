@@ -37,3 +37,5 @@ $wgAjaxExportList[] = 'GroupManager::removeGroups';
 $wgLogTypes[] = 'bs-group-manager';
 $wgFilterLogTypes['bs-group-manager'] = true;
 $wgLogActionsHandlers['bs-group-manager/*'] = 'LogFormatter';
+
+$bsgConfigFiles['GroupManager'] = BSCONFIGDIR . DS . 'gm-settings.php';
