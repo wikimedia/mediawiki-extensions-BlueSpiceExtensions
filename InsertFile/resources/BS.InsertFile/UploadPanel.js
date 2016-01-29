@@ -58,20 +58,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 			name: 'text'
 		});
 
-		this.storeLicenses = Ext.create( 'Ext.data.Store', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertFile::getLicenses'),
-				reader: {
-					type: 'json',
-					root: 'items',
-					idProperty: 'value'
-				}
-			},
-			extraParams: {
-				type: this.storeFileType
-			},
-			remoteSort: true,
+		this.storeLicenses = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-insertfile-license-store',
 			fields: ['text', 'value', 'indent'],
 			submitValue: false
 		});

@@ -68,5 +68,6 @@
 	"bs-insertfile-no-link": "Text for no link \n{{Identical|No link}}",
 	"bs-insertfile-error-no-medialink": "Text for no media link selected.",
 	"bs-insertfile-error-no-imagelink": "Text for no image link selected.",
-	"bs-insertfile-upload-waitmessage": "Text for upload in progress ..."
+	"bs-insertfile-upload-waitmessage": "Text for upload in progress ...",
+	"apihelp-bs-insertfile-license-store-description": "Describes the API endpoint that lists the licenses for the extension InserFile"
 }

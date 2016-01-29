@@ -8,8 +8,9 @@ $wgExtensionMessagesFiles['InsertFile'] = __DIR__ . '/languages/InsertFile.i18n.
 
 $GLOBALS['wgAutoloadClasses']['InsertFile'] = __DIR__ . '/InsertFile.class.php';
 $wgAutoloadClasses['JsonLicenses']          = __DIR__ . '/includes/JsonLicenses.php';
+$wgAutoloadClasses['BSApiInsertFileLicenseStore'] = __DIR__ . '/includes/api/BSApiInsertFileLicenseStore.php';
 
-$wgAjaxExportList[] = 'InsertFile::getLicenses';
+$wgAPIModules['bs-insertfile-license-store'] = 'BSApiInsertFileLicenseStore';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__ . '/resources',
