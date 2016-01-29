@@ -127,8 +127,7 @@ class PageTemplatesAdmin {
 				$tmp['targetnsid'] = $row->pt_target_namespace;
 				$oTitle = Title::newFromText( $row->pt_template_title, $row->pt_template_namespace );
 				$tmp['template']  = '<a href="'.$oTitle->getFullURL().'" target="_blank" '.($oTitle->exists()?'':'class="new"').'>'.$oTitle->getFullText().'</a>';
-				$tmp['templatename'] = $row->pt_template_title;
-				$tmp['templatens'] = $row->pt_template_namespace;
+				$tmp['templatename'] = $oTitle->getFullText();
 				$aData['templates'][] = $tmp;
 		}
 
@@ -142,7 +141,7 @@ class PageTemplatesAdmin {
 	 * Creates or changes a template
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public static function doEditTemplate( $iOldId, $sTemplateName, $sLabel, $sDesc, $iTargetNs, $iTemplateNs ) {
+	public static function doEditTemplate( $iOldId, $sTemplateName, $sLabel, $sDesc, $iTargetNs ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
 			return json_encode( array(
@@ -188,6 +187,7 @@ class PageTemplatesAdmin {
 
 		$oDbw = wfGetDB( DB_MASTER );
 
+		$oTitle = Title::newFromText( $sTemplateName );
 		// This is the add template part
 		if ( empty( $iOldId ) ) {
 			if ( $aAnswer['success'] === true ) {
@@ -197,7 +197,7 @@ class PageTemplatesAdmin {
 						'pt_label' => $sLabel,
 						'pt_desc' => $sDesc,
 						'pt_template_title' => $sTemplateName,
-						'pt_template_namespace' => $iTemplateNs,
+						'pt_template_namespace' => $oTitle->getNamespace(),
 						'pt_target_namespace' => $iTargetNs,
 						'pt_sid' => 0,
 					));
@@ -219,7 +219,7 @@ class PageTemplatesAdmin {
 							'pt_label' => $sLabel,
 							'pt_desc' => $sDesc,
 							'pt_template_title' => $sTemplateName,
-							'pt_template_namespace' => $iTemplateNs,
+							'pt_template_namespace' => $oTitle->getNamespace(),
 							'pt_target_namespace' => $iTargetNs
 							),
 						array( 'pt_id' => $iOldId )

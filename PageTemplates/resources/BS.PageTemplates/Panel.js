@@ -28,7 +28,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			},
 			autoLoad: true,
 			remoteSort: true,
-			fields: [ 'id', 'label', 'desc', 'targetns', 'targetnsid', 'template', 'templatename', 'templatens' ],
+			fields: [ 'id', 'label', 'desc', 'targetns', 'targetnsid', 'template', 'templatename' ],
 			sortInfo: {
 				field: 'id',
 				direction: 'ASC'
@@ -134,8 +134,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 					template.template,
 					template.label,
 					template.desc,
-					template.targetns,
-					template.templatens
+					template.targetns
 				]
 			),
 			method: 'post',
@@ -168,8 +167,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 					template.template,
 					template.label,
 					template.desc,
-					template.targetns,
-					template.templatens
+					template.targetns
 				]
 			),
 			method: 'post',
