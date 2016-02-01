@@ -27,5 +27,6 @@
 	"bs-formattinghelp-help-extlink": "Label for external link\n{{Identical|External link}}",
 	"bs-formattinghelp-help-hr": "Label for horizontal line\n{{Identical|Horizontal line}}",
 	"bs-formattinghelp-help-template": "Label for template\n{{Identical|Template}}",
-	"bs-formattinghelp-help-templatename": "Text for template name\n{{Identical|Template name}}"
+	"bs-formattinghelp-help-templatename": "Text for template name\n{{Identical|Template name}}",
+	"apihelp-bs-formattinghelp-description": "Describes the API endpoint that provides tasks for the FormattingHelp extension"
 }

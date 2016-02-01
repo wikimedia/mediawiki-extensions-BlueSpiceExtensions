@@ -7,6 +7,9 @@ $wgMessagesDirs['FormattingHelp'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['FormattingHelp'] = __DIR__ . '/languages/FormattingHelp.i18n.php';
 
+$wgAutoloadClasses['BSApiTasksFormattingHelp'] = __DIR__ . '/includes/api/BSApiTasksFormattingHelp.php';
+$wgAPIModules['bs-formattinghelp'] = 'BSApiTasksFormattingHelp';
+
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/FormattingHelp/resources'
@@ -27,5 +30,4 @@ $wgResourceModules['ext.bluespice.formattinghelp.styles'] = array(
 ) + $aResourceModuleTemplate;
 
 unset($aResourceModuleTemplate);
-
-$wgAjaxExportList[] = 'FormattingHelp::getFormattingHelp';
+unset( $sDir );
