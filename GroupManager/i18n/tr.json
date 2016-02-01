@@ -5,7 +5,7 @@
 		]
 	},
 	"bs-groupmanager-grpadded": "Grup eklendi.",
-	"bs-groupmanager-invalid-name-length": "Grup adı 16 karakterden daha uzun olamaz.",
+	"bs-groupmanager-invalid-name-length": "Grup adı 255 karakterden daha uzun olamaz.",
 	"bs-groupmanager-headergroup": "Grup",
 	"bs-groupmanager-titlenewgroup": "Yeni grup",
 	"bs-groupmanager-removegroup-message-unknown": "Beklenmeyen bir hata oluştu, lütfen tekrar deneyin.",

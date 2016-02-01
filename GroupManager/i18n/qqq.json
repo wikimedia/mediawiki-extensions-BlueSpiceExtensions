@@ -13,7 +13,7 @@
 	"bs-groupmanager-grpremoved": "Success message that the group has been removed.",
 	"bs-groupmanager-label": "Used in sidebar, anchor text for group manager\n{{Identical|Group manager}}",
 	"bs-groupmanager-invalid-name": "Error message that the group name contains an invalid character or invalid characters\n*$1 is the number of invalid characetares\n*$2 are the invalid characters",
-	"bs-groupmanager-invalid-name-length": "Error message that the group name cannot be longer than 16 characters.",
+	"bs-groupmanager-invalid-name-length": "Error message that the group name cannot be longer than 255 characters.",
 	"bs-groupmanager-invalid-name-numeric": "Error message that the group name needs to have at least one character.",
 	"bs-groupmanager-headergroup": "Column headline for group\n{{Identical|Group}}",
 	"bs-groupmanager-tipremove": "Window title for remove group or groups\n*$1 is the number of groups which should be removed - use for PLURAL distinction",

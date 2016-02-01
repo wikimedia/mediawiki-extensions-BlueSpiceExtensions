@@ -14,7 +14,7 @@
 	"bs-groupmanager-grpremoved": "De groep is verwijderd.",
 	"bs-groupmanager-label": "Groepsbeheerder",
 	"bs-groupmanager-invalid-name": "De naam van de groep bevat {{PLURAL:$1|een|}} ongeldige {{PLURAL:$1|personages|karakters}}: $2",
-	"bs-groupmanager-invalid-name-length": "De naam van de groep kan niet langer zijn dan 16 tekens.",
+	"bs-groupmanager-invalid-name-length": "De naam van de groep kan niet langer zijn dan 255 tekens.",
 	"bs-groupmanager-invalid-name-numeric": "De naam van de groep, moet ten minste één teken.",
 	"bs-groupmanager-headergroup": "Groep",
 	"bs-groupmanager-tipremove": "{{PLURAL:$1|Groep|Groepen}} verwijderen",

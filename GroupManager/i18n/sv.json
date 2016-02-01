@@ -12,7 +12,7 @@
 	"bs-groupmanager-grpremoved": "Gruppen har tagits bort.",
 	"bs-groupmanager-label": "Grupphanterare",
 	"bs-groupmanager-invalid-name": "Gruppens namn innehåller {{PLURAL:$1|ett otillåtet tecken|otillåtna tecken}}: $2",
-	"bs-groupmanager-invalid-name-length": "Gruppens namn kan inte vara längre än 16 tecken.",
+	"bs-groupmanager-invalid-name-length": "Gruppens namn kan inte vara längre än 255 tecken.",
 	"bs-groupmanager-invalid-name-numeric": "Gruppens namn måste ha minst ett tecken.",
 	"bs-groupmanager-headergroup": "Grupp",
 	"bs-groupmanager-tipremove": "Ta bort {{PLURAL:$1|grupp|grupper}}",

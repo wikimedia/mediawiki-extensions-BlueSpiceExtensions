@@ -12,7 +12,7 @@
 	"bs-groupmanager-grpremoved": "Il gruppo è stato rimosso.",
 	"bs-groupmanager-label": "Gestione gruppi",
 	"bs-groupmanager-invalid-name": "Il nome del gruppo contiene {{PLURAL:$1|un carattere|caratteri}} non {{PLURAL:$1|valido|validi}}: $2",
-	"bs-groupmanager-invalid-name-length": "Il nome del gruppo non può essere più lungo di 16 caratteri.",
+	"bs-groupmanager-invalid-name-length": "Il nome del gruppo non può essere più lungo di 255 caratteri.",
 	"bs-groupmanager-invalid-name-numeric": "Il nome del gruppo deve avere almeno un carattere.",
 	"bs-groupmanager-headergroup": "Gruppo",
 	"bs-groupmanager-tipremove": "Rimuovi {{PLURAL:$1|gruppo|gruppi}}",

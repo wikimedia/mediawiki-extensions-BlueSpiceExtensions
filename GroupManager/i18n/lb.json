@@ -10,7 +10,7 @@
 	"bs-groupmanager-grpedited": "D'Grupp gouf geännert.",
 	"bs-groupmanager-grpremoved": "D'Grupp gouf ewechgeholl.",
 	"bs-groupmanager-invalid-name": "Den Numm vun der Grupp huet {{PLURAL:$1|en|$1}} onerlaabt Zeechen: $2",
-	"bs-groupmanager-invalid-name-length": "Den Numm vum Grupp däerf net méi laang wéi 16 Zeeche sinn.",
+	"bs-groupmanager-invalid-name-length": "Den Numm vum Grupp däerf net méi laang wéi 255 Zeeche sinn.",
 	"bs-groupmanager-invalid-name-numeric": "Den Numm vum Grupp muss mindestens een Zeechen hunn.",
 	"bs-groupmanager-headergroup": "Grupp",
 	"bs-groupmanager-tipremove": "{{PLURAL:$1|Grupp|Gruppen}} ewechhuelen",
