@@ -375,7 +375,7 @@ class GroupManager extends BsExtensionMW {
 					'success' => false,
 					'message' => wfMessage( 'bs-groupmanager-invalid-name-numeric' )->plain()
 				);
-			} elseif ( strlen( $sGroup ) > 16 ) {
+			} elseif ( strlen( $sGroup ) > 255 ) {
 				return array(
 					'success' => false,
 					'message' => wfMessage( 'bs-groupmanager-invalid-name-length' )->plain()
