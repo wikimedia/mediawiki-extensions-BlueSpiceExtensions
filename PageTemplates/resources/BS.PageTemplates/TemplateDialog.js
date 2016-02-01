@@ -38,44 +38,15 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 			includeAll: true
 		} );
 
-		this.cbTemplateNamespace = Ext.create( 'BS.form.NamespaceCombo', {
-			labelWidth: 135,
-			fieldLabel: mw.message( 'bs-pagetemplates-label-tplns' ).plain()
-		} );
-		this.cbTemplateNamespace.setValue( bs.ns.NS_TEMPLATE );
-		this.cbTemplateNamespace.on( 'select', this.storePagesReload, this );
-
-		this.strPages = Ext.create( 'Ext.data.JsonStore', {
-			fields: [ 'name', 'label', 'ns' ],
-			proxy: {
-				type: 'ajax',
-				url:  bs.util.getAjaxDispatcherUrl( 'InsertLink::getPage' ),
-				reader: {
-					type: 'json',
-					root: 'items',
-					idProperty: 'group'
-				}
-			}
-		});
-		this.strPages.load( { params: { ns: this.cbTemplateNamespace.getValue() } } );
-
-		this.cbTemplate = Ext.create( 'Ext.form.ComboBox', {
+		this.cbTemplate = Ext.create( 'BS.form.field.TitleCombo', {
 			fieldLabel: mw.message( 'bs-pagetemplates-label-article' ).plain(),
-			labelWidth: 135,
-			labelAlign: 'right',
-			displayField: 'name',
-			valueField: 'name',
-			queryMode: 'local',
-			typeAhead: true,
-			triggerAction: 'all',
-			store: this.strPages
+			labelAlign: 'right'
 		});
 
 		this.items = [
 			this.tfLabel,
 			this.taDesc,
 			this.cbTragetNamespace,
-			this.cbTemplateNamespace,
 			this.cbTemplate
 		];
 
@@ -91,7 +62,6 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 		this.tfLabel.reset();
 		this.taDesc.reset();
 		this.cbTragetNamespace.reset();
-		this.cbTemplateNamespace.reset();
 		this.cbTemplate.reset();
 
 		this.callParent();
@@ -102,7 +72,6 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 		this.tfLabel.setValue( this.currentData.label );
 		this.taDesc.setValue( this.currentData.desc );
 		this.cbTragetNamespace.setValue( this.currentData.targetns );
-		this.cbTemplateNamespace.setValue( +this.currentData.templatens ); // + is for int casting!
 		this.cbTemplate.setValue( this.currentData.templatename );
 	},
 	getData: function() {
@@ -110,8 +79,7 @@ Ext.define( 'BS.PageTemplates.TemplateDialog', {
 		this.selectedData.label = this.tfLabel.getValue();
 		this.selectedData.desc = this.taDesc.getValue();
 		this.selectedData.targetns = this.cbTragetNamespace.getValue();
-		this.selectedData.templatens = this.cbTemplateNamespace.getValue();
-		this.selectedData.template = this.cbTemplate.getValue();
+		this.selectedData.template = this.cbTemplate.getValue().getPrefixedText();
 
 		return this.selectedData;
 	}

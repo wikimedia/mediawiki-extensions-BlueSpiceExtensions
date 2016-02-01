@@ -20,7 +20,6 @@ $wgResourceModules['ext.bluespice.pageTemplates'] = array(
 		'bs-pagetemplates-label-tpl',
 		'bs-pagetemplates-label-desc',
 		'bs-pagetemplates-label-targetns',
-		'bs-pagetemplates-label-tplns',
 		'bs-pagetemplates-label-article',
 		'bs-pagetemplates-confirm-deletetpl',
 		'bs-pagetemplates-remove-message-unknown',

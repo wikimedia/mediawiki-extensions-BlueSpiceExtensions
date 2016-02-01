@@ -108,45 +108,4 @@ class InsertLink extends BsExtensionMW {
 		$this->getOutput()->addJsConfigVars( 'bsInsertLinkEnableJava', BsConfig::get( 'MW::InsertLink::EnableJava' ) );
 		return true;
 	}
-
-	/**
-	 * Get the pages of a given namespace and put it to ajax output.
-	 * @param type $output The ajax output which have to be valid JSON.
-	 */
-	public static function getPage() {
-		global $wgUser, $wgRequest;
-
-		$aResult = array(
-			'items' => array(),
-			'success' => false
-		);
-		if( !$wgUser->isAllowed('edit') ) {
-			return json_encode($aResult);
-		}
-
-		$iNs = $wgRequest->getInt( 'ns', 0 );
-		$dbr = wfGetDB(DB_SLAVE);
-
-		$rRes = $dbr->select(
-			'page',
-			array( 'page_id' ),
-			array( 'page_namespace' => $iNs ),
-			__METHOD__,
-			array( 'ORDER BY' => 'page_title' )
-		);
-
-		while( $o = $dbr->fetchObject($rRes) ) {
-			$oTitle = Title::newFromID($o->page_id);
-			if( !$oTitle || !$oTitle->userCan('read')) continue;
-
-			$aResult['items'][] = array(
-				'name' => $oTitle->getText(),
-				'label' => $o->page_id,
-				'ns' => $iNs,
-			);
-		}
-		$aResult['success'] = true;
-
-		return FormatJson::encode( $aResult );
-	}
 }

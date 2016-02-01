@@ -45,5 +45,3 @@ $wgResourceModules['ext.bluespice.insertlink.styles'] = array(
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );
-
-$wgAjaxExportList[] = 'InsertLink::getPage';
