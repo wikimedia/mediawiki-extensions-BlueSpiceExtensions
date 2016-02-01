@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cwlin0416"
+			"Cwlin0416",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-groupmanager-grpexists": "群組已存在。",
@@ -10,7 +11,7 @@
 	"bs-groupmanager-grpremoved": "已移除群組。",
 	"bs-groupmanager-label": "群組管理者",
 	"bs-groupmanager-invalid-name": "群組名稱包含{{PLURAL:$1|一個|}}無效{{PLURAL:$1|字元|字元}}：$2",
-	"bs-groupmanager-invalid-name-length": "群組名稱不可超過 16 個字元。",
+	"bs-groupmanager-invalid-name-length": "群組名稱不可超過 255 個字元。",
 	"bs-groupmanager-invalid-name-numeric": "群組名稱至少需要 1 個字元。",
 	"bs-groupmanager-headergroup": "群組",
 	"bs-groupmanager-tipremove": "移除{{PLURAL:$1|群組|群組}}",

@@ -39,5 +39,6 @@
 	"bs-insertfile-tipkeepratio": "Mantieni proporzioni",
 	"bs-insertfile-of": "di",
 	"bs-insertfile-license": "Licenza",
-	"bs-insertfile-categories": "Categorie"
+	"bs-insertfile-categories": "Categorie",
+	"apihelp-bs-inserfile-license-store-description": "Elenca le licenze per l'estensione InsertFile."
 }

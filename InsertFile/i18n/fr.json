@@ -67,5 +67,6 @@
 	"bs-insertfile-no-link": "Aucun lien",
 	"bs-insertfile-error-no-medialink": "Aucun lien de média sélectionné.",
 	"bs-insertfile-error-no-imagelink": "Aucun lien d’image sélectionné.",
-	"bs-insertfile-upload-waitmessage": "Téléchargement en cours…"
+	"bs-insertfile-upload-waitmessage": "Téléchargement en cours…",
+	"apihelp-bs-inserfile-license-store-description": "Liste les licences pour l’extension InsertFile."
 }
