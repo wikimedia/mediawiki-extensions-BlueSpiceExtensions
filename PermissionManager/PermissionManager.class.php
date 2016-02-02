@@ -594,7 +594,7 @@ class PermissionManager extends BsExtensionMW {
 	}
 
 	protected static function writeGroupSettings( $aGroupPermissions, $aNamespacePermissionLockdown ) {
-		global $bsgPermissionManagerGroupSettingsFile, $wgGroupPermissions, $wgNamespacePermissionLockdown;
+		global $bsgConfigFiles, $wgGroupPermissions, $wgNamespacePermissionLockdown;
 
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
@@ -617,7 +617,7 @@ class PermissionManager extends BsExtensionMW {
 		$sSaveContent = "<?php\n";
 		foreach ( $aGroupPermissions as $sGroup => $aPermissions ) {
 			foreach ( $aPermissions as $sPermission => $bValue ) {
-				$sSaveContent .= "\$wgGroupPermissions['{$sGroup}']['{$sPermission}'] = " . ( $bValue ? 'true' : 'false' ) . ";\n";
+				$sSaveContent .= "\$GLOBALS['wgGroupPermissions']['{$sGroup}']['{$sPermission}'] = " . ( $bValue ? 'true' : 'false' ) . ";\n";
 				// check if settings for the given group changed
 				if( !isset( $wgGroupPermissions[ $sGroup ] )
 						|| !isset( $wgGroupPermissions[ $sGroup ][ $sPermission ] )
@@ -639,7 +639,7 @@ class PermissionManager extends BsExtensionMW {
 					if ( empty( $aGroups ) ) {
 						continue;
 					}
-					$sSaveContent .= "\$wgNamespacePermissionLockdown[$sNsConstant]['$sPermission']"
+					$sSaveContent .= "\$GLOBALS['wgNamespacePermissionLockdown'][$sNsConstant]['$sPermission']"
 							. " = array(" . ( count( $aGroups ) ? "'" . implode( "','", $aGroups ) . "'" : '' ) . ");\n";
 					if ( $sPermission == 'read' ) {
 						$isReadLockdown = true;
@@ -655,12 +655,12 @@ class PermissionManager extends BsExtensionMW {
 					}
 				}
 				if ( $isReadLockdown ) {
-					$sSaveContent .= "\$wgNonincludableNamespaces[] = $sNsConstant;\n";
+					$sSaveContent .= "\$GLOBALS['wgNonincludableNamespaces'][] = $sNsConstant;\n";
 				}
 			}
 		}
 
-		$res = file_put_contents( $bsgPermissionManagerGroupSettingsFile, $sSaveContent );
+		$res = file_put_contents( $bsgConfigFiles['PermissionManager'], $sSaveContent );
 		if ( $res ) {
 			// Create a log entry for any group which permissions changed
 			$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
@@ -682,7 +682,7 @@ class PermissionManager extends BsExtensionMW {
 			return array(
 					'success' => false,
 				// TODO SU (04.07.11 12:06): i18n
-					'msg' => 'Not able to create or write "' . $bsgPermissionManagerGroupSettingsFile . '".'
+					'msg' => 'Not able to create or write "' . $bsgConfigFiles['PermissionManager'] . '".'
 			);
 		}
 	}
@@ -690,17 +690,17 @@ class PermissionManager extends BsExtensionMW {
 	/**
 	 * creates a backup of the current pm-settings.php if it exists.
 	 *
-	 * @global string $bsgPermissionManagerGroupSettingsFile
+	 * @global string $bsgConfigFiles
 	 */
 	protected static function backupExistingSettings() {
-		global $bsgPermissionManagerGroupSettingsFile;
+		global $bsgConfigFiles;
 
-		if ( file_exists( $bsgPermissionManagerGroupSettingsFile ) ) {
+		if ( file_exists( $bsgConfigFiles['PermissionManager'] ) ) {
 			$timestamp = wfTimestampNow();
 			$backupFilename = "pm-settings-backup-{$timestamp}.php";
-			$backupFile = dirname( $bsgPermissionManagerGroupSettingsFile ) . "/{$backupFilename}";
+			$backupFile = dirname( $bsgConfigFiles['PermissionManager'] ) . "/{$backupFilename}";
 
-			file_put_contents( $backupFile, file_get_contents( $bsgPermissionManagerGroupSettingsFile ) );
+			file_put_contents( $backupFile, file_get_contents( $bsgConfigFiles['PermissionManager'] ) );
 		}
 	}
 }

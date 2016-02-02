@@ -62,9 +62,7 @@ if( !isset( $bsgPermissionManagerDefaultTemplates ) ) {
 	$bsgPermissionManagerDefaultTemplates = array();
 }
 
-if( !isset( $bsgPermissionManagerGroupSettingsFile ) ) {
-	$bsgPermissionManagerGroupSettingsFile = BSCONFIGDIR . DS . 'pm-settings.php';
-}
+$bsgConfigFiles['PermissionManager'] = BSCONFIGDIR . DS . 'pm-settings.php';
 
 $bsgPermissionManagerDefaultTemplates = array(
 	//Not namespace specific

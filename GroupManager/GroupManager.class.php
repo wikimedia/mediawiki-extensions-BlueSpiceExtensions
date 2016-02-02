@@ -350,13 +350,13 @@ class GroupManager extends BsExtensionMW {
 	}
 
 	/**
-	 * saves all groupspecific data to bluespice-core/config/gm-settings.php
+	 * saves all groupspecific data to a config file
 	 * @return array the json answer
 	 */
 	protected function saveData() {
-		global $wgAdditionalGroups;
+		global $wgAdditionalGroups, $bsgConfigFiles;
 
-		$sSaveContent = "<?php\nglobal \$wgAdditionalGroups;\n\$wgAdditionalGroups = array();\n\n";
+		$sSaveContent = "<?php\n\$GLOBALS['wgAdditionalGroups'] = array();\n\n";
 		foreach ( $wgAdditionalGroups as $sGroup => $mValue ) {
 			$aInvalidChars = array();
 			$sGroup = trim( $sGroup );
@@ -382,7 +382,7 @@ class GroupManager extends BsExtensionMW {
 				);
 			} else {
 				if ( $mValue !== false ) {
-					$sSaveContent .= "\$wgAdditionalGroups['{$sGroup}'] = array();\n";
+					$sSaveContent .= "\$GLOBALS['wgAdditionalGroups']['{$sGroup}'] = array();\n";
 					$this->checkI18N( $sGroup );
 				} else {
 					$this->checkI18N( $sGroup, $mValue );
@@ -390,10 +390,9 @@ class GroupManager extends BsExtensionMW {
 			}
 		}
 
-		$sSaveContent .= "\n\$wgGroupPermissions = array_merge(\$wgGroupPermissions, \$wgAdditionalGroups);";
+		$sSaveContent .= "\n\$GLOBALS['wgGroupPermissions'] = array_merge(\$GLOBALS['wgGroupPermissions'], \$GLOBALS['wgAdditionalGroups']);";
 
-		$sConfigFile = BSCONFIGDIR . DS . 'gm-settings.php';
-		$res = file_put_contents( $sConfigFile, $sSaveContent );
+		$res = file_put_contents( $bsgConfigFiles['GroupManager'], $sSaveContent );
 		if ( $res ) {
 			return array(
 				'success' => true,
@@ -403,7 +402,7 @@ class GroupManager extends BsExtensionMW {
 			return array(
 				'success' => false,
 				// TODO SU (04.07.11 11:44): i18n
-				'message' => 'Not able to create or write file "' . $sConfigFile . '".'
+				'message' => 'Not able to create or write file "' . $bsgConfigFiles['GroupManager'] . '".'
 			);
 		}
 	}
