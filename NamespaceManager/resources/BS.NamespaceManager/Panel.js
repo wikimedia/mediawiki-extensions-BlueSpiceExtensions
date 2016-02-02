@@ -14,6 +14,8 @@
 
 Ext.define( 'BS.NamespaceManager.Panel', {
 	extend: 'BS.CRUDGridPanel',
+	requires: [ 'BS.store.BSApi' ],
+	pageSize: 20,
 
 	initComponent: function() {
 		var fieldDefs = mw.config.get('bsNamespaceManagerMetaFields');
@@ -29,7 +31,9 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 				id: 'ns-'+ fieldDef.name,
 				dataIndex: fieldDef.name,
 				header: fieldDef.label,
-				sortable: fieldDef.sortable || true
+				sortable: fieldDef.sortable || true,
+				filter: fieldDef.filter || true,
+				hidden: fieldDef.hidden || false
 			};
 			if( fieldDef.type === 'boolean' ) {
 				column.renderer = this.renderIcon;
@@ -44,24 +48,10 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 
 		$(document).trigger('BSNamespaceManagerInitCompontent', [this, fields, columns]);
 
-		this.strMain = Ext.create( 'Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'NamespaceManager::getData' ),
-				reader: {
-					type: 'json',
-					root: 'results',
-					idProperty: 'id',
-					totalProperty: 'totalCount'
-				}
-			},
-			autoLoad: true,
-			remoteSort: true,
+		this.strMain = new BS.store.BSApi({
+			apiAction: 'bs-namespace-store',
 			fields: fields,
-			sortInfo: {
-				field: 'id',
-				direction: 'ASC'
-			}
+			pageSize: this.pageSize
 		});
 
 		this.colMainConf.columns = columns;
@@ -102,6 +92,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		this.callParent( arguments );
 	},
 	onBtnRemoveClick: function( oButton, oEvent ) {
+		this.active = 'remove';
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var editable = selectedRow[0].get( 'editable' );
 		if ( editable === false ) {
@@ -132,84 +123,78 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	},
 	onDlgNamespaceAddOk: function( sender, namespace ) {
 		var additionalSettings = this.getAdditionalSettings( namespace );
-		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'NamespaceManager::addNamespace',
-				[
-					namespace.name,
-					additionalSettings
-				]
-			),
-			method: 'post',
-			scope: this,
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-					this.dlgNamespaceAdd.resetData();
+		var me = this;
+		var api = new mw.Api();
+		api.get({
+				action: 'bs-namespace-tasks',
+				task: 'add',
+				taskData: Ext.encode({
+					name: namespace.name,
+					settings: additionalSettings
+				})
+			})
+			.done(function( response ){
+				if ( response.success === true ) {
+					me.renderMsgSuccess( response );
+					me.dlgNamespaceAdd.resetData();
 				} else {
-					this.renderMsgFailure( responseObj );
+					me.renderMsgFailure( response );
 				}
-			},
-			failure: function( response, opts ) {}
-		});
+			});
 	},
 	onDlgNamespaceEditOk: function( sender, namespace ) {
 		var additionalSettings = this.getAdditionalSettings( namespace );
-		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'NamespaceManager::editNamespace',
-				[
-					namespace.id,
-					namespace.name,
-					additionalSettings
-				]
-			),
-			method: 'post',
-			scope: this,
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.dlgNamespaceEdit.resetData();
-					this.renderMsgSuccess( responseObj );
+		var me = this;
+		var api = new mw.Api();
+		api.get({
+				action: 'bs-namespace-tasks',
+				task: 'edit',
+				taskData: Ext.encode({
+					id: namespace.id,
+					name: namespace.name,
+					settings: additionalSettings
+				})
+			})
+			.done(function( response ){
+				if ( response.success === true ) {
+					me.dlgNamespaceEdit.resetData();
+					me.renderMsgSuccess( response );
 				} else {
-					this.renderMsgFailure( responseObj );
+					me.renderMsgFailure( response );
 				}
-			},
-			failure: function( response, opts ) {}
-		});
+			});
 	},
 	getAdditionalSettings: function( data ) {
 		var filteredData = {};
-		for( prop in data ) {
+		for( var prop in data ) {
 			if( $.inArray(prop, ['id', 'name', 'editable']) !== -1 ) {
 				continue;
 			}
 			filteredData[prop] = data[prop];
 		}
-		return Ext.encode( filteredData );
+		return filteredData;
 	},
 	onDlgNamespaceRemoveOk: function( data, namespace ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var id = selectedRow[0].get( 'id' );
 		var doArticle = namespace.doarticle.rb;
-
-		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'NamespaceManager::deleteNamespace',
-				[ id, doArticle ]
-			),
-			method: 'post',
-			scope: this,
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
+		var me = this;
+		var api = new mw.Api();
+		api.get({
+				action: 'bs-namespace-tasks',
+				task: 'remove',
+				taskData: Ext.encode({
+					id: id,
+					doArticle: doArticle
+				})
+			})
+			.done(function( response ){
+				if ( response.success === true ) {
+					me.renderMsgSuccess( response );
 				} else {
-					this.renderMsgFailure( responseObj );
+					me.renderMsgFailure( response );
 				}
-			}
-		});
+			});
 	},
 	reloadStore: function() {
 		this.strMain.reload();
@@ -217,8 +202,10 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	showDlgAgain: function() {
 		if ( this.active === 'add' ) {
 			this.dlgNamespaceAdd.show();
-		} else {
+		} else if( this.active === 'edit' ) {
 			this.dlgNamespaceEdit.show();
+		} else if( this.active === 'remove' ) {
+			this.dlgNamespaceRemove.show();
 		}
 	},
 	renderMsgSuccess: function( responseObj ) {
@@ -237,37 +224,23 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		}
 	},
 	renderMsgFailure: function( responseObj ) {
-		if ( responseObj.errors ) {
-			var message = '';
-			for ( i in responseObj.errors ) {
+		var message = responseObj.message || '';
+		if ( responseObj.errors.length > 0 ) {
+			for ( var i in responseObj.errors ) {
 				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
 				message = message + responseObj.errors[i].message + '<br />';
 			}
-			bs.util.alert(
-				'bs-nm-fail',
-				{
-					text: message,
-					titleMsg: 'bs-extjs-title-warning'
-				},
-				{
-					ok: this.showDlgAgain,
-					scope: this
-				}
-			);
-			return;
-		} else if ( responseObj.message.length ) {
-			bs.util.alert(
-				'bs-nm-fail',
-				{
-					text: responseObj.message,
-					titleMsg: 'bs-extjs-title-warning'
-				},
-				{
-					ok: this.showDlgAgain,
-					scope: this
-				}
-			);
-			return;
 		}
+		bs.util.alert(
+			'bs-nm-fail',
+			{
+				text: message,
+				titleMsg: 'bs-extjs-title-warning'
+			},
+			{
+				ok: this.showDlgAgain,
+				scope: this
+			}
+		);
 	}
 } );

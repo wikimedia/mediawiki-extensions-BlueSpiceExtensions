@@ -29,17 +29,17 @@ $wgResourceModules['ext.bluespice.namespaceManager'] = array(
 );
 
 $GLOBALS['wgAutoloadClasses']['NamespaceManager'] = __DIR__ . '/NamespaceManager.class.php';
-$wgAutoloadClasses['NamespaceNuker'] = __DIR__ . '/includes/NamespaceNuker.php';
+$GLOBALS['wgAutoloadClasses']['NamespaceNuker'] = __DIR__ . '/includes/NamespaceNuker.php';
+$GLOBALS['wgAutoloadClasses']['BSApiNamespaceStore'] = __DIR__ . '/includes/api/BSApiNamespaceStore.php';
+$GLOBALS['wgAutoloadClasses']['BSApiNamespaceTasks'] = __DIR__ . '/includes/api/BSApiNamespaceTasks.php';
 
-$wgAjaxExportList[] = 'NamespaceManager::getForm';
-$wgAjaxExportList[] = 'NamespaceManager::getData';
-$wgAjaxExportList[] = 'NamespaceManager::addNamespace';
-$wgAjaxExportList[] = 'NamespaceManager::editNamespace';
-$wgAjaxExportList[] = 'NamespaceManager::deleteNamespace';
-$wgAjaxExportList[] = 'NamespaceManager::isNamespaceEmpty';
+$wgAPIModules['bs-namespace-store'] = 'BSApiNamespaceStore';
+$wgAPIModules['bs-namespace-tasks'] = 'BSApiNamespaceTasks';
 
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'NamespaceManager::getSchemaUpdates';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'NamespaceManager::onLoadExtensionSchemaUpdates';
 
 $wgLogTypes[] = 'bs-namespace-manager';
 $wgFilterLogTypes['bs-namespace-manager'] = true;
 $wgLogActionsHandlers['bs-namespace-manager/*'] = 'LogFormatter';
+
+$bsgConfigFiles['NamespaceManager'] = BSCONFIGDIR . DS . 'nm-settings.php';
