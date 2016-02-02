@@ -66,5 +66,6 @@
 	"bs-insertfile-no-link": "Нема врска",
 	"bs-insertfile-error-no-medialink": "Немате одбрано врска на снимка.",
 	"bs-insertfile-error-no-imagelink": "Немате одбрано врска на слика.",
-	"bs-insertfile-upload-waitmessage": "Подигањето е во тек ..."
+	"bs-insertfile-upload-waitmessage": "Подигањето е во тек ...",
+	"apihelp-bs-inserfile-license-store-description": "Список на лиценци за додатокот „Вметни податотека“"
 }

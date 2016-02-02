@@ -12,6 +12,7 @@
 	"bs-groupmanager-grpadded": "グループを追加しました。",
 	"bs-groupmanager-grpedited": "グループを編集しました。",
 	"bs-groupmanager-grpremoved": "グループを除去しました。",
+	"bs-groupmanager-invalid-name-length": "グループ名は255文字よりも長くはできません。",
 	"bs-groupmanager-headergroup": "グループ",
 	"bs-groupmanager-titlenewgroup": "グループの新規作成",
 	"bs-groupmanager-titleeditgroup": "グループを編集",
