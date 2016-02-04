@@ -4,7 +4,8 @@
 			"AVIADOR",
 			"Fitoschido",
 			"Macofe",
-			"Ryo567"
+			"Ryo567",
+			"YoViajo"
 		]
 	},
 	"bs-namespacemanager-desc": "Interfaz administrativa para añadir, editar y eliminar espacios de nombres",
@@ -19,6 +20,8 @@
 	"bs-namespacemanager-label-content": "Espacio de nombres del contenido",
 	"bs-namespacemanager-label-searchable": "Buscar de manera predeterminada",
 	"bs-namespacemanager-label-subpages": "Subpáginas",
+	"bs-namespacemanager-label-pagecount": "Páginas",
+	"bs-namespacemanager-label-system": "Sistema",
 	"bs-namespacemanager-nsadded": "Se ha añadido el espacio de nombres.",
 	"bs-namespacemanager-nsremoved": "Se ha borrado el espacio de nombres.",
 	"bs-namespacemanager-nsedited": "Se ha editado el espacio de nombres.",

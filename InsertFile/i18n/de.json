@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-insertfile-desc": "Über ein Dialogfeld werden Dateien hochgeladen und angehängt",
@@ -66,5 +67,6 @@
 	"bs-insertfile-no-link": "Bild nicht verlinken",
 	"bs-insertfile-error-no-medialink": "Es ist kein Media Link ausgewählt.",
 	"bs-insertfile-error-no-imagelink": "Es ist kein Bild Link ausgewählt.",
-	"bs-insertfile-upload-waitmessage": "Die Datei wird hochgeladen ..."
+	"bs-insertfile-upload-waitmessage": "Die Datei wird hochgeladen ...",
+	"apihelp-bs-inserfile-license-store-description": "Listet die Lizenzen für die Erweiterung „InsertFile“ auf."
 }
