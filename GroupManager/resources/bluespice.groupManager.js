@@ -9,6 +9,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-Ext.create('BS.GroupManager.Panel', {
-	renderTo: 'bs-groupmanager-grid'
-});
+
+Ext.onReady( function(){
+	Ext.create( 'BS.GroupManager.Panel', {
+		renderTo: 'bs-groupmanager-grid'
+	} );
+} );

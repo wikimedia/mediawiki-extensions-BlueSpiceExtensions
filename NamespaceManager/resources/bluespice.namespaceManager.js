@@ -10,6 +10,8 @@
  * @filesource
  */
 
-Ext.create( 'BS.NamespaceManager.Panel', {
-	renderTo: 'bs-namespacemanager-grid'
+Ext.onReady( function(){
+	Ext.create( 'BS.NamespaceManager.Panel', {
+		renderTo: 'bs-namespacemanager-grid'
+	} );
 } );
