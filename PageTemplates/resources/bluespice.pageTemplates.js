@@ -10,6 +10,8 @@
  * @filesource
  */
 
-Ext.create( 'BS.PageTemplates.Panel', {
-	renderTo: 'bs-pagetemplates-grid'
+Ext.onReady( function(){
+	Ext.create( 'BS.PageTemplates.Panel', {
+		renderTo: 'bs-pagetemplates-grid'
+	} );
 } );

@@ -15,8 +15,8 @@
   * - initial commit
   */
 
-mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+Ext.onReady( function(){
 	Ext.create( 'BS.InterWikiLinks.Panel', {
 		renderTo: 'InterWikiLinksGrid'
 	} );
-});
+} );

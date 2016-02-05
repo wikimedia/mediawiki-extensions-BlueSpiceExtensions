@@ -11,8 +11,10 @@
  */
 
 (function( mw, $, bs, d, undefined){
-	Ext.create( 'BS.UserManager.panel.Manager', {
-		renderTo: 'bs-usermanager-grid'
+	Ext.onReady( function(){
+		Ext.create( 'BS.UserManager.panel.Manager', {
+			renderTo: 'bs-usermanager-grid'
+		} );
 	} );
 
 	$(d).on( 'click', '.bs-um-more-groups', function() {
