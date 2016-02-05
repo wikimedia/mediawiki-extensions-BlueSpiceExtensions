@@ -38,24 +38,16 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			}
 		});
 
-		this.strGroups = Ext.create( 'Ext.data.JsonStore', {
-			fields: [ 'group', 'displayname' ],
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'GroupManager::getGroups' ),
-				reader: {
-					type: 'json',
-					root: 'groups',
-					idProperty: 'group'
-				}
-			},
-			autoLoad: true
+		this.strGroups = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-group-store',
+			fields: ['group_name', 'additional_group', 'displayname'],
+			submitValue: false
 		});
 
 		this.strGroups.on( 'load', function( sender, records, successful, eOpts ){
 			for( var i = 0; i < records.length; i++ ) {
 				var record = records[i];
-				record.set( 'id', record.get( 'group' ));
+				record.set( 'id', record.get( 'group_name' ));
 				record.set( 'text', record.get( 'displayname' ));
 			}
 		}, this );

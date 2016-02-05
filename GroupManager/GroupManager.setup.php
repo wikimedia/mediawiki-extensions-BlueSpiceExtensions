@@ -3,6 +3,7 @@
 BsExtensionManager::registerExtension( 'GroupManager', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE );
 
 $GLOBALS['wgAutoloadClasses']['GroupManager'] = __DIR__ . '/GroupManager.class.php';
+$wgAutoloadClasses['BSApiTasksGroupManager'] = __DIR__ . '/includes/api/BSApiTasksGroupManager.php';
 
 $wgMessagesDirs['GroupManager'] = __DIR__ . '/i18n';
 
@@ -27,12 +28,7 @@ $wgResourceModules['ext.bluespice.groupManager'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$wgAjaxExportList[] = 'GroupManager::getData';
-$wgAjaxExportList[] = 'GroupManager::getGroups';
-$wgAjaxExportList[] = 'GroupManager::addGroup';
-$wgAjaxExportList[] = 'GroupManager::editGroup';
-$wgAjaxExportList[] = 'GroupManager::removeGroup';
-$wgAjaxExportList[] = 'GroupManager::removeGroups';
+$wgAPIModules['bs-groupmanager'] = 'BSApiTasksGroupManager';
 
 $wgLogTypes[] = 'bs-group-manager';
 $wgFilterLogTypes['bs-group-manager'] = true;
