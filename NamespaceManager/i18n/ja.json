@@ -4,7 +4,8 @@
 			"Shirayuki",
 			"SkyDaisy9",
 			"2nd-player",
-			"Sujiniku"
+			"Sujiniku",
+			"Otokoume"
 		]
 	},
 	"bs-namespacemanager-desc": "名前空間を追加/編集/削除する管理インターフェイス",
@@ -18,6 +19,8 @@
 	"bs-namespacemanager-label-content": "本文名前空間",
 	"bs-namespacemanager-label-searchable": "既定の検索対象",
 	"bs-namespacemanager-label-subpages": "下位ページ",
+	"bs-namespacemanager-label-pagecount": "ページ数",
+	"bs-namespacemanager-label-system": "システム",
 	"bs-namespacemanager-nsadded": "名前空間を追加しました。",
 	"bs-namespacemanager-nsremoved": "名前空間を除去しました。",
 	"bs-namespacemanager-nsedited": "名前空間を編集しました。",
