@@ -101,20 +101,32 @@ var BsInsertCategoryViewHelper = {
 
 	setCategories: function( categories ) {
 		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.Ajax.request({
-				url: bs.util.getAjaxDispatcherUrl( 'InsertCategory::addCategoriesToArticle', [ mw.config.get( "wgArticleId" ) ] ),
-				success: function( response, opts ) {
-					var obj = Ext.decode(response.responseText);
-					if ( obj.success ) {
-						bs.util.alert( 'ICsuc', { textMsg: 'bs-insertcategory-success', titleMsg: 'bs-extjs-title-success' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesOk } );
-					} else {
-						bs.util.alert( 'ICsuc', { textMsg: obj.msg, titleMsg: 'bs-extjs-title-warning' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesFailure } );
-					}
-				},
-				failure: function() {},
-				params: {
-					page_name: mw.config.get( "wgPageName" ),
-					categories: categories.join(',')
+			var api = new mw.Api();
+			api.get({
+				action: 'bs-wikipage-tasks',
+				task: 'setCategories',
+				taskData: Ext.encode({
+					page_id: mw.config.get( "wgArticleId" ),
+					categories: categories
+				})
+			})
+			.fail(function( code, response ) {
+				BsInsertCategoryViewHelper.onSetCategoriesFailure( response.exception );
+			})
+			.done(function( response ) {
+				if ( response.success === true ) {
+					bs.util.alert(
+						'ICsuc',
+						{
+							textMsg: 'bs-insertcategory-success',
+							titleMsg: 'bs-extjs-title-success'
+						},
+						{
+							ok: BsInsertCategoryViewHelper.onSetCategoriesOk
+						}
+					);
+				} else {
+					BsInsertCategoryViewHelper.onSetCategoriesFailure( response.message );
 				}
 			});
 		});
@@ -122,8 +134,19 @@ var BsInsertCategoryViewHelper = {
 	onSetCategoriesOk: function () {
 		window.location.reload( true );
 	},
-	onSetCategoriesFailure: function () {
-		BS.InsertCategory.Dialog.setLoading( false );
+	onSetCategoriesFailure: function ( msg ) {
+		bs.util.alert(
+			'ICsuc',
+			{
+				text: msg,
+				titleMsg: 'bs-extjs-title-warning'
+			},
+			{
+				ok: function() {
+					BS.InsertCategory.Dialog.setLoading( false );
+				}
+			}
+		);
 	}
 };
 
