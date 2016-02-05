@@ -49,48 +49,45 @@ $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons,
 });
 
 
-$(document).ready(function() {
-	// view mode
-	$('#ca-insert_category').find('a').on( 'click', function( e ) {
-		e.preventDefault();
-		var me = this;
-		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.require('BS.InsertCategory.Dialog', function(){
-				BS.InsertCategory.Dialog.clearListeners();
-				BS.InsertCategory.Dialog.on( 'ok', function ( sender, data ) {
-					if ( BS.InsertCategory.Dialog.isDirty ) {
-						BsInsertCategoryViewHelper.setCategories( data );
-						return false;
-					}
-				} );
-				BS.InsertCategory.Dialog.setData(
-					BsInsertCategoryViewHelper.getCategories()
-				);
-				BS.InsertCategory.Dialog.show( me );
-			});
+// view mode
+$(document).on('click', '#ca-insert_category', function(e) {
+	e.preventDefault();
+	var me = $(this).find('a');
+	mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+		Ext.require('BS.InsertCategory.Dialog', function(){
+			BS.InsertCategory.Dialog.clearListeners();
+			BS.InsertCategory.Dialog.on( 'ok', function ( sender, data ) {
+				if ( BS.InsertCategory.Dialog.isDirty ) {
+					BsInsertCategoryViewHelper.setCategories( data );
+					return false;
+				}
+			} );
+			BS.InsertCategory.Dialog.setData(
+				BsInsertCategoryViewHelper.getCategories()
+			);
+			BS.InsertCategory.Dialog.show( me );
 		});
 	});
-
-	// wikieditor mode
-	$('#bs-editbutton-insertcategory').on( 'click', function( e ) {
-		e.preventDefault();
-		var me = this;
-		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.require('BS.InsertCategory.Dialog', function(){
-				BS.InsertCategory.Dialog.clearListeners();
-				BS.InsertCategory.Dialog.on('ok', function(sender, data){
-					if ( BS.InsertCategory.Dialog.isDirty ) {
-						BsInsertCategoryWikiEditorHelper.setCategories( data );
-					}
-				});
-				BS.InsertCategory.Dialog.setData(
-					BsInsertCategoryWikiEditorHelper.getCategories()
-				);
-				BS.InsertCategory.Dialog.show( me );
+	return false;
+});
+// wikieditor mode
+$(document).on('click', '#bs-editbutton-insertcategory', function(e) {
+	e.preventDefault();
+	var me = this;
+	mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+		Ext.require('BS.InsertCategory.Dialog', function(){
+			BS.InsertCategory.Dialog.clearListeners();
+			BS.InsertCategory.Dialog.on('ok', function(sender, data){
+				if ( BS.InsertCategory.Dialog.isDirty ) {
+					BsInsertCategoryWikiEditorHelper.setCategories( data );
+				}
 			});
+			BS.InsertCategory.Dialog.setData(
+				BsInsertCategoryWikiEditorHelper.getCategories()
+			);
+			BS.InsertCategory.Dialog.show( me );
 		});
 	});
-
 	return false;
 });
 

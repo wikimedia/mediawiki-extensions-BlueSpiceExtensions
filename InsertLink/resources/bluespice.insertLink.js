@@ -19,21 +19,19 @@ onFileDialogFile = function(path) {
 onFileDialogCancel = function() {
 };
 
-$(document).ready(function() {
-	$('#bs-editbutton-insertlink').on('click', function() {
-		var me = this;
-		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.require('BS.InsertLink.Window', function() {
-				BS.InsertLink.Window.resetData();
-				BS.InsertLink.Window.clearListeners();
-				BS.InsertLink.Window.on('ok', BsInsertLinkWikiTextConnector.applyData, this);
-				BS.InsertLink.Window.on('cancel', bs.util.selection.reset);
-				BsInsertLinkWikiTextConnector.getData();
-				BS.InsertLink.Window.setData(
-					BsInsertLinkWikiTextConnector.getData()
-				);
-				BS.InsertLink.Window.show(me);
-			});
+$(document).on('click', '#bs-editbutton-insertlink', function() {
+	var me = this;
+	mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+		Ext.require('BS.InsertLink.Window', function() {
+			BS.InsertLink.Window.resetData();
+			BS.InsertLink.Window.clearListeners();
+			BS.InsertLink.Window.on('ok', BsInsertLinkWikiTextConnector.applyData, this);
+			BS.InsertLink.Window.on('cancel', bs.util.selection.reset);
+			BsInsertLinkWikiTextConnector.getData();
+			BS.InsertLink.Window.setData(
+				BsInsertLinkWikiTextConnector.getData()
+			);
+			BS.InsertLink.Window.show(me);
 		});
 	});
 });

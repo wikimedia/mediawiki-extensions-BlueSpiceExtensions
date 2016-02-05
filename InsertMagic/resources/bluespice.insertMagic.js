@@ -1,16 +1,14 @@
-$(document).ready(function(){
-	$('a#bs-editbutton-insertmagic').on('click', function(){
-		var me = this;
-		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.require('BS.InsertMagic.Window', function(){
-				BS.InsertMagic.Window.clearListeners();
-				BS.InsertMagic.Window.on( 'ok', BsInsertMagicWikiTextConnector.applyData );
+$(document).on('click', 'a#bs-editbutton-insertmagic', function() {
+	var me = this;
+	mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+		Ext.require('BS.InsertMagic.Window', function(){
+			BS.InsertMagic.Window.clearListeners();
+			BS.InsertMagic.Window.on( 'ok', BsInsertMagicWikiTextConnector.applyData );
 
-				BS.InsertMagic.Window.setData(
-					BsInsertMagicWikiTextConnector.getData()
-				);
-				BS.InsertMagic.Window.show( me );
-			});
+			BS.InsertMagic.Window.setData(
+				BsInsertMagicWikiTextConnector.getData()
+			);
+			BS.InsertMagic.Window.show( me );
 		});
 	});
 });
