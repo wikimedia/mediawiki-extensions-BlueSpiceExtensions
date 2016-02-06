@@ -367,8 +367,8 @@ class PageTemplates extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onLinkBegin( $oLinker, $oTarget, &$sHtml, &$aCustomAttribs, &$aQuery, &$aOptions, &$sRet ) {
-		if ( in_array( 'known', $aOptions ) ) return true;
-		if ( !in_array( 'broken', $aOptions ) ){ //It's not marked as "known" and not as "broken" so we have to check
+		if ( in_array( 'known', $aOptions, true ) ) return true;
+		if ( !in_array( 'broken', $aOptions, true ) ){ //It's not marked as "known" and not as "broken" so we have to check
 			if ( $oTarget->isKnown() ) return true;
 		}
 
