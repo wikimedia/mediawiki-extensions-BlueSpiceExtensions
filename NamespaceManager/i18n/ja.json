@@ -21,6 +21,8 @@
 	"bs-namespacemanager-label-subpages": "下位ページ",
 	"bs-namespacemanager-label-pagecount": "ページ数",
 	"bs-namespacemanager-label-system": "システム",
+	"bs-namespacemanager-hide-system-ns": "システムの名前空間を表示しない",
+	"bs-namespacemanager-hide-talk-ns": "トークの名前空間を表示しない",
 	"bs-namespacemanager-nsadded": "名前空間を追加しました。",
 	"bs-namespacemanager-nsremoved": "名前空間を除去しました。",
 	"bs-namespacemanager-nsedited": "名前空間を編集しました。",

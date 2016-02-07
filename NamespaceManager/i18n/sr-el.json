@@ -4,5 +4,7 @@
 			"Milicevic01"
 		]
 	},
+	"bs-namespacemanager-label-pagecount": "Stranice",
+	"bs-namespacemanager-label-system": "Sistem",
 	"bs-namespacemanager-deletens-deletepages": "Ova stranica je obrisana zato što je imenski prostor „$1“ obrisan."
 }

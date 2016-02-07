@@ -18,6 +18,8 @@
 	"bs-namespacemanager-label-content": "Innehållsnamnrymd",
 	"bs-namespacemanager-label-searchable": "Sök som standard",
 	"bs-namespacemanager-label-subpages": "Undersidor",
+	"bs-namespacemanager-label-pagecount": "Sidor",
+	"bs-namespacemanager-label-system": "System",
 	"bs-namespacemanager-nsadded": "Namnrymden har lagts till.",
 	"bs-namespacemanager-nsremoved": "Namnrymden har tagits bort.",
 	"bs-namespacemanager-nsedited": "Namnrymden har redigerats.",
