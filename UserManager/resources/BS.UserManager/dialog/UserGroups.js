@@ -27,7 +27,7 @@ Ext.define( 'BS.UserManager.dialog.UserGroups', {
 			labelWidth: 130,
 			labelAlign: 'right',
 			store: this.strGroups,
-			valueField: 'group',
+			valueField: 'group_name',
 			displayField: 'displayname',
 			maxHeight: 350
 		} );

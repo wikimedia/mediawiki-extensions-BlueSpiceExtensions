@@ -6,6 +6,7 @@
 	},
 	"bs-groupmanager-desc": "Administration interface for adding, editing and deleting user groups and their rights",
 	"bs-groupmanager-grpexists": "The group already exists.",
+	"bs-groupmanager-grpempty": "The group name can not be empty.",
 	"bs-groupmanager-grpadded": "The group has been added.",
 	"bs-groupmanager-grpedited": "The group has been edited.",
 	"bs-groupmanager-grpremoved": "The group has been removed.",
@@ -29,5 +30,6 @@
 	"log-show-hide-bs-group-manager": "$1 group manager log",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|has created}} the group $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|has renamed}} the group $4 to $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|has removed}} the group $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|has removed}} the group $4",
+	"apihelp-bs-groupmanager-description": "Provides the tasks for the extension GroupManager."
 }
