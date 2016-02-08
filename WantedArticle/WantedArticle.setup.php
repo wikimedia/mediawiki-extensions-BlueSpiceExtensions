@@ -10,7 +10,6 @@ $wgExtensionMessagesFiles['WantedArticle'] = __DIR__ . '/languages/WantedArticle
 
 $wgResourceModules['ext.bluespice.wantedarticle'] = array(
 	'scripts' => 'bluespice.wantedArticle.js',
-	//'styles'  => 'bluespice.wantedArticle.css', 17.05.2014 13:43 STM: Not needed at the moment because wantedarticle from is not used anymore - not removed because maybe future use
 	'messages' => array(
 		'bs-wantedarticle-info-nothing-entered',
 		'bs-wantedarticle-title-invalid-chars'

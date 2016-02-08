@@ -74,43 +74,19 @@ BsWantedArticle = {
 		});
 
 		this.oForms.submit( function() {
+			//Do not submit this forms!
 			return false;
-			//not sure...
-			/*var sTitle = $(this).find($('.bs-wantedarticle-composite-textfield')).val();
-			if( bsWantedArticleShowCreate == true ){
-				return BsWantedArticle.navigateToTarget( sTitle, $(this) );
-			}
-			else{
-				return BsWantedArticle.sendSuggestion( sTitle );
-			}*/
 		});
 
 		this.toggleMoreHandler();
 	},
 
 	checkArticleTitle: function( sArticleTitle, sDefault ) { // TODO RBV (06.10.10 09:42): Should be in common framework
-		if ( sArticleTitle == '' || sArticleTitle == sDefault ) {
+		if ( sArticleTitle === '' || sArticleTitle === sDefault ) {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					text: 'bs-wantedarticle-info-nothing-entered'
-				}
-			);
-			return false;
-		}
-
-		var aFoundChars = [];
-		var bsForbiddenCharsInArticleTitle = mw.config.get( 'bsForbiddenCharsInArticleTitle' );
-		for ( var i=0; i < bsForbiddenCharsInArticleTitle.length; i++ ) {
-			if ( sArticleTitle.indexOf( bsForbiddenCharsInArticleTitle [i] ) != -1 ) {
-				aFoundChars.push( '"' + bsForbiddenCharsInArticleTitle [i] + '"' );
-			}
-		}
-		if( aFoundChars.length > 0 ) {
-			bs.util.alert(
-				'bs-wantedarticle-alert',
-				{
-					text: mw.message('bs-wantedarticle-title-invalid-chars', aFoundChars.length, aFoundChars.join( ', ' ) ).plain()
+					text: mw.message('bs-wantedarticle-info-nothing-entered').plain()
 				}
 			);
 			return false;
@@ -120,7 +96,7 @@ BsWantedArticle = {
 
 	navigateToTarget: function( sArticleTitle ) {
 		sArticleTitle = sArticleTitle.replace( ' ', '_' );
-		var sUrl = this.config.urlBase + '/index.php?title=' + encodeURIComponent( sArticleTitle );
+		var sUrl = mw.util.wikiGetlink( sArticleTitle );
 		document.location.href = sUrl;
 
 		return false;
@@ -199,13 +175,11 @@ BsWantedArticle = {
 	}
 };
 
-mw.loader.using( 'ext.bluespice',function() {
-	BsWantedArticle.config = {
-		urlBase: mw.config.get( "wgServer" ) + mw.config.get( "wgScriptPath" )
-	};
-	BsWantedArticle.init();
-} );
-
+$(document).ready( function() {
+	mw.loader.using( 'ext.bluespice', function() {
+		BsWantedArticle.init();
+	});
+});
 // Register with ExtendedSearch Autocomplete
 $(document).on('BSExtendedSearchAutocompleteItemSelect', function( event, selectEvent, ui, status ){
 	if ( ui.item.attr !== 'bs-extendedsearch-suggest' ) return;
