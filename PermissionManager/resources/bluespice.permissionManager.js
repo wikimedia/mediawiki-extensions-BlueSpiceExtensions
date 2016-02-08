@@ -4,6 +4,8 @@ Ext.Loader.setPath(
 	'/resources/BS.panel/Maximizable.js'
 );
 
-Ext.create('BS.PermissionManager.panel.Manager', {
-	renderTo: 'panelPermissionManager'
-});
+Ext.onReady( function(){
+	Ext.create( 'BS.PermissionManager.panel.Manager', {
+		renderTo: 'panelPermissionManager'
+	} );
+} );

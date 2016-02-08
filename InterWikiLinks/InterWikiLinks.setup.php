@@ -19,6 +19,9 @@ $wgResourceModules['ext.bluespice.interWikiLinks'] = array(
 		'bs-interwikilinks-titledeleteinterwikilink',
 		'bs-interwikilinks-confirmdeleteinterwikilink'
 	),
+	'dependencies' => array(
+		'ext.bluespice.extjs'
+	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );

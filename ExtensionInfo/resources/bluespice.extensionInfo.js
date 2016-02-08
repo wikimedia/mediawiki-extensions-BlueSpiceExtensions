@@ -12,6 +12,8 @@
 
 //Hint: http://dev.sencha.com/deploy/dev/examples/grid/grouping.html
 
-Ext.create( 'BS.ExtensionInfo.Panel', {
-	renderTo: 'bs-extensioninfo-grid'
-});
+Ext.onReady( function(){
+	Ext.create( 'BS.ExtensionInfo.Panel', {
+		renderTo: 'bs-extensioninfo-grid'
+	} );
+} );
