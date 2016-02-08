@@ -8,6 +8,7 @@
 	},
 	"bs-groupmanager-desc": "Administrationsoberfläche zum Hinzufügen, Bearbeiten und Löschen von Benutzergruppen",
 	"bs-groupmanager-grpexists": "Die Gruppe ist bereits vorhanden.",
+	"bs-groupmanager-grpempty": "Der Gruppenname kann nicht leer sein.",
 	"bs-groupmanager-grpadded": "Die Gruppe wurde hinzugefügt.",
 	"bs-groupmanager-grpedited": "Die Gruppe wurde bearbeitet.",
 	"bs-groupmanager-grpremoved": "Die Gruppe wurde gelöscht.",
@@ -31,5 +32,6 @@
 	"log-show-hide-bs-group-manager": "$1 Gruppenverwaltung-Logbuch",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|hat}} die Gruppe $4 angelegt",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|hat}} die Gruppe $4 in $5 umbenannt",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|hat}} die Gruppe $4 gelöscht"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|hat}} die Gruppe $4 gelöscht",
+	"apihelp-bs-groupmanager-description": "Bietet die Aufgaben für die Erweiterung „GroupManager“."
 }
