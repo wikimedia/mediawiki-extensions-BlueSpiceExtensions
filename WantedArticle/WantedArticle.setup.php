@@ -4,6 +4,10 @@ BsExtensionManager::registerExtension('WantedArticle', BsRUNLEVEL::FULL|BsRUNLEV
 
 $GLOBALS['wgAutoloadClasses']['WantedArticle'] = __DIR__ . '/WantedArticle.class.php';
 
+$wgAutoloadClasses['ViewWantedArticleForm'] = __DIR__ . '/includes/ViewWantedArticleForm.php';
+$wgAutoloadClasses['ViewWantedArticleTag']  = __DIR__ . '/includes/ViewWantedArticleTag.php';
+$wgAutoloadClasses['BSApiTasksWantedArticle'] = __DIR__ . '/includes/api/BSApiTasksWantedArticle.php';
+
 $wgMessagesDirs['WantedArticle'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['WantedArticle'] = __DIR__ . '/languages/WantedArticle.i18n.php';
@@ -19,8 +23,4 @@ $wgResourceModules['ext.bluespice.wantedarticle'] = array(
 	'remoteExtPath' => 'BlueSpiceExtensions/WantedArticle/resources'
 );
 
-$wgAjaxExportList[] = 'WantedArticle::ajaxAddWantedArticle';
-$wgAjaxExportList[] = 'WantedArticle::ajaxGetWantedArticles';
-
-$wgAutoloadClasses['ViewWantedArticleForm'] = __DIR__ . '/includes/ViewWantedArticleForm.php';
-$wgAutoloadClasses['ViewWantedArticleTag']  = __DIR__ . '/includes/ViewWantedArticleTag.php';
+$wgAPIModules['bs-wantedarticle'] = 'BSApiTasksWantedArticle';
