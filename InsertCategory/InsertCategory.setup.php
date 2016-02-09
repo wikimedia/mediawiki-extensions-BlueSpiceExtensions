@@ -34,5 +34,3 @@ $wgResourceModules['ext.bluespice.insertcategory.styles'] = array(
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );
-
-$wgAjaxExportList[] = 'InsertCategory::addCategoriesToArticle';
