@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"밥풀떼기"
 		]
 	},
 	"bs-groupmanager-grpexists": "그룹이 이미 존재합니다.",
+	"bs-groupmanager-grpempty": "그룹명을 채워주세요.",
 	"bs-groupmanager-grpadded": "그룹이 추가되었습니다.",
 	"bs-groupmanager-grpedited": "그룹이 편집되었습니다.",
 	"bs-groupmanager-grpremoved": "그룹이 제거되었습니다.",

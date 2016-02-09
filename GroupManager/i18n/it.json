@@ -7,6 +7,7 @@
 	},
 	"bs-groupmanager-desc": "Interfaccia di amministrazione per aggiungere, modificare e cancellare gruppi utenti e relativi diritti",
 	"bs-groupmanager-grpexists": "Il gruppo esiste già.",
+	"bs-groupmanager-grpempty": "Il nome del gruppo non può essere vuoto.",
 	"bs-groupmanager-grpadded": "Il gruppo è stato aggiunto.",
 	"bs-groupmanager-grpedited": "Il gruppo è stato modificato.",
 	"bs-groupmanager-grpremoved": "Il gruppo è stato rimosso.",
@@ -19,5 +20,6 @@
 	"bs-groupmanager-titlenewgroup": "Nuovo gruppo",
 	"bs-groupmanager-titleeditgroup": "Modifica gruppo",
 	"bs-groupmanager-removegroup": "Sei sicuro di voler rimuovere {{PLURAL:$1|questo gruppo|questi gruppi}}?",
-	"bs-groupmanager-lablename": "Nome gruppo:"
+	"bs-groupmanager-lablename": "Nome gruppo:",
+	"apihelp-bs-groupmanager-description": "Fornisce le attività per l'estensione GroupManager."
 }

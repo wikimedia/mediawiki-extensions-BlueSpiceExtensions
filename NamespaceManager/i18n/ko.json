@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"밥풀떼기"
 		]
 	},
 	"bs-namespacemanager-label": "이름공간 관리자",
@@ -9,6 +10,7 @@
 	"bs-namespacemanager-ns-exists": "이 이름공간은 이미 존재합니다.",
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "이름공간",
+	"bs-namespacemanager-label-system": "시스템",
 	"bs-namespacemanager-nsadded": "이름공간이 추가되었습니다.",
 	"bs-namespacemanager-nsremoved": "이름공간이 제거되었습니다.",
 	"bs-namespacemanager-nsedited": "이름공간이 편집되었습니다.",
