@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"bs-groupmanager-desc": "Interface administrativa para engadir, editar e eliminar grupos de usuarios e os seus privilexios",
 	"bs-groupmanager-grpexists": "O grupo xa existe.",
+	"bs-groupmanager-grpempty": "O nome do grupo non pode estar baleiro.",
 	"bs-groupmanager-grpadded": "O grupo foi engadido.",
 	"bs-groupmanager-grpedited": "O grupo foi editado.",
 	"bs-groupmanager-grpremoved": "O grupo foi borrado.",
@@ -29,5 +31,6 @@
 	"log-show-hide-bs-group-manager": "Rexistro de xestión de grupo $1",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|creou}} o grupo $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|renomeou}} o grupo $4 a $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|eliminou}} o grupo $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|eliminou}} o grupo $4",
+	"apihelp-bs-groupmanager-description": "Proporciona as tarefas para a extensión GroupManager."
 }

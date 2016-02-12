@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"bs-formattinghelp-desc": "Mostra a axuda para formatear texto",
@@ -25,5 +26,6 @@
 	"bs-formattinghelp-help-extlink": "Ligazón externa",
 	"bs-formattinghelp-help-hr": "Liña horizontal",
 	"bs-formattinghelp-help-template": "Modelo",
-	"bs-formattinghelp-help-templatename": "Nome do modelo"
+	"bs-formattinghelp-help-templatename": "Nome do modelo",
+	"apihelp-bs-formattinghelp-description": "Proporciona as tarefas para a extensión FormattingHelp."
 }
