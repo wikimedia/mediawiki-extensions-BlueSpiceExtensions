@@ -567,6 +567,7 @@ class SmartList extends BsExtensionMW {
 		$aArgs['numwithtext'] = BsCore::sanitizeArrayEntry( $aArgs, 'numwithtext', 100, BsPARAMTYPE::INT );
 		$aArgs['meta'] = BsCore::sanitizeArrayEntry( $aArgs, 'meta', false, BsPARAMTYPE::BOOL );
 		$aArgs['target'] = BsCore::sanitizeArrayEntry( $aArgs, 'target', '', BsPARAMTYPE::STRING );
+		$aArgs['excludens'] = BsCore::sanitizeArrayEntry( $aArgs, 'excludens', '', BsPARAMTYPE::SQL_STRING );
 
 		$oSmartListView = new ViewBaseElement();
 		if ( !empty( $aArgs['heading'] ) ) {
@@ -604,7 +605,8 @@ class SmartList extends BsExtensionMW {
 	 * @param bool $aArgs['showtext'] Also display article text.
 	 * @param int $aArgs['trimtext'] Maximum number of text characters.
 	 * @param string $aArgs['order'] Sort order for list. (time|title)
-	* @param bool $aArgs['showns'] Show namespace befor title.
+	 * @param string $aArgs['excludens'] Comma separated list of excluded namespaces.
+	 * @param bool $aArgs['showns'] Show namespace befor title.
 	 * @return string HTML output that is to be displayed.
 	 */
 	private function getCustomList( $aArgs ) {
@@ -613,6 +615,7 @@ class SmartList extends BsExtensionMW {
 		 * @var List of objects with three properties: title, namespace and timestamp
 		 */
 		$aObjectList = array();
+		$aNamespaceIds = array();
 
 		$oErrorListView = new ViewTagErrorList( $this );
 		$oValidationResult = BsValidator::isValid( 'ArgCount', $aArgs['count'], array( 'fullResponse' => true ) );
@@ -722,7 +725,7 @@ class SmartList extends BsExtensionMW {
 			}
 
 			try {
-				$aNamespaceIds = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $aArgs['namespaces'] );
+				$aNamespaceIds = $this->makeNamespaceArrayDiff( $aArgs );
 				$aConditions[] = 'rc_namespace IN (' . implode( ',', $aNamespaceIds ) . ')';
 			} catch ( BsInvalidNamespaceException $ex ) {
 				$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
@@ -769,7 +772,7 @@ class SmartList extends BsExtensionMW {
 			}
 
 			$aConditions[] = 'rc_title = page_title AND rc_namespace = page_namespace'; //prevent display of deleted articles
-			$aConditions[] = 'NOT (rc_type = 3)'; //prevent moves and deletes from being displayed
+			$aConditions[] = 'NOT ( rc_type = 3 AND NOT ( rc_namespace = 6 ) )'; //include files
 
 			$aFields = array( 'rc_title as title', 'rc_namespace as namespace' );
 			if ( isset( $aArgs['meta'] ) && $aArgs['meta'] == true ) {
@@ -840,10 +843,7 @@ class SmartList extends BsExtensionMW {
 			$aOptions = array();
 
 			try {
-				$aNamespaceIds = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString(
-					$aArgs['namespaces']
-				);
-				$aConditions['page_namespace'] = $aNamespaceIds;
+				$aConditions['page_namespace'] = $this->makeNamespaceArrayDiff( $aArgs );
 			} catch ( BsInvalidNamespaceException $ex ) {
 				$sInvalidNamespaces = implode( ', ', $ex->getListOfInvalidNamespaces() );
 				$oErrorListView->addItem(
@@ -1350,6 +1350,27 @@ class SmartList extends BsExtensionMW {
 				}
 			}
 		}
+	}
+
+	/*
+	 * Remove the excluded namespaces from the list of namespaces.
+	 *
+	 * @param array &$aArgs Arguments of custom list
+	 * @param array &$aNamespaceDiff
+	 */
+	public function makeNamespaceArrayDiff( &$aArgs ) {
+
+		if ( isset( $aArgs['excludens'] ) &&  $aArgs['excludens'] !== '' ) {
+			$aNamespaceDiff = array_diff(
+				BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $aArgs['namespaces'] ),
+				BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $aArgs['excludens'] )
+			);
+		}
+		else {
+			$aNamespaceDiff = BsNamespaceHelper::getNamespaceIdsFromAmbiguousCSVString( $aArgs['namespaces'] );
+		}
+
+		return $aNamespaceDiff;
 	}
 
 }
