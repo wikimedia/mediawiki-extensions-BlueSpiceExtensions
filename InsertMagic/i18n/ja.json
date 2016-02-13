@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
-	"bs-insertmagic-desc": "マジックワードやタグを挿入できるダイアログを編集モードに追加する",
+	"bs-insertmagic-desc": "マジックワードやタグを挿入できるダイアログを追加する",
 	"bs-insertmagic": "マジックワードを挿入",
 	"bs-insertmagic-notoc": "目次を非表示にする。",
 	"bs-insertmagic-forcetoc": "通常の位置に目次を表示することを強制する。",

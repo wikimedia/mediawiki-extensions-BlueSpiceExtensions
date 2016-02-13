@@ -4,6 +4,7 @@
 			"Beta16"
 		]
 	},
+	"bs-insertmagic-desc": "Aggiunge una finestra di dialogo che consente l'inserimento di parole magiche ed etichette",
 	"bs-insertmagic-currentyear": "Anno attuale",
 	"bs-insertmagic-currentmonth": "Mese attuale (con zero iniziale).",
 	"bs-insertmagic-currentmonthname": "Mese attuale (nome).",
