@@ -4,8 +4,8 @@
 Thumbs.db
 BlueSpiceExtensions.local.php
 
+/node_modules/
 /vendor/
 TEST
 html/
 latex/
-
