@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hwangjy9",
-			"밥풀떼기"
+			"밥풀떼기",
+			"Macofe"
 		]
 	},
 	"bs-groupmanager-grpexists": "그룹이 이미 존재합니다.",
@@ -12,7 +13,7 @@
 	"bs-groupmanager-grpremoved": "그룹이 제거되었습니다.",
 	"bs-groupmanager-label": "그룹 관리자",
 	"bs-groupmanager-invalid-name": "그룹 이름이 올바르지 않은 {{PLURAL:$1|문자}}를 포함하고 있습니다: $2",
-	"bs-groupmanager-invalid-name-length": "그룹 이름은 16글자를 넘을 수 없습니다.",
+	"bs-groupmanager-invalid-name-length": "그룹 이름은 255글자를 넘을 수 없습니다.",
 	"bs-groupmanager-invalid-name-numeric": "그룹 이름은 적어도 한 글자 이상이어야 합니다.",
 	"bs-groupmanager-headergroup": "그룹",
 	"bs-groupmanager-tipremove": "{{PLURAL:$1|그룹}} 제거",

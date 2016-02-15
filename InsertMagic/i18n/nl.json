@@ -58,7 +58,7 @@
 	"bs-insertmagic-defaultsort": "Gebruikt voor het categoriseren van pagina ' s, stelt een default category sort-toets.",
 	"bs-insertmagic-gallery": "Maak een galerij van miniaturen met het label <code>&lt;gallery&gt;</code>.",
 	"bs-insertmagic-nowiki": "Ontsnappen wiki-opmaak.",
-	"bs-insertmagic-noinclude": "Alles wat tussen <code><noinclude></code> en <code></noinclude></code> wordt verwerkt en verschijnt alleen als de pagina wordt direct bekeken, het zal niet worden opgenomen of worden vervangen.",
+	"bs-insertmagic-noinclude": "Alles tussen <code>&lt;noinclude&gt;</code> en <code>&lt;/noinclude&gt;</code> wordt alleen verwerkt en weergegeven als de pagina direct wordt bekeken en niet wordt ingesloten of gesubstitueerd.",
 	"bs-insertmagic-includeonly": "De converse is <code><includeonly></code>.",
 	"bs-insertmagic-dlg-title": "Magisch woord of label toevoegen",
 	"bs-insertmagic-type-tags": "Labels",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tumsaa"
+			"Tumsaa",
+			"Macofe"
 		]
 	},
 	"bs-groupmanager-grpexists": "Gareen kun duraanuu jira",
@@ -9,7 +10,7 @@
 	"bs-groupmanager-grpedited": "Gareen kun jijjiirameera",
 	"bs-groupmanager-grpremoved": "Gareen kun balleeffameera",
 	"bs-groupmanager-label": "Too'ataa garee",
-	"bs-groupmanager-invalid-name-length": "Maqaan garee qubee 16 ol ta'uu hin danda'u",
+	"bs-groupmanager-invalid-name-length": "Maqaan garee qubee 255 ol ta'uu hin danda'u",
 	"bs-groupmanager-invalid-name-numeric": "Maqaan garee yoo xiqqaate qubee 1 qabaachuu qaba.",
 	"bs-groupmanager-headergroup": "Garee",
 	"bs-groupmanager-titlenewgroup": "Garee haaraa",

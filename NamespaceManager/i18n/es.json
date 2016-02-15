@@ -22,6 +22,8 @@
 	"bs-namespacemanager-label-subpages": "Subpáginas",
 	"bs-namespacemanager-label-pagecount": "Páginas",
 	"bs-namespacemanager-label-system": "Sistema",
+	"bs-namespacemanager-hide-system-ns": "Ocultar los espacios de nombres de sistema",
+	"bs-namespacemanager-hide-talk-ns": "Ocultar los espacios de nombres de discusión",
 	"bs-namespacemanager-nsadded": "Se ha añadido el espacio de nombres.",
 	"bs-namespacemanager-nsremoved": "Se ha borrado el espacio de nombres.",
 	"bs-namespacemanager-nsedited": "Se ha editado el espacio de nombres.",

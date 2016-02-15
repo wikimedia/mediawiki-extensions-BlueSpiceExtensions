@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Macofe"
 		]
 	},
 	"bs-groupmanager-grpexists": "Bez' ez eus eus ar strollad dija.",
@@ -9,7 +10,7 @@
 	"bs-groupmanager-grpedited": "Aozet eo bet ar strollad.",
 	"bs-groupmanager-grpremoved": "Lamet eo bet ar strollad.",
 	"bs-groupmanager-label": "Merour ar strollad",
-	"bs-groupmanager-invalid-name-length": "Ne c'hall ket bezañ ouzhpenn 16 arouezenn en anv ar strollad.",
+	"bs-groupmanager-invalid-name-length": "Ne c'hall ket bezañ ouzhpenn 255 arouezenn en anv ar strollad.",
 	"bs-groupmanager-headergroup": "Strollad",
 	"bs-groupmanager-tipremove": "Lemel {{PLURAL:$1|strollad|a strolladoù}}",
 	"bs-groupmanager-titlenewgroup": "Strollad nevez",

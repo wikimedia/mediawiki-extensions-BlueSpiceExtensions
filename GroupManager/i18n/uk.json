@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Macofe"
 		]
 	},
 	"bs-groupmanager-desc": "Адміністративний інтерфейс для додавання, редагування і видалення груп, користувачів та їхніх прав",
@@ -12,7 +13,7 @@
 	"bs-groupmanager-grpremoved": "Групу було вилучено.",
 	"bs-groupmanager-label": "Менеджер груп",
 	"bs-groupmanager-invalid-name": "Назва групи містить недопустим{{PLURAL:$1|ий|і}} {{PLURAL:$1|символ|символи}}: $2",
-	"bs-groupmanager-invalid-name-length": "Назва групи не може бути довшою, ніж 16 символів.",
+	"bs-groupmanager-invalid-name-length": "Назва групи не може бути довшою, ніж 255 символів.",
 	"bs-groupmanager-invalid-name-numeric": "Назва групи повинна мати принаймні один символ.",
 	"bs-groupmanager-headergroup": "Група",
 	"bs-groupmanager-tipremove": "Вилучити {{PLURAL:$1|групу|групи}}",
