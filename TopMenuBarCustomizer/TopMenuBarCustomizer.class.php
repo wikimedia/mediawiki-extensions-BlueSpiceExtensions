@@ -212,7 +212,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 		}
 
 		$aOut= array();
-		$aOut[] = HTML::openElement( 'ul' );
+		$aOut[] = Html::openElement( 'ul' );
 		foreach( self::getNavigationSites() as $aApp ) {
 			$aApp = array_merge(self::$aNavigationSiteTemplate, $aApp);
 			$oMainItem = new ViewTopMenuItem();
@@ -231,7 +231,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			}
 			$aOut[] = $oMainItem->execute();
 		}
-		$aOut[] = HTML::closeElement( 'ul' );
+		$aOut[] = Html::closeElement( 'ul' );
 
 		$tpl->data['bs_navigation_sites'] = implode( "\n", $aOut );
 
