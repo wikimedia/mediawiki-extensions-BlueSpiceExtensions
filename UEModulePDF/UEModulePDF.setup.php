@@ -24,3 +24,8 @@ $wgAutoloadClasses['BsPDFServlet'] = __DIR__ . '/includes/PDFServlet.class.php';
 $wgAutoloadClasses['BsExportModulePDF'] = __DIR__ . '/includes/ExportModulePDF.class.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'UEModulePDF::getSchemaUpdates';
+
+// Remove if minimal system requirements of MW changes to PHP <= 5.5
+if( !defined( CURLOPT_SAFE_UPLOAD ) ) {
+	define( 'CURLOPT_SAFE_UPLOAD', -1 );
+}
