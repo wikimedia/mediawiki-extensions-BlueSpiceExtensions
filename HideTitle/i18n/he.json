@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ronel1"
+			"Ronel1",
+			"MojoMann"
 		]
 	},
-	"bs-hidetitle-desc": "מוסיף <code> <nowiki> __HIDETITLE__ </ nowiki> </ code> התג כדי להסתיר את הכותרת של הדף"
+	"bs-hidetitle-desc": "מוסיף את מילת הקסם <code><nowiki>__HIDETITLE__</nowiki></code> כדי להסתיר את כותרת הדף"
 }

@@ -12,7 +12,7 @@
 	"bs-namespacemanager-ns-exists": "Error message for the namespace already exists.",
 	"bs-namespacemanager-ns-length": "Error message for the namespace must have a minumum length of two characters.",
 	"bs-namespacemanager-invalid-id": "Error message for no valid namespace ID",
-	"bs-namespacemanager-label-id": "Column headline for id\n*{{Identical|ID}}",
+	"bs-namespacemanager-label-id": "Column headline for id\n{{Identical|ID}}",
 	"bs-namespacemanager-label-namespaces": "Column headline for namespace\n*{{Identical|Namespace}}",
 	"bs-namespacemanager-label-editable": "Column headline for renameable\n*{{Identical|Renameable}}",
 	"bs-namespacemanager-label-content": "Column headline for content namespace\n{{Identical|Content namespace}}",
