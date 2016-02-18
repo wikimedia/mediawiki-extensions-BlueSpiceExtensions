@@ -26,6 +26,6 @@ $wgAutoloadClasses['BsExportModulePDF'] = __DIR__ . '/includes/ExportModulePDF.c
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'UEModulePDF::getSchemaUpdates';
 
 // Remove if minimal system requirements of MW changes to PHP <= 5.5
-if( !defined( CURLOPT_SAFE_UPLOAD ) ) {
+if( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
 	define( 'CURLOPT_SAFE_UPLOAD', -1 );
 }
