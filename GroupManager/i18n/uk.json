@@ -3,11 +3,13 @@
 		"authors": [
 			"Ата",
 			"Andriykopanytsia",
-			"Macofe"
+			"Macofe",
+			"Piramidion"
 		]
 	},
 	"bs-groupmanager-desc": "Адміністративний інтерфейс для додавання, редагування і видалення груп, користувачів та їхніх прав",
 	"bs-groupmanager-grpexists": "Група вже існує.",
+	"bs-groupmanager-grpempty": "Назва групи не може бути порожньою.",
 	"bs-groupmanager-grpadded": "Групу було додано.",
 	"bs-groupmanager-grpedited": "Групу було відредаговано.",
 	"bs-groupmanager-grpremoved": "Групу було вилучено.",
@@ -31,5 +33,6 @@
 	"log-show-hide-bs-group-manager": "$1 журнал менеджера груп",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|створив|створила}} групу $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|перейменував|перейменувала}} групу $4 на $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|вилучив|вилучила}} групу $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|вилучив|вилучила}} групу $4",
+	"apihelp-bs-groupmanager-description": "Забезпечує завдання для розширення GroupManager."
 }

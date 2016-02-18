@@ -37,5 +37,7 @@
 	"bs-namespacemanager-deletens-movepages": "Deze pagina is verplaatst van de naamruimte \"$1\" naamruimte \"{{int:bs-ns_main}}\", omdat de naamruimte \"$1\" is verwijderd.",
 	"bs-namespacemanager-deletens-deletepages": "Deze pagina is verwijderd, omdat de naamruimte \"$1\" is verwijderd.",
 	"log-name-bs-namespace-manager": "Logboek naamruimtebeheer",
-	"log-show-hide-bs-namespace-manager": "Logboek naamruimtebeheer $1"
+	"log-show-hide-bs-namespace-manager": "Logboek naamruimtebeheer $1",
+	"bs-namespacemanager-ns-config-saved": "De instellingen voor naamruimten zijn opgeslagen.",
+	"apihelp-bs-namespace-tasks-description": "Maakt het mogelijk de instellingen voor de naamruimten aan te passen."
 }

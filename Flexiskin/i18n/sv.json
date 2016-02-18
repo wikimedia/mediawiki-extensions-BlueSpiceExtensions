@@ -51,6 +51,7 @@
 	"bs-flexiskin-api-mode-desc": "Handlingsläget, t.ex. \"config\". Standard är \"flexiskin\".",
 	"bs-flexiskin-api-id-desc": "ID för Flexiskin (valfritt).",
 	"bs-flexiskin-api-data-desc": "En dataarray (valfritt).",
+	"bs-flexiskin-api-error-save": "Ett fel uppstod när detta skulle sparas. Anledning: \"$1\"",
 	"bs-flexiskin-api-error-invalid-action": "Denna handling finns inte.",
 	"bs-flexiskin-api-error-missing-param": "Följande parameter saknas: \"$1\""
 }

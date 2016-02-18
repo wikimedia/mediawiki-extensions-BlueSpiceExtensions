@@ -6,7 +6,7 @@
 			"Lokal Profil"
 		]
 	},
-	"bs-insertmagic-desc": "Lägger till en dialogruta i redigeringsläget som tillåter tillägg av magiska ord och taggar.",
+	"bs-insertmagic-desc": "Lägger till en dialogruta som kan lägga till magiska ord och taggar.",
 	"bs-insertmagic": "Infoga magiskt ord",
 	"bs-insertmagic-notoc": "Döljer innehållsförteckningen.",
 	"bs-insertmagic-forcetoc": "Tvingar innehållsförteckningen att visas på sin normala plats.",
