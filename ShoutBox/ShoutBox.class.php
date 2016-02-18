@@ -244,98 +244,6 @@ class ShoutBox extends BsExtensionMW {
 	}
 
 	/**
-	 * Delivers a rendered list of shouts for the current page to be displayed in the shoutbox.
-	 * This function is called remotely via AJAX-Handler.
-	 * @param string $sOutput contains the rendered list
-	 * @return bool allow other hooked methods to be executed. Always true
-	 */
-	public static function getShouts( $iArticleId, $iLimit ) {
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false )
-			return "";
-
-		// do not allow negative page ids and pages that have 0 as id (e.g. special pages)
-		if ( $iArticleId <= 0 )
-			return true;
-
-		if ( $iLimit <= 0 )
-				$iLimit = BsConfig::get( 'MW::ShoutBox::NumberOfShouts' );
-
-		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId, $iLimit );
-		$aData = BsCacheHelper::get( $sKey );
-$aData = false;
-		if ( $aData !== false ) {
-			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching shouts from cache' );
-			$sOutput = $aData;
-		} else {
-			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching shouts from DB' );
-
-			$sOutput = '';
-			//return false on hook handler to break here
-
-			$aTables = array( 'bs_shoutbox' );
-			$aFields = array( '*' );
-			$aConditions = array(
-				'sb_page_id' => $iArticleId,
-				'sb_archived' => '0',
-				'sb_parent_id' => '0',
-				'sb_title' => '',
-			);
-			$aOptions = array(
-				'ORDER BY' => 'sb_timestamp DESC',
-				'LIMIT' => $iLimit + 1, // One more than iLimit in order to know if there are more shouts left.
-			);
-
-			if ( !wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array( &$sOutput, $iArticleId, &$iLimit, &$aTables, &$aFields, &$aConditions, &$aOptions ) ) ) {
-				return $sOutput;
-			}
-
-			$dbr = wfGetDB( DB_SLAVE );
-			$res = $dbr->select(
-					$aTables, $aFields, $aConditions, __METHOD__, $aOptions
-			);
-
-			$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
-
-			if ( $dbr->numRows( $res ) > $iLimit ) {
-				$oShoutBoxMessageListView->setMoreLimit( $iLimit + BsConfig::get( 'MW::ShoutBox::NumberOfShouts' ) );
-			}
-
-			$bShowAge = BsConfig::get( 'MW::ShoutBox::ShowAge' );
-			$bShowUser = BsConfig::get( 'MW::ShoutBox::ShowUser' );
-
-			$iCount = 0;
-			while ( $row = $dbr->fetchRow( $res ) ) {
-				$oUser = User::newFromId( $row['sb_user_id'] );
-				$oProfile = BsCore::getInstance()->getUserMiniProfile( $oUser );
-				$sMessage = preg_replace_callback("#@(\S*)#", "self::replaceUsernameInMessage", $row['sb_message']);
-				$oShoutBoxMessageView = new ViewShoutBoxMessage();
-				if ( $bShowAge )
-					$oShoutBoxMessageView->setDate( BsFormatConverter::mwTimestampToAgeString( $row['sb_timestamp'], true ) );
-				if ( $bShowUser )
-					$oShoutBoxMessageView->setUsername( $row['sb_user_name'] );
-				$oShoutBoxMessageView->setUser( $oUser );
-				$oShoutBoxMessageView->setMiniProfile( $oProfile );
-				$oShoutBoxMessageView->setMessage( $sMessage );
-				$oShoutBoxMessageView->setShoutID( $row['sb_id'] );
-				$oShoutBoxMessageListView->addItem( $oShoutBoxMessageView );
-				// Since we have one more shout than iLimit, we need to count :)
-				$iCount++;
-				if ( $iCount >= $iLimit )
-					break;
-			}
-
-			$sOutput .= $oShoutBoxMessageListView->execute();
-			$iTotelShouts = self::getTotalShouts( $iArticleId );
-			$sOutput .= "<div id='bs-sb-count-all' style='display:none'>" . $iTotelShouts . "</div>";
-
-			//expire after 5 minutes in order to keep time tracking somewhat up-to-date
-			BsCacheHelper::set( $sKey, $sOutput, 60*5 );
-			$dbr->freeResult( $res );
-		}
-		return $sOutput;
-	}
-
-	/**
 	 * Returns total number of shouts for the article id
 	 * @param int $iArticleId
 	 * @return int number of shouts
@@ -369,114 +277,15 @@ $aData = false;
 	}
 
 	/**
-	 * Inserts a shout for the current page.
-	 * This function is called remotely via AJAX-Handler.
-	 * @param string $sOutput success state of database action
-	 * @return bool allow other hooked methods to be executed
+	 * Invalidates the ShoutBox cache for a single article
+	 * @param integer $iArticleId
 	 */
-	public static function insertShout( $iArticleId, $sMessage ) {
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false || BsCore::checkAccessAdmission( 'writeshoutbox' ) === false )
-			return true;
-
-		$oRequest = RequestContext::getMain()->getRequest();
-		$oUser = RequestContext::getMain()->getUser();
-
-		// prevent spam by enforcing a interval between two commits
-		$iCommitTimeInterval = BsConfig::get( 'MW::ShoutBox::CommitTimeInterval' );
-		$iCurrentCommit = time();
-
-		$vLastCommit = $oRequest->getSessionData( 'MW::ShoutBox::lastCommit' );
-		if ( is_numeric( $vLastCommit ) && $vLastCommit + $iCommitTimeInterval > $iCurrentCommit ) {
-			return FormatJson::encode(
-				array(
-					'success' => false,
-					'msg' => 'bs-shoutbox-too-early'
-				)
-			);
-		}
-		$oRequest->setSessionData( 'MW::ShoutBox::lastCommit', $iCurrentCommit );
-
-		$sNick = BsCore::getUserDisplayName( $oUser );
-		$iUserId = $oUser->getId();
-		$sTimestamp = wfTimestampNow();
-
-		if ( strlen( $sMessage ) > BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ) ) {
-			$sMessage = substr( $sMessage, 0, BsConfig::get( 'MW::ShoutBox::MaxMessageLength' ) );
-		}
-		$sMessage = htmlspecialchars( $sMessage, ENT_QUOTES, 'UTF-8' );
-
-		// TODO MRG (08.09.10 01:57): error message
-		if ( $iArticleId <= 0 )
-			return false;
-
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->insert(
-				'bs_shoutbox',
-				array(
-					'sb_page_id' => $iArticleId,
-					'sb_user_id' => $iUserId,
-					'sb_user_name' => $sNick,
-					'sb_message' => $sMessage,
-					'sb_timestamp' => $sTimestamp,
-					'sb_archived' => '0'
-				)
-		); // TODO RBV (21.10.10 17:21): Send error / success to client.
-
-		wfRunHooks( 'BSShoutBoxAfterInsertShout', array( $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp ) );
-		self::notify("insert", $iArticleId, $iUserId, $sNick, $sMessage, $sTimestamp);
-
-		self::invalidateShoutBoxCache( $iArticleId );
-		return FormatJson::encode(
-			array(
-				'success' => true,
-				'msg' => self::getShouts( $iArticleId, 0 )
-			)
-		);
-	}
-
-	/**
-	 * Archivess a shout for the current page.
-	 * This function is called remotely via AJAX-Handler.
-	 * @param string $sOutput success state of database action
-	 * @return bool allow other hooked methods to be executed
-	 */
-	public static function archiveShout( $iShoutId, $iArticleId ) {
-		if ( BsCore::checkAccessAdmission( 'readshoutbox' ) === false || BsCore::checkAccessAdmission( 'writeshoutbox' ) === false )
-			return true;
-
-		global $wgUser;
-		$iUserId = $wgUser->getId();
-
-		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->select(
-				'bs_shoutbox', 'sb_user_id', array( 'sb_id' => $iShoutId ), __METHOD__, array( 'LIMIT' => '1' )
-		);
-
-		$row = $dbw->fetchRow( $res );
-		// If we don't have archiveshoutbox rights, maybe we can delete our own shout?
-		if ( !BsCore::checkAccessAdmission( 'archiveshoutbox' ) ) {
-			//if setting for "allow own entries to be archived" is set + username != shoutbox-entry-username => exit
-			if ( BsConfig::get( 'MW::ShoutBox::AllowArchive' ) && $iUserId != $row['sb_user_id'] ) {
-				$sOutput = wfMessage( 'bs-shoutbox-archive-failure-user' )->plain();
-				return true;
-			}
-		}
-		$res = $dbw->update(
-				'bs_shoutbox', array( 'sb_archived' => '1' ), array( 'sb_id' => $iShoutId )
-		);
-
-		self::invalidateShoutBoxCache( $iArticleId );
-		$sResponse = $res == true ? 'bs-shoutbox-archive-success' : 'bs-shoutbox-archive-failure';
-		$sOutput = wfMessage( $sResponse )->plain();
-		return $sOutput;
-	}
-
 	public static function invalidateShoutBoxCache( $iArticleId ) {
-		// A better solution might be to store all possible limits and their values in one key.
-		for ( $iLimit = 0; $iLimit < 300; $iLimit++ ) {
-			BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', $iArticleId, $iLimit ) );
-		}
-		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'ShoutBox', 'totalCount' . $iArticleId ) );
+		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey(
+			'BlueSpice',
+			'ShoutBox',
+			"totalCount$iArticleId"
+		));
 	}
 
 	/**
