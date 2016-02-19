@@ -35,21 +35,28 @@ Ext.define( 'BS.InsertMagic.Window', {
 		});
 		this.cmbType.on( 'select', this.onTypeSelected, this );
 
-		this.tagsStore = Ext.create( 'Ext.data.JsonStore', {
+		this.tagsStore = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-insertmagic-data-store',
+			fields: ['id', 'type', 'name', 'desc', 'code' ],
+			submitValue: false,
+			remoteSort: false,
+			remoteFilter: false,
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertMagic::ajaxGetData'),
+				url: mw.util.wikiScript('api'),
+				extraParams: {
+					format: 'json',
+					limit: 0
+				},
 				reader: {
 					type: 'json',
-					root: 'result',
-					idProperty: 'id'
+					root: 'results',
+					idProperty: 'name'//,
+					//totalProperty: 'total'
 				}
 			},
-			autoLoad: true,
-			fields: ['id', 'type', 'name', 'desc', 'code' ],
 			sortInfo: {
-				field: 'name',
-				direction: 'ASC'
+				field: 'name'
 			}
 		});
 		this.tagsStore.on( 'load',this.onStoreLoad, this );

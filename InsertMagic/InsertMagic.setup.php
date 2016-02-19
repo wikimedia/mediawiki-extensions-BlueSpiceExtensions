@@ -9,7 +9,8 @@ $wgMessagesDirs['InsertMagic'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['InsertMagic'] = __DIR__ . '/languages/InsertMagic.i18n.php';
 
 $wgAutoloadClasses['InsertMagic'] = __DIR__ . '/InsertMagic.class.php';
-$wgAjaxExportList[] = 'InsertMagic::ajaxGetData';
+$wgAutoloadClasses['BSApiInsertMagicDataStore'] = __DIR__ . '/includes/api/BSApiInsertMagicDataStore.php';
+$wgAPIModules['bs-insertmagic-data-store'] = 'BSApiInsertMagicDataStore';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__.'/resources',
