@@ -102,6 +102,7 @@ var BsInsertCategoryViewHelper = {
 			api.get({
 				action: 'bs-wikipage-tasks',
 				task: 'setCategories',
+				token: mw.user.tokens.get( 'editToken', '' ),
 				taskData: Ext.encode({
 					page_id: mw.config.get( "wgArticleId" ),
 					categories: categories

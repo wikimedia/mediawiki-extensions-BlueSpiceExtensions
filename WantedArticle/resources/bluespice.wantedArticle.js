@@ -110,6 +110,7 @@ BsWantedArticle = {
 				action: 'bs-wantedarticle',
 				task: 'addWantedArticle',
 				format: 'json',
+				token: mw.user.tokens.get( 'editToken', '' ),
 				taskData: JSON.stringify({
 					title: sArticleTitle
 				})
@@ -154,6 +155,7 @@ BsWantedArticle = {
 					action: 'bs-wantedarticle',
 					task: 'getWantedArticles',
 					format: 'json',
+					token: mw.user.tokens.get( 'editToken', '' ),
 					taskData: JSON.stringify({
 						count: $(this).attr('data-count'),
 						sort: $(this).attr('data-sort'),
