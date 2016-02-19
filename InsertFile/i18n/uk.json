@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-insertfile-desc": "Діалог завантаження файлів і вставлення посилання на файл",
@@ -66,5 +67,6 @@
 	"bs-insertfile-no-link": "Немає посилання",
 	"bs-insertfile-error-no-medialink": "Медіапосилання не вибрано.",
 	"bs-insertfile-error-no-imagelink": "Посилання на зображення не вибрано.",
-	"bs-insertfile-upload-waitmessage": "Віддача триває..."
+	"bs-insertfile-upload-waitmessage": "Віддача триває...",
+	"apihelp-bs-inserfile-license-store-description": "Перелічує ліцензії для розширення InsertFile."
 }

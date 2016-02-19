@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-extendedsearch-desc": "Під'єднайте пошук на Apache Solr (http://lucene.apache.org/solr/) для додаткових функцій пошуку",
@@ -58,6 +59,7 @@
 	"bs-extendedsearch-pref-showfacets": "Показати аспекти на спеціальній сторінці",
 	"bs-extendedsearch-pref-showautocomplete": "Пропонувати сторінки, які відповідають пошуковому запиту",
 	"bs-extendedsearch-pref-externalrepo": "Індексувати зовнішній каталог:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL-адреса для зовнішнього каталогу:",
 	"bs-extendedsearch-pref-acentries": "Кількість пропозицій, що відповідають пошуковому запиту:",
 	"bs-extendedsearch-pref-highlightsnippets": "Кількість виділених фрагментів:",
 	"bs-extendedsearch-pref-indexfiletypes": "Індексувати файли з певними розширеннями:",
