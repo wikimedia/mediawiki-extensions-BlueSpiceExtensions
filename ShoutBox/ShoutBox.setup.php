@@ -48,11 +48,10 @@ $wgResourceModules['ext.bluespice.shoutbox.styles'] = array(
 
 unset( $aResourceModuleTemplate );
 
-$wgAjaxExportList[] = 'ShoutBox::getShouts';
-$wgAjaxExportList[] = 'ShoutBox::insertShout';
-$wgAjaxExportList[] = 'ShoutBox::archiveShout';
+$wgAPIModules['bs-shoutbox'] = 'BSApiTasksShoutBox';
 
 $GLOBALS['wgAutoloadClasses']['ShoutBox'] = __DIR__ . '/ShoutBox.class.php';
+$wgAutoloadClasses['BSApiTasksShoutBox'] = __DIR__ . '/includes/api/BSApiTasksShoutBox.php';
 $wgAutoloadClasses['ViewShoutBox'] = __DIR__ . '/views/view.ShoutBox.php';
 $wgAutoloadClasses['ViewShoutBoxMessageList'] = __DIR__ . '/views/view.ShoutBoxMessageList.php';
 $wgAutoloadClasses['ViewShoutBoxMessage'] = __DIR__ . '/views/view.ShoutBoxMessage.php';
