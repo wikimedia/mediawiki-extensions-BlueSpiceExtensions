@@ -122,6 +122,20 @@ class BSApiTasksFormattingHelp extends BSApiTasksBase {
 		return $oReturn;
 	}
 
+	protected function getAllowedParams() {
+		$aParams = parent::getAllowedParams();
+		$aParams['token'][ApiBase::PARAM_REQUIRED] = false;
+		return $aParams;
+	}
+
+	/**
+	 * FormattingHelp is readonly
+	 * @return boolean false
+	 */
+	public function needsToken() {
+		return false;
+	}
+
 	/**
 	 * Returns an array of tasks and their required permissions
 	 * array( 'taskname' => array('read', 'edit') )
