@@ -2,6 +2,7 @@
 BsExtensionManager::registerExtension('InterWikiLinks', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
 $GLOBALS['wgAutoloadClasses']['InterWikiLinks'] = __DIR__ . '/InterWikiLinks.class.php';
+$GLOBALS['wgAutoloadClasses']['BSApiTasksInterWikiLinksManager'] = __DIR__ . '/includes/api/BSApiTasksInterWikiLinksManager.php';
 
 $wgMessagesDirs['InterWikiLinks'] = __DIR__ . '/i18n';
 
@@ -36,6 +37,4 @@ $wgResourceModules['bluespice.insertLink.interWikiLinks'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$wgAjaxExportList[] = 'InterWikiLinks::getInterWikiLinks';
-$wgAjaxExportList[] = 'InterWikiLinks::doEditInterWikiLink';
-$wgAjaxExportList[] = 'InterWikiLinks::doDeleteInterWikiLink';
+$wgAPIModules['bs-interwikilinks-tasks'] = 'BSApiTasksInterWikiLinksManager';
