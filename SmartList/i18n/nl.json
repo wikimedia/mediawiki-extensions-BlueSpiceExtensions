@@ -43,7 +43,7 @@
 	"bs-smartlist-lastedits": "Mijn bewerkingen",
 	"bs-smartlist-noedits": "Geen bewerkingen gevonden.",
 	"bs-smartlist-mostactiveusersdesc": "Lijst van meest actieve gebruikers gesorteerd op hun bewerkingen.",
-	"bs-smartlist-mosteditedpagesdesc": "Lijst van meest bewerkte pagina ' s gesorteerd op hun bewerkingen.",
-	"bs-smartlist-mostvisitedpagesdesc": "Lijst van meest bekeken pagina ' s gesorteerd op hun standpunten.",
+	"bs-smartlist-mosteditedpagesdesc": "Lijst van de meest bewerkte pagina's gesorteerd op aantel bewerkingen.",
+	"bs-smartlist-mostvisitedpagesdesc": "Lijst van meest bekeken pagina's gesorteerd op aantal keren bekeken",
 	"bs-smartlist-lasteditsdesc": "Lijst met pagina's die u hebt bewerkt."
 }

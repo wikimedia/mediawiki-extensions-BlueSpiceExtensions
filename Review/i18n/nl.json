@@ -32,7 +32,7 @@
 	"bs-review-review-error": "Er is een onbekende fout opgetreden",
 	"bs-review-review-secondtime": "De controle kon niet worden gevonden. Misschien probeert u de pagina opnieuw te controleren.",
 	"bs-review-review-saved": "Uw stem is opgeslagen.",
-	"bs-review-mail-link-to-page": "Volg deze link: $1",
+	"bs-review-mail-link-to-page": "Volg deze koppeling: $1",
 	"bs-review-mail-invite-header": "Lees de pagina \"$1\"",
 	"bs-review-mail-invite-body": "$1 heeft u {{GENDER:$2|uitgenodigd}} om de pagina \"$3\" te beoordelen.",
 	"bs-review-mail-comment": "Een opmerking is ingevoerd: \"$1\".",
