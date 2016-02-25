@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Alojz.tic",
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
-	"bs-insertmagic-desc": "Doda pogovorno okno v način urejanja, ki omogoča vnos čarobnih besed in oznak",
+	"bs-insertmagic-desc": "Doda pogovorno okno, ki omogoča vnos čarobnih besed in oznak",
 	"bs-insertmagic": "Vstavite čarobno besedo",
 	"bs-insertmagic-notoc": "Skrije kazalo.",
 	"bs-insertmagic-forcetoc": "Prisili kazalo, da se pojavi na normalnem položaju.",
