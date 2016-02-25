@@ -83,6 +83,14 @@ class ExtendedEditBar extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onEditPageBeforeEditToolbar( &$toolbar ) {
+		// Disable editbar when there is no toolbar and on certain actions. This
+		// is especially needed for compatibility with Extension:LiquidThreads.
+		global $bsgExtendedEditBarEnabledActions;
+		$action = $this->getRequest()->getText( 'action', 'view' );
+		if ( empty( $toolbar) || !in_array( $action, $bsgExtendedEditBarEnabledActions ) ) {
+			return true;
+		}
+
 		$this->getOutput()->addModuleStyles( 'ext.bluespice.extendeditbar.styles' );
 		$this->getOutput()->addModules( 'ext.bluespice.extendeditbar' );
 
