@@ -335,4 +335,8 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 
 		return $oReturn;
 	}
+
+	public function needsToken() {
+		return parent::needsToken();
+	}
 }

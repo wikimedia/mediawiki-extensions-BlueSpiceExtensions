@@ -260,4 +260,8 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 		$oLogger->setParameters( $aParams );
 		$oLogger->insert();
 	}
+
+	public function needsToken() {
+		return parent::needsToken();
+	}
 }

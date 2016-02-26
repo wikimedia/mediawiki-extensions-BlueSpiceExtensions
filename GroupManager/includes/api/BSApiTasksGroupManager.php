@@ -287,4 +287,8 @@ class BSApiTasksGroupManager extends BSApiTasksBase {
 			'removeGroups' => array( 'wikiadmin' ),
 		);
 	}
+
+	public function needsToken() {
+		return parent::needsToken();
+	}
 }
