@@ -45,3 +45,5 @@ $wgResourceModules['ext.bluespice.insertlink.styles'] = array(
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'InsertLink::onLoadExtensionSchemaUpdates';
