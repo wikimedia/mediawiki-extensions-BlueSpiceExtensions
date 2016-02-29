@@ -14,7 +14,8 @@ $wgResourceModules['ext.bluespice.blueSpiceprojectfeedbackhelper'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$wgAjaxExportList[] = 'BlueSpiceProjectFeedbackHelper::disableFeedback';
-
 $GLOBALS['wgAutoloadClasses']['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/BlueSpiceProjectFeedbackHelper.class.php';
+$wgAutoloadClasses['BSApiTasksBlueSpiceProjectFeedbackHelper'] = __DIR__ . '/includes/api/BSApiTasksBlueSpiceProjectFeedbackHelper.php';
 $wgAutoloadClasses['ViewBlueSpiceProjectFeedbackHelperPanel'] = __DIR__ . '/views/view.BlueSpiceProjectFeedbackHelperPanel.php';
+
+$wgAPIModules['bs-bluespiceprojectfeedbackhelper'] = 'BSApiTasksBlueSpiceProjectFeedbackHelper';
