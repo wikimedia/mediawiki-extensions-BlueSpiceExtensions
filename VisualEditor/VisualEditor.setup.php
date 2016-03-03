@@ -2,7 +2,11 @@
 
 BsExtensionManager::registerExtension('VisualEditor', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$wgExtensionMessagesFiles['VisualEditor']      = __DIR__ . '/languages/VisualEditor.i18n.php';
+$GLOBALS['wgAutoloadClasses']['VisualEditor'] = __DIR__ . '/VisualEditor.class.php';
+
+$wgMessagesDirs['VisualEditor'] = __DIR__ . '/i18n';
+
+$wgExtensionMessagesFiles['VisualEditor'] = __DIR__ . '/languages/VisualEditor.i18n.php';
 $wgExtensionMessagesFiles['VisualEditorMagic'] = __DIR__ . '/languages/VisualEditor.i18n.magic.php';
 
 $wgAjaxExportList[] = 'VisualEditor::doSaveArticle';
@@ -21,9 +25,6 @@ $wgResourceModules['ext.bluespice.visualEditor.tinymce'] = array(
 	'scripts' => array(
 		'tinymce/tinymce.jquery.js',
 		'tinymce.startup.js'
-	),
-	'dependencies' => array(
-		'jquery'
 	),
 	'messages' => array(
 		'bs-visualeditor-bsactions-wiki',
@@ -57,7 +58,8 @@ $wgResourceModules['ext.bluespice.visualEditor'] = array(
 $wgResourceModules['ext.bluespice.visualEditor.styles'] = array(
 	'styles' => array(
 		'bluespice.visualEditor.css',
-	)
+	),
+	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );

@@ -3,7 +3,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @version    1.20.0
- 
+
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -12,16 +12,19 @@
  */
 
 offsetTop = 0;
+$(document).on('change', '#wpTextbox1' ,function() {
+	$(this).data("text-changed", true);
+});
 $(window).scroll(function(){
 	var toobar = $('.mce-stack-layout-item').first();
 	if( toobar.length == 0 ) return;
 	if(offsetTop == 0){
 		offsetTop = $('#editform').position().top; //toobar.position().top;
 	}
-	
+
 	if( $(document).scrollTop() > offsetTop ) { //window.scrollY
 		if( toobar.hasClass('bs-ve-fixed') == false ) {
-			
+
 			toobar.addClass('bs-ve-fixed');
 			toobar.width( toobar.parent().width() );
 		}
@@ -47,13 +50,16 @@ $(document).on('VisualEditor::instanceHide', function(event, editorId) {
 
 function bs_initVisualEditor() {
 	var currentSiteCSS = [];
-	//We collect the CSS Links from this document and set them as content_css 
+	//We collect the CSS Links from this document and set them as content_css
 	//for TinyMCE
+
 	$('link[rel=stylesheet]').each(function(){
 		var cssBaseURL = '';
 		var cssUrl = $(this).attr('href');
 		//Conditionally make urls absolute to avoid conflict with tinymce.baseURL
-		if( cssUrl.startsWith( '/' ) ) cssBaseURL = mw.config.get('wgServer');
+		if( cssUrl.indexOf('/') === 0 ) {
+			cssBaseURL = mw.config.get('wgServer');
+		}
 		//need to check, if the stylesheet is already included
 		if (jQuery.inArray(cssBaseURL + cssUrl, currentSiteCSS) === -1)
 			currentSiteCSS.push( cssBaseURL + cssUrl );
@@ -66,7 +72,7 @@ function bs_initVisualEditor() {
 		});
 	}
 
-	if ( mw.config.get('bsVisualEditorUse') !== false 
+	if ( mw.config.get('bsVisualEditorUse') !== false
 		&& mw.user.options.get('MW::VisualEditor::Use') === true ) {
 			VisualEditor.startEditors();
 			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
@@ -85,12 +91,5 @@ $(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 
 $(document).ready( function() {
 	var BsVisualEditorLoaderUsingDeps = mw.config.get('BsVisualEditorLoaderUsingDeps');
-
-	//Check if there are other modules we need to wait for
-	if( BsVisualEditorLoaderUsingDeps.length > 0 ) {
-		mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
-	}
-	else {
-		bs_initVisualEditor();
-	}
+	mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
 });

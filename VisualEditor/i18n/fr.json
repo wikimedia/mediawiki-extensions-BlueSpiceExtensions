@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"SnowedEarth",
+			"Gomoko"
+		]
+	},
+	"bs-visualeditor-desc": "Éditeur visuel pour MédiaWiki",
+	"prefs-visualeditor": "ÉditeurVisuel",
+	"bs-visualeditor-editbutton-hint": "ÉditeurVisuel",
+	"bs-visualeditor-pref-disablens": "Désactiver dans les espaces de noms :",
+	"bs-visualeditor-pref-use": "Utilisez l'éditeur WYSIWYG par défaut",
+	"bs-visualeditor-save-message": "Révision «$1» enregistrée avec le résumé «$2».",
+	"bs-visualeditor-no-summary": "Pas de résumé",
+	"bs-visualeditor-sortable": "Triable",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Contenu",
+	"bs-visualeditor-contenttable-black": "Contenu (noir)",
+	"bs-visualeditor-contenttable-blue": "Contenu (bleu)",
+	"bs-visualeditor-contenttable-darkblue": "Contenu (bleu foncé)",
+	"bs-visualeditor-cuscosky": "Ciel de Cusco",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Niveaux de gris",
+	"bs-visualeditor-greyscale-narrow": "Niveaux de gris (étroit)",
+	"bs-visualeditor-aligntop": "Haut",
+	"bs-visualeditor-alignmiddle": "Milieu",
+	"bs-visualeditor-alignbottom": "Bas",
+	"bs-visualeditor-bsactions-wiki": "Wikitexte",
+	"bs-visualeditor-bsactions-switchgui": "Changer de barre d'outils",
+	"bs-visualeditor-bsactions-linebreak": "Saut de ligne",
+	"bs-visualeditor-bsactions-signature": "Signature",
+	"bs-visualeditor-bsactions-save": "Enregistrer",
+	"bs-visualeditor-bsactions-headings": "Rubriques",
+	"bs-visualeditor-bsactions-paragraph": "Paragraphe",
+	"bs-visualeditor-bsactions-heading2": "Rubrique 2",
+	"bs-visualeditor-bsactions-heading3": "Rubrique 3",
+	"bs-visualeditor-bsactions-heading4": "Rubrique 4",
+	"bs-visualeditor-bsactions-heading5": "Rubrique 5",
+	"bs-visualeditor-bsactions-heading6": "Rubrique 6",
+	"bs-visualeditor-switch-noeditor-desc": "Désactive l'éditeur visuel pour cette page."
+}

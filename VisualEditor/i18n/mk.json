@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"bs-visualeditor-desc": "Визуелен уредник за МедијаВики",
+	"prefs-visualeditor": "Визуелен уредник",
+	"bs-visualeditor-editbutton-hint": "Визуелен уредник",
+	"bs-visualeditor-pref-disablens": "Оневозможи во именските простори:",
+	"bs-visualeditor-pref-use": "Користи WYSIWYG-уредник по основно",
+	"bs-visualeditor-save-message": "Зачувана преработката од $1 со описот „$2“.",
+	"bs-visualeditor-no-summary": "Нема опис",
+	"bs-visualeditor-sortable": "Подредлива",
+	"bs-visualeditor-wikitable": "Стандардна",
+	"bs-visualeditor-contenttable": "Содржина",
+	"bs-visualeditor-contenttable-black": "Содржина (црно)",
+	"bs-visualeditor-contenttable-blue": "Содржина (сино)",
+	"bs-visualeditor-contenttable-darkblue": "Содржина (темносино)",
+	"bs-visualeditor-cuscosky": "Небо над Куско",
+	"bs-visualeditor-casablanca": "Казабланка",
+	"bs-visualeditor-greyscale": "Сиви нијанси",
+	"bs-visualeditor-greyscale-narrow": "Сиви нијанси (тесно)",
+	"bs-visualeditor-aligntop": "Најгоре",
+	"bs-visualeditor-alignmiddle": "По средина",
+	"bs-visualeditor-alignbottom": "Најдолу",
+	"bs-visualeditor-bsactions-wiki": "Викитекст",
+	"bs-visualeditor-bsactions-switchgui": "Префрли алатник",
+	"bs-visualeditor-bsactions-linebreak": "Нов ред",
+	"bs-visualeditor-bsactions-signature": "Потпис",
+	"bs-visualeditor-bsactions-save": "Зачувај",
+	"bs-visualeditor-bsactions-headings": "Наслови",
+	"bs-visualeditor-bsactions-paragraph": "Пасус",
+	"bs-visualeditor-bsactions-heading2": "Наслов 2",
+	"bs-visualeditor-bsactions-heading3": "Наслов 3",
+	"bs-visualeditor-bsactions-heading4": "Наслов 4",
+	"bs-visualeditor-bsactions-heading5": "Наслов 5",
+	"bs-visualeditor-bsactions-heading6": "Наслов 6",
+	"bs-visualeditor-switch-noeditor-desc": "Го исклучува Визуелниот уредник на страницава"
+}

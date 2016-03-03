@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pio387",
+			"Chrumps"
+		]
+	},
+	"prefs-visualeditor": "Visual editor",
+	"bs-visualeditor-pref-disablens": "Wyłącz w przestrzeni nazw:",
+	"bs-visualeditor-save-message": "Zapisano zmiany pod datą $1 z opisem \"$2\".",
+	"bs-visualeditor-bsactions-linebreak": "Podział wiersza",
+	"bs-visualeditor-bsactions-signature": "Podpis",
+	"bs-visualeditor-bsactions-save": "Zapisz",
+	"bs-visualeditor-bsactions-headings": "Nagłówki",
+	"bs-visualeditor-bsactions-paragraph": "Akapit",
+	"bs-visualeditor-bsactions-heading2": "Nagłówek 2",
+	"bs-visualeditor-bsactions-heading3": "Nagłówek 3",
+	"bs-visualeditor-bsactions-heading4": "Nagłówek 4",
+	"bs-visualeditor-bsactions-heading5": "Nagłówek 5",
+	"bs-visualeditor-bsactions-heading6": "Nagłówek 6"
+}

@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toniher",
+			"Edustus",
+			"Arnaugir",
+			"Unapersona"
+		]
+	},
+	"bs-visualeditor-desc": "Editor visual per a MediaWiki",
+	"prefs-visualeditor": "Editor visual",
+	"bs-visualeditor-editbutton-hint": "Editor visual",
+	"bs-visualeditor-pref-disablens": "Desactivar en els espais de noms:",
+	"bs-visualeditor-pref-use": "Utilitzar editor WYSIWYG per defecte",
+	"bs-visualeditor-save-message": "Desada la revisió a $1 amb el resum \"$2\".",
+	"bs-visualeditor-no-summary": "No hi ha cap resum",
+	"bs-visualeditor-wikitable": "Estàndard",
+	"bs-visualeditor-contenttable": "Contingut",
+	"bs-visualeditor-contenttable-black": "Contingut (negre)",
+	"bs-visualeditor-contenttable-blue": "Contingut (blau)",
+	"bs-visualeditor-contenttable-darkblue": "Contingut (blau fosc)",
+	"bs-visualeditor-greyscale": "Escala de grisos",
+	"bs-visualeditor-aligntop": "Amunt",
+	"bs-visualeditor-alignmiddle": "Mig",
+	"bs-visualeditor-alignbottom": "Avall",
+	"bs-visualeditor-bsactions-wiki": "Wikitext",
+	"bs-visualeditor-bsactions-switchgui": "Canvia la barra d'eines",
+	"bs-visualeditor-bsactions-linebreak": "Salt de línia",
+	"bs-visualeditor-bsactions-signature": "Signatura",
+	"bs-visualeditor-bsactions-save": "Desa",
+	"bs-visualeditor-bsactions-headings": "Encapçalaments",
+	"bs-visualeditor-bsactions-paragraph": "Paràgraf",
+	"bs-visualeditor-bsactions-heading2": "Encapçalament 2",
+	"bs-visualeditor-bsactions-heading3": "Encapçalament 3",
+	"bs-visualeditor-bsactions-heading4": "Encapçalament 4",
+	"bs-visualeditor-bsactions-heading5": "Encapçalament 5",
+	"bs-visualeditor-bsactions-heading6": "Encapçalament 6",
+	"bs-visualeditor-switch-noeditor-desc": "Deshabilita l'editor visual en aquesta pàgina."
+}

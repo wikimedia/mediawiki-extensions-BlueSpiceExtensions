@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"bs-visualeditor-desc": "Editor visual para MediaWiki",
+	"prefs-visualeditor": "Editor visual",
+	"bs-visualeditor-editbutton-hint": "Editor visual",
+	"bs-visualeditor-pref-disablens": "Desactivar nos espazos de nomes:",
+	"bs-visualeditor-pref-use": "Usar o editor WYSIWYG de maneira predeterminada",
+	"bs-visualeditor-save-message": "Gardouse a edición o $1 co resumo «$2».",
+	"bs-visualeditor-no-summary": "Sen resumo",
+	"bs-visualeditor-sortable": "Clasificable",
+	"bs-visualeditor-wikitable": "Estándar",
+	"bs-visualeditor-contenttable": "Contido",
+	"bs-visualeditor-contenttable-black": "Contido (negro)",
+	"bs-visualeditor-contenttable-blue": "Contido (azul)",
+	"bs-visualeditor-contenttable-darkblue": "Contido (azul mariño)",
+	"bs-visualeditor-cuscosky": "Ceo de Cusco",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Escala de grises",
+	"bs-visualeditor-greyscale-narrow": "Escala de grises (reducida)",
+	"bs-visualeditor-aligntop": "Arriba",
+	"bs-visualeditor-alignmiddle": "En medio",
+	"bs-visualeditor-alignbottom": "Abaixo",
+	"bs-visualeditor-bsactions-wiki": "Texto wiki",
+	"bs-visualeditor-bsactions-switchgui": "Cambia a barra de ferramentas",
+	"bs-visualeditor-bsactions-linebreak": "Salto de liña",
+	"bs-visualeditor-bsactions-signature": "Sinatura",
+	"bs-visualeditor-bsactions-save": "Gardar",
+	"bs-visualeditor-bsactions-headings": "Cabeceiras",
+	"bs-visualeditor-bsactions-paragraph": "Parágrafo",
+	"bs-visualeditor-bsactions-heading2": "Cabeceira 2",
+	"bs-visualeditor-bsactions-heading3": "Cabeceira 3",
+	"bs-visualeditor-bsactions-heading4": "Cabeceira 4",
+	"bs-visualeditor-bsactions-heading5": "Cabeceira 5",
+	"bs-visualeditor-bsactions-heading6": "Cabeceira 6",
+	"bs-visualeditor-switch-noeditor-desc": "Desactiva o Editor Visual nesta páxina."
+}

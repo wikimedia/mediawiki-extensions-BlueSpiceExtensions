@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-visualeditor-desc": "Editor WYSIWYG TinyMCE",
+	"prefs-visualeditor": "Editor visual",
+	"bs-visualeditor-editbutton-hint": "Editor visual",
+	"bs-visualeditor-pref-disablens": "Disactivar in le spatios de nomines:",
+	"bs-visualeditor-pref-use": "Usar le editor WYSIWYG per predefinition",
+	"bs-visualeditor-save-message": "Revision salveguardate le $1 con summario \"$2\".",
+	"bs-visualeditor-no-summary": "Sin summario",
+	"bs-visualeditor-sortable": "Ordinabile",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Contento",
+	"bs-visualeditor-contenttable-black": "Contento (nigre)",
+	"bs-visualeditor-contenttable-blue": "Contento (blau)",
+	"bs-visualeditor-contenttable-darkblue": "Contento (blau obscur)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Scala de grises",
+	"bs-visualeditor-greyscale-narrow": "Scala de grises (stricte)",
+	"bs-visualeditor-aligntop": "Alto",
+	"bs-visualeditor-alignmiddle": "Medio",
+	"bs-visualeditor-alignbottom": "Basso",
+	"bs-visualeditor-bsactions-wiki": "Wikitexto",
+	"bs-visualeditor-bsactions-switchgui": "Cambiar de instrumentario",
+	"bs-visualeditor-bsactions-linebreak": "Salto de linea",
+	"bs-visualeditor-bsactions-signature": "Signatura",
+	"bs-visualeditor-bsactions-save": "Salveguardar",
+	"bs-visualeditor-bsactions-headings": "Titulos",
+	"bs-visualeditor-bsactions-paragraph": "Paragrapho",
+	"bs-visualeditor-bsactions-heading2": "Titulo 2",
+	"bs-visualeditor-bsactions-heading3": "Titulo 3",
+	"bs-visualeditor-bsactions-heading4": "Titulo 4",
+	"bs-visualeditor-bsactions-heading5": "Titulo 5",
+	"bs-visualeditor-bsactions-heading6": "Titulo 6",
+	"bs-visualeditor-switch-noeditor-desc": "Disactiva le editor visual pro iste pagina."
+}

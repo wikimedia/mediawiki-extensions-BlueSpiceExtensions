@@ -35,6 +35,11 @@ var BsWikiCode = function() {
 		 *
 		 * @type Array
 		 */
+		_nowikiTags,
+		/**
+		 *
+		 * @type Array
+		 */
 		_templates,
 		/**
 		 *
@@ -123,7 +128,7 @@ var BsWikiCode = function() {
 			'border': 0,
 			//'width': _userThumbsize,
 			//HAD: display:inline-block; //Future: only CSS class
-			'style':"margin: 0.5em 0 0.8em 0; padding: 3px; cursor:pointer;"
+			'style':"cursor:move;"
 		};
 	};
 
@@ -132,16 +137,22 @@ var BsWikiCode = function() {
 		var htmlImageObject = $('<img />').attr( me.makeDefaultImageAttributesObject() ),
 			wikiImageObject = me.makeWikiImageDataObject(),
 			parts = link.split("|"), part = '',
-			unsuffixedValue, dimensions, kvpair, key, value, src, imgParts;
+			unsuffixedValue, dimensions, kvpair, key, value, src, imgParts,
+			imgName;
 
 		wikiImageObject.imagename = parts[0];
 
 		for (var i = 1; i < parts.length; i++) {
 			part = parts[i];
 			if (part.endsWith('px')) {
+				if( wikiImageObject.frame === true ) {
+					//See mediawiki.org/wiki/Help:Images#Size_and_frame
+					//frame ignores size
+					continue;
+				}
 				// 100x200px -> 100x200
 				unsuffixedValue = part.substr(0, part.length - 2);
-				// 100x200 -> [100],[200]
+				// 100x200 -> [100,200]
 				dimensions = unsuffixedValue.split('x');
 				if (dimensions.length === 2) {
 					wikiImageObject.sizewidth = (dimensions[0] === '') ? false : dimensions[0];
@@ -188,9 +199,9 @@ var BsWikiCode = function() {
 
 			if ($.inArray(part, ['frame', 'gerahmt']) !== -1) {
 				wikiImageObject.frame = true;
-				//wikiImageObject.sizewidth = false;
-				//wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc
-				//this was removed due to mediawiki behaviour, frame + sizes DOES work
+				wikiImageObject.sizewidth = false;
+				wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc (link above)
+
 				continue;
 			}
 
@@ -284,7 +295,8 @@ var BsWikiCode = function() {
 				'clear' : 'none', //by thumb'
 				'display': 'block',
 				'margin-left': 'auto',
-				'margin-right': 'auto'
+				'margin-right': 'auto',
+				'width': 'auto'
 			});
 		} else if (wikiImageObject.right === true) {
 			htmlImageObject.addClass('tright');
@@ -314,11 +326,13 @@ var BsWikiCode = function() {
 		//We set a dummy url which contains the original filename as
 		//querystring parameter
 		imgParts = parts[0].split(':');
-		src = _imageDummyUrl + '?' + imgParts[1];
+		imgParts.shift(); //Throw away leading namespace prefix
+		imgName = imgParts.join(':'); //Reassemble image name
+		src = _imageDummyUrl + '?' + imgName;
 
 		//We have to save the name and url of the image to allow post process
 		//replacement of dummyUrls
-		_images.push({ imageName: imgParts[1], dummySrc: src });
+		_images.push({ imageName: imgName, dummySrc: src });
 
 		// image, resulting in a 404 error.
 		htmlImageObject.attr('src', src);
@@ -333,7 +347,7 @@ var BsWikiCode = function() {
 
 		for (var i = 0; i < images.length; i++) {
 			var image, htmlImageObject, wikiImageObject,
-				attributes, attribute, wikiText,
+				attributes, attribute, wikiText, imageCaption,
 				size, property, value;
 
 			image = images[i];
@@ -347,7 +361,7 @@ var BsWikiCode = function() {
 				if (attribute.startsWith('data-bs-') === false) {
 					continue;
 				}
-				property = attribute.substr(8, attribute.length);
+				property = attribute.substr(8, attribute.length); //cut off 'data-bs-'
 				wikiImageObject[property] = attributes[j].value;
 			}
 
@@ -397,21 +411,30 @@ var BsWikiCode = function() {
 
 			// Build wikitext
 			wikiText = [];
+			imageCaption = false;
 			wikiText.push(wikiImageObject.imagename);
 			for (property in wikiImageObject) {
 				if ($.inArray(property, ['imagename', 'thumbsize']) !== -1) {
 					continue; //Filter non-wiki data
 				}
-				if ($.inArray(property, ['left', 'right', 'center']) !== -1) {
+				if ($.inArray(property, ['left', 'right', 'center', 'nolink']) !== -1) {
 					continue; //Not used stuff
 				}
 
 				value = wikiImageObject[property];
 				//"link" may be intentionally empty. Therefore we have to
 				//check it _before_ "value is empty?"
-				if (property == 'link' && value !== 'false' && value !== false ) {
-					wikiText.push(property + '=' + value);
-					continue;
+				if ( property === 'link' ) {
+					//If the 'nolink' flag is set, we need to discard a
+					//maybe set value of 'link'
+					if( wikiImageObject.nolink === 'true' ) {
+						wikiText.push( property + '=' );
+						continue;
+					}
+					if ( value === 'false' || value === false ) {
+						continue;
+					}
+					wikiText.push( property + '=' + value );
 				}
 
 				if( value == null || value == false
@@ -436,8 +459,12 @@ var BsWikiCode = function() {
 					wikiText.push(property + '=' + value);
 					continue;
 				}
-				if ($.inArray(property, ['caption', 'align']) !== -1) {
+				if ( property == 'align' ) {
 					wikiText.push(value);
+					continue;
+				}
+				if ( property == 'caption' ) {
+					imageCaption = value;
 					continue;
 				}
 				if (value === "true") {
@@ -445,7 +472,12 @@ var BsWikiCode = function() {
 				}
 			}
 
-			text = text.replace(image, '[[' + wikiText.join('|') + ']]');
+			// make sure image caption comes in the end
+			if ( imageCaption ) {
+				wikiText.push( imageCaption );
+			}
+
+			text = text.replace(image, '[[' + wikiText.join('|').replace("@@PIPE@@", '|') + ']]');
 		}
 		return text;
 	}
@@ -455,7 +487,7 @@ var BsWikiCode = function() {
 
 	function _links2html(text) {
 		// internal links
-		var links, link, linkParts, linkTarget, linkLabel, linkHtml,
+		var links, link, linkNoWrap, linkParts, linkTarget, linkLabel, linkHtml,
 			targetParts, fileExtension, targetTextParts, nsText, nsId,
 			linkTargetParts, protocol, targetText,
 			namespaces = mw.config.get('wgNamespaceIds'),
@@ -463,6 +495,46 @@ var BsWikiCode = function() {
 			anchorFormat = '<a href="{0}" data-mce-href="{5}" title="{6}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
 
 		links = text.match(/\[\[([^\]]*?)\]\]/gi);
+
+		var pos = 0;
+		var squareBraceDepth = 0;
+		var checkedBraces = new Array();
+		var linkDepth = 0;
+		var tempTemplate = '';
+		var squareBraceFirst = false;
+		var _links = new Array();
+		for (pos = 0; pos < text.length; pos++) {
+			if (text[pos] === '[') {
+				squareBraceDepth++;
+				if ( checkedBraces.indexOf(pos) == -1 && text[pos + 1] === '[') {
+					checkedBraces.push(pos + 1);
+					linkDepth++;
+				}
+			}
+
+			// Caution: this matches only from the second curly brace.
+			if (linkDepth && !squareBraceFirst) {
+				if (linkDepth > 1 && text[pos] == '|' ) tempTemplate = tempTemplate + '@@PIPE@@';
+				//if (text[pos] == '|' ) tempTemplate = tempTemplate + '@@PIPE@@';
+				else tempTemplate = tempTemplate + text[pos];
+			}
+			if (text[pos] === ']') {
+				squareBraceDepth--;
+				if ( checkedBraces.indexOf(pos-1) == -1 && text[pos - 1] === ']') {
+					checkedBraces.push(pos);
+					linkDepth--;
+				}
+				if (linkDepth === 0 && !squareBraceFirst) {
+					if (tempTemplate !== '')
+						_links.push(tempTemplate);
+					tempTemplate = '';
+				}
+			}
+		}
+
+		links = _links;
+
+
 		if (links) {
 			for (var i = 0; i < links.length; i++) {
 				link = links[i].substr(2, links[i].length - 4);
@@ -505,6 +577,7 @@ var BsWikiCode = function() {
 					}
 				}
 
+				link = link.replace( "@@PIPE@@", "|" );
 				text = text.replace("[[" + link + "]]", linkHtml);
 			}
 		}
@@ -514,7 +587,9 @@ var BsWikiCode = function() {
 
 		if (links) {
 			for (i = 0; i < links.length; i++) {
-				link = links[i].substr(1, links[i].length - 2);
+				linkNoWrap = links[i].substr(1, links[i].length - 2);
+
+				link = linkNoWrap.replace(/^\s+|\s+$/gm,'');
 				linkParts = link.split(" ");
 				linkTarget = linkParts[0];
 				linkLabel = linkParts[0];
@@ -544,7 +619,7 @@ var BsWikiCode = function() {
 					encodeURI( linkTarget ),                                          //5
 					encodeURI( $('<div/>').text(linkLabel).html() )                   //6
 				);
-				text = text.replace("[" + link + "]", linkHtml);
+				text = text.replace("[" + linkNoWrap + "]", linkHtml);
 			}
 		}
 		return text;
@@ -566,6 +641,11 @@ var BsWikiCode = function() {
 				link = links[i];
 
 				hrefAttr = link.match(/href="(.*?)"/i);
+				if (!hrefAttr) {
+					//This is an anchor tag which is not supported.
+					text = text.replace(links[i], "");
+					continue;
+				}
 				if (hrefAttr) {
 					target = decodeURI( hrefAttr[1] );
 					// 03.03.2014 STM ??? target = target; //unescape(target);
@@ -575,6 +655,9 @@ var BsWikiCode = function() {
 				if (inner) {
 					label = inner[1];
 					label = label.replace(/<br.*?\/>/gi, '');
+					// label comes with encoded html entities, so we need to decode this here.
+					// Otherwise, resolution of special characters like umlauts won't work.
+					label = $('<textarea />').html(label).text();
 				}
 
 				//TODO: Maybe we should relay on classes instead?
@@ -596,8 +679,8 @@ var BsWikiCode = function() {
 					}
 				}
 
-				if ( type === "internal_link" ) {
-					if ( target === tinymce.DOM.decode( label ) ) { //TinyMCE3: tinymce.activeEditor.dom.decode(label)
+				if (type === "internal_link") {
+					if (target === label ) { //TinyMCE3: tinymce.activeEditor.dom.decode(label)
 						linkwiki = "[[" + target + "]]";
 					} else {
 						linkwiki = "[[" + target + "|" + label + "]]";
@@ -683,6 +766,13 @@ var BsWikiCode = function() {
 		// in first pass, some double empty lines remain, therefore, a second pass is necessary
 		text = text.replace(/\n\n/gmi, "\n@@blindline@@\n");
 		text = text.replace(/\n\n/gmi, "\n@@blindline@@\n");
+
+		// images or links in tables may contain | in their attributes, esp. in bs-data-*. These
+		// need to be properly escaped in order not to interfere with table syntax
+		while (text.match(/(\<[^\>]*?)(\|)([^\>]*?\>)/g)) {
+			text = text.replace(/(\<[^\>]*?)(\|)([^\>]*?\>)/g, "$1@@pipe@@$3");
+		}
+
 		lines = text.split(/\n/);
 
 		for (var i = 0; i < lines.length; i++) {
@@ -862,6 +952,7 @@ var BsWikiCode = function() {
 
 		text = lines.join("\n");
 		text = text.replace(/@@blindline@@/gmi, '');
+		text = text.replace(/@@pipe@@/gmi, '|');
 
 		return text;
 	}
@@ -1020,11 +1111,13 @@ var BsWikiCode = function() {
 			emptyLineAfter = false,
 			lastLine = false;
 
+                //Walk trough text line by line
 		for (var i = 0; i < lines.length; i++) {
 			// Prevent REDIRECT from being rendered as list
 			line = lines[i].match(/^(\*|#(?!REDIRECT)|:|;)+/);
 			lastLine = (i == lines.length - 1);
 
+                        //Special Line --
 			if (line && line !== '') {
 				lines[i] = lines[i].replace(/^(\*|#|:|;)*\s*(.*?)$/gmi, "$2");
 				if (line[0].indexOf(':') === 0) {
@@ -1055,7 +1148,7 @@ var BsWikiCode = function() {
 					inParagraph = false;
 				}
 
-			} else {
+			} else { //Normal Line processing
 				emptyLine = lines[i].match(/^(\s|&nbsp;)*$/);
 				if (emptyLine) {
 					emptyLineCount++;
@@ -1251,7 +1344,7 @@ var BsWikiCode = function() {
 		text = text + "\n";
 
 		// process block levels
-		text = _blockLevels2html(text);
+		text = _blockLevels2html(text); //TODO: Fix missing break here, add <br /> for simple linebreaks
 
 		// @todo check this, might be unneccessary
 		text = text.replace(/<div style='text-align:left'>(.*?)<\/div>/gmi, "<div align='left'>$1</div>");
@@ -1341,6 +1434,7 @@ var BsWikiCode = function() {
 		//underline needs no conversion
 		text = text.replace(/<strike>(.*?)<\/strike>/gi, "<s>$1</s>");
 		text = text.replace(/<span style="text-decoration: line-through;">(.*?)<\/span>/gi, "<s>$1</s>");
+		text = text.replace(/<span style="text-decoration: underline;">(.*?)<\/span>/gi, "<u>$1</u>");
 		//sub and sup need no conversion
 
 		text = text.replace(/<br class="bs_emptyline_first"[^>]*>/gmi, "@@br_emptyline_first@@");
@@ -1506,6 +1600,7 @@ var BsWikiCode = function() {
 					}
 					break;
 				case '</dt' :
+					listTag = listTag.substr(0, listTag.length - 1);
 					text = text.replace(/<\/dt>/, "");
 					break;
 				case '</li' :
@@ -1562,8 +1657,9 @@ var BsWikiCode = function() {
 		// Important: do not use m flag, since this makes $ react to any line ending instead of text ending
 		text = text.replace(/((<p( [^>]*?)?>(\s|&nbsp;|<br\s?\/>)*?<\/p>)|<br\s?\/>|\s)*$/gi, "");
 		text = text.replace(/<br [^>]*bs_lastline[^>]*>/gmi, '');
-		text = text.replace(/<br data-attributes="" \/>/gmi, '<br/>');
-		text = text.replace(/<br data-attributes="[^>]*data-mce-bogus[^>]*" \/>/gmi, '');
+		text = text.replace(/<br data-attributes="" ?\/?>/gmi, '<br/>');
+		text = text.replace(/<br data-attributes="[^>]*data-mce-bogus[^>]*" ?\/?>/gmi, '');
+		text = text.replace(/<br data-attributes="[^>]*data-attributes[^>]*" ?\/?>/gmi, '<br/>');
 		text = text.replace(/<br [^>]*data-mce-bogus="1"[^>]*>/gmi, '');
 		text = text.replace(/^\n*/gi, '');
 
@@ -1833,7 +1929,7 @@ var BsWikiCode = function() {
 	 * @param {String} text
 	 * @returns {String}
 	 */
-	function _preservePres(text) {
+	function _preservePres(text, skipnowiki) {
 		var i;
 
 		_preTags = false;
@@ -1853,6 +1949,19 @@ var BsWikiCode = function() {
 				text = text.replace(_preTagsSpace[i], "@@@PRE_SPACE" + i + "@@@");
 			}
 		}
+
+		if ( skipnowiki ) return text;
+
+		_nowikiTags = false;
+		//
+		_nowikiTags = text.match(/<nowiki>([\S\s]*?)<\/nowiki>/gmi);
+		if (_nowikiTags) {
+				for (i = 0; i < _nowikiTags.length; i++) {
+						text = text.replace(_nowikiTags[i], "@@@NOWIKI" + i + "@@@");
+						_nowikiTags[i] = _nowikiTags[i].replace( "\n",  "<span class='single_linebreak' style='background-color:lightgray'>&para;<\/span> " );
+				}
+		}
+
 
 		return text;
 	}
@@ -1895,6 +2004,22 @@ var BsWikiCode = function() {
 			}
 		}
 		_preTagsSpace = false;
+
+		//this is experimental support for nowiki
+		if (_nowikiTags) {
+				for (i = 0; i < _nowikiTags.length; i++) {
+						regex = '@@@NOWIKI' + i + '@@@';
+						replacer = new RegExp(regex, 'gmi');
+
+						// \n works in IE. In FF, this is not neccessary.
+						if ( navigator.appName == 'Microsoft Internet Explorer' ) {
+								text = text.replace(replacer, "\n" + _nowikiTags[i]);
+						} else {
+								text = text.replace(replacer, _nowikiTags[i]);
+						}
+				}
+		}
+		_nowikiTags = false;
 
 		return text;
 	}
@@ -2040,7 +2165,7 @@ var BsWikiCode = function() {
 					var images = ed.getBody().getElementsByTagName('img');
 					for( var i = 0; i < images.length; i++ ) {
 						//We process only matching nodes
-						if ( decodeURI( images[i].src ) !== wgServer+_imageDummyUrl+'?'+data.file ) {
+						if ( decodeURI( images[i].src ) !== mw.config.get( "wgServer" ) + _imageDummyUrl + '?' + data.file ) {
 							continue;
 						}
 
@@ -2097,6 +2222,34 @@ var BsWikiCode = function() {
 			text = text.replace(/<span class="toggletext">([\s\S]*?)<\/span>/gmi, '$1');
 		}
 
+		// mark templates in table headers, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\{\|.*?)(\{\{(.*?)\}\})(.*?)$/gmi)) {
+			text = text.replace(/^(\{\|.*?)(\{\{(.*?)\}\})(.*?)$/gmi, '$1 data-bs-table-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in row definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\|-.*?)(\{\{(.*?)\}\})(.*?)$/gmi)) {
+			text = text.replace(/^(\|-.*?)(\{\{(.*?)\}\})(.*?)$/gmi, '$1 data-bs-tr-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in header definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(!.*?)(\{\{(.*?)\}\})(.*?\|)/gmi)) {
+			text = text.replace(/^(!.*?)(\{\{(.*?)\}\})(.*?\|)/gmi, '$1 data-bs-th-tpl'+i+'="$3"$4');
+			i++;
+		}
+
+		// mark templates in cell definitions, as they cannot be rendered
+		var i = 0;
+		while (text.match(/^(\|.*?)(\{\{(.*?)\}\})(.*?\|)/gmi)) {
+			text = text.replace(/^(\|.*?)(\{\{(.*?)\}\})(.*?\|)/gmi, '$1 data-bs-td-tpl'+i+'="$3"$4');
+			i++;
+		}
+
 		//special tags before pres prevents spaces in special tags like GeSHi to take effect
 		text = _preserveSpecialTags(text);
 
@@ -2113,11 +2266,11 @@ var BsWikiCode = function() {
 		}
 
 		text = _convertPreWithSpacesToTinyMce(text);
-		text = _preservePres(text);
+		text = _preservePres(text, false);
 
 		do {
 			_processFlag = false;
-			text = text.replace(/(^|\n)([^\n]+)\n([^\n]{1,5})/gi, __preserveSingleLinebreaks);
+			text = text.replace(/(^|\n|\b)([^\n]+)\n([^\n]{1,5})/gi, __preserveSingleLinebreaks);
 
 		} while (_processFlag);
 
@@ -2180,6 +2333,9 @@ var BsWikiCode = function() {
 			}
 
 			e.content = _recoverSpecialTags(e.content);
+
+			// cleanup templates in table markers
+			e.content = e.content.replace(/data-bs-t.*?-tpl.*?="(.*?)"/gmi, "{{$1}}");
 		}
 
 	}
@@ -2188,9 +2344,19 @@ var BsWikiCode = function() {
 		var internalLinks = [];
 		var internalLinksTitles = [];
 		$(this.dom.doc).find('a.bs-internal-link').each(function(){
-			internalLinksTitles.push( $(this).attr('href') );
+			var href = $(this).attr('data-mce-href');
+			if( !href ) {
+				href = $(this).attr('href');
+			}
+			internalLinksTitles.push( href );
 			internalLinks.push($(this));
 		});
+
+		$(document).trigger( 'BSVisualEditorLoadContentBeforeCheckLinks', [
+			this,
+			internalLinksTitles,
+			internalLinks
+		]);
 
 		if( internalLinksTitles.length == 0 ) return;
 

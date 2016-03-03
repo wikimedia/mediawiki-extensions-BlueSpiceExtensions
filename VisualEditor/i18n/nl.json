@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sjoerddebruin",
+			"SPQRobin",
+			"Esketti",
+			"Siebrand"
+		]
+	},
+	"bs-visualeditor-desc": "Visuele tekstverwerker voor MediaWiki",
+	"prefs-visualeditor": "Visuele tekstverwerker",
+	"bs-visualeditor-editbutton-hint": "Visuele tekstverwerker",
+	"bs-visualeditor-pref-disablens": "Uitschakelen in naamruimten:",
+	"bs-visualeditor-pref-use": "Standaard de WYSIWYG-tekstverwerker gebruiken",
+	"bs-visualeditor-save-message": "Opgeslagen herziening $1 met overzicht \"$2\".",
+	"bs-visualeditor-no-summary": "Geen samenvatting",
+	"bs-visualeditor-sortable": "Sorteerbare",
+	"bs-visualeditor-wikitable": "Standaard",
+	"bs-visualeditor-contenttable": "Inhoud",
+	"bs-visualeditor-contenttable-black": "Inhoud (zwart)",
+	"bs-visualeditor-contenttable-blue": "Inhoud (blauw)",
+	"bs-visualeditor-contenttable-darkblue": "Inhoud (donkerblauw)",
+	"bs-visualeditor-cuscosky": "Cusco Hemel",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Grijswaarden",
+	"bs-visualeditor-greyscale-narrow": "Grijswaarden (smal)",
+	"bs-visualeditor-aligntop": "Bovenaan",
+	"bs-visualeditor-alignmiddle": "Midden",
+	"bs-visualeditor-alignbottom": "Onderaan",
+	"bs-visualeditor-bsactions-wiki": "Wikitekst",
+	"bs-visualeditor-bsactions-switchgui": "Werkbalk omschakelen",
+	"bs-visualeditor-bsactions-linebreak": "Linebreak",
+	"bs-visualeditor-bsactions-signature": "Ondertekening",
+	"bs-visualeditor-bsactions-save": "Opslaan",
+	"bs-visualeditor-bsactions-headings": "Koppen",
+	"bs-visualeditor-bsactions-paragraph": "Paragraaf",
+	"bs-visualeditor-bsactions-heading2": "Kop 2",
+	"bs-visualeditor-bsactions-heading3": "Kop 3",
+	"bs-visualeditor-bsactions-heading4": "Kop 4",
+	"bs-visualeditor-bsactions-heading5": "Kop 5",
+	"bs-visualeditor-bsactions-heading6": "Kop 6",
+	"bs-visualeditor-switch-noeditor-desc": "Schakelt de visuele tekstverwerker uit op deze pagina."
+}

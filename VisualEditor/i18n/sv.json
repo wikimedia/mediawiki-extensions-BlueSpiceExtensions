@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn",
+			"Lokal Profil"
+		]
+	},
+	"bs-visualeditor-desc": "Visuell redigerare för MediaWiki",
+	"prefs-visualeditor": "Visual Editor",
+	"bs-visualeditor-editbutton-hint": "Visual Editor",
+	"bs-visualeditor-pref-disablens": "Inaktivera i namnrymder:",
+	"bs-visualeditor-pref-use": "Använd WYSIWYG-redigeraren som standard",
+	"bs-visualeditor-save-message": "Sparade version på $1 med redigeringssammanfattning \"$2\".",
+	"bs-visualeditor-no-summary": "Igen redigeringssammanfattning",
+	"bs-visualeditor-sortable": "Sorterbar",
+	"bs-visualeditor-wikitable": "Standard",
+	"bs-visualeditor-contenttable": "Innehåll",
+	"bs-visualeditor-contenttable-black": "Innehåll (svart)",
+	"bs-visualeditor-contenttable-blue": "Innehåll (blå)",
+	"bs-visualeditor-contenttable-darkblue": "Innehåll (mörkblå)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Gråskala",
+	"bs-visualeditor-greyscale-narrow": "Gråskala (smal)",
+	"bs-visualeditor-aligntop": "Topp",
+	"bs-visualeditor-alignmiddle": "Mitten",
+	"bs-visualeditor-alignbottom": "Botten",
+	"bs-visualeditor-bsactions-wiki": "Wikitext",
+	"bs-visualeditor-bsactions-switchgui": "Växla verktygsfält",
+	"bs-visualeditor-bsactions-linebreak": "Radbrytning",
+	"bs-visualeditor-bsactions-signature": "Signatur",
+	"bs-visualeditor-bsactions-save": "Spara",
+	"bs-visualeditor-bsactions-headings": "Rubriker",
+	"bs-visualeditor-bsactions-paragraph": "Stycke",
+	"bs-visualeditor-bsactions-heading2": "Rubrik 2",
+	"bs-visualeditor-bsactions-heading3": "Rubrik 3",
+	"bs-visualeditor-bsactions-heading4": "Rubrik 4",
+	"bs-visualeditor-bsactions-heading5": "Rubrik 5",
+	"bs-visualeditor-bsactions-heading6": "Rubrik 6",
+	"bs-visualeditor-switch-noeditor-desc": "Inaktiverar den visuella redigeraren på denna sida."
+}

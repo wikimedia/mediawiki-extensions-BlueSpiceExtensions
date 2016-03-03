@@ -25,7 +25,7 @@
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Sebastian Ulbricht
  * @author     Stefan Widmann <widmann@hallowelt.biz>
- * @version    2.22.0 stable
+ * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage VisualEditor
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -53,6 +53,7 @@ class VisualEditor extends BsExtensionMW {
 	 */
 	private $aConfigStandard = array(
 		'selector' => '#wpTextbox1',
+		'paste_word_valid_elements' => 'b,strong,i,em,h1,h2,h3,h4,h5,table,thead,tfoot,tr,th,td,ol,ul,li,a,sub,sup,strike,br,del,div,p',
 		'plugins' => array(
 			"lists",
 			//"emoticons",
@@ -68,7 +69,8 @@ class VisualEditor extends BsExtensionMW {
 			//"link" //Needed for "unlink"
 			//"autoresize",
 			"charmap",
-			"noneditable"
+			"noneditable",
+			"colorpicker"
 		),
 		'external_plugins' => array(
 			'bswikicode'  => '../tiny_mce_plugins/bswikicode/plugin.js',
@@ -165,8 +167,10 @@ class VisualEditor extends BsExtensionMW {
 				array('title' => 'bs-visualeditor-alignbottom', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'bottom') )
 			)),
 			array('title' => 'Pre', 'block' => 'pre', 'classes' => 'bs_pre_from_space'),
+			array('title' => 'Paragraph', 'block' => 'p')
 		),
 		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn'
+		// do not use table_class_list, as this breaks any existing classes upon editing
 	);
 
 	/**
@@ -184,9 +188,7 @@ class VisualEditor extends BsExtensionMW {
 			'bscategory', 'bschecklist', 'bslinebreak', '|', 'fullscreen'
 		)
 	);
-	private $aMergeToString = array(
-		'plugins', 'toolbar1', 'toolbar2'
-	);
+
 	protected $bShowToolbarIcon = true;
 
 	/**
@@ -199,29 +201,29 @@ class VisualEditor extends BsExtensionMW {
 		$this->mExtensionType = EXTTYPE::VARIABLE;
 		$this->mInfo = array(
 			EXTINFO::NAME => 'VisualEditor',
-			EXTINFO::DESCRIPTION => 'Visual editor for MediaWiki.',
+			EXTINFO::DESCRIPTION => 'bs-visualeditor-desc',
 			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'http://www.hallowelt.biz',
+			EXTINFO::URL => 'https://help.bluespice.com/index.php/VisualEditor',
 			EXTINFO::DEPS => array('bluespice' => '2.22.0')
 		);
 		$this->mExtensionKey = 'MW::VisualEditor';
 
-		BsConfig::registerVar('MW::VisualEditor::disableNS', array(NS_MEDIAWIKI), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-visualeditor-pref-disableNS', 'multiselectex');
-		BsConfig::registerVar('MW::VisualEditor::defaultNoContextNS', array(NS_SPECIAL, NS_MEDIA, NS_FILE), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT, 'bs-visualeditor-pref-defaultNoContextNS', 'multiselectex');
+		BsConfig::registerVar( 'MW::VisualEditor::disableNS', array( NS_MEDIAWIKI ), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-visualeditor-pref-disablens', 'multiselectex');
+		BsConfig::registerVar( 'MW::VisualEditor::defaultNoContextNS', array( NS_SPECIAL, NS_MEDIA, NS_FILE ), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT );
 
-		BsConfig::registerVar('MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-SpecialTags');
-		BsConfig::registerVar('MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-AllowedTags');
+		BsConfig::registerVar( 'MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
 
-		BsConfig::registerVar('MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-Use', 'toggle');
-		BsConfig::registerVar('MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseLimited', 'toggle');
-		BsConfig::registerVar('MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-UseForceLimited', 'toggle');
+		BsConfig::registerVar( 'MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-use', 'toggle');
+		BsConfig::registerVar( 'MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
 
-		BsConfig::registerVar('MW::VisualEditor::DebugMode', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-DebugMode');
-		BsConfig::registerVar('MW::VisualEditor::GuiMode', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-GuiMode');
-		BsConfig::registerVar('MW::VisualEditor::GuiSwitchable', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-GuiSwitchable');
+		BsConfig::registerVar( 'MW::VisualEditor::DebugMode', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::GuiMode', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::GuiSwitchable', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
 
 		wfProfileOut('BS::' . __METHOD__);
 	}
@@ -231,7 +233,7 @@ class VisualEditor extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		$this->mCore->registerBehaviorSwitch(
-			'NOEDITOR', array($this, 'noEditorCallback')
+			'NOEDITOR', array( $this, 'noEditorCallback' )
 		);
 
 		// Hooks
@@ -242,7 +244,7 @@ class VisualEditor extends BsExtensionMW {
 	}
 
 	public function onBSExtendedEditBarBeforeEditToolbar(&$aRows, &$aButtonCfgs) {
-		if ($this->bShowToolbarIcon == false) {
+		if ( !$this->checkContext( $this->getTitle() ) ) {
 			return true;
 		}
 
@@ -284,90 +286,23 @@ class VisualEditor extends BsExtensionMW {
 	public function onParserAfterTidy(&$oParser) {
 		global $wgLang, $wgOut;
 
+		$sAction = $wgOut->getRequest()->getVal('action', 'view');
+		if ($sAction != 'edit' && $sAction != 'preview' && $sAction != 'submit')
+			return true;
+
 		if ($this->bTagsCollected) return true;
 		$this->bTagsCollected = true;
 
-		$tags = $oParser->getTags();
-		$allowedTags = '';
-		$specialTags = '';
-		foreach ($tags as $tag) {
-			if ($tag == 'pre')
-				continue;
-			$allowedTags .= $tag . '[*],';
-			$specialTags .= $tag . '|';
-		}
-		$allowedTags .= 'div[*],';
+		$aConfigs = $this->makeConfig( $oParser );
 
-		BsConfig::set('MW::VisualEditor::SpecialTags', $specialTags);
-		BsConfig::set('MW::VisualEditor::AllowedTags', $allowedTags);
+		$this->aConfigStandard = $aConfigs['standard']; //Legacy
+		$this->aConfigOverwrite = $aConfigs['overwrite']; //Legacy
 
-		//TODO: There are duplicates!
-		$aDefaultTags = array(
-			"syntaxhighlight", "source", "infobox", "categorytree", "nowiki",
-			"presentation", "includeonly", "onlyinclude", "noinclude",
-			"backlink", "gallery", "math", "video", "rss", "tagcloud"
-		);
-		$this->aConfigStandard["specialtaglist"] = BsConfig::get('MW::VisualEditor::SpecialTags')
-				. implode('|', $aDefaultTags);
-
-		$this->aConfigStandard["extended_valid_elements"] = BsConfig::get('MW::VisualEditor::AllowedTags')
-				. implode('[*],', $aDefaultTags);
-
-		// find the right language file
-		$language = $wgLang->getCode();
-		$langDir = __DIR__ . DS . 'resources' . DS . 'tinymce' . DS . 'langs';
-		if (!file_exists("{$langDir}" . DS . "{$language}.js")) {
-			//i don't know what language files use underscores, but i'll leave it here
-			$aLanguage = explode('_', $language);
-			if (count($aLanguage)<2)
-				$aLanguage = explode('-', $language);
-			if (file_exists("{$langDir}" . DS . "{$aLanguage[0]}.js")) {
-				$language = $aLanguage[0];
-			} else {
-				$language = 'en';
-			}
-		}
-		$this->aConfigStandard['language'] = $language;
-
-		$aLoaderUsingDeps = array();
-		// TODO SW: use string flag as parameter to allow hookhandler to
-		// determin context. This will be usefull if hook gets called in
-		// another place
-		wfRunHooks(
-			'VisualEditorConfig',
-			array(
-				&$this->aConfigStandard,
-				&$this->aConfigOverwrite,
-				&$aLoaderUsingDeps
-			)
-		);
-
-		foreach(  $this->aConfigStandard['style_formats'] as &$aStyles ){
-			foreach ( $aStyles as $key => &$val ){
-				if ( $key == "title" ) {
-					$oMsg = wfMessage($val);
-				}
-				if ( $oMsg->exists() ) {
-					$val = $oMsg->plain();
-				} elseif ( $key == "items" && is_array($val) ){
-					foreach ( $val as &$item ) {
-						$oMsg = wfMessage($item['title']);
-						if ( $oMsg->exists() ) {
-							$item['title'] = $oMsg->plain();
-						}
-					}
-				}
-			}
-		}
-
-		$this->aConfigStandard = $this->_prepareConfig($this->aConfigStandard);
-		$this->aConfigOverwrite = $this->_prepareConfig($this->aConfigOverwrite);
-
-		$wgOut->addJsConfigVars('BsVisualEditorConfigDefault', $this->aConfigStandard);
+		$wgOut->addJsConfigVars('BsVisualEditorConfigDefault', $aConfigs['standard']);
 		$wgOut->addJsConfigVars('BsVisualEditorConfigAlternative', array_merge(
-			$this->aConfigStandard, $this->aConfigOverwrite
+			$aConfigs['standard'], $aConfigs['overwrite']
 		));
-		$wgOut->addJsConfigVars('BsVisualEditorLoaderUsingDeps', $aLoaderUsingDeps);
+		$wgOut->addJsConfigVars('BsVisualEditorLoaderUsingDeps', $aConfigs['module_deps']);
 
 		return true;
 	}
@@ -376,8 +311,8 @@ class VisualEditor extends BsExtensionMW {
 		$tmp = array();
 
 		foreach ($config as $key => $value) {
-			if (in_array($key, $this->aMergeToString)) {
-				$tmp[$key] = join(' ', $value);
+			if ( in_array ( $key, array( 'plugins', 'toolbar1', 'toolbar2') ) ) {
+				$tmp[$key] = implode(' ', $value);
 			} else {
 				$tmp[$key] = $value;
 			}
@@ -427,14 +362,24 @@ class VisualEditor extends BsExtensionMW {
 	}
 
 	/**
-	 *
+	 * PW(25.03.2015) TODO: Use API
 	 * @global User $wgUser
 	 * @global Language $wgLang
 	 * @return string
 	 */
 	public static function doSaveArticle() {
-		if (BsCore::checkAccessAdmission('read') === false)
-			return true;
+		$aResult = $aOutput = array(
+			'saveresult' => 'fail',
+			'message' => '',
+			'edittime' => '',
+			'summary' => '',
+			'starttime' => wfTimestamp(TS_MW, time() + 2),
+		);
+		if (BsCore::checkAccessAdmission('read') === false) {
+			$aResult['message'] = wfMessage( 'bs-permissionerror' )->plain();
+			return FormatJson::encode( $aResult );
+		}
+
 		global $wgLang, $wgRequest;
 		$sArticleId = $wgRequest->getInt('articleId', 0);
 		$sText = $wgRequest->getVal('text', '');
@@ -444,40 +389,39 @@ class VisualEditor extends BsExtensionMW {
 
 		$sReturnEditTime = wfTimestampNow();
 		if ($sSummary == 'false') {
-			$sSummary = wfMessage('bs-visualeditor-no-summary')->plain();
+			$sSummary = '/* '.wfMessage( 'bs-visualeditor-no-summary' )->plain().' */';
 		}
 
-		$oArticle = Article::newFromID($sArticleId);
-		if ( $oArticle === null ) {
-			$oArticle = new Article(Title::newFromText($sPageName));
+		//PW(25.03.2015) TODO: Use Wikipage
+		$oArticle = Article::newFromID( $sArticleId );
+		if( is_null($oArticle) ) {
+			$oTitle = Title::newFromText( $sPageName );
+			if( is_null($oTitle) || !$oTitle->exists() ) {
+				$aResult['message'] = wfMessage( 'badtitle' )->plain();
+				return FormatJson::encode( $aResult );
+			}
+			$oArticle = new Article( $oTitle );
 		}
 
 		if ($iSection) {
 			$sText = $oArticle->replaceSection($iSection, $sText);
 		}
 
+		//PW(25.03.2015) TODO: Deprecated since MW 1.21 use
+		//Wikipage::doEditContent instead
 		$oSaveResult = $oArticle->doEdit($sText, $sSummary);
 
-		$sTime = $wgLang->timeanddate($sReturnEditTime, true);
-		$sMessage = '';
-		$sResult = '';
-		if (empty($oSaveResult->errors)) {
-			$sResult = 'ok';
-			$sMessage = wfMessage('bs-visualeditor-save-message', $sTime, $sSummary)->plain();
+		if( $oSaveResult->isGood() ) {
+			$sTime = $wgLang->timeanddate($sReturnEditTime, true);
+			$aResult['edittime'] = $sReturnEditTime;
+			$aResult['saveresult'] = 'ok';
+			$aResult['message'] = wfMessage( 'bs-visualeditor-save-message', $sTime, $sSummary )->plain();
+			$aResult['summary'] = $sSummary;
 		} else {
-			$sResult = 'fail';
-			$sMessage = $oSaveResult->getMessage();
+			$aResult['message'] = $oSaveResult->getMessage()->plain();
 		}
 
-		$aOutput = array(
-			'saveresult' => $sResult, //$oSaveResult->getMessage(),//$sSaveResultCode,
-			'message' => $sMessage, //wfMessage( 'bs-visualeditor-save-message', $sTime, $sSummary )->plain(),
-			'edittime' => $sReturnEditTime,
-			'summary' => $sSummary,
-			'starttime' => wfTimestamp(TS_MW, time() + 2)
-		);
-
-		return FormatJson::encode($aOutput);
+		return FormatJson::encode( $aResult );
 	}
 
 	public static function checkLinks($links) {
@@ -545,4 +489,113 @@ class VisualEditor extends BsExtensionMW {
 		return true;
 	}
 
+
+	/**
+	 * Assembles the overall configuration for VisualEditor. This consists of
+	 * - TinyMCE consig standard:
+	 * - TinyMCE config overwrite:
+	 * - ResourceLoader dependencies:
+	 *
+	 * It is intentionally 'public' to allow other extensions to create and
+	 * modify their own configs and to create own TinyMCE instances
+	 * @param Parser $oParser
+	 * @param string $sLangCode
+	 * @return array
+	 */
+	public function makeConfig( $oParser, $sLangCode = null ) {
+		if( $sLangCode == null ) {
+			$sLangCode = $this->getLanguage()->getCode();
+		}
+
+		$aConfigs = array(
+			'standard' => $this->aConfigStandard + array(
+				'specialtaglist' => '',
+				'extended_valid_elements' => ''
+			),
+			'overwrite' => $this->aConfigOverwrite,
+			'module_deps' => array(
+				'ext.bluespice'
+			)
+		);
+
+		$aExtensionTags = $oParser->getTags(); //TODO: Use, or at least fall back to API "action=query&meta=siteinfo&siprop=extensiontags"
+		$sAllowedTags = '';
+		$sSpecialTags = '';
+		foreach ( $aExtensionTags as $sTagName ) {
+			if ( $sTagName == 'pre' ) {
+				continue;
+			}
+			$sAllowedTags .= $sTagName . '[*],';
+			if ($sTagName == 'nowiki') {
+				continue;
+			}
+			$sSpecialTags .= $sTagName . '|';
+		}
+		$sAllowedTags .= 'div[*],';
+
+		//This is a bad place...
+		BsConfig::set('MW::VisualEditor::SpecialTags', $sSpecialTags);
+		BsConfig::set('MW::VisualEditor::AllowedTags', $sAllowedTags);
+
+		$aDefaultTags = array(
+			"includeonly", "onlyinclude", "noinclude", "gallery", "code", //Definitively MediaWiki core
+			"presentation", "backlink",  "math", "video" //Maybe legacy extension tags? Potential duplicates!
+		);
+
+		$aConfigs['standard']["specialtaglist"] = $sSpecialTags . implode('|', $aDefaultTags);
+		$aConfigs['standard']["extended_valid_elements"] = $sAllowedTags . implode('[*],', $aDefaultTags);
+
+		//Find the right language file
+		$sLangDir = __DIR__ . '/resources/tinymce/langs';
+		if (!file_exists("{$sLangDir}/{$sLangCode}.js")) {
+			//I don't know what language files use underscores, but I'll leave it here
+			$aLanguage = explode('_', $sLangCode);
+			if ( count( $aLanguage ) < 2 ) {
+				$aLanguage = explode('-', $sLangCode);
+			}
+			if ( file_exists("{$sLangDir}/{$aLanguage[0]}.js") ) {
+				$sLangCode = $aLanguage[0];
+			} else {
+				$sLangCode = 'en';
+			}
+		}
+		$aConfigs['standard']['language'] = $sLangCode;
+
+		// TODO SW: use string flag as parameter to allow hookhandler to
+		// determin context. This will be usefull if hook gets called in
+		// another place
+		wfRunHooks(
+			'VisualEditorConfig',
+			array(
+				&$aConfigs['standard'],
+				&$aConfigs['overwrite'],
+				&$aConfigs['module_deps']
+			)
+		);
+
+		foreach( $aConfigs['standard']['style_formats'] as &$aStyles ){
+			foreach ( $aStyles as $key => &$val ){
+				if ( $key === "title" ) {
+					$oMsg = wfMessage( $val );
+					if ( $oMsg->exists() ) {
+						$val = $oMsg->plain();
+					}
+				}
+
+				if ( $key === "items" && is_array($val) ){
+					foreach ( $val as &$item ) {
+						$oMsg = wfMessage( $item['title'] );
+						if ( $oMsg->exists() ) {
+							$item['title'] = $oMsg->plain();
+						}
+					}
+				}
+			}
+		}
+
+		$aConfigs['standard'] = $this->_prepareConfig($aConfigs['standard']);
+		$aConfigs['overwrite'] = $this->_prepareConfig($aConfigs['overwrite']);
+
+		return $aConfigs;
+	}
 }

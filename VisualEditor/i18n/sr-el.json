@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"prefs-visualeditor": "Vizuelni uređivač",
+	"bs-visualeditor-editbutton-hint": "Vizuelni uređivač",
+	"bs-visualeditor-wikitable": "Standardna",
+	"bs-visualeditor-contenttable": "Sadržaj",
+	"bs-visualeditor-bsactions-wiki": "Vikitekst",
+	"bs-visualeditor-bsactions-signature": "Potpis",
+	"bs-visualeditor-bsactions-save": "Sačuvaj",
+	"bs-visualeditor-bsactions-headings": "Naslovi",
+	"bs-visualeditor-bsactions-paragraph": "Paragraf",
+	"bs-visualeditor-bsactions-heading2": "Naslov 2",
+	"bs-visualeditor-bsactions-heading3": "Naslov 3",
+	"bs-visualeditor-bsactions-heading4": "Naslov 4",
+	"bs-visualeditor-bsactions-heading5": "Naslov 5",
+	"bs-visualeditor-bsactions-heading6": "Naslov 6"
+}

@@ -49,6 +49,14 @@ define("tinymce/WindowManager", [
 
 		self.windows = windows;
 
+		editor.on('remove', function() {
+			var i = windows.length;
+
+			while (i--) {
+				windows[i].close();
+			}
+		});
+
 		/**
 		 * Opens a new window.
 		 *
@@ -60,7 +68,7 @@ define("tinymce/WindowManager", [
 		 * @option {Number} height Height in pixels.
 		 * @option {Boolean} resizable Specifies whether the popup window is resizable or not.
 		 * @option {Boolean} maximizable Specifies whether the popup window has a "maximize" button and can get maximized or not.
-		 * @option {String/bool} scrollbars Specifies whether the popup window can have scrollbars if required (i.e. content
+		 * @option {String/Boolean} scrollbars Specifies whether the popup window can have scrollbars if required (i.e. content
 		 * larger than the popup size specified).
 		 */
 		self.open = function(args, params) {
@@ -90,7 +98,6 @@ define("tinymce/WindowManager", [
 				args.buttons = [
 					{text: 'Ok', subtype: 'primary', onclick: function() {
 						win.find('form')[0].submit();
-						win.close();
 					}},
 
 					{text: 'Cancel', onclick: function() {
@@ -134,7 +141,7 @@ define("tinymce/WindowManager", [
 			// Takes a snapshot in the FocusManager of the selection before focus is lost to dialog
 			editor.nodeChanged();
 
-			return win.renderTo(document.body).reflow();
+			return win.renderTo().reflow();
 		};
 
 		/**
@@ -153,6 +160,8 @@ define("tinymce/WindowManager", [
 			MessageBox.alert(message, function() {
 				if (callback) {
 					callback.call(scope || this);
+				} else {
+					editor.focus();
 				}
 			});
 		};
@@ -215,6 +224,16 @@ define("tinymce/WindowManager", [
 			if (getTopMostWindow()) {
 				getTopMostWindow().params = params;
 			}
+		};
+
+		/**
+		 * Returns the currently opened window objects.
+		 *
+		 * @method getWindows
+		 * @return {Array} Array of the currently opened windows.
+		 */
+		self.getWindows = function() {
+			return windows;
 		};
 	};
 });
