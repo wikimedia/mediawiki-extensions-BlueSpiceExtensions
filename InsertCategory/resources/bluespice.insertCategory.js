@@ -99,7 +99,7 @@ var BsInsertCategoryViewHelper = {
 	setCategories: function( categories ) {
 		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
 			var api = new mw.Api();
-			api.get({
+			api.post({
 				action: 'bs-wikipage-tasks',
 				task: 'setCategories',
 				token: mw.user.tokens.get( 'editToken', '' ),
