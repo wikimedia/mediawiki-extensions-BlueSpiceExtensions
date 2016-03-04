@@ -5,19 +5,28 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 	id: 'bs-resped-assignment-panel',
 
 	afterInitComponent: function() {
-		this.strAvailableRespEds = Ext.create('Ext.data.JsonStore', {
+		this.strAvailableRespEds = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-responsibleeditorspossibleeditors-store',
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'SpecialResponsibleEditors::ajaxGetPossibleEditors' ),
+				url: mw.util.wikiScript( 'api' ),
+				extraParams: {
+					format: 'json',
+					limit: 0
+				},
 				reader: {
 					type: 'json',
-					root: 'users',
+					root: 'results',
 					idProperty: 'user_id'
 				}
 			},
 			fields: [ 'user_id', 'user_displayname' ],
 			sorters:['user_displayname'],
-			remoteSort: false
+			sortInfo: {
+				field: 'user_displayname'
+			},
+			remoteSort: false,
+			autoLoad: false,
 		});
 		this.strAvailableRespEds.on( 'load', this.onStrAvailableRespEdsLoad, this );
 
@@ -47,7 +56,7 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentPanel', {
 		if( this.storeLoaded === false ) {
 			this.strAvailableRespEds.load({
 				params: {
-					'rsargs[]': this.currentData.articleId
+					'articleId': this.currentData.articleId
 				}
 			});
 		}
