@@ -11,11 +11,21 @@ mw.loader.using( 'ext.bluespice', function() {
 	}
 
 	if ( $.cookie( 'bs-bluespiceprojectfeedbackhelperpanel-hide' ) == 'true' ){
-		$('#bs-bluespiceprojectfeedbackhelperpanel').hide()
+		$('#bs-bluespiceprojectfeedbackhelperpanel').hide();
 	} else{
 		$('#bs-bluespiceprojectfeedbackhelperpanel-closebutton').click(function(){
 			if( confirm( $(this).attr('data-confirm-msg') ) ) {
-				$.get( bs.util.getAjaxDispatcherUrl('BlueSpiceProjectFeedbackHelper::disableFeedback') );
+				$.ajax({
+					dataType: "json",
+					type: 'post',
+					url: mw.util.wikiScript( 'api' ),
+					data: {
+						action: 'bs-bluespiceprojectfeedbackhelper',
+						task: 'disableFeedback',
+						format: 'json',
+						token: mw.user.tokens.get('editToken', '')
+					}
+				});
 			}
 			$( '#bs-bluespiceprojectfeedbackhelperpanel' ).fadeOut( 'fast' );
 			$.cookie( 'bs-bluespiceprojectfeedbackhelperpanel-hide', 'true', {
