@@ -12,7 +12,7 @@
 	"bs-insertcategory-pref-withparents": "Kategorie mit ihren übergeordneten Kategorien einfügen",
 	"bs-insertcategory-title": "Kategorie einfügen",
 	"bs-insertcategory-cat-label": "Zugewiesen:",
-	"bs-insertcategory-success": "Kategorie erfolgreich hinzugefügt",
+	"bs-insertcategory-success": "Die Kategorie wurde hinzugefügt",
 	"bs-insertcategory-failure": "Fehler",
 	"bs-insertcategory-hint": "Hinweis: Bestätige mit der Taste Enter, um die Eingabe abzuschließen und die Kategorie hinzuzufügen.",
 	"bs-insertcategory-panel-title": "Kategorien"

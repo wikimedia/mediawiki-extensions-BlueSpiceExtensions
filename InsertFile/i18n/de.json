@@ -55,7 +55,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Der ausgewählte Zielname besitzt keine zum Hochladen zugelassene Dateiendung.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Die Dateiendung des Zielnamens ergibt keinen zum Hochladen zugelassenen Bildtypen.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Die Dateiendung des Zielnamens ergibt keinen zum Hochladen zugelassenen Dateitypen.",
-	"bs-insertfile-uploadcomplete": "Die Datei wurde hochgeladen",
+	"bs-insertfile-uploadcomplete": "Deine Datei wurde gespeichert.",
 	"bs-insertfile-titlefile": "Datei einfügen",
 	"bs-insertfile-titleimage": "Bild einfügen",
 	"bs-insertfile-tipkeepratio": "Proportionen beibehalten",

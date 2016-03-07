@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"KediÇobanı"
 		]
 	},
 	"prefs-avatars": "Avatarlar",
-	"bs-avatars-warning-title": "Uyarı"
+	"bs-avatars-upload-complete": "Görüntü yüklendi.",
+	"bs-avatars-warning-title": "Uyarı",
+	"bs-avatars-set-userimage-saved": "Kullanıcı resmi kaydedildi."
 }

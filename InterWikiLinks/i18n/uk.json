@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-interwikilinks-desc": "Інтерфейс адміністрування для додавання, редагування та вилучення інтервікі-посилань",
@@ -24,5 +25,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Ви впевнені, що хочете видалити це інтервікі-посилання?",
 	"bs-interwikilinks-insertlink-tabtitle": "Посилання на іншу вікі",
 	"bs-interwikilinks-insertlink-labelprefix": "Префікс",
-	"bs-interwikilink-select-a-prefix": "Виберіть префікс"
+	"bs-interwikilink-select-a-prefix": "Виберіть префікс",
+	"bs-interwikilinks-link-edited": "Інтервікі-посилання додано",
+	"apihelp-bs-interwikilinks-tasks-description": "Забезпечує завдання для розширення InterWikiLinks."
 }

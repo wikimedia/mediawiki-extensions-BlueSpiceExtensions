@@ -12,6 +12,7 @@
 	"bs-interwikilinks-invalid-url-spc": "Text for the URL is invalid. Please do not use spaces.",
 	"bs-interwikilinks-label": "Anchor text in admin tab for interwiki links.\n{{Identical|Interwiki link}}",
 	"bs-interwikilinks-link-created": "Text for the interwiki link has been created.",
+	"bs-interwikilinks-link-added": "Text for the interwiki link has been added.",
 	"bs-interwikilinks-link-deleted": "Text for the interwiki link has been deleted.",
 	"bs-interwikilinks-nooldpfx": "Text for the previous prefix was not found.",
 	"bs-interwikilinks-nopfx": "Text for please supply a prefix.",

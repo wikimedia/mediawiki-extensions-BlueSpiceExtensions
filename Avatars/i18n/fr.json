@@ -9,7 +9,7 @@
 	"bs-avatars-desc": "Fournit des images de l’utilisateur génériques et individuelles",
 	"bs-avatars-pref-generator": "Générateur :",
 	"bs-avatars-pref-defaultsize": "Taille par défaut en pixel :",
-	"bs-avatars-upload-complete": "L’image a bien été téléchargée.",
+	"bs-avatars-upload-complete": "L’image a été téléchargée.",
 	"bs-avatars-generate-complete": "Un nouvel avatar a été généré.",
 	"bs-avatars-upload-title": "Modifier la photo du profil",
 	"bs-avatars-upload-label": "Photo",
@@ -19,7 +19,7 @@
 	"bs-avatars-userimage-title": "Image du wiki ou URL de l’image",
 	"bs-avatars-userimage-help": "par ex. Picture.jpg ou http://localhost/Picture.gif",
 	"bs-avatars-set-userimage-failed": "URL ou image du wiki non valide.",
-	"bs-avatars-set-userimage-saved": "Image de l’utilisateur correctement enregistrée.",
+	"bs-avatars-set-userimage-saved": "L’image de l’utilisateur a été enregistrée.",
 	"bs-avatars-file-upload-fieldset-title": "Import de l’image",
 	"bs-avatars-auto-generate-fieldset-title": "Avatar auto-généré"
 }

@@ -34,6 +34,7 @@
 	"bs-insertfile-warning": "Attenzione",
 	"bs-insertfile-allowedfiletypesare": "Tipi di file validi sono:",
 	"bs-insertfile-error": "Errore",
+	"bs-insertfile-uploadcomplete": "Il tuo file è stato salvato.",
 	"bs-insertfile-titlefile": "Inserisci file",
 	"bs-insertfile-titleimage": "Inserisci immagine",
 	"bs-insertfile-tipkeepratio": "Mantieni proporzioni",

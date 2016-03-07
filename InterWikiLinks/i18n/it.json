@@ -11,5 +11,7 @@
 	"bs-interwikilinks-headerprefix": "Prefisso",
 	"bs-interwikilinks-labelprefix": "Prefisso",
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Sei sicuro di voler eliminare questo collegamento interwiki?",
-	"bs-interwikilinks-insertlink-labelprefix": "Prefisso"
+	"bs-interwikilinks-insertlink-labelprefix": "Prefisso",
+	"bs-interwikilinks-link-edited": "Il collegamento interwiki è stato modificato",
+	"apihelp-bs-interwikilinks-tasks-description": "Fornisce le attività per l'estensione InterWikiLinks."
 }

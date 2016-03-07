@@ -55,7 +55,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Обрана Вами цільова назва не містить допустимого файлового розширення.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Обрана Вами цільова назва не містить дозволеного розширення зображення.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Обрана Вами цільова назва не містить дозволеного файлового розширення.",
-	"bs-insertfile-uploadcomplete": "Ваш файл збережено успішно.",
+	"bs-insertfile-uploadcomplete": "Ваш файл збережено.",
 	"bs-insertfile-titlefile": "Вставити файл",
 	"bs-insertfile-titleimage": "Вставити зображення",
 	"bs-insertfile-tipkeepratio": "Зберегти пропорції",
