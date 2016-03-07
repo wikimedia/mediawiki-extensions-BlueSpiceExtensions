@@ -26,5 +26,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Are you sure, you want delete this interwiki link?",
 	"bs-interwikilinks-insertlink-tabtitle": "Link into another wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
-	"bs-interwikilink-select-a-prefix": "Choose prefix"
+	"bs-interwikilink-select-a-prefix": "Choose prefix",
+	"bs-interwikilinks-link-edited": "The interwiki link has been edited",
+	"apihelp-bs-interwikilinks-tasks-description": "Provides the tasks for the extension InterWikiLinks."
 }
