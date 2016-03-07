@@ -10,7 +10,7 @@
 	"bs-insertcategory-pref-withparents": "Insert category with its parents",
 	"bs-insertcategory-title": "Insert category",
 	"bs-insertcategory-cat-label": "Assigned:",
-	"bs-insertcategory-success": "Add category successful",
+	"bs-insertcategory-success": "The category was added",
 	"bs-insertcategory-failure": "Error",
 	"bs-insertcategory-hint": "Note: to add a category, you have to press enter or terminate your entry with a comma.",
 	"bs-insertcategory-panel-title": "Categories"
