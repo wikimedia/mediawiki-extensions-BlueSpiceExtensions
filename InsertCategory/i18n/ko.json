@@ -3,12 +3,14 @@
 		"authors": [
 			"Tyey",
 			"아라",
-			"Hwangjy9"
+			"Hwangjy9",
+			"HDNua"
 		]
 	},
 	"bs-insertcategory-insertcat": "분류 넣기",
 	"prefs-insertcategory": "분류 넣기",
 	"bs-insertcategory-title": "분류 넣기",
+	"bs-insertcategory-success": "카테고리가 추가되었습니다.",
 	"bs-insertcategory-failure": "오류",
 	"bs-insertcategory-panel-title": "분류"
 }

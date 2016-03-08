@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"HDNua"
 		]
 	},
 	"bs-interwikilinks-label": "인터위키 링크",
@@ -17,5 +18,6 @@
 	"bs-interwikilinks-titleeditinterwikilink": "인터위키 링크 편집",
 	"bs-interwikilinks-labelprefix": "접두어",
 	"bs-interwikilinks-titledeleteinterwikilink": "인터위키 링크 삭제",
-	"bs-interwikilinks-insertlink-labelprefix": "접두어"
+	"bs-interwikilinks-insertlink-labelprefix": "접두어",
+	"bs-interwikilinks-link-edited": "인터위키 링크가 편집되었습니다."
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"아라",
 			"Hwangjy9",
-			"Yearning"
+			"Yearning",
+			"HDNua"
 		]
 	},
 	"bs-insertfile-labelsort": "정렬 기준:",
@@ -23,7 +24,7 @@
 	"bs-insertfile-errorloading": "파일을 불러오는 동안 오류가 발생했습니다.",
 	"bs-insertfile-warning": "경고",
 	"bs-insertfile-error": "오류",
-	"bs-insertfile-uploadcomplete": "파일을 성공적으로 저장했습니다.",
+	"bs-insertfile-uploadcomplete": "파일을 저장했습니다.",
 	"bs-insertfile-license": "라이선스",
 	"bs-insertfile-categories": "분류",
 	"bs-insertfile-upload-waitmessage": "파일을 올리는 중 ..."
