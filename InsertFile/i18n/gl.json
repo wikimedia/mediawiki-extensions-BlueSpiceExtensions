@@ -54,7 +54,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "O nome de destino elexido non ten unha extensión válida.",
 	"bs-insertfile-errorwrongimagetypeondestination": "O nome de destino que elixiu non ten ningunha extensión de imaxe permitida.",
 	"bs-insertfile-errorwrongfiletypeondestination": "O nome de destino que escolleu non ten ningunha extensión de ficheiro permitida.",
-	"bs-insertfile-uploadcomplete": "Gardouse o ficheiro correctamente.",
+	"bs-insertfile-uploadcomplete": "Gardouse o ficheiro.",
 	"bs-insertfile-titlefile": "Inserir ficheiro",
 	"bs-insertfile-titleimage": "Inserir imaxe",
 	"bs-insertfile-tipkeepratio": "Manter as proporcións",

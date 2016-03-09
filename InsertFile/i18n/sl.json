@@ -56,7 +56,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Ciljno ime, ki ste ga izberali nima veljavne končnice.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Ciljno ime, ki ste ga izberali nima veljavne končnice.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Ciljno ime, ki ste ga izberali nima dovoljene končnice.",
-	"bs-insertfile-uploadcomplete": "Vaša datoteka je uspešno shranjena.",
+	"bs-insertfile-uploadcomplete": "Vašo datoteko smo shranili.",
 	"bs-insertfile-titlefile": "Vstavi datoteko",
 	"bs-insertfile-titleimage": "Vstavi sliko",
 	"bs-insertfile-tipkeepratio": "Ohrani razmerja",

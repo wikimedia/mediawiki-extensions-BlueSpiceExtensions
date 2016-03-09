@@ -55,7 +55,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "您选择的目标名称没有有效扩展名。",
 	"bs-insertfile-errorwrongimagetypeondestination": "您选择的目标名称不是允许的图像格式。",
 	"bs-insertfile-errorwrongfiletypeondestination": "您选择的目标名称不是允许的文件格式。",
-	"bs-insertfile-uploadcomplete": "您的文件已成功保存。",
+	"bs-insertfile-uploadcomplete": "您的文件已保存。",
 	"bs-insertfile-titlefile": "插入文件",
 	"bs-insertfile-titleimage": "插入图片",
 	"bs-insertfile-tipkeepratio": "保持比例",
