@@ -18,7 +18,7 @@ require_once( __DIR__."/Authors/Authors.setup.php" );
 require_once( __DIR__."/Blog/Blog.setup.php" );
 require_once( __DIR__."/BlueSpiceProjectFeedbackHelper/BlueSpiceProjectFeedbackHelper.setup.php" );
 require_once( __DIR__."/Checklist/Checklist.setup.php" );
-#require_once( __DIR__."/ContextMenu/ContextMenu.setup.php" );
+require_once( __DIR__."/ContextMenu/ContextMenu.setup.php" );
 require_once( __DIR__."/CountThings/CountThings.setup.php" );
 require_once( __DIR__."/CSyntaxHighlight/CSyntaxHighlight.setup.php" );
 require_once( __DIR__."/Dashboards/Dashboards.setup.php" );
