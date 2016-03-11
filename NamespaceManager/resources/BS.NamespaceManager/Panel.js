@@ -125,7 +125,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		var additionalSettings = this.getAdditionalSettings( namespace );
 		var me = this;
 		var api = new mw.Api();
-		api.get({
+		api.post({
 				action: 'bs-namespace-tasks',
 				task: 'add',
 				token: mw.user.tokens.get( 'editToken', '' ),
@@ -147,7 +147,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		var additionalSettings = this.getAdditionalSettings( namespace );
 		var me = this;
 		var api = new mw.Api();
-		api.get({
+		api.post({
 				action: 'bs-namespace-tasks',
 				task: 'edit',
 				token: mw.user.tokens.get( 'editToken', '' ),
@@ -182,7 +182,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		var doArticle = namespace.doarticle.rb;
 		var me = this;
 		var api = new mw.Api();
-		api.get({
+		api.post({
 				action: 'bs-namespace-tasks',
 				task: 'remove',
 				token: mw.user.tokens.get( 'editToken', '' ),
