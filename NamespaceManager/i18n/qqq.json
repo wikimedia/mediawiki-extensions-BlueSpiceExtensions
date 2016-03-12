@@ -19,7 +19,7 @@
 	"bs-namespacemanager-label-searchable": "Column headline for search by default.\n\n*Also used as checkbox label.",
 	"bs-namespacemanager-label-subpages": "Column headline for subpages.\n\n*Also used as checkbox label.\n*{{Identical|Subpage}}",
 	"bs-namespacemanager-label-pagecount": "Column headline for page count of a namespace.\n\n{{Identical|Page}}",
-	"bs-namespacemanager-label-system": "Column headline for whether a namespace is a system namespace.",
+	"bs-namespacemanager-label-system": "Column headline for whether a namespace is a system namespace.\n{{Identical|System}}",
 	"bs-namespacemanager-hide-system-ns": "Label for checkbox to hide all system namespaces from list",
 	"bs-namespacemanager-hide-talk-ns": "Label for checkbox to hide all talk namespaces from list",
 	"bs-namespacemanager-nsadded": "Success message for the namespace has been added.",
