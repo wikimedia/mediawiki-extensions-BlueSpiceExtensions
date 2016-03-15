@@ -89,10 +89,10 @@ class InsertCategory extends BsExtensionMW {
 		$aLoaderUsingDeps[] = 'ext.bluespice.insertcategory';
 
 		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
-		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "hwinsertcategory" );
+		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bsinsertcategory" );
 
 		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar2"] );
-		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "hwinsertcategory" );
+		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "bsinsertcategory" );
 		return true;
 	}
 

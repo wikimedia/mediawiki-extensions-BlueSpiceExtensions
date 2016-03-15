@@ -436,6 +436,8 @@ var BsActions = function() {
 		// Register buttons
 		for (var i = 0; i < buttons.length; i++) {
 			var button = buttons[i];
+			button.buttonConfig.classes = button.buttonConfig.classes || '';
+			button.buttonConfig.classes += " widget btn " + button.buttonId;
 			ed.addButton(button.buttonId, button.buttonConfig);
 		}
 
