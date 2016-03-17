@@ -340,11 +340,9 @@ class VisualEditor extends BsExtensionMW {
 			return true;
 
 		$out->addModuleStyles('ext.bluespice.visualEditor.styles');
-		// $out->addModules breaks IE8
-		$out->addModuleScripts('ext.bluespice.visualEditor.tinymce');
-		$out->addModuleScripts('ext.bluespice.visualEditor');
 
-		$out->addModuleMessages('ext.bluespice.visualEditor.tinymce');
+		$out->addModules('ext.bluespice.visualEditor.tinymce');
+		$out->addModules('ext.bluespice.visualEditor');
 
 		return true;
 	}
