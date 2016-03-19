@@ -56,7 +56,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Выбранное Вами целевое название не содержит допустимого файлового расширения.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Выбранное Вами целевое название не содержит разрешенного расширения изображения.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Выбранное Вами целевое название не содержит разрешенного файлового расширения.",
-	"bs-insertfile-uploadcomplete": "Ваш файл успешно сохранен.",
+	"bs-insertfile-uploadcomplete": "Ваш файл сохранён.",
 	"bs-insertfile-titlefile": "Вставить файл",
 	"bs-insertfile-titleimage": "Вставить изображение",
 	"bs-insertfile-tipkeepratio": "Сохранить пропорции",
