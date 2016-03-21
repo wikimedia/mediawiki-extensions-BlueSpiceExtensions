@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Рустам Нурыев"
+			"Рустам Нурыев",
+			"Айсар"
 		]
 	},
-	"bs-insertfile-typenone": "юҡ"
+	"bs-insertfile-typenone": "юҡ",
+	"bs-insertfile-uploadcomplete": "Һеҙҙең файл һаҡланды."
 }
