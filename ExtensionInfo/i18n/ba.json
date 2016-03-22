@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan"
+		]
+	},
+	"bs-extensioninfo-label": "Киңәйтеүҙәр",
+	"bs-extensioninfo-software": "Программа",
+	"bs-extensioninfo-version": "Версия",
+	"extensioninfo": "Киңәйтеүҙәр",
+	"bs-extensioninfo-headerextname": "Ҡушымта исеме",
+	"bs-extensioninfo-headerversion": "Версия",
+	"bs-extensioninfo-headerdesc": "Тасуирлау",
+	"bs-extensioninfo-headerstatus": "Статус",
+	"bs-extensioninfo-headerpackage": "Пакет",
+	"bs-extensioninfo-groupingtemplateviewtext": "Элемент{{PLURAL:$1||ы}}"
+}

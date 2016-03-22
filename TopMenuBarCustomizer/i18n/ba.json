@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Өҫкө меню һалтанмаларын көйләү",
+	"prefs-topmenubarcustomizer": "Меню көйләүсе",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Һалынған ҡаттар иҫәбе",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Төп ҡат элементтары:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Өҫтәмә ҡат элементтары:"
+}

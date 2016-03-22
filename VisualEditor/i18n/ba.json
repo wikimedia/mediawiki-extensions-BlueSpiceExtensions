@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"З. ӘЙЛЕ"
+		]
+	},
+	"bs-visualeditor-desc": "MediaWiki өсөн Күҙләгес мөхәррир",
+	"prefs-visualeditor": "Күҙләгес мөхәррирләү",
+	"bs-visualeditor-editbutton-hint": "Күҙләгес мөхәррир",
+	"bs-visualeditor-pref-disablens": "Исемдәр арауығы һүндерелгән",
+	"bs-visualeditor-pref-use": "Килешеү буйынса Күҙләгес мөхәррирҙе ҡулланыу",
+	"bs-visualeditor-save-message": "\"$2\" яҙмаһы менән $1 өлгөһөн һаҡлау.",
+	"bs-visualeditor-no-summary": "Үҙгәртеү яҙмаһын иҫәпкә алмайынса",
+	"bs-visualeditor-sortable": "Сортҡа бүленеүсе",
+	"bs-visualeditor-wikitable": "Стандарт",
+	"bs-visualeditor-contenttable": "йөкмәткеһе",
+	"bs-visualeditor-contenttable-black": "Йөкмәткеһе (ҡара)",
+	"bs-visualeditor-contenttable-blue": "Йөкмәткеһе (зәңгәр)",
+	"bs-visualeditor-contenttable-darkblue": "Йөкмәткеһе (ҡуйы зәңгәр)",
+	"bs-visualeditor-cuscosky": "Куско күге",
+	"bs-visualeditor-casablanca": "Касабланка",
+	"bs-visualeditor-greyscale": "Һоро төҫтәре",
+	"bs-visualeditor-greyscale-narrow": "Һоро төҫтәре (тар мәғәнәлә)",
+	"bs-visualeditor-aligntop": "Өҫтә",
+	"bs-visualeditor-alignmiddle": "Уртала",
+	"bs-visualeditor-alignbottom": "Аҫта",
+	"bs-visualeditor-bsactions-wiki": "Викитекст",
+	"bs-visualeditor-bsactions-switchgui": "Инструменттар панелен алыштырыу",
+	"bs-visualeditor-bsactions-linebreak": "Юлды бүлеү",
+	"bs-visualeditor-bsactions-signature": "Имза",
+	"bs-visualeditor-bsactions-save": "Һаҡларға",
+	"bs-visualeditor-bsactions-headings": "Исемдәр",
+	"bs-visualeditor-bsactions-paragraph": "Абзац",
+	"bs-visualeditor-bsactions-heading2": "2-се исем",
+	"bs-visualeditor-bsactions-heading3": "3-сө исем",
+	"bs-visualeditor-bsactions-heading4": "4-се исем",
+	"bs-visualeditor-bsactions-heading5": "5-се исем",
+	"bs-visualeditor-bsactions-heading6": "6-cы исем",
+	"bs-visualeditor-switch-noeditor-desc": "Был биттә күҙләгес мөхәррирҙе һүндерә"
+}

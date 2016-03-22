@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan"
+		]
+	},
+	"bs-readers-desc": "Был битте уҡыусылар исемлеген төҙөй",
+	"prefs-readers": "Уҡыусылар",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Уҡыусы}}|Уҡыусылар}}",
+	"readers-user": " {{GENDER:$1|Бит}} уҡылған: $1",
+	"readers": " «$1» битен уҡыусылар",
+	"bs-readers-contentactions-label": "Уҡыусыларҙы күрһәтергә",
+	"bs-readers-pagenotexists": "Был бит юҡ!",
+	"bs-readers-pref-active": "Әүҙем уҡыусылар",
+	"bs-readers-pref-numofreaders": "Күрһәтеү өсөн уҡыусылар иҫәбе:",
+	"bs-readers-emptyinput": "Бит асылманы",
+	"bs-readers-header-username": "Ҡатнашыусы исеме",
+	"bs-readers-header-readerspath": "Уҡыусылар",
+	"bs-readers-header-ts": "Дата",
+	"bs-readers-header-page": "Бит"
+}
