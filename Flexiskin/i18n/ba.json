@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan"
+		]
+	},
+	"bs-flexiskin-label": "Күренеш",
+	"bs-flexiskin-defaultname": "Килешеү буйынса",
+	"bs-flexiskin-defaultdesc": "Килешеү байынса тема һайларға",
+	"bs-flexiskin-error-skinexists": "Бындай исемле тема бар",
+	"bs-flexiskin-error-fail-add-skin": "Биҙәү темаһын эшләп булманы:$1",
+	"bs-flexiskin-reset-error": "Көәләүҙәрҙе ташлап булманы:$1",
+	"bs-flexiskin-error-get-config": "Конфигурация тейәп булманы:$1",
+	"bs-flexiskin-error-delete-skin": "«$1» темаһын юйып булмай.",
+	"bs-flexiskin-not-allowed": "Битте ҡарау рөхсәт ителмәй",
+	"prefs-flexiskin": "Күренеш",
+	"bs-flexiskin-pref-active": "Биҙәү өсөн актив тема:",
+	"bs-flexiskin-pref-logo": "Логотип:",
+	"bs-flexiskin-labelname": "Исем",
+	"bs-flexiskin-labeldesc": "Тасуирлау",
+	"bs-flexiskin-headergeneral": "Дөйөм",
+	"bs-flexiskin-dialogclose": "Алдан ҡарауҙы ябырға теләйһегеҙме?"
+}

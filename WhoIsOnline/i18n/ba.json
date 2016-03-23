@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Лилиә",
+			"Янмурза Баки"
+		]
+	},
+	"bs-whoisonline-desc": "Хәҙерге ваҡытта \"селтәрҙә (online)\" булған ҡатнашыусылар исемлеген күрһәтә.",
+	"bs-whoisonline-nousers": "Системаға берәү ҙә инмәне.",
+	"bs-whoisonline-widget-title": "Кем селтәрҙә?",
+	"prefs-whoisonline": "Кем селтәрҙә?",
+	"bs-whoisonline-pref-limitcount": "Ҡатнашыусыларҙың күрһәтелгән максималь иҫәбе:",
+	"bs-whoisonline-pref-orderby": "Сортҡа бүлеү:",
+	"bs-whoisonline-pref-maxidletime": "Ҡатнашыусы \"селтәрҙә түгелмен (offline)\" тип билдәләнгәнсе үткән ваҡыт секундтарҙа:",
+	"bs-whoisonline-pref-orderby-time": "Эш ваҡыты",
+	"bs-whoisonline-pref-orderby-name": "Исеме",
+	"bs-whoisonline-pref-interval": "Яңыртыу арауығы секундтарҙа:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Онлайн ҡатнашыусылар иҫәбен күрһәтә:",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Төшөрөлмә исемлектә онлайн ҡатнашыусыларҙың ҙур булмаған исемлеген күрһәтә"
+}
