@@ -5,11 +5,12 @@ $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons,
 
 	var currentImagePath = mw.config.get('wgScriptPath') + '/extensions/BlueSpiceExtensions/InsertCategory/resources/images';
 
-	ed.addButton('hwinsertcategory', {
-		title : mw.message('bs-insertcategory-title').plain(),
-		cmd : 'mceHwCategory',
-		buttonId: 'hwinsertcategory',
-					onPostRender: function() {
+	buttons.push( {
+		buttonId: 'bsinsertcategory',
+		buttonConfig: {
+			title : mw.message('bs-insertcategory-title').plain(),
+			cmd : 'mceHwCategory',
+			onPostRender: function() {
 				var self = this;
 
 				tinyMCE.activeEditor.on('NodeChange', function(evt) {
@@ -22,7 +23,7 @@ $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons,
 				});
 			}
 		}
-	);
+	} );
 
 	commands.push({
 		commandId: 'mceHwCategory',
