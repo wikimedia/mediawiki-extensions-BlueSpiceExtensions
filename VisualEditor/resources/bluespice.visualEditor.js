@@ -79,17 +79,17 @@ function bs_initVisualEditor() {
 	}
 }
 
-$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
-	e.preventDefault();
-	//todo: check ob richtig, denke durch 'wpTextbox1' wird in tinymce.startup.js ln 95
-	//eine Instanz des tiny erzeugt, der mit seiner id den MW-Editor überschreibt => kein speichern möglich
-	//VisualEditor.toggleEditor('wpTextbox1');
-	$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
-	VisualEditor.startEditors();
-	return false;
-});
-
-$(document).ready( function() {
-	var BsVisualEditorLoaderUsingDeps = mw.config.get('BsVisualEditorLoaderUsingDeps');
-	mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
+$( document ).ready( function() {
+	var BsVisualEditorLoaderUsingDeps = mw.config.get( 'BsVisualEditorLoaderUsingDeps' );
+	mw.loader.using( BsVisualEditorLoaderUsingDeps, bs_initVisualEditor ).done( function() {
+		$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
+			e.preventDefault();
+			//todo: check ob richtig, denke durch 'wpTextbox1' wird in tinymce.startup.js ln 95
+			//eine Instanz des tiny erzeugt, der mit seiner id den MW-Editor überschreibt => kein speichern möglich
+			//VisualEditor.toggleEditor('wpTextbox1');
+			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
+			VisualEditor.startEditors();
+			return false;
+		})
+	});
 });
