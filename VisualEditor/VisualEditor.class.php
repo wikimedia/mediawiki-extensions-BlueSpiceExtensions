@@ -251,7 +251,8 @@ class VisualEditor extends BsExtensionMW {
 		$aRows[0]['editing'][10] = 'bs-editbutton-visualeditor';
 
 		$aButtonCfgs['bs-editbutton-visualeditor'] = array(
-			'tip' => wfMessage('bs-visualeditor-editbutton-hint')->plain()
+			'tip' => wfMessage('bs-visualeditor-editbutton-hint')->plain(),
+			'disabled' => true
 		);
 		return true;
 	}

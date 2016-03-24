@@ -295,6 +295,7 @@ class ExtendedEditBar extends BsExtensionMW {
 					if( isset( $aButtonCfg['open'] ) )   $aAttributes['data-open']   = $aButtonCfg['open'];
 					if( isset( $aButtonCfg['close'] ) )  $aAttributes['data-close']  = $aButtonCfg['close'];
 					if( isset( $aButtonCfg['sample'] ) ) $aAttributes['data-sample'] = $aButtonCfg['sample'];
+					if( isset( $aButtonCfg['disabled'] ) )  $aAttributes['class']   .= " bs-editbutton-disabled";
 
 					$sButton = Html::element(
 						'a',

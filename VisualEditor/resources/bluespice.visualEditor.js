@@ -90,6 +90,7 @@ $( document ).ready( function() {
 			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
 			VisualEditor.startEditors();
 			return false;
-		})
+		});
+		$( '#bs-editbutton-visualeditor' ).removeClass( 'bs-editbutton-disabled' );
 	});
 });
