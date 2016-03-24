@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Айбикә"
+		]
+	},
+	"bs-review-desc": "Биттәргә эшсе ағымдың функционаллеген өҫтәй",
+	"prefs-review": "Тикшереү",
+	"bs-review-review": "Тикшереү",
+	"bs-review-menu-entry": "Төҙәтеүҙәрҙе раҫлау",
+	"bs-review-date": "Әле бөтөн ҡатнашыусылар ҙа тауыш бирмәне",
+	"bs-review-agreed": "Бөтөн ҡатнашыусылар риза булды",
+	"bs-review-denied-disagreed": "Һис юғында бер ҡатнашыусы риза булманы",
+	"bs-review-accepted": "Ҡабул ителде",
+	"bs-review-rejected": "Кире ҡағылды",
+	"bs-review-abstain": "Тауыш бирмәй ҡалдылар",
+	"bs-review-review-finished": "Был бит тикшерелгән",
+	"bs-review-reviewed-till": "Был бит $1 алып $2 тиклем тикшерелде",
+	"bs-review-reviewed-till-extra": "Булдырылды {{GENDER:$1|ҡатнашыусы тарафынан}} $2",
+	"bs-review-save-success": "Тикшереү тәғәйенләнде",
+	"bs-review-save-error": "Һаҡлағанда хата сыҡты",
+	"bs-review-save-removed": "Тикшереү юйылған",
+	"bs-review-save-nosteps": "Тикшереүҙең аҙымдары билдәләнмәгән",
+	"bs-review-save-noid": "Биттең идентификаторы ебәрелмәгән",
+	"bs-review-save-norights": "Һеҙҙең кәрәкле рөхсәтегеҙ юҡ",
+	"bs-review-review-error": "Билдәһеҙ хата",
+	"bs-review-review-secondtime": "Күҙәтеүҙе табып булманы. Бәлки, һеҙ битте яңынан тикшерергә маташаһығыҙҙыр",
+	"bs-review-review-saved": "Тауышығыҙ һаҡланды",
+	"bs-review-mail-link-to-page": "Ошо ссылка буйынса күсегеҙ: $1",
+	"bs-review-mail-invite-header": "Зинһар, «$1» битен тикшерегеҙ",
+	"bs-review-mail-invite-body": "$1 {{GENDER:$2|саҡырҙы}} «$3» битен тикшерергә",
+	"bs-review-mail-comment": "«$1» комментарийы индерелгән"
+}

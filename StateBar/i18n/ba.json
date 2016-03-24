@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan"
+		]
+	},
+	"prefs-statebar": "Торош юлы",
+	"bs-statebar-pref-sortbodyvars": "Есемдә тәртибе",
+	"bs-statebar-pref-sorttopvars": "Өҫкө өлөштә тәртип",
+	"bs-statebar-pref-show": "Юл торошон күрһәтергә",
+	"bs-statebar-viewtoggler": "ДЕТАЛДӘР",
+	"bs-statebar-viewtoggler-tooltip": "Деталдәр мәғлүмәтен күрһәтергә",
+	"bs-statebar-ajax-nobodyviews": "Мәғлүмәт юҡ"
+}
