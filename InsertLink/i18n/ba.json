@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Lizalizaufa",
-			"Айбикә"
+			"Айбикә",
+			"Азат Хәлилов"
 		]
 	},
-	"bs-insertlink-desc": "ССылка индереү өсөн диалог тәҙрәһе",
+	"bs-insertlink-desc": "Һылтанма индереү өсөн диалог тәҙрәһе",
 	"prefs-insertlink": "Һылтанма ҡуйыу",
 	"bs-insertlink": "Һылтанма ҡуйырға",
 	"bs-insertlink-pref-enable-java": "Java-апплеттар өҫтәү",

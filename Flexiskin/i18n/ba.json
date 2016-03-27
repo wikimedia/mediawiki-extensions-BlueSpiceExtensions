@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sagan"
+			"Sagan",
+			"З. ӘЙЛЕ"
 		]
 	},
+	"bs-flexiskin-desc": "Биткә flexiskins параметрҙар көйләүҙәре менән идара итеү мөмкинлеге бирә",
 	"bs-flexiskin-label": "Күренеш",
 	"bs-flexiskin-defaultname": "Килешеү буйынса",
 	"bs-flexiskin-defaultdesc": "Килешеү байынса тема һайларға",
@@ -19,5 +21,31 @@
 	"bs-flexiskin-labelname": "Исем",
 	"bs-flexiskin-labeldesc": "Тасуирлау",
 	"bs-flexiskin-headergeneral": "Дөйөм",
-	"bs-flexiskin-dialogclose": "Алдан ҡарауҙы ябырға теләйһегеҙме?"
+	"bs-flexiskin-dialogclose": "Алдан ҡарауҙы ябырға теләйһегеҙме?",
+	"bs-flexiskin-dialogreset": "Тема һуңғы һаҡлауға тиклем юйыласаҡ. Дауам итергә теләйһегеҙме?",
+	"bs-flexiskin-confirmdeleteskin": "Ысынлап та теманы юйырға теләйһегеҙме?",
+	"bs-flexiskin-titleaddskin": "Биҙәлеш темаһын өҫтәгеҙ",
+	"bs-flexiskin-labelskins": "Ҡалып",
+	"bs-flexiskin-headeractive": "Әүҙемдәр",
+	"bs-flexiskin-labelbgcolor": "Фон төҫө",
+	"bs-flexiskin-headerheader": "Атама",
+	"bs-flexiskin-labellogoupload": "Логотип",
+	"bs-flexiskin-labelbackgroundupload": "Фон рәсеме",
+	"bs-flexiskin-no-repeat": "ҡабатлауһыҙ",
+	"bs-flexiskin-repeat-x": "горизонталь ҡабатлауҙар",
+	"bs-flexiskin-repeat-y": "вертикаль ҡабатлау",
+	"bs-flexiskin-repeat": "горизонталь һәм вертикаль ҡабатлау",
+	"bs-flexiskin-labelrepeatbackground": "Фон рәсемен ҡабатлау",
+	"bs-flexiskin-labelcustombgcolor": "Ҡулланыусылыҡ төҫө",
+	"bs-flexiskin-headerposition": "Урынлашыуы һәм дәүмәл",
+	"bs-flexiskin-labelnavigation": "Навигацияның урынлашыуы",
+	"bs-flexiskin-labelcontent": "Йөкмәтке урыны",
+	"bs-flexiskin-left": "һулда",
+	"bs-flexiskin-right": "уңда",
+	"bs-flexiskin-center": "Уртала",
+	"bs-flexiskin-labelwidth": "Тулы киңлек (пикселдәрҙә)",
+	"bs-flexiskin-labelfullwidth": "Максималь киңлек:",
+	"bs-flexiskin-error-nameempty": "Үҙегеҙ асырға теләгән биҙәү темаһы өсөн исем индерегеҙ.",
+	"bs-flexiskin-error-templatenotexists": "Һайланған ҡалып юҡ.",
+	"bs-flexiskin-api-error-invalid-action": "Бындай ғәмәл юҡ"
 }

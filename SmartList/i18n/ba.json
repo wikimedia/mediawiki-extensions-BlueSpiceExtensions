@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sagan"
+			"Sagan",
+			"Азат Хәлилов"
 		]
 	},
 	"bs-smartlist-desc": "Исемлектә һуңғы биш вики төҙәтеүҙе күрһәтә",
@@ -9,7 +10,7 @@
 	"bs-smartlist-recent-changes": "Һуңғы үҙгәртеүҙәр",
 	"bs-smartlist-no-entries": "Бер нәмә лә табылманы",
 	"bs-smartlist-invalid-namespaces": "{{PLURAL:$1|Исемдәр арауығы }} дөрөҫ түгел: $2.",
-	"bs-smartlist-invalid-target": "Күрһәтелгән маҡсат биттәге башлыҡ була алмай",
+	"bs-smartlist-invalid-target": "Күрһәтелгән маҡсат биттәге атама була алмай",
 	"bs-smartlist-comment": "Комментарий: $1.",
 	"bs-smartlist-pref-count": "Яҙмалар һаны:",
 	"bs-smartlist-pref-comments": "Комментарийҙы күрһәтергә",
@@ -18,7 +19,7 @@
 	"bs-smartlist-pref-period": "Период:",
 	"bs-smartlist-pref-showminorchanges": "Әҙ төҙәтеүҙәрҙе күрһәтергә",
 	"bs-smartlist-pref-showonlynewarticles": "Яңы биттәрҙе генә күрһәтергә",
-	"bs-smartlist-pref-trim": "Башлыҡтың максималь оҙонлоғо (символдарҙа)",
+	"bs-smartlist-pref-trim": "Атаманың максималь оҙонлоғо (символдарҙа)",
 	"bs-smartlist-pref-showtext": "Биттең эстәлеген күрһәтә",
 	"bs-smartlist-pref-trimtext": "Бит эстәлегенең максималь оҙонлоғо (символдарҙа)",
 	"bs-smartlist-pref-order": "Сортҡа бүлергә:",

@@ -1,27 +1,28 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sagan"
+			"Sagan",
+			"Азат Хәлилов"
 		]
 	},
 	"bs-wantedarticle-desc": "Битте эҙләнеүсе биттәр исемлегенә өҫтәй",
-	"prefs-wantedarticle": "Зарур биттәр",
-	"bs-wantedarticle-ajax-error-no-parameter": "Биттең башлығы яҙылмаған",
+	"prefs-wantedarticle": "Талап ителгән биттәр",
+	"bs-wantedarticle-ajax-error-no-parameter": "Биттең атамаһы яҙылмаған",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "«$1» бите бар.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "«$1» бите тәҡдим ителгән.",
 	"bs-wantedarticle-edit-comment-suggestion-added": "\"$1\" тәҡдиме өҫтәлгән.",
 	"bs-wantedarticle-success-suggestion-entered": "Һеҙҙең «$1» тәҡдиме өҫтәлде.",
-	"bs-wantedarticle-sort-value-unknown": "Рөхсәт ителгән ҡиммәттәр: исеме һәм ваҡыты.",
-	"bs-wantedarticle-order-value-unknown": "Рөхсәт ителгән ҡиммәттәр: ASC ({{int:bs-wantedarticle-pref-order-asc}}) и DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
+	"bs-wantedarticle-sort-value-unknown": "Рөхсәт ителгән ғәмәлдәр: исеме һәм ваҡыты.",
+	"bs-wantedarticle-order-value-unknown": "Рөхсәт ителгән ғәмәлдәр: ASC ({{int:bs-wantedarticle-pref-order-asc}}) и DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
 	"bs-wantedarticle-page-removed": "«$1» бите юйылды.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Тәҡдим",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Яһау",
-	"bs-wantedarticle-single-textfield-defaulttext": "Башлыҡ исеме",
+	"bs-wantedarticle-single-textfield-defaulttext": "Атама исеме",
 	"bs-wantedarticle-tag-wantedarticle-desc": "Зарур биттәр исемлеген күрһәтә. Конфигурацияның рәхсәт ителгән биттәре.",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>: Күһәтеү өсөн биттәр иҫәбе.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Башлыҡ.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Сортлау тәртибе<code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) йәки <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Сортларға <code>title</code> или <code>time</code>.",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Атама",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Сортҡа бүлеү тәртибе<code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) йәки <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Сортҡа бүлеү <code>title</code> йәки <code>time</code>.",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Сығарыу форматы <code>list</code> или <code>quene</code> (өтөр аша).",
 	"bs-wantedarticle-tag-more-linktext": "Дауамы...",
 	"bs-wantedarticle-tag-default-title": "Зарур биттәр",

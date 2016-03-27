@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Sagan",
-			"Азат Хәлилов"
+			"Азат Хәлилов",
+			"З. ӘЙЛЕ"
 		]
 	},
+	"bs-extendededitbar-desc": "Вики-мөхәррирләү юлына өҫтәмә төймәләр өҫтәй",
 	"bs-extendededitbar-redirecttip": "Күсереү",
 	"bs-extendededitbar-redirectsample": "Текст ҡуйырға",
 	"bs-extendededitbar-striketip": "Һыҙырға",

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sagan"
+			"Sagan",
+			"З. ӘЙЛЕ"
 		]
 	},
+	"bs-extensioninfo-desc": "Күсерелгән киңәйтеүҙәрҙең мәғлүмәти исемлеге",
 	"bs-extensioninfo-label": "Киңәйтеүҙәр",
 	"bs-extensioninfo-software": "Программа",
 	"bs-extensioninfo-version": "Версия",

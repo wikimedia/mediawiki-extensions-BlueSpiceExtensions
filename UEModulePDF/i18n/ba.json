@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"З. ӘЙЛЕ"
+		]
+	},
+	"bs-uemodulepdf-desc": "MediaWikiға биттәрҙе PDF-форматтарға күсерергә рөхсәт итергә",
+	"prefs-uemodulepdf": "PDF-та экспортлауҙың универсаль модуле",
+	"uemodulepdf": "PDF-ҡа экспортлауҙың универсаль модуле",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Бэкенд адресы",
+	"bs-uemodulepdf-pref-templatepath": "Стандарт ҡалып:",
+	"bs-uemodulepdf-pref-templatedir": "Ҡалыптар каталогы:",
+	"bs-uemodulepdf-pref-suppressns": "PDF-та исемдәр тупланмаһы перфиксын йәшереү",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Бер PDF бите",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Был битте PDF-ҡа экспортларға.",
+	"bs-uemodulepdf-overview-title": "Күсереү документтары форматы (PDF)",
+	"bs-uemodulepdf-overview-desc": "Биттәрҙе PDF-ҡа экспортлау (махсус биттәр һәм контентлы биттәр).",
+	"bs-uemodulepdf-overview-webservice-state": "Бэкенд статусы",
+	"bs-uemodulepdf-overview-webservice-state-ok": "Асыҡ",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "Инеү мөмкин түгел",
+	"soap-service-url-not-valid": "PDF булдырыу буйынса веб-хеҙмәт ғәмәлдә түгел. Вики көйләүҙәрен тикшерегеҙ.",
+	"soap-service-url-not-set": "PDF булдырыу буйынса веб-хеҙмәт өсөн адрем ҡуйылмаған. Вики көйләүҙәрен тикшерегеҙ.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Интерфейстың бэкенд вебы"
+}

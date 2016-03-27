@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sagan",
-			"Лилиә"
+			"Лилиә",
+			"Азат Хәлилов"
 		]
 	},
 	"bs-interwikilinks-desc": "Интервик һылтанмаларын өҫтәү, төҙәтеү өсөн хакимиәт интерфейсы.",
@@ -13,7 +14,7 @@
 	"bs-interwikilinks-link-added": "Интервики һылтанмаһы өҫтәлде",
 	"bs-interwikilinks-link-deleted": "Интервики-һылтанма алып ташланды.",
 	"bs-interwikilinks-nooldpfx": "алдан килгән префикс табылманы.",
-	"bs-interwikilinks-nopfx": "Зинһар өсөн, префиксты күрһәтегеҙ.",
+	"bs-interwikilinks-nopfx": "Префиксты күрһәтегеҙ.",
 	"bs-interwikilinks-nourl": "Зинһар өсөн, URL күрһәтегеҙ.",
 	"bs-interwikilinks-pfxtoolong": "Префикс бик оҙон. 31 символдан артыҡ ҡулланмағыҙ.",
 	"bs-interwikilinks-pfxexists": "Бындай префикс юҡ.",

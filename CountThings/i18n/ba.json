@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"З. ӘЙЛЕ"
+		]
+	},
+	"bs-countthings-desc": "Йөкмәткене анализлау нигеҙендә статистиканы күрһәтә",
+	"bs-countthings-chars-label": "Символдар",
+	"bs-countthings-words-label": "Һүҙҙәр",
+	"bs-countthings-pages-label": "Биттәр",
+	"bs-countthings-error-no-input": "Бит күрһәтелмәгән",
+	"bs-countthings-error-invalid-mode": " \"$1\" режимын ҡулланып булмай. Зинһар,  \"chars\", \"words\" йәки \"pages\" ҡулланғыҙ.",
+	"bs-countthings-error-not-exist": "$1 бите юҡ.",
+	"bs-countthings-tag-countarticles-desc": "Биттәр һанын күрһәтә.",
+	"bs-countthings-tag-countusers-desc": "Ҡатнашыусылар һанын күрһәтә.",
+	"bs-countthings-tag-countcharacters-desc": "Биттәге йөкмәтке статистикаһын күрһәтә. Атрибуттарҙың ҡулланыу мөмкин булған конфигурациялары:",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>:  <code>chars</code> (символдар), <code>words</code> (һүҙҙәр) или <code>pages</code> (биттәр) тип иҫәпләргә кәрәк."
+}
