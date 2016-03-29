@@ -38,7 +38,7 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 
 	/**
 	 * Constructor for BuildIndexMwLinked class
-	 * @param BsBuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate.
+	 * @param BuildIndexMainControl $oBsBuildIndexMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl, $oFile ) {
 		parent::__construct( $oMainControl );
@@ -58,11 +58,12 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 	 * @param string $img_name Filename of document to be indexed.
 	 * @param string $fileText The body of the wiki-page or the document
 	 * @param string $realPath Path to document if external (not in wiki). Might be empty or null
-	 * @param unknown $ts Timestamp
+	 * @param mixed $ts Timestamp
+	 * @param array $aCategories
 	 * @return Apache_Solr_Document
 	 */
-	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts, $sVirtualFilePath ) {
-		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualFilePath, $ts );
+	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts, $sVirtualFilePath, $aCategories ) {
+		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualFilePath, $ts, $aCategories );
 	}
 
 	/**
@@ -78,10 +79,14 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 				'img_major_mime' => 'application'
 			)
 		);
-		if ( $oFileMinorDocType === false ) return;
+		if ( $oFileMinorDocType === false ) {
+			return;
+		}
 
 		$sFileDocType = $this->mimeDecoding( $oFileMinorDocType->img_minor_mime, $sFileName );
-		if ( !$this->checkDocType( $sFileDocType, $sFileName ) ) return;
+		if ( !$this->checkDocType( $sFileDocType, $sFileName ) ) {
+			return;
+		}
 
 		$sFileTimestamp = $this->oFile->getTimestamp();
 
@@ -91,11 +96,16 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 			$sFilePath = $oFileRepoLocalRef->getPath();
 		}
 
-		if ( $this->checkExistence( $sVirtualFilePath, 'repo', $sFileTimestamp, $sFileName) ) return;
+		//TODO: Check why this is here. Other BuildIndex* implementation
+		//(e.g. BuildIndexMwArticles) don't have this check. It's probably
+		//because extracting the file content is expensive.
+		if ( $this->checkExistence( $sVirtualFilePath, 'repo', $sFileTimestamp, $sFileName ) ) {
+			return;
+		}
 
 		$sFileText = $this->getFileText( $sFilePath, $sFileName );
-
-		$doc = $this->makeRepoDocument( $sFileDocType, $sFileName, $sFileText, $sFilePath, $sFileTimestamp, $sVirtualFilePath );
+		$aCategories = $this->oMainControl->getCategoriesFromDbForCertainPageId( $this->oFile->getTitle()->getArticleID() );
+		$doc = $this->makeRepoDocument( $sFileDocType, $sFileName, $sFileText, $sFilePath, $sFileTimestamp, $sVirtualFilePath, $aCategories );
 		if ( $doc ) {
 			// mode and ERROR_MSG_KEY are only passed for the case when addDocument fails
 			$this->oMainControl->addDocument( $doc, $this->mode, self::S_ERROR_MSG_KEY );
@@ -103,7 +113,7 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 	}
 
 	/**
-	 * Descructor for BuildIndexMwSingleFile class
+	 * Destructor for BuildIndexMwSingleFile class
 	 */
 	public function __destruct() {
 		if ( $this->documentsDb !== null ) $this->oDbr->freeResult( $this->documentsDb );
