@@ -75,10 +75,11 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	 * @param string $fileText The body of the wiki-page or the document
 	 * @param string $realPath Path to document if external (not in wiki). Might be empty or null
 	 * @param unknown $ts Timestamp
+	 * @param array $aCategories
 	 * @return Apache_Solr_Document
 	 */
-	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts, $sVirtualPath ) {
-		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualPath, $ts );
+	public function makeRepoDocument( $type, $img_name, &$text, $realPath, $ts, $sVirtualPath, $aCategories ) {
+		return $this->oMainControl->makeDocument( 'repo', $type, $img_name, $text, -1, 999, $realPath, $sVirtualPath, $ts, $aCategories );
 	}
 
 	/**
@@ -116,8 +117,8 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 			if ( $this->checkExistence( $sVirtualPath, 'repo', $timestampImage, $document->img_name ) ) continue;
 
 			$text = $this->getFileText( $repoFileRealPath, $document->img_name );
-
-			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage, $sVirtualPath );
+			$aCategories = $this->oMainControl->getCategoriesFromDbForCertainPageId( $oTitle->getArticleID() );
+			$doc = $this->makeRepoDocument( $docType, $document->img_name, $text, $repoFileRealPath, $timestampImage, $sVirtualPath, $aCategories );
 			if ( $doc ) {
 				// mode and ERROR_MSG_KEY are only passed for the case when addDocument fails
 				$this->oMainControl->addDocument( $doc, $this->mode, self::S_ERROR_MSG_KEY );

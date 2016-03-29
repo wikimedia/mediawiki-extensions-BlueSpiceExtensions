@@ -375,6 +375,23 @@ class ExtendedSearch extends BsExtensionMW {
 	public function onArticleSaveComplete( &$oArticle, &$oUser ) {
 		try {
 			BuildIndexMainControl::getInstance()->updateIndexWiki( $oArticle );
+			$oTitle = $oArticle->getTitle();
+
+			//There may be an update to the categories of a file page, which
+			//in turn means that we need to update the index entry of the file
+			//with the new categories
+			if ( $oTitle->getNamespace() === NS_FILE ) {
+				$oFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
+
+				//Unfortunately BuildIndexMwSingleFile::indexCrawledDocuments
+				//checks if the file is already on the index. If so it does not
+				//apply the update. To have our categories be written to the
+				//index we need to remove the file from the index first...
+				BuildIndexMainControl::getInstance()->deleteIndexFile( $oFile->getPath(), 'repo' );
+
+				//... and then add it again
+				BuildIndexMainControl::getInstance()->updateIndexFile( $oFile );
+			}
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onArticleSaveComplete: '.$e->getMessage() );
 		}

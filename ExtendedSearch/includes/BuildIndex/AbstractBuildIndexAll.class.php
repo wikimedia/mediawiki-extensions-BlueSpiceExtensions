@@ -19,7 +19,7 @@ abstract class AbstractBuildIndexAll {
 
 	/**
 	 * Instance of BuildIndexMainControl
-	 * @var BsBuildIndexMainControl
+	 * @var BuildIndexMainControl
 	 */
 	protected $oMainControl = null;
 	/**
@@ -49,8 +49,8 @@ abstract class AbstractBuildIndexAll {
 	protected $totalNoDocumentsCrawled = 0;
 
 	/**
-	 * Constructor for BsAbstractBuildIndexAll class
-	 * @param BsBuildIndexMainControl $oMainControl Instance of build index controller
+	 * Constructor for AbstractBuildIndexAll class
+	 * @param BuildIndexMainControl $oMainControl Instance of build index controller
 	 */
 	public function __construct( $oMainControl ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
