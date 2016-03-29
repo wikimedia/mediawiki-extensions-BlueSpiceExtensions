@@ -9,7 +9,7 @@ require_once( __DIR__."/PermissionManager/PermissionManager.setup.php" );
 require_once( __DIR__."/Preferences/Preferences.setup.php" );
 require_once( __DIR__."/UserManager/UserManager.setup.php" );
 
-//Other Extendsions
+//Other Extensions
 require_once( __DIR__."/StateBar/StateBar.setup.php" );
 require_once( __DIR__."/RSSFeeder/RSSFeeder.setup.php" );
 require_once( __DIR__."/AboutBlueSpice/AboutBlueSpice.setup.php" );
