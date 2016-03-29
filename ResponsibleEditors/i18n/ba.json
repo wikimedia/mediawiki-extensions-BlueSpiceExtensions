@@ -64,6 +64,6 @@
 	"notification-bs-responsibleeditors-change-subject": "\"$2$1\" бите {{GENDER:$2|мөхәррирләнгән}} $1",
 	"notification-bs-responsibleeditors-change-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}} $3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин",
 	"notification-bs-responsibleeditors-delete-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}} $3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин: $3.",
-	"notification-bs-responsibleeditors-move-subject": "\"$1\"  {{GENDER:$2|күсерелгән}} $3",
-	"notification-bs-responsibleeditors-move-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}} $3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин: $4 $5"
+	"notification-bs-responsibleeditors-move-subject": "\"$1\"  {{GENDER:$2|күсерелгән}}$3",
+	"notification-bs-responsibleeditors-move-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}}$3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин: $4 $5"
 }
