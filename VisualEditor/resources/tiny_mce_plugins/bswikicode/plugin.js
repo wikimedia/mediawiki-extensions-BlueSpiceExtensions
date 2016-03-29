@@ -2360,16 +2360,21 @@ var BsWikiCode = function() {
 
 		if( internalLinksTitles.length == 0 ) return;
 
-		$.getJSON(
-			bs.util.getAjaxDispatcherUrl('VisualEditor::checkLinks', [ internalLinksTitles ]),
-			{},
-			function(data, textStatus, jqXHR) {
-				for( var i = 0; i < data.length; i++ ) {
-					if( data[i] ) continue; //Known link
+		var api = new mw.Api();
+		api.postWithToken( 'edit', {
+			action: 'bs-visualeditor-tasks',
+			task: 'checkLinks',
+			taskData: JSON.stringify( internalLinksTitles )
+		})
+		.done( function( response ){
+			if ( response.success === true ) {
+				for( var i = 0; i < response.payload.length; i++ ) {
+					if( response.payload[i] ) continue; //Known link
 					internalLinks[i].addClass( 'new' );
 				}
 			}
-		);
+		});
+
 	}
 
 	this.getInfo = function() {
