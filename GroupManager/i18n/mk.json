@@ -32,5 +32,5 @@
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|ја создаде}} групата $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|ја преименуваше}} групата $4 во $5",
 	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|ја отстрани}} групата $4",
-	"apihelp-bs-groupmanager-description": "Ги дава задачите за додатокот „Раководтел со групи“"
+	"apihelp-bs-groupmanager-description": "Ги дава задачите за додатокот „Раководител со групи“"
 }
