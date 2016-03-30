@@ -23,6 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
@@ -130,6 +131,7 @@ class PermissionManager extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-permissionmanager-pref-lockmode', 'toggle' );
 		BsConfig::registerVar( 'MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-permissionmanager-pref-skipsysns', 'toggle' );
 		BsConfig::registerVar( 'MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL | BsConfig::RENDER_AS_JAVASCRIPT, 'bs-permissionmanager-pref-enablerealitycheck', 'toggle' );
+		BsConfig::registerVar( 'MW::PermissionManager::MaxBackups', 5, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-permissionmanager-pref-max-backups' );
 
 		$this->setHook( 'BSWikiAdminUserManagerBeforeUserListSend' );
 		$this->setHook( 'BSGroupManagerGroupNameChanged' );
@@ -701,6 +703,18 @@ class PermissionManager extends BsExtensionMW {
 			$backupFile = dirname( $bsgConfigFiles['PermissionManager'] ) . "/{$backupFilename}";
 
 			file_put_contents( $backupFile, file_get_contents( $bsgConfigFiles['PermissionManager'] ) );
+		}
+
+		//remove old backup files if max number exceeded
+		$arrConfigFiles = scandir( dirname( $bsgConfigFiles['PermissionManager'] ) . "/", SCANDIR_SORT_ASCENDING );
+		$arrBackupFiles = array_filter( $arrConfigFiles, function( $elem ) {
+			return ( strpos( $elem, "pm-settings-backup-" ) !== FALSE ) ? true : false;
+		} );
+
+		//default limit to 5 backups, remove all backup files until "maxbackups" files left
+		while( count( $arrBackupFiles ) > BsConfig::get( "MW::PermissionManager::MaxBackups" ) ) {
+			$oldBackupFile = dirname( $bsgConfigFiles['PermissionManager'] ) . "/". array_shift( $arrBackupFiles );
+			unlink( $oldBackupFile );
 		}
 	}
 }
