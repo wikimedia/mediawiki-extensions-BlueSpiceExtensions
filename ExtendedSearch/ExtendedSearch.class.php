@@ -81,7 +81,7 @@ class ExtendedSearch extends BsExtensionMW {
 
 		// max 32 chars with userlevel! 123 456789012345678 90123456789012 '::' counts as one char :-)
 		BsConfig::registerVar( 'MW::ExtendedSearch::DefFuzziness', '0.5', BsConfig::TYPE_STRING, 'bs-extendedsearch-pref-defduzziness' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResults', 15, BsConfig::TYPE_INT|BsConfig::LEVEL_USER,  'bs-extendedsearch-pref-limitresultdef', 'int' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::LimitResults', 25, BsConfig::TYPE_INT|BsConfig::LEVEL_USER,  'bs-extendedsearch-pref-limitresultdef', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SearchFiles', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-extendedsearch-pref-searchfiles', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::JumpToTitle', false, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-jumptotitle', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::ShowCreateSugg', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_USER, 'bs-extendedsearch-pref-showcreatesugg', 'toggle' );
@@ -126,6 +126,8 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ), array( 'type' => 'global' ) );
+
+		$this->resolveNamespaceBoostQueryConfig();
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -494,6 +496,34 @@ class ExtendedSearch extends BsExtensionMW {
 			wfDebugLog( 'ExtendedSearch', 'onFileUndeleteComplete: '.$e->getMessage() );
 		}
 		return true;
+	}
+
+	/**
+	 * Uses the wildcard config entry in
+	 * $bsgExtendedSearchBoostQuerySettings['namespace'] to calculate concrete
+	 * settings in dependency of current system settings
+	 * Needs to be done after "setup time"
+	 * @global array $wgContentNamespaces
+	 * @global array $bsgExtendedSearchBoostQuerySettings
+	 * @return void
+	 */
+	protected function resolveNamespaceBoostQueryConfig() {
+		global $wgContentNamespaces, $bsgExtendedSearchBoostQuerySettings;
+
+		if( !isset( $bsgExtendedSearchBoostQuerySettings['namespace']['*'] ) ) {
+			return;
+		}
+
+		$iBoostFactor = $bsgExtendedSearchBoostQuerySettings['namespace']['*'];
+		//Resolving '*' namespace config at runtime
+		foreach ( $wgContentNamespaces as $iNs ) {
+			//If there already is an explicit boost factor we leave it unchanged
+			if( isset( $bsgExtendedSearchBoostQuerySettings['namespace'][$iNs] ) ) {
+				continue;
+			}
+			$bsgExtendedSearchBoostQuerySettings['namespace'][$iNs] = $iBoostFactor;
+		}
+		unset( $bsgExtendedSearchBoostQuerySettings['namespace']['*'] );
 	}
 
 }

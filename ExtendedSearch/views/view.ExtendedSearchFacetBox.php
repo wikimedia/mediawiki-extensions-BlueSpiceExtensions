@@ -22,6 +22,14 @@
 class ViewSearchFacet extends ViewBaseElement {
 
 	/**
+	 * Basic configuration
+	 * @var array
+	 */
+	protected $aConfig = array(
+
+	);
+
+	/**
 	 * Number of checked facets. Used to determine whether overall checkbox should be checked as well
 	 * @var int Number of checked facets
 	 */
@@ -37,6 +45,17 @@ class ViewSearchFacet extends ViewBaseElement {
 	 */
 	protected $aEntriesUnChecked = array();
 
+	public function __construct( $aConfig ) {
+		$this->aConfig = $aConfig;
+		$this->setOption( 'title', $aConfig['i18n'] );
+		$this->setOption( 'fset', array() );
+		if( isset( $aConfig['settings'] ) ) {
+			$this->setOption( 'fset', $aConfig['settings'] );
+		}
+
+		parent::__construct();
+	}
+
 	/**
 	 * Add facet either to checked or unchecked set.
 	 * @param array $dataSet Set of facets.
@@ -47,6 +66,9 @@ class ViewSearchFacet extends ViewBaseElement {
 		}
 		if ( isset( $dataSet['uri'] ) ) {
 			$dataSet['uri'] = htmlspecialchars( $dataSet['uri'], ENT_QUOTES, 'UTF-8' );
+		}
+		if( !isset( $dataSet['id'] ) ) {
+			$dataSet['id'] = Sanitizer::escapeId( $dataSet['diff'] );
 		}
 
 		$dataSet['title'] = "{$dataSet['title']}";
@@ -69,8 +91,8 @@ class ViewSearchFacet extends ViewBaseElement {
 	 */
 	public function setTemplate( $template ) {
 		$out = '<div class="facetBarEntry" title="{title}">';
-		$out .= '<input type="checkbox"{checked} {diff} class="searchcheckbox" />';
-		$out .= '<label>{name-and-count}</label>';
+		$out .= '<input id="{id}" type="checkbox"{checked} {diff} class="searchcheckbox" />';
+		$out .= '<label for="{id}">{name-and-count}</label>';
 		$out .= '</div>';
 		parent::setTemplate( $out );
 	}
@@ -82,15 +104,6 @@ class ViewSearchFacet extends ViewBaseElement {
 	public function execute( $params = false ) {
 		$this->setTemplate( '' );
 
-		$bChecked = ( $this->iEntriesChecked > 0 )
-			? true
-			: false;
-
-		$sFacetHead = '<div class="bs-facet-title bs-extendedsearch-default-textspacing">';
-		$sFacetHead .= Xml::check( '', $bChecked, array( 'urldiff' => $this->getOption( 'uri-facet-all-diff' ) ) );
-		$sFacetHead .= '<label>' . wfMessage( $this->getOption( 'title' ) )->plain(). '</label>';
-		$sFacetHead .= '</div>';
-
 		$this->addCompleteDataset( $this->aEntriesChecked );
 		$body = parent::execute();
 
@@ -101,10 +114,12 @@ class ViewSearchFacet extends ViewBaseElement {
 		$this->addCompleteDataset( $this->aEntriesUnChecked );
 		$body .= parent::execute();
 
-		if ( empty( $body ) ) return '';
+		if ( empty( $body ) ) {
+			return '';
+		}
 
+		$sFacetHead = $this->makeFacetHead( $this->iEntriesChecked > 0 );
 		$body .= '<div class="bs-extendedsearch-facetend"></div><div class="bs-extendedsearch-facetbox-more"></div>';
-
 		$body = Xml::openElement( 'div', array( 'class' => 'bs-extendedsearch-facetbox-container' ) ) .
 				$body .
 				Xml::closeElement( 'div' );
@@ -113,6 +128,27 @@ class ViewSearchFacet extends ViewBaseElement {
 				Xml::closeElement( 'div' );
 
 		return $sFacetHead.$body;
+	}
+
+	public function makeFacetHead( $bChecked ) {
+		$sId = Sanitizer::escapeId( $this->getOption( 'uri-facet-all-diff' ) );
+		$sFacetHead = '<div class="bs-facet-title bs-extendedsearch-default-textspacing">';
+		$sFacetHead .= Xml::check( '', $bChecked, array( 'id' => $sId, 'urldiff' => $this->getOption( 'uri-facet-all-diff' ) ) );
+		$sFacetHead .= '<label for="'.$sId.'">' . wfMessage( $this->getOption( 'title' ) )->plain(). '</label>';
+		if( isset( $this->aConfig['settings'] ) ) {
+			$sFacetHead .= Html::element(
+				'a',
+				array(
+					'href' => '#',
+					'class' => 'bs-es-facetsettings icon-wrench',
+					'data-fset-param' => $this->aConfig['param'],
+					'data-fset' => FormatJson::encode( $this->getOption( 'fset' ) )
+				),
+				''
+			);
+		}
+		$sFacetHead .= '</div>';
+		return $sFacetHead;
 	}
 
 }

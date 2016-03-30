@@ -19,7 +19,7 @@ class BsSearchResult {
 
 	/**
 	 * Instance of apache solr response
-	 * @var object of apache solr response
+	 * @var Apache_Solr_Response
 	 */
 	protected $oResponse = null;
 	/**
@@ -29,36 +29,36 @@ class BsSearchResult {
 	protected $aData = array();
 	/**
 	 * RequestContext
-	 * @var RequestContext object of RequestContext
+	 * @var RequestContext
 	 */
 	protected $oContext;
 	/**
 	 * View that renders search results
-	 * @var ViewSearchResult ViewSearchResult object
+	 * @var ViewSearchResult
 	 */
 	protected $vSearchResult = null;
 	/**
 	 * Instance of SearchOptions
-	 * @var SearchOptions object of SearchOptions
+	 * @var SearchOptions
 	 */
 	protected $oSearchOptions = null;
 	/**
 	 * Instance of SearchUriBuilder
-	 * @var object SearchUriBuilder object
+	 * @var SearchUriBuilder
 	 */
 	protected $oSearchUriBuilder = null;
 	/**
 	 * Maximum character length of facets
-	 * @var int Numberof characters
+	 * @var int
 	 */
 	protected $iMaxFacetLength = 20;
 
 	/**
 	 * Constructor for SearchResult class
-	 * @param object $oContext RequestContext
-	 * @param object $oSearchOptions SearchOptions
-	 * @param object $oSearchUriBuilder SearchUriBuilder
-	 * @param object $oResponse solr result set
+	 * @param RequestContext $oContext RequestContext
+	 * @param SearchOptions $oSearchOptions SearchOptions
+	 * @param SearchUriBuilder $oSearchUriBuilder SearchUriBuilder
+	 * @param Apache_Solr_Response $oResponse solr result set
 	 */
 	public function __construct( $oContext, $oSearchOptions, $oSearchUriBuilder, $oResponse ) {
 		$this->oContext = $oContext;
@@ -166,6 +166,9 @@ class BsSearchResult {
 				'url' => $this->oSearchUriBuilder->buildUri(
 					SearchUriBuilder::ALL,
 					SearchUriBuilder::CATS
+				),
+				'settings' => array(
+					'op' => 'OR'
 				)
 			),
 			'editor' => array(
@@ -175,6 +178,9 @@ class BsSearchResult {
 				'url' => $this->oSearchUriBuilder->buildUri(
 					SearchUriBuilder::ALL,
 					SearchUriBuilder::NAMESPACES|SearchUriBuilder::EDITOR
+				),
+				'settings' => array(
+					'op' => 'OR'
 				)
 			),
 			'type' => array(
@@ -190,138 +196,141 @@ class BsSearchResult {
 
 		wfRunHooks( 'BSExtendedSearchBeforeCreateFacets', array( &$aBaseFacets ) );
 
+		$aFacetSettings = $this->oSearchOptions->getOption( 'fset' );
 		foreach ( $aBaseFacets as $sFacet => $aConfig ) {
-			$oFacet = new ViewSearchFacet();
+			$oFacet = new ViewSearchFacet( $aConfig );
+			if( isset( $aFacetSettings[$aConfig['param']] ) ) {
+				$oFacet->setOption( 'fset', $aFacetSettings[$aConfig['param']] );
+			}
 
-			if ( !is_null( $this->oResponse->facet_counts->facet_fields->{$sFacet} ) ) {
-				$oFacet->setOption( 'title', $aConfig['i18n'] );
+			if( !isset( $this->oResponse->facet_counts->facet_fields->{$sFacet} ) ){
+				continue;
+			}
+			/* alters to:
+			 * array(
+			 *     0 => array( 'checked' => true ),
+			 *     1 => array( 'count' => 15 ),
+			 *     999 => array( 'checked' => true, 'count' => 2 )
+			 * )*/
+			$aFacets = array();
+			$aData = $this->oSearchOptions->getOption( $aConfig['option'] );
 
-				/* alters to:
-				 * array(
-				 *     0 => array( 'checked' => true ),
-				 *     1 => array( 'count' => 15 ),
-				 *     999 => array( 'checked' => true, 'count' => 2 )
-				 * )*/
-				$aFacets = array();
-				$aData = $this->oSearchOptions->getOption( $aConfig['option'] );
-
-				if ( !empty( $aData ) ) {
-					foreach ( $aData as $key => $value ) {
-						$aFacets[$value]['checked'] = true;
-					}
-					unset( $aData );
+			if ( !empty( $aData ) ) {
+				foreach ( $aData as $key => $value ) {
+					$aFacets[$value]['checked'] = true;
 				}
+				unset( $aData );
+			}
 
-				// Get all available facets
-				$aFacetsInRespsonse = $this->oResponse->facet_counts->facet_fields->{$sFacet};
-				foreach ( $aFacetsInRespsonse as $key => $count ) {
-					if ( $key == '_empty_' ) continue;
-					if ( $sFacet === 'namespace' ) {
-						if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false || $count == '0' ) {
-							unset( $aFacets[$key] );
-							continue;
-						}
-					} elseif ( $sFacet === 'type' ) {
-						if ( $key != 'wiki'
-							&& !$this->oContext->getUser()->isAllowed( 'searchfiles' ) ) {
-							continue;
-						}
-					}
-					$aFacets[$key]['count'] = $count;
-				}
-
-				// Prepare available facets. Add some information for each facet
-				foreach ( $aFacets as $key => $attributes ) {
-					if ( !isset( $aFacets[$key]['count'] ) ) {
+			// Get all available facets
+			$aFacetsInRespsonse = $this->oResponse->facet_counts->facet_fields->{$sFacet};
+			foreach ( $aFacetsInRespsonse as $key => $count ) {
+				if ( $key == '_empty_' ) continue;
+				if ( $sFacet === 'namespace' ) {
+					if ( BsNamespaceHelper::checkNamespacePermission( $key, 'read' ) === false || $count == '0' ) {
 						unset( $aFacets[$key] );
 						continue;
 					}
-
-					if ( $sFacet === 'namespace' ) {
-						if ( $key == '999' ) {
-							$sTitle = wfMessage( 'bs-extendedsearch-facet-namespace-files' )->plain();
-						} elseif ( $key == '998' ) {
-							$sTitle = wfMessage( 'bs-extendedsearch-facet-namespace-extfiles' )->plain();
-						} elseif ( $key == '0' ) {
-							$sTitle = wfMessage( 'bs-ns_main' )->plain();
-						} else {
-							$sTitle = BsNamespaceHelper::getNamespaceName( $key, false );
-
-							if ( empty( $sTitle ) ) {
-								unset( $aFacets[$key] );
-								continue;
-							}
-						}
-					} elseif ( $sFacet === 'cat' ) {
-						$sTitle = ( $key == 'notcategorized' )
-							? wfMessage( 'bs-extendedsearch-facet-uncategorized' )->plain()
-							: $key;
-					} elseif ( $sFacet === 'editor' ) {
-						$sTitle = ( $key === 'unknown' )
-							? wfMessage( 'bs-extendedsearch-unknown' )->plain()
-							: $key;
-					} elseif (  $sFacet === 'type' ) {
-						$sTitle = $key;
+				} elseif ( $sFacet === 'type' ) {
+					if ( $key != 'wiki'
+						&& !$this->oContext->getUser()->isAllowed( 'searchfiles' ) ) {
+						continue;
 					}
-
-					$aFacets[$key]['title'] = $this->getFacetTitle( $sTitle );
-					$aFacets[$key]['name'] = $this->reduceMaxFacetLength( $sTitle );
 				}
+				$aFacets[$key]['count'] = $count;
+			}
 
-				uasort( $aFacets, array( $this, 'compareEntries' ) );
-
-				$aFacetAll = array();
-				foreach ( $aFacets as $key => $attributes ) {
-					$aDataSet = array();
-					if ( isset( $attributes['checked'] ) ) $aDataSet['checked'] = true;
-
-					if ( $sFacet === 'namespace' ) {
-						if ( $key == '999' ) {
-							$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES | SearchUriBuilder::FILES );
-							$uri .= '&search_files=' . ( isset( $attributes['checked'] ) ) ? '0' : '1';
-						} else {
-							$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES );
-						}
-					} elseif ( $sFacet === 'cat' ) {
-						$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::CATS );
-					} elseif ( $sFacet === 'editor' ) {
-						$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::EDITOR );
-					} elseif ( $sFacet === 'type' ) {
-						$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::TYPE );
-					}
-
-					foreach ( $aFacets as $namespaceUrl => $attributesUrl ) {
-						$bOwnUrlAndNotAlreadyChecked = ( ( $key == $namespaceUrl ) && !isset( $attributesUrl['checked'] ) );
-						$bOtherUrlAndAlreadyChecked = ( ( $key != $namespaceUrl ) && isset( $attributesUrl['checked'] ) );
-
-						if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked ) {
-							$uri .= "&{$aConfig['param']}[]=".$namespaceUrl;
-						}
-					}
-
-					$aDataSet['uri'] = $uri;
-					$aDataSet['diff'] = "{$aConfig['param']}[]=".$key;
-					$aDataSet['name'] = $attributes['name'];
-					$aDataSet['title'] = $attributes['title'];
-					$aDataSet['count'] = (int)$attributes['count'];
-
-					$oFacet->setData( $aDataSet );
-					$aFacetAll[] = "{$aConfig['param']}[]=".$key;
+			// Prepare available facets. Add some information for each facet
+			foreach ( $aFacets as $key => $attributes ) {
+				if ( !isset( $aFacets[$key]['count'] ) ) {
+					unset( $aFacets[$key] );
+					continue;
 				}
 
 				if ( $sFacet === 'namespace' ) {
-					$aReqNs = $this->oSearchOptions->getOption( 'namespaces' );
-					foreach ( $aReqNs as $ikey => $value ) {
-						if ( !array_key_exists( $value, $aFacets ) ){
-							$aFacetAll[] = "{$aConfig['param']}[]=".$value;
-							$sSiteUri = str_replace( "&{$aConfig['param']}[]=$value", '', $sSiteUri );
+					if ( $key == '999' ) {
+						$sTitle = wfMessage( 'bs-extendedsearch-facet-namespace-files' )->plain();
+					} elseif ( $key == '998' ) {
+						$sTitle = wfMessage( 'bs-extendedsearch-facet-namespace-extfiles' )->plain();
+					} elseif ( $key == '0' ) {
+						$sTitle = wfMessage( 'bs-ns_main' )->plain();
+					} else {
+						$sTitle = BsNamespaceHelper::getNamespaceName( $key, false );
+
+						if ( empty( $sTitle ) ) {
+							unset( $aFacets[$key] );
+							continue;
 						}
+					}
+				} elseif ( $sFacet === 'cat' ) {
+					$sTitle = ( $key == 'notcategorized' )
+						? wfMessage( 'bs-extendedsearch-facet-uncategorized' )->plain()
+						: $key;
+				} elseif ( $sFacet === 'editor' ) {
+					$sTitle = ( $key === 'unknown' )
+						? wfMessage( 'bs-extendedsearch-unknown' )->plain()
+						: $key;
+				} elseif (  $sFacet === 'type' ) {
+					$sTitle = $key;
+				}
+
+				$aFacets[$key]['title'] = $this->getFacetTitle( $sTitle );
+				$aFacets[$key]['name'] = $this->reduceMaxFacetLength( $sTitle );
+			}
+
+			uasort( $aFacets, array( $this, 'compareEntries' ) );
+
+			$aFacetAll = array();
+			foreach ( $aFacets as $key => $attributes ) {
+				$aDataSet = array();
+				if ( isset( $attributes['checked'] ) ) $aDataSet['checked'] = true;
+
+				if ( $sFacet === 'namespace' ) {
+					if ( $key == '999' ) {
+						$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES | SearchUriBuilder::FILES );
+						$uri .= '&search_files=' . ( isset( $attributes['checked'] ) ) ? '0' : '1';
+					} else {
+						$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES );
+					}
+				} elseif ( $sFacet === 'cat' ) {
+					$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::CATS );
+				} elseif ( $sFacet === 'editor' ) {
+					$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::EDITOR );
+				} elseif ( $sFacet === 'type' ) {
+					$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::TYPE );
+				}
+
+				foreach ( $aFacets as $namespaceUrl => $attributesUrl ) {
+					$bOwnUrlAndNotAlreadyChecked = ( ( $key == $namespaceUrl ) && !isset( $attributesUrl['checked'] ) );
+					$bOtherUrlAndAlreadyChecked = ( ( $key != $namespaceUrl ) && isset( $attributesUrl['checked'] ) );
+
+					if ( $bOwnUrlAndNotAlreadyChecked || $bOtherUrlAndAlreadyChecked ) {
+						$uri .= "&{$aConfig['param']}[]=".$namespaceUrl;
 					}
 				}
 
-				$sFacetAll = implode( '&', $aFacetAll );
-				$oFacet->setOption( 'uri-facet-all-diff', $sFacetAll );
+				$aDataSet['uri'] = $uri;
+				$aDataSet['diff'] = "{$aConfig['param']}[]=".$key;
+				$aDataSet['name'] = $attributes['name'];
+				$aDataSet['title'] = $attributes['title'];
+				$aDataSet['count'] = (int)$attributes['count'];
+
+				$oFacet->setData( $aDataSet );
+				$aFacetAll[] = "{$aConfig['param']}[]=".$key;
 			}
+
+			if ( $sFacet === 'namespace' ) {
+				$aReqNs = $this->oSearchOptions->getOption( 'namespaces' );
+				foreach ( $aReqNs as $ikey => $value ) {
+					if ( !array_key_exists( $value, $aFacets ) ){
+						$aFacetAll[] = "{$aConfig['param']}[]=".$value;
+						$sSiteUri = str_replace( "&{$aConfig['param']}[]=$value", '', $sSiteUri );
+					}
+				}
+			}
+
+			$sFacetAll = implode( '&', $aFacetAll );
+			$oFacet->setOption( 'uri-facet-all-diff', $sFacetAll );
 
 			$this->vSearchResult->setFacet( $oFacet );
 		}
@@ -336,15 +345,22 @@ class BsSearchResult {
 		$oParser = new Parser();
 
 		foreach ( $this->oResponse->response->docs as $oDocument ) {
+			//If pseudo namespace '999' we need tu use NS_FILE to have a
+			//valid title object
 			$iNamespace = ( $oDocument->namespace == '999' )
 				? NS_FILE
 				: $oDocument->namespace;
 
 			$oTitle = Title::makeTitle( $iNamespace, $oDocument->title );
 
-			// external files will never exist for mediawiki
-			if ( $oDocument->namespace != '998' ) {
-				if ( !$oTitle->exists() ) continue;
+			/* Only bail out if it should be a wiki page but it is not.
+			 * In case of other overall_types like 'external', 'linked'
+			 * there can never be a valid title.
+			 * If an extension adds a new overall_type it also is responsible
+			 * to render the link using 'BSExtendedSearchFormatLink' below.
+			 */
+			if ( $oDocument->overall_type === 'wiki' && !$oTitle->exists() ) {
+				continue;
 			}
 
 			$oSkin = $this->oContext->getSkin();
@@ -352,12 +368,11 @@ class BsSearchResult {
 			$sIconPath = '';
 			wfRunHooks( 'BSExtendedSearchFormatLink', array( &$sSearchLink, $oDocument, $oSkin, &$sIconPath ) );
 
+			$sIcon = 'default';
 			if ( empty( $sSearchLink ) ) {
 				if ( $oDocument->type == 'wiki' ) {
 					if ( !$oTitle->userCan( 'read' ) ) continue;
 					$sSearchLink = $this->getWikiLink( $oDocument, $oTitle, $oParser );
-					$sIcon = 'default';
-
 				} elseif ( $this->oContext->getUser()->isAllowed( 'searchfiles' ) ) {
 					$sSearchLink = $this->getFileLink( $oDocument, $oTitle );
 					$sIcon = $oDocument->type;

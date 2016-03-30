@@ -204,7 +204,7 @@ BsExtendedSearchAjaxManager.prototype = {
 
 		// facets armed with attribute urldiff...
 		$( '[urldiff]' ).click( function() {
-			ExtendedSearchAjaxManager.changeRequestFacets( $( this ).attr( 'urldiff' ), $( this ).attr( 'checked' ) );
+			ExtendedSearchAjaxManager.changeRequestFacets( $( this ).attr( 'urldiff' ), $( this ).is( ':checked' ) );
 		});
 
 		$('#bs-extendedsearch-filters-results-paging A').click( function( event ) {
