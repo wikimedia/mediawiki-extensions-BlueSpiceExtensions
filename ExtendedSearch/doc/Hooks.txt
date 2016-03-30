@@ -28,9 +28,6 @@ $this:
 &$sSearchString
 
 ==BuildIndexMainControl.class==
-'BS:ExtendedSearch:AddDocumentLog':
-$oSolrDocument:
-
 'BSExtendedSearchBuildIndex':
 $this:
 
@@ -67,28 +64,21 @@ $oSkin:
 'BSExtendedSearchGetCustomerId':
 &$sCustomerId:
 
-'BSExtendedSearchEmptyNamespacesElse':
-&$this:
-$oSearchRequest:
-
+'BSExtendedSearchSearchOptionsAppendFilterQueryAndFacetFields':
+$oSearchOptions
+&$aTerms
+$sFieldName
+$sTagName
 
 ==SearchRequest.class==
 
 'BSExtendedSearchRequestProcessInputs':
 &$this:
 
-
-==view.ExtendedSearchFormPage.php==
-
-'FormDefaults':
- $this:
-&$aSearchBoxKeyValues:
-
-
 ==view.SearchSuggest.php==
 
 'BSExtendedSearchAdditionalActions':
-&$sCreatesuggest:
+ &$sCreatesuggest:
  &$sSearchUrlencoded:
  &$sSearchHtmlEntities:
  &$oTitle

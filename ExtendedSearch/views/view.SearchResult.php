@@ -35,7 +35,7 @@ class ViewSearchResult extends ViewBaseElement {
 	protected $aResultEntryView = array();
 	/**
 	 * List of facet boxes.
-	 * @var array List of ViewExtendedSearchFacetBox.
+	 * @var ViewSearchFacet[] List of ViewSearchFacet.
 	 */
 	protected $aFacetBoxes = array();
 
@@ -305,10 +305,18 @@ class ViewSearchResult extends ViewBaseElement {
 		return implode( "\n" , $aOut );
 	}
 
+	/**
+	 *
+	 * @param ViewSearchFacet $oFacet
+	 */
 	public function setFacet( $oFacet ) {
 		$this->aFacetBoxes[] = $oFacet;
 	}
 
+	/**
+	 *
+	 * @return ViewSearchFacet[]
+	 */
 	public function getFacets() {
 		return $this->aFacetBoxes;
 	}
