@@ -1,4 +1,4 @@
-Ext.define('BS.model.Checklist', {
+Ext.define('BS.Checklist.model.Checklist', {
 	extend: 'Ext.data.Model',
 
 	fields: [
