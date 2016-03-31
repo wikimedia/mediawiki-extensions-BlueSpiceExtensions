@@ -50,48 +50,45 @@ $(document).bind('BsVisualEditorActionsInit', function( events, plugin, buttons,
 });
 
 
-$(document).ready(function() {
-	// view mode
-	$('#ca-insert_category').find('a').on( 'click', function( e ) {
-		e.preventDefault();
-		var me = this;
-		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.require('BS.InsertCategory.Dialog', function(){
-				BS.InsertCategory.Dialog.clearListeners();
-				BS.InsertCategory.Dialog.on( 'ok', function ( sender, data ) {
-					if ( BS.InsertCategory.Dialog.isDirty ) {
-						BsInsertCategoryViewHelper.setCategories( data );
-						return false;
-					}
-				} );
-				BS.InsertCategory.Dialog.setData(
-					BsInsertCategoryViewHelper.getCategories()
-				);
-				BS.InsertCategory.Dialog.show( me );
-			});
+// view mode
+$(document).on('click', '#ca-insert_category', function(e) {
+	e.preventDefault();
+	var me = $(this).find('a');
+	mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+		Ext.require('BS.InsertCategory.Dialog', function(){
+			BS.InsertCategory.Dialog.clearListeners();
+			BS.InsertCategory.Dialog.on( 'ok', function ( sender, data ) {
+				if ( BS.InsertCategory.Dialog.isDirty ) {
+					BsInsertCategoryViewHelper.setCategories( data );
+					return false;
+				}
+			} );
+			BS.InsertCategory.Dialog.setData(
+				BsInsertCategoryViewHelper.getCategories()
+			);
+			BS.InsertCategory.Dialog.show( me );
 		});
 	});
-
-	// wikieditor mode
-	$('#bs-editbutton-insertcategory').on( 'click', function( e ) {
-		e.preventDefault();
-		var me = this;
-		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.require('BS.InsertCategory.Dialog', function(){
-				BS.InsertCategory.Dialog.clearListeners();
-				BS.InsertCategory.Dialog.on('ok', function(sender, data){
-					if ( BS.InsertCategory.Dialog.isDirty ) {
-						BsInsertCategoryWikiEditorHelper.setCategories( data );
-					}
-				});
-				BS.InsertCategory.Dialog.setData(
-					BsInsertCategoryWikiEditorHelper.getCategories()
-				);
-				BS.InsertCategory.Dialog.show( me );
+	return false;
+});
+// wikieditor mode
+$(document).on('click', '#bs-editbutton-insertcategory', function(e) {
+	e.preventDefault();
+	var me = this;
+	mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+		Ext.require('BS.InsertCategory.Dialog', function(){
+			BS.InsertCategory.Dialog.clearListeners();
+			BS.InsertCategory.Dialog.on('ok', function(sender, data){
+				if ( BS.InsertCategory.Dialog.isDirty ) {
+					BsInsertCategoryWikiEditorHelper.setCategories( data );
+				}
 			});
+			BS.InsertCategory.Dialog.setData(
+				BsInsertCategoryWikiEditorHelper.getCategories()
+			);
+			BS.InsertCategory.Dialog.show( me );
 		});
 	});
-
 	return false;
 });
 
@@ -102,20 +99,33 @@ var BsInsertCategoryViewHelper = {
 
 	setCategories: function( categories ) {
 		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.Ajax.request({
-				url: bs.util.getAjaxDispatcherUrl( 'InsertCategory::addCategoriesToArticle', [ mw.config.get( "wgArticleId" ) ] ),
-				success: function( response, opts ) {
-					var obj = Ext.decode(response.responseText);
-					if ( obj.success ) {
-						bs.util.alert( 'ICsuc', { textMsg: 'bs-insertcategory-success', titleMsg: 'bs-extjs-title-success' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesOk } );
-					} else {
-						bs.util.alert( 'ICsuc', { textMsg: obj.msg, titleMsg: 'bs-extjs-title-warning' }, { ok: BsInsertCategoryViewHelper.onSetCategoriesFailure } );
-					}
-				},
-				failure: function() {},
-				params: {
-					page_name: mw.config.get( "wgPageName" ),
-					categories: categories.join(',')
+			var api = new mw.Api();
+			api.post({
+				action: 'bs-wikipage-tasks',
+				task: 'setCategories',
+				token: mw.user.tokens.get( 'editToken', '' ),
+				taskData: Ext.encode({
+					page_id: mw.config.get( "wgArticleId" ),
+					categories: categories
+				})
+			})
+			.fail(function( code, response ) {
+				BsInsertCategoryViewHelper.onSetCategoriesFailure( response.exception );
+			})
+			.done(function( response ) {
+				if ( response.success === true ) {
+					bs.util.alert(
+						'ICsuc',
+						{
+							textMsg: 'bs-insertcategory-success',
+							titleMsg: 'bs-extjs-title-success'
+						},
+						{
+							ok: BsInsertCategoryViewHelper.onSetCategoriesOk
+						}
+					);
+				} else {
+					BsInsertCategoryViewHelper.onSetCategoriesFailure( response.message );
 				}
 			});
 		});
@@ -123,8 +133,19 @@ var BsInsertCategoryViewHelper = {
 	onSetCategoriesOk: function () {
 		window.location.reload( true );
 	},
-	onSetCategoriesFailure: function () {
-		BS.InsertCategory.Dialog.setLoading( false );
+	onSetCategoriesFailure: function ( msg ) {
+		bs.util.alert(
+			'ICsuc',
+			{
+				text: msg,
+				titleMsg: 'bs-extjs-title-warning'
+			},
+			{
+				ok: function() {
+					BS.InsertCategory.Dialog.setLoading( false );
+				}
+			}
+		);
 	}
 };
 

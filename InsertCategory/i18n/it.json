@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"PeppeAeco"
+			"PeppeAeco",
+			"Beta16"
 		]
 	},
 	"bs-insertcategory-insertcat": "Inserire la categoria",
 	"prefs-insertcategory": "Inserire la categoria",
 	"bs-insertcategory-title": "Inserire la categoria",
+	"bs-insertcategory-success": "La categoria è stata aggiunta",
 	"bs-insertcategory-failure": "Errore",
 	"bs-insertcategory-hint": "Nota: per aggiungere una categoria, devi premere \"invio\" o terminare il tutto con una virgola.",
 	"bs-insertcategory-panel-title": "Categorie"

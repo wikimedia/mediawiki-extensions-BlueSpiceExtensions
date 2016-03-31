@@ -12,7 +12,7 @@
 	"bs-insertcategory-pref-withparents": "Insertar categoría con sus padres",
 	"bs-insertcategory-title": "Insertar categoría",
 	"bs-insertcategory-cat-label": "Asignada:",
-	"bs-insertcategory-success": "Inserción de categoría realizada con éxito",
+	"bs-insertcategory-success": "Se añadió la categoría",
 	"bs-insertcategory-failure": "Error",
 	"bs-insertcategory-hint": "Nota: para añadir una categoría, oprime la tecla Intro o finaliza la entrada con una coma.",
 	"bs-insertcategory-panel-title": "Categorías"

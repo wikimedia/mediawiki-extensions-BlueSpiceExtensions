@@ -10,7 +10,7 @@
 	"bs-insertcategory-pref-withparents": "插入分类与其父分类",
 	"bs-insertcategory-title": "插入分类",
 	"bs-insertcategory-cat-label": "分配：",
-	"bs-insertcategory-success": "添加分类成功",
+	"bs-insertcategory-success": "分类已添加",
 	"bs-insertcategory-failure": "错误",
 	"bs-insertcategory-hint": "注意：要加入一个分类，您不得不点击回车或通过输入逗号终止。",
 	"bs-insertcategory-panel-title": "分类"

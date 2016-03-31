@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan"
+		]
+	},
+	"bs-insertcategory-desc": "Категорияға һылтанма керетеү диалогы",
+	"bs-insertcategory-insertcat": "Категория өҫтәргә",
+	"prefs-insertcategory": "Категория өҫтәргә",
+	"bs-insertcategory-pref-withparents": "Төп категориялар менән бергә категория өҫтәргә",
+	"bs-insertcategory-title": "Категория өҫтәргә",
+	"bs-insertcategory-cat-label": "Тәғәйенләнеше:",
+	"bs-insertcategory-success": "Категория өҫтәлде",
+	"bs-insertcategory-failure": "Хата",
+	"bs-insertcategory-hint": "Иҫкәрмә: категория өҫтәү өсөн enter клавишаһына баҫырға һәм яҙма аҙағында өтөр ҡуйырға.",
+	"bs-insertcategory-panel-title": "Категориялар"
+}
