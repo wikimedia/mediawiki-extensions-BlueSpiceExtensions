@@ -24,8 +24,9 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.biz>
  * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @author     Karl Waldmanstetter
- * @version    2.23.1
+ * @version    2.23.2
  * @package    BlueSpice_Extensions
  * @subpackage ShoutBox
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -103,8 +104,8 @@ class ShoutBox extends BsExtensionMW {
 			array( 'agent', 'title', 'titlelink' ),
 			'bs-shoutbox-notifications-title-message-subject',
 			array(),
-			'bs-shoutbox-notifications-summary',
-			array( 'agent', 'title', 'titlelink' )
+			'bs-shoutbox-notifications-title-message-text',
+			array( 'agent', 'title', 'titlelink', 'agentprofile', 'title' )
 		);
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
@@ -376,7 +377,8 @@ class ShoutBox extends BsExtensionMW {
 				array(
 					'mentioned-user-id' => $oUser->getId(),
 					'realname' => $sCurrentUserName,
-					'title' => $sTitleText
+					'title' => $sTitleText,
+					'agentprofile' => $oCurrentUser->getUserPage()->getFullURL(),
 				)
 			);
 		}
