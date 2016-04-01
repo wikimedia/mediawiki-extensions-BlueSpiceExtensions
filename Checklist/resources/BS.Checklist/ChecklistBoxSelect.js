@@ -1,6 +1,6 @@
 Ext.define( 'BS.Checklist.ChecklistBoxSelect', {
 	extend:'Ext.ux.form.field.BoxSelect',
-	requires: [ 'BS.model.Checklist' ],
+	requires: [ 'BS.Checklist.model.Checklist' ],
 	displayField: 'text',
 	valueField: 'text',
 	anchor: '95%',
@@ -26,7 +26,7 @@ Ext.define( 'BS.Checklist.ChecklistBoxSelect', {
 					idProperty: 'cat_id'
 				}
 			},
-			model: 'BS.model.Checklist'
+			model: 'BS.Checklist.model.Checklist'
 		});
 		this.store.load();
 
