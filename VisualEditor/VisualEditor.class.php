@@ -393,8 +393,8 @@ class VisualEditor extends BsExtensionMW {
 
 		//PW(25.03.2015) TODO: Use Wikipage
 		$oArticle = Article::newFromID( $sArticleId );
+		$oTitle = Title::newFromText( $sPageName );
 		if( is_null($oArticle) ) {
-			$oTitle = Title::newFromText( $sPageName );
 			if( is_null($oTitle) || !$oTitle->exists() ) {
 				$aResult['message'] = wfMessage( 'badtitle' )->plain();
 				return FormatJson::encode( $aResult );
@@ -403,7 +403,8 @@ class VisualEditor extends BsExtensionMW {
 		}
 
 		if ($iSection) {
-			$sText = $oArticle->replaceSection($iSection, $sText);
+			$sectionContent = ContentHandler::makeContent( $sText, $oTitle );
+			$sText = $oArticle->replaceSectionAtRev($iSection, $sectionContent);
 		}
 
 		//PW(25.03.2015) TODO: Deprecated since MW 1.21 use
