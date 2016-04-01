@@ -178,7 +178,7 @@ BsSaferEditEditMode = {
 
 		switch ( mode ) {
 			case "MW":
-				text = $( 'wpTextbox1' ).val();
+				text = $( '#wpTextbox1' ).val();
 				break;
 			case "VisualEditor":
 				text = tinyMCE.activeEditor.getContent( { save: true } );
@@ -191,7 +191,7 @@ BsSaferEditEditMode = {
 				text = $( '#wpTextbox1' ).val();
 		}
 
-		return text;
+		return text || '';
 	}
 };
 
