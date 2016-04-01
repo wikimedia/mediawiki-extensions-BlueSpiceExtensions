@@ -19,7 +19,7 @@ class ViewBlueSpiceProjectFeedbackHelperPanel extends ViewStateBarTopElement {
 		$sOut .= Xml::openElement( 'div', array(
 			'id' => 'bs-bluespiceprojectfeedbackhelperpanel-closebutton',
 			'title' => $oCloseMsg->plain(),
-			'data-confirm-msg' => $oConfirmMsg->escaped(),
+			'data-confirm-msg' => $oConfirmMsg->plain(),
 		));
 		$sOut .= Xml::closeElement( 'div' );
 
