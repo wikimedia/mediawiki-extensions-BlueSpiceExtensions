@@ -4,6 +4,14 @@ BsExtensionManager::registerExtension('Checklist', BsRUNLEVEL::FULL|BsRUNLEVEL::
 
 $GLOBALS['wgAutoloadClasses']['Checklist'] = __DIR__ . '/Checklist.class.php';
 
+$GLOBALS['wgAutoloadClasses']['BSApiChecklistAvailableOptionsStore'] = __DIR__ . '/includes/api/BSApiChecklistAvailableOptionsStore.php';
+$GLOBALS['wgAutoloadClasses']['BSApiChecklistTemplateStore'] = __DIR__ . '/includes/api/BSApiChecklistTemplateStore.php';
+$GLOBALS['wgAutoloadClasses']['BSApiChecklistTasks'] = __DIR__ . '/includes/api/BSApiChecklistTasks.php';
+
+$wgAPIModules['bs-checklist-available-options-store'] = 'BSApiChecklistAvailableOptionsStore';
+$wgAPIModules['bs-checklist-template-store'] = 'BSApiChecklistTemplateStore';
+$wgAPIModules['bs-checklist-tasks'] = 'BSApiChecklistTasks';
+
 $wgExtensionMessagesFiles['Checklist'] = __DIR__ . '/languages/Checklist.i18n.php';
 
 $aResourceModuleTemplate = array(
@@ -44,14 +52,6 @@ $wgResourceModules['ext.bluespice.checklist.styles'] = array(
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );
-
-$wgAjaxExportList[] = 'Checklist::doChangeCheckItem';
-$wgAjaxExportList[] = 'Checklist::getOptionsList';
-$wgAjaxExportList[] = 'Checklist::ajaxGetTemplateData';
-$wgAjaxExportList[] = 'Checklist::ajaxSaveOptionsList';
-$wgAjaxExportList[] = 'Checklist::ajaxGetItemStoreData';
-$wgAjaxExportList[] = 'Checklist::getAvailableOptions';
-#$wgAutoloadClasses['ViewChecklistCheck'] = __DIR__ . '/views/view.ChecklistCheck.php';
 
 $wgLogTypes[] = 'bs-checklist';
 $wgFilterLogTypes['bs-checklist'] = true;

@@ -31,5 +31,12 @@
 	"log-show-hide-bs-checklist": "$1 checkbox log",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|has checked}} checkbox #$4 on $3",
 	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|has unchecked}} checkbox #$4 to $3",
-	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|has selected}} the value \"$5\" in select box #$4 on $3"
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|has selected}} the value \"$5\" in select box #$4 on $3",
+	"bs-checklist-savelist-error-invalid-title": "Invalid title provided",
+	"bs-checklist-savelist-error-edit-not-permitted": "Insufficient permissions to save list",
+	"bs-checklist-modified-check": "Modified checklist value",
+	"bs-checklist-update-list": "Updated list",
+	"apihelp-bs-checklist-available-options-store-description": "Lists all available options for checklist templates. Allows sorting, filtering and pagination. Implements ExtJS Store parameters.",
+	"apihelp-bs-checklist-template-store-description": "Lists all templates that are valid checklist sources. Allows sorting, filtering and pagination. Implements ExtJS Store parameters.",
+	"apihelp-bs-checklist-tasks-description": "Provides operations for Checklist extension"
 }

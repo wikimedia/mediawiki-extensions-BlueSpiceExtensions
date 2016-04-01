@@ -20,24 +20,21 @@ Ext.define( 'BS.Checklist.Window', {
 		//this.buttons.unshift( this.btnNew );
 
 		this.btnSave = Ext.create( 'Ext.Button', {
-			text: mw.message('bs-checklist-dlg-save-list').plain(),
+			text: mw.message( 'bs-checklist-dlg-save-list' ).plain(),
 			id: this.getId()+'-btn-save'
 		});
 		this.btnSave.on( 'click', this.onBtnSaveClick, this );
 
-		//this.buttons.unshift( this.btnSave );
-
-		this.strBoxSelect = Ext.create('Ext.data.JsonStore', {
+		this.strBoxSelect = Ext.create( 'Ext.data.JsonStore', {
 			fields: ['text']
 		});
 
-		this.bsListItems = Ext.create('BS.Checklist.ChecklistBoxSelect', {
+		this.bsListItems = Ext.create( 'BS.Checklist.ChecklistBoxSelect', {
 			disabled: true,
 			//TODO: i18n
-			emptyText: mw.message('bs-checklist-dlg-items-emptytext').plain(),
+			emptyText: mw.message( 'bs-checklist-dlg-items-emptytext' ).plain(),
 			id: 'bs-insertchecklist-itembox'
 		});
-		//this.bsListItems.on( 'select', this.onSelect, this );
 		this.bsListItems.on( 'change', this.onItemChange, this );
 
 		this.bsListItemsLabel = Ext.create( 'Ext.form.Label', {
@@ -46,31 +43,31 @@ Ext.define( 'BS.Checklist.Window', {
 
 		this.pnlMain = Ext.create( 'Ext.form.FormPanel', {
 			header: true,
-			title: mw.message('bs-checklist-dlg-items-label').plain(),
+			title: mw.message( 'bs-checklist-dlg-items-label' ).plain(),
 			region: 'center',
 			bodyPadding: 5,
 			items: [
 				this.bsListItems,
 				this.bsListItemsLabel,
-				//this.btnNew,
 				this.btnSave
 			]
 		});
 
-		this.templateStore = Ext.create('Ext.data.TreeStore', {
+		this.templateStore = Ext.create( 'Ext.data.TreeStore', {
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Checklist::ajaxGetTemplateData' )
+				url: bs.api.makeUrl( 'bs-checklist-template-store' )
 			},
 			root: {
 				text: 'Lists',
 				id: 'src',
 				expanded: true
 			},
-			model: 'BS.model.Category'
+			defaultRootProperty: 'results',
+			fields: [ 'id', 'listOptions', 'text' ]
 		});
 
-		this.templateTree = Ext.create('Ext.tree.Panel', {
+		this.templateTree = Ext.create( 'Ext.tree.Panel', {
 			width: 250,
 			title: mw.message( 'bs-checklist-dlg-panel-title' ).plain(),
 			useArrows: true,
@@ -108,11 +105,11 @@ Ext.define( 'BS.Checklist.Window', {
 		bs.util.prompt(
 			"bs.checklist-dlg-new",
 			{
-				title: mw.message('bs-checklist-dlg-new-title').plain(),
-				text: mw.message('bs-checklist-dlg-new-prompt').plain()
+				title: mw.message( 'bs-checklist-dlg-new-title' ).plain(),
+				text: mw.message( 'bs-checklist-dlg-new-prompt' ).plain()
 			},
 			{
-				ok: function(input) {
+				ok: function( input ) {
 					this.templateStore.tree.root.appendChild({
 						id: input.value,
 						text: input.value,
@@ -126,7 +123,7 @@ Ext.define( 'BS.Checklist.Window', {
 		)
 	},
 	onBtnSaveClick: function() {
-		var title = this.templateTree.getSelectionModel().getLastSelected().get('id');
+		var title = this.templateTree.getSelectionModel().getLastSelected().get( 'id' );
 		var valueRecords = this.bsListItems.getValueRecords();
 		var records = new Array();
 		for ( var record in valueRecords ) {
@@ -135,21 +132,10 @@ Ext.define( 'BS.Checklist.Window', {
 
 		this.setDirty( false );
 
-		$.post(
-			bs.util.getAjaxDispatcherUrl( 'Checklist::ajaxSaveOptionsList', { "title":title, "records":records } ),
-			function( data ) {
-				var responseObj = $.parseJSON( data );
-				if ( responseObj.success === false ) {
-					bs.util.alert(
-						'bs-checklist-alert',
-						{
-							textMsg: responseObj.msg
-						}
-					);
-				}
-				BsChecklist.getOptionsList( title, true );
-			}
-		);
+		bs.api.tasks.exec( 'checklist', 'saveOptionsList', {
+			title: title,
+			records: records
+		});
 	},
 	onBeforeItemExpand: function( p, animate, eOpts ) {return false;},
 	onBeforeItemclick: function( sender, td, cellIndex, record, tr, rowIndex, e, eOpts  ) {
@@ -157,19 +143,16 @@ Ext.define( 'BS.Checklist.Window', {
 	},
 	onBeforeSelect: function( sender, record, index, eOpts ) {
 		if ( BS.Checklist.Window.isDirty == true ) {
-			var dialog = Ext.create('BS.ConfirmDialog', {
-				title: mw.message('bs-checklist-confirm-dirty-title').plain(),
-				text: mw.message('bs-checklist-confirm-dirty-text').plain(),
+			var dialog = Ext.create( 'BS.ConfirmDialog', {
+				title: mw.message( 'bs-checklist-confirm-dirty-title' ).plain(),
+				text: mw.message( 'bs-checklist-confirm-dirty-text' ).plain(),
 			});
-			dialog.on('ok', function(input) {
+			dialog.on( 'ok', function( input ) {
 				BS.Checklist.Window.setDirty( false );
-				//BS.Checklist.Window.templateTree.resumeEvents();
-				BS.Checklist.Window.templateTree.fireEvent('select', sender, record, index, eOpts);
+				BS.Checklist.Window.templateTree.fireEvent( 'select', sender, record, index, eOpts );
 			});
-			BS.Checklist.Window.add(dialog);
+			BS.Checklist.Window.add( dialog );
 			dialog.show();
-			//BS.Checklist.Window.preventDeselect = true;
-			//BS.Checklist.Window.templateTree.suspendEvents();
 			return false;
 		}
 	},
@@ -183,9 +166,9 @@ Ext.define( 'BS.Checklist.Window', {
 		*/
 	},
 	onSelect: function( sender, records, index, eOpts) {
-		var itemList = BsChecklist.getOptionsList( records.data.text );
-		this.bsListItems.setValue( itemList );
-		this.listSelected = records.data.text;
+		
+		this.bsListItems.setValue( records.get( 'listOptions' ) );
+		this.listSelected = records;
 		this.setDirty( false );
 		this.bsListItems.enable();
 	},
@@ -198,9 +181,9 @@ Ext.define( 'BS.Checklist.Window', {
 	setDirty: function( dirty ) {
 		BS.Checklist.Window.isDirty = dirty;
 		if ( dirty ) {
-			this.btnSave.setText( "* " + mw.message('bs-checklist-dlg-save-list').plain() );
+			this.btnSave.setText( "* " + mw.message( 'bs-checklist-dlg-save-list' ).plain() );
 		} else {
-			this.btnSave.setText( mw.message('bs-checklist-dlg-save-list').plain() );
+			this.btnSave.setText( mw.message( 'bs-checklist-dlg-save-list' ).plain() );
 		}
 	}
 });
