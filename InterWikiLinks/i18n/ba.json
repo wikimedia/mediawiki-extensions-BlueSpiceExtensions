@@ -3,19 +3,20 @@
 		"authors": [
 			"Sagan",
 			"Лилиә",
-			"Азат Хәлилов"
+			"Азат Хәлилов",
+			"Ләйсән"
 		]
 	},
 	"bs-interwikilinks-desc": "Интервик һылтанмаларын өҫтәү, төҙәтеү өсөн хакимиәт интерфейсы.",
-	"bs-interwikilinks-invalid-pfx-spc": "Дөрөҫ булмаған префикс. Һинһар өсөн, пробел ҡулланмағыҙ.",
-	"bs-interwikilinks-invalid-url-spc": "Дөрөҫ булмаған URL. Зинһар өсөн, пробел ҡулланмағыҙ.",
+	"bs-interwikilinks-invalid-pfx-spc": "Дөрөҫ булмаған префикс. Пробел ҡулланмағыҙ.",
+	"bs-interwikilinks-invalid-url-spc": "Дөрөҫ булмаған URL. Пробелдар ҡулланмағыҙ.",
 	"bs-interwikilinks-label": "Интервики-һылтанмалар",
 	"bs-interwikilinks-link-created": "Интервики-һылтанма булдырылды.",
 	"bs-interwikilinks-link-added": "Интервики һылтанмаһы өҫтәлде",
 	"bs-interwikilinks-link-deleted": "Интервики-һылтанма алып ташланды.",
 	"bs-interwikilinks-nooldpfx": "алдан килгән префикс табылманы.",
 	"bs-interwikilinks-nopfx": "Префиксты күрһәтегеҙ.",
-	"bs-interwikilinks-nourl": "Зинһар өсөн, URL күрһәтегеҙ.",
+	"bs-interwikilinks-nourl": "URL күрһәтегеҙ.",
 	"bs-interwikilinks-pfxtoolong": "Префикс бик оҙон. 31 символдан артыҡ ҡулланмағыҙ.",
 	"bs-interwikilinks-pfxexists": "Бындай префикс юҡ.",
 	"bs-interwikilinks-headerprefix": "Префикс",

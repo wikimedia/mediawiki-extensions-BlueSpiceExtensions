@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sagan",
-			"Азат Хәлилов"
+			"Азат Хәлилов",
+			"Ләйсән"
 		]
 	},
 	"bs-wantedarticle-desc": "Битте эҙләнеүсе биттәр исемлегенә өҫтәй",
@@ -39,6 +40,6 @@
 	"bs-wantedarticle-pref-order-desc": "түбәнәйеү буйынса",
 	"bs-wantedarticle-create-page": "«$1» битен булдырырға",
 	"bs-wantedarticle-suggest-page": "«$1» битен тәҡдим итергә.",
-	"bs-wantedarticle-info-nothing-entered": "Зинһар өсөн биттең дөрөҫ исемен яҙығыҙ.",
+	"bs-wantedarticle-info-nothing-entered": "Биттең дөрөҫ исемен яҙығыҙ.",
 	"bs-wantedarticle-title-invalid-chars": "Башлыҡта ҡулланыу өсөн{{PLURAL:$1|түбәндәге символ ярамай}}: $2"
 }
