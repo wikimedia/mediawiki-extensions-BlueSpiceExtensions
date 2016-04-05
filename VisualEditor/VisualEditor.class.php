@@ -124,6 +124,10 @@ class VisualEditor extends BsExtensionMW {
 		//apply in a correct manner. This may be dangerous.
 		'body_id' => 'bodyContent',
 		'autoresize_max_height' => 15000,
+		//set the default style to contenttable when inserting a table
+		'table_default_attributes' => array(
+			'class' => 'contenttable'
+		),
 		#'document_base_url' => $GLOBALS['wgServer'],
 		'style_formats' => array(
 			array('title' => 'Headers', 'items' => array(
