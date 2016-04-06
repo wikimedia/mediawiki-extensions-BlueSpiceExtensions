@@ -314,7 +314,7 @@ class WantedArticle extends BsExtensionMW {
 				$oItemCreate->label = wfMessage( 'bs-wantedarticle-create-page', '<b>' . $sShortAndEscapedString . '</b>' )->plain() . '';
 				$oItemCreate->type = '';
 				$oItemCreate->link = $oTitle->getFullURL();
-				$oItemCreate->attr = 'bs-extendedsearch-ac-noresults';
+				$oItemCreate->attr = 'bs-extendedsearch-create';
 				$aResults[] = $oItemCreate;
 			}
 
