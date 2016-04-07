@@ -184,6 +184,11 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 
 		global $wgContLang;
 		$aUserNamespaces = NamespaceManager::getUserNamespaces( true );
+		if ( !isset( $aUserNamespaces[$iNS] ) ) {
+			$oResult->message = wfMessage( 'bs-namespacemanager-msgnoteditabledelete' )->plain();
+			return $oResult;
+		}
+
 		$aNamespacesToRemove = array( array( $iNS, 0 ) );
 		$sOriginalNamespace = $sNamespace = $aUserNamespaces[ $iNS ][ 'name' ];
 
