@@ -30,5 +30,12 @@
 	"log-show-hide-bs-checklist": "$1复选框日志",
 	"logentry-bs-checklist-checked": "$1在$3{{GENDER:$2|勾选}}了复选框#$4",
 	"logentry-bs-checklist-unchecked": "$1{{GENDER:$2|取消勾选}}了复选框#$4至$3",
-	"logentry-bs-checklist-selected": "$1在$3的下拉选框#$4{{GENDER:$2|选择}}了值“$5”"
+	"logentry-bs-checklist-selected": "$1在$3的下拉选框#$4{{GENDER:$2|选择}}了值“$5”",
+	"bs-checklist-savelist-error-invalid-title": "提供的标题无效",
+	"bs-checklist-savelist-error-edit-not-permitted": "保存列表所需的权限不足",
+	"bs-checklist-modified-check": "已修改清单值",
+	"bs-checklist-update-list": "已更新列表",
+	"apihelp-bs-checklist-available-options-store-description": "列举用于清单模板的所有可用选项。允许排序、过滤和分页。执行ExtJS存储的参数。",
+	"apihelp-bs-checklist-template-store-description": "列举所有有效清单来源的模板。允许排序、过滤和分页。执行ExtJS存储的参数。",
+	"apihelp-bs-checklist-tasks-description": "提供用于Checklist扩展的操作"
 }

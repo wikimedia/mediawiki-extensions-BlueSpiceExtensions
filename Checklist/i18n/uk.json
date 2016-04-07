@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-checklist-desc": "Забезпечує функціональність контрольного списку",
@@ -31,5 +32,12 @@
 	"log-show-hide-bs-checklist": "$1 журнал галочок",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|поставив|поставила}} галочку #$4 на $3",
 	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|зняв|зняла}} галочку #$4 з $3",
-	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|обрав|обрала}} значення «$5» у перемикачі #$4 на $3"
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|обрав|обрала}} значення «$5» у перемикачі #$4 на $3",
+	"bs-checklist-savelist-error-invalid-title": "Надана недійсна назва",
+	"bs-checklist-savelist-error-edit-not-permitted": "Недостатньо прав для збереження списку",
+	"bs-checklist-modified-check": "Змінено значення контрольного списку",
+	"bs-checklist-update-list": "Оновлено список",
+	"apihelp-bs-checklist-available-options-store-description": "Перелічує всі доступні опції для шаблонів контрольних списків. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
+	"apihelp-bs-checklist-template-store-description": "Перелічує всі шаблони, що є дійсними джерелами контрольних списків. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
+	"apihelp-bs-checklist-tasks-description": "Забезпечує операції для розширення Checklist"
 }
