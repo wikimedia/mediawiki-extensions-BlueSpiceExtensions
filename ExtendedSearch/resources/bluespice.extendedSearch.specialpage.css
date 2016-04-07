@@ -363,3 +363,11 @@ span.bs-extendedsearch-result-title h3 em {
 .bs-extendedsearch-sorting-sortby {
 	float: right;
 }
+
+#bs-extendedsearch-filters .bs-es-facetsettings {
+	margin-left: 5px;
+}
+
+#bs-extendedsearch-filters .bs-extendedsearch-facetbox {
+	clear: both;
+}

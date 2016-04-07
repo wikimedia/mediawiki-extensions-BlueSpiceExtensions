@@ -101,5 +101,7 @@
 	"bs-extendedsearch-redirect": "Weiterleitung von: $1",
 	"bs-extendedsearch-totalnoofarticles": "Zu indexierende Artikel: $1",
 	"bs-extendedsearch-more": "Mehr",
-	"bs-extendedsearch-fewer": "Weniger"
+	"bs-extendedsearch-fewer": "Weniger",
+	"bs-extendedsearch-facetsetting-op-and": "UND",
+	"bs-extendedsearch-facetsetting-op-or": "ODER"
 }

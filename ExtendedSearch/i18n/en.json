@@ -98,5 +98,7 @@
 	"bs-extendedsearch-redirect": "Redirect from: $1",
 	"bs-extendedsearch-totalnoofarticles": "Number of pages to index: $1",
 	"bs-extendedsearch-more": "More",
-	"bs-extendedsearch-fewer": "Less"
+	"bs-extendedsearch-fewer": "Less",
+	"bs-extendedsearch-facetsetting-op-and": "AND",
+	"bs-extendedsearch-facetsetting-op-or": "OR"
 }

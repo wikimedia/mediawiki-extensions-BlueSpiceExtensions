@@ -42,10 +42,15 @@ $wgResourceModules['ext.bluespice.extendedsearch.specialpage.style'] = array(
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.extendedsearch.specialpage'] = array(
-	'scripts' => 'bluespice.extendedSearch.specialpage.js',
+	'scripts' => array(
+		'bluespice.extendedSearch.specialpage.js',
+		'bluespice.facetsettings.js'
+	),
 	'messages' => array(
 		'bs-extendedsearch-more',
-		'bs-extendedsearch-fewer'
+		'bs-extendedsearch-fewer',
+		'bs-extendedsearch-facetsetting-op-and',
+		'bs-extendedsearch-facetsetting-op-or'
 	)
 ) + $aResourceModuleTemplate;
 
@@ -103,3 +108,13 @@ $wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ExtendedSearch::getSchemaUpdates';
 $GLOBALS['wgHooks']['OpenSearchUrls'][] = 'ExtendedSearch::onOpenSearchUrls';
+
+//Allows for changes in the 'bq' parameter that gets send to solr.
+$bsgExtendedSearchBoostQuerySettings = array(
+	'namespace' => array(
+		//This is for every MediaWiki content namespace;
+		//Concrete values will be calculated at runtime
+		'*' => 2,
+		999 => 2 // Pseudo namespace for files
+	)
+);
