@@ -65,6 +65,15 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		}
 		return icon.format( 'bs-tick.png');
 	},
+	onGrdMainRowClick: function( oSender, iRowIndex, oEvent ) {
+		this.callParent( oSender, iRowIndex, oEvent );
+
+		var selectedRow = this.grdMain.getSelectionModel().getSelection();
+		var isSystemNS = selectedRow[0].get( 'isSystemNS' );
+		if ( isSystemNS !== false ) {
+			this.btnRemove.disable();
+		}
+	},
 	onBtnAddClick: function( oButton, oEvent ) {
 		if ( !this.dlgNamespaceAdd ) {
 			this.dlgNamespaceAdd = Ext.create( 'BS.NamespaceManager.NamespaceDialog', {id:"bs-namespacemanager-add-dlg"} );
@@ -94,8 +103,8 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	onBtnRemoveClick: function( oButton, oEvent ) {
 		this.active = 'remove';
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var editable = selectedRow[0].get( 'editable' );
-		if ( editable === false ) {
+		var isSystemNS = selectedRow[0].get( 'isSystemNS' );
+		if ( isSystemNS !== false ) {
 			bs.util.alert(
 				'NMfail',
 				{
@@ -169,7 +178,7 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	getAdditionalSettings: function( data ) {
 		var filteredData = {};
 		for( var prop in data ) {
-			if( $.inArray(prop, ['id', 'name', 'editable']) !== -1 ) {
+			if( $.inArray(prop, ['id', 'name', 'isSystemNS']) !== -1 ) {
 				continue;
 			}
 			filteredData[prop] = data[prop];

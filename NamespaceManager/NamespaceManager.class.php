@@ -209,7 +209,7 @@ class NamespaceManager extends BsExtensionMW {
 				'label' => wfMessage( 'bs-namespacemanager-label-pagecount' )->plain()
 			),
 			array(
-				'name' => 'editable',
+				'name' => 'isSystemNS',
 				'type' => 'boolean',
 				'label' => wfMessage( 'bs-namespacemanager-label-editable' )->plain(),
 				'hidden' => true,

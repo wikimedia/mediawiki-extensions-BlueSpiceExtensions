@@ -25,7 +25,7 @@ Ext.define( 'BS.NamespaceManager.NamespaceRemoveDialog', {
 			items: [
 				{ boxLabel: mw.message( 'bs-namespacemanager-willdelete' ).text(), name: 'rb', inputValue: '0' },
 				{ boxLabel: mw.message( 'bs-namespacemanager-willmove' ).text(), name: 'rb', inputValue: '1' },
-				{ boxLabel: mw.message( 'bs-namespacemanager-willmovesuffix', msg ).text(), name: 'rb', inputValue: '2' }
+				{ boxLabel: mw.message( 'bs-namespacemanager-willmovesuffix', msg ).text(), name: 'rb', inputValue: '2', checked: true }
 			]
 		});
 		this.items = [{
