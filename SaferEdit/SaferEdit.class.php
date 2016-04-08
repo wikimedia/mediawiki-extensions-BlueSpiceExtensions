@@ -179,7 +179,12 @@ class SaferEdit extends BsExtensionMW {
 		}
 
 		foreach ( $aIntermediateEdits as $oEdit ) {
-			$iTime = wfTimestamp( TS_MW, time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
+			//Please do not edit this agian! This is well calculated!
+			//DO NOT WRITE RANDOM NUMBERS IN HERE
+			$iInterval = BsConfig::get( 'MW::SaferEdit::Interval' )
+				+ BsConfig::get( 'MW::PingInterval' )
+				+ 1; //+1 secound response time is enought
+			$iTime = wfTimestamp( TS_MW, time() - $iInterval );
 			if ( $oEdit->se_user_name != $oUser->getName() && $oEdit->se_timestamp > $iTime ) {
 				$aTopViews['statebartopsafereditediting'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name );
 			}
@@ -385,7 +390,12 @@ class SaferEdit extends BsExtensionMW {
 				$aSingleResult['someoneEditingView'] = $aSingleResult['safereditView'] = '';
 
 				foreach ( $aIntermediateEdits as $oEdit ) {
-					$iDate = wfTimestamp( TS_MW, time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
+					//Please do not edit this agian! This is well calculated!
+					//DO NOT WRITE RANDOM NUMBERS IN HERE
+					$iInterval = BsConfig::get( 'MW::SaferEdit::Interval' )
+						+ BsConfig::get( 'MW::PingInterval' )
+						+ 1; //+1 secound response time is enought
+					$iDate = wfTimestamp( TS_MW, time() - $iInterval );
 					if ( $oEdit->se_user_name != $oUser->getName() && $oEdit->se_timestamp > $iDate ) {
 						$aSingleResult['someoneEditingView'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name )->execute();
 					}
@@ -393,10 +403,13 @@ class SaferEdit extends BsExtensionMW {
 
 				break;
 			case 'SaferEditSave':
-				$bHasUnsavedChanges = empty( $aData[0]['bUnsavedChanges'] ) || $aData[0]['bUnsavedChanges'] == "false" ? false : true;
-				if ( !$bHasUnsavedChanges ) {
+				if( !isset($aData[0]['bUnsavedChanges']) ) {
 					return true;
 				}
+				if( $aData[0]['bUnsavedChanges'] !== true ) {
+					return true;
+				}
+
 				$iSection = empty( $aData[0]['section'] ) ? -1 : $aData[0]['section'];
 
 				$aSingleResult['success'] = $this->saveUserEditing(
