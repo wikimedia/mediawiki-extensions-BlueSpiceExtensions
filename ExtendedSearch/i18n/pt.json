@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Nemo bis"
+			"Nemo bis",
+			"Diniscoelho"
 		]
 	},
 	"bs-extendedsearch-desc": "Pesquisa avançada",
@@ -66,5 +67,7 @@
 	"bs-extendedsearch-recentsearchterms": "Pesquisas recentes",
 	"bs-extendedsearch-no-mlt-found": "Não foram encontradas páginas semelhantes.",
 	"bs-extendedsearch-more": "Mais",
-	"bs-extendedsearch-fewer": "Menos"
+	"bs-extendedsearch-fewer": "Menos",
+	"bs-extendedsearch-facetsetting-op-and": "E",
+	"bs-extendedsearch-facetsetting-op-or": "OU"
 }

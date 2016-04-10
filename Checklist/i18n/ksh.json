@@ -23,5 +23,8 @@
 	"log-show-hide-bs-checklist": "$1 et Logbohch vun de Käßje zom Höhksche maache",
 	"logentry-bs-checklist-checked": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hädd e Höhksche em Käßje $4 op $3 jemaat.",
 	"logentry-bs-checklist-unchecked": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät dat Höhksche Nommer $4 $3.",
-	"logentry-bs-checklist-selected": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät dä Wäät „$5“ em Käßje Nommer $4 op $3 ußjesöhk."
+	"logentry-bs-checklist-selected": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät dä Wäät „$5“ em Käßje Nommer $4 op $3 ußjesöhk.",
+	"bs-checklist-savelist-error-invalid-title": "En onjöltejje Övverschreff wood enjejovve",
+	"bs-checklist-savelist-error-edit-not-permitted": "Nit jenohch Rääschde, öm di Leß faßzehallde.",
+	"bs-checklist-update-list": "Leß op ene neueje Schtand jebraat"
 }

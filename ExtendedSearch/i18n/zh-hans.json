@@ -100,5 +100,7 @@
 	"bs-extendedsearch-redirect": "重定向自：$1",
 	"bs-extendedsearch-totalnoofarticles": "索引的页面数：$1",
 	"bs-extendedsearch-more": "更多",
-	"bs-extendedsearch-fewer": "更少"
+	"bs-extendedsearch-fewer": "更少",
+	"bs-extendedsearch-facetsetting-op-and": "和",
+	"bs-extendedsearch-facetsetting-op-or": "或"
 }

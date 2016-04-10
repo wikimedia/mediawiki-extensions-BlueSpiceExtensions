@@ -4,7 +4,8 @@
 			"Macofe",
 			"ProtoplasmaKid",
 			"AVIADOR",
-			"Fitoschido"
+			"Fitoschido",
+			"AlvaroMolina"
 		]
 	},
 	"bs-checklist-desc": "Proporciona una lista de comprobación",
@@ -33,5 +34,12 @@
 	"log-show-hide-bs-checklist": "$1 el registro de casillas",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|ha marcado}} la casilla #$4 en $3",
 	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|ha desmarcado}} la casilla #$4 en $3",
-	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|ha seleccionado}} el valor de \"$5\" en la casilla #$4 en $3"
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|ha seleccionado}} el valor de \"$5\" en la casilla #$4 en $3",
+	"bs-checklist-savelist-error-invalid-title": "Se proporcionó un título no válido",
+	"bs-checklist-savelist-error-edit-not-permitted": "Permisos insuficientes para fusionar el historial.",
+	"bs-checklist-modified-check": "Lista de verificación modificada valor",
+	"bs-checklist-update-list": "Lista actualizada",
+	"apihelp-bs-checklist-available-options-store-description": "Lista todas las opciones disponibles para plantillas \"checklist\". Permite ordenar, filtrar y paginar. Implementa parámetros de almacenamiento ExtJS.",
+	"apihelp-bs-checklist-template-store-description": "Lista todas las plantillas que son fuentes válidas de \"checklist\". Permite ordenar, filtrar y paginar. Implementa parámetros de almacenamiento ExtJS.",
+	"apihelp-bs-checklist-tasks-description": "Proporciona operaciones para la extensión Checklist"
 }

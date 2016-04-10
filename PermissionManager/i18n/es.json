@@ -5,7 +5,8 @@
 			"Macofe",
 			"AVIADOR",
 			"Amitie 10g",
-			"Ryo567"
+			"Ryo567",
+			"AlvaroMolina"
 		]
 	},
 	"bs-permissionmanager-desc": "Interfaz administrativa para gestionar permisos de usuarios",
@@ -43,6 +44,7 @@
 	"bs-permissionmanager-pref-lockmode": "Activar modo de bloqueo",
 	"bs-permissionmanager-pref-skipsysns": "Omitir los espacios de nombres del sistema si el modo de bloqueo está activado",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activar la comprobación de permisos",
+	"bs-permissionmanager-pref-max-backups": "Límite de copia de seguridad",
 	"bs-permissionmanager-unsaved-changes": "Hay cambios sin guardar. ¿Quieres abandonar la página ahora? Se perderá cualquier cambio no guardado.",
 	"bs-permissionmanager-error-lockout": "Al menos un grupo debe tener el permiso \"$1\".\nNo se pudieron guardar los cambios.",
 	"log-name-bs-permission-manager": "Registro del gestor de permisos",

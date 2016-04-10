@@ -42,5 +42,7 @@
 	"bs-extendedsearch-redirect": "Reindirizzamento da: $1",
 	"bs-extendedsearch-totalnoofarticles": "Numero di pagine da indicizzare: $1",
 	"bs-extendedsearch-more": "Altro",
-	"bs-extendedsearch-fewer": "Meno"
+	"bs-extendedsearch-fewer": "Meno",
+	"bs-extendedsearch-facetsetting-op-and": "E",
+	"bs-extendedsearch-facetsetting-op-or": "O"
 }

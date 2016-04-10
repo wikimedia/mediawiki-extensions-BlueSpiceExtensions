@@ -66,5 +66,7 @@
 	"bs-extendedsearch-redirect": "Viruleedung vu(n): $1",
 	"bs-extendedsearch-totalnoofarticles": "Zuel vun de säiten déi indexéiert gionn: $1",
 	"bs-extendedsearch-more": "Méi",
-	"bs-extendedsearch-fewer": "Manner"
+	"bs-extendedsearch-fewer": "Manner",
+	"bs-extendedsearch-facetsetting-op-and": "AN",
+	"bs-extendedsearch-facetsetting-op-or": "ODER"
 }

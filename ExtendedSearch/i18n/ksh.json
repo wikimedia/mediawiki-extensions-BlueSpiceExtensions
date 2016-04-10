@@ -56,5 +56,7 @@
 	"bs-extendedsearch-no-mlt-found": "Mer han kein ähnlejje Sigge jefonge.",
 	"bs-extendedsearch-redirect": "Ömjeleit vun: $1",
 	"bs-extendedsearch-more": "Mih",
-	"bs-extendedsearch-fewer": "Winnijer"
+	"bs-extendedsearch-fewer": "Winnijer",
+	"bs-extendedsearch-facetsetting-op-and": "un",
+	"bs-extendedsearch-facetsetting-op-or": "udder"
 }

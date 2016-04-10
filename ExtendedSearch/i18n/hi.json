@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"राम प्रसाद जोशी"
+			"राम प्रसाद जोशी",
+			"Sfic"
 		]
 	},
-	"bs-extendedsearch-did-you-mean": "क्या आपका मतलब: $1 है?"
+	"bs-extendedsearch-did-you-mean": "क्या आपका मतलब: $1 है?",
+	"bs-extendedsearch-facetsetting-op-and": "और",
+	"bs-extendedsearch-facetsetting-op-or": "या"
 }

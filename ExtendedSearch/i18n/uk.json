@@ -100,5 +100,7 @@
 	"bs-extendedsearch-redirect": "Перенаправлення з: $1",
 	"bs-extendedsearch-totalnoofarticles": "Кількість сторінок для індексування: $1",
 	"bs-extendedsearch-more": "Більше",
-	"bs-extendedsearch-fewer": "Менше"
+	"bs-extendedsearch-fewer": "Менше",
+	"bs-extendedsearch-facetsetting-op-and": "А ТАКОЖ",
+	"bs-extendedsearch-facetsetting-op-or": "АБО"
 }

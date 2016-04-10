@@ -4,7 +4,8 @@
 			"Fitoschido",
 			"Macofe",
 			"AVIADOR",
-			"Amitie 10g"
+			"Amitie 10g",
+			"AlvaroMolina"
 		]
 	},
 	"bs-extendedsearch-desc": "Complemento de búsqueda basado en Apache Solr (http://lucene.apache.org/solr/) para extender la funcionalidad de búsqueda",
@@ -101,5 +102,7 @@
 	"bs-extendedsearch-redirect": "Redirección de: $1",
 	"bs-extendedsearch-totalnoofarticles": "Número de páginas que indizar: $1",
 	"bs-extendedsearch-more": "Más",
-	"bs-extendedsearch-fewer": "Menos"
+	"bs-extendedsearch-fewer": "Menos",
+	"bs-extendedsearch-facetsetting-op-and": "Y",
+	"bs-extendedsearch-facetsetting-op-or": "O"
 }
