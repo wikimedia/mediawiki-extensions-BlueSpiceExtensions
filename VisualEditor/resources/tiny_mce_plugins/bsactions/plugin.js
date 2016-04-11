@@ -118,39 +118,45 @@ var BsActions = function() {
 			summary: summary
 		};
 
-		ajaxUrl = bs.util.getAjaxDispatcherUrl('VisualEditor::doSaveArticle');
+		$(document).trigger('BSVisualEditorBeforeArticleSave', [this, ajaxParams]);
 
-		$(document).trigger('BSVisualEditorBeforeArticleSave', [this, ajaxParams, ajaxUrl]);
-
-		Ext.Ajax.request({
-			method: 'post',
-			params: ajaxParams,
-			url: ajaxUrl,
-			success: function(response, opts) {
-				$(document).trigger('BSVisualEditorAfterArticleSave', [this, true, response, opts]);
-				var json = Ext.decode(response.responseText);
-
-				if( typeof json.saveresult === 'undefined' || json.saveresult === 'fail') {
-					if( typeof json.message !== 'undefined' && json.message !== '' ) {
-						mw.notify( json.message );
-						$('#mw-js-message').html('<div>' + json.message + '</div>').show(); //TODO: Use jsMsg() or newer interfaces (message bubbles)
-						$('#mw-js-message').stop().css("background-color", "#FFFF9C").animate({backgroundColor: "#FCFCFC"}, 1500);
-					}
-					return;
-				}
-				$("input[name=wpEdittime]").val(json.edittime);
-				$("input[name=wpStarttime]").val(json.starttime);
-				mw.notify( json.message );
-				$('#mw-js-message').html('<div>' + json.message + '</div>').show(); //TODO: Use jsMsg() or newer interfaces (message bubbles)
-				$('#mw-js-message').stop().css("background-color", "#FFFF9C").animate({backgroundColor: "#FCFCFC"}, 1500);
-				$('#wpSummary').val(json.summary);
+		// BSP 2.23.3: Using postWithToken instead of tasks.exec since we want
+		// unobtrusive feedback and no popups during editing.
+		// Maybe a later version of tasks.exec supports this
+		var api = new mw.Api();
+		api.postWithToken( 'edit', {
+			action: 'bs-visualeditor-tasks',
+			task: 'saveArticle',
+			taskData: JSON.stringify( ajaxParams )
+		})
+		.done( function( response ){
+			if ( response.success === true ) {
+				$(document).trigger( 'BSVisualEditorAfterArticleSave', [this, true, response] );
+				$( "input[name=wpEdittime]" ).val( response.edittime );
+				$( "input[name=wpStarttime]" ).val( response.starttime );
+				mw.notify( response.message );
+				$( '#mw-js-message' )
+						.html( '<div>' + response.message + '</div>' )
+						.show(); //TODO: Use jsMsg() or newer interfaces (message bubbles)
+				$( '#mw-js-message' )
+						.stop()
+						.css( "background-color", "#FFFF9C" )
+						.animate( {backgroundColor: "#FCFCFC"}, 1500 );
+				$( '#wpSummary' ).val( response.summary );
 				$(document).trigger('BSVisualEditorSavedText');
-			},
-			failure: function(response, opts) {
-				$(document).trigger('BSVisualEditorAfterArticleSave', [this, false, response, opts]);
-				//TODO: handle error.
-			},
-			scope: this
+			} else {
+				mw.notify( response.message );
+				$('#mw-js-message')
+						.html('<div>' + response.message + '</div>')
+						.show(); //TODO: Use jsMsg() or newer interfaces (message bubbles)
+				$('#mw-js-message')
+						.stop()
+						.css("background-color", "#FFFF9C")
+						.animate({backgroundColor: "#FCFCFC"}, 1500);
+				$(document).trigger('BSVisualEditorAfterArticleSave', [this, false, response]);
+			}
+		}).fail( function( response ){
+			$(document).trigger('BSVisualEditorAfterArticleSave', [this, false, response]);
 		});
 	}
 

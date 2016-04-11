@@ -205,11 +205,11 @@ BsVisualEditor = {
 	}
 }
 
-$(document).bind('BSVisualEditorBeforeArticleSave', function( event, plugin, ajaxParams, ajaxUrl ) {
+$(document).bind('BSVisualEditorBeforeArticleSave', function( event, plugin, ajaxParams ) {
 	tinymce.getInstanceById('wpTextbox1').setProgressState( true );
 });
 
-$(document).bind('BSVisualEditorAfterArticleSave', function( event, plugin, success, response, opts ) {
+$(document).bind('BSVisualEditorAfterArticleSave', function( event, plugin, success, response ) {
 	tinymce.getInstanceById('wpTextbox1').setProgressState( false );
 });
 
