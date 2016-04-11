@@ -99,5 +99,7 @@
 	"bs-extendedsearch-redirect": "Redirixido desde: \"$1\"",
 	"bs-extendedsearch-totalnoofarticles": "Número de páxinas a indexar: $1",
 	"bs-extendedsearch-more": "Máis",
-	"bs-extendedsearch-fewer": "Menos"
+	"bs-extendedsearch-fewer": "Menos",
+	"bs-extendedsearch-facetsetting-op-and": "E",
+	"bs-extendedsearch-facetsetting-op-or": "OU"
 }

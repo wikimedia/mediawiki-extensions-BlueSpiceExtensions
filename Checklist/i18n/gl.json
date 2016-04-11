@@ -35,7 +35,7 @@
 	"bs-checklist-savelist-error-edit-not-permitted": "Permisos insuficientes para gardar a lista",
 	"bs-checklist-modified-check": "Valos de lista de verificación modificado",
 	"bs-checklist-update-list": "Lista actualizada",
-	"apihelp-bs-checklist-available-options-store-description": "Lista todas as opcións dispoñibles para os modelos de lista de verificación. Permite ordenar, filtrar e paxinar. Implementa os parámetros ExtJS Store.",
-	"apihelp-bs-checklist-template-store-description": "Lista todos os modelos que son fontes de listas de verificación válidas. Permite ordenar, filtrar e paxinar. Implementa os parámetros ExtJS Store.",
+	"apihelp-bs-checklist-available-options-store-description": "Lista todas as opcións dispoñibles para os modelos de lista de verificación. Permite ordenar, filtrar e paxinar. Proporciona os parámetros ExtJS Store.",
+	"apihelp-bs-checklist-template-store-description": "Lista todos os modelos que son fontes de listas de verificación válidas. Permite ordenar, filtrar e paxinar. Proporciona os parámetros ExtJS Store.",
 	"apihelp-bs-checklist-tasks-description": "Proporciona operacións para a extensión Checklist"
 }

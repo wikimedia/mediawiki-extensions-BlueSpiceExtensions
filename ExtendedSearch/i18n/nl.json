@@ -102,5 +102,7 @@
 	"bs-extendedsearch-redirect": "Doorverwezen vanaf: $1",
 	"bs-extendedsearch-totalnoofarticles": "Aantal te indexeren pagina's: $1",
 	"bs-extendedsearch-more": "Meer",
-	"bs-extendedsearch-fewer": "Minder"
+	"bs-extendedsearch-fewer": "Minder",
+	"bs-extendedsearch-facetsetting-op-and": "AND",
+	"bs-extendedsearch-facetsetting-op-or": "OR"
 }

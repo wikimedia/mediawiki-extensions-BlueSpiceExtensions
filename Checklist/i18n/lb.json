@@ -16,5 +16,6 @@
 	"bs-checklist-dlg-new-prompt": "En Titel vun enger Lëscht aginn",
 	"bs-checklist-alert": "Opgepasst!",
 	"bs-checklist-confirm-dirty-title": "Net-gespäichert Ännerungen!",
+	"bs-checklist-savelist-error-edit-not-permitted": "Net genuch Rechter fir d'Lëscht ze späicheren",
 	"bs-checklist-update-list": "Aktualiséiert Lëscht"
 }
