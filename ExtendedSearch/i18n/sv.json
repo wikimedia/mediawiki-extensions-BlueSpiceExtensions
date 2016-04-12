@@ -100,5 +100,7 @@
 	"bs-extendedsearch-redirect": "Omdirigera från: $1",
 	"bs-extendedsearch-totalnoofarticles": "Antal sidor som ska indexeras: $1",
 	"bs-extendedsearch-more": "Mer",
-	"bs-extendedsearch-fewer": "Mindre"
+	"bs-extendedsearch-fewer": "Mindre",
+	"bs-extendedsearch-facetsetting-op-and": "OCH",
+	"bs-extendedsearch-facetsetting-op-or": "ELLER"
 }

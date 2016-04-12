@@ -12,5 +12,6 @@
 	"bs-checklist-dlg-new-title": "Aggiungi nuovo elenco",
 	"bs-checklist-savelist-error-invalid-title": "Titolo indicato non valido",
 	"bs-checklist-savelist-error-edit-not-permitted": "Autorizzazioni insufficienti per salvare l'elenco",
-	"bs-checklist-update-list": "Elenco aggiornato"
+	"bs-checklist-update-list": "Elenco aggiornato",
+	"apihelp-bs-checklist-tasks-description": "Fornisce operazioni per l'estensione Checklist"
 }

@@ -7,6 +7,7 @@
 	},
 	"bs-visualeditor-desc": "Editor visuale per MediaWiki",
 	"prefs-visualeditor": "Visual editor",
+	"apihelp-bs-visualeditor-tasks-description": "Fornisce attività per l'estensione BlueSpice Visual Editor.",
 	"bs-visualeditor-editbutton-hint": "Visual Editor",
 	"bs-visualeditor-pref-disablens": "Disabilita nei namespace:",
 	"bs-visualeditor-pref-use": "Utilizza l'editor WYSIWYG come predefinito",
