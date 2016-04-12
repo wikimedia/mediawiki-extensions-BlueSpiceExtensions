@@ -61,22 +61,90 @@ Ext.define( 'BS.PermissionManager.panel.Manager', {
 
 		me.title = mw.message('bs-permissionmanager-btn-group-label').plain() + ' user';
 
+		me.gridPermissions = new BS.PermissionManager.grid.Permissions({
+			region: 'center'
+		});
+		me.treeGroups = new BS.PermissionManager.tree.Groups({
+			region: 'west',
+			collapsed: true,
+			collapsible: true,
+			width: 200
+		});
 		me.items = [
-			new BS.PermissionManager.grid.Permissions({
-				region: 'center'
-			}),
-			new BS.PermissionManager.tree.Groups({
-				region: 'west',
-				collapsed: true,
-				collapsible: true,
-				width: 200
-			})
+			me.gridPermissions,
+			me.treeGroups
 		];
 		me.buttons = [
 			me.btnTemplateEditor,
 			me.btnOK,
 			me.btnCancel
 		];
+
+		$( document ).trigger(
+			'BSPermissionManagerAfterInitComponent',
+			[me]
+		);
 		me.callParent(arguments);
+	},
+
+	getHTMLTable: function() {
+		var me = this;
+		var dfd = $.Deferred();
+		var aSelection = me.treeGroups.getSelectionModel().getSelection();
+		var sGroup = aSelection[0].internalId;
+		var sNs = mw.config.get( 'bsPermissionManagerNamespaces', [] );
+
+		var $table = $( '<table>' );
+		var $row = null;
+		var $cell = null;
+		$row = $( '<tr>' );
+		$table.append($row);
+		$cell = $( '<td>' );
+		$row.append( $cell );
+		$cell.append( 'Recht' );
+		$cell = $( '<td>' );
+		$row.append( $cell );
+		$cell.append( 'Wiki' );
+		for( var i = 0; i < sNs.length; i++ ) {
+			$cell = $( '<td>' );
+			$row.append( $cell );
+			$cell.append( sNs[i].name );
+		}
+		//only namespace specific permissions
+		me.gridPermissions.store.data.each( function(record, i) {
+			if( record.data.type !== 1 ) {
+				return;
+			}
+			$row = $( '<tr>' );
+			$table.append($row);
+			$cell = $( '<td>' );
+			$row.append( $cell );
+			$cell.append( record.data.right );
+			$cell = $( '<td>' );
+			$row.append( $cell );
+			$cell.append( record.data['userCan_Wiki'] ? 'X' : '' );
+			for( var i = 0; i < sNs.length; i++ ) {
+				$cell = $( '<td>' );
+				$row.append( $cell );
+				$cell.append( record.data['userCan_'+sNs[i].id] ? 'X' : '' );
+			}
+		});
+		//only global permissions
+		me.gridPermissions.store.data.each( function(record, i) {
+			if( record.data.type !== 2 ) {
+				return;
+			}
+			$row = $( '<tr>' );
+			$table.append($row);
+			$cell = $( '<td>' );
+			$row.append( $cell );
+			$cell.append( record.data.right );
+			$cell = $( '<td>' );
+			$row.append( $cell );
+			$cell.append( record.data['userCan_Wiki'] ? 'X' : '' );
+		});
+
+		dfd.resolve( '<table>' + $table.html() + '</table>' );
+		return dfd;
 	}
 });
