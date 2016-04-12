@@ -12,6 +12,9 @@ $wgResourceModules['ext.bluespice.rssStandards'] = array(
 	'scripts' => 'bluespice.rssStandards.js',
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/RSSStandards/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/RSSStandards/resources',
+	'dependencies' => array(
+		'ext.bluespice.extjs'
+	)
 );
 
 $wgAjaxExportList[] = 'RSSStandards::getPages';

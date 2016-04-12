@@ -1,10 +1,10 @@
 var combo;
 
-Ext.onReady(function() {
+Ext.onReady( function() {
 	Ext.QuickTips.init();
-	
+
 	var link = '';
-	
+
 	// TODO SW: make generic
 	var buttons = {
 		rc: Ext.get('btnFeedRc'),
@@ -15,15 +15,15 @@ Ext.onReady(function() {
 		watch: Ext.get('btnFeedWatch'),
 		nsblog: Ext.get('btnFeedNsBlog')
 	};
-	
+
 	buttons.nsblog.addListener('click', function() {
 		location.href = Ext.get('selFeedNsBlog').dom.value;
 	});
-	
+
 	buttons.rc.addListener('click', function() {
 		location.href = this.dom.value;
 	});
-	
+
 	buttons.own.addListener('click', function() {
 		location.href = this.dom.value;
 	});
