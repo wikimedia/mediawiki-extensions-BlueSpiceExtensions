@@ -25,5 +25,10 @@
 	"bs-checklist-dlg-new-prompt": "הזינו כותרת רשימה",
 	"bs-checklist-alert": "זהירות!",
 	"bs-checklist-confirm-dirty-title": "שינויים שלא נשמרו!",
-	"bs-checklist-confirm-dirty-text": "ביצעתם שינויים ברשימה שעדיין לא נשמרו. האם אתם בטוחים שברצונכם למחוק את השינויים?"
+	"bs-checklist-confirm-dirty-text": "ביצעתם שינויים ברשימה שעדיין לא נשמרו. האם אתם בטוחים שברצונכם למחוק את השינויים?",
+	"bs-checklist-savelist-error-invalid-title": "סופקה כותרת לא תקינה",
+	"bs-checklist-savelist-error-edit-not-permitted": "אין לך הרשאות לשמור רשימה",
+	"bs-checklist-modified-check": "שינוי ערך ברשימה",
+	"bs-checklist-update-list": "עדכון רשימה",
+	"apihelp-bs-checklist-tasks-description": "מספק פעולות להרחבה Checklist"
 }
