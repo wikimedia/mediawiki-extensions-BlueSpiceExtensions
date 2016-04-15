@@ -58,5 +58,7 @@
 	"bs-flexiskin-api-example-desc": "Liefert die aktuelle Konfiguration eines Flexiskins.",
 	"bs-flexiskin-api-error-save": "Beim Speichern ist ein Fehler aufgetreten (Grund: „$1“)",
 	"bs-flexiskin-api-error-invalid-action": "Diese Aktion existiert nicht.",
-	"bs-flexiskin-api-error-missing-param": "Der folgende Parameter fehlt: \"$1\""
+	"bs-flexiskin-api-error-missing-param": "Der folgende Parameter fehlt: \"$1\"",
+	"bs-flexiskin-apihelp-task-param-skinId": "Der Parameter <var>skinId</var> identifiziert den Skin",
+	"bs-flexiskin-apihelp-task-param-name": "Der Parameter <var>name</var> ist der Dateiname der hochgeladenen Datei"
 }

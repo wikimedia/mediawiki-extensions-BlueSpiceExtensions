@@ -188,4 +188,25 @@ class Flexiskin extends BsExtensionMW {
 	public static function generateDynamicModuleStyleName(){
 		return 'ext.bluespice.flexiskin.skin.' . BsConfig::get( 'MW::Flexiskin::Active' );
 	}
+
+	/**
+	 * Gets the configuration for a Flexiskin by ID
+	 * @param String $sId
+	 * @return stdClass The config object
+	 */
+	public static function getFlexiskinConfig( $sId ) {
+
+		if ( $sId == "" ) {
+			throw new Exception( wfMessage( 'bs-flexiskin-error-get-config', 'id' )->plain() );
+		}
+
+		$oStatus = BsFileSystemHelper::getFileContent( "conf.json", "flexiskin" . DS . $sId );
+
+		if ( !$oStatus->isGood() ) {
+			throw new Exception( wfMessage( 'bs-flexiskin-error-get-config', $this->getErrorMessage( $oStatus ) )->plain() );
+		}
+
+		return FormatJson::decode( $oStatus->getValue() );
+	}
+
 }
