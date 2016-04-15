@@ -318,7 +318,7 @@ class UserManager extends BsExtensionMW {
 		$_SESSION['wsDomain'] = $tmpDomain;
 
 		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
-		wfRunHooks(
+		Hooks::run(
 			'BSUserManagerAfterAddUser',
 			array(
 				$oUserManager,
@@ -328,7 +328,8 @@ class UserManager extends BsExtensionMW {
 					'email'    => $sEmail,
 					'password' => $sPassword,
 					'realname' => $sRealname
-				)
+				),
+				&$aResponse
 			)
 		);
 
@@ -466,6 +467,21 @@ class UserManager extends BsExtensionMW {
 			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save-successful' )->plain();
 		}
 
+		Hooks::run(
+			'BSUserManagerAfterEditUser',
+			array(
+				$oUserManager,
+				$oUser,
+				array(
+					'username' => $sUsername,
+					'email'    => $sEmail,
+					'password' => $sPassword,
+					'realname' => $sRealname
+				),
+				&$aAnswer
+			)
+		);
+
 		return FormatJson::encode( $aAnswer );
 	}
 
@@ -529,6 +545,9 @@ class UserManager extends BsExtensionMW {
 			array( 'ss_users' => $iUsers ),
 			array( 'ss_row_id' => 1 )
 		);
+
+		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
+		Hooks::run( 'BSUserManagerAfterDeleteUser', array( $oUserManager, $oUser, &$aAnswer ) );
 
 		if ( $oUser->getUserPage()->exists() ) {
 			$oUserPageArticle = new Article( $oUser->getUserPage() );
