@@ -93,6 +93,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		$this->setHook( 'BSPageAccessAddAdditionalAccessGroups', 'onPageAccessAddAdditionalAccessGroups' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
+		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
 
 		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
 
@@ -429,6 +430,34 @@ class ResponsibleEditors extends BsExtensionMW {
 			)
 		);
 
+		return true;
+	}
+
+	/**
+	 * Adds Special:ResponsibleEditors link to wiki wide widget
+	 * @param UserSidebar $oUserSidebar
+	 * @param User $oUser
+	 * @param array $aLinks
+	 * @param string $sWidgetTitle
+	 * @return boolean
+	 */
+	public function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
+		$oSpecialResponsibleEditors = SpecialPageFactory::getPage(
+			'ResponsibleEditors'
+		);
+		if( !$oSpecialResponsibleEditors ) {
+			return true;
+		}
+		$aLinks[] = array(
+			'target' => $oSpecialResponsibleEditors->getPageTitle(),
+			'text' => $oSpecialResponsibleEditors->getDescription(),
+			'attr' => array(),
+			'position' => 500,
+			'permissions' => array(
+				'read',
+				'responsibleeditors-viewspecialpage'
+			),
+		);
 		return true;
 	}
 

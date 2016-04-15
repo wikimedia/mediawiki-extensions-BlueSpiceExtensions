@@ -89,6 +89,7 @@ class Statistics extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
+		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
 
 		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers', array( 'WikiSysop' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-excludeusers', 'multiselectplusadd' );
 		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 366, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-statistics-pref-maxnumberofintervals', 'int' );
@@ -528,4 +529,28 @@ class Statistics extends BsExtensionMW {
 		return true;
 	}
 
+	/**
+	 * Adds Special:ExtendedStatistic link to wiki wide widget
+	 * @param UserSidebar $oUserSidebar
+	 * @param User $oUser
+	 * @param array $aLinks
+	 * @param string $sWidgetTitle
+	 * @return boolean
+	 */
+	public function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
+		$oSpecialExtendedStatistic = SpecialPageFactory::getPage(
+			'ExtendedStatistics'
+		);
+		if( !$oSpecialExtendedStatistic ) {
+			return true;
+		}
+		$aLinks[] = array(
+			'target' => $oSpecialExtendedStatistic->getPageTitle(),
+			'text' => $oSpecialExtendedStatistic->getDescription(),
+			'attr' => array(),
+			'position' => 700,
+			'permissions' => array( 'read' ),
+		);
+		return true;
+	}
 }

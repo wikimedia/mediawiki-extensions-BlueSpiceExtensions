@@ -87,6 +87,7 @@ class Review extends BsExtensionMW {
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd' );
+		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
@@ -1126,6 +1127,32 @@ class Review extends BsExtensionMW {
 		}
 
 		return $oReviewView;
+	}
+
+	/**
+	 * Adds Special:Review link to wiki wide widget
+	 * @param UserSidebar $oUserSidebar
+	 * @param User $oUser
+	 * @param array $aLinks
+	 * @param string $sWidgetTitle
+	 * @return boolean
+	 */
+	public function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
+		$oSpecialReview = SpecialPageFactory::getPage( 'Review' );
+		if( !$oSpecialReview ) {
+			return true;
+		}
+		$aLinks[] = array(
+			'target' => $oSpecialReview->getPageTitle(),
+			'text' => $oSpecialReview->getDescription(),
+			'attr' => array(),
+			'position' => 600,
+			'permissions' => array(
+				'read',
+				'workflowview'
+			),
+		);
+		return true;
 	}
 
 	/**

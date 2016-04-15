@@ -7,5 +7,8 @@
 	"bs-usersidebar-desc": "Adds the focus tab to sidebar",
 	"prefs-usersidebar": "User sidebar",
 	"bs-usersidebar-userpagesettings-link-title": "Edit the content of your focus",
-	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Edit}} focus"
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Edit}} focus",
+	"bs-usersidebar-tab-focus": "Focus",
+	"bs-usersidebar-tab-globalactions": "Global actions",
+	"bs-usersidebar-globalactionswidget-title": "Global actions"
 }

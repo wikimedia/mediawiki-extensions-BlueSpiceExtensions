@@ -179,17 +179,20 @@ class WikiAdmin extends BsExtensionMW {
 		self::$prLoadModulesAndScripts = true;
 		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ), array( 'type' => 'global' ) );
 
+		$this->setHook( 'BSUserSidebarGlobalActionsWidgets' );
+		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
 	/**
 	 * Adds WikiAdmin tab to main navigation
-	 * @param SkinTemplate $sktemplate
-	 * @param BaseTemplate $tpl
-	 * @return boolean Always true to keep hook running
+	 * @param array $aViews
+	 * @param User $oUser
+	 * @return boolean
 	 */
-	public static function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if( $sktemplate->getUser()->isAllowed( 'wikiadmin' ) === false ) {
+	public function onBSUserSidebarGlobalActionsWidgets( &$aViews, User $oUser ) {
+		if( !$oUser->isAllowed('wikiadmin') ) {
 			return true;
 		}
 
@@ -197,9 +200,6 @@ class WikiAdmin extends BsExtensionMW {
 		$aRegisteredModules = WikiAdmin::getRegisteredModules();
 
 		$aOutSortable = array();
-		$aOut = array();
-		$aOut[] = '<ul>';
-
 		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
 			$skeyLower = mb_strtolower( $sModuleKey );
 			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
@@ -217,26 +217,48 @@ class WikiAdmin extends BsExtensionMW {
 			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
 		}
 
+		$aOutSortable['Shop'] = self::getShopListItem();
+
 		// Allow other extensions to add to the admin menu
 		Hooks::run( 'BSWikiAdminMenuItems', array ( &$aOutSortable ) );
 
-		$aOutSortable['Shop'] = self::getShopListItem();
-		$aOutSortable['SpecialPages'] = self::getMediaWikiSpecialPageItem();
-
 		ksort( $aOutSortable );
-		$aOut[] = implode( "\n", $aOutSortable );
-		$aOut[] = '</ul>';
 
-		if ( $tpl instanceof BsBaseTemplate ) {
-			$tpl->data['bs_navigation_main']['bs-wikiadmin'] = array(
-				'position' => 100,
-				'label' => wfMessage( 'bs-tab_admin' )->plain(),
-				'class' => 'icon-cog',
-				'content' => implode( "\n", $aOut )
-			);
-		} else {
-			$tpl->data['sidebar'][wfMessage( 'bs-tab_admin' )->plain()] = implode( "\n", $aOut );
+		$sBody = implode( "\n", $aOutSortable );
+		$oWidgetView = new ViewWidget();
+		$oWidgetView
+			->setAdditionalBodyClasses( array( 'bs-nav-links' ) )
+			->setTitle( wfMessage( 'bs-wikiadmin-widget-title' )->plain() )
+			->setBody( "<ul>$sBody</ul>" )
+		;
+
+		$aViews[] = $oWidgetView;
+		return true;
+	}
+
+	/**
+	 * Adds Special:WikiAdmin link to wiki wide widget
+	 * @param UserSidebar $oUserSidebar
+	 * @param User $oUser
+	 * @param array $aLinks
+	 * @param string $sWidgetTitle
+	 * @return boolean
+	 */
+	public function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
+		$oSpecialWikiAdmin = SpecialPageFactory::getPage( 'WikiAdmin' );
+		if( !$oSpecialWikiAdmin ) {
+			return true;
 		}
+		$aLinks[] = array(
+			'target' => $oSpecialWikiAdmin->getPageTitle(),
+			'text' => $oSpecialWikiAdmin->getDescription(),
+			'attr' => array(),
+			'position' => 800,
+			'permissions' => array(
+				'read',
+				'wikiadmin'
+			),
+		);
 		return true;
 	}
 
@@ -256,22 +278,4 @@ class WikiAdmin extends BsExtensionMW {
 		);
 		return '<li>'.$sLink.'</li>';
 	}
-
-	/**
-	 * Returns a list item, which links to MediaWiki Specialpages
-	 * @return string $sLink to Mediawiki SpecialPages
-	 */
-	private static function getMediaWikiSpecialPageItem() {
-		$sLink = Html::element(
-					'a',
-					array(
-						'id' => 'bs-admin-mediawiki-specialpages',
-						'href' => SpecialPage::getTitleFor('Specialpages')->getLocalURL(),
-						'title' => wfmessage( 'bs-wikiadmin-mediawiki-specialpages-title' )->escaped()
-					),
-					wfMessage( 'bs-wikiadmin-mediawiki-specialpages-text' )->escaped()
-		);
-		return '<li>'.$sLink.'</li>';
-	}
-
 }

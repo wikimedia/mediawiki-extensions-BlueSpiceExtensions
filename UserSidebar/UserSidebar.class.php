@@ -169,6 +169,190 @@ class UserSidebar extends BsExtensionMW {
 	}
 
 	/**
+	 * Returns the basic mediawiki links for the global actions widget
+	 * @param array $aLinks
+	 * @return array
+	 */
+	public static function getMediaWikiGlobalActions( $aLinks = array() ) {
+		if( $oSpecialUpload = SpecialPageFactory::getPage( 'Upload' ) ) {
+			$aLinks[] = array(
+				'target' => $oSpecialUpload->getPageTitle(),
+				'text' => $oSpecialUpload->getDescription(),
+				'attr' => array(),
+				'position' => 100,
+				'permissions' => array(
+					'read',
+					'upload'
+				),
+			);
+		}
+
+		if( $oSpecialListFiles = SpecialPageFactory::getPage( 'ListFiles' ) ) {
+			$aLinks[] = array(
+				'target' => $oSpecialListFiles->getPageTitle(),
+				'text' => $oSpecialListFiles->getDescription(),
+				'attr' => array(),
+				'position' => 200,
+				'permissions' => array( 'read' ),
+			);
+		}
+
+		if( $oSpecialWatchlist = SpecialPageFactory::getPage( 'Watchlist' ) ) {
+			$aLinks[] = array(
+				'target' => $oSpecialWatchlist->getPageTitle(),
+				'text' => $oSpecialWatchlist->getDescription(),
+				'attr' => array(),
+				'position' => 300,
+				'permissions' => array(
+					'read',
+					'viewmywatchlist'
+				),
+			);
+		}
+
+		$oSpecialSpecialPages = SpecialPageFactory::getPage( 'SpecialPages' );
+		if( $oSpecialSpecialPages ) {
+			$aLinks[] = array(
+				'target' => $oSpecialSpecialPages->getPageTitle(),
+				'text' => $oSpecialSpecialPages->getDescription(),
+				'attr' => array(),
+				'position' => 400,
+				'permissions' => array( 'read' ),
+			);
+		}
+
+		return $aLinks;
+	}
+
+	/**
+	 * Returns the view for the global actions widget
+	 * @param User $oUser
+	 * @return \ViewWidget
+	 */
+	public function getGlobalActionsWidget( User $oUser, $aLinks = array() ) {
+		$aLinks = static::getMediaWikiGlobalActions( $aLinks );
+
+		$sWidgetTitle = wfMessage(
+			'bs-usersidebar-globalactionswidget-title'
+		)->plain();
+
+		Hooks::run( 'BSUserSidebarGlobalActionsWidgetGlobalActions', array(
+			$this,
+			$oUser,
+			&$aLinks,
+			&$sWidgetTitle,
+		));
+
+		$sBody = "";
+		if( empty($aLinks) ) {
+			return $sBody;
+		}
+
+		uasort( $aLinks, function( &$e1, &$e2 ) {
+			if( empty($e1['position']) || !is_int($e1['position']) ) {
+				$e1['position'] = 10000;
+			}
+			if( empty($e2['position']) || !is_int($e2['position']) ) {
+				$e2['position'] = 10000;
+			}
+			if( $e1['position'] === $e2['position'] ) {
+				return 0;
+			}
+			return $e1['position'] < $e2['position'] ? -1 : 1;
+		});
+
+		foreach( $aLinks as $aLink ) {
+			$oTitle = $aLink['target'];
+			if( !isset($oTitle) || !$oTitle instanceof Title ) {
+				continue;
+			}
+			$b = true;
+			if( !empty($aLink['permissions']) ) {
+				foreach( $aLink['permissions'] as $sPermission ) {
+					//UserCan on special pages only works for read
+					$b = $oTitle->isSpecialPage() && $sPermission != 'read'
+						? $oUser->isAllowed( $sPermission )
+						: $oTitle->userCan( $sPermission, $oUser )
+					;
+					if( !$b ) {
+						break;
+					}
+				}
+			}
+			if( !$b ) {
+				continue;
+			}
+			if( !isset($aLink['attr']) || !is_array($aLink['attr']) ) {
+				$aLink['attr'] = array();
+			}
+			if( empty($aLink['text']) ) {
+				$aLink['text'] = $oTitle->getText();
+			}
+
+			$sBody .= Html::openElement( 'li' )
+				.Linker::link( $oTitle, $aLink['text'], $aLink['attr'] )
+				.Html::closeElement( 'li' )
+				."\n"
+			;
+		}
+
+		$sBody = Html::openElement( 'ul' )
+			.$sBody
+			.Html::closeElement( 'ul' )
+		;
+
+		$oWidgetView = new ViewWidget();
+		return $oWidgetView
+			->setBody( $sBody )
+			->setTitle( $sWidgetTitle )
+			->setAdditionalBodyClasses( array( 'bs-nav-links' ) )
+		;
+	}
+
+	/**
+	 * Returns the widgets for the global actions tab
+	 * @param User $oUser The current MediaWiki User object
+	 * @param array $aViews of WidgetView objects
+	 * @return array of WidgetView objects
+	 */
+	private function getGlobalActionsWidgets( User $oUser, $aViews = array() ) {
+		//Each user needs a separate cache due to differences in permissions
+		//etc.
+		$sContext = $oUser->isLoggedIn()
+			? $oUser->getName()
+			: 'default'
+		;
+		$sKey = BsCacheHelper::getCacheKey(
+			'BlueSpice',
+			'GlobalActionsWidgets',
+			$sContext
+		);
+		$aData = BsCacheHelper::get( $sKey );
+
+		if( $aData !== false ) {
+			wfDebugLog(
+				'UserSidebar',
+				__CLASS__.': Fetching GlobalActionsWidgets views from cache'
+			);
+			return $aData;
+		}
+		wfDebugLog(
+			'UserSidebar',
+			__CLASS__.': Fetching GlobalActionsWidgets views from DB'
+		);
+
+		$aViews[] = $this->getGlobalActionsWidget( $oUser );
+		Hooks::run( 'BSUserSidebarGlobalActionsWidgets', array(
+			&$aViews,
+			$oUser,
+		));
+
+		//Max cache time 24h
+		BsCacheHelper::set( $sKey , $aViews, 60*1440 );
+		return $aViews;
+	}
+
+	/**
 	 * Fires event if user is not logged in or UserSidebar Article does not exist.
 	 * @param array $aViews of WidgetView objects
 	 * @param User $oUser The current MediaWiki User object
@@ -210,34 +394,31 @@ class UserSidebar extends BsExtensionMW {
 		$aViews = array();
 		$oCurrentTitle = $sktemplate->getTitle();
 		$sEditLink = '';
-		if ( $oUser->isLoggedIn() === false ) {
-			$this->getDefaultWidgets( $aViews, $oUser, $oCurrentTitle );
-		} else {
-			$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Sidebar' );
 
-			$sEditLink = Linker::link(
-				$oTitle,
-				'',
-				array(
-					'id' => 'bs-usersidebar-edit',
-					'class' => 'icon-pencil'
-				),
-				array(
-					'action' => 'edit',
-					'preload' => ''
-				)
-			);
+		$oTitle = Title::makeTitle( NS_USER, $oUser->getName().'/Sidebar' );
 
-			if ( $oTitle->exists() === false ) {
+		$sEditLink = Linker::link(
+			$oTitle,
+			'',
+			array(
+				'id' => 'bs-usersidebar-edit',
+				'class' => 'icon-pencil'
+			),
+			array(
+				'action' => 'edit',
+				'preload' => ''
+			)
+		);
+
+		if ( $oTitle->exists() === false ) {
+			$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
+		}else {
+			$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
+			if ( empty($aWidgets) ) {
 				$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
-			}else {
-				$aWidgets = BsWidgetListHelper::getInstanceForTitle( $oTitle )->getWidgets();
-				if ( empty($aWidgets) ) {
-					$this->getDefaultWidgets( $aViews, $oUser, $oTitle );
-				}
-
-				$aViews = array_merge( $aViews, $aWidgets );
 			}
+
+			$aViews = array_merge( $aViews, $aWidgets );
 		}
 		$aOut = array();
 		$aOut[] = $sEditLink;
@@ -247,15 +428,36 @@ class UserSidebar extends BsExtensionMW {
 			}
 		}
 
+		$sMsg = wfMessage( 'bs-usersidebar-tab-focus' )->plain();
 		if ( $tpl instanceof BsBaseTemplate ) {
 			$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
 				'position' => 20,
-				'label' => wfMessage( 'bs-tab_focus' )->plain(),
+				'label' => $sMsg,
 				'class' => 'icon-clipboard',
 				'content' => implode( "\n", $aOut )
 			);
 		} else {
-			$tpl->data['sidebar'][wfMessage( 'bs-tab_focus' )->plain()] = implode( "\n", $aOut );
+			$tpl->data['sidebar'][$sMsg] = implode( "\n", $aOut );
+		}
+
+		$aOut = array();
+		$aViews = $this->getGlobalActionsWidgets( $oUser );
+		foreach ( $aViews as $oView ) {
+			if ( $oView instanceof ViewBaseElement ) {
+				$aOut[] = $oView->execute();
+			}
+		}
+
+		$sMsg = wfMessage( 'bs-usersidebar-tab-globalactions' )->plain();
+		if ( $tpl instanceof BsBaseTemplate ) {
+			$tpl->data['bs_navigation_main']['bs-globalactions'] = array(
+				'position' => 100,
+				'label' => $sMsg,
+				'class' => 'icon-cog',
+				'content' => implode( "\n", $aOut )
+			);
+		} else {
+			$tpl->data['sidebar'][$sMsg] = implode( "\n", $aOut );
 		}
 
 		return true;
