@@ -21,11 +21,11 @@ Ext.define('BS.PermissionManager.tree.Groups', {
 		},
 		select: function( self, record ) {
 			var group = record.get('text');
-			var dataManager = Ext.create('BS.PermissionManager.data.Manager');
+				var dataManager = Ext.create('BS.PermissionManager.data.Manager');
 
-			dataManager.setWorkingGroup(group);
+				dataManager.setWorkingGroup(group);
 			this.up('window').setTitle(mw.message('bs-permissionmanager-btn-group-label').plain() + ' ' + group);
-			Ext.data.StoreManager.lookup('bs-permissionmanager-permission-store').loadRawData(dataManager.buildPermissionData().permissions);
+				Ext.data.StoreManager.lookup('bs-permissionmanager-permission-store').loadRawData(dataManager.buildPermissionData().permissions);
 		}
 	},
 	stateful: true,

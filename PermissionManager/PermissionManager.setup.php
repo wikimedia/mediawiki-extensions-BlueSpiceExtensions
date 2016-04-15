@@ -50,9 +50,11 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 $wgAutoloadClasses['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
 $wgAutoloadClasses['PermissionTemplates'] = __DIR__ . '/includes/PermissionTemplates.class.php';
 
-$wgAjaxExportList[] = 'PermissionManager::setTemplateData';
-$wgAjaxExportList[] = 'PermissionManager::deleteTemplate';
-$wgAjaxExportList[] = 'PermissionManager::savePermissions';
+// Map class name to filename for autoloading
+$wgAutoloadClasses['ApiPermissionManager'] = __DIR__ . '/includes/api/ApiPermissionManager.php';
+
+// Map module name to class name
+$wgAPIModules['bs-permissionmanager-tasks'] = 'ApiPermissionManager';
 
 $wgExtensionFunctions[] = 'PermissionManager::setupLockmodePermissions';
 

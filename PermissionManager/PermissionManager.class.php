@@ -88,14 +88,14 @@ class PermissionManager extends BsExtensionMW {
 	/**
 	 * @var array
 	 */
-	protected static $aGroups = array();
-	protected static $aBuiltInGroups = array(
+	public static $aGroups = array();
+	public static $aBuiltInGroups = array(
 			'autoconfirmed', 'emailconfirmed', 'bot', 'sysop', 'bureaucrat', 'developer'
 	);
 	/**
 	 * @var array
 	 */
-	protected static $aInvisibleGroups = array( 'Sysop' );
+	public static $aInvisibleGroups = array( 'sysop' );
 
 	/**
 	 * Constructor of PermissionManager
@@ -109,7 +109,7 @@ class PermissionManager extends BsExtensionMW {
 		$this->mInfo = array(
 				EXTINFO::NAME => 'PermissionManager',
 				EXTINFO::DESCRIPTION => 'bs-permissionmanager-desc',
-				EXTINFO::AUTHOR => 'Sebastian Ulbricht',
+				EXTINFO::AUTHOR => 'Sebastian Ulbricht, Leonid Verhovskij',
 				EXTINFO::VERSION => 'default',
 				EXTINFO::STATUS => 'default',
 				EXTINFO::PACKAGE => 'default',
@@ -382,7 +382,7 @@ class PermissionManager extends BsExtensionMW {
 		return '<div id="panelPermissionManager" style="height: 500px"></div>';
 	}
 
-	protected static function buildNamespaceMetadata() {
+	public static function buildNamespaceMetadata() {
 		global $wgLang;
 
 		$aNamespaces = $wgLang->getNamespaces();
@@ -417,7 +417,7 @@ class PermissionManager extends BsExtensionMW {
 	 * @return Array $aMetadata stores values needed in the permissionmanager getForm()
 	 * i.e. if a right is global or local.
 	 */
-	protected static function buildRightsMetadata() {
+	public static function buildRightsMetadata() {
 		global $bsgPermissionConfig;
 		$aRights = User::getAllRights();
 		$aMetadata = array();
@@ -445,13 +445,20 @@ class PermissionManager extends BsExtensionMW {
 		return $aMetadata;
 	}
 
-	public static function setTemplateData() {
+	public static function setTemplateData( $oTemplate ) {
 		global $wgRequest;
 
 		$dbw = wfGetDB( DB_WRITE );
-		$oTemplate = $data = FormatJson::decode( $wgRequest->getVal( 'template', '{}' ) );
+		//return false if $oTemplate is empty
+		if ( $oTemplate == null ) {
+			$aResult = array(
+				'success' => false,
+				'msg' => ''
+			);
+			return $aResult;
+		}
 
-		$iId = $oTemplate->id + 0;
+		$iId = ( int ) $oTemplate->id;
 		$sName = $dbw->strencode( $oTemplate->text );
 		$aPermissions = $oTemplate->ruleSet;
 		$sDescription = $dbw->strencode( $oTemplate->description );
@@ -472,13 +479,10 @@ class PermissionManager extends BsExtensionMW {
 			$aResult[ 'msg' ] = wfMessage( 'bs-permissionmanager-msgtpled-savefailure' )->plain();
 		}
 
-		return json_encode( $aResult );
+		return $aResult;
 	}
 
-	public static function deleteTemplate() {
-		global $wgRequest;
-
-		$iId = $wgRequest->getInt( 'id', 0 );
+	public static function deleteTemplate( $iId = 0 ) {
 
 		if ( $iId ) {
 			$bDeleteResult = PermissionTemplates::removeTemplate( $iId );
@@ -496,42 +500,130 @@ class PermissionManager extends BsExtensionMW {
 			$aResult[ 'msg' ] = wfMessage( 'bs-permissionmanager-msgtpled-deletefail' )->plain();
 		}
 
-		return json_encode( $aResult );
+		return $aResult;
 	}
 
 	/**
 	 * @global WebRequest $wgRequest
 	 * @return string
 	 */
-	public static function savePermissions() {
-		global $wgRequest;
-		$data = FormatJson::decode( $wgRequest->getVal( 'data', '{}' ), true );
+	public static function savePermissions( $data ) {
 
-		if ( !is_array( $data ) || !isset( $data[ 'groupPermission' ] ) || !isset( $data[ 'permissionLockdown' ] ) ) {
-			return json_encode( array(
-					'success' => false,
-					'msg' => 'NO VALID DATA'
-			) );
+		if ( !isset( $data ) || !isset( $data->groupPermission ) || !isset( $data->permissionLockdown ) ) {
+			return false;
 		}
 
-		$aGroupPermissions = $data[ 'groupPermission' ];
-		$aLockdown = $data[ 'permissionLockdown' ];
+		$aGroupPermissions = $data->groupPermission;
+		$aLockdown = $data->permissionLockdown;
 		$mStatus = wfRunHooks( 'BsPermissionManager::beforeSavePermissions', array( &$aLockdown, &$aGroupPermissions ) );
 
 		if ( $mStatus === true ) {
-			$mStatus = self::preventPermissionLockout($aGroupPermissions);
+			$mStatus = self::preventPermissionLockout( $aGroupPermissions );
 		}
 
 		if ( $mStatus === true ) {
-			return FormatJson::encode(
-					self::writeGroupSettings( $aGroupPermissions, $aLockdown )
-			);
+			$mStatusWritePMSettings = self::writeGroupSettings( (array)$aGroupPermissions, (array)$aLockdown );
+			return $mStatusWritePMSettings;
 		}
 
-		return FormatJson::encode( array(
-				'success' => false,
-				'msg' => $mStatus
-		) );
+		return false;
+	}
+
+	public static function getPermissionArray( $group = "", $timestamp = "" ) {
+		global $wgImplicitGroups, $wgGroupPermissions, $wgNamespacePermissionLockdown;
+
+		//reset old data
+		$wgImplicitGroups = array();
+		$wgGroupPermissions = array();
+		$wgNamespacePermissionLockdown = array();
+
+		//load config from file
+		if ( empty( $timestamp ) ) {
+			include BSCONFIGDIR . DS . 'pm-settings.php';
+		} else {
+			//convert timestamp to date string and lookup backup file
+			$strTime = wfTimestamp( TS_MW, $timestamp );
+			$backupFilename = "pm-settings-backup-{$strTime}.php";
+			include BSCONFIGDIR . DS . $backupFilename;
+		}
+
+		//set empty values in $wgGroupPermissions to 0 and remove not requested groups
+
+		while ( list( $key, $wgGroupPermission ) = each( $wgGroupPermissions ) ) {
+			if ( !empty( $group ) && $key != $group ) {
+				unset( $wgGroupPermissions[ $key ] );
+				continue;
+			}
+			foreach ( $wgGroupPermission as &$permission ) {
+				if ( empty( $permission ) ) {
+					$permission = 0;
+				}
+			}
+		}
+
+		$aGroups = array(
+			'text' => '*',
+			'builtin' => true,
+			'implicit' => true,
+			'expanded' => true,
+			'children' => array(
+				array(
+					'text' => 'user',
+					'builtin' => true,
+					'implicit' => true,
+					'expanded' => true,
+					'children' => array()
+				)
+			)
+		);
+
+		$aExplicitGroups = BsGroupHelper::getAvailableGroups(
+			array( 'blacklist' => $wgImplicitGroups )
+		);
+
+		sort( $aExplicitGroups );
+
+		$aExplicitGroupNodes = array();
+		foreach ( $aExplicitGroups as $sExplicitGroup ) {
+			$aExplicitGroupNode = array(
+				'text' => $sExplicitGroup,
+				'leaf' => true
+			);
+
+			if ( in_array( $sExplicitGroup, PermissionManager::$aBuiltInGroups ) ) {
+				$aExplicitGroupNode[ 'builtin' ] = true;
+			}
+
+			$aExplicitGroupNodes[] = $aExplicitGroupNode;
+		}
+
+		$aGroups[ 'children' ][ 0 ][ 'children' ] = $aExplicitGroupNodes;
+
+		$aJsVars = array(
+			'bsPermissionManagerGroupsTree' => $aGroups,
+			'bsPermissionManagerNamespaces' => PermissionManager::buildNamespaceMetadata(),
+			'bsPermissionManagerRights' => PermissionManager::buildRightsMetadata(),
+			'bsPermissionManagerGroupPermissions' => $wgGroupPermissions,
+			'bsPermissionManagerPermissionLockdown' => $wgNamespacePermissionLockdown,
+			'bsPermissionManagerPermissionTemplates' => PermissionManager::getTemplateRules()
+		);
+
+		if ( empty( $aJsVars[ 'bsPermissionManagerPermissionTemplates' ] ) ) {
+			unset( $aJsVars[ 'bsPermissionManagerPermissionTemplates' ] );
+		}
+
+		wfRunHooks( 'BsPermissionManager::beforeLoadPermissions', array( &$aJsVars ) );
+
+		//Make sure a new group without any explicit permissions is converted into an object!
+		//Without any key => value it would be converted into an empty array.
+		foreach ( $aJsVars[ 'bsPermissionManagerGroupPermissions' ] as $sGroup => $aPermissions ) {
+			if ( !empty( $aPermissions ) ) {
+				continue;
+			}
+			$aJsVars[ 'bsPermissionManagerGroupPermissions' ][ $sGroup ] = (object)array();
+		}
+
+		return $aJsVars;
 	}
 
 	/**
@@ -557,7 +649,7 @@ class PermissionManager extends BsExtensionMW {
 				if ( is_array( $aGroupPermissions ) ) {
 					foreach ( $aGroupPermissions as $sGroupName => $aDataset ) {
 						// no user can be in the lock mode group so we don't care if it has the right or not
-						if( $sGroupName == self::$sPmLockModeGroup ) {
+						if ( $sGroupName == self::$sPmLockModeGroup ) {
 							continue;
 						}
 						if ( isset( $aDataset[ $sRight ] ) && $aDataset[ $sRight ] ) {
@@ -566,8 +658,8 @@ class PermissionManager extends BsExtensionMW {
 						}
 					}
 					if ( !$bIsSet ) {
-						return Message::newFromKey('bs-permissionmanager-error-lockout')
-								->params($sRight)
+						return Message::newFromKey( 'bs-permissionmanager-error-lockout' )
+								->params( $sRight )
 								->plain();
 					}
 				}
@@ -577,7 +669,7 @@ class PermissionManager extends BsExtensionMW {
 		return true;
 	}
 
-	protected static function getTemplateRules() {
+	public static function getTemplateRules() {
 		$aTemplates = PermissionTemplates::getAll();
 		$aOutput = array();
 
@@ -621,7 +713,7 @@ class PermissionManager extends BsExtensionMW {
 			foreach ( $aPermissions as $sPermission => $bValue ) {
 				$sSaveContent .= "\$GLOBALS['wgGroupPermissions']['{$sGroup}']['{$sPermission}'] = " . ( $bValue ? 'true' : 'false' ) . ";\n";
 				// check if settings for the given group changed
-				if( !isset( $wgGroupPermissions[ $sGroup ] )
+				if ( !isset( $wgGroupPermissions[ $sGroup ] )
 						|| !isset( $wgGroupPermissions[ $sGroup ][ $sPermission ] )
 						|| $wgGroupPermissions[ $sGroup ][ $sPermission ] != $bValue ) {
 					$aDiffGroups[ $sGroup ] = true;
@@ -648,13 +740,13 @@ class PermissionManager extends BsExtensionMW {
 						continue;
 					}
 					$sSaveContent .= "\$GLOBALS['wgNamespacePermissionLockdown'][$sNsConstant]['$sPermission']"
-							. " = array(" . ( count( $aGroups ) ? "'" . implode( "','", $aGroups ) . "'" : '' ) . ");\n";
+						. " = array(" . ( count( $aGroups ) ? "'" . implode( "','", $aGroups ) . "'" : '' ) . ");\n";
 					if ( $sPermission == 'read' ) {
 						$isReadLockdown = true;
 					}
 					// check if settings for any group changed
-					if( isset( $wgNamespacePermissionLockdown[$sNsConstant] )
-						&& isset( $wgNamespacePermissionLockdown[$sNsConstant][$sPermission] )
+					if ( isset( $wgNamespacePermissionLockdown[ $sNsConstant ] )
+						&& isset( $wgNamespacePermissionLockdown[ $sNsConstant ][ $sPermission ] )
 					) {
 						$aLocalDiffGroups = array_diff( $aGroups, $wgNamespacePermissionLockdown[ $sNsConstant ][ $sPermission ] );
 						foreach ( $aLocalDiffGroups as $sDiffGroup ) {
@@ -668,14 +760,14 @@ class PermissionManager extends BsExtensionMW {
 			}
 		}
 
-		$res = file_put_contents( $bsgConfigFiles['PermissionManager'], $sSaveContent );
+		$res = file_put_contents( $bsgConfigFiles[ 'PermissionManager' ], $sSaveContent );
 		if ( $res ) {
 			// Create a log entry for any group which permissions changed
 			$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
 			$oUser = RequestContext::getMain()->getUser();
 
-			foreach( $aDiffGroups as $sDiffGroup => $bFlag ) {
-				if( $bFlag ) {
+			foreach ( $aDiffGroups as $sDiffGroup => $bFlag ) {
+				if ( $bFlag ) {
 					$oLogger = new ManualLogEntry( 'bs-permission-manager', 'modify' );
 					$oLogger->setPerformer( $oUser );
 					$oLogger->setTarget( $oTitle );
@@ -689,8 +781,8 @@ class PermissionManager extends BsExtensionMW {
 		} else {
 			return array(
 					'success' => false,
-				// TODO SU (04.07.11 12:06): i18n
-					'msg' => 'Not able to create or write "' . $bsgConfigFiles['PermissionManager'] . '".'
+					// TODO SU (04.07.11 12:06): i18n
+					'msg' => 'Not able to create or write "' . $bsgConfigFiles[ 'PermissionManager' ] . '".'
 			);
 		}
 	}
@@ -703,23 +795,23 @@ class PermissionManager extends BsExtensionMW {
 	protected static function backupExistingSettings() {
 		global $bsgConfigFiles;
 
-		if ( file_exists( $bsgConfigFiles['PermissionManager'] ) ) {
+		if ( file_exists( $bsgConfigFiles[ 'PermissionManager' ] ) ) {
 			$timestamp = wfTimestampNow();
 			$backupFilename = "pm-settings-backup-{$timestamp}.php";
-			$backupFile = dirname( $bsgConfigFiles['PermissionManager'] ) . "/{$backupFilename}";
+			$backupFile = dirname( $bsgConfigFiles[ 'PermissionManager' ] ) . "/{$backupFilename}";
 
-			file_put_contents( $backupFile, file_get_contents( $bsgConfigFiles['PermissionManager'] ) );
+			file_put_contents( $backupFile, file_get_contents( $bsgConfigFiles[ 'PermissionManager' ] ) );
 		}
 
 		//remove old backup files if max number exceeded
-		$arrConfigFiles = scandir( dirname( $bsgConfigFiles['PermissionManager'] ) . "/", SCANDIR_SORT_ASCENDING );
+		$arrConfigFiles = scandir( dirname( $bsgConfigFiles[ 'PermissionManager' ] ) . "/", SCANDIR_SORT_ASCENDING );
 		$arrBackupFiles = array_filter( $arrConfigFiles, function( $elem ) {
 			return ( strpos( $elem, "pm-settings-backup-" ) !== FALSE ) ? true : false;
 		} );
 
 		//default limit to 5 backups, remove all backup files until "maxbackups" files left
-		while( count( $arrBackupFiles ) > BsConfig::get( "MW::PermissionManager::MaxBackups" ) ) {
-			$oldBackupFile = dirname( $bsgConfigFiles['PermissionManager'] ) . "/". array_shift( $arrBackupFiles );
+		while ( count( $arrBackupFiles ) > BsConfig::get( "MW::PermissionManager::MaxBackups" ) ) {
+			$oldBackupFile = dirname( $bsgConfigFiles[ 'PermissionManager' ] ) . "/" . array_shift( $arrBackupFiles );
 			unlink( $oldBackupFile );
 		}
 	}

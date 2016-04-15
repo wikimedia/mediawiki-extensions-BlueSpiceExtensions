@@ -22,6 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @package    BlueSpice_Extensions
  * @subpackage PermissionManager
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -146,33 +147,33 @@
 	 * @type {Array.<Ext.grid.column.Column>}
 	 */
 	var columns = [{
-		header: mw.message('bs-permissionmanager-header-permissions').plain(),
-		dataIndex: 'right',
-		locked: true,
-		stateId: 'right',
-		sortable: false,
-		hideable: false,
-		width: 200
-	}, {
-		header: mw.message('bs-permissionmanager-header-global').plain(),
-		dataIndex: 'userCan_Wiki',
-		locked: true,
-		xtype: 'bs-pm-permissioncheck',
-		stateId: 'userCan_Wiki',
-		sortable: false,
-		hideable: false,
-		width: 80
-	}, {
-		header: mw.message('bs-permissionmanager-header-namespaces').plain(),
-		sortable: false,
-		hideable: true,
-		flex: 1,
-		defaults: {
+			header: mw.message('bs-permissionmanager-header-permissions').plain(),
+			dataIndex: 'right',
+			locked: true,
+			stateId: 'right',
+			sortable: false,
+			hideable: false,
+			width: 200
+		}, {
+			header: mw.message('bs-permissionmanager-header-global').plain(),
+			dataIndex: 'userCan_Wiki',
+			locked: true,
+			xtype: 'bs-pm-permissioncheck',
+			stateId: 'userCan_Wiki',
+			sortable: false,
+			hideable: false,
+			width: 80
+		}, {
+			header: mw.message('bs-permissionmanager-header-namespaces').plain(),
+			sortable: false,
+			hideable: true,
 			flex: 1,
-			minWidth: 120
-		},
-		columns: []
-	}];
+			defaults: {
+				flex: 1,
+				minWidth: 120
+			},
+			columns: []
+		}];
 
 	// for every namespace we have, we add one column to the grid and one field to the grid model.
 	for (var i = 0, len = namespaces.length; i < len; i++) {
@@ -295,8 +296,11 @@
 	 * @returns {number}
 	 */
 	function checkTemplate(ruleSet) {
-		for (var i = 0, setlen = ruleSet.length; i < setlen; i++) {
-			if (checkPermission(ruleSet[i]) === NOT_ALLOWED) {
+		if ( ruleSet === null ) {
+			return NOT_ALLOWED;
+		}
+		for ( var i = 0, setlen = ruleSet.length; i < setlen; i++ ) {
+			if ( checkPermission( ruleSet[i] ) === NOT_ALLOWED ) {
 				return NOT_ALLOWED;
 			}
 		}
@@ -386,8 +390,8 @@
 		group = group || workingGroup;
 
 		if (Ext.isDefined(groupPermissions[group])
-			&& Ext.isDefined(groupPermissions[group][right])
-			&& groupPermissions[group][right]) {
+				&& Ext.isDefined(groupPermissions[group][right])
+				&& groupPermissions[group][right]) {
 			return ALLOWED_EXPLICIT;
 		}
 		// if the group doesn't have the explicit permission for the given
@@ -461,62 +465,59 @@
 			}
 		};
 
-		var data = {
-			groupPermission: groupPermissions,
-			permissionLockdown: permissionLockdown
-		};
 
 		caller.mask();
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl('PermissionManager::savePermissions'),
-			method: 'POST',
-			params: {
-				data: Ext.JSON.encode(data)
-			},
-			success: function (response) {
-				var result = Ext.JSON.decode(response.responseText);
-				if (result.success === true) {
-					caller.unmask();
-					bs.util.alert('bs-pm-save-success', {
-						textMsg: 'bs-permissionmanager-save-success'
-					});
 
-					// Reset modification cache
-					modifiedValues = {};
-					modifiedValues[workingGroup] = {};
-					// Reset modification counter
-					isDirty = {};
-					isDirty[workingGroup] = 0;
+		bs.api.tasks.exec(
+			'permissionmanager',
+			'savePermissions',
+			{
+				groupPermission: groupPermissions,
+				permissionLockdown: permissionLockdown
+			}
+		).done(function (response) {
+			//var result = Ext.JSON.decode(response.responseText);
+			var result = response.payload;
 
-					// We save the current work data back to the source data so
-					// that we can "reset" the grid to the current save point.
-					// We also use {@see Ext.Object.merge} again, to have an
-					// independent copy of the data.
-					mw.config.set(
+			if (result.success === true) {
+				caller.unmask();
+				bs.util.alert('bs-pm-save-success', {
+					textMsg: 'bs-permissionmanager-save-success'
+				});
+
+				// Reset modification cache
+				modifiedValues = {};
+				modifiedValues[workingGroup] = {};
+				// Reset modification counter
+				isDirty = {};
+				isDirty[workingGroup] = 0;
+
+				// We save the current work data back to the source data so
+				// that we can "reset" the grid to the current save point.
+				// We also use {@see Ext.Object.merge} again, to have an
+				// independent copy of the data.
+				mw.config.set(
 						'bsPermissionManagerGroupPermissions',
 						Ext.Object.merge({}, groupPermissions));
-					mw.config.set(
+				mw.config.set(
 						'bsPermissionManagerPermissionLockdown',
 						Ext.Object.merge({}, permissionLockdown));
 
-					// For performance reasons we don't sync every single record
-					// in the store, anymore but just recreate the whole dataset
-					// from the current settings. This bypasses a lot of checks
-					// and prevents browser freezing.
-					Ext.data.StoreManager
+				// For performance reasons we don't sync every single record
+				// in the store, anymore but just recreate the whole dataset
+				// from the current settings. This bypasses a lot of checks
+				// and prevents browser freezing.
+				Ext.data.StoreManager
 						.lookup('bs-permissionmanager-permission-store')
 						.loadRawData(buildPermissionData().permissions);
-				} else {
-					caller.unmask();
-					bs.util.alert('bs-pm-save-error', {
-						text: result.msg
-					});
-				}
-			},
-			failure: function (response) {
-				console.log(response);
+			} else {
+				caller.unmask();
+				bs.util.alert('bs-pm-save-error', {
+					text: result.msg
+				});
 			}
 		});
+
 	}
 
 	/**
@@ -524,11 +525,11 @@
 	 *
 	 * @param {Ext.data.Model} record
 	 */
-	function setTemplate (record) {
-		if(record.id) {
+	function setTemplate(record) {
+		if (record.id) {
 			var length = permissionTemplates.length;
-			for(var i = 0; i < length; i++) {
-				if(permissionTemplates[i].id == record.id) {
+			for (var i = 0; i < length; i++) {
+				if (permissionTemplates[i].id == record.id) {
 					permissionTemplates[i] = record;
 					break;
 				}
@@ -545,8 +546,8 @@
 	 */
 	function deleteTemplate(id) {
 		var length = permissionTemplates.length;
-		for(var i = 0; i < length; i++) {
-			if(permissionTemplates[i].id == id) {
+		for (var i = 0; i < length; i++) {
+			if (permissionTemplates[i].id == id) {
 				permissionTemplates.splice(i, 1);
 				break;
 			}
@@ -599,15 +600,15 @@
 		 */
 		set: function (fieldName, newValue, justCheck) {
 			var me = this,
-				data = me.data,
-				fields = me.fields,
-				modified = me.modified,
-				id = data.right,
-				type = data.type,
-				ruleSet = data.ruleSet,
-				namespace = parseInt(fieldName.substring(8)), //fieldName = "userCan_23454" || "userCan_Wiki"
-				currentValue, field, key, modifiedFieldNames, name,
-				ns, namespaceId, rule, right, record, value;
+					data = me.data,
+					fields = me.fields,
+					modified = me.modified,
+					id = data.right,
+					type = data.type,
+					ruleSet = data.ruleSet,
+					namespace = parseInt(fieldName.substring(8)), //fieldName = "userCan_23454" || "userCan_Wiki"
+					currentValue, field, key, modifiedFieldNames, name,
+					ns, namespaceId, rule, right, record, value;
 
 			justCheck = justCheck || false;
 
@@ -621,39 +622,39 @@
 			if (type) { // HERE STARTS THE LOGIC FOR RIGHTS
 				me.beginEdit();
 				if (namespace === false) {
-                    // newValue can either be a boolean or an int. If it is an int,
-                    // we don't need to convert it because it already represents one of
-                    // the triple state values. Otherwise, we convert it into a triple
-                    // state value.
-                    if(Ext.isBoolean(newValue)) {
-                        value = checkPermission(id);
-                        // A field can have the value ALLOWED_EXPLICIT, ALLOWED_IMPLICITE
-                        // and NOT_ALLOWED, whereof ALLOWED_EXPLICIT is the only value
-                        // which shows as a checked checkbox.
-                        if (value < ALLOWED_EXPLICIT) {
-                            // So if the field has any of the other values then it
-                            // means that the user want to check it.
-                            value = ALLOWED_EXPLICIT;
-                        } else {
-                            // Otherwise the user wants to uncheck it.
-                            value = NOT_ALLOWED;
-                        }
-                    } else {
-                        value = newValue;
-                    }
+					// newValue can either be a boolean or an int. If it is an int,
+					// we don't need to convert it because it already represents one of
+					// the triple state values. Otherwise, we convert it into a triple
+					// state value.
+					if (Ext.isBoolean(newValue)) {
+						value = checkPermission(id);
+						// A field can have the value ALLOWED_EXPLICIT, ALLOWED_IMPLICITE
+						// and NOT_ALLOWED, whereof ALLOWED_EXPLICIT is the only value
+						// which shows as a checked checkbox.
+						if (value < ALLOWED_EXPLICIT) {
+							// So if the field has any of the other values then it
+							// means that the user want to check it.
+							value = ALLOWED_EXPLICIT;
+						} else {
+							// Otherwise the user wants to uncheck it.
+							value = NOT_ALLOWED;
+						}
+					} else {
+						value = newValue;
+					}
 					setPermission(id, value);
 				} else {
 					// same logic as above
-                    if(Ext.isBoolean(newValue)) {
-                        value = checkPermissionInNamespace(id, namespace);
-                        if (value < ALLOWED_EXPLICIT) {
-                            value = ALLOWED_EXPLICIT;
-                        } else {
-                            value = NOT_ALLOWED;
-                        }
-                    } else {
-                        value = newValue;
-                    }
+					if (Ext.isBoolean(newValue)) {
+						value = checkPermissionInNamespace(id, namespace);
+						if (value < ALLOWED_EXPLICIT) {
+							value = ALLOWED_EXPLICIT;
+						} else {
+							value = NOT_ALLOWED;
+						}
+					} else {
+						value = newValue;
+					}
 					setPermissionInNamespace(id, namespace, value);
 				}
 
@@ -858,6 +859,9 @@
 				if (!Ext.isDefined(isDirty[group])) {
 					isDirty[group] = 0;
 				}
+			},
+			setGroupPermissions: function ( permissions ) {
+				groupPermissions = permissions;
 			},
 			setTemplate: setTemplate,
 			deleteTemplate: deleteTemplate,
