@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Csega"
+			"Csega",
+			"Wolf Rex"
 		]
 	},
 	"bs-extensioninfo-desc": "Információs lista a betöltött bővítményekről",
@@ -9,9 +10,10 @@
 	"bs-extensioninfo-software": "Szoftver",
 	"bs-extensioninfo-version": "Verzió",
 	"extensioninfo": "Kiterjesztések",
-	"bs-extensioninfo-headerextname": "Kiterjesztésnév",
+	"bs-extensioninfo-headerextname": "Kiterjesztés neve",
 	"bs-extensioninfo-headerversion": "Verzió",
 	"bs-extensioninfo-headerdesc": "Leírás",
 	"bs-extensioninfo-headerstatus": "Állapot",
-	"bs-extensioninfo-headerpackage": "Csomag"
+	"bs-extensioninfo-headerpackage": "Csomag",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elem|elemek}}"
 }

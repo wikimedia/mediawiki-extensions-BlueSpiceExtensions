@@ -1,12 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Sadrettin"
 		]
 	},
 	"bs-extendedsearch-error": "Hata:",
 	"bs-extendedsearch-facet-category": "Kategori",
 	"bs-extendedsearch-facet-editors": "Yazarlar",
+	"bs-extendedsearch-facet-namespace": "İsim alanı",
+	"bs-extendedsearch-facet-namespace-files": "Dosyalar",
+	"bs-extendedsearch-facet-type": "Biçim",
+	"bs-extendedsearch-facet-uncategorized": "Kategorisiz",
+	"bs-extendedsearch-facet-namespace-extfiles": "Dış dosyalar",
+	"bs-extendedsearch-files": "Dosya ara",
 	"bs-extendedsearch-finished": "Tamamlandı",
 	"bs-extendedsearch-nosearchterm": "Lütfen bir arama terimi girin.",
 	"bs-extendedsearch-search-help-multiselect": "Birden çok öğe seçmek için CTRL tuşunu basılı tutun.",
@@ -15,14 +22,22 @@
 	"bs-extendedsearch-sort-relevance": "Alaka düzeyi",
 	"bs-extendedsearch-sort-title": "Başlık",
 	"bs-extendedsearch-sort-ts": "Zaman",
+	"bs-extendedsearch-sort-type": "Tür",
 	"bs-extendedsearch-pref-scope-text": "Tam metin",
+	"bs-extendedsearch-pref-scope-title": "Başlık",
 	"bs-extendedsearch-about-to-start": "Başlatılıyor...",
 	"bs-extendedsearchadmin-label": "Arama seçenekleri",
 	"bs-extendedsearch-status": "Durum",
 	"bs-extendedsearch-statistics": "İstatistikler",
 	"bs-extendedsearch-warning": "Uyarı",
 	"bs-extendedsearch-did-you-mean": "Bunu mu demek istediniz \"$1\"?",
+	"bs-extendedsearch-unknown": "Bilinmeyen",
+	"bs-extendedsearch-section": "Bölüm",
 	"bs-extendedsearch-morelikethis": "Benzer sayfalar",
 	"bs-extendedsearch-recentsearchterms": "Son arama terimleri",
-	"bs-extendedsearch-redirect": "Şuradan yönlendirildi: $1"
+	"bs-extendedsearch-redirect": "Şuradan yönlendirildi: $1",
+	"bs-extendedsearch-more": "Daha fazla",
+	"bs-extendedsearch-fewer": "Daha az",
+	"bs-extendedsearch-facetsetting-op-and": "VE",
+	"bs-extendedsearch-facetsetting-op-or": "VEYA"
 }
