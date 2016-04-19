@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeleniccz"
+		]
+	},
+	"bs-aboutbluespice-desc": "Informatie over BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "Over BlueSpice",
+	"aboutbluespice": "Over BlueSpice",
+	"prefs-aboutbluespice": "Over BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Toon link \"{{int:bs-aboutbluespice-over-bluespice}}\" in de boven-en hoofdmenu"
+}

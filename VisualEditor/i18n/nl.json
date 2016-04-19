@@ -4,15 +4,17 @@
 			"Sjoerddebruin",
 			"SPQRobin",
 			"Esketti",
-			"Siebrand"
+			"Siebrand",
+			"Jeleniccz"
 		]
 	},
 	"bs-visualeditor-desc": "Visuele tekstverwerker voor MediaWiki",
 	"prefs-visualeditor": "Visuele tekstverwerker",
+	"apihelp-bs-visualeditor-tasks-description": "Geeft taken voor de uitbreiding BlueSpice Visuele Editor.",
 	"bs-visualeditor-editbutton-hint": "Visuele tekstverwerker",
 	"bs-visualeditor-pref-disablens": "Uitschakelen in naamruimten:",
 	"bs-visualeditor-pref-use": "Standaard de WYSIWYG-tekstverwerker gebruiken",
-	"bs-visualeditor-save-message": "Opgeslagen herziening $1 met overzicht \"$2\".",
+	"bs-visualeditor-save-message": "Opgeslagen herziening $1 met samenvatting \"$2\".",
 	"bs-visualeditor-no-summary": "Geen samenvatting",
 	"bs-visualeditor-sortable": "Sorteerbare",
 	"bs-visualeditor-wikitable": "Standaard",
