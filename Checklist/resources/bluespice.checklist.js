@@ -65,7 +65,11 @@ BsChecklist = {
 			}] ),
 			async: false, //TODO: Reimplement with aysnc call
 			success: function(response){
-				BsChecklist.optionsLists[listId] = response.results[0].listOptions;
+				if (response.results.length > 0 ) {
+					BsChecklist.optionsLists[listId] = response.results[0].listOptions;
+				} else {
+					BsChecklist.optionsLists[listId] = ["-"];
+				}
 			}
 		});
 
