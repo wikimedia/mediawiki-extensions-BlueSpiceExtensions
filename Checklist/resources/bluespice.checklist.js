@@ -58,7 +58,7 @@ BsChecklist = {
 			type: "GET",
 			url: bs.api.makeUrl( 'bs-checklist-template-store' )
 				+ "&filter=" + JSON.stringify( [{
-					type: "string",
+					type: "templatetitle",
 					comparison: "eq",
 					value: listId,
 					field: "text"
