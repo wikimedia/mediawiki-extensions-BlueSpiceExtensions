@@ -1143,16 +1143,15 @@ class Review extends BsExtensionMW {
 		}
 
 		$iCountReviews = count( BsReviewProcess::listReviews( $oUser->getId() ) );
-		$iCountFinishedReviews = BsReviewProcess::userHasWaitingReviews( $oUser );
 
-		if ( $iCountReviews <= 0 && !$iCountFinishedReviews ) {
+		if ( $iCountReviews <= 0 ) {
 			return true;
 		}
 
 		$tpl->data[ 'bs_personal_info' ][ 20 ] = array(
 			'id' => 'pi-review',
 			'href' => SpecialPage::getTitleFor( 'Review', $oUser->getName() )->getLocalURL(),
-			'text' => $iCountReviews . "|" . $iCountFinishedReviews,
+			'text' => $iCountReviews,
 			'class' => 'icon-eye',
 			'active' => $iCountReviews > 0 ? true : false
 		);
