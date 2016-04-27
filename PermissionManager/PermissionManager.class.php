@@ -637,6 +637,12 @@ class PermissionManager extends BsExtensionMW {
 					$sNsCanonicalName = 'MAIN';
 				}
 				$sNsConstant = 'NS_' . strtoupper( $sNsCanonicalName );
+				//$sNsCanonicalName does not always match the constant name.
+				//Fallback to NS index or this will throw a million notices
+				//on every page load.
+				if( !defined( $sNsConstant ) ) {
+					$sNsConstant = $iNS;
+				}
 				foreach ( $aPermissions as $sPermission => $aGroups ) {
 					if ( empty( $aGroups ) ) {
 						continue;
