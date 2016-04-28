@@ -305,8 +305,8 @@ class UserManager extends BsExtensionMW {
 		}
 
 		if ( $resDelGroups === false || $resInsGroups === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
+			$aResponse['success'] = false;
+			$aResponse['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
 		}
 
 		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
