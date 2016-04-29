@@ -110,7 +110,7 @@ Ext.define( 'BS.UserManager.dialog.User', {
 	getGroupsValue: function( data ) {
 		var groups = [];
 		for( var i = 0; i < data.length; i++ ) {
-			groups.push( data[i].group );
+			groups.push( data[i] );
 		}
 		return groups;
 	}

@@ -133,7 +133,6 @@ class PermissionManager extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL | BsConfig::RENDER_AS_JAVASCRIPT, 'bs-permissionmanager-pref-enablerealitycheck', 'toggle' );
 		BsConfig::registerVar( 'MW::PermissionManager::MaxBackups', 5, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-permissionmanager-pref-max-backups' );
 
-		$this->setHook( 'BSWikiAdminUserManagerBeforeUserListSend' );
 		$this->setHook( 'BSGroupManagerGroupNameChanged' );
 	}
 
@@ -188,6 +187,17 @@ class PermissionManager extends BsExtensionMW {
 		return true;
 	}
 
+	/*
+	I could not figure out any circumstances when this would be needed!
+	Hook: 'BSWikiAdminUserManagerBeforeUserListSend' was removed
+	Groups have been queried by DB - why should there be a group lockmode?
+	array( users => array(
+		1 => array(
+			groups => array(
+				1 => array( 'group' => 'lockmode' )
+			)
+		)
+	))
 	public function onBSWikiAdminUserManagerBeforeUserListSend( $oUserManager, &$data ) {
 		if ( !BsConfig::get( 'MW::PermissionManager::Lockmode' ) )
 			return true;
@@ -213,6 +223,7 @@ class PermissionManager extends BsExtensionMW {
 
 		return true;
 	}
+	*/
 
 	public static function setupLockmodePermissions() {
 		global $wgAdditionalGroups, $wgGroupPermissions, $wgNamespacePermissionLockdown;
