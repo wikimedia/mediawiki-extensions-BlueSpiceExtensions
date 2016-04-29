@@ -59,7 +59,7 @@ class SpecialAdminDashboard extends BsSpecialPage {
 			wfRunHooks( 'BSDashboardsAdminDashboardPortalConfig', array( $this, &$aPortalConfig, $bIsDefault ) );
 		}
 
-		$sSaveBackend = 'Dashboards::saveAdminDashboardConfig';
+		$sSaveBackend = 'saveAdminDashboardConfig';
 		$sLocation = 'AdminDashboard';
 		$this->getOutput()->addJsConfigVars( 'bsPortalConfigSavebackend', $sSaveBackend );
 		$this->getOutput()->addJsConfigVars( 'bsPortalConfigLocation', $sLocation );

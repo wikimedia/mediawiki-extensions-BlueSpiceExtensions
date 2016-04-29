@@ -99,20 +99,6 @@ class Dashboards extends BsExtensionMW {
 		return true;
 	}
 
-	public static function getAdminDashboardConfig() {
-		$aPortlets = array();
-		wfRunHooks( 'BSDashboardsAdminDashboardPortalPortlets', array( &$aPortlets ) );
-
-		return json_encode( array( 'portlets' => $aPortlets ) );
-	}
-
-	public static function getUserDashboardConfig() {
-		$aPortlets = array();
-		wfRunHooks( 'BSDashboardsUserDashboardPortalPortlets', array( &$aPortlets ) );
-
-		return json_encode( array( 'portlets' => $aPortlets ) );
-	}
-
 	/**
 	 * Registers the  <bs:dashboard /> tag
 	 * @param Parser $parser
@@ -214,61 +200,6 @@ class Dashboards extends BsExtensionMW {
 				),
 				__METHOD__
 		);
-
-		return $oResponse;
-	}
-
-	/**
-	 * AjaxDispatcher callback for saving an admin portal config
-	 * @return BsCAResponse
-	 */
-	public static function saveAdminDashboardConfig() {
-		$oResponse = BsCAResponse::newFromPermission( 'read' );
-		$aPortalConfig = RequestContext::getMain()->getRequest()->getVal( 'portletConfig', '' );
-
-		$oDbw = wfGetDB( DB_MASTER );
-		$oDbw->delete(
-			'bs_dashboards_configs',
-			array( 'dc_type' => 'admin' )
-		);
-		$oDbw->insert(
-			'bs_dashboards_configs',
-			array(
-				'dc_type' => 'admin',
-				'dc_identifier' => '',
-				'dc_config' => serialize( $aPortalConfig ),
-				'dc_timestamp' => '',
-			),
-			__METHOD__
-		);
-
-		return $oResponse;
-	}
-
-	/**
-	 * AjaxDispatcher callback for saving a tag portal config
-	 * @return BsCAResponse
-	 */
-	public static function saveTagDashboardConfig( $aPortalConfig ) {
-		$aPortalConfig = FormatJson::decode( $aPortalConfig );
-		$oResponse = BsCAResponse::newFromPermission('read');
-		$oResponse->setPayload( $aPortalConfig );
-
-		return $oResponse;
-	}
-
-	/**
-	 * AjaxDispatcher callback for getting a list of available portlets
-	 * @return BsCAResponse
-	 */
-	public static function getPortlets() {
-		$oResponse = BsCAResponse::newFromPermission('read');
-
-		$aPortlets = array();
-
-		wfRunHooks( 'BSDashboardsGetPortlets', array( &$aPortlets ) );
-		//LogPage::validTypes();
-		$oResponse->setPayload( $aPortlets );
 
 		return $oResponse;
 	}

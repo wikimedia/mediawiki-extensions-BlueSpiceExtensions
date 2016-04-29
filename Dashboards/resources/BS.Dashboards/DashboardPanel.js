@@ -97,17 +97,15 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 
 		var portletConfig = this.getPortalConfig();
 
-		Ext.Ajax.request({
-			method: 'post',
-			url: bs.util.getAjaxDispatcherUrl(
-				this.saveConfigBackend.rs
-			),
-			params: {
-				portletConfig: Ext.Array.merge(
-					[ Ext.encode(portletConfig) ],
-					this.saveConfigBackend.additionalArgs
-				)
-			}
-		});
+		bs.api.tasks.exec(
+				"dashboards",
+				mw.config.get( 'bsPortalConfigSavebackend' ),
+				{
+					portletConfig: Ext.Array.merge(
+						[Ext.encode( portletConfig )],
+						this.saveConfigBackend.additionalArgs
+					)
+				}
+		);
 	}
 });
