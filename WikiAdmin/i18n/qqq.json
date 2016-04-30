@@ -13,5 +13,6 @@
 	"right-wikiadmin": "{{doc-right|wikiadmin}}",
 	"bs-wikiadmin-shop": "Anchor text and title for Shop\n{{Identical|Shop}}",
 	"bs-wikiadmin-mediawiki-specialpages-text": "Text of a link to MediaWiki SpecialPages on admin navigation\n{{Identical|Anchor MW SpecialPages}}",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Title for a link to MediaWiki SpecialPages on admin navigation\n{{Identical|Special page}}"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Title for a link to MediaWiki SpecialPages on admin navigation\n{{Identical|Special page}}",
+	"bs-wikiadmin-widget-title": "Widget headline for WikiAdmin\n {{Identical|Admin}}"
 }
