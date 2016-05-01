@@ -2,11 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Amitie 10g"
+			"Amitie 10g",
+			"Macofe"
 		]
 	},
 	"bs-usersidebar-desc": "Agrega la pestaña de foco a la barra lateral",
 	"prefs-usersidebar": "Barra lateral del usuario",
 	"bs-usersidebar-userpagesettings-link-title": "Editar el contenido de tu foco",
-	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} foco"
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} foco",
+	"bs-usersidebar-tab-focus": "Foco",
+	"bs-usersidebar-tab-globalactions": "Acciones globales",
+	"bs-usersidebar-globalactionswidget-title": "Acciones globales"
 }

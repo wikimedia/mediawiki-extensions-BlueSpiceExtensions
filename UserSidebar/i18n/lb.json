@@ -4,5 +4,8 @@
 			"Robby"
 		]
 	},
-	"prefs-usersidebar": "Säitlech Benotzerläischt"
+	"prefs-usersidebar": "Säitlech Benotzerläischt",
+	"bs-usersidebar-tab-focus": "Fokus",
+	"bs-usersidebar-tab-globalactions": "Global Aktiounen",
+	"bs-usersidebar-globalactionswidget-title": "Global Aktiounen"
 }

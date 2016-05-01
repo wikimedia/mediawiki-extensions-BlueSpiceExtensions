@@ -7,5 +7,8 @@
 	"bs-usersidebar-desc": "将焦点标签加入侧边栏",
 	"prefs-usersidebar": "用户侧边栏",
 	"bs-usersidebar-userpagesettings-link-title": "编辑您焦点的内容",
-	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|编辑}}焦点"
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|编辑}}焦点",
+	"bs-usersidebar-tab-focus": "焦点",
+	"bs-usersidebar-tab-globalactions": "全域操作",
+	"bs-usersidebar-globalactionswidget-title": "全域操作"
 }

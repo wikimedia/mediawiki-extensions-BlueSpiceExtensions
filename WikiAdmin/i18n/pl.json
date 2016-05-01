@@ -9,5 +9,6 @@
 	"wikiadmin": "Administracja BlueSpice",
 	"bs-wikiadmin-shop": "Sklep",
 	"bs-wikiadmin-mediawiki-specialpages-text": "Strony specjalne",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Lista wszystkich stron specjalnych MediaWiki"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Lista wszystkich stron specjalnych MediaWiki",
+	"bs-wikiadmin-widget-title": "Administracja"
 }
