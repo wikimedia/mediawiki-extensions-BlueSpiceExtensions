@@ -67,7 +67,7 @@ mw.loader.using( [ 'jquery.ui.autocomplete', 'ext.bluespice.extendedsearch.form'
 	$.ui.autocomplete.prototype._renderItem = function( ul, item ) {
 		return $( "<li class='" + item.attr + "'></li>" )
 				.data( "item.autocomplete", item )
-				.append( "<a>" + item.label + "</a>" )
+				.append( "<a href=\"" + item.link + "\">" + item.label + "</a>" )
 				.appendTo( ul );
 	};
 } );
