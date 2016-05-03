@@ -74,6 +74,7 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 					'create',
 					array( '4::namespace' => $sNamespace )
 				);
+				$aResult['message'] = wfMessage( 'bs-namespacemanager-nsadded' )->plain();
 			}
 
 			$oResult->success = $aResult['success'];
@@ -156,6 +157,8 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 					'5::newNamespaceName' => $sNamespace
 				) );
 			}
+
+			$aResult['message'] = wfMessage( 'bs-namespacemanager-nsedited' )->plain();
 		}
 
 		$oResult->success = $aResult['success'];
@@ -246,7 +249,7 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 				);
 
 				$oResult->success = $aResult[ 'success' ];
-				$oResult->message = $aResult[ 'message' ];
+				$oResult->message = wfMessage( 'bs-namespacemanager-nsremoved' )->plain();
 			}
 		} else {
 			$oResult->message = wfMessage( 'bs-namespacemanager-error_on_remove_namespace' )->plain();
