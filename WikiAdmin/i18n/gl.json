@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Banjo",
-			"Agremon"
+			"Agremon",
+			"Elisardojm"
 		]
 	},
 	"bs-wikiadmin-desc": "Punto central de administración de BlueSpice",
@@ -12,5 +13,6 @@
 	"right-wikiadmin": "Mostrar páxinas de administración de BlueSpice",
 	"bs-wikiadmin-shop": "Tenda",
 	"bs-wikiadmin-mediawiki-specialpages-text": "Páxinas especiais",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Lista todas as páxinas especiais de MediaWiki"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Lista todas as páxinas especiais de MediaWiki",
+	"bs-wikiadmin-widget-title": "Administración"
 }
