@@ -71,9 +71,13 @@ class SearchUriBuilder {
 	 */
 	const OFFSET = 4096;
 	/**
+	 * Facet operators.
+	 */
+	const FSET = 8192;
+	/**
 	 * Other params (?)
 	 */
-	const EXTENDED = 8192;
+	const EXTENDED = 16384;
 	/**
 	 * Combination of order, direction and offset (?)
 	 */
@@ -81,7 +85,7 @@ class SearchUriBuilder {
 	/**
 	 * Everything
 	 */
-	const ALL = 8191; // all but EXTENDED
+	const ALL = 16383; // all but EXTENDED
 
 	/**
 	 * Instance of SearchOptions
@@ -150,6 +154,7 @@ class SearchUriBuilder {
 		$this->aUri[self::ASC] = 'search_asc='.$this->oSearchOptions->getOption( 'asc' );
 		$this->aUri[self::OFFSET] = 'search_offset='.$this->oSearchOptions->getOption( 'offset' );
 		$this->aUri[self::EXTENDED] = 'search_extended=1';
+		$this->aUri[self::FSET] = 'fset='.json_encode( $this->oSearchOptions->getOption( 'fset' ) );
 	}
 
 	/**
@@ -188,6 +193,7 @@ class SearchUriBuilder {
 		if ( self::EDITOR & $components ) $aKeysWanted[self::EDITOR] = true;
 		if ( self::ORDER & $components ) $aKeysWanted[self::ORDER] = true;
 		if ( self::ASC & $components ) $aKeysWanted[self::ASC] = true;
+		if ( self::FSET & $components ) $aKeysWanted[self::FSET] = true;
 		if ( self::EXTENDED & $components ) $aKeysWanted[self::EXTENDED] = true;
 
 		$arrayKeysValuesWanted = array_intersect_key( $this->aUri , $aKeysWanted );
