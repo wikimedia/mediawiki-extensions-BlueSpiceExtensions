@@ -449,6 +449,14 @@ class VisualEditor extends BsExtensionMW {
 			)
 		);
 
+		// When in preview mode, users want to see the preview article and not
+		// the edit box. So in this case, the editor will not be autofocussed.
+		$sAction = $this->getRequest()->getVal( 'action', 'view' );
+		if ( $sAction == 'submit' ) {
+			unset( $aConfigs['standard']['auto_focus'] );
+			unset( $aConfigs['overwrite']['auto_focus'] );
+		}
+
 		$aExtensionTags = $oParser->getTags(); //TODO: Use, or at least fall back to API "action=query&meta=siteinfo&siprop=extensiontags"
 		$sAllowedTags = '';
 		$sSpecialTags = '';
