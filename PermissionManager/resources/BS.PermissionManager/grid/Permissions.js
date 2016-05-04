@@ -2,6 +2,7 @@ Ext.define('BS.PermissionManager.grid.Permissions', {
 	extend: 'Ext.grid.Panel',
 	requires: [
 		'BS.PermissionManager.grid.column.PermissionCheck',
+		'BS.PermissionManager.grid.column.PermissionHint',
 		'BS.PermissionManager.store.Permissions'
 	],
 	sortableColumns: false,

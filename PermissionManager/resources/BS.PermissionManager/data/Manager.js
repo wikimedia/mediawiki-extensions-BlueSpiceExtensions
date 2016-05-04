@@ -133,6 +133,7 @@
 	 * @type {Array.<object>}
 	 */
 	var modelFields = [
+		{name: 'hint', type: 'auto'},
 		{name: 'right', type: 'string'},
 		{name: 'type', type: 'int'},
 		{name: 'typeHeader', type: 'string'},
@@ -147,32 +148,41 @@
 	 * @type {Array.<Ext.grid.column.Column>}
 	 */
 	var columns = [{
-			header: mw.message('bs-permissionmanager-header-permissions').plain(),
-			dataIndex: 'right',
-			locked: true,
-			stateId: 'right',
-			sortable: false,
-			hideable: false,
-			width: 200
-		}, {
-			header: mw.message('bs-permissionmanager-header-global').plain(),
-			dataIndex: 'userCan_Wiki',
-			locked: true,
-			xtype: 'bs-pm-permissioncheck',
-			stateId: 'userCan_Wiki',
-			sortable: false,
-			hideable: false,
-			width: 80
-		}, {
-			header: mw.message('bs-permissionmanager-header-namespaces').plain(),
-			sortable: false,
-			hideable: true,
-			flex: 1,
-			defaults: {
+		header: '',
+		dataIndex: 'hint',
+		stateId: 'hint',
+		xtype: 'bs-pm-permissionhint',
+		locked: true,
+		sortable: false,
+		hideable: false,
+		width: 20
+	}, {
+		header: mw.message('bs-permissionmanager-header-permissions').plain(),
+		dataIndex: 'right',
+		locked: true,
+		stateId: 'right',
+		sortable: false,
+		hideable: false,
+		width: 200
+	}, {
+		header: mw.message('bs-permissionmanager-header-global').plain(),
+		dataIndex: 'userCan_Wiki',
+		locked: true,
+		xtype: 'bs-pm-permissioncheck',
+		stateId: 'userCan_Wiki',
+		sortable: false,
+		hideable: false,
+		width: 80
+	}, {
+		header: mw.message('bs-permissionmanager-header-namespaces').plain(),
+		sortable: false,
+		hideable: true,
+		flex: 1,
+		defaults: {
 				flex: 1,
 				minWidth: 120
-			},
-			columns: []
+		},
+		columns: []
 		}];
 
 	// for every namespace we have, we add one column to the grid and one field to the grid model.
@@ -182,7 +192,7 @@
 		}
 		var namespace = namespaces[i];
 
-		columns[2].columns.push({
+		columns[3].columns.push({
 			header: namespace.name,
 			dataIndex: 'userCan_' + namespace.id,
 			flex: 1,

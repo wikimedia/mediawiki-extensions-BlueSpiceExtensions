@@ -432,11 +432,12 @@ class PermissionManager extends BsExtensionMW {
 				$aConfig = $bsgPermissionConfig[ $sRight ];
 				$bGlobalPermission = ( isset( $aConfig[ 'type' ] ) && $aConfig[ 'type' ] == 'global' ) ? true : false;
 				$aMetadata[] = array(
-						'right' => $sRight,
-						'type' => $bGlobalPermission ? 2 : 1,
-						'typeHeader' => $bGlobalPermission
-								? wfMessage( 'bs-permissionmanager-grouping-global' )->plain()
-								: wfMessage( 'bs-permissionmanager-grouping-local' )->plain()
+					'hint' => wfMessage( 'right-' . $sRight )->plain(),
+					'right' => $sRight,
+					'type' => $bGlobalPermission ? 2 : 1,
+					'typeHeader' => $bGlobalPermission
+							? wfMessage( 'bs-permissionmanager-grouping-global' )->plain()
+							: wfMessage( 'bs-permissionmanager-grouping-local' )->plain()
 				);
 			}
 		}
