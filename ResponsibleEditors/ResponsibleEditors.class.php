@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Robert Vogel <vogel@hallowelt.biz>
- * @version    2.23.1
+ * @version    2.23.3
  * @package    BlueSpice_Extensions
  * @subpackage ResponsibleEditors
  * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
@@ -32,8 +32,6 @@
  */
 
 class ResponsibleEditors extends BsExtensionMW {
-
-	protected static $aResponsibleEditorIdsByArticleId = array();
 
 	protected static $aResponsibleEditorsByArticleId = array();
 
@@ -51,7 +49,7 @@ class ResponsibleEditors extends BsExtensionMW {
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'https://help.bluespice.com/index.php/ResponsibleEditors',
 			EXTINFO::DEPS => array(
-				'bluespice' => '2.22.0',
+				'bluespice' => '2.23.3',
 				'StateBar' => '2.22.0',
 				'Authors' => '2.22.0'
 			)
@@ -177,7 +175,9 @@ class ResponsibleEditors extends BsExtensionMW {
 
 			//Make information about current pages RespEds available on client side
 			$iArticleId = $out->getTitle()->getArticleID();
-			$aResponsibleEditorIds = $this->getResponsibleEditorIdsByArticleId( $iArticleId );
+			$aResponsibleEditorIds = static::getResponsibleEditorIds(
+				$iArticleId
+			);
 			$oData = new stdClass();
 			$oData->articleId = $iArticleId;
 			$oData->editorIds = $aResponsibleEditorIds;
@@ -251,7 +251,9 @@ class ResponsibleEditors extends BsExtensionMW {
 	 */
 	public function applyTempPermissionsForRespEditor( Title $oTitle, User $oUser ) {
 		$iArticleID = $oTitle->getArticleID();
-		$aResponsibleEditorsIDs = $this->getResponsibleEditorIdsByArticleId( $iArticleID );
+		$aResponsibleEditorsIDs = static::getResponsibleEditorIds(
+			$iArticleID
+		);
 
 		if ( !in_array( $oUser->getId(), $aResponsibleEditorsIDs ) ){
 			return false;
@@ -338,7 +340,7 @@ class ResponsibleEditors extends BsExtensionMW {
 	}
 
 	public function onBSUEModulePDFcollectMetaData($oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta) {
-		$aEditors = $this->getResponsibleEditorIdsByArticleId($oTitle->getArticleId());
+		$aEditors = static::getResponsibleEditorIds( $oTitle->getArticleId() );
 		$aEditorNames = array();
 		foreach ( $aEditors as $iEditorId ) {
 			$aEditorNames[] = $this->mCore->getUserDisplayName(User::newFromId($iEditorId));
@@ -349,7 +351,7 @@ class ResponsibleEditors extends BsExtensionMW {
 
 	public function onBSBookshelfManagerGetBookDataRow($oBookTitle, $oBookRow) {
 		$oBookRow->editors = array();
-		$aEditors = $this->getResponsibleEditorIdsByArticleId($oBookRow->page_id);
+		$aEditors = static::getResponsibleEditorIds( $oBookRow->page_id );
 		foreach ( $aEditors as $iEditorId ) {
 			$oBookRow->editors[] = array(
 				'id' => $iEditorId,
@@ -506,7 +508,9 @@ class ResponsibleEditors extends BsExtensionMW {
 	public function userIsAllowedToChangeResponsibility($oCurrentUser, $oCurrentTitle) {
 		//Check users permissions and/or if he is assigned as a responsible editor
 		$bUserIsAllowedToChangeResponsiblity = false;
-		$aResponsibleEditorIds = $this->getResponsibleEditorIdsByArticleId($oCurrentTitle->getArticleId());
+		$aResponsibleEditorIds = static::getResponsibleEditorIds(
+			$oCurrentTitle->getArticleId()
+		);
 		if ($oCurrentTitle->userCan('responsibleeditors-changeresponsibility') === true) {
 			$bUserIsAllowedToChangeResponsiblity = true;
 		} else {
@@ -614,7 +618,7 @@ class ResponsibleEditors extends BsExtensionMW {
 	 */
 	public function onArticleDeleteComplete($oArticle, $oUser, $sReason, $iArticleId) {
 		//E-Mail notifcation
-		$aResponsibleEditorIds = $this->getResponsibleEditorIdsByArticleId($iArticleId);
+		$aResponsibleEditorIds = static::getResponsibleEditorIds( $iArticleId );
 		self::notifyResponsibleEditors($aResponsibleEditorIds, $oUser, array($oArticle->getTitle()), 'delete');
 
 		$dbw = wfGetDB(DB_MASTER);
@@ -628,20 +632,20 @@ class ResponsibleEditors extends BsExtensionMW {
 
 	public function onArticleSaveComplete(&$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId) {
 		$iArticleId = $article->getID();
-		$aResponsibleEditorIds = $this->getResponsibleEditorIdsByArticleId($iArticleId);
+		$aResponsibleEditorIds = static::getResponsibleEditorIds( $iArticleId );
 		self::notifyResponsibleEditors($aResponsibleEditorIds, $user, array(Title::newFromID($iArticleId)), 'change');
 		return true;
 	}
 
 	public function onTitleMoveComplete(&$title, &$newtitle, &$user, $oldid, $newid) {
-		$aResponsibleEditorIds = $this->getResponsibleEditorIdsByArticleId($oldid);
+		$aResponsibleEditorIds = static::getResponsibleEditorIds( $oldid );
 		self::notifyResponsibleEditors($aResponsibleEditorIds, $user, array($title, $newtitle), 'move');
 		return true;
 	}
 
 	private function makeStateBarTopResponsibleEditorsEntries($iArticleId) {
 		global $wgScriptPath;
-		$aResponsibleEditorIds = $this->getResponsibleEditorIdsByArticleId($iArticleId);
+		$aResponsibleEditorIds = static::getResponsibleEditorIds( $iArticleId );
 		if (empty($aResponsibleEditorIds))
 			return false;
 
@@ -661,7 +665,7 @@ class ResponsibleEditors extends BsExtensionMW {
 	}
 
 	private function makeStateBarBodyResponsibleEditorsEntries($iArticleId) {
-		$aResponsibleEditorIds = $this->getResponsibleEditorIdsByArticleId($iArticleId);
+		$aResponsibleEditorIds = static::getResponsibleEditorIds( $iArticleId );
 		if (empty($aResponsibleEditorIds))
 			return false;
 
@@ -733,88 +737,10 @@ class ResponsibleEditors extends BsExtensionMW {
 		return true;
 	}
 
-	//<editor-fold desc="AJAX Interfaces">
-	public static function ajaxDeleteResponsibleEditorsForArticle() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		global $wgRequest;
-		$oResponse = new BsXHRJSONResponse();
-		$oResponse->status = BsXHRResponseStatus::ERROR;
-
-		$iArticleId = $wgRequest->getInt( 'articleId', -1 );
-		$aUserIDs = $wgRequest->getArray( 'articleId', array() );
-
-		$oRequestedTitle = Title::newFromId($iArticleId);
-
-		if ($iArticleId === -1 || empty( $aUserIDs ) || $oRequestedTitle === null) {
-			$oResponse->shortMessage = wfMessage( 'bs-responsibleeditors-error-ajax-invalid-parameter' )->plain();
-			echo $oResponse;
-			return;
+	public static function getListOfPossibleResponsibleEditorsForArticle( $iArticleId, $aListOfPossibleEditors = array() ) {
+		if( empty($iArticleId) || !$oTitle = Title::newFromId($iArticleId) ) {
+			return array();
 		}
-
-		//TODO: prevent delete on specific variations
-		//$oCurrentUserResponsibleEditor = BsResponsibleEditor::newFromUser($oCurrentUser);
-		if ($oRequestedTitle->userCan('responsibleeditors-changeresponsibility') === false
-				//&& ( $oCurrentUserResponsibleEditor->isAssignedToArticleId($iArticleId) === false
-				//&& BsConfig::get('MW::ResponsibleEditors::ResponsibleEditorMayChangeAssignment') === true
-		) {
-			$oResponse->shortMessage = wfMessage( 'bs-responsibleeditors-error-ajax-not-allowed' )->plain();
-			echo $oResponse;
-			return;
-		}
-
-		$dbw = wfGetDB(DB_MASTER);
-		$res = $dbw->delete(
-						'bs_responsible_editors',
-						array(
-							're_page_id' => $iArticleId,
-							're_user_id' => $aUserIDs
-						)
-		);
-
-		self::deleteResponsibleEditorsFromCache( $iArticleId );
-		$oRequestedTitle->invalidateCache();
-
-		$oResponse->status = BsXHRResponseStatus::SUCCESS;
-		$oResponse->shortMessage = wfMessage( 'bs-responsibleeditors-success-ajax' )->plain();
-		return $oResponse;
-	}
-
-	public static function ajaxGetActivatedNamespacesForCombobox() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		$aNamespaces = array();
-		$aNamespaces[] = array(
-			'namespace_id' => -99,
-			'namespace_text' => BsNamespaceHelper::getNamespaceName(-99, true)
-		);
-
-		$aActivatedNamespaces = BsConfig::get('MW::ResponsibleEditors::ActivatedNamespaces');
-		foreach ($aActivatedNamespaces as $iNamespaceId) {
-			$aNamespaces[] = array(
-				'namespace_id' => $iNamespaceId,
-				'namespace_text' => BsNamespaceHelper::getNamespaceName($iNamespaceId, true)
-			);
-		}
-		return '{ namespaces: ' . json_encode($aNamespaces) . ' }';
-	}
-
-	public static function ajaxGetResponsibleEditorsByArticleId($iArticleId) {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		$aResponsibleEditorIds = BsExtensionManager::getExtension( 'ResponsibleEditors' )->getResponsibleEditorIdsByArticleId($iArticleId);
-		return json_encode($aResponsibleEditorIds);
-	}
-
-	public static function ajaxGetListOfResponsibleEditorsForArticle() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		global $wgRequest;
-		$iArticleId = $wgRequest->getInt( 'articleId', -1 );
-		if ($iArticleId == -1)
-			return 'ERROR';
-		$aListOfPossibleEditors = BsExtensionManager::getExtension( 'ResponsibleEditors' )->getListOfResponsibleEditorsForArticle($iArticleId);
-		return '{users: ' . json_encode($aListOfPossibleEditors) . '}';
-	}
-
-	public function getListOfResponsibleEditorsForArticle($iArticleId) {
-		$oCurrentTitle = Title::newFromId($iArticleId);
 
 		$dbr = wfGetDB(DB_SLAVE);
 		$res = $dbr->select(
@@ -822,203 +748,260 @@ class ResponsibleEditors extends BsExtensionMW {
 			array('user_id', 'user_real_name')
 		);
 
-		$aListOfPossibleEditors = array();
-
-		foreach ($res as $row) {
-			$oEditorUser = User::newFromId($row->user_id);
-			$aPermissionErrors = $oCurrentTitle->getUserPermissionsErrors('responsibleeditors-takeresponsibility', $oEditorUser);
-			if (empty($aPermissionErrors)) {
-				$aListOfPossibleEditors[] =
-					array(
-						'user_id' => $oEditorUser->getId(),
-						'user_displayname' => $this->mCore->getUserDisplayName($oEditorUser)
-				);
+		foreach( $res as $row ) {
+			$oEditorUser = User::newFromId( $row->user_id );
+			$aPermissionErrors = $oTitle->getUserPermissionsErrors(
+				'responsibleeditors-takeresponsibility',
+				$oEditorUser
+			);
+			if( !empty($aPermissionErrors) ) {
+				continue;
 			}
+			$sDisplayName = empty( $row->user_real_name )
+				? $oEditorUser->getName()
+				: $row->user_real_name
+			;
+			$aListOfPossibleEditors[] = array(
+				'user_id' => $oEditorUser->getId(),
+				'user_displayname' => $sDisplayName
+			);
 		}
 
 		return $aListOfPossibleEditors;
 	}
 
-	public static function ajaxGetArticlesByNamespaceId() {
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) return true;
-		global $wgOut, $wgRequest;
-		$wgOut->disable();
-
-		$oParams = BsExtJSStoreParams::newFromRequest();
-
-		$iStart       = $wgRequest->getInt( 'start', 0 );
-		$sSort        = $oParams->getSort( 'page_title' );
-		$sDirection   = $oParams->getDirection( );
-		$iLimit       = $wgRequest->getInt( 'limit', 25 );
-		$sDisplayMode = $wgRequest->getVal( 'displayMode', 'only-assigned' );
-		$iNamespaceId = $wgRequest->getInt( 'namespaceId', -99 );
-
-		$aActivatedNamespaces = BsConfig::get('MW::ResponsibleEditors::ActivatedNamespaces');
-
-		$oResult = new stdClass();
-
-		$aTables     = array( 'bs_responsible_editors', 'user', 'page' );
-		$aVariables  = array( 'page_id', 'page_title', 'page_namespace' );
-		$aConditions = array( 'page_namespace' => $aActivatedNamespaces );
-
-		if ($sDisplayMode == 'only-assigned')
-			$aConditions[] = 're_user_id IS NOT NULL ';
-		else if ($sDisplayMode == 'only-not-assigned')
-			$aConditions[] = 're_user_id IS NULL ';
-		if ($iNamespaceId != -99)
-			$aConditions['page_namespace'] = $iNamespaceId;
-
-		$aOptions = array(
-			'ORDER BY' => $sSort . ' ' . $sDirection,
-			'LIMIT' => $iLimit,
-			'OFFSET' => $iStart,
-			'GROUP BY' => 'page_id'
+	/**
+	 * DEPRECATED
+	 * @deprecated since version 2.23.3
+	 * @param integer $iArticleId
+	 * @return array
+	 */
+	public function getListOfResponsibleEditorsForArticle( $iArticleId ) {
+		return self::getListOfPossibleResponsibleEditorsForArticle(
+			$iArticleId
 		);
-		if ($sSort == 'user_displayname') {
-			$aOptions['ORDER BY'] = 'user_real_name, user_name ' . $sDirection;
-		}
-		$aJoinOptions = array(
-			'user' => array('JOIN', 'user_id = re_user_id'),
-			'page' => array('RIGHT JOIN', 'page_id = re_page_id')
-		);
-
-		$dbr = wfGetDB(DB_SLAVE);
-
-		//TODO: Rework "total" calculation. This seems very complicated but it
-		//should be as easy as excuting the main query without LIMIT/OFFSET.
-		if ($sDisplayMode == 'only-assigned' || $sDisplayMode == 'only-not-assigned') {
-			$row = $dbr->select(
-				array('page', 'bs_responsible_editors'),
-				'page_id AS cnt',
-				$aConditions,
-				__METHOD__,
-				array('GROUP BY' => 'page_id'),
-				array('page' => array(
-					'RIGHT JOIN', 'page_id = re_page_id'
-				))
-			);
-			$oResult->total = $row->numRows();
-		}
-		if ($sDisplayMode == 'all') {
-			$aConditionsWithoutRePageID = $aConditions;
-			unset($aConditionsWithoutRePageID[0]);
-			$row = $dbr->selectRow(
-				'page', 'COUNT( page_id ) AS cnt', $aConditionsWithoutRePageID
-			);
-			$oResult->total = $row->cnt;
-		}
-
-		$res = $dbr->select(
-			$aTables,
-			$aVariables,
-			$aConditions,
-			__METHOD__,
-			$aOptions,
-			$aJoinOptions
-		);
-
-		$oResult->pages = array();
-		foreach ($res as $row) {
-			$oTitle = Title::newFromId($row->page_id);
-
-			$iPageId = $row->page_id;
-			$sPageNsId = (!empty($row->page_namespace) )
-				? $row->page_namespace
-				: 0;
-			$sPageTitle = $row->page_title;
-
-			$oPage = new stdClass();
-			$oPage->page_id = $iPageId;
-			$oPage->page_namespace = $sPageNsId;
-			$oPage->page_title = $sPageTitle;
-			$oPage->page_prefixedtext = $oTitle->getPrefixedText();
-			$oPage->users = array();
-
-			$aEditorIDs = BsExtensionManager::getExtension( 'ResponsibleEditors' )
-				->getResponsibleEditorIdsByArticleId($row->page_id);
-			$aEditorIDs = array_unique($aEditorIDs);
-
-			foreach ($aEditorIDs as $iEditorID) {
-				$oUser = User::newFromId($iEditorID);
-				if ($oUser == null) continue;
-
-				$oPage->users[] = array(
-					'user_id'            => $iEditorID,
-					'user_page_link_url' => $oUser->getUserPage()->getFullUrl(),
-					'user_displayname'   => BsCore::getUserDisplayName( $oUser )
-				);
-
-			}
-
-			$oResult->pages[] = $oPage;
-		}
-
-		return FormatJson::encode( $oResult );
 	}
 
-	//</editor-fold>
-
 	/**
+	 * DEPRECATED
 	 * Helper function. Fetches database and returns array of user_id's of
 	 * responsible editors of an article
+	 * @deprecated since version 2.23.3
 	 * @param Integer $iArticleId The page_id of the article you want to retrieve the responsible editors for.
 	 * @return Array user_ids of responsible editors for given article
 	 */
 	public function getResponsibleEditorIdsByArticleId( $iArticleId, $bForceReload = false ) {
-		if( isset(self::$aResponsibleEditorIdsByArticleId[$iArticleId]) && $bForceReload === false )
-			return self::$aResponsibleEditorIdsByArticleId[$iArticleId];
-
-		$this->getResponsibleEditorsByArticleId( $iArticleId, $bForceReload );
-
-		return self::$aResponsibleEditorIdsByArticleId[$iArticleId];
+		return static::getResponsibleEditorIds( $iArticleId, $bForceReload );
 	}
 
 	/**
+	 * DEPRECATED
 	 * Helper function. Fetches database and returns array of responsible editors of an article
+	 * @deprecated since version 2.23.3
 	 * @param Integer $iArticleId The page_id of the article you want to retrieve the responsible editors for.
 	 * @return Array user_ids of responsible editors for given article
 	 */
 	public function getResponsibleEditorsByArticleId( $iArticleId, $bForceReload = false ) {
-		if( isset(self::$aResponsibleEditorsByArticleId[$iArticleId]) && $bForceReload === false )
+		return static::getResponsibleEditors( $iArticleId, $bForceReload );
+	}
+
+	protected static function getResponsibleEditorsFromCache( $iArticleId ) {
+		if ( isset( self::$aResponsibleEditorsByArticleId[$iArticleId] ) ) {
 			return self::$aResponsibleEditorsByArticleId[$iArticleId];
-
-		$aResponsibleEditorIds = array();
-		$aResponsibleEditors = array();
-
-		$sKey = BsCacheHelper::getCacheKey( 'ResponsibleEditors', 'getResponsibleEditorsByArticleId', (int)$iArticleId );
-		$aData = BsCacheHelper::get( $sKey );
-
-		if( $aData !== false ) {
-			wfDebugLog( 'BsMemcached' , __CLASS__.': Fetching ResponsibleEditors from cache' );
-			self::$aResponsibleEditorIdsByArticleId[$iArticleId] = $aData['EditorIdsByArticleId'];
-			self::$aResponsibleEditorsByArticleId[$iArticleId] = $aData['EditorsByArticleId'];
-		} else {
-			wfDebugLog( 'BsMemcached' , __CLASS__.': Fetching ResponsibleEditors from DB' );
-			$dbr = wfGetDB(DB_SLAVE);
-			$res = $dbr->select(
-				'bs_responsible_editors',
-				'*',
-				array('re_page_id' => $iArticleId),
-				__METHOD__,
-				array('ORDER BY' => 're_position')
-			);
-
-
-			foreach ($res as $row) {
-				$row->re_user_id = (int)$row->re_user_id;
-				$aResponsibleEditorIds[] = $row->re_user_id;
-				$aResponsibleEditors[] = $row;
-			}
-
-			$aData = array();
-			$aData['EditorIdsByArticleId'] = $aResponsibleEditorIds;
-			$aData['EditorsByArticleId'] = $aResponsibleEditors;
-			BsCacheHelper::set( $sKey, $aData );
-
-			self::$aResponsibleEditorIdsByArticleId[$iArticleId] = $aResponsibleEditorIds;
-			self::$aResponsibleEditorsByArticleId[$iArticleId] = $aResponsibleEditors;
 		}
-		return $aResponsibleEditors;
+		$sKey = BsCacheHelper::getCacheKey(
+			'ResponsibleEditors',
+			'getResponsibleEditorsByArticleId',
+			(int)$iArticleId
+		);
+
+		if( $aData = BsCacheHelper::get( $sKey ) ) {
+			wfDebugLog(
+				'BsMemcached',
+				__CLASS__.': Fetching ResponsibleEditors from cache'
+			);
+		}
+		return $aData;
+	}
+
+	protected static function appendResponsibleEditorsCache( $iArticleId, $aRespEditors = array() ) {
+		$sKey = BsCacheHelper::getCacheKey(
+			'ResponsibleEditors',
+			'getResponsibleEditorsByArticleId',
+			(int) $iArticleId
+		);
+		BsCacheHelper::set( $sKey, $aRespEditors );
+		self::$aResponsibleEditorsByArticleId[$iArticleId] = $aRespEditors;
+
+		return $aRespEditors;
+	}
+
+	/**
+	 * Helper function. Fetches database and returns array of user_id's of
+	 * responsible editors of an article
+	 * @param Integer $iArticleId The page_id of the article you want to
+	 * retrieve the responsible editors for.
+	 * @return Array user_ids of responsible editors for given article
+	 */
+	public static function getResponsibleEditorIds( $iArticleId, $bForceReload = false ) {
+		$aRespEditors = static::getResponsibleEditors(
+			$iArticleId,
+			$bForceReload
+		);
+
+		if ( empty( $aRespEditors ) ) {
+			return $aRespEditors;
+		}
+		$aReturn = array();
+		foreach( $aRespEditors as $aRespEditor ) {
+			$aReturn[] = (int)$aRespEditor['re_user_id'];
+		}
+		return $aReturn;
+	}
+
+	/**
+	 * Helper function. Fetches database and returns array of responsible
+	 * editors of an article
+	 * @param Integer $iArticleId The page_id of the article you want to
+	 * retrieve the responsible editors for.
+	 * @return Array of responsible editors for given article
+	 */
+	public static function getResponsibleEditors( $iArticleId, $bForceReload = false ) {
+		if ( empty( $iArticleId ) ) {
+			return false;
+		}
+
+		if( !$bForceReload ) {
+			$aRespEditors = self::getResponsibleEditorsFromCache( $iArticleId );
+			if( $aRespEditors ) {
+				return $aRespEditors;
+			}
+		}
+		wfDebugLog(
+			'BsMemcached',
+			__CLASS__.': Fetching ResponsibleEditors from DB'
+		);
+
+		$oRes = wfGetDB( DB_SLAVE )->select(
+			'bs_responsible_editors',
+			'*',
+			array( 're_page_id' => $iArticleId ),
+			__METHOD__,
+			array( 'ORDER BY' => 're_position' )
+		);
+		if( !$oRes ) {
+			return array();
+		}
+
+		$aRespEditors = array();
+		foreach( $oRes as $row ) {
+			$row->re_user_id = (int) $row->re_user_id;
+			$aRespEditors[] = (array) $row;
+		}
+
+		return self::appendResponsibleEditorsCache(
+			$iArticleId,
+			$aRespEditors
+		);
+	}
+
+	/**
+	 * Sets responsible editors for a title
+	 * @param Title $oTitle
+	 * @param array $aEditors - Array of user ids
+	 * @return boolean
+	 */
+	public static function setResponsibleEditors( Title $oTitle, $aEditors = array() ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+		$res = $dbw->select(
+			'bs_responsible_editors',
+			're_user_id',
+			array( 're_page_id' => $oTitle->getArticleID() )
+		);
+
+		$aCurrentEditorIds = array();
+		foreach( $res as $row) {
+			$aCurrentEditorIds[] = $row->re_user_id;
+		}
+
+		$aRemovedEditorIds = array_diff( $aCurrentEditorIds, $aEditors );
+		$aNewEditorIds = array_diff( $aEditors, $aCurrentEditorIds );
+		$bAddWatchList = BsConfig::get(
+			'MW::ResponsibleEditors::AddArticleToREWatchLists'
+		);
+
+		if( !empty($aNewEditorIds) && $bAddWatchList ) {
+			foreach($aNewEditorIds as $iUserId) {
+				$oNewEditorUser = User::newFromId($iUserId);
+				if( !$oNewEditorUser->isWatched($oTitle) ) {
+					$oNewEditorUser->addWatch($oTitle);
+				}
+			}
+		}
+		//Remove all
+		$dbw->delete(
+			'bs_responsible_editors',
+			array(
+				're_page_id' => $oTitle->getArticleID()
+			)
+		);
+
+		//Add all --> to maintain position! As log as re_position field is not
+		//used properly...
+		$iPosition = 0;
+		foreach( $aEditors as $iEditor ) {
+			$dbw->insert(
+				'bs_responsible_editors',
+				array(
+					're_page_id' => $oTitle->getArticleID(),
+					're_user_id' => $iEditor,
+					're_position' => $iPosition
+				)
+			);
+			$iPosition++;
+		}
+
+		$dbw->commit();
+
+		$oUser = RequestContext::getMain()->getUser();
+
+		BSNotifications::notify(
+			'bs-responsible-editors-assign',
+			$oUser,
+			$oTitle,
+			array( 'affected-users' => $aNewEditorIds )
+		);
+		BSNotifications::notify(
+			'bs-responsible-editors-revoke',
+			$oUser,
+			$oTitle,
+			array( 'affected-users' => $aRemovedEditorIds )
+		);
+
+		foreach( $aNewEditorIds as $iNewEditorId ) {
+			$oEditor = User::newFromId( $iNewEditorId );
+			$oLogger = new ManualLogEntry( 'bs-responsible-editors', 'add' );
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+			$oLogger->setParameters( array(
+					'4::editor' => $oEditor->getName()
+			) );
+			$oLogger->insert();
+		}
+		foreach( $aRemovedEditorIds as $iRemovedEditorId ) {
+			$oEditor = User::newFromId( $iRemovedEditorId );
+			$oLogger = new ManualLogEntry( 'bs-responsible-editors', 'remove' );
+			$oLogger->setPerformer( $oUser );
+			$oLogger->setTarget( $oTitle );
+			$oLogger->setParameters( array(
+					'4::editor' => $oEditor->getName()
+			) );
+			$oLogger->insert();
+		}
+
+		ResponsibleEditors::invalidateCache( $oTitle->getArticleID() );
+		return true;
 	}
 
 	/**
@@ -1186,7 +1169,22 @@ class ResponsibleEditors extends BsExtensionMW {
 		return true;
 	}
 
-	public static function deleteResponsibleEditorsFromCache( $iArticleId ) {
-		BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'ResponsibleEditors', 'getResponsibleEditorsByArticleId', (int)$iArticleId ) );
+	public static function invalidateCache( $iArticleId ) {
+		if ( empty( $iArticleId ) ) {
+			return false;
+		}
+		$sKey = BsCacheHelper::getCacheKey(
+			'ResponsibleEditors',
+			'getResponsibleEditorsByArticleId',
+			(int) $iArticleId
+		);
+		if ( isset( self::$aResponsibleEditorsByArticleId[$iArticleId] ) ) {
+			unset( self::$aResponsibleEditorsByArticleId[$iArticleId] );
+		}
+		BsCacheHelper::invalidateCache( $sKey );
+		if ( $oTitle = Title::newFromID( $iArticleId ) ) {
+			$oTitle->invalidateCache();
+		}
+		return true;
 	}
 }
