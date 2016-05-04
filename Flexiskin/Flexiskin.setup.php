@@ -74,7 +74,9 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 		'bs-flexiskin-labelwidth',
 		'bs-flexiskin-labelfullwidth',
 		'bs-flexiskin-error-nameempty',
-		'bs-flexiskin-error-templatenotexists'
+		'bs-flexiskin-error-templatenotexists',
+		'bs-flexiskin-usebackground',
+		'bs-flexiskin-labelcurrentbackground'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']

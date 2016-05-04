@@ -84,7 +84,7 @@ class Flexiskin extends BsExtensionMW {
 	}
 
 	public function runPreferencePlugin( $sAdapterName, BsConfig $oVariable ) {
-		if (substr($oVariable->getKey(), 0, 13) != "MW::Flexiskin"){
+		if ( substr( $oVariable->getKey(), 0, 13 ) != "MW::Flexiskin" ){
 			return array();
 		}
 
@@ -92,21 +92,30 @@ class Flexiskin extends BsExtensionMW {
 			new DerivativeRequest(
 				$this->getRequest(),
 				array(
-					'action' => 'flexiskin',
-					'type' => 'get'
+					'action' => 'bs-flexiskin-store'
 				),
 				false
 			),
 			true
 		);
+
 		$oResult = $api->execute();
-		$aData = $api->getResultData();
+
+		$oData = $api->getResultData();
+		if ( $oData ) {
+			$aData = array();
+				foreach ( $oData['results'] as $aConf ) {
+				$aData[]=(object) $aConf;
+			}
+		}
+
 		$aResult = array( 'options' => array(
 				wfMessage( 'bs-flexiskin-defaultname' )->plain() => 'default',
 			) );
-		if ( isset( $aData['flexiskin'] ) && count( $aData['flexiskin'] ) > 0 ) {
-			foreach ( $aData['flexiskin'] as $aConf ) {
-				$aResult['options'][$aConf['flexiskin_name']] = $aConf['flexiskin_id'];
+
+		if ( isset( $aData ) && count( $aData ) > 0 ) {
+			foreach ( $aData as $aConf ) {
+				$aResult['options'][$aConf->flexiskin_name] = $aConf->flexiskin_id;
 			}
 		}
 		return $aResult;

@@ -60,5 +60,7 @@
 	"bs-flexiskin-api-error-invalid-action": "Diese Aktion existiert nicht.",
 	"bs-flexiskin-api-error-missing-param": "Der folgende Parameter fehlt: \"$1\"",
 	"bs-flexiskin-apihelp-task-param-skinId": "Der Parameter <var>skinId</var> identifiziert den Skin",
-	"bs-flexiskin-apihelp-task-param-name": "Der Parameter <var>name</var> ist der Dateiname der hochgeladenen Datei"
+	"bs-flexiskin-apihelp-task-param-name": "Der Parameter <var>name</var> ist der Dateiname der hochgeladenen Datei",
+	"bs-flexiskin-usebackground": "Hintergrundbild verwenden",
+	"bs-flexiskin-labelcurrentbackground": "Aktuelles Bild"
 }
