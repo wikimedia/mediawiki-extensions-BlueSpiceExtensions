@@ -7,6 +7,8 @@ $wgMessagesDirs['PageTemplates'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['PageTemplates'] = __DIR__ . '/languages/PageTemplates.i18n.php';
 
 $GLOBALS['wgAutoloadClasses']['PageTemplates'] = __DIR__ . '/PageTemplates.class.php';
+$GLOBALS['wgAutoloadClasses']['BSApiPageTemplatesStore'] = __DIR__ . '/includes/api/BSApiPageTemplatesStore.php';
+$GLOBALS['wgAutoloadClasses']['BSApiPageTemplatesTasks'] = __DIR__ . '/includes/api/BSApiPageTemplatesTasks.php';
 
 $wgResourceModules['ext.bluespice.pageTemplates'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/PageTemplates/resources/bluespice.pageTemplates.js',
@@ -31,9 +33,9 @@ $wgResourceModules['ext.bluespice.pageTemplates'] = array(
 );
 
 $wgAutoloadClasses['PageTemplatesAdmin'] = __DIR__ . '/PageTemplatesAdmin.class.php';
+$wgAPIModules['bs-pagetemplates-store'] = 'BSApiPageTemplatesStore';
+$wgAPIModules['bs-pagetemplates-tasks'] = 'BSApiPageTemplatesTasks';
 
-$wgAjaxExportList[] = 'PageTemplatesAdmin::getTemplates';
-$wgAjaxExportList[] = 'PageTemplatesAdmin::getNamespaces';
 $wgAjaxExportList[] = 'PageTemplatesAdmin::doEditTemplate';
 $wgAjaxExportList[] = 'PageTemplatesAdmin::doDeleteTemplate';
 $wgAjaxExportList[] = 'PageTemplatesAdmin::doDeleteTemplates';
