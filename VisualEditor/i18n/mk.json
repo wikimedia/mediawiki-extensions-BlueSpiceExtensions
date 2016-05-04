@@ -6,6 +6,7 @@
 	},
 	"bs-visualeditor-desc": "Визуелен уредник за МедијаВики",
 	"prefs-visualeditor": "Визуелен уредник",
+	"apihelp-bs-visualeditor-tasks-description": "Дава задачи за додатокот BlueSpice Visual Editor.",
 	"bs-visualeditor-editbutton-hint": "Визуелен уредник",
 	"bs-visualeditor-pref-disablens": "Оневозможи во именските простори:",
 	"bs-visualeditor-pref-use": "Користи WYSIWYG-уредник по основно",

@@ -76,5 +76,11 @@
 	"notification-bs-responsibleeditors-delete-body": "La page « $2 » à laquelle vous avez été affecté comme éditeur responsable a été {{GENDER:$1|supprimée}} par $1. Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $3",
 	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|a renommé}} $3 en $5",
 	"notification-bs-responsibleeditors-move-subject": "La page « $2 » a été {{GENDER:$1|déplacée}} par $1",
-	"notification-bs-responsibleeditors-move-body": "La page « $2 » à laquelle vous avez été affecté comme éditeur responsable a été {{GENDER:$1|déplacée}} en « $4 » par $1. Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $5"
+	"notification-bs-responsibleeditors-move-body": "La page « $2 » à laquelle vous avez été affecté comme éditeur responsable a été {{GENDER:$1|déplacée}} en « $4 » par $1. Après vous être connecté au wiki, vous pourrez ouvrir la page avec ce lien : $5",
+	"bs-responsibleeditors-pagestorefilter-assigned": "Affecté",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Non affecté",
+	"apihelp-bs-responsibleeditorspages-store": "Liste les pages et les éditeurs responsables associés",
+	"apihelp-bs-bs-responsibleeditors-tasks": "Permet la manipulation des éditeurs responsables",
+	"apihelp-bs-responsibleeditorsposibleeditors-store": "Liste les éditeurs responsables possibles",
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filtre les éditeurs responsables possibles par <var>articleId</var> obligatoire"
 }
