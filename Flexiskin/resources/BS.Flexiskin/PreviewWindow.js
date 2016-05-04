@@ -1,4 +1,4 @@
-Ext.define('BS.Flexiskin.PreviewWindow', {
+Ext.define( 'BS.Flexiskin.PreviewWindow', {
 	extend: 'Ext.window.Window',
 	layout: 'border',
 	maximized: true,
@@ -28,7 +28,7 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 			scope: this
 		});
 
-		this.pnlMenu = Ext.create("BS.Flexiskin.PreviewMenu", {
+		this.pnlMenu = Ext.create( "BS.Flexiskin.PreviewMenu", {
 			parent: this
 		});
 
@@ -37,7 +37,7 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 			this.cpIframe
 		];
 
-		this.on('show', this.onShow, this);
+		this.on( 'show', this.onShow, this );
 		//this.on('afterrender', this.onAfterRender, this);
 
 		this.callParent(arguments);
@@ -46,12 +46,12 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 	onShow: function() {
 		this.cpIframe.setLoading();
 		var me = this;
-		this.cpIframe.getEl().on('load', function() {
-			me.cpIframe.setLoading(false);
+		this.cpIframe.getEl().on( 'load', function() {
+			me.cpIframe.setLoading( false );
 		});
-		this.setWidth(Ext.getBody().getWidth());
+		this.setWidth( Ext.getBody().getWidth() );
 
-		this.callParent(arguments);
+		this.callParent( arguments );
 	},
 
 
@@ -59,17 +59,17 @@ Ext.define('BS.Flexiskin.PreviewWindow', {
 	setData: function( obj ) {
 		this.currentData = obj;
 		this.cpIframe.autoEl.src =
-				mw.util.wikiScript() +"?"+ $.param({
+				mw.util.wikiScript() +"?"+ $.param( {
 					flexiskin: this.currentData.skinId,
 					useskin: 'flexiskin'
-			});
+			} );
 		if( this.rendered ) {
 			this.cpIframe.autoEl.src =
-				mw.util.wikiScript() +"?"+ $.param({
+				mw.util.wikiScript() +"?"+ $.param( {
 					flexiskin: this.currentData.skinId,
 					useskin: 'flexiskin'
-			});
+			} );
 		}
-		this.pnlMenu.setData( obj);
+		this.pnlMenu.setData( obj );
 	}
 });

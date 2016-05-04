@@ -59,5 +59,7 @@
 	"bs-flexiskin-api-example-desc": "Description text for the example found via api.php.",
 	"bs-flexiskin-api-error-save": "Error message showing up when an error occurres while saving the flexiskin \\n*$1 the reason the saving didn't work",
 	"bs-flexiskin-api-error-invalid-action": "Error message that the given type/mode compination does not exist.",
-	"bs-flexiskin-api-error-missing-param": "A needed parameter is missing\\n*$1 is the parameter missing."
+	"bs-flexiskin-api-error-missing-param": "A needed parameter is missing\\n*$1 is the parameter missing.",
+	"bs-flexiskin-apihelp-task-param-skinId": "Describes the <var>skinId</var> parameter of the API module",
+	"bs-flexiskin-apihelp-task-param-name": "Describes the <var>name</var> parameter of the API module"
 }
