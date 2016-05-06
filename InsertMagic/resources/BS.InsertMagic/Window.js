@@ -121,8 +121,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-first').plain() }),
 				this.cmbType,
 				this.tagsGrid,
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-desc').plain(), style: 'padding-top: 10px' } ),
-				this.descPanel
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-second').plain() }),
+				this.syntaxTextArea
 			]
 		});
 
@@ -135,8 +135,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 				align: 'stretch'
 			},
 			items:[
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-second').plain() }),
-				this.syntaxTextArea
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-desc').plain(), style: 'padding-top: 10px' } ),
+				this.descPanel
 			]
 		});
 
