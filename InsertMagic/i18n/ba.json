@@ -6,7 +6,8 @@
 			"Азат Хәлилов",
 			"Аҡҡашҡа",
 			"З. ӘЙЛЕ",
-			"Айсар"
+			"Айсар",
+			"Ләйсән"
 		]
 	},
 	"bs-insertmagic-desc": "Тылсымлы һүҙҙәр һәм тегтар ҡуйыу мөмкинлеге биргән әңгәмә битен өҫтәй",
@@ -59,7 +60,7 @@
 	"bs-insertmagic-defaultsort": "Битте категоризациялауҙа (төрләндереүҙә) файҙаланылған, өндәшмәү буйынса категорияларҙы сортировкалау (төркөмләү) асҡысы.",
 	"bs-insertmagic-gallery": "<code>&lt;gallery&gt;</code> билдәһен файҙаланып, эскиздар галереяһын булдырыу.",
 	"bs-insertmagic-nowiki": "Вики-тамғалау булмаһын тип",
-	"bs-insertmagic-noinclude": "<code>&lt;noinclude&gt;</code> һәм <code>&lt;/noinclude&gt;</code> араһындағы бар нәмә эшкәртелә һәм күрһәтелә, тик битте турана-тура ҡарап сыҡҡанда, ул индерелмәй йә алмаштырылмай.",
+	"bs-insertmagic-noinclude": "Битте турана-тура ҡарап сыҡҡанда, <code>&lt;noinclude&gt;</code> һәм <code>&lt;/noinclude&gt;</code> араһындағы бар нәмә эшкәртелә һәм күрһәтелә, тик ул индерелмәй йә алмаштырылмай.",
 	"bs-insertmagic-includeonly": " <code>&lt;includeonly&gt;</code> — ҡапма-ҡаршы вариант",
 	"bs-insertmagic-dlg-title": "Тылсымлы һүҙҙе йәиһә билдәне ҡуйыу",
 	"bs-insertmagic-type-tags": "Тамға",

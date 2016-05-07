@@ -32,5 +32,7 @@
 	"bs-flexiskin-left": "sinistra",
 	"bs-flexiskin-right": "destra",
 	"bs-flexiskin-center": "centro",
-	"bs-flexiskin-labelfullwidth": "Larghezza massima"
+	"bs-flexiskin-labelfullwidth": "Larghezza massima",
+	"bs-flexiskin-apihelp-task-param-skinId": "Il parametro <var>skinId</var> identifica il tema",
+	"bs-flexiskin-apihelp-task-param-name": "Il parametro <var>name</var> è il nome del file caricato"
 }

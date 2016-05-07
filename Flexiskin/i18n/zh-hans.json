@@ -55,5 +55,7 @@
 	"bs-flexiskin-api-example-desc": "返回当前的Flexiskin配置。",
 	"bs-flexiskin-api-error-save": "尝试保存时出现错误。原因：“$1”",
 	"bs-flexiskin-api-error-invalid-action": "此操作不存在。",
-	"bs-flexiskin-api-error-missing-param": "以下参数丢失：“$1”"
+	"bs-flexiskin-api-error-missing-param": "以下参数丢失：“$1”",
+	"bs-flexiskin-apihelp-task-param-skinId": "参数<var>skinId</var>标识皮肤",
+	"bs-flexiskin-apihelp-task-param-name": "参数<var>name</var>是上传文件的文件名"
 }

@@ -58,5 +58,6 @@
 	"bs-flexiskin-api-example-desc": "Devuelve la configuración actual de un Flexiskin.",
 	"bs-flexiskin-api-error-save": "Se produjo un error al guardar. Motivo: «$1»",
 	"bs-flexiskin-api-error-invalid-action": "Esta acción no existe.",
-	"bs-flexiskin-api-error-missing-param": "Falta el parámetro siguiente: «$1»"
+	"bs-flexiskin-api-error-missing-param": "Falta el parámetro siguiente: «$1»",
+	"bs-flexiskin-apihelp-task-param-skinId": "El parámetro <var>skinId</var> identifica la apariencia"
 }
