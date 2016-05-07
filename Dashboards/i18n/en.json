@@ -13,5 +13,7 @@
 	"admindashboard": "Admin dashboard",
 	"userdashboard": "User dashboard",
 	"bs-dashboard-userportlet-calendar-title": "Calendar",
-	"bs-dashboard-userportlet-calendar-description": "Calendar"
+	"bs-dashboard-userportlet-calendar-description": "Calendar",
+	"apihelp-bs-dashboards-store-description": "Lists all available portlets",
+	"apihelp-bs-dashboards-tasks-description": "Saves dashboard configuration"
 }

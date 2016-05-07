@@ -11,18 +11,17 @@ $GLOBALS['wgAutoloadClasses']['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['SpecialAdminDashboard'] = __DIR__.'/includes/specials/SpecialAdminDashboard.php';
 $wgAutoloadClasses['SpecialUserDashboard'] = __DIR__.'/includes/specials/SpecialUserDashboard.php';
+$GLOBALS['wgAutoloadClasses']['BSApiDashboardTasks'] = __DIR__ . '/includes/api/BSApiDashboardTasks.php';
+$GLOBALS['wgAutoloadClasses']['BSApiDashboardStore'] = __DIR__ . '/includes/api/BSApiDashboardStore.php';
 
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';
 
-$wgAjaxExportList[] = 'Dashboards::saveAdminDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::saveUserDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::saveTagDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::getPortlets';
-$wgAjaxExportList[] = 'Dashboards::getAdminDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::getUserDashboardConfig';
+$wgAPIModules['bs-dashboards-tasks'] = 'BSApiDashboardTasks';
+$wgAPIModules['bs-dashboards-store'] = 'BSApiDashboardStore';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'Dashboards::getSchemaUpdates';
+$wgHooks['BSDashboardsUserDashboardPortalPortlets'][] = 'Dashboards::onBSDashboardsUserDashboardPortalPortlets';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP.'/extensions/BlueSpiceExtensions/Dashboards/resources',
@@ -69,6 +68,8 @@ $wgResourceModules['ext.bluespice.dashboards.userDashboard'] = array(
 		//Default portlets user
 		'bs-dashboard-userportlet-calendar-title',
 		'bs-dashboard-userportlet-calendar-description',
+		'bs-dashboard-userportlet-article-title',
+		'bs-dashboard-userportlet-article-description',
 	)
 ) + $aResourceModuleTemplate;
 
