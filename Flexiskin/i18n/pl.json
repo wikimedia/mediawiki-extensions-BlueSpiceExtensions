@@ -46,5 +46,7 @@
 	"bs-flexiskin-api-data-desc": "Tablica danych (opcjonalnie).",
 	"bs-flexiskin-api-error-save": "Wystąpił błąd podczas zapisywania. Powód: „$1”",
 	"bs-flexiskin-api-error-invalid-action": "Takie działanie nie istnieje",
-	"bs-flexiskin-api-error-missing-param": "Brakuje następującego parametru: „$1”"
+	"bs-flexiskin-api-error-missing-param": "Brakuje następującego parametru: „$1”",
+	"bs-flexiskin-apihelp-task-param-skinId": "Parametr <var>skinId</var> określa skórkę",
+	"bs-flexiskin-apihelp-task-param-name": "Parametr <var>name</var> jest nazwą przesyłanego pliku"
 }

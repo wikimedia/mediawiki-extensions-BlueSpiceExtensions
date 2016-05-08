@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"سامي الرحيلي"
+			"سامي الرحيلي",
+			"Maroen1990"
 		]
 	},
-	"bs-wikiadmin-shop": "متجر/دكان/محل"
+	"bs-wikiadmin-shop": "متجر/دكان/محل",
+	"bs-wikiadmin-widget-title": "إدارة"
 }

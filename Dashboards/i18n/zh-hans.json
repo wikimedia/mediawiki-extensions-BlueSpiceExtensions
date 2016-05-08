@@ -15,5 +15,7 @@
 	"admindashboard": "管理员控制面板",
 	"userdashboard": "用户仪表板",
 	"bs-dashboard-userportlet-calendar-title": "日历",
-	"bs-dashboard-userportlet-calendar-description": "日历"
+	"bs-dashboard-userportlet-calendar-description": "日历",
+	"apihelp-bs-dashboards-store-description": "列出所有可用门户组件",
+	"apihelp-bs-dashboards-tasks-description": "保存控制面板配置"
 }

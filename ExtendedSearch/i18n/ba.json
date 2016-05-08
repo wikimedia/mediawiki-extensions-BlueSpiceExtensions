@@ -3,7 +3,8 @@
 		"authors": [
 			"Sagan",
 			"Азат Хәлилов",
-			"З. ӘЙЛЕ"
+			"З. ӘЙЛЕ",
+			"Ләйсән"
 		]
 	},
 	"bs-extendedsearch-desc": "Эҙләүҙең алдынғы функциялары өсөн  Apache Solr (http://lucene.apache.org/solr/) эҙләүен ҡуйығыҙ",
@@ -100,5 +101,7 @@
 	"bs-extendedsearch-redirect": "Йүнәлтеү: $1-ҙән",
 	"bs-extendedsearch-totalnoofarticles": "Индекслау өсөн биттәр һаны: $1",
 	"bs-extendedsearch-more": "Тағы",
-	"bs-extendedsearch-fewer": "Әҙерәк"
+	"bs-extendedsearch-fewer": "Әҙерәк",
+	"bs-extendedsearch-facetsetting-op-and": "ҺӘМ",
+	"bs-extendedsearch-facetsetting-op-or": "ЙӘКИ"
 }

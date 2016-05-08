@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"bs-dashboards-desc": "Fournit des tableaux de bord aux utilisateurs et aux administrateurs",
@@ -13,5 +14,7 @@
 	"admindashboard": "Tableau de bord administrateur",
 	"userdashboard": "Tableau de bord utilisateur",
 	"bs-dashboard-userportlet-calendar-title": "Calendrier",
-	"bs-dashboard-userportlet-calendar-description": "Calendrier"
+	"bs-dashboard-userportlet-calendar-description": "Calendrier",
+	"apihelp-bs-dashboards-store-description": "Liste de tous les portlets",
+	"apihelp-bs-dashboards-tasks-description": "Enregistre la configuration du tableau de bord"
 }
