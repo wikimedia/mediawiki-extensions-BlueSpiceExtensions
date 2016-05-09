@@ -5,7 +5,8 @@
 			"Азат Хәлилов",
 			"Айбикә",
 			"Аҡҡашҡа",
-			"З. ӘЙЛЕ"
+			"З. ӘЙЛЕ",
+			"Ilmira"
 		]
 	},
 	"bs-responsibleeditors-desc": "MediaWiki-ға биттәрҙең яуаплы мөхәррирҙәре менән идара итергә мөмкинлек бирә",
@@ -65,5 +66,6 @@
 	"notification-bs-responsibleeditors-change-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}} $3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин",
 	"notification-bs-responsibleeditors-delete-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}} $3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин: $3.",
 	"notification-bs-responsibleeditors-move-subject": "\"$1\"  {{GENDER:$2|күсерелгән}}$3",
-	"notification-bs-responsibleeditors-move-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}}$3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин: $4 $5"
+	"notification-bs-responsibleeditors-move-body": "Һеҙ яуаплы мөхәррир итеп тәғәйенләнгән \"$1\" бите {{GENDER:$2|алынған}}$3. Викиға ингәс, һеҙгә битте артабанғы һылтанма буйынса асырға мөмкин: $4 $5",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Билдәләнмәгән"
 }
