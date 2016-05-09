@@ -309,16 +309,27 @@ class Blog extends BsExtensionMW {
 			'id' => 'bs:blog',
 			'type' => 'tag',
 			'name' => 'blog',
-			'desc' => wfMessage( 'bs-blog-tag-blog-desc' )->plain(),
-			'code' => '<bs:blog />',
+			'desc' => wfMessage( 'bs-blog-tag-blog-desc' )->text(),
+			'code' => '<bs:blog count="5" cat="Wiki" newentryfieldposition="bottom" />',
+			'helplink' => 'https://help.bluespice.com/index.php/Blog'
+		);
+
+		$oResponse->result[] = array(
+			'id' => 'bs:blog:more',
+			'type' => 'tag',
+			'name' => 'blogmore',
+			'desc' => wfMessage( 'bs-blog-tag-blogmore-desc' )->text(),
+			'code' => '<bs:blog:more />',
+			'helplink' => 'https://help.bluespice.com/index.php/Blog'
 		);
 
 		$oResponse->result[] = array(
 			'id' => 'bs:blog:time',
 			'type' => 'tag',
 			'name' => 'blogtime',
-			'desc' => wfMessage( 'bs-blog-tag-blogtime-desc' )->plain(),
-			'code' => '<bs:blog:time />',
+			'desc' => wfMessage( 'bs-blog-tag-blogtime-desc' )->text(),
+			'code' => '<bs:blog:time time="201503161200" />',
+			'helplink' => 'https://help.bluespice.com/index.php/Blog'
 		);
 
 		return true;
