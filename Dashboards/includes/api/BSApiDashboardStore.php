@@ -40,16 +40,24 @@ class BSApiDashboardStore extends BSApiExtJSStoreBase {
 
 		$aReturnArray = array_merge( $aReturnArray, $aPortlets );
 
-		return $aReturnArray;
+		// make sure to return objects, not arrays
+		$aReturnObjects = array();
+		foreach ( $aReturnArray as $aReturn ) {
+			$aReturnObjects[] = (object)$aReturn;
+		}
+
+		return $aReturnObjects;
 	}
 
 	public function filterCallback( $aDataSet ) {
-		$oFilter = $this->getParameter( 'filter' );
+		$aFilter = $this->getParameter( 'filter' );
 
-		if( $oFilter->type == 'group' ) {
-			$bFilterApplies = $this->filterGroup( $oFilter, $aDataSet );
-			if( !$bFilterApplies ) {
-				return false;
+		foreach ( $aFilter as $oFilter ) {
+			if( $oFilter->type == 'group' ) {
+				$bFilterApplies = $this->filterGroup( $oFilter, $aDataSet );
+				if( !$bFilterApplies ) {
+					return false;
+				}
 			}
 		}
 
@@ -60,10 +68,10 @@ class BSApiDashboardStore extends BSApiExtJSStoreBase {
 		if( !is_string( $oFilter->value ) ) {
 			return true; //TODO: Warning
 		}
-		$sFieldValue = $aDataSet['groups'];
+		$sFieldValue = $aDataSet->groups;
 		$sFilterValue = $oFilter->value;
 
-		return in_array( $oFilter->value,  $aDataSet['groups'] );
+		return in_array( $oFilter->value,  $aDataSet->groups );
 	}
 
 }

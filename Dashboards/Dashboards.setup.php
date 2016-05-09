@@ -13,12 +13,14 @@ $wgAutoloadClasses['SpecialAdminDashboard'] = __DIR__.'/includes/specials/Specia
 $wgAutoloadClasses['SpecialUserDashboard'] = __DIR__.'/includes/specials/SpecialUserDashboard.php';
 $GLOBALS['wgAutoloadClasses']['BSApiDashboardTasks'] = __DIR__ . '/includes/api/BSApiDashboardTasks.php';
 $GLOBALS['wgAutoloadClasses']['BSApiDashboardStore'] = __DIR__ . '/includes/api/BSApiDashboardStore.php';
+$GLOBALS['wgAutoloadClasses']['BSApiDashboardWidgetsTasks'] = __DIR__ . '/includes/api/BSApiDashboardWidgetsTasks.php';
 
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';
 
 $wgAPIModules['bs-dashboards-tasks'] = 'BSApiDashboardTasks';
 $wgAPIModules['bs-dashboards-store'] = 'BSApiDashboardStore';
+$wgAPIModules['bs-dashboards-widgets-tasks'] = 'BSApiDashboardWidgetsTasks';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'Dashboards::getSchemaUpdates';
 $wgHooks['BSDashboardsUserDashboardPortalPortlets'][] = 'Dashboards::onBSDashboardsUserDashboardPortalPortlets';
@@ -50,7 +52,8 @@ $wgResourceModules['ext.bluespice.dashboards.portletCatalog'] = array(
 	'messages' => array(
 		'bs-dashboards-addportlet',
 		'bs-dashboards-portlets',
-		'bs-extjs-rssfeeder-rss-title'
+		'bs-extjs-rssfeeder-rss-title',
+		'bs-dashboard-userportlet-wikipage-wiki-article'
 	)
 ) + $aResourceModuleTemplate;
 

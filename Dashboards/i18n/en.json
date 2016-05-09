@@ -14,6 +14,11 @@
 	"userdashboard": "User dashboard",
 	"bs-dashboard-userportlet-calendar-title": "Calendar",
 	"bs-dashboard-userportlet-calendar-description": "Calendar",
+	"bs-dashboard-userportlet-wikipage-title": "WikiPage",
+	"bs-dashboard-userportlet-wikipage-description": "Use a wiki page to define the widget",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Wiki page",
+	"apihelp-bs-dashboard-task-param-dc": "Cache control parameter. Used by ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Lists all available portlets",
-	"apihelp-bs-dashboards-tasks-description": "Saves dashboard configuration"
+	"apihelp-bs-dashboards-tasks-description": "Saves dashboard configuration",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Returns content for some dashboard widgets"
 }

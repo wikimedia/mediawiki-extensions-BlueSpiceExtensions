@@ -16,7 +16,12 @@
 	"admindashboard": "Special page name for admin dashboard.\n\n\"admin\" is short for administrator.\n\nSee also:\n* {{msg-mw|Userdashboard}}",
 	"userdashboard": "Special page name for user dashboard.\n\nSee also:\n* {{msg-mw|Admindashboard}}",
 	"bs-dashboard-userportlet-calendar-title": "Portlet title for calendar\n{{Identical|Calendar}}",
-	"bs-dashboard-userportlet-calendar-description": "portlet description for calendar\n{{Identical|Calendar}}",
+	"bs-dashboard-userportlet-calendar-description": "Portlet description for calendar\n{{Identical|Calendar}}",
+	"bs-dashboard-userportlet-wikipage-title": "Portlet title for wikipage widget",
+	"bs-dashboard-userportlet-wikipage-description": "Portlet description for wikipage widget",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Label for wiki article parameter used in config dialog",
+	"apihelp-bs-dashboard-task-param-dc": "Label for cache control parameter in api call",
 	"apihelp-bs-dashboards-store-description": "Describes the API endpoint that lists available portlets",
-	"apihelp-bs-dashboards-tasks-description": "Describes the API endpoint that saves dashboard configuration"
+	"apihelp-bs-dashboards-tasks-description": "Describes the API endpoint that saves dashboard configuration",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Describes the API endpoint that returns content for some dashboard widgets"
 }

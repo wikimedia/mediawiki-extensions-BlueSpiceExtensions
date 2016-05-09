@@ -11,12 +11,12 @@ Ext.define( 'BS.Dashboards.PortletCatalog', {
 				proxy: {
 					type: 'ajax',
 					url: bs.api.makeUrl( 'bs-dashboards-store', {
-						"filter": JSON.stringify({
+						"filter": JSON.stringify([{
 							"type": "group",
 							"comparison": "eq",
 							"value": mw.config.get( 'bsPortalConfigLocation' ),
 							"field": "group"
-						})
+						}])
 					}),
 					reader: {
 						type: 'json',

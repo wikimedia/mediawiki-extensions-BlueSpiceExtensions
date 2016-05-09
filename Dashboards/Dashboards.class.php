@@ -211,6 +211,12 @@ class Dashboards extends BsExtensionMW {
 				'title' => wfMessage( 'bs-dashboard-userportlet-calendar-title' )->plain()
 			)
 		);
+		$aPortalConfig[0][] = array(
+			'type'  => 'BS.Dashboards.WikiPagePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-dashboard-userportlet-wikipage-title' )->plain()
+			)
+		);
 		return true;
 	}
 
@@ -228,6 +234,14 @@ class Dashboards extends BsExtensionMW {
 			),
 			'title' => wfMessage( 'bs-dashboard-userportlet-calendar-title' )->plain(),
 			'description' => wfMessage( 'bs-dashboard-userportlet-calendar-description' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.Dashboards.WikiPagePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-dashboard-userportlet-wikipage-title' )->plain(),
+			),
+			'title' => wfMessage( 'bs-dashboard-userportlet-wikipage-title' )->plain(),
+			'description' => wfMessage( 'bs-dashboard-userportlet-wikipage-description' )->plain()
 		);
 		return true;
 	}
