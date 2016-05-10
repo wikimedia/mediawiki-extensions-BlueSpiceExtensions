@@ -239,7 +239,9 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 			);
 		}
 
-		$oReturn->success = wfGetDB( DB_MASTER )->insert(
+		$oDB = wfGetDB( DB_MASTER );
+		$oReturn->payload = array( 'sb_id' => 0 );
+		$oReturn->success = $oDB->insert(
 			'bs_shoutbox',
 			array(
 				'sb_page_id' => $iArticleId,
@@ -251,6 +253,9 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 			)
 		);
 
+		if( $oReturn->success ) {
+			$oReturn->payload['sb_id'] = $oDB->insertId();
+		}
 		$b = wfRunHooks( 'BSShoutBoxAfterInsertShout', array(
 			$iArticleId,
 			$this->getUser()->getId(),
