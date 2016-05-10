@@ -294,8 +294,18 @@ class UserManager extends BsExtensionMW {
 			$oUser->removeGroup( $sGroup );
 		}
 
+		$oStatus = Status::newGood( $oUser );
+		Hooks::run( 'BSUserManagerAfterSetGroups', array(
+			$oUser,
+			$aGroups,
+			$aSetGroups,
+			$aRemoveGroups,
+			self::$excludegroups,
+			&$oStatus
+		));
+
 		$oUser->invalidateCache();
-		return Status::newGood();
+		return $oStatus;
 	}
 
 	public function getForm( $firsttime = false ) {
