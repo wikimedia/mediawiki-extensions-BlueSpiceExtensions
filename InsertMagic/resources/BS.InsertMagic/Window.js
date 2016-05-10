@@ -37,7 +37,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 
 		this.tagsStore = Ext.create( 'BS.store.BSApi', {
 			apiAction: 'bs-insertmagic-data-store',
-			fields: ['id', 'type', 'name', 'desc', 'code' ],
+			fields: ['id', 'type', 'name', 'desc', 'code', 'helplink' ],
 			submitValue: false,
 			remoteSort: false,
 			remoteFilter: false,
@@ -173,7 +173,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 	onRowSelect: function( grid, record, index, eOpts ) {
 		var data = {
 			desc : record.get( 'desc' ),
-			type : record.get( 'type' )
+			type : record.get( 'type' ),
+			helplink : record.get( 'helplink' )
 		};
 		this.currentData.type = data.type;
 		this.currentData.name = record.get( 'name' );
@@ -182,7 +183,15 @@ Ext.define( 'BS.InsertMagic.Window', {
 	},
 
 	setCommonFields: function( text, data ) {
-		this.descPanel.update(data.desc);
+		var desc = data.desc;
+		if ( typeof(data.helplink) !== "undefined" && data.helplink != '' ) {
+			desc = desc
+					+ '<br/><br/>'
+					+ mw.message( 'bs-insertmagic-label-see-also' ).plain()
+					+ '<br/>'
+					+ $( '<a>', { href: data.helplink, text: data.helplink } ).wrap( '<div/>' ).parent().html();
+		}
+		this.descPanel.update( desc );
 		this.syntaxTextArea.setValue( text );
 		this.syntaxTextArea.focus();
 

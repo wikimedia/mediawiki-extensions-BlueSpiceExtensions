@@ -64,5 +64,6 @@
 	"bs-insertmagic-type-switches": "Behavior switches",
 	"bs-insertmagic-label-first": "1. Choose tag or magic word",
 	"bs-insertmagic-label-second": "2. Modify code",
-	"bs-insertmagic-label-desc": "Description"
+	"bs-insertmagic-label-desc": "Description",
+	"bs-insertmagic-label-see-also": "See also:"
 }
