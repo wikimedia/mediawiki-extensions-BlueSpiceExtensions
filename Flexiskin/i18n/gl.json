@@ -30,7 +30,7 @@
 	"bs-flexiskin-labelbgcolor": "Cor de fondo",
 	"bs-flexiskin-headerheader": "Cabeceira",
 	"bs-flexiskin-labellogoupload": "Logo",
-	"bs-flexiskin-labelbackgroundupload": "Imaxe de fondo",
+	"bs-flexiskin-labelbackgroundupload": "Imaxe actual",
 	"bs-flexiskin-no-repeat": "non repetir",
 	"bs-flexiskin-repeat-x": "repetición horizontal",
 	"bs-flexiskin-repeat-y": "repetición vertical",
@@ -58,5 +58,7 @@
 	"bs-flexiskin-api-error-invalid-action": "Esta acción non existe.",
 	"bs-flexiskin-api-error-missing-param": "Falta o seguinte parámetro: \"$1\"",
 	"bs-flexiskin-apihelp-task-param-skinId": "O parámetro <var>skinId</var> identifica a aparencia",
-	"bs-flexiskin-apihelp-task-param-name": "O parámetro <var>name</var> é nome do ficheiro subido"
+	"bs-flexiskin-apihelp-task-param-name": "O parámetro <var>name</var> é nome do ficheiro subido",
+	"bs-flexiskin-usebackground": "Usar a imaxe de fondo",
+	"bs-flexiskin-labelcurrentbackground": "Imaxe actual"
 }

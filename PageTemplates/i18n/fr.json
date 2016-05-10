@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"bs-pagetemplates-desc": "Affiche une liste de modèles marqué comme modèles de page",
 	"prefs-pagetemplates": "Modèles de page",
+	"apihelp-bs-pagetemplates-store": "Fournit une liste de modèles disponibles.",
+	"apihelp-bs-pagetemplates-tasks": "Fournit les tâches de création, mise à jour et suppression pour les modèles.",
 	"bs-pagetemplates-empty-page": "Page vide",
 	"bs-pagetemplates-empty-page-desc": "Commencer avec une page vide.",
 	"bs-pagetemplatesadmin-label": "Modèles de page",

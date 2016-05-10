@@ -65,5 +65,6 @@
 	"bs-insertmagic-type-switches": "Schalter",
 	"bs-insertmagic-label-first": "1. Wähle ein magisches Wort",
 	"bs-insertmagic-label-second": "2. Geben Sie den Text ein",
-	"bs-insertmagic-label-desc": "Kurzbeschreibung"
+	"bs-insertmagic-label-desc": "Kurzbeschreibung",
+	"bs-insertmagic-label-see-also": "Siehe auch:"
 }

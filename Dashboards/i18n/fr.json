@@ -15,6 +15,11 @@
 	"userdashboard": "Tableau de bord utilisateur",
 	"bs-dashboard-userportlet-calendar-title": "Calendrier",
 	"bs-dashboard-userportlet-calendar-description": "Calendrier",
+	"bs-dashboard-userportlet-wikipage-title": "WikiPage",
+	"bs-dashboard-userportlet-wikipage-description": "Utiliser une page wiki pour définir le widget",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Page wiki",
+	"apihelp-bs-dashboard-task-param-dc": "Paramètre de contrôle du cache. Utilisé par ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Liste de tous les portlets",
-	"apihelp-bs-dashboards-tasks-description": "Enregistre la configuration du tableau de bord"
+	"apihelp-bs-dashboards-tasks-description": "Enregistre la configuration du tableau de bord",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Renvoie le contenu pour certains widgets du tableau de bord."
 }

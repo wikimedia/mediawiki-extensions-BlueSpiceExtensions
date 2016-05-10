@@ -33,7 +33,7 @@
 	"bs-flexiskin-labelbgcolor": "Couleur de fond",
 	"bs-flexiskin-headerheader": "Titre",
 	"bs-flexiskin-labellogoupload": "Logo",
-	"bs-flexiskin-labelbackgroundupload": "Image de fond",
+	"bs-flexiskin-labelbackgroundupload": "Image actuelle",
 	"bs-flexiskin-no-repeat": "sans répétition",
 	"bs-flexiskin-repeat-x": "répétition horizontale",
 	"bs-flexiskin-repeat-y": "répétition verticale",
@@ -61,5 +61,7 @@
 	"bs-flexiskin-api-error-invalid-action": "Cette action n'existe pas.",
 	"bs-flexiskin-api-error-missing-param": "Le paramètre suivant est manquant: \"$1\"",
 	"bs-flexiskin-apihelp-task-param-skinId": "Le paramètre <var>skinId</var> identifie l'habillage",
-	"bs-flexiskin-apihelp-task-param-name": "Le paramètre <var>name</var> est le nom du fichier téléversé"
+	"bs-flexiskin-apihelp-task-param-name": "Le paramètre <var>name</var> est le nom du fichier téléversé",
+	"bs-flexiskin-usebackground": "Utiliser l’image de fond",
+	"bs-flexiskin-labelcurrentbackground": "Image actuelle"
 }

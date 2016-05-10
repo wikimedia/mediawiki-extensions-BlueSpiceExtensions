@@ -13,5 +13,6 @@
 	"bs-checklist-dlg-new-title": "Dodaj nową listę",
 	"bs-checklist-dlg-new-prompt": "Wprowadź tytuł listy",
 	"bs-checklist-alert": "Uwaga!",
-	"bs-checklist-confirm-dirty-title": "Niezapisane zmiany!"
+	"bs-checklist-confirm-dirty-title": "Niezapisane zmiany!",
+	"bs-checklist-savelist-error-invalid-title": "Podano nieprawidłowy tytuł"
 }
