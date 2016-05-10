@@ -1,4 +1,7 @@
 <?php
+// This class only exists for legacy reasons and may be removed in a future
+// version. It maps API calls to the old flexiskin API to the new
+// bs-flexiskin-store.
 class FlexiskinApi extends ApiBase {
 
 	/**
@@ -6,15 +9,18 @@ class FlexiskinApi extends ApiBase {
 	 * @return boolean
 	 */
 	public function execute() {
+		wfDeprecated( __METHOD__, '2.23.3' );
 		$aParams = $this->extractRequestParams();
 		$sType = isset( $aParams['type'] ) ? $aParams['type'] : "get";
 		$sMode = isset( $aParams['mode'] ) ? $aParams['mode'] : "flexiskin";
 
-		$sAction = $sType . ucfirst( $sMode );
-		if ( !method_exists( $this, $sAction ) ) {
+		if ( $sType == "get" && $sMode == "flexiskin" ) {
+			$aResult = "bs-flexiskin-store";
+		}
+		else {
 			$this->dieUsageMsg( array( 'bs-flexiskin-api-error-invalid-action' ) );
 		}
-		$aResult = $this->$sAction();
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $aResult );
 
 		//tbd: check result, maybe return false sometimes

@@ -60,6 +60,22 @@ Ext.define( 'BS.Flexiskin.Menuitems.General', {
 			if ( isOk )
 				me.parent.onItemStateChange();
 		});
+		this.cbUseBackground = Ext.create('Ext.form.field.Checkbox', {
+			fieldLabel: mw.message('bs-flexiskin-usebackground').plain(),
+			labelWidth: 100,
+			labelAlign: 'left',
+			name: 'useBackground',
+			handler: this.onCbUseBackgroundChange,
+			scope: this
+		});
+		this.tfUseBackground = Ext.create( 'Ext.form.TextField', {
+			fieldLabel: mw.message( 'bs-flexiskin-labelcurrentbackground' ).plain(),
+			labelWidth: 100,
+			labelAlign: 'left',
+			name: 'currentBackgroundImage',
+			allowBlank: true,
+			readOnly: true
+		});
 		this.ufBackgroundUpload = Ext.create( 'BS.form.UploadPanel', {
 			url: mw.util.wikiScript( 'api' ),
 			uploadFormName: 'background',
@@ -99,6 +115,8 @@ Ext.define( 'BS.Flexiskin.Menuitems.General', {
 			this.tfDesc,
 			this.coBackgroundColorContainer,
 			this.tfCustomBackgroundColor,
+			this.cbUseBackground,
+			this.tfUseBackground,
 			this.ufBackgroundUpload,
 			this.cgRepeatBackground
 		];
@@ -141,15 +159,36 @@ Ext.define( 'BS.Flexiskin.Menuitems.General', {
 		this.parent.onItemStateChange();
 		this.ufBackgroundUpload.btnReset.disable();
 	},
-
+	onCbUseBackgroundChange: function( sender, checked ) {
+		if( checked ) {
+			this.ufBackgroundUpload.enable();
+		}
+		else {
+			this.ufBackgroundUpload.disable();
+		}
+		this.parent.onItemStateChange();
+	},
 	getData: function() {
+		var background;
+		if ( this.cbUseBackground.getValue() === false ) {
+			this.ufBackgroundUpload.disable();
+			this.tfUseBackground.setValue( "" );
+			this.tfUseBackground.disable();
+			background = "none";
+		}
+		else {
+			background = Ext.getCmp('bs-extjs-uploadCombo-background-hidden-field').getValue();
+			this.tfUseBackground.setValue( background );
+			this.tfUseBackground.enable();
+		}
+
 		var data = {
 			id: 'general',
 			name: this.tfName.getValue(),
 			desc: this.tfDesc.getValue(),
 			backgroundColor: this.pfBackgroundColor.getValue(),
 			customBackgroundColor: this.tfCustomBackgroundColor.getValue().replace( "#", "" ),
-			backgroundImage: Ext.getCmp( 'bs-extjs-uploadCombo-background-hidden-field' ).getValue(),
+			backgroundImage: background,
 			repeatBackground: this.cgRepeatBackground.getValue()
 		};
 		return data;
@@ -164,7 +203,15 @@ Ext.define( 'BS.Flexiskin.Menuitems.General', {
 		if ( typeof ( data.config.backgroundImage ) !== 'undefined' && data.config.backgroundImage !== "" ) {
 			this.ufBackgroundUpload.btnReset.enable();
 		}
-		Ext.getCmp( 'bs-extjs-uploadCombo-background-hidden-field' ).setValue( data.config.backgroundImage );
+		if ( typeof ( data.config.backgroundImage ) !== 'undefined' && data.config.backgroundImage === "none" ) {
+			this.cbUseBackground.setValue( false );
+			this.ufBackgroundUpload.disable();
+		}
+		if ( typeof ( data.config.backgroundImage ) !== 'undefined' && data.config.backgroundImage !== "none" ) {
+			this.cbUseBackground.setValue( true );
+			Ext.getCmp( 'bs-extjs-uploadCombo-background-hidden-field' ).setValue( data.config.backgroundImage );
+		}
+
 	},
 	setColor: function( el, clr ) {
 		if( typeof clr == "undefined" || clr == null ) return;

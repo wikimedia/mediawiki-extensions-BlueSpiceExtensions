@@ -33,7 +33,7 @@
 	"bs-flexiskin-labelbgcolor": "Label for background color\\n{{Identical|Background color}}",
 	"bs-flexiskin-headerheader": "Column headline for header\\n{{Identical|Header}}",
 	"bs-flexiskin-labellogoupload": "Label for logo\\n{{Identical|Logo}}",
-	"bs-flexiskin-labelbackgroundupload": "Label for background image\\n{{Identical|Background image}}",
+	"bs-flexiskin-labelbackgroundupload": "Label for background image",
 	"bs-flexiskin-no-repeat": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for no repeat",
 	"bs-flexiskin-repeat-x": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for horizontal repeat",
 	"bs-flexiskin-repeat-y": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Flexiskin}} Special:WikiAdmin?mode=Flexiskin], option label for vertical repeat",
@@ -61,5 +61,7 @@
 	"bs-flexiskin-api-error-invalid-action": "Error message that the given type/mode compination does not exist.",
 	"bs-flexiskin-api-error-missing-param": "A needed parameter is missing\\n*$1 is the parameter missing.",
 	"bs-flexiskin-apihelp-task-param-skinId": "Describes the <var>skinId</var> parameter of the API module",
-	"bs-flexiskin-apihelp-task-param-name": "Describes the <var>name</var> parameter of the API module"
+	"bs-flexiskin-apihelp-task-param-name": "Describes the <var>name</var> parameter of the API module",
+	"bs-flexiskin-usebackground": "Label for checkbox to use background image",
+	"bs-flexiskin-labelcurrentbackground": "Label for textbox with current background filename"
 }
