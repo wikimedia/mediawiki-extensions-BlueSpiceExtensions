@@ -9,6 +9,7 @@
 	},
 	"bs-pagetemplates-desc": "Visar en lista över mallar markerade som sidmallar",
 	"prefs-pagetemplates": "Sidmallar",
+	"apihelp-bs-pagetemplates-store": "Tillhandahåller en lista över tillgängliga mallar.",
 	"bs-pagetemplates-empty-page": "Tom sida",
 	"bs-pagetemplates-empty-page-desc": "Börja med en tom sida.",
 	"bs-pagetemplatesadmin-label": "Sidmallar",

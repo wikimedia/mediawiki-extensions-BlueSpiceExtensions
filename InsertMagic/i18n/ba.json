@@ -7,7 +7,8 @@
 			"Аҡҡашҡа",
 			"З. ӘЙЛЕ",
 			"Айсар",
-			"Ләйсән"
+			"Ләйсән",
+			"Lizalizaufa"
 		]
 	},
 	"bs-insertmagic-desc": "Тылсымлы һүҙҙәр һәм тегтар ҡуйыу мөмкинлеге биргән әңгәмә битен өҫтәй",
@@ -68,5 +69,6 @@
 	"bs-insertmagic-type-switches": "Холоҡтоң йүнәлешен үҙгәрткес",
 	"bs-insertmagic-label-first": "1. Билдәне йәиһә тылсымлы һүҙҙе һайлағыҙ",
 	"bs-insertmagic-label-second": "2.Кодты үҙгәртеү",
-	"bs-insertmagic-label-desc": "Тасуирлама"
+	"bs-insertmagic-label-desc": "Тасуирлама",
+	"bs-insertmagic-label-see-also": "Шулай уҡ ҡара:"
 }

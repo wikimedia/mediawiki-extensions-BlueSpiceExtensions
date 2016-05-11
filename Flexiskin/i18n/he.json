@@ -4,5 +4,8 @@
 			"Guycn2"
 		]
 	},
-	"bs-flexiskin-apihelp-task-param-name": "הפרמטר <var>name</var> הוא השם של הקובץ שהועלה"
+	"bs-flexiskin-labelbackgroundupload": "התמונה הנוכחית",
+	"bs-flexiskin-apihelp-task-param-name": "הפרמטר <var>name</var> הוא השם של הקובץ שהועלה",
+	"bs-flexiskin-usebackground": "שימוש בתמונת רקע",
+	"bs-flexiskin-labelcurrentbackground": "התמונה הנוכחית"
 }

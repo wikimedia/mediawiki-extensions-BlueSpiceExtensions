@@ -30,7 +30,7 @@
 	"bs-flexiskin-labelbgcolor": "Bakgrundsfärg",
 	"bs-flexiskin-headerheader": "Rubrik",
 	"bs-flexiskin-labellogoupload": "Logotyp",
-	"bs-flexiskin-labelbackgroundupload": "Bakgrundsbild",
+	"bs-flexiskin-labelbackgroundupload": "Aktuell bild",
 	"bs-flexiskin-no-repeat": "ingen upprepning",
 	"bs-flexiskin-repeat-x": "horisontell upprepning",
 	"bs-flexiskin-repeat-y": "vertikala upprepning",
@@ -53,5 +53,7 @@
 	"bs-flexiskin-api-data-desc": "En dataarray (valfritt).",
 	"bs-flexiskin-api-error-save": "Ett fel uppstod när detta skulle sparas. Anledning: \"$1\"",
 	"bs-flexiskin-api-error-invalid-action": "Denna handling finns inte.",
-	"bs-flexiskin-api-error-missing-param": "Följande parameter saknas: \"$1\""
+	"bs-flexiskin-api-error-missing-param": "Följande parameter saknas: \"$1\"",
+	"bs-flexiskin-usebackground": "Använd bakgrundsbild",
+	"bs-flexiskin-labelcurrentbackground": "Aktuell bild"
 }

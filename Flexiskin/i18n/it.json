@@ -19,7 +19,7 @@
 	"bs-flexiskin-labelbgcolor": "Colore di sfondo",
 	"bs-flexiskin-headerheader": "Intestazione",
 	"bs-flexiskin-labellogoupload": "Logo",
-	"bs-flexiskin-labelbackgroundupload": "Immagine di sfondo",
+	"bs-flexiskin-labelbackgroundupload": "Immagine attuale",
 	"bs-flexiskin-no-repeat": "nessuna ripetizione",
 	"bs-flexiskin-repeat-x": "ripetizione orizzontale",
 	"bs-flexiskin-repeat-y": "ripetizione verticale",
@@ -34,5 +34,7 @@
 	"bs-flexiskin-center": "centro",
 	"bs-flexiskin-labelfullwidth": "Larghezza massima",
 	"bs-flexiskin-apihelp-task-param-skinId": "Il parametro <var>skinId</var> identifica il tema",
-	"bs-flexiskin-apihelp-task-param-name": "Il parametro <var>name</var> è il nome del file caricato"
+	"bs-flexiskin-apihelp-task-param-name": "Il parametro <var>name</var> è il nome del file caricato",
+	"bs-flexiskin-usebackground": "Utilizza l'immagine di sfondo",
+	"bs-flexiskin-labelcurrentbackground": "Immagine attuale"
 }
