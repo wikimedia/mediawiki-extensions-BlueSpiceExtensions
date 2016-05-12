@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"Usandaru555"
+			"Usandaru555",
+			"Codynguyen1116"
 		]
 	},
 	"bs-flexiskin-desc": "Provides a page to manage flexiskins with customising options",
@@ -11,5 +12,5 @@
 	"bs-flexiskin-labelcustombgcolor": "Custom colour",
 	"bs-flexiskin-center": "centre",
 	"bs-flexiskin-usebackground": "පසුතල රූපය භාවිතා කරන්න",
-	"bs-flexiskin-labelcurrentbackground": "දැන් පවතින රූපය"
+	"bs-flexiskin-labelcurrentbackground": "Current image"
 }

@@ -69,5 +69,7 @@
 	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] har {{GENDER:$1|raderat}} $3",
 	"notification-bs-responsibleeditors-delete-subject": "Sidan \"$2\" har {{GENDER:$1|raderats}} av $1",
 	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|flyttade}} $3 till $5",
-	"notification-bs-responsibleeditors-move-subject": "Sidan \"$2\" har {{GENDER:$1|flyttats}} av $1"
+	"notification-bs-responsibleeditors-move-subject": "Sidan \"$2\" har {{GENDER:$1|flyttats}} av $1",
+	"bs-responsibleeditors-pagestorefilter-assigned": "Tilldelade",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Inte tilldelade"
 }

@@ -17,5 +17,6 @@
 	"bs-dashboard-userportlet-wikipage-title": "WikiPage",
 	"bs-dashboard-userportlet-wikipage-description": "Usar unha páxina wiki para definir o widget",
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Páxina wiki",
-	"apihelp-bs-dashboard-task-param-dc": "Parámetro de control da caché. Usado por ExtJS."
+	"apihelp-bs-dashboard-task-param-dc": "Parámetro de control da caché. Usado por ExtJS.",
+	"apihelp-bs-dashboards-store-description": "Lista de todos os portlets"
 }

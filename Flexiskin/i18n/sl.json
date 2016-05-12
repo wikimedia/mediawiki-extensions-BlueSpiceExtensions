@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-flexiskin-desc": "Ponuja stran za urejanje prevlek Flexiskin z možnostjo prilagajanja",
@@ -29,7 +30,7 @@
 	"bs-flexiskin-labelbgcolor": "Barva ozadja",
 	"bs-flexiskin-headerheader": "Glava",
 	"bs-flexiskin-labellogoupload": "Logotip",
-	"bs-flexiskin-labelbackgroundupload": "Slika ozadja",
+	"bs-flexiskin-labelbackgroundupload": "Trenutna slika",
 	"bs-flexiskin-no-repeat": "ne ponavljaj",
 	"bs-flexiskin-repeat-x": "horizontalna ponovitev",
 	"bs-flexiskin-repeat-y": "vertikalna ponovitev",
