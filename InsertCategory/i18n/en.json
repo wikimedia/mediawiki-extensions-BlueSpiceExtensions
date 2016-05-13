@@ -12,6 +12,6 @@
 	"bs-insertcategory-cat-label": "Assigned:",
 	"bs-insertcategory-success": "The category was added",
 	"bs-insertcategory-failure": "Error",
-	"bs-insertcategory-hint": "Note: to add a category, you have to press enter or terminate your entry with a comma.",
+	"bs-insertcategory-hint": "Note: to add a category, you have to press enter.",
 	"bs-insertcategory-panel-title": "Categories"
 }
