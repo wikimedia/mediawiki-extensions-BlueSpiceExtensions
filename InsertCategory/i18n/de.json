@@ -14,6 +14,6 @@
 	"bs-insertcategory-cat-label": "Zugewiesen:",
 	"bs-insertcategory-success": "Die Kategorie wurde hinzugefügt",
 	"bs-insertcategory-failure": "Fehler",
-	"bs-insertcategory-hint": "Hinweis: Bestätige mit der Taste Enter, um die Eingabe abzuschließen und die Kategorie hinzuzufügen.",
+	"bs-insertcategory-hint": "Hinweis: Bestätige mit der Taste Enter, um die Kategorie hinzuzufügen.",
 	"bs-insertcategory-panel-title": "Kategorien"
 }

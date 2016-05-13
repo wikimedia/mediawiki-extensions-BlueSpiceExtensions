@@ -13,6 +13,6 @@
 	"bs-insertcategory-cat-label": "Dodeljeno:",
 	"bs-insertcategory-success": "Dodali smo kategorijo",
 	"bs-insertcategory-failure": "Napaka",
-	"bs-insertcategory-hint": "Opomba: za dodajanje kategorije pritisnite tipko ENTER ali zaključite vnos z vejico.",
+	"bs-insertcategory-hint": "Opomba: za dodajanje kategorije pritisnite tipko enter.",
 	"bs-insertcategory-panel-title": "Kategorije"
 }
