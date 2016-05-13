@@ -23,7 +23,6 @@ $wgAPIModules['bs-dashboards-store'] = 'BSApiDashboardStore';
 $wgAPIModules['bs-dashboards-widgets-tasks'] = 'BSApiDashboardWidgetsTasks';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'Dashboards::getSchemaUpdates';
-$wgHooks['BSDashboardsUserDashboardPortalPortlets'][] = 'Dashboards::onBSDashboardsUserDashboardPortalPortlets';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP.'/extensions/BlueSpiceExtensions/Dashboards/resources',
