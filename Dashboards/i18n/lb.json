@@ -5,5 +5,7 @@
 		]
 	},
 	"bs-dashboard-userportlet-calendar-title": "Kalenner",
-	"bs-dashboard-userportlet-calendar-description": "Kalenner"
+	"bs-dashboard-userportlet-calendar-description": "Kalenner",
+	"bs-dashboard-userportlet-wikipage-title": "WikiSäit",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Wiki-Säit"
 }
