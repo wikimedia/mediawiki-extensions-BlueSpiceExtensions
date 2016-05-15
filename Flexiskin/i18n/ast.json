@@ -29,7 +29,7 @@
 	"bs-flexiskin-labelbgcolor": "Color de fondu",
 	"bs-flexiskin-headerheader": "Testera",
 	"bs-flexiskin-labellogoupload": "Logo",
-	"bs-flexiskin-labelbackgroundupload": "Imaxe de fondu",
+	"bs-flexiskin-labelbackgroundupload": "Imaxe actual",
 	"bs-flexiskin-no-repeat": "sin repetición",
 	"bs-flexiskin-repeat-x": "repetición horizontal",
 	"bs-flexiskin-repeat-y": "repetición vertical",
@@ -55,5 +55,9 @@
 	"bs-flexiskin-api-example-desc": "Devuelve la configuración actual d'un Flexiskin.",
 	"bs-flexiskin-api-error-save": "Hebo un error al intentar guardar. Motivu: «$1»",
 	"bs-flexiskin-api-error-invalid-action": "Esta aición nun esiste.",
-	"bs-flexiskin-api-error-missing-param": "Falta el siguiente parámetru: «$1»"
+	"bs-flexiskin-api-error-missing-param": "Falta el siguiente parámetru: «$1»",
+	"bs-flexiskin-apihelp-task-param-skinId": "El parámetru <var>skinId</var> identifica l'aspeutu",
+	"bs-flexiskin-apihelp-task-param-name": "El parámetru <var>name</var> ye'l nome del ficheru xubíu",
+	"bs-flexiskin-usebackground": "Usar una imaxe de fondu",
+	"bs-flexiskin-labelcurrentbackground": "Imaxe actual"
 }

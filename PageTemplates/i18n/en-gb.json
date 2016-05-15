@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Usandaru555"
+			"Usandaru555",
+			"Codynguyen1116"
 		]
 	},
-	"apihelp-bs-pagetemplates-store": "තිබෙන සියලුම අච්චුන්ගේ ලැයිස්තුව සපයන්න."
+	"apihelp-bs-pagetemplates-store": "Provide a list of available templates."
 }

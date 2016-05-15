@@ -8,9 +8,9 @@
 	},
 	"bs-flexiskin-desc": "Provides a page to manage flexiskins with customising options",
 	"bs-flexiskin-labelbgcolor": "Background colour",
-	"bs-flexiskin-labelbackgroundupload": "දැන් පවතින රූපය",
+	"bs-flexiskin-labelbackgroundupload": "Current image",
 	"bs-flexiskin-labelcustombgcolor": "Custom colour",
 	"bs-flexiskin-center": "centre",
-	"bs-flexiskin-usebackground": "පසුතල රූපය භාවිතා කරන්න",
+	"bs-flexiskin-usebackground": "Use background image",
 	"bs-flexiskin-labelcurrentbackground": "Current image"
 }
