@@ -136,7 +136,14 @@ class SmartList extends BsExtensionMW {
 	 * @return string most visited pages
 	 */
 	public static function getMostVisitedPages( $iCount, $sTime ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'portletperiod' => $sTime ), null );
+		try {
+			$sContent = BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'portletperiod' => $sTime ), null );
+		} catch ( Exception $e ) {
+			$oErrorListView = new ViewTagErrorList();
+			$oErrorListView->addItem( new ViewTagError( $e->getMessage() ) );
+			$sContent = $oErrorListView->execute();
+		}
+		return $sContent;
 	}
 
 	/**
@@ -1059,17 +1066,32 @@ class SmartList extends BsExtensionMW {
 		$oParser->disableCache();
 
 		$oParser->getOutput()->setProperty( 'bs-toplist', FormatJson::encode( $aArgs ) );
-		return $this->getToplist( $sInput, $aArgs, $oParser );
+
+		try {
+			$sContent = $this->getToplist( $sInput, $aArgs, $oParser );
+		} catch ( Exception $e ) {
+			$oErrorListView = new ViewTagErrorList();
+			$oErrorListView->addItem( new ViewTagError( $e->getMessage() ) );
+			$sContent = $oErrorListView->execute();
+		}
+		return $sContent;
 	}
 
 	/**
+	 * Deprecated! page.page_counter was completely removed in MediaWiki 1.25
 	 * Generates a list of the most visisted pages
+	 * @deprecated since version 2.23.3
 	 * @param string $sInput Inner HTML of BsTagMToplist tag. Not used.
 	 * @param array $aArgs List of tag attributes.
 	 * @param Parser $oParser MediaWiki parser object
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function getToplist( $sInput, $aArgs, $oParser ) {
+		wfDeprecated( __METHOD__ , '2.23.3' );
+		if( $GLOBALS['wgVersion'] > '1.24' ) {
+			//See: https://www.mediawiki.org/wiki/Requests_for_comment/Removing_hit_counters_from_MediaWiki_core
+			throw new BsException( 'Field page.page_counter was completely removed in MediaWiki 1.25' );
+		}
 		$sCat = BsCore::sanitizeArrayEntry( $aArgs, 'cat',           '', BsPARAMTYPE::STRING );
 		$sNs = BsCore::sanitizeArrayEntry( $aArgs, 'ns',            '', BsPARAMTYPE::STRING );
 		$iCount = BsCore::sanitizeArrayEntry( $aArgs, 'count',         10, BsPARAMTYPE::INT );
