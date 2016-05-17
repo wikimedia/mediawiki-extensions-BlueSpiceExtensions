@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sagan"
+			"Sagan",
+			"Ләйсән"
 		]
 	},
 	"bs-dashboards-desc": "Идара панелен ҡатнашыусыларға һәм администраторҙарға тәҡдим итә",
@@ -13,5 +14,6 @@
 	"admindashboard": "Администратор панеле",
 	"userdashboard": "Ҡулланыусы панеле",
 	"bs-dashboard-userportlet-calendar-title": "Календарь",
-	"bs-dashboard-userportlet-calendar-description": "Календарь"
+	"bs-dashboard-userportlet-calendar-description": "Календарь",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Вики-бит"
 }
