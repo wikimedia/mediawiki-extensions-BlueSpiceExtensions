@@ -1,5 +1,5 @@
 /**
- * Js for ArticleInfo extension
+ * Js for Checklist extension
  *
  * @author     Patric Wirth <wirth@hallowelt.biz>
  * @package    Bluespice_Extensions
@@ -10,7 +10,7 @@
  */
 
 /**
- * Base class for all ArticleInfo related methods and properties
+ * Base class for all Checklist related methods and properties
  */
 BsChecklist = {
 
@@ -267,6 +267,7 @@ $(document).on( 'BsVisualEditorActionsInit', function( event, plugin, buttons, c
 			var me = this;
 			mw.loader.using( 'ext.bluespice.extjs' ).done( function() {
 				Ext.require( 'BS.Checklist.Window', function(){
+					BS.Checklist.Window.clearListeners();
 					BS.Checklist.Window.on( 'ok', function( sender, data ){
 						BsChecklist.lastCommand = 'mceBsSelectbox';
 						BsChecklist.lastCommandKey = data;
