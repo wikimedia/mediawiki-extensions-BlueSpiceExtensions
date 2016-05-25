@@ -120,6 +120,9 @@ Ext.define( 'BS.Flexiskin.Menuitems.General', {
 			this.ufBackgroundUpload,
 			this.cgRepeatBackground
 		];
+
+		$( document ).trigger( "BSFlexiskinMenuGeneralInitComponent", [this, this.items] );
+
 		this.callParent( arguments );
 	},
 	btnUploadClick: function( el, form ) {
@@ -191,6 +194,9 @@ Ext.define( 'BS.Flexiskin.Menuitems.General', {
 			backgroundImage: background,
 			repeatBackground: this.cgRepeatBackground.getValue()
 		};
+
+		$( document ).trigger( "BSFlexiskinMenuGeneralGetData", [this, data] );
+
 		return data;
 	},
 	setData: function( data ) {
@@ -211,6 +217,8 @@ Ext.define( 'BS.Flexiskin.Menuitems.General', {
 			this.cbUseBackground.setValue( true );
 			Ext.getCmp( 'bs-extjs-uploadCombo-background-hidden-field' ).setValue( data.config.backgroundImage );
 		}
+
+		$( document ).trigger( "BSFlexiskinMenuGeneralSetData", [this, data] );
 
 	},
 	setColor: function( el, clr ) {

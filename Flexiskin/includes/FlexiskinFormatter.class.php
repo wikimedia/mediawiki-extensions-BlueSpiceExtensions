@@ -69,8 +69,8 @@ class FlexiskinFormatter {
 			$aReturn[] = "#bs-application{width:100% !important;}";
 			$aReturn[] = "#bs-wrapper{width:100% !important;min-width:100% !important;}";
 		}
-		wfRunHooks( "BSFlexiskinFormatterPosition", array( &$aConfig, &$aReturn ) );
 
+		wfRunHooks( "BSFlexiskinFormatterPosition", array( &$aConfig, &$aReturn ) );
 		return implode( " \n", $aReturn );
 	}
 

@@ -48,6 +48,8 @@ Ext.define( 'BS.Flexiskin.PreviewMenu', {
 			} )
 		];
 
+		$( document ).trigger( "BSFlexiskinPreviewMenuInitComponent", [this, this.items] );
+
 		this.afterInitComponent( arguments );
 		this.callParent( arguments );
 	},
@@ -61,6 +63,9 @@ Ext.define( 'BS.Flexiskin.PreviewMenu', {
 			if ( typeof ( items[i].getData ) !== 'undefined' )
 				data.push( items[i].getData() );
 		}
+
+		$( document ).trigger( "BSFlexiskinMenuPreviewGetData", [this, data] );
+
 		return data;
 	},
 	setData: function ( obj ) {
@@ -74,6 +79,8 @@ Ext.define( 'BS.Flexiskin.PreviewMenu', {
 				config: obj.config[i]
 			} );
 		}
+
+		$( document ).trigger( "BSFlexiskinMenuPreviewSetData", [this, this.items] );
 
 		//this.callParent( arguments );
 	},
