@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Максим Підліснюк"
 		]
 	},
 	"bs-wikiadmin-desc": "Центральна точка адміністрування для BlueSpice",
@@ -12,5 +13,6 @@
 	"right-wikiadmin": "Відображення сторінок адміністрування BlueSpice",
 	"bs-wikiadmin-shop": "Магазин",
 	"bs-wikiadmin-mediawiki-specialpages-text": "Спеціальні сторінки",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Списки всіх спеціальних сторінок MediaWiki"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Списки всіх спеціальних сторінок MediaWiki",
+	"bs-wikiadmin-widget-title": "Адміністрування"
 }
