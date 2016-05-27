@@ -22,6 +22,9 @@ $wgResourceModules['ext.bluespice.contextmenu'] = array(
 		'bs-contextmenu-user-talk',
 		'bs-contextmenu-file-download'
 	),
+	'dependencies' => array(
+		'ext.bluespice',
+	),
 	'localBasePath' => __DIR__.'/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/ContextMenu/resources'
 );
