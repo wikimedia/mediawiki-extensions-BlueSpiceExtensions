@@ -118,10 +118,32 @@ Ext.define( 'BS.PageTemplates.Panel', {
 	onDlgTemplateAddOk: function( data, template ) {
 		this.dlgTemplateAdd.setLoading();
 		var me = this;
+
+		//copy from bluespice.api.js, cause we need to set "loading" to false
+		var cfg = {
+			failure: function( response, module, task, $dfd, cfg ) {
+				var message = response.message || '';
+				if ( response.errors.length > 0 ) {
+					for ( var i in response.errors ) {
+						if ( typeof( response.errors[i].message ) !== 'string' ) continue;
+						message = message + '<br />' + response.errors[i].message;
+					}
+				}
+				bs.util.alert( module + '-' + task + '-fail', {
+						titleMsg: 'bs-extjs-title-warning',
+						text: message
+					}, {
+						ok: function() {
+							me.dlgTemplateAdd.setLoading( false );
+					}}
+				);
+			}
+		};
 		bs.api.tasks.exec(
 			'pagetemplates',
 			'doEditTemplate',
-			template
+			template,
+			cfg
 		).done( function() {
 			me.dlgTemplateAdd.setLoading(false);
 			me.dlgTemplateAdd.resetData();
@@ -132,10 +154,31 @@ Ext.define( 'BS.PageTemplates.Panel', {
 	onDlgTemplateEditOk: function( data, template ) {
 		this.dlgTemplateEdit.setLoading();
 		var me = this;
+		//copy from bluespice.api.js, cause we need to set "loading" to false
+		var cfg = {
+			failure: function( response, module, task, $dfd, cfg ) {
+				var message = response.message || '';
+				if ( response.errors.length > 0 ) {
+					for ( var i in response.errors ) {
+						if ( typeof( response.errors[i].message ) !== 'string' ) continue;
+						message = message + '<br />' + response.errors[i].message;
+					}
+				}
+				bs.util.alert( module + '-' + task + '-fail', {
+						titleMsg: 'bs-extjs-title-warning',
+						text: message
+					}, {
+						ok: function() {
+							me.dlgTemplateAdd.setLoading( false );
+					}}
+				);
+			}
+		};
 		bs.api.tasks.exec(
 			'pagetemplates',
 			'doEditTemplate',
-			template
+			template,
+			cfg
 		).done( function() {
 			me.dlgTemplateEdit.setLoading(false);
 			me.dlgTemplateEdit.resetData();
