@@ -17,7 +17,7 @@ class BSApiDashboardWidgetsTasks extends BSApiTasksBase {
 
 		if ( !isset( $oTaskData->wikiArticle ) ) {
 			$oResponse->success = true;
-			$oResponse->payload = array( "html" => "" );
+			$oResponse->payload = array( "html" => wfMessage( 'compare-invalid-title' )->plain() );
 			return $oResponse;
 		}
 

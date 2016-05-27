@@ -42,12 +42,23 @@ Ext.define('BS.Dashboards.WikiPagePortlet', {
 	},
 	loadContent: function() {
 		var me = this;
+		//Surpress all messages and errors and show them in the portlet
+		//content. TODO: Change this!
+		var cfg = {
+			failure: function( response, module, task, $dfd, cfg ) {
+				me.cContent.update( response.payload.html );
+			},
+			success: function( response, module, task, $dfd, cfg ) {
+				me.cContent.update( response.payload.html );
+			}
+		};
 		bs.api.tasks.exec(
 			'dashboards-widgets',
 			'wikipage',
 			{
 				"wikiArticle": me.wikiArticle
-			}
+			},
+			cfg
 		).done( function(response) {
 			me.cContent.update( response.payload.html );
 		});
