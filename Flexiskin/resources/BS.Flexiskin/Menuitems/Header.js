@@ -19,6 +19,9 @@ Ext.define( 'BS.Flexiskin.Menuitems.Header', {
 		this.items = [
 			this.ufLogoUpload
 		];
+
+		$( document ).trigger( "BSFlexiskinMenuHeaderInitComponent", [this, this.items] );
+
 		this.callParent( arguments );
 	},
 	btnUploadClick: function( el, form ) {
@@ -65,6 +68,9 @@ Ext.define( 'BS.Flexiskin.Menuitems.Header', {
 			id: 'header',
 			logo: Ext.getCmp( 'bs-extjs-uploadCombo-logo-hidden-field' ).getValue()
 		};
+
+		$( document ).trigger( "BSFlexiskinMenuHeaderGetData", [this, data] );
+
 		return data;
 	},
 	setData: function( data ) {
@@ -73,5 +79,7 @@ Ext.define( 'BS.Flexiskin.Menuitems.Header', {
 			this.ufLogoUpload.btnReset.enable();
 		}
 		Ext.getCmp( 'bs-extjs-uploadCombo-logo-hidden-field' ).setValue( data.config.logo );
+
+		$( document ).trigger( "BSFlexiskinMenuHeaderSetData", [this, data] );
 	}
 });

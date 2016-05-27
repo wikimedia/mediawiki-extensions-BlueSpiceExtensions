@@ -78,6 +78,9 @@ Ext.define( 'BS.Flexiskin.Menuitems.Position', {
 			this.tfWidth,
 			this.cbFullWidth
 		];
+
+		$( document ).trigger( "BSFlexiskinMenuPositionInitComponent", [this, this.items] );
+
 		this.callParent(arguments);
 	},
 	onCbFullWidthChange: function( sender, checked ) {
@@ -97,6 +100,9 @@ Ext.define( 'BS.Flexiskin.Menuitems.Position', {
 			width: this.tfWidth.getValue(),
 			fullWidth: this.cbFullWidth.getValue()
 		};
+
+		$( document ).trigger( "BSFlexiskinMenuPositionGetData", [this, data] );
+
 		return data;
 	},
 	setData: function( data ) {
@@ -105,5 +111,7 @@ Ext.define( 'BS.Flexiskin.Menuitems.Position', {
 		this.cgContent.setValue( this.currentData.config.content );
 		this.tfWidth.setValue( this.currentData.config.width );
 		this.cbFullWidth.setValue( this.currentData.config.fullWidth );
+
+		$( document ).trigger( "BSFlexiskinMenuPositionSetData", [this, data] );
 	}
 });
