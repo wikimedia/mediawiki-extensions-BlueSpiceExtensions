@@ -36,6 +36,8 @@
 	"bs-smartlist-time": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for time\n{{Identical|Time}}",
 	"bs-smartlist-title": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for title\n{{Identical|Title}}",
 	"bs-smartlist-tag-smartlist-desc": "Used in InsertMagic extension, tag description for displays configurable information about recent changes.\n{{Related|Bs-tag-desc}}",
+	"bs-smartlist-tag-smartlist-example-rc": "Description of example for mode \"recent changes\". Used in InsertMagic tag description.",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Description of example for mode \"whatlinkshere\". Used in InsertMagic tag description.",
 	"bs-smartlist-tag-newbies-desc": "Used in InsertMagic extension, tag description for displays the latest users.\n{{Related|Bs-tag-desc}}",
 	"bs-smartlist-tag-toplist-desc": "Used in InsertMagic extension, tag description for displays a list of the most viewed pages.\n{{Related|Bs-tag-desc}}",
 	"bs-smartlist-mostvisitedpages": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for most viewed pages\n\nSee also\n*{{msg-mw|statistics-mostpopular}}",
