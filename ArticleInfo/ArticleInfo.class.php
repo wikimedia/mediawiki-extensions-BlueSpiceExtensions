@@ -526,7 +526,7 @@ class ArticleInfo extends BsExtensionMW {
 			$oList->setTemplate( '<li style="{STYLE}">&rarr; {LINK}</li>' );
 
 			foreach ( $aSubpages as $oTitle ) {
-				$sLink = $this->getSkin()->link( $oTitle, $oTitle->getSubpageText() );
+				$sLink = Linker::link( $oTitle, $oTitle->getSubpageText() );
 				$sStyle = 'margin-left:'.( count( explode( '/', $oTitle->getText() ) ) - 1 ).'em';
 				$oList->addData( array( 'LINK' => $sLink, 'STYLE' => $sStyle ) );
 			}
