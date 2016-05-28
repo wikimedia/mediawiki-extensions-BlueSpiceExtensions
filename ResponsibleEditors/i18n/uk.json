@@ -75,5 +75,11 @@
 	"notification-bs-responsibleeditors-delete-body": "Сторінку «$2», відповідальним редактором якої Ви призначені, {{GENDER:$1|вилучив|вилучила}} $1. Після входу у вікі, Ви можете відкрити цю сторінку за цим посиланням: $3",
 	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|перейменував|перейменувала}} $3 на $5",
 	"notification-bs-responsibleeditors-move-subject": "Сторінку «$2» було перейменовано {{GENDER:$1|користувачем|користувачкою}} $1",
-	"notification-bs-responsibleeditors-move-body": "Сторінку «$2», відповідальним редактором якої Ви призначені, $1 {{GENDER:$1|перейменував|перейменувала}} на «$4». Після входу у вікі, Ви можете відкрити цю сторінку за цим посиланням: $5"
+	"notification-bs-responsibleeditors-move-body": "Сторінку «$2», відповідальним редактором якої Ви призначені, $1 {{GENDER:$1|перейменував|перейменувала}} на «$4». Після входу у вікі, Ви можете відкрити цю сторінку за цим посиланням: $5",
+	"bs-responsibleeditors-pagestorefilter-assigned": "Призначено",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Не призначено",
+	"apihelp-bs-responsibleeditorspages-store": "Перераховує сторінки і пов'язаних відповідальних редакторів",
+	"apihelp-bs-bs-responsibleeditors-tasks": "Дозволяє управляти відповідальними редакторами",
+	"apihelp-bs-responsibleeditorsposibleeditors-store": "Перераховує можливих відповідальних редакторів",
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Фільтрує можливих відповідальних редакторів за необхідним <var>articleId</var>"
 }

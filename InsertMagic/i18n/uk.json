@@ -64,5 +64,6 @@
 	"bs-insertmagic-type-switches": "Перемикачі поведінки",
 	"bs-insertmagic-label-first": "1. Виберіть теґ або магічне слово",
 	"bs-insertmagic-label-second": "2. Змініть код",
-	"bs-insertmagic-label-desc": "Опис"
+	"bs-insertmagic-label-desc": "Опис",
+	"bs-insertmagic-label-see-also": "Див. також:"
 }

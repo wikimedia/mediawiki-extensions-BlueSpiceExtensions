@@ -13,6 +13,6 @@
 	"bs-insertcategory-cat-label": "Призначення:",
 	"bs-insertcategory-success": "Категорію додано",
 	"bs-insertcategory-failure": "Помилка",
-	"bs-insertcategory-hint": "Примітка: щоб додати категорію, необхідно натиснути клавішу enter або поставити кому у кінці запису.",
+	"bs-insertcategory-hint": "Примітка: щоб додати категорію, необхідно натиснути клавішу enter.",
 	"bs-insertcategory-panel-title": "Категорії"
 }

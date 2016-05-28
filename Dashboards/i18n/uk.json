@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NataChe"
+			"NataChe",
+			"Ата"
 		]
 	},
 	"bs-dashboards-desc": "Створює панелі інструментів для користувачів і адміністраторів",
@@ -13,5 +14,12 @@
 	"admindashboard": "Панель інструментів адміністратора",
 	"userdashboard": "Панель інструменів користувача",
 	"bs-dashboard-userportlet-calendar-title": "Календар",
-	"bs-dashboard-userportlet-calendar-description": "Календар"
+	"bs-dashboard-userportlet-calendar-description": "Календар",
+	"bs-dashboard-userportlet-wikipage-title": "WikiPage",
+	"bs-dashboard-userportlet-wikipage-description": "Використати вікісторінку, щоб налаштувати віджет",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Вікісторінка",
+	"apihelp-bs-dashboard-task-param-dc": "Параметр керування кешем. Використовується в ExtJS.",
+	"apihelp-bs-dashboards-store-description": "Перераховує усі доступні портлети",
+	"apihelp-bs-dashboards-tasks-description": "Збереження конфігурації панелі",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Видає контент для деяких віджетів панелі"
 }
