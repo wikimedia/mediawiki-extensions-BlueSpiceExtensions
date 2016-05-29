@@ -167,6 +167,7 @@ class WhoIsOnline extends BsExtensionMW {
 			'name' => 'whoisonlinecount',
 			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinecount-desc' )->plain(),
 			'code' => '<bs:whoisonlinecount />',
+			'helplink' => 'https://help.bluespice.com/index.php/WhoIsOnline'
 		);
 
 		$oResponse->result[] = array(
@@ -175,6 +176,12 @@ class WhoIsOnline extends BsExtensionMW {
 			'name' => 'whoisonlinepopup',
 			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinepopup-desc' )->plain(),
 			'code' => '<bs:whoisonlinepopup />',
+			'examples' => array(
+				array(
+					'code' => '<bs:whoisonlinepopup anchortext="Online users" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/WhoIsOnline'
 		);
 
 		return true;
