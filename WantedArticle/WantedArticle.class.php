@@ -342,22 +342,18 @@ class WantedArticle extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if ( $type != 'tags' ) return true;
 
-		$aParams = array(
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-count' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-title' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-order' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-sort' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-type' )->text()
-		);
-		$sDesc = wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc' )->plain().
-				'<br /><br />' . implode( '<br />', $aParams );
-
 		$oResponse->result[] = array(
 			'id' => 'bs:wantedarticle',
 			'type' => 'tag',
 			'name' => 'wantedarticle',
-			'desc' => $sDesc,
+			'desc' => wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc' )->plain(),
 			'code' => '<bs:wantedarticle />',
+			'examples' => array(
+				array(
+					'code' => '<bs:wantedarticle count="15" sort="time" title="Wanted articles" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/WantedArticles'
 		);
 
 		return true;
