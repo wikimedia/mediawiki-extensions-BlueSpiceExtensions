@@ -14,5 +14,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "Sortieren nach:",
 	"bs-pagesvisited-pref-sort-time": "Zeit",
 	"bs-pagesvisited-pref-sort-pagename": "Titel",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Gibt eine Liste mit Seiten aus, die du besucht hast."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Zeigt eine Liste kürzlich besuchter Seiten an. Diese Liste kann durch Parameter beschränkt werden."
 }

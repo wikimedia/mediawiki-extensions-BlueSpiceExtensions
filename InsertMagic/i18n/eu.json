@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
 	"bs-insertmagic-currentyear": "Egungo urtea",
@@ -13,5 +14,6 @@
 	"bs-insertmagic-type-tags": "Etiketak",
 	"bs-insertmagic-type-variables": "Aldagaiak",
 	"bs-insertmagic-label-desc": "Deskribapena",
-	"bs-insertmagic-label-see-also": "Ikus, gainera:"
+	"bs-insertmagic-label-examples": "Adibideak",
+	"bs-insertmagic-label-see-also": "Ikus, gainera"
 }
