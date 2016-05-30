@@ -214,7 +214,13 @@ class PageAccess extends BsExtensionMW {
 			'type' => 'tag',
 			'name' => 'pageaccess',
 			'desc' => wfMessage( 'bs-pageaccess-tag-groups-desc' )->plain(),
-			'code' => '<bs:pageaccess groups="" />',
+			'code' => '<bs:pageaccess groups="GROUP" />',
+			'examples' => array(
+				array(
+					'code' => '<bs:pageaccess groups="sysop" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/PageAccess'
 		);
 
 		return true;
