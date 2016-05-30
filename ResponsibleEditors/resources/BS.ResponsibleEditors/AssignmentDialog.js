@@ -28,10 +28,31 @@ Ext.define( 'BS.ResponsibleEditors.AssignmentDialog', {
 		this.showLoadMask();
 
 		var me = this;
+		//copy from bluespice.api.js, cause we need to set "loading" to false
+		var cfg = {
+			failure: function( response, module, task, $dfd, cfg ) {
+				var message = response.message || '';
+				if ( response.errors.length > 0 ) {
+					for ( var i in response.errors ) {
+						if ( typeof( response.errors[i].message ) !== 'string' ) continue;
+						message = message + '<br />' + response.errors[i].message;
+					}
+				}
+				bs.util.alert( module + '-' + task + '-fail', {
+						titleMsg: 'bs-extjs-title-warning',
+						text: message
+					}, {
+						ok: function() {
+							me.hideLoadMask();
+					}}
+				);
+			}
+		};
 		bs.api.tasks.exec(
 			'responsibleeditors',
 			'setResponsibleEditors',
-			me.getData()
+			me.getData(),
+			cfg
 		).done( function() {
 			me.fireEvent( 'ok', this, me.getData() );
 			me.hideLoadMask();
