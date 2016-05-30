@@ -130,6 +130,12 @@ class PagesVisited extends BsExtensionMW {
 			'name' => 'pagesvisited',
 			'desc' => wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->escaped(),
 			'code' => '<bs:pagesvisited />',
+			'examples' => array(
+				array(
+					'code' => '<bs:pagesvisited count="7" maxtitlelength="40" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/PagesVisited'
 		);
 
 		return true;
