@@ -101,6 +101,7 @@ class WatchList extends BsExtensionMW {
 			'name' => 'watchlist',
 			'desc' => wfMessage( 'bs-watchlist-tag-watchlist-desc' )->plain(),
 			'code' => '<bs:watchlist />',
+			'helplink' => 'https://help.bluespice.com/index.php/WatchList'
 		);
 
 		return true;
