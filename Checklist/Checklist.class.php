@@ -160,18 +160,23 @@ class Checklist extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
-		$aMessage = array();
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-desc' )->plain().'<br />';
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-type' )->plain();
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-list' )->plain();
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-value' )->plain();
-
 		$oResponse->result[] = array(
 			'id' => 'bs:checklist',
 			'type' => 'tag',
 			'name' => 'checklist',
-			'desc' => implode( '<br />', $aMessage ),
+			'desc' => wfMessage( 'bs-checklist-tag-checklist-desc' )->text(),
 			'code' => '<bs:checklist />',
+			'examples' => array(
+				array(
+					'label' => wfMessage( 'bs-checklist-tag-checklist-example-check' )->text(),
+					'code' => '<bs:checklist type="check" value="checked" />'
+				),
+				array(
+					'label' => wfMessage( 'bs-checklist-tag-checklist-example-list' )->text(),
+					'code' => '<bs:checklist type="list" value="false" list="Status" />'
+				),
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/Checklist'
 		);
 
 		return true;
