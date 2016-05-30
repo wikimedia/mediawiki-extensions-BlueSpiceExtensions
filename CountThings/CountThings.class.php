@@ -125,6 +125,7 @@ class CountThings extends BsExtensionMW {
 			'name' => 'countarticles',
 			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped(),
 			'code' => '<bs:countarticles />',
+			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
 		);
 
 		$oResponse->result[] = array(
@@ -133,6 +134,7 @@ class CountThings extends BsExtensionMW {
 			'name' => 'countusers',
 			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped(),
 			'code' => '<bs:countusers />',
+			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
 		);
 
 		$oResponse->result[] = array(
@@ -140,7 +142,18 @@ class CountThings extends BsExtensionMW {
 			'type' => 'tag',
 			'name' => 'countcharacters',
 			'desc' => wfMessage( 'bs-countthings-tag-countcharacters-desc' )->escaped(),
-			'code' => '<bs:countcharacters>Article One,Article Two,Article Three</bs:countcharacters>',
+			'code' => '<bs:countcharacters>ARTICLENAME</bs:countcharacters>',
+			'examples' => array(
+				array(
+					'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-1' )->escaped(),
+					'code' => '<bs:countcharacters mode="words">ARTICLENAME</bs:countcharacters>'
+				),
+				array(
+					'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-2' )->escaped(),
+					'code' => '<bs:countcharacters mode="chars">ARTICLENAME</bs:countcharacters>'
+				),
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
 		);
 
 		return true;
