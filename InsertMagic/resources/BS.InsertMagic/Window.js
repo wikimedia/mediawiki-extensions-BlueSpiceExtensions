@@ -199,7 +199,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 				};
 				if ( typeof( example.code ) !== "undefined" && example.code != '' ) {
 					desc = desc
-						+ $( '<code>', { text: example.code } ).wrap( '<div/>' ).parent().html();
+						+ $( '<code>', { style: 'white-space:pre-wrap;', text: example.code } ).wrap( '<div/>' ).parent().html();
 				}
 			}
 		}
