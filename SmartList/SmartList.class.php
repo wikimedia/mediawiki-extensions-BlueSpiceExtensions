@@ -520,6 +520,17 @@ class SmartList extends BsExtensionMW {
 			'name' => 'smartlist',
 			'desc' => wfMessage( 'bs-smartlist-tag-smartlist-desc' )->plain(),
 			'code' => '<bs:smartlist />',
+			'examples' => array(
+				array(
+					'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-rc' )->plain(),
+					'code' => '<bs:smartlist new="true" count="7" ns="104" trim="false" />'
+				),
+				array(
+					'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-whatlinkshere' )->plain(),
+					'code' => '<bs:smartlist mode="whatlinkshere" traget="ARTICLENAME" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
 		);
 
 		$oResponse->result[] = array(
@@ -528,6 +539,12 @@ class SmartList extends BsExtensionMW {
 			'name' => 'newbies',
 			'desc' => wfMessage( 'bs-smartlist-tag-newbies-desc' )->plain(),
 			'code' => '<bs:newbies />',
+			'examples' => array(
+				array(
+					'code' => '<bs:newbies count="3" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
 		);
 
 		$oResponse->result[] = array(
@@ -536,6 +553,12 @@ class SmartList extends BsExtensionMW {
 			'name' => 'toplist',
 			'desc' => wfMessage( 'bs-smartlist-tag-toplist-desc' )->plain(),
 			'code' => '<bs:toplist />',
+			'examples' => array(
+				array(
+					'code' => '<bs:toplist count="4" cat="Wiki" period="month" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
 		);
 
 		return true;
