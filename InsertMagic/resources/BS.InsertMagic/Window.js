@@ -37,7 +37,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 
 		this.tagsStore = Ext.create( 'BS.store.BSApi', {
 			apiAction: 'bs-insertmagic-data-store',
-			fields: ['id', 'type', 'name', 'desc', 'code', 'helplink' ],
+			fields: ['id', 'type', 'name', 'desc', 'code', 'examples', 'helplink' ],
 			submitValue: false,
 			remoteSort: false,
 			remoteFilter: false,
@@ -174,7 +174,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 		var data = {
 			desc : record.get( 'desc' ),
 			type : record.get( 'type' ),
-			helplink : record.get( 'helplink' )
+			helplink : record.get( 'helplink' ),
+			examples : record.get( 'examples' )
 		};
 		this.currentData.type = data.type;
 		this.currentData.name = record.get( 'name' );
@@ -184,12 +185,30 @@ Ext.define( 'BS.InsertMagic.Window', {
 
 	setCommonFields: function( text, data ) {
 		var desc = data.desc;
-		if ( typeof(data.helplink) !== "undefined" && data.helplink != '' ) {
+		if ( typeof( data.examples ) !== "undefined" && data.examples != '' ) {
 			desc = desc
-					+ '<br/><br/>'
+					+ '<br/><br/><strong>'
+					+ mw.message( 'bs-insertmagic-label-examples' ).plain()
+					+ '</strong>';
+			for ( var i = 0; i < data.examples.length; i++ ) {
+				desc = desc + '<br/><br/>';
+				var example = data.examples[i];
+				if ( typeof( example.label ) !== "undefined" && example.label != '' ) {
+					desc = desc
+						+ $( '<div>', { text: example.label } ).wrap( '<div/>' ).parent().html();
+				};
+				if ( typeof( example.code ) !== "undefined" && example.code != '' ) {
+					desc = desc
+						+ $( '<code>', { text: example.code } ).wrap( '<div/>' ).parent().html();
+				}
+			}
+		}
+		if ( typeof( data.helplink ) !== "undefined" && data.helplink != '' ) {
+			desc = desc
+					+ '<br/><br/><strong>'
 					+ mw.message( 'bs-insertmagic-label-see-also' ).plain()
-					+ '<br/>'
-					+ $( '<a>', { href: data.helplink, text: data.helplink } ).wrap( '<div/>' ).parent().html();
+					+ '</strong><br/><br/>'
+					+ $( '<a>', { href: data.helplink, target: '_blank', text: data.helplink } ).wrap( '<div/>' ).parent().html();
 		}
 		this.descPanel.update( desc );
 		this.syntaxTextArea.setValue( text );
