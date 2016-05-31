@@ -3,8 +3,8 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage ExtendedSearch
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

@@ -2,7 +2,7 @@
 --
 -- Part of BlueSpice for MediaWiki
 --
--- @author     Thomas Lorenz <lorenz@hallowelt.biz>
+-- @author     Thomas Lorenz <lorenz@hallowelt.com>
 
 -- @package    BlueSpice_Extensions
 -- @subpackage NamespaceManager

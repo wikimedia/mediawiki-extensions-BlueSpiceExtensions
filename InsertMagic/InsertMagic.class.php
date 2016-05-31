@@ -21,8 +21,8 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage InsertMagic

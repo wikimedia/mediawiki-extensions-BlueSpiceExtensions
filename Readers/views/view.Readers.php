@@ -4,7 +4,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    $Id: view.Readers.php 9950 2013-06-26 14:58:43Z smuggli $
  * @package    BlueSpice_Extensions
  * @subpackage Authors

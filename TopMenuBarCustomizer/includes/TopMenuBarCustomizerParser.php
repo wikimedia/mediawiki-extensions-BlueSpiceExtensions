@@ -20,7 +20,7 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @package    BlueSpice_Extensions
  * @subpackage TopMenuBarCustomizer
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

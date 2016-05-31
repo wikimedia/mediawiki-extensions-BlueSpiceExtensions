@@ -21,8 +21,8 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage SaferEdit

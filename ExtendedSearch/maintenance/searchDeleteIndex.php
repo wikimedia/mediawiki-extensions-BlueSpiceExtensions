@@ -4,7 +4,7 @@
  *
  * @file
  * @ingroup Maintenance
- * @author Patric Wirth <wirth@hallowelt.biz>
+ * @author Patric Wirth <wirth@hallowelt.com>
  * @licence GNU General Public Licence 2.0 or later
  */
 

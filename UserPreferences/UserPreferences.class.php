@@ -23,8 +23,8 @@
  * For further information visit http://www.blue-spice.org
 
  * @author     Sebastian Ulbricht
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UserPreferences

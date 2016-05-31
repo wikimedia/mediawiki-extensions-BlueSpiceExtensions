@@ -1,7 +1,7 @@
 /**
  * UserManager extension
  *
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.22.0
  * @package    Bluespice_Extensions
  * @subpackage UserManager

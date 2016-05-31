@@ -4,7 +4,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    $Id: view.StateBarBodyElementRating.php 9050 2013-03-28 15:14:36Z pwirth $
  * @package    BlueSpice_Extensions
  * @subpackage Rating

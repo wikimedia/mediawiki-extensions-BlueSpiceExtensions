@@ -2,7 +2,7 @@
 
 /**
  * NamespacerNuker
- * @author Stephan Muggli <muggli@hallowelt.biz>
+ * @author Stephan Muggli <muggli@hallowelt.com>
  * @author Sebastian Ulbricht
  */
 class NamespaceNuker {

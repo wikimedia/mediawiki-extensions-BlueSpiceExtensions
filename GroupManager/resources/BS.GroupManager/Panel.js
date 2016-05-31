@@ -3,9 +3,9 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage GroupManager
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

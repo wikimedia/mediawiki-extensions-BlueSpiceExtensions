@@ -23,7 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht
- * @author     Stefan Widmann <widmann@hallowelt.biz>
+ * @author     Stefan Widmann <widmann@hallowelt.com>
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.2
  * @package    Bluespice_Extensions

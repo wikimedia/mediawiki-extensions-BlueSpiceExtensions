@@ -22,11 +22,11 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Alex Wollangk
- * @author     Marc Reymann <reymann@hallowelt.biz>
+ * @author     Marc Reymann <reymann@hallowelt.com>
  * @author     Sebastian Ulbricht
- * @author     Mathias Scheer <scheer@hallowelt.biz>
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Mathias Scheer <scheer@hallowelt.com>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Emoticons

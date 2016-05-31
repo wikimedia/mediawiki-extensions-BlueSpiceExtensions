@@ -2,8 +2,8 @@
  * StateBar extension
  *
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    1.0.0 stable
 
  * @package    Bluespice_Extensions
