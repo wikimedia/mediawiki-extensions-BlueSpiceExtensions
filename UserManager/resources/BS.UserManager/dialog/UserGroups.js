@@ -3,7 +3,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage UserManager
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

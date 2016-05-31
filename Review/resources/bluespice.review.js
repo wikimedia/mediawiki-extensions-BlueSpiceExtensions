@@ -1,7 +1,7 @@
 /**
  * Review extension
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @version    1.0.0 beta
 
  * @package    Bluespice_Extensions

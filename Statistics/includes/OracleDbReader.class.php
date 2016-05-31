@@ -4,8 +4,8 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
 
  * @package    BlueSpice_Extensions
  * @subpackage Statistics

@@ -3,7 +3,7 @@
  * 
  * Wiki code to HTML and vice versa parser
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Sebastian Ulbricht
  * @version    2.22.0
 

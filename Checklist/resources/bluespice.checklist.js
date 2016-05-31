@@ -1,7 +1,7 @@
 /**
  * Js for Checklist extension
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage Checklist
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

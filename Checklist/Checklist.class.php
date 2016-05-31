@@ -25,7 +25,7 @@
  *
  * For further information visit http://www.blue-spice.org
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Checklist

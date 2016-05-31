@@ -3,7 +3,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>, Leonid Verhovskij <verhovskij@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>, Leonid Verhovskij <verhovskij@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage InsertLink
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

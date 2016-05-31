@@ -3,7 +3,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage FormattingHelp
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

@@ -22,9 +22,9 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage SmartList

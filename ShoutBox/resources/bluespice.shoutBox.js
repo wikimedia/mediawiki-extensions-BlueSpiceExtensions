@@ -6,7 +6,7 @@
  * www.yensdesign.com
  * yensamg@gmail.com
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Karl Waldmanstetter
  * @version    1.1.0
  * @package    Bluespice_Extensions

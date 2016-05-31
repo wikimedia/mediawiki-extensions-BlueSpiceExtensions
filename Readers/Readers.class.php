@@ -19,7 +19,7 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Readers

@@ -4,7 +4,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
 
  * @package    BlueSpice_Extensions
  * @subpackage WhoIsOnline

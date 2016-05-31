@@ -21,7 +21,7 @@
 * This file is part of BlueSpice for MediaWiki
 * For further information visit http://www.blue-spice.org
 *
-* @author     Patric Wirth <wirth@hallowelt.biz>
+* @author     Patric Wirth <wirth@hallowelt.com>
 * @package    Bluespice_Extensions
 * @version    2.23.1
 * @subpackage TopMenuBarCustomizer

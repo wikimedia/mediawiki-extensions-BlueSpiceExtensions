@@ -3,8 +3,8 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Robert Vogel <vogel@hallowelt.com>
 
  * @package    Bluespice_Extensions
  * @subpackage WantedArticle

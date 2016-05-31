@@ -25,7 +25,7 @@
  *
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage CountThings

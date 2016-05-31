@@ -3,7 +3,7 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage Flexiskin
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.

@@ -1,7 +1,7 @@
 /**
  * VisualEditor extension
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @version    1.20.0
 
  * @package    Bluespice_Extensions

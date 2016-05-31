@@ -22,7 +22,7 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Marc Reymann <reymann@hallowelt.biz>
+ * @author     Marc Reymann <reymann@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Avatars

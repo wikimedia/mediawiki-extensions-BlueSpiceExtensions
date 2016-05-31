@@ -2,7 +2,7 @@
 --
 -- Part of BlueSpice for MediaWiki
 --
--- @author     Robert Vogel <vogel@hallowelt.biz>
+-- @author     Robert Vogel <vogel@hallowelt.com>
 -- @version    $Id$
 -- @package    BlueSpice_Extensions
 -- @subpackage ResponsibleEditors

@@ -4,7 +4,7 @@
  * Part of BlueSpice for MediaWiki
  * This file acually configures the individual buttons
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
 
  * @package    Bluespice_Extensions
  * @subpackage ExtendedEditBar

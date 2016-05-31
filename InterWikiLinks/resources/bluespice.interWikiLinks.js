@@ -1,7 +1,7 @@
 /**
  * InterWikiManager extension
  *
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    0.1 beta
  * @package    Bluespice_Extensions
  * @subpackage InterWikiLinks
