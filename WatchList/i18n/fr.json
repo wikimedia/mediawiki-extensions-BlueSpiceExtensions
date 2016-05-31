@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"bs-watchlist-desc": "Ajoute un widget et une balise de liste de suivi",
@@ -10,5 +11,5 @@
 	"bs-watchlist-pref-widgetsortodr": "Trié par :",
 	"bs-watchlist-pref-sort-time": "Horodatage",
 	"bs-watchlist-pref-sort-title": "Titre",
-	"bs-watchlist-tag-watchlist-desc": "Crée une liste de pages qui sont dans votre liste de suivi et ont une modification non vue."
+	"bs-watchlist-tag-watchlist-desc": "Affiche les articles qui ont des modifications les plus récentes et sont sur votre liste de suivi."
 }

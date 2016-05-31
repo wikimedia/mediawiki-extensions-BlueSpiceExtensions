@@ -5,6 +5,8 @@
 		]
 	},
 	"bs-checklist-menu-insert-checkbox": "Casella di controllo",
+	"bs-checklist-tag-checklist-example-check": "Casella di controllo",
+	"bs-checklist-tag-checklist-example-list": "Menu di selezione",
 	"bs-checklist-dlg-new-list": "Crea un nuovo elenco",
 	"bs-checklist-dlg-save-list": "Salva le modifiche all'elenco",
 	"bs-checklist-dlg-items-label": "Elementi nell'elenco",

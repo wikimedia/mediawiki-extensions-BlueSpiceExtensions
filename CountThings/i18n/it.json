@@ -10,6 +10,8 @@
 	"bs-countthings-error-no-input": "Nessuna pagina fornita.",
 	"bs-countthings-error-invalid-mode": "La modalità \"$1\" non è valida. Utilizzare \"chars\", \"words\", o \"pages\".",
 	"bs-countthings-error-not-exist": "La pagina \"$1\" non esiste.",
-	"bs-countthings-tag-countarticles-desc": "Visualizza il numero di pagine.",
-	"bs-countthings-tag-countusers-desc": "Visualizza il numero di utenti."
+	"bs-countthings-tag-countarticles-desc": "Visualizza il numero di voci nel wiki.",
+	"bs-countthings-tag-countusers-desc": "Mostra il numero di utenti registrati.",
+	"bs-countthings-tag-countcharacters-example-1": "Numero di parole",
+	"bs-countthings-tag-countcharacters-example-2": "Numero di caratteri"
 }

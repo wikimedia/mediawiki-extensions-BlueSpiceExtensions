@@ -5,5 +5,7 @@
 		]
 	},
 	"bs-whoisonline-nousers": "Nikt nie jest zalogowany.",
-	"bs-whoisonline-pref-orderby": "Sortuj według:"
+	"bs-whoisonline-pref-orderby": "Sortuj według:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Pokazuje liczbę wszystkich użytkowników, którzy zalogowali się w ciągu ostatnich 10 minut.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Pokazuje wszystkich użytkowników, którzy zalogowali się w ciągu ostatnich 10 minut."
 }

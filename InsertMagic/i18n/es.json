@@ -67,5 +67,6 @@
 	"bs-insertmagic-label-first": "1. Elige la etiqueta o palabra mágica",
 	"bs-insertmagic-label-second": "2. Modifica el código",
 	"bs-insertmagic-label-desc": "Descripción",
-	"bs-insertmagic-label-see-also": "Véase también:"
+	"bs-insertmagic-label-examples": "Ejemplos",
+	"bs-insertmagic-label-see-also": "Véase también"
 }

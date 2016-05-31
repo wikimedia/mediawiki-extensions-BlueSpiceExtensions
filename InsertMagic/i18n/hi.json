@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sfic"
+			"Sfic",
+			"Macofe"
 		]
 	},
-	"bs-insertmagic-label-see-also": "इसे भी देखें:"
+	"bs-insertmagic-label-see-also": "इसे भी देखें"
 }

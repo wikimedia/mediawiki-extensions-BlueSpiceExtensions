@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Macofe"
 		]
 	},
 	"bs-insertmagic-desc": "Aggiunge una finestra di dialogo che consente l'inserimento di parole magiche ed etichette",
@@ -22,5 +23,6 @@
 	"bs-insertmagic-server": "URL di dominio.",
 	"bs-insertmagic-servername": "Nome di dominio.",
 	"bs-insertmagic-label-desc": "Descrizione",
-	"bs-insertmagic-label-see-also": "Vedi anche:"
+	"bs-insertmagic-label-examples": "Esempi",
+	"bs-insertmagic-label-see-also": "Vedi anche"
 }

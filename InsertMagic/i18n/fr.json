@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"SnowedEarth",
-			"Wladek92"
+			"Wladek92",
+			"Macofe"
 		]
 	},
 	"bs-insertmagic-desc": "Ajoute une boîte de dialogue permettant l’insertion de mots magiques et de balises",
@@ -66,5 +67,5 @@
 	"bs-insertmagic-label-first": "1. Choisir la balise ou le mot magique",
 	"bs-insertmagic-label-second": "2. Modifier le code",
 	"bs-insertmagic-label-desc": "Description",
-	"bs-insertmagic-label-see-also": "Voir aussi :"
+	"bs-insertmagic-label-see-also": "Voir aussi"
 }

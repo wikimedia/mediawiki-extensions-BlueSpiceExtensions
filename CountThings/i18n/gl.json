@@ -11,8 +11,10 @@
 	"bs-countthings-error-no-input": "Non se proporcionou unha páxina.",
 	"bs-countthings-error-invalid-mode": "O modo \"$1\" é inválido. Por favor, utilice \"caracteres\", \"palabras\" ou \"páxinas\".",
 	"bs-countthings-error-not-exist": "A páxina \"$1\" non existe.",
-	"bs-countthings-tag-countarticles-desc": "Mostra o número de páxinas.",
-	"bs-countthings-tag-countusers-desc": "Mostra o número de usuarios.",
+	"bs-countthings-tag-countarticles-desc": "Mostra o número de artigos na wiki.",
+	"bs-countthings-tag-countusers-desc": "Mostra o número de usuarios rexistrados.",
 	"bs-countthings-tag-countcharacters-desc": "Mostra as estatísticas dos contidos da páxina dada. Atributo de configuración dispoñible:",
-	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>modo</code>: Deben contarse <code>caracteres</code> (caracteres), <code>palabras</code> (palabras) ou <code>páxinas</code> (páxinas)."
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>modo</code>: Deben contarse <code>caracteres</code> (caracteres), <code>palabras</code> (palabras) ou <code>páxinas</code> (páxinas).",
+	"bs-countthings-tag-countcharacters-example-1": "Número de palabras",
+	"bs-countthings-tag-countcharacters-example-2": "Número de caracteres"
 }

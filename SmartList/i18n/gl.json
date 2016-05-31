@@ -33,6 +33,8 @@
 	"bs-smartlist-time": "Hora",
 	"bs-smartlist-title": "Título",
 	"bs-smartlist-tag-smartlist-desc": "Mostra información de configuración sobre os cambios recentes.",
+	"bs-smartlist-tag-smartlist-example-rc": "Modo: cambios recentes",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Modo: o que liga aquí",
 	"bs-smartlist-tag-newbies-desc": "Mostra os usuarios máis recentes.",
 	"bs-smartlist-tag-toplist-desc": "Mostra unha lista das páxinas máis vistas.",
 	"bs-smartlist-mostvisitedpages": "Páxinas máis vistas",

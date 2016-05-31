@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Piramidion"
+			"Piramidion",
+			"Macofe"
 		]
 	},
 	"bs-insertmagic-desc": "Додає діалогове вікно, що дозволяє вставку магічних слів і теґів",
@@ -65,5 +66,5 @@
 	"bs-insertmagic-label-first": "1. Виберіть теґ або магічне слово",
 	"bs-insertmagic-label-second": "2. Змініть код",
 	"bs-insertmagic-label-desc": "Опис",
-	"bs-insertmagic-label-see-also": "Див. також:"
+	"bs-insertmagic-label-see-also": "Див. також"
 }
