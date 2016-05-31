@@ -25,7 +25,7 @@
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UniversalExport
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -96,7 +96,7 @@ class UniversalExport extends BsExtensionMW {
 		global $wgBlueSpiceExtInfo;
 		//Configuration variables
 		$aMetadataDefaults = array(
-			'creator' => 'Hallo Welt! Medienwerkstatt GmbH',
+			'creator' => 'Hallo Welt! GmbH',
 		);
 		$aMetadataOverrides = array(
 			'producer' => 'UniversalExport '.$wgBlueSpiceExtInfo['version'].' (BlueSpice for MediaWiki)'

@@ -9,7 +9,7 @@
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -118,7 +118,7 @@
 		getInfo: function() {
 			return {
 				longname: 'HwContextmenu Plugin',
-				author: 'Hallo Welt! Medienwerkstatt GmbH',
+				author: 'Hallo Welt! GmbH',
 				authorurl: 'http://www.hallowelt.biz',
 				infourl: 'http://www.blue-spice.org',
 				version: tinymce.majorVersion + "." + tinymce.minorVersion

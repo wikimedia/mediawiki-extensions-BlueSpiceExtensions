@@ -7,7 +7,7 @@
  * Description: Provides context menus for various MediaWiki links
  * Authors: Tobias Weichart, Robert Vogel
  *
- * Copyright (C) 2014 Hallo Welt! – Medienwerkstatt GmbH, All rights reserved.
+ * Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage ContextMenu
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
