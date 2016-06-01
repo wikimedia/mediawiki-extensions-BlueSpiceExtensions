@@ -2,17 +2,29 @@
 class ViewBlueSpiceProjectFeedbackHelperPanel extends ViewStateBarTopElement {
 
 	public function execute( $params = false ) {
-		$aOut = array();
-		$aOut[] = '<div id="bs-bluespiceprojectfeedbackhelperpanel">';
-		$aOut[] = ' <div id="bs-bluespiceprojectfeedbackhelperpanel-text">';
-		$aOut[] = wfMessage( 'bs-bluespiceprojectfeedbackhelper-hint' )->parse();
-		$aOut[] = ' </div>';
-		$aOut[] = ' <div id="bs-bluespiceprojectfeedbackhelperpanel-closebutton" title="'
-					. wfMessage('bs-bluespiceprojectfeedbackhelper-closebutton')->plain() . '" data-confirm-msg="'
-					. wfMessage('bs-bluespiceprojectfeedbackhelper-confirm')->escaped() . '"></div>';
-		$aOut[] = '</div>';
+		$sOut = '';
+		$sOut .= Xml::openElement( 'div' , array(
+			'id' => 'bs-bluespiceprojectfeedbackhelperpanel'
+		));
 
-		return implode( "\n", $aOut );
+		$sOut .= Xml::openElement(
+			'div' ,
+			array( 'id' => 'bs-bluespiceprojectfeedbackhelperpanel-text' )
+		);
+		$sOut .= wfMessage( 'bs-bluespiceprojectfeedbackhelper-hint' )->parse();
+		$sOut .= Xml::closeElement( 'div' );
+
+		$oCloseMsg = wfMessage('bs-bluespiceprojectfeedbackhelper-closebutton');
+		$oConfirmMsg = wfMessage('bs-bluespiceprojectfeedbackhelper-confirm');
+		$sOut .= Xml::openElement( 'div', array(
+			'id' => 'bs-bluespiceprojectfeedbackhelperpanel-closebutton',
+			'title' => $oCloseMsg->plain(),
+			'data-confirm-msg' => $oConfirmMsg->plain(),
+		));
+		$sOut .= Xml::closeElement( 'div' );
+
+		$sOut .= Xml::closeElement( 'div' );
+
+		return $sOut;
 	}
-
 }

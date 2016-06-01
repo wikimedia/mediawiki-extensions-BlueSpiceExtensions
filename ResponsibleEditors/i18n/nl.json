@@ -3,7 +3,8 @@
 		"authors": [
 			"SPQRobin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Sjoerddebruin"
 		]
 	},
 	"bs-responsibleeditors-desc": "Laat MediaWiki verantwoordelijk voor het beheren van de redactie voor pagina ' s",
@@ -17,11 +18,11 @@
 	"bs-responsibleeditors-pref-emove": "Op de hoogte stellen wanneer de pagina is verplaatst",
 	"bs-responsibleeditors-pref-autopermissions": "Automatische toekenning van rechten:",
 	"bs-responsibleeditors-statebartopresponsibleeditorsentries": "Verantwoordelijk bewerkers",
-	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Verantwoordelijk redactie",
+	"bs-responsibleeditors-statebarbodyresponsibleeditorsentries": "Verantwoordelijk bewerkers",
 	"bs-responsibleeditors-success-ajax": "Verantwoordelijkheid gewijzigd.",
 	"bs-responsibleeditors-error-ajax-invalid-parameter": "Ongeldige waarde die is opgegeven.",
 	"bs-responsibleeditors-error-ajax-not-allowed": "Toegang geweigerd. U bent niet gemachtigd om deze actie uit te voeren.",
-	"bs-responsibleeditors-contentactions-label": "Wijzigen verantwoordelijkheid",
+	"bs-responsibleeditors-contentactions-label": "Verantwoordelijkheid wijzigen",
 	"bs-responsibleeditors-statebartop-icon-alt": "Er is een redacteur verantwoordelijk voor deze pagina",
 	"bs-responsibleeditors-statebarbody-headline": "Verantwoordelijke {{PLURAL:$1|{{GENDER:$2|bewerker}}|bewerkers}}",
 	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "De opgegeven pagina bestaat niet.",

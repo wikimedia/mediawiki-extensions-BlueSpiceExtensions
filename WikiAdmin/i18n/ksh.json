@@ -11,5 +11,6 @@
 	"right-wikiadmin": "Sigge för et Verwallde vun  BlueSpice aanzeije",
 	"bs-wikiadmin-shop": "Jeschäff",
 	"bs-wikiadmin-mediawiki-specialpages-text": "{{int:nstab-special}}e",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Deiht alle {{int:nstab-special}}e vum Mehijawikki opleste"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Deiht alle {{int:nstab-special}}e vum Mehijawikki opleste",
+	"bs-wikiadmin-widget-title": "Verwalldong"
 }

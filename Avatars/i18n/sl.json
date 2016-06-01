@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"prefs-avatars": "Avatarji",
 	"bs-avatars-desc": "Omogoča generične in individualne slike uporabnika",
 	"bs-avatars-pref-generator": "Generator:",
 	"bs-avatars-pref-defaultsize": "Privzeta velikost v slikovnih pikah:",
-	"bs-avatars-upload-complete": "Slika je bila uspešno naložena.",
+	"bs-avatars-upload-complete": "Sliko smo naložili.",
 	"bs-avatars-generate-complete": "Ustvarjen je bil nov avatar.",
 	"bs-avatars-upload-title": "Spreminjanje slike profila",
 	"bs-avatars-upload-label": "Slika",
@@ -18,7 +19,7 @@
 	"bs-avatars-userimage-title": "Slika iz wiki ali naslov URL slike",
 	"bs-avatars-userimage-help": "Npr. Slika.jpg ali http://localhost/Slika.gif",
 	"bs-avatars-set-userimage-failed": "Nepravilen naslov URL ali pa slika ni iz wiki vira.",
-	"bs-avatars-set-userimage-saved": "Slika uporabnika je bila uspešno shranjena.",
+	"bs-avatars-set-userimage-saved": "Sliko uporabnika smo shranili.",
 	"bs-avatars-file-upload-fieldset-title": "Nalaganje slike",
 	"bs-avatars-auto-generate-fieldset-title": "Samodejno ustvari avatar"
 }

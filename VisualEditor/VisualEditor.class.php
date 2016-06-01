@@ -22,13 +22,13 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Sebastian Ulbricht
- * @author     Stefan Widmann <widmann@hallowelt.biz>
+ * @author     Stefan Widmann <widmann@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage VisualEditor
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -124,6 +124,10 @@ class VisualEditor extends BsExtensionMW {
 		//apply in a correct manner. This may be dangerous.
 		'body_id' => 'bodyContent',
 		'autoresize_max_height' => 15000,
+		//set the default style to contenttable when inserting a table
+		'table_default_attributes' => array(
+			'class' => 'contenttable'
+		),
 		#'document_base_url' => $GLOBALS['wgServer'],
 		'style_formats' => array(
 			array('title' => 'Headers', 'items' => array(
@@ -251,7 +255,8 @@ class VisualEditor extends BsExtensionMW {
 		$aRows[0]['editing'][10] = 'bs-editbutton-visualeditor';
 
 		$aButtonCfgs['bs-editbutton-visualeditor'] = array(
-			'tip' => wfMessage('bs-visualeditor-editbutton-hint')->plain()
+			'tip' => wfMessage('bs-visualeditor-editbutton-hint')->plain(),
+			'disabled' => true
 		);
 		return true;
 	}
@@ -340,11 +345,9 @@ class VisualEditor extends BsExtensionMW {
 			return true;
 
 		$out->addModuleStyles('ext.bluespice.visualEditor.styles');
-		// $out->addModules breaks IE8
-		$out->addModuleScripts('ext.bluespice.visualEditor.tinymce');
-		$out->addModuleScripts('ext.bluespice.visualEditor');
 
-		$out->addModuleMessages('ext.bluespice.visualEditor.tinymce');
+		$out->addModules('ext.bluespice.visualEditor.tinymce');
+		$out->addModules('ext.bluespice.visualEditor');
 
 		return true;
 	}
@@ -359,78 +362,6 @@ class VisualEditor extends BsExtensionMW {
 		//Overwrite user setting
 		$this->getOutput()->addJsConfigVars('bsVisualEditorUse', false);
 		BsConfig::set('MW::VisualEditor::Use', false, true); //This seems to be too late
-	}
-
-	/**
-	 * PW(25.03.2015) TODO: Use API
-	 * @global User $wgUser
-	 * @global Language $wgLang
-	 * @return string
-	 */
-	public static function doSaveArticle() {
-		$aResult = $aOutput = array(
-			'saveresult' => 'fail',
-			'message' => '',
-			'edittime' => '',
-			'summary' => '',
-			'starttime' => wfTimestamp(TS_MW, time() + 2),
-		);
-		if (BsCore::checkAccessAdmission('read') === false) {
-			$aResult['message'] = wfMessage( 'bs-permissionerror' )->plain();
-			return FormatJson::encode( $aResult );
-		}
-
-		global $wgLang, $wgRequest;
-		$sArticleId = $wgRequest->getInt('articleId', 0);
-		$sText = $wgRequest->getVal('text', '');
-		$sPageName = $wgRequest->getVal('pageName', '');
-		$sSummary = $wgRequest->getVal('summary', '');
-		$iSection = $wgRequest->getInt('editsection', 0);
-
-		$sReturnEditTime = wfTimestampNow();
-		if ($sSummary == 'false') {
-			$sSummary = '/* '.wfMessage( 'bs-visualeditor-no-summary' )->plain().' */';
-		}
-
-		//PW(25.03.2015) TODO: Use Wikipage
-		$oArticle = Article::newFromID( $sArticleId );
-		if( is_null($oArticle) ) {
-			$oTitle = Title::newFromText( $sPageName );
-			if( is_null($oTitle) || !$oTitle->exists() ) {
-				$aResult['message'] = wfMessage( 'badtitle' )->plain();
-				return FormatJson::encode( $aResult );
-			}
-			$oArticle = new Article( $oTitle );
-		}
-
-		if ($iSection) {
-			$sText = $oArticle->replaceSection($iSection, $sText);
-		}
-
-		//PW(25.03.2015) TODO: Deprecated since MW 1.21 use
-		//Wikipage::doEditContent instead
-		$oSaveResult = $oArticle->doEdit($sText, $sSummary);
-
-		if( $oSaveResult->isGood() ) {
-			$sTime = $wgLang->timeanddate($sReturnEditTime, true);
-			$aResult['edittime'] = $sReturnEditTime;
-			$aResult['saveresult'] = 'ok';
-			$aResult['message'] = wfMessage( 'bs-visualeditor-save-message', $sTime, $sSummary )->plain();
-			$aResult['summary'] = $sSummary;
-		} else {
-			$aResult['message'] = $oSaveResult->getMessage()->plain();
-		}
-
-		return FormatJson::encode( $aResult );
-	}
-
-	public static function checkLinks($links) {
-		$aResult = array();
-		foreach ($links as $sTitle) {
-			$oTitle = Title::newFromText(urldecode($sTitle));
-			$aResult[] = $oTitle instanceof Title ? $oTitle->exists() : false;
-		}
-		return FormatJson::encode($aResult);
 	}
 
 	/**
@@ -517,6 +448,14 @@ class VisualEditor extends BsExtensionMW {
 				'ext.bluespice'
 			)
 		);
+
+		// When in preview mode, users want to see the preview article and not
+		// the edit box. So in this case, the editor will not be autofocussed.
+		$sAction = $this->getRequest()->getVal( 'action', 'view' );
+		if ( $sAction == 'submit' ) {
+			unset( $aConfigs['standard']['auto_focus'] );
+			unset( $aConfigs['overwrite']['auto_focus'] );
+		}
 
 		$aExtensionTags = $oParser->getTags(); //TODO: Use, or at least fall back to API "action=query&meta=siteinfo&siprop=extensiontags"
 		$sAllowedTags = '';

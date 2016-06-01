@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Sadrettin"
 		]
 	},
-	"bs-whoisonline-pref-orderby": "Sıralama ölçütü:"
+	"bs-whoisonline-widget-title": "Kim çevrimiçi?",
+	"prefs-whoisonline": "Kim çevrimiçi?",
+	"bs-whoisonline-pref-limitcount": "Maksimum gösterilen kullanıcı sayısı:",
+	"bs-whoisonline-pref-orderby": "Sıralama ölçütü:",
+	"bs-whoisonline-pref-maxidletime": "Saniye cinsinden geçen süre içinde çevrimdışı olarak işaretlenen kullanıcı:",
+	"bs-whoisonline-pref-orderby-time": "Çalışma süresi",
+	"bs-whoisonline-pref-orderby-name": "Ad",
+	"bs-whoisonline-pref-interval": "Saniyeler içinde güncelleme aralığı:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Şu an giriş yapmış kullanıcı sayısını verir."
 }

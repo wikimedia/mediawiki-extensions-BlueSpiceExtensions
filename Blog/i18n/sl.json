@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-blog-desc": "Prikaže strani v obliki blog seznama",
@@ -27,7 +28,7 @@
 	"bs-blog-pref-imagerendermode": "Prikaži slike kot:",
 	"bs-blog-pref-imagefloatdirection": "Tok besedila: Položaj slike",
 	"bs-blog-pref-maxentrycharacters": "Število besed na zapis:",
-	"bs-blog-tag-blog-desc": "Prikaži dnevniške zapise na vsaki strani.",
-	"bs-blog-tag-blogtime-desc": "Ta oznaka omogoča lastno nastavitev časovne oznake dnevniških zapisov.",
+	"bs-blog-tag-blog-desc": "Vključuje blog člankov, razprav in strani datotek. Lahko ga določajo različni parametri. Te lahko kombinirate v poljubnem vrstnem redu.",
+	"bs-blog-tag-blogtime-desc": "Vstavi lastno določen časovni žig za prikaz in razvrščanje objav na blogu. Oblika je YYYYMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "Zapis mora biti v obliki LLLLMMDDUUmm. Npr.: časovni žig datuma in ure 12. januar 2013 15:43 se zapiše kot 201301121543."
 }

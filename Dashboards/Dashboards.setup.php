@@ -11,18 +11,16 @@ $GLOBALS['wgAutoloadClasses']['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['SpecialAdminDashboard'] = __DIR__.'/includes/specials/SpecialAdminDashboard.php';
 $wgAutoloadClasses['SpecialUserDashboard'] = __DIR__.'/includes/specials/SpecialUserDashboard.php';
-$wgAutoloadClasses['DashboardConfigRow'] = __DIR__.'/includes/DashboardConfigRow.php';
-$wgAutoloadClasses['DashboardConfigTable'] = __DIR__.'/includes/DashboardConfigTable.php';
+$GLOBALS['wgAutoloadClasses']['BSApiDashboardTasks'] = __DIR__ . '/includes/api/BSApiDashboardTasks.php';
+$GLOBALS['wgAutoloadClasses']['BSApiDashboardStore'] = __DIR__ . '/includes/api/BSApiDashboardStore.php';
+$GLOBALS['wgAutoloadClasses']['BSApiDashboardWidgetsTasks'] = __DIR__ . '/includes/api/BSApiDashboardWidgetsTasks.php';
 
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';
 
-$wgAjaxExportList[] = 'Dashboards::saveAdminDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::saveUserDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::saveTagDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::getPortlets';
-$wgAjaxExportList[] = 'Dashboards::getAdminDashboardConfig';
-$wgAjaxExportList[] = 'Dashboards::getUserDashboardConfig';
+$wgAPIModules['bs-dashboards-tasks'] = 'BSApiDashboardTasks';
+$wgAPIModules['bs-dashboards-store'] = 'BSApiDashboardStore';
+$wgAPIModules['bs-dashboards-widgets-tasks'] = 'BSApiDashboardWidgetsTasks';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'Dashboards::getSchemaUpdates';
 
@@ -48,12 +46,13 @@ $wgResourceModules['ext.bluespice.dashboards.portletCatalog'] = array(
 		'bluespice.dashboards.css'
 	),
 	'dependencies' => array(
-		'ext.bluespice.extjs'
+		'ext.bluespice.extjs.BS.portal'
 	),
 	'messages' => array(
 		'bs-dashboards-addportlet',
 		'bs-dashboards-portlets',
-		'bs-extjs-rssfeeder-rss-title'
+		'bs-extjs-rssfeeder-rss-title',
+		'bs-dashboard-userportlet-wikipage-wiki-article'
 	)
 ) + $aResourceModuleTemplate;
 
@@ -71,6 +70,8 @@ $wgResourceModules['ext.bluespice.dashboards.userDashboard'] = array(
 		//Default portlets user
 		'bs-dashboard-userportlet-calendar-title',
 		'bs-dashboard-userportlet-calendar-description',
+		'bs-dashboard-userportlet-article-title',
+		'bs-dashboard-userportlet-article-description',
 	)
 ) + $aResourceModuleTemplate;
 

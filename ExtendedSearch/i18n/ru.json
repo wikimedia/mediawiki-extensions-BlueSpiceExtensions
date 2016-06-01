@@ -59,6 +59,7 @@
 	"bs-extendedsearch-pref-showfacets": "Показать аспекты на специальной странице",
 	"bs-extendedsearch-pref-showautocomplete": "Предлагать страницы, соответствующие поисковому запросу",
 	"bs-extendedsearch-pref-externalrepo": "Индексировать внешний каталог:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL-адрес внешнего каталога:",
 	"bs-extendedsearch-pref-acentries": "Количество предложений, отвечающих поисковому запросу:",
 	"bs-extendedsearch-pref-highlightsnippets": "Количество выделенных фрагментов:",
 	"bs-extendedsearch-pref-indexfiletypes": "Индексировать файлы с определенными расширениями:",

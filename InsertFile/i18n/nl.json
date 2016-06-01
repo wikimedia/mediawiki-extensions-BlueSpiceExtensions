@@ -7,11 +7,11 @@
 			"Esketti"
 		]
 	},
-	"bs-insertfile-desc": "Het dialoogvenster bestanden uploaden en invoegen van een link naar een bestand",
+	"bs-insertfile-desc": "Het dialoogvenster voor het uploaden van bestanden en het invoegen van een koppeling naar een bestand",
 	"bs-insertfile-insert-image": "Afbeelding invoegen",
 	"bs-insertfile-insert-file": "Bestand invoegen",
-	"bs-insertfile-button-image-title": "Invoegen of bewerken afbeelding",
-	"bs-insertfile-button-file-title": "Invoegen of bewerken bestand",
+	"bs-insertfile-button-image-title": "Afbeelding invoegen of bewerken",
+	"bs-insertfile-button-file-title": "Bestand invoegen of bewerken",
 	"bs-insertfile-uploadsdisabled": "Uploaden is niet mogelijk in deze wiki.",
 	"bs-insertfile-nomatch": "Geen resultaten",
 	"bs-insertfile-labelsort": "Sorteren op:",
@@ -67,7 +67,7 @@
 	"bs-insertfile-categories": "Categorieën",
 	"bs-insertfile-linktext": "Tekst weergeven",
 	"bs-insertfile-no-link": "Geen koppeling",
-	"bs-insertfile-error-no-medialink": "Geen media-link geselecteerd.",
-	"bs-insertfile-error-no-imagelink": "Geen afbeelding link geselecteerd.",
-	"bs-insertfile-upload-waitmessage": "Uploaden in progress ..."
+	"bs-insertfile-error-no-medialink": "Geen mediakoppeling geselecteerd.",
+	"bs-insertfile-error-no-imagelink": "Geen afbeeldingskoppeling geselecteerd.",
+	"bs-insertfile-upload-waitmessage": "Aan het uploaden ..."
 }

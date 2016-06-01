@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
+	"bs-smartlist-comment": "Mışewre: $1.",
 	"bs-smartlist-pref-namespaces": "Heruna nameyan",
 	"bs-smartlist-pref-categories": "Kategoriy:",
 	"bs-smartlist-month": "Aşme",
 	"bs-smartlist-time": "Wext",
 	"bs-smartlist-title": "Sername",
+	"bs-smartlist-tag-smartlist-example-rc": "Mode:Vıryayışê peyêni",
 	"bs-smartlist-lastedits": "Vurnayışê mı"
 }

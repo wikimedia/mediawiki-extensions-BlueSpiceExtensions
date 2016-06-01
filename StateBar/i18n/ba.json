@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Азат Хәлилов"
+		]
+	},
+	"bs-statebar-desc": "юл торошон күрһәтә",
+	"prefs-statebar": "Торош юлы",
+	"bs-statebar-pref-sortbodyvars": "Есемдәге тәртибе",
+	"bs-statebar-pref-sorttopvars": "Өҫкө өлөштә тәртип",
+	"bs-statebar-pref-show": "Юл торошон күрһәтергә",
+	"bs-statebar-viewtoggler": "ДЕТАЛДӘР",
+	"bs-statebar-viewtoggler-tooltip": "Деталдәр мәғлүмәтен күрһәтергә",
+	"bs-statebar-switch-description": "Был биттә юл торошон йәшерә",
+	"bs-statebar-ajax-nobodyviews": "Мәғлүмәт юҡ"
+}

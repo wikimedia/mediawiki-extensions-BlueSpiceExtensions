@@ -4,14 +4,15 @@
 			"Liuxinyu970226",
 			"Mywood",
 			"Impersonator 1",
-			"LNDDYL"
+			"LNDDYL",
+			"EagerLin"
 		]
 	},
 	"bs-blog-desc": "显示博客样式的页面列表",
 	"prefs-blog": "博客",
 	"bs-blog-no-entries": "这里没有博文。",
 	"bs-blog-comments": "评论",
-	"bs-blog-read-more": "了解更多",
+	"bs-blog-read-more": "阅读更多",
 	"bs-blog-trackback": "引用通知",
 	"bs-blog-permalink": "固定链接",
 	"bs-blog-show-all": "显示所有博文",
@@ -30,7 +31,8 @@
 	"bs-blog-pref-imagerendermode": "显示图片作为：",
 	"bs-blog-pref-imagefloatdirection": "文本流：图片位置",
 	"bs-blog-pref-maxentrycharacters": "每博文字数：",
-	"bs-blog-tag-blog-desc": "在任何页面显示博文。",
-	"bs-blog-tag-blogtime-desc": "此标签给您提供为您的日志设置自定义时间戳的机会。",
+	"bs-blog-tag-blog-desc": "包含一个由条目、讨论和文件页面组成的博客。可由各种参数指定。这些东西可按任何顺序相结合。",
+	"bs-blog-tag-blogmore-desc": "定义博文的摘要长度。在博文中打算作为摘要的章节末尾设置即可。作为结果，会出现链接“{{int:bs-blog-read-more}}”，它链接至整个博文。",
+	"bs-blog-tag-blogtime-desc": "插入自定义时间戳以在博文中显示和排序。格式是YYYYMMDDHHmm。",
 	"bs-blog-tag-blogtime-err": "格式应为YYYYMMDDHHmm，也就是对于2013年1月12日 15:43，时间戳应为：201301121543"
 }

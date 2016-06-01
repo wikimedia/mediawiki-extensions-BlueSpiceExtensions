@@ -3,10 +3,10 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage ExtendedSearch
- * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -67,7 +67,7 @@ mw.loader.using( [ 'jquery.ui.autocomplete', 'ext.bluespice.extendedsearch.form'
 	$.ui.autocomplete.prototype._renderItem = function( ul, item ) {
 		return $( "<li class='" + item.attr + "'></li>" )
 				.data( "item.autocomplete", item )
-				.append( "<a>" + item.label + "</a>" )
+				.append( "<a href=\"" + item.link + "\">" + item.label + "</a>" )
 				.appendTo( ul );
 	};
 } );

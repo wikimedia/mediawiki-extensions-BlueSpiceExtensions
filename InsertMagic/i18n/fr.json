@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"SnowedEarth"
+			"SnowedEarth",
+			"Wladek92",
+			"Macofe"
 		]
 	},
-	"bs-insertmagic-desc": "Ajoute une boîte de dialogue pour le mode d’édition qui permet l’insertion de mots magiques et de balises",
+	"bs-insertmagic-desc": "Ajoute une boîte de dialogue permettant l’insertion de mots magiques et de balises",
 	"bs-insertmagic": "Insérer un mot magique",
 	"bs-insertmagic-notoc": "Masque la table des matières.",
 	"bs-insertmagic-forcetoc": "Force l’apparition de la table des matières dans sa position normale.",
@@ -64,5 +66,6 @@
 	"bs-insertmagic-type-switches": "Commutateurs de comportement",
 	"bs-insertmagic-label-first": "1. Choisir la balise ou le mot magique",
 	"bs-insertmagic-label-second": "2. Modifier le code",
-	"bs-insertmagic-label-desc": "Description"
+	"bs-insertmagic-label-desc": "Description",
+	"bs-insertmagic-label-see-also": "Voir aussi"
 }

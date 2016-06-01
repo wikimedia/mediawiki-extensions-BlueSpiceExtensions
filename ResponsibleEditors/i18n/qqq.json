@@ -79,5 +79,11 @@
 	"notification-bs-responsibleeditors-delete-body": "Notification about user deleting a page - email body\n* $1 - username of the author\n* $2 - name of page\n* $3 - link to page",
 	"notification-bs-responsibleeditors-move-summary": "Notification about user moving a page - flyout/archive page\nParameters:\n* $1 - username of the author\n* $2 - name of original page (unused)\n* $3 - link to original page\n* $4 - name of new page (unused)\n* $5 - link to new page",
 	"notification-bs-responsibleeditors-move-subject": "Notification about user moving a page - email subject\nParameters:\n* $1 - username of the author\n* $2 - name of original page\n* $3 - link to original page (unused)\n* $4 - name of new page (unused)\n* $5 - link to new page (unused)",
-	"notification-bs-responsibleeditors-move-body": "Notification about user moving a page - email body\n* $1 - username of the author\n* $1 - username of the author\n* $2 - name of original page\n* $3 - link to original page\n* $4 - name of new page\n* $5 - link to new page"
+	"notification-bs-responsibleeditors-move-body": "Notification about user moving a page - email body\n* $1 - username of the author\n* $1 - username of the author\n* $2 - name of original page\n* $3 - link to original page\n* $4 - name of new page\n* $5 - link to new page",
+	"bs-responsibleeditors-pagestorefilter-assigned": "Column list filter label in ExtJS grid on special page for show pages with responsibility already assigned\n{{Identical|Assigned}}",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Column list filter label in ExtJS grid on special page for show pages without assigned responsibility",
+	"apihelp-bs-responsibleeditorspages-store": "Describes the API endpoint that lists pages and the related responsible editors",
+	"apihelp-bs-bs-responsibleeditors-tasks": "Describes the API endpoint that allows manipulation of responsible editors",
+	"apihelp-bs-responsibleeditorsposibleeditors-store": "Describes the API endpoint that lists possible responsible editors",
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Describes the <var>articleId</var> parameter of the API module"
 }

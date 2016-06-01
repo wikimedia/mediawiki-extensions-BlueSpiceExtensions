@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Huji"
 		]
 	},
-	"bs-extendedsearch-desc": "جستجوی گسترده",
+	"bs-extendedsearch-desc": "افزونه‌ای برای جستجو بر اساس آپاچی سولار (http://lucene.apache.org/solr) برای گسترش قابلیت جستجو",
 	"specialextendedsearch": "جستجوی گسترده",
 	"prefs-extendedsearch": "جستجوی گسترده",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|رده|رده‌ها}}: $2",

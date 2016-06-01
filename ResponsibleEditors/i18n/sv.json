@@ -57,5 +57,19 @@
 	"log-name-bs-responsible-editors": "Logg för ansvariga redaktörer",
 	"log-description-bs-responsible-editors": "Detta är loggen för ansvariga redaktörer för sidor",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|har lagt till}} $4 som {{GENDER:$4|redigerare}} för $3",
-	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|har tagit bort}} $4 som {{GENDER:$4|redigerare}} för $3"
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|har tagit bort}} $4 som {{GENDER:$4|redigerare}} för $3",
+	"notification-bs-responsibleeditors-assign-summary": "[[User:$1|$1]] {{GENDER:$1|tilldelade}} dig som ansvarig redigerare för $3",
+	"notification-bs-responsibleeditors-assign-subject": "Ansvar för \"$2\" tilldelades",
+	"notification-bs-responsibleeditors-assign-body": "$1 {{GENDER:$1|tilldelade}} dig till \"$2\". Efter att du har loggat in på wikin kan du öppna sidan med denna länk: $3. Om du har några frågor kan du ställa dem till $1.",
+	"notification-bs-responsibleeditors-revoke-summary": "[[User:$1|$1]] {{GENDER:$1|återkallade}} ansvaret för sidan $3",
+	"notification-bs-responsibleeditors-revoke-subject": "Ansvaret för \"$2\" återkallades",
+	"notification-bs-responsibleeditors-revoke-body": "$1 {{GENDER:$1|återkallade}} ansvaret för sidan \"$2\". Efter att du har loggat in på wikin kan du öppna sidan med denna länk: $3. Om du har några frågor kan du ställa dem till $1.",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] har {{GENDER:$1|redigerat}} $3",
+	"notification-bs-responsibleeditors-change-subject": "Sidan \"$2\" har {{GENDER:$1|redigerats}} av $1",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] har {{GENDER:$1|raderat}} $3",
+	"notification-bs-responsibleeditors-delete-subject": "Sidan \"$2\" har {{GENDER:$1|raderats}} av $1",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|flyttade}} $3 till $5",
+	"notification-bs-responsibleeditors-move-subject": "Sidan \"$2\" har {{GENDER:$1|flyttats}} av $1",
+	"bs-responsibleeditors-pagestorefilter-assigned": "Tilldelade",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Inte tilldelade"
 }

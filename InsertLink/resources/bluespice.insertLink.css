@@ -1,36 +1,3 @@
-#il_main_top {
-	background-image:url(il_top.png);
-	background-repeat:no-repeat;
-	background-position:bottom -6px;
-	height:6px;
-	font-size:0px;
-}
-
-#il_main_mid {
-	background-color:#EEEEEE;
-}
-
-#il_main_bot {
-	background-image:url(il_bot.png);
-	background-repeat:no-repeat;
-	height:6px;
-	font-size:0px;
-}
-
-#il_main {
-	background:none;
-/*	border-top: 1px solid #D9DbDc;*/
-}
-#link_chooser_dlg .x-btn button {
-	width: 80px;
-}
-.x-combo-list-inner {
-	text-align: left;
-}
-#link_chooser_tab_panel > div > div > ul > li:nth-child(2) {
-	margin-left: 12px !important;
-}
-
 a#bs-editbutton-insertlink {
 	/*@embed*/
 	background-image: url(images/button_insert-link.png);

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Yfdyh000"
 		]
 	},
 	"bs-flexiskin-desc": "提供页面以管理带自定义选项的flexiskins",
@@ -29,7 +30,7 @@
 	"bs-flexiskin-labelbgcolor": "背景颜色",
 	"bs-flexiskin-headerheader": "首段",
 	"bs-flexiskin-labellogoupload": "标志",
-	"bs-flexiskin-labelbackgroundupload": "背景图片",
+	"bs-flexiskin-labelbackgroundupload": "当前图片",
 	"bs-flexiskin-no-repeat": "不重复",
 	"bs-flexiskin-repeat-x": "水平重复",
 	"bs-flexiskin-repeat-y": "垂直重复",
@@ -55,5 +56,9 @@
 	"bs-flexiskin-api-example-desc": "返回当前的Flexiskin配置。",
 	"bs-flexiskin-api-error-save": "尝试保存时出现错误。原因：“$1”",
 	"bs-flexiskin-api-error-invalid-action": "此操作不存在。",
-	"bs-flexiskin-api-error-missing-param": "以下参数丢失：“$1”"
+	"bs-flexiskin-api-error-missing-param": "以下参数丢失：“$1”",
+	"bs-flexiskin-apihelp-task-param-skinId": "参数<var>skinId</var>标识皮肤",
+	"bs-flexiskin-apihelp-task-param-name": "参数<var>name</var>是上传文件的文件名",
+	"bs-flexiskin-usebackground": "使用背景图片",
+	"bs-flexiskin-labelcurrentbackground": "当前图片"
 }

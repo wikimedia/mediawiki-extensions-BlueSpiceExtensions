@@ -3,10 +3,10 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage InsertLink
- * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -19,21 +19,19 @@ onFileDialogFile = function(path) {
 onFileDialogCancel = function() {
 };
 
-$(document).ready(function() {
-	$('#bs-editbutton-insertlink').on('click', function() {
-		var me = this;
-		mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
-			Ext.require('BS.InsertLink.Window', function() {
-				BS.InsertLink.Window.resetData();
-				BS.InsertLink.Window.clearListeners();
-				BS.InsertLink.Window.on('ok', BsInsertLinkWikiTextConnector.applyData, this);
-				BS.InsertLink.Window.on('cancel', bs.util.selection.reset);
-				BsInsertLinkWikiTextConnector.getData();
-				BS.InsertLink.Window.setData(
-					BsInsertLinkWikiTextConnector.getData()
-				);
-				BS.InsertLink.Window.show(me);
-			});
+$(document).on('click', '#bs-editbutton-insertlink', function() {
+	var me = this;
+	mw.loader.using( 'ext.bluespice.extjs' ).done(function(){
+		Ext.require('BS.InsertLink.Window', function() {
+			BS.InsertLink.Window.resetData();
+			BS.InsertLink.Window.clearListeners();
+			BS.InsertLink.Window.on('ok', BsInsertLinkWikiTextConnector.applyData, this);
+			BS.InsertLink.Window.on('cancel', bs.util.selection.reset);
+			BsInsertLinkWikiTextConnector.getData();
+			BS.InsertLink.Window.setData(
+				BsInsertLinkWikiTextConnector.getData()
+			);
+			BS.InsertLink.Window.show(me);
 		});
 	});
 });

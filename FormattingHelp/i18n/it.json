@@ -20,5 +20,6 @@
 	"bs-formattinghelp-help-extlink": "Collegamento esterno",
 	"bs-formattinghelp-help-hr": "Linea orizzontale",
 	"bs-formattinghelp-help-template": "Template",
-	"bs-formattinghelp-help-templatename": "Nome template"
+	"bs-formattinghelp-help-templatename": "Nome template",
+	"apihelp-bs-formattinghelp-description": "Fornisce le attività per l'estensione FormattingHelp."
 }

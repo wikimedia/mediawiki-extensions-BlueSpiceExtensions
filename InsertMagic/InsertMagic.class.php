@@ -21,12 +21,12 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage InsertMagic
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -137,6 +137,14 @@ class InsertMagic extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
+	public static function getMagicWords() {
+		return self::$aMagicWords;
+	}
+
+	public static function getTags() {
+		return self::$aTags;
+	}
+
 	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
 		$this->getOutput()->addModuleStyles('ext.bluespice.insertMagic.styles');
 		$this->getOutput()->addModules('ext.bluespice.insertMagic');
@@ -165,61 +173,5 @@ class InsertMagic extends BsExtensionMW {
 		$iIndexOverwrite = array_search( 'unlink',$aConfigOverwrite["toolbar2"] );
 		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "bsmagic" );
 		return true;
-	}
-
-	public static function ajaxGetData() {
-		$oResponse = new stdClass();
-		//Utilize?
-		//MagicWord::getDoubleUnderscoreArray()
-		//MagicWord::getVariableIDs()
-		//MagicWord::getSubstIDs()
-
-		$oResponse->result = array();
-
-		foreach ( self::$aTags as $sTag => $aData ) {
-			foreach ( $aData as $key => $value ) {
-				$oDescriptor = new stdClass();
-				$oDescriptor->id = $value;
-				$oDescriptor->type = 'tag';
-				$oDescriptor->name = $sTag;
-				$oDescriptor->desc = wfMessage( $key )->text();
-				$oDescriptor->code = $value;
-				$oDescriptor->previewable = true;
-				$oResponse->result[] = $oDescriptor;
-			}
-		}
-
-		foreach ( self::$aMagicWords['variables'] as $aVariable ) {
-			foreach ( $aVariable as $key => $value ) {
-				$oDescriptor = new stdClass();
-				$oDescriptor->id = $value;
-				$oDescriptor->type = 'variable';
-				$oDescriptor->name = substr( $value, 2, -2 );
-				$oDescriptor->desc = wfMessage( $key )->text();
-				$oDescriptor->code = $value;
-				$oDescriptor->previewable = true;
-				$oResponse->result[] = $oDescriptor;
-			}
-		}
-
-		foreach ( self::$aMagicWords['behavior-switches'] as $aSwitch ) {
-			foreach ( $aSwitch as $key => $value ) {
-				$oDescriptor = new stdClass();
-				$oDescriptor->id = $value;
-				$oDescriptor->type = 'switch';
-				$oDescriptor->name = substr( $value, 2, -2 );
-				$oDescriptor->desc = wfMessage( $key )->text();
-				$oDescriptor->code = $value;
-				$oDescriptor->previewable = false;
-				$oResponse->result[] = $oDescriptor;
-			}
-		}
-
-		//Other extensions may inject their tags or MagicWords
-		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'tags' ) );
-		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'variables' ) ); //For compatibility
-		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'switches' ) ); //For compatibility
-
-		return FormatJson::encode($oResponse);
 	}
 }

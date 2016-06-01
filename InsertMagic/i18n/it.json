@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Macofe"
 		]
 	},
+	"bs-insertmagic-desc": "Aggiunge una finestra di dialogo che consente l'inserimento di parole magiche ed etichette",
 	"bs-insertmagic-currentyear": "Anno attuale",
 	"bs-insertmagic-currentmonth": "Mese attuale (con zero iniziale).",
 	"bs-insertmagic-currentmonthname": "Mese attuale (nome).",
@@ -20,5 +22,7 @@
 	"bs-insertmagic-sitename": "Il nome del sito wiki.",
 	"bs-insertmagic-server": "URL di dominio.",
 	"bs-insertmagic-servername": "Nome di dominio.",
-	"bs-insertmagic-label-desc": "Descrizione"
+	"bs-insertmagic-label-desc": "Descrizione",
+	"bs-insertmagic-label-examples": "Esempi",
+	"bs-insertmagic-label-see-also": "Vedi anche"
 }

@@ -21,12 +21,12 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage SaferEdit
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -179,7 +179,12 @@ class SaferEdit extends BsExtensionMW {
 		}
 
 		foreach ( $aIntermediateEdits as $oEdit ) {
-			$iTime = wfTimestamp( TS_MW, time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
+			//Please do not edit this agian! This is well calculated!
+			//DO NOT WRITE RANDOM NUMBERS IN HERE
+			$iInterval = BsConfig::get( 'MW::SaferEdit::Interval' )
+				+ BsConfig::get( 'MW::PingInterval' )
+				+ 1; //+1 secound response time is enought
+			$iTime = wfTimestamp( TS_MW, time() - $iInterval );
 			if ( $oEdit->se_user_name != $oUser->getName() && $oEdit->se_timestamp > $iTime ) {
 				$aTopViews['statebartopsafereditediting'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name );
 			}
@@ -385,7 +390,12 @@ class SaferEdit extends BsExtensionMW {
 				$aSingleResult['someoneEditingView'] = $aSingleResult['safereditView'] = '';
 
 				foreach ( $aIntermediateEdits as $oEdit ) {
-					$iDate = wfTimestamp( TS_MW, time() - BsConfig::get( 'MW::SaferEdit::Interval' ) * 10 );
+					//Please do not edit this agian! This is well calculated!
+					//DO NOT WRITE RANDOM NUMBERS IN HERE
+					$iInterval = BsConfig::get( 'MW::SaferEdit::Interval' )
+						+ BsConfig::get( 'MW::PingInterval' )
+						+ 1; //+1 secound response time is enought
+					$iDate = wfTimestamp( TS_MW, time() - $iInterval );
 					if ( $oEdit->se_user_name != $oUser->getName() && $oEdit->se_timestamp > $iDate ) {
 						$aSingleResult['someoneEditingView'] = $this->makeStateBarTopSomeoneEditing( $oEdit->se_user_name )->execute();
 					}
@@ -393,10 +403,13 @@ class SaferEdit extends BsExtensionMW {
 
 				break;
 			case 'SaferEditSave':
-				$bHasUnsavedChanges = empty( $aData[0]['bUnsavedChanges'] ) || $aData[0]['bUnsavedChanges'] == "false" ? false : true;
-				if ( !$bHasUnsavedChanges ) {
+				if( !isset($aData[0]['bUnsavedChanges']) ) {
 					return true;
 				}
+				if( $aData[0]['bUnsavedChanges'] !== true ) {
+					return true;
+				}
+
 				$iSection = empty( $aData[0]['section'] ) ? -1 : $aData[0]['section'];
 
 				$aSingleResult['success'] = $this->saveUserEditing(

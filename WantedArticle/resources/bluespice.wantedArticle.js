@@ -3,12 +3,12 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Robert Vogel <vogel@hallowelt.com>
 
  * @package    Bluespice_Extensions
  * @subpackage WantedArticle
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -74,43 +74,19 @@ BsWantedArticle = {
 		});
 
 		this.oForms.submit( function() {
+			//Do not submit this forms!
 			return false;
-			//not sure...
-			/*var sTitle = $(this).find($('.bs-wantedarticle-composite-textfield')).val();
-			if( bsWantedArticleShowCreate == true ){
-				return BsWantedArticle.navigateToTarget( sTitle, $(this) );
-			}
-			else{
-				return BsWantedArticle.sendSuggestion( sTitle );
-			}*/
 		});
 
 		this.toggleMoreHandler();
 	},
 
 	checkArticleTitle: function( sArticleTitle, sDefault ) { // TODO RBV (06.10.10 09:42): Should be in common framework
-		if ( sArticleTitle == '' || sArticleTitle == sDefault ) {
+		if ( sArticleTitle === '' || sArticleTitle === sDefault ) {
 			bs.util.alert(
 				'bs-wantedarticle-alert',
 				{
-					text: 'bs-wantedarticle-info-nothing-entered'
-				}
-			);
-			return false;
-		}
-
-		var aFoundChars = [];
-		var bsForbiddenCharsInArticleTitle = mw.config.get( 'bsForbiddenCharsInArticleTitle' );
-		for ( var i=0; i < bsForbiddenCharsInArticleTitle.length; i++ ) {
-			if ( sArticleTitle.indexOf( bsForbiddenCharsInArticleTitle [i] ) != -1 ) {
-				aFoundChars.push( '"' + bsForbiddenCharsInArticleTitle [i] + '"' );
-			}
-		}
-		if( aFoundChars.length > 0 ) {
-			bs.util.alert(
-				'bs-wantedarticle-alert',
-				{
-					text: mw.message('bs-wantedarticle-title-invalid-chars', aFoundChars.length, aFoundChars.join( ', ' ) ).plain()
+					text: mw.message('bs-wantedarticle-info-nothing-entered').plain()
 				}
 			);
 			return false;
@@ -120,23 +96,36 @@ BsWantedArticle = {
 
 	navigateToTarget: function( sArticleTitle ) {
 		sArticleTitle = sArticleTitle.replace( ' ', '_' );
-		var sUrl = this.config.urlBase + '/index.php?title=' + encodeURIComponent( sArticleTitle );
+		var sUrl = mw.util.wikiGetlink( sArticleTitle );
 		document.location.href = sUrl;
 
 		return false;
 	},
 
 	sendSuggestion: function( sArticleTitle ) {
-		$.getJSON(
-			bs.util.getAjaxDispatcherUrl( 'WantedArticle::ajaxAddWantedArticle', [ sArticleTitle ] ),
-			function( oData, oTextStatus ) {
-				bs.util.alert( 'WAsuc', { text: oData.message, titleMsg: 'bs-extjs-title-success' } );
+		$.ajax({
+			dataType: "json",
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'bs-wantedarticle',
+				task: 'addWantedArticle',
+				format: 'json',
+				token: mw.user.tokens.get( 'editToken', '' ),
+				taskData: JSON.stringify({
+					title: sArticleTitle
+				})
+			},
+			success: function( oData, oTextStatus ) {
+				bs.util.alert( 'WAsuc', {
+					text: oData.message,
+					titleMsg: 'bs-extjs-title-success'
+				});
 				if( oData.success == true ) {
 					BsWantedArticle.resetDefaults();
 					BsWantedArticle.reloadAllWantedArticleTags();
 				}
 			}
-		);
+		});
 
 		return false;
 	},
@@ -150,27 +139,33 @@ BsWantedArticle = {
 	reloadAllWantedArticleTags: function() {
 		$( '.bs-wantedarticle-tag' ).each( function() {
 			//hint: http://stackoverflow.com/questions/939032/jquery-pass-more-parameters-into-callback
-			var callback = function(currentObject) {
+			var callback = function( currentObject ) {
 				return function( oData, oTextStatus ) {
-					if( oData.success == true ) {
-						currentObject.replaceWith(oData.view);
+					if( oData.success === true ) {
+						currentObject.replaceWith( oData.payload.view );
 						BsWantedArticle.toggleMoreHandler();
 					}
 				};
 			};
-			$.getJSON(
-				bs.util.getAjaxDispatcherUrl(
-					'WantedArticle::ajaxGetWantedArticles',
-					[
-						$(this).attr('data-count'),
-						$(this).attr('data-sort'),
-						$(this).attr('data-order'),
-						$(this).attr('data-type'),
-						$(this).find('h3').text()
-					]
-				),
-				callback($(this))
-			);
+
+			$.ajax({
+				dataType: "json",
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					action: 'bs-wantedarticle',
+					task: 'getWantedArticles',
+					format: 'json',
+					token: mw.user.tokens.get( 'editToken', '' ),
+					taskData: JSON.stringify({
+						count: $(this).attr('data-count'),
+						sort: $(this).attr('data-sort'),
+						order: $(this).attr('data-order'),
+						type: $(this).attr('data-type'),
+						title: $(this).find('h3').text()
+					})
+				},
+				success: callback($(this))
+			});
 		});
 	},
 	toggleMoreHandler: function() {
@@ -199,13 +194,11 @@ BsWantedArticle = {
 	}
 };
 
-mw.loader.using( 'ext.bluespice',function() {
-	BsWantedArticle.config = {
-		urlBase: mw.config.get( "wgServer" ) + mw.config.get( "wgScriptPath" )
-	};
-	BsWantedArticle.init();
-} );
-
+$(document).ready( function() {
+	mw.loader.using( 'ext.bluespice', function() {
+		BsWantedArticle.init();
+	});
+});
 // Register with ExtendedSearch Autocomplete
 $(document).on('BSExtendedSearchAutocompleteItemSelect', function( event, selectEvent, ui, status ){
 	if ( ui.item.attr !== 'bs-extendedsearch-suggest' ) return;

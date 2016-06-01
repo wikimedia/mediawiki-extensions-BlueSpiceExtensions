@@ -10,9 +10,11 @@ $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/Spe
 // Specialpage and messages
 $GLOBALS['wgAutoloadClasses']['ResponsibleEditors'] = __DIR__ . '/ResponsibleEditors.class.php';
 $wgAutoloadClasses['BsResponsibleEditor'] = __DIR__ . '/includes/BsResponsibleEditor.php';
+$wgAutoloadClasses['BSApiResponsibleEditorsPagesStore'] = __DIR__ . '/includes/api/BSApiResponsibleEditorsPagesStore.php';
+$wgAutoloadClasses['BSApiResponsibleEditorsActiveNamespacesStore'] = __DIR__ . '/includes/api/BSApiResponsibleEditorsActiveNamespacesStore.php';
+$wgAutoloadClasses['BSApiResponsibleEditorsPossibleEditorsStore'] = __DIR__ . '/includes/api/BSApiResponsibleEditorsPossibleEditorsStore.php';
+$wgAutoloadClasses['BSApiTasksResponsibleEditors'] = __DIR__ . '/includes/api/BSApiTasksResponsibleEditors.php';
 $wgAutoloadClasses['SpecialResponsibleEditors'] = __DIR__ . '/includes/specials/SpecialResponsibleEditors.class.php';
-$wgAutoloadClasses['ApiResponsibleEditorsStore'] = __DIR__ . '/includes/api/ApiResponsibleEditorsStore.class.php';
-$wgAutoloadClasses['ApiResponsibleEditorsTasks'] = __DIR__ . '/includes/api/ApiResponsibleEditorsTasks.class.php';
 $wgAutoloadClasses['ResponsibleEditorFormatter'] = __DIR__ . '/includes/ResponsibleEditorFormatter.class.php';
 
 $wgSpecialPages['ResponsibleEditors'] = 'SpecialResponsibleEditors';
@@ -49,17 +51,15 @@ $wgResourceModules['ext.bluespice.responsibleEditors.manager'] = array(
 		'bs-responsibleeditors-loadMaskMessage',
 		'bs-responsibleeditors-columnpage',
 		'bs-responsibleeditors-columnresponsibleeditor',
-		'bs-responsibleeditors-columnnamespace',
 		'bs-responsibleeditors-tipEditAssignment',
 		'bs-responsibleeditors-tipRemoveAssignement',
 		'bs-responsibleeditors-btnDisplayModeText',
-		'bs-responsibleeditors-rbdisplaymodeonlyassignedtext',
-		'bs-responsibleeditors-rbdisplaymodeonlynotassigned',
-		'bs-responsibleeditors-rbdisplaymodeall',
 		'bs-responsibleeditors-cbnamespacesemptytext',
 		'bs-responsibleeditors-confirmNavigationTitle',
 		'bs-responsibleeditors-confirmNavigationText',
-		'bs-responsibleeditors-columneesponsibleeditornotset'
+		'bs-responsibleeditors-columneesponsibleeditornotset',
+		'bs-responsibleeditors-pagestorefilter-assigned',
+		'bs-responsibleeditors-pagestorefilter-notassigned',
 	)
 ) + $aResourceModuleTemplate;
 
@@ -83,14 +83,12 @@ $wgResourceModules['ext.bluespice.responsibleEditors.superList'] = array(
 	)
 ) + $aResourceModuleTemplate;
 
-$wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxGetResponsibleEditors';
-$wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxSetResponsibleEditors';
-$wgAjaxExportList[] = 'SpecialResponsibleEditors::ajaxGetPossibleEditors';
-$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetActivatedNamespacesForCombobox';
-$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetResponsibleEditorsByArticleId';
-$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetArticlesByNamespaceId';
-$wgAjaxExportList[] = 'ResponsibleEditors::ajaxGetListOfResponsibleEditorsForArticle';
-$wgAjaxExportList[] = 'ResponsibleEditors::ajaxDeleteResponsibleEditorsForArticle';
+$wgAPIModules['bs-responsibleeditorspages-store'] = 'BSApiResponsibleEditorsPagesStore';
+$wgAPIModules['bs-responsibleeditorspossibleeditors-store'] = 'BSApiResponsibleEditorsPossibleEditorsStore';
+$wgAPIModules['bs-responsibleeditorsactivenamespaces-store'] = 'BSApiResponsibleEditorsActiveNamespacesStore';
+$wgAPIModules['bs-responsibleeditors-tasks'] = 'BSApiTasksResponsibleEditors';
+
+//TODO: Revisit when rework dashboards. Find a gerneric portlet store solution
 $wgAjaxExportList[] = 'ResponsibleEditors::getResponsibleEditorsPortletData';
 
 $wgLogTypes[] = 'bs-responsible-editors';

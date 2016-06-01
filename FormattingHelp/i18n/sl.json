@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-formattinghelp-desc": "Prikaže pomoč za oblikovanje besedila",
@@ -25,5 +26,6 @@
 	"bs-formattinghelp-help-extlink": "Zunanja povezava",
 	"bs-formattinghelp-help-hr": "Vodoravna črta",
 	"bs-formattinghelp-help-template": "Predloga",
-	"bs-formattinghelp-help-templatename": "Ime predloge"
+	"bs-formattinghelp-help-templatename": "Ime predloge",
+	"apihelp-bs-formattinghelp-description": "Zagotavlja opravila za razširitev FormattingHelp."
 }

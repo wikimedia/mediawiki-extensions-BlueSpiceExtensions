@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lizalizaufa",
+			"Айбикә",
+			"Азат Хәлилов"
+		]
+	},
+	"bs-insertlink-desc": "Һылтанма индереү өсөн диалог тәҙрәһе",
+	"prefs-insertlink": "Һылтанма ҡуйыу",
+	"bs-insertlink": "Һылтанма ҡуйырға",
+	"bs-insertlink-pref-enable-java": "Java-апплеттар өҫтәү",
+	"bs-insertlink-button-title": "Һылтанманы ҡуйырға/мөхәррирләргә",
+	"bs-insertlink-dialog-title": "Һылтанма ҡуйыу",
+	"bs-insertlink-tab-wiki-page": "Вики-бит",
+	"bs-insertlink-tab-ext-link": "Тышҡы һылтанма",
+	"bs-insertlink-tab-email": "Электрон почта һылтанмаһы",
+	"bs-insertlink-tab-ext-file": "Файлға һылтанма",
+	"bs-insertlink-label-page": "Бит",
+	"bs-insertlink-label-link": "Һылтанма",
+	"bs-insertlink-label-mail": "Электрон почта адресы",
+	"bs-insertlink-label-description": "Һүрәтләү",
+	"bs-insertlink-label-file": "Файл",
+	"bs-insertlink-label-searchfile": "Эҙләү...",
+	"bs-insertlink-select-a-page": "Маҡсат һайлағыҙ...",
+	"bs-insertlink-select-a-namespace": "(Биттәр)",
+	"bs-insertlink-empty-field-text": "Һылтанма ҡуйыу өсөн аҙаҡҡы һөҙөмтәне күрһәтегеҙ",
+	"bs-insertlink-no-applet": "Был апплетты күсереп булманы. Зинһар, Java-ның дөрөҫ ҡуйылыуын тикшерегеҙ"
+}

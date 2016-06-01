@@ -30,7 +30,7 @@
 	"bs-flexiskin-labelbgcolor": "Kolor tła",
 	"bs-flexiskin-headerheader": "Nagłówek",
 	"bs-flexiskin-labellogoupload": "Logo",
-	"bs-flexiskin-labelbackgroundupload": "Obraz w tle",
+	"bs-flexiskin-labelbackgroundupload": "Bieżący obraz",
 	"bs-flexiskin-no-repeat": "bez powtarzania",
 	"bs-flexiskin-repeat-y": "pionowe powtarzanie",
 	"bs-flexiskin-headerposition": "Położenie i rozmiar",
@@ -46,5 +46,8 @@
 	"bs-flexiskin-api-data-desc": "Tablica danych (opcjonalnie).",
 	"bs-flexiskin-api-error-save": "Wystąpił błąd podczas zapisywania. Powód: „$1”",
 	"bs-flexiskin-api-error-invalid-action": "Takie działanie nie istnieje",
-	"bs-flexiskin-api-error-missing-param": "Brakuje następującego parametru: „$1”"
+	"bs-flexiskin-api-error-missing-param": "Brakuje następującego parametru: „$1”",
+	"bs-flexiskin-apihelp-task-param-skinId": "Parametr <var>skinId</var> określa skórkę",
+	"bs-flexiskin-apihelp-task-param-name": "Parametr <var>name</var> jest nazwą przesyłanego pliku",
+	"bs-flexiskin-labelcurrentbackground": "Bieżący obraz"
 }

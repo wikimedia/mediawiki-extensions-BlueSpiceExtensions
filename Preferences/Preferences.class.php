@@ -25,7 +25,7 @@
  * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage Preferences
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -76,7 +76,7 @@ class BsPreferences extends BsExtensionMW {
 			throw new ReadOnlyError;
 		}
 
-		$this->getOutput()->addModuleScripts( 'ext.bluespice.preferences' );
+		$this->getOutput()->addModules( 'ext.bluespice.preferences' );
 		$this->getOutput()->addHTML( '<br />' );
 
 		$oRequest = $this->getRequest();

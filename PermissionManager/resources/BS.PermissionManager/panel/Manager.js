@@ -90,52 +90,52 @@ Ext.define( 'BS.PermissionManager.panel.Manager', {
 	getHTMLTable: function() {
 		var me = this;
 		var dfd = $.Deferred();
-		var aSelection = me.treeGroups.getSelectionModel().getSelection();
-		var sGroup = aSelection[0].internalId;
-		var sNs = mw.config.get( 'bsPermissionManagerNamespaces', [] );
+		var aNs = mw.config.get( 'bsPermissionManagerNamespaces', [] );
 
 		var $table = $( '<table>' );
-		var $row = null;
-		var $cell = null;
-		$row = $( '<tr>' );
+		var $row = $( '<tr>' );
+		var $cell = $( '<td>' );
 		$table.append($row);
+		$cell.append(
+			mw.message( 'bs-permissionmanager-header-permissions' ).plain()
+		);
+		$row.append( $cell );
 		$cell = $( '<td>' );
 		$row.append( $cell );
-		$cell.append( 'Recht' );
-		$cell = $( '<td>' );
-		$row.append( $cell );
-		$cell.append( 'Wiki' );
-		for( var i = 0; i < sNs.length; i++ ) {
+		$cell.append(
+			mw.message( 'bs-permissionmanager-header-global' ).plain()
+		);
+		for( var i = 0; i < aNs.length; i++ ) {
 			$cell = $( '<td>' );
 			$row.append( $cell );
-			$cell.append( sNs[i].name );
+			$cell.append( aNs[i].name );
 		}
 		//only namespace specific permissions
-		me.gridPermissions.store.data.each( function(record, i) {
+		me.gridPermissions.store.data.each( function( record, i ) {
 			if( record.data.type !== 1 ) {
 				return;
 			}
 			$row = $( '<tr>' );
-			$table.append($row);
+			$table.append( $row );
 			$cell = $( '<td>' );
 			$row.append( $cell );
 			$cell.append( record.data.right );
 			$cell = $( '<td>' );
 			$row.append( $cell );
 			$cell.append( record.data['userCan_Wiki'] ? 'X' : '' );
-			for( var i = 0; i < sNs.length; i++ ) {
+			for( var i = 0; i < aNs.length; i++ ) {
 				$cell = $( '<td>' );
 				$row.append( $cell );
-				$cell.append( record.data['userCan_'+sNs[i].id] ? 'X' : '' );
+				$cell.append( record.data['userCan_'+aNs[i].id] ? 'X' : '' );
 			}
 		});
 		//only global permissions
-		me.gridPermissions.store.data.each( function(record, i) {
+		me.gridPermissions.store.data.each( function( record, i ) {
 			if( record.data.type !== 2 ) {
 				return;
 			}
 			$row = $( '<tr>' );
-			$table.append($row);
+			$table.append( $row );
 			$cell = $( '<td>' );
 			$row.append( $cell );
 			$cell.append( record.data.right );
@@ -144,6 +144,7 @@ Ext.define( 'BS.PermissionManager.panel.Manager', {
 			$cell.append( record.data['userCan_Wiki'] ? 'X' : '' );
 		});
 
+		//Returning a deffered object is reuired by current export handlers
 		dfd.resolve( '<table>' + $table.html() + '</table>' );
 		return dfd;
 	}

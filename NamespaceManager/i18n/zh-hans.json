@@ -16,6 +16,10 @@
 	"bs-namespacemanager-label-content": "内容名字空间",
 	"bs-namespacemanager-label-searchable": "默认搜索",
 	"bs-namespacemanager-label-subpages": "子页面",
+	"bs-namespacemanager-label-pagecount": "页",
+	"bs-namespacemanager-label-system": "系统",
+	"bs-namespacemanager-hide-system-ns": "隐藏系统名字空间",
+	"bs-namespacemanager-hide-talk-ns": "隐藏讨论名字空间",
 	"bs-namespacemanager-nsadded": "名字空间已添加。",
 	"bs-namespacemanager-nsremoved": "名字空间已移除。",
 	"bs-namespacemanager-nsedited": "名字空间已编辑。",
@@ -37,5 +41,9 @@
 	"logentry-bs-namespace-manager-create": "$1{{GENDER:$2|创建了}}名字空间$4",
 	"logentry-bs-namespace-manager-modify": "$1{{GENDER:$2|更改了}}名字空间$4的设置",
 	"logentry-bs-namespace-manager-rename": "$1{{GENDER:$2|已更名}}名字空间$4至$5",
-	"logentry-bs-namespace-manager-remove": "$1{{GENDER:$2|移除了}}名字空间$4"
+	"logentry-bs-namespace-manager-remove": "$1{{GENDER:$2|移除了}}名字空间$4",
+	"bs-namespacemanager-ns-config-saved": "名字空间配置已保存。",
+	"bs-namespacemanager-error-ns-config-not-saved": "名字空间配置不能保存至$1。",
+	"apihelp-bs-namespace-store-description": "列举所有名字空间和任意配置。允许排序、过滤和分页。执行ExtJS存储的参数。",
+	"apihelp-bs-namespace-tasks-description": "允许修改名字空间配置。"
 }

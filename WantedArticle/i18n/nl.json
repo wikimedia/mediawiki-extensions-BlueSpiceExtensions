@@ -30,17 +30,17 @@
 	"bs-wantedarticle-tag-default-title": "Niet-bestaande pagina's met koppelingen",
 	"bs-wantedarticle-pref-includelimit": "Aantal suggesties:",
 	"bs-wantedarticle-pref-deleteexisting": "Het verwijderen van bestaande items uit de lijst",
-	"bs-wantedarticle-pref-showcreate": "Toon link maken",
+	"bs-wantedarticle-pref-showcreate": "Koppeling maken weergeven",
 	"bs-wantedarticle-pref-deleteoncreation": "Item verwijderen uit de lijst wanneer de pagina is gemaakt",
 	"bs-wantedarticle-pref-datasourcetemplatetitle": "Sjabloon titel voor suggesties:",
 	"bs-wantedarticle-pref-sort": "Sorteren op:",
 	"bs-wantedarticle-pref-order": "Orde",
 	"bs-wantedarticle-pref-sort-time": "Tijd",
 	"bs-wantedarticle-pref-sort-title": "Naam",
-	"bs-wantedarticle-pref-order-asc": "Oplopend",
-	"bs-wantedarticle-pref-order-desc": "Aflopend",
+	"bs-wantedarticle-pref-order-asc": "oplopend",
+	"bs-wantedarticle-pref-order-desc": "aflopend",
 	"bs-wantedarticle-create-page": "Maak de pagina \"$1\".",
 	"bs-wantedarticle-suggest-page": "Stel voor de pagina \"$1\".",
 	"bs-wantedarticle-info-nothing-entered": "Geef een geldig paginanaam op.",
-	"bs-wantedarticle-title-invalid-chars": "De volgende {{PLURAL:$1|karakter|karakters}} is niet geldig voor gebruik op een pagina titel: $2"
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Het volgende teken is|De volgende tekens zijn}} niet geldig voor gebruik in een paginanaam: $2"
 }

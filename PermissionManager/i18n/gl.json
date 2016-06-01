@@ -39,6 +39,7 @@
 	"bs-permissionmanager-pref-lockmode": "Activar modo de bloqueo",
 	"bs-permissionmanager-pref-skipsysns": "Saltar mensaxes de espazo de nomes do sistema se o modo de bloqueo está activado",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activar a comprobación de permisos",
+	"bs-permissionmanager-pref-max-backups": "Límite de copia de seguridade",
 	"bs-permissionmanager-unsaved-changes": "Hai cambios sen gardar. Realmente quere marchar agora da páxina? Os cambios sen gardar perderanse.",
 	"bs-permissionmanager-error-lockout": "Polo menos un grupo debe ter o permiso \"$1\".\nNon se puideron guardar os cambios.",
 	"log-name-bs-permission-manager": "Rexistro do xestor de permisos",

@@ -74,5 +74,11 @@
 	"notification-bs-responsibleeditors-delete-body": "将您分派为责任编辑的页面“$2”被$1{{GENDER:$1|删除}}。登录wiki后您可以通过此链接打开：$3",
 	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]]{{GENDER:$1|已移动}}$3至$5",
 	"notification-bs-responsibleeditors-move-subject": "页面“$2”被$1{{GENDER:$1|移动}}",
-	"notification-bs-responsibleeditors-move-body": "将您分派为责任编辑的页面“$2”被$1{{GENDER:$1|移动}}至“$4”。登录wiki后您可以通过此链接打开：$5"
+	"notification-bs-responsibleeditors-move-body": "将您分派为责任编辑的页面“$2”被$1{{GENDER:$1|移动}}至“$4”。登录wiki后您可以通过此链接打开：$5",
+	"bs-responsibleeditors-pagestorefilter-assigned": "已分配",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "未分配",
+	"apihelp-bs-responsibleeditorspages-store": "列出页面及相关责任编辑",
+	"apihelp-bs-bs-responsibleeditors-tasks": "允许对责任编辑的操纵",
+	"apihelp-bs-responsibleeditorsposibleeditors-store": "列举可能的责任编辑",
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "通过必需的<var>articleId</var>过滤可能的责任编辑"
 }

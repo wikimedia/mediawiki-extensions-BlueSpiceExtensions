@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
 	"bs-insertfile-insert-image": "画像を挿入",
@@ -28,6 +29,7 @@
 	"bs-insertfile-uploadwatchthislabel": "このファイルをウォッチ",
 	"bs-insertfile-uploadignorewarningslabel": "あらゆる警告を無視",
 	"bs-insertfile-warning": "警告",
+	"bs-insertfile-uploadcomplete": "ファイルを保存しました。",
 	"bs-insertfile-titlefile": "ファイルの挿入",
 	"bs-insertfile-titleimage": "画像の挿入",
 	"bs-insertfile-tipkeepratio": "縦横比を維持",

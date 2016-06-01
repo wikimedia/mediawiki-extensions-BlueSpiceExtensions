@@ -3,10 +3,10 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage SaferEdit
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -178,7 +178,7 @@ BsSaferEditEditMode = {
 
 		switch ( mode ) {
 			case "MW":
-				text = $( 'wpTextbox1' ).val();
+				text = $( '#wpTextbox1' ).val();
 				break;
 			case "VisualEditor":
 				text = tinyMCE.activeEditor.getContent( { save: true } );
@@ -191,7 +191,7 @@ BsSaferEditEditMode = {
 				text = $( '#wpTextbox1' ).val();
 		}
 
-		return text;
+		return text || '';
 	}
 };
 

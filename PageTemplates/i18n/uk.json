@@ -6,6 +6,8 @@
 	},
 	"bs-pagetemplates-desc": "Відображає список шаблонів, позначених як шаблони сторінок",
 	"prefs-pagetemplates": "Шаблони сторінки",
+	"apihelp-bs-pagetemplates-store": "Надає список доступних шаблонів.",
+	"apihelp-bs-pagetemplates-tasks": "Забезпечує створення, оновлення і вилучення завдань для шаблонів.",
 	"bs-pagetemplates-empty-page": "Порожня сторінка",
 	"bs-pagetemplates-empty-page-desc": "Почати з порожньої сторінки.",
 	"bs-pagetemplatesadmin-label": "Шаблони сторінки",

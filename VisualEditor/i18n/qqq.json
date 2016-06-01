@@ -9,6 +9,7 @@
 	},
 	"bs-visualeditor-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of visual editor extension",
 	"prefs-visualeditor": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for visual editor section in preferences.\\n\n{{Identical|VisualEditor}}",
+	"apihelp-bs-visualeditor-tasks-description": "Describes the API endpoint that provides tasks for the BlueSpice VisualEditor extension.",
 	"bs-visualeditor-editbutton-hint": "Tooltip text for visual editor \n{{Identical|VisualEditor}}",
 	"bs-visualeditor-pref-disablens": "Disable in namespaces:",
 	"bs-visualeditor-pref-use": "Use WYSIWYG editor by default",

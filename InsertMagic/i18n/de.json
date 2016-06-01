@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.biz>",
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
-	"bs-insertmagic-desc": "Fügt dem Bearbeitenmodus einen Dialog hinzu, der das Einfügen von MagicWords und Tags erlaubt",
+	"bs-insertmagic-desc": "Ergänzt einen Dialog, der das Einfügen von magischen Wörtern und Tags erlaubt.",
 	"bs-insertmagic": "Magisches Wort einfügen",
 	"bs-insertmagic-notoc": "Blendet das Inhaltsverzeichnis der Seite aus.",
 	"bs-insertmagic-forcetoc": "Erzwingt das Einblenden des Inhaltsverzeichnisses an seiner normalen Position.",
@@ -64,5 +65,7 @@
 	"bs-insertmagic-type-switches": "Schalter",
 	"bs-insertmagic-label-first": "1. Wähle ein magisches Wort",
 	"bs-insertmagic-label-second": "2. Geben Sie den Text ein",
-	"bs-insertmagic-label-desc": "Kurzbeschreibung"
+	"bs-insertmagic-label-desc": "Kurzbeschreibung",
+	"bs-insertmagic-label-examples": "Beispiele",
+	"bs-insertmagic-label-see-also": "Siehe auch"
 }

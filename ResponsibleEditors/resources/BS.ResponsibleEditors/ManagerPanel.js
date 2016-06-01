@@ -8,58 +8,53 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 	initComponent: function() {
 		this.allowEdit = mw.config.get('bsUserMayChangeResponsibilities');
 
-		//TODO: Maybe re-introduce baseParams to ExtJS 4 store in BSF.
-		//HINT:http://stackoverflow.com/a/14090796
-		this.strMain = Ext.create( 'Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url : bs.util.getAjaxDispatcherUrl(
-					'ResponsibleEditors::ajaxGetArticlesByNamespaceId'
-				),
-				reader: {
-					type: 'json',
-					root:'pages',
-					totalProperty: 'total',
-					idProperty: 'page_id'
-				}
-			},
-			autoLoad: true,
-			remoteSort: true,
-			fields: [ 'page_id', 'page_namespace', 'page_title',
-				'page_prefixedtext', 'users' ],
-			sortInfo: {
-				field: 'name',
-				direction: 'ASC'
-			}
+		this.strMain = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-responsibleeditorspages-store',
+			fields: [
+				'page_id',
+				'page_namespace',
+				'page_title',
+				'page_prefixedtext',
+				'users'
+			]
 		});
+		this.strMain.proxy.reader.idProperty = 'page_id';
 
 		this.strMain.on( 'load', function() {
 			this.btnAdd.disable();
 			this.btnRemove.disable();
 		}, this);
 
-		this.colMainConf.columns = [
-			{
-				header: mw.message( 'bs-responsibleeditors-columnnamespace' ).plain(),
-				sortable: true,
-				dataIndex: 'page_namespace',
-				renderer: this.renderNamespace,
-				width: 110,
-				flex: 0,
-				align: 'right'
-			}, {
-				id: 'name',
-				header: mw.message( 'bs-responsibleeditors-columnpage' ).plain(),
-				sortable: true,
-				dataIndex: 'page_title',
-				renderer: this.renderArticleTitle
-			},{
-				header: mw.message( 'bs-responsibleeditors-columnresponsibleeditor' ).plain(),
-				sortable: false,
+		this.colMainConf.columns = [{
+			id: 'name',
+			header: mw.message( 'bs-responsibleeditors-columnpage' ).plain(),
+			sortable: true,
+			dataIndex: 'page_id',
+			renderer: this.renderArticleTitle
+		},{
+			header: mw.message( 'bs-responsibleeditors-columnresponsibleeditor' ).plain(),
+			sortable: false,
+			dataIndex: 'users',
+			renderer: this.renderResponsibleEditor,
+			active: true,
+			filter: {
+				type: 'list',
 				dataIndex: 'users',
-				renderer: this.renderResponsibleEditor
+				labelField: 'name',
+				options: [{
+					id:'assigned',
+					name: mw.message(
+						'bs-responsibleeditors-pagestorefilter-assigned'
+					).plain()
+				}, {
+					id:'notassigned',
+					name: mw.message(
+						'bs-responsibleeditors-pagestorefilter-notassigned'
+					).plain()
+				}],
+				value: [ 'assigned', 'notassigned' ]
 			}
-		];
+		}];
 
 		this.callParent( arguments );
 	},
@@ -71,34 +66,10 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 		this.btnEdit.disable();
 		this.btnRemove.disable();
 
-		this.mnuAssignmentFilter = Ext.create( 'Ext.menu.Menu', {
-			items: [
-			{
-				id: 'bs-re-only-assigned',
-				text: mw.message( 'bs-responsibleeditors-rbdisplaymodeonlyassignedtext' ).plain(),
-				checked: true,
-				value: 'only-assigned',
-				group: 'displayMode'
-			}, {
-				id: 'bs-re-only-not-assigned',
-				text: mw.message('bs-responsibleeditors-rbdisplaymodeonlynotassigned').plain(),
-				checked: false,
-				value: 'only-not-assigned',
-				group: 'displayMode'
-			}, {
-				id: 'bs-re-all',
-				text: mw.message('bs-responsibleeditors-rbdisplaymodeall').plain(),
-				checked: false,
-				value: 'all',
-				group: 'displayMode'
-			}]
-		});
-
-		this.mnuAssignmentFilter.on( 'click', this.mnuAssignmentFilterClick, this );
-
-		this.btnAssignmentFilterMenu = Ext.create( 'Ext.Button', {
-			text: mw.message( 'bs-responsibleeditors-rbdisplaymodeonlyassignedtext' ).plain(),
-			menu: this.mnuAssignmentFilter
+		this.strNamespaceFilter = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-responsibleeditorsactivenamespaces-store',
+			fields: ['namespace_id', 'namespace_text'],
+			autoLoad: true
 		});
 
 		this.cbNamespaceFilter = Ext.create( 'Ext.form.ComboBox', {
@@ -107,20 +78,7 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 			valueField: 'namespace_id',
 			typeAhead: true,
 			triggerAction: 'all',
-			store: Ext.create( 'Ext.data.JsonStore', {
-				proxy: {
-					type: 'ajax',
-					url: bs.util.getAjaxDispatcherUrl(
-						'ResponsibleEditors::ajaxGetActivatedNamespacesForCombobox'
-					),
-					reader: {
-						type: 'json',
-						root:'namespaces'
-					}
-				},
-				fields: ['namespace_id', 'namespace_text'],
-				autoLoad: true
-			}),
+			store: this.strNamespaceFilter,
 			tpl: '<ul class="x-list-plain">'+
 				'<tpl for=".">'+
 					'<li role="option" unselectable="on" class="x-boundlist-item">'+
@@ -136,7 +94,6 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 		this.cbNamespaceFilter.on( 'select', this.cbNamespaceFilterSelectionChanged, this );
 
 		this.tbar.add( '->' );
-		this.tbar.add( this.btnAssignmentFilterMenu );
 		this.tbar.add( this.cbNamespaceFilter );
 
 		if( this.allowEdit === false ) {
@@ -155,19 +112,6 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 			this.colActions.disable();
 			this.colActions.hide(); //"afterInitComponent" is too early...
 		}
-	},
-
-	mnuAssignmentFilterClick: function( menu, item, e, eOpts ) {
-		if( typeof item === 'undefined' ) return;
-
-		this.btnAssignmentFilterMenu.setText( item.text );
-
-		//There are no baseParams anymore...
-		//HINT:http://zhonghuafy.blog.com/?p=44
-		Ext.apply(this.strMain.proxy.extraParams, {
-			'displayMode': item.value
-		});
-		this.strMain.load();
 	},
 
 	cbNamespaceFilterSelectionChanged: function ( combo, records, eOpts ) {
@@ -203,16 +147,15 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 		var data = this.getRowData();
 		data.editorIds = [];
 		//TODO: Duplicate code in BS.ResponsibleEditors.AssignmentDialog!
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl(
-				'SpecialResponsibleEditors::ajaxSetResponsibleEditors',
-				[Ext.encode(data)]
-			),
-			success: function() {
-				this.strMain.reload();
-			},
-			scope: this
+		var me = this;
+		bs.api.tasks.exec(
+			'responsibleeditors',
+			'setResponsibleEditors',
+			data
+		).done( function() {
+			me.strMain.reload();
 		});
+
 		this.callParent(arguments);
 	},
 
@@ -241,18 +184,8 @@ Ext.define( 'BS.ResponsibleEditors.ManagerPanel', {
 		});
 	},
 
-	//TODO: Add "BS.comlums.NamespaceColumn" ot BSF
-	renderNamespace: function( oValue, oMetaData, oRecord, iRowIndex, iColIndex, oStore ) {
-		var nmsp = oRecord.get( 'page_namespace' );
-		if( nmsp === 0) return mw.message('blanknamespace').plain();
-
-		var nmsps = mw.config.get('wgFormattedNamespaces');
-
-		return nmsps[nmsp];
-	},
-
 	renderArticleTitle: function( oValue, oMetaData, oRecord, iRowIndex, iColIndex, oStore ) {
-		var sDisplayTitle = oRecord.get( 'page_title' );
+		var sDisplayTitle = oRecord.get( 'page_prefixedtext' );
 
 		sDisplayTitle = sDisplayTitle.replace( /_/g, ' ' );
 

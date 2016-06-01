@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meno25"
+			"Meno25",
+			"Maroen1990"
 		]
 	},
 	"bs-extendedsearch-sort-title": "العنوان",
-	"bs-extendedsearch-pref-scope-title": "العنوان"
+	"bs-extendedsearch-pref-scope-title": "العنوان",
+	"bs-extendedsearch-facetsetting-op-and": "و",
+	"bs-extendedsearch-facetsetting-op-or": "أو"
 }

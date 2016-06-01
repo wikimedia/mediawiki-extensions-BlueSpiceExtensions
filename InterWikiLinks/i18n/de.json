@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-interwikilinks-desc": "Administrationsinterface, um Links zwischen Wikis hinzuzufügen, zu bearbeiten und zu löschen",
@@ -26,5 +27,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Bist du sicher, dass du diesen Interwiki-Link löschen willst?",
 	"bs-interwikilinks-insertlink-tabtitle": "Link in anderes Wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Präfix",
-	"bs-interwikilink-select-a-prefix": "Präfix auswählen"
+	"bs-interwikilink-select-a-prefix": "Präfix auswählen",
+	"bs-interwikilinks-link-edited": "Der Interwiki-Link wurde bearbeitet",
+	"apihelp-bs-interwikilinks-tasks-description": "Bietet die Aufgaben für die Erweiterung InterWikiLinks."
 }

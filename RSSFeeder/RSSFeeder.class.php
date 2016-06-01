@@ -25,7 +25,7 @@
  * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage RSSFeeder
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -136,7 +136,7 @@ class RSSFeeder extends BsExtensionMW {
 			'config' => array(
 				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
 				'height' => 610,
-				'rssurl' => 'http://blog.blue-spice.org/feed/'
+				'rssurl' => 'http://blog.bluespice.com/feed/'
 			),
 			'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
 			'description' => wfMessage( 'bs-rssfeeder-rss-desc' )->plain()
@@ -159,7 +159,7 @@ class RSSFeeder extends BsExtensionMW {
 			'config' => array(
 				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
 				'height' => 610,
-				'rssurl' => 'http://blog.blue-spice.org/feed/'
+				'rssurl' => 'http://blog.bluespice.com/feed/'
 			)
 		);
 

@@ -15,5 +15,5 @@
 	"bs-whoisonline-pref-orderby-name": "名称",
 	"bs-whoisonline-pref-interval": "每秒更新间隔：",
 	"bs-whoisonline-tag-whoisonlinecount-desc": "显示当前登录用户的人数。",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "显示飞行视觉的小型登录用户列表。\n有效属性：\n;<code>anchortext</code>：您希望呈现飞行的附加文字。"
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "显示飞行视觉的小型登录用户列表。\n\n有效属性：\n;<code>anchortext</code>：您希望呈现飞行的附加文字。"
 }

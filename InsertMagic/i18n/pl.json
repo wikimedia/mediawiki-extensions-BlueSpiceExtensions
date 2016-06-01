@@ -20,5 +20,7 @@
 	"bs-insertmagic-type-variables": "Zmienne",
 	"bs-insertmagic-label-first": "1. Wybierz znacznik lub magiczne słowo",
 	"bs-insertmagic-label-second": "2. Zmień kod",
-	"bs-insertmagic-label-desc": "Opis"
+	"bs-insertmagic-label-desc": "Opis",
+	"bs-insertmagic-label-examples": "Przykłady",
+	"bs-insertmagic-label-see-also": "Zobacz też"
 }

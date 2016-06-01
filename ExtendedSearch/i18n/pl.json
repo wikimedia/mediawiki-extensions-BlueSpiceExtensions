@@ -62,5 +62,7 @@
 	"bs-extendedsearch-redirect": "Przekierowanie z: $1",
 	"bs-extendedsearch-totalnoofarticles": "Liczba stron do indeksowania: $1",
 	"bs-extendedsearch-more": "Więcej",
-	"bs-extendedsearch-fewer": "Mniej"
+	"bs-extendedsearch-fewer": "Mniej",
+	"bs-extendedsearch-facetsetting-op-and": "I",
+	"bs-extendedsearch-facetsetting-op-or": "LUB"
 }

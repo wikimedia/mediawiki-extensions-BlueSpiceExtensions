@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sayginer",
-			"Violetanka"
+			"Violetanka",
+			"Sadrettin"
 		]
 	},
 	"bs-wantedarticle-desc": "İstenen sayfalar listesine bir sayfa ekleyin",
@@ -10,13 +11,21 @@
 	"bs-wantedarticle-ajax-error-no-parameter": "Sayfa başlığı girilmedi.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-exists": "Önerilen \"$1\" sayfası zaten mevcut.",
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "\"$1\" sayfası daha önce önerilmiş.",
+	"bs-wantedarticle-edit-comment-suggestion-added": "\"$1\" önerisi eklendi.",
+	"bs-wantedarticle-success-suggestion-entered": "\"$1\" öneriniz eklendi.",
+	"bs-wantedarticle-sort-value-unknown": "Geçerli değerler: başlık ve zaman",
 	"bs-wantedarticle-page-removed": "$1 sayfası kaldırıldı.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Öner",
+	"bs-wantedarticle-single-textfield-createbutton-text": "Oluştur",
 	"bs-wantedarticle-single-textfield-defaulttext": "Sayfa başlığı",
 	"bs-wantedarticle-tag-more-linktext": "Daha fazla...",
 	"bs-wantedarticle-tag-default-title": "İstenen sayfalar",
 	"bs-wantedarticle-pref-includelimit": "Öneri sayısı:",
 	"bs-wantedarticle-pref-sort": "Sıralama ölçütü:",
+	"bs-wantedarticle-pref-order": "Sıra:",
+	"bs-wantedarticle-pref-sort-time": "Zaman",
+	"bs-wantedarticle-pref-sort-title": "Başlık",
+	"bs-wantedarticle-pref-order-asc": "artan",
 	"bs-wantedarticle-pref-order-desc": "azalan",
 	"bs-wantedarticle-create-page": "\"$1\" sayfasını oluştur.",
 	"bs-wantedarticle-suggest-page": "\"$1\" sayfasını öner.",

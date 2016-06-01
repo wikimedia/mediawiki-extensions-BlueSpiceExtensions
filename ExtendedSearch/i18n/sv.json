@@ -59,6 +59,7 @@
 	"bs-extendedsearch-pref-showfacets": "Visar olika aspekter på specialsida",
 	"bs-extendedsearch-pref-showautocomplete": "Föreslå sidor som matchar sökord",
 	"bs-extendedsearch-pref-externalrepo": "Indexera extern katalog:",
+	"bs-extendedsearch-pref-externalrepo-url": "URL för extern katalog:",
 	"bs-extendedsearch-pref-acentries": "Antal förslag som matchar söktermen:",
 	"bs-extendedsearch-pref-highlightsnippets": "Antal markerade utdrag:",
 	"bs-extendedsearch-pref-indexfiletypes": "Indexera filer med vissa filtillägg:",
@@ -99,5 +100,7 @@
 	"bs-extendedsearch-redirect": "Omdirigera från: $1",
 	"bs-extendedsearch-totalnoofarticles": "Antal sidor som ska indexeras: $1",
 	"bs-extendedsearch-more": "Mer",
-	"bs-extendedsearch-fewer": "Mindre"
+	"bs-extendedsearch-fewer": "Mindre",
+	"bs-extendedsearch-facetsetting-op-and": "OCH",
+	"bs-extendedsearch-facetsetting-op-or": "ELLER"
 }

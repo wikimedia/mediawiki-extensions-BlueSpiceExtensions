@@ -21,12 +21,12 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     MediaWiki Extension
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedEditBar
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -83,6 +83,14 @@ class ExtendedEditBar extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onEditPageBeforeEditToolbar( &$toolbar ) {
+		// Disable editbar when there is no toolbar and on certain actions. This
+		// is especially needed for compatibility with Extension:LiquidThreads.
+		global $bsgExtendedEditBarEnabledActions;
+		$action = $this->getRequest()->getText( 'action', 'view' );
+		if ( empty( $toolbar) || !in_array( $action, $bsgExtendedEditBarEnabledActions ) ) {
+			return true;
+		}
+
 		$this->getOutput()->addModuleStyles( 'ext.bluespice.extendeditbar.styles' );
 		$this->getOutput()->addModules( 'ext.bluespice.extendeditbar' );
 
@@ -287,6 +295,7 @@ class ExtendedEditBar extends BsExtensionMW {
 					if( isset( $aButtonCfg['open'] ) )   $aAttributes['data-open']   = $aButtonCfg['open'];
 					if( isset( $aButtonCfg['close'] ) )  $aAttributes['data-close']  = $aButtonCfg['close'];
 					if( isset( $aButtonCfg['sample'] ) ) $aAttributes['data-sample'] = $aButtonCfg['sample'];
+					if( isset( $aButtonCfg['disabled'] ) )  $aAttributes['class']   .= " bs-editbutton-disabled";
 
 					$sButton = Html::element(
 						'a',

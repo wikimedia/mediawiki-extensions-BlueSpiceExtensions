@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategoria|Kategoriak}}: $2",
@@ -21,5 +22,7 @@
 	"bs-extendedsearch-unknown": "Ezezaguna",
 	"bs-extendedsearch-morelikethis": "Antzeko orrialdeak",
 	"bs-extendedsearch-more": "Gehiago",
-	"bs-extendedsearch-fewer": "Gutxiago"
+	"bs-extendedsearch-fewer": "Gutxiago",
+	"bs-extendedsearch-facetsetting-op-and": "ETA",
+	"bs-extendedsearch-facetsetting-op-or": "EDO"
 }

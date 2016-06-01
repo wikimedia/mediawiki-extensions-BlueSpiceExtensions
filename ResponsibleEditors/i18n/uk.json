@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Andriykopanytsia",
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-responsibleeditors-desc": "Дозволяє MediaWiki управляти відповідальними редакторами для сторінок",
@@ -57,5 +58,28 @@
 	"log-description-bs-responsible-editors": "Це журнал редакторів, відповідальних за сторінки.",
 	"log-show-hide-bs-responsible-editors": "$1 журнал відповідальних редакторів",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|додав|додала}} $4 як {{GENDER:$4|редактора}} для $3",
-	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|вилучив|вилучила}} $4 як {{GENDER:$4|редактора}} для $3"
+	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|вилучив|вилучила}} $4 як {{GENDER:$4|редактора}} для $3",
+	"echo-category-title-bs-responsible-editors-action-cat": "Відповідальні редактори — Дії",
+	"echo-category-title-bs-responsible-editors-assignment-cat": "Відповідальні редактори — Призначення",
+	"notification-bs-responsibleeditors-assign-summary": "[[User:$1|$1]] {{GENDER:$1|призначив|призначила}} Вас відповідальним редактором сторінки $3",
+	"notification-bs-responsibleeditors-assign-subject": "Призначена відповідальнісь за «$2»",
+	"notification-bs-responsibleeditors-assign-body": "$1 {{GENDER:$1|призначив|призначила}} Вас на сторінку «$2». Після входу у вікі Ви можете відкрити сторінку за цим посиланням: $3. Якщо Ви маєте якісь запитання, будь ласка, зверніться до $1.",
+	"notification-bs-responsibleeditors-revoke-summary": "[[User:$1|$1]] {{GENDER:$1|анулював|анулювала}} відповідальність за сторінку $3",
+	"notification-bs-responsibleeditors-revoke-subject": "Відповідальність за «$2» анульовано",
+	"notification-bs-responsibleeditors-revoke-body": "$1 {{GENDER:$1|анулював|анулювала}} відповідальність за сторінку «$2». Після входу у вікі Ви можете відкрити цю сторінку за цим посиланням: $3. Якщо Ви маєте якісь запитання, будь ласка, зверніться до $1.",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] {{GENDER:$1|відредагував|відредагувала}} $3",
+	"notification-bs-responsibleeditors-change-subject": "Сторінку «$2» було відредаговано {{GENDER:$1|користувачем|користувачкою}} $1",
+	"notification-bs-responsibleeditors-change-body": "Сторінку «$2», відповідальним редактором якої Ви призначені, {{GENDER:$1|відредагував|відредагувала}} $1. Після входу у вікі Ви можете відкрити цю сторінку за цим посиланням: $3",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] {{GENDER:$1|вилучив|вилучила}} $3",
+	"notification-bs-responsibleeditors-delete-subject": "Сторінку «$2» було вилучено {{GENDER:$1|користувачем|користувачкою}} $1",
+	"notification-bs-responsibleeditors-delete-body": "Сторінку «$2», відповідальним редактором якої Ви призначені, {{GENDER:$1|вилучив|вилучила}} $1. Після входу у вікі, Ви можете відкрити цю сторінку за цим посиланням: $3",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|перейменував|перейменувала}} $3 на $5",
+	"notification-bs-responsibleeditors-move-subject": "Сторінку «$2» було перейменовано {{GENDER:$1|користувачем|користувачкою}} $1",
+	"notification-bs-responsibleeditors-move-body": "Сторінку «$2», відповідальним редактором якої Ви призначені, $1 {{GENDER:$1|перейменував|перейменувала}} на «$4». Після входу у вікі, Ви можете відкрити цю сторінку за цим посиланням: $5",
+	"bs-responsibleeditors-pagestorefilter-assigned": "Призначено",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Не призначено",
+	"apihelp-bs-responsibleeditorspages-store": "Перераховує сторінки і пов'язаних відповідальних редакторів",
+	"apihelp-bs-bs-responsibleeditors-tasks": "Дозволяє управляти відповідальними редакторами",
+	"apihelp-bs-responsibleeditorsposibleeditors-store": "Перераховує можливих відповідальних редакторів",
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Фільтрує можливих відповідальних редакторів за необхідним <var>articleId</var>"
 }

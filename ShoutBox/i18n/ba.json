@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Азат Хәлилов"
+		]
+	},
+	"bs-shoutbox-desc": "Мини-чатҡа функция өҫтәй",
+	"prefs-shoutbox": "Шутбокс",
+	"bs-shoutbox-title": "Мини-чат",
+	"bs-shoutbox-message": "Яңы комментарий яҙырға",
+	"bs-shoutbox-shout": "Ебәреү",
+	"bs-shoutbox-no-entries": "Бында әлегә бер ни юҡ",
+	"bs-shoutbox-loading": "Йөкләү",
+	"bs-shoutbox-pref-committimeinterval": "Ике хәбәр араһындағы ваҡыт",
+	"bs-shoutbox-pref-maxmessagelength": "Хәбәрҙең максимааль оҙонлоғо",
+	"bs-shoutbox-pref-numberofshouts": "Күрһәтеү  өсөн хәбәрҙең максималь оҙонлоғо",
+	"bs-shoutbox-pref-showage": "Хәбәр датаһын күрһәтергә",
+	"bs-shoutbox-pref-showuser": "Хәбәр авторын күрһәтергә",
+	"bs-shoutbox-pref-allowarchive": "Ҡатнашыусы үҙ яҙмаһын юйҙыра ала",
+	"bs-shoutbox-pref-show": "Мини-чатты күрһәтергә",
+	"bs-shoutbox-archive-success": "Яҙма юйылды",
+	"bs-shoutbox-archive-failure": "Яҙманы юйған ваҡытта хата китте. Ҡабатлап ҡарағыҙ.",
+	"bs-shoutbox-archive-failure-user": "Яҙмаларҙы тик автор юйҙыра ала.",
+	"bs-shoutbox-switch-description": "Был биттә мини-чатты йәшерергә",
+	"bs-shoutbox-charactersleft": "$1 символ{{PLURAL:$1}} ҡалды",
+	"bs-shoutbox-confirm-text": "Был яҙманы юйырға теләйһегеҙме?",
+	"bs-shoutbox-confirm-title": "Раҫларға",
+	"bs-shoutbox-entermessage": "Хәбәрегеҙҙе яҙығыҙ",
+	"bs-shoutbox-too-early": "Киләһе яҙманы яҙыр алдынан бер нисә секунд көтөгөҙ.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|эшләп китеү}}"
+}

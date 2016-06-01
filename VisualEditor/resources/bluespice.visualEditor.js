@@ -1,12 +1,12 @@
 /**
  * VisualEditor extension
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @version    1.20.0
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -79,17 +79,18 @@ function bs_initVisualEditor() {
 	}
 }
 
-$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
-	e.preventDefault();
-	//todo: check ob richtig, denke durch 'wpTextbox1' wird in tinymce.startup.js ln 95
-	//eine Instanz des tiny erzeugt, der mit seiner id den MW-Editor überschreibt => kein speichern möglich
-	//VisualEditor.toggleEditor('wpTextbox1');
-	$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
-	VisualEditor.startEditors();
-	return false;
-});
-
-$(document).ready( function() {
-	var BsVisualEditorLoaderUsingDeps = mw.config.get('BsVisualEditorLoaderUsingDeps');
-	mw.loader.using(BsVisualEditorLoaderUsingDeps, bs_initVisualEditor);
+$( document ).ready( function() {
+	var BsVisualEditorLoaderUsingDeps = mw.config.get( 'BsVisualEditorLoaderUsingDeps' );
+	mw.loader.using( BsVisualEditorLoaderUsingDeps, bs_initVisualEditor ).done( function() {
+		$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
+			e.preventDefault();
+			//todo: check ob richtig, denke durch 'wpTextbox1' wird in tinymce.startup.js ln 95
+			//eine Instanz des tiny erzeugt, der mit seiner id den MW-Editor überschreibt => kein speichern möglich
+			//VisualEditor.toggleEditor('wpTextbox1');
+			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
+			VisualEditor.startEditors();
+			return false;
+		});
+		$( '#bs-editbutton-visualeditor' ).removeClass( 'bs-editbutton-disabled' );
+	});
 });

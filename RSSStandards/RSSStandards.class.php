@@ -25,7 +25,7 @@
  * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage RSSStandards
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -384,7 +384,7 @@ class RSSStandards extends BsExtensionMW {
 		$wgOut->setPageTitle( wfMessage( 'bs-rssstandards-watchlist' )->plain() );
 
 		$sub  = wfMessage( 'watchlistfor', $user->getName() )->parse();
-		$sub .= '<br />' . WatchlistEditor::buildTools( $user->getSkin() );
+		$sub .= '<br />' . WatchlistEditor::buildTools( $this->getSkin() );
 		$wgOut->setSubtitle( $sub );
 
 		if( ( $mode = WatchlistEditor::getMode( $wgRequest, $par ) ) !== false ) {

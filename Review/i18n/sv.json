@@ -91,5 +91,14 @@
 	"bs-review-confirm-delete-review": "Vill du verkligen radera denna utvärdering?",
 	"bs-review-error-insufficient-permissions": "Du saknar behörighet att utföra denna åtgärd (\"$1\" behövs).",
 	"echo-category-title-bs-review-complete-cat": "Meddelande när en granskning slutförs",
-	"notification-bs-review-payload-comment": "Kommentar: \"$1\""
+	"notification-bs-review-payload-comment": "Kommentar: \"$1\"",
+	"notification-bs-review-assign-summary": "[[User:$1|$1]] {{GENDER:$1|har bjudit in}} dig till att granska $3",
+	"notification-bs-review-assign-subject": "Granska sidan \"$2\"",
+	"notification-bs-review-assign-body": "$1 {{GENDER:$1|har bjudit in}} dig till att granska \"$2\". Efter att du har loggat in på wikin kan du öppna sidan med denna länk: $3",
+	"notification-bs-review-accept-summary": "[[User:$1|$1]] {{GENDER:$1|godkände}} innehållet i $3",
+	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|godkände}} \"$2\"",
+	"notification-bs-review-accept-body": "$1 {{GENDER:$1|reagerade}} på din granskning av \"$2\" och har {{GENDER:$1|godkänt}} ändringarna.",
+	"notification-bs-review-deny-summary": "[[User:$1|$1]] {{GENDER:$1|avvisade}} innehållet i $3",
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|avvisade}} \"$2\"",
+	"notification-bs-review-deny-body": "$1 {{GENDER:$1|reagerade}} på din granskning av \"$2\" och har {{GENDER:$1|avvisat}} ändringarna."
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alojz.tic",
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-insertfile-desc": "Pogovorno okno za nalaganje datotek in vstavljanje povezav na datoteke",
@@ -55,7 +56,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Ciljno ime, ki ste ga izberali nima veljavne končnice.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Ciljno ime, ki ste ga izberali nima veljavne končnice.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Ciljno ime, ki ste ga izberali nima dovoljene končnice.",
-	"bs-insertfile-uploadcomplete": "Vaša datoteka je uspešno shranjena.",
+	"bs-insertfile-uploadcomplete": "Vašo datoteko smo shranili.",
 	"bs-insertfile-titlefile": "Vstavi datoteko",
 	"bs-insertfile-titleimage": "Vstavi sliko",
 	"bs-insertfile-tipkeepratio": "Ohrani razmerja",
@@ -67,5 +68,6 @@
 	"bs-insertfile-no-link": "Ni povezave",
 	"bs-insertfile-error-no-medialink": "Ni izbrana nobena povezava medijskih vsebin.",
 	"bs-insertfile-error-no-imagelink": "Ni izbrana nobena povezava slike.",
-	"bs-insertfile-upload-waitmessage": "Nalaganje se izvaja ..."
+	"bs-insertfile-upload-waitmessage": "Nalaganje se izvaja ...",
+	"apihelp-bs-inserfile-license-store-description": "Navede dovoljenja za razširitev InsertFile."
 }

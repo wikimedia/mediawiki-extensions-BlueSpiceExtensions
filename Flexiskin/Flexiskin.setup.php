@@ -16,6 +16,19 @@ $wgAutoloadClasses['FlexiskinFormatter'] = __DIR__ . '/includes/FlexiskinFormatt
 $wgAutoloadClasses['ResourceLoaderFlexiskinModule'] = __DIR__ . '/includes/resourceloader/ResourceLoaderFlexiskinModule.php';
 $wgAutoloadClasses['ResourceLoaderFlexiskinPreviewModule'] = __DIR__ . '/includes/resourceloader/ResourceLoaderFlexiskinPreviewModule.php';
 
+// using BsApi
+$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinTasks'] = __DIR__ . '/includes/api/BSApiFlexiskinTasks.php';
+$wgAPIModules['bs-flexiskin-tasks'] = 'BSApiFlexiskinTasks';
+
+$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinStore'] = __DIR__ . '/includes/api/BSApiFlexiskinStore.php';
+$wgAPIModules['bs-flexiskin-store'] = 'BSApiFlexiskinStore';
+
+$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinUpload'] = __DIR__ . '/includes/api/BSApiFlexiskinUpload.php';
+$wgAPIModules['bs-flexiskin-upload'] = 'BSApiFlexiskinUpload';
+
+$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinUploadStore'] = __DIR__ . '/includes/api/BSApiFlexiskinUploadStore.php';
+$wgAPIModules['bs-flexiskin-upload-store'] = 'BSApiFlexiskinUploadStore';
+
 $wgResourceModules['ext.bluespice.flexiskin.skin.preview'] =  array(
 	'class' => 'ResourceLoaderFlexiskinPreviewModule'
 );
@@ -61,7 +74,9 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 		'bs-flexiskin-labelwidth',
 		'bs-flexiskin-labelfullwidth',
 		'bs-flexiskin-error-nameempty',
-		'bs-flexiskin-error-templatenotexists'
+		'bs-flexiskin-error-templatenotexists',
+		'bs-flexiskin-usebackground',
+		'bs-flexiskin-labelcurrentbackground'
 	),
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']

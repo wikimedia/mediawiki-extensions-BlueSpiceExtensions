@@ -22,13 +22,13 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Review
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -87,6 +87,7 @@ class Review extends BsExtensionMW {
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd' );
+		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
@@ -1129,6 +1130,32 @@ class Review extends BsExtensionMW {
 	}
 
 	/**
+	 * Adds Special:Review link to wiki wide widget
+	 * @param UserSidebar $oUserSidebar
+	 * @param User $oUser
+	 * @param array $aLinks
+	 * @param string $sWidgetTitle
+	 * @return boolean
+	 */
+	public function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
+		$oSpecialReview = SpecialPageFactory::getPage( 'Review' );
+		if( !$oSpecialReview ) {
+			return true;
+		}
+		$aLinks[] = array(
+			'target' => $oSpecialReview->getPageTitle(),
+			'text' => $oSpecialReview->getDescription(),
+			'attr' => array(),
+			'position' => 600,
+			'permissions' => array(
+				'read',
+				'workflowview'
+			),
+		);
+		return true;
+	}
+
+	/**
 	 * Adds a info to bs_personal_info
 	 *
 	 * @param SkinTemplate $sktemplate
@@ -1143,15 +1170,16 @@ class Review extends BsExtensionMW {
 		}
 
 		$iCountReviews = count( BsReviewProcess::listReviews( $oUser->getId() ) );
+		$iCountFinishedReviews = BsReviewProcess::userHasWaitingReviews( $oUser );
 
-		if ( $iCountReviews <= 0 ) {
+		if ( $iCountReviews <= 0 && !$iCountFinishedReviews ) {
 			return true;
 		}
 
 		$tpl->data[ 'bs_personal_info' ][ 20 ] = array(
 			'id' => 'pi-review',
 			'href' => SpecialPage::getTitleFor( 'Review', $oUser->getName() )->getLocalURL(),
-			'text' => $iCountReviews,
+			'text' => $iCountReviews . "|" . $iCountFinishedReviews,
 			'class' => 'icon-eye',
 			'active' => $iCountReviews > 0 ? true : false
 		);

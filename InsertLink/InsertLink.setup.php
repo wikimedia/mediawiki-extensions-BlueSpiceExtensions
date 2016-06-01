@@ -46,4 +46,4 @@ $wgResourceModules['ext.bluespice.insertlink.styles'] = array(
 
 unset( $aResourceModuleTemplate );
 
-$wgAjaxExportList[] = 'InsertLink::getPage';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'InsertLink::onLoadExtensionSchemaUpdates';

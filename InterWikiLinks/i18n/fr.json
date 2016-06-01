@@ -24,5 +24,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Êtes-vous sûr de vouloir supprimer ce lien interwiki ?",
 	"bs-interwikilinks-insertlink-tabtitle": "Lien vers un autre wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Préfixe",
-	"bs-interwikilink-select-a-prefix": "Choisir un préfixe"
+	"bs-interwikilink-select-a-prefix": "Choisir un préfixe",
+	"bs-interwikilinks-link-edited": "Le lien interwiki a été modifié",
+	"apihelp-bs-interwikilinks-tasks-description": "Fournit les tâches pour l’extension InterWikiLinks."
 }

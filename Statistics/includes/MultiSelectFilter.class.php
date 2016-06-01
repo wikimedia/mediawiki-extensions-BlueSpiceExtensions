@@ -4,11 +4,11 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
 
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -48,7 +48,7 @@ abstract class BsMultiSelectFilter extends BsSelectFilter {
 		$this->getActiveValues();
 		$aI18NValues = array();
 		foreach ( $this->aActiveValues as $sValue ) {
-			$sValueText = preg_replace( "/^(<|&lt;)?(.*?)(>|&gt;)?$/", "$2", wfMsg( $sValue ) );
+			$sValueText = preg_replace( "/^(<|&lt;)?(.*?)(>|&gt;)?$/", "$2", wfMessage( $sValue )->text() );
 			$aI18NValues[] = $sValueText;
 		}
 		return implode( ", ", $aI18NValues );

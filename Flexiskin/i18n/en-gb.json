@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Usandaru555",
+			"Codynguyen1116"
 		]
 	},
 	"bs-flexiskin-desc": "Provides a page to manage flexiskins with customising options",
 	"bs-flexiskin-labelbgcolor": "Background colour",
+	"bs-flexiskin-labelbackgroundupload": "Current image",
 	"bs-flexiskin-labelcustombgcolor": "Custom colour",
-	"bs-flexiskin-center": "centre"
+	"bs-flexiskin-center": "centre",
+	"bs-flexiskin-usebackground": "Use background image",
+	"bs-flexiskin-labelcurrentbackground": "Current image"
 }

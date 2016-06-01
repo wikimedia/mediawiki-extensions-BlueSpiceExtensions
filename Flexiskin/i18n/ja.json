@@ -46,6 +46,7 @@
 	"bs-flexiskin-api-desc": "Bluespice 拡張機能 Flexiskin のAPIインターフェース。",
 	"bs-flexiskin-api-type-desc": "実行する操作 (例えば, \"delete\")。既定では\"get\"",
 	"bs-flexiskin-api-mode-desc": "操作のモード。 例:\"config\"。既定値は\"flexiskin\"です。",
+	"bs-flexiskin-api-id-desc": "Flexiskin の ID (省略可能)。",
 	"bs-flexiskin-api-example-desc": "Flexiskin の現在の設定を返す。",
 	"bs-flexiskin-api-error-save": "保存中にエラーが発生しました。 理由: $1",
 	"bs-flexiskin-api-error-invalid-action": "この操作は存在しません。"

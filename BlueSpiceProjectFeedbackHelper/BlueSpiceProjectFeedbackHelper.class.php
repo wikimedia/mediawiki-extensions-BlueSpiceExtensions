@@ -22,11 +22,11 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage BlueSpiceProjectFeedbackHelper
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -56,68 +56,56 @@ class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
 
 	public function  initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		BsConfig::registerVar( 'MW::BlueSpiceProjectFeedbackHelper::Active', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-bluespiceprojectfeedbackhelper-active', 'toggle' );
+		BsConfig::registerVar(
+			'MW::BlueSpiceProjectFeedbackHelper::Active',
+			true,
+			BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL,
+			'bs-bluespiceprojectfeedbackhelper-active',
+			'toggle'
+		);
 
-		if ( BsConfig::get( 'MW::BlueSpiceProjectFeedbackHelper::Active' ) == false ) {
+		$bActive = BsConfig::get(
+			'MW::BlueSpiceProjectFeedbackHelper::Active'
+		);
+		if( !$bActive ) {
 			wfProfileOut( 'BS::'.__METHOD__ );
 			return;
 		}
 
 		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'SkinAfterContent' );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
 	/**
-	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if needed.
+	 * Hook-Handler for MediaWiki 'BeforePageDisplay' hook. Sets context if
+	 * needed.
 	 * @param OutputPage $oOutputPage
 	 * @param Skin $oSkin
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if ( BsConfig::get('MW::BlueSpiceProjectFeedbackHelper::Active') == false ) {
-			return true;
-		}
-		$oOutputPage->addModules('ext.bluespice.blueSpiceprojectfeedbackhelper');
+		$oOutputPage->addModules(
+			'ext.bluespice.blueSpiceprojectfeedbackhelper'
+		);
 
 		return true;
 	}
 
 	/**
-	 * @param SkinTemplate $sktemplate a collection of views. Add the view that needs to be displayed
-	 * @param BaseTemplate $tpl currently logged in user. Not used in this context.
-	 * @return bool always true
+	 * @param string $sData
+	 * @param Skin $oSkin
+	 * @return boolean
 	 */
-	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( BsConfig::get( 'MW::BlueSpiceProjectFeedbackHelper::Active' ) == false ) return true;
-		if ( !in_array( 'sysop', $sktemplate->getUser()->getGroups() ) ) {
+	public function onSkinAfterContent( &$sData, $oSkin ) {
+		if ( !$oSkin->getUser()->isAllowed('wikiadmin') ) {
 			return true;
 		}
+
 		$oView = new ViewBlueSpiceProjectFeedbackHelperPanel();
 
-		if( isset( $tpl->data['dataAfterContent'] ) ) {
-			$tpl->data['dataAfterContent'] .= $oView->execute();
-		} else {
-			$tpl->data['dataAfterContent'] = $oView->execute();
-		}
-
+		$sData .= $oView->execute();
 		return true;
-	}
-
-	public static function disableFeedback() {
-		$oResult = (object) array(
-			'success' => false,
-			'message' => '',
-		);
-		if ( BsCore::checkAccessAdmission( 'edit' ) === false ) {
-			//PW TODO: add error message
-			return FormatJson::encode( $oResult );
-		}
-
-		BsConfig::set( 'MW::BlueSpiceProjectFeedbackHelper::Active', false );
-		BsConfig::saveSettings();
-		$oResult->success = true;
-
-		return FormatJson::encode( $oResult );
 	}
 }

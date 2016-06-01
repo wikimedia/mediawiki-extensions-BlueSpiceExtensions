@@ -11,9 +11,8 @@
 	"bs-checklist-dlg-insert-list-title": "Insira lista de verificación",
 	"bs-checklist-dlg-insert-list-value-list": "Lista de valores",
 	"bs-checklist-tag-checklist-desc": "Mostra unha casilla de verificación ou un campo a seleccionar. Atributos de configuración dispoñibles:",
-	"bs-checklist-tag-checklist-param-type": "<code>tipo</code>: <code>lista</code> mostra unha lista de selección.",
-	"bs-checklist-tag-checklist-param-list": "<code>lista</code>: Nome do modelo cos valores dispoñibles. O parámetro <code>tipo</code> debe establecerse co valor <code>lista</code>.",
-	"bs-checklist-tag-checklist-param-value": "<code>valor</code>: <code>marcado</code> ou un valor fóra do modelo de lista.",
+	"bs-checklist-tag-checklist-example-check": "Caixa de verificación",
+	"bs-checklist-tag-checklist-example-list": "Menú de selección",
 	"bs-checklist-dlg-new-list": "Crear unha nova lista",
 	"bs-checklist-dlg-save-list": "Gardar cambios na lista",
 	"bs-checklist-dlg-items-label": "Elementos na lista",
@@ -30,5 +29,12 @@
 	"log-show-hide-bs-checklist": "Rexistro de caixa de verificación $1",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|marcou}} a caixa de verificación #$4 en $3",
 	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|desmarcou}} a caixa de verificación #$4 en $3",
-	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|seleccionou}} o valor \"$5\" na caixa de selección #$4 en $3"
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|seleccionou}} o valor \"$5\" na caixa de selección #$4 en $3",
+	"bs-checklist-savelist-error-invalid-title": "Proporcionado título incorrecto",
+	"bs-checklist-savelist-error-edit-not-permitted": "Permisos insuficientes para gardar a lista",
+	"bs-checklist-modified-check": "Valos de lista de verificación modificado",
+	"bs-checklist-update-list": "Lista actualizada",
+	"apihelp-bs-checklist-available-options-store-description": "Lista todas as opcións dispoñibles para os modelos de lista de verificación. Permite ordenar, filtrar e paxinar. Proporciona os parámetros ExtJS Store.",
+	"apihelp-bs-checklist-template-store-description": "Lista todos os modelos que son fontes de listas de verificación válidas. Permite ordenar, filtrar e paxinar. Proporciona os parámetros ExtJS Store.",
+	"apihelp-bs-checklist-tasks-description": "Proporciona operacións para a extensión Checklist"
 }

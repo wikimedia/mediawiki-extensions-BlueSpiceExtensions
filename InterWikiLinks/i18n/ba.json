@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Лилиә",
+			"Азат Хәлилов",
+			"Ләйсән"
+		]
+	},
+	"bs-interwikilinks-desc": "Интервик һылтанмаларын өҫтәү, төҙәтеү өсөн хакимиәт интерфейсы.",
+	"bs-interwikilinks-invalid-pfx-spc": "Дөрөҫ булмаған префикс. Пробел ҡулланмағыҙ.",
+	"bs-interwikilinks-invalid-url-spc": "Дөрөҫ булмаған URL. Пробелдар ҡулланмағыҙ.",
+	"bs-interwikilinks-label": "Интервики-һылтанмалар",
+	"bs-interwikilinks-link-created": "Интервики-һылтанма булдырылды.",
+	"bs-interwikilinks-link-added": "Интервики һылтанмаһы өҫтәлде",
+	"bs-interwikilinks-link-deleted": "Интервики-һылтанма алып ташланды.",
+	"bs-interwikilinks-nooldpfx": "алдан килгән префикс табылманы.",
+	"bs-interwikilinks-nopfx": "Префиксты күрһәтегеҙ.",
+	"bs-interwikilinks-nourl": "URL күрһәтегеҙ.",
+	"bs-interwikilinks-pfxtoolong": "Префикс бик оҙон. 31 символдан артыҡ ҡулланмағыҙ.",
+	"bs-interwikilinks-pfxexists": "Бындай префикс юҡ.",
+	"bs-interwikilinks-headerprefix": "Префикс",
+	"bs-interwikilinks-titleaddinterwikilink": "Интервики-һылтанма өҫтәргә",
+	"bs-interwikilinks-titleeditinterwikilink": "интервики-һылтанманы мөхәррирләргә",
+	"bs-interwikilinks-labelprefix": "Префикс",
+	"bs-interwikilinks-titledeleteinterwikilink": "Интервики-һылтанманы алып ташларға",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Интервики-һылтанманы алып ташларға теләйһегеҙме?",
+	"bs-interwikilinks-insertlink-tabtitle": "Башҡа викиға һылтанма",
+	"bs-interwikilinks-insertlink-labelprefix": "Префикс",
+	"bs-interwikilink-select-a-prefix": "Префикс һайлағыҙ",
+	"bs-interwikilinks-link-edited": "Интервики-һылтанма мөхәррирләнде."
+}

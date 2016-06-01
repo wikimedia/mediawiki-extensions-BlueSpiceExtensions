@@ -48,14 +48,14 @@
 	"bs-insertfile-allowedfiletypesare": "有效的文件类型有：",
 	"bs-insertfile-error": "错误",
 	"bs-insertfile-errornofileextensiononupload": "您选择的文件没有扩展名。",
-	"bs-insertfile-errornofileextensionondestination": "您选择的目标名称没有扩展名。",
+	"bs-insertfile-errornofileextensionondestination": "您选择的目标名称没有文件扩展名。",
 	"bs-insertfile-errorWrongFileExtensionOnUpload": "您选择的文件没有有效扩展名。",
 	"bs-insertfile-errorWrongImageTypeOnUpload": "您选择的文件不是允许的图像格式。",
 	"bs-insertfile-errorWrongFileTypeOnUpload": "您选择的文件不是允许的文件格式。",
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "您选择的目标名称没有有效扩展名。",
 	"bs-insertfile-errorwrongimagetypeondestination": "您选择的目标名称不是允许的图像格式。",
 	"bs-insertfile-errorwrongfiletypeondestination": "您选择的目标名称不是允许的文件格式。",
-	"bs-insertfile-uploadcomplete": "您的文件已成功保存。",
+	"bs-insertfile-uploadcomplete": "您的文件已保存。",
 	"bs-insertfile-titlefile": "插入文件",
 	"bs-insertfile-titleimage": "插入图片",
 	"bs-insertfile-tipkeepratio": "保持比例",
@@ -67,5 +67,6 @@
 	"bs-insertfile-no-link": "无链接",
 	"bs-insertfile-error-no-medialink": "未选择媒体连接。",
 	"bs-insertfile-error-no-imagelink": "未选择图片连接。",
-	"bs-insertfile-upload-waitmessage": "上传中……"
+	"bs-insertfile-upload-waitmessage": "上传中……",
+	"apihelp-bs-inserfile-license-store-description": "列举扩展InsertFile的许可协议。"
 }

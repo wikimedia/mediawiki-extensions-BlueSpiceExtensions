@@ -6,11 +6,13 @@
 		]
 	},
 	"prefs-wantedarticle": "ページが存在しないリンク",
+	"bs-wantedarticle-order-value-unknown": "有効な値: ASC ({{int:bs-wantedarticle-pref-order-asc}}) または DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
 	"bs-wantedarticle-page-removed": "ページ「$1」を除去しました。",
 	"bs-wantedarticle-tag-wantedarticle-desc": "ページが存在しないリンクの一覧を出力する。利用できる属性:",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>: 表示するページの数.",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: 見出し.",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: 並び順 <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) または <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
+	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: <code>title</code> または <code>time</code> によって並べ替える。",
 	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: 出力形式 <code>list</code> または <code>quene</code> (カンマ区切り)。",
 	"bs-wantedarticle-tag-default-title": "ページが存在しないリンク",
 	"bs-wantedarticle-pref-includelimit": "提案する件数:",
@@ -21,5 +23,6 @@
 	"bs-wantedarticle-pref-sort-time": "日時",
 	"bs-wantedarticle-pref-order-asc": "昇順",
 	"bs-wantedarticle-pref-order-desc": "降順",
-	"bs-wantedarticle-create-page": "「$1」を作成"
+	"bs-wantedarticle-create-page": "「$1」を作成",
+	"bs-wantedarticle-title-invalid-chars": "以下の{{PLURAL:$1|文字は}}ページ名として有効ではありません: $2"
 }

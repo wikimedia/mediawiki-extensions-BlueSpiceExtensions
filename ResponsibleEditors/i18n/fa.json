@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Huji"
 		]
 	},
-	"bs-responsibleeditors-desc": "واگذاری مسئولیت ویراستاران یک صفحه را فعال می‌کند",
+	"bs-responsibleeditors-desc": "به مدیاویکی امکان می‌دهد که ویرایشگران مسئول صفحه‌ها را مدیریت کند",
 	"prefs-responsibleeditors": "ویراستاران مسئول",
 	"bs-responsibleeditors-pref-activatednamespaces": "فضاهای نام فعال:",
 	"bs-responsibleeditors-pref-autoassignonarticlecreation": "اختصاص خودکار در ایجاد صفحه",

@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Лилиә",
+			"Азат Хәлилов",
+			"З. ӘЙЛЕ"
+		]
+	},
+	"bs-contextmenu-desc": "Төрлө һылтанмалар өсөн контекст меню күрһәтә",
+	"prefs-contextmenu": "Контекст меню",
+	"bs-contextmenu-pref-modus": " Контексте асығыҙ (мобиль ҡоролмалар өсөн түгел)",
+	"bs-contextmenu-pref-modus-just-right-mouse": "Төрткөнөң уң яғына баҫҡанда (Crtl-ға баҫҡанда браузерҙа ҡуйылған контекст менюһын күрһәтәсәк)",
+	"bs-contextmenu-pref-modus-ctrl-and-right-mouse": "Төрткөнөң уң яғына һәм  Ctrl-ға баҫҡанда (төрткөнөң уң яғына баҫып торғанда браузерҙың ҙәҙәти менюһын күрһәтәсәк)",
+	"bs-contextmenu-page-edit": "Битте мөхәррирләү",
+	"bs-contextmenu-page-delete": "Битте юйырға",
+	"bs-contextmenu-page-move": "Биттең исемен үҙгәртеү",
+	"bs-contextmenu-page-history": "Бит тарихын ҡарау",
+	"bs-contextmenu-page-protect": "Битте һаҡларға.",
+	"bs-contextmenu-page-purge": "Кэшты таҙартыу һәм битте ҡарау",
+	"bs-contextmenu-page-info": "Бит тураһындағы мәғлүмәтте ҡарау",
+	"bs-contextmenu-media-reupload": "Яңы версияны ҡуйырға",
+	"bs-contextmenu-media-view-page": "Һүрәтләүҙе һәм тарихты ҡарарға",
+	"bs-contextmenu-user-mail": "Хәбәр ебәрергә",
+	"bs-contextmenu-user-talk": "Чатта хәбәр ебәрергә",
+	"bs-contextmenu-file-download": "Файл күсерергә"
+}

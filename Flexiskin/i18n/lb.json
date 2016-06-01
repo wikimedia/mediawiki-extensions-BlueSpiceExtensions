@@ -26,7 +26,7 @@
 	"bs-flexiskin-labelbgcolor": "Hannergrondfaarf",
 	"bs-flexiskin-headerheader": "Iwwerschrëft",
 	"bs-flexiskin-labellogoupload": "Logo",
-	"bs-flexiskin-labelbackgroundupload": "Hannergrondbild",
+	"bs-flexiskin-labelbackgroundupload": "Aktuellt Bild",
 	"bs-flexiskin-no-repeat": "keng Widderhuelung",
 	"bs-flexiskin-repeat-x": "horizontal Widderhuelung",
 	"bs-flexiskin-repeat-y": "vertikal Widderhuelung",
@@ -42,5 +42,7 @@
 	"bs-flexiskin-labelfullwidth": "Maximal Breet",
 	"bs-flexiskin-error-nameempty": "Gitt w.e.g. e valabelen Numm a fir d'Ausgesinn dat Dir uleeë wëllt.",
 	"bs-flexiskin-error-templatenotexists": "Déi eruagesicht Schabloun gëtt et net!",
-	"bs-flexiskin-api-error-invalid-action": "Dës Aktioun gëtt et net."
+	"bs-flexiskin-api-error-invalid-action": "Dës Aktioun gëtt et net.",
+	"bs-flexiskin-usebackground": "Hannergrondbild benotzen",
+	"bs-flexiskin-labelcurrentbackground": "Aktuellt Bild"
 }

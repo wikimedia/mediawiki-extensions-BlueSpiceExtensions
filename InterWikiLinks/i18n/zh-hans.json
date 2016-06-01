@@ -24,5 +24,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "您确定您要删除此wiki连接？",
 	"bs-interwikilinks-insertlink-tabtitle": "连接至其他wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "前缀",
-	"bs-interwikilink-select-a-prefix": "选择前缀"
+	"bs-interwikilink-select-a-prefix": "选择前缀",
+	"bs-interwikilinks-link-edited": "跨wiki链接已编辑",
+	"apihelp-bs-interwikilinks-tasks-description": "提供用于扩展InterWikiLinks的任务。"
 }

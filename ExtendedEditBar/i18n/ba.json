@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Азат Хәлилов",
+			"З. ӘЙЛЕ"
+		]
+	},
+	"bs-extendededitbar-desc": "Вики-мөхәррирләү юлына өҫтәмә төймәләр өҫтәй",
+	"bs-extendededitbar-redirecttip": "Күсереү",
+	"bs-extendededitbar-redirectsample": "Текст ҡуйырға",
+	"bs-extendededitbar-striketip": "Һыҙырға",
+	"bs-extendededitbar-strikesample": "Һыҙылған текст",
+	"bs-extendededitbar-entertip": "Юлды өҙөү",
+	"bs-extendededitbar-uppertip": "юл өҫтөндә",
+	"bs-extendededitbar-uppersample": "Юл өҫтөндәге текст",
+	"bs-extendededitbar-lowertip": "юл аҫтындағы текст",
+	"bs-extendededitbar-lowersample": "Юлдан аҫтағы текст",
+	"bs-extendededitbar-smalltip": "Бәләкәй",
+	"bs-extendededitbar-smallsample": "Ваҡ текст",
+	"bs-extendededitbar-commenttip": "йәшерен комментарий ҡуйырға",
+	"bs-extendededitbar-commentsample": "Комментарий",
+	"bs-extendededitbar-gallerytip": "Рәсемдәр галереяһын ҡуйырға",
+	"bs-extendededitbar-gallerysamplepicture": "Рәсем",
+	"bs-extendededitbar-gallerysamplecaption": "Яҙма",
+	"bs-extendededitbar-quotetip": "Цитаталанған текст блогын ҡуйырға",
+	"bs-extendededitbar-quotesample": "Цитата",
+	"bs-extendededitbar-tabletip": "Таблица өҫтәү",
+	"bs-extendededitbar-tablesampleheader": "Баш һүҙ исеме",
+	"bs-extendededitbar-tablesamplerow": "Юлдар",
+	"bs-extendededitbar-tablesamplecell": "күҙәнәк"
+}

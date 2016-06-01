@@ -5,11 +5,11 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
 
  * @package    BlueSpice_Extensions
  * @subpackage Review
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -709,6 +709,49 @@ class BsReviewProcess {
 	 */
 	function isAbortWhenDenied() {
 		return $this->abortable;
+	}
+
+	static function userHasWaitingReviews($oUser) {
+		$iUserId = $oUser->getId();
+		$dbw = wfGetDB(DB_MASTER);
+
+		$sTblReview = $dbw->tableName('bs_review');
+		$sTblReviewSteps = $dbw->tableName('bs_review_steps');
+
+		$aTables = array(
+			'bs_review',
+			'bs_review_steps'
+		);
+		$aConditions = array(
+			$sTblReviewSteps . '.revs_review_id = ' . $sTblReview . '.rev_id',
+			$sTblReview . '.rev_owner' => $oUser->getId()
+		);
+		$aOptions = array(
+			'ORDER BY' => '' . $sTblReview . '.rev_id, ' . $sTblReviewSteps . '.revs_sort_id'
+		);
+
+		$aReviews = array();
+		$iReviewsWaiting = 0;
+		$res = $dbw->select($aTables, array('rev_id', 'revs_status'), $aConditions, __METHOD__, $aOptions);
+
+		while ($row = $dbw->fetchRow($res)) {
+			if (!isset($aReviews[$row['rev_id']])) {
+				$aReviews[$row['rev_id']] = true;
+			}
+			if ($row['revs_status'] == -1) {
+				$aReviews[$row['rev_id']] = false;
+			} else if ($aReviews[$row['rev_id']] != false) {
+				$aReviews[$row['rev_id']] = true;
+			}
+		}
+
+		foreach ($aReviews as $bFinished) {
+			if ($bFinished) {
+				$iReviewsWaiting++;
+			}
+		}
+
+		return $iReviewsWaiting;
 	}
 
 	/**

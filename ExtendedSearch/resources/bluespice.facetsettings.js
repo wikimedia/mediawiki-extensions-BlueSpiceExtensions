@@ -14,7 +14,7 @@ $(document).on( 'click', '.bs-es-facetsettings', function( e ) {
 				},
 				'settingschange': function() {
 					var fsets = {};
-					$( '.bs-es-facetsettings' ).each( function(){
+					$( '.bs-es-facetsettings' ).each( function(index, me){
 						var fset = $(me).data( 'fset' );
 						var fsetparam = $(me).data( 'fset-param' );
 						fsets[fsetparam] = fset;

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"KediÇobanı"
 		]
 	},
 	"bs-insertfile-labelsort": "Sıralama ölçütü:",
@@ -13,6 +14,7 @@
 	"bs-insertfile-uploadfileemptytext": "Yeni bir dosya seçin...",
 	"bs-insertfile-warningupload": "Yüklenmeyi bekleyen bir dosya var. Bu pencereyi kapatmak istiyor musunuz?",
 	"bs-insertfile-errornofileextensiononupload": "Seçtiğiniz dosyanın uzantısı yok.",
+	"bs-insertfile-uploadcomplete": "Dosyanız kaydedildi.",
 	"bs-insertfile-license": "Lisans",
 	"bs-insertfile-linktext": "Metin görüntüle"
 }

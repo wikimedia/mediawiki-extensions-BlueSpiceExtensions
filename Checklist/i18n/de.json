@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Markus Glaser <glaser@hallowelt.biz>",
-			"Osnard"
+			"Osnard",
+			"Metalhead64"
 		]
 	},
 	"bs-checklist-desc": "Ermöglicht das Erstellen von Checklisten",
@@ -12,10 +13,9 @@
 	"bs-checklist-menu-insert-checkbox": "Checkbox",
 	"bs-checklist-dlg-insert-list-title": "Eine Checkliste einfügen",
 	"bs-checklist-dlg-insert-list-value-list": "Werteliste",
-	"bs-checklist-tag-checklist-desc": "Erstellt eine Checkbox oder Select-Menü. Verfügbare Konfigurationsparameter sind:",
-	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list<code> erstellt ein Select-Menü.",
-	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Name der Vorlage, die die verfügbaren Werte beinhaltet. Parameter <code>type</code> mit dem Wert <code>list</code> muss gesetzt sein.",
-	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> oder ein Wert aus der Werte Vorlage.",
+	"bs-checklist-tag-checklist-desc": "Erzeugt ein Kontrollkästchen oder ein Auswahlmenü. Die Auswahlliste kann durch verschiedene Parameter verändert werden.",
+	"bs-checklist-tag-checklist-example-check": "Kontrollkästchen",
+	"bs-checklist-tag-checklist-example-list": "Auswahlmenü",
 	"bs-checklist-dlg-new-list": "Eine neue Liste erzeugen",
 	"bs-checklist-dlg-save-list": "Änderungen an der Liste speichern",
 	"bs-checklist-dlg-items-label": "Elemente der Liste",
@@ -32,5 +32,12 @@
 	"log-show-hide-bs-checklist": "$1 Checkbox-Logbuch",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|hat}} die Checkbox #$4 auf $3 angehakt",
 	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|hat}} die Checkbox #$4 auf $3 abgehakt",
-	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|hat}} in der Auswahlliste #$4 den Wert \"$5\" auf $3 ausgewählt"
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|hat}} in der Auswahlliste #$4 den Wert \"$5\" auf $3 ausgewählt",
+	"bs-checklist-savelist-error-invalid-title": "Ungültigen Titel angegeben",
+	"bs-checklist-savelist-error-edit-not-permitted": "Keine ausreichenden Berechtigungen, um die Liste zu speichern.",
+	"bs-checklist-modified-check": "Prüflistenwert verändert",
+	"bs-checklist-update-list": "Liste aktualisiert",
+	"apihelp-bs-checklist-available-options-store-description": "Listet alle verfügbaren Optionen für Prüflistenvorlagen auf. Erlaubt die Sortierung, Filterung und Nummerierung. Implementiert ExtJS-Store-Parameter.",
+	"apihelp-bs-checklist-template-store-description": "Listet alle Vorlagen auf, die gültige Prüflistenquellen sind. Erlaubt die Sortierung, Filterung und Nummerierung. Implementiert ExtJS-Store-Parameter.",
+	"apihelp-bs-checklist-tasks-description": "Bietet Operationen für die Prüflistenerweiterung"
 }

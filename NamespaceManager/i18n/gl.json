@@ -17,6 +17,10 @@
 	"bs-namespacemanager-label-content": "Espazo de nomes do contido",
 	"bs-namespacemanager-label-searchable": "Buscar por defecto",
 	"bs-namespacemanager-label-subpages": "Subpáxinas",
+	"bs-namespacemanager-label-pagecount": "Páxinas",
+	"bs-namespacemanager-label-system": "Sistema",
+	"bs-namespacemanager-hide-system-ns": "Ocultar espazos de nomes do sistema",
+	"bs-namespacemanager-hide-talk-ns": "Ocultar espazos de nome de conversa",
 	"bs-namespacemanager-nsadded": "O espazo de nomes foi engadido.",
 	"bs-namespacemanager-nsremoved": "O espazo de nomes foi borrado.",
 	"bs-namespacemanager-nsedited": "O espazo de nomes foi editado.",
@@ -38,5 +42,9 @@
 	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|creou}} o espazo de nomes $4",
 	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|cambiou}} a configuración do espazo de nomes $4",
 	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|renomeou}} o espazo de nomes $4 a $5",
-	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|eliminou}} o espazo de nomes $4"
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|eliminou}} o espazo de nomes $4",
+	"bs-namespacemanager-ns-config-saved": "A configuración dos espazos de nomes foi gardada.",
+	"bs-namespacemanager-error-ns-config-not-saved": "A configuración dos espazos de nomes non se puido gardar en $1.",
+	"apihelp-bs-namespace-store-description": "Listar todos os espazos de nomes e a configuración arbitraria. Permite ordenar, filtrar e paxinar. Proporciona os parámetros ExtJS Store.",
+	"apihelp-bs-namespace-tasks-description": "Permite a modificación da configuración dos espazos de nomes."
 }

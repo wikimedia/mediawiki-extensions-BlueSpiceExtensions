@@ -4,7 +4,8 @@
 			"Gomoko",
 			"SnowedEarth",
 			"Ltrlg",
-			"Grind24"
+			"Grind24",
+			"Wladek92"
 		]
 	},
 	"bs-usermanager-desc": "Interface d’administration pour ajouter, modifier et supprimer des utilisateurs",
@@ -33,5 +34,6 @@
 	"bs-usermanager-titledeleteuser": "Supprimer l’utilisateur",
 	"bs-usermanager-confirmdeleteuser": "Êtes-vous sûr de vouloir supprimer {{PLURAL:$1|cet utilisateur|ces $1 utilisateurs}} ?",
 	"bs-usermanager-groups-more": "... plus",
-	"bs-usermanager-no-self-desysop": "Vous ne pouvez pas supprimer votre propre droit de sysop."
+	"bs-usermanager-no-self-desysop": "Vous ne pouvez pas supprimer votre propre droit de sysop.",
+	"apihelp-bs-usermanager-tasks-description": "Fournit les opérations pour l’extension Checklist"
 }

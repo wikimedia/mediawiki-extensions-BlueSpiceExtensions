@@ -22,13 +22,13 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage SmartList
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -136,7 +136,14 @@ class SmartList extends BsExtensionMW {
 	 * @return string most visited pages
 	 */
 	public static function getMostVisitedPages( $iCount, $sTime ) {
-		return BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'portletperiod' => $sTime ), null );
+		try {
+			$sContent = BsExtensionManager::getExtension( 'SmartList' )->getToplist( '', array( 'count' => $iCount, 'portletperiod' => $sTime ), null );
+		} catch ( Exception $e ) {
+			$oErrorListView = new ViewTagErrorList();
+			$oErrorListView->addItem( new ViewTagError( $e->getMessage() ) );
+			$sContent = $oErrorListView->execute();
+		}
+		return $sContent;
 	}
 
 	/**
@@ -513,6 +520,17 @@ class SmartList extends BsExtensionMW {
 			'name' => 'smartlist',
 			'desc' => wfMessage( 'bs-smartlist-tag-smartlist-desc' )->plain(),
 			'code' => '<bs:smartlist />',
+			'examples' => array(
+				array(
+					'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-rc' )->plain(),
+					'code' => '<bs:smartlist new="true" count="7" ns="104" trim="false" />'
+				),
+				array(
+					'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-whatlinkshere' )->plain(),
+					'code' => '<bs:smartlist mode="whatlinkshere" traget="ARTICLENAME" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
 		);
 
 		$oResponse->result[] = array(
@@ -521,6 +539,12 @@ class SmartList extends BsExtensionMW {
 			'name' => 'newbies',
 			'desc' => wfMessage( 'bs-smartlist-tag-newbies-desc' )->plain(),
 			'code' => '<bs:newbies />',
+			'examples' => array(
+				array(
+					'code' => '<bs:newbies count="3" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
 		);
 
 		$oResponse->result[] = array(
@@ -529,6 +553,12 @@ class SmartList extends BsExtensionMW {
 			'name' => 'toplist',
 			'desc' => wfMessage( 'bs-smartlist-tag-toplist-desc' )->plain(),
 			'code' => '<bs:toplist />',
+			'examples' => array(
+				array(
+					'code' => '<bs:toplist count="4" cat="Wiki" period="month" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
 		);
 
 		return true;
@@ -1059,17 +1089,32 @@ class SmartList extends BsExtensionMW {
 		$oParser->disableCache();
 
 		$oParser->getOutput()->setProperty( 'bs-toplist', FormatJson::encode( $aArgs ) );
-		return $this->getToplist( $sInput, $aArgs, $oParser );
+
+		try {
+			$sContent = $this->getToplist( $sInput, $aArgs, $oParser );
+		} catch ( Exception $e ) {
+			$oErrorListView = new ViewTagErrorList();
+			$oErrorListView->addItem( new ViewTagError( $e->getMessage() ) );
+			$sContent = $oErrorListView->execute();
+		}
+		return $sContent;
 	}
 
 	/**
+	 * Deprecated! page.page_counter was completely removed in MediaWiki 1.25
 	 * Generates a list of the most visisted pages
+	 * @deprecated since version 2.23.3
 	 * @param string $sInput Inner HTML of BsTagMToplist tag. Not used.
 	 * @param array $aArgs List of tag attributes.
 	 * @param Parser $oParser MediaWiki parser object
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function getToplist( $sInput, $aArgs, $oParser ) {
+		wfDeprecated( __METHOD__ , '2.23.3' );
+		if( $GLOBALS['wgVersion'] > '1.24' ) {
+			//See: https://www.mediawiki.org/wiki/Requests_for_comment/Removing_hit_counters_from_MediaWiki_core
+			throw new BsException( 'Field page.page_counter was completely removed in MediaWiki 1.25' );
+		}
 		$sCat = BsCore::sanitizeArrayEntry( $aArgs, 'cat',           '', BsPARAMTYPE::STRING );
 		$sNs = BsCore::sanitizeArrayEntry( $aArgs, 'ns',            '', BsPARAMTYPE::STRING );
 		$iCount = BsCore::sanitizeArrayEntry( $aArgs, 'count',         10, BsPARAMTYPE::INT );

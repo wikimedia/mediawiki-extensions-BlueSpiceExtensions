@@ -6,7 +6,7 @@
  * Description: Provides checklist functions.
  * Authors: Markus Glaser
  *
- * Copyright (C) 2013 Hallo Welt! – Medienwerkstatt GmbH, All rights reserved.
+ * Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,11 +25,11 @@
  *
  * For further information visit http://www.blue-spice.org
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Checklist
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -71,6 +71,7 @@ class Checklist extends BsExtensionMW {
 		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		$this->setHook( 'VisualEditorConfig' );
+		$this->mCore->registerPermission( 'checklistmodify', array( 'user' ) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -88,187 +89,43 @@ class Checklist extends BsExtensionMW {
 		array_splice( $aConfigStandard["toolbar1"], $iIndexStandard + 1, 0, "bscheckbox" );
 
 		// Add context menu entry
-		$aConfigStandard["contextmenu"] = str_replace('bsContextMenuMarker', 'bsContextMenuMarker bsChecklist', $aConfigStandard["contextmenu"] );
+		$aConfigStandard["contextmenu"] = str_replace( 'bsContextMenuMarker', 'bsContextMenuMarker bsChecklist', $aConfigStandard["contextmenu"] );
 		return true;
 	}
 
-	public static function doChangeCheckItem() {
-		$oRequest = RequestContext::getMain()->getRequest();
-		$iPos = $oRequest->getInt( 'pos', 0 );
-		if ( $iPos == 0 ) return 'false';
-		$sValue = $oRequest->getVal( 'value', '' );
-		if ( $sValue == '' ) return 'false';
-		$sArticleId = $oRequest->getInt( 'articleId', 0 );
-		if ( $sArticleId == 0 ) return 'false';
-
-		$oWikiPage = WikiPage::newFromID( $sArticleId );
-		$oContent = $oWikiPage->getContent();
-		$sContent = $oContent->getNativeData();
-
-		$bChecked = null;
-		// Maybe a sanity-check is just enough here
-		$sNewValue = 'value="';
-		if ( $sValue == 'true' ) {
-			$sNewValue .= "checked";
-			$bChecked = true;
-		} else if ( $sValue == 'false' ) {
-			$bChecked = false;
-			$sNewValue .= "";
-		} else {
-			$sNewValue .= $sValue;
-		}
-		#$sNewValue .= $iPos;
-		$sNewValue .= '" ';
-
-		$sContent = self::preg_replace_nth( "/(<bs:checklist )([^>]*?>)/", "$1".$sNewValue."$2", $sContent, $iPos );
-
-		#return $sContent;
-
-		$sSummary = "Modified Check";
-		$oContentHandler = $oContent->getContentHandler();
-		$oNewContent = $oContentHandler->makeContent($sContent, $oWikiPage->getTitle());
-		$oResult = $oWikiPage->doEditContent( $oNewContent, $sSummary );
-
-		// Create a log entry for the changes on the checklist values
-		$oTitle = $oWikiPage->getTitle();
-		$oUser = RequestContext::getMain()->getUser();
-		if( !is_null( $bChecked ) ) {
-			if( $bChecked ) {
-				$oLogger = new ManualLogEntry( 'bs-checklist', 'checked' );
-				$oLogger->setParameters( array(
-						'4::position' => $iPos
-				) );
-			} else {
-				$oLogger = new ManualLogEntry( 'bs-checklist', 'unchecked' );
-				$oLogger->setParameters( array(
-						'4::position' => $iPos
-				) );
-			}
-		} else {
-			$oLogger = new ManualLogEntry( 'bs-checklist', 'selected' );
-			$oLogger->setParameters( array(
-					'4::position' => $iPos,
-					'5::selected' => $sValue
-			) );
-		}
-		$oLogger->setPerformer( $oUser );
-		$oLogger->setTarget( $oTitle );
-		$oLogger->insert();
-
-		return 'true';
-	}
-
-	public static function ajaxGetTemplateData() {
-		$aTemplateData = array();
-		$dbr = wfGetDB(DB_SLAVE);
-		$res = $dbr->select(
-			array( 'page' ),
-			array( 'page_namespace', 'page_title' ),
-			array(
-				'page_namespace' => NS_TEMPLATE
-			)
-		);
-
-		$aTitles = array();
-		foreach( $res as $row ) {
-			$oTitle = Title::makeTitle(
-				$row->page_namespace,
-				$row->page_title
-			);
-			// only add those titles that do have actual lists
-			$aListOptions = self::getListOptions( $oTitle->getFullText() );
-			if (sizeof( $aListOptions ) > 0 ) {
-				$aTitles[] = $oTitle->getText();
+	public static function getListOptions( $listTitle ) {
+		$aOptions = array();
+		$oTitle = Title::newFromText( $listTitle, NS_TEMPLATE );
+		//echo $args['list']." ".$oTitle->getArticleID();
+		if ( is_object( $oTitle ) ) {
+			$oWikiPage = WikiPage::newFromID( $oTitle->getArticleID() );
+			if ( is_object( $oWikiPage ) ) {
+				$sContent = $oWikiPage->getContent()->getNativeData();
+				$aLines = explode( "\n", $sContent );
+				foreach ( $aLines as $sLine ) {
+					if ( strpos( $sLine, '*' ) !== 0 ) continue;
+					$sNewLine = trim( substr( $sLine, 1 ) );
+					$aOptions[] = $sNewLine;
+				}
 			}
 		}
-		foreach ($aTitles as $sTitle ) {
-			$oTemplate = new stdClass();
-			$oTemplate->text = $sTitle;
-			$oTemplate->leaf = true;
-			$oTemplate->id = $sTitle;
-			$aTemplateData[] = $oTemplate;
-		}
-
-		return FormatJson::encode( $aTemplateData );
+		return $aOptions;
 	}
 
-	public static function ajaxGetItemStoreData() {
-		return FormatJson::encode( array() );
-	}
 
-	public static function ajaxSaveOptionsList( $sTitle, $aRecords ) {
-		$oTitle = Title::newFromText( $sTitle, NS_TEMPLATE );
-
-		$sContent = '';
-		foreach( $aRecords as $record ) {
-			$sContent .= '* '.$record."\n";
-		}
-
-		// TODO: i18n
-		$sSummary = "Updated list";
-
-		$oWikiPage = WikiPage::factory( $oTitle );
-		$oContentHandler = $oWikiPage->getContentHandler();
-		$oNewContent = $oContentHandler->makeContent($sContent, $oWikiPage->getTitle());
-		$oResult = $oWikiPage->doEditContent( $oNewContent, $sSummary );
-
-		//TODO: proper json answer
-		return FormatJson::encode( "OK" );
-	}
-
-	public static function getOptionsList() {
-		$oRequest = RequestContext::getMain()->getRequest();
-		$sList = $oRequest->getVal( 'listId', '' );
-		$theList = self::getListOptions( $sList );
-		return FormatJson::encode( $theList );
-	}
-
-	public static function getAvailableOptions() {
-		$aTemplateData = array();
-		$dbr = wfGetDB(DB_SLAVE);
-		$res = $dbr->select(
-			array( 'page' ),
-			array( 'page_namespace', 'page_title' ),
-			array(
-				'page_namespace' => NS_TEMPLATE
-			)
-		);
-
-		$aAvailableOptions = array();
-		foreach( $res as $row ) {
-			$oTitle = Title::makeTitle(
-				$row->page_namespace,
-				$row->page_title
-			);
-			// only add those titles that do have actual lists
-			$aListOptions = self::getListOptions( $oTitle->getFullText() );
-			if (sizeof( $aListOptions ) > 0 ) {
-				$aAvailableOptions = array_merge($aAvailableOptions, $aListOptions);
-			}
-		}
-		foreach ($aAvailableOptions as $sOption ) {
-			$oTemplate = new stdClass();
-			$oTemplate->text = $sOption;
-			$oTemplate->leaf = true;
-			$oTemplate->id = $sOption;
-			$aTemplateData[] = $oTemplate;
-		}
-
-		return FormatJson::encode( $aTemplateData );
-	}
 
 	/*http://www.php.net/manual/en/function.preg-replace.php#112400*/
-	protected static function preg_replace_nth($pattern, $replacement, $subject, $nth=1) {
-		return preg_replace_callback($pattern,
-			function($found) use (&$pattern, &$replacement, &$nth) {
+	public static function preg_replace_nth( $pattern, $replacement, $subject, $nth=1 ) {
+		return preg_replace_callback( $pattern,
+			function( $found ) use ( &$pattern, &$replacement, &$nth ) {
 					$nth--;
-					if ($nth==0) {
-						$sResult = preg_replace( '/value=".*?" /', '', reset($found) );
-						$sResult = preg_replace($pattern, $replacement, $sResult );
+					if ( $nth==0 ) {
+						$sResult = preg_replace( '/value=".*?" /', '', reset( $found ) );
+						$sResult = preg_replace( $pattern, $replacement, $sResult );
 						return $sResult;
 					}
-					return reset($found);
-			}, $subject,$nth  );
+					return reset( $found );
+			}, $subject,$nth );
 	}
 
 	/**
@@ -282,8 +139,8 @@ class Checklist extends BsExtensionMW {
 	}
 
 	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
-		$this->getOutput()->addModuleStyles('ext.bluespice.checklist.styles');
-		$this->getOutput()->addModules('ext.bluespice.checklist');
+		$this->getOutput()->addModuleStyles( 'ext.bluespice.checklist.styles' );
+		$this->getOutput()->addModules( 'ext.bluespice.checklist' );
 
 		$aRows[0]['dialogs'][60] = 'bs-editbutton-checklist';
 
@@ -303,85 +160,67 @@ class Checklist extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
-		$aMessage = array();
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-desc' )->plain().'<br />';
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-type' )->plain();
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-list' )->plain();
-		$aMessage[] = wfMessage( 'bs-checklist-tag-checklist-param-value' )->plain();
-
 		$oResponse->result[] = array(
 			'id' => 'bs:checklist',
 			'type' => 'tag',
 			'name' => 'checklist',
-			'desc' => implode( '<br />', $aMessage ),
+			'desc' => wfMessage( 'bs-checklist-tag-checklist-desc' )->text(),
 			'code' => '<bs:checklist />',
+			'examples' => array(
+				array(
+					'label' => wfMessage( 'bs-checklist-tag-checklist-example-check' )->text(),
+					'code' => '<bs:checklist type="check" value="checked" />'
+				),
+				array(
+					'label' => wfMessage( 'bs-checklist-tag-checklist-example-list' )->text(),
+					'code' => '<bs:checklist type="list" value="false" list="Status" />'
+				),
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/Checklist'
 		);
 
 		return true;
 	}
 
-	public static function getListOptions( $listTitle ) {
-		$aOptions = array();
-		$oTitle = Title::newFromText( $listTitle, NS_TEMPLATE );
-		//echo $args['list']." ".$oTitle->getArticleID();
-		if ( is_object( $oTitle )) {
-			$oWikiPage = WikiPage::newFromID( $oTitle->getArticleID() );
-			if ( is_object( $oWikiPage ) ) {
-				$sContent = $oWikiPage->getContent()->getNativeData();
-				$aLines = explode( "\n", $sContent );
-				foreach ( $aLines as $sLine ) {
-					if ( strpos( $sLine, '*' ) !== 0 ) continue;
-					$sNewLine = trim(substr($sLine, 1));
-					$aOptions[] = $sNewLine;
-				}
-			}
-		}
-		return $aOptions;
-	}
 
 	public function onMagicWordBsChecklist( $input, $args, $parser ) {
-		/*
-		 *16:37:57: Echt? Ich dachte du machst ein Edit auf der Seite. Da müsste der Cache doch automatisch invalidiert werden, oder?
-		 *16:38:56: Und falls das nicht geht sollte ein $oTitle-&gt;invalidateCache(); den gleichen Effekt haben.
-		 */
 		$parser->disableCache();
 
 		$this->bCheckboxFound = true;
 		$sOut = array();
 
-		if (isset($args['list'])) {
+		if ( isset( $args['list'] ) ) {
 			$aOptions = $this->getListOptions( $args['list'] );
 		}
-		if( !isset($args['value']) || $args['value'] === 'false' ) {
+		if( !isset( $args['value'] ) || $args['value'] === 'false' ) {
 			$args['value'] = '';
 		}
 
-		//$aOptions = array("grün", "blau", "gelb", "rot");
 		$sSelectColor = '';
-		if (isset($args['type']) && $args['type'] == 'list' ) {
+		if ( isset( $args['type'] ) && $args['type'] == 'list' ) {
 			$sOut[] = "<select {color} ";
 			$sOut[] = "id='bs-cb-".$this->getNewCheckboxId()."' ";
 			$sOut[] = "onchange='BsChecklist.change(this);' ";
 			$sOut[] = ">";
 
-			$bDefault = empty($args['value']) ? true : false;
+			$bDefault = empty( $args['value'] ) ? true : false;
 
 			foreach ( $aOptions as $sOption ) {
-				$aOptionSet = explode("|", $sOption);
+				$aOptionSet = explode( "|", $sOption );
 
-				if (!$sSelectColor && isset ($aOptionSet[1])) {
+				if ( !$sSelectColor && isset( $aOptionSet[1] ) ) {
 					$sSelectColor = "style='color:".$aOptionSet[1].";' ";
 				}
 
 				$sOption = $aOptionSet[0];
 				$sOut[] = "<option ";
-				if (isset ($aOptionSet[1])) {
+				if ( isset( $aOptionSet[1] ) ) {
 					$sOut[] = "style='color:".$aOptionSet[1].";' ";
 				}
-				if( $bDefault || $args['value'] == $sOption ) {
+				if ( $bDefault || $args['value'] == $sOption ) {
 					$bDefault = false;
 					$sOut[] = "selected='selected'";
-					if (isset ($aOptionSet[1])) {
+					if ( isset( $aOptionSet[1] ) ) {
 						$sSelectColor = "style='color:".$aOptionSet[1].";' ";
 					}
 				}
@@ -399,8 +238,8 @@ class Checklist extends BsExtensionMW {
 			}
 			$sOut[] = "/>";
 		}
-		$sOut = implode($sOut, '');
-		$sOut = str_replace('{color}', $sSelectColor, $sOut);
+		$sOut = implode( $sOut, '' );
+		$sOut = str_replace( '{color}', $sSelectColor, $sOut );
 		return $sOut;
 	}
 
@@ -418,7 +257,7 @@ class Checklist extends BsExtensionMW {
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		// also needed in edit mode
 		//if ( $this->bCheckboxFound ) {
-			$oOutputPage->addModules('ext.bluespice.checklist');
+			$oOutputPage->addModules( 'ext.bluespice.checklist' );
 		//}
 		return true;
 	}

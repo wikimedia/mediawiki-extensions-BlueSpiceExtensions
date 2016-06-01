@@ -3,11 +3,11 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage NamespaceManager
- * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -25,7 +25,7 @@ Ext.define( 'BS.NamespaceManager.NamespaceRemoveDialog', {
 			items: [
 				{ boxLabel: mw.message( 'bs-namespacemanager-willdelete' ).text(), name: 'rb', inputValue: '0' },
 				{ boxLabel: mw.message( 'bs-namespacemanager-willmove' ).text(), name: 'rb', inputValue: '1' },
-				{ boxLabel: mw.message( 'bs-namespacemanager-willmovesuffix', msg ).text(), name: 'rb', inputValue: '2' }
+				{ boxLabel: mw.message( 'bs-namespacemanager-willmovesuffix', msg ).text(), name: 'rb', inputValue: '2', checked: true }
 			]
 		});
 		this.items = [{

@@ -60,5 +60,18 @@
 	"echo-category-title-bs-responsible-editors-action-cat": "Одговорни уредници — Дејства",
 	"echo-category-title-bs-responsible-editors-assignment-cat": "Одговорни уредници — Назначувања",
 	"notification-bs-responsibleeditors-assign-summary": "[[User:$1|$1]] {{GENDER:$1|ве назначи}} за одговорен уредник на $3",
-	"notification-bs-responsibleeditors-assign-subject": "Доделена одговорноста за „$2“"
+	"notification-bs-responsibleeditors-assign-subject": "Доделена одговорноста за „$2“",
+	"notification-bs-responsibleeditors-assign-body": "$1 {{GENDER:$1|ви ја додели}} страницата „$2“. Откако ќе се најавите на викито, можете да ја отворите преку оваа врска: $3. Ако имате прашања, обратете се на $1.",
+	"notification-bs-responsibleeditors-revoke-summary": "[[User:$1|$1]] {{GENDER:$1|ја повлече}} одговорноста за страницата $3",
+	"notification-bs-responsibleeditors-revoke-subject": "Одговорноста за „$2“ е отповикаа",
+	"notification-bs-responsibleeditors-revoke-body": "$1 {{GENDER:$1|ја отповика}} одговорноста за страницата „$2“. Откако ќе се најавите на викито, можете да ја отворите преку оваа врска: $3. Ако имате прашања, обратете се на $1.",
+	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] ја {{GENDER:$1|измени}} страницата $3",
+	"notification-bs-responsibleeditors-change-subject": "$1 ја {{GENDER:$1|измени}} страницата „$2“",
+	"notification-bs-responsibleeditors-change-body": "Страницата „$2“, чиј одговорен уредник сте Вие, е {{GENDER:$1|изменета}} од $1. Откако ќе се најавите, можете да ја отворите тука: $3",
+	"notification-bs-responsibleeditors-delete-summary": "[[User:$1|$1]] ја {{GENDER:$1|избриша}} страницата $3",
+	"notification-bs-responsibleeditors-delete-subject": "$1 ја {{GENDER:$2|избриша}} страницата „$2“",
+	"notification-bs-responsibleeditors-delete-body": "Страницата „$2“, чиј одговорен уредник сте Вие, е {{GENDER:$1|избришана}} од $1. Откако ќе се најавите, можете да ја отворите тука: $3",
+	"notification-bs-responsibleeditors-move-summary": "[[User:$1|$1]] {{GENDER:$1|ја премести}} страницата $3 на $5",
+	"notification-bs-responsibleeditors-move-subject": "$1 ја {{GENDER:$1|премести}} страницата „$2“",
+	"notification-bs-responsibleeditors-move-body": "Страницата „$2“, чиј одговорен уредник сте Вие, е {{GENDER:$1|преместена}} на „$4“ од $1. Откако ќе се најавите, можете да ја отворите тука: $5"
 }

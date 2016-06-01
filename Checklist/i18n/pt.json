@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Diniscoelho"
 		]
 	},
 	"bs-checklist-menu-insert-list-title": "Inserir lista",
@@ -14,5 +15,8 @@
 	"bs-checklist-dlg-panel-title": "Listas disponíveis",
 	"bs-checklist-dlg-new-title": "Adicionar nova lista",
 	"bs-checklist-dlg-new-prompt": "Introduza um título para a lista",
-	"bs-checklist-alert": "Atenção!"
+	"bs-checklist-alert": "Atenção!",
+	"bs-checklist-savelist-error-invalid-title": "O titulo fornecido é inválido",
+	"bs-checklist-savelist-error-edit-not-permitted": "Permissões insuficientes para gravar a lista",
+	"bs-checklist-update-list": "Lista atualizada"
 }

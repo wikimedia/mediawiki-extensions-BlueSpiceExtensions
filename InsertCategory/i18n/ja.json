@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
 	"bs-insertcategory-desc": "カテゴリのリンクを入力するダイアログ",
@@ -12,6 +13,6 @@
 	"bs-insertcategory-cat-label": "割り当て済み:",
 	"bs-insertcategory-success": "カテゴリを追加しました",
 	"bs-insertcategory-failure": "エラー",
-	"bs-insertcategory-hint": "注: カテゴリを追加するには、Enter キーを押すか、またはカンマで区切ってください。",
+	"bs-insertcategory-hint": "注: カテゴリを追加するには、Enter キーを押してください。",
 	"bs-insertcategory-panel-title": "カテゴリ"
 }

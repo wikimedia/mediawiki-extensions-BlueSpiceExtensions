@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-formattinghelp-desc": "Відображає довідку із форматування тексту",
@@ -25,5 +26,6 @@
 	"bs-formattinghelp-help-extlink": "Зовнішнє посилання",
 	"bs-formattinghelp-help-hr": "Горизонтальна лінія",
 	"bs-formattinghelp-help-template": "Шаблон",
-	"bs-formattinghelp-help-templatename": "Назва шаблону"
+	"bs-formattinghelp-help-templatename": "Назва шаблону",
+	"apihelp-bs-formattinghelp-description": "Забезпечує завдання для розширення FormattingHelp."
 }

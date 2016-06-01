@@ -31,7 +31,7 @@
 	"bs-flexiskin-labelbgcolor": "Колір тла",
 	"bs-flexiskin-headerheader": "Шапка",
 	"bs-flexiskin-labellogoupload": "Логотип",
-	"bs-flexiskin-labelbackgroundupload": "Фонове зображення",
+	"bs-flexiskin-labelbackgroundupload": "Поточне зображення",
 	"bs-flexiskin-no-repeat": "без повторення",
 	"bs-flexiskin-repeat-x": "горизонтальне повторення",
 	"bs-flexiskin-repeat-y": "вертикальне повторення",
@@ -57,5 +57,9 @@
 	"bs-flexiskin-api-example-desc": "Повертає поточну конфігурацію Flexiskin.",
 	"bs-flexiskin-api-error-save": "Сталася помилка при спробі зберегти. Причина: «$1»",
 	"bs-flexiskin-api-error-invalid-action": "Така дія не існує.",
-	"bs-flexiskin-api-error-missing-param": "Бракує параметра: «$1»"
+	"bs-flexiskin-api-error-missing-param": "Бракує параметра: «$1»",
+	"bs-flexiskin-apihelp-task-param-skinId": "Параметр <var>skinId</var> визначає тему оформлення",
+	"bs-flexiskin-apihelp-task-param-name": "Параметр <var>name</var> є назвою завантаженого файлу",
+	"bs-flexiskin-usebackground": "Використати фонове зображення",
+	"bs-flexiskin-labelcurrentbackground": "Поточне зображення"
 }

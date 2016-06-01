@@ -8,5 +8,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "Sortuj według:",
 	"bs-pagesvisited-pref-sort-time": "Czas",
 	"bs-pagesvisited-pref-sort-pagename": "Tytuł",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Wyświetla listę odwiedzonych stron."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Pokazuje listę ostatnio odwiedzanych stron. Lista może zostać ograniczona przez parametry."
 }

@@ -8,6 +8,8 @@
 	},
 	"bs-pagetemplates-desc": "Es können vorgefertigte Seitenvorlagen angelegt werden",
 	"prefs-pagetemplates": "Seitenvorlagen",
+	"apihelp-bs-pagetemplates-store": "Bietet eine Liste mit verfügbaren Vorlagen.",
+	"apihelp-bs-pagetemplates-tasks": "Bietet Erstell-, Aktualisierungs- und Löschaufgaben für Vorlagen.",
 	"bs-pagetemplates-empty-page": "Leere Seite",
 	"bs-pagetemplates-empty-page-desc": "Beginne mit einer leeren Seite.",
 	"bs-pagetemplatesadmin-label": "Seitenvorlagen",

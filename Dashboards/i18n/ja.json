@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
 	"bs-dashboards-desc": "利用者向けおよび管理者向けのダッシュボードを提供する",
@@ -13,5 +14,7 @@
 	"admindashboard": "管理者ダッシュボード",
 	"userdashboard": "利用者ダッシュボード",
 	"bs-dashboard-userportlet-calendar-title": "カレンダー",
-	"bs-dashboard-userportlet-calendar-description": "カレンダー"
+	"bs-dashboard-userportlet-calendar-description": "カレンダー",
+	"bs-dashboard-userportlet-wikipage-title": "ウィキページ",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "ウィキページ"
 }

@@ -15,17 +15,20 @@ class FlexiskinFormatter {
 			if( $oStatus->isGood() ){
 				$oFileInfo = new SplFileInfo( $aConfig->backgroundImage );
 				$sMime = MimeMagic::singleton()->guessTypesForExtension( $oFileInfo->getExtension() );
-				$aReturn[] = "body{background-image:url('data:$sMime;base64," . base64_encode( $oStatus->getValue() ) . "') !important;}";
+				$aReturn[] = "body.mediawiki{background-image:url('data:$sMime;base64," . base64_encode( $oStatus->getValue() ) . "') !important;}";
 			}
 			else{
-				$aReturn[] = "body{background-image:none !important;}";
+				$aReturn[] = "body.mediawiki{background-image:none !important;}";
 			}
+		}
+		elseif ( $aConfig->backgroundImage == "none" ) {
+			$aReturn[] = "body.mediawiki{background-image:none !important;}";
 		}
 		else {
 			$sPath = RequestContext::getMain()->getSkin()->getSkinStylePath( "resources/images/desktop/bg-lo.png" );
-			$aReturn[] = "body{background-image:url('" . $sPath . "') !important;}";
+			$aReturn[] = "body.mediawiki{background-image:url('" . $sPath . "') !important;}";
 		}
-		$aReturn[] = "body{background-repeat:" . $aConfig->repeatBackground . " !important;}";
+		$aReturn[] = "body.mediawiki{background-repeat:" . $aConfig->repeatBackground . " !important;}";
 		wfRunHooks( "BSFlexiskinFormatterGeneral", array( &$aConfig, &$aReturn ) );
 		return implode( " \n", $aReturn );
 	}
@@ -66,8 +69,8 @@ class FlexiskinFormatter {
 			$aReturn[] = "#bs-application{width:100% !important;}";
 			$aReturn[] = "#bs-wrapper{width:100% !important;min-width:100% !important;}";
 		}
-		wfRunHooks( "BSFlexiskinFormatterPosition", array( &$aConfig, &$aReturn ) );
 
+		wfRunHooks( "BSFlexiskinFormatterPosition", array( &$aConfig, &$aReturn ) );
 		return implode( " \n", $aReturn );
 	}
 

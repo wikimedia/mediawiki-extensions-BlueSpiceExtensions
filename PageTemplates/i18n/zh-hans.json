@@ -6,6 +6,8 @@
 	},
 	"bs-pagetemplates-desc": "显示标记为页面模板的模板列表",
 	"prefs-pagetemplates": "页面模板",
+	"apihelp-bs-pagetemplates-store": "提供可用模板的列表。",
+	"apihelp-bs-pagetemplates-tasks": "为模板提供创建、更新和删除任务。",
 	"bs-pagetemplates-empty-page": "空页",
 	"bs-pagetemplates-empty-page-desc": "从空页开始。",
 	"bs-pagetemplatesadmin-label": "页面模板",

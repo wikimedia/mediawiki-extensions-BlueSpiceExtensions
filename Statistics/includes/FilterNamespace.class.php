@@ -4,11 +4,11 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
 
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -27,7 +27,7 @@ class BsFilterNamespace extends BsMultiSelectFilter {
 	public function __construct( $oDiagram, $aDefaultValues ) {
 		parent::__construct( $oDiagram, $aDefaultValues );
 
-		$this->sLabel = wfMsg( 'bs-ns' );
+		$this->sLabel = wfMessage( 'bs-ns' )->text();
 		$this->aAvailableValues = $this->loadAvailableValues();
 		$this->aDefaultValues = array( 0 );
 	}

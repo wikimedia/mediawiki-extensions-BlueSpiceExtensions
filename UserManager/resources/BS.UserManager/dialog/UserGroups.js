@@ -3,10 +3,10 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage UserManager
- * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -27,7 +27,7 @@ Ext.define( 'BS.UserManager.dialog.UserGroups', {
 			labelWidth: 130,
 			labelAlign: 'right',
 			store: this.strGroups,
-			valueField: 'group',
+			valueField: 'group_name',
 			displayField: 'displayname',
 			maxHeight: 350
 		} );
@@ -56,7 +56,7 @@ Ext.define( 'BS.UserManager.dialog.UserGroups', {
 	getGroupsValue: function( data ) {
 		var groups = [];
 		for( var i = 0; i < data.length; i++ ) {
-			groups.push( data[i].group );
+			groups.push( data[i] );
 		}
 		return groups;
 	}

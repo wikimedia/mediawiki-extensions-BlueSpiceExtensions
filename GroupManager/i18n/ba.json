@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Азат Хәлилов"
+		]
+	},
+	"bs-groupmanager-desc": "Өҫтәү, төҙәтеү һәм ҡатнашыусылар төркөмөн юйыу өсөн хакимиәт интерфейсы.",
+	"bs-groupmanager-grpexists": "Төркөм бар инде.",
+	"bs-groupmanager-grpempty": "Төркөм исемен юйып булмай.",
+	"bs-groupmanager-grpadded": "Төркөм өҫтәлде.",
+	"bs-groupmanager-grpedited": "Төркөм мөхәррирләнде.",
+	"bs-groupmanager-grpremoved": "Төркөм алып ташланды",
+	"bs-groupmanager-label": "Төркөм менеджеры",
+	"bs-groupmanager-invalid-name": "Төркөм исемендә ярамаған{{PLURAL:$1|й|е}} {{PLURAL:$1|символ|символдар}} бар: $2",
+	"bs-groupmanager-invalid-name-length": "Төркөм исеме 255 символдан артыҡ була алмай.",
+	"bs-groupmanager-invalid-name-numeric": "Төркөм исемендә кәм тигәндә бер символ булырға тейеш.",
+	"bs-groupmanager-headergroup": "Төркөм",
+	"bs-groupmanager-tipremove": "{{PLURAL:$1|Төркөм}}дө юйырға",
+	"bs-groupmanager-titlenewgroup": "Яңы төркөм",
+	"bs-groupmanager-titleeditgroup": "Төркөмдө мөхәррирләргә",
+	"bs-groupmanager-removegroup": "{{PLURAL:$1|Был төркөмдө}} ысынлап та юйырға теләйһегеҙме?",
+	"bs-groupmanager-removegroup-message-success": "{{PLURAL:$1|Түбәндәге төркөмдәр}} алып ташланды $2",
+	"bs-groupmanager-removegroup-message-failure": "{{PLURAL:$1|Түбәндәге төркөмдө}} алып ташлап булманы $2",
+	"bs-groupmanager-removegroup-message-unknown": "Көтөлмәгән хата барлыҡҡа килде, ҡабат эшләп ҡарағаҙ.",
+	"bs-groupmanager-lablename": "Төркөм исеме:",
+	"bs-groupmanager-msgnoteditable": "Был система төркөмө, уның исемен алыштырып булмай",
+	"bs-groupmanager-msgnotremovable": "Был система төркөмө, уны юйып булмай",
+	"log-name-bs-group-manager": "Төркөм менеджеры логы",
+	"log-description-bs-group-manager": "Был — ҡулланыусы хоҡуҡтары үҙгәрештәре яҙмалары журналы",
+	"log-show-hide-bs-group-manager": " $1 Төркөм менеджеры логы"
+}

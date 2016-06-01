@@ -15,9 +15,8 @@
 	"bs-checklist-dlg-insert-list-title": "Insérer une liste de contrôle",
 	"bs-checklist-dlg-insert-list-value-list": "Liste de valeurs",
 	"bs-checklist-tag-checklist-desc": "Affiche une case à cocher ou une liste déroulante. Attributs de configuration disponibles :",
-	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> affiche une liste déroulante.",
-	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Nom du modèle avec les valeurs disponibles. Le paramètre <code>type</code> doit être fixé à <code>list</code>.",
-	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> ou une valeur du modèle de la liste.",
+	"bs-checklist-tag-checklist-example-check": "Case à cocher",
+	"bs-checklist-tag-checklist-example-list": "Sélectionner menu",
 	"bs-checklist-dlg-new-list": "Créer une nouvelle liste",
 	"bs-checklist-dlg-save-list": "Enregistrer les modifications apportées à la liste",
 	"bs-checklist-dlg-items-label": "Éléments de la liste",
@@ -34,5 +33,12 @@
 	"log-show-hide-bs-checklist": "Journal de coche $1",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|a coché}} la boîte #$4 sur $3",
 	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|a décoché}} la case à cocher #$4 sur $3",
-	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|a sélectionné}} la valeur \"$5\" dans la bo^te de selection #$4 sur $3"
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|a sélectionné}} la valeur \"$5\" dans la bo^te de selection #$4 sur $3",
+	"bs-checklist-savelist-error-invalid-title": "Titre fourni non valide",
+	"bs-checklist-savelist-error-edit-not-permitted": "Autorisations insuffisantes pour enregistrer la liste",
+	"bs-checklist-modified-check": "Valeur de liste de vérification modifiée",
+	"bs-checklist-update-list": "Liste mise à jour",
+	"apihelp-bs-checklist-available-options-store-description": "Liste toutes les options disponibles pour les modèles de liste de vérification. Permet le tri, le filtrage et la pagination. Implémente les paramètres ExtJS Store.",
+	"apihelp-bs-checklist-template-store-description": "Liste tous les modèles qui sont des sources de liste de contrôle valides. Permet le tri, le filtrage et la pagination. Implémente les paramètres ExtJS Store.",
+	"apihelp-bs-checklist-tasks-description": "Fournit les opérations pour l’extension Checklist"
 }

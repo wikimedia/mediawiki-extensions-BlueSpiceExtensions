@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Рустам Нурыев"
+			"Рустам Нурыев",
+			"Sagan"
 		]
 	},
+	"bs-authors-desc": "Бит авторҙарының профиль картинаһын күрһәтә",
+	"prefs-authors": "Был бит авторҙары",
+	"bs-authors-title": "{{GENDER:$2|Автор{{PLURAL:$1|}}}}",
+	"bs-authors-profileimage": "Профиль рәсем",
+	"bs-authors-profileimage-change": "Рәсем профилен үҙгәртергә",
+	"bs-authors-show-all-authors": "Башҡа авторҙар ҙа бар",
+	"bs-authors-pref-imageheight": "Рәсем бейеклеге",
+	"bs-authors-pref-imagewidth": "Рәсем киңлеге",
+	"bs-authors-pref-limit": "Авторҙар һанына сикләү",
+	"bs-authors-pref-show": "Авторҙарҙы күрһәтергә",
 	"bs-authors-switch-description": "Был биттең авторҙарын йәшерергә"
 }

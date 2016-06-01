@@ -24,3 +24,5 @@ $wgResourceModules['ext.bluespice.extendeditbar.styles'] = array(
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );
+
+$bsgExtendedEditBarEnabledActions = array( 'edit', 'submit' );

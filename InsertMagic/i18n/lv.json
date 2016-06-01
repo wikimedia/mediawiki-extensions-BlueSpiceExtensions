@@ -6,5 +6,7 @@
 	},
 	"bs-insertmagic-currentmonthnamegen": "Šajā mēnesī (ģenitīvā).",
 	"bs-insertmagic-type-variables": "Mainīgie",
-	"bs-insertmagic-label-desc": "Apraksts"
+	"bs-insertmagic-label-desc": "Apraksts",
+	"bs-insertmagic-label-examples": "Piemēri",
+	"bs-insertmagic-label-see-also": "Skatīt arī"
 }

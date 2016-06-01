@@ -9,9 +9,9 @@
 	"bs-interwikilinks-invalid-pfx-spc": "De prefix is ongeldig. Gebruik geen spaties.",
 	"bs-interwikilinks-invalid-url-spc": "De URL is ongeldig. Gebruik geen spaties.",
 	"bs-interwikilinks-label": "Interwikilinks",
-	"bs-interwikilinks-link-created": "De interwiki link is gemaakt.",
-	"bs-interwikilinks-link-added": "De interwiki-link toegevoegd.",
-	"bs-interwikilinks-link-deleted": "De interwiki link is verwijderd.",
+	"bs-interwikilinks-link-created": "De interwikikoppeling is aangemaakt.",
+	"bs-interwikilinks-link-added": "De interwikikoppeling is toegevoegd.",
+	"bs-interwikilinks-link-deleted": "De interwikikoppeling is verwijderd.",
 	"bs-interwikilinks-nooldpfx": "De vorige prefix is niet gevonden.",
 	"bs-interwikilinks-nopfx": "Geef een voorvoegsel op.",
 	"bs-interwikilinks-nourl": "Geef een URL op.",
@@ -22,8 +22,8 @@
 	"bs-interwikilinks-titleeditinterwikilink": "Interwikikoppeling bewerken",
 	"bs-interwikilinks-labelprefix": "Voorvoegsel",
 	"bs-interwikilinks-titledeleteinterwikilink": "Interwikilink verwijderen",
-	"bs-interwikilinks-confirmdeleteinterwikilink": "Bent u zeker dat u wilt verwijderen in dit interwiki link?",
-	"bs-interwikilinks-insertlink-tabtitle": "Link naar een andere wiki",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Weet u zeker dat u deze interwikikoppeling wilt verwijderen?",
+	"bs-interwikilinks-insertlink-tabtitle": "Koppeling naar andere wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Voorvoegsel",
 	"bs-interwikilink-select-a-prefix": "Kies voorvoegsel"
 }

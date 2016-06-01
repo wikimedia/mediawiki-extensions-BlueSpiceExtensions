@@ -22,11 +22,11 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage WhoIsOnline
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -167,6 +167,7 @@ class WhoIsOnline extends BsExtensionMW {
 			'name' => 'whoisonlinecount',
 			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinecount-desc' )->plain(),
 			'code' => '<bs:whoisonlinecount />',
+			'helplink' => 'https://help.bluespice.com/index.php/WhoIsOnline'
 		);
 
 		$oResponse->result[] = array(
@@ -175,6 +176,12 @@ class WhoIsOnline extends BsExtensionMW {
 			'name' => 'whoisonlinepopup',
 			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinepopup-desc' )->plain(),
 			'code' => '<bs:whoisonlinepopup />',
+			'examples' => array(
+				array(
+					'code' => '<bs:whoisonlinepopup anchortext="Online users" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/WhoIsOnline'
 		);
 
 		return true;

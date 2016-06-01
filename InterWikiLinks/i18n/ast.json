@@ -24,5 +24,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "¿Tas seguru de que quies desaniciar esti enllaz interwiki?",
 	"bs-interwikilinks-insertlink-tabtitle": "Enllazar a otra wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefixu",
-	"bs-interwikilink-select-a-prefix": "Escueye prefixu"
+	"bs-interwikilink-select-a-prefix": "Escueye prefixu",
+	"bs-interwikilinks-link-edited": "Editóse l'enllaz interwiki.",
+	"apihelp-bs-interwikilinks-tasks-description": "Ufre les xeres pa la estensión InterWikiLinks."
 }

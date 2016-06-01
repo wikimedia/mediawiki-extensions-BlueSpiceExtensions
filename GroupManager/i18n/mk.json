@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Macofe"
 		]
 	},
 	"bs-groupmanager-desc": "Административен посредник додавање, измена и бришење на кориснички групи и нивните права",
 	"bs-groupmanager-grpexists": "Групата веќе постои.",
+	"bs-groupmanager-grpempty": "Името не групата може да стои празно.",
 	"bs-groupmanager-grpadded": "Групата е додадена.",
 	"bs-groupmanager-grpedited": "Групата е изменета.",
 	"bs-groupmanager-grpremoved": "Групата е отстранета.",
@@ -29,5 +31,6 @@
 	"log-show-hide-bs-group-manager": "$1 раководен дневник",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|ја создаде}} групата $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|ја преименуваше}} групата $4 во $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|ја отстрани}} групата $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|ја отстрани}} групата $4",
+	"apihelp-bs-groupmanager-description": "Ги дава задачите за додатокот „Раководител со групи“"
 }

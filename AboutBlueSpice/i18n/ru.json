@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"bs-aboutbluespice-desc": "Информация о BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "О BlueSpice",
+	"aboutbluespice": "О BlueSpice",
+	"prefs-aboutbluespice": "О BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Показывать ссылку «{{int:bs-aboutbluespice-about-bluespice}}» в верхнем и главном меню"
+}

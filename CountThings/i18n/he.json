@@ -9,6 +9,8 @@
 	"bs-countthings-words-label": "מילים",
 	"bs-countthings-pages-label": "דפים",
 	"bs-countthings-error-no-input": "לא ניתן דף.",
-	"bs-countthings-tag-countarticles-desc": "מציג את מספר הדפים.",
-	"bs-countthings-tag-countusers-desc": "מציג את מספר המשתמשים."
+	"bs-countthings-tag-countarticles-desc": "הצגת מספר דפי התוכן באתר.",
+	"bs-countthings-tag-countusers-desc": "הצגת מספר המשתמשים הרשומים.",
+	"bs-countthings-tag-countcharacters-example-1": "מספר המילים",
+	"bs-countthings-tag-countcharacters-example-2": "מספר התווים"
 }

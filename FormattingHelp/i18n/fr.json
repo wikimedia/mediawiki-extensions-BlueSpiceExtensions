@@ -25,5 +25,6 @@
 	"bs-formattinghelp-help-extlink": "Lien externe",
 	"bs-formattinghelp-help-hr": "Ligne horizontale",
 	"bs-formattinghelp-help-template": "Modèle",
-	"bs-formattinghelp-help-templatename": "Nom du modèle"
+	"bs-formattinghelp-help-templatename": "Nom du modèle",
+	"apihelp-bs-formattinghelp-description": "Fournit les tâches pour l’extension FormattingHelp."
 }

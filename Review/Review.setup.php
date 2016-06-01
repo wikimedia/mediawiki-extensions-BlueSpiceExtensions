@@ -19,6 +19,9 @@ $wgResourceModules['ext.bluespice.review.styles'] = array(
 
 $wgResourceModules['ext.bluespice.review'] = array(
 	'scripts' => 'bluespice.review.js',
+	'dependencies' => array(
+		'ext.bluespice',
+	),
 	'messages' => array(
 		'bs-review-review',
 		'bs-review-btnmoveup',

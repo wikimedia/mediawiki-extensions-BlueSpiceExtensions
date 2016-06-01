@@ -25,5 +25,6 @@
 	"bs-formattinghelp-help-extlink": "Надворешна врска",
 	"bs-formattinghelp-help-hr": "Хоризонтална линија",
 	"bs-formattinghelp-help-template": "Шаблон",
-	"bs-formattinghelp-help-templatename": "Назив на шаблонот"
+	"bs-formattinghelp-help-templatename": "Назив на шаблонот",
+	"apihelp-bs-formattinghelp-description": "Ги дава задачите за додатокот „Помош со форматирање“"
 }

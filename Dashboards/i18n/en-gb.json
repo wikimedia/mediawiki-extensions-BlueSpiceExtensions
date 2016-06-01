@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Usandaru555",
+			"Codynguyen1116"
+		]
+	},
+	"bs-dashboard-userportlet-wikipage-wiki-article": "La página de Wiki",
+	"apihelp-bs-dashboards-store-description": "Lists all available portlets",
+	"apihelp-bs-dashboards-tasks-description": "Saves dashboard configuration"
+}

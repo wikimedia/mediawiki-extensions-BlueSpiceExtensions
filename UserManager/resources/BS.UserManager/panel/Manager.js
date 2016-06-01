@@ -3,11 +3,11 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage UserManager
- * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -18,44 +18,33 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 	id: 'bs-usermanager-extgrid',
 	features: [],
 	initComponent: function() {
-		this.strMain = Ext.create( 'Ext.data.JsonStore', {
+		this.strMain = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-adminuser-store',
+			fields: [
+				'user_id',
+				'user_name',
+				'user_page_link',
+				'user_real_name',
+				'user_email',
+				'page_link',
+				'groups'
+			],
 			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'UserManager::getUsers' ),
-				reader: {
-					type: 'json',
-					root: 'users',
-					idProperty: 'user_id',
-					totalProperty: 'totalCount'
-				}
-			},
-			autoLoad: true,
-			remoteSort: true,
-			fields: [ 'user_id', 'user_name', 'user_page_link', 'user_real_name', 'user_email', 'groups' ],
-			sortInfo: {
-				field: 'id',
-				direction: 'ASC'
-			}
+				reader:{
+					idProperty: 'user_id'
+			}}
 		});
 
-		this.strGroups = Ext.create( 'Ext.data.JsonStore', {
-			fields: [ 'group', 'displayname' ],
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'GroupManager::getGroups' ),
-				reader: {
-					type: 'json',
-					root: 'groups',
-					idProperty: 'group'
-				}
-			},
-			autoLoad: true
+		this.strGroups = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-group-store',
+			fields: ['group_name', 'additional_group', 'displayname'],
+			submitValue: false
 		});
 
 		this.strGroups.on( 'load', function( sender, records, successful, eOpts ){
 			for( var i = 0; i < records.length; i++ ) {
 				var record = records[i];
-				record.set( 'id', record.get( 'group' ));
+				record.set( 'id', record.get( 'group_name' ));
 				record.set( 'text', record.get( 'displayname' ));
 			}
 		}, this );
@@ -65,7 +54,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			header: mw.message('bs-usermanager-headerusername').plain(),
 			sortable: true,
 			dataIndex: 'user_name',
-			tpl: '{user_page_link}',
+			tpl: '{page_link}',
 			flex: 1
 		} );
 		this.colRealName = Ext.create( 'Ext.grid.column.Template', {
@@ -156,8 +145,9 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 				html += '</ul>';
 				html += '<ul class="bs-extjs-list bs-um-hidden-groups" style="display:none">';
 			}
-
-			html += '<li>' + value[i].displayname + '</li>';
+			//TODO: Get group display name from this.strGroups without crashing
+			//or use messages instead
+			html += '<li>' + value[i] + '</li>';
 		}
 		html += '</ul>';
 
@@ -239,99 +229,107 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 		);
 	},
 	onRemoveUserOk: function() {
+		//TODO: This needs to be Changed to one simple call!
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		for (var i = 0; i < selectedRow.length; i++){
-			var userId = selectedRow[i].get( 'user_id' );
-
-			Ext.Ajax.request( {
-				url: bs.util.getAjaxDispatcherUrl(
-					'UserManager::deleteUser',
-					[ userId ]
-				),
-				scope: this,
-				method: 'post',
-				success: function( response, opts ) {
-					var responseObj = Ext.decode( response.responseText );
-					this.renderMsgSuccess( responseObj );
-				}
+			var me = this;
+			bs.api.tasks.exec( 'usermanager', 'deleteUser', {
+				userName: selectedRow[i].get( 'user_name' )
+			}).done( function( response ) {
+				me.reloadStore();
 			});
 		}
 	},
 	onDlgUserAddOk: function( data, user ) {
-		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'UserManager::addUser',
-				[
-					user.user_name,
-					user.user_password,
-					user.user_repassword,
-					user.user_email,
-					user.user_real_name,
-					user.groups
-				]
-			),
-			method: 'post',
-			scope: this,
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-					this.dlgUserAdd.resetData();
-				} else {
-					this.renderMsgFailure( responseObj );
+		var data = {
+			userName: user.user_name,
+			password: user.user_password,
+			rePassword: user.user_repassword,
+			email: user.user_email,
+			realname: user.user_real_name,
+			groups: user.groups
+		};
+		var me = this;
+		var cfg = {//copy from bluespice.api.js
+			failure: function( response, module, task, $dfd, cfg ) {
+				var message = response.message || '';
+				if ( response.errors.length > 0 ) {
+					for ( var i in response.errors ) {
+						if ( typeof( response.errors[i].message ) !== 'string' ) continue;
+						message = message + '<br />' + response.errors[i].message;
+					}
 				}
-			},
-			failure: function( response, opts ) {}
+				bs.util.alert( module + '-' + task + '-fail', {
+						titleMsg: 'bs-extjs-title-warning',
+						text: message
+					}, {
+						ok: function() {
+							me.showDlgAgain();
+					}}
+				);
+			}
+		};
+		bs.api.tasks.exec(
+			'usermanager',
+			'addUser',
+			data,
+			cfg
+		).done( function( response ) {
+			me.dlgUserAdd.resetData();
+			me.reloadStore();
 		});
 	},
 	onDlgUserEditOk: function( data, user ) {
-		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'UserManager::editUser',
-				[
-					user.user_name,
-					user.user_password,
-					user.user_repassword,
-					user.user_email,
-					user.user_real_name,
-					user.groups
-				]
-			),
-			method: 'post',
-			scope: this,
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-					this.dlgUserEdit.resetData();
-				} else {
-					this.renderMsgFailure( responseObj );
+		var data = {
+			userName: user.user_name,
+			password: user.user_password,
+			rePassword: user.user_repassword,
+			email: user.user_email,
+			realname: user.user_real_name,
+			groups: user.groups
+		};
+		var me = this;
+		var cfg = {//copy from bluespice.api.js
+			failure: function( response, module, task, $dfd, cfg ) {
+				var message = response.message || '';
+				if ( response.errors.length > 0 ) {
+					for ( var i in response.errors ) {
+						if ( typeof( response.errors[i].message ) !== 'string' ) continue;
+						message = message + '<br />' + response.errors[i].message;
+					}
 				}
-			},
-			failure: function( response, opts ) {}
+				bs.util.alert( module + '-' + task + '-fail', {
+						titleMsg: 'bs-extjs-title-warning',
+						text: message
+					}, {
+						ok: function() {
+							me.showDlgAgain();
+					}}
+				);
+			}
+		};
+		bs.api.tasks.exec(
+			'usermanager',
+			'editUser',
+			data,
+			cfg
+		).done( function( response ) {
+			me.dlgUserEdit.resetData();
+			me.reloadStore();
 		});
 	},
 	onDlgUserGroupsOk: function( sender, data ) {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var userIds = [];
+		var userNames = [];
+		var me = this;
 		for (var i = 0; i < selectedRow.length; i++){
-			userIds.push( selectedRow[i].get( 'user_id' ) );
+			userNames.push( selectedRow[i].get( 'user_name' ) );
 		}
-		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'UserManager::setUserGroups',
-				[ userIds, data.groups ]
-			),
-			scope: this,
-			method: 'post',
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-				} else {
-					this.renderMsgFailure( responseObj );
-				}
-			}
+		bs.api.tasks.exec( 'usermanager', 'setUserGroups', {
+			userNames: userNames,
+			groups: data.groups
+		}).done( function( response ) {
+			me.reloadStore();
 		});
 	},
 	reloadStore: function() {
@@ -344,48 +342,6 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			this.dlgUserEdit.show();
 		} else if ( this.active === 'edit-multi-groups' ) {
 			this.dlgUserGroups.show();
-		}
-	},
-	renderMsgSuccess: function( responseObj ) {
-		if ( responseObj.message.length ) {
-			var message = '';
-			for ( var i in responseObj.message ) {
-				if ( typeof( responseObj.message[i] ) !== 'string' ) continue;
-
-				message = message + responseObj.message[i] + '<br />';
-			}
-			bs.util.alert(
-				'UMsuc',
-				{
-					text: message,
-					titleMsg: 'bs-extjs-title-success' },
-				{
-					ok: this.reloadStore,
-					cancel: function() {},
-					scope: this
-				}
-			);
-		}
-	},
-	renderMsgFailure: function( responseObj ) {
-		if ( responseObj.errors.length ) {
-			var message = '';
-			for ( var i in responseObj.errors ) {
-				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
-				message = message + responseObj.errors[i].message + '<br />';
-			}
-			bs.util.alert(
-				'UMfail',
-				{
-					text: message,
-					titleMsg: 'bs-extjs-title-warning'
-				},
-				{
-					ok: this.showDlgAgain,
-					cancel: function() {},
-					scope: this
-				}
-			);
 		}
 	}
 } );

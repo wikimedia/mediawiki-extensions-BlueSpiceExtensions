@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Revi"
 		]
 	},
 	"prefs-insertlink": "링크 넣기",
+	"bs-insertlink-label-page": "문서",
 	"bs-insertlink-label-description": "설명",
 	"bs-insertlink-label-file": "파일",
 	"bs-insertlink-label-searchfile": "검색 ..."

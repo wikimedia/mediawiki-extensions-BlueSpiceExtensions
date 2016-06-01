@@ -3,14 +3,16 @@
 		"authors": [
 			"SPQRobin",
 			"Esketti",
-			"Siebrand"
+			"Siebrand",
+			"Sjoerddebruin",
+			"Jeleniccz"
 		]
 	},
 	"bs-checklist-desc": "Biedt checklistfunctionaliteit",
 	"bs-checklist-button-checkbox-title": "Checklistelementen",
 	"bs-checklist-menu-insert-list-title": "Lijst invoegen",
 	"bs-checklist-menu-insert-checkbox": "Selectievakje",
-	"bs-checklist-dlg-insert-list-title": "Plaats een checklist",
+	"bs-checklist-dlg-insert-list-title": "Een checklist invoegen",
 	"bs-checklist-dlg-insert-list-value-list": "Lijst met waarden",
 	"bs-checklist-tag-checklist-desc": "Maakt een selectievakje of selectieveld. Beschikbare eigenschappen:",
 	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> geeft selectielijst.",
@@ -29,5 +31,13 @@
 	"bs-checklist-confirm-dirty-text": "Uw aanpassingen aan de checklist zijn nog niet opgeslagen. Weet u zeker dat u de wijzigingen wilt negeren?",
 	"log-name-bs-checklist": "Logboek vinkvakjes",
 	"log-description-bs-checklist": "Logboek met wijzigingen in selectievakjes op pagina's.",
-	"log-show-hide-bs-checklist": "Logboek vinkvakjes $1"
+	"log-show-hide-bs-checklist": "Logboek vinkvakjes $1",
+	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|heeft gecontroleerd}} selectievakje #$4 op $3",
+	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|heeft uitgevinkt}} selectievakje #$4 om $3",
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|heeft geselecteerd}} de waarde van \"$5\" in het selectievak #$4 op $3",
+	"bs-checklist-savelist-error-invalid-title": "Er is een ongeldige titel opgegeven",
+	"bs-checklist-savelist-error-edit-not-permitted": "Onvoldoende rechten om de lijst op te slaan.",
+	"bs-checklist-modified-check": "Gewijzigde checklist waarde",
+	"bs-checklist-update-list": "Bijgewerkte lijst",
+	"apihelp-bs-checklist-tasks-description": "Biedt activiteiten voor een Checklist uitbreiding"
 }

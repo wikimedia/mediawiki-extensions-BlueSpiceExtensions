@@ -6,6 +6,8 @@
 	},
 	"bs-pagetemplates-desc": "Mostre unha lista de modelos marcados como modelos de páxina",
 	"prefs-pagetemplates": "Modelos de páxina",
+	"apihelp-bs-pagetemplates-store": "Proporciona unha lista de modelos dispoñibles.",
+	"apihelp-bs-pagetemplates-tasks": "Proporciona as tarefas de creación, actualización e borrado para os modelos.",
 	"bs-pagetemplates-empty-page": "Página baleira",
 	"bs-pagetemplates-empty-page-desc": "Comezar cunha páxina baleira.",
 	"bs-pagetemplatesadmin-label": "Modelos de páxina",

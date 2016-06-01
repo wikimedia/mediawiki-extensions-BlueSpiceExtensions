@@ -22,11 +22,11 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Marx Reymann <reymann@hallowelt.biz>
+ * @author     Marx Reymann <reymann@hallowelt.com>
  * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage PageAccess
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -214,7 +214,13 @@ class PageAccess extends BsExtensionMW {
 			'type' => 'tag',
 			'name' => 'pageaccess',
 			'desc' => wfMessage( 'bs-pageaccess-tag-groups-desc' )->plain(),
-			'code' => '<bs:pageaccess groups="" />',
+			'code' => '<bs:pageaccess groups="GROUP" />',
+			'examples' => array(
+				array(
+					'code' => '<bs:pageaccess groups="sysop" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/PageAccess'
 		);
 
 		return true;

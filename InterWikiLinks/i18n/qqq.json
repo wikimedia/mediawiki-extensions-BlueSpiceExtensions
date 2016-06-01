@@ -29,5 +29,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Text for are you sure, you want delete this interwiki link?",
 	"bs-interwikilinks-insertlink-tabtitle": "Text for link in another wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Text for prefix\n{{Identical|Prefix}}",
-	"bs-interwikilink-select-a-prefix": "Text for choose prefix"
+	"bs-interwikilink-select-a-prefix": "Text for choose prefix",
+	"bs-interwikilinks-link-edited": "Text for the interwiki link has been edited",
+	"apihelp-bs-interwikilinks-tasks-description": "Describes the API endpoint that provides tasks for the InterWikiLinks extension."
 }

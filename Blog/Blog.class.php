@@ -21,12 +21,12 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Sebastian Ulbricht
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Blog
- * @copyright  Copyright (C) 2014 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -309,16 +309,37 @@ class Blog extends BsExtensionMW {
 			'id' => 'bs:blog',
 			'type' => 'tag',
 			'name' => 'blog',
-			'desc' => wfMessage( 'bs-blog-tag-blog-desc' )->plain(),
+			'desc' => wfMessage( 'bs-blog-tag-blog-desc' )->text(),
 			'code' => '<bs:blog />',
+			'examples' => array(
+				array(
+					'code' => '<bs:blog count="5" cat="Wiki" newentryfieldposition="bottom" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/Blog'
+		);
+
+		$oResponse->result[] = array(
+			'id' => 'bs:blog:more',
+			'type' => 'tag',
+			'name' => 'blogmore',
+			'desc' => wfMessage( 'bs-blog-tag-blogmore-desc' )->text(),
+			'code' => '<bs:blog:more />',
+			'helplink' => 'https://help.bluespice.com/index.php/Blog'
 		);
 
 		$oResponse->result[] = array(
 			'id' => 'bs:blog:time',
 			'type' => 'tag',
 			'name' => 'blogtime',
-			'desc' => wfMessage( 'bs-blog-tag-blogtime-desc' )->plain(),
-			'code' => '<bs:blog:time />',
+			'desc' => wfMessage( 'bs-blog-tag-blogtime-desc' )->text(),
+			'code' => '<bs:blog:time time="YYYYMMDDHHmm" />',
+			'examples' => array(
+				array(
+					'code' => '<bs:blog:time time="201601010000" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/Blog'
 		);
 
 		return true;

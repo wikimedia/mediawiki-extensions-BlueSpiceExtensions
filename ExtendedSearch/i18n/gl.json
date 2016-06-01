@@ -67,7 +67,7 @@
 	"bs-extendedsearch-pref-solrpingtime": "Tempo de ping (en segundos):",
 	"bs-extendedsearch-pref-showcresuginac": "Mostrar as ligazóns «Crear» e «Suxerir» nas suxerencias",
 	"bs-extendedsearch-pref-solrserviceurl": "URL de Solr:",
-	"bs-extendedsearch-pref-setfocus": "Saltar automáticamente ó formulario de procuras (só páxinas de contido)",
+	"bs-extendedsearch-pref-setfocus": "Saltar automaticamente ó formulario de procuras (só páxinas de contido)",
 	"bs-extendedsearch-pref-numfacets": "Número de facetas:",
 	"bs-extendedsearch-pref-showmlt": "Mostrar páxinas similares",
 	"bs-extendedsearch-pref-solrcore": "Instancia principal de Solr:",
@@ -94,10 +94,12 @@
 	"bs-extendedsearch-section": "Sección",
 	"bs-extendedsearch-morelikethis": "Páxinas similares",
 	"bs-extendedsearch-recentsearchterms": "Termos de busca recentes",
-	"bs-extendedsearch-recentsearchtermsdesc": "Lista dos termos buscados recentemente nesta wiki, ordenados por cantidade.",
+	"bs-extendedsearch-recentsearchtermsdesc": "Lista dos termos buscados recentemente neste wiki, ordenados por cantidade.",
 	"bs-extendedsearch-no-mlt-found": "Non se atopou ningunha páxina semellante.",
 	"bs-extendedsearch-redirect": "Redirixido desde: \"$1\"",
 	"bs-extendedsearch-totalnoofarticles": "Número de páxinas a indexar: $1",
 	"bs-extendedsearch-more": "Máis",
-	"bs-extendedsearch-fewer": "Menos"
+	"bs-extendedsearch-fewer": "Menos",
+	"bs-extendedsearch-facetsetting-op-and": "E",
+	"bs-extendedsearch-facetsetting-op-or": "OU"
 }

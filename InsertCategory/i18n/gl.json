@@ -12,6 +12,6 @@
 	"bs-insertcategory-cat-label": "Asignada:",
 	"bs-insertcategory-success": "Engadiuse a categoría",
 	"bs-insertcategory-failure": "Erro",
-	"bs-insertcategory-hint": "Nota: para engadir unha categoría, prena na tecla Intro ou finalice a entrada cunha coma.",
+	"bs-insertcategory-hint": "Nota: para engadir unha categoría, prema na tecla Intro.",
 	"bs-insertcategory-panel-title": "Categorías"
 }

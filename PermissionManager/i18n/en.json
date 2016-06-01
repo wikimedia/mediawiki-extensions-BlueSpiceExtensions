@@ -39,6 +39,7 @@
 	"bs-permissionmanager-pref-lockmode": "Activate lockmode",
 	"bs-permissionmanager-pref-skipsysns": "Skip system namespaces if lockmode is active",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activate permission check",
+	"bs-permissionmanager-pref-max-backups": "Backup limit",
 	"bs-permissionmanager-unsaved-changes": "There are unsaved changes. Do you really want to leave the page now? The unsaved changes will be lost.",
 	"bs-permissionmanager-error-lockout": "At least one group must own the right \"$1\".\nChanges couldn't be saved.",
 	"log-name-bs-permission-manager": "Permission manager log",

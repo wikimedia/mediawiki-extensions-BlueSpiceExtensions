@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"З. ӘЙЛЕ"
+		]
+	},
+	"prefs-avatars": "Аватар",
+	"bs-avatars-desc": "Дөйөм һәм шәхси ҡулланыусы һүрәттәрен ҡуя",
+	"bs-avatars-pref-generator": "Генератор",
+	"bs-avatars-pref-defaultsize": "Билдәләнгән дәүмәл (пикселдәрҙә)",
+	"bs-avatars-upload-complete": "Һүрәт ҡуйылды.",
+	"bs-avatars-generate-complete": "Яңы аватар булдырылды.",
+	"bs-avatars-upload-title": "Профилдәге һүрәтте үҙгәртергә",
+	"bs-avatars-upload-label": "Һүрәт",
+	"bs-avatars-generate-new-label": "Яңы аватар булдырырға",
+	"bs-avatars-warning-title": "Иғтибар",
+	"bs-avatars-warning-text": "Һеҙ ҡулланыусының һүрәтен көйләүҙәрҙә  ҡуйҙығыҙ. Аватар ҡулланыу был параметрҙы юясаҡ. Дауам итергә теләйһегеҙме?",
+	"bs-avatars-userimage-title": "URL-адрес буйынса викиҙан алынған һүрәт",
+	"bs-avatars-userimage-help": "мәҫәлән, Picture.jpg йәки http://localhost/Picture.gif",
+	"bs-avatars-set-userimage-failed": "Рөхсәт ителмәгән URL-адрес йәки викиҙан алынған  һүрәт исеме.",
+	"bs-avatars-set-userimage-saved": "Ҡулланыусы һүрәте һаҡланды.",
+	"bs-avatars-file-upload-fieldset-title": "Һүрәт ҡуйырға",
+	"bs-avatars-auto-generate-fieldset-title": "Аватарҙы автоматик рәүештә ҡуйырға"
+}

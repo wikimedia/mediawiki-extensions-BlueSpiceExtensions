@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Andibing"
 		]
 	},
 	"bs-topmenubarcustomizer-desc": "Customise the top menu links",
-	"prefs-topmenubarcustomizer": "Menu customiser"
+	"prefs-topmenubarcustomizer": "Menu customiser",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Number of nested layers:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entries on main layer:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entries on sub layers:"
 }

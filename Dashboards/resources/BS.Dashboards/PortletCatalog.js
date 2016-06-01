@@ -7,18 +7,20 @@ Ext.define( 'BS.Dashboards.PortletCatalog', {
 
 	afterInitComponent: function() {
 		//this.buttons = []; //We don't need buttons as we use drag and drop
-		if ( mw.config.get( 'bsPortalConfigLocation' ) === 'AdminDashboard' ) {
-			this.ajaxDispatcherUrl = 'Dashboards::getAdminDashboardConfig';
-		} else {
-			this.ajaxDispatcherUrl = 'Dashboards::getUserDashboardConfig';
-		}
 		this.strPortlets = Ext.create( 'Ext.data.JsonStore', {
 				proxy: {
 					type: 'ajax',
-					url: bs.util.getAjaxDispatcherUrl( this.ajaxDispatcherUrl ),
+					url: bs.api.makeUrl( 'bs-dashboards-store', {
+						"filter": JSON.stringify([{
+							"type": "group",
+							"comparison": "eq",
+							"value": mw.config.get( 'bsPortalConfigLocation' ),
+							"field": "group"
+						}])
+					}),
 					reader: {
 						type: 'json',
-						root: 'portlets',
+						root: 'results',
 						idProperty: 'title'
 					}
 				},

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-insertfile-desc": "Über ein Dialogfeld werden Dateien hochgeladen und angehängt",
@@ -54,7 +55,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Der ausgewählte Zielname besitzt keine zum Hochladen zugelassene Dateiendung.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Die Dateiendung des Zielnamens ergibt keinen zum Hochladen zugelassenen Bildtypen.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Die Dateiendung des Zielnamens ergibt keinen zum Hochladen zugelassenen Dateitypen.",
-	"bs-insertfile-uploadcomplete": "Die Datei wurde hochgeladen",
+	"bs-insertfile-uploadcomplete": "Deine Datei wurde gespeichert.",
 	"bs-insertfile-titlefile": "Datei einfügen",
 	"bs-insertfile-titleimage": "Bild einfügen",
 	"bs-insertfile-tipkeepratio": "Proportionen beibehalten",
@@ -66,5 +67,6 @@
 	"bs-insertfile-no-link": "Bild nicht verlinken",
 	"bs-insertfile-error-no-medialink": "Es ist kein Media Link ausgewählt.",
 	"bs-insertfile-error-no-imagelink": "Es ist kein Bild Link ausgewählt.",
-	"bs-insertfile-upload-waitmessage": "Die Datei wird hochgeladen ..."
+	"bs-insertfile-upload-waitmessage": "Die Datei wird hochgeladen ...",
+	"apihelp-bs-inserfile-license-store-description": "Listet die Lizenzen für die Erweiterung „InsertFile“ auf."
 }

@@ -22,13 +22,13 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Sebastian Ulbricht
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage InsertFile
- * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -115,12 +115,5 @@ class InsertFile extends BsExtensionMW {
 			'tip' => wfMessage( 'bs-insertfile-insert-file' )->plain()
 		);
 		return true;
-	}
-
-	//There is an api action "licences" in mw 2.24, but it is described as
-	//"Get media license dropdown HTML."
-	public static function getLicenses() {
-		$oLicenses = new JsonLicenses();
-		return $oLicenses->getJsonOutput();
 	}
 }

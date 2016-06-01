@@ -55,45 +55,40 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				}
 			}
 
-			Ext.Ajax.request({
-				url: bs.util.getAjaxDispatcherUrl('PermissionManager::setTemplateData'),
-				method: 'POST',
-				params: {
-					template: Ext.JSON.encode(newRecord)
-				},
-				success: function(response) {
-					var result = Ext.JSON.decode(response.responseText);
-					if (result.success === true) {
-						var rootNode = me._treeStore.getRootNode();
-						rootNode.replaceChild(newRecord, record);
+			bs.api.tasks.exec(
+				'permissionmanager',
+				'setTemplateData',
+				newRecord
+			).done(function (response) {
 
-						me.setCleanState(true);
-						me._permissionStore.sync();
-						me._hasChanged = true;
+				var result = response.payload;
+				if (result.success === true) {
+					var rootNode = me._treeStore.getRootNode();
+					rootNode.replaceChild(newRecord, record);
 
-						var dataManager = Ext.create('BS.PermissionManager.data.Manager');
-						dataManager.setTemplate(newRecord);
+					me.setCleanState(true);
+					me._permissionStore.sync();
+					me._hasChanged = true;
 
-						Ext.data.StoreManager
+					var dataManager = Ext.create('BS.PermissionManager.data.Manager');
+					dataManager.setTemplate(newRecord);
+
+					Ext.data.StoreManager
 							.lookup('bs-permissionmanager-permission-store')
 							.loadRawData(dataManager.buildPermissionData().permissions);
 
-						Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(
+					Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(
 							me._treeStore.getNodeById(newRecord.text)
-						);
-						bs.util.alert('bs-pm-save-tpl-success', {
-							textMsg: 'bs-permissionmanager-msgtpled-success'
-						});
-					} else {
-						bs.util.alert('bs-pm-save-tpl-error', {
-							text: result.msg
-						});
-					}
-					me.hide();
-				},
-				failure: function(response) {
-					console.log(response);
+							);
+					bs.util.alert('bs-pm-save-tpl-success', {
+						textMsg: 'bs-permissionmanager-msgtpled-success'
+					});
+				} else {
+					bs.util.alert('bs-pm-save-tpl-error', {
+						text: result.msg
+					});
 				}
+				me.hide();
 			});
 		}
 	},
@@ -253,14 +248,12 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 						record.remove( );
 						return true;
 					}
-					Ext.Ajax.request({
-						url: bs.util.getAjaxDispatcherUrl('PermissionManager::deleteTemplate'),
-						method: 'POST',
-						params: {
-							id: id
-						},
-						success: function(response) {
-							var result = Ext.JSON.decode(response.responseText);
+					bs.api.tasks.exec(
+						'permissionmanager',
+						'deleteTemplate',
+						{id:id}
+					).done(function(response){
+						var result = response.payload;
 							if (result.success === true) {
 								me.setCleanState(true);
 								try {
@@ -291,10 +284,6 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 									text: result.msg
 								});
 							}
-						},
-						failure: function(response) {
-							console.log(response);
-						}
 					});
 				}
 			}, '->', {

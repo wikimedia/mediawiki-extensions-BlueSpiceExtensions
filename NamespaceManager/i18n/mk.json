@@ -16,6 +16,10 @@
 	"bs-namespacemanager-label-content": "Содржински именски простор:",
 	"bs-namespacemanager-label-searchable": "Пребарување по основно",
 	"bs-namespacemanager-label-subpages": "Потстраници",
+	"bs-namespacemanager-label-pagecount": "Страници",
+	"bs-namespacemanager-label-system": "Систем",
+	"bs-namespacemanager-hide-system-ns": "Сокриј системски именски простори",
+	"bs-namespacemanager-hide-talk-ns": "Сокриј разговорни именски простори",
 	"bs-namespacemanager-nsadded": "Именскиот простор е додаден.",
 	"bs-namespacemanager-nsremoved": "Именскиот простор е отстранет.",
 	"bs-namespacemanager-nsedited": "Именскиот простор е изменет.",
@@ -37,5 +41,9 @@
 	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|го создаде}} именскиот простор $4",
 	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|ги измени}} поставките за именскиот простор $4",
 	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|го преименуваше}} именскиот простор $4 во $5",
-	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|го отстрани}} именскиот простор $4"
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|го отстрани}} именскиот простор $4",
+	"bs-namespacemanager-ns-config-saved": "Поставката на именскиот простор е зачувана.",
+	"bs-namespacemanager-error-ns-config-not-saved": "Не можев да ја зачувам поставката на именскиот простор во $1.",
+	"apihelp-bs-namespace-store-description": "Ги наведува сите именски простори и произволната поставка. Овозможува подредување, филтрирање и страничење. Применува параметри за ExtJS Store.",
+	"apihelp-bs-namespace-tasks-description": "Овозможува измена на поставката на именскиот простор."
 }

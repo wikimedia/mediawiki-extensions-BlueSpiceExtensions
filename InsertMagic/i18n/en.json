@@ -5,7 +5,7 @@
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
-	"bs-insertmagic-desc": "Adds a dialog to edit mode that allows the insertion of magic words and tags",
+	"bs-insertmagic-desc": "Adds a dialog allowing the insertion of magic words and tags",
 	"bs-insertmagic": "Insert magic word",
 	"bs-insertmagic-notoc": "Hides the table of contents.",
 	"bs-insertmagic-forcetoc": "Forces the table of contents to appear at its normal position.",
@@ -64,5 +64,7 @@
 	"bs-insertmagic-type-switches": "Behavior switches",
 	"bs-insertmagic-label-first": "1. Choose tag or magic word",
 	"bs-insertmagic-label-second": "2. Modify code",
-	"bs-insertmagic-label-desc": "Description"
+	"bs-insertmagic-label-desc": "Description",
+	"bs-insertmagic-label-examples": "Examples",
+	"bs-insertmagic-label-see-also": "See also"
 }

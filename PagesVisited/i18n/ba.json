@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sagan",
+			"Азат Хәлилов"
+		]
+	},
+	"bs-pagesvisited-desc": "Үҙе төҙөгән битте ҡараусылар исемлеген күрһәтә\n\nҺуңғы ҡаралған  биттәрҙең үҙ исемлеген тәҡдим итә",
+	"prefs-pagesvisited": "Битт ҡарау",
+	"bs-pagesvisited-widget-title": "Ҡаралған биттәр",
+	"bs-pagesvisited-error-nsnotvalid": "Исемдәр арауығы дөрөҫ түгел{{PLURAL:$1||s}} <code>$2</code> {{PLURAL:$1|is|are}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Яҙма эшләү сикләнгән",
+	"bs-pagesvisited-pref-widgetns": "Исемдәр арауығы:",
+	"bs-pagesvisited-pref-widgetsortodr": "Тәртипләштереү:",
+	"bs-pagesvisited-pref-sort-time": "Ваҡыт",
+	"bs-pagesvisited-pref-sort-pagename": "Баш һүҙ",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Һеҙ ҡараған биттәр исемлеге"
+}

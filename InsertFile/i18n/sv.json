@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-insertfile-desc": "Dialogrutan för att ladda upp filer och infoga en fillänk",
@@ -55,7 +56,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Målnamnet du valde har ingen giltig filändelse.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Målnamnet du valde har ingen tillåten filändelse för bilder.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Målnamnet du valde har ingen tillåten filändelse.",
-	"bs-insertfile-uploadcomplete": "Din fil har sparats framgångsrikt.",
+	"bs-insertfile-uploadcomplete": "Din fil har sparats.",
 	"bs-insertfile-titlefile": "Infoga fil",
 	"bs-insertfile-titleimage": "Infoga bild",
 	"bs-insertfile-tipkeepratio": "Behåll proportioner",

@@ -35,21 +35,28 @@ Ext.define( 'BS.InsertMagic.Window', {
 		});
 		this.cmbType.on( 'select', this.onTypeSelected, this );
 
-		this.tagsStore = Ext.create( 'Ext.data.JsonStore', {
+		this.tagsStore = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-insertmagic-data-store',
+			fields: ['id', 'type', 'name', 'desc', 'code', 'examples', 'helplink' ],
+			submitValue: false,
+			remoteSort: false,
+			remoteFilter: false,
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl('InsertMagic::ajaxGetData'),
+				url: mw.util.wikiScript('api'),
+				extraParams: {
+					format: 'json',
+					limit: 0
+				},
 				reader: {
 					type: 'json',
-					root: 'result',
-					idProperty: 'id'
+					root: 'results',
+					idProperty: 'name'//,
+					//totalProperty: 'total'
 				}
 			},
-			autoLoad: true,
-			fields: ['id', 'type', 'name', 'desc', 'code' ],
 			sortInfo: {
-				field: 'name',
-				direction: 'ASC'
+				field: 'name'
 			}
 		});
 		this.tagsStore.on( 'load',this.onStoreLoad, this );
@@ -114,8 +121,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-first').plain() }),
 				this.cmbType,
 				this.tagsGrid,
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-desc').plain(), style: 'padding-top: 10px' } ),
-				this.descPanel
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-second').plain() }),
+				this.syntaxTextArea
 			]
 		});
 
@@ -128,8 +135,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 				align: 'stretch'
 			},
 			items:[
-				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-second').plain() }),
-				this.syntaxTextArea
+				Ext.create( 'Ext.form.Label', { text: mw.message('bs-insertmagic-label-desc').plain(), style: 'padding-top: 10px' } ),
+				this.descPanel
 			]
 		});
 
@@ -166,7 +173,9 @@ Ext.define( 'BS.InsertMagic.Window', {
 	onRowSelect: function( grid, record, index, eOpts ) {
 		var data = {
 			desc : record.get( 'desc' ),
-			type : record.get( 'type' )
+			type : record.get( 'type' ),
+			helplink : record.get( 'helplink' ),
+			examples : record.get( 'examples' )
 		};
 		this.currentData.type = data.type;
 		this.currentData.name = record.get( 'name' );
@@ -175,7 +184,33 @@ Ext.define( 'BS.InsertMagic.Window', {
 	},
 
 	setCommonFields: function( text, data ) {
-		this.descPanel.update(data.desc);
+		var desc = data.desc;
+		if ( typeof( data.examples ) !== "undefined" && data.examples != '' ) {
+			desc = desc
+					+ '<br/><br/><strong>'
+					+ mw.message( 'bs-insertmagic-label-examples' ).plain()
+					+ '</strong>';
+			for ( var i = 0; i < data.examples.length; i++ ) {
+				desc = desc + '<br/><br/>';
+				var example = data.examples[i];
+				if ( typeof( example.label ) !== "undefined" && example.label != '' ) {
+					desc = desc
+						+ $( '<div>', { text: example.label } ).wrap( '<div/>' ).parent().html();
+				};
+				if ( typeof( example.code ) !== "undefined" && example.code != '' ) {
+					desc = desc
+						+ $( '<code>', { style: 'white-space:pre-wrap;', text: example.code } ).wrap( '<div/>' ).parent().html();
+				}
+			}
+		}
+		if ( typeof( data.helplink ) !== "undefined" && data.helplink != '' ) {
+			desc = desc
+					+ '<br/><br/><strong>'
+					+ mw.message( 'bs-insertmagic-label-see-also' ).plain()
+					+ '</strong><br/><br/>'
+					+ $( '<a>', { href: data.helplink, target: '_blank', text: data.helplink } ).wrap( '<div/>' ).parent().html();
+		}
+		this.descPanel.update( desc );
 		this.syntaxTextArea.setValue( text );
 		this.syntaxTextArea.focus();
 

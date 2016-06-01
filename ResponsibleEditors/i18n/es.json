@@ -62,5 +62,7 @@
 	"log-show-hide-bs-responsible-editors": "$1 el registro de editores responsables",
 	"logentry-bs-responsible-editors-add": "$1 {{GENDER:$2|ha añadido}} a $4 como {{GENDER:$4|editor|editora}} de $3",
 	"logentry-bs-responsible-editors-remove": "$1 {{GENDER:$2|ha eliminado}} a $4 como {{GENDER:$4|editor|editora}} de $3",
+	"notification-bs-responsibleeditors-assign-body": "$1 {{GENDER:$1|te ha asignado}} a \"$2\". Una vez hayas iniciado sesión en la wiki puedes abrir la página con este enlace: $3. Si tienes alguna pregunta dirígete a $1.",
+	"notification-bs-responsibleeditors-revoke-subject": "Revocada la responsabilidad para \"$2\"",
 	"notification-bs-responsibleeditors-change-summary": "[[User:$1|$1]] ha {{GENDER:$1|editado}} $3"
 }

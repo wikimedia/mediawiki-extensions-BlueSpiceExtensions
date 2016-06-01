@@ -8,7 +8,7 @@
 		]
 	},
 	"bs-countthings-desc": "Biedt inhoudgebaseerde statistieken",
-	"bs-countthings-chars-label": "Karakters",
+	"bs-countthings-chars-label": "Tekens",
 	"bs-countthings-words-label": "Woorden",
 	"bs-countthings-pages-label": "Pagina's",
 	"bs-countthings-error-no-input": "Geen pagina opgegeven.",

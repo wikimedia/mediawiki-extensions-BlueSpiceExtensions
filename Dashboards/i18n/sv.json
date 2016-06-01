@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-dashboards-desc": "Tillhandahåller kontrollpaneler för användare och administratörer",
@@ -14,5 +15,6 @@
 	"admindashboard": "Admin-kontrollpanel",
 	"userdashboard": "Användar-kontrollpanel",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
-	"bs-dashboard-userportlet-calendar-description": "Kalender"
+	"bs-dashboard-userportlet-calendar-description": "Kalender",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Wikisida"
 }

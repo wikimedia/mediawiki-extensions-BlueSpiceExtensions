@@ -24,5 +24,7 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Дали сигурно сакате да ја избришете оваа меѓујазична врска?",
 	"bs-interwikilinks-insertlink-tabtitle": "Врска до друго вики",
 	"bs-interwikilinks-insertlink-labelprefix": "Претставка",
-	"bs-interwikilink-select-a-prefix": "Изберете претставка"
+	"bs-interwikilink-select-a-prefix": "Изберете претставка",
+	"bs-interwikilinks-link-edited": "Меѓујазичната врска е изменета.",
+	"apihelp-bs-interwikilinks-tasks-description": "Ги дава задачите за додатокот „Меѓујазични врски“."
 }

@@ -3,10 +3,10 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Patric Wirth <wirth@hallowelt.com>, Leonid Verhovskij <verhovskij@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage InsertLink
- * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -14,54 +14,37 @@
 Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 	extend: 'BS.InsertLink.FormPanelBase',
 	protocols: [ 'file:///' ],
-	bIsJavaEnabled: false,
+	bIsJavaEnabled: mw.config.get('bsInsertLinkEnableJava'),
 	beforeInitComponent: function() {
 		this.setTitle( mw.message('bs-insertlink-tab-ext-file').plain() );
-		this.on( 'beforeactivate', function () {
-			if ( !this.bIsJavaEnabled ) {
-				return;
-			}
-			var applet = $("<applet>");
-			applet.attr('id', 'BsFileChooserApplet');
-			applet.attr('name', 'BsFileChooserApplet');
-			applet.attr( 'archive', mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceExtensions/InsertLink/vendor/BsFileChooserApplet.jar' );
-			applet.attr('code', 'biz.hallowelt.InsertLink.BsFileChooserApplet.class');
-			applet.attr('width', '1');
-			applet.attr('height', '1');
-			applet.attr('mayscript', 'mayscript');
-			$("body").append(applet);
-		}, this);
 
 		this.tfTargetUrl = Ext.create( 'Ext.form.field.Text', {
 			id: 'BSInserLinkTargetUrl',
 			name: 'inputTargetUrl',
-			fieldLabel: mw.message('bs-insertlink-label-file').plain(),
+			fieldLabel: mw.message( 'bs-insertlink-label-file' ).plain(),
 			value: '',
 			width: this.bIsJavaEnabled ? '75%' : '100%'
 		});
 		this.btnSearchFile = Ext.create( 'Ext.button.Button', {
 			id: 'inputSearchFile',
-			text: mw.message('bs-insertlink-label-searchfile').plain(),
-			handler: function() {
-				try {
-					var result = document.getElementById( 'BsFileChooserApplet' ).openDialog(mw.message( "bs-insertlink-select-a-page" ).plain());
-				} catch ( e ) {
-					bs.util.alert( 'bs-insertlink-no-applet',
-							{
-								text: mw.message( "bs-insertlink-no-applet" ).plain(),
-								titleMsg: 'bs-extjs-error'
-							}
-					);
-				}
-				result = $.parseJSON( result );
-				if ( result.success )
-					this.tfTargetUrl.setValue( result.path );
+			text: mw.message( 'bs-insertlink-label-searchfile' ).plain(),
+			handler: function(){
+				//select input text for override
+				this.tfTargetUrl.focus( true );
+				//open java app for file selection
+				var jnlpPath = "/extensions/BlueSpiceFoundation/data/bsFileLinkChooser.jnlp";
+				var downloadUrl = mw.config.get( "wgScriptPath" ) + jnlpPath;
+				var downloadFrame = document.createElement( "iframe" );
+				downloadFrame.setAttribute( 'src', downloadUrl );
+				downloadFrame.setAttribute( 'class', "screenReaderText" );
+				downloadFrame.setAttribute( 'style', "display:none;" );
+				document.body.appendChild( downloadFrame );
 			},
 			scope: this,
 			width: '25%'
 		});
 
-		this.fcTargetFields = Ext.create('Ext.form.FieldContainer', {
+		this.fcTargetFields = Ext.create( 'Ext.form.FieldContainer', {
 			 layout: 'hbox'
 		});
 		this.fcTargetFields.add( this.tfTargetUrl );
@@ -70,9 +53,9 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 		}
 
 		this.pnlMainConf.items = [];
-		this.pnlMainConf.items.push(this.fcTargetFields);
+		this.pnlMainConf.items.push( this.fcTargetFields );
 
-		this.callParent(arguments);
+		this.callParent( arguments );
 	},
 	resetData: function() {
 		this.tfTargetUrl.reset();

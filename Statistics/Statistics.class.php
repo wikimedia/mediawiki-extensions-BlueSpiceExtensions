@@ -21,13 +21,13 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Tobias Weichart <weichart@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -89,6 +89,7 @@ class Statistics extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
+		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
 
 		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers', array( 'WikiSysop' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-excludeusers', 'multiselectplusadd' );
 		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 366, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-statistics-pref-maxnumberofintervals', 'int' );
@@ -370,7 +371,7 @@ class Statistics extends BsExtensionMW {
 			return json_encode($aResult);
 		}
 
-		//$aCategories[wfMsg( 'bs-ns_all' )] = '(all)';
+		//$aCategories[wfMessage( 'bs-ns_all' )->text()] = '(all)';
 		$oDbr = wfGetDB( DB_SLAVE );
 		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );
 		while ( $oRow = $rRes->fetchObject() ) {
@@ -528,4 +529,28 @@ class Statistics extends BsExtensionMW {
 		return true;
 	}
 
+	/**
+	 * Adds Special:ExtendedStatistic link to wiki wide widget
+	 * @param UserSidebar $oUserSidebar
+	 * @param User $oUser
+	 * @param array $aLinks
+	 * @param string $sWidgetTitle
+	 * @return boolean
+	 */
+	public function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
+		$oSpecialExtendedStatistic = SpecialPageFactory::getPage(
+			'ExtendedStatistics'
+		);
+		if( !$oSpecialExtendedStatistic ) {
+			return true;
+		}
+		$aLinks[] = array(
+			'target' => $oSpecialExtendedStatistic->getPageTitle(),
+			'text' => $oSpecialExtendedStatistic->getDescription(),
+			'attr' => array(),
+			'position' => 700,
+			'permissions' => array( 'read' ),
+		);
+		return true;
+	}
 }

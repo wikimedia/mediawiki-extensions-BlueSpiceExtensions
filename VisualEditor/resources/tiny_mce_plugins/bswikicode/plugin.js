@@ -3,13 +3,13 @@
  *
  * Wiki code to HTML and vice versa parser
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Sebastian Ulbricht
  * @version    2.22.0
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -2360,22 +2360,27 @@ var BsWikiCode = function() {
 
 		if( internalLinksTitles.length == 0 ) return;
 
-		$.getJSON(
-			bs.util.getAjaxDispatcherUrl('VisualEditor::checkLinks', [ internalLinksTitles ]),
-			{},
-			function(data, textStatus, jqXHR) {
-				for( var i = 0; i < data.length; i++ ) {
-					if( data[i] ) continue; //Known link
+		var api = new mw.Api();
+		api.postWithToken( 'edit', {
+			action: 'bs-visualeditor-tasks',
+			task: 'checkLinks',
+			taskData: JSON.stringify( internalLinksTitles )
+		})
+		.done( function( response ){
+			if ( response.success === true ) {
+				for( var i = 0; i < response.payload.length; i++ ) {
+					if( response.payload[i] ) continue; //Known link
 					internalLinks[i].addClass( 'new' );
 				}
 			}
-		);
+		});
+
 	}
 
 	this.getInfo = function() {
 		var info = {
 			longname: 'BlueSpice WikiCode Parser',
-			author: 'Hallo Welt! - Medienwerkstatt GmbH',
+			author: 'Hallo Welt! GmbH',
 			authorurl: 'http://www.hallowelt.biz',
 			infourl: 'http://www.hallowelt.biz'
 		};

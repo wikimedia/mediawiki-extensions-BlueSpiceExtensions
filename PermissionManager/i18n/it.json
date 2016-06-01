@@ -27,5 +27,6 @@
 	"bs-permissionmanager-msgtpled-deletefail": "Il template non può essere cancellato.",
 	"bs-permissionmanager-titletpled-new": "Crea template",
 	"bs-permissionmanager-titletpled-edit": "Rinomina template",
-	"bs-permissionmanager-titletpled-delete": "Cancella template"
+	"bs-permissionmanager-titletpled-delete": "Cancella template",
+	"bs-permissionmanager-pref-max-backups": "Numero massimo di backup"
 }

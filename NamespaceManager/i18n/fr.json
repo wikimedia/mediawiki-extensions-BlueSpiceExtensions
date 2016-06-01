@@ -19,6 +19,10 @@
 	"bs-namespacemanager-label-content": "Espace de noms du contenu",
 	"bs-namespacemanager-label-searchable": "Recherché par défaut",
 	"bs-namespacemanager-label-subpages": "Sous-pages",
+	"bs-namespacemanager-label-pagecount": "Pages",
+	"bs-namespacemanager-label-system": "Système",
+	"bs-namespacemanager-hide-system-ns": "Masquer les espaces de nom système",
+	"bs-namespacemanager-hide-talk-ns": "Masquer les espaces de nom de discussion",
 	"bs-namespacemanager-nsadded": "L’espace de noms a été ajouté.",
 	"bs-namespacemanager-nsremoved": "L’espace de noms a été supprimé.",
 	"bs-namespacemanager-nsedited": "L’espace de noms a été modifié.",
@@ -40,5 +44,9 @@
 	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|a créé}} l'espace de noms $4",
 	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|a modifié}} les paramètres pour l’espace de noms $4",
 	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|a renommé}} l’espace de noms $4 en $5",
-	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|a supprimé}} l'espace de noms $4"
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|a supprimé}} l'espace de noms $4",
+	"bs-namespacemanager-ns-config-saved": "La configuration de l’espace de noms a été enregistrée.",
+	"bs-namespacemanager-error-ns-config-not-saved": "La configuration de l’espace de noms n’a pas pu être enregistrée pour $1.",
+	"apihelp-bs-namespace-store-description": "Liste tous les espaces de noms et la configuration arbitraire. Permet le tri, le filtrage et la pagination. Implémente les paramètres ExtJS Store.",
+	"apihelp-bs-namespace-tasks-description": "Permet la modification de la configuration de l’espace de noms."
 }

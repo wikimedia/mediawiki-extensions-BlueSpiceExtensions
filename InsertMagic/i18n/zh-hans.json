@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Duolaimi"
+			"Duolaimi",
+			"Yfdyh000",
+			"Macofe"
 		]
 	},
-	"bs-insertmagic-desc": "对编辑模式加入对话框以允许插入魔术字和标签",
+	"bs-insertmagic-desc": "添加对话框以允许插入魔术字和标签",
 	"bs-insertmagic": "插入魔术字",
 	"bs-insertmagic-notoc": "隐藏表中内容。",
 	"bs-insertmagic-forcetoc": "强制目录出现在正常位置。",
@@ -49,7 +51,7 @@
 	"bs-insertmagic-revisionday2": "日更改已作出（零填充数字）。",
 	"bs-insertmagic-revisionmonth": "月更改已作出（无填充数字）。",
 	"bs-insertmagic-revisionmonth1": "月更改已作出（零填充数字）。",
-	"bs-insertmagic-revisionyear": "年更改已作出。",
+	"bs-insertmagic-revisionyear": "年更改已做出。",
 	"bs-insertmagic-revisiontimestamp": "截止更改时间的时间戳。",
 	"bs-insertmagic-revisionuser": "做出页面最近更改的用户的用户名，或者当前预览更改的用户。",
 	"bs-insertmagic-displaytitle": "设置当前页面的标题页顶的格式。",
@@ -64,5 +66,6 @@
 	"bs-insertmagic-type-switches": "行为交换",
 	"bs-insertmagic-label-first": "一、选择标签或魔术字",
 	"bs-insertmagic-label-second": "二、修改代码",
-	"bs-insertmagic-label-desc": "说明"
+	"bs-insertmagic-label-desc": "说明",
+	"bs-insertmagic-label-see-also": "参见"
 }

@@ -14,6 +14,7 @@
 	"bs-interwikilinks-link-deleted": "ウィキ間リンクを削除しました。",
 	"bs-interwikilinks-nopfx": "接頭辞を指定してください。",
 	"bs-interwikilinks-nourl": "URL を指定してください。",
+	"bs-interwikilinks-pfxtoolong": "接頭辞が長すぎます。最長でも32文字にしてください。",
 	"bs-interwikilinks-pfxexists": "この接頭辞は既に存在します。",
 	"bs-interwikilinks-headerprefix": "接頭辞",
 	"bs-interwikilinks-titleaddinterwikilink": "ウィキ間リンクの追加",

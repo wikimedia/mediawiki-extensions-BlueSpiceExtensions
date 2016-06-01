@@ -9,17 +9,17 @@ $wgMessagesDirs['WidgetBar'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['WidgetBar'] = __DIR__ . '/languages/WidgetBar.i18n.php';
 
 $aResourceModuleTemplate = array(
-	'localBasePath' => 'extensions/BlueSpiceExtensions/WidgetBar/resources/',
-	'remoteExtPath' => 'BlueSpiceExtensions/WidgetBar/resources'
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'BlueSpiceExtensions/WidgetBar'
 );
 
 $wgResourceModules['ext.bluespice.widgetbar.style'] = array(
-	'styles'  => 'bluespice.widgetBar.css',
+	'styles'  => 'resources/bluespice.widgetBar.css',
 	'position' => 'top'
 ) + $aResourceModuleTemplate;
 
 $wgResourceModules['ext.bluespice.widgetbar'] = array(
-	'scripts' => 'bluespice.widgetBar.js',
+	'scripts' => 'resources/bluespice.widgetBar.js',
 	'dependencies' => array ( 'jquery.cookie' ),
 	'position' => 'bottom'
 ) + $aResourceModuleTemplate;

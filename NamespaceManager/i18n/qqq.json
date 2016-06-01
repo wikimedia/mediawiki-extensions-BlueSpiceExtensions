@@ -12,12 +12,16 @@
 	"bs-namespacemanager-ns-exists": "Error message for the namespace already exists.",
 	"bs-namespacemanager-ns-length": "Error message for the namespace must have a minumum length of two characters.",
 	"bs-namespacemanager-invalid-id": "Error message for no valid namespace ID",
-	"bs-namespacemanager-label-id": "Column headline for id\n*{{Identical|ID}}",
+	"bs-namespacemanager-label-id": "Column headline for id\n{{Identical|ID}}",
 	"bs-namespacemanager-label-namespaces": "Column headline for namespace\n*{{Identical|Namespace}}",
 	"bs-namespacemanager-label-editable": "Column headline for renameable\n*{{Identical|Renameable}}",
 	"bs-namespacemanager-label-content": "Column headline for content namespace\n{{Identical|Content namespace}}",
 	"bs-namespacemanager-label-searchable": "Column headline for search by default.\n\n*Also used as checkbox label.",
 	"bs-namespacemanager-label-subpages": "Column headline for subpages.\n\n*Also used as checkbox label.\n*{{Identical|Subpage}}",
+	"bs-namespacemanager-label-pagecount": "Column headline for page count of a namespace.\n\n{{Identical|Page}}",
+	"bs-namespacemanager-label-system": "Column headline for whether a namespace is a system namespace.\n{{Identical|System}}",
+	"bs-namespacemanager-hide-system-ns": "Label for checkbox to hide all system namespaces from list",
+	"bs-namespacemanager-hide-talk-ns": "Label for checkbox to hide all talk namespaces from list",
 	"bs-namespacemanager-nsadded": "Success message for the namespace has been added.",
 	"bs-namespacemanager-nsremoved": "Success message for the namespace has been removed.",
 	"bs-namespacemanager-nsedited": "Success message for the namespace has been edited.",
@@ -39,5 +43,9 @@
 	"logentry-bs-namespace-manager-create": "Log message about the creation of a new namespace.\nParameters:\n* $4 - name of the namespace",
 	"logentry-bs-namespace-manager-modify": "Log message about changes in the settings of a namespace.\nParameters:\n* $4 - name of the namespace",
 	"logentry-bs-namespace-manager-rename": "Log message about changes of the name of a namespace.\nParameters:\n* $4 - old name of the namespace\n* $5 - new name of the namespace",
-	"logentry-bs-namespace-manager-remove": "Log message about the removal of a namespace.\nParameters:\n* $4 - name of the namespace"
+	"logentry-bs-namespace-manager-remove": "Log message about the removal of a namespace.\nParameters:\n* $4 - name of the namespace",
+	"bs-namespacemanager-ns-config-saved": "Dialog box text that tells the user that the namespace configuaration has successfully been saved",
+	"bs-namespacemanager-error-ns-config-not-saved": "Dialog box text that tells the user that the namespace configuaration could not be saved to file \"$1\"\n\nParameters:\n* $1 - is the path to the config file",
+	"apihelp-bs-namespace-store-description": "Describes the API endpoint that lists namespaces.",
+	"apihelp-bs-namespace-tasks-description": "Describes the API endpoint that allows manipulation of the namespace configuration."
 }

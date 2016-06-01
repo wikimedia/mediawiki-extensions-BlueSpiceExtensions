@@ -15,6 +15,6 @@
 	"bs-whoisonline-pref-orderby-time": "Onlinezeit",
 	"bs-whoisonline-pref-orderby-name": "Name",
 	"bs-whoisonline-pref-interval": "Aktualisierungsintervall in Sekunden:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Gibt die Anzahl der Benutzer aus, die gerade angemeldet sind.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Stellt eine aufklappbare Liste der gerade angemeldeten Benutzer da.\n\nVerfügbare Parameter:\n;<code>anchortext</code>: Der Text, an dem die Liste ausklappt."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Zeigt die Anzahl aller Benutzer an, die innerhalb der letzten 10 Minuten angemeldet waren.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Zeigt alle Benutzer an, die innerhalb der letzten 10 Minuten angemeldet waren."
 }

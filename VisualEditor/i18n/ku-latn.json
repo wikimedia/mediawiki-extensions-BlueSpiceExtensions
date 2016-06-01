@@ -4,5 +4,13 @@
 			"George Animal"
 		]
 	},
-	"prefs-visualeditor": "Visual editor"
+	"prefs-visualeditor": "Visual editor",
+	"bs-visualeditor-bsactions-save": "Tomar bike",
+	"bs-visualeditor-bsactions-headings": "Sernivîs",
+	"bs-visualeditor-bsactions-paragraph": "Paragraf",
+	"bs-visualeditor-bsactions-heading2": "Sernivîs 2",
+	"bs-visualeditor-bsactions-heading3": "Sernivîs 3",
+	"bs-visualeditor-bsactions-heading4": "Sernivîs 4",
+	"bs-visualeditor-bsactions-heading5": "Sernivîs 5",
+	"bs-visualeditor-bsactions-heading6": "Sernivîs 6"
 }

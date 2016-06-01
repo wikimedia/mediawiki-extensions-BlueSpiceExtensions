@@ -6,12 +6,12 @@
  * www.yensdesign.com
  * yensamg@gmail.com
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Karl Waldmanstetter
  * @version    1.1.0
  * @package    Bluespice_Extensions
  * @subpackage ShoutBox
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -74,14 +74,29 @@ BsShoutBox = {
 	 * @param sblimit int Maximum number of shouts before more link is displayed
 	 */
 	updateShoutbox: function( sblimit ) {
-		if ( typeof sblimit == 'undefined' )
+		if( typeof sblimit === 'undefined' ) {
 			sblimit = 0;
+		}
 		$( document ).trigger( "onBsShoutboxBeforeUpdated", [ BsShoutBox ] );
 		BsShoutBox.ajaxLoader.fadeIn();
 
-		this.msgList.load(
-				bs.util.getAjaxDispatcherUrl( 'ShoutBox::getShouts', [ mw.config.get( "wgArticleId" ), sblimit ] ),
-				function( data ) {
+		$.ajax({
+			dataType: "json",
+			type: 'post',
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'bs-shoutbox',
+				task: 'getShouts',
+				format: 'json',
+				token: mw.user.tokens.get('editToken', ''),
+				taskData: JSON.stringify({
+					articleId: mw.config.get( "wgArticleId" ),
+					limit: sblimit
+				})
+			},
+			success: function( oData, oTextStatus ) {
+				if( oData.success ) {
+					BsShoutBox.msgList.html( oData.payload.html );
 					BsShoutBox.msgList.slideDown();
 					BsShoutBox.btnSend.blur().removeAttr( 'disabled' ); //reactivate the send button
 					BsShoutBox.textField.val( BsShoutBox.defaultMessage );
@@ -97,25 +112,39 @@ BsShoutBox = {
 					}
 					$( document ).trigger( "onBsShoutboxAfterUpdated", [ BsShoutBox ] );
 				}
-		);
+			}
+		});
 	},
 	archiveEntry: function( iShoutID ) {
-		$( "#bs-sb-error" ).empty();
 		$( document ).trigger( "onBsShoutboxBeforeArchived", [ BsShoutBox ] );
 		BsShoutBox.ajaxLoader.fadeIn();
-		$.post(
-				bs.util.getAjaxDispatcherUrl( 'ShoutBox::archiveShout', [ iShoutID, mw.config.get( "wgArticleId" ) ] ),
-				function( data ) {
-					BsShoutBox.updateShoutbox();
-					$( "#bs-sb-error" ).html( data ).fadeIn().delay( "1500" ).fadeOut();
-					$( document ).trigger( "onBsShoutboxAfterArchived", [ BsShoutBox ] );
+		$.ajax({
+			dataType: "json",
+			type: 'post',
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'bs-shoutbox',
+				task: 'archiveShout',
+				format: 'json',
+				token: mw.user.tokens.get('editToken', ''),
+				taskData: JSON.stringify({
+					shoutId: iShoutID
+				})
+			},
+			success: function( oData, oTextStatus ) {
+				if( oData.success !== true ) {
+					bs.util.alert( 'bs-shoutbox-alert', {
+						text: oData.message
+					});
 				}
-		);
+				BsShoutBox.updateShoutbox();
+				$( document ).trigger( "onBsShoutboxAfterArchived", [ BsShoutBox ] );
+			}
+		});
 	}
 };
 
 mw.loader.using( 'ext.bluespice', function() {
-	$( "#bs-sb-content" ).before( $( "<div id='bs-sb-error'></div>" ) );
 	BsShoutBox.textField = $( "#bs-sb-message" );
 	BsShoutBox.btnSend = $( "#bs-sb-send" );
 	BsShoutBox.msgList = $( "#bs-sb-content" );
@@ -149,7 +178,7 @@ mw.loader.using( 'ext.bluespice', function() {
 
 	$( "#bs-sb-form" ).submit( function() {
 		var sMessage = BsShoutBox.textField.val();
-		if ( sMessage == '' || sMessage == BsShoutBox.defaultMessage ) {
+		if ( sMessage === '' || sMessage === BsShoutBox.defaultMessage ) {
 			bs.util.alert(
 					'bs-shoutbox-alert',
 					{
@@ -163,25 +192,33 @@ mw.loader.using( 'ext.bluespice', function() {
 		BsShoutBox.btnSend.blur().attr( 'disabled', 'disabled' );
 		BsShoutBox.textField.blur().attr( 'disabled', 'disabled' );
 
-		$.post(
-				bs.util.getAjaxDispatcherUrl( 'ShoutBox::insertShout', [ mw.config.get( "wgArticleId" ), sMessage ] ),
-				function( data ) {
-					var responseObj = $.parseJSON( data );
-					if ( responseObj.success === false ) {
-						bs.util.alert(
-								'bs-shoutbox-alert',
-								{
-									textMsg: responseObj.msg
-								}
-						);
-					}
-					BsShoutBox.updateShoutbox();
+		$.ajax({
+			dataType: "json",
+			type: 'post',
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'bs-shoutbox',
+				task: 'insertShout',
+				format: 'json',
+				token: mw.user.tokens.get('editToken', ''),
+				taskData: JSON.stringify({
+					articleId: mw.config.get( "wgArticleId" ),
+					message: sMessage
+				})
+			},
+			success: function( oData, oTextStatus ) {
+				if ( oData.success !== true ) {
+					bs.util.alert( 'bs-shoutbox-alert', {
+						text: oData.message
+					});
 				}
-		);
+				BsShoutBox.updateShoutbox();
+			}
+		});
 
 		//we prevent the refresh of the page after submitting the form
 		return false;
-	} );
+	});
 
 	$( document ).on( 'click', '.bs-sb-archive', function() {
 		var iShoutID = $( this ).parent().attr( 'id' );

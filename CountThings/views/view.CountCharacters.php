@@ -4,11 +4,11 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    $Id$
  * @package    BlueSpice_Extensions
  * @subpackage CountThings
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -47,11 +47,10 @@ class ViewCountCharacters extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $params = false ) {
-		global $wgUser;
 		$aOut = array();
 		$aOut[] = '<div class="bs-countcharacters" title="'.$this->oTitle->getText().'">';
 		$aOut[] = '  <table class="wikitable">';
-		$aOut[] = '    <tr><th colspan="2">'.$wgUser->getSkin()->link( $this->oTitle ).'</th></tr>';
+		$aOut[] = '    <tr><th colspan="2">'.Linker::link( $this->oTitle ).'</th></tr>';
 		if( $this->iChars != -1 )
 			$aOut[] = '    <tr><th>'.wfMessage( 'bs-countthings-chars-label' )->plain().'</th><td>'.$this->iChars.'</td></tr>';
 		if( $this->iWords != -1 )

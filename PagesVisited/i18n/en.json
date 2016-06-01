@@ -13,5 +13,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "Sort by:",
 	"bs-pagesvisited-pref-sort-time": "Time",
 	"bs-pagesvisited-pref-sort-pagename": "Title",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Displays a list of pages you have visited."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Shows a list of recently visited pages. This list can be restricted by parameters."
 }

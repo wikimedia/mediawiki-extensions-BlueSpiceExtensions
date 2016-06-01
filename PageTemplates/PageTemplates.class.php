@@ -21,12 +21,12 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage PageTemplates
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -367,8 +367,8 @@ class PageTemplates extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onLinkBegin( $oLinker, $oTarget, &$sHtml, &$aCustomAttribs, &$aQuery, &$aOptions, &$sRet ) {
-		if ( in_array( 'known', $aOptions ) ) return true;
-		if ( !in_array( 'broken', $aOptions ) ){ //It's not marked as "known" and not as "broken" so we have to check
+		if ( in_array( 'known', $aOptions, true ) ) return true;
+		if ( !in_array( 'broken', $aOptions, true ) ){ //It's not marked as "known" and not as "broken" so we have to check
 			if ( $oTarget->isKnown() ) return true;
 		}
 

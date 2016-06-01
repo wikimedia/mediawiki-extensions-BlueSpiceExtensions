@@ -7,7 +7,7 @@
 			"Amitie 10g"
 		]
 	},
-	"bs-insertmagic-desc": "Añade al modo de edición un cuadro de diálogo que permite insertar palabras mágicas y etiquetas",
+	"bs-insertmagic-desc": "Añade un cuadro de diálogo que permite insertar palabras mágicas y etiquetas",
 	"bs-insertmagic": "Insertar una palabra mágica",
 	"bs-insertmagic-notoc": "Oculta la tabla de contenido.",
 	"bs-insertmagic-forcetoc": "Fuerza la tabla de contenido para que aparezca en su posición normal.",
@@ -66,5 +66,7 @@
 	"bs-insertmagic-type-switches": "Interruptores de comportamiento",
 	"bs-insertmagic-label-first": "1. Elige la etiqueta o palabra mágica",
 	"bs-insertmagic-label-second": "2. Modifica el código",
-	"bs-insertmagic-label-desc": "Descripción"
+	"bs-insertmagic-label-desc": "Descripción",
+	"bs-insertmagic-label-examples": "Ejemplos",
+	"bs-insertmagic-label-see-also": "Véase también"
 }

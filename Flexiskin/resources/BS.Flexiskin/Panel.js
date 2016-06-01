@@ -3,146 +3,96 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage Flexiskin
- * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
 
-Ext.define('BS.Flexiskin.Panel', {
+Ext.define( 'BS.Flexiskin.Panel', {
 	extend: 'BS.CRUDGridPanel',
 	id: 'bs-flexiskin-panel',
+	requires: [ 'BS.store.BSApi' ],
 	initComponent: function() {
-		this.strMain = Ext.create('Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: mw.util.wikiScript('api'),
-				reader: {
-					type: 'json',
-					root: 'flexiskin',
-					idProperty: 'flexiskin_id',
-					totalProperty: 'totalCount'
-				},
-				extraParams: {
-					action: 'flexiskin',
-					type: 'get',
-					format: 'json'
-				}
-			},
-			autoLoad: true,
-			remoteSort: true,
-			fields: ['flexiskin_id', 'flexiskin_name', 'flexiskin_desc', 'flexiskin_active'],
+		this.strMain = new BS.store.BSApi( {
+			apiAction: 'bs-flexiskin-store',
+			fields: [ 'flexiskin_id', 'flexiskin_name', 'flexiskin_desc', 'flexiskin_active', 'flexiskin_config' ],
 			sortInfo: {
-				field: 'flexiskin_id',
+				field: 'flexiskin_name',
 				direction: 'ASC'
 			}
-		});
-
+		} );
 		this.colName = Ext.create('Ext.grid.column.Template', {
 			id: 'flexiskin_name',
-			header: mw.message('bs-flexiskin-labelname').plain(),
+			header: mw.message( 'bs-flexiskin-labelname' ).plain(),
 			sortable: true,
 			dataIndex: 'flexiskin_name',
 			tpl: '{flexiskin_name}'
 		});
-		this.colDesc = Ext.create('Ext.grid.column.Template', {
+		this.colDesc = Ext.create( 'Ext.grid.column.Template', {
 			id: 'flexiskin_desc',
-			header: mw.message('bs-flexiskin-labeldesc').plain(),
+			header: mw.message( 'bs-flexiskin-labeldesc' ).plain(),
 			sortable: true,
 			dataIndex: 'flexiskin_desc',
 			tpl: '{flexiskin_desc}'
 		});
-		this.colActive = Ext.create('Ext.grid.column.CheckColumn', {
+		this.colActive = Ext.create( 'Ext.grid.column.CheckColumn', {
 			id: 'flexiskin_active',
-			header: mw.message('bs-flexiskin-headeractive').plain(),
+			header: mw.message( 'bs-flexiskin-headeractive' ).plain(),
 			sortable: true,
 			dataIndex: 'flexiskin_active'
 		});
 		this.colMainConf.columns = [
-		this.colName,
-		this.colDesc,
-		this.colActive
+			this.colName,
+			this.colDesc,
+			this.colActive
 		];
-		this.colActive.on('checkchange', this.onCheckActiveChange, this);
-		this.callParent(arguments);
+		this.colActive.on( 'checkchange', this.onCheckActiveChange, this );
+		this.callParent( arguments );
 	},
-	onCheckActiveChange: function(oCheckBox, rowindex, checked) {
-		Ext.Ajax.request({
-			url: mw.util.wikiScript('api'),
-			params: {
-				action: 'flexiskin',
-				type: 'activate',
-				id: checked ? this.grdMain.getStore().getAt(rowindex).getData().flexiskin_id : "",
-				format: 'json'
-			},
-			success: function(response) {
-				window.location.reload();
-			},
-			scope: this
+	onCheckActiveChange: function( oCheckBox, rowindex, checked ) {
+		bs.api.tasks.exec( 'flexiskin', 'activate', {
+			id: checked ? this.grdMain.getStore().getAt( rowindex ).getData().flexiskin_id : ""
+		} )
+		.done( function() {
+			window.location.reload();
 		});
 	},
-	onBtnAddClick: function(oButton, oEvent) {
-		if (!this.dlgSkinAdd) {
-			this.dlgSkinAdd = Ext.create('BS.Flexiskin.AddSkin');
-			this.dlgSkinAdd.on('ok', this.onDlgSkinAdd, this);
+	onBtnAddClick: function( oButton, oEvent ) {
+		if ( !this.dlgSkinAdd ) {
+			this.dlgSkinAdd = Ext.create( 'BS.Flexiskin.AddSkin' );
+			this.dlgSkinAdd.on( 'ok', this.onDlgSkinAdd, this );
 		}
 
-		this.dlgSkinAdd.setTitle(mw.message('bs-flexiskin-titleaddskin').plain());
+		this.dlgSkinAdd.setTitle( mw.message('bs-flexiskin-titleaddskin' ).plain());
 		this.dlgSkinAdd.tfName.enable();
 		this.dlgSkinAdd.show();
-		this.callParent(arguments);
+		this.callParent( arguments );
 	},
-	onBtnEditClick: function(oButton, oEvent) {
+	onBtnEditClick: function( oButton, oEvent ) {
 		this.selectedRow = this.grdMain.getSelectionModel().getSelection();
-		Ext.Ajax.request({
-			url: mw.util.wikiScript('api'),
-			params: {
-				action: 'flexiskin',
-				type: 'get',
-				mode: 'config',
-				id: this.selectedRow[0].getData().flexiskin_id,
-				format: 'json'
+
+		Ext.require( 'BS.Flexiskin.PreviewWindow', function() {
+			var config = this.selectedRow[0].get( 'flexiskin_config' );
+			BS.Flexiskin.PreviewWindow.setData( {
+				skinId: this.selectedRow[0].get( 'flexiskin_id' ),
+				config: config
+			});
+			Ext.getCmp( 'bs-flexiskin-preview-menu' ).onItemStateChange();
+			BS.Flexiskin.PreviewWindow.show();
 			},
-			success: function(response) {
-				var responseObj = Ext.decode(response.responseText);
-				responseObj = Ext.decode(responseObj.flexiskin);
-				if (responseObj.success === false) {
-					bs.util.alert('bs-flexiskin-get-config-error',
-					{
-						text: responseObj.msg,
-						titleMsg: 'bs-extjs-error'
-					}, {
-						ok: function() {
-						},
-						cancel: function() {
-						},
-						scope: this
-					}
-					);
-					return;
-				}
-				Ext.require('BS.Flexiskin.PreviewWindow', function(){
-					var config = Ext.decode(responseObj.config);
-					BS.Flexiskin.PreviewWindow.setData({
-						skinId: this.selectedRow[0].get('flexiskin_id'),
-						config: config
-					});
-					Ext.getCmp('bs-flexiskin-preview-menu').onItemStateChange();
-					BS.Flexiskin.PreviewWindow.show();
-				}, this);
-			},
-			scope: this
-		});
+			this
+		);
 		this.callParent(arguments);
 	},
-	onBtnRemoveClick: function(oButton, oEvent) {
+	onBtnRemoveClick: function( oButton, oEvent ) {
 		bs.util.confirm(
 			'UMremove',
 			{
-				text: mw.message('bs-flexiskin-confirmdeleteskin').plain(),
-				title: mw.message('bs-extjs-delete').plain()
+				text: mw.message( 'bs-flexiskin-confirmdeleteskin' ).plain(),
+				title: mw.message( 'bs-extjs-delete' ).plain()
 			},
 			{
 				ok: this.onRemoveSkinOk,
@@ -152,87 +102,39 @@ Ext.define('BS.Flexiskin.Panel', {
 			}
 			);
 	},
-	onRemoveSkinOk: function() {
-		var selectedRow = this.grdMain.getSelectionModel().getSelection();
-		var skinId = selectedRow[0].get('flexiskin_id');
+	onRemoveSkinOk: function(){
+		var me = this;
+		var selectedRow = me.grdMain.getSelectionModel().getSelection();
+		var skinId = selectedRow[0].get( 'flexiskin_id' );
 
-		Ext.Ajax.request({
-			url: mw.util.wikiScript('api'),
-			params: {
-				action: 'flexiskin',
-				type: 'delete',
-				id: skinId,
-				format: 'json'
-			},
-			scope: this,
-			success: function(response, opts) {
-				var responseObj = Ext.decode(response.responseText);
-				responseObj = Ext.decode( responseObj.flexiskin );
-				if (responseObj.success === false) {
-					bs.util.alert('bs-flexiskin-deleteskin-error',
-					{
-						text: responseObj.msg,
-						titleMsg: 'bs-extjs-error'
-					}, {
-						ok: function() {
-						},
-						cancel: function() {
-						},
-						scope: this
-					}
-					);
-				}
-				this.reloadStore();
-			}
+		bs.api.tasks.exec( 'flexiskin', 'delete', {
+			id: skinId
+		})
+		.done( function( response, opts ) {
+			me.reloadStore();
 		});
 	},
 	reloadStore: function() {
 		this.strMain.reload();
 	},
-	onDlgSkinAdd: function(data, user) {
-		var datas = this.getAddSkinData();
-		Ext.Ajax.request({
-			url: mw.util.wikiScript('api'),
-			params: {
-				action: 'flexiskin',
-				type: 'add',
-				data: Ext.encode(datas),
-				format: 'json'
-			},
-			scope: this,
-			success: function(response, opts) {
-				var responseObj = Ext.decode(response.responseText);
-				responseObj = Ext.decode( responseObj.flexiskin );
-				if (responseObj.success === true) {
-					this.dlgSkinAdd.resetData();
-					this.reloadStore();
-				} else {
-					bs.util.alert('bs-flexiskin-addskin-error',
-					{
-						text: responseObj.msg,
-						titleMsg: 'bs-extjs-error'
-					}, {
-						ok: function() {
-							this.dlgSkinAdd.show();
-						},
-						cancel: function() {
-						},
-						scope: this
-					}
-					);
-				}
-			},
-			failure: function(response, opts) {
-			}
-		});
+	onDlgSkinAdd: function( data, user ) {
+		var me = this;
+
+		bs.api.tasks.exec( 'flexiskin', 'add', {
+			data: this.getAddSkinData()
+		})
+		.done( function( response, opts ){
+				me.dlgSkinAdd.resetData();
+				me.reloadStore();
+			});
 	},
 	getAddSkinData: function() {
 		var data = [];
-		data.push({
+		data.push( {
 			name: this.dlgSkinAdd.tfName.getValue(),
 			desc: this.dlgSkinAdd.tfDesc.getValue(),
 			template: this.dlgSkinAdd.cbSkins.getValue()
-		});
+		} );
 		return data;
 	}
 });

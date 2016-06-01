@@ -4,12 +4,12 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
 
  * @package    BlueSpice_Extensions
  * @subpackage PageTemplates
- * @copyright  Copyright (C) 2010 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -49,100 +49,10 @@ class PageTemplatesAdmin {
 	}
 
 	/**
-	 * Returns a json encoded list of available namespaces
-	 * @return bool allow other hooked methods to be executed. Always true.
-	 */
-	public static function getNamespaces( $bShowAll ) {
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
-
-		global $wgCanonicalNamespaceNames, $wgRequest;
-		$bShowPseudo = $wgRequest->getFuzzyBool( 'showPseudo', false );
-
-		if ( $bShowAll ) {
-			$wgCanonicalNamespaceNames[-99] = 'all';
-		}
-		$wgCanonicalNamespaceNames[0] = 'main';
-		ksort( $wgCanonicalNamespaceNames );
-
-		$aData = array();
-		$aData['items'] = array();
-		foreach ( $wgCanonicalNamespaceNames as $iNsIndex => $sNsCanonicalName ) {
-			if ( !$bShowPseudo && ( $iNsIndex == -1 || $iNsIndex == -2 ) ) continue;
-			$nsName = BsNamespaceHelper::getNamespaceName( $iNsIndex, true );
-			$aData['items'][] = array( "name"=>$nsName, "id"=>$iNsIndex );
-		}
-
-		return json_encode( $aData );
-	}
-
-	/**
-	 * Returns a json encoded list of available templates
-	 * @return bool allow other hooked methods to be executed. Always true.
-	 */
-	public static function getTemplates() {
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
-
-		global $wgRequest;
-		$iLimit     = $wgRequest->getInt( 'limit', 25 );
-		$iStart     = $wgRequest->getInt( 'start', 0 );
-		$sSort      = $wgRequest->getVal( 'sort', 'user_name' );
-		$sDirection = $wgRequest->getVal( 'dir', 'ASC' );
-
-		switch ( $sSort ) {
-			case 'label':
-				$sSortField = 'pt_label';
-				break;
-			case 'desc':
-				$sSortField = 'pt_desc';
-				break;
-			case 'targetns':
-				$sSortField = 'pt_target_namespace';
-				break;
-			case 'template':
-				$sSortField = 'pt_template_title';
-				break;
-			default:
-				$sSortField = 'pt_label';
-				break;
-		}
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			array( 'bs_pagetemplate' ),
-			array( 'pt_id', 'pt_label', 'pt_desc', 'pt_target_namespace', 'pt_template_title', 'pt_template_namespace'  ),
-			array(),
-			__METHOD__,
-			array( 'ORDER BY' => $sSortField . ' ' . $sDirection, 'LIMIT' => $iLimit, 'OFFSET' => $iStart )
-		);
-
-		$aData = array();
-		$aData['templates'] = array();
-
-		while( $row = $res->fetchObject() ) {
-				$tmp = array();
-				$tmp['id']       = $row->pt_id;
-				$tmp['label']    = $row->pt_label;
-				$tmp['desc']     = $row->pt_desc;
-				$tmp['targetns'] = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace, true );
-				$tmp['targetnsid'] = $row->pt_target_namespace;
-				$oTitle = Title::newFromText( $row->pt_template_title, $row->pt_template_namespace );
-				$tmp['template']  = '<a href="'.$oTitle->getFullURL().'" target="_blank" '.($oTitle->exists()?'':'class="new"').'>'.$oTitle->getFullText().'</a>';
-				$tmp['templatename'] = $row->pt_template_title;
-				$tmp['templatens'] = $row->pt_template_namespace;
-				$aData['templates'][] = $tmp;
-		}
-
-		$rescount = $dbr->selectRow( 'bs_pagetemplate', 'COUNT( pt_id ) AS cnt', array() );
-		$aData['totalCount'] = $rescount->cnt;
-
-		return json_encode( $aData );
-	}
-
-	/**
 	 * Creates or changes a template
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public static function doEditTemplate( $iOldId, $sTemplateName, $sLabel, $sDesc, $iTargetNs, $iTemplateNs ) {
+	public static function doEditTemplate( $iOldId, $sTemplateName, $sLabel, $sDesc, $iTargetNs ) {
 		if ( wfReadOnly() ) {
 			global $wgReadOnly;
 			return json_encode( array(
@@ -188,6 +98,7 @@ class PageTemplatesAdmin {
 
 		$oDbw = wfGetDB( DB_MASTER );
 
+		$oTitle = Title::newFromText( $sTemplateName );
 		// This is the add template part
 		if ( empty( $iOldId ) ) {
 			if ( $aAnswer['success'] === true ) {
@@ -197,7 +108,7 @@ class PageTemplatesAdmin {
 						'pt_label' => $sLabel,
 						'pt_desc' => $sDesc,
 						'pt_template_title' => $sTemplateName,
-						'pt_template_namespace' => $iTemplateNs,
+						'pt_template_namespace' => $oTitle->getNamespace(),
 						'pt_target_namespace' => $iTargetNs,
 						'pt_sid' => 0,
 					));
@@ -219,7 +130,7 @@ class PageTemplatesAdmin {
 							'pt_label' => $sLabel,
 							'pt_desc' => $sDesc,
 							'pt_template_title' => $sTemplateName,
-							'pt_template_namespace' => $iTemplateNs,
+							'pt_template_namespace' => $oTitle->getNamespace(),
 							'pt_target_namespace' => $iTargetNs
 							),
 						array( 'pt_id' => $iOldId )
@@ -238,55 +149,4 @@ class PageTemplatesAdmin {
 
 		return json_encode( $aAnswer );
 	}
-
-	/**
-	 * Deletes a template
-	 * @return bool allow other hooked methods to be executed. Always true.
-	 */
-	public static function doDeleteTemplate( $iId ) {
-		if ( wfReadOnly() ) {
-			global $wgReadOnly;
-			return json_encode( array(
-				'success' => false,
-				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
-				) );
-		}
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
-
-		$aAnswer = array(
-			'success' => true,
-			'errors' => array(),
-			'message' => array()
-		);
-
-		if ( empty( $iId ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-no-id' )->plain();
-		}
-
-		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->delete( 'bs_pagetemplate', array( 'pt_id' => $iId ) );
-
-		if ( $res === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = wfMessage( 'bs-pagetemplates-dberror' )->plain();
-		}
-
-		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-pagetemplates-tpl-deleted' )->plain();
-		}
-
-		return json_encode( $aAnswer );
-	}
-
-	public static function doDeleteTemplates($aId){
-		$output = array();
-		if (is_array($aId) && count($aId) > 0){
-			foreach($aId as $sId => $sName){
-				$output [$sName] = FormatJson::decode(self::doDeleteTemplate($sId));
-			}
-		}
-		return FormatJson::encode($output);
-	}
-
 }

@@ -4,11 +4,11 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
 
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -26,10 +26,10 @@ class BsDiagramNumberOfArticles extends BsDiagram {
 	public function __construct() {
 		parent::__construct();
 
-		$this->sTitle = wfMsg( 'bs-statistics-diag-number-of-pages-mw');
-		$this->sDescription = wfMsg( 'bs-statistics-diag-number-of-pages-mw-desc');
-		$this->sTitlex = wfMsg( 'bs-statistics-label-time');
-		$this->sTitley = wfMsg( 'bs-statistics-label-count');
+		$this->sTitle = wfMessage( 'bs-statistics-diag-number-of-pages-mw')->text();
+		$this->sDescription = wfMessage( 'bs-statistics-diag-number-of-pages-mw-desc')->text();
+		$this->sTitlex = wfMessage( 'bs-statistics-label-time')->text();
+		$this->sTitley = wfMessage( 'bs-statistics-label-count')->text();
 		$this->sActualGrain = "m";
 		$this->sModLabel = "M y";
 		$this->iDataSource = BsDiagram::DATASOURCE_DATABASE;
@@ -74,7 +74,7 @@ class BsDiagramNumberOfArticles extends BsDiagram {
 									)
 								)
 								AND @BsFilterCategory";
-		$this->sListLabel = array( wfMsg( 'bs-statistics-label-page'), wfMsg( 'bs-statistics-label-creator'));
+		$this->sListLabel = array( wfMessage( 'bs-statistics-label-page')->text(), wfMessage( 'bs-statistics-label-creator')->text());
 		$this->sMode = BsDiagram::MODE_AGGREGATED;
 
 		$this->addFilter( new BsFilterNamespace( $this, array( 0 ) ) );

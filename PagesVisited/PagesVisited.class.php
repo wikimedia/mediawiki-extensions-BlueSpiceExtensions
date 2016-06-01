@@ -21,12 +21,12 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage PagesVisited
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -130,6 +130,12 @@ class PagesVisited extends BsExtensionMW {
 			'name' => 'pagesvisited',
 			'desc' => wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->escaped(),
 			'code' => '<bs:pagesvisited />',
+			'examples' => array(
+				array(
+					'code' => '<bs:pagesvisited count="7" maxtitlelength="40" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/PagesVisited'
 		);
 
 		return true;

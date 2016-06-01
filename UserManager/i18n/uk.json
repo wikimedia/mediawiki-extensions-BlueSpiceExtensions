@@ -31,5 +31,6 @@
 	"bs-usermanager-titledeleteuser": "Видалити користувача",
 	"bs-usermanager-confirmdeleteuser": "Ви впевнені, що хочете вилучити {{PLURAL:$1|цього користувача|$1 цих користувачів}}?",
 	"bs-usermanager-groups-more": "… ще",
-	"bs-usermanager-no-self-desysop": "Ви не можете забрати права адміністратора самі в себе."
+	"bs-usermanager-no-self-desysop": "Ви не можете забрати права адміністратора самі в себе.",
+	"apihelp-bs-usermanager-tasks-description": "Забезпечує операції для розширення Checklist"
 }

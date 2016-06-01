@@ -3,12 +3,12 @@
  *
  * Part of BlueSpice for MediaWiki
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @package    Bluespice_Extensions
  * @subpackage GroupManager
- * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -16,23 +16,10 @@
 Ext.define( 'BS.GroupManager.Panel', {
 	extend: 'BS.CRUDGridPanel',
 	initComponent: function() {
-		this.strMain = Ext.create( 'Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'GroupManager::getData' ),
-				reader: {
-					type: 'json',
-					root: 'groups',
-					idProperty: 'group_name',
-					totalProperty: 'totalCount'
-				}
-			},
-			autoLoad: true,
-			fields: [ 'group_name', 'additional_group' ],
-			sortInfo: {
-				field: 'id',
-				direction: 'ASC'
-			}
+		this.strMain = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-group-store',
+			fields: ['group_name', 'additional_group'],
+			submitValue: false
 		});
 
 		this.colGroupName = Ext.create( 'Ext.grid.column.Column', {
@@ -130,31 +117,42 @@ Ext.define( 'BS.GroupManager.Panel', {
 		}
 
 		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'GroupManager::removeGroups',
-				[ groupNames ]
-			),
+			url: mw.util.wikiScript( 'api' ),
 			method: 'post',
 			scope: this,
+			params: {
+				action: 'bs-groupmanager',
+				task: 'removeGroups',
+				format: 'json',
+				token: mw.user.tokens.get( 'editToken', '' ),
+				taskData: Ext.encode({
+					'groups': groupNames
+				})
+			},
 			success: function( response, opts ) {
 				var responseObj = Ext.decode( response.responseText );
-				if ( Object.keys(responseObj).length === groupNames.length ) {
+				if ( responseObj.success ) {
 					this.renderMsgSuccess( responseObj );
 				} else {
-					var failureObj = {success: false, message: mw.message("bs-groupmanager-removeGroup-message-unknown").plain()};
-					this.renderMsgFailure( failureObj );
+					this.renderMsgFailure( responseObj );
 				}
 			}
 		});
 	},
 	onDlgGroupAddOk: function( data, group ) {
 		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'GroupManager::addGroup',
-				[ group.group_name ]
-			),
+			url: mw.util.wikiScript( 'api' ),
 			method: 'post',
 			scope: this,
+			params: {
+				action: 'bs-groupmanager',
+				task: 'addGroup',
+				format: 'json',
+				token: mw.user.tokens.get( 'editToken', '' ),
+				taskData: Ext.encode({
+					'group': group.group_name
+				})
+			},
 			success: function( response, opts ) {
 				var responseObj = Ext.decode( response.responseText );
 				if ( responseObj.success === true ) {
@@ -169,15 +167,19 @@ Ext.define( 'BS.GroupManager.Panel', {
 	},
 	onDlgUserEditOk: function( data, group ) {
 		Ext.Ajax.request( {
-			url: bs.util.getAjaxDispatcherUrl(
-				'GroupManager::editGroup',
-				[
-					group.group_name,
-					group.group_name_old
-				]
-			),
+			url: mw.util.wikiScript( 'api' ),
 			method: 'post',
 			scope: this,
+			params: {
+				action: 'bs-groupmanager',
+				task: 'editGroup',
+				format: 'json',
+				token: mw.user.tokens.get( 'editToken', '' ),
+				taskData: Ext.encode({
+					'group': group.group_name_old,
+					'newGroup': group.group_name
+				})
+			},
 			success: function( response, opts ) {
 				var responseObj = Ext.decode( response.responseText );
 				if ( responseObj.success === true ) {

@@ -6,7 +6,7 @@
  * Description: Dialogbox to enter a link.
  * Authors: Markus Glaser, Sebastian Ulbricht
  *
- * Copyright (C) 2010 Hallo Welt! � Medienwerkstatt GmbH, All rights reserved.
+ * Copyright (C) 2010 Hallo Welt! GmbH, All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,13 +24,13 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * For further information visit http://www.blue-spice.org
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Tobias Weichart <weichart@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Tobias Weichart <weichart@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage InsertFile
- * @copyright  Copyright (C) 2012 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -109,44 +109,31 @@ class InsertLink extends BsExtensionMW {
 		return true;
 	}
 
-	/**
-	 * Get the pages of a given namespace and put it to ajax output.
-	 * @param type $output The ajax output which have to be valid JSON.
-	 */
-	public static function getPage() {
-		global $wgUser, $wgRequest;
-
-		$aResult = array(
-			'items' => array(),
-			'success' => false
-		);
-		if( !$wgUser->isAllowed('edit') ) {
-			return json_encode($aResult);
-		}
-
-		$iNs = $wgRequest->getInt( 'ns', 0 );
-		$dbr = wfGetDB(DB_SLAVE);
-
-		$rRes = $dbr->select(
-			'page',
-			array( 'page_id' ),
-			array( 'page_namespace' => $iNs ),
-			__METHOD__,
-			array( 'ORDER BY' => 'page_title' )
-		);
-
-		while( $o = $dbr->fetchObject($rRes) ) {
-			$oTitle = Title::newFromID($o->page_id);
-			if( !$oTitle || !$oTitle->userCan('read')) continue;
-
-			$aResult['items'][] = array(
-				'name' => $oTitle->getText(),
-				'label' => $o->page_id,
-				'ns' => $iNs,
-			);
-		}
-		$aResult['success'] = true;
-
-		return FormatJson::encode( $aResult );
+	public static function onLoadExtensionSchemaUpdates(DatabaseUpdater $updater) {
+		//Create bsFileLnkChooser.jnlp File with proper path
+		//Important: $wgServer should be public url, not localhost
+		global $wgServer, $wgScriptPath, $IP;
+		$bsFileLinkChooser = '
+		<?xml version="1.0" encoding="utf-8"?>
+		<jnlp codebase="" href="" >
+		  <information>
+			<title>BSFileLinkChooser</title>
+			<vendor>HalloWelt GmbH</vendor>
+			<homepage href="http://hallowelt.com"/>
+			<description>Simple FileChooser Application</description>
+			<description kind="short">BSFileLinkChooser</description>
+			<offline-allowed/>
+		  </information>
+		  <security>
+			  <all-permissions/>
+		  </security>
+		  <resources>
+			<j2se version="1.6+"/>
+			<jar href="'.$wgServer.$wgScriptPath.'/extensions/BlueSpiceExtensions/InsertLink/vendor/bsFileLinkChooser.jar" main="true"/>
+		  </resources>
+		  <application-desc main-class="bsFileLinkChooser.JWSFileChooser"/>
+		</jnlp>';
+		file_put_contents( __DIR__ . "/../../BlueSpiceFoundation/data/bsFileLinkChooser.jnlp", $bsFileLinkChooser);
+		$updater->output( "InsertLink jnlp file created.\n" );
 	}
 }

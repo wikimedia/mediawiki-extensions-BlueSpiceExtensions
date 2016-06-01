@@ -6,7 +6,7 @@
  * Description: Counts all kinds of things.
  * Authors: Markus Glaser, Mathias Scheer
  *
- * Copyright (C) 2010 Hallo Welt! – Medienwerkstatt GmbH, All rights reserved.
+ * Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,11 +25,11 @@
  *
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage CountThings
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
 
@@ -54,7 +54,7 @@ class CountThings extends BsExtensionMW {
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL => 'https://help.bluespice.com/index.php/CountThings',
-			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
+			EXTINFO::DEPS => array( 'bluespice' => '2.23.0' )
 		);
 		$this->mExtensionKey = 'MW::CountThings';
 
@@ -63,21 +63,51 @@ class CountThings extends BsExtensionMW {
 
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
 	/**
-	 *
-	 * @param Parser $parser
-	 * @return boolean
+	 * Creates the tag definitions for 'CountThings' extension
+	 * @return array
 	 */
-	public function onParserFirstCallInit( &$parser ) {
-		$parser->setHook( 'bs:countarticles', array( &$this, 'onMagicWordBsCountArticles' ) );
-		$parser->setHook( 'bs:countusers', array( &$this, 'onMagicWordBsCountUsers' ) );
-		$parser->setHook( 'bs:countcharacters', array( &$this, 'onMagicWordBsCountCharacters' ) );
-		return true;
+	public function makeTagExtensionDefinitions() {
+		return array(
+			'bs:countarticles' => array(
+				'descMsg' => 'bs-countthings-tag-countarticles-desc',
+				//TODO: Maybe add other stuff from "onBSInsertMagicAjaxGetData" like "code"
+				'callback' => array( $this, 'onMagicWordBsCountArticles' ),
+				'element' => 'span'
+			),
+			'bs:countusers' => array(
+				'descMsg' => 'bs-countthings-tag-countusers-desc',
+				'callback' => array( $this, 'onMagicWordBsCountUsers' ),
+				'element' => 'span'
+			),
+			'bs:countcharacters' => array(
+				//Param definition for inner tag content
+				'input' => array(
+					'type' => 'titlelist',
+					'required' => true,
+					//specific to type "TitleList"
+					'hastoexist' => true
+				),
+				//Param definitions for tag attributes
+				'params' => array(
+					'modes' => array(
+						'type' => 'string',
+						'islist' => true,
+						'values'  => array( 'chars', 'words', 'pages', 'all' ),
+						'default' => array( 'all' ),
+						'tolower' => true,
+						'errormsg' => 'bs-countthings-error-invalid-mode'
+					)
+				),
+				'disableParserCache' => true,
+				'descMsg' =>'bs-countthings-tag-countcharacters-desc',
+				'callback' => array( $this, 'onMagicWordBsCountCharacters' )
+			),
+		);
 	}
 
 	/**
@@ -95,6 +125,7 @@ class CountThings extends BsExtensionMW {
 			'name' => 'countarticles',
 			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped(),
 			'code' => '<bs:countarticles />',
+			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
 		);
 
 		$oResponse->result[] = array(
@@ -103,6 +134,7 @@ class CountThings extends BsExtensionMW {
 			'name' => 'countusers',
 			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped(),
 			'code' => '<bs:countusers />',
+			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
 		);
 
 		$oResponse->result[] = array(
@@ -110,12 +142,30 @@ class CountThings extends BsExtensionMW {
 			'type' => 'tag',
 			'name' => 'countcharacters',
 			'desc' => wfMessage( 'bs-countthings-tag-countcharacters-desc' )->escaped(),
-			'code' => '<bs:countcharacters>Article One,Article Two,Article Three</bs:countcharacters>',
+			'code' => '<bs:countcharacters>ARTICLENAME</bs:countcharacters>',
+			'examples' => array(
+				array(
+					'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-1' )->escaped(),
+					'code' => '<bs:countcharacters mode="words">ARTICLENAME</bs:countcharacters>'
+				),
+				array(
+					'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-2' )->escaped(),
+					'code' => '<bs:countcharacters mode="chars">ARTICLENAME</bs:countcharacters>'
+				),
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
 		);
 
 		return true;
 	}
 
+	/**
+	 * Handles <bs:countarticles /> tag
+	 * @param string $input
+	 * @param array $args
+	 * @param Parser $parser
+	 * @return string
+	 */
 	public function onMagicWordBsCountArticles( $input, $args, $parser ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'page', 'page_id' );
@@ -126,11 +176,11 @@ class CountThings extends BsExtensionMW {
 	}
 
 	/**
-	 *
-	 * @param type $input
-	 * @param type $args
+	 * Handles <bs:countusers /> tag
+	 * @param string $input
+	 * @param array $args
 	 * @param Parser $parser
-	 * @return type
+	 * @return string
 	 */
 	public function onMagicWordBsCountUsers( $input, $args, $parser ) {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -138,54 +188,20 @@ class CountThings extends BsExtensionMW {
 		$out = $dbr->numRows( $res );
 		$dbr->freeResult( $res );
 
-		//This is a bugfix for the case that somebody writes a wrong empty tag.
-		// <bs:countusers> instead of <bs:countusers />
-		//TODO: Do we really need to catch errors like this?
-		if( !empty($input) ){
-			$out .= $parser->recursiveTagParse( $input );
-		}
-
 		return $out;
 	}
 	/**
-	 *
-	 * @param type $input
-	 * @param type $args
+	 * Handles <bs:countcharacters /> tag
+	 * @param Title[] $input
+	 * @param array $args
 	 * @param Parser $parser
-	 * @return type
+	 * @return string
 	 */
 	public function onMagicWordBsCountCharacters( $input, $args, $parser ) {
-		$parser->disableCache();
-		if ( empty( $input ) ) {
-			$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-no-input' )->plain() );
-			return $oErrorView->execute();
-		}
-
-		$sMode = isset($args['mode']) ? str_replace( ' ', '', $args['mode'] ) : 'all';
-		$aModes = explode( ',', $sMode );
-		$aAvailableModes = array( 'chars', 'words', 'pages', 'all' );
-
 		$sOut = '';
-		$bValidModeProvided = false;
-		foreach( $aModes as $sMode ) {
-			if( !in_array( $sMode, $aAvailableModes ) ){
-				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-invalid-mode', $sMode )->plain() );
-				$sOut .= $oErrorView->execute();
-				continue;
-			}
-			$bValidModeProvided = true;
-		}
-		if( $bValidModeProvided == false ) $aModes = array( 'all' );
+		$aModes = $args['modes'];
 
-		$aTitleTexts = explode( ',', $input );
-		foreach( $aTitleTexts as $sTitleText ) {
-			$oTitle = Title::newFromText( trim( $sTitleText ) );
-			if( $oTitle == null || $oTitle->exists() == false ) {
-				$oErrorView = new ViewTagError( wfMessage( 'bs-countthings-error-not-exist', $sTitleText )->plain() );
-				$sOut .= $oErrorView->execute();
-				continue;
-			}
-
+		foreach( $input as $oTitle ) {
 			$sContent = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle ); //Old: last revision
 
 			$oCountView = new ViewCountCharacters();

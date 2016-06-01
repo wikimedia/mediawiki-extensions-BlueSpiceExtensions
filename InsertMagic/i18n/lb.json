@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Macofe"
 		]
 	},
 	"bs-insertmagic": "Magescht Wuert drasetzen",
@@ -36,5 +37,7 @@
 	"bs-insertmagic-dlg-title": "Magescht Wuert oder Tag drasetzen",
 	"bs-insertmagic-type-variables": "Variabelen",
 	"bs-insertmagic-label-second": "2. Code änneren",
-	"bs-insertmagic-label-desc": "Beschreiwung"
+	"bs-insertmagic-label-desc": "Beschreiwung",
+	"bs-insertmagic-label-examples": "Beispiller",
+	"bs-insertmagic-label-see-also": "Kuckt och"
 }

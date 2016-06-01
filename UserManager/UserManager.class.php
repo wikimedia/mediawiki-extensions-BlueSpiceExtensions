@@ -22,11 +22,11 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UserManager
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -65,455 +65,166 @@ class UserManager extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
-	public static function getUsers() {
-		//if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
-
-		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$iLimit = $oStoreParams->getLimit();
-		$iStart = $oStoreParams->getStart();
-		$sSort = $oStoreParams->getSort( 'user_name' );
-		$sDirection = $oStoreParams->getDirection();
-		$aFilters = $oStoreParams->getFilter();
-
-		$aSortingParams = FormatJson::decode( $sSort );
-		if ( is_array( $aSortingParams ) ) {
-			$sSort = $aSortingParams[0]->property;
-			$sDirection = $aSortingParams[0]->direction;
-		}
-
-		$dbr = wfGetDB( DB_SLAVE );
-
-		global $wgDBtype, $wgDBprefix;
-		//PW TODO: filter for oracle
-		if( $wgDBtype == 'oracle' ) {
-			$res = $dbr->query(
-				"SELECT * FROM
-					(
-						SELECT user_id,user_name,user_real_name,user_email,row_number() OVER (ORDER BY ".$sSort." ".$sDirection.") rnk
-						FROM \"".strtoupper($wgDBprefix)."MWUSER\"
-					)
-				WHERE rnk BETWEEN ".($iStart+1)." AND ".($iLimit + $iStart)
-			);
-		} else {
-			$aTables = array(
-				'user'
-			);
-
-			$aOptions = array(
-				'ORDER BY' => $sSort.' '.$sDirection,
-				'LIMIT'    => $iLimit,
-				'OFFSET'   => $iStart
-			);
-
-			$aJoins = array();
-
-			$aConditions = array();
-			if( !empty($aFilters) ) {
-				foreach($aFilters as $oFilter) {
-					switch($oFilter->field) {
-						case 'user_name':
-							$aConditions[] = "user_name LIKE '%".trim($oFilter->value)."%'";
-							break;
-						case 'user_real_name':
-							$aConditions[] = "user_real_name LIKE '%".trim($oFilter->value)."%'";
-							break;
-						case 'user_email':
-							$aConditions[] = "user_email LIKE '%".trim($oFilter->value)."%'";
-							break;
-						case 'groups':
-							$aTables[] = 'user_groups';
-							$aConditions[] = "ug_group IN ('".implode("','", $oFilter->value)."')";
-							$aJoins['user_groups'] = array('LEFT JOIN', 'ug_user=user_id');
-					}
-				}
-			}
-
-			$res = $dbr->select(
-				$aTables,
-				'*',
-				$aConditions,
-				__METHOD__,
-				$aOptions,
-				$aJoins
-			);
-		}
-
-		$data = array();
-		$data['users'] = array();
-
-		while( $row = $res->fetchObject() ) {
-			$oUserTitle = Title::newFromText($row->user_name, NS_USER);
-			$tmp = array();
-			$tmp['user_id']        = $row->user_id;
-			$tmp['user_name']      = $row->user_name;
-			$tmp['user_page_link'] = Linker::link( $oUserTitle, $row->user_name.' ' ); //The whitespace is to aviod automatic rewrite to user_real_name by BSF
-			$tmp['user_real_name'] = $row->user_real_name;
-			$tmp['user_email']     = $row->user_email == null ? '' : $row->user_email; //PW: Oracle returns null when field is emtpy
-			$tmp['groups']         = array();
-
-			$res1 = $dbr->select( 'user_groups', 'ug_group', 'ug_user='.$row->user_id );
-			while( $row1 = $res1->fetchObject() ) {
-				//$tmp['groups'][] = ( !wfMessage( 'group-' . $row1->ug_group )->inContentLanguage()->isBlank() ) ? wfMessage( 'group-' . $row1->ug_group )->plain() : $row1->ug_group ;
-				if ( !wfMessage( 'group-' . $row1->ug_group )->inContentLanguage()->isBlank() ) {
-					$tmp['groups'][] = array( 'group' => $row1->ug_group, 'displayname' => wfMessage( 'group-' . $row1->ug_group )->plain() . " (" . $row1->ug_group . ")" );
-				} else {
-					$tmp['groups'][] = array( 'group' => $row1->ug_group, 'displayname' => $row1->ug_group );
-				}
-			}
-			if ( is_array( $tmp['groups'] ) ) sort( $tmp['groups'] );
-			$data['users'][] = $tmp;
-		}
-
-		$row = $dbr->selectRow( 'user', 'COUNT( user_id ) AS cnt', array() );
-		$data['totalCount'] = $row->cnt;
-
-		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
-		wfRunHooks( 'BSWikiAdminUserManagerBeforeUserListSend', array( $oUserManager, &$data ) );
-
-		return FormatJson::encode( $data );
-	}
-
 	/**
-	 * Adds an user to the database
-	 * @param String $uUser Json encoded new user
-	 * @return string json encoded response
+	 * Adds an user
+	 * @param string $sUserName
+	 * @param array $aMetaData
+	 * @return Status
 	 */
-	public static function addUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
-
-		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
-
-		if ( wfReadOnly() ) {
-			global $wgReadOnly;
-			return FormatJson::encode( array(
-				'success' => false,
-				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
-				) );
-		}
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
-
+	public static function addUser( $sUserName, $aMetaData = array() ) {
 		//This is to overcome username case issues with custom AuthPlugin (i.e. LDAPAuth)
 		//LDAPAuth woud otherwise turn the username to first-char-upper-rest-lower-case
 		//At the end of this method we switch $_SESSION['wsDomain'] back again
 		$tmpDomain = isset( $_SESSION['wsDomain'] ) ? $_SESSION['wsDomain'] : '';
 		$_SESSION['wsDomain'] = 'local';
 
-		$aResponse = array(
-			'success'  => false,
-			'errors'   => array(),
-			'message' => array()
-		);
-
-		$sUsername = ucfirst( $sUsername );
-		if ( User::isCreatableName( $sUsername ) === false ) {
-			$aResponse['errors'][] = array(
-				'id' => 'username',
-				'message' => wfMessage( 'bs-usermanager-invalid-uname' )->plain()
-			);
+		$sUserName = ucfirst( $sUserName );
+		$oUser = User::newFromName( $sUserName, true );
+		if ( !$oUser ) {
+			return Status::newFatal( 'bs-usermanager-invalid-uname' );
+		}
+		if( $oUser->getId() !== 0 ) {
+			return Status::newFatal( 'bs-usermanager-user-exists' );
 		}
 
-		if ( $sEmail != '' && Sanitizer::validateEmail( $sEmail ) === false ) {
-			$aResponse['errors'][] = array(
-				'id' => 'email',
-				'message' => wfMessage( 'bs-usermanager-invalid-email-gen' )->plain()
-			);
+		$oStatus = self::editUser( $oUser, $aMetaData, true );
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
 		}
 
-		if ( $sPassword == '' ) {
-			$aResponse['errors'][] = array(
-				'id' => 'pass',
-				'message' => wfMessage( 'bs-usermanager-enter-pwd' )->plain()
-			);
-		}
+		$_SESSION['wsDomain'] = $tmpDomain;
 
-		if ( strpos( $sRealname, '\\' ) ) {
-			$aResponse['errors'][] = array(
-				'id' => 'realname',
-				'message' => wfMessage( 'bs-usermanager-invalid-realname' )->plain()
-			);
-		}
-
-		if ( $sPassword != $sRePassword ) {
-			$aResponse['errors'][] = array(
-				'id' => 'repass',
-				'message' => wfMessage( 'badretype' )->plain() // MW message
-			);
-		}
-
-		if ( strtolower( $sUsername ) == strtolower( $sPassword ) ) {
-			$aResponse['errors'][] = array(
-				'id' => 'pass',
-				'message' => wfMessage( 'password-name-match' )->plain() // MW message
-			);
-		}
-
-		$oNewUser = User::newFromName( $sUsername );
-		if ( $oNewUser == null ) { //Should not be neccessary as we check for username validity above
-			$aResponse['errors'][] = array(
-				'id' => 'username',
-				'message' => wfMessage( 'bs-usermanager-invalid-uname' )->plain()
-			);
-		}
-
-		if ( $oNewUser instanceof User ) {
-			if( $oNewUser->getId() != 0 ) {
-				$aResponse['errors'][] = array(
-					'id' => 'username',
-					'message' => wfMessage( 'bs-usermanager-user-exists' )->plain()
-				);
-			}
-
-			if ( $oNewUser->isValidPassword( $sPassword ) == false ) {
-				//TODO: $oNewUser->getPasswordValidity() returns a message key in case of error. Maybe we sould return this message.
-				$aResponse['errors'][] = array(
-					'id' => 'pass',
-					'message' => wfMessage( 'bs-usermanager-invalid-pwd' )->plain()
-				);
-			}
-		}
-
-		if ( !empty( $aResponse['errors'] ) ) { //In case that any error occurred
-			return FormatJson::encode( $aResponse );
-		}
-
-		$oNewUser->addToDatabase();
-		$oNewUser->setPassword( $sPassword );
-		$oNewUser->setEmail( $sEmail );
-		$oNewUser->setRealName( $sRealname );
-		$oNewUser->setToken();
-
-		$oNewUser->saveSettings();
-
-		$dbw = wfGetDB( DB_MASTER );
-		$resDelGroups = $dbw->delete( 'user_groups',
+		$oUser = $oStatus->getValue();
+		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
+		Hooks::run(
+			'BSUserManagerAfterAddUser',
 			array(
-				'ug_user' => $oNewUser->getId()
+				$oUserManager,
+				$oUser,
+				$aMetaData,
+				&$oStatus
 			)
 		);
-
-		$resInsGroups = true;
-		if( is_array( $aGroups ) ) {
-			foreach ( $aGroups as $sGroup ) {
-				if ( in_array( $sGroup, self::$excludegroups ) ) continue;
-				$resInsGroups = $dbw->insert(
-						'user_groups',
-						array(
-							'ug_user' => $oNewUser->getId(),
-							'ug_group' => addslashes( $sGroup )
-						)
-				);
-			}
-		}
-
-		if ( $resDelGroups === false || $resInsGroups === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
-		}
 
 		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 		$ssUpdate->doUpdate();
 
-		$aResponse['success'] = true;
-		$aResponse['message'][] = wfMessage( 'bs-usermanager-user-added' )->plain();
-
-		$_SESSION['wsDomain'] = $tmpDomain;
-
-		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
-		wfRunHooks(
-			'BSUserManagerAfterAddUser',
-			array(
-				$oUserManager,
-				$oNewUser,
-				array(
-					'username' => $sUsername,
-					'email'    => $sEmail,
-					'password' => $sPassword,
-					'realname' => $sRealname
-				)
-			)
-		);
-
-		return FormatJson::encode( $aResponse );
+		return $oStatus;
 	}
 
 	/**
-	 * Adds an user to the database
-	 * @param String $sUsername user name
-	 * @param String $sPassword password
-	 * @param String $sRePassword password confirmation
-	 * @param String $sEmail user's e-mail address
-	 * @param String $sRealname user's real name
-	 * @param Array $aGroups user name
-	 * @return string json encoded response
+	 * Edits or adds an user
+	 * @param User $oUser
+	 * @param array $aMetaData
+	 * @param boolean $bCreateIfNotExists
+	 * @return Status
 	 */
-	public static function editUser( $sUsername, $sPassword, $sRePassword, $sEmail, $sRealname, $aGroups = array() ) {
-		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+	public static function editUser( User $oUser, $aMetaData = array(), $bCreateIfNotExists = false ) {
+		$oStatus = Status::newGood();
+		$bNew = false;
 
-		if ( wfReadOnly() ) {
-			global $wgReadOnly;
-			return FormatJson::encode( array(
-				'success' => false,
-				'message' => array( wfMessage( 'bs-readonly', $wgReadOnly )->plain() )
-				) );
+		if ( $oUser->getId() === 0  ) {
+			if( !$bCreateIfNotExists ) {
+				$oStatus->merge(
+					Status::newFatal( 'bs-usermanager-idnotexist' )
+				);
+				return $oStatus;
+			}
+			$bNew = true;
 		}
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) return true;
+		$sPass = $aMetaData['password'];
+		if ( !empty( $aMetaData['password'] ) || $bNew ) {
+			if( !$oUser->isValidPassword( $sPass ) ) {
+				$oNewStatus = Status::newFatal( 'bs-usermanager-invalid-pwd' );
+				$oStatus->merge( $oNewStatus );
+			}
+			if ( strtolower( $oUser->getName() ) == strtolower( $sPass ) ) {
+				$oNewStatus = Status::newFatal( 'password-name-match' );
+				$oStatus->merge( $oNewStatus );
+			}
+			$sRePass = $aMetaData['repassword'];
+			if ( !isset($sRePass) || $sPass !== $sRePass ) {
+				$oNewStatus = Status::newFatal( 'badretype' );
+				$oStatus->merge( $oNewStatus );
+			}
+		}
 
-		$aAnswer = array(
-			'success' => true,
-			'errors' => array(),
-			'message' => array()
+		if( !empty($aMetaData['realname']) ) {
+			if ( strpos( $aMetaData['realname'], '\\' ) ) {
+				$oNewStatus = Status::newFatal(
+					'bs-usermanager-invalid-realname'
+				);
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+		if( !empty($aMetaData['email']) ) {
+			if ( Sanitizer::validateEmail( $aMetaData['email'] ) === false ) {
+				$oNewStatus = Status::newFatal(
+					'bs-usermanager-invalid-email-gen'
+				);
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
+
+		if( $bNew ) {
+			$oUser->addToDatabase();
+			$oUser->setToken();
+		}
+
+		if( !empty($sPass) ) {
+			$oUser->setPassword( $sPass );
+		}
+		if( !empty($aMetaData['email']) ) {
+			$oUser->setEmail( $aMetaData['email'] );
+		} else {
+			$oUser->setEmail('');
+		}
+		if( !empty($aMetaData['realname']) ) {
+			$oUser->setRealName( $aMetaData['realname'] );
+		} else {
+			$oUser->setRealName('');
+		}
+
+		$oUser->saveSettings();
+
+		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
+		Hooks::run(
+			'BSUserManagerAfterEditUser',
+			array(
+				$oUserManager,
+				$oUser,
+				$aMetaData,
+				&$oStatus
+			)
 		);
 
-		$oUser = User::newFromName( $sUsername );
-
-		if ( $oUser->getId() === 0 ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-idnotexist' )->plain(); // id_noexist = 'This user ID does not exist'
-		}
-		if ( !empty( $sPassword ) && !$oUser->isValidPassword( $sPassword ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array(
-				'id' => 'pass',
-				'message' => wfMessage( 'bs-usermanager-invalid-pwd' )->plain()
-			);
-		}
-		if ( $sPassword !== $sRePassword ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array(
-				'id' => 'newpass',
-				'message' => wfMessage( 'badretype' )->plain() // MW message
-			);
-		}
-		if ( strpos( $sRealname, '\\' ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array(
-				'id' => 'realname',
-				'message' => wfMessage( 'bs-usermanager-invalid-realname' )->plain()
-			);
-		}
-		if ( $sEmail != '' && Sanitizer::validateEmail( $sEmail ) === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array(
-				'id' => 'email',
-				'message' => wfMessage( 'bs-usermanager-invalid-email-gen' )->plain()
-			);
-		}
-
-		global $wgUser;
-		if (
-			$wgUser->getId() == $oUser->getId() &&
-			in_array( 'sysop', $wgUser->getEffectiveGroups() ) &&
-			!in_array( 'sysop', $aGroups )
-		) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array(
-				'id' => 'groups',
-				'message' => wfMessage( 'bs-usermanager-no-self-desysop' )->plain()
-			);
-		}
-
-		$dbw = wfGetDB( DB_MASTER );
-		if ( $aAnswer['success'] ) {
-			if ( !empty( $sPassword ) ) {
-				$res = $dbw->update(
-						'user',
-						array( 'user_password' => User::crypt( $sPassword ) ),
-						array( 'user_id' => $oUser->getId() )
-				);
-			} else {
-				$res = true;
-			}
-
-			$resDelGroups = $dbw->delete(
-				'user_groups',
-				array(
-					'ug_user' => $oUser->getId()
-				)
-			);
-
-			$resInsGroups = true;
-			if ( is_array( $aGroups ) ) {
-				foreach ( $aGroups as $sGroup ) {
-					if ( in_array( $sGroup, self::$excludegroups ) ) continue;
-					$resInsGroups = $dbw->insert(
-						'user_groups',
-						array(
-							'ug_user' => $oUser->getId(),
-							'ug_group' => addslashes( $sGroup )
-						)
-					);
-				}
-			}
-
-			$resERealUser = $dbw->update(
-					'user',
-					array(
-						'user_real_name' => $sRealname,
-						'user_email'     => $sEmail
-					),
-					array( 'user_id' => $oUser->getId() )
-			);
-
-			$oUser->invalidateCache();
-		}
-
-		if ( $res === false || $resDelGroups === false
-			|| !$resInsGroups || $resERealUser === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
-		}
-
-		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save-successful' )->plain();
-		}
-
-		return FormatJson::encode( $aAnswer );
+		return Status::newGood( $oUser );
 	}
 
 	/**
 	 * Deletes an user form the database
-	 * @global User $wgUser
-	 * @param Integer $iUserId user id
-	 * @return string json encoded response
+	 * TODO: Merge into DeleteUser
+	 * @param User $oUser
+	 * @return Status
 	 */
-	public static function deleteUser( $iUserId ) {
-		$aAnswer = array(
-			'success' => true,
-			'errors' => array(),
-			'message' => array()
-		);
-
-		if ( wfReadOnly() ) {
-			global $wgReadOnly;
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] =  wfMessage( 'bs-readonly', $wgReadOnly )->plain();
-		}
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] =  wfMessage( 'bs-wikiadmin-notallowed' )->plain();
-		}
-
-		$oUser = User::newFromId( $iUserId );
-
+	public static function deleteUser( User $oUser ) {
 		if ( $oUser->getId() == 0 ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-idnotexist' )->plain();
+			return Status::newFatal( 'bs-usermanager-idnotexist' );
 		}
 
 		if ( $oUser->getId() == 1 ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-admin-nodelete' )->plain();
+			return Status::newFatal( 'bs-usermanager-admin-nodelete' );
 		}
 
-		global $wgUser;
-		if ( $oUser->getId() == $wgUser->getId() ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-self-nodelete' )->plain();
+		$oLoggedInUser = RequestContext::getMain()->getUser();
+		if ( $oUser->getId() == $oLoggedInUser->getId() ) {
+			return Status::newFatal( 'bs-usermanager-self-nodelete' );
 		}
 
-		if( !$aAnswer['success'] ) {
-			return FormatJson::encode( $aAnswer );
-		}
-
+		$oStatus = Status::newGood( $oUser );
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->delete( 'user',
 			array( 'user_id' => $oUser->getId() )
@@ -536,89 +247,65 @@ class UserManager extends BsExtensionMW {
 		}
 
 		if ( ( $res === false ) || ( $res1 === false ) || ( $res2 === false ) || ( $res3 === false ) ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
-			return FormatJson::encode( $aAnswer );
+			$oStatus->merge( Status::newFatal( 'bs-usermanager-db-error' ) );
 		}
 
-		$aAnswer['message'][] = wfMessage( 'bs-usermanager-user-deleted' )->plain();
+		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
+		Hooks::run( 'BSUserManagerAfterDeleteUser', array(
+			$oUserManager,
+			$oUser,
+			&$oStatus
+		));
 
-		return FormatJson::encode( $aAnswer );
+		return $oStatus;
 	}
 
-	public static function setUserGroups( $aUserIds, $aGroups ) {
-		$res = $resDelGroups = $resInsGroups = $resERealUser = false;
+	/**
+	 * Removes / adds groups to a user
+	 * @param User $oUser
+	 * @param type $aGroups
+	 * @return type
+	 */
+	public static function setGroups( User $oUser, $aGroups = array() ) {
+		$oLoggedInUser = RequestContext::getMain()->getUser();
 
-		$aAnswer = array(
-			'success' => true,
-			'errors' => array(),
-			'message' => array()
-		);
-
-		if ( wfReadOnly() ) {
-			global $wgReadOnly;
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] =  wfMessage( 'bs-readonly', $wgReadOnly )->plain();
+		$bCheckDeSysop = $oLoggedInUser->getId() == $oUser->getId()
+			&& in_array( 'sysop', $oLoggedInUser->getEffectiveGroups() )
+			&& !in_array( 'sysop', $aGroups )
+		;
+		if ( $bCheckDeSysop ) {
+			return Status::newFatal( 'bs-usermanager-no-self-desysop' );
 		}
 
-		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] =  wfMessage( 'bs-wikiadmin-notallowed' )->plain();
-		}
+		$aCurrentGroups = $oUser->getEffectiveGroups();
+		$aSetGroups = array_diff( $aGroups, $aCurrentGroups );
+		$aRemoveGroups = array_diff( $aCurrentGroups, $aGroups );
 
-		global $wgUser;
-		if (
-			in_array( $wgUser->getId(), $aUserIds ) &&
-			in_array( 'sysop', $wgUser->getEffectiveGroups() ) &&
-			!in_array( 'sysop', $aGroups )
-		) {
-			$aAnswer['success'] = false;
-			$aAnswer['errors'][] = array(
-				'id' => 'groups',
-				'message' => wfMessage( 'bs-usermanager-no-self-desysop' )->plain()
-			);
-		}
-
-		if ( $aAnswer['success'] ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$resDelGroups = $dbw->delete( 'user_groups',
-				array(
-					'ug_user' => $aUserIds
-				)
-			);
-
-			$resInsGroups = true;
-			if( is_array( $aGroups ) ) {
-				foreach ( $aGroups as $sGroup ) {
-					if ( in_array( $sGroup, self::$excludegroups ) ) {
-						continue;
-					}
-					foreach( $aUserIds as $iUserId ) {
-						$resInsGroups = $dbw->insert(
-								'user_groups',
-								array(
-									'ug_user' => (int)$iUserId,
-									'ug_group' => addslashes( $sGroup )
-								)
-						);
-						if( $resInsGroups === false ) {
-							break;
-						}
-					}
-				}
+		foreach ( $aSetGroups as $sGroup ) {
+			if ( in_array( $sGroup, self::$excludegroups ) ) {
+				continue;
 			}
+			$oUser->addGroup( $sGroup );
+		}
+		foreach ( $aRemoveGroups as $sGroup ) {
+			if ( in_array( $sGroup, self::$excludegroups ) ) {
+				continue;
+			}
+			$oUser->removeGroup( $sGroup );
 		}
 
-		if ( $resDelGroups === false || $resInsGroups === false ) {
-			$aAnswer['success'] = false;
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-db-error' )->plain();
-		}
+		$oStatus = Status::newGood( $oUser );
+		Hooks::run( 'BSUserManagerAfterSetGroups', array(
+			$oUser,
+			$aGroups,
+			$aSetGroups,
+			$aRemoveGroups,
+			self::$excludegroups,
+			&$oStatus
+		));
 
-		if ( $aAnswer['success'] ) {
-			$aAnswer['message'][] = wfMessage( 'bs-usermanager-save-successful' )->plain();
-		}
-
-		return FormatJson::encode( $aAnswer );
+		$oUser->invalidateCache();
+		return $oStatus;
 	}
 
 	public function getForm( $firsttime = false ) {

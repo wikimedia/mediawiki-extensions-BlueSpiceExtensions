@@ -8,12 +8,13 @@
 	},
 	"bs-groupmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of group manager extension",
 	"bs-groupmanager-grpexists": "Error message that the group you want to create already exists.",
+	"bs-groupmanager-grpempty": "Error message that the group name param can not be empty.",
 	"bs-groupmanager-grpadded": "Success message that the group has been added.",
 	"bs-groupmanager-grpedited": "Success message that the group has been edited.",
 	"bs-groupmanager-grpremoved": "Success message that the group has been removed.",
 	"bs-groupmanager-label": "Used in sidebar, anchor text for group manager\n{{Identical|Group manager}}",
 	"bs-groupmanager-invalid-name": "Error message that the group name contains an invalid character or invalid characters\n*$1 is the number of invalid characetares\n*$2 are the invalid characters",
-	"bs-groupmanager-invalid-name-length": "Error message that the group name cannot be longer than 255 characters.",
+	"bs-groupmanager-invalid-name-length": "Error message that the group name cannot be longer than 16 characters.",
 	"bs-groupmanager-invalid-name-numeric": "Error message that the group name needs to have at least one character.",
 	"bs-groupmanager-headergroup": "Column headline for group\n{{Identical|Group}}",
 	"bs-groupmanager-tipremove": "Window title for remove group or groups\n*$1 is the number of groups which should be removed - use for PLURAL distinction",
@@ -31,5 +32,6 @@
 	"log-show-hide-bs-group-manager": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
 	"logentry-bs-group-manager-create": "Log message about the creation of a new group.\nParameters:\n* $4 - name of the group",
 	"logentry-bs-group-manager-modify": "Log message about changes of the name of a group.\nParameters:\n* $4 - old name of the group\n* $5 - new name of the group",
-	"logentry-bs-group-manager-remove": "Log message about the removal of a group.\nParameters:\n* $4 - name of the group"
+	"logentry-bs-group-manager-remove": "Log message about the removal of a group.\nParameters:\n* $4 - name of the group",
+	"apihelp-bs-groupmanager-description": "Describes the API endpoint that provides tasks for the GroupManager extension"
 }

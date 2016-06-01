@@ -21,11 +21,11 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage UniversalExport
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -96,7 +96,7 @@ class UniversalExport extends BsExtensionMW {
 		global $wgBlueSpiceExtInfo;
 		//Configuration variables
 		$aMetadataDefaults = array(
-			'creator' => 'Hallo Welt! Medienwerkstatt GmbH',
+			'creator' => 'Hallo Welt! GmbH',
 		);
 		$aMetadataOverrides = array(
 			'producer' => 'UniversalExport '.$wgBlueSpiceExtInfo['version'].' (BlueSpice for MediaWiki)'
@@ -289,7 +289,13 @@ class UniversalExport extends BsExtensionMW {
 			'type' => 'tag',
 			'name' => 'uemeta',
 			'desc' => wfMessage( 'bs-universalexport-tag-meta-desc' )->plain(),
-			'code' => '<bs:uemeta someMeta="Some Value" anotherMeta="Another Value" />',
+			'code' => '<bs:uemeta someMeta="Some Value" />',
+			'examples' => array(
+				array(
+					'code' => '<bs:uemeta department="IT" security="high" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/UniversalExport'
 		);
 
 		$oResponse->result[] = array(
@@ -297,7 +303,13 @@ class UniversalExport extends BsExtensionMW {
 			'type' => 'tag',
 			'name' => 'ueparams',
 			'desc' => wfMessage( 'bs-universalexport-tag-params-desc' )->plain(),
-			'code' => '<bs:ueparams someParam="Some Value" anotherMeta="Another Value" />',
+			'code' => '<bs:ueparams someParam="Some Value" />',
+			'examples' => array(
+				array(
+					'code' => '<bs:ueparams template="BlueSpice Landscape" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/UniversalExport'
 		);
 
 		$oResponse->result[] = array(
@@ -306,6 +318,7 @@ class UniversalExport extends BsExtensionMW {
 			'name' => 'uepagebreak',
 			'desc' => wfMessage( 'bs-universalexport-tag-pagebreak-desc' )->plain(),
 			'code' => '<bs:uepagebreak />',
+			'helplink' => 'https://help.bluespice.com/index.php/UniversalExport'
 		);
 
 		$oResponse->result[] = array(
@@ -314,6 +327,12 @@ class UniversalExport extends BsExtensionMW {
 			'name' => 'uenoexport',
 			'desc' => wfMessage( 'bs-universalexport-tag-noexport-desc' )->plain(),
 			'code' => '<bs:uenoexport>Not included in export</bs:uenoexport>',
+			'examples' => array(
+				array(
+					'code' => '<bs:uenoexport>Not included in export</bs:uenoexport>'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/UniversalExport'
 		);
 
 		return true;

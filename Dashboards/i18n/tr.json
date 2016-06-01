@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Sadrettin"
 		]
 	},
+	"bs-specialadmindashboard-label": "Pano",
+	"bs-dashboards-addportlet": "Portlet ekle",
+	"bs-dashboards-portlets": "Portletler",
+	"prefs-dashboards": "Panolar",
+	"bs-dashboards-pref-userdashboardonlogo": "Site logosunda kullanıcı panosuna bağlantı",
+	"admindashboard": "Yönetici panosu",
+	"userdashboard": "Kullanıcı panosu",
 	"bs-dashboard-userportlet-calendar-title": "Takvim",
 	"bs-dashboard-userportlet-calendar-description": "Takvim"
 }

@@ -21,12 +21,12 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Stephan Muggli <muggli@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Dashboards
- * @copyright  Copyright (C) 2013 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -97,20 +97,6 @@ class Dashboards extends BsExtensionMW {
 		$oOutputPage->addModules( 'ext.bluespice.dashboards' );
 
 		return true;
-	}
-
-	public static function getAdminDashboardConfig() {
-		$aPortlets = array();
-		wfRunHooks( 'BSDashboardsAdminDashboardPortalPortlets', array( &$aPortlets ) );
-
-		return json_encode( array( 'portlets' => $aPortlets ) );
-	}
-
-	public static function getUserDashboardConfig() {
-		$aPortlets = array();
-		wfRunHooks( 'BSDashboardsUserDashboardPortalPortlets', array( &$aPortlets ) );
-
-		return json_encode( array( 'portlets' => $aPortlets ) );
 	}
 
 	/**
@@ -218,66 +204,17 @@ class Dashboards extends BsExtensionMW {
 		return $oResponse;
 	}
 
-	/**
-	 * AjaxDispatcher callback for saving an admin portal config
-	 * @return BsCAResponse
-	 */
-	public static function saveAdminDashboardConfig() {
-		$oResponse = BsCAResponse::newFromPermission( 'read' );
-		$aPortalConfig = RequestContext::getMain()->getRequest()->getVal( 'portletConfig', '' );
-
-		$oDbw = wfGetDB( DB_MASTER );
-		$oDbw->delete(
-			'bs_dashboards_configs',
-			array( 'dc_type' => 'admin' )
-		);
-		$oDbw->insert(
-			'bs_dashboards_configs',
-			array(
-				'dc_type' => 'admin',
-				'dc_identifier' => '',
-				'dc_config' => serialize( $aPortalConfig ),
-				'dc_timestamp' => '',
-			),
-			__METHOD__
-		);
-
-		return $oResponse;
-	}
-
-	/**
-	 * AjaxDispatcher callback for saving a tag portal config
-	 * @return BsCAResponse
-	 */
-	public static function saveTagDashboardConfig( $aPortalConfig ) {
-		$aPortalConfig = FormatJson::decode( $aPortalConfig );
-		$oResponse = BsCAResponse::newFromPermission('read');
-		$oResponse->setPayload( $aPortalConfig );
-
-		return $oResponse;
-	}
-
-	/**
-	 * AjaxDispatcher callback for getting a list of available portlets
-	 * @return BsCAResponse
-	 */
-	public static function getPortlets() {
-		$oResponse = BsCAResponse::newFromPermission('read');
-
-		$aPortlets = array();
-
-		wfRunHooks( 'BSDashboardsGetPortlets', array( &$aPortlets ) );
-		//LogPage::validTypes();
-		$oResponse->setPayload( $aPortlets );
-
-		return $oResponse;
-	}
-
 	public function onBSDashboardsUserDashboardPortalConfig( $oCaller, &$aPortalConfig, $bIsDefault ) {
 		$aPortalConfig[0][] = array(
 			'type'  => 'BS.Dashboards.CalendarPortlet',
 			'config' => array(
 				'title' => wfMessage( 'bs-dashboard-userportlet-calendar-title' )->plain()
+			)
+		);
+		$aPortalConfig[0][] = array(
+			'type'  => 'BS.Dashboards.WikiPagePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-dashboard-userportlet-wikipage-title' )->plain()
 			)
 		);
 		return true;
@@ -297,6 +234,14 @@ class Dashboards extends BsExtensionMW {
 			),
 			'title' => wfMessage( 'bs-dashboard-userportlet-calendar-title' )->plain(),
 			'description' => wfMessage( 'bs-dashboard-userportlet-calendar-description' )->plain()
+		);
+		$aPortlets[] = array(
+			'type'  => 'BS.Dashboards.WikiPagePortlet',
+			'config' => array(
+				'title' => wfMessage( 'bs-dashboard-userportlet-wikipage-title' )->plain(),
+			),
+			'title' => wfMessage( 'bs-dashboard-userportlet-wikipage-title' )->plain(),
+			'description' => wfMessage( 'bs-dashboard-userportlet-wikipage-description' )->plain()
 		);
 		return true;
 	}

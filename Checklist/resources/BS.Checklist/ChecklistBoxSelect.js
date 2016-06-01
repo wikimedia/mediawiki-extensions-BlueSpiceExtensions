@@ -1,6 +1,6 @@
 Ext.define( 'BS.Checklist.ChecklistBoxSelect', {
 	extend:'Ext.ux.form.field.BoxSelect',
-	requires: [ 'BS.model.Checklist' ],
+	requires: [ 'BS.store.BSApi' ],
 	displayField: 'text',
 	valueField: 'text',
 	anchor: '95%',
@@ -16,17 +16,9 @@ Ext.define( 'BS.Checklist.ChecklistBoxSelect', {
 	delimiter: ',',
 	deferredSetValueConf: false,
 	initComponent: function() {
-		this.store = Ext.create( 'Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Checklist::getAvailableOptions' ),
-				reader: {
-					type: 'json',
-					root: 'categories',
-					idProperty: 'cat_id'
-				}
-			},
-			model: 'BS.model.Checklist'
+		this.store = new BS.store.BSApi({
+			apiAction: 'bs-checklist-available-options-store',
+			fields: [ 'text' ]
 		});
 		this.store.load();
 

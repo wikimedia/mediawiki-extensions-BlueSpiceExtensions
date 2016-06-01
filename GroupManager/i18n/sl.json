@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-groupmanager-desc": "Skrbniški vmesnik za dodajanje, urejanje in brisanje uporabniških skupin ter njihovih pravic",

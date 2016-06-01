@@ -21,14 +21,14 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Markus Glaser <glaser@hallowelt.biz>
- * @author     Mathias Scheer <Scheer@hallowelt.biz>
- * @author     Robert Vogel <vogel@hallowelt.biz>
- * @author     Patric Wirth <wirth@hallowelt.biz>
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Mathias Scheer <Scheer@hallowelt.com>
+ * @author     Robert Vogel <vogel@hallowelt.com>
+ * @author     Patric Wirth <wirth@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage WantedArticle
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -342,22 +342,18 @@ class WantedArticle extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if ( $type != 'tags' ) return true;
 
-		$aParams = array(
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-count' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-title' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-order' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-sort' )->text(),
-			wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc-param-type' )->text()
-		);
-		$sDesc = wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc' )->plain().
-				'<br /><br />' . implode( '<br />', $aParams );
-
 		$oResponse->result[] = array(
 			'id' => 'bs:wantedarticle',
 			'type' => 'tag',
 			'name' => 'wantedarticle',
-			'desc' => $sDesc,
+			'desc' => wfMessage( 'bs-wantedarticle-tag-wantedarticle-desc' )->plain(),
 			'code' => '<bs:wantedarticle />',
+			'examples' => array(
+				array(
+					'code' => '<bs:wantedarticle count="15" sort="time" title="Wanted articles" />'
+				)
+			),
+			'helplink' => 'https://help.bluespice.com/index.php/WantedArticles'
 		);
 
 		return true;
@@ -445,151 +441,6 @@ class WantedArticle extends BsExtensionMW {
 	}
 
 	/**
-	 * Handles the suggestion ajax request.
-	 * A new title is entered into the list. Depending on configuration, already existing articles are deleted.
-	 * @return bool true on correct processing. JSON answer is in $sOut parameter.
-	 */
-	public static function ajaxAddWantedArticle( $sSuggestedArticleWikiLink ) {
-		if ( BsCore::checkAccessAdmission( 'wantedarticle-suggest' ) === false )
-				return json_encode( array( 'success' => false, 'message' => wfMessage( 'bs-permissionerror' )->plain() ) );
-
-		if ( empty( $sSuggestedArticleWikiLink ) ) {
-			$sErrorMsg = wfMessage( 'bs-wantedarticle-ajax-error-no-parameter' )->plain();
-			return json_encode( array( 'success' => false, 'message' => $sErrorMsg ) ); // TODO RBV (01.07.11 09:07): XHRRequest object.
-		}
-
-		//Check suggestion for invalid characters (clientside validation is not enough)
-		$aFoundChars = array();
-		foreach ( BsCore::getForbiddenCharsInArticleTitle() as $sChar ) {
-			if ( strpos( $sSuggestedArticleWikiLink, $sChar ) ) {
-				$aFoundChars[] = '"'.$sChar.'"';
-			}
-		}
-
-		if ( count( $aFoundChars ) > 0 ) {
-			$sChars = implode( ', ', $aFoundChars );
-			$sErrorMsg = wfMessage( 'bs-wantedarticle-title-invalid-chars', count( $aFoundChars ), $sChars )->plain();
-			return json_encode( array('success' => false, 'message' => $sErrorMsg ) );
-		}
-
-		//Check if suggested page already exists
-		$oSuggestedTitle = Title::newFromText( $sSuggestedArticleWikiLink );
-		$sSuggestedTitle = $oSuggestedTitle->getPrefixedText();
-		if ( $oSuggestedTitle->exists() ) {
-			$sErrorMsg = wfMessage(
-				'bs-wantedarticle-ajax-error-suggested-page-already-exists',
-				$sSuggestedTitle
-			)->plain();
-			return json_encode(  array('success' => false, 'message' => $sErrorMsg ) );
-		}
-
-		$oWantedArticle = BsExtensionManager::getExtension( 'WantedArticle' );
-		$oDataSourceArticle = $oWantedArticle->getDataSourceTemplateArticle();
-		$aWishList = $oWantedArticle->getTitleListFromTitle( $oDataSourceArticle->getTitle() );
-
-		$bDeleteExisting = BsConfig::get( 'MW::WantedArticle::DeleteExisting' );
-
-		foreach ( $aWishList as $key => $aWish ) {
-			if ( $oSuggestedTitle->equals( $aWish['title'] ) ){
-				$sErrorMsg = wfMessage(
-					'bs-wantedarticle-ajax-error-suggested-page-already-on-list',
-					$oSuggestedTitle->getPrefixedText()
-				)->plain();
-				return json_encode( array('success' => true, 'message' => $sErrorMsg ) );
-			}
-			if ( $bDeleteExisting && $aWish['title']->exists() === true ){
-				unset($aWishList[$key]);
-				continue;
-			}
-		}
-		array_unshift(
-				$aWishList,
-				array(
-					'title' => $oSuggestedTitle,
-					'signature' => '--~~~~',
-				)
-		);
-
-		// Write new content
-		$oEditStatus = $oWantedArticle->saveTitleListToTitle(
-			$aWishList,
-			$oDataSourceArticle->getTitle(),
-			wfMessage( 'bs-wantedarticle-edit-comment-suggestion-added', $sSuggestedTitle )->plain()
-		);
-
-		if ( $oEditStatus->isGood() ) {
-			return json_encode(
-				array(
-					'success' => true,
-					'message' => wfMessage( 'bs-wantedarticle-success-suggestion-entered', $sSuggestedTitle )->plain()
-				)
-			);
-		} else {
-			$sErrorMsg = $oWantedArticle->mCore->parseWikiText( $oEditStatus->getWikiText(), $this->getTitle() );
-			return json_encode(  array( 'success' => false, 'message' => $sErrorMsg ) );
-		}
-	}
-
-	/**
-	 * Handles the get wanted articles ajax request.
-	 * @param string $sOut The server response string.
-	 * @return bool true on correct processing. JSON answer is in $sOut parameter.
-	 */
-	public static function ajaxGetWantedArticles( $iCount, $sSort, $sOrder, $sType, $sTitle ) {
-		if ( BsCore::checkAccessAdmission( 'read' ) === false ) return true;
-		$aResult = array(
-			'success' => false,
-			'view' => '',
-			'message' => ''
-		);
-
-		//Validation
-		$oValidationICount = BsValidator::isValid( 'IntegerRange', $iCount, array('fullResponse' => true, 'lowerBoundary' => 1, 'upperBoundary' => 30) );
-		if ( $oValidationICount->getErrorCode() ) {
-			return false;
-		}
-		if ( !in_array( $sSort, array( '', 'time', 'title' ) ) ) {
-			return false;
-		}
-		if ( !in_array( $sOrder, array( '', 'ASC', 'DESC' ) ) ) {
-			return false;
-		}
-
-		$oWantedArticle = BsExtensionManager::getExtension( 'WantedArticle' );
-		//Create list
-		$aWishList = $oWantedArticle->getTitleListFromTitle(
-			$oWantedArticle->getDataSourceTemplateArticle()->getTitle()
-		);
-
-		switch( $sSort ) {
-			case 'title':
-				$aTitleList = $oWantedArticle->sortWishListByTitle( $aWishList );
-				break;
-			case 'time':
-			default:
-				$aTitleList = $oWantedArticle->getDefaultTitleList( $aWishList );
-		}
-		if ( $sOrder == 'ASC' ) {
-			$aTitleList = array_reverse( $aTitleList );
-		}
-
-		$oWishListView = new ViewWantedArticleTag();
-		$oWishListView
-			->setTitle( $sTitle )
-			->setType ( $sType )
-			->setOrder( $sOrder )
-			->setSort ( $sSort )
-			->setCount( $iCount )
-			->setList ( $aTitleList );
-
-		//result
-		$aResult['success'] = true;
-		$aResult['view'] = $oWishListView->execute();
-
-		return json_encode( $aResult );
-	}
-
-	/**
 	 *
 	 * @param Title $oTitle
 	 * @return array An Array of Title objects
@@ -663,7 +514,7 @@ class WantedArticle extends BsExtensionMW {
 	 *
 	 * @return Article
 	 */
-	private function getDataSourceTemplateArticle() {
+	public function getDataSourceTemplateArticle() {
 		$sDataSourceTemplateTitle = BsConfig::get('MW::WantedArticle::DataSourceTemplateTitle');
 		$oDataSourceTemplateTitle = Title::makeTitle( NS_TEMPLATE, $sDataSourceTemplateTitle );
 		return new Article( $oDataSourceTemplateTitle );
@@ -675,7 +526,7 @@ class WantedArticle extends BsExtensionMW {
 	 * @param Title $oT2
 	 * @return bool
 	 */
-	private function compareTitles( $oT1, $oT2 ){
+	public function compareTitles( $oT1, $oT2 ){
 		return strcmp( $oT1->getPrefixedText(), $oT2->getPrefixedText() );
 	}
 
@@ -686,7 +537,7 @@ class WantedArticle extends BsExtensionMW {
 	 * @param array $aTitleList
 	 * @return array - Array of sorted title objects
 	 */
-	private function sortWishListByTitle( $aWishList, $aTitleList = array() ) {
+	public function sortWishListByTitle( $aWishList, $aTitleList = array() ) {
 		foreach($aWishList as $aWish) $aTitleList[] = $aWish['title'];
 		usort( $aTitleList,  array( $this, 'compareTitles' ) );
 		return $aTitleList;
@@ -700,7 +551,7 @@ class WantedArticle extends BsExtensionMW {
 	 * @param array $aTitleList
 	 * @return array - Array of title objects
 	 */
-	private function getDefaultTitleList( $aWishList, $aTitleList = array() ) {
+	public function getDefaultTitleList( $aWishList, $aTitleList = array() ) {
 		foreach( $aWishList as $aWish ) {
 			$aTitleList[] = $aWish['title'];
 		}

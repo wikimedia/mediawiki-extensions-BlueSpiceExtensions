@@ -34,10 +34,12 @@
 	"bs-insertfile-warning": "Attenzione",
 	"bs-insertfile-allowedfiletypesare": "Tipi di file validi sono:",
 	"bs-insertfile-error": "Errore",
+	"bs-insertfile-uploadcomplete": "Il tuo file è stato salvato.",
 	"bs-insertfile-titlefile": "Inserisci file",
 	"bs-insertfile-titleimage": "Inserisci immagine",
 	"bs-insertfile-tipkeepratio": "Mantieni proporzioni",
 	"bs-insertfile-of": "di",
 	"bs-insertfile-license": "Licenza",
-	"bs-insertfile-categories": "Categorie"
+	"bs-insertfile-categories": "Categorie",
+	"apihelp-bs-inserfile-license-store-description": "Elenca le licenze per l'estensione InsertFile."
 }

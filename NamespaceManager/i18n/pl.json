@@ -17,6 +17,10 @@
 	"bs-namespacemanager-label-content": "W statystykach",
 	"bs-namespacemanager-label-searchable": "Wyszukiwanie domyślne",
 	"bs-namespacemanager-label-subpages": "Podstrony",
+	"bs-namespacemanager-label-pagecount": "Strony",
+	"bs-namespacemanager-label-system": "System",
+	"bs-namespacemanager-hide-system-ns": "Ukryj systemowe przestrzenie nazw",
+	"bs-namespacemanager-hide-talk-ns": "Ukryj przestrzenie nazw dyskusji",
 	"bs-namespacemanager-nsadded": "Przestrzeń nazw została dodana.",
 	"bs-namespacemanager-nsremoved": "Przestrzeń nazw została usunięta.",
 	"bs-namespacemanager-tipadd": "Dodawanie przestrzeni nazw",
@@ -30,5 +34,6 @@
 	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|utworzył|utworzyła|utworzył(a)}} przestrzeń nazw $4",
 	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|zmienił|zmieniła|zmienił(a)}} ustawienia dla przestrzeni nazw $4",
 	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|zmienił|zmieniła|zmienił(a)}} nazwę przestrzeni nazw $4 na $5",
-	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|usunął|usunęła}} przestrzeń nazw $4"
+	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|usunął|usunęła}} przestrzeń nazw $4",
+	"bs-namespacemanager-ns-config-saved": "Konfiguracja przestrzeni nazw została zapisana."
 }

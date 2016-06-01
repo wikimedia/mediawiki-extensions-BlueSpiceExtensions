@@ -56,7 +56,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Выбранное Вами целевое название не содержит допустимого файлового расширения.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Выбранное Вами целевое название не содержит разрешенного расширения изображения.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Выбранное Вами целевое название не содержит разрешенного файлового расширения.",
-	"bs-insertfile-uploadcomplete": "Ваш файл успешно сохранен.",
+	"bs-insertfile-uploadcomplete": "Ваш файл сохранён.",
 	"bs-insertfile-titlefile": "Вставить файл",
 	"bs-insertfile-titleimage": "Вставить изображение",
 	"bs-insertfile-tipkeepratio": "Сохранить пропорции",
@@ -68,5 +68,6 @@
 	"bs-insertfile-no-link": "Нет ссылки",
 	"bs-insertfile-error-no-medialink": "Не выбрана ссылка на медиафайл.",
 	"bs-insertfile-error-no-imagelink": "Ссылка на изображение не выбрано.",
-	"bs-insertfile-upload-waitmessage": "Загрузка в процессе…"
+	"bs-insertfile-upload-waitmessage": "Загрузка в процессе…",
+	"apihelp-bs-inserfile-license-store-description": "Перечисляет лицензии для расширения InsertFile."
 }

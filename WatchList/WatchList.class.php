@@ -21,11 +21,11 @@
  * This file is part of BlueSpice for MediaWiki
  * For further information visit http://www.blue-spice.org
  *
- * @author     Robert Vogel <vogel@hallowelt.biz>
+ * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage WatchList
- * @copyright  Copyright (C) 2011 Hallo Welt! - Medienwerkstatt GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -101,6 +101,7 @@ class WatchList extends BsExtensionMW {
 			'name' => 'watchlist',
 			'desc' => wfMessage( 'bs-watchlist-tag-watchlist-desc' )->plain(),
 			'code' => '<bs:watchlist />',
+			'helplink' => 'https://help.bluespice.com/index.php/WatchList'
 		);
 
 		return true;

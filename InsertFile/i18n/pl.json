@@ -46,7 +46,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Wybrana nazwa docelowa ma nieprawidłowe rozszerzenie.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Wybrana nazwa docelowa ma niedozwolone rozszerzenie obrazka.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Wybrana nazwa docelowa ma niedozwolone rozszerzenie.",
-	"bs-insertfile-uploadcomplete": "Plik został zapisany pomyślnie.",
+	"bs-insertfile-uploadcomplete": "Twój plik został zapisany.",
 	"bs-insertfile-titlefile": "Wstaw plik",
 	"bs-insertfile-titleimage": "Wstaw obrazek",
 	"bs-insertfile-tipkeepratio": "Zachowaj proporcje",

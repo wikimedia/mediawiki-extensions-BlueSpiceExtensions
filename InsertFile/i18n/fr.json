@@ -55,7 +55,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Le nom cible que vous avez choisi n’est pas une extension de fichier valide.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Le nom cible que vous avez choisi n’a pas une extension d’image autorisée.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Le nom cible que vous avez choisi n’a pas une extension de fichier autorisée.",
-	"bs-insertfile-uploadcomplete": "Votre fichier a bien été enregistré.",
+	"bs-insertfile-uploadcomplete": "Votre fichier a été enregistré.",
 	"bs-insertfile-titlefile": "Insérer un fichier",
 	"bs-insertfile-titleimage": "Insérer une image",
 	"bs-insertfile-tipkeepratio": "Conserver les proportions",
@@ -67,5 +67,6 @@
 	"bs-insertfile-no-link": "Aucun lien",
 	"bs-insertfile-error-no-medialink": "Aucun lien de média sélectionné.",
 	"bs-insertfile-error-no-imagelink": "Aucun lien d’image sélectionné.",
-	"bs-insertfile-upload-waitmessage": "Téléchargement en cours…"
+	"bs-insertfile-upload-waitmessage": "Téléchargement en cours…",
+	"apihelp-bs-inserfile-license-store-description": "Liste les licences pour l’extension InsertFile."
 }

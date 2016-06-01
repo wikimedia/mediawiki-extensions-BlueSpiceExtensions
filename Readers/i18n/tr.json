@@ -2,9 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Violetanka",
-			"KorkmazO"
+			"KorkmazO",
+			"Sadrettin"
 		]
 	},
 	"bs-readers-desc": "Bir sayfayı okuyan insanların listesini oluşturur",
+	"prefs-readers": "Okuyucular",
+	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Okuyucu}}|Okuyucular}}",
+	"readers-user": "Sayfalar $1 tarafından {{GENDER:$1|okundu}}",
+	"readers": "\"$1\" sayfasının okuyucuları",
+	"bs-readers-contentactions-label": "Görünen okuyucular",
+	"bs-readers-pagenotexists": "Sayfa mevcut değil.",
+	"bs-readers-pref-active": "Etkin okuyucular",
+	"bs-readers-pref-numofreaders": "Görünen okuyucu sayısı:",
+	"bs-readers-header-username": "Kullanıcı adı",
+	"bs-readers-header-readerspath": "Okuyucu",
+	"bs-readers-header-ts": "Tarih",
 	"bs-readers-header-page": "Sayfa"
 }

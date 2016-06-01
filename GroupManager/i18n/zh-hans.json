@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Hzy980512"
 		]
 	},
 	"bs-groupmanager-desc": "用于添加、编辑和删除用户组及其权限的管理界面",
 	"bs-groupmanager-grpexists": "群组已存在。",
+	"bs-groupmanager-grpempty": "组名不能为空。",
 	"bs-groupmanager-grpadded": "群组已加入。",
 	"bs-groupmanager-grpedited": "群组已编辑。",
 	"bs-groupmanager-grpremoved": "群组已移除。",
@@ -29,5 +31,6 @@
 	"log-show-hide-bs-group-manager": "$1群组管理器日志",
 	"logentry-bs-group-manager-create": "$1{{GENDER:$2|已创建}}组$4",
 	"logentry-bs-group-manager-modify": "$1{{GENDER:$2|已更改}}组$4至$5",
-	"logentry-bs-group-manager-remove": "$1{{GENDER:$2|已移除}}组$4"
+	"logentry-bs-group-manager-remove": "$1{{GENDER:$2|已移除}}组$4",
+	"apihelp-bs-groupmanager-description": "为扩展GroupManager提供任务。"
 }
