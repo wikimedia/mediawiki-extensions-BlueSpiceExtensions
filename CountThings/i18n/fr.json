@@ -15,8 +15,9 @@
 	"bs-countthings-error-invalid-mode": "Le mode \" $1 \" n'est pas valide. Merci d'utiliser « chars », « words » ou « pages ».",
 	"bs-countthings-error-not-exist": "La page « $1 » n’existe pas.",
 	"bs-countthings-tag-countarticles-desc": "Affiche le nombre d'articles dans le wiki.",
-	"bs-countthings-tag-countusers-desc": "Affiche le nombre d'utilisateurs.",
+	"bs-countthings-tag-countusers-desc": "Affiche le nombre d'utilisateurs inscrits.",
 	"bs-countthings-tag-countcharacters-desc": "Affiche les statistiques du contenu de la page donnée. Attribut de configuration disponible :",
 	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code> : Ce qui doit être compté comme <code>chars</code> (caractères), <code>words</code> (mots) ou <code>pages</code> (pages).",
-	"bs-countthings-tag-countcharacters-example-1": "Nombre de mots"
+	"bs-countthings-tag-countcharacters-example-1": "Nombre de mots",
+	"bs-countthings-tag-countcharacters-example-2": "Nombre de caractères"
 }

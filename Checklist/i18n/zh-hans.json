@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Yfdyh000"
 		]
 	},
 	"bs-checklist-desc": "提供清单功能",
@@ -10,10 +11,9 @@
 	"bs-checklist-menu-insert-checkbox": "复选框",
 	"bs-checklist-dlg-insert-list-title": "插入一个清单",
 	"bs-checklist-dlg-insert-list-value-list": "值列表",
-	"bs-checklist-tag-checklist-desc": "呈现复选框或选择字段。可用配置属性：",
-	"bs-checklist-tag-checklist-param-type": "<code>type</code>：<code>list</code>渲染选择列表。",
-	"bs-checklist-tag-checklist-param-list": "<code>list</code>：带有效值的模板名。参数<code>type</code>必须设置为<code>list</code>。",
-	"bs-checklist-tag-checklist-param-value": "<code>value</code>：<code>checked</code>或列表模板以外的值。",
+	"bs-checklist-tag-checklist-desc": "生成复选框或选择菜单。清单可通过多个参数修改。",
+	"bs-checklist-tag-checklist-example-check": "复选框",
+	"bs-checklist-tag-checklist-example-list": "选择菜单",
 	"bs-checklist-dlg-new-list": "创造一个新列表",
 	"bs-checklist-dlg-save-list": "保存列表更改",
 	"bs-checklist-dlg-items-label": "列表中的项目",

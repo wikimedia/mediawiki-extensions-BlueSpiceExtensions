@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Yfdyh000"
 		]
 	},
 	"bs-smartlist-desc": "列表显示wiki最近5次更改",
@@ -31,9 +32,11 @@
 	"bs-smartlist-month": "月",
 	"bs-smartlist-time": "时间",
 	"bs-smartlist-title": "标题",
-	"bs-smartlist-tag-smartlist-desc": "显示最近更改的配置信息。",
-	"bs-smartlist-tag-newbies-desc": "显示最近用户。",
-	"bs-smartlist-tag-toplist-desc": "显示最多监视页面的列表。",
+	"bs-smartlist-tag-smartlist-desc": "显示自动生成的条目列表。配置通过几个modi和参数工作。",
+	"bs-smartlist-tag-smartlist-example-rc": "模式：最近更改",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "模式：链入页面",
+	"bs-smartlist-tag-newbies-desc": "显示wiki的新用户。列表可局限于一定数量。",
+	"bs-smartlist-tag-toplist-desc": "显示最多访问的页面。可通过几个参数限定。",
 	"bs-smartlist-mostvisitedpages": "最多查看页面",
 	"bs-smartlist-mosteditedpages": "最多编辑页面",
 	"bs-smartlist-mostactiveusers": "最活跃用户（编辑数）",

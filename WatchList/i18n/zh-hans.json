@@ -10,5 +10,5 @@
 	"bs-watchlist-pref-widgetsortodr": "排序：",
 	"bs-watchlist-pref-sort-time": "时间",
 	"bs-watchlist-pref-sort-title": "标题",
-	"bs-watchlist-tag-watchlist-desc": "创建在您监视列表并没有太大变化的页面列表。"
+	"bs-watchlist-tag-watchlist-desc": "显示由最多最近更改，且在您的监视列表上的页面。"
 }

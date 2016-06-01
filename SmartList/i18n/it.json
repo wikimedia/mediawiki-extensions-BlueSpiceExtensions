@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Matteocng"
 		]
 	},
 	"bs-smartlist-pref-comments": "Mostra commento",
@@ -19,5 +20,6 @@
 	"bs-smartlist-week": "Settimana",
 	"bs-smartlist-month": "Mese",
 	"bs-smartlist-time": "Ora",
-	"bs-smartlist-title": "Titolo"
+	"bs-smartlist-title": "Titolo",
+	"bs-smartlist-tag-toplist-desc": "Mostra le pagine più visitate. Può essere limitato da diversi parametri."
 }

@@ -14,5 +14,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "排序方式：",
 	"bs-pagesvisited-pref-sort-time": "时间",
 	"bs-pagesvisited-pref-sort-pagename": "标题",
-	"bs-pagesvisited-tag-pagesvisited-desc": "显示您已访问过的页面列表。"
+	"bs-pagesvisited-tag-pagesvisited-desc": "显示最近访问页面的列表。列表可通过参数限制。"
 }

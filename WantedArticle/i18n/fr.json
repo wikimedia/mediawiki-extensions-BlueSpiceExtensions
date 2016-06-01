@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"SnowedEarth",
-			"Ltrlg"
+			"Ltrlg",
+			"Yasten"
 		]
 	},
 	"bs-wantedarticle-desc": "Ajouter une page à la liste des pages souhaitées",
@@ -19,12 +20,7 @@
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Suggérer",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Créer",
 	"bs-wantedarticle-single-textfield-defaulttext": "Titre de la page",
-	"bs-wantedarticle-tag-wantedarticle-desc": "Affiche une liste de pages recherchées. Attributs de configuration disponibles :",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>count</code>: Nombre de pages à afficher.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>title</code>: Entête.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>order</code>: Ordre de tri <code>ASC</code> ({{int:bs-wantedarticle-pref-order-asc}}) ou <code>DESC</code> ({{int:bs-wantedarticle-pref-order-desc}})",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sort</code>: Tri par <code>title</code> ou <code>time</code>.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Format de sortie <code>list</code> ou <code>quene</code> (séparé par des virgules).",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Offre la fonction de simplement suggérer de nouveaux articles et affiche les pages suggérées dans une liste. Différents paramètres configurent cette liste.",
 	"bs-wantedarticle-tag-more-linktext": "Plus…",
 	"bs-wantedarticle-tag-default-title": "Pages recherchées",
 	"bs-wantedarticle-pref-includelimit": "Nombre de suggestions :",

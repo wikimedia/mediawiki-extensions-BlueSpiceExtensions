@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Wyz",
-			"Ltrlg"
+			"Ltrlg",
+			"Yasten"
 		]
 	},
 	"bs-smartlist-desc": "Affiche une liste des cinq dernières modifications du wiki",
@@ -34,6 +35,7 @@
 	"bs-smartlist-time": "Heure",
 	"bs-smartlist-title": "Titre",
 	"bs-smartlist-tag-smartlist-desc": "Affiche les informations de configuration sur les modifications récentes.",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Mode: Pages liées",
 	"bs-smartlist-tag-newbies-desc": "Affiche les derniers utilisateurs.",
 	"bs-smartlist-tag-toplist-desc": "Affiche une liste des pages les plus vues.",
 	"bs-smartlist-mostvisitedpages": "Pages les plus vues",
