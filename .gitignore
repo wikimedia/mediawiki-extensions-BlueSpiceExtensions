@@ -2,6 +2,6 @@
 *~
 *.kate-swp
 .*.swp
-BlueSpiceExtensions.php
-/BlueSpiceExtensions.php
+BlueSpiceExtensions.local.php
+/BlueSpiceExtensions.local.php
 Thumbs.db
