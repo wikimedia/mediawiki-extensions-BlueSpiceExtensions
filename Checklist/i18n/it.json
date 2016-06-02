@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Matteocng"
 		]
 	},
 	"bs-checklist-menu-insert-checkbox": "Casella di controllo",
+	"bs-checklist-tag-checklist-desc": "Genera una casella di controllo o un menu di selezione. La lista di controllo può essere modificata da vari parametri.",
 	"bs-checklist-tag-checklist-example-check": "Casella di controllo",
 	"bs-checklist-tag-checklist-example-list": "Menu di selezione",
 	"bs-checklist-dlg-new-list": "Crea un nuovo elenco",

@@ -4,7 +4,9 @@
 			"Gomoko",
 			"Wyz",
 			"Ltrlg",
-			"Yasten"
+			"Yasten",
+			"Trial",
+			"Wladek92"
 		]
 	},
 	"bs-smartlist-desc": "Affiche une liste des cinq dernières modifications du wiki",
@@ -34,10 +36,11 @@
 	"bs-smartlist-month": "Mois",
 	"bs-smartlist-time": "Heure",
 	"bs-smartlist-title": "Titre",
-	"bs-smartlist-tag-smartlist-desc": "Affiche les informations de configuration sur les modifications récentes.",
-	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Mode: Pages liées",
-	"bs-smartlist-tag-newbies-desc": "Affiche les derniers utilisateurs.",
-	"bs-smartlist-tag-toplist-desc": "Affiche une liste des pages les plus vues.",
+	"bs-smartlist-tag-smartlist-desc": "Affiche les listes d'articles qui sont automatiquement générées. La configuration est fonction des modes et des paramètres.",
+	"bs-smartlist-tag-smartlist-example-rc": "Mode : changements récents",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Mode : Pages liées",
+	"bs-smartlist-tag-newbies-desc": "Affiche les nouveaux utilisateurs du wiki. La liste peut être limitée en taille.",
+	"bs-smartlist-tag-toplist-desc": "Affiche les pages les plus visitées. Peut être limitée par plusieurs paramètres.",
 	"bs-smartlist-mostvisitedpages": "Pages les plus vues",
 	"bs-smartlist-mosteditedpages": "Pages les plus modifiées",
 	"bs-smartlist-mostactiveusers": "Utilisateurs les plus actifs (en nombre de modifications)",

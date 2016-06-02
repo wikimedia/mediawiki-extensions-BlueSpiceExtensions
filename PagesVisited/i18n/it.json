@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Matteocng"
 		]
 	},
 	"prefs-pagesvisited": "Pagine visitate",
 	"bs-pagesvisited-widget-title": "Pagine visitate",
 	"bs-pagesvisited-pref-widgetns": "Namespace:",
 	"bs-pagesvisited-pref-widgetsortodr": "Ordina per:",
-	"bs-pagesvisited-pref-sort-pagename": "Titolo"
+	"bs-pagesvisited-pref-sort-pagename": "Titolo",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Mostra un elenco delle pagine visitate recentemente. Questo elenco può essere ristretto con dei parametri."
 }

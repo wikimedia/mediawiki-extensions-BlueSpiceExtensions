@@ -4,7 +4,8 @@
 			"Orikrin1998",
 			"Gomoko",
 			"Wladek92",
-			"Yasten"
+			"Yasten",
+			"Trial"
 		]
 	},
 	"bs-countthings-desc": "Fournit des statistiques basées sur le contenu",
@@ -16,7 +17,7 @@
 	"bs-countthings-error-not-exist": "La page « $1 » n’existe pas.",
 	"bs-countthings-tag-countarticles-desc": "Affiche le nombre d'articles dans le wiki.",
 	"bs-countthings-tag-countusers-desc": "Affiche le nombre d'utilisateurs inscrits.",
-	"bs-countthings-tag-countcharacters-desc": "Affiche les statistiques du contenu de la page donnée. Attribut de configuration disponible :",
+	"bs-countthings-tag-countcharacters-desc": "Affiche les métadonnées du contenu de la page donnée. Le résultat est une boîte d'infos qui peut être intégrée dans un article. Divers types d'informations possibles en fonction du paramètre \"mode\".",
 	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code> : Ce qui doit être compté comme <code>chars</code> (caractères), <code>words</code> (mots) ou <code>pages</code> (pages).",
 	"bs-countthings-tag-countcharacters-example-1": "Nombre de mots",
 	"bs-countthings-tag-countcharacters-example-2": "Nombre de caractères"

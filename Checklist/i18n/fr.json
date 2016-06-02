@@ -5,7 +5,8 @@
 			"Jean-Frédéric",
 			"Elodark",
 			"Ltrlg",
-			"Wladek92"
+			"Wladek92",
+			"Trial"
 		]
 	},
 	"bs-checklist-desc": "Fournit une fonctionnalité de liste de contrôle",
@@ -14,7 +15,7 @@
 	"bs-checklist-menu-insert-checkbox": "Case à cocher",
 	"bs-checklist-dlg-insert-list-title": "Insérer une liste de contrôle",
 	"bs-checklist-dlg-insert-list-value-list": "Liste de valeurs",
-	"bs-checklist-tag-checklist-desc": "Affiche une case à cocher ou une liste déroulante. Attributs de configuration disponibles :",
+	"bs-checklist-tag-checklist-desc": "Affiche une case à cocher ou un menu déroulant. Configurable selon divers paramètres.",
 	"bs-checklist-tag-checklist-example-check": "Case à cocher",
 	"bs-checklist-tag-checklist-example-list": "Sélectionner menu",
 	"bs-checklist-dlg-new-list": "Créer une nouvelle liste",

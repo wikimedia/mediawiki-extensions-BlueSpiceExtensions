@@ -4,7 +4,8 @@
 			"Gomoko",
 			"SnowedEarth",
 			"Ltrlg",
-			"Yasten"
+			"Yasten",
+			"Trial"
 		]
 	},
 	"bs-wantedarticle-desc": "Ajouter une page à la liste des pages souhaitées",
@@ -20,7 +21,7 @@
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Suggérer",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Créer",
 	"bs-wantedarticle-single-textfield-defaulttext": "Titre de la page",
-	"bs-wantedarticle-tag-wantedarticle-desc": "Offre la fonction de simplement suggérer de nouveaux articles et affiche les pages suggérées dans une liste. Différents paramètres configurent cette liste.",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Offre la fonction de suggérer simplement de nouveaux articles et affiche les pages suggérées dans une liste. Différents paramètres configurent cette liste.",
 	"bs-wantedarticle-tag-more-linktext": "Plus…",
 	"bs-wantedarticle-tag-default-title": "Pages recherchées",
 	"bs-wantedarticle-pref-includelimit": "Nombre de suggestions :",
