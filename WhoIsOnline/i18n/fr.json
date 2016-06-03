@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"SnowedEarth",
-			"Yasten"
+			"Yasten",
+			"Wladek92"
 		]
 	},
 	"bs-whoisonline-desc": "Affiche une liste d’utilisateurs actuellement en ligne",
@@ -16,6 +17,6 @@
 	"bs-whoisonline-pref-orderby-time": "Durée de fonctionnement",
 	"bs-whoisonline-pref-orderby-name": "Nom",
 	"bs-whoisonline-pref-interval": "Intervalle de mise à jour en secondes :",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Affiche le nombre d’utilisateurs qui se sont connectés dans les 10 dernières minutes.",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Affiche le nombre d’utilisateurs qui se sont connectés depuis les 10 dernières minutes.",
 	"bs-whoisonline-tag-whoisonlinepopup-desc": "Affiche le nombre d’utilisateurs qui se sont connectés dans les 10 dernières minutes."
 }
