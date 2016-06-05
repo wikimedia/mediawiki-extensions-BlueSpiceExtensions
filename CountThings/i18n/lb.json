@@ -13,5 +13,6 @@
 	"bs-countthings-tag-countarticles-desc": "Weist d'Zuel vun de Säiten.",
 	"bs-countthings-tag-countusers-desc": "Weist d'Zuel vun de Benotzer.",
 	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Wat gezielt gi soll <code>chars</code> (Zeechen), <code>words</code> (wierder) oder <code>pages</code> (Säiten).",
-	"bs-countthings-tag-countcharacters-example-1": "Zuel vun de Wierder"
+	"bs-countthings-tag-countcharacters-example-1": "Zuel vun de Wierder",
+	"bs-countthings-tag-countcharacters-example-2": "Zuel vun den Zeechen"
 }

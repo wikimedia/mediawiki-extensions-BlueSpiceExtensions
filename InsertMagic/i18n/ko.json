@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ykhwong"
 		]
 	},
 	"bs-insertmagic-type-tags": "태그",
 	"bs-insertmagic-type-variables": "변수",
-	"bs-insertmagic-label-desc": "설명"
+	"bs-insertmagic-label-desc": "설명",
+	"bs-insertmagic-label-examples": "예시"
 }

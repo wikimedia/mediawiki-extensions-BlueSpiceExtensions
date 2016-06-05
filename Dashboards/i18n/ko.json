@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ykhwong"
 		]
 	},
 	"bs-dashboards-desc": "사용자와 관리자에게 대시보드를 제공합니다",
@@ -10,5 +11,8 @@
 	"admindashboard": "관리자 대시보드",
 	"userdashboard": "사용자 대시보드",
 	"bs-dashboard-userportlet-calendar-title": "달력",
-	"bs-dashboard-userportlet-calendar-description": "달력"
+	"bs-dashboard-userportlet-calendar-description": "달력",
+	"bs-dashboard-userportlet-wikipage-title": "위키페이지",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "위키 페이지",
+	"apihelp-bs-dashboards-tasks-description": "대시보드 설정 저장"
 }

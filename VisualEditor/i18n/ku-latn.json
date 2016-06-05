@@ -5,6 +5,8 @@
 		]
 	},
 	"prefs-visualeditor": "Visual editor",
+	"bs-visualeditor-wikitable": "Standart",
+	"bs-visualeditor-contenttable": "Naverok",
 	"bs-visualeditor-bsactions-save": "Tomar bike",
 	"bs-visualeditor-bsactions-headings": "Sernivîs",
 	"bs-visualeditor-bsactions-paragraph": "Paragraf",
