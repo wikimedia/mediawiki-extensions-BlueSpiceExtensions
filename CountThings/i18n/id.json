@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rachmat.Wahidi"
+		]
+	},
+	"bs-countthings-tag-countarticles-desc": "Tampilkan jumlah artikel dalam wiki ini.",
+	"bs-countthings-tag-countusers-desc": "Tampilkan jumlah pengguna terdaftar.",
+	"bs-countthings-tag-countcharacters-example-1": "Jumlah kata",
+	"bs-countthings-tag-countcharacters-example-2": "Jumlah karakter"
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rachmat.Wahidi"
+		]
+	},
+	"bs-smartlist-tag-smartlist-desc": "Tampilkan otomatis daftar artikel yang dibuat. Setelan ini bekerja dengan beberapa mode dan parameter",
+	"bs-smartlist-tag-smartlist-example-rc": "Mode: Perubahan terbaru",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Mode: Pranala balik",
+	"bs-smartlist-tag-newbies-desc": "Menampilkan pengguna baru di wiki. Daftar ini dapat dibatasi menjadi beberapa nomor.",
+	"bs-smartlist-tag-toplist-desc": "Menampilkan halaman yang sering dikunjungi. Dapat dibatasi dengan beberapa parameter."
+}
