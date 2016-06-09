@@ -21,6 +21,7 @@
 	"bs-smartlist-month": "Mese",
 	"bs-smartlist-time": "Ora",
 	"bs-smartlist-title": "Titolo",
+	"bs-smartlist-tag-smartlist-example-rc": "Modalità: ultime modifiche",
 	"bs-smartlist-tag-newbies-desc": "Mostra i nuovi utenti del wiki. L'elenco può essere ristretto ad un certo numero.",
 	"bs-smartlist-tag-toplist-desc": "Mostra le pagine più visitate. Può essere limitato da diversi parametri."
 }
