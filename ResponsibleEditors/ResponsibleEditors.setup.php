@@ -97,4 +97,13 @@ $wgLogActionsHandlers['bs-responsible-editors/*'] = 'LogFormatter';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ResponsibleEditors::getSchemaUpdates';
 
+$GLOBALS["bssDefinitions"]["_RESPEDITOR"] = array(
+	"id" => "___RESPEDITOR",
+	"type" => 9,
+	"show" => false,
+	"msgkey" => "prefs-responsibleeditors",
+	"alias" => "Responsible editor",
+	"mapping" => "ResponsibleEditors::addPropertyValues"
+);
+
 unset( $aResourceModuleTemplate );
