@@ -235,7 +235,7 @@ class BsPDFServlet {
 				$sSrcFilename = $oImage->getName();
 			}
 			else {
-				$sAbsoluteFileSystemPath = $this->getFileSystemPath( $sSrcUrl );
+				$sAbsoluteFileSystemPath = $this->getFileSystemPath( $wgUploadPath . $sSrcUrl );
 			}
 			// TODO RBV (05.04.12 11:48): Check if urlencode has side effects
 			$oImageElement->setAttribute( 'src', 'images/'.urlencode($sSrcFilename) );
