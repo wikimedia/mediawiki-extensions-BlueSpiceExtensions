@@ -109,8 +109,6 @@ class BsSearchResult {
 		$aMonitor['SearchTerm'] = $this->oSearchOptions->getOption( 'searchStringRaw' );
 		$aMonitor['EscalatedToFuzzy'] = $bFuzzy;
 
-		if ( $iResults == 0 ) return $this->vSearchResult;
-
 		$this->createNavigation( $iResults );
 
 		if ( $bFacet ) {

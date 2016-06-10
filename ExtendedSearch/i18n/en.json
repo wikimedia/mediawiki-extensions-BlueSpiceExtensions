@@ -28,6 +28,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Indexing special pages",
 	"bs-extendedsearch-invalid-query": "The query could not be processed.",
 	"bs-extendedsearch-nosearchterm": "Please enter a search term.",
+	"bs-extendedsearch-noresult": "No entries found.",
 	"bs-extendedsearch-result": "Search for \"$1\" found $2 {{PLURAL:$2|result|results}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 out of $3 {{PLURAL:$3|result|results}}",
 	"bs-extendedsearch-search-category": "Search in the categories:",

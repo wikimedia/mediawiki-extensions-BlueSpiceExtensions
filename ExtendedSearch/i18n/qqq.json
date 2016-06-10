@@ -35,6 +35,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Text for indexing special pages\nIt is shown in the log file while index is being created\nNo punctuation needed",
 	"bs-extendedsearch-invalid-query": "Text for the query could not be processed.",
 	"bs-extendedsearch-nosearchterm": "Text for please enter a search term.",
+	"bs-extendedsearch-noresult": "Text that is displayed in results view when no entries are found.",
 	"bs-extendedsearch-result": "Search for \"$1\" found $2 {{PLURAL:$2|result|results}}.\n\n$1 is the search term in bold, $2 is the number of results found",
 	"bs-extendedsearch-result-caption": "Text for $1 - $2 out of $3 results. The \"out of\" here means \"Expressing a fraction or a ratio\". Parameters: \n* $1 - the start of shown result range\n* $2 - the end of shown result range\n* $3 - the total number of results found - use for PLURAL distinction",
 	"bs-extendedsearch-search-category": "Text for search in the categories:",
