@@ -86,82 +86,84 @@ class ViewSearchResult extends ViewBaseElement {
 		$aOut[] = parent::execute();
 
 		$aOut[] = $this->sOut;
-		if ( !empty( $this->aResultEntryView ) ) {
-			$sResults = implode( "\n", $this->aResultEntryView );
-			$aOut[] = '<div id="bs-extendedsearch-spinner"></div>';
-			$aOut[] = '<hr /><br />';
-			if ( $this->getOption( 'siteUri' ) ) {
-				$aOut[] = Xml::element(
-					'div',
-					array(
-						'id' => 'bs-extendedsearch-siteuri',
-						'siteuri' => $this->getOption( 'siteUri' )
-					),
-					'',
-					false
-				);
-			}
-			$aOut[] = '<div id="bs-extendedsearch-filters-results-paging">';
-			if ( $this->getOption( 'showfacets' ) ) {
-
-				$sFilterBoxes = '';
-				foreach ( $this->aFacetBoxes as $box ) {
-					$sFilterBoxes .= $box->execute();
-				}
-				$sFilterBoxes = Xml::openElement( 'div', array( 'id' => 'bs-extendedsearch-all-filter-boxes' ) ).
-								$sFilterBoxes.
-								Xml::closeElement( 'div' );
-				$aOut[] = Xml::openElement( 'div', array( 'id' => 'bs-extendedsearch-filters' ) ).
-						$sFilterBoxes.
-						Xml::closeElement( 'div' );
-			}
-
-			$cachePaging = $this->getPaging();
-			$upperPaging = Xml::openElement(
-					'div',
-					array(
-						'class' => 'bs-extendedsearch-default-line bs-extendedsearch-paging',
-						'id' => 'bs-extendedsearch-paging-upper'
-					)
-			);
-			$upperPaging .= $cachePaging;
-			$upperPaging .= Xml::closeElement( 'div' );
-
-			$lowerPaging = Xml::openElement(
-					'div',
-					array(
-						'class' => 'bs-extendedsearch-default-line bs-extendedsearch-paging',
-						'id' => 'bs-extendedsearch-paging-lower'
-					)
-			);
-			$lowerPaging .= $cachePaging;
-			$lowerPaging .= Xml::closeElement( 'div' );
-
-			$sortingBar = Xml::openElement(
-					'div',
-					array( 'class' => 'bs-extendedsearch-sorting-bar bs-extendedsearch-default-textspacing' )
-			);
-			$sortingBar .= $this->getSortingBar();
-			$sortingBar .= Xml::closeElement( 'div' );
-
-			$results = Xml::openElement(
-					'div',
-					array(
-						'id'=>'bs-extendedsearch-results'
-					)
-				);
-			$results .= $sResults;
-			$results .= Xml::closeElement( 'div' );
-
-			$aOut[] = ( $this->getOption( 'showfacets' ) )
-					? '<div id="bs-extendedsearch-results-paging" class="bs-extendedsearch-results-with-facets">'
-					: '<div id="bs-extendedsearch-results-paging">';
-			$aOut[] = $upperPaging.$sortingBar.$results.$lowerPaging;
-			$aOut[] = '  </div>'; // bs-extendedsearch-results-paging
-			$aOut[] = '</div>'; // bs-extendedsearch-filters-results-paging
-			$aOut[] = '<div id="bs-extendedsearch-results-finalizer"></div>';
-			$aOut[] = '<br /><br />';
+		if ( empty( $this->aResultEntryView ) ) {
+			$this->aResultEntryView = array( wfMessage( "bs-extendedsearch-noresult" )->text() );
 		}
+		$sResults = implode( "\n", $this->aResultEntryView );
+		$aOut[] = '<div id="bs-extendedsearch-spinner"></div>';
+		$aOut[] = '<hr /><br />';
+		if ( $this->getOption( 'siteUri' ) ) {
+			$aOut[] = Xml::element(
+				'div',
+				array(
+					'id' => 'bs-extendedsearch-siteuri',
+					'siteuri' => $this->getOption( 'siteUri' )
+				),
+				'',
+				false
+			);
+		}
+		$aOut[] = '<div id="bs-extendedsearch-filters-results-paging">';
+		if ( $this->getOption( 'showfacets' ) ) {
+
+			$sFilterBoxes = '';
+			foreach ( $this->aFacetBoxes as $box ) {
+				$sFilterBoxes .= $box->execute();
+			}
+			$sFilterBoxes = Xml::openElement( 'div', array( 'id' => 'bs-extendedsearch-all-filter-boxes' ) ).
+							$sFilterBoxes.
+							Xml::closeElement( 'div' );
+			$aOut[] = Xml::openElement( 'div', array( 'id' => 'bs-extendedsearch-filters' ) ).
+					$sFilterBoxes.
+					Xml::closeElement( 'div' );
+		}
+
+		$cachePaging = $this->getPaging();
+		$upperPaging = Xml::openElement(
+				'div',
+				array(
+					'class' => 'bs-extendedsearch-default-line bs-extendedsearch-paging',
+					'id' => 'bs-extendedsearch-paging-upper'
+				)
+		);
+		$upperPaging .= $cachePaging;
+		$upperPaging .= Xml::closeElement( 'div' );
+
+		$lowerPaging = Xml::openElement(
+				'div',
+				array(
+					'class' => 'bs-extendedsearch-default-line bs-extendedsearch-paging',
+					'id' => 'bs-extendedsearch-paging-lower'
+				)
+		);
+		$lowerPaging .= $cachePaging;
+		$lowerPaging .= Xml::closeElement( 'div' );
+
+		$sortingBar = Xml::openElement(
+				'div',
+				array( 'class' => 'bs-extendedsearch-sorting-bar bs-extendedsearch-default-textspacing' )
+		);
+		$sortingBar .= $this->getSortingBar();
+		$sortingBar .= Xml::closeElement( 'div' );
+
+		$results = Xml::openElement(
+				'div',
+				array(
+					'id'=>'bs-extendedsearch-results'
+				)
+			);
+		$results .= $sResults;
+		$results .= Xml::closeElement( 'div' );
+
+		$aOut[] = ( $this->getOption( 'showfacets' ) )
+				? '<div id="bs-extendedsearch-results-paging" class="bs-extendedsearch-results-with-facets">'
+				: '<div id="bs-extendedsearch-results-paging">';
+		$aOut[] = $upperPaging.$sortingBar.$results.$lowerPaging;
+		$aOut[] = '  </div>'; // bs-extendedsearch-results-paging
+		$aOut[] = '</div>'; // bs-extendedsearch-filters-results-paging
+		$aOut[] = '<div id="bs-extendedsearch-results-finalizer"></div>';
+		$aOut[] = '<br /><br />';
+
 		// Placeholder for SearchUsers, SearchProfiles, SearchHelpdesk etc
 		$sOut = implode( "\n", $aOut );
 
