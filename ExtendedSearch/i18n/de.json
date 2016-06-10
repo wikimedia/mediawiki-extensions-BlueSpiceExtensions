@@ -31,6 +31,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Indexiere Spezialseiten",
 	"bs-extendedsearch-invalid-query": "Die Abfrage konnte nicht verarbeitet werden.",
 	"bs-extendedsearch-nosearchterm": "Bitte gib einen Suchbegriff ein.",
+	"bs-extendedsearch-noresult": "Keine Einträge gefunden.",
 	"bs-extendedsearch-result": "$2 {{PLURAL:$2|Ergebnis|Ergebnisse}} für \"$1\" gefunden.",
 	"bs-extendedsearch-result-caption": "$1 - $2 von $3 Ergebnis{{PLURAL:$3||sen}}",
 	"bs-extendedsearch-search-category": "Suche in Kategorien:",
