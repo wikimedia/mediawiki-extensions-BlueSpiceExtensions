@@ -1187,4 +1187,16 @@ class ResponsibleEditors extends BsExtensionMW {
 		}
 		return true;
 	}
+
+	public static function addPropertyValues( SMW\SemanticData $aSemanticData, WikiPage $aWikiPage, SMW\DIProperty $aProperty ) {
+		$arrUserIds = ResponsibleEditors::getResponsibleEditors( $aWikiPage->getId() );
+		if ( is_array( $arrUserIds ) && count( $arrUserIds ) >= 1 ) {
+			foreach ( $arrUserIds as $userId ) {
+				$user = User::newFromId( $userId[ "re_user_id" ] );
+				$aSemanticData->addPropertyObjectValue(
+				  $aProperty, SMW\DIWikiPage::newFromTitle( $user->getUserPage() )
+				);
+			}
+		}
+	}
 }
