@@ -32,6 +32,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Indizando las páginas especiales",
 	"bs-extendedsearch-invalid-query": "No se pudo procesar la consulta.",
 	"bs-extendedsearch-nosearchterm": "Escribe un término de búsqueda.",
+	"bs-extendedsearch-noresult": "No se encontraron entradas.",
 	"bs-extendedsearch-result": "La búsqueda de \"$1\" produjo $2 {{PLURAL:$2|resultado|resultados}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 de $3 resultado{{PLURAL:$3||s}}",
 	"bs-extendedsearch-search-category": "Buscar en las categorías:",

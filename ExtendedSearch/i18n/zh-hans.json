@@ -31,6 +31,7 @@
 	"bs-extendedsearch-indexing-specialpages": "索引特殊页面",
 	"bs-extendedsearch-invalid-query": "无法处理此次查询。",
 	"bs-extendedsearch-nosearchterm": "请输入关键词。",
+	"bs-extendedsearch-noresult": "找不到记录。",
 	"bs-extendedsearch-result": "搜索“$1”发现$2条{{PLURAL:$2|结果}}。",
 	"bs-extendedsearch-result-caption": "第$1~$2条{{PLURAL:$3|结果}}，共$3条",
 	"bs-extendedsearch-search-category": "分类中搜索：",

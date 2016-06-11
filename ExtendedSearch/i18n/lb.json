@@ -25,6 +25,7 @@
 	"bs-extendedsearch-indexing-wiki-articles": "Wikisäiten indexéieren",
 	"bs-extendedsearch-indexing-specialpages": "Spezialsäiten indexéieren",
 	"bs-extendedsearch-invalid-query": "D'Ufro konnt net verschafft ginn.",
+	"bs-extendedsearch-noresult": "Näischt fonnt.",
 	"bs-extendedsearch-result-caption": "$1 - $2 vun $3 {{PLURAL:$3|Resultat|Resultater}}",
 	"bs-extendedsearch-search-category": "Sichen an de Kategorien:",
 	"bs-extendedsearch-search-editors": "No Auteure sichen:",

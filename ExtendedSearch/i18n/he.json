@@ -7,6 +7,7 @@
 	},
 	"bs-extendedsearch-desc": "Apache Solr&rlm; (http://lucene.apache.org/solr/) המבוסס על תוסף חיפוש כדי להרחיב את הפונקציונליות של החיפוש",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|קטגוריה|קטגוריות}}: $2",
+	"bs-extendedsearch-noresult": "לא נמצאו ערכים.",
 	"bs-extendedsearch-facetsetting-op-and": "וגם",
 	"bs-extendedsearch-facetsetting-op-or": "או"
 }

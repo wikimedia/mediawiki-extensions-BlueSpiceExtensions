@@ -5,6 +5,8 @@
 		]
 	},
 	"bs-smartlist-desc": "הצגת חמשת השינויים האחרונים של אתר הוויקי ברשימה",
+	"bs-smartlist-tag-smartlist-example-rc": "מצב: שינויים אחרונים",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "מצב: דפים המקשרים לכאן",
 	"bs-smartlist-tag-newbies-desc": "הצגת המשתמשים החדשים באתר. אפשר להגביל את זה למספר מסוים של משתמשים.",
 	"bs-smartlist-tag-toplist-desc": "הצגת הדפים הניצפים ביותר. אפשר להגביל את זה לפי פרמטרים מסוימים."
 }
