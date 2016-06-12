@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Elisardojm",
-			"Toliño"
+			"Toliño",
+			"Macofe"
 		]
 	},
 	"bs-extendedsearch-desc": "Plugin de busca baseado en Apache Solr (http://lucene.apache.org/solr/) para expandir as funcións de busca",
@@ -29,6 +30,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Indexando as páxinas especiais",
 	"bs-extendedsearch-invalid-query": "No se puido procesar a consulta.",
 	"bs-extendedsearch-nosearchterm": "Escriba un termo de busca.",
+	"bs-extendedsearch-noresult": "Non se atoparon entradas.",
 	"bs-extendedsearch-result": "A procura de \"$1\" devolveu $2 {{PLURAL:$2|resultado|resultados}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 de cerca de $3 {{PLURAL:$3|resultado|resultados}}",
 	"bs-extendedsearch-search-category": "Procurar nas categorías:",
