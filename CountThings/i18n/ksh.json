@@ -14,5 +14,7 @@
 	"bs-countthings-tag-countarticles-desc": "Zeijsch de Aanzahl Sigge",
 	"bs-countthings-tag-countusers-desc": "Zeijsch de Aanzahl Metmaacher",
 	"bs-countthings-tag-countcharacters-desc": "Zeijsch Schtatesteke övver der Ennhalld vun dä aanjejovve Sigg. En Eijeschaff es verföhschbaa för en Enschtällong:",
-	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Wat jezall wähde sull — <code>chars</code> (characters), <code>words</code> (words) or <code>pages</code> (pages). <!--  https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-countthings-tag-countcharacters-desc-param-mode/ksh -->"
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Wat jezall wähde sull — <code>chars</code> (characters), <code>words</code> (words) or <code>pages</code> (pages). <!--  https://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Bs-countthings-tag-countcharacters-desc-param-mode/ksh -->",
+	"bs-countthings-tag-countcharacters-example-1": "Aanzahl Wööter",
+	"bs-countthings-tag-countcharacters-example-2": "Aanzahl Zeijsche"
 }

@@ -32,6 +32,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Indexation des pages spéciales",
 	"bs-extendedsearch-invalid-query": "La requête n'a pas pu être traitée.",
 	"bs-extendedsearch-nosearchterm": "Veuillez saisir un terme de recherche.",
+	"bs-extendedsearch-noresult": "Aucune entrée trouvée.",
 	"bs-extendedsearch-result": "La recherche de « $1 » a trouvé $2 {{PLURAL:$2|résultat|résultats}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 sur $3 résultat{{PLURAL:$3||s}}",
 	"bs-extendedsearch-search-category": "Rechercher dans les catégories :",
