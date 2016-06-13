@@ -149,6 +149,7 @@ class BsSearchResult {
 			: array( 'count' => 1 );
 		$this->setData( 'sortorder' , $aOrder );
 
+		// see also SearchOptions::getFacetOperator
 		$aBaseFacets = array(
 			'namespace' => array(
 				'param' => 'na',
@@ -168,7 +169,7 @@ class BsSearchResult {
 					SearchUriBuilder::CATS
 				),
 				'settings' => array(
-					'op' => 'OR'
+					'op' => 'AND'
 				)
 			),
 			'editor' => array(
@@ -180,7 +181,7 @@ class BsSearchResult {
 					SearchUriBuilder::NAMESPACES|SearchUriBuilder::EDITOR
 				),
 				'settings' => array(
-					'op' => 'OR'
+					'op' => 'AND'
 				)
 			),
 			'type' => array(
