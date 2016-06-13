@@ -134,7 +134,11 @@ class SearchIndex {
 
 		$iNumFound = $oHits->response->numFound;
 
-		$bFuzzy = ( $iNumFound == 0 );
+		$bFuzzy = (
+			$iNumFound == 0 &&
+			// do not escalate to fuzzy if the query already contails fuzzy or near operator
+			!strpos( $this->oSearchOptions->getOption( 'searchStringRaw' ), '~' )
+		);
 		// Make a fuzzy query
 		if ( $bFuzzy ) {
 			$aFuzzyQuery = $this->oSearchOptions->getSolrFuzzyQuery();
