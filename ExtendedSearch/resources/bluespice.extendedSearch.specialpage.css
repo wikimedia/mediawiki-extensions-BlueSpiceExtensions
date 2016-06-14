@@ -371,3 +371,23 @@ span.bs-extendedsearch-result-title h3 em {
 #bs-extendedsearch-filters .bs-extendedsearch-facetbox {
 	clear: both;
 }
+
+.bs-extendedsearch-facet-filter {
+	float: right;
+	border: 1px solid;
+	min-width: 25px;
+	text-align: center;
+	color: #666666;
+	background-color: #F1F1F1;
+	border-color: #CCCCCC;
+	font-size: 0.7em !important;
+	padding: 0px 0;
+	height: 21px;
+}
+
+.bs-extendedsearch-facet-filter:hover,
+.bs-extendedsearch-facet-filter-active {
+	background-color: #98a7c4;
+	color: #FFFFFF;
+	border-color: #6481AC;
+}

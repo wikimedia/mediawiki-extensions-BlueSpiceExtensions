@@ -136,15 +136,37 @@ class ViewSearchFacet extends ViewBaseElement {
 		$sFacetHead .= Xml::check( '', $bChecked, array( 'id' => $sId, 'urldiff' => $this->getOption( 'uri-facet-all-diff' ) ) );
 		$sFacetHead .= '<label for="'.$sId.'">' . wfMessage( $this->getOption( 'title' ) )->plain(). '</label>';
 		if( isset( $this->aConfig['settings'] ) ) {
-			$sFacetHead .= Html::element(
+			$sFacetOperator = $this->getOption( 'fset' );
+			$sFacetOperatorBox = '';
+			$sFacetOperatorBox .= Html::element(
+				'span',
+				array(
+					'class' => 'bs-extendedsearch-facet-filter ' .
+						( $sFacetOperator['op'] == 'AND'
+						? 'bs-extendedsearch-facet-filter-active'
+						: '' ),
+				),
+				wfMessage( 'bs-extendedsearch-facetsetting-op-and' )->plain()
+			);
+			$sFacetOperatorBox .= Html::element(
+				'span',
+				array(
+					'class' => 'bs-extendedsearch-facet-filter ' .
+						( $sFacetOperator['op'] == 'OR'
+						? 'bs-extendedsearch-facet-filter-active'
+						: '' ),
+				),
+				wfMessage( 'bs-extendedsearch-facetsetting-op-or' )->plain()
+			);
+			$sFacetHead .= Html::rawElement(
 				'a',
 				array(
 					'href' => '#',
-					'class' => 'bs-es-facetsettings icon-wrench',
+					'class' => 'bs-es-facetsettings',
 					'data-fset-param' => $this->aConfig['param'],
 					'data-fset' => FormatJson::encode( $this->getOption( 'fset' ) )
 				),
-				''
+				$sFacetOperatorBox
 			);
 		}
 		$sFacetHead .= '</div>';
