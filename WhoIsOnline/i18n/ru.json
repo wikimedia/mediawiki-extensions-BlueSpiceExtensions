@@ -3,7 +3,8 @@
 		"authors": [
 			"Shuba",
 			"HarpyWar",
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
 	"bs-whoisonline-desc": "Отображает список пользователей, которые в настоящее время \"в сети (online)\"",
@@ -16,6 +17,6 @@
 	"bs-whoisonline-pref-orderby-time": "Время работы",
 	"bs-whoisonline-pref-orderby-name": "Имя",
 	"bs-whoisonline-pref-interval": "Интервал обновления в секундах:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Отображает количество онлайн пользователей",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Отображает небольшой выпадающий список онлайн пользователей"
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Показывает количество участников, которые вошли в течение последних 10 минут.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Показывает всех участников, которые вошли в течение последних 10 минут."
 }

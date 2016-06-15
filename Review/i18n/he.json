@@ -4,5 +4,8 @@
 			"Guycn2"
 		]
 	},
-	"bs-review-desc": "הוספת פונקציונליות של זרימת עבודה לעמודים"
+	"bs-review-desc": "הוספת פונקציונליות של זרימת עבודה לעמודים",
+	"right-workflowview": "גישה לממשק הסקירה",
+	"right-workflowedit": "יצירה ועריכה של סקירות",
+	"right-workflowlist": "צפייה ברשימת הסוקרים"
 }

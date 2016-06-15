@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"H4nek"
+			"H4nek",
+			"Dvorapa"
 		]
 	},
 	"bs-countthings-pages-label": "Stránky",
-	"bs-countthings-tag-countarticles-desc": "Zobrazí počet stránek."
+	"bs-countthings-tag-countarticles-desc": "Zobrazí počet článků na wiki."
 }
