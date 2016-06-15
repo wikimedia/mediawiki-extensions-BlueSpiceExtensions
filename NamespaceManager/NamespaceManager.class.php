@@ -319,7 +319,7 @@ class NamespaceManager extends BsExtensionMW {
 		}
 		$sConfigContent = file_get_contents( $bsgConfigFiles['NamespaceManager'] );
 		$aUserNamespaces = array();
-		if ( preg_match_all( '%define\("NS_([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)", ([0-9]*)\)%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
+		if ( preg_match_all( '%define\("NS_([a-zA-Z0-9_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)", ([0-9]*)\)%s', $sConfigContent, $aMatches, PREG_PATTERN_ORDER ) ) {
 			$aUserNamespaces = $aMatches[ 2 ];
 		}
 		if ( $bFullDetails ) {
@@ -359,21 +359,8 @@ class NamespaceManager extends BsExtensionMW {
 			}
 
 			if ( $aDefinition ) {
-				if ( isset( $aDefinition['alias'] ) && $aDefinition['alias'] ) {
-					$sDefName = strtoupper( $aDefinition['alias'] );
-				} else {
-					if( $iNS >= 100 ) {
-						$sDefName = strtoupper( $aDefinition['name'] );
-					} else {
-						$sDefName = $bsSystemNamespaces[$iNS];
-					}
-				}
+				$sConstName = NamespaceManager::getNamespaceConstName( $iNS, $aDefinition );
 
-				if ( $bIsSystemNs ) {
-					$sConstName = $bsSystemNamespaces[$iNS];
-				} else {
-					$sConstName = 'NS_' . $sDefName;
-				}
 				$sSaveContent .= "// START Namespace {$sConstName}\n";
 				$sSaveContent .= "if( !defined( \"{$sConstName}\" ) ) define(\"{$sConstName}\", {$iNS});\n";
 				if ( $iNS >= 100 ) {
@@ -384,7 +371,7 @@ class NamespaceManager extends BsExtensionMW {
 				if ( !$bIsSystemNs && isset( $aDefinition['alias'] ) && $aDefinition['alias'] ) {
 					$sSaveContent .= "\$GLOBALS['wgNamespaceAliases']['{$aDefinition['alias']}'] = {$sConstName};\n";
 				}
-				$sSaveContent .= "// END Namespace {$sDefName}\n\n";
+				$sSaveContent .= "// END Namespace {$sConstName}\n\n";
 			}
 		}
 
@@ -402,4 +389,38 @@ class NamespaceManager extends BsExtensionMW {
 		);
 	}
 
+	public static function getNamespaceConstName( $iNS, $aDefinition ) {
+		global $bsSystemNamespaces;
+
+		$sConstName = '';
+
+		// find existing NS_ definitions
+		$aNSConstants = array();
+		foreach ( get_defined_constants() as $key => $value ) {
+			if ( strpos( $key, "NS_" ) === 0
+				// ugly solution to identify smw namespaces as they don't adhere to the convention
+				|| strpos( $key, "SMW_NS_" ) === 0
+				|| strpos( $key, "SF_NS_" ) === 0
+				) {
+				$aNSConstants[$key] = $value;
+			}
+		}
+
+		$aNSConstants = array_flip( $aNSConstants );
+
+		// Use existing constant name if possible
+		if ( isset( $aNSConstants[$iNS] ) ) {
+			$sConstName = $aNSConstants[$iNS];
+		} else {
+			// If compatible, use namespace name as const name
+			if ( preg_match(  "/^[a-zA-Z0-9_]{3,}$/", $aDefinition['name'] ) ) {
+				$sConstName = 'NS_' . strtoupper( $aDefinition['name'] );
+			} else {
+				// Otherwise use namespace number
+				$sConstName = 'NS_' . $iNS;
+			}
+		}
+
+		return $sConstName;
+	}
 }
