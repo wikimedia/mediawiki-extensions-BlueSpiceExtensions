@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kumkumuk"
+		]
+	},
+	"bs-interwikilinks-headerprefix": "Verole",
+	"bs-interwikilinks-titleaddinterwikilink": "Linkê interwiki dek",
+	"bs-interwikilinks-titleeditinterwikilink": "Grey interwiki bıvurnê",
+	"bs-interwikilinks-labelprefix": "Verole",
+	"bs-interwikilinks-titledeleteinterwikilink": "Linkê interwiki esterne",
+	"bs-interwikilinks-confirmdeleteinterwikilink": "Şıma qayılê,  ena linka interwiki bıesteri yo?",
+	"bs-interwikilinks-insertlink-labelprefix": "Verole",
+	"bs-interwikilink-select-a-prefix": "Verole weçinê"
+}

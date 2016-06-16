@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kumkumuk"
+		]
+	},
+	"bs-specialadmindashboard-label": "Pano",
+	"bs-dashboards-addportlet": "Portlet dek",
+	"bs-dashboards-portlets": "Portleti",
+	"prefs-dashboards": "Panoy",
+	"admindashboard": "Panoy admini",
+	"userdashboard": "Panoya karberi",
+	"bs-dashboard-userportlet-calendar-title": "Teqwim",
+	"bs-dashboard-userportlet-calendar-description": "Teqwim",
+	"bs-dashboard-userportlet-wikipage-title": "WikiPela",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Pela wiki"
+}

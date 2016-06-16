@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Einreiher"
 		]
 	},
 	"bs-extendedsearch-desc": "Plugin di ricerca basato su Apache Solr (http://lucene.apache.org/solr/) per estendere la funzionalità di ricerca",
@@ -18,6 +19,7 @@
 	"bs-extendedsearch-facet-uncategorized": "Non categorizzato",
 	"bs-extendedsearch-facet-namespace-extfiles": "File esterni",
 	"bs-extendedsearch-files": "Ricerca file",
+	"bs-extendedsearch-noresult": "Non sono state trovate voci.",
 	"bs-extendedsearch-sort-relevance": "Rilevanza",
 	"bs-extendedsearch-sort-title": "Titolo",
 	"bs-extendedsearch-sort-type": "Tipo",
