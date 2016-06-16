@@ -526,7 +526,13 @@
 					text: result.msg
 				});
 			}
-		});
+		}).fail( function ( response ) {
+			var result = response.payload;
+			caller.unmask();
+			bs.util.alert( 'bs-pm-save-error', {
+				text: result.msg
+			} );
+		} );
 
 	}
 

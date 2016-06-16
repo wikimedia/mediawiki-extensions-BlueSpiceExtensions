@@ -527,7 +527,13 @@ class PermissionManager extends BsExtensionMW {
 
 		$aGroupPermissions = $data->groupPermission;
 		$aLockdown = $data->permissionLockdown;
-		$mStatus = wfRunHooks( 'BsPermissionManager::beforeSavePermissions', array( &$aLockdown, &$aGroupPermissions ) );
+		$aResult = array();
+		$mStatus = wfRunHooks( 'BsPermissionManager::beforeSavePermissions', array( &$aLockdown, &$aGroupPermissions, &$aResult ) );
+
+
+		if ( !empty( $aResult ) ) {
+			return $aResult;
+		}
 
 		if ( $mStatus === true ) {
 			$mStatus = self::preventPermissionLockout( $aGroupPermissions );

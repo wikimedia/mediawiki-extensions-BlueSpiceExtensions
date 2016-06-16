@@ -49,6 +49,7 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 
 $wgAutoloadClasses['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
 $wgAutoloadClasses['PermissionTemplates'] = __DIR__ . '/includes/PermissionTemplates.class.php';
+$wgAutoloadClasses['PermissionValidator'] = __DIR__ . '/includes/PermissionValidator.php';
 
 // Map class name to filename for autoloading
 $wgAutoloadClasses['ApiPermissionManager'] = __DIR__ . '/includes/api/ApiPermissionManager.php';
@@ -59,6 +60,7 @@ $wgAPIModules['bs-permissionmanager-tasks'] = 'ApiPermissionManager';
 $wgExtensionFunctions[] = 'PermissionManager::setupLockmodePermissions';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PermissionManager::getSchemaUpdates';
+$wgHooks['BsPermissionManager::beforeSavePermissions'][] = 'PermissionValidator::beforeSavePermissionsValidateGlobalRead';
 
 if( !isset( $bsgPermissionManagerDefaultTemplates ) ) {
 	$bsgPermissionManagerDefaultTemplates = array();
