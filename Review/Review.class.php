@@ -664,31 +664,6 @@ class Review extends BsExtensionMW {
 	}
 
 	/**
-	 * Returns a JSON encoded list of users. Called by review handler
-	 * @return bool Just some return value. Looks nice.
-	 */
-	public static function getUsers() {
-		if ( BsCore::checkAccessAdmission( 'read' ) === false )
-			return true;
-		$aJsonOut = array();
-		$aJsonOut[ 'users' ] = array();
-		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->select( 'user', 'user_id, user_name', '', '', array( 'ORDER BY' => 'user_name' ) );
-		while ($row = $dbw->fetchRow( $res )) {
-			$aUser = array();
-			$oUser = User::newFromName( $row[ 'user_name' ] );
-			$aUser[ 'username' ] = $oUser->getName();
-			$aUser[ 'userid' ] = $row[ 'user_id' ];
-			$aUser[ 'displayname' ] = BsCore::getInstance()->getUserDisplayName( $oUser );
-			#$oReviewFormView->addAssessor( $oUser->getName(), $this->mCore->getUserDisplayName( $oUser ) );
-			//}
-			$aJsonOut[ 'users' ][] = $aUser;
-		}
-
-		return json_encode( $aJsonOut );
-	}
-
-	/**
 	 * Can a user edit a particular page?
 	 *
 	 * @param Title  $oTitle  Title object of current page.
