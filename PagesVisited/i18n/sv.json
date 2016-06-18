@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-pagesvisited-desc": "Ger en personlig lista över de senast besökta sidorna",
@@ -14,5 +15,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "Sortera efter:",
 	"bs-pagesvisited-pref-sort-time": "Tid",
 	"bs-pagesvisited-pref-sort-pagename": "Titel",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Visar en lista över sidor som du besökt."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Visar en lista över nyliga besökta sidor. Denna lista kan begränsas med parametrar."
 }

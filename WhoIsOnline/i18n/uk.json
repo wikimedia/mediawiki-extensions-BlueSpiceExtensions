@@ -15,6 +15,6 @@
 	"bs-whoisonline-pref-orderby-time": "Час безперервної робити:",
 	"bs-whoisonline-pref-orderby-name": "Ім'я",
 	"bs-whoisonline-pref-interval": "Інтервал оновлення в секундах:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Видає кількість користувачів, які зараз у системі.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Видає невеликий випадний список користувачів, які зараз у системі.\n\nДопустимі атрибути:\n;<code>anchortext</code>: Текст, до якого Ви хочете, щоб випадних список був прикріплений."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Показує кількість усіх користувачів, які увійшли в систему за останні 10 хвилин.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Показує усіх користувачів, що увійшли в систему за останні 10 хвилин."
 }

@@ -7,7 +7,7 @@
 		]
 	},
 	"bs-responsibleeditors-desc": "אפשרות לתוכנת מדיה־ויקי לנהל עורכים שאחראים על עריכה של דפים",
-	"action-responsibleeditors-viewspecialpage": "דפי תצוגה אשר מוגנים עם ימין \"ResponsibleEditors-Viewspecialpage\"",
+	"action-responsibleeditors-viewspecialpage": "לצפות בדפים שמוגנים עם ההרשאה \"ResponsibleEditors-Viewspecialpage\"",
 	"right-responsibleeditors-viewspecialpage": "שימוש בהרחבה \"עורכים אחראיים\"",
 	"log-name-bs-responsible-editors": "יומן עורכים אחראיים",
 	"log-description-bs-responsible-editors": "זהו יומן של העורכים האחראים על דפים"

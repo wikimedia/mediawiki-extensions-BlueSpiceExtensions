@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kumkumuk"
+		]
+	},
+	"bs-insertmagic-server": "Domain URL.",
+	"bs-insertmagic-servername": "Domain name.",
+	"bs-insertmagic-type-tags": "Etiketi",
+	"bs-insertmagic-type-variables": "Vurnegeri",
+	"bs-insertmagic-type-switches": "Kılitê muameley",
+	"bs-insertmagic-label-first": "1. Etiket yana çekuy weçinê",
+	"bs-insertmagic-label-second": "2. Modifiya kod",
+	"bs-insertmagic-label-desc": "Şınasnayış",
+	"bs-insertmagic-label-examples": "Misali",
+	"bs-insertmagic-label-see-also": "Neyzi bıvin"
+}
