@@ -3,7 +3,8 @@
 		"authors": [
 			"Valepert",
 			"Beta16",
-			"Matteocng"
+			"Matteocng",
+			"Einreiher"
 		]
 	},
 	"bs-dashboards-desc": "Fornisce cruscotti per utenti e amministratori",
@@ -16,5 +17,5 @@
 	"bs-dashboard-userportlet-wikipage-description": "Utilizza una pagina wiki per definire il widget",
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Pagina wiki",
 	"apihelp-bs-dashboard-task-param-dc": "Parametro di controllo della cache. Usato da ExtJS.",
-	"apihelp-bs-dashboards-store-description": "Elenca tutti i moduli web riusabili"
+	"apihelp-bs-dashboards-store-description": "Elenca tutti i moduli web disponibili."
 }
