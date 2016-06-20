@@ -63,14 +63,15 @@ $wgAutoloadClasses['BsReviewProcess'] = __DIR__ . '/includes/ReviewProcess.class
 $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessStep.class.php';
 $wgAutoloadClasses['ReviewFormatter'] = __DIR__ . '/includes/ReviewFormatter.class.php';
 $wgAutoloadClasses['BSApiReviewOverviewStore'] = __DIR__ . '/includes/api/BSApiReviewOverviewStore.php';
+$wgAutoloadClasses['BSApiReviewTasks'] = __DIR__ . '/includes/api/BSApiReviewTasks.php';
 
 $wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.StateBarBodyElementReview.php';
 
 $wgSpecialPages['Review'] = 'SpecialReview';
 
-$wgAjaxExportList[] = 'Review::doEditReview';
 $wgAjaxExportList[] = 'Review::getVoteResponse';
 $wgAPIModules['bs-reviewoverview-store'] = 'BSApiReviewOverviewStore';
+$wgAPIModules['bs-review-tasks'] = 'BSApiReviewTasks';
 
 $wgLogTypes[] = 'bs-review';
 $wgFilterLogTypes['bs-review'] = true;

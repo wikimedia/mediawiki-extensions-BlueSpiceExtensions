@@ -80,60 +80,13 @@ Ext.define( 'BS.Review.ReviewPanel', {
 	},
 
 	saveReview: function() {
-		obj = this.getData();
-
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl( 'Review::doEditReview'),
-			params: {
-				review: Ext.encode(obj),
-				pid: obj.pid,
-				cmd: 'insert'
-			},
-			success: function(response) {
-				result = Ext.decode( response.responseText );
-				if(result.messages.length) {
-					var tmp = '';
-					for(i in result.messages) {
-						if(typeof(result.messages[i]) != 'string') {
-							continue;
-						}
-						tmp = tmp + result.messages[i] + '<br />';
-					}
-					bs.util.alert(
-						'bs-review-save-alert',
-						{
-							titleMsg: 'bs-review-colstatus',
-							text: tmp
-						},
-						{
-							ok: function(){
-								window.location.reload();
-							}
-						}
-					);
-				}
-			},
-			failure: function(response) {
-				result = Ext.decode( response.responseText );
-				if(result.messages.length) {
-					var tmp = '';
-					for(i in result.messages) {
-						if(typeof(result.messages[i]) != 'string') {
-							continue;
-						}
-						tmp = tmp + result.messages[i] + '<br />';
-					}
-
-					bs.util.alert(
-						'bs-review-save-alert',
-						{
-							titleMsg: 'bs-review-colstatus',
-							text: tmp
-						}
-					);
-				}
-			},
-			scope: this
+		var me = this;
+		bs.api.tasks.exec(
+			'review',
+			'editReview',
+			me.getData()
+		).done( function() {
+			window.location.reload();
 		});
 	},
 
@@ -151,35 +104,13 @@ Ext.define( 'BS.Review.ReviewPanel', {
 	},
 
 	doDeleteReview: function() {
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl( 'Review::doEditReview'),
-			params: {
-				pid: this.currentData.page_id,
-				cmd: 'delete'
-			},
-			success: function(response) {
-				result = Ext.decode( response.responseText );
-				if(result.messages.length) {
-					var tmp = '';
-					for(i in result.messages) {
-						if(typeof(result.messages[i]) != 'string') {
-							continue;
-						}
-						tmp = tmp + result.messages[i] + '<br />';
-					}
-					bs.util.alert(
-						'bs-review-delete-alert',
-						{
-							text: tmp
-						},
-						{
-							ok: function(){
-								window.location.reload();
-							}
-						}
-					);
-				}
-			}
+		var me = this;
+		bs.api.tasks.exec(
+			'review',
+			'deleteReview',
+			{ pid: this.currentData.page_id }
+		).done( function() {
+			window.location.reload();
 		});
 	}
 });
