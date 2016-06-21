@@ -9,5 +9,7 @@
 	"bs-insertmagic-forcetoc": "Força a tabela de conteúdos a aparecer na sua posição normal.",
 	"bs-insertmagic-currentmonthname": "Presente mês (nome).",
 	"bs-insertmagic-currentdayname": "Dia da semana (nome).",
-	"bs-insertmagic-type-variables": "Variáveis"
+	"bs-insertmagic-type-variables": "Variáveis",
+	"bs-insertmagic-label-examples": "Exemplos",
+	"bs-insertmagic-label-see-also": "Ver também"
 }

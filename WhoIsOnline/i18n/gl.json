@@ -14,6 +14,6 @@
 	"bs-whoisonline-pref-orderby-time": "Duración",
 	"bs-whoisonline-pref-orderby-name": "Nome",
 	"bs-whoisonline-pref-interval": "Intervalo de actualización en segundos:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Mostra o número de usuarios actualmente conectados.",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Mostra o número de tódolos usuarios que se conectaron nos últimos 10 minutos.",
 	"bs-whoisonline-tag-whoisonlinepopup-desc": "Mostra tódolos usuarios que se conectaron nos últimos 10 minutos."
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Shuba",
 			"HarpyWar",
-			"Meshkov.a"
+			"Meshkov.a",
+			"Okras"
 		]
 	},
 	"bs-pagesvisited-desc": "Предоставляет собственный список последних посещенных страниц.",
@@ -15,5 +16,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "Сортировать по:",
 	"bs-pagesvisited-pref-sort-time": "Время",
 	"bs-pagesvisited-pref-sort-pagename": "Заголовок",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Отображает список страниц, которые Вы посетили."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Показывает список недавно посещённых страниц. Этот список может быть ограничен параметрами."
 }

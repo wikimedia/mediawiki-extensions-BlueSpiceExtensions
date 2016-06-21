@@ -13,5 +13,5 @@
 	"bs-whoisonline-pref-maxidletime": "Tempo, em segundos, até que um(a) utilizador(a) seja marcado como offline:",
 	"bs-whoisonline-pref-orderby-name": "Nome",
 	"bs-whoisonline-pref-interval": "Intervalo de atualização em segundos:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Apresenta o número de utilizadores com sessão iniciada atualmente."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Apresenta o número de utilizadores que iniciaram a sessão nos últimos 10 minutos."
 }

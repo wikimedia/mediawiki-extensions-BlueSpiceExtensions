@@ -24,6 +24,7 @@
 	"bs-extendedsearch-fuzzy": "Uma procura exata para \"$1\" não encontrou nenhum resultado. {{PLURAL:$2|Existe $2 resultado semelhante|Existem $2 resultados semelhantes}}.",
 	"bs-extendedsearch-invalid-query": "A consulta não pôde ser processada.",
 	"bs-extendedsearch-nosearchterm": "Introduza um termo de pesquisa, por favor.",
+	"bs-extendedsearch-noresult": "Não foram encontradas entradas.",
 	"bs-extendedsearch-result": "Pesquisa por \"$1\" encontrou $2 {{PLURAL:$2|resultado|resultados}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 de cerca de $3 {{PLURAL:$3|resultado|resultados}}",
 	"bs-extendedsearch-search-category": "Pesquisar nas categorias:",
