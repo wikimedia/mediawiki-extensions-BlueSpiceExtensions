@@ -95,7 +95,7 @@ class BSApiPageTemplatesTasks extends BSApiTasksBase {
 				array(
 					'pt_label' => $sLabel,
 					'pt_desc' => $sDesc,
-					'pt_template_title' => $sTemplateName,
+					'pt_template_title' => $oTitle->getText(),
 					'pt_template_namespace' => $oTitle->getNamespace(),
 					'pt_target_namespace' => $iTargetNs,
 					'pt_sid' => 0,
@@ -119,7 +119,7 @@ class BSApiPageTemplatesTasks extends BSApiTasksBase {
 					'pt_id' => $iOldId,
 					'pt_label' => $sLabel,
 					'pt_desc' => $sDesc,
-					'pt_template_title' => $sTemplateName,
+					'pt_template_title' => $oTitle->getText(),
 					'pt_template_namespace' => $oTitle->getNamespace(),
 					'pt_target_namespace' => $iTargetNs
 				),
