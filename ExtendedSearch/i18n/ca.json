@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Edustus"
+			"Edustus",
+			"Medol"
 		]
 	},
+	"bs-extendedsearch-noresult": "No s'han trobat coincidències.",
 	"bs-extendedsearch-sort-title": "Títol",
 	"bs-extendedsearch-statistics": "Estadístiques"
 }

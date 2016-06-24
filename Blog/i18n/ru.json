@@ -3,14 +3,15 @@
 		"authors": [
 			"Okras",
 			"Meshkov.a",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Kaganer"
 		]
 	},
 	"bs-blog-desc": "Отображает стиль блога для списка страниц",
 	"prefs-blog": "Блог",
 	"bs-blog-no-entries": "Нет ни одной записи в блоге.",
 	"bs-blog-comments": "Комментарии",
-	"bs-blog-read-more": "Читать подробнее",
+	"bs-blog-read-more": "Читать ещё",
 	"bs-blog-trackback": "Архив",
 	"bs-blog-permalink": "Постоянная ссылка",
 	"bs-blog-show-all": "Показать все записи",
@@ -27,7 +28,8 @@
 	"bs-blog-pref-showpermalink": "Показать постоянную ссылку",
 	"bs-blog-pref-sortby": "Сортировать по:",
 	"bs-blog-pref-imagerendermode": "Отображать изображения как:",
+	"bs-blog-pref-imagefloatdirection": "Текстовая полоса: положение изображения",
 	"bs-blog-pref-maxentrycharacters": "Количество слов в записи:",
-	"bs-blog-tag-blog-desc": "Показывать записи блога на каждой странице.",
+	"bs-blog-tag-blog-desc": "Включают страницы публикаций, обсуждений файлов блога. Могут быть заданы различные параметры. Они могут быть объединены в любом порядке.",
 	"bs-blog-tag-blogtime-err": "Формат должен быть вида ГГГГММДДЧЧмм. Например, для «12 января 2013 года 15:43» метки выглядит следующим образом: 201301121543"
 }

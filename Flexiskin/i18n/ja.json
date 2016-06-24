@@ -5,7 +5,8 @@
 			"Mfuji",
 			"2nd-player",
 			"赤城。",
-			"Sujiniku"
+			"Sujiniku",
+			"Otokoume"
 		]
 	},
 	"bs-flexiskin-desc": "カスタム オプションで flexiskins を管理するためのページを提供する",
@@ -30,7 +31,7 @@
 	"bs-flexiskin-labelbgcolor": "背景色",
 	"bs-flexiskin-headerheader": "ヘッダー",
 	"bs-flexiskin-labellogoupload": "ロゴ",
-	"bs-flexiskin-labelbackgroundupload": "背景画像",
+	"bs-flexiskin-labelbackgroundupload": "現在の背景画像",
 	"bs-flexiskin-no-repeat": "繰り返さない",
 	"bs-flexiskin-labelrepeatbackground": "背景画像の繰り返し",
 	"bs-flexiskin-labelcustombgcolor": "カスタム色",
