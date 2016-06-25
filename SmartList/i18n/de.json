@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Purodha"
 		]
 	},
 	"bs-smartlist-desc": "Zeigt die letzten fünf Änderungen des Wikis in einer Liste an",
@@ -35,7 +36,7 @@
 	"bs-smartlist-tag-smartlist-desc": "Zeigt automatisch erzeugte Artikellisten an. Die Konfiguration funktioniert mit verschiedenen Modi und Parametern.",
 	"bs-smartlist-tag-smartlist-example-rc": "Modus: Letzte Änderungen",
 	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Modus: Links auf diese Seite",
-	"bs-smartlist-tag-newbies-desc": "Zeigt die neuen Benutzer des Wikis an. Die Liste kann durch eine bestimmte Anzahl beschränkt werden.",
+	"bs-smartlist-tag-newbies-desc": "Zeigt die neuen Benutzer des Wikis an. Die Liste kann auf eine bestimmte Anzahl beschränkt werden.",
 	"bs-smartlist-tag-toplist-desc": "Zeigt die meistbesuchten Seiten an. Kann durch verschiedene Parameter begrenzt werden.",
 	"bs-smartlist-mostvisitedpages": "Meist aufgerufene Seiten",
 	"bs-smartlist-mosteditedpages": "Meist editierte Seiten",

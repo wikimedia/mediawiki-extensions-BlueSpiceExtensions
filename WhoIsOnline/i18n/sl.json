@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-whoisonline-desc": "Prikaže seznam trenutno prijavljenih uporabnikov",
@@ -14,6 +15,6 @@
 	"bs-whoisonline-pref-orderby-time": "Čas delovanja",
 	"bs-whoisonline-pref-orderby-name": "Ime",
 	"bs-whoisonline-pref-interval": "Interval posodobitev v sekundah:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Prikaže število trenutno prijavljenih uporabnikov.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Prikaže pojavni meni trenutno prijavljenih uporabnikov.\n\nVeljavni atributi:\n;<code>tekst</code>: Tekst na katerega se veže pojavni meni."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Prikaže število vseh uporabnikov, ki so bili prijavljeni v zadnjih 10 minutah.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Prikaže vse uporabnike, ki so bili prijavljeni v zadnjih 10 minutah."
 }

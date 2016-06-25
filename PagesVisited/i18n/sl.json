@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alojz.tic",
-			"Skalcaa"
+			"Skalcaa",
+			"Dbc334"
 		]
 	},
 	"bs-pagesvisited-desc": "Zagotavlja osebni seznam nazadnje obiskanih strani",
@@ -14,5 +15,5 @@
 	"bs-pagesvisited-pref-widgetsortodr": "Razvrsti po:",
 	"bs-pagesvisited-pref-sort-time": "Čas",
 	"bs-pagesvisited-pref-sort-pagename": "Naslov",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Prikaže seznam strani, ki ste jih obiskali."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Prikaže seznam nedavno obiskanih strani. Seznam lahko omejite s parametri."
 }

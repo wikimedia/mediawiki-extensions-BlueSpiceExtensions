@@ -14,6 +14,8 @@
 	"bs-countthings-error-not-exist": "Stran \"$1\" ne obstaja.",
 	"bs-countthings-tag-countarticles-desc": "Prikaže število člankov na tem wikiju.",
 	"bs-countthings-tag-countusers-desc": "Prikaže število registriranih uporabnikov.",
-	"bs-countthings-tag-countcharacters-desc": "Prikaže statistiko vsebine podane strani. Konfiguracijski atribut, ki je na voljo:",
-	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Kaj naj se šteje? <code>chars</code> (znaki), <code>words</code> (besede) ali <code>pages</code> (strani)."
+	"bs-countthings-tag-countcharacters-desc": "Ustvari metapodatke iz vsebine navedenega članka. Izhod je infopolje, ki ga lahko vključite v članek. S parametrom »mode« lahko prikažete različne vrste informacij.",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Kaj naj se šteje? <code>chars</code> (znaki), <code>words</code> (besede) ali <code>pages</code> (strani).",
+	"bs-countthings-tag-countcharacters-example-1": "Število besed",
+	"bs-countthings-tag-countcharacters-example-2": "Število znakov"
 }
