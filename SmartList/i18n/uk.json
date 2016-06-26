@@ -33,6 +33,8 @@
 	"bs-smartlist-time": "Час",
 	"bs-smartlist-title": "Заголовок",
 	"bs-smartlist-tag-smartlist-desc": "Показує автоматично згенеровані списки статей. Конфігурація працює через декілька способів і параметрів.",
+	"bs-smartlist-tag-smartlist-example-rc": "Режим: нещодавні зміни",
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "Режим: посилання сюди",
 	"bs-smartlist-tag-newbies-desc": "Показує нових користувачів вікі. Список можна обмежити до певного числа.",
 	"bs-smartlist-tag-toplist-desc": "Показує найбільш відвідувані сторінки. Може бути обмежено за кількома параметрами.",
 	"bs-smartlist-mostvisitedpages": "Сторінки, які найчастіше переглядають",

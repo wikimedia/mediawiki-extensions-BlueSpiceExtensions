@@ -30,6 +30,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Індексування спеціальних сторінок",
 	"bs-extendedsearch-invalid-query": "Не вдалося обробити запит.",
 	"bs-extendedsearch-nosearchterm": "Будь ласка, введіть умову пошуку.",
+	"bs-extendedsearch-noresult": "Записів не знайдено.",
 	"bs-extendedsearch-result": "Пошук \"$1\" знайшов $2 {{PLURAL:$2|результат|результати|результатів}}.",
 	"bs-extendedsearch-result-caption": "$1 — $2 з $3 результат{{PLURAL:$3||ів}}",
 	"bs-extendedsearch-search-category": "Пошук у категоріях:",
