@@ -143,7 +143,7 @@ class BsUniversalExportHelper {
 			$oHeadingElement     = $oHeadingElements->item( $i );
 			$sHeadingTextContent = trim( $oHeadingElement->textContent );
 			//In $sPageTitleHeadingJumpmark there is the PageTitle AND the RevisionId incorporated
-			$sHeadingJumpmark    = 'bs-ue-jumpmark-'.md5( $sPageTitleHeadingJumpmark.$sHeadingTextContent );
+			$sHeadingJumpmark    = 'bs-ue-jumpmark-'.md5( $sPageTitleHeadingJumpmark.$sHeadingTextContent.$i );
 
 			$oBookmarkElement = $oBookmarksDOM->createElement( 'bookmark' );
 			$oBookmarkElement->setAttribute( 'name', $sHeadingTextContent );
