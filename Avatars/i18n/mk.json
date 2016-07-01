@@ -8,7 +8,7 @@
 	"bs-avatars-desc": "Дава генерички и поединечни кориснички слики",
 	"bs-avatars-pref-generator": "Создавач:",
 	"bs-avatars-pref-defaultsize": "Стандардна големина во пиксели:",
-	"bs-avatars-upload-complete": "Сликата е успешно подигната.",
+	"bs-avatars-upload-complete": "Сликата е подигната.",
 	"bs-avatars-generate-complete": "Создаден е нов аватар.",
 	"bs-avatars-upload-title": "Смени профилна слика",
 	"bs-avatars-upload-label": "Слика",
@@ -18,7 +18,7 @@
 	"bs-avatars-userimage-title": "Слика од вики или URL",
 	"bs-avatars-userimage-help": "на пр. Слика.jpg или http://localhost/Слика.gif",
 	"bs-avatars-set-userimage-failed": "Ова не претставува важечка URL или слика од вики",
-	"bs-avatars-set-userimage-saved": "Корисничката слика е успешно зачувана.",
+	"bs-avatars-set-userimage-saved": "Корисничката слика е зачувана.",
 	"bs-avatars-file-upload-fieldset-title": "Подигање на слика",
 	"bs-avatars-auto-generate-fieldset-title": "Автосоздавање на аватар"
 }

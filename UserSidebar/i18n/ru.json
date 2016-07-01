@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Kaganer"
 		]
 	},
-	"bs-usersidebar-desc": "Добавляет вкладку фокус на боковую панель",
-	"prefs-usersidebar": "Боковая панель пользователя",
-	"bs-usersidebar-userpagesettings-link-title": "Редактировать содержимое Вашего фокуса",
-	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Редактировать}} фокус"
+	"bs-usersidebar-desc": "Добавляет на боковую панель навигации вкладку активности участника («focus tab»)",
+	"prefs-usersidebar": "Пользовательская панель навигации",
+	"bs-usersidebar-userpagesettings-link-title": "Редактировать список того, что находится в фокусе вашего внимания",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Редактировать}} список",
+	"bs-usersidebar-tab-focus": "В фокусе",
+	"bs-usersidebar-tab-globalactions": "Глобальные действия",
+	"bs-usersidebar-globalactionswidget-title": "Глобальные действия"
 }

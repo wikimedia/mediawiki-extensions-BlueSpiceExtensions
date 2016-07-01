@@ -4,14 +4,15 @@
 			"Okras",
 			"Meshkov.a",
 			"Alexandr Efremov",
-			"Kaganer"
+			"Kaganer",
+			"Mailman"
 		]
 	},
 	"bs-blog-desc": "Отображает стиль блога для списка страниц",
 	"prefs-blog": "Блог",
 	"bs-blog-no-entries": "Нет ни одной записи в блоге.",
 	"bs-blog-comments": "Комментарии",
-	"bs-blog-read-more": "Читать ещё",
+	"bs-blog-read-more": "Подробнее",
 	"bs-blog-trackback": "Архив",
 	"bs-blog-permalink": "Постоянная ссылка",
 	"bs-blog-show-all": "Показать все записи",

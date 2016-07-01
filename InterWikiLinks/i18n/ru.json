@@ -3,7 +3,8 @@
 		"authors": [
 			"Meshkov.a",
 			"Okras",
-			"Striking Blue"
+			"Striking Blue",
+			"Kaganer"
 		]
 	},
 	"bs-interwikilinks-desc": "Административный интерфейс для добавления, правки и удаления ссылок интервики",
@@ -24,7 +25,7 @@
 	"bs-interwikilinks-labelprefix": "Префикс",
 	"bs-interwikilinks-titledeleteinterwikilink": "Удалить интервики-ссылку",
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Вы уверены, что хотите удалить эту интервики-ссылку?",
-	"bs-interwikilinks-insertlink-tabtitle": "Ссылка на другую Вики",
+	"bs-interwikilinks-insertlink-tabtitle": "Ссылка на другой вики-сайт",
 	"bs-interwikilinks-insertlink-labelprefix": "Префикс",
 	"bs-interwikilink-select-a-prefix": "Выберите префикс"
 }
