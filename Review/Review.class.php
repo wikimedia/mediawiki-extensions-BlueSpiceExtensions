@@ -1217,28 +1217,39 @@ class Review extends BsExtensionMW {
 	}
 
 	/**
-	 * Called when a review vote is cast. Handles votes. Called by remote handler.
-	 * @return bool Allow other hooked methods to be executed. always true.
+	 * Handles Review votes.
+	 * @param Title $oTitle
+	 * @param stdClass $oParams - Known param keys are vote and comment
+	 * @param User $oUser
+	 * @return Status - Use Status->getValue() to get the BsRevieProcess on a
+	 * good Status
 	 */
-	public static function getVoteResponse() {
-		global $wgRequest;
-
-		$iArticleId = $wgRequest->getInt( 'articleID', 0 );
-		$sVote = $wgRequest->getVal( 'vote', '' );
-		$sComment = $wgRequest->getVal( 'comment', '' );
-
-		if ( empty( $iArticleId ) || empty( $sVote ) || (int)$iArticleId === 0 ) {
-			return wfMessage( 'bs-review-review-error' )->plain();
+	public static function doVote( Title $oTitle, stdClass $oParams = null, User $oUser = null ) {
+		$iArticleId = (int) $oTitle->getArticleID();
+		$sVote = empty( $oParams->vote )
+			? ''
+			: (string)$oParams->vote
+		;
+		$sComment = empty( $oParams->comment )
+			? ''
+			: (string)$oParams->comment
+		;
+		if ( empty( $iArticleId ) || empty( $sVote ) || $iArticleId === 0 ) {
+			return Status::newFatal( 'bs-review-review-error' );
 		}
 
-		$oTitle = Title::newFromID( $iArticleId );
-		$oUser = RequestContext::getMain()->getUser();
+		if( !$oUser instanceof User ) {
+			$oUser = RequestContext::getMain()->getUser();
+		}
 		//tbd: make bs-review-review-error more explicit
-		if ( $oTitle === false || !$oTitle->exists() || $oUser === false ) {
-			return wfMessage( 'bs-review-review-error' )->plain();
+		if ( !$oTitle->exists() || !$oUser ) {
+			return Status::newFatal( 'bs-review-review-error' );
 		}
 		if ( !$oTitle->userCan( "workflowview", $oUser ) ) {
-			return wfMessage( 'bs-review-error-insufficient-permissions', 'workflowview' )->text();
+			return Status::newFatal(
+				'bs-review-error-insufficient-permissions',
+				'workflowview'
+			)->text();
 		}
 
 		$oReview = BsExtensionManager::getExtension( 'Review' );
@@ -1262,16 +1273,36 @@ class Review extends BsExtensionMW {
 		$options = array( 'ORDER BY' => 'revs_sort_id ASC' );
 		$join_conds = array();
 		$fields = $tbl_step . '.*';
-		wfRunHooks( 'BsReview::buildDbQuery', array( 'getVoteResponse', &$tables, &$fields, &$conds, &$options, &$join_conds ) );
+
+		$oStatus = Status::newGood();
+		wfRunHooks( 'BsReview::buildDbQuery', array(
+			'getVoteResponse',
+			&$tables,
+			&$fields,
+			&$conds,
+			&$options,
+			&$join_conds,
+			$oTitle,
+			$oParams,
+			$oUser,
+			&$oStatus
+		));
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
 
 		$res = $dbw->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );
 		if ( !$row = $dbw->fetchRow( $res ) ) {
-			return wfMessage( 'bs-review-review-error' )->plain();
+			return $oStatus->merge(
+				Status::newFatal( 'bs-review-review-error' )
+			);
 		}
 
 		// Unexpectedly, no review could be found.
 		if ( $dbw->numRows( $res ) == 0 ) {
-			return wfMessage( 'bs-review-review-secondtime' )->plain();
+			return $oStatus->merge(
+				Status::newFatal( 'bs-review-review-secondtime' )
+			);
 		} elseif ( $dbw->numRows( $res ) > 1 ) {
 			$oNext = $dbw->fetchObject( $res );
 		}
@@ -1286,11 +1317,23 @@ class Review extends BsExtensionMW {
 		switch ( $sVote ) {
 			case "yes" :
 				$data[ 'revs_status' ] = 1;
-				$oReview->oLogger->addEntry( 'approve', $oTitle, '', null, $oUser );
+				$oReview->getLogger()->addEntry(
+					'approve',
+					$oTitle,
+					'',
+					null,
+					$oUser
+				);
 				break;
 			case "no" :
 				$data[ 'revs_status' ] = 0;
-				$oReview->oLogger->addEntry( 'deny', $oTitle, '', null, $oUser );
+				$oReview->getLogger()->addEntry(
+					'deny',
+					$oTitle,
+					'',
+					null,
+					$oUser
+				);
 				break;
 			default :
 				$data[ 'revs_status' ] = -1;
@@ -1317,7 +1360,18 @@ class Review extends BsExtensionMW {
 			$data[ 'revs_comment' ] = $initial_comment;
 		}
 
-		wfRunHooks( 'BsReview::dataBeforeSafe', array( 'getVoteResponse', &$data ) );
+		wfRunHooks( 'BsReview::dataBeforeSafe', array(
+			'getVoteResponse',
+			&$data,
+			$oTitle,
+			$oParams,
+			$oUser,
+			&$oStatus
+		));
+
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
 
 		$dbw->update( 'bs_review_steps', $data, array( 'revs_id' => $step_id ) );
 
@@ -1359,7 +1413,7 @@ class Review extends BsExtensionMW {
 		}
 
 		if ( $oReviewProcess->isFinished() === false ) {
-			return wfMessage( 'bs-review-review-saved' )->plain();
+			return Status::newGood( $oReviewProcess );
 		}
 
 		// Let flagged revision know that it's all goooooood (or not approved)
@@ -1388,7 +1442,7 @@ class Review extends BsExtensionMW {
 		}
 
 		// Unfortunately, there is no way of verifying the result :(
-		return wfMessage( 'bs-review-review-saved' )->plain();
+		return Status::newGood( $oReviewProcess );
 	}
 
 	/**

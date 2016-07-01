@@ -48,51 +48,21 @@
 
 	//Wire up accept/decline links
 	$(document).on('click', 'a#bs-review-ok', function() {
-		$.ajax({
-			url: bs.util.getAjaxDispatcherUrl('Review::getVoteResponse'),
-			data: {
-				articleID: mw.config.get('wgArticleId'),
-				vote: 'yes',
-				comment: $('#bs-review-voteresponse-comment').val() || ''
-			},
-			type: "POST",
-			success: function( data, textStatus, jqXHR ) {
-				bs.util.alert(
-					'bs-review-alert',
-					{
-						text: data
-					},
-					{
-						ok: function() {
-							window.location.reload();
-						}
-					}
-				);
-			}
+		bs.api.tasks.exec( 'review', 'vote', {
+			articleID: mw.config.get('wgArticleId'),
+			vote: 'yes',
+			comment: $('#bs-review-voteresponse-comment').val() || ''
+		}).done( function() {
+			window.location.reload();
 		});
 	});
 	$(document).on('click', 'a#bs-review-dismiss', function() {
-		$.ajax({
-			url: bs.util.getAjaxDispatcherUrl('Review::getVoteResponse'),
-			data: {
-				articleID: mw.config.get('wgArticleId'),
-				vote: 'no',
-				comment: $('#bs-review-voteresponse-comment').val() || ''
-			},
-			type: "POST",
-			success: function( data, textStatus, jqXHR ) {
-				bs.util.alert(
-					'bs-review-alert',
-					{
-						text: data
-					},
-					{
-						ok: function() {
-							window.location.reload();
-						}
-					}
-				);
-			}
+		bs.api.tasks.exec( 'review', 'vote', {
+			articleID: mw.config.get('wgArticleId'),
+			vote: 'no',
+			comment: $('#bs-review-voteresponse-comment').val() || ''
+		}).done( function() {
+			window.location.reload();
 		});
 	});
 }( mediaWiki, jQuery, blueSpice ));
