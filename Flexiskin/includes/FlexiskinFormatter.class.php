@@ -21,7 +21,7 @@ class FlexiskinFormatter {
 				$aReturn[] = "body.mediawiki{background-image:none !important;}";
 			}
 		}
-		elseif ( $aConfig->backgroundImage == "none" ) {
+		elseif ( isset( $aConfig->backgroundImage ) && $aConfig->backgroundImage == "none" ) {
 			$aReturn[] = "body.mediawiki{background-image:none !important;}";
 		}
 		else {
