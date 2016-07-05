@@ -18,8 +18,24 @@ $(document).on( 'click', '#bs-editbutton-insertfile', function( e ){
 		var data = {};
 		var selection = bs.util.selection.save();
 		if( selection !== '' ) {
+			var checkIsWikiLink = selection.match(/\[\[.*?\]\]/);
 			var wikiLink = new bs.wikiText.Link( selection );
-			if( wikiLink.getNsId() !== bs.ns.NS_MEDIA ) {
+
+			if( checkIsWikiLink === null ){
+				data = {
+					title: selection,
+					displayText: selection,
+					caption: selection //Same as getDisplayText()
+				};
+			}
+			else if( wikiLink.getNsId() === bs.ns.NS_MEDIA ) {
+				data = {
+					title: wikiLink.getTitle(),
+					displayText: wikiLink.getDisplayText(),
+					caption: wikiLink.getCaption() //Same as getDisplayText()
+				};
+			}
+			else {
 				bs.util.alert(
 					'bs-insertfile-selection-alert',
 					{
@@ -28,11 +44,6 @@ $(document).on( 'click', '#bs-editbutton-insertfile', function( e ){
 				);
 				return;
 			}
-			data = {
-				title: wikiLink.getTitle(),
-				displayText: wikiLink.getDisplayText(),
-				caption: wikiLink.getCaption() //Same as getDisplayText()
-			};
 		}
 
 		BS.InsertFile.FileDialog.show( me );
