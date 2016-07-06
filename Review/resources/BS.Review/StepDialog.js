@@ -1,13 +1,36 @@
 Ext.define( 'BS.Review.StepDialog', {
 	extend: 'BS.Window',
+	requires: ['BS.model.User'],
 	singleton: true,
 	modal: true,
 
 	afterInitComponent: function() {
+		this.strUsers = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-reviewpossiblereviewers-store',
+			proxy: {
+				reader: {
+					idProperty: 'user_id'
+				},
+				extraParams: {
+					articleId: mw.config.get( 'wgArticleId', 0 )
+				}
+			},
+			model: 'BS.model.User',
+			//autoLoad: true //We need to load manually to have the store
+			//loading before rendering. This allows setting values at an early
+			//time,
+			sorters: [{
+				property: 'display_name',
+				direction: 'ASC'
+			}],
+			sortOnLoad: true,
+			remoteSort: false
+		});
 		this.setTitle( mw.message('bs-review-titleaddreviewer' ).plain() );
 		this.cbUsers = Ext.create( 'BS.form.UserCombo', {
-			anyMatch: true
-		} );
+			anyMatch: true,
+			store: this.strUsers
+		});
 		this.cbUsers.getStore().sort('display_name', 'asc');
 
 		this.tfComment = Ext.create( 'Ext.form.TextField', {
