@@ -5,8 +5,6 @@ $GLOBALS['wgAutoloadClasses']['FormattingHelp'] = __DIR__ . '/FormattingHelp.cla
 
 $wgMessagesDirs['FormattingHelp'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['FormattingHelp'] = __DIR__ . '/languages/FormattingHelp.i18n.php';
-
 $wgAutoloadClasses['BSApiTasksFormattingHelp'] = __DIR__ . '/includes/api/BSApiTasksFormattingHelp.php';
 $wgAPIModules['bs-formattinghelp'] = 'BSApiTasksFormattingHelp';
 

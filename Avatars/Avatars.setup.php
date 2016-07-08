@@ -4,8 +4,6 @@ BsExtensionManager::registerExtension('Avatars', BsRUNLEVEL::FULL | BsRUNLEVEL::
 
 $wgMessagesDirs['Avatars'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['Avatars'] = __DIR__ . '/languages/Avatars.i18n.php';
-
 $GLOBALS['wgAutoloadClasses']['Avatars'] = __DIR__ . '/Avatars.class.php';
 
 $wgHooks['BeforePageDisplay'][] = "Avatars::onBeforePageDisplay";

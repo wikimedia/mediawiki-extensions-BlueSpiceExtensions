@@ -12,7 +12,7 @@ $wgAPIModules['bs-checklist-available-options-store'] = 'BSApiChecklistAvailable
 $wgAPIModules['bs-checklist-template-store'] = 'BSApiChecklistTemplateStore';
 $wgAPIModules['bs-checklist-tasks'] = 'BSApiChecklistTasks';
 
-$wgExtensionMessagesFiles['Checklist'] = __DIR__ . '/languages/Checklist.i18n.php';
+$wgMessagesDirs['Checklist'] = __DIR__ . '/i18n';
 
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__.'/resources',

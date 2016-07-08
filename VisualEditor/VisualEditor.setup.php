@@ -6,7 +6,6 @@ $GLOBALS['wgAutoloadClasses']['VisualEditor'] = __DIR__ . '/VisualEditor.class.p
 
 $wgMessagesDirs['VisualEditor'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['VisualEditor'] = __DIR__ . '/languages/VisualEditor.i18n.php';
 $wgExtensionMessagesFiles['VisualEditorMagic'] = __DIR__ . '/languages/VisualEditor.i18n.magic.php';
 
 $wgAutoloadClasses['ApiVisualEditorTasks'] = __DIR__ . '/includes/api/BSApiVisualEditorTasks.php';

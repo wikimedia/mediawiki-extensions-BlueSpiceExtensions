@@ -6,8 +6,6 @@ $GLOBALS['wgAutoloadClasses']['BSApiTasksInterWikiLinksManager'] = __DIR__ . '/i
 
 $wgMessagesDirs['InterWikiLinks'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['InterWikiLinks'] = __DIR__ . '/languages/InterWikiLinks.i18n.php';
-
 $wgResourceModules['ext.bluespice.interWikiLinks'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/InterWikiLinks/resources/bluespice.interWikiLinks.js',
 	'messages' => array(

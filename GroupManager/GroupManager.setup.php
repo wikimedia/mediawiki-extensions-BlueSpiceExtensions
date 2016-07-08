@@ -7,8 +7,6 @@ $wgAutoloadClasses['BSApiTasksGroupManager'] = __DIR__ . '/includes/api/BSApiTas
 
 $wgMessagesDirs['GroupManager'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['GroupManager'] = __DIR__ . '/languages/GroupManager.i18n.php';
-
 $wgResourceModules['ext.bluespice.groupManager'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/GroupManager/resources/bluespice.groupManager.js',
 	'dependencies' => 'ext.bluespice.extjs',

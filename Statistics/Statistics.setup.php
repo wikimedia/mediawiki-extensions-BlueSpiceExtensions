@@ -5,8 +5,6 @@ $GLOBALS['wgAutoloadClasses']['Statistics'] = __DIR__ . '/Statistics.class.php';
 
 $wgMessagesDirs['Statistics'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['Statistics'] = __DIR__ . '/languages/Statistics.i18n.php';
-
 $aResourceModuleTemplate = array(
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/Statistics/resources'

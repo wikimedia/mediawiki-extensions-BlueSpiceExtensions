@@ -4,8 +4,6 @@ BsExtensionManager::registerExtension( 'PageTemplates', BsRUNLEVEL::FULL|BsRUNLE
 
 $wgMessagesDirs['PageTemplates'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['PageTemplates'] = __DIR__ . '/languages/PageTemplates.i18n.php';
-
 $GLOBALS['wgAutoloadClasses']['PageTemplates'] = __DIR__ . '/PageTemplates.class.php';
 $GLOBALS['wgAutoloadClasses']['BSApiPageTemplatesStore'] = __DIR__ . '/includes/api/BSApiPageTemplatesStore.php';
 $GLOBALS['wgAutoloadClasses']['BSApiPageTemplatesTasks'] = __DIR__ . '/includes/api/BSApiPageTemplatesTasks.php';

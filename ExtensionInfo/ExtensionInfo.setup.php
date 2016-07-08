@@ -5,7 +5,6 @@ $GLOBALS['wgAutoloadClasses']['ExtensionInfo'] = __DIR__ . '/ExtensionInfo.class
 
 $wgMessagesDirs['ExtensionInfo'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['ExtensionInfo'] = __DIR__ . '/languages/ExtensionInfo.i18n.php';
 $wgExtensionMessagesFiles['ExtensionInfoAlias'] = __DIR__ . '/languages/SpecialExtensionInfo.alias.php';
 
 $wgAutoloadClasses['SpecialExtensionInfo'] = __DIR__ . '/includes/specials/SpecialExtensionInfo.class.php';

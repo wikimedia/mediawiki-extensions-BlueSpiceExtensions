@@ -8,7 +8,6 @@ $wgHooks['BeforePageDisplay'][] = "Flexiskin::onBeforePageDisplay";
 $wgHooks['ResourceLoaderRegisterModules'][] = "Flexiskin::onResourceLoaderRegisterModules";
 
 $wgMessagesDirs['Flexiskin'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['Flexiskin'] = __DIR__ . '/languages/Flexiskin.i18n.php';
 $wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/languages/Flexiskin.alias.php';
 
 $wgAutoloadClasses['FlexiskinApi'] = __DIR__ . '/includes/FlexiskinApi.class.php';

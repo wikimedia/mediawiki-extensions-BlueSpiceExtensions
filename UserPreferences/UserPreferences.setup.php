@@ -6,8 +6,6 @@ $GLOBALS['wgAutoloadClasses']['UserPreferences'] = __DIR__ . '/UserPreferences.c
 
 $wgMessagesDirs['UserPreferences'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['UserPreferences'] = __DIR__ . '/languages/UserPreferences.i18n.php';
-
 $wgHooks['UserLoadOptions'][] = 'UserPreferences::onUserLoadOptions';
 
 $wgResourceModules['ext.bluespice.userpreferences'] = array(

@@ -6,8 +6,6 @@ $GLOBALS['wgAutoloadClasses']['ExtendedEditBar'] = __DIR__ . '/ExtendedEditBar.c
 
 $wgMessagesDirs['ExtendedEditBar'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['ExtendedEditBar'] = __DIR__ . '/languages/ExtendedEditBar.i18n.php';
-
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP.'/extensions/BlueSpiceExtensions/ExtendedEditBar/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/ExtendedEditBar/resources',

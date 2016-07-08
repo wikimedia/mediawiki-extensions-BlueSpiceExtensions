@@ -4,7 +4,6 @@ BsExtensionManager::registerExtension('ResponsibleEditors', BsRUNLEVEL::FULL|BsR
 
 $wgMessagesDirs['ResponsibleEditors'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['ResponsibleEditors'] = __DIR__ . '/languages/ResponsibleEditors.i18n.php';
 $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages

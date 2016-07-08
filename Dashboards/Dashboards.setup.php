@@ -4,7 +4,6 @@ BsExtensionManager::registerExtension('Dashboards', BsRUNLEVEL::FULL|BsRUNLEVEL:
 
 $wgMessagesDirs['Dashboards'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['Dashboards'] = __DIR__ . '/languages/Dashboards.i18n.php';
 $wgExtensionMessagesFiles['DashboardsAlias'] = __DIR__.'/languages/Dashboards.alias.php';
 
 $GLOBALS['wgAutoloadClasses']['Dashboards'] = __DIR__ . '/Dashboards.class.php';

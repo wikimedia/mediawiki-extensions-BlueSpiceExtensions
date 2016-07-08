@@ -4,7 +4,6 @@ BsExtensionManager::registerExtension('ShoutBox', BsRUNLEVEL::FULL|BsRUNLEVEL::R
 
 $wgMessagesDirs['ShoutBox'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['ShoutBox'] = __DIR__ . '/languages/ShoutBox.i18n.php';
 $wgExtensionMessagesFiles['ShoutBoxMagic'] = __DIR__ . '/languages/ShoutBox.i18n.magic.php';
 
 $aResourceModuleTemplate = array(

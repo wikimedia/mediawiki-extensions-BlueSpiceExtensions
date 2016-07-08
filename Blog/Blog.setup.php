@@ -5,7 +5,6 @@ BsExtensionManager::registerNamespace( 'Blog', 2 );
 
 $wgMessagesDirs['Blog'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['Blog'] = __DIR__ . '/languages/Blog.i18n.php';
 $wgExtensionMessagesFiles['BlogNamespaces'] = __DIR__ . '/languages/Blog.namespaces.php';
 
 $wgResourceModules['ext.bluespice.blog'] = array(
