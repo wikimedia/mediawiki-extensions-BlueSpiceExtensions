@@ -540,12 +540,13 @@
 	 * adds or changes a template record
 	 *
 	 * @param {Ext.data.Model} record
+	 * @param {Boolean} isNewRecord show if record is now or existing one
 	 */
-	function setTemplate(record) {
-		if (record.id) {
+	function setTemplate(record, isNewRecord) {
+		if (!isNewRecord) {
 			var length = permissionTemplates.length;
 			for (var i = 0; i < length; i++) {
-				if (permissionTemplates[i].id == record.id) {
+				if (permissionTemplates[i].id === record.id) {
 					permissionTemplates[i] = record;
 					break;
 				}

@@ -9,7 +9,7 @@ class PermissionTemplates {
 	protected static $_aTemplates = array();
 
 	/**
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getAll() {
@@ -40,8 +40,11 @@ class PermissionTemplates {
 	public static function addTemplate($sName, $aPermissions, $sDescription ) {
 		$oDb = wfGetDB(DB_MASTER);
 		$sTableName = $oDb->tableName('bs_permission_templates');
-		return $oDb->query("INSERT INTO {$sTableName} (tpl_name, tpl_data, tpl_description)
-							VALUES ('{$sName}', '".serialize($aPermissions)."', '{$sDescription}')");
+		return $oDb->insert($sTableName, array(
+			'tpl_name' => $sName,
+			'tpl_data' => serialize($aPermissions),
+			'tpl_description' => $sDescription
+		  ));
 	}
 
 	public static function editTemplate($iId, $sName, $aPermissions, $sDescription) {
