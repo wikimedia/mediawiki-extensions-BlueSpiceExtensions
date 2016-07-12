@@ -14,6 +14,6 @@
 	"bs-insertcategory-cat-label": "Tilldelad:",
 	"bs-insertcategory-success": "Kategorin lades till",
 	"bs-insertcategory-failure": "Fel",
-	"bs-insertcategory-hint": "Obs: för att lägga till en kategori, måste du trycka enter eller avsluta inmatningen med ett kommatecken.",
+	"bs-insertcategory-hint": "OBS: För att lägga till en kategori måste du trycka på enter.",
 	"bs-insertcategory-panel-title": "Kategorier"
 }

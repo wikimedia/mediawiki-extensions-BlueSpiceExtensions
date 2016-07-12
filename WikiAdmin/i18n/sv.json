@@ -14,5 +14,6 @@
 	"right-wikiadmin": "Visa BlueSpices administrationssidor",
 	"bs-wikiadmin-shop": "Affär",
 	"bs-wikiadmin-mediawiki-specialpages-text": "Specialsidor",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Listar alla MediaWiki särskilda sidor"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Listar alla MediaWiki särskilda sidor",
+	"bs-wikiadmin-widget-title": "Administration"
 }

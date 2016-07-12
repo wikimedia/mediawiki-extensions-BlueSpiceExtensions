@@ -100,5 +100,14 @@
 	"notification-bs-review-accept-body": "$1 {{GENDER:$1|reagerade}} på din granskning av \"$2\" och har {{GENDER:$1|godkänt}} ändringarna.",
 	"notification-bs-review-deny-summary": "[[User:$1|$1]] {{GENDER:$1|avvisade}} innehållet i $3",
 	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|avvisade}} \"$2\"",
-	"notification-bs-review-deny-body": "$1 {{GENDER:$1|reagerade}} på din granskning av \"$2\" och har {{GENDER:$1|avvisat}} ändringarna."
+	"notification-bs-review-deny-body": "$1 {{GENDER:$1|reagerade}} på din granskning av \"$2\" och har {{GENDER:$1|avvisat}} ändringarna.",
+	"notification-bs-review-deny-and-restart-summary": "[[User:$1|$1]] {{GENDER:$1|avvisade}} innehållet för $3 och startade automatiskt om granskningsprocessen",
+	"notification-bs-review-deny-and-restart-subject": "$1 {{GENDER:$1|avvisade}} \"$2\"",
+	"notification-bs-review-deny-and-restart-body": "$1 {{GENDER:$2|reagerade}} på din granskning av \"$2\" och {{GENDER:$2|avvisade}} ändringarna. Granskningen kommer att startas om automatiskt.",
+	"notification-bs-review-finish-summary": "[[User:$1|$1]] {{GENDER:$1|slutförde}} granskningsprocessen för $3",
+	"notification-bs-review-finish-subject": "$1 {{GENDER:$1|slutförde}} granskningen av \"$2\"",
+	"notification-bs-review-finish-body": "$1 {{GENDER:$1|slutförde}} din granskning av \"$2\". Kontrollera resultaten för granskningsprocessen.",
+	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|slutförde}} granskningsprocessen och markerade $3 som stabil automatiskt",
+	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|slutförde}} granskningen för \"$2\"",
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|slutförde}} din granskning för \"$2\". Sidan markerades som stabil automatiskt."
 }

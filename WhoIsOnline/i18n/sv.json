@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-whoisonline-desc": "Visar en lista över användare som är online nu",
@@ -16,5 +17,5 @@
 	"bs-whoisonline-pref-orderby-name": "Namn",
 	"bs-whoisonline-pref-interval": "Uppdateringsintervall i sekunder:",
 	"bs-whoisonline-tag-whoisonlinecount-desc": "Skapar en lista över antalet nu inloggade användare.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Skapar en liten svävande lista över för närvarande inloggade användare.\n\nGiltiga attribut:\n;<code>anchortext</code>: Texten du vill ankra den svävande listan till."
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Visar en lista över användare som har varit inloggade de senaste 10 minuterna."
 }

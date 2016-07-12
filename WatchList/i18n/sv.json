@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Lokal Profil",
-			"Jopparn"
+			"Jopparn",
+			"WikiPhoenix"
 		]
 	},
 	"bs-watchlist-desc": "Lägger till en bevakningslista-widget och -tagg",
@@ -11,5 +12,5 @@
 	"bs-watchlist-pref-widgetsortodr": "Sortera på:",
 	"bs-watchlist-pref-sort-time": "Tid",
 	"bs-watchlist-pref-sort-title": "Titel",
-	"bs-watchlist-tag-watchlist-desc": "Skapar en lista över sidor som finns på din bevakningslista och har en icke synad förändring."
+	"bs-watchlist-tag-watchlist-desc": "Visar artiklarna på din bevakningslista som har nyligen ändrats."
 }
