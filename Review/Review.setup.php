@@ -4,7 +4,6 @@ BsExtensionManager::registerExtension( 'Review', BsRUNLEVEL::FULL|BsRUNLEVEL::RE
 
 $wgMessagesDirs['Review'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['Review']      = __DIR__ . '/languages/Review.i18n.php';
 $wgExtensionMessagesFiles['ReviewAlias'] = __DIR__ . '/languages/SpecialReview.alias.php';
 
 $aResourceModuleTemplate = array(

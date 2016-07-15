@@ -6,7 +6,6 @@ $GLOBALS['wgAutoloadClasses']['StateBar'] = __DIR__ . '/StateBar.class.php';
 
 $wgMessagesDirs['StateBar'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['StateBar'] = __DIR__.'/languages/StateBar.i18n.php';
 $wgExtensionMessagesFiles['StateBarMagic'] = __DIR__ . '/languages/StateBar.i18n.magic.php';
 
 $aResourceModuleTemplate = array(

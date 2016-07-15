@@ -8,7 +8,7 @@ $wgAutoloadClasses['SpecialAboutBlueSpice'] = __DIR__ . '/includes/specials/Spec
 $wgMessagesDirs['AboutBlueSpice'] = __DIR__ . '/i18n';
 
 $wgSpecialPages['AboutBlueSpice'] = 'SpecialAboutBlueSpice';
-$wgExtensionMessagesFiles['ExtendedStatisticsAlias'] = __DIR__ . '/includes/specials/SpecialAboutBlueSpice.alias.php';
+$wgExtensionMessagesFiles['AboutBlueSpiceAlias'] = __DIR__ . '/includes/specials/SpecialAboutBlueSpice.alias.php';
 
 $aResourceModuleTemplate = array (
 	'localBasePath' => __DIR__ . '/resources',

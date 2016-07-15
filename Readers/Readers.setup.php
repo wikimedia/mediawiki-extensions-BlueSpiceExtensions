@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('Readers', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$wgExtensionMessagesFiles['Readers'] = __DIR__ . '/languages/Readers.i18n.php';
+$wgMessagesDirs['Readers'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['ReadersAlias'] = __DIR__.'/languages/SpecialReaders.alias.php';
 
 $GLOBALS['wgAutoloadClasses']['Readers'] = __DIR__ . '/Readers.class.php';

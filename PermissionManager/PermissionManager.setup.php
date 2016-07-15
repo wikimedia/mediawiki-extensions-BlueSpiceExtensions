@@ -4,8 +4,6 @@ BsExtensionManager::registerExtension('PermissionManager', BsRUNLEVEL::FULL | Bs
 
 $wgMessagesDirs['PermissionManager'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['PermissionManager'] = __DIR__ . '/languages/PermissionManager.i18n.php';
-
 $wgResourceModules['ext.bluespice.permissionManager'] = array(
 	'scripts' => array(
 		'extensions/BlueSpiceExtensions/PermissionManager/resources/bluespice.permissionManager.js'

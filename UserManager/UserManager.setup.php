@@ -7,8 +7,6 @@ $wgAutoloadClasses['BSApiTasksUserManager'] = __DIR__ . '/includes/api/BSApiTask
 
 $wgMessagesDirs['UserManager'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['UserManager'] = __DIR__ . '/languages/UserManager.i18n.php';
-
 $wgResourceModules['ext.bluespice.userManager'] = array(
 	'scripts' => 'bluespice.userManager.js',
 	'dependencies' => 'ext.bluespice.extjs',

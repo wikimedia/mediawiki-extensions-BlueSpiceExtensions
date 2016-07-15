@@ -4,8 +4,6 @@ BsExtensionManager::registerExtension('NamespaceManager', BsRUNLEVEL::FULL|BsRUN
 
 $wgMessagesDirs['NamespaceManager'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['NamespaceManager'] = __DIR__ . '/languages/NamespaceManager.i18n.php';
-
 $wgResourceModules['ext.bluespice.namespaceManager'] = array(
 	'scripts' => 'resources/bluespice.namespaceManager.js',
 	'dependencies' => 'ext.bluespice.extjs',

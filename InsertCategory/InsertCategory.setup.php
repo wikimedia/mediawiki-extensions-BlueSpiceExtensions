@@ -6,8 +6,6 @@ $GLOBALS['wgAutoloadClasses']['InsertCategory'] = __DIR__ . '/InsertCategory.cla
 
 $wgMessagesDirs['InsertCategory'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['InsertCategory'] = __DIR__ . '/languages/InsertCategory.i18n.php';
-
 $aResourceModuleTemplate = array(
 	'localBasePath' => $IP . '/extensions/BlueSpiceExtensions/InsertCategory/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/InsertCategory/resources'

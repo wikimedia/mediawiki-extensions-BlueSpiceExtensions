@@ -8,8 +8,6 @@ $wgExtensionFunctions[] = 'WikiAdmin::loadModules';
 
 $wgMessagesDirs['WikiAdmin'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['WikiAdmin'] = __DIR__ . '/languages/WikiAdmin.i18n.php';
-
 // Specialpage and messages
 $wgAutoloadClasses['SpecialWikiAdmin'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.class.php';
 $wgExtensionMessagesFiles['WikiAdminAlias'] = __DIR__ . '/includes/specials/SpecialWikiAdmin.alias.php';

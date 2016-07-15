@@ -4,8 +4,6 @@ BsExtensionManager::registerExtension( 'ExtendedSearch', BsRUNLEVEL::FULL|BsRUNL
 
 $wgMessagesDirs['ExtendedSearch'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['ExtendedSearch'] = __DIR__ . '/languages/ExtendedSearch.i18n.php';
-
 $aResourceModuleTemplate = array(
 	'localBasePath' => 'extensions/BlueSpiceExtensions/ExtendedSearch/resources/',
 	'remoteExtPath' => 'BlueSpiceExtensions/ExtendedSearch/resources'

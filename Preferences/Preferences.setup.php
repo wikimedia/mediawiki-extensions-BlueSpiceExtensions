@@ -6,8 +6,6 @@ $GLOBALS['wgAutoloadClasses']['BsPreferences'] = __DIR__ . '/Preferences.class.p
 
 $wgMessagesDirs['Preferences'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['Preferences'] = __DIR__ . '/languages/Preferences.i18n.php';
-
 $wgHooks['BeforePageDisplay'][] = "BsPreferences::onBeforePageDisplay";
 
 $aResourceModuleTemplate = array(

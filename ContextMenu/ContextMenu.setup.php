@@ -4,7 +4,6 @@ BsExtensionManager::registerExtension('ContextMenu', BsRUNLEVEL::FULL|BsRUNLEVEL
 
 $GLOBALS['wgAutoloadClasses']['ContextMenu'] = __DIR__ . '/ContextMenu.class.php';
 $wgMessagesDirs['ContextMenu'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['ContextMenu'] = __DIR__ . '/languages/ContextMenu.i18n.php';
 
 $wgResourceModules['ext.bluespice.contextmenu'] = array(
 	'scripts' => 'bluespice.contextmenu.js',

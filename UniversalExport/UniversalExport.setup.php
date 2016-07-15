@@ -6,7 +6,6 @@ $GLOBALS['wgAutoloadClasses']['UniversalExport'] = __DIR__ . '/UniversalExport.c
 
 $wgMessagesDirs['UniversalExport'] = __DIR__ . '/i18n';
 
-$wgExtensionMessagesFiles['UniversalExport'] = __DIR__ . '/languages/UniversalExport.i18n.php';
 $wgExtensionMessagesFiles['UniversalExportAlias'] = __DIR__ . '/languages/SpecialUniversalExport.alias.php';
 
 $wgAutoloadClasses['SpecialUniversalExport'] = __DIR__ . '/includes/specials/SpecialUniversalExport.class.php';
