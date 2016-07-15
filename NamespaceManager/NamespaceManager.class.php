@@ -243,7 +243,7 @@ class NamespaceManager extends BsExtensionMW {
 				'sortable' => true,
 				'filter' => array(
 					'type' => 'bool',
-					'value' => true,
+					#'value' => true,
 					#'active' => true
 				),
 			)/*,
