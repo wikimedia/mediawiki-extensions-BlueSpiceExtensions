@@ -33,26 +33,6 @@
 
 class AboutBlueSpice extends BsExtensionMW {
 
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'AboutBlueSpice',
-			EXTINFO::DESCRIPTION => 'bs-aboutbluespice-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/AboutBlueSpice',
-			EXTINFO::DEPS => array ( 'bluespice' => '2.23.1' )
-		);
-		$this->mExtensionKey = 'MW::AboutBluespice';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// Hooks

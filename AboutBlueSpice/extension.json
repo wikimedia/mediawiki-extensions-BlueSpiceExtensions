@@ -1,0 +1,40 @@
+{
+	"name": "AboutBlueSpice",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/AboutBlueSpice",
+	"author": "Markus Glaser",
+	"descriptionmsg": "bs-aboutbluespice-desc",
+	"type": "bluespice",
+	"SpecialPages": {
+		"AboutBlueSpice": "SpecialAboutBlueSpice"
+	},
+	"MessagesDirs": {
+		"AboutBlueSpice": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"AboutBlueSpiceAlias": "includes/specials/SpecialAboutBlueSpice.alias.php"
+	},
+	"AutoloadClasses": {
+		"AboutBlueSpice": "AboutBlueSpice.class.php",
+		"SpecialAboutBlueSpice": "includes/specials/SpecialAboutBlueSpice.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.aboutbluespice": {
+			"styles": "bluespice.aboutbluespice.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/AboutBlueSpice/resources"
+	},
+	"bsgBSExtensions": {
+		"AboutBlueSpice": {
+			"className": "AboutBlueSpice",
+			"extPath": "/BlueSpiceExtensions/AboutBlueSpice"
+		}
+	},
+	"manifest_version": 1
+}
