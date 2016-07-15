@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('ArticleInfo', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['ArticleInfo'] = __DIR__ . '/ArticleInfo.class.php';
+$wgAutoloadClasses['ArticleInfo'] = __DIR__ . '/ArticleInfo.class.php';
 
 $wgMessagesDirs['ArticleInfo'] = __DIR__ . '/i18n';
 

@@ -6,13 +6,13 @@ $wgMessagesDirs['Dashboards'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['DashboardsAlias'] = __DIR__.'/languages/Dashboards.alias.php';
 
-$GLOBALS['wgAutoloadClasses']['Dashboards'] = __DIR__ . '/Dashboards.class.php';
+$wgAutoloadClasses['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['Dashboards'] = __DIR__ . '/Dashboards.class.php';
 $wgAutoloadClasses['SpecialAdminDashboard'] = __DIR__.'/includes/specials/SpecialAdminDashboard.php';
 $wgAutoloadClasses['SpecialUserDashboard'] = __DIR__.'/includes/specials/SpecialUserDashboard.php';
-$GLOBALS['wgAutoloadClasses']['BSApiDashboardTasks'] = __DIR__ . '/includes/api/BSApiDashboardTasks.php';
-$GLOBALS['wgAutoloadClasses']['BSApiDashboardStore'] = __DIR__ . '/includes/api/BSApiDashboardStore.php';
-$GLOBALS['wgAutoloadClasses']['BSApiDashboardWidgetsTasks'] = __DIR__ . '/includes/api/BSApiDashboardWidgetsTasks.php';
+$wgAutoloadClasses['BSApiDashboardTasks'] = __DIR__ . '/includes/api/BSApiDashboardTasks.php';
+$wgAutoloadClasses['BSApiDashboardStore'] = __DIR__ . '/includes/api/BSApiDashboardStore.php';
+$wgAutoloadClasses['BSApiDashboardWidgetsTasks'] = __DIR__ . '/includes/api/BSApiDashboardWidgetsTasks.php';
 
 $wgSpecialPages['AdminDashboard'] = 'SpecialAdminDashboard';
 $wgSpecialPages['UserDashboard']  = 'SpecialUserDashboard';

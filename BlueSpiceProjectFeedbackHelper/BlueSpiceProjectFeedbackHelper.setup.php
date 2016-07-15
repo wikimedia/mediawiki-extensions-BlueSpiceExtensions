@@ -12,7 +12,7 @@ $wgResourceModules['ext.bluespice.blueSpiceprojectfeedbackhelper'] = array(
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
 
-$GLOBALS['wgAutoloadClasses']['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/BlueSpiceProjectFeedbackHelper.class.php';
+$wgAutoloadClasses['BlueSpiceProjectFeedbackHelper'] = __DIR__ . '/BlueSpiceProjectFeedbackHelper.class.php';
 $wgAutoloadClasses['BSApiTasksBlueSpiceProjectFeedbackHelper'] = __DIR__ . '/includes/api/BSApiTasksBlueSpiceProjectFeedbackHelper.php';
 $wgAutoloadClasses['ViewBlueSpiceProjectFeedbackHelperPanel'] = __DIR__ . '/views/view.BlueSpiceProjectFeedbackHelperPanel.php';
 

@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('HideTitle', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['HideTitle'] = __DIR__ . '/HideTitle.class.php';
+$wgAutoloadClasses['HideTitle'] = __DIR__ . '/HideTitle.class.php';
 
 $wgMessagesDirs['HideTitle'] = __DIR__ . '/i18n';
 

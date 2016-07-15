@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension( 'UserSidebar', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE );
 
-$GLOBALS['wgAutoloadClasses']['UserSidebar'] = __DIR__ . '/UserSidebar.class.php';
+$wgAutoloadClasses['UserSidebar'] = __DIR__ . '/UserSidebar.class.php';
 
 $wgMessagesDirs['UserSidebar'] = __DIR__ . '/i18n';
 

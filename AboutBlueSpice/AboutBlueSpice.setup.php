@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension( 'AboutBlueSpice', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE );
 
-$GLOBALS['wgAutoloadClasses']['AboutBlueSpice'] = __DIR__ . '/AboutBlueSpice.class.php';
+$wgAutoloadClasses['AboutBlueSpice'] = __DIR__ . '/AboutBlueSpice.class.php';
 $wgAutoloadClasses['SpecialAboutBlueSpice'] = __DIR__ . '/includes/specials/SpecialAboutBlueSpice.class.php';
 
 $wgMessagesDirs['AboutBlueSpice'] = __DIR__ . '/i18n';

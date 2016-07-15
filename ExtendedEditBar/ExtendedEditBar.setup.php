@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('ExtendedEditBar', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['ExtendedEditBar'] = __DIR__ . '/ExtendedEditBar.class.php';
+$wgAutoloadClasses['ExtendedEditBar'] = __DIR__ . '/ExtendedEditBar.class.php';
 
 $wgMessagesDirs['ExtendedEditBar'] = __DIR__ . '/i18n';
 

@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('UserManager', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$GLOBALS['wgAutoloadClasses']['UserManager'] = __DIR__ . '/UserManager.class.php';
+$wgAutoloadClasses['UserManager'] = __DIR__ . '/UserManager.class.php';
 $wgAutoloadClasses['BSApiTasksUserManager'] = __DIR__ . '/includes/api/BSApiTasksUserManager.php';
 
 $wgMessagesDirs['UserManager'] = __DIR__ . '/i18n';

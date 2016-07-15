@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('Preferences', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$GLOBALS['wgAutoloadClasses']['BsPreferences'] = __DIR__ . '/Preferences.class.php';
+$wgAutoloadClasses['BsPreferences'] = __DIR__ . '/Preferences.class.php';
 
 $wgMessagesDirs['Preferences'] = __DIR__ . '/i18n';
 

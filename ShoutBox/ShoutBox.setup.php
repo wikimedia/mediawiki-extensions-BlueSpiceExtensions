@@ -49,7 +49,7 @@ unset( $aResourceModuleTemplate );
 
 $wgAPIModules['bs-shoutbox'] = 'BSApiTasksShoutBox';
 
-$GLOBALS['wgAutoloadClasses']['ShoutBox'] = __DIR__ . '/ShoutBox.class.php';
+$wgAutoloadClasses['ShoutBox'] = __DIR__ . '/ShoutBox.class.php';
 $wgAutoloadClasses['BSApiTasksShoutBox'] = __DIR__ . '/includes/api/BSApiTasksShoutBox.php';
 $wgAutoloadClasses['ViewShoutBox'] = __DIR__ . '/views/view.ShoutBox.php';
 $wgAutoloadClasses['ViewShoutBoxMessageList'] = __DIR__ . '/views/view.ShoutBoxMessageList.php';

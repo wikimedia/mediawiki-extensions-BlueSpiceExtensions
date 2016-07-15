@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('VisualEditor', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['VisualEditor'] = __DIR__ . '/VisualEditor.class.php';
+$wgAutoloadClasses['VisualEditor'] = __DIR__ . '/VisualEditor.class.php';
 
 $wgMessagesDirs['VisualEditor'] = __DIR__ . '/i18n';
 

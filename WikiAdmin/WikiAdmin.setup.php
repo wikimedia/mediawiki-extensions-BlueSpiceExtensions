@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('WikiAdmin', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$GLOBALS['wgAutoloadClasses']['WikiAdmin'] = __DIR__ . '/WikiAdmin.class.php';
+$wgAutoloadClasses['WikiAdmin'] = __DIR__ . '/WikiAdmin.class.php';
 
 $wgExtensionFunctions[] = 'WikiAdmin::loadModules';
 

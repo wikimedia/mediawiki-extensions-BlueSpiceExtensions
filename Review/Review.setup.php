@@ -56,7 +56,7 @@ $wgResourceModules['ext.bluespice.review.overview'] = array(
 
 unset( $aResourceModuleTemplate);
 
-$GLOBALS['wgAutoloadClasses']['Review'] = __DIR__ . '/Review.class.php';
+$wgAutoloadClasses['Review'] = __DIR__ . '/Review.class.php';
 $wgAutoloadClasses['SpecialReview'] = __DIR__ . '/includes/specials/SpecialReview.class.php';
 $wgAutoloadClasses['BsReviewProcess'] = __DIR__ . '/includes/ReviewProcess.class.php';
 $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessStep.class.php';

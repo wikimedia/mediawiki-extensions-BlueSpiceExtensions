@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('WidgetBar', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['WidgetBar'] = __DIR__ . '/WidgetBar.class.php';
+$wgAutoloadClasses['WidgetBar'] = __DIR__ . '/WidgetBar.class.php';
 
 $wgMessagesDirs['WidgetBar'] = __DIR__ . '/i18n';
 

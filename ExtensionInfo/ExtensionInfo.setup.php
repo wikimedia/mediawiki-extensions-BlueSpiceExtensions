@@ -1,7 +1,7 @@
 <?php
 BsExtensionManager::registerExtension('ExtensionInfo',  BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$GLOBALS['wgAutoloadClasses']['ExtensionInfo'] = __DIR__ . '/ExtensionInfo.class.php';
+$wgAutoloadClasses['ExtensionInfo'] = __DIR__ . '/ExtensionInfo.class.php';
 
 $wgMessagesDirs['ExtensionInfo'] = __DIR__ . '/i18n';
 

@@ -1,7 +1,7 @@
 <?php
 BsExtensionManager::registerExtension('FormattingHelp', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['FormattingHelp'] = __DIR__ . '/FormattingHelp.class.php';
+$wgAutoloadClasses['FormattingHelp'] = __DIR__ . '/FormattingHelp.class.php';
 
 $wgMessagesDirs['FormattingHelp'] = __DIR__ . '/i18n';
 

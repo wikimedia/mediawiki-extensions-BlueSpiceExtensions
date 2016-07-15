@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('WantedArticle', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['WantedArticle'] = __DIR__ . '/WantedArticle.class.php';
+$wgAutoloadClasses['WantedArticle'] = __DIR__ . '/WantedArticle.class.php';
 
 $wgAutoloadClasses['ViewWantedArticleForm'] = __DIR__ . '/includes/ViewWantedArticleForm.php';
 $wgAutoloadClasses['ViewWantedArticleTag']  = __DIR__ . '/includes/ViewWantedArticleTag.php';
