@@ -14,6 +14,6 @@
 	"bs-countthings-error-not-exist": "Страница «$1» не существует.",
 	"bs-countthings-tag-countarticles-desc": "Показывает количество статей в вики.",
 	"bs-countthings-tag-countusers-desc": "Показывает число зарегистрированных участников.",
-	"bs-countthings-tag-countcharacters-desc": "Показывает статистику данного содержания на странице. Доступные конфигурации атрибутов:",
+	"bs-countthings-tag-countcharacters-desc": "Генерирует метаданные о содержании указанной статьи. На выходе получается карточка, которая может быть включена в статью. С помощью параметра «mode» можно отображать разные типы информации.",
 	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Что следует считать <code>chars</code> (символы), <code>words</code> (слова) или <code>pages</code> (страницы)."
 }

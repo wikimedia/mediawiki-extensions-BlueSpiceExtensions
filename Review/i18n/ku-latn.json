@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"George Animal"
+		]
+	},
+	"bs-review-lblstartdate": "Dema destpêkê",
+	"bs-review-header-startdate": "Destpêk",
+	"bs-review-header-enddate": "Dawî",
+	"notification-bs-review-payload-comment": "Şîrove: \"$1\""
+}
