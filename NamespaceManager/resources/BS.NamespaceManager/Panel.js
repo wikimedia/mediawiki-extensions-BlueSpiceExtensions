@@ -36,7 +36,11 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 				hidden: fieldDef.hidden || false
 			};
 			if( fieldDef.type === 'boolean' ) {
-				column.renderer = this.renderIcon;
+				if ( fieldDef.name === 'isSystemNS' ) {
+					column.renderer = this.renderInvertedIcon;
+				} else {
+					column.renderer = this.renderIcon;
+				}
 				column.flex = 0.5;
 			}
 			if( i === 0 ){ //Typically the ID column
@@ -61,6 +65,14 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		//TODO: make CSS class icon
 		var icon = '<img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/{0}"/>';
 		if ( value === false ) {
+			return icon.format( 'bs-cross.png');
+		}
+		return icon.format( 'bs-tick.png');
+	},
+	renderInvertedIcon: function( value ) {
+		//TODO: make CSS class icon
+		var icon = '<img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/{0}"/>';
+		if ( value === true ) {
 			return icon.format( 'bs-cross.png');
 		}
 		return icon.format( 'bs-tick.png');

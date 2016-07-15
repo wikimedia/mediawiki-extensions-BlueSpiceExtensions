@@ -32,7 +32,7 @@ class BSApiNamespaceStore extends BSApiExtJSStoreBase {
 			$aResult[] = array(
 				'id' => $iNs,
 				'name' => $sNamespace,
-				'isSystemNS' => isset( $bsgSystemNamespaces[$iNs] ) || $iNs < 100, //formaly 'editable'
+				'isSystemNS' => isset( $bsgSystemNamespaces[$iNs] ) || $iNs < 3000, //formerly 'editable'
 				'isTalkNS' => MWNamespace::isTalk( $iNs ),
 				'pageCount' => $res->numRows(),
 				'content' => in_array( $iNs, $wgContentNamespaces ),
