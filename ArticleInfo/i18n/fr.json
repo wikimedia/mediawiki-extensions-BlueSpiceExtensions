@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92"
+			"Wladek92",
+			"Verdy p"
 		]
 	},
 	"bs-articleinfo-desc": "Fournit des informations sur une page dans la barre d'État",
@@ -15,7 +16,7 @@
 	"bs-articleinfo-all-categories-heading": "Catégories",
 	"bs-articleinfo-nocategories": "Pas de catégories trouvées.",
 	"bs-articleinfo-hiddencats": "Catégories cachées",
-	"bs-articleinfo-notemplates": "Pas de modèles trouvés.",
+	"bs-articleinfo-notemplates": "Aucun modèle trouvé.",
 	"bs-articleinfo-templates": "Modèles",
 	"bs-articleinfo-subpages": "Sous-pages",
 	"bs-articleinfo-subpages-available": "Il existe des sous-pages pour cette page",
