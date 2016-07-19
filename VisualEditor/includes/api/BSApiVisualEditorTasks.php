@@ -72,7 +72,14 @@ class ApiVisualEditorTasks extends BSApiTasksBase {
 
 		foreach ( $oTaskData as $sTitle ) {
 			$oTitle = Title::newFromText( urldecode( $sTitle ) );
-			$aResult[] = $oTitle instanceof Title ? $oTitle->exists() : false;
+			if( $oTitle instanceof Title === false ) {
+				$aResult[] = false;
+				continue;
+			}
+			if( $oTitle->getNamespace() === NS_MEDIA ) {
+				$oTitle = Title::makeTitle( NS_FILE, $oTitle->getText() );
+			}
+			$aResult[] = $oTitle->exists();
 		}
 
 		$oReturn->payload = $aResult;
