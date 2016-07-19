@@ -111,5 +111,7 @@
 	"notification-bs-review-finish-body": "$1 {{GENDER:$1|hat}} die Begutachtung von \"$2\" beendet. Bitte überprüfe die Abstimmungsergebnisse.",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|hat}} die Begutachtung von $3 beendet und der Inhalt wurde automatisch als „geprüft“ markiert",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|hat}} die Begutachtung von \"$2\" beendet",
-	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|hat}} die Begutachtung von \"$2\" beendet. Der Inhalt der Seite wurde automatisch als \"geprüft\" markiert."
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|hat}} die Begutachtung von \"$2\" beendet. Der Inhalt der Seite wurde automatisch als \"geprüft\" markiert.",
+	"apihelp-bs-reviewoverview-store": "Listet eine Übersicht der Begutachtungsprozesse auf",
+	"apihelp-bs-reviewoverview-store-param-userid": "Filtert die Listenbegutachtungsprozesse nach Benutzerkennung <var>userID</var>"
 }
