@@ -109,5 +109,7 @@
 	"notification-bs-review-finish-body": "$1 {{GENDER:$1|has finished}} your review on \"$2\". Please check the results of the review process.",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|has finished}} the review process and automatically marked $3 as stable",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|has finished}} the review of \"$2\"",
-	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|has finished}} your review on \"$2\". The page got marked as stable automatically."
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|has finished}} your review on \"$2\". The page got marked as stable automatically.",
+	"apihelp-bs-reviewoverview-store": "Lists an overview of review processes",
+	"apihelp-bs-reviewoverview-store-param-userid": "Filters the list review processes by user id<var>userID</var>"
 }

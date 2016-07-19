@@ -116,5 +116,7 @@
 	"notification-bs-review-finish-body": "Notification about reviewer finishes review - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
 	"notification-bs-review-finish-and-autoflag-summary": "Notification about reviewer finishes review and autoflags as stable - flyout/archive page\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page (unused)\n* $3 - link to page",
 	"notification-bs-review-finish-and-autoflag-subject": "Notification about reviewer finishes review and autoflags as stable - email subject\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
-	"notification-bs-review-finish-and-autoflag-body": "Notification about reviewer finishes review and autoflags as stable - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)"
+	"notification-bs-review-finish-and-autoflag-body": "Notification about reviewer finishes review and autoflags as stable - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
+	"apihelp-bs-reviewoverview-store": "Describes the API endpoint that lists an overview of Review",
+	"apihelp-bs-reviewoverview-store-param-userid": "Describes the <var>userID</var> parameter of the API module"
 }

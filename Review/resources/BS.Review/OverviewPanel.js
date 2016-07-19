@@ -6,14 +6,14 @@ Ext.define( 'BS.Review.OverviewPanel', {
 	},
 
 	initComponent: function() {
-
-		this.store = Ext.create( 'Ext.data.JsonStore', {
+		this.store = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-reviewoverview-store',
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'SpecialReview::ajaxGetOverview' ),
+				url: mw.util.wikiScript( 'api' ),
 				reader: {
 					type: 'json',
-					root: 'payload',
+					root: 'results',
 					idProperty: 'rev_id'
 				},
 				extraParams: {
