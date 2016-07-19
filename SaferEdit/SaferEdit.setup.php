@@ -4,7 +4,7 @@ BsExtensionManager::registerExtension('SaferEdit', BsRUNLEVEL::FULL|BsRUNLEVEL::
 
 $wgMessagesDirs['SaferEdit'] = __DIR__ . '/i18n';
 
-$GLOBALS['wgAutoloadClasses']['SaferEdit'] = __DIR__ . '/SaferEdit.class.php';
+$wgAutoloadClasses['SaferEdit'] = __DIR__ . '/SaferEdit.class.php';
 
 $wgResourceModules['ext.bluespice.saferedit.general'] = array(
 	'scripts' => 'bluespice.SaferEdit.general.js',

@@ -26,10 +26,10 @@ $wgResourceModules['ext.bluespice.namespaceManager'] = array(
 	'remoteExtPath' => 'BlueSpiceExtensions/NamespaceManager'
 );
 
-$GLOBALS['wgAutoloadClasses']['NamespaceManager'] = __DIR__ . '/NamespaceManager.class.php';
-$GLOBALS['wgAutoloadClasses']['NamespaceNuker'] = __DIR__ . '/includes/NamespaceNuker.php';
-$GLOBALS['wgAutoloadClasses']['BSApiNamespaceStore'] = __DIR__ . '/includes/api/BSApiNamespaceStore.php';
-$GLOBALS['wgAutoloadClasses']['BSApiNamespaceTasks'] = __DIR__ . '/includes/api/BSApiNamespaceTasks.php';
+$wgAutoloadClasses['NamespaceManager'] = __DIR__ . '/NamespaceManager.class.php';
+$wgAutoloadClasses['NamespaceNuker'] = __DIR__ . '/includes/NamespaceNuker.php';
+$wgAutoloadClasses['BSApiNamespaceStore'] = __DIR__ . '/includes/api/BSApiNamespaceStore.php';
+$wgAutoloadClasses['BSApiNamespaceTasks'] = __DIR__ . '/includes/api/BSApiNamespaceTasks.php';
 
 $wgAPIModules['bs-namespace-store'] = 'BSApiNamespaceStore';
 $wgAPIModules['bs-namespace-tasks'] = 'BSApiNamespaceTasks';

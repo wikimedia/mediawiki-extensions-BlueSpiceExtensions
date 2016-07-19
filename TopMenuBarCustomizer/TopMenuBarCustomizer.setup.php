@@ -11,7 +11,7 @@ $aResourceModuleTemplate = array(
 
 $wgMessagesDirs['TopMenuBarCustomizer'] = __DIR__."/i18n";
 
-$GLOBALS['wgAutoloadClasses']['TopMenuBarCustomizer'] = __DIR__ . '/TopMenuBarCustomizer.class.php';
+$wgAutoloadClasses['TopMenuBarCustomizer'] = __DIR__ . '/TopMenuBarCustomizer.class.php';
 $wgAutoloadClasses['TopMenuBarCustomizerParser'] = __DIR__."/includes/TopMenuBarCustomizerParser.php";
 $wgAutoloadClasses['ViewTopMenuItem'] = __DIR__."/views/view.TopMenuItem.php";
 

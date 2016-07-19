@@ -2,11 +2,11 @@
 
 BsExtensionManager::registerExtension('Checklist', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['Checklist'] = __DIR__ . '/Checklist.class.php';
+$wgAutoloadClasses['Checklist'] = __DIR__ . '/Checklist.class.php';
 
-$GLOBALS['wgAutoloadClasses']['BSApiChecklistAvailableOptionsStore'] = __DIR__ . '/includes/api/BSApiChecklistAvailableOptionsStore.php';
-$GLOBALS['wgAutoloadClasses']['BSApiChecklistTemplateStore'] = __DIR__ . '/includes/api/BSApiChecklistTemplateStore.php';
-$GLOBALS['wgAutoloadClasses']['BSApiChecklistTasks'] = __DIR__ . '/includes/api/BSApiChecklistTasks.php';
+$wgAutoloadClasses['BSApiChecklistAvailableOptionsStore'] = __DIR__ . '/includes/api/BSApiChecklistAvailableOptionsStore.php';
+$wgAutoloadClasses['BSApiChecklistTemplateStore'] = __DIR__ . '/includes/api/BSApiChecklistTemplateStore.php';
+$wgAutoloadClasses['BSApiChecklistTasks'] = __DIR__ . '/includes/api/BSApiChecklistTasks.php';
 
 $wgAPIModules['bs-checklist-available-options-store'] = 'BSApiChecklistAvailableOptionsStore';
 $wgAPIModules['bs-checklist-template-store'] = 'BSApiChecklistTemplateStore';

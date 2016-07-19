@@ -14,7 +14,7 @@ $bsgUEModulePDFUploadThreshold = 50 * 1024 * 1024;
 
 $wgMessagesDirs['UEModulePDF'] = __DIR__ . '/i18n';
 
-$GLOBALS['wgAutoloadClasses']['UEModulePDF'] = __DIR__ . '/UEModulePDF.class.php';
+$wgAutoloadClasses['UEModulePDF'] = __DIR__ . '/UEModulePDF.class.php';
 $wgAutoloadClasses['BsPDFPageProvider'] = __DIR__ . '/includes/PDFPageProvider.class.php';
 $wgAutoloadClasses['BsPDFTemplateProvider'] = __DIR__ . '/includes/PDFTemplateProvider.class.php';
 $wgAutoloadClasses['BsPDFWebService'] = __DIR__ . '/includes/PDFWebService.class.php';

@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension( 'Flexiskin', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE );
 
-$GLOBALS['wgAutoloadClasses']['Flexiskin'] = __DIR__ . '/Flexiskin.class.php';
+$wgAutoloadClasses['Flexiskin'] = __DIR__ . '/Flexiskin.class.php';
 
 $wgHooks['BeforePageDisplay'][] = "Flexiskin::onBeforePageDisplay";
 $wgHooks['ResourceLoaderRegisterModules'][] = "Flexiskin::onResourceLoaderRegisterModules";
@@ -16,16 +16,16 @@ $wgAutoloadClasses['ResourceLoaderFlexiskinModule'] = __DIR__ . '/includes/resou
 $wgAutoloadClasses['ResourceLoaderFlexiskinPreviewModule'] = __DIR__ . '/includes/resourceloader/ResourceLoaderFlexiskinPreviewModule.php';
 
 // using BsApi
-$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinTasks'] = __DIR__ . '/includes/api/BSApiFlexiskinTasks.php';
+$wgAutoloadClasses['BSApiFlexiskinTasks'] = __DIR__ . '/includes/api/BSApiFlexiskinTasks.php';
 $wgAPIModules['bs-flexiskin-tasks'] = 'BSApiFlexiskinTasks';
 
-$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinStore'] = __DIR__ . '/includes/api/BSApiFlexiskinStore.php';
+$wgAutoloadClasses['BSApiFlexiskinStore'] = __DIR__ . '/includes/api/BSApiFlexiskinStore.php';
 $wgAPIModules['bs-flexiskin-store'] = 'BSApiFlexiskinStore';
 
-$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinUpload'] = __DIR__ . '/includes/api/BSApiFlexiskinUpload.php';
+$wgAutoloadClasses['BSApiFlexiskinUpload'] = __DIR__ . '/includes/api/BSApiFlexiskinUpload.php';
 $wgAPIModules['bs-flexiskin-upload'] = 'BSApiFlexiskinUpload';
 
-$GLOBALS['wgAutoloadClasses']['BSApiFlexiskinUploadStore'] = __DIR__ . '/includes/api/BSApiFlexiskinUploadStore.php';
+$wgAutoloadClasses['BSApiFlexiskinUploadStore'] = __DIR__ . '/includes/api/BSApiFlexiskinUploadStore.php';
 $wgAPIModules['bs-flexiskin-upload-store'] = 'BSApiFlexiskinUploadStore';
 
 $wgResourceModules['ext.bluespice.flexiskin.skin.preview'] =  array(

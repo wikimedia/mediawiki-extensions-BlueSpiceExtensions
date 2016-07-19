@@ -4,7 +4,7 @@ BsExtensionManager::registerExtension('SmartList', BsRUNLEVEL::FULL|BsRUNLEVEL::
 
 $wgMessagesDirs['SmartList'] = __DIR__ . '/i18n';
 
-$GLOBALS['wgAutoloadClasses']['SmartList'] = __DIR__ . '/SmartList.class.php';
+$wgAutoloadClasses['SmartList'] = __DIR__ . '/SmartList.class.php';
 
 $GLOBALS['wgHooks']['LoadExtensionSchemaUpdates'][] = 'SmartList::getSchemaUpdates';
 

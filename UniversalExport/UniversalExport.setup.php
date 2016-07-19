@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension( 'UniversalExport', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
 
-$GLOBALS['wgAutoloadClasses']['UniversalExport'] = __DIR__ . '/UniversalExport.class.php';
+$wgAutoloadClasses['UniversalExport'] = __DIR__ . '/UniversalExport.class.php';
 
 $wgMessagesDirs['UniversalExport'] = __DIR__ . '/i18n';
 

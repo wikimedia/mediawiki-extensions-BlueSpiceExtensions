@@ -4,9 +4,9 @@ BsExtensionManager::registerExtension( 'PageTemplates', BsRUNLEVEL::FULL|BsRUNLE
 
 $wgMessagesDirs['PageTemplates'] = __DIR__ . '/i18n';
 
-$GLOBALS['wgAutoloadClasses']['PageTemplates'] = __DIR__ . '/PageTemplates.class.php';
-$GLOBALS['wgAutoloadClasses']['BSApiPageTemplatesStore'] = __DIR__ . '/includes/api/BSApiPageTemplatesStore.php';
-$GLOBALS['wgAutoloadClasses']['BSApiPageTemplatesTasks'] = __DIR__ . '/includes/api/BSApiPageTemplatesTasks.php';
+$wgAutoloadClasses['PageTemplates'] = __DIR__ . '/PageTemplates.class.php';
+$wgAutoloadClasses['BSApiPageTemplatesStore'] = __DIR__ . '/includes/api/BSApiPageTemplatesStore.php';
+$wgAutoloadClasses['BSApiPageTemplatesTasks'] = __DIR__ . '/includes/api/BSApiPageTemplatesTasks.php';
 
 $wgResourceModules['ext.bluespice.pageTemplates'] = array(
 	'scripts' => 'extensions/BlueSpiceExtensions/PageTemplates/resources/bluespice.pageTemplates.js',

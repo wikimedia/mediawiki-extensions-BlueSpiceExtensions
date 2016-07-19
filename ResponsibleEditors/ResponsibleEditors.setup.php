@@ -7,7 +7,7 @@ $wgMessagesDirs['ResponsibleEditors'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['ResponsibleEditorsAlias'] = __DIR__ . '/languages/SpecialResponsibleEditors.alias.php';
 
 // Specialpage and messages
-$GLOBALS['wgAutoloadClasses']['ResponsibleEditors'] = __DIR__ . '/ResponsibleEditors.class.php';
+$wgAutoloadClasses['ResponsibleEditors'] = __DIR__ . '/ResponsibleEditors.class.php';
 $wgAutoloadClasses['BsResponsibleEditor'] = __DIR__ . '/includes/BsResponsibleEditor.php';
 $wgAutoloadClasses['BSApiResponsibleEditorsPagesStore'] = __DIR__ . '/includes/api/BSApiResponsibleEditorsPagesStore.php';
 $wgAutoloadClasses['BSApiResponsibleEditorsActiveNamespacesStore'] = __DIR__ . '/includes/api/BSApiResponsibleEditorsActiveNamespacesStore.php';

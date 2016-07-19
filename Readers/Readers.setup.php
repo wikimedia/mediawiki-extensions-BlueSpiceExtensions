@@ -5,7 +5,7 @@ BsExtensionManager::registerExtension('Readers', BsRUNLEVEL::FULL|BsRUNLEVEL::RE
 $wgMessagesDirs['Readers'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['ReadersAlias'] = __DIR__.'/languages/SpecialReaders.alias.php';
 
-$GLOBALS['wgAutoloadClasses']['Readers'] = __DIR__ . '/Readers.class.php';
+$wgAutoloadClasses['Readers'] = __DIR__ . '/Readers.class.php';
 $wgAutoloadClasses['ViewReaders'] = __DIR__ . '/views/view.Readers.php';
 $wgAutoloadClasses['SpecialReaders']  = __DIR__.'/includes/specials/SpecialReaders.class.php';
 

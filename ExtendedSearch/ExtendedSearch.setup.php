@@ -63,7 +63,7 @@ $wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
 $wgAPIModules['feedextendedsearch'] = 'ApiFeedExtendedSearch';
 $wgAutoloadClasses['ApiFeedExtendedSearch'] = __DIR__ . '/api/ApiFeedExtendedSearch.php';
 
-$GLOBALS['wgAutoloadClasses']['ExtendedSearch'] = __DIR__ . '/ExtendedSearch.class.php';
+$wgAutoloadClasses['ExtendedSearch'] = __DIR__ . '/ExtendedSearch.class.php';
 $wgAutoloadClasses['Apache_Solr_Service'] = __DIR__ . '/includes/SolrPhpClient/Service.php';
 $wgAutoloadClasses['Apache_Solr_Document'] = __DIR__ . '/includes/SolrPhpClient/Document.php';
 $wgAutoloadClasses['Apache_Solr_Response'] = __DIR__ . '/includes/SolrPhpClient/Response.php';

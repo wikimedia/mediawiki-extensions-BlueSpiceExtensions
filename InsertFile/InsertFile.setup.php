@@ -4,7 +4,7 @@ BsExtensionManager::registerExtension('InsertFile', BsRUNLEVEL::FULL|BsRUNLEVEL:
 
 $wgMessagesDirs['InsertFile'] = __DIR__ . '/i18n';
 
-$GLOBALS['wgAutoloadClasses']['InsertFile'] = __DIR__ . '/InsertFile.class.php';
+$wgAutoloadClasses['InsertFile'] = __DIR__ . '/InsertFile.class.php';
 $wgAutoloadClasses['JsonLicenses']          = __DIR__ . '/includes/JsonLicenses.php';
 $wgAutoloadClasses['BSApiInsertFileLicenseStore'] = __DIR__ . '/includes/api/BSApiInsertFileLicenseStore.php';
 

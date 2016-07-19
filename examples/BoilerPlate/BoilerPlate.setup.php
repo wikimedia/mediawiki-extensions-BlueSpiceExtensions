@@ -12,7 +12,7 @@ BsExtensionManager::registerExtension(
 $wgMessagesDirs['BoilerPlate'] = __DIR__ . '/i18n';
 
 // Add extension class to autoloader
-$GLOBALS['wgAutoloadClasses']['BoilerPlate'] = __DIR__ . '/BoilerPlate.class.php';
+$wgAutoloadClasses['BoilerPlate'] = __DIR__ . '/BoilerPlate.class.php';
 
 // Commonly used settings for resource loader (in scripts and styles)
 $aResourceModuleTemplate = array(

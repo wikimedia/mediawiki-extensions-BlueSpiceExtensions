@@ -1,7 +1,7 @@
 <?php
 BsExtensionManager::registerExtension('Statistics', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['Statistics'] = __DIR__ . '/Statistics.class.php';
+$wgAutoloadClasses['Statistics'] = __DIR__ . '/Statistics.class.php';
 
 $wgMessagesDirs['Statistics'] = __DIR__ . '/i18n';
 

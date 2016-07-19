@@ -2,7 +2,7 @@
 
 BsExtensionManager::registerExtension('InsertMagic', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
-$GLOBALS['wgAutoloadClasses']['InsertMagic'] = __DIR__ . '/InsertMagic.class.php';
+$wgAutoloadClasses['InsertMagic'] = __DIR__ . '/InsertMagic.class.php';
 
 $wgMessagesDirs['InsertMagic'] = __DIR__ . '/i18n';
 
