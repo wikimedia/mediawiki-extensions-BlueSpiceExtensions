@@ -35,7 +35,7 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 
 		for( var i = 0; i < fieldDefs.length; i++ ) {
 			var fieldDef = fieldDefs[i];
-			if( fieldDef.type !== 'boolean' || fieldDef.name === 'editable' ) {
+			if( fieldDef.type !== 'boolean' || fieldDef.name === 'isSystemNS' ) {
 				continue;
 			}
 			var cbControl =  Ext.create( 'Ext.form.field.Checkbox', {
@@ -59,7 +59,7 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 	setData: function( obj ) {
 		this.currentData = obj;
 
-		if(this.currentData.editable) {
+		if(!this.currentData.isSystemNS) {
 			this.tfNamespaceName.enable();
 		}
 		else {
