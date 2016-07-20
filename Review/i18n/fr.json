@@ -112,5 +112,7 @@
 	"notification-bs-review-finish-body": "$1 {{GENDER:$1|a terminé}} votre relecture de « $2 ». Veuillez vérifier les résultats du processus de relecture.",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|a terminé}} le processus de relecture et a marqué automatiquement $3 comme stable",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|a terminé}} la relecture de « $2 »",
-	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|a terminé}} votre relecture de « $2 ». La page a été automatiquement marquée comme stable."
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|a terminé}} votre relecture de « $2 ». La page a été automatiquement marquée comme stable.",
+	"apihelp-bs-reviewoverview-store": "Liste une vue d’ensemble des processus de relecture",
+	"apihelp-bs-reviewoverview-store-param-userid": "Filtre la liste des processus de relecture par l’utilisateur d’id <var>userID</var>"
 }

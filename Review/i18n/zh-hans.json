@@ -109,5 +109,7 @@
 	"notification-bs-review-finish-body": "$1{{GENDER:$1|结束了}}您在“$2”的复核。请检查复核过程的结果。",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]]{{GENDER:$1|结束了}}复核过程，并自动标记$3为稳定版本",
 	"notification-bs-review-finish-and-autoflag-subject": "$1{{GENDER:$1|结束了}}对“$2”的复核",
-	"notification-bs-review-finish-and-autoflag-body": "$1{{GENDER:$1|结束了}}您在“$2”的复核。页面已自动标记为稳定版本。"
+	"notification-bs-review-finish-and-autoflag-body": "$1{{GENDER:$1|结束了}}您在“$2”的复核。页面已自动标记为稳定版本。",
+	"apihelp-bs-reviewoverview-store": "列出复核过程的概览",
+	"apihelp-bs-reviewoverview-store-param-userid": "通过用户ID<var>userID</var>过滤列表复核过程"
 }
