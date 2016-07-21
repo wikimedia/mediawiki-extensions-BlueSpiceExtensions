@@ -4,7 +4,8 @@
 			"Ата",
 			"Mykola Swarnyk",
 			"Andriykopanytsia",
-			"Piramidion"
+			"Piramidion",
+			"Base"
 		]
 	},
 	"bs-review-desc": "Додає функціональність робочого процесу на сторінки",
@@ -112,5 +113,6 @@
 	"notification-bs-review-finish-body": "$1 {{GENDER:$1|завершив|завершила}} Ваш огляд сторінки «$2». Будь ласка, перегляньте результати процедури огляду.",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|завершив|завершила}} процедуру огляду та автоматично позначила сторінку $3 як стабільну",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|завершив|завершила}} огляд «$2»",
-	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|завершив|завершила}} Ваш огляд сторінки «$2». Сторінку було автоматично позначено як стабільну."
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|завершив|завершила}} Ваш огляд сторінки «$2». Сторінку було автоматично позначено як стабільну.",
+	"apihelp-bs-reviewoverview-store-param-userid": "Фільтрує процеси перевірки списків за ідентифікатором користувача<var>userID</var>"
 }

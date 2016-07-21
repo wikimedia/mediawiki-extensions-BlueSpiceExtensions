@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"아라"
 		]
 	},
 	"bs-review-desc": "문서에 워크플로우 함수를 추가합니다",
@@ -19,7 +20,7 @@
 	"bs-review-mail-deny-and-restart-header": "$1 사용자가 $3 문서를 {{GENDER:$2|거부했습니다}}",
 	"bs-review-i-agree": "동의",
 	"bs-review-created-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|만들었습니다}}.",
-	"bs-review-modified-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|바꾸었습니다}}.",
+	"bs-review-modified-review": "$1님이 \"$2\" 문서의 검토를 {{GENDER:$1|바꾸었습니다}}.",
 	"bs-review-deleted-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|삭제했습니다}}.",
 	"bs-review-approved-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|승인했습니다}}.",
 	"bs-review-denied-review": "$1 사용자가 \"$2\" 문서의 검토를 {{GENDER:$1|거부했습니다}}.",
