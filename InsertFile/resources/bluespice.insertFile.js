@@ -274,17 +274,25 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 						'class': 'internal bs-internal-link',
 						'data-bs-type' : 'internal_link'
 					};
-					if( anchor.nodeName.toLowerCase() === 'a' ) {
-						newAnchor = this.dom.create( 'a', anchorAttrs, displayText );
-						this.dom.replace(newAnchor, anchor);
-						//Place cursor to end
-						this.selection.select(newAnchor, false);
+					try {
+						if( anchor.nodeName.toLowerCase() === 'a' ) {
+							newAnchor = this.dom.create( 'a', anchorAttrs, displayText );
+							this.dom.replace(newAnchor, anchor);
+							//Place cursor to end
+							this.selection.select(newAnchor, false);
+						}
+						else {
+							newAnchor = this.dom.createHTML( 'a', anchorAttrs, displayText );
+							this.selection.setContent( newAnchor );
+						}
+						this.selection.collapse(false);
 					}
-					else {
-						newAnchor = this.dom.createHTML( 'a', anchorAttrs, displayText );
-						editor.insertContent(newAnchor);
+					catch( e ) {
+						//Internet Explorer sometimes throws exceptions when
+						//TinyMCE operates on a 'Range' object. It doesn't mess
+						//up the DOM in any way, but will break script
+						//execution if not catched.
 					}
-					this.selection.collapse(false);
 				}, this);
 
 				BS.InsertFile.FileDialog.show();
