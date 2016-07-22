@@ -113,5 +113,7 @@
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|hat}} die Begutachtung von \"$2\" beendet",
 	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|hat}} die Begutachtung von \"$2\" beendet. Der Inhalt der Seite wurde automatisch als \"geprüft\" markiert.",
 	"apihelp-bs-reviewoverview-store": "Listet eine Übersicht der Begutachtungsprozesse auf",
-	"apihelp-bs-reviewoverview-store-param-userid": "Filtert die Listenbegutachtungsprozesse nach Benutzerkennung <var>userID</var>"
+	"apihelp-bs-reviewoverview-store-param-userid": "Filtert die Listenbegutachtungsprozesse nach Benutzerkennung <var>userID</var>",
+	"apihelp-bs-review-tasks": "Erlaubt die Veränderung von Begutachtungen",
+	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtert die Benutzerliste nach Berechtigungen für <var>articleId</var>"
 }

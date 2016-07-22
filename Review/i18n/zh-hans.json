@@ -111,5 +111,7 @@
 	"notification-bs-review-finish-and-autoflag-subject": "$1{{GENDER:$1|结束了}}对“$2”的复核",
 	"notification-bs-review-finish-and-autoflag-body": "$1{{GENDER:$1|结束了}}您在“$2”的复核。页面已自动标记为稳定版本。",
 	"apihelp-bs-reviewoverview-store": "列出复核过程的概览",
-	"apihelp-bs-reviewoverview-store-param-userid": "通过用户ID<var>userID</var>过滤列表复核过程"
+	"apihelp-bs-reviewoverview-store-param-userid": "通过用户ID<var>userID</var>过滤列表复核过程",
+	"apihelp-bs-review-tasks": "允许复核操纵",
+	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "为<var>articleId</var>按权限过滤用户列表"
 }

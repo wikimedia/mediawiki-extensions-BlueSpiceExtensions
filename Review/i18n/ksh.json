@@ -15,5 +15,6 @@
 	"bs-review-mail-deny-body": "{{GENDER:$2|dä|dat|dä Metmaacher|de|dat}} $1 hät Ding Änderonge afjelehnt",
 	"bs-review-mail-deny-and-restart-header": "{{GENDER:$2|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät de Sigg „$3“ afjelehnt",
 	"bs-review-mail-finish-and-review-header": "Et Nohlohre vun dä Sigg „$1“ es fähdesch.",
-	"notification-bs-review-deny-subject": "{{GENDER:$1|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät „$2“ affjelähnt."
+	"notification-bs-review-deny-subject": "{{GENDER:$1|Dä|Dat|Dä Metmaacher|De|Dat}} $1 hät „$2“ affjelähnt.",
+	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Söhk de Metmaacher en de Matmaacherleß noh dänn ier Beräächtejong för <var lang=\"en\" x,l:lang=\"en\" dir=\"ltr\">articleId</var> uß."
 }
