@@ -68,7 +68,6 @@ $wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.Sta
 
 $wgSpecialPages['Review'] = 'SpecialReview';
 
-$wgAjaxExportList[] = 'Review::getVoteResponse';
 $wgAPIModules['bs-reviewoverview-store'] = 'BSApiReviewOverviewStore';
 $wgAPIModules['bs-review-tasks'] = 'BSApiReviewTasks';
 

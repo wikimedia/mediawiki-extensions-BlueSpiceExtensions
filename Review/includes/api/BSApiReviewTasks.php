@@ -38,6 +38,7 @@ class BSApiReviewTasks extends BSApiTasksBase {
 	protected $aTasks = array(
 		'editReview',
 		'deleteReview',
+		'vote',
 	);
 
 	/**
@@ -52,6 +53,9 @@ class BSApiReviewTasks extends BSApiTasksBase {
 			),
 			'deleteReview' => array(
 				'workflowedit',
+			),
+			'vote' => array(
+				'workflowview',
 			),
 		);
 	}
@@ -138,6 +142,33 @@ class BSApiReviewTasks extends BSApiTasksBase {
 
 		$oReturn->success = true;
 		$oReturn->message = wfMessage( 'bs-review-save-removed' )->plain();
+		return $oReturn;
+	}
+
+	protected function task_vote( $oTaskData, $aParams ) {
+		$oReturn = $this->makeStandardReturn();
+
+		//TODO: Use Context
+		$iArticleId = empty( $oTaskData->articleID )
+			? 0
+			: (int)$oTaskData->articleID
+		;
+		$oTitle = Title::newFromID( $iArticleId );
+		if( !$oTitle instanceof Title ) {
+			$oReturn->message = wfMessage( 'bs-review-save-noid' )->plain();
+		}
+		$oStatus = Review::doVote(
+			$oTitle,
+			$oTaskData,
+			$this->getUser()
+		);
+		if( !$oStatus->isOK() ) {
+			$oReturn->message = $oStatus->getHTML();
+			return $oReturn;
+		}
+
+		$oReturn->message = wfMessage( 'bs-review-review-saved' )->plain();
+		$oReturn->success = true;
 		return $oReturn;
 	}
 }
