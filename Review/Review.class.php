@@ -63,7 +63,7 @@ class Review extends BsExtensionMW {
 			EXTINFO::PACKAGE => 'default',
 			EXTINFO::URL => 'https://help.bluespice.com/index.php/Review',
 			EXTINFO::DEPS => array(
-				'bluespice' => '2.22.0',
+				'bluespice' => '2.23.3',
 				'StateBar' => '2.22.0'
 			)
 		);
@@ -555,6 +555,13 @@ class Review extends BsExtensionMW {
 	}
 
 	/**
+	 * @return LogPage
+	 */
+	public function getLogger() {
+		return $this->oLogger;
+	}
+
+	/**
 	 * Produces a log message for bs-review/create.
 	 *
 	 * @param string $type            Log type as defined for MediaWiki.
@@ -680,8 +687,9 @@ class Review extends BsExtensionMW {
 			return true;
 
 		$oRev = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
-		if ( $oRev == false )
+		if ( !$oRev ) {
 			return true; // There is no review on the page
+		}
 
 
 // Because of FlaggedRevs is it now allowed to edit when a workflow is finished...
@@ -728,143 +736,189 @@ class Review extends BsExtensionMW {
 	}
 
 	/**
-	 * Creates or changes a review for a page. Called by remote handler.
-	 * @return bool Allow other hooked methods to be executed. Always true.
+	 * Edits a review process
+	 * @param Title $oTitle
+	 * @param stdClass $oParams
+	 * @param User $oUser
+	 * @param BsReviewProcess $oReviewProcess
+	 * @return Status
 	 */
-	public static function doEditReview() {
-		if ( BsCore::checkAccessAdmission( 'workflowedit' ) === false )
-			return true;
-		$aAnswer = array(
-			'success' => true,
-			'errors' => array(),
-			'messages' => array()
-		);
-		$oUser = BsCore::loadCurrentUser();
-		$oReview = BsExtensionManager::getExtension( 'Review' );
+	public static function doEditReview( Title $oTitle, stdClass $oParams, User $oUser = null, BsReviewProcess $oReviewProcess = null ) {
+		$oStatus = Status::newGood();
 
-		$userIsSysop = in_array( 'sysop', $oUser->getGroups() ); //TODO: getEffectiveGroups()?
-
-		if ( !$userIsSysop && !$oUser->isAllowed( 'workflowedit' ) ) {
-			$aAnswer[ 'success' ] = false;
-			$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-save-norights' )->plain();
-
-			return json_encode( $aAnswer );
+		if( !$oUser ) {
+			$oUser = RequestContext::getMain()->getUser();
 		}
 
-		global $wgRequest;
-		$paramRvPid = $wgRequest->getInt( 'pid', -1 );
-		// Check for id 0 prevents special pages to be put on a review
-		if ( empty( $paramRvPid ) ) {
-			$aAnswer[ 'success' ] = false;
-			$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-save-noid' )->plain();
-
-			return json_encode( $aAnswer );
+		if( !$oTitle || !$oTitle->isContentPage() || !$oTitle->exists() ) {
+			return $oStatus->merge(
+				Status::newFatal( 'bs-review-save-noid' )
+			);
 		}
 
-		$oReviewProcess = BsReviewProcess::newFromPid( $paramRvPid );
+		if( !$oReviewProcess ) {
+			$oReviewProcess = BsReviewProcess::newFromPid(
+				(int) $oTitle->getArticleID()
+			);
+		}
+
 		$bIsEdit = false;
-
-		if ( is_object( $oReviewProcess ) && $oReviewProcess->hasSteps() )
+		if( $oReviewProcess && $oReviewProcess->hasSteps() ) {
 			$bIsEdit = true;
-		if ( !$userIsSysop && $oReviewProcess && BsConfig::get( 'MW::Review::CheckOwner' ) && ( $oReviewProcess->owner != $oUser->getID() ) ) {
-
-			$aAnswer[ 'success' ] = false;
-			$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-save-norights' )->plain();
-
-			return json_encode( $aAnswer );
 		}
 
-		$paramCmd = $wgRequest->getVal( 'cmd', '' );
-		$paramSaveTmpl = $wgRequest->getInt( 'save_tmpl', 0 );
+		$oStatus = BsReviewProcess::newFromObject( $oParams );
 
-		if ( !( $paramCmd === false ) ) {
-			switch ( $paramCmd ) {
-				case 'insert' :
-					$aErrors = array();
-					$review = BsReviewProcess::newFromJSON( $wgRequest->getVal( 'review', '' ), $aErrors );
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
+		$oNewReviewProcess = $oStatus->getValue();
+		$oNewReviewProcess->setOwner( $oUser->getID() );
 
-					if ( is_array( $aErrors ) && count( $aErrors ) > 0 ) {
-						$aAnswer[ 'success' ] = false;
-						foreach ( $aErrors as $sError ) {
-							$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-' . $sError )->plain();
-						}
+		if( isset( $oParams->save_tmpl ) ) {
+			$paramTmplChoice = !empty( $oParams->tmpl_choice )
+				? $oParams->tmpl_choice
+				: -1
+			;
+			$paramTmplName = !empty( $oParams->tmpl_name )
+				? $oParams->tmpl_name
+				: ''
+			;
+			$oNewReviewProcess->asTemplate( $paramTmplChoice, $paramTmplName );
+		}
 
-						return json_encode( $aAnswer );
-					};
+		$bTemplateFailed =
+			empty( $oNewReviewProcess->steps )
+			|| !is_array( $oNewReviewProcess->steps )
+		;
+		if( $bTemplateFailed ) {
+			return $oStatus->merge(
+				Status::newFatal( 'bs-review-save-nosteps' )
+			);
+		}
 
-					$review->setOwner( $oUser->getID() );
-					$oOldReview = BsReviewProcess::newFromPid( $paramRvPid );
-					$update = is_object( $oOldReview ) ? $oOldReview->getPid() : false;
-					BsReviewProcess::removeReviewSteps( $paramRvPid );
-					if ( $paramSaveTmpl == 1 ) {
-						$paramTmplChoice = $wgRequest->getInt( 'tmpl_choice', -1 );
-						$paramTmplName = $wgRequest->getVal( 'tmpl_name', '' );
-						$review->asTemplate( $paramTmplChoice, $paramTmplName );
-					}
+		if( $bIsEdit ) {
+			BsReviewProcess::removeReviewSteps(
+				(int)$oReviewProcess->getPid()
+			);
+		}
+		//TODO: Here is a good place for a hook!
+		if( !$oNewReviewProcess->store( $bIsEdit ) ) {
+			return $oStatus->merge(
+				Status::newFatal( 'bs-review-save-error' )
+			);
+		}
 
-					if ( !is_array( $review->steps ) ) {
-						$aAnswer[ 'success' ] = false;
-						$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-save-nosteps' )->plain();
+		$oTitle->invalidateCache();
+		//TODO: Deprecated since 1.27
+		$oWatchlist = WatchedItem::fromUserTitle( $oUser, $oTitle );
+		if ( !$oWatchlist->isWatched() ) {
+			$oWatchlist->addWatch();
+		}
 
-						return json_encode( $aAnswer );
-					}
-					if ( $review->store( $update ) ) {
-						$oTitle = Title::newFromID( $paramRvPid );
-						$oTitle->invalidateCache();
-						$oWatchlist = WatchedItem::fromUserTitle( $oUser, $oTitle );
-						if ( !$oWatchlist->isWatched() ) {
-							$oWatchlist->addWatch();
-						}
+		$aParams = array(
+			'action' => $bIsEdit ? 'modify' : 'create',
+			'target' => $oTitle,
+			'comment' => '',
+			'params' => null,
+			'doer' => $oUser
+		);
+		$oReview = BsExtensionManager::getExtension( 'Review' );
+		$oReview->getLogger()->addEntry(
+			$aParams[ 'action' ],
+			$aParams[ 'target' ],
+			$aParams[ 'comment' ],
+			$aParams[ 'params' ],
+			$aParams[ 'doer' ]
+		);
 
-						$aParams = array(
-							'action' => $bIsEdit ? 'modify' : 'create',
-							'target' => $oTitle,
-							'comment' => '',
-							'params' => null,
-							'doer' => $oUser
-						);
-						$oReview->oLogger->addEntry( $aParams[ 'action' ], $aParams[ 'target' ], $aParams[ 'comment' ], $aParams[ 'params' ], $aParams[ 'doer' ] );
+		$oReview->emailNotifyNextUsers( $oNewReviewProcess );
 
-						$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-save-success' )->plain();
+		return Status::newGood( $oNewReviewProcess );
+	}
 
-						// Identify owner
-						$oReviewProcess = BsReviewProcess::newFromPid( $paramRvPid );
+	/**
+	 * Deletes a review process
+	 * @param Title $oTitle
+	 * @param User $oUser
+	 * @param BsReviewProcess $oReviewProcess
+	 * @return Status
+	 */
+	public static function doDeleteReview( Title $oTitle, User $oUser = null, BsReviewProcess $oReviewProcess = null ) {
+		$oStatus = Status::newGood();
+		if( !$oUser ) {
+			$oUser = RequestContext::getMain()->getUser();
+		}
 
-						$oReview->emailNotifyNextUsers( $oReviewProcess );
+		if( !$oTitle || !$oTitle->isContentPage() || !$oTitle->exists() ) {
+			return $oStatus->merge(
+				Status::newFatal( 'bs-review-save-noid' )
+			);
+		}
 
-						return json_encode( $aAnswer );
-					} else {
-						$aAnswer[ 'success' ] = false;
-						$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-save-error' )->plain();
-
-						return json_encode( $aAnswer );
-					}
-					break; // 22.08.13 STM: WTF?
-				case 'delete' :
-					BsReviewProcess::removeReviews( $paramRvPid );
-					$oTitle = Title::newFromID( $paramRvPid );
-					$oTitle->invalidateCache();
-					$oWatchlist = WatchedItem::fromUserTitle( $oUser, $oTitle );
-					if ( $oWatchlist->isWatched() ) {
-						$oWatchlist->removeWatch();
-					}
-					$aParams = array(
-						'action' => 'delete',
-						'target' => $oTitle,
-						'comment' => '',
-						'params' => null,
-						'doer' => $oUser
-					);
-					$oReview->oLogger->addEntry( $aParams[ 'action' ], $aParams[ 'target' ], $aParams[ 'comment' ], $aParams[ 'params' ], $aParams[ 'doer' ] );
-
-					$aAnswer[ 'messages' ][] = wfMessage( 'bs-review-save-removed' )->plain();
-
-					return json_encode( $aAnswer );
-					break;
+		if( !$oReviewProcess ) {
+			$oReviewProcess = BsReviewProcess::newFromPid(
+				(int) $oTitle->getArticleID()
+			);
+			if( !$oReviewProcess ) {
+				return $oStatus->merge(
+					Status::newFatal( 'bs-review-save-noid' )
+				);
 			}
 		}
 
-		return true;
+		if( $oReviewProcess && BsConfig::get( 'MW::Review::CheckOwner' ) ) {
+			$bCeckUser =
+				$oReviewProcess->owner != $oUser->getID()
+				//sysops always can edit
+				&& !in_array( 'sysop', $oUser->getGroups() )
+			;
+			if( $bCeckUser ) {
+				return $oStatus->merge(
+					Status::newFatal( 'bs-review-save-norights' )
+				);
+			}
+		}
+
+		BsReviewProcess::removeReviews( (int) $oTitle->getArticleID() );
+		$oTitle->invalidateCache();
+
+		//TODO: Deprecated since 1.27
+		$oWatchlist = WatchedItem::fromUserTitle( $oUser, $oTitle );
+		if ( $oWatchlist->isWatched() ) {
+			$oWatchlist->removeWatch();
+		}
+		$aParams = array(
+			'action' => 'delete',
+			'target' => $oTitle,
+			'comment' => '',
+			'params' => null,
+			'doer' => $oUser
+		);
+		$oReview = BsExtensionManager::getExtension( 'Review' );
+		$oReview->getLogger()->addEntry(
+			$aParams[ 'action' ],
+			$aParams[ 'target' ],
+			$aParams[ 'comment' ],
+			$aParams[ 'params' ],
+			$aParams[ 'doer' ]
+		);
+		//TODO: Notify user?
+		return $oStatus;
+	}
+
+	public static function userCanEdit( BsReviewProcess $oReviewProcess, User $oUser = null) {
+		if( !BsConfig::get( 'MW::Review::CheckOwner' ) ) {
+			return true;
+		}
+		if( !$oUser ) {
+			$oUser = RequestContext::getMain()->getUser();
+		}
+		return
+			(int) $oReviewProcess->owner == (int) $oUser->getID()
+			//sysops always can edit
+			|| in_array( 'sysop', $oUser->getGroups() )
+		;
 	}
 
 	/**
@@ -880,7 +934,7 @@ class Review extends BsExtensionMW {
 	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
 		$sIcon = 'bs-infobar-workflow-open';
 		$oRev = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
-		if ( $oRev !== false ) {
+		if ( $oRev ) {
 			if ( $res = $oRev->isFinished() ) {
 				if ( $oRev->isSequential() ) {
 					switch ( $res ) {
@@ -941,7 +995,7 @@ class Review extends BsExtensionMW {
 			$oData->page_id = $oTitle->getArticleID();
 		}
 
-		if ( $oReview !== false ) {
+		if ( $oReview ) {
 			$oData->startdate = strtotime( $oReview->startdate );
 			$oData->enddate = strtotime( $oReview->enddate );
 			$oData->owner_user_id = $oReview->getOwner();
@@ -990,7 +1044,7 @@ class Review extends BsExtensionMW {
 		$oRev = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
 		$pages = BsReviewProcess::listReviews( $oUser->getId() );
 
-		if ( $oRev === false ) {
+		if ( !$oRev ) {
 			return true;
 		}
 

@@ -488,7 +488,7 @@ class BsReviewProcess {
 	 * @return mixed BsReviewProcess if there is one, otherwise false.
 	 */
 	static function newFromPid($pid) {
-		$oReviewProcess = false;
+		$oReviewProcess = null;
 		$dbw = wfGetDB(DB_MASTER);
 		$res = $dbw->select(
 			'bs_review',
@@ -575,83 +575,107 @@ class BsReviewProcess {
 	}
 
 	/**
-	 * Creates a new review from JSON imput.
-	 * @param string $sJSON JSON input the review should be created from.
-	 * @param array $aErrors List of errors in case anything goes wrong.
-	 * @return mixed BsReviewProcess or false if anything goes wrong.
+	 * Creates a new review from params.
+	 * @param stdClass $oParams the review should be created from.
+	 * @return Status.
 	 */
-	static function newFromJSON($sJSON = '', &$aErrors) {
-		$aErrors = array();
-		$oJsonReview = json_decode($sJSON);
+	static function newFromObject( $oParams ) {
 		$oReviewProcess = new BsReviewProcess();
 		// rv_pid is stored in table hw_review as a smallint(5) unsigned
-		$oReviewProcess->pid = BsCore::sanitize($oJsonReview->pid, -1, BsPARAMTYPE::NUMERIC);
+		$oReviewProcess->pid = BsCore::sanitize(
+			$oParams->pid,
+			-1,
+			BsPARAMTYPE::NUMERIC
+		);
 
-		$oReviewProcess->editable = !!$oJsonReview->editable;
-		$oReviewProcess->sequential = !!$oJsonReview->sequential;
-		$oReviewProcess->abortable = !!$oJsonReview->abortable;
+		$oReviewProcess->editable = !!$oParams->editable; //TODO: Check Param
+		$oReviewProcess->sequential = !!$oParams->sequential; //TODO: Check Param
+		$oReviewProcess->abortable = !!$oParams->abortable; //TODO: Check Param
 
-		if (!$oJsonReview->startdate) {
-			$aErrors[] = 'startdate-missing';
-		};
-		$oReviewProcess->startdate = date("YmdHis", strtotime(BsCore::sanitize($oJsonReview->startdate, '', BsPARAMTYPE::STRING)));
-		if (!$oJsonReview->enddate) {
-			$aErrors[] = 'enddate-missing';
-		};
-		$oReviewProcess->enddate = date("YmdHis", strtotime(BsCore::sanitize($oJsonReview->enddate, '', BsPARAMTYPE::STRING)));
+		if( empty( $oParams->startdate ) ) {
+			return Status::newFatal( 'bs-review-startdate-missing' );
+		}
+		$oReviewProcess->startdate = date( "YmdHis", strtotime( BsCore::sanitize(
+			$oParams->startdate,
+			'',
+			BsPARAMTYPE::STRING
+		) ) );
+
+		if( empty( $oParams->enddate ) ) {
+			return Status::newFatal( 'bs-review-enddate-missing' );
+		}
+		$oReviewProcess->enddate = date( "YmdHis", strtotime( BsCore::sanitize(
+			$oParams->enddate,
+			'',
+			BsPARAMTYPE::STRING
+		)));
 
 		if ($oReviewProcess->startdate > $oReviewProcess->enddate) {
-			$aErrors[] = 'startdate-after-enddate';
-		};
-
-		$paramRvSteps = $oJsonReview->steps;
-		if (count($paramRvSteps) <= 0) {
-			$aErrors[] = 'no-reviewers';
-		};
-		// TODO an MRG: wir dieser block noch benötigt oder ist er inzwischen deprecated ??
-		// Fixed mit isset
-		if (isset($oJsonReview->tmpl_save) && $oJsonReview->tmpl_save) {
-			$oReviewProcess->tmpl_save = true;
-			$oReviewProcess->tmpl_name = addslashes($oJsonReview->tmpl_name);
-			$oReviewProcess->tmpl_choice = $oJsonReview->tmpl_choice;
+			return Status::newFatal( 'bs-review-startdate-after-enddate' );
 		}
 
-		foreach ($paramRvSteps as $oStep) {
-			if ($oStep->status == '' || $oStep->status == 'unknown')
+		if( empty( $oParams->steps ) || !is_array( $oParams->steps ) ) {
+			return Status::newFatal( 'bs-review-no-reviewers' );
+		}
+
+		// TODO an MRG: wir dieser block noch benötigt oder ist er inzwischen deprecated ??
+		// Fixed mit isset
+		if ( isset( $oParams->tmpl_save ) && $oParams->tmpl_save ) {
+			$oReviewProcess->tmpl_save = true;
+			$oReviewProcess->tmpl_name = addslashes( $oParams->tmpl_name ); //TODO: Check Param
+			$oReviewProcess->tmpl_choice = $oParams->tmpl_choice; //TODO: Check Param
+		}
+
+		foreach ( $oParams->steps as $oStep ) {
+			if( !isset( $oStep->status ) ) {
+				$oStep->status = '';
+			}
+			if ( $oStep->status == '' || $oStep->status == 'unknown' )
 				$oStep->status = '-1';
-			if ($oStep->status == 'yes')
+			if ( $oStep->status == 'yes' )
 				$oStep->status = '1';
-			if ($oStep->status == 'no')
+			if ( $oStep->status == 'no' )
 				$oStep->status = '0';
-			$sComment = BsCore::sanitize($oStep->comment, '', BsPARAMTYPE::STRING);
-			if (strlen($sComment) > 255) {
-				$aErrors[] = 'comment-too-long';
-			};
-			if (!$oStep->userid || !is_numeric($oStep->userid)) {
+			$sComment = BsCore::sanitize(
+				$oStep->comment,
+				'',
+				BsPARAMTYPE::STRING
+			);
+			if ( strlen( $sComment ) > 255 ) {
+				return Status::newFatal( 'bs-review-comment-too-long' );
+			}
+			if ( !$oStep->userid || !is_numeric( $oStep->userid ) ) {
 				//TODO: make sure you get a valid id
 				//PW: wont work with realname!
-				$oStep->userid = User::idFromName($oStep->name);
-				if (!$oStep->userid) {
-					$aErrors[] = 'user-not-found';
+				$oStep->userid = User::idFromName( $oStep->name );
+				if ( !$oStep->userid ) {
+					return Status::newFatal( 'bs-review-user-not-found' );
 				}
 			} else {
-				$oTmpUser = User::newFromId($oStep->userid);
-				if (!$oTmpUser) {
-					$aErrors[] = 'user-not-found';
+				$oTmpUser = User::newFromId( $oStep->userid );
+				if ( !$oTmpUser || $oTmpUser->isAnon() ) {
+					return Status::newFatal( 'bs-review-user-not-found' );
 				}
 			}
 
+			$oStep->userid = BsCore::sanitize(
+				$oStep->userid,
+				'',
+				BsPARAMTYPE::INT
+			);
+			$oStep->status = BsCore::sanitize(
+				$oStep->status,
+				'-1',
+				BsPARAMTYPE::STRING
+			);
 			$oReviewProcess->steps[] = BsReviewProcessStep::newFromData(
-							BsCore::sanitize($oStep->userid, '', BsPARAMTYPE::INT), $sComment, BsCore::sanitize($oStep->status, '-1', BsPARAMTYPE::STRING)
+				$oStep->userid,
+				$sComment,
+				$oStep->status
 			);
 		}
 
-
-		if (is_array($aErrors) && count($aErrors) > 0) {
-			return false;
-		} else {
-			return $oReviewProcess;
-		}
+		return Status::newGood( $oReviewProcess );
 	}
 
 	/**

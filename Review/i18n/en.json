@@ -111,5 +111,6 @@
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|has finished}} the review of \"$2\"",
 	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|has finished}} your review on \"$2\". The page got marked as stable automatically.",
 	"apihelp-bs-reviewoverview-store": "Lists an overview of review processes",
-	"apihelp-bs-reviewoverview-store-param-userid": "Filters the list review processes by user id<var>userID</var>"
+	"apihelp-bs-reviewoverview-store-param-userid": "Filters the list review processes by user id<var>userID</var>",
+	"apihelp-bs-review-tasks": "Allows manipulation of reviews"
 }
