@@ -119,5 +119,6 @@
 	"notification-bs-review-finish-and-autoflag-body": "Notification about reviewer finishes review and autoflags as stable - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
 	"apihelp-bs-reviewoverview-store": "Describes the API endpoint that lists an overview of Review",
 	"apihelp-bs-reviewoverview-store-param-userid": "Describes the <var>userID</var> parameter of the API module",
-	"apihelp-bs-review-tasks": "Describes the API endpoint that allows manipulation of reviews"
+	"apihelp-bs-review-tasks": "Describes the API endpoint that allows manipulation of reviews",
+	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Describes the <var>articleId</var> parameter of the API module"
 }

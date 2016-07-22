@@ -61,6 +61,7 @@ $wgAutoloadClasses['SpecialReview'] = __DIR__ . '/includes/specials/SpecialRevie
 $wgAutoloadClasses['BsReviewProcess'] = __DIR__ . '/includes/ReviewProcess.class.php';
 $wgAutoloadClasses['BsReviewProcessStep'] = __DIR__ . '/includes/ReviewProcessStep.class.php';
 $wgAutoloadClasses['ReviewFormatter'] = __DIR__ . '/includes/ReviewFormatter.class.php';
+$wgAutoloadClasses['BSApiReviewPossibleReviewersStore'] = __DIR__ . '/includes/api/BSApiReviewPossibleReviewersStore.php';
 $wgAutoloadClasses['BSApiReviewOverviewStore'] = __DIR__ . '/includes/api/BSApiReviewOverviewStore.php';
 $wgAutoloadClasses['BSApiReviewTasks'] = __DIR__ . '/includes/api/BSApiReviewTasks.php';
 
@@ -68,6 +69,7 @@ $wgAutoloadClasses['ViewStateBarBodyElementReview'] = __DIR__ . '/views/view.Sta
 
 $wgSpecialPages['Review'] = 'SpecialReview';
 
+$wgAPIModules['bs-reviewpossiblereviewers-store'] = 'BSApiReviewPossibleReviewersStore';
 $wgAPIModules['bs-reviewoverview-store'] = 'BSApiReviewOverviewStore';
 $wgAPIModules['bs-review-tasks'] = 'BSApiReviewTasks';
 
