@@ -11,12 +11,12 @@
 	"bs-formattinghelp-help-bold": "Fätte Schreff",
 	"bs-formattinghelp-help-italic": "Scheive Schreff",
 	"bs-formattinghelp-help-whitespace": "Zwescheroum",
-	"bs-formattinghelp-help-nowiki": "Nit fommathre",
-	"bs-formattinghelp-help-color": "Bnte Täx",
+	"bs-formattinghelp-help-nowiki": "Nit fommattehre",
+	"bs-formattinghelp-help-color": "Bunte Täx",
 	"bs-formattinghelp-help-headline": "Övverschreff",
 	"bs-formattinghelp-help-linebreak": "Et Ängk vun ene Reih",
 	"bs-formattinghelp-help-ul": "En Leß met Pungkte",
-	"bs-formattinghelp-help-listitem": "en Reih en de Leß",
+	"bs-formattinghelp-help-listitem": "En Reih en de Leß",
 	"bs-formattinghelp-help-subitem": "Ongerpongk",
 	"bs-formattinghelp-help-numberedlist": "En Leß met Nommere",
 	"bs-formattinghelp-help-link": "Ene Lengk en et Wiki",
@@ -25,5 +25,6 @@
 	"bs-formattinghelp-help-extlink": "Ene Lengk noh ußerhallef vum Wiki",
 	"bs-formattinghelp-help-hr": "En Linnesch queer erövver",
 	"bs-formattinghelp-help-template": "Schablohn",
-	"bs-formattinghelp-help-templatename": "Dä Schablohn iere Nahme"
+	"bs-formattinghelp-help-templatename": "Dä Schablohn iere Nahme",
+	"apihelp-bs-formattinghelp-description": "Livvert Aufjahbe för et Zohsazprojramm FormattingHelp"
 }
