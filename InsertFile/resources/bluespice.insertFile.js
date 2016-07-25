@@ -249,7 +249,8 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			};
 
 			if( anchor.nodeName.toLowerCase() === 'a' ) {
-				var prefixedTitle = decodeURIComponent( anchor.getAttribute( 'href' ) );
+				var href = anchor.getAttribute( 'href' ); //With pseudo protocol, e.g. "bs://Media:Somefile.pdf"
+				var prefixedTitle = decodeURIComponent( href.replace( /^bs:\/\//i, '' ) );
 				var wikiLink = new bs.wikiText.Link( '[['+prefixedTitle+']]');
 				params = {
 					title: wikiLink.getTitle(),
