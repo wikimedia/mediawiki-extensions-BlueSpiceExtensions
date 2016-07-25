@@ -4,11 +4,16 @@
 			"Purodha"
 		]
 	},
+	"bs-groupmanager-desc": "Verwalldngsschnettschtäll för rope vun Metmaacher un dänne ier Räschte derbeijzedonn, ze änndere, un fottzeschmihße.",
 	"bs-groupmanager-grpexists": "Di Jropp jidd_et ald.",
+	"bs-groupmanager-grpempty": "Dä Nahme vun dä Jropp kann nit läddesch sin.",
 	"bs-groupmanager-grpadded": "Di Jropp es derbei jedonn.",
 	"bs-groupmanager-grpedited": "Di Jropp es verändert.",
 	"bs-groupmanager-grpremoved": "Di Jropp es fott jescmeße.",
 	"bs-groupmanager-label": "Jroppeverwalldong",
+	"bs-groupmanager-invalid-name": "Em Nahme vun dä Jropp {{PLURAL:$1|es e onjölltesch|sin $1 onjölltejje|es keij onjöllesch}} Zeijsche dren: $2",
+	"bs-groupmanager-invalid-name-length": "Dä Nahme vun dä Jropp kann nit länger wi 255 Zeijsche sin.",
+	"bs-groupmanager-invalid-name-numeric": "Dä Nahme vun dä Jropp bruch winneschsdens eij Zeijsche.",
 	"bs-groupmanager-headergroup": "Jropp",
 	"bs-groupmanager-tipremove": "{{PLURAL:$1|Jrop|Jroppe|Jropp}} fottschmiiße",
 	"bs-groupmanager-titlenewgroup": "Neu Jropp",
@@ -18,10 +23,13 @@
 	"bs-groupmanager-removegroup-message-failure": "Heh di {{PLURAL:$1|Jropp|Jroppe|Jropp}} lehße sesch nit fottschmiiße: $2",
 	"bs-groupmanager-removegroup-message-unknown": "Ene Fähler es opjetrodde, woh mer nit met jerääschnet han. Bes esu johd un versöhg est norr_ens.",
 	"bs-groupmanager-lablename": "Jroppe_Nahme:",
+	"bs-groupmanager-msgnoteditable": "Di Jropp kam_mer nit ömbenänne. Se jehürd_em Wikki.",
+	"bs-groupmanager-msgnotremovable": "Di Jropp kam_mer nit foot schmiiße. Se jehürd_em Wikki.",
 	"log-name-bs-group-manager": "Logbohch övver de Jroppeverwalldong",
 	"log-description-bs-group-manager": "Logbohch vun de Änderonge aan Metmaacherjroppe.",
 	"log-show-hide-bs-group-manager": "$1 et Logbohch övver de Jroppeverwalldong",
 	"logentry-bs-group-manager-create": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Jropp $4 aanjelaat.",
 	"logentry-bs-group-manager-modify": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Jropp $4 op $5 ömmjenannt.",
-	"logentry-bs-group-manager-remove": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Jropp $4 fottjeschmeße."
+	"logentry-bs-group-manager-remove": "{{GENDER:$2|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher|De Metmaacherėn|Dä Metmaacher}} $1 hät de Jropp $4 fottjeschmeße.",
+	"apihelp-bs-groupmanager-description": "Livvert de Aufjahbe för et Zohsazprojramm för de Jroppeverwalldong."
 }
