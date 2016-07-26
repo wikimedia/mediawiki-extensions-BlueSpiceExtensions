@@ -10,10 +10,9 @@
 	"bs-checklist-menu-insert-checkbox": "Caxella de comprobación",
 	"bs-checklist-dlg-insert-list-title": "Insertar una llista de comprobación",
 	"bs-checklist-dlg-insert-list-value-list": "Llista de valores",
-	"bs-checklist-tag-checklist-desc": "Presenta una caxella de comprobación o un campu de seleición. Atributos de configuración disponibles:",
-	"bs-checklist-tag-checklist-param-type": "<code>type</code>: <code>list</code> presenta una llista de seleición.",
-	"bs-checklist-tag-checklist-param-list": "<code>list</code>: Nome de la plantía colos valores disponibles. El parámetru <code>type</code> tien de configurase como <code>list</code>.",
-	"bs-checklist-tag-checklist-param-value": "<code>value</code>: <code>checked</code> o un valor fuera de la plantía de llista.",
+	"bs-checklist-tag-checklist-desc": "Xenera una caxella de comprobación o un menú de selección. La llista puede cambiase con dellos parámetros.",
+	"bs-checklist-tag-checklist-example-check": "Caxella de comprobación",
+	"bs-checklist-tag-checklist-example-list": "Menú de selección",
 	"bs-checklist-dlg-new-list": "Crear una llista nueva",
 	"bs-checklist-dlg-save-list": "Guardar cambios na llista",
 	"bs-checklist-dlg-items-label": "Elementos de la llista",
@@ -30,5 +29,8 @@
 	"log-show-hide-bs-checklist": "$1 el rexistru de cuadros de comprobación",
 	"logentry-bs-checklist-checked": "$1 {{GENDER:$2|marcó}}'l cuadru n<sup>u</sup>$4 en $3",
 	"logentry-bs-checklist-unchecked": "$1 {{GENDER:$2|desmarcó}}'l cuadru n<sup>u</sup>$4 en $3",
-	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|seleicionó}}'l valor «$5» nel cuadru n<sup>u</sup>$4 de $3"
+	"logentry-bs-checklist-selected": "$1 {{GENDER:$2|seleicionó}}'l valor «$5» nel cuadru n<sup>u</sup>$4 de $3",
+	"bs-checklist-savelist-error-invalid-title": "Apurrióse un títulu inválidu",
+	"bs-checklist-savelist-error-edit-not-permitted": "Permisos insuficientes pa guardar la llista.",
+	"bs-checklist-modified-check": "Valor de llista de comprobación cambiáu"
 }

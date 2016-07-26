@@ -25,7 +25,7 @@
 	"bs-groupmanager-msgnotremovable": "이 그룹은 시스템 그룹이고 제거할 수 없습니다.",
 	"log-name-bs-group-manager": "그룹 관리자 기록",
 	"log-show-hide-bs-group-manager": "그룹 관리자 기록을 $1",
-	"logentry-bs-group-manager-create": "$1 사용자가 $4 그룹을 {{GENDER:$2|만들었습니다}}",
+	"logentry-bs-group-manager-create": "$1님이 $4 그룹을 {{GENDER:$2|만들었습니다}}",
 	"logentry-bs-group-manager-modify": "$1님이 $4 그룹의 이름을 $5(으)로 {{GENDER:$2|바꾸었습니다}}",
-	"logentry-bs-group-manager-remove": "$1 사용자가 $4 그룹을 {{GENDER:$2|제거했습니다}}"
+	"logentry-bs-group-manager-remove": "$1님이 $4 그룹을 {{GENDER:$2|제거했습니다}}"
 }

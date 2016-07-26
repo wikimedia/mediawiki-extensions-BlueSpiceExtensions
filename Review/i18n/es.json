@@ -112,5 +112,6 @@
 	"notification-bs-review-finish-body": "$1 {{GENDER:$1|ha terminado}} tu revisión de \"$2\". Comprueba los resultados del proceso de revisión.",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|ha terminado}} el proceso de revisión y marcó automáticamente a $3 como estable",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|ha terminado}} la revisión de \"$2\"",
-	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|ha terminado}} tu revisión de \"$2\". La página se marcó como estable automáticamente."
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|ha terminado}} tu revisión de \"$2\". La página se marcó como estable automáticamente.",
+	"apihelp-bs-review-tasks": "Permite la manipulación de las revisiones"
 }
