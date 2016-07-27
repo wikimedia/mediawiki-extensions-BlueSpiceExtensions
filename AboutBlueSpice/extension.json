@@ -30,7 +30,7 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/AboutBlueSpice/resources"
 	},
-	"bsgBSExtensions": {
+	"bsgExtensions": {
 		"AboutBlueSpice": {
 			"className": "AboutBlueSpice",
 			"extPath": "/BlueSpiceExtensions/AboutBlueSpice"
