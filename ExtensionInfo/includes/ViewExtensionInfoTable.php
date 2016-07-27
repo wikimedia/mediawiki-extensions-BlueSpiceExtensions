@@ -51,23 +51,16 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		global $wgBlueSpiceExtInfo, $wgVersion;
 
 		$aExtensionInfo = array();
-		foreach ( $this->mExtensions as $aExtension ) {
-
-			if ( !isset( $aExtension[EXTINFO::NAME] ) ) continue;
-
-			$aExtensionInfoArray = array(
-				'name' => array(
-					$aExtension[EXTINFO::NAME],
-					$this->getHelpdeskUrl($aExtension)
-				),
-				'version' => ( $aExtension[EXTINFO::VERSION] === 'default' ) ? $wgBlueSpiceExtInfo['version'] : $aExtension[EXTINFO::VERSION],
-				'package' => ( !isset( $aExtension[EXTINFO::PACKAGE] ) || $aExtension[EXTINFO::PACKAGE] === 'default' ) ? $wgBlueSpiceExtInfo['package'] : $aExtension[EXTINFO::PACKAGE],
-				//'description' => wfMessage( $aExtension[EXTINFO::DESCRIPTION] )->plain(), Future use
-				'description' => wfMessage( $aExtension[EXTINFO::DESCRIPTION] )->escaped(),
-				'status' => ( $aExtension[EXTINFO::STATUS] === 'default' ) ? $wgBlueSpiceExtInfo['status'] : $aExtension[EXTINFO::STATUS],
+		foreach ( $this->mExtensions as $sExtName => $aExtension ) {
+			if( empty($sExtName) ) {
+				continue;
+			}
+			$aExtension['name'] = array(
+				$sExtName,
+				$this->getHelpdeskUrl($aExtension)
 			);
 
-			$aExtensionInfo[] = $aExtensionInfoArray;
+			$aExtensionInfo[] = $aExtension;
 		}
 
 		RequestContext::getMain()->getOutput()->addJsConfigVars( 'aExtensionInfo', $aExtensionInfo );
@@ -105,7 +98,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		//(09.05.2012)PW: added helpdeskurls to mI18n-files
 		//$baseUrl = BsConfig::get('MW::ExtensionInfo::HelpdeskBaseUrl');
 		$baseUrl = 'http://help.blue-spice.org/index.php';
-		$sExtensionName = $aExtensionInfo[EXTINFO::NAME];
+		$sExtensionName = $aExtensionInfo['name'];
 		$sUrl = $baseUrl . '/' . $sExtensionName;
 		return $sUrl;
 	}
