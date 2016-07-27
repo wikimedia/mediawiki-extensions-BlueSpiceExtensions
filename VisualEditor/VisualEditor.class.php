@@ -477,7 +477,7 @@ class VisualEditor extends BsExtensionMW {
 		BsConfig::set('MW::VisualEditor::AllowedTags', $sAllowedTags);
 
 		$aDefaultTags = array(
-			"includeonly", "onlyinclude", "noinclude", "gallery", "code", //Definitively MediaWiki core
+			"includeonly", "onlyinclude", "noinclude", "gallery", //Definitively MediaWiki core
 			"presentation", "backlink",  "math", "video" //Maybe legacy extension tags? Potential duplicates!
 		);
 
