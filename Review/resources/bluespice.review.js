@@ -18,7 +18,7 @@
 (function(mw, $, bs, undefined){
 
 	//Wire up content action link
-	$('#ca-review').find('a').on( 'click', function( e ) {
+	$( document ).on( 'click', '#ca-review a', function( e ) {
 		e.preventDefault();
 		var me = this;
 		mw.loader.using('ext.bluespice.extjs').done(function(){
