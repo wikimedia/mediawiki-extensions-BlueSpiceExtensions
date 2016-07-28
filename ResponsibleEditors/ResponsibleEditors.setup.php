@@ -101,7 +101,8 @@ $GLOBALS["bssDefinitions"]["_RESPEDITOR"] = array(
 	"type" => 9,
 	"show" => false,
 	"msgkey" => "prefs-responsibleeditors",
-	"alias" => "Responsible editor",
+	"alias" => "prefs-responsibleeditors",
+	"label" => "Responsible editor",
 	"mapping" => "ResponsibleEditors::addPropertyValues"
 );
 
