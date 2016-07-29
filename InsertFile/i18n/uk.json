@@ -68,5 +68,5 @@
 	"bs-insertfile-error-no-medialink": "Медіапосилання не вибрано.",
 	"bs-insertfile-error-no-imagelink": "Посилання на зображення не вибрано.",
 	"bs-insertfile-upload-waitmessage": "Віддача триває...",
-	"apihelp-bs-inserfile-license-store-description": "Перелічує ліцензії для розширення InsertFile."
+	"apihelp-bs-insertfile-license-store-description": "Перелічує ліцензії для розширення InsertFile."
 }
