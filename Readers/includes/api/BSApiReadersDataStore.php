@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * Provides reader tasks api for BlueSpice.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * This file is part of BlueSpice for MediaWiki
+ * For further information visit http://www.blue-spice.org
+ *
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
+ * @package    Bluespice_Extensions
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ */
+
+/**
+ * GroupManager Api class
+ * @package BlueSpice_Extensions
+ */
+class BSApiReadersDataStore extends BSApiExtJSStoreBase {
+
+	protected function makeData( $sQuery = '' ) {
+
+		$oDbr = wfGetDB( DB_SLAVE );
+
+		$res = $oDbr->select(
+			array( 'page', 'bs_readers' ),
+			array(
+				'page_title', 'readers_page_id', 'readers_user_name',
+				'MAX( readers_ts ) as readers_ts'
+			),
+			array(
+				'readers_page_id = page_id',
+				'readers_user_id' => (int) $sQuery
+			)
+		);
+
+		$aPages = array();
+		if ( $oDbr->numRows( $res ) > 0 ) {
+			$oLanguage = RequestContext::getMain()->getLanguage();
+			foreach ( $res as $row ) {
+				$oTitle = Title::newFromID( $row->readers_page_id );
+
+				$aTmpPage = array();
+				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
+				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
+				$aTmpPage['pv_ts'] = $oLanguage->timeanddate( $row->readers_ts );
+
+				$aPages[] = (object) $aTmpPage;
+			}
+		}
+		$oDbr->freeResult( $res );
+
+		return $aPages;
+	}
+}

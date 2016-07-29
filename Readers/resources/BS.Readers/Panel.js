@@ -11,30 +11,20 @@
  * @filesource
  */
 
+
 Ext.define( 'BS.Readers.Panel', {
 	extend: 'Ext.grid.Panel',
 	id: 'bs-readers-panel',
-
-	initComponent: function() {
-		this.store = Ext.create( 'Ext.data.JsonStore', {
+	initComponent: function () {
+		this.store = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-readers-users-store',
 			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Readers::getUsers', [ bsReadersTitle ] ),
-				reader: {
-					type: 'json',
-					root: 'users',
-					idProperty: 'readers_id',
-					totalProperty: 'totalCount'
+				extraParams: {
+					query: mw.config.get("bsReadersTitle")
 				}
 			},
-			autoLoad: true,
-			remoteSort: true,
-			fields: [ 'user_image', 'user_name', 'user_page', 'user_readers', 'user_ts', 'user_date' ],
-			sortInfo: {
-				field: 'id',
-				direction: 'ASC'
-			}
-		});
+			fields: [ 'user_image', 'user_name', 'user_page', 'user_readers', 'user_ts', 'user_date' ]
+		} );
 
 		this.colUserName = Ext.create( 'Ext.grid.column.Template', {
 			id: 'username',

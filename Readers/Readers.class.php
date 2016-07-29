@@ -46,13 +46,13 @@ class Readers extends BsExtensionMW {
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'Readers',
 			EXTINFO::DESCRIPTION => 'bs-readers-desc',
-			EXTINFO::AUTHOR      => 'Stephan Muggli',
+			EXTINFO::AUTHOR      => 'Stephan Muggli, Leonid Verhovskij',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
 			EXTINFO::URL         => 'https://help.bluespice.com/index.php/Readers',
 			EXTINFO::DEPS        => array(
-										'bluespice' => '2.22.0'
+										'bluespice' => '2.23.0'
 										)
 		);
 		$this->mExtensionKey = 'MW::Readers';
@@ -250,84 +250,6 @@ class Readers extends BsExtensionMW {
 	}
 
 	/**
-	 * Get the Users for specialpage, called via ajax
-	 * @param string $sPage page title
-	 * @return bool Always true
-	 */
-	public static function getUsers( $sPage ) {
-		$oTitle = Title::newFromText( $sPage );
-		if ( !$oTitle->exists() ) return json_encode( array() );
-		$iArticleID = $oTitle->getArticleID();
-
-		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$iLimit = $oStoreParams->getLimit();
-		$iStart = $oStoreParams->getStart();
-		$sSort = $oStoreParams->getSort( 'MAX(readers_ts)' );
-		$sDirection = $oStoreParams->getDirection();
-
-		if ( $sSort == 'user_name' ) {
-			$sSort = 'readers_user_name';
-		} elseif ( $sSort == 'user_ts' ) {
-			$sSort = 'readers_ts';
-		} elseif ( $sSort == 'user_readers' ) {
-			$sSort = 'readers_user_name';
-		}
-
-		$oDbr = wfGetDB( DB_SLAVE );
-		$res = $oDbr->select(
-				array( 'bs_readers' ),
-				array( 'readers_user_id', 'MAX(readers_ts) as readers_ts' ),
-				array( 'readers_page_id' => $iArticleID ),
-				__METHOD__,
-				array(
-					'GROUP BY' => 'readers_user_id',
-					'ORDER BY' => $sSort . ' ' . $sDirection,
-					'LIMIT' => $iLimit,
-					'OFFSET' => $iStart
-				)
-		);
-
-		$aUsers = array();
-		if ( $oDbr->numRows( $res ) > 0 ) {
-			$aParams = array();
-			$oLanguage = RequestContext::getMain()->getLanguage();
-			foreach ( $res as $row ) {
-				$oUser = User::newFromId( (int)$row->readers_user_id );
-				$oTitle = Title::makeTitle( NS_USER, $oUser->getName() );
-				$oUserMiniProfile = BsCore::getInstance()->getUserMiniProfile( $oUser, $aParams );
-
-				$sImage = $oUserMiniProfile->getUserImageSrc();
-				if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) )
-					$sImage = SecureFileStore::secureStuff( $sImage, true );
-
-				$aTmpUser = array();
-				$aTmpUser['user_image'] = $sImage;
-				$aTmpUser['user_name'] = $oUser->getName();
-				$aTmpUser['user_page'] = $oTitle->getLocalURL();
-				$aTmpUser['user_readers'] = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() )->getLocalURL();
-				$aTmpUser['user_ts'] = $row->readers_ts;
-				$aTmpUser['user_date'] = $oLanguage->timeanddate( $row->readers_ts );
-
-				$aUsers['users'][] = $aTmpUser;
-			}
-		}
-		$rowCount = $oDbr->select(
-				'bs_readers',
-				'readers_user_id',
-				array(
-					'readers_page_id' => $iArticleID
-				),
-				__METHOD__,
-				array(
-					'GROUP BY' => 'readers_user_id'
-				)
-		);
-		$aUsers['totalCount'] = $oDbr->numRows( $rowCount );
-
-		return json_encode( $aUsers );
-	}
-
-	/**
 	 * Checks wether to set Context or not.
 	 * @return bool
 	 */
@@ -358,73 +280,4 @@ class Readers extends BsExtensionMW {
 
 		return true;
 	}
-
-	/**
-	 * Get the pages for specialpage, called via ajax
-	 * @param string $sOutput Output to return
-	 * @return bool Always true
-	 */
-	public static function getData( $iUserID ) {
-		$oDbr = wfGetDB( DB_SLAVE );
-
-		$oStoreParams = BsExtJSStoreParams::newFromRequest();
-		$iLimit = $oStoreParams->getLimit();
-		$iStart = $oStoreParams->getStart();
-		$sSort = $oStoreParams->getSort( 'MAX(readers_ts)' );
-		$sDirection = $oStoreParams->getDirection();
-
-		if ( $sSort == 'pv_page' ) {
-			$sSort = 'page_title';
-		} elseif ( $sSort == 'pv_ts' ) {
-			$sSort = 'MAX( readers_ts )';
-		}
-
-		$res = $oDbr->select(
-			array( 'page', 'bs_readers' ),
-			array(
-				'page_title', 'readers_page_id', 'readers_user_name',
-				'MAX( readers_ts ) as readers_ts'
-			),
-			array(
-				'readers_page_id = page_id',
-				'readers_user_id' => $iUserID
-			),
-			__METHOD__,
-			array(
-				'GROUP BY' => 'readers_page_id',
-				'ORDER BY' => $sSort . " " . $sDirection,
-				'LIMIT' => $iLimit,
-				'OFFSET' => $iStart
-			)
-		);
-
-		$aPages = array();
-		if ( $oDbr->numRows( $res ) > 0 ) {
-			$oLanguage = RequestContext::getMain()->getLanguage();
-			foreach ( $res as $row ) {
-				$oTitle = Title::newFromID( $row->readers_page_id );
-
-				$aTmpPage = array();
-				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
-				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
-				$aTmpPage['pv_ts'] = $oLanguage->timeanddate( $row->readers_ts );
-
-				$aPages['page'][] = $aTmpPage;
-			}
-		}
-		$oDbr->freeResult( $res );
-
-		$rowCount = $oDbr->select(
-				'bs_readers',
-				'readers_page_id',
-				array( 'readers_user_id' => $iUserID ),
-				__METHOD__,
-				array( 'GROUP BY' => 'readers_page_id' )
-		);
-		$aPages['totalCount'] = $oDbr->numRows( $rowCount );
-		$oDbr->freeResult( $rowCount );
-
-		return json_encode( $aPages );
-	}
-
 }

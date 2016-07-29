@@ -8,11 +8,13 @@ $wgExtensionMessagesFiles['ReadersAlias'] = __DIR__.'/languages/SpecialReaders.a
 $wgAutoloadClasses['Readers'] = __DIR__ . '/Readers.class.php';
 $wgAutoloadClasses['ViewReaders'] = __DIR__ . '/views/view.Readers.php';
 $wgAutoloadClasses['SpecialReaders']  = __DIR__.'/includes/specials/SpecialReaders.class.php';
+$wgAutoloadClasses['BSApiReadersDataStore'] = __DIR__ . '/includes/api/BSApiReadersDataStore.php';
+$wgAutoloadClasses['BSAPIReadersUsersStore'] = __DIR__ . '/includes/api/BSAPIReadersUsersStore.php';
 
 $wgSpecialPages['Readers'] = 'SpecialReaders';
 
-$wgAjaxExportList[] = 'Readers::getUsers';
-$wgAjaxExportList[] = 'Readers::getData';
+$wgAPIModules['bs-readers-data-store'] = 'BSApiReadersDataStore';
+$wgAPIModules['bs-readers-users-store'] = 'BSAPIReadersUsersStore';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'Readers::getSchemaUpdates';
 

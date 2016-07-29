@@ -14,27 +14,16 @@
 Ext.define( 'BS.Readers.PathPanel', {
 	extend: 'Ext.grid.Panel',
 	id: 'bs-readers-pathpanel',
-
-	initComponent: function() {
-		this.store = Ext.create( 'Ext.data.JsonStore', {
+	initComponent: function () {
+		this.store = Ext.create( 'BS.store.BSApi', {
+			apiAction: 'bs-readers-data-store',
 			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Readers::getData', [ bsReadersUserID ] ),
-				reader: {
-					type: 'json',
-					root: 'page',
-					idProperty: 'pv_page',
-					totalProperty: 'totalCount'
+				extraParams: {
+					query: mw.config.get("bsReadersUserID")
 				}
 			},
-			autoLoad: true,
-			remoteSort: true,
-			fields: [ 'pv_page', 'pv_page_title', 'pv_ts' ],
-			sortInfo: {
-				field: 'id',
-				direction: 'ASC'
-			}
-		});
+			fields: [ 'pv_page', 'pv_page_title', 'pv_ts' ]
+		} );
 
 		this.colPage = Ext.create( 'Ext.grid.column.Template', {
 			id: 'pvpage',
@@ -61,4 +50,4 @@ Ext.define( 'BS.Readers.PathPanel', {
 
 		this.callParent( arguments );
 	}
-});
+} );

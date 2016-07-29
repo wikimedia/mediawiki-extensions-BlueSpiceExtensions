@@ -37,11 +37,8 @@ class SpecialReaders extends BsSpecialPage {
 				$oOut->addModules( 'ext.bluespice.readers.specialreaders' );
 				$oOut->setPageTitle( wfMessage( 'readers', $oRequestedTitle->getFullText() )->text() );
 
-				$oOut->addHtml(
-					'<script type="text/javascript">
-						bsReadersTitle = "' . $oRequestedTitle->getPrefixedText() . '";
-					</script>'
-				);
+				$oOut->addJsConfigVars( "bsReadersTitle", $oRequestedTitle->getPrefixedText() );
+
 			} elseif ( $oRequestedTitle->getNamespace() === NS_USER ) {
 				$sOut = $this->renderReaderspathGrid();
 
@@ -49,11 +46,7 @@ class SpecialReaders extends BsSpecialPage {
 				$oUser = User::newFromName( $oRequestedTitle->getText() );
 				$oOut->setPageTitle( wfMessage( 'readers-user', $oUser->getName() )->text() );
 
-				$oOut->addHtml(
-					'<script type="text/javascript">
-						bsReadersUserID = "' . $oUser->getId() . '";
-					</script>'
-				);
+				$oOut->addJsConfigVars( "bsReadersUserID", $oUser->getId() );
 			} else {
 				$oErrorView = new ViewTagErrorList();
 				$oErrorView->addItem( new ViewTagError( wfMessage( 'bs-readers-pagenotexists' )->plain() ) );
