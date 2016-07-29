@@ -11,18 +11,14 @@
  */
 
 Ext.define( 'BS.SmartList.MostVisitedPortlet', {
-	extend: 'BS.portal.HTMLPortlet',
+	extend: 'BS.portal.APIPortlet',
 	portletConfigClass: 'BS.SmartList.MostVisitedPortletConfig',
-
-	initComponent: function() {
-		this.contentUrl = bs.util.getAjaxDispatcherUrl( 'SmartList::getMostVisitedPages', [ this.portletItemCount, this.portletTimeSpan ] );
-		this.callParent(arguments);
-	},
-
-	setPortletConfig: function( cfg ) {
-		this.callParent(arguments);
-		this.cContent.getLoader().load({
-			url: bs.util.getAjaxDispatcherUrl( 'SmartList::getMostVisitedPages', [ this.portletItemCount, cfg.portletTimeSpan ] )
-		});
+	module: 'smartlist',
+	task: 'getMostVisitedPages',
+	makeData: function() {
+		return {
+			count: this.portletItemCount,
+			period: this.portletTimeSpan
+		};
 	}
 } );

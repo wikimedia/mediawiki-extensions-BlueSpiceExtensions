@@ -44,5 +44,7 @@
 	"bs-smartlist-mostactiveusersdesc": "List of most active users sorted by their edits.",
 	"bs-smartlist-mosteditedpagesdesc": "List of most edited pages sorted by their edits.",
 	"bs-smartlist-mostvisitedpagesdesc": "List of most viewed pages sorted by their views.",
-	"bs-smartlist-lasteditsdesc": "List of pages which you have edited."
+	"bs-smartlist-lasteditsdesc": "List of pages which you have edited.",
+	"bs-smartlist-hitcounter-missing":"Extension <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a> must be installed.",
+	"apihelp-bs-smartlist-tasks-description": "API functions to serve portlet data for page and user statistics."
 }

@@ -25,6 +25,7 @@
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Patric Wirth <wirth@hallowelt.com>
  * @author     Stephan Muggli <muggli@hallowelt.com>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage SmartList
@@ -51,7 +52,7 @@ class SmartList extends BsExtensionMW {
 		$this->mInfo = array(
 			EXTINFO::NAME        => 'SmartList',
 			EXTINFO::DESCRIPTION => 'bs-smartlist-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel, Patric Wirth, Stephan Muggli',
+			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel, Patric Wirth, Stephan Muggli, Leonid Verhovskij',
 			EXTINFO::VERSION     => 'default',
 			EXTINFO::STATUS      => 'default',
 			EXTINFO::PACKAGE     => 'default',
@@ -1110,10 +1111,8 @@ class SmartList extends BsExtensionMW {
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function getToplist( $sInput, $aArgs, $oParser ) {
-		wfDeprecated( __METHOD__ , '2.23.3' );
-		if( $GLOBALS['wgVersion'] > '1.24' ) {
-			//See: https://www.mediawiki.org/wiki/Requests_for_comment/Removing_hit_counters_from_MediaWiki_core
-			throw new BsException( 'Field page.page_counter was completely removed in MediaWiki 1.25' );
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'HitCounters' ) ) {
+			return wfMessage( 'bs-smartlist-hitcounter-missing' )->plain();
 		}
 		$sCat = BsCore::sanitizeArrayEntry( $aArgs, 'cat',           '', BsPARAMTYPE::STRING );
 		$sNs = BsCore::sanitizeArrayEntry( $aArgs, 'ns',            '', BsPARAMTYPE::STRING );
@@ -1143,9 +1142,9 @@ class SmartList extends BsExtensionMW {
 			}
 			$bAlltime = false;
 		} else {
-			$aTables         = array( 'page' );
+			$aTables         = array( 'hit_counter', 'page' );
 			$aColumns        = array( 'page_title', 'page_counter', 'page_namespace' );
-			$aConditions     = array();
+			$aConditions     = array( 'hit_counter.page_id = page.page_id');
 			$aOptions        = array( 'ORDER BY' => 'page_counter DESC' );
 			$aJoinConditions = array();
 		}

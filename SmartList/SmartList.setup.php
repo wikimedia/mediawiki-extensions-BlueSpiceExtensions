@@ -5,10 +5,8 @@ BsExtensionManager::registerExtension('SmartList', BsRUNLEVEL::FULL|BsRUNLEVEL::
 $wgMessagesDirs['SmartList'] = __DIR__ . '/i18n';
 
 $wgAutoloadClasses['SmartList'] = __DIR__ . '/SmartList.class.php';
+$wgAutoloadClasses['BSApiTasksSmartList'] = __DIR__ . '/includes/api/BSApiTasksSmartList.php';
 
 $GLOBALS['wgHooks']['LoadExtensionSchemaUpdates'][] = 'SmartList::getSchemaUpdates';
 
-$wgAjaxExportList[] = 'SmartList::getMostVisitedPages';
-$wgAjaxExportList[] = 'SmartList::getMostEditedPages';
-$wgAjaxExportList[] = 'SmartList::getMostActivePortlet';
-$wgAjaxExportList[] = 'SmartList::getYourEditsPortlet';
+$wgAPIModules['bs-smartlist-tasks'] = 'BSApiTasksSmartList';

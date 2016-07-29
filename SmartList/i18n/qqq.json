@@ -48,5 +48,7 @@
 	"bs-smartlist-mostactiveusersdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], text message for list of most active users sorted by their edits.",
 	"bs-smartlist-mosteditedpagesdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], text message for list of most edited pages sorted by their edits.",
 	"bs-smartlist-mostvisitedpagesdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], text message for list of most viewed pages sorted by their views.",
-	"bs-smartlist-lasteditsdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], text message for list of pages which you have edited."
+	"bs-smartlist-lasteditsdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], text message for list of pages which you have edited.",
+	"bs-smartlist-hitcounter-missing":"Error and link to extension page when HitCounter is missing. Used on Users Dashboard Widget of SmartList Extension, most visited pages",
+	"apihelp-bs-smartlist-tasks-description": "Help desciption of API functions offered by SmartList extension."
 }
