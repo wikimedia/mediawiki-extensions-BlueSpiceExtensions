@@ -85,5 +85,9 @@
 	"apihelp-bs-responsibleeditorspages-store": "Describes the API endpoint that lists pages and the related responsible editors",
 	"apihelp-bs-bs-responsibleeditors-tasks": "Describes the API endpoint that allows manipulation of responsible editors",
 	"apihelp-bs-responsibleeditorsposibleeditors-store": "Describes the API endpoint that lists possible responsible editors",
-	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Describes the <var>articleId</var> parameter of the API module"
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Describes the <var>articleId</var> parameter of the API module",
+	"apihelp-bs-responsibleeditorspages-store-description": "Describes the API endpoint that lists pages for the manager component of responsible editors",
+	"apihelp-bs-responsibleeditorspossibleeditors-store-description": "Describes the API endpoint that lists possible responsible editors",
+	"apihelp-bs-responsibleeditorsactivenamespaces-store-description": "Describes the API endpoint that lists namespaces that responsible editors is activated in",
+	"apihelp-bs-responsibleeditors-tasks-description": "Describes the API endpoint that allows manipulation of responsible editors"
 }
