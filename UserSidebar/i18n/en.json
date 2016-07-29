@@ -10,5 +10,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Edit}} focus",
 	"bs-usersidebar-tab-focus": "Focus",
 	"bs-usersidebar-tab-globalactions": "Global actions",
-	"bs-usersidebar-globalactionswidget-title": "Global actions"
+	"bs-usersidebar-globalactionswidget-title": "Global actions",
+	"apihelp-sidebar-description": "Returns the HTML contents of the user sidebar"
 }
