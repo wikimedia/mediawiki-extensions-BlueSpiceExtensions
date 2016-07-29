@@ -41,5 +41,7 @@
 	"bs-pagetemplates-confirm-deletetpl": "Are you sure you want to delete {{PLURAL:$1|this template|these templates}}?",
 	"bs-pagetemplates-remove-message-unknown": "An unexpected error occurred, please try again.",
 	"bs-pagetemplates-remove-message-success": "The following {{PLURAL:$1|template was|templates were}} deleted: $2",
-	"bs-pagetemplates-remove-message-failure": "The following {{PLURAL:$1|template|templates}} could not be deleted: $2 (Reason: $3)"
+	"bs-pagetemplates-remove-message-failure": "The following {{PLURAL:$1|template|templates}} could not be deleted: $2 (Reason: $3)",
+	"apihelp-bs-pagetemplates-store-description": "Lists all page templates. Allows sorting, filtering and pagination. Implements ExtJS Store parameters.",
+	"apihelp-bs-pagetemplates-tasks-description": "Allows manipulation of page templates"
 }
