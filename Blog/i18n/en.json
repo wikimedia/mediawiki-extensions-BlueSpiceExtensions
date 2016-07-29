@@ -6,6 +6,7 @@
 	},
 	"bs-blog-desc": "Displays a blog style list of pages",
 	"prefs-blog": "Blog",
+	"blog": "Blog",
 	"bs-blog-no-entries": "There are no blog entries.",
 	"bs-blog-comments": "Comments",
 	"bs-blog-read-more": "Read more",

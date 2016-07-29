@@ -17,3 +17,7 @@ $wgResourceModules['ext.bluespice.blog'] = array(
 $wgAutoloadClasses['Blog'] = __DIR__ . '/Blog.class.php';
 $wgAutoloadClasses['ViewBlog'] = __DIR__ . '/views/view.Blog.php';
 $wgAutoloadClasses['ViewBlogItem'] = __DIR__ . '/views/view.BlogItem.php';
+
+$wgAutoloadClasses['SpecialBlog'] = __DIR__ . '/includes/specials/SpecialBlog.class.php';
+$wgExtensionMessagesFiles['BlogAlias'] = __DIR__ . '/includes/specials/SpecialBlog.alias.php';
+$wgSpecialPages['Blog'] = 'SpecialBlog';

@@ -127,9 +127,7 @@ class Blog extends BsExtensionMW {
 
 		$aNavigationSites[] = array(
 			'id' => 'nt-blog',
-			'href' => wfAppendQuery( $wgScriptPath.'/index.php', array(
-				'action' => 'blog'
-			)),
+			'href' => SpecialPage::getTitleFor( 'Blog' )->getLinkURL(),
 			'active' => BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ),
 			'text' => wfMessage('bs-blog-blog')->plain(),
 		);
@@ -398,18 +396,17 @@ class Blog extends BsExtensionMW {
 
 	/**
 	 * Renders blog output when called via topbar and action=blog. Called by UnkownAction hook.
+	 * @deprecated since 2.27.0, use Special:Blog instead.
 	 * @param string $action Value of the action parameter as determined by MediaWiki
 	 * @param Article $article MediaWiki Article object of current article
 	 * @return bool false to prevent other actions to bind on 'blog'.
 	 */
 	public function onUnknownAction( $action, $article ) {
 		if ( $action != 'blog' ) return true;
+		wfDeprecated( __METHOD__, '2.27.0' );
 
-		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
-
-		$oOut = $this->getOutput();
-		$oOut->setPageTitle( 'Blog' ); // set page content
-		$oOut->addHTML( $this->onBlog( '', array(), null ) );
+		// redirect to Special:Blog
+		RequestContext::getMain()->getOutput()->redirect( SpecialPage::getTitleFor( 'Blog' )->getLinkURL() );
 
 		return false; // return false to prevent other actions to bind on 'blog'
 	}
