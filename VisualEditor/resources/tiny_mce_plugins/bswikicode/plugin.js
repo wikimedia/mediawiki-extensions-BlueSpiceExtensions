@@ -555,13 +555,13 @@ var BsWikiCode = function() {
 
 
 				linkHtml = anchorFormat.format(
-					encodeURI( 'bs://' + linkTarget ),//escape(linkTarget), //0
-					linkLabel,                                              //1
-					'internal_link',                                        //2
-					'internal bs-internal-link',                            //3
-					encodeURI( $('<div/>').text(link).html() ),             //4
-					encodeURI( linkTarget ),                                //5
-					encodeURI( $('<div/>').text(linkLabel).html() )         //6
+					encodeURI( 'bs://' + linkTarget ),//escape(linkTarget),	// href
+					linkLabel,												// <a>linkLabel</a>
+					'internal_link',										// data-bs-type
+					'internal bs-internal-link',							// class
+					encodeURI( $('<div/>').text(link).html() ),				// data-bs-wikitext
+					encodeURI( linkTarget ),								// data-mce-href
+					encodeURI( $('<div/>').text(linkLabel).html() )			// title
 				);
 
 				targetParts = linkTarget.split(":");
@@ -611,13 +611,13 @@ var BsWikiCode = function() {
 					_externalLinkNo++;
 				}
 				linkHtml = anchorFormat.format(
-					encodeURI( linkTarget ),//escape(linkTarget),                     //0
-					linkLabel,                                           //1
-					'external_link',                                     //2
-					'external bs-external-link bs-protocol-'+protocol,   //3
-					encodeURI( $('<div/>').text(link).html() ),                       //4
-					encodeURI( linkTarget ),                                          //5
-					encodeURI( $('<div/>').text(linkLabel).html() )                   //6
+					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),			// href
+					linkLabel,												// <a>linkLabel</a>
+					'external_link',										// data-bs-type
+					'external bs-external-link bs-protocol-'+protocol,		// class
+					$( '<div/>' ).text( link ).html(),						// data-bs-wikitext
+					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),			// data-mce-href
+					$( '<div/>' ).text( linkLabel ).html()					// title
 				);
 				text = text.replace("[" + linkNoWrap + "]", linkHtml);
 			}
@@ -700,7 +700,9 @@ var BsWikiCode = function() {
 					//if( label == target ) {
 					//	linkwiki = "[" + target + "]";
 					//} else {
-					if ( type === "external_link" && wikitext.indexOf(" ") == -1 && label.match(/^\[\d+\]$/) ) {
+					console.log(target);
+					target = target.replace( / /g, '%20' );
+					if ( type === "external_link" && wikitext.indexOf(" ") == -1 && unescape( label.match(/^\[\d+\]$/) ) ) {
 						linkwiki = "[" + target + "]";
 					} else {
 						linkwiki = "[" + target + " " + label + "]";
