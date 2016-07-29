@@ -74,8 +74,11 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 							this.origLabel = obj.content;
 						}
 					}
-					var link = String(obj.href);//.replace(this.protocols[i], "");
-					this.tfTargetUrl.setValue( unescape(link) );
+
+					var link = unescape( String( obj.href ) );
+					link = link.replace( / /g, '%20' );
+
+					this.tfTargetUrl.setValue( link );
 					bAcitve = true;
 					break;
 				}
@@ -117,6 +120,8 @@ Ext.define( 'BS.InsertLink.FormPanelExternalLink', {
 		if( this.tfTargetUrl.getValue() ) {
 			target = this.tfTargetUrl.getValue();
 		}
+
+		target = target.replace( / /g, '%20' );
 
 		return {
 			title: title,
