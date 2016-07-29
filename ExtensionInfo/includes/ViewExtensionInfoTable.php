@@ -59,6 +59,9 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 				$sExtName,
 				$this->getHelpdeskUrl($aExtension)
 			);
+			$aExtension['descriptionmsg'] = wfMessage(
+				$aExtension['descriptionmsg']
+			)->text();
 
 			$aExtensionInfo[] = $aExtension;
 		}

@@ -5,7 +5,7 @@ Ext.define( 'BS.ExtensionInfo.Panel', {
 		this.store = Ext.create('Ext.data.Store', {
 			fields:[ {name: 'name'},
 				{name: 'version'},
-				{name: 'description'},
+				{name: 'descriptionmsg'},
 				{name: 'status'},
 				{name: 'package'}
 			],
@@ -25,7 +25,7 @@ Ext.define( 'BS.ExtensionInfo.Panel', {
 			},{
 				header: mw.message('bs-extensioninfo-headerdesc').plain(),
 				sortable: false,
-				dataIndex: 'description',
+				dataIndex: 'descriptionmsg',
 				groupable: false,
 				flex: 1
 			}, {
