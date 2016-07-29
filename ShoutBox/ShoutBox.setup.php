@@ -47,7 +47,7 @@ $wgResourceModules['ext.bluespice.shoutbox.styles'] = array(
 
 unset( $aResourceModuleTemplate );
 
-$wgAPIModules['bs-shoutbox'] = 'BSApiTasksShoutBox';
+$wgAPIModules['bs-shoutbox-tasks'] = 'BSApiTasksShoutBox';
 
 $wgAutoloadClasses['ShoutBox'] = __DIR__ . '/ShoutBox.class.php';
 $wgAutoloadClasses['BSApiTasksShoutBox'] = __DIR__ . '/includes/api/BSApiTasksShoutBox.php';
