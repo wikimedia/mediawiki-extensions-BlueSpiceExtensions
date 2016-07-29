@@ -66,7 +66,6 @@ class PermissionManager extends BsExtensionMW {
 		'autopatrol' => true,
 		'protect' => true,
 		'editprotected' => true,
-		'proxyunbannable' => true,
 		'rollback' => true,
 		'upload' => true,
 		'reupload' => true,
