@@ -40,30 +40,6 @@
 class ArticleInfo extends BsExtensionMW {
 
 	/**
-	 * Contructor of the ArticleInfo class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'ArticleInfo',
-			EXTINFO::DESCRIPTION => 'bs-articleinfo-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/Articleinfo',
-			EXTINFO::DEPS        => array(
-										'bluespice' => '2.22.0',
-										'StateBar' => '2.22.0'
-										)
-		);
-		$this->mExtensionKey = 'MW::ArticleInfo';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
 	 * Initialization of ArticleInfo extension
 	 */
 	public function  initExt() {
