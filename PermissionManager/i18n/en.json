@@ -45,5 +45,6 @@
 	"log-name-bs-permission-manager": "Permission manager log",
 	"log-description-bs-permission-manager": "This is a log of changes in the group permissions.",
 	"log-show-hide-bs-permission-manager": "$1 permission manager log",
-	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|has}} changed the permissions of the group $4"
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|has}} changed the permissions of the group $4",
+	"apihelp-bs-permissionmanager-tasks-description": "Provides tasks for the PermissionManager"
 }
