@@ -60,5 +60,9 @@
 	"bs-flexiskin-apihelp-task-param-skinId": "The parameter <var>skinId</var> identifies the skin",
 	"bs-flexiskin-apihelp-task-param-name": "The parameter <var>name</var> is the filename of the uploaded file",
 	"bs-flexiskin-usebackground": "Use background image",
-	"bs-flexiskin-labelcurrentbackground": "Current image"
+	"bs-flexiskin-labelcurrentbackground": "Current image",
+	"apihelp-bs-flexiskin-tasks-description": "Allows manipulation of flexiskins",
+	"apihelp-bs-flexiskin-store-description": "Lists available flexiskins",
+	"apihelp-bs-flexiskin-upload-description": "Allows to upload files to a flexiskin",
+	"apihelp-bs-flexiskin-upload-store-description": "Lists uploaded files of a flexiskin"
 }
