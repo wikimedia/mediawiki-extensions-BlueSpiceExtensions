@@ -1,18 +1,2 @@
 <?php
-
-BsExtensionManager::registerExtension('Authors', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
-
-$wgMessagesDirs['Authors'] = __DIR__ . '/i18n';
-
-$wgExtensionMessagesFiles['AuthorsMagic'] = __DIR__ . '/languages/Authors.i18n.magic.php';
-
-$wgResourceModules['ext.bluespice.authors.styles'] = array(
-	'styles' => 'extensions/BlueSpiceExtensions/Authors/resources/bluespice.authors.css',
-	'position' => 'top',
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
-);
-
-$wgAutoloadClasses['Authors'] = __DIR__ . '/Authors.class.php';
-$wgAutoloadClasses['ViewAuthors'] = __DIR__ . '/views/view.Authors.php';
-$wgAutoloadClasses['ViewAuthorsUserPageProfileImageSetting'] = __DIR__ . '/views/view.AuthorsUserPageProfileImageSetting.php';
+wfLoadExtension( 'BlueSpiceExtensions/Authors' );
