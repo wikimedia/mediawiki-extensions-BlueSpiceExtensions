@@ -79,5 +79,9 @@
 	"apihelp-bs-responsibleeditorspages-store": "Lists pages and the related responsible editors",
 	"apihelp-bs-bs-responsibleeditors-tasks": "Allows manipulation of responsible editors",
 	"apihelp-bs-responsibleeditorsposibleeditors-store" : "Lists possible responsible editors",
-	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filters possible responsible editors by required <var>articleId</var>"
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filters possible responsible editors by required <var>articleId</var>",
+	"apihelp-bs-responsibleeditorspages-store-description": "Lists pages to applay responsible editors to",
+	"apihelp-bs-responsibleeditorspossibleeditors-store-description": "Lists possible responsible editors",
+	"apihelp-bs-responsibleeditorsactivenamespaces-store-description": "Lists namespaces in which responsible editors is activated",
+	"apihelp-bs-responsibleeditors-tasks-description": "Allows manipulation of responsible editors"
 }
