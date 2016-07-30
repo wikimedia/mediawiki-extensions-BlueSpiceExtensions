@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"bs-usersidebar-desc": "Ajoute l’onglet d’intérêt à la barre latérale",
@@ -10,5 +11,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Modifier}} l’intérêt",
 	"bs-usersidebar-tab-focus": "Focus",
 	"bs-usersidebar-tab-globalactions": "Actions globales",
-	"bs-usersidebar-globalactionswidget-title": "Actions globales"
+	"bs-usersidebar-globalactionswidget-title": "Actions globales",
+	"apihelp-sidebar-description": "Retourne le code HTML de la barre latérale de l'utilisateur"
 }

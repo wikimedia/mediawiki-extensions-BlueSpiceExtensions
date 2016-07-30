@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
 	"prefs-blog": "Bloga",
+	"blog": "Blog",
 	"bs-blog-comments": "Iruzkinak",
 	"bs-blog-read-more": "Irakurri gehiago",
 	"bs-blog-permalink": "Esteka iraunkorra",

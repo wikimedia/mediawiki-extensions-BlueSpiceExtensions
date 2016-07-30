@@ -82,5 +82,7 @@
 	"apihelp-bs-responsibleeditorspages-store": "Liste les pages et les éditeurs responsables associés",
 	"apihelp-bs-bs-responsibleeditors-tasks": "Permet la manipulation des éditeurs responsables",
 	"apihelp-bs-responsibleeditorsposibleeditors-store": "Liste les éditeurs responsables possibles",
-	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filtre les éditeurs responsables possibles par <var>articleId</var> obligatoire"
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filtre les éditeurs responsables possibles par <var>articleId</var> obligatoire",
+	"apihelp-bs-responsibleeditorspossibleeditors-store-description": "Liste les éditeurs responsables possibles",
+	"apihelp-bs-responsibleeditors-tasks-description": "Permet la manipulation des éditeurs responsables"
 }

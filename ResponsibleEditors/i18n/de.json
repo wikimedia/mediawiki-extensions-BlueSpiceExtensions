@@ -82,5 +82,9 @@
 	"apihelp-bs-responsibleeditorspages-store": "Listet Seiten und die verwandten verantwortlichen Autoren auf",
 	"apihelp-bs-bs-responsibleeditors-tasks": "Erlaubt die Veränderung verantwortlicher Autoren",
 	"apihelp-bs-responsibleeditorsposibleeditors-store": "Listet mögliche verantwortliche Autoren auf",
-	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filtert mögliche verantwortliche Autoren durch die erforderliche <var>articleId</var>"
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filtert mögliche verantwortliche Autoren durch die erforderliche <var>articleId</var>",
+	"apihelp-bs-responsibleeditorspages-store-description": "Listet Seiten auf, auf denen verantwortliche Autoren angewandt werden.",
+	"apihelp-bs-responsibleeditorspossibleeditors-store-description": "Listet mögliche verantwortliche Autoren auf",
+	"apihelp-bs-responsibleeditorsactivenamespaces-store-description": "Listet Namensräume auf, in denen verantwortliche Autoren aktiviert sind.",
+	"apihelp-bs-responsibleeditors-tasks-description": "Erlaubt die Veränderung von verantwortlichen Autoren"
 }

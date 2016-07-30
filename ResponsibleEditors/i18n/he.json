@@ -10,5 +10,7 @@
 	"action-responsibleeditors-viewspecialpage": "לצפות בדפים שמוגנים עם ההרשאה \"ResponsibleEditors-Viewspecialpage\"",
 	"right-responsibleeditors-viewspecialpage": "שימוש בהרחבה \"עורכים אחראיים\"",
 	"log-name-bs-responsible-editors": "יומן עורכים אחראיים",
-	"log-description-bs-responsible-editors": "זהו יומן של העורכים האחראים על דפים"
+	"log-description-bs-responsible-editors": "זהו יומן של העורכים האחראים על דפים",
+	"apihelp-bs-responsibleeditorsactivenamespaces-store-description": "לרשום את מרחבי השם שבהם התכונה \"עורכים אחראיים\" מופעלת",
+	"apihelp-bs-responsibleeditors-tasks-description": "לאפשר תפעול של \"עורכים אחראיים\""
 }

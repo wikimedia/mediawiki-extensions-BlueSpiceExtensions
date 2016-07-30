@@ -69,5 +69,6 @@
 	"bs-insertmagic-label-second": "2. Modifier le code",
 	"bs-insertmagic-label-desc": "Description",
 	"bs-insertmagic-label-examples": "Exemples",
-	"bs-insertmagic-label-see-also": "Voir aussi"
+	"bs-insertmagic-label-see-also": "Voir aussi",
+	"apihelp-bs-insertmagic-data-store-description": "Liste tous les éléments pour le dialogue InsertMagic"
 }

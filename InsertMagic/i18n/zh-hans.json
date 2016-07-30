@@ -68,5 +68,6 @@
 	"bs-insertmagic-label-second": "二、修改代码",
 	"bs-insertmagic-label-desc": "说明",
 	"bs-insertmagic-label-examples": "示例",
-	"bs-insertmagic-label-see-also": "参见"
+	"bs-insertmagic-label-see-also": "参见",
+	"apihelp-bs-insertmagic-data-store-description": "列举所有用于InsertMagic对话的项目"
 }

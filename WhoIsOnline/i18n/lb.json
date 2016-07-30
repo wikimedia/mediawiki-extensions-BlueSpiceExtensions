@@ -13,5 +13,5 @@
 	"bs-whoisonline-pref-maxidletime": "Zäit a Sekonne bis e Benotzer als offline markéiert gëtt:",
 	"bs-whoisonline-pref-orderby-name": "Numm",
 	"bs-whoisonline-pref-interval": "Aktualisatiouns-Intervall a Sekonnen:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Gëtt Zuel vun de Benotzer déi elo ageloggt sinn."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Gëtt Zuel vun de Benotzer déi sech an de leschten 10 Minutten ageloggt hunn."
 }

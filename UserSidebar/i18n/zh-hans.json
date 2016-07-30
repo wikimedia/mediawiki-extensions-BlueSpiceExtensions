@@ -10,5 +10,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|编辑}}焦点",
 	"bs-usersidebar-tab-focus": "焦点",
 	"bs-usersidebar-tab-globalactions": "全域操作",
-	"bs-usersidebar-globalactionswidget-title": "全域操作"
+	"bs-usersidebar-globalactionswidget-title": "全域操作",
+	"apihelp-sidebar-description": "返回用户边栏的HTML内容"
 }

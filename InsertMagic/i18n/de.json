@@ -67,5 +67,6 @@
 	"bs-insertmagic-label-second": "2. Geben Sie den Text ein",
 	"bs-insertmagic-label-desc": "Kurzbeschreibung",
 	"bs-insertmagic-label-examples": "Beispiele",
-	"bs-insertmagic-label-see-also": "Siehe auch"
+	"bs-insertmagic-label-see-also": "Siehe auch",
+	"apihelp-bs-insertmagic-data-store-description": "Listet alle Elemente für den Dialog „Magisches Wort einfügen“ auf"
 }

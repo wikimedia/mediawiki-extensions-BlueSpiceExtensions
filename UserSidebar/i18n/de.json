@@ -11,5 +11,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "Fokus {{GENDER:|bearbeiten}}",
 	"bs-usersidebar-tab-focus": "Fokus",
 	"bs-usersidebar-tab-globalactions": "Globale Aktionen",
-	"bs-usersidebar-globalactionswidget-title": "Globale Aktionen"
+	"bs-usersidebar-globalactionswidget-title": "Globale Aktionen",
+	"apihelp-sidebar-description": "Gibt die HTML-Inhalte der Benutzerseitenleiste zurück"
 }

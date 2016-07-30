@@ -80,5 +80,9 @@
 	"apihelp-bs-responsibleeditorspages-store": "列出页面及相关责任编辑",
 	"apihelp-bs-bs-responsibleeditors-tasks": "允许对责任编辑的操纵",
 	"apihelp-bs-responsibleeditorsposibleeditors-store": "列举可能的责任编辑",
-	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "通过必需的<var>articleId</var>过滤可能的责任编辑"
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "通过必需的<var>articleId</var>过滤可能的责任编辑",
+	"apihelp-bs-responsibleeditorspages-store-description": "列举应用责任编辑的页面",
+	"apihelp-bs-responsibleeditorspossibleeditors-store-description": "列举可能的责任编辑",
+	"apihelp-bs-responsibleeditorsactivenamespaces-store-description": "列举激活了责任编辑的名字空间",
+	"apihelp-bs-responsibleeditors-tasks-description": "允许对责任编辑的操纵"
 }
