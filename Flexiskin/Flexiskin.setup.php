@@ -10,12 +10,10 @@ $wgHooks['ResourceLoaderRegisterModules'][] = "Flexiskin::onResourceLoaderRegist
 $wgMessagesDirs['Flexiskin'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/languages/Flexiskin.alias.php';
 
-$wgAutoloadClasses['FlexiskinApi'] = __DIR__ . '/includes/FlexiskinApi.class.php';
 $wgAutoloadClasses['FlexiskinFormatter'] = __DIR__ . '/includes/FlexiskinFormatter.class.php';
 $wgAutoloadClasses['ResourceLoaderFlexiskinModule'] = __DIR__ . '/includes/resourceloader/ResourceLoaderFlexiskinModule.php';
 $wgAutoloadClasses['ResourceLoaderFlexiskinPreviewModule'] = __DIR__ . '/includes/resourceloader/ResourceLoaderFlexiskinPreviewModule.php';
 
-// using BsApi
 $wgAutoloadClasses['BSApiFlexiskinTasks'] = __DIR__ . '/includes/api/BSApiFlexiskinTasks.php';
 $wgAPIModules['bs-flexiskin-tasks'] = 'BSApiFlexiskinTasks';
 
@@ -80,8 +78,6 @@ $wgResourceModules['ext.bluespice.flexiskin'] = array(
 	'localBasePath' => $IP,
 	'remoteBasePath' => &$GLOBALS['wgScriptPath']
 );
-
-$wgAPIModules['flexiskin'] = 'FlexiskinApi';
 
 $wgEditPageFrameOptions = "SAMEORIGIN";
 
