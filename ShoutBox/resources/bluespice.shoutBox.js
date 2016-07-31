@@ -85,7 +85,7 @@ BsShoutBox = {
 			type: 'post',
 			url: mw.util.wikiScript( 'api' ),
 			data: {
-				action: 'bs-shoutbox',
+				action: 'bs-shoutbox-tasks',
 				task: 'getShouts',
 				format: 'json',
 				token: mw.user.tokens.get('editToken', ''),
@@ -123,7 +123,7 @@ BsShoutBox = {
 			type: 'post',
 			url: mw.util.wikiScript( 'api' ),
 			data: {
-				action: 'bs-shoutbox',
+				action: 'bs-shoutbox-tasks',
 				task: 'archiveShout',
 				format: 'json',
 				token: mw.user.tokens.get('editToken', ''),
@@ -197,7 +197,7 @@ mw.loader.using( 'ext.bluespice', function() {
 			type: 'post',
 			url: mw.util.wikiScript( 'api' ),
 			data: {
-				action: 'bs-shoutbox',
+				action: 'bs-shoutbox-tasks',
 				task: 'insertShout',
 				format: 'json',
 				token: mw.user.tokens.get('editToken', ''),
