@@ -1,15 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
-	"prefs-authors": "Nuştekarê nê meqaley",
-	"bs-authors-title": "{{PLURAL:$1|Nuştekar|Nuştekari}}",
+	"bs-authors-desc": "Qandé nuştekarê perer profila resimi bıasne",
+	"prefs-authors": "Nuştekarê na perer",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Nuştekar}}|Nuştekari}}",
 	"bs-authors-profileimage": "Resmê profili",
 	"bs-authors-profileimage-change": "Resmê profili bıvurne",
+	"bs-authors-show-all-authors": "Dehana vêşi mewcud nuştekari",
 	"bs-authors-pref-imageheight": "Berziya resımi:",
 	"bs-authors-pref-imagewidth": "Herayiya resımi:",
+	"bs-authors-pref-limit": "Limita karberan bıasne:",
 	"bs-authors-pref-show": "Nuştekaran bımocne",
-	"bs-authors-switch-description": "Nê meqaley de nuştekaran nımneno."
+	"bs-authors-switch-description": "Na perer de nuştekaran bınımne"
 }

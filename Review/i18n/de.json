@@ -115,5 +115,6 @@
 	"apihelp-bs-reviewoverview-store": "Listet eine Übersicht der Begutachtungsprozesse auf",
 	"apihelp-bs-reviewoverview-store-param-userid": "Filtert die Listenbegutachtungsprozesse nach Benutzerkennung <var>userID</var>",
 	"apihelp-bs-review-tasks": "Erlaubt die Veränderung von Begutachtungen",
-	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtert die Benutzerliste nach Berechtigungen für <var>articleId</var>"
+	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtert die Benutzerliste nach Berechtigungen für <var>articleId</var>",
+	"apihelp-bs-review-tasks-description": "Ermöglicht die Veränderung von Begutachtungen"
 }

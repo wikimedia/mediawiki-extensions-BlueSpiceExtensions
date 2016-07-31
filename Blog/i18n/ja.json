@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
 	"bs-blog-desc": "ブログ スタイルのページ一覧を表示する",
 	"prefs-blog": "ブログ",
+	"blog": "ブログ",
 	"bs-blog-no-entries": "ブログ エントリがありません。",
 	"bs-blog-comments": "コメント",
 	"bs-blog-trackback": "トラックバック",

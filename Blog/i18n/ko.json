@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ykhwong"
 		]
 	},
 	"prefs-blog": "블로그",
+	"blog": "블로그",
 	"bs-blog-read-more": "더 읽어보기",
 	"bs-blog-trackback": "트랙백",
 	"bs-blog-permalink": "고유링크",

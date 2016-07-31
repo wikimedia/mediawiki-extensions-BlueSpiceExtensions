@@ -36,5 +36,6 @@
 	"bs-pagetemplates-confirm-deletetpl": "Sidd Dir sécher datt Dir dës {{PLURAL:$1|Schabloun|Schabloune}} läsche wëllt?",
 	"bs-pagetemplates-remove-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
 	"bs-pagetemplates-remove-message-success": "Dës {{PLURAL:$1|Schabloun gouf|Schabloune goufe}} geläscht:$2",
-	"bs-pagetemplates-remove-message-failure": "Dës {{PLURAL:$1|Schabloun konnt|Schabloune konnten}} net geläscht ginn: $2 (Grond: $3)"
+	"bs-pagetemplates-remove-message-failure": "Dës {{PLURAL:$1|Schabloun konnt|Schabloune konnten}} net geläscht ginn: $2 (Grond: $3)",
+	"apihelp-bs-pagetemplates-tasks-description": "Erlaabt d'Ännere vu Säiteschablounen"
 }
