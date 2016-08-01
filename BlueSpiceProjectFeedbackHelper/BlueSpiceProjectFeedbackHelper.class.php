@@ -32,27 +32,6 @@
  */
 
 class BlueSpiceProjectFeedbackHelper extends BsExtensionMW {
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'BlueSpiceProjectFeedbackHelper',
-			EXTINFO::DESCRIPTION => 'bs-bluespiceprojectfeedbackhelper-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/BlueSpiceProjectFeedbackHelper',
-			EXTINFO::DEPS        => array(
-				'bluespice' => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::BlueSpiceProjectFeedbackHelper';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
 
 	public function  initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
