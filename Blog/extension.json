@@ -1,0 +1,45 @@
+{
+	"name": "Blog",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/Blog",
+	"author": [
+		"Markus Glaser",
+		"Sebastian Ulbricht"
+	],
+	"descriptionmsg": "bs-blog-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"Blog": {
+			"className": "Blog",
+			"extPath": "/BlueSpiceExtensions/Blog"
+		}
+	},
+	"SpecialPages": {
+		"Blog": "SpecialBlog"
+	},
+	"MessagesDirs": {
+		"Blog": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"BlogNamespaces": "languages/Blog.namespaces.php",
+		"BlogAlias": "includes/specials/SpecialBlog.alias.php"
+	},
+	"AutoloadClasses": {
+		"Blog": "Blog.class.php",
+		"ViewBlog": "views/view.Blog.php",
+		"ViewBlogItem": "views/view.BlogItem.php",
+		"SpecialBlog": "includes/specials/SpecialBlog.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.blog": {
+			"styles": "bluespice.blog.css"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/Blog/resources"
+	},
+	"manifest_version": 1
+}
