@@ -834,46 +834,4 @@ class RSSStandards extends BsExtensionMW {
 		return $set;
 	}
 
-	public static function getPages() {
-		if ( BsCore::checkAccessAdmission( 'read' ) === false ) return true;
-		global $wgUser, $wgContLang;
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$dbr->clearFlag( DBO_TRX );
-		$aNamespaces = $wgContLang->getNamespaces();
-
-		$res = $dbr->select(
-			'page',
-			array( 'page_title', 'page_namespace' ),
-			array(),
-			__METHOD__,
-			array( 'ORDER BY' => 'page_title' )
-		);
-
-		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
-		$sUserName   = $wgUser->getName();
-		$sUserToken  = $wgUser->getToken();
-		$aPageRSS = array();
-
-		while ( $row = $res->fetchObject() ) {
-			$sNSPrefix = '';
-			if ( $row->page_namespace && isset( $aNamespaces[$row->page_namespace] ) ) {
-				$sNSPrefix = ' (NS:'.$aNamespaces[$row->page_namespace].')';
-			}
-			$aPageRSS[] = array(
-				'page' => str_replace( '_', ' ', $row->page_title.$sNSPrefix ),
-				'url'  => $oSpecialRSS->getLinkUrl(
-					array(
-						'Page' => 'followPage',
-						'p'    => $row->page_title,
-						'ns'   => $row->page_namespace,
-						'u'    => $sUserName,
-						'h'    => $sUserToken
-					)
-				)
-			);
-		}
-
-		return FormatJson::encode( array( 'pages' => $aPageRSS ) );
-	}
 }

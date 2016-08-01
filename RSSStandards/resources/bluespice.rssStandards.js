@@ -12,13 +12,8 @@ Ext.onReady( function() {
 		page: Ext.get('btnFeedPage'),
 		ns: Ext.get('btnFeedNs'),
 		cat: Ext.get('btnFeedCat'),
-		watch: Ext.get('btnFeedWatch'),
-		nsblog: Ext.get('btnFeedNsBlog')
+		watch: Ext.get('btnFeedWatch')
 	};
-
-	buttons.nsblog.addListener('click', function() {
-		location.href = Ext.get('selFeedNsBlog').dom.value;
-	});
 
 	buttons.rc.addListener('click', function() {
 		location.href = this.dom.value;
@@ -42,16 +37,8 @@ Ext.onReady( function() {
 		location.href = Ext.get('selFeedWatch').dom.value;
 	});
 
-	var pagestore = Ext.create( 'Ext.data.JsonStore', {
-		proxy: {
-			type: 'ajax',
-			url: bs.util.getAjaxDispatcherUrl('RSSStandards::getPages'),
-			reader: {
-				type: 'json',
-				root: 'pages',
-				idProperty: 'page'
-			}
-		},
+	var pagestore = Ext.create( 'BS.store.BSApi', {
+		apiAction: 'bs-rss-standards-pages-store',
 		fields: ['page', 'url']
 	});
 
