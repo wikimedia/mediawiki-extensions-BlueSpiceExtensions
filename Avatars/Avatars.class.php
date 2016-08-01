@@ -42,28 +42,6 @@ class Avatars extends BsExtensionMW {
 	public static $sAvatarFilePrefix = "BS_avatar_";
 
 	/**
-	 * Constructor of Avatars class
-	 */
-	public function __construct() {
-		wfProfileIn('BS::' . __METHOD__);
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'Avatars',
-			EXTINFO::DESCRIPTION => 'bs-avatars-desc',
-			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION => 'default',
-			EXTINFO::STATUS => 'default',
-			EXTINFO::PACKAGE => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/Avatars',
-			EXTINFO::DEPS => array('bluespice' => '2.22.0'));
-		$this->mExtensionKey = 'MW::Avatars';
-		wfProfileOut('BS::' . __METHOD__);
-	}
-
-	/**
 	 * Initialization of Avatar extension
 	 */
 	protected function initExt() {
