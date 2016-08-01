@@ -63,5 +63,9 @@
 	"bs-flexiskin-apihelp-task-param-skinId": "Le paramètre <var>skinId</var> identifie l'habillage",
 	"bs-flexiskin-apihelp-task-param-name": "Le paramètre <var>name</var> est le nom du fichier téléversé",
 	"bs-flexiskin-usebackground": "Utiliser l’image de fond",
-	"bs-flexiskin-labelcurrentbackground": "Image actuelle"
+	"bs-flexiskin-labelcurrentbackground": "Image actuelle",
+	"apihelp-bs-flexiskin-tasks-description": "Permet la manipulation des habillages flexibles",
+	"apihelp-bs-flexiskin-store-description": "Liste les habillages flexibles disponibles",
+	"apihelp-bs-flexiskin-upload-description": "Permet de télécharger des fichiers vers un habillage flexible",
+	"apihelp-bs-flexiskin-upload-store-description": "Liste les fichiers téléchargés d’un habillage flexible"
 }

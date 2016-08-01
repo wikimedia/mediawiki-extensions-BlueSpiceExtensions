@@ -60,5 +60,9 @@
 	"bs-flexiskin-apihelp-task-param-skinId": "参数<var>skinId</var>标识皮肤",
 	"bs-flexiskin-apihelp-task-param-name": "参数<var>name</var>是上传文件的文件名",
 	"bs-flexiskin-usebackground": "使用背景图片",
-	"bs-flexiskin-labelcurrentbackground": "当前图片"
+	"bs-flexiskin-labelcurrentbackground": "当前图片",
+	"apihelp-bs-flexiskin-tasks-description": "允许flexiskin的操纵",
+	"apihelp-bs-flexiskin-store-description": "列出可用的flexiskin",
+	"apihelp-bs-flexiskin-upload-description": "允许上传文件至flexiskin",
+	"apihelp-bs-flexiskin-upload-store-description": "列出上传的flexiskin文件"
 }

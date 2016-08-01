@@ -30,5 +30,7 @@
 	"bs-review-header-owner-name": "Proprietario",
 	"bs-review-header-accepted-text": "Stato",
 	"bs-review-header-startdate": "Inizio",
-	"bs-review-header-enddate": "Fine"
+	"bs-review-header-enddate": "Fine",
+	"apihelp-bs-reviewpossiblereviewers-store-description": "Elenca utenti che possono far parte di un processo di revisione. Consente ordinamento, filtraggio e impaginazione. Implementa parametri ExtJS Store.",
+	"apihelp-bs-reviewoverview-store-description": "Elenca una panoramica dei processi di revisione. Consente ordinamento, filtraggio e impaginazione. Implementa parametri ExtJS Store."
 }

@@ -63,6 +63,8 @@
 	"bs-flexiskin-apihelp-task-param-name": "Der Parameter <var>name</var> ist der Dateiname der hochgeladenen Datei",
 	"bs-flexiskin-usebackground": "Hintergrundbild verwenden",
 	"bs-flexiskin-labelcurrentbackground": "Aktuelles Bild",
+	"apihelp-bs-flexiskin-tasks-description": "Ermöglicht die Veränderung von Flexiskins",
 	"apihelp-bs-flexiskin-store-description": "Listet verfügbare Flexiskins auf",
-	"apihelp-bs-flexiskin-upload-description": "Ermöglicht das Hochladen von Dateien auf einen Flexiskin"
+	"apihelp-bs-flexiskin-upload-description": "Ermöglicht das Hochladen von Dateien auf einen Flexiskin",
+	"apihelp-bs-flexiskin-upload-store-description": "Listet hochgeladene Dateien eines Flexiskins auf"
 }
