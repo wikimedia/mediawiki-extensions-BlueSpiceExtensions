@@ -2,7 +2,8 @@
  * RSSFeeder extension
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
- * @version    2.22.0
+ * @author     Markus Glaser <glaser@hallowelt.com>
+ * @version    2.27.0
  * @package    Bluespice_Extensions
  * @subpackage RSSFeeder
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
@@ -11,32 +12,25 @@
  */
 
 Ext.define( 'BS.RSSFeeder.RSSPortlet', {
-	extend: 'BS.portal.HTMLPortlet',
+	extend: 'BS.portal.APIPortlet',
 	portletConfigClass: 'BS.RSSFeeder.RSSPortletConfig',
+	module: 'rssfeeder',
+	task: 'getRSS',
 
-	constructor: function() {
-		this.autoLoadPortlet = false;
-		this.callParent(arguments);
-		this.cContent.getLoader().load({
-			url: bs.util.getAjaxDispatcherUrl( 'RSSFeeder::getRSS', [ this.portletItemCount, this.rssurl ] )
-		});
-	},
 	setPortletConfig: function( cfg ) {
 		this.rssurl = cfg.rssurl;
 		this.callParent(arguments);
-		this.cContent.getLoader().load({
-			url: bs.util.getAjaxDispatcherUrl( 'RSSFeeder::getRSS', [ this.portletItemCount, cfg.rssurl ] )
-		});
 	},
 	getPortletConfig: function() {
-		//There is no method like Panel::getTitle()!
-		return {
-			title: this.title,
-			height: this.height || 0,
-			portletItemCount: this.portletItemCount,
-			portletTimeSpan: this.portletTimeSpan,
-			collapsed: this.getCollapsed(),
-			rssurl: this.rssurl
+		cfg = this.callParent( arguments );
+		cfg.rssurl = this.rssurl;
+		return cfg;
+	},
+	makeData: function() {
+		data = {
+			'count': this.portletItemCount,
+			'url':this.rssurl
 		};
+		return data;
 	}
 } );
