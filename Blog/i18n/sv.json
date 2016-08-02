@@ -4,11 +4,13 @@
 			"WikiPhoenix",
 			"Lokal Profil",
 			"Jopparn",
-			"Magol"
+			"Magol",
+			"Josve05a"
 		]
 	},
 	"bs-blog-desc": "Visar en lista med sidor i blogg-stil",
 	"prefs-blog": "Blogg",
+	"blog": "Blogg",
 	"bs-blog-no-entries": "Det finns inga blogginlägg.",
 	"bs-blog-comments": "Kommentarer",
 	"bs-blog-read-more": "Läs mer",
