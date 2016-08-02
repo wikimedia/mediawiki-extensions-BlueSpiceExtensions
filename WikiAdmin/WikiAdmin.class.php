@@ -63,7 +63,6 @@ class WikiAdmin extends BsExtensionMW {
 		'importupload',
 		'patrol',
 		'autopatrol',
-		'proxyunbannable',
 		'trackback',
 		'unwatchedpages',
 		'autoconfirmed',
