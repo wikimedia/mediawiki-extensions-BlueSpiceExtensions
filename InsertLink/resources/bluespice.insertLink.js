@@ -173,6 +173,7 @@ var BsInsertLinkVisualEditorConnector = {
 	applyData: function(window, data, plugin) {
 		var editor = plugin.getEditor();
 		editor.selection.moveToBookmark(BsInsertLinkVisualEditorConnector.bookmark);
+		editor.focus();
 		var node = editor.selection.getNode();
 		var newAnchor = null;
 		//Trim left and right everything (including linebreaks) that is not a starting or ending link code
