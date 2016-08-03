@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cwlin0416"
+			"Cwlin0416",
+			"一個正常人"
 		]
 	},
 	"bs-usersidebar-desc": "加入焦點頁籤至側邊欄",
 	"prefs-usersidebar": "使用者側邊欄",
 	"bs-usersidebar-userpagesettings-link-title": "編輯您的焦點內容",
-	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|編輯}}焦點"
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|編輯}}焦點",
+	"apihelp-sidebar-description": "返回用戶邊欄的HTML內容"
 }

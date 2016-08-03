@@ -4,11 +4,13 @@
 			"Liuxinyu970226",
 			"LNDDYL",
 			"Cwlin0416",
-			"EagerLin"
+			"EagerLin",
+			"一個正常人"
 		]
 	},
 	"bs-blog-desc": "顯示部落格樣式的頁面清單",
 	"prefs-blog": "部落格",
+	"blog": "部落格",
 	"bs-blog-no-entries": "目前沒有部落項目。",
 	"bs-blog-comments": "評論",
 	"bs-blog-read-more": "閱讀更多",
