@@ -11,10 +11,11 @@ $wgExtensionMessagesFiles['RSSFeederAlias'] = __DIR__ . '/languages/SpecialRSSFe
 $wgAutoloadClasses['SpecialRSSFeeder'] = __DIR__ . '/includes/specials/SpecialRSSFeeder.class.php';
 $wgAutoloadClasses['RSSCreator'] = __DIR__ . '/includes/RSSCreator.class.php';
 $wgAutoloadClasses['RSSItemCreator'] = __DIR__ . '/includes/RSSCreator.class.php';
+$wgAutoloadClasses['BSApiTasksRSSFeeder'] = __DIR__ . '/includes/api/BSApiTasksRSSFeeder.php';
 
 $wgSpecialPages['RSSFeeder'] = 'SpecialRSSFeeder';
 
-$wgAjaxExportList[] = 'RSSFeeder::getRSS';
+$wgAPIModules['bs-rssfeeder-tasks'] = 'BSApiTasksRSSFeeder';
 
 $wgResourceModules['ext.bluespice.rssFeeder'] = array(
 	'styles' => 'bluespice.rssFeeder.css',
