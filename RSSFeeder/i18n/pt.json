@@ -12,5 +12,6 @@
 	"bs-rssfeeder-submit": "Mostrar",
 	"bs-rssfeeder-rss": "Feed RSS",
 	"bs-rssfeeder-rss-desc": "Criar o seu próprio feed RSS",
-	"bs-extjs-rssfeeder-rss-title": "URL do RSS"
+	"bs-extjs-rssfeeder-rss-title": "URL do RSS",
+	"bs-rssfeeder-invalid-url": "Por favor, forneça uma URL válida."
 }

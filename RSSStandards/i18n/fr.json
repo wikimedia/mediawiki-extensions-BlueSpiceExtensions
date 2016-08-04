@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Wyz"
+			"Wyz",
+			"Wladek92"
 		]
 	},
 	"bs-rssstandards-desc": "Construit un flux RSS basé sur différentes options",
@@ -17,5 +18,6 @@
 	"bs-rssstandards-desc-watch": "Flux avec un aperçu de vos pages suivies.",
 	"bs-rssstandards-link-text-watch": "Modifications récentes {{PLURAL:$1|du dernier jour|des derniers $1 jours}}.",
 	"bs-rssstandards-desc-ns": "Flux avec un aperçu des modifications récentes dans un espace de noms.",
-	"bs-rssstandards-changes-from": "Modifications {{GENDER:$1|de}} : $1"
+	"bs-rssstandards-changes-from": "Modifications {{GENDER:$1|de}} : $1",
+	"apihelp-bs-rss-standards-pages-store-description": "Retourner la  Liste des Pages disponibles pour RSSFeeder"
 }

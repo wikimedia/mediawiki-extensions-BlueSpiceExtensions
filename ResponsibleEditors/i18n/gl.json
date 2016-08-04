@@ -81,5 +81,9 @@
 	"apihelp-bs-responsibleeditorspages-store": "Lista páxinas e os editores responsábeis relacionados",
 	"apihelp-bs-bs-responsibleeditors-tasks": "Permite modificar os editores responsables",
 	"apihelp-bs-responsibleeditorsposibleeditors-store": "Lista posibles editores responsables",
-	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filtra posibles editores responsables por <var>articleId</var> indicado"
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Filtra posibles editores responsables por <var>articleId</var> indicado",
+	"apihelp-bs-responsibleeditorspages-store-description": "Lista as páxinas a aplicar ós editores responsables",
+	"apihelp-bs-responsibleeditorspossibleeditors-store-description": "Listar os editores responsables posibles",
+	"apihelp-bs-responsibleeditorsactivenamespaces-store-description": "Lista os espazos de nomes nos que están activos os editores responsables",
+	"apihelp-bs-responsibleeditors-tasks-description": "Permite a manipulación dos editores responsables"
 }

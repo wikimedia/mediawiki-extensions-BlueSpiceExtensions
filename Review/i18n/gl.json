@@ -110,5 +110,6 @@
 	"notification-bs-review-finish-body": "$1 {{GENDER:$1|rematou}} a súa revisión de \"$2\". Por favor, revise os resultados do proceso de revisión.",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|rematou}} o proceso de revisión e marcou automaticamente $3 como estable",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|rematou}} a revisión de \"$2\"",
-	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|rematou}} a súa revisión de \"$2\". A páxina foi marcada automaticamente como estable."
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|rematou}} a súa revisión de \"$2\". A páxina foi marcada automaticamente como estable.",
+	"apihelp-bs-review-tasks": "Permite a manipulación das revisións"
 }

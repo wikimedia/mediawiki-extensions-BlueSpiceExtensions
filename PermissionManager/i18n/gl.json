@@ -45,5 +45,6 @@
 	"log-name-bs-permission-manager": "Rexistro do xestor de permisos",
 	"log-description-bs-permission-manager": "Este é un rexistro dos cambios nos permisos de grupo.",
 	"log-show-hide-bs-permission-manager": "$1 o rexistro do xestor de permisos",
-	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|cambiou}} os permisos do grupo $4"
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|cambiou}} os permisos do grupo $4",
+	"apihelp-bs-permissionmanager-tasks-description": "Proporciona as tarefas para o PermissionManager"
 }
