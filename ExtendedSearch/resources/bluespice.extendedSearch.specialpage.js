@@ -279,6 +279,7 @@ BsExtendedSearchAjaxManager.prototype = {
 				ExtendedSearchAjaxManager.oAjaxQuery = null;
 				ExtendedSearchAjaxManager.renewUriForAjaxRequest();
 				ExtendedSearchAjaxManager.modifyLoadedElements();
+				$( document ).trigger( 'BSExtendedSearchAjaxManagerAjaxMeANewResultsPlzComplete', [ ExtendedSearchAjaxManager, response ] );
 			}
 		});
 	},
