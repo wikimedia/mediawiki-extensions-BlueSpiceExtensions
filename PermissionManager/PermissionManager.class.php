@@ -133,6 +133,7 @@ class PermissionManager extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::PermissionManager::MaxBackups', 5, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-permissionmanager-pref-max-backups' );
 
 		$this->setHook( 'BSGroupManagerGroupNameChanged' );
+		$this->setHook( 'BSGroupManagerGroupDeleted' );
 	}
 
 	/**
