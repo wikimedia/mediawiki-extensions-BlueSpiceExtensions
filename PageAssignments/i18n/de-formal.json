@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel"
+		]
+	},
+	"bs-pageassignments-notification-reason-user": "Sie sind der Seite direkt zugewiesen",
+	"bs-pageassignments-notification-reason-group": "Sie sind Mitglied der {{PLURAL:$1|Gruppe|Gruppen}}: $2",
+	"notification-bs-pageassignments-assignment-change-add-summary": "$1 hat Sie $3 zugewiesen",
+	"notification-bs-pageassignments-assignment-change-add-body": "Sie wurden von $1 der Seite $2 zugewiesen",
+	"notification-bs-pageassignments-assignment-change-remove-summary": "$1 hat Ihre Zuweisung zu $3 entfernt",
+	"notification-bs-pageassignments-assignment-change-remove-body": "Ihre Zuweisung zur Seite $2 wurde von $1 entfernt",
+	"notification-bs-pageassignments-user-group-add-summary": "Sie wurden der Gruppe $4 hinzugefügt",
+	"notification-bs-pageassignments-user-group-add-body": "$1 hat Sie der Gruppe $4 hinzugefügt. Bitte überprüfen Sie Ihre Zuweisungen auf $3",
+	"notification-bs-pageassignments-user-group-remove-summary": "Sie wurden aus der Gruppe $4 entfernt",
+	"notification-bs-pageassignments-user-group-remove-body": "$1 hat Sie aus der Gruppe $4 entfernt. Bitte überprüfen Sie Ihre Zuweisungen auf $3"
+}

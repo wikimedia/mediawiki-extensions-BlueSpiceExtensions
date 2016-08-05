@@ -1,0 +1,144 @@
+{
+	"name": "PageAssignments",
+	"author": [
+		"Robert Vogel",
+		"Patric Wirth"
+	],
+	"url": "https://www.hallowelt.com",
+	"type": "bluespice",
+	"version": "2.27.0",
+	"descriptionmsg": "bs-pageassignments-desc",
+	"bsgExtensions": {
+		"PageAssignments": {
+			"className": "PageAssignments",
+			"extPath": "/BlueSpiceExtensions/PageAssignments"
+		}
+	},
+	"DefaultUserOptions": {
+		"echo-subscriptions-web-bs-pageassignments-action-cat": true,
+		"echo-subscriptions-email-bs-pageassignments-action-cat": true
+	},
+	"SpecialPages": {
+		"PageAssignments": "SpecialPageAssignments",
+		"ManagePageAssignments": "SpecialManagePageAssignments"
+	},
+	"LogTypes": [
+		"bs-pageassignments"
+	],
+	"FilterLogTypes": {
+		"bs-pageassignments": true
+	},
+	"LogActionsHandlers": {
+		"bs-pageassignments/*": "LogFormatter"
+	},
+	"MessagesDirs": {
+		"PageAssignments": [
+			"i18n"
+		]
+	},
+	"APIModules": {
+		"bs-pageassignable-store": "BSApiPageAssignableStore",
+		"bs-pageassignment-store": "BSApiPageAssignmentStore",
+		"bs-mypageassignment-store": "BSApiMyPageAssignmentStore",
+		"bs-pageassignment-tasks": "BSApiPageAssignmentTasks"
+	},
+	"ExtensionMessagesFiles": {
+		"PageAssignmentsAlias": "PageAssignments.alias.php"
+	},
+	"AutoloadClasses": {
+		"PageAssignments": "PageAssignments.class.php",
+		"BSApiPageAssignableStore": "includes/api/BSApiPageAssignableStore.php",
+		"BSApiPageAssignmentStore": "includes/api/BSApiPageAssignmentStore.php",
+		"BSApiMyPageAssignmentStore": "includes/api/BSApiMyPageAssignmentStore.php",
+		"BSApiPageAssignmentTasks": "includes/api/BSApiPageAssignmentTasks.php",
+		"PageAssignmentsHooks": "includes/PageAssignmentsHooks.php",
+		"PageAssignmentsNotificationHooks": "includes/PageAssignmentsNotificationHooks.php",
+		"PageAssignmentsStateBarHooks": "includes/PageAssignmentsStateBarHooks.php",
+		"BSAssignableBase": "includes/BSAssignableBase.php",
+		"BSAssignableUser": "includes/BSAssignableUser.php",
+		"BSAssignableGroup": "includes/BSAssignableGroup.php",
+		"SpecialPageAssignments": "includes/specials/SpecialPageAssignments.php",
+		"SpecialManagePageAssignments": "includes/specials/SpecialManagePageAssignments.php",
+		"ViewPAStateBarBodyElement": "includes/views/ViewPAStateBarBodyElement.php",
+		"PageAssignmentsNotificationFormatter": "includes/notifications/PageAssignmentsNotificationFormatter.php",
+		"PageAssignmentsEmailSingle": "includes/notifications/PageAssignmentsEmailSingle.php"
+	},
+	"ResourceModules": {
+		"ext.pageassignments.styles": {
+			"styles": "ext.bluespice.pageassignments.less"
+		},
+		"ext.pageassignments.scripts": {
+			"scripts": [
+				"BS/override/grid/column/Action.js",
+				"ext.bluespice.pageassignments.js"
+			],
+			"styles": [
+				"ext.bluespice.extjs.overrides.less"
+			],
+			"messages": [
+				"bs-pageassignments-dlg-title",
+				"bs-pageassignments-dlg-fldlabel",
+				"bs-pageassignments-action-apiedit-description"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		},
+		"ext.pageassignments.manager": {
+			"scripts": [
+				"ext.bluespice.pageassignments.manager.js"
+			],
+			"styles": [],
+			"messages": [
+				"bs-pageassignments-column-title",
+				"bs-pageassignments-column-assignments",
+				"bs-pageassignments-no-assignments",
+				"bs-pageassignments-action-log",
+				"bs-pageassignments-action-delete-confirm"
+			],
+			"dependencies": [
+				"ext.pageassignments.scripts"
+			]
+		},
+		"ext.pageassignments.overview": {
+			"scripts": [
+				"ext.bluespice.pageassignments.overview.js"
+			],
+			"styles": [],
+			"messages": [
+				"bs-pageassignments-column-title",
+				"bs-pageassignments-column-assignedby",
+				"bs-pageassignments-directly-assigned"
+			],
+			"dependencies": [
+				"ext.pageassignments.scripts"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/PageAssignments/resources"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "PageAssignmentsHooks::onLoadExtensionSchemaUpdates",
+		"PersonalUrls": "PageAssignmentsHooks::onPersonalUrls",
+		"SkinTemplateNavigation": "PageAssignmentsHooks::onSkinTemplateNavigation",
+		"BeforePageDisplay": "PageAssignmentsHooks::onBeforePageDisplay",
+		"TitleMoveComplete": [
+			"PageAssignmentsHooks::onTitleMoveComplete",
+			"PageAssignmentsNotificationHooks::onTitleMoveComplete"
+		],
+		"ArticleDeleteComplete": [
+			"PageAssignmentsHooks::onArticleDeleteComplete",
+			"PageAssignmentsNotificationHooks::onArticleDeleteComplete"
+		],
+		"BSStateBarBeforeTopViewAdd": "PageAssignmentsStateBarHooks::onStateBarBeforeTopViewAdd",
+		"BSStateBarBeforeBodyViewAdd": "PageAssignmentsStateBarHooks::onStateBarBeforeBodyViewAdd",
+		"BSStatebarAddSortTopVars": "PageAssignmentsStateBarHooks::onStatebarAddSortTopVars",
+		"BSStatebarAddSortBodyVars": "PageAssignmentsStateBarHooks::onStatebarAddSortBodyVars",
+		"BSWikiAdminMenuItems": "PageAssignmentsHooks::onBSWikiAdminMenuItems",
+		"ArticleSaveComplete": "PageAssignmentsNotificationHooks::onArticleSaveComplete",
+		"BSUserManagerAfterSetGroups": "PageAssignmentsNotificationHooks::onBSUserManagerAfterSetGroups"
+	},
+	"manifest_version": 1
+}

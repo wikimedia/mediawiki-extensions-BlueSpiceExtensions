@@ -1,0 +1,98 @@
+<?php
+
+class PageAssignments extends BsExtensionMW {
+
+	protected function initExt() {
+		$this->mCore->registerPermission(
+			'pageassignable',
+			array( 'user' )
+		);
+		$this->mCore->registerPermission(
+			'pageassignments',
+			array( 'sysop' )
+		);
+	}
+	/**
+	 *
+	 * @param Title $oTitle
+	 * @return BSAssignableBase[]
+	 */
+	public static function getAssignments( $oTitle ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			'bs_pageassignments',
+			'*',
+			array(
+				'pa_page_id' => $oTitle->getArticleID()
+			),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'pa_position ASC'
+			)
+		);
+
+		$aAsignees = array();
+		foreach( $res as $row ) {
+			$aAsignees[] = BSAssignableBase::factory(
+				$row->pa_assignee_type,
+				$row->pa_assignee_key
+			);
+		}
+
+		return $aAsignees;
+	}
+
+	public static $aAssigneeMap = array();
+	/**
+	 *
+	 * @param Title $oTitle
+	 * @return UserArray
+	 */
+	public static function resolveAssignmentsToUsers( $oTitle ) {
+		$aUserIds = array();
+		$aAssignees = self::getAssignments( $oTitle );
+		foreach( $aAssignees as $oAssignee ) {
+			$aUserIds = array_merge_recursive( $aUserIds, $oAssignee->getUserIds());
+		}
+
+		return UserArray::newFromIDs( $aUserIds );
+	}
+
+	/**
+	 *
+	 * @param Title $oTitle
+	 * @return int[]
+	 */
+	public static function resolveAssignmentsToUserIds( $oTitle ) {
+		$aUsers = self::resolveAssignmentsToUsers( $oTitle );
+		$aUserIds = array();
+		foreach( $aUsers as $oUser ) {
+			$aUserIds[] = $oUser->getID();
+		}
+
+		return $aUserIds;
+	}
+
+	/**
+	 *
+	 * @param type $oTitle
+	 * @return array
+	 */
+	public static function resolveAssignmentsToUserIdsWithSource( $oTitle ) {
+		$aUserIDSourceMap = array();
+		$oAssignees = self::getAssignments( $oTitle );
+		foreach( $oAssignees as $oAssignee ) {
+			$aUserIds = $oAssignee->getUserIds();
+			foreach( $aUserIds as $iUserId ) {
+				if( isset( $aUserIDSourceMap[$iUserId] ) ) {
+					$aUserIDSourceMap[$iUserId][] = $oAssignee;
+				}
+				else {
+					$aUserIDSourceMap[$iUserId] = array( $oAssignee );
+				}
+			}
+		}
+		return $aUserIDSourceMap;
+	}
+
+}
