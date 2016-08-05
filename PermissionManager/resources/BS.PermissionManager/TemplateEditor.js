@@ -46,7 +46,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 			description: Ext.getCmp('bs-template-editor-description').getRawValue()
 		};
 
-		if (typeof record != 'undefined') {
+		if (typeof record !== 'undefined') {
 
 			for (var i in me._permissionStore.data.items) {
 				var dataSet = me._permissionStore.data.items[i].data;
@@ -63,15 +63,17 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 
 				var result = response.payload;
 				if (result.success === true) {
+					var isNewRecord = (newRecord.id === 0 || newRecord.id === null) ? true : false;
+					newRecord.id = result.id;
 					var rootNode = me._treeStore.getRootNode();
 					rootNode.replaceChild(newRecord, record);
+
+					var dataManager = Ext.create('BS.PermissionManager.data.Manager');
+					dataManager.setTemplate(newRecord, isNewRecord);
 
 					me.setCleanState(true);
 					me._permissionStore.sync();
 					me._hasChanged = true;
-
-					var dataManager = Ext.create('BS.PermissionManager.data.Manager');
-					dataManager.setTemplate(newRecord);
 
 					Ext.data.StoreManager
 							.lookup('bs-permissionmanager-permission-store')
@@ -93,6 +95,12 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 		}
 	},
 	discardChanges: function() {
+		var record = Ext.getCmp('bs-template-editor-treepanel')
+						.getSelectionModel().getLastSelected();
+		if(record !== null && record.get('id') === 0){
+			record.parentNode.removeChild(record);
+		}
+
 		Ext.getCmp('bs-template-editor-description').setRawValue('');
 		this._permissionStore.each(function(record) {
 			record.set('enabled', false);

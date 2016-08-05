@@ -477,12 +477,14 @@ class PermissionManager extends BsExtensionMW {
 
 		if ( $iId == 0 ) {
 			$bSaveResult = PermissionTemplates::addTemplate( $sName, $aPermissions, $sDescription );
+			$iId = $dbw->insertId();
 		} else {
 			$bSaveResult = PermissionTemplates::editTemplate( $iId, $sName, $aPermissions, $sDescription );
 		}
 		$aResult = array(
 				'success' => false,
-				'msg' => ''
+				'msg' => $bSaveResult,
+				'id' => $iId
 		);
 
 		if ( $bSaveResult ) {
