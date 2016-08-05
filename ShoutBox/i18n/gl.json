@@ -33,5 +33,6 @@
 	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención nunha mensaxe curta",
 	"bs-shoutbox-notifications-title-message-subject": "Foi vostede mencionado por alguén",
 	"bs-shoutbox-notifications-title-message-text": "Fuches {{GENDER:$1|mencionado}} por $1 ($4) nunha conversa na páxina \"$5.\"\n\nPode visitar a páxina seguindo esta ligazón:\n$3",
-	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|mencionouno}} nun aviso sobre $3."
+	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|mencionouno}} nun aviso sobre $3.",
+	"apihelp-bs-shoutbox-tasks-description": "Proporciona as tarefas comúns para o ShoutBox"
 }

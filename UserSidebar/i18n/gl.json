@@ -10,5 +10,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} interés",
 	"bs-usersidebar-tab-focus": "Foco",
 	"bs-usersidebar-tab-globalactions": "Accións globais",
-	"bs-usersidebar-globalactionswidget-title": "Accións globais"
+	"bs-usersidebar-globalactionswidget-title": "Accións globais",
+	"apihelp-sidebar-description": "Devolve o código HTML da barra lateral de usuario"
 }

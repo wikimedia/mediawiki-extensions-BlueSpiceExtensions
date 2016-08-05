@@ -4,5 +4,7 @@
 			"Beta16"
 		]
 	},
-	"bs-rssfeeder-pages": "Pagina"
+	"apihelp-bs-rssfeeder-tasks-description": "Fornisce attività comuni per il RSSFeeder",
+	"bs-rssfeeder-pages": "Pagina",
+	"bs-rssfeeder-invalid-url": "Indica un URL valido."
 }

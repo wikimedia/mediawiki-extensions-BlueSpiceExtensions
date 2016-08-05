@@ -7,6 +7,7 @@
 	},
 	"bs-rssfeeder-desc": "Unha extensión para obter RSS válidos para cada extensión, que ten unha función buildRss",
 	"rssfeeder": "Fonte de novas RSS",
+	"apihelp-bs-rssfeeder-tasks-description": "Proporciona tarefas comúns para o RSSFeeder",
 	"bs-rssfeeder-pagetext": "Pode subscribirse ás seguintes canles RSS:",
 	"bs-rssfeeder-recent-changes": "Cambios recentes",
 	"bs-rssfeeder-pages": "Páxina",

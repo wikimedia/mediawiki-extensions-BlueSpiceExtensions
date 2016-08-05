@@ -111,5 +111,10 @@
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|rematou}} o proceso de revisión e marcou automaticamente $3 como estable",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|rematou}} a revisión de \"$2\"",
 	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|rematou}} a súa revisión de \"$2\". A páxina foi marcada automaticamente como estable.",
-	"apihelp-bs-review-tasks": "Permite a manipulación das revisións"
+	"apihelp-bs-reviewoverview-store-param-userid": "Filtra a lista dos procesos de revisión por identificador de usuario <var>userID</var>",
+	"apihelp-bs-review-tasks": "Permite a manipulación das revisións",
+	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtra a lista dos usuarios por permisos para <var>articleId</var>",
+	"apihelp-bs-reviewpossiblereviewers-store-description": "Lista os usuarios que poden participar nun proceso de revisión. Permite ordenar, filtrar e paxinar. Proporciona parámetros de almacenamento ExtJS.",
+	"apihelp-bs-reviewoverview-store-description": "Lista una vista dos procesos de revisión. Permite ordenar, filtrar e paxinar. Proporciona os parámetros ExtJS Store.",
+	"apihelp-bs-review-tasks-description": "Permite a manipulación das revisións"
 }
