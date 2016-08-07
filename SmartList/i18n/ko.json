@@ -13,5 +13,7 @@
 	"bs-smartlist-no-entries": "결과가 없습니다.",
 	"bs-smartlist-pref-sort": "정렬 기준:",
 	"bs-smartlist-tag-smartlist-example-rc": "모드: 최근 바뀜",
-	"bs-smartlist-tag-smartlist-example-whatlinkshere": "모드: 여기를 가리키는 문서"
+	"bs-smartlist-tag-smartlist-example-whatlinkshere": "모드: 여기를 가리키는 문서",
+	"bs-smartlist-hitcounter-missing": "확장 기능 <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a>를 설치해야 합니다.",
+	"apihelp-bs-smartlist-tasks-description": "문서와 사용자 통계의 포틀릿 데이터를 제공할 API 함수들입니다."
 }

@@ -13,5 +13,6 @@
 	"bs-rssfeeder-submit": "Mostrar",
 	"bs-rssfeeder-rss": "Canal RSS",
 	"bs-rssfeeder-rss-desc": "Crea tu propio canal RSS",
-	"bs-extjs-rssfeeder-rss-title": "URL de RSS"
+	"bs-extjs-rssfeeder-rss-title": "URL de RSS",
+	"bs-rssfeeder-invalid-url": "Proporciona un URL válido."
 }

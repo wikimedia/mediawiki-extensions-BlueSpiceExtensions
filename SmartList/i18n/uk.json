@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-smartlist-desc": "Відображає останні п'ять зміни у вікі списком",
@@ -45,5 +46,7 @@
 	"bs-smartlist-mostactiveusersdesc": "Список найбільш активних користувачів, відсортованих за їх редагуваннями.",
 	"bs-smartlist-mosteditedpagesdesc": "Список найбільш редагованих сторінок, відсортованих за їх редагуваннями.",
 	"bs-smartlist-mostvisitedpagesdesc": "Список найбільш відвідуваних сторінок, відсортованих за їх переглядами.",
-	"bs-smartlist-lasteditsdesc": "Список сторінок, які Ви редагували."
+	"bs-smartlist-lasteditsdesc": "Список сторінок, які Ви редагували.",
+	"bs-smartlist-hitcounter-missing": "Має бути встановлене розширення <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a>.",
+	"apihelp-bs-smartlist-tasks-description": "Функції API для обробки даних портлета для статистики сторінки й користувача."
 }

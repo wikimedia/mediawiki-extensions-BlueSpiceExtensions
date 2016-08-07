@@ -114,5 +114,11 @@
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|завершив|завершила}} процедуру огляду та автоматично позначила сторінку $3 як стабільну",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|завершив|завершила}} огляд «$2»",
 	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|завершив|завершила}} Ваш огляд сторінки «$2». Сторінку було автоматично позначено як стабільну.",
-	"apihelp-bs-reviewoverview-store-param-userid": "Фільтрує процеси перевірки списків за ідентифікатором користувача<var>userID</var>"
+	"apihelp-bs-reviewoverview-store": "Виводить загальну інформацію щодо процесів здійснення оглядів",
+	"apihelp-bs-reviewoverview-store-param-userid": "Фільтрує процеси перевірки списків за ідентифікатором користувача<var>userID</var>",
+	"apihelp-bs-review-tasks": "Дозволяє управляти оглядами",
+	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Фільтрує список користувачів за правами для <var>articleId</var>",
+	"apihelp-bs-reviewpossiblereviewers-store-description": "Виводить список користувачів, що можуть бути частиною процесу здійснення огляду. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
+	"apihelp-bs-reviewoverview-store-description": "Виводить сумарну інформацію щодо процесів здійснення оглядів. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
+	"apihelp-bs-review-tasks-description": "Дозволяє управляти оглядами"
 }

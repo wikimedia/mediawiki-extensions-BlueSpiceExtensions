@@ -32,5 +32,6 @@
 	"bs-smartlist-mostactiveusers": "Utilizadores mais ativos (por edições)",
 	"bs-smartlist-lastedits": "As minhas edições",
 	"bs-smartlist-noedits": "Não foram encontradas edições.",
-	"bs-smartlist-lasteditsdesc": "Lista de páginas que editou."
+	"bs-smartlist-lasteditsdesc": "Lista de páginas que editou.",
+	"bs-smartlist-hitcounter-missing": "A extensão <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a> precisa de ser instalada."
 }

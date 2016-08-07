@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-pagetemplates-desc": "Відображає список шаблонів, позначених як шаблони сторінок",
@@ -41,5 +42,7 @@
 	"bs-pagetemplates-confirm-deletetpl": "Ви дійсно бажаєте вилучити {{PLURAL:$1|цей шаблон|ці шаблони}}?",
 	"bs-pagetemplates-remove-message-unknown": "Сталася неочікувана помилка, спробуйте ще раз.",
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|Наступний шаблон|Наступні шаблони}} було видалено:$2",
-	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Наступний шаблон|Наступні шаблони}} не можна видалити:$2(Причина:$3)"
+	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Наступний шаблон|Наступні шаблони}} не можна видалити:$2(Причина:$3)",
+	"apihelp-bs-pagetemplates-store-description": "Перелічує всі шаблони сторінки. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
+	"apihelp-bs-pagetemplates-tasks-description": "Дозволяє опрацьовувати шаблони сторінки"
 }

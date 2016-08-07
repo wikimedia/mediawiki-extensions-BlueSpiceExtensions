@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-rssstandards-desc": "Будує RSS-стрічку на основі різних варіантів",
@@ -16,5 +17,6 @@
 	"bs-rssstandards-desc-watch": "Стрічка новин з оглядом з Ваших спостережуваних сторінок.",
 	"bs-rssstandards-link-text-watch": "Нові редагування за {{PLURAL:$1|останній день|останні $1 дні|останні $1 днів}}.",
 	"bs-rssstandards-desc-ns": "Стрічка новин з оглядом нових редагувань у просторі назв.",
-	"bs-rssstandards-changes-from": "Зміни {{GENDER:$1|зробив|зробила}}: $1"
+	"bs-rssstandards-changes-from": "Зміни {{GENDER:$1|зробив|зробила}}: $1",
+	"apihelp-bs-rss-standards-pages-store-description": "Виводить список доступних сторінок для RSSFeeder"
 }

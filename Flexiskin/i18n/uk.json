@@ -3,7 +3,8 @@
 		"authors": [
 			"Ата",
 			"Andriykopanytsia",
-			"Alex Blokha"
+			"Alex Blokha",
+			"Piramidion"
 		]
 	},
 	"bs-flexiskin-desc": "Забезпечує сторінку для керування гнучкими темами оформлення з налаштуванням параметрів",
@@ -61,5 +62,9 @@
 	"bs-flexiskin-apihelp-task-param-skinId": "Параметр <var>skinId</var> визначає тему оформлення",
 	"bs-flexiskin-apihelp-task-param-name": "Параметр <var>name</var> є назвою завантаженого файлу",
 	"bs-flexiskin-usebackground": "Використати фонове зображення",
-	"bs-flexiskin-labelcurrentbackground": "Поточне зображення"
+	"bs-flexiskin-labelcurrentbackground": "Поточне зображення",
+	"apihelp-bs-flexiskin-tasks-description": "Дозволяє управляти гнучкими темами оформлення",
+	"apihelp-bs-flexiskin-store-description": "Виводить список доступних гнучких тем оформлення",
+	"apihelp-bs-flexiskin-upload-description": "Дозволяє вантажити файли до гнучкої теми оформлення",
+	"apihelp-bs-flexiskin-upload-store-description": "Виводить список завантажених файлів гнучкої теми оформлення"
 }

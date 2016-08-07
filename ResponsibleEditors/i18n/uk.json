@@ -81,5 +81,9 @@
 	"apihelp-bs-responsibleeditorspages-store": "Перераховує сторінки і пов'язаних відповідальних редакторів",
 	"apihelp-bs-bs-responsibleeditors-tasks": "Дозволяє управляти відповідальними редакторами",
 	"apihelp-bs-responsibleeditorsposibleeditors-store": "Перераховує можливих відповідальних редакторів",
-	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Фільтрує можливих відповідальних редакторів за необхідним <var>articleId</var>"
+	"apihelp-bs-responsibleeditorsposibleeditors-store-param-articleid": "Фільтрує можливих відповідальних редакторів за необхідним <var>articleId</var>",
+	"apihelp-bs-responsibleeditorspages-store-description": "Виводить сторінки, для яких треба призначити відповідальних редакторів",
+	"apihelp-bs-responsibleeditorspossibleeditors-store-description": "Перераховує можливих відповідальних редакторів",
+	"apihelp-bs-responsibleeditorsactivenamespaces-store-description": "Перераховує простори назв, у яких увімкнена функція відповідальних редакторів",
+	"apihelp-bs-responsibleeditors-tasks-description": "Дозволяє управляти відповідальними редакторами"
 }

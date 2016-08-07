@@ -4,7 +4,8 @@
 			"SPQRobin",
 			"Esketti",
 			"Siebrand",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"MrLeopold"
 		]
 	},
 	"bs-smartlist-desc": "Geeft de laatste vijf wijzigingen van de wiki in een lijst",
@@ -45,5 +46,7 @@
 	"bs-smartlist-mostactiveusersdesc": "Lijst van meest actieve gebruikers gesorteerd op hun bewerkingen.",
 	"bs-smartlist-mosteditedpagesdesc": "Lijst van de meest bewerkte pagina's gesorteerd op aantel bewerkingen.",
 	"bs-smartlist-mostvisitedpagesdesc": "Lijst van meest bekeken pagina's gesorteerd op aantal keren bekeken",
-	"bs-smartlist-lasteditsdesc": "Lijst met pagina's die u hebt bewerkt."
+	"bs-smartlist-lasteditsdesc": "Lijst met pagina's die u hebt bewerkt.",
+	"bs-smartlist-hitcounter-missing": "Extensie <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a> moet geïnstalleerd zijn.",
+	"apihelp-bs-smartlist-tasks-description": "API-functies om portlet-gegevens te bedienen voor pagina- en gebruikersstatistieken"
 }

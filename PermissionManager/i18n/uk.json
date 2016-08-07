@@ -47,5 +47,6 @@
 	"log-name-bs-permission-manager": "Журнал менеджера дозволів",
 	"log-description-bs-permission-manager": "Це журнал змін дозволів групи.",
 	"log-show-hide-bs-permission-manager": "$1 журнал менеджера дозволів",
-	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|змінив|змінила}} дозволи групи $4"
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|змінив|змінила}} дозволи групи $4",
+	"apihelp-bs-permissionmanager-tasks-description": "Надає завдання для PermissionManager"
 }

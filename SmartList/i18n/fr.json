@@ -49,5 +49,6 @@
 	"bs-smartlist-mostactiveusersdesc": "Liste des utilisateurs les plus actifs triés par leurs modifications.",
 	"bs-smartlist-mosteditedpagesdesc": "Liste des pages les plus modifiées triées par leurs modifications.",
 	"bs-smartlist-mostvisitedpagesdesc": "Liste des pages les plus vues triées par leurs consultations.",
-	"bs-smartlist-lasteditsdesc": "Liste des pages que vous avez modifiées."
+	"bs-smartlist-lasteditsdesc": "Liste des pages que vous avez modifiées.",
+	"bs-smartlist-hitcounter-missing": "L'extension <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>compteur de visites</a> doit être installée."
 }

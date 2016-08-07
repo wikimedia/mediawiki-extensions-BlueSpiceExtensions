@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-usersidebar-desc": "Додає вкладку фокус на бічну панель",
@@ -11,5 +12,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Редагувати}} фокус",
 	"bs-usersidebar-tab-focus": "Фокус",
 	"bs-usersidebar-tab-globalactions": "Глобальні дії",
-	"bs-usersidebar-globalactionswidget-title": "Глобальні дії"
+	"bs-usersidebar-globalactionswidget-title": "Глобальні дії",
+	"apihelp-sidebar-description": "Виводить HTML-вміст бічної панелі користувача"
 }

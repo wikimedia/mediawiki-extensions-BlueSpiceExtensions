@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"MrLeopold"
 		]
 	},
 	"bs-rssstandards-desc": "Bouwt RSS feeds op basis van verschillende opties",
@@ -17,5 +18,6 @@
 	"bs-rssstandards-desc-watch": "Diervoeders met een overzicht van uw bekeken pagina ' s.",
 	"bs-rssstandards-link-text-watch": "Recente wijzigingen van de laatste {{PLURAL:$1|dag|$1 dagen}}.",
 	"bs-rssstandards-desc-ns": "Diervoeders met een overzicht over de recente veranderingen in een naamruimte.",
-	"bs-rssstandards-changes-from": "Wijzigingen {{GENDER:$1|door}}: $1"
+	"bs-rssstandards-changes-from": "Wijzigingen {{GENDER:$1|door}}: $1",
+	"apihelp-bs-rss-standards-pages-store-description": "Toon lijst van beschikbare pagina's voor RSSFeeder"
 }
