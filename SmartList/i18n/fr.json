@@ -50,5 +50,6 @@
 	"bs-smartlist-mosteditedpagesdesc": "Liste des pages les plus modifiées triées par leurs modifications.",
 	"bs-smartlist-mostvisitedpagesdesc": "Liste des pages les plus vues triées par leurs consultations.",
 	"bs-smartlist-lasteditsdesc": "Liste des pages que vous avez modifiées.",
-	"bs-smartlist-hitcounter-missing": "L'extension <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>compteur de visites</a> doit être installée."
+	"bs-smartlist-hitcounter-missing": "L'extension <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>compteur de visites</a> doit être installée.",
+	"apihelp-bs-smartlist-tasks-description": "Fonctions de l’API pour fournir des données de portlet sur les pages et les statistiques utilisateur."
 }

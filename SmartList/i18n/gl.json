@@ -45,5 +45,6 @@
 	"bs-smartlist-mostactiveusersdesc": "Lista de usuarios máis activos ordenados polas súas edicións.",
 	"bs-smartlist-mosteditedpagesdesc": "Lista das páxinas máis editadas ordenadas polas súas edicións.",
 	"bs-smartlist-mostvisitedpagesdesc": "Lista das páxinas máis vistas ordenadas polo número de visitas.",
-	"bs-smartlist-lasteditsdesc": "Lista das páxinas que editou."
+	"bs-smartlist-lasteditsdesc": "Lista das páxinas que editou.",
+	"bs-smartlist-hitcounter-missing": "A extensión <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a> debe estar instalada."
 }
