@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Namoroka"
+			"Namoroka",
+			"Ykhwong"
 		]
 	},
 	"prefs-articleinfo": "문서 정보",
@@ -19,7 +20,7 @@
 	"bs-articleinfo-subpages-available": "이 문서에는 하위 문서가 있습니다",
 	"bs-articleinfo-subpages-too-much": "이 문서에는 100개 이상의 하위 문서가 있습니다.",
 	"bs-articleinfo-check-revision": "새 버전을 사용할 수 있습니다",
-	"bs-articleinfo-check-revision-tooltip": "문서 새로고침",
+	"bs-articleinfo-check-revision-tooltip": "문서 새로 고침",
 	"bs-articleinfo-statebartoplastedited": "최근 편집",
 	"bs-articleinfo-statebartoplasteditor": "최근 편집자",
 	"bs-articleinfo-statebartopcategories": "분류",

@@ -4,5 +4,14 @@
 			"Kumkumuk"
 		]
 	},
-	"bs-contextmenu-page-move": "Perer bıkırış"
+	"bs-contextmenu-page-edit": "Pele bıvurne",
+	"bs-contextmenu-page-delete": "Pele bestere",
+	"bs-contextmenu-page-move": "Perer bıkırış",
+	"bs-contextmenu-page-history": "Verorê perer bıvinê",
+	"bs-contextmenu-page-protect": "Pela pawıtiye",
+	"bs-contextmenu-page-purge": "Verhafıza pak ke u perer bıasne",
+	"bs-contextmenu-page-info": "Malumata perer bıvinê",
+	"bs-contextmenu-media-reupload": "Newe versiyoni bar ke",
+	"bs-contextmenu-media-view-page": "Şınasiyau verorê dosya bıasne",
+	"bs-contextmenu-user-mail": "E-posta bırış"
 }
