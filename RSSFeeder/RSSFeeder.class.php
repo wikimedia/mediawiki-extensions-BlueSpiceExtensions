@@ -22,6 +22,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage RSSFeeder
@@ -69,6 +70,9 @@ class RSSFeeder extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
+
+		$this->mCore->registerPermission( 'rssfeeder-viewspecialpage', array('user'), array( 'type' => 'global' ) );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

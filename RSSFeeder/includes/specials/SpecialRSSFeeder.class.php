@@ -3,14 +3,14 @@
 class SpecialRSSFeeder extends BsSpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'RSSFeeder' );
+		parent::__construct( 'RSSFeeder', 'rssfeeder-viewspecialpage' );
 	}
 
 	/**
 	 *
 	 * @global OutputPage $this->getOutput()
 	 * @param type $sParameter
-	 * @return type 
+	 * @return type
 	 */
 	public function execute( $sParameter ) {
 		parent::execute( $sParameter );
