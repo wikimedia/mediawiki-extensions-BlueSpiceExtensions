@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Shirayuki",
 			"Robby",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-blog-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of blog extension",
@@ -35,5 +36,6 @@
 	"bs-blog-tag-blogmore-desc": "Used in InsertMagic extension, tag description for setting teaser boundary on every page.\n{{Related|Bs-tag-desc}}",
 	"bs-blog-tag-blogtime-desc": "Used in InsertMagic extension, tag description for setting blog timestamp on every page.\n{{Related|Bs-tag-desc}}",
 	"bs-blog-tag-blogtime-err": "Error message on bs:blog:time tag when there is a wrong timestamp format.\nShould be YYYYMMDDHHmm (YmdHi).",
-	"bs-tag-blog": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
+	"bs-tag-blog": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output",
+	"action-blog-viewspecialpage": "placeholder to describe that view of special page \"{{int:bs-blog-blog}}\" is restricted for the current user"
 }

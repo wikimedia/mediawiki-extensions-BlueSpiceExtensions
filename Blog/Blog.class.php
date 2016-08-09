@@ -23,6 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Sebastian Ulbricht
+ * @author     Leonid Verhovskij
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Blog
@@ -84,6 +85,8 @@ class Blog extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Blog::ThumbFloatDirection', 'right', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-blog-pref-imagefloatdirection', 'select' );
 
 		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'toggle' );
+
+		$this->mCore->registerPermission( 'blog-viewspecialpage', array('user'), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
