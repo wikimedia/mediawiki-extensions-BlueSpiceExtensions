@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-dashboards-desc": "Provides dashboards for users and administrators",
@@ -20,5 +21,6 @@
 	"apihelp-bs-dashboard-task-param-dc": "Cache control parameter. Used by ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Lists all available portlets",
 	"apihelp-bs-dashboards-tasks-description": "Saves dashboard configuration",
-	"apihelp-bs-dashboards-widgets-tasks-description": "Returns content for some dashboard widgets"
+	"apihelp-bs-dashboards-widgets-tasks-description": "Returns content for some dashboard widgets",
+	"action-dashboards-viewspecialpage-userdashboard":"view the special page \"{{int:userdashboard}}\""
 }

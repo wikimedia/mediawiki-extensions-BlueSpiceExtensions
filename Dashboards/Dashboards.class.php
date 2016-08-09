@@ -84,6 +84,8 @@ class Dashboards extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 		//$this->setHook( 'BSInsertMagicAjaxGetData' );
 
+		$this->mCore->registerPermission( 'dashboards-viewspecialpage-userdashboard', array('user'), array( 'type' => 'global' ) );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

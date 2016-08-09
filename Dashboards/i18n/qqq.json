@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"NigelSoft",
 			"Robby",
-			"Shirayuki"
+			"Shirayuki",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-dashboards-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of dashboards extension",
@@ -23,5 +24,6 @@
 	"apihelp-bs-dashboard-task-param-dc": "Label for cache control parameter in api call",
 	"apihelp-bs-dashboards-store-description": "Describes the API endpoint that lists available portlets",
 	"apihelp-bs-dashboards-tasks-description": "Describes the API endpoint that saves dashboard configuration",
-	"apihelp-bs-dashboards-widgets-tasks-description": "Describes the API endpoint that returns content for some dashboard widgets"
+	"apihelp-bs-dashboards-widgets-tasks-description": "Describes the API endpoint that returns content for some dashboard widgets",
+	"action-dashboards-viewspecialpage-userdashboard": "placeholder to describe that view of special page \"{{int:userdashboard}}\" is restricted for the current user"
 }
