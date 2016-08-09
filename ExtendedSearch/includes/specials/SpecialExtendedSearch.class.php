@@ -21,7 +21,7 @@ class SpecialExtendedSearch extends BsSpecialPage {
 	 * Constructor of SpecialExtendedSearch class
 	 */
 	public function __construct() {
-		parent::__construct( 'SpecialExtendedSearch' );
+		parent::__construct( 'SpecialExtendedSearch', 'extendedsearch-viewspecialpage' );
 	}
 
 	/**

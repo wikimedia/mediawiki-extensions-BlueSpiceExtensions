@@ -24,6 +24,7 @@
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @author     Mathias Scheer <scheer@hallowelt.com>
  * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage ExtendedSearch
@@ -126,6 +127,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'extendedsearch-viewspecialpage', array( 'user' ), array( 'type' => 'global' ) );
 
 		$this->resolveNamespaceBoostQueryConfig();
 

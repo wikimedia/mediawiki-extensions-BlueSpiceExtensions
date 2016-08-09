@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-extendedsearch-desc": "Apache Solr (http://lucene.apache.org/solr/) based search plugin to extend the search functionality",
@@ -101,5 +102,7 @@
 	"bs-extendedsearch-more": "More",
 	"bs-extendedsearch-fewer": "Less",
 	"bs-extendedsearch-facetsetting-op-and": "AND",
-	"bs-extendedsearch-facetsetting-op-or": "OR"
+	"bs-extendedsearch-facetsetting-op-or": "OR",
+	"action-extendedsearch-viewspecialpage":"view the special page \"{{int:specialextendedsearch}}\""
+
 }
