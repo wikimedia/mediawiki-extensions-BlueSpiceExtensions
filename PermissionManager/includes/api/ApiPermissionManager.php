@@ -63,9 +63,10 @@ class ApiPermissionManager extends BSApiTasksBase {
 
 	protected function getRequiredTaskPermissions() {
 		return array(
-			'add' => array( 'wikiadmin' ),
-			'edit' => array( 'wikiadmin' ),
-			'remove' => array( 'wikiadmin' )
+			'deleteTemplate' => array( 'wikiadmin' ),
+			'permissions' => array( 'wikiadmin' ),
+			'savePermissions' => array( 'wikiadmin' ),
+			'setTemplateData' => array( 'wikiadmin' ),
 		);
 	}
 

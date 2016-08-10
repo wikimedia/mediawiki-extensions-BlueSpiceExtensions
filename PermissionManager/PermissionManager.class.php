@@ -134,6 +134,8 @@ class PermissionManager extends BsExtensionMW {
 
 		$this->setHook( 'BSGroupManagerGroupNameChanged' );
 		$this->setHook( 'BSGroupManagerGroupDeleted' );
+
+		$this->mCore->registerPermission( 'permissionmanager-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 	}
 
 	/**

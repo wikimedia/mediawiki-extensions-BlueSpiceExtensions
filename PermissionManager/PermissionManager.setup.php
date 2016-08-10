@@ -48,6 +48,11 @@ $wgResourceModules['ext.bluespice.permissionManager'] = array(
 $wgAutoloadClasses['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
 $wgAutoloadClasses['PermissionTemplates'] = __DIR__ . '/includes/PermissionTemplates.class.php';
 $wgAutoloadClasses['PermissionValidator'] = __DIR__ . '/includes/PermissionValidator.php';
+$wgAutoloadClasses['SpecialPermissionManager'] = __DIR__ . '/includes/specials/SpecialPermissionManager.class.php';
+$wgExtensionMessagesFiles['PermissionManagerAlias'] = __DIR__ . '/includes/specials/SpecialPermissionManager.alias.php';
+
+//register specialpage for permissionmanager
+$wgSpecialPages['PermissionManager'] = 'SpecialPermissionManager';
 
 // Map class name to filename for autoloading
 $wgAutoloadClasses['ApiPermissionManager'] = __DIR__ . '/includes/api/ApiPermissionManager.php';

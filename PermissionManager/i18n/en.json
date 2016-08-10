@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-permissionmanager-desc": "Administration interface for editing user rights",
@@ -46,5 +47,7 @@
 	"log-description-bs-permission-manager": "This is a log of changes in the group permissions.",
 	"log-show-hide-bs-permission-manager": "$1 permission manager log",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|has}} changed the permissions of the group $4",
-	"apihelp-bs-permissionmanager-tasks-description": "Provides tasks for the PermissionManager"
+	"apihelp-bs-permissionmanager-tasks-description": "Provides tasks for the PermissionManager",
+	"action-permissionmanager-viewspecialpage":"view the special page \"{{int:bs-permissionmanager-label}}\"",
+	"permissionmanager":"Permission manager"
 }
