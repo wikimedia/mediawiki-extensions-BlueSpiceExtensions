@@ -22,8 +22,9 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    2.23.1
+ * @version    2.27
  * @package    BlueSpice_Extensions
  * @subpackage InterWikiLinks
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
@@ -57,6 +58,8 @@ class InterWikiLinks extends BsExtensionMW {
 
 		$this->setHook( 'BeforePageDisplay' );
 
+		$this->mCore->registerPermission( 'interwikilinks-viewspecialpage', array('sysop'), array( 'type' => 'global' ) );
+
 		wfProfileOut('BS::InterWikiLinks::initExt');
 	}
 
@@ -71,10 +74,11 @@ class InterWikiLinks extends BsExtensionMW {
 		$oOutputPage->addModules('bluespice.insertLink.interWikiLinks');
 		//TODO implement ow
 		$oOutputPage->addJsConfigVars( 'BSInterWikiPrefixes', $this->getInterWikiLinkPrefixes() );
+
 		return true;
 	}
 
-	public function getInterWikiLinkPrefixes() {
+	public static function getInterWikiLinkPrefixes() {
 		$oDbr = wfGetDB( DB_SLAVE );
 		$rRes = $oDbr->select(
 				'interwiki',

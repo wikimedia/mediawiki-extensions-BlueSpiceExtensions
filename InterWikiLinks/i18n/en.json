@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-interwikilinks-desc": "Administration interface for adding, editing and deleting interwiki links",
@@ -28,5 +29,7 @@
 	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
 	"bs-interwikilink-select-a-prefix": "Choose prefix",
 	"bs-interwikilinks-link-edited": "The interwiki link has been edited",
-	"apihelp-bs-interwikilinks-tasks-description": "Provides the tasks for the extension InterWikiLinks."
+	"apihelp-bs-interwikilinks-tasks-description": "Provides the tasks for the extension InterWikiLinks.",
+	"action-interwikilinks-viewspecialpage":"view the specialpage \"{{int:bs-interwikilinks-label}}\"",
+	"interwikilinks":"Interwiki links"
 }

@@ -48,7 +48,7 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 	protected function getRequiredTaskPermissions() {
 		return array(
 			'editInterWikiLink' => array( 'wikiadmin' ),
-			'removeInterWikiLink' => array( 'wikiadmin' ),
+			'removeInterWikiLink' => array( 'wikiadmin' )
 		);
 	}
 

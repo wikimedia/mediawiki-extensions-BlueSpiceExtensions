@@ -16,7 +16,23 @@
   */
 
 Ext.onReady( function(){
+	var taskPermissions = mw.config.get( 'bsTaskAPIPermissions' );
+	var operationPermissions = {
+        "create": true, //should be connected to mw.config.get('bsTaskAPIPermissions').extension_xyz.task1 = boolean in derived class
+        "update": true, //...
+        "delete": true  //...
+    };
+	if ( taskPermissions !== null ) {
+		if ( typeof taskPermissions.interwikilinks.editInterWikiLink === 'boolean' ) {
+			operationPermissions.create = taskPermissions.editInterWikiLink;
+			operationPermissions.update = taskPermissions.editInterWikiLink;
+		}
+		if ( typeof taskPermissions.interwikilinks.removeInterWikiLink === 'boolean' ) {
+			operationPermissions.delete = taskPermissions.removeInterWikiLink;
+		}
+	}
 	Ext.create( 'BS.InterWikiLinks.Panel', {
+		operationPermissions: operationPermissions,
 		renderTo: 'InterWikiLinksGrid'
 	} );
 } );
