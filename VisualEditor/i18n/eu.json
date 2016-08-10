@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
+	"prefs-visualeditor": "Ikusizko editorea",
+	"bs-visualeditor-editbutton-hint": "Ikusizko Editorea",
 	"bs-visualeditor-bsactions-signature": "Sinadura",
 	"bs-visualeditor-bsactions-save": "Gorde"
 }
