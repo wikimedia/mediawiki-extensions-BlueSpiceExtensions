@@ -277,7 +277,7 @@ class UserManager extends BsExtensionMW {
 			return Status::newFatal( 'bs-usermanager-no-self-desysop' );
 		}
 
-		$aCurrentGroups = $oUser->getEffectiveGroups();
+		$aCurrentGroups = $oUser->getGroups();
 		$aSetGroups = array_diff( $aGroups, $aCurrentGroups );
 		$aRemoveGroups = array_diff( $aCurrentGroups, $aGroups );
 
