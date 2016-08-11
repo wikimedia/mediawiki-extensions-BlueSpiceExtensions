@@ -30,6 +30,6 @@
 	"bs-blog-pref-imagefloatdirection": "Fluxo do texto: posición da imaxe",
 	"bs-blog-pref-maxentrycharacters": "Número de palabras por entrada:",
 	"bs-blog-tag-blog-desc": "Inclúe un weblog de artigos, páxinas de conversa e páxinas de ficheiros. Pode estar especificado por varios parámetros. Poden combinarse en calquera orde.",
-	"bs-blog-tag-blogtime-desc": "Esta etiqueta proporciónalle a oportunidade de fixar un selo de tempo personalizado para as entradas do blog.",
+	"bs-blog-tag-blogtime-desc": "Inserta un selo de tempo autodefinido para mostrar e ordenar as entradas dos blogs. O formato é AAAAMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "O formato debe ser AAAAMMDDHHmm p. ex. para 12 de xaneiro de 2013 ás 15:43 o selo de tempo debe ser: 201301121543"
 }
