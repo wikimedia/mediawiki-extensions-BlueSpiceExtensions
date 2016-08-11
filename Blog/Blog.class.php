@@ -54,6 +54,7 @@ class Blog extends BsExtensionMW {
 		$this->setHook( 'BSTopMenuBarCustomizerRegisterNavigationSites' );
 		$this->setHook( 'PageContentSaveComplete' );
 		$this->setHook( 'ArticleDeleteComplete' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		// Trackback is not fully functional in MW and thus disabled.
 		BsConfig::registerVar( 'MW::Blog::ShowTrackback', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL );
@@ -426,6 +427,9 @@ class Blog extends BsExtensionMW {
 		if ( $aData !== false ) {
 			return $aData;
 		}
+
+		$parser->getOutput()->setProperty( 'bs-tag-blog', 1 );
+
 		// initialize local variables
 		$oErrorListView = new ViewTagErrorList( $this );
 		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
@@ -873,4 +877,24 @@ class Blog extends BsExtensionMW {
 		return $set;
 	}
 
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:blog'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-blog'
+			)
+		);
+		$aCollectorsConfig['bs:blog:new'] = array(
+			'class' => 'Tag',
+			'config' => array(
+				'identifier' => 'bs:blog:new'
+			)
+		);
+		$aCollectorsConfig['bs:blog:more'] = array(
+			'class' => 'Tag',
+			'config' => array(
+				'identifier' => 'bs:blog:more'
+			)
+		);
+	}
 }
