@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sarchia"
+		]
+	},
+	"bs-review-commentinputlabel": "بۆچوونەکەت:",
+	"bs-review-colcomment": "بۆچوون",
+	"bs-review-labelcomment": "بۆچوون",
+	"notification-bs-review-payload-comment": "بۆچوون: $1"
+}

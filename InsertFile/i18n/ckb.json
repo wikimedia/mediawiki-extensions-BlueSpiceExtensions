@@ -4,8 +4,10 @@
 			"Sarchia"
 		]
 	},
+	"bs-insertfile-insert-image": "تێخستنی وێنە",
 	"bs-insertfile-labelupload": "بارکردن",
 	"bs-insertfile-alignnone": "ھیچ",
 	"bs-insertfile-typenone": "ھیچ",
-	"bs-insertfile-uploadsubmitvalue": "بارکردنی پەڕگە"
+	"bs-insertfile-uploadsubmitvalue": "بارکردنی پەڕگە",
+	"bs-insertfile-titlefile": "تێخستنی پەڕگە"
 }

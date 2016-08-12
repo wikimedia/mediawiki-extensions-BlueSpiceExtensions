@@ -4,5 +4,10 @@
 			"Sarchia"
 		]
 	},
-	"bs-extendededitbar-gallerysamplecaption": "ڕاڤە"
+	"bs-extendededitbar-redirectsample": "تێخستنی دەق",
+	"bs-extendededitbar-smalltip": "بچووک",
+	"bs-extendededitbar-commenttip": "تێخستنی بۆچوونی شاراوە",
+	"bs-extendededitbar-gallerytip": "تێخستنی گالێری وێنە",
+	"bs-extendededitbar-gallerysamplecaption": "ڕاڤە",
+	"bs-extendededitbar-tabletip": "تێخستنی خشتەیەک"
 }
