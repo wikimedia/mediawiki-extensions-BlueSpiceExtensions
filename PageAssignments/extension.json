@@ -61,7 +61,8 @@
 		"SpecialManagePageAssignments": "includes/specials/SpecialManagePageAssignments.php",
 		"ViewPAStateBarBodyElement": "includes/views/ViewPAStateBarBodyElement.php",
 		"PageAssignmentsNotificationFormatter": "includes/notifications/PageAssignmentsNotificationFormatter.php",
-		"PageAssignmentsEmailSingle": "includes/notifications/PageAssignmentsEmailSingle.php"
+		"PageAssignmentsEmailSingle": "includes/notifications/PageAssignmentsEmailSingle.php",
+		"BSPageAssignmentsMigrateRespEditors": "maintenance/BSPageAssignmentsMigrateRespEditors.php"
 	},
 	"ResourceModules": {
 		"ext.pageassignments.styles": {
