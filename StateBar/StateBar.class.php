@@ -90,7 +90,7 @@ class StateBar extends BsExtensionMW {
 	/**
 	 * Registers StateBar sort variables
 	 */
-	private function registerSortVars() {
+	public function registerSortVars() {
 		wfRunHooks( 'BSStateBarAddSortTopVars', array( &$this->aSortTopVars ) );
 
 		$aDefaultSortTopVars = array(
@@ -150,59 +150,6 @@ class StateBar extends BsExtensionMW {
 	}
 
 	/**
-	 * AJAX interface for BlueSpice SateBar body views
-	 * @return string The JSON formatted response
-	 */
-	public static function ajaxCollectBodyViews() {
-		global $wgUser;
-		$aResult = array(
-			"success" => false,
-			"views" => array(),
-			"message" => '',
-		);
-
-		$iArticleID = RequestContext::getMain()->getRequest()->getInt( 'articleID', 0 );
-		if( $iArticleID === 0 ) {
-			$aResult['message'] = wfMessage("bs-statebar-ajax-nobodyviews")->plain();
-			return FormatJson::encode($aResult);
-		}
-
-		$oStateBar = BsExtensionManager::getExtension( 'StateBar' );
-		$oStateBar->registerSortVars();
-
-		$oTitle = $oStateBar->checkContext(
-			Title::newFromID( $iArticleID ),
-			true //because you already have the possible redirected title!
-				 //also prevents from get wrong data in redirect redirect
-		);
-		if( is_null($oTitle) ) {
-			$aResult['message'] = wfMessage("bs-statebar-ajax-nobodyviews")->plain();
-			return json_encode( $aResult );
-		}
-
-		$aBodyViews = array();
-		wfRunHooks( 'BSStateBarBeforeBodyViewAdd', array( $oStateBar, &$aBodyViews, $wgUser, $oTitle ) );
-		if( empty($aBodyViews) ) {
-			$aResult['success'] = true;
-			$aResult['message'] = wfMessage('bs-statebar-ajax-nobodyviews')->plain();
-			return json_encode( $aResult );
-		}
-
-		$aSortBodyVars = BsConfig::get('MW::StateBar::SortBodyVars');
-		if( !empty($aSortBodyVars) ) {
-			$aBodyViews = $oStateBar->reorderViews( $aBodyViews, $aSortBodyVars );
-		}
-
-		//execute all views to an array with numeric index
-		$aExecutedBodyViews = array();
-		foreach( $aBodyViews as $oView ) $aExecutedBodyViews[] = $oView->execute();
-
-		$aResult['views'] = $aExecutedBodyViews;
-		$aResult['success'] = true;
-		return FormatJson::encode( $aResult );
-	}
-
-	/**
 	 * Inject tags into InsertMagic
 	 * @param Object $oResponse reference
 	 * $param String $type
@@ -243,7 +190,7 @@ class StateBar extends BsExtensionMW {
 	 * @param bool $bRedirect
 	 * @return Title - null when context check fails
 	 */
-	private function checkContext( $oTitle, $bRedirect = false ) {
+	public function checkContext( $oTitle, $bRedirect = false ) {
 		if ( is_null( $oTitle ) ) return null;
 		if ( $oTitle->exists() === false ) return null;
 		if ( $oTitle->getNamespace() === NS_SPECIAL ) return null;

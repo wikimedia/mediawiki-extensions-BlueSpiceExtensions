@@ -27,4 +27,6 @@ $wgAutoloadClasses['ViewStateBar'] = __DIR__.'/views/view.StateBar.php';
 $wgAutoloadClasses['ViewStateBarTopElement'] = __DIR__.'/views/view.StateBarTopElement.php';
 $wgAutoloadClasses['ViewStateBarBodyElement'] = __DIR__.'/views/view.StateBarBodyElement.php';
 
-$wgAjaxExportList[] = 'StateBar::ajaxCollectBodyViews';
+$wgAutoloadClasses['BSApiStateBarTasks'] = __DIR__ . '/includes/api/BSApiStateBarTasks.php';
+
+$wgAPIModules['bs-statebar-tasks'] = 'BSApiStateBarTasks';
