@@ -61,11 +61,11 @@ class MySQLDbReader extends StatsDataProvider {
 		$sql = str_replace("@start", " '".$interval->getStartTS("YmdHis")."' ", $sql);
 		$sql = str_replace("@end", " '".$interval->getEndTS("YmdHis")."' ", $sql);
 
-		$res = mysql_query($sql);
+		$res = $this->conn->query($sql);
 		if (!$res){
 			return 0;
 		}
-		$row = mysql_fetch_array($res);
+		$row = $res->fetch_array();
 
 		$item = $row[0];
 		//if ($listable)
@@ -92,12 +92,12 @@ class MySQLDbReader extends StatsDataProvider {
 		$sql = str_replace("@start", " '".$interval->getStartTS("YmdHis")."' ", $sql);
 		$sql = str_replace("@end", " '".$interval->getEndTS("YmdHis")."' ", $sql);
 //echo '<br>'.$sql;
-		$res = mysql_query($sql);
+		$res = $this->conn->query($sql);
 		if (!$res){
 			return $uniqueValues;
 		}
 
-		while ($row = mysql_fetch_array($res)) {
+		while ( $row = $res->fetch_array() ) {
 			$rowArr = array();
 			for ($i=0; $i<$count; $i++ )
 				$rowArr[] = $row[$i];
@@ -117,8 +117,8 @@ class MySQLDbReader extends StatsDataProvider {
 	private function connect()
 	{
 		if ($this->conn) return $this->conn;
-		$this->conn = mysql_connect($this->host, $this->user, $this->pass);
-		mysql_select_db($this->db);
+		$this->conn = new mysqli($this->host, $this->user, $this->pass);
+		$this->conn->select_db($this->db);
 		return $this->conn;
 	}
 
