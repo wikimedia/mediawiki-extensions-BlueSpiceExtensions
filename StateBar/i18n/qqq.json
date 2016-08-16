@@ -14,5 +14,6 @@
 	"bs-statebar-viewtoggler": "Text for the toggle details window, written in caps due to consistency\n{{Identical|Detail}}",
 	"bs-statebar-viewtoggler-tooltip": "Span title for show detailed information",
 	"bs-statebar-switch-description": "Behaviour switch __NOSTATEBAR__ description for hiding the status bar on this page shown in InsertMagic.",
-	"bs-statebar-ajax-nobodyviews": "Text if no information available about this page shown in folded out status bar."
+	"bs-statebar-ajax-nobodyviews": "Text if no information available about this page shown in folded out status bar.",
+	"apihelp-bs-statebar-tasks-description": "Describes the API endpoint that handles statebar tasks"
 }

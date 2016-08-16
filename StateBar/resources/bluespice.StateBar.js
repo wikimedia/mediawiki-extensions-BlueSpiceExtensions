@@ -31,45 +31,50 @@ BsStateBar = {
 		} );
 		//TODO: Use CAIContext!
 		var params = {
-			action:'ajax',
-			rs:'StateBar::ajaxCollectBodyViews',
 			articleID: mw.config.get( "wgArticleId" )
 		};
 
 		$(document).trigger( 'BsStateBarBodyBeforeLoad', [params] );
-		$.getJSON(
-			mw.config.get( "wgScriptPath" ) + '/index.php',
-			params,
-			function( result ) {
-				$(document).trigger( 'BsStateBarBodyLoad', [result] );
-				$('#sStateBarBodyLoadView').slideToggle('fast');
+		bs.api.tasks.execSilent(
+			'statebar',
+			'collectBodyViews',
+			params
+		).done(function( result ){
+			$( document ).trigger( 'BsStateBarBodyLoad', [result] );
+			$( '#sStateBarBodyLoadView' ).slideToggle( 'fast' );
 
-				if ( result['views'].length < 1 ) {
-					var messageItem = $('<div class="bs-statebar-body-item style="display:none"><p>' + result['message'] + '</p></div>').filter('DIV.bs-statebar-body-item');
-					BsStateBar.oStateBarView.append(messageItem.slideToggle('fast'));
-					$.each( BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
-						BsStateBar.viewTogglerClick(value);
-					});
-					return;
-				}
-
-				$.each(result['views'], function( key, value ) {
-					var bodyItem = $(value).filter('DIV.bs-statebar-body-item');
-					bodyItem.hide();
-					BsStateBar.oStateBarView.append(bodyItem.slideToggle('fast'));
-				});
-				if ($("#footer-info").length !== 0 ){
-					BsStateBar.oStateBarView.append($("<div class='clearfix'></div>"));
-					BsStateBar.oStateBarView.append($("#footer-info"));
-				}
-
-				$(document).trigger( 'BsStateBarBodyLoadComplete', [result['views'], result] );
-
-				$.each(BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
+			if ( result.payload['views'].length < 1 ) {
+				var messageItem = $(
+						'<div class="bs-statebar-body-item style="display:none"><p>'
+						+ result.message
+						+ '</p></div>'
+					)
+					.filter( 'DIV.bs-statebar-body-item' );
+				BsStateBar.oStateBarView.append(
+						messageItem.slideToggle( 'fast' )
+				);
+				$.each( BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
 					BsStateBar.viewTogglerClick(value);
 				});
+				return;
 			}
-		);
+
+			$.each( result.payload['views'], function( key, value ) {
+				var bodyItem = $( value ).filter( 'DIV.bs-statebar-body-item' );
+				bodyItem.hide();
+				BsStateBar.oStateBarView.append( bodyItem.slideToggle( 'fast' ) );
+			});
+			if ( $( "#footer-info" ).length !== 0 ){
+				BsStateBar.oStateBarView.append( $( "<div class='clearfix'></div>" ) );
+				BsStateBar.oStateBarView.append( $( "#footer-info" ) );
+			}
+
+			$(document).trigger( 'BsStateBarBodyLoadComplete', [ result.payload['views'], result ] );
+
+			$.each(BsStateBar.aRegisteredToggleClickElements, function( key, value ) {
+				BsStateBar.viewTogglerClick( value );
+			});
+		});
 		this.bAjaxCallComplete = true;
 	},
 

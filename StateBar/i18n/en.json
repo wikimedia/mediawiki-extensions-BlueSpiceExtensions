@@ -12,5 +12,6 @@
 	"bs-statebar-viewtoggler": "DETAILS",
 	"bs-statebar-viewtoggler-tooltip": "Show detailed information",
 	"bs-statebar-switch-description": "Hides the status bar on this page.",
-	"bs-statebar-ajax-nobodyviews": "No information available."
+	"bs-statebar-ajax-nobodyviews": "No information available.",
+	"apihelp-bs-statebar-tasks-description": "Provides operations for StateBar extension"
 }
