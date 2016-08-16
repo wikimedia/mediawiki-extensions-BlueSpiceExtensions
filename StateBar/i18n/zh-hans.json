@@ -13,5 +13,6 @@
 	"bs-statebar-viewtoggler": "详细信息",
 	"bs-statebar-viewtoggler-tooltip": "显示详细信息",
 	"bs-statebar-switch-description": "在此页隐藏状态栏。",
-	"bs-statebar-ajax-nobodyviews": "没有可用信息。"
+	"bs-statebar-ajax-nobodyviews": "没有可用信息。",
+	"apihelp-bs-statebar-tasks-description": "提供用于StateBar扩展的操作"
 }

@@ -103,5 +103,6 @@
 	"bs-extendedsearch-more": "Більше",
 	"bs-extendedsearch-fewer": "Менше",
 	"bs-extendedsearch-facetsetting-op-and": "А ТАКОЖ",
-	"bs-extendedsearch-facetsetting-op-or": "АБО"
+	"bs-extendedsearch-facetsetting-op-or": "АБО",
+	"action-extendedsearch-viewspecialpage": "перегляд спеціальної сторінки «{{int:specialextendedsearch}}»"
 }

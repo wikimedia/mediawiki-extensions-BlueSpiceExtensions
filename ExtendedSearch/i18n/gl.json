@@ -3,7 +3,8 @@
 		"authors": [
 			"Elisardojm",
 			"Toliño",
-			"Macofe"
+			"Macofe",
+			"Banjo"
 		]
 	},
 	"bs-extendedsearch-desc": "Plugin de busca baseado en Apache Solr (http://lucene.apache.org/solr/) para expandir as funcións de busca",
@@ -103,5 +104,6 @@
 	"bs-extendedsearch-more": "Máis",
 	"bs-extendedsearch-fewer": "Menos",
 	"bs-extendedsearch-facetsetting-op-and": "E",
-	"bs-extendedsearch-facetsetting-op-or": "OU"
+	"bs-extendedsearch-facetsetting-op-or": "OU",
+	"action-extendedsearch-viewspecialpage": "ver a páxina especial \"{{int:specialextendedsearch}}\""
 }

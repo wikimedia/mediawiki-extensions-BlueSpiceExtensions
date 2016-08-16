@@ -104,5 +104,6 @@
 	"bs-extendedsearch-more": "Mehr",
 	"bs-extendedsearch-fewer": "Weniger",
 	"bs-extendedsearch-facetsetting-op-and": "UND",
-	"bs-extendedsearch-facetsetting-op-or": "ODER"
+	"bs-extendedsearch-facetsetting-op-or": "ODER",
+	"action-extendedsearch-viewspecialpage": "die Spezialseite „{{int:specialextendedsearch}}“ anzusehen"
 }

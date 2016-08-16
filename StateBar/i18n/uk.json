@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Base",
-			"Mykola Swarnyk"
+			"Mykola Swarnyk",
+			"Piramidion"
 		]
 	},
 	"bs-statebar-desc": "Надає рядок стану",
@@ -13,5 +14,6 @@
 	"bs-statebar-viewtoggler": "Докладніше",
 	"bs-statebar-viewtoggler-tooltip": "Показати детальну інформацію",
 	"bs-statebar-switch-description": "Приховує рядок стану цієї сторінки.",
-	"bs-statebar-ajax-nobodyviews": "Інформація відсутня."
+	"bs-statebar-ajax-nobodyviews": "Інформація відсутня.",
+	"apihelp-bs-statebar-tasks-description": "Забезпечує операції для розширення StateBar"
 }

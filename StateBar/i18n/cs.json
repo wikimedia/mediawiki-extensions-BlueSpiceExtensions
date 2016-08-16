@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"H4nek"
+			"H4nek",
+			"Marek Pavlica"
 		]
 	},
-	"bs-statebar-viewtoggler": "PODROBNOSTI"
+	"bs-statebar-viewtoggler": "PODROBNOSTI",
+	"apihelp-bs-statebar-tasks-description": "Poskytuje operace pro rozšíření StateBar"
 }
