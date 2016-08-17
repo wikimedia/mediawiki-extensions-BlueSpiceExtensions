@@ -48,23 +48,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME => 'ExtendedSearch',
-			EXTINFO::DESCRIPTION => 'bs-extendedsearch-desc',
-			EXTINFO::AUTHOR => 'Stephan Muggli, Mathias Scheer, Markus Glaser',
-			EXTINFO::VERSION => 'default',
-			EXTINFO::STATUS => 'default',
-			EXTINFO::PACKAGE => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/ExtendedSearch',
-			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::ExtendedSearch';
-
-		WikiAdmin::registerModuleClass( 'ExtendedSearchAdmin', array(
+                WikiAdmin::registerModuleClass( 'ExtendedSearchAdmin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_suche_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-extendedsearchadmin-label'
