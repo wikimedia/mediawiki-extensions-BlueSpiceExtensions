@@ -51,24 +51,8 @@ class NamespaceManager extends BsExtensionMW {
 		'dir' => ''
 	);
 
-	/**
-	 * Constructor of NamespaceManager
-	 */
 	public function __construct() {
 		wfProfileIn( 'BS::NamespaceManager::__construct' );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'NamespaceManager',
-			EXTINFO::DESCRIPTION => 'bs-namespacemanager-desc',
-			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stefan Widmann, Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/Namespacemanager',
-		);
-
 		WikiAdmin::registerModule( 'NamespaceManager', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_namespaces_v1.png',
 			'level' => 'wikiadmin',
