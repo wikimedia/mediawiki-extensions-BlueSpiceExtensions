@@ -45,30 +45,6 @@ class StateBar extends BsExtensionMW {
 	protected $aSortBodyVars = array();
 
 	protected $oRedirectTargetTitle = null;
-
-	/**
-	 * Contructor of the StateBar class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'StateBar',
-			EXTINFO::DESCRIPTION => 'bs-statebar-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel, Patric Wirth',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/StateBar',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::StateBar';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Initialization of StateBar extension
 	 */
