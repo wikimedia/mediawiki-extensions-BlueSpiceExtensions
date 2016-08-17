@@ -34,32 +34,6 @@
  * @subpackage Readers
  */
 class Readers extends BsExtensionMW {
-
-	/**
-	 * Contructor of the Readers class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'Readers',
-			EXTINFO::DESCRIPTION => 'bs-readers-desc',
-			EXTINFO::AUTHOR      => 'Stephan Muggli, Leonid Verhovskij',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/Readers',
-			EXTINFO::DEPS        => array(
-										'bluespice' => '2.23.0'
-										)
-		);
-		$this->mExtensionKey = 'MW::Readers';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Initialization of ExtensionTemplate extension
 	 */
