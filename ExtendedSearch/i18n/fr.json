@@ -5,7 +5,8 @@
 			"Gomoko",
 			"Orikrin1998",
 			"Ltrlg",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"bs-extendedsearch-desc": "Plugin basé sur Apache Solr (http://lucene.apache.org/solr/) étendant la fonctionnalité de recherche",
@@ -105,5 +106,6 @@
 	"bs-extendedsearch-more": "Plus",
 	"bs-extendedsearch-fewer": "Moins",
 	"bs-extendedsearch-facetsetting-op-and": "ET",
-	"bs-extendedsearch-facetsetting-op-or": "OU"
+	"bs-extendedsearch-facetsetting-op-or": "OU",
+	"action-extendedsearch-viewspecialpage": "afficher la page spéciale \"{{int:specialextendedsearch}}\""
 }

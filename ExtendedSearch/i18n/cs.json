@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Dvorapa",
-			"Marek Pavlica"
+			"Marek Pavlica",
+			"Mormegil"
 		]
 	},
 	"bs-extendedsearch-noresult": "Žádné položky nebyly nalezeny.",
-	"action-extendedsearch-viewspecialpage": "zobrazit speciální stránku \"{{int:specialextendedsearch}}\""
+	"action-extendedsearch-viewspecialpage": "prohlížet si speciální stránku „{{int:specialextendedsearch}}“"
 }

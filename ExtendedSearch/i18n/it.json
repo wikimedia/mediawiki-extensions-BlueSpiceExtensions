@@ -46,5 +46,6 @@
 	"bs-extendedsearch-more": "Altro",
 	"bs-extendedsearch-fewer": "Meno",
 	"bs-extendedsearch-facetsetting-op-and": "E",
-	"bs-extendedsearch-facetsetting-op-or": "O"
+	"bs-extendedsearch-facetsetting-op-or": "O",
+	"action-extendedsearch-viewspecialpage": "visualizzare la pagina speciale \"{{int:specialextendedsearch}}\""
 }

@@ -9,7 +9,8 @@
 			"Ата",
 			"Shirayuki",
 			"Purodha",
-			"Leonid Verhovskij <verhovskij@hallowelt.com>"
+			"Leonid Verhovskij <verhovskij@hallowelt.com>",
+			"Beta16"
 		]
 	},
 	"bs-extendedsearch-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended search extension.",
@@ -110,5 +111,5 @@
 	"bs-extendedsearch-fewer": "Anchor text for less\n{{Identical|Less}}",
 	"bs-extendedsearch-facetsetting-op-and": "Label for setting of logical AND operator. Should be upper case\n{{Identical|And}}",
 	"bs-extendedsearch-facetsetting-op-or": "Label for setting of logical OR operator. Should be upper case\n{{Identical|Or}}",
-	"action-extendedsearch-viewspecialpage": "placeholder to describe that view of special page \"{{int:specialextendedsearch}}\" is restricted for the current user"
+	"action-extendedsearch-viewspecialpage": "placeholder to describe that view of special page \"{{int:specialextendedsearch}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearch-viewspecialpage}}"
 }

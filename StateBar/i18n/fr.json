@@ -13,5 +13,6 @@
 	"bs-statebar-viewtoggler": "DÉTAILS",
 	"bs-statebar-viewtoggler-tooltip": "Afficher des informations détaillées",
 	"bs-statebar-switch-description": "Masque la barre d'État sur cette page.",
-	"bs-statebar-ajax-nobodyviews": "Aucune information disponible."
+	"bs-statebar-ajax-nobodyviews": "Aucune information disponible.",
+	"apihelp-bs-statebar-tasks-description": "Fournit des opérations pour l’extension StateBar"
 }
