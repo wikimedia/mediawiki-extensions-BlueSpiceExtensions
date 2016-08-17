@@ -1,0 +1,107 @@
+{
+	"name": "Flexiskin",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/FlexiSkin",
+	"author": [
+		"Tobias Weichart"
+	],
+	"descriptionmsg": "bs-flexiskin-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"Flexiskin": {
+			"className": "Flexiskin",
+			"extPath": "/BlueSpiceExtensions/Flexiskin"
+		}
+	},
+	"SpecialPages": {
+		"FlexiSkin": "SpecialFlexiskin"
+	},
+	"APIModules": {
+		"bs-flexiskin-tasks": "BSApiFlexiskinTasks",
+		"bs-flexiskin-store": "BSApiFlexiskinStore",
+		"bs-flexiskin-upload": "BSApiFlexiskinUpload",
+		"bs-flexiskin-upload-store": "BSApiFlexiskinUploadStore"
+	},
+	"MessagesDirs": {
+		"Flexiskin": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"FlexiskinAlias": "includes/specials/SpecialFlexiskin.alias.php"
+	},
+	"AutoloadClasses": {
+		"Flexiskin": "Flexiskin.class.php",
+		"FlexiskinFormatter": "includes/FlexiskinFormatter.class.php",
+		"SpecialFlexiskin": "includes/specials/SpecialFlexiskin.php",
+		"ResourceLoaderFlexiskinModule": "includes/resourceloader/ResourceLoaderFlexiskinModule.php",
+		"ResourceLoaderFlexiskinPreviewModule": "includes/resourceloader/ResourceLoaderFlexiskinPreviewModule.php",
+		"BSApiFlexiskinTasks": "includes/api/BSApiFlexiskinTasks.php",
+		"BSApiFlexiskinStore": "includes/api/BSApiFlexiskinStore.php",
+		"BSApiFlexiskinUpload": "includes/api/BSApiFlexiskinUpload.php",
+		"BSApiFlexiskinUploadStore": "includes/api/BSApiFlexiskinUploadStore.php"
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/Flexiskin/resources"
+	},
+	"ResourceModules": {
+		"ext.bluespice.flexiskin.skin.preview": {
+			"class": "ResourceLoaderFlexiskinPreviewModule"
+		},
+		"ext.bluespice.flexiskin": {
+			"scripts": [
+				"bluespice.flexiskin.js"
+			],
+			"styles": [
+				"bluespice.flexiskin.css"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			],
+			"messages": [
+				"bs-flexiskin-labelname",
+				"bs-flexiskin-labeldesc",
+				"bs-flexiskin-headergeneral",
+				"bs-flexiskin-dialogclose",
+				"bs-flexiskin-dialogreset",
+				"bs-flexiskin-confirmdeleteskin",
+				"bs-flexiskin-titleaddskin",
+				"bs-flexiskin-labelskins",
+				"bs-flexiskin-defaultname",
+				"bs-flexiskin-defaultdesc",
+				"bs-flexiskin-headeractive",
+				"bs-flexiskin-labelbgcolor",
+				"bs-flexiskin-headerheader",
+				"bs-flexiskin-labellogoupload",
+				"bs-flexiskin-labelbackgroundupload",
+				"bs-flexiskin-labelrepeatbackground",
+				"bs-flexiskin-no-repeat",
+				"bs-flexiskin-repeat-x",
+				"bs-flexiskin-repeat-y",
+				"bs-flexiskin-repeat",
+				"bs-flexiskin-labelcustombgcolor",
+				"bs-flexiskin-labelnavigation",
+				"bs-flexiskin-headerposition",
+				"bs-flexiskin-labelcontent",
+				"bs-flexiskin-left",
+				"bs-flexiskin-right",
+				"bs-flexiskin-center",
+				"bs-flexiskin-labelwidth",
+				"bs-flexiskin-labelfullwidth",
+				"bs-flexiskin-error-nameempty",
+				"bs-flexiskin-error-templatenotexists",
+				"bs-flexiskin-usebackground",
+				"bs-flexiskin-labelcurrentbackground"
+			]
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": "Flexiskin::onBeforePageDisplay",
+		"ResourceLoaderRegisterModules": "Flexiskin::onResourceLoaderRegisterModules"
+	},
+	"config": {
+		"EditPageFrameOptions": "SAMEORIGIN"
+	},
+	"manifest_version": 1
+}

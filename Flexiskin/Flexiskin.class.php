@@ -37,37 +37,19 @@
  * @subpackage Flexiskin
  */
 class Flexiskin extends BsExtensionMW {
-
 	/**
-	 * Contructor of the Flexiskin class
-	 */
-	public function __construct() {
+	 * Initialization of Flexiskin extension
+         *          */
+    public function __construct() {
 		wfProfileIn( 'BS::' . __METHOD__ );
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'Flexiskin',
-			EXTINFO::DESCRIPTION => 'bs-flexiskin-desc',
-			EXTINFO::AUTHOR => 'Tobias Weichart',
-			EXTINFO::VERSION => 'default',
-			EXTINFO::STATUS => 'default',
-			EXTINFO::PACKAGE => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/FlexiSkin'
-		);
-		$this->mExtensionKey = 'MW::Flexiskin';
-
 		WikiAdmin::registerModule( 'Flexiskin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_flexiskin_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-flexiskin-label'
 		) );
-
-		wfProfileOut( 'BS::' . __METHOD__ );
+                wfProfileOut( 'BS::' . __METHOD__ );
 	}
-
-	/**
-	 * Initialization of Flexiskin extension
-	 */
+        
 	public function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
 
