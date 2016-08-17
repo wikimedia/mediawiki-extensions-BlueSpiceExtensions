@@ -37,38 +37,6 @@
  * @subpackage Dashboards
  */
 class Dashboards extends BsExtensionMW {
-
-	/**
-	 * Contructor of the Dashboards class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'Dashboards',
-			EXTINFO::DESCRIPTION => 'bs-dashboards-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/DashBoards',
-			EXTINFO::DEPS        => array(
-				'bluespice'    => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::Dashboards';
-
-		WikiAdmin::registerModuleClass( 'SpecialAdminDashboard', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_dashboard_v1.png',
-			'level' => 'wikiadmin',
-			'message' => 'bs-specialadmindashboard-label'
-		) );
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Initialization of Dashboards extension
 	 */
