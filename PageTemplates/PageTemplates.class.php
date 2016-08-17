@@ -38,28 +38,8 @@
  */
 class PageTemplates extends BsExtensionMW {
 
-	/**
-	 * Constructor of PageTemplates class
-	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'PageTemplates',
-			EXTINFO::DESCRIPTION => 'bs-pagetemplates-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/PageTemplates',
-			EXTINFO::DEPS        => array(
-										'bluespice'   => '2.22.0'
-										)
-		);
-		$this->mExtensionKey = 'MW::PageTemplates';
-
 		WikiAdmin::registerModuleClass( 'PageTemplatesAdmin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_templates_v1.png',
 			'level' => 'wikiadmin',
@@ -67,7 +47,6 @@ class PageTemplates extends BsExtensionMW {
 		) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
-
 	/**
 	 * Initialization of PageTemplates extension
 	 */
@@ -397,5 +376,4 @@ class PageTemplates extends BsExtensionMW {
 
 		return true;
 	}
-
 }
