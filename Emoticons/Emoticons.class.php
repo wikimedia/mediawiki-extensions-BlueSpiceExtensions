@@ -45,30 +45,7 @@
  * @subpackage Emoticons
  */
 class Emoticons extends BsExtensionMW {
-
-	/**
-	 * Contructor of the Authors class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::PARSERHOOK;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'Emoticons',
-			EXTINFO::DESCRIPTION => 'bs-emoticons-desc',
-			EXTINFO::AUTHOR      => 'Alex Wollangk, Marc Reymann, Sebastian Ulbricht, Mathias Scheer, Robert Vogel, Patric Wirth',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/Emoticons',
-			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
-		);
-		$this->mExtensionKey = 'MW::Emoticons';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
+        /**
 	 * Initialization of Authors extension
 	 */
 	protected function initExt() {
