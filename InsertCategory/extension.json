@@ -1,0 +1,52 @@
+{
+	"name": "InsertCategory",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/InsertCategory",
+	"author": [
+		"Markus Glaser",
+		"Sebastian Ulbricht",
+		"Stefan Widmann"
+	],
+	"descriptionmsg": "bs-insertcategory-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"InsertCategory": {
+			"className": "InsertCategory",
+			"extPath": "/BlueSpiceExtensions/InsertCategory"
+		}
+	},
+	"MessagesDirs": {
+		"InsertCategory": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"InsertCategory": "InsertCategory.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.insertcategory": {
+			"scripts": "bluespice.insertCategory.js",
+			"messages": [
+				"bs-insertcategory-title",
+				"bs-insertcategory-cat-label",
+				"bs-insertcategory-success",
+				"bs-insertcategory-failure",
+				"bs-insertcategory-hint",
+				"bs-insertcategory-panel-title"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		},
+		"ext.bluespice.insertcategory.styles": {
+			"styles": "bluespice.insertCategory.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/InsertCategory/resources"
+	},
+	"manifest_version": 1
+}
