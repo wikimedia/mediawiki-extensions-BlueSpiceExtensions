@@ -1,0 +1,42 @@
+{
+	"name": "Preferences",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/Preferences",
+	"author": [
+		"Sebastian Ulbricht",
+		"Stephan Muggli"
+	],
+	"descriptionmsg": "bs-preferences-desc",
+	"license-name": "GPL-2.0+",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"Preferences": {
+			"className": "BsPreferences",
+			"extPath": "/BlueSpiceExtensions/Preferences"
+		}
+	},
+	"MessagesDirs": {
+		"Preferences": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"BsPreferences": "Preferences.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.preferences": {
+			"scripts": "bluespice.preferences.js",
+			"dependencies": [
+				"jquery.cookie"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/Preferences/resources"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "BsPreferences::onBeforePageDisplay"
+	},
+	"manifest_version": 1
+}

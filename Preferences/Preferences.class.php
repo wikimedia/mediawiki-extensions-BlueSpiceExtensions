@@ -38,36 +38,24 @@
  * @subpackage Preferences
  */
 class BsPreferences extends BsExtensionMW {
-
-	/**
-	 * contructor of the BsPreferences class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
+public function __construct() {	
+    wfProfileIn( 'BS::'.__METHOD__ );
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'Preferences',
-			EXTINFO::DESCRIPTION => 'bs-preferences-desc',
-			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/Preferences',
-			EXTINFO::DEPS => array('bluespice' => '2.22.0')
-		);
-
-		WikiAdmin::registerModule( 'Preferences', array(
+    
+     WikiAdmin::registerModule( 'Preferences', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-preferences-label'
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
+	
+    
+}
+    
+    /**
 	 * returns the formular for Preferences
 	 * @return string the formular string
 	 */
