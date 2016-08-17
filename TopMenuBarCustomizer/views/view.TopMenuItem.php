@@ -202,6 +202,13 @@ class ViewTopMenuItem extends ViewBaseElement {
 		$sOut = '';
 		$sOut .= '<li>';
 		$sOut .= "<a href='$this->sLink' $sAnchorID $sClasses $sLinkTarget>";
+		$sOut .= Html::element(
+			'i',
+			array(
+				'class' => 'icon-'.Sanitizer::escapeId( $this->sAnchorID )
+			),
+			''
+		);
 		$sOut .= $sText;
 		$sOut .= "</a>";
 		if( !empty($this->aChildren) ) {
