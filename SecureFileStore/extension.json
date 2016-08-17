@@ -1,0 +1,27 @@
+{
+	"name": "SecureFileStore",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/SecureFileStore",
+	"author": [
+		"Markus Glaser",
+		"Marc Reymann"
+	],
+	"descriptionmsg": "bs-securefilestore-desc",
+	"license-name": "GPL-2.0+",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"SecureFileStore": {
+			"className": "SecureFileStore",
+			"extPath": "/BlueSpiceExtensions/SecureFileStore"
+		}
+	},
+	"MessagesDirs": {
+		"SecureFileStore": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"SecureFileStore": "SecureFileStore.class.php"
+	},
+	"manifest_version": 1
+}

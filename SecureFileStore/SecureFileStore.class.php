@@ -46,31 +46,6 @@ class SecureFileStore extends BsExtensionMW {
 	const PATHTOFILEDISPATCHER = 'index.php?action=ajax&amp;title=-&amp;rs=SecureFileStore::getFile';
 
 	/**
-	 * Constructor of SecureFileStore class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'SecureFileStore',
-			EXTINFO::DESCRIPTION => 'bs-securefilestore-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Marc Reymann',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/SecureFileStore',
-			EXTINFO::DEPS        => array(
-							'bluespice'   => '2.22.0'
-						)
-		);
-		$this->mExtensionKey = 'MW::SecureFileStore';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
 	 * Initialization of ExtendedEditBar extension
 	 */
 	protected function initExt() {
