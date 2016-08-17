@@ -1,0 +1,29 @@
+{
+	"name": "NamespaceCss",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/NamespaceCss",
+	"author": [
+		"Robert Vogel",
+		"Tobias Weichart",
+		"Patric Wirth"
+	],
+	"descriptionmsg": "bs-namespacecss-desc",
+	"license-name": "GPL-2.0+",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"NamespaceCss": {
+			"className": "NamespaceCss",
+			"extPath": "/BlueSpiceExtensions/NamespaceCss"
+		}
+	},
+
+	"MessagesDirs": {
+		"NamespaceCss": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"NamespaceCss": "NamespaceCss.class.php"
+	},
+	"manifest_version": 1
+}
