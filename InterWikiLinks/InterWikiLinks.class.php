@@ -43,20 +43,6 @@ class InterWikiLinks extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'InterWikiLinks',
-			EXTINFO::DESCRIPTION => 'bs-interwikilinks-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/Interwikilinks',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-
 		WikiAdmin::registerModule('InterWikiLinks', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_interwikilinks_v1.png',
 			'level' => 'wikiadmin',
