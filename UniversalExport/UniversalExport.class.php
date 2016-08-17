@@ -54,30 +54,6 @@ class UniversalExport extends BsExtensionMW {
 		'use-serverside-caching'  => false,
 		'pdf-attachment-formats'  => array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'odt', 'ods', 'odp', 'odg', 'svg' ) //Not yet supported
 	);
-
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'UniversalExport',
-			EXTINFO::DESCRIPTION => 'bs-universalexport-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/UniversalExport',
-			EXTINFO::DEPS        => array(
-				'bluespice' => '2.22.0',
-				'StateBar'  => '2.22.0',
-				'WidgetBar' => '2.22.0',
-			)
-		);
-		$this->mExtensionKey = 'MW::UniversalExport';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 *  Initialization of UniversalExport extension
 	 */
