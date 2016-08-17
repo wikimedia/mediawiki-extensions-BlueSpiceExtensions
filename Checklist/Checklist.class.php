@@ -43,27 +43,6 @@ class Checklist extends BsExtensionMW {
 	public $iCheckboxCounter = 0;
 	public $bCheckboxFound = false;
 
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME => 'Checklist',
-			EXTINFO::DESCRIPTION => 'bs-checklist-desc',
-			EXTINFO::AUTHOR => 'Markus Glaser',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/CheckList',
-			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::Checklist';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'ParserFirstCallInit' );
