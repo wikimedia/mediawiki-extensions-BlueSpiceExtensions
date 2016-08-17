@@ -1,0 +1,114 @@
+{
+	"name": "InsertFile",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/InsertFile",
+	"author": [
+		"Markus Glaser",
+		"Sebastian Ulbricht",
+		"Robert Vogel"
+	],
+	"descriptionmsg": "bs-insertfile-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"InsertFile": {
+			"className": "InsertFile",
+			"extPath": "/BlueSpiceExtensions/InsertFile"
+		}
+	},
+	"APIModules": {
+		"bs-insertfile-license-store": "BSApiInsertFileLicenseStore"
+	},
+	"MessagesDirs": {
+		"InsertFile": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"InsertFile": "InsertFile.class.php",
+		"JsonLicenses": "includes/JsonLicenses.php",
+		"BSApiInsertFileLicenseStore": "includes/api/BSApiInsertFileLicenseStore.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.insertFile": {
+			"scripts": "bluespice.insertFile.js",
+			"messages": [
+				"bs-insertfile-button-image-title",
+				"bs-insertfile-button-file-title",
+				"bs-insertfile-uploadsdisabled",
+				"bs-insertfile-nomatch",
+				"bs-insertfile-labelsort",
+				"bs-insertfile-labelfilter",
+				"bs-insertfile-filename",
+				"bs-insertfile-filesize",
+				"bs-insertfile-lastmodified",
+				"bs-insertfile-labelupload",
+				"bs-insertfile-details-title",
+				"bs-insertfile-labeldimensions",
+				"bs-insertfile-labelalt",
+				"bs-insertfile-labelalign",
+				"bs-insertfile-labellink",
+				"bs-insertfile-alignnone",
+				"bs-insertfile-alignleft",
+				"bs-insertfile-aligncenter",
+				"bs-insertfile-alignright",
+				"bs-insertfile-labeltype",
+				"bs-insertfile-typenone",
+				"bs-insertfile-typethumb",
+				"bs-insertfile-typeframe",
+				"bs-insertfile-typeborder",
+				"bs-insertfile-uploadbuttontext",
+				"bs-insertfile-uploadimageemptytext",
+				"bs-insertfile-uploadimagefieldlabel",
+				"bs-insertfile-uploadfileemptytext",
+				"bs-insertfile-uploadfilefieldlabel",
+				"bs-insertfile-uploaddestfilelabel",
+				"bs-insertfile-uploaddescfilelabel",
+				"bs-insertfile-uploadwatchthislabel",
+				"bs-insertfile-uploadignorewarningslabel",
+				"bs-insertfile-uploadsubmitvalue",
+				"bs-insertfile-errorloading",
+				"bs-insertfile-warning",
+				"bs-insertfile-warningupload",
+				"bs-insertfile-allowedfiletypesare",
+				"bs-insertfile-success",
+				"bs-insertfile-error",
+				"bs-insertfile-errornofileextensiononupload",
+				"bs-insertfile-errornofileextensionondestination",
+				"bs-insertfile-errorWrongFileExtensionOnUpload",
+				"bs-insertfile-errorWrongImageTypeOnUpload",
+				"bs-insertfile-errorWrongFileTypeOnUpload",
+				"bs-insertfile-errorWrongFileExtensionOnDestination",
+				"bs-insertfile-errorwrongimagetypeondestination",
+				"bs-insertfile-errorwrongfiletypeondestination",
+				"bs-insertfile-uploadcomplete",
+				"bs-insertfile-titlefile",
+				"bs-insertfile-titleimage",
+				"bs-insertfile-tipkeepratio",
+				"bs-insertfile-pagingtoolbarposition",
+				"bs-insertfile-select-a-link",
+				"bs-insertfile-license",
+				"bs-insertfile-categories",
+				"bs-insertfile-upload-waitmessage",
+				"bs-insertfile-linktext",
+				"bs-insertfile-no-link",
+				"bs-insertfile-error-no-imagelink",
+				"bs-insertfile-error-no-medialink",
+				"windows-nonascii-filename",
+				"file-exists-duplicate"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		},
+		"ext.bluespice.insertFile.styles": {
+			"styles": "bluespice.insertFile.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/InsertFile/resources"
+	},
+	"manifest_version": 1
+}

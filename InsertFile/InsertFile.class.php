@@ -39,33 +39,6 @@
  * @subpackage InsertFile
  */
 class InsertFile extends BsExtensionMW {
-
-	/**
-	 * Constructor of InsertFile
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::' . __METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'InsertFile',
-			EXTINFO::DESCRIPTION => 'bs-insertfile-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/InsertFile',
-			EXTINFO::DEPS        => array(
-				'bluespice' => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::InsertFile';
-
-		wfProfileOut( 'BS::' . __METHOD__ );
-	}
-
 	/**
 	 * Initialise the InsertFile extension
 	 */
