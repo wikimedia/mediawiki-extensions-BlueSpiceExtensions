@@ -37,28 +37,6 @@
  * Separate multiple groups by commas.
  */
 class PageAccess extends BsExtensionMW {
-
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME => 'PageAccess',
-			EXTINFO::DESCRIPTION => 'bs-pageaccess-desc',
-			EXTINFO::AUTHOR => 'Marc Reymann',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/PageAccess',
-			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::PageAccess';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'ArticleSave' );

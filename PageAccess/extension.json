@@ -1,0 +1,40 @@
+{
+	"name": "PageAccess",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/PageAccess",
+	"author": "Marc Reymann",
+	"descriptionmsg": "bs-pageaccess-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"PageAccess": {
+			"className": "PageAccess",
+			"extPath": "/BlueSpiceExtensions/PageAccess"
+		}
+	},
+	"SpecialPages": {
+		"PageAccess": "SpecialPageAccess"
+	},
+	"LogTypes": [
+		"bs-pageaccess"
+	],
+	"FilterLogTypes": {
+		"bs-pageaccess": true
+	},
+	"LogActionsHandlers": {
+		"bs-pageaccess/*": "LogFormatter"
+	},
+	"MessagesDirs": {
+		"PageAccess": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"PageAccessAlias": "includes/specials/SpecialPageAccess.alias.php"
+	},
+	"AutoloadClasses": {
+		"PageAccess": "PageAccess.class.php",
+		"SpecialPageAccess": "includes/specials/SpecialPageAccess.class.php"
+	},
+	"manifest_version": 1
+}
