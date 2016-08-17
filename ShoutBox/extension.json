@@ -1,0 +1,78 @@
+{
+	"name": "ShoutBox",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/Shoutbox",
+	"author": [
+		"Karl Waldmannstetter",
+		"Markus Glaser"
+	],
+	"descriptionmsg": "bs-shoutbox-desc",
+	"license-name": "GPL-2.0+",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"ShoutBox": {
+			"className": "ShoutBox",
+			"extPath": "/BlueSpiceExtensions/ShoutBox"
+		}
+	},
+	"DefaultUserOptions": {
+		"echo-subscriptions-web-bs-shoutbox-mention-cat": true
+	},
+	"APIModules": {
+		"bs-shoutbox-tasks": "BSApiTasksShoutBox"
+	},
+	"MessagesDirs": {
+		"ShoutBox": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"ShoutBoxMagic": "languages/ShoutBox.i18n.magic.php"
+	},
+	"AutoloadClasses": {
+		"ShoutBox": "ShoutBox.class.php",
+		"BSApiTasksShoutBox": "includes/api/BSApiTasksShoutBox.php",
+		"ViewShoutBox": "views/view.ShoutBox.php",
+		"ViewShoutBoxMessageList": "views/view.ShoutBoxMessageList.php",
+		"ViewShoutBoxMessage": "views/view.ShoutBoxMessage.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.shoutbox": {
+			"scripts": "bluespice.shoutBox.js",
+			"dependencies": "ext.bluespice",
+			"messages": [
+				"bs-shoutbox-confirm-text",
+				"bs-shoutbox-confirm-title",
+				"bs-shoutbox-entermessage",
+				"bs-shoutbox-too-early",
+				"bs-shoutbox-charactersleft",
+				"bs-shoutbox-n-shouts"
+			],
+			"position": "bottom"
+		},
+		"ext.bluespice.shoutbox.mention": {
+			"scripts": [
+				"jquery.textcomplete/jquery.textcomplete.min.js",
+				"bluespice.shoutBox.mention.js"
+			],
+			"styles": "jquery.textcomplete/jquery.textcomplete.css",
+			"dependencies": [
+				"ext.bluespice",
+				"ext.bluespice.shoutbox"
+			],
+			"position": "bottom"
+		},
+		"ext.bluespice.shoutbox.styles": {
+			"styles": "bluespice.shoutBox.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/ShoutBox/resources"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "ShoutBox::getSchemaUpdates"
+	},
+	"manifest_version": 1
+}
