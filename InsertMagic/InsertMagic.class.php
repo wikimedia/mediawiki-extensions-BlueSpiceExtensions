@@ -102,30 +102,6 @@ class InsertMagic extends BsExtensionMW {
 	);
 
 	/**
-	* Contructor of the InsertMagic class
-	*/
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'InsertMagic',
-			EXTINFO::DESCRIPTION => 'bs-insertmagic-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/InsertMagic',
-			EXTINFO::DEPS        => array(
-				'bluespice'    => '2.22.0',
-				'VisualEditor' => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::InsertMagic';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
 	 * Initialization of InsertMagic extension
 	 */
 	public function  initExt() {

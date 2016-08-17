@@ -1,0 +1,61 @@
+{
+	"name": "InsertMagic",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/InsertMagic",
+	"author": [
+		"Robert Vogel",
+		"Stephan Muggli"
+	],
+	"descriptionmsg": "bs-insertmagic-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"InsertMagic": {
+			"className": "InsertMagic",
+			"extPath": "/BlueSpiceExtensions/InsertMagic"
+		}
+	},
+	"APIModules": {
+		"bs-insertmagic-data-store": "BSApiInsertMagicDataStore"
+	},
+	"MessagesDirs": {
+		"InsertMagic": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"InsertMagic": "InsertMagic.class.php",
+		"BSApiInsertMagicDataStore": "includes/api/BSApiInsertMagicDataStore.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.insertMagic": {
+			"scripts": "bluespice.insertMagic.js",
+			"messages": [
+				"bs-insertmagic-dlg-title",
+				"bs-insertmagic-type-tags",
+				"bs-insertmagic-type-variables",
+				"bs-insertmagic-type-switches",
+				"bs-insertmagic-type-redirect",
+				"bs-insertmagic-btn-preview",
+				"bs-insertmagic-label-first",
+				"bs-insertmagic-label-second",
+				"bs-insertmagic-label-third",
+				"bs-insertmagic-label-desc",
+				"bs-insertmagic-label-examples",
+				"bs-insertmagic-label-see-also"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		},
+		"ext.bluespice.insertMagic.styles": {
+			"styles": "bluespice.insertMagic.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/InsertMagic/resources"
+	},
+	"manifest_version": 1
+}
