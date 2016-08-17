@@ -40,31 +40,6 @@
  * @subpackage SmartList
  */
 class SmartList extends BsExtensionMW {
-
-	/**
-	 * Constructor of SmartList class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::' . __METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'SmartList',
-			EXTINFO::DESCRIPTION => 'bs-smartlist-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Robert Vogel, Patric Wirth, Stephan Muggli, Leonid Verhovskij',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/SmartList',
-			EXTINFO::DEPS => array(
-				'bluespice' => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::SmartList';
-		wfProfileOut( 'BS::' . __METHOD__ );
-	}
-
 	/**
 	 * Initialization of ShoutBox extension
 	 */

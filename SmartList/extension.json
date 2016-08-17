@@ -1,0 +1,34 @@
+{
+	"name": "SmartList",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/SmartList",
+	"author": [
+		"Markus Glaser",
+		"Robert Vogel",
+		"Patric Wirth",
+		"Stephan Muggli",
+		"Leonid Verhovskij"
+	],
+	"descriptionmsg": "bs-smartlist-desc",
+	"license-name": "GPL-2.0+",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"SmartList": {
+			"className": "SmartList",
+			"extPath": "/BlueSpiceExtensions/SmartList"
+		}
+	},
+	"APIModules": {
+		"bs-smartlist-tasks": "BSApiTasksSmartList"
+	},
+	"MessagesDirs": {
+		"SmartList": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"SmartList": "SmartList.class.php",
+		"BSApiTasksSmartList": "includes/api/BSApiTasksSmartList.php"
+	},
+	"manifest_version": 1
+}
