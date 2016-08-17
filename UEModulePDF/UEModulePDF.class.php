@@ -36,33 +36,6 @@
  * @subpackage UEModulePDF
  */
 class UEModulePDF extends BsExtensionMW {
-
-	/**
-	 * Contructor of the UEModulePDF class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'UEModulePDF',
-			EXTINFO::DESCRIPTION => 'bs-uemodulepdf-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/UEModulePDF',
-			EXTINFO::DEPS        => array(
-				'bluespice'       => '2.22.0',
-				'UniversalExport' => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::UEModulePDF';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Initialization of UEModulePDF extension
 	 */
