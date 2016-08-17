@@ -38,29 +38,6 @@
 class RSSFeeder extends BsExtensionMW {
 
 	/**
-	 * contructor of the RSSFeeder class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'RSSFeeder',
-			EXTINFO::DESCRIPTION => 'bs-rssfeeder-desc',
-			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/RSSFeeder',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::RSSFeeder';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
 	 * initialise the extension
 	 */
 	protected function initExt() {
