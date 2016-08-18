@@ -1,0 +1,44 @@
+{
+	"name": "WhoIsOnline",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/WhoIsOnline",
+	"author": "Markus Glaser",
+	"descriptionmsg": "bs-whoisonline-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"WhoIsOnline": {
+			"className": "WhoIsOnline",
+			"extPath": "/BlueSpiceExtensions/WhoIsOnline"
+		}
+	},
+
+	"MessagesDirs": {
+		"WhoIsOnline": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"WhoIsOnlineMagic": "languages/WhoIsOnline.i18n.magic.php"
+	},
+	"AutoloadClasses": {
+		"WhoIsOnline": "WhoIsOnline.class.php",
+		"ViewWhoIsOnlineTag": "views/view.WhoIsOnlineTag.php",
+		"ViewWhoIsOnlineItemWidget": "views/view.WhoIsOnlineItemWidget.php",
+		"ViewWhoIsOnlineWidget": "views/view.WhoIsOnlineWidget.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.whoisonline": {
+			"scripts": "bluespice.whoIsOnline.js",
+			"position": "bottom"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/WhoIsOnline/resources"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "WhoIsOnline::getSchemaUpdates"
+	},
+	"manifest_version": 1
+}

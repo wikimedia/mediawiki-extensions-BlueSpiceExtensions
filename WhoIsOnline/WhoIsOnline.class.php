@@ -40,31 +40,7 @@ class WhoIsOnline extends BsExtensionMW {
 
 	private $aWhoIsOnlineData = array();
 
-	/**
-	 * Constructor of MailChanges class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::PARSERHOOK;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'WhoIsOnline',
-			EXTINFO::DESCRIPTION => 'bs-whoisonline-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/WhoIsOnline',
-			EXTINFO::DEPS        => array(
-				'bluespice' => '2.22.0'
-			)
-		);
 
-		$this->mExtensionKey = 'MW::WhoIsOnline';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
 
 	/**
 	 * Initialization of ShoutBox extension
