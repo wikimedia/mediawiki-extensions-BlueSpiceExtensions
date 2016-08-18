@@ -1,0 +1,35 @@
+{
+	"name": "WikiAdmin",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/WikiAdmin",
+	"author": [
+		"Markus Glaser",
+		"Sebastian Ulbricht",
+		"Mathias Scheer"
+	],
+	"descriptionmsg": "bs-wikiadmin-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"WikiAdmin": {
+			"className": "WikiAdmin",
+			"extPath": "/BlueSpiceExtensions/WikiAdmin"
+		}
+	},
+	"SpecialPages": {
+		"WikiAdmin": "SpecialWikiAdmin"
+	},
+	"MessagesDirs": {
+		"WikiAdmin": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"WikiAdminAlias": "includes/specials/SpecialWikiAdmin.alias.php"
+	},
+	"AutoloadClasses": {
+		"WikiAdmin": "WikiAdmin.class.php",
+		"SpecialWikiAdmin": "includes/specials/SpecialWikiAdmin.class.php"
+	},
+	"manifest_version": 1
+}

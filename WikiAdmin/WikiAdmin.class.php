@@ -152,26 +152,6 @@ class WikiAdmin extends BsExtensionMW {
 		}
 	}
 
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'WikiAdmin',
-			EXTINFO::DESCRIPTION => 'bs-wikiadmin-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Mathias Scheer',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/WikiAdmin',
-			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
-		);
-		$this->mExtensionKey = 'MW::WikiAdmin';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
