@@ -1,0 +1,74 @@
+{
+	"name": "VisualEditor",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/VisualEditor",
+	"author": [
+		"Markus Glaser",
+		"Sebastian Ulbricht"
+	],
+	"descriptionmsg": "bs-visualeditor-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"VisualEditor": {
+			"className": "VisualEditor",
+			"extPath": "/BlueSpiceExtensions/VisualEditor"
+		}
+	},
+	"APIModules": {
+		"bs-visualeditor-tasks": "ApiVisualEditorTasks"
+	},
+	"MessagesDirs": {
+		"VisualEditor": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"VisualEditorMagic": "languages/VisualEditor.i18n.magic.php"
+	},
+	"AutoloadClasses": {
+		"VisualEditor": "VisualEditor.class.php",
+		"ApiVisualEditorTasks": "includes/api/BSApiVisualEditorTasks.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.visualEditor.tinymce": {
+			"scripts": [
+				"tinymce/tinymce.jquery.js",
+				"tinymce.startup.js"
+			],
+			"messages": [
+				"bs-visualeditor-bsactions-wiki",
+				"bs-visualeditor-bsactions-switchgui",
+				"bs-visualeditor-bsactions-linebreak",
+				"bs-visualeditor-bsactions-signature",
+				"bs-visualeditor-bsactions-save",
+				"bs-visualeditor-bsactions-headings",
+				"bs-visualeditor-bsactions-paragraph",
+				"bs-visualeditor-bsactions-heading2",
+				"bs-visualeditor-bsactions-heading3",
+				"bs-visualeditor-bsactions-heading4",
+				"bs-visualeditor-bsactions-heading5",
+				"bs-visualeditor-bsactions-heading6"
+			]
+		},
+		"ext.bluespice.visualEditor": {
+			"scripts": [
+				"bluespice.visualEditor.js"
+			],
+			"dependencies": [
+				"ext.bluespice.visualEditor.tinymce"
+			]
+		},
+		"ext.bluespice.visualEditor.styles": {
+			"styles": [
+				"bluespice.visualEditor.css"
+			],
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/VisualEditor/resources"
+	},
+	"manifest_version": 1
+}
