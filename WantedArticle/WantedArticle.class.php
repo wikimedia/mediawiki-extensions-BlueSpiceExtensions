@@ -41,29 +41,6 @@
 class WantedArticle extends BsExtensionMW {
 
 	/**
-	 * Contructor of the WantedArticle class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::' . __METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'WantedArticle',
-			EXTINFO::DESCRIPTION => 'bs-wantedarticle-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/WantedArticle',
-			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
-		);
-		$this->mExtensionKey = 'MW::WantedArticle';
-		wfProfileOut( 'BS::' . __METHOD__ );
-	}
-
-	/**
 	 * Initialization of WantedArticle extension
 	 */
 	protected function initExt() {
