@@ -32,5 +32,17 @@
 	"bs-usermanager-confirmdeleteuser": "Text for are you sure, you want to delete {{PLURAL:$1|this user|these $1 users}}?\\n $1 is the number of users which will be deleted - use for PLURAL distinction.",
 	"bs-usermanager-groups-more": "Text of a link that expands the list of groups\n{{Identical|More}}",
 	"bs-usermanager-no-self-desysop": "Text for the error message if a user tries to desysop themselves.",
-	"apihelp-bs-usermanager-tasks-description": "Describes the API endpoint that handles user manager tasks"
+	"apihelp-bs-usermanager-tasks-description": "Describes the API endpoint that handles user manager tasks",
+	"bs-usermanager-no-self-block": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to block yourself",
+	"bs-usermanager-block-error": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user could not be disabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
+	"bs-usermanager-unblock-error": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user could not be enabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
+	"bs-usermanager-headerenabled": "Column headline and label for enabled status",
+	"bs-usermanager-log-user-disabled": "Log text when user was disabled via UserManager.\n\n* $1 is the username - use for GENDER distinction",
+	"bs-usermanager-user-disabled": "Success message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user was disabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
+	"bs-usermanager-user-enabled": "Success message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user was enabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
+	"bs-usermanager-endisable": "Action button label for enable/disable action",
+	"bs-usermanager-confirmdisableuser": "Text in confirmation dialoge for disabling user.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
+	"bs-usermanager-confirmenableuser": "Text in confirmation dialoge for enabling user.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
+	"bs-usermanager-titledisableuser": "Window title for disable user",
+	"bs-usermanager-titleenableuser": "Window title for enable user"
 }

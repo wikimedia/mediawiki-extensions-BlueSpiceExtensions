@@ -56,7 +56,13 @@ Ext.define( 'BS.UserManager.dialog.User', {
 			labelAlign: 'right',
 			name: 'realname'
 		});
-
+		this.tfEnabled = Ext.create( 'Ext.form.Checkbox', {
+			fieldLabel: mw.message('bs-usermanager-headerenabled').plain(),
+			labelWidth: 130,
+			labelAlign: 'right',
+			name: 'enabled',
+			checked: true
+		});
 		this.cbGroups = Ext.create( 'Ext.ux.form.MultiSelect', {
 			fieldLabel: mw.message('bs-usermanager-headergroups').plain(),
 			labelWidth: 130,
@@ -73,6 +79,7 @@ Ext.define( 'BS.UserManager.dialog.User', {
 			this.tfRePassword,
 			this.tfEmail,
 			this.tfRealName,
+			this.tfEnabled,
 			this.cbGroups
 		];
 
@@ -84,6 +91,7 @@ Ext.define( 'BS.UserManager.dialog.User', {
 		this.tfRePassword.reset();
 		this.tfEmail.reset();
 		this.tfRealName.reset();
+		this.tfEnabled.reset();
 		this.cbGroups.reset();
 
 		this.callParent(arguments);
@@ -94,6 +102,7 @@ Ext.define( 'BS.UserManager.dialog.User', {
 		this.tfUserName.setValue( this.currentData.user_name );
 		this.tfEmail.setValue( this.currentData.user_email );
 		this.tfRealName.setValue( this.currentData.user_real_name );
+		this.tfEnabled.setValue(this.currentData.enabled )
 		this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
 	},
 	getData: function() {
@@ -102,6 +111,7 @@ Ext.define( 'BS.UserManager.dialog.User', {
 		this.selectedData.user_repassword = this.tfRePassword.getValue();
 		this.selectedData.user_email = this.tfEmail.getValue();
 		this.selectedData.user_real_name = this.tfRealName.getValue();
+		this.selectedData.enabled = this.tfEnabled.getValue();
 		this.selectedData.groups = this.cbGroups.getValue();
 
 		return this.selectedData;

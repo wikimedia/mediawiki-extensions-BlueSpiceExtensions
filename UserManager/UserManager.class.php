@@ -71,12 +71,16 @@ class UserManager extends BsExtensionMW {
 	 * @param array $aMetaData
 	 * @return Status
 	 */
-	public static function addUser( $sUserName, $aMetaData = array() ) {
+	public static function addUser( $sUserName, $aMetaData = array(), User $oPerformer = null ) {
 		//This is to overcome username case issues with custom AuthPlugin (i.e. LDAPAuth)
 		//LDAPAuth woud otherwise turn the username to first-char-upper-rest-lower-case
 		//At the end of this method we switch $_SESSION['wsDomain'] back again
 		$tmpDomain = isset( $_SESSION['wsDomain'] ) ? $_SESSION['wsDomain'] : '';
 		$_SESSION['wsDomain'] = 'local';
+
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
 
 		$sUserName = ucfirst( $sUserName );
 		$oUser = User::newFromName( $sUserName, true );
@@ -87,7 +91,7 @@ class UserManager extends BsExtensionMW {
 			return Status::newFatal( 'bs-usermanager-user-exists' );
 		}
 
-		$oStatus = self::editUser( $oUser, $aMetaData, true );
+		$oStatus = self::editUser( $oUser, $aMetaData, true, $oPerformer );
 		if( !$oStatus->isOK() ) {
 			return $oStatus;
 		}
@@ -102,7 +106,8 @@ class UserManager extends BsExtensionMW {
 				$oUserManager,
 				$oUser,
 				$aMetaData,
-				&$oStatus
+				&$oStatus,
+				$oPerformer
 			)
 		);
 
@@ -119,9 +124,12 @@ class UserManager extends BsExtensionMW {
 	 * @param boolean $bCreateIfNotExists
 	 * @return Status
 	 */
-	public static function editUser( User $oUser, $aMetaData = array(), $bCreateIfNotExists = false ) {
+	public static function editUser( User $oUser, $aMetaData = array(), $bCreateIfNotExists = false, User $oPerformer = null ) {
 		$oStatus = Status::newGood();
 		$bNew = false;
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
 
 		if ( $oUser->getId() === 0  ) {
 			if( !$bCreateIfNotExists ) {
@@ -190,6 +198,20 @@ class UserManager extends BsExtensionMW {
 
 		$oUser->saveSettings();
 
+		if( isset( $aMetaData['enabled'] ) ) {
+			if ( $aMetaData['enabled'] === false && !$oUser->isBlocked() ) {
+				$oStatus = self::disableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			} else if ( $aMetaData['enabled'] === true && $oUser->isBlocked() ) {
+				$oStatus = self::enableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			}
+		}
+
 		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
 		Hooks::run(
 			'BSUserManagerAfterEditUser',
@@ -197,11 +219,77 @@ class UserManager extends BsExtensionMW {
 				$oUserManager,
 				$oUser,
 				$aMetaData,
-				&$oStatus
+				&$oStatus,
+				$oPerformer,
 			)
 		);
 
 		return Status::newGood( $oUser );
+	}
+
+	/**
+	 * Disables a user in the system.
+	 * @param User $oUser The user to be disabled.
+	 * @param User $oPerformer The user that requests the disabling
+	 * @param Status $oStatus The status of the operation so far
+	 * @return Status
+	 */
+	public static function disableUser( User $oUser, User $oPerformer, Status &$oStatus = null ) {
+		if ( is_null( $oStatus ) ) {
+			$oStatus = Status::newGood();
+		}
+		if ( $oUser->getId() == $oPerformer->getId() ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( 'bs-usermanager-no-self-block' );
+			return $oStatus;
+		}
+		# Create block object.
+		$block = new Block();
+		$block->setTarget( $oUser );
+		$block->setBlocker( $oPerformer );
+		$block->mReason = wfMessage( 'bs-usermanager-log-user-disabled', $oUser->getName() )->text();
+		$block->mExpiry = 'indefinite';
+		$block->prevents( 'createaccount', false );
+		$block->prevents( 'editownusertalk', false );
+		$block->prevents( 'sendemail', true );
+		$block->isHardblock( true );
+		$block->isAutoblocking( false );
+		$reason = [ 'hookaborted' ];
+		if ( !Hooks::run( 'BlockIp', [ &$block, &$oPerformer, &$reason ] ) ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( $reason );
+			return $oStatus;
+		}
+
+		# Try to insert block. Is there a conflicting block?
+		$bStatus = $block->insert();
+		if ( !$bStatus ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( 'bs-usermanager-block-error', $oUser->getName() );
+		}
+		return $oStatus;
+	}
+
+	/**
+	 * Enables a disabled user
+	 * @param User $oUser The user to be enabled
+	 * @param User $oPerformer The user that requests the enabling
+	 * @param Status $oStatus The status of the operation so far
+	 * @return Status
+	 */
+	public static function enableUser( User $oUser, User $oPerformer, Status &$oStatus = null ) {
+		if ( is_null( $oStatus ) ) {
+			$oStatus = Status::newGood();
+		}
+
+		$block = Block::newFromTarget( $oUser );
+		$block->setBlocker( $oPerformer );
+		$bStatus = $block->delete();
+		if ( !$bStatus ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( 'bs-usermanager-unblock-error', $oUser->getName() );
+		}
+		return $oStatus;
 	}
 
 	/**
@@ -210,7 +298,7 @@ class UserManager extends BsExtensionMW {
 	 * @param User $oUser
 	 * @return Status
 	 */
-	public static function deleteUser( User $oUser ) {
+	public static function deleteUser( User $oUser, User $oPerformer = null ) {
 		if ( $oUser->getId() == 0 ) {
 			return Status::newFatal( 'bs-usermanager-idnotexist' );
 		}
@@ -219,8 +307,10 @@ class UserManager extends BsExtensionMW {
 			return Status::newFatal( 'bs-usermanager-admin-nodelete' );
 		}
 
-		$oLoggedInUser = RequestContext::getMain()->getUser();
-		if ( $oUser->getId() == $oLoggedInUser->getId() ) {
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
+		if ( $oUser->getId() == $oPerformer->getId() ) {
 			return Status::newFatal( 'bs-usermanager-self-nodelete' );
 		}
 
@@ -254,7 +344,8 @@ class UserManager extends BsExtensionMW {
 		Hooks::run( 'BSUserManagerAfterDeleteUser', array(
 			$oUserManager,
 			$oUser,
-			&$oStatus
+			&$oStatus,
+			$oPerformer,
 		));
 
 		return $oStatus;
