@@ -77,30 +77,6 @@ class CSyntaxHighlight extends BsExtensionMW {
 	);
 
 	/**
-	 * Contructor of the CSyntaxHighlight class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'CSyntaxHighlight',
-			EXTINFO::DESCRIPTION => 'bs-csyntaxhighlight-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/CSyntaxHighlight',
-			EXTINFO::DEPS        => array(
-										'bluespice' => '2.22.0'
-										)
-		);
-		$this->mExtensionKey = 'MW::CSyntaxHighlight';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
 	 * Initialization of CSyntaxHighlight extension
 	 */
 	public function  initExt() {

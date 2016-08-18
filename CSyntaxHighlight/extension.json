@@ -1,0 +1,25 @@
+{
+    "name": "CSyntaxHighlight",
+    "version": "2.27.0",
+    "url": "https://help.bluespice.com/index.php/CSyntaxHighlight",
+    "author": [
+            "Robert Vogel"
+    ],
+    "descriptionmsg": "bs-csyntaxhighlight-desc",
+    "type": "bluespice",
+    "bsgExtensions": {
+            "CSyntaxHighlight": {
+                    "className": "CSyntaxHighlight",
+                    "extPath": "/BlueSpiceExtensions/CSyntaxHighlight"
+            }
+    },
+    "MessagesDirs": {
+            "CSyntaxHighlight": [
+                    "i18n"
+            ]
+    },
+    "AutoloadClasses": {
+            "CSyntaxHighlight": "CSyntaxHighlight.class.php"
+    },
+    "manifest_version": 1
+}
