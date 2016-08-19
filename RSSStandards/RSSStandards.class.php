@@ -35,26 +35,6 @@
 // TODO: make RSSStandards methods more generic
 class RSSStandards extends BsExtensionMW {
 
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'RSSStandards',
-			EXTINFO::DESCRIPTION => 'bs-rssstandards-desc',
-			EXTINFO::AUTHOR      => 'Sebastian Ulbricht',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/RSSStandards',
-			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
-		);
-		$this->mExtensionKey = 'MW::RSSStandards';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'BSRSSFeederGetRegisteredFeeds' );
