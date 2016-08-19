@@ -1,0 +1,27 @@
+{
+	"name": "PagesVisited",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/PagesVisited",
+	"author": [
+		"Robert Vogel",
+		"Stephan Muggli"
+	],
+	"descriptionmsg": "bs-pagesvisited-desc",
+	"license-name": "GPL-2.0+",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"PagesVisited": {
+			"className": "PagesVisited",
+			"extPath": "/BlueSpiceExtensions/PagesVisited"
+		}
+	},
+	"MessagesDirs": {
+		"PagesVisited": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"PagesVisited": "PagesVisited.class.php"
+	},
+	"manifest_version": 1
+}

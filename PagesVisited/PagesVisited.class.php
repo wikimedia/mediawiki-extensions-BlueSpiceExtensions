@@ -43,33 +43,7 @@ class PagesVisited extends BsExtensionMW {
 	 * @var array
 	 */
 	private static $prResultListViewCache = array();
-
-	/**
-	 * Contructor of the PagesVisited class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'PagesVisited',
-			EXTINFO::DESCRIPTION => 'bs-pagesvisited-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/PagesVisited',
-			EXTINFO::DEPS        => array(
-										'bluespice'   => '2.22.0',
-										'WhoIsOnline' => '2.22.0'
-										)
-		);
-		$this->mExtensionKey = 'MW::PagesVisited';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
+        /**
 	 * Initialization of PagesVisited extension
 	 */
 	protected function initExt() {
