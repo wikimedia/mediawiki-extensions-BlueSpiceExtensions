@@ -626,7 +626,7 @@ class Apache_Solr_Service
 			}
 
 			//finally, check the response header line
-			if ($response != 'HTTP/1.1 200 OK')
+			if ( strpos($response, 'HTTP/1.1 200') !== 0 )
 			{
 				return false;
 			}
