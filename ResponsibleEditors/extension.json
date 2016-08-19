@@ -1,0 +1,115 @@
+{
+	"name": "ResponsibleEditors",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/ResponsibleEditors",
+	"author": "Robert Vogel",
+	"descriptionmsg": "bs-responsibleeditors-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"ResponsibleEditors": {
+			"className": "ResponsibleEditors",
+			"extPath": "/BlueSpiceExtensions/ResponsibleEditors"
+		}
+	},
+	"SpecialPages": {
+		"ResponsibleEditors": "SpecialResponsibleEditors"
+	},
+	"LogTypes": [
+		"bs-responsible-editors"
+	],
+	"FilterLogTypes": {
+		"bs-responsible-editors": true
+	},
+	"LogActionsHandlers": {
+		"bs-responsible-editors/*": "LogFormatter"
+	},
+	"APIModules": {
+		"bs-responsibleeditorspages-store": "BSApiResponsibleEditorsPagesStore",
+		"bs-responsibleeditorspossibleeditors-store": "BSApiResponsibleEditorsPossibleEditorsStore",
+		"bs-responsibleeditorsactivenamespaces-store": "BSApiResponsibleEditorsActiveNamespacesStore",
+		"bs-responsibleeditors-tasks": "BSApiTasksResponsibleEditors"
+	},
+	"MessagesDirs": {
+		"ResponsibleEditors": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"ResponsibleEditorsAlias": "languages/SpecialResponsibleEditors.alias.php"
+	},
+	"AutoloadClasses": {
+		"ResponsibleEditors": "ResponsibleEditors.class.php",
+		"BsResponsibleEditor": "includes/BsResponsibleEditor.php",
+		"BSApiResponsibleEditorsPagesStore": "includes/api/BSApiResponsibleEditorsPagesStore.php",
+		"BSApiResponsibleEditorsActiveNamespacesStore": "includes/api/BSApiResponsibleEditorsActiveNamespacesStore.php",
+		"BSApiResponsibleEditorsPossibleEditorsStore": "includes/api/BSApiResponsibleEditorsPossibleEditorsStore.php",
+		"BSApiTasksResponsibleEditors": "includes/api/BSApiTasksResponsibleEditors.php",
+		"SpecialResponsibleEditors": "includes/specials/SpecialResponsibleEditors.class.php",
+		"ResponsibleEditorFormatter": "includes/ResponsibleEditorFormatter.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.responsibleEditors.styles": {
+			"styles": "bluespice.responsibleEditors.css",
+			"position": "top",
+			"dependencies": "ext.bluespice"
+		},
+		"ext.bluespice.responsibleEditors": {
+			"scripts": "bluespice.responsibleEditors.js",
+			"messages": [
+				"bs-responsibleeditors-availableeditors",
+				"bs-responsibleeditors-assignededitors",
+				"bs-responsibleeditors-title"
+			],
+			"dependencies": "ext.bluespice"
+		},
+		"ext.bluespice.responsibleEditors.manager": {
+			"scripts": "bluespice.responsibleEditors.manager.js",
+			"dependencies": [
+				"ext.bluespice.responsibleEditors",
+				"ext.bluespice.extjs"
+			],
+			"messages": [
+				"bs-responsibleeditors-cbLabelEditorList",
+				"bs-responsibleeditors-cbEmptyText",
+				"bs-responsibleeditors-loadMaskMessage",
+				"bs-responsibleeditors-columnpage",
+				"bs-responsibleeditors-columnresponsibleeditor",
+				"bs-responsibleeditors-tipEditAssignment",
+				"bs-responsibleeditors-tipRemoveAssignement",
+				"bs-responsibleeditors-btnDisplayModeText",
+				"bs-responsibleeditors-cbnamespacesemptytext",
+				"bs-responsibleeditors-confirmNavigationTitle",
+				"bs-responsibleeditors-confirmNavigationText",
+				"bs-responsibleeditors-columneesponsibleeditornotset",
+				"bs-responsibleeditors-pagestorefilter-assigned",
+				"bs-responsibleeditors-pagestorefilter-notassigned"
+			]
+		},
+		"ext.bluespice.responsibleEditors.bookshelfPlugin": {
+			"scripts": [
+				"bluespice.responsibleEditors.BookshelfPlugin.js"
+			],
+			"dependencies": "ext.bluespice.responsibleEditors",
+			"messages": [
+				"bs-responsibleeditors-titleeditors",
+				"bs-responsibleeditors-cmchangerespeditors"
+			]
+		},
+		"ext.bluespice.responsibleEditors.superList": {
+			"scripts": [
+				"bluespice.responsibleEditors.SuperList.js"
+			],
+			"dependencies": [
+				"ext.bluespice.responsibleEditors"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "/resources",
+		"remoteExtPath": "BlueSpiceExtensions/ResponsibleEditors/resources"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "ResponsibleEditors::getSchemaUpdates"
+	},
+	"manifest_version": 1
+}

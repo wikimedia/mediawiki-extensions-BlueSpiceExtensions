@@ -35,30 +35,6 @@ class ResponsibleEditors extends BsExtensionMW {
 
 	protected static $aResponsibleEditorsByArticleId = array();
 
-	public function __construct() {
-		wfProfileIn('BS::' . __METHOD__);
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'ResponsibleEditors',
-			EXTINFO::DESCRIPTION => 'bs-responsibleeditors-desc',
-			EXTINFO::AUTHOR => 'Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/ResponsibleEditors',
-			EXTINFO::DEPS => array(
-				'bluespice' => '2.23.3',
-				'StateBar' => '2.22.0',
-				'Authors' => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::ResponsibleEditors';
-
-		wfProfileOut('BS::' . __METHOD__);
-	}
-
 	protected function initExt() {
 		wfProfileIn('BS::' . __METHOD__);
 		BsConfig::registerVar( 'MW::ResponsibleEditors::EChange', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-responsibleeditors-pref-echange', 'toggle' );
@@ -655,7 +631,7 @@ class ResponsibleEditors extends BsExtensionMW {
 		$sDispalyName = $this->mCore->getUserDisplayName($oFirstResponsibleEditor);
 
 		$oResponsibleEditorsTopView->setKey('ResponsibleEditors-Top');
-		$oResponsibleEditorsTopView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/' . $this->mInfo[EXTINFO::NAME] . '/resources/images/bs-infobar-responsibleeditor.png' );
+		$oResponsibleEditorsTopView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/ResponsibleEditors/resources/images/bs-infobar-responsibleeditor.png' );
 		$oResponsibleEditorsTopView->setIconAlt( wfMessage( 'bs-responsibleeditors-statebartop-icon-alt' )->plain() );
 		$oResponsibleEditorsTopView->setText($sDispalyName);
 		$oResponsibleEditorsTopView->setTextLinkTitle($sDispalyName);
