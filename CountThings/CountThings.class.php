@@ -41,27 +41,7 @@
  */
 class CountThings extends BsExtensionMW {
 
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::PARSERHOOK; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME => 'CountThings',
-			EXTINFO::DESCRIPTION => 'bs-countthings-desc',
-			EXTINFO::AUTHOR => 'Markus Glaser, Mathias Scheer',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/CountThings',
-			EXTINFO::DEPS => array( 'bluespice' => '2.23.0' )
-		);
-		$this->mExtensionKey = 'MW::CountThings';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	protected function initExt() {
+    protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
 		wfProfileOut( 'BS::'.__METHOD__ );
