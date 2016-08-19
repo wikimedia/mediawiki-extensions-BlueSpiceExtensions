@@ -1,0 +1,46 @@
+{
+	"name": "FormattingHelp",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/FormattingHelp",
+	"author": "Markus Glaser",
+	"descriptionmsg": "bs-formattinghelp-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"FormattingHelp": {
+			"className": "FormattingHelp",
+			"extPath": "/BlueSpiceExtensions/FormattingHelp"
+		}
+	},
+	"APIModules": {
+		"bs-formattinghelp": "BSApiTasksFormattingHelp"
+	},
+	"MessagesDirs": {
+		"FormattingHelp": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"FormattingHelp": "FormattingHelp.class.php",
+		"BSApiTasksFormattingHelp": "includes/api/BSApiTasksFormattingHelp.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.formattinghelp": {
+			"scripts": "bluespice.formattinghelp.js",
+			"messages": [
+				"bs-formattinghelp-formatting",
+				"bs-formattinghelp-help-text"
+			],
+			"dependencies": "mediawiki.action.edit"
+		},
+		"ext.bluespice.formattinghelp.styles": {
+			"styles": "bluespice.formattinghelp.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/FormattingHelp/resources"
+	},
+	"manifest_version": 1
+}

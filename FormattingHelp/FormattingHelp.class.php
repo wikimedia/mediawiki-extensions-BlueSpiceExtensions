@@ -36,30 +36,6 @@
  * @subpackage FormattingHelp
  */
 class FormattingHelp extends BsExtensionMW {
-
-	/**
-	 * Constructor of FormattingHelp class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'FormattingHelp',
-			EXTINFO::DESCRIPTION => 'bs-formattinghelp-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/FormattingHelp',
-			EXTINFO::DEPS        => array('bluespice' => '2.22.0')
-		);
-		$this->mExtensionKey = 'MW::FormattingHelp';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Initialization of Blog extension
 	 */
