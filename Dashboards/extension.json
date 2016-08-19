@@ -1,0 +1,103 @@
+{
+	"name": "Dashboards",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/DashBoards",
+	"author": [
+		"Robert Vogel",
+		"Stephan Muggli"
+	],
+	"descriptionmsg": "bs-dashboards-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"Dashboards": {
+			"className": "Dashboards",
+			"extPath": "/BlueSpiceExtensions/Dashboards"
+		}
+	},
+        "SpecialPages": {
+		"AdminDashboard": "SpecialAdminDashboard",
+		"UserDashboard": "SpecialUserDashboard"
+	},
+	"APIModules": {
+		"bs-dashboards-tasks": "BSApiDashboardTasks",
+		"bs-dashboards-store": "BSApiDashboardStore",
+		"bs-dashboards-widgets-tasks": "BSApiDashboardWidgetsTasks"
+	},
+	"MessagesDirs": {
+		"Dashboards": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"DashboardsAlias": "languages/Dashboards.alias.php"
+	},
+	"AutoloadClasses": {
+		"Dashboards": "Dashboards.class.php",
+		"SpecialAdminDashboard": "includes/specials/SpecialAdminDashboard.php",
+		"SpecialUserDashboard": "includes/specials/SpecialUserDashboard.php",
+		"BSApiDashboardTasks": "includes/api/BSApiDashboardTasks.php",
+		"BSApiDashboardStore": "includes/api/BSApiDashboardStore.php",
+		"BSApiDashboardWidgetsTasks": "includes/api/BSApiDashboardWidgetsTasks.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.dashboards": {
+			"scripts": [
+				"bluespice.dashboards.main.js"
+			],
+			"messages": [
+				"tooltip-p-logo"
+			]
+		},
+		"ext.bluespice.dashboards.portletCatalog": {
+			"scripts": [
+				"bluespice.dashboards.portletcatalog.js"
+			],
+			"styles": [
+				"bluespice.dashboards.css"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs.BS.portal"
+			],
+			"messages": [
+				"bs-dashboards-addportlet",
+				"bs-dashboards-portlets",
+				"bs-extjs-rssfeeder-rss-title",
+				"bs-dashboard-userportlet-wikipage-wiki-article"
+			]
+		},
+		"ext.bluespice.dashboards.userDashboard": {
+			"scripts": [
+				"bluespice.dashboards.userDashboard.js"
+			],
+			"styles": [],
+			"dependencies": [
+				"ext.bluespice.dashboards.portletCatalog"
+			],
+			"messages": [
+				"bs-dashboard-userportlet-calendar-title",
+				"bs-dashboard-userportlet-calendar-description",
+				"bs-dashboard-userportlet-article-title",
+				"bs-dashboard-userportlet-article-description"
+			]
+		},
+		"ext.bluespice.dashboards.adminDashboard": {
+			"scripts": [
+				"bluespice.dashboards.adminDashboard.js"
+			],
+			"styles": [],
+			"dependencies": [
+				"ext.bluespice.dashboards.portletCatalog"
+			],
+			"messages": []
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/Dashboards/resources"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "Dashboards::getSchemaUpdates"
+	},
+	"manifest_version": 1
+}
