@@ -4,6 +4,9 @@ BsExtensionManager::registerExtension( 'GroupManager', BsRUNLEVEL::FULL|BsRUNLEV
 
 $wgAutoloadClasses['GroupManager'] = __DIR__ . '/GroupManager.class.php';
 $wgAutoloadClasses['BSApiTasksGroupManager'] = __DIR__ . '/includes/api/BSApiTasksGroupManager.php';
+$wgAutoloadClasses['SpecialGroupManager'] = __DIR__ . '/includes/specials/SpecialGroupManager.class.php';
+$wgExtensionMessagesFiles['SpecialGroupManagerAlias'] = __DIR__ . '/includes/specials/SpecialGroupManager.alias.php';
+$wgSpecialPages['GroupManager'] = 'SpecialGroupManager';
 
 $wgMessagesDirs['GroupManager'] = __DIR__ . '/i18n';
 

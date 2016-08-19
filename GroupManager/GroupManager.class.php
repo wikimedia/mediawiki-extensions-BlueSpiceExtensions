@@ -67,6 +67,12 @@ class GroupManager extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
+	protected function initExt() {
+		wfProfileIn( 'BS::'.__METHOD__ );
+		$this->mCore->registerPermission( 'groupmanager-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
+		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
 	/**
 	 * offers the formular for the group manager
 	 * @return string the formular code

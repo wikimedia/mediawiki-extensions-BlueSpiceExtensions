@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-groupmanager-desc": "Administration interface for adding, editing and deleting user groups and their rights",
@@ -31,5 +32,7 @@
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|has created}} the group $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|has renamed}} the group $4 to $5",
 	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|has removed}} the group $4",
-	"apihelp-bs-groupmanager-description": "Provides the tasks for the extension GroupManager."
+	"apihelp-bs-groupmanager-description": "Provides the tasks for the extension GroupManager.",
+	"action-groupmanager-viewspecialpage": "view the special page \"{{int:bs-groupmanager-label}}\"",
+	"groupmanager":"Group manager"
 }
