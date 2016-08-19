@@ -16,7 +16,7 @@
 class SpecialPageAccess extends BsSpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'PageAccess' );
+		parent::__construct( 'PageAccess', 'pageaccess-viewspecialpage' );
 	}
 
 	public function execute( $par ) {

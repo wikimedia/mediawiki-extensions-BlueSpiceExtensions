@@ -23,6 +23,7 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Marx Reymann <reymann@hallowelt.com>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @version    2.23.1
  * @package    Bluespice_Extensions
  * @subpackage PageAccess
@@ -65,6 +66,9 @@ class PageAccess extends BsExtensionMW {
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'userCan' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+
+		$this->mCore->registerPermission( 'pageaccess-viewspecialpage', array('user'), array( 'type' => 'global' ) );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
