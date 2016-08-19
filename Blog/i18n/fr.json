@@ -33,5 +33,6 @@
 	"bs-blog-tag-blog-desc": "Comprend un weblog de l'article, la discussion et les pages du fichier. Peut être spécifié par différents paramètres. Ceux-ci peuvent être combinés dans n'importe quel ordre.",
 	"bs-blog-tag-blogmore-desc": "Définit la longueur de la bande-annonce pour un billet de blog. Situé dans le billet à la fin de la bande annonce  concernée. En conséquence, le lien \"{{int:bs-blog-read-more}}\" apparaît, ce qui le relie à l'article de blog complet.",
 	"bs-blog-tag-blogtime-desc": "Insère une balise auto-définie de référence horaire pour l'affichage et le tri des billets de blog. Le format est AAAAMMJJHHmm",
-	"bs-blog-tag-blogtime-err": "Le format doit être AAAAMMJJHHmm c.-à-d. pour le 12 Jan. 2013 15:43 l’horodatage ressemblera à: 201301121543"
+	"bs-blog-tag-blogtime-err": "Le format doit être AAAAMMJJHHmm c.-à-d. pour le 12 Jan. 2013 15:43 l’horodatage ressemblera à: 201301121543",
+	"bs-tag-blog": "la balise de blog"
 }

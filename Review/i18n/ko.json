@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hwangjy9",
-			"아라"
+			"아라",
+			"Ykhwong"
 		]
 	},
 	"bs-review-desc": "문서에 워크플로우 함수를 추가합니다",
@@ -28,5 +29,6 @@
 	"log-name-bs-review": "검토 기록",
 	"log-show-hide-bs-review": "문서 검토 기록 $1",
 	"bs-review-header-startdate": "시작",
-	"bs-review-header-enddate": "끝"
+	"bs-review-header-enddate": "끝",
+	"apihelp-bs-review-tasks-description": "검토의 조작을 허용합니다"
 }

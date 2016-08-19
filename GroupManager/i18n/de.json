@@ -33,5 +33,7 @@
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|hat}} die Gruppe $4 angelegt",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|hat}} die Gruppe $4 in $5 umbenannt",
 	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|hat}} die Gruppe $4 gelöscht",
-	"apihelp-bs-groupmanager-description": "Bietet die Aufgaben für die Erweiterung „GroupManager“."
+	"apihelp-bs-groupmanager-description": "Bietet die Aufgaben für die Erweiterung „GroupManager“.",
+	"action-groupmanager-viewspecialpage": "die Spezialseite „{{int:bs-groupmanager-label}}“ anzusehen",
+	"groupmanager": "Gruppenverwaltung"
 }
