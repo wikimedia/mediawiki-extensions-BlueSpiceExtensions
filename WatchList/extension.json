@@ -1,0 +1,24 @@
+{
+	"name": "WatchList",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/WatchList",
+	"author": "Robert Vogel",
+	"descriptionmsg": "bs-watchlist-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"WatchList": {
+			"className": "WatchList",
+			"extPath": "/BlueSpiceExtensions/WatchList"
+		}
+	},
+	"MessagesDirs": {
+		"BSWatchList": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"WatchList": "WatchList.class.php"
+	},
+	"manifest_version": 1
+}
