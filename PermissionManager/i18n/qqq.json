@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Shirayuki"
+			"Shirayuki",
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-permissionmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of permission manager extension",
@@ -48,5 +49,7 @@
 	"log-description-bs-permission-manager": "Used in [[Special:Log]], description of the log type",
 	"log-show-hide-bs-permission-manager": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
 	"logentry-bs-permission-manager-modify": "Log message about changes in the permissions of one specific group.\nParameters:\n* $4 - name of the group",
-	"apihelp-bs-permissionmanager-tasks-description": "Describes an API endpoint that provides tasks for the PermissionManager"
+	"apihelp-bs-permissionmanager-tasks-description": "Describes an API endpoint that provides tasks for the PermissionManager",
+	"action-permissionmanager-viewspecialpage": "placeholder to describe that view of special page \"{{int:bs-permissionmanager-label}}\" is restricted for the current user",
+	"permissionmanager":"Anchor text for permission manager\n{{Identical|Permission manager}}"
 }
