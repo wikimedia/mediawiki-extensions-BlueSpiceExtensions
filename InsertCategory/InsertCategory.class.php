@@ -41,28 +41,6 @@
  * @subpackage InsertCategory
  */
 class InsertCategory extends BsExtensionMW {
-
-	/**
-	 * Constructor of InsertCategory
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::' . __METHOD__ );
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'InsertCategory',
-			EXTINFO::DESCRIPTION => 'bs-insertcategory-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht, Stefan Widmann',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/InsertCategory',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::InsertCategory';
-		wfProfileOut( 'BS::' . __METHOD__ );
-	}
-
 	/**
 	 * Initialise the InsertCategory extension
 	 */
