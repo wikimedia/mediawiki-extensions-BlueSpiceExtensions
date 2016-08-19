@@ -35,6 +35,7 @@ require_once( __DIR__."/PagesVisited/PagesVisited.setup.php" );
 require_once( __DIR__."/SecureFileStore/SecureFileStore.setup.php" );
 require_once( __DIR__."/SmartList/SmartList.setup.php" );
 require_once( __DIR__."/TopMenuBarCustomizer/TopMenuBarCustomizer.setup.php" );
+require_once( __DIR__."/UsageTracker/UsageTracker.setup.php" );
 require_once( __DIR__."/UserPreferences/UserPreferences.setup.php" );
 require_once( __DIR__."/UserSidebar/UserSidebar.setup.php" );
 require_once( __DIR__."/WatchList/WatchList.setup.php" );

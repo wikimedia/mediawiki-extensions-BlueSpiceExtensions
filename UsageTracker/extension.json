@@ -1,0 +1,37 @@
+{
+	"name": "UsageTracker",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/UsageTracker",
+	"author": "Markus Glaser",
+	"descriptionmsg": "bs-usagetracker-desc",
+	"type": "bluespice",
+	"SpecialPages": {
+		"UsageTracker": "SpecialUsageTracker"
+	},
+	"bsgExtensions": {
+		"UsageTracker": {
+			"className": "UsageTracker",
+			"extPath": "/BlueSpiceExtensions/UsageTracker"
+		}
+	},
+	"MessagesDirs": {
+		"UsageTracker": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"UsageTrackerAlias": "src/specials/SpecialUsageTracker.alias.php"
+	},
+	"AutoloadClasses": {
+		"UsageTracker": "UsageTracker.class.php",
+		"SpecialUsageTracker": "src/specials/SpecialUsageTracker.php"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "UsageTracker::getSchemaUpdates"
+	},
+	"JobClasses": {
+		"usageTrackerCollectJob": "BS\\UsageTracker\\Jobs\\UsageTrackerCollectJob"
+	},
+	"load_composer_autoloader" : true,
+	"manifest_version": 1
+}
