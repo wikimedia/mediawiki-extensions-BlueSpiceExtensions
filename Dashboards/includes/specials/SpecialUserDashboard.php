@@ -2,11 +2,11 @@
 
 class SpecialUserDashboard extends BsSpecialPage {
 	public function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = 'default', $includable = false ) {
-		parent::__construct( 'UserDashboard' /*, 'sysop'*/ );
+		parent::__construct( 'UserDashboard' , 'dashboards-viewspecialpage-userdashboard' );
 	}
 
 	/**
-	 * 
+	 *
 	 * @global OutputPage $wgOut
 	 * @param string $sParameter
 	 */
