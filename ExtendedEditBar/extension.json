@@ -1,0 +1,41 @@
+{
+	"name": "ExtendedEditBar",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/ExtendedEditbar",
+	"author": "MediaWiki Extension, packaging by Markus Glaser",
+	"descriptionmsg": "bs-extendededitbar-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"ExtendedEditBar": {
+			"className": "ExtendedEditBar",
+			"extPath": "/BlueSpiceExtensions/ExtendedEditBar"
+		}
+	},
+	"MessagesDirs": {
+		"ExtendedEditBar": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"ExtendedEditBar": "ExtendedEditBar.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.extendeditbar": {
+			"scripts": "bluespice.extendedEditBar.js",
+			"dependencies": "mediawiki.action.edit"
+		},
+		"ext.bluespice.extendeditbar.styles": {
+			"styles": "bluespice.extendedEditBar.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/ExtendedEditBar/resources"
+	},
+	"config": {
+        "_prefix": "bsg",
+        "ExtendedEditBarEnabledActions": ["edit", "submit"]
+	},
+	"manifest_version": 1
+}

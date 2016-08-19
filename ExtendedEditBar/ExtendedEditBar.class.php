@@ -37,30 +37,6 @@
  * @subpackage ExtendedEditBar
  */
 class ExtendedEditBar extends BsExtensionMW {
-
-	/**
-	 * Constructor of ExtendedEditBar class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'ExtendedEditBar',
-			EXTINFO::DESCRIPTION => 'bs-extendededitbar-desc',
-			EXTINFO::AUTHOR      => 'MediaWiki Extension, packaging by Markus Glaser',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/ExtendedEditbar',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::ExtendedEditBar';
-		wfProfileOut('BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Initialization of ExtendedEditBar extension
 	 */
