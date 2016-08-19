@@ -13,5 +13,6 @@
 	"bs-blog-form-button-text": "만들기",
 	"bs-blog-blog": "블로그",
 	"bs-blog-pref-showpermalink": "고유링크 보기",
-	"bs-blog-pref-sortby": "정렬 기준:"
+	"bs-blog-pref-sortby": "정렬 기준:",
+	"bs-tag-blog": "블로그 태그"
 }

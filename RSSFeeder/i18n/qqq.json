@@ -16,5 +16,5 @@
 	"bs-rssfeeder-rss-desc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], description of rss feed portlet",
 	"bs-extjs-rssfeeder-rss-title": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], label for rss URL.",
 	"bs-rssfeeder-invalid-url": "Error message when URL is not provided in the API",
-	"action-rssfeeder-viewspecialpage":"placeholder to describe that view of special page \"{{int:rssfeeder}}\" is restricted for the current user"
+	"action-rssfeeder-viewspecialpage": "placeholder to describe that view of special page \"{{int:rssfeeder}}\" is restricted for the current user"
 }

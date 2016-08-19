@@ -36,5 +36,5 @@
 	"logentry-bs-group-manager-remove": "Log message about the removal of a group.\nParameters:\n* $4 - name of the group",
 	"apihelp-bs-groupmanager-description": "Describes the API endpoint that provides tasks for the GroupManager extension",
 	"action-groupmanager-viewspecialpage": "placeholder to describe that view of special page \"{{int:bs-groupmanager-label}}\" is restricted for the current user",
-	"groupmanager":"Used in overview of special pages, anchor text for group manager\n{{Identical|Group manager}}"
+	"groupmanager": "Used in overview of special pages, anchor text for group manager\n{{Identical|Group manager}}"
 }
