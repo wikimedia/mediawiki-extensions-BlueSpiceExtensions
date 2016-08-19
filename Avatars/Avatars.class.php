@@ -230,7 +230,7 @@ class Avatars extends BsExtensionMW {
 					throw new MWException('FATAL: Avatar generator not found!');
 					break;
 			}
-			$oStatus = BsFileSystemHelper::saveToDataDirectory($sAvatarFileName, $sRawPNGAvatar, $this->mInfo[EXTINFO::NAME]);
+			$oStatus = BsFileSystemHelper::saveToDataDirectory($sAvatarFileName, $sRawPNGAvatar, 'avatars');
 			if (!$oStatus->isGood())
 				throw new MWException('FATAL: Avatar could not be saved!');
 			# found no way to regenerate thumbs. just delete thumb folder if it exists
