@@ -33,29 +33,6 @@
 // Last review MRG (07.11.11 18:22)
 
 class NamespaceCss extends BsExtensionMW {
-
-	public function __construct() {
-		wfProfileIn( 'BS::NamespaceCss_construct' );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'NamespaceCss',
-			EXTINFO::DESCRIPTION => 'bs-namespacecss-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel, Tobias Weichart, Patric Wirth',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/NamespaceCss',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-
-		$this->mExtensionKey = 'MW::NamespaceCss';
-
-		wfProfileOut( 'BS::NamespaceCss_construct' );
-	}
-
 	public function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
