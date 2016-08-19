@@ -41,29 +41,6 @@
  * @subpackage InsertLink
  */
 class InsertLink extends BsExtensionMW {
-
-	/**
-	 * Constructor of InsertLink
-	 */
-	public function __construct() {
-		wfProfileIn('BS::' . __METHOD__);
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'InsertLink',
-			EXTINFO::DESCRIPTION => 'bs-insertlink-desc',
-			EXTINFO::AUTHOR => 'Markus Glaser, Sebastian Ulbricht, Patric Wirth',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/InsertLink',
-			EXTINFO::DEPS => array('bluespice' => '2.22.0')
-		);
-		$this->mExtensionKey = 'MW::InsertLink';
-		wfProfileOut('BS::' . __METHOD__);
-	}
-
 	/**
 	 * Initialise the InsertLink extension
 	 */
