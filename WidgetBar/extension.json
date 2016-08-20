@@ -1,0 +1,44 @@
+{
+	"name": "WidgetBar",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/WidgetBar",
+	"author": "Robert Vogel",
+	"descriptionmsg": "bs-widgetbar-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"WidgetBar": {
+			"className": "WidgetBar",
+			"extPath": "/BlueSpiceExtensions/WidgetBar"
+		}
+	},
+	"MessagesDirs": {
+		"WidgetBar": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"WidgetBar": "WidgetBar.class.php",
+		"ViewWidgetError": "views/view.WidgetError.php",
+		"ViewWidgetErrorList": "views/view.WidgetErrorList.php",
+		"ViewWidgetList": "views/view.WidgetList.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.widgetbar.style": {
+			"styles": "bluespice.widgetBar.css",
+			"position": "top"
+		},
+		"ext.bluespice.widgetbar": {
+			"scripts": "bluespice.widgetBar.js",
+			"dependencies": [
+				"jquery.cookie"
+			],
+			"position": "bottom"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/WidgetBar/resources"
+	},
+	"manifest_version": 1
+}

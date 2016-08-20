@@ -40,28 +40,6 @@ class WidgetBar extends BsExtensionMW {
 	protected $aKeywords = array();
 
 	/**
-	 * Contructor of the WidgetBar class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'WidgetBar',
-			EXTINFO::DESCRIPTION => 'bs-widgetbar-desc',
-			EXTINFO::AUTHOR      => 'Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/WidgetBar',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::WidgetBar';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
 	 * Initialization of WidgetBar extension
 	 */
 	protected function initExt() {
