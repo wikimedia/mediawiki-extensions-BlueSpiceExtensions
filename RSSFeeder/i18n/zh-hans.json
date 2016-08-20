@@ -14,5 +14,6 @@
 	"bs-rssfeeder-rss": "RSS订阅源",
 	"bs-rssfeeder-rss-desc": "创建您自己的RSS订阅源",
 	"bs-extjs-rssfeeder-rss-title": "RSS URL",
-	"bs-rssfeeder-invalid-url": "请提供有效的URL。"
+	"bs-rssfeeder-invalid-url": "请提供有效的URL。",
+	"action-rssfeeder-viewspecialpage": "查看特殊页面“{{int:rssfeeder}}”"
 }

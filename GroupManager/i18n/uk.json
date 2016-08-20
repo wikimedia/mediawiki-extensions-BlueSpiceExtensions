@@ -34,5 +34,7 @@
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|створив|створила}} групу $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|перейменував|перейменувала}} групу $4 на $5",
 	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|вилучив|вилучила}} групу $4",
-	"apihelp-bs-groupmanager-description": "Забезпечує завдання для розширення GroupManager."
+	"apihelp-bs-groupmanager-description": "Забезпечує завдання для розширення GroupManager.",
+	"action-groupmanager-viewspecialpage": "перегляд спеціальної сторінки «{{int:bs-groupmanager-label}}»",
+	"groupmanager": "Менеджер груп"
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"NataChe",
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-dashboards-desc": "Створює панелі інструментів для користувачів і адміністраторів",
@@ -21,5 +22,6 @@
 	"apihelp-bs-dashboard-task-param-dc": "Параметр керування кешем. Використовується в ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Перераховує усі доступні портлети",
 	"apihelp-bs-dashboards-tasks-description": "Збереження конфігурації панелі",
-	"apihelp-bs-dashboards-widgets-tasks-description": "Видає контент для деяких віджетів панелі"
+	"apihelp-bs-dashboards-widgets-tasks-description": "Видає контент для деяких віджетів панелі",
+	"action-dashboards-viewspecialpage-userdashboard": "перегляд спеціальної сторінки «{{int:userdashboard}}»"
 }

@@ -4,7 +4,8 @@
 			"Hwangjy9",
 			"밥풀떼기",
 			"Macofe",
-			"아라"
+			"아라",
+			"Ykhwong"
 		]
 	},
 	"bs-groupmanager-grpexists": "그룹이 이미 존재합니다.",
@@ -27,5 +28,7 @@
 	"log-show-hide-bs-group-manager": "그룹 관리자 기록을 $1",
 	"logentry-bs-group-manager-create": "$1님이 $4 그룹을 {{GENDER:$2|만들었습니다}}",
 	"logentry-bs-group-manager-modify": "$1님이 $4 그룹의 이름을 $5(으)로 {{GENDER:$2|바꾸었습니다}}",
-	"logentry-bs-group-manager-remove": "$1님이 $4 그룹을 {{GENDER:$2|제거했습니다}}"
+	"logentry-bs-group-manager-remove": "$1님이 $4 그룹을 {{GENDER:$2|제거했습니다}}",
+	"action-groupmanager-viewspecialpage": "특수 문서 \"{{int:bs-groupmanager-label}}\" 보기",
+	"groupmanager": "그룹 관리자"
 }

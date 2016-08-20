@@ -16,5 +16,6 @@
 	"bs-rssfeeder-rss": "RSS-канал",
 	"bs-rssfeeder-rss-desc": "Створити свій власний RSS-канал",
 	"bs-extjs-rssfeeder-rss-title": "URL-адреса RSS",
-	"bs-rssfeeder-invalid-url": "Будь ласка, введіть дійсну URL-адресу."
+	"bs-rssfeeder-invalid-url": "Будь ласка, введіть дійсну URL-адресу.",
+	"action-rssfeeder-viewspecialpage": "перегляд спеціальної сторінки «{{int:rssfeeder}}»"
 }

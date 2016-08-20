@@ -24,5 +24,6 @@
 	"bs-groupmanager-removegroup-message-unknown": "En onerwaarte Feeler ass geschitt, probéiert w.e.g. nach eng Kéier.",
 	"bs-groupmanager-lablename": "Numm vun der Grupp:",
 	"bs-groupmanager-msgnoteditable": "Dës Grupp ass e System-Grupp a kann net ëmbenannt ginn.",
-	"bs-groupmanager-msgnotremovable": "Dës Grupp ass e System-Grupp a kann net ewechgeholl ginn."
+	"bs-groupmanager-msgnotremovable": "Dës Grupp ass e System-Grupp a kann net ewechgeholl ginn.",
+	"action-groupmanager-viewspecialpage": "d'Spezialsäit \"{{int:bs-groupmanager-label}}\" ze kucken"
 }

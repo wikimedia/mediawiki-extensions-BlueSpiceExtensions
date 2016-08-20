@@ -10,5 +10,6 @@
 	"bs-rssfeeder-pages": "Säit",
 	"bs-rssfeeder-submit": "Weisen",
 	"bs-extjs-rssfeeder-rss-title": "RSS-URL",
-	"bs-rssfeeder-invalid-url": "Gitt w.e.g. en valabel URL un."
+	"bs-rssfeeder-invalid-url": "Gitt w.e.g. en valabel URL un.",
+	"action-rssfeeder-viewspecialpage": "d'Spezialsäit \"{{int:rssfeeder}}\" ze kucken"
 }

@@ -13,5 +13,6 @@
 	"log-name-bs-pageaccess": "页面访问日志",
 	"log-description-bs-pageaccess": "这是页面访问设置中的更改日志。",
 	"log-show-hide-bs-pageaccess": "$1页面访问日志",
-	"logentry-bs-pageaccess-change": "$1{{GENDER:$2|更改}}了$3的访问权限至“$4”"
+	"logentry-bs-pageaccess-change": "$1{{GENDER:$2|更改}}了$3的访问权限至“$4”",
+	"action-pageaccess-viewspecialpage": "查看特殊页面“{{int:pageaccess}}”"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ykhwong"
 		]
 	},
 	"bs-permissionmanager-btn-group-label": "그룹:",
@@ -11,5 +12,7 @@
 	"bs-permissionmanager-btn-save-label": "저장",
 	"bs-permissionmanager-btn-save-in-progress-label": "저장 중 ...",
 	"bs-permissionmanager-labeltemplates": "틀",
-	"bs-permissionmanager-labeltpled-desc": "설명"
+	"bs-permissionmanager-labeltpled-desc": "설명",
+	"action-permissionmanager-viewspecialpage": "특수 문서\"{{int:bs-permissionmanager-label}}\" 보기",
+	"permissionmanager": "권한 관리자"
 }

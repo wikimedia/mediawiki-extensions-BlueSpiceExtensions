@@ -32,5 +32,7 @@
 	"logentry-bs-group-manager-create": "$1{{GENDER:$2|已创建}}组$4",
 	"logentry-bs-group-manager-modify": "$1{{GENDER:$2|已更改}}组$4至$5",
 	"logentry-bs-group-manager-remove": "$1{{GENDER:$2|已移除}}组$4",
-	"apihelp-bs-groupmanager-description": "为扩展GroupManager提供任务。"
+	"apihelp-bs-groupmanager-description": "为扩展GroupManager提供任务。",
+	"action-groupmanager-viewspecialpage": "查看特殊页面“{{int:bs-groupmanager-label}}”",
+	"groupmanager": "群组管理器"
 }

@@ -14,5 +14,6 @@
 	"bs-dashboard-userportlet-calendar-description": "달력",
 	"bs-dashboard-userportlet-wikipage-title": "위키페이지",
 	"bs-dashboard-userportlet-wikipage-wiki-article": "위키 페이지",
-	"apihelp-bs-dashboards-tasks-description": "대시보드 설정 저장"
+	"apihelp-bs-dashboards-tasks-description": "대시보드 설정 저장",
+	"action-dashboards-viewspecialpage-userdashboard": "특수 문서 \"{{int:userdashboard}}\" 보기"
 }

@@ -47,5 +47,7 @@
 	"log-description-bs-permission-manager": "这是组前行中的更改日志。",
 	"log-show-hide-bs-permission-manager": "$1权限管理器日志",
 	"logentry-bs-permission-manager-modify": "$1{{GENDER:$2|已更改}}组$4的权限",
-	"apihelp-bs-permissionmanager-tasks-description": "为权限管理器提供任务"
+	"apihelp-bs-permissionmanager-tasks-description": "为权限管理器提供任务",
+	"action-permissionmanager-viewspecialpage": "查看特殊页面“{{int:bs-permissionmanager-label}}”",
+	"permissionmanager": "权限管理器"
 }
