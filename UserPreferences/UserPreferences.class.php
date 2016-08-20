@@ -38,26 +38,6 @@
 
 class UserPreferences extends BsExtensionMW {
 
-	public function __construct() {
-		wfProfileIn( 'BS::' . __METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'UserPreferences',
-			EXTINFO::DESCRIPTION => 'bs-userpreferences-desc',
-			EXTINFO::AUTHOR => 'Sebastian Ulbricht, Stephan Muggli',
-			EXTINFO::VERSION => 'default',
-			EXTINFO::STATUS => 'default',
-			EXTINFO::PACKAGE => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/UserPreferences',
-			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::UserPreferences';
-		wfProfileOut( 'BS::' . __METHOD__ );
-	}
-
 	protected function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
 
