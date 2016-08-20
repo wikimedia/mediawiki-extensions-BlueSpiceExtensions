@@ -42,30 +42,6 @@
  * @subpackage ShoutBox
  */
 class ShoutBox extends BsExtensionMW {
-
-	/**
-	 * Constructor of ShoutBox class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::' . __METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::PARSERHOOK;
-		$this->mInfo = array(
-			EXTINFO::NAME => 'ShoutBox',
-			EXTINFO::DESCRIPTION => 'bs-shoutbox-desc',
-			EXTINFO::AUTHOR => 'Karl Waldmannstetter, Markus Glaser',
-			EXTINFO::VERSION => 'default',
-			EXTINFO::STATUS => 'default',
-			EXTINFO::PACKAGE => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/Shoutbox',
-			EXTINFO::DEPS => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::ShoutBox';
-		wfProfileOut( 'BS::' . __METHOD__ );
-	}
-
 	/**
 	 * Initialization of ShoutBox extension
 	 */
