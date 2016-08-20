@@ -39,32 +39,6 @@
 class UserSidebar extends BsExtensionMW {
 
 	protected $aKeywords = array();
-
-	/**
-	 * Contructor of the UserSidebar class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'UserSidebar',
-			EXTINFO::DESCRIPTION => 'bs-usersidebar-desc',
-			EXTINFO::AUTHOR      => 'Sebastian Ulbricht, Robert Vogel',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/UserSidebar',
-			EXTINFO::DEPS        => array(
-				'bluespice' => '2.22.0',
-				'WidgetBar' => 'default'
-			)
-		);
-		$this->mExtensionKey = 'MW::UserSidebar';
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Initialization of UserSidebar extension
 	 */
