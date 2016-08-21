@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-extensioninfo-desc": "Informacijos sąrašas apie įkeltus plėtinius",
+	"bs-extensioninfo-label": "Plėtiniai",
+	"bs-extensioninfo-software": "Programinė įranga",
+	"bs-extensioninfo-version": "Versija",
+	"extensioninfo": "Plėtiniai",
+	"bs-extensioninfo-headerextname": "Plėtinio pavadinimas",
+	"bs-extensioninfo-headerversion": "Versija",
+	"bs-extensioninfo-headerdesc": "Aprašymas",
+	"bs-extensioninfo-headerstatus": "Būsena",
+	"bs-extensioninfo-headerpackage": "Paketas",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elementas|elementai}}"
+}

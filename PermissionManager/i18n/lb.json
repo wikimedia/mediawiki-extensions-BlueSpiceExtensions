@@ -31,5 +31,6 @@
 	"bs-permissionmanager-titletpled-new": "Schabloun uleeën",
 	"bs-permissionmanager-titletpled-edit": "Schabloun ëmbenennen",
 	"bs-permissionmanager-titletpled-delete": "Schabloun läschen",
-	"action-permissionmanager-viewspecialpage": "d'Spezialsäit \"{{int:bs-permissionmanager-label}}\" ze kucken"
+	"action-permissionmanager-viewspecialpage": "d'Spezialsäit \"{{int:bs-permissionmanager-label}}\" ze kucken",
+	"permissionmanager": "Gestionnaire vu Rechter"
 }

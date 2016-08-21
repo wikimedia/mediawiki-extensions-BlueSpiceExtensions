@@ -6,6 +6,7 @@
 	},
 	"bs-blog-desc": "Rodyti dienoraščio stiliaus puslapių sąrašą",
 	"prefs-blog": "Dienoraštis",
+	"blog": "Dienoraštis",
 	"bs-blog-no-entries": "Nėra jokių dienoraščio įrašų.",
 	"bs-blog-comments": "Komentarai",
 	"bs-blog-read-more": "Skaityti daugiau",
@@ -16,8 +17,15 @@
 	"bs-blog-form-button-text": "Kurti",
 	"bs-blog-blog": "Dienoraštis",
 	"bs-blog-pref-moreinnewwindow": "Atidarykite naują langą norint skaityti daugiau",
+	"bs-blog-pref-newentryfieldposition": "Naujos dienoraščio įrašo formos pozicija:",
+	"bs-blog-pref-showinfo": "Rodyti informaciją apie įrašą",
+	"bs-blog-pref-showlimit": "Dienoraščio įrašų skaičius:",
+	"bs-blog-pref-shownewentryfield": "Rodyti naujo dienoraščio įrašo formą",
+	"bs-blog-pref-showpermalink": "Rodyti nuolatinę nuorodą į šią vietą",
 	"bs-blog-pref-sortby": "Rūšiuoti pagal:",
 	"bs-blog-pref-imagerendermode": "Rodyti nuotraukas kaip:",
 	"bs-blog-pref-maxentrycharacters": "Žodžių skaičius per įrašą:",
-	"bs-blog-tag-blog-desc": "Rodyti dienoraščio įrašus kiekviename puslapyje."
+	"bs-blog-tag-blog-desc": "Rodyti dienoraščio įrašus kiekviename puslapyje.",
+	"bs-blog-tag-blogtime-err": "Formatas turi būti MMMMmmDDHHmm, t. y. 2013 m. sausio 12 d. 15:43 laiko žymė atrodo: 201301121543",
+	"bs-tag-blog": "dienoraščio žymė"
 }

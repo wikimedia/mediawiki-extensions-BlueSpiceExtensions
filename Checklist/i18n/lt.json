@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-checklist-dlg-insert-list-value-list": "Vertės sąrašas",
+	"bs-checklist-tag-checklist-example-list": "Pasirinkimo meniu",
+	"bs-checklist-dlg-new-list": "Sukurti naują sąrašą",
+	"bs-checklist-dlg-save-list": "Išsaugoti pakeitimus į sąrašą",
+	"bs-checklist-dlg-items-label": "Objektai sąraše",
+	"bs-checklist-dlg-items-emptytext": "Nėra objektų šiame sąraše",
+	"bs-checklist-dlg-items-hint": "Tam, kad pridėtumėte naują objektą, rašykite laukelyje aukščiau ir spauskite <kbd>Enter</kbd>.",
+	"bs-checklist-dlg-panel-title": "Galimi sąrašai",
+	"bs-checklist-dlg-new-title": "Pridėti naują sąrašą",
+	"bs-checklist-dlg-new-prompt": "Įveskite sąrašo pavadinimą",
+	"bs-checklist-alert": "Dėmesio!",
+	"bs-checklist-confirm-dirty-title": "Neišsaugoti pakeitimai!",
+	"bs-checklist-savelist-error-invalid-title": "Nurodytas neleistinas pavadinimas",
+	"bs-checklist-savelist-error-edit-not-permitted": "Nepakanka teisių sąrašui išsaugoti.",
+	"bs-checklist-update-list": "Sąrašas atnaujintas"
+}

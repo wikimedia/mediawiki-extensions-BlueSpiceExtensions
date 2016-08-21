@@ -27,5 +27,7 @@
 	"log-description-bs-group-manager": "To jest rejestr zmian grup użytkowników.",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|utworzył|utworzyła|utworzył(a)}} grupę $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|zmienił|zmieniła|zmienił(a)}} nazwę grupy $4 na $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|usunął|usunęła}} grupę $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|usunął|usunęła}} grupę $4",
+	"action-groupmanager-viewspecialpage": "zobacz stronę specjalną „{{int:bs-groupmanager-label}}”",
+	"groupmanager": "Menedżer grup"
 }

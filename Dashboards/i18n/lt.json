@@ -7,8 +7,12 @@
 	"bs-dashboards-desc": "Suteikia valdymo skydus vartotojams ir administratoriams",
 	"bs-specialadmindashboard-label": "Valdymo skydas",
 	"prefs-dashboards": "Valdymo skydai",
+	"bs-dashboards-pref-userdashboardonlogo": "Svetainės logotipas nukreipia vartotoją į vartotojo prietaisų skydelį",
 	"admindashboard": "Administratorius skydelis",
 	"userdashboard": "Vartotojo skydelis",
 	"bs-dashboard-userportlet-calendar-title": "Kalendorius",
-	"bs-dashboard-userportlet-calendar-description": "Kalendorius"
+	"bs-dashboard-userportlet-calendar-description": "Kalendorius",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Viki puslapis",
+	"apihelp-bs-dashboards-tasks-description": "Išsaugo prietaisų skydelio konfigūraciją",
+	"action-dashboards-viewspecialpage-userdashboard": "žiūrėti specialų puslapį „{{int:userdashboard}}“"
 }

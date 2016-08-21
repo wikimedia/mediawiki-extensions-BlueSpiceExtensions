@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-pagesvisited-desc": "Pateikia persignalizuotą neseniai lankytų puslapių sąrašą",
+	"prefs-pagesvisited": "Lankyti puslapiai",
+	"bs-pagesvisited-widget-title": "Lankyti puslapiai",
+	"bs-pagesvisited-pref-widgetlimit": "Įrašų limitas:",
+	"bs-pagesvisited-pref-widgetsortodr": "Rūšiuoti pagal:",
+	"bs-pagesvisited-pref-sort-time": "Laiką",
+	"bs-pagesvisited-pref-sort-pagename": "Pavadinimą",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Rodo neseniai lankytų puslapių sąrašą. Šis sąrašas gali būti apribotas parametrų."
+}

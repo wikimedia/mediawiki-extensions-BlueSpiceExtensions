@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-responsibleeditors-pref-emailnotificationonresponsibilitychange": "Pranešti apie atsakomybės pakeitimą",
+	"bs-responsibleeditors-pref-echange": "Pranešti, kai puslapis pakeičiamas",
+	"bs-responsibleeditors-pref-edelete": "Pranešti, kai puslapis ištrinamas",
+	"bs-responsibleeditors-pref-emove": "Pranešti, kai puslapis perkeliamas",
+	"bs-responsibleeditors-pref-autopermissions": "Automatinis teisių paskyrimas:",
+	"bs-responsibleeditors-success-ajax": "Atsakomybė pakeista.",
+	"bs-responsibleeditors-error-ajax-invalid-parameter": "Pateiktos neteisingos reikšmės.",
+	"bs-responsibleeditors-error-ajax-not-allowed": "Prieiga uždrausta. Jūs neturite teisių atlikti šį veiksmą.",
+	"bs-responsibleeditors-contentactions-label": "Keisti atsakomybę",
+	"bs-responsibleeditors-error-specialpage-given-article-does-not-exist": "Pateiktas puslapis neegzistuoja.",
+	"bs-responsibleeditors-mail-subject-former-editor": "„$1“ atsakomybė atšaukta",
+	"bs-responsibleeditors-mail-subject-re-article-changed": "Puslapį „$1“ {{GENDER:$2|redagavo}} $3",
+	"bs-responsibleeditors-mail-subject-re-article-deleted": "Puslapį „$1“ {{GENDER:$2|ištrynė}} $3",
+	"bs-responsibleeditors-mail-subject-re-article-moved": "Puslapį „$1“ {{GENDER:$2|perkėlė}} $3",
+	"bs-responsibleeditors-yourresponsibilities": "Jūsų pareigos",
+	"bs-responsibleeditors-yourresponsibilitiesdesc": "Puslapių, už kuriuos atsakote, sąrašas.",
+	"bs-responsibleeditors-columnpage": "Puslapis",
+	"bs-responsibleeditors-rbdisplaymodeall": "Rodyti visus puslapius",
+	"bs-responsibleeditors-columneesponsibleeditornotset": "Nepriskirta",
+	"bs-responsibleeditors-pagestorefilter-assigned": "Priskirta",
+	"bs-responsibleeditors-pagestorefilter-notassigned": "Nepriskirta"
+}

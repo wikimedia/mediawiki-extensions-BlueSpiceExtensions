@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-formattinghelp-desc": "Rodo teksto formatavimo pagalbą",
+	"bs-formattinghelp-formatting": "Formatavimo pagalba",
+	"bs-formattinghelp-help-syntax": "Sintaksė",
+	"bs-formattinghelp-help-example-text": "Tekstas",
+	"bs-formattinghelp-help-bold": "Paryškintas",
+	"bs-formattinghelp-help-italic": "Pasvirasis",
+	"bs-formattinghelp-help-nowiki": "Neleisti formatuoti",
+	"bs-formattinghelp-help-color": "Spalvotas tekstas",
+	"bs-formattinghelp-help-headline": "Antraštė",
+	"bs-formattinghelp-help-linebreak": "Eilutės lūžis",
+	"bs-formattinghelp-help-ul": "Nesurikiuotas sąrašas",
+	"bs-formattinghelp-help-listitem": "Sąrašo elementas",
+	"bs-formattinghelp-help-numberedlist": "Numeruotas sąrašas",
+	"bs-formattinghelp-help-link": "Vidinė nuoroda",
+	"bs-formattinghelp-help-link-alt": "Vidinė nuoroda su alternatyviu tekstu",
+	"bs-formattinghelp-help-caption": "Antraštė",
+	"bs-formattinghelp-help-extlink": "Išorinė nuoroda",
+	"bs-formattinghelp-help-hr": "Horizontali linija",
+	"bs-formattinghelp-help-template": "Šablonas",
+	"bs-formattinghelp-help-templatename": "Šablono pavadinimas"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-interwikilinks-nopfx": "Prašome pateikti priešdėlį.",
+	"bs-interwikilinks-nourl": "Prašome pateikti URL.",
+	"bs-interwikilinks-pfxtoolong": "Priešdėlis yra per ilgas. Prašome naudoti iki 32 simbolių.",
+	"bs-interwikilinks-pfxexists": "Priešdėlis jau egzistuoja.",
+	"bs-interwikilinks-headerprefix": "Priešdėlis",
+	"bs-interwikilinks-labelprefix": "Priešdėlis",
+	"bs-interwikilinks-insertlink-tabtitle": "Nuoroda į kitą vikį",
+	"bs-interwikilinks-insertlink-labelprefix": "Priešdėlis",
+	"bs-interwikilink-select-a-prefix": "Pasirinkti priešdėlį"
+}

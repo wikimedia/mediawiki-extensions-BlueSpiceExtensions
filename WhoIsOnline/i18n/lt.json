@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-whoisonline-desc": "Rodo šiuo metu prisijungusių vartotojų sąrašą",
+	"bs-whoisonline-nousers": "Nėra prisijungusių.",
+	"bs-whoisonline-widget-title": "Kas yra prisijungę?",
+	"prefs-whoisonline": "Kas yra prisijungę?",
+	"bs-whoisonline-pref-limitcount": "Maksimalus rodomų vartotojų skaičius:",
+	"bs-whoisonline-pref-orderby": "Rūšiuoti pagal:",
+	"bs-whoisonline-pref-maxidletime": "Po kelių sekundžių vartotojas pažymimas kaip neprisijungęs:",
+	"bs-whoisonline-pref-orderby-time": "Veikimo laikas",
+	"bs-whoisonline-pref-orderby-name": "Pavadinimas",
+	"bs-whoisonline-pref-interval": "Atnaujinimo intervalas sekundėmis:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Rodo visų vartotojų, kurie buvo prisijungę per paskutines 10 minučių, skaičių.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Rodo visus vartotojus, kurie buvo prisijungę per paskutines 10 minučių."
+}

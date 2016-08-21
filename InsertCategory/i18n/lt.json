@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-insertcategory-desc": "Dialogas, kategorijos nuorodos įvedimui",
+	"bs-insertcategory-insertcat": "Įterpti kategoriją",
+	"prefs-insertcategory": "Įterpti kategoriją",
+	"bs-insertcategory-title": "Įterpti kategoriją",
+	"bs-insertcategory-cat-label": "Priskirta:",
+	"bs-insertcategory-success": "Kategorija buvo pridėta",
+	"bs-insertcategory-failure": "Klaida",
+	"bs-insertcategory-hint": "Pastaba: kad pridėtumėte kategorija turite paspausti enter.",
+	"bs-insertcategory-panel-title": "Kategorijos"
+}

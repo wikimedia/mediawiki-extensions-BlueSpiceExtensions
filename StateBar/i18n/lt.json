@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-statebar-desc": "Pateikia būsenos juostą",
+	"prefs-statebar": "Būsenos juosta",
+	"bs-statebar-pref-show": "Rodyti būsenos juostą",
+	"bs-statebar-viewtoggler": "INFORMACIJA",
+	"bs-statebar-viewtoggler-tooltip": "Rodyti išsamią informaciją",
+	"bs-statebar-switch-description": "Paslepia būsenos juostą šiame puslapyje.",
+	"bs-statebar-ajax-nobodyviews": "Nėra prieinamos informacijos."
+}

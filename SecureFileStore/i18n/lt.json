@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-securefilestore-desc": "Apsaugo nuo neautorizuotos prieigos prie failų ir paveikslėlių",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Naršyklė",
+	"bs-securefilestore-pref-defaultdisposition-external": "Išorinis",
+	"bs-securefilestore-pref-dispositionattachment": "Išoriniai failų tipai:",
+	"bs-securefilestore-pref-dispositioninline": "Naršyklės failų tipai:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Visada rodyti šiuos failų tipus:"
+}

@@ -2,9 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Gediminas",
-			"Pofka"
+			"Pofka",
+			"Eitvys200"
 		]
 	},
+	"bs-wikiadmin-notallowed": "Jūs negalite naudoti šio puslapio.",
+	"wikiadmin": "BlueSpice administracija",
+	"action-wikiadmin": "rodyti BlueSpice administracijos puslapius",
+	"right-wikiadmin": "Rodyti BlueSpice administracijos puslapius",
 	"bs-wikiadmin-shop": "Parduotuvė",
-	"bs-wikiadmin-mediawiki-specialpages-text": "Specialūs puslapiai"
+	"bs-wikiadmin-mediawiki-specialpages-text": "Specialūs puslapiai",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Išvardija visus MediaWiki specialius puslapius",
+	"bs-wikiadmin-widget-title": "Administracija"
 }

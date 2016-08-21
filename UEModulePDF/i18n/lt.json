@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-uemodulepdf-desc": "Leidžia MediaWiki eksportuoti puslapius PDF formatu",
+	"prefs-uemodulepdf": "Universalus PDF eksporto modulis",
+	"uemodulepdf": "Universalus PDF eksporto modulis",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Posistemės URL:",
+	"bs-uemodulepdf-pref-templatepath": "Standartinis šablonas:",
+	"bs-uemodulepdf-pref-templatedir": "Šablonų katalogas:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF vienas puslapis",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Eksporto šį puslapį kaip PDF.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Eksportuoja puslapius (specialiuosius puslapius ir turinio puslapius) į PDF.",
+	"bs-uemodulepdf-overview-webservice-state": "Posistemės būsena",
+	"bs-uemodulepdf-overview-webservice-state-ok": "prieinama",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "neprieinamas",
+	"soap-service-url-not-valid": "URL į PDF generuojančią internetinę paslaugą yra negalima. Prašome patikrinti vikį konfigūraciją.",
+	"soap-service-url-not-set": "URL į PDF generuojančią internetinę paslaugą yra nenustatyta. Prašome patikrinti vikį konfigūraciją.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Posistemės internetinė sąsaja"
+}

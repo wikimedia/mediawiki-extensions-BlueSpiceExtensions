@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zygimantus"
+			"Zygimantus",
+			"Eitvys200"
 		]
 	},
+	"bs-pageaccess-error-no-groups-given": "Nebuvo nurodytos jokios grupės.",
 	"log-name-bs-pageaccess": "Puslapio prieigos žurnalas",
-	"log-show-hide-bs-pageaccess": "$1 puslapio prieigos žurnalas"
+	"log-description-bs-pageaccess": "Tai yra puslapio prieigos nustatymų pakeitimų žurnalas.",
+	"log-show-hide-bs-pageaccess": "$1 puslapio prieigos žurnalas",
+	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|pakeitė}} prieigos teises iš $3 į „$4“",
+	"action-pageaccess-viewspecialpage": "žiūrėti specialų puslapį „{{int:pageaccess}}“"
 }

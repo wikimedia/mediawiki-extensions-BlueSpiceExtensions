@@ -34,5 +34,7 @@
 	"bs-permissionmanager-titletpled-delete": "Usuń szablon",
 	"bs-permissionmanager-error-lockout": "Co najmniej jedna grupa musi posiadać uprawnienie „$1”.\nZmiany nie mogą zostać zapisane.",
 	"log-description-bs-permission-manager": "Jest to rejestr zmian w uprawnieniach grupy.",
-	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|zmienił|zmieniła|zmienił(a)}} uprawnienia grupy $4"
+	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|zmienił|zmieniła|zmienił(a)}} uprawnienia grupy $4",
+	"action-permissionmanager-viewspecialpage": "zobacz stronę specjalną „{{int:bs-permissionmanager-label}}”",
+	"permissionmanager": "Menedżer uprawnień"
 }

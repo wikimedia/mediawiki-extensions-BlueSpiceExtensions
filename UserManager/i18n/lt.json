@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-usermanager-admin-nodelete": "Administratoriaus paskyra negali būti ištrinta.",
+	"bs-usermanager-self-nodelete": "Jūs negalite ištrinti savo paskyros.",
+	"bs-usermanager-db-error": "Įvyko duomenų bazės klaida.",
+	"bs-usermanager-enter-pwd": "Prašome įvesti slaptažodį.",
+	"bs-usermanager-idnotexist": "Šis vartotojas neegzistuoja.",
+	"bs-usermanager-invalid-pwd": "Slaptažodis yra neteisingas.",
+	"bs-usermanager-invalid-realname": "Tikrasis vardas yra neteisingas.",
+	"bs-usermanager-invalid-uname": "Vartotojo vardas yra neteisingas.",
+	"bs-usermanager-invalid-email-gen": "El. pašto adresas yra neteisingas.",
+	"bs-usermanager-label": "Vartotojų tvarkytojas",
+	"bs-usermanager-user-added": "Vartotojas buvo pridėtas.",
+	"bs-usermanager-user-deleted": "Vartotojas buvo ištrintas.",
+	"bs-usermanager-user-exists": "Vartotojo vardas jau egzistuoja.",
+	"bs-usermanager-save-successful": "Pakeitimai išsaugoti.",
+	"bs-usermanager-headerusername": "Vartotojo vardas",
+	"bs-usermanager-headerrealname": "Tikras vardas",
+	"bs-usermanager-headeremail": "El. paštas",
+	"bs-usermanager-headergroups": "Grupės",
+	"bs-usermanager-titleadduser": "Pridėti vartotoją",
+	"bs-usermanager-titleeditdetails": "Redaguoti vartotoją",
+	"bs-usermanager-labelnewpassword": "Slaptažodis",
+	"bs-usermanager-labelpasswordcheck": "Patvirtinti slaptažodį",
+	"bs-usermanager-titledeleteuser": "Ištrinti vartotoją",
+	"bs-usermanager-confirmdeleteuser": "Ar tikrai norite ištrinti {{PLURAL:$1|šį vartotoją|šiuos vartotojus}}?",
+	"bs-usermanager-groups-more": "... daugiau",
+	"bs-usermanager-no-self-desysop": "Jūs negalite atimti savo paties sysop teisės."
+}

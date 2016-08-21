@@ -4,6 +4,9 @@
 			"Eitvys200"
 		]
 	},
+	"bs-contextmenu-desc": "Pateikia kontekstinius meniu įvairioms nuorodoms",
+	"prefs-contextmenu": "Kontekstinis meniu",
+	"bs-contextmenu-pref-modus": "Atidaryti kontekstinį meniu (ne mobiliesiems):",
 	"bs-contextmenu-page-edit": "Redaguoti puslapį",
 	"bs-contextmenu-page-delete": "Trinti puslapį",
 	"bs-contextmenu-page-move": "Perkelti puslapį",

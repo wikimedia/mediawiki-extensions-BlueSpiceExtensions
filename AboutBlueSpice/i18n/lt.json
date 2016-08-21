@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-aboutbluespice-desc": "Informacija apie BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "Apie BlueSpice",
+	"aboutbluespice": "Apie BlueSpice",
+	"prefs-aboutbluespice": "Apie BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Rodyti nuorodą „{{int:bs-aboutbluespice-about-bluespice}}“ viršuje ir pagrindiniame meniu"
+}
