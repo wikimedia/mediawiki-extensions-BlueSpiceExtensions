@@ -118,7 +118,8 @@
 		var titleParts = title.split('.');
 		var fileExtension = titleParts[titleParts.length-1];
 
-		if ( mw.config.get( "wgFileExtensions" ).indexOf( fileExtension ) === -1 ) {
+		if ( mw.config.get( "bsImageExtensions" ).indexOf( fileExtension.toLowerCase() ) === -1
+			 && mw.config.get( "bsFileExtensions" ).indexOf( fileExtension.toLowerCase() ) === -1 ) {
 			return true;
 		}
 

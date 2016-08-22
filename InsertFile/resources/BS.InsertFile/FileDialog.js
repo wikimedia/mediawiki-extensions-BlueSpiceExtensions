@@ -7,6 +7,7 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 	title: mw.message('bs-insertfile-titlefile').plain(),
 
 	storeFileType: 'file',
+	allowedFileExtensions: mw.config.get( 'bsFileExtensions' ),
 
 	initComponent: function() {
 		//this is neccessary to avoid strange cross-referencing between the
