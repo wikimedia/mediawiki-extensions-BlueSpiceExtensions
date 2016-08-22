@@ -259,7 +259,7 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 		return $oResult;
 	}
 
-	public function logTaskAction( $sAction, $aParams ) {
+	public function logTaskAction( $sAction, $aParams, $aOptions = array(), $bDoPublish = false ) {
 		$oTitle = SpecialPage::getTitleFor( 'WikiAdmin' );
 		$oUser = RequestContext::getMain()->getUser();
 		$oLogger = new ManualLogEntry( 'bs-namespace-manager', $sAction );
