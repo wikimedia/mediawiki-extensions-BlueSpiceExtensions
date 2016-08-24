@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Shirayuki"
+			"Shirayuki",
+			"Beta16"
 		]
 	},
 	"bs-rssfeeder-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of rss feeder extension",
@@ -16,5 +17,5 @@
 	"bs-rssfeeder-rss-desc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], description of rss feed portlet",
 	"bs-extjs-rssfeeder-rss-title": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], label for rss URL.",
 	"bs-rssfeeder-invalid-url": "Error message when URL is not provided in the API",
-	"action-rssfeeder-viewspecialpage": "placeholder to describe that view of special page \"{{int:rssfeeder}}\" is restricted for the current user"
+	"action-rssfeeder-viewspecialpage": "placeholder to describe that view of special page \"{{int:rssfeeder}}\" is restricted for the current user.\n\n{{Doc-action|rssfeeder-viewspecialpage}}"
 }

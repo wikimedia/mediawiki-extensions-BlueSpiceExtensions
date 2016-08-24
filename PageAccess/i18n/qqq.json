@@ -4,7 +4,8 @@
 			"Marc Reymann <reymann@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Shirayuki",
-			"Leonid Verhovskij <verhovskij@hallowelt.com>"
+			"Leonid Verhovskij <verhovskij@hallowelt.com>",
+			"Beta16"
 		]
 	},
 	"bs-pageaccess-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page access extension",
@@ -17,5 +18,5 @@
 	"log-description-bs-pageaccess": "Used in [[Special:Log]], description of the log type",
 	"log-show-hide-bs-pageaccess": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
 	"logentry-bs-pageaccess-change": "Log message about changes on the access settings for a page.\nParameters:\n* $4 - comma separated list of the allowed groups",
-	"action-pageaccess-viewspecialpage": "placeholder to describe that view of special page \"{{int:pageaccess}}\" is restricted for the current user"
+	"action-pageaccess-viewspecialpage": "placeholder to describe that view of special page \"{{int:pageaccess}}\" is restricted for the current user.\n\n{{Doc-action|pageaccess-viewspecialpage}}"
 }

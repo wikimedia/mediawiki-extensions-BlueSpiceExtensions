@@ -28,5 +28,7 @@
 	"bs-permissionmanager-titletpled-new": "Crea template",
 	"bs-permissionmanager-titletpled-edit": "Rinomina template",
 	"bs-permissionmanager-titletpled-delete": "Cancella template",
-	"bs-permissionmanager-pref-max-backups": "Numero massimo di backup"
+	"bs-permissionmanager-pref-max-backups": "Numero massimo di backup",
+	"action-permissionmanager-viewspecialpage": "visualizzare la pagina speciale \"{{int:bs-permissionmanager-label}}\"",
+	"permissionmanager": "Gestione autorizzazioni"
 }

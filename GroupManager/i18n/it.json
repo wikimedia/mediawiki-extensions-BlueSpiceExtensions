@@ -21,5 +21,7 @@
 	"bs-groupmanager-titleeditgroup": "Modifica gruppo",
 	"bs-groupmanager-removegroup": "Sei sicuro di voler rimuovere {{PLURAL:$1|questo gruppo|questi gruppi}}?",
 	"bs-groupmanager-lablename": "Nome gruppo:",
-	"apihelp-bs-groupmanager-description": "Fornisce le attività per l'estensione GroupManager."
+	"apihelp-bs-groupmanager-description": "Fornisce le attività per l'estensione GroupManager.",
+	"action-groupmanager-viewspecialpage": "visualizzare la pagina speciale \"{{int:bs-groupmanager-label}}\"",
+	"groupmanager": "Gestione gruppi"
 }

@@ -69,5 +69,6 @@
 	"bs-extendedsearch-more": "Méi",
 	"bs-extendedsearch-fewer": "Manner",
 	"bs-extendedsearch-facetsetting-op-and": "AN",
-	"bs-extendedsearch-facetsetting-op-or": "ODER"
+	"bs-extendedsearch-facetsetting-op-or": "ODER",
+	"action-extendedsearch-viewspecialpage": "d'Spezialsäit \"{{int:specialextendedsearch}}\" weisen"
 }

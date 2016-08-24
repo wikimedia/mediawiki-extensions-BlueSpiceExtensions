@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Shirayuki",
-			"Leonid Verhovskij <verhovskij@hallowelt.com>"
+			"Leonid Verhovskij <verhovskij@hallowelt.com>",
+			"Beta16"
 		]
 	},
 	"bs-groupmanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of group manager extension",
@@ -35,6 +36,6 @@
 	"logentry-bs-group-manager-modify": "Log message about changes of the name of a group.\nParameters:\n* $4 - old name of the group\n* $5 - new name of the group",
 	"logentry-bs-group-manager-remove": "Log message about the removal of a group.\nParameters:\n* $4 - name of the group",
 	"apihelp-bs-groupmanager-description": "Describes the API endpoint that provides tasks for the GroupManager extension",
-	"action-groupmanager-viewspecialpage": "placeholder to describe that view of special page \"{{int:bs-groupmanager-label}}\" is restricted for the current user",
+	"action-groupmanager-viewspecialpage": "placeholder to describe that view of special page \"{{int:bs-groupmanager-label}}\" is restricted for the current user.\n\n{{Doc-action|groupmanager-viewspecialpage}}",
 	"groupmanager": "Used in overview of special pages, anchor text for group manager\n{{Identical|Group manager}}"
 }
