@@ -3,6 +3,8 @@
 BsExtensionManager::registerExtension('InsertLink', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
 $GLOBALS['wgAutoloadClasses']['InsertLink'] = __DIR__ . '/InsertLink.class.php';
+$GLOBALS['wgAutoloadClasses']['SpecialInsertLinkFileChooserJNLP'] = __DIR__ . '/includes/specials/SpecialInsertLinkFileChooserJNLP.php';
+$GLOBALS['wgSpecialPages']['InsertLinkFileChooserJNLP'] = 'SpecialInsertLinkFileChooserJNLP';
 
 $wgMessagesDirs['InsertLink'] = __DIR__ . '/i18n';
 
@@ -45,5 +47,3 @@ $wgResourceModules['ext.bluespice.insertlink.styles'] = array(
 ) + $aResourceModuleTemplate;
 
 unset( $aResourceModuleTemplate );
-
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'InsertLink::onLoadExtensionSchemaUpdates';
