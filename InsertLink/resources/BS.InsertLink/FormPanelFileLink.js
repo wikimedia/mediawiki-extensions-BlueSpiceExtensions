@@ -32,10 +32,8 @@ Ext.define( 'BS.InsertLink.FormPanelFileLink', {
 				//select input text for override
 				this.tfTargetUrl.focus( true );
 				//open java app for file selection
-				var jnlpPath = "/extensions/BlueSpiceFoundation/data/bsFileLinkChooser.jnlp";
-				var downloadUrl = mw.config.get( "wgScriptPath" ) + jnlpPath;
 				var downloadFrame = document.createElement( "iframe" );
-				downloadFrame.setAttribute( 'src', downloadUrl );
+				downloadFrame.setAttribute( 'src', mw.util.getUrl( 'Special:InsertLinkFileChooserJNLP' ) );
 				downloadFrame.setAttribute( 'class', "screenReaderText" );
 				downloadFrame.setAttribute( 'style', "display:none;" );
 				document.body.appendChild( downloadFrame );
