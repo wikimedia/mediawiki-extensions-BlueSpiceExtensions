@@ -22,7 +22,11 @@
 		]
 	},
 	"AutoloadClasses": {
-		"InsertLink": "InsertLink.class.php"
+		"InsertLink": "InsertLink.class.php",
+		"SpecialInsertLinkFileChooserJNLP": "includes/specials/SpecialInsertLinkFileChooserJNLP.php"
+	},
+	"SpecialPages": {
+		"InsertLinkFileChooserJNLP": "SpecialInsertLinkFileChooserJNLP"
 	},
 	"ResourceModules": {
 		"ext.bluespice.insertlink": {
@@ -58,9 +62,6 @@
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/InsertLink/resources"
-	},
-	"Hooks": {
-		"LoadExtensionSchemaUpdates": "InsertLink::onLoadExtensionSchemaUpdates"
 	},
 	"manifest_version": 1
 }

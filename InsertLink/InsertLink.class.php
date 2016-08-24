@@ -85,32 +85,4 @@ class InsertLink extends BsExtensionMW {
 		$this->getOutput()->addJsConfigVars( 'bsInsertLinkEnableJava', BsConfig::get( 'MW::InsertLink::EnableJava' ) );
 		return true;
 	}
-
-	public static function onLoadExtensionSchemaUpdates(DatabaseUpdater $updater) {
-		//Create bsFileLnkChooser.jnlp File with proper path
-		//Important: $wgServer should be public url, not localhost
-		global $wgServer, $wgScriptPath, $IP;
-		$bsFileLinkChooser = '
-		<?xml version="1.0" encoding="utf-8"?>
-		<jnlp codebase="" href="" >
-		  <information>
-			<title>BSFileLinkChooser</title>
-			<vendor>HalloWelt GmbH</vendor>
-			<homepage href="http://hallowelt.com"/>
-			<description>Simple FileChooser Application</description>
-			<description kind="short">BSFileLinkChooser</description>
-			<offline-allowed/>
-		  </information>
-		  <security>
-			  <all-permissions/>
-		  </security>
-		  <resources>
-			<j2se version="1.6+"/>
-			<jar href="'.$wgServer.$wgScriptPath.'/extensions/BlueSpiceExtensions/InsertLink/vendor/bsFileLinkChooser.jar" main="true"/>
-		  </resources>
-		  <application-desc main-class="bsFileLinkChooser.JWSFileChooser"/>
-		</jnlp>';
-		file_put_contents( __DIR__ . "/../../BlueSpiceFoundation/data/bsFileLinkChooser.jnlp", $bsFileLinkChooser);
-		$updater->output( "InsertLink jnlp file created.\n" );
-	}
 }
