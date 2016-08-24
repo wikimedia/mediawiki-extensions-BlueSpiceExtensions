@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Created-By: 1.8.0_91 (Oracle Corporation)
+Main-Class: bsFileLinkChooser/JWSFileChooser
+Permissions: all-permissions
+
+Name: bsFileLinkChooser/JWSFileChooser.class
+SHA-256-Digest: bkpPlR0UKyJqi0fBDSH294o0TRdlfDqIP22txSFqXbU=
+
+Name: bsFileLinkChooser/JWSFileChooser$1.class
+SHA-256-Digest: dVq8zeEgg8cDVCO/m4fN1neVnWEyuxK7kmWsgzUIBJg=
+
