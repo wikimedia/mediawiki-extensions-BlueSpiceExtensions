@@ -77,23 +77,10 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 		this.isDirty = true;
 		var values = newValue.split(',');
 		var valuesToSet = [];
-		var me = this;
 		$.each( values, function( index, element ){
-			valuesToSet.push( me.ucFirst( element ) );
+			valuesToSet.push( element.ucFirst() );
 		});
 		sender.setValue( valuesToSet.join(','), true );
-	},
-	ucFirst: function ucfirst( str ) {
-		//  discuss at: http://locutus.io/php/ucfirst/
-		// original by: Kevin van Zonneveld (http://kvz.io)
-		// bugfixed by: Onno Marsman (https://twitter.com/onnomarsman)
-		// improved by: Brett Zamir (http://brett-zamir.me)
-		//   example 1: ucfirst('kevin van zonneveld')
-		//   returns 1: 'Kevin van zonneveld'
-
-		str += '';
-		var f = str.charAt( 0 ).toUpperCase();
-		return f + str.substr( 1 );
 	},
 	setData: function( data ) {
 		this.bsCategories.setValue( data );
