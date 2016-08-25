@@ -358,7 +358,6 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 	validateFile: function( value ) {
 		if( value === "" ) return true;
 		var me = this.up('form');
-		me.allowedFileExtensions = mw.config.get( 'wgFileExtensions' );
 
 		var nameParts = value.split('.');
 		var fileExtension = nameParts[nameParts.length-1].toLowerCase();
