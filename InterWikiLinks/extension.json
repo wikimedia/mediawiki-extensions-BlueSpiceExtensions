@@ -1,0 +1,61 @@
+{
+	"name": "InterWikiLinks",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/Interwikilinks",
+	"author": [
+		"Markus Glaser",
+		"Sebastian Ulbricht"
+	],
+	"descriptionmsg": "bs-interwikilinks-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"InterWikiLinks": {
+			"className": "InterWikiLinks",
+			"extPath": "/BlueSpiceExtensions/InterWikiLinks"
+		}
+	},
+	"APIModules": {
+		"bs-interwikilinks-tasks": "BSApiTasksInterWikiLinksManager"
+	},
+	"MessagesDirs": {
+		"InterWikiLinks": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"InterWikiLinks": "InterWikiLinks.class.php",
+		"BSApiTasksInterWikiLinksManager": "includes/api/BSApiTasksInterWikiLinksManager.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.interWikiLinks": {
+			"scripts": "bluespice.interWikiLinks.js",
+			"messages": [
+				"bs-interwikilinks-headerprefix",
+				"bs-interwikilinks-headerurl",
+				"bs-interwikilinks-titleaddinterwikilink",
+				"bs-interwikilinks-titleeditinterwikilink",
+				"bs-interwikilinks-labelprefix",
+				"bs-interwikilinks-labelurl",
+				"bs-interwikilinks-titledeleteinterwikilink",
+				"bs-interwikilinks-confirmdeleteinterwikilink"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		},
+		"bluespice.insertLink.interWikiLinks": {
+			"scripts": "bluespice.insertLink.interWikiLinks.js",
+			"messages": [
+				"bs-interwikilinks-insertlink-tabtitle",
+				"bs-interwikilinks-insertlink-labelprefix",
+				"bs-interwikilink-select-a-prefix"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/InterWikiLinks/resources"
+	},
+	"manifest_version": 1
+}
