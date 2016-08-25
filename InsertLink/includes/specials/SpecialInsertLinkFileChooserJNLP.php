@@ -23,7 +23,7 @@ class SpecialInsertLinkFileChooserJNLP extends UnlistedSpecialPage {
 </jnlp>
 THERE;
 
-	public function __construct( $name, $restriction = '', $function = false, $file = 'default' ) {
+	public function __construct() {
 		parent::__construct( 'InsertLinkFileChooserJNLP' );
 	}
 
