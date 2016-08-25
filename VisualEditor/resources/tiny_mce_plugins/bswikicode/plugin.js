@@ -611,13 +611,13 @@ var BsWikiCode = function() {
 					_externalLinkNo++;
 				}
 				linkHtml = anchorFormat.format(
-					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),			// href
-					linkLabel,												// <a>linkLabel</a>
-					'external_link',										// data-bs-type
-					'external bs-external-link bs-protocol-'+protocol,		// class
-					$( '<div/>' ).text( link ).html(),						// data-bs-wikitext
-					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),			// data-mce-href
-					$( '<div/>' ).text( linkLabel ).html()					// title
+					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),		// href
+					linkLabel,						// <a>linkLabel</a>
+					'external_link',					// data-bs-type
+					'external bs-external-link bs-protocol-'+protocol,	// class
+					$( '<div/>' ).text( link ).html(),			// data-bs-wikitext
+					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),		// data-mce-href
+					$( '<div/>' ).text( linkLabel ).html()			// title
 				);
 				text = text.replace("[" + linkNoWrap + "]", linkHtml);
 			}
@@ -700,7 +700,6 @@ var BsWikiCode = function() {
 					//if( label == target ) {
 					//	linkwiki = "[" + target + "]";
 					//} else {
-					console.log(target);
 					target = target.replace( / /g, '%20' );
 					if ( type === "external_link" && wikitext.indexOf(" ") == -1 && unescape( label.match(/^\[\d+\]$/) ) ) {
 						linkwiki = "[" + target + "]";
