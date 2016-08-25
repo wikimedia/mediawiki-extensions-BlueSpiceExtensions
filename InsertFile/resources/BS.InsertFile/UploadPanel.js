@@ -226,7 +226,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 		for( var i = 0; i < categories.length; i++ ) {
 			var categoryLink = new bs.wikiText.Link({
-				title: $.ucFirst( categories[i] ),
+				title: categories[i].ucFirst(),
 				nsText: formattedNamespaces[bs.ns.NS_CATEGORY],
 				link: false //TDOD: fix this in "bs.wikiText.Link"
 			});
