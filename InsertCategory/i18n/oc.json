@@ -10,7 +10,7 @@
 	"bs-insertcategory-pref-withparents": "Inserir una categoria amb sos parents",
 	"bs-insertcategory-title": "Inserir una categoria",
 	"bs-insertcategory-cat-label": "Assignat :",
-	"bs-insertcategory-success": "Categoria aponduda corrèctament",
+	"bs-insertcategory-success": "La categoria es estada aponduda",
 	"bs-insertcategory-failure": "Error",
 	"bs-insertcategory-panel-title": "Categorias"
 }
