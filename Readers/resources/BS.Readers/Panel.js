@@ -14,16 +14,18 @@
 
 Ext.define( 'BS.Readers.Panel', {
 	extend: 'Ext.grid.Panel',
+	requires: [ 'Ext.ux.grid.FiltersFeature', 'BS.store.BSApi' ],
 	id: 'bs-readers-panel',
 	initComponent: function () {
-		this.store = Ext.create( 'BS.store.BSApi', {
+		this.store = new BS.store.BSApi( {
 			apiAction: 'bs-readers-users-store',
 			proxy: {
 				extraParams: {
 					query: mw.config.get("bsReadersTitle")
 				}
 			},
-			fields: [ 'user_image', 'user_name', 'user_page', 'user_readers', 'user_ts', 'user_date' ]
+			fields: [ 'user_image', 'user_name', 'user_page', 'user_page_link',
+				'user_readers', 'user_readers_link', 'user_ts', 'user_date' ]
 		} );
 
 		this.colUserName = Ext.create( 'Ext.grid.column.Template', {
@@ -31,16 +33,8 @@ Ext.define( 'BS.Readers.Panel', {
 			header: mw.message( 'bs-readers-header-username' ).plain(),
 			sortable: true,
 			dataIndex: 'user_name',
-			tpl: '<a href="{user_page}">{user_name}</a>',
+			tpl: '{user_readers_link} {user_page_link}',
 			filterable: true,
-			flex: 1
-		} );
-		this.colReadersPage = Ext.create( 'Ext.grid.column.Template', {
-			id: 'userreaderspage',
-			header: mw.message( 'bs-readers-header-readerspath' ).plain(),
-			sortable: true,
-			dataIndex: 'user_readers',
-			tpl: '<a href="{user_readers}">{user_name}</a>',
 			flex: 1
 		} );
 		this.colUserTs = Ext.create( 'Ext.grid.column.Template', {
@@ -49,14 +43,28 @@ Ext.define( 'BS.Readers.Panel', {
 			sortable: true,
 			dataIndex: 'user_ts',
 			tpl: '{user_date}',
+			filter: {
+				type: 'date'
+			},
 			flex: 1
 		} );
 
 		this.columns = [
 			this.colUserName,
-			this.colReadersPage,
 			this.colUserTs
 		];
+
+		this.bbar = new Ext.PagingToolbar({
+			store : this.store,
+			displayInfo : true
+		});
+
+		this.features = [
+			new Ext.ux.grid.FiltersFeature({
+				encode: true
+			})
+		];
+
 		this.callParent( arguments );
 	}
 } );

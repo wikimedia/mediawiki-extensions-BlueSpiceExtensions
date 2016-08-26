@@ -13,24 +13,26 @@
 
 Ext.define( 'BS.Readers.PathPanel', {
 	extend: 'Ext.grid.Panel',
+	requires: [ 'Ext.ux.grid.FiltersFeature', 'BS.store.BSApi' ],
 	id: 'bs-readers-pathpanel',
 	initComponent: function () {
-		this.store = Ext.create( 'BS.store.BSApi', {
+		this.store =  new BS.store.BSApi({
 			apiAction: 'bs-readers-data-store',
 			proxy: {
 				extraParams: {
 					query: mw.config.get("bsReadersUserID")
 				}
 			},
-			fields: [ 'pv_page', 'pv_page_title', 'pv_ts' ]
+			fields: [ 'pv_page', 'pv_page_link', 'pv_page_title', 'pv_ts',
+				'pv_date', 'pv_readers_link' ]
 		} );
 
 		this.colPage = Ext.create( 'Ext.grid.column.Template', {
 			id: 'pvpage',
 			header: mw.message( 'bs-readers-header-page' ).plain(),
 			sortable: true,
-			dataIndex: 'pv_page',
-			tpl: '<a href="{pv_page}">{pv_page_title}</a>',
+			dataIndex: 'pv_page_title',
+			tpl: '{pv_readers_link} {pv_page_link}',
 			filterable: true,
 			flex: 1
 		} );
@@ -39,13 +41,27 @@ Ext.define( 'BS.Readers.PathPanel', {
 			header: mw.message( 'bs-readers-header-ts' ).plain(),
 			sortable: true,
 			dataIndex: 'pv_ts',
-			tpl: '{pv_ts}',
+			tpl: '{pv_date}',
+			filter: {
+				type: 'date'
+			},
 			flex: 1
 		} );
 
 		this.columns = [
 			this.colPage,
 			this.colTs
+		];
+
+		this.bbar = new Ext.PagingToolbar({
+			store : this.store,
+			displayInfo : true
+		});
+
+		this.features = [
+			new Ext.ux.grid.FiltersFeature({
+				encode: true
+			})
 		];
 
 		this.callParent( arguments );
