@@ -1,69 +1,21 @@
 <?php
-/**
- * This is the Preferences class.
- *
- * The Preferences offers an easy way to manage the settings of BlueSpice.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
- *
- * @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-design.hk>
- * @version    2.23.1
- * @package    Bluespice_Extensions
- * @subpackage Preferences
- * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
- * @filesource
- */
 
-// Last review MRG (01.07.11 13:56)
+class SpecialBlueSpicePreferences extends BsSpecialPage {
 
-/**
- * the Preferences class
- * @package BlueSpice_Extensions
- * @subpackage Preferences
- */
-class BsPreferences extends BsExtensionMW {
-public function __construct() {
-    wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
+	public function __construct() {
+		parent::__construct( 'BlueSpicePreferences', 'bluespicepreferences-viewspecialpage' );
 
-     WikiAdmin::registerModule( 'Preferences', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
-			'level' => 'wikiadmin',
-			'message' => 'bs-preferences-label'
-		) );
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-
-
-}
-
-	protected function initExt() {
-		$this->mCore->registerPermission( 'bluespicepreferences-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 	}
 
 	/**
-	 * returns the formular for Preferences
-	 * @return string the formular string
+	 *
+	 * @global OutputPage $this->getOutput()
+	 * @param type $sParameter
+	 * @return type
 	 */
-	public function getForm() {
+	public function execute( $sParameter ) {
+		parent::execute( $sParameter );
+
 		if ( wfReadOnly() ) {
 			throw new ReadOnlyError;
 		}
@@ -97,7 +49,7 @@ public function __construct() {
 				$out .= $var->getName() . "<br>";
 			}
 
-			return $out;
+			$this->getOutput()->addHTML( $out );
 		}
 
 		$preferences = array();
@@ -146,8 +98,6 @@ public function __construct() {
 		$oForm->show();
 
 		$this->getOutput()->addHTML( '<br />' );
-
-		return '';
 	}
 
 	/**
@@ -190,8 +140,7 @@ public function __construct() {
 
 		BsConfig::saveSettings();
 
-		$url = SpecialPage::getTitleFor( 'WikiAdmin' )->getFullURL( array(
-			'mode' => 'Preferences',
+		$url = SpecialPage::getTitleFor( 'BlueSpicePreferences' )->getFullURL( array(
 			'success' => 1
 		) );
 		$this->getOutput()->redirect( $url );
@@ -206,17 +155,6 @@ public function __construct() {
 	 */
 	protected function generateFieldId( $var ) {
 		return $var->getAdapter() . "_" . $var->getExtension() . "_" . $var->getName();
-	}
-
-	public static function onBeforePageDisplay( OutputPage &$out, &$skin ) {
-		if( !$out->getTitle()->isSpecial( 'WikiAdmin' ) ) return true;
-		if( strtolower( $out->getRequest()->getVal( 'mode' )  ) != 'preferences' ) return true;
-
-		$out->addInlineStyle(
-			'.bs-prefs legend{cursor:pointer;}'
-		);
-
-		return true;
 	}
 
 }
