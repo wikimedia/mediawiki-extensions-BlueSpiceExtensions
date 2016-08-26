@@ -16,5 +16,6 @@
 	"userdashboard": "Användar-kontrollpanel",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
 	"bs-dashboard-userportlet-calendar-description": "Kalender",
-	"bs-dashboard-userportlet-wikipage-wiki-article": "Wikisida"
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Wikisida",
+	"action-dashboards-viewspecialpage-userdashboard": "visa specialsidan \"{{int:userdashboard}}\""
 }

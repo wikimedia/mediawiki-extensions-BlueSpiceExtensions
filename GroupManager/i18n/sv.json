@@ -31,5 +31,7 @@
 	"log-show-hide-bs-group-manager": "$1 logg för grupphantering",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|har skapat}} gruppen $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|har namnändrat}} gruppen $4 till $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|har tagit bort}} gruppen $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|har tagit bort}} gruppen $4",
+	"action-groupmanager-viewspecialpage": "visa specialsidan \"{{int:bs-groupmanager-label}}\"",
+	"groupmanager": "Grupphanterare"
 }
