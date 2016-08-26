@@ -44,5 +44,7 @@
 	"bs-usermanager-confirmdisableuser": "Möchtest du wirklich {{GENDER:$1|den Benutzer|die Benutzerin}} $1 deaktivieren?",
 	"bs-usermanager-confirmenableuser": "Möchtest du wirklich {{GENDER:$1|den Benutzer|die Benutzerin}} $1 aktivieren?",
 	"bs-usermanager-titledisableuser": "Benutzer deaktivieren",
-	"bs-usermanager-titleenableuser": "Benutzer aktivieren"
+	"bs-usermanager-titleenableuser": "Benutzer aktivieren",
+	"usermanager": "Benutzerverwaltung",
+	"action-usermanager-viewspecialpage": "betrachten der Spezialseite \"Benutzerverwaltung\""
 }

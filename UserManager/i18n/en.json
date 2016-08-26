@@ -43,5 +43,7 @@
 	"bs-usermanager-confirmdisableuser": "Do you really want to disable {{GENDER:$1|the user}} $1?",
 	"bs-usermanager-confirmenableuser": "Do you really want to enable {{GENDER:$1|the user}} $1?",
 	"bs-usermanager-titledisableuser": "Disable user",
-	"bs-usermanager-titleenableuser": "Enable user"
+	"bs-usermanager-titleenableuser": "Enable user",
+	"usermanager": "User manager",
+	"action-usermanager-viewspecialpage": "view specialpage \"User manager\""
 }

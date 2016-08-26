@@ -1,0 +1,73 @@
+{
+	"manifest_version": "0.0.1",
+	"name": "UserManager",
+	"author": [
+		"Sebastian Ulbricht",
+		"Stephan Muggli",
+		"Markus Glaser",
+		"Leonid Verhovskij"
+	],
+	"version": "2.27.0",
+	"url": "https://www.mediawiki.org/wiki/Extension:UserManager",
+	"description": "The user manager facilitates the user management",
+	"descriptionmsg": "bs-usermanager-desc",
+	"license-name": "GPL-2.0+",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"UserManager": {
+			"className": "UserManager",
+			"extPath": "/BlueSpiceExtensions/UserManager"
+		}
+	},
+	"SpecialPages": {
+		"UserManager": "SpecialUserManager"
+	},
+	"ExtensionMessagesFiles": {
+		"UserManagerAlias": "includes/specials/SpecialUserManager.alias.php"
+	},
+	"APIModules": {
+		"bs-usermanager-tasks": "BSApiTasksUserManager"
+	},
+	"MessagesDirs": {
+		"UserManager": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"UserManager": "UserManager.class.php",
+		"BSApiTasksUserManager": "includes/api/BSApiTasksUserManager.php",
+		"SpecialUserManager": "includes/specials/SpecialUserManager.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.userManager": {
+			"scripts": "bluespice.userManager.js",
+			"dependencies": "ext.bluespice.extjs",
+			"messages": [
+				"bs-usermanager-headerusername",
+				"bs-usermanager-headerrealname",
+				"bs-usermanager-headeremail",
+				"bs-usermanager-headergroups",
+				"bs-usermanager-titleadduser",
+				"bs-usermanager-titleeditdetails",
+				"bs-usermanager-labelnewpassword",
+				"bs-usermanager-labelpasswordcheck",
+				"bs-usermanager-headergroups",
+				"bs-usermanager-titledeleteuser",
+				"bs-usermanager-confirmdeleteuser",
+				"bs-usermanager-groups-more",
+				"bs-usermanager-no-self-desysop",
+				"bs-usermanager-headerenabled",
+				"bs-usermanager-endisable",
+				"bs-usermanager-confirmdisableuser",
+				"bs-usermanager-confirmenableuser",
+				"bs-usermanager-titledisableuser",
+				"bs-usermanager-titleenableuser"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/UserManager/resources"
+	},
+	"manifest_version": 1
+}

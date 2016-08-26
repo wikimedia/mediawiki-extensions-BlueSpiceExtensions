@@ -45,16 +45,6 @@ class UserManager extends BsExtensionMW {
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'UserManager',
-			EXTINFO::DESCRIPTION => 'bs-usermanager-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/UserManager',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
 
 		WikiAdmin::registerModule( 'UserManager', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_usermanagement_v1.png',
@@ -63,6 +53,10 @@ class UserManager extends BsExtensionMW {
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	protected function initExt() {
+		$this->mCore->registerPermission( 'usermanager-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 	}
 
 	/**
