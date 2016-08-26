@@ -74,6 +74,7 @@ class Flexiskin extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Flexiskin::Active', "default", BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-flexiskin-pref-active', 'select' );
 		BsConfig::registerVar( 'MW::Flexiskin::Logo', "", BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_STRING );
 		$this->mCore->registerPermission( 'flexiskinedit', array(), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'flexiskin-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
