@@ -103,6 +103,7 @@
 	"bs-extendedsearch-fewer": "Less",
 	"bs-extendedsearch-facetsetting-op-and": "AND",
 	"bs-extendedsearch-facetsetting-op-or": "OR",
-	"action-extendedsearch-viewspecialpage":"view the special page \"{{int:specialextendedsearch}}\""
-
+	"action-extendedsearch-viewspecialpage":"view the special page \"{{int:specialextendedsearch}}\"",
+	"action-extendedsearchadmin-viewspecialpage":"view the special page \"{{int:extendedsearchadmin}}\"",
+	"extendedsearchadmin": "Extended search administration"
 }

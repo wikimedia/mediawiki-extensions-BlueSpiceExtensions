@@ -18,7 +18,8 @@
 		}
 	},
 	"SpecialPages": {
-		"SpecialExtendedSearch": "SpecialExtendedSearch"
+		"SpecialExtendedSearch": "SpecialExtendedSearch",
+		"ExtendedSearchAdmin": "SpecialExtendedSearchAdmin"
 	},
 	"APIModules": {
 		"feedextendedsearch": "ApiFeedExtendedSearch"
@@ -29,7 +30,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"ExtendedSearchAlias": "languages/SpecialExtendedSearch.alias.php"
+		"ExtendedSearchAlias": "languages/SpecialExtendedSearch.alias.php",
+		"ExtendedSearchAdminAlias": "languages/SpecialExtendedSearchAdmin.alias.php"
 	},
 	"AutoloadClasses": {
 		"ApiFeedExtendedSearch": "api/ApiFeedExtendedSearch.php",
@@ -67,7 +69,8 @@
 		"ViewSpell": "views/view.Spell.php",
 		"ViewMoreLikeThis": "views/view.MoreLikeThis.php",
 		"ViewExtendedSearchResultEntry": "views/view.ExtendedSearchResultEntry.php",
-		"SpecialExtendedSearch": "includes/specials/SpecialExtendedSearch.class.php"
+		"SpecialExtendedSearch": "includes/specials/SpecialExtendedSearch.class.php",
+		"SpecialExtendedSearchAdmin": "includes/specials/SpecialExtendedSearchAdmin.class.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.extendedsearch.focus": {

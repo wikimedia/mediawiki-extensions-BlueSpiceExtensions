@@ -112,6 +112,7 @@ class ExtendedSearch extends BsExtensionMW {
 
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ), array( 'type' => 'global' ) );
 		$this->mCore->registerPermission( 'extendedsearch-viewspecialpage', array( 'user' ), array( 'type' => 'global' ) );
+		$this->mCore->registerPermission( 'extendedsearchadmin-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 
 		$this->resolveNamespaceBoostQueryConfig();
 

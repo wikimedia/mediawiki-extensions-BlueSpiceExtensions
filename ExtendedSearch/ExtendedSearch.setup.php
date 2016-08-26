@@ -1,7 +1,9 @@
 <?php
 wfLoadExtension( 'BlueSpiceExtensions/ExtendedSearch' );
 
-$GLOBALS["wgAjaxExportList"][] = "ExtendedSearch::getRequestJson";
-$GLOBALS["wgAjaxExportList"][] = "ExtendedSearchBase::getAutocompleteData";
-$GLOBALS["wgAjaxExportList"][] = "ExtendedSearchBase::getRecentSearchTerms";
-$GLOBALS["wgAjaxExportList"][] = "ExtendedSearchAdmin::getProgressBar";
+$wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
+$wgAjaxExportList[] = 'ExtendedSearchBase::getAutocompleteData';
+$wgAjaxExportList[] = 'ExtendedSearchBase::getRecentSearchTerms';
+
+$wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
+

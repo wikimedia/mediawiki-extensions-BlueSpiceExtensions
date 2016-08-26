@@ -65,8 +65,7 @@ class ExtendedSearchAdmin {
 				$sOutput = ExtendedSearchAdmin::getInstance()->getDeleteFeedback();
 				break;
 			case 'deleteLock':
-				$sOutput = (string) ExtendedSearchAdmin::getInstance()
-					->checkLockExistence( $sMode );
+				$sOutput = (string) self::checkLockExistence( $sMode );
 				break;
 			default:
 				$sOutput = '';
@@ -102,7 +101,7 @@ class ExtendedSearchAdmin {
 			return false;
 		}
 
-		if ( $this->checkLockExistence() === false ) {
+		if ( self::checkLockExistence() === false ) {
 			$aSearchAdminButtons = array(
 				'create' => array(
 					'href' => '#',
@@ -158,7 +157,7 @@ class ExtendedSearchAdmin {
 	 * @param String $sMode
 	 * @return bool existence
 	 */
-	public function checkLockExistence( $sMode = '' ) {
+	public static function checkLockExistence( $sMode = '' ) {
 		if ( file_exists( BSDATADIR.DS.'ExtendedSearch.lock' ) ) {
 			if ( $sMode == 'deleteLock' ) {
 				unlink( BSDATADIR.DS.'ExtendedSearch.lock' );
