@@ -65,6 +65,9 @@ class PageTemplates extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-forcenamespace', 'toggle' );
 		// Hide template if page is not in target namespace
 		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-hideifnotintargetns', 'toggle' );
+
+		$this->mCore->registerPermission( 'pagetemplatesadmin-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
