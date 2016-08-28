@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92"
+		]
+	},
+	"bs-pageassignments-desc": "Vous donne la possibilité d'affecter des utilisateurs ou groupes à une page",
+	"pageassignments": "Affectations",
+	"bs-pageassignments-dlg-title": "Affectations",
+	"bs-pageassignments-dlg-fldlabel": "Affectations",
+	"bs-pageassignments-menu-label": "Modifier l'affectation",
+	"bs-pageassignments-statebar-label": "Affectations",
+	"bs-pageassignments-action-apiedit-description": "Modifier les affectations de $1",
+	"bs-pageassignments-column-title": "Pagetitle",
+	"bs-pageassignments-column-assignments": "Affectations",
+	"bs-pageassignments-column-assignedby": "Assigné par",
+	"bs-pageassignments-no-assignments": "Pas d'affectation",
+	"bs-pageassignments-action-log": "Journal des affectations",
+	"bs-pageassignments-directly-assigned": "directement",
+	"bs-pageassignments-action-delete-confirm": "Supprimer l'affectation ?",
+	"bs-pageassignments-api-error": "Une erreur s’est produite",
+	"bs-pageassignments-api-error-no-page": "Page non spécifiée",
+	"log-name-bs-pageassignments": "Journal des affectations",
+	"log-show-hide-bs-pageassignments": "$1 le journal des affectations",
+	"echo-category-title-bs-pageassignments-action-cat": "Affectations de pages",
+	"notification-bs-pageassignments-assignment-change-remove-subject": "Suppression de l'affectation à $2",
+	"notification-bs-pageassignments-page-move-subject": "$2 a été renommé",
+	"notification-bs-pageassignments-page-edit-subject": "$2 a été modifié",
+	"notification-bs-pageassignments-page-delete-subject": "$2 a été supprimé",
+	"notification-bs-pageassignments-page-delete-body": "$1 {{GENDER:$2|a supprimé}} la page $2",
+	"notification-bs-pageassignments-user-group-remove-summary": "Vous avez été retiré {{PLURAL:$5|du groupe|des groupes}} $4",
+	"notification-bs-pageassignments-user-group-remove-subject": "Retiré des membres {{PLURAL:$5|du groupe|des groupes}} $4"
+}

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gorizon",
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
 	"bs-visualeditor-desc": "Qande MediaWiki Visual Vırnoğ",
@@ -24,5 +25,15 @@
 	"bs-visualeditor-aligntop": "Ser",
 	"bs-visualeditor-alignmiddle": "Miyan",
 	"bs-visualeditor-alignbottom": "Bın",
-	"bs-visualeditor-bsactions-wiki": "Wikimetın"
+	"bs-visualeditor-bsactions-wiki": "Wikimetın",
+	"bs-visualeditor-bsactions-signature": "İmza",
+	"bs-visualeditor-bsactions-save": "Qeyd kı",
+	"bs-visualeditor-bsactions-headings": "Sernamey",
+	"bs-visualeditor-bsactions-paragraph": "Paragraf",
+	"bs-visualeditor-bsactions-heading2": "Sername 2",
+	"bs-visualeditor-bsactions-heading3": "Sername 3",
+	"bs-visualeditor-bsactions-heading4": "Sername 4",
+	"bs-visualeditor-bsactions-heading5": "Sername 5",
+	"bs-visualeditor-bsactions-heading6": "Sername 6",
+	"bs-visualeditor-switch-noeditor-desc": "Ena, perer dı vurnayışê asayi dewre ra vecena"
 }
