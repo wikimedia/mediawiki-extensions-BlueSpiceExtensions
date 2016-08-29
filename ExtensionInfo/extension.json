@@ -1,0 +1,60 @@
+{
+	"name": "ExtensionInfo",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/ExtensionInfo",
+	"author": [
+		"Markus Glaser",
+		"Sebastian Ulbricht"
+	],
+        "license-name": "GPL-2.0+",
+	"descriptionmsg": "bs-extensioninfo-desc",
+	"type": "bluespice",
+	"license-name": "GPL-2.0+",
+	"bsgExtensions": {
+		"ExtensionInfo": {
+			"className": "ExtensionInfo",
+			"extPath": "/BlueSpiceExtensions/ExtensionInfo"
+		}
+	},
+	"SpecialPages": {
+		"ExtensionInfo": "SpecialExtensionInfo"
+	},
+	"MessagesDirs": {
+		"ExtensionInfo": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"ExtensionInfoAlias": "languages/SpecialExtensionInfo.alias.php"
+	},
+	"AutoloadClasses": {
+		"ExtensionInfo": "ExtensionInfo.class.php",
+		"SpecialExtensionInfo": "includes/specials/SpecialExtensionInfo.class.php",
+		"ViewExtensionInfoTable": "includes/ViewExtensionInfoTable.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.extensioninfo.styles": {
+			"styles": "bluespice.extensionInfo.css",
+			"position": "top"
+		},
+		"ext.bluespice.extensioninfo": {
+			"scripts": "bluespice.extensionInfo.js",
+			"messages": [
+				"bs-extensioninfo-headerextname",
+				"bs-extensioninfo-headerversion",
+				"bs-extensioninfo-headerdesc",
+				"bs-extensioninfo-headerstatus",
+				"bs-extensioninfo-headerpackage",
+				"bs-extensioninfo-groupingtemplateviewtext"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/ExtensionInfo/resources"
+	},
+	"manifest_version": 1
+}

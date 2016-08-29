@@ -37,34 +37,6 @@
  * @subpackage ExtensionInfo
  */
 class ExtensionInfo extends BsExtensionMW {
-
-	/**
-	 * Constructor of ExtensionInfo class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'ExtensionInfo',
-			EXTINFO::DESCRIPTION => 'bs-extensioninfo-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE	 => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/ExtensionInfo',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-
-		WikiAdmin::registerModule( 'ExtensionInfo', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_information_v1.png',
-			'level' => 'wikiadmin',
-			'message' => 'bs-extensioninfo-label'
-		) );
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
 	/**
 	 * Renders the main form. Called by WikiAdmin
 	 * @return string rendered HTML
