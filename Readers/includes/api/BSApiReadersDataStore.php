@@ -40,24 +40,37 @@ class BSApiReadersDataStore extends BSApiExtJSStoreBase {
 			array( 'page', 'bs_readers' ),
 			array(
 				'page_title', 'readers_page_id', 'readers_user_name',
-				'MAX( readers_ts ) as readers_ts'
+				'readers_ts'
 			),
 			array(
 				'readers_page_id = page_id',
 				'readers_user_id' => (int) $sQuery
+			),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'readers_ts DESC'
 			)
 		);
 
 		$aPages = array();
 		if ( $oDbr->numRows( $res ) > 0 ) {
-			$oLanguage = RequestContext::getMain()->getLanguage();
 			foreach ( $res as $row ) {
 				$oTitle = Title::newFromID( $row->readers_page_id );
+				$oSpecialReaders = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() );
 
 				$aTmpPage = array();
 				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
+				$aTmpPage['pv_page_link'] = Linker::link( $oTitle );
 				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
-				$aTmpPage['pv_ts'] = $oLanguage->timeanddate( $row->readers_ts );
+				$aTmpPage['pv_ts'] = $row->readers_ts;
+				$aTmpPage['pv_date'] = $this->getLanguage()->timeanddate( $row->readers_ts );
+				$aTmpPage['pv_readers_link'] = Linker::link(
+					$oSpecialReaders,
+					'',
+					array(
+						'class' => 'icon-list'
+					)
+				);
 
 				$aPages[] = (object) $aTmpPage;
 			}

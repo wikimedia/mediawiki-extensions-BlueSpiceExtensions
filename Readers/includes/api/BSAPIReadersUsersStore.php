@@ -17,32 +17,47 @@ class BSAPIReadersUsersStore extends BSApiExtJSStoreBase {
 
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(
-		  array( 'bs_readers' ),
-		  array( 'readers_user_id', 'MAX(readers_ts) as readers_ts' ),
-		  array( 'readers_page_id' => $oTitle->getArticleID() )
+			'bs_readers',
+			'*',
+			array(
+				'readers_page_id' => $oTitle->getArticleID()
+			),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'readers_ts DESC'
+			)
 		);
 
 		$aUsers = array();
 		if ( $oDbr->numRows( $res ) > 0 ) {
-			$aParams = array();
-			$oLanguage = RequestContext::getMain()->getLanguage();
 			foreach ( $res as $row ) {
-				$oUser = User::newFromId( ( int ) $row->readers_user_id );
+				$oUser = User::newFromId( (int) $row->readers_user_id );
 				$oTitle = Title::makeTitle( NS_USER, $oUser->getName() );
-				$oUserMiniProfile = BsCore::getInstance()->getUserMiniProfile( $oUser, $aParams );
+				$oUserMiniProfile = BsCore::getInstance()->getUserMiniProfile( $oUser, array() );
 
 				$sImage = $oUserMiniProfile->getUserImageSrc();
 				if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
 					$sImage = SecureFileStore::secureStuff( $sImage, true );
 				}
 
+				$oSpecialReaders = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() );
+
 				$aTmpUser = array();
 				$aTmpUser[ 'user_image' ] = $sImage;
 				$aTmpUser[ 'user_name' ] = $oUser->getName();
 				$aTmpUser[ 'user_page' ] = $oTitle->getLocalURL();
-				$aTmpUser[ 'user_readers' ] = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() )->getLocalURL();
+				//TODO: Implement good "real_name" handling
+				$aTmpUser[ 'user_page_link' ] = Linker::link( $oTitle, $oTitle->getText().' ' );
+				$aTmpUser[ 'user_readers' ] = $oSpecialReaders->getLocalURL();
+				$aTmpUser[ 'user_readers_link' ] = Linker::link(
+					$oSpecialReaders,
+					'',
+					array(
+						'class' => 'icon-bookmarks'
+					)
+				);
 				$aTmpUser[ 'user_ts' ] = $row->readers_ts;
-				$aTmpUser[ 'user_date' ] = $oLanguage->timeanddate( $row->readers_ts );
+				$aTmpUser[ 'user_date' ] = $this->getLanguage()->timeanddate( $row->readers_ts );
 
 				$aUsers[] = (object) $aTmpUser;
 			}
