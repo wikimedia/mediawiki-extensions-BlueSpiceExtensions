@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Markus Glaser <glaser@hallowelt.com>"
+			"Markus Glaser <glaser@hallowelt.com>",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-usagetracker-desc": "Used in [{{canonicalurl:Special:Usage_Tracker}} Special:Usage_Tracker], description of usagetracker extension",
@@ -9,9 +10,9 @@
 	"usagetracker": "Label for special page in list of special pages",
 	"bs-usagetracker-startjobs": "Used in [[Special:Usage_Tracker]], label for button to trigger update of statistics",
 	"bs-usagetracker-create-statistics": "Used in [[Special:Usage_Tracker]], label for fieldset to update usage statistics",
-	"bs-usagetracker-col-identifier": "Used in [[Special:Usage_Tracker]], label for identifier column",
-	"bs-usagetracker-col-desc": "Used in [[Special:Usage_Tracker]], label for description column",
-	"bs-usagetracker-col-count": "Used in [[Special:Usage_Tracker]], label for count column",
-	"bs-usagetracker-col-last-updated": "Used in [[Special:Usage_Tracker]], label for last updated column",
+	"bs-usagetracker-col-identifier": "Used in [[Special:Usage_Tracker]], label for identifier column\n{{Identical|Identifier}}",
+	"bs-usagetracker-col-desc": "Used in [[Special:Usage_Tracker]], label for description column\n{{Identical|Description}}",
+	"bs-usagetracker-col-count": "Used in [[Special:Usage_Tracker]], label for count column\n{{Identical|Count}}",
+	"bs-usagetracker-col-last-updated": "Used in [[Special:Usage_Tracker]], label for last updated column\n{{Identical|Last updated}}",
 	"bs-usagetracker-caution": "Used in [[Special:Usage_Tracker]], text to warn users not that the feature is resource intense"
 }

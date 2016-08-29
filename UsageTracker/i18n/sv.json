@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"prefs-usagetracker": "Användningsspårare",
+	"usagetracker": "Användningsspårare",
+	"bs-usagetracker-startjobs": "Uppdatera nu",
+	"bs-usagetracker-create-statistics": "Uppdatera användningsstatistik",
+	"bs-usagetracker-col-identifier": "Identifierare",
+	"bs-usagetracker-col-desc": "Beskrivning",
+	"bs-usagetracker-col-count": "Antal",
+	"bs-usagetracker-col-last-updated": "Senast uppdaterad",
+	"bs-usagetracker-base-collector-desc": "Antal sidor som använder $1",
+	"bs-usagetracker-tag-collector-desc": "Antal sidor som använder taggen <$1>"
+}

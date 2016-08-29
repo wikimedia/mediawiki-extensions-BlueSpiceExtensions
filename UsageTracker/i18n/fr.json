@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Wladek92"
+		]
+	},
+	"bs-usagetracker-desc": "Possède des données statistiques sur l’utilisation des extensions",
+	"prefs-usagetracker": "Suivi d’utilisation",
+	"usagetracker": "Suivi d’utilisation",
+	"bs-usagetracker-startjobs": "Mettre à jour maintenant",
+	"bs-usagetracker-create-statistics": "Mise à jour des statistiques d'utilisation",
+	"bs-usagetracker-col-identifier": "Identifiant",
+	"bs-usagetracker-col-desc": "Description",
+	"bs-usagetracker-col-count": "Compteur",
+	"bs-usagetracker-col-last-updated": "Dernière mise à jour",
+	"bs-usagetracker-caution": "Attention: la mise à jour des statistiques d'utilisation peut prendre un certain temps ainsi que des ressources. Déclenchez seulement la mise à jour  si vous avez vraiment, vraiment besoin des données courantes. La mise à jour étant réalisée à l'aide de tâches différées, vous pourriez avoir à recharger plusieurs fois jusqu'à ce que toutes les données soient recueillies.",
+	"bs-usagetracker-base-collector-desc": "Nombre de pages utilisant $1",
+	"bs-usagetracker-tag-collector-desc": "Nombre de pages utilisant la balise <$1>"
+}

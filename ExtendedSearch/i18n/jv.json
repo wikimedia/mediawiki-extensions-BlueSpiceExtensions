@@ -5,5 +5,6 @@
 		]
 	},
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Kategori}}: $2",
+	"bs-extendedsearch-error": "Cacad:",
 	"bs-extendedsearch-search-category": "Golèk ing kategori:"
 }

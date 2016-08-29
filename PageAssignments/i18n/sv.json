@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-pageassignments-column-title": "Sidtitel",
+	"bs-pageassignments-directly-assigned": "direkt",
+	"bs-pageassignments-api-error": "Ett fel har uppstått",
+	"bs-pageassignments-notification-reason-group": "Du är medlem i {{PLURAL:$1|gruppen|grupperna}}: $2",
+	"notification-bs-pageassignments-page-move-summary": "$3 {{GENDER:$2|flyttades}} av $1",
+	"notification-bs-pageassignments-page-move-subject": "$2 flyttades",
+	"notification-bs-pageassignments-page-move-body": "$1 {{GENDER:$2|flyttade}} sidan $2",
+	"notification-bs-pageassignments-page-edit-summary": "$3 {{GENDER:$2|redigerades}} av $1",
+	"notification-bs-pageassignments-page-edit-subject": "$2 redigerades",
+	"notification-bs-pageassignments-page-edit-body": "$1 {{GENDER:$2|redigerade}} sidan $2",
+	"notification-bs-pageassignments-page-delete-summary": "$3 {{GENDER:$2|raderades}} av $1",
+	"notification-bs-pageassignments-page-delete-subject": "$2 raderades",
+	"notification-bs-pageassignments-page-delete-body": "$1 {{GENDER:$2|raderade}} sidan $2",
+	"notification-bs-pageassignments-user-group-add-subject": "Lades till i gruppen $4",
+	"notification-bs-pageassignments-user-group-remove-summary": "Du har tagits bort från {{PLURAL:$5|gruppen|grupperna}} $4",
+	"notification-bs-pageassignments-user-group-remove-subject": "Togs bort från {{PLURAL:$5|gruppen|grupperna}} $4"
+}
