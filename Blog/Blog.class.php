@@ -428,7 +428,9 @@ class Blog extends BsExtensionMW {
 			return $aData;
 		}
 
-		$parser->getOutput()->setProperty( 'bs-tag-blog', 1 );
+		if ( $parser instanceof Parser ) {
+			$parser->getOutput()->setProperty( 'bs-tag-blog', 1 );
+		}
 
 		// initialize local variables
 		$oErrorListView = new ViewTagErrorList( $this );
