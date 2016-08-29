@@ -52,27 +52,6 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 	private static $aNavigationSites = null;
 
 	/**
-	 * Constructor of TopMenuBarCustomizer class
-	 */
-	public function __construct() {
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'TopMenuBarCustomizer',
-			EXTINFO::DESCRIPTION => 'bs-topmenubarcustomizer-desc',
-			EXTINFO::AUTHOR      => 'Patric Wirth',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/TopBarMenuCustomizer',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.23.0' )
-		);
-
-		$this->mExtensionKey = 'TopMenuBarCustomizer';
-	}
-
-	/**
 	 * Initialization of TopMenuBarCustomizer class
 	 */
 	public function initExt() {
