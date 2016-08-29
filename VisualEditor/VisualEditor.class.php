@@ -196,6 +196,20 @@ class VisualEditor extends BsExtensionMW {
 	protected $bShowToolbarIcon = true;
 
 	protected function initExt() {
+		BsConfig::registerVar( 'MW::VisualEditor::disableNS', array( NS_MEDIAWIKI ), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_INT | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-visualeditor-pref-disablens', 'multiselectex');
+		BsConfig::registerVar( 'MW::VisualEditor::defaultNoContextNS', array( NS_SPECIAL, NS_MEDIA, NS_FILE ), BsConfig::LEVEL_PRIVATE | BsConfig::TYPE_ARRAY_INT );
+
+		BsConfig::registerVar( 'MW::VisualEditor::SpecialTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::AllowedTags', array(), BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+
+		BsConfig::registerVar( 'MW::VisualEditor::Use', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-visualeditor-pref-use', 'toggle');
+		BsConfig::registerVar( 'MW::VisualEditor::UseLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::UseForceLimited', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+
+		BsConfig::registerVar( 'MW::VisualEditor::DebugMode', false, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::GuiMode', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+		BsConfig::registerVar( 'MW::VisualEditor::GuiSwitchable', true, BsConfig::LEVEL_PRIVATE | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL );
+
 		$this->mCore->registerBehaviorSwitch(
 			'NOEDITOR', array( $this, 'noEditorCallback' )
 		);
