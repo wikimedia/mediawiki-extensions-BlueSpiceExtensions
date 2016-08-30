@@ -45,31 +45,6 @@ class Review extends BsExtensionMW {
 	 * @var LogPage Logger object that writes to MW log
 	 */
 	protected $oLogger;
-
-	/**
-	 * Constructor of Review class
-	 */
-	public function __construct() {
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::OTHER; //SPECIALPAGE/OTHER/VARIABLE/PARSERHOOK
-		$this->mInfo = array(
-			EXTINFO::NAME => 'Review',
-			EXTINFO::DESCRIPTION => 'bs-review-desc',
-			EXTINFO::AUTHOR => 'Markus Glaser',
-			EXTINFO::VERSION => 'default',
-			EXTINFO::STATUS => 'default',
-			EXTINFO::PACKAGE => 'default',
-			EXTINFO::URL => 'https://help.bluespice.com/index.php/Review',
-			EXTINFO::DEPS => array(
-				'bluespice' => '2.23.3',
-				'StateBar' => '2.22.0'
-			)
-		);
-		$this->mExtensionKey = 'MW::Review';
-	}
-
 	/**
 	 * Initialization of Review extension
 	 */
