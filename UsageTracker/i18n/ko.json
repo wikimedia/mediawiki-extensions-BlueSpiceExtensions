@@ -5,6 +5,7 @@
 		]
 	},
 	"prefs-usagetracker": "사용률 추적기",
+	"usagetracker": "사용률 추적기",
 	"bs-usagetracker-startjobs": "지금 업데이트",
 	"bs-usagetracker-create-statistics": "사용 통계 업데이트",
 	"bs-usagetracker-col-identifier": "식별자",

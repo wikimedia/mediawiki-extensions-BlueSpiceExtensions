@@ -7,6 +7,7 @@
 	"bs-pageassignments-column-title": "Sidtitel",
 	"bs-pageassignments-directly-assigned": "direkt",
 	"bs-pageassignments-api-error": "Ett fel har uppstått",
+	"bs-pageassignments-api-error-no-page": "Sida har inte angetts",
 	"bs-pageassignments-notification-reason-group": "Du är medlem i {{PLURAL:$1|gruppen|grupperna}}: $2",
 	"notification-bs-pageassignments-page-move-summary": "$3 {{GENDER:$2|flyttades}} av $1",
 	"notification-bs-pageassignments-page-move-subject": "$2 flyttades",
