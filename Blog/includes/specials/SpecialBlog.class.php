@@ -16,7 +16,7 @@
 class SpecialBlog extends BsSpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'Blog' );
+		parent::__construct( 'Blog', 'blog-viewspecialpage' );
 	}
 
 	public function execute( $par ) {
