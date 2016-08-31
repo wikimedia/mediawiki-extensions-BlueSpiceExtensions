@@ -197,7 +197,7 @@ BsSaferEditEditMode = {
 
 mw.loader.using( 'ext.bluespice', function() {
 	BsSaferEditEditMode.init();
-	if ( bsSaferEditWarnOnLeave && ( typeof ( alreadyBound ) == 'undefined' || alreadyBound == false ) ) {
+	if ( mw.config.get( 'bsSaferEditWarnOnLeave' ) ) {
 		window.onbeforeunload = function ( e ) {
 			var e = e || window.event;
 			var bReturn = BsSaferEditEditMode.checkSaved();
