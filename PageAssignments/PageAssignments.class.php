@@ -25,7 +25,7 @@ class PageAssignments extends BsExtensionMW {
 	 * @param Title $oTitle
 	 * @return BSAssignableBase[]
 	 */
-	public static function getAssignments( $oTitle ) {
+	public static function getAssignments( Title $oTitle ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			'bs_pageassignments',

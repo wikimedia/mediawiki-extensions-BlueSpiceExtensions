@@ -23,6 +23,12 @@ class BSApiPageAssignmentTasks extends BSApiTasksBase {
 		}
 
 		$oTitle = Title::newFromID( $oTaskData->pageId );
+		if( !$oTitle || !$oTitle->exists() ) {
+			$oResult->message = wfMessage(
+				'bs-pageassignments-api-error-no-page'
+			)->plain();
+			return $oResult;
+		}
 
 		$aCurrentAssignments = PageAssignments::getAssignments( $oTitle );
 		$aCurrentAssigneeIds = array();

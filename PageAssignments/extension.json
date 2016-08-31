@@ -55,6 +55,7 @@
 		"PageAssignmentsNotificationHooks": "includes/PageAssignmentsNotificationHooks.php",
 		"PageAssignmentsStateBarHooks": "includes/PageAssignmentsStateBarHooks.php",
 		"PageAssignmentsUsersAdditionalPermissionsHooks": "includes/PageAssignmentsUsersAdditionalPermissionsHooks.php",
+		"PageAssignmentsWikiExplorerHooks": "includes/PageAssignmentsWikiExplorerHooks.php",
 		"BSAssignableBase": "includes/BSAssignableBase.php",
 		"BSAssignableUser": "includes/BSAssignableUser.php",
 		"BSAssignableGroup": "includes/BSAssignableGroup.php",
@@ -115,6 +116,16 @@
 			"dependencies": [
 				"ext.pageassignments.scripts"
 			]
+		},
+		"ext.bluespice.pageassignments.wikiexplorer": {
+			"scripts": [
+				"ext.bluespice.pageassignments.wikiexplorer.js"
+			],
+			"styles": [],
+			"messages": [],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -143,7 +154,12 @@
 		"BSUserManagerAfterSetGroups": "PageAssignmentsNotificationHooks::onBSUserManagerAfterSetGroups",
 		"UserAddGroup": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserAddGroup",
 		"userCan": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserCan",
-		"RevisionAjaxReviewBeforeParams": "PageAssignmentsUsersAdditionalPermissionsHooks::onRevisionAjaxReviewBeforeParams"
+		"RevisionAjaxReviewBeforeParams": "PageAssignmentsUsersAdditionalPermissionsHooks::onRevisionAjaxReviewBeforeParams",
+		"WikiExplorer::getFieldDefinitions": "PageAssignmentsWikiExplorerHooks::onWikiExplorerGetFieldDefinitions",
+		"WikiExplorer::getColumnDefinitions": "PageAssignmentsWikiExplorerHooks::onWikiExplorerGetColumnDefinitions",
+		"WikiExplorer::queryPagesWithFilter": "PageAssignmentsWikiExplorerHooks::onWikiExplorerQueryPagesWithFilter",
+		"WikiExplorer::buildDataSets": "PageAssignmentsWikiExplorerHooks::onWikiExplorerBuildDataSets",
+		"BeforePageDisplay": "PageAssignmentsWikiExplorerHooks::onBeforePageDisplay"
 	},
 	"manifest_version": 1
 }
