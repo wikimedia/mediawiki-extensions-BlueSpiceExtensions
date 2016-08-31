@@ -1,0 +1,30 @@
+{	"name": "UEModulePDF",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/UEModulePDF",
+	"author": "Robert Vogel",
+	"descriptionmsg": "bs-uemodulepdf-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"UEModulePDF": {
+			"className": "UEModulePDF",
+			"extPath": "/BlueSpiceExtensions/UEModulePDF"
+		}
+	},
+	"MessagesDirs": {
+		"UEModulePDF": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"UEModulePDF": "UEModulePDF.class.php",
+		"BsPDFPageProvider": "includes/PDFPageProvider.class.php",
+		"BsPDFTemplateProvider": "includes/PDFTemplateProvider.class.php",
+		"BsPDFWebService": "includes/PDFWebService.class.php",
+		"BsPDFServlet": "includes/PDFServlet.class.php",
+		"BsExportModulePDF": "includes/ExportModulePDF.class.php"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates"
+	},
+	"manifest_version": 1
+}
