@@ -11,8 +11,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
- 
- .alpha {
+
+.alpha {
 	color: #B73A3A;
 	font-weight: bold;
 }
@@ -27,7 +27,7 @@
 	font-weight: bold;
 }
 
-#bs-extensioninfo-grid a[href^="https://"], 
+#bs-extensioninfo-grid a[href^="https://"],
 #bs-extensioninfo-grid a[href^="http://"],
 .link-https {
 	background-image: none !important;

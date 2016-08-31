@@ -6,7 +6,6 @@
 		"Markus Glaser",
 		"Sebastian Ulbricht"
 	],
-        "license-name": "GPL-2.0+",
 	"descriptionmsg": "bs-extensioninfo-desc",
 	"type": "bluespice",
 	"license-name": "GPL-2.0+",
@@ -55,6 +54,9 @@
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/ExtensionInfo/resources"
+	},
+	"Hooks": {
+		"BSWikiAdminMenuItems": "ExtensionInfo::onBSWikiAdminMenuItems"
 	},
 	"manifest_version": 1
 }

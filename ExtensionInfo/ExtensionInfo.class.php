@@ -37,6 +37,20 @@
  * @subpackage ExtensionInfo
  */
 class ExtensionInfo extends BsExtensionMW {
+
+	/**
+	 * Adds a link to WikiAdmin menu
+	 * @param array $aOutSortable
+	 * @return boolean Alway true to keep hook running
+	 */
+	public static function onBSWikiAdminMenuItems( &$aOutSortable ) {
+		$sLabel = wfMessage( 'bs-extensioninfo-label' )->plain();
+		$aOutSortable[$sLabel] = Html::rawElement( 'li', array(),
+			Linker::link( SpecialPage::getTitleFor( 'ExtensionInfo' ), $sLabel )
+		);
+		return true;
+	}
+
 	/**
 	 * Renders the main form. Called by WikiAdmin
 	 * @return string rendered HTML

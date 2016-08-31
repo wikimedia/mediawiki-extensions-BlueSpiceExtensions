@@ -20,6 +20,8 @@ class SpecialExtensionInfo extends BsSpecialPage {
 
 	public function execute( $par ) {
 		parent::execute( $par );
+
+		$this->getOutput()->addModuleStyles( 'ext.bluespice.extensioninfo.styles' );
 		$this->getOutput()->addModules( 'ext.bluespice.extensioninfo' );
 		$this->getOutput()->addHtml( $this->getForm() );
 	}
