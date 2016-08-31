@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zygimantus"
+		]
+	},
+	"pageassignments": "Užduotys",
+	"bs-pageassignments-dlg-title": "Užduotys",
+	"bs-pageassignments-dlg-fldlabel": "Užduotys",
+	"bs-pageassignments-column-title": "Puslapio pavadinimas",
+	"bs-pageassignments-directly-assigned": "tiesiogiai"
+}

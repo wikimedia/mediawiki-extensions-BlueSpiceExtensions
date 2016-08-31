@@ -27,5 +27,6 @@
 	"bs-blog-pref-sortby": "מיון לפי:",
 	"bs-blog-pref-imagerendermode": "הצגת תמונות כ:",
 	"bs-blog-pref-maxentrycharacters": "מספר המילים לכל ערך:",
-	"bs-blog-tag-blog-desc": "הצגת ערכי בלוג בכל דף."
+	"bs-blog-tag-blog-desc": "הצגת ערכי בלוג בכל דף.",
+	"action-blog-viewspecialpage": "לצפות בדף המיוחד \"{{int:bs-blog-blog}}\""
 }

@@ -16,5 +16,6 @@
 	"bs-blog-form-inline-text": "Titolo...",
 	"bs-blog-form-button-text": "Crea",
 	"bs-blog-blog": "Blog",
-	"bs-blog-pref-sortby": "Ordina per:"
+	"bs-blog-pref-sortby": "Ordina per:",
+	"action-blog-viewspecialpage": "visualizzare la pagina speciale \"{{int:bs-blog-blog}}\""
 }

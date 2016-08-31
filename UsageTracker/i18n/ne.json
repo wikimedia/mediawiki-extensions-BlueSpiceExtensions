@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nirajan pant"
+		]
+	},
+	"bs-usagetracker-startjobs": "अहिल्यै अपडेट गर्नुहोस्",
+	"bs-usagetracker-col-identifier": "परिचायक",
+	"bs-usagetracker-col-desc": "वर्णन",
+	"bs-usagetracker-col-count": "गणना",
+	"bs-usagetracker-base-collector-desc": "$1 प्रयोग गरिएका पृष्ठहरूको सङ्ख्या",
+	"bs-usagetracker-tag-collector-desc": "<$1> ट्याग प्रयोग गर्ने पृष्ठहरूको सङ्ख्या"
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Otokoume"
+		]
+	},
+	"bs-pageassignments-dlg-fldlabel": "割り当て",
+	"bs-pageassignments-column-title": "ページ名",
+	"bs-pageassignments-action-log": "割り当て記録",
+	"bs-pageassignments-action-delete-confirm": "割り当てを除去しますか？",
+	"bs-pageassignments-api-error": "エラーが発生しました",
+	"bs-pageassignments-api-error-insert": "ページ「$2」の割り当て「$1」を保存できませんでした",
+	"log-name-bs-pageassignments": "割り当て記録",
+	"log-show-hide-bs-pageassignments": "割り当て記録を$1",
+	"logentry-bs-pageassignments-add-user": "$1 が{{GENDER:$4|利用者}}「$4」にページ「$3」を割り当てました",
+	"logentry-bs-pageassignments-remove-user": "$1 が{{GENDER:$4|利用者}}「$4」によるページ「$3」の割り当てが{{GENDER:$2|除去されました}}",
+	"logentry-bs-pageassignments-add-group": "$1 がページ「$3」にグループ「$4」を{{GENDER:$2|割り当てました}}",
+	"logentry-bs-pageassignments-remove-group": "$1 がページ「$3」へのグループ「$4」の割り当てを{{GENDER:$2|除去しました}}",
+	"echo-category-title-bs-pageassignments-action-cat": "ページの割り当て",
+	"bs-pageassignments-notification-reason-group": "あなたは{{PLURAL:$1|以下のグループ}}に所属になりました: $2",
+	"notification-bs-pageassignments-assignment-change-add-summary": "$1 があなたに $3 を割り当てました",
+	"notification-bs-pageassignments-assignment-change-add-body": "$1 があなたにページ $2 を{{GENDER:$2|割り当てました}}",
+	"notification-bs-pageassignments-assignment-change-remove-summary": "$1 があなたに割り当てられたページ $3 を{{GENDER:$2|除去しました}}",
+	"notification-bs-pageassignments-assignment-change-remove-body": "ページ $2 へのあなたの割り当てが $1 により{{GENDER:$2|除去されました}}",
+	"notification-bs-pageassignments-page-move-summary": "ページ $3 が $1 によって{{GENDER:$2|移動されました}}",
+	"notification-bs-pageassignments-page-move-body": "$1 がページ $2 を{{GENDER:$2|移動しました}}",
+	"notification-bs-pageassignments-page-edit-summary": "ページ $3 が $1 によって{{GENDER:$2|編集されました}}",
+	"notification-bs-pageassignments-page-edit-subject": "利用者ページ $2 が編集されました",
+	"notification-bs-pageassignments-page-edit-body": "$1 がページ $2 を{{GENDER:$2|編集しました}}",
+	"notification-bs-pageassignments-page-delete-summary": "ページ $3 が $1 によって{{GENDER:$2|削除されました}}",
+	"notification-bs-pageassignments-page-delete-subject": "利用者ページ $2 が削除されました",
+	"notification-bs-pageassignments-page-delete-body": "$1 がページ $2 を{{GENDER:$2|削除しました}}",
+	"notification-bs-pageassignments-user-group-add-body": "$1 があなたにグループ「$4」を{{GENDER:$2|追加しました}}。$3 から現在の割り当てを確認できます",
+	"notification-bs-pageassignments-user-group-remove-summary": "あなたは{{PLURAL:$5|以下のグループ}}の所属から外れました: $4",
+	"notification-bs-pageassignments-user-group-remove-subject": "{{PLURAL:$5|グループ}}「$4」から除去しました",
+	"notification-bs-pageassignments-user-group-remove-body": "$1 があなたを{{PLURAL:$5|グループ}}「$4」から所属を{{GENDER:$2|外しました}}。$3 から現在の割り当てを確認できます"
+}

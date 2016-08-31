@@ -14,5 +14,6 @@
 	"bs-blog-blog": "블로그",
 	"bs-blog-pref-showpermalink": "고유링크 보기",
 	"bs-blog-pref-sortby": "정렬 기준:",
-	"bs-tag-blog": "블로그 태그"
+	"bs-tag-blog": "블로그 태그",
+	"action-blog-viewspecialpage": "특수 문서 \"{{int:bs-blog-blog}}\" 보기"
 }

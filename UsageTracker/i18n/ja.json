@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Otokoume"
+		]
+	},
+	"bs-usagetracker-startjobs": "今すぐ更新",
+	"bs-usagetracker-create-statistics": "使用状況の統計を更新",
+	"bs-usagetracker-col-identifier": "識別子",
+	"bs-usagetracker-col-last-updated": "最終更新"
+}

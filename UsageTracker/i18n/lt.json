@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zygimantus"
+		]
+	},
+	"bs-usagetracker-startjobs": "Atnaujinti dabar",
+	"bs-usagetracker-col-identifier": "Identifikatorius",
+	"bs-usagetracker-col-desc": "Aprašymas",
+	"bs-usagetracker-col-count": "Skaitiklis",
+	"bs-usagetracker-col-last-updated": "Paskutinį kartą atnaujinta"
+}
