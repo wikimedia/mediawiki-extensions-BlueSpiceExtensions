@@ -1,0 +1,52 @@
+{
+        "name": "SaferEdit",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/SaferEdit",
+	"author": [ "Markus Glaser ", "Tobias Weichart" ],
+	"descriptionmsg": "bs-saferedit-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"SaferEdit": {
+			"className": "SaferEdit",
+			"extPath": "/BlueSpiceExtensions/SaferEdit"
+		}
+	},
+	"MessagesDirs": {
+		"SaferEdit": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"SaferEdit": "SaferEdit.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.saferedit.general": {
+			"scripts": "bluespice.SaferEdit.general.js",
+			"position": "bottom"
+		},
+		"ext.bluespice.saferedit.editmode": {
+			"scripts": "bluespice.SaferEdit.editmode.js",
+			"messages": [
+				"bs-saferedit-lastsavedversion",
+				"bs-saferedit-restore",
+				"bs-extjs-cancel",
+				"bs-saferedit-unsavedchanges",
+				"bs-saferedit-othersectiontitle",
+				"bs-saferedit-othersectiontext1",
+				"bs-saferedit-othersectiontext2",
+				"bs-saferedit-othersectiontext3"
+			],
+			"dependencies": [
+				"ext.bluespice.saferedit.general"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/SaferEdit/resources"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "SaferEdit::getSchemaUpdates"
+	},
+	"manifest_version": 1
+}

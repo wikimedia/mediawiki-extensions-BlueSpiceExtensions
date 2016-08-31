@@ -39,32 +39,6 @@
 class SaferEdit extends BsExtensionMW {
 
 	private $aIntermediateEditsForCurrentTitle = null;
-	/**
-	 * Constructor of SaferEdit class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'SaferEdit',
-			EXTINFO::DESCRIPTION => 'bs-saferedit-desc',
-			EXTINFO::AUTHOR      => array ( 'Markus Glaser', 'Tobias Weichart' ),
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/SaferEdit',
-			EXTINFO::DEPS        => array(
-										'bluespice'   => '2.22.0',
-										'StateBar' => '2.22.0'
-										)
-		);
-		$this->mExtensionKey = 'MW::SaferEdit';
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
 
 	/**
 	 * Initialization of SaferEdit extension
