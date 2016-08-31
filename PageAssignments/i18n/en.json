@@ -54,5 +54,7 @@
 	"notification-bs-pageassignments-user-group-add-body": "$1 {{GENDER:$2|added}} you to the group $4. Please check your assignment on $3",
 	"notification-bs-pageassignments-user-group-remove-summary": "You have been removed from the {{PLURAL:$5|group|groups}} $4",
 	"notification-bs-pageassignments-user-group-remove-subject": "Removed from {{PLURAL:$5|group|groups}} $4",
-	"notification-bs-pageassignments-user-group-remove-body": "$1 {{GENDER:$2|removed}} you from the {{PLURAL:$5|group|groups}} $4. Please check your assignment on $3"
+	"notification-bs-pageassignments-user-group-remove-body": "$1 {{GENDER:$2|removed}} you from the {{PLURAL:$5|group|groups}} $4. Please check your assignment on $3",
+	"prefs-pageassignments": "Page Assignments",
+	"bs-pageassignments-pref-permissions": "Add additional permissions to assigned users"
 }

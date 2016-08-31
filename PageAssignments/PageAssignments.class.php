@@ -3,6 +3,14 @@
 class PageAssignments extends BsExtensionMW {
 
 	protected function initExt() {
+		BsConfig::registerVar(
+			'MW::PageAssignments::Permissions',
+			$GLOBALS['bsgDefaultAssignedUsersAdditionalPermissions'],
+			BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS,
+			'bs-pageassignments-pref-permissions',
+			'multiselectex'
+		);
+
 		$this->mCore->registerPermission(
 			'pageassignable',
 			array( 'user' )
@@ -93,6 +101,17 @@ class PageAssignments extends BsExtensionMW {
 			}
 		}
 		return $aUserIDSourceMap;
+	}
+
+	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
+		$aPermissions = array_diff(
+			User::getAllRights(),
+			WikiAdmin::get( 'ExcludeRights' )
+		);
+		return array(
+			'type' => 'multiselectex',
+			'options' => array_combine( $aPermissions, $aPermissions ),
+		);
 	}
 
 }

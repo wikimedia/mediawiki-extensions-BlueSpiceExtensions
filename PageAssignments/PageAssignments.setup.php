@@ -11,3 +11,8 @@ wfLoadExtension( 'BlueSpiceExtensions/PageAssignments' );
 $wgExtensionFunctions[] = function() {
 	PageAssignmentsNotificationHooks::setup();
 };
+if( !isset( $bsgDefaultAssignedUsersAdditionalPermissions ) ) {
+	$bsgDefaultAssignedUsersAdditionalPermissions = array(
+		'read',
+	);
+}
