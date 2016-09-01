@@ -16,11 +16,18 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 			var portlets = [];
 
 			for ( var j = 0; j < columnConfig.length; j++ ) {
-				var portletConfig = columnConfig[j];
-				var portlet = Ext.create(
-					portletConfig.type,
-					portletConfig.config
-				);
+				try {
+					var portletConfig = columnConfig[j];
+					var portlet = Ext.create(
+						portletConfig.type,
+						portletConfig.config
+					);
+				} catch ( e if e instanceof TypeError ) {
+					//Workaround: Portlets of deactivated extensions are still
+					//loaded from DB. This ends in a TypeError while Ext.create.
+					console.log( TypeError );
+					continue;
+				}
 				//Listen to config changes to persist them
 				portlet.on( 'configchange', this.onPortletConfigChange, this );
 				portlet.on( 'destroy', this.onPortletDestroy, this );
