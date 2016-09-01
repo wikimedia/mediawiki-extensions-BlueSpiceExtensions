@@ -31,5 +31,17 @@
 	"bs-usermanager-confirmdeleteuser": "Are you sure, you want to delete {{PLURAL:$1|this user|these $1 users}}?",
 	"bs-usermanager-groups-more": "... more",
 	"bs-usermanager-no-self-desysop" : "You cannot take away your own sysop right.",
-	"apihelp-bs-usermanager-tasks-description": "Provides operations for Checklist extension"
+	"apihelp-bs-usermanager-tasks-description": "Provides operations for Checklist extension",
+	"bs-usermanager-no-self-block": "You cannot disable yourself.",
+	"bs-usermanager-block-error": "{{GENDER:$1|The user}} $1 could not be disabled.",
+	"bs-usermanager-unblock-error": "{{GENDER:$1|The user}} $1 could not be enabled.",
+	"bs-usermanager-headerenabled": "Enabled",
+	"bs-usermanager-log-user-disabled": "{{GENDER:$1|The user}} $1 was disabled via UserManager",
+	"bs-usermanager-user-disabled": "{{GENDER:$1|The user}} $1 was disabled.",
+	"bs-usermanager-user-enabled": "{{GENDER:$1|The user}} $1 was enabled.",
+	"bs-usermanager-endisable": "Enable/disable",
+	"bs-usermanager-confirmdisableuser": "Do you really want to disable {{GENDER:$1|the user}} $1?",
+	"bs-usermanager-confirmenableuser": "Do you really want to enable {{GENDER:$1|the user}} $1?",
+	"bs-usermanager-titledisableuser": "Disable user",
+	"bs-usermanager-titleenableuser": "Enable user"
 }

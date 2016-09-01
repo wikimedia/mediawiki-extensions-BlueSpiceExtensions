@@ -39,6 +39,8 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 		'addUser',
 		'editUser',
 		'deleteUser',
+		'disableUser',
+		'enableUser',
 		'setUserGroups',
 	);
 
@@ -51,6 +53,8 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 		return array(
 			'addUser' => array( 'wikiadmin' ),
 			'editUser' => array( 'wikiadmin' ),
+			'disableUser' => array( 'wikiadmin' ),
+			'enableUser' => array( 'wikiadmin' ),
 			'deleteUser' => array( 'wikiadmin' ),
 			'setUserGroups' => array( 'wikiadmin' ),
 		);
@@ -95,8 +99,15 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 		if( isset($oTaskData->realname) ) {
 			$aMetaData['realname'] = $oTaskData->realname;
 		}
+		if( isset($oTaskData->enabled) ) {
+			$aMetaData['enabled'] = $oTaskData->enabled;
+		}
 
-		$oStatus = UserManager::addUser( $oTaskData->userName, $aMetaData );
+		$oStatus = UserManager::addUser(
+			$oTaskData->userName,
+			$aMetaData,
+			$this->getUser()
+		);
 		if( !$oStatus->isOK() ) {
 			$oReturn->message = $oStatus->getMessage()->parse();
 			return $oReturn;
@@ -150,8 +161,16 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 		if( isset($oTaskData->realname) ) {
 			$aMetaData['realname'] = $oTaskData->realname;
 		}
+		if( isset($oTaskData->enabled) ) {
+			$aMetaData['enabled'] = $oTaskData->enabled;
+		}
 
-		$oStatus = UserManager::editUser( $oUser, $aMetaData, true );
+		$oStatus = UserManager::editUser(
+			$oUser,
+			$aMetaData,
+			true,
+			$this->getUser()
+		);
 		if( !$oStatus->isOK() ) {
 			$oReturn->message = $oStatus->getMessage()->parse();
 			return $oReturn;
@@ -183,15 +202,16 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 	protected function task_deleteUser( $oTaskData ) {
 		$oReturn = $this->makeStandardReturn();
 
-		if( empty($oTaskData->userName) ) {
+		if( empty( $oTaskData->userName ) ) {
 			$oReturn->message = wfMessage(
 				'bs-usermanager-invalid-uname'
 			)->plain();
+			return $oReturn;
 		}
 
 		$oUser = User::newFromName( $oTaskData->userName );
 
-		$oStatus = UserManager::deleteUser( $oUser );
+		$oStatus = UserManager::deleteUser( $oUser, $this->getUser() );
 		if( !$oStatus->isOK() ) {
 			$oReturn->message = $oStatus->getMessage()->parse();
 			return $oReturn;
@@ -204,7 +224,63 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 	}
 
 	/**
-	 * Deletes an User.
+	 * Disables a user.
+	 * @return stdClass Standard tasks API return
+	 */
+	protected function task_disableUser( $oTaskData ) {
+		$oReturn = $this->makeStandardReturn();
+
+		if( empty( $oTaskData->userName ) ) {
+			$oReturn->message = wfMessage(
+				'bs-usermanager-invalid-uname'
+			)->plain();
+		}
+
+		$oUser = User::newFromName( $oTaskData->userName );
+
+		$oPerformer = $this->getUser();
+		$oStatus = UserManager::disableUser( $oUser, $oPerformer );
+		if( !$oStatus->isOK() ) {
+			$oReturn->message = $oStatus->getMessage()->parse();
+			return $oReturn;
+		}
+
+		$oReturn->success = true;
+		$oReturn->message = wfMessage( 'bs-usermanager-user-disabled', $oUser->getName() )->text();
+
+		return $oReturn;
+	}
+
+	/**
+	 * Enables an User.
+	 * @return stdClass Standard tasks API return
+	 */
+	protected function task_enableUser( $oTaskData ) {
+		$oReturn = $this->makeStandardReturn();
+
+		if( empty( $oTaskData->userName ) ) {
+			$oReturn->message = wfMessage(
+				'bs-usermanager-invalid-uname'
+			)->plain();
+		}
+
+		$oUser = User::newFromName( $oTaskData->userName );
+
+		$oPerformer = $this->getUser();
+		$oStatus = UserManager::enableUser( $oUser, $oPerformer );
+		if( !$oStatus->isOK() ) {
+			$oReturn->message = $oStatus->getMessage()->parse();
+			return $oReturn;
+		}
+
+		$oReturn->success = true;
+		$oReturn->message = wfMessage( 'bs-usermanager-user-enabled', $oUser->getName() )->text();
+
+		return $oReturn;
+	}
+
+	/**
+	 * Sets user groups for user.
 	 * @return stdClass Standard tasks API return
 	 */
 	protected function task_setUserGroups( $oTaskData ) {

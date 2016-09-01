@@ -27,7 +27,8 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 				'user_real_name',
 				'user_email',
 				'page_link',
-				'groups'
+				'groups',
+				'enabled'
 			],
 			proxy: {
 				reader:{
@@ -54,6 +55,15 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			}
 		}, this );
 
+		this.colEnabled = Ext.create( 'Ext.grid.column.Column', {
+			id: 'enabled',
+			header: mw.message('bs-usermanager-headerenabled').plain(),
+			sortable: true,
+			dataIndex: 'enabled',
+			hidden: true,
+			renderer: this.renderIcon,
+			flex: 1
+		} );
 		this.colUserName = Ext.create( 'Ext.grid.column.Template', {
 			id: 'username',
 			header: mw.message('bs-usermanager-headerusername').plain(),
@@ -89,6 +99,11 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			encode: true,
 			local: false,
 			filters: [{
+				type: 'bool',
+				dataIndex: 'enabled',
+				value: true,
+				active: true
+			},{
 				type: 'string',
 				dataIndex: 'user_name',
 				menuItems: ['ct']
@@ -110,6 +125,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 		this.gpMainConf.features = [this.filters];
 
 		this.colMainConf.columns = [
+			this.colEnabled,
 			this.colUserName,
 			this.colRealName,
 			this.colEmail,
@@ -131,6 +147,20 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 		return {
 			items: columns.items
 		};
+	},
+
+	makeRowActions: function() {
+		this.callParent(arguments);
+
+		this.colMainConf.actions.unshift({
+			iconCls: 'bs-extjs-actioncolumn-icon icon-blocked progressive',
+			glyph: true,
+			tooltip: mw.message( 'bs-usermanager-endisable' ).plain(),
+			handler: this.onActionDisableClick,
+			scope: this
+		});
+
+		return this.colMainConf.actions;
 	},
 
 	renderGroups: function( value ) {
@@ -162,6 +192,14 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 		if ( value.length === 0 ) return '';
 
 		return '<a href="mailto:' + value + '">' + value + '</a>';
+	},
+	renderIcon: function( value ) {
+		//TODO: make CSS class icon
+		var icon = '<img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/{0}"/>';
+		if ( value === false ) {
+			return icon.format( 'bs-cross.png' );
+		}
+		return icon.format( 'bs-tick.png' );
 	},
 	onGrdMainRowClick: function( oSender, iRowIndex, oEvent ) {
 		this.callParent(arguments);
@@ -216,6 +254,53 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 
 		this.callParent( arguments );
 	},
+	onActionDisableClick:function(grid, rowIndex, colIndex) {
+		var selectedUser = this.grdMain.getStore().getAt( rowIndex );
+		this.grdMain.getSelectionModel().select(
+			selectedUser
+		);
+		if ( selectedUser.get( 'enabled' ) ) {;
+			this.onBtnDisableClick( this.btnDisable, {} );
+		} else {
+			this.onBtnEnableClick( this.btnDisable, {} );
+		}
+	},
+	onBtnDisableClick: function( oButton, oEvent ) {
+		bs.util.confirm(
+			'UMdisable',
+			{
+				text: mw.msg(
+					'bs-usermanager-confirmdisableuser',
+					this.grdMain.getSelectionModel().getSelection()[0].get( 'user_name' ),
+					this.grdMain.getSelectionModel().getSelection().length
+				),
+				title: mw.message( 'bs-usermanager-titledisableuser' ).plain()
+			},
+			{
+				ok: this.onDisableUserOk,
+				cancel: function() {},
+				scope: this
+			}
+		);
+	},
+	onBtnEnableClick: function( oButton, oEvent ) {
+		bs.util.confirm(
+			'UMenable',
+			{
+				text: mw.msg(
+					'bs-usermanager-confirmenableuser',
+					this.grdMain.getSelectionModel().getSelection()[0].get( 'user_name' ),
+					this.grdMain.getSelectionModel().getSelection().length
+				),
+				title: mw.message( 'bs-usermanager-titleenableuser' ).plain()
+			},
+			{
+				ok: this.onEnableUserOk,
+				cancel: function() {},
+				scope: this
+			}
+		);
+	},
 	onBtnRemoveClick: function( oButton, oEvent ) {
 		bs.util.confirm(
 			'UMremove',
@@ -245,6 +330,30 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			});
 		}
 	},
+	onDisableUserOk: function() {
+		//TODO: This needs to be Changed to one simple call!
+		var selectedRow = this.grdMain.getSelectionModel().getSelection();
+		for (var i = 0; i < selectedRow.length; i++){
+			var me = this;
+			bs.api.tasks.exec( 'usermanager', 'disableUser', {
+				userName: selectedRow[i].get( 'user_name' )
+			}).done( function( response ) {
+				me.reloadStore();
+			});
+		}
+	},
+	onEnableUserOk: function() {
+		//TODO: This needs to be Changed to one simple call!
+		var selectedRow = this.grdMain.getSelectionModel().getSelection();
+		for (var i = 0; i < selectedRow.length; i++){
+			var me = this;
+			bs.api.tasks.exec( 'usermanager', 'enableUser', {
+				userName: selectedRow[i].get( 'user_name' )
+			}).done( function( response ) {
+				me.reloadStore();
+			});
+		}
+	},
 	onDlgUserAddOk: function( data, user ) {
 		var data = {
 			userName: user.user_name,
@@ -252,6 +361,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			rePassword: user.user_repassword,
 			email: user.user_email,
 			realname: user.user_real_name,
+			enabled: user.enabled,
 			groups: user.groups
 		};
 		var me = this;
@@ -291,6 +401,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			rePassword: user.user_repassword,
 			email: user.user_email,
 			realname: user.user_real_name,
+			enabled: user.enabled,
 			groups: user.groups
 		};
 		var me = this;
