@@ -56,6 +56,7 @@
 		"PageAssignmentsStateBarHooks": "includes/PageAssignmentsStateBarHooks.php",
 		"PageAssignmentsUsersAdditionalPermissionsHooks": "includes/PageAssignmentsUsersAdditionalPermissionsHooks.php",
 		"PageAssignmentsWikiExplorerHooks": "includes/PageAssignmentsWikiExplorerHooks.php",
+		"PageAssignmentsDashboardHooks": "includes/PageAssignmentsDashboardHooks.php",
 		"BSAssignableBase": "includes/BSAssignableBase.php",
 		"BSAssignableUser": "includes/BSAssignableUser.php",
 		"BSAssignableGroup": "includes/BSAssignableGroup.php",
@@ -126,6 +127,13 @@
 			"dependencies": [
 				"ext.bluespice.extjs"
 			]
+		},
+		"ext.bluespice.pageassignments.portlet": {
+			"messages": [
+				"bs-pageassignments-column-title",
+				"bs-pageassignments-column-assignedby",
+				"bs-pageassignments-directly-assigned"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -159,7 +167,10 @@
 		"WikiExplorer::getColumnDefinitions": "PageAssignmentsWikiExplorerHooks::onWikiExplorerGetColumnDefinitions",
 		"WikiExplorer::queryPagesWithFilter": "PageAssignmentsWikiExplorerHooks::onWikiExplorerQueryPagesWithFilter",
 		"WikiExplorer::buildDataSets": "PageAssignmentsWikiExplorerHooks::onWikiExplorerBuildDataSets",
-		"BeforePageDisplay": "PageAssignmentsWikiExplorerHooks::onBeforePageDisplay"
+		"BeforePageDisplay": "PageAssignmentsWikiExplorerHooks::onBeforePageDisplay",
+		"BSDashboardsUserDashboardPortalConfig": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalConfig",
+		"BSDashboardsUserDashboardPortalPortlets": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalPortlets",
+		"BeforePageDisplay": "PageAssignmentsDashboardHooks::onBeforePageDisplay"
 	},
 	"manifest_version": 1
 }
