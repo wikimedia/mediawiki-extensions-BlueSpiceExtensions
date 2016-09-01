@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"bs-pageassignments-column-title": "Título de página",
+	"bs-pageassignments-directly-assigned": "diretamente",
+	"bs-pageassignments-api-error": "Ocorreu um erro",
+	"bs-pageassignments-api-error-no-page": "Página não especificada",
+	"notification-bs-pageassignments-page-move-subject": "$2 foi movida"
+}

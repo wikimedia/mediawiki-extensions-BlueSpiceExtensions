@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-pageassignments-column-title": "Säitentitel",
+	"bs-pageassignments-api-error": "Et ass e Feeler geschitt",
+	"bs-pageassignments-api-error-no-page": "Säit net uginn",
+	"bs-pageassignments-notification-reason": "Grënn fir dës Notifikatioun",
+	"bs-pageassignments-notification-reason-group": "Dir sidd Member {{PLURAL:$1|vum Grupp|vun de Gruppen}}: $2",
+	"notification-bs-pageassignments-page-move-subject": "$2 gouf geréckelt",
+	"notification-bs-pageassignments-page-edit-subject": "$2 gouf geännert",
+	"notification-bs-pageassignments-page-delete-subject": "$2 gouf geläscht"
+}

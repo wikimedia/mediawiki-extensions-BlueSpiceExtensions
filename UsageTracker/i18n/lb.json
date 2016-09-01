@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-usagetracker-startjobs": "Elo aktualiséieren",
+	"bs-usagetracker-col-identifier": "Identifikatioun",
+	"bs-usagetracker-col-desc": "Beschreiwung",
+	"bs-usagetracker-col-last-updated": "Lescht Aktualisatioun"
+}

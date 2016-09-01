@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robert Vogel",
-			"Metalhead64"
+			"Metalhead64",
+			"TMg"
 		]
 	},
 	"bs-pageassignments-desc": "Erlaubt die Zuweisung von Zielgruppen zu einer Seite",
@@ -11,7 +12,7 @@
 	"bs-pageassignments-pref-assignedusersadditionalpermissions": "Zusätzliche Berechtigungen für zugewiesene Benutzer",
 	"bs-pageassignments-dlg-title": "Zuweisungen",
 	"bs-pageassignments-dlg-fldlabel": "Zuweisungen",
-	"bs-pageassignments-menu-label": "Zuweisungen bearbeiten",
+	"bs-pageassignments-menu-label": "Zuweisung bearbeiten",
 	"bs-pageassignments-statebar-label": "Zuweisungen",
 	"bs-pageassignments-action-apiedit-description": "Ändere Zuweisungen von $1",
 	"bs-pageassignments-column-title": "Seitentitel",
@@ -20,7 +21,7 @@
 	"bs-pageassignments-no-assignments": "Keine Zuweisungen",
 	"bs-pageassignments-action-log": "Zuweisungs-Logbuch",
 	"bs-pageassignments-directly-assigned": "direkt",
-	"bs-pageassignments-action-delete-confirm": "Zuweisungen entfernen?",
+	"bs-pageassignments-action-delete-confirm": "Zuweisung entfernen?",
 	"bs-pageassignments-api-error": "Es ist ein Fehler aufgetreten",
 	"bs-pageassignments-api-error-no-page": "Es wurde keine Seite angegeben",
 	"bs-pageassignments-api-error-insert": "Zuweisung \"$1\" fpr \"$2\" konnte nicht gespeichert werden",
