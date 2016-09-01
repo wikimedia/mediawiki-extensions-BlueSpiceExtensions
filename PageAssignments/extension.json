@@ -55,6 +55,7 @@
 		"PageAssignmentsNotificationHooks": "includes/PageAssignmentsNotificationHooks.php",
 		"PageAssignmentsStateBarHooks": "includes/PageAssignmentsStateBarHooks.php",
 		"PageAssignmentsUsersAdditionalPermissionsHooks": "includes/PageAssignmentsUsersAdditionalPermissionsHooks.php",
+		"PageAssignmentsBookmakerHooks": "includes/PageAssignmentsBookmakerHooks.php",
 		"PageAssignmentsWikiExplorerHooks": "includes/PageAssignmentsWikiExplorerHooks.php",
 		"PageAssignmentsDashboardHooks": "includes/PageAssignmentsDashboardHooks.php",
 		"BSAssignableBase": "includes/BSAssignableBase.php",
@@ -118,6 +119,19 @@
 				"ext.pageassignments.scripts"
 			]
 		},
+		"ext.bluespice.pageassignments.bookshelfPlugin": {
+			"scripts": [
+				"bluespice.pageassignments.BookshelfPlugin.js"
+			],
+			"messages": [
+				"bs-pageassignments-column-assignments",
+				"bs-pageassignments-menu-label",
+				"bs-pageassignments-dlg-title",
+				"bs-pageassignments-dlg-fldlabel",
+				"bs-pageassignments-action-apiedit-description",
+				"bs-pageassignments-no-assignments"
+			]
+		},
 		"ext.bluespice.pageassignments.wikiexplorer": {
 			"scripts": [
 				"ext.bluespice.pageassignments.wikiexplorer.js"
@@ -163,6 +177,9 @@
 		"UserAddGroup": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserAddGroup",
 		"userCan": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserCan",
 		"RevisionAjaxReviewBeforeParams": "PageAssignmentsUsersAdditionalPermissionsHooks::onRevisionAjaxReviewBeforeParams",
+		"BSBookshelfBookManager": "PageAssignmentsBookmakerHooks::onBSBookshelfBookManager",
+		"BSBookshelfManagerGetBookDataRow": "PageAssignmentsBookmakerHooks::onBSBookshelfManagerGetBookDataRow",
+		"BSUEModulePDFcollectMetaData": "PageAssignmentsBookmakerHooks::onBSUEModulePDFcollectMetaData",
 		"WikiExplorer::getFieldDefinitions": "PageAssignmentsWikiExplorerHooks::onWikiExplorerGetFieldDefinitions",
 		"WikiExplorer::getColumnDefinitions": "PageAssignmentsWikiExplorerHooks::onWikiExplorerGetColumnDefinitions",
 		"WikiExplorer::queryPagesWithFilter": "PageAssignmentsWikiExplorerHooks::onWikiExplorerQueryPagesWithFilter",
