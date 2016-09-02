@@ -24,5 +24,6 @@
 	"bs-usermanager-labelnewpassword": "Password",
 	"bs-usermanager-labelpasswordcheck": "Conferma password",
 	"bs-usermanager-titledeleteuser": "Cancella utente",
-	"apihelp-bs-usermanager-tasks-description": "Fornisce operazioni per l'estensione Checklist"
+	"apihelp-bs-usermanager-tasks-description": "Fornisce operazioni per l'estensione Checklist",
+	"bs-usermanager-endisable": "Abilita/disabilita"
 }
