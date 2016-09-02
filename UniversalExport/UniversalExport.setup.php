@@ -1,2 +1,2 @@
 <?php
-wfLoadExtension( 'BlueSpiceExtensions/ArticleInfo' );
+wfLoadExtension( 'BlueSpiceExtensions/UniversalExport' );
