@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Milicevic01"
-		]
-	},
-	"bs-echo-page-create": "Страница [[:$1]] је направљена"
-}
