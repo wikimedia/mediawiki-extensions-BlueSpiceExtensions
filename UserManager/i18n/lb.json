@@ -29,11 +29,13 @@
 	"bs-usermanager-confirmdeleteuser": "Sidd Dir sécher, datt Dir {{PLURAL:$1|dëse|dës $1}} Benotzer läsche wëllt?",
 	"bs-usermanager-groups-more": "... méi",
 	"bs-usermanager-no-self-block": "Dir kënnt Iech net selwer desaktivéieren.",
+	"bs-usermanager-block-error": "{{GENDER:$1|De Benotzer}} $1 konnt net desaktivéiert ginn.",
 	"bs-usermanager-unblock-error": "{{GENDER:$1|De Benotzer}} $1 konnt net desaktivéiert ginn.",
 	"bs-usermanager-headerenabled": "Aktivéiert",
 	"bs-usermanager-user-disabled": "{{GENDER:$1|De Benotzer}} $1 gouf desaktivéiert.",
 	"bs-usermanager-user-enabled": "{{GENDER:$1|De Benotzer}} $1 gouf desaktivéiert.",
 	"bs-usermanager-endisable": "Aktivéieren/Desaktivéieren",
+	"bs-usermanager-confirmdisableuser": "Wëllt Dir {{GENDER:$1|de Benotzer}} $1 wierklech desaktivéieren?",
 	"bs-usermanager-titledisableuser": "Benotzer desaktivéieren",
 	"bs-usermanager-titleenableuser": "Benotzer aktivéieren"
 }
