@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Martinligabue"
 		]
 	},
 	"bs-usermanager-db-error": "Si è verificato un errore sul database.",
@@ -25,5 +26,6 @@
 	"bs-usermanager-labelpasswordcheck": "Conferma password",
 	"bs-usermanager-titledeleteuser": "Cancella utente",
 	"apihelp-bs-usermanager-tasks-description": "Fornisce operazioni per l'estensione Checklist",
+	"bs-usermanager-no-self-block": "Non è possibile disattivare se stessi.",
 	"bs-usermanager-endisable": "Abilita/disabilita"
 }

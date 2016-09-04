@@ -36,6 +36,7 @@
 	"bs-usermanager-user-enabled": "{{GENDER:$1|De Benotzer}} $1 gouf desaktivéiert.",
 	"bs-usermanager-endisable": "Aktivéieren/Desaktivéieren",
 	"bs-usermanager-confirmdisableuser": "Wëllt Dir {{GENDER:$1|de Benotzer}} $1 wierklech desaktivéieren?",
+	"bs-usermanager-confirmenableuser": "Wëllt Dir {{GENDER:$1|de Benotzer}} $1 wierklech aktivéieren?",
 	"bs-usermanager-titledisableuser": "Benotzer desaktivéieren",
 	"bs-usermanager-titleenableuser": "Benotzer aktivéieren"
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Moud hosny"
+		]
+	},
+	"bs-usagetracker-startjobs": "التحديث الآن",
+	"bs-usagetracker-create-statistics": "تحديث إحصائيات الاستخدام",
+	"bs-usagetracker-col-identifier": "معرف",
+	"bs-usagetracker-col-desc": "الوصف",
+	"bs-usagetracker-col-count": "عد",
+	"bs-usagetracker-col-last-updated": "آخر تحديث",
+	"bs-usagetracker-base-collector-desc": "عدد الصفحات التي تستخدم $1"
+}

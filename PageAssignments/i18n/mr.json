@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"bs-pageassignments-api-error-no-page": "पान नमूद केले नाही",
+	"notification-bs-pageassignments-page-move-summary": "$1 द्वारे $3 ला {{GENDER:$2|हलविल्या गेले}}",
+	"notification-bs-pageassignments-page-move-subject": "$2 हलवल्या गेले",
+	"notification-bs-pageassignments-page-move-body": "$1 ने पान $2 {{GENDER:$2|हलविले}}",
+	"notification-bs-pageassignments-page-edit-subject": "$2 संपादित केल्या गेले",
+	"notification-bs-pageassignments-page-edit-body": "$1 ने पान $2 {{GENDER:$2|संपादले}}",
+	"notification-bs-pageassignments-page-delete-subject": "$2 वगळल्या गेले",
+	"notification-bs-pageassignments-user-group-remove-subject": "{{PLURAL:$5|गटामधून|गटांमधून}} हटविले $4"
+}
