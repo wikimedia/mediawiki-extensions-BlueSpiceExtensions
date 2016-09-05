@@ -8,7 +8,8 @@ class BSApiPageAssignmentTasks extends BSApiTasksBase {
 
 	protected function getRequiredTaskPermissions() {
 		return array(
-			'edit' => array( 'pageassignments' )
+			'edit' => array( 'pageassignments' ),
+			'getForPage' => array( 'read' ),
 		);
 	}
 
