@@ -13,9 +13,6 @@
 			"extPath": "/BlueSpiceExtensions/Flexiskin"
 		}
 	},
-	"SpecialPages": {
-		"FlexiSkin": "SpecialFlexiskin"
-	},
 	"APIModules": {
 		"bs-flexiskin-tasks": "BSApiFlexiskinTasks",
 		"bs-flexiskin-store": "BSApiFlexiskinStore",
@@ -27,13 +24,9 @@
 			"i18n"
 		]
 	},
-	"ExtensionMessagesFiles": {
-		"FlexiskinAlias": "includes/specials/SpecialFlexiskin.alias.php"
-	},
 	"AutoloadClasses": {
 		"Flexiskin": "Flexiskin.class.php",
 		"FlexiskinFormatter": "includes/FlexiskinFormatter.class.php",
-		"SpecialFlexiskin": "includes/specials/SpecialFlexiskin.php",
 		"ResourceLoaderFlexiskinModule": "includes/resourceloader/ResourceLoaderFlexiskinModule.php",
 		"ResourceLoaderFlexiskinPreviewModule": "includes/resourceloader/ResourceLoaderFlexiskinPreviewModule.php",
 		"BSApiFlexiskinTasks": "includes/api/BSApiFlexiskinTasks.php",
