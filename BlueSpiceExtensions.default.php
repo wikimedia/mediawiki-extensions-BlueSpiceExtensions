@@ -46,7 +46,7 @@ require_once( __DIR__."/VisualEditor/VisualEditor.setup.php" );
 require_once( __DIR__."/ExtendedEditBar/ExtendedEditBar.setup.php" );
 require_once( __DIR__."/RSSStandards/RSSStandards.setup.php" );
 require_once( __DIR__."/PageTemplates/PageTemplates.setup.php" );
-require_once( __DIR__."/ResponsibleEditors/ResponsibleEditors.setup.php" );
+require_once( __DIR__."/PageAssignments/PageAssignments.setup.php" );
 require_once( __DIR__."/Review/Review.setup.php" );
 require_once( __DIR__."/SaferEdit/SaferEdit.setup.php" );
 require_once( __DIR__."/Statistics/Statistics.setup.php" );
