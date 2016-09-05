@@ -211,7 +211,7 @@ class BsPDFServlet {
 
 			//Extracting the filename
 			foreach( $aForPreg as $sForPreg ) {
-				$sSrcUrl = preg_replace( "#" . preg_quote( $sForPreg ,"/") . "#", '', $sSrcUrl );
+				$sSrcUrl = preg_replace( "#" . preg_quote( $sForPreg ,"#" ) . "#", '', $sSrcUrl );
 				$sSrcUrl = preg_replace( '/(&.*)/','', $sSrcUrl );
 			};
 
@@ -238,6 +238,7 @@ class BsPDFServlet {
 				$sAbsoluteFileSystemPath = $this->getFileSystemPath( $wgUploadPath . $sSrcUrl );
 			}
 			// TODO RBV (05.04.12 11:48): Check if urlencode has side effects
+			$oImageElement->setAttribute( 'data-orig-src', $oImageElement->getAttribute( 'src' ) );
 			$oImageElement->setAttribute( 'src', 'images/'.urlencode($sSrcFilename) );
 			$sFileName = $sSrcFilename;
 			wfRunHooks( 'BSUEModulePDFFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
