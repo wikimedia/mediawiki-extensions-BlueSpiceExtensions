@@ -43,22 +43,7 @@ class GroupManager extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'GroupManager',
-			EXTINFO::DESCRIPTION => 'bs-groupmanager-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Sebastian Ulbricht',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/GroupManager',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
-		$this->mExtensionKey = 'MW::GroupManager';
-
-		WikiAdmin::registerModule('GroupManager', array(
+                WikiAdmin::registerModule('GroupManager', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_gruppe_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-groupmanager-label'
