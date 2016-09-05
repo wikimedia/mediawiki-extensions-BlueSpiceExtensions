@@ -5,7 +5,8 @@
 			"ChaudLeChocolat",
 			"Lucky",
 			"TomT0m",
-			"Nicolapps"
+			"Nicolapps",
+			"Wladek92"
 		]
 	},
 	"bs-flexiskin-desc": "Fournit une page pour gérer les habillages flexibles avec des options perosnnalisées",
@@ -67,5 +68,7 @@
 	"apihelp-bs-flexiskin-tasks-description": "Permet la manipulation des habillages flexibles",
 	"apihelp-bs-flexiskin-store-description": "Liste les habillages flexibles disponibles",
 	"apihelp-bs-flexiskin-upload-description": "Permet de télécharger des fichiers vers un habillage flexible",
-	"apihelp-bs-flexiskin-upload-store-description": "Liste les fichiers téléchargés d’un habillage flexible"
+	"apihelp-bs-flexiskin-upload-store-description": "Liste les fichiers téléchargés d’un habillage flexible",
+	"action-flexiskin-viewspecialpage": "Voir la page spéciale « Flexiskin »",
+	"flexiskin": "Préférences d'habillage"
 }

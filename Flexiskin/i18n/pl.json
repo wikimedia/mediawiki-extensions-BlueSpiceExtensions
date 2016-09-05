@@ -49,5 +49,6 @@
 	"bs-flexiskin-api-error-missing-param": "Brakuje następującego parametru: „$1”",
 	"bs-flexiskin-apihelp-task-param-skinId": "Parametr <var>skinId</var> określa skórkę",
 	"bs-flexiskin-apihelp-task-param-name": "Parametr <var>name</var> jest nazwą przesyłanego pliku",
-	"bs-flexiskin-labelcurrentbackground": "Bieżący obraz"
+	"bs-flexiskin-labelcurrentbackground": "Bieżący obraz",
+	"flexiskin": "Preferencje skórki"
 }

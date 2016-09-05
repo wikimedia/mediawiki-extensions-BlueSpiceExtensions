@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cristofer Alves"
+		]
+	},
+	"prefs-pageassignments": "Assinaturas de paginas",
+	"bs-pageassignments-pref-permissions": "Adicionar permissões para usuários atribuídos",
+	"bs-pageassignments-yourassignments": "Suas assinaturas",
+	"bs-pageassignments-yourassignmentsdesc": "Lista de paginas em que você está atribuído."
+}

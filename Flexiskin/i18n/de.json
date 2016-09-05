@@ -66,5 +66,7 @@
 	"apihelp-bs-flexiskin-tasks-description": "Ermöglicht die Veränderung von Flexiskins",
 	"apihelp-bs-flexiskin-store-description": "Listet verfügbare Flexiskins auf",
 	"apihelp-bs-flexiskin-upload-description": "Ermöglicht das Hochladen von Dateien auf einen Flexiskin",
-	"apihelp-bs-flexiskin-upload-store-description": "Listet hochgeladene Dateien eines Flexiskins auf"
+	"apihelp-bs-flexiskin-upload-store-description": "Listet hochgeladene Dateien eines Flexiskins auf",
+	"action-flexiskin-viewspecialpage": "die Spezialseite „Flexiskin“ anzusehen",
+	"flexiskin": "Einstellungen zur Benutzeroberfläche"
 }

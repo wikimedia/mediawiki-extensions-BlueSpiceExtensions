@@ -56,5 +56,9 @@
 	"notification-bs-pageassignments-user-group-add-body": "$1 vous {{GENDER:$2|a ajouté}} au groupe $4. Veuillez vérifier votre affectation sur $3",
 	"notification-bs-pageassignments-user-group-remove-summary": "Vous avez été retiré {{PLURAL:$5|du groupe|des groupes}} $4",
 	"notification-bs-pageassignments-user-group-remove-subject": "Retiré des membres {{PLURAL:$5|du groupe|des groupes}} $4",
-	"notification-bs-pageassignments-user-group-remove-body": "$1 vous {{GENDER:$2|a retiré}} {{PLURAL:$5|du groupe|des groupes}} $4. Veuillez vérifier votre affectation  sur $3"
+	"notification-bs-pageassignments-user-group-remove-body": "$1 vous {{GENDER:$2|a retiré}} {{PLURAL:$5|du groupe|des groupes}} $4. Veuillez vérifier votre affectation  sur $3",
+	"prefs-pageassignments": "Affectations de pages",
+	"bs-pageassignments-pref-permissions": "Ajouter des permissions supplémentaires aux utilisateurs affectés",
+	"bs-pageassignments-yourassignments": "Vos affectations",
+	"bs-pageassignments-yourassignmentsdesc": "Liste des pages auxquelles vous êtes affecté."
 }
