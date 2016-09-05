@@ -39,6 +39,7 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 			this.colIWLPrefix,
 			this.colIWLUrl
 		];
+
 		this.callParent( arguments );
 	},
 	onBtnAddClick: function( oButton, oEvent ) {
