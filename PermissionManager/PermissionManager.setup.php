@@ -1,69 +1,5 @@
 <?php
-
-BsExtensionManager::registerExtension('PermissionManager', BsRUNLEVEL::FULL | BsRUNLEVEL::REMOTE, BsACTION::LOAD_SPECIALPAGE);
-
-$wgMessagesDirs['PermissionManager'] = __DIR__ . '/i18n';
-
-$wgResourceModules['ext.bluespice.permissionManager'] = array(
-	'scripts' => array(
-		'extensions/BlueSpiceExtensions/PermissionManager/resources/bluespice.permissionManager.js'
-	),
-	'styles' => 'extensions/BlueSpiceExtensions/PermissionManager/resources/bluespice.permissionManager.css',
-	'dependencies' => 'ext.bluespice.extjs',
-	'messages' => array(
-		'htmlform-reset',
-		'bs-permissionmanager-header-permissions',
-		'bs-permissionmanager-header-global',
-		'bs-permissionmanager-header-namespaces',
-		'bs-permissionmanager-header-group',
-		'bs-permissionmanager-btn-group-label',
-		'bs-permissionmanager-btn-save-label',
-		'bs-permissionmanager-btn-save-in-progress-label',
-		'bs-permissionmanager-save-success',
-		'bs-permissionmanager-btn-template-editor',
-		'bs-permissionmanager-labeltpled',
-		'bs-permissionmanager-labeltpled-desc',
-		'bs-permissionmanager-labeltpled-active',
-		'bs-permissionmanager-labeltpled-permissions',
-		'bs-permissionmanager-labeltemplates',
-		'bs-permissionmanager-labeltpled-add',
-		'bs-permissionmanager-labeltpled-edit',
-		'bs-permissionmanager-labeltpled-delete',
-		'bs-permissionmanager-labeltpled-save',
-		'bs-permissionmanager-labeltpled-cancel',
-		'bs-permissionmanager-msgtpled-success',
-		'bs-permissionmanager-msgtpled-saveonabort',
-		'bs-permissionmanager-msgtpled-new',
-		'bs-permissionmanager-msgtpled-edit',
-		'bs-permissionmanager-msgtpled-delete',
-		'bs-permissionmanager-titletpled-new',
-		'bs-permissionmanager-titletpled-edit',
-		'bs-permissionmanager-titletpled-delete',
-		'bs-permissionmanager-unsaved-changes'
-	),
-	'localBasePath' => $IP,
-	'remoteBasePath' => &$GLOBALS['wgScriptPath']
-);
-
-$wgAutoloadClasses['PermissionManager'] = __DIR__ . '/PermissionManager.class.php';
-$wgAutoloadClasses['PermissionTemplates'] = __DIR__ . '/includes/PermissionTemplates.class.php';
-$wgAutoloadClasses['PermissionValidator'] = __DIR__ . '/includes/PermissionValidator.php';
-$wgAutoloadClasses['SpecialPermissionManager'] = __DIR__ . '/includes/specials/SpecialPermissionManager.class.php';
-$wgExtensionMessagesFiles['PermissionManagerAlias'] = __DIR__ . '/includes/specials/SpecialPermissionManager.alias.php';
-
-//register specialpage for permissionmanager
-$wgSpecialPages['PermissionManager'] = 'SpecialPermissionManager';
-
-// Map class name to filename for autoloading
-$wgAutoloadClasses['ApiPermissionManager'] = __DIR__ . '/includes/api/ApiPermissionManager.php';
-
-// Map module name to class name
-$wgAPIModules['bs-permissionmanager-tasks'] = 'ApiPermissionManager';
-
-$wgExtensionFunctions[] = 'PermissionManager::setupLockmodePermissions';
-
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'PermissionManager::getSchemaUpdates';
-$wgHooks['BsPermissionManager::beforeSavePermissions'][] = 'PermissionValidator::beforeSavePermissionsValidateGlobalRead';
+wfLoadExtension( 'BlueSpiceExtensions/PermissionManager' );
 
 if( !isset( $bsgPermissionManagerDefaultTemplates ) ) {
 	$bsgPermissionManagerDefaultTemplates = array();
@@ -163,7 +99,3 @@ $bsgPermissionManagerDefaultTemplates = array(
 			'workflowedit', // still in use?
 	)
 ) + $bsgPermissionManagerDefaultTemplates;
-
-$wgLogTypes[] = 'bs-permission-manager';
-$wgFilterLogTypes['bs-permission-manager'] = true;
-$wgLogActionsHandlers['bs-permission-manager/*'] = 'LogFormatter';

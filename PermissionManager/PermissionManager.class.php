@@ -100,29 +100,13 @@ class PermissionManager extends BsExtensionMW {
 	 * Constructor of PermissionManager
 	 */
 	public function __construct() {
-		wfProfileIn( 'BS::' . __METHOD__ );
-
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
-		$this->mInfo = array(
-				EXTINFO::NAME => 'PermissionManager',
-				EXTINFO::DESCRIPTION => 'bs-permissionmanager-desc',
-				EXTINFO::AUTHOR => 'Sebastian Ulbricht, Leonid Verhovskij',
-				EXTINFO::VERSION => 'default',
-				EXTINFO::STATUS => 'default',
-				EXTINFO::PACKAGE => 'default',
-				EXTINFO::URL => 'https://help.bluespice.com/index.php/PermissionManager',
-				EXTINFO::DEPS => array( 'bluespice' => '2.23.0' )
-		);
-
+		wfProfileIn( 'BS::' . __METHOD__);
 		WikiAdmin::registerModule( 'PermissionManager', array(
 						'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_rechteverwaltung_v1.png',
 						'level' => 'wikiadmin',
 						'message' => 'bs-permissionmanager-label'
 				)
 		);
-
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
