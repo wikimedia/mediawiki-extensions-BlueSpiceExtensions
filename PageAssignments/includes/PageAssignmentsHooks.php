@@ -9,6 +9,12 @@ class PageAssignmentsHooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$updater->addExtensionTable( 'bs_pageassignments', dirname( __DIR__ ).'/db/bs_pageassignments.sql' );
+		if( !$updater->tableExists('bs_responsible_editors') ) {
+			return true;
+		}
+		$updater->addPostDatabaseUpdateMaintenance(
+			'BSPageAssignmentsMigrateRespEditors'
+		);
 		return true;
 	}
 
