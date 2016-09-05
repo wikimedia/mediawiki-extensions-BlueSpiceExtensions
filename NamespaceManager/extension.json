@@ -1,0 +1,72 @@
+{
+	"name": "NamespaceManager",
+	"version": "2.27.0",
+	"url": "https://help.bluespice.com/index.php/Namespacemanager",
+	"author":   [
+		"Sebastian Ulbricht",
+		"Stefan Widmann",
+		"Robert Vogel"
+	],
+	"license-name":"GPL-2.0+",
+	"descriptionmsg": "bs-namespacemanager-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"NamespaceManager": {
+			"className": "NamespaceManager",
+			"extPath": "/BlueSpiceExtensions/NamespaceManager"
+		}
+	},
+	"LogTypes": [
+		"bs-namespace-manager"
+	],
+	"FilterLogTypes": {
+		"bs-namespace-manager": true
+	},
+	"LogActionsHandlers": {
+		"bs-namespace-manager/*": "LogFormatter"
+	},
+	"APIModules": {
+		"bs-namespace-store": "BSApiNamespaceStore",
+		"bs-namespace-tasks": "BSApiNamespaceTasks"
+	},
+	"MessagesDirs": {
+		"NamespaceManager": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"NamespaceManager": "NamespaceManager.class.php",
+		"NamespaceNuker": "includes/NamespaceNuker.php",
+		"BSApiNamespaceStore": "includes/api/BSApiNamespaceStore.php",
+		"BSApiNamespaceTasks": "includes/api/BSApiNamespaceTasks.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.namespaceManager": {
+			"scripts": "resources/bluespice.namespaceManager.js",
+			"dependencies": "ext.bluespice.extjs",
+			"messages": [
+				"bs-namespacemanager-tipadd",
+				"bs-namespacemanager-tipedit",
+				"bs-namespacemanager-tipremove",
+				"bs-namespacemanager-msgnoteditabledelete",
+				"bs-namespacemanager-labelnsname",
+				"bs-namespacemanager-willdelete",
+				"bs-namespacemanager-willmove",
+				"bs-namespacemanager-willmovesuffix",
+				"bs-namespacemanager-deletewarning",
+				"bs-namespacemanager-pagepresent",
+				"bs-namespacemanager-label-editable",
+				"bs-ns_main",
+				"bs-from-something"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "BlueSpiceExtensions/NamespaceManager"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "NamespaceManager::onLoadExtensionSchemaUpdates"
+	},
+	"manifest_version": 1
+}
