@@ -67,5 +67,7 @@
 	"apihelp-bs-flexiskin-tasks-description": "Describes an API endpoint that allows manipulation of flexiskins",
 	"apihelp-bs-flexiskin-store-description": "Describes an API endpoint that lists available flexiskins",
 	"apihelp-bs-flexiskin-upload-description": "Describes an API endpoint that is used to upload files to a flexiskin",
-	"apihelp-bs-flexiskin-upload-store-description": "Describes an API endpoint that lists uploaded files of a flexiskin"
+	"apihelp-bs-flexiskin-upload-store-description": "Describes an API endpoint that lists uploaded files of a flexiskin",
+	"action-flexiskin-viewspecialpage": "Part of error message when access denied to view specialpage \"Flexiskin\"",
+	"flexiskin": "Title for special page of extension \"Flexiskin\""
 }

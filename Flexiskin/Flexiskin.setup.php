@@ -26,6 +26,12 @@ $wgAPIModules['bs-flexiskin-upload'] = 'BSApiFlexiskinUpload';
 $wgAutoloadClasses['BSApiFlexiskinUploadStore'] = __DIR__ . '/includes/api/BSApiFlexiskinUploadStore.php';
 $wgAPIModules['bs-flexiskin-upload-store'] = 'BSApiFlexiskinUploadStore';
 
+$wgAutoloadClasses['SpecialFlexiskin'] = __DIR__ . '/includes/specials/SpecialFlexiskin.class.php';
+$wgExtensionMessagesFiles['FlexiskinAlias'] = __DIR__ . '/includes/specials/SpecialFlexiskin.alias.php';
+
+//register specialpage for permissionmanager
+$wgSpecialPages['FlexiSkin'] = 'SpecialFlexiskin';
+
 $wgResourceModules['ext.bluespice.flexiskin.skin.preview'] =  array(
 	'class' => 'ResourceLoaderFlexiskinPreviewModule'
 );
