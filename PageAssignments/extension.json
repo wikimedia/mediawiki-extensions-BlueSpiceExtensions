@@ -54,6 +54,7 @@
 		"PageAssignmentsHooks": "includes/PageAssignmentsHooks.php",
 		"PageAssignmentsNotificationHooks": "includes/PageAssignmentsNotificationHooks.php",
 		"PageAssignmentsStateBarHooks": "includes/PageAssignmentsStateBarHooks.php",
+		"PageAssignmentsUsersAdditionalPermissionsHooks": "includes/PageAssignmentsUsersAdditionalPermissionsHooks.php",
 		"BSAssignableBase": "includes/BSAssignableBase.php",
 		"BSAssignableUser": "includes/BSAssignableUser.php",
 		"BSAssignableGroup": "includes/BSAssignableGroup.php",
@@ -139,7 +140,10 @@
 		"BSStatebarAddSortBodyVars": "PageAssignmentsStateBarHooks::onStatebarAddSortBodyVars",
 		"BSWikiAdminMenuItems": "PageAssignmentsHooks::onBSWikiAdminMenuItems",
 		"ArticleSaveComplete": "PageAssignmentsNotificationHooks::onArticleSaveComplete",
-		"BSUserManagerAfterSetGroups": "PageAssignmentsNotificationHooks::onBSUserManagerAfterSetGroups"
+		"BSUserManagerAfterSetGroups": "PageAssignmentsNotificationHooks::onBSUserManagerAfterSetGroups",
+		"UserAddGroup": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserAddGroup",
+		"userCan": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserCan",
+		"RevisionAjaxReviewBeforeParams": "PageAssignmentsUsersAdditionalPermissionsHooks::onRevisionAjaxReviewBeforeParams"
 	},
 	"manifest_version": 1
 }
