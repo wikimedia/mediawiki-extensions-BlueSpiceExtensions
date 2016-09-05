@@ -21,7 +21,7 @@ class SpecialAboutBlueSpice extends BsSpecialPage {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		parent::__construct( 'AboutBlueSpice' );
+		parent::__construct( 'AboutBlueSpice', 'aboutbluespice-viewspecialpage' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

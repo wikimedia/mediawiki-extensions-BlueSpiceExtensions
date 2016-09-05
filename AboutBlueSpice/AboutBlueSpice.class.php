@@ -23,6 +23,7 @@
  * For further information visit http://www.bluespice.com
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @version    2.23.2
  * @package    BlueSpice_Extensions
  * @subpackage AboutBlueSpice
@@ -42,6 +43,8 @@ class AboutBlueSpice extends BsExtensionMW {
 		$this->setHook( 'SkinBuildSidebar' );
 
 		BsConfig::registerVar( 'MW::AboutBlueSpice::ShowMenuLinks', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-aboutbluespice-show-menu-links', 'toggle' );
+
+		$this->mCore->registerPermission( 'aboutbluespice-viewspecialpage', array('user'), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
