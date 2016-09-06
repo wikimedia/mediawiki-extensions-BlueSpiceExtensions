@@ -18,5 +18,6 @@
 	"bs-interwikilinks-titledeleteinterwikilink": "Interwiki-Link läschen",
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Sidd Dir sécher datt Dir dësen Interwiki-Link läsche wëllt?",
 	"bs-interwikilinks-insertlink-tabtitle": "Link an eng aner Wiki",
-	"bs-interwikilinks-insertlink-labelprefix": "Prefix"
+	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
+	"interwikilinks": "Interwiki-Linken"
 }

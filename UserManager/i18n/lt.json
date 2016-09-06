@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Zygimantus"
 		]
 	},
 	"bs-usermanager-admin-nodelete": "Administratoriaus paskyra negali būti ištrinta.",
@@ -29,5 +30,9 @@
 	"bs-usermanager-titledeleteuser": "Ištrinti vartotoją",
 	"bs-usermanager-confirmdeleteuser": "Ar tikrai norite ištrinti {{PLURAL:$1|šį vartotoją|šiuos vartotojus}}?",
 	"bs-usermanager-groups-more": "... daugiau",
-	"bs-usermanager-no-self-desysop": "Jūs negalite atimti savo paties sysop teisės."
+	"bs-usermanager-no-self-desysop": "Jūs negalite atimti savo paties sysop teisės.",
+	"bs-usermanager-headerenabled": "Įjungta",
+	"bs-usermanager-endisable": "Įjungti/išjungti",
+	"bs-usermanager-titledisableuser": "Išjungti vartotoją",
+	"bs-usermanager-titleenableuser": "Įgalinti vartotoją"
 }

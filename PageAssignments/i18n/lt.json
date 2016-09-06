@@ -5,8 +5,12 @@
 		]
 	},
 	"pageassignments": "Užduotys",
+	"managepageassignments": "Užduoties valdymas",
 	"bs-pageassignments-dlg-title": "Užduotys",
 	"bs-pageassignments-dlg-fldlabel": "Užduotys",
 	"bs-pageassignments-column-title": "Puslapio pavadinimas",
-	"bs-pageassignments-directly-assigned": "tiesiogiai"
+	"bs-pageassignments-directly-assigned": "tiesiogiai",
+	"notification-bs-pageassignments-page-edit-subject": "$2 buvo redaguotas",
+	"prefs-pageassignments": "Puslapio užduotys",
+	"bs-pageassignments-yourassignments": "Jūsų užduotys"
 }

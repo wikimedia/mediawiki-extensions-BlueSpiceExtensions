@@ -54,5 +54,9 @@
 	"notification-bs-pageassignments-user-group-add-body": "$1 te {{GENDER:$2|añadió}} al grupo $4. Comprueba tu asignación en $3",
 	"notification-bs-pageassignments-user-group-remove-summary": "Te han quitado {{PLURAL:$5|del grupo|de los grupos}} $4",
 	"notification-bs-pageassignments-user-group-remove-subject": "Quitado {{PLURAL:$5|del grupo|de los grupos}} $4",
-	"notification-bs-pageassignments-user-group-remove-body": "$1 te {{GENDER:$2|quitó}} {{PLURAL:$5|del grupo|de los grupos}} $4. Comprueba tu asignación en $3"
+	"notification-bs-pageassignments-user-group-remove-body": "$1 te {{GENDER:$2|quitó}} {{PLURAL:$5|del grupo|de los grupos}} $4. Comprueba tu asignación en $3",
+	"prefs-pageassignments": "Asignaciones de página",
+	"bs-pageassignments-pref-permissions": "Añadir permisos adicionales a los usuarios asignados",
+	"bs-pageassignments-yourassignments": "Tus asignaciones",
+	"bs-pageassignments-yourassignmentsdesc": "Lista de páginas a las que se te asignó."
 }

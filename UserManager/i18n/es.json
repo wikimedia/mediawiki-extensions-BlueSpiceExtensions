@@ -32,5 +32,9 @@
 	"bs-usermanager-titledeleteuser": "Eliminar el usuario",
 	"bs-usermanager-confirmdeleteuser": "¿Estás seguro de que quieres borrar a {{PLURAL:$1|este usuario|estos $1 usuarios}}?",
 	"bs-usermanager-groups-more": "... más",
-	"bs-usermanager-no-self-desysop": "No puedes quitarte tu propio privilegio administrativo."
+	"bs-usermanager-no-self-desysop": "No puedes quitarte tu propio privilegio administrativo.",
+	"bs-usermanager-headerenabled": "Activado",
+	"bs-usermanager-endisable": "Activar/desactivar",
+	"bs-usermanager-titledisableuser": "Desactivar usuario",
+	"bs-usermanager-titleenableuser": "Activar usuario"
 }

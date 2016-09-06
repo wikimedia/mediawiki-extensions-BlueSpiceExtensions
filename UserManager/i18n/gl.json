@@ -33,6 +33,9 @@
 	"bs-usermanager-groups-more": "... mais",
 	"bs-usermanager-no-self-desysop": "Non pode retirar o permiso de \"sysop\" a sí mesmo.",
 	"apihelp-bs-usermanager-tasks-description": "Proporciona operacións para a extensión Checklist",
+	"bs-usermanager-no-self-block": "Non pode desactivarse a si mesmo.",
+	"bs-usermanager-headerenabled": "Activado",
+	"bs-usermanager-endisable": "Activar/desactivar",
 	"bs-usermanager-titledisableuser": "Desactivar ó usuario",
 	"bs-usermanager-titleenableuser": "Activar ó usuario"
 }

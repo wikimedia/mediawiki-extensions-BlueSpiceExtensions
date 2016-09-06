@@ -54,5 +54,7 @@
 	"notification-bs-pageassignments-user-group-add-body": "$1 {{GENDER:$2|engadiuno}} ó grupo $4. Comprobe a súa asignación en $3",
 	"notification-bs-pageassignments-user-group-remove-summary": "Foi eliminado {{PLURAL:$5|do grupo|dos grupos}} $4",
 	"notification-bs-pageassignments-user-group-remove-subject": "Eliminado {{PLURAL:$5|do grupo|dos grupos}} $4",
-	"notification-bs-pageassignments-user-group-remove-body": "$1 {{GENDER:$2|eliminouno}} {{PLURAL:$5|do grupo|dos grupos}} $4. Comprobre a súa asignación en $3"
+	"notification-bs-pageassignments-user-group-remove-body": "$1 {{GENDER:$2|eliminouno}} {{PLURAL:$5|do grupo|dos grupos}} $4. Comprobre a súa asignación en $3",
+	"prefs-pageassignments": "Asignacións de páxinas",
+	"bs-pageassignments-yourassignments": "As súas asignacións"
 }

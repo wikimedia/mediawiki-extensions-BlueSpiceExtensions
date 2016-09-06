@@ -17,5 +17,6 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Czy na pewno chcesz usunąć ten link interwiki?",
 	"bs-interwikilinks-insertlink-tabtitle": "Link do innej wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Przedrostek",
-	"bs-interwikilink-select-a-prefix": "Wybierz przedrostek"
+	"bs-interwikilink-select-a-prefix": "Wybierz przedrostek",
+	"interwikilinks": "Linki interwiki"
 }

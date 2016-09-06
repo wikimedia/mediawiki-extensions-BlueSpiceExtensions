@@ -61,5 +61,6 @@
 	"bs-flexiskin-api-error-missing-param": "Falta el parámetro siguiente: «$1»",
 	"bs-flexiskin-apihelp-task-param-skinId": "El parámetro <var>skinId</var> identifica la apariencia",
 	"bs-flexiskin-usebackground": "Usar la imagen de fondo",
-	"bs-flexiskin-labelcurrentbackground": "Imagen actual"
+	"bs-flexiskin-labelcurrentbackground": "Imagen actual",
+	"flexiskin": "Preferencias de la apariencia"
 }

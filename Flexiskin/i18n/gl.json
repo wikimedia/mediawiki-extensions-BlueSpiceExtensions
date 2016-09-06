@@ -60,5 +60,6 @@
 	"bs-flexiskin-apihelp-task-param-skinId": "O parámetro <var>skinId</var> identifica a aparencia",
 	"bs-flexiskin-apihelp-task-param-name": "O parámetro <var>name</var> é nome do ficheiro subido",
 	"bs-flexiskin-usebackground": "Usar a imaxe de fondo",
-	"bs-flexiskin-labelcurrentbackground": "Imaxe actual"
+	"bs-flexiskin-labelcurrentbackground": "Imaxe actual",
+	"flexiskin": "Preferencias da aparencia"
 }

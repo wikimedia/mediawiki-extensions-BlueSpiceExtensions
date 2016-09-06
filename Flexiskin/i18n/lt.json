@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Zygimantus"
 		]
 	},
 	"bs-flexiskin-label": "Išvaizda",
@@ -55,5 +56,6 @@
 	"apihelp-bs-flexiskin-tasks-description": "Leidžia manipuliuoti flexiskins",
 	"apihelp-bs-flexiskin-store-description": "Išvardino galimus flexiskins",
 	"apihelp-bs-flexiskin-upload-description": "Leidžia kelti failus į flexiskin",
-	"apihelp-bs-flexiskin-upload-store-description": "Išvardina failus įkeltus į flexiskin"
+	"apihelp-bs-flexiskin-upload-store-description": "Išvardina failus įkeltus į flexiskin",
+	"flexiskin": "Išvaizdos nuostatos"
 }

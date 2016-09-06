@@ -11,5 +11,7 @@
 	"bs-interwikilinks-titleeditinterwikilink": "আন্তঃউইকি সংযোগ সম্পাদনা",
 	"bs-interwikilinks-titledeleteinterwikilink": "আন্তঃউইকি সংযোগ অপসারণ করুন",
 	"bs-interwikilinks-confirmdeleteinterwikilink": "আপনি কি নিশ্চিত, আপনি এই আন্তউইকি সংযোগ অপসারণ করতে চান?",
-	"bs-interwikilinks-insertlink-tabtitle": "অন্য উইকি মধ্যে সংযোগ"
+	"bs-interwikilinks-insertlink-tabtitle": "অন্য উইকি মধ্যে সংযোগ",
+	"action-interwikilinks-viewspecialpage": "বিশেষ পাতা \"{{int:bs-interwikilinks-label}}\" দেখার",
+	"interwikilinks": "আন্তঃউইকি সংযোগ"
 }

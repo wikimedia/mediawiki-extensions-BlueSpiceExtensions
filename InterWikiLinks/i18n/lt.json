@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Zygimantus"
 		]
 	},
 	"bs-interwikilinks-nopfx": "Prašome pateikti priešdėlį.",
@@ -12,5 +13,6 @@
 	"bs-interwikilinks-labelprefix": "Priešdėlis",
 	"bs-interwikilinks-insertlink-tabtitle": "Nuoroda į kitą vikį",
 	"bs-interwikilinks-insertlink-labelprefix": "Priešdėlis",
-	"bs-interwikilink-select-a-prefix": "Pasirinkti priešdėlį"
+	"bs-interwikilink-select-a-prefix": "Pasirinkti priešdėlį",
+	"interwikilinks": "Tarpkalbinės nuorodos"
 }
