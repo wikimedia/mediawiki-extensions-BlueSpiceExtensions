@@ -133,9 +133,10 @@ BsShoutBox = {
 			},
 			success: function( oData, oTextStatus ) {
 				if( oData.success !== true ) {
-					bs.util.alert( 'bs-shoutbox-alert', {
-						text: oData.message
-					});
+					mw.notify(
+						oData.message,
+						{ title: mw.msg( 'bs-extjs-title-success' ) }
+					);
 				}
 				BsShoutBox.updateShoutbox();
 				$( document ).trigger( "onBsShoutboxAfterArchived", [ BsShoutBox ] );
@@ -208,9 +209,10 @@ mw.loader.using( 'ext.bluespice', function() {
 			},
 			success: function( oData, oTextStatus ) {
 				if ( oData.success !== true ) {
-					bs.util.alert( 'bs-shoutbox-alert', {
-						text: oData.message
-					});
+					mw.notify(
+						oData.message,
+						{ title: mw.msg( 'bs-extjs-title-success' ) }
+					);
 				}
 				BsShoutBox.updateShoutbox();
 			}
