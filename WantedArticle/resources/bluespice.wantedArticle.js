@@ -116,11 +116,8 @@ BsWantedArticle = {
 				})
 			},
 			success: function( oData, oTextStatus ) {
-				bs.util.alert( 'WAsuc', {
-					text: oData.message,
-					titleMsg: 'bs-extjs-title-success'
-				});
 				if( oData.success == true ) {
+					mw.notify( oData.message, { title: mw.msg( 'bs-extjs-title-success' ) } );
 					BsWantedArticle.resetDefaults();
 					BsWantedArticle.reloadAllWantedArticleTags();
 				}
