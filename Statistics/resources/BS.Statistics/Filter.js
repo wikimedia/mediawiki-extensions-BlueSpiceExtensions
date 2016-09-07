@@ -316,7 +316,7 @@ Ext.define( 'BS.Statistics.Filter', {
 		this.fireEvent('saved', this, action.result.data, action.result);
 		this.collapse();
 		if( action.result.message === undefined || action.result.message == '') return;
-		bs.util.alert( 'STAsuc', { text: action.result.message, titleMsg: 'bs-extjs-title-success' } );
+		mw.notify( action.result.message, { title: mw.msg( 'bs-extjs-title-success' ) } );
 	},
 	fpFailure: function( form, action ) {
 		this.fireEvent('failed', this, action.result.message, action.result);
