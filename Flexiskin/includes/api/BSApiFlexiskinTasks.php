@@ -38,6 +38,17 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 
 	protected $sTaskLogType = 'bs-flexiskin';
 
+	protected function getRequiredTaskPermissions() {
+		return array(
+			'activate' => array( 'flexiskinedit' ),
+			'add' => array( 'flexiskinedit' ),
+			'delete' => array( 'flexiskinedit' ),
+			'save' => array( 'flexiskinedit' ),
+			'reset' => array( 'flexiskinedit' ),
+			'preview' => array( 'flexiskinedit' ),
+		);
+	}
+
 	/**
 	 * Activates the Flexiskin defined by id via request parameter
 	 * @return String encoded result JSON string
@@ -209,6 +220,7 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 			'path' => wfScript(),
 			'query' => wfArrayToCgi( array(
 				'flexiskin' => $sId,
+				'preview' => 'true'
 			) )
 		) );
 
