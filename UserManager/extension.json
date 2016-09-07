@@ -26,7 +26,8 @@
 		"UserManagerAlias": "includes/specials/SpecialUserManager.alias.php"
 	},
 	"APIModules": {
-		"bs-usermanager-tasks": "BSApiTasksUserManager"
+		"bs-usermanager-tasks": "BSApiTasksUserManager",
+		"bs-usermanager-group-store": "BSApiChangeableGroupStore"
 	},
 	"MessagesDirs": {
 		"UserManager": [
@@ -36,6 +37,7 @@
 	"AutoloadClasses": {
 		"UserManager": "UserManager.class.php",
 		"BSApiTasksUserManager": "includes/api/BSApiTasksUserManager.php",
+		"BSApiChangeableGroupStore": "includes/api/BSApiChangeableGroupStore.php",
 		"SpecialUserManager": "includes/specials/SpecialUserManager.class.php"
 	},
 	"ResourceModules": {

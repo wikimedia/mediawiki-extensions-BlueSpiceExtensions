@@ -37,7 +37,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 		});
 
 		this.strGroups = Ext.create( 'BS.store.BSApi', {
-			apiAction: 'bs-group-store',
+			apiAction: 'bs-usermanager-group-store',
 			fields: ['group_name', 'additional_group', 'displayname'],
 			proxy: {
 				extraParams: {
