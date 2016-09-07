@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Crucifunked"
+		]
+	},
+	"action-pagetemplatesadmin-viewspecialpage": "ver páxina especial \"{{int:pagetemplatesadmin}}\"",
+	"pagetemplatesadmin": "Alministración de plantíes pa páxines"
+}

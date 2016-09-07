@@ -8,5 +8,6 @@
 	"bs-extendedsearch-facet-editors": "Аутори",
 	"bs-extendedsearch-sort-relevance": "Релевантност",
 	"bs-extendedsearch-warning": "Упозорење",
-	"bs-extendedsearch-section": "Одељак"
+	"bs-extendedsearch-section": "Одељак",
+	"action-extendedsearchadmin-viewspecialpage": "преглед посебне странице „{{int:extendedsearchadmin}}“"
 }

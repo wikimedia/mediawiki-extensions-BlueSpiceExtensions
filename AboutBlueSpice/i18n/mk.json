@@ -8,5 +8,6 @@
 	"bs-aboutbluespice-about-bluespice": "За BlueSpice",
 	"aboutbluespice": "За BlueSpice",
 	"prefs-aboutbluespice": "За BlueSpice",
-	"bs-aboutbluespice-show-menu-links": "Пркажувај ја врската „{{int:bs-aboutbluespice-about-bluespice}}“ најгоре во главното мени"
+	"bs-aboutbluespice-show-menu-links": "Пркажувај ја врската „{{int:bs-aboutbluespice-about-bluespice}}“ најгоре во главното мени",
+	"action-aboutbluespice-viewspecialpage": "погл. службената страница „{{int:bs-aboutbluespice-about-bluespice}}“"
 }

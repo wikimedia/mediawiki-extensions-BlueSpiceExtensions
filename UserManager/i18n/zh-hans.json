@@ -43,5 +43,7 @@
 	"bs-usermanager-confirmdisableuser": "您真的要禁用{{GENDER:$1|用户}}$1么？",
 	"bs-usermanager-confirmenableuser": "您真的要启用{{GENDER:$1|用户}}$1么？",
 	"bs-usermanager-titledisableuser": "禁用用户",
-	"bs-usermanager-titleenableuser": "启用用户"
+	"bs-usermanager-titleenableuser": "启用用户",
+	"usermanager": "用户管理",
+	"action-usermanager-viewspecialpage": "查看特殊页面“用户管理”"
 }

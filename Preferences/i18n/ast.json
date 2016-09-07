@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Crucifunked"
 		]
 	},
 	"bs-preferences-desc": "Da a los alministradores la posibilidá de configurar tola wiki dende una sola páxina especial",
-	"bs-preferences-label": "Preferencies"
+	"bs-preferences-label": "Preferencies",
+	"action-bluespicepreferences-viewspecialpage": "ver páxina especial \"{{int:bluespicepreferences}}\"",
+	"bluespicepreferences": "Preferencies de Bluespice"
 }

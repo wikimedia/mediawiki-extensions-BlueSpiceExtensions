@@ -64,5 +64,7 @@
 	"apihelp-bs-flexiskin-tasks-description": "允许flexiskin的操纵",
 	"apihelp-bs-flexiskin-store-description": "列出可用的flexiskin",
 	"apihelp-bs-flexiskin-upload-description": "允许上传文件至flexiskin",
-	"apihelp-bs-flexiskin-upload-store-description": "列出上传的flexiskin文件"
+	"apihelp-bs-flexiskin-upload-store-description": "列出上传的flexiskin文件",
+	"action-flexiskin-viewspecialpage": "查看特殊页面“Flexiskin”",
+	"flexiskin": "皮肤参数设置"
 }

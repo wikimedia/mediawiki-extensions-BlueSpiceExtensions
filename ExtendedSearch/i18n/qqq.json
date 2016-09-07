@@ -112,6 +112,6 @@
 	"bs-extendedsearch-facetsetting-op-and": "Label for setting of logical AND operator. Should be upper case\n{{Identical|And}}",
 	"bs-extendedsearch-facetsetting-op-or": "Label for setting of logical OR operator. Should be upper case\n{{Identical|Or}}",
 	"action-extendedsearch-viewspecialpage": "placeholder to describe that view of special page \"{{int:specialextendedsearch}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearch-viewspecialpage}}",
-	"action-extendedsearchadmin-viewspecialpage":"placeholder to describe that view of special page \"{{int:extendedsearchadmin}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearchadmin-viewspecialpage}}\"",
+	"action-extendedsearchadmin-viewspecialpage": "placeholder to describe that view of special page \"{{int:extendedsearchadmin}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearchadmin-viewspecialpage}}\"",
 	"extendedsearchadmin": "Extended search administration"
 }

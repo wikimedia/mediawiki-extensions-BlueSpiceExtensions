@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Josve05a"
 		]
 	},
 	"bs-interwikilinks-desc": "Administrationsgränssnittet för att lägga till, redigera och ta bort interwikilänkar",
@@ -24,5 +25,6 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Är du säker på att du vill radera denna interwiki-länk?",
 	"bs-interwikilinks-insertlink-tabtitle": "Länka till en annan wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
-	"bs-interwikilink-select-a-prefix": "Välj prefix"
+	"bs-interwikilink-select-a-prefix": "Välj prefix",
+	"interwikilinks": "Interwiki-länkar"
 }
