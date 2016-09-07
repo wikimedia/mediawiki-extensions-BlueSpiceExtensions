@@ -46,7 +46,7 @@
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
-		"remoteExtPath": "BlueSpiceExtensions/StateBar/resouces"
+		"remoteExtPath": "BlueSpiceExtensions/StateBar/resources"
 	},
 	"manifest_version": 1
 }
