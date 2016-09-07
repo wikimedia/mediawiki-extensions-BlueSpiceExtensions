@@ -16,6 +16,9 @@
 			"extPath": "/BlueSpiceExtensions/InterWikiLinks"
 		}
 	},
+	"SpecialPages": {
+		"InterWikiLinks": "SpecialInterWikiLinks"
+	},
 	"APIModules": {
 		"bs-interwikilinks-tasks": "BSApiTasksInterWikiLinksManager"
 	},
@@ -26,7 +29,11 @@
 	},
 	"AutoloadClasses": {
 		"InterWikiLinks": "InterWikiLinks.class.php",
-		"BSApiTasksInterWikiLinksManager": "includes/api/BSApiTasksInterWikiLinksManager.php"
+		"BSApiTasksInterWikiLinksManager": "includes/api/BSApiTasksInterWikiLinksManager.php",
+		"SpecialInterWikiLinks": "includes/specials/SpecialInterWikiLinks.class.php"
+	},
+	"ExtensionMessagesFiles": {
+		"InterWikiLinksAlias": "includes/specials/SpecialInterWikiLinks.alias.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.interWikiLinks": {

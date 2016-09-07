@@ -19,6 +19,9 @@
 		"bs-flexiskin-upload": "BSApiFlexiskinUpload",
 		"bs-flexiskin-upload-store": "BSApiFlexiskinUploadStore"
 	},
+	"SpecialPages": {
+		"Flexiskin": "SpecialFlexiskin"
+	},
 	"MessagesDirs": {
 		"Flexiskin": [
 			"i18n"
@@ -32,7 +35,11 @@
 		"BSApiFlexiskinTasks": "includes/api/BSApiFlexiskinTasks.php",
 		"BSApiFlexiskinStore": "includes/api/BSApiFlexiskinStore.php",
 		"BSApiFlexiskinUpload": "includes/api/BSApiFlexiskinUpload.php",
-		"BSApiFlexiskinUploadStore": "includes/api/BSApiFlexiskinUploadStore.php"
+		"BSApiFlexiskinUploadStore": "includes/api/BSApiFlexiskinUploadStore.php",
+		"SpecialFlexiskin": "includes/specials/SpecialFlexiskin.class.php"
+	},
+	"ExtensionMessagesFiles": {
+		"FlexiskinAlias": "includes/specials/SpeicalFlexiskin.alias.php"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",

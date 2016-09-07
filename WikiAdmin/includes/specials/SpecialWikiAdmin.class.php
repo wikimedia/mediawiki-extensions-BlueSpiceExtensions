@@ -47,8 +47,14 @@ class SpecialWikiAdmin extends BsSpecialPage {
 		$form = '';
 		$registeredModules = WikiAdmin::getRegisteredModules();
 		foreach ( $registeredModules as $module => $params ) {
-			$title = SpecialPage::getTitleFor( 'WikiAdmin' );
-			$url = $title->getLocalURL( 'mode='.$module );
+			$title = SpecialPage::getTitleFor( $module );
+			$action = "";
+			if( !$title->isKnown() || isset( $params['compatibility_mode'] ) ){
+				$title = SpecialPage::getTitleFor( 'WikiAdmin' );
+				$action = 'mode=' . $module;
+			}
+			$url = $title->getLocalURL( $action );
+
 			// TODO SU (04.07.11 10:56): Gehört eigentlich in eine view.
 			$form .= '<div class="bs-admincontrolbtn">';
 			$form .= '<a href="'.$url.'">';

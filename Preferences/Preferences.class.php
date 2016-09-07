@@ -38,22 +38,31 @@
  * @subpackage Preferences
  */
 class BsPreferences extends BsExtensionMW {
-public function __construct() {
-    wfProfileIn( 'BS::'.__METHOD__ );
-		// Base settings
-		$this->mExtensionFile = __FILE__;
-		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 
-     WikiAdmin::registerModule( 'Preferences', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
-			'level' => 'wikiadmin',
-			'message' => 'bs-preferences-label'
-		) );
+	public function __construct() {
+	   wfProfileIn( 'BS::' . __METHOD__ );
+			// Base settings
+			$this->mExtensionFile = __FILE__;
+			$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 
-		wfProfileOut( 'BS::'.__METHOD__ );
+			$title = SpecialPage::getTitleFor( 'BlueSpicePreferences' );
+			if( $title->isKnown() ){
+				WikiAdmin::registerModule( 'BlueSpicePreferences', array(
+					'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
+					'level' => 'wikiadmin',
+					'message' => 'bs-preferences-label'
+				) );
+			} else {
+				WikiAdmin::registerModule( 'Preferences', array(
+					'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
+					'level' => 'wikiadmin',
+					'message' => 'bs-preferences-label',
+					'compatibility_mode' => true
+				) );
+			}
 
-
-}
+			wfProfileOut( 'BS::' . __METHOD__ );
+	}
 
 	protected function initExt() {
 		$this->mCore->registerPermission( 'bluespicepreferences-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
@@ -209,8 +218,12 @@ public function __construct() {
 	}
 
 	public static function onBeforePageDisplay( OutputPage &$out, &$skin ) {
-		if( !$out->getTitle()->isSpecial( 'WikiAdmin' ) ) return true;
-		if( strtolower( $out->getRequest()->getVal( 'mode' )  ) != 'preferences' ) return true;
+		if( !$out->getTitle()->isSpecial( 'WikiAdmin' ) ) {
+			return true;
+		}
+		if( strtolower( $out->getRequest()->getVal( 'mode' )  ) != 'preferences' ){
+			return true;
+		}
 
 		$out->addInlineStyle(
 			'.bs-prefs legend{cursor:pointer;}'
