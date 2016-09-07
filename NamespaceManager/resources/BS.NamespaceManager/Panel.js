@@ -145,47 +145,33 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 	onDlgNamespaceAddOk: function( sender, namespace ) {
 		var additionalSettings = this.getAdditionalSettings( namespace );
 		var me = this;
-		var api = new mw.Api();
-		api.post({
-				action: 'bs-namespace-tasks',
-				task: 'add',
-				token: mw.user.tokens.get( 'editToken', '' ),
-				taskData: Ext.encode({
-					name: namespace.name,
-					settings: additionalSettings
-				})
-			})
-			.done(function( response ){
-				if ( response.success === true ) {
-					me.renderMsgSuccess( response );
-					me.dlgNamespaceAdd.resetData();
-				} else {
-					me.renderMsgFailure( response );
-				}
-			});
+		bs.api.tasks.exec(
+			'namespace',
+			'add',
+			{
+				name: namespace.name,
+				settings: additionalSettings
+			}
+		).done( function( response ) {
+			me.dlgNamespaceAdd.resetData();
+			me.reloadStore();
+		});
 	},
 	onDlgNamespaceEditOk: function( sender, namespace ) {
 		var additionalSettings = this.getAdditionalSettings( namespace );
 		var me = this;
-		var api = new mw.Api();
-		api.post({
-				action: 'bs-namespace-tasks',
-				task: 'edit',
-				token: mw.user.tokens.get( 'editToken', '' ),
-				taskData: Ext.encode({
-					id: namespace.id,
-					name: namespace.name,
-					settings: additionalSettings
-				})
-			})
-			.done(function( response ){
-				if ( response.success === true ) {
-					me.dlgNamespaceEdit.resetData();
-					me.renderMsgSuccess( response );
-				} else {
-					me.renderMsgFailure( response );
-				}
-			});
+		bs.api.tasks.exec(
+			'namespace',
+			'edit',
+			{
+				id: namespace.id,
+				name: namespace.name,
+				settings: additionalSettings
+			}
+		).done( function( response ) {
+			me.dlgNamespaceEdit.resetData();
+			me.reloadStore();
+		});
 	},
 	getAdditionalSettings: function( data ) {
 		var filteredData = {};
@@ -202,23 +188,16 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		var id = selectedRow[0].get( 'id' );
 		var doArticle = namespace.doarticle.rb;
 		var me = this;
-		var api = new mw.Api();
-		api.post({
-				action: 'bs-namespace-tasks',
-				task: 'remove',
-				token: mw.user.tokens.get( 'editToken', '' ),
-				taskData: Ext.encode({
-					id: id,
-					doArticle: doArticle
-				})
-			})
-			.done(function( response ){
-				if ( response.success === true ) {
-					me.renderMsgSuccess( response );
-				} else {
-					me.renderMsgFailure( response );
-				}
-			});
+		bs.api.tasks.exec(
+			'namespace',
+			'remove',
+			{
+				id: id,
+				doArticle: doArticle
+			}
+		).done( function( response ) {
+			me.reloadStore();
+		});
 	},
 	reloadStore: function() {
 		this.strMain.reload();
@@ -231,40 +210,5 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		} else if( this.active === 'remove' ) {
 			this.dlgNamespaceRemove.show();
 		}
-	},
-	renderMsgSuccess: function( responseObj ) {
-		if ( responseObj.message.length ) {
-			bs.util.alert(
-				'bs-nm-suc',
-				{
-					text: responseObj.message,
-					titleMsg: 'bs-extjs-title-success'
-				},
-				{
-					ok: this.reloadStore,
-					scope: this
-				}
-			);
-		}
-	},
-	renderMsgFailure: function( responseObj ) {
-		var message = responseObj.message || '';
-		if ( responseObj.errors.length > 0 ) {
-			for ( var i in responseObj.errors ) {
-				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
-				message = message + responseObj.errors[i].message + '<br />';
-			}
-		}
-		bs.util.alert(
-			'bs-nm-fail',
-			{
-				text: message,
-				titleMsg: 'bs-extjs-title-warning'
-			},
-			{
-				ok: this.showDlgAgain,
-				scope: this
-			}
-		);
 	}
 } );
