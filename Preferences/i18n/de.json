@@ -7,5 +7,7 @@
 	},
 	"bs-preferences-desc": "Bietet die Möglichkeit für Administratoren, das ganze Wiki mit einer einzigen Spezialseite zu konfigurieren",
 	"prefs-bluespice": "BlueSpice",
-	"bs-preferences-label": "Einstellungen"
+	"bs-preferences-label": "Einstellungen",
+	"action-bluespicepreferences-viewspecialpage": "anzeige von \"{{int:bluespicepreferences}}\"",
+	"bluespicepreferences": "BlueSpice Einstellungen"
 }

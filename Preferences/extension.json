@@ -21,7 +21,14 @@
 		]
 	},
 	"AutoloadClasses": {
-		"BsPreferences": "Preferences.class.php"
+		"BsPreferences": "Preferences.class.php",
+		"SpecialBlueSpicePreferences": "includes/specials/SpecialBlueSpicePreferences.php"
+	},
+	"ExtensionMessagesFiles": {
+		"BlueSpicePreferencesAlias": "includes/specials/SpecialBlueSpicePreferences.alias.php"
+	},
+	"SpecialPages": {
+		"BlueSpicePreferences": "SpecialBlueSpicePreferences"
 	},
 	"ResourceModules": {
 		"ext.bluespice.preferences": {
