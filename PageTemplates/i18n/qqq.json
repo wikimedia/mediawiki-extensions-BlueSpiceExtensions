@@ -49,5 +49,7 @@
 	"bs-pagetemplates-remove-message-success": "Success message that one or more templates were deleted. Parameters:\n* $1 - the number of deleted templates - use for PLURAL distinction\n* $2 - a comma separated list of deleted templates",
 	"bs-pagetemplates-remove-message-failure": "Error message that one or more templates could not be deleted.\n\nParameters:\n* $1 - the number of templates which could not be deleted - use for PLURAL distinction\n* $2 - a list of the templates which could not be deleted\n* $3 - a list with the reason for each template why they could not be deleted",
 	"apihelp-bs-pagetemplates-store-description": "Describes the API endpoint that lists page templates",
-	"apihelp-bs-pagetemplates-tasks-description": "Describes the API endpoint that allows manipulation of page templates"
+	"apihelp-bs-pagetemplates-tasks-description": "Describes the API endpoint that allows manipulation of page templates",
+	"action-pagetemplatesadmin-viewspecialpage": "Label for denied special page, includes pagename",
+	"pagetemplatesadmin": "Page title for page template admin special page"
 }

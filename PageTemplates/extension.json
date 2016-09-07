@@ -28,7 +28,14 @@
 		"PageTemplates": "PageTemplates.class.php",
 		"BSApiPageTemplatesStore": "includes/api/BSApiPageTemplatesStore.php",
 		"BSApiPageTemplatesTasks": "includes/api/BSApiPageTemplatesTasks.php",
-		"PageTemplatesAdmin": "PageTemplatesAdmin.class.php"
+		"PageTemplatesAdmin": "PageTemplatesAdmin.class.php",
+		"SpecialPageTemplatesAdmin": "includes/specials/SpecialPageTemplatesAdmin.class.php"
+	},
+	"ExtensionMessagesFiles": {
+		"PageTemplatesAdminAlias": "includes/specials/SpecialPageTemplatesAdmin.alias.php"
+	},
+	"SpecialPages": {
+		"PageTemplatesAdmin": "SpecialPageTemplatesAdmin"
 	},
 	"ResourceModules": {
 		"ext.bluespice.pageTemplates": {
