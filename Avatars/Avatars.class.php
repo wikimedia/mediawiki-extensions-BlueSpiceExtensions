@@ -124,39 +124,6 @@ class Avatars extends BsExtensionMW {
 	}
 
 	/**
-	 * Sets a user's UserImage setting to a URL or Wiki image
-	 * @param string $sUserImage
-	 * @return type
-	 */
-	public static function setUserImage($sUserImage) {
-		if (wfReadOnly()) {
-			global $wgReadOnly;
-			return FormatJson::encode(array(
-						'success' => false,
-						'message' => array(wfMessage('bs-readonly', $wgReadOnly)->escaped())
-			));
-		}
-		// check if string is URL or valid file
-		$oFile = wfFindFile($sUserImage);
-		$bIsImage = is_object($oFile) && $oFile->canRender();
-		if (!wfParseUrl($sUserImage) && !$bIsImage) {
-			return FormatJson::encode(array(
-						'success' => false,
-						'message' => array(wfMessage('bs-avatars-set-userimage-failed')->plain())
-			));
-		} else {
-			$oUser = RequestContext::getMain()->getUser();
-			$oUser->setOption('MW::UserImage', $sUserImage);
-			$oUser->saveSettings();
-
-			return FormatJson::encode(array(
-						'success' => true,
-						'message' => array(wfMessage('bs-avatars-set-userimage-saved')->plain())
-			));
-		}
-	}
-
-	/**
 	 * Generate a new generic avatar on user request
 	 * @return type
 	 */
@@ -241,33 +208,6 @@ class Avatars extends BsExtensionMW {
 		}
 		$sNewUserImageSrc = $oFile->createThumb($iAvatarWidth, $iAvatarHeight);
 		return $sNewUserImageSrc;
-	}
-
-	public static function uploadFile() {
-		if (wfReadOnly()) {
-			global $wgReadOnly;
-			$oAjaxResponse = new AjaxResponse(FormatJson::encode(array('success' => false, 'msg' => wfMessage('bs-readonly', $wgReadOnly)->escaped())));
-			$oAjaxResponse->setContentType('text/html');
-			return $oAjaxResponse;
-		}
-		global $wgRequest, $wgUser;
-		self::unsetUserImage($wgUser);
-		$oAvatars = BsExtensionManager::getExtension('Avatars');
-		$sAvatarFileName = self::$sAvatarFilePrefix . $wgUser->getId() . ".png";
-		$oStatus = BsFileSystemHelper::uploadAndConvertImage($wgRequest->getVal('name'), $oAvatars->mInfo[EXTINFO::NAME], $sAvatarFileName);
-		if (!$oStatus->isGood()) {
-			$aErrors = $oStatus->getErrorsArray();
-			$aResult = json_encode(array('success' => false, 'msg' => $aErrors[0][0]));
-		} else {
-			$aResult = json_encode(array('success' => true, 'msg' => wfMessage('bs-avatars-upload-complete')->plain(), 'name' => $oStatus->getValue()));
-			# found no way to regenerate thumbs. just delete thumb folder if it exists
-			$oStatus = BsFileSystemHelper::deleteFolder('Avatars' . DS . 'thumb' . DS . $sAvatarFileName, true);
-			if (!$oStatus->isGood())
-				throw new MWException('FATAL: Avatar thumbs could no be deleted!');
-		}
-		$oAjaxResponse = new AjaxResponse($aResult);
-		$oAjaxResponse->setContentType('text/html');
-		return $oAjaxResponse;
 	}
 
 }
