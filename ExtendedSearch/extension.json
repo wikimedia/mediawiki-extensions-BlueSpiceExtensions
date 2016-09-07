@@ -31,7 +31,7 @@
 	},
 	"ExtensionMessagesFiles": {
 		"ExtendedSearchAlias": "languages/SpecialExtendedSearch.alias.php",
-		"ExtendedSearchAdminAlias": "languages/SpecialExtendedSearchAdmin.alias.php"
+		"ExtendedSearchAdminAlias": "includes/specials/SpecialExtendedSearchAdmin.alias.php"
 	},
 	"AutoloadClasses": {
 		"ApiFeedExtendedSearch": "api/ApiFeedExtendedSearch.php",

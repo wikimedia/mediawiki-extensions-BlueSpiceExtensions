@@ -39,7 +39,7 @@
 		"SpecialFlexiskin": "includes/specials/SpecialFlexiskin.class.php"
 	},
 	"ExtensionMessagesFiles": {
-		"FlexiskinAlias": "includes/specials/SpeicalFlexiskin.alias.php"
+		"FlexiskinAlias": "includes/specials/SpecialFlexiskin.alias.php"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
