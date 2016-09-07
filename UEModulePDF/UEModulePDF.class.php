@@ -172,7 +172,7 @@ class UEModulePDF extends BsExtensionMW {
 			return true;
 		}
 
-		$oTemplate->data['bs_title_actions'][] = $this->buildContentAction();
+		$oTemplate->data['bs_export_menu'][] = $this->buildContentAction();
 
 		return true;
 	}
