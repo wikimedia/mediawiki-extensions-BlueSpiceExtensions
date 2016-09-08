@@ -204,10 +204,10 @@ Ext.define( 'BS.GroupManager.Panel', {
 	},
 	renderMsgSuccess: function( responseObj ) {
 		var successText = "";
+		var success = "", failure = "", successCount = 0, failureCount = 0;
 		if ( typeof(responseObj.message) !== "undefined" && typeof(responseObj.message.length) !== "undefined" && responseObj.message.length )
 			successText = responseObj.message;
 		else{
-			var success = "", failure = "", successCount = 0, failureCount = 0;
 			$.each(responseObj, function(i, response){
 				if (response.success === true){
 					success += "<li>"+i+"</li>";
@@ -221,7 +221,12 @@ Ext.define( 'BS.GroupManager.Panel', {
 			successText = success.length > 0 ? (mw.message("bs-groupmanager-removegroup-message-success", successCount, "<ul>"+success+"</ul>").text() + "<br/>") : "";
 			successText += failure.length > 0 ? (mw.message("bs-groupmanager-removegroup-message-failure", failureCount, "<ul>"+failure+"</ul>").text()) : "";
 		}
-		bs.util.alert( 'UMsuc', { text: successText, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+		if ( !failureCount ) {
+			mw.notify( successText, { title: mw.msg( 'bs-extjs-title-success' ) } );
+			this.reloadStore();
+		} else {
+			bs.util.alert( 'UMsuc', { text: successText, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
+		}
 	},
 	renderMsgFailure: function( responseObj ) {
 		if ( responseObj.message.length ) {
