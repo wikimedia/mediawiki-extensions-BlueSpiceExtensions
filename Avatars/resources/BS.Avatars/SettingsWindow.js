@@ -12,7 +12,7 @@ Ext.define('BS.Avatars.SettingsWindow', {
 	currentData: {},
 	initComponent: function() {
 		this.ufLogoUpload = Ext.create('BS.form.UploadPanel', {
-			url: bs.util.getAjaxDispatcherUrl('Avatars::uploadFile'),
+			url: bs.api.makeUrl( 'bs-avatars-tasks', { task: 'uploadFile' }, true ),
 			uploadFormName: 'avatars',
 			uploadFieldLabel: mw.message('bs-avatars-upload-label').plain(),
 			uploadLabelWidth: 50,
@@ -92,30 +92,12 @@ Ext.define('BS.Avatars.SettingsWindow', {
 		this.close();
 	},
 	doGenerateNew: function() {
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl(
-					'Avatars::generateAvatarAjax'
-					),
-			scope: this,
-			method: 'post',
-			success: function(response, opts) {
-				var response = Ext.decode(response.responseText);
-				bs.util.alert(
-						'AMsuc',
-						{
-							text: response,
-							titleMsg: 'bs-extjs-title-success'
-						},
-				{
-					ok: function() {
-						window.location.reload();
-					},
-					cancel: function() {
-					},
-					scope: this
-				}
-				);
-			}
+		var me = this;
+		bs.api.tasks.exec(
+			'avatars',
+			'generateAvatar'
+		).done( function( response ) {
+			window.location.reload();
 		});
 	},
 	confirmOverwrite: function(callback) {
@@ -137,49 +119,13 @@ Ext.define('BS.Avatars.SettingsWindow', {
 		this.confirmOverwrite(this.doGenerateNew);
 	},
 	tfUserImageClick: function() {
-		Ext.Ajax.request({
-			url: bs.util.getAjaxDispatcherUrl(
-					'Avatars::setUserImage',
-					[this.tfUserImage.getValue()]
-					),
-			scope: this,
-			method: 'post',
-			success: function(response, opts) {
-				var response = Ext.decode(response.responseText);
-				if (!response.success) {
-					bs.util.alert(
-							'AMUfail',
-							{
-								text: response.message[0],
-								titleMsg: 'bs-extjs-title-warning'
-							},
-					{
-						ok: function() {
-						},
-						cancel: function() {
-						},
-						scope: this
-					}
-					);
-					return;
-				} else {
-					bs.util.alert(
-							'AMUsuc',
-							{
-								text: response.message[0],
-								titleMsg: 'bs-extjs-title-success'
-							},
-					{
-						ok: function() {
-							window.location.reload();
-						},
-						cancel: function() {
-						},
-						scope: this
-					}
-					);
-				}
-			}
+		var me = this;
+		bs.api.tasks.exec(
+			'avatars',
+			'setUserImage',
+			{ userImage: this.tfUserImage.getValue() }
+		).done( function( response ) {
+			window.location.reload();
 		});
 	},
 	doUpload: function() {
@@ -187,34 +133,23 @@ Ext.define('BS.Avatars.SettingsWindow', {
 		if (!form.isValid())
 			return;
 		form.submit({
+			method: 'POST',
 			params: {
-				name: 'avatars'
+				name: 'avatars',
+				token: mw.user.tokens.get( 'editToken' )
 			},
 			waitMsg: mw.message('bs-extjs-uploading').plain(),
 			success: function(fp, o) {
-				//console.log(o);
 				var responseObj = o.result;
-				bs.util.alert('bs-flexiskin-saveskin-error',
-						{
-							text: responseObj.msg,
-							titleMsg: 'bs-extjs-hint'
-						}, {
-					ok: function() {
-						if (responseObj.success === true) {
-							location.reload();
-						}
-					},
-					scope: this
-				}
-				);
+				mw.notify( responseObj.message, { title: mw.msg( 'bs-extjs-title-success' ) } );
+				location.reload();
 			},
 			failure: function(fp, o) {
-				//console.log(o);
 				var responseObj = o.result;
-				bs.util.alert('bs-flexiskin-saveskin-error',
+				bs.util.alert( 'bs-avatars-upload-error',
 						{
-							text: responseObj.msg,
-							titleMsg: 'bs-extjs-hint'
+							text: responseObj.message,
+							titleMsg: 'bs-extjs-title-warning'
 						}, {
 					scope: this
 				}

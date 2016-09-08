@@ -11,13 +11,17 @@
 			"extPath": "/BlueSpiceExtensions/Avatars"
 		}
 	},
+	"APIModules": {
+		"bs-avatars-tasks": "BSApiAvatarsTasks"
+	},
 	"MessagesDirs": {
 		"Avatars": [
 			"i18n"
 		]
 	},
 	"AutoloadClasses": {
-		"Avatars": "Avatars.class.php"
+		"Avatars": "Avatars.class.php",
+		"BSApiAvatarsTasks": "includes/api/BSApiAvatarsTasks.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.avatars.js": {
