@@ -96,6 +96,11 @@ abstract class BsSelectFilter extends BsStatisticsFilter {
 		$this->aActiveValues = $wgRequest->getArray( $this->getParamKey(), array() );
 	}
 
+	public function getValueFromTaskData( $oTaskData ) {
+		if ( isset( $oTaskData->{$this->getParamKey()} ) ) {
+			$this->aActiveValues = $oTaskData->{$this->getParamKey()};
+		}
+	}
 	/**
 	 * Gets a list of selected filter values
 	 * @return array List of strings

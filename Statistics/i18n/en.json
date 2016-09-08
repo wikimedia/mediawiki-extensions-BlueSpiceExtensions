@@ -51,8 +51,13 @@
 	"bs-statistics-portlet-numberofusers": "Number of users",
 	"bs-statistics-portlet-numberofedits": "Number of edits",
 	"bs-statistics-portlet-numberofpages": "Number of pages",
+	"bs-statistics-portlet-numberofarticles": "Number of articles",
 	"bs-statistics-portlet-numberofusersdesc": "Statistic of the number of users.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statistic of the number of edits.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistic of the number of pages.",
-	"bs-statistics-portletconfig-periodday": "Yesterday"
+	"bs-statistics-portlet-numberofarticlesdesc": "Statistic of the number of articles.",
+	"bs-statistics-portletconfig-periodday": "Yesterday",
+	"apihelp-bs-statistics-tasks-description": "Provides common tasks for statistics",
+	"apihelp-bs-statistics-available-diagrams-store-description": "Provides a store with available diagrams",
+	"apihelp-bs-statistics-search-options-store-description": "Provides a store with available search options"
 }

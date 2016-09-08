@@ -13,6 +13,10 @@
 
 Ext.define( 'BS.Statistics.Filter', {
 	extend: 'Ext.form.Panel',
+	requires: [
+		'BS.store.BSApi', 'BS.store.ApiUser', 'BS.store.LocalNamespaces',
+		'BS.store.ApiCategory', 'Ext.ux.form.MultiSelect'
+	],
 	//id: 'bs-statistics-dlg-filter',
 	layout: 'form',
 	bodyPadding: '5 5 0',
@@ -24,77 +28,24 @@ Ext.define( 'BS.Statistics.Filter', {
 	clientValidation: true,
 	submitEmptyText: false,
 	method: 'post',
-	url: mw.util.wikiScript(),
 	id: 'bs-statistics-filterpanel',
-	baseParams: {
-		action: 'ajax',
-		rs: 'SpecialExtendedStatistics::ajaxSave'
-	},
 	initComponent: function() {
+		var me = this;
 		this.setTitle( mw.message('bs-statistics-filters').plain() );
 
-		this.storeAvailableDiagrams = new Ext.create('Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetAvalableDiagrams' ),
-				reader: {
-					type: 'json',
-					root: 'data'
-				}
-			},
-			autoLoad: true,
+		this.storeAvailableDiagrams = new BS.store.BSApi({
+			apiAction: 'bs-statistics-available-diagrams-store',
 			fields: ['key', 'displaytitle', 'listable', 'filters']
 		});
-		this.storeUserFilter = new Ext.create('Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetUserFilter' ),
-				reader: {
-					type: 'json',
-					root: 'data'
-				}
-			},
-			autoLoad: true,
-			fields: ['key', 'displaytitle']
-		});
-		this.storeNamespaceFilter = new Ext.create('Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetNamespaceFilter' ),
-				reader: {
-					type: 'json',
-					root: 'data'
-				}
-			},
-			autoLoad: true,
-			fields: ['key', 'displaytitle']
-		});
-		this.storeCategoryFilter = new Ext.create('Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetCategoryFilter' ),
-				reader: {
-					type: 'json',
-					root: 'data'
-				}
-			},
-			autoLoad: true,
-			fields: ['key', 'displaytitle']
-		});
-		this.storeSearchscopeFilter = new Ext.create('Ext.data.JsonStore', {
-			proxy: {
-				type: 'ajax',
-				url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetSearchscopeFilter' ),
-				reader: {
-					type: 'json',
-					root: 'data'
-				}
-			},
-			autoLoad: true,
+		this.storeUserFilter = new BS.store.ApiUser();
+		this.storeNamespaceFilter = new BS.store.LocalNamespaces();
+		this.storeCategoryFilter = new BS.store.ApiCategory();
+		this.storeSearchscopeFilter = new BS.store.BSApi({
+			apiAction: 'bs-statistics-search-options-store',
 			fields: ['key', 'displaytitle']
 		});
 
-		this.storeAvailableGrains = new Ext.create('Ext.data.ArrayStore', {
+		this.storeAvailableGrains = new Ext.data.ArrayStore({
 			fields: ['key', 'displaytitle'],
 			data: [
 				['Y', mw.message('bs-statistics-year').plain()],
@@ -104,7 +55,7 @@ Ext.define( 'BS.Statistics.Filter', {
 			]
 		});
 
-		this.cbInputDiagrams = new Ext.create('Ext.form.field.ComboBox',{
+		this.cbInputDiagrams = new Ext.form.field.ComboBox({
 			store: this.storeAvailableDiagrams,
 			fieldLabel: mw.message('bs-statistics-diagram').plain(),
 			labelAlign: 'right',
@@ -115,66 +66,73 @@ Ext.define( 'BS.Statistics.Filter', {
 			mode: 'local',
 			triggerAction: 'all',
 			lastQuery: '',
-			forceSelection: true
+			forceSelection: true,
+			msgTarget: 'under'
 		});
 
+		this.cbInputDiagrams.addListener( 'select', this.cbInputDiagramsSelect, this);
 		this.cbInputDiagrams.addListener( 'select', this.cbInputDiagramsSelect, this);
 
 		var lastMonth = new Date();
 		with(lastMonth) { setMonth(getMonth()-1) }
 
-		this.dfInputFrom = new Ext.create('Ext.form.field.Date',{
+		this.dfInputFrom = new Ext.form.field.Date({
 			fieldLabel: mw.message('bs-statistics-from').plain(),
 			labelAlign: 'right',
 			name: 'inputFrom',
 			format: 'd.m.Y',
 			maxValue: new Date(),
-			value: lastMonth
+			value: lastMonth,
+			msgTarget: 'under'
 		});
 
-		this.dfInputTo = new Ext.create('Ext.form.field.Date',{
+		this.dfInputTo = new Ext.form.field.Date({
 			fieldLabel: mw.message('bs-statistics-to').plain(),
 			labelAlign: 'right',
 			name: 'inputTo',
 			format: 'd.m.Y',
 			maxValue: new Date(),
-			value: new Date()
+			value: new Date(),
+			msgTarget: 'under'
 		});
 
-		this.msInputFilterUsers = new Ext.create('Ext.ux.form.MultiSelect',{
+		this.msInputFilterUsers = new Ext.ux.form.MultiSelect({
 			store: this.storeUserFilter,
 			fieldLabel: mw.message('bs-statistics-filter-user').plain(),
 			labelAlign: 'right',
 			name: 'hwpFilterBsFilterUsers[]',
-			displayField: 'displaytitle',
-			valueField: 'key',
+			displayField: 'user_name',
+			valueField: 'user_name',
 			delimiter: null,
-			height: 130
+			height: 130,
+			msgTarget: 'under'
 		});
 
-		this.msInputFilterNamespace = new Ext.create('Ext.ux.form.MultiSelect',{
+		this.msInputFilterNamespace = new Ext.ux.form.MultiSelect({
 			store: this.storeNamespaceFilter,
 			fieldLabel: mw.message('bs-ns').plain(),
 			labelAlign: 'right',
 			name: 'hwpFilterBsFilterNamespace[]',
-			displayField: 'displaytitle',
-			valueField: 'key',
+			displayField: 'namespace',
+			valueField: 'id',
 			delimiter: null,
-			height: 130
+			height: 130,
+			msgTarget: 'under'
 		});
 
-		this.msInputFilterCategory = new Ext.create('Ext.ux.form.MultiSelect',{
+		this.msInputFilterCategory = new Ext.ux.form.MultiSelect({
 			store: this.storeCategoryFilter,
 			fieldLabel: mw.message('bs-statistics-filter-category').plain(),
 			labelAlign: 'right',
 			name: 'hwpFilterBsFilterCategory[]',
-			displayField: 'displaytitle',
-			valueField: 'key',
+			displayField: 'cat_title',
+			valueField: 'cat_title',
 			delimiter: null,
-			height: 130
+			height: 130,
+			msgTarget: 'under'
 		});
 
-		this.msInputFilterSearchscope = new Ext.create('Ext.ux.form.MultiSelect',{
+		this.msInputFilterSearchscope = new Ext.ux.form.MultiSelect({
 			store: this.storeSearchscopeFilter,
 			fieldLabel: mw.message('bs-statistics-filter-searchscope').plain(),
 			labelAlign: 'right',
@@ -182,30 +140,32 @@ Ext.define( 'BS.Statistics.Filter', {
 			displayField: 'displaytitle',
 			valueField: 'key',
 			delimiter: null,
-			height: 130
+			height: 130,
+			msgTarget: 'under'
 		});
 
-		this.rgInputDepictionMode = new Ext.create('Ext.form.RadioGroup', {
+		this.rgInputDepictionMode = new Ext.form.RadioGroup({
 			fieldLabel: mw.message('bs-statistics-mode').plain(),
 			labelAlign: 'right',
 			columns: 1,
 			vertical: false,
-			allowBlank: false
-		});
-		this.rgInputDepictionMode.add({
-			boxLabel: mw.message('bs-statistics-absolute').plain(),
-			labelAlign: 'right',
-			name: 'rgInputDepictionMode',
-			inputValue: 'absolute'
-		});
-		this.rgInputDepictionMode.add({
-			boxLabel: mw.message('bs-statistics-aggregated').plain(),
-			labelAlign: 'right',
-			name: 'rgInputDepictionMode',
-			inputValue: 'aggregated'
+			allowBlank: false,
+			msgTarget: 'under',
+			items: [{
+				boxLabel: mw.message('bs-statistics-absolute').plain(),
+				labelAlign: 'right',
+				name: 'rgInputDepictionMode',
+				inputValue: 'absolute'
+			},{
+				boxLabel: mw.message('bs-statistics-aggregated').plain(),
+				labelAlign: 'right',
+				name: 'rgInputDepictionMode',
+				inputValue: 'aggregated',
+				checked: true
+			}]
 		});
 
-		this.cbInputDepictionGrain = new Ext.create('Ext.form.field.ComboBox',{
+		this.cbInputDepictionGrain = new Ext.form.field.ComboBox({
 			store: this.storeAvailableGrains,
 			fieldLabel: mw.message('bs-statistics-grain').plain(),
 			labelAlign: 'right',
@@ -216,11 +176,12 @@ Ext.define( 'BS.Statistics.Filter', {
 			mode: 'local',
 			triggerAction: 'all',
 			lastQuery: '',
-			forceSelection: true
+			forceSelection: true,
+			msgTarget: 'under'
 		});
 		this.cbInputDepictionGrain.select('W');
 
-		this.btnOK = new Ext.create( 'Ext.Button', {
+		this.btnOK = new Ext.Button({
 			text: mw.message('bs-statistics-finish').plain(),
 			id: 'bs-statistics-filterpanel-submit'
 		});
@@ -305,22 +266,26 @@ Ext.define( 'BS.Statistics.Filter', {
 	},
 	btnOKclicked: function(button,event){
 		if( this.getForm().isValid() == false ) return;
-		this.fireEvent('btnOKBeforeSend', this)
-		this.getForm().doAction('submit', {
-			success: this.fpSuccess,
-			failure: this.fpFailure,
-			scope: this
+		this.fireEvent('btnOKBeforeSend', this);
+		var me = this;
+		bs.api.tasks.execSilent(
+			"statistics",
+			"getData",
+			{
+				diagram: this.cbInputDiagrams.getValue(),
+				from: this.dfInputFrom.getSubmitValue(),
+				to: this.dfInputTo.getSubmitValue(),
+				grain: this.cbInputDepictionGrain.getValue(),
+				mode: this.rgInputDepictionMode.getValue().rgInputDepictionMode,
+				hwpFilterBsFilterUsers: this.msInputFilterUsers.getValue(),
+				hwpFilterBsFilterNamespace: this.msInputFilterNamespace.getValue(),
+				hwpFilterBsFilterCategory: this.msInputFilterCategory.getValue(),
+				hwpFilterBsFilterSearchScope: this.msInputFilterSearchscope.getValue()
+			}
+		).done( function( result ) {
+			me.getEl().unmask();
+			me.fireEvent('saved', me, result.payload.data, result.payload);
+			me.collapse();
 		});
-	},
-	fpSuccess: function( form, action ) {
-		this.fireEvent('saved', this, action.result.data, action.result);
-		this.collapse();
-		if( action.result.message === undefined || action.result.message == '') return;
-		mw.notify( action.result.message, { title: mw.msg( 'bs-extjs-title-success' ) } );
-	},
-	fpFailure: function( form, action ) {
-		this.fireEvent('failed', this, action.result.message, action.result);
-		if( action.result.message === undefined || action.result.message == '') return;
-		bs.util.alert( 'STAfail', { text: action.result.message, titleMsg: 'bs-extjs-title-warning' } );
 	}
 });

@@ -13,10 +13,14 @@
 
 Ext.define('BS.Statistics.StatisticsPortletConfig', {
 	extend: 'BS.portal.PortletConfig',
+	requires: [
+		'BS.store.BSApi', 'BS.store.ApiUser', 'BS.store.LocalNamespaces',
+		'BS.store.ApiCategory', 'Ext.ux.form.MultiSelect'
+	],
 	filters: [],
 	afterInitComponent: function() {
 
-		this.strPeriod = new Ext.create('Ext.data.ArrayStore', {
+		this.strPeriod = new Ext.data.ArrayStore({
 			fields: ['key', 'displaytitle'],
 			data: [
 				['day', mw.message('bs-statistics-portletconfig-periodday').plain()],
@@ -25,7 +29,7 @@ Ext.define('BS.Statistics.StatisticsPortletConfig', {
 			]
 		});
 
-		this.cbInputPeriod = new Ext.create('Ext.form.field.ComboBox',{
+		this.cbInputPeriod = new Ext.form.field.ComboBox({
 			store: this.strPeriod,
 			fieldLabel: mw.message('bs-extjs-portal-timespan').plain(),
 			labelAlign: 'right',
@@ -41,26 +45,15 @@ Ext.define('BS.Statistics.StatisticsPortletConfig', {
 
 		//TODO filter
 		if( $.inArray('UserFilter', this.filters) > -1 ) {
-			this.strUserFilter = new Ext.create('Ext.data.JsonStore', {
-				proxy: {
-					type: 'ajax',
-					url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetUserFilter' ),
-					reader: {
-						type: 'json',
-						root: 'data'
-					}
-				},
-				autoLoad: true,
-				fields: ['key', 'displaytitle']
-			});
+			this.strUserFilter = new BS.store.ApiUser();
 
-			this.msInputFilterUsers = new Ext.create('Ext.ux.form.MultiSelect',{
+			this.msInputFilterUsers = new Ext.ux.form.MultiSelect({
 				store: this.strUserFilter,
 				fieldLabel: mw.message('bs-statistics-filter-user').plain(),
 				labelAlign: 'right',
 				name: 'hwpFilterBsFilterUsers[]',
-				displayField: 'displaytitle',
-				valueField: 'key',
+				displayField: 'user_name',
+				valueField: 'user_name',
 				delimiter: null,
 				height: 130
 			});
@@ -68,26 +61,15 @@ Ext.define('BS.Statistics.StatisticsPortletConfig', {
 		}
 
 		if( $.inArray('NamespaceFilter', this.filters) > -1 ) {
-			this.strNamespaceFilter = new Ext.create('Ext.data.JsonStore', {
-				proxy: {
-					type: 'ajax',
-					url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetNamespaceFilter' ),
-					reader: {
-						type: 'json',
-						root: 'data'
-					}
-				},
-				autoLoad: true,
-				fields: ['key', 'displaytitle']
-			});
+			this.strNamespaceFilter = new BS.store.LocalNamespaces();
 
-			this.msInputFilterNamespace = new Ext.create('Ext.ux.form.MultiSelect',{
+			this.msInputFilterNamespace = new Ext.ux.form.MultiSelect({
 				store: this.storeNamespaceFilter,
 				fieldLabel: mw.message('bs-ns').plain(),
 				labelAlign: 'right',
 				name: 'hwpFilterBsFilterNamespace[]',
-				displayField: 'displaytitle',
-				valueField: 'key',
+				displayField: 'namespace',
+				valueField: 'id',
 				delimiter: null,
 				height: 130
 			});
@@ -95,26 +77,15 @@ Ext.define('BS.Statistics.StatisticsPortletConfig', {
 		}
 
 		if( $.inArray('CategoryFilter', this.filters) > -1 ) {
-			this.strCategoryFilter = new Ext.create('Ext.data.JsonStore', {
-				proxy: {
-					type: 'ajax',
-					url: bs.util.getAjaxDispatcherUrl( 'Statistics::ajaxGetCategoryFilter' ),
-					reader: {
-						type: 'json',
-						root: 'data'
-					}
-				},
-				autoLoad: true,
-				fields: ['key', 'displaytitle']
-			});
+			this.strCategoryFilter = new BS.store.ApiCategory();
 
-			this.msInputFilterCategory = new Ext.create('Ext.ux.form.MultiSelect',{
+			this.msInputFilterCategory = new Ext.ux.form.MultiSelect({
 				store: this.storeCategoryFilter,
 				fieldLabel: mw.message('bs-statistics-filter-category').plain(),
 				labelAlign: 'right',
 				name: 'hwpFilterBsFilterCategory[]',
-				displayField: 'displaytitle',
-				valueField: 'key',
+				displayField: 'cat_title',
+				valueField: 'cat_title',
 				delimiter: null,
 				height: 130
 			});
