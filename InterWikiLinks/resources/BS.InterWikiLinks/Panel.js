@@ -14,6 +14,8 @@
 
 Ext.define( 'BS.InterWikiLinks.Panel', {
 	extend: 'BS.CRUDGridPanel',
+	features: [],
+
 	initComponent: function() {
 		this.strMain = Ext.create( 'BS.store.BSApi', {
 			apiAction: 'bs-interwiki-store',
@@ -34,6 +36,22 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 			dataIndex: 'iw_url',
 			flex: 1
 		} );
+
+		this.filters = Ext.create('Ext.ux.grid.FiltersFeature', {
+			encode: true,
+			local: false,
+			filters: [{
+				type: 'string',
+				dataIndex: 'iw_prefix',
+				menuItems: ['ct']
+			},{
+				type: 'string',
+				dataIndex: 'iw_url',
+				menuItems: ['ct']
+			}]
+		});
+
+		this.gpMainConf.features = [this.filters];
 
 		this.colMainConf.columns = [
 			this.colIWLPrefix,
@@ -83,83 +101,44 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 	onRemoveIWLOk: function() {
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var iwprefix = selectedRow[0].get( 'iw_prefix' );
-
-		Ext.Ajax.request( {
-			url: mw.util.wikiScript( 'api' ),
-			method: 'post',
-			scope: this,
-			params: {
-				action: 'bs-interwikilinks-tasks',
-				task: 'removeInterWikiLink',
-				format: 'json',
-				token: mw.user.tokens.get( 'editToken', '' ),
-				taskData: Ext.encode({
-					prefix: iwprefix
-				})
-			},
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-				} else {
-					this.renderMsgFailure( responseObj );
-				}
+		var me = this;
+		bs.api.tasks.exec(
+			'interwikilinks',
+			'removeInterWikiLink',
+			{
+				prefix: iwprefix
 			}
+		).done( function( response ) {
+			me.reloadStore();
 		});
 	},
 	onDlgIWLAddOk: function( data, iwl ) {
-		Ext.Ajax.request( {
-			url: mw.util.wikiScript( 'api' ),
-			method: 'post',
-			scope: this,
-			params: {
-				action: 'bs-interwikilinks-tasks',
-				task: 'editInterWikiLink',
-				format: 'json',
-				token: mw.user.tokens.get( 'editToken', '' ),
-				taskData: Ext.encode({
-					prefix: iwl.iw_prefix,
-					url: iwl.iw_url
-				})
-			},
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-					this.dlgIWLAdd.resetData();
-				} else {
-					this.renderMsgFailure( responseObj );
-				}
-			},
-			failure: function( response, opts ) {}
+		var me = this;
+		bs.api.tasks.exec(
+			'interwikilinks',
+			'editInterWikiLink',
+			{
+				prefix: iwl.iw_prefix,
+				url: iwl.iw_url
+			}
+		).done( function( response ) {
+			me.dlgIWLAdd.resetData();
+			me.reloadStore();
 		});
 	},
 	onDlgIWLEditOk: function( data, iwl ) {
-		Ext.Ajax.request( {
-			url: mw.util.wikiScript( 'api' ),
-			method: 'post',
-			scope: this,
-			params: {
-				action: 'bs-interwikilinks-tasks',
-				task: 'editInterWikiLink',
-				format: 'json',
-				token: mw.user.tokens.get( 'editToken', '' ),
-				taskData: Ext.encode({
-					prefix: iwl.iw_prefix,
-					url: iwl.iw_url,
-					oldPrefix: iwl.iw_prefix_old
-				})
-			},
-			success: function( response, opts ) {
-				var responseObj = Ext.decode( response.responseText );
-				if ( responseObj.success === true ) {
-					this.renderMsgSuccess( responseObj );
-					this.dlgIWLEdit.resetData();
-				} else {
-					this.renderMsgFailure( responseObj );
-				}
-			},
-			failure: function( response, opts ) {}
+		var me = this;
+		bs.api.tasks.exec(
+			'interwikilinks',
+			'editInterWikiLink',
+			{
+				prefix: iwl.iw_prefix,
+				url: iwl.iw_url,
+				oldPrefix: iwl.iw_prefix_old
+			}
+		).done( function( response ) {
+			me.dlgIWLEdit.resetData();
+			me.reloadStore();
 		});
 	},
 	reloadStore: function() {
@@ -170,21 +149,6 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 			this.dlgIWLAdd.show();
 		} else {
 			this.dlgIWLEdit.show();
-		}
-	},
-	renderMsgSuccess: function( responseObj ) {
-		if ( responseObj.message.length ) {
-			bs.util.alert( 'UMsuc', { text: responseObj.message, titleMsg: 'bs-extjs-title-success' }, { ok: this.reloadStore, cancel: function() {}, scope: this } );
-		}
-	},
-	renderMsgFailure: function( responseObj ) {
-		if ( responseObj.errors ) {
-			var message = '';
-			for ( i in responseObj.errors ) {
-				if ( typeof( responseObj.errors[i].message ) !== 'string') continue;
-				message = message + responseObj.errors[i].message + '<br />';
-			}
-			bs.util.alert( 'UMfail', { text: message, titleMsg: 'bs-extjs-title-warning' }, { ok: this.showDlgAgain, cancel: function() {}, scope: this } );
 		}
 	}
 } );
