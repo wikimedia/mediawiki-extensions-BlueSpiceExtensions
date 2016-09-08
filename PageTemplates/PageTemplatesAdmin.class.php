@@ -38,17 +38,6 @@ class PageTemplatesAdmin {
 	}
 
 	/**
-	 * Renders the HTML for the admin section within WikiAdmin
-	 * @return string HTML output to be displayed
-	 */
-	public function getForm() {
-		global $wgOut;
-		$wgOut->addModules('ext.bluespice.pageTemplates');
-		$sForm = '<div id="bs-pagetemplates-grid"></div>';
-		return $sForm;
-	}
-
-	/**
 	 * Creates or changes a template
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */

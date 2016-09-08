@@ -23,18 +23,6 @@ class SpecialAdminDashboard extends BsSpecialPage {
 		return;
 	}
 
-	/**
-	 * Renders the HTML for the admin section within WikiAdmin
-	 * @return string HTML output to be displayed
-	 */
-	public function getForm() {
-		$this->checkForReadOnly();
-		$this->getAdminConfig();
-
-		$sForm = '<div id="bs-dashboards-admindashboard"></div>';
-		return $sForm;
-	}
-
 	private function getAdminConfig() {
 		$oDbr = wfGetDB( DB_SLAVE );
 		$res = $oDbr->select(

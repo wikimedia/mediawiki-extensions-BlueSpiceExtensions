@@ -39,7 +39,8 @@
 class Flexiskin extends BsExtensionMW {
 	/**
 	 * Initialization of Flexiskin extension
-         *          */
+         *
+         */
     public function __construct() {
 		wfProfileIn( 'BS::' . __METHOD__ );
 		WikiAdmin::registerModule( 'Flexiskin', array(
@@ -49,7 +50,7 @@ class Flexiskin extends BsExtensionMW {
 		) );
                 wfProfileOut( 'BS::' . __METHOD__ );
 	}
-        
+
 	public function initExt() {
 		wfProfileIn( 'BS::' . __METHOD__ );
 
@@ -59,11 +60,6 @@ class Flexiskin extends BsExtensionMW {
 		$this->mCore->registerPermission( 'flexiskin-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::' . __METHOD__ );
-	}
-
-	public function getForm() {
-		$this->getOutput()->addModules( "ext.bluespice.flexiskin" );
-		return '<div id="bs-flexiskin-container"></div>';
 	}
 
 	public function runPreferencePlugin( $sAdapterName, BsConfig $oVariable ) {

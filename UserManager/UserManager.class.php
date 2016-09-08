@@ -393,8 +393,4 @@ class UserManager extends BsExtensionMW {
 		return $oStatus;
 	}
 
-	public function getForm( $firsttime = false ) {
-		$this->getOutput()->addModules( 'ext.bluespice.userManager' );
-		return '<div id="bs-usermanager-grid"></div>';
-	}
 }
