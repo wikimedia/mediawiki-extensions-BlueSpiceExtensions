@@ -44,5 +44,6 @@
 	"bs-flexiskin-error-templatenotexists": "Déi eruagesicht Schabloun gëtt et net!",
 	"bs-flexiskin-api-error-invalid-action": "Dës Aktioun gëtt et net.",
 	"bs-flexiskin-usebackground": "Hannergrondbild benotzen",
-	"bs-flexiskin-labelcurrentbackground": "Aktuellt Bild"
+	"bs-flexiskin-labelcurrentbackground": "Aktuellt Bild",
+	"action-flexiskin-viewspecialpage": "d'Spezialsäit \"Flexiskin\" weisen"
 }

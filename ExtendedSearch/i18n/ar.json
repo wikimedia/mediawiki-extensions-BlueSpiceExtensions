@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Meno25",
-			"Maroen1990"
+			"Maroen1990",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"bs-extendedsearch-sort-title": "العنوان",
 	"bs-extendedsearch-pref-scope-title": "العنوان",
 	"bs-extendedsearch-facetsetting-op-and": "و",
-	"bs-extendedsearch-facetsetting-op-or": "أو"
+	"bs-extendedsearch-facetsetting-op-or": "أو",
+	"extendedsearchadmin": "إدارة البحث الممتد"
 }

@@ -33,8 +33,18 @@
 	"bs-usermanager-confirmdeleteuser": "¿Estás seguro de que quieres borrar a {{PLURAL:$1|este usuario|estos $1 usuarios}}?",
 	"bs-usermanager-groups-more": "... más",
 	"bs-usermanager-no-self-desysop": "No puedes quitarte tu propio privilegio administrativo.",
+	"bs-usermanager-no-self-block": "No puedes desactivarte a ti mismo.",
+	"bs-usermanager-block-error": "No se pudo desactivar {{GENDER:$1|al usuario|a la usuaria}} $1.",
+	"bs-usermanager-unblock-error": "No se pudo activar {{GENDER:$1|al usuario|a la usuaria}} $1.",
 	"bs-usermanager-headerenabled": "Activado",
+	"bs-usermanager-log-user-disabled": "Se desactivó {{GENDER:$1|al usuario|a la usuaria}} $1 mediante UserManager.",
+	"bs-usermanager-user-disabled": "Se desactivó {{GENDER:$1|al usuario|a la usuaria}} $1.",
+	"bs-usermanager-user-enabled": "Se activó {{GENDER:$1|al usuario|a la usuaria}} $1.",
 	"bs-usermanager-endisable": "Activar/desactivar",
+	"bs-usermanager-confirmdisableuser": "¿Realmente quieres desactivar {{GENDER:$1|al usuario|a la usuaria}} $1?",
+	"bs-usermanager-confirmenableuser": "¿Realmente quieres activar {{GENDER:$1|al usuario|a la usuaria}} $1?",
 	"bs-usermanager-titledisableuser": "Desactivar usuario",
-	"bs-usermanager-titleenableuser": "Activar usuario"
+	"bs-usermanager-titleenableuser": "Activar usuario",
+	"usermanager": "Gestor de usuarios",
+	"action-usermanager-viewspecialpage": "ver la página especial \"gestor de usuarios\""
 }

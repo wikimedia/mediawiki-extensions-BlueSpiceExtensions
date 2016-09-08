@@ -5,6 +5,7 @@
 		]
 	},
 	"bs-usagetracker-startjobs": "Elo aktualiséieren",
+	"bs-usagetracker-create-statistics": "Statistike vum Benotzen aktualiséieren",
 	"bs-usagetracker-col-identifier": "Identifikatioun",
 	"bs-usagetracker-col-desc": "Beschreiwung",
 	"bs-usagetracker-col-count": "Compteur",

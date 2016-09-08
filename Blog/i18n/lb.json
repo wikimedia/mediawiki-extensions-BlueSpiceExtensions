@@ -14,5 +14,6 @@
 	"bs-blog-pref-showpermalink": "Link Permalink weisen",
 	"bs-blog-pref-sortby": "Zortéieren no:",
 	"bs-blog-pref-imagerendermode": "Biller weisen als:",
-	"bs-blog-tag-blogtime-err": "De Format ass JJJJMMDDSSmm espou datt z. Bsp. fir den 12. Januar 2013 ëm 15:43 den Zäitstempel 201301121543 ass"
+	"bs-blog-tag-blogtime-err": "De Format ass JJJJMMDDSSmm espou datt z. Bsp. fir den 12. Januar 2013 ëm 15:43 den Zäitstempel 201301121543 ass",
+	"action-blog-viewspecialpage": "d'Spezialsäit \"{{int:bs-blog-blog}}\" weisen"
 }

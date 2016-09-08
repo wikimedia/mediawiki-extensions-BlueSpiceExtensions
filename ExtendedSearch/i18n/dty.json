@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"राम प्रसाद जोशी"
+			"राम प्रसाद जोशी",
+			"Nirajan pant"
 		]
 	},
-	"bs-extendedsearch-did-you-mean": "तमले खोज्याको: $1 हो की ?"
+	"bs-extendedsearch-did-you-mean": "तमले खोज्याको: $1 हो की ?",
+	"extendedsearchadmin": "विस्तारित खोजी व्यवस्थापन"
 }

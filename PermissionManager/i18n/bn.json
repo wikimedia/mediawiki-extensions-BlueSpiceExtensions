@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftabuzzaman"
+			"Aftabuzzaman",
+			"আজিজ"
 		]
 	},
 	"prefs-permissionmanager": "অনুমতি ব্যবস্থাপক",
@@ -25,7 +26,7 @@
 	"bs-permissionmanager-labeltpled-cancel": "বাতিল",
 	"bs-permissionmanager-msgtpled-success": "টেমপ্লেট সংরক্ষিত।",
 	"bs-permissionmanager-msgtpled-savefailure": "টেমপ্লেট সংরক্ষণ করা যায়নি।",
-	"bs-permissionmanager-msgtpled-saveonabort": "আপনি এখন সব উপাত্ত সংরক্ষণ করতে চান?",
+	"bs-permissionmanager-msgtpled-saveonabort": "আপনি কি এখনই সব উপাত্ত সংরক্ষণ করতে চান?",
 	"bs-permissionmanager-msgtpled-new": "টেমপ্লেটের নাম:",
 	"bs-permissionmanager-msgtpled-edit": "নতুন টেমপ্লেটের নাম:",
 	"bs-permissionmanager-msgtpled-delete": "টেমপ্লেট অপসারিত।",

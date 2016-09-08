@@ -62,5 +62,6 @@
 	"bs-flexiskin-apihelp-task-param-skinId": "El parámetro <var>skinId</var> identifica la apariencia",
 	"bs-flexiskin-usebackground": "Usar la imagen de fondo",
 	"bs-flexiskin-labelcurrentbackground": "Imagen actual",
+	"action-flexiskin-viewspecialpage": "ver la página especial \"Flexiskin\"",
 	"flexiskin": "Preferencias de la apariencia"
 }

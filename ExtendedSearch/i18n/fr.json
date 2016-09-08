@@ -107,5 +107,7 @@
 	"bs-extendedsearch-fewer": "Moins",
 	"bs-extendedsearch-facetsetting-op-and": "ET",
 	"bs-extendedsearch-facetsetting-op-or": "OU",
-	"action-extendedsearch-viewspecialpage": "afficher la page spéciale \"{{int:specialextendedsearch}}\""
+	"action-extendedsearch-viewspecialpage": "afficher la page spéciale \"{{int:specialextendedsearch}}\"",
+	"action-extendedsearchadmin-viewspecialpage": "afficher la page spéciale \"{{int:extendedsearchadmin}}\"",
+	"extendedsearchadmin": "Gestion de la recherche approfondie"
 }
