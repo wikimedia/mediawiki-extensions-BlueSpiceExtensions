@@ -114,16 +114,8 @@ var BsInsertCategoryViewHelper = {
 			})
 			.done(function( response ) {
 				if ( response.success === true ) {
-					bs.util.alert(
-						'ICsuc',
-						{
-							textMsg: 'bs-insertcategory-success',
-							titleMsg: 'bs-extjs-title-success'
-						},
-						{
-							ok: BsInsertCategoryViewHelper.onSetCategoriesOk
-						}
-					);
+					mw.notify( response.message, { title: mw.msg( 'bs-extjs-title-success' ) } );
+					BsInsertCategoryViewHelper.onSetCategoriesOk();
 				} else {
 					BsInsertCategoryViewHelper.onSetCategoriesFailure( response.message );
 				}
