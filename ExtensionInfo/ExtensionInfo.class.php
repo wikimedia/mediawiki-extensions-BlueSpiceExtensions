@@ -51,22 +51,4 @@ class ExtensionInfo extends BsExtensionMW {
 		return true;
 	}
 
-	/**
-	 * Renders the main form. Called by WikiAdmin
-	 * @return string rendered HTML
-	 */
-	public function getForm() {
-		$this->getOutput()->addModuleStyles( 'ext.bluespice.extensioninfo.styles' );
-		$this->getOutput()->addModules( 'ext.bluespice.extensioninfo' );
-		BsExtensionManager::setContext( 'MW::ExtensionInfoShow' );
-		$oViewExtensionInfoTable = new ViewExtensionInfoTable();
-
-		$aInfos = BsExtensionManager::getExtensionInformation();
-		ksort( $aInfos );
-
-		$oViewExtensionInfoTable->setExtensions( $aInfos );
-
-		return $oViewExtensionInfoTable->execute();
-	}
-
 }

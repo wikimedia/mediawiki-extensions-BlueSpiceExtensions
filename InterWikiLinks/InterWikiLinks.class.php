@@ -93,14 +93,6 @@ class InterWikiLinks extends BsExtensionMW {
 
 		return $aInterWikiPrefixes;
 	}
-	/*
-	 * Returns the HTML of the inner InterwikiLinks area
-	 * @return string HTML that is to be rendered
-	 */
-	public function getForm() {
-		$this->getOutput()->addModules( 'ext.bluespice.interWikiLinks' );
-		return '<div id="InterWikiLinksGrid"></div>';
-	}
 
 	public static function purgeTitles($iw_prefix) {
 		$dbr = wfGetDB( DB_SLAVE );

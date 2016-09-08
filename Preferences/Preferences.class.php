@@ -45,118 +45,17 @@ class BsPreferences extends BsExtensionMW {
 			$this->mExtensionFile = __FILE__;
 			$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 
-			$title = SpecialPage::getTitleFor( 'BlueSpicePreferences' );
-			if( $title->isKnown() ){
-				WikiAdmin::registerModule( 'BlueSpicePreferences', array(
-					'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
-					'level' => 'wikiadmin',
-					'message' => 'bs-preferences-label'
-				) );
-			} else {
-				WikiAdmin::registerModule( 'Preferences', array(
-					'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
-					'level' => 'wikiadmin',
-					'message' => 'bs-preferences-label',
-					'compatibility_mode' => true
-				) );
-			}
+			WikiAdmin::registerModule( 'BlueSpicePreferences', array(
+				'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
+				'level' => 'wikiadmin',
+				'message' => 'bs-preferences-label'
+			) );
 
 			wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
 	protected function initExt() {
 		$this->mCore->registerPermission( 'bluespicepreferences-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
-	}
-
-	/**
-	 * returns the formular for Preferences
-	 * @return string the formular string
-	 */
-	public function getForm() {
-		if ( wfReadOnly() ) {
-			throw new ReadOnlyError;
-		}
-
-		$this->getOutput()->addModules( 'ext.bluespice.preferences' );
-		$this->getOutput()->addHTML( '<br />' );
-
-		$oRequest = $this->getRequest();
-		if ( $this->getRequest()->getVal( 'success' ) == true ) {
-			$this->getOutput()->wrapWikiMsg(
-				'<div class="successbox"><strong>$1</strong></div><div id="mw-pref-clear"></div>'."\n",
-				'savedprefs'
-			);
-		}
-
-		$orig_deliver = BsConfig::deliverUsersSettings( false );
-
-		BsConfig::loadSettings();
-		BsExtensionManager::getExtensionInformation();
-
-		$vars = BsConfig::getRegisteredVars();
-
-		$bShowall = $oRequest->getFuzzyBool( 'showall' );
-		if ( $bShowall ) {
-			$out = '';
-			foreach ( $vars as $var ) {
-				$out .= $var->getAdapter() . "::";
-				if ( $var->getExtension() !== null ) {
-					$out .= $var->getExtension() . "::";
-				}
-				$out .= $var->getName() . "<br>";
-			}
-
-			return $out;
-		}
-
-		$preferences = array();
-		$aSortedVariables = array();
-
-		foreach ( $vars as $var ) {
-			$options = $var->getOptions();
-			if ( !( $options & ( BsConfig::LEVEL_PUBLIC | BsConfig::LEVEL_USER ) ) ) {
-				continue;
-			}
-			if ( $options & BsConfig::NO_DEFAULT ) continue;
-			$extension = $var->getI18nExtension() ? $var->getI18nExtension() : 'BASE';
-			$aSortedVariables[$extension][] = $var;
-		}
-
-		foreach ( $aSortedVariables as $sExtensionName => $aExtensions ) {
-			if ( !count( $aExtensions ) ) continue;
-
-			foreach ( $aExtensions as $oVariable ) {
-				// if continue, then $oAdapterSetView is not added to output
-				if ( !count( $oVariable ) ) continue;
-				$sSection = $sExtensionName;
-				$oExtension = BsExtensionManager::getExtension( $sExtensionName );
-				$field = $oVariable->getFieldDefinition( $sSection );
-
-				if ( $oVariable->getOptions() & BsConfig::USE_PLUGIN_FOR_PREFS ) {
-
-					$oExtension = BsExtensionManager::getExtension( $sExtensionName );
-					$tmp = $oExtension->runPreferencePlugin( 'MW', $oVariable );
-
-					$field = array_merge( $field, $tmp );
-				}
-				$preferences[$oVariable->generateFieldId()] = $field;
-
-			}
-		}
-		BsConfig::deliverUsersSettings( $orig_deliver );
-
-		$oForm = new HTMLFormEx( $preferences, 'prefs' );
-		$oForm->setTitle( $this->getTitle() );
-		$oForm->addHiddenField( 'mode', 'Preferences' );
-		$oForm->setSubmitText( wfMessage( 'bs-extjs-save' )->plain() );
-		$oForm->setSubmitName( 'WikiAdminPreferencesSubmit' );
-		$oForm->setSubmitCallback( array( $this, 'savePreferences' ) );
-
-		$oForm->show();
-
-		$this->getOutput()->addHTML( '<br />' );
-
-		return '';
 	}
 
 	/**

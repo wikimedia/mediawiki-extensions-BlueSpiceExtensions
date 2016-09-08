@@ -10,34 +10,8 @@ class SpecialWikiAdmin extends BsSpecialPage {
 	public function execute( $par ) {
 		parent::execute( $par );
 		$oOut = $this->getOutput();
-		$output = '';
 
-		# Get request data from, e.g.
-		$wa_mode = $this->getRequest()->getVal( 'mode', 'WikiAdmin' );
-		$wa_mode_Instance = null;
-		$wa_mode_Credits = null;
-
-		$runningModules = WikiAdmin::getRunningModules();
-		foreach ( $runningModules as $moduleName => $moduleInstance ) {
-			if ( strcasecmp( $wa_mode, $moduleName ) == 0 ) {
-				$wa_mode_Credits = WikiAdmin::getRegisteredModule( $moduleName );
-				if ( !$this->getUser()->isAllowed( $wa_mode_Credits['level'] ) ) {
-					$output = wfMessage( 'bs-wikiadmin-notallowed' )->plain();
-					$oOut->addHTML( $output );
-					return;
-				}
-				$wa_mode = $moduleName;
-				$wa_mode_Instance = $moduleInstance;
-
-				$oOut->setPagetitle( 'WikiAdmin - ' . wfMessage( $wa_mode_Credits['message'] )->plain() );
-			}
-		}
-
-		if ( $wa_mode_Instance != null ) {
-			$output .= $wa_mode_Instance->getForm();
-		} else {
-			$output = $this->getForm();
-		}
+		$output = $this->getForm();
 		# Output
 		$oOut->addHTML( '<div class="bs-admincontrolbtns clearfix">'.$output.'</div>' );
 	}

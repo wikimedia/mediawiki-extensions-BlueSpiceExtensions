@@ -59,17 +59,6 @@ class GroupManager extends BsExtensionMW {
 	}
 
 	/**
-	 * offers the formular for the group manager
-	 * @return string the formular code
-	 */
-	public function getForm() {
-		$this->getOutput()->addModules( 'ext.bluespice.groupManager' );
-		BsExtensionManager::setContext( 'MW::GroupManagerShow' );
-		$sForm = '<div id="bs-groupmanager-grid"></div>';
-		return $sForm;
-	}
-
-	/**
 	 * saves all groupspecific data to a config file
 	 * @return array the json answer
 	 */
