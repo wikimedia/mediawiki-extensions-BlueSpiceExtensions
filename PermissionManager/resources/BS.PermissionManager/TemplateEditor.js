@@ -82,11 +82,9 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 					Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(
 							me._treeStore.getNodeById(newRecord.text)
 							);
-					bs.util.alert('bs-pm-save-tpl-success', {
-						textMsg: 'bs-permissionmanager-msgtpled-success'
-					});
+					mw.notify( mw.msg( 'bs-permissionmanager-msgtpled-success' ), { title: mw.msg( 'bs-extjs-title-success' ) } );
 				} else {
-					bs.util.alert('bs-pm-save-tpl-error', {
+					bs.util.alert( 'bs-pm-save-tpl-error', {
 						text: result.msg
 					});
 				}
@@ -276,9 +274,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 									me._permissionStore.sync();
 									me._hasChanged = true;
 
-									bs.util.alert('bs-pm-delete-tpl-success', {
-										textMsg: 'bs-permissionmanager-msgtpled-delete'
-									});
+									mw.notify( mw.msg( 'bs-permissionmanager-msgtpled-delete' ), { title: mw.msg( 'bs-extjs-title-success' ) } );
 
 									var dataManager = Ext.create('BS.PermissionManager.data.Manager');
 									dataManager.deleteTemplate(id);
@@ -288,7 +284,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 										.loadRawData(dataManager.buildPermissionData().permissions);
 								}
 							} else {
-								bs.util.alert('bs-pm-delete-tpl-error', {
+								bs.util.alert( 'bs-pm-delete-tpl-error', {
 									text: result.msg
 								});
 							}

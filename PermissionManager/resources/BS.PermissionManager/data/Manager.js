@@ -491,9 +491,8 @@
 
 			if (result.success === true) {
 				caller.unmask();
-				bs.util.alert('bs-pm-save-success', {
-					textMsg: 'bs-permissionmanager-save-success'
-				});
+
+				mw.notify( mw.msg( 'bs-permissionmanager-save-success' ), { title: mw.msg( 'bs-extjs-title-success' ) } );
 
 				// Reset modification cache
 				modifiedValues = {};
@@ -522,7 +521,7 @@
 						.loadRawData(buildPermissionData().permissions);
 			} else {
 				caller.unmask();
-				bs.util.alert('bs-pm-save-error', {
+				bs.util.alert( 'bs-pm-save-error', {
 					text: result.msg
 				});
 			}
