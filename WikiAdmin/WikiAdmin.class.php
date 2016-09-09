@@ -175,14 +175,15 @@ class WikiAdmin extends BsExtensionMW {
 			return true;
 		}
 
-		$oSpecialPage = SpecialPage::getTitleFor( 'WikiAdmin' );
+
 		$aRegisteredModules = WikiAdmin::getRegisteredModules();
 
 		$aOutSortable = array();
 		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
+			$oSpecialPage = SpecialPage::getTitleFor( $sModuleKey );
 			$skeyLower = mb_strtolower( $sModuleKey );
 			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
-			$sUrl = $oSpecialPage->getLocalURL( array( 'mode' => $sModuleKey ) );
+			$sUrl = $oSpecialPage->getLocalURL( );
 			//$sUrl = str_replace( '&', '&amp;', $sUrl );
 			$sLink = Html::element(
 				'a',
