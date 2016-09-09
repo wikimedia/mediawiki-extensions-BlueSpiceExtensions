@@ -21,10 +21,12 @@
 		"BsPDFTemplateProvider": "includes/PDFTemplateProvider.class.php",
 		"BsPDFWebService": "includes/PDFWebService.class.php",
 		"BsPDFServlet": "includes/PDFServlet.class.php",
-		"BsExportModulePDF": "includes/ExportModulePDF.class.php"
+		"BsExportModulePDF": "includes/ExportModulePDF.class.php",
+		"BSFilePathResolver": "includes/BSFilePathResolver.php"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates",
+		"UnitTestsList": "UEModulePDF::onUnitTestsList"
 	},
 	"manifest_version": 1
 }
