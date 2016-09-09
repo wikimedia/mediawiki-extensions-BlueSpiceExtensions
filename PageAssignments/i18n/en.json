@@ -58,5 +58,7 @@
 	"prefs-pageassignments": "Page Assignments",
 	"bs-pageassignments-pref-permissions": "Add additional permissions to assigned users",
 	"bs-pageassignments-yourassignments": "Your assignments",
-	"bs-pageassignments-yourassignmentsdesc": "List of pages which you are assigned to."
+	"bs-pageassignments-yourassignmentsdesc": "List of pages which you are assigned to.",
+	"right-pageassignable": "Appear in the list of assignable users",
+	"right-pageassignments": "Edit the assignments of a page"
 }
