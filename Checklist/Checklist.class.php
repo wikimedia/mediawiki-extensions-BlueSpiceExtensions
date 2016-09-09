@@ -4,7 +4,7 @@
  * BlueSpice for MediaWiki
  * Extension: Checklist
  * Description: Provides checklist functions.
- * Authors: Markus Glaser
+ * Authors: Markus Glaser, Patric Wirth, Leonid Verhovskij
  *
  * Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  *
@@ -26,7 +26,9 @@
  * For further information visit http://www.blue-spice.org
  *
  * @author     Patric Wirth <wirth@hallowelt.com>
- * @version    2.23.1
+ * @author     Markus Glaser
+ * @author     Leonid Verhovskij
+ * @version    2.27.0
  * @package    BlueSpice_Extensions
  * @subpackage Checklist
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
@@ -40,19 +42,28 @@
  */
 class Checklist extends BsExtensionMW {
 
-	public $iCheckboxCounter = 0;
-	public $bCheckboxFound = false;
+	public static $iCheckboxCounter = 0;
+	public static $bCheckboxFound = false;
 
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->setHook( 'ParserFirstCallInit' );
-		$this->setHook( 'BeforePageDisplay');
-		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
-		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
-		$this->setHook( 'VisualEditorConfig' );
 		$this->mCore->registerPermission( 'checklistmodify', array( 'user' ) );
 		wfProfileOut( 'BS::'.__METHOD__ );
-		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
+	}
+
+	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		$GLOBALS["bssDefinitions"]["_CHECKLIST"] = array(
+			"id" => "___CHECKLIST",
+			"type" => 4,
+			"show" => false,
+			"msgkey" => "prefs-checklist",
+			"alias" => "prefs-checklist",
+			"label" => "Checklist",
+			"mapping" => "Checklist::smwDataMapping"
+		);
 	}
 
 	/**
@@ -62,7 +73,7 @@ class Checklist extends BsExtensionMW {
 	 * @param Array &$aLoaderUsingDeps reference
 	 * @return boolean always true to keep hook alife
 	 */
-	public function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
+	public static function onVisualEditorConfig( &$aConfigStandard, &$aConfigOverwrite, &$aLoaderUsingDeps ) {
 		$aLoaderUsingDeps[] = 'ext.bluespice.checklist';
 
 		$iIndexStandard = array_search( 'unlink',$aConfigStandard["toolbar1"] );
@@ -113,14 +124,32 @@ class Checklist extends BsExtensionMW {
 	 * @param Parser $parser
 	 * @return boolean
 	 */
-	public function onParserFirstCallInit( &$parser ) {
-		$parser->setHook( 'bs:checklist', array( &$this, 'onMagicWordBsChecklist' ) );
+	public static function onParserFirstCallInit( &$parser ) {
+		$parser->setHook( 'bs:checklist', 'Checklist::onMagicWordBsChecklist' );
 		return true;
 	}
 
-	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
-		$this->getOutput()->addModuleStyles( 'ext.bluespice.checklist.styles' );
-		$this->getOutput()->addModules( 'ext.bluespice.checklist' );
+	/**
+	 * Load editor resources (css, js) for checklist
+	 * @param EditPage $editPage
+	 * @param OutputPage $output
+	 * @return boolean true
+	 */
+	public static function onEditPage_showEditForm_initial( EditPage &$editPage, OutputPage &$output ){
+		$output->addModuleStyles( 'ext.bluespice.checklist.styles' );
+		$output->addModules( 'ext.bluespice.checklist' );
+
+		return true;
+	}
+
+
+	/**
+	 *
+	 * @param array $aRows
+	 * @param type $aButtonCfgs
+	 * @return boolean
+	 */
+	public static function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
 
 		$aRows[0]['dialogs'][60] = 'bs-editbutton-checklist';
 
@@ -137,7 +166,7 @@ class Checklist extends BsExtensionMW {
 	 * $param String $type
 	 * @return always true to keep hook running
 	 */
-	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
+	public static function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
 		$oResponse->result[] = array(
@@ -162,15 +191,22 @@ class Checklist extends BsExtensionMW {
 		return true;
 	}
 
-
-	public function onMagicWordBsChecklist( $input, $args, $parser ) {
+	/**
+	 * handle tag "bs:checkbox"
+	 * @param type $input
+	 * @param array $args
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 * @return type
+	 */
+	public static function onMagicWordBsChecklist( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$parser->disableCache();
 		$parser->getOutput()->setProperty( 'bs-tag-checklist', 1 );
-		$this->bCheckboxFound = true;
+		self::$bCheckboxFound = true;
 		$sOut = array();
 
 		if ( isset( $args['list'] ) ) {
-			$aOptions = $this->getListOptions( $args['list'] );
+			$aOptions = self::getListOptions( $args['list'] );
 		}
 		if( !isset( $args['value'] ) || $args['value'] === 'false' ) {
 			$args['value'] = '';
@@ -179,7 +215,7 @@ class Checklist extends BsExtensionMW {
 		$sSelectColor = '';
 		if ( isset( $args['type'] ) && $args['type'] == 'list' ) {
 			$sOut[] = "<select {color} ";
-			$sOut[] = "id='bs-cb-".$this->getNewCheckboxId()."' ";
+			$sOut[] = "id='bs-cb-" . self::getNewCheckboxId() . "' ";
 			$sOut[] = "onchange='BsChecklist.change(this);' ";
 			$sOut[] = ">";
 
@@ -211,7 +247,7 @@ class Checklist extends BsExtensionMW {
 			$sOut[] = "</select>";
 		} else {
 			$sOut[] = "<input type='checkbox' ";
-			$sOut[] = "id='bs-cb-".$this->getNewCheckboxId()."' ";
+			$sOut[] = "id='bs-cb-" . self::getNewCheckboxId() . "' ";
 			$sOut[] = "onclick='BsChecklist.click(this);' ";
 			if( $args['value'] == 'checked' ) {
 				$sOut[] = "checked='checked' ";
@@ -223,9 +259,9 @@ class Checklist extends BsExtensionMW {
 		return $sOut;
 	}
 
-	protected function getNewCheckboxId() {
-		$this->iCheckboxCounter++;
-		return $this->iCheckboxCounter;
+	protected static function getNewCheckboxId() {
+		self::$iCheckboxCounter++;
+		return self::$iCheckboxCounter;
 	}
 
 	/**
@@ -234,11 +270,8 @@ class Checklist extends BsExtensionMW {
 	 * @param Skin $oSkin
 	 * @return bool
 	 */
-	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		// also needed in edit mode
-		//if ( $this->bCheckboxFound ) {
-			$oOutputPage->addModules( 'ext.bluespice.checklist' );
-		//}
+	public static function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
+		$oOutputPage->addModules( 'ext.bluespice.checklist.view' );
 		return true;
 	}
 
@@ -247,7 +280,7 @@ class Checklist extends BsExtensionMW {
 	 * @param array $aCollectorsConfig
 	 * @return Always true to keep hook running
 	 */
-	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
 		$aCollectorsConfig['bs:checklist'] = array(
 			'class' => 'Property',
 			'config' => array(
@@ -255,4 +288,22 @@ class Checklist extends BsExtensionMW {
 			)
 		);
 	}
+
+	/**
+	 * Callback for BlueSpiceSMWConnector that adds a semantic special property
+	 * @param SMW\SemanticData $oSemanticData
+	 * @param WikiPage $oWikiPage
+	 * @param SMW\DIProperty $oProperty
+	 */
+	public static function smwDataMapping( SMW\SemanticData $oSemanticData, WikiPage $oWikiPage, SMW\DIProperty $oProperty ) {
+		//parse wikipage for bs:checklist tag
+		if( $oWikiPage !== null && $oWikiPage->getContent() !== null ){
+			self::$bCheckboxFound = ( strpos( $oWikiPage->getContent()->getNativeData(), "<bs:checklist" ) === false ) ?
+				false : true;
+			$oSemanticData->addPropertyObjectValue(
+				$oProperty, new SMWDIBoolean( self::$bCheckboxFound )
+			);
+		}
+	}
+
 }

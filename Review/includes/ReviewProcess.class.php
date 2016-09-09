@@ -159,9 +159,10 @@ class BsReviewProcess {
 
 	// TODO MRG (13.06.11 01:10): Unify return values with isFinished
 	/**
-	 * Returns the current status of the review.
+	 * Returns the current status of the review. This method is only used to
+	 * generate semantic data. Yet be careful when changing return values
 	 * @param string $date Timestamp as produced by time().
-	 * @return string '': ongoing; 'nothing': not everybody voted; 'denied': someone said no; 'status': passed.
+	 * @return string 'ongoing': ongoing; 'cancelled': not everybody voted; 'denied': someone said no; 'approved': passed.
 	 */
 	function getStatus($date) {
 		$curdate = strtotime("now");  //TODO: variable not used => line 105 commented
@@ -170,15 +171,15 @@ class BsReviewProcess {
 			//if($st->status != 1 && $curdate > $enddate) return 'date';
 			if ($st->status == -1) {
 				if ($date > time()) {
-					return '';
+					return 'ongoing';
 				}
-				return 'nothing';
+				return 'cancelled';
 			}
 			if ($st->status == 0) {
 				return 'denied';
 			}
 		}
-		return 'status';
+		return 'approved';
 	}
 
 	// TODO MRG (13.06.11 01:12): JSON or Array
@@ -908,5 +909,4 @@ class BsReviewProcess {
 			$dbw->delete('bs_review_steps', array('revs_review_id' => $row['rev_id']));
 		}
 	}
-
 }

@@ -74,5 +74,6 @@
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "ShoutBox::getSchemaUpdates"
 	},
+	"callback": "ShoutBox::onRegistration",
 	"manifest_version": 1
 }

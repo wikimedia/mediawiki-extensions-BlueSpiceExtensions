@@ -93,5 +93,6 @@
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "Review::getSchemaUpdates"
 	},
+	"callback": "Review::onRegistration",
 	"manifest_version": 1
 }

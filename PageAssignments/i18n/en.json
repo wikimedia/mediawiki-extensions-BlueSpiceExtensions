@@ -60,5 +60,6 @@
 	"bs-pageassignments-yourassignments": "Your assignments",
 	"bs-pageassignments-yourassignmentsdesc": "List of pages which you are assigned to.",
 	"right-pageassignable": "Appear in the list of assignable users",
-	"right-pageassignments": "Edit the assignments of a page"
+	"right-pageassignments": "Edit the assignments of a page",
+	"prefs-pageassign": "Assignment"
 }

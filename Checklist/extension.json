@@ -5,13 +5,14 @@
     "author": "Markus Glaser",
     "descriptionmsg": "bs-checklist-desc",
     "type": "bluespice",
-	"license-name": "GPL-2.0+",
+    "license-name": "GPL-2.0+",
     "bsgExtensions": {
             "Checklist": {
                     "className": "Checklist",
                     "extPath": "/BlueSpiceExtensions/Checklist"
             }
     },
+    "callback": "Checklist::onRegistration",
     "LogTypes": [
             "bs-checklist"
     ],
@@ -36,6 +37,15 @@
             "BSApiChecklistAvailableOptionsStore": "includes/api/BSApiChecklistAvailableOptionsStore.php",
             "BSApiChecklistTemplateStore": "includes/api/BSApiChecklistTemplateStore.php",
             "BSApiChecklistTasks": "includes/api/BSApiChecklistTasks.php"
+    },
+    "Hooks": {
+        "ParserFirstCallInit": "Checklist::onParserFirstCallInit",
+        "BeforePageDisplay": "Checklist::onBeforePageDisplay",
+        "BSExtendedEditBarBeforeEditToolbar": "Checklist::onBSExtendedEditBarBeforeEditToolbar",
+        "BSInsertMagicAjaxGetData": "Checklist::onBSInsertMagicAjaxGetData",
+        "VisualEditorConfig": "Checklist::onVisualEditorConfig",
+        "BSUsageTrackerRegisterCollectors": "Checklist::onBSUsageTrackerRegisterCollectors",
+        "EditPage::showEditForm:initial": "Checklist::onEditPage_showEditForm_initial"
     },
     "ResourceModules": {
             "ext.bluespice.checklist": {
@@ -62,6 +72,19 @@
                     ],
                     "dependencies": [
                             "ext.bluespice.extjs"
+                    ]
+            },
+            "ext.bluespice.checklist.view": {
+                    "scripts": [
+                            "bluespice.checklist.js"
+                    ],
+                    "messages": [
+                            "bs-checklist-button-checkbox-title",
+                            "bs-checklist-menu-insert-list-title",
+                            "bs-checklist-menu-insert-checkbox",
+                            "bs-checklist-alert",
+                            "bs-checklist-confirm-dirty-title",
+                            "bs-checklist-confirm-dirty-text"
                     ]
             },
             "ext.bluespice.checklist.styles": {

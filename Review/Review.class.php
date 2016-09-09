@@ -1501,4 +1501,35 @@ class Review extends BsExtensionMW {
 		return $aPrefs;
 	}
 
+	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		$GLOBALS["bssDefinitions"]["_REVIEW"] = array(
+			"id" => "___REVIEW",
+			"type" => 2,
+			"show" => false,
+			"msgkey" => "prefs-review",
+			"alias" => "prefs-review",
+			"label" => "Review",
+			"mapping" => "Review::smwDataMapping"
+		);
+	}
+
+	/**
+	 * Callback for BlueSpiceSMWConnector that adds a semantic special property
+	 * @param SMW\SemanticData $oSemanticData
+	 * @param WikiPage $oWikiPage
+	 * @param SMW\DIProperty $oProperty
+	 */
+	public static function smwDataMapping( SMW\SemanticData $oSemanticData, WikiPage $oWikiPage, SMW\DIProperty $oProperty ) {
+		$oReviewProcess = BsReviewProcess::newFromPid( $oWikiPage->getId() );
+		if( $oReviewProcess instanceof BsReviewProcess ) {
+			//get review status: 'in review', 'denied', 'approved', 'ongoing', 'cancelled'
+			$sStatus = $oReviewProcess->getStatus( time() );
+			$oSemanticData->addPropertyObjectValue(
+				$oProperty, new SMWDIBlob( $sStatus )
+			);
+		}
+	}
 }

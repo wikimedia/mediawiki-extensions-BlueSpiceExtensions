@@ -29,14 +29,26 @@ class PageAssignments extends BsExtensionMW {
 			'user' => 'BSAssignableUser',
 			'group' => 'BSAssignableGroup'
 		);
+
 		$GLOBALS['wgExtensionFunctions'][] = function() {
 			PageAssignmentsNotificationHooks::setup();
 		};
+
 		if( !isset( $GLOBALS['bsgDefaultAssignedUsersAdditionalPermissions'] ) ) {
 			$GLOBALS['bsgDefaultAssignedUsersAdditionalPermissions'] = array(
 				'read',
 			);
 		}
+
+		$GLOBALS["bssDefinitions"]["_PAGEASSIGN"] = array(
+			"id" => "___PAGEASSIGN",
+			"type" => 9,
+			"show" => false,
+			"msgkey" => "prefs-pageassign",
+			"alias" => "prefs-pageassign",
+			"label" => "Pageassign",
+			"mapping" => "PageAssignments::smwDataMapping"
+		);
 	}
 
 	/**
@@ -73,7 +85,7 @@ class PageAssignments extends BsExtensionMW {
 	/**
 	 *
 	 * @param Title $oTitle
-	 * @return UserArray
+	 * @return UserArrayFromResult
 	 */
 	public static function resolveAssignmentsToUsers( $oTitle ) {
 		$aUserIds = array();
@@ -133,4 +145,20 @@ class PageAssignments extends BsExtensionMW {
 		);
 	}
 
+	/**
+	 * Callback for BlueSpiceSMWConnector that adds a semantic special property
+	 * @param SMW\SemanticData $oSemanticData
+	 * @param WikiPage $oWikiPage
+	 * @param SMW\DIProperty $oProperty
+	 */
+	public static function smwDataMapping( SMW\SemanticData $oSemanticData, WikiPage $oWikiPage, SMW\DIProperty $oProperty ) {
+		$oTitle = $oWikiPage->getTitle();
+		$aUsers = PageAssignments::resolveAssignmentsToUsers( $oTitle );
+
+		foreach( $aUsers as $oUser ) {
+			$oSemanticData->addPropertyObjectValue(
+				$oProperty, SMWDIWikiPage::newFromTitle( $oUser->getUserPage() )
+			);
+		}
+	}
 }

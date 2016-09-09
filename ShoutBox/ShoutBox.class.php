@@ -391,4 +391,34 @@ class ShoutBox extends BsExtensionMW {
 		return Linker::link( $oUser->getUserPage(), BsUserHelper::getUserDisplayName( $oUser ) );
 	}
 
+	/**
+	 * Callback for BlueSpiceSMWConnector that adds a semantic special property
+	 * @param SMW\SemanticData $oSemanticData
+	 * @param WikiPage $oWikiPage
+	 * @param SMW\DIProperty $oProperty
+	 */
+	public static function smwDataMapping( SMW\SemanticData $oSemanticData, WikiPage $oWikiPage, SMW\DIProperty $oProperty ) {
+		$iArticleId = $oWikiPage->getId();
+		$iNumberOfShouts = ShoutBox::getTotalShouts( $iArticleId );
+
+		$oSemanticData->addPropertyObjectValue(
+			$oProperty, new SMWDINumber( $iNumberOfShouts )
+		);
+	}
+
+	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		$GLOBALS["bssDefinitions"]["_SHOUTBOX"] = array(
+			"id" => "___SHOUTBOX",
+			"type" => 1,
+			"show" => false,
+			"msgkey" => "prefs-shoutbox",
+			"alias" => "prefs-shoutbox",
+			"label" => "Shouts",
+			"mapping" => "ShoutBox::smwDataMapping"
+		);
+
+	}
 }
