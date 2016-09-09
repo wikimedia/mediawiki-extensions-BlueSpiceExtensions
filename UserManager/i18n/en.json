@@ -45,5 +45,7 @@
 	"bs-usermanager-titledisableuser": "Disable user",
 	"bs-usermanager-titleenableuser": "Enable user",
 	"usermanager": "User manager",
-	"action-usermanager-viewspecialpage": "view specialpage \"User manager\""
+	"action-usermanager-viewspecialpage": "view specialpage \"User manager\"",
+	"bs-usermanager-group-add-not-allowed": "You are not allowed to add users to group $1",
+	"bs-usermanager-group-remove-not-allowed": "You are not allowed to remove users from group $1"
 }

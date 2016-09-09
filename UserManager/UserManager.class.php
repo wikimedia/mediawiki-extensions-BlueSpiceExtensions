@@ -347,14 +347,16 @@ class UserManager extends BsExtensionMW {
 
 	/**
 	 * Removes / adds groups to a user
+	 * See also https://www.mediawiki.org/wiki/Manual:$wgAddGroups
 	 * @param User $oUser
 	 * @param type $aGroups
 	 * @return type
 	 */
 	public static function setGroups( User $oUser, $aGroups = array() ) {
 		$oLoggedInUser = RequestContext::getMain()->getUser();
+		$bAttemptChangeSelf = $oLoggedInUser->getId() == $oUser->getId();
 
-		$bCheckDeSysop = $oLoggedInUser->getId() == $oUser->getId()
+		$bCheckDeSysop = $bAttemptChangeSelf
 			&& in_array( 'sysop', $oLoggedInUser->getEffectiveGroups() )
 			&& !in_array( 'sysop', $aGroups )
 		;
@@ -363,18 +365,30 @@ class UserManager extends BsExtensionMW {
 		}
 
 		$aCurrentGroups = $oUser->getGroups();
-		$aSetGroups = array_diff( $aGroups, $aCurrentGroups );
+		$aAddGroups = array_diff( $aGroups, $aCurrentGroups );
 		$aRemoveGroups = array_diff( $aCurrentGroups, $aGroups );
 
-		foreach ( $aSetGroups as $sGroup ) {
+		$aChangeableGroups = $oLoggedInUser->changeableGroups();
+
+		foreach ( $aAddGroups as $sGroup ) {
 			if ( in_array( $sGroup, self::$excludegroups ) ) {
 				continue;
+			}
+			if ( !in_array( $sGroup, $aChangeableGroups['add'] ) ) {
+				if ( !$bAttemptChangeSelf || !in_array( $sGroup, $aChangeableGroups['add-self'] ) ) {
+					return Status::newFatal( 'bs-usermanager-group-add-not-allowed', $sGroup );
+				}
 			}
 			$oUser->addGroup( $sGroup );
 		}
 		foreach ( $aRemoveGroups as $sGroup ) {
 			if ( in_array( $sGroup, self::$excludegroups ) ) {
 				continue;
+			}
+			if ( !in_array( $sGroup, $aChangeableGroups['remove'] ) ) {
+				if ( !$bAttemptChangeSelf || !in_array( $sGroup, $aChangeableGroups['remove-self'] ) ) {
+					return Status::newFatal( 'bs-usermanager-group-remove-not-allowed', $sGroup );
+				}
 			}
 			$oUser->removeGroup( $sGroup );
 		}
@@ -383,7 +397,7 @@ class UserManager extends BsExtensionMW {
 		Hooks::run( 'BSUserManagerAfterSetGroups', array(
 			$oUser,
 			$aGroups,
-			$aSetGroups,
+			$aAddGroups,
 			$aRemoveGroups,
 			self::$excludegroups,
 			&$oStatus
