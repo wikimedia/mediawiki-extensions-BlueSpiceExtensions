@@ -24,11 +24,11 @@ Ext.onReady( function(){
     };
 	if ( taskPermissions !== null ) {
 		if ( typeof taskPermissions.interwikilinks.editInterWikiLink === 'boolean' ) {
-			operationPermissions.create = taskPermissions.editInterWikiLink;
-			operationPermissions.update = taskPermissions.editInterWikiLink;
+			operationPermissions.create = taskPermissions.interwikilinks.editInterWikiLink;
+			operationPermissions.update = taskPermissions.interwikilinks.editInterWikiLink;
 		}
 		if ( typeof taskPermissions.interwikilinks.removeInterWikiLink === 'boolean' ) {
-			operationPermissions.delete = taskPermissions.removeInterWikiLink;
+			operationPermissions.delete = taskPermissions.interwikilinks.removeInterWikiLink;
 		}
 	}
 	Ext.create( 'BS.InterWikiLinks.Panel', {
