@@ -19,7 +19,33 @@ Ext.define('BS.Statistics.StatisticsPortlet', {
 	portletConfigClass : 'BS.Statistics.StatisticsPortletConfig',
 	categoryLabel: 'BlueSpice',
 	filters: [],
+	diagram: '',
 	beforeInitCompontent: function() {
+
+		this.ctMainConfig = {
+			axes: [],
+			series: [],
+			yTitle: mw.message( this.titleKey ).plain()
+		};
+
+		this.ctMainConfig.store = Ext.create('Ext.data.JsonStore', {
+			fields: ['name', 'hits'],
+			proxy: {
+				type: 'ajax',
+				url: this.makeStatisticsApiUrl(),
+				actionMethods: {
+					read   : 'POST'
+				},
+				reader: {
+					type: 'json',
+					root: 'payload.data'
+				},
+				extraParams: {
+					token: mw.user.tokens.get( 'editToken' )
+				}
+			},
+			autoLoad: true
+		});
 
 		Ext.Ajax.on('requestcomplete', this.onRequestComplete, this);
 
@@ -69,7 +95,7 @@ Ext.define('BS.Statistics.StatisticsPortlet', {
 	},
 
 	afterInitComponent: function() {
-		
+
 	},
 
 	onRequestComplete: function( conn, response, options) {
@@ -78,7 +104,7 @@ Ext.define('BS.Statistics.StatisticsPortlet', {
 
 		var x = Ext.decode(response.responseText);
 		this.ctMain.axes.getAt(1).title = x.label;
-		
+
 	},
 	getPortletConfig: function() {
 		var cfg = this.callParent(arguments);
@@ -124,5 +150,23 @@ Ext.define('BS.Statistics.StatisticsPortlet', {
 		this.ctMainConfig.store.getProxy().extraParams.inputFrom = Ext.Date.format( this.getPeriod(), 'd.m.Y' )
 		this.ctMainConfig.store.getProxy().extraParams.InputDepictionGrain = this.getGrain();
 		this.ctMainConfig.store.load();
+	},
+
+	makeStatisticsApiUrl: function() {
+		return bs.api.makeUrl(
+						'bs-statistics-tasks',
+						{
+							task: 'getData',
+							taskData: JSON.stringify({
+								portletType: 'ExtendedStatistics',
+								diagram: this.diagram,
+								mode: 'aggregated',
+								to: Ext.Date.format(new Date(),'d.m.Y'),
+								from: Ext.Date.format(this.getPeriod(), 'd.m.Y'),
+								grain: this.getGrain()
+							}),
+						},
+						true
+				)
 	}
 });

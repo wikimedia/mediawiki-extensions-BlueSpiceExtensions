@@ -79,6 +79,10 @@ abstract class BsStatisticsFilter {
 	 */
 	public abstract function getValueFromRequest();
 	/**
+	 * Retrieves active filter value from API task data
+	 */
+	public abstract function getValueFromTaskData( $oTaskData );
+	/**
 	 * Checks if a given value is active
 	 * @param string $sValue The value to check
 	 * @return bool

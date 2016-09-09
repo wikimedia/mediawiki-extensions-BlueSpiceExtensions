@@ -53,8 +53,13 @@
 	"bs-statistics-portlet-numberofusers": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for number of users.\n{{Identical|Number of users}}",
 	"bs-statistics-portlet-numberofedits": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for number of edits.\n{{Identical|Number of edits}}",
 	"bs-statistics-portlet-numberofpages": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for number of pages.\n{{Identical|Number of pages}}",
+	"bs-statistics-portlet-numberofarticles": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], headline for number of articles.\n{{Identical|Number of articles}}",
 	"bs-statistics-portlet-numberofusersdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], description for number of users.",
 	"bs-statistics-portlet-numberofeditsdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], description for number of edits.",
 	"bs-statistics-portlet-numberofpagesdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], description for number of pages.",
-	"bs-statistics-portletconfig-periodday": "Option in [[Special:AdminDashboard]] and [[Special:UserDashboard]], label for yesterday\n{{Identical|Yesterday}}"
+	"bs-statistics-portlet-numberofarticlesdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], description for number of articles.",
+	"bs-statistics-portletconfig-periodday": "Option in [[Special:AdminDashboard]] and [[Special:UserDashboard]], label for yesterday\n{{Identical|Yesterday}}",
+	"apihelp-bs-statistics-tasks-description": "Describes an API endpoint that provides common tasks for Statistics",
+	"apihelp-bs-statistics-available-diagrams-store-description": "Describes an API endpoint that provides a store with available diagrams",
+	"apihelp-bs-statistics-search-options-store-description": "Describes an API endpoint that provides a store with available search options"
 }

@@ -44,16 +44,16 @@ class BsFilterSearchScope extends BsSelectFilter {
 		}
 		switch ( $this->aActiveValues[0] ) {
 			case 'title' :
-				$sSql = "stats_scope = 'title'";
+				$sSql = "stats_scope LIKE ( '%title%' )";
 				break;
 			case 'text' :
-				$sSql = "stats_scope = 'text'";
+				$sSql = "stats_scope LIKE ( '%text%' )";
 				break;
 			case 'files' :
-				$sSql = "(stats_scope = 'title-files' OR stats_scope = 'text-files')";
+				$sSql = "stats_scope LIKE ( '%files%' )";
 				break;
 			case 'all' :
-				$sSql = "(stats_scope = 'title' OR stats_scope = 'text' OR stats_scope = 'title-files' OR stats_scope = 'text-files')";
+				$sSql = "(1=1)";
 				break;
 			default :
 				$sSql = '';

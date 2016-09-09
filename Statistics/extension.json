@@ -18,6 +18,11 @@
 	"SpecialPages": {
 		"ExtendedStatistics": "SpecialExtendedStatistics"
 	},
+	"APIModules": {
+		"bs-statistics-search-options-store": "BSApiStatisticsSearchOptionsStore",
+		"bs-statistics-available-diagrams-store": "BSApiStatisticsAvailableDiagramsStore",
+		"bs-statistics-tasks": "BSApiStatisticsTasks"
+	},
 	"MessagesDirs": {
 		"Statistics": [
 			"i18n"
@@ -48,7 +53,10 @@
 		"StatsDataProvider": "includes/StatsDataProvider.class.php",
 		"Interval": "includes/Interval.class.php",
 		"BsCharting": "includes/Charting.class.php",
-		"SpecialExtendedStatistics": "includes/specials/SpecialExtendedStatistics.class.php"
+		"SpecialExtendedStatistics": "includes/specials/SpecialExtendedStatistics.class.php",
+		"BSApiStatisticsSearchOptionsStore": "includes/api/BSApiStatisticsSearchOptionsStore.php",
+		"BSApiStatisticsAvailableDiagramsStore": "includes/api/BSApiStatisticsAvailableDiagramsStore.php",
+		"BSApiStatisticsTasks": "includes/api/BSApiStatisticsTasks.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.statistics": {
@@ -87,6 +95,7 @@
 				"bs-statistics-portlet-numberofusers",
 				"bs-statistics-portlet-numberofedits",
 				"bs-statistics-portlet-numberofpages",
+				"bs-statistics-portlet-numberofarticles",
 				"bs-extjs-portal-timespan",
 				"bs-statistics-portletconfig-periodday",
 				"bs-statistics-week",
