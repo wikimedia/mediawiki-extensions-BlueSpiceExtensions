@@ -43,5 +43,6 @@
 	"bs-pagetemplates-confirm-deletetpl": "Är du säker på att du vill ta bort {{PLURAL:$1|denna mall|dessa mallar}}?",
 	"bs-pagetemplates-remove-message-unknown": "Ett oväntat fel uppstod, försök igen.",
 	"bs-pagetemplates-remove-message-success": "Följande {{PLURAL:$1|mall|mallar}} raderades: $2",
-	"bs-pagetemplates-remove-message-failure": "Följande {{PLURAL:$1|mall|mallar}} kunde inte raderas: $2 (Orsak: $3)"
+	"bs-pagetemplates-remove-message-failure": "Följande {{PLURAL:$1|mall|mallar}} kunde inte raderas: $2 (Orsak: $3)",
+	"action-pagetemplatesadmin-viewspecialpage": "visa specialsidan \"{{int:pagetemplatesadmin}}\""
 }

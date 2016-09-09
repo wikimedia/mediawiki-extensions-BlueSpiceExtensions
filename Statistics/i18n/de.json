@@ -53,8 +53,13 @@
 	"bs-statistics-portlet-numberofusers": "Anzahl der Benutzer",
 	"bs-statistics-portlet-numberofedits": "Anzahl der Bearbeitungen",
 	"bs-statistics-portlet-numberofpages": "Anzahl der Seiten",
+	"bs-statistics-portlet-numberofarticles": "Anzahl der Artikel",
 	"bs-statistics-portlet-numberofusersdesc": "Statistik der Anzahl der Benutzer.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statistik der Anzahl der Bearbeitungen.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistik der Anzahl der Seiten.",
-	"bs-statistics-portletconfig-periodday": "Gestern"
+	"bs-statistics-portlet-numberofarticlesdesc": "Statistik der Artikelanzahl.",
+	"bs-statistics-portletconfig-periodday": "Gestern",
+	"apihelp-bs-statistics-tasks-description": "Bietet allgemeine Aufgaben für Statistiken",
+	"apihelp-bs-statistics-available-diagrams-store-description": "Bietet einen Speicher mit verfügbaren Diagrammen",
+	"apihelp-bs-statistics-search-options-store-description": "Bietet einen Speicher mit verfügbaren Suchoptionen"
 }

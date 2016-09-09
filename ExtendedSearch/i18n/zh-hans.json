@@ -105,5 +105,7 @@
 	"bs-extendedsearch-fewer": "更少",
 	"bs-extendedsearch-facetsetting-op-and": "和",
 	"bs-extendedsearch-facetsetting-op-or": "或",
-	"action-extendedsearch-viewspecialpage": "查看特殊页面“{{int:specialextendedsearch}}”"
+	"action-extendedsearch-viewspecialpage": "查看特殊页面“{{int:specialextendedsearch}}”",
+	"action-extendedsearchadmin-viewspecialpage": "查看特殊页面“{{int:extendedsearchadmin}}”",
+	"extendedsearchadmin": "扩充的搜索管理"
 }

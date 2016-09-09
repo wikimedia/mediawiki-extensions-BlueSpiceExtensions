@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Josve05a"
+			"Josve05a",
+			"WikiPhoenix"
 		]
 	},
 	"bs-interwikilinks-desc": "Administrationsgränssnittet för att lägga till, redigera och ta bort interwikilänkar",
@@ -26,5 +27,6 @@
 	"bs-interwikilinks-insertlink-tabtitle": "Länka till en annan wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
 	"bs-interwikilink-select-a-prefix": "Välj prefix",
+	"action-interwikilinks-viewspecialpage": "visa specialsidan \"{{int:bs-interwikilinks-label}}\"",
 	"interwikilinks": "Interwiki-länkar"
 }

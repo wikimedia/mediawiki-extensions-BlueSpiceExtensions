@@ -55,5 +55,6 @@
 	"bs-flexiskin-api-error-invalid-action": "Denna handling finns inte.",
 	"bs-flexiskin-api-error-missing-param": "Följande parameter saknas: \"$1\"",
 	"bs-flexiskin-usebackground": "Använd bakgrundsbild",
-	"bs-flexiskin-labelcurrentbackground": "Aktuell bild"
+	"bs-flexiskin-labelcurrentbackground": "Aktuell bild",
+	"action-flexiskin-viewspecialpage": "visa specialsidan \"Flexiskin\""
 }

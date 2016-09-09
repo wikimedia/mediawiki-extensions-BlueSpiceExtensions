@@ -49,5 +49,7 @@
 	"bs-usermanager-titledisableuser": "Désactiver l’utilisateur",
 	"bs-usermanager-titleenableuser": "Activer l’utilisateur",
 	"usermanager": "Gestionnaire des utilisateurs",
-	"action-usermanager-viewspecialpage": "Voir la page spéciale « Gestion des utilisateurs »"
+	"action-usermanager-viewspecialpage": "Voir la page spéciale « Gestion des utilisateurs »",
+	"bs-usermanager-group-add-not-allowed": "Vous n'êtes pas autorisé à ajouter des utilisateurs au groupe $1",
+	"bs-usermanager-group-remove-not-allowed": "Vous n'êtes pas autorisé à supprimer des utilisateurs du groupe $1"
 }

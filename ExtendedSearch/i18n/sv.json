@@ -102,5 +102,6 @@
 	"bs-extendedsearch-more": "Mer",
 	"bs-extendedsearch-fewer": "Mindre",
 	"bs-extendedsearch-facetsetting-op-and": "OCH",
-	"bs-extendedsearch-facetsetting-op-or": "ELLER"
+	"bs-extendedsearch-facetsetting-op-or": "ELLER",
+	"action-extendedsearchadmin-viewspecialpage": "visa specialsidan \"{{int:extendedsearchadmin}}\""
 }

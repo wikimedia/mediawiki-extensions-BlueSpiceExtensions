@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Orikrin1998",
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"bs-statistics-desc": "Module de statistiques pour BlueSpice",
@@ -52,8 +53,13 @@
 	"bs-statistics-portlet-numberofusers": "Nombre d'utilisateurs",
 	"bs-statistics-portlet-numberofedits": "Nombre de modifications",
 	"bs-statistics-portlet-numberofpages": "Nombre de pages",
+	"bs-statistics-portlet-numberofarticles": "Nombre d’articles",
 	"bs-statistics-portlet-numberofusersdesc": "Statistique du nombre d'utilisateurs.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statistique du nombre de modifications.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistique du nombre de pages.",
-	"bs-statistics-portletconfig-periodday": "Hier"
+	"bs-statistics-portlet-numberofarticlesdesc": "Statistiques du nombre d'articles.",
+	"bs-statistics-portletconfig-periodday": "Hier",
+	"apihelp-bs-statistics-tasks-description": "Fournit les tâches courantes pour les statistiques",
+	"apihelp-bs-statistics-available-diagrams-store-description": "Fournit un magasin avec les diagrammes disponibles",
+	"apihelp-bs-statistics-search-options-store-description": "Fournit un magasin avec les options de recherche disponibles"
 }

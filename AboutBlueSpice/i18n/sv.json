@@ -8,5 +8,6 @@
 	"bs-aboutbluespice-about-bluespice": "Om BlueSpice",
 	"aboutbluespice": "Om BlueSpice",
 	"prefs-aboutbluespice": "Om BlueSpice",
-	"bs-aboutbluespice-show-menu-links": "Visa länken \"{{int:bs-aboutbluespice-about-bluespice}}\" längst upp och i huvudmenyn"
+	"bs-aboutbluespice-show-menu-links": "Visa länken \"{{int:bs-aboutbluespice-about-bluespice}}\" längst upp och i huvudmenyn",
+	"action-aboutbluespice-viewspecialpage": "visa specialsidan \"{{int:bs-aboutbluespice-about-bluespice}}\""
 }
