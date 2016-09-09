@@ -60,5 +60,7 @@
 	"prefs-pageassignments": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for page assignments section in preferences. \n{{Identical|Page Assignments}}",
 	"bs-pageassignments-pref-permissions": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for automatic assignment of rights to assigned users",
 	"bs-pageassignments-yourassignments": "Headline text for your assignments",
-	"bs-pageassignments-yourassignmentsdesc": "Description text for list of pages which you are assigned to."
+	"bs-pageassignments-yourassignmentsdesc": "Description text for list of pages which you are assigned to.",
+	"right-pageassignable": "Describes the permission that a user needs to have to be listed as assignable user",
+	"right-pageassignments": "Describes the permission that a user needs to change assignments of a page"
 }
