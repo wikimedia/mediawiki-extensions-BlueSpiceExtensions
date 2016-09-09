@@ -1,4 +1,10 @@
 #bs-nav-sections #n-aboutbluespice .icon24 {
 	/*@embed*/
 	background-image:url("about-24px.png");
+	float: left;
+	margin-right: 8px;
+}
+
+#bs-nav-sections #n-aboutbluespice .icon24::before {
+	content: "";
 }
