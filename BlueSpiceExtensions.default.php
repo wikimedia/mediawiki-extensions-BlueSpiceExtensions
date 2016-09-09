@@ -40,7 +40,7 @@ require_once( __DIR__."/UserPreferences/UserPreferences.setup.php" );
 require_once( __DIR__."/UserSidebar/UserSidebar.setup.php" );
 require_once( __DIR__."/WatchList/WatchList.setup.php" );
 require_once( __DIR__."/WhoIsOnline/WhoIsOnline.setup.php" );
-require_once( __DIR__."/WidgetBar/WidgetBar.setup.php" );
+#require_once( __DIR__."/WidgetBar/WidgetBar.setup.php" );
 require_once( __DIR__."/ShoutBox/ShoutBox.setup.php" );
 require_once( __DIR__."/VisualEditor/VisualEditor.setup.php" );
 require_once( __DIR__."/ExtendedEditBar/ExtendedEditBar.setup.php" );
