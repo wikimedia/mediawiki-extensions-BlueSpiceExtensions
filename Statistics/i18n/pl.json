@@ -38,8 +38,10 @@
 	"bs-statistics-portlet-numberofusers": "Liczba użytkowników",
 	"bs-statistics-portlet-numberofedits": "Liczba edycji",
 	"bs-statistics-portlet-numberofpages": "Liczba stron",
+	"bs-statistics-portlet-numberofarticles": "Liczba artykułów",
 	"bs-statistics-portlet-numberofusersdesc": "Statystyki liczby użytkowników.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statystyki liczby edycji.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statystyki liczby stron.",
+	"bs-statistics-portlet-numberofarticlesdesc": "Statystyka liczby artykułów.",
 	"bs-statistics-portletconfig-periodday": "Wczoraj"
 }

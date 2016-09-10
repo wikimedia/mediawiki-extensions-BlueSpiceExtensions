@@ -25,5 +25,7 @@
 	"bs-usermanager-labelpasswordcheck": "Potwierdź hasło",
 	"bs-usermanager-titledeleteuser": "Usuń użytkownika",
 	"bs-usermanager-groups-more": "... więcej",
-	"bs-usermanager-no-self-desysop": "Nie możesz odebrać sobie uprawnień administratora."
+	"bs-usermanager-no-self-desysop": "Nie możesz odebrać sobie uprawnień administratora.",
+	"bs-usermanager-group-add-not-allowed": "Nie możesz dodawać użytkowników do grupy $1",
+	"bs-usermanager-group-remove-not-allowed": "Nie możesz usuwać użytkowników z grupy $1"
 }

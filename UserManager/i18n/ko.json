@@ -38,5 +38,6 @@
 	"bs-usermanager-confirmdisableuser": "$1 {{GENDER:$1|사용자}}를 비활성화하시겠습니까?",
 	"bs-usermanager-confirmenableuser": "$1 {{GENDER:$1|사용자}}를 활성화하시겠습니까?",
 	"bs-usermanager-titledisableuser": "사용자 비활성화",
-	"bs-usermanager-titleenableuser": "사용자 활성화"
+	"bs-usermanager-titleenableuser": "사용자 활성화",
+	"usermanager": "사용자 관리자"
 }

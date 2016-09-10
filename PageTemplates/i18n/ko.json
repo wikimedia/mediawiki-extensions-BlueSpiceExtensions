@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ykhwong"
 		]
 	},
 	"bs-pagetemplates-headertargetnamespace": "이름공간",
@@ -11,5 +12,6 @@
 	"bs-pagetemplates-label-tpl": "틀 이름",
 	"bs-pagetemplates-label-desc": "설명",
 	"bs-pagetemplates-label-targetns": "이름공간",
-	"bs-pagetemplates-label-article": "틀"
+	"bs-pagetemplates-label-article": "틀",
+	"pagetemplatesadmin": "문서 틀 관리"
 }

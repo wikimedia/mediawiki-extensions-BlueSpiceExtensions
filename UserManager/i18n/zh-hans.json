@@ -45,5 +45,7 @@
 	"bs-usermanager-titledisableuser": "禁用用户",
 	"bs-usermanager-titleenableuser": "启用用户",
 	"usermanager": "用户管理",
-	"action-usermanager-viewspecialpage": "查看特殊页面“用户管理”"
+	"action-usermanager-viewspecialpage": "查看特殊页面“用户管理”",
+	"bs-usermanager-group-add-not-allowed": "您不被允许添加用户至用户组$1",
+	"bs-usermanager-group-remove-not-allowed": "您不被允许从用户组$1中移除用户"
 }

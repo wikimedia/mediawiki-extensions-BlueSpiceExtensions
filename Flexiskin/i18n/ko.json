@@ -31,5 +31,6 @@
 	"apihelp-bs-flexiskin-tasks-description": "flexiskin을 조작할 수 있게 합니다",
 	"apihelp-bs-flexiskin-store-description": "사용 가능한 flexiskin을 나열합니다",
 	"apihelp-bs-flexiskin-upload-description": "파일을 flexiskin에 올릴 수 있게 합니다",
-	"apihelp-bs-flexiskin-upload-store-description": "flexiskin의 올린 파일을 나열합니다"
+	"apihelp-bs-flexiskin-upload-store-description": "flexiskin의 올린 파일을 나열합니다",
+	"flexiskin": "스킨 환경 설정"
 }

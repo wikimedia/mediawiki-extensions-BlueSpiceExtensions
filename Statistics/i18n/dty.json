@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nirajan pant"
+		]
+	},
+	"bs-statistics-portlet-numberofarticles": "लेखअन ओ सङ्ख्या",
+	"bs-statistics-portlet-numberofarticlesdesc": "लेख संख्याऽ तथ्याङ्क।",
+	"apihelp-bs-statistics-tasks-description": "तथ्याङ्क खिलाइ साधारण कामकाज प्रदान अरन्छ़",
+	"apihelp-bs-statistics-search-options-store-description": "उपलब्ध खोज विकल्पअन आ सङ्ङै यक भँणार दिन्छ"
+}

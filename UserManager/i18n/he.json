@@ -5,5 +5,7 @@
 		]
 	},
 	"bs-usermanager-desc": "ממשק ניהול עבור הוספה, עריכה ומחיקה של משתמשים",
-	"bs-usermanager-no-self-desysop": "אין באפשרותך להסיר את הרשאות מפעיל המערכת של עצמך."
+	"bs-usermanager-no-self-desysop": "אין באפשרותך להסיר את הרשאות מפעיל המערכת של עצמך.",
+	"bs-usermanager-group-add-not-allowed": "אין באפשרותך להוסיף משתמשים לקבוצה $1",
+	"bs-usermanager-group-remove-not-allowed": "אין באפשרותך להסיר משתמשים מהקבוצה $1"
 }

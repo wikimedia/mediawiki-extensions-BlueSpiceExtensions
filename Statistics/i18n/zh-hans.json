@@ -51,8 +51,13 @@
 	"bs-statistics-portlet-numberofusers": "用户人数",
 	"bs-statistics-portlet-numberofedits": "编辑数",
 	"bs-statistics-portlet-numberofpages": "页面数",
+	"bs-statistics-portlet-numberofarticles": "条目数",
 	"bs-statistics-portlet-numberofusersdesc": "用户数统计。",
 	"bs-statistics-portlet-numberofeditsdesc": "编辑数统计。",
 	"bs-statistics-portlet-numberofpagesdesc": "页面数统计。",
-	"bs-statistics-portletconfig-periodday": "昨天"
+	"bs-statistics-portlet-numberofarticlesdesc": "条目数统计。",
+	"bs-statistics-portletconfig-periodday": "昨天",
+	"apihelp-bs-statistics-tasks-description": "为统计提供一般任务",
+	"apihelp-bs-statistics-available-diagrams-store-description": "提供带可用图表的存储",
+	"apihelp-bs-statistics-search-options-store-description": "提供带可用搜索选项的存储"
 }

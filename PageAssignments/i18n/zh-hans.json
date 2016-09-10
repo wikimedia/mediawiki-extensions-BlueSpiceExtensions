@@ -58,5 +58,7 @@
 	"prefs-pageassignments": "页面分配",
 	"bs-pageassignments-pref-permissions": "添加额外权限至被分配的用户",
 	"bs-pageassignments-yourassignments": "您的分配",
-	"bs-pageassignments-yourassignmentsdesc": "分配给您的页面列表。"
+	"bs-pageassignments-yourassignmentsdesc": "分配给您的页面列表。",
+	"right-pageassignable": "出现在可分配用户的列表中",
+	"right-pageassignments": "编辑页面分配"
 }

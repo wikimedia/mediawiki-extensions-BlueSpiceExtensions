@@ -4,7 +4,8 @@
 			"Hwangjy9",
 			"밥풀떼기",
 			"SeoJeongHo",
-			"아라"
+			"아라",
+			"Ykhwong"
 		]
 	},
 	"bs-namespacemanager-label": "이름공간 관리자",
@@ -25,5 +26,6 @@
 	"logentry-bs-namespace-manager-create": "$1님이 $4 이름공간을 {{GENDER:$2|만들었습니다}}",
 	"logentry-bs-namespace-manager-modify": "$1님이 $4 이름공간의 설정을 {{GENDER:$2|바꾸었습니다}}",
 	"logentry-bs-namespace-manager-rename": "$1님이 $4 이름공간을 $5(으)로 {{GENDER:$2|바꾸었습니다}}",
-	"logentry-bs-namespace-manager-remove": "$1님이 $4 이름공간을 {{GENDER:$2|제거했습니다}}"
+	"logentry-bs-namespace-manager-remove": "$1님이 $4 이름공간을 {{GENDER:$2|제거했습니다}}",
+	"namespacemanager": "이름공간 관리자"
 }

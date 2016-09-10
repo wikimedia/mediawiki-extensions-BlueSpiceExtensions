@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hwangjy9",
-			"Yearning"
+			"Yearning",
+			"Ykhwong"
 		]
 	},
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|분류}}: $2",
@@ -20,5 +21,6 @@
 	"bs-extendedsearchadmin-label": "검색 설정",
 	"bs-extendedsearch-status": "상태",
 	"bs-extendedsearch-unknown": "알 수 없음",
-	"bs-extendedsearch-more": "더 보기"
+	"bs-extendedsearch-more": "더 보기",
+	"extendedsearchadmin": "확장된 검색 관리"
 }

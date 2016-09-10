@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Csega"
+			"Csega",
+			"R-Joe"
 		]
 	},
 	"bs-statistics-mode": "Mód",
@@ -17,5 +18,7 @@
 	"bs-statistics-label-count": "Számláló",
 	"bs-statistics-label-time": "Idő",
 	"bs-statistics-filter-category": "Kategória",
+	"bs-statistics-portlet-numberofarticles": "Cikkek száma",
+	"bs-statistics-portlet-numberofarticlesdesc": "Cikkek számának statisztikája.",
 	"bs-statistics-portletconfig-periodday": "Tegnap"
 }
