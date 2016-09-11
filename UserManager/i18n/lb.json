@@ -38,5 +38,6 @@
 	"bs-usermanager-confirmdisableuser": "Wëllt Dir {{GENDER:$1|de Benotzer}} $1 wierklech desaktivéieren?",
 	"bs-usermanager-confirmenableuser": "Wëllt Dir {{GENDER:$1|de Benotzer}} $1 wierklech aktivéieren?",
 	"bs-usermanager-titledisableuser": "Benotzer desaktivéieren",
-	"bs-usermanager-titleenableuser": "Benotzer aktivéieren"
+	"bs-usermanager-titleenableuser": "Benotzer aktivéieren",
+	"bs-usermanager-group-add-not-allowed": "Dir däerft keng Benotzer an de Grupp $1 derbäisetzen"
 }

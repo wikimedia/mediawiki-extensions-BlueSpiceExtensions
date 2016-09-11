@@ -48,8 +48,10 @@
 	"bs-statistics-portlet-numberofusers": "Zuel vun de Benotzer",
 	"bs-statistics-portlet-numberofedits": "Zuel vun den Ännerungen",
 	"bs-statistics-portlet-numberofpages": "Zuel vun de Säiten",
+	"bs-statistics-portlet-numberofarticles": "Zuel vun den Artikelen",
 	"bs-statistics-portlet-numberofusersdesc": "Statistik vun der Zuel vu Benotzer.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statistik vun der Zuel vun Ännerungen.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistik vun der Zuel vu Säiten.",
+	"bs-statistics-portlet-numberofarticlesdesc": "Statistik vun der Zuel vun Artikelen.",
 	"bs-statistics-portletconfig-periodday": "Gëschter"
 }
