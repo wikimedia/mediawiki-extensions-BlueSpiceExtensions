@@ -3,6 +3,7 @@
 .*.swp
 Thumbs.db
 BlueSpiceExtensions.local.php
+./BlueSpiceExtensions.local.php
 
 /node_modules/
 /vendor/
