@@ -6,7 +6,7 @@
 		]
 	},
 	"bs-preferences-desc": "Offre la possibilité aux administrateurs de configurer l’ensemble du wiki depuis une unique page spéciale",
-	"bs-preferences-label": "Préférences",
+	"bs-bluespicepreferences-label": "Préférences",
 	"action-bluespicepreferences-viewspecialpage": "voir la page spéciale \"{{int:bluespicepreferences}}\"",
 	"bluespicepreferences": "Préférences Bluespice"
 }

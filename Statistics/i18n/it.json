@@ -37,5 +37,6 @@
 	"bs-statistics-portlet-numberofusersdesc": "Statistica del numero di utenti.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statistica del numero di modifiche.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistica del numero di pagine.",
+	"bs-statistics-portlet-numberofarticlesdesc": "Statistica del numero di voci.",
 	"bs-statistics-portletconfig-periodday": "Ieri"
 }

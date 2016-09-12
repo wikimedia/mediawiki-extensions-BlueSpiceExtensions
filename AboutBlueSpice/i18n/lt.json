@@ -8,5 +8,6 @@
 	"bs-aboutbluespice-about-bluespice": "Apie BlueSpice",
 	"aboutbluespice": "Apie BlueSpice",
 	"prefs-aboutbluespice": "Apie BlueSpice",
-	"bs-aboutbluespice-show-menu-links": "Rodyti nuorodą „{{int:bs-aboutbluespice-about-bluespice}}“ viršuje ir pagrindiniame meniu"
+	"bs-aboutbluespice-show-menu-links": "Rodyti nuorodą „{{int:bs-aboutbluespice-about-bluespice}}“ viršuje ir pagrindiniame meniu",
+	"action-aboutbluespice-viewspecialpage": "žiūrėti specialų puslapį „{{int:bs-aboutbluespice-about-bluespice}}“"
 }

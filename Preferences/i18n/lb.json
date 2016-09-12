@@ -4,7 +4,7 @@
 			"Robby"
 		]
 	},
-	"bs-preferences-label": "Astellungen",
+	"bs-bluespicepreferences-label": "Astellungen",
 	"action-bluespicepreferences-viewspecialpage": "d'Spezialsäit \"{{int:bluespicepreferences}}\" weisen",
 	"bluespicepreferences": "BlueSpice-Astellungen"
 }

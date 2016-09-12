@@ -86,5 +86,7 @@
 	"bs-extendedsearch-fewer": "Mažiau",
 	"bs-extendedsearch-facetsetting-op-and": "IR",
 	"bs-extendedsearch-facetsetting-op-or": "ARBA",
-	"action-extendedsearch-viewspecialpage": "žiūrėti specialų puslapį „{{int:specialextendedsearch}}“"
+	"action-extendedsearch-viewspecialpage": "žiūrėti specialų puslapį „{{int:specialextendedsearch}}“",
+	"action-extendedsearchadmin-viewspecialpage": "žiūrėti specialų puslapį „{{int:extendedsearchadmin}}“",
+	"extendedsearchadmin": "Išplėstinės paieškos administracija"
 }

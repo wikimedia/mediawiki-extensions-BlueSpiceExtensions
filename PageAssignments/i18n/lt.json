@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zygimantus"
+			"Zygimantus",
+			"Eitvys200"
 		]
 	},
 	"pageassignments": "Užduotys",
@@ -12,5 +13,8 @@
 	"bs-pageassignments-directly-assigned": "tiesiogiai",
 	"notification-bs-pageassignments-page-edit-subject": "$2 buvo redaguotas",
 	"prefs-pageassignments": "Puslapio užduotys",
-	"bs-pageassignments-yourassignments": "Jūsų užduotys"
+	"bs-pageassignments-pref-permissions": "Pridėti papildomus leidimus priskirtiems vartotojams",
+	"bs-pageassignments-yourassignments": "Jūsų užduotys",
+	"bs-pageassignments-yourassignmentsdesc": "Puslapių, prie kurių esate priskirtas, sąrašas.",
+	"right-pageassignments": "Redaguoti puslapio užduotis"
 }

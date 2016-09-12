@@ -5,5 +5,6 @@
 		]
 	},
 	"bs-usagetracker-col-identifier": "Identyfikator",
-	"bs-usagetracker-col-desc": "Opis"
+	"bs-usagetracker-col-desc": "Opis",
+	"bs-usagetracker-col-last-updated": "Ostatnia aktualizacja"
 }

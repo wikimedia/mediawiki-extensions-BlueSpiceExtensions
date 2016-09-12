@@ -1,17 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Mansil"
 		]
 	},
 	"bs-usagetracker-desc": "Contém dados estatísticos sobre o uso da extensão",
-	"prefs-usagetracker": "Estatísticas de uso",
-	"usagetracker": "Estatísticas de uso",
+	"prefs-usagetracker": "Monitorizador de Utilização",
+	"usagetracker": "Monitorizador de Estatísticas",
 	"bs-usagetracker-startjobs": "Atualizar agora",
 	"bs-usagetracker-create-statistics": "Atualizar estatísticas de uso",
 	"bs-usagetracker-col-identifier": "Identificador",
 	"bs-usagetracker-col-desc": "Descrição",
 	"bs-usagetracker-col-count": "Contagem",
 	"bs-usagetracker-col-last-updated": "Ultima atualização",
-	"bs-usagetracker-base-collector-desc": "Número de páginas que usam $1"
+	"bs-usagetracker-base-collector-desc": "Número de páginas que utilizam $1"
 }

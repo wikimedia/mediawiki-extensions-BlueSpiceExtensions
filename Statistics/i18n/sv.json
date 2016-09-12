@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-statistics-desc": "Statistikmodul för BlueSpice",
@@ -51,6 +52,7 @@
 	"bs-statistics-portlet-numberofusers": "Antal användare",
 	"bs-statistics-portlet-numberofedits": "Antal redigeringar",
 	"bs-statistics-portlet-numberofpages": "Antal sidor",
+	"bs-statistics-portlet-numberofarticles": "Antal artiklar",
 	"bs-statistics-portlet-numberofusersdesc": "Statistik för antalet användare.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statistik för antalet redigeringar.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistik för antalet sidor.",

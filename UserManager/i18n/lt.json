@@ -31,8 +31,18 @@
 	"bs-usermanager-confirmdeleteuser": "Ar tikrai norite ištrinti {{PLURAL:$1|šį vartotoją|šiuos vartotojus}}?",
 	"bs-usermanager-groups-more": "... daugiau",
 	"bs-usermanager-no-self-desysop": "Jūs negalite atimti savo paties sysop teisės.",
+	"bs-usermanager-no-self-block": "Negali išjungti savęs.",
+	"bs-usermanager-block-error": "Nepavyko išjungti {{GENDER:$1|vartotojo|vartotojos}} $1.",
+	"bs-usermanager-unblock-error": "{{GENDER:$1|Vartotojas $1 negali būti įjungtas|Vartotoja $1 negali būti įjungta}}",
 	"bs-usermanager-headerenabled": "Įjungta",
+	"bs-usermanager-user-disabled": "{{GENDER:$1|Vartotojas $1 buvo išjungtas|Vartotoja $1 buvo išjungta}}",
+	"bs-usermanager-user-enabled": "{{GENDER:$1|Vartotojas $1 buvo įjungtas|Vartotoja $1 buvo įjungta}}.",
 	"bs-usermanager-endisable": "Įjungti/išjungti",
+	"bs-usermanager-confirmdisableuser": "Ar tikrai norite išjungti {{GENDER:$1|vartotoją}} $1?",
+	"bs-usermanager-confirmenableuser": "Ar tikrai norite įjungti {{GENDER:$1|vartotoją}} $1?",
 	"bs-usermanager-titledisableuser": "Išjungti vartotoją",
-	"bs-usermanager-titleenableuser": "Įgalinti vartotoją"
+	"bs-usermanager-titleenableuser": "Įgalinti vartotoją",
+	"usermanager": "Vartotojo valdymas",
+	"bs-usermanager-group-add-not-allowed": "Jūs negalite pridėti vartotojų į grupę $1",
+	"bs-usermanager-group-remove-not-allowed": "Jūs negalite pašalinti vartotojų iš grupės $1"
 }
