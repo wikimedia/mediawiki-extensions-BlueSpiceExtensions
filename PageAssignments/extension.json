@@ -158,7 +158,11 @@
 		"LoadExtensionSchemaUpdates": "PageAssignmentsHooks::onLoadExtensionSchemaUpdates",
 		"PersonalUrls": "PageAssignmentsHooks::onPersonalUrls",
 		"SkinTemplateNavigation": "PageAssignmentsHooks::onSkinTemplateNavigation",
-		"BeforePageDisplay": "PageAssignmentsHooks::onBeforePageDisplay",
+		"BeforePageDisplay": [
+			"PageAssignmentsWikiExplorerHooks::onBeforePageDisplay",
+			"PageAssignmentsDashboardHooks::onBeforePageDisplay",
+			"PageAssignmentsHooks::onBeforePageDisplay"
+		],
 		"TitleMoveComplete": [
 			"PageAssignmentsHooks::onTitleMoveComplete",
 			"PageAssignmentsNotificationHooks::onTitleMoveComplete"
@@ -184,10 +188,8 @@
 		"WikiExplorer::getColumnDefinitions": "PageAssignmentsWikiExplorerHooks::onWikiExplorerGetColumnDefinitions",
 		"WikiExplorer::queryPagesWithFilter": "PageAssignmentsWikiExplorerHooks::onWikiExplorerQueryPagesWithFilter",
 		"WikiExplorer::buildDataSets": "PageAssignmentsWikiExplorerHooks::onWikiExplorerBuildDataSets",
-		"BeforePageDisplay": "PageAssignmentsWikiExplorerHooks::onBeforePageDisplay",
 		"BSDashboardsUserDashboardPortalConfig": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalConfig",
-		"BSDashboardsUserDashboardPortalPortlets": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalPortlets",
-		"BeforePageDisplay": "PageAssignmentsDashboardHooks::onBeforePageDisplay"
+		"BSDashboardsUserDashboardPortalPortlets": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalPortlets"
 	},
 	"manifest_version": 1
 }
