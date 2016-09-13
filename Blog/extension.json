@@ -34,7 +34,7 @@
 	},
 	"ResourceModules": {
 		"ext.bluespice.blog": {
-			"styles": "bluespice.blog.css"
+			"styles": "bluespice.blog.less"
 		}
 	},
 	"ResourceFileModulePaths": {
