@@ -1,0 +1,69 @@
+/**
+ * Stylesheet for Blog
+ *
+ * Part of BlueSpice for MediaWiki
+ *
+ * @author     Markus Glaser <glaser@hallowelt.com>
+
+ * @package    BlueSpice_Extensions
+ * @subpackage Blog
+ * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+ * @filesource
+ */
+
+#bodyContent .nosec a[href^="https://"],
+.nosec .link-https {
+	background: none;
+	padding-right: 0px;
+}
+
+#bs-blog-newentryform {
+	background-color: #F3F3F3;
+	border: 2px solid #DDDDDD;
+}
+
+.bs-blog-newentry-input {
+	width: 67%;
+	padding: 0.5em;
+	border-style: solid;
+	border-color: @bs-color-primary;
+
+	&:focus {
+		border-color: @bs-color-secondary;
+	}
+}
+
+.bs-blog-newentry-submit {
+	padding: 0.5em;
+}
+
+div.bs-blog-item {
+	clear: both;
+}
+
+.bs-blog-item-info {
+	margin: 5px 0 5px 0;
+	font-size: 80%;
+	color: #999;
+}
+
+body.mediawiki #content h2.bs-blog-header {
+	font-weight: bold;
+	border: none;
+	margin: 0 0 0.5em 0;
+	color: #999;
+}
+
+.bs-blog-wrapper {
+	padding: 1em;
+	background-color: #eee;
+}
+.bs-blog-form-center {
+	float: none;
+}
+
+.bs-blog-item-actions {
+	font-size: 80%;
+	padding: 0.5em;
+}

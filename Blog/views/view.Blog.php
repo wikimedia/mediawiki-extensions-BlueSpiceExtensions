@@ -51,7 +51,7 @@ class ViewBlog extends ViewBaseElement {
 
 	/**
 	 * Renders a link that points to a complete list of blog entries
-	 * @return string HTML of link. 
+	 * @return string HTML of link.
 	 */
 	public function renderShowAll() {
 		if ( !$this->getOption( 'showall' ) )
@@ -69,7 +69,7 @@ class ViewBlog extends ViewBaseElement {
 
 	/**
 	 * Renders a form field that allows to create a new blog entry.
-	 * @return string HTML of form. 
+	 * @return string HTML of form.
 	 */
 	public function renderShowNewEntryField() {
 		global $wgScriptPath, $wgUser;
@@ -95,7 +95,7 @@ class ViewBlog extends ViewBaseElement {
 		$aOut[] = '  <form action="#" id="'.$sId.'form" action="get" onsubmit="hw_'.$sId.'_submit();return false;">';
 		$aOut[] = '    <div class="bs-blog-form-center">';
 		$aOut[] = '      <h2 class="bs-blog-header">'.wfMessage( 'bs-blog-form-title-text' )->plain().'</h2>';
-		$aOut[] = '      <input id="'.$sId.'Input" class="bs-blog-newentry-input" name="newpage" type="text" value="'.wfMessage( 'bs-blog-form-inline-text' )->plain().'" onfocus="if (this.value==\''.wfMessage( 'bs-blog-form-inline-text' )->plain().'\') this.value=\'\';" />';
+		$aOut[] = '      <input id="'.$sId.'Input" class="bs-blog-newentry-input" name="newpage" type="text" placeholder="'.wfMessage( 'bs-blog-form-inline-text' )->plain().'" />';
 		$aOut[] = '      <input type="hidden" name="blogcat" value="'.$this->getOption('blogcat').'" />';
 		$aOut[] = '      <input type="submit" name="go" class="bs-blog-newentry-submit" id="'.$sId.'Button" value="'.wfMessage( 'bs-blog-form-button-text' )->plain().'" onclick="hw_'.$sId.'_submit(); return false;"/>&nbsp;';
 		$aOut[] = '    </div>';
