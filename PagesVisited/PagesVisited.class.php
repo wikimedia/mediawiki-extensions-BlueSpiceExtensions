@@ -43,7 +43,7 @@ class PagesVisited extends BsExtensionMW {
 	 * @var array
 	 */
 	private static $prResultListViewCache = array();
-        /**
+	/**
 	 * Initialization of PagesVisited extension
 	 */
 	protected function initExt() {
@@ -52,6 +52,7 @@ class PagesVisited extends BsExtensionMW {
 		$this->setHook( 'BSUserSidebarDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		BsConfig::registerVar( 'MW::PagesVisited::WidgetLimit', 10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-pagesvisited-pref-widgetlimit', 'int' );
 		BsConfig::registerVar( 'MW::PagesVisited::WidgetNS', array( 0 ), BsConfig::LEVEL_USER|BsConfig::TYPE_ARRAY_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-pagesvisited-pref-widgetns', 'multiselectex' );
@@ -145,6 +146,8 @@ class PagesVisited extends BsExtensionMW {
 	 */
 	public function onPagesVisitedTag( $sInput, $aAttributes, $oParser ) {
 		$oParser->disableCache();
+		$oParser->getOutput()->setProperty( 'bs-tag-pagesvisited', 1 );
+
 		$oErrorListView = new ViewTagErrorList( $this );
 
 		$iCount = BsCore::sanitizeArrayEntry( $aAttributes, 'count', 5, BsPARAMTYPE::INT );
@@ -359,4 +362,18 @@ class PagesVisited extends BsExtensionMW {
 		return $oVisitedPagesListView;
 	}
 
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:pagesvisited'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-pagesvisited'
+			)
+		);
+		return true;
+	}
 }

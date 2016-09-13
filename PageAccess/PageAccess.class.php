@@ -44,6 +44,7 @@ class PageAccess extends BsExtensionMW {
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'userCan' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		$this->mCore->registerPermission( 'pageaccess-viewspecialpage', array('user'), array( 'type' => 'global' ) );
 
@@ -176,6 +177,7 @@ class PageAccess extends BsExtensionMW {
 		if( $parser->getTitle()->equals( Title::newMainPage() ) === true ) return '';
 
 		$parser->disableCache();
+		$parser->getOutput()->setProperty( 'bs-tag-pageaccess', 1 );
 
 		if ( !isset( $args['groups'] ) ) {
 			$oErrorView = new ViewTagError( wfMessage( 'bs-pageaccess-error-no-groups-given' )->escaped() );
@@ -205,6 +207,21 @@ class PageAccess extends BsExtensionMW {
 			'helplink' => 'https://help.bluespice.com/index.php/PageAccess'
 		);
 
+		return true;
+	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:pageaccess'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-pageaccess'
+			)
+		);
 		return true;
 	}
 }

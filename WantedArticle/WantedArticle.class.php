@@ -53,6 +53,7 @@ class WantedArticle extends BsExtensionMW {
 		$this->setHook( 'BSExtendedSearchAutocomplete' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		$this->mCore->registerPermission( 'wantedarticle-suggest', array(), array( 'type' => 'namespace' ) );
 
@@ -119,7 +120,6 @@ class WantedArticle extends BsExtensionMW {
 		$oParser->setHook( 'bs:wantedarticle', array( $this, 'onWantedArticlesTag' ) );
 		$oParser->setHook( 'bs:wantedarticles', array( $this, 'onWantedArticlesTag' ) );
 		$oParser->setHook( 'bs:wishlist', array( $this, 'onWantedArticlesTag' ) );
-
 		$oParser->setHook( 'bs:wantedarticleform', array( $this, 'onWantedArticleFormTag' ) );
 		return true;
 	}
@@ -344,6 +344,8 @@ class WantedArticle extends BsExtensionMW {
 	 * @return string The rendered <bs:wantedarticles /> tag
 	 */
 	public function onWantedArticleFormTag( $sInput, $aAttributes, $oParser ) {
+		$oParser->getOutput()->setProperty( 'bs-tag-wantedarticleform', 1 );
+
 		$oFormView = new ViewWantedArticleForm();
 		$oFormView->setFormVariant( 'tag-form' );
 		$oFormView->setShowCreateArticle( false );
@@ -359,6 +361,8 @@ class WantedArticle extends BsExtensionMW {
 	 */
 	public function onWantedArticlesTag( $sInput, $aAttributes, $oParser ) {
 		$oParser->disableCache();
+		$oParser->getOutput()->setProperty( 'bs-tag-wantedarticles', 1 );
+
 		$oErrorListView = new ViewTagErrorList( $this );
 
 		$sDefaultTitle = wfMessage( 'bs-wantedarticle-tag-default-title' )->plain();
@@ -534,5 +538,26 @@ class WantedArticle extends BsExtensionMW {
 		}
 
 		return $aTitleList;
+	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:wantedarticleform'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-wantedarticleform'
+			)
+		);
+		$aCollectorsConfig['bs:wantedarticles'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-wantedarticles'
+			)
+		);
+		return true;
 	}
 }

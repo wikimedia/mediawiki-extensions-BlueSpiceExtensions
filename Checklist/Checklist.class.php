@@ -52,6 +52,7 @@ class Checklist extends BsExtensionMW {
 		$this->setHook( 'VisualEditorConfig' );
 		$this->mCore->registerPermission( 'checklistmodify', array( 'user' ) );
 		wfProfileOut( 'BS::'.__METHOD__ );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 	}
 
 	/**
@@ -164,7 +165,7 @@ class Checklist extends BsExtensionMW {
 
 	public function onMagicWordBsChecklist( $input, $args, $parser ) {
 		$parser->disableCache();
-
+		$parser->getOutput()->setProperty( 'bs-tag-checklist', 1 );
 		$this->bCheckboxFound = true;
 		$sOut = array();
 
@@ -241,4 +242,17 @@ class Checklist extends BsExtensionMW {
 		return true;
 	}
 
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:checklist'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-checklist'
+			)
+		);
+	}
 }
