@@ -276,6 +276,7 @@ class WhoIsOnline extends BsExtensionMW {
 	public function onUsersCount( $oParser ) {
 		wfProfileIn( 'BS::'.__METHOD__ );
 
+		$oParser ->getOutput()->setProperty( 'bs-tag-userscount', 1 );
 		$sOut = '<span class="bs-whoisonline-count">'.count( $this->getWhoIsOnline() ).'</span>';
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -300,8 +301,10 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @param string $sLinkTitle Label of the link that is the anchor of the flyout
 	 * @return array Rendered HTML and flags. Used by magic word function hook as well as by onUsersLinkTag.
 	 */
-	public function onUsersLink( $oParser, $sLinkTitle = '') {
+	public function onUsersLink( $oParser, $sLinkTitle = '' ) {
 		$oParser->disableCache();
+		$oParser ->getOutput()->setProperty( 'bs-tag-userslink', 1 );
+
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$sLinkTitle = BsCore::sanitize( $sLinkTitle, '', BsPARAMTYPE::STRING );
 
@@ -502,4 +505,24 @@ class WhoIsOnline extends BsExtensionMW {
 		return true;
 	}
 
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:whoisonline:count'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-userscount'
+			)
+		);
+		$aCollectorsConfig['bs:whoisonline:popup'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-userslink'
+			)
+		);
+		return true;
+	}
 }

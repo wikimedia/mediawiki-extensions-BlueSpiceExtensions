@@ -68,6 +68,7 @@ class Statistics extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
 		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		BsConfig::registerVar( 'MW::Statistics::ExcludeUsers', array( 'WikiSysop' ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_STRING, 'bs-statistics-pref-excludeusers', 'multiselectplusadd' );
 		BsConfig::registerVar( 'MW::Statistics::MaxNumberOfIntervals', 366, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_INT, 'bs-statistics-pref-maxnumberofintervals', 'int' );
@@ -210,6 +211,8 @@ class Statistics extends BsExtensionMW {
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function onTagProgress( $input, $args, $parser ) {
+		$parser->getOutput()->setProperty( 'bs-tag-statistics-progress', 1 );
+
 		$iBaseCount = BsCore::sanitizeArrayEntry( $args, 'basecount'     , 100  , BsPARAMTYPE::INT );
 		$sBaseItem  = BsCore::sanitizeArrayEntry( $args, 'baseitem'      , '' , BsPARAMTYPE::STRING );
 		$sFraction  = BsCore::sanitizeArrayEntry( $args, 'progressitem'  , 'OK' , BsPARAMTYPE::STRING );
@@ -404,6 +407,21 @@ class Statistics extends BsExtensionMW {
 			'attr' => array(),
 			'position' => 700,
 			'permissions' => array( 'read' ),
+		);
+		return true;
+	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:statistics:progress'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-statistics-progress'
+			)
 		);
 		return true;
 	}

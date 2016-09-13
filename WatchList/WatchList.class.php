@@ -46,6 +46,7 @@ class WatchList extends BsExtensionMW {
 		$this->setHook( 'BSUserSidebarDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		BsConfig::registerVar( 'MW::WatchList::WidgetLimit', 10, BsConfig::LEVEL_USER|BsConfig::TYPE_INT, 'bs-watchlist-pref-widgetlimit', 'int' );
 		BsConfig::registerVar( 'MW::WatchList::WidgetSortOdr', 'time', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-watchlist-pref-widgetsortodr', 'select' );
@@ -101,6 +102,8 @@ class WatchList extends BsExtensionMW {
 	 * @return string Rendered HTML.
 	 */
 	public function onWatchlistTag( $sInput, $aAttributes, $oParser ) {
+		$oParser ->getOutput()->setProperty( 'bs-tag-watchlist', 1 );
+
 		//Get arguments
 		$iCount          = BsCore::sanitizeArrayEntry( $aAttributes, 'count',          5,          BsPARAMTYPE::INT        );
 		$iMaxTitleLength = BsCore::sanitizeArrayEntry( $aAttributes, 'maxtitlelength', 20,         BsPARAMTYPE::INT        );
@@ -252,6 +255,21 @@ class WatchList extends BsExtensionMW {
 	 */
 	public function onBSUserSidebarDefaultWidgets( &$aViews, $oUser, $oTitle ) {
 		$aViews['WATCHLIST'] = $this->onWidgetListKeyword();
+		return true;
+	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:watchlist'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-watchlist'
+			)
+		);
 		return true;
 	}
 }

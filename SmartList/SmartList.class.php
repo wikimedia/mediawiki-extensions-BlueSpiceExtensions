@@ -55,6 +55,7 @@ class SmartList extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsUserDashboardPortalPortlets' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		BsConfig::registerVar( 'MW::SmartList::Count', 5, BsConfig::LEVEL_USER | BsConfig::TYPE_INT, 'bs-smartlist-pref-count', 'int');
 		BsConfig::registerVar( 'MW::SmartList::Namespaces', array(), BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-smartlist-pref-namespaces', 'multiselectex');
@@ -549,6 +550,8 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onTagSmartList( $sInput, $aArgs, $oParser ) {
 		$oParser->disableCache();
+		$oParser->getOutput()->setProperty( 'bs-tag-smartlist', 1 );
+
 		foreach( $aArgs as $sArg => $sVal ) {
 			//Allow Magic Words (Variables) and Parser Functions as arguments
 			$aArgs[$sArg] = $oParser->recursivePreprocess( $sVal );
@@ -1392,4 +1395,18 @@ class SmartList extends BsExtensionMW {
 		return $aNamespaceDiff;
 	}
 
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:smartlist'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-smartlist'
+			)
+		);
+		return true;
+	}
 }
