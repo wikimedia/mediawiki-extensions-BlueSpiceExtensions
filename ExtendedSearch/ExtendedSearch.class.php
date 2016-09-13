@@ -51,7 +51,8 @@ class ExtendedSearch extends BsExtensionMW {
                 WikiAdmin::registerModuleClass( 'ExtendedSearchAdmin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_suche_v1.png',
 			'level' => 'wikiadmin',
-			'message' => 'bs-extendedsearchadmin-label'
+			'message' => 'bs-extendedsearchadmin-label',
+			'iconCls' => 'bs-icon-magnifying-glass'
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );

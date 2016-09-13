@@ -43,7 +43,7 @@ class PageAssignmentsHooks {
 	public static function onBSWikiAdminMenuItems( &$aOut ){
 		$sLabel = wfMessage( 'managepageassignments' )->plain();
 		$aOut[$sLabel] = Html::rawElement( 'li', array(),
-			Linker::link( SpecialPage::getTitleFor( 'ManagePageAssignments' ), $sLabel )
+			Linker::link( SpecialPage::getTitleFor( 'ManagePageAssignments' ), $sLabel, array( 'class' => 'bs-admin-link bs-icon-profile' )  )
 		);
 		return true;
 	}

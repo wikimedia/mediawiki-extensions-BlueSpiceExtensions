@@ -185,12 +185,18 @@ class WikiAdmin extends BsExtensionMW {
 			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
 			$sUrl = $oSpecialPage->getLocalURL( );
 			//$sUrl = str_replace( '&', '&amp;', $sUrl );
+
+			if ( !isset( $aModulParams['iconCls'] ) ) {
+				$aModulParams['iconCls'] = 'bs-icon-text';
+			}
+
 			$sLink = Html::element(
 				'a',
 				array(
 					'id' => 'bs-admin-'.$skeyLower,
 					'href' => $sUrl,
-					'title' => $sModulLabel
+					'title' => $sModulLabel,
+					'class' => 'bs-admin-link ' . $aModulParams['iconCls']
 				),
 				$sModulLabel
 			);
@@ -252,7 +258,8 @@ class WikiAdmin extends BsExtensionMW {
 			array(
 				'id' => 'bs-admin-shop',
 				'href' => 'http://shop.blue-spice.org/',
-				'title' => wfMessage( 'bs-wikiadmin-shop' )->escaped()
+				'title' => wfMessage( 'bs-wikiadmin-shop' )->escaped(),
+				'class' => 'bs-admin-link bs-icon-shopping-cart'
 			),
 			wfMessage( 'bs-wikiadmin-shop' )->escaped()
 		);

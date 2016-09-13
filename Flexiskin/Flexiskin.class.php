@@ -46,7 +46,8 @@ class Flexiskin extends BsExtensionMW {
 		WikiAdmin::registerModule( 'Flexiskin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_flexiskin_v1.png',
 			'level' => 'wikiadmin',
-			'message' => 'bs-flexiskin-label'
+			'message' => 'bs-flexiskin-label',
+			'iconCls' => 'bs-icon-painting-roll'
 		) );
                 wfProfileOut( 'BS::' . __METHOD__ );
 	}

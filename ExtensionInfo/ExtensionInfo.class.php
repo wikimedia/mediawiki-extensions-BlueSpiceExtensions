@@ -46,7 +46,7 @@ class ExtensionInfo extends BsExtensionMW {
 	public static function onBSWikiAdminMenuItems( &$aOutSortable ) {
 		$sLabel = wfMessage( 'bs-extensioninfo-label' )->plain();
 		$aOutSortable[$sLabel] = Html::rawElement( 'li', array(),
-			Linker::link( SpecialPage::getTitleFor( 'ExtensionInfo' ), $sLabel )
+			Linker::link( SpecialPage::getTitleFor( 'ExtensionInfo' ), $sLabel, array( 'class' => 'bs-admin-link bs-icon-puzzle' ) )
 		);
 		return true;
 	}

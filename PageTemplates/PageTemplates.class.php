@@ -43,7 +43,8 @@ class PageTemplates extends BsExtensionMW {
 		WikiAdmin::registerModuleClass( 'PageTemplatesAdmin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_templates_v1.png',
 			'level' => 'wikiadmin',
-			'message' => 'bs-pagetemplatesadmin-label'
+			'message' => 'bs-pagetemplatesadmin-label',
+			'iconCls' => 'bs-icon-clipboard-checked'
 		) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
