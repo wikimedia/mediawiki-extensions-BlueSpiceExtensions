@@ -47,7 +47,8 @@ class InterWikiLinks extends BsExtensionMW {
 		WikiAdmin::registerModule('InterWikiLinks', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_interwikilinks_v1.png',
 			'level' => 'wikiadmin',
-			'message' => 'bs-interwikilinks-label'
+			'message' => 'bs-interwikilinks-label',
+			'iconCls' => 'bs-icon-chain'
 			)
 		);
 		wfProfileOut( 'BS::'.__METHOD__ );

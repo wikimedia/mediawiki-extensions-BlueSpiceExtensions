@@ -48,7 +48,8 @@ class BsPreferences extends BsExtensionMW {
 			WikiAdmin::registerModule( 'BlueSpicePreferences', array(
 				'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
 				'level' => 'wikiadmin',
-				'message' => 'bs-preferences-label'
+				'message' => 'bs-preferences-label',
+				'iconCls' => 'bs-icon-wrench'
 			) );
 
 			wfProfileOut( 'BS::' . __METHOD__ );

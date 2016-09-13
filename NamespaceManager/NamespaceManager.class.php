@@ -56,7 +56,8 @@ class NamespaceManager extends BsExtensionMW {
 		WikiAdmin::registerModule( 'NamespaceManager', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_namespaces_v1.png',
 			'level' => 'wikiadmin',
-			'message' => 'bs-namespacemanager-label'
+			'message' => 'bs-namespacemanager-label',
+			'iconCls' => 'bs-icon-register-box'
 			)
 		);
 		wfProfileOut( 'BS::NamespaceManager::__construct' );

@@ -77,7 +77,8 @@ class AboutBlueSpice extends BsExtensionMW {
 				array (
 					'id' => 'bs-admin-aboutbluespice',
 					'href' => $oSpecialPage->getLocalURL(),
-					'title' => wfMessage( 'bs-aboutbluespice-about-bluespice' )->plain()
+					'title' => wfMessage( 'bs-aboutbluespice-about-bluespice' )->plain(),
+					'class' => 'bs-admin-link bs-icon-info'
 				),
 				wfMessage( 'bs-aboutbluespice-about-bluespice' )->plain()
 		);

@@ -104,7 +104,8 @@ class PermissionManager extends BsExtensionMW {
 		WikiAdmin::registerModule( 'PermissionManager', array(
 						'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_rechteverwaltung_v1.png',
 						'level' => 'wikiadmin',
-						'message' => 'bs-permissionmanager-label'
+						'message' => 'bs-permissionmanager-label',
+						'iconCls' => 'bs-icon-key'
 				)
 		);
 		wfProfileOut( 'BS::' . __METHOD__ );
