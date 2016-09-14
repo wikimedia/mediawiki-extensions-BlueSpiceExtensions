@@ -10,5 +10,7 @@
 	"bs-extendedsearch-noresult": "לא נמצאו ערכים.",
 	"bs-extendedsearch-facetsetting-op-and": "וגם",
 	"bs-extendedsearch-facetsetting-op-or": "או",
-	"action-extendedsearch-viewspecialpage": "לצפות בדף המיוחד \"{{int:specialextendedsearch}}\""
+	"action-extendedsearch-viewspecialpage": "לצפות בדף המיוחד \"{{int:specialextendedsearch}}\"",
+	"action-extendedsearchadmin-viewspecialpage": "לצפות בדף המיוחד \"{{int:extendedsearchadmin}}\"",
+	"extendedsearchadmin": "ניהול חיפוש מורחב"
 }
