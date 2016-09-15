@@ -16,6 +16,7 @@
 			"extPath": "/BlueSpiceExtensions/NamespaceManager"
 		}
 	},
+	"callback": "NamespaceManager::onRegistration",
 	"LogTypes": [
 		"bs-namespace-manager"
 	],

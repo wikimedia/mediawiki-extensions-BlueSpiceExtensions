@@ -17,6 +17,7 @@
 			"extPath": "/BlueSpiceExtensions/ExtendedSearch"
 		}
 	},
+	"callback": "ExtendedSearch::onRegistration",
 	"SpecialPages": {
 		"SpecialExtendedSearch": "SpecialExtendedSearch",
 		"ExtendedSearchAdmin": "SpecialExtendedSearchAdmin"

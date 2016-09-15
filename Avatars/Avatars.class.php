@@ -59,6 +59,21 @@ class Avatars extends BsExtensionMW {
 	}
 
 	/**
+	 * extension.json callback
+	 * @global array $wgForeignFileRepos
+	 */
+	public static function onRegistration() {
+		global $wgForeignFileRepos;
+		$wgForeignFileRepos[] = array(
+			'class' => 'FSRepo',
+			'name' => 'Avatars',
+			'directory' => BS_DATA_DIR . '/Avatars/',
+			'hashLevels' => 0,
+			'url' => BS_DATA_PATH . '/Avatars',
+		);
+	}
+
+	/**
 	 * Adds module
 	 * @param OutputPage $out
 	 * @param SkinTemplate $skin

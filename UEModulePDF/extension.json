@@ -10,6 +10,7 @@
 			"extPath": "/BlueSpiceExtensions/UEModulePDF"
 		}
 	},
+	"callback": "UEModulePDF::onRegistration",
 	"MessagesDirs": {
 		"UEModulePDF": [
 			"i18n"

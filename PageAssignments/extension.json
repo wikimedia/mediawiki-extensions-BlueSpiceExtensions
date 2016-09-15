@@ -14,6 +14,7 @@
 			"extPath": "/BlueSpiceExtensions/PageAssignments"
 		}
 	},
+	"callback": "PageAssignments::onRegistration",
 	"DefaultUserOptions": {
 		"echo-subscriptions-web-bs-pageassignments-action-cat": true,
 		"echo-subscriptions-email-bs-pageassignments-action-cat": true

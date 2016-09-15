@@ -121,6 +121,18 @@ class ExtendedSearch extends BsExtensionMW {
 	}
 
 	/**
+	 * extension.json callback
+	 * @global array $wgAjaxExportList
+	 */
+	public static function onRegistration() {
+		global $wgAjaxExportList;
+		$wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
+		$wgAjaxExportList[] = 'ExtendedSearchBase::getAutocompleteData';
+		$wgAjaxExportList[] = 'ExtendedSearchBase::getRecentSearchTerms';
+		$wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
+	}
+
+	/**
 	 * Hook-Handler for Hook 'OpenSearchUrls'
 	 * @param array §$aUrls array of urls for opensearch
 	 * @return boolean Always true

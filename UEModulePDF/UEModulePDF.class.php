@@ -58,6 +58,28 @@ class UEModulePDF extends BsExtensionMW {
 	}
 
 	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		/**
+		 * Allows modification for CURL request. E.g. setting an CA file for
+		 * HTTPS
+		 */
+		$GLOBALS['bsgUEModulePDFCURLOptions'] = array();
+
+		/**
+		 * This value is considered when asseta are being uploaded to the PDF
+		 * service
+		 */
+		$GLOBALS['bsgUEModulePDFUploadThreshold'] = 50 * 1024 * 1024;
+
+		// Remove if minimal system requirements of MW changes to PHP <= 5.5
+		if( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
+			define( 'CURLOPT_SAFE_UPLOAD', -1 );
+		}
+	}
+
+	/**
 	 * Sets parameters for more complex options in preferences
 	 * @param string $sAdapterName Name of the adapter, e.g. MW
 	 * @param BsConfig $oVariable Instance of variable

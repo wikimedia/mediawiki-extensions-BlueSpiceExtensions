@@ -20,6 +20,25 @@ class PageAssignments extends BsExtensionMW {
 			array( 'sysop' )
 		);
 	}
+
+	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		$GLOBALS['bsgPageAssigneeTypes'] = array(
+			'user' => 'BSAssignableUser',
+			'group' => 'BSAssignableGroup'
+		);
+		$GLOBALS['wgExtensionFunctions'][] = function() {
+			PageAssignmentsNotificationHooks::setup();
+		};
+		if( !isset( $GLOBALS['bsgDefaultAssignedUsersAdditionalPermissions'] ) ) {
+			$GLOBALS['bsgDefaultAssignedUsersAdditionalPermissions'] = array(
+				'read',
+			);
+		}
+	}
+
 	/**
 	 *
 	 * @param Title $oTitle

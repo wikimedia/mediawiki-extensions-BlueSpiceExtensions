@@ -85,6 +85,16 @@ class NamespaceManager extends BsExtensionMW {
 	}
 
 	/**
+	 * extension.json callback
+	 * @global array $bsgConfigFiles
+	 */
+	public static function onRegistration() {
+		global $bsgConfigFiles;
+		$bsgConfigFiles['NamespaceManager']
+			= BSCONFIGDIR . DS . 'nm-settings.php';
+	}
+
+	/**
 	* Add the sql file to database by executing the update.php
 	* @global type $wgDBtype
 	* @global array $wgExtNewTables

@@ -63,6 +63,21 @@ class Flexiskin extends BsExtensionMW {
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
+	/**
+	 * extension.json callback
+	 * @global array $wgForeignFileRepos
+	 */
+	public static function onRegistration() {
+		global $wgForeignFileRepos;
+		$wgForeignFileRepos[] = array(
+			'class' => 'FSRepo',
+			'name' => 'Flexiskin',
+			'directory' => BS_DATA_DIR . '/Flexiskin/',
+			'hashLevels' => 0,
+			'url' => BS_DATA_PATH . '/Flexiskin',
+		);
+	}
+
 	public function runPreferencePlugin( $sAdapterName, BsConfig $oVariable ) {
 		if ( substr( $oVariable->getKey(), 0, 13 ) != "MW::Flexiskin" ){
 			return array();

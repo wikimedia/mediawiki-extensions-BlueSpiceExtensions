@@ -66,6 +66,13 @@ class SecureFileStore extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
+	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		$GLOBALS["wgAjaxExportList"][] = "SecureFileStore::getFile";
+	}
+
 	public function onSiteNoticeAfter( &$siteNotice ) {
 		$siteNotice = SecureFileStore::secureFilesInText( $siteNotice );
 		return true;

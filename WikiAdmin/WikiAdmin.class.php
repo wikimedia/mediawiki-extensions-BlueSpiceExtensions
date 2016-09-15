@@ -165,6 +165,13 @@ class WikiAdmin extends BsExtensionMW {
 	}
 
 	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		$GLOBALS['wgExtensionFunctions'][] = 'WikiAdmin::loadModules';
+	}
+
+	/**
 	 * Adds WikiAdmin tab to main navigation
 	 * @param array $aViews
 	 * @param User $oUser

@@ -13,6 +13,7 @@
 			"extPath": "/BlueSpiceExtensions/Flexiskin"
 		}
 	},
+	"callback": "Flexiskin::onRegistration",
 	"APIModules": {
 		"bs-flexiskin-tasks": "BSApiFlexiskinTasks",
 		"bs-flexiskin-store": "BSApiFlexiskinStore",

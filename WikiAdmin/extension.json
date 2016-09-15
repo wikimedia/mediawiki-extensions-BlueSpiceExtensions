@@ -16,6 +16,7 @@
 			"extPath": "/BlueSpiceExtensions/WikiAdmin"
 		}
 	},
+	"callback": "WikiAdmin::onRegistration",
 	"SpecialPages": {
 		"WikiAdmin": "SpecialWikiAdmin"
 	},

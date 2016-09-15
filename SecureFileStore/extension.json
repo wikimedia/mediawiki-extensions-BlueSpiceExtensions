@@ -15,6 +15,7 @@
 			"extPath": "/BlueSpiceExtensions/SecureFileStore"
 		}
 	},
+	"callback": "SecureFileStore::onRegistration",
 	"MessagesDirs": {
 		"SecureFileStore": [
 			"i18n"

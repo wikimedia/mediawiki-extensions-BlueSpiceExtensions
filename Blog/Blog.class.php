@@ -92,6 +92,13 @@ class Blog extends BsExtensionMW {
 	}
 
 	/**
+	 * extension.json callback
+	 */
+	public static function onRegistration() {
+		BsExtensionManager::registerNamespace( 'Blog', 2 );
+	}
+
+	/**
 	 * Adds entry to navigation sites
 	 * @global string $wgScriptPath
 	 * @param array $aNavigationSites
