@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"ElangoRamanujam"
+		]
+	},
+	"bs-pageassignments-column-title": "பக்கத் தலைப்பு",
+	"bs-pageassignments-directly-assigned": "நேரடியாக",
+	"notification-bs-pageassignments-page-edit-subject": "$2 தொகுக்கப்பட்டது",
+	"notification-bs-pageassignments-page-delete-subject": "$2 நீக்கப்பட்டது"
+}

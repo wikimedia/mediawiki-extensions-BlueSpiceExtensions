@@ -40,7 +40,9 @@
 	"bs-statistics-portlet-numberofusers": "Número de utilizadores",
 	"bs-statistics-portlet-numberofedits": "Número de edições",
 	"bs-statistics-portlet-numberofpages": "Número de páginas",
+	"bs-statistics-portlet-numberofarticles": "Número de artigos",
 	"bs-statistics-portlet-numberofusersdesc": "Estatística do número de utilizadores.",
 	"bs-statistics-portlet-numberofeditsdesc": "Estatística do número de edições.",
+	"bs-statistics-portlet-numberofarticlesdesc": "Estatística do número de artigos.",
 	"bs-statistics-portletconfig-periodday": "Ontem"
 }

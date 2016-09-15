@@ -8,5 +8,13 @@
 	"bs-pageassignments-directly-assigned": "diretamente",
 	"bs-pageassignments-api-error": "Ocorreu um erro",
 	"bs-pageassignments-api-error-no-page": "Página não especificada",
-	"notification-bs-pageassignments-page-move-subject": "$2 foi movida"
+	"bs-pageassignments-notification-reason": "Razões para esta notificação:",
+	"notification-bs-pageassignments-page-move-summary": "$3 foi {{GENDER:$2|movida}} por $1",
+	"notification-bs-pageassignments-page-move-subject": "$2 foi movida",
+	"notification-bs-pageassignments-page-move-body": "$1 {{GENDER:$2|moveu}} a página $2",
+	"notification-bs-pageassignments-page-edit-summary": "$3 foi {{GENDER:$2|editada}} por $1",
+	"notification-bs-pageassignments-page-edit-subject": "$2 foi editada",
+	"notification-bs-pageassignments-page-edit-body": "$1 {{GENDER:$2|editou}} a página $2",
+	"notification-bs-pageassignments-page-delete-summary": "$3 foi {{GENDER:$2|eliminada}} por $1",
+	"notification-bs-pageassignments-page-delete-subject": "$2 foi eliminada"
 }

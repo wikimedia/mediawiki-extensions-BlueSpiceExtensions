@@ -24,5 +24,6 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Tem a certeza que pretende eliminar esta ligação interlíngua?",
 	"bs-interwikilinks-insertlink-tabtitle": "Ligar a outra wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefixo",
-	"bs-interwikilink-select-a-prefix": "Escolha o prefixo"
+	"bs-interwikilink-select-a-prefix": "Escolha o prefixo",
+	"interwikilinks": "Ligações interlínguas"
 }

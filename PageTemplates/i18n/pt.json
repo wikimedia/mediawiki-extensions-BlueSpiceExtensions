@@ -30,5 +30,6 @@
 	"bs-pagetemplates-confirm-deletetpl": "Tem a certeza que pretende eliminar {{PLURAL:$1|esta predefinição|estas predefinições}}?",
 	"bs-pagetemplates-remove-message-unknown": "Ocorreu um erro inesperado, por favor tente novamente.",
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|A seguinte predefinição foi eliminada|As seguintes predefinições foram eliminadas}}: $2",
-	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|A seguinte predefinição não pode ser eliminada|As seguintes predefinições não podem ser eliminadas}}: $2 (Motivo: $3)"
+	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|A seguinte predefinição não pode ser eliminada|As seguintes predefinições não podem ser eliminadas}}: $2 (Motivo: $3)",
+	"action-pagetemplatesadmin-viewspecialpage": "ver página especial \"{{int:pagetemplatesadmin}}\""
 }

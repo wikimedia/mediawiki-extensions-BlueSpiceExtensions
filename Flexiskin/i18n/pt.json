@@ -27,5 +27,6 @@
 	"bs-flexiskin-labelcustombgcolor": "Cor personalizada",
 	"bs-flexiskin-headerposition": "Posição e tamanho",
 	"bs-flexiskin-labelcontent": "Posição do conteúdo",
-	"bs-flexiskin-error-nameempty": "Por favor, introduza um nome válido para o tema que pretende criar."
+	"bs-flexiskin-error-nameempty": "Por favor, introduza um nome válido para o tema que pretende criar.",
+	"flexiskin": "Preferências do tema"
 }

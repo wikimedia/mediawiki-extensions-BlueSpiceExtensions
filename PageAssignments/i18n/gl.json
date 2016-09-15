@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"bs-pageassignments-desc": "Dalle a posibilidade de asignar usuarios ou grupos a unha páxina",
@@ -56,5 +57,9 @@
 	"notification-bs-pageassignments-user-group-remove-subject": "Eliminado {{PLURAL:$5|do grupo|dos grupos}} $4",
 	"notification-bs-pageassignments-user-group-remove-body": "$1 {{GENDER:$2|eliminouno}} {{PLURAL:$5|do grupo|dos grupos}} $4. Comprobre a súa asignación en $3",
 	"prefs-pageassignments": "Asignacións de páxinas",
-	"bs-pageassignments-yourassignments": "As súas asignacións"
+	"bs-pageassignments-pref-permissions": "Engadir permisos adicionais ós usuarios asignados",
+	"bs-pageassignments-yourassignments": "As súas asignacións",
+	"bs-pageassignments-yourassignmentsdesc": "Lista de páxinas ás que estas asignado.",
+	"right-pageassignable": "Aparecer na lista de usuarios asignables",
+	"right-pageassignments": "Editar as asignacións dunha páxina"
 }

@@ -28,5 +28,6 @@
 	"bs-blog-pref-sortby": "Ordenar por:",
 	"bs-blog-pref-imagerendermode": "Mostrar imagens como:",
 	"bs-blog-pref-maxentrycharacters": "Número de palavras por entrada:",
-	"bs-blog-tag-blog-desc": "Mostra as entradas de blogue em cada página."
+	"bs-blog-tag-blog-desc": "Mostra as entradas de blogue em cada página.",
+	"action-blog-viewspecialpage": "ver a página especial \"{{int:bs-blog-blog}}\""
 }

@@ -54,7 +54,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Целното име што го одбравте нема важечка податотечна наставка.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Целното име што го одбравте нема допуштена сликовна наставка.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Целното име што го одбравте нема допуштена податотечна наставка.",
-	"bs-insertfile-uploadcomplete": "Податотеката е успешно зачувана.",
+	"bs-insertfile-uploadcomplete": "Податотеката е зачувана.",
 	"bs-insertfile-titlefile": "Вметни податотека",
 	"bs-insertfile-titleimage": "Вметни слика",
 	"bs-insertfile-tipkeepratio": "Запази го сразмерот",

@@ -52,8 +52,10 @@
 	"bs-statistics-portlet-numberofusers": "Número de usuarios",
 	"bs-statistics-portlet-numberofedits": "Número de edicións",
 	"bs-statistics-portlet-numberofpages": "Número de páxinas",
+	"bs-statistics-portlet-numberofarticles": "Número de artigos",
 	"bs-statistics-portlet-numberofusersdesc": "Estatística do número de usuarios.",
 	"bs-statistics-portlet-numberofeditsdesc": "Estatística do número de edicións.",
 	"bs-statistics-portlet-numberofpagesdesc": "Estatística do número de páxinas.",
+	"bs-statistics-portlet-numberofarticlesdesc": "Estatística do número de artigos.",
 	"bs-statistics-portletconfig-periodday": "Onte"
 }

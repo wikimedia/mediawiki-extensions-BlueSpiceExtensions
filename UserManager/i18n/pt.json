@@ -22,5 +22,9 @@
 	"bs-usermanager-labelnewpassword": "Palavra-passe",
 	"bs-usermanager-labelpasswordcheck": "Confirmar a palavra-passe",
 	"bs-usermanager-titledeleteuser": "Eliminar utilizador(a)",
-	"bs-usermanager-groups-more": "... mais"
+	"bs-usermanager-groups-more": "... mais",
+	"bs-usermanager-headerenabled": "Ativado(a)",
+	"bs-usermanager-endisable": "Ativar/desativar",
+	"bs-usermanager-titledisableuser": "Desativar utilizador(a)",
+	"bs-usermanager-titleenableuser": "Ativar utilizador(a)"
 }

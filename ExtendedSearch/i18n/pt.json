@@ -70,5 +70,6 @@
 	"bs-extendedsearch-more": "Mais",
 	"bs-extendedsearch-fewer": "Menos",
 	"bs-extendedsearch-facetsetting-op-and": "E",
-	"bs-extendedsearch-facetsetting-op-or": "OU"
+	"bs-extendedsearch-facetsetting-op-or": "OU",
+	"action-extendedsearchadmin-viewspecialpage": "ver página especial \"{{int:extendedsearchadmin}}\""
 }

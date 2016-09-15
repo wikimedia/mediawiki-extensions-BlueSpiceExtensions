@@ -6,8 +6,8 @@
 		]
 	},
 	"bs-usagetracker-desc": "Contém dados estatísticos sobre o uso da extensão",
-	"prefs-usagetracker": "Monitorizador de Utilização",
-	"usagetracker": "Monitorizador de Estatísticas",
+	"prefs-usagetracker": "Monitorização de Utilização",
+	"usagetracker": "Monitorização de Estatísticas",
 	"bs-usagetracker-startjobs": "Atualizar agora",
 	"bs-usagetracker-create-statistics": "Atualizar estatísticas de uso",
 	"bs-usagetracker-col-identifier": "Identificador",
