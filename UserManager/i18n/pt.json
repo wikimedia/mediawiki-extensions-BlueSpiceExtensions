@@ -23,8 +23,18 @@
 	"bs-usermanager-labelpasswordcheck": "Confirmar a palavra-passe",
 	"bs-usermanager-titledeleteuser": "Eliminar utilizador(a)",
 	"bs-usermanager-groups-more": "... mais",
+	"bs-usermanager-no-self-block": "Não se pode desativar a si mesmo.",
+	"bs-usermanager-block-error": "{{GENDER:$1|O utilizador $1 não pôde ser desativado|A utilizadora $1 não pode ser desativada|O(a) utilizador(a) $1 não pôde ser desativado(a)}}.",
+	"bs-usermanager-unblock-error": "{{GENDER:$1|O utilizador $1 não pôde ser ativado|A utilizadora $1 não pôde ser desativada|O(a) utilizador(a) $1 não pôde ser ativado(a)}}.",
 	"bs-usermanager-headerenabled": "Ativado(a)",
+	"bs-usermanager-log-user-disabled": "{{GENDER:$1|O utilizador $1 foi desativado|A utilizadora $1 foi desativada|O(a) utilizador(a) $1 foi desativado(a)}} através do gestor de utilizadores.",
+	"bs-usermanager-user-disabled": "{{GENDER:$1|O utilizador $1 foi desativado|A utilizadora $1 foi desativada|O(a) utilizador(a) $1 foi desativado(a)}}.",
+	"bs-usermanager-user-enabled": "{{GENDER:$1|O utilizador $1 foi ativado|A utilizadora $1 foi ativada|O(a) utilizador(a) $1 foi ativado(a)}}.",
 	"bs-usermanager-endisable": "Ativar/desativar",
+	"bs-usermanager-confirmdisableuser": "Pretende realmente desativar {{GENDER:$1|o utilizador|a utilizadora $1|o(a) utilizador(a)}} $1.",
+	"bs-usermanager-confirmenableuser": "Pretende realmente ativar {{GENDER:$1|o utilizador|a utilizadora $1|o(a) utilizador(a)}} $1.",
 	"bs-usermanager-titledisableuser": "Desativar utilizador(a)",
-	"bs-usermanager-titleenableuser": "Ativar utilizador(a)"
+	"bs-usermanager-titleenableuser": "Ativar utilizador(a)",
+	"usermanager": "Gestor de utilizadores",
+	"action-usermanager-viewspecialpage": "ver página especial \"Gestor de utilizadores\""
 }

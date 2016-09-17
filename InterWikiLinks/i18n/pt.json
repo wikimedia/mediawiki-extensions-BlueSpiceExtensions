@@ -25,5 +25,6 @@
 	"bs-interwikilinks-insertlink-tabtitle": "Ligar a outra wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefixo",
 	"bs-interwikilink-select-a-prefix": "Escolha o prefixo",
+	"action-interwikilinks-viewspecialpage": "ver página especial \"{{int:bs-interwikilinks-label}}\"",
 	"interwikilinks": "Ligações interlínguas"
 }

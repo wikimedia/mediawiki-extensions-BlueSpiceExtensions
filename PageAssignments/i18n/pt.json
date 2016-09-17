@@ -16,5 +16,6 @@
 	"notification-bs-pageassignments-page-edit-subject": "$2 foi editada",
 	"notification-bs-pageassignments-page-edit-body": "$1 {{GENDER:$2|editou}} a página $2",
 	"notification-bs-pageassignments-page-delete-summary": "$3 foi {{GENDER:$2|eliminada}} por $1",
-	"notification-bs-pageassignments-page-delete-subject": "$2 foi eliminada"
+	"notification-bs-pageassignments-page-delete-subject": "$2 foi eliminada",
+	"notification-bs-pageassignments-user-group-remove-subject": "Removido(a) {{PLURAL:$5|do grupo|dos grupos}} $4"
 }

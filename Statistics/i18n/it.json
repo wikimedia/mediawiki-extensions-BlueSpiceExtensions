@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Saracrovetto"
 		]
 	},
 	"bs-statistics-desc": "Modulo statistiche per BlueSpice",
@@ -34,9 +35,13 @@
 	"bs-statistics-portlet-numberofusers": "Numero di utenti",
 	"bs-statistics-portlet-numberofedits": "Numero di modifiche",
 	"bs-statistics-portlet-numberofpages": "Numero di pagine",
+	"bs-statistics-portlet-numberofarticles": "Numero di voci",
 	"bs-statistics-portlet-numberofusersdesc": "Statistica del numero di utenti.",
 	"bs-statistics-portlet-numberofeditsdesc": "Statistica del numero di modifiche.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistica del numero di pagine.",
 	"bs-statistics-portlet-numberofarticlesdesc": "Statistica del numero di voci.",
-	"bs-statistics-portletconfig-periodday": "Ieri"
+	"bs-statistics-portletconfig-periodday": "Ieri",
+	"apihelp-bs-statistics-tasks-description": "Fornisce attività comuni per le statistiche",
+	"apihelp-bs-statistics-available-diagrams-store-description": "Fornisce un archivio con i diagrammi disponibili",
+	"apihelp-bs-statistics-search-options-store-description": "Fornisce un archivio delle opzioni di ricerca disponibili"
 }

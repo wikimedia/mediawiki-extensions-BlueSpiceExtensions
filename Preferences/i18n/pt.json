@@ -6,5 +6,6 @@
 	},
 	"bs-preferences-desc": "Oferece a possibilidade aos administradores de configurar uma wiki por completo numa única página especial",
 	"bs-bluespicepreferences-label": "Preferências",
-	"action-bluespicepreferences-viewspecialpage": "ver página especial \"{{int:bluespicepreferences}}\""
+	"action-bluespicepreferences-viewspecialpage": "ver página especial \"{{int:bluespicepreferences}}\"",
+	"bluespicepreferences": "Preferências Bluespice"
 }

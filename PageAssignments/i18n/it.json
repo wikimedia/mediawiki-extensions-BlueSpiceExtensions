@@ -17,5 +17,6 @@
 	"notification-bs-pageassignments-page-delete-body": "$1 {{GENDER:$2|ha cancellato}} la pagina $2",
 	"notification-bs-pageassignments-user-group-add-summary": "Sei stato aggiunto al gruppo $4",
 	"notification-bs-pageassignments-user-group-add-subject": "Aggiunto al gruppo $4",
-	"notification-bs-pageassignments-user-group-remove-subject": "Rimosso {{PLURAL:$5|dal gruppo|dai gruppi}} $4"
+	"notification-bs-pageassignments-user-group-remove-subject": "Rimosso {{PLURAL:$5|dal gruppo|dai gruppi}} $4",
+	"right-pageassignments": "Modifica le assegnazioni di una pagina"
 }

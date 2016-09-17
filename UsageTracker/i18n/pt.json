@@ -14,5 +14,6 @@
 	"bs-usagetracker-col-desc": "Descrição",
 	"bs-usagetracker-col-count": "Contagem",
 	"bs-usagetracker-col-last-updated": "Ultima atualização",
-	"bs-usagetracker-base-collector-desc": "Número de páginas que utilizam $1"
+	"bs-usagetracker-base-collector-desc": "Número de páginas que utilizam $1",
+	"bs-usagetracker-tag-collector-desc": "Número de páginas que usam a marca <$1>"
 }
