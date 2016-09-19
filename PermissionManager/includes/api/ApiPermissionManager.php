@@ -72,9 +72,14 @@ class ApiPermissionManager extends BSApiTasksBase {
 
 	protected function task_savePermissions( $oData ) {
 		$oRet = $this->makeStandardReturn();
+		$oRet->success = true;
 		$arrRes = PermissionManager::savePermissions( $oData );
-		$oRet->payload = $arrRes;
-		$oRet->success = $arrRes[ "success" ];
+
+		if ( $arrRes !== true && ( !isset( $arrRes['success'] ) || $arrRes['success'] !== true ) ) {
+			$oRet->errors[] = $arrRes;
+			$oRet->message = wfMessage("internalerror_info")->params( $arrRes )->plain();
+			$oRet->success = false;
+		}
 
 		return $oRet;
 	}

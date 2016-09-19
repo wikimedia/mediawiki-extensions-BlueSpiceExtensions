@@ -15,7 +15,6 @@
 			"extPath": "/BlueSpiceExtensions/PermissionManager"
 		}
 	},
-	"callback": "PermissionManager::onRegistration",
 	"ExtensionFunctions": [
 		"PermissionManager::setupLockmodePermissions"
 	],
@@ -47,7 +46,8 @@
 		"PermissionTemplates": "includes/PermissionTemplates.class.php",
 		"PermissionValidator": "includes/PermissionValidator.php",
 		"SpecialPermissionManager": "includes/specials/SpecialPermissionManager.class.php",
-		"ApiPermissionManager": "includes/api/ApiPermissionManager.php"
+		"ApiPermissionManager": "includes/api/ApiPermissionManager.php",
+		"PermissionManagerHooks": "includes/PermissionManagerHooks.php"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
@@ -92,8 +92,8 @@
 		}
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "PermissionManager::getSchemaUpdates",
-		"BsPermissionManager::beforeSavePermissions": "PermissionValidator::beforeSavePermissionsValidateGlobalRead"
+		"LoadExtensionSchemaUpdates": "PermissionManager::getSchemaUpdates"
 	},
+	"callback": "PermissionManagerHooks::onCallback",
 	"manifest_version": 1
 }

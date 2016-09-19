@@ -124,111 +124,6 @@ class PermissionManager extends BsExtensionMW {
 	}
 
 	/**
-	 * extension.json callback
-	 */
-	public static function onRegistration() {
-		if( !isset( $GLOBALS['bsgPermissionManagerDefaultTemplates'] ) ) {
-			$GLOBALS['bsgPermissionManagerDefaultTemplates'] = array();
-		}
-
-		$GLOBALS['bsgConfigFiles']['PermissionManager']
-			= BSCONFIGDIR . DS . 'pm-settings.php';
-
-		$GLOBALS['bsgPermissionManagerDefaultTemplates'] = array(
-			//Not namespace specific
-			'bs-permissionmanager-default-template-read-general-title' => array(
-				//BlueSpice
-				//TODO: Move to other extensions
-				'files',
-				'viewfiles',
-				'searchfiles'
-
-			),
-
-			'bs-permissionmanager-default-template-read-title' => array(
-				//MediaWiki standard
-				'read',
-
-				//BlueSpice
-				//TODO: Move to other extensions
-				'readshoutbox',
-				'universalexport-export',
-				'universalexport-export-with-attachments'
-
-			),
-
-			//Not namespace specific
-			'bs-permissionmanager-default-template-edit-general-title' => array(
-				//MediaWiki standard
-				'movefile',
-				'move-rootuserpages',
-				'upload',
-					'reupload',
-					'reupload-own',
-					'reupload-shared',
-					'upload_by_url',
-				'writeapi',
-
-				//BlueSpice
-				//TODO: Move to other extensions
-				'writeshoutbox'
-			),
-
-			'bs-permissionmanager-default-template-edit-title' => array(
-				//MediaWiki standard
-				'edit',
-				'create',
-				'createtalk',
-				'move',
-					'move-subbpages',
-				'delete',
-
-				//BlueSpice
-				//TODO: Move to other extensions
-				'writeshoutbox'
-			),
-
-			'bs-permissionmanager-default-template-admin-title' => array(
-				//MediaWiki standard
-				'bigdelete',
-				'browsearchive',
-				'createaccount',
-				'deletedtext',
-				'deletedhistory',
-				'protect',
-				'editprotected',
-				'block',
-				'rollback',
-				'import',
-				'userrights',
-
-				//BlueSpice
-				//TODO: Move to other extensions
-				'wikiadmin',
-					'editadmin', // still in use?
-					'useradmin' // still in use?
-			),
-
-			'bs-permissionmanager-default-template-quality-title' => array(
-				//MediaWiki FlaggedRevs
-				//TODO: Move to other extensions
-				'autoreview',
-				'review',
-				'unreviewdpages',
-				'validate',
-
-				//BlueSpice
-				//TODO: Move to other extensions
-				'responsibleeditors-changeresponsibility',
-				'responsibleeditors-takeresponsibility',
-				'responsibleeditors-viewspecialpage',
-				'workflowview',
-					'workflowedit', // still in use?
-			)
-		) + $GLOBALS['bsgPermissionManagerDefaultTemplates'];
-	}
-
-	/**
 	 * Hook-Handler for Hook 'LoadExtensionSchemaUpdates'
 	 * @param object $updater Updater
 	 * @return boolean Always true
@@ -545,7 +440,8 @@ class PermissionManager extends BsExtensionMW {
 
 	/**
 	 * @global WebRequest $wgRequest
-	 * @return string
+	 * @return $aResult from RunHooks(BsPermissionManager::beforeSavePermissions)
+	 * if not empty, otherwise $mStatusWritePMSettings if no error occurs, otherwise boolean:false
 	 */
 	public static function savePermissions( $data ) {
 
@@ -553,8 +449,8 @@ class PermissionManager extends BsExtensionMW {
 			return false;
 		}
 
-		$aGroupPermissions = $data->groupPermission;
-		$aLockdown = $data->permissionLockdown;
+		$aGroupPermissions = ( array ) $data->groupPermission;
+		$aLockdown = ( array ) $data->permissionLockdown;
 		$aResult = array();
 		$mStatus = wfRunHooks( 'BsPermissionManager::beforeSavePermissions', array( &$aLockdown, &$aGroupPermissions, &$aResult ) );
 
@@ -568,11 +464,11 @@ class PermissionManager extends BsExtensionMW {
 		}
 
 		if ( $mStatus === true ) {
-			$mStatusWritePMSettings = self::writeGroupSettings( (array)$aGroupPermissions, (array)$aLockdown );
+			$mStatusWritePMSettings = self::writeGroupSettings( $aGroupPermissions, $aLockdown );
 			return $mStatusWritePMSettings;
 		}
 
-		return false;
+		return $mStatus;
 	}
 
 	public static function getPermissionArray( $group = "", $timestamp = "" ) {
@@ -694,6 +590,7 @@ class PermissionManager extends BsExtensionMW {
 				$bIsSet = false;
 				if ( is_array( $aGroupPermissions ) ) {
 					foreach ( $aGroupPermissions as $sGroupName => $aDataset ) {
+						$aDataset = (array)$aDataset;
 						// no user can be in the lock mode group so we don't care if it has the right or not
 						if ( $sGroupName == self::$sPmLockModeGroup ) {
 							continue;

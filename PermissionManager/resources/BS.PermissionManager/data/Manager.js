@@ -487,9 +487,8 @@
 			}
 		).done(function (response) {
 			//var result = Ext.JSON.decode(response.responseText);
-			var result = response.payload;
 
-			if (result.success === true) {
+			if (response.success === true) {
 				caller.unmask();
 
 				mw.notify( mw.msg( 'bs-permissionmanager-save-success' ), { title: mw.msg( 'bs-extjs-title-success' ) } );
@@ -522,15 +521,11 @@
 			} else {
 				caller.unmask();
 				bs.util.alert( 'bs-pm-save-error', {
-					text: result.msg
+					text: result.message
 				});
 			}
 		}).fail( function ( response ) {
-			var result = response.payload;
 			caller.unmask();
-			bs.util.alert( 'bs-pm-save-error', {
-				text: result.msg
-			} );
 		} );
 
 	}
