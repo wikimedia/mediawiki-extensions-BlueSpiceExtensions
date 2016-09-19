@@ -21,5 +21,6 @@
 	"bs-interwikilinks-titledeleteinterwikilink": "인터위키 링크 삭제",
 	"bs-interwikilinks-insertlink-labelprefix": "접두어",
 	"bs-interwikilinks-link-edited": "인터위키 링크가 편집되었습니다.",
+	"action-interwikilinks-viewspecialpage": "특수문서 \"{{int:bs-interwikilinks-label}}\" 보기",
 	"interwikilinks": "인터위키 링크"
 }

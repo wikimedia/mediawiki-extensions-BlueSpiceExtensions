@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Mansil"
 		]
 	},
 	"bs-pageassignments-column-title": "Título de página",
 	"bs-pageassignments-directly-assigned": "diretamente",
 	"bs-pageassignments-api-error": "Ocorreu um erro",
 	"bs-pageassignments-api-error-no-page": "Página não especificada",
-	"bs-pageassignments-notification-reason": "Razões para esta notificação:",
+	"bs-pageassignments-notification-reason": "Motivos para esta notificação:",
 	"notification-bs-pageassignments-page-move-summary": "$3 foi {{GENDER:$2|movida}} por $1",
 	"notification-bs-pageassignments-page-move-subject": "$2 foi movida",
 	"notification-bs-pageassignments-page-move-body": "$1 {{GENDER:$2|moveu}} a página $2",
@@ -17,5 +18,6 @@
 	"notification-bs-pageassignments-page-edit-body": "$1 {{GENDER:$2|editou}} a página $2",
 	"notification-bs-pageassignments-page-delete-summary": "$3 foi {{GENDER:$2|eliminada}} por $1",
 	"notification-bs-pageassignments-page-delete-subject": "$2 foi eliminada",
-	"notification-bs-pageassignments-user-group-remove-subject": "Removido(a) {{PLURAL:$5|do grupo|dos grupos}} $4"
+	"notification-bs-pageassignments-user-group-remove-subject": "Removido(a) {{PLURAL:$5|do grupo|dos grupos}} $4",
+	"bs-pageassignments-yourassignments": "As suas tarefas"
 }

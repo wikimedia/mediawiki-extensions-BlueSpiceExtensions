@@ -27,5 +27,6 @@
 	"logentry-bs-namespace-manager-modify": "$1님이 $4 이름공간의 설정을 {{GENDER:$2|바꾸었습니다}}",
 	"logentry-bs-namespace-manager-rename": "$1님이 $4 이름공간을 $5(으)로 {{GENDER:$2|바꾸었습니다}}",
 	"logentry-bs-namespace-manager-remove": "$1님이 $4 이름공간을 {{GENDER:$2|제거했습니다}}",
+	"action-namespacemanager-viewspecialpage": "이름공간 관리자의 특수문서 보기",
 	"namespacemanager": "이름공간 관리자"
 }

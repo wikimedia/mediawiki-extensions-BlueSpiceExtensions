@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftabuzzaman"
+			"Aftabuzzaman",
+			"আজিজ"
 		]
 	},
 	"bs-pageassignments-api-error-no-page": "পাতা নির্দিষ্ট করা হয়নি",
-	"notification-bs-pageassignments-page-move-subject": "$2 স্থানান্তরিত হয়েছে"
+	"notification-bs-pageassignments-page-move-subject": "$2 স্থানান্তরিত হয়েছে",
+	"right-pageassignable": "হস্তান্তরযোগ্য ব্যবহারকারীদের তালিকায় হাজির হন",
+	"right-pageassignments": "একটি পৃষ্ঠার বরাদ্দকরণ সম্পাদনা করুন"
 }

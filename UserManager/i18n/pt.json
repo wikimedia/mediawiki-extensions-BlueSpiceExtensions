@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Mansil"
 		]
 	},
 	"bs-usermanager-desc": "Interface de administração para adicionar, editar e eliminar utilizadores",
@@ -23,7 +24,7 @@
 	"bs-usermanager-labelpasswordcheck": "Confirmar a palavra-passe",
 	"bs-usermanager-titledeleteuser": "Eliminar utilizador(a)",
 	"bs-usermanager-groups-more": "... mais",
-	"bs-usermanager-no-self-block": "Não se pode desativar a si mesmo.",
+	"bs-usermanager-no-self-block": "Não pode desativar-se a si mesmo.",
 	"bs-usermanager-block-error": "{{GENDER:$1|O utilizador $1 não pôde ser desativado|A utilizadora $1 não pode ser desativada|O(a) utilizador(a) $1 não pôde ser desativado(a)}}.",
 	"bs-usermanager-unblock-error": "{{GENDER:$1|O utilizador $1 não pôde ser ativado|A utilizadora $1 não pôde ser desativada|O(a) utilizador(a) $1 não pôde ser ativado(a)}}.",
 	"bs-usermanager-headerenabled": "Ativado(a)",

@@ -5,11 +5,11 @@
 			"Mansil"
 		]
 	},
-	"bs-usagetracker-desc": "Contém dados estatísticos sobre o uso da extensão",
+	"bs-usagetracker-desc": "Contém dados estatísticos sobre a utilização da extensão",
 	"prefs-usagetracker": "Monitorização de Utilização",
-	"usagetracker": "Monitorização de Estatísticas",
+	"usagetracker": "Monitorização de Utilização",
 	"bs-usagetracker-startjobs": "Atualizar agora",
-	"bs-usagetracker-create-statistics": "Atualizar estatísticas de uso",
+	"bs-usagetracker-create-statistics": "Atualizar estatísticas de utilização",
 	"bs-usagetracker-col-identifier": "Identificador",
 	"bs-usagetracker-col-desc": "Descrição",
 	"bs-usagetracker-col-count": "Contagem",
