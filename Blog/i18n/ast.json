@@ -6,6 +6,7 @@
 	},
 	"bs-blog-desc": "Amuesa una llista de páxines con estilu blog",
 	"prefs-blog": "Blog",
+	"blog": "Blog",
 	"bs-blog-no-entries": "Nun hai entraes de blog.",
 	"bs-blog-comments": "Comentarios",
 	"bs-blog-read-more": "Lleer más",
@@ -30,5 +31,7 @@
 	"bs-blog-tag-blog-desc": "Incluye un weblog de les páxines delartículu, alderique y ficheru. Puede especificase con dellos parámetros. Estos puen combinase'n cualquier orde.",
 	"bs-blog-tag-blogmore-desc": "Define'l llargor de l'antoxana del artículu del blog. Poner dientro del artículu, al final de l'antoxana. Como resultáu, apaez l'enllaz \"{{int:bs-blog-read-more}}\", qu'enllaza al artículu completu del blog.",
 	"bs-blog-tag-blogtime-desc": "Inxerta una marca de tiempu personalizada p'amosar y ordenar les entraes del blog. El formatu ye YYYYMMDDHHmm.",
-	"bs-blog-tag-blogtime-err": "El formatu tien de ser AAAAMMDDHHmm p. ex. pal 12 de xineru de 2013 a les 15:43 la marca de tiempu apaecerá como: 201301121543"
+	"bs-blog-tag-blogtime-err": "El formatu tien de ser AAAAMMDDHHmm p. ex. pal 12 de xineru de 2013 a les 15:43 la marca de tiempu apaecerá como: 201301121543",
+	"bs-tag-blog": "la marca de blog",
+	"action-blog-viewspecialpage": "ver la páxina especial \"{{int:bs-blog-blog}}\""
 }

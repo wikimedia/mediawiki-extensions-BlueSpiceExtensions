@@ -7,7 +7,7 @@
 	},
 	"bs-usermanager-no-self-block": "আপনি নিজেকে নিষ্ক্রিয় করতে পারবেন না।",
 	"bs-usermanager-block-error": "{{GENDER:$1|ব্যবহারকারী}} $1কে নিষ্ক্রয় করা যায়নি।",
-	"bs-usermanager-unblock-error": "{{GENDER:$1|ব্যবহারকারী}} $1কে সক্রিয় কারা যায়নি।",
+	"bs-usermanager-unblock-error": "{{GENDER:$1|ব্যবহারকারী}} $1কে সক্রিয় করা যায়নি।",
 	"bs-usermanager-headerenabled": "সক্রিয়",
 	"bs-usermanager-log-user-disabled": "ব্যবহারকারী-ব্যবস্থাপক {{GENDER:$1|ব্যবহারকারী}} $1কে নিষ্ক্রয় করেছেন",
 	"bs-usermanager-user-enabled": "{{GENDER:$1|ব্যবহারকারী}} $1কে সক্রিয় করা হয়েছে।",
