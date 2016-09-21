@@ -54,7 +54,7 @@ class BSApiPageAssignmentStore extends BSApiExtJSStoreBase {
 				$aPageAssignments[$row->pa_page_id] = array();
 			}
 			$aPageAssignments[$row->pa_page_id][] =
-				BSAssignableBase::factory( $row->pa_assignee_type, $row->pa_assignee_key );
+				BSAssignableBase::factory( $row->pa_assignee_type, $row->pa_assignee_key )->toStdClass();
 		}
 
 		return $aPageAssignments;
