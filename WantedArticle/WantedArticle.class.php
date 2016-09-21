@@ -488,7 +488,11 @@ class WantedArticle extends BsExtensionMW {
 			$aWikiLinks[] = '*[['.$sLinkText.']]'.( !empty($aWish['signature']) ? $aWish['signature'] : ' ');
 		}
 
-		return $oArticle->doEdit( implode( "\n", $aWikiLinks), $sSummary, EDIT_FORCE_BOT );
+		return $oArticle->doEditContent(
+			ContentHandler::makeContent( implode( "\n", $aWikiLinks ), $oTitle ),
+			$sSummary,
+			EDIT_FORCE_BOT
+		);
 	}
 
 	/**

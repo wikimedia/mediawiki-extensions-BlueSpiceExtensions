@@ -43,7 +43,7 @@ class GroupManager extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-                WikiAdmin::registerModule('GroupManager', array(
+		WikiAdmin::registerModule('GroupManager', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_gruppe_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-groupmanager-label',
@@ -129,7 +129,7 @@ class GroupManager extends BsExtensionMW {
 		} else {
 			if ( !$oTitle->exists() ) {
 				$oArticle = new Article( $oTitle );
-				$oArticle->doEdit( $sGroup, '', EDIT_NEW );
+				$oArticle->doEditContent( ContentHandler::makeContent( $sGroup, $oTitle ), '', EDIT_NEW );
 			}
 		}
 	}
