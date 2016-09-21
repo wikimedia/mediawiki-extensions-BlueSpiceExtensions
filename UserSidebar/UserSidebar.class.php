@@ -407,7 +407,7 @@ class UserSidebar extends BsExtensionMW {
 			$tpl->data['bs_navigation_main']['bs-usersidebar'] = array(
 				'position' => 20,
 				'label' => $sMsg,
-				'class' => 'icon-clipboard',
+				'class' => 'bs-icon-clipboard',
 				'content' => implode( "\n", $aOut )
 			);
 		} else {
@@ -427,7 +427,7 @@ class UserSidebar extends BsExtensionMW {
 			$tpl->data['bs_navigation_main']['bs-globalactions'] = array(
 				'position' => 100,
 				'label' => $sMsg,
-				'class' => 'icon-cog',
+				'class' => 'bs-icon-cog',
 				'content' => implode( "\n", $aOut )
 			);
 		} else {
