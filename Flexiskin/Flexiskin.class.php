@@ -39,9 +39,9 @@
 class Flexiskin extends BsExtensionMW {
 	/**
 	 * Initialization of Flexiskin extension
-         *
-         */
-    public function __construct() {
+	 *
+	 */
+	public function __construct() {
 		wfProfileIn( 'BS::' . __METHOD__ );
 		WikiAdmin::registerModule( 'Flexiskin', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_flexiskin_v1.png',
@@ -49,7 +49,7 @@ class Flexiskin extends BsExtensionMW {
 			'message' => 'bs-flexiskin-label',
 			'iconCls' => 'bs-icon-painting-roll'
 		) );
-                wfProfileOut( 'BS::' . __METHOD__ );
+		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
 	public function initExt() {
