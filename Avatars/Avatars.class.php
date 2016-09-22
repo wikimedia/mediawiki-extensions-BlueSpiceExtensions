@@ -184,6 +184,11 @@ class Avatars extends BsExtensionMW {
 		# TODO: Check if this is more expensive than a simple file_exists()
 		$oFile = BsFileSystemHelper::getFileFromRepoName($sAvatarFileName, 'Avatars');
 
+		// Prevent fatal when filerepo cannot be found.
+		if ( !$oFile ) {
+			return '';
+		}
+
 		# If avatar doesn't yet exit, create one
 		if (!$oFile->exists() || $bOverwrite) {
 			$sGenerator = BsConfig::get('MW::Avatars::Generator');
