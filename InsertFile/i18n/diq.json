@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Kumkumuk",
-			"Mirzali"
+			"Mirzali",
+			"Asmen"
 		]
 	},
 	"bs-insertfile-labelfilter": "Avrêc:",
 	"bs-insertfile-filename": "Namey Dosya",
 	"bs-insertfile-filesize": "Ebadê dosya",
-	"bs-insertfile-lastmodified": "Vırnayışë newey",
+	"bs-insertfile-lastmodified": "Vurriyayışê peyêni",
 	"bs-insertfile-labelupload": "Bar ke",
 	"bs-insertfile-details-title": "Detayi",
 	"bs-insertfile-labeldimensions": "Ebat (w x h)",
@@ -24,5 +25,6 @@
 	"bs-insertfile-typethumb": "Resmo qıckek",
 	"bs-insertfile-typeframe": "Çerçewe",
 	"bs-insertfile-typeborder": "Sinor",
-	"bs-insertfile-uploadbuttontext": "Çımpawe"
+	"bs-insertfile-uploadbuttontext": "Çımpawe",
+	"bs-insertfile-warning": "Tembe kem"
 }
