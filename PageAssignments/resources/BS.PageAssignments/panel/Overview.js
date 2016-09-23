@@ -27,7 +27,7 @@ Ext.define( 'BS.PageAssignments.panel.Overview', {
 							html.push( '<em>' +  mw.message('bs-pageassignments-directly-assigned').plain() + '</em>' );
 						}
 						else {
-							html.push( "<span class=\'icon-"+value[id].type+" bs-typeicon\'></span>" + value[id].anchor );
+							html.push( "<span class=\'bs-icon-"+value[id].type+" bs-typeicon\'></span>" + value[id].anchor );
 						}
 					}
 

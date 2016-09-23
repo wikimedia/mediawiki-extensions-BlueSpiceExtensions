@@ -22,7 +22,7 @@ Ext.define( 'BS.PageAssignments.panel.Manager', {
 				renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
 					var html = [];
 					for( var i = 0; i < value.length; i++ ) {
-						html.push( "<span class=\'icon-"+value[i].type+" bs-typeicon\'></span>" + value[i].anchor );
+						html.push( "<span class=\'bs-icon-"+value[i].type+" bs-typeicon\'></span>" + value[i].anchor );
 					}
 					if( html.length === 0 ) {
 						html.push( '<em>' + mw.message('bs-pageassignments-no-assignments').plain() + '</em>' );

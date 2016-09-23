@@ -7,7 +7,7 @@ class ViewPAStateBarBodyElement extends ViewStateBarBodyElement {
 		$this->sBodyText = '<ul>';
 		foreach ( $this->_mData as $oAssignee ) {
 			if( $oAssignee instanceof BSAssignableBase );
-			$this->sBodyText .= '<li><span class="icon-'.$oAssignee->toStdClass()->type.' bs-typeicon"></span>'.$oAssignee->toStdClass()->anchor.'</li>';
+			$this->sBodyText .= '<li><span class="bs-icon-'.$oAssignee->toStdClass()->type.' bs-typeicon"></span>'.$oAssignee->toStdClass()->anchor.'</li>';
 		}
 		$this->sBodyText .= '</ul>';
 		return parent::execute($params);

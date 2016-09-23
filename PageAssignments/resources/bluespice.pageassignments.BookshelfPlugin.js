@@ -15,7 +15,7 @@ $(document).bind('BSBookshelfUIManagerPanelInit', function( event, sender, oConf
 			}
 			var sOut = "<table>\n";
 			for(var i = 0; i < assignments.length; i++) {
-				sOut = sOut + "<tr><td><span class=\"icon-" + assignments[i]['type'] +"\"></span></td><td>" + assignments[i]['anchor'] + "</td></tr>\n";
+				sOut = sOut + "<tr><td><span class=\"bs-icon-" + assignments[i]['type'] +"\"></span></td><td>" + assignments[i]['anchor'] + "</td></tr>\n";
 			}
 			sOut = sOut + "</table>\n";
 			return sOut;
@@ -24,7 +24,7 @@ $(document).bind('BSBookshelfUIManagerPanelInit', function( event, sender, oConf
 
 	oConf.actions.push(
 		{
-			iconCls: 'bs-extjs-actioncolumn-icon icon-users progressive',
+			iconCls: 'bs-extjs-actioncolumn-icon bs-icon-group progressive',
 			glyph: true,
 			tooltip: mw.message( 'bs-pageassignments-menu-label' ).plain(),
 			handler: function( grid, rowIndex, colIndex, btn, event, record, rowElement ) {

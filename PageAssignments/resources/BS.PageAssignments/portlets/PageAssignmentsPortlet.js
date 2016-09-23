@@ -44,7 +44,7 @@ Ext.define( 'BS.PageAssignments.portlets.PageAssignmentsPortlet', {
 							html.push( '<em>' +  mw.message('bs-pageassignments-directly-assigned').plain() + '</em>' );
 						}
 						else {
-							html.push( "<span class=\'icon-"+value[id].type+" bs-typeicon\'></span>" + value[id].anchor );
+							html.push( "<span class=\'bs-icon-"+value[id].type+" bs-typeicon\'></span>" + value[id].anchor );
 						}
 					}
 					return html.join(', ');
