@@ -45,5 +45,6 @@
 	"bs-flexiskin-api-error-invalid-action": "Dës Aktioun gëtt et net.",
 	"bs-flexiskin-usebackground": "Hannergrondbild benotzen",
 	"bs-flexiskin-labelcurrentbackground": "Aktuellt Bild",
-	"action-flexiskin-viewspecialpage": "d'Spezialsäit \"Flexiskin\" weisen"
+	"action-flexiskin-viewspecialpage": "d'Spezialsäit \"Flexiskin\" weisen",
+	"flexiskin": "Astellunge vum Layout"
 }
