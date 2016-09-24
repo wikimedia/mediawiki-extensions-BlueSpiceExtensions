@@ -29,6 +29,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Indeksiranje posebnih strani",
 	"bs-extendedsearch-invalid-query": "Poizvedbe ni bilo mogoče obdelati.",
 	"bs-extendedsearch-nosearchterm": "Prosim, vnesite iskalni niz.",
+	"bs-extendedsearch-noresult": "Ni zadetkov.",
 	"bs-extendedsearch-result": "Iskanje po \"$1\" je vrnilo $2 {{PLURAL:$2|zadetek|2=zadetka|3=zadetke|4=zadetke|zadetkov}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 od $3 {{PLURAL:$3|zadetka|zadetkov}}",
 	"bs-extendedsearch-search-category": "Išči po kategorijah:",
@@ -99,5 +100,10 @@
 	"bs-extendedsearch-redirect": "Preusmeritev iz: $1",
 	"bs-extendedsearch-totalnoofarticles": "Število strani za indeksiranje: $1",
 	"bs-extendedsearch-more": "Več",
-	"bs-extendedsearch-fewer": "Manj"
+	"bs-extendedsearch-fewer": "Manj",
+	"bs-extendedsearch-facetsetting-op-and": "IN",
+	"bs-extendedsearch-facetsetting-op-or": "ALI",
+	"action-extendedsearch-viewspecialpage": "ogled posebne strani »{{int:specialextendedsearch}}«",
+	"action-extendedsearchadmin-viewspecialpage": "ogled posebne strani »{{int:extendedsearchadmin}}«",
+	"extendedsearchadmin": "Upravljanje razširjenega iskanja"
 }
