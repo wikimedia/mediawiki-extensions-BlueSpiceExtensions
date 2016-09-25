@@ -28,5 +28,6 @@
 	"bs-interwikilink-select-a-prefix": "Виберіть префікс",
 	"bs-interwikilinks-link-edited": "Інтервікі-посилання додано",
 	"apihelp-bs-interwikilinks-tasks-description": "Забезпечує завдання для розширення InterWikiLinks.",
+	"action-interwikilinks-viewspecialpage": "перегляд спеціальної сторінки «{{int:bs-interwikilinks-label}}»",
 	"interwikilinks": "Інтервікі-посилання"
 }

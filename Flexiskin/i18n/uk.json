@@ -66,5 +66,7 @@
 	"apihelp-bs-flexiskin-tasks-description": "Дозволяє управляти гнучкими темами оформлення",
 	"apihelp-bs-flexiskin-store-description": "Виводить список доступних гнучких тем оформлення",
 	"apihelp-bs-flexiskin-upload-description": "Дозволяє вантажити файли до гнучкої теми оформлення",
-	"apihelp-bs-flexiskin-upload-store-description": "Виводить список завантажених файлів гнучкої теми оформлення"
+	"apihelp-bs-flexiskin-upload-store-description": "Виводить список завантажених файлів гнучкої теми оформлення",
+	"action-flexiskin-viewspecialpage": "перегляд спеціальної сторінки «Flexiskin»",
+	"flexiskin": "Налаштування теми"
 }

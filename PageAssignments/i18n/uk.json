@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"bs-pageassignments-desc": "Дозволяє Вам призначати користувачів або групи до певної сторінки",
+	"pageassignments": "Призначення",
+	"managepageassignments": "Управління Призначеннями",
+	"bs-pageassignments-pref-assignedusersadditionalpermissions": "Додаткові права для призначених користувачів",
+	"bs-pageassignments-dlg-title": "Призначення",
+	"bs-pageassignments-dlg-fldlabel": "Призначення",
+	"bs-pageassignments-menu-label": "Редагувати призначення",
+	"bs-pageassignments-statebar-label": "Призначення",
+	"bs-pageassignments-action-apiedit-description": "Редагувати призначення для $1",
+	"bs-pageassignments-column-title": "Назва сторінки",
+	"bs-pageassignments-column-assignments": "Призначення",
+	"bs-pageassignments-column-assignedby": "Призначено користувачем",
+	"bs-pageassignments-no-assignments": "Жодних призначень",
+	"bs-pageassignments-action-log": "Журнал призначень",
+	"bs-pageassignments-directly-assigned": "безпосередньо",
+	"bs-pageassignments-action-delete-confirm": "Вилучити призначення?",
+	"bs-pageassignments-api-error": "Сталася помилка",
+	"bs-pageassignments-api-error-no-page": "Сторінку не вказано",
+	"bs-pageassignments-api-error-insert": "Не вдалося зберегти призначення «$1» для «$2»",
+	"log-name-bs-pageassignments": "Журнал призначень",
+	"log-description-bs-pageassignments": "Журнал змін у призначеннях сторінок",
+	"log-show-hide-bs-pageassignments": "$1 журнал призначень",
+	"logentry-bs-pageassignments-add-user": "$1 {{GENDER:$2|призначив|призначила}} сторінку «$3» {{GENDER:$4|користувачеві|користувачці}} «$4»",
+	"logentry-bs-pageassignments-remove-user": "$1 {{GENDER:$2|вилучив|вилучила}} призначення сторінки «$3» для {{GENDER:$4|користувача|користувачки}} «$4»",
+	"logentry-bs-pageassignments-add-group": "$1 {{GENDER:$2|призначив|призначила}} групу «$4» для сторінки «$3»",
+	"logentry-bs-pageassignments-remove-group": "$1 {{GENDER:$2|вилучив|вилучила}} призначення групи «$4» для сторінки «$3»",
+	"echo-category-title-bs-pageassignments-action-cat": "Призначення сторінок",
+	"bs-pageassignments-notification-reason": "Причини для цього сповіщення:",
+	"bs-pageassignments-notification-reason-user": "Вас безпосередньо призначено для сторінки"
+}
