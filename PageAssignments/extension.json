@@ -78,9 +78,6 @@
 				"BS/override/grid/column/Action.js",
 				"ext.bluespice.pageassignments.js"
 			],
-			"styles": [
-				"ext.bluespice.extjs.overrides.less"
-			],
 			"messages": [
 				"bs-pageassignments-dlg-title",
 				"bs-pageassignments-dlg-fldlabel",

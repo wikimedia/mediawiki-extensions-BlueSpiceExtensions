@@ -17,7 +17,7 @@
 				title
 			),
 			id: 'bs-cm-item-edit',
-			iconCls: 'icon-pencil'
+			iconCls: 'bs-icon-pencil'
 		});
 		items.push({
 				text: mw.message('bs-contextmenu-page-history').plain(),
@@ -28,7 +28,7 @@
 					title
 				),
 				id: 'bs-cm-item-history',
-				iconCls: 'icon-history'
+				iconCls: 'bs-icon-history'
 			});
 
 		items.push({
@@ -40,14 +40,14 @@
 				title
 			),
 			id: 'bs-cm-item-delete',
-			iconCls: 'icon-trash'
+			iconCls: 'bs-icon-bin'
 		});
 
 		items.push({
 			text: mw.message('bs-contextmenu-page-move').plain(),
 			href: mw.util.getUrl( 'Special:Movepage/'+title ),
 			id: 'bs-cm-item-move',
-			iconCls: 'icon-shuffle'
+			iconCls: 'bs-icon-shuffle'
 		});
 
 		items.push({
@@ -59,7 +59,7 @@
 				title
 			),
 			id: 'bs-cm-item-protect',
-			iconCls: 'icon-shield'
+			iconCls: 'bs-icon-shield'
 		});
 
 		return items;

@@ -35,7 +35,7 @@ Ext.define( 'BS.PageAssignments.panel.Manager', {
 
 		this._storeFields = [ 'page_id', 'page_prefixedtext', 'page_link', 'assignments' ];
 		this._actions = [{
-			iconCls: 'icon-text bs-extjs-actioncolumn-icon',
+			iconCls: 'bs-icon-text bs-extjs-actioncolumn-icon',
 			glyph: true,
 			tooltip: mw.message('bs-pageassignments-action-log').plain(),
 			handler: function( view, rowIndex, colIndex,item, e, record, row ) {
@@ -60,21 +60,7 @@ Ext.define( 'BS.PageAssignments.panel.Manager', {
 	},
 
 	makeRowActions: function() {
-		this.colMainConf.actions.unshift({
-			iconCls: 'icon-trash bs-extjs-actioncolumn-icon',
-			glyph: true,
-			tooltip: mw.message('bs-extjs-delete').plain(),
-			handler: this.onActionRemoveClick,
-			scope: this
-		});
-
-		this.colMainConf.actions.unshift({
-			iconCls: 'icon-wrench bs-extjs-actioncolumn-icon',
-			glyph: true,
-			tooltip: mw.message('bs-extjs-edit').plain(),
-			handler: this.onActionEditClick,
-			scope: this
-		});
+		this.callParent( arguments );
 
 		for( var i = 0; i < this._actions.length; i++ ) {
 			this.colMainConf.actions.push( this._actions[i] );
