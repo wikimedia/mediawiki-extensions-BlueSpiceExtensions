@@ -15,8 +15,9 @@ Ext.define( 'BS.InsertCategory.AsyncCategoryTreePanel', {
 		this.store = Ext.create('Ext.data.TreeStore', {
 			proxy: {
 				type: 'ajax',
-				url: bs.util.getCAIUrl('getAsyncCategoryTreeStoreData')
+				url: bs.api.makeUrl( 'bs-category-treestore' )
 			},
+			defaultRootProperty: 'results',
 			root: {
 				text: 'Categories',
 				id: 'src',
