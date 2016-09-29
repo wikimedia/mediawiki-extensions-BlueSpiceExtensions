@@ -53,7 +53,8 @@ class PageAccess extends BsExtensionMW {
 
 	public function onArticleSave( &$article, &$user, &$text, &$summary, $minor, $watchthis, $sectionanchor, &$flags, &$status ) {
 		# Prevent user from locking himself out of his own page
-		$oEditInfo = $article->prepareTextForEdit( $text, null, $user );
+		$content = ContentHandler::makeContent( $text, $article->getTitle() );
+		$oEditInfo = $article->prepareContentForEdit( $content, null, $user );
 		$sAccessGroups = $oEditInfo->output->getProperty( 'bs-page-access' );
 		if ( !$this->checkAccessGroups( $user, $sAccessGroups ) ) {
 			$err[0] = 'bs-pageaccess-error-not-member-of-given-groups';
