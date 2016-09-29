@@ -1,5 +1,5 @@
 {
-	"name": "hallowelt/bluespice-extensions",
+	"name": "hallowelt/blue-spice-extensions",
 	"description": "This package consists of a number of separate MediaWiki extensions that depend on hallowelt/bluespice-foundation",
 	"keywords": ["mediawiki", "wiki"],
 	"license": "GPL-2.0+",
@@ -13,7 +13,7 @@
 		}
 	],
 	"require": {
-		"hallowelt/bluespice-foundation": "dev-master"
+		"hallowelt/blue-spice-foundation": "~2.27"
 	},
 	"support": {
 		"issues": "https://sourceforge.net/projects/bluespice/support",
