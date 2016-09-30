@@ -96,7 +96,15 @@ class Flexiskin extends BsExtensionMW {
 
 		$oResult = $api->execute();
 
-		$oData = $api->getResultData();
+		if ( defined( 'ApiResult::META_CONTENT' ) ) {
+			$oData = $api->getResult()->getResultData( null, array(
+				'BC' => array(),
+				'Types' => array(),
+				'Strip' => 'all',
+			) );
+		} else {
+			$oData = $api->getResultData();
+		}
 		if ( $oData ) {
 			$aData = array();
 				foreach ( $oData['results'] as $aConf ) {
