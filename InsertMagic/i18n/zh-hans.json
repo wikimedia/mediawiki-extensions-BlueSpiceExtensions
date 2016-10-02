@@ -66,7 +66,7 @@
 	"bs-insertmagic-type-switches": "行为交换",
 	"bs-insertmagic-label-first": "一、选择标签或魔术字",
 	"bs-insertmagic-label-second": "二、修改代码",
-	"bs-insertmagic-label-desc": "说明",
+	"bs-insertmagic-label-desc": "描述",
 	"bs-insertmagic-label-examples": "示例",
 	"bs-insertmagic-label-see-also": "参见",
 	"apihelp-bs-insertmagic-data-store-description": "列举所有用于InsertMagic对话的项目"

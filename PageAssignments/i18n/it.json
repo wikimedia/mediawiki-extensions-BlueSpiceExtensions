@@ -18,5 +18,6 @@
 	"notification-bs-pageassignments-user-group-add-summary": "Sei stato aggiunto al gruppo $4",
 	"notification-bs-pageassignments-user-group-add-subject": "Aggiunto al gruppo $4",
 	"notification-bs-pageassignments-user-group-remove-subject": "Rimosso {{PLURAL:$5|dal gruppo|dai gruppi}} $4",
+	"right-pageassignable": "Appare nell'elenco degli utenti assegnabili",
 	"right-pageassignments": "Modifica le assegnazioni di una pagina"
 }

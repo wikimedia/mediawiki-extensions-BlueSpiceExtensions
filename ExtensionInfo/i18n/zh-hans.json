@@ -11,7 +11,7 @@
 	"extensioninfo": "扩展",
 	"bs-extensioninfo-headerextname": "扩展名",
 	"bs-extensioninfo-headerversion": "版本",
-	"bs-extensioninfo-headerdesc": "说明",
+	"bs-extensioninfo-headerdesc": "描述",
 	"bs-extensioninfo-headerstatus": "状态",
 	"bs-extensioninfo-headerpackage": "程序包",
 	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|运行环境}}"
