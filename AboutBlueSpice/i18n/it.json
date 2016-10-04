@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Selven"
 		]
 	},
 	"bs-aboutbluespice-desc": "Informazioni su BlueSpice.",
 	"bs-aboutbluespice-about-bluespice": "Su BlueSpice",
 	"aboutbluespice": "Su BlueSpice",
 	"prefs-aboutbluespice": "Su BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Mostra collegamento \"{{int:bs-aboutbluespice-about-bluespice}}\" in cima al menu principale",
 	"action-aboutbluespice-viewspecialpage": "visualizzare la pagina speciale \"{{int:bs-aboutbluespice-about-bluespice}}\""
 }

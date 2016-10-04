@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Selven"
 		]
 	},
 	"bs-statebar-desc": "Fornisce una barra di stato",
 	"prefs-statebar": "Barra di stato",
+	"bs-statebar-pref-sortbodyvars": "Ordine corpo:",
+	"bs-statebar-pref-sorttopvars": "Ordine superiore:",
 	"bs-statebar-pref-show": "Visualizza barra di stato",
 	"bs-statebar-viewtoggler": "DETTAGLI",
 	"bs-statebar-viewtoggler-tooltip": "Mostra informazioni dettagliate",

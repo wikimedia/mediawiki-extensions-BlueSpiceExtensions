@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Selven"
+		]
+	},
+	"bs-topmenubarcustomizer-desc": "Personalizzare i collegamenti del menu superiore",
+	"prefs-topmenubarcustomizer": "Personalizzatore di menu",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Numero di livelli nidificati:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entrate nello strato principale:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entrate negli strati inferiori:"
+}

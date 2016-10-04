@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gianfranco",
-			"Beta16"
+			"Beta16",
+			"Selven"
 		]
 	},
 	"bs-wikiadmin-desc": "Punto centrale di amministrazione per BlueSpice",
@@ -10,5 +11,8 @@
 	"wikiadmin": "Amministrazione BlueSpice",
 	"action-wikiadmin": "visualizza le pagine di amministrazione di BlueSpice",
 	"right-wikiadmin": "Visualizza le pagine di amministrazione di BlueSpice",
+	"bs-wikiadmin-shop": "Negozio",
+	"bs-wikiadmin-mediawiki-specialpages-text": "Pagine speciali",
+	"bs-wikiadmin-mediawiki-specialpages-title": "Elenco tutte le pagine speciali di MediaWiki",
 	"bs-wikiadmin-widget-title": "Amministrazione"
 }
