@@ -2,13 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Matteocng"
+			"Matteocng",
+			"Selven"
 		]
 	},
+	"bs-pagesvisited-desc": "Fornisce un elenco personalizzato delle ultime pagine visitate",
 	"prefs-pagesvisited": "Pagine visitate",
 	"bs-pagesvisited-widget-title": "Pagine visitate",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Il|I}} namespace <code>$2</code> non sono {{PLURAL:$1|valido|validi}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Limite di ingressi:",
 	"bs-pagesvisited-pref-widgetns": "Namespace:",
 	"bs-pagesvisited-pref-widgetsortodr": "Ordina per:",
+	"bs-pagesvisited-pref-sort-time": "Ora",
 	"bs-pagesvisited-pref-sort-pagename": "Titolo",
 	"bs-pagesvisited-tag-pagesvisited-desc": "Mostra un elenco delle pagine visitate recentemente. Questo elenco può essere ristretto con dei parametri."
 }

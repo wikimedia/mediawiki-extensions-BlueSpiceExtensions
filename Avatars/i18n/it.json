@@ -19,7 +19,7 @@
 	"bs-avatars-warning-text": "È necessario impostare un immagine utente nelle preferenze. Utilizzare gli avatar annullerà questa impostazione. Sicuro di voler continuare?",
 	"bs-avatars-userimage-title": "Immagine da wiki o URL immagine",
 	"bs-avatars-userimage-help": "ad esempio Picture.jpg o http://localhost/Picture.gif",
-	"bs-avatars-set-userimage-failed": "Non è un URL valido o di un'immagine da wiki.",
+	"bs-avatars-set-userimage-failed": "Non è un URL valido o un'immagine da wiki.",
 	"bs-avatars-set-userimage-saved": "L'immagine utente è stata salvata.",
 	"bs-avatars-file-upload-fieldset-title": "Caricamento immagine",
 	"bs-avatars-auto-generate-fieldset-title": "Generazione automatica avatar"
