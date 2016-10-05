@@ -259,6 +259,12 @@ class UserSidebar extends BsExtensionMW {
 			if( !isset($aLink['attr']) || !is_array($aLink['attr']) ) {
 				$aLink['attr'] = array();
 			}
+			if( !isset( $aLink['attr']['class'] ) ) {
+				$aLink['attr']['class'] = 'bs-globalactions-link bs-globalaction-' . strtolower( $oTitle->mTextform );
+			}
+			else {
+				$aLink['attr']['class'] .= ' bs-globalactions-link bs-globalaction-' . strtolower( $oTitle->mTextform );
+			}
 			if( empty($aLink['text']) ) {
 				$aLink['text'] = $oTitle->getText();
 			}
