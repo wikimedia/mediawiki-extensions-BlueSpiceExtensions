@@ -125,11 +125,20 @@ class ExtendedSearch extends BsExtensionMW {
 	 * @global array $wgAjaxExportList
 	 */
 	public static function onRegistration() {
-		global $wgAjaxExportList;
+		global $wgAjaxExportList, $bsgExtendedSearchBoostQuerySettings;
 		$wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
 		$wgAjaxExportList[] = 'ExtendedSearchBase::getAutocompleteData';
 		$wgAjaxExportList[] = 'ExtendedSearchBase::getRecentSearchTerms';
 		$wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
+
+		$bsgExtendedSearchBoostQuerySettings = array(
+			'namespace' => array(
+				//This is for every MediaWiki content namespace;
+				//Concrete values will be calculated at runtime
+				'*' => 2,
+				999 => 2 // Pseudo namespace for files
+			)
+		);
 	}
 
 	/**
