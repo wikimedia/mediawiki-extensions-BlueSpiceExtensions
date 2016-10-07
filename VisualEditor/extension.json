@@ -10,7 +10,7 @@
 	"type": "bluespice",
 	"license-name": "GPL-2.0+",
 	"bsgExtensions": {
-		"VisualEditor": {
+		"BlueSpiceVisualEditor": {
 			"className": "VisualEditor",
 			"extPath": "/BlueSpiceExtensions/VisualEditor"
 		}
@@ -19,7 +19,7 @@
 		"bs-visualeditor-tasks": "ApiVisualEditorTasks"
 	},
 	"MessagesDirs": {
-		"VisualEditor": [
+		"BlueSpiceVisualEditor": [
 			"i18n"
 		]
 	},
