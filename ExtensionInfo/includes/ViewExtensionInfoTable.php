@@ -59,6 +59,9 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 				$sExtName,
 				$this->getHelpdeskUrl($aExtension)
 			);
+			if( empty( $aExtension['descriptionmsg'] ) ) {
+				$aExtension['descriptionmsg'] = '';
+			}
 			$aExtension['descriptionmsg'] = wfMessage(
 				$aExtension['descriptionmsg']
 			)->text();
