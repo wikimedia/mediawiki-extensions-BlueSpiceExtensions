@@ -105,5 +105,6 @@
 	"bs-extendedsearch-facetsetting-op-or": "OR",
 	"action-extendedsearch-viewspecialpage":"view the special page \"{{int:specialextendedsearch}}\"",
 	"action-extendedsearchadmin-viewspecialpage":"view the special page \"{{int:extendedsearchadmin}}\"",
-	"extendedsearchadmin": "Extended search administration"
+	"extendedsearchadmin": "Extended search administration",
+	"bs-extendedsearch-create-page": "Create page \"$1\"."
 }

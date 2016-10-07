@@ -110,6 +110,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalConfig' );
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
+		$this->setHook( 'BSExtendedSearchAutocomplete' );
 
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ), array( 'type' => 'global' ) );
 		$this->mCore->registerPermission( 'extendedsearch-viewspecialpage', array( 'user' ), array( 'type' => 'global' ) );
@@ -535,4 +536,43 @@ class ExtendedSearch extends BsExtensionMW {
 		unset( $bsgExtendedSearchBoostQuerySettings['namespace']['*'] );
 	}
 
+	/**
+	 * Hook-Handler for BlueSpice 'BSExtendedSearchAutocomplete' hook. Creates create link in autocomplete.
+	 * @param array &$aResults contains results
+	 * @param string &$sSearchString search string
+	 * @param int &$iID number of last item
+	 * @return bool Always true to keep hooks running.
+	 */
+	public function onBSExtendedSearchAutocomplete( &$aResults, $sSearchString, &$iID, $bTitleExists, $sEcpSearchString ) {
+		if ( empty( $sSearchString ) ) return true;
+		if ( $bTitleExists === true ) return true;
+
+		if ( BsConfig::get( 'MW::ExtendedSearch::ShowCreSugInAc' ) == false ) return true;
+
+		$sShortAndEscapedString = BsStringHelper::shorten(
+			$sEcpSearchString,
+			array(
+				'max-length' => '30',
+				'position' => 'middle',
+				'ellipsis-characters' => '...'
+			)
+		);
+
+		$oTitle = Title::newFromText( $sEcpSearchString );
+		if ( is_object( $oTitle ) ) {
+			if ( $oTitle->userCan( 'createpage' ) && $oTitle->userCan( 'edit' ) ) {
+				$oItemCreate = new stdClass();
+				$oItemCreate->id = ++$iID;
+				$oItemCreate->value = $sEcpSearchString;
+				$oItemCreate->label = wfMessage( 'bs-extendedsearch-create-page', '<b>' . $sShortAndEscapedString . '</b>' )->parse() . '';
+				$oItemCreate->type = '';
+				$oItemCreate->link = $oTitle->getFullURL();
+				$oItemCreate->attr = 'bs-extendedsearch-create';
+				$aResults[] = $oItemCreate;
+			}
+
+		}
+
+		return true;
+	}
 }
