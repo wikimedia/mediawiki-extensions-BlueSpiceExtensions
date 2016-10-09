@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Matteocng"
+			"Matteocng",
+			"Selven"
 		]
 	},
+	"bs-whoisonline-nousers": "Nessuno è connesso.",
+	"bs-whoisonline-widget-title": "Chi è online?",
+	"prefs-whoisonline": "Chi è online?",
+	"bs-whoisonline-pref-orderby": "Ordina per:",
+	"bs-whoisonline-pref-orderby-name": "Nome",
 	"bs-whoisonline-tag-whoisonlinecount-desc": "Mostra il numero totale degli utenti che si sono collegati negli ultimi 10 minuti.",
 	"bs-whoisonline-tag-whoisonlinepopup-desc": "Mostra tutti gli utenti che si sono collegati negli ultimi 10 minuti."
 }

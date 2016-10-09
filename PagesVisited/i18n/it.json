@@ -9,7 +9,7 @@
 	"bs-pagesvisited-desc": "Fornisce un elenco personalizzato delle ultime pagine visitate",
 	"prefs-pagesvisited": "Pagine visitate",
 	"bs-pagesvisited-widget-title": "Pagine visitate",
-	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Il|I}} namespace <code>$2</code> non sono {{PLURAL:$1|valido|validi}}.",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Il|I}} namespace <code>$2</code> non {{PLURAL:$1|è valido|sono validi}}.",
 	"bs-pagesvisited-pref-widgetlimit": "Limite di ingressi:",
 	"bs-pagesvisited-pref-widgetns": "Namespace:",
 	"bs-pagesvisited-pref-widgetsortodr": "Ordina per:",

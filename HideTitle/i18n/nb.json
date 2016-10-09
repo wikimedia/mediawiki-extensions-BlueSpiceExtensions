@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-hidetitle-desc": "Legger til det magiske ordet <code><nowiki>__HIDETITLE__</nowiki></code> for å skjule sidens tittel"
+}

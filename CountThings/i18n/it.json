@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Selven"
 		]
 	},
+	"bs-countthings-desc": "Fornisce contenuti in base a statistiche",
 	"bs-countthings-chars-label": "Caratteri",
 	"bs-countthings-words-label": "Parole",
 	"bs-countthings-pages-label": "Pagine",

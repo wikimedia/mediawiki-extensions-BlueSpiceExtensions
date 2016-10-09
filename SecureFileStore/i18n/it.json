@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Selven"
+		]
+	},
+	"bs-securefilestore-desc": "Impedisce l'accesso non autorizzato a file ed immagini",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Esplora",
+	"bs-securefilestore-pref-defaultdisposition-external": "Esterno",
+	"bs-securefilestore-pref-dispositioninline": "Esplora tipi di file:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Mostra sempre questi tipi di file:"
+}

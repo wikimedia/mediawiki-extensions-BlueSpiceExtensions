@@ -3,10 +3,12 @@
 		"authors": [
 			"Valepert",
 			"Beta16",
-			"Gianfranco"
+			"Gianfranco",
+			"Selven"
 		]
 	},
 	"prefs-blog": "Blog",
+	"blog": "Blog",
 	"bs-blog-no-entries": "Non sono presenti voci di blog.",
 	"bs-blog-comments": "Commenti",
 	"bs-blog-read-more": "Per saperne di più",
@@ -14,8 +16,12 @@
 	"bs-blog-permalink": "Link permanente",
 	"bs-blog-show-all": "Mostra tutte le voci",
 	"bs-blog-form-inline-text": "Titolo...",
+	"bs-blog-form-title-text": "Crea un nuovo inserimento del blog",
 	"bs-blog-form-button-text": "Crea",
 	"bs-blog-blog": "Blog",
+	"bs-blog-pref-moreinnewwindow": "Apri una nuova finestra per saperne di più",
+	"bs-blog-pref-showpermalink": "Mostra collegamento permanente",
 	"bs-blog-pref-sortby": "Ordina per:",
+	"bs-blog-pref-imagerendermode": "Mostra immagini come:",
 	"action-blog-viewspecialpage": "visualizzare la pagina speciale \"{{int:bs-blog-blog}}\""
 }

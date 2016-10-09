@@ -3,15 +3,36 @@
 		"authors": [
 			"Ankabel",
 			"Beta16",
-			"FRacco"
+			"FRacco",
+			"Selven"
 		]
 	},
+	"prefs-shoutbox": "Shoutbox",
+	"bs-shoutbox-title": "Shoutbox",
 	"bs-shoutbox-message": "Scrivi un nuovo commento...",
 	"bs-shoutbox-shout": "Invia",
+	"bs-shoutbox-no-entries": "Ancora niente.",
 	"bs-shoutbox-loading": "Caricamento...",
 	"bs-shoutbox-pref-committimeinterval": "Tempo tra due messaggi (in secondi):",
+	"bs-shoutbox-pref-maxmessagelength": "Lunghezza massima di un messaggio:",
 	"bs-shoutbox-pref-numberofshouts": "Numero di messaggi mostrati:",
+	"bs-shoutbox-pref-showage": "Mostra la data di creazione di un messaggio",
 	"bs-shoutbox-pref-showuser": "Visualizza autore di un messaggio",
 	"bs-shoutbox-pref-allowarchive": "Gli utenti sono in grado di eliminare le proprie voci",
-	"bs-shoutbox-confirm-title": "Conferma"
+	"bs-shoutbox-pref-show": "Mostra shoutbox",
+	"bs-shoutbox-archive-success": "Voce cancellata.",
+	"bs-shoutbox-archive-failure": "Si è verificato un errore durante il tentativo di eliminare la voce, si prega di riprovare.",
+	"bs-shoutbox-archive-failure-user": "Le voci possono essere eliminati solo dal loro autore.",
+	"bs-shoutbox-switch-description": "Nascondi shoutbox su questa pagina",
+	"bs-shoutbox-charactersleft": "$1 {{PLURAL:$1|personaggio|personaggi}} rimasti",
+	"bs-shoutbox-confirm-text": "Vuoi davvero cancellare questa voce?",
+	"bs-shoutbox-confirm-title": "Conferma",
+	"bs-shoutbox-entermessage": "Si prega di inserire un messaggio.",
+	"bs-shoutbox-too-early": "Si prega di attendere alcuni secondi prima di inviare un'altra voce.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Urlo|Urla}}",
+	"echo-category-title-bs-shoutbox-mention-cat": "Notifica di citazione in un urlo",
+	"bs-shoutbox-notifications-title-message-subject": "Sei stato citato",
+	"bs-shoutbox-notifications-title-message-text": "Sei {{GENDER:$1|stato citato|stata citata}} da $1 ($4) in un urlo nella pagina \"$5.\"\n\nPuoi visitare la pagina al seguente collegamento:\n$3",
+	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] ti ha {{GENDER:$1|citato|citata}} in un grido a $3.",
+	"apihelp-bs-shoutbox-tasks-description": "Fornisce attività comuni per la ShoutBox"
 }

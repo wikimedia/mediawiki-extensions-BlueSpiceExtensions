@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Selven"
 		]
 	},
 	"apihelp-bs-rssfeeder-tasks-description": "Fornisce attività comuni per il RSSFeeder",
 	"bs-rssfeeder-pages": "Pagina",
+	"bs-rssfeeder-submit": "Mostra",
 	"bs-rssfeeder-invalid-url": "Indica un URL valido.",
 	"action-rssfeeder-viewspecialpage": "visualizzare la pagina speciale \"{{int:rssfeeder}}\""
 }

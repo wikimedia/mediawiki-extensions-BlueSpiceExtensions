@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Nemo bis",
-			"Beta16"
+			"Beta16",
+			"Selven"
 		]
 	},
+	"bs-insertlink-desc": "Finestra di dialogo per inserire un collegamento",
 	"prefs-insertlink": "Inserisci collegamento",
 	"bs-insertlink": "Inserisci collegamento",
 	"bs-insertlink-pref-enable-java": "Abilita Java applet",
@@ -12,10 +14,16 @@
 	"bs-insertlink-dialog-title": "Inserisci collegamento",
 	"bs-insertlink-tab-wiki-page": "Pagina wiki",
 	"bs-insertlink-tab-ext-link": "Collegamento esterno",
+	"bs-insertlink-tab-email": "Collegamento email",
+	"bs-insertlink-tab-ext-file": "Collegamento al file",
 	"bs-insertlink-label-page": "Pagina",
 	"bs-insertlink-label-link": "Collegamento",
 	"bs-insertlink-label-mail": "Indirizzo email",
 	"bs-insertlink-label-description": "Descrizione",
 	"bs-insertlink-label-file": "File",
-	"bs-insertlink-select-a-namespace": "(Pagine)"
+	"bs-insertlink-label-searchfile": "Cerca...",
+	"bs-insertlink-select-a-page": "Scegli la destinazione ...",
+	"bs-insertlink-select-a-namespace": "(Pagine)",
+	"bs-insertlink-empty-field-text": "Per inserire un link è necessario indicare una destinazione.",
+	"bs-insertlink-no-applet": "L'applet non può essere caricato. Si prega di controllare l'installazione di Java."
 }
