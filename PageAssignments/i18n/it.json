@@ -23,7 +23,7 @@
 	"bs-pageassignments-api-error-insert": "L'assegnazione \"$1\" per \"$2\" non poteva essere salvata",
 	"log-name-bs-pageassignments": "Registro di assegnazioni",
 	"log-description-bs-pageassignments": "Registro delle modifiche sulla pagina assegnazioni",
-	"log-show-hide-bs-pageassignments": "$1 Registro di assegnazioni",
+	"log-show-hide-bs-pageassignments": "$1 registro assegnazioni",
 	"notification-bs-pageassignments-assignment-change-add-subject": "Assegnato a $2",
 	"notification-bs-pageassignments-assignment-change-add-body": "$1 {{GENDER:$2|ti ha assegnato}} alla pagina di$2",
 	"notification-bs-pageassignments-page-move-summary": "$3 è stata {{GENDER:$2|spostata}} da $1",

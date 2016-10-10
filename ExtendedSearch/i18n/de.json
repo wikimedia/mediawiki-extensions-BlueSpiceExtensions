@@ -107,5 +107,6 @@
 	"bs-extendedsearch-facetsetting-op-or": "ODER",
 	"action-extendedsearch-viewspecialpage": "die Spezialseite „{{int:specialextendedsearch}}“ anzusehen",
 	"action-extendedsearchadmin-viewspecialpage": "die Spezialseite „{{int:extendedsearchadmin}}“ anzusehen",
-	"extendedsearchadmin": "Verwaltung der erweiterten Suche"
+	"extendedsearchadmin": "Verwaltung der erweiterten Suche",
+	"bs-extendedsearch-create-page": "Seite „$1“ erstellen."
 }

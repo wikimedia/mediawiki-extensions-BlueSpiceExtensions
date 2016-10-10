@@ -114,5 +114,5 @@
 	"action-extendedsearch-viewspecialpage": "placeholder to describe that view of special page \"{{int:specialextendedsearch}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearch-viewspecialpage}}",
 	"action-extendedsearchadmin-viewspecialpage": "placeholder to describe that view of special page \"{{int:extendedsearchadmin}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearchadmin-viewspecialpage}}\"",
 	"extendedsearchadmin": "Extended search administration",
-	"bs-extendedsearch-create-page":  "Text for create page \"$1\". $1 is the entered page name\n{{Identical|Create page}}"
+	"bs-extendedsearch-create-page": "Text for create page \"$1\". $1 is the entered page name\n{{Identical|Create page}}"
 }
