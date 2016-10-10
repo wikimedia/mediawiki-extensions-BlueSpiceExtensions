@@ -46,7 +46,7 @@ class SmartList extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn('BS::' . __METHOD__);
 		$this->setHook( 'ParserFirstCallInit', 'onParserFirstCallInit' );
-		$this->setHook( 'ArticleSaveComplete' );
+		$this->setHook( 'PageContentSaveComplete' );
 		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSUserSidebarDefaultWidgets' );
@@ -369,7 +369,7 @@ class SmartList extends BsExtensionMW {
 	 * Purges aricle cache on save when smartlist tag is present.
 	 * @param Article $article The article that is created.
 	 * @param User $user User that saved the article.
-	 * @param string $text New text.
+	 * @param Content $content
 	 * @param string $summary Edit summary.
 	 * @param bool $minoredit Marked as minor.
 	 * @param bool $watchthis Put on watchlist.
@@ -381,8 +381,8 @@ class SmartList extends BsExtensionMW {
 	 * @param bool $redirect Redirect user back to page after edit (since MW1.17)
 	 * @return bool allow other hooked methods to be executed. Always true
 	 */
-	public function onArticleSaveComplete( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
-		if ( stripos( $text, "smartlist" ) || stripos( $text, "infobox" ) ) {
+	public function onPageContentSaveComplete( &$article, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
+		if ( stripos( $content->getNativeData(), "smartlist" ) || stripos( $content->getNativeData(), "infobox" ) ) {
 			$article->doPurge();
 		}
 		return true;

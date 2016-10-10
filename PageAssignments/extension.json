@@ -174,7 +174,7 @@
 		"BSStatebarAddSortTopVars": "PageAssignmentsStateBarHooks::onStatebarAddSortTopVars",
 		"BSStatebarAddSortBodyVars": "PageAssignmentsStateBarHooks::onStatebarAddSortBodyVars",
 		"BSWikiAdminMenuItems": "PageAssignmentsHooks::onBSWikiAdminMenuItems",
-		"ArticleSaveComplete": "PageAssignmentsNotificationHooks::onArticleSaveComplete",
+		"PageContentSaveComplete": "PageAssignmentsNotificationHooks::onPageContentSaveComplete",
 		"BSUserManagerAfterSetGroups": "PageAssignmentsNotificationHooks::onBSUserManagerAfterSetGroups",
 		"UserAddGroup": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserAddGroup",
 		"userCan": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserCan",

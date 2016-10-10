@@ -147,7 +147,7 @@ class PageAssignmentsNotificationHooks {
 	 *
 	 * @param Article $article
 	 * @param user $user
-	 * @param string $text
+	 * @param Content $content
 	 * @param string $summary
 	 * @param bool $minoredit
 	 * @param bool $watchthis
@@ -158,7 +158,7 @@ class PageAssignmentsNotificationHooks {
 	 * @param int $baseRevId
 	 * @return boolean
 	 */
-	public static function onArticleSaveComplete( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
+	public static function onPageContentSaveComplete( &$article, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
 		PageAssignmentsNotificationHooks::notify( 'bs-pageassignments-page-edit', $user, $article->getTitle() );
 		return true;
 	}
