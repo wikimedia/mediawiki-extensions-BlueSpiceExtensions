@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Imperadeiro98",
-			"Fúlvio"
+			"Fúlvio",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-articleinfo-desc": "Fornece informação acerca de uma página na barra de status",
 	"prefs-articleinfo": "Informações da página",
 	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalo de actualização em segundos:",
-	"bs-articleinfo-last-edited": "Tempo desde a última actualização",
+	"bs-articleinfo-last-edited": "Tempo desde a última alteração",
 	"bs-articleinfo-last-edited-tooltip": "Última edição",
 	"bs-articleinfo-last-editor": "Últim{{GENDER:$1|o editor|a editora}}",
 	"bs-articleinfo-categories": "Categorias",

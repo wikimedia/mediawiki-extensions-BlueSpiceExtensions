@@ -72,5 +72,6 @@
 	"bs-extendedsearch-facetsetting-op-or": "ODER",
 	"action-extendedsearch-viewspecialpage": "d'Spezialsäit \"{{int:specialextendedsearch}}\" weisen",
 	"action-extendedsearchadmin-viewspecialpage": "d'Spezialsäit \"{{int:extendedsearchadmin}}\" weisen",
-	"extendedsearchadmin": "Gestioun vun der erweiderter Sichfunktioun"
+	"extendedsearchadmin": "Gestioun vun der erweiderter Sichfunktioun",
+	"bs-extendedsearch-create-page": "Säit \"$1\" uleeën."
 }

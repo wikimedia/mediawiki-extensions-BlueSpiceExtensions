@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Fúlvio"
+			"Fúlvio",
+			"Hamilton Abreu"
 		]
 	},
 	"prefs-avatars": "Imagens de perfil",
@@ -19,7 +20,7 @@
 	"bs-avatars-userimage-title": "Imagem da wiki ou URL da imagem",
 	"bs-avatars-userimage-help": "ex. Imagem.jpg ou http://localhost/Imagem.gif",
 	"bs-avatars-set-userimage-failed": "Não é uma imagem da wiki ou URL de imagem válida.",
-	"bs-avatars-set-userimage-saved": "Imagem de utilizador salva com sucesso.",
+	"bs-avatars-set-userimage-saved": "A imagem de utilizador foi gravada.",
 	"bs-avatars-file-upload-fieldset-title": "Carregar imagem",
 	"bs-avatars-auto-generate-fieldset-title": "Gerar automaticamente uma imagem de perfil"
 }

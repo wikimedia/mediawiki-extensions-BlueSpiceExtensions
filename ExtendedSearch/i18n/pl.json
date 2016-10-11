@@ -64,5 +64,6 @@
 	"bs-extendedsearch-more": "Więcej",
 	"bs-extendedsearch-fewer": "Mniej",
 	"bs-extendedsearch-facetsetting-op-and": "I",
-	"bs-extendedsearch-facetsetting-op-or": "LUB"
+	"bs-extendedsearch-facetsetting-op-or": "LUB",
+	"bs-extendedsearch-create-page": "Utwórz stronę „$1”."
 }

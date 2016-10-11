@@ -67,5 +67,6 @@
 	"bs-extendedsearch-fewer": "Meno",
 	"bs-extendedsearch-facetsetting-op-and": "E",
 	"bs-extendedsearch-facetsetting-op-or": "O",
-	"action-extendedsearch-viewspecialpage": "visualizzare la pagina speciale \"{{int:specialextendedsearch}}\""
+	"action-extendedsearch-viewspecialpage": "visualizzare la pagina speciale \"{{int:specialextendedsearch}}\"",
+	"bs-extendedsearch-create-page": "Crea pagina \"$1\"."
 }
