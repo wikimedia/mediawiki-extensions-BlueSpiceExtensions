@@ -1,12 +1,12 @@
 {
-        "name": "PageTemplates",
+	"name": "PageTemplates",
 	"version": "2.27.0",
 	"url": "https://help.bluespice.com/index.php/PageTemplates",
 	"author": [
-                    "Markus Glaser",
-                    "Stephan Muggli"
-                  ],
-        "license-name" : "GPL 2.0 +",
+		"Markus Glaser",
+		"Stephan Muggli"
+	],
+	"license-name" : "GPL-2.0+",
 	"descriptionmsg": "bs-pagetemplates-desc",
 	"type": "bluespice",
 	"bsgExtensions": {
@@ -56,9 +56,9 @@
 				"bs-pagetemplates-remove-message-success",
 				"bs-pagetemplates-remove-message-failure"
 			]
-                }
+		}
 	},
-        "ResourceFileModulePaths": {
+	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/PageTemplates/resources"
 	},
