@@ -40,7 +40,7 @@
 class PageAccess extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		$this->setHook( 'ArticleSave' );
+		$this->setHook( 'PageContentSave' );
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'userCan' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
@@ -51,10 +51,9 @@ class PageAccess extends BsExtensionMW {
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
-	public function onArticleSave( &$article, &$user, &$text, &$summary, $minor, $watchthis, $sectionanchor, &$flags, &$status ) {
+	public function onPageContentSave( &$wikiPage, &$user, &$content, &$summary, $minor, $watchthis, $sectionanchor, &$flags, &$status ) {
 		# Prevent user from locking himself out of his own page
-		$content = ContentHandler::makeContent( $text, $article->getTitle() );
-		$oEditInfo = $article->prepareContentForEdit( $content, null, $user );
+		$oEditInfo = $wikiPage->prepareContentForEdit( $content, null, $user );
 		$sAccessGroups = $oEditInfo->output->getProperty( 'bs-page-access' );
 		if ( !$this->checkAccessGroups( $user, $sAccessGroups ) ) {
 			$err[0] = 'bs-pageaccess-error-not-member-of-given-groups';
@@ -63,7 +62,7 @@ class PageAccess extends BsExtensionMW {
 		}
 
 		# Also check if user includes forbidden templates
-		$aTemplateTitles = $this->getTemplateTitles( $text );
+		$aTemplateTitles = $this->getTemplateTitles( $content->getNativeData() );
 		foreach ( $aTemplateTitles as $oTemplateTitle ) {
 			if ( !$this->isUserAllowed( $oTemplateTitle, $user ) ) {
 				$err[0] = 'bs-pageaccess-error-included-forbidden-template';
@@ -76,13 +75,13 @@ class PageAccess extends BsExtensionMW {
 		$dbr = wfGetDB( DB_SLAVE );
 		$sAccessGroupsOld = $dbr->selectField(
 			'page_props', 'pp_value', array (
-			'pp_page' => $article->getTitle()->getArticleID(),
+			'pp_page' => $wikiPage->getTitle()->getArticleID(),
 			'pp_propname' => 'bs-page-access'
 			), __METHOD__ );
 
 		if ( $sAccessGroups != $sAccessGroupsOld ) {
 			// Create a log entry for the change on the page-access settings
-			$oTitle = $article->getTitle();
+			$oTitle = $wikiPage->getTitle();
 			$oUser = RequestContext::getMain()->getUser();
 			$oLogger = new ManualLogEntry( 'bs-pageaccess', 'change' );
 			$oLogger->setPerformer( $oUser );

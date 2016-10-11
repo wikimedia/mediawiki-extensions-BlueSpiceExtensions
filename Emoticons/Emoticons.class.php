@@ -51,7 +51,7 @@ class Emoticons extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'OutputPageBeforeHTML' );
-		$this->setHook( 'ArticleSave' );
+		$this->setHook( 'PageContentSave' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -136,9 +136,9 @@ class Emoticons extends BsExtensionMW {
 
 	/**
 	 * Hook-Handler for 'ArticleSave' (MediaWiki). Validates provided mapping syntax for Emoticons.
-	 * @param Article $oArticle The article object being saved
+	 * @param WikiPage $owikiPage The article object being saved
 	 * @param User $oUser The user object saving the article
-	 * @param string $sText The new article text
+	 * @param Content $oContent The new article text
 	 * @param string $sSummary The article summary (comment)
 	 * @param bool $bIsMinor Minor flag
 	 * @param bool $bIsWatch Watch flag
@@ -148,12 +148,12 @@ class Emoticons extends BsExtensionMW {
 	 * @global MWMemcached $wgMemc The MediaWiki Memcached object
 	 * @return mixed Boolean true if syntax is okay or the saved article is not the MappingSourceArticle, String 'error-msg' if an error occurs.
 	 */
-	public function onArticleSave( $oArticle, $oUser, $sText, $sSummary, $bIsMinor, $bIsWatch, $iSection, &$iFlags, $oStatus ) {
+	public function onPageContentSave( $owikiPage, $oUser, $oContent, $sSummary, $bIsMinor, $bIsWatch, $iSection, &$iFlags, $oStatus ) {
 		global $wgMemc;
 		$oMappingSourceTitle = Title::newFromText( 'bs-emoticons-mapping', NS_MEDIAWIKI );
-		if( !$oMappingSourceTitle->equals( $oArticle->getTitle() ) ) return true;
+		if( !$oMappingSourceTitle->equals( $owikiPage->getTitle() ) ) return true;
 
-		$aLines = explode( "\n" , $sText );
+		$aLines = explode( "\n" , $oContent->getNativeData() );
 
 		foreach( $aLines as $iLineNumber => $sLine ) {
 			$iLineNumber++;
