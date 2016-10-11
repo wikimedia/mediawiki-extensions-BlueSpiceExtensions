@@ -55,7 +55,6 @@
 	},
 	"ResourceModules": {
 		"ext.bluespice.permissionManager": {
-
 			"scripts": [
 				"bluespice.permissionManager.js"
 			],
@@ -75,7 +74,6 @@
 				"bs-permissionmanager-labeltpled",
 				"bs-permissionmanager-labeltpled-desc",
 				"bs-permissionmanager-labeltpled-active",
-				"bs-permissionmanager-labeltpled-permissions",
 				"bs-permissionmanager-labeltemplates",
 				"bs-permissionmanager-labeltpled-add",
 				"bs-permissionmanager-labeltpled-edit",
