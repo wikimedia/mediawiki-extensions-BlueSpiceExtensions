@@ -96,7 +96,7 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::MltNS', array( 0 ), BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_ARRAY_INT|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-extendedsearch-pref-mltns', 'multiselectex' );
 
 		// Hooks
-		$this->setHook( 'ArticleSaveComplete' );
+		$this->setHook( 'PageContentSaveComplete' );
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'ArticleUndelete' );
 		$this->setHook( 'TitleMoveComplete' );
@@ -384,7 +384,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 * @param string $sText New text.
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public function onArticleSaveComplete( &$oArticle, &$oUser ) {
+	public function onPageContentSaveComplete( &$oArticle, &$oUser ) {
 		try {
 			BuildIndexMainControl::getInstance()->updateIndexWiki( $oArticle );
 			$oTitle = $oArticle->getTitle();

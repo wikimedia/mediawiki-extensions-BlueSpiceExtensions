@@ -46,7 +46,7 @@ class WantedArticle extends BsExtensionMW {
 	protected function initExt() {
 		wfProfileIn( 'BS::WantedArticle::initExt' );
 		$this->setHook( 'ParserFirstCallInit' );
-		$this->setHook( 'ArticleSaveComplete' );
+		$this->setHook( 'PageContentSaveComplete' );
 		$this->setHook( 'BSExtendedSearchAdditionalActions' );
 		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
@@ -197,10 +197,10 @@ class WantedArticle extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for MediaWiki 'ArticleSaveComplete' hook. Removes an article from wishlist when created.
+	 * Hook-Handler for MediaWiki 'PageContentSaveComplete' hook. Removes an article from wishlist when created.
 	 * @param Article $oArticle Article modified
 	 * @param User $oUser User performing the modification
-	 * @param string $sText New content
+	 * @param Content $oContent
 	 * @param string $sSummary Edit summary/comment
 	 * @param bool $bIsMinor Whether or not the edit was marked as minor
 	 * @param bool $bIsWatch (No longer used)
@@ -211,7 +211,7 @@ class WantedArticle extends BsExtensionMW {
 	 * @param mixed $vBaseRevId the rev ID (or false) this edit was based on
 	 * @return bool Always true to keep hooks running.
 	 */
-	public function onArticleSaveComplete( $oArticle, $oUser, $sText, $sSummary, $bIsMinor, $bIsWatch, $iSection, $vFlags, $oRevision, $oStatus, $vBaseRevId ) {
+	public function onPageContentSaveComplete( $oArticle, $oUser, $oContent, $sSummary, $bIsMinor, $bIsWatch, $iSection, $vFlags, $oRevision, $oStatus, $vBaseRevId ) {
 		if( $oArticle->getTitle()->equals( $this->getDataSourceTemplateArticle()->getTitle() ) ) {
 			BsCacheHelper::invalidateCache( BsCacheHelper::getCacheKey( 'BlueSpice', 'WantedArticle', $oArticle->getTitle()->getPrefixedText() ) );
 		}

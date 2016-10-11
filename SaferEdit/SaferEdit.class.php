@@ -50,7 +50,7 @@ class SaferEdit extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::SaferEdit::ShowNameOfEditingUser', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-shownameofeditinguser', 'toggle' );
 		BsConfig::registerVar( 'MW::SaferEdit::WarnOnLeave', true, BsConfig::LEVEL_USER|BsConfig::TYPE_BOOL|BsConfig::RENDER_AS_JAVASCRIPT, 'bs-saferedit-pref-warnonleave', 'toggle' );
 
-		$this->setHook( 'ArticleSaveComplete', 'clearSaferEdit' );
+		$this->setHook( 'PageContentSaveComplete', 'clearSaferEdit' );
 		$this->setHook( 'EditPage::showEditForm:initial', 'setEditSection' );
 		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
@@ -112,10 +112,10 @@ class SaferEdit extends BsExtensionMW {
 
 	/**
 	 * Clear all previously saved intermediate edits when article is saved
-	 * Called by ArticleSaveComplete hook
+	 * Called by PageContentSaveComplete hook
 	 * @param Article $article The article that is created.
 	 * @param User $user User that saved the article.
-	 * @param string $text New text.
+	 * @param Content $content
 	 * @param string $summary Edit summary.
 	 * @param bool $minoredit Marked as minor.
 	 * @param bool $watchthis Put on watchlist.
@@ -124,7 +124,7 @@ class SaferEdit extends BsExtensionMW {
 	 * @param Revision $revision New revision object.
 	 * @return bool true do let other hooked methods be executed
 	 */
-	public function clearSaferEdit( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision ) {
+	public function clearSaferEdit( $article, $user, $content, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision ) {
 		$this->doClearSaferEdit( $user->getName(), $article->getTitle()->getDbKey(), $article->getTitle()->getNamespace() );
 		return true;
 	}

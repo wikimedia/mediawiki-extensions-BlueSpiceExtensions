@@ -59,7 +59,7 @@ class ArticleInfo extends BsExtensionMW {
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd' );
 		$this->setHook( 'BsAdapterAjaxPingResult' );
 
-		$this->setHook( 'ArticleSaveComplete' );
+		$this->setHook( 'PageContentSaveComplete' );
 		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'BeforePageDisplay');
 
@@ -543,7 +543,7 @@ class ArticleInfo extends BsExtensionMW {
 	 * Hook-Handler for Mediawiki hook ArticleDeleteComplete
 	 * @param Article $article
 	 * @param User $user
-	 * @param string $text
+	 * @param Content $content
 	 * @param string $summary
 	 * @param integer $minoredit
 	 * @param type $watchthis
@@ -554,7 +554,7 @@ class ArticleInfo extends BsExtensionMW {
 	 * @param integer $baseRevId
 	 * @return boolean - always true
 	 */
-	public function onArticleSaveComplete( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
+	public function onPageContentSaveComplete( &$article, &$user, $content, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
 		if( $status->value['new'] === false ) return true;
 
 		$oTitle = $article->getTitle();
