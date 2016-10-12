@@ -78,7 +78,6 @@
 				"bs-permissionmanager-labeltpled-add",
 				"bs-permissionmanager-labeltpled-edit",
 				"bs-permissionmanager-labeltpled-delete",
-				"bs-permissionmanager-labeltpled-save",
 				"bs-permissionmanager-labeltpled-cancel",
 				"bs-permissionmanager-msgtpled-success",
 				"bs-permissionmanager-msgtpled-saveonabort",

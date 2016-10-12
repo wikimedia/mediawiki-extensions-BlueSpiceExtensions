@@ -76,9 +76,7 @@
 			],
 			"messages": [
 				"bs-dashboard-userportlet-calendar-title",
-				"bs-dashboard-userportlet-calendar-description",
-				"bs-dashboard-userportlet-article-title",
-				"bs-dashboard-userportlet-article-description"
+				"bs-dashboard-userportlet-calendar-description"
 			]
 		},
 		"ext.bluespice.dashboards.adminDashboard": {
