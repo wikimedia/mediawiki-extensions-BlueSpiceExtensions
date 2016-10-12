@@ -1,0 +1,10 @@
+{
+	"name": "BlueSpiceExtensions",
+		"version": "2.27.1",
+		"url": "https://www.mediawiki.org/wiki/BlueSpice",
+		"authors": [ "Hallo Welt! GmbH" ],
+	"AutoloadClasses":{
+		"BlueSpiceExtensions":"BlueSpiceExtensions.class.php"
+	},
+	"callback": "BlueSpiceExtensions::onRegistration"
+}

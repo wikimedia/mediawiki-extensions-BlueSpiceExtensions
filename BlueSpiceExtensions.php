@@ -7,10 +7,10 @@
  * starting point
  */
 
-if ( file_exists( __DIR__ . '/vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php' ) ) {
-	require_once __DIR__ . '/vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php';
-} elseif ( file_exists( __DIR__ . '/../../vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php' ) ) {
-	require_once __DIR__ . '/../../vendor/hallowelt/bluespice-foundation/BlueSpiceFoundation.php';
+if ( file_exists( __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php' ) ) {
+	require_once __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
+} elseif ( file_exists( __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php' ) ) {
+	require_once __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
 }
 
 if ( file_exists( __DIR__ . '/BlueSpiceExtensions.local.php' ) ) {
