@@ -73,7 +73,7 @@ class WhoIsOnline extends BsExtensionMW {
 	 */
 	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtModifiedFields, $wgExtNewIndexes, $wgExtNewFields;
-		$sDir = __DIR__ . DS;
+		$sDir = __DIR__ . '/';
 
 		if( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[] = array( 'bs_whoisonline', $sDir . 'whoisonline.sql' );
