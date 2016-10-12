@@ -236,7 +236,7 @@ class PermissionManager extends BsExtensionMW {
 	public static function getSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
 				'bs_permission_templates',
-				__DIR__ . DS . 'db' . DS . 'PermissionManager.sql'
+				__DIR__ . '/' . 'db' . '/' . 'PermissionManager.sql'
 		);
 
 		return true;

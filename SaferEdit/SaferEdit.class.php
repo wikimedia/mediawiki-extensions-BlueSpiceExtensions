@@ -83,7 +83,7 @@ class SaferEdit extends BsExtensionMW {
 	 */
 	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtNewIndexes;
-		$sDir = __DIR__.DS.'db'.DS.$wgDBtype.DS;
+		$sDir = __DIR__ . '/' . 'db' . '/' . $wgDBtype . '/';
 
 		if( $wgDBtype == 'mysql') {
 			$wgExtNewTables[]  = array( 'bs_saferedit', $sDir . 'SaferEdit.sql' );

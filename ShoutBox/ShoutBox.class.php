@@ -93,7 +93,7 @@ class ShoutBox extends BsExtensionMW {
 	 */
 	public static function getSchemaUpdates( $updater ) {
 		global $wgDBtype, $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
-		$sDir = __DIR__ . DS;
+		$sDir = __DIR__ . '/';
 
 		if ( $wgDBtype == 'mysql') {
 			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/mysql/ShoutBox.sql' );

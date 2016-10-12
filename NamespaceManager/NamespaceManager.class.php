@@ -103,7 +103,7 @@ class NamespaceManager extends BsExtensionMW {
 	*/
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		global $wgExtPGNewFields, $wgDBtype;
-		$dir = __DIR__.DS.'db'.DS;
+		$dir = __DIR__ . '/' . 'db' . '/';
 
 		if ( $wgDBtype == 'oracle' ) {
 			$updater->addExtensionTable(
