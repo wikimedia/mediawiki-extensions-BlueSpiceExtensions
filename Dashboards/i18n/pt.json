@@ -1,17 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-dashboards-desc": "Fornece painéis de controlo para utilizadores e administradores",
 	"bs-specialadmindashboard-label": "Painel de controlo",
-	"bs-dashboards-addportlet": "Adicionar portlet",
+	"bs-dashboards-addportlet": "Adicionar <i>portlet</i>",
 	"bs-dashboards-portlets": "Portlets",
 	"prefs-dashboards": "Painéis de controlo",
 	"bs-dashboards-pref-userdashboardonlogo": "O logótipo do sítio tem ligação ao painel de controlo de utilizador",
 	"admindashboard": "Painel de administrador",
 	"userdashboard": "Painel do utilizador",
 	"bs-dashboard-userportlet-calendar-title": "Calendário",
-	"bs-dashboard-userportlet-calendar-description": "Calendário"
+	"bs-dashboard-userportlet-calendar-description": "Calendário",
+	"bs-dashboard-userportlet-wikipage-title": "Página Wiki",
+	"bs-dashboard-userportlet-wikipage-description": "Use uma página da wiki para definir o <i>widget</i>",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Página wiki",
+	"apihelp-bs-dashboard-task-param-dc": "Parâmetro de controlo da <i>cache</i>. Usado por ExtJS.",
+	"apihelp-bs-dashboards-store-description": "Lista todos os <i>portlets</i> disponíveis",
+	"apihelp-bs-dashboards-tasks-description": "Grava a configuração do painel",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Devolve conteúdo para alguns <i>widgets</i> de painel",
+	"action-dashboards-viewspecialpage-userdashboard": "ver a página especial \"{{int:userdashboard}}\""
 }

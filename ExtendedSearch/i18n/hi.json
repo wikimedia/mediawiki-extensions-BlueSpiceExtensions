@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"राम प्रसाद जोशी",
-			"Sfic"
+			"Sfic",
+			"Ziyaurr"
 		]
 	},
 	"bs-extendedsearch-did-you-mean": "क्या आपका मतलब: $1 है?",
 	"bs-extendedsearch-facetsetting-op-and": "और",
-	"bs-extendedsearch-facetsetting-op-or": "या"
+	"bs-extendedsearch-facetsetting-op-or": "या",
+	"bs-extendedsearch-create-page": "\"$1\" नामक पृष्ठ बनाएँ।"
 }

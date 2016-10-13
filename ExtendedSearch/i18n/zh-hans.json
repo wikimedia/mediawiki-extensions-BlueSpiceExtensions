@@ -107,5 +107,6 @@
 	"bs-extendedsearch-facetsetting-op-or": "或",
 	"action-extendedsearch-viewspecialpage": "查看特殊页面“{{int:specialextendedsearch}}”",
 	"action-extendedsearchadmin-viewspecialpage": "查看特殊页面“{{int:extendedsearchadmin}}”",
-	"extendedsearchadmin": "扩充的搜索管理"
+	"extendedsearchadmin": "扩充的搜索管理",
+	"bs-extendedsearch-create-page": "创建页面“$1”。"
 }

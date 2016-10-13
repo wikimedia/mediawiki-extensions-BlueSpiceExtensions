@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-formattinghelp-desc": "Exibe ajuda para formatação de texto",
@@ -13,6 +14,7 @@
 	"bs-formattinghelp-help-whitespace": "Espaço em branco",
 	"bs-formattinghelp-help-nowiki": "Prevenir formatação",
 	"bs-formattinghelp-help-color": "Texto colorido",
+	"bs-formattinghelp-help-headline": "Cabeçalho",
 	"bs-formattinghelp-help-linebreak": "Quebra de linha",
 	"bs-formattinghelp-help-ul": "Lista desordenada",
 	"bs-formattinghelp-help-listitem": "Item de lista",
@@ -22,7 +24,8 @@
 	"bs-formattinghelp-help-link-alt": "Ligação interna com texto alternativo",
 	"bs-formattinghelp-help-caption": "Legenda",
 	"bs-formattinghelp-help-extlink": "Ligação externa",
-	"bs-formattinghelp-help-hr": "Linha Horizontal",
+	"bs-formattinghelp-help-hr": "Linha horizontal",
 	"bs-formattinghelp-help-template": "Predefinição",
-	"bs-formattinghelp-help-templatename": "Nome da predefinição"
+	"bs-formattinghelp-help-templatename": "Nome da predefinição",
+	"apihelp-bs-formattinghelp-description": "Fornece as tarefas para a extension FormattingHelp."
 }
