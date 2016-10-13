@@ -35,11 +35,8 @@
 				"bs-insertmagic-type-tags",
 				"bs-insertmagic-type-variables",
 				"bs-insertmagic-type-switches",
-				"bs-insertmagic-type-redirect",
-				"bs-insertmagic-btn-preview",
 				"bs-insertmagic-label-first",
 				"bs-insertmagic-label-second",
-				"bs-insertmagic-label-third",
 				"bs-insertmagic-label-desc",
 				"bs-insertmagic-label-examples",
 				"bs-insertmagic-label-see-also"

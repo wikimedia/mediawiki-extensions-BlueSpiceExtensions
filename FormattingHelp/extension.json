@@ -28,8 +28,7 @@
 		"ext.bluespice.formattinghelp": {
 			"scripts": "bluespice.formattinghelp.js",
 			"messages": [
-				"bs-formattinghelp-formatting",
-				"bs-formattinghelp-help-text"
+				"bs-formattinghelp-formatting"
 			],
 			"dependencies": "mediawiki.action.edit"
 		},
