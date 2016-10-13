@@ -101,12 +101,14 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 	 * @return string The URL that points to the aproppriate helpdesk entry.
 	 */
 	private function getHelpdeskUrl( $aExtensionInfo ) {
+		if( !empty( $aExtensionInfo['url'] ) ) {
+			return $aExtensionInfo['url'];
+		}
 		//(09.05.2012)PW: added helpdeskurls to mI18n-files
 		//$baseUrl = BsConfig::get('MW::ExtensionInfo::HelpdeskBaseUrl');
 		$baseUrl = 'http://help.blue-spice.org/index.php';
 		$sExtensionName = $aExtensionInfo['name'];
-		$sUrl = $baseUrl . '/' . $sExtensionName;
-		return $sUrl;
+		return "$baseUrl/$sExtensionName";
 	}
 
 }
