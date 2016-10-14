@@ -88,73 +88,70 @@ class ExtendedEditBar extends BsExtensionMW {
 			"{$sCell} 1\n| {$sRow} 1, {$sCell} 2\n| {$sRow} 1, {$sCell} 3\n|-\n|".
 			" {$sRow} 2, {$sCell} 1\n| {$sRow} 2, {$sCell} 2\n| {$sRow} 2, {$sCell} 3";
 
-		$aMWButtonCfgs = array(
-			'mw-editbutton-bold' => array(
-				'open'   => '\'\'\'',
-				'close'  => '\'\'\'',
-				'sample' => wfMessage( 'bold_sample' )->text(),
-				'tip'    => wfMessage( 'bold_tip' )->text(),
-				'key'    => 'B'
-			),
-			'mw-editbutton-italic' => array(
+		$aButtonCfgs = array(
+			'bs-editbutton-italic' => array(
 				'open'   => '\'\'',
 				'close'  => '\'\'',
 				'sample' => wfMessage( 'italic_sample' )->text(),
 				'tip'    => wfMessage( 'italic_tip' )->text(),
 				'key'    => 'I'
 			),
-			'mw-editbutton-link' => array(
+			'bs-editbutton-link' => array(
 				'open'   => '[[',
 				'close'  => ']]',
 				'sample' => wfMessage( 'link_sample' )->text(),
 				'tip'    => wfMessage( 'link_tip' )->text(),
 				'key'    => 'L'
 			),
-			'mw-editbutton-extlink' => array(
+			'bs-editbutton-extlink' => array(
 				'open'   => '[',
 				'close'  => ']',
 				'sample' => wfMessage( 'extlink_sample' )->text(),
 				'tip'    => wfMessage( 'extlink_tip' )->text(),
 				'key'    => 'X'
 			),
-			'mw-editbutton-headline' => array(
+			'bs-editbutton-headline' => array(
 				'open'   => "\n== ",
 				'close'  => " ==\n",
 				'sample' => wfMessage( 'headline_sample' )->text(),
 				'tip'    => wfMessage( 'headline_tip' )->text(),
 				'key'    => 'H'
 			),
-			'mw-editbutton-image' => $imagesAvailable ? array(
+			'bs-editbutton-image' => $imagesAvailable ? array(
 				'open'   => '[[' . $wgContLang->getNsText( NS_FILE ) . ':',
 				'close'  => ']]',
 				'sample' => wfMessage( 'image_sample' )->text(),
 				'tip'    => wfMessage( 'image_tip' )->text(),
 				'key'    => 'D',
 			) : false,
-			'mw-editbutton-media' => $imagesAvailable ? array(
+			'bs-editbutton-media' => $imagesAvailable ? array(
 				'open'   => '[[' . $wgContLang->getNsText( NS_MEDIA ) . ':',
 				'close'  => ']]',
 				'sample' => wfMessage( 'media_sample' )->text(),
 				'tip'    => wfMessage( 'media_tip' )->text(),
 				'key'    => 'M'
 			) : false,
-			'mw-editbutton-math' => $wgUseTeX ? array(
+			'bs-editbutton-math' => $wgUseTeX ? array(
 				'open'   => "<math>",
 				'close'  => "</math>",
 				'sample' => wfMessage( 'math_sample' )->text(),
 				'tip'    => wfMessage( 'math_tip' )->text(),
 				'key'    => 'C'
 			) : false,
-			'mw-editbutton-signature' => array(
+			'bs-editbutton-signature' => array(
 				'open'   => '--~~~~',
 				'close'  => '',
 				'sample' => '',
 				'tip'    => wfMessage( 'sig_tip' )->text(),
 				'key'    => 'Y'
 			),
-		);
-
-		$aBSButtonCfgs = array(
+			'bs-editbutton-bold' => array(
+				'open'   => '\'\'\'',
+				'close'  => '\'\'\'',
+				'sample' => wfMessage( 'bold_sample' )->text(),
+				'tip'    => wfMessage( 'bold_tip' )->text(),
+				'key'    => 'B'
+			),
 			'bs-editbutton-redirect' => array(
 				'tip' => wfMessage('bs-extendededitbar-redirecttip')->plain(),
 				'open' => "#REDIRECT [[",
@@ -217,28 +214,26 @@ class ExtendedEditBar extends BsExtensionMW {
 			),
 		);
 
-		$aButtonCfgs = $aMWButtonCfgs + $aBSButtonCfgs;
-
 		$aRows = array(
 			array('editing' => array(), 'dialogs' => array(), 'table' => array( 10 => 'bs-editbutton-table' )), //this is reserverd for BlueSpice dialogs
 			array(
 				'formatting' => array(
-					10 => 'mw-editbutton-bold',
-					20 => 'mw-editbutton-italic',
+					10 => 'bs-editbutton-bold',
+					20 => 'bs-editbutton-italic',
 					30 => 'bs-editbutton-strike',
-					40 => 'mw-editbutton-headline',
+					40 => 'bs-editbutton-headline',
 					50 => 'bs-editbutton-linebreak',
 				),
 				'content' => array(
-					//10 => 'mw-editbutton-link',
-					//20 => 'mw-editbutton-extlink',
-					30 => 'mw-editbutton-strike',
-					//40 => 'mw-editbutton-image',
-					//50 => 'mw-editbutton-media',
+					//10 => 'bs-editbutton-link',
+					//20 => 'bs-editbutton-extlink',
+					30 => 'bs-editbutton-strike',
+					//40 => 'bs-editbutton-image',
+					//50 => 'bs-editbutton-media',
 					60 => 'bs-editbutton-gallery',
 				),
 				'misc' => array(
-					10 => 'mw-editbutton-signature',
+					10 => 'bs-editbutton-signature',
 					20 => 'bs-editbutton-redirect',
 					30 => 'bs-editbutton-comment',
 				)
