@@ -102,6 +102,10 @@
 				"bs-statistics-month",
 				"bs-statistics-label-time"
 			]
+		},
+		"ext.bluespice.statistics.styles": {
+			"styles": "bluespice.statistics.css",
+			"position": "top"
 		}
 	},
 	"ResourceFileModulePaths": {

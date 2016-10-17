@@ -1,0 +1,4 @@
+#bs-nav-sections a.bs-globalactions-items.bs-globalaction-ns_special-specialwatchlist::before{
+	content: '\e9d7';
+	font-family: 'icomoon';
+}

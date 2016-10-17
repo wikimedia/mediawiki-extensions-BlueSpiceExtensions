@@ -194,6 +194,8 @@ class Statistics extends BsExtensionMW {
 	 * @param Skin $oSkin
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
+		$oOutputPage->addModuleStyles( 'ext.bluespice.statistics.styles' );
+
 		if( !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('AdminDashboard'))
 			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('WikiAdmin'))
 			&& !$oSkin->getTitle()->equals(SpecialPage::getTitleFor('UserDashboard'))

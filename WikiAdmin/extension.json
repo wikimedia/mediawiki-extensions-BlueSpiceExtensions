@@ -20,6 +20,16 @@
 	"SpecialPages": {
 		"WikiAdmin": "SpecialWikiAdmin"
 	},
+	"ResourceModules": {
+		"ext.bluespice.wikiadmin.styles": {
+			"styles": "bluespice.wikiadmin.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/WikiAdmin/resources"
+	},
 	"MessagesDirs": {
 		"WikiAdmin": [
 			"i18n"

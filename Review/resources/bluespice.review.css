@@ -104,3 +104,8 @@ a.bs-icon-decline {
 .bs-statebar-body-reviewvotesection {
 	margin-top: 10px;
 }
+
+#bs-nav-sections a.bs-globalactions-items.bs-globalaction-ns_special-specialreview::before{
+	content: '\e9ce';
+	font-family: 'icomoon';
+}
