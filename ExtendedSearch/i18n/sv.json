@@ -103,5 +103,6 @@
 	"bs-extendedsearch-fewer": "Mindre",
 	"bs-extendedsearch-facetsetting-op-and": "OCH",
 	"bs-extendedsearch-facetsetting-op-or": "ELLER",
-	"action-extendedsearchadmin-viewspecialpage": "visa specialsidan \"{{int:extendedsearchadmin}}\""
+	"action-extendedsearchadmin-viewspecialpage": "visa specialsidan \"{{int:extendedsearchadmin}}\"",
+	"bs-extendedsearch-create-page": "Skapa sidan \"$1\"."
 }
