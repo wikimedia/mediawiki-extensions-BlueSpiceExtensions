@@ -4,9 +4,13 @@
 			"Chrumps"
 		]
 	},
+	"bs-pageassignments-directly-assigned": "bezpośrednio",
 	"bs-pageassignments-api-error": "Wystąpił błąd",
+	"bs-pageassignments-api-error-no-page": "Nie określono strony",
 	"bs-pageassignments-notification-reason": "Powody tego powiadomienia:",
 	"bs-pageassignments-notification-reason-group": "Należysz do {{PLURAL:$1|tej grupy|tych grup}}: $2",
 	"notification-bs-pageassignments-page-delete-body": "$1 {{GENDER:$2|usunął|usunęła}} stronę $3",
-	"notification-bs-pageassignments-user-group-remove-summary": "Usunięto cię z {{PLURAL:$5|grupy|grup}} $4"
+	"notification-bs-pageassignments-user-group-add-subject": "Dodano do grupy $4",
+	"notification-bs-pageassignments-user-group-remove-summary": "Usunięto cię z {{PLURAL:$5|grupy|grup}} $4",
+	"notification-bs-pageassignments-user-group-remove-subject": "Usunięto z {{PLURAL:$5|grupy|grup}} $4"
 }

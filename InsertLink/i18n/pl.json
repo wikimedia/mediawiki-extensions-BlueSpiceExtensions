@@ -13,6 +13,7 @@
 	"bs-insertlink-dialog-title": "Wstaw link",
 	"bs-insertlink-tab-wiki-page": "Strona wiki",
 	"bs-insertlink-tab-ext-link": "Link zewnętrzny",
+	"bs-insertlink-tab-ext-file": "Link do pliku",
 	"bs-insertlink-label-page": "Strona",
 	"bs-insertlink-label-link": "Link",
 	"bs-insertlink-label-mail": "Adres e‐mail",
