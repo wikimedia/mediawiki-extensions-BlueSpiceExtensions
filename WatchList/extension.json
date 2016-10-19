@@ -12,6 +12,16 @@
 			"extPath": "/BlueSpiceExtensions/WatchList"
 		}
 	},
+	"ResourceModules": {
+		"ext.bluespice.watchlist.styles": {
+			"styles": "bluespice.watchlist.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/WatchList/resources"
+	},
 	"MessagesDirs": {
 		"BSWatchList": [
 			"i18n"

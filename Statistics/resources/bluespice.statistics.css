@@ -1,0 +1,4 @@
+#bs-nav-sections a.bs-globalactions-items.bs-globalaction-ns_special-specialextendedstatistics::before{
+	content: '\e99c';
+	font-family: 'icomoon';
+}

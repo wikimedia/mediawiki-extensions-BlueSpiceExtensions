@@ -256,15 +256,25 @@ class UserSidebar extends BsExtensionMW {
 			if( !$b ) {
 				continue;
 			}
+
+			if( $oTitle->isSpecialPage() ) {
+				$sClass = strtolower( get_class( SpecialPageFactory::getPage( $oTitle->getText() ) ) );
+				$sClass .= ' bs-globalaction-specialpage ';
+			}
+			else {
+				$sClass = $oTitle->getDBkey();
+			}
 			if( !isset($aLink['attr']) || !is_array($aLink['attr']) ) {
 				$aLink['attr'] = array();
 			}
 			if( !isset( $aLink['attr']['class'] ) ) {
-				$aLink['attr']['class'] = 'bs-globalactions-link bs-globalaction-' . strtolower( $oTitle->mTextform );
+				$aLink['attr']['class'] = '';
 			}
-			else {
-				$aLink['attr']['class'] .= ' bs-globalactions-link bs-globalaction-' . strtolower( $oTitle->mTextform );
-			}
+			$aLink['attr']['class'] .= ' bs-globalactions-items';
+			$aLink['attr']['class'] .= ' bs-globalaction-';
+			$aLink['attr']['class'] .= strtolower( NamespaceManager::getNamespaceConstName( $oTitle->getNamespace(), array() ) );
+			$aLink['attr']['class'] .=  '-' . $sClass;
+
 			if( empty($aLink['text']) ) {
 				$aLink['text'] = $oTitle->getText();
 			}

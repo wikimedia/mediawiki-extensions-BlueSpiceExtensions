@@ -158,6 +158,7 @@ class WikiAdmin extends BsExtensionMW {
 		self::$prLoadModulesAndScripts = true;
 		$this->mCore->registerPermission( 'wikiadmin', array( 'sysop' ), array( 'type' => 'global' ) );
 
+		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSUserSidebarGlobalActionsWidgets' );
 		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
 
@@ -271,5 +272,18 @@ class WikiAdmin extends BsExtensionMW {
 			wfMessage( 'bs-wikiadmin-shop' )->escaped()
 		);
 		return '<li>'.$sLink.'</li>';
+	}
+
+	/**
+	 * Adds CSS to Page
+	 *
+	 * @param OutputPage $out
+	 * @param Skin       $skin
+	 *
+	 * @return boolean
+	 */
+	public function onBeforePageDisplay( &$out, &$skin ) {
+		$out->addModuleStyles( 'ext.bluespice.wikiadmin.styles' );
+		return true;
 	}
 }

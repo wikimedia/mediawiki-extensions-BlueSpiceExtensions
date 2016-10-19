@@ -42,6 +42,7 @@ class WatchList extends BsExtensionMW {
 	 * Initialization of WatchList extension
 	 */
 	protected function initExt() {
+		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BSUserSidebarDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
@@ -270,6 +271,19 @@ class WatchList extends BsExtensionMW {
 				'identifier' => 'bs-tag-watchlist'
 			)
 		);
+		return true;
+	}
+
+	/**
+	 * Adds CSS to Page
+	 *
+	 * @param OutputPage $out
+	 * @param Skin       $skin
+	 *
+	 * @return boolean
+	 */
+	public function onBeforePageDisplay( &$out, &$skin ) {
+		$out->addModuleStyles( 'ext.bluespice.watchlist.styles' );
 		return true;
 	}
 }
