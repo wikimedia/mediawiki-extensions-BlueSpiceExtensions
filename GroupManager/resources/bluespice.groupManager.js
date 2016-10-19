@@ -12,6 +12,7 @@
 
 Ext.onReady( function(){
 	Ext.create( 'BS.GroupManager.Panel', {
+		id: 'bs-groupmanager-grid-panel',
 		renderTo: 'bs-groupmanager-grid'
 	} );
 } );
