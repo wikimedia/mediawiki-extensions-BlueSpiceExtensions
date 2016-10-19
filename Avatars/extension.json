@@ -52,12 +52,5 @@
 	"Hooks": {
 		"BeforePageDisplay": "Avatars::onBeforePageDisplay"
 	},
-	"config": {
-		"AjaxExportList": [
-			"Avatars::uploadFile",
-			"Avatars::generateAvatarAjax",
-			"Avatars::setUserImage"
-		]
-	},
 	"manifest_version": 1
 }
