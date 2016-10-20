@@ -161,6 +161,18 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			if( image.nodeName.toLowerCase() === 'img' ) {
 				var data = bs.util.makeAttributeObject( image );
 				params = bs.util.unprefixDataAttributeObject(data);
+
+				// Hint: params.border='0' set by unprefixDataAttributeObject().
+				// Value of image attribute "data-bs-border" is stored in variable "border".
+				// A few steps later the value of image attribute "border"
+				// is stored in variable "border".
+				// Now border can be "0" and this is not equal 'false'!
+				if ( params.mwborder ) {
+					params.border = params.mwborder;
+				}
+				else {
+					params.border = 'false';
+				}
 			}
 
 			Ext.require('BS.InsertFile.ImageDialog', function(){
@@ -172,6 +184,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					//Manually prefix with NS_IMAGE. I wonder if this should
 					//be done within the dialog.
 					data.imagename = formattedNamespaces[bs.ns.NS_IMAGE]+':'+data.imagename;
+					data.mwborder = data.border;
 					var classAddition = '';
 					var styleAddition = '';
 					if( data.sizeheight ) {
