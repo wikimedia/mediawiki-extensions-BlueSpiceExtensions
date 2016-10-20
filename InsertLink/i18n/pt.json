@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Fúlvio"
+			"Fúlvio",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-insertlink-desc": "Caixa de diálogo para inserir uma ligação",
 	"prefs-insertlink": "Inserir ligação",
 	"bs-insertlink": "Inserir ligação",
+	"bs-insertlink-pref-enable-java": "Ativar a <i>applet</i> do Java",
 	"bs-insertlink-button-title": "Inserir/editar ligação",
 	"bs-insertlink-dialog-title": "Inserir ligação",
 	"bs-insertlink-tab-wiki-page": "Página wiki",
@@ -22,5 +24,6 @@
 	"bs-insertlink-label-searchfile": "Pesquisar...",
 	"bs-insertlink-select-a-page": "Escolha o destino...",
 	"bs-insertlink-select-a-namespace": "(Páginas)",
-	"bs-insertlink-empty-field-text": "Para inserir uma ligação, deve definir um destinatário."
+	"bs-insertlink-empty-field-text": "Para inserir uma ligação, deve definir um destinatário.",
+	"bs-insertlink-no-applet": "Não foi possível carregar a <i>applet</i>. Verifique a sua instalação do Java, por favor."
 }

@@ -1,15 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-pagesvisited-desc": "Fornece uma lista personalizada das últimas páginas visitadas",
 	"prefs-pagesvisited": "Páginas visitadas",
 	"bs-pagesvisited-widget-title": "Páginas visitadas",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|O domínio|os domínios}} <code>$2</code> não {{PLURAL:$1|é válido|são válidos}}.",
+	"bs-pagesvisited-pref-widgetlimit": "Limite de entradas:",
 	"bs-pagesvisited-pref-widgetns": "Domínios:",
 	"bs-pagesvisited-pref-widgetsortodr": "Ordenar por:",
 	"bs-pagesvisited-pref-sort-time": "Hora",
 	"bs-pagesvisited-pref-sort-pagename": "Título",
-	"bs-pagesvisited-tag-pagesvisited-desc": "Exibe uma lista de páginas que visitou."
+	"bs-pagesvisited-tag-pagesvisited-desc": "Apresenta uma lista de páginas que visitou. Esta lista pode ser restringida por parâmetros."
 }

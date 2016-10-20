@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-groupmanager-desc": "Interface de administração para criação, edição e eliminação de grupos de utilizador e gestão dos seus privilégios",
@@ -11,6 +12,7 @@
 	"bs-groupmanager-grpedited": "O grupo foi editado.",
 	"bs-groupmanager-grpremoved": "O grupo foi removido.",
 	"bs-groupmanager-label": "Gestor de grupos",
+	"bs-groupmanager-invalid-name": "O nome do grupo contém {{PLURAL:$1|o carácter inválido|os caracteres inválidos}}: $2",
 	"bs-groupmanager-invalid-name-length": "O nome do grupo não pode ter mais de 255 caracteres.",
 	"bs-groupmanager-invalid-name-numeric": "O nome do grupo precisa de ter pelo menos um carácter.",
 	"bs-groupmanager-headergroup": "Grupo",
@@ -26,7 +28,11 @@
 	"bs-groupmanager-msgnotremovable": "Este grupo é um grupo de sistema e não pode ser removido.",
 	"log-name-bs-group-manager": "Registo de gestão de grupos",
 	"log-description-bs-group-manager": "Este é um registo de alterações aos grupos de utilizadores.",
+	"log-show-hide-bs-group-manager": "$1 registo de gestão de grupos",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|criou}} o grupo $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|renomeou}} o grupo $4 para $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|removeu}} o grupo $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|removeu}} o grupo $4",
+	"apihelp-bs-groupmanager-description": "Fornece as tarefas para a extensão Gestor de grupos.",
+	"action-groupmanager-viewspecialpage": "ver a página especial \"{{int:bs-groupmanager-label}}\"",
+	"groupmanager": "Gestor de grupos"
 }

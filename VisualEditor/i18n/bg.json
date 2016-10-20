@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg"
+			"StanProg",
+			"Vodnokon4e"
 		]
 	},
-	"bs-visualeditor-bsactions-save": "Съхраняване"
+	"prefs-visualeditor": "Визуален редактор",
+	"bs-visualeditor-editbutton-hint": "Визуален редактор",
+	"bs-visualeditor-bsactions-signature": "Подпис",
+	"bs-visualeditor-bsactions-save": "Съхраняване",
+	"bs-visualeditor-bsactions-headings": "Заглавия",
+	"bs-visualeditor-bsactions-paragraph": "Параграф",
+	"bs-visualeditor-bsactions-heading2": "Заглавие 2",
+	"bs-visualeditor-bsactions-heading3": "Заглавие 3",
+	"bs-visualeditor-bsactions-heading4": "Заглавие 4",
+	"bs-visualeditor-bsactions-heading5": "Заглавие 5",
+	"bs-visualeditor-bsactions-heading6": "Заглавие 6"
 }

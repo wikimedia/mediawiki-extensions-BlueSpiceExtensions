@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
+	"bs-csyntaxhighlight-desc": "Adiciona funcionalidade personalizável para realçar sintaxe",
+	"prefs-csyntaxhighlight": "Realçador sintático",
 	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Mostrar números de linha",
+	"bs-csyntaxhighlight-pref-autolinks": "URL de <i>links</i>",
 	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de ferramentas"
 }

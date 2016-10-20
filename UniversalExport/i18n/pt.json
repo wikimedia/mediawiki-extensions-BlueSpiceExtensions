@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Fúlvio"
+			"Fúlvio",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-universalexport-desc": "Permite que o MediaWiki exporte páginas em diferentes formatos",
@@ -26,6 +27,7 @@
 	"bs-universalexport-tag-params-desc": "Permite definir parâmetros especiais para exportação, se o parâmetro será avaliado depende do módulo de exportação escolhido.",
 	"bs-universalexport-error-requested-export-module-not-found": "O formato solicitado não pode ser produzido.",
 	"bs-universalexport-error-permission": "Não tem privilégios suficientes para exportar esta página.",
+	"bs-universalexport-error-requested-title-in-category-blacklist": "A página que solicitou não deve ser exportada porque está na categoria lista negra.",
 	"bs-universalexport-statebarbodyuniversalexportmeta": "Metadados de exportação universal",
 	"bs-universalexport-statebarbodyuniversalexportparams": "Parâmetro de exportação universal",
 	"action-universalexport-export": "criar um ficheiro de exportação",
