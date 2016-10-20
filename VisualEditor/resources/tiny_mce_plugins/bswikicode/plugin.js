@@ -145,11 +145,9 @@ var BsWikiCode = function() {
 		for (var i = 1; i < parts.length; i++) {
 			part = parts[i];
 			if (part.endsWith('px')) {
-				if( wikiImageObject.frame === true ) {
-					//See mediawiki.org/wiki/Help:Images#Size_and_frame
-					//frame ignores size
-					continue;
-				}
+				// Hint: frame ignores size but we want to keep this information
+				// See: mediawiki.org/wiki/Help:Images#Size_and_frame
+
 				// 100x200px -> 100x200
 				unsuffixedValue = part.substr(0, part.length - 2);
 				// 100x200 -> [100,200]
@@ -199,9 +197,6 @@ var BsWikiCode = function() {
 
 			if ($.inArray(part, ['frame', 'gerahmt']) !== -1) {
 				wikiImageObject.frame = true;
-				wikiImageObject.sizewidth = false;
-				wikiImageObject.sizeheight = false; //Only size _or_ frame: see MW doc (link above)
-
 				continue;
 			}
 
@@ -212,6 +207,7 @@ var BsWikiCode = function() {
 
 			if ($.inArray(part, ['border', 'rand']) !== -1) {
 				wikiImageObject.border = true;
+				wikiImageObject.mwborder = true;
 				continue;
 			}
 
@@ -467,8 +463,15 @@ var BsWikiCode = function() {
 					imageCaption = value;
 					continue;
 				}
+				if ( property == 'mwborder' && value === "true" ) {
+					wikiText.push( 'border' );
+					continue;
+				}
+				if ( property == 'border' ) {
+					continue;
+				}
 				if (value === "true") {
-					wikiText.push(property); //frame, border, thumb, left, right...
+					wikiText.push(property); //frame, thumb, left, right...
 				}
 			}
 

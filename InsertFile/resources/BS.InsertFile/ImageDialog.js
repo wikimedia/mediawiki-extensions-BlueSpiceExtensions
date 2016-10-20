@@ -314,7 +314,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		var format = 'none';
 		if( obj.thumb && obj.thumb !== 'false' ) format = 'thumb';
 		if( obj.frame && obj.frame !== 'false')  format = 'frame';
-		if( obj.border&& obj.border !== 'false' ) format = 'border';
+		if( obj.border && obj.border !== 'false' ) format = 'border';
 		this.rgFormat.setValue({
 			'img-type': format
 		});
@@ -381,8 +381,21 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 	},
 
 	onRgFormatChange: function( sender, newValue, oldValue, eOpts ) {
-		if( newValue['img-type'] === 'frame'
-			|| newValue['img-type'] === 'thumb' ) {
+		if( newValue['img-type'] === 'frame' ) {
+			// Hint: frame ignores size but we want to keep this information
+			// See: mediawiki.org/wiki/Help:Images#Size_and_frame
+			this.nbWidth.disable();
+			this.btnKeepRatio.disable();
+			this.nbHeight.disable();
+			this.tfLinkText.enable();
+		}
+		else {
+			this.nbWidth.enable();
+			this.btnKeepRatio.enable();
+			this.nbHeight.enable();
+			this.tfLinkText.disable();
+		}
+		if( newValue['img-type'] === 'thumb' ) {
 			this.tfLinkText.enable();
 		}
 		else {
