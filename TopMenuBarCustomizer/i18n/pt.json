@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-topmenubarcustomizer-desc": "Personalizar ligações do menu superior",
-	"prefs-topmenubarcustomizer": "Personalizador de menu"
+	"prefs-topmenubarcustomizer": "Personalizador de menu",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Número de camadas intercaladas:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entradas na camada principal:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entradas nas subcamadas:"
 }

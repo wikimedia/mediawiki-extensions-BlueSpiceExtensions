@@ -2,16 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Fúlvio",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-pageaccess-desc": "Controla o acesso em nível de página",
 	"bs-pageaccess-error-no-groups-given": "Nenhum grupo especificado.",
 	"bs-pageaccess-error-not-member-of-given-groups": "Não é um membro dos grupos citados. A gravação foi desativada a fim de evitar o bloqueio do seu acesso.",
 	"bs-pageaccess-error-included-forbidden-template": "Tentou utilizar a predefinição \"$1\", ao qual não tem acesso para leitura. A gravação foi desativada a fim de evitar o bloqueio do seu acesso.",
-	"bs-pageaccess-tag-groups-desc": "Especifique os grupos que devem ter acesso exclusivo a esta página. Separe os grupos com vírgula.",
+	"bs-pageaccess-tag-groups-desc": "Define os grupos que têm acesso exclusivo a uma página. Separe os grupos com vírgula.",
 	"pageaccess": "Páginas asseguradas pela PageAccess",
 	"log-name-bs-pageaccess": "Registo de acessos a páginas",
 	"log-description-bs-pageaccess": "Este é um registo de alterações de configurações de acesso às páginas.",
-	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|alterou}} as permissões de acesso de $3 para \"$4\""
+	"log-show-hide-bs-pageaccess": "$1 registo de acessos a páginas",
+	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|alterou}} as permissões de acesso de $3 para \"$4\"",
+	"action-pageaccess-viewspecialpage": "ver a página especial \"{{int:pageaccess}}\""
 }
