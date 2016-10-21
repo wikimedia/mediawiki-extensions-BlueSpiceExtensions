@@ -11,6 +11,8 @@ if ( file_exists( __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFo
 	require_once __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
 } elseif ( file_exists( __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php' ) ) {
 	require_once __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
+} elseif ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
 }
 
 if ( file_exists( __DIR__ . '/BlueSpiceExtensions.local.php' ) ) {
