@@ -80,7 +80,7 @@ class PageTemplates extends BsExtensionMW {
 	public static function getSchemaUpdates( $updater ) {
 		$updater->addExtensionTable(
 			'bs_pagetemplate',
-			__DIR__.DS.'db'.DS.'PageTemplates.sql'
+			__DIR__.'/'.'db'.'/'.'PageTemplates.sql'
 		);
 		return true;
 	}
