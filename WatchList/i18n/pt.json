@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
+	"bs-watchlist-desc": "Adiciona um <i>widget</i> e um elemento (<i>tag</i>) para as páginas vigiadas",
 	"bs-watchlist-title-sidebar": "Páginas vigiadas",
+	"bs-watchlist-pref-widgetlimit": "Limite de entradas:",
 	"bs-watchlist-pref-widgetsortodr": "Ordenar por:",
 	"bs-watchlist-pref-sort-time": "Hora",
-	"bs-watchlist-pref-sort-title": "Título"
+	"bs-watchlist-pref-sort-title": "Título",
+	"bs-watchlist-tag-watchlist-desc": "Mostra os artigos que têm as alterações mais recentes e estão na sua lista de páginas vigiadas."
 }
