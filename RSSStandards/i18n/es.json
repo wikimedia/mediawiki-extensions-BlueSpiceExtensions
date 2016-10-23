@@ -17,5 +17,6 @@
 	"bs-rssstandards-desc-watch": "Canal que resume tus páginas en seguimiento.",
 	"bs-rssstandards-link-text-watch": "Cambios recientes {{PLURAL:$1|del último día|de los últimos $1 días}}.",
 	"bs-rssstandards-desc-ns": "Canal que resume los cambios recientes de un espacio de nombres.",
-	"bs-rssstandards-changes-from": "Cambios {{GENDER:$1|de}}: $1"
+	"bs-rssstandards-changes-from": "Cambios {{GENDER:$1|de}}: $1",
+	"apihelp-bs-rss-standards-pages-store-description": "Devolver lista de páginas disponibles para RSSFeeder"
 }
