@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Mansil"
+			"Mansil",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-usermanager-desc": "Interface de administração para adicionar, editar e eliminar utilizadores",
+	"bs-usermanager-admin-nodelete": "A conta de administrador não pode ser eliminada.",
 	"bs-usermanager-self-nodelete": "Não pode eliminar a sua conta.",
 	"bs-usermanager-db-error": "Ocorreu um erro na base de dados.",
 	"bs-usermanager-enter-pwd": "Insira uma palavra-passe.",
@@ -14,6 +16,11 @@
 	"bs-usermanager-invalid-realname": "O nome verdadeiro é inválido.",
 	"bs-usermanager-invalid-uname": "O nome de utilizador(a) é inválido.",
 	"bs-usermanager-invalid-email-gen": "O endereço de correio eletrónico é inválido.",
+	"bs-usermanager-label": "Administrador de utilizadores",
+	"bs-usermanager-user-added": "O utilizador foi adicionado.",
+	"bs-usermanager-user-deleted": "O utilizador foi eliminado.",
+	"bs-usermanager-user-exists": "O nome de utilizador(a) já existe.",
+	"bs-usermanager-save-successful": "As alterações foram gravadas.",
 	"bs-usermanager-headerusername": "Nome de utilizador(a)",
 	"bs-usermanager-headerrealname": "Nome verdadeiro",
 	"bs-usermanager-headeremail": "Correio eletrónico",
@@ -23,8 +30,11 @@
 	"bs-usermanager-labelnewpassword": "Palavra-passe",
 	"bs-usermanager-labelpasswordcheck": "Confirmar a palavra-passe",
 	"bs-usermanager-titledeleteuser": "Eliminar utilizador(a)",
+	"bs-usermanager-confirmdeleteuser": "Tem a certeza de que pretende eliminar {{PLURAL:$1|este utilizador|estes utilizadores}}?",
 	"bs-usermanager-groups-more": "... mais",
-	"bs-usermanager-no-self-block": "Não pode desativar-se a si mesmo.",
+	"bs-usermanager-no-self-desysop": "Não pode remover os seus próprios privilégios de administrador.",
+	"apihelp-bs-usermanager-tasks-description": "Fornece operações para a extensão Checklist",
+	"bs-usermanager-no-self-block": "Não pode desativar-se a si mesmo(a).",
 	"bs-usermanager-block-error": "{{GENDER:$1|O utilizador $1 não pôde ser desativado|A utilizadora $1 não pode ser desativada|O(a) utilizador(a) $1 não pôde ser desativado(a)}}.",
 	"bs-usermanager-unblock-error": "{{GENDER:$1|O utilizador $1 não pôde ser ativado|A utilizadora $1 não pôde ser desativada|O(a) utilizador(a) $1 não pôde ser ativado(a)}}.",
 	"bs-usermanager-headerenabled": "Ativado(a)",
@@ -36,6 +46,8 @@
 	"bs-usermanager-confirmenableuser": "Pretende realmente ativar {{GENDER:$1|o utilizador|a utilizadora $1|o(a) utilizador(a)}} $1.",
 	"bs-usermanager-titledisableuser": "Desativar utilizador(a)",
 	"bs-usermanager-titleenableuser": "Ativar utilizador(a)",
-	"usermanager": "Gestor de utilizadores",
-	"action-usermanager-viewspecialpage": "ver página especial \"Gestor de utilizadores\""
+	"usermanager": "Administrador de utilizadores",
+	"action-usermanager-viewspecialpage": "ver página especial \"Administrador de utilizadores\"",
+	"bs-usermanager-group-add-not-allowed": "Não tem permissões para adicionar utilizadores ao grupo $1",
+	"bs-usermanager-group-remove-not-allowed": "Não tem permissões para remover utilizadores do grupo $1"
 }
