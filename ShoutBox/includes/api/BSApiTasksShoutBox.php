@@ -132,6 +132,7 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 		);
 
 		$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
+		wfRunHooks( 'BSShoutBoxBeforeAddViewAfterArticleContent', array( &$oShoutBoxMessageListView ) );
 
 		if ( $dbr->numRows( $res ) > $iLimit ) {
 			$oShoutBoxMessageListView->setMoreLimit(
