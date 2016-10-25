@@ -24,6 +24,7 @@
 	"bs-usermanager-labelnewpassword": "Hasło",
 	"bs-usermanager-labelpasswordcheck": "Potwierdź hasło",
 	"bs-usermanager-titledeleteuser": "Usuń użytkownika",
+	"bs-usermanager-confirmdeleteuser": "Czy na pewno chcesz usunąć {{PLURAL:$1|tego użytkownika|tych $1 użytkowników}}?",
 	"bs-usermanager-groups-more": "... więcej",
 	"bs-usermanager-no-self-desysop": "Nie możesz odebrać sobie uprawnień administratora.",
 	"bs-usermanager-titledisableuser": "Wyłączenie użytkownika",

@@ -4,6 +4,7 @@
 			"Chrumps"
 		]
 	},
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Dana przestrzeń|Dane przestrzenie}} nazw <code>$2</code> {{PLURAL:$1|nie jest|nie są}} prawidłowe.",
 	"bs-pagesvisited-pref-widgetns": "Przestrzenie nazw:",
 	"bs-pagesvisited-pref-widgetsortodr": "Sortuj według:",
 	"bs-pagesvisited-pref-sort-time": "Czas",

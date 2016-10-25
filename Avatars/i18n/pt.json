@@ -19,7 +19,7 @@
 	"bs-avatars-warning-text": "Definiu uma imagem de utilizador nas suas preferências. Ao utilizar imagens de perfil vai redefinir essa configuração. Deseja continuar?",
 	"bs-avatars-userimage-title": "Imagem da wiki ou URL da imagem",
 	"bs-avatars-userimage-help": "ex. Imagem.jpg ou http://localhost/Imagem.gif",
-	"bs-avatars-set-userimage-failed": "Não é uma imagem da wiki ou URL de imagem válida.",
+	"bs-avatars-set-userimage-failed": "Não é uma imagem da wiki ou um URL de imagem válido.",
 	"bs-avatars-set-userimage-saved": "A imagem de utilizador foi gravada.",
 	"bs-avatars-file-upload-fieldset-title": "Carregamento de imagem",
 	"bs-avatars-auto-generate-fieldset-title": "Gerar automaticamente uma imagem de perfil"
