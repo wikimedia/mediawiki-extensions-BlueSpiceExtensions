@@ -22,10 +22,10 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 						portletConfig.type,
 						portletConfig.config
 					);
-				} catch ( e if e instanceof TypeError ) {
+				} catch ( e ) {
 					//Workaround: Portlets of deactivated extensions are still
-					//loaded from DB. This ends in a TypeError while Ext.create.
-					console.log( TypeError );
+					//loaded from DB. This ends in a TypeError while "Ext.create".
+					mw.log( e );
 					continue;
 				}
 				//Listen to config changes to persist them
