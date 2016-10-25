@@ -24,6 +24,7 @@
 	"bs-extendedsearch-indexing-external-files-in-repo": "Indeksowanie plików zewnętrznych",
 	"bs-extendedsearch-indexing-wiki-articles": "Indeksowanie stron wiki",
 	"bs-extendedsearch-indexing-specialpages": "Indeksowanie stron specjalnych",
+	"bs-extendedsearch-result": "Wyszukiwanie „$1” dało $2 {{PLURAL:$2|wynik|wyniki|wyników}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 z $3 {{PLURAL:$3|wyniku|wyników}}",
 	"bs-extendedsearch-search-category": "Szukaj w kategoriach:",
 	"bs-extendedsearch-search-editors": "Szukaj autorów:",
