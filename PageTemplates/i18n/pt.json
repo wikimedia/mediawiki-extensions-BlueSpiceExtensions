@@ -1,35 +1,50 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
+	"bs-pagetemplates-desc": "Apresenta uma lista de predefinições marcadas como modelos de páginas",
 	"prefs-pagetemplates": "Predefinições",
+	"apihelp-bs-pagetemplates-store": "Fornece uma lista dos modelos de página disponíveis.",
+	"apihelp-bs-pagetemplates-tasks": "Fornece tarefas de criação, atualização e eliminação de modelos de páginas",
 	"bs-pagetemplates-empty-page": "Página vazia",
+	"bs-pagetemplates-empty-page-desc": "Começar com uma página vazia.",
 	"bs-pagetemplatesadmin-label": "Predefinições",
 	"bs-pagetemplates-tpl-desc-toolong": "A descrição é demasiado longa. Por favor, use um máximo de 255 carateres.",
 	"bs-pagetemplates-tpl-label-toolong": "O rótulo é demasiado longo. Por favor, use um máximo de 255 carateres.",
 	"bs-pagetemplates-tpl-label-empty": "Por favor, introduza um rótulo.",
-	"bs-pagetemplates-tpl-name-toolong": "O nome da predefinição é demasiado longo. Por favor, use um máximo de 255 carateres.",
+	"bs-pagetemplates-tpl-name-toolong": "O nome do modelo de página é demasiado longo. Por favor, use um máximo de 255 carateres.",
 	"bs-pagetemplates-tpl-name-empty": "Por favor, insira um nome para a predefinição.",
+	"bs-pagetemplates-no-id": "Introduza o nome de uma página para ser usada como modelo, por favor.",
 	"bs-pagetemplates-tpl-added": "A predefinição foi adicionada.",
 	"bs-pagetemplates-invalid_pfx": "O prefixo é inválido.",
+	"bs-pagetemplates-nooldtpl": "O modelo de página antigo não foi encontrado.",
 	"bs-pagetemplates-tpl-edited": "As alterações foram gravadas.",
 	"bs-pagetemplates-dberror": "Ocorreu um erro na base de dados.",
 	"bs-pagetemplates-tpl-deleted": "A predefinição foi eliminada.",
 	"bs-pagetemplates-general-section": "Geral",
+	"bs-pagetemplates-choose-template": "Esta página ainda não existe. Pode criar uma página nova. Se não pretende fazê-lo, clique o botão voltar do seu navegador para regressar à última página visitada. \n\nPode escolher {{PLURAL:$1|o seguinte modelo|um dos seguintes modelos}}:",
 	"bs-pagetemplates-pref-excludens": "Não mostrar predefinições nestes domínios:",
+	"bs-pagetemplates-pref-forcenamespace": "Forçar o domínio de destino",
+	"bs-pagetemplates-pref-hideifnotintargetns": "Ocultar o modelo se a página não vai ser criada no domínio de destino",
 	"bs-pagetemplates-headerlabel": "Etiqueta",
 	"bs-pagetemplates-headertargetnamespace": "Domínio",
 	"bs-pagetemplates-tipeditdetails": "Editar predefinição",
 	"bs-pagetemplates-tipdeletetemplate": "Eliminar {{PLURAL:$1|predefinição|predefinições}}",
 	"bs-pagetemplates-tipaddtemplate": "Adicionar predefinição",
+	"bs-pagetemplates-label-tpl": "Nome do modelo",
 	"bs-pagetemplates-label-desc": "Descrição",
 	"bs-pagetemplates-label-targetns": "Domínio",
+	"bs-pagetemplates-label-tplns": "Domínio de predefinições",
 	"bs-pagetemplates-label-article": "Predefinição",
 	"bs-pagetemplates-confirm-deletetpl": "Tem a certeza que pretende eliminar {{PLURAL:$1|esta predefinição|estas predefinições}}?",
 	"bs-pagetemplates-remove-message-unknown": "Ocorreu um erro inesperado, por favor tente novamente.",
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|A seguinte predefinição foi eliminada|As seguintes predefinições foram eliminadas}}: $2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|A seguinte predefinição não pode ser eliminada|As seguintes predefinições não podem ser eliminadas}}: $2 (Motivo: $3)",
-	"action-pagetemplatesadmin-viewspecialpage": "ver página especial \"{{int:pagetemplatesadmin}}\""
+	"apihelp-bs-pagetemplates-store-description": "Lista todas as predefinições. Permite ordenar, filtrar e paginar. Implementa os parâmetros ExtJS Store.",
+	"apihelp-bs-pagetemplates-tasks-description": "Permite a manipulação de modelos de páginas",
+	"action-pagetemplatesadmin-viewspecialpage": "ver página especial \"{{int:pagetemplatesadmin}}\"",
+	"pagetemplatesadmin": "Administração de modelos de páginas"
 }

@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
-	"prefs-usersidebar": "Barra lateral de utilizador"
+	"bs-usersidebar-desc": "Acrescenta o separador Foco à barra lateral",
+	"prefs-usersidebar": "Barra lateral de utilizador",
+	"bs-usersidebar-userpagesettings-link-title": "Editar o conteúdo do seu foco",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} foco",
+	"bs-usersidebar-tab-focus": "Foco",
+	"bs-usersidebar-tab-globalactions": "Ações globais",
+	"bs-usersidebar-globalactionswidget-title": "Ações globais",
+	"apihelp-sidebar-description": "Devolve o conteúdo HTML da barra lateral de utilizador"
 }
