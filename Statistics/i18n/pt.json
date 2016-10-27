@@ -38,7 +38,7 @@
 	"bs-statistics-diag-number-of-edits-desc": "Apresenta o número total de edições feitas durante o período escolhido.",
 	"bs-statistics-diag-edits-per-user": "Edições por utilizador(a)",
 	"bs-statistics-diag-edits-per-user-desc": "Apresenta o número médio de edições de um utilizador durante o período escolhido.",
-	"bs-statistics-diag-search-queries": "Consultas de pesquisa",
+	"bs-statistics-diag-search-queries": "Pesquisas",
 	"bs-statistics-diag-search-queries-desc": "Apresenta o número de pesquisas feitas durante o período escolhido.",
 	"bs-statistics-label-searchterm": "Termo de pesquisa",
 	"bs-statistics-label-count": "Contagem",

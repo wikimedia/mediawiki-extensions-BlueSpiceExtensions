@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Mansil"
+			"Mansil",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-usagetracker-desc": "Contém dados estatísticos sobre a utilização da extensão",
@@ -14,7 +15,7 @@
 	"bs-usagetracker-col-desc": "Descrição",
 	"bs-usagetracker-col-count": "Contagem",
 	"bs-usagetracker-col-last-updated": "Ultima atualização",
-	"bs-usagetracker-caution": "Atenção: A atualização das estatísticas de utilização pode demorar algum tempo e consome recursos. Inicie a atualização só quando forem absolutamente necessários dados atualizados. A atualização é realizada através de tarefas diferidas, por isso poderá ter de atualizar o navegador várias vezes até que todos os dados tenham sido coligidos.",
+	"bs-usagetracker-caution": "Atenção: A atualização das estatísticas de utilização pode demorar algum tempo e consome recursos. Inicie a atualização só quando forem absolutamente necessários dados atualizados. A atualização é realizada através de tarefas diferidas, por isso poderá ter de atualizar o <i>browser</i> várias vezes até que todos os dados tenham sido coligidos.",
 	"bs-usagetracker-base-collector-desc": "Número de páginas que utilizam $1",
 	"bs-usagetracker-tag-collector-desc": "Número de páginas que usam a marca <$1>"
 }

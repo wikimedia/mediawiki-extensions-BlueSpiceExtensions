@@ -31,5 +31,6 @@
 	"bs-blog-pref-maxentrycharacters": "Número de palabras por entrada:",
 	"bs-blog-tag-blog-desc": "Mostrar entradas de blog en cada página.",
 	"bs-blog-tag-blogtime-desc": "Esta etiqueta permite establecer una marca temporal personalizada para las entradas de blog.",
-	"bs-blog-tag-blogtime-err": "El formato debe ser AAAAMMDDHHmm; p. ej., para obtener «12 ene. 2013 15:43», la marca temporal es: 201301121543"
+	"bs-blog-tag-blogtime-err": "El formato debe ser AAAAMMDDHHmm; p. ej., para obtener «12 ene. 2013 15:43», la marca temporal es: 201301121543",
+	"action-blog-viewspecialpage": "ver la página especial «{{int:bs-blog-blog}}»"
 }

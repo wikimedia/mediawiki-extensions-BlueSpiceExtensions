@@ -5,7 +5,7 @@
 			"Hamilton Abreu"
 		]
 	},
-	"bs-insertfile-desc": "Diálogo para carregar ficheiros e inserir uma ligação para um ficheiro",
+	"bs-insertfile-desc": "Diálogo para carregar ficheiros e inserir um <i>link</i> para um ficheiro",
 	"bs-insertfile-insert-image": "Inserir imagem",
 	"bs-insertfile-insert-file": "Inserir ficheiro",
 	"bs-insertfile-button-image-title": "Inserir ou editar imagem",
@@ -60,13 +60,13 @@
 	"bs-insertfile-titleimage": "Inserir imagem",
 	"bs-insertfile-tipkeepratio": "Manter proporções",
 	"bs-insertfile-of": "de",
-	"bs-insertfile-select-a-link": "Selecionar ou escrever uma ligação",
+	"bs-insertfile-select-a-link": "Selecionar ou escrever um <i>link</i>",
 	"bs-insertfile-license": "Licença",
 	"bs-insertfile-categories": "Categorias",
 	"bs-insertfile-linktext": "Mostrar texto",
-	"bs-insertfile-no-link": "Sem hiperligação",
-	"bs-insertfile-error-no-medialink": "Não foi selecionada nenhuma ligação para um ficheiro multimédia.",
-	"bs-insertfile-error-no-imagelink": "Não foi selecionada nenhuma ligação para uma imagem.",
+	"bs-insertfile-no-link": "Sem <i>link</i>",
+	"bs-insertfile-error-no-medialink": "Não foi selecionado nenhum <i>link</i> para um ficheiro multimédia.",
+	"bs-insertfile-error-no-imagelink": "Não foi selecionado nenhum <i>link</i> para uma imagem.",
 	"bs-insertfile-upload-waitmessage": "Carregamento em progresso ...",
 	"apihelp-bs-insertfile-license-store-description": "Lista as licenças para a extensão InsertFile."
 }

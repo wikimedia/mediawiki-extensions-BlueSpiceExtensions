@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-saferedit-restore": "Restaurar",
@@ -12,5 +13,6 @@
 	"bs-saferedit-pref-warnonleave": "Avisar-me quando abandonar uma página com alterações por gravar",
 	"bs-saferedit-pref-usese": "Ativar edição segura",
 	"bs-saferedit-statebartopsaferedit": "Edição segura",
-	"bs-saferedit-statebartopsafereditediting": "Edição segura - alguém está a editar"
+	"bs-saferedit-statebartopsafereditediting": "Edição segura - alguém está a editar",
+	"bs-saferedit-unsavedchanges": "Há alterações por gravar."
 }

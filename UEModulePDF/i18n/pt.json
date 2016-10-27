@@ -10,7 +10,7 @@
 	"uemodulepdf": "Módulo de exportação universal PDF",
 	"bs-uemodulepdf-pref-pdfserviceurl": "URL do servidor:",
 	"bs-uemodulepdf-pref-templatepath": "Modelo padrão:",
-	"bs-uemodulepdf-pref-templatedir": "Diretório de predefinições:",
+	"bs-uemodulepdf-pref-templatedir": "Diretório dos modelos:",
 	"bs-uemodulepdf-pref-suppressns": "Ocultar prefixo do domínio no PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Página única em PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportar esta página para o formato PDF.",

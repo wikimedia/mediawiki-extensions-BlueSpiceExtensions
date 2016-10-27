@@ -6,7 +6,7 @@
 		]
 	},
 	"bs-whoisonline-desc": "Mostra uma lista de utilizadores que estão atualmente on-line",
-	"bs-whoisonline-nousers": "Ninguém está conetado.",
+	"bs-whoisonline-nousers": "Ninguém está ligado.",
 	"bs-whoisonline-widget-title": "Quem está on-line?",
 	"prefs-whoisonline": "Quem está on-line?",
 	"bs-whoisonline-pref-limitcount": "Número máximo de utilizadores mostrados:",
