@@ -2090,15 +2090,19 @@ var BsWikiCode = function() {
 		// line being recognized since the regex then matches line endings at the beginning
 		// and at the end.
 		// There is a lookahead for tables: ?!<t
-		_preTagsSpace = text.match(/(^|\n)( +(?!<t)\S[^\n]*)/gi);
-
+		_preTagsSpace = text.match(/(^|\n\n?)( +(?!<t)\S[^\n]*)/gi);
 		if (_preTagsSpace) {
 			for (var i = 0; i < _preTagsSpace.length; i++) {
 				//prevent HTML-Tables from being rendered as pre
 				text = text.replace(_preTagsSpace[i], "@@@PRE_SPACE" + i + "@@@");
-				_preTagsSpace[i] = _preTagsSpace[i].replace("\n", "").substr(1, _preTagsSpace[i].length);
-				text = text.replace("@@@PRE_SPACE" + i + "@@@", '<pre class="bs_pre_from_space">' + _preTagsSpace[i] + '</pre>');
-
+				// preserve newline at the beginning of a line
+				var newlineAtBeginning = _preTagsSpace[i].charAt(0) == "\n";
+				// trim pre content
+				_preTagsSpace[i] = _preTagsSpace[i].replace( /\n/g, "").substr(1, _preTagsSpace[i].length);
+				text = text.replace(
+					"@@@PRE_SPACE" + i + "@@@",
+					( newlineAtBeginning ? "\n" : "" ) + '<pre class="bs_pre_from_space">' + _preTagsSpace[i] + '</pre>'
+				);
 			}
 		}
 
@@ -2274,7 +2278,8 @@ var BsWikiCode = function() {
 
 		do {
 			_processFlag = false;
-			text = text.replace(/(^|\n|\b)([^\n]+)\n([^\n]{1,5})/gi, __preserveSingleLinebreaks);
+			// (^|\n|>| ): only last word. Used to be \b, but this matches @ which is unwanted
+			text = text.replace(/(^|\n|>| )([^\n]+)\n([^\n]{1,5})/gi, __preserveSingleLinebreaks);
 
 		} while (_processFlag);
 
