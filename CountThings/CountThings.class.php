@@ -75,6 +75,7 @@ class CountThings extends BsExtensionMW {
 				//Param definitions for tag attributes
 				'params' => array(
 					'modes' => array(
+						'aliases' => 'mode',
 						'type' => 'string',
 						'islist' => true,
 						'values'  => array( 'chars', 'words', 'pages', 'all' ),
