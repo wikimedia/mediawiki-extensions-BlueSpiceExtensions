@@ -1,30 +1,37 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
-	"bs-shoutbox-desc": "Adiciona uma função de analisador para incorporar a sua própria caixa de mensagens",
+	"bs-shoutbox-desc": "Adiciona uma função ao analisador sintático para incorporar a sua própria caixa de mensagens",
 	"prefs-shoutbox": "Caixa de mensagens",
 	"bs-shoutbox-title": "Caixa de mensagens",
 	"bs-shoutbox-message": "Escrever novo comentário...",
 	"bs-shoutbox-shout": "Enviar",
-	"bs-shoutbox-no-entries": "Nenhuma mensagem ainda.",
+	"bs-shoutbox-no-entries": "Ainda não há mensagens.",
 	"bs-shoutbox-loading": "A carregar...",
-	"bs-shoutbox-pref-committimeinterval": "Tempo entre duas mensagens (em segundos):",
-	"bs-shoutbox-pref-maxmessagelength": "Comprimento máximo de uma mensagem:",
+	"bs-shoutbox-pref-committimeinterval": "Intervalo entre duas mensagens (em segundos):",
+	"bs-shoutbox-pref-maxmessagelength": "Tamanho máximo de uma mensagem:",
 	"bs-shoutbox-pref-numberofshouts": "Número de mensagens mostradas:",
 	"bs-shoutbox-pref-showage": "Mostrar data de criação de uma mensagem",
 	"bs-shoutbox-pref-showuser": "Mostrar o autor de uma mensagem",
-	"bs-shoutbox-pref-allowarchive": "O(a) utilizador(a) é capaz de eliminar as suas próprias entradas",
+	"bs-shoutbox-pref-allowarchive": "Os utilizadores podem eliminar as suas próprias entradas",
 	"bs-shoutbox-pref-show": "Mostrar caixa de mensagens",
 	"bs-shoutbox-archive-success": "Entrada eliminada.",
 	"bs-shoutbox-archive-failure": "Ocorreu um erro ao tentar eliminar a entrada, por favor tente novamente.",
 	"bs-shoutbox-archive-failure-user": "As entradas só podem ser eliminados pelo seu autor.",
 	"bs-shoutbox-switch-description": "Oculta a caixa de mensagens nesta página",
-	"bs-shoutbox-charactersleft": "Falta{{PLURAL:$1|m}} $1 {{PLURAL:$1|carácter|caracteres}}",
+	"bs-shoutbox-charactersleft": "{{PLURAL:$1|Resta $1 carácter|Restam $1 caracteres}}",
 	"bs-shoutbox-confirm-text": "Tem a certeza que pretende eliminar esta entrada?",
 	"bs-shoutbox-confirm-title": "Confirmar",
 	"bs-shoutbox-entermessage": "Introduza uma mensagem.",
-	"bs-shoutbox-too-early": "Por favor, aguarde alguns segundos antes de enviar a próxima entrada."
+	"bs-shoutbox-too-early": "Por favor, aguarde alguns segundos antes de enviar a próxima entrada.",
+	"bs-shoutbox-n-shouts": "$1 {{PLURAL:$1|Mensagem|Mensagens}}",
+	"echo-category-title-bs-shoutbox-mention-cat": "Notificação de menção numa mensagem",
+	"bs-shoutbox-notifications-title-message-subject": "Foi mencionado(a)",
+	"bs-shoutbox-notifications-title-message-text": "Foi feita uma menção a si {{GENDER:$1|por}} $1 ($4) numa mensagem na página \"$5.\"\n\nPode visitar a página seguindo este <i>link</i>:\n$3",
+	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|}}fez menção a si numa mensagem na $3.",
+	"apihelp-bs-shoutbox-tasks-description": "Fornece tarefas comuns para a ShoutBox"
 }
