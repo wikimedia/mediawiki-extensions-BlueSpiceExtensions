@@ -38,6 +38,9 @@
  * Separate multiple groups by commas.
  */
 class PageAccess extends BsExtensionMW {
+
+	private static $aAllowedPairs = array(); // <page_id>-<user_id>
+
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'PageContentSave' );
@@ -114,7 +117,7 @@ class PageAccess extends BsExtensionMW {
 
 	/**
 	 * Checks if user is in one of the given user groups
-	 * @param object $oUser the current user
+	 * @param User $oUser the current user
 	 * @param string $sAccessGroups a comma separated list of user groups
 	 * @return bool
 	 */
@@ -122,11 +125,9 @@ class PageAccess extends BsExtensionMW {
 		if ( !$sAccessGroups ) return true;
 		$aAccessGroups = array_map("trim", explode( ',', $sAccessGroups ) );
 		wfRunHooks( 'BSPageAccessAddAdditionalAccessGroups', array( &$aAccessGroups ) );
-		$aUserGroups = $oUser->getEffectiveGroups();
+		$aUserGroups = array_merge( $oUser->getGroups(), $oUser->getImplicitGroups() );
 		return (bool) array_intersect( $aAccessGroups, $aUserGroups );
 	}
-
-	private static $aAllowedPairs = array(); // <page_id>-<user_id>
 
 	/**
 	 * Checks if user is allowed to view page
@@ -136,17 +137,35 @@ class PageAccess extends BsExtensionMW {
 	 */
 	public function isUserAllowed( $oPage, $oUser ) {
 		$oPage = ( $oPage instanceof Article ) ? $oPage->getTitle() : $oPage;
+		// if this is not a valid article or there is no user,
+		// this is none of our business.
+		if ( $oPage->getArticleId() == 0 ) {
+			return true;
+		}
+
 		$sPair = $oPage->getArticleId().'-'.$oUser->getId();
-		if( isset( self::$aAllowedPairs[$sPair] ) ) return self::$aAllowedPairs[$sPair];
+
+		if( isset( self::$aAllowedPairs[$sPair] ) ) {
+			return self::$aAllowedPairs[$sPair];
+		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$bHasAccess = true;
 		$aAllTitles = $oPage->getTemplateLinksFrom();
 		$aAllTitles[] = $oPage;
 		foreach ( $aAllTitles as $oTitleToCheck ) {
-			$sAccessGroups = $dbr->selectField( 'page_props', 'pp_value',
-					array( 'pp_page' => $oTitleToCheck->getArticleID(), 'pp_propname' => 'bs-page-access' ), __METHOD__ );
-			if ( !$this->checkAccessGroups( $oUser, $sAccessGroups ) ) $bHasAccess = false;
+			$sAccessGroups = $dbr->selectField(
+				'page_props',
+				'pp_value',
+				array(
+					'pp_page' => $oTitleToCheck->getArticleID(),
+					'pp_propname' => 'bs-page-access'
+				),
+				__METHOD__
+			);
+			if ( !$this->checkAccessGroups( $oUser, $sAccessGroups ) ) {
+				$bHasAccess = false;
+			}
 		}
 		self::$aAllowedPairs[$sPair] = $bHasAccess;
 		return $bHasAccess;
@@ -159,8 +178,12 @@ class PageAccess extends BsExtensionMW {
 
 	public function onUserCan( $title, $user, $action, &$result ) {
 		// TODO MRG: Is this list really exhaustive enough?
-		if( !in_array($action, array('read', 'edit', 'delete', 'move')) ) return true;
-		if ( $this->isUserAllowed( $title, $user ) ) return true;
+		if( !in_array($action, array('read', 'edit', 'delete', 'move')) ) {
+			return true;
+		}
+		if ( $this->isUserAllowed( $title, $user ) ) {
+			return true;
+		}
 		$result = false;
 		return false;
 	}
