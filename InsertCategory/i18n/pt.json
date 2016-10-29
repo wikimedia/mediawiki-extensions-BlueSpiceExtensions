@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Fúlvio"
+			"Fúlvio",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-insertcategory-desc": "Diálogo para inserir uma ligação à categoria",
@@ -13,6 +14,6 @@
 	"bs-insertcategory-cat-label": "Atribuição:",
 	"bs-insertcategory-success": "Categoria adicionada",
 	"bs-insertcategory-failure": "Erro",
-	"bs-insertcategory-hint": "Nota: para adicionar uma categoria, deve pressionar \"enter\" ou encerrar sua entrada com uma vírgula.",
+	"bs-insertcategory-hint": "Nota: para adicionar uma categoria, deve pressionar \"enter\".",
 	"bs-insertcategory-panel-title": "Categorias"
 }

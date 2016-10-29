@@ -29,7 +29,7 @@
 	"bs-extendedsearch-indexing-linked-files": "A indexar os ficheiros ligados",
 	"bs-extendedsearch-indexing-wiki-articles": "A indexar as páginas da wiki",
 	"bs-extendedsearch-indexing-specialpages": "A indexar as páginas especiais",
-	"bs-extendedsearch-invalid-query": "A consulta não pôde ser processada.",
+	"bs-extendedsearch-invalid-query": "Não foi possível encontrar a consulta.",
 	"bs-extendedsearch-nosearchterm": "Introduza um termo de pesquisa, por favor.",
 	"bs-extendedsearch-noresult": "Não foram encontradas entradas.",
 	"bs-extendedsearch-result": "Pesquisa por \"$1\" encontrou $2 {{PLURAL:$2|resultado|resultados}}.",

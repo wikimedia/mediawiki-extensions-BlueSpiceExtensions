@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-insertmagic": "Inserir palavra mágica",
@@ -9,6 +10,8 @@
 	"bs-insertmagic-forcetoc": "Força a tabela de conteúdos a aparecer na sua posição normal.",
 	"bs-insertmagic-currentmonthname": "Presente mês (nome).",
 	"bs-insertmagic-currentdayname": "Dia da semana (nome).",
+	"bs-insertmagic-scriptpath": "Caminho relativo do <i>script</i>.",
+	"bs-insertmagic-stylepath": "Caminho relativo do estilo.",
 	"bs-insertmagic-type-variables": "Variáveis",
 	"bs-insertmagic-label-examples": "Exemplos",
 	"bs-insertmagic-label-see-also": "Ver também"
