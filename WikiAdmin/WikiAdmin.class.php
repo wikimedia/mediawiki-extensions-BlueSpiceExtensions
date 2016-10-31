@@ -190,7 +190,11 @@ class WikiAdmin extends BsExtensionMW {
 		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
 			$oSpecialPage = SpecialPage::getTitleFor( $sModuleKey );
 			$skeyLower = mb_strtolower( $sModuleKey );
-			$sModulLabel = wfMessage( 'bs-' . $skeyLower . '-label' )->plain();
+			$sMessageKey = 'bs-' . $skeyLower . '-label';
+			if( isset( $aModulParams['message'] ) ) {
+				$sMessageKey = $aModulParams['message'];
+			}
+			$sModulLabel = wfMessage( $sMessageKey )->plain();
 			$sUrl = $oSpecialPage->getLocalURL( );
 			//$sUrl = str_replace( '&', '&amp;', $sUrl );
 
