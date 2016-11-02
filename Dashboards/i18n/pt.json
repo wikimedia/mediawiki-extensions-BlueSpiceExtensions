@@ -17,7 +17,7 @@
 	"bs-dashboard-userportlet-calendar-description": "Calendário",
 	"bs-dashboard-userportlet-wikipage-title": "Página Wiki",
 	"bs-dashboard-userportlet-wikipage-description": "Use uma página da wiki para definir o <i>widget</i>",
-	"bs-dashboard-userportlet-wikipage-wiki-article": "Página wiki",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Página da wiki",
 	"apihelp-bs-dashboard-task-param-dc": "Parâmetro de controlo da <i>cache</i>. Usado por ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Lista todos os <i>portlets</i> disponíveis",
 	"apihelp-bs-dashboards-tasks-description": "Grava a configuração do painel",
