@@ -94,7 +94,8 @@
 				"bs-flexiskin-error-templatenotexists",
 				"bs-flexiskin-usebackground",
 				"bs-flexiskin-labelcurrentbackground",
-				"bs-extjs-upload"
+				"bs-extjs-upload",
+				"bs-flexiskin-button-upload-image-tooltip"
 			]
 		}
 	},

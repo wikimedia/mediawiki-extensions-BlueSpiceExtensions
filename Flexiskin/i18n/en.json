@@ -66,5 +66,6 @@
 	"apihelp-bs-flexiskin-upload-description": "Allows to upload files to a flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "Lists uploaded files of a flexiskin",
 	"action-flexiskin-viewspecialpage": "view specialpage \"Flexiskin\"",
-	"flexiskin": "Skin preferences"
+	"flexiskin": "Skin preferences",
+	"bs-flexiskin-button-upload-image-tooltip": "Upload new image"
 }

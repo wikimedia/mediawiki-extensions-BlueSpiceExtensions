@@ -40,9 +40,9 @@ Ext.define( 'BS.Flexiskin.Menuitems.Header', {
 		});
 
 		this.buttonUploadLogo = Ext.create( 'Ext.Button', {
-			tooltip: mw.message( 'bs-flexiskin-button-upload-file' ).plain(),
+			tooltip: mw.message( 'bs-flexiskin-button-upload-image-tooltip' ).plain(),
 			width: '20px',
-			iconCls: 'icon-upload3',
+			iconCls: 'bs-icon-upload',
 			style: {
 				marginLeft: '10px',
 				color: 'white'

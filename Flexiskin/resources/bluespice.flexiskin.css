@@ -7,3 +7,8 @@
 #bs-flexiskin-config-settings{
 	border-right: 1px solid black;
 }
+
+span.x-btn-icon-el.bs-icon-upload {
+	font-size: 12px;
+	text-align: left;
+}

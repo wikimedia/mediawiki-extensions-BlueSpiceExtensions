@@ -69,5 +69,6 @@
 	"apihelp-bs-flexiskin-upload-description": "Describes an API endpoint that is used to upload files to a flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "Describes an API endpoint that lists uploaded files of a flexiskin",
 	"action-flexiskin-viewspecialpage": "Part of error message when access denied to view specialpage \"Flexiskin\"",
-	"flexiskin": "Title for special page of extension \"Flexiskin\""
+	"flexiskin": "Title for special page of extension \"Flexiskin\"",
+	"bs-flexiskin-button-upload-image-tooltip": "Tooltip: upload button for logo, background, ..."
 }
