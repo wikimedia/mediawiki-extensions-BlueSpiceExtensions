@@ -62,5 +62,6 @@
 	"bs-pageassignments-yourassignments": "Vos affectations",
 	"bs-pageassignments-yourassignmentsdesc": "Liste des pages auxquelles vous êtes affecté.",
 	"right-pageassignable": "Apparaître dans la liste des utilisateurs configurables",
-	"right-pageassignments": "Modifier les affectations d'une page"
+	"right-pageassignments": "Modifier les affectations d'une page",
+	"prefs-pageassign": "Affectation"
 }

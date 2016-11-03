@@ -70,5 +70,6 @@
 	"apihelp-bs-flexiskin-upload-description": "Permet de télécharger des fichiers vers un habillage flexible",
 	"apihelp-bs-flexiskin-upload-store-description": "Liste les fichiers téléchargés d’un habillage flexible",
 	"action-flexiskin-viewspecialpage": "Voir la page spéciale « Flexiskin »",
-	"flexiskin": "Préférences d'habillage"
+	"flexiskin": "Préférences d'habillage",
+	"bs-flexiskin-button-upload-image-tooltip": "Télécharger une nouvelle image"
 }

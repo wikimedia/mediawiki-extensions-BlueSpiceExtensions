@@ -46,5 +46,6 @@
 	"bs-flexiskin-usebackground": "Hannergrondbild benotzen",
 	"bs-flexiskin-labelcurrentbackground": "Aktuellt Bild",
 	"action-flexiskin-viewspecialpage": "d'Spezialsäit \"Flexiskin\" weisen",
-	"flexiskin": "Astellunge vum Layout"
+	"flexiskin": "Astellunge vum Layout",
+	"bs-flexiskin-button-upload-image-tooltip": "Neit Bild eroplueden"
 }

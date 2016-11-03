@@ -33,5 +33,6 @@
 	"apihelp-bs-flexiskin-upload-description": "파일을 flexiskin에 올릴 수 있게 합니다",
 	"apihelp-bs-flexiskin-upload-store-description": "flexiskin의 올린 파일을 나열합니다",
 	"action-flexiskin-viewspecialpage": "특수문서 \"Flexiskin\" 보기",
-	"flexiskin": "스킨 환경 설정"
+	"flexiskin": "스킨 환경 설정",
+	"bs-flexiskin-button-upload-image-tooltip": "새 그림 올리기"
 }

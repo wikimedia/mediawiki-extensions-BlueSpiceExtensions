@@ -66,5 +66,6 @@
 	"apihelp-bs-flexiskin-upload-description": "允许上传文件至flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "列出上传的flexiskin文件",
 	"action-flexiskin-viewspecialpage": "查看特殊页面“Flexiskin”",
-	"flexiskin": "皮肤参数设置"
+	"flexiskin": "皮肤参数设置",
+	"bs-flexiskin-button-upload-image-tooltip": "上传新图片"
 }

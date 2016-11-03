@@ -36,5 +36,6 @@
 	"bs-flexiskin-apihelp-task-param-skinId": "Il parametro <var>skinId</var> identifica il tema",
 	"bs-flexiskin-apihelp-task-param-name": "Il parametro <var>name</var> è il nome del file caricato",
 	"bs-flexiskin-usebackground": "Utilizza l'immagine di sfondo",
-	"bs-flexiskin-labelcurrentbackground": "Immagine attuale"
+	"bs-flexiskin-labelcurrentbackground": "Immagine attuale",
+	"bs-flexiskin-button-upload-image-tooltip": "Carica una nuova immagine"
 }
