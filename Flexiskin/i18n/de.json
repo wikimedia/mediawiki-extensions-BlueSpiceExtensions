@@ -52,7 +52,7 @@
 	"bs-flexiskin-api-desc": "API der BlueSpice-Erweiterung „Flexiskin“.",
 	"bs-flexiskin-api-type-desc": "Die auszuführende Aktion, z.B. 'delete'. Standard ist 'get'",
 	"bs-flexiskin-api-mode-desc": "Der Modus der Aktion, z.B. 'config'. Standard ist 'flexiskin'.",
-	"bs-flexiskin-api-id-desc": "Die ID des Flexiskins, optional.",
+	"bs-flexiskin-api-id-desc": "Die Kennung des Flexiskins (optional).",
 	"bs-flexiskin-api-data-desc": "Ein Array aus Daten, optional.",
 	"bs-flexiskin-api-preview-desc": "Parameter für die Angabe, ob es der Preview-Modus ist oder nicht, optional.",
 	"bs-flexiskin-api-example-desc": "Liefert die aktuelle Konfiguration eines Flexiskins.",

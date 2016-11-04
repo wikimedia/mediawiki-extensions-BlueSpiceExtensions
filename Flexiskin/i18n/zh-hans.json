@@ -50,7 +50,7 @@
 	"bs-flexiskin-api-desc": "用于Bluespice扩展Flexiskin的API界面。",
 	"bs-flexiskin-api-type-desc": "要执行的操作，例如“delete”。默认为“get”",
 	"bs-flexiskin-api-mode-desc": "操作模式，例如“config”。默认为“flexiskin”。",
-	"bs-flexiskin-api-id-desc": "当Flexiskin时的ID（可选）。",
+	"bs-flexiskin-api-id-desc": "Flexiskin的ID（可选）。",
 	"bs-flexiskin-api-data-desc": "一个数据阵列（可选）。",
 	"bs-flexiskin-api-preview-desc": "选择是否显示预览模式（可选）。",
 	"bs-flexiskin-api-example-desc": "返回当前的Flexiskin配置。",

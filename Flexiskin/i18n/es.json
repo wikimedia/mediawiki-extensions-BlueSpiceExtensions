@@ -63,5 +63,6 @@
 	"bs-flexiskin-usebackground": "Usar la imagen de fondo",
 	"bs-flexiskin-labelcurrentbackground": "Imagen actual",
 	"action-flexiskin-viewspecialpage": "ver la página especial \"Flexiskin\"",
-	"flexiskin": "Preferencias de la apariencia"
+	"flexiskin": "Preferencias de la apariencia",
+	"bs-flexiskin-button-upload-image-tooltip": "Subir una imagen nueva"
 }

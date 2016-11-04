@@ -63,5 +63,5 @@
 	"bs-pageassignments-yourassignmentsdesc": "Description text for list of pages which you are assigned to.",
 	"right-pageassignable": "Describes the permission that a user needs to have to be listed as assignable user",
 	"right-pageassignments": "Describes the permission that a user needs to change assignments of a page",
-	"prefs-pageassign": "Assignment"
+	"prefs-pageassign": "Assignment\n{{Identical|Assignment}}"
 }
