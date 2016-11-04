@@ -26,8 +26,8 @@ class PageAssignments extends BsExtensionMW {
 	 */
 	public static function onRegistration() {
 		$GLOBALS['bsgPageAssigneeTypes'] = array(
-			'user' => 'BSAssignableUser',
-			'group' => 'BSAssignableGroup'
+			'group' => 'BSAssignableGroup',
+			'user' => 'BSAssignableUser'
 		);
 
 		$GLOBALS['wgExtensionFunctions'][] = function() {
