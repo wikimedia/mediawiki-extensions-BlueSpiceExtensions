@@ -308,6 +308,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 			Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().deselectAll();
 			Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(me._treeStore.getRootNode().getChildAt(0));
 		});
+		me.on( 'hide', me.discardChanges, this ); //prevent empty templates to be saved
 		this.callParent();
 	}
 });
