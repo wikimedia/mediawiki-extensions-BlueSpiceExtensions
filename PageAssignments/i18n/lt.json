@@ -16,5 +16,6 @@
 	"bs-pageassignments-pref-permissions": "Pridėti papildomus leidimus priskirtiems vartotojams",
 	"bs-pageassignments-yourassignments": "Jūsų užduotys",
 	"bs-pageassignments-yourassignmentsdesc": "Puslapių, prie kurių esate priskirtas, sąrašas.",
-	"right-pageassignments": "Redaguoti puslapio užduotis"
+	"right-pageassignments": "Redaguoti puslapio užduotis",
+	"prefs-pageassign": "Užduotis"
 }

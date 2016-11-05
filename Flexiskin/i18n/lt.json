@@ -57,5 +57,6 @@
 	"apihelp-bs-flexiskin-store-description": "Išvardino galimus flexiskins",
 	"apihelp-bs-flexiskin-upload-description": "Leidžia kelti failus į flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "Išvardina failus įkeltus į flexiskin",
-	"flexiskin": "Išvaizdos nuostatos"
+	"flexiskin": "Išvaizdos nuostatos",
+	"bs-flexiskin-button-upload-image-tooltip": "Įkelti naują paveikslėlį"
 }
