@@ -43,6 +43,7 @@
 	"bs-flexiskin-labelfullwidth": "Maksymalna szerokość",
 	"bs-flexiskin-error-nameempty": "Podaj prawidłową nazwę dla skórki, którą chcesz utworzyć.",
 	"bs-flexiskin-error-templatenotexists": "Wybrany szablon nie istnieje.",
+	"bs-flexiskin-api-id-desc": "Identyfikator Flexiskin (opcjonalnie).",
 	"bs-flexiskin-api-data-desc": "Tablica danych (opcjonalnie).",
 	"bs-flexiskin-api-error-save": "Wystąpił błąd podczas zapisywania. Powód: „$1”",
 	"bs-flexiskin-api-error-invalid-action": "Takie działanie nie istnieje",

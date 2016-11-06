@@ -54,7 +54,7 @@
 	"bs-flexiskin-api-desc": "API de l'extension Bluespice Flexiskin",
 	"bs-flexiskin-api-type-desc": "Action à effectuer, par ex. \"supprimer\". Par défaut \"get\"",
 	"bs-flexiskin-api-mode-desc": "Le mode des actions, par exemple «config». Par défaut «flexiskin».",
-	"bs-flexiskin-api-id-desc": "L'identifiant dans le cas d'un Flexiskin (facultatif).",
+	"bs-flexiskin-api-id-desc": "L'identifiant du Flexiskin (facultatif).",
 	"bs-flexiskin-api-data-desc": "Un tableau de données (en option).",
 	"bs-flexiskin-api-preview-desc": "Choisir d'afficher ou pas le mode d'aperçu (en option).",
 	"bs-flexiskin-api-example-desc": "Retourne la configuration actuelle d'un Flexiskin.",

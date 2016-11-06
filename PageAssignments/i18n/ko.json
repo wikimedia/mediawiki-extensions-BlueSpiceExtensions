@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Jerrykim306"
 		]
 	},
 	"bs-pageassignments-desc": "사용자나 그룹을 페이지에 할당할 수 있게 합니다",
@@ -26,5 +27,6 @@
 	"notification-bs-pageassignments-user-group-add-summary": "$4 그룹에 추가되었습니다",
 	"notification-bs-pageassignments-user-group-add-subject": "$4 그룹에 추가됨",
 	"notification-bs-pageassignments-user-group-remove-summary": "당신은 $4 {{PLURAL:$5|그룹}}에서 제거되었습니다",
-	"notification-bs-pageassignments-user-group-remove-subject": "$4 {{PLURAL:$5|그룹}}에서 제거됨"
+	"notification-bs-pageassignments-user-group-remove-subject": "$4 {{PLURAL:$5|그룹}}에서 제거됨",
+	"prefs-pageassign": "과제"
 }
