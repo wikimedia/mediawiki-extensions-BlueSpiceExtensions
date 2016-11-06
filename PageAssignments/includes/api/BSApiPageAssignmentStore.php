@@ -13,7 +13,6 @@ class BSApiPageAssignmentStore extends BSApiExtJSStoreBase {
 			$oDataSet = (object)array(
 				'page_id' => $oTitle->getArticleID(),
 				'page_prefixedtext' => $oTitle->getPrefixedText(),
-				'page_link' => Linker::link( $oTitle ),
 				'assignments' => array()
 			);
 

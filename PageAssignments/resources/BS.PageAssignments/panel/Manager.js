@@ -11,7 +11,16 @@ Ext.define( 'BS.PageAssignments.panel.Manager', {
 				sortable: true,
 				filterable:true,
 				renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
-					return record.get('page_link');
+					var title = new mw.Title( value );
+					return mw.html.element(
+						'a',
+						{
+							'href': title.getUrl(),
+							'data-bs-title': value,
+							'target': '_blank'
+						},
+						value
+					);
 				}
 			},
 			{
