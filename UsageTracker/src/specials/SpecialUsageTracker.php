@@ -16,6 +16,8 @@
 
 class SpecialUsageTracker extends BsSpecialPage {
 
+	public $iOpenTasks = null;
+
 	/**
 	 * Constructor of SpecialUsageTracker class
 	 */
@@ -38,11 +40,21 @@ class SpecialUsageTracker extends BsSpecialPage {
 
 		// Handle update requests (in case the user has the neccesary rights)
 		if ( $this->getUser()->isAllowed( 'usagetracker-update') ) {
-			$this->showUpdateForm();
-
 			if ( $oRequest->wasPosted() ) {
-				BsExtensionManager::getExtension( 'UsageTracker' )->getUsageData();
+				$aData = BsExtensionManager::getExtension( 'UsageTracker' )->getUsageData();
+				// JobQueue...getSize is not updated fast enough, so we use the
+				// raw count of jobs just enqueued.
+				$this->iOpenTasks = count( $aData );
+			} else {
+				$oJobQueue = JobQueueGroup::singleton()->get( 'usageTrackerCollectJob' );
+				$oJobQueue->flushCaches();
+				// This count is wrong, since some jobs are executed right at the
+				// end of this page load. However, since we do not know the number
+				// it's ok. Possibly, the user has to reload one time more than
+				// necessary.
+				$this->iOpenTasks = $oJobQueue->getSize();
 			}
+			$this->showUpdateForm();
 		}
 
 		// Get stored data from db
@@ -63,7 +75,6 @@ class SpecialUsageTracker extends BsSpecialPage {
 		$oOut->addHTML(
 			HTML::rawElement( "table", array( "class" => "sortable wikitable" ), $sTableHtml )
 		);
-
 		return true;
 	}
 
@@ -90,7 +101,7 @@ class SpecialUsageTracker extends BsSpecialPage {
 		/**
 	 * Output a form to start collect jobs
 	 */
-	function showUpdateForm() {
+	protected function showUpdateForm() {
 		$this->getOutput()->addHTML(
 			Html::openElement(
 				'form',
@@ -103,14 +114,30 @@ class SpecialUsageTracker extends BsSpecialPage {
 			) .
 			Html::hidden( 'title', $this->getPageTitle()->getPrefixedText() ) .
 			Xml::fieldset( $this->msg( 'bs-usagetracker-create-statistics' )->text() ) .
-			Xml::element( 'div', [], $this->msg( 'bs-usagetracker-caution' )->text() ).
-			Xml::submitButton(
+			Xml::element( 'div', [], $this->msg( 'bs-usagetracker-caution' )->text() )
+		);
+		if ( $this->iOpenTasks > 0 ) {
+			$this->getOutput()->addHTML( Html::openElement( 'b' ) );
+			$this->getOutput()->addHTML(
 				$this->msg(
-					'bs-usagetracker-startjobs'
+					'bs-usagetracker-open-tasks',
+					$this->iOpenTasks,
+					SpecialPage::getTitleFor( 'UsageTracker' )->getLinkURL()
 				)->text()
-			) .
-			Html::closeElement( 'fieldset' ) .
-			Html::closeElement( 'form' ) . "\n"
+			);
+			$this->getOutput()->addHTML( Html::closeElement( 'b' ) );
+		} else {
+			$this->getOutput()->addHTML(
+				Xml::submitButton(
+					$this->msg(
+						'bs-usagetracker-startjobs'
+					)->text()
+				)
+			);
+		}
+		$this->getOutput()->addHTML(
+			Html::closeElement('fieldset') .
+			Html::closeElement('form') . "\n"
 		);
 	}
 

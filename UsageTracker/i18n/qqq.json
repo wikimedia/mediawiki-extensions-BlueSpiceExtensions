@@ -14,5 +14,7 @@
 	"bs-usagetracker-col-desc": "Used in [[Special:Usage_Tracker]], label for description column\n{{Identical|Description}}",
 	"bs-usagetracker-col-count": "Used in [[Special:Usage_Tracker]], label for count column\n{{Identical|Count}}",
 	"bs-usagetracker-col-last-updated": "Used in [[Special:Usage_Tracker]], label for last updated column\n{{Identical|Last updated}}",
-	"bs-usagetracker-caution": "Used in [[Special:Usage_Tracker]], text to warn users not that the feature is resource intense"
+	"bs-usagetracker-caution": "Used in [[Special:Usage_Tracker]], text to warn users not that the feature is resource intense",
+	"bs-usagetracker-open-tasks" : "Used in [[Special:Usage_Tracker]], text to show that site analysis is currently in progress.\n\n* $1 is the number of open jobs."
+
 }

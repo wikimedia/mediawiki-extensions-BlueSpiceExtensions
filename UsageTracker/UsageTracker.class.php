@@ -71,7 +71,7 @@ class UsageTracker extends BsExtensionMW {
 			foreach ( $this->aCollectors as $oCollector ) {
 				$oCollector->registerJob();
 			}
-			return true;
+			return $this->aCollectors;
 		}
 
 		foreach ( $this->aCollectors as $oCollector ) {
