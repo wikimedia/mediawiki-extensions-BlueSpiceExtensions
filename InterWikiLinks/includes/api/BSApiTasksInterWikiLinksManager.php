@@ -31,6 +31,7 @@
  */
 class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 
+	protected $aIWLexists = array();
 	/**
 	 * Methods that can be called by task param
 	 * @var array
@@ -87,12 +88,12 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 			wfGetMainCache()->delete( $sKey );
 		}
 
-		if( !empty($sOldPrefix) && !$oPrefix = Interwiki::fetch($sOldPrefix) ) {
+		if( !empty($sOldPrefix) && !$this->interWikiLinkExists( $sOldPrefix ) ) {
 			$oReturn->errors[] = array(
 				'id' => 'iweditprefix',
 				'message' => wfMessage( 'bs-interwikilinks-nooldpfx' )->plain(),
 			);
-		} elseif( !empty($sPrefix) && $oPrefix = Interwiki::fetch($sPrefix) && $sPrefix !== $sOldPrefix) {
+		} elseif( !empty($sPrefix) && $this->interWikiLinkExists( $sPrefix ) && $sPrefix !== $sOldPrefix) {
 			$oReturn->errors[] = array(
 				'id' => 'iweditprefix',
 				'message' => wfMessage( 'bs-interwikilinks-pfxexists' )->plain(),
@@ -221,7 +222,7 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 		$oPrefix = null;
 
 		$sPrefix = isset( $oTaskData->prefix )
-			? (string) $oTaskData->prefix
+			? addslashes( $oTaskData->prefix )
 			: ''
 		;
 
@@ -238,7 +239,8 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 			$sKey = wfMemcKey( 'interwiki', $sPrefix );
 			wfGetMainCache()->delete( $sKey );
 		}
-		if( !$oPrefix = Interwiki::fetch($sPrefix) ) {
+
+		if( !$this->interWikiLinkExists( $sPrefix ) ) {
 			$oReturn->errors[] = array(
 				'id' => 'iweditprefix',
 				'message' => wfMessage( 'bs-interwikilinks-nooldpfx' )->plain(),
@@ -264,5 +266,25 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 		InterWikiLinks::purgeTitles( $sPrefix );
 
 		return $oReturn;
+	}
+
+	protected function interWikiLinkExists( $sPrefix ) {
+		if ( isset( $this->aIWLexists[$sPrefix] ) ) {
+			return $this->aIWLexists[$sPrefix];
+		}
+		$row = $this->getDB()->selectRow(
+			'interwiki',
+			Interwiki::selectFields(),
+			[ 'iw_prefix' => $sPrefix ],
+			__METHOD__
+		);
+
+		if( !$row ) {
+			$this->aIWLexists[$sPrefix] = false;
+		} else {
+			$this->aIWLexists[$sPrefix] = true;
+		}
+
+		return $this->aIWLexists[$sPrefix];
 	}
 }
