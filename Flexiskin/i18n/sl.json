@@ -50,7 +50,7 @@
 	"bs-flexiskin-api-desc": "Vmesnik API za Bluespice razširitev Flexiskin.",
 	"bs-flexiskin-api-type-desc": "Dejanje, ki se bo izvedlo. npr. \"delete\". Privzeto je \"get\".",
 	"bs-flexiskin-api-mode-desc": "Način izvajanja, npr. \"config\". Privzeto je \"flexiskin\".",
-	"bs-flexiskin-api-id-desc": "ID, če Flexiskin (neobvezno).",
+	"bs-flexiskin-api-id-desc": "ID Flexiskin (neobvezno).",
 	"bs-flexiskin-api-data-desc": "Podatkovna tabela (neobvezno).",
 	"bs-flexiskin-api-preview-desc": "Izberite za prikaz predogleda (neobvezno).",
 	"bs-flexiskin-api-example-desc": "Vrne trenutno konfiguracijo Flexiskin-a.",
