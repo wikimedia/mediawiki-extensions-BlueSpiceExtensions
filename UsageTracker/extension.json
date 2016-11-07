@@ -24,7 +24,13 @@
 	},
 	"AutoloadClasses": {
 		"UsageTracker": "UsageTracker.class.php",
-		"SpecialUsageTracker": "src/specials/SpecialUsageTracker.php"
+		"SpecialUsageTracker": "src/specials/SpecialUsageTracker.php",
+		"BS\\UsageTracker\\Collectors\\Base": "src/collectors/Base.php",
+		"BS\\UsageTracker\\Collectors\\Database": "src/collectors/Database.php",
+		"BS\\UsageTracker\\Collectors\\Property": "src/collectors/Property.php",
+		"BS\\UsageTracker\\Collectors\\Tag": "src/collectors/Tag.php",
+		"BS\\UsageTracker\\Jobs\\UsageTrackerCollectJob": "src/jobs/UsageTrackerCollectJob.php",
+		"BS\\UsageTracker\\CollectorResult": "src/CollectorResult.php"
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "UsageTracker::getSchemaUpdates"
@@ -32,6 +38,5 @@
 	"JobClasses": {
 		"usageTrackerCollectJob": "BS\\UsageTracker\\Jobs\\UsageTrackerCollectJob"
 	},
-	"load_composer_autoloader" : true,
 	"manifest_version": 1
 }
