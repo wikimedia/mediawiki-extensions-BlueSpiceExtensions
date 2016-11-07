@@ -47,5 +47,6 @@
 	"apihelp-bs-pagetemplates-store-description": "Listet alle Seitenvorlagen auf. Erlaubt die Sortierung, Filterung und Nummerierung. Implementiert die „ExtJS Store“-Parameter.",
 	"apihelp-bs-pagetemplates-tasks-description": "Erlaubt die Veränderung von Seitenvorlagen",
 	"action-pagetemplatesadmin-viewspecialpage": "die Spezialseite „{{int:pagetemplatesadmin}}“ anzusehen",
-	"pagetemplatesadmin": "Seitenvorlagenverwaltung"
+	"pagetemplatesadmin": "Seitenvorlagenverwaltung",
+	"bs-usagetracker-pagetemplates": "Seitenvorlagen"
 }

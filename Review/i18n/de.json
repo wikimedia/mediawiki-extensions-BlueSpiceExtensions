@@ -118,5 +118,6 @@
 	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtert die Benutzerliste nach Berechtigungen für <var>articleId</var>",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Listet Benutzer auf, die ein Teil eines Begutachtungsprozesses sein können. Erlaubt die Sortierung, Filterung und Nummerierung. Implementiert die Parameter „ExtJS Store“.",
 	"apihelp-bs-reviewoverview-store-description": "Listet eine Übersicht von Begutachtungsprozessen auf. Erlaubt die Sortierung, Filterung und Nummerierung. Implementiert die Parameter „ExtJS Store“.",
-	"apihelp-bs-review-tasks-description": "Ermöglicht die Veränderung von Begutachtungen"
+	"apihelp-bs-review-tasks-description": "Ermöglicht die Veränderung von Begutachtungen",
+	"bs-usagetracker-review": "Begutachtungen"
 }

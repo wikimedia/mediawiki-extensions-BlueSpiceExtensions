@@ -380,4 +380,22 @@ class PageTemplates extends BsExtensionMW {
 
 		return true;
 	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['pagetemplates:templates'] = array(
+			'class' => 'Database',
+			'config' => array(
+				'identifier' => 'bs-usagetracker-pagetemplates',
+				'descKey' => 'bs-usagetracker-pagetemplates',
+				'table' => 'bs_pagetemplate',
+				'uniqueColumns' => array( 'pt_id' )
+			)
+		);
+		return true;
+	}
 }

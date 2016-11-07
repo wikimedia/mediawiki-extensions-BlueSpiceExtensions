@@ -1532,4 +1532,22 @@ class Review extends BsExtensionMW {
 			);
 		}
 	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['review:pages'] = array(
+			'class' => 'Database',
+			'config' => array(
+				'identifier' => 'bs-usagetracker-review',
+				'descriptionKey' => 'bs-usagetracker-review',
+				'table' => 'bs_review',
+				'uniqueColumns' => array( 'rev_pid' )
+			)
+		);
+		return true;
+	}
 }

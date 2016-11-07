@@ -40,6 +40,7 @@ class HideTitle extends BsExtensionMW {
 		// Hooks
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 		$this->mCore->registerBehaviorSwitch( 'bs_hidetitle' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -71,5 +72,19 @@ class HideTitle extends BsExtensionMW {
 			'code' => '__HIDETITLE__',
 		);
 		return true;
+	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:hidetitle'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs_hidetitle'
+			)
+		);
 	}
 }

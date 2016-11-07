@@ -34,5 +34,6 @@
 	"bs-shoutbox-notifications-title-message-subject": "Du wurdest in einer Nachricht in der Shoutbox erwähnt.",
 	"bs-shoutbox-notifications-title-message-text": "Du wurdest von $1 ($4) in einer Nachricht auf der Seite „$5“ {{GENDER:$1|erwähnt}}.\n\nDu kannst den Artikel über diese URL aufrufen:\n$3",
 	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|hat}} dich in einer Nachricht auf $3 erwähnt.",
-	"apihelp-bs-shoutbox-tasks-description": "Bietet allgemeine Aufgaben für die ShoutBox"
+	"apihelp-bs-shoutbox-tasks-description": "Bietet allgemeine Aufgaben für die ShoutBox",
+	"bs-usagetracker-shoutbox": "Artikeln mit Shoutbox-Einträgen"
 }

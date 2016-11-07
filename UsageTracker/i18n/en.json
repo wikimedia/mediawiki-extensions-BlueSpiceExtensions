@@ -16,5 +16,6 @@
 	"bs-usagetracker-caution" : "Be aware: Updating usage statistics may take some time and resources. Only trigger the update when you really, really need current data. The update is done via deferred jobs, so you might have to reload several times until the data is fully collected.",
 	"bs-usagetracker-base-collector-desc" : "Number of pages using $1",
 	"bs-usagetracker-tag-collector-desc" : "Number of pages using tag <$1>",
+	"bs-usagetracker-db-collector-desc": "Number of $1",
 	"bs-usagetracker-open-tasks" : "Site analysis is currently in progress. {{PLURAL:$1|One analysis is|$1 analyses are}} still open. <a href='$2'>(Refresh)</a>"
 }

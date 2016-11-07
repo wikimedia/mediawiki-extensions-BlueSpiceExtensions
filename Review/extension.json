@@ -91,7 +91,8 @@
 		"remoteExtPath": "BlueSpiceExtensions/Review/resources"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "Review::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "Review::getSchemaUpdates",
+		"BSUsageTrackerRegisterCollectors": "Review::onBSUsageTrackerRegisterCollectors"
 	},
 	"callback": "Review::onRegistration",
 	"manifest_version": 1

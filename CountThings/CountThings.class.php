@@ -44,6 +44,7 @@ class CountThings extends BsExtensionMW {
     protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
+		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -227,5 +228,31 @@ class CountThings extends BsExtensionMW {
 		}
 
 		return $sOut;
+	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['bs:countarticles'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-bs:countarticles'
+			)
+		);
+		$aCollectorsConfig['bs:countusers'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-bs:countusers'
+			)
+		);
+		$aCollectorsConfig['bs:countcharacters'] = array(
+			'class' => 'Property',
+			'config' => array(
+				'identifier' => 'bs-tag-bs:countcharacters'
+			)
+		);
 	}
 }

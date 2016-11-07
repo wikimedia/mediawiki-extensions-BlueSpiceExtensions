@@ -63,7 +63,8 @@
 		"remoteExtPath": "BlueSpiceExtensions/PageTemplates/resources"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "PageTemplates::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "PageTemplates::getSchemaUpdates",
+		"BSUsageTrackerRegisterCollectors": "PageTemplates::onBSUsageTrackerRegisterCollectors"
 	},
 	"manifest_version": 1
 }

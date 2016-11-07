@@ -51,5 +51,6 @@
 	"apihelp-bs-pagetemplates-store-description": "Describes the API endpoint that lists page templates",
 	"apihelp-bs-pagetemplates-tasks-description": "Describes the API endpoint that allows manipulation of page templates",
 	"action-pagetemplatesadmin-viewspecialpage": "Label for denied special page, includes pagename",
-	"pagetemplatesadmin": "Page title for page template admin special page"
+	"pagetemplatesadmin": "Page title for page template admin special page",
+	"bs-usagetracker-pagetemplates": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
 }

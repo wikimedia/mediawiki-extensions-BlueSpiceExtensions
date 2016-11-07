@@ -421,4 +421,22 @@ class ShoutBox extends BsExtensionMW {
 		);
 
 	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['shoutbox:shouts'] = array(
+			'class' => 'Database',
+			'config' => array(
+				'identifier' => 'bs-usagetracker-shoutbox',
+				'descriptionKey' => 'bs-usagetracker-shoutbox',
+				'table' => 'bs_shoutbox',
+				'uniqueColumns' => array( 'sb_page_id' )
+			)
+		);
+		return true;
+	}
 }

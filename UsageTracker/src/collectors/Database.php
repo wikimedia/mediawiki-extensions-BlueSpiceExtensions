@@ -4,6 +4,7 @@ class Database extends Base {
 
 	protected $table;
 	protected $uniqueColumns;
+	protected $descKey = 'bs-usagetracker-db-collector-desc';
 
 	public function __construct( $config = array() ) {
 		parent::__construct( $config );
@@ -12,7 +13,7 @@ class Database extends Base {
 				$this->table = $config['config']['table'];
 			}
 			if ( isset( $config['config']['uniqueColumns'] ) ) {
-				$this->uniqueColumn =
+				$this->uniqueColumns =
 					is_array( $config['config']['uniqueColumns'] )
 					? $config['config']['uniqueColumns']
 					: [ $config['config']['uniqueColumns'] ];
@@ -21,6 +22,11 @@ class Database extends Base {
 	}
 
 	public function getUsageData() {
+		$oRes = new \BS\UsageTracker\CollectorResult( $this );
+		if ( !$this->table || !$this->uniqueColumns ) {
+			throw new \MWException( "UsageTracker::DatabaseCollector: table or columns are not set." );
+		}
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			[ $this->table ],
@@ -30,7 +36,6 @@ class Database extends Base {
 			[ "GROUP BY" => $this->uniqueColumns ]
 		);
 
-		$oRes = new \BS\UsageTracker\CollectorResult( $this );
 		$oRes->count = $res->numRows();
 		return $oRes;
 	}

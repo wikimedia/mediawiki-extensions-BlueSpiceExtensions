@@ -187,7 +187,8 @@
 		"WikiExplorer::queryPagesWithFilter": "PageAssignmentsWikiExplorerHooks::onWikiExplorerQueryPagesWithFilter",
 		"WikiExplorer::buildDataSets": "PageAssignmentsWikiExplorerHooks::onWikiExplorerBuildDataSets",
 		"BSDashboardsUserDashboardPortalConfig": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalConfig",
-		"BSDashboardsUserDashboardPortalPortlets": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalPortlets"
+		"BSDashboardsUserDashboardPortalPortlets": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalPortlets",
+		"BSUsageTrackerRegisterCollectors": "PageAssignmentsHooks::onBSUsageTrackerRegisterCollectors"
 	},
 	"manifest_version": 1
 }

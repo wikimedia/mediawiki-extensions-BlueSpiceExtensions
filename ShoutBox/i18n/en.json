@@ -32,5 +32,6 @@
 	"bs-shoutbox-notifications-title-message-subject": "You've been mentioned",
 	"bs-shoutbox-notifications-title-message-text": "You've been {{GENDER:$1|mentioned}} by $1 ($4) in a shout on the page \"$5.\"\n\nYou can visit the page following this link:\n$3\n",
 	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|mentioned}} you in a shout on $3.",
-	"apihelp-bs-shoutbox-tasks-description": "Provides common tasks for the ShoutBox"
+	"apihelp-bs-shoutbox-tasks-description": "Provides common tasks for the ShoutBox",
+	"bs-usagetracker-shoutbox": "articles with shoutbox entries"
 }

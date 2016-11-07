@@ -72,7 +72,8 @@
 		"remoteExtPath": "BlueSpiceExtensions/ShoutBox/resources"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "ShoutBox::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "ShoutBox::getSchemaUpdates",
+		"BSUsageTrackerRegisterCollectors": "ShoutBox::onBSUsageTrackerRegisterCollectors"
 	},
 	"callback": "ShoutBox::onRegistration",
 	"manifest_version": 1

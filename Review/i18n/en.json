@@ -116,5 +116,6 @@
 	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filters the list of users by permissions for <var>articleId</var>",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Lists users that can be part of a review process. Allows sorting, filtering and pagination. Implements ExtJS Store parameters.",
 	"apihelp-bs-reviewoverview-store-description": "Lists an overview of review processes. Allows sorting, filtering and pagination. Implements ExtJS Store parameters.",
-	"apihelp-bs-review-tasks-description": "Allows manipulation of reviews"
+	"apihelp-bs-review-tasks-description": "Allows manipulation of reviews",
+	"bs-usagetracker-review": "reviews"
 }

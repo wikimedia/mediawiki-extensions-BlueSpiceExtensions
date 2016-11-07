@@ -127,4 +127,22 @@ class PageAssignmentsHooks {
 		);
 		return true;
 	}
+
+	/**
+	 * Register tag with UsageTracker extension
+	 * @param array $aCollectorsConfig
+	 * @return Always true to keep hook running
+	 */
+	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+		$aCollectorsConfig['pageassignments:pages'] = array(
+			'class' => 'Database',
+			'config' => array(
+				'identifier' => 'bs-usagetracker-pageassignments',
+				'descriptionKey' => 'bs-usagetracker-pageassignments',
+				'table' => 'bs_pageassignments',
+				'uniqueColumns' => array( 'pa_page_id' )
+			)
+		);
+		return true;
+	}
 }

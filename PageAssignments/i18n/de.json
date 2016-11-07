@@ -63,5 +63,6 @@
 	"bs-pageassignments-yourassignmentsdesc": "Liste der Seiten, denen du zugewiesen bist.",
 	"right-pageassignable": "In der Liste der zuweisbaren Benutzer auftauchen",
 	"right-pageassignments": "Die Zuweisungen einer Seite bearbeiten können",
-	"prefs-pageassign": "Zuweisung"
+	"prefs-pageassign": "Zuweisung",
+	"bs-usagetracker-pageassignments": "Seiten mit Zuweisungen"
 }
