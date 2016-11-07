@@ -780,7 +780,7 @@ class Blog extends BsExtensionMW {
 			$this,
 			'buildRssNsBlog',
 			null,
-			'buildLinksNs'
+			'buildRssNsBlog'
 		);
 		return true;
 	}
