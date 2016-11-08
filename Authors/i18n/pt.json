@@ -3,10 +3,11 @@
 		"authors": [
 			"Imperadeiro98",
 			"Fúlvio",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
-	"bs-authors-desc": "Exibe a imagem do perfil dos autores de uma página",
+	"bs-authors-desc": "Apresenta a imagem do perfil dos autores de uma página",
 	"prefs-authors": "Autores desta página",
 	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Autor|Autora}}|Autores}}",
 	"bs-authors-profileimage": "Imagem de perfil",

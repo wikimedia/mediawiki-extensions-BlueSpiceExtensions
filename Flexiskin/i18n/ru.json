@@ -3,7 +3,8 @@
 		"authors": [
 			"Okras",
 			"Alexandr Efremov",
-			"Striking Blue"
+			"Striking Blue",
+			"Kareyac"
 		]
 	},
 	"bs-flexiskin-desc": "Позволяет странице управлять flexiskins с настройкой параметров",
@@ -48,5 +49,6 @@
 	"bs-flexiskin-labelfullwidth": "Максимальная ширина",
 	"bs-flexiskin-error-nameempty": "Пожалуйста, введите допустимое имя для темы оформления, которую Вы хотите создать.",
 	"bs-flexiskin-error-templatenotexists": "Выбранный шаблон не существует.",
-	"bs-flexiskin-api-error-invalid-action": "Это действие не существует."
+	"bs-flexiskin-api-error-invalid-action": "Это действие не существует.",
+	"bs-flexiskin-button-upload-image-tooltip": "Загрузить новое изображение"
 }

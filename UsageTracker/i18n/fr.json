@@ -16,5 +16,6 @@
 	"bs-usagetracker-col-last-updated": "Dernière mise à jour",
 	"bs-usagetracker-caution": "Attention: la mise à jour des statistiques d'utilisation peut prendre un certain temps ainsi que des ressources. Déclenchez seulement la mise à jour  si vous avez vraiment, vraiment besoin des données courantes. La mise à jour étant réalisée à l'aide de tâches différées, vous pourriez avoir à recharger plusieurs fois jusqu'à ce que toutes les données soient recueillies.",
 	"bs-usagetracker-base-collector-desc": "Nombre de pages utilisant $1",
-	"bs-usagetracker-tag-collector-desc": "Nombre de pages utilisant la balise <$1>"
+	"bs-usagetracker-tag-collector-desc": "Nombre de pages utilisant la balise <$1>",
+	"bs-usagetracker-open-tasks": "L’analyse du site est en cours. {{PLURAL:$1|Une analyse est encore ouverte|$1 analyses sont encore ouvertes}}. <a href='$2'>(Rafraîchir)</a>"
 }
