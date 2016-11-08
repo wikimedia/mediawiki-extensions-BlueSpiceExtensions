@@ -235,7 +235,7 @@ class CountThings extends BsExtensionMW {
 	 * @param array $aCollectorsConfig
 	 * @return Always true to keep hook running
 	 */
-	public static function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
+	public function onBSUsageTrackerRegisterCollectors( &$aCollectorsConfig ) {
 		$aCollectorsConfig['bs:countarticles'] = array(
 			'class' => 'Property',
 			'config' => array(
