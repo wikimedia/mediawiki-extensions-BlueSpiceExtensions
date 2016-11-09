@@ -119,5 +119,6 @@
 	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtre la liste des utilisateurs par autorisation pour <var>articleId</var>",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Liste les utilisateurs qui peuvent faire partie d’un processus de relecture. Permet de trier, filtrer et paginer. Implémente les paramètres ExtJS Store.",
 	"apihelp-bs-reviewoverview-store-description": "Liste une vue d’ensemble des processus de relecture. Permet de trier, filtrer et paginer. Implémente les paramètres ExtJS Store.",
-	"apihelp-bs-review-tasks-description": "Permet la manipulation des relectures"
+	"apihelp-bs-review-tasks-description": "Permet la manipulation des relectures",
+	"bs-usagetracker-review": "relectures"
 }

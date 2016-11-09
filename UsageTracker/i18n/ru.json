@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Irus"
 		]
 	},
+	"bs-usagetracker-db-collector-desc": "Число $1",
 	"bs-usagetracker-open-tasks": "В настоящее время проводится Анализ сайта  . {{PLURAL:$1|Один анализ|$1 анализы}} остается открытым(и). <a href='$2'>(Обновить)</a>"
 }

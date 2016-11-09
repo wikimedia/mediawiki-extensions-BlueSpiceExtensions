@@ -46,5 +46,6 @@
 	"apihelp-bs-pagetemplates-store-description": "Liste toutes les modèles de pages. Autorise le tri, le fltrage et la mise en forme. Implémente les paramètres  ExtJS Store.",
 	"apihelp-bs-pagetemplates-tasks-description": "Permet la manipulation des modèles de page",
 	"action-pagetemplatesadmin-viewspecialpage": "voir la page spéciale \"{{int:pagetemplatesadmin}}\"",
-	"pagetemplatesadmin": "Gestion des modèles de page"
+	"pagetemplatesadmin": "Gestion des modèles de page",
+	"bs-usagetracker-pagetemplates": "modèles de page"
 }

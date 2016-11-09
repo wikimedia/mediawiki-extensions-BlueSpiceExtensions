@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Mansil"
 		]
 	},
 	"bs-pagetemplates-desc": "Apresenta uma lista de predefinições marcadas como modelos de páginas",
@@ -46,5 +47,6 @@
 	"apihelp-bs-pagetemplates-store-description": "Lista todos os modelos de páginas. Permite ordenar, filtrar e paginar. Implementa os parâmetros ExtJS Store.",
 	"apihelp-bs-pagetemplates-tasks-description": "Permite a manipulação de modelos de páginas",
 	"action-pagetemplatesadmin-viewspecialpage": "ver página especial \"{{int:pagetemplatesadmin}}\"",
-	"pagetemplatesadmin": "Administração de modelos de páginas"
+	"pagetemplatesadmin": "Administração de modelos de páginas",
+	"bs-usagetracker-pagetemplates": "modelos de página"
 }

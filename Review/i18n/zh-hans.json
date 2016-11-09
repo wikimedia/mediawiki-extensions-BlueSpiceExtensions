@@ -116,5 +116,6 @@
 	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "为<var>articleId</var>按权限过滤用户列表",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "列举可作为复核过程部分的用户。允许排序、过滤和分页。执行ExtJS存储的参数。",
 	"apihelp-bs-reviewoverview-store-description": "列举复核过程的概述。允许排序、过滤和分页。执行ExtJS存储的参数。",
-	"apihelp-bs-review-tasks-description": "允许复核的操纵"
+	"apihelp-bs-review-tasks-description": "允许复核的操纵",
+	"bs-usagetracker-review": "复核"
 }

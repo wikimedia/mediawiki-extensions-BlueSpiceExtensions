@@ -38,5 +38,6 @@
 	"bs-checklist-update-list": "Atualizou lista",
 	"apihelp-bs-checklist-available-options-store-description": "Lista todas as opções disponíveis para os modelos de listas de verificação. Permite ordenar, filtrar e paginar. Implementa os parâmetros ExtJS Store.",
 	"apihelp-bs-checklist-template-store-description": "Listas todos os modelos que são fontes válidas de listas de verificação. Permite ordenar, filtrar e paginar. Implementa os parâmetros ExtJS Store.",
-	"apihelp-bs-checklist-tasks-description": "Fornece operações para a extensão Checklist"
+	"apihelp-bs-checklist-tasks-description": "Fornece operações para a extensão Checklist",
+	"bs-tag-checklist": "a etiqueta da lista de verificação"
 }

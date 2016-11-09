@@ -61,5 +61,6 @@
 	"bs-pageassignments-yourassignmentsdesc": "分配给您的页面列表。",
 	"right-pageassignable": "出现在可分配用户的列表中",
 	"right-pageassignments": "编辑页面分配",
-	"prefs-pageassign": "分配"
+	"prefs-pageassign": "分配",
+	"bs-usagetracker-pageassignments": "带分配的页面"
 }

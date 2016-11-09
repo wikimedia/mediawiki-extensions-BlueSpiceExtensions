@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Nicole Scalinci"
 		]
 	},
 	"apihelp-bs-pagetemplates-store": "Fornisce un elenco dei template disponibili.",
@@ -29,5 +30,6 @@
 	"bs-pagetemplates-label-tpl": "Nome template",
 	"bs-pagetemplates-label-desc": "Descrizione",
 	"bs-pagetemplates-label-targetns": "Namespace",
-	"bs-pagetemplates-label-article": "Template"
+	"bs-pagetemplates-label-article": "Template",
+	"bs-usagetracker-pagetemplates": "template di pagina"
 }

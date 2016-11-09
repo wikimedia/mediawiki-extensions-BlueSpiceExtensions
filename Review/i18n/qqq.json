@@ -124,5 +124,5 @@
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Describes the API endpoint that lists possible users that can do a review",
 	"apihelp-bs-reviewoverview-store-description": "Describes the API endpoint that lists an overview of Review",
 	"apihelp-bs-review-tasks-description": "Describes the API endpoint that allows manipulation of reviews",
-	"bs-usagetracker-review": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
+	"bs-usagetracker-review": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output\n{{Identical|Review}}"
 }
