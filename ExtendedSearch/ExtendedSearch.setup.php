@@ -100,6 +100,7 @@ $wgAutoloadClasses['ViewSearchSuggest'] = __DIR__ . '/views/view.SearchSuggest.p
 $wgAutoloadClasses['ViewSpell'] = __DIR__ . '/views/view.Spell.php';
 $wgAutoloadClasses['ViewMoreLikeThis'] = __DIR__ . '/views/view.MoreLikeThis.php';
 $wgAutoloadClasses['ViewExtendedSearchResultEntry'] = __DIR__ . '/views/view.ExtendedSearchResultEntry.php';
+$wgAutoloadClasses['TagCloudSearchStatsHandler'] = __DIR__. '/includes/Handler/TagCloudSearchStatsHandler.class.php';
 
 // Specialpage and messages
 $wgAutoloadClasses['SpecialExtendedSearch'] = __DIR__ . '/includes/specials/SpecialExtendedSearch.class.php';
@@ -107,6 +108,7 @@ $wgExtensionMessagesFiles['ExtendedSearchAlias'] = __DIR__ . '/languages/Special
 $wgSpecialPages['SpecialExtendedSearch'] = 'SpecialExtendedSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ExtendedSearch::getSchemaUpdates';
+$wgHooks['BSTagCloudRegisterHandlers'][] = 'ExtendedSearch::onBSTagCloudRegisterHandlers';
 $GLOBALS['wgHooks']['OpenSearchUrls'][] = 'ExtendedSearch::onOpenSearchUrls';
 
 //Allows for changes in the 'bq' parameter that gets send to solr.
