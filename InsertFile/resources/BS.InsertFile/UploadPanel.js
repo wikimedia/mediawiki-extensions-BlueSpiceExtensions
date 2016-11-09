@@ -37,7 +37,7 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		this.tfFileName = Ext.create('Ext.form.TextField', {
 			fieldLabel: mw.message('bs-insertfile-uploaddestfilelabel').plain(),
 			id: this.getId()+'-filename',
-			maskRe: /[^\/\?\*\"\#\<\>\|\\]/,
+			maskRe: /[^\/\?\*\"\#\<\>\|\ö\ä\ü\Ö\Ä\Ü\á\à\â\é\è\ê\ú\ù\û\ó\ò\ô\Á\À\Â\É\È\Ê\Ú\Ù\Û\Ó\Ò\Ô\ß\\]/,
 			name: 'filename'
 		});
 		this.tfFileName.on( 'change', this.tfFileNameChange, this );
@@ -157,7 +157,26 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		value = value.replace(/^.*?([^\\\/:]*?\.[a-z0-9]+)$/img, "$1");
 		value = value.replace(/\s/g, "_");
 		if( mw.config.get('bsIsWindows') ) {
-			value = value.replace(/[^\u0000-\u007F]/gmi, ''); //Replace Non-ASCII
+			//replace non-ASCII
+			var matcher = /[öäüÖÄÜáàâéèêúùûóòôÁÀÂÉÈÊÚÙÛÓÒÔß]/g;
+			var dictionary = {
+				  "ä": "ae", "ö": "oe", "ü": "ue",
+				  "Ä": "Ae", "Ö": "Oe", "Ü": "Ue",
+				  "á": "a", "à": "a", "â": "a",
+				  "é": "e", "è": "e", "ê": "e",
+				  "ú": "u", "ù": "u", "û": "u",
+				  "ó": "o", "ò": "o", "ô": "o",
+				  "Á": "A", "À": "A", "Â": "A",
+				  "É": "E", "È": "E", "Ê": "E",
+				  "Ú": "U", "Ù": "U", "Û": "U",
+				  "Ó": "O", "Ò": "O", "Ô": "O",
+				  "ß": "ss"
+				};
+			var translator = function(match) {
+				  return dictionary[match] || match;
+			}
+			value = value.replace(matcher, translator);
+			value = value.replace(/[^\u0000-\u007F]/gmi, ''); //Replace remaining Non-ASCII
 		}
 
 		this.tfFileName.setValue(value);
@@ -201,7 +220,6 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 	checkFileSize: function( ExtCmpId ) {
 		//No FileAPI? No love.
 		if(typeof window.FileReader === 'undefined') return true;
-
 		var allowedSize = mw.config.get('bsMaxUploadSize');
 		if( allowedSize === null ) return true;
 
