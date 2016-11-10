@@ -1,6 +1,6 @@
 {
         "name": "SaferEdit",
-	"version": "2.27.0",
+	"version": "2.27.1-alpha",
 	"url": "https://help.bluespice.com/index.php/SaferEdit",
 	"author": [ "Markus Glaser ", "Tobias Weichart" ],
 	"descriptionmsg": "bs-saferedit-desc",

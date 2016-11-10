@@ -7,7 +7,7 @@
 		"Markus Glaser",
 		"Leonid Verhovskij"
 	],
-	"version": "2.27.0",
+	"version": "2.27.1-alpha",
 	"url": "https://www.mediawiki.org/wiki/Extension:UserManager",
 	"description": "The user manager facilitates the user management",
 	"descriptionmsg": "bs-usermanager-desc",
