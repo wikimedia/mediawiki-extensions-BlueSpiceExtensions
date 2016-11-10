@@ -3,7 +3,8 @@
 		"authors": [
 			"Okras",
 			"Striking Blue",
-			"Kaganer"
+			"Kaganer",
+			"Kareyac"
 		]
 	},
 	"bs-review-desc": "Добавляет на страницы функциональность рабочего потока",
@@ -77,5 +78,6 @@
 	"bs-review-header-enddate": "Конец",
 	"bs-review-confirm-delete-step": "Вы действительно хотите удалить этот шаг?",
 	"bs-review-confirm-delete-review": "Вы действительно хотите удалить этот обзор?",
-	"bs-review-error-insufficient-permissions": "У вас нет прав для совершения этого действия (необходимо «$1»)."
+	"bs-review-error-insufficient-permissions": "У вас нет прав для совершения этого действия (необходимо «$1»).",
+	"bs-usagetracker-review": "обзоры"
 }

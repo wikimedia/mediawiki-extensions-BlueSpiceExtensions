@@ -5,7 +5,8 @@
 			"ProtoplasmaKid",
 			"AVIADOR",
 			"Fitoschido",
-			"AlvaroMolina"
+			"AlvaroMolina",
+			"Igv"
 		]
 	},
 	"bs-checklist-desc": "Proporciona una lista de comprobación",
@@ -40,5 +41,6 @@
 	"bs-checklist-update-list": "Lista actualizada",
 	"apihelp-bs-checklist-available-options-store-description": "Lista todas las opciones disponibles para plantillas \"checklist\". Permite ordenar, filtrar y paginar. Implementa parámetros de almacenamiento ExtJS.",
 	"apihelp-bs-checklist-template-store-description": "Lista todas las plantillas que son fuentes válidas de \"checklist\". Permite ordenar, filtrar y paginar. Implementa parámetros de almacenamiento ExtJS.",
-	"apihelp-bs-checklist-tasks-description": "Proporciona operaciones para la extensión Checklist"
+	"apihelp-bs-checklist-tasks-description": "Proporciona operaciones para la extensión Checklist",
+	"bs-tag-checklist": "la etiqueta de control de lista"
 }

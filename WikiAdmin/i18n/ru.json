@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Meshkov.a",
-			"Okras"
+			"Okras",
+			"Facenapalm"
 		]
 	},
 	"bs-wikiadmin-desc": "Центральная точка администрирования BlueSpice",
@@ -12,5 +13,6 @@
 	"right-wikiadmin": "Отображение страницы администрирования BlueSpice",
 	"bs-wikiadmin-shop": "Магазин",
 	"bs-wikiadmin-mediawiki-specialpages-text": "Спецстраницы",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Показывает список всех спецстраниц MediaWiki"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Показывает список всех спецстраниц MediaWiki",
+	"bs-wikiadmin-widget-title": "Администрация"
 }
