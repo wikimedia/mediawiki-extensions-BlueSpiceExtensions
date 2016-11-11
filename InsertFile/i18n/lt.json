@@ -64,5 +64,8 @@
 	"bs-insertfile-categories": "Kategorijos",
 	"bs-insertfile-linktext": "Rodyti tekstą",
 	"bs-insertfile-no-link": "Jokios nuorodos",
-	"bs-insertfile-upload-waitmessage": "Įkėlimas vyksta ..."
+	"bs-insertfile-error-no-medialink": "Nepasirinktas jokia medijos nuoroda.",
+	"bs-insertfile-error-no-imagelink": "Nepasirinkta jokia paveikslėlio nuoroda.",
+	"bs-insertfile-upload-waitmessage": "Įkėlimas vyksta ...",
+	"apihelp-bs-insertfile-license-store-description": "Nurodo InsertFile plėtinio licencijas."
 }

@@ -42,6 +42,7 @@
 	"bs-extendedsearch-sort-type": "Tipas",
 	"bs-extendedsearch-specialpage-form-return-to-simple": "Pagrindinė paieškos forma",
 	"bs-extendedsearch-specialpage-form-expand-to-extended": "Išplėstinė paieškos forma",
+	"bs-extendedsearch-searchfulltext": "Sudėtyje turi ...",
 	"bs-extendedsearch-pref-scope-text": "Visas tekstas",
 	"bs-extendedsearch-pref-scope-title": "Pavadinimas",
 	"bs-extendedsearch-pref-indextylinked": "Indeksuoti failus, kurių nuorodos yra viki puslapiuose",
@@ -88,5 +89,6 @@
 	"bs-extendedsearch-facetsetting-op-or": "ARBA",
 	"action-extendedsearch-viewspecialpage": "žiūrėti specialų puslapį „{{int:specialextendedsearch}}“",
 	"action-extendedsearchadmin-viewspecialpage": "žiūrėti specialų puslapį „{{int:extendedsearchadmin}}“",
-	"extendedsearchadmin": "Išplėstinės paieškos administracija"
+	"extendedsearchadmin": "Išplėstinės paieškos administracija",
+	"bs-extendedsearch-create-page": "Kurti puslapį „$1“."
 }

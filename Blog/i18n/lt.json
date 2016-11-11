@@ -27,5 +27,6 @@
 	"bs-blog-pref-maxentrycharacters": "Žodžių skaičius per įrašą:",
 	"bs-blog-tag-blog-desc": "Rodyti dienoraščio įrašus kiekviename puslapyje.",
 	"bs-blog-tag-blogtime-err": "Formatas turi būti MMMMmmDDHHmm, t. y. 2013 m. sausio 12 d. 15:43 laiko žymė atrodo: 201301121543",
-	"bs-tag-blog": "dienoraščio žymė"
+	"bs-tag-blog": "dienoraščio žymė",
+	"action-blog-viewspecialpage": "žiūrėti specialų puslapį „{{int:bs-blog-blog}}“"
 }

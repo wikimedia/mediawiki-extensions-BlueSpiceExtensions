@@ -5,6 +5,7 @@
 			"Eitvys200"
 		]
 	},
+	"bs-groupmanager-desc": "Administravimo sąsaja skirta pridėti, redaguoti ir trinti vartotojų grupes ir jų teises",
 	"bs-groupmanager-grpexists": "Grupė jau egzistuoja.",
 	"bs-groupmanager-grpempty": "Grupės pavadinimas negali būti tuščias.",
 	"bs-groupmanager-grpadded": "Grupė buvo pridėta.",
@@ -31,6 +32,7 @@
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|sukūrė}} grupę $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|pervadino}} grupę $4 į $5",
 	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|pašalino}} grupę $4",
+	"apihelp-bs-groupmanager-description": "Pateikia užduotis GroupManager plėtiniui.",
 	"action-groupmanager-viewspecialpage": "žiūrėti specialų puslapį „{{int:bs-groupmanager-label}}“",
 	"groupmanager": "Grupės tvarkymas"
 }
