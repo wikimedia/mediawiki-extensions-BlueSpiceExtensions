@@ -11,14 +11,18 @@
 	"bs-wantedarticle-ajax-error-suggested-page-already-on-list": "Puslapis „$1“ jau pasiūlytas.",
 	"bs-wantedarticle-edit-comment-suggestion-added": "Pasiūlymas „$1“ pridėtas.",
 	"bs-wantedarticle-success-suggestion-entered": "Jūsų pasiūlymas „$1“ pridėtas.",
+	"bs-wantedarticle-sort-value-unknown": "Galimos reikšmės: pavadinimas ir laikas.",
+	"bs-wantedarticle-order-value-unknown": "Galimos reikšmės: ASC ({{int:bs-wantedarticle-pref-order-asc}}) ir DESC ({{int:bs-wantedarticle-pref-order-desc}}).",
 	"bs-wantedarticle-page-removed": "Puslapis „$1“ buvo pašalintas.",
 	"bs-wantedarticle-single-textfield-suggestbutton-text": "Siūlyti",
 	"bs-wantedarticle-single-textfield-createbutton-text": "Kurti",
 	"bs-wantedarticle-single-textfield-defaulttext": "Puslapio pavadinimas",
+	"bs-wantedarticle-tag-wantedarticle-desc": "Siūlo funkciją, kuri paprasčiausiai siūlo naujus straipsnius ir rodo siūlomus puslapius sąraše. Įvairūs parametrai konfigūruoja sąrašą.",
 	"bs-wantedarticle-tag-more-linktext": "Daugiau ...",
 	"bs-wantedarticle-tag-default-title": "Geidžiami puslapiai",
 	"bs-wantedarticle-pref-includelimit": "Pasiūlymų skaičių:",
 	"bs-wantedarticle-pref-deleteexisting": "Ištrinti egzistuojančius įrašus iš sąrašo",
+	"bs-wantedarticle-pref-showcreate": "Rodyti kūrimo nuorodą",
 	"bs-wantedarticle-pref-deleteoncreation": "Pašalinti įrašą iš sąrašo kai sukuriamas puslapis",
 	"bs-wantedarticle-pref-datasourcetemplatetitle": "Šablono pavadinimas pasiūlymams:",
 	"bs-wantedarticle-pref-sort": "Rūšiuoti pagal:",
@@ -29,5 +33,6 @@
 	"bs-wantedarticle-pref-order-desc": "mažėjančia tvarka",
 	"bs-wantedarticle-create-page": "Kurti puslapį „$1“.",
 	"bs-wantedarticle-suggest-page": "Siūlyti puslapį „$1“.",
-	"bs-wantedarticle-info-nothing-entered": "Prašome pateikti galiojantį puslapio pavadinimą."
+	"bs-wantedarticle-info-nothing-entered": "Prašome pateikti galiojantį puslapio pavadinimą.",
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Šis simbolis|Šie simboliai}} nėra leidžiami naudojimui puslapio pavadinime: $2"
 }

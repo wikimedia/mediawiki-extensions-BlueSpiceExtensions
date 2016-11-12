@@ -8,6 +8,7 @@
 	"prefs-smartlist": "Išmanusis sąrašas",
 	"bs-smartlist-recent-changes": "Naujausi pakeitimai",
 	"bs-smartlist-no-entries": "Rezultatų nerasta.",
+	"bs-smartlist-invalid-target": "Nurodytas tikslas nėra galiojantis puslapio pavadinimas",
 	"bs-smartlist-comment": "Komentaras: $1.",
 	"bs-smartlist-pref-count": "Įrašų skaičius:",
 	"bs-smartlist-pref-comments": "Rodyti komentarą",

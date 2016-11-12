@@ -5,6 +5,8 @@
 		]
 	},
 	"bs-securefilestore-desc": "Apsaugo nuo neautorizuotos prieigos prie failų ir paveikslėlių",
+	"prefs-securefilestore": "Saugus failų laikymas",
+	"bs-securefilestore-pref-defaultdisposition": "Rodo failus pagal numatytą:",
 	"bs-securefilestore-pref-defaultdisposition-brower": "Naršyklė",
 	"bs-securefilestore-pref-defaultdisposition-external": "Išorinis",
 	"bs-securefilestore-pref-dispositionattachment": "Išoriniai failų tipai:",
