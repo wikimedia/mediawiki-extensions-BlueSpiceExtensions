@@ -34,5 +34,6 @@
 	"bs-shoutbox-notifications-title-message-subject": "Вас було згадано",
 	"bs-shoutbox-notifications-title-message-text": "$1 ($4) {{GENDER:$1|згадав|згадала}} Вас у репліці на сторінці «$5».\n\nВи можете відвідати сторінку, перейшовши за посиланням:\n$3",
 	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|згадав|згадала}} Вас у репліці на сторінці $3.",
-	"apihelp-bs-shoutbox-tasks-description": "Забезпечує типові завдання для ShoutBox"
+	"apihelp-bs-shoutbox-tasks-description": "Забезпечує типові завдання для ShoutBox",
+	"bs-usagetracker-shoutbox": "статті із записами коментарів (shoutbox)"
 }

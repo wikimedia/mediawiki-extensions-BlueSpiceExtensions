@@ -38,5 +38,6 @@
 	"bs-checklist-update-list": "Оновлено список",
 	"apihelp-bs-checklist-available-options-store-description": "Перелічує всі доступні опції для шаблонів контрольних списків. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
 	"apihelp-bs-checklist-template-store-description": "Перелічує всі шаблони, що є дійсними джерелами контрольних списків. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
-	"apihelp-bs-checklist-tasks-description": "Забезпечує операції для розширення Checklist"
+	"apihelp-bs-checklist-tasks-description": "Забезпечує операції для розширення Checklist",
+	"bs-tag-checklist": "тег контрольного списку"
 }

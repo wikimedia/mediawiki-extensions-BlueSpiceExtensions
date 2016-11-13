@@ -106,5 +106,6 @@
 	"bs-extendedsearch-facetsetting-op-or": "АБО",
 	"action-extendedsearch-viewspecialpage": "перегляд спеціальної сторінки «{{int:specialextendedsearch}}»",
 	"action-extendedsearchadmin-viewspecialpage": "перегляд спеціальної сторінки «{{int:extendedsearchadmin}}»",
-	"extendedsearchadmin": "Розширене адміністрування пошуку"
+	"extendedsearchadmin": "Розширене адміністрування пошуку",
+	"bs-extendedsearch-create-page": "Створити сторінку «$1»."
 }
