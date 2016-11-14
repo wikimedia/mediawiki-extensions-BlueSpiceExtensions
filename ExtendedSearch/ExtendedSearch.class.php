@@ -575,4 +575,14 @@ class ExtendedSearch extends BsExtensionMW {
 
 		return true;
 	}
+
+	/**
+	 * Hook-Handler for Hook 'BSTagCloudRegisterHandlers'
+	 * @param array &$aHandlers array of 'type' tags for TagCloud
+	 * @return boolean Always true
+	 */
+	public static function onBSTagCloudRegisterHandlers(&$aHandlers, &$sDefaultHandlerType, &$aViewHandlers, &$sDefaultViewHandlerType){
+		$aHandlers['searchstats'] = array( 'class' => 'TagCloudSearchStatsHandler' );
+		return true;
+	}
 }
