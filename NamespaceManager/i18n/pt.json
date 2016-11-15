@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-namespacemanager-desc": "Interface de administração para criar, editar e eliminar domínios",
@@ -33,7 +34,7 @@
 	"log-description-bs-namespace-manager": "Este é um registo de alterações aos domínios.",
 	"logentry-bs-namespace-manager-create": "$1 {{GENDER:$2|criou}} o domínio $4",
 	"logentry-bs-namespace-manager-modify": "$1 {{GENDER:$2|alterou}} as configurações do domínio $4",
-	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|renomeou}} o domínio $4 para $5",
+	"logentry-bs-namespace-manager-rename": "$1 {{GENDER:$2|alterou}} o nome do domínio $4 para $5",
 	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|removeu}} o domínio $4",
 	"namespacemanager": "Gestor de domínio"
 }
