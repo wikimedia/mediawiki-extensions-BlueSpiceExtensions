@@ -50,6 +50,7 @@ class TagCloudSearchStatsHandler extends TagCloudBaseHandler {
 
     $aQueryOptions = array(
       'GROUP BY' => 'stats_term',
+      'LIMIT' => $aOptions['count'],
       'ORDER BY' => 'COUNT(stats_term)'
     );
 
