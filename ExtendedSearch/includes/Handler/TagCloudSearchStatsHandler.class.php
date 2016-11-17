@@ -33,12 +33,12 @@ class TagCloudSearchStatsHandler extends TagCloudBaseHandler {
       'count' => 'COUNT(stats_term)'
     );
 
-    $iTimeSpan = 1;
+    $sTimeSpan = "1 month";
     if ( !empty( $aOptions['timespan'] ) ) {
-      $iTimeSpan = ( int )$aOptions['timespan'];
+      $sTimeSpan = $aOptions['timespan'];
     }
 
-    $sStartDate = wfTimestamp( TS_MW, strtotime( "-$iTimeSpan months" ) );
+    $sStartDate = wfTimestamp( TS_MW, strtotime( '-'.$sTimeSpan ) );
 
     $aConditions = array();
     $aConditions[] = "stats_ts >= $sStartDate";
@@ -50,9 +50,12 @@ class TagCloudSearchStatsHandler extends TagCloudBaseHandler {
 
     $aQueryOptions = array(
       'GROUP BY' => 'stats_term',
-      'LIMIT' => $aOptions['count'],
-      'ORDER BY' => 'COUNT(stats_term)'
+      'ORDER BY' => 'COUNT(stats_term) DESC'
     );
+
+    if ( $aOptions['count'] != -1 ) {
+      $aQueryOptions['LIMIT'] = $aOptions["count"];
+    }
 
     $oRes = $oDB->select(
         $aTables,
