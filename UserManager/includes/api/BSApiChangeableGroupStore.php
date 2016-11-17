@@ -24,15 +24,11 @@
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  *
- * Example request parameters of an ExtJS store
  */
 class BSApiChangeableGroupStore extends BSApiGroupStore {
 	/**
-	 * @param string $sQuery Potential query provided by ExtJS component.
-	 * This is some kind of preliminary filtering. Subclass has to decide if
-	 * and how to process it
-	 * @return array - Full list of of data objects. Filters, paging, sorting
-	 * will be done by the base class
+	 * @param string $sQuery
+	 * @return array - List of of group objects with additional data
 	 */
 	protected function makeData( $sQuery = '' ) {
 		$aData = parent::makeData( $sQuery );

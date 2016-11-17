@@ -62,7 +62,15 @@
 				"bs-usermanager-confirmdisableuser",
 				"bs-usermanager-confirmenableuser",
 				"bs-usermanager-titledisableuser",
-				"bs-usermanager-titleenableuser"
+				"bs-usermanager-titleenableuser",
+				"bs-usermanager-editgroups",
+				"bs-usermanager-editpassword",
+				"bs-usermanager-editpassword-successful",
+				"bs-usermanager-title-nouserselected",
+				"bs-usermanager-nouserselected",
+				"bs-usermanager-title-multipleuserselected",
+				"bs-usermanager-multipleuserselected",
+				"bs-usermanager-invalid-groups"
 			]
 		}
 	},

@@ -13,51 +13,26 @@
 
 Ext.define( 'BS.UserManager.dialog.UserGroups', {
 	extend: 'BS.Window',
+	requires: ['BS.UserManager.form.field.GroupList'],
 	currentData: {},
 	selectedData: {},
 	maxHeight: 620,
 	title: mw.message('bs-usermanager-headergroups').plain(),
 	afterInitComponent: function() {
-		if( this.currentData.groups ) {
-			this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
-		}
 
-		this.cbGroups = Ext.create( 'Ext.ux.form.MultiSelect', {
-			fieldLabel: mw.message('bs-usermanager-headergroups').plain(),
-			labelWidth: 130,
-			labelAlign: 'right',
-			store: this.strGroups,
-			valueField: 'group_name',
-			displayField: 'displayname',
-			maxHeight: 350
-		} );
-
+		this.cbGroups = new BS.UserManager.form.field.GroupList();
 		this.items = [
 			this.cbGroups
 		];
 
 		this.callParent(arguments);
 	},
-	resetData: function() {
-		this.cbGroups.reset();
-
-		this.callParent(arguments);
-	},
 	setData: function( obj ) {
 		this.currentData = obj;
-		this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
+		this.cbGroups.setValue( obj.groups );
 	},
 	getData: function() {
 		this.selectedData.groups = this.cbGroups.getValue();
-
 		return this.selectedData;
-	},
-
-	getGroupsValue: function( data ) {
-		var groups = [];
-		for( var i = 0; i < data.length; i++ ) {
-			groups.push( data[i] );
-		}
-		return groups;
 	}
 } );

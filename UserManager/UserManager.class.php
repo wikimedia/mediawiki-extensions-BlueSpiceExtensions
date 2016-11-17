@@ -73,6 +73,8 @@ class UserManager extends BsExtensionMW {
 		$tmpDomain = isset( $_SESSION['wsDomain'] ) ? $_SESSION['wsDomain'] : '';
 		$_SESSION['wsDomain'] = 'local';
 
+		$oStatus = Status::newGood();
+
 		if( !$oPerformer ) {
 			$oPerformer = RequestContext::getMain()->getUser();
 		}
@@ -86,55 +88,6 @@ class UserManager extends BsExtensionMW {
 			return Status::newFatal( 'bs-usermanager-user-exists' );
 		}
 
-		$oStatus = self::editUser( $oUser, $aMetaData, true, $oPerformer );
-		if( !$oStatus->isOK() ) {
-			return $oStatus;
-		}
-
-		$_SESSION['wsDomain'] = $tmpDomain;
-
-		$oUser = $oStatus->getValue();
-		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
-		Hooks::run(
-			'BSUserManagerAfterAddUser',
-			array(
-				$oUserManager,
-				$oUser,
-				$aMetaData,
-				&$oStatus,
-				$oPerformer
-			)
-		);
-
-		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-		$ssUpdate->doUpdate();
-
-		return $oStatus;
-	}
-
-	/**
-	 * Edits or adds an user
-	 * @param User $oUser
-	 * @param array $aMetaData
-	 * @param boolean $bCreateIfNotExists
-	 * @return Status
-	 */
-	public static function editUser( User $oUser, $aMetaData = array(), $bCreateIfNotExists = false, User $oPerformer = null ) {
-		$oStatus = Status::newGood();
-		$bNew = false;
-		if( !$oPerformer ) {
-			$oPerformer = RequestContext::getMain()->getUser();
-		}
-
-		if ( $oUser->getId() === 0  ) {
-			if( !$bCreateIfNotExists ) {
-				$oStatus->merge(
-					Status::newFatal( 'bs-usermanager-idnotexist' )
-				);
-				return $oStatus;
-			}
-			$bNew = true;
-		}
 		$sPass = $aMetaData['password'];
 		if ( !empty( $aMetaData['password'] ) || $bNew ) {
 			if( !$oUser->isValidPassword( $sPass ) ) {
@@ -172,14 +125,141 @@ class UserManager extends BsExtensionMW {
 			return $oStatus;
 		}
 
-		if( $bNew ) {
-			$oUser->addToDatabase();
-			$oUser->setToken();
-		}
+		$oUser->addToDatabase();
+		$oUser->setToken();
 
 		if( !empty($sPass) ) {
 			$oUser->setPassword( $sPass );
 		}
+		if( !empty($aMetaData['email']) ) {
+			$oUser->setEmail( $aMetaData['email'] );
+		} else {
+			$oUser->setEmail('');
+		}
+		if( !empty($aMetaData['realname']) ) {
+			$oUser->setRealName( $aMetaData['realname'] );
+		} else {
+			$oUser->setRealName('');
+		}
+
+		$oUser->saveSettings();
+
+		if( isset( $aMetaData['enabled'] ) ) {
+			if ( $aMetaData['enabled'] === false && !$oUser->isBlocked() ) {
+				$oStatus = self::disableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			} else if ( $aMetaData['enabled'] === true && $oUser->isBlocked() ) {
+				$oStatus = self::enableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			}
+		}
+
+		$_SESSION['wsDomain'] = $tmpDomain;
+
+		$oStatus = Status::newGood( $oUser );
+
+		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
+		Hooks::run(
+			'BSUserManagerAfterAddUser',
+			array(
+				$oUserManager,
+				$oUser,
+				$aMetaData,
+				&$oStatus,
+				$oPerformer
+			)
+		);
+
+		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+		$ssUpdate->doUpdate();
+
+		return $oStatus;
+	}
+	/**
+	 * Changes user password
+	 * @param User $oUser
+	 * @param array $aPassword
+	 * @return Status
+	 */
+	 public static function editPassword( User $oUser, $aPassword = array(), User $oPerformer = null ) {
+		 $oStatus = Status::newGood();
+
+		 if( !$oPerformer ) {
+ 			$oPerformer = RequestContext::getMain()->getUser();
+ 		}
+
+		$sPass = $aPassword['password'];
+
+		if ( empty( $aPassword['password'] ) ) {
+			$oNewStatus = Status::newFatal( 'bs-usermanager-invalid-pwd' );
+			$oStatus->merge( $oNewStatus );
+			return $oStatus;
+		}
+
+		if ( !empty( $aPassword['password'] ) ) {
+			if( !$oUser->isValidPassword( $sPass ) ) {
+				$oNewStatus = Status::newFatal( 'bs-usermanager-invalid-pwd' );
+				$oStatus->merge( $oNewStatus );
+			}
+			if ( strtolower( $oUser->getName() ) == strtolower( $sPass ) ) {
+				$oNewStatus = Status::newFatal( 'password-name-match' );
+				$oStatus->merge( $oNewStatus );
+			}
+			$sRePass = $aPassword['repassword'];
+			if ( !isset($sRePass) || $sPass !== $sRePass ) {
+				$oNewStatus = Status::newFatal( 'badretype' );
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
+
+		$oUser->setPassword( $sPass );
+		$oUser->saveSettings();
+
+		return $oStatus;
+
+	}
+	/**
+	 * Edits or adds an user
+	 * @param User $oUser
+	 * @param array $aMetaData
+	 * @param boolean $bCreateIfNotExists
+	 * @return Status
+	 */
+	public static function editUser( User $oUser, $aMetaData = array(), $bCreateIfNotExists = false, User $oPerformer = null ) {
+		$oStatus = Status::newGood();
+
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
+
+		if( !empty($aMetaData['realname']) ) {
+			if ( strpos( $aMetaData['realname'], '\\' ) ) {
+				$oNewStatus = Status::newFatal(
+					'bs-usermanager-invalid-realname'
+				);
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+		if( !empty($aMetaData['email']) ) {
+			if ( Sanitizer::validateEmail( $aMetaData['email'] ) === false ) {
+				$oNewStatus = Status::newFatal(
+					'bs-usermanager-invalid-email-gen'
+				);
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
+
 		if( !empty($aMetaData['email']) ) {
 			$oUser->setEmail( $aMetaData['email'] );
 		} else {
