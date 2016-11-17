@@ -1288,7 +1288,19 @@ class Review extends BsExtensionMW {
 			$data[ 'revs_comment' ] = $initial_comment;
 		}
 
-		wfRunHooks( 'BsReview::dataBeforeSafe', array( 'getVoteResponse', &$data ) );
+		$oStatus = Status::newGood();
+		wfRunHooks( 'BsReview::dataBeforeSafe', array(
+			'getVoteResponse',
+			&$data,
+			$oTitle,
+			(object) array(
+				'vote' => $sVote,
+				'comment' => $sComment
+			),
+			$oUser,
+			&$oStatus,
+			$oReviewProcess
+		));
 
 		$dbw->update( 'bs_review_steps', $data, array( 'revs_id' => $step_id ) );
 
