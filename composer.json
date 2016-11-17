@@ -13,7 +13,7 @@
 		}
 	],
 	"require": {
-		"hallowelt/blue-spice-foundation": "2.27.1-beta"
+		"hallowelt/blue-spice-foundation": "2.27.0"
 	},
 	"support": {
 		"issues": "https://sourceforge.net/projects/bluespice/support",
