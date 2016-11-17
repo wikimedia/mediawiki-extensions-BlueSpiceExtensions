@@ -1341,7 +1341,8 @@ class Review extends BsExtensionMW {
 			$oTitle,
 			$oParams,
 			$oUser,
-			&$oStatus
+			&$oStatus,
+			$oReviewProcess
 		));
 
 		if( !$oStatus->isOK() ) {
