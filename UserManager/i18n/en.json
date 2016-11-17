@@ -16,7 +16,7 @@
 	"bs-usermanager-invalid-email-gen": "The email address is invalid.",
 	"bs-usermanager-label": "User manager",
 	"bs-usermanager-user-added": "The user has been added.",
-	"bs-usermanager-user-deleted": "The user has been deleted.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|The user has|$1 users have}} been deleted.",
 	"bs-usermanager-user-exists": "The username already exists.",
 	"bs-usermanager-save-successful": "Changes saved.",
 	"bs-usermanager-headerusername": "Username",
@@ -47,5 +47,13 @@
 	"usermanager": "User manager",
 	"action-usermanager-viewspecialpage": "view specialpage \"User manager\"",
 	"bs-usermanager-group-add-not-allowed": "You are not allowed to add users to group $1",
-	"bs-usermanager-group-remove-not-allowed": "You are not allowed to remove users from group $1"
+	"bs-usermanager-group-remove-not-allowed": "You are not allowed to remove users from group $1",
+	"bs-usermanager-editgroups": "Edit groups",
+	"bs-usermanager-editpassword": "Change password",
+	"bs-usermanager-editpassword-successful": "Password has been changed successfully",
+	"bs-usermanager-title-nouserselected": "No user selected",
+	"bs-usermanager-nouserselected": "Please select a user",
+	"bs-usermanager-title-multipleuserselected": "Multiple users are selected",
+	"bs-usermanager-multipleuserselected": "You can only change password for one user at a time",
+	"bs-usermanager-invalid-groups": "Groups are invalid"
 }
