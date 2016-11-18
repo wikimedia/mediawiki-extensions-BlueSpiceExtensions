@@ -1089,6 +1089,8 @@ class SmartList extends BsExtensionMW {
 	 * @return string HTML output that is to be displayed.
 	 */
 	public function getToplist( $sInput, $aArgs, $oParser ) {
+		global $wgDBprefix;
+
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'HitCounters' ) ) {
 			return wfMessage( 'bs-smartlist-hitcounter-missing' )->plain();
 		}
@@ -1122,7 +1124,7 @@ class SmartList extends BsExtensionMW {
 		} else {
 			$aTables         = array( 'hit_counter', 'page' );
 			$aColumns        = array( 'page_title', 'page_counter', 'page_namespace' );
-			$aConditions     = array( 'hit_counter.page_id = page.page_id');
+			$aConditions     = array( $wgDBprefix . 'hit_counter.page_id = ' . $wgDBprefix . 'page.page_id' );
 			$aOptions        = array( 'ORDER BY' => 'page_counter DESC' );
 			$aJoinConditions = array();
 		}
@@ -1139,7 +1141,7 @@ class SmartList extends BsExtensionMW {
 				$aConditions['cl_to'] = $aCategories;
 			} else {
 				$aTables[]            = 'categorylinks';
-				$aConditions[]        = 'page_id = cl_from';
+				$aConditions[]        = $wgDBprefix . 'page.page_id = cl_from';
 				$aConditions['cl_to'] = $aCategories;
 			}
 		}
