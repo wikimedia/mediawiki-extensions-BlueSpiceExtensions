@@ -45,7 +45,8 @@
         "BSInsertMagicAjaxGetData": "Checklist::onBSInsertMagicAjaxGetData",
         "VisualEditorConfig": "Checklist::onVisualEditorConfig",
         "BSUsageTrackerRegisterCollectors": "Checklist::onBSUsageTrackerRegisterCollectors",
-        "EditPage::showEditForm:initial": "Checklist::onEditPage_showEditForm_initial"
+        "EditPage::showEditForm:initial": "Checklist::onEditPage_showEditForm_initial",
+	"UnitTestsList": "Checklist::onUnitTestsList"
     },
     "ResourceModules": {
             "ext.bluespice.checklist": {
