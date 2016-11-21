@@ -1295,7 +1295,8 @@ class Review extends BsExtensionMW {
 			$oTitle,
 			(object) array(
 				'vote' => $sVote,
-				'comment' => $sComment
+				'comment' => $sComment,
+				'stepid' => $step_id,
 			),
 			$oUser,
 			&$oStatus,
