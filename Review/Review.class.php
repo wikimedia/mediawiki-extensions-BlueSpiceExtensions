@@ -1249,7 +1249,7 @@ class Review extends BsExtensionMW {
 
 		$dbw->freeResult( $res );
 
-		$oParams->stepid = $step_id = $row[ 'revs_id' ];
+		$step_id = $row[ 'revs_id' ];
 		$initial_comment = $row[ 'revs_comment' ];
 
 		// update data
