@@ -1342,6 +1342,25 @@ class Review extends BsExtensionMW {
 			);
 		}
 
+		$oStatus = Status::newGood( $oReviewProcess );
+		Hooks::run( 'BSReviewVoteComplete', array(
+			$this,
+			$step_id,
+			$oReviewProcess,
+			$oTitle,
+			(object) array(
+				'vote' => $sVote,
+				'comment' => $sComment,
+				'stepid' => $step_id,
+			),
+			$oUser,
+			$oStatus,
+		));
+
+		if( $oStatus->isOK() ) {
+			return $oStatus->getMessage();
+		}
+
 		if ( $oReviewProcess->isFinished() === false ) {
 			return wfMessage( 'bs-review-review-saved' )->plain();
 		}
