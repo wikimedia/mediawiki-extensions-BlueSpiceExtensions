@@ -1388,8 +1388,22 @@ class Review extends BsExtensionMW {
 			);
 		}
 
+		$oStatus = Status::newGood( $oReviewProcess );
+		Hooks::run( 'BSReviewVoteComplete', array(
+			$this,
+			$step_id,
+			$oReviewProcess,
+			$oTitle,
+			$oParams,
+			$oUser,
+			$oStatus,
+		));
+
+		if( $oStatus->isOK() ) {
+			return $oStatus;
+		}
 		if ( $oReviewProcess->isFinished() === false ) {
-			return Status::newGood( $oReviewProcess );
+			return $oStatus;
 		}
 
 		// Let flagged revision know that it's all goooooood (or not approved)

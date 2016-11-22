@@ -37,6 +37,14 @@ $oTitle:
 &$oVariable:
  &$aPrefs:
 
+'BSReviewVoteComplete':
+	$this: Review
+	$step_id: int
+	$oReviewProcess: BsReviewProcess
+	$oTitle: Title
+	$oParams: stdClass
+	$oUser: User
+	$oStatus: Status
 
 ==SpecialReview.class.php==
 
