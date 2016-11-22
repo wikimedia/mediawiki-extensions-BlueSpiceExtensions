@@ -13,6 +13,7 @@
 	},
 	"descriptionmsg": "bs-groupmanager-desc",
 	"type": "bluespice",
+	"callback": "GroupManager::onRegistration",
 	"bsgExtensions": {
 		"GroupManager": {
 			"className": "GroupManager",

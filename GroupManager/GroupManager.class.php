@@ -60,6 +60,16 @@ class GroupManager extends BsExtensionMW {
 	}
 
 	/**
+	 * extension.json callback
+	 * @global array $bsgConfigFiles
+	 */
+	public static function onRegistration() {
+		global $bsgConfigFiles;
+		$bsgConfigFiles['GroupManager']
+			= BSCONFIGDIR . DS . 'gm-settings.php';
+	}
+
+	/**
 	 * saves all groupspecific data to a config file
 	 * @return array the json answer
 	 */
