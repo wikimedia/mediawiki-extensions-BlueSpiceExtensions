@@ -113,7 +113,8 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		this.bsCategories = Ext.create( 'BS.form.CategoryBoxSelect', {
 			id: this.getId()+'categories',
 			fieldLabel: mw.message('bs-insertfile-categories').plain(),
-			submitValue: false
+			submitValue: false,
+			showTreeTrigger: true
 		});
 
 		this.fsDetails = Ext.create( 'Ext.form.FieldSet', {
