@@ -1306,6 +1306,10 @@ class Review extends BsExtensionMW {
 		$dbw->update( 'bs_review_steps', $data, array( 'revs_id' => $step_id ) );
 
 		$oTitle->invalidateCache();
+		//RELOAD ReviewProcess!
+		$oReviewProcess = BsReviewProcess::newFromPid(
+			(int) $oTitle->getArticleID()
+		);
 
 		if ( $sVote == 'no' ) {
 			if ( $oReviewProcess->isSequential() ) {
