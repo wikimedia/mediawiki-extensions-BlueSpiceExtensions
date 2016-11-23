@@ -8,6 +8,7 @@
 	"bs-insertcategory-insertcat": "Insert category",
 	"prefs-insertcategory": "Insert category",
 	"bs-insertcategory-pref-withparents": "Insert category with its parents",
+	"bs-insertcategory-pref-uploadpanelintegration": "Set page categories as default in upload dialog",
 	"bs-insertcategory-title": "Insert category",
 	"bs-insertcategory-cat-label": "Assigned:",
 	"bs-insertcategory-success": "The category was added",

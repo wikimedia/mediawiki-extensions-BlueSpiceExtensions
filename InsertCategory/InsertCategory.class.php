@@ -52,6 +52,7 @@ class InsertCategory extends BsExtensionMW {
 		$this->setHook( 'VisualEditorConfig' );
 
 		BsConfig::registerVar( 'MW::InsertCategory::WithParents', false, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-insertcategory-pref-withparents', 'toggle' );
+		BsConfig::registerVar( 'MW::InsertCategory::UploadPanelIntegration', false, BsConfig::LEVEL_PUBLIC | BsConfig::RENDER_AS_JAVASCRIPT | BsConfig::TYPE_BOOL, 'bs-insertcategory-pref-uploadpanelintegration', 'toggle' );
 
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
@@ -84,6 +85,9 @@ class InsertCategory extends BsExtensionMW {
 		$out->addModuleStyles('ext.bluespice.insertcategory.styles');
 		$out->addModules( 'ext.bluespice.insertcategory' );
 		$out->addJsConfigVars( 'BSInsertCategoryWithParents', BsConfig::get( 'MW::InsertCategory::WithParents' ) );
+		if( BsConfig::get( 'MW::InsertCategory::UploadPanelIntegration' ) ) {
+			$out->addModules( 'ext.bluespice.insertCategory.uploadPanelIntegration' );
+		}
 		return true;
 	}
 
