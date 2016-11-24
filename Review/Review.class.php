@@ -1390,7 +1390,7 @@ class Review extends BsExtensionMW {
 
 		$oStatus = Status::newGood( $oReviewProcess );
 		Hooks::run( 'BSReviewVoteComplete', array(
-			$this,
+			$oReview,
 			$step_id,
 			$oReviewProcess,
 			$oTitle,
