@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Дзяніс Тутэйшы"
+			"Дзяніс Тутэйшы",
+			"Mechanizatar"
 		]
 	},
-	"bs-shoutbox-notifications-title-message-subject": "Вас упамянулі",
-	"bs-shoutbox-notifications-title-message-text": "Вас {{GENDER:$1|упамянуў|упамянула}} $4 у рэпліцы на старонцы «$5».\n\nВы можаце наведаць гэту старонку, перайшоўшы па спасылцы:\n$3."
+	"bs-shoutbox-notifications-title-message-subject": "Вас згадалі",
+	"bs-shoutbox-notifications-title-message-text": "$1 ($4) {{GENDER:$1|згадаў|згадала}} Вас у рэпліцы на старонцы «$5».\n\nВы можаце наведаць гэту старонку, перайшоўшы па спасылцы:\n$3"
 }
