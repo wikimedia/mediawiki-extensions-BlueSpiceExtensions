@@ -1403,7 +1403,7 @@ class Review extends BsExtensionMW {
 			$oStatus,
 		));
 
-		if( $oStatus->isOK() ) {
+		if( !$oStatus->isOK() ) {
 			return $oStatus;
 		}
 		if ( $oReviewProcess->isFinished() === false ) {
