@@ -1361,7 +1361,7 @@ class Review extends BsExtensionMW {
 			$oStatus,
 		));
 
-		if( $oStatus->isOK() ) {
+		if( !$oStatus->isOK() ) {
 			return $oStatus->getMessage();
 		}
 
