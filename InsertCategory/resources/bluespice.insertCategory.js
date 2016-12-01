@@ -92,7 +92,7 @@ $(document).on('click', '#bs-editbutton-insertcategory', function(e) {
 	return false;
 });
 
-var BsInsertCategoryViewHelper = {
+window.BsInsertCategoryViewHelper = {
 	getCategories: function() {
 		return mw.config.get("wgCategories");
 	},
@@ -149,17 +149,16 @@ var BsInsertCategoryViewHelper = {
 	}
 };
 
-var BsInsertCategoryWikiEditorHelper = {
+window.BsInsertCategoryWikiEditorHelper = {
 	getCategories: function() {
 		var text = $('#wpTextbox1').val();
-		// this doesn't work: bsInsertCategoryCategoryNamespaceName TODO:Localize
-		var myregexp = new RegExp('\\[\\['+ bs.util.getNamespaceText( bs.ns.NS_CATEGORY ) +':(.+?)\\]\\]', 'g');
+		var myregexp = new RegExp('\\[\\[(Category|'+ bs.util.getNamespaceText( bs.ns.NS_CATEGORY ) +'):(.+?)\\]\\]', 'g');
 		var match;
 		var terms = [];
 
 		match = myregexp.exec(text);
 		while( match !== null ) {
-			terms.push( match[1] );
+			terms.push( match[2] );
 			match = myregexp.exec(text);
 		}
 
@@ -177,23 +176,20 @@ var BsInsertCategoryWikiEditorHelper = {
 		});
 
 		$('#wpTextbox1').val( text + tags );
-
-		//BsCore.restoreSelection(tags, 'append');
-		//BsCore.restoreScrollPosition();
 	}
 };
 
-var BsInsertCategoryWysiwygEditorHelper = {
+window.BsInsertCategoryWysiwygEditorHelper = {
 	getCategories: function() {
 		var text = tinyMCE.activeEditor.getContent();
 		// this doesn't work: bsInsertCategoryCategoryNamespaceName TODO:Localize
-		var myregexp = new RegExp('\\[\\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':(.+?)\\]\\]', 'g');
+		var myregexp = new RegExp('\\[\\[(Category|'+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+'):(.+?)\\]\\]', 'g');
 		var match;
 		var terms = [];
 
 		match = myregexp.exec(text);
 		while( match !== null ) {
-			terms.push( match[1] );
+			terms.push( match[2] );
 			match = myregexp.exec(text);
 		}
 
@@ -201,7 +197,7 @@ var BsInsertCategoryWysiwygEditorHelper = {
 	},
 
 	setCategories: function( categories ) {
-		var regexCat = new RegExp('(<br \/>)*\\[\\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':..*?\\]\\]', 'ig'); ///(<br \/>)*\[\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':(.+?)\]\]/ig;
+		var regexCat = new RegExp('(<br \/>)*\\[\\[(Category|'+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+'):..*?\\]\\]', 'ig'); ///(<br \/>)*\[\['+bs.util.getNamespaceText( bs.ns.NS_CATEGORY )+':(.+?)\]\]/ig;
 		var tags = '';
 		var text = tinyMCE.activeEditor.getContent();
 		text = text.replace(regexCat, "");
