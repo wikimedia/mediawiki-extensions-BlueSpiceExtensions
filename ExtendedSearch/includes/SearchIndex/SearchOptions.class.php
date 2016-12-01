@@ -579,8 +579,13 @@ class SearchOptions {
 		 * But without a major refactoring there is not nice way to do this.
 		 */
 		$sLogOp = ' OR ';
+		if ( in_array( $sTagName, array( 'ca', 'ed' ) ) ) {
+			$sLogOp = ' AND ';
+		}
 		if( isset( $this->aOptions['fset'][$sTagName]['op'] ) ) {
-			if( strtoupper( $this->aOptions['fset'][$sTagName]['op'] ) === 'AND' ) {
+			if( strtoupper( $this->aOptions['fset'][$sTagName]['op'] ) === 'OR' ) {
+				$sLogOp = ' OR ';
+			} else {
 				$sLogOp = ' AND ';
 			}
 		}
