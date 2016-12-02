@@ -57,7 +57,7 @@ class ApiPermissionManager extends BSApiTasksBase {
 					"required" => true,
 					"default" => ''
 				),
-				)
+			)
 		);
 	}
 
@@ -81,7 +81,24 @@ class ApiPermissionManager extends BSApiTasksBase {
 	protected function task_setTemplateData( $oTaskData ) {
 		$oRet = $this->makeStandardReturn();
 		$arrRes = PermissionManager::setTemplateData( $oTaskData );
-		$oRet->payload = $arrRes;
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow(
+			'bs_permission_templates',
+			'*',
+			array(),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'tpl_id DESC'
+			)
+		);
+
+		$oRet->payload = (object)array(
+			'id' => (int) $row->tpl_id,
+			'text' => $row->tpl_name,
+			'description' => $row->tpl_description,
+			'ruleSet' => unserialize( $row->tpl_data ),
+			'leaf' => true
+		);
 		$oRet->success = $arrRes[ "success" ];
 
 		return $oRet;
