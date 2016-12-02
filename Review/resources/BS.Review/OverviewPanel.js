@@ -36,13 +36,13 @@ Ext.define( 'BS.Review.OverviewPanel', {
 					header: mw.message('bs-review-header-page-title').plain(),
 					dataIndex: 'page_title',
 					renderer: this.renderPageTitle,
-					sortable: false
+					sortable: true
 				},
 				{
 					header: mw.message('bs-review-header-owner-name').plain(),
 					dataIndex: 'owner_name',
 					renderer: this.renderOwner,
-					sortable: false
+					sortable: true
 				},
 				{
 					header: mw.message('bs-review-header-assessors').plain(),
@@ -53,16 +53,16 @@ Ext.define( 'BS.Review.OverviewPanel', {
 				{
 					header: mw.message('bs-review-header-accepted-text').plain(),
 					dataIndex: 'accepted_text',
-					sortable: false
+					sortable: true
 				},
 				{
 					header: mw.message('bs-review-header-startdate').plain(),
-					sortable: false,
+					sortable: true,
 					dataIndex: 'startdate'
 				},
 				{
 					header: mw.message('bs-review-header-enddate').plain(),
-					sortable: false,
+					sortable: true,
 					dataIndex: 'enddate'
 				}
 			]
