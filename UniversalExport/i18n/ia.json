@@ -4,7 +4,7 @@
 			"McDutchie"
 		]
 	},
-	"bs-universalexport-desc": "Adde functiones de exportation",
+	"bs-universalexport-desc": "Permitte que MediaWiki exporta paginas in differente formatos",
 	"prefs-universalexport": "Exportation universal",
 	"universalexport": "Exportation universal",
 	"bs-universalexport-pref-metadatadefaults": "Metadatos (standard, JSON):",

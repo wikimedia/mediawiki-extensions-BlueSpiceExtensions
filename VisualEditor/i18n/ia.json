@@ -4,8 +4,9 @@
 			"McDutchie"
 		]
 	},
-	"bs-visualeditor-desc": "Editor WYSIWYG TinyMCE",
+	"bs-visualeditor-desc": "Editor visual pro MediaWiki",
 	"prefs-visualeditor": "Editor visual",
+	"apihelp-bs-visualeditor-tasks-description": "Forni cargas pro le extension BlueSpice Visual Editor.",
 	"bs-visualeditor-editbutton-hint": "Editor visual",
 	"bs-visualeditor-pref-disablens": "Disactivar in le spatios de nomines:",
 	"bs-visualeditor-pref-use": "Usar le editor WYSIWYG per predefinition",
