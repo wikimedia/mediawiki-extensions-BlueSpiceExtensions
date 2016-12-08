@@ -383,7 +383,7 @@ class ExtendedSearch extends BsExtensionMW {
 			//in turn means that we need to update the index entry of the file
 			//with the new categories
 			if ( $oTitle->getNamespace() === NS_FILE ) {
-				$oFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
+				$oFile = wfFindFile( $oTitle );
 
 				//Unfortunately BuildIndexMwSingleFile::indexCrawledDocuments
 				//checks if the file is already on the index. If so it does not
