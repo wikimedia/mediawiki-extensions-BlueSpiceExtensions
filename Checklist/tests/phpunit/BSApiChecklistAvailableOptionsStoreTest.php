@@ -4,8 +4,8 @@
  */
 
 /**
- * @group BlueSpiceChecklistTest
- * @group BlueSpiceTest
+ * @group BlueSpiceChecklist
+ * @group BlueSpice
  * @group API
  * @group Database
  * @group medium
