@@ -55,13 +55,8 @@ class RSSStandards extends BsExtensionMW {
 	}
 
 	/**
-	 * Hook-Handler for MediaWiki hook MediaWikiPerformAction
-	 * @param OutputPage $wgOut MediaWiki Outpupage object.
-	 * @param Article $article MediaWiki article object.
-	 * @param Title $title MediaWiki title object.
-	 * @param User $user MediaWiki user object.
-	 * @param Request $request MediaWiki request object.
-	 * @param mediaWiki $mediaWiki MediaWiki mediaWiki object.
+	 * Hook-Handler for BlueSpice hook BSRSSFeederGetRegisteredFeeds
+	 * @param Array $aFeed Feed array.
 	 * @return bool Always true.
 	 */
 	public function onBSRSSFeederGetRegisteredFeeds( $aFeeds ) {
@@ -150,7 +145,11 @@ class RSSStandards extends BsExtensionMW {
 			)
 		);
 
-		$oChannel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-page' )->plain() );
+		$oChannel = RSSCreator::createChannel(
+			RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName ),
+			'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
+			wfMessage( 'bs-rssstandards-desc-page' )->plain()
+		);
 		while( $row = $res->fetchObject() ) {
 			$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 			$entry = RSSItemCreator::createItem(
@@ -192,7 +191,11 @@ class RSSStandards extends BsExtensionMW {
 			$res = false;
 		}
 
-		$channel = RSSCreator::createChannel(RSSCreator::xmlEncode( $wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title-own' )->plain() ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-own' )->plain() );
+		$channel = RSSCreator::createChannel(
+			RSSCreator::xmlEncode( $wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title-own' )->plain() ),
+			'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
+			wfMessage( 'bs-rssstandards-desc-own' )->plain()
+		);
 		if ( $res ) {
 			while ( $obj = $res->fetchObject() ) {
 				$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
@@ -219,9 +222,13 @@ class RSSStandards extends BsExtensionMW {
 
 		$cat = $wgRequest->getVal( 'cat', '' );
 
-		$channel = RSSCreator::createChannel($wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title-cat' )->plain() . ' ' . addslashes( $cat ), 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-cat' )->plain() );
+		$channel = RSSCreator::createChannel(
+			$wgSitename . ' - ' . wfMessage( 'bs-rssstandards-title-cat' )->plain() . ' ' . addslashes( $cat ),
+			'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
+			wfMessage( 'bs-rssstandards-desc-cat' )->plain()
+		);
 
-		$res = $dbr->query( "select cl_from FROM ".$wgDBprefix."categorylinks WHERE cl_to = '".addslashes( $cat )."'" );
+		$res = $dbr->query( "select cl_from FROM " . $wgDBprefix."categorylinks WHERE cl_to = '" . addslashes( $cat ). "'" );
 
 		$entryIds = Array();
 		while ( $row = $dbr->fetchRow( $res ) ) {
@@ -229,7 +236,10 @@ class RSSStandards extends BsExtensionMW {
 		}
 
 		if ( count( $entryIds ) ) {
-			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM ".$wgDBprefix."revision as r WHERE r.rev_page In (".implode(",",$entryIds).") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
+			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM " .
+			$wgDBprefix ."revision as r WHERE r.rev_page In ("
+			. implode( ", ", $entryIds ) .
+			") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
 			$res = $dbr->query( $query );
 			$numberOfEntries = $dbr->numRows( $res );
 
@@ -240,7 +250,7 @@ class RSSStandards extends BsExtensionMW {
 
 			while ( $row = $dbr->fetchRow( $res ) ) {
 				$title = Title::newFromID( $row['rev_page'] );
-				$article = new Article( $title );
+				$page = WikiPage::factory( $title );
 				if ( !$title->userCan( 'read' ) ) {
 					$numberOfEntries--;
 					continue;
@@ -248,12 +258,18 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_description = SecureFileStore::secureFilesInText( preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent(), $this->getTitle() ) ) );
+				$_description = SecureFileStore::secureFilesInText(
+					preg_replace(
+						"#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#",
+						"",
+						$this->mCore->parseWikiText( $page->getContent()->getNativeData(), $this->getTitle() )
+					)
+				);
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
 					$item->setPubDate( wfTimestamp( TS_UNIX,$row['rev_timestamp'] ) );
 					$item->setComments( $title->getTalkPage()->getFullURL() );
-					$item->setGUID( $title->getFullURL( "oldid=".$article->getRevIdFetched() ), 'true' );
+					$item->setGUID( $title->getFullURL( "oldid=".$page->getRevision()->getId() ), 'true' );
 					$channel->addItem( $item );
 				}
 			}
@@ -278,7 +294,11 @@ class RSSStandards extends BsExtensionMW {
 
 		$aNamespaces = $wgLang->getNamespaces();
 
-		$channel = RSSCreator::createChannel( $wgSitename . ' - ' . wfMessage( 'bs-ns' )->plain() . ' ' . $aNamespaces[$ns], 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-ns' )->plain() );
+		$channel = RSSCreator::createChannel(
+			$wgSitename . ' - ' . wfMessage( 'bs-ns' )->plain() . ' ' . $aNamespaces[$ns],
+			'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
+			wfMessage( 'bs-rssstandards-desc-ns' )->plain()
+		);
 
 		$res = $dbr->query( "select page_id from ".$wgDBprefix."page where page_namespace = ".$ns );
 
@@ -288,7 +308,10 @@ class RSSStandards extends BsExtensionMW {
 		}
 
 		if ( count( $entryIds ) ) {
-			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM ".$wgDBprefix."revision as r WHERE r.rev_page In (".join(",",$entryIds).") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
+			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM " .
+			$wgDBprefix ."revision as r WHERE r.rev_page In ("
+			. join( ", ", $entryIds ) .
+			") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
 			$res = $dbr->query( $query );
 			$numberOfEntries = $dbr->numRows( $res );
 
@@ -298,7 +321,7 @@ class RSSStandards extends BsExtensionMW {
 
 			while ( $row = $dbr->fetchRow( $res ) ) {
 				$title = Title::newFromID( $row['rev_page'] );
-				$article = new Article( $title );
+				$page = WikiPage::factory( $title );
 				if ( !$title->userCan( 'read' ) ) {
 					$numberOfEntries--;
 					continue;
@@ -306,7 +329,11 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_tmpText = preg_replace( "#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#", "", $this->mCore->parseWikiText( $article->getContent(), $this->getTitle() ) );
+				$_tmpText = preg_replace(
+					"#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#",
+					"",
+					$this->mCore->parseWikiText( $page->getContent()->getNativeData(), $this->getTitle() )
+				);
 				if ( class_exists( 'SecureFileStore' ) ) {
 					$_description = SecureFileStore::secureFilesInText($_tmpText);
 				} else {
@@ -318,7 +345,7 @@ class RSSStandards extends BsExtensionMW {
 				if ( $item ) {
 					$item->setPubDate( wfTimestamp( TS_UNIX, $row['rev_timestamp'] ) );
 					$item->setComments( $title->getTalkPage()->getFullURL() );
-					$item->setGUID( $title->getFullURL( "oldid=".$article->getRevIdFetched() ), 'true' );
+					$item->setGUID( $title->getFullURL( "oldid=".$page->getRevision()->getId() ), 'true' );
 					$channel->addItem( $item );
 				}
 			}
@@ -530,7 +557,11 @@ class RSSStandards extends BsExtensionMW {
 
 		$list = ChangesList::newFromContext( $skin->getContext() ); //Thanks to Bartosz Dziewoński (https://gerrit.wikimedia.org/r/#/c/94082/)
 
-		$channel = RSSCreator::createChannel( SpecialPage::getTitleFor( 'Watchlist' ).' ('.$user->getName().')', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-desc-watch' )->plain() );
+		$channel = RSSCreator::createChannel(
+			SpecialPage::getTitleFor( 'Watchlist' ) . ' (' . $user->getName(). ')',
+			'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
+			wfMessage( 'bs-rssstandards-desc-watch' )->plain()
+		);
 
 		$html = $list->beginRecentChangesList();
 		$counter = 1;
