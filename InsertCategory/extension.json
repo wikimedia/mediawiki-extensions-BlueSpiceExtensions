@@ -42,6 +42,12 @@
 		"ext.bluespice.insertcategory.styles": {
 			"styles": "bluespice.insertCategory.css",
 			"position": "top"
+		},
+		"ext.bluespice.insertCategory.uploadPanelIntegration": {
+			"scripts": "bluespice.insertCategory.uploadPanelIntegration.js",
+			"dependencies": [
+				"ext.bluespice.insertcategory"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
