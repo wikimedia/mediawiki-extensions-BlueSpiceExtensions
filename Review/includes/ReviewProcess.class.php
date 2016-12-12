@@ -314,7 +314,11 @@ class BsReviewProcess {
 		if (!$update) {
 			$dbw->insert('bs_review', $data);
 		} else {
-			$dbw->update('bs_review', $data, array('rev_pid = ' . $update));
+			$dbw->update(
+				'bs_review',
+				$data,
+				array( "rev_pid = $this->pid" )
+			);
 		}
 
 		// Get Review-ID
