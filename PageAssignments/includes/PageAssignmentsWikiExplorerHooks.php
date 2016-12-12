@@ -83,7 +83,7 @@ class PageAssignmentsWikiExplorerHooks {
 
 		$aPageIds = array_keys($aRows);
 
-		$dbr = wfGetDB(DB_READ);
+		$dbr = wfGetDB( DB_SLAVE );
 		$aTables = array(
 			'bs_pageassignments'
 		);
