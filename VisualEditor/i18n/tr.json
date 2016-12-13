@@ -3,13 +3,16 @@
 		"authors": [
 			"Sayginer",
 			"Violetanka",
-			"Sadrettin"
+			"Sadrettin",
+			"1917 Ekim Devrimi"
 		]
 	},
 	"bs-visualeditor-desc": "MediaWiki için görsel düzenleyici",
 	"prefs-visualeditor": "Görsel Düzenleyici",
+	"apihelp-bs-visualeditor-tasks-description": "Visual Editor BlueSpice uzantısı görevleri sağlar.",
 	"bs-visualeditor-editbutton-hint": "Görsel Düzenleyici",
 	"bs-visualeditor-pref-disablens": "İsim alanı devre dışı:",
+	"bs-visualeditor-pref-use": "Varsayılan WYSIWYG düzenleyiciyi kullan",
 	"bs-visualeditor-save-message": "$1 sürümü \"$2\" özetiyle kaydedildi.",
 	"bs-visualeditor-no-summary": "Özet yok",
 	"bs-visualeditor-sortable": "Sıralanabilir",
