@@ -1381,6 +1381,9 @@ class Review extends BsExtensionMW {
 				);
 			}
 		} else {
+			if ( $oReviewProcess->isSequential() && !$oReviewProcess->isFinished() ) {
+				$oReview->emailNotifyNextUsers( $oReviewProcess );
+			}
 			BSNotifications::notify(
 				'bs-review-accept',
 				$oUser,
@@ -1413,7 +1416,12 @@ class Review extends BsExtensionMW {
 		// Let flagged revision know that it's all goooooood (or not approved)
 		$bResult = true;
 		wfRunHooks( 'checkPageIsReviewable', array( $oTitle, &$bResult ) );
-		if ( $bResult && $oReviewProcess->isFinished() == 'status' && $oUser->isAllowed( 'review' ) ) {
+		//all autorevie related stuff should be moved to FlaggedRevsConnector
+		//send autoflag mail only when it is acitvated
+		$bAutoReview = class_exists( 'FlaggedRevsConnector' )
+			&& BsConfig::get('MW::FlaggedRevsConnector::autoReview') === true
+		;
+		if ( $bResult && $oReviewProcess->isFinished() == 'status' && $bAutoReview ) {
 			BSNotifications::notify(
 				'bs-review-finish-and-autoflag',
 				$oUser,
