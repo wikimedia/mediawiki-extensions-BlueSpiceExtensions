@@ -140,6 +140,7 @@ class BuildIndexMainControl {
 		if ( is_null( $oTitle ) ) return;
 
 		$iPageID = $oTitle->getArticleID();
+		if( $iPageID == 0 ) return;
 		$iPageNamespace = $oTitle->getNamespace();
 		$sPageTitle = $oTitle->getText();
 		$iPageTimestamp = $oTitle->getTouched();
