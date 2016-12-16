@@ -26,8 +26,7 @@
 		"BSFilePathResolver": "includes/BSFilePathResolver.php"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates",
-		"UnitTestsList": "UEModulePDF::onUnitTestsList"
+		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates"
 	},
 	"manifest_version": 1
 }
