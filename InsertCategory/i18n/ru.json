@@ -2,13 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Kareyac"
 		]
 	},
 	"bs-insertcategory-desc": "Диалог ввода ссылки на категорию",
 	"bs-insertcategory-insertcat": "Добавить категорию",
 	"prefs-insertcategory": "Добавить категорию",
 	"bs-insertcategory-pref-withparents": "Вставить категорию с ее родительскими категориями",
+	"bs-insertcategory-pref-uploadpanelintegration": "Набор категорий по умолчанию в диалоговом окне загрузки",
 	"bs-insertcategory-title": "Добавить категорию",
 	"bs-insertcategory-cat-label": "Назначение:",
 	"bs-insertcategory-success": "Категория была добавлена",
