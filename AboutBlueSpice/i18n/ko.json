@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Revi"
+			"Revi",
+			"Jerrykim306"
 		]
 	},
 	"bs-aboutbluespice-desc": "블루스파이스에 대한 정보.",
 	"bs-aboutbluespice-about-bluespice": "블루스파이스에 대하여",
 	"aboutbluespice": "블루스파이스에 대하여",
 	"prefs-aboutbluespice": "블루스파이스에 대하여",
-	"bs-aboutbluespice-show-menu-links": "링크 \"{{int:bs-aboutbluespice-about-bluespice}}\"를 최상단 및 메인 메뉴에 보여줍니다"
+	"bs-aboutbluespice-show-menu-links": "링크 \"{{int:bs-aboutbluespice-about-bluespice}}\"를 최상단 및 메인 메뉴에 보여줍니다",
+	"action-aboutbluespice-viewspecialpage": "\"{{int:bs-aboutbluespice-about-bluespice}}\"특수 문서 보기"
 }
