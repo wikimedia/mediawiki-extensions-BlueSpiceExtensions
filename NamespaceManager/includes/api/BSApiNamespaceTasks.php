@@ -203,7 +203,10 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 		}
 
 		$bErrors = false;
-		if ( empty( $iDoArticle ) ) $iDoArticle = 0;
+		$iDoArticle = 0;
+		if ( !empty( $oData->doArticle ) ){
+			$iDoArticle = (int) $oData->doArticle;
+		}
 
 		switch ( $iDoArticle ) {
 			case 0:
