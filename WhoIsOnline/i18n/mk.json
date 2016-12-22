@@ -8,7 +8,7 @@
 	"bs-whoisonline-nousers": "Никој не е најавен.",
 	"bs-whoisonline-widget-title": "Кој е на линија?",
 	"prefs-whoisonline": "Кој е на линија?",
-	"bs-whoisonline-pref-limitcount": "Макс. број на корисници за приказ:",
+	"bs-whoisonline-pref-limitcount": "Највеќе корисници за приказ:",
 	"bs-whoisonline-pref-orderby": "Подреди по:",
 	"bs-whoisonline-pref-maxidletime": "По колку време неактивен корисник да се води како исклучен (во секунди):",
 	"bs-whoisonline-pref-orderby-time": "Време на линија",
