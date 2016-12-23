@@ -27,7 +27,7 @@
 	"bs-blog-pref-imagerendermode": "Monstrar imagines como:",
 	"bs-blog-pref-imagefloatdirection": "Fluxo de texto: Position del imagine",
 	"bs-blog-pref-maxentrycharacters": "Numero de parolas per entrata:",
-	"bs-blog-tag-blog-desc": "Monstrar entratas de blog in cata pagina.",
-	"bs-blog-tag-blogtime-desc": "Iste etiquetta permitte definir un data e hora personalisate pro entratas de blog.",
+	"bs-blog-tag-blog-desc": "Insere un jornal web con paginas de articulo, de discussion e de file. Pote esser specificate per varie parametros. Istes pote esser combinate in qualcunque ordine.",
+	"bs-blog-tag-blogtime-desc": "Insere un data e hora personalisate pro presentation e ordination in entratas de blog. Le formato es AAAAMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "Le formato debe esser AAAAMMDDHHmm, p.ex. pro le 12 de januario 2013 a 15:43, le formato es: 201301121543"
 }

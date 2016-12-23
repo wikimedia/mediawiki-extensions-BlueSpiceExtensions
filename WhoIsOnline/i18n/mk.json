@@ -14,6 +14,6 @@
 	"bs-whoisonline-pref-orderby-time": "Време на линија",
 	"bs-whoisonline-pref-orderby-name": "Име",
 	"bs-whoisonline-pref-interval": "Интервал на поднова во секунди:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Дава број на моментално вклучени корисници.",
-	"bs-whoisonline-tag-whoisonlinepopup-desc": "Дава отскочно списоче на корисници моментално вклучени корисници.\n\nВажечки атрибути:\n;<code>anchortext</code>: Текстот кон кој сакате да го приложите отскочното списоче."
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Покажува колку вкупно корисници се најавиле во последните 10 минути.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Ги покажува сите корисници што се најавиле во последните 10 минути."
 }

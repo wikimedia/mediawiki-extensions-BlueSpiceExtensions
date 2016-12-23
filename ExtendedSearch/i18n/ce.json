@@ -8,8 +8,10 @@
 	"bs-extendedsearch-facet-category": "Категори",
 	"bs-extendedsearch-facet-namespace-files": "Файлаш",
 	"bs-extendedsearch-result-caption": "$1 - $2 $3 нах {{PLURAL:$3|хиллам}}",
+	"bs-extendedsearch-sort-title": "Корта",
 	"bs-extendedsearch-sort-ts": "Хан",
 	"bs-extendedsearch-sort-type": "Тайп",
+	"bs-extendedsearch-pref-scope-title": "Корта",
 	"bs-extendedsearch-about-to-start": "Йолаялар…",
 	"bs-extendedsearch-more": "Кхин",
 	"bs-extendedsearch-fewer": "КӀезиг"
