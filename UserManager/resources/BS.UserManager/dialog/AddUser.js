@@ -12,15 +12,13 @@
  * @filesource
  */
 
-Ext.define( 'BS.UserManager.dialog.User', {
+Ext.define( 'BS.UserManager.dialog.AddUser', {
 	extend: 'BS.Window',
+	requires: [ 'BS.UserManager.form.field.GroupList' ],
 	currentData: {},
 	selectedData: {},
 	maxHeight: 620,
 	afterInitComponent: function() {
-		if( this.currentData.groups ) {
-			this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
-		}
 		this.tfUserName = Ext.create( 'Ext.form.TextField', {
 			fieldLabel: mw.message('bs-usermanager-headerusername').plain(),
 			labelWidth: 130,
@@ -63,15 +61,7 @@ Ext.define( 'BS.UserManager.dialog.User', {
 			name: 'enabled',
 			checked: true
 		});
-		this.cbGroups = Ext.create( 'Ext.ux.form.MultiSelect', {
-			fieldLabel: mw.message('bs-usermanager-headergroups').plain(),
-			labelWidth: 130,
-			labelAlign: 'right',
-			store: this.strGroups,
-			valueField: 'group_name',
-			displayField: 'displayname',
-			maxHeight: 350
-		} );
+		this.cbGroups = new BS.UserManager.form.field.GroupList();
 
 		this.items = [
 			this.tfUserName,
@@ -102,8 +92,8 @@ Ext.define( 'BS.UserManager.dialog.User', {
 		this.tfUserName.setValue( this.currentData.user_name );
 		this.tfEmail.setValue( this.currentData.user_email );
 		this.tfRealName.setValue( this.currentData.user_real_name );
-		this.tfEnabled.setValue(this.currentData.enabled )
-		this.cbGroups.setValue( this.getGroupsValue(this.currentData.groups) );
+		this.tfEnabled.setValue(this.currentData.enabled );
+		this.cbGroups.setValue( this.currentData.groups );
 	},
 	getData: function() {
 		this.selectedData.user_name = this.tfUserName.getValue();
@@ -115,13 +105,5 @@ Ext.define( 'BS.UserManager.dialog.User', {
 		this.selectedData.groups = this.cbGroups.getValue();
 
 		return this.selectedData;
-	},
-
-	getGroupsValue: function( data ) {
-		var groups = [];
-		for( var i = 0; i < data.length; i++ ) {
-			groups.push( data[i] );
-		}
-		return groups;
 	}
 } );

@@ -13,7 +13,16 @@
 (function( mw, $, bs, d, undefined){
 	Ext.onReady( function(){
 		Ext.create( 'BS.UserManager.panel.Manager', {
-			renderTo: 'bs-usermanager-grid'
+			renderTo: 'bs-usermanager-grid',
+			operationPermissions: {
+				'create': bsTaskAPIPermissions.usermanager.addUser,
+				'delete': bsTaskAPIPermissions.usermanager.deleteUser,
+				'disableuser': bsTaskAPIPermissions.usermanager.disableUser,
+				'usergroups': bsTaskAPIPermissions.usermanager.setUserGroups,
+				'editpassword': bsTaskAPIPermissions.usermanager.editPassword,
+				'update': bsTaskAPIPermissions.usermanager.editUser,
+				'enableuser': bsTaskAPIPermissions.usermanager.enableUser
+			}
 		} );
 	} );
 
