@@ -48,5 +48,6 @@
 	"usermanager": "Page title for special page of user manager",
 	"action-usermanager-viewspecialpage": "Label for denied page access, with name of special page",
 	"bs-usermanager-group-add-not-allowed": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to add a user to a restricted group\n\n* $1 is the name of the restricted group",
-	"bs-usermanager-group-remove-not-allowed": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to remove a user from a restricted group\n\n* $1 is the name of the restricted group"
+	"bs-usermanager-group-remove-not-allowed": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to remove a user from a restricted group\n\n* $1 is the name of the restricted group",
+	"bs-usermanager-editpassword": "{{Identical|Change password}}"
 }

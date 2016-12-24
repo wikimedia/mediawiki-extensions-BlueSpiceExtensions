@@ -17,7 +17,7 @@
 	"bs-usermanager-invalid-email-gen": "El. pašto adresas yra neteisingas.",
 	"bs-usermanager-label": "Vartotojų tvarkytojas",
 	"bs-usermanager-user-added": "Vartotojas buvo pridėtas.",
-	"bs-usermanager-user-deleted": "Vartotojas buvo ištrintas.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|Vartotojas buvo ištrintas|$1 vartotojai buvo ištrinti}}.",
 	"bs-usermanager-user-exists": "Vartotojo vardas jau egzistuoja.",
 	"bs-usermanager-save-successful": "Pakeitimai išsaugoti.",
 	"bs-usermanager-headerusername": "Vartotojo vardas",
@@ -48,5 +48,13 @@
 	"usermanager": "Vartotojo valdymas",
 	"action-usermanager-viewspecialpage": "žiūrėti specialųpuslapį „User manager“",
 	"bs-usermanager-group-add-not-allowed": "Jūs negalite pridėti vartotojų į grupę $1",
-	"bs-usermanager-group-remove-not-allowed": "Jūs negalite pašalinti vartotojų iš grupės $1"
+	"bs-usermanager-group-remove-not-allowed": "Jūs negalite pašalinti vartotojų iš grupės $1",
+	"bs-usermanager-editgroups": "Redaguoti grupes",
+	"bs-usermanager-editpassword": "Keisti slaptažodį",
+	"bs-usermanager-editpassword-successful": "Slaptažodis buvo sėkmingai pakeistas",
+	"bs-usermanager-title-nouserselected": "Nepasirinktas joks vartotojas",
+	"bs-usermanager-nouserselected": "Prašome pasirinkti vartotoją",
+	"bs-usermanager-title-multipleuserselected": "Yra pasirinkti keli vartotojai",
+	"bs-usermanager-multipleuserselected": "Galite pakeisti slaptažodį vienam vartotojui vienu metu",
+	"bs-usermanager-invalid-groups": "Grupės negalimos"
 }

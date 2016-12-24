@@ -18,7 +18,7 @@
 	"bs-usermanager-invalid-email-gen": "Адреса електронної пошти недійсна.",
 	"bs-usermanager-label": "Менеджер користувачів",
 	"bs-usermanager-user-added": "Користувача було додано.",
-	"bs-usermanager-user-deleted": "Користувача було видалено.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|$1 користувача|$1 користувачів}} було вилучено.",
 	"bs-usermanager-user-exists": "Ім'я користувача вже існує.",
 	"bs-usermanager-save-successful": "Зміни збережено.",
 	"bs-usermanager-headerusername": "Ім'я користувача",
@@ -49,5 +49,13 @@
 	"usermanager": "Менеджер користувачів",
 	"action-usermanager-viewspecialpage": "Перегляд спеціальної сторінки «Менеджер користувачів»",
 	"bs-usermanager-group-add-not-allowed": "У Вас немає дозволу на додавання користувачів до групи $1",
-	"bs-usermanager-group-remove-not-allowed": "У Вас немає дозволу на вилучення користувачів із групи $1"
+	"bs-usermanager-group-remove-not-allowed": "У Вас немає дозволу на вилучення користувачів із групи $1",
+	"bs-usermanager-editgroups": "Редагувати групи",
+	"bs-usermanager-editpassword": "Змінити пароль",
+	"bs-usermanager-editpassword-successful": "Пароль успішно змінено",
+	"bs-usermanager-title-nouserselected": "Користувача не вибрано",
+	"bs-usermanager-nouserselected": "Будь ласка, виберіть користувача",
+	"bs-usermanager-title-multipleuserselected": "Обрано декілька користувачів",
+	"bs-usermanager-multipleuserselected": "Ви можете змінювати пароль лише для одного користувача водночас",
+	"bs-usermanager-invalid-groups": "Групи є недійсними"
 }
