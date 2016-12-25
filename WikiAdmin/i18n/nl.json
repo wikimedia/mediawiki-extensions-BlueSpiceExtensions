@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
-	"bs-wikiadmin-desc": "Centraal punt van de administratie voor BlueSpice",
+	"bs-wikiadmin-desc": "Centrale administratiepunt voor BlueSpice",
 	"bs-wikiadmin-notallowed": "Het is u niet toegestaan om toegang te krijgen tot deze pagina.",
 	"wikiadmin": "BlueSpice administratie",
 	"action-wikiadmin": "display BlueSpice administratie pagina ' s",

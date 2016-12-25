@@ -31,6 +31,7 @@
 	"bs-usermanager-titledisableuser": "Wyłączenie użytkownika",
 	"bs-usermanager-group-add-not-allowed": "Nie możesz dodawać użytkowników do grupy $1",
 	"bs-usermanager-group-remove-not-allowed": "Nie możesz usuwać użytkowników z grupy $1",
+	"bs-usermanager-editgroups": "Edytuj grupy",
 	"bs-usermanager-editpassword-successful": "Hasło zostało pomyślnie zmienione",
 	"bs-usermanager-title-nouserselected": "Nie wybrano użytkownika",
 	"bs-usermanager-nouserselected": "Proszę wybrać użytkownika",

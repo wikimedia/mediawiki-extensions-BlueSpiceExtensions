@@ -4,7 +4,8 @@
 			"Sjoerddebruin",
 			"SPQRobin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
 	"bs-insertfile-desc": "Het dialoogvenster voor het uploaden van bestanden en het invoegen van een koppeling naar een bestand",
@@ -57,7 +58,7 @@
 	"bs-insertfile-errorWrongFileExtensionOnDestination": "Het doel u gekozen naam heeft geen geldige extensie.",
 	"bs-insertfile-errorwrongimagetypeondestination": "Het doel u gekozen naam is niet toegestaan beeld-extensie.",
 	"bs-insertfile-errorwrongfiletypeondestination": "Het doel u gekozen naam heeft geen geldige extensie.",
-	"bs-insertfile-uploadcomplete": "Uw bestand is opgeslagen succesvol.",
+	"bs-insertfile-uploadcomplete": "Uw bestand is succesvol opgeslagen.",
 	"bs-insertfile-titlefile": "Bestand toevoegen",
 	"bs-insertfile-titleimage": "Afbeelding invoegen",
 	"bs-insertfile-tipkeepratio": "Verhoudingen behouden",

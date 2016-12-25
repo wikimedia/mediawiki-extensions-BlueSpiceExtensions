@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
 	"bs-usermanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen van gebruikers",
@@ -17,7 +18,7 @@
 	"bs-usermanager-invalid-email-gen": "Het e-mailadres is ongeldig.",
 	"bs-usermanager-label": "Gebruikersbeheer",
 	"bs-usermanager-user-added": "De gebruiker is toegevoegd.",
-	"bs-usermanager-user-deleted": "De gebruiker is verwijderd.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|De gebruiker is|$1 gebruikers zijn}} verwijderd.",
 	"bs-usermanager-user-exists": "De gebruikersnaam bestaat al.",
 	"bs-usermanager-save-successful": "De wijzigingen zijn opgeslagen.",
 	"bs-usermanager-headerusername": "Gebruikersnaam",
@@ -29,7 +30,7 @@
 	"bs-usermanager-labelnewpassword": "Wachtwoord",
 	"bs-usermanager-labelpasswordcheck": "Wachtwoord bevestigen",
 	"bs-usermanager-titledeleteuser": "Gebruiker verwijderen",
-	"bs-usermanager-confirmdeleteuser": "Bent u zeker dat u wilt verwijderen {{PLURAL:$1|deze gebruiker|de volgende $1 gebruikers}}?",
+	"bs-usermanager-confirmdeleteuser": "Bent u zeker dat u deze {{PLURAL:$1|gebruiker|$1 gebruikers}} wilt verwijderen?",
 	"bs-usermanager-groups-more": "... meer",
 	"bs-usermanager-no-self-desysop": "U kunt niet uw eigen moderator recht."
 }

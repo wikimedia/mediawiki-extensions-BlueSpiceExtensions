@@ -4,7 +4,8 @@
 			"SPQRobin",
 			"Esketti",
 			"Siebrand",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Mainframe98"
 		]
 	},
 	"bs-saferedit-desc": "Tussentijdse het opslaan van wiki bewerkingen",
@@ -21,9 +22,9 @@
 	"bs-saferedit-statebartopsaferedit": "Veiliger bewerken",
 	"bs-saferedit-statebartopsafereditediting": "Veiliger bewerken - iemand bewerken",
 	"bs-saferedit-lastsavedversion": "Laatst opgeslagen versie van $1 - $2.",
-	"bs-saferedit-unsavedchanges": "Er niet opgeslagen wijzigingen zijn.",
+	"bs-saferedit-unsavedchanges": "Er zijn niet opgeslagen wijzigingen.",
 	"bs-saferedit-othersectiontitle": "Sectie om te herstellen",
 	"bs-saferedit-othersectiontext1": "Er is een back-up van een andere sectie.",
-	"bs-saferedit-othersectiontext2": "De back-up is gemaakt op een $1 - $2.",
+	"bs-saferedit-othersectiontext2": "De back-up is gemaakt op $1 - $2.",
 	"bs-saferedit-othersectiontext3": "Wilt u om over te schakelen naar die sectie te gaan?"
 }

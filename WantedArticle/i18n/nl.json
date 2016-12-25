@@ -4,7 +4,8 @@
 			"Sjoerddebruin",
 			"SPQRobin",
 			"Esketti",
-			"Siebrand"
+			"Siebrand",
+			"Mainframe98"
 		]
 	},
 	"bs-wantedarticle-desc": "Een pagina aan een lijst met gewenste pagina's toevoegen",
@@ -21,11 +22,6 @@
 	"bs-wantedarticle-single-textfield-createbutton-text": "Aanmaken",
 	"bs-wantedarticle-single-textfield-defaulttext": "Paginanaam",
 	"bs-wantedarticle-tag-wantedarticle-desc": "Maakt een lijst van gevraagde pagina ' s. Beschikbare configuratie-eigenschappen:",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-count": "<code>tellen</code>: Aantal pagina ' s weer te geven.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-title": "<code>titel</code>: Headline.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-order": "<code>bestellen</code>: Sorteervolgorde <code>ASC</code> ({{int:bs-wantedarticle-pref-om-asc}}) of <code>DESC</code> ({{int:bs-wantedarticle-pref-om-desc}})",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-sort": "<code>sorteren</code>: Sorteren op <code>titel</code> of <code>tijd</code>.",
-	"bs-wantedarticle-tag-wantedarticle-desc-param-type": "<code>type</code>: Output formaat <code>lijst</code> of <code>quene</code> (komma gescheiden).",
 	"bs-wantedarticle-tag-more-linktext": "Meer...",
 	"bs-wantedarticle-tag-default-title": "Niet-bestaande pagina's met koppelingen",
 	"bs-wantedarticle-pref-includelimit": "Aantal suggesties:",
@@ -39,8 +35,8 @@
 	"bs-wantedarticle-pref-sort-title": "Naam",
 	"bs-wantedarticle-pref-order-asc": "oplopend",
 	"bs-wantedarticle-pref-order-desc": "aflopend",
-	"bs-wantedarticle-create-page": "Maak de pagina \"$1\".",
-	"bs-wantedarticle-suggest-page": "Stel voor de pagina \"$1\".",
+	"bs-wantedarticle-create-page": "Maak de pagina \"$1\" aan.",
+	"bs-wantedarticle-suggest-page": "Stel de pagina \"$1\" voor.",
 	"bs-wantedarticle-info-nothing-entered": "Geef een geldig paginanaam op.",
 	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Het volgende teken is|De volgende tekens zijn}} niet geldig voor gebruik in een paginanaam: $2"
 }

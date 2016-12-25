@@ -5,7 +5,8 @@
 			"SPQRobin",
 			"Esketti",
 			"Siebrand",
-			"Macofe"
+			"Macofe",
+			"Mainframe98"
 		]
 	},
 	"bs-groupmanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen van groepen gebruikers en hun rechten",
@@ -26,8 +27,8 @@
 	"bs-groupmanager-removegroup-message-failure": "De volgende {{PLURAL:$1|groep kon|groepen konden}} niet worden verwijderd: $2",
 	"bs-groupmanager-removegroup-message-unknown": "Er is een onverwachte fout opgetreden, probeer het opnieuw.",
 	"bs-groupmanager-lablename": "Groepsnaam:",
-	"bs-groupmanager-msgnoteditable": "Dit is een systeemgebruiker die niet hernoemd kan worden.",
-	"bs-groupmanager-msgnotremovable": "Deze groep is een systeem groep en kan niet worden verwijderd.",
+	"bs-groupmanager-msgnoteditable": "Deze groep is een systeemgroep en kan niet hernoemd worden.",
+	"bs-groupmanager-msgnotremovable": "Deze groep is een systeemgroep en kan niet worden verwijderd.",
 	"log-name-bs-group-manager": "Logboek groepenbeheer",
 	"log-show-hide-bs-group-manager": "Logboek groepenbeheer $1"
 }
