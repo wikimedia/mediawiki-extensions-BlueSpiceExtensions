@@ -32,5 +32,12 @@
 	"bs-usermanager-titledeleteuser": "Gebruiker verwijderen",
 	"bs-usermanager-confirmdeleteuser": "Bent u zeker dat u deze {{PLURAL:$1|gebruiker|$1 gebruikers}} wilt verwijderen?",
 	"bs-usermanager-groups-more": "... meer",
-	"bs-usermanager-no-self-desysop": "U kunt niet uw eigen moderator recht."
+	"bs-usermanager-no-self-desysop": "U kunt niet uw eigen moderator recht.",
+	"bs-usermanager-editgroups": "Groepen bewerken",
+	"bs-usermanager-editpassword": "Wachtwoord wijzigen",
+	"bs-usermanager-editpassword-successful": "Het wachtwoord is succesvol gewijzigd",
+	"bs-usermanager-title-nouserselected": "Geen gebruiker geselecteerd",
+	"bs-usermanager-nouserselected": "Gelieve een gebruiker te selecteren",
+	"bs-usermanager-title-multipleuserselected": "Meerdere gebruikers zijn geselecteerd",
+	"bs-usermanager-invalid-groups": "Groepen zijn ongeldig"
 }
