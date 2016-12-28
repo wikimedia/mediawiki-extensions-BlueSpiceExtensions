@@ -50,7 +50,7 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 
 		$this->getOutput()->addHTML('<div id="bs-statistics-panel"></div>');
 		$this->getOutput()->addModules('ext.bluespice.statistics');
-		$this->getOutput()->setPagetitle( wfMessage( 'extendedstatistics' )->plain() );
+		$this->getOutput()->setPageTitle( wfMessage( 'extendedstatistics' )->plain() );
 		$bAllowPNGExport = false;
 		global $wgSVGConverter, $wgSVGConverters;
 		if( $wgSVGConverter != false && isset($wgSVGConverters[$wgSVGConverter]) ) {
