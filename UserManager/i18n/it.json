@@ -14,7 +14,7 @@
 	"bs-usermanager-invalid-uname": "Il nome utente non è valido.",
 	"bs-usermanager-invalid-email-gen": "L'indirizzo email non è valido.",
 	"bs-usermanager-user-added": "L'utente è stato aggiunto.",
-	"bs-usermanager-user-deleted": "L'utente è stato cancellato.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|L'utente è stato cancellato.|$1 utenti sono stati cancellati.}}",
 	"bs-usermanager-user-exists": "Il nome utente esiste già.",
 	"bs-usermanager-save-successful": "Modifiche salvate.",
 	"bs-usermanager-headerusername": "Nome utente",
@@ -34,5 +34,11 @@
 	"usermanager": "Gestione utente",
 	"action-usermanager-viewspecialpage": "visualizzare la pagina speciale \"Gestione utente\"",
 	"bs-usermanager-group-add-not-allowed": "Non ti è consentito aggiungere utenti al gruppo $1 .",
-	"bs-usermanager-group-remove-not-allowed": "Non ti è consentito rimuovere utenti dal gruppo $1 ."
+	"bs-usermanager-group-remove-not-allowed": "Non ti è consentito rimuovere utenti dal gruppo $1 .",
+	"bs-usermanager-editgroups": "Modifica gruppi",
+	"bs-usermanager-editpassword": "Cambia password",
+	"bs-usermanager-editpassword-successful": "La password è stata cambiata",
+	"bs-usermanager-title-nouserselected": "Nessun utente selezionato",
+	"bs-usermanager-nouserselected": "Si prega di selezionare un utente",
+	"bs-usermanager-invalid-groups": "I gruppi non sono validi"
 }
