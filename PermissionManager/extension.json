@@ -7,7 +7,7 @@
 		"Markus Glaser",
 		"Stephan Muggli"
 	],
-	"descriptionmsg": "bs-articleinfo-desc",
+	"descriptionmsg": "bs-permissionmanager-desc",
 	"type": "bluespice",
 	"bsgExtensions": {
 		"PermissionManager": {
