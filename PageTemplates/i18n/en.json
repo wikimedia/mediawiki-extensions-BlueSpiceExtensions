@@ -6,8 +6,6 @@
 	},
 	"bs-pagetemplates-desc": "Displays a list of templates marked as page templates",
 	"prefs-pagetemplates": "Page templates",
-	"apihelp-bs-pagetemplates-store": "Provides a list of available templates.",
-	"apihelp-bs-pagetemplates-tasks": "Provides create, update and delete tasks for templates.",
 	"bs-pagetemplates-empty-page": "Empty page",
 	"bs-pagetemplates-empty-page-desc": "Start with an empty page.",
 	"bs-pagetemplatesadmin-label": "Page templates",
