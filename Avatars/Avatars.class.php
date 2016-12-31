@@ -64,13 +64,23 @@ class Avatars extends BsExtensionMW {
 	 */
 	public static function onRegistration() {
 		global $wgForeignFileRepos;
-		$wgForeignFileRepos[] = array(
-			'class' => 'FSRepo',
-			'name' => 'Avatars',
-			'directory' => BS_DATA_DIR . '/Avatars/',
-			'hashLevels' => 0,
-			'url' => BS_DATA_PATH . '/Avatars',
-		);
+		if ( version_compare( $GLOBALS['wgVersion'], '1.28c', '>' ) ) {
+			$wgForeignFileRepos[] = array(
+				'class' => 'FileRepo',
+				'name' => 'Avatars',
+				'directory' => BS_DATA_DIR . '/Avatars/',
+				'hashLevels' => 0,
+				'url' => BS_DATA_PATH . '/Avatars',
+			);
+		} else {
+			$wgForeignFileRepos[] = array(
+				'class' => 'FSRepo',
+				'name' => 'Avatars',
+				'directory' => BS_DATA_DIR . '/Avatars/',
+				'hashLevels' => 0,
+				'url' => BS_DATA_PATH . '/Avatars',
+			);
+		}
 	}
 
 	/**
