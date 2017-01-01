@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-widgetbar-desc": "Legger til widgets i brukergrensesnittet",
+	"prefs-widgetbar": "Widget-felt",
+	"bs-widgetbar-userpagesettings-headline": "Widgeter",
+	"bs-widgetbar-userpagesettings-link-title": "{{GENDER:|Rediger}} innholdet i widgetverktøylinja di:",
+	"bs-widgetbar-userpagesettings-link-text": "{{GENDER:|Rediger}} min widgetverktøylinje",
+	"bs-widget-container-tooltip": "Widgeter",
+	"bs-widget-flyout-heading": "Widgeter"
+}

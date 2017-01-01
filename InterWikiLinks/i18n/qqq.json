@@ -5,7 +5,8 @@
 			"Liuxinyu970226",
 			"Shirayuki",
 			"Nemo bis",
-			"Leonid Verhovskij <verhovskij@hallowelt.com>"
+			"Leonid Verhovskij <verhovskij@hallowelt.com>",
+			"Umherirrender"
 		]
 	},
 	"bs-interwikilinks-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of [[mw:Extension:BlueSpice/Featurelist#I|interwiki links]] extension",
@@ -32,7 +33,7 @@
 	"bs-interwikilinks-insertlink-labelprefix": "Text for prefix\n{{Identical|Prefix}}",
 	"bs-interwikilink-select-a-prefix": "Text for choose prefix",
 	"bs-interwikilinks-link-edited": "Text for the interwiki link has been edited",
-	"apihelp-bs-interwikilinks-tasks-description": "Describes the API endpoint that provides tasks for the InterWikiLinks extension.",
-	"action-interwikilinks-viewspecialpage": "Placeholder to describe that view of special page \"{{int:bs-interwikilinks-label}}\" is restricted for the current user",
+	"apihelp-bs-interwikilinks-tasks-description": "Describes the API endpoint that provides tasks for the InterWikiLinks extension.\n{{doc-apihelp-description|bs-interwikilinks-tasks}}",
+	"action-interwikilinks-viewspecialpage": "Placeholder to describe that view of special page \"{{int:bs-interwikilinks-label}}\" is restricted for the current user\n{{doc-action|interwikilinks-viewspecialpage}}",
 	"interwikilinks": "Anchor text in special page overview for interwiki links.\n{{Identical|Interwiki link}}"
 }

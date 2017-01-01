@@ -7,7 +7,7 @@
 		]
 	},
 	"bs-usermanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen van gebruikers",
-	"bs-usermanager-admin-nodelete": "De administrator-account kan niet worden verwijderd.",
+	"bs-usermanager-admin-nodelete": "Het administrator account kan niet worden verwijderd.",
 	"bs-usermanager-self-nodelete": "Kunt u niet verwijderen van uw account.",
 	"bs-usermanager-db-error": "Er is een databasefout opgetreden.",
 	"bs-usermanager-enter-pwd": "Geef een wachtwoord op.",

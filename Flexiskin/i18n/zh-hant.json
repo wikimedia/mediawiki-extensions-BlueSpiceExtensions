@@ -36,6 +36,7 @@
 	"bs-flexiskin-labelwidth": "完整寬度 (像素)",
 	"bs-flexiskin-labelfullwidth": "最大寛度：",
 	"bs-flexiskin-error-nameempty": "請為你要建立的外觀輸入有效的名稱。",
+	"bs-flexiskin-api-id-desc": "Flexiskin 的 ID (選填)。",
 	"apihelp-bs-flexiskin-store-description": "列出可用的flexiskin",
 	"apihelp-bs-flexiskin-upload-description": "允許上傳文件至flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "列出上傳的flexiskin文件"

@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Shirayuki",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
 	"bs-statebar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of state bar extension",
@@ -15,5 +16,5 @@
 	"bs-statebar-viewtoggler-tooltip": "Span title for show detailed information",
 	"bs-statebar-switch-description": "Behaviour switch __NOSTATEBAR__ description for hiding the status bar on this page shown in InsertMagic.",
 	"bs-statebar-ajax-nobodyviews": "Text if no information available about this page shown in folded out status bar.",
-	"apihelp-bs-statebar-tasks-description": "Describes the API endpoint that handles statebar tasks"
+	"apihelp-bs-statebar-tasks-description": "Describes the API endpoint that handles statebar tasks\n{{doc-apihelp-description|bs-statebar-tasks}}"
 }

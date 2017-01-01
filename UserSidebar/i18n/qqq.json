@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
 	"bs-usersidebar-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of user sidebar extension",
@@ -12,5 +13,5 @@
 	"bs-usersidebar-tab-focus": "Label for \"focus\" tab in left sidebar\n{{Identical|Focus}}",
 	"bs-usersidebar-tab-globalactions": "Label for \"admin\" tab in left sidebar\n{{Identical|Admin}}",
 	"bs-usersidebar-globalactionswidget-title": "Widget headline for global actions",
-	"apihelp-sidebar-description": "Describes an API endpoint that returns the HTML contents of the user sidebar"
+	"apihelp-sidebar-description": "Describes an API endpoint that returns the HTML contents of the user sidebar\n{{doc-apihelp-description|sidebar}}"
 }

@@ -5,7 +5,8 @@
 			"Ата",
 			"Shirayuki",
 			"Markus Glaser <glaser@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
 	"bs-checklist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of checklist extension",
@@ -38,8 +39,8 @@
 	"bs-checklist-savelist-error-edit-not-permitted": "Error message in case of insufficient user permissions",
 	"bs-checklist-modified-check": "Edit summary about modifing checklist value",
 	"bs-checklist-update-list": "Edit summary about updating checklist",
-	"apihelp-bs-checklist-available-options-store-description": "Describes the API endpoint that stores available options of checklist",
-	"apihelp-bs-checklist-template-store-description": "Describes the API endpoint that stores checklist templates",
-	"apihelp-bs-checklist-tasks-description": "Describes the API endpoint that handles checklist tasks",
+	"apihelp-bs-checklist-available-options-store-description": "Describes the API endpoint that stores available options of checklist\n{{doc-apihelp-description|bs-checklist-available-options-store}}",
+	"apihelp-bs-checklist-template-store-description": "Describes the API endpoint that stores checklist templates\n{{doc-apihelp-description|bs-checklist-template-store}}",
+	"apihelp-bs-checklist-tasks-description": "Describes the API endpoint that handles checklist tasks\n{{doc-apihelp-description|bs-checklist-tasks}}",
 	"bs-tag-checklist": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
 }

@@ -9,8 +9,8 @@
 			"Mainframe98"
 		]
 	},
-	"bs-namespacemanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen naamruimten",
-	"bs-namespacemanager-label": "Naamruimte manager",
+	"bs-namespacemanager-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen van naamruimten",
+	"bs-namespacemanager-label": "Naamruimtebeheer",
 	"bs-namespacemanager-wrong-name": "De naamruimte bevat ongeldige tekens.",
 	"bs-namespacemanager-ns-exists": "De naamruimte bestaat al.",
 	"bs-namespacemanager-ns-length": "De naamruimte moet minimaal twee tekens lang zijn.",

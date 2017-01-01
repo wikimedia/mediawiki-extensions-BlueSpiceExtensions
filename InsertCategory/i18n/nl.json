@@ -4,7 +4,8 @@
 			"SPQRobin",
 			"Sjoerddebruin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
 	"bs-insertcategory-desc": "Het dialoogvenster voor het invoeren van een categoriekoppeling",
@@ -13,7 +14,7 @@
 	"bs-insertcategory-pref-withparents": "Categorie invoegen met haar ouders",
 	"bs-insertcategory-title": "Categorie invoegen",
 	"bs-insertcategory-cat-label": "Toegewezen:",
-	"bs-insertcategory-success": "Categorie toegevoegd",
+	"bs-insertcategory-success": "De categorie is toegevoegd",
 	"bs-insertcategory-failure": "Fout",
 	"bs-insertcategory-hint": "Let op: voor het toevoegen van een categorie drukt u op <kbd>Enter<kbd> of beëindigt u uw invoer met een komma.",
 	"bs-insertcategory-panel-title": "Categorieën"

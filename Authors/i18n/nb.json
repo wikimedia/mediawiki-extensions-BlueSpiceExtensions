@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-authors-desc": "Viser profilbildet til forfatterne av en side",
+	"prefs-authors": "Forfattere av denne siden",
+	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|Forfatter}}|Forfattere}}",
+	"bs-authors-profileimage": "Profilbilde",
+	"bs-authors-profileimage-change": "Endre profilbilde",
+	"bs-authors-show-all-authors": "Flere forfattere tilgjengelig",
+	"bs-authors-pref-imageheight": "Bildehøyde:",
+	"bs-authors-pref-imagewidth": "Bildebredde:",
+	"bs-authors-pref-limit": "Grense for antall forfattere å vise:",
+	"bs-authors-pref-show": "Vis forfattere",
+	"bs-authors-switch-description": "Skjul forfatterne på denne siden."
+}

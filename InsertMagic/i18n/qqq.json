@@ -5,7 +5,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Robby",
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
 	"bs-insertmagic-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert magic extension",
@@ -70,5 +71,5 @@
 	"bs-insertmagic-label-desc": "Headline text for description \n {{Identical|Description}}",
 	"bs-insertmagic-label-examples": "Textlabel above the example section in the description field of the insert magic dialog.\n{{Identical|Example}}",
 	"bs-insertmagic-label-see-also": "Textlabel above the see also link for more information in the description field of the insert magic dialog.",
-	"apihelp-bs-insertmagic-data-store-description": "Describes the API endpoint that lists all items for the InsertMagic dialog"
+	"apihelp-bs-insertmagic-data-store-description": "Describes the API endpoint that lists all items for the InsertMagic dialog\n{{doc-apihelp-description|bs-insertmagic-data-store}}"
 }

@@ -5,7 +5,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Shirayuki",
-			"Purodha"
+			"Purodha",
+			"Umherirrender"
 		]
 	},
 	"bs-flexiskin-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of flexi skin extension",
@@ -64,11 +65,11 @@
 	"bs-flexiskin-apihelp-task-param-name": "Describes the <var>name</var> parameter of the API module",
 	"bs-flexiskin-usebackground": "Label for checkbox to use background image",
 	"bs-flexiskin-labelcurrentbackground": "Label for textbox with current background filename",
-	"apihelp-bs-flexiskin-tasks-description": "Describes an API endpoint that allows manipulation of flexiskins",
-	"apihelp-bs-flexiskin-store-description": "Describes an API endpoint that lists available flexiskins",
-	"apihelp-bs-flexiskin-upload-description": "Describes an API endpoint that is used to upload files to a flexiskin",
-	"apihelp-bs-flexiskin-upload-store-description": "Describes an API endpoint that lists uploaded files of a flexiskin",
-	"action-flexiskin-viewspecialpage": "Part of error message when access denied to view specialpage \"Flexiskin\"",
+	"apihelp-bs-flexiskin-tasks-description": "Describes an API endpoint that allows manipulation of flexiskins\n{{doc-apihelp-description|bs-flexiskin-tasks}}",
+	"apihelp-bs-flexiskin-store-description": "Describes an API endpoint that lists available flexiskins\n{{doc-apihelp-description|bs-flexiskin-store}}",
+	"apihelp-bs-flexiskin-upload-description": "Describes an API endpoint that is used to upload files to a flexiskin\n{{doc-apihelp-description|bs-flexiskin-upload}}",
+	"apihelp-bs-flexiskin-upload-store-description": "Describes an API endpoint that lists uploaded files of a flexiskin\n{{doc-apihelp-description|bs-flexiskin-upload}}",
+	"action-flexiskin-viewspecialpage": "Part of error message when access denied to view specialpage \"Flexiskin\"\n{{doc-action|flexiskin-viewspecialpage}}",
 	"flexiskin": "Title for special page of extension \"Flexiskin\"",
 	"bs-flexiskin-button-upload-image-tooltip": "Tooltip: upload button for logo, background, ..."
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Patric Wirth",
 			"Beta16",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
 	"bs-pageassignments-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page assignments extension",
@@ -61,8 +62,8 @@
 	"bs-pageassignments-pref-permissions": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label text for automatic assignment of rights to assigned users",
 	"bs-pageassignments-yourassignments": "Headline text for your assignments",
 	"bs-pageassignments-yourassignmentsdesc": "Description text for list of pages which you are assigned to.",
-	"right-pageassignable": "Describes the permission that a user needs to have to be listed as assignable user",
-	"right-pageassignments": "Describes the permission that a user needs to change assignments of a page",
+	"right-pageassignable": "Describes the permission that a user needs to have to be listed as assignable user\n{{doc-right|pageassignable}}",
+	"right-pageassignments": "Describes the permission that a user needs to change assignments of a page\n{{doc-right|pageassignments}}",
 	"prefs-pageassign": "Assignment\n{{Identical|Assignment}}",
 	"bs-usagetracker-pageassignments": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
 }

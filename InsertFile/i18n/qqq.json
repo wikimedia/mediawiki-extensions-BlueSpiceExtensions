@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
 	"bs-insertfile-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert file extension",
@@ -69,5 +70,5 @@
 	"bs-insertfile-error-no-medialink": "Text for no media link selected.",
 	"bs-insertfile-error-no-imagelink": "Text for no image link selected.",
 	"bs-insertfile-upload-waitmessage": "Text for upload in progress ...",
-	"apihelp-bs-insertfile-license-store-description": "Describes the API endpoint that lists the licenses for the extension InserFile"
+	"apihelp-bs-insertfile-license-store-description": "Describes the API endpoint that lists the licenses for the extension InserFile\n{{doc-apihelp-description|bs-insertfile-license-store}}"
 }

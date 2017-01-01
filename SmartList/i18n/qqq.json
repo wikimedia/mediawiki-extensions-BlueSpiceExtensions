@@ -5,7 +5,8 @@
 			"Liuxinyu970226",
 			"Chrumps",
 			"2nd-player",
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
 	"bs-smartlist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of smart list extension",
@@ -50,5 +51,5 @@
 	"bs-smartlist-mostvisitedpagesdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], text message for list of most viewed pages sorted by their views.",
 	"bs-smartlist-lasteditsdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], text message for list of pages which you have edited.",
 	"bs-smartlist-hitcounter-missing": "Error and link to extension page when HitCounter is missing. Used on Users Dashboard Widget of SmartList Extension, most visited pages",
-	"apihelp-bs-smartlist-tasks-description": "Help desciption of API functions offered by SmartList extension."
+	"apihelp-bs-smartlist-tasks-description": "Help desciption of API functions offered by SmartList extension.\n{{doc-apihelp-description|bs-smartlist-tasks}}"
 }
