@@ -6,5 +6,6 @@
 	"AutoloadClasses":{
 		"BlueSpiceExtensions":"BlueSpiceExtensions.class.php"
 	},
-	"callback": "BlueSpiceExtensions::onRegistration"
+	"callback": "BlueSpiceExtensions::onRegistration",
+	"manifest_version": 1
 }
