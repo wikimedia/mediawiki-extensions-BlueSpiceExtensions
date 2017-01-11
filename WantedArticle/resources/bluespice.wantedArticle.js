@@ -24,9 +24,11 @@ BsWantedArticle = {
 
 	init: function() {
 		//ExtendedSearch
-		$( '#bs-extendedsearch-suggest' ).on( 'click', function() { //Has to be "live" because #bs-extendedsearch-suggest may be changed via AJAX
-			//TODO: $.live() is deprecated since v1.7. Replace with $.on() as soon as we drop MW 1.17 support.
-			return BsWantedArticle.sendSuggestion( $( this ).attr( 'href' ).substr( 1 ) );
+		$( '#bs-extendedsearch-suggest' ).on( 'click', function() {
+			var title = $( this ).attr( 'href' );
+			title = title.substring( title.indexOf( '#' ) + 1 );
+			title = title.replace( '+', ' ' );
+			return BsWantedArticle.sendSuggestion( title );
 		});
 
 		this.oForms          = $( '.bs-wantedarticle-form' );
