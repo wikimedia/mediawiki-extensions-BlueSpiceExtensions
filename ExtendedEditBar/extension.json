@@ -2,7 +2,7 @@
 	"name": "ExtendedEditBar",
 	"version": "2.27.0",
 	"url": "https://help.bluespice.com/index.php/ExtendedEditbar",
-	"author": "MediaWiki Extension, packaging by Markus Glaser",
+	"author": "Markus Glaser",
 	"descriptionmsg": "bs-extendededitbar-desc",
 	"type": "bluespice",
 	"bsgExtensions": {
