@@ -29,7 +29,7 @@
 	"bs-extendedsearch-invalid-query": "Не можев да го обработам барањето.",
 	"bs-extendedsearch-nosearchterm": "Внесете поим за пребарување.",
 	"bs-extendedsearch-result": "Пронајдов {{PLURAL:$2|еден резултат|$2 резултати}} за „$1“.",
-	"bs-extendedsearch-result-caption": "$1 — $2 од $3 {{PLURAL:$3|резултат|резултати}}",
+	"bs-extendedsearch-result-caption": "$1 — $2 од $3 {{PLURAL:$3|ставка|ставки}} во исходот",
 	"bs-extendedsearch-search-category": "Пребарај во категориите:",
 	"bs-extendedsearch-search-editors": "Пребарај автори:",
 	"bs-extendedsearch-search-help-multiselect": "Држење го копчето CTRL за да изберете повеќе ставки.",
