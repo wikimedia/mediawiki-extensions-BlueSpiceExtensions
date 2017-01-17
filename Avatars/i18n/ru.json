@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Mailman"
 		]
 	},
 	"prefs-avatars": "Аватары",
-	"bs-avatars-desc": "Устанавливает общие и индивидуальные пользовательские изображения",
+	"bs-avatars-desc": "Предоставляет возможность использования общих и индивидуальных пользовательских изображений",
 	"bs-avatars-pref-generator": "Генератор:",
 	"bs-avatars-pref-defaultsize": "Размер по умолчанию (в пикселях):",
 	"bs-avatars-upload-complete": "Изображение было загружено.",

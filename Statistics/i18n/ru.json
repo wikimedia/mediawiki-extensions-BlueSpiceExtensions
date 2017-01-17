@@ -3,7 +3,8 @@
 		"authors": [
 			"Аль-Гимравий",
 			"Умар",
-			"Okras"
+			"Okras",
+			"Mailman"
 		]
 	},
 	"bs-statistics-desc": "Модуль статистики для BlueSpice",
@@ -50,11 +51,13 @@
 	"bs-statistics-filter-user": "Исключенные участники",
 	"bs-statistics-pref-excludeusers": "Исключить этих участников:",
 	"bs-statistics-pref-maxnumberofintervals": "Максимальное количество интервальных шагов:",
-	"bs-statistics-portlet-numberofusers": "Число участников",
-	"bs-statistics-portlet-numberofedits": "Число правок",
+	"bs-statistics-portlet-numberofusers": "Количество участников",
+	"bs-statistics-portlet-numberofedits": "Количество правок",
 	"bs-statistics-portlet-numberofpages": "Количество страниц",
-	"bs-statistics-portlet-numberofusersdesc": "Статистика числа пользователей.",
-	"bs-statistics-portlet-numberofeditsdesc": "Статистика числа правок.",
-	"bs-statistics-portlet-numberofpagesdesc": "Статистика числа страниц.",
+	"bs-statistics-portlet-numberofarticles": "Количество статей",
+	"bs-statistics-portlet-numberofusersdesc": "Статистика количества пользователей.",
+	"bs-statistics-portlet-numberofeditsdesc": "Статистика количества правок.",
+	"bs-statistics-portlet-numberofpagesdesc": "Статистика количества страниц.",
+	"bs-statistics-portlet-numberofarticlesdesc": "Статистика количества статей.",
 	"bs-statistics-portletconfig-periodday": "Вчера"
 }
