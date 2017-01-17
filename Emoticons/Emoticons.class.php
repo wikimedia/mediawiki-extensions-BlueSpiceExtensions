@@ -129,7 +129,20 @@ class Emoticons extends BsExtensionMW {
 			BsCacheHelper::set( $sKey, $aMapping );
 		}
 
-		$sText = str_replace( $aMapping['emoticons'], $aMapping['replacements'], $sText );
+		$fCallable = function( $aMatches ) use( $aMapping ) {
+			return empty( $aMatches[0] ) ? '' : str_replace(
+				$aMapping['emoticons'],
+				$aMapping['replacements'],
+				$aMatches[0]
+			);
+		};
+		//only replace in actual text and not in html tags or their attributes!
+		$sText = preg_replace_callback(
+			"/(?<=>)[^><]+?(?=<)/",
+			$fCallable,
+			$sText
+		);
+
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
 	}
