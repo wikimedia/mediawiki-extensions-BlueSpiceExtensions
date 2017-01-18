@@ -4,5 +4,6 @@
 			"Red Winged Duck"
 		]
 	},
-	"bs-emoticons-desc": "Візуалізуе смайлікі з тэксту як выявы"
+	"bs-emoticons-desc": "Візуалізуе смайлікі з тэксту як выявы",
+	"bs-emoticons-error-validation-missing-symbol": "Памылка ў радку $1: няма сымбалю для выявы «$2»."
 }
