@@ -53,8 +53,6 @@ class Blog extends BsExtensionMW {
 		$this->setHook( 'BSRSSFeederGetRegisteredFeeds' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BSTopMenuBarCustomizerRegisterNavigationSites' );
-		$this->setHook( 'PageContentSaveComplete' );
-		$this->setHook( 'ArticleDeleteComplete' );
 		$this->setHook( 'BSUsageTrackerRegisterCollectors' );
 
 		// Trackback is not fully functional in MW and thus disabled.
@@ -180,67 +178,6 @@ class Blog extends BsExtensionMW {
 				break;
 		}
 		return $aPrefs;
-	}
-
-	/**
-	 * Invalidates blog caches
-	 * @param Article $article
-	 * @param User $user
-	 * @param Content $content
-	 * @param type $summary
-	 * @param type $isMinor
-	 * @param type $isWatch
-	 * @param type $section
-	 * @param type $flags
-	 * @param Revision $revision
-	 * @param Status $status
-	 * @param type $baseRevId
-	 * @return boolean
-	 */
-	public function onPageContentSaveComplete( $article, $user, $content, $summary,
-			$isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
-		# TODO: Cache must also be invalidated on other occasions like blog tags for subpages or categories.
-		if ( !in_array( $article->getTitle()->getNamespace(), array( NS_BLOG, NS_BLOG_TALK) ) ) return true;
-
-		$sTagsKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', 'Tags' );
-		$aTagsData = BsCacheHelper::get( $sTagsKey );
-
-		// Invalidate all blog tag caches
-		BsCacheHelper::invalidateCache( $aTagsData );
-		// Invalidate blog tag cache
-		BsCacheHelper::invalidateCache( $sTagsKey );
-
-		return true;
-	}
-
-	/**
-	 * Invalidate blog cache
-	 * @param WikiPage $article
-	 * @param User $user
-	 * @param String $reason
-	 * @param Integer $id
-	 * @param Content $content
-	 * @param type $logEntry
-	 * @return boolean
-	 */
-	public function onArticleDeleteComplete( &$article, User &$user, $reason, $id, $content, $logEntry ) {
-		# TODO: Cache must also be invalidated on other occasions like blog tags
-		# for subpages or categories.
-		if ( !in_array($article->getTitle()->getNamespace(), array(
-			NS_BLOG,
-			NS_BLOG_TALK
-		)) ){
-			return true;
-		}
-
-		$sTagsKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', 'Tags' );
-		$aTagsData = BsCacheHelper::get( $sTagsKey );
-
-		// Invalidate all blog tag caches
-		BsCacheHelper::invalidateCache( $aTagsData );
-		// Invalidate blog tag cache
-		BsCacheHelper::invalidateCache( $sTagsKey );
-		return true;
 	}
 
 	public function onBSNamespaceManagerBeforeSetUsernamespaces( $classInstance, &$bsSystemNamespaces ) {
@@ -429,13 +366,6 @@ class Blog extends BsExtensionMW {
 			$parser->disableCache();
 		} else {
 			$oTitle = $this->getTitle();
-		}
-
-		$sKey = BsCacheHelper::getCacheKey( 'BlueSpice', 'Blog', $oTitle->getArticleID() );
-		$aData = BsCacheHelper::get( $sKey );
-
-		if ( $aData !== false ) {
-			return $aData;
 		}
 
 		if ( $parser instanceof Parser ) {
@@ -744,31 +674,6 @@ class Blog extends BsExtensionMW {
 
 		// actually create blog output
 		$sOut = $oBlogView->execute();
-
-		//Use cache only in NS_BLOG - there is curently no functionality to
-		//figure out in what type of blog tag a entry is showen and why
-		//(coditions). Possible blog by categories or subpages...
-		//Needs rework.
-		if ( in_array($oTitle->getNamespace(), array(NS_BLOG,NS_BLOG_TALK)) ) {
-			$aKey = array( $sKey );
-			$sTagsKey = BsCacheHelper::getCacheKey(
-				'BlueSpice',
-				'Blog',
-				'Tags'
-			);
-			$aTagsData = BsCacheHelper::get( $sTagsKey );
-
-			if ( $aTagsData !== false ) {
-				if ( !in_array( $sKey, $aTagsData ) ) {
-					$aTagsData = array_merge( $aTagsData, $aKey );
-				}
-			} else {
-				$aTagsData = $aKey;
-			}
-
-			BsCacheHelper::set( $sTagsKey, $aTagsData, 60*1440 ); // one day
-			BsCacheHelper::set( $sKey, $sOut, 60*1440 ); // one day
-		}
 
 		return $sOut;
 	}
