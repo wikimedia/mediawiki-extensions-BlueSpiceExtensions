@@ -120,3 +120,13 @@ $bsgExtendedSearchBoostQuerySettings = array(
 		999 => 2 // Pseudo namespace for files
 	)
 );
+
+//Shorten namespace and title in autocomplete area
+$bsgExtendedSearchAutocompleteSettings = array(
+	'prefix-ellipsis-position' => 'middle',
+	'prefix-ellipsis-characters' => '...',
+	'prefix-length'=> 16,
+	'title-ellipsis-position' => 'middle',
+	'title-ellipsis-characters' => '...',
+	'title-length' => 54
+);
