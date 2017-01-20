@@ -275,7 +275,9 @@ BsExtendedSearchAjaxManager.prototype = {
 			url: paramUri,
 			dataType: 'json',
 			success: function( response, textStatus ){
-				$( '#bs-extendedsearch-form-specialpage' ).parent().siblings().after( response.contents ).remove();
+				$.each( $( '#bs-extendedsearch-form-specialpage' ).parent().siblings().after( response.contents ), function( index, element ) {
+					element.remove();
+				});
 				$( '#bs-extendedsearch-spinner' ).hide();
 				ExtendedSearchAjaxManager.oAjaxQuery = null;
 				ExtendedSearchAjaxManager.renewUriForAjaxRequest();
