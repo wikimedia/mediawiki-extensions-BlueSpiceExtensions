@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"Dgstranz"
 		]
 	},
 	"bs-statistics-desc": "Módulo de estadísticas para BlueSpice",
@@ -56,6 +57,7 @@
 	"bs-statistics-portlet-numberofusersdesc": "Estadística del número de usuarios.",
 	"bs-statistics-portlet-numberofeditsdesc": "Estadística del número de ediciones.",
 	"bs-statistics-portlet-numberofpagesdesc": "Estadística del número de páginas.",
+	"bs-statistics-portlet-numberofarticlesdesc": "Estadística del número de artículos.",
 	"bs-statistics-portletconfig-periodday": "Ayer",
 	"apihelp-bs-statistics-tasks-description": "Proporciona tareas comunes para estadísticas",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Proporciona un almacén de diagramas disponibles"
