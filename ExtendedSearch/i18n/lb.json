@@ -73,5 +73,7 @@
 	"action-extendedsearch-viewspecialpage": "d'Spezialsäit \"{{int:specialextendedsearch}}\" weisen",
 	"action-extendedsearchadmin-viewspecialpage": "d'Spezialsäit \"{{int:extendedsearchadmin}}\" weisen",
 	"extendedsearchadmin": "Gestioun vun der erweiderter Sichfunktioun",
-	"bs-extendedsearch-create-page": "Säit \"$1\" uleeën."
+	"bs-extendedsearch-create-page": "Säit \"$1\" uleeën.",
+	"apihelp-feedextendedsearch-param-feedformat": "Maximal Zuel vu Resultater fir zréck ze ginn",
+	"apihelp-feedextendedsearch-param-category": "Kategorie fir ze sichen"
 }
