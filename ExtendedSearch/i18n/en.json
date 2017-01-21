@@ -106,5 +106,13 @@
 	"action-extendedsearch-viewspecialpage":"view the special page \"{{int:specialextendedsearch}}\"",
 	"action-extendedsearchadmin-viewspecialpage":"view the special page \"{{int:extendedsearchadmin}}\"",
 	"extendedsearchadmin": "Extended search administration",
-	"bs-extendedsearch-create-page": "Create page \"$1\"."
+	"bs-extendedsearch-create-page": "Create page \"$1\".",
+	"apihelp-feedextendedsearch-description": "Search the wiki using the OpenSearch protocol",
+	"apihelp-feedextendedsearch-param-q": "Search string",
+	"apihelp-feedextendedsearch-param-feedformat": "Maximum amount of results to return",
+	"apihelp-feedextendedsearch-param-user": "Do nothing if $wgEnableOpenSearchSuggest is false",
+	"apihelp-feedextendedsearch-param-namespace": "Namespaces to search",
+	"apihelp-feedextendedsearch-param-category": "Categories to search",
+	"apihelp-feedextendedsearch-param-files": "Whether to search in files",
+	"apihelp-feedextendedsearch-example": "Search for \"Test\" in Main and User namespaces."
 }

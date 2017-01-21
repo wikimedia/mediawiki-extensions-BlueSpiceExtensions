@@ -65,5 +65,9 @@
 	"right-pageassignable": "Describes the permission that a user needs to have to be listed as assignable user\n{{doc-right|pageassignable}}",
 	"right-pageassignments": "Describes the permission that a user needs to change assignments of a page\n{{doc-right|pageassignments}}",
 	"prefs-pageassign": "Assignment\n{{Identical|Assignment}}",
-	"bs-usagetracker-pageassignments": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
+	"bs-usagetracker-pageassignments": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output",
+	"apihelp-bs-pageassignable-store-description": "{{doc-apihelp-description|bs-pageassignable-store}}",
+	"apihelp-bs-pageassignment-store-description": "{{doc-apihelp-description|bs-pageassignment-store}}",
+	"apihelp-bs-mypageassignment-store-description": "{{doc-apihelp-description|bs-mypageassignment-store}}",
+	"apihelp-bs-pageassignment-tasks-description": "{{doc-apihelp-description|bs-pageassignment-tasks}}"
 }

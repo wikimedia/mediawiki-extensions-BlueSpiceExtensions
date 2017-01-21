@@ -57,5 +57,6 @@
 	"bs-usermanager-nouserselected": "Used as explain text of an alert panel with JavaScript",
 	"bs-usermanager-title-multipleuserselected": "Used as title of an alert panel with JavaScript",
 	"bs-usermanager-multipleuserselected": "Used as explain text of an alert panel with JavaScript",
-	"bs-usermanager-invalid-groups": "Used as error message"
+	"bs-usermanager-invalid-groups": "Used as error message",
+	"apihelp-bs-usermanager-group-store-description": "{{doc-apihelp-description|bs-usermanager-group-store}}"
 }

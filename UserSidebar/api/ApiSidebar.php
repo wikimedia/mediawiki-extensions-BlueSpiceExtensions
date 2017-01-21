@@ -57,20 +57,26 @@ class ApiSidebar extends ApiBase {
 		);
 	}
 
-	public function getParamDescription() {
-		return array(
-			'sidebar'=> 'Whether to get the Wiki sidebar',
-			'usersidebar'=> 'Whether to get the Focus sidebar'
-		);
-	}
-
 	public function getDescription() {
 		return 'Get the sidebar';
 	}
 
+	/**
+	* @deprecated since MediaWiki core 1.25
+	*/
 	public function getExamples() {
 		return array(
 			'api.php?action=sidebar&sidebar=1'
+		);
+	}
+
+	/**
+	* @see ApiBase::getExamplesMessages()
+	*/
+	protected function getExamplesMessages() {
+		return array(
+			'api.php?action=sidebar&sidebar=1'
+				=> 'apihelp-sidebar-example'
 		);
 	}
 

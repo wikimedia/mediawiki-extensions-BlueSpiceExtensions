@@ -21,5 +21,7 @@
 	"bs-readers-header-username": "Column headline for username\n{{Identical|Username}}",
 	"bs-readers-header-readerspath": "Used on special page, headline for reader\n{{Identical|Reader}}",
 	"bs-readers-header-ts": "Column headline for \"time and date\".\n{{Identical|Date}}",
-	"bs-readers-header-page": "Column headline for wikipage title\n{{Identical|Page}}"
+	"bs-readers-header-page": "Column headline for wikipage title\n{{Identical|Page}}",
+	"apihelp-bs-readers-data-store-description": "{{doc-apihelp-description|bs-readers-data-store}}",
+	"apihelp-bs-readers-users-store-description": "{{doc-apihelp-description|bs-readers-users-store}}"
 }

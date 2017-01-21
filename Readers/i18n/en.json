@@ -17,5 +17,7 @@
 	"bs-readers-header-username": "Username",
 	"bs-readers-header-readerspath": "Reader",
 	"bs-readers-header-ts": "Date",
-	"bs-readers-header-page": "Page"
+	"bs-readers-header-page": "Page",
+	"apihelp-bs-readers-data-store-description": "Get reader info of specific page.",
+	"apihelp-bs-readers-users-store-description": "Get all readers info of specific page."
 }

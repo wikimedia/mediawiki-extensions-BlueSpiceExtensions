@@ -125,24 +125,22 @@ class ApiFeedExtendedSearch extends ApiBase {
 		);
 	}
 
-	public function getParamDescription() {
-		return array(
-			'q'          => 'Search string',
-			'feedformat' => 'Maximum amount of results to return',
-			'user'       => 'Do nothing if $wgEnableOpenSearchSuggest is false',
-			'namespace'  => 'Namespaces to search',
-			'category '  => 'Categories to search',
-			'files'      => 'Whether to search in files'
-		);
-	}
-
-	public function getDescription() {
-		return 'Search the wiki using the OpenSearch protocol';
-	}
-
+	/**
+	* @deprecated since MediaWiki core 1.25
+	*/
 	public function getExamples() {
 		return array(
 			'api.php?action=feedextendedsearch&q=Test&namespace=0|2'
+		);
+	}
+
+	/**
+	* @see ApiBase::getExamplesMessages()
+	*/
+	protected function getExamplesMessages() {
+		return array(
+			'api.php?action=feedextendedsearch&q=Test&namespace=0|2'
+				=> 'apihelp-feedextendedsearch-example'
 		);
 	}
 
