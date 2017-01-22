@@ -34,5 +34,6 @@
 	"bs-wantedarticle-create-page": "创建页面“$1”。",
 	"bs-wantedarticle-suggest-page": "建议页面“$1”。",
 	"bs-wantedarticle-info-nothing-entered": "请提供一个有效的页面标题。",
-	"bs-wantedarticle-title-invalid-chars": "以下字符在页面标题中{{PLURAL:$1|是}}无效的：$2"
+	"bs-wantedarticle-title-invalid-chars": "以下字符在页面标题中{{PLURAL:$1|是}}无效的：$2",
+	"apihelp-bs-wantedarticle-description": "为BlueSpice提供需要的条目api。"
 }

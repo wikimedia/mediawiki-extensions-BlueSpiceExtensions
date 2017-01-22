@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Ltrlg",
-			"Macofe"
+			"Macofe",
+			"Wladek92"
 		]
 	},
 	"bs-readers-desc": "Crée une liste des lecteurs d’une page",
@@ -19,5 +20,7 @@
 	"bs-readers-header-username": "Nom d’utilisateur",
 	"bs-readers-header-readerspath": "Lecteur",
 	"bs-readers-header-ts": "Date",
-	"bs-readers-header-page": "Page"
+	"bs-readers-header-page": "Page",
+	"apihelp-bs-readers-data-store-description": "Obtenir le informations concernant le lecteur de la page spécifique.",
+	"apihelp-bs-readers-users-store-description": "Obtenir les informations sur tous les lecteurs de la page spécifique."
 }

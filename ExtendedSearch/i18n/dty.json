@@ -6,5 +6,6 @@
 		]
 	},
 	"bs-extendedsearch-did-you-mean": "तमले खोज्याको: $1 हो की ?",
-	"extendedsearchadmin": "विस्तारित खोजी व्यवस्थापन"
+	"extendedsearchadmin": "विस्तारित खोजी व्यवस्थापन",
+	"apihelp-feedextendedsearch-param-namespace": "खोज्जाइखिलाइ नाउँबारअन"
 }

@@ -59,5 +59,6 @@
 	"bs-usermanager-nouserselected": "Veuillez sélectionner un utilisateur",
 	"bs-usermanager-title-multipleuserselected": "Plusieurs utilisateurs sont sélectionnés",
 	"bs-usermanager-multipleuserselected": "Vous ne pouvez changer de mot de passe que pour un utilisateur à la fois",
-	"bs-usermanager-invalid-groups": "Les groupes ne sont pas valides"
+	"bs-usermanager-invalid-groups": "Les groupes ne sont pas valides",
+	"apihelp-bs-usermanager-group-store-description": "Fournit une API BlueSpice aux taches de gestion utilisateur."
 }
