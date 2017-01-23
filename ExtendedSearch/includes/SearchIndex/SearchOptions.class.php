@@ -194,7 +194,8 @@ class SearchOptions {
 		);
 
 		$aOptions = array();
-		$aOptions['searchString'] = 'titleEdge:('.$sSolrSearchString.') OR title:('.$sSolrSearchString.')';
+		$sWildcardedSearchString = SearchService::wildcardSearchstring( $sSearchString );
+		$aOptions['searchString'] = 'titleEdge:('.$sWildcardedSearchString.') OR title:('.$sWildcardedSearchString.')';
 		$aOptions['searchLimit'] = BsConfig::get( 'MW::ExtendedSearch::AcEntries' );
 
 		$aQuery = array(
