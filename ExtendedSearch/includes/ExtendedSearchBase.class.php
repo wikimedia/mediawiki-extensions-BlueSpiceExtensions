@@ -485,7 +485,7 @@ class ExtendedSearchBase {
 	 * @return array Array of Apache_Solr_Documents
 	 */
 	private static function searchAutocomplete( &$sSearchString, &$vNsSearch ) {
-		$oSerachService = SearchService::getInstance();
+		$oSearchService = SearchService::getInstance();
 		$oSearchRequest = new SearchRequest();
 		$oSearchRequest->init();
 		$oSearchOptions = new SearchOptions( $oSearchRequest, RequestContext::getMain() );
@@ -496,7 +496,7 @@ class ExtendedSearchBase {
 
 		$aQuery = $oSearchOptions->getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString );
 		try {
-			$oHits = $oSerachService->search(
+			$oHits = $oSearchService->search(
 				$aQuery['searchString'],
 				$aQuery['offset'],
 				$aQuery['searchLimit'],
@@ -523,7 +523,7 @@ class ExtendedSearchBase {
 			$aFuzzyQuery['searchOptions']['hl'] = 'off';
 
 			try {
-				$oHits = $oSerachService->search(
+				$oHits = $oSearchService->search(
 					$aFuzzyQuery['searchString'],
 					$aFuzzyQuery['offset'],
 					$aFuzzyQuery['searchLimit'],
