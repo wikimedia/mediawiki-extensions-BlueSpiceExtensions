@@ -123,11 +123,20 @@
 	},
 	"manifest_version": 1,
 	"config":{
+		"_prefix": "bsgExtendedSearch",
 		"BoostQuerySettings": {
 			"namespace": {
 				"*": 2,
 				"999": 2
 			}
+		},
+		"AutocompleteSettings": {
+			"prefix-ellipsis-position": "middle",
+			"prefix-ellipsis-characters": "...",
+			"prefix-length": 16,
+			"title-ellipsis-position": "middle",
+			"title-ellipsis-characters": "...",
+			"title-length": 54
 		}
 	}
 }
