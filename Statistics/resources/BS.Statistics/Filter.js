@@ -38,7 +38,7 @@ Ext.define( 'BS.Statistics.Filter', {
 			fields: ['key', 'displaytitle', 'listable', 'filters']
 		});
 		this.storeUserFilter = new BS.store.ApiUser();
-		this.storeNamespaceFilter = new BS.store.LocalNamespaces();
+		this.storeNamespaceFilter = new BS.store.LocalNamespaces({});
 		this.storeCategoryFilter = new BS.store.ApiCategory();
 		this.storeSearchscopeFilter = new BS.store.BSApi({
 			apiAction: 'bs-statistics-search-options-store',
