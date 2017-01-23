@@ -51,31 +51,18 @@ class ApiSidebar extends ApiBase {
 			'usersidebar' => array(
 				ApiBase::PARAM_TYPE => 'boolean'
 			),
-            'format' => array(
+			'format' => array(
 				ApiBase::PARAM_TYPE => 'string'
 			)
 		);
 	}
 
-	public function getDescription() {
-		return 'Get the sidebar';
-	}
-
 	/**
-	* @deprecated since MediaWiki core 1.25
-	*/
-	public function getExamples() {
-		return array(
-			'api.php?action=sidebar&sidebar=1'
-		);
-	}
-
-	/**
-	* @see ApiBase::getExamplesMessages()
-	*/
+	 * @see ApiBase::getExamplesMessages()
+	 */
 	protected function getExamplesMessages() {
 		return array(
-			'api.php?action=sidebar&sidebar=1'
+			'action=sidebar&sidebar=1'
 				=> 'apihelp-sidebar-example'
 		);
 	}
