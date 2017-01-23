@@ -5,5 +5,6 @@
 		]
 	},
 	"prefs-usersidebar": "Menu boczne użytkownika",
-	"bs-usersidebar-globalactionswidget-title": "Działania globalne"
+	"bs-usersidebar-globalactionswidget-title": "Działania globalne",
+	"apihelp-sidebar-param-format": "Format danych wyjściowych"
 }

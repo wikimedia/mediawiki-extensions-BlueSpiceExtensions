@@ -75,6 +75,7 @@
 	"extendedsearchadmin": "Gestioun vun der erweiderter Sichfunktioun",
 	"bs-extendedsearch-create-page": "Säit \"$1\" uleeën.",
 	"apihelp-feedextendedsearch-param-feedformat": "Maximal Zuel vu Resultater fir zréck ze ginn",
+	"apihelp-feedextendedsearch-param-user": "Näischt maache wa(nn) $wgEnableOpenSearchSuggest falsch ass",
 	"apihelp-feedextendedsearch-param-namespace": "Nummraim an deene gesicht gëtt",
 	"apihelp-feedextendedsearch-param-category": "Kategorie fir ze sichen",
 	"apihelp-feedextendedsearch-param-files": "Ob a Fichiere gesicht gi soll"

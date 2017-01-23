@@ -17,7 +17,7 @@
 	"bs-usermanager-invalid-email-gen": "O enderezo de correo electrónico non é válido.",
 	"bs-usermanager-label": "Administrador de usuarios",
 	"bs-usermanager-user-added": "O usuario foi engadido.",
-	"bs-usermanager-user-deleted": "Borrouse o usuario.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|Borouse o usuario|Borráronse $1 usuarios}}.",
 	"bs-usermanager-user-exists": "O nome de usuario xa existe.",
 	"bs-usermanager-save-successful": "Gardáronse os cambios.",
 	"bs-usermanager-headerusername": "Nome de usuario",

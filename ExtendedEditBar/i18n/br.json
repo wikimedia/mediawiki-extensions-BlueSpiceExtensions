@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Fohanno",
-			"Y-M D"
+			"Y-M D",
+			"Fulup"
 		]
 	},
+	"bs-extendededitbar-desc": "Pourchas a ra boutonoù ouzhpenn d'ar vaezienn aozan ar wiki.",
 	"bs-extendededitbar-redirecttip": "Adkas",
 	"bs-extendededitbar-redirectsample": "Ensoc'hañ testenn",
 	"bs-extendededitbar-striketip": "Barrenniñ",
