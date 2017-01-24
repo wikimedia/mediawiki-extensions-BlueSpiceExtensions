@@ -184,6 +184,7 @@ class SearchOptions {
 	public function getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString ) {
 		$aSearchOptions = array();
 		$aSearchOptions['fl'] = 'type,title,namespace';
+		$aSearchOptions['fq'] = array( 'wiki:(' . $this->getCustomerId() . ')' );
 		$aSearchOptions['sort'] = $this->aSearchOptions['sort'];
 
 		$vNamespace = $this->checkSearchstringForNamespace(
