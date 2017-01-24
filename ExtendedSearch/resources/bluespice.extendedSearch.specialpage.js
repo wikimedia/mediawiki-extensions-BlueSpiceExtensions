@@ -77,7 +77,8 @@ BsExtendedSearchAjaxManager.prototype = {
 
 				for ( key2 in ExtendedSearchAjaxManager.oUrlParams[key] ){
 					if ( typeof( ExtendedSearchAjaxManager.oUrlParams[key][key2] ) != 'string' ) continue;
-					out.push( key + '[]=' + ExtendedSearchAjaxManager.oUrlParams[key][key2] );
+					var keyValue = encodeURI(ExtendedSearchAjaxManager.oUrlParams[key][key2] );
+					out.push( key + '[]=' + keyValue );
 				}
 			} else {
 				out.push( key + '=' + ExtendedSearchAjaxManager.oUrlParams[key] );
