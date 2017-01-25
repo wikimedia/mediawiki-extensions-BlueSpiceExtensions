@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Amitie 10g",
-			"Macofe"
+			"Macofe",
+			"Dgstranz"
 		]
 	},
 	"bs-usersidebar-desc": "Agrega la pestaña de foco a la barra lateral",
@@ -12,5 +13,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} foco",
 	"bs-usersidebar-tab-focus": "Foco",
 	"bs-usersidebar-tab-globalactions": "Acciones globales",
-	"bs-usersidebar-globalactionswidget-title": "Acciones globales"
+	"bs-usersidebar-globalactionswidget-title": "Acciones globales",
+	"apihelp-sidebar-param-format": "Formato de los datos de salida"
 }
