@@ -394,7 +394,10 @@ class ExtendedSearch extends BsExtensionMW {
 			//with the new categories
 			if ( $oTitle->getNamespace() === NS_FILE ) {
 				$oFile = wfFindFile( $oTitle );
-
+				if( !$oFile ) {
+					$oFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
+					if ( !$oFile ) return true;
+				}
 				//Unfortunately BuildIndexMwSingleFile::indexCrawledDocuments
 				//checks if the file is already on the index. If so it does not
 				//apply the update. To have our categories be written to the
