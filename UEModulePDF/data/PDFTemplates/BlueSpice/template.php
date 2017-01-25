@@ -27,6 +27,7 @@ return array(
 			'stylesheets/styles.css',
 			'../common/stylesheets/geshi-php.css',
 			'../common/stylesheets/bluespice.css',
+			'../common/stylesheets/tables.css',
 			'../common/stylesheets/fonts.css',
 			'../common/stylesheets/mediawiki.action.history.diff.css',
 			//'../common/stylesheets/debug.css',
