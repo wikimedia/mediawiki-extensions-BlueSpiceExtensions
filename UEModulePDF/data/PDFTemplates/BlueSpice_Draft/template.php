@@ -29,6 +29,7 @@ return array(
 			'../BlueSpice/stylesheets/styles.css', //Inherit from BlueSpice
 			'../common/stylesheets/geshi-php.css',
 			'../common/stylesheets/bluespice.css',
+			'../common/stylesheets/tables.css',
 			'stylesheets/draft.css',
 			'../common/stylesheets/fonts.css',
 			//'../common/stylesheets/debug.css',
