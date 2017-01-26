@@ -125,7 +125,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 	renderAssessors: function( value, metaData, record, rowIndex, colIndex, store ) {
 		var ownerName = mw.config.get('bsSpecialReviewUserName', false);
 		var table = '<table cellpadding="5">';
-		var row = '<tr><td>{0}</td><td>{1} ({2})</td></tr>';
+		var row = '<tr><td>{0}</td><td>{1} {2}</td><td>{3}</td></tr>';
 		var findActive = true;
 		var isSequential = record.get( 'rev_sequential' );
 
@@ -169,6 +169,27 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			if(ownerName && ownerName === line.name) {
 				style = 'font-weight:bold';
 			}
+			var delegate = false;
+			if( line.delegate_to && line.delegate_to > 0 ) {
+				var delegatestyle = '';
+				var delegatetitle = new mw.Title(
+					line.delegate_to_name,
+					bs.ns.NS_USER
+				);
+				if( ownerName && ownerName === line.delegate_to_name ) {
+					delegatestyle = 'font-weight:bold';
+				}
+				delegate = '=> ' + mw.html.element(
+					'a',
+					{
+						'href': delegatetitle.getUrl(),
+						'style': delegatestyle,
+						'data-bs-username': line.delegate_to_name,
+						'data-bs-title': delegatetitle.getPrefixedText()
+					},
+					line.delegate_to_real_name || line.delegate_to_name
+				);
+			}
 
 			table += row.format(
 				status,
@@ -182,7 +203,8 @@ Ext.define( 'BS.Review.OverviewPanel', {
 					},
 					content
 				),
-				line.timestamp || ''
+				line.timestamp ? "(" + line.timestamp + ")" : '',
+				delegate || ''
 			);
 		}
 		table += '</table>';

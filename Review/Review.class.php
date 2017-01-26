@@ -453,7 +453,7 @@ class Review extends BsExtensionMW {
 		$tbl_page = $dbr->tableName( 'page' );
 		$tbl_user = $dbr->tableName( 'user' );
 
-		$sql = 'SELECT  r.rev_id, r.rev_pid, p.page_title, p.page_namespace, u.user_name, u.user_real_name, u.user_id, r.rev_editable, r.rev_sequential, r.rev_abortable, rs.revs_status, u2.user_name AS owner_name, u2.user_real_name AS owner_real_name, ';
+		$sql = 'SELECT  r.rev_id, r.rev_pid, p.page_title, p.page_namespace, u.user_name, u.user_real_name, u.user_id, r.rev_editable, r.rev_sequential, r.rev_abortable, rs.revs_status, u2.user_name AS owner_name, u2.user_real_name AS owner_real_name, rs.revs_delegate_to AS revs_delegate_to, ';
 		switch ( $wgDBtype ) {
 			case 'postgres' : {
 				$sql .= "        EXTRACT(EPOCH FROM TO_TIMESTAMP(r.rev_enddate, 'YYYYMMDDHH24MISS')) AS endtimestamp, TO_CHAR(TO_DATE(r.rev_startdate, 'YYYYMMDDHH24MISS'), 'DD.MM.YYYY') AS startdate, ";
@@ -480,10 +480,10 @@ class Review extends BsExtensionMW {
 			// if( intval($_GET['user']) )
 			if ( $iUserId ) { // <== getParam returns default (false) if INT is expected and param is not numeric
 				//$sql.= 'AND (r.owner="'. $_GET['user'] .'" OR "'. $_GET['user'] .'" IN (SELECT hrs.user_id FROM hw_review_steps AS hrs WHERE hrs.review_id=r.id)) ';
-				$sql .= 'AND (r.rev_owner=' . $iUserId . ' OR EXISTS (SELECT 1 FROM ' . $tbl_step . ' AS hrs WHERE hrs.revs_review_id=r.rev_id AND hrs.revs_user_id = ' . $iUserId . ')) ';
+				$sql .= 'AND (r.rev_owner=' . $iUserId . ' OR EXISTS (SELECT 1 FROM ' . $tbl_step . ' AS hrs WHERE hrs.revs_review_id=r.rev_id AND (hrs.revs_user_id = ' . $iUserId . ' OR hrs.revs_delegate_to = ' . $iUserId . '))) ';
 			}
 		} else {
-			$sql .= 'AND (r.rev_owner=' . $wgUser->mId . ' OR EXISTS (SELECT 1 FROM ' . $tbl_step . ' AS hrs WHERE hrs.revs_review_id=r.rev_id AND hrs.revs_user_id = ' . $wgUser->mId . ')) ';
+			$sql .= 'AND (r.rev_owner=' . $wgUser->mId . ' OR EXISTS (SELECT 1 FROM ' . $tbl_step . ' AS hrs WHERE hrs.revs_review_id=r.rev_id AND (hrs.revs_user_id = ' . $wgUser->mId . ' OR hrs.revs_delegate_to = ' . $wgUser->mId . '))) ';
 		}
 
 		$sql .= 'ORDER BY r.rev_startdate DESC, rs.revs_sort_id';
@@ -515,17 +515,35 @@ class Review extends BsExtensionMW {
 					$arrList[ $row[ 'rev_id' ] ][ 'total' ] = isset( $arrList[ $row[ 'rev_id' ] ][ 'total' ] ) ? $arrList[ $row[ 'rev_id' ] ][ 'total' ] + 1 : 1;
 					break;
 			}
+			$row[ 'revs_delegate_to_real_name' ]
+				= $row[ 'revs_delegate_to_name' ]
+				= '';
 
+			if( !empty( $row[ 'revs_delegate_to' ] ) ) {
+				$oDelegateUser = User::newFromId(
+					(int)$row[ 'revs_delegate_to' ]
+				);
+				if( !$oDelegateUser->isAnon() ) {
+					$row[ 'revs_delegate_to_name' ] = $oDelegateUser->getName();
+					$row[ 'revs_delegate_to_real_name' ]
+						= empty( $oDelegateUser->getRealName() )
+						? $oDelegateUser->getName()
+						: $oDelegateUser->getRealName()
+					;
+				}
+			}
 
 			$arrList[ $row[ 'rev_id' ] ][ 'assessors' ][] = array(
 				'name' => $row[ 'user_name' ],
 				'real_name' => $row[ 'user_real_name' ],
 				'revs_status' => $row[ 'revs_status' ],
-				'timestamp' => $row[ 'stepdate' ]
+				'timestamp' => $row[ 'stepdate' ],
+				'delegate_to' => $row[ 'revs_delegate_to' ],
+				'delegate_to_real_name' => $row[ 'revs_delegate_to_real_name' ],
+				'delegate_to_name' => $row[ 'revs_delegate_to_name' ],
 			);
 
 		}
-
 		return $arrList;
 	}
 
