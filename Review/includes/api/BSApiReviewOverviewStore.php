@@ -174,6 +174,10 @@ class BSApiReviewOverviewStore extends BSApiExtJSStoreBase {
 		$oAssessor->name = $arrAssessor['name'];
 		$oAssessor->real_name = $arrAssessor['real_name'];
 		$oAssessor->timestamp = false;
+		$oAssessor->delegate_to = $arrAssessor['delegate_to'];
+		$oAssessor->delegate_to_name = $arrAssessor['delegate_to_name'];
+		$oAssessor->delegate_to_real_name
+			= $arrAssessor['delegate_to_real_name'];
 
 		$bTimestap =
 			$arrAssessor['timestamp'] != '00.00'
