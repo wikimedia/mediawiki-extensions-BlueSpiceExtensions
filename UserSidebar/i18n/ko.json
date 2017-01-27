@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Revi"
+			"Revi",
+			"Ykhwong"
 		]
 	},
 	"bs-usersidebar-desc": "사이드바에 포커스 탭을 넣습니다",
-	"prefs-usersidebar": "사용자 사이드바"
+	"prefs-usersidebar": "사용자 사이드바",
+	"apihelp-sidebar-param-sidebar": "위키 사이드바를 가져올지의 여부"
 }

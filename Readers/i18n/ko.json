@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"apihelp-bs-readers-users-store-description": "특정 페이지의 모든 독자 정보를 가져옵니다."
+}

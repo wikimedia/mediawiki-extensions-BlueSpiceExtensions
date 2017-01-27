@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Zoranzoki21"
 		]
 	},
 	"bs-avatars-pref-defaultsize": "Подразумевана величина у пикселима:",
 	"bs-avatars-upload-complete": "Слика је успешно отпремљена.",
 	"bs-avatars-upload-label": "Слика",
 	"bs-avatars-warning-title": "Упозорење",
-	"bs-avatars-userimage-help": "на пример, Slika.jpg или http://localhost/Slika.gif"
+	"bs-avatars-userimage-help": "на пример, Slika.jpg или http://localhost/Slika.gif",
+	"apihelp-bs-avatars-tasks-description": "Отпремање, генерисање и постављање кориснике слике"
 }

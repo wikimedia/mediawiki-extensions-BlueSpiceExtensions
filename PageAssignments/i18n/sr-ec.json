@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zoranzoki21"
+		]
+	},
+	"apihelp-bs-pageassignment-store-description": "Враћа задатке на одређеној страници",
+	"apihelp-bs-mypageassignment-store-description": "Врати странице које су додељене тренутном кориснику",
+	"apihelp-bs-pageassignment-tasks-description": "Добијте или измените листу задатака за одређену страницу"
+}

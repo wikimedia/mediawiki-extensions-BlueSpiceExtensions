@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Smuggli",
 			"Kghbln",
-			"Metalhead64"
+			"Metalhead64",
+			"Eddie"
 		]
 	},
 	"bs-extendedsearch-desc": "Apache-[http://lucene.apache.org/solr/ Solr]-basiertes Such-Plugin zur Erweiterung der Suchfunktionalität",
@@ -108,5 +109,11 @@
 	"action-extendedsearch-viewspecialpage": "die Spezialseite „{{int:specialextendedsearch}}“ anzusehen",
 	"action-extendedsearchadmin-viewspecialpage": "die Spezialseite „{{int:extendedsearchadmin}}“ anzusehen",
 	"extendedsearchadmin": "Verwaltung der erweiterten Suche",
-	"bs-extendedsearch-create-page": "Seite „$1“ erstellen."
+	"bs-extendedsearch-create-page": "Seite „$1“ erstellen.",
+	"apihelp-feedextendedsearch-param-q": "Such-Zeichenfolge",
+	"apihelp-feedextendedsearch-param-user": "Nichts tun, falls $wgEnableOpenSearchSuggest auf false gesetzt ist.",
+	"apihelp-feedextendedsearch-param-namespace": "Zu durchsuchende Namensräume",
+	"apihelp-feedextendedsearch-param-category": "Zu durchsuchende Kategorien",
+	"apihelp-feedextendedsearch-param-files": "Ob in Dateien gesucht werden soll",
+	"apihelp-feedextendedsearch-example": "Sucht nach „Test“ im Haupt- und Benutzernamensraum."
 }

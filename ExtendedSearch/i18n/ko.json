@@ -25,5 +25,7 @@
 	"bs-extendedsearch-more": "더 보기",
 	"action-extendedsearchadmin-viewspecialpage": "특수 문서 \"{{int:extendedsearchadmin}}\" 보기",
 	"extendedsearchadmin": "확장된 검색 관리",
-	"bs-extendedsearch-create-page": "문서 \"$1\" 만들기"
+	"bs-extendedsearch-create-page": "문서 \"$1\" 만들기",
+	"apihelp-feedextendedsearch-param-user": "$wgEnableOpenSearchSuggest가 false인 경우 아무 것도 하지 않음",
+	"apihelp-feedextendedsearch-param-files": "파일 안에서 검색할지의 여부"
 }
