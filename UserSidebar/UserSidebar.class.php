@@ -498,4 +498,37 @@ class UserSidebar extends BsExtensionMW {
 
 		return true;
 	}
+
+	/**
+	 * Hook handler for UserSaveSettings - invalidate widget caches
+	 * @param User $user
+	 * @return boolean
+	 */
+	public static function onUserSaveSettings( $user ) {
+		$aKeys = [];
+		$aKeys[] = BsCacheHelper::getCacheKey(
+			'BlueSpice',
+			'GlobalActionsWidgets',
+			$user->getName()
+		);
+
+		$oTitle = Title::makeTitle( NS_USER, $user->getName().'/Sidebar' );
+		if( $oTitle->exists() ) {
+			$aKeys[] = BsCacheHelper::getCacheKey(
+				'BlueSpice',
+				'WidgetListHelper',
+				$oTitle->getPrefixedDBkey()
+			);
+		} else {
+			$aKeys[] = BsCacheHelper::getCacheKey(
+				'BlueSpice',
+				'UserSidebar',
+				$oTitle->getPrefixedDBkey()
+			);
+		}
+		foreach( $aKeys as $sKey ) {
+			BsCacheHelper::invalidateCache( $sKey );
+		}
+		return true;
+	}
 }

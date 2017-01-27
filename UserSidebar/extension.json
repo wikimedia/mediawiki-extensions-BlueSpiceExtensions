@@ -33,5 +33,8 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/UserSidebar/resources"
 	},
+	"Hooks": {
+		"UserSaveSettings": "UserSidebar::onUserSaveSettings"
+	},
 	"manifest_version": 1
 }
