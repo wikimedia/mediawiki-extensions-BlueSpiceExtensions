@@ -72,17 +72,21 @@ class TagCloudSearchStatsHandler extends TagCloudBaseHandler {
     $aData = array();
 
     $oSpecialPage = Title::makeTitle( NS_SPECIAL, 'ExtendedSearch' );
+    $aSearchParams = array();
+    if( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) {
+      $aSearchParams['search_files'] = '1';
+    }
 
     foreach ( $oRes as $oRow ) {
       $sNormalized = self::normalizeTerm( $oRow->stats_term );
-
+      $aSearchParams['q'] = $sNormalized;
       if ( array_key_exists( $sNormalized, $aData ) ) {
         $aData[$sNormalized]->count += $oRow->count;
       } else {
         $aData[$sNormalized] = (object) array(
           'tagname' => $sNormalized,
           'count' => $oRow->count,
-          'link' => $oSpecialPage->getLocalUrl( array( 'q' => $sNormalized ) )
+          'link' => $oSpecialPage->getLocalUrl( $aSearchParams )
         );
       }
     }
