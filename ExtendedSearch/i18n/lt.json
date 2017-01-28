@@ -90,5 +90,7 @@
 	"action-extendedsearch-viewspecialpage": "žiūrėti specialų puslapį „{{int:specialextendedsearch}}“",
 	"action-extendedsearchadmin-viewspecialpage": "žiūrėti specialų puslapį „{{int:extendedsearchadmin}}“",
 	"extendedsearchadmin": "Išplėstinės paieškos administracija",
-	"bs-extendedsearch-create-page": "Kurti puslapį „$1“."
+	"bs-extendedsearch-create-page": "Kurti puslapį „$1“.",
+	"apihelp-feedextendedsearch-param-category": "Kategorijos paieškai",
+	"apihelp-feedextendedsearch-param-files": "Ar ieškoti failuose"
 }
