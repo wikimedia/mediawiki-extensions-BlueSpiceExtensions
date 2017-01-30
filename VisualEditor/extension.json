@@ -11,7 +11,7 @@
 	"license-name": "GPL-2.0+",
 	"bsgExtensions": {
 		"BlueSpiceVisualEditor": {
-			"className": "VisualEditor",
+			"className": "BlueSpiceVisualEditor",
 			"extPath": "/BlueSpiceExtensions/VisualEditor"
 		}
 	},
@@ -27,7 +27,7 @@
 		"VisualEditorMagic": "languages/VisualEditor.i18n.magic.php"
 	},
 	"AutoloadClasses": {
-		"VisualEditor": "VisualEditor.class.php",
+		"BlueSpiceVisualEditor": "VisualEditor.class.php",
 		"ApiVisualEditorTasks": "includes/api/BSApiVisualEditorTasks.php"
 	},
 	"ResourceModules": {

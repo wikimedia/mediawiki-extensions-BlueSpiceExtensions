@@ -38,7 +38,7 @@
  * @package BlueSpice_Extensions
  * @subpackage VisualEditor
  */
-class VisualEditor extends BsExtensionMW {
+class BlueSpiceVisualEditor extends BsExtensionMW {
 
 	private $bStartEditor = true;
 
