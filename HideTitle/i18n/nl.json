@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"QZanden"
 		]
 	},
-	"bs-hidetitle-desc": "Voegt het magische woord <code><nowiki>__HIDETITLE__</nowiki></code> om te verbergen van de titel van de pagina"
+	"bs-hidetitle-desc": "Voegt het magische woord <code><nowiki>__HIDETITLE__</nowiki></code> toe om de titel van de pagina te verbergen."
 }

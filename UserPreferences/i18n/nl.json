@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"QZanden"
 		]
 	},
-	"bs-userpreferences-desc": "Maakt de BlueSpice tabblad in voorkeuren"
+	"bs-userpreferences-desc": "Toont het BlueSpice-tabblad in uw voorkeuren"
 }

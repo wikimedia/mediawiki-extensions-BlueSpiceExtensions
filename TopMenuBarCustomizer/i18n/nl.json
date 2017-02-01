@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"QZanden"
 		]
 	},
-	"bs-topmenubarcustomizer-desc": "Het aanpassen van het menu bovenaan links",
+	"bs-topmenubarcustomizer-desc": "Pas het topmenu aan",
 	"prefs-topmenubarcustomizer": "Menu customizer",
 	"bs-topmenubarcustomizer-pref-numberoflevels": "Aantal geneste lagen:",
-	"bs-topmenubarcustomizer-pref-numberofmainentries": "Vermeldingen op de belangrijkste laag:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Vermeldingen op de hoofdlaag:",
 	"bs-topmenubarcustomizer-pref-numberofsubentries": "Vermeldingen op sub-lagen:"
 }

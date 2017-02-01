@@ -6,11 +6,12 @@
 		]
 	},
 	"bs-wikiadmin-desc": "Centrale administratiepunt voor BlueSpice",
-	"bs-wikiadmin-notallowed": "Het is u niet toegestaan om toegang te krijgen tot deze pagina.",
-	"wikiadmin": "BlueSpice administratie",
-	"action-wikiadmin": "display BlueSpice administratie pagina ' s",
-	"right-wikiadmin": "Display BlueSpice administratie pagina ' s",
+	"bs-wikiadmin-notallowed": "U hebt geen toestemming om deze pagina te gebruiken.",
+	"wikiadmin": "BlueSpice beheer",
+	"action-wikiadmin": "Toon BlueSpice's beheerpagina's",
+	"right-wikiadmin": "Toon BlueSpice's beheerpagina's",
 	"bs-wikiadmin-shop": "Winkel",
 	"bs-wikiadmin-mediawiki-specialpages-text": "Speciale pagina's",
-	"bs-wikiadmin-mediawiki-specialpages-title": "Een opsomming van alle MediaWiki speciale pagina ' s"
+	"bs-wikiadmin-mediawiki-specialpages-title": "Toont een lijst met alle special pagina's van MediaWiki",
+	"bs-wikiadmin-widget-title": "Beheer"
 }
