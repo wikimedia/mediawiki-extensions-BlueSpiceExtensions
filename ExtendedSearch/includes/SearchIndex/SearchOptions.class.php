@@ -538,7 +538,7 @@ class SearchOptions {
 		$this->aOptions['bExtendedForm'] = $this->oSearchRequest->bExtendedForm;
 
 		$this->aOptions['searchStringWildcarded'] = SearchService::wildcardSearchstring( $this->aOptions['searchStringOrig'] );
-		$this->aOptions['searchStringForStatistics'] = $this->aOptions['searchStringWildcarded'];
+		$this->aOptions['searchStringForStatistics'] = $this->aOptions['searchStringOrig'];
 
 		//This overrides setting from SearchRequest::processInput
 		//TODO: Check if still needed; find better place for this
