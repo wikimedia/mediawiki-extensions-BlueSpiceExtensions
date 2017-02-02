@@ -100,6 +100,8 @@ class BSApiReviewTasks extends BSApiTasksBase {
 
 		$oReturn->success = true;
 		$oReturn->message = wfMessage( 'bs-review-save-success' )->plain();
+		$this->runUpdates();
+
 		return $oReturn;
 	}
 
@@ -142,6 +144,8 @@ class BSApiReviewTasks extends BSApiTasksBase {
 
 		$oReturn->success = true;
 		$oReturn->message = wfMessage( 'bs-review-save-removed' )->plain();
+		$this->runUpdates();
+
 		return $oReturn;
 	}
 
@@ -169,6 +173,8 @@ class BSApiReviewTasks extends BSApiTasksBase {
 
 		$oReturn->message = wfMessage( 'bs-review-review-saved' )->plain();
 		$oReturn->success = true;
+		$this->runUpdates();
+
 		return $oReturn;
 	}
 }

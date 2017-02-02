@@ -82,6 +82,8 @@ class BSApiChecklistTasks extends BSApiTasksBase {
 		}
 
 		$oResponse->success = true;
+		$this->runUpdates();
+
 		return $oResponse;
 	}
 
