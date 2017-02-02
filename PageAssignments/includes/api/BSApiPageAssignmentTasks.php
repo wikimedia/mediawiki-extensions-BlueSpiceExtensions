@@ -68,6 +68,7 @@ class BSApiPageAssignmentTasks extends BSApiTasksBase {
 			$oResult->success = true;
 			$this->logAssignmentChange( $oTitle, $aNewAssignmentIds, $aRemovedAssignmentIds );
 			$this->notifyAssignmentChange( $oTitle, $aNewAssignmentIds, $aRemovedAssignmentIds );
+			$this->runUpdates();
 		}
 		else {
 			$oResult->message = wfMessage( 'bs-pageassignments-api-error' )->plain();
