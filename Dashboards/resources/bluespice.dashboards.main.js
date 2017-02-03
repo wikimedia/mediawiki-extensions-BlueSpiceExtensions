@@ -11,7 +11,7 @@ $(function(){
 
 		$logoAnchor.attr(
 			'href',
-			mw.util.wikiGetlink('Special:UserDashboard')
+			mw.util.getUrl( 'Special:UserDashboard' )
 		);
 	}
 });

@@ -130,14 +130,16 @@ Ext.define( 'BS.Statistics.Panel', {
 		);*/
 
 		if(item.value == 'image/png') {
-			Ext.draw.engine.ImageExporter.defaultUrl = mw.util.wikiGetlink('Special:ExtendedStatistics/export-png');
+			Ext.draw.engine.ImageExporter.defaultUrl = mw.util.getUrl(
+				'Special:ExtendedStatistics/export-png'
+			);
 			this.crtMain.save( {type:item.value} );
 			return;
 		}
 		var form = Ext.getBody().createChild({
 			tag: 'form',
 			method: 'POST',
-			action: mw.util.wikiGetlink('Special:ExtendedStatistics/export-svg'),
+			action: mw.util.getUrl( 'Special:ExtendedStatistics/export-svg' ),
 			target : '_blank',
 			children: [{
 				tag: 'input',

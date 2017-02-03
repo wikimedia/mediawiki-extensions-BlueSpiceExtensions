@@ -98,7 +98,7 @@ BsWantedArticle = {
 
 	navigateToTarget: function( sArticleTitle ) {
 		sArticleTitle = sArticleTitle.replace( ' ', '_' );
-		var sUrl = mw.util.wikiGetlink( sArticleTitle );
+		var sUrl = mw.util.getUrl( sArticleTitle );
 		document.location.href = sUrl;
 
 		return false;
