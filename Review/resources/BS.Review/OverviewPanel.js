@@ -116,7 +116,7 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			"a",
 			{
 				'data-bs-title': value,
-				'href': mw.util.wikiGetlink( value )
+				'href': mw.util.getUrl( value )
 			},
 			value
 		);
