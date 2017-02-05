@@ -21,6 +21,9 @@
 			"i18n"
 		]
 	},
+	"ExtensionMessagesFiles": {
+		"InsertLinkAlias": "InsertLink.alias.php"
+	},
 	"AutoloadClasses": {
 		"InsertLink": "InsertLink.class.php",
 		"SpecialInsertLinkFileChooserJNLP": "includes/specials/SpecialInsertLinkFileChooserJNLP.php"
