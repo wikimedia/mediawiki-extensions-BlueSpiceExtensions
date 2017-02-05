@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"George Animal"
+			"George Animal",
+			"Ghybu"
 		]
 	},
 	"bs-statistics-month": "Meh",
+	"bs-statistics-day": "Roj",
 	"bs-statistics-filter-category": "Kategorî"
 }
