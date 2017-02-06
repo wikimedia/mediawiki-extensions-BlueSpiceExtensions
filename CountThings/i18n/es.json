@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"Dgstranz"
 		]
 	},
 	"bs-countthings-desc": "Proporciona estadísticas basadas en contenido",
@@ -14,7 +15,7 @@
 	"bs-countthings-error-not-exist": "La página «$1» no existe.",
 	"bs-countthings-tag-countarticles-desc": "Muestra el número de artículos en el wiki.",
 	"bs-countthings-tag-countusers-desc": "Muestra el número de usuarios registrados.",
-	"bs-countthings-tag-countcharacters-desc": "Muestra las estadísticas de los contenidos de la página dada. Atributo de configuración disponible:",
+	"bs-countthings-tag-countcharacters-desc": "Genera metadatos sobre el contenido del artículo indicado. La salida es una caja informativa que se puede integrar en un artículo. Con el parámetro «mode» se pueden mostrar distintos tipos de información.",
 	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Lo que debe contarse <code>chars</code> (caracteres), <code>words</code> (palabras) o <code>pages</code> (páginas).",
 	"bs-countthings-tag-countcharacters-example-1": "Número de palabras",
 	"bs-countthings-tag-countcharacters-example-2": "Número de caracteres"

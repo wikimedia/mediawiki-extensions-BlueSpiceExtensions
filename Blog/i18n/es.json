@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"Dgstranz"
 		]
 	},
 	"bs-blog-desc": "Muestra una lista de páginas con estilo blog",
@@ -29,8 +30,8 @@
 	"bs-blog-pref-imagerendermode": "Mostrar imágenes como:",
 	"bs-blog-pref-imagefloatdirection": "Flujo del texto: posición de la imagen",
 	"bs-blog-pref-maxentrycharacters": "Número de palabras por entrada:",
-	"bs-blog-tag-blog-desc": "Mostrar entradas de blog en cada página.",
-	"bs-blog-tag-blogtime-desc": "Esta etiqueta permite establecer una marca temporal personalizada para las entradas de blog.",
+	"bs-blog-tag-blog-desc": "Incluye un blog de páginas de artículo, discusión y archivo. Se puede especificar a través de varios parámetros, que se pueden combinar en cualquier orden.",
+	"bs-blog-tag-blogtime-desc": "Introduce una marca de tiempo para su visualización y para la ordenación de entradas de blog. El formato es AAAAMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "El formato debe ser AAAAMMDDHHmm; p. ej., para obtener «12 ene. 2013 15:43», la marca temporal es: 201301121543",
 	"action-blog-viewspecialpage": "ver la página especial «{{int:bs-blog-blog}}»"
 }
