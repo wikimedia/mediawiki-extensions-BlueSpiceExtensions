@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nike"
+			"Nike",
+			"Pyscowicz"
 		]
 	},
+	"bs-aboutbluespice-about-bluespice": "Tietoja BlueSpicesta",
+	"aboutbluespice": "Tietoja BlueSpicesta",
 	"prefs-aboutbluespice": "Tietoja BlueSpicesta"
 }

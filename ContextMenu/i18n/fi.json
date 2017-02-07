@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pyscowicz"
+		]
+	},
+	"bs-contextmenu-page-edit": "Muokkaa sivua",
+	"bs-contextmenu-page-delete": "Poista sivu",
+	"bs-contextmenu-page-move": "Siirrä sivu",
+	"bs-contextmenu-page-history": "Katso sivuhistoria",
+	"bs-contextmenu-page-info": "Näytä sivun tiedot",
+	"bs-contextmenu-media-reupload": "Lataa uusi versio",
+	"bs-contextmenu-user-mail": "Lähetä sähköpostia",
+	"bs-contextmenu-user-talk": "Jätä viesti keskustelusivulle",
+	"bs-contextmenu-file-download": "Lataa tiedosto"
+}
