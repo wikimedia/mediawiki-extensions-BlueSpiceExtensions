@@ -21,7 +21,11 @@
 		]
 	},
 	"AutoloadClasses": {
-		"ContextMenu": "ContextMenu.class.php"
+		"ContextMenu": "ContextMenu.class.php",
+		"BSApiContextMenuTasks": "includes/api/BSApiContextMenuTasks.php"
+	},
+	"APIModules": {
+		"bs-contextmenu-tasks": "BSApiContextMenuTasks"
 	},
 	"ResourceModules": {
 		"ext.bluespice.contextmenu": {

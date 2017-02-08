@@ -1,178 +1,4 @@
 (function(mw, $, bs){
-
-	var makePageItems = function( anchor ) {
-		var title = anchor.data('bs-title');
-		var items = [];
-
-		if( !title || anchor.hasClass('new') ) {
-			return items;
-		}
-
-		items.push({
-			text: mw.message('bs-contextmenu-page-edit').plain(),
-			href: bs.util.wikiGetlink(
-				{
-					action: 'edit'
-				},
-				title
-			),
-			id: 'bs-cm-item-edit',
-			iconCls: 'bs-icon-pencil'
-		});
-		items.push({
-				text: mw.message('bs-contextmenu-page-history').plain(),
-				href: bs.util.wikiGetlink(
-					{
-						action: 'history'
-					},
-					title
-				),
-				id: 'bs-cm-item-history',
-				iconCls: 'bs-icon-history'
-			});
-
-		items.push({
-			text: mw.message('bs-contextmenu-page-delete').plain(),
-			href: bs.util.wikiGetlink(
-				{
-					action: 'delete'
-				},
-				title
-			),
-			id: 'bs-cm-item-delete',
-			iconCls: 'bs-icon-bin'
-		});
-
-		items.push({
-			text: mw.message('bs-contextmenu-page-move').plain(),
-			href: mw.util.getUrl( 'Special:Movepage/'+title ),
-			id: 'bs-cm-item-move',
-			iconCls: 'bs-icon-shuffle'
-		});
-
-		items.push({
-			text: mw.message('bs-contextmenu-page-protect').plain(),
-			href: bs.util.wikiGetlink(
-				{
-					action: 'protect'
-				},
-				title
-			),
-			id: 'bs-cm-item-protect',
-			iconCls: 'bs-icon-shield'
-		});
-
-		return items;
-	};
-
-	var makeUserItems = function( anchor ) {
-		var items = [];
-		if( !anchor.data('bs-username') ) {
-			return items;
-		}
-
-		var username = anchor.data('bs-username');
-
-		if( mw.config.get( 'bsUserCanSendMail' ) && anchor.data('bs-user-has-email') ) {
-			items.push({
-				text: mw.message('bs-contextmenu-user-mail').plain(),
-				href: bs.util.wikiGetlink(
-					{
-						target: username
-					},
-					'Special:EmailUser'
-				),
-				id: 'bs-cm-item-usermail',
-				iconCls: 'icon-mail'
-			});
-		}
-		items.push({
-			text: mw.message('bs-contextmenu-user-talk').plain(),
-			href: bs.util.wikiGetlink(
-					{
-						action: 'edit'
-					},
-					'User_talk:'+username
-				),
-			id: 'bs-cm-item-usertalk',
-			iconCls: 'icon-bubbles'
-		});
-		return items;
-	};
-
-	var makeMediaItems = function( anchor ) {
-		/*
-		* Unfotunately "Media" links do not have any special class or data
-		* attribute to recognize them. But the 'title' attribute always
-		* contains the original file name.
-		* AND: There is no data-bs-title attribute like on "File" links
-		* (Links that aim to the description page)
-		* This logic will need a rewrite when MW 1.24 is supported.
-		*/
-		var title = anchor.attr('title');
-		var dataTitle = anchor.data('bs-title');
-		if( !title || dataTitle ) {
-			return true;
-		}
-
-		var titleParts = title.split('.');
-		var fileExtension = titleParts[titleParts.length-1];
-
-		if ( mw.config.get( "bsImageExtensions" ).indexOf( fileExtension.toLowerCase() ) === -1
-			 && mw.config.get( "bsFileExtensions" ).indexOf( fileExtension.toLowerCase() ) === -1 ) {
-			return true;
-		}
-
-		var items = [
-			{
-				iconCls: 'icon-arrow-right',
-				text: mw.message('bs-contextmenu-media-view-page').plain(),
-				href: mw.util.getUrl( 'File:'+title )
-			},
-			{
-				iconCls: 'icon-upload',
-				text: mw.message('bs-contextmenu-media-reupload').plain(),
-				href: bs.util.wikiGetlink(
-					{
-						wpDestFile: title
-					},
-					'Special:Upload'
-				)
-			}
-		];
-
-		return items;
-	};
-
-	var makeFileItems = function( anchor ) {
-		var items = [];
-		var fileurl = anchor.data('bs-fileurl');
-		var filename = anchor.data('bs-filename');
-
-		if( fileurl ) {
-			items.push({
-				iconCls: 'icon-download',
-					text: mw.message('bs-contextmenu-file-download').plain(),
-					href: fileurl
-			});
-		}
-
-		if( filename ) {
-			items.push({
-				iconCls: 'icon-upload',
-				text: mw.message('bs-contextmenu-media-reupload').plain(),
-				href: bs.util.wikiGetlink(
-					{
-						wpDestFile: filename
-					},
-					'Special:Upload'
-				)
-			});
-		}
-
-		return items;
-	};
-
 	var showMenu = function( anchor, items, e ) {
 		$(document).trigger( 'BSContextMenuBeforeCreate', [anchor, items]);
 
@@ -226,31 +52,20 @@
 		mw.loader.using( 'ext.bluespice.extjs', function() {
 			var items = [];
 
-			var mediaItems = makeMediaItems( anchor );
-			if( mediaItems.length > 0 ) {
-				items = appendSection( items, mediaItems );
-			}
-
-			var userItems = makeUserItems( anchor );
-			if( userItems.length > 0 ) {
-				items = appendSection( items, userItems );
-			}
-
-			var fileItems = makeFileItems( anchor );
-			if( fileItems.length > 0 ) {
-				items = appendSection( items, fileItems );
-			}
-
-			var pageItems = makePageItems( anchor );
-			if( pageItems.length > 0 ) {
-				items = appendSection( items, pageItems );
-			}
-
-			if( items.length === 0 ) {
-				return true;
-			}
-
-			showMenu( anchor, items, e );
+			bs.api.tasks.exec(
+				'contextmenu',
+				'getMenuItems',
+				{
+					title: anchor.data('bs-title')
+				}
+			).done( function( response )  {
+				if( response.payload_count > 0 ) {
+					for(item in response.payload.items){
+						items.push(response.payload.items[item]);
+					}
+					showMenu( anchor, items, e );
+				}
+			});
 		});
 
 		return false;
