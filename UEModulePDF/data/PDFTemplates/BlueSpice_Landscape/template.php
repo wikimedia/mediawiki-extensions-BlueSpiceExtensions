@@ -22,7 +22,7 @@ return array(
 	'resources' => array(
 		'ATTACHMENT' => array(), //Some extra attachments to be included in every eport file
 		'STYLESHEET' => array(
-			'../common/stylesheets/page.css',
+			'stylesheets/page.css',
 			'../common/stylesheets/mediawiki.css',
 			'stylesheets/styles.css',
 			'../common/stylesheets/geshi-php.css',
