@@ -3,6 +3,7 @@
 BsExtensionManager::registerExtension('ContextMenu', BsRUNLEVEL::FULL|BsRUNLEVEL::REMOTE);
 
 $GLOBALS['wgAutoloadClasses']['ContextMenu'] = __DIR__ . '/ContextMenu.class.php';
+$GLOBALS['wgAutoloadClasses']['BSApiContextMenuTasks'] = __DIR__ . '/includes/api/BSApiContextMenuTasks.php';
 $wgMessagesDirs['ContextMenu'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['ContextMenu'] = __DIR__ . '/languages/ContextMenu.i18n.php';
 
@@ -28,3 +29,5 @@ $wgResourceModules['ext.bluespice.contextmenu'] = array(
 	'localBasePath' => __DIR__.'/resources',
 	'remoteExtPath' => 'BlueSpiceExtensions/ContextMenu/resources'
 );
+
+$wgAPIModules['bs-contextmenu-tasks'] = 'BSApiContextMenuTasks';
