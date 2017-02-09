@@ -23,11 +23,11 @@
 	"bs-usermanager-headerrealname": "असल नाम",
 	"bs-usermanager-headeremail": "ई-पत्र",
 	"bs-usermanager-headergroups": "वर्ग",
-	"bs-usermanager-titleadduser": "प्रयोक्ता जोडू",
+	"bs-usermanager-titleadduser": "प्रयोक्ता जोडी",
 	"bs-usermanager-titleeditdetails": "प्रयोक्ता सम्पादन करू",
 	"bs-usermanager-labelnewpassword": "कूटशब्द",
 	"bs-usermanager-labelpasswordcheck": "कूटशब्द जाँचू",
-	"bs-usermanager-titledeleteuser": "प्रयोक्ता मेटाउ",
+	"bs-usermanager-titledeleteuser": "प्रयोक्ता मेटाबी",
 	"bs-usermanager-confirmdeleteuser": "कि अहाँ {{PLURAL:$1|इ प्रयोक्ता|इ $1 प्रयोक्तासभ}} कें मेटाएल चाहए छी?",
 	"bs-usermanager-groups-more": "...आर",
 	"bs-usermanager-no-self-desysop": "अहाँ अपन माइनजन अधिकार नै घुमा सकए छी।"

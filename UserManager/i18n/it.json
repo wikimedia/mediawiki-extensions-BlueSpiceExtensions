@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Martinligabue",
+			"Selven"
 		]
 	},
 	"bs-usermanager-db-error": "Si è verificato un errore sul database.",
@@ -24,5 +26,13 @@
 	"bs-usermanager-labelnewpassword": "Password",
 	"bs-usermanager-labelpasswordcheck": "Conferma password",
 	"bs-usermanager-titledeleteuser": "Cancella utente",
-	"apihelp-bs-usermanager-tasks-description": "Fornisce operazioni per l'estensione Checklist"
+	"apihelp-bs-usermanager-tasks-description": "Fornisce operazioni per l'estensione Checklist",
+	"bs-usermanager-no-self-block": "Non è possibile disattivare se stessi.",
+	"bs-usermanager-endisable": "Abilita/disabilita",
+	"bs-usermanager-titledisableuser": "Disabilitare utente",
+	"bs-usermanager-titleenableuser": "Abilitare utente",
+	"usermanager": "Gestione utente",
+	"action-usermanager-viewspecialpage": "visualizzare la pagina speciale \"Gestione utente\"",
+	"bs-usermanager-group-add-not-allowed": "Non ti è consentito aggiungere utenti al gruppo $1 .",
+	"bs-usermanager-group-remove-not-allowed": "Non ti è consentito rimuovere utenti dal gruppo $1 ."
 }

@@ -45,24 +45,24 @@ class UserManager extends BsExtensionMW {
 		// Base settings
 		$this->mExtensionFile = __FILE__;
 		$this->mExtensionType = EXTTYPE::VARIABLE;
-		$this->mInfo = array(
-			EXTINFO::NAME        => 'UserManager',
-			EXTINFO::DESCRIPTION => 'bs-usermanager-desc',
-			EXTINFO::AUTHOR      => 'Markus Glaser, Stephan Muggli',
-			EXTINFO::VERSION     => 'default',
-			EXTINFO::STATUS      => 'default',
-			EXTINFO::PACKAGE     => 'default',
-			EXTINFO::URL         => 'https://help.bluespice.com/index.php/UserManager',
-			EXTINFO::DEPS        => array( 'bluespice' => '2.22.0' )
-		);
 
 		WikiAdmin::registerModule( 'UserManager', array(
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_usermanagement_v1.png',
 			'level' => 'wikiadmin',
-			'message' => 'bs-usermanager-label'
+			'message' => 'bs-usermanager-label',
+			'iconCls' => 'bs-icon-user-add'
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	public function getForm( $firsttime = false ) {
+		$this->getOutput()->addModules( 'ext.bluespice.userManager' );
+		return '<div id="bs-usermanager-grid"></div>';
+	}
+
+	protected function initExt() {
+		$this->mCore->registerPermission( 'usermanager-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 	}
 
 	/**
@@ -71,12 +71,18 @@ class UserManager extends BsExtensionMW {
 	 * @param array $aMetaData
 	 * @return Status
 	 */
-	public static function addUser( $sUserName, $aMetaData = array() ) {
+	public static function addUser( $sUserName, $aMetaData = array(), User $oPerformer = null ) {
 		//This is to overcome username case issues with custom AuthPlugin (i.e. LDAPAuth)
 		//LDAPAuth woud otherwise turn the username to first-char-upper-rest-lower-case
 		//At the end of this method we switch $_SESSION['wsDomain'] back again
 		$tmpDomain = isset( $_SESSION['wsDomain'] ) ? $_SESSION['wsDomain'] : '';
 		$_SESSION['wsDomain'] = 'local';
+
+		$oStatus = Status::newGood();
+
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
 
 		$sUserName = ucfirst( $sUserName );
 		$oUser = User::newFromName( $sUserName, true );
@@ -87,51 +93,6 @@ class UserManager extends BsExtensionMW {
 			return Status::newFatal( 'bs-usermanager-user-exists' );
 		}
 
-		$oStatus = self::editUser( $oUser, $aMetaData, true );
-		if( !$oStatus->isOK() ) {
-			return $oStatus;
-		}
-
-		$_SESSION['wsDomain'] = $tmpDomain;
-
-		$oUser = $oStatus->getValue();
-		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
-		Hooks::run(
-			'BSUserManagerAfterAddUser',
-			array(
-				$oUserManager,
-				$oUser,
-				$aMetaData,
-				&$oStatus
-			)
-		);
-
-		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-		$ssUpdate->doUpdate();
-
-		return $oStatus;
-	}
-
-	/**
-	 * Edits or adds an user
-	 * @param User $oUser
-	 * @param array $aMetaData
-	 * @param boolean $bCreateIfNotExists
-	 * @return Status
-	 */
-	public static function editUser( User $oUser, $aMetaData = array(), $bCreateIfNotExists = false ) {
-		$oStatus = Status::newGood();
-		$bNew = false;
-
-		if ( $oUser->getId() === 0  ) {
-			if( !$bCreateIfNotExists ) {
-				$oStatus->merge(
-					Status::newFatal( 'bs-usermanager-idnotexist' )
-				);
-				return $oStatus;
-			}
-			$bNew = true;
-		}
 		$sPass = $aMetaData['password'];
 		if ( !empty( $aMetaData['password'] ) || $bNew ) {
 			if( !$oUser->isValidPassword( $sPass ) ) {
@@ -169,10 +130,8 @@ class UserManager extends BsExtensionMW {
 			return $oStatus;
 		}
 
-		if( $bNew ) {
-			$oUser->addToDatabase();
-			$oUser->setToken();
-		}
+		$oUser->addToDatabase();
+		$oUser->setToken();
 
 		if( !empty($sPass) ) {
 			$oUser->setPassword( $sPass );
@@ -190,6 +149,149 @@ class UserManager extends BsExtensionMW {
 
 		$oUser->saveSettings();
 
+		if( isset( $aMetaData['enabled'] ) ) {
+			if ( $aMetaData['enabled'] === false && !$oUser->isBlocked() ) {
+				$oStatus = self::disableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			} else if ( $aMetaData['enabled'] === true && $oUser->isBlocked() ) {
+				$oStatus = self::enableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			}
+		}
+
+		$_SESSION['wsDomain'] = $tmpDomain;
+
+		$oStatus = Status::newGood( $oUser );
+
+		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
+		Hooks::run(
+			'BSUserManagerAfterAddUser',
+			array(
+				$oUserManager,
+				$oUser,
+				$aMetaData,
+				&$oStatus,
+				$oPerformer
+			)
+		);
+
+		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+		$ssUpdate->doUpdate();
+
+		return $oStatus;
+	}
+	/**
+	 * Changes user password
+	 * @param User $oUser
+	 * @param array $aPassword
+	 * @return Status
+	 */
+	public static function editPassword( User $oUser, $aPassword = array(), User $oPerformer = null ) {
+		$oStatus = Status::newGood();
+
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
+
+		$sPass = $aPassword['password'];
+
+		if ( empty( $aPassword['password'] ) ) {
+			$oNewStatus = Status::newFatal( 'bs-usermanager-invalid-pwd' );
+			$oStatus->merge( $oNewStatus );
+			return $oStatus;
+		}
+
+		if ( !empty( $aPassword['password'] ) ) {
+			if( !$oUser->isValidPassword( $sPass ) ) {
+				$oNewStatus = Status::newFatal( 'bs-usermanager-invalid-pwd' );
+				$oStatus->merge( $oNewStatus );
+			}
+			if ( strtolower( $oUser->getName() ) == strtolower( $sPass ) ) {
+				$oNewStatus = Status::newFatal( 'password-name-match' );
+				$oStatus->merge( $oNewStatus );
+			}
+			$sRePass = $aPassword['repassword'];
+			if ( !isset($sRePass) || $sPass !== $sRePass ) {
+				$oNewStatus = Status::newFatal( 'badretype' );
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
+
+		$oUser->setPassword( $sPass );
+		$oUser->saveSettings();
+
+		return $oStatus;
+
+	}
+	/**
+	 * Edits or adds an user
+	 * @param User $oUser
+	 * @param array $aMetaData
+	 * @param boolean $bCreateIfNotExists
+	 * @return Status
+	 */
+	public static function editUser( User $oUser, $aMetaData = array(), $bCreateIfNotExists = false, User $oPerformer = null ) {
+		$oStatus = Status::newGood();
+
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
+
+		if( !empty($aMetaData['realname']) ) {
+			if ( strpos( $aMetaData['realname'], '\\' ) ) {
+				$oNewStatus = Status::newFatal(
+					'bs-usermanager-invalid-realname'
+				);
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+		if( !empty($aMetaData['email']) ) {
+			if ( Sanitizer::validateEmail( $aMetaData['email'] ) === false ) {
+				$oNewStatus = Status::newFatal(
+					'bs-usermanager-invalid-email-gen'
+				);
+				$oStatus->merge( $oNewStatus );
+			}
+		}
+		if( !$oStatus->isOK() ) {
+			return $oStatus;
+		}
+
+		if( !empty($aMetaData['email']) ) {
+			$oUser->setEmail( $aMetaData['email'] );
+		} else {
+			$oUser->setEmail('');
+		}
+		if( !empty($aMetaData['realname']) ) {
+			$oUser->setRealName( $aMetaData['realname'] );
+		} else {
+			$oUser->setRealName('');
+		}
+
+		$oUser->saveSettings();
+
+		if( isset( $aMetaData['enabled'] ) ) {
+			if ( $aMetaData['enabled'] === false && !$oUser->isBlocked() ) {
+				$oStatus = self::disableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			} else if ( $aMetaData['enabled'] === true && $oUser->isBlocked() ) {
+				$oStatus = self::enableUser( $oUser, $oPerformer, $oStatus );
+				if ( !$oStatus->isGood() ) {
+					return $oStatus;
+				}
+			}
+		}
+
 		$oUserManager = BsExtensionManager::getExtension( 'UserManager' );
 		Hooks::run(
 			'BSUserManagerAfterEditUser',
@@ -197,11 +299,77 @@ class UserManager extends BsExtensionMW {
 				$oUserManager,
 				$oUser,
 				$aMetaData,
-				&$oStatus
+				&$oStatus,
+				$oPerformer,
 			)
 		);
 
 		return Status::newGood( $oUser );
+	}
+
+	/**
+	 * Disables a user in the system.
+	 * @param User $oUser The user to be disabled.
+	 * @param User $oPerformer The user that requests the disabling
+	 * @param Status $oStatus The status of the operation so far
+	 * @return Status
+	 */
+	public static function disableUser( User $oUser, User $oPerformer, Status &$oStatus = null ) {
+		if ( is_null( $oStatus ) ) {
+			$oStatus = Status::newGood();
+		}
+		if ( $oUser->getId() == $oPerformer->getId() ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( 'bs-usermanager-no-self-block' );
+			return $oStatus;
+		}
+		# Create block object.
+		$block = new Block();
+		$block->setTarget( $oUser );
+		$block->setBlocker( $oPerformer );
+		$block->mReason = wfMessage( 'bs-usermanager-log-user-disabled', $oUser->getName() )->text();
+		$block->mExpiry = 'infinity';
+		$block->prevents( 'createaccount', false );
+		$block->prevents( 'editownusertalk', false );
+		$block->prevents( 'sendemail', true );
+		$block->isHardblock( true );
+		$block->isAutoblocking( false );
+		$reason = array( 'hookaborted' );
+		if ( !Hooks::run( 'BlockIp', array( &$block, &$oPerformer, &$reason ) ) ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( $reason );
+			return $oStatus;
+		}
+
+		# Try to insert block. Is there a conflicting block?
+		$bStatus = $block->insert();
+		if ( !$bStatus ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( 'bs-usermanager-block-error', $oUser->getName() );
+		}
+		return $oStatus;
+	}
+
+	/**
+	 * Enables a disabled user
+	 * @param User $oUser The user to be enabled
+	 * @param User $oPerformer The user that requests the enabling
+	 * @param Status $oStatus The status of the operation so far
+	 * @return Status
+	 */
+	public static function enableUser( User $oUser, User $oPerformer, Status &$oStatus = null ) {
+		if ( is_null( $oStatus ) ) {
+			$oStatus = Status::newGood();
+		}
+
+		$block = Block::newFromTarget( $oUser );
+		$block->setBlocker( $oPerformer );
+		$bStatus = $block->delete();
+		if ( !$bStatus ) {
+			$oStatus->setResult( false );
+			$oStatus->fatal( 'bs-usermanager-unblock-error', $oUser->getName() );
+		}
+		return $oStatus;
 	}
 
 	/**
@@ -210,7 +378,7 @@ class UserManager extends BsExtensionMW {
 	 * @param User $oUser
 	 * @return Status
 	 */
-	public static function deleteUser( User $oUser ) {
+	public static function deleteUser( User $oUser, User $oPerformer = null ) {
 		if ( $oUser->getId() == 0 ) {
 			return Status::newFatal( 'bs-usermanager-idnotexist' );
 		}
@@ -219,8 +387,10 @@ class UserManager extends BsExtensionMW {
 			return Status::newFatal( 'bs-usermanager-admin-nodelete' );
 		}
 
-		$oLoggedInUser = RequestContext::getMain()->getUser();
-		if ( $oUser->getId() == $oLoggedInUser->getId() ) {
+		if( !$oPerformer ) {
+			$oPerformer = RequestContext::getMain()->getUser();
+		}
+		if ( $oUser->getId() == $oPerformer->getId() ) {
 			return Status::newFatal( 'bs-usermanager-self-nodelete' );
 		}
 
@@ -254,7 +424,8 @@ class UserManager extends BsExtensionMW {
 		Hooks::run( 'BSUserManagerAfterDeleteUser', array(
 			$oUserManager,
 			$oUser,
-			&$oStatus
+			&$oStatus,
+			$oPerformer,
 		));
 
 		return $oStatus;
@@ -262,14 +433,16 @@ class UserManager extends BsExtensionMW {
 
 	/**
 	 * Removes / adds groups to a user
+	 * See also https://www.mediawiki.org/wiki/Manual:$wgAddGroups
 	 * @param User $oUser
 	 * @param type $aGroups
 	 * @return type
 	 */
 	public static function setGroups( User $oUser, $aGroups = array() ) {
 		$oLoggedInUser = RequestContext::getMain()->getUser();
+		$bAttemptChangeSelf = $oLoggedInUser->getId() == $oUser->getId();
 
-		$bCheckDeSysop = $oLoggedInUser->getId() == $oUser->getId()
+		$bCheckDeSysop = $bAttemptChangeSelf
 			&& in_array( 'sysop', $oLoggedInUser->getEffectiveGroups() )
 			&& !in_array( 'sysop', $aGroups )
 		;
@@ -278,18 +451,30 @@ class UserManager extends BsExtensionMW {
 		}
 
 		$aCurrentGroups = $oUser->getGroups();
-		$aSetGroups = array_diff( $aGroups, $aCurrentGroups );
+		$aAddGroups = array_diff( $aGroups, $aCurrentGroups );
 		$aRemoveGroups = array_diff( $aCurrentGroups, $aGroups );
 
-		foreach ( $aSetGroups as $sGroup ) {
+		$aChangeableGroups = $oLoggedInUser->changeableGroups();
+
+		foreach ( $aAddGroups as $sGroup ) {
 			if ( in_array( $sGroup, self::$excludegroups ) ) {
 				continue;
+			}
+			if ( !in_array( $sGroup, $aChangeableGroups['add'] ) ) {
+				if ( !$bAttemptChangeSelf || !in_array( $sGroup, $aChangeableGroups['add-self'] ) ) {
+					return Status::newFatal( 'bs-usermanager-group-add-not-allowed', $sGroup );
+				}
 			}
 			$oUser->addGroup( $sGroup );
 		}
 		foreach ( $aRemoveGroups as $sGroup ) {
 			if ( in_array( $sGroup, self::$excludegroups ) ) {
 				continue;
+			}
+			if ( !in_array( $sGroup, $aChangeableGroups['remove'] ) ) {
+				if ( !$bAttemptChangeSelf || !in_array( $sGroup, $aChangeableGroups['remove-self'] ) ) {
+					return Status::newFatal( 'bs-usermanager-group-remove-not-allowed', $sGroup );
+				}
 			}
 			$oUser->removeGroup( $sGroup );
 		}
@@ -298,7 +483,7 @@ class UserManager extends BsExtensionMW {
 		Hooks::run( 'BSUserManagerAfterSetGroups', array(
 			$oUser,
 			$aGroups,
-			$aSetGroups,
+			$aAddGroups,
 			$aRemoveGroups,
 			self::$excludegroups,
 			&$oStatus
@@ -308,8 +493,4 @@ class UserManager extends BsExtensionMW {
 		return $oStatus;
 	}
 
-	public function getForm( $firsttime = false ) {
-		$this->getOutput()->addModules( 'ext.bluespice.userManager' );
-		return '<div id="bs-usermanager-grid"></div>';
-	}
 }

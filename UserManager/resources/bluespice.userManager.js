@@ -13,7 +13,17 @@
 (function( mw, $, bs, d, undefined){
 	Ext.onReady( function(){
 		Ext.create( 'BS.UserManager.panel.Manager', {
-			renderTo: 'bs-usermanager-grid'
+			renderTo: 'bs-usermanager-grid',
+			operationPermissions: {
+                "create": true,
+                "update": true,
+                "delete": true,
+                // Those are not available in REL1_23 and has set to true;
+				'disableuser': true,
+				'usergroups': true,
+				'editpassword': true,
+				'enableuser': true
+			}
 		} );
 	} );
 
