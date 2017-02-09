@@ -32,5 +32,17 @@
 	"bs-usermanager-titledeleteuser": "Radera användare",
 	"bs-usermanager-confirmdeleteuser": "Är du säker på att du vill ta bort {{PLURAL:$1|denna användare|dessa $1 användare}}?",
 	"bs-usermanager-groups-more": "... fler",
-	"bs-usermanager-no-self-desysop": "Du kan inte ta bort dina egna administratörsrättigheter."
+	"bs-usermanager-no-self-desysop": "Du kan inte ta bort dina egna administratörsrättigheter.",
+	"bs-usermanager-no-self-block": "Du kan inte inaktivera dig själv.",
+	"bs-usermanager-block-error": "{{GENDER:$1|Användaren}} $1 kunde inte inaktiveras.",
+	"bs-usermanager-unblock-error": "{{GENDER:$1|Användaren}} $1 kunde inte aktiveras.",
+	"bs-usermanager-headerenabled": "Aktiverad",
+	"bs-usermanager-log-user-disabled": "{{GENDER:$1|Användaren}} $1 inaktiverades via UserManager",
+	"bs-usermanager-user-disabled": "{{GENDER:$1|Användaren}} $1 inaktiverades.",
+	"bs-usermanager-user-enabled": "{{GENDER:$1|Användaren}} $1 aktiverades.",
+	"bs-usermanager-endisable": "Aktivera/inaktivera",
+	"bs-usermanager-confirmdisableuser": "Vill du inaktivera {{GENDER:$1|användaren}} $1?",
+	"bs-usermanager-confirmenableuser": "Vill du verkligen aktivera {{GENDER:$1|användaren}} $1?",
+	"bs-usermanager-titledisableuser": "Inaktivera användare",
+	"bs-usermanager-titleenableuser": "Aktivera användare"
 }

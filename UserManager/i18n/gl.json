@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
 	"bs-usermanager-desc": "Interfaz administrativa para engadir, editar e elminar usuarios",
@@ -31,5 +32,21 @@
 	"bs-usermanager-confirmdeleteuser": "¿Está seguro de querer eliminar {{PLURAL:$1|este usuario|estos usuarios}}?",
 	"bs-usermanager-groups-more": "... mais",
 	"bs-usermanager-no-self-desysop": "Non pode retirar o permiso de \"sysop\" a sí mesmo.",
-	"apihelp-bs-usermanager-tasks-description": "Proporciona operacións para a extensión Checklist"
+	"apihelp-bs-usermanager-tasks-description": "Proporciona operacións para a extensión Checklist",
+	"bs-usermanager-no-self-block": "Non pode desactivarse a si mesmo.",
+	"bs-usermanager-block-error": "Non se puido desactivar {{GENDER:$1|ó usuario|á usuaria}} $1.",
+	"bs-usermanager-unblock-error": "Non se puido activar {{GENDER:$1|ó usuario|á usuaria}} $1.",
+	"bs-usermanager-headerenabled": "Activado",
+	"bs-usermanager-log-user-disabled": "Desactivouse {{GENDER:$1|ó usuario|á usuaria}} $1 mediante UserManager.",
+	"bs-usermanager-user-disabled": "Desactivouse {{GENDER:$1|ó usuario|á usuaria}} $1.",
+	"bs-usermanager-user-enabled": "Activouse {{GENDER:$1|ó usuario|á usuaria}} $1.",
+	"bs-usermanager-endisable": "Activar/desactivar",
+	"bs-usermanager-confirmdisableuser": "Realmente quere desactivar {{GENDER:$1|ó usuario|á usuaria}} $1?",
+	"bs-usermanager-confirmenableuser": "Realmente quere activar {{GENDER:$1|ó usuario|á usuaria}} $1?",
+	"bs-usermanager-titledisableuser": "Desactivar ó usuario",
+	"bs-usermanager-titleenableuser": "Activar ó usuario",
+	"usermanager": "Administrador de usuarios",
+	"action-usermanager-viewspecialpage": "ver a páxina especial \"Administrador de usuarios\"",
+	"bs-usermanager-group-add-not-allowed": "Non tes permisos para engadir usuarios ó grupo $1",
+	"bs-usermanager-group-remove-not-allowed": "Non tes permisos para eliminar usuarios do grupo $1"
 }

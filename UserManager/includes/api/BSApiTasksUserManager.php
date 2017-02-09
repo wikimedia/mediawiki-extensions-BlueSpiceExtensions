@@ -39,7 +39,10 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 		'addUser',
 		'editUser',
 		'deleteUser',
+		'disableUser',
+		'enableUser',
 		'setUserGroups',
+		'editPassword'
 	);
 
 	/**
@@ -51,8 +54,11 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 		return array(
 			'addUser' => array( 'wikiadmin' ),
 			'editUser' => array( 'wikiadmin' ),
+			'disableUser' => array( 'wikiadmin' ),
+			'enableUser' => array( 'wikiadmin' ),
 			'deleteUser' => array( 'wikiadmin' ),
-			'setUserGroups' => array( 'wikiadmin' ),
+			'setUserGroups' => array( 'userrights' ),
+			'editPassword' => array( 'wikiadmin' )
 		);
 	}
 
@@ -95,8 +101,15 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 		if( isset($oTaskData->realname) ) {
 			$aMetaData['realname'] = $oTaskData->realname;
 		}
+		if( isset($oTaskData->enabled) ) {
+			$aMetaData['enabled'] = $oTaskData->enabled;
+		}
 
-		$oStatus = UserManager::addUser( $oTaskData->userName, $aMetaData );
+		$oStatus = UserManager::addUser(
+			$oTaskData->userName,
+			$aMetaData,
+			$this->getUser()
+		);
 		if( !$oStatus->isOK() ) {
 			$oReturn->message = $oStatus->getMessage()->parse();
 			return $oReturn;
@@ -120,52 +133,73 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 	}
 
 	/**
+	 * Changes password of a user.
+	 * @return stdClass Standard tasks API return
+	 */
+	protected function task_editPassword( $oTaskData ) {
+		$oReturn = $this->makeStandardReturn();
+
+		$aPassword['password'] = $oTaskData->password;
+		$aPassword['repassword'] = $oTaskData->rePassword;
+
+		$oUser = User::newFromID( $oTaskData->userID );
+
+		$oStatus = UserManager::editPassword(
+			$oUser,
+			$aPassword,
+			$this->getUser()
+		);
+
+		if( !$oStatus->isOK() ) {
+			$oReturn->message = $oStatus->getMessage()->parse();
+			return $oReturn;
+		}
+
+		$oReturn->success = true;
+		$oReturn->message = wfMessage(
+			'bs-usermanager-editpassword-successful'
+		)->plain();
+
+		return $oReturn;
+
+	}
+
+	/**
 	 * Edits an user.
 	 * @return stdClass Standard tasks API return
 	 */
 	protected function task_editUser( $oTaskData ) {
 		$oReturn = $this->makeStandardReturn();
-		$aGroups = false;
-		if( isset($oTaskData->groups) ) {
-			$aGroups = $oTaskData->groups;
-		}
 
-		if( empty($oTaskData->userName) ) {
+		if( empty($oTaskData->userID) ) {
 			$oReturn->message = wfMessage(
 				'bs-usermanager-invalid-uname'
 			)->plain();
 		}
-		$oUser = User::newFromName( $oTaskData->userName );
+		$oUser = User::newFromID( $oTaskData->userID );
 
 		$aMetaData = array();
-		if( isset($oTaskData->password) ) {
-			$aMetaData['password'] = $oTaskData->password;
-		}
-		if( isset($oTaskData->rePassword) ) {
-			$aMetaData['repassword'] = $oTaskData->rePassword;
-		}
+
 		if( isset($oTaskData->email) ) {
 			$aMetaData['email'] = $oTaskData->email;
 		}
 		if( isset($oTaskData->realname) ) {
 			$aMetaData['realname'] = $oTaskData->realname;
 		}
+		if( isset($oTaskData->enabled) ) {
+			$aMetaData['enabled'] = $oTaskData->enabled;
+		}
 
-		$oStatus = UserManager::editUser( $oUser, $aMetaData, true );
+		$oStatus = UserManager::editUser(
+			$oUser,
+			$aMetaData,
+			true,
+			$this->getUser()
+		);
+
 		if( !$oStatus->isOK() ) {
 			$oReturn->message = $oStatus->getMessage()->parse();
 			return $oReturn;
-		}
-
-		if( is_array($aGroups) ) {
-			$oStatus = UserManager::setGroups(
-				$oStatus->getValue(),
-				$aGroups
-			);
-			if( !$oStatus->isOK() ) {
-				$oReturn->message = $oStatus->getMessage()->parse();
-				return $oReturn;
-			}
 		}
 
 		$oReturn->success = true;
@@ -183,34 +217,73 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 	protected function task_deleteUser( $oTaskData ) {
 		$oReturn = $this->makeStandardReturn();
 
-		if( empty($oTaskData->userName) ) {
-			$oReturn->message = wfMessage(
-				'bs-usermanager-invalid-uname'
-			)->plain();
+		foreach ( $oTaskData->userIDs as $sUserID ) {
+			$oUser = User::newFromID( $sUserID );
+			$oStatus = UserManager::deleteUser( $oUser, $this->getUser() );
+			if( !$oStatus->isOK() ) {
+				$oReturn->message = $oStatus->getMessage()->parse();
+				return $oReturn;
+			}
 		}
 
-		$oUser = User::newFromName( $oTaskData->userName );
+		$oReturn->success = true;
+		$oReturn->message = wfMessage( 'bs-usermanager-user-deleted', count($oTaskData->userIDs) )->text();
 
-		$oStatus = UserManager::deleteUser( $oUser );
+		return $oReturn;
+	}
+
+	/**
+	 * Disables a user.
+	 * @return stdClass Standard tasks API return
+	 */
+	protected function task_disableUser( $oTaskData ) {
+		$oReturn = $this->makeStandardReturn();
+
+		$oUser = User::newFromID( $oTaskData->userID );
+
+		$oPerformer = $this->getUser();
+		$oStatus = UserManager::disableUser( $oUser, $oPerformer );
 		if( !$oStatus->isOK() ) {
 			$oReturn->message = $oStatus->getMessage()->parse();
 			return $oReturn;
 		}
 
 		$oReturn->success = true;
-		$oReturn->message = wfMessage( 'bs-usermanager-user-deleted' )->plain();
+		$oReturn->message = wfMessage( 'bs-usermanager-user-disabled', $oUser->getName() )->text();
 
 		return $oReturn;
 	}
 
 	/**
-	 * Deletes an User.
+	 * Enables an User.
+	 * @return stdClass Standard tasks API return
+	 */
+	protected function task_enableUser( $oTaskData ) {
+		$oReturn = $this->makeStandardReturn();
+
+		$oUser = User::newFromID( $oTaskData->userID );
+
+		$oPerformer = $this->getUser();
+		$oStatus = UserManager::enableUser( $oUser, $oPerformer );
+		if( !$oStatus->isOK() ) {
+			$oReturn->message = $oStatus->getMessage()->parse();
+			return $oReturn;
+		}
+
+		$oReturn->success = true;
+		$oReturn->message = wfMessage( 'bs-usermanager-user-enabled', $oUser->getName() )->text();
+
+		return $oReturn;
+	}
+
+	/**
+	 * Sets user groups for user.
 	 * @return stdClass Standard tasks API return
 	 */
 	protected function task_setUserGroups( $oTaskData ) {
 		$oReturn = $this->makeStandardReturn();
 
-		if( empty($oTaskData->userNames) || !is_array($oTaskData->userNames) ) {
+		if( empty($oTaskData->userIDs) || !is_array($oTaskData->userIDs) ) {
 			$oReturn->message = wfMessage(
 				'bs-usermanager-invalid-uname'
 			)->plain();
@@ -218,18 +291,12 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 
 		if( !isset($oTaskData->groups) || !is_array($oTaskData->groups) ) {
 			$oReturn->message = wfMessage(
-				'bs-usermanager-invalid-uname'//TODO
+				'bs-usermanager-invalid-groups'
 			)->plain();
 		}
 		$oStatus = Status::newGood();
-		foreach( $oTaskData->userNames as $sUserName ) {
-			$oUser = User::newFromName( $sUserName );
-			if( !$oUser ) {
-				$oStatus->merge(
-					Status::newFatal('bs-usermanager-invalid-uname')
-				);
-				continue;
-			}
+		foreach( $oTaskData->userIDs as $sUserID ) {
+			$oUser = User::newFromID( $sUserID );
 			$oStatus->merge( UserManager::setGroups(
 				$oUser,
 				$oTaskData->groups

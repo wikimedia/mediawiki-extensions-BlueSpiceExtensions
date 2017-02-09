@@ -31,5 +31,21 @@
 	"bs-usermanager-confirmdeleteuser": "您确信要删除{{PLURAL:$1|此|这$1位}}用户么？",
 	"bs-usermanager-groups-more": "……更多",
 	"bs-usermanager-no-self-desysop": "您不能移除您自己的管理员权限。",
-	"apihelp-bs-usermanager-tasks-description": "提供用于Checklist扩展的操作"
+	"apihelp-bs-usermanager-tasks-description": "提供用于Checklist扩展的操作",
+	"bs-usermanager-no-self-block": "您不能禁用您自己。",
+	"bs-usermanager-block-error": "{{GENDER:$1|用户}}$1不能被禁用。",
+	"bs-usermanager-unblock-error": "{{GENDER:$1|用户}}$1不能被启用。",
+	"bs-usermanager-headerenabled": "已启用",
+	"bs-usermanager-log-user-disabled": "{{GENDER:$1|用户}}$1已通过用户管理器禁用",
+	"bs-usermanager-user-disabled": "{{GENDER:$1|用户}}$1已被禁用。",
+	"bs-usermanager-user-enabled": "{{GENDER:$1|用户}}$1已被启用。",
+	"bs-usermanager-endisable": "启用/禁用",
+	"bs-usermanager-confirmdisableuser": "您真的要禁用{{GENDER:$1|用户}}$1么？",
+	"bs-usermanager-confirmenableuser": "您真的要启用{{GENDER:$1|用户}}$1么？",
+	"bs-usermanager-titledisableuser": "禁用用户",
+	"bs-usermanager-titleenableuser": "启用用户",
+	"usermanager": "用户管理",
+	"action-usermanager-viewspecialpage": "查看特殊页面“用户管理”",
+	"bs-usermanager-group-add-not-allowed": "您不被允许添加用户至用户组$1",
+	"bs-usermanager-group-remove-not-allowed": "您不被允许从用户组$1中移除用户"
 }

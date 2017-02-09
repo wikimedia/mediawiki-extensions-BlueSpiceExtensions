@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sagan",
-			"Азат Хәлилов"
+			"Азат Хәлилов",
+			"Ләйсән"
 		]
 	},
 	"bs-usermanager-desc": "Ҡулланыусыларҙы өҫтәү һәм юйыу өсөн хакимиәт интерфейсы",
@@ -26,7 +27,7 @@
 	"bs-usermanager-headergroups": "Төркөмдәр",
 	"bs-usermanager-titleadduser": "Ҡатнашыусыны өҫтәргә",
 	"bs-usermanager-titleeditdetails": "Ҡатнашыусыны мөхәррирләргә",
-	"bs-usermanager-labelnewpassword": "Пароль",
+	"bs-usermanager-labelnewpassword": "Серһүҙ",
 	"bs-usermanager-labelpasswordcheck": "Паролде раҫлағыҙ",
 	"bs-usermanager-titledeleteuser": "Ҡатнашыусыны юйырға",
 	"bs-usermanager-confirmdeleteuser": "{{PLURAL:$1|Был ҡатнашыусыны}} ысынлап та юйырға теләйһегеҙме?",
