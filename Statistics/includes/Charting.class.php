@@ -5,7 +5,6 @@
  * Part of BlueSpice for MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
-
  * @package    BlueSpice_Extensions
  * @subpackage Statistics
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
@@ -16,7 +15,7 @@
 /**
  * Prepares data and chart for Statistics for BlueSpice.
  * @package    BlueSpice_Extensions
- * @subpackage Statistics 
+ * @subpackage Statistics
  */
 class BsCharting {
 
@@ -46,13 +45,11 @@ class BsCharting {
 			$sActiveFilterText = $oFilter->getActiveFilterText();
 			if ( !empty( $sActiveFilterText ) ) $oDiagram->addFilterText( "<br/>".$oFilter->getLabel().": ".$sActiveFilterText );
 		}
-
 		$provider->match = $sql;
 
 		$starttime = strtotime( $oDiagram->getStartTime() );
 		// end at last second of the day, hence +24*60*60-1 seconds
 		$endtime = strtotime( $oDiagram->getEndTime() ) + 84599;
-
 
 		$interval = new Interval();
 		$interval->setStartTS($starttime);
@@ -62,8 +59,7 @@ class BsCharting {
 
 		//arsort($diag['data']);
 
-
-		return BsCharting::drawTable($oDiagram);
+		return $oDiagram;
 	}
 
 	/**
@@ -96,44 +92,5 @@ class BsCharting {
 			else $data[] = $item;
 		}
 		return $data;
-	}
-
-	
-
-	/**
-	 * Renders a table with result information
-	 * @param BsDiagram $oDiagram The diagram to prepare chart for
-	 * @return string Rendered HTML
-	 */
-// CR MRG (28.06.11 01:23): View
-	public static function drawTable( $oDiagram ) {
-		$data = $oDiagram->getData();
-		$label = $oDiagram->getListLabel();
-		$out = '';
-		//$out .= "<div style='font-size:14px;font-weight:bold;text-align:center;'>".$oDiagram->getTitle()."</div>";
-		//$out .= "<div id='StatisticsTableViewHeader'>".$oDiagram->getTitle()."</div>";
-		//$out .= "<div style='font-size:12px;text-align:center;'>".$oDiagram->getDescription()."</div>";
-		//$out .= "<div style='font-size:11px;text-align:left;'>";
-		//$out .= $oDiagram->getFilterText();
-		//$out .= "<br>n = ".count( $data );
-		//$out .= "</div>";
-		wfRunHooks( 'BSStatisticsBeforeDrawTable', array( &$oDiagram, &$label, &$data, &$out) );
-		$out .= "<table width='80%' id='StatisticsTableView' border='0' cellspacing='0' cellpadding='4' class='sortable'>";
-		if ($label) {
-			$out .= '<thead><tr>';
-			foreach ($label as $col)
-				$out .= '<th>'.$col.'</th>';
-			$out .= '</tr></thead>';
-		}
-
-		foreach ($data as $value)
-		{
-			$out .= '<tr>';
-			foreach ($value as $col)
-				$out .= '<td>'.utf8_encode($col).'</td>';
-			$out .= '</tr>';
-		}
-		$out .= '</table>';
-		return $out;
 	}
 }
