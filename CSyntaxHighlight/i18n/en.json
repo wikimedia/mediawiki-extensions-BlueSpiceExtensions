@@ -9,5 +9,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Theme:",
 	"bs-csyntaxhighlight-pref-gutter": "Show line numbers",
 	"bs-csyntaxhighlight-pref-autolinks": "Link URLs",
-	"bs-csyntaxhighlight-pref-toolbar": "Show toolbar"
+	"bs-csyntaxhighlight-pref-toolbar": "Show toolbar",
+	"bs-csyntaxhighlight-tag-desc": "Inserts CSyntaxHighlight tag, used to display formatted code snippets"
 }
