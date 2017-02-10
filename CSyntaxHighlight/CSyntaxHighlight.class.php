@@ -179,4 +179,25 @@ class CSyntaxHighlight extends BsExtensionMW {
 		return true;
 	}
 
+	/**
+	 * Hook-Handler for Hook 'BSInsertMagicAjaxGetData'
+	 * @param object $oResponse
+	 * @param string $sType
+	 * @return boolean Always true to keep hook running
+	 */
+	public function onBSInsertMagicAjaxGetData( $oResponse, $sType ) {
+		if( $sType !== "tags" ) return true;
+
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = "<pre></pre>";
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = "source";
+		$oDescriptor->desc = wfMessage( 'bs-csyntaxhighlight-tag-desc' )->text();
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/CSyntaxHighlight';
+		$oDescriptor->code = "<pre brush:{lang}></pre>";
+		$oDescriptor->previewable = true;
+
+		$oResponse->result[] = $oDescriptor;
+		return true;
+	}
 }

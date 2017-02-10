@@ -7,3 +7,5 @@ $GLOBALS['wgAutoloadClasses']['CSyntaxHighlight'] = __DIR__ . '/CSyntaxHighlight
 $wgMessagesDirs['CSyntaxHighlight'] = __DIR__ . '/i18n';
 
 $wgExtensionMessagesFiles['CSyntaxHighlight'] = __DIR__ . '/languages/CSyntaxHighlight.i18n.php';
+
+$wgHooks['BSInsertMagicAjaxGetData'][] = "CSyntaxHighlight::onBSInsertMagicAjaxGetData";
