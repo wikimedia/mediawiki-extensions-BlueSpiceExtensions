@@ -21,5 +21,8 @@
     "AutoloadClasses": {
             "CSyntaxHighlight": "CSyntaxHighlight.class.php"
     },
+	"Hooks": {
+			"BSInsertMagicAjaxGetData": "CSyntaxHighlight::onBSInsertMagicAjaxGetData"
+	},
     "manifest_version": 1
 }
