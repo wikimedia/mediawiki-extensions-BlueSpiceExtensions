@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Fulup"
 		]
 	},
 	"bs-interwikilinks-desc": "Etrefas merañ da ouzhpennañ, aozañ ha dilemel al lialloù etrewiki",
@@ -24,5 +25,6 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Ha sur oc'h e fell deoc'h dilemel al liamm interwiki-mañ ?",
 	"bs-interwikilinks-insertlink-tabtitle": "Liamm war-zu ur wiki all",
 	"bs-interwikilinks-insertlink-labelprefix": "Rakger",
-	"bs-interwikilink-select-a-prefix": "Choaz ur rakger"
+	"bs-interwikilink-select-a-prefix": "Choaz ur rakger",
+	"interwikilinks": "Liammoù etrewiki"
 }
