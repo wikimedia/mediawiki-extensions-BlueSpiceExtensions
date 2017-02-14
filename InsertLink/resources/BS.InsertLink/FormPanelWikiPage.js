@@ -99,13 +99,16 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 	},
 	getData: function() {
 		var title = this.callParent();
-
 		var desc = '';
 		if ( title !== '' ) {
 			desc = '|'+title;
 		}
 
 		var value = this.cbPageName.getValue();
+
+		if( !value ) {
+			return null;
+		}
 
 		var text = value.getPrefixedText();
 
