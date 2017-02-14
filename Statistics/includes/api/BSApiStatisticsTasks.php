@@ -130,8 +130,48 @@ class BSApiStatisticsTasks extends BSApiTasksBase {
 		$oDiagram->setData( BsCharting::getDataPerDateInterval( $oReader, $oDiagram->getMode(), $intervals, $oDiagram->isListable() ) );
 
 		if ( $oDiagram->isList() ) {
-			//$aResult['data']['list'] = BsCharting::drawTable($oDiagram);
-			$oResponse->payload['data']['list'] = BsCharting::prepareList( $oDiagram, $oReader );
+			BsCharting::prepareList( $oDiagram, $oReader );
+			$aDatas = $oDiagram->getData();
+			$aLabels = $oDiagram->getListLabel();
+
+			$aFields = array();
+			$aColumns = array();
+			foreach( $aLabels as $sLabel ) {
+				$sField = strtolower( $sLabel );
+				$sField = str_replace( " ", "_", $sField );
+				$aFields[] = array( 'name' => $sField );
+				$aColumns[] = array( 'header' => $sLabel, 'dataIndex' => $sField );
+			}
+
+			$aList = array();
+			$aTypes = array();
+			foreach( $aDatas as $aData ){
+				$aItem = array();
+				for( $i = 0; $i < count( $aData ); $i++ ) {
+					if( $this->isInt( $aData[ $i ] ) ) {
+						$aTypes[ $aFields[ $i ][ 'name' ] ][] = 'int';
+					}
+					$aItem[ $aFields[ $i ][ 'name' ] ] = $aData[ $i ];
+				}
+				$aList[ 'items' ][] = $aItem;
+			}
+
+			foreach( $aTypes as $key=>$value ) {
+				$sColumnType = "string";
+				if( count( array_unique( $value ) ) === 1 ) {
+					$sColumnType = $value[0];
+				}
+
+				for( $i = 0; $i < count( $aFields ); $i++ ) {
+					if( $aFields[ $i ][ 'name' ] === $key ) {
+						$aFields[ $i ][ 'type' ] = $sColumnType;
+					}
+				}
+			}
+
+			$oResponse->payload['data']['list'] = $aList;
+			$oResponse->payload['data']['fields'] = $aFields;
+			$oResponse->payload['data']['columns'] = $aColumns;
 			$oResponse->payload['label'] = $oDiagram->getTitle();
 			$oResponse->success = true;
 			return $oResponse;
@@ -158,5 +198,12 @@ class BSApiStatisticsTasks extends BSApiTasksBase {
 		$oResponse->success = true;
 		return $oResponse;
 
+	}
+
+	protected function isInt( $sValue ) {
+		if( is_numeric( $sValue ) && gettype( $sValue + 0) === 'integer') {
+			return true;
+		}
+		return false;
 	}
 }
