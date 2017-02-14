@@ -107,6 +107,8 @@ var BsInsertLinkWikiTextConnector = {
 		return {code: bs.util.selection.save()};
 	},
 	applyData: function(window, data) {
+		if( data === null ) return;
+
 		if (data.href === "" || data.href === "mailto:" || data.href === "href://") {
 			bs.util.alert('bs-insertLink-empty-field',
 					{
@@ -171,6 +173,8 @@ var BsInsertLinkVisualEditorConnector = {
 		return data;
 	},
 	applyData: function(window, data, plugin) {
+		if( data === null ) return;
+
 		var editor = plugin.getEditor();
 		editor.selection.moveToBookmark(BsInsertLinkVisualEditorConnector.bookmark);
 		editor.focus();
