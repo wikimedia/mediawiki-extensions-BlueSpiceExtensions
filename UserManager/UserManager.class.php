@@ -390,6 +390,12 @@ class UserManager extends BsExtensionMW {
 		}
 
 		$oStatus = Status::newGood( $oUser );
+		$oUser->load( User::READ_LATEST );
+		if ( $oUser->getUserPage()->exists() ) {
+			$oUserPageArticle = new Article( $oUser->getUserPage() );
+			$oUserPageArticle->doDelete( wfMessage( 'bs-usermanager-db-error' )->plain() );
+		}
+
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->delete( 'user',
 			array( 'user_id' => $oUser->getId() )
@@ -405,11 +411,6 @@ class UserManager extends BsExtensionMW {
 			array( 'ss_users' => $iUsers ),
 			array( 'ss_row_id' => 1 )
 		);
-
-		if ( $oUser->getUserPage()->exists() ) {
-			$oUserPageArticle = new Article( $oUser->getUserPage() );
-			$oUserPageArticle->doDelete( wfMessage( 'bs-usermanager-db-error' )->plain() );
-		}
 
 		if ( ( $res === false ) || ( $res1 === false ) || ( $res2 === false ) || ( $res3 === false ) ) {
 			$oStatus->merge( Status::newFatal( 'bs-usermanager-db-error' ) );
