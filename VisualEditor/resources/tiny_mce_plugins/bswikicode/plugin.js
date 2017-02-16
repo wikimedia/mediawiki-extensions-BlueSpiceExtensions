@@ -683,7 +683,8 @@ var BsWikiCode = function() {
 				}
 
 				if (type === "internal_link") {
-					if (target === label ) { //TinyMCE3: tinymce.activeEditor.dom.decode(label)
+					var decodedTarget = target.replace(/&amp;/g, '&');
+					if (target === label || decodedTarget === label) { //TinyMCE3: tinymce.activeEditor.dom.decode(label)
 						linkwiki = "[[" + target + "]]";
 					} else {
 						linkwiki = "[[" + target + "|" + label + "]]";
