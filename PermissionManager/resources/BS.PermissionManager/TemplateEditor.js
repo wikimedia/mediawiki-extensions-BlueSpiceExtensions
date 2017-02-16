@@ -15,6 +15,7 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 	closeAction: 'hide',
 	_cleanState: true,
 	_hasChanged: false,
+	_closeDialog: true,
 	constructor: function(config) {
 		this._treeStore = Ext.create('BS.PermissionManager.store.TemplateTree');
 		this._permissionStore = Ext.create('BS.PermissionManager.store.TemplatePermissions');
@@ -34,6 +35,12 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 	hasChanged: function() {
 		return this._hasChanged;
 	},
+	setCloseDialog: function(close) {
+		this._closeDialog = close;
+	},
+	getCloseDialog: function() {
+		return this._closeDialog;
+	},
 	saveTemplate: function() {
 		var me = this;
 		var record = Ext.getCmp('bs-template-editor-treepanel')
@@ -47,7 +54,6 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 		};
 
 		if (typeof record !== 'undefined') {
-
 			for (var i in me._permissionStore.data.items) {
 				var dataSet = me._permissionStore.data.items[i].data;
 				if (dataSet.enabled === true) {
@@ -79,17 +85,25 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 							.lookup('bs-permissionmanager-permission-store')
 							.loadRawData(dataManager.buildPermissionData().permissions);
 
-					Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(
-							me._treeStore.getNodeById(newRecord.text)
-							);
+					if( me.getCloseDialog() ) {
+						Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(
+								me._treeStore.getNodeById(newRecord.text)
+								);
+					}
+
 					mw.notify( mw.msg( 'bs-permissionmanager-msgtpled-success' ), { title: mw.msg( 'bs-extjs-title-success' ) } );
 				} else {
 					bs.util.alert( 'bs-pm-save-tpl-error', {
 						text: result.msg
 					});
 				}
-				me.hide();
+
+				if ( me.getCloseDialog() ) {
+					me.hide();
+				}
+				me.setCloseDialog(true);
 			});
+
 		}
 	},
 	discardChanges: function() {
@@ -115,7 +129,9 @@ Ext.define('BS.PermissionManager.TemplateEditor', {
 				text: mw.message('bs-permissionmanager-msgtpled-saveonabort').plain()
 			});
 			dialog.on('ok', function() {
+				me.setCloseDialog(false);
 				me.saveTemplate();
+				me.setCleanState(true);
 				if (record !== false) {
 					Ext.getCmp('bs-template-editor-treepanel').getSelectionModel().select(record);
 				}
