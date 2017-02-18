@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Metalhead64",
-			"Osnard"
+			"Osnard",
+			"Umherirrender"
 		]
 	},
 	"bs-shoutbox-desc": "Ergänzt eine Parserfunktion zur Einbettung deiner eigenen Kommentarbox",
@@ -12,7 +13,7 @@
 	"bs-shoutbox-message": "Verfasse einen neuen Kommentar …",
 	"bs-shoutbox-shout": "Senden",
 	"bs-shoutbox-no-entries": "Bisher wurden keine Mitteilungen gesendet.",
-	"bs-shoutbox-loading": "Lade...",
+	"bs-shoutbox-loading": "Lade …",
 	"bs-shoutbox-pref-committimeinterval": "Zeit zwischen zwei Eintragungen (Sekunden):",
 	"bs-shoutbox-pref-maxmessagelength": "Maximale Länge der Mittelungen",
 	"bs-shoutbox-pref-numberofshouts": "Anzahl der dargestellten Mitteilungen",

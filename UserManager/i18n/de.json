@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Umherirrender"
 		]
 	},
 	"bs-usermanager-desc": "Administrationsoberfläche für das Hinzufügen, Bearbeiten und Löschen von Benutzern",
@@ -30,7 +31,7 @@
 	"bs-usermanager-labelpasswordcheck": "Passwort bestätigen",
 	"bs-usermanager-titledeleteuser": "Benutzer löschen",
 	"bs-usermanager-confirmdeleteuser": "Bist du sicher, dass du {{PLURAL:$1|diesen|diese $1}} Benutzer löschen willst?",
-	"bs-usermanager-groups-more": "... mehr",
+	"bs-usermanager-groups-more": "… mehr",
 	"bs-usermanager-no-self-desysop": "Du kannst dir nicht selbst das Sysop recht nehmen.",
 	"apihelp-bs-usermanager-tasks-description": "Bietet Operationen für die Prüflistenerweiterung",
 	"bs-usermanager-no-self-block": "Du kannst nicht dich selbst deaktivieren.",

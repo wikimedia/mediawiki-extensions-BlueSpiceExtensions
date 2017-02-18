@@ -5,7 +5,8 @@
 			"Smuggli",
 			"Kghbln",
 			"Metalhead64",
-			"Eddie"
+			"Eddie",
+			"Umherirrender"
 		]
 	},
 	"bs-extendedsearch-desc": "Apache-[http://lucene.apache.org/solr/ Solr]-basiertes Such-Plugin zur Erweiterung der Suchfunktionalität",
@@ -47,7 +48,7 @@
 	"bs-extendedsearch-sort-type": "Typ",
 	"bs-extendedsearch-specialpage-form-return-to-simple": "Einfaches Suchformular",
 	"bs-extendedsearch-specialpage-form-expand-to-extended": "Erweitertes Suchformular",
-	"bs-extendedsearch-searchfulltext": "Volltextsuche nach ...",
+	"bs-extendedsearch-searchfulltext": "Volltextsuche nach …",
 	"bs-extendedsearch-pref-searchfiles": "Dateien standardmäßig durchsuchen",
 	"bs-extendedsearch-pref-defscopeuser": "Standard für Suche:",
 	"bs-extendedsearch-pref-scope-text": "Volltext",
@@ -76,7 +77,7 @@
 	"bs-extendedsearch-pref-showmlt": "Ähnliche Seiten anzeigen",
 	"bs-extendedsearch-pref-solrcore": "Solr Core Instanz:",
 	"bs-extendedsearch-pref-mltns": "\"Ähnliche Seiten\" Namensräume:",
-	"bs-extendedsearch-about-to-start": "Starte...",
+	"bs-extendedsearch-about-to-start": "Starte …",
 	"bs-extendedsearch-index-successfully-deleted": "Der Index wurde erfolgreich gelöscht.",
 	"bs-extendedsearch-create-index": "Index neu erstellen",
 	"bs-extendedsearch-delete-index": "Index löschen",

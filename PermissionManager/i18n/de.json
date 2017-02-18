@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Umherirrender"
 		]
 	},
 	"bs-permissionmanager-desc": "Administrationsoberfläche zur Bearbeitung von Benutzerrechten",
@@ -16,7 +17,7 @@
 	"bs-permissionmanager-header-namespaces": "Namensräume",
 	"bs-permissionmanager-header-group": "Gruppe",
 	"bs-permissionmanager-btn-save-label": "Speichern",
-	"bs-permissionmanager-btn-save-in-progress-label": "Speichert ...",
+	"bs-permissionmanager-btn-save-in-progress-label": "Speichert …",
 	"bs-permissionmanager-save-success": "Rechte wurden gespeichert.",
 	"bs-permissionmanager-labeltemplates": "Vorlagen",
 	"bs-permissionmanager-btn-template-editor": "Vorlagen bearbeiten",
