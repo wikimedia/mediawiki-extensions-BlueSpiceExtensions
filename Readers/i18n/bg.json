@@ -4,5 +4,6 @@
 			"StanProg"
 		]
 	},
-	"bs-readers-header-username": "Потребителско име"
+	"bs-readers-header-username": "Потребителско име",
+	"bs-readers-header-ts": "Дата"
 }
