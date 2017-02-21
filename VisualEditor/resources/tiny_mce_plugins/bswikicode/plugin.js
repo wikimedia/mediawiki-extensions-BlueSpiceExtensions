@@ -2302,7 +2302,23 @@ var BsWikiCode = function() {
 		}
 		_images = []; //Reset the images "array"
 		e.content = _wiki2html(e.content);
+
+		//Find button elements with no content and set content to ' ', to prevent removing
+		e.content = e.content.replace(/><\/button>/g, '>&nbsp;</button>');
+
 		_loadImageRealUrls();
+	}
+
+	/**
+	 * Event handler for "setContent"
+	 * This is used for post-processing.
+	 * @param {tinymce.ContentEvent} e
+	 */
+	function _onSetContent(e) {
+		if( e.format === 'raw' ) return;
+
+		//Reverses change made but <button> in beforeSetContent, removes empty space
+		e.content = e.content.replace(/>\s<\/button>/g, '></button>');
 	}
 
 	/**
@@ -2403,6 +2419,7 @@ var BsWikiCode = function() {
 		_ed = ed;
 
 		ed.on('beforeSetContent', _onBeforeSetContent);
+		ed.on('setContent', _onSetContent);
 		ed.on('getContent', _onGetContent);
 		ed.on('loadContent', _onLoadContent);
 
