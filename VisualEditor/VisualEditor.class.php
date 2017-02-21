@@ -407,7 +407,7 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 	 * @param string $sLangCode
 	 * @return array
 	 */
-	public function makeConfig( $oParser, $sLangCode = null ) {
+	public function makeConfig( Parser $oParser = null, $sLangCode = null ) {
 		if( $sLangCode == null ) {
 			$sLangCode = $this->getLanguage()->getCode();
 		}
@@ -431,7 +431,12 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 			unset( $aConfigs['overwrite']['auto_focus'] );
 		}
 
-		$aExtensionTags = $oParser->getTags(); //TODO: Use, or at least fall back to API "action=query&meta=siteinfo&siprop=extensiontags"
+		if( !$oParser instanceof Parser ) {
+			$oParser = new Parser();
+		}
+		//TODO: Use, or at least fall back to API
+		//"action=query&meta=siteinfo&siprop=extensiontags"
+		$aExtensionTags = $oParser->getTags();
 		$sAllowedTags = '';
 		$sSpecialTags = '';
 		foreach ( $aExtensionTags as $sTagName ) {
