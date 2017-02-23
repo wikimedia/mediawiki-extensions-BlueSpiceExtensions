@@ -11,5 +11,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for theme:\n{{Identical|Theme}}",
 	"bs-csyntaxhighlight-pref-gutter": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show line numbers",
 	"bs-csyntaxhighlight-pref-autolinks": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for link URLs",
-	"bs-csyntaxhighlight-pref-toolbar": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show toolbar"
+	"bs-csyntaxhighlight-pref-toolbar": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show toolbar",
+	"bs-csyntaxhighlight-tag-desc": "Used in InsertMagic extension, description of the tag that displays formatted code snippets."
 }
