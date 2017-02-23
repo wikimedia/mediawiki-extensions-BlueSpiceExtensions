@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-aboutbluespice-desc": "Información tocante a BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "Tocante a BlueSpice",
+	"aboutbluespice": "Tocante a BlueSpice",
+	"prefs-aboutbluespice": "Tocante a BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Amosar l'enllaz «{{int:bs-aboutbluespice-about-bluespice}}» nel menú cimeru y principal",
+	"action-aboutbluespice-viewspecialpage": "ver la páxina especial «{{int:bs-aboutbluespice-about-bluespice}}»"
+}
