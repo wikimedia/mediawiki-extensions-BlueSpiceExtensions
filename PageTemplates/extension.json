@@ -29,7 +29,10 @@
 		"BSApiPageTemplatesStore": "includes/api/BSApiPageTemplatesStore.php",
 		"BSApiPageTemplatesTasks": "includes/api/BSApiPageTemplatesTasks.php",
 		"PageTemplatesAdmin": "PageTemplatesAdmin.class.php",
-		"SpecialPageTemplatesAdmin": "includes/specials/SpecialPageTemplatesAdmin.class.php"
+		"SpecialPageTemplatesAdmin": "includes/specials/SpecialPageTemplatesAdmin.class.php",
+		"BSPageTemplateList": "includes/BSPageTemplateList.php",
+		"BSPageTemplateListRenderer": "includes/BSPageTemplateListRenderer.php",
+		"BSPageTemplateFixtures": "tests/phpunit/utility/BSPageTemplateFixtures.php"
 	},
 	"ExtensionMessagesFiles": {
 		"PageTemplatesAdminAlias": "includes/specials/SpecialPageTemplatesAdmin.alias.php"
@@ -56,6 +59,12 @@
 				"bs-pagetemplates-remove-message-success",
 				"bs-pagetemplates-remove-message-failure"
 			]
+		},
+		"ext.bluespice.pageTemplates.tag": {
+			"scripts": "bluespice.pageTemplates.tag.js"
+		},
+		"ext.bluespice.pageTemplates.styles": {
+			"styles": "bluespice.pageTemplates.less"
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -64,7 +73,8 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "PageTemplates::getSchemaUpdates",
-		"BSUsageTrackerRegisterCollectors": "PageTemplates::onBSUsageTrackerRegisterCollectors"
+		"BSUsageTrackerRegisterCollectors": "PageTemplates::onBSUsageTrackerRegisterCollectors",
+		"UnitTestsList": "PageTemplates::onUnitTestsList"
 	},
 	"manifest_version": 1
 }

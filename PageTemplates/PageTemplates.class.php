@@ -23,7 +23,7 @@
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Stephan Muggli <muggli@hallowelt.com>
- * @version    2.23.1
+ * @version    2.27.0
  * @package    BlueSpice_Extensions
  * @subpackage PageTemplates
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
@@ -66,6 +66,7 @@ class PageTemplates extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::PageTemplates::ForceNamespace', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-forcenamespace', 'toggle' );
 		// Hide template if page is not in target namespace
 		BsConfig::registerVar( 'MW::PageTemplates::HideIfNotInTargetNs', true, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-hideifnotintargetns', 'toggle' );
+		BsConfig::registerVar( 'MW::PageTemplates::HideDefaults', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-pagetemplates-pref-hidedefaults', 'toggle' );
 
 		$this->mCore->registerPermission( 'pagetemplatesadmin-viewspecialpage', array( 'sysop' ), array( 'type' => 'global' ) );
 
@@ -158,6 +159,8 @@ class PageTemplates extends BsExtensionMW {
 	 * @return string replacement HTML for the tag
 	 */
 	public function onTagPageTemplates( $input, $args, $parser ) {
+		$parser->getOutput()->addModules( 'ext.bluespice.pageTemplates.tag' );
+		$parser->getOutput()->addModuleStyles( 'ext.bluespice.pageTemplates.styles' );
 		return $this->renderPageTemplates();
 	}
 
@@ -167,175 +170,19 @@ class PageTemplates extends BsExtensionMW {
 	 * @return string The rendered output
 	 */
 	protected function renderPageTemplates() {
-		global $wgDBtype;
-
 		$oTitle = $this->getTitle();
 		// if we are not on a wiki page, return. This is important when calling import scripts that try to create nonexistent pages, e.g. importImages
 		if ( !is_object( $oTitle ) ) return true;
 
-		$aRes = array();
-		$aOutNs = array();
-		$dbr = wfGetDB( DB_SLAVE );
+		$oPageTemplateList = new BSPageTemplateList( $oTitle, array(
+			BSPageTemplateList::HIDE_IF_NOT_IN_TARGET_NS => BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ),
+			BSPageTemplateList::FORCE_NAMESPACE => BsConfig::get( 'MW::PageTemplates::ForceNamespace' ),
+			BSPageTemplateList::HIDE_DEFAULTS => BsConfig::get( 'MW::PageTemplates::HideDefaults' )
+		) );
 
-		$aConds = array();
-		if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) ) {
-			if ( $wgDBtype == 'postgres' ) {
-				$aConds[] = "pt_target_namespace IN ('" . $oTitle->getNamespace() . "', '-99')";
-			} else {
-				$aConds[] = 'pt_target_namespace IN (' . $oTitle->getNamespace() . ', -99)';
-			}
-		}
-
-		if ( $wgDBtype == 'postgres' ) {
-			$aFields = array( "pt_template_title, pt_template_namespace, pt_label, pt_desc, pt_target_namespace" );
-		} else {
-			$aFields = array( 'pt_template_title', 'pt_template_namespace', 'pt_label', 'pt_desc', 'pt_target_namespace' );
-		}
-
-		$res = $dbr->select(
-			array( 'bs_pagetemplate' ),
-			$aFields,
-			$aConds,
-			__METHOD__,
-			array( 'ORDER BY' => 'pt_label' )
-		);
-
-		// There is always one template for empty page it is added some lines beneath that
-		$iCount = $dbr->numRows( $res ) + 1;
-		$sOut = wfMessage( 'bs-pagetemplates-choose-template', $iCount )->parse();
-		$sOutAll = '';
-		$oTargetNsTitle = null;
-
-		$sOut .= '<br /><br /><ul><li>';
-		$sOut .= BsLinkProvider::makeLink( $oTitle, wfMessage( 'bs-pagetemplates-empty-page' )->plain(), array(), array( 'preload' => '' ) );
-		$sOut .= '<br />' . wfMessage( 'bs-pagetemplates-empty-page-desc' )->plain();
-		$sOut .= '</li></ul>';
-
-		$oSortingTitle = Title::makeTitle( NS_MEDIAWIKI, 'PageTemplatesSorting' );
-		$vOrder = BsPageContentProvider::getInstance()->getContentFromTitle( $oSortingTitle );
-		$vOrder = explode( '*', $vOrder );
-		$vOrder = array_map( 'trim', $vOrder );
-
-		if ( $res && $dbr->numRows( $res ) > 0 ) {
-			while ( $row = $dbr->fetchObject( $res ) ) {
-				$aRes[] = $row;
-			}
-		}
-		$dbr->freeResult( $res );
-
-		foreach( $aRes as $row ) {
-			$oNsTitle = Title::makeTitle( $row->pt_template_namespace, $row->pt_template_title );
-
-			// TODO MRG (06.09.11 12:53): -99 is "all namespaces". Pls use a more telling constant
-			if ( ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) && $row->pt_target_namespace != "-99" )
-				|| $row->pt_target_namespace == $oTitle->getNamespace()
-				|| BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
-
-				$sNamespaceName = BsNamespaceHelper::getNamespaceName( $row->pt_target_namespace );
-				if ( !isset( $aOutNs[$sNamespaceName] ) ) {
-					$aOutNs[$sNamespaceName] = array();
-				}
-
-				if ( BsConfig::get( 'MW::PageTemplates::ForceNamespace' ) ) {
-					$oTargetNsTitle = Title::makeTitle( $row->pt_target_namespace, $oTitle->getText() );
-				} else {
-					$oTargetNsTitle = $oTitle;
-				}
-
-				$sLink = BsLinkProvider::makeLink(
-					$oTargetNsTitle,
-					$row->pt_label,
-					array(),
-					array( 'preload' => $oNsTitle->getPrefixedText() )
-				);
-				$sLink = '<li>' . $sLink;
-				if ( $row->pt_desc ) $sLink .= '<br/>' . $row->pt_desc;
-				$sLink .= '</li>';
-
-				$aOutNs[$sNamespaceName][] = array(
-					'link' => $sLink,
-					'id' => $row->pt_target_namespace
-				);
-			} elseif ( $row->pt_target_namespace == "-99" ) {
-				$sLink = BsLinkProvider::makeLink(
-					$oTitle,
-					$row->pt_label,
-					array(),
-					array( 'preload' => $oNsTitle->getPrefixedText() )
-				);
-				$sOutAll .= '<li>' . $sLink;
-
-				if ( $row->pt_desc ) $sOutAll .= '<br />' . $row->pt_desc;
-
-				$sOutAll .= '</li>';
-			}
-		}
-
-		if ( !empty( $vOrder ) ) {
-			$aTmp = array();
-			foreach ( $vOrder as $key => $value ) {
-				if ( empty( $value ) ) continue;
-				if ( array_key_exists( $value, $aOutNs ) ) {
-					$aTmp[$value] = $aOutNs[$value];
-				}
-			}
-
-			$aOutNs = $aTmp + array_diff_key( $aOutNs, $aTmp );
-		}
-
-		$aLeftCol = array();
-		$aRightCol = array();
-		foreach ( $aOutNs as $sNs => $aTmpOut ) {
-			foreach ( $aTmpOut as $key => $aAttribs ) {
-				$sNamespaceName = BsNamespaceHelper::getNamespaceName( $aAttribs['id'] );
-				if ( $aAttribs['id'] == $oTitle->getNamespace() || $aAttribs['id'] == -99 ) {
-					$aLeftCol[$sNamespaceName][] = '<ul>' . $aAttribs['link'] . '</ul>';
-				} else {
-					$aRightCol[$sNamespaceName][] = '<ul>' . $aAttribs['link'] . '</ul>';
-				}
-			}
-		}
-
-		if ( $sOutAll !== '' ) {
-			$sSectionGeneral = wfMessage( 'bs-pagetemplates-general-section' )->plain();
-			$aLeftCol[$sSectionGeneral][] = '<ul>' . $sOutAll . '</ul>';
-		}
-
-		$sOut .= '<br />';
-
-		if ( !empty( $aLeftCol ) || ( !empty( $aRightCol ) && BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) ) {
-			$sOut .= '<table><tr>';
-
-			if ( !empty( $aLeftCol ) ) {
-				$sOut .= '<td style="vertical-align:top;">';
-				foreach ( $aLeftCol as $sNamespace => $aHtml ) {
-					if ( $sNamespace == wfMessage( 'bs-ns_all' )->plain() ) {
-						$sNamespace = wfMessage( 'bs-pagetemplates-general-section' )->plain();
-					}
-
-					$sOut .= '<br />';
-					$sOut .= '<h3>' . $sNamespace . '</h3>';
-					$sOut .= implode( '', $aHtml );
-				}
-				$sOut .= '</td>';
-			}
-
-			if ( BsConfig::get( 'MW::PageTemplates::HideIfNotInTargetNs' ) == false ) {
-				if ( !empty( $aRightCol ) ) {
-					$sOut .= '<td style="vertical-align:top;">';
-					foreach ( $aRightCol as $sNamespace => $aHtml ) {
-						$sOut .= '<br />';
-						$sOut .= '<h3>' . $sNamespace . '</h3>';
-						$sOut .= implode( '', $aHtml );
-					}
-					$sOut .= '</td>';
-				}
-			}
-
-			$sOut .= '</tr></table>';
-		}
-
-		return $sOut;
+		$oPageTemplateListRenderer = new BSPageTemplateListRenderer();
+		Hooks::run( 'BSPageTemplatesBeforeRender', [ $this, &$oPageTemplateList, &$oPageTemplateListRenderer, $oTitle ] );
+		return $oPageTemplateListRenderer->render( $oPageTemplateList );
 	}
 
 	/**
@@ -396,6 +243,16 @@ class PageTemplates extends BsExtensionMW {
 				'uniqueColumns' => array( 'pt_id' )
 			)
 		);
+		return true;
+	}
+
+	/**
+	 * Register PHP Unit Tests with MediaWiki framework
+	 * @param array $paths
+	 * @return boolean
+	 */
+	public static function onUnitTestsList( &$paths ) {
+		$paths[] =  __DIR__ . '/tests/phpunit/';
 		return true;
 	}
 }
