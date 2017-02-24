@@ -26,6 +26,7 @@
 	"bs-pagetemplates-pref-excludens": "Do not show templates in these namespaces:",
 	"bs-pagetemplates-pref-forcenamespace": "Force target namespace",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Hide template if the page is not to be created in the target namespace",
+	"bs-pagetemplates-pref-hidedefaults": "Hide default templates",
 	"bs-pagetemplates-headerlabel": "Label",
 	"bs-pagetemplates-headertargetnamespace": "Namespace",
 	"bs-pagetemplates-tipeditdetails": "Edit template",

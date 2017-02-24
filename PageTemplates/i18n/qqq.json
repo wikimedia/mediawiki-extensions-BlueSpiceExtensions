@@ -33,6 +33,7 @@
 	"bs-pagetemplates-pref-excludens": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for do not show templates in these namespaces:",
 	"bs-pagetemplates-pref-forcenamespace": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for force target namespace",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for hide template if the page is not to be created in the target namespace",
+	"bs-pagetemplates-pref-hidedefaults": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for hide default templates",
 	"bs-pagetemplates-headerlabel": "This is the label for the field named \"label\".\n{{Identical|Label}}",
 	"bs-pagetemplates-headertargetnamespace": "Label for namespace\n{{Identical|Namespace}}",
 	"bs-pagetemplates-tipeditdetails": "Translate as \"the template\"\n{{Identical|Edit template}}",

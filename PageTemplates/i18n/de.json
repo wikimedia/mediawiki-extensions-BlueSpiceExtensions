@@ -30,6 +30,7 @@
 	"bs-pagetemplates-pref-excludens": "In diesen Namensräumen keine Vorlagen anzeigen:",
 	"bs-pagetemplates-pref-forcenamespace": "Ziel-Namensraum erzwingen",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Vorlage verstecken, wenn die Seite nicht im Zielnamensraum angelegt wird",
+	"bs-pagetemplates-pref-hidedefaults": "Standardvorlagen ausblenden",
 	"bs-pagetemplates-headerlabel": "Name",
 	"bs-pagetemplates-headertargetnamespace": "Namensraum",
 	"bs-pagetemplates-tipeditdetails": "Vorlage bearbeiten",
