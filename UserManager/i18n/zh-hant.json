@@ -26,5 +26,6 @@
 	"bs-usermanager-labelpasswordcheck": "確認密碼",
 	"bs-usermanager-titledeleteuser": "刪除使用者",
 	"bs-usermanager-groups-more": "... 更多",
+	"bs-usermanager-endisable": "啟用/禁用",
 	"bs-usermanager-editpassword": "變更密碼"
 }
