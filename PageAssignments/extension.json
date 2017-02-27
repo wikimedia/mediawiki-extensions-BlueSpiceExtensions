@@ -67,10 +67,7 @@
 		"ViewPAStateBarBodyElement": "includes/views/ViewPAStateBarBodyElement.php",
 		"PageAssignmentsNotificationFormatter": "includes/notifications/PageAssignmentsNotificationFormatter.php",
 		"PageAssignmentsEmailSingle": "includes/notifications/PageAssignmentsEmailSingle.php",
-		"BSPageAssignmentsMigrateRespEditors": "maintenance/BSPageAssignmentsMigrateRespEditors.php",
-		"BSUserManagerAfterDeleteUser": "PageAssignmentsHooks::onBSUserManagerAfterDeleteUser",
-		"BSGroupManagerGroupNameChanged": "PageAssignmentsHooks::onBSGroupManagerGroupNameChanged",
-		"BSGroupManagerGroupDeleted": "PageAssignmentsHooks::onBSGroupManagerGroupDeleted"
+		"BSPageAssignmentsMigrateRespEditors": "maintenance/BSPageAssignmentsMigrateRespEditors.php"
 	},
 	"ResourceModules": {
 		"ext.pageassignments.styles": {
@@ -191,7 +188,10 @@
 		"WikiExplorer::buildDataSets": "PageAssignmentsWikiExplorerHooks::onWikiExplorerBuildDataSets",
 		"BSDashboardsUserDashboardPortalConfig": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalConfig",
 		"BSDashboardsUserDashboardPortalPortlets": "PageAssignmentsDashboardHooks::onBSDashboardsUserDashboardPortalPortlets",
-		"BSUsageTrackerRegisterCollectors": "PageAssignmentsHooks::onBSUsageTrackerRegisterCollectors"
+		"BSUsageTrackerRegisterCollectors": "PageAssignmentsHooks::onBSUsageTrackerRegisterCollectors",
+		"BSUserManagerAfterDeleteUser": "PageAssignmentsHooks::onBSUserManagerAfterDeleteUser",
+		"BSGroupManagerGroupNameChanged": "PageAssignmentsHooks::onBSGroupManagerGroupNameChanged",
+		"BSGroupManagerGroupDeleted": "PageAssignmentsHooks::onBSGroupManagerGroupDeleted"
 	},
 	"manifest_version": 1
 }
