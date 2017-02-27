@@ -67,7 +67,10 @@
 		"ViewPAStateBarBodyElement": "includes/views/ViewPAStateBarBodyElement.php",
 		"PageAssignmentsNotificationFormatter": "includes/notifications/PageAssignmentsNotificationFormatter.php",
 		"PageAssignmentsEmailSingle": "includes/notifications/PageAssignmentsEmailSingle.php",
-		"BSPageAssignmentsMigrateRespEditors": "maintenance/BSPageAssignmentsMigrateRespEditors.php"
+		"BSPageAssignmentsMigrateRespEditors": "maintenance/BSPageAssignmentsMigrateRespEditors.php",
+		"BSUserManagerAfterDeleteUser": "PageAssignmentsHooks::onBSUserManagerAfterDeleteUser",
+		"BSGroupManagerGroupNameChanged": "PageAssignmentsHooks::onBSGroupManagerGroupNameChanged",
+		"BSGroupManagerGroupDeleted": "PageAssignmentsHooks::onBSGroupManagerGroupDeleted"
 	},
 	"ResourceModules": {
 		"ext.pageassignments.styles": {
