@@ -95,7 +95,8 @@
 		"remoteExtPath": "BlueSpiceExtensions/Dashboards/resources"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "Dashboards::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "Dashboards::getSchemaUpdates",
+		"UnitTestsList": "Dashboards::onUnitTestsList"
 	},
 	"manifest_version": 1
 }
