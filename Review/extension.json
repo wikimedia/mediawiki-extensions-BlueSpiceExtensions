@@ -1,8 +1,8 @@
 {
-        "name": "Review",
+    "name": "Review",
 	"version": "2.27.0",
 	"url": "https://help.bluespice.com/index.php/Review",
-	"author": "Markus Glaser",
+	"author":[ "Markus Glaser", "Robert Vogel", "Patric Wirth", "Leonid Verhovskij"],
 	"descriptionmsg": "bs-review-desc",
 	"type": "bluespice",
 	"bsgExtensions": {
@@ -92,7 +92,22 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "Review::getSchemaUpdates",
-		"BSUsageTrackerRegisterCollectors": "Review::onBSUsageTrackerRegisterCollectors"
+		"BSUsageTrackerRegisterCollectors": "Review::onBSUsageTrackerRegisterCollectors",
+		"UserAddGroup": "Review::onUserAddGroup",
+		"UserGetRights": "Review::onUserGetRights",
+		"UserCan":"Review::checkReviewPermissions",
+		"RevisionAjaxReviewBeforeParams": "Review::onRevisionAjaxReviewBeforeParams",
+		"SkinTemplateNavigation": "Review::onSkinTemplateNavigation",
+		"ArticleDeleteComplete":"Review::onArticleDeleteComplete",
+		"BSFlaggedRevsConnectorCollectFlagInfo":"Review::onBSFlaggedRevsConnectorCollectFlagInfo",
+		"BSStateBarAddSortTopVars":"Review::onStatebarAddSortTopVars",
+		"BSStateBarAddSortBodyVars":"Review::onStatebarAddSortBodyVars",
+		"BSStateBarBeforeTopViewAdd":"Review::onStateBarBeforeTopViewAdd",
+		"BSStateBarBeforeBodyViewAdd":"Review::onStateBarBeforeBodyViewAdd",
+		"BSUserSidebarGlobalActionsWidgetGlobalActions":"Review::onBSUserSidebarGlobalActionsWidgetGlobalActions",
+		"BeforePageDisplay":"Review::onBeforePageDisplay",
+		"SkinTemplateOutputPageBeforeExec":"Review::onSkinTemplateOutputPageBeforeExec",
+		"EchoGetDefaultNotifiedUsers":"Review::onEchoGetDefaultNotifiedUsers"
 	},
 	"callback": "Review::onRegistration",
 	"manifest_version": 1
