@@ -19,6 +19,7 @@
 	"bs-pagetemplates-dberror": "Wystąpił błąd bazy danych.",
 	"bs-pagetemplates-tpl-deleted": "Szablon został usunięty.",
 	"bs-pagetemplates-pref-excludens": "Nie pokazuj szablonów w tych przestrzeniach nazw:",
+	"bs-pagetemplates-pref-hidedefaults": "Ukryj domyślne szablony",
 	"bs-pagetemplates-headerlabel": "Etykieta",
 	"bs-pagetemplates-headertargetnamespace": "Przestrzeń nazw",
 	"bs-pagetemplates-tipeditdetails": "Edytuj szablon",
