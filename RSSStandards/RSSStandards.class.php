@@ -228,28 +228,48 @@ class RSSStandards extends BsExtensionMW {
 			wfMessage( 'bs-rssstandards-desc-cat' )->plain()
 		);
 
-		$res = $dbr->query( "select cl_from FROM " . $wgDBprefix."categorylinks WHERE cl_to = '" . addslashes( $cat ). "'" );
+		$res = $dbr->select(
+			"categorylinks",
+			"cl_from",
+			array( "cl_to" => $cat )
+		);
 
 		$entryIds = Array();
-		while ( $row = $dbr->fetchRow( $res ) ) {
-			$entryIds[] = $row['cl_from'];
+
+		foreach ( $res as $row ) {
+			$entryIds[] = $row->cl_from;
 		}
 
 		if ( count( $entryIds ) ) {
-			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM " .
-			$wgDBprefix ."revision as r WHERE r.rev_page In ("
-			. implode( ", ", $entryIds ) .
-			") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
-			$res = $dbr->query( $query );
+			$aTable = array( 'r' => 'revision' );
+			$aFields = array(
+				'rid' => "MIN(r.rev_id)",
+				"r.rev_page",
+				"r.rev_timestamp",
+				"r.rev_user_text"
+			);
+			$aConditions = array( "r.rev_page" => $entryIds );
+			$aOptions = array(
+				"group by" => array(
+					"r.rev_page",
+					"r.rev_timestamp",
+					"r.rev_user_text"
+				),
+				"order by" => "rid DESC"
+			);
+
+			$res = $dbr->select( $aTable, $aFields, $aConditions, __METHOD__, $aOptions );
 			$numberOfEntries = $dbr->numRows( $res );
-
 			$paramShowAll = $wgRequest->getFuzzyBool( 'showall', false ); // Sole importance is the existence of param 'showall'
-			if ( !$paramShowAll ) $query .= ' LIMIT '.$_showLimit; // if (!$_REQUEST['showall']) $query .= ' LIMIT '.$_showLimit;
 
-			$res = $dbr->query( $query );
+			if ( !$paramShowAll ) {
+				$aOptions['LIMIT'] = $_showLimit;
+			}
 
-			while ( $row = $dbr->fetchRow( $res ) ) {
-				$title = Title::newFromID( $row['rev_page'] );
+			$res = $dbr->select( $aTable, $aFields, $aConditions, __METHOD__, $aOptions );
+
+			foreach ( $res as $row ) {
+				$title = Title::newFromID( $row->rev_page );
 				$page = WikiPage::factory( $title );
 				if ( !$title->userCan( 'read' ) ) {
 					$numberOfEntries--;
@@ -258,16 +278,20 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_description = SecureFileStore::secureFilesInText(
-					preg_replace(
-						"#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#",
-						"",
-						$this->mCore->parseWikiText( $page->getContent()->getNativeData(), $this->getTitle() )
-					)
+
+				$_description = preg_replace(
+					"#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#",
+					"",
+					$this->mCore->parseWikiText( $page->getContent(), $this->getTitle() )
 				);
+
+				if( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
+					$_description = SecureFileStore::secureFilesInText( $_description );
+				}
+
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
-					$item->setPubDate( wfTimestamp( TS_UNIX,$row['rev_timestamp'] ) );
+					$item->setPubDate( wfTimestamp( TS_UNIX,$row->rev_timestamp) );
 					$item->setComments( $title->getTalkPage()->getFullURL() );
 					$item->setGUID( $title->getFullURL( "oldid=".$page->getRevision()->getId() ), 'true' );
 					$channel->addItem( $item );
@@ -300,7 +324,12 @@ class RSSStandards extends BsExtensionMW {
 			wfMessage( 'bs-rssstandards-desc-ns' )->plain()
 		);
 
-		$res = $dbr->query( "select page_id from ".$wgDBprefix."page where page_namespace = ".$ns );
+
+		$res = $dbr->select(
+			"page",
+			"page_id",
+			array( "page_namespace" => $ns )
+		);
 
 		$entryIds = Array();
 		while ($row = $dbr->fetchRow($res)) {
@@ -308,16 +337,30 @@ class RSSStandards extends BsExtensionMW {
 		}
 
 		if ( count( $entryIds ) ) {
-			$query = "SELECT Min(r.rev_id) as rid, r.rev_page, r.rev_timestamp, r.rev_user_text FROM " .
-			$wgDBprefix ."revision as r WHERE r.rev_page In ("
-			. join( ", ", $entryIds ) .
-			") GROUP BY r.rev_page, r.rev_timestamp, r.rev_user_text ORDER BY rid DESC";
-			$res = $dbr->query( $query );
+			$aTable = array( 'r' => 'revision' );
+			$aFields = array(
+				'rid' => "MIN(r.rev_id)",
+				"r.rev_page",
+				"r.rev_timestamp",
+				"r.rev_user_text"
+			);
+			$aConditions = array( "r.rev_page" => $entryIds );
+			$aOptions = array(
+				"group by" => array(
+					"r.rev_page",
+					"r.rev_timestamp",
+					"r.rev_user_text"
+				),
+				"order by" => "rid DESC"
+			);
+
+			$res = $dbr->select( $aTable, $aFields, $aConditions, __METHOD__, $aOptions );
+
 			$numberOfEntries = $dbr->numRows( $res );
 
-			$query .= ' LIMIT '.$_showLimit;
+			$aOptions['LIMIT'] = $_showLimit;
 
-			$res = $dbr->query($query);
+			$res = $dbr->select( $aTable, $aFields, $aConditions, __METHOD__, $aOptions );
 
 			while ( $row = $dbr->fetchRow( $res ) ) {
 				$title = Title::newFromID( $row['rev_page'] );
@@ -357,8 +400,7 @@ class RSSStandards extends BsExtensionMW {
 
 	public function buildRssWatch( $par ) {
 		// TODO SU (04.07.11 10:35): Globals
-		global $wgUser, $wgOut, $wgRequest, $wgRCShowWatchingUsers,
-				$wgEnotifWatchlist, $wgShowUpdatedMarker, $wgEnotifWatchlist, $wgSitename;
+		global $wgUser, $wgOut, $wgRequest, $wgRCShowWatchingUsers, $wgShowUpdatedMarker, $wgEnotifWatchlist;
 
 		$skin = RequestContext::getMain()->getSkin();
 		$specialTitle = SpecialPage::getTitleFor( 'Watchlist' );
