@@ -17,7 +17,8 @@ Ext.define( 'BS.InsertMagic.Window', {
 		var typesArray = [
 			[ 'tag', mw.message('bs-insertmagic-type-tags').plain() ],
 			[ 'switch', mw.message('bs-insertmagic-type-switches').plain() ],
-			[ 'variable', mw.message('bs-insertmagic-type-variables').plain() ]
+			[ 'variable', mw.message('bs-insertmagic-type-variables').plain() ],
+			[ 'quickaccess', mw.message('bs-insertmagic-type-quickaccess').plain() ]
 		];
 		//TODO: Make hook?
 
