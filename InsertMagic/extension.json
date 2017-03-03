@@ -36,6 +36,7 @@
 			"messages": [
 				"bs-insertmagic-dlg-title",
 				"bs-insertmagic-type-tags",
+				"bs-insertmagic-type-quickaccess",
 				"bs-insertmagic-type-variables",
 				"bs-insertmagic-type-switches",
 				"bs-insertmagic-label-first",

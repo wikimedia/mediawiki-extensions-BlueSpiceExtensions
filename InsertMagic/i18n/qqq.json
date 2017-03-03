@@ -66,6 +66,7 @@
 	"bs-insertmagic-type-tags": "Option in dialog for tags\n {{Identical|Tag}}",
 	"bs-insertmagic-type-variables": "Option in dialog for variables \n {{Identical|Variable}}",
 	"bs-insertmagic-type-switches": "Option in dialog for behavior switches \n {{Identical|Behavior switches}}",
+	"bs-insertmagic-type-quickaccess": "Option in dialog for quick access\n {{Identical|Quick access}}",
 	"bs-insertmagic-label-first": "Headline text for 1. choose tag or magic word \n {{Identical|1. Choose tag or magic word}}",
 	"bs-insertmagic-label-second": "Headline text for 2. modify code \n {{Identical|2. Modify code}}",
 	"bs-insertmagic-label-desc": "Headline text for description \n {{Identical|Description}}",

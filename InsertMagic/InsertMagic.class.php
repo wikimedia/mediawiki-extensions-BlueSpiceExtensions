@@ -101,6 +101,8 @@ class InsertMagic extends BsExtensionMW {
 		'includeonly' => array( 'bs-insertmagic-includeonly' => '<includeonly></includeonly>' )
 	);
 
+	public static $aQuickAccess = array( );
+
 	/**
 	 * Initialization of InsertMagic extension
 	 */
@@ -119,6 +121,10 @@ class InsertMagic extends BsExtensionMW {
 
 	public static function getTags() {
 		return self::$aTags;
+	}
+
+	public static function getQuickAccess() {
+		return self::$aQuickAccess;
 	}
 
 	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {

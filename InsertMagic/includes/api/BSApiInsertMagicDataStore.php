@@ -60,6 +60,19 @@ class BSApiInsertMagicDataStore extends BSApiExtJSStoreBase {
 			}
 		}
 
+		foreach ( InsertMagic::getQuickAccess() as $sTag => $aData ) {
+			foreach ( $aData as $key => $value ) {
+				$oDescriptor = new stdClass();
+				$oDescriptor->id = $value;
+				$oDescriptor->type = 'quickaccess';
+				$oDescriptor->name = $sTag;
+				$oDescriptor->desc = wfMessage( $key )->text();
+				$oDescriptor->code = $value;
+				$oDescriptor->previewable = true;
+				$oResponse->result[] = $oDescriptor;
+			}
+		}
+
 		$aMagicWords = InsertMagic::getMagicWords();
 		foreach ( $aMagicWords['variables'] as $aVariable ) {
 			foreach ( $aVariable as $key => $value ) {
@@ -93,6 +106,7 @@ class BSApiInsertMagicDataStore extends BSApiExtJSStoreBase {
 
 		//Other extensions may inject their tags or MagicWords
 		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'tags' ) );
+		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'quickaccess' ) );
 		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'variables' ) ); //For compatibility
 		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'switches' ) ); //For compatibility
 

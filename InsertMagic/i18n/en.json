@@ -62,6 +62,7 @@
 	"bs-insertmagic-type-tags": "Tags",
 	"bs-insertmagic-type-variables": "Variables",
 	"bs-insertmagic-type-switches": "Behavior switches",
+	"bs-insertmagic-type-quickaccess": "Quick access",
 	"bs-insertmagic-label-first": "1. Choose tag or magic word",
 	"bs-insertmagic-label-second": "2. Modify code",
 	"bs-insertmagic-label-desc": "Description",
