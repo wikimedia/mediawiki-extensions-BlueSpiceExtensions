@@ -4,7 +4,8 @@
 			"Okras",
 			"Striking Blue",
 			"Irus",
-			"Kaganer"
+			"Kaganer",
+			"Redredsonia"
 		]
 	},
 	"bs-pagetemplates-desc": "Отображает список шаблонов, помеченных как шаблоны страниц",
@@ -29,6 +30,7 @@
 	"bs-pagetemplates-pref-excludens": "Не отображать шаблоны в этих пространствах имён:",
 	"bs-pagetemplates-pref-forcenamespace": "Принудительно указать пространство имён",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Скрыть шаблон, если страница не была создана в целевом пространстве имён",
+	"bs-pagetemplates-pref-hidedefaults": "Скрыть шаблоны по умолчанию",
 	"bs-pagetemplates-headerlabel": "Обозначение (метка)",
 	"bs-pagetemplates-headertargetnamespace": "Пространство имён",
 	"bs-pagetemplates-tipeditdetails": "Редактировать шаблон",
