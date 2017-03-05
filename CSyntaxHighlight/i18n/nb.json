@@ -9,5 +9,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Tema:",
 	"bs-csyntaxhighlight-pref-gutter": "Vis linjenumre",
 	"bs-csyntaxhighlight-pref-autolinks": "Lenke-URL-er",
-	"bs-csyntaxhighlight-pref-toolbar": "Vis verktøylinje"
+	"bs-csyntaxhighlight-pref-toolbar": "Vis verktøylinje",
+	"bs-csyntaxhighlight-tag-desc": "Setter inn taggen CSyntaxHighlight for a vise formatert kode"
 }

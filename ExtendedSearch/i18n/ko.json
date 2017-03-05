@@ -7,7 +7,7 @@
 			"Jerrykim306"
 		]
 	},
-	"specialextendedsearch": "자세한 검색",
+	"specialextendedsearch": "확장된 검색",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|분류}}: $2",
 	"bs-extendedsearch-curl-not-active": "cURL 확장 기능이 작동하지 않습니다.",
 	"bs-extendedsearch-error": "오류:",
@@ -19,7 +19,7 @@
 	"bs-extendedsearch-facet-uncategorized": "분류되지 않음",
 	"bs-extendedsearch-sort-title": "제목",
 	"bs-extendedsearch-sort-ts": "시간",
-	"bs-extendedsearch-specialpage-form-expand-to-extended": "자세한 검색 형식",
+	"bs-extendedsearch-specialpage-form-expand-to-extended": "확장된 검색 양식",
 	"bs-extendedsearch-pref-scope-title": "제목",
 	"bs-extendedsearchadmin-label": "검색 설정",
 	"bs-extendedsearch-status": "상태",
