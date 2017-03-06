@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"LNDDYL",
-			"Cwlin0416"
+			"Cwlin0416",
+			"和平奮鬥救地球"
 		]
 	},
 	"prefs-pagetemplates": "頁面模板",
@@ -12,6 +13,7 @@
 	"bs-pagetemplates-tpl-label-empty": "請輸入標籤。",
 	"bs-pagetemplates-tpl-name-empty": "請輸入模板名稱。",
 	"bs-pagetemplates-general-section": "一般",
+	"bs-pagetemplates-pref-hidedefaults": "隱藏默認模板",
 	"bs-pagetemplates-headerlabel": "標籤",
 	"bs-pagetemplates-headertargetnamespace": "命名空間",
 	"bs-pagetemplates-tipeditdetails": "編輯模板",
