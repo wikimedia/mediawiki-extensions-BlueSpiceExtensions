@@ -150,7 +150,7 @@ class RSSStandards extends BsExtensionMW {
 			'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
 			wfMessage( 'bs-rssstandards-desc-page' )->plain()
 		);
-		while( $row = $res->fetchObject() ) {
+		foreach ( $res as $row ) {
 			$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 			$entry = RSSItemCreator::createItem(
 				wfMessage( 'bs-rssstandards-changes-from', $row->rc_user_text )->text(),
@@ -170,23 +170,31 @@ class RSSStandards extends BsExtensionMW {
 		$user = $wgRequest->getInt( 'u', 0 );
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$tbl_rc = $dbr->tableName( 'recentchanges' );
 
-		$res = $dbr->query( "SELECT rc_id
-						FROM {$tbl_rc}
-						WHERE rc_user = {$user}
-						  AND rc_timestamp > '".$dbr->timestamp( time() - intval( 7 * 86400 ) )."'" );
+		$res = $dbr->select(
+			array( 'recentchanges' ),
+			array( 'rc_id' ),
+			array(
+				'rc_user'     => $user,
+				'rc_timestamp > '. $dbr->timestamp( time() - intval( 7 * 86400 ) )
+			)
+		);
+
 		$ids = array();
-		while ( $row = $res->fetchObject() ) {
+		foreach ( $res as $row ) {
 			$ids[] = $row->rc_id;
 		}
 
 		if ( count( $ids ) ) {
-			$res = $dbr->query( "SELECT *
-							FROM {$tbl_rc}
-							WHERE rc_id IN (".implode(',', $ids).")
-							  AND rc_timestamp > '".$dbr->timestamp( time() - intval( 7 * 86400 ) )."'
-							ORDER BY rc_timestamp DESC" );
+			$res = $dbr->select(
+				array( 'recentchanges' ),
+				array( 'rc_id' ),
+				array(
+					'rc_timestamp > '. $dbr->timestamp( time() - intval( 7 * 86400 ) )
+				),
+				__METHOD__,
+				array( 'ORDER BY' => 'rc_timestamp DESC' )
+			);
 		} else {
 			$res = false;
 		}
@@ -197,7 +205,7 @@ class RSSStandards extends BsExtensionMW {
 			wfMessage( 'bs-rssstandards-desc-own' )->plain()
 		);
 		if ( $res ) {
-			while ( $obj = $res->fetchObject() ) {
+			foreach ( $res as $obj ) {
 				$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 				$entry = RSSItemCreator::createItem(
 					wfMessage( 'bs-rssstandards-changes-from', $obj->rc_user_text )->text(),
@@ -214,7 +222,7 @@ class RSSStandards extends BsExtensionMW {
 	}
 
 	public function buildRssCat() {
-		global $wgRequest, $wgSitename, $wgDBprefix;
+		global $wgRequest, $wgSitename;
 
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -248,6 +256,7 @@ class RSSStandards extends BsExtensionMW {
 				"r.rev_timestamp",
 				"r.rev_user_text"
 			);
+
 			$aConditions = array( "r.rev_page" => $entryIds );
 			$aOptions = array(
 				"group by" => array(
@@ -332,8 +341,8 @@ class RSSStandards extends BsExtensionMW {
 		);
 
 		$entryIds = Array();
-		while ($row = $dbr->fetchRow($res)) {
-			$entryIds[] = $row['page_id'];
+		foreach ( $res as $row ) {
+			$entryIds[] = $row->page_id;
 		}
 
 		if ( count( $entryIds ) ) {
@@ -362,8 +371,8 @@ class RSSStandards extends BsExtensionMW {
 
 			$res = $dbr->select( $aTable, $aFields, $aConditions, __METHOD__, $aOptions );
 
-			while ( $row = $dbr->fetchRow( $res ) ) {
-				$title = Title::newFromID( $row['rev_page'] );
+			foreach ( $res as $row ) {
+				$title = Title::newFromID( $row->rev_page );
 				$page = WikiPage::factory( $title );
 				if ( !$title->userCan( 'read' ) ) {
 					$numberOfEntries--;
@@ -386,7 +395,7 @@ class RSSStandards extends BsExtensionMW {
 
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
-					$item->setPubDate( wfTimestamp( TS_UNIX, $row['rev_timestamp'] ) );
+					$item->setPubDate( wfTimestamp( TS_UNIX, $row->rev_timestamp ) );
 					$item->setComments( $title->getTalkPage()->getFullURL() );
 					$item->setGUID( $title->getFullURL( "oldid=".$page->getRevision()->getId() ), 'true' );
 					$channel->addItem( $item );
@@ -449,6 +458,11 @@ class RSSStandards extends BsExtensionMW {
 			return;
 		}
 
+		$aConditions = array(
+			"w.wl_user" => $uid,
+			"wl_title" => "rc_title"
+		);
+
 		$defaults = array(
 			/* float */ 'days' => floatval( $user->getOption( 'watchlistdays' ) ), /* 3.0 or 0.5, watch further below */
 			/* bool  */ 'hideOwn' => (int)$user->getBoolOption( 'watchlisthideown' ),
@@ -474,12 +488,10 @@ class RSSStandards extends BsExtensionMW {
 
 		# Get namespace value, if supplied, and prepare a WHERE fragment
 		$nameSpace = $wgRequest->getIntOrNull( 'namespace' );
+
 		if ( !is_null( $nameSpace ) ) {
 			$nameSpace = intval( $nameSpace );
-			$nameSpaceClause = " AND rc_namespace = $nameSpace";
-		} else {
-			$nameSpace = '';
-			$nameSpaceClause = '';
+			$aConditions['rc_namespace'] = $nameSpace;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
@@ -512,20 +524,19 @@ class RSSStandards extends BsExtensionMW {
 		wfAppendToArrayIfNotDefault( 'hideMinor', (int)$hideMinor, $defaults, $nondefaults );
 		wfAppendToArrayIfNotDefault( 'namespace', $nameSpace     , $defaults, $nondefaults );
 
-		$hookSql = "";
-		if ( !wfRunHooks( 'BeforeWatchlist', array($nondefaults, $user, &$hookSql ) ) ) {
-			return;
-		}
+		$aTable = array(
+			'w' => $watchlist,
+			'r' => $recentchanges
+		);
+		$aFields = array(
+			"r.*"
+		);
+		$aOptions = array(
+			"order by" => "r.rc_timestamp DESC"
+		);
 
-		/*if ( $nitems == 0 ) {
-			$wgOut->addWikiMsg( 'nowatchlist' );
-			return;
-		}*/
-
-		if ( $days <= 0 ) {
-			$andcutoff = '';
-		} else {
-			$andcutoff = "AND rc_timestamp > '".$dbr->timestamp( time() - intval( $days * 86400 ) )."'";
+		if( $days > 0 ) {
+			$aConditions[] = "rc_timestamp > '" . $dbr->timestamp( time() - intval( $days * 86400 ) ) . "'";
 		}
 
 		# If the watchlist is relatively short, it's simplest to zip
@@ -537,56 +548,39 @@ class RSSStandards extends BsExtensionMW {
 		# Up estimate of watched items by 15% to compensate for talk pages...
 
 		# Toggles
-		$andHideOwn = $hideOwn ? "AND (rc_user <> $uid)" : '';
-		$andHideBots = $hideBots ? "AND (rc_bot = 0)" : '';
-		$andHideMinor = $hideMinor ? 'AND rc_minor = 0' : '';
+		if( $hideOwn ) {
+			$aConditions[] = "rc_user <> " . $uid;
+		}
+
+		if( $hideBots ) {
+			$aConditions['rc_bot'] = "0";
+		}
+
+		if( $hideMinor ) {
+			$aConditions['rc_minor'] = "0";
+		}
 
 		# Toggle watchlist content (all recent edits or just the latest)
 		if( $user->getOption( 'extendwatchlist' )) {
-			$andLatest='';
-			$limitWatchlist = 'LIMIT ' . intval( $user->getOption( 'wllimit' ) );
+			$aOptions['limit'] = intval( $user->getOption( 'wllimit' ) );
 		} else {
 			# Top log Ids for a page are not stored
-			$andLatest = 'AND (rc_this_oldid=page_latest OR rc_type=' . RC_LOG . ') ';
-			$limitWatchlist = '';
+			$aConditions[] = "(rc_this_oldid=page_latest OR rc_type=' . RC_LOG . ')";
 		}
 
-		if ( $wgShowUpdatedMarker ) {
-			$wltsfield = ", ${watchlist}.wl_notificationtimestamp ";
-		} else {
-			$wltsfield = '';
+		if( $wgShowUpdatedMarker ) {
+			$aFields[] = "w.wl_notificationtimestamp";
 		}
-		$sql = "SELECT ${recentchanges}.* ${wltsfield}
-	  FROM $watchlist,$recentchanges
-	  LEFT JOIN $page ON rc_cur_id=page_id
-	  WHERE wl_user=$uid
-	  AND wl_namespace=rc_namespace
-	  AND wl_title=rc_title
-			$andcutoff
-			$andLatest
-			$andHideOwn
-			$andHideBots
-			$andHideMinor
-			$nameSpaceClause
-			$hookSql
-	  ORDER BY rc_timestamp DESC
-			$limitWatchlist";
 
-		$res = $dbr->query( $sql, __METHOD__ );
+		$res = $dbr->select( $aTable, $aFields, $aConditions, __METHOD__, $aOptions );
+
 		$numRows = $dbr->numRows( $res );
-
-		/*# If there's nothing to show, stop here
-		if( $numRows == 0 ) {
-			$wgOut->addWikiMsg( 'watchnochange' );
-			return;
-		}*/
-
-		/* End bottom header */
 
 		if($numRows > 0) {
 			/* Do link batch query */
 			$linkBatch = new LinkBatch;
-			while ( $row = $dbr->fetchObject( $res ) ) {
+
+			foreach ( $res as $row ) {
 				$userNameUnderscored = str_replace( ' ', '_', $row->rc_user_text );
 				if ( $row->rc_user != 0 ) {
 					$linkBatch->add( NS_USER, $userNameUnderscored );
@@ -608,7 +602,7 @@ class RSSStandards extends BsExtensionMW {
 		$html = $list->beginRecentChangesList();
 		$counter = 1;
 		$items = array();
-		while ( $obj = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $obj ) {
 			$title = Title::newFromText($obj->rc_title, $obj->rc_namespace);
 			$items[] = array(
 				'title'    => $title->getPrefixedText(),
@@ -816,18 +810,18 @@ class RSSStandards extends BsExtensionMW {
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $wgUser->getName();
 		$sUserToken  = $wgUser->getToken();
-		while ( $row = $dbr->fetchRow( $res ) ) {
+		foreach ( $res as $row ) {
 			$select->addData(
 				array(
 					'value' => $oSpecialRSS->getLinkUrl(
 						array(
 							'Page' => 'category',
-							'cat'  => $row['cl_to'],
+							'cat'  => $row->cl_to,
 							'u'    => $sUserName,
 							'h'    => $sUserToken
 						)
 					),
-					'label' => $row['cl_to']
+					'label' => $row->cl_to
 				)
 			);
 		}
