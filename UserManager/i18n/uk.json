@@ -57,5 +57,6 @@
 	"bs-usermanager-nouserselected": "Будь ласка, виберіть користувача",
 	"bs-usermanager-title-multipleuserselected": "Обрано декілька користувачів",
 	"bs-usermanager-multipleuserselected": "Ви можете змінювати пароль лише для одного користувача водночас",
-	"bs-usermanager-invalid-groups": "Групи є недійсними"
+	"bs-usermanager-invalid-groups": "Групи є недійсними",
+	"apihelp-bs-usermanager-group-store-description": "Забезпечує API завдань з управління користувачами для BlueSpice."
 }

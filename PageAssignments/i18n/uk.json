@@ -62,5 +62,9 @@
 	"right-pageassignable": "поява у списку користувачів, яких можна призначати",
 	"right-pageassignments": "редагування призначень сторінки",
 	"prefs-pageassign": "Призначення",
-	"bs-usagetracker-pageassignments": "сторінки з призначеннями"
+	"bs-usagetracker-pageassignments": "сторінки з призначеннями",
+	"apihelp-bs-pageassignable-store-description": "Виводить список користувачів, що отримали призначення",
+	"apihelp-bs-pageassignment-store-description": "Виводить призначення для конкретної сторінки",
+	"apihelp-bs-mypageassignment-store-description": "Виводить сторінки, призначені конкретному користувачеві",
+	"apihelp-bs-pageassignment-tasks-description": "Отримати або змінити список призначень для конкретної сторінки"
 }
