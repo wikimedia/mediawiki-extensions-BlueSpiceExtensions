@@ -10,7 +10,6 @@ class BSApiContextMenuTasks extends BSApiTasksBase {
 	}
 
 	protected function task_getMenuItems ( $oData, $aParams ) {
-		error_log(__LINE__, 0);
 		$oResult = $this->makeStandardReturn();
 
 		$aItems = array();
