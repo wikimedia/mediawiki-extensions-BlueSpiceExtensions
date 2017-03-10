@@ -150,4 +150,16 @@ class InsertMagic extends BsExtensionMW {
 		array_splice( $aConfigOverwrite["toolbar2"], $iIndexOverwrite + 1, 0, "bsmagic" );
 		return true;
 	}
+
+	/**
+	 * UnitTestsList allows registration of additional test suites to execute
+	 * under PHPUnit. Extensions can append paths to files to the $paths array,
+	 * and since MediaWiki 1.24, can specify paths to directories, which will
+	 * be scanned recursively for any test case files with the suffix "Test.php".
+	 * @param array $paths
+	 */
+	public static function onUnitTestsList ( array &$paths ) {
+		$paths[] = __DIR__ . '/tests/phpunit/';
+		return true;
+	}
 }
