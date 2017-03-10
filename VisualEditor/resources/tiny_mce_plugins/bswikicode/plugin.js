@@ -337,7 +337,7 @@ var BsWikiCode = function() {
 	}
 
 	function _image2wiki(text) {
-		var images = text.match(/(<a([^>]*?)>)?<img([^>]*?)\/>(<\/a>)?/gi);
+		var images = text.match(/(<a([^>]*?)>)?<img([^>]*?)\/?>(<\/a>)?/gi);
 		if (!images)
 			return text;
 
@@ -614,13 +614,15 @@ var BsWikiCode = function() {
 					_externalLinkNo++;
 				}
 				linkHtml = anchorFormat.format(
-					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),		// href
-					linkLabel,						// <a>linkLabel</a>
-					'external_link',					// data-bs-type
-					'external bs-external-link bs-protocol-'+protocol,	// class
-					$( '<div/>' ).text( link ).html(),			// data-bs-wikitext
-					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),		// data-mce-href
-					$( '<div/>' ).text( linkLabel ).html()			// title
+					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),      // href
+					linkLabel,                                           // <a>linkLabel</a>
+					'external_link',                                     // data-bs-type
+					'external bs-external-link bs-protocol-' + protocol, // class
+					// encoding neccessary, because this is possible: [http://www.hallowelt.biz <span style="color: #99cc00;">Hallo Welt!</span>]
+					encodeURI( $( '<div/>' ).text( link ).html() ),      // data-bs-wikitext
+					encodeURI( linkTarget.replace( /%20/g, ' ' ) ),      // data-mce-href
+					// encoding neccessary, because this is possible: [http://www.hallowelt.biz <span style="color: #99cc00;">Hallo Welt!</span>]
+					encodeURI( $( '<div/>' ).text( linkLabel ).html() )  // title
 				);
 				text = text.replace("[" + linkNoWrap + "]", linkHtml);
 			}
@@ -1425,7 +1427,7 @@ var BsWikiCode = function() {
 		$(document).trigger('BSVisualEditorBeforeHtmlToWiki', [textObject]);
 		// get the text back
 		text = textObject.text;
-		// Normalize UTF8 spaces as aof TinyMCE 3.4.9
+		// Normalize UTF8 spaces as of TinyMCE 3.4.9
 		text = text.replace(/\u00a0/gi, '');
 		//Save content of pre tags
 		text = _preservePres(text);
@@ -1438,8 +1440,6 @@ var BsWikiCode = function() {
 		text = text.replace(/<i>(.*?)<\/i>/gmi, "''$1''");
 		//underline needs no conversion
 		text = text.replace(/<strike>(.*?)<\/strike>/gi, "<s>$1</s>");
-		text = text.replace(/<span style="text-decoration: line-through;">(.*?)<\/span>/gi, "<s>$1</s>");
-		text = text.replace(/<span style="text-decoration: underline;">(.*?)<\/span>/gi, "<u>$1</u>");
 		//sub and sup need no conversion
 
 		text = text.replace(/<br class="bs_emptyline_first"[^>]*>/gmi, "@@br_emptyline_first@@");
@@ -2289,6 +2289,37 @@ var BsWikiCode = function() {
 	}
 
 	/**
+	 * Preprocess HTML in DOM form. This is mainly used to replace tags
+	 * @param {String} text
+	 * @returns {String}
+	 */
+	function _preprocessHtml2Wiki( text ) {
+		// convert html text to DOM
+		var $dom = $( "<div id='tinywrapper'>" + text + "</div>" );
+
+		// perform the actual preprocessing
+		$dom.find( "span[style*='text-decoration: underline']" ).replaceWith( function() {
+			return "<u>" + $( this ).html() + "</u>";
+		} );
+		$dom.find( "span[style*='text-decoration: line-through']" ).replaceWith( function() {
+			return "<s>" + $( this ).html() + "</s>";
+		} );
+
+		// convert DOM to html text
+		text = $dom.html();
+
+		//cleanup entities in attribtues
+		while ( text.match( /(\="[^"]*?)(<)([^"]*?")/gmi ) ) {
+			text = text.replace( /(\="[^"]*?)(<)([^"]*?")/g, '$1&lt;$3' );
+		}
+		while ( text.match( /(\="[^"]*?)(>)([^"]*?")/gmi ) ) {
+			text = text.replace( /(\="[^"]*?)(>)([^"]*?")/g, '$1&gt;$3' );
+		}
+
+		return text;
+	}
+
+	/**
 	 * Event handler for "beforeSetContent"
 	 * This is used to process the wiki code into html.
 	 * @param {tinymce.ContentEvent} e
@@ -2334,6 +2365,8 @@ var BsWikiCode = function() {
 		if (e.format == 'raw' ) return;
 
 		if (e.format != 'raw') e.format = 'wiki';
+
+		e.content = _preprocessHtml2Wiki( e.content );
 
 		// process the html to wikicode
 		e.content = _html2wiki(e.content);
