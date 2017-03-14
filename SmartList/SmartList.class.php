@@ -491,52 +491,55 @@ class SmartList extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if ( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:smartlist',
-			'type' => 'tag',
-			'name' => 'smartlist',
-			'desc' => wfMessage( 'bs-smartlist-tag-smartlist-desc' )->plain(),
-			'code' => '<bs:smartlist />',
-			'examples' => array(
-				array(
-					'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-rc' )->plain(),
-					'code' => '<bs:smartlist new="true" count="7" ns="104" trim="false" />'
-				),
-				array(
-					'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-whatlinkshere' )->plain(),
-					'code' => '<bs:smartlist mode="whatlinkshere" traget="ARTICLENAME" />'
-				)
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:smartlist';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'smartlist';
+		$oDescriptor->desc = wfMessage( 'bs-smartlist-tag-smartlist-desc' )->plain();
+		$oDescriptor->code = '<bs:smartlist />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-rc' )->plain(),
+				'code' => '<bs:smartlist new="true" count="7" ns="104" trim="false" />'
 			),
-			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
+			array(
+				'label' => wfMessage( 'bs-smartlist-tag-smartlist-example-whatlinkshere' )->plain(),
+				'code' => '<bs:smartlist mode="whatlinkshere" traget="ARTICLENAME" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/SmartList';
+		$oResponse->result[] = $oDescriptor;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:newbies',
-			'type' => 'tag',
-			'name' => 'newbies',
-			'desc' => wfMessage( 'bs-smartlist-tag-newbies-desc' )->plain(),
-			'code' => '<bs:newbies />',
-			'examples' => array(
-				array(
-					'code' => '<bs:newbies count="3" />'
-				)
-			),
-			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:newbies';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'newbies';
+		$oDescriptor->desc = wfMessage( 'bs-smartlist-tag-newbies-desc' )->plain();
+		$oDescriptor->code = '<bs:newbies />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'code' => '<bs:newbies count="3" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/SmartList';
+		$oResponse->result[] = $oDescriptor;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:toplist',
-			'type' => 'tag',
-			'name' => 'toplist',
-			'desc' => wfMessage( 'bs-smartlist-tag-toplist-desc' )->plain(),
-			'code' => '<bs:toplist />',
-			'examples' => array(
-				array(
-					'code' => '<bs:toplist count="4" cat="Wiki" period="month" />'
-				)
-			),
-			'helplink' => 'https://help.bluespice.com/index.php/SmartList'
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:toplist';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'toplist';
+		$oDescriptor->desc = wfMessage( 'bs-smartlist-tag-toplist-desc' )->plain();
+		$oDescriptor->code = '<bs:toplist />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'code' => '<bs:toplist count="4" cat="Wiki" period="month" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/SmartList';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

@@ -229,42 +229,45 @@ class Blog extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if ( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:blog',
-			'type' => 'tag',
-			'name' => 'blog',
-			'desc' => wfMessage( 'bs-blog-tag-blog-desc' )->text(),
-			'code' => '<bs:blog />',
-			'examples' => array(
-				array(
-					'code' => '<bs:blog count="5" cat="Wiki" newentryfieldposition="bottom" />'
-				)
-			),
-			'helplink' => 'https://help.bluespice.com/index.php/Blog'
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:blog';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'blog';
+		$oDescriptor->desc = wfMessage( 'bs-blog-tag-blog-desc' )->text();
+		$oDescriptor->code = '<bs:blog />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'code' => '<bs:blog count="5" cat="Wiki" newentryfieldposition="bottom" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/Blog';
+		$oResponse->result[] = $oDescriptor;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:blog:more',
-			'type' => 'tag',
-			'name' => 'blogmore',
-			'desc' => wfMessage( 'bs-blog-tag-blogmore-desc' )->text(),
-			'code' => '<bs:blog:more />',
-			'helplink' => 'https://help.bluespice.com/index.php/Blog'
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:blog:more';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'blogmore';
+		$oDescriptor->desc = wfMessage( 'bs-blog-tag-blogmore-desc' )->text();
+		$oDescriptor->code = '<bs:blog:more />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/Blog';
+		$oResponse->result[] = $oDescriptor;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:blog:time',
-			'type' => 'tag',
-			'name' => 'blogtime',
-			'desc' => wfMessage( 'bs-blog-tag-blogtime-desc' )->text(),
-			'code' => '<bs:blog:time time="YYYYMMDDHHmm" />',
-			'examples' => array(
-				array(
-					'code' => '<bs:blog:time time="201601010000" />'
-				)
-			),
-			'helplink' => 'https://help.bluespice.com/index.php/Blog'
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:blog:time';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'blogtime';
+		$oDescriptor->desc = wfMessage( 'bs-blog-tag-blogtime-desc' )->text();
+		$oDescriptor->code = '<bs:blog:time time="YYYYMMDDHHmm" />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'code' => '<bs:blog:time time="201601010000" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/Blog';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

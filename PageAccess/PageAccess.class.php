@@ -216,19 +216,20 @@ class PageAccess extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id'   => 'bs:pageaccess',
-			'type' => 'tag',
-			'name' => 'pageaccess',
-			'desc' => wfMessage( 'bs-pageaccess-tag-groups-desc' )->plain(),
-			'code' => '<bs:pageaccess groups="GROUP" />',
-			'examples' => array(
-				array(
-					'code' => '<bs:pageaccess groups="sysop" />'
-				)
-			),
-			'helplink' => 'https://help.bluespice.com/index.php/PageAccess'
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:pageaccess';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'pageaccess';
+		$oDescriptor->desc = wfMessage( 'bs-pageaccess-tag-groups-desc' )->plain();
+		$oDescriptor->code = '<bs:pageaccess groups="GROUP" />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'code' => '<bs:pageaccess groups="sysop" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/PageAccess';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}
