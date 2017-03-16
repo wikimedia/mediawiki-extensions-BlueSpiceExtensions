@@ -23,6 +23,9 @@
 			"i18n"
 		]
 	},
+	"Hooks": {
+		"UnitTestsList":"InsertMagic::onUnitTestsList"
+	},
 	"AutoloadClasses": {
 		"InsertMagic": "InsertMagic.class.php",
 		"BSApiInsertMagicDataStore": "includes/api/BSApiInsertMagicDataStore.php"
