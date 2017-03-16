@@ -215,8 +215,6 @@ class WikiAdmin extends BsExtensionMW {
 			$aOutSortable[$sModulLabel] = '<li>'.$sLink.'</li>';
 		}
 
-		$aOutSortable['Shop'] = self::getShopListItem();
-
 		// Allow other extensions to add to the admin menu
 		Hooks::run( 'BSWikiAdminMenuItems', array ( &$aOutSortable ) );
 
@@ -258,24 +256,6 @@ class WikiAdmin extends BsExtensionMW {
 			),
 		);
 		return true;
-	}
-
-	/**
-	 * Returns a list item with a link to the BlueSpice shop
-	 * @return string Link to the shop
-	 */
-	private static function getShopListItem() {
-		$sLink = Html::element(
-			'a',
-			array(
-				'id' => 'bs-admin-shop',
-				'href' => 'http://shop.blue-spice.org/',
-				'title' => wfMessage( 'bs-wikiadmin-shop' )->escaped(),
-				'class' => 'bs-admin-link bs-icon-shopping-cart'
-			),
-			wfMessage( 'bs-wikiadmin-shop' )->escaped()
-		);
-		return '<li>'.$sLink.'</li>';
 	}
 
 	/**
