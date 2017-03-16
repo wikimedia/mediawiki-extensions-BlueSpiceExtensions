@@ -218,6 +218,21 @@ var BsInsertLinkVisualEditorConnector = {
 			data.title ? data.title : data.href
 		);
 
+		//Workaround for IE when replacing text with a anchor tag
+		if( tinymce.Env.ie > 0) {
+			var sel = editor.selection.getSel().toString();
+			if( sel ) {
+				var content = node.innerHTML;
+				content = content.replace(sel, newAnchor);
+
+				var newNode = editor.dom.create( node.nodeName.toLowerCase(), {}, content );
+
+				editor.dom.replace(newNode, node);
+
+				return;
+			}
+		}
+
 		editor.insertContent(newAnchor);
 		//editor.selection.select(newAnchor, false);
 		editor.selection.collapse(false);
