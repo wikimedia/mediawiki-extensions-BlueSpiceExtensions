@@ -123,6 +123,5 @@
 	"apihelp-bs-reviewoverview-store-description": "Describes the API endpoint that lists an overview of Review\n{{doc-apihelp-description|bs-reviewoverview-store}}",
 	"apihelp-bs-review-tasks-description": "Describes the API endpoint that allows manipulation of reviews\n{{doc-apihelp-description|bs-review-tasks}}",
 	"bs-usagetracker-review": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output\n{{Identical|Review}}",
-	"apihelp-bs-reviewpossiblereviewers-store-description": "Describes the API endpoint that lists possible users that can do a review\n{{doc-apihelp-description|bs-reviewpossiblereviewers-store}}",
 	"bs-review-pref-permissions": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label of a multi select box for permissions that a user retrieves when part of a workflow"
 }

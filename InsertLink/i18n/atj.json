@@ -4,5 +4,8 @@
 			"Benoit Rochon"
 		]
 	},
-	"bs-insertlink-label-description": "E witcikemakak"
+	"bs-insertlink-tab-wiki-page": "Wiki masinhikan",
+	"bs-insertlink-label-page": "Masinhikan",
+	"bs-insertlink-label-description": "E witcikemakak",
+	"bs-insertlink-select-a-namespace": "(Masinahikana)"
 }
