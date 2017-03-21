@@ -160,7 +160,7 @@ class Review extends BsExtensionMW {
 		);
 	}
 
-	public function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
+	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
 		switch ( $event->getType() ) {
 			case 'bs-review-assign':
 				$extra = $event->getExtra();
@@ -912,7 +912,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
+	public static function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
 		$sIcon = 'bs-infobar-workflow-open';
 		$oRev = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
 		if ( $oRev ) {
@@ -1019,7 +1019,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onStateBarBeforeBodyViewAdd( $oStateBar, &$aBodyViews, $oUser, $oTitle ) {
+	public static function onStateBarBeforeBodyViewAdd( $oStateBar, &$aBodyViews, $oUser, $oTitle ) {
 		$text = '';
 		$oRev = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
 		$pages = BsReviewProcess::listReviews( $oUser->getId() );
@@ -1146,7 +1146,7 @@ class Review extends BsExtensionMW {
 	 * @param string $sWidgetTitle
 	 * @return boolean
 	 */
-	public function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
+	public static function onBSUserSidebarGlobalActionsWidgetGlobalActions( UserSidebar $oUserSidebar, User $oUser, &$aLinks, &$sWidgetTitle ) {
 		$oSpecialReview = SpecialPageFactory::getPage( 'Review' );
 		if( !$oSpecialReview ) {
 			return true;
@@ -1172,7 +1172,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
+	public static function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
 		$oUser = $sktemplate->getUser();
 		if ( $oUser->isAllowed( 'workflowview' ) === false ) {
 			return true;
