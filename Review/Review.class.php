@@ -389,7 +389,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onStatebarAddSortTopVars( &$aSortTopVars ) {
+	public static function onStatebarAddSortTopVars( &$aSortTopVars ) {
 		$aSortTopVars[ 'statebartopreview' ] = wfMessage( 'bs-review-review' )->plain();
 
 		return true;
@@ -402,7 +402,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onStatebarAddSortBodyVars( &$aSortBodyVars ) {
+	public static function onStatebarAddSortBodyVars( &$aSortBodyVars ) {
 		$aSortBodyVars[ 'statebarbodyreview' ] = wfMessage( 'bs-review-review' )->plain();
 
 		return true;
