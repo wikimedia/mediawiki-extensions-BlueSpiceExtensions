@@ -69,7 +69,7 @@ class BSApiReviewTasks extends BSApiTasksBase {
 		;
 
 		$oTitle = Title::newFromID( $iPageId );
-		if( !$oTitle || !$oTitle->isContentPage() || !$oTitle->exists() ) {
+		if( $oTitle instanceof Title === false ) {
 			$oReturn->message = wfMessage(
 				'bs-review-save-noid'
 			)->plain();
