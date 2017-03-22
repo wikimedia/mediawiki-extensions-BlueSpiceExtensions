@@ -48,6 +48,9 @@
 		"BSApiTasksGroupManager": "includes/api/BSApiTasksGroupManager.php",
 		"SpecialGroupManager": "includes/specials/SpecialGroupManager.class.php"
 	},
+	"Hooks": {
+		"UnitTestsList": "GroupManager::onUnitTestsList"
+	},
 	"ResourceModules": {
 		"ext.bluespice.groupManager": {
 			"scripts": "bluespice.groupManager.js",
