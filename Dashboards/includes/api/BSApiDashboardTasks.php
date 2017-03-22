@@ -40,7 +40,7 @@ class BSApiDashboardTasks extends BSApiTasksBase {
 				array(
 					'dc_type' => 'user',
 					'dc_identifier' => $iUserId,
-					'dc_config' => serialize( $aPortletConfig ),
+					'dc_config' => $aPortletConfig,
 					'dc_timestamp' => '',
 				),
 				__METHOD__
@@ -71,7 +71,7 @@ class BSApiDashboardTasks extends BSApiTasksBase {
 			array(
 				'dc_type' => 'admin',
 				'dc_identifier' => '',
-				'dc_config' => serialize( $aPortletConfig ),
+				'dc_config' => $aPortletConfig,
 				'dc_timestamp' => '',
 			),
 			__METHOD__

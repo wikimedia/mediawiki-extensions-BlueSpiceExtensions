@@ -21,9 +21,22 @@ class clearConfigs extends Maintenance{
 		foreach( $res as $row ) {
 			$iUser = $row->dc_identifier;
 			$sType = $row->dc_type;
-			$aPortalConfig = unserialize( $row->dc_config );
-			$aPortalConfig = FormatJson::decode( $aPortalConfig );
 			$bHasChange = false;
+
+			try{
+				MediaWiki\suppressWarnings();
+				$aPortalConfig = unserialize( $row->dc_config ); //backward compatible handling
+				MediaWiki\restoreWarnings();
+			}catch(Exception $e){
+				$this->output( "Object in json only string" );
+			}
+			if ( $aPortalConfig === FALSE ) { //this should be the normal case
+				$aPortalConfig = FormatJson::decode( $row->dc_config );
+			} else {
+				$aPortalConfig = FormatJson::decode( $aPortalConfig );
+				$this->output( "Object in serialized json\n" );
+				$bHasChange = true;
+			}
 
 			for ( $x = 0; $x < count( $aPortalConfig ); $x++ ){
 				for ( $y = 0; $y < count( $aPortalConfig[$x] ); $y++ ){
@@ -40,7 +53,7 @@ class clearConfigs extends Maintenance{
 				$oDbw->update(
 						'bs_dashboards_configs',
 						array(
-							'dc_config' => serialize( $aPortalConfig )
+							'dc_config' => $aPortalConfig //save json string into db
 						),
 						array(
 							'dc_type' => $sType,
