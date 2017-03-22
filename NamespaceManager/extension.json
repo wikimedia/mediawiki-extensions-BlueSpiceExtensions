@@ -48,6 +48,9 @@
 		"BSApiNamespaceTasks": "includes/api/BSApiNamespaceTasks.php",
 		"SpecialNamespaceManager": "includes/specials/SpecialNamespaceManager.class.php"
 	},
+	"Hooks": {
+		"UnitTestsList": "NamespaceManager::onUnitTestsList"
+	},
 	"ResourceModules": {
 		"ext.bluespice.namespaceManager": {
 			"scripts": "resources/bluespice.namespaceManager.js",
