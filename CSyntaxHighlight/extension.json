@@ -1,28 +1,28 @@
 {
-    "name": "CSyntaxHighlight",
-    "version": "2.27.1-alpha",
-    "url": "https://help.bluespice.com/index.php/CSyntaxHighlight",
-    "author": [
-            "Robert Vogel"
-    ],
-    "descriptionmsg": "bs-csyntaxhighlight-desc",
-    "type": "bluespice",
-    "bsgExtensions": {
-            "CSyntaxHighlight": {
-                    "className": "CSyntaxHighlight",
-                    "extPath": "/BlueSpiceExtensions/CSyntaxHighlight"
-            }
-    },
-    "MessagesDirs": {
-            "CSyntaxHighlight": [
-                    "i18n"
-            ]
-    },
-    "AutoloadClasses": {
-            "CSyntaxHighlight": "CSyntaxHighlight.class.php"
-    },
-	"Hooks": {
-			"BSInsertMagicAjaxGetData": "CSyntaxHighlight::onBSInsertMagicAjaxGetData"
+	"name": "CSyntaxHighlight",
+	"version": "2.27.1-alpha",
+	"url": "https://help.bluespice.com/index.php/CSyntaxHighlight",
+	"author": [
+		"Robert Vogel"
+	],
+	"descriptionmsg": "bs-csyntaxhighlight-desc",
+	"type": "bluespice",
+	"bsgExtensions": {
+		"CSyntaxHighlight": {
+			"className": "CSyntaxHighlight",
+			"extPath": "/BlueSpiceExtensions/CSyntaxHighlight"
+		}
 	},
-    "manifest_version": 1
+	"MessagesDirs": {
+		"CSyntaxHighlight": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"CSyntaxHighlight": "CSyntaxHighlight.class.php"
+	},
+	"Hooks": {
+		"BSInsertMagicAjaxGetData": "CSyntaxHighlight::onBSInsertMagicAjaxGetData"
+	},
+	"manifest_version": 1
 }

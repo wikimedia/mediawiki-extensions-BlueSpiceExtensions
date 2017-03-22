@@ -118,11 +118,11 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "ExtendedSearch::getSchemaUpdates",
-                "OpenSearchUrl": "ExtendedSearch::onOpenSearchUrls",
+		"OpenSearchUrl": "ExtendedSearch::onOpenSearchUrls",
 		"BSTagCloudRegisterHandlers": "ExtendedSearch::onBsTagCloudRegisterHandlers"
 	},
 	"manifest_version": 1,
-	"config":{
+	"config": {
 		"_prefix": "bsgExtendedSearch",
 		"BoostQuerySettings": {
 			"namespace": {

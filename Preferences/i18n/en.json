@@ -2,7 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-                  	"Leonid Verhovskij <verhovskij@hallowelt.com>"
+			"Leonid Verhovskij <verhovskij@hallowelt.com>"
 		]
 	},
 	"bs-preferences-desc": "Offers the possibility to admins, to configurate the whole wiki from a single SpecialPage",
