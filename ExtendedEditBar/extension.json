@@ -34,8 +34,8 @@
 		"remoteExtPath": "BlueSpiceExtensions/ExtendedEditBar/resources"
 	},
 	"config": {
-        "_prefix": "bsg",
-        "ExtendedEditBarEnabledActions": ["edit", "submit"]
+		"_prefix": "bsg",
+		"ExtendedEditBarEnabledActions": ["edit", "submit"]
 	},
 	"manifest_version": 1
 }

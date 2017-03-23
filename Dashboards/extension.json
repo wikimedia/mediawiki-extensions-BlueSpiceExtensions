@@ -15,7 +15,7 @@
 			"extPath": "/BlueSpiceExtensions/Dashboards"
 		}
 	},
-        "SpecialPages": {
+	"SpecialPages": {
 		"AdminDashboard": "SpecialAdminDashboard",
 		"UserDashboard": "SpecialUserDashboard"
 	},
