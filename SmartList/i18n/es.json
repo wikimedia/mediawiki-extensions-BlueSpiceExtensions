@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"AVIADOR"
+			"AVIADOR",
+			"Osnard"
 		]
 	},
 	"bs-smartlist-desc": "Muestra los últimos cinco cambios del wiki en una lista",
@@ -46,5 +47,5 @@
 	"bs-smartlist-mosteditedpagesdesc": "Lista de las páginas más editadas ordenadas por sus ediciones.",
 	"bs-smartlist-mostvisitedpagesdesc": "Lista de las páginas más vistas ordenadas por sus vistas.",
 	"bs-smartlist-lasteditsdesc": "Lista de páginas que has editado.",
-	"bs-smartlist-hitcounter-missing": "Debe instalarse la extensión <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a> ."
+	"bs-smartlist-hitcounter-missing": "Debe instalarse la extensión <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounters</a> ."
 }

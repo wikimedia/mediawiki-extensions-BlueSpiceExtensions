@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Banjo",
-			"Elisardojm"
+			"Elisardojm",
+			"Osnard"
 		]
 	},
 	"bs-smartlist-desc": "Mostra os últimos cinco cambios da wiki nunha lista",
@@ -46,6 +47,6 @@
 	"bs-smartlist-mosteditedpagesdesc": "Lista das páxinas máis editadas ordenadas polas súas edicións.",
 	"bs-smartlist-mostvisitedpagesdesc": "Lista das páxinas máis vistas ordenadas polo número de visitas.",
 	"bs-smartlist-lasteditsdesc": "Lista das páxinas que editou.",
-	"bs-smartlist-hitcounter-missing": "A extensión <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a> debe estar instalada.",
+	"bs-smartlist-hitcounter-missing": "A extensión <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounters</a> debe estar instalada.",
 	"apihelp-bs-smartlist-tasks-description": "Funcións da API para proporcionar os datos de portlet para as páxinas e as estatísticas de usuario."
 }
