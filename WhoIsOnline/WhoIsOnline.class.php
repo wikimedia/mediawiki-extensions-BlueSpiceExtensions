@@ -137,28 +137,30 @@ class WhoIsOnline extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if ( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:whoisonlinecount',
-			'type' => 'tag',
-			'name' => 'whoisonlinecount',
-			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinecount-desc' )->plain(),
-			'code' => '<bs:whoisonlinecount />',
-			'helplink' => 'https://help.bluespice.com/index.php/WhoIsOnline'
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:whoisonlinecount';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'whoisonlinecount';
+		$oDescriptor->desc = wfMessage( 'bs-whoisonline-tag-whoisonlinecount-desc' )->plain();
+		$oDescriptor->code = '<bs:whoisonlinecount />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/WhoIsOnline';
+		$oResponse->result[] = $oDescriptor;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:whoisonlinepopup',
-			'type' => 'tag',
-			'name' => 'whoisonlinepopup',
-			'desc' => wfMessage( 'bs-whoisonline-tag-whoisonlinepopup-desc' )->plain(),
-			'code' => '<bs:whoisonlinepopup />',
-			'examples' => array(
-				array(
-					'code' => '<bs:whoisonlinepopup anchortext="Online users" />'
-				)
-			),
-			'helplink' => 'https://help.bluespice.com/index.php/WhoIsOnline'
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:whoisonlinepopup';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'whoisonlinepopup';
+		$oDescriptor->desc = wfMessage( 'bs-whoisonline-tag-whoisonlinepopup-desc' )->plain();
+		$oDescriptor->code = '<bs:whoisonlinepopup />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'code' => '<bs:whoisonlinepopup anchortext="Online users" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/WhoIsOnline';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

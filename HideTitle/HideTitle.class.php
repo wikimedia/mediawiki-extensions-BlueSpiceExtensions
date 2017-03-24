@@ -64,13 +64,16 @@ class HideTitle extends BsExtensionMW {
 
 	public function onBSInsertMagicAjaxGetData( $oResponse, $type ) {
 		if( $type !== 'switches' ) return true;
-		$oResponse->result[] = array(
-			'id' => 'bs:hidetitle',
-			'type' => 'switch',
-			'name' => 'HIDETITLE',
-			'desc' => wfMessage( 'bs-hidetitle-extension-description' )->plain(),
-			'code' => '__HIDETITLE__',
-		);
+
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:hidetitle';
+		$oDescriptor->type = 'switch';
+		$oDescriptor->name = 'HIDETITLE';
+		$oDescriptor->desc = wfMessage( 'bs-hidetitle-extension-description' )->plain();
+		$oDescriptor->code = '__HIDETITLE__';
+		$oDescriptor->previewable = false;
+		$oResponse->result[] = $oDescriptor;
+
 		return true;
 	}
 

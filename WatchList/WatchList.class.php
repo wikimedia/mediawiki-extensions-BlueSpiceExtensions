@@ -71,14 +71,15 @@ class WatchList extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:watchlist',
-			'type' => 'tag',
-			'name' => 'watchlist',
-			'desc' => wfMessage( 'bs-watchlist-tag-watchlist-desc' )->plain(),
-			'code' => '<bs:watchlist />',
-			'helplink' => 'https://help.bluespice.com/index.php/WatchList'
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:watchlist';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'watchlist';
+		$oDescriptor->desc = wfMessage( 'bs-watchlist-tag-watchlist-desc' )->plain();
+		$oDescriptor->code = '<bs:watchlist />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/WatchList';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

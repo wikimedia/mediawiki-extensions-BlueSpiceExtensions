@@ -73,13 +73,14 @@ class Authors extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'switches' ) return true;
 
-		$oResponse->result[] = array(
-			'id'   => 'bs:authors',
-			'type' => 'switch',
-			'name' => 'NOAUTHORS',
-			'desc' => wfMessage( 'bs-authors-switch-description' )->plain(),
-			'code' => '__NOAUTHORS__',
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:statebar';
+		$oDescriptor->type = 'switch';
+		$oDescriptor->name = 'NOSTATEBAR';
+		$oDescriptor->desc = wfMessage( 'bs-statebar-switch-description' )->plain();
+		$oDescriptor->code = '__NOSTATEBAR__';
+		$oDescriptor->previewable = false;
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

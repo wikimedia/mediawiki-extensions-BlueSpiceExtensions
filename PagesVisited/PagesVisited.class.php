@@ -99,19 +99,20 @@ class PagesVisited extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:pagesvisited',
-			'type' => 'tag',
-			'name' => 'pagesvisited',
-			'desc' => wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->escaped(),
-			'code' => '<bs:pagesvisited />',
-			'examples' => array(
-				array(
-					'code' => '<bs:pagesvisited count="7" maxtitlelength="40" />'
-				)
-			),
-			'helplink' => 'https://help.bluespice.com/index.php/PagesVisited'
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:pagesvisited';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'pagesvisited';
+		$oDescriptor->desc = wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->escaped();
+		$oDescriptor->code = '<bs:pagesvisited />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'code' => '<bs:pagesvisited count="7" maxtitlelength="40" />'
+			)
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/PagesVisited';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}
