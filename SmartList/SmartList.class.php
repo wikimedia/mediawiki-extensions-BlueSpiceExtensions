@@ -402,7 +402,9 @@ class SmartList extends BsExtensionMW {
 
 		$parser->setHook( 'smartlist', array( &$this, 'onTagSmartList' ) );
 		$parser->setHook( 'bs:smartlist', array( &$this, 'onTagSmartList' ) );
+		$parser->setHook( 'newbies', array( &$this, 'onTagBsNewbies' ) );
 		$parser->setHook( 'bs:newbies', array( &$this, 'onTagBsNewbies' ) );
+		$parser->setHook( 'toplist', array( &$this, 'onTagToplist' ) );
 		$parser->setHook( 'bs:toplist', array( &$this, 'onTagToplist' ) );
 
 		return true;
