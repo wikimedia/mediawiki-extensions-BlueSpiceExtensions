@@ -25,7 +25,8 @@
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @author     Patric Wirth <wirth@hallowelt.com>
- * @version    2.23.1
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
+ * @version    2.27.1
  * @package    BlueSpice_Extensions
  * @subpackage Review
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
@@ -53,20 +54,9 @@ class Review extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::Review::CheckOwner', true, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-review-pref-checkowner', 'toggle' );
 		BsConfig::registerVar( 'MW::Review::EmailNotifyOwner', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-review-pref-emailnotifyowner', 'toggle' );
 		BsConfig::registerVar( 'MW::Review::EmailNotifyReviewer', true, BsConfig::LEVEL_USER | BsConfig::TYPE_BOOL, 'bs-review-pref-emailnotifyreviewer', 'toggle' );
-
-		$this->setHook( 'SkinTemplateNavigation' );
-		$this->setHook( 'userCan', 'checkReviewPermissions' );
-		$this->setHook( 'ArticleDeleteComplete' );
-		$this->setHook( 'BSFlaggedRevsConnectorCollectFlagInfo' );
-		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
-		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
-		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
-		$this->setHook( 'BSStateBarBeforeBodyViewAdd', 'onStateBarBeforeBodyViewAdd' );
-		$this->setHook( 'BSUserSidebarGlobalActionsWidgetGlobalActions' );
-		$this->setHook( 'BeforePageDisplay' );
-		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
-
-		$this->setHook( 'EchoGetDefaultNotifiedUsers' );
+		BsConfig::registerVar(
+		  'MW::Review::Permissions', $GLOBALS[ 'bsgDefaultReviewAdditionalPermissions' ], BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_ARRAY_STRING | BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-review-pref-permissions', 'multiselectex'
+		);
 
 		$this->mCore->registerPermission( 'workflowview', array( 'user' ), array( 'type' => 'global' ) );
 		$this->mCore->registerPermission( 'workflowedit', array(), array( 'type' => 'global' ) );
@@ -426,11 +416,11 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onSkinTemplateNavigation( $oSkinTemplate, &$links ) {
-		if ( $this->getTitle()->exists() === false ) {
+	public static function onSkinTemplateNavigation( SkinTemplate $oSkinTemplate, &$links ) {
+		if ( $oSkinTemplate->getTitle()->exists() === false ) {
 			return true;
 		}
-		if ( $this->getTitle()->userCan( 'workflowview' ) === false ) {
+		if ( $oSkinTemplate->getTitle()->userCan( 'workflowview' ) === false ) {
 			return true;
 		}
 
@@ -674,10 +664,8 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return bool Allow other hooked methods to be executed. False if edit right is denied.
 	 */
-	public function checkReviewPermissions( $oTitle, $oUser, $sAction, &$bRight ) {
+	public static function checkReviewPermissions( $oTitle, $oUser, $sAction, &$bRight ) {
 		$aActionsBlacklist = array( 'edit', 'delete', 'move', 'protect', 'rollback' );
-		if ( !in_array( $sAction, $aActionsBlacklist ) )
-			return true;
 
 		$oRev = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
 		if ( !$oRev ) {
@@ -685,7 +673,7 @@ class Review extends BsExtensionMW {
 		}
 
 
-// Because of FlaggedRevs is it now allowed to edit when a workflow is finished...
+		// Because of FlaggedRevs is it now allowed to edit when a workflow is finished...
 		$bResult = false;
 		wfRunHooks( 'checkPageIsReviewable', array( $oTitle, &$bResult ) );
 
@@ -717,7 +705,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean
 	 */
-	public function onBSFlaggedRevsConnectorCollectFlagInfo( $oCurrentTitle, &$aFlagInfo ) {
+	public static function onBSFlaggedRevsConnectorCollectFlagInfo( $oCurrentTitle, &$aFlagInfo ) {
 		$oRev = BsReviewProcess::newFromPid( $oCurrentTitle->getArticleID() );
 		if ( $oRev instanceof BsReviewProcess && $oRev->isActive() ) {
 			$aFlagInfo[ 'user-can-review' ] = false;
@@ -965,7 +953,7 @@ class Review extends BsExtensionMW {
 
 			$sIcon .= ".png";
 
-			$aTopViews[ 'statebartopreview' ] = $this->makeStateBarTopReview( $sIcon );
+			$aTopViews[ 'statebartopreview' ] = self::makeStateBarTopReview( $sIcon, $oTitle );
 		}
 
 		return true;
@@ -979,11 +967,10 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return \stdClass
 	 */
-	protected function makeJSDataObject( $oReview ) {
+	protected static function makeJSDataObject( $oReview, Title $oTitle ) {
 		//Defaults
 		$oData = new stdClass();
 
-		$oTitle = $this->getContext()->getTitle();
 		if ( !is_null( $oTitle ) ) {
 			$oData->page_id = $oTitle->getArticleID();
 		}
@@ -1136,10 +1123,10 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return ViewStateBarTopElement View that is part of StateBar.
 	 */
-	public function makeStateBarTopReview( $sIcon ) {
+	public static function makeStateBarTopReview( $sIcon, Title $oTitle ) {
 		$oReviewView = new ViewStateBarTopElement();
 
-		if ( is_object( $this->getTitle() ) ) {
+		if ( is_object( $oTitle ) ) {
 			global $wgScriptPath;
 			$oReviewView->setKey( 'Review' );
 			$oReviewView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/Review/resources/images/' . $sIcon );
@@ -1475,7 +1462,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return bool Allow other hooked methods to be executed. always true.
 	 */
-	public function onArticleDeleteComplete( &$article, &$user, $reason, $id ) {
+	public static function onArticleDeleteComplete( &$article, &$user, $reason, $id ) {
 		BsReviewProcess::removeReviews( $id );
 
 		return true;
@@ -1489,7 +1476,7 @@ class Review extends BsExtensionMW {
 	 *
 	 * @return boolean
 	 */
-	public function onBeforePageDisplay( &$out, &$skin ) {
+	public static function onBeforePageDisplay( &$out, &$skin ) {
 		$out->addModuleStyles( 'ext.bluespice.review.styles' );
 
 		if ( $out->getTitle()->getNamespace() <= -1 )
@@ -1508,8 +1495,8 @@ class Review extends BsExtensionMW {
 		);
 		$out->addJsConfigVars(
 			'bsReview',
-			$this->makeJSDataObject( $oRev )
-		);
+			self::makeJSDataObject( $oRev, $out->getTitle() )
+	);
 
 		return true;
 	}
@@ -1543,6 +1530,16 @@ class Review extends BsExtensionMW {
 		$aPrefs = array();
 		wfRunHooks( 'BSReviewRunPreferencePlugin', array( &$sAdapterName, &$oVariable, &$aPrefs ) );
 
+		if ( $oVariable->getName() == "Permissions" ) {
+                       $aPermissions = array_diff(
+			  User::getAllRights(), WikiAdmin::get( 'ExcludeRights' )
+			);
+			return array(
+				'type' => 'multiselectex',
+				'options' => array_combine( $aPermissions, $aPermissions ),
+			);
+		}
+
 		return $aPrefs;
 	}
 
@@ -1559,6 +1556,12 @@ class Review extends BsExtensionMW {
 			"label" => "Review",
 			"mapping" => "Review::smwDataMapping"
 		);
+
+		if( !isset( $GLOBALS['bsgDefaultReviewAdditionalPermissions'] ) ) {
+			$GLOBALS['bsgDefaultReviewAdditionalPermissions'] = array(
+				'edit',
+			);
+		}
 	}
 
 	/**
@@ -1595,4 +1598,35 @@ class Review extends BsExtensionMW {
 		);
 		return true;
 	}
+
+
+	/**
+	 * Add edit right permission for current logged in user if review process
+	 * add edit permission
+	 * @param User $user
+	 * @param type $rights
+	 * @return boolean
+	 */
+	public static function onUserGetRights( User $user, &$aRights ) {
+		if( !RequestContext::getMain()->hasTitle() ){
+			return true;
+		}
+		$oTitle = RequestContext::getMain()->getTitle();
+		//permission handler
+		$oReviewProcess = BsReviewProcess::newFromPid( $oTitle->getArticleID() );
+		if( $oReviewProcess == null ){
+			return true;
+		}
+
+		$aUser = $oReviewProcess->getNextUsers();
+		foreach ( $aUser as $mUser ) {
+			if ( $mUser[ "id" ] == $user->getId() && $oReviewProcess->isEditable() ) {
+				$bsConfigReview = BsConfig::get( "MW::Review::Permissions" );
+				$aRights = array_merge( $aRights, $bsConfigReview );
+			}
+		}
+
+		return true;
+	}
+
 }
