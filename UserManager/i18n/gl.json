@@ -50,5 +50,11 @@
 	"bs-usermanager-group-add-not-allowed": "Non tes permisos para engadir usuarios ó grupo $1",
 	"bs-usermanager-group-remove-not-allowed": "Non tes permisos para eliminar usuarios do grupo $1",
 	"bs-usermanager-editgroups": "Editar grupos",
-	"bs-usermanager-editpassword": "Cambiar o contrasinal"
+	"bs-usermanager-editpassword": "Cambiar o contrasinal",
+	"bs-usermanager-editpassword-successful": "O contrasinal modificouse con éxito",
+	"bs-usermanager-title-nouserselected": "Non se seleccionou ningún usuario",
+	"bs-usermanager-nouserselected": "Por favor, selecciona un usuario",
+	"bs-usermanager-title-multipleuserselected": "Seleccionáronse múltiples usuarios",
+	"bs-usermanager-multipleuserselected": "Só podes cambiar o contrasinal dun usuario ó mesmo tempo",
+	"bs-usermanager-invalid-groups": "Os grupos non son válidos"
 }

@@ -108,5 +108,7 @@
 	"action-extendedsearch-viewspecialpage": "ver a páxina especial \"{{int:specialextendedsearch}}\"",
 	"action-extendedsearchadmin-viewspecialpage": "ver a páxina especial \"{{int:extendedsearchadmin}}\"",
 	"extendedsearchadmin": "Administración da busca extendida",
-	"bs-extendedsearch-create-page": "Crear a páxina \"$1\"."
+	"bs-extendedsearch-create-page": "Crear a páxina \"$1\".",
+	"apihelp-feedextendedsearch-param-q": "Cadea de procura",
+	"apihelp-feedextendedsearch-param-namespace": "Espazos de nomes nos que buscar"
 }
