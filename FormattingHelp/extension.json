@@ -24,6 +24,9 @@
 		"FormattingHelp": "FormattingHelp.class.php",
 		"BSApiTasksFormattingHelp": "includes/api/BSApiTasksFormattingHelp.php"
 	},
+	"Hooks": {
+		"UnitTestsList": "FormattingHelp::onUnitTestsList"
+	},
 	"ResourceModules": {
 		"ext.bluespice.formattinghelp": {
 			"scripts": "bluespice.formattinghelp.js",
