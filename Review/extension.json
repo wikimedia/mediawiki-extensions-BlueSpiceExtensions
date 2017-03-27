@@ -93,7 +93,6 @@
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "Review::getSchemaUpdates",
 		"BSUsageTrackerRegisterCollectors": "Review::onBSUsageTrackerRegisterCollectors",
-		"UserAddGroup": "Review::onUserAddGroup",
 		"UserGetRights": "Review::onUserGetRights",
 		"UserCan":"Review::checkReviewPermissions",
 		"RevisionAjaxReviewBeforeParams": "Review::onRevisionAjaxReviewBeforeParams",
