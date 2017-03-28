@@ -63,5 +63,6 @@
 	"right-pageassignable": "Aparecer na lista de usuarios asignables",
 	"right-pageassignments": "Editar as asignacións dunha páxina",
 	"prefs-pageassign": "Asignacións",
-	"bs-usagetracker-pageassignments": "páxinas con asignacións"
+	"bs-usagetracker-pageassignments": "páxinas con asignacións",
+	"apihelp-bs-pageassignable-store-description": "Devolve a lista de asignados"
 }

@@ -63,6 +63,7 @@
 	"bs-insertmagic-type-tags": "Tags",
 	"bs-insertmagic-type-variables": "Variablen",
 	"bs-insertmagic-type-switches": "Schalter",
+	"bs-insertmagic-type-quickaccess": "Schnellzugriff",
 	"bs-insertmagic-label-first": "1. Wähle ein magisches Wort",
 	"bs-insertmagic-label-second": "2. Geben Sie den Text ein",
 	"bs-insertmagic-label-desc": "Kurzbeschreibung",

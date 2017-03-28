@@ -110,5 +110,9 @@
 	"extendedsearchadmin": "Administración da busca extendida",
 	"bs-extendedsearch-create-page": "Crear a páxina \"$1\".",
 	"apihelp-feedextendedsearch-param-q": "Cadea de procura",
-	"apihelp-feedextendedsearch-param-namespace": "Espazos de nomes nos que buscar"
+	"apihelp-feedextendedsearch-param-feedformat": "Número máximo de resultados a devolver.",
+	"apihelp-feedextendedsearch-param-user": "Non facer nada se $wgEnableOpenSearchSuggest é falso",
+	"apihelp-feedextendedsearch-param-namespace": "Espazos de nomes nos que buscar",
+	"apihelp-feedextendedsearch-param-category": "Categorías a buscar",
+	"apihelp-feedextendedsearch-param-files": "Onde buscar en ficheiros"
 }

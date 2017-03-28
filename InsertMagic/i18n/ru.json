@@ -4,7 +4,8 @@
 			"Okras",
 			"Alexandr Efremov",
 			"Striking Blue",
-			"Kaganer"
+			"Kaganer",
+			"Redredsonia"
 		]
 	},
 	"bs-insertmagic-desc": "Добавляет диалоговое окно, позволяющее вставлять магические слова и теги",
@@ -64,6 +65,7 @@
 	"bs-insertmagic-type-tags": "Теги",
 	"bs-insertmagic-type-variables": "Переменные",
 	"bs-insertmagic-type-switches": "Переключатели поведения",
+	"bs-insertmagic-type-quickaccess": "Быстрый доступ",
 	"bs-insertmagic-label-first": "1. Выберите метку или волшебное слово",
 	"bs-insertmagic-label-second": "2. Изменить код",
 	"bs-insertmagic-label-desc": "Описание"

@@ -64,6 +64,7 @@
 	"bs-insertmagic-type-tags": "标签",
 	"bs-insertmagic-type-variables": "变量",
 	"bs-insertmagic-type-switches": "行为交换",
+	"bs-insertmagic-type-quickaccess": "快速访问",
 	"bs-insertmagic-label-first": "一、选择标签或魔术字",
 	"bs-insertmagic-label-second": "二、修改代码",
 	"bs-insertmagic-label-desc": "描述",
