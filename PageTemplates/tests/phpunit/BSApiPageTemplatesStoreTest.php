@@ -4,7 +4,7 @@
  * @group medium
  * @group API
  */
-class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
+class BSApiPageTemplatesStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 8;
 
 	protected function getStoreSchema () {

@@ -92,7 +92,8 @@
 		}
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "PermissionManager::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "PermissionManager::getSchemaUpdates",
+		"UnitTestsList": "PermissionManager::onUnitTestsList"
 	},
 	"callback": "PermissionManagerHooks::onCallback",
 	"manifest_version": 1
