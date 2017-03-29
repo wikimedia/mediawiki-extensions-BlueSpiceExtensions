@@ -49,7 +49,8 @@
 		"SpecialNamespaceManager": "includes/specials/SpecialNamespaceManager.class.php"
 	},
 	"Hooks": {
-		"UnitTestsList": "NamespaceManager::onUnitTestsList"
+		"UnitTestsList": "NamespaceManager::onUnitTestsList",
+		"LoadExtensionSchemaUpdates": "NamespaceManager::onLoadExtensionSchemaUpdates"
 	},
 	"ResourceModules": {
 		"ext.bluespice.namespaceManager": {
@@ -75,9 +76,6 @@
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
 		"remoteExtPath": "BlueSpiceExtensions/NamespaceManager"
-	},
-	"Hooks": {
-		"LoadExtensionSchemaUpdates": "NamespaceManager::onLoadExtensionSchemaUpdates"
 	},
 	"manifest_version": 1
 }
