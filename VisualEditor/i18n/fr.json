@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SnowedEarth",
-			"Gomoko"
+			"Gomoko",
+			"Urhixidur"
 		]
 	},
 	"bs-visualeditor-desc": "Éditeur visuel pour MédiaWiki",
@@ -10,7 +11,7 @@
 	"apihelp-bs-visualeditor-tasks-description": "Fournit des tâches pour l’extension Éditeur Visuel BlueSpice.",
 	"bs-visualeditor-editbutton-hint": "ÉditeurVisuel",
 	"bs-visualeditor-pref-disablens": "Désactiver dans les espaces de noms :",
-	"bs-visualeditor-pref-use": "Utilisez l'éditeur WYSIWYG par défaut",
+	"bs-visualeditor-pref-use": "Utilisez l’éditeur tel-tel par défaut",
 	"bs-visualeditor-save-message": "Révision «$1» enregistrée avec le résumé «$2».",
 	"bs-visualeditor-no-summary": "Pas de résumé",
 	"bs-visualeditor-sortable": "Triable",

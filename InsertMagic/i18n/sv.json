@@ -61,6 +61,7 @@
 	"bs-insertmagic-type-tags": "Taggar",
 	"bs-insertmagic-type-variables": "Variabler",
 	"bs-insertmagic-type-switches": "Beteendeströmbrytare",
+	"bs-insertmagic-type-quickaccess": "Snabbåtkomst",
 	"bs-insertmagic-label-first": "1. Välj tagg eller magiskt ord",
 	"bs-insertmagic-label-second": "2. Ändra koden",
 	"bs-insertmagic-label-desc": "Beskrivning",
