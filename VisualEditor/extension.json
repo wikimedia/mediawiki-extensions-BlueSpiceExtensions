@@ -36,6 +36,7 @@
 				"tinymce/tinymce.jquery.js",
 				"tinymce.startup.js"
 			],
+			"targets": [ "desktop", "mobile" ],
 			"messages": [
 				"bs-visualeditor-bsactions-wiki",
 				"bs-visualeditor-bsactions-switchgui",
@@ -55,6 +56,7 @@
 			"scripts": [
 				"bluespice.visualEditor.js"
 			],
+			"targets": [ "desktop", "mobile" ],
 			"dependencies": [
 				"ext.bluespice.visualEditor.tinymce"
 			]
