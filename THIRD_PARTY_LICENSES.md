@@ -22,6 +22,7 @@ Images
 
 | Image | Author | Version | License |
 |:--------|:-------|:--------|:-------|
+| [Ajaxload](http://www.ajaxload.info/) | Yannick Croissant | - | [WTFPL 2](http://www.wtfpl.net/about/) |
 | [Business Pack](http://www.flaticon.com/packs/business-pack) | [Freepik](http://www.freepik.com) | - | [Flaticon Basic License](http://file000.flaticon.com/downloads/license/license.pdf) |
 | [Brightmix Icon Set](http://opengameart.org/content/brightmix-icon-set) | Brightmix.com | - | [WTFPL 2](http://www.wtfpl.net/about/) |
 | [Entypo](http://www.entypo.com/faq.php) | Daniel Bruce | 3 | [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
