@@ -16,6 +16,6 @@
 	"bs-whoisonline-pref-orderby-time": "Drifttid",
 	"bs-whoisonline-pref-orderby-name": "Namn",
 	"bs-whoisonline-pref-interval": "Uppdateringsintervall i sekunder:",
-	"bs-whoisonline-tag-whoisonlinecount-desc": "Skapar en lista över antalet nu inloggade användare.",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Visar antalet användare som har varit inloggad de senaste 10 minuter.",
 	"bs-whoisonline-tag-whoisonlinepopup-desc": "Visar en lista över användare som har varit inloggade de senaste 10 minuterna."
 }

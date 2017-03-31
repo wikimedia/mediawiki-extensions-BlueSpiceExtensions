@@ -68,5 +68,6 @@
 	"bs-insertfile-no-link": "Ingen länk",
 	"bs-insertfile-error-no-medialink": "Ingen medialänk vald.",
 	"bs-insertfile-error-no-imagelink": "Ingen bildlänk vald.",
-	"bs-insertfile-upload-waitmessage": "Uppladdning pågår ..."
+	"bs-insertfile-upload-waitmessage": "Uppladdning pågår ...",
+	"apihelp-bs-insertfile-license-store-description": "Listar licenserna för tillägget InsertFile."
 }

@@ -32,7 +32,7 @@
 	"bs-blog-pref-imagerendermode": "Visa bilder som:",
 	"bs-blog-pref-imagefloatdirection": "Textflöde: Bildposition",
 	"bs-blog-pref-maxentrycharacters": "Antal ord per inlägg:",
-	"bs-blog-tag-blog-desc": "Visa blogginlägg på varje sida.",
+	"bs-blog-tag-blog-desc": "Inkluderar en webblogg för artiklar, diskussioner och filsidor. Kan specificera med olika parametrar. Dessa kan kombineras i valfri ordning.",
 	"bs-blog-tag-blogtime-desc": "Detta märke låter dig ange en anpassad tidskod för blogginlägg.",
 	"bs-blog-tag-blogtime-err": "Formatet måste vara ÅÅÅÅMMDDHHmm, d.v.s. för 12 januari 2013 15:43 ser tidskoden ut så här: 201301121543",
 	"bs-tag-blog": "bloggtaggen",

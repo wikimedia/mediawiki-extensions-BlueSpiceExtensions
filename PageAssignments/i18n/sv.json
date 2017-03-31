@@ -4,6 +4,7 @@
 			"WikiPhoenix"
 		]
 	},
+	"bs-pageassignments-desc": "Låter dig tilldela användare eller grupper till en sida",
 	"bs-pageassignments-column-title": "Sidtitel",
 	"bs-pageassignments-directly-assigned": "direkt",
 	"bs-pageassignments-api-error": "Ett fel har uppstått",

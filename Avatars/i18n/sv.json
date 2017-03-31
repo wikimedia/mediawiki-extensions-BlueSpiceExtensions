@@ -22,5 +22,6 @@
 	"bs-avatars-set-userimage-failed": "Ingen giltig webbadress eller bild från wiki.",
 	"bs-avatars-set-userimage-saved": "Användarbilden sparades.",
 	"bs-avatars-file-upload-fieldset-title": "Bilduppladdning",
-	"bs-avatars-auto-generate-fieldset-title": "Autogenerera avatar"
+	"bs-avatars-auto-generate-fieldset-title": "Autogenerera avatar",
+	"apihelp-bs-avatars-tasks-description": "Laddar upp, genererar och ändrar användaravatarer"
 }
