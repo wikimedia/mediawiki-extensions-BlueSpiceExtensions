@@ -3,7 +3,20 @@
 class BSApiDashboardWidgetsTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'wikipage'
+		'wikipage' => [
+			'examples' => [
+				[
+					'wikiArticle' => 'Main_page'
+				]
+			],
+			'params' => [
+				'wikiArticle' => [
+					'desc' => 'Valid title name',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	protected function getRequiredTaskPermissions() {

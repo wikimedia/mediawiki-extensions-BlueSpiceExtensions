@@ -36,7 +36,30 @@ class BSApiTasksRSSFeeder extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'getRSS'
+		'getRSS' => [
+			'examples' => [
+				[
+					'url' => 'http://some.rss.url',
+					'count' => 12
+				],
+				[
+					'url' => 'http://some.rss.url'
+				]
+			],
+			'params' => [
+				'url' => [
+					'desc' => 'Valid URL to retrieve RSS from',
+					'type' => 'string',
+					'required' => true
+				],
+				'count' => [
+					'desc' => 'Number of RSS entities to retrieve',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 10
+				]
+			]
+		]
 	);
 
 	/**

@@ -2,7 +2,12 @@
 
 class BSApiStateBarTasks extends BSApiTasksBase {
 
-	protected $aTasks = [ 'collectBodyViews' ];
+	protected $aTasks = array(
+		'collectBodyViews' => [
+			'examples' => [],
+			'params' => []
+		]
+	);
 
 	protected function getRequiredTaskPermissions() {
 		return [ 'collectBodyViews' => [ 'read' ] ];

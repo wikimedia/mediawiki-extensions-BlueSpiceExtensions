@@ -36,8 +36,54 @@ class ApiVisualEditorTasks extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'checkLinks',
-		'saveArticle'
+		'checkLinks' => [
+			'examples' => [
+				[
+					[ 'Main_page', 'Some page' ]
+				]
+			],
+			'params' => [
+				//List of valid Title names is passed, without param name
+			]
+		],
+		'saveArticle' => [
+			'examples' => [
+				[
+					'articleId' => 458,
+					'text' => 'Text...can be long',
+					'pageName' => 'My page',
+					'summary' => 'Edit summary',
+					'editsection' => 'Section name'
+				]
+			],
+			'params' => [
+				'articleId' => [
+					'desc' => 'Valid Article ID',
+					'type' => 'integer',
+					'required' => true
+				],
+				'text' => [
+					'desc' => 'Text of article',
+					'type' => 'string',
+					'required' => true
+				],
+				'pageName' => [
+					'desc' => 'Valid Title name - used when passed articleId is not valid',
+					'type' => 'string',
+					'required' => true
+				],
+				'summary' => [
+					'desc' => 'Edit summary',
+					'type' => 'string',
+					'required' => true
+				],
+				'editsection' => [
+					'desc' => 'Section to edit',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	/**

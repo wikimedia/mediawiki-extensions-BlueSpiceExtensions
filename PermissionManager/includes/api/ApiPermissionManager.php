@@ -8,7 +8,123 @@
 
 class ApiPermissionManager extends BSApiTasksBase {
 
-	protected $aTasks = array( 'savePermissions', 'permissions', 'setTemplateData', 'deleteTemplate' );
+	protected $aTasks = array(
+		'savePermissions' => [
+			'examples' => [
+				[
+					'groupPermission' => [
+						'my_group' => [
+							'read' => true,
+							'edit' => false
+						]
+					],
+					'permissionLockdown' => [
+						NS_FILE => [
+							'read' => [
+								'user',
+								'*',
+								'my_other_group'
+							]
+						]
+					]
+				]
+			],
+			'params' => [
+				'groupPermission' => [
+					'desc' => '',
+					'type' => 'array',
+					'required' => true
+				],
+				'permissionLockdown' => [
+					'desc' => '',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		],
+		'permissions' => [
+			'examples' => [
+				[
+					'group' => 'sysop'
+				],
+				[
+					'group' => 'sysop',
+					'revision' => '20170322131039'
+				]
+			],
+			'params' => [
+				'group' => [
+					'desc' => 'Valid group name',
+					'type' => 'string',
+					'required' => true
+				],
+				'revision' => [
+					'desc' => 'Timestamp of a revision',
+					'type' => 'string',
+					'required' => false
+				]
+			]
+		],
+		'setTemplateData' => [
+			'examples' => [
+				[
+					'id' => 0,
+					'text' => 'My template',
+					'description' => 'Some description',
+					'ruleSet' => [
+						'read',
+						'edit',
+						'patrol'
+					]
+				],
+				[
+					'id' => 4,
+					'text' => 'My template',
+					'description' => 'Some description',
+					'ruleSet' => [
+						'read',
+						'edit'
+					]
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => '',
+					'type' => 'integer',
+					'required' => true
+				],
+				'text' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				],
+				'ruleSet' => [
+					'desc' => '',
+					'type' => 'array',
+					'required' => true
+				],
+				'description' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'deleteTemplate' => [
+			'examples' => [
+				[
+					'id' => 18,
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => '',
+					'type' => 'integer',
+					'required' => true
+				]
+			]
+		]
+	);
 
 	public function getTaskDataDefinitions() {
 		return array(

@@ -2,7 +2,84 @@
 
 class BSApiNamespaceTasks extends BSApiTasksBase {
 
-	protected $aTasks = array( 'add', 'edit', 'remove' );
+	protected $aTasks = array(
+		'add' => [
+			'examples' => [
+				[
+					'name' => 'My namespace',
+					'settings' => [
+						'content' => true,
+						'searched' => true
+					]
+				]
+			],
+			'params' => [
+				'name' => [
+					'desc' => 'Name for namespace',
+					'type' => 'string',
+					'required' => true
+				],
+				'settings' => [
+					'desc' => 'Array of settings in key/value pairs',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		],
+		'edit' => [
+			'examples' => [
+				[
+					'id' => 123,
+					'name' => 'My namespace',
+					'settings' => [
+						'content' => true,
+						'searched' => false
+					]
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => 'ID of namespace to edit',
+					'type' => 'integer',
+					'required' => true
+				],
+				'name' => [
+					'desc' => 'Name for namespace',
+					'type' => 'string',
+					'required' => true
+				],
+				'settings' => [
+					'desc' => 'Array of settings in key/value pairs',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		],
+		'remove' => [
+			'examples' => [
+				[
+					'id' => 123,
+					'doArticle' => 1
+				],
+				[
+					'id' => 123
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => 'ID of namespace to remove',
+					'type' => 'integer',
+					'required' => true
+				],
+				'doArticle' => [
+					'desc' => 'Determines what happens to articles in this NS, can be 0,1,2',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 0
+				]
+			]
+		]
+	);
 
 	protected function getRequiredTaskPermissions() {
 		return array(

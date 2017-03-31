@@ -3,8 +3,35 @@
 class BSApiDashboardTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'saveAdminDashboardConfig',
-		'saveUserDashboardConfig'
+		'saveAdminDashboardConfig' => [
+			'examples' => [
+				[
+					'portletConfig' => [ [ 'someKey' => 'someValue', 'otherKey' => 'otherValue' ] ]
+				]
+			],
+			'params' => [
+				'portletConfig' => [
+					'desc' => 'Array containing valid json encoded portlet configuration in form of { key: "value" }',
+					'type' => 'array',
+					'required' => true
+				]
+
+			]
+		],
+		'saveUserDashboardConfig' => [
+			'examples' => [
+				[
+					'portletConfig' => [ [ 'someKey' => 'someValue', 'otherKey' => 'otherValue' ] ]
+				]
+			],
+			'params' => [
+				'portletConfig' => [
+					'desc' => 'Array containing valid json encoded portlet configuration in form of { key: "value" }',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	protected function getRequiredTaskPermissions() {

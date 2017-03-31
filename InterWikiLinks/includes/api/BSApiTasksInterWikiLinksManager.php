@@ -37,8 +37,51 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'editInterWikiLink',
-		'removeInterWikiLink',
+		'editInterWikiLink' => [
+			'examples' => [
+				[
+					'prefix' => 'mywiki',
+					'url' => 'http://some.wiki.com/$1'
+				],
+				[
+					'oldPrefix' => 'old_name',
+					'prefix' => 'new_name',
+					'url' => 'http://some.wiki.com/$1'
+				]
+			],
+			'params' => [
+				'oldPrefix' => [
+					'desc' => 'Old prefix',
+					'type' => 'string',
+					'required' => false,
+					'default' => ''
+				],
+				'url' => [
+					'desc' => 'Url of the wiki',
+					'type' => 'string',
+					'required' => true
+				],
+				'prefix' => [
+					'desc' => 'Prefix to set',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'removeInterWikiLink' => [
+			'examples' => [
+				[
+					'prefix' => 'mywiki'
+				]
+			],
+			'params' => [
+				'prefix' => [
+					'desc' => 'Prefix to remove',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
 	);
 
 	/**
@@ -51,10 +94,6 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 			'editInterWikiLink' => array( 'wikiadmin' ),
 			'removeInterWikiLink' => array( 'wikiadmin' )
 		);
-	}
-
-	public function needsToken() {
-		parent::needsToken();
 	}
 
 	/**
