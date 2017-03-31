@@ -37,14 +37,17 @@
 			],
 			"dependencies": [
 				"ext.bluespice.extjs"
-			]
+			],
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.bluespice.insertcategory.styles": {
 			"styles": "bluespice.insertCategory.css",
-			"position": "top"
+			"position": "top",
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.bluespice.insertCategory.uploadPanelIntegration": {
 			"scripts": "bluespice.insertCategory.uploadPanelIntegration.js",
+			"targets": [ "desktop", "mobile" ],
 			"dependencies": [
 				"ext.bluespice.insertcategory"
 			]
