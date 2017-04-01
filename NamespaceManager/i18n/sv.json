@@ -46,5 +46,6 @@
 	"logentry-bs-namespace-manager-remove": "$1 {{GENDER:$2|har tagit bort}} namnrymden $4",
 	"bs-namespacemanager-ns-config-saved": "Konfigurationen av namnrymder har sparats.",
 	"bs-namespacemanager-error-ns-config-not-saved": "Konfigurationen av namnrymder kunde inte sparas till $1.",
+	"action-namespacemanager-viewspecialpage": "visar specialsidan för namnrymdshanteraren",
 	"namespacemanager": "Namnrymdshanterare"
 }

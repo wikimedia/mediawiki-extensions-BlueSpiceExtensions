@@ -27,6 +27,7 @@
 	"bs-interwikilinks-insertlink-tabtitle": "Länka till en annan wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefix",
 	"bs-interwikilink-select-a-prefix": "Välj prefix",
+	"bs-interwikilinks-link-edited": "Interwikilänken har redigerats",
 	"action-interwikilinks-viewspecialpage": "visa specialsidan \"{{int:bs-interwikilinks-label}}\"",
 	"interwikilinks": "Interwiki-länkar"
 }

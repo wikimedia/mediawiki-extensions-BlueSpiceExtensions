@@ -44,5 +44,17 @@
 	"bs-usermanager-confirmdisableuser": "Vill du inaktivera {{GENDER:$1|användaren}} $1?",
 	"bs-usermanager-confirmenableuser": "Vill du verkligen aktivera {{GENDER:$1|användaren}} $1?",
 	"bs-usermanager-titledisableuser": "Inaktivera användare",
-	"bs-usermanager-titleenableuser": "Aktivera användare"
+	"bs-usermanager-titleenableuser": "Aktivera användare",
+	"usermanager": "Användarhanterare",
+	"action-usermanager-viewspecialpage": "Visa specialsidan \"Användarhanterare\"",
+	"bs-usermanager-group-add-not-allowed": "Du har inte tillåtelse att lägga till användare i gruppen $1",
+	"bs-usermanager-group-remove-not-allowed": "Du har inte tillåtelse att ta bort användare från gruppen $1",
+	"bs-usermanager-editgroups": "Redigera grupper",
+	"bs-usermanager-editpassword": "Ändra lösenord",
+	"bs-usermanager-editpassword-successful": "Lösenordet har ändrats",
+	"bs-usermanager-title-nouserselected": "Ingen användare markerad",
+	"bs-usermanager-nouserselected": "Välj en användare",
+	"bs-usermanager-title-multipleuserselected": "Flera användare är markerade",
+	"bs-usermanager-multipleuserselected": "Du kan endast ändra lösenordet för en användare i taget",
+	"bs-usermanager-invalid-groups": "Grupper är ogiltiga"
 }

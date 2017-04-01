@@ -55,6 +55,7 @@
 	"bs-insertmagic-displaytitle": "Formatera den aktuella sidans titelhuvud.",
 	"bs-insertmagic-defaultsort": "Används för att kategorisera sidor, sätter en standard sorteringsnyckel för kategorier.",
 	"bs-insertmagic-gallery": "Skapa ett galleri av miniatyrer med <code>&lt;gallery&gt;</code>-taggen.",
+	"bs-insertmagic-nowiki": "Maskera wikiformatering.",
 	"bs-insertmagic-noinclude": "Allt mellan <code>&lt;noinclude&gt;</code> och <code>&lt;/noinclude&gt;</code> kommer att bearbetas och visas enbart när sidan visas direkt, det kommer inte att inkluderas eller ersättas.",
 	"bs-insertmagic-includeonly": "Motsatsen är <code>&lt;includeonly&gt;</code>.",
 	"bs-insertmagic-dlg-title": "Infoga magiskt ord eller tagg",
@@ -66,5 +67,6 @@
 	"bs-insertmagic-label-second": "2. Ändra koden",
 	"bs-insertmagic-label-desc": "Beskrivning",
 	"bs-insertmagic-label-examples": "Exempel",
-	"bs-insertmagic-label-see-also": "Se även"
+	"bs-insertmagic-label-see-also": "Se även",
+	"apihelp-bs-insertmagic-data-store-description": "Lista alla alternativ för dialogen InsertMagic"
 }
