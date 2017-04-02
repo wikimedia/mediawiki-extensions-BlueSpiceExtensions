@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cwlin0416"
+			"Cwlin0416",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-insertmagic": "插入魔術字",
@@ -14,5 +15,6 @@
 	"bs-insertmagic-contentlanguage": "此 wiki 的預設介面語言。",
 	"bs-insertmagic-type-tags": "標籤",
 	"bs-insertmagic-type-variables": "變數",
+	"bs-insertmagic-type-quickaccess": "快速存取",
 	"bs-insertmagic-label-desc": "描述"
 }
