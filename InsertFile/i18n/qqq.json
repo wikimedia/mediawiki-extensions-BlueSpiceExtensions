@@ -70,5 +70,6 @@
 	"bs-insertfile-error-no-medialink": "Text for no media link selected.",
 	"bs-insertfile-error-no-imagelink": "Text for no image link selected.",
 	"bs-insertfile-upload-waitmessage": "Text for upload in progress ...",
-	"apihelp-bs-insertfile-license-store-description": "Describes the API endpoint that lists the licenses for the extension InserFile\n{{doc-apihelp-description|bs-insertfile-license-store}}"
+	"apihelp-bs-insertfile-license-store-description": "Describes the API endpoint that lists the licenses for the extension InserFile\n{{doc-apihelp-description|bs-insertfile-license-store}}",
+	"bs-insertfile-enable-align": "Label for check box that enables alignment settings"
 }

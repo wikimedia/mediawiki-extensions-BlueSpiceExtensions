@@ -93,7 +93,8 @@
 				"bs-insertfile-error-no-imagelink",
 				"bs-insertfile-error-no-medialink",
 				"windows-nonascii-filename",
-				"file-exists-duplicate"
+				"file-exists-duplicate",
+				"bs-insertfile-enable-align"
 			],
 			"dependencies": [
 				"ext.bluespice.extjs"
