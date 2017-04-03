@@ -64,6 +64,8 @@ $(document).on( 'click', '#bs-editbutton-insertimage', function( e ){
 			data.nsText = formattedNamespaces[bs.ns.NS_IMAGE];
 			delete( data.imagename ); //Not recognized by wikiText.Link
 			delete( data.src );
+			if( data.align === 'no-align' )
+				delete( data.align );
 			var wikiLink = new bs.wikiText.Link( data );
 			bs.util.selection.restore( wikiLink.toString() );
 			BS.InsertFile.ImageDialog.setData({});
@@ -83,6 +85,9 @@ $(document).on( 'click', '#bs-editbutton-insertimage', function( e ){
 				return;
 			}
 			data = wikiLink.getRawProperties();
+		}
+		if( data.align == '' && data.none == false ) {
+			data.align = 'no-align';
 		}
 
 		BS.InsertFile.ImageDialog.show( me );
@@ -205,7 +210,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 							styleAddition += ' width: '+imgAttrs['data-bs-width']+'px;';
 						}
 						//A thumb floats right by default
-						if( data.align == 'none' ) {
+						if( data.align == 'no-align' ) {
 							styleAddition += ' float: right; clear:right; margin-left: 1.4em';
 						}
 					}
@@ -220,6 +225,9 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					if( data.align == 'left' || data.left == true ) {
 						classAddition += ' tleft';
 						styleAddition += ' float: left; clear: left; margin-right: 1.4em;';
+					}
+					if( data.align == 'none' ) {
+						styleAddition += ' display: block;';
 					}
 					imgAttrs.src = data.src;
 					imgAttrs['class'] += classAddition;
@@ -243,8 +251,12 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 				}, this);
 
 				BS.InsertFile.ImageDialog.show();
-				params.caption = params.caption.replace("@@PIPE@@", "|");
-				params.alt = params.alt.replace("@@PIPE@@", "|");
+				if( 'caption' in params )
+					params.caption = params.caption.replace("@@PIPE@@", "|");
+				if( 'alt' in params )
+					params.alt = params.alt.replace("@@PIPE@@", "|");
+				if( params.align == '' )
+					params.align = 'no-align';
 				BS.InsertFile.ImageDialog.setData( params );
 			}, this);
 		}

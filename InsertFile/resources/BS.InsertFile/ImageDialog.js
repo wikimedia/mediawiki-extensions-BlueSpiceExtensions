@@ -88,9 +88,21 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		});
 		this.rgFormat.on( 'change', this.onRgFormatChange, this );
 
+		this.cbxEnableAlign = Ext.create( 'Ext.form.field.Checkbox', {
+			handler: this.onCbxEnableAlign,
+			scope: this
+		});
+		this.cbxEnableAlign.on('render', function(c){
+			Ext.QuickTips.register({
+				target: c.getEl(),
+				text: mw.message('bs-insertfile-enable-align').plain()
+			});
+		});
+
 		this.rgAlign = Ext.create('Ext.form.RadioGroup', {
-			fieldLabel: mw.message('bs-insertfile-labelalign').plain(),
 			value: 'none',
+			disabled: true,
+			flex: 1,
 			items: [{
 					boxLabel: mw.message('bs-insertfile-alignnone').plain(),
 					id: 'img-align-none',
@@ -131,7 +143,16 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		this.configPanel.height = 270;
 		var items = [
 			this.rgFormat,
-			this.rgAlign,
+			{
+				xtype: 'fieldcontainer',
+				fieldLabel: mw.message('bs-insertfile-labelalign').plain(),
+				layout: 'hbox',
+				items: [
+					this.cbxEnableAlign,
+					{ xtype: 'splitter'	},
+					this.rgAlign
+				]
+			},
 			{
 				xtype: 'fieldcontainer',
 				fieldLabel: mw.message('bs-insertfile-labellink').plain(),
@@ -250,25 +271,13 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			cfg.border = true;
 		}
 
+		var alignEnabled = this.cbxEnableAlign.getValue();
 		var align = this.rgAlign.getValue();
 		align = align['img-align'];
-		if( align !== 'none' ) {
-			cfg.align = align;
+		if( alignEnabled == false ) {
+			align = 'no-align';
 		}
-
-		//Is this necessary?
-		if( align === 'left' ) {
-			cfg.left = true;
-		}
-		else if( align === 'center' ) {
-			cfg.center = true;
-		}
-		else if( align === 'right' ) {
-			cfg.right = true;
-		}
-		else if( align === 'none' ) {
-			cfg.none = true;
-		}
+		cfg.align = align;
 
 		//Only set width and height if they are _not_ the original size!
 		var record = this.getSingleSelection();
@@ -284,7 +293,6 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		}
 
 		$(document).trigger("BSInsertFileInsertImageDialogBeforeReturnGetData", [this, cfg]);
-
 		return cfg;
 	},
 	setData: function( obj ) {
@@ -319,11 +327,14 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 			'img-type': format
 		});
 
-		var align = obj.align;
-		if( align === '' ) align = 'none';
-		this.rgAlign.setValue({
-			'img-align': align
-		});
+		if( !('align' in obj) || obj.align == 'no-align' ) {
+			this.cbxEnableAlign.setValue( false );
+		} else {
+			this.cbxEnableAlign.setValue( true );
+			this.rgAlign.setValue({
+				'img-align': obj.align
+			});
+		}
 
 		if( obj.sizewidth !== '' ) {
 			this.nbWidth.setValue(obj.sizewidth);
@@ -407,5 +418,13 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 		var filtersCfg = this.callParent( arguments );
 		filtersCfg.filters[0].value = { 'sw': 'image/' }; //Set to "starts with"; value is 'image/' defined by base class
 		return filtersCfg;
+	},
+
+	onCbxEnableAlign: function( sender, newValue, oldValue, eOpts ) {
+		if( newValue ) {
+			this.rgAlign.enable();
+		} else {
+			this.rgAlign.disable();
+		}
 	}
 });

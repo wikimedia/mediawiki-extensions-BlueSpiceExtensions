@@ -192,8 +192,11 @@ var BsWikiCode = function() {
 
 			if ($.inArray(part, ['none', 'ohne']) !== -1) {
 				wikiImageObject.none = true;
+				wikiImageObject.align = 'none';
 				continue;
 			}
+
+			wikiImageObject.align = 'no-align';
 
 			if ($.inArray(part, ['frame', 'gerahmt']) !== -1) {
 				wikiImageObject.frame = true;
@@ -272,6 +275,8 @@ var BsWikiCode = function() {
 				htmlImageObject.css('float', 'right');
 				htmlImageObject.css('clear', 'right');
 				htmlImageObject.css('margin-left', '1.4em');
+			} else {
+				htmlImageObject.css('display', 'block');
 			}
 		}
 
@@ -304,6 +309,8 @@ var BsWikiCode = function() {
 			htmlImageObject.css('float', 'left');
 			htmlImageObject.css('clear', 'left');
 			htmlImageObject.css('margin-right', '1.4em');
+		} else if (wikiImageObject.none === true) {
+			htmlImageObject.css('display', 'block');
 		}
 
 		//We store all parsed properties of the WikiText link within the dom
@@ -456,6 +463,7 @@ var BsWikiCode = function() {
 					continue;
 				}
 				if ( property == 'align' ) {
+					if (value === 'no-align') continue;
 					wikiText.push(value);
 					continue;
 				}
