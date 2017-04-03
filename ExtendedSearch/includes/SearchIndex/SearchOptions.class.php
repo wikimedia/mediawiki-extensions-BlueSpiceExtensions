@@ -184,7 +184,7 @@ class SearchOptions {
 	public function getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString ) {
 		$aSearchOptions = array();
 		$aSearchOptions['fl'] = 'type,title,namespace';
-		$aSearchOptions['fq'] = array( 'wiki:(' . $this->getCustomerId() . ')' );
+		$aSearchOptions['fq'] = $this->makeAutoCompleteFilterQuery();
 		$aSearchOptions['sort'] = $this->aSearchOptions['sort'];
 
 		$vNamespace = $this->checkSearchstringForNamespace(
@@ -616,5 +616,21 @@ class SearchOptions {
 		//We can add it in every case, because it get's only used by
 		//'assembleSearchOptions' if 'MW::ExtendedSearch::ShowFacets' is true
 		$this->aFacetFields[] = $sFacetField;
+	}
+
+	protected function makeAutoCompleteFilterQuery() {
+		$oUser = RequestContext::getMain()->getUser();
+		$aOptions = $oUser->getOptions();
+		$aNamespaces = [ 1000 ]; //For some strange reason 1000 is NS_SPECIAL within the SOLR index
+		foreach ( $aOptions as $sOpt => $sValue ) {
+			if ( strpos( $sOpt, 'searchNs' ) !== false && $sValue == true ) {
+				$aNamespaces[] = '' . str_replace( 'searchNs', '', $sOpt );
+			}
+		}
+
+		return array(
+			'wiki:(' . $this->getCustomerId() . ')',
+			'namespace:("'.implode( '" OR "', $aNamespaces ).'")'
+		);
 	}
 }
