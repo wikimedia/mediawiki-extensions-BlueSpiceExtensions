@@ -36,13 +36,176 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'addUser',
-		'editUser',
-		'deleteUser',
-		'disableUser',
-		'enableUser',
-		'setUserGroups',
-		'editPassword'
+		'addUser' => [
+			'examples' => [
+				[
+					'username' => 'someUserName',
+					'realname' => 'Some User',
+					'email' => 'user@example.com',
+					'password' => 'pass1234',
+					'rePassword' => 'pass1234',
+					'enabled' => true,
+					'groups' => [ 'sysop', 'bot' ]
+				]
+			],
+			'params' => [
+				'username' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				],
+				'realname' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => false
+				],
+				'email' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => false
+				],
+				'password' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => false
+				],
+				'rePassword' => [
+					'desc' => 'Required if password param is passed',
+					'type' => 'string',
+					'required' => false
+				],
+				'enabled' => [
+					'desc' => 'Is user enabled',
+					'type' => 'boolean',
+					'required' => false
+				],
+				'groups' => [
+					'desc' => 'Array of valid group names',
+					'type' => 'array',
+					'required' => false
+				]
+			]
+		],
+		'editUser' => [
+			'examples' => [
+				[
+					'userID' => 15,
+					'realname' => 'Some User',
+					'email' => 'user@example.com',
+					'enabled' => true
+				]
+			],
+			'params' => [
+				'userID' => [
+					'desc' => 'Valid User ID',
+					'type' => 'integer',
+					'required' => true
+				],
+				'realname' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => false
+				],
+				'email' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => false
+				],
+				'enabled' => [
+					'desc' => 'Is user enabled',
+					'type' => 'boolean',
+					'required' => false
+				]
+			]
+		],
+		'deleteUser' => [
+			'examples' => [
+				[
+					'userIDs' => [ 12, 23, 22 ]
+				]
+			],
+			'params' => [
+				'userIDs' => [
+					'desc' => 'Array of valid User IDs',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		],
+		'disableUser' => [
+			'examples' => [
+				[
+					'userID' => 12
+				]
+			],
+			'params' => [
+				'userID' => [
+					'desc' => 'Valid User ID',
+					'type' => 'integer',
+					'required' => true
+				]
+			]
+		],
+		'enableUser' => [
+			'examples' => [
+				[
+					'userID' => 12
+				]
+			],
+			'params' => [
+				'userID' => [
+					'desc' => 'Valid User ID',
+					'type' => 'integer',
+					'required' => true
+				]
+			]
+		],
+		'setUserGroups' => [
+			'examples' => [
+				[
+					'userIDs' => [ 12 ],
+					'groups' => [ 'sysop', 'bot' ]
+				]
+			],
+			'params' => [
+				'userIDs' => [
+					'desc' => 'Array of valid User IDs',
+					'type' => 'array',
+					'required' => true
+				],
+				'groups' => [
+					'desc' => 'Array of valid group names',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		],
+		'editPassword' => [
+			'examples' => [
+				[
+					'userID' => 12,
+					'password' => 'new1234',
+					'rePassword' => 'new1234'
+				]
+			],
+			'params' => [
+				'userID' => [
+					'desc' => 'Valid User ID',
+					'type' => 'integer',
+					'required' => true
+				],
+				'password' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				],
+				'rePassword' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	/**
@@ -60,10 +223,6 @@ class BSApiTasksUserManager extends BSApiTasksBase {
 			'setUserGroups' => array( 'userrights' ),
 			'editPassword' => array( 'wikiadmin' )
 		);
-	}
-
-	public function needsToken() {
-		parent::needsToken();
 	}
 
 	public function getTaskDataDefinitions() {

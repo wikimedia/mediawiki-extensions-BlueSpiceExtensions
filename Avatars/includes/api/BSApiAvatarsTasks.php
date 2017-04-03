@@ -3,9 +3,28 @@
 class BSApiAvatarsTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'uploadFile',
-		'generateAvatar',
-		'setUserImage'
+		'uploadFile' => [
+			'examples' => [],
+			'params' => []
+		],
+		'generateAvatar' => [
+			'examples' => [],
+			'params' => []
+		],
+		'setUserImage' => [
+			'examples' => [
+				[
+					'userImage' => 'ProfileImage.png'
+				]
+			],
+			'params' => [
+				'userImage' => [
+					'desc' => 'Name of the image to set',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	protected function getRequiredTaskPermissions() {

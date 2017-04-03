@@ -28,12 +28,102 @@
 class BSApiFlexiskinTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'activate',
-		'add',
-		'delete',
-		'save',
-		'reset',
-		'preview',
+		'activate' => [
+			'examples' => [
+				[
+					'id' => 'SomeSkinName'
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => 'Valid skin ID',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'add' => [
+			'examples' => [
+				[
+					'data' => [ [ name => "SkinName", desc => "SkinDesc", template => "NameOfTemplate" ] ]
+				]
+			],
+			'params' => [
+				'data' => [
+					'desc' => 'Array of JSON objects in form of { name: "SkinName", desc: "SkinDesc", template: "NameOfTemplate" }',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		],
+		'delete' => [
+			'examples' => [
+				[
+					'id' => 'SomeSkinName'
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => 'Valid skin ID',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'save' => [
+			'examples' => [
+				[
+					'id' => 'SomeSkinName',
+					'data' => [ [ name => "SkinName", desc => "SkinDesc", template => "NameOfTemplate" ] ]
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => 'Valid skin ID',
+					'type' => 'string',
+					'required' => true
+				],
+				'data' => [
+					'desc' => 'Array of JSON objects in form of { name: "SkinName", desc: "SkinDesc", template: "NameOfTemplate" }',
+					'type' => 'array',
+					'required' => false
+				]
+			]
+		],
+		'reset' => [
+			'examples' => [
+				[
+					'id' => 'SomeSkinName'
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => 'Valid skin ID',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'preview' => [
+			'examples' => [
+				[
+					'id' => 'SomeSkinName',
+					'data' => [ [ name => "SkinName", desc => "SkinDesc", template => "NameOfTemplate" ] ]
+				]
+			],
+			'params' => [
+				'id' => [
+					'desc' => 'Valid skin ID',
+					'type' => 'string',
+					'required' => true
+				],
+				'data' => [
+					'desc' => 'Array of JSON objects in form of { name: "SkinName", desc: "SkinDesc", template: "NameOfTemplate" }',
+					'type' => 'array',
+					'required' => false
+				]
+			]
+		],
 	);
 
 	protected $sTaskLogType = 'bs-flexiskin';

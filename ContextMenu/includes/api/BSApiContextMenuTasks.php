@@ -1,7 +1,22 @@
 <?php
 
 class BSApiContextMenuTasks extends BSApiTasksBase {
-	protected $aTasks = array( 'getMenuItems' );
+	protected $aTasks = array(
+		'getMenuItems' => [
+			'examples' => [
+				[
+					'title' => 'Main_page'
+				]
+			],
+			'params' => [
+				'title' => [
+					'desc' => 'Valid Title value',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		]
+	);
 
 	protected function getRequiredTaskPermissions() {
 		return array(

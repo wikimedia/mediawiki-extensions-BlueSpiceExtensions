@@ -36,9 +36,143 @@ class BSApiReviewTasks extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'editReview',
-		'deleteReview',
-		'vote',
+		'editReview' => [
+			'examples' => [
+				[
+					'pid' => 12,
+					'editable' => true,
+					'sequential' => false,
+					'abortable' => true,
+					'startdate' => '20170308032520',
+					'enddate' => '20170318032520',
+					'steps' => [
+						[
+							'userid' => 1,
+							'status' => ''
+						],
+						[
+							'userid' => 3,
+							'status' => ''
+						]
+					]
+				],
+				[
+					'pid' => 12,
+					'editable' => true,
+					'sequential' => false,
+					'abortable' => true,
+					'startdate' => '20170308032520',
+					'enddate' => '20170318032520',
+					'steps' => [
+						[
+							'userid' => 1,
+							'status' => ''
+						],
+						[
+							'userid' => 3,
+							'status' => ''
+						]
+					],
+					'tmpl_save' => true,
+					'tmpl_name' => 'My template'
+				]
+			],
+			'params' => [
+				'pid' => [
+					'desc' => 'Valid page id',
+					'type' => 'integer',
+					'required' => true
+				],
+				'editable' => [
+					'desc' => 'Flag that indicates whether the review process can be edited',
+					'type' => 'boolean',
+					'required' => true
+				],
+				'sequential' => [
+					'desc' => 'Flag that indicates whether the steps of the review process should be processed one by one or in parallel',
+					'type' => 'boolean',
+					'required' => true
+				],
+				'abortable' => [
+					'desc' => 'Flag that indicates whether the review process can be aborted',
+					'type' => 'boolean',
+					'required' => true
+				],
+				'startdate' => [
+					'desc' => 'Start date for review in format YmdHis',
+					'type' => 'string',
+					'required' => true
+				],
+				'enddate' => [
+					'desc' => 'End date for review in format YmdHis',
+					'type' => 'string',
+					'required' => true
+				],
+				'steps' => [
+					'desc' => 'An array ob objects that describe each step of the review process',
+					'type' => 'array',
+					'required' => true
+				],
+				'tmpl_save' => [
+					'desc' => 'Save to template',
+					'type' => 'boolean',
+					'required' => false
+				],
+				'tmpl_name' => [
+					'desc' => 'Template name',
+					'type' => 'string',
+					'required' => false,
+					'default' => ''
+				],
+				'tmpl_choice' => [
+					'desc' => 'The id of a review template',
+					'type' => 'integer',
+					'required' => false,
+					'default' => -1
+				],
+			]
+		],
+		'deleteReview' => [
+			'examples' => [
+				[
+					'pid' => 12
+				]
+			],
+			'params' => [
+				'pid' => [
+					'desc' => 'Valid page id',
+					'type' => 'integer',
+					'required' => true
+				]
+			]
+		],
+		'vote' => [
+			'examples' => [
+				[
+					'articleID' => 12,
+					'vote' => 'yes',
+					'comment' => 'Review comment'
+				]
+			],
+			'params' => [
+				'articleID' => [
+					'desc' => 'Valid Page ID',
+					'type' => 'integer',
+					'required' => true
+				],
+				'vote' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				],
+				'comment' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => false,
+					'default' => ''
+				]
+			]
+		],
 	);
 
 	/**

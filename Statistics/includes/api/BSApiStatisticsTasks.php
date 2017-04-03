@@ -3,7 +3,44 @@
 class BSApiStatisticsTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'getData'
+		'getData' => [
+			'params' => [
+				'examples' => [
+					[
+						'diagram' => 'Number of pages',
+						'grain' => 'Year',
+						'from' => '01.01.2017',
+						'mode' => 'List',
+						'to' => '31.12.2017'
+					]
+				],
+				'diagram' => [
+					'desc' => 'Diagram name',
+					'type' => 'string',
+					'required' => true
+				],
+				'grain' => [
+					'desc' => 'Valid grain type',
+					'type' => 'string',
+					'required' => true
+				],
+				'from' => [
+					'desc' => 'Date in format d.m.Y',
+					'type' => 'string',
+					'required' => true
+				],
+				'mode' => [
+					'desc' => 'Valid mode name',
+					'type' => 'string',
+					'required' => true
+				],
+				'to' => [
+					'desc' => 'Date in format d.m.Y',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	protected function getRequiredTaskPermissions() {

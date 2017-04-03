@@ -36,8 +36,68 @@ class BSApiPageTemplatesTasks extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'doEditTemplate',
-		'doDeleteTemplates'
+		'doEditTemplate' => [
+			'examples' => [
+				[
+					'label' => 'New template',
+					'desc' => 'Some description',
+					'template' => 'Template1'
+				],
+				[
+					'label' => 'New template',
+					'desc' => 'Some description',
+					'template' => 'Template1',
+					'targetns' => 123
+				],
+				[
+					'label' => 'Edited template',
+					'template' => 'Template1',
+					'id' => 192
+				]
+			],
+			'params' => [
+				'desc' => [
+					'desc' => 'Description for template - max. 255 characters',
+					'type' => 'string',
+					'required' => false
+				],
+				'label' => [
+					'desc' => 'Label for template - max. 255 characters',
+					'type' => 'string',
+					'required' => true
+				],
+				'template' => [
+					'desc' => 'Valid Title name',
+					'type' => 'string',
+					'required' => true
+				],
+				'targetns' => [
+					'desc' => 'Valid Namespace ID',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 0
+				],
+				'id' => [
+					'desc' => 'ID of template',
+					'type' => 'integer',
+					'required' => false
+				]
+			]
+		],
+		'doDeleteTemplates' => [
+			'examples' => [
+				[
+					'ids' => [ 123, 19, 48 ]
+				]
+			],
+			'params' => [
+				'ids' => [
+					'desc' => 'Array of IDs to delete',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	/**
