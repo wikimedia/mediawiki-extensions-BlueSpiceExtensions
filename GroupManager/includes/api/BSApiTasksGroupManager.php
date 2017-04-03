@@ -36,10 +36,68 @@ class BSApiTasksGroupManager extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'addGroup',
-		'editGroup',
-		'removeGroup',
-		'removeGroups',
+		'addGroup' => [
+			'examples' => [
+				[
+					'group' => 'Some name'
+				]
+			],
+			'params' => [
+				'group' => [
+					'desc' => 'Group name',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'editGroup' => [
+			'examples' => [
+				[
+					'group' => 'Some name',
+					'newGroup' => 'New name'
+				]
+			],
+			'params' => [
+				'group' => [
+					'desc' => 'Old group name',
+					'type' => 'string',
+					'required' => true
+				],
+				'newGroup' => [
+					'desc' => 'New group name',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'removeGroup' => [
+			'examples' => [
+				[
+					'group' => 'Some name'
+				]
+			],
+			'params' => [
+				'group' => [
+					'desc' => 'Group name',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'removeGroups' => [
+			'examples' => [
+				[
+					'group' => [ 'Group 1', 'Group 2', 'Group 3' ]
+				]
+			],
+			'params' => [
+				'groups' => [
+					'desc' => 'Array containing group names',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		],
 	);
 
 	protected function task_addGroup( $oTaskData, $aParams ) {

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-wantedarticle-desc": "Додати сторінку до списку потрібних",
@@ -35,5 +36,6 @@
 	"bs-wantedarticle-create-page": "Створити сторінку «$1».",
 	"bs-wantedarticle-suggest-page": "Запропонувати сторінку «$1».",
 	"bs-wantedarticle-info-nothing-entered": "Будь ласка, вкажіть дійсний заголовок сторінки.",
-	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Наступний символ не придатний|Наступні символи не придатні}} для використання у заголовку сторінки: $2"
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Наступний символ не придатний|Наступні символи не придатні}} для використання у заголовку сторінки: $2",
+	"apihelp-bs-wantedarticle-description": "Забезпечує API бажаної статті для BlueSpice."
 }

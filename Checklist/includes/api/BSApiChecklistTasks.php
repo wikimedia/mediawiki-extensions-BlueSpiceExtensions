@@ -3,8 +3,46 @@
 class BSApiChecklistTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'doChangeCheckItem',
-		'saveOptionsList'
+		'doChangeCheckItem' => [
+			'examples' => [
+				[
+					'pos' => '2',
+					'value' => 'true'
+				]
+			],
+			'params' => [
+				'pos' => [
+					'desc' => 'Integer value of target checkbox position',
+					'type' => 'string',
+					'required' => true
+				],
+				'value' => [
+					'desc' => 'Value of checkbox in form of "true"/"false"',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'saveOptionsList' => [
+			'examples' => [
+				[
+					'title' => 'ChecklistTest',
+					'records' => [ 'a', 'b', 'c' ]
+				]
+			],
+			'params' => [
+				'title' => [
+					'desc' => 'Valid title in NS_TEMPLATE namespace',
+					'type' => 'string',
+					'required' => true
+				],
+				'records' => [
+					'desc' => 'Array of items for checklist',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	protected function getRequiredTaskPermissions() {

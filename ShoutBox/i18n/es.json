@@ -5,7 +5,8 @@
 			"AVIADOR",
 			"Fitoschido",
 			"Awesomecat5",
-			"Ryo567"
+			"Ryo567",
+			"Igv"
 		]
 	},
 	"bs-shoutbox-message": "Escribe un comentario nuevo…",
@@ -28,5 +29,6 @@
 	"bs-shoutbox-too-early": "Por favor, espera unos segundos antes de enviar la siguiente entrada.",
 	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención en un grito",
 	"bs-shoutbox-notifications-title-message-subject": "Te han mencionado",
-	"bs-shoutbox-notifications-title-message-text": "$4 te ha {{GENDER:$1|mencionado}} en la página \"$5\".\n\nPuedes visitar la página siguiendo este enlace:\n$3."
+	"bs-shoutbox-notifications-title-message-text": "$4 te ha {{GENDER:$1|mencionado}} en la página \"$5\".\n\nPuedes visitar la página siguiendo este enlace:\n$3.",
+	"bs-usagetracker-shoutbox": "artículos con entradas shoutbox"
 }

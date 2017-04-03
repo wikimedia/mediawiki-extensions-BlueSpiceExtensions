@@ -13,5 +13,9 @@
 	"bs-usersidebar-tab-focus": "Фокус",
 	"bs-usersidebar-tab-globalactions": "Глобальні дії",
 	"bs-usersidebar-globalactionswidget-title": "Глобальні дії",
-	"apihelp-sidebar-description": "Виводить HTML-вміст бічної панелі користувача"
+	"apihelp-sidebar-description": "Виводить HTML-вміст бічної панелі користувача",
+	"apihelp-sidebar-param-sidebar": "Чи отримати бучну панель Wiki",
+	"apihelp-sidebar-param-usersidebar": "Чи отримати бічну панель Focus",
+	"apihelp-sidebar-param-format": "Формат вихідних даних",
+	"apihelp-sidebar-example": "Отримати HTML-код бічної панелі"
 }

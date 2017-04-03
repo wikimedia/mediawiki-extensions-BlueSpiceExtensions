@@ -48,7 +48,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 	 * @return string The rendered HTML of the extension list
 	 */
 	public function execute( $params = false ) {
-		global $wgBlueSpiceExtInfo, $wgVersion;
+		global $bsgBlueSpiceExtInfo, $wgVersion;
 
 		$aExtensionInfo = array();
 		foreach ( $this->mExtensions as $sExtName => $aExtension ) {
@@ -72,7 +72,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		RequestContext::getMain()->getOutput()->addJsConfigVars( 'aExtensionInfo', $aExtensionInfo );
 		$sCreditsLink = ' (<a href="' . SpecialPage::getTitleFor( 'SpecialCredits' )->getFullURL() . '">Credits</a>)';
 
-		$sVersion = $wgBlueSpiceExtInfo['version'].( ( $wgBlueSpiceExtInfo['status'] !== 'stable' ) ? ' '.$wgBlueSpiceExtInfo['status'] : '' );
+		$sVersion = $bsgBlueSpiceExtInfo['version'].( ( $bsgBlueSpiceExtInfo['status'] !== 'stable' ) ? ' '.$bsgBlueSpiceExtInfo['status'] : '' );
 
 		$aOut = array();
 		$aOut[] = '<table class="bs-softwaretable">';
@@ -81,7 +81,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		$aOut[] = '<th>'.wfMessage( 'bs-extensioninfo-version' )->plain().'</th>';
 		$aOut[] = '</tr>';
 		$aOut[] = '<tr>';
-		$aOut[] = '<td><a title="'.$wgBlueSpiceExtInfo['url'].'" href="'.$wgBlueSpiceExtInfo['url'].'">'.$wgBlueSpiceExtInfo['name'].'</a>'.$sCreditsLink.'</td>';
+		$aOut[] = '<td><a title="'.$bsgBlueSpiceExtInfo['url'].'" href="'.$bsgBlueSpiceExtInfo['url'].'">'.$bsgBlueSpiceExtInfo['name'].'</a>'.$sCreditsLink.'</td>';
 		$aOut[] = '<td>'.$sVersion.'</td>';
 		$aOut[] = '</tr>';
 		$aOut[] = '<tr>';

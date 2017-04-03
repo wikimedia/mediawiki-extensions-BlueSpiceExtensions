@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Guycn2"
+			"Guycn2",
+			"תומר ט"
 		]
 	},
 	"bs-usermanager-desc": "ממשק ניהול עבור הוספה, עריכה ומחיקה של משתמשים",
@@ -9,5 +10,7 @@
 	"usermanager": "מנהל משתמשים",
 	"action-usermanager-viewspecialpage": "לצפות בדף המיוחד \"מנהל משתמשים\"",
 	"bs-usermanager-group-add-not-allowed": "אין באפשרותך להוסיף משתמשים לקבוצה $1",
-	"bs-usermanager-group-remove-not-allowed": "אין באפשרותך להסיר משתמשים מהקבוצה $1"
+	"bs-usermanager-group-remove-not-allowed": "אין באפשרותך להסיר משתמשים מהקבוצה $1",
+	"bs-usermanager-editgroups": "עריכת קבוצות",
+	"bs-usermanager-invalid-groups": "הקבוצות אינן תקינות"
 }

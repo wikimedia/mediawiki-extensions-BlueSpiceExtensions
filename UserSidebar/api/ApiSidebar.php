@@ -51,26 +51,19 @@ class ApiSidebar extends ApiBase {
 			'usersidebar' => array(
 				ApiBase::PARAM_TYPE => 'boolean'
 			),
-            'format' => array(
+			'format' => array(
 				ApiBase::PARAM_TYPE => 'string'
 			)
 		);
 	}
 
-	public function getParamDescription() {
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
 		return array(
-			'sidebar'=> 'Whether to get the Wiki sidebar',
-			'usersidebar'=> 'Whether to get the Focus sidebar'
-		);
-	}
-
-	public function getDescription() {
-		return 'Get the sidebar';
-	}
-
-	public function getExamples() {
-		return array(
-			'api.php?action=sidebar&sidebar=1'
+			'action=sidebar&sidebar=1'
+				=> 'apihelp-sidebar-example'
 		);
 	}
 

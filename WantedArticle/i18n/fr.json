@@ -5,7 +5,8 @@
 			"SnowedEarth",
 			"Ltrlg",
 			"Yasten",
-			"Trial"
+			"Trial",
+			"Wladek92"
 		]
 	},
 	"bs-wantedarticle-desc": "Ajouter une page à la liste des pages souhaitées",
@@ -38,5 +39,6 @@
 	"bs-wantedarticle-create-page": "Créer la page « $1 ».",
 	"bs-wantedarticle-suggest-page": "Suggérer la page « $1 ».",
 	"bs-wantedarticle-info-nothing-entered": "Veuillez fournir un titre de page valide.",
-	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Le caractère suivant n’est pas valide|Les caractères suivants ne sont pas valides}} pour être utilisé{{PLURAL:$1||s}} dans un titre de page : $2"
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Le caractère suivant n’est pas valide|Les caractères suivants ne sont pas valides}} pour être utilisé{{PLURAL:$1||s}} dans un titre de page : $2",
+	"apihelp-bs-wantedarticle-description": "Fournit l'API d'article désirée pour BlueSpice."
 }

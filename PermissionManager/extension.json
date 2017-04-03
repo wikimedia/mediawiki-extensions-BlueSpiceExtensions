@@ -1,6 +1,6 @@
 {
 	"name": "PermissionManager",
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/PermissionManager",
 	"license-name": "GPL-2.0+",
 	"author": [
@@ -92,7 +92,8 @@
 		}
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "PermissionManager::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "PermissionManager::getSchemaUpdates",
+		"UnitTestsList": "PermissionManager::onUnitTestsList"
 	},
 	"callback": "PermissionManagerHooks::onCallback",
 	"manifest_version": 1

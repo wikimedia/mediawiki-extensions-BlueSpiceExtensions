@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Edustus"
+			"Edustus",
+			"Paucabot"
 		]
 	},
 	"bs-insertfile-insert-image": "Inserir una imatge",
@@ -9,6 +10,7 @@
 	"bs-insertfile-alignleft": "esquerra",
 	"bs-insertfile-alignright": "dreta",
 	"bs-insertfile-labeltype": "Decoració",
+	"bs-insertfile-typethumb": "miniatura",
 	"bs-insertfile-uploadimageemptytext": "Triar una imatge nova...",
 	"bs-insertfile-uploadimagefieldlabel": "Carregar una nova imatge",
 	"bs-insertfile-uploaddescfilelabel": "Resum",

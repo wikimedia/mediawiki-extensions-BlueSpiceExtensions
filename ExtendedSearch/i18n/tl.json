@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Leeheonjin"
+			"Leeheonjin",
+			"Emem.calist"
 		]
 	},
-	"bs-extendedsearch-pref-externalrepo-url": "URL para sa panlabas na direktoryo:"
+	"bs-extendedsearch-pref-externalrepo-url": "URL para sa panlabas na direktoryo:",
+	"apihelp-feedextendedsearch-description": "Sa paggamit ng 'OpenSearch protocol', gamitin ang wiki"
 }

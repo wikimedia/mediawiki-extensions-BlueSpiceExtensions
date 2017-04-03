@@ -4,10 +4,11 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Ата",
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
-	"bs-readers-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of readers extension.",
+	"bs-readers-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of readers extension.",
 	"prefs-readers": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for readers section in preferences.\n{{Identical|Reader}}",
 	"bs-readers-title": "Headline below content for readers section\n*$1 is the number of readers for PLURAL distinction\n*$2 is the username of the user - use for GENDER distinction (singular only)\n{{Identical|Reader}}",
 	"readers-user": "Special page title for pages {{GENDER:$1|read}} by: $1\n\n* $1 is the username - use for GENDER distinction",
@@ -20,5 +21,7 @@
 	"bs-readers-header-username": "Column headline for username\n{{Identical|Username}}",
 	"bs-readers-header-readerspath": "Used on special page, headline for reader\n{{Identical|Reader}}",
 	"bs-readers-header-ts": "Column headline for \"time and date\".\n{{Identical|Date}}",
-	"bs-readers-header-page": "Column headline for wikipage title\n{{Identical|Page}}"
+	"bs-readers-header-page": "Column headline for wikipage title\n{{Identical|Page}}",
+	"apihelp-bs-readers-data-store-description": "{{doc-apihelp-description|bs-readers-data-store}}",
+	"apihelp-bs-readers-users-store-description": "{{doc-apihelp-description|bs-readers-users-store}}"
 }

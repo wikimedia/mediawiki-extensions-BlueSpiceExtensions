@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Paucabot"
 		]
 	},
+	"bs-extendededitbar-redirecttip": "Redirecció",
 	"bs-extendededitbar-smallsample": "Text petit",
 	"bs-extendededitbar-commentsample": "Comentari",
 	"bs-extendededitbar-quotetip": "Insereix un bloc de text citat",

@@ -6,7 +6,8 @@
 			"Robin0van0der0vliet",
 			"Esketti",
 			"Robin van der Vliet",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Mainframe98"
 		]
 	},
 	"bs-review-desc": "Voegt workflow functionaliteit om pagina ' s",
@@ -29,7 +30,7 @@
 	"bs-review-save-nosteps": "Geen review stappen werden ingevoerd.",
 	"bs-review-save-noid": "Geen van de pagina-ID is verzonden.",
 	"bs-review-save-norights": "U hebt niet de vereiste toestemming.",
-	"bs-review-review-error": "Er is een onbekende fout opgetreden",
+	"bs-review-review-error": "Er is een onbekende fout opgetreden.",
 	"bs-review-review-secondtime": "De controle kon niet worden gevonden. Misschien probeert u de pagina opnieuw te controleren.",
 	"bs-review-review-saved": "Uw stem is opgeslagen.",
 	"bs-review-mail-link-to-page": "Volg deze koppeling: $1",
@@ -49,7 +50,7 @@
 	"bs-review-statebar-body-do-review": "Bekijk deze pagina",
 	"bs-review-i-agree": "Akkoord",
 	"bs-review-i-dismiss": "Oneens",
-	"bs-review-not-allowed": "Het is u niet toegestaan om toegang te krijgen tot deze pagina.",
+	"bs-review-not-allowed": "U hebt geen toegang tot deze pagina.",
 	"bs-review-created-review": "$1 {{GENDER:$1|gemaakt}} een review naar de pagina \"$2\".",
 	"bs-review-modified-review": "$1 {{GENDER:$1|gewijzigd}} een review naar de pagina \"$2\".",
 	"bs-review-deleted-review": "$1 {{GENDER:$1|verwijderd}} een review naar de pagina \"$2\".",
@@ -87,7 +88,7 @@
 	"bs-review-header-page-title": "Pagina",
 	"bs-review-header-owner-name": "Eigenaar",
 	"bs-review-header-assessors": "Assessoren",
-	"bs-review-header-accepted-text": "Staat",
+	"bs-review-header-accepted-text": "Status",
 	"bs-review-header-startdate": "Starten",
 	"bs-review-header-enddate": "Beëindigen",
 	"bs-review-confirm-delete-step": "Wilt u echt te verwijderen van deze stap?",

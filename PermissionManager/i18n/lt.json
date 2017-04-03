@@ -42,6 +42,7 @@
 	"log-description-bs-permission-manager": "Tai yra grupės teisių pakeitimų žurnalas.",
 	"log-show-hide-bs-permission-manager": "$1 leidimo tvarkymo žurnalas",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|pakeitė}} grupės $4 leidimus",
+	"apihelp-bs-permissionmanager-tasks-description": "Pateikia užduotis, skirtas PermissionManager",
 	"action-permissionmanager-viewspecialpage": "Peržiūrėti specialų puslapį „{{int:bs-permissionmanager-label}}“",
 	"permissionmanager": "Leidimų valdymas"
 }

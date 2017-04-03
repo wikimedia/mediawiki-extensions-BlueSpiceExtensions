@@ -3,7 +3,8 @@
 		"authors": [
 			"Mykola Swarnyk",
 			"Andriykopanytsia",
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-statistics-desc": "Модуль статистики для BlueSpice",
@@ -53,8 +54,13 @@
 	"bs-statistics-portlet-numberofusers": "Кількість користувачів",
 	"bs-statistics-portlet-numberofedits": "Кількість редагувань",
 	"bs-statistics-portlet-numberofpages": "Кількість сторінок",
+	"bs-statistics-portlet-numberofarticles": "Кількість статей",
 	"bs-statistics-portlet-numberofusersdesc": "Статистика кількості користувачів.",
 	"bs-statistics-portlet-numberofeditsdesc": "Статистика кількості редагувань.",
 	"bs-statistics-portlet-numberofpagesdesc": "Статистика кількості сторінок.",
-	"bs-statistics-portletconfig-periodday": "Вчора"
+	"bs-statistics-portlet-numberofarticlesdesc": "Статистика кількості статей.",
+	"bs-statistics-portletconfig-periodday": "Вчора",
+	"apihelp-bs-statistics-tasks-description": "Забезпечує загальні завдання для статистики",
+	"apihelp-bs-statistics-available-diagrams-store-description": "Забезпечує сховище з доступними діаграмами",
+	"apihelp-bs-statistics-search-options-store-description": "Забезпечує сховище з доступними пошуковими опціями"
 }

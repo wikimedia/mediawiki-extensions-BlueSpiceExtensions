@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-insertcategory-desc": "Dialogvindu for å skrive inn kategorilenke",
+	"bs-insertcategory-insertcat": "Sett inn kategori",
+	"prefs-insertcategory": "Sett inn kategori",
+	"bs-insertcategory-pref-withparents": "Sett inn kategori med dens overordnede kategorier",
+	"bs-insertcategory-pref-uploadpanelintegration": "Sett sidekategorier som standard i opplastingsdialogvindu",
+	"bs-insertcategory-title": "Sett inn kategori",
+	"bs-insertcategory-cat-label": "Tildelt:",
+	"bs-insertcategory-success": "Kategorien ble lagt til",
+	"bs-insertcategory-failure": "Feil",
+	"bs-insertcategory-hint": "Merk: for å legge til en kategori må du trykke på enter.",
+	"bs-insertcategory-panel-title": "Kategorier"
+}

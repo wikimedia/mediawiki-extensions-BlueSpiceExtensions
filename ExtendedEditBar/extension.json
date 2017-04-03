@@ -1,6 +1,6 @@
 {
 	"name": "ExtendedEditBar",
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/ExtendedEditbar",
 	"author": "Markus Glaser",
 	"descriptionmsg": "bs-extendededitbar-desc",
@@ -34,8 +34,8 @@
 		"remoteExtPath": "BlueSpiceExtensions/ExtendedEditBar/resources"
 	},
 	"config": {
-        "_prefix": "bsg",
-        "ExtendedEditBarEnabledActions": ["edit", "submit"]
+		"_prefix": "bsg",
+		"ExtendedEditBarEnabledActions": ["edit", "submit"]
 	},
 	"manifest_version": 1
 }

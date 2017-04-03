@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"bs-csyntaxhighlight-desc": "Додає налаштовувані функції підсвічування синтаксису",
@@ -9,5 +10,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Тема:",
 	"bs-csyntaxhighlight-pref-gutter": "Показати номери рядків",
 	"bs-csyntaxhighlight-pref-autolinks": "URL-посилання",
-	"bs-csyntaxhighlight-pref-toolbar": "Показати панель інструментів"
+	"bs-csyntaxhighlight-pref-toolbar": "Показати панель інструментів",
+	"bs-csyntaxhighlight-tag-desc": "Вставляє тег CSyntaxHighlight, що використовується для відтворення форматованих шматків коду"
 }

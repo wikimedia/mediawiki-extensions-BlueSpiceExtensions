@@ -4,14 +4,14 @@
 			"Bjankuloski06"
 		]
 	},
-	"bs-dashboards-desc": "Става контролна табла за нови корисници и администратори",
-	"bs-specialadmindashboard-label": "Контролна табла",
+	"bs-dashboards-desc": "Става управувачница за нови корисници и администратори",
+	"bs-specialadmindashboard-label": "Управувачница",
 	"bs-dashboards-addportlet": "Додај поделок",
 	"bs-dashboards-portlets": "Поделоци",
-	"prefs-dashboards": "Контролни табли",
-	"bs-dashboards-pref-userdashboardonlogo": "Логото на мрежното место да води до корисничката контролна табла",
-	"admindashboard": "Администраторска контролна табла",
-	"userdashboard": "Корисничка контролна табла",
+	"prefs-dashboards": "Управувачници",
+	"bs-dashboards-pref-userdashboardonlogo": "Логото на мрежното место да води до корисничката управувачница",
+	"admindashboard": "Администраторска управувачница",
+	"userdashboard": "Корисничка управувачница",
 	"bs-dashboard-userportlet-calendar-title": "Календар",
 	"bs-dashboard-userportlet-calendar-description": "Календар"
 }

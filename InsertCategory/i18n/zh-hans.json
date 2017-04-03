@@ -8,6 +8,7 @@
 	"bs-insertcategory-insertcat": "插入分类",
 	"prefs-insertcategory": "插入分类",
 	"bs-insertcategory-pref-withparents": "插入分类与其父分类",
+	"bs-insertcategory-pref-uploadpanelintegration": "在上传对话框中设置页面分类为默认",
 	"bs-insertcategory-title": "插入分类",
 	"bs-insertcategory-cat-label": "分配：",
 	"bs-insertcategory-success": "分类已添加",

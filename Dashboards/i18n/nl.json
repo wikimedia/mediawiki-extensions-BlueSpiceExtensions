@@ -4,7 +4,8 @@
 			"Arg",
 			"Sjoerddebruin",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
 	"bs-dashboards-desc": "Biedt dashboards voor gebruikers en beheerders",
@@ -16,5 +17,6 @@
 	"admindashboard": "Beheerdersdashboard",
 	"userdashboard": "Gebruikersdashboard",
 	"bs-dashboard-userportlet-calendar-title": "Kalender",
-	"bs-dashboard-userportlet-calendar-description": "Kalender"
+	"bs-dashboard-userportlet-calendar-description": "Kalender",
+	"action-dashboards-viewspecialpage-userdashboard": "bekijk de speciale pagina \"{{int:userdashboard}}\""
 }

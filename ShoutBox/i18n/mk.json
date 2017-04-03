@@ -12,7 +12,7 @@
 	"bs-shoutbox-no-entries": "Овде засега нема ништо.",
 	"bs-shoutbox-loading": "Вчитувам...",
 	"bs-shoutbox-pref-committimeinterval": "Време помеѓу две пораки (во секунди):",
-	"bs-shoutbox-pref-maxmessagelength": "Максимална должина на пораката:",
+	"bs-shoutbox-pref-maxmessagelength": "Најголема должина на пораката:",
 	"bs-shoutbox-pref-numberofshouts": "Колку пораки да се прикажуваат:",
 	"bs-shoutbox-pref-showage": "Прикажувај кога е создадена пораката",
 	"bs-shoutbox-pref-showuser": "Прикажувај го авторот на пораката",

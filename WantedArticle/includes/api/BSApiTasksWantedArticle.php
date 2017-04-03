@@ -36,8 +36,60 @@ class BSApiTasksWantedArticle extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'addWantedArticle',
-		'getWantedArticles',
+		'addWantedArticle' => [
+			'examples' => [
+				[
+					'title' => 'Page I am suggesting'
+				]
+			],
+			'params' => [
+				'title' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'getWantedArticles' => [
+			'examples' => [
+				[
+					'count' => 12,
+					'sort' => 'title',
+					'order' => '',
+					'type' => '',
+					'title' => 'Whishlist title'
+
+				]
+			],
+			'params' => [
+				'count' => [
+					'desc' => 'Number of articles to retrieve',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 10
+				],
+				'sort' => [
+					'desc' => 'Sorting option - "title" or "time"',
+					'type' => 'string',
+					'required' => true
+				],
+				'order' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				],
+				'type' => [
+					'desc' => '',
+					'type' => 'string',
+					'required' => true
+				],
+				'title' => [
+					'desc' => 'Title for the Wishlist',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
 	);
 
 	/**

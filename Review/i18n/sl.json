@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alojz.tic",
-			"Skalcaa"
+			"Skalcaa",
+			"Janezdrilc"
 		]
 	},
 	"bs-review-desc": "Omogoči funkcionalnost poteka dela (tj. workflow) na straneh",
@@ -89,5 +90,7 @@
 	"bs-review-confirm-delete-step": "Ali ste prepričani, da želite izbrisati ta korak?",
 	"bs-review-confirm-delete-review": "Ali ste prepričani, da želite izbrisati ta pregled?",
 	"bs-review-error-insufficient-permissions": "Nimate dovoljenja za izvedbo te akcije (\"$1\" je potrebno).",
-	"echo-category-title-bs-review-complete-cat": "Obvestilo za dokončanje pregleda"
+	"echo-category-title-bs-review-complete-cat": "Obvestilo za dokončanje pregleda",
+	"echo-category-title-bs-review-assignment-cat": "Pregledi – naloge",
+	"echo-category-title-bs-review-action-cat": "Pregled – dejanja"
 }

@@ -10,7 +10,8 @@
 			"Shirayuki",
 			"Purodha",
 			"Leonid Verhovskij <verhovskij@hallowelt.com>",
-			"Beta16"
+			"Beta16",
+			"Umherirrender"
 		]
 	},
 	"bs-extendedsearch-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extended search extension.",
@@ -114,5 +115,13 @@
 	"action-extendedsearch-viewspecialpage": "placeholder to describe that view of special page \"{{int:specialextendedsearch}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearch-viewspecialpage}}",
 	"action-extendedsearchadmin-viewspecialpage": "placeholder to describe that view of special page \"{{int:extendedsearchadmin}}\" is restricted for the current user.\n\n{{Doc-action|extendedsearchadmin-viewspecialpage}}\"",
 	"extendedsearchadmin": "Extended search administration",
-	"bs-extendedsearch-create-page": "Text for create page \"$1\". $1 is the entered page name\n{{Identical|Create page}}"
+	"bs-extendedsearch-create-page": "Text for create page \"$1\". $1 is the entered page name\n{{Identical|Create page}}",
+	"apihelp-feedextendedsearch-description": "{{doc-apihelp-description|feedextendedsearch}}",
+	"apihelp-feedextendedsearch-param-q": "{{doc-apihelp-param|feedextendedsearch|q}}",
+	"apihelp-feedextendedsearch-param-feedformat": "{{doc-apihelp-param|feedextendedsearch|feedformat}}",
+	"apihelp-feedextendedsearch-param-user": "{{doc-apihelp-param|feedextendedsearch|user}}",
+	"apihelp-feedextendedsearch-param-namespace": "{{doc-apihelp-param|feedextendedsearch|namespace}}",
+	"apihelp-feedextendedsearch-param-category": "{{doc-apihelp-param|feedextendedsearch|category}}",
+	"apihelp-feedextendedsearch-param-files": "{{doc-apihelp-param|feedextendedsearch|files}}",
+	"apihelp-feedextendedsearch-example": "{{doc-apihelp-example|feedextendedsearch}}"
 }

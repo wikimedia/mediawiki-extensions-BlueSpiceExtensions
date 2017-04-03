@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Metalhead64",
 			"Osnard",
-			"Purodha"
+			"Purodha",
+			"Umherirrender"
 		]
 	},
 	"bs-wantedarticle-desc": "Listet eine neu erstellte Seite in der Liste der gewünschten Seiten auf",
@@ -21,7 +22,7 @@
 	"bs-wantedarticle-single-textfield-createbutton-text": "Erstellen",
 	"bs-wantedarticle-single-textfield-defaulttext": "Seitentitel",
 	"bs-wantedarticle-tag-wantedarticle-desc": "Bietet die Funktion zum einfachen Vorschlagen neuer Artikel und zeigt die vorgeschlagenen Seiten in einer Liste an. Verschiedene Parameter konfigurieren diese Liste.",
-	"bs-wantedarticle-tag-more-linktext": "Mehr ...",
+	"bs-wantedarticle-tag-more-linktext": "Mehr …",
 	"bs-wantedarticle-tag-default-title": "Gewünschte Seiten",
 	"bs-wantedarticle-pref-includelimit": "Anzahl der darzustellenden Vorschläge:",
 	"bs-wantedarticle-pref-deleteexisting": "Existierende Seiten aus Wunschliste löschen",

@@ -13,5 +13,6 @@
 	"bs-usagetracker-col-count": "Antal",
 	"bs-usagetracker-col-last-updated": "Senast uppdaterad",
 	"bs-usagetracker-base-collector-desc": "Antal sidor som använder $1",
-	"bs-usagetracker-tag-collector-desc": "Antal sidor som använder taggen <$1>"
+	"bs-usagetracker-tag-collector-desc": "Antal sidor som använder taggen <$1>",
+	"bs-usagetracker-db-collector-desc": "Antal $1"
 }

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-securefilestore-desc": "Forhindrer uautorisert tilgang til filer og bilder",
+	"prefs-securefilestore": "Sikker filbevaring",
+	"bs-securefilestore-pref-defaultdisposition": "Vis filer som standard:",
+	"bs-securefilestore-pref-defaultdisposition-brower": "Nettleser",
+	"bs-securefilestore-pref-defaultdisposition-external": "Eksternt",
+	"bs-securefilestore-pref-dispositionattachment": "Eksterne filtyper:",
+	"bs-securefilestore-pref-dispositioninline": "Nettleserfiltyper:",
+	"bs-securefilestore-pref-fileextensionwhitelist": "Vis alltid disse filtypene:"
+}

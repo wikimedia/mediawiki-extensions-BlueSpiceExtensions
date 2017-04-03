@@ -36,9 +36,64 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'getShouts',
-		'insertShout',
-		'archiveShout',
+		'getShouts' => [
+			'examples' => [
+				[
+					'articleId' => 13,
+					'limit' => 20
+				],
+				[
+					'articleId' => 13
+				]
+			],
+			'params' => [
+				'articleId' => [
+					'desc' => 'Valid page id',
+					'type' => 'integer',
+					'required' => true
+				],
+				'limit' => [
+					'desc' => 'Limit to retrieve',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 0
+				]
+			]
+		],
+		'insertShout' => [
+			'examples' => [
+				[
+					'articleId' => 13,
+					'message' => 'Shout message'
+				]
+			],
+			'params' => [
+				'articleId' => [
+					'desc' => 'Valid page id',
+					'type' => 'integer',
+					'required' => true
+				],
+				'message' => [
+					'desc' => 'The actual message text',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		],
+		'archiveShout' => [
+			'examples' => [
+				[
+					'shoutId' => 139
+				]
+			],
+			'params' => [
+				'shoutId' => [
+					'desc' => 'The id of a shout database entry',
+					'type' => 'integer',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	/**

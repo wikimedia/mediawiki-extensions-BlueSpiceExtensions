@@ -4,7 +4,8 @@
 			"Macofe",
 			"Fitoschido",
 			"AVIADOR",
-			"Ryo567"
+			"Ryo567",
+			"Igv"
 		]
 	},
 	"bs-review-desc": "Añade funcionalidad de flujo de trabajo a las páginas",
@@ -114,5 +115,6 @@
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|ha terminado}} la revisión de \"$2\"",
 	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|ha terminado}} tu revisión de \"$2\". La página se marcó como estable automáticamente.",
 	"apihelp-bs-review-tasks": "Permite la manipulación de las revisiones",
-	"apihelp-bs-review-tasks-description": "Permite la manipulación de revisiones"
+	"apihelp-bs-review-tasks-description": "Permite la manipulación de revisiones",
+	"bs-usagetracker-review": "reseñas"
 }

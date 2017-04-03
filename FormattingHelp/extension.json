@@ -1,6 +1,6 @@
 {
 	"name": "FormattingHelp",
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/FormattingHelp",
 	"author": "Markus Glaser",
 	"descriptionmsg": "bs-formattinghelp-desc",
@@ -23,6 +23,9 @@
 	"AutoloadClasses": {
 		"FormattingHelp": "FormattingHelp.class.php",
 		"BSApiTasksFormattingHelp": "includes/api/BSApiTasksFormattingHelp.php"
+	},
+	"Hooks": {
+		"UnitTestsList": "FormattingHelp::onUnitTestsList"
 	},
 	"ResourceModules": {
 		"ext.bluespice.formattinghelp": {

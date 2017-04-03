@@ -24,5 +24,6 @@
 	"bs-interwikilinks-confirmdeleteinterwikilink": "Es tu secur de voler deler iste ligamine interwiki?",
 	"bs-interwikilinks-insertlink-tabtitle": "Ligamine verso un altere wiki",
 	"bs-interwikilinks-insertlink-labelprefix": "Prefixo",
-	"bs-interwikilink-select-a-prefix": "Selige prefixo"
+	"bs-interwikilink-select-a-prefix": "Selige prefixo",
+	"bs-interwikilinks-link-edited": "Le ligamine interwiki ha essite modificate."
 }

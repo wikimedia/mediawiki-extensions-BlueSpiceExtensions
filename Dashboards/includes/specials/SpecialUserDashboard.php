@@ -24,7 +24,7 @@ class SpecialUserDashboard extends BsSpecialPage {
 
 		if ( $oDbr->numRows( $res ) > 0 ) {
 			$row = $oDbr->fetchObject( $res );
-			$aPortalConfig = unserialize( $row->dc_config );
+			$aPortalConfig = $row->dc_config;
 			$aPortalConfig = FormatJson::decode( $aPortalConfig );
 		} else {
 			$bIsDefault = true;

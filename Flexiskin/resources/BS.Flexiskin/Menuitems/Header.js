@@ -44,8 +44,7 @@ Ext.define( 'BS.Flexiskin.Menuitems.Header', {
 			width: '20px',
 			iconCls: 'bs-icon-upload',
 			style: {
-				marginLeft: '10px',
-				color: 'white'
+				marginLeft: '10px'
 			},
 			handler: function( oButton, oEvent ) {
 				if ( !this.dlgUploadBackground ) {

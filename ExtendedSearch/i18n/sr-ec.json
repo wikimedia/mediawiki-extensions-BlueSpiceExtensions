@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Zoranzoki21"
 		]
 	},
 	"bs-extendedsearch-facet-category": "Категорија",
@@ -9,5 +10,10 @@
 	"bs-extendedsearch-sort-relevance": "Релевантност",
 	"bs-extendedsearch-warning": "Упозорење",
 	"bs-extendedsearch-section": "Одељак",
-	"action-extendedsearchadmin-viewspecialpage": "преглед посебне странице „{{int:extendedsearchadmin}}“"
+	"action-extendedsearchadmin-viewspecialpage": "преглед посебне странице „{{int:extendedsearchadmin}}“",
+	"apihelp-feedextendedsearch-description": "Претражи вики помоћу OpenSearch протокола",
+	"apihelp-feedextendedsearch-param-q": "Претрага подешавања",
+	"apihelp-feedextendedsearch-param-feedformat": "Максимални износ резултата за повратак",
+	"apihelp-feedextendedsearch-param-category": "Категорије за претрагу",
+	"apihelp-feedextendedsearch-param-files": "Да ли да тражи у датотекама"
 }

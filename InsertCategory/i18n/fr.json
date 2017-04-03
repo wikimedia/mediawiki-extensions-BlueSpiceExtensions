@@ -9,6 +9,7 @@
 	"bs-insertcategory-insertcat": "Insérer une catégorie",
 	"prefs-insertcategory": "Insérer une catégorie",
 	"bs-insertcategory-pref-withparents": "Insérer une catégorie avec ses parents",
+	"bs-insertcategory-pref-uploadpanelintegration": "Initialise les catégories de pages par défaut étendre le dialogue de téléchargement",
 	"bs-insertcategory-title": "Insérer une catégorie",
 	"bs-insertcategory-cat-label": "Assigné :",
 	"bs-insertcategory-success": "La catégorie a été ajoutée",

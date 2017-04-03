@@ -118,6 +118,8 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 				$this->writeLog( $oTitle->getText() );
 
 				$iPageID = $oTitle->getArticleID();
+				if( $iPageID == 0 ) continue;
+
 				$sPageTitle = $oTitle->getText();
 				$sPageNamespace = $oTitle->getNamespace();
 

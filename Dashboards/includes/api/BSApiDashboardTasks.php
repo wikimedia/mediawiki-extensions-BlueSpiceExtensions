@@ -3,8 +3,35 @@
 class BSApiDashboardTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'saveAdminDashboardConfig',
-		'saveUserDashboardConfig'
+		'saveAdminDashboardConfig' => [
+			'examples' => [
+				[
+					'portletConfig' => [ [ 'someKey' => 'someValue', 'otherKey' => 'otherValue' ] ]
+				]
+			],
+			'params' => [
+				'portletConfig' => [
+					'desc' => 'Array containing valid json encoded portlet configuration in form of { key: "value" }',
+					'type' => 'array',
+					'required' => true
+				]
+
+			]
+		],
+		'saveUserDashboardConfig' => [
+			'examples' => [
+				[
+					'portletConfig' => [ [ 'someKey' => 'someValue', 'otherKey' => 'otherValue' ] ]
+				]
+			],
+			'params' => [
+				'portletConfig' => [
+					'desc' => 'Array containing valid json encoded portlet configuration in form of { key: "value" }',
+					'type' => 'array',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	protected function getRequiredTaskPermissions() {
@@ -40,7 +67,7 @@ class BSApiDashboardTasks extends BSApiTasksBase {
 				array(
 					'dc_type' => 'user',
 					'dc_identifier' => $iUserId,
-					'dc_config' => serialize( $aPortletConfig ),
+					'dc_config' => $aPortletConfig,
 					'dc_timestamp' => '',
 				),
 				__METHOD__
@@ -71,7 +98,7 @@ class BSApiDashboardTasks extends BSApiTasksBase {
 			array(
 				'dc_type' => 'admin',
 				'dc_identifier' => '',
-				'dc_config' => serialize( $aPortletConfig ),
+				'dc_config' => $aPortletConfig,
 				'dc_timestamp' => '',
 			),
 			__METHOD__

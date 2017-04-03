@@ -1,5 +1,6 @@
-{	"name": "UEModulePDF",
-	"version": "2.27.0",
+{
+	"name": "UEModulePDF",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/UEModulePDF",
 	"author": "Robert Vogel",
 	"descriptionmsg": "bs-uemodulepdf-desc",
@@ -22,8 +23,7 @@
 		"BsPDFTemplateProvider": "includes/PDFTemplateProvider.class.php",
 		"BsPDFWebService": "includes/PDFWebService.class.php",
 		"BsPDFServlet": "includes/PDFServlet.class.php",
-		"BsExportModulePDF": "includes/ExportModulePDF.class.php",
-		"BSFilePathResolver": "includes/BSFilePathResolver.php"
+		"BsExportModulePDF": "includes/ExportModulePDF.class.php"
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates"

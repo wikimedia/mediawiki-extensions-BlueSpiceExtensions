@@ -11,8 +11,8 @@
 	"bs-countthings-error-no-input": "Nulle pagina fornite.",
 	"bs-countthings-error-invalid-mode": "Le modo \"$1\" non es valide. Per favor usa \"chars\" (characteres), \"words\" (parolas) o \"pages\" (paginas).",
 	"bs-countthings-error-not-exist": "Le pagina \"$1\" non existe.",
-	"bs-countthings-tag-countarticles-desc": "Monstra le numero de paginas.",
-	"bs-countthings-tag-countusers-desc": "Monstra le numero de usatores.",
-	"bs-countthings-tag-countcharacters-desc": "Monstra statisticas del contento del pagina date. Attributo de configuration disponibile:",
+	"bs-countthings-tag-countarticles-desc": "Monstra le numero de articulos in le wiki.",
+	"bs-countthings-tag-countusers-desc": "Monstra le numero de usatores registrate.",
+	"bs-countthings-tag-countcharacters-desc": "Genera metadatos sur le contento del articulo indicate. Le resultato es un quadro informative que pote esser integrate in un articulo. Con le parametro \"mode\", differente typos de information pote esser monstrate.",
 	"bs-countthings-tag-countcharacters-desc-param-mode": "<code>mode</code>: Lo que debe esser contate: <code>chars</code> (characteres), <code>words</code> (parolas) o <code>pages</code> (paginas)."
 }

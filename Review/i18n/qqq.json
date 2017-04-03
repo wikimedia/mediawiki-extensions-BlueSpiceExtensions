@@ -117,13 +117,11 @@
 	"notification-bs-review-finish-and-autoflag-summary": "Notification about reviewer finishes review and autoflags as stable - flyout/archive page\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page (unused)\n* $3 - link to page",
 	"notification-bs-review-finish-and-autoflag-subject": "Notification about reviewer finishes review and autoflags as stable - email subject\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
 	"notification-bs-review-finish-and-autoflag-body": "Notification about reviewer finishes review and autoflags as stable - email body\n\nParameters:\n* $1 - name of the user accepting a review\n* $2 - name of page\n* $3 - link to page (unused)",
-	"apihelp-bs-reviewoverview-store": "Describes the API endpoint that lists an overview of Review",
 	"apihelp-bs-reviewoverview-store-param-userid": "Describes the <var>userID</var> parameter of the API module\n{{doc-apihelp-param|bs-reviewoverview-store|userid}}",
 	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Describes the <var>articleId</var> parameter of the API module\n{{doc-apihelp-param|bs-reviewpossiblereviewers-store|articleid}}",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Describes the API endpoint that lists possible users that can do a review\n{{doc-apihelp-description|bs-reviewpossiblereviewers-store}}",
 	"apihelp-bs-reviewoverview-store-description": "Describes the API endpoint that lists an overview of Review\n{{doc-apihelp-description|bs-reviewoverview-store}}",
 	"apihelp-bs-review-tasks-description": "Describes the API endpoint that allows manipulation of reviews\n{{doc-apihelp-description|bs-review-tasks}}",
 	"bs-usagetracker-review": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output\n{{Identical|Review}}",
-	"apihelp-bs-review-tasks": "Describes the API endpoint that allows manipulation of reviews",
 	"bs-review-pref-permissions": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label of a multi select box for permissions that a user retrieves when part of a workflow"
 }

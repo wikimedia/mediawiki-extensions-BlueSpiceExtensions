@@ -63,5 +63,10 @@
 	"bs-pageassignments-yourassignmentsdesc": "Liste des pages auxquelles vous êtes affecté.",
 	"right-pageassignable": "Apparaître dans la liste des utilisateurs configurables",
 	"right-pageassignments": "Modifier les affectations d'une page",
-	"prefs-pageassign": "Affectation"
+	"prefs-pageassign": "Affectation",
+	"bs-usagetracker-pageassignments": "pages avec des affectations",
+	"apihelp-bs-pageassignable-store-description": "Retourne la liste des ayants droit",
+	"apihelp-bs-pageassignment-store-description": "Retourne les affectations de la page spécifique",
+	"apihelp-bs-mypageassignment-store-description": "Retourne les pages affectées à l'utilisateur courant",
+	"apihelp-bs-pageassignment-tasks-description": "Obtenir ou modifier la liste des assignations pour la page spécifique"
 }

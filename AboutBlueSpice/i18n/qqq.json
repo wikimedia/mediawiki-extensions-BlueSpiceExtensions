@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Markus Glaser <glaser@hallowelt.com>",
-			"Leonid Verhovskij <verhovskij@hallowelt.com>"
+			"Leonid Verhovskij <verhovskij@hallowelt.com>",
+			"Umherirrender"
 		]
 	},
 	"bs-aboutbluespice-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of AboutBlueSpice extension",
@@ -10,5 +11,5 @@
 	"aboutbluespice": "Label for special page in list of special pages",
 	"prefs-aboutbluespice": "Header for extension's preferences settings",
 	"bs-aboutbluespice-show-menu-links": "Label for option to show the \"{{int:bs-aboutbluespice-about-bluespice}}\" link in top and main menu",
-	"action-aboutbluespice-viewspecialpage": "Placeholder to describe that view of special page \"{{int:bs-aboutbluespice-about-bluespice}}\" is restricted for the current user"
+	"action-aboutbluespice-viewspecialpage": "Placeholder to describe that view of special page \"{{int:bs-aboutbluespice-about-bluespice}}\" is restricted for the current user\n{{doc-action|aboutbluespice-viewspecialpage}}"
 }

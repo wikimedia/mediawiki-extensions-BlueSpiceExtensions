@@ -2163,43 +2163,60 @@ var BsWikiCode = function() {
 	 */
 	function _loadImageRealUrls() {
 		var image;
-		var content;
 		var ed = _ed;
+		var api = new mw.Api();
+
 		for( var i = 0; i < _images.length; i ++ ) {
 			image = _images[i];
-			$.getJSON(
-				bs.util.getCAIUrl( 'getFileUrl', [ image.imageName ] ),
-				'', //No additional params
-				function(data, textStatus, jqXHR) {
-					var images = ed.getBody().getElementsByTagName('img');
-					for( var i = 0; i < images.length; i++ ) {
-						//We process only matching nodes
-						if ( decodeURI( images[i].src ) !== mw.config.get( "wgServer" ) + _imageDummyUrl + '?' + data.file ) {
-							continue;
-						}
 
-						//As some browsers may have set the nodes width/height
-						//attributes implicitly to the AJAX LOADER's values we
-						//need to correct them
-						var jqImg = $(images[i]);
-						if( jqImg.data('bs-sizewidth') ){
-							jqImg.width( jqImg.data('bs-sizewidth') );
-						}
-						else {
-							jqImg.removeAttr( 'width' );
-						}
-						if( jqImg.data('bs-sizeheight') ){
-							jqImg.height( jqImg.data('bs-sizeheight') );
-						}
-						else {
-							jqImg.removeAttr( 'height' );
-						}
-
-						//Last but not least set the url to the correct image
-						images[i].src = data.url.replace(/&amp;/g, '&');
-					}
+			api.get( {
+				action: 'query',
+				titles: 'File:'+image.imageName,
+				prop: 'imageinfo',
+				iiprop: 'url',
+				indexpageids: ''
+			} )
+			.done( function ( response, jXHR ) {
+				if( response.query.pageids[0] === "-1" ) { //Image not found
+					return;
 				}
-			);
+				var imageData = response.query.pages[response.query.pageids[0]];
+
+				var data = {
+					file: imageData.title.split( ':', 2 ).pop(), //Strip namespace prefix
+					url: imageData.imageinfo[0].url
+				};
+
+				var images = ed.getBody().getElementsByTagName('img');
+				for( var i = 0; i < images.length; i++ ) {
+					//We process only matching nodes
+					var searchUrl = mw.config.get( "wgServer" ) + _imageDummyUrl + '?' + data.file;
+					var curUrl = decodeURI( images[i].src );
+					if ( searchUrl.replace( / /g, '_' ) !== curUrl.replace( / /g, '_' ) ) {
+						continue;
+					}
+
+					//As some browsers may have set the nodes width/height
+					//attributes implicitly to the AJAX LOADER's values we
+					//need to correct them
+					var jqImg = $(images[i]);
+					if( jqImg.data('bs-sizewidth') ){
+						jqImg.width( jqImg.data('bs-sizewidth') );
+					}
+					else {
+						jqImg.removeAttr( 'width' );
+					}
+					if( jqImg.data('bs-sizeheight') ){
+						jqImg.height( jqImg.data('bs-sizeheight') );
+					}
+					else {
+						jqImg.removeAttr( 'height' );
+					}
+
+					//Last but not least set the url to the correct image
+					images[i].src = data.url.replace(/&amp;/g, '&');
+				}
+			} );
 		}
 	}
 

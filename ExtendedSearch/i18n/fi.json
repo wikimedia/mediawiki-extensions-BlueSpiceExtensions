@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nike"
+			"Nike",
+			"Pyscowicz"
 		]
 	},
 	"bs-extendedsearch-desc": "Laajennettu haku",
@@ -12,5 +13,7 @@
 	"bs-extendedsearch-pref-scope-text": "Koko teksti",
 	"bs-extendedsearch-pref-showautocomplete": "Näytä täydennysvalikko",
 	"bs-extendedsearch-statistics": "Tilastot",
-	"bs-extendedsearch-morelikethis": "Samankaltaiset sivut"
+	"bs-extendedsearch-morelikethis": "Samankaltaiset sivut",
+	"apihelp-feedextendedsearch-param-namespace": "Haettavat nmiavaruudet",
+	"apihelp-feedextendedsearch-param-category": "Haettavat luokat"
 }

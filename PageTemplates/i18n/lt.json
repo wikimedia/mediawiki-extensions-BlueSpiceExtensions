@@ -7,10 +7,13 @@
 	"bs-pagetemplates-desc": "Rodo šablonų, kurie yra pažymėti kaip puslapio šablonai, sąrašą",
 	"prefs-pagetemplates": "Puslapio šablonai",
 	"apihelp-bs-pagetemplates-store": "Pateikia prieinamų šablonų sąrašą.",
+	"apihelp-bs-pagetemplates-tasks": "Pateikia sukūrimo, atnaujinimo ir ištrynimo užduotis šablonams.",
 	"bs-pagetemplates-empty-page": "Tuščias puslapis",
 	"bs-pagetemplates-empty-page-desc": "Pradėti su tuščiu puslapiu.",
 	"bs-pagetemplatesadmin-label": "Puslapio šablonai",
 	"bs-pagetemplates-tpl-desc-toolong": "Aprašymas yra per ilgas. Prašome naudoti ne daugiau kaip 255 simbolių.",
+	"bs-pagetemplates-tpl-label-toolong": "Etiketė per ilga. Prašome naudoti iki 255 simbolių.",
+	"bs-pagetemplates-tpl-label-empty": "Prašome įvesti etiketę.",
 	"bs-pagetemplates-tpl-name-toolong": "Šablono pavadinimas yra per ilgas. Prašome naudoti ne daugiau kaip 255 simbolių.",
 	"bs-pagetemplates-tpl-name-empty": "Prašome įvesti šablono pavadinimą.",
 	"bs-pagetemplates-no-id": "Prašome įvesti puslapį, kuri naudoti kaip šabloną.",
@@ -33,6 +36,9 @@
 	"bs-pagetemplates-remove-message-unknown": "Įvyko netikėta klaida, prašome bandyti dar kartą.",
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|Šis šablonas buvo ištrintas|Šie šablonai buvo ištrinti}}: $2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Šis šablonas negali būti ištrintas|Šie šablonai negali būti ištrinti}}: $2 (Priežastis: $3)",
+	"apihelp-bs-pagetemplates-store-description": "Nurodo visus puslapių šablonus. Leidžia rūšiuoti, filtruoti ir numeruoti. Įterpia ExtJS Store parametrus.",
 	"apihelp-bs-pagetemplates-tasks-description": "Leidžia manipuliuoti puslapio šablonais",
-	"pagetemplatesadmin": "Puslapio šablonų administravimas"
+	"action-pagetemplatesadmin-viewspecialpage": "žiūrėti specialųpuslapį „{{int:pagetemplatesadmin}}“",
+	"pagetemplatesadmin": "Puslapio šablonų administravimas",
+	"bs-usagetracker-pagetemplates": "puslapio šablonai"
 }

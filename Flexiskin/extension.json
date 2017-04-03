@@ -1,6 +1,6 @@
 {
 	"name": "Flexiskin",
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/FlexiSkin",
 	"author": [
 		"Tobias Weichart"
@@ -55,7 +55,7 @@
 				"bluespice.flexiskin.js"
 			],
 			"styles": [
-				"bluespice.flexiskin.css"
+				"bluespice.flexiskin.less"
 			],
 			"dependencies": [
 				"ext.bluespice.extjs"
@@ -102,6 +102,9 @@
 	"Hooks": {
 		"BeforePageDisplay": "Flexiskin::onBeforePageDisplay",
 		"ResourceLoaderRegisterModules": "Flexiskin::onResourceLoaderRegisterModules"
+	},
+	"ResourceLoaderLESSVars": {
+		"bs-extjs-flexiskin-btn-upload-text": "@bs-extjs-theme-secondary-text-color"
 	},
 	"config": {
 		"EditPageFrameOptions": "SAMEORIGIN"

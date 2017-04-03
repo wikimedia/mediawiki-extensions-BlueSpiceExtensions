@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
 	"bs-usermanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of user manager extension",
@@ -32,7 +33,7 @@
 	"bs-usermanager-confirmdeleteuser": "Text for are you sure, you want to delete {{PLURAL:$1|this user|these $1 users}}?\\n $1 is the number of users which will be deleted - use for PLURAL distinction.",
 	"bs-usermanager-groups-more": "Text of a link that expands the list of groups\n{{Identical|More}}",
 	"bs-usermanager-no-self-desysop": "Text for the error message if a user tries to desysop themselves.",
-	"apihelp-bs-usermanager-tasks-description": "Describes the API endpoint that handles user manager tasks",
+	"apihelp-bs-usermanager-tasks-description": "Describes the API endpoint that handles user manager tasks\n{{doc-apihelp-description|bs-usermanager-tasks}}",
 	"bs-usermanager-no-self-block": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to block yourself",
 	"bs-usermanager-block-error": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user could not be disabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
 	"bs-usermanager-unblock-error": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user could not be enabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
@@ -46,7 +47,16 @@
 	"bs-usermanager-titledisableuser": "Window title for disable user",
 	"bs-usermanager-titleenableuser": "Window title for enable user",
 	"usermanager": "Page title for special page of user manager",
-	"action-usermanager-viewspecialpage": "Label for denied page access, with name of special page",
+	"action-usermanager-viewspecialpage": "Label for denied page access, with name of special page\n{{doc-action|usermanager-viewspecialpage}}",
 	"bs-usermanager-group-add-not-allowed": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to add a user to a restricted group\n\n* $1 is the name of the restricted group",
-	"bs-usermanager-group-remove-not-allowed": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to remove a user from a restricted group\n\n* $1 is the name of the restricted group"
+	"bs-usermanager-group-remove-not-allowed": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to remove a user from a restricted group\n\n* $1 is the name of the restricted group",
+	"bs-usermanager-editgroups": "Used as tooltip of an icon",
+	"bs-usermanager-editpassword": "{{Identical|Change password}}",
+	"bs-usermanager-editpassword-successful": "Used as success message",
+	"bs-usermanager-title-nouserselected": "Used as title of an alert panel with JavaScript",
+	"bs-usermanager-nouserselected": "Used as explain text of an alert panel with JavaScript",
+	"bs-usermanager-title-multipleuserselected": "Used as title of an alert panel with JavaScript",
+	"bs-usermanager-multipleuserselected": "Used as explain text of an alert panel with JavaScript",
+	"bs-usermanager-invalid-groups": "Used as error message",
+	"apihelp-bs-usermanager-group-store-description": "{{doc-apihelp-description|bs-usermanager-group-store}}"
 }

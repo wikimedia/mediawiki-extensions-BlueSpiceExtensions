@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"log-description-bs-pageassignments": "Jornal de las modificacions sus las afectacions de la pagina",
+	"notification-bs-pageassignments-user-group-add-body": "$1 vos {{GENDER:$2|a apondut}} al grop $4. Verificatz vòstra afectacion sus $3",
+	"notification-bs-pageassignments-user-group-remove-body": "$1 vos {{GENDER:$2|a levat}} {{PLURAL:$5|del grop|dels gropes}} $4. Verificatz vòstra afectacion sus $3"
+}

@@ -5,6 +5,7 @@
 		]
 	},
 	"prefs-avatars": "Avatarai",
+	"bs-avatars-desc": "Pateikia bendrą ir individualios vartotojų nuotraukas",
 	"bs-avatars-pref-generator": "Generatorius:",
 	"bs-avatars-pref-defaultsize": "Numatytasis dydis pikseliais:",
 	"bs-avatars-upload-complete": "Nuotrauka buvo įkelta.",
@@ -13,6 +14,7 @@
 	"bs-avatars-upload-label": "Nuotrauka",
 	"bs-avatars-generate-new-label": "Generuoti naują avatarą",
 	"bs-avatars-warning-title": "Įspėjimas",
+	"bs-avatars-warning-text": "Jūs nustatėte vartotojo nuotrauką savo nustatymuose. Jei naudosite avatarus, tai pakeis šį nustatymą. Ar norite tęsti?",
 	"bs-avatars-userimage-title": "Nuotrauka iš viki ar nuotraukos URL",
 	"bs-avatars-userimage-help": "pvz. Nuotrauka.jbg arba http://localhost/Nuotrauka.gif",
 	"bs-avatars-set-userimage-failed": "Neteisingas URL ar nuotrauka iš viki.",

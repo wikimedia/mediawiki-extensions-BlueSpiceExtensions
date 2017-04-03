@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"سامي الرحيلي",
-			"Moud hosny"
+			"Moud hosny",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"bs-usermanager-no-self-desysop": "لا يمكنك سحب الحقوق الخاصة بك كمشغل نظام.",
@@ -11,5 +12,7 @@
 	"bs-usermanager-user-disabled": "{{الجنس:$1|المستخدم}}$1 تم تعطيله",
 	"bs-usermanager-endisable": "تمكين/تعطيل",
 	"bs-usermanager-titledisableuser": "تعطيل المستخدم",
-	"bs-usermanager-titleenableuser": "تمكين مستخدم"
+	"bs-usermanager-titleenableuser": "تمكين مستخدم",
+	"bs-usermanager-editgroups": "عدل المجموعات",
+	"bs-usermanager-invalid-groups": "المجموعات غير صالحة"
 }

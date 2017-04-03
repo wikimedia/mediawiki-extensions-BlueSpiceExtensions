@@ -1,6 +1,6 @@
 {
 	"name": "ExtendedSearch",
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/ExtendedSearch",
 	"author": [
 		"Stephan Muggli",
@@ -118,16 +118,25 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "ExtendedSearch::getSchemaUpdates",
-                "OpenSearchUrl": "ExtendedSearch::onOpenSearchUrls",
+		"OpenSearchUrl": "ExtendedSearch::onOpenSearchUrls",
 		"BSTagCloudRegisterHandlers": "ExtendedSearch::onBsTagCloudRegisterHandlers"
 	},
 	"manifest_version": 1,
-	"config":{
+	"config": {
+		"_prefix": "bsgExtendedSearch",
 		"BoostQuerySettings": {
 			"namespace": {
 				"*": 2,
 				"999": 2
 			}
+		},
+		"AutocompleteSettings": {
+			"prefix-ellipsis-position": "middle",
+			"prefix-ellipsis-characters": "...",
+			"prefix-length": 16,
+			"title-ellipsis-position": "middle",
+			"title-ellipsis-characters": "...",
+			"title-length": 54
 		}
 	}
 }

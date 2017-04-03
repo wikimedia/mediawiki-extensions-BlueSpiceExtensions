@@ -109,5 +109,6 @@
 	"notification-bs-review-finish-body": "$1 {{GENDER:$1|slutförde}} din granskning av \"$2\". Kontrollera resultaten för granskningsprocessen.",
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|slutförde}} granskningsprocessen och markerade $3 som stabil automatiskt",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|slutförde}} granskningen för \"$2\"",
-	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|slutförde}} din granskning för \"$2\". Sidan markerades som stabil automatiskt."
+	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|slutförde}} din granskning för \"$2\". Sidan markerades som stabil automatiskt.",
+	"bs-usagetracker-review": "granskningar"
 }

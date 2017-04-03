@@ -8,7 +8,7 @@
 	"bs-avatars-desc": "Forni imagines de usator generic e individual",
 	"bs-avatars-pref-generator": "Generator:",
 	"bs-avatars-pref-defaultsize": "Dimension predefinite in pixels:",
-	"bs-avatars-upload-complete": "Le imagine ha essite incargate con successo.",
+	"bs-avatars-upload-complete": "Le imagine ha essite incargate.",
 	"bs-avatars-generate-complete": "Un nove avatar ha essite generate.",
 	"bs-avatars-upload-title": "Cambiar le imagine del profilo",
 	"bs-avatars-upload-label": "Imagine",
@@ -18,7 +18,7 @@
 	"bs-avatars-userimage-title": "Un imagine del wiki o le URL de un imagine",
 	"bs-avatars-userimage-help": "p.ex. imagine.jpg o http://example.com/imagine.gif",
 	"bs-avatars-set-userimage-failed": "Isto non es un URL valide ni un imagine del wiki.",
-	"bs-avatars-set-userimage-saved": "Imagine de usator salveguardate con successo.",
+	"bs-avatars-set-userimage-saved": "Le imagine de usator ha essite salveguardate.",
 	"bs-avatars-file-upload-fieldset-title": "Imagine incargate",
 	"bs-avatars-auto-generate-fieldset-title": "Generar automaticamente un avatar"
 }

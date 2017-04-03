@@ -5,7 +5,8 @@
 			"Macofe",
 			"AVIADOR",
 			"Amitie 10g",
-			"AlvaroMolina"
+			"AlvaroMolina",
+			"Dgstranz"
 		]
 	},
 	"bs-extendedsearch-desc": "Complemento de búsqueda basado en Apache Solr (http://lucene.apache.org/solr/) para extender la funcionalidad de búsqueda",
@@ -106,7 +107,12 @@
 	"bs-extendedsearch-fewer": "Menos",
 	"bs-extendedsearch-facetsetting-op-and": "Y",
 	"bs-extendedsearch-facetsetting-op-or": "O",
+	"action-extendedsearch-viewspecialpage": "ver la página especial «{{int:specialextendedsearch}}»",
 	"action-extendedsearchadmin-viewspecialpage": "ver la página especial \"{{int:extendedsearchadmin}}\"",
 	"extendedsearchadmin": "Administración de la búsqueda extendida",
-	"bs-extendedsearch-create-page": "Crear la página «$1»."
+	"bs-extendedsearch-create-page": "Crear la página «$1».",
+	"apihelp-feedextendedsearch-description": "Buscar en el wiki a través del protocolo OpenSearch",
+	"apihelp-feedextendedsearch-param-feedformat": "Número máximo de resultados que devolver.",
+	"apihelp-feedextendedsearch-param-namespace": "Espacio de nombres que buscar",
+	"apihelp-feedextendedsearch-param-category": "Categorías que buscar"
 }

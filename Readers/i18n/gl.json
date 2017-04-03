@@ -17,5 +17,7 @@
 	"bs-readers-header-username": "Nome de usuario",
 	"bs-readers-header-readerspath": "Lector",
 	"bs-readers-header-ts": "Data",
-	"bs-readers-header-page": "Páxina"
+	"bs-readers-header-page": "Páxina",
+	"apihelp-bs-readers-data-store-description": "Obter a información concernente ó lector da páxina especificada.",
+	"apihelp-bs-readers-users-store-description": "Obter as informacións de tódolos lectores da páxina especificada."
 }

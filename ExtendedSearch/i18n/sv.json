@@ -103,6 +103,11 @@
 	"bs-extendedsearch-fewer": "Mindre",
 	"bs-extendedsearch-facetsetting-op-and": "OCH",
 	"bs-extendedsearch-facetsetting-op-or": "ELLER",
+	"action-extendedsearch-viewspecialpage": "visa specialsidan \"{{int:specialextendedsearch}}\"",
 	"action-extendedsearchadmin-viewspecialpage": "visa specialsidan \"{{int:extendedsearchadmin}}\"",
-	"bs-extendedsearch-create-page": "Skapa sidan \"$1\"."
+	"bs-extendedsearch-create-page": "Skapa sidan \"$1\".",
+	"apihelp-feedextendedsearch-param-q": "Söksträng",
+	"apihelp-feedextendedsearch-param-feedformat": "Maximalt antal resultat att returnera",
+	"apihelp-feedextendedsearch-param-namespace": "Namnrymder att genomsöka",
+	"apihelp-feedextendedsearch-param-category": "Kategorier att genomsöka"
 }

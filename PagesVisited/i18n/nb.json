@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-pagesvisited-desc": "Gir en personalisert liste over de sist besøkte sidene",
+	"prefs-pagesvisited": "Sider besøkt",
+	"bs-pagesvisited-widget-title": "Sider besøkt",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|Navnerommet|Navnerommene}} <code>$2</code> er ikke gyldig.",
+	"bs-pagesvisited-pref-widgetlimit": "Oppslagsgrense:",
+	"bs-pagesvisited-pref-widgetns": "Navnerom:",
+	"bs-pagesvisited-pref-widgetsortodr": "Sorter etter:",
+	"bs-pagesvisited-pref-sort-time": "Tid",
+	"bs-pagesvisited-pref-sort-pagename": "Tittel",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Viser en liste over nylig besøkte sider. Listen kan begrenses med parametre."
+}

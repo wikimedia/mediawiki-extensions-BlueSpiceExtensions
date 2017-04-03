@@ -3,7 +3,8 @@
 		"authors": [
 			"Shuba",
 			"HarpyWar",
-			"Meshkov.a"
+			"Meshkov.a",
+			"Kaganer"
 		]
 	},
 	"bs-dashboards-desc": "Предоставляет панель управления для пользователей и администраторов",
@@ -13,7 +14,7 @@
 	"prefs-dashboards": "Панели инструментов",
 	"bs-dashboards-pref-userdashboardonlogo": "Ссылки на лого для панели управления пользователя",
 	"admindashboard": "Панель администратора",
-	"userdashboard": "Панель пользователя",
+	"userdashboard": "Панель участника",
 	"bs-dashboard-userportlet-calendar-title": "Календарь",
 	"bs-dashboard-userportlet-calendar-description": "Календарь"
 }

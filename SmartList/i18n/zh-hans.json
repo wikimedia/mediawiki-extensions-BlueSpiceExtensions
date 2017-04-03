@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Yfdyh000"
+			"Yfdyh000",
+			"Osnard"
 		]
 	},
 	"bs-smartlist-desc": "列表显示wiki最近5次更改",
@@ -46,6 +47,6 @@
 	"bs-smartlist-mosteditedpagesdesc": "按编辑数排列的最多编辑页面列表。",
 	"bs-smartlist-mostvisitedpagesdesc": "按监视数排列的最多监视页面列表。",
 	"bs-smartlist-lasteditsdesc": "您编辑的页面列表。",
-	"bs-smartlist-hitcounter-missing": "扩展<a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a>必须被安装。",
+	"bs-smartlist-hitcounter-missing": "扩展<a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounters</a>必须被安装。",
 	"apihelp-bs-smartlist-tasks-description": "为页面和用户统计供应portlet数据的API功能。"
 }

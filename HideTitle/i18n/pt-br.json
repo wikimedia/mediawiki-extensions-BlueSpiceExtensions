@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"!Silent"
+		]
+	},
+	"bs-hidetitle-desc": "Adiciona a palavra mágica <code><nowiki>__HIDETITLE__</nowiki></code> para ocultar o título da página"
+}

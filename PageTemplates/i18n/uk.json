@@ -7,8 +7,6 @@
 	},
 	"bs-pagetemplates-desc": "Відображає список шаблонів, позначених як шаблони сторінок",
 	"prefs-pagetemplates": "Шаблони сторінки",
-	"apihelp-bs-pagetemplates-store": "Надає список доступних шаблонів.",
-	"apihelp-bs-pagetemplates-tasks": "Забезпечує створення, оновлення і вилучення завдань для шаблонів.",
 	"bs-pagetemplates-empty-page": "Порожня сторінка",
 	"bs-pagetemplates-empty-page-desc": "Почати з порожньої сторінки.",
 	"bs-pagetemplatesadmin-label": "Шаблони сторінки",
@@ -29,6 +27,7 @@
 	"bs-pagetemplates-pref-excludens": "Не показувати шаблони у цих просторах назв:",
 	"bs-pagetemplates-pref-forcenamespace": "Примусити перехід  у цільовий простір назв",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Приховати шаблон, якщо сторінка буде створена не в цільовому просторі назв",
+	"bs-pagetemplates-pref-hidedefaults": "Приховати стандартні шаблони",
 	"bs-pagetemplates-headerlabel": "Позначка",
 	"bs-pagetemplates-headertargetnamespace": "Простір назв",
 	"bs-pagetemplates-tipeditdetails": "Редагувати шаблон",
@@ -44,5 +43,8 @@
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|Наступний шаблон|Наступні шаблони}} було видалено:$2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Наступний шаблон|Наступні шаблони}} не можна видалити:$2(Причина:$3)",
 	"apihelp-bs-pagetemplates-store-description": "Перелічує всі шаблони сторінки. Дає можливість сортування, фільтрування та пагінації. Реалізовує параметри ExtJS Store.",
-	"apihelp-bs-pagetemplates-tasks-description": "Дозволяє опрацьовувати шаблони сторінки"
+	"apihelp-bs-pagetemplates-tasks-description": "Дозволяє опрацьовувати шаблони сторінки",
+	"action-pagetemplatesadmin-viewspecialpage": "перегляд спеціальної сторінки «{{int:pagetemplatesadmin}}»",
+	"pagetemplatesadmin": "Адміністрування шаблонів сторінок",
+	"bs-usagetracker-pagetemplates": "шаблони сторінок"
 }

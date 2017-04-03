@@ -21,5 +21,6 @@
 	"bs-avatars-set-userimage-failed": "Text for not a valid picture from wiki or picture URL.",
 	"bs-avatars-set-userimage-saved": "Text for user picture successfully saved.",
 	"bs-avatars-file-upload-fieldset-title": "Fieldset title for picture upload",
-	"bs-avatars-auto-generate-fieldset-title": "Fieldset title auto generate avatar"
+	"bs-avatars-auto-generate-fieldset-title": "Fieldset title auto generate avatar",
+	"apihelp-bs-avatars-tasks-description": "{{doc-apihelp-description|bs-avatars-tasks}}"
 }

@@ -138,13 +138,14 @@ class ShoutBox extends BsExtensionMW {
 		if ( $type != 'switches' )
 			return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:shoutbox',
-			'type' => 'switch',
-			'name' => 'NOSHOUTBOX',
-			'desc' => wfMessage( 'bs-shoutbox-switch-description' )->plain(),
-			'code' => '__NOSHOUTBOX__',
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:shoutbox';
+		$oDescriptor->type = 'switch';
+		$oDescriptor->name = 'NOSHOUTBOX';
+		$oDescriptor->desc = wfMessage( 'bs-shoutbox-switch-description' )->plain();
+		$oDescriptor->code = '__NOSHOUTBOX__';
+		$oDescriptor->previewable = false;
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

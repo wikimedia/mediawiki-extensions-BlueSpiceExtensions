@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
-	"bs-csyntaxhighlight-desc": "Used in [[Special:Wiki_Admin&mode=ExtensionInfo]], description of csyntaxhighlight extension",
+	"bs-csyntaxhighlight-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of csyntaxhighlight extension",
 	"prefs-csyntaxhighlight": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for syntax highligther section in preferences.\n{{Identical|Syntax highlighter}}",
 	"bs-csyntaxhighlight-pref-theme": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for theme:\n{{Identical|Theme}}",
 	"bs-csyntaxhighlight-pref-gutter": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show line numbers",

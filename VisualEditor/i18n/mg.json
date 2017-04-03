@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jagwar"
+		]
+	},
+	"bs-visualeditor-no-summary": "Tsy misy votoatiny",
+	"bs-visualeditor-sortable": "Azo alamina",
+	"bs-visualeditor-wikitable": "Manara-penitra",
+	"bs-visualeditor-contenttable": "Votoatiny",
+	"bs-visualeditor-cuscosky": "Lanitr'i Cusco",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Lentan'ny loko maintsy sy fotsy",
+	"bs-visualeditor-greyscale-narrow": "Lentan'ny loko maintsy sy fotsy (tery)",
+	"bs-visualeditor-aligntop": "Fara-tampony",
+	"bs-visualeditor-alignmiddle": "Afovoany",
+	"bs-visualeditor-alignbottom": "Farany ambany",
+	"bs-visualeditor-bsactions-wiki": "Wikisoratra",
+	"bs-visualeditor-bsactions-switchgui": "Hivadika baram-pitaovana",
+	"bs-visualeditor-bsactions-signature": "Sonia",
+	"bs-visualeditor-bsactions-save": "Tehirizina",
+	"bs-visualeditor-bsactions-headings": "Lohateny",
+	"bs-visualeditor-bsactions-paragraph": "Fehintsoratra",
+	"bs-visualeditor-bsactions-heading2": "Lohateny 2",
+	"bs-visualeditor-bsactions-heading3": "Lohateny 3",
+	"bs-visualeditor-bsactions-heading4": "Lohateny 4",
+	"bs-visualeditor-bsactions-heading5": "Lohateny 5",
+	"bs-visualeditor-bsactions-heading6": "Lohateny 6",
+	"bs-visualeditor-switch-noeditor-desc": "Manala ny fitaovam-panovana ara-maso eto amin'ity pejy ity"
+}

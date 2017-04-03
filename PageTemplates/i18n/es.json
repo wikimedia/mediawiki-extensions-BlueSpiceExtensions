@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Macofe",
-			"AVIADOR"
+			"AVIADOR",
+			"Igv"
 		]
 	},
 	"bs-pagetemplates-desc": "Muestra una lista de plantillas marcadas como plantillas de página",
@@ -44,5 +45,6 @@
 	"bs-pagetemplates-remove-message-success": "{{PLURAL:$1|La siguiente plantilla fue borrada|Las siguientes plantillas fueron borradas}}:$2",
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|La siguiente plantilla no se pudo|Las siguientes plantillas no se pudieron}} borrar:$2(Motivo: $3)",
 	"action-pagetemplatesadmin-viewspecialpage": "ver la página especial \"{{int:pagetemplatesadmin}}\"",
-	"pagetemplatesadmin": "Administración de plantillas de páginas"
+	"pagetemplatesadmin": "Administración de plantillas de páginas",
+	"bs-usagetracker-pagetemplates": "plantillas de página"
 }

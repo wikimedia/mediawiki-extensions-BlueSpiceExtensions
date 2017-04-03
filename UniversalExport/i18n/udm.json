@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Irus"
+			"Irus",
+			"Wadorgurt"
 		]
 	},
-	"bs-universalexport-error-permission": "Экспорт та баме тӥ дорын буре понна тырмыт ӧвӧл."
+	"bs-universalexport-error-permission": "Та бамез экспорт вылысь тӥляд лэзёнъёсты уг тырмо."
 }

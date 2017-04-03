@@ -5,6 +5,7 @@
 			"Zygimantus"
 		]
 	},
+	"bs-usermanager-desc": "Administravimo sąsaja, skirta pridėti, redaguoti ir trinti vartotojus",
 	"bs-usermanager-admin-nodelete": "Administratoriaus paskyra negali būti ištrinta.",
 	"bs-usermanager-self-nodelete": "Jūs negalite ištrinti savo paskyros.",
 	"bs-usermanager-db-error": "Įvyko duomenų bazės klaida.",
@@ -16,7 +17,7 @@
 	"bs-usermanager-invalid-email-gen": "El. pašto adresas yra neteisingas.",
 	"bs-usermanager-label": "Vartotojų tvarkytojas",
 	"bs-usermanager-user-added": "Vartotojas buvo pridėtas.",
-	"bs-usermanager-user-deleted": "Vartotojas buvo ištrintas.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|Vartotojas buvo ištrintas|$1 vartotojai buvo ištrinti}}.",
 	"bs-usermanager-user-exists": "Vartotojo vardas jau egzistuoja.",
 	"bs-usermanager-save-successful": "Pakeitimai išsaugoti.",
 	"bs-usermanager-headerusername": "Vartotojo vardas",
@@ -31,10 +32,12 @@
 	"bs-usermanager-confirmdeleteuser": "Ar tikrai norite ištrinti {{PLURAL:$1|šį vartotoją|šiuos vartotojus}}?",
 	"bs-usermanager-groups-more": "... daugiau",
 	"bs-usermanager-no-self-desysop": "Jūs negalite atimti savo paties sysop teisės.",
+	"apihelp-bs-usermanager-tasks-description": "Suteikia operacijas Checklist plėtiniui",
 	"bs-usermanager-no-self-block": "Negali išjungti savęs.",
 	"bs-usermanager-block-error": "Nepavyko išjungti {{GENDER:$1|vartotojo|vartotojos}} $1.",
 	"bs-usermanager-unblock-error": "{{GENDER:$1|Vartotojas $1 negali būti įjungtas|Vartotoja $1 negali būti įjungta}}",
 	"bs-usermanager-headerenabled": "Įjungta",
+	"bs-usermanager-log-user-disabled": "{{GENDER:$1|Vartotojas|Vartotoja}} $1 buvo apribotas per UserManager",
 	"bs-usermanager-user-disabled": "{{GENDER:$1|Vartotojas $1 buvo išjungtas|Vartotoja $1 buvo išjungta}}",
 	"bs-usermanager-user-enabled": "{{GENDER:$1|Vartotojas $1 buvo įjungtas|Vartotoja $1 buvo įjungta}}.",
 	"bs-usermanager-endisable": "Įjungti/išjungti",
@@ -43,6 +46,15 @@
 	"bs-usermanager-titledisableuser": "Išjungti vartotoją",
 	"bs-usermanager-titleenableuser": "Įgalinti vartotoją",
 	"usermanager": "Vartotojo valdymas",
+	"action-usermanager-viewspecialpage": "žiūrėti specialųpuslapį „User manager“",
 	"bs-usermanager-group-add-not-allowed": "Jūs negalite pridėti vartotojų į grupę $1",
-	"bs-usermanager-group-remove-not-allowed": "Jūs negalite pašalinti vartotojų iš grupės $1"
+	"bs-usermanager-group-remove-not-allowed": "Jūs negalite pašalinti vartotojų iš grupės $1",
+	"bs-usermanager-editgroups": "Redaguoti grupes",
+	"bs-usermanager-editpassword": "Keisti slaptažodį",
+	"bs-usermanager-editpassword-successful": "Slaptažodis buvo sėkmingai pakeistas",
+	"bs-usermanager-title-nouserselected": "Nepasirinktas joks vartotojas",
+	"bs-usermanager-nouserselected": "Prašome pasirinkti vartotoją",
+	"bs-usermanager-title-multipleuserselected": "Yra pasirinkti keli vartotojai",
+	"bs-usermanager-multipleuserselected": "Galite pakeisti slaptažodį vienam vartotojui vienu metu",
+	"bs-usermanager-invalid-groups": "Grupės negalimos"
 }

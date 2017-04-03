@@ -9,6 +9,7 @@
 	"bs-insertcategory-insertcat": "Вставити категорію",
 	"prefs-insertcategory": "Вставити категорію",
 	"bs-insertcategory-pref-withparents": "Вставити категорію з її батьківськими категоріями",
+	"bs-insertcategory-pref-uploadpanelintegration": "Встановити категорії сторінок за замовчуванням у діалоговому вікні завантаження",
 	"bs-insertcategory-title": "Вставити категорію",
 	"bs-insertcategory-cat-label": "Призначення:",
 	"bs-insertcategory-success": "Категорію додано",

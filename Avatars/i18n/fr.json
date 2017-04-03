@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Constructeur",
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"prefs-avatars": "Avatars",
@@ -21,5 +22,6 @@
 	"bs-avatars-set-userimage-failed": "URL ou image du wiki non valide.",
 	"bs-avatars-set-userimage-saved": "L’image de l’utilisateur a été enregistrée.",
 	"bs-avatars-file-upload-fieldset-title": "Import de l’image",
-	"bs-avatars-auto-generate-fieldset-title": "Avatar auto-généré"
+	"bs-avatars-auto-generate-fieldset-title": "Avatar auto-généré",
+	"apihelp-bs-avatars-tasks-description": "Chargement, génération et installation des avatars utilisateur"
 }

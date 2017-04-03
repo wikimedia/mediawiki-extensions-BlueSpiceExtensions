@@ -20,7 +20,7 @@
 	"bs-usermanager-invalid-email-gen": "L’adresse de courriel n’est pas valide.",
 	"bs-usermanager-label": "Gestionnaire des utilisateurs",
 	"bs-usermanager-user-added": "L’utilisateur a été ajouté.",
-	"bs-usermanager-user-deleted": "L’utilisateur a été supprimé.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|L'utilisateur a|$1 utilisateurs ont}} été supprimé{{PLURAL:$1||s}} .",
 	"bs-usermanager-user-exists": "Le nom d’utilisateur existe déjà.",
 	"bs-usermanager-save-successful": "Modifications enregistrées.",
 	"bs-usermanager-headerusername": "Nom d’utilisateur",
@@ -51,5 +51,14 @@
 	"usermanager": "Gestionnaire des utilisateurs",
 	"action-usermanager-viewspecialpage": "Voir la page spéciale « Gestion des utilisateurs »",
 	"bs-usermanager-group-add-not-allowed": "Vous n'êtes pas autorisé à ajouter des utilisateurs au groupe $1",
-	"bs-usermanager-group-remove-not-allowed": "Vous n'êtes pas autorisé à supprimer des utilisateurs du groupe $1"
+	"bs-usermanager-group-remove-not-allowed": "Vous n'êtes pas autorisé à supprimer des utilisateurs du groupe $1",
+	"bs-usermanager-editgroups": "Modifier les groupes",
+	"bs-usermanager-editpassword": "Changer le mot de passe",
+	"bs-usermanager-editpassword-successful": "Le mot de passe a été modifié avec succès",
+	"bs-usermanager-title-nouserselected": "Auncun utilisateur sélectionné",
+	"bs-usermanager-nouserselected": "Veuillez sélectionner un utilisateur",
+	"bs-usermanager-title-multipleuserselected": "Plusieurs utilisateurs sont sélectionnés",
+	"bs-usermanager-multipleuserselected": "Vous ne pouvez changer de mot de passe que pour un utilisateur à la fois",
+	"bs-usermanager-invalid-groups": "Les groupes ne sont pas valides",
+	"apihelp-bs-usermanager-group-store-description": "Fournit une API BlueSpice aux taches de gestion utilisateur."
 }

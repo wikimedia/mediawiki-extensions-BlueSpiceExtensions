@@ -17,5 +17,6 @@
 	"bs-readers-header-username": "Benotzernumm",
 	"bs-readers-header-readerspath": "Lieser",
 	"bs-readers-header-ts": "Datum",
-	"bs-readers-header-page": "Säit"
+	"bs-readers-header-page": "Säit",
+	"apihelp-bs-readers-users-store-description": "Informatioune vun alle Lieser vun enger spezifescher Säit kréien."
 }

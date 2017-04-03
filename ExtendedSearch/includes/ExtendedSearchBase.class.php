@@ -547,6 +547,7 @@ class ExtendedSearchBase {
 	 * @param array $aResults Reference to results array
 	 */
 	private static function generateAutocompleteResults( $aDocuments, $sSearchString, $iNum, $vNsSearch, &$aResults ) {
+		global $bsgExtendedSearchAutocompleteSettings;
 		$sLabelText = '';
 		foreach ( $aDocuments as $oDoc ) {
 			if ( $oDoc->namespace != '999' ) {
@@ -562,7 +563,15 @@ class ExtendedSearchBase {
 
 			// Adding namespace
 			if ( $oTitle->getNamespace() !== NS_MAIN ) {
-				$sLabelText = BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ) . ':' .$sLabelText;
+				$sLabelNS = BsStringHelper::shorten(
+					BsNamespaceHelper::getNamespaceName( $oTitle->getNamespace() ),
+					array(
+						'max-length' => $bsgExtendedSearchAutocompleteSettings['prefix-length'],
+						'position' => $bsgExtendedSearchAutocompleteSettings['prefix-ellipsis-position'],
+						'ellipsis-characters' => $bsgExtendedSearchAutocompleteSettings['prefix-ellipsis-characters']
+					)
+				);
+				$sLabelText = $sLabelNS . ':' .$sLabelText;
 			}
 
 			//If namespace is in searchstring remove it from display
@@ -590,13 +599,18 @@ class ExtendedSearchBase {
 	 * @return string highlighted title
 	 */
 	private static function highlightTitle( $oTitle, $sSearchString ) {
+		global $bsgExtendedSearchAutocompleteSettings;
 		$sPartOfTitle = '';
 		$sEscapedPattern = '';
 		$aSearchStringParts = array();
 		$sModifiedSearchString = str_replace( '/', ' ', $sSearchString );
 		$sLabelText = BsStringHelper::shorten(
 			$oTitle->getText(),
-			array( 'max-length' => '54', 'position' => 'middle', 'ellipsis-characters' => '...' )
+			array(
+				'max-length' => $bsgExtendedSearchAutocompleteSettings['title-length'],
+				'position' => $bsgExtendedSearchAutocompleteSettings['title-ellipsis-position'],
+				'ellipsis-characters' => $bsgExtendedSearchAutocompleteSettings['title-ellipsis-characters']
+			)
 		);
 
 		$iPosition = mb_stripos( $sLabelText, $sSearchString );

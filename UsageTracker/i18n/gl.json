@@ -15,5 +15,7 @@
 	"bs-usagetracker-col-last-updated": "Última actualización",
 	"bs-usagetracker-caution": "Atención: actualizar as estatísticas de uso pode levar algo de teempo e recursos. Só actualice cando realmente necesite datos actuais. A actualización faise a través de traballos diferidos, polo que terá que recargar varias veces ata que os datos sexan totalmente recollidos.",
 	"bs-usagetracker-base-collector-desc": "Número de páxinas que usan $1",
-	"bs-usagetracker-tag-collector-desc": "Número de páxinas que usan a etiqueta <$1>"
+	"bs-usagetracker-tag-collector-desc": "Número de páxinas que usan a etiqueta <$1>",
+	"bs-usagetracker-db-collector-desc": "Número de $1",
+	"bs-usagetracker-open-tasks": "A análise do sitio está en progreso. Aínda {{PLURAL:$1|está aberta unha análise|están abertas $1 análises}}. <a href='$2'>(Recargar)</a>"
 }

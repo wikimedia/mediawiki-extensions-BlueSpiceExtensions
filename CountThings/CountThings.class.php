@@ -101,42 +101,45 @@ class CountThings extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:countarticles',
-			'type' => 'tag',
-			'name' => 'countarticles',
-			'desc' => wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped(),
-			'code' => '<bs:countarticles />',
-			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:countarticles';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'countarticles';
+		$oDescriptor->desc = wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped();
+		$oDescriptor->code = '<bs:countarticles />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/Count_Things';
+		$oResponse->result[] = $oDescriptor;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:countusers',
-			'type' => 'tag',
-			'name' => 'countusers',
-			'desc' => wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped(),
-			'code' => '<bs:countusers />',
-			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:countusers';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'countusers';
+		$oDescriptor->desc = wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped();
+		$oDescriptor->code = '<bs:countusers />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/Count_Things';
+		$oResponse->result[] = $oDescriptor;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:countcharacters',
-			'type' => 'tag',
-			'name' => 'countcharacters',
-			'desc' => wfMessage( 'bs-countthings-tag-countcharacters-desc' )->escaped(),
-			'code' => '<bs:countcharacters>ARTICLENAME</bs:countcharacters>',
-			'examples' => array(
-				array(
-					'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-1' )->escaped(),
-					'code' => '<bs:countcharacters mode="words">ARTICLENAME</bs:countcharacters>'
-				),
-				array(
-					'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-2' )->escaped(),
-					'code' => '<bs:countcharacters mode="chars">ARTICLENAME</bs:countcharacters>'
-				),
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:countcharacters';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'countcharacters';
+		$oDescriptor->desc = wfMessage( 'bs-countthings-tag-countcharacters-desc' )->escaped();
+		$oDescriptor->code = '<bs:countcharacters>ARTICLENAME</bs:countcharacters>';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-1' )->escaped(),
+				'code' => '<bs:countcharacters mode="words">ARTICLENAME</bs:countcharacters>'
 			),
-			'helplink' => 'https://help.bluespice.com/index.php/Count_Things'
+			array(
+				'label' => wfMessage( 'bs-countthings-tag-countcharacters-example-2' )->escaped(),
+				'code' => '<bs:countcharacters mode="chars">ARTICLENAME</bs:countcharacters>'
+			),
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/Count_Things';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

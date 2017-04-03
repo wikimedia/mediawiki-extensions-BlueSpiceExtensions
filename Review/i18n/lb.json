@@ -62,5 +62,6 @@
 	"notification-bs-review-payload-comment": "Bemierkung: \"$1\"",
 	"notification-bs-review-assign-subject": "Kuckt d'Säit \"$2\" w.e.g. no",
 	"notification-bs-review-accept-subject": "$1 {{GENDER:$1|huet}} \"$2\" akzeptéiert",
-	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|huet}} \"$2\" refuséiert"
+	"notification-bs-review-deny-subject": "$1 {{GENDER:$1|huet}} \"$2\" refuséiert",
+	"bs-usagetracker-review": "Iwwerpréifungen"
 }

@@ -13,5 +13,13 @@
 	"admindashboard": "Tableru d'alministrador",
 	"userdashboard": "Tableru d'usuariu",
 	"bs-dashboard-userportlet-calendar-title": "Calendariu",
-	"bs-dashboard-userportlet-calendar-description": "Calendariu"
+	"bs-dashboard-userportlet-calendar-description": "Calendariu",
+	"bs-dashboard-userportlet-wikipage-title": "WikiPage",
+	"bs-dashboard-userportlet-wikipage-description": "Usar una páxina wiki pa definir el widget",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Páxina wiki",
+	"apihelp-bs-dashboard-task-param-dc": "Parámetru de control de caché. Usáu por ExtJS.",
+	"apihelp-bs-dashboards-store-description": "Llista de tolos portlets disponibles",
+	"apihelp-bs-dashboards-tasks-description": "Guarda la configuración del tableru",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Devuelve'l conteníu de dalgunos widgets de tableru",
+	"action-dashboards-viewspecialpage-userdashboard": "ver la páxina especial \"{{int:userdashboard}}\""
 }

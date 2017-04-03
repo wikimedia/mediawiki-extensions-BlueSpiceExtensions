@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Umherirrender"
 		]
 	},
 	"bs-insertfile-desc": "Über ein Dialogfeld werden Dateien hochgeladen und angehängt",
@@ -33,9 +34,9 @@
 	"bs-insertfile-typeframe": "gerahmt",
 	"bs-insertfile-typeborder": "umrandet",
 	"bs-insertfile-uploadbuttontext": "Durchsuchen",
-	"bs-insertfile-uploadimageemptytext": "Wählen Sie ein Bild aus ...",
+	"bs-insertfile-uploadimageemptytext": "Wählen Sie ein Bild aus …",
 	"bs-insertfile-uploadimagefieldlabel": "Neues Bild hochladen",
-	"bs-insertfile-uploadfileemptytext": "Wählen Sie eine Datei aus ...",
+	"bs-insertfile-uploadfileemptytext": "Wählen Sie eine Datei aus …",
 	"bs-insertfile-uploadfilefieldlabel": "Neue Datei hochladen",
 	"bs-insertfile-uploaddestfilelabel": "Zielname",
 	"bs-insertfile-uploaddescfilelabel": "Beschreibung / Quelle",
@@ -67,6 +68,6 @@
 	"bs-insertfile-no-link": "Bild nicht verlinken",
 	"bs-insertfile-error-no-medialink": "Es ist kein Media Link ausgewählt.",
 	"bs-insertfile-error-no-imagelink": "Es ist kein Bild Link ausgewählt.",
-	"bs-insertfile-upload-waitmessage": "Die Datei wird hochgeladen ...",
+	"bs-insertfile-upload-waitmessage": "Die Datei wird hochgeladen …",
 	"apihelp-bs-insertfile-license-store-description": "Listet die Lizenzen für die Erweiterung „InsertFile“ auf."
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Alexandr Efremov",
-			"Kaganer"
+			"Kaganer",
+			"Alex Great"
 		]
 	},
 	"bs-usersidebar-desc": "Добавляет на боковую панель навигации вкладку активности участника («focus tab»)",
@@ -11,5 +12,6 @@
 	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Редактировать}} список",
 	"bs-usersidebar-tab-focus": "В фокусе",
 	"bs-usersidebar-tab-globalactions": "Глобальные действия",
-	"bs-usersidebar-globalactionswidget-title": "Глобальные действия"
+	"bs-usersidebar-globalactionswidget-title": "Глобальные действия",
+	"apihelp-sidebar-example": "Получить HTML из боковой панели"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Inkowik",
-			"Metalhead64"
+			"Metalhead64",
+			"Umherirrender"
 		]
 	},
 	"bs-blog-desc": "Seiten werden in chronologischer Reihenfolge als Blog-Einträge dargestellt",
@@ -15,7 +16,7 @@
 	"bs-blog-trackback": "Trackback",
 	"bs-blog-permalink": "Permalink",
 	"bs-blog-show-all": "Alle Beiträge anzeigen",
-	"bs-blog-form-inline-text": "Titel ...",
+	"bs-blog-form-inline-text": "Titel …",
 	"bs-blog-form-title-text": "Neuen Blogeintrag verfassen",
 	"bs-blog-form-button-text": "Erstellen",
 	"bs-blog-blog": "Blog",

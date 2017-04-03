@@ -1,6 +1,7 @@
 /*jshint node:true */
 module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
+	grunt.loadNpmTasks( 'grunt-banana-checker' );
 
 	grunt.initConfig( {
 		jsonlint: {
@@ -9,9 +10,14 @@ module.exports = function ( grunt ) {
 				'**/*.json',
 				'!node_modules/**'
 			]
+		},
+		banana: {
+			all: [
+				'**/i18n/'
+			]
 		}
 	} );
 
-	grunt.registerTask( 'test', [ 'jsonlint' ] );
+	grunt.registerTask( 'test', [ 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };

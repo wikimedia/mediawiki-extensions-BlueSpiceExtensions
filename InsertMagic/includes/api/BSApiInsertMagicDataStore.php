@@ -53,6 +53,8 @@ class BSApiInsertMagicDataStore extends BSApiExtJSStoreBase {
 				$oDescriptor->name = $sTag;
 				$oDescriptor->desc = wfMessage( $key )->text();
 				$oDescriptor->code = $value;
+				$oDescriptor->examples = array();
+				$oDescriptor->helplink = '';
 				$oDescriptor->previewable = true;
 				$oResponse->result[] = $oDescriptor;
 			}
@@ -80,6 +82,8 @@ class BSApiInsertMagicDataStore extends BSApiExtJSStoreBase {
 				$oDescriptor->name = substr( $value, 2, -2 );
 				$oDescriptor->desc = wfMessage( $key )->text();
 				$oDescriptor->code = $value;
+				$oDescriptor->examples = array();
+				$oDescriptor->helplink = '';
 				$oDescriptor->previewable = true;
 				$oResponse->result[] = $oDescriptor;
 			}
@@ -93,6 +97,8 @@ class BSApiInsertMagicDataStore extends BSApiExtJSStoreBase {
 				$oDescriptor->name = substr( $value, 2, -2 );
 				$oDescriptor->desc = wfMessage( $key )->text();
 				$oDescriptor->code = $value;
+				$oDescriptor->examples = array();
+				$oDescriptor->helplink = '';
 				$oDescriptor->previewable = false;
 				$oResponse->result[] = $oDescriptor;
 			}
@@ -103,6 +109,13 @@ class BSApiInsertMagicDataStore extends BSApiExtJSStoreBase {
 		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'quickaccess' ) );
 		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'variables' ) ); //For compatibility
 		wfRunHooks('BSInsertMagicAjaxGetData', array( &$oResponse, 'switches' ) ); //For compatibility
+
+		//Check if all members of $oResponse->result are of type stdClass()
+		foreach( $oResponse->result as $iKey => &$res ) {
+			if( is_array ( $res ) ) {
+				$res = (object) $res;
+			}
+		}
 
 		return $oResponse->result;
 	}

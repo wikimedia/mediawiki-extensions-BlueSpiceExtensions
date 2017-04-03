@@ -6,9 +6,8 @@
 		"Markus Glaser",
 		"Leonid Verhovskij"
 	],
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://www.mediawiki.org/wiki/Extension:UserManager",
-	"description": "The user manager facilitates the user management",
 	"descriptionmsg": "bs-usermanager-desc",
 	"license-name": "GPL-2.0+",
 	"type": "bluespice",
@@ -27,6 +26,9 @@
 	"APIModules": {
 		"bs-usermanager-tasks": "BSApiTasksUserManager",
 		"bs-usermanager-group-store": "BSApiChangeableGroupStore"
+	},
+	"Hooks": {
+		"UnitTestsList": "UserManager::onUnitTestsList"
 	},
 	"MessagesDirs": {
 		"UserManager": [

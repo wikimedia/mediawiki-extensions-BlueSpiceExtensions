@@ -1,6 +1,6 @@
 {
 	"name": "Dashboards",
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/DashBoards",
 	"author": [
 		"Robert Vogel",
@@ -15,7 +15,7 @@
 			"extPath": "/BlueSpiceExtensions/Dashboards"
 		}
 	},
-        "SpecialPages": {
+	"SpecialPages": {
 		"AdminDashboard": "SpecialAdminDashboard",
 		"UserDashboard": "SpecialUserDashboard"
 	},

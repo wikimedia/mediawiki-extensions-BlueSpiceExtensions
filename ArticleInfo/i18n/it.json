@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Nemo bis"
 		]
 	},
 	"bs-articleinfo-desc": "Fornisce informazioni sulla pagina nella barra di stato",
@@ -9,7 +10,7 @@
 	"bs-articleinfo-pref-CheckRevisionInterval": "Intervallo di aggiornamento in secondi:",
 	"bs-articleinfo-last-edited": "Tempo dall'ultima modifca",
 	"bs-articleinfo-last-edited-tooltip": "Ultima modifica",
-	"bs-articleinfo-last-editor": "{{GENDER:$1|Ultimo editore|Ultima editrice|Ultimo/a editore/trice}}",
+	"bs-articleinfo-last-editor": "{{GENDER:$1|Ultimo autore|Ultima autrice|Ultimo/a autore/trice}}",
 	"bs-articleinfo-categories": "Categorie",
 	"bs-articleinfo-more-categories": "Altre categorie disponibili",
 	"bs-articleinfo-all-categories-heading": "Categorie",
@@ -23,7 +24,7 @@
 	"bs-articleinfo-check-revision": "Nuova versione disponibile",
 	"bs-articleinfo-check-revision-tooltip": "Ricarica la pagina",
 	"bs-articleinfo-statebartoplastedited": "Modifica recente",
-	"bs-articleinfo-statebartoplasteditor": "Editore recente",
+	"bs-articleinfo-statebartoplasteditor": "Contributore recente",
 	"bs-articleinfo-statebartopcategories": "Categorie",
 	"bs-articleinfo-statebartopsubpages": "Sottopagine",
 	"bs-articleinfo-statebarbodycategories": "Categorie",

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jerrykim306",
+			"Ykhwong"
+		]
+	},
+	"bs-uemodulepdf-pref-templatedir": "틀의 위치:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "이 페이지를 PDF로 내보냅니다.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "사용 가능",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "사용 불가"
+}

@@ -108,5 +108,13 @@
 	"action-extendedsearch-viewspecialpage": "查看特殊页面“{{int:specialextendedsearch}}”",
 	"action-extendedsearchadmin-viewspecialpage": "查看特殊页面“{{int:extendedsearchadmin}}”",
 	"extendedsearchadmin": "扩充的搜索管理",
-	"bs-extendedsearch-create-page": "创建页面“$1”。"
+	"bs-extendedsearch-create-page": "创建页面“$1”。",
+	"apihelp-feedextendedsearch-description": "使用OpenSearch协议搜索wiki",
+	"apihelp-feedextendedsearch-param-q": "搜索字符串",
+	"apihelp-feedextendedsearch-param-feedformat": "要返回的结果最大数",
+	"apihelp-feedextendedsearch-param-user": "如果$wgEnableOpenSearchSuggest为假则不做任何事",
+	"apihelp-feedextendedsearch-param-namespace": "要搜索的名字空间",
+	"apihelp-feedextendedsearch-param-category": "要搜索的分类",
+	"apihelp-feedextendedsearch-param-files": "是否在文件中搜索",
+	"apihelp-feedextendedsearch-example": "在主和用户名字空间搜索“Test”。"
 }

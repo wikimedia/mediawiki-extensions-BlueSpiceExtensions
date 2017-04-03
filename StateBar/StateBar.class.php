@@ -134,13 +134,14 @@ class StateBar extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'switches' ) return true;
 
-		$oResponse->result[] = array(
-			'id'   => 'bs:statebar',
-			'type' => 'switch',
-			'name' => 'NOSTATEBAR',
-			'desc' => wfMessage( 'bs-statebar-switch-description' )->plain(),
-			'code' => '__NOSTATEBAR__',
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:statebar';
+		$oDescriptor->type = 'switch';
+		$oDescriptor->name = 'NOSTATEBAR';
+		$oDescriptor->desc = wfMessage( 'bs-statebar-switch-description' )->plain();
+		$oDescriptor->code = '__NOSTATEBAR__';
+		$oDescriptor->previewable = false;
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

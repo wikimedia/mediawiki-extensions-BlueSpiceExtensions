@@ -4,11 +4,11 @@
 			"McDutchie"
 		]
 	},
-	"bs-shoutbox-desc": "Adjunge un cassa pro \"clamar\" messages post le contento de un pagina",
+	"bs-shoutbox-desc": "Adjunge un function analysator pro incorporar tu proprie \"shoutbox\" (cassa de messages curte)",
 	"prefs-shoutbox": "Clamatorio",
 	"bs-shoutbox-title": "Clamatorio",
-	"bs-shoutbox-message": "Message",
-	"bs-shoutbox-shout": "Clamar",
+	"bs-shoutbox-message": "Scriber un nove commento...",
+	"bs-shoutbox-shout": "Inviar",
 	"bs-shoutbox-no-entries": "Nihil clamate ancora.",
 	"bs-shoutbox-loading": "Cargamento in curso…",
 	"bs-shoutbox-pref-committimeinterval": "Tempore inter duo messages (in secundas):",

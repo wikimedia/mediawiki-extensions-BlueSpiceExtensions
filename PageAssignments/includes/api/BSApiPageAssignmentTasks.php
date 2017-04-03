@@ -4,7 +4,45 @@ class BSApiPageAssignmentTasks extends BSApiTasksBase {
 
 	protected $sTaskLogType = 'bs-pageassignments';
 
-	protected $aTasks = array( 'edit', 'getForPage' );
+	protected $aTasks = array(
+		'edit' => [
+			'examples' => [
+				[
+					'pageId' => 152,
+					'pageAssignments' => [
+						'user/WikiSysop',
+						'group/bot'
+					]
+				]
+			],
+			'params' => [
+					'pageId' => [
+						'desc' => 'ID of a page assignment is created for',
+						'type' => 'integer',
+						'required' => true
+					],
+					'pageAssignments' => [
+						'desc' => 'Array of strings in form of "key/value", eg. "user/WikiSysop" or "group/sysop", can be empty',
+						'type' => 'array',
+						'required' => true
+					]
+			]
+		],
+		'getForPage' => [
+			'examples' => [
+				[
+					'pageId' => 152
+				]
+			],
+			'params' => [
+				'pageId' => [
+					'desc' => 'ID of a page to get assignments for',
+					'type' => 'integer',
+					'required' => true
+				]
+			]
+		]
+	);
 
 	protected function getRequiredTaskPermissions() {
 		return array(

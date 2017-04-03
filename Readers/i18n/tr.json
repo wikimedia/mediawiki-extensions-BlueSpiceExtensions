@@ -3,7 +3,8 @@
 		"authors": [
 			"Violetanka",
 			"KorkmazO",
-			"Sadrettin"
+			"Sadrettin",
+			"1917 Ekim Devrimi"
 		]
 	},
 	"bs-readers-desc": "Bir sayfayı okuyan insanların listesini oluşturur",
@@ -15,6 +16,7 @@
 	"bs-readers-pagenotexists": "Sayfa mevcut değil.",
 	"bs-readers-pref-active": "Etkin okuyucular",
 	"bs-readers-pref-numofreaders": "Görünen okuyucu sayısı:",
+	"bs-readers-emptyinput": "Sayfa getirilemedi",
 	"bs-readers-header-username": "Kullanıcı adı",
 	"bs-readers-header-readerspath": "Okuyucu",
 	"bs-readers-header-ts": "Tarih",

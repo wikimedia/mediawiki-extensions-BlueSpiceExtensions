@@ -1,11 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-usersidebar-desc": "Lägger till fokus-fliken till sidopanelen",
 	"prefs-usersidebar": "Sidopanelen för användare",
 	"bs-usersidebar-userpagesettings-link-title": "Redigera innehållet i ditt fokus",
-	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Redigera}} fokus"
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Redigera}} fokus",
+	"bs-usersidebar-tab-focus": "Fokus",
+	"bs-usersidebar-tab-globalactions": "Globala handlingar",
+	"bs-usersidebar-globalactionswidget-title": "Globala handlingar",
+	"apihelp-sidebar-description": "Returnerar HTML-innehåller för användarsidofältet",
+	"apihelp-sidebar-param-format": "Format för utmatningsdata",
+	"apihelp-sidebar-example": "Hämta HTML för sidorfältet"
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
 	"bs-statistics-desc": "Statistieken module voor BlueSpice",
@@ -17,7 +18,7 @@
 	"bs-statistics-absolute": "absoluut",
 	"bs-statistics-year": "Jaar",
 	"bs-statistics-month": "Maand",
-	"bs-statistics-week": "Kalender week",
+	"bs-statistics-week": "Kalenderweek",
 	"bs-statistics-day": "Dag",
 	"bs-statistics-list": "Lijst",
 	"bs-statistics-not-allowed": "U hebt niet de vereiste toestemming.",

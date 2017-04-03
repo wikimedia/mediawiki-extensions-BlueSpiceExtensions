@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Renessaince"
+		]
+	},
+	"bs-extendedsearch-delete-index": "Выдаліць індэкс",
+	"bs-extendedsearch-overwrite-index": "Перазапісаць індэкс"
+}

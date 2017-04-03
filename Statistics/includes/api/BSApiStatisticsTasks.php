@@ -3,7 +3,44 @@
 class BSApiStatisticsTasks extends BSApiTasksBase {
 
 	protected $aTasks = array(
-		'getData'
+		'getData' => [
+			'params' => [
+				'examples' => [
+					[
+						'diagram' => 'Number of pages',
+						'grain' => 'Year',
+						'from' => '01.01.2017',
+						'mode' => 'List',
+						'to' => '31.12.2017'
+					]
+				],
+				'diagram' => [
+					'desc' => 'Diagram name',
+					'type' => 'string',
+					'required' => true
+				],
+				'grain' => [
+					'desc' => 'Valid grain type',
+					'type' => 'string',
+					'required' => true
+				],
+				'from' => [
+					'desc' => 'Date in format d.m.Y',
+					'type' => 'string',
+					'required' => true
+				],
+				'mode' => [
+					'desc' => 'Valid mode name',
+					'type' => 'string',
+					'required' => true
+				],
+				'to' => [
+					'desc' => 'Date in format d.m.Y',
+					'type' => 'string',
+					'required' => true
+				]
+			]
+		]
 	);
 
 	protected function getRequiredTaskPermissions() {
@@ -130,8 +167,48 @@ class BSApiStatisticsTasks extends BSApiTasksBase {
 		$oDiagram->setData( BsCharting::getDataPerDateInterval( $oReader, $oDiagram->getMode(), $intervals, $oDiagram->isListable() ) );
 
 		if ( $oDiagram->isList() ) {
-			//$aResult['data']['list'] = BsCharting::drawTable($oDiagram);
-			$oResponse->payload['data']['list'] = BsCharting::prepareList( $oDiagram, $oReader );
+			BsCharting::prepareList( $oDiagram, $oReader );
+			$aDatas = $oDiagram->getData();
+			$aLabels = $oDiagram->getListLabel();
+
+			$aFields = array();
+			$aColumns = array();
+			foreach( $aLabels as $sLabel ) {
+				$sField = strtolower( $sLabel );
+				$sField = str_replace( " ", "_", $sField );
+				$aFields[] = array( 'name' => $sField );
+				$aColumns[] = array( 'header' => $sLabel, 'dataIndex' => $sField );
+			}
+
+			$aList = array();
+			$aTypes = array();
+			foreach( $aDatas as $aData ){
+				$aItem = array();
+				for( $i = 0; $i < count( $aData ); $i++ ) {
+					if( $this->isInt( $aData[ $i ] ) ) {
+						$aTypes[ $aFields[ $i ][ 'name' ] ][] = 'int';
+					}
+					$aItem[ $aFields[ $i ][ 'name' ] ] = $aData[ $i ];
+				}
+				$aList[ 'items' ][] = $aItem;
+			}
+
+			foreach( $aTypes as $key=>$value ) {
+				$sColumnType = "string";
+				if( count( array_unique( $value ) ) === 1 ) {
+					$sColumnType = $value[0];
+				}
+
+				for( $i = 0; $i < count( $aFields ); $i++ ) {
+					if( $aFields[ $i ][ 'name' ] === $key ) {
+						$aFields[ $i ][ 'type' ] = $sColumnType;
+					}
+				}
+			}
+
+			$oResponse->payload['data']['list'] = $aList;
+			$oResponse->payload['data']['fields'] = $aFields;
+			$oResponse->payload['data']['columns'] = $aColumns;
 			$oResponse->payload['label'] = $oDiagram->getTitle();
 			$oResponse->success = true;
 			return $oResponse;
@@ -158,5 +235,12 @@ class BSApiStatisticsTasks extends BSApiTasksBase {
 		$oResponse->success = true;
 		return $oResponse;
 
+	}
+
+	protected function isInt( $sValue ) {
+		if( is_numeric( $sValue ) && gettype( $sValue + 0) === 'integer') {
+			return true;
+		}
+		return false;
 	}
 }

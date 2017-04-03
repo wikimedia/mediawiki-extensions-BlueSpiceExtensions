@@ -7,6 +7,7 @@
 	"bs-universalexport-desc": "Leidžia MediaWiki eksportuoti puslapius skirtingais formatais",
 	"prefs-universalexport": "Universalus eksportas",
 	"universalexport": "Universalus eksportas",
+	"bs-universalexport-pref-metadatadefaults": "Metaduomenys (standartinis, JSON):",
 	"bs-universalexport-page-title-without-param": "Universalus eksportas: Moduliai",
 	"bs-universalexport-page-title-on-error": "Universalus eksportas: Klaida",
 	"bs-universalexport-page-text-without-param": "Šis puslapis rodo informacija apie prieinamus universalaus eksporto eksportavimo modulius.",

@@ -7,8 +7,6 @@
 	},
 	"bs-pagetemplates-desc": "Affiche une liste de modèles marqué comme modèles de page",
 	"prefs-pagetemplates": "Modèles de page",
-	"apihelp-bs-pagetemplates-store": "Fournit une liste de modèles disponibles.",
-	"apihelp-bs-pagetemplates-tasks": "Fournit les tâches de création, mise à jour et suppression pour les modèles.",
 	"bs-pagetemplates-empty-page": "Page vide",
 	"bs-pagetemplates-empty-page-desc": "Commencer avec une page vide.",
 	"bs-pagetemplatesadmin-label": "Modèles de page",
@@ -29,6 +27,7 @@
 	"bs-pagetemplates-pref-excludens": "Ne pas afficher les modèles dans ces espaces de nom :",
 	"bs-pagetemplates-pref-forcenamespace": "Forcer l’espace de nom cible",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Masquer le modèle si la page n’est pas créée dans l’espace de nom cible",
+	"bs-pagetemplates-pref-hidedefaults": "Masquer les modèles par défaut",
 	"bs-pagetemplates-headerlabel": "Libellé",
 	"bs-pagetemplates-headertargetnamespace": "Espace de nom",
 	"bs-pagetemplates-tipeditdetails": "Modifier le modèle",
@@ -46,5 +45,6 @@
 	"apihelp-bs-pagetemplates-store-description": "Liste toutes les modèles de pages. Autorise le tri, le fltrage et la mise en forme. Implémente les paramètres  ExtJS Store.",
 	"apihelp-bs-pagetemplates-tasks-description": "Permet la manipulation des modèles de page",
 	"action-pagetemplatesadmin-viewspecialpage": "voir la page spéciale \"{{int:pagetemplatesadmin}}\"",
-	"pagetemplatesadmin": "Gestion des modèles de page"
+	"pagetemplatesadmin": "Gestion des modèles de page",
+	"bs-usagetracker-pagetemplates": "modèles de page"
 }

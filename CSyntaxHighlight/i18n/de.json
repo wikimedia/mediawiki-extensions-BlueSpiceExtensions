@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>"
+			"Stephan Muggli <muggli@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-csyntaxhighlight-desc": "Fügt eine konfigurierbare Syntaxhighlight-Funktionalität hinzu",
@@ -9,5 +10,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Theme:",
 	"bs-csyntaxhighlight-pref-gutter": "Zeige Zeilennummern",
 	"bs-csyntaxhighlight-pref-autolinks": "URLs verlinken",
-	"bs-csyntaxhighlight-pref-toolbar": "Werkzeugleiste einblenden"
+	"bs-csyntaxhighlight-pref-toolbar": "Werkzeugleiste einblenden",
+	"bs-csyntaxhighlight-tag-desc": "Ergänzt das Tag CSyntaxHighlight, das zur Anzeige formatierter Codeschnipsel verwendet wird."
 }

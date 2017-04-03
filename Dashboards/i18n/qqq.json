@@ -5,7 +5,8 @@
 			"NigelSoft",
 			"Robby",
 			"Shirayuki",
-			"Leonid Verhovskij <verhovskij@hallowelt.com>"
+			"Leonid Verhovskij <verhovskij@hallowelt.com>",
+			"Umherirrender"
 		]
 	},
 	"bs-dashboards-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of dashboards extension",
@@ -21,9 +22,9 @@
 	"bs-dashboard-userportlet-wikipage-title": "Portlet title for wikipage widget",
 	"bs-dashboard-userportlet-wikipage-description": "Portlet description for wikipage widget",
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Label for wiki article parameter used in config dialog",
-	"apihelp-bs-dashboard-task-param-dc": "Label for cache control parameter in api call",
-	"apihelp-bs-dashboards-store-description": "Describes the API endpoint that lists available portlets",
-	"apihelp-bs-dashboards-tasks-description": "Describes the API endpoint that saves dashboard configuration",
-	"apihelp-bs-dashboards-widgets-tasks-description": "Describes the API endpoint that returns content for some dashboard widgets",
-	"action-dashboards-viewspecialpage-userdashboard": "placeholder to describe that view of special page \"{{int:userdashboard}}\" is restricted for the current user"
+	"apihelp-bs-dashboard-task-param-dc": "Label for cache control parameter in api call\n{{doc-apihelp-param|bs-dashboard-task|dc}}",
+	"apihelp-bs-dashboards-store-description": "Describes the API endpoint that lists available portlets\n{{doc-apihelp-description|bs-dashboards-store}}",
+	"apihelp-bs-dashboards-tasks-description": "Describes the API endpoint that saves dashboard configuration\n{{doc-apihelp-description|bs-dashboards-tasks}}",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Describes the API endpoint that returns content for some dashboard widgets\n{{doc-apihelp-description|bs-dashboards-widgets-tasks}}",
+	"action-dashboards-viewspecialpage-userdashboard": "placeholder to describe that view of special page \"{{int:userdashboard}}\" is restricted for the current user\n{{doc-action|dashboards-viewspecialpage-userdashboard}}"
 }

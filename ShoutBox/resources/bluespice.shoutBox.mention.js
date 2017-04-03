@@ -21,15 +21,15 @@ $( document ).ready( function () {
 			return '@' + username[1] + ' ';
 		},
 		getUsers: function () {
-			$.getJSON( bs.util.getCAIUrl( 'getUserStoreData' ), function ( data ) {
+			$.getJSON( bs.api.makeUrl( 'bs-user-store', { limit: 9999999 } ), function ( data ) {
 				var users = [ ];
-				$.each( data.users, function ( i, v ) {
+				$.each( data.results, function ( i, v ) {
 					users.push( v.display_name + " (" + v.user_name + ")" );
 				} );
 				BSShoutboxMentions.mentions = users;
 			} );
 		}
-	}
+	};
 
 	var strategies = [
 		BSShoutboxMentions

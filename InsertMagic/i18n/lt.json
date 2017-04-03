@@ -23,8 +23,10 @@
 	"bs-insertmagic-servername": "Domeno pavadinimas.",
 	"bs-insertmagic-currentversion": "Viki MediaWiki versija.",
 	"bs-insertmagic-contentlanguage": "Viki numatytoji sąsajos kalba.",
+	"bs-insertmagic-revisionid": "Unikalus peržiūros ID.",
 	"bs-insertmagic-revisionyear": "Metai, kai buvo atliktas pakeitimas.",
 	"bs-insertmagic-revisiontimestamp": "Laiko žymė pakeitimo metu.",
+	"bs-insertmagic-displaytitle": "Formatuoti dabartinio puslapio pavadinimo antraštę",
 	"bs-insertmagic-dlg-title": "Įterpti magišką žodį ar žymę",
 	"bs-insertmagic-type-tags": "Žymės",
 	"bs-insertmagic-type-variables": "Kintamieji",
@@ -33,5 +35,6 @@
 	"bs-insertmagic-label-second": "2. Keiskite kodą",
 	"bs-insertmagic-label-desc": "Aprašymas",
 	"bs-insertmagic-label-examples": "Pavyzdžiai",
-	"bs-insertmagic-label-see-also": "Taip pat žiūrėkite"
+	"bs-insertmagic-label-see-also": "Taip pat žiūrėkite",
+	"apihelp-bs-insertmagic-data-store-description": "Nurodo visus InsertMagic dialogo objektus"
 }

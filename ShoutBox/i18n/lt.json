@@ -30,5 +30,6 @@
 	"echo-category-title-bs-shoutbox-mention-cat": "Pranešimas paminėjus žinutėje",
 	"bs-shoutbox-notifications-title-message-subject": "Buvote paminėti",
 	"bs-shoutbox-notifications-title-message-text": "Jus {{GENDER:$1|paminėjo}} $1 ($4) žinutėje „$5“.\n\nGalite apsilankyti puslapyje sekdami šią nuorodą:\n$3",
-	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|paminėjo}} jus žinutėje $3."
+	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|paminėjo}} jus žinutėje $3.",
+	"bs-usagetracker-shoutbox": "straipsniai su šaukyklos įrašais"
 }

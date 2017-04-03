@@ -9,5 +9,6 @@
 	"bs-csyntaxhighlight-pref-theme": "主题：",
 	"bs-csyntaxhighlight-pref-gutter": "显示行数",
 	"bs-csyntaxhighlight-pref-autolinks": "链接URL",
-	"bs-csyntaxhighlight-pref-toolbar": "显示工具栏"
+	"bs-csyntaxhighlight-pref-toolbar": "显示工具栏",
+	"bs-csyntaxhighlight-tag-desc": "插入CSyntaxHighlight标签，用于显示格式化代码片段"
 }

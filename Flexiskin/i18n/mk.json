@@ -43,7 +43,7 @@
 	"bs-flexiskin-right": "десно",
 	"bs-flexiskin-center": "по средина",
 	"bs-flexiskin-labelwidth": "Целосна ширина (во пиксели)",
-	"bs-flexiskin-labelfullwidth": "Макс. ширина",
+	"bs-flexiskin-labelfullwidth": "Најг. ширина",
 	"bs-flexiskin-error-nameempty": "Укажете важечко име на рувото што сакате да го создадете.",
 	"bs-flexiskin-error-templatenotexists": "Одбраниот шаблон не постои.",
 	"bs-flexiskin-api-desc": "Изврнички посредник за додатокот Flexiskin за BlueSpice.",

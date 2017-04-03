@@ -3,7 +3,8 @@
 		"authors": [
 			"Okras",
 			"Alexandr Efremov",
-			"Kaganer"
+			"Kaganer",
+			"Alex Great"
 		]
 	},
 	"bs-extendedsearch-desc": "Подключите поиск на Apache Solr (http://lucene.apache.org/solr/) для продвинутых функций поиска",
@@ -100,5 +101,8 @@
 	"bs-extendedsearch-redirect": "Перенаправление с: $1",
 	"bs-extendedsearch-totalnoofarticles": "Количество страниц для индексирования: $1",
 	"bs-extendedsearch-more": "Ещё",
-	"bs-extendedsearch-fewer": "Меньше"
+	"bs-extendedsearch-fewer": "Меньше",
+	"apihelp-feedextendedsearch-param-q": "Строка поиска",
+	"apihelp-feedextendedsearch-param-namespace": "Пространства имён для поиска",
+	"apihelp-feedextendedsearch-param-category": "Категории для поиска"
 }

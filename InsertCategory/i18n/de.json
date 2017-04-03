@@ -10,6 +10,7 @@
 	"bs-insertcategory-insertcat": "Kategorie einfügen",
 	"prefs-insertcategory": "Kategorie einfügen",
 	"bs-insertcategory-pref-withparents": "Kategorie mit ihren übergeordneten Kategorien einfügen",
+	"bs-insertcategory-pref-uploadpanelintegration": "Kategorien einer Seite im Hochladedialog voreinstellen",
 	"bs-insertcategory-title": "Kategorie einfügen",
 	"bs-insertcategory-cat-label": "Zugewiesen:",
 	"bs-insertcategory-success": "Die Kategorie wurde hinzugefügt",

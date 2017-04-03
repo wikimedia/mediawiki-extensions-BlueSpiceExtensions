@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Macofe",
-			"Mor"
+			"Mor",
+			"Dgstranz"
 		]
 	},
 	"bs-usermanager-desc": "Interfaz administrativa para añadir, editar y eliminar usuarios",
@@ -18,7 +19,7 @@
 	"bs-usermanager-invalid-email-gen": "La dirección de correo electrónico no es válida.",
 	"bs-usermanager-label": "Gestor de usuarios",
 	"bs-usermanager-user-added": "Se añadió el usuario.",
-	"bs-usermanager-user-deleted": "Se eliminó el usuario.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|Se eliminó el usuario|Se eliminaron los usuarios}}.",
 	"bs-usermanager-user-exists": "El nombre de usuario ya existe.",
 	"bs-usermanager-save-successful": "Se guardaron los cambios.",
 	"bs-usermanager-headerusername": "Nombre de usuario",
@@ -48,5 +49,13 @@
 	"usermanager": "Gestor de usuarios",
 	"action-usermanager-viewspecialpage": "ver la página especial \"gestor de usuarios\"",
 	"bs-usermanager-group-add-not-allowed": "No se te permite añadir usuarios al grupo $1",
-	"bs-usermanager-group-remove-not-allowed": "No se te permite quitar usuarios del grupo $1"
+	"bs-usermanager-group-remove-not-allowed": "No se te permite quitar usuarios del grupo $1",
+	"bs-usermanager-editgroups": "Editar grupos",
+	"bs-usermanager-editpassword": "Cambiar contraseña",
+	"bs-usermanager-editpassword-successful": "La contraseña se ha cambiado correctamente",
+	"bs-usermanager-title-nouserselected": "No se ha seleccionado ningún usuario",
+	"bs-usermanager-nouserselected": "Selecciona un usuario",
+	"bs-usermanager-title-multipleuserselected": "Varios usuarios están seleccionados",
+	"bs-usermanager-multipleuserselected": "Solo puedes cambiar la contraseña de un usuario cada vez",
+	"bs-usermanager-invalid-groups": "Los grupos no son válidos"
 }

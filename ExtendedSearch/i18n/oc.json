@@ -43,6 +43,7 @@
 	"bs-extendedsearch-pref-indextypesrepo": "Indexar los fichièrs telecargats",
 	"bs-extendedsearch-pref-indextypeswiki": "Indexar las paginas wiki",
 	"bs-extendedsearch-pref-indextypesspecial": "Indexar las paginas especialas",
+	"bs-extendedsearch-pref-showcreatesugg": "Afichar los ligams de creacion e suggestion dins una pagina especiala",
 	"bs-extendedsearch-pref-solrserviceurl": "URL de Solr :",
 	"bs-extendedsearch-pref-numfacets": "Nombre de facetas :",
 	"bs-extendedsearch-pref-showmlt": "Afichar las paginas similaras",

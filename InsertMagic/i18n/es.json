@@ -64,6 +64,7 @@
 	"bs-insertmagic-type-tags": "Etiquetas",
 	"bs-insertmagic-type-variables": "Variables",
 	"bs-insertmagic-type-switches": "Interruptores de comportamiento",
+	"bs-insertmagic-type-quickaccess": "Acceso rápido",
 	"bs-insertmagic-label-first": "1. Elige la etiqueta o palabra mágica",
 	"bs-insertmagic-label-second": "2. Modifica el código",
 	"bs-insertmagic-label-desc": "Descripción",

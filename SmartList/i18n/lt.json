@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Osnard"
 		]
 	},
 	"bs-smartlist-desc": "Rodo paskutinius penkis viki pakeitimus sąraše",
 	"prefs-smartlist": "Išmanusis sąrašas",
 	"bs-smartlist-recent-changes": "Naujausi pakeitimai",
 	"bs-smartlist-no-entries": "Rezultatų nerasta.",
+	"bs-smartlist-invalid-target": "Nurodytas tikslas nėra galiojantis puslapio pavadinimas",
 	"bs-smartlist-comment": "Komentaras: $1.",
 	"bs-smartlist-pref-count": "Įrašų skaičius:",
 	"bs-smartlist-pref-comments": "Rodyti komentarą",
@@ -40,5 +42,5 @@
 	"bs-smartlist-mosteditedpagesdesc": "Daugiausia redaguojamų puslapių sąrašas, išrūšiuotas pagal jų pakeitimus.",
 	"bs-smartlist-mostvisitedpagesdesc": "Daugiausia peržiūrėtų puslapių sąrašas, išrūšiuotas pagal jų peržiūras.",
 	"bs-smartlist-lasteditsdesc": "Puslapių, kuriuos jūs redagavote, sąrašas.",
-	"bs-smartlist-hitcounter-missing": "Plėtinys <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounter</a> turi būti įdiegtas."
+	"bs-smartlist-hitcounter-missing": "Plėtinys <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounters</a> turi būti įdiegtas."
 }

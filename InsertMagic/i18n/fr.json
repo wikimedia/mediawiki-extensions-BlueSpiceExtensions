@@ -65,6 +65,7 @@
 	"bs-insertmagic-type-tags": "Balises",
 	"bs-insertmagic-type-variables": "Variables",
 	"bs-insertmagic-type-switches": "Commutateurs de comportement",
+	"bs-insertmagic-type-quickaccess": "Accès rapide",
 	"bs-insertmagic-label-first": "1. Choisir la balise ou le mot magique",
 	"bs-insertmagic-label-second": "2. Modifier le code",
 	"bs-insertmagic-label-desc": "Description",

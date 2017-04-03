@@ -4,9 +4,9 @@
 			"Aftabuzzaman"
 		]
 	},
-	"bs-visualeditor-desc": "মিডিয়াউইকির জন্য ভিজ্যুয়াল এডিটর",
-	"prefs-visualeditor": "চাক্ষুষ সম্পাদক",
-	"bs-visualeditor-editbutton-hint": "চাক্ষুষ সম্পাদক",
+	"bs-visualeditor-desc": "মিডিয়াউইকির জন্য দৃশ্যমান সম্পাদনা",
+	"prefs-visualeditor": "দৃশ্যমান সম্পাদনা",
+	"bs-visualeditor-editbutton-hint": "দৃশ্যমান সম্পাদনা",
 	"bs-visualeditor-pref-disablens": "নামস্থানে নিস্ক্রিয়:",
 	"bs-visualeditor-pref-use": "পূর্বনির্ধারিতরুপে WYSIWYG সম্পাদক ব্যবহার করে",
 	"bs-visualeditor-save-message": "\"$2\" সারাংশসহ $1 সংস্করণ সংরক্ষিত",
@@ -20,7 +20,7 @@
 	"bs-visualeditor-aligntop": "উপরে",
 	"bs-visualeditor-alignmiddle": "মধ্যে",
 	"bs-visualeditor-alignbottom": "নিচে",
-	"bs-visualeditor-bsactions-wiki": "উইকিটেক্সট",
+	"bs-visualeditor-bsactions-wiki": "উইকিপাঠ্য",
 	"bs-visualeditor-bsactions-switchgui": "সরঞ্জামদণ্ড পরিবর্তন করুন",
 	"bs-visualeditor-bsactions-linebreak": "লাইন বিরতি",
 	"bs-visualeditor-bsactions-signature": "স্বাক্ষর",
@@ -32,5 +32,5 @@
 	"bs-visualeditor-bsactions-heading4": "শিরোনামা ৪",
 	"bs-visualeditor-bsactions-heading5": "শিরোনামা ৫",
 	"bs-visualeditor-bsactions-heading6": "শিরোনামা ৬",
-	"bs-visualeditor-switch-noeditor-desc": "এই পৃষ্ঠায় চাক্ষুষ সম্পাদক নিষ্ক্রিয় করুন।"
+	"bs-visualeditor-switch-noeditor-desc": "এই পৃষ্ঠায় দৃশ্যমান সম্পাদনা নিষ্ক্রিয় করুন।"
 }

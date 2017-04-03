@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-usersidebar-desc": "Legger til fokusfanen i sidemenyen",
+	"prefs-usersidebar": "Brukersidemeny",
+	"bs-usersidebar-userpagesettings-link-title": "Rediger innholdet i fokuset ditt",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Rediger}} fokus",
+	"bs-usersidebar-tab-focus": "Fokus",
+	"bs-usersidebar-tab-globalactions": "Globale handlinger",
+	"bs-usersidebar-globalactionswidget-title": "Globale handlinger",
+	"apihelp-sidebar-description": "Returnerer HTML-innholdet i brukersidemenyen"
+}

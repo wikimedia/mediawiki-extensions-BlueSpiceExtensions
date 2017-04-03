@@ -1,6 +1,6 @@
 {
 	"name": "NamespaceManager",
-	"version": "2.27.0",
+	"version": "2.27.1",
 	"url": "https://help.bluespice.com/index.php/Namespacemanager",
 	"author":   [
 		"Sebastian Ulbricht",
@@ -48,6 +48,10 @@
 		"BSApiNamespaceTasks": "includes/api/BSApiNamespaceTasks.php",
 		"SpecialNamespaceManager": "includes/specials/SpecialNamespaceManager.class.php"
 	},
+	"Hooks": {
+		"UnitTestsList": "NamespaceManager::onUnitTestsList",
+		"LoadExtensionSchemaUpdates": "NamespaceManager::onLoadExtensionSchemaUpdates"
+	},
 	"ResourceModules": {
 		"ext.bluespice.namespaceManager": {
 			"scripts": "resources/bluespice.namespaceManager.js",
@@ -72,9 +76,6 @@
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
 		"remoteExtPath": "BlueSpiceExtensions/NamespaceManager"
-	},
-	"Hooks": {
-		"LoadExtensionSchemaUpdates": "NamespaceManager::onLoadExtensionSchemaUpdates"
 	},
 	"manifest_version": 1
 }

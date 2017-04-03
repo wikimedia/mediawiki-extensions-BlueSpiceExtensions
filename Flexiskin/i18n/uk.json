@@ -52,7 +52,7 @@
 	"bs-flexiskin-api-desc": "API-інтерфейс для розширення Bluespice Flexiskin.",
 	"bs-flexiskin-api-type-desc": "Дію, яку буде виконано, наприклад, «delete». За замовчуванням це «get»",
 	"bs-flexiskin-api-mode-desc": "Режим дій, наприклад, «config». За замовчуванням це «flexiskin».",
-	"bs-flexiskin-api-id-desc": "ID, якщо Flexiskin (необов'язково).",
+	"bs-flexiskin-api-id-desc": "Ідентифікатор Flexiskin (необов'язково).",
 	"bs-flexiskin-api-data-desc": "Масив даних (необов'язково).",
 	"bs-flexiskin-api-preview-desc": "Вибрати, відображати режим попереднього перегляду чи ні (необов'язково).",
 	"bs-flexiskin-api-example-desc": "Повертає поточну конфігурацію Flexiskin.",
@@ -68,5 +68,6 @@
 	"apihelp-bs-flexiskin-upload-description": "Дозволяє вантажити файли до гнучкої теми оформлення",
 	"apihelp-bs-flexiskin-upload-store-description": "Виводить список завантажених файлів гнучкої теми оформлення",
 	"action-flexiskin-viewspecialpage": "перегляд спеціальної сторінки «Flexiskin»",
-	"flexiskin": "Налаштування теми"
+	"flexiskin": "Налаштування теми",
+	"bs-flexiskin-button-upload-image-tooltip": "Завантажити нове зображення"
 }

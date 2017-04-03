@@ -52,7 +52,7 @@
 	"bs-flexiskin-api-desc": "Interfaz de API de la extensión Flexiskin de Bluespice.",
 	"bs-flexiskin-api-type-desc": "La acción que ejecutar, p. ej., «delete» (‘borrar’). La predeterminada es «get» (‘obtener’).",
 	"bs-flexiskin-api-mode-desc": "El modo de acción, por ejemplo: \"config\". El predeterminado es \"flexiskin\".",
-	"bs-flexiskin-api-id-desc": "La ID si está el \"flexiskin\" (opcional).",
+	"bs-flexiskin-api-id-desc": "El identificador de Flexiskin (opcional).",
 	"bs-flexiskin-api-data-desc": "Una matriz de datos (opcional).",
 	"bs-flexiskin-api-preview-desc": "Elige si mostrar una vista previa o no (opcional).",
 	"bs-flexiskin-api-example-desc": "Devuelve la configuración actual de un Flexiskin.",

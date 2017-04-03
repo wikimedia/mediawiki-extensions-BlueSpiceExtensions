@@ -16,7 +16,7 @@
 	"bs-usermanager-invalid-email-gen": "邮件地址无效。",
 	"bs-usermanager-label": "用户管理",
 	"bs-usermanager-user-added": "用户已添加。",
-	"bs-usermanager-user-deleted": "用户已删除。",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|用户|$1个用户}}已删除。",
 	"bs-usermanager-user-exists": "用户已存在。",
 	"bs-usermanager-save-successful": "更改已保存。",
 	"bs-usermanager-headerusername": "用户名",
@@ -47,5 +47,14 @@
 	"usermanager": "用户管理",
 	"action-usermanager-viewspecialpage": "查看特殊页面“用户管理”",
 	"bs-usermanager-group-add-not-allowed": "您不被允许添加用户至用户组$1",
-	"bs-usermanager-group-remove-not-allowed": "您不被允许从用户组$1中移除用户"
+	"bs-usermanager-group-remove-not-allowed": "您不被允许从用户组$1中移除用户",
+	"bs-usermanager-editgroups": "编辑组",
+	"bs-usermanager-editpassword": "更改密码",
+	"bs-usermanager-editpassword-successful": "密码已成功更改",
+	"bs-usermanager-title-nouserselected": "未选择用户",
+	"bs-usermanager-nouserselected": "请选择一个用户",
+	"bs-usermanager-title-multipleuserselected": "选择了多个用户",
+	"bs-usermanager-multipleuserselected": "您每次只能更改一位用户的密码",
+	"bs-usermanager-invalid-groups": "组无效",
+	"apihelp-bs-usermanager-group-store-description": "为BlueSpice提供用户管理器任务api。"
 }

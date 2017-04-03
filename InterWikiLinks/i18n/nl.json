@@ -2,20 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
 	"bs-interwikilinks-desc": "Administratie-interface voor het toevoegen, bewerken en verwijderen van interwiki-links",
-	"bs-interwikilinks-invalid-pfx-spc": "De prefix is ongeldig. Gebruik geen spaties.",
+	"bs-interwikilinks-invalid-pfx-spc": "Het voorvoegsel is ongeldig. Gebruik geen spaties.",
 	"bs-interwikilinks-invalid-url-spc": "De URL is ongeldig. Gebruik geen spaties.",
 	"bs-interwikilinks-label": "Interwikilinks",
 	"bs-interwikilinks-link-created": "De interwikikoppeling is aangemaakt.",
 	"bs-interwikilinks-link-added": "De interwikikoppeling is toegevoegd.",
 	"bs-interwikilinks-link-deleted": "De interwikikoppeling is verwijderd.",
-	"bs-interwikilinks-nooldpfx": "De vorige prefix is niet gevonden.",
+	"bs-interwikilinks-nooldpfx": "Het vorige voorvoegsel is niet gevonden.",
 	"bs-interwikilinks-nopfx": "Geef een voorvoegsel op.",
 	"bs-interwikilinks-nourl": "Geef een URL op.",
-	"bs-interwikilinks-pfxtoolong": "De prefix is te lang. Gebruik een maximaal 32 tekens.",
+	"bs-interwikilinks-pfxtoolong": "Het voorvoegsel is te lang. Gebruik maximaal 32 tekens.",
 	"bs-interwikilinks-pfxexists": "Dit voorvoegsel bestaat al.",
 	"bs-interwikilinks-headerprefix": "Voorvoegsel",
 	"bs-interwikilinks-titleaddinterwikilink": "Interwikikoppeling toevoegen",

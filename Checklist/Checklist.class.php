@@ -67,6 +67,18 @@ class Checklist extends BsExtensionMW {
 	}
 
 	/**
+	 * UnitTestsList allows registration of additional test suites to execute
+	 * under PHPUnit. Extensions can append paths to files to the $paths array,
+	 * and since MediaWiki 1.24, can specify paths to directories, which will
+	 * be scanned recursively for any test case files with the suffix "Test.php".
+	 * @param array $paths
+	 */
+	public static function onUnitTestsList( array &$paths ) {
+		$paths[] = __DIR__ . '/tests/phpunit/';
+		return true;
+	}
+
+	/**
 	 * Hook Handler for VisualEditorConfig Hook
 	 * @param Array $aConfigStandard reference
 	 * @param Array $aConfigOverwrite reference
@@ -169,24 +181,25 @@ class Checklist extends BsExtensionMW {
 	public static function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if( $type != 'tags' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => 'bs:checklist',
-			'type' => 'tag',
-			'name' => 'checklist',
-			'desc' => wfMessage( 'bs-checklist-tag-checklist-desc' )->text(),
-			'code' => '<bs:checklist />',
-			'examples' => array(
-				array(
-					'label' => wfMessage( 'bs-checklist-tag-checklist-example-check' )->text(),
-					'code' => '<bs:checklist type="check" value="checked" />'
-				),
-				array(
-					'label' => wfMessage( 'bs-checklist-tag-checklist-example-list' )->text(),
-					'code' => '<bs:checklist type="list" value="false" list="Status" />'
-				),
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = 'bs:checklist';
+		$oDescriptor->type = 'tag';
+		$oDescriptor->name = 'checklist';
+		$oDescriptor->desc = wfMessage( 'bs-checklist-tag-checklist-desc' )->text();
+		$oDescriptor->code = '<bs:checklist />';
+		$oDescriptor->previewable = false;
+		$oDescriptor->examples = array(
+			array(
+				'label' => wfMessage( 'bs-checklist-tag-checklist-example-check' )->text(),
+				'code' => '<bs:checklist type="check" value="checked" />'
 			),
-			'helplink' => 'https://help.bluespice.com/index.php/Checklist'
+			array(
+				'label' => wfMessage( 'bs-checklist-tag-checklist-example-list' )->text(),
+				'code' => '<bs:checklist type="list" value="false" list="Status" />'
+			),
 		);
+		$oDescriptor->helplink = 'https://help.bluespice.com/index.php/Checklist';
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

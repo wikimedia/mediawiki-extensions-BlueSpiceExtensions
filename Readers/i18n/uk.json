@@ -3,7 +3,8 @@
 		"authors": [
 			"Ата",
 			"Andriykopanytsia",
-			"Dars"
+			"Dars",
+			"Piramidion"
 		]
 	},
 	"bs-readers-desc": "Створює список людей, які читають сторінку",
@@ -19,5 +20,7 @@
 	"bs-readers-header-username": "Ім'я користувача",
 	"bs-readers-header-readerspath": "Читач",
 	"bs-readers-header-ts": "Дата",
-	"bs-readers-header-page": "Сторінка"
+	"bs-readers-header-page": "Сторінка",
+	"apihelp-bs-readers-data-store-description": "Отримати інформацію про читача конкретної сторінки.",
+	"apihelp-bs-readers-users-store-description": "Отримати інформацію про всіх читачів конкретної сторінки."
 }

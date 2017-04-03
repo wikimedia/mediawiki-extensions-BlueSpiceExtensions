@@ -244,13 +244,14 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 	public function onBSInsertMagicAjaxGetData( &$oResponse, $type ) {
 		if ( $type != 'switches' ) return true;
 
-		$oResponse->result[] = array(
-			'id' => '__NOEDITOR__',
-			'type' => 'switch',
-			'name' => 'NOEDITOR',
-			'desc' => wfMessage( 'bs-visualeditor-switch-noeditor-desc' )->plain(),
-			'code' => '__NOEDITOR__',
-		);
+		$oDescriptor = new stdClass();
+		$oDescriptor->id = '__NOEDITOR__';
+		$oDescriptor->type = 'switch';
+		$oDescriptor->name = 'NOEDITOR';
+		$oDescriptor->desc = wfMessage( 'bs-visualeditor-switch-noeditor-desc' )->plain();
+		$oDescriptor->code = '__NOEDITOR__';
+		$oDescriptor->previewable = false;
+		$oResponse->result[] = $oDescriptor;
 
 		return true;
 	}

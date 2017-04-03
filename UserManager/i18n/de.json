@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Umherirrender"
 		]
 	},
 	"bs-usermanager-desc": "Administrationsoberfläche für das Hinzufügen, Bearbeiten und Löschen von Benutzern",
@@ -17,7 +18,7 @@
 	"bs-usermanager-invalid-email-gen": "Die E-Mail-Adresse ist unzulässig.",
 	"bs-usermanager-label": "Benutzerverwaltung",
 	"bs-usermanager-user-added": "Der Benutzer wurde hinzugefügt.",
-	"bs-usermanager-user-deleted": "{{PLURAL:$1|Ein Benutzer wurde|$1 Benutzer wurden}} gelöscht.",
+	"bs-usermanager-user-deleted": "{{PLURAL:$1|Der Benutzer wurde|$1 Benutzer wurden}} gelöscht.",
 	"bs-usermanager-user-exists": "Der Benutzername ist schon vorhanden.",
 	"bs-usermanager-save-successful": "Änderungen gespeichert.",
 	"bs-usermanager-headerusername": "Benutzername",
@@ -30,7 +31,7 @@
 	"bs-usermanager-labelpasswordcheck": "Passwort bestätigen",
 	"bs-usermanager-titledeleteuser": "Benutzer löschen",
 	"bs-usermanager-confirmdeleteuser": "Bist du sicher, dass du {{PLURAL:$1|diesen|diese $1}} Benutzer löschen willst?",
-	"bs-usermanager-groups-more": "... mehr",
+	"bs-usermanager-groups-more": "… mehr",
 	"bs-usermanager-no-self-desysop": "Du kannst dir nicht selbst das Sysop recht nehmen.",
 	"apihelp-bs-usermanager-tasks-description": "Bietet Operationen für die Prüflistenerweiterung",
 	"bs-usermanager-no-self-block": "Du kannst nicht dich selbst deaktivieren.",
@@ -48,5 +49,13 @@
 	"usermanager": "Benutzerverwaltung",
 	"action-usermanager-viewspecialpage": "die Spezialseite „Benutzerverwaltung“ anzusehen",
 	"bs-usermanager-group-add-not-allowed": "Du bist nicht berechtigt, Benutzer zu der Gruppe $1 hinzuzufügen.",
-	"bs-usermanager-group-remove-not-allowed": "Du bist nicht berechtigt, Benutzer von der Gruppe $1 zu entfernen."
+	"bs-usermanager-group-remove-not-allowed": "Du bist nicht berechtigt, Benutzer von der Gruppe $1 zu entfernen.",
+	"bs-usermanager-editgroups": "Gruppen bearbeiten",
+	"bs-usermanager-editpassword": "Passwort ändern",
+	"bs-usermanager-editpassword-successful": "Das Passwort wurde erfolgreich geändert",
+	"bs-usermanager-title-nouserselected": "Kein Benutzer ausgewählt",
+	"bs-usermanager-nouserselected": "Bitte wähle einen Benutzer aus",
+	"bs-usermanager-title-multipleuserselected": "Es wurden mehrere Benutzer ausgewählt",
+	"bs-usermanager-multipleuserselected": "Du kannst das Passwort nur für einen Benutzer gleichzeitig ändern",
+	"bs-usermanager-invalid-groups": "Die Gruppen sind ungültig"
 }

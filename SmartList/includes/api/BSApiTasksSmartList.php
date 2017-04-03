@@ -32,10 +32,87 @@ class BSApiTasksSmartList extends BSApiTasksBase {
 	 * @var array
 	 */
 	protected $aTasks = array(
-		'getMostVisitedPages',
-		'getMostEditedPages',
-		'getMostActivePortlet',
-		'getYourEditsPortlet'
+		'getMostVisitedPages' => [
+			'examples' => [
+				[
+					'count' => 100,
+					'period' => 'week'
+				]
+			],
+			'params' => [
+				'count' => [
+					'desc' => '',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 10
+				],
+				'period' => [
+					'desc' => 'Period for which to retrieve pages (week, month)',
+					'type' => 'string',
+					'required' => false,
+					'default' => 'alltime'
+				]
+			]
+		],
+		'getMostEditedPages' => [
+			'examples' => [
+				[
+					'count' => 100,
+					'period' => 'week'
+				]
+			],
+			'params' => [
+				'count' => [
+					'desc' => '',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 10
+				],
+				'period' => [
+					'desc' => 'Period for which to retrieve pages (week, month)',
+					'type' => 'string',
+					'required' => false,
+					'default' => 'alltime'
+				]
+			]
+		],
+		'getMostActivePortlet' => [
+			'examples' => [
+				[
+					'count' => 100,
+					'period' => 30
+				]
+			],
+			'params' => [
+				'count' => [
+					'desc' => '',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 10
+				],
+				'portletperiod' => [
+					'desc' => 'Period for which to retrieve pages in days (only 7 and 30)',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 0
+				]
+			]
+		],
+		'getYourEditsPortlet' => [
+			'examples' => [
+				[
+					'count' => 100
+				]
+			],
+			'params' => [
+				'count' => [
+					'desc' => '',
+					'type' => 'integer',
+					'required' => false,
+					'default' => 10
+				]
+			]
+		]
 	);
 
 	/**

@@ -19,6 +19,7 @@
 	"bs-pagetemplates-dberror": "Wystąpił błąd bazy danych.",
 	"bs-pagetemplates-tpl-deleted": "Szablon został usunięty.",
 	"bs-pagetemplates-pref-excludens": "Nie pokazuj szablonów w tych przestrzeniach nazw:",
+	"bs-pagetemplates-pref-hidedefaults": "Ukryj domyślne szablony",
 	"bs-pagetemplates-headerlabel": "Etykieta",
 	"bs-pagetemplates-headertargetnamespace": "Przestrzeń nazw",
 	"bs-pagetemplates-tipeditdetails": "Edytuj szablon",
@@ -31,5 +32,6 @@
 	"bs-pagetemplates-label-article": "Szablon",
 	"bs-pagetemplates-confirm-deletetpl": "Czy na pewno chcesz usunąć {{PLURAL:$1|ten szablon|te szablony}}?",
 	"bs-pagetemplates-remove-message-success": "Usunięto {{PLURAL:$1|następny szablon|następujące szablony}}: $2",
-	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Następujący szablon nie mógł zostać usunięty|Następujące szablony nie mogły zostać usunięte}}: $2 (Powód: $3)"
+	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Następujący szablon nie mógł zostać usunięty|Następujące szablony nie mogły zostać usunięte}}: $2 (Powód: $3)",
+	"bs-usagetracker-pagetemplates": "szablony strony"
 }

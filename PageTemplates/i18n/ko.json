@@ -5,6 +5,7 @@
 			"Ykhwong"
 		]
 	},
+	"bs-pagetemplates-pref-hidedefaults": "기본 틀 숨김",
 	"bs-pagetemplates-headertargetnamespace": "이름공간",
 	"bs-pagetemplates-tipeditdetails": "틀 편집",
 	"bs-pagetemplates-tipdeletetemplate": "{{PLURAL:$1|틀}} 삭제",

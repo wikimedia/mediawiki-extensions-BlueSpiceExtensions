@@ -93,6 +93,38 @@ Ext.define( 'BS.Statistics.Panel', {
 			Ext.baseCSSPrefix + 'mask-loading'
 		);
 	},
+	getListGrid: function( data, label, width, height ) {
+		var listResultStore = Ext.create( "Ext.data.Store", {
+			fields: data.fields,
+			data: data.list,
+			pageSize: 20,
+			proxy: {
+				type: 'memory',
+				enablePaging: true,
+				reader: {
+					type: 'json',
+					root: 'items'
+				}
+			}
+		});
+
+		var panel = Ext.create( "Ext.grid.Panel", {
+			title: label,
+			store: listResultStore,
+			columns: data.columns,
+			//NOTE: these substractions are needed to account for paging toolbar
+			height: height - 30,
+			width: width - 30,
+			dockedItems: [{
+				xtype: 'pagingtoolbar',
+				store: listResultStore,
+				dock: 'bottom',
+				displayInfo: true
+			}]
+		});
+
+		return panel;
+	},
 	onPnlFiltersSaved: function(sender, data, result) {
 		this.getEl().unmask();
 		//Quickfix: Sometimes label was not set
@@ -114,21 +146,10 @@ Ext.define( 'BS.Statistics.Panel', {
 		this.pnlStats.update(data.list);
 		this.pnlStats.removeAll();
 		this.pnlStats.show();
-		this.pnlStats.add( Ext.create('Ext.ux.grid.TransformGrid', 'StatisticsTableView', {
-			id: 'StatisticsTableView',
-			title: result.label,
-			width: this.getWidth(),
-			height: this.pnlMain.getHeight(),
-			stripeRows: true
-		}) );
+		this.pnlStats.add( this.getListGrid( data, result.label, this.getWidth(), this.pnlMain.getHeight() ) );
 		this.pnlStats.doLayout();
 	},
 	onClickmuExport: function( menu, item, e, eOpts ) {
-		/*this.getEl().mask(
-			mw.message('bs-extjs-loading').plain(),
-			Ext.baseCSSPrefix + 'mask-loading'
-		);*/
-
 		if(item.value == 'image/png') {
 			Ext.draw.engine.ImageExporter.defaultUrl = mw.util.getUrl(
 				'Special:ExtendedStatistics/export-png'

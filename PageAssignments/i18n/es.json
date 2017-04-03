@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Igv",
+			"Dgstranz"
 		]
 	},
 	"bs-pageassignments-desc": "Permite asignar usuarios o grupos a una página",
@@ -60,5 +62,8 @@
 	"bs-pageassignments-yourassignments": "Tus asignaciones",
 	"bs-pageassignments-yourassignmentsdesc": "Lista de páginas a las que se te asignó.",
 	"right-pageassignable": "Aparecer en la lista de usuarios asignables",
-	"right-pageassignments": "Editar las asignaciones de una página"
+	"right-pageassignments": "Editar las asignaciones de una página",
+	"bs-usagetracker-pageassignments": "paginas con asignaciones",
+	"apihelp-bs-pageassignable-store-description": "Devuelve la lista de asignados",
+	"apihelp-bs-mypageassignment-store-description": "Devuelve las páginas asignadas al usuario actual"
 }
