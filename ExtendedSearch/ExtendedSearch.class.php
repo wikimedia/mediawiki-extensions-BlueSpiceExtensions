@@ -111,6 +111,7 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->setHook( 'BSDashboardsAdminDashboardPortalPortlets' );
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		$this->setHook( 'BSExtendedSearchAutocomplete' );
+		$this->setHook( 'GetPreferences' );
 
 		$this->mCore->registerPermission( 'searchfiles', array( 'user' ), array( 'type' => 'global' ) );
 		$this->mCore->registerPermission( 'extendedsearch-viewspecialpage', array( 'user' ), array( 'type' => 'global' ) );
@@ -119,6 +120,42 @@ class ExtendedSearch extends BsExtensionMW {
 		$this->resolveNamespaceBoostQueryConfig();
 
 		wfProfileOut( 'BS::'.__METHOD__ );
+	}
+
+	/**
+	 * Adds preferences for extended search, e.g. which namespaces should be searched by default.
+	 *
+	 * @param $user User
+	 * @param $preferences array
+	 * @return bool always true to keep hook running
+	 */
+	public function onGetPreferences( $user, &$preferences ) {
+		$namespaces = $this->getLanguage()->getNamespaces();
+
+		$namespaceArray = array();
+
+		foreach( $namespaces as $namespaceId => $namespace ) {
+			$dummy = Title::makeTitle( $namespaceId, 'X' );
+
+			if( $namespaceId >= 0 && $dummy->userCan( 'read' ) ) {
+				$label = $dummy->getNsText();
+
+				if( $namespaceId === NS_MAIN ) {
+					$label = wfMessage( 'bs-ns_main' )->plain();
+				}
+
+				$namespaceArray[$label] = $namespaceId;
+			}
+		}
+
+		$preferences['searchNs'] = array(
+			'type' => 'multiselect',
+			'label' => wfMessage( 'bs-extendedsearch-facet-namespace' )->plain(),
+			'section' => 'extendedsearch',
+			'options' => $namespaceArray
+		);
+
+		return true;
 	}
 
 	/**
