@@ -74,11 +74,11 @@ class Authors extends BsExtensionMW {
 		if( $type != 'switches' ) return true;
 
 		$oDescriptor = new stdClass();
-		$oDescriptor->id = 'bs:statebar';
+		$oDescriptor->id = 'bs:authors';
 		$oDescriptor->type = 'switch';
-		$oDescriptor->name = 'NOSTATEBAR';
-		$oDescriptor->desc = wfMessage( 'bs-statebar-switch-description' )->plain();
-		$oDescriptor->code = '__NOSTATEBAR__';
+		$oDescriptor->name = 'NOAUTHORS';
+		$oDescriptor->desc = wfMessage( 'bs-authors-switch-description' )->plain();
+		$oDescriptor->code = '__NOAUTHORS__';
 		$oDescriptor->previewable = false;
 		$oResponse->result[] = $oDescriptor;
 
