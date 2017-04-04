@@ -47,7 +47,8 @@
 			],
 			"dependencies": [
 				"ext.bluespice.extjs"
-			]
+			],
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.bluespice.insertMagic.styles": {
 			"styles": "bluespice.insertMagic.css",

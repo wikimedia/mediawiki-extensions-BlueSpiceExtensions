@@ -54,11 +54,13 @@
 			],
 			"dependencies": [
 				"ext.bluespice.extjs"
-			]
+			],
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.bluespice.insertlink.styles": {
 			"styles": "bluespice.insertLink.css",
-			"position": "top"
+			"position": "top",
+			"targets": [ "desktop", "mobile" ]
 		}
 	},
 	"ResourceFileModulePaths": {
