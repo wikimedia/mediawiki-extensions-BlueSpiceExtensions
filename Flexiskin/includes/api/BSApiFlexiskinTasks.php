@@ -45,7 +45,13 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 		'add' => [
 			'examples' => [
 				[
-					'data' => [ [ name => "SkinName", desc => "SkinDesc", template => "NameOfTemplate" ] ]
+					'data' => [
+						[
+							'name' => "SkinName",
+							'desc' => "SkinDesc",
+							'template' => "NameOfTemplate"
+						]
+					]
 				]
 			],
 			'params' => [
@@ -74,7 +80,13 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 			'examples' => [
 				[
 					'id' => 'SomeSkinName',
-					'data' => [ [ name => "SkinName", desc => "SkinDesc", template => "NameOfTemplate" ] ]
+					'data' => [
+						[
+							'name' => "SkinName",
+							'desc' => "SkinDesc",
+							'template' => "NameOfTemplate"
+						]
+					]
 				]
 			],
 			'params' => [
@@ -108,7 +120,13 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 			'examples' => [
 				[
 					'id' => 'SomeSkinName',
-					'data' => [ [ name => "SkinName", desc => "SkinDesc", template => "NameOfTemplate" ] ]
+					'data' => [
+						[
+							'name' => "SkinName",
+							'desc' => "SkinDesc",
+							'template' => "NameOfTemplate"
+						]
+					]
 				]
 			],
 			'params' => [
