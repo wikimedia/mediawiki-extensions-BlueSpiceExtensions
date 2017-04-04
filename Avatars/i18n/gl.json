@@ -21,5 +21,6 @@
 	"bs-avatars-set-userimage-failed": "O enderezo URL é incorrecto ou a imaxe do wiki non é válida.",
 	"bs-avatars-set-userimage-saved": "Gardouse a imaxe de usuario.",
 	"bs-avatars-file-upload-fieldset-title": "Carga de imaxe",
-	"bs-avatars-auto-generate-fieldset-title": "Xerar o avatar automaticamente"
+	"bs-avatars-auto-generate-fieldset-title": "Xerar o avatar automaticamente",
+	"apihelp-bs-avatars-tasks-description": "Subindo, xerando e instalando os avatares de usuario"
 }
