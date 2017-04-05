@@ -33,6 +33,10 @@ class ViewSearchSuggest extends ViewBaseElement {
 		$sSearch             = str_replace( BsCore::getForbiddenCharsInArticleTitle(), '', $this->getOption( 'search' ) );
 		$oTitle              = Title::newFromText( $sSearch );
 
+		if( $oTitle instanceof Title === false ) {
+			return '';
+		}
+
 		$aLinks = [];
 		if( !$oTitle->exists() ) {
 			$aLinks['bs-extendedsearch-suggest'] = [
