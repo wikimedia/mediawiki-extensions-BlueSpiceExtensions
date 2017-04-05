@@ -311,17 +311,21 @@ class BSApiTasksInterWikiLinksManager extends BSApiTasksBase {
 		if ( isset( $this->aIWLexists[$sPrefix] ) ) {
 			return $this->aIWLexists[$sPrefix];
 		}
-		$row = $this->getDB()->selectRow(
-			'interwiki',
-			Interwiki::selectFields(),
-			[ 'iw_prefix' => $sPrefix ],
-			__METHOD__
-		);
-
-		if( !$row ) {
-			$this->aIWLexists[$sPrefix] = false;
+		if ( version_compare( $GLOBALS['wgVersion'], '1.28c', '>' ) ) {
+			$this->aIWLexists[$sPrefix] = \MediaWiki\MediaWikiServices::getInstance()->getInterwikiLookup()->isValidInterwiki( $sPrefix );
 		} else {
-			$this->aIWLexists[$sPrefix] = true;
+			$row = $this->getDB()->selectRow(
+				'interwiki',
+				Interwiki::selectFields(),
+				[ 'iw_prefix' => $sPrefix ],
+				__METHOD__
+			);
+
+			if( !$row ) {
+				$this->aIWLexists[$sPrefix] = false;
+			} else {
+				$this->aIWLexists[$sPrefix] = true;
+			}
 		}
 
 		return $this->aIWLexists[$sPrefix];
