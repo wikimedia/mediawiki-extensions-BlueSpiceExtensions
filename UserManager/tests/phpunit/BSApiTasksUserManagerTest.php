@@ -35,8 +35,9 @@ class BSApiTasksUserManagerTest extends BSApiTasksTestBase {
 	}
 
 	public function testEditUser () {
+		$userId = self::$users[ 'uploader' ]->getUser()->getId();
 		$data = $this->executeTask ( 'editUser', array (
-			'userID' => self::$users[ 'uploader' ]->user->getId(),
+			'userID' => $userId,
 			'realname' => 'Some Other Name',
 			'password' => 'pass123',
 			'rePassword' => 'pass123',
@@ -50,44 +51,48 @@ class BSApiTasksUserManagerTest extends BSApiTasksTestBase {
 		$this->assertSelect(
 			'user',
 			array( 'user_real_name'),
-			array( "user_id = '" . self::$users[ 'uploader' ]->user->getId() . "'" ),
-			array(  array( 'Some Other Name' )  )
+			array( "user_id = '" . $userId . "'" ),
+			array( array( 'Some Other Name' ) )
 		);
 	}
 
 	public function testDisableUser () {
+		$userId = self::$users[ 'uploader' ]->getUser()->getId();
 		$data = $this->executeTask ( 'disableUser', array (
-			'userID' => self::$users[ 'uploader' ]->user->getId ()
+			'userID' => $userId
 		) );
 
 		$this->assertEquals ( true, $data->success );
 
-		$this->assertTrue( $this->userIsBlocked( self::$users[ 'uploader' ]->user->getId() ) );
+		$this->assertTrue( $this->userIsBlocked( $userId ) );
 	}
 
 	public function testEnableUser () {
+		$userId = self::$users[ 'uploader' ]->getUser()->getId();
 		$data = $this->executeTask ( 'enableUser', array (
-			'userID' => self::$users[ 'uploader' ]->user->getId ()
+			'userID' => $userId
 		) );
 
 		$this->assertEquals ( true, $data->success );
 
-		$this->assertFalse( $this->userIsBlocked( self::$users[ 'uploader' ]->user->getId() ) );
+		$this->assertFalse( $this->userIsBlocked( $userId ) );
 	}
 
 	public function testDeleteUser () {
+		$userId = self::$users[ 'uploader' ]->getUser()->getId();
 		$data = $this->executeTask ( 'deleteUser', array (
-			'userIDs' => [ self::$users[ 'uploader' ]->user->getId () ]
+			'userIDs' => [ $userId ]
 		) );
 
 		$this->assertEquals ( true, $data->success );
 
-		$this->assertFalse( $this->existsInDb( self::$users[ 'uploader' ]->user->getId() ) );
+		$this->assertFalse( $this->existsInDb( $userId ) );
 	}
 
 	public function setUserGroups () {
+		$userId = self::$users[ 'uploader' ]->getUser()->getId();
 		$data = $this->executeTask ( 'addUser', array (
-			'userIDs' => [ self::$users[ 'uploader' ]->user->getId () ],
+			'userIDs' => [ $userId ],
 			'groups' => array ( 'bot' )
 		) );
 
@@ -96,14 +101,15 @@ class BSApiTasksUserManagerTest extends BSApiTasksTestBase {
 		$this->assertSelect(
 			'user_groups',
 			array( 'ug_group'),
-			array( "ug_user = '" . self::$users[ 'uploader' ]->user->getId() . "'" ),
-			array(  array( 'bot' )  )
+			array( "ug_user = '" . $userId . "'" ),
+			array( array( 'bot' ) )
 		);
 	}
 
 	public function editPassword () {
+		$userId = self::$users[ 'uploader' ]->getUser()->getId();
 		$data = $this->executeTask ( 'addUser', array (
-			'userID' => self::$users[ 'uploader' ]->user->getId (),
+			'userID' => $userId,
 			'password' => 'pass1234',
 			'rePassword' => 'pass1234'
 		) );
