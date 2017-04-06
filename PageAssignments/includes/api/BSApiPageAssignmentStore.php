@@ -35,8 +35,9 @@ class BSApiPageAssignmentStore extends BSApiExtJSStoreBase {
 
 		$sFieldValue = '';
 		foreach( $aDataSet->assignments as $oAsignee ) {
-			$sFieldValue .= $oAsignee->toStdClass()->text;
+			$sFieldValue .= $oAsignee->text;
 		}
+
 		if( empty( $sFieldValue ) ) {
 			$sFieldValue = wfMessage( 'bs-pageassignments-no-assignments' )->plain();
 		}
