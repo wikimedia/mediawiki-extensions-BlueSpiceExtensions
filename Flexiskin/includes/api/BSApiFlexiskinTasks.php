@@ -65,12 +65,12 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 		'delete' => [
 			'examples' => [
 				[
-					'id' => 'SomeSkinName'
+					'id' => '5b918c15b12ede0c3f39c6e8692525a7'
 				]
 			],
 			'params' => [
 				'id' => [
-					'desc' => 'Valid skin ID',
+					'desc' => 'Valid skin ID (hash)',
 					'type' => 'string',
 					'required' => true
 				]
@@ -79,7 +79,7 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 		'save' => [
 			'examples' => [
 				[
-					'id' => 'SomeSkinName',
+					'id' => '5b918c15b12ede0c3f39c6e8692525a7',
 					'data' => [
 						[
 							'name' => "SkinName",
@@ -91,7 +91,7 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 			],
 			'params' => [
 				'id' => [
-					'desc' => 'Valid skin ID',
+					'desc' => 'Valid skin ID (hash)',
 					'type' => 'string',
 					'required' => true
 				],
@@ -105,12 +105,12 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 		'reset' => [
 			'examples' => [
 				[
-					'id' => 'SomeSkinName'
+					'id' => '5b918c15b12ede0c3f39c6e8692525a7'
 				]
 			],
 			'params' => [
 				'id' => [
-					'desc' => 'Valid skin ID',
+					'desc' => 'Valid skin ID (hash)',
 					'type' => 'string',
 					'required' => true
 				]
@@ -119,7 +119,7 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 		'preview' => [
 			'examples' => [
 				[
-					'id' => 'SomeSkinName',
+					'id' => '5b918c15b12ede0c3f39c6e8692525a7',
 					'data' => [
 						[
 							'name' => "SkinName",
@@ -131,7 +131,7 @@ class BSApiFlexiskinTasks extends BSApiTasksBase {
 			],
 			'params' => [
 				'id' => [
-					'desc' => 'Valid skin ID',
+					'desc' => 'Valid skin ID (hash)',
 					'type' => 'string',
 					'required' => true
 				],

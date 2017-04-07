@@ -47,7 +47,7 @@ class BSApiFlexiskinUploadStore extends BSApiExtJSStoreBase {
 
 		foreach( $flexiskinFiles as $object ){
 			if( $object instanceof SplFileInfo );
-			$aData[] = array(
+			$aData[] = (object) array(
 				'filename' => $object->getFilename(),
 				'extension' => $object->getExtension(),
 				'mtime' => $object->getMTime()
