@@ -76,7 +76,7 @@ class ExtendedEditBar extends BsExtensionMW {
 
 		$imagesAvailable = $wgEnableUploads || count( $wgForeignFileRepos );
 
-		$sNs = $this->getLanguage()->getNsText( NS_IMAGE );
+		$sNs = $this->getLanguage()->getNsText( NS_FILE );
 		$sCaption = wfMessage( 'bs-extendededitbar-gallerysamplecaption' )->plain();
 		$sPicture = wfMessage( 'bs-extendededitbar-gallerysamplepicture' )->plain();
 		$sGallery = "{$sNs}:{$sPicture}.jpg|{$sCaption}\n{$sNs}:{$sPicture}.jpg|{$sCaption}";
