@@ -573,7 +573,7 @@ class Blog extends BsExtensionMW {
 			// Prevent recursive rendering of blog tag
 			$aContent = preg_replace( '/<(bs:)blog[^>]*?>/', '', $aContent );
 			// Thumbnail images
-			$sNamespaceRegEx = implode( '|', BsNamespaceHelper::getNamespaceNamesAndAliases( NS_IMAGE ) );
+			$sNamespaceRegEx = implode( '|', BsNamespaceHelper::getNamespaceNamesAndAliases( NS_FILE ) );
 
 			switch ( $argsSImageRenderMode ) {
 				case 'none':
