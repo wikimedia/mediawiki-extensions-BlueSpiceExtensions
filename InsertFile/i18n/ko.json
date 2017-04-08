@@ -4,7 +4,8 @@
 			"아라",
 			"Hwangjy9",
 			"Yearning",
-			"HDNua"
+			"HDNua",
+			"Ykhwong"
 		]
 	},
 	"bs-insertfile-labelsort": "정렬 기준:",
@@ -27,5 +28,6 @@
 	"bs-insertfile-uploadcomplete": "파일을 저장했습니다.",
 	"bs-insertfile-license": "라이선스",
 	"bs-insertfile-categories": "분류",
-	"bs-insertfile-upload-waitmessage": "파일을 올리는 중 ..."
+	"bs-insertfile-upload-waitmessage": "파일을 올리는 중 ...",
+	"bs-insertfile-enable-align": "사용"
 }

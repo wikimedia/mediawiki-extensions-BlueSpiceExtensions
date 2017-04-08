@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"NoiX180",
+			"Notanotheramy"
+		]
+	},
+	"bs-visualeditor-desc": "Pambesut visual kanggo MediaWiki",
+	"prefs-visualeditor": "Pambesut visual",
+	"bs-visualeditor-editbutton-hint": "Pambesut Visual",
+	"bs-visualeditor-no-summary": "Tanpa ringkesan",
+	"bs-visualeditor-sortable": "Bisa diurutaké",
+	"bs-visualeditor-wikitable": "Baku",
+	"bs-visualeditor-contenttable": "Isi",
+	"bs-visualeditor-contenttable-black": "Isi (ireng)",
+	"bs-visualeditor-contenttable-blue": "Isi (biru)",
+	"bs-visualeditor-contenttable-darkblue": "Isi (biru peteng)",
+	"bs-visualeditor-aligntop": "Ndhuwur",
+	"bs-visualeditor-alignmiddle": "Tengah",
+	"bs-visualeditor-alignbottom": "Ngisor",
+	"bs-visualeditor-bsactions-wiki": "Tèks wiki",
+	"bs-visualeditor-bsactions-signature": "Tapak asma",
+	"bs-visualeditor-bsactions-save": "Simpen",
+	"bs-visualeditor-bsactions-headings": "Sesirah",
+	"bs-visualeditor-bsactions-paragraph": "Paragraf",
+	"bs-visualeditor-bsactions-heading2": "Sesirah 2",
+	"bs-visualeditor-bsactions-heading3": "Sesirah 3",
+	"bs-visualeditor-bsactions-heading4": "Sesirah 4",
+	"bs-visualeditor-bsactions-heading5": "Sesirah 5",
+	"bs-visualeditor-bsactions-heading6": "Sesirah 6",
+	"bs-visualeditor-switch-noeditor-desc": "Patèni besutan visual ing kaca iki."
+}
