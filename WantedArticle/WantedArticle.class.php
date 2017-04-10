@@ -481,7 +481,7 @@ class WantedArticle extends BsExtensionMW {
 		foreach( $aWishList as $aWish ){
 			if( $aWish['title'] instanceof Title == false  ) continue;
 			$sLinkText = $aWish['title']->getPrefixedText();
-			if( in_array( $aWish['title']->getNamespace(), array( NS_IMAGE, NS_CATEGORY ) ) ) {
+			if( in_array( $aWish['title']->getNamespace(), array( NS_FILE, NS_CATEGORY ) ) ) {
 				$sLinkText = ':'.$sLinkText;
 			}
 
