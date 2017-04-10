@@ -175,7 +175,7 @@ class BsPDFPageProvider {
 		}
 
 		//If it's a normal article
-		if( !in_array( $oTitle->getNamespace(), array( NS_SPECIAL, NS_IMAGE, NS_CATEGORY ) ) ) {
+		if( !in_array( $oTitle->getNamespace(), array( NS_SPECIAL, NS_FILE, NS_CATEGORY ) ) ) {
 			$oArticle = new Article($oTitle);
 			$aMeta['author'] = $oArticle->getUserText(); // TODO RBV (14.12.10 12:19): Realname/Username -> DisplayName
 			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oArticle->getTouched() );
