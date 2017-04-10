@@ -35,6 +35,8 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 		] );
 
 		$testData->payload["data"]["bsPermissionManagerGroupPermissions"]["sysop"]["read"] = true;
+		$testData->payload["data"]["bsPermissionManagerGroupPermissions"]["sysop"]["edit"] = true;
+		$testData->payload["data"]["bsPermissionManagerGroupPermissions"]["sysop"]["siteadmin"] = true;
 
 		$aPayload = [
 			"groupPermission"=>$testData->payload["data"]["bsPermissionManagerGroupPermissions"],
