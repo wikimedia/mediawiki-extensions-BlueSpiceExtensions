@@ -8,7 +8,8 @@
 			"Ата",
 			"Smuggli",
 			"Purodha",
-			"Umherirrender"
+			"Umherirrender",
+			"Osnard"
 		]
 	},
 	"bs-pagetemplates-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page templates extension",
@@ -34,7 +35,7 @@
 	"bs-pagetemplates-pref-forcenamespace": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for force target namespace",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for hide template if the page is not to be created in the target namespace",
 	"bs-pagetemplates-pref-hidedefaults": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], checkbox label for hide default templates",
-	"bs-pagetemplates-headerlabel": "This is the label for the field named \"label\".\n{{Identical|Label}}",
+	"bs-pagetemplates-headerlabel": "This is the label for the field named \"label\". Each page template has a \"label\" and a \"description\", which are shown to the user in a list when creating a new page. The \"label\" is used as the \"heading\" in the list and generally is the \"name\" of a single page template.\n{{Identical|Label}}",
 	"bs-pagetemplates-headertargetnamespace": "Label for namespace\n{{Identical|Namespace}}",
 	"bs-pagetemplates-tipeditdetails": "Translate as \"the template\"\n{{Identical|Edit template}}",
 	"bs-pagetemplates-tipdeletetemplate": "Used as title of the confirmation window. Parameters:\n* $1 - the number of templates which will be deleted - use for PLURAL distinction\nSee also:\n* {{msg-mw|Bs-pagetemplates-confirm-deletetpl}}\n{{Identical|Delete template}}",

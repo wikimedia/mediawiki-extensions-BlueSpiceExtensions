@@ -1,17 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kandar"
+			"Kandar",
+			"Uchup19"
 		]
 	},
-	"bs-visualeditor-desc": "Éditor visual pikeun MediaWiki",
+	"bs-visualeditor-desc": "Éditor visual pikeun MédiaWiki",
 	"prefs-visualeditor": "Éditor visual",
 	"apihelp-bs-visualeditor-tasks-description": "Nyadiakeun paréntah-paréntah pikeun éksténsi Éditor Visual BlueSpice.",
 	"bs-visualeditor-editbutton-hint": "Éditor Visual",
-	"bs-visualeditor-pref-disablens": "Tumpurkeun dina rohang ngaran:",
-	"bs-visualeditor-pref-use": "Paké éditor WYSIWYG salaku default",
-	"bs-visualeditor-save-message": "Révisi anu disimpen $1 kalawan katerangan \"$2\".",
-	"bs-visualeditor-no-summary": "Taya katerangan",
+	"bs-visualeditor-pref-disablens": "Tumpurkeun dina ngaranspasi",
+	"bs-visualeditor-pref-use": "Paké éditor WYSIWYG minangka bawaanna",
+	"bs-visualeditor-save-message": "Révisi anu disimpen $1 kalawan kamandang \"$2\".",
+	"bs-visualeditor-no-summary": "Taya kamandang",
 	"bs-visualeditor-sortable": "Bisa diruntuykeun",
 	"bs-visualeditor-wikitable": "Baku",
 	"bs-visualeditor-contenttable": "Eusi",
