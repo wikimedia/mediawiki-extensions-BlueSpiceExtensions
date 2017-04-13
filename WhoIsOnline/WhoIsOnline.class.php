@@ -50,7 +50,6 @@ class WhoIsOnline extends BsExtensionMW {
 
 		// Hooks
 		$this->setHook( 'ParserFirstCallInit' );
-		$this->setHook( 'BeforeInitialize' );
 		$this->setHook( 'BeforePageDisplay');
 		$this->setHook( 'LanguageGetMagic' );
 		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
@@ -217,6 +216,19 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onParserFirstCallInit( &$oParser ) {
+		$oTitle = $oParser->getTitle() instanceof Title
+			? $oParser->getTitle()
+			: RequestContext::getMain()->getTitle()
+		;
+		if( !$oTitle instanceof Title ) {
+			$oTitle = Title::newMainPage();
+		}
+		$this->insertTrace(
+			$oTitle,
+			RequestContext::getMain()->getUser(),
+			RequestContext::getMain()->getRequest()
+		);
+
 		$oParser->setFunctionHook( 'userscount', array( &$this, 'onUsersCount' ) );
 		$oParser->setHook( 'bs:whoisonline:count', array( &$this, 'onUsersCountTag' ) );
 		$oParser->setHook( 'bs:whoisonlinecount', array( &$this, 'onUsersCountTag' ) );
@@ -236,25 +248,6 @@ class WhoIsOnline extends BsExtensionMW {
 	public function onLanguageGetMagic( &$aMagicWords, $sLangCode ) {
 		$aMagicWords[ 'userscount' ] = array( 0, 'userscount' );
 		$aMagicWords[ 'userslink' ]  = array( 0, 'userslink' );
-		return true;
-	}
-
-	/**
-	 * Hook-Handler for MediaWiki hook BeforeInitialize - Inserts a trace of the user action into the database
-	 * @param Title $oTitle
-	 * @param Article $oArticle
-	 * @param OutputPage $oOutput
-	 * @param User $oUser
-	 * @param WebRequest $oRequest
-	 * @param MediaWiki $oMediaWiki
-	 * @return boolean - alway true
-	 */
-	public function onBeforeInitialize( &$oTitle, &$oArticle, &$oOutput, &$oUser, $oRequest, $oMediaWiki ) {
-		wfProfileIn( 'BS::'.__METHOD__ );
-
-		$this->insertTrace( $oTitle, $oUser, $oRequest );
-
-		wfProfileOut( 'BS::'.__METHOD__ );
 		return true;
 	}
 
