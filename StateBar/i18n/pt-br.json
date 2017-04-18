@@ -1,8 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luckas"
+			"Luckas",
+			"Felipe L. Ewald"
 		]
 	},
-	"prefs-statebar": "Barra de status"
+	"bs-statebar-desc": "Fornece uma barra de status",
+	"prefs-statebar": "Barra de status",
+	"bs-statebar-pref-sortbodyvars": "Ordem do corpo:",
+	"bs-statebar-pref-sorttopvars": "Ordem superior:",
+	"bs-statebar-pref-show": "Mostrar a barra de status",
+	"bs-statebar-viewtoggler": "DETALHES",
+	"bs-statebar-viewtoggler-tooltip": "Mostrar informações detalhadas",
+	"bs-statebar-switch-description": "Oculta a barra de status nesta página.",
+	"bs-statebar-ajax-nobodyviews": "Não há informações disponíveis.",
+	"apihelp-bs-statebar-tasks-description": "Fornece operações para a extensão StateBar"
 }
