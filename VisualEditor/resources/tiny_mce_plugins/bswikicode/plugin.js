@@ -2189,9 +2189,10 @@ var BsWikiCode = function() {
 					return;
 				}
 				var imageData = response.query.pages[response.query.pageids[0]];
-
+				var fileNameParts = imageData.title.split( ':' );
+				fileNameParts.shift(); //Strip namespace prefix
 				var data = {
-					file: imageData.title.split( ':', 2 ).pop(), //Strip namespace prefix
+					file: fileNameParts.join( ':' ),
 					url: imageData.imageinfo[0].url
 				};
 
