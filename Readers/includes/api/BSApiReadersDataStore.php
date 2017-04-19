@@ -62,8 +62,8 @@ class BSApiReadersDataStore extends BSApiExtJSStoreBase {
 				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
 				$aTmpPage['pv_page_link'] = Linker::link( $oTitle );
 				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
-				$aTmpPage['pv_ts'] = $row->readers_ts;
-				$aTmpPage['pv_date'] = $this->getLanguage()->timeanddate( $row->readers_ts );
+				$aTmpPage['pv_ts'] = $this->getLanguage()->userAdjust( $row->readers_ts );
+				$aTmpPage['pv_date'] = $this->getLanguage()->timeanddate( $row->readers_ts, true );
 				$aTmpPage['pv_readers_link'] = Linker::link(
 					$oSpecialReaders,
 					'',
