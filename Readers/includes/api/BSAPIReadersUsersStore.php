@@ -56,9 +56,9 @@ class BSAPIReadersUsersStore extends BSApiExtJSStoreBase {
 						'class' => 'icon-bookmarks'
 					)
 				);
-				$iReadersTS = $this->getLanguage()->userAdjust( $row->readers_ts );
-				$aTmpUser[ 'user_ts' ] = $this->getLanguage()->timeanddate( $iReadersTS );
-				$aTmpUser[ 'user_date' ] = $this->getLanguage()->timeanddate( $iReadersTS );
+
+				$aTmpUser[ 'user_ts' ] = $this->getLanguage()->userAdjust( $row->readers_ts );
+				$aTmpUser[ 'user_date' ] = $this->getLanguage()->timeanddate( $row->readers_ts, true );
 
 				$aUsers[] = (object) $aTmpUser;
 			}
