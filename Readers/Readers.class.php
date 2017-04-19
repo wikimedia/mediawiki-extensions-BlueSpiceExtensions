@@ -305,8 +305,8 @@ class Readers extends BsExtensionMW {
 				$aTmpUser['user_name'] = $oUser->getName();
 				$aTmpUser['user_page'] = $oTitle->getLocalURL();
 				$aTmpUser['user_readers'] = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() )->getLocalURL();
-				$aTmpUser['user_ts'] = $row->readers_ts;
-				$aTmpUser['user_date'] = $oLanguage->timeanddate( $row->readers_ts );
+				$aTmpUser['user_ts'] = $oLanguage->userAdjust( $row->readers_ts );
+				$aTmpUser['user_date'] = $oLanguage->timeanddate( $row->readers_ts, true );
 
 				$aUsers['users'][] = $aTmpUser;
 			}
@@ -407,7 +407,7 @@ class Readers extends BsExtensionMW {
 				$aTmpPage = array();
 				$aTmpPage['pv_page'] = $oTitle->getLocalURL();
 				$aTmpPage['pv_page_title'] = $oTitle->getPrefixedText();
-				$aTmpPage['pv_ts'] = $oLanguage->timeanddate( $row->readers_ts );
+				$aTmpPage['pv_ts'] = $oLanguage->timeanddate( $row->readers_ts, true );
 
 				$aPages['page'][] = $aTmpPage;
 			}
