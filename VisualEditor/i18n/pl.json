@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Pio387",
-			"Chrumps"
+			"Chrumps",
+			"Xð"
 		]
 	},
-	"prefs-visualeditor": "Visual editor",
+	"prefs-visualeditor": "Edytor wizualny",
 	"bs-visualeditor-pref-disablens": "Wyłącz w przestrzeni nazw:",
 	"bs-visualeditor-save-message": "Zapisano zmiany pod datą $1 z opisem \"$2\".",
 	"bs-visualeditor-bsactions-linebreak": "Podział wiersza",
