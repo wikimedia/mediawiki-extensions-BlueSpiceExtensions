@@ -650,7 +650,11 @@ var BsWikiCode = function() {
 					continue;
 				}
 				if (hrefAttr) {
-					target = decodeURI( hrefAttr[1] );
+					try {
+						target = decodeURI( hrefAttr[1] );
+					} catch ( e ) {
+						target = unescape( hrefAttr[1] );
+					}
 					// 03.03.2014 STM ??? target = target; //unescape(target);
 				}
 				// @todo <br /> br-tags bereits in insertLink abfangen oder hier einfügen
