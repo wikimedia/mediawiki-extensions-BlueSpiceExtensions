@@ -37,11 +37,13 @@
 	"ResourceModules": {
 		"ext.bluespice.statebar.style": {
 			"styles": "bluespice.StateBar.css",
-			"position": "top"
+			"position": "top",
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.bluespice.statebar": {
 			"scripts": "bluespice.StateBar.js",
-			"position": "bottom"
+			"position": "bottom",
+			"targets": [ "desktop", "mobile" ]
 		}
 	},
 	"ResourceFileModulePaths": {
