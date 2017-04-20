@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xð"
+			"Xð",
+			"Felipe L. Ewald"
 		]
 	},
-	"prefs-visualeditor": "Editor visual"
+	"prefs-visualeditor": "Editor visual",
+	"bs-visualeditor-bsactions-save": "Salvar"
 }
