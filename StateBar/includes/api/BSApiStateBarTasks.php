@@ -35,7 +35,7 @@ class BSApiStateBarTasks extends BSApiTasksBase {
 		);
 		if( is_null( $oTitle ) ) {
 			$oResponse->message = wfMessage( 'bs-statebar-ajax-nobodyviews' )->plain();
-			return $oResult;
+			return $oResponse;
 		}
 
 		$aBodyViews = array();
@@ -43,7 +43,7 @@ class BSApiStateBarTasks extends BSApiTasksBase {
 		if( empty( $aBodyViews ) ) {
 			$oResponse->success = true;
 			$oResponse->message = wfMessage( 'bs-statebar-ajax-nobodyviews' )->plain();
-			return $oResult;
+			return $oResponse;
 		}
 
 		$aSortBodyVars = BsConfig::get('MW::StateBar::SortBodyVars');
