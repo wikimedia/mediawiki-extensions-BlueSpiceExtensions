@@ -3,6 +3,9 @@
 /**
  * @group medium
  * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceNamespaceManager
  */
 class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 21;

@@ -2,6 +2,10 @@
 
 /**
  * @group medium
+ * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpicePageTemplate
  */
 class BSApiPageTemplatesTasksTest extends BSApiTasksTestBase {
 

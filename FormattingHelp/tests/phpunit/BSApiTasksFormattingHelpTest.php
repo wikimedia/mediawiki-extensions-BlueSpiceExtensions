@@ -1,7 +1,11 @@
 <?php
- /**
-  * @group medium
-  */
+/**
+ * @group medium
+ * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceFormattingHelp
+ */
 class BSApiTasksFormattingHelpTest extends BSApiTasksTestBase {
 	protected function getModuleName () {
 		return 'bs-formattinghelp';

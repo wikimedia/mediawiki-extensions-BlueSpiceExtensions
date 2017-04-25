@@ -3,6 +3,9 @@
 /**
  * @group medium
  * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceGroupManager
  */
 class BSApiTasksGroupManagerTest extends BSApiTasksTestBase {
 

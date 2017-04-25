@@ -3,6 +3,9 @@
 /**
  * @group medium
  * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpicePageTemplate
  */
 class BSApiPageTemplatesStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 8;
