@@ -116,7 +116,33 @@ class Avatars extends BsExtensionMW {
 		}
 		# Set or generate user's avatar
 		$oUserMiniProfileView->setUserImageSrc($this->generateAvatar($oUser, $aParams));
+
+		$oFile = self::getAvatarFile( $oUser->getId() );
+
+		if( !$oFile || !$oFile->exists() ) {
+			return true;
+		}
+		if( $aParams['width'] > $oFile->getWidth() ) {
+			$aParams['width'] = $oFile->getWidth();
+		}
+
+		if( $aParams['height'] > $oFile->getHeight() ) {
+			$aParams['height'] = $oFile->getHeight();
+		}
+
+		$oUserMiniProfileView->setOptions( $aParams );
+
 		return true;
+	}
+
+	/**
+	 * Gets Avatar file from user ID
+	 * @param int $iUserId
+	 * @return boolean|\File
+	 */
+	public static function getAvatarFile( $iUserId ) {
+		$sAvatarFileName = self::$sAvatarFilePrefix . $iUserId . ".png";
+		return BsFileSystemHelper::getFileFromRepoName( $sAvatarFileName, 'Avatars' );
 	}
 
 	/**
@@ -180,9 +206,8 @@ class Avatars extends BsExtensionMW {
 		$sUserName = $oUser->getName();
 		$sUserRealName = $oUser->getRealName();
 
-		$sAvatarFileName = self::$sAvatarFilePrefix . $iUserId . ".png";
 		# TODO: Check if this is more expensive than a simple file_exists()
-		$oFile = BsFileSystemHelper::getFileFromRepoName($sAvatarFileName, 'Avatars');
+		$oFile = self::getAvatarFile( $iUserId );
 
 		// Prevent fatal when filerepo cannot be found.
 		if ( !$oFile ) {
