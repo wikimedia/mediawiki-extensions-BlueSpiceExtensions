@@ -3,6 +3,9 @@
 /**
  * @group medium
  * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceNamespaceManager
  */
 class BSApiNamespaceTasksTest extends BSApiTasksTestBase {
 

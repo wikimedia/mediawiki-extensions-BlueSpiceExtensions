@@ -2,6 +2,10 @@
 
 /**
  * @group large
+ * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceUserManager
  */
 class BSApiTasksUserManagerTest extends BSApiTasksTestBase {
 

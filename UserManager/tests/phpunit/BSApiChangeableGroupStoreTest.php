@@ -4,6 +4,8 @@
  * @group medium
  * @group API
  * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceUserManager
  */
 class BSApiChangeableGroupStoreTest extends BSApiExtJSStoreTestBase {
 

@@ -2,6 +2,10 @@
 
 /**
  * @group medium
+ * @group API
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceInterWikiLnksManager
  */
 class BSApiTasksInterWikiLinksManagerTest extends BSApiTasksTestBase {
 	protected function getModuleName( ) {

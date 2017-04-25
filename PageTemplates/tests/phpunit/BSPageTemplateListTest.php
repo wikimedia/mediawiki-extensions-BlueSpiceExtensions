@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @group medium
  * @group BlueSpice
  * @group BlueSpiceExtensions
  * @group BlueSpicePageTemplates
