@@ -26,5 +26,6 @@
 	"bs-formattinghelp-help-hr": "Horizontal line",
 	"bs-formattinghelp-help-template": "Template",
 	"bs-formattinghelp-help-templatename": "Template name",
-	"apihelp-bs-formattinghelp-description": "Provides the tasks for the extension FormattingHelp."
+	"apihelp-bs-formattinghelp-description": "Provides the tasks for the extension FormattingHelp.",
+	"apihelp-bs-formattinghelp-param-token": "CSRF protection token. Not required here"
 }
