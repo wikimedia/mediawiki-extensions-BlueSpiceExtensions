@@ -36,6 +36,7 @@ $this:
 'NamespaceManager::writeNamespaceConfiguration':
 &$sSaveContent:
  $sConstName:
+ $iNs:
  $aDefinition:
 
 
