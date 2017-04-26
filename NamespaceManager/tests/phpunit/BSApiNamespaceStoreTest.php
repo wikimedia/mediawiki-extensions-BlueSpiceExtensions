@@ -3,12 +3,13 @@
 /**
  * @group medium
  * @group API
+ * @group Database
  * @group BlueSpice
  * @group BlueSpiceExtensions
  * @group BlueSpiceNamespaceManager
  */
 class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
-	protected $iFixtureTotal = 21;
+	protected $iFixtureTotal = 18;
 
 	protected function getStoreSchema () {
 		return [
@@ -39,8 +40,46 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 		];
 	}
 
-	protected function createStoreFixtureData () {
-		return 21;
+	protected function setUp() {
+		parent::setUp();
+		$this->setMwGlobals( [
+			'wgNamespacesWithSubpages' => [
+				99990 => true
+			],
+			'wgNamespacesToBeSearchedDefault' => [
+				99990 => true
+			]
+		] );
+		Hooks::clear( 'LanguageGetNamespaces' );
+		Hooks::register( 'LanguageGetNamespaces', function( &$namespaces ){
+			$namespaces = [
+				-2 => 'Media',
+				-1 => 'Special',
+				0 => '',
+				1 => 'Talk',
+				2 => 'User',
+				3 => 'User_talk',
+				4 => 'Project',
+				5 => 'Project_talk',
+				6 => 'File',
+				7 => 'File_talk',
+				8 => 'MediaWiki',
+				9 => 'MediaWiki_talk',
+				10 => 'Template',
+				11 => 'Template_talk',
+				12 => 'Help',
+				13 => 'Help_talk',
+				14 => 'Category',
+				15 => 'Category_talk',
+				99990 => 'Test',
+				99991 => 'Test_talk'
+			];
+			return true;
+		});
+	}
+
+	protected function createStoreFixtureData() {
+		return true;
 	}
 
 	protected function getModuleName () {
@@ -49,7 +88,7 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 
 	public function provideSingleFilterData() {
 		return [
-			'Filter by isSystemNS' => [ 'boolean', 'eq', 'isSystemNS', false, 3 ]
+			'Filter by isSystemNS' => [ 'boolean', 'eq', 'isSystemNS', false, 2 ]
 		];
 	}
 
@@ -70,7 +109,7 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 						'value' => true
 					]
 				],
-				2
+				1
 			]
 		];
 	}
