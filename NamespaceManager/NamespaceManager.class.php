@@ -189,7 +189,7 @@ class NamespaceManager extends BsExtensionMW {
 		return true;
 	}
 
-	public function onWriteNamespaceConfiguration( &$sSaveContent, $sConstName, $aDefinition ) {
+	public function onWriteNamespaceConfiguration( &$sSaveContent, $sConstName, $iNs, $aDefinition ) {
 		if ( isset( $aDefinition[ 'content' ] ) && $aDefinition['content'] === true ) {
 			$sSaveContent .= "\$GLOBALS['wgContentNamespaces'][] = {$sConstName};\n";
 		}
@@ -265,7 +265,7 @@ class NamespaceManager extends BsExtensionMW {
 					$sSaveContent .= "\$GLOBALS['wgExtraNamespaces'][{$sConstName}] = '" . $aDefinition['name'] . "';\n";
 				}
 
-				Hooks::run( 'NamespaceManager::writeNamespaceConfiguration', array( &$sSaveContent, $sConstName, $aDefinition ) );
+				Hooks::run( 'NamespaceManager::writeNamespaceConfiguration', array( &$sSaveContent, $sConstName, $iNS, $aDefinition ) );
 				if ( !$bIsSystemNs && isset( $aDefinition['alias'] ) && $aDefinition['alias'] ) {
 					$sSaveContent .= "\$GLOBALS['wgNamespaceAliases']['{$aDefinition['alias']}'] = {$sConstName};\n";
 				}
