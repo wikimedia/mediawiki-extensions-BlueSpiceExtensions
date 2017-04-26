@@ -20,5 +20,6 @@
 	"bs-contextmenu-media-view-page": "View file description page and file history",
 	"bs-contextmenu-user-mail": "Send mail",
 	"bs-contextmenu-user-talk": "Leave message on talk page",
-	"bs-contextmenu-file-download": "Download file"
+	"bs-contextmenu-file-download": "Download file",
+	"apihelp-bs-contextmenu-tasks-description": "Provides the context menu items in context"
 }
