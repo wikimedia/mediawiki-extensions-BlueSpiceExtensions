@@ -6,11 +6,13 @@
 			"Esketti",
 			"Siebrand",
 			"McDutchie",
-			"Jeleniccz"
+			"Jeleniccz",
+			"Mainframe98"
 		]
 	},
 	"bs-blog-desc": "Geeft een lijst van pagina's weer in blogstijl",
 	"prefs-blog": "Blog",
+	"blog": "Blog",
 	"bs-blog-no-entries": "Er zijn geen blogberichten.",
 	"bs-blog-comments": "Reacties",
 	"bs-blog-read-more": "meer lezen",
