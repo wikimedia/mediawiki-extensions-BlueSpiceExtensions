@@ -275,10 +275,12 @@ BsExtendedSearchAjaxManager.prototype = {
 			url: paramUri,
 			dataType: 'json',
 			success: function( response, textStatus ){
-				$.each( $( '#bs-extendedsearch-form-specialpage' ).parent().siblings().after( response.contents ), function( index, element ) {
-					element.remove();
-				});
+				var $formContainer = $( '#bs-extendedsearch-form-specialpage' ).parent();
+				$formContainer.siblings().remove();
+				$formContainer.after( response.contents );
+
 				$( '#bs-extendedsearch-spinner' ).hide();
+
 				ExtendedSearchAjaxManager.oAjaxQuery = null;
 				ExtendedSearchAjaxManager.renewUriForAjaxRequest();
 				ExtendedSearchAjaxManager.modifyLoadedElements();
