@@ -26,5 +26,6 @@
 	"bs-formattinghelp-help-hr": "水平线",
 	"bs-formattinghelp-help-template": "模板",
 	"bs-formattinghelp-help-templatename": "模板名称",
-	"apihelp-bs-formattinghelp-description": "提供扩展FormattingHelp的任务。"
+	"apihelp-bs-formattinghelp-description": "提供扩展FormattingHelp的任务。",
+	"apihelp-bs-formattinghelp-param-token": "CSRF保护令牌。在此不需要"
 }

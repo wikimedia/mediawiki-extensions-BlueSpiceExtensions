@@ -20,5 +20,6 @@
 	"bs-contextmenu-media-view-page": "Afficher la page de description du fichier et son historique",
 	"bs-contextmenu-user-mail": "Envoyer un courriel",
 	"bs-contextmenu-user-talk": "Laisser un message sur la page de discussion",
-	"bs-contextmenu-file-download": "Télécharger un fichier"
+	"bs-contextmenu-file-download": "Télécharger un fichier",
+	"apihelp-bs-contextmenu-tasks-description": "Fournit les éléments du menu contextuel dans le contexte"
 }
