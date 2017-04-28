@@ -414,10 +414,6 @@ class Blog extends BsExtensionMW {
 		$argsBShowPermalink          = BsCore::sanitizeArrayEntry( $args, 'showpermalink',   $bShowPermalink,   BsPARAMTYPE::BOOL );
 		$argsModeNamespace           = BsCore::sanitizeArrayEntry( $args, 'mode',   null,   BsPARAMTYPE::STRING );
 
-		if ( $argsModeNamespace === 'ns' && is_object( $oTitle ) ) {
-			$argsINamespace = $oTitle->getNamespace();
-		}
-
 		// validate tag attributes
 		$validateIShowLimit = BsValidator::isValid( 'ArgCount', $argsIShowLimit, array('fullResponse' => true) );
 		if ( $validateIShowLimit->getErrorCode() ) {
@@ -459,7 +455,7 @@ class Blog extends BsExtensionMW {
 		}
 
 		// get array of article ids from Blog/subpages
-		$oBlogTitle = Title::makeTitleSafe( $oTitle->getNamespace(), 'Blog' );
+		$oBlogTitle = Title::makeTitleSafe( $argsINamespace, 'Blog' );
 
 		$aSubpages = $oBlogTitle->getSubpages();
 		$iLimit = 0; // for later use
@@ -550,6 +546,9 @@ class Blog extends BsExtensionMW {
 			$oBlogView->setOption( 'namespace', BsNamespaceHelper::getNamespaceName( $argsINamespace ) );
 			if ( $argsSCategory ) {
 				$oBlogView->setOption( 'blogcat', $argsSCategory );
+			}
+			if ( $argsModeNamespace === 'ns' ) {
+				$oBlogView->setOption( 'parentpage', 'Blog/' );
 			}
 			// actually create blog output
 			$sOut = $oBlogView->execute();
