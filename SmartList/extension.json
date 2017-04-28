@@ -30,5 +30,8 @@
 		"SmartList": "SmartList.class.php",
 		"BSApiTasksSmartList": "includes/api/BSApiTasksSmartList.php"
 	},
+	"Hooks":{
+		"UnitTestsList": "SmartList::onUnitTestsList"
+	},
 	"manifest_version": 1
 }
