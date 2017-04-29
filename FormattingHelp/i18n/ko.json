@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"아라",
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ykhwong"
 		]
 	},
 	"bs-formattinghelp-help-bold": "굵게",
@@ -10,5 +11,6 @@
 	"bs-formattinghelp-help-extlink": "바깥 고리",
 	"bs-formattinghelp-help-hr": "수평선",
 	"bs-formattinghelp-help-template": "틀",
-	"bs-formattinghelp-help-templatename": "틀 이름"
+	"bs-formattinghelp-help-templatename": "틀 이름",
+	"apihelp-bs-formattinghelp-param-token": "CSRF 보호 토큰. 여기에는 필수가 아님"
 }

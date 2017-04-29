@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cristofer Alves"
+			"Cristofer Alves",
+			"Felipe L. Ewald"
 		]
 	},
+	"bs-flexiskin-defaultname": "Padrão",
+	"bs-flexiskin-labelname": "Nome",
+	"bs-flexiskin-labeldesc": "Descrição",
 	"action-flexiskin-viewspecialpage": "ver pagina especial \"Flexiskin\"",
 	"flexiskin": "Preferências de tema"
 }
