@@ -93,7 +93,7 @@ class PageAssignmentsHooks {
 	 * @param string $reason
 	 * @return bool Always true to keep other hooks running.
 	 */
-	public static function onTitleMoveComplete( &$old, &$nt, &$user, $pageid, $redirid, $reason ) {
+	public static function onTitleMoveComplete( &$old, &$nt, $user, $pageid, $redirid, $reason ) {
 		$dbr = wfGetDB( DB_MASTER );
 		$dbr->update(
 			'bs_pageassignments',
