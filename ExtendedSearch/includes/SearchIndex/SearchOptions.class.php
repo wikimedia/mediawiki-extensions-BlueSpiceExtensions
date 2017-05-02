@@ -184,14 +184,10 @@ class SearchOptions {
 	public function getSolrAutocompleteQuery( $sSearchString, $sSolrSearchString ) {
 		$aSearchOptions = array();
 		$aSearchOptions['fl'] = 'type,title,namespace';
-		$aSearchOptions['fq'] = $this->makeAutoCompleteFilterQuery();
+		$aSearchOptionsFq = array();
+		$vNamespace = $this->makeAutoCompleteFilterQuery( $sSearchString, $sSolrSearchString, $aSearchOptionsFq );
+		$aSearchOptions['fq'] = $aSearchOptionsFq;
 		$aSearchOptions['sort'] = $this->aSearchOptions['sort'];
-
-		$vNamespace = $this->checkSearchstringForNamespace(
-			$sSearchString,
-			$sSolrSearchString,
-			$aSearchOptions['fq']
-		);
 
 		$aOptions = array();
 		$sWildcardedSearchString = SearchService::wildcardSearchstring( $sSolrSearchString );
@@ -619,19 +615,23 @@ class SearchOptions {
 		$this->aFacetFields[] = $sFacetField;
 	}
 
-	protected function makeAutoCompleteFilterQuery() {
-		$oUser = RequestContext::getMain()->getUser();
-		$aOptions = $oUser->getOptions();
-		$aNamespaces = [ 1000 ]; //For some strange reason 1000 is NS_SPECIAL within the SOLR index
-		foreach ( $aOptions as $sOpt => $sValue ) {
-			if ( strpos( $sOpt, 'searchNs' ) !== false && $sValue == true ) {
-				$aNamespaces[] = '' . str_replace( 'searchNs', '', $sOpt );
+	protected function makeAutoCompleteFilterQuery( $sSearchString, &$sSolrSearchString, &$aSearchOptionsFq ) {
+		$vNamespace = $this->checkSearchstringForNamespace( $sSearchString, $sSolrSearchString, $aSearchOptionsFq );
+
+		if( empty( $aSearchOptionsFq ) ) {
+			$oUser = RequestContext::getMain()->getUser();
+			$aOptions = $oUser->getOptions();
+			$aNamespaces = [ 1000 ]; //For some strange reason 1000 is NS_SPECIAL within the SOLR index
+			foreach ( $aOptions as $sOpt => $sValue ) {
+				if ( strpos( $sOpt, 'searchNs' ) !== false && $sValue == true ) {
+					$aNamespaces[] = '' . str_replace( 'searchNs', '', $sOpt );
+				}
 			}
+			$aSearchOptionsFq[] = 'namespace:("'.implode( '" OR "', $aNamespaces ).'")';
 		}
 
-		return array(
-			'wiki:(' . $this->getCustomerId() . ')',
-			'namespace:("'.implode( '" OR "', $aNamespaces ).'")'
-		);
+		$aSearchOptionsFq[] = 'wiki:(' . $this->getCustomerId() . ')';
+
+		return $vNamespace;
 	}
 }
