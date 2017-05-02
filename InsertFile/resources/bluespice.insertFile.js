@@ -183,6 +183,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			Ext.require('BS.InsertFile.ImageDialog', function(){
 				BS.InsertFile.ImageDialog.clearListeners();
 				BS.InsertFile.ImageDialog.on( 'ok', function( sender, data ) {
+					editor.focus();
 					editor.selection.moveToBookmark(bookmark);
 					var imgAttrs = this.plugins.bswikicode.makeDefaultImageAttributesObject();
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
@@ -287,6 +288,7 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 			Ext.require('BS.InsertFile.FileDialog', function(){
 				BS.InsertFile.FileDialog.clearListeners();
 				BS.InsertFile.FileDialog.on( 'ok', function(sender, data) {
+					editor.focus();
 					editor.selection.moveToBookmark(bookmark);
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 					var nsText = formattedNamespaces[bs.ns.NS_MEDIA];
