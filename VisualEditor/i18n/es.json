@@ -30,12 +30,12 @@
 	"bs-visualeditor-bsactions-linebreak": "Salto de línea",
 	"bs-visualeditor-bsactions-signature": "Firma",
 	"bs-visualeditor-bsactions-save": "Guardar",
-	"bs-visualeditor-bsactions-headings": "Encabezados",
+	"bs-visualeditor-bsactions-headings": "Títulos",
 	"bs-visualeditor-bsactions-paragraph": "Párrafo",
-	"bs-visualeditor-bsactions-heading2": "Encabezado 2",
-	"bs-visualeditor-bsactions-heading3": "Encabezado 3",
-	"bs-visualeditor-bsactions-heading4": "Encabezado 4",
-	"bs-visualeditor-bsactions-heading5": "Encabezado 5",
-	"bs-visualeditor-bsactions-heading6": "Encabezado 6",
+	"bs-visualeditor-bsactions-heading2": "Título 2",
+	"bs-visualeditor-bsactions-heading3": "Título 3",
+	"bs-visualeditor-bsactions-heading4": "Título 4",
+	"bs-visualeditor-bsactions-heading5": "Título 5",
+	"bs-visualeditor-bsactions-heading6": "Título 6",
 	"bs-visualeditor-switch-noeditor-desc": "Desactiva el editor visual en esta página."
 }
