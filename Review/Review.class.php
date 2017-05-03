@@ -1101,6 +1101,8 @@ class Review extends BsExtensionMW {
 
 		$step = $oRev->currentStep( $oUser->getId() );
 		if ( !is_object( $step ) ) {
+			$aBodyViews[ 'statebarbodyreview' ] = $oReviewView;
+
 			return true;
 		}
 
