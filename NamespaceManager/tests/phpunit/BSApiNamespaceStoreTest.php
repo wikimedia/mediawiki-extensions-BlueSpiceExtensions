@@ -41,6 +41,7 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 	protected function setUp() {
+		global $wgContLang;
 		parent::setUp();
 		$this->setMwGlobals( [
 			'wgNamespacesWithSubpages' => [
@@ -76,6 +77,8 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 			];
 			return true;
 		});
+		// Clear any previous cached namespaces. Important if caching is enabled
+		$wgContLang->resetNamespaces();
 	}
 
 	protected function createStoreFixtureData() {
