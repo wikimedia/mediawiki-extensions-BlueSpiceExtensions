@@ -9,7 +9,7 @@
  */
 class BSApiChangeableGroupStoreTest extends BSApiExtJSStoreTestBase {
 
-	protected $iFixtureTotal = 6;
+	protected $iFixtureTotal = 4;
 
 	protected function getStoreSchema() {
 		return [
@@ -26,19 +26,32 @@ class BSApiChangeableGroupStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 	protected function createStoreFixtureData() {
-		global $wgAddGroups, $wgRemoveGroups, $wgGroupsAddToSelf, $wgGroupsRemoveFromSelf;
-		$wgAddGroups['sysop'] = true;
-		$wgRemoveGroups['sysop'] = true;
-		$wgGroupsAddToSelf['sysop'] = true;
-		$wgGroupsRemoveFromSelf['sysop'] = true;
+		return;
+	}
 
-		return 6;
+	protected function setUp() {
+		// Needs to be before setup since this gets cached
+		$this->mergeMwGlobalArrayValue(
+			'wgGroupPermissions',
+			[ 'groupchanger' => [ 'userrights' => false ] ]
+		);
+		parent::setUp();
+		$aChangeableGroups = [ 'autoreview', 'bot', 'bureaucrat', 'sysop' ];
+		$this->setMwGlobals( [
+			'wgAddGroups' => [ 'groupchanger' => $aChangeableGroups ],
+			'wgRemoveGroups' => [ 'groupchanger' => $aChangeableGroups ],
+			'wgGroupsAddToSelf' => [ 'groupchanger' => $aChangeableGroups ],
+			'wgGroupsRemoveFromSelf' => [ 'groupchanger' => $aChangeableGroups ]
+		] );
+		$this->doLogin( "uploader" );
+		global $wgUser;
+		$wgUser->addGroup( "groupchanger" );
 	}
 
 	public function provideSingleFilterData() {
 		return [
 			'Filter by group_name' => [ 'string', 'ct', 'group_name', 'auto', 1 ],
-			'Filter by additional_group' => ['boolean', 'eq', 'additional_group', false, 6]
+			'Filter by additional_group' => ['boolean', 'eq', 'additional_group', false, 4]
 		];
 	}
 
