@@ -101,7 +101,8 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": "Flexiskin::onBeforePageDisplay",
-		"ResourceLoaderRegisterModules": "Flexiskin::onResourceLoaderRegisterModules"
+		"ResourceLoaderRegisterModules": "Flexiskin::onResourceLoaderRegisterModules",
+		"UnitTestsList": "Flexiskin::onUnitTestsList"
 	},
 	"ResourceLoaderLESSVars": {
 		"bs-extjs-flexiskin-btn-upload-text": "@bs-extjs-theme-secondary-text-color"
