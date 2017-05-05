@@ -4,6 +4,7 @@
  * @group medium
  * @group API
  * @group BlueSpice
+ * @group BlueSpiceFlexiskin
  */
 class BSApiFlexiskinUploadStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 1;
