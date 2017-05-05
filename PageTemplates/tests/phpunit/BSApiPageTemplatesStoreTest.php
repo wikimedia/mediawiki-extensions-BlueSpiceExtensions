@@ -37,8 +37,12 @@ class BSApiPageTemplatesStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 	protected function createStoreFixtureData() {
+		return;
+	}
+
+	public function setUp() {
 		new BSPageTemplateFixtures();
-		return 8;
+		parent::setUp();
 	}
 
 	protected function getModuleName () {
