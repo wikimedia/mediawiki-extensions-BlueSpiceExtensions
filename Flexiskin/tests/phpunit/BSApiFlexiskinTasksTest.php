@@ -4,6 +4,7 @@
  * @group medium
  * @group API
  * @group BlueSpice
+ * @group BlueSpiceFlexiskin
  */
 class BSApiFlexiskinTasksTest extends BSApiTasksTestBase {
 	protected function getModuleName () {
