@@ -1,5 +1,6 @@
 Ext.define( 'BS.Review.OverviewPanel', {
 	extend: 'Ext.grid.Panel',
+	requires: [ 'Ext.PagingToolbar' ],
 	features: [],
 	viewConfig: {
 		forceFit: true
@@ -83,7 +84,14 @@ Ext.define( 'BS.Review.OverviewPanel', {
 			}]
 		});
 
+		this.pagingToolbar = Ext.create('Ext.PagingToolbar', {
+			store: this.store,
+			displayInfo: true
+		});
+
 		this.features = [this.filters];
+
+		this.bbar = this.pagingToolbar;
 
 		this.callParent(arguments);
 	},
