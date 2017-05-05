@@ -10,6 +10,7 @@
  */
 class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 18;
+	protected $hookStore;
 
 	protected function getStoreSchema () {
 		return [
@@ -51,9 +52,7 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 				99990 => true
 			]
 		] );
-		Hooks::clear( 'LanguageGetNamespaces' );
-		Hooks::register( 'LanguageGetNamespaces', function( &$namespaces ){
-			$namespaces = [
+		$namespaces = [
 				-2 => 'Media',
 				-1 => 'Special',
 				0 => '',
@@ -75,10 +74,15 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 				99990 => 'Test',
 				99991 => 'Test_talk'
 			];
-			return true;
-		});
-		// Clear any previous cached namespaces. Important if caching is enabled
+		$wgContLang->setNamespaces( $namespaces );
+	}
+
+	protected function tearDown() {
+		global $wgContLang;
+		// reset custom namespace settings
 		$wgContLang->resetNamespaces();
+		$wgContLang->getNamespaces();
+		parent::tearDown();
 	}
 
 	protected function createStoreFixtureData() {
@@ -118,4 +122,3 @@ class BSApiNamespaceStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 }
-
