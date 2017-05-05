@@ -30,12 +30,11 @@ class BSApiChangeableGroupStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 	protected function setUp() {
-		// Needs to be before setup since this gets cached
+		parent::setUp();
 		$this->mergeMwGlobalArrayValue(
 			'wgGroupPermissions',
 			[ 'groupchanger' => [ 'userrights' => false ] ]
 		);
-		parent::setUp();
 		$aChangeableGroups = [ 'autoreview', 'bot', 'bureaucrat', 'sysop' ];
 		$this->setMwGlobals( [
 			'wgAddGroups' => [ 'groupchanger' => $aChangeableGroups ],
