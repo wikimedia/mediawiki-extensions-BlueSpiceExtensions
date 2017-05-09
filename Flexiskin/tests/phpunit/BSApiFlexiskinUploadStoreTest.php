@@ -48,13 +48,18 @@ class BSApiFlexiskinUploadStoreTest extends BSApiExtJSStoreTestBase {
 		$sConfigFile = Flexiskin::generateConfigFile( (object) $aFS );
 		BsFileSystemHelper::saveToDataDirectory( 'conf.json', $sConfigFile, "flexiskin" . DS . $this->getSkinId() );
 		BsFileSystemHelper::ensureDataDirectory( "flexiskin" . DS . $this->getSkinId() . DS . "images" );
-		$sSource = __DIR__ . DS . 'data' . DS . 'test.png';
-		$sDest = BS_DATA_DIR . DS . 'flexiskin' . DS . $this->getSkinId() . DS .'images' . DS  . 'test.png';
+		$sSource = __DIR__ . DS . 'data' . DS . 'test.PNG';
+		$sDest = BS_DATA_DIR . DS . 'flexiskin' . DS . $this->getSkinId() . DS .'images' . DS  . 'test.PNG';
 		copy( $sSource, $sDest );
 
 		$this->sQuery = $this->getSkinId();
 
 		parent::setUp();
+
+		$this->mergeMwGlobalArrayValue(
+			'wgGroupPermissions',
+			[ 'sysop' => [ 'read' => true ] ]
+		);
 	}
 
 	protected function tearDown() {
