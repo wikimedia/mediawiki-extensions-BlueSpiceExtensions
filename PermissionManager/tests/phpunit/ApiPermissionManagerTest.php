@@ -16,20 +16,11 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 
 	protected $sGroup = "sysop";
 
-	function getTokens() {
-		return $this->getTokenList( self::$users[ 'sysop' ] );
-	}
-
 	protected function getModuleName() {
 		return 'bs-permissionmanager-tasks';
 	}
 
 	public function testSavePermissions() {
-		global $wgGroupPermissions;
-		$wgGroupPermissions['*']['read'] = true;
-		$wgGroupPermissions['*']['writeapi'] = true;
-
-
 		$testData = $this->executeTask( 'permissions',[
 		  "group" => $this->sGroup
 		] );
@@ -46,8 +37,6 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 		$data = $this->executeTask( 'savePermissions', $aPayload );
 
 		$this->assertEquals( true, $data->success );
-
-		return $data;
 	}
 
 	/**
@@ -57,16 +46,12 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 	 * @return api return data
 	 */
 	public function testSetTemplateData() {
-		global $wgGroupPermissions;
-		$wgGroupPermissions['*']['read'] = true;
-		$wgGroupPermissions['*']['writeapi'] = true;
-
-		$arrRuleSet = ["aboutbluespice-viewspecialpage","apihighlimits","applychangetags"];
+		$arrRuleSet = [ "aboutbluespice-viewspecialpage", "apihighlimits", "applychangetags" ];
 		$sTemplateName = "TestTemplate1";
 		$sTemplateDescription = "Test Description";
 
 		//create new template
-		$data = $this->executeTask( 'setTemplateData',[
+		$data = $this->executeTask( 'setTemplateData', [
 			"id" => 0,
 			"text" => $sTemplateName,
 			"leaf" => true,
@@ -79,8 +64,8 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 		$iId = $data->payload["id"];
 
 		//update template
-		$arrRuleSetUpdate = ["aboutbluespice-viewspecialpage","apihighlimits","applychangetags", "createpage"];
-		$dataUpdate = $this->executeTask( 'setTemplateData',[
+		$arrRuleSetUpdate = [ "aboutbluespice-viewspecialpage", "apihighlimits", "applychangetags", "createpage" ];
+		$dataUpdate = $this->executeTask( 'setTemplateData', [
 			"id" => $iId,
 			"text" => $sTemplateName,
 			"leaf" => true,
@@ -89,16 +74,10 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 		] );
 
 		$this->assertEquals( true, $dataUpdate->success );
-
-		return $data;
 	}
 
 	public function testDeleteTemplate() {
-		global $wgGroupPermissions;
-		$wgGroupPermissions['*']['read'] = true;
-		$wgGroupPermissions['*']['writeapi'] = true;
-
-		$arrRuleSet = ["aboutbluespice-viewspecialpage","apihighlimits","applychangetags"];
+		$arrRuleSet = [ "aboutbluespice-viewspecialpage", "apihighlimits", "applychangetags" ];
 		$sTemplateName = "TestTemplate1";
 		$sTemplateDescription = "Test Description";
 
@@ -118,15 +97,9 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 		] );
 
 		$this->assertEquals( true, $data->success );
-
-		return $data;
 	}
 
 	public function testPermissions() {
-		global $wgGroupPermissions;
-		$wgGroupPermissions['*']['read'] = true;
-		$wgGroupPermissions['*']['writeapi'] = true;
-
 		$data = $this->executeTask( 'permissions',[
 		  "group" => $this->sGroup
 		] );
@@ -157,8 +130,6 @@ class ApiPermissionManagerTest extends BSApiTasksTestBase {
 		$this->assertArrayHasKey($this->sGroup, $data->payload["data"]["bsPermissionManagerGroupPermissions"]);
 
 		$this->assertArrayHasKey("bsPermissionManagerPermissionLockdown", $data->payload["data"]);
-
-		return $data;
 	}
 
 }
