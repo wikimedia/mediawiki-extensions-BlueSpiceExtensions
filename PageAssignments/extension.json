@@ -60,6 +60,7 @@
 		"PageAssignmentsWikiExplorerHooks": "includes/PageAssignmentsWikiExplorerHooks.php",
 		"PageAssignmentsDashboardHooks": "includes/PageAssignmentsDashboardHooks.php",
 		"BSAssignableBase": "includes/BSAssignableBase.php",
+		"BSAssignableEveryone": "includes/BSAssignableEveryone.php",
 		"BSAssignableUser": "includes/BSAssignableUser.php",
 		"BSAssignableGroup": "includes/BSAssignableGroup.php",
 		"SpecialPageAssignments": "includes/specials/SpecialPageAssignments.php",
@@ -192,6 +193,9 @@
 		"BSUserManagerAfterDeleteUser": "PageAssignmentsHooks::onBSUserManagerAfterDeleteUser",
 		"BSGroupManagerGroupNameChanged": "PageAssignmentsHooks::onBSGroupManagerGroupNameChanged",
 		"BSGroupManagerGroupDeleted": "PageAssignmentsHooks::onBSGroupManagerGroupDeleted"
+	},
+	"ResourceLoaderLESSVars" : {
+		"bs-pageassignments-icon-specialeveryone-color": "@bs-color-tertiary"
 	},
 	"manifest_version": 1
 }

@@ -69,5 +69,6 @@
 	"apihelp-bs-pageassignable-store-description": "{{doc-apihelp-description|bs-pageassignable-store}}",
 	"apihelp-bs-pageassignment-store-description": "{{doc-apihelp-description|bs-pageassignment-store}}",
 	"apihelp-bs-mypageassignment-store-description": "{{doc-apihelp-description|bs-mypageassignment-store}}",
-	"apihelp-bs-pageassignment-tasks-description": "{{doc-apihelp-description|bs-pageassignment-tasks}}"
+	"apihelp-bs-pageassignment-tasks-description": "{{doc-apihelp-description|bs-pageassignment-tasks}}",
+	"bs-pageassignments-assignee-special-everyone-label": "Label for combobox list entry that assignes all users to a certain page"
 }

@@ -41,6 +41,64 @@ abstract class BSAssignableBase implements JsonSerializable {
 		return $aResult;
 	}
 
+	/**
+	 *
+	 * @global array $bsgPageAssigneeTypes
+	 * @param User $oUser
+	 * @return BSAssignableBase[]
+	 */
+	public final static function getForUser( $oUser ) {
+		global $bsgPageAssigneeTypes;
+		$aResult = array();
+
+		foreach( $bsgPageAssigneeTypes as $sTypeKey => $sClassName ) {
+			$aSubResult = call_user_func_array( "$sClassName::doGetForUser", array( $oUser ) );
+			foreach( $aSubResult as $iPageId => $aAssignables ) {
+				foreach( $aAssignables as $oAsignee ) {
+					self::addOrAppend( $aResult, $iPageId, $oAsignee );
+				}
+			}
+		}
+
+		return $aResult;
+	}
+
+	/**
+	 *
+	 * @param User $oUser
+	 * @return array in form of [ <page_id> => [ <AssignableBase>, <AssignableBase>, ... ] ]
+	 */
+	protected static function doGetForUser( $oUser ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			'bs_pageassignments',
+			'*',
+			static::getQueryConds( $oUser )
+		);
+
+		$aResult = [];
+		foreach( $res as $row ) {
+			$oAssignee = self::factory( $row->pa_assignee_type, $row->pa_assignee_key );
+			static::addOrAppend( $aResult, $row->pa_page_id, $oAssignee );
+		}
+		return $aResult;
+	}
+
+	/**
+	 * Just a little helper function to stay DRY
+	 * @param array $aResult
+	 * @param mixed $mKey
+	 * @param mixed $mValue
+	 */
+	protected static function addOrAppend( &$aResult, $mKey, $mValue ) {
+		if( isset( $aResult[$mKey] ) ) {
+			$aResult[$mKey][] = $mValue;
+		}
+		else {
+			$aResult[$mKey] = [ $mValue ];
+		}
+	}
+
 	public function __toString() {
 		return $this->sText;
 	}
@@ -75,4 +133,6 @@ abstract class BSAssignableBase implements JsonSerializable {
 			throw new MWException( "Assignee type '$sType' not registered" );
 		}
 	}
+
+	abstract protected static function getQueryConds( $oUser );
 }
