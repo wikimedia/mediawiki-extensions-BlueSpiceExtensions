@@ -9,7 +9,7 @@
  */
 class BSApiInsertMagicDataStoreTest extends BSApiExtJSStoreTestBase {
 
-	protected $iFixtureTotal = 72;
+	protected $iFixtureTotal = 86;
 
 	protected function getStoreSchema() {
 		return [
@@ -32,7 +32,7 @@ class BSApiInsertMagicDataStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 	protected function createStoreFixtureData() {
-		return 72;
+		return;
 	}
 
 	protected function getModuleName() {
