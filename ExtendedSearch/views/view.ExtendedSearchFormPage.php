@@ -56,10 +56,6 @@ class ViewExtendedSearchFormPage extends ViewBaseElement {
 			)
 		);
 
-		if ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) {
-			$sInputFields[] = Xml::input( 'search_files', false, 1, array( 'type' => 'hidden' ) );
-		}
-
 		$sValue = ( isset( $this->oSearchRequest->sInput ) )
 			? $this->oSearchRequest->sInput
 			: wfMessage( 'searchsuggest-search' )->plain();

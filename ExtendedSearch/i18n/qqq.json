@@ -112,5 +112,6 @@
 	"apihelp-feedextendedsearch-param-category": "{{doc-apihelp-param|feedextendedsearch|category}}",
 	"apihelp-feedextendedsearch-param-files": "{{doc-apihelp-param|feedextendedsearch|files}}",
 	"apihelp-feedextendedsearch-example": "{{doc-apihelp-example|feedextendedsearch}}",
-	"bs-extendedsearch-specialpage-form-export": "Anchor text used to go to export page"
+	"bs-extendedsearch-specialpage-form-export": "Anchor text used to go to export page",
+	"bs-extendedsearch-namespace-files": "Text for files pseudo-namespace"
 }

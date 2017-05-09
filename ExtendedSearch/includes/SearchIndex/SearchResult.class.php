@@ -285,12 +285,7 @@ class BsSearchResult {
 				if ( isset( $attributes['checked'] ) ) $aDataSet['checked'] = true;
 
 				if ( $sFacet === 'namespace' ) {
-					if ( $key == '999' ) {
-						$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES | SearchUriBuilder::FILES );
-						$uri .= '&search_files=' . ( isset( $attributes['checked'] ) ) ? '0' : '1';
-					} else {
-						$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES );
-					}
+					$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES );
 				} elseif ( $sFacet === 'cat' ) {
 					$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::CATS );
 				} elseif ( $sFacet === 'editor' ) {

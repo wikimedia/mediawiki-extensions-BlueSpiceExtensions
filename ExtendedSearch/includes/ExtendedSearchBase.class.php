@@ -221,6 +221,15 @@ class ExtendedSearchBase {
 		$aMwNamespaces = $wgContLang->getNamespaces();
 		$aSelectedNamespaces = $this->oSearchOptions->getOption( 'namespaces' );
 
+		$vNamespaceBox->addEntry(
+			999,
+			array(
+				'value' => 999,
+				'text' => wfMessage( 'bs-extendedsearch-namespace-files' )->text(),
+				'selected' => $this->oSearchOptions->getOption ( 'files' )
+			)
+		);
+
 		if ( BsConfig::get( 'MW::SortAlph' ) ) asort( $aMwNamespaces );
 
 		foreach ( $aMwNamespaces as $namespace ) {
@@ -236,19 +245,6 @@ class ExtendedSearchBase {
 				)
 			);
 		}
-
-		$checkboxSearchFilesAttributes = array(
-			'type' => 'checkbox',
-			'id' => 'bs-extendedsearch-checkbox-searchfiles'
-		);
-
-		if ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) || $this->oSearchOptions->getOption( 'files' ) ) {
-			$checkboxSearchFilesAttributes['checked'] = 'checked';
-		}
-		$checkboxSearchFiles = Xml::input( 'search_files', false, 1, $checkboxSearchFilesAttributes );
-		$checkboxSearchFiles .= wfMessage( 'bs-extendedsearch-files' )->plain();
-
-		$vNamespaceBox->dirtyAppend( '<br />'.$checkboxSearchFiles );
 	}
 
 	/**
@@ -442,8 +438,6 @@ class ExtendedSearchBase {
 			);
 		}
 
-		$iSearchfiles = ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) ? '1' : '0' ;
-
 		$sShortAndEscaped = self::sanitzeSearchString(
 			BsStringHelper::shorten(
 				$sSearchString,
@@ -466,8 +460,7 @@ class ExtendedSearchBase {
 
 		$aLinkParams = array(
 			'search_scope' => 'text',
-			'q' => $sEcpSearchString,
-			'search_files' => $iSearchfiles
+			'q' => $sEcpSearchString
 		);
 
 		$oItem = new stdClass();

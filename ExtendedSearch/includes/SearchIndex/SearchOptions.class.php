@@ -381,7 +381,7 @@ class SearchOptions {
 		$aNamespaces = $aNamespaces + $wgExtraNamespaces;
 
 		if ( $vNamespace === false ) {
-			$this->aOptions['files'] = ( $this->oSearchRequest->bSearchFiles === true )
+			$this->aOptions['files'] = ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) === true )
 				? true
 				: false;
 
@@ -446,14 +446,6 @@ class SearchOptions {
 			$aFqNamespaces = array();
 			foreach ( $this->aOptions['namespaces'] as $sNamespace ) {
 				$aFqNamespaces[] = $sNamespace;
-				if ( $sNamespace == '999' ) {
-					$filesAlreadyAddedInLoopBefore = true;
-				}
-			}
-
-			if ( !isset( $filesAlreadyAddedInLoopBefore ) && $this->aOptions['files'] === true
-				&& $oUser->isAllowed( 'searchfiles' ) ) {
-				$aFqNamespaces[] = '999';
 			}
 
 			$this->appendFilterQueryAndFacetFields( $aFqNamespaces, 'namespace', 'na' );

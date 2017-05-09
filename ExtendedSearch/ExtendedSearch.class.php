@@ -373,9 +373,6 @@ class ExtendedSearch extends BsExtensionMW {
 
 		$aHiddenFields = array();
 		$aHiddenFields['sft'] = '1';
-		if ( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) {
-			$aHiddenFields['search_files'] = '1';
-		}
 
 		$tpl->set( 'bs_search_hidden_fields', $aHiddenFields );
 		return true;

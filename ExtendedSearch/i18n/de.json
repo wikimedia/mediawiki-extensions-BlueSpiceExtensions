@@ -116,5 +116,6 @@
 	"apihelp-feedextendedsearch-param-namespace": "Zu durchsuchende Namensräume",
 	"apihelp-feedextendedsearch-param-category": "Zu durchsuchende Kategorien",
 	"apihelp-feedextendedsearch-param-files": "Ob in Dateien gesucht werden soll",
-	"apihelp-feedextendedsearch-example": "Sucht nach „Test“ im Haupt- und Benutzernamensraum."
+	"apihelp-feedextendedsearch-example": "Sucht nach „Test“ im Haupt- und Benutzernamensraum.",
+	"bs-extendedsearch-namespace-files": "(Dateien)"
 }
