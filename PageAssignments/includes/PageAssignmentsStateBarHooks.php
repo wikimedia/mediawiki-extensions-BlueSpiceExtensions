@@ -15,6 +15,11 @@ class PageAssignmentsStateBarHooks {
 
 		global $wgScriptPath;
 
+		$aAssignments = PageAssignments::getAssignments( $oTitle );
+		if( count( $aAssignments ) === 0 ) {
+			return true;
+		}
+
 		$oTopView = new ViewStateBarTopElement();
 		$oTopView->setKey( 'PageAssignments-Top' );
 		$oTopView->setIconSrc( $wgScriptPath . '/extensions/BlueSpiceExtensions/PageAssignments/resources/images/bs-statebar-assignment.png' );
