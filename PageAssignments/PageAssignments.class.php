@@ -26,6 +26,7 @@ class PageAssignments extends BsExtensionMW {
 	 */
 	public static function onRegistration() {
 		$GLOBALS['bsgPageAssigneeTypes'] = array(
+			//'specialeveryone' => 'BSAssignableEveryone', //Can be activated in LocalSettings.php if needed
 			'group' => 'BSAssignableGroup',
 			'user' => 'BSAssignableUser'
 		);
