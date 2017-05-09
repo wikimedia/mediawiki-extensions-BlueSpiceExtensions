@@ -474,6 +474,15 @@ class PermissionManager extends BsExtensionMW {
 	public static function getPermissionArray( $group = "", $timestamp = "" ) {
 		global $wgImplicitGroups, $wgGroupPermissions, $wgNamespacePermissionLockdown;
 
+		// Temporarily stash the original global settings, as PermissionManager
+		// only deals with the subset of permissions it has control over (aka the
+		// permissions which are stored in pm-settings.php. As this is a nested
+		// array, we need a deep clone. An easy way to do this is to serialize and
+		// then deserialize.
+		$tmpImplicitGroups = unserialize( serialize( $wgImplicitGroups ) );
+		$tmpGroupPermissions = unserialize( serialize( $wgGroupPermissions ) );
+		$tmpNamespacePermissionLockdown = unserialize( serialize( $wgNamespacePermissionLockdown ) );
+
 		//reset old data
 		$wgImplicitGroups = array();
 		$wgGroupPermissions = array();
@@ -564,6 +573,12 @@ class PermissionManager extends BsExtensionMW {
 			}
 			$aJsVars[ 'bsPermissionManagerGroupPermissions' ][ $sGroup ] = (object)array();
 		}
+
+		// Restore original global state.
+		$wgImplicitGroups = $tmpImplicitGroups;
+		$wgGroupPermissions = $tmpGroupPermissions;
+		$wgNamespacePermissionLockdown = $tmpNamespacePermissionLockdown;
+		BsGroupHelper::getAvailableGroups( ['reload' => true] );
 
 		return $aJsVars;
 	}
