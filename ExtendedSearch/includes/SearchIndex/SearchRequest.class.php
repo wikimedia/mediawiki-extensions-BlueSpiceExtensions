@@ -235,7 +235,7 @@ class SearchRequest {
 			$this->sScope = BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' );
 		}
 
-		wfRunHooks( 'BSExtendedSearchRequestProcessInputs', array( &$this ) );
+		wfRunHooks( 'BSExtendedSearchRequestProcessInputs', array( $this ) );
 	}
 
 }

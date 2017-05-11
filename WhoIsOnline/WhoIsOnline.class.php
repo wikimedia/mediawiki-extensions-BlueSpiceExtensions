@@ -229,12 +229,12 @@ class WhoIsOnline extends BsExtensionMW {
 			RequestContext::getMain()->getRequest()
 		);
 
-		$oParser->setFunctionHook( 'userscount', array( &$this, 'onUsersCount' ) );
-		$oParser->setHook( 'bs:whoisonline:count', array( &$this, 'onUsersCountTag' ) );
-		$oParser->setHook( 'bs:whoisonlinecount', array( &$this, 'onUsersCountTag' ) );
-		$oParser->setFunctionHook( 'userslink', array( &$this, 'onUsersLink' ) );
-		$oParser->setHook( 'bs:whoisonline:popup', array( &$this, 'onUsersLinkTag' ) );
-		$oParser->setHook( 'bs:whoisonlinepopup', array( &$this, 'onUsersLinkTag' ) );
+		$oParser->setFunctionHook( 'userscount', array( $this, 'onUsersCount' ) );
+		$oParser->setHook( 'bs:whoisonline:count', array( $this, 'onUsersCountTag' ) );
+		$oParser->setHook( 'bs:whoisonlinecount', array( $this, 'onUsersCountTag' ) );
+		$oParser->setFunctionHook( 'userslink', array( $this, 'onUsersLink' ) );
+		$oParser->setHook( 'bs:whoisonline:popup', array( $this, 'onUsersLinkTag' ) );
+		$oParser->setHook( 'bs:whoisonlinepopup', array( $this, 'onUsersLinkTag' ) );
 
 		return true;
 	}

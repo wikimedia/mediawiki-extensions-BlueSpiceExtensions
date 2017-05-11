@@ -397,15 +397,15 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onParserFirstCallInit( &$parser ) {
 		// for legacy reasons
-		$parser->setHook( 'infobox', array( &$this, 'onTagSmartList' ) );
-		$parser->setHook( 'bs:infobox', array( &$this, 'onTagSmartList' ) );
+		$parser->setHook( 'infobox', array( $this, 'onTagSmartList' ) );
+		$parser->setHook( 'bs:infobox', array( $this, 'onTagSmartList' ) );
 
-		$parser->setHook( 'smartlist', array( &$this, 'onTagSmartList' ) );
-		$parser->setHook( 'bs:smartlist', array( &$this, 'onTagSmartList' ) );
-		$parser->setHook( 'newbies', array( &$this, 'onTagBsNewbies' ) );
-		$parser->setHook( 'bs:newbies', array( &$this, 'onTagBsNewbies' ) );
-		$parser->setHook( 'toplist', array( &$this, 'onTagToplist' ) );
-		$parser->setHook( 'bs:toplist', array( &$this, 'onTagToplist' ) );
+		$parser->setHook( 'smartlist', array( $this, 'onTagSmartList' ) );
+		$parser->setHook( 'bs:smartlist', array( $this, 'onTagSmartList' ) );
+		$parser->setHook( 'newbies', array( $this, 'onTagBsNewbies' ) );
+		$parser->setHook( 'bs:newbies', array( $this, 'onTagBsNewbies' ) );
+		$parser->setHook( 'toplist', array( $this, 'onTagToplist' ) );
+		$parser->setHook( 'bs:toplist', array( $this, 'onTagToplist' ) );
 
 		return true;
 	}

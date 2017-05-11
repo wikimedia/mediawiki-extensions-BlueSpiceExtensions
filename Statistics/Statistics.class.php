@@ -184,7 +184,7 @@ class Statistics extends BsExtensionMW {
 	 */
 	public function onParserFirstCallInit( &$parser ) {
 		// for legacy reasons
-		$parser->setHook( 'bs:statistics:progress', array( &$this, 'onTagProgress' ) );
+		$parser->setHook( 'bs:statistics:progress', array( $this, 'onTagProgress' ) );
 		return true;
 	}
 

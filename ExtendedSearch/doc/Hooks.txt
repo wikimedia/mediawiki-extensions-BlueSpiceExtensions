@@ -73,7 +73,7 @@ $sTagName
 ==SearchRequest.class==
 
 'BSExtendedSearchRequestProcessInputs':
-&$this:
+$this:
 
 ==view.SearchSuggest.php==
 
