@@ -8,7 +8,7 @@
  *
  * @covers BSPageTemplateList
  */
-class BSPageTemplateListTest extends MediaWikiTestCase {
+class BSPageTemplatesListTest extends MediaWikiTestCase {
 
 	protected $tablesUsed = [ 'bs_pagetemplate' ];
 

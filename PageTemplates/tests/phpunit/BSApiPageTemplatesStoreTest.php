@@ -5,7 +5,7 @@
  * @group API
  * @group BlueSpice
  * @group BlueSpiceExtensions
- * @group BlueSpicePageTemplate
+ * @group BlueSpicePageTemplates
  */
 class BSApiPageTemplatesStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 8;
@@ -37,12 +37,8 @@ class BSApiPageTemplatesStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 	protected function createStoreFixtureData() {
-		return;
-	}
-
-	public function setUp() {
 		new BSPageTemplateFixtures();
-		parent::setUp();
+		return;
 	}
 
 	protected function getModuleName () {

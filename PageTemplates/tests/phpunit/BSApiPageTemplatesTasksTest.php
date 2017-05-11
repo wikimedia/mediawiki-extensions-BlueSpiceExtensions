@@ -5,7 +5,7 @@
  * @group API
  * @group BlueSpice
  * @group BlueSpiceExtensions
- * @group BlueSpicePageTemplate
+ * @group BlueSpicePageTemplates
  */
 class BSApiPageTemplatesTasksTest extends BSApiTasksTestBase {
 
