@@ -9,6 +9,7 @@ class PageAssignmentsHooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$updater->addExtensionTable( 'bs_pageassignments', dirname( __DIR__ ).'/db/bs_pageassignments.sql' );
+		$updater->modifyExtensionField(  'bs_pageassignments', 'pa_page_id', dirname( __DIR__ ).'/db/ps_pageassignments.primary_key.patch.sql' );
 		if( !$updater->tableExists('bs_responsible_editors') ) {
 			return true;
 		}
