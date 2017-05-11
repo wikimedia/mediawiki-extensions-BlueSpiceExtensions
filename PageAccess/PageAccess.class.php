@@ -172,7 +172,7 @@ class PageAccess extends BsExtensionMW {
 	}
 
 	public function onParserFirstCallInit( &$parser ) {
-		$parser->setHook( 'bs:pageaccess', array( &$this, 'onTagBsPageAccess' ) );
+		$parser->setHook( 'bs:pageaccess', array( $this, 'onTagBsPageAccess' ) );
 		return true;
 	}
 

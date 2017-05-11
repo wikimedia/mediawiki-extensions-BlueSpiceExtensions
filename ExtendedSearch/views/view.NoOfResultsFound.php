@@ -58,7 +58,7 @@ class ViewNoOfResultsFound extends ViewBaseElement {
 			$sOut = wfMessage( 'bs-extendedsearch-result', $searchTerm, $noOfResultsFound )->text();
 		}
 
-		$sOut = preg_replace_callback( '|<b>(.*?)</b>|', array( &$this, 'makeSpan' ), $sOut );
+		$sOut = preg_replace_callback( '|<b>(.*?)</b>|', array( $this, 'makeSpan' ), $sOut );
 		$sOut = Xml::openElement( 'div', array( 'id' => 'bs-extendedsearch-noofresultsandsearchterm' ) ).
 				$sOut.
 				Xml::closeElement( 'div' );

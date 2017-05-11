@@ -146,8 +146,8 @@ class PageTemplates extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onParserFirstCallInit( &$parser ) {
-		$parser->setHook( 'pagetemplates', array( &$this, 'onTagPageTemplates' ) );
-		$parser->setHook( 'bs:pagetemplates', array( &$this, 'onTagPageTemplates' ) );
+		$parser->setHook( 'pagetemplates', array( $this, 'onTagPageTemplates' ) );
+		$parser->setHook( 'bs:pagetemplates', array( $this, 'onTagPageTemplates' ) );
 		return true;
 	}
 

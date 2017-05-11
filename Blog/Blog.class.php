@@ -210,13 +210,13 @@ class Blog extends BsExtensionMW {
 	 */
 	public function onParserFirstCallInit( &$parser ) {
 		// used for legacy reasons
-		$parser->setHook( 'blog', array( &$this, 'onBlog' ) );
-		$parser->setHook( 'more', array( &$this, 'onMore' ) );
-		$parser->setHook( 'bs:blog', array( &$this, 'onBlog' ) );
-		$parser->setHook( 'bs:blog:more', array( &$this, 'onMore' ) );
+		$parser->setHook( 'blog', array( $this, 'onBlog' ) );
+		$parser->setHook( 'more', array( $this, 'onMore' ) );
+		$parser->setHook( 'bs:blog', array( $this, 'onBlog' ) );
+		$parser->setHook( 'bs:blog:more', array( $this, 'onMore' ) );
 		// timestamp for custom sorting
-		$parser->setHook( 'blog:time', array( &$this, 'onBlogTime' ) );
-		$parser->setHook( 'bs:blog:time', array( &$this, 'onBlogTime' ) );
+		$parser->setHook( 'blog:time', array( $this, 'onBlogTime' ) );
+		$parser->setHook( 'bs:blog:time', array( $this, 'onBlogTime' ) );
 		return true;
 	}
 

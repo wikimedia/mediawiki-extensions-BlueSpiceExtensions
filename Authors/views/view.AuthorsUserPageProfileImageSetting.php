@@ -45,7 +45,7 @@ class ViewAuthorsUserPageProfileImageSetting extends ViewBaseElement {
 	 */
 	public function  execute( $params = false ) {
 		$this->initFields();
-		wfRunHooks( 'BsAuthorPageProfileImageAfterInitFields', array( &$this, $this->oUser ) );
+		wfRunHooks( 'BsAuthorPageProfileImageAfterInitFields', array( $this, $this->oUser ) );
 		// CR RBV (03.06.11 08:39): Hook/Event!
 		if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) )
 			$this->sImagePath = SecureFileStore::secureStuff( $this->sImagePath, true );
