@@ -132,11 +132,11 @@ class Avatars extends BsExtensionMW {
 		if( !$oFile || !$oFile->exists() ) {
 			return true;
 		}
-		if( $aParams['width'] > $oFile->getWidth() ) {
+		if( isset( $aParams['width'] ) && $aParams['width'] > $oFile->getWidth() ) {
 			$aParams['width'] = $oFile->getWidth();
 		}
 
-		if( $aParams['height'] > $oFile->getHeight() ) {
+		if( isset( $aParams['height'] ) && $aParams['height'] > $oFile->getHeight() ) {
 			$aParams['height'] = $oFile->getHeight();
 		}
 
