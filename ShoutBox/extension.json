@@ -73,7 +73,8 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "ShoutBox::getSchemaUpdates",
-		"BSUsageTrackerRegisterCollectors": "ShoutBox::onBSUsageTrackerRegisterCollectors"
+		"BSUsageTrackerRegisterCollectors": "ShoutBox::onBSUsageTrackerRegisterCollectors",
+		"UnitTestsList": "ShoutBox::onUnitTestsList"
 	},
 	"callback": "ShoutBox::onRegistration",
 	"manifest_version": 1
