@@ -95,6 +95,10 @@ class BSApiNamespaceTasksTest extends BSApiTasksTestBase {
 		$iNS = key( $aNamespaces ) + 1;
 		reset( $aNamespaces );
 
+		// if there is no custom namespace yet, ID range will begin at 3000
+		if ( $iNS < 3000 ) {
+			$iNS = 3000;
+		}
 		return $iNS;
 	}
 
