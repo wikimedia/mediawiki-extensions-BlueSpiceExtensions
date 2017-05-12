@@ -227,7 +227,7 @@ class ExtendedEditBar extends BsExtensionMW {
 				'content' => array(
 					//10 => 'bs-editbutton-link',
 					//20 => 'bs-editbutton-extlink',
-					30 => 'bs-editbutton-strike',
+					//30 => 'bs-editbutton-strike',
 					//40 => 'bs-editbutton-image',
 					//50 => 'bs-editbutton-media',
 					60 => 'bs-editbutton-gallery',
