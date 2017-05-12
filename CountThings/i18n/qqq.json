@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Shirayuki"
+			"Shirayuki",
+			"Mglaser"
 		]
 	},
 	"bs-countthings-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of count things extension",
@@ -16,7 +17,7 @@
 	"bs-countthings-tag-countarticles-desc": "Used in InsertMagic extension, tag description for displays the number of pages.\n{{Related|Bs-tag-desc}}",
 	"bs-countthings-tag-countusers-desc": "Used in InsertMagic extension, tag description for displays the number of users.\n{{Related|Bs-tag-desc}}",
 	"bs-countthings-tag-countcharacters-desc": "Used in InsertMagic extension, tag description for displays statistics of the given page content. Available configuration attribute:\n{{Related|Bs-tag-desc}}",
-	"bs-countthings-tag-countcharacters-desc-param-mode": "Text for <code>mode</code>: What of the given page content should be counted <code>chars</code> (characters), <code>words</code> (words) or <code>pages</code> (pages).",
+	"bs-countthings-tag-countcharacters-desc-param-mode": "Description of the tag attribute <code>mode</code>, which specifies what items shall be counted on the article including the tag.",
 	"bs-countthings-tag-countcharacters-example-1": "Description of example 1. Used in InsertMagic tag description.",
 	"bs-countthings-tag-countcharacters-example-2": "Description of example 2. Used in InsertMagic tag description."
 }

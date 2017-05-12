@@ -4,7 +4,8 @@
 			"S8321414",
 			"LNDDYL",
 			"Cwlin0416",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Wehwei"
 		]
 	},
 	"prefs-avatars": "頭像",
@@ -23,5 +24,6 @@
 	"bs-avatars-set-userimage-failed": "無效的 URL 或自 wiki 的圖片。",
 	"bs-avatars-set-userimage-saved": "已儲存使用者圖片。",
 	"bs-avatars-file-upload-fieldset-title": "圖片上傳",
-	"bs-avatars-auto-generate-fieldset-title": "自動產生頭像"
+	"bs-avatars-auto-generate-fieldset-title": "自動產生頭像",
+	"apihelp-bs-avatars-tasks-description": "上傳、產生、設定用戶頭像"
 }

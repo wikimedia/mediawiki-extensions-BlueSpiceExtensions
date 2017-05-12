@@ -6,7 +6,8 @@
 			"Shirayuki",
 			"Markus Glaser <glaser@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Umherirrender"
+			"Umherirrender",
+			"Mglaser"
 		]
 	},
 	"bs-checklist-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of checklist extension",
@@ -33,8 +34,8 @@
 	"log-description-bs-checklist": "Used in [[Special:Log]], description of the log type",
 	"log-show-hide-bs-checklist": "Used in [[Special:Log]]. Parameters:\n* $1 - link text; one of {{msg-mw|Show}} or {{msg-mw|Hide}}\n{{Related|Log-show-hide}}",
 	"logentry-bs-checklist-checked": "Log message about checking a check box on a page.\nParameters:\n* $4 - number of the checkbox",
-	"logentry-bs-checklist-unchecked": "Log message about unchecking a check box on a page.\nParameters:\n* $4 - number of the checkbox",
-	"logentry-bs-checklist-selected": "Log message about selecting a value in a select box on a page.\nParameters:\n* $4 - number of the checkbox\n* $5 - selected value",
+	"logentry-bs-checklist-unchecked": "Log message about unchecking a check box on a page.\nParameters:\n* $3 - name of the article of the checkbox\n* $4 - number of the checkbox",
+	"logentry-bs-checklist-selected": "Log message about selecting a value in a select box on a page.\nParameters:\n* $3 - name of the page containing the checkbox\n* $4 - number of the checkbox\n* $5 - selected value",
 	"bs-checklist-savelist-error-invalid-title": "Error message in case invalid title was provided",
 	"bs-checklist-savelist-error-edit-not-permitted": "Error message in case of insufficient user permissions",
 	"bs-checklist-modified-check": "Edit summary about modifing checklist value",

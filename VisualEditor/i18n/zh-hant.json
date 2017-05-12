@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Cwlin0416"
+			"Cwlin0416",
+			"Wehwei"
 		]
 	},
 	"bs-visualeditor-desc": "MediaWiki 的視覺化編輯器",
 	"prefs-visualeditor": "視覺化編輯器",
+	"apihelp-bs-visualeditor-tasks-description": "提供 BlueSpice 視覺編輯器套件工作",
 	"bs-visualeditor-editbutton-hint": "視覺化編輯器",
 	"bs-visualeditor-pref-disablens": "停用的命名空間：",
 	"bs-visualeditor-pref-use": "預設使用 WYSIWYG 編輯器",

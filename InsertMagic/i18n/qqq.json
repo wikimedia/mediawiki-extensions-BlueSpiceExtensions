@@ -6,7 +6,8 @@
 			"Liuxinyu970226",
 			"Robby",
 			"Shirayuki",
-			"Umherirrender"
+			"Umherirrender",
+			"Mglaser"
 		]
 	},
 	"bs-insertmagic-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert magic extension",
@@ -68,7 +69,7 @@
 	"bs-insertmagic-type-switches": "Option in dialog for behavior switches \n {{Identical|Behavior switches}}",
 	"bs-insertmagic-type-quickaccess": "Option in dialog for quick access\n {{Identical|Quick access}}",
 	"bs-insertmagic-label-first": "Headline text for 1. choose tag or magic word \n {{Identical|1. Choose tag or magic word}}",
-	"bs-insertmagic-label-second": "Headline text for 2. modify code \n {{Identical|2. Modify code}}",
+	"bs-insertmagic-label-second": "Headline text the text area which allows the user to change the code of the tag, which is then to be inserted into the article text.\n {{Identical|2. Modify code}}",
 	"bs-insertmagic-label-desc": "Headline text for description \n {{Identical|Description}}",
 	"bs-insertmagic-label-examples": "Textlabel above the example section in the description field of the insert magic dialog.\n{{Identical|Example}}",
 	"bs-insertmagic-label-see-also": "Textlabel above the see also link for more information in the description field of the insert magic dialog.",

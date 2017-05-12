@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Shirayuki",
-			"Umherirrender"
+			"Umherirrender",
+			"Mglaser"
 		]
 	},
 	"bs-insertfile-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of insert file extension",
@@ -65,7 +66,7 @@
 	"bs-insertfile-select-a-link": "Text for select or type a link",
 	"bs-insertfile-license": "Text for license \n{{Identical|License}}",
 	"bs-insertfile-categories": "Text for categories \n{{Identical|Category}}",
-	"bs-insertfile-linktext": "Label for the \"Display text\" input box.\n{{Identical|Display text}}",
+	"bs-insertfile-linktext": "Label for the input box which defines the text to be displayed as a link title.\n{{Identical|Display text}}",
 	"bs-insertfile-no-link": "Text for no link \n{{Identical|No link}}",
 	"bs-insertfile-error-no-medialink": "Text for no media link selected.",
 	"bs-insertfile-error-no-imagelink": "Text for no image link selected.",

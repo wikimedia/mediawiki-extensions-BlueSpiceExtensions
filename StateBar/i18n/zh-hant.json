@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Waihorace",
-			"LNDDYL"
+			"LNDDYL",
+			"Wehwei"
 		]
 	},
 	"bs-statebar-desc": "提供一個狀態列",
@@ -14,5 +15,6 @@
 	"bs-statebar-viewtoggler": "詳情",
 	"bs-statebar-viewtoggler-tooltip": "顯示詳細資料",
 	"bs-statebar-switch-description": "於此頁隱藏狀態列。",
-	"bs-statebar-ajax-nobodyviews": "無可用資訊。"
+	"bs-statebar-ajax-nobodyviews": "無可用資訊。",
+	"apihelp-bs-statebar-tasks-description": "提供用於 StateBar 套件的操作"
 }

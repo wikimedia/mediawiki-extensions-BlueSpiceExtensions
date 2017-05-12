@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"LNDDYL",
-			"Cwlin0416"
+			"Cwlin0416",
+			"Wehwei"
 		]
 	},
+	"bs-extendededitbar-desc": "給 wiki 編輯區提供額外的按鈕",
 	"bs-extendededitbar-redirecttip": "重新導向",
 	"bs-extendededitbar-redirectsample": "插入文字",
 	"bs-extendededitbar-striketip": "刪除線",
