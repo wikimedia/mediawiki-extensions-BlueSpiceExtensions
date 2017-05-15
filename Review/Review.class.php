@@ -1435,7 +1435,7 @@ class Review extends BsExtensionMW {
 	public function onBeforePageDisplay( &$out, &$skin ) {
 		$out->addModuleStyles( 'ext.bluespice.review.styles' );
 
-		if ( $out->getTitle()->isContentPage() == false )
+		if ( $out->getTitle()->isSpecial() == true )
 			return true;
 		if ( $out->getTitle()->exists() == false )
 			return true;
