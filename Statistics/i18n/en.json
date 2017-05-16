@@ -59,5 +59,6 @@
 	"bs-statistics-portletconfig-periodday": "Yesterday",
 	"apihelp-bs-statistics-tasks-description": "Provides common tasks for statistics",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Provides a store with available diagrams",
-	"apihelp-bs-statistics-search-options-store-description": "Provides a store with available search options"
+	"apihelp-bs-statistics-search-options-store-description": "Provides a store with available search options",
+	"right-statistic-viewspecialpage": "Access to extended statistic"
 }

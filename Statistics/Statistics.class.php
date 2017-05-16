@@ -59,6 +59,8 @@ class Statistics extends BsExtensionMW {
 	 * Initialization of Statistics extension
 	 */
 	protected function initExt() {
+		$this->mCore->registerPermission( 'right-statistic-viewspecialpage', array( 'user' ), array( 'type' => 'global' ) );
+
 		wfProfileIn( 'BS::Statistics::initExt' );
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BeforePageDisplay' );

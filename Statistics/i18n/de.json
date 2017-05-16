@@ -61,5 +61,6 @@
 	"bs-statistics-portletconfig-periodday": "Gestern",
 	"apihelp-bs-statistics-tasks-description": "Bietet allgemeine Aufgaben für Statistiken",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Bietet einen Speicher mit verfügbaren Diagrammen",
-	"apihelp-bs-statistics-search-options-store-description": "Bietet einen Speicher mit verfügbaren Suchoptionen"
+	"apihelp-bs-statistics-search-options-store-description": "Bietet einen Speicher mit verfügbaren Suchoptionen",
+	"right-statistic-viewspecialpage": "Zugriff auf die Erweiterte Statistik"
 }
