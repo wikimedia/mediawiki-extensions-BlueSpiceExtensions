@@ -62,5 +62,6 @@
 	"bs-statistics-portletconfig-periodday": "Option in [[Special:AdminDashboard]] and [[Special:UserDashboard]], label for yesterday\n{{Identical|Yesterday}}",
 	"apihelp-bs-statistics-tasks-description": "Describes an API endpoint that provides common tasks for Statistics\n{{doc-apihelp-description|bs-statistics-tasks}}",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Describes an API endpoint that provides a store with available diagrams\n{{doc-apihelp-description|bs-statistics-available-diagrams-store}}",
-	"apihelp-bs-statistics-search-options-store-description": "Describes an API endpoint that provides a store with available search options\n{{doc-apihelp-description|bs-statistics-search-options-store}}"
+	"apihelp-bs-statistics-search-options-store-description": "Describes an API endpoint that provides a store with available search options\n{{doc-apihelp-description|bs-statistics-search-options-store}}",
+	"right-statistic-viewspecialpage": "{{doc-right|statistic-viewspecialpage}}"
 }
