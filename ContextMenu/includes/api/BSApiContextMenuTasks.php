@@ -30,7 +30,7 @@ class BSApiContextMenuTasks extends BSApiTasksBase {
 		$aItems = array();
 
 		if ( !isset( $oData->title ) || empty( $oData->title ) ){
-			return $this->returnItems( $oResult, $aItems );
+			return $oResult;
 		}
 
 		$oTitle = Title::newFromText( $oData->title );
@@ -111,7 +111,7 @@ class BSApiContextMenuTasks extends BSApiTasksBase {
 			$oUser, $oUser->getEditToken()
 		);
 		if( $mEMailPermissioErrors === null ) {
-			$oTitleSendMail = SpecialPage::getTitleFor( 'EmailUser' );
+			$oTitleSendMail = SpecialPage::getTitleFor( 'Emailuser' );
 			$aItems['bs-cm-item-usermail'] = array(
 				'text' => wfMessage( 'bs-contextmenu-user-mail' )->plain(),
 				'href' => $oTitleSendMail->getLocalUrl( array( 'target' => $oTargetUser->getName() ) ),
