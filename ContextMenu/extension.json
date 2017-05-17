@@ -24,6 +24,9 @@
 		"ContextMenu": "ContextMenu.class.php",
 		"BSApiContextMenuTasks": "includes/api/BSApiContextMenuTasks.php"
 	},
+	"Hooks": {
+		"UnitTestsList": "ContextMenu::onUnitTestsList"
+	},
 	"APIModules": {
 		"bs-contextmenu-tasks": "BSApiContextMenuTasks"
 	},
