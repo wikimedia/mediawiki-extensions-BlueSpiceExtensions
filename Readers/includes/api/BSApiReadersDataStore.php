@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Provides reader tasks api for BlueSpice.
+ * Provides readers-data-store api for BlueSpice.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
  *
  * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @package    Bluespice_Extensions
- * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2017 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  */
 

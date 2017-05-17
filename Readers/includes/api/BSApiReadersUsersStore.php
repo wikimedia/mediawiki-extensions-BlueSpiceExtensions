@@ -1,12 +1,36 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Provides readers-users-store api for BlueSpice.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * This file is part of BlueSpice for MediaWiki
+ * For further information visit http://www.blue-spice.org
+ *
+ * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
+ * @package    Bluespice_Extensions
+ * @copyright  Copyright (C) 2017 Hallo Welt! GmbH, All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  */
 
-class BSAPIReadersUsersStore extends BSApiExtJSStoreBase {
+/**
+ * GroupManager Api class
+ * @package BlueSpice_Extensions
+ */
+class BSApiReadersUsersStore extends BSApiExtJSStoreBase {
 
 	protected function makeData( $sQuery = '' ) {
 		$oTitle = Title::newFromText( $sQuery );
