@@ -3,7 +3,7 @@
 class FlexiskinFormatter {
 
 	public static function format_general( $aConfig, $sNewId ) {
-		$aReturn = "";
+		$aReturn = array();
 		if ( $aConfig->customBackgroundColor == "" && ( ctype_xdigit( $aConfig->customBackgroundColor ) ) ){
 			$aReturn[] = "body{background-color:#" . $aConfig->backgroundColor . " !important;}";
 		}
@@ -50,7 +50,7 @@ class FlexiskinFormatter {
 	}
 
 	public static function format_position( $aConfig, $sNewId ) {
-		$aReturn = "";
+		$aReturn = array();
 		if ( $aConfig->navigation == 'right' ) {
 			$aReturn[] = "#bs-application{position: relative !important;}";
 			$aReturn[] = "#bs-content-column{margin: 0 302px 0 0 !important;}";
