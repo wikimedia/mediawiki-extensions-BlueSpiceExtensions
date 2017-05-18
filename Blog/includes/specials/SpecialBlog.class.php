@@ -22,8 +22,6 @@ class SpecialBlog extends BsSpecialPage {
 	public function execute( $par ) {
 		parent::execute( $par );
 
-		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
-
 		$aArgs = array();
 		$aNamespaces = $this->getLanguage()->getNamespaces();
 		$oTitle = Title::newFromText( $par );

@@ -114,8 +114,6 @@ class CSyntaxHighlight extends BsExtensionMW {
 		// TODO RBV (13.07.11 15:44): Better recognition...
 		if ( strpos( $sText, '<pre class="brush:' ) === false ) return true;
 
-		BsExtensionManager::setContext( 'MW::CSyntaxHighlight' );
-
 		$sBrushScriptPath = $wgScriptPath.'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
 
 		$sTheme = BsConfig::get('MW::CSyntaxHighlight::Theme');

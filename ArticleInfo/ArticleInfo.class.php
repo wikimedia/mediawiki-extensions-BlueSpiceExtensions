@@ -51,7 +51,7 @@ class ArticleInfo extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ArticleInfo::ImageCheckRevision', 'bs-infobar-revision.png', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING );
 		BsConfig::registerVar( 'MW::ArticleInfo::CheckRevisionInterval', 10, BsConfig::LEVEL_PUBLIC|BsConfig::RENDER_AS_JAVASCRIPT|BsConfig::TYPE_INT, 'bs-articleinfo-pref-CheckRevisionInterval', 'int' );
 
-		$this->mCore->registerBehaviorSwitch( 'NOARTICLEINFO', array( $this, 'noArticleInfoCallback' ) );
+		$this->mCore->registerBehaviorSwitch( 'bs_noarticleinfo' );
 
 		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
@@ -65,10 +65,6 @@ class ArticleInfo extends BsExtensionMW {
 
 		$this->setHook( 'SkinTemplateOutputPageBeforeExec' );
 		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	public function noArticleInfoCallback() {
-		BsExtensionManager::setContext( 'MW::ArticleInfo::Hide' );
 	}
 
 	/**
@@ -117,8 +113,16 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStateBarBeforeTopViewAdd( $oStateBar, &$aTopViews, $oUser, $oTitle ) {
-		if ( BsExtensionManager::isContextActive( 'MW::ArticleInfo::Hide' ) ) return true;
 		wfProfileIn( 'BS::'.__METHOD__ );
+		$mContext = BsArticleHelper::getInstance( $oTitle )->getPageProp(
+			'bs_noarticleinfo'
+		);
+
+		if( $mContext === '' ) {
+			wfProfileOut( 'BS::'.__METHOD__ );
+			return true;
+		}
+
 		$aTopElements = array(
 			'statebartoplastedited' => $this->makeStateBarTopLastEdited( $oTitle ),
 			'statebartoplasteditor' => $this->makeStateBarTopLastEditor( $oTitle ),
@@ -145,8 +149,14 @@ class ArticleInfo extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onStateBarBeforeBodyViewAdd( $oStateBar, &$aBodyViews, $oUser, $oTitle ) {
-		if ( BsExtensionManager::isContextActive( 'MW::ArticleInfo::Hide' ) ) return true;
 		wfProfileIn( 'BS::'.__METHOD__ );
+		$mContext = BsArticleHelper::getInstance( $oTitle )->getPageProp(
+			'bs_noarticleinfo'
+		);
+		if( $mContext === '' ) {
+			wfProfileOut( 'BS::'.__METHOD__ );
+			return true;
+		}
 		$aBodyElements = array(
 			'statebarbodysubpages' => $this->makeStateBarBodySubPages( $oTitle ),
 			'statebarbodycategories' => $this->makeStateBarBodyCategories( $oTitle ),

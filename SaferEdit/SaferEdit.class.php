@@ -54,7 +54,6 @@ class SaferEdit extends BsExtensionMW {
 		$this->setHook( 'EditPage::showEditForm:initial', 'setEditSection' );
 		$this->setHook( 'BSStateBarAddSortTopVars', 'onStatebarAddSortTopVars' );
 		$this->setHook( 'BSStateBarBeforeTopViewAdd', 'onStateBarBeforeTopViewAdd' );
-		$this->setHook( 'BeforeInitialize' );
 		$this->setHook( 'BeforePageDisplay' );
 		$this->setHook( 'BsAdapterAjaxPingResult' );
 
@@ -68,10 +67,20 @@ class SaferEdit extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if ( BsExtensionManager::isContextActive( 'MW::SaferEdit' ) === false ) return true;
+		$sAction = $oSkin->getRequest()->getVal( 'action', 'view' );
+		if ( !in_array( $sAction, array ( 'edit', 'submit', 'view', ) ) ) {
+			return true;
+		}
+
 		$oOutputPage->addModules('ext.bluespice.saferedit.general');
 
-		if ( BsExtensionManager::isContextActive( 'MW::SaferEditEditMode' ) === false ) return true;
+		if( !in_array( $sAction, array ( 'edit', 'submit' ) ) ) {
+			return true;
+		}
+		if ( !$oSkin->getTitle()->userCan( 'edit' ) ) {
+			return true;
+		}
+
 		$oOutputPage->addModules('ext.bluespice.saferedit.editmode');
 		return true;
 	}
@@ -299,38 +308,6 @@ class SaferEdit extends BsExtensionMW {
 		}
 
 		return $oSaferEditView;
-	}
-
-	/**
-	 * Hook-Handler for MW hook BeforeInitialize -  Used to set Context
-	 * @param Title $oTitle
-	 * @param Article $oArticle
-	 * @param OutPutpage $oOutput
-	 * @param User $oUser
-	 * @param WebRequest $oRequest
-	 * @param MediaWiki $oMediaWiki
-	 * @return boolean - always true
-	 */
-	public function onBeforeInitialize( &$oTitle, $oArticle, &$oOutput, &$oUser, $oRequest, $oMediaWiki ) {
-		if ( !is_object( $oTitle ) || !$oTitle->userCan( 'read' ) || $oTitle->getNamespace() === NS_SPECIAL ) {
-			return true;
-		}
-
-		$sAction = $oRequest->getVal( 'action', 'view' );
-
-		if ( !in_array( $sAction, array ( 'edit', 'submit', 'view', ) ) ) {
-			return true;
-		}
-
-		BsExtensionManager::setContext( 'MW::SaferEdit' );
-
-		if ( !$oTitle->userCan( 'edit' ) || !in_array( $sAction, array ( 'edit', 'submit' ) ) ) {
-			return true;
-		}
-
-		BsExtensionManager::setContext( 'MW::SaferEditEditMode' );
-
-		return true;
 	}
 
 	/**
