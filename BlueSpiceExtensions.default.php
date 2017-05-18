@@ -32,7 +32,9 @@ require_once( __DIR__."/InsertMagic/InsertMagic.setup.php" );
 require_once( __DIR__."/NamespaceCss/NamespaceCss.setup.php" );
 require_once( __DIR__."/PageAccess/PageAccess.setup.php" );
 require_once( __DIR__."/PagesVisited/PagesVisited.setup.php" );
-require_once( __DIR__."/SecureFileStore/SecureFileStore.setup.php" );
+// This extension is deprecated as of BlueSpice 2.27.1 and will be removed soon
+// Usage of this extension was completely removed in BlueSpice
+#require_once( __DIR__."/SecureFileStore/SecureFileStore.setup.php" );
 require_once( __DIR__."/SmartList/SmartList.setup.php" );
 require_once( __DIR__."/TopMenuBarCustomizer/TopMenuBarCustomizer.setup.php" );
 require_once( __DIR__."/UsageTracker/UsageTracker.setup.php" );

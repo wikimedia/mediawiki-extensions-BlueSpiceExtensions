@@ -60,9 +60,6 @@ class BSApiReadersUsersStore extends BSApiExtJSStoreBase {
 				$oUserMiniProfile = BsCore::getInstance()->getUserMiniProfile( $oUser, array() );
 
 				$sImage = $oUserMiniProfile->getUserImageSrc();
-				if ( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
-					$sImage = SecureFileStore::secureStuff( $sImage, true );
-				}
 
 				$oSpecialReaders = SpecialPage::getTitleFor( 'Readers', $oTitle->getPrefixedText() );
 
