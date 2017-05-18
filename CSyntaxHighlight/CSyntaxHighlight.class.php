@@ -161,7 +161,7 @@ class CSyntaxHighlight extends BsExtensionMW {
 	 * @param string $sType
 	 * @return boolean Always true to keep hook running
 	 */
-	public function onBSInsertMagicAjaxGetData( $oResponse, $sType ) {
+	public static function onBSInsertMagicAjaxGetData( $oResponse, $sType ) {
 		if( $sType !== "tags" ) return true;
 
 		$oDescriptor = new stdClass();
