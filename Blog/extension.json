@@ -34,7 +34,13 @@
 		"SpecialBlog": "includes/specials/SpecialBlog.class.php"
 	},
 	"ResourceModules": {
-		"ext.bluespice.blog": {
+		"ext.bluespice.blog.rssfeeder.integration": {
+			"scripts": "bluespice.blog.rssfeeder.integration.js",
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		},
+		"ext.bluespice.blog.styles": {
 			"styles": "bluespice.blog.less"
 		}
 	},

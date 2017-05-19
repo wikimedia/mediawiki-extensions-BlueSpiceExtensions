@@ -34,5 +34,6 @@
 	"bs-blog-tag-blogtime-desc": "Inserts a self defined time stamp for display and sorting in blog posts. The format is YYYYMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "The format has to be YYYYMMDDHHmm i.e. for 12. Jan. 2013 15:43 the timestamps looks like: 201301121543",
 	"bs-tag-blog": "the blog tag",
-	"action-blog-viewspecialpage":"view the special page \"{{int:bs-blog-blog}}\""
+	"action-blog-viewspecialpage":"view the special page \"{{int:bs-blog-blog}}\"",
+	"bs-blog-rss-desc-blog": "Feed with an overview over the blog entries"
 }
