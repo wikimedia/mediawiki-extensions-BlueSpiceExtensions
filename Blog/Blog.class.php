@@ -128,7 +128,11 @@ class Blog extends BsExtensionMW {
 	 * @return bool
 	 */
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		$oOutputPage->addModuleStyles( 'ext.bluespice.blog' );
+		$oOutputPage->addModuleStyles( 'ext.bluespice.blog.styles' );
+
+		if( $oOutputPage->getTitle()->isSpecial( 'RSSFeeder' ) ) {
+			$oOutputPage->addModules( 'ext.bluespice.blog.rssfeeder.integration' );
+		}
 
 		return true;
 	}
@@ -687,7 +691,7 @@ class Blog extends BsExtensionMW {
 			$this,
 			'buildRssNsBlog',
 			null,
-			'buildRssNsBlog'
+			'buildLinksNs'
 		);
 		return true;
 	}
@@ -724,7 +728,7 @@ class Blog extends BsExtensionMW {
 
 		$oChannel = RSSCreator::createChannel(
 			RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName ),
-			'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_page' )->plain()
+			'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-blog-rss-desc-blog' )->plain()
 		);
 
 		$oTitle = Title::makeTitle( $iNSid , 'Blog' );
