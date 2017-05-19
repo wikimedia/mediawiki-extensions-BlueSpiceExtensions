@@ -6,7 +6,8 @@
 			"Striking Blue",
 			"Kaganer",
 			"Iniquity",
-			"Mailman"
+			"Mailman",
+			"Av6"
 		]
 	},
 	"bs-groupmanager-desc": "Административный интерфейс для добавления, правки и удаления групп участников и их прав",
@@ -26,7 +27,7 @@
 	"bs-groupmanager-removegroup": "Вы уверены, что хотите удалить {{PLURAL:$1|эту группу|эти группы}}?",
 	"bs-groupmanager-removegroup-message-success": "Была изъята {{PLURAL:$1|следующая группа|следующие группы}}: $2",
 	"bs-groupmanager-removegroup-message-failure": "Не удалось удалить {{PLURAL:$1|следующую группу|следующие группы}}: $2",
-	"bs-groupmanager-removegroup-message-unknown": "Произошла непредвиденная ошибка, попробуйте еще ​​раз.",
+	"bs-groupmanager-removegroup-message-unknown": "Произошла непредвиденная ошибка, попробуйте ещё ​​раз.",
 	"bs-groupmanager-lablename": "Название группы:",
 	"bs-groupmanager-msgnoteditable": "Эта системная группа, и ее нельзя переименовать.",
 	"bs-groupmanager-msgnotremovable": "Это системная группа, и ее нельзя удалить.",
