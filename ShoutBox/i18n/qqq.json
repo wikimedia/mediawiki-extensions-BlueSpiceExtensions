@@ -38,5 +38,6 @@
 	"bs-shoutbox-notifications-title-message-text": "text used in notifications in the wiki and as the mail body if the user was mentioned in a shoutbox entry\n\nParameters:\n*$1 is the username of the user who mentioned \n*$2 is the page title where shoutbox entry was made. \n*$3 is the link to the page where the shoutbox entry was made. \n*$4 is the link to profile of the user who mentioned. \n*$5 is the page title where shoutbox entry was made.",
 	"bs-shoutbox-notifications-summary": "Text used in notifications about the mentioning of an user in a shoutbox message.\n\nParameters:\n*$1 the user who mentioned \n*$2 is the link to the user page of the user that mentioned another user. (unused) \n*$3 is the link to the page where the shoutbox entry was made.\n*$4 is the real name of the user who mentioned. (unused)\n*$5 is the title of the page where the shoutbox entry was made. (unused)",
 	"apihelp-bs-shoutbox-tasks-description": "Describes an API endpoint that provides common tasks for the ShoutBox\n{{doc-apihelp-description|bs-shoutbox-tasks}}",
-	"bs-usagetracker-shoutbox": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
+	"bs-usagetracker-shoutbox": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output",
+	"bs-shoutbox-error-noarticleid": "Error message in api when the parameter articleId was not given or empty"
 }
