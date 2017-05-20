@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Facenapalm"
 		]
 	},
 	"bs-csyntaxhighlight-desc": "Добавляет настраиваемые функции подсветки синтаксиса",
@@ -10,5 +11,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Тема:",
 	"bs-csyntaxhighlight-pref-gutter": "Показывать номера строк",
 	"bs-csyntaxhighlight-pref-autolinks": "URL ссылки",
-	"bs-csyntaxhighlight-pref-toolbar": "Показывать панель инструментов"
+	"bs-csyntaxhighlight-pref-toolbar": "Показывать панель инструментов",
+	"bs-csyntaxhighlight-tag-desc": "Вставляет тег CSyntaxHighlight, используемый для отображения кусков отформатированного кода"
 }

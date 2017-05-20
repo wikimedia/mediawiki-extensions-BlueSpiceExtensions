@@ -3,7 +3,8 @@
 		"authors": [
 			"HarpyWar",
 			"Meshkov.a",
-			"Okras"
+			"Okras",
+			"Facenapalm"
 		]
 	},
 	"bs-wantedarticle-desc": "Добавляет страницу в список разыскиваемых",
@@ -36,5 +37,6 @@
 	"bs-wantedarticle-create-page": "Создать страницу «$1».",
 	"bs-wantedarticle-suggest-page": "Предложить страницу «$1».",
 	"bs-wantedarticle-info-nothing-entered": "Пожалуйста, введите корректное название страницы.",
-	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Следующий символ не подходит|Следующие символы не подходят}} для использования в заголовке страницы: $2"
+	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Следующий символ не подходит|Следующие символы не подходят}} для использования в заголовке страницы: $2",
+	"apihelp-bs-wantedarticle-description": "Предоставляет api требуемых страниц для BlueSpice."
 }
