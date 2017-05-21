@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Obsuser"
 		]
 	},
-	"bs-formattinghelp-help-example-text": "Текст"
+	"bs-formattinghelp-help-example-text": "Текст",
+	"apihelp-bs-formattinghelp-param-token": "Токен заштите CSRF. Овде није потребан"
 }
