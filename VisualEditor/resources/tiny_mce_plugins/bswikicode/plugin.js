@@ -1705,7 +1705,7 @@ var BsWikiCode = function() {
 		}
 
 		mtext = text;
-		regex = "__(.*?)__";
+		regex = "__(\S*?)__";
 		matcher = new RegExp(regex, 'gmi');
 		i = 0;
 		swt = '';
