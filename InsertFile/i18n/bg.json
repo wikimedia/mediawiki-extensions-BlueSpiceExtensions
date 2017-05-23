@@ -4,5 +4,6 @@
 			"StanProg"
 		]
 	},
-	"bs-insertfile-uploadsdisabled": "Качването на файлове в това уики е забранено."
+	"bs-insertfile-uploadsdisabled": "Качването на файлове в това уики е забранено.",
+	"bs-insertfile-error": "Грешка"
 }

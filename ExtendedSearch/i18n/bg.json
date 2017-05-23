@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"DCLXVI"
+			"DCLXVI",
+			"StanProg"
 		]
 	},
+	"bs-extendedsearch-error": "Грешка:",
+	"bs-extendedsearch-facet-namespace": "Именно пространство",
 	"bs-extendedsearch-section": "Раздел"
 }
