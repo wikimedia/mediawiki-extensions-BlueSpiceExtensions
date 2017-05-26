@@ -294,10 +294,6 @@ class RSSStandards extends BsExtensionMW {
 					$this->mCore->parseWikiText( $page->getContent(), $this->getTitle() )
 				);
 
-				if( BsExtensionManager::isContextActive( 'MW::SecureFileStore::Active' ) ) {
-					$_description = SecureFileStore::secureFilesInText( $_description );
-				}
-
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
 					$item->setPubDate( wfTimestamp( TS_UNIX,$row->rev_timestamp) );
@@ -381,17 +377,11 @@ class RSSStandards extends BsExtensionMW {
 
 				$_title = str_replace( "_", " ", $title->getText() );
 				$_link  = $title->getFullURL();
-				$_tmpText = preg_replace(
+				$_description = preg_replace(
 					"#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#",
 					"",
 					$this->mCore->parseWikiText( $page->getContent()->getNativeData(), $this->getTitle() )
 				);
-				if ( class_exists( 'SecureFileStore' ) ) {
-					$_description = SecureFileStore::secureFilesInText($_tmpText);
-				} else {
-					$_description = $_tmpText;
-				}
-				unset( $_tmpText );
 
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
 				if ( $item ) {
