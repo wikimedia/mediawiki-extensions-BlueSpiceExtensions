@@ -30,5 +30,6 @@
 	"bs-formattinghelp-help-template": "Label for template\n{{Identical|Template}}",
 	"bs-formattinghelp-help-templatename": "Text for template name\n{{Identical|Template name}}",
 	"apihelp-bs-formattinghelp-description": "Describes the API endpoint that provides tasks for the FormattingHelp extension\n{{doc-apihelp-description|bs-formattinghelp}}",
+	"apihelp-bs-formattinghelp-summary": "Describes the API endpoint that provides tasks for the FormattingHelp extension\n{{doc-apihelp-summary|bs-formattinghelp}}",
 	"apihelp-bs-formattinghelp-param-token": "{{doc-apihelp-param|bs-formattinghelp|token}}\nDescribes the CSRF protection token which is not required in this task"
 }

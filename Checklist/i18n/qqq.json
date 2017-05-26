@@ -42,7 +42,10 @@
 	"bs-checklist-modified-check": "Edit summary about modifing checklist value",
 	"bs-checklist-update-list": "Edit summary about updating checklist",
 	"apihelp-bs-checklist-available-options-store-description": "Describes the API endpoint that stores available options of checklist\n{{doc-apihelp-description|bs-checklist-available-options-store}}",
+	"apihelp-bs-checklist-available-options-store-summary": "Describes the API endpoint that stores available options of checklist\n{{doc-apihelp-summary|bs-checklist-available-options-store}}",
 	"apihelp-bs-checklist-template-store-description": "Describes the API endpoint that stores checklist templates\n{{doc-apihelp-description|bs-checklist-template-store}}",
+	"apihelp-bs-checklist-template-store-summary": "Describes the API endpoint that stores checklist templates\n{{doc-apihelp-summary|bs-checklist-template-store}}",
 	"apihelp-bs-checklist-tasks-description": "Describes the API endpoint that handles checklist tasks\n{{doc-apihelp-description|bs-checklist-tasks}}",
+	"apihelp-bs-checklist-tasks-summary": "Describes the API endpoint that handles checklist tasks\n{{doc-apihelp-summary|bs-checklist-tasks}}",
 	"bs-tag-checklist": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output"
 }

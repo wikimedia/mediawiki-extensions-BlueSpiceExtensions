@@ -14,6 +14,7 @@
 	"bs-usersidebar-tab-globalactions": "Label for \"admin\" tab in left sidebar\n{{Identical|Admin}}",
 	"bs-usersidebar-globalactionswidget-title": "Widget headline for global actions",
 	"apihelp-sidebar-description": "Describes an API endpoint that returns the HTML contents of the user sidebar\n{{doc-apihelp-description|sidebar}}",
+	"apihelp-sidebar-summary": "Describes an API endpoint that returns the HTML contents of the user sidebar\n{{doc-apihelp-summary|sidebar}}",
 	"apihelp-sidebar-param-sidebar": "{{doc-apihelp-param|sidebar|sidebar}}",
 	"apihelp-sidebar-param-usersidebar": "{{doc-apihelp-param|sidebar|usersidebar}}",
 	"apihelp-sidebar-param-format": "{{doc-apihelp-param|sidebar|format}}",

@@ -34,6 +34,7 @@
 	"bs-usermanager-groups-more": "Text of a link that expands the list of groups\n{{Identical|More}}",
 	"bs-usermanager-no-self-desysop": "Text for the error message if a user tries to desysop themselves.",
 	"apihelp-bs-usermanager-tasks-description": "Describes the API endpoint that handles user manager tasks\n{{doc-apihelp-description|bs-usermanager-tasks}}",
+	"apihelp-bs-usermanager-tasks-summary": "Describes the API endpoint that handles user manager tasks\n{{doc-apihelp-summary|bs-usermanager-tasks}}",
 	"bs-usermanager-no-self-block": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when trying to block yourself",
 	"bs-usermanager-block-error": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user could not be disabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
 	"bs-usermanager-unblock-error": "Error message in [{{canonicalurl:Special:WikiAdmin|mode=UserManager}} Special:WikiAdmin?mode=UserManager] when the user could not be enabled.\n\n* $1 is the username of the user affected by the action - use for GENDER distinction",
@@ -58,5 +59,6 @@
 	"bs-usermanager-title-multipleuserselected": "Used as title of an alert panel with JavaScript",
 	"bs-usermanager-multipleuserselected": "Used as explain text of an alert panel with JavaScript",
 	"bs-usermanager-invalid-groups": "Used as error message",
-	"apihelp-bs-usermanager-group-store-description": "{{doc-apihelp-description|bs-usermanager-group-store}}"
+	"apihelp-bs-usermanager-group-store-description": "{{doc-apihelp-description|bs-usermanager-group-store}}",
+	"apihelp-bs-usermanager-group-store-summary": "{{doc-apihelp-summary|bs-usermanager-group-store}}"
 }

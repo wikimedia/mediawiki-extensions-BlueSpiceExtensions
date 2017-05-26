@@ -32,6 +32,7 @@
 	"bs-usermanager-groups-more": "... more",
 	"bs-usermanager-no-self-desysop" : "You cannot take away your own sysop right.",
 	"apihelp-bs-usermanager-tasks-description": "Provides operations for Checklist extension",
+	"apihelp-bs-usermanager-tasks-summary": "Provides operations for Checklist extension",
 	"bs-usermanager-no-self-block": "You cannot disable yourself.",
 	"bs-usermanager-block-error": "{{GENDER:$1|The user}} $1 could not be disabled.",
 	"bs-usermanager-unblock-error": "{{GENDER:$1|The user}} $1 could not be enabled.",
@@ -56,5 +57,6 @@
 	"bs-usermanager-title-multipleuserselected": "Multiple users are selected",
 	"bs-usermanager-multipleuserselected": "You can only change password for one user at a time",
 	"bs-usermanager-invalid-groups": "Groups are invalid",
-	"apihelp-bs-usermanager-group-store-description": "Provides the user manager tasks api for BlueSpice."
+	"apihelp-bs-usermanager-group-store-description": "Provides the user manager tasks api for BlueSpice.",
+	"apihelp-bs-usermanager-group-store-summary": "Provides the user manager tasks api for BlueSpice."
 }

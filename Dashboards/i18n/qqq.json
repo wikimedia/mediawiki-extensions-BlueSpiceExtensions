@@ -24,7 +24,10 @@
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Label for wiki article parameter used in config dialog",
 	"apihelp-bs-dashboard-task-param-dc": "Label for cache control parameter in api call\n{{doc-apihelp-param|bs-dashboard-task|dc}}",
 	"apihelp-bs-dashboards-store-description": "Describes the API endpoint that lists available portlets\n{{doc-apihelp-description|bs-dashboards-store}}",
+	"apihelp-bs-dashboards-store-summary": "Describes the API endpoint that lists available portlets\n{{doc-apihelp-summary|bs-dashboards-store}}",
 	"apihelp-bs-dashboards-tasks-description": "Describes the API endpoint that saves dashboard configuration\n{{doc-apihelp-description|bs-dashboards-tasks}}",
+	"apihelp-bs-dashboards-tasks-summary": "Describes the API endpoint that saves dashboard configuration\n{{doc-apihelp-summary|bs-dashboards-tasks}}",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Describes the API endpoint that returns content for some dashboard widgets\n{{doc-apihelp-description|bs-dashboards-widgets-tasks}}",
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Describes the API endpoint that returns content for some dashboard widgets\n{{doc-apihelp-summary|bs-dashboards-widgets-tasks}}",
 	"action-dashboards-viewspecialpage-userdashboard": "placeholder to describe that view of special page \"{{int:userdashboard}}\" is restricted for the current user\n{{doc-action|dashboards-viewspecialpage-userdashboard}}"
 }

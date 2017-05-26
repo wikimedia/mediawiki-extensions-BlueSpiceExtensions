@@ -42,5 +42,6 @@
 	"bs-wantedarticle-suggest-page": "Test for suggest page \"$1\". $1 is the entered page name",
 	"bs-wantedarticle-info-nothing-entered": "Text for please provide a valid page title.",
 	"bs-wantedarticle-title-invalid-chars": "Text for the following characters are not valid for use in a page title: $2.\n\nParameters:\n* $1 - the number of characters which are not valid - use for PLURAL distinction\n* $2 - a comma separated list of invalid characters",
-	"apihelp-bs-wantedarticle-description": "{{doc-apihelp-description|bs-wantedarticle}}"
+	"apihelp-bs-wantedarticle-description": "{{doc-apihelp-description|bs-wantedarticle}}",
+	"apihelp-bs-wantedarticle-summary": "{{doc-apihelp-summary|bs-wantedarticle}}"
 }

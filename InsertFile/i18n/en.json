@@ -39,5 +39,6 @@
 	"bs-insertfile-error-no-medialink": "No media link selected.",
 	"bs-insertfile-error-no-imagelink": "No image link selected.",
 	"apihelp-bs-insertfile-license-store-description": "Lists the licenses for the extension InsertFile.",
+	"apihelp-bs-insertfile-license-store-summary": "Lists the licenses for the extension InsertFile.",
 	"bs-insertfile-enable-align": "Enable"
 }
