@@ -19,6 +19,9 @@
 			"i18n"
 		]
 	},
+	"ExtensionMessagesFiles": {
+		"ArticleInfoMagic": "languages/ArticleInfo.i18n.magic.php"
+	},
 	"AutoloadClasses": {
 		"ArticleInfo": "ArticleInfo.class.php",
 		"ViewStateBarTopElementCategoryShortList": "views/view.StateBarTopElementCategoryShortList.php"

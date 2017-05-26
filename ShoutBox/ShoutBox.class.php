@@ -186,7 +186,6 @@ class ShoutBox extends BsExtensionMW {
 		$oOutputPage->addModules( 'ext.bluespice.shoutbox' );
 		$oOutputPage->addModules( 'ext.bluespice.shoutbox.mention' );
 
-		BsExtensionManager::setContext( 'MW::ShoutboxShow' );
 		return true;
 	}
 
@@ -197,7 +196,10 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) ) {
+		//Check if the context of the statebar is set. If not, we do not have
+		//to do anything
+		$aModules = $sktemplate->getOutput()->getModules();
+		if( !in_array( 'ext.bluespice.shoutbox', $aModules ) ) {
 			return true;
 		}
 

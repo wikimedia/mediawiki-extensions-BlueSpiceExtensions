@@ -114,20 +114,11 @@ class Blog extends BsExtensionMW {
 	 * @return boolean - always true
 	 */
 	public function onBSTopMenuBarCustomizerRegisterNavigationSites( &$aNavigationSites ) {
-		global $wgScriptPath;
-
-		// Reset all other active markers if Blog is active
-		if ( BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ) ) {
-			for ($i = 0; $i < sizeof($aNavigationSites); $i++ ) {
-				$aNavigationSites[$i]["active"] = false;
-			}
-		}
-
 		$aNavigationSites[] = array(
 			'id' => 'nt-blog',
 			'href' => SpecialPage::getTitleFor( 'Blog' )->getLinkURL(),
-			'active' => BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ),
-			'text' => wfMessage('bs-blog-blog')->plain(),
+			'active' => false, //Flag is not properly evaluated anyways. 'TopMenuBarCustomizer' does heavy caching.
+			'text' => wfMessage( 'bs-blog-blog' )->plain(),
 		);
 		return true;
 	}
@@ -388,7 +379,6 @@ class Blog extends BsExtensionMW {
 
 		// initialize local variables
 		$oErrorListView = new ViewTagErrorList( $this );
-		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
 
 		// get all config options
 		$iShowLimit             = BsConfig::get( 'MW::Blog::ShowLimit' );

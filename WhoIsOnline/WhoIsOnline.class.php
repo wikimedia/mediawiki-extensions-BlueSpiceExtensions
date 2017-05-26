@@ -128,7 +128,6 @@ class WhoIsOnline extends BsExtensionMW {
 	public function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
 		if ( !$this->getTitle()->userCan( 'read' ) ) return true;
 
-		BsExtensionManager::setContext( 'MW::WhoIsOnline::Show' );
 		$oOutputPage->addModules( 'ext.bluespice.whoisonline' );
 		return true;
 	}
