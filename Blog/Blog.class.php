@@ -93,7 +93,18 @@ class Blog extends BsExtensionMW {
 	 * extension.json callback
 	 */
 	public static function onRegistration() {
-		BsExtensionManager::registerNamespace( 'Blog', 2 );
+		global $wgExtraNamespaces, $bsgSystemNamespaces;
+		if( !defined( 'NS_BLOG' ) ) {
+			define( 'NS_BLOG', 1502 );
+			$wgExtraNamespaces[NS_BLOG] = 'Blog';
+			$bsgSystemNamespaces[1502] = 'NS_BLOG';
+		}
+
+		if( !defined( 'NS_BLOG_TALK' ) ) {
+			define( 'NS_BLOG_TALK', 1503 );
+			$wgExtraNamespaces[NS_BLOG_TALK] = 'Blog_talk';
+			$bsgSystemNamespaces[1503] = 'NS_BLOG_TALK';
+		}
 	}
 
 	/**
