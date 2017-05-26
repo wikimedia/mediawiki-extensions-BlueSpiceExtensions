@@ -30,7 +30,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
-class ReviewFormatter extends EchoBasicFormatter {
+class ReviewFormatter extends BsNotificationsFormatter {
 
 	/**
 	 * @param string    $payload
@@ -70,5 +70,4 @@ class ReviewFormatter extends EchoBasicFormatter {
 				break;
 		}
 	}
-
 }
