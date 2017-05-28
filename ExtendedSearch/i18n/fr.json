@@ -6,7 +6,8 @@
 			"Orikrin1998",
 			"Ltrlg",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Urhixidur"
 		]
 	},
 	"bs-extendedsearch-desc": "Plugin basé sur Apache Solr (http://lucene.apache.org/solr/) étendant la fonctionnalité de recherche",
@@ -26,7 +27,7 @@
 	"bs-extendedsearch-file-protocol-not-activated": "Pour indexer les fichiers liés dans les pages du wiki, le protocole « file » doit être activé dans votre wiki. Vous pouvez trouver plus d’information sur https://www.mediawiki.org/wiki/Manual:$wgUrlProtocols.",
 	"bs-extendedsearch-finished": "Terminé",
 	"bs-extendedsearch-fuzzy": "Une recherche exacte de « $1 » n’a trouvé aucun résultat. Il y a {{PLURAL:$2|$2 résultat similaire|$2 résultats similaires}}.",
-	"bs-extendedsearch-indexing-files-in-repo": "Indexation des fichiers téléchargés",
+	"bs-extendedsearch-indexing-files-in-repo": "Indexation des fichiers téléversés",
 	"bs-extendedsearch-indexing-external-files-in-repo": "Indexation des fichiers externes",
 	"bs-extendedsearch-indexing-linked-files": "Indexation de fichiers liés",
 	"bs-extendedsearch-indexing-wiki-articles": "Indexation des pages wiki",
@@ -55,7 +56,7 @@
 	"bs-extendedsearch-pref-scope-title": "Titre",
 	"bs-extendedsearch-pref-jumptotitle": "Les requêtes de recherche redirigent vers la page correspondante si elle existe",
 	"bs-extendedsearch-pref-indextylinked": "Fichiers d'index qui sont liés dans les pages wiki",
-	"bs-extendedsearch-pref-indextypesrepo": "Indexer les fichiers téléchargés",
+	"bs-extendedsearch-pref-indextypesrepo": "Indexer les fichiers téléversés",
 	"bs-extendedsearch-pref-indextypeswiki": "Indexer les pages wiki",
 	"bs-extendedsearch-pref-indextypesspecial": "Indexer les pages spéciales wiki",
 	"bs-extendedsearch-pref-limitresultdef": "Nombre de résultats sur la page spéciale :",
