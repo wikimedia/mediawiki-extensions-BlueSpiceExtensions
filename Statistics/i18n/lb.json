@@ -53,5 +53,6 @@
 	"bs-statistics-portlet-numberofeditsdesc": "Statistik vun der Zuel vun Ännerungen.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statistik vun der Zuel vu Säiten.",
 	"bs-statistics-portlet-numberofarticlesdesc": "Statistik vun der Zuel vun Artikelen.",
-	"bs-statistics-portletconfig-periodday": "Gëschter"
+	"bs-statistics-portletconfig-periodday": "Gëschter",
+	"right-statistic-viewspecialpage": "Accès op déi erweidert Statistik"
 }
