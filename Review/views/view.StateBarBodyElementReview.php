@@ -27,6 +27,7 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 	protected $aComments = array();
 	protected $oReview = null;
 	protected $aButtons = array();
+	protected $aNotes = array();
 
 	public function __construct() {
 		parent::__construct();
@@ -63,15 +64,15 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 			$aOut[] =	'<label for="bs-review-voteresponse-comment">';
 			$aOut[] =		wfMessage('bs-review-commentinputlabel')->plain();
 			$aOut[] =	'</label>';
-			$aOut[] =	XML::input( 
+			$aOut[] =	XML::input(
 				'bs-review-voteresponse-comment',
 				false,
 				'',
 				array('id' => 'bs-review-voteresponse-comment')
 			);
-			
+
 			foreach($this->aButtons as $aButton) {
-				$aOut[] = sprintf( 
+				$aOut[] = sprintf(
 					'<a id="%s" href="#" class="%s" title="%s">%s</a>',
 					$aButton['id'],
 					$aButton['class'],
@@ -79,14 +80,17 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 					$aButton['text']
 				);
 			}
-			$aOut[] =	'</div>';
+			foreach( $this->aNotes as $sNote ) {
+				$aOut[] = "<p class='bs-review-note'>" . $sNote . "</p>";
+			}
+			$aOut[] = '</div>';
 			$aOut[] = '<div>';
 		}
 		$aOut[] = '</div>';
 
 		return implode( "\n", $aOut );
 	}
-	
+
 	public function addButton($sId, $sClass, $sTitle, $sText) {
 		$this->aButtons[] = array(
 			'id' => $sId,
@@ -94,6 +98,10 @@ class ViewStateBarBodyElementReview extends ViewStateBarBodyElement {
 			'title' => $sTitle,
 			'text' => $sText
 		);
+	}
+
+	public function addNote( $sNoteText ) {
+		$this->aNotes[] = $sNoteText;
 	}
 
 	public function setStatusText( $sStatusText ) {
