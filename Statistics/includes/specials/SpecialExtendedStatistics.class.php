@@ -87,7 +87,7 @@ class SpecialExtendedStatistics extends BsSpecialPage {
 				intval( $wgRequest->getVal('width', 600) ),
 				intval( $wgRequest->getVal('height', 400) ),
 				wfEscapeShellArg( $sCacheDir.'/'.$sFileName.$sFileExt ),
-				wfEscapeShellArg( $sCacheDir )
+				wfEscapeShellArg( $sCacheDir.'/'.$sFileName.'.png' )
 			),
 			$wgSVGConverters[$wgSVGConverter]
 		)." 2>&1";
