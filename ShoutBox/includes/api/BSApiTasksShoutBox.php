@@ -138,6 +138,9 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 		$oReturn->payload['html'] = '';
 
 		if( $iArticleId < 1 ) {
+			$oReturn->message = wfMessage(
+				'bs-shoutbox-error-noarticleid'
+			)->plain();
 			return $oReturn;
 		}
 
@@ -275,8 +278,11 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 			? (int) $oTaskData->articleId
 			: 0
 		;
-		// TODO MRG (08.09.10 01:57): error message
+
 		if ( $iArticleId <= 0 ) {
+			$oReturn->message = wfMessage(
+				'bs-shoutbox-error-noarticleid'
+			)->plain();
 			return $oReturn;
 		}
 		$sMessage = isset( $oTaskData->message )
@@ -293,6 +299,12 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 				0,
 				BsConfig::get( 'MW::ShoutBox::MaxMessageLength' )
 			);
+		}
+		if( empty( $sMessage ) ) {
+			$oReturn->message = wfMessage(
+				'bs-shoutbox-entermessage'
+			)->plain();
+			return $oReturn;
 		}
 
 		$oDB = wfGetDB( DB_MASTER );
@@ -396,7 +408,7 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 			'bs-shoutbox-archive-success'
 		)->plain();
 		$this->runUpdates();
-
+		$oReturn->success = true;
 		return $oReturn;
 	}
 
