@@ -731,7 +731,7 @@ class Review extends BsExtensionMW {
 			$oUser = RequestContext::getMain()->getUser();
 		}
 
-		if( !$oTitle || $oTitle->isSpecial() || !$oTitle->exists() ) {
+		if( !$oTitle || $oTitle->isSpecialPage() || !$oTitle->exists() ) {
 			return $oStatus->merge(
 				Status::newFatal( 'bs-review-save-noid' )
 			);
@@ -831,7 +831,7 @@ class Review extends BsExtensionMW {
 			$oUser = RequestContext::getMain()->getUser();
 		}
 
-		if( !$oTitle || $oTitle->isSpecial() || !$oTitle->exists() ) {
+		if( !$oTitle || $oTitle->isSpecialPage() || !$oTitle->exists() ) {
 			return $oStatus->merge(
 				Status::newFatal( 'bs-review-save-noid' )
 			);
