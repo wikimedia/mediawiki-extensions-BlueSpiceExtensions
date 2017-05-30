@@ -28,10 +28,8 @@ Ext.define( 'BS.Review.StepDialog', {
 		});
 		this.setTitle( mw.message('bs-review-titleaddreviewer' ).plain() );
 		this.cbUsers = Ext.create( 'BS.form.UserCombo', {
-			anyMatch: true,
 			store: this.strUsers
 		});
-		this.cbUsers.getStore().sort('display_name', 'asc');
 
 		this.tfComment = Ext.create( 'Ext.form.TextField', {
 			labelAlign: 'right',
