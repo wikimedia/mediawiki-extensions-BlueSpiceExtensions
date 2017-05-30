@@ -115,10 +115,12 @@ class Avatars extends BsExtensionMW {
 			$oUserMiniProfileView->setOption('linktargethref', ''); # don't link to user page
 			return true;
 		}
+
 		# If user has set MW image or URL return immediately
-		if ($oUser->getOption('MW::UserImage')) {
+		if( !empty( $oUser->getOption( 'MW::UserImage' ) ) ) {
 			return true;
 		}
+
 		# Set default image in read-only mode or thumb creation might get triggered
 		if (wfReadOnly()) {
 			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DefaultUserImage'));
@@ -200,9 +202,10 @@ class Avatars extends BsExtensionMW {
 	 * @param User $oUser
 	 */
 	public static function unsetUserImage($oUser) {
-		if ($oUser->getOption('MW::UserImage')) {
-			$oUser->setOption('MW::UserImage', null);
+		if( $oUser->getOption( 'MW::UserImage' ) ) {
+			$oUser->setOption( 'MW::UserImage', false );
 			$oUser->saveSettings();
+			$oUser->invalidateCache();
 		}
 		return;
 	}
@@ -268,6 +271,8 @@ class Avatars extends BsExtensionMW {
 			if (!$oStatus->isGood())
 				throw new MWException('FATAL: Avatar thumbs could no be deleted!');
 			$oFile = BsFileSystemHelper::getFileFromRepoName($sAvatarFileName, 'Avatars');
+
+			$oUser->invalidateCache();
 		}
 		$sNewUserImageSrc = $oFile->createThumb($iAvatarWidth, $iAvatarHeight);
 		return $sNewUserImageSrc;
