@@ -61,5 +61,6 @@
 	"bs-statistics-portletconfig-periodday": "Hier",
 	"apihelp-bs-statistics-tasks-description": "Fournit les tâches courantes pour les statistiques",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Fournit un magasin avec les diagrammes disponibles",
-	"apihelp-bs-statistics-search-options-store-description": "Fournit un magasin avec les options de recherche disponibles"
+	"apihelp-bs-statistics-search-options-store-description": "Fournit un magasin avec les options de recherche disponibles",
+	"right-statistic-viewspecialpage": "Accès aux statistiques étendues"
 }
