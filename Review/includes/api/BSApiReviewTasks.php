@@ -248,7 +248,7 @@ class BSApiReviewTasks extends BSApiTasksBase {
 		;
 
 		$oTitle = Title::newFromID( $iPageId );
-		if( !$oTitle || $oTitle->isSpecial() || !$oTitle->exists() ) {
+		if( !$oTitle || $oTitle->isSpecialPage() || !$oTitle->exists() ) {
 			$oReturn->message = wfMessage(
 				'bs-review-save-noid'
 			)->plain();
