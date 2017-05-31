@@ -32,5 +32,6 @@
 	"bs-blog-tag-blog-desc": "Schließt einen Weblog von Artikel-, Diskussions- und Dateiseiten ein. Kann durch verschiedene Parameter angegeben werden. Dies kann in beliebiger Reihenfolge kombiniert werden.",
 	"bs-blog-tag-blogmore-desc": "Definiert die Länge des Teasers für den Blogbeitrag. Innerhalb des Beitrags am Ende des beabsichtigten Teasers festgelegt. Dadurch erscheint der Link „{{int:bs-blog-read-more}}“, der auf den ganzen Blogartikel verweist.",
 	"bs-blog-tag-blogtime-desc": "Fügt einen selbstdefinierten Zeitstempel zur Anzeige und Sortierung in Blogbeiträgen ein. Das Format ist JJJJMMTTSSmm.",
-	"bs-blog-tag-blogtime-err": "Das Format ist YYYYMMDDHHmm, d. h. für den 12. Jan. 2013 15:43 muss der Zeitstempel wie folgt angegeben sein: 201301121543"
+	"bs-blog-tag-blogtime-err": "Das Format ist YYYYMMDDHHmm, d. h. für den 12. Jan. 2013 15:43 muss der Zeitstempel wie folgt angegeben sein: 201301121543",
+	"bs-blog-rss-desc-blog": "Überblick über die Blogeinträge"
 }

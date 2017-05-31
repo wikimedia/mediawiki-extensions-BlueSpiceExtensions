@@ -826,7 +826,7 @@ class Blog extends BsExtensionMW {
 
 		$oChannel = RSSCreator::createChannel(
 			RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName ),
-			'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-rssstandards-description_page' )->plain()
+			'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-blog-rss-desc-blog' )->plain()
 		);
 
 		$oTitle = Title::makeTitle( $iNSid , 'Blog' );
