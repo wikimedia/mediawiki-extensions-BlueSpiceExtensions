@@ -278,4 +278,44 @@ class Avatars extends BsExtensionMW {
 		return $sNewUserImageSrc;
 	}
 
+	/**
+	 * Create an initial Avatar
+	 * @param User $user
+	 * @param boolean $autocreated
+	 * @return boolean
+	 */
+	public static function onLocalUserCreated( $user, $autocreated ) {
+		$oAvatars = BsExtensionManager::getExtension( 'Avatars' );
+		try{
+			$sNewPath = $oAvatars->generateAvatar( $user, array(), true );
+		} catch( Exception $e ) {
+			wfDebugLog(
+				'BS::Avatars',
+				'onLocalUserCreated: Error: '.$e->getMessage()
+			);
+		}
+		return true;
+	}
+
+	/**
+	 * Create an initial Avatar
+	 * @param UserManager $oUserManager
+	 * @param User $oUser
+	 * @param array $aMetaData
+	 * @param Status $oStatus
+	 * @param User $oPerformer
+	 * @return boolean
+	 */
+	public static function onBSUserManagerAfterAddUser( $oUserManager, $oUser, $aMetaData, &$oStatus, $oPerformer ) {
+		$oAvatars = BsExtensionManager::getExtension( 'Avatars' );
+		try{
+			$sNewPath = $oAvatars->generateAvatar( $oUser, array(), true );
+		} catch( Exception $e ) {
+			wfDebugLog(
+				'BS::Avatars',
+				'onBSUserManagerAfterAddUser: Error: '.$e->getMessage()
+			);
+		}
+		return true;
+	}
 }
