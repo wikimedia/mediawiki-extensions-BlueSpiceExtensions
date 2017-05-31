@@ -50,7 +50,9 @@
 		"remoteExtPath": "BlueSpiceExtensions/Avatars/resources"
 	},
 	"Hooks": {
-		"BeforePageDisplay": "Avatars::onBeforePageDisplay"
+		"BeforePageDisplay": "Avatars::onBeforePageDisplay",
+		"BSUserManagerAfterAddUser": "Avatars::onBSUserManagerAfterAddUser",
+		"LocalUserCreated": "Avatars::onLocalUserCreated"
 	},
 	"manifest_version": 1
 }
