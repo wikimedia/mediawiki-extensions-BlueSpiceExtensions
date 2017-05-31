@@ -39,5 +39,6 @@
 	"bs-blog-tag-blogtime-desc": "Used in InsertMagic extension, tag description for setting blog timestamp on every page.\n{{Related|Bs-tag-desc}}",
 	"bs-blog-tag-blogtime-err": "Error message on bs:blog:time tag when there is a wrong timestamp format.\nShould be YYYYMMDDHHmm (YmdHi).",
 	"bs-tag-blog": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output",
-	"action-blog-viewspecialpage": "placeholder to describe that view of special page \"{{int:bs-blog-blog}}\" is restricted for the current user\n\n{{Doc-action|blog-viewspecialpage}}"
+	"action-blog-viewspecialpage": "placeholder to describe that view of special page \"{{int:bs-blog-blog}}\" is restricted for the current user\n\n{{Doc-action|blog-viewspecialpage}}",
+	"bs-blog-rss-desc-blog": "Description of blog entry RSS feed"
 }
