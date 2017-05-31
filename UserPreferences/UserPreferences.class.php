@@ -146,6 +146,11 @@ class UserPreferences extends BsExtensionMW {
 	 * @return true always true to keep hook alive
 	 */
 	public function onUserSaveOptions( $user, &$options ) {
+		if( !$this->getUser()->equals( $user ) ) {
+			//Only do this for the current loggedin user, or else the current users
+			//settings will be saved into another user!
+			return true;
+		}
 		BsConfig::loadSettings();
 
 		$oCurrentTitle = $this->getTitle(); //May return null in CLI
