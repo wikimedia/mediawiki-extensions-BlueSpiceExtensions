@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Milicevic01",
-			"Сербијана"
+			"Сербијана",
+			"Obsuser"
 		]
 	},
 	"bs-insertfile-insert-image": "Убаци слику",
@@ -22,5 +23,6 @@
 	"bs-insertfile-uploadcomplete": "Ваша датотека је сачувана.",
 	"bs-insertfile-titlefile": "Убаци датотеку",
 	"bs-insertfile-license": "Лиценца",
-	"bs-insertfile-categories": "Категорије"
+	"bs-insertfile-categories": "Категорије",
+	"bs-insertfile-enable-align": "Омогући"
 }

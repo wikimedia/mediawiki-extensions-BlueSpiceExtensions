@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Zygimantus",
-			"Eitvys200"
+			"Eitvys200",
+			"Nuodas"
 		]
 	},
 	"bs-insertfile-desc": "Dialogas failų įkėlimui ir failo nuorodos įterpimui",
@@ -67,5 +68,6 @@
 	"bs-insertfile-error-no-medialink": "Nepasirinktas jokia medijos nuoroda.",
 	"bs-insertfile-error-no-imagelink": "Nepasirinkta jokia paveikslėlio nuoroda.",
 	"bs-insertfile-upload-waitmessage": "Įkėlimas vyksta ...",
-	"apihelp-bs-insertfile-license-store-description": "Nurodo InsertFile plėtinio licencijas."
+	"apihelp-bs-insertfile-license-store-description": "Nurodo InsertFile plėtinio licencijas.",
+	"bs-insertfile-enable-align": "Įgalinti"
 }

@@ -69,5 +69,6 @@
 	"bs-insertfile-error-no-medialink": "Ni izbrana nobena povezava medijskih vsebin.",
 	"bs-insertfile-error-no-imagelink": "Ni izbrana nobena povezava slike.",
 	"bs-insertfile-upload-waitmessage": "Nalaganje se izvaja ...",
-	"apihelp-bs-insertfile-license-store-description": "Navede dovoljenja za razširitev InsertFile."
+	"apihelp-bs-insertfile-license-store-description": "Navede dovoljenja za razširitev InsertFile.",
+	"bs-insertfile-enable-align": "Omogoči"
 }

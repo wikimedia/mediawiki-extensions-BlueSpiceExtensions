@@ -68,5 +68,6 @@
 	"bs-insertfile-error-no-medialink": "未选择媒体连接。",
 	"bs-insertfile-error-no-imagelink": "未选择图片连接。",
 	"bs-insertfile-upload-waitmessage": "上传中……",
-	"apihelp-bs-insertfile-license-store-description": "列举扩展InsertFile的许可协议。"
+	"apihelp-bs-insertfile-license-store-description": "列举扩展InsertFile的许可协议。",
+	"bs-insertfile-enable-align": "启用"
 }

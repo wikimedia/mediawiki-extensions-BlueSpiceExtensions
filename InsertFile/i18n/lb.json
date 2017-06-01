@@ -56,5 +56,6 @@
 	"bs-insertfile-linktext": "Tesxt weisen",
 	"bs-insertfile-no-link": "Kee Link.",
 	"bs-insertfile-error-no-imagelink": "Kee Bildlink erausgesicht.",
-	"bs-insertfile-upload-waitmessage": "Eroplueden am Gaang ..."
+	"bs-insertfile-upload-waitmessage": "Eroplueden am Gaang ...",
+	"bs-insertfile-enable-align": "Aschalten"
 }

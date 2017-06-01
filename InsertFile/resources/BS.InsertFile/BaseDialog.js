@@ -9,7 +9,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		'Ext.ux.grid.filter.BooleanFilter', 'Ext.ux.grid.filter.DateFilter',
 		'Ext.ux.grid.filter.DateTimeFilter', 'Ext.ux.grid.filter.ListFilter',
 		'Ext.ux.grid.filter.NumericFilter', 'Ext.ux.grid.filter.StringFilter',
-		'BS.InsertFile.UploadDialog', 'BS.model.File'
+		'BS.dialog.Upload', 'BS.model.File'
 	],
 	modal: true,
 	bodyPadding: 0,
@@ -111,18 +111,21 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 				}
 		});
 
-		this.dlgUpload = Ext.create('BS.InsertFile.UploadDialog',{
+		this.dlgUpload = new BS.dialog.Upload({
 			title: mw.message('bs-insertfile-labelupload').plain(),
 			id: this.getId()+'-upload-dlg',
-			allowedFileExtensions: this.allowedFileExtensions
+			allowedFileExtensions: this.allowedFileExtensions,
+			uploadPanelCfg: {
+				defaultFileNamePrefix: mw.config.get( 'wgTitle' ) //Without namespace prefix
+			}
 		});
 
 		this.dlgUpload.on( 'ok', this.dlgUploadOKClick, this );
 
 		this.btnUpload = Ext.create('Ext.Button',{
-			text: mw.message('bs-insertfile-labelupload').plain()
-			//glyph: 72
-			//iconCls: ''
+			tooltip: mw.message('bs-insertfile-labelupload').plain(),
+			glyph: true,
+			iconCls: 'bs-icon-upload'
 		});
 
 		this.btnUpload.on( 'click', this.btnUploadClick, this );

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Y-M D"
 		]
 	},
 	"bs-insertfile-insert-image": "Ensoc'hañ ur skeudenn",
@@ -53,5 +54,6 @@
 	"bs-insertfile-no-link": "Liamm ebet",
 	"bs-insertfile-error-no-medialink": "N'eus bet diuzet liamm media ebet.",
 	"bs-insertfile-error-no-imagelink": "N'eus bet diuzet liamm skeudenn ebet.",
-	"bs-insertfile-upload-waitmessage": "Ezporzhiadur o vont en-dro..."
+	"bs-insertfile-upload-waitmessage": "Ezporzhiadur o vont en-dro...",
+	"bs-insertfile-enable-align": "Gweredekaat"
 }
