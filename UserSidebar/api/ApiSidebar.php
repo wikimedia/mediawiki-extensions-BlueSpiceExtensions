@@ -68,6 +68,6 @@ class ApiSidebar extends ApiBase {
 	}
 
 	public function getHelpUrls() {
-		return 'http://help.blue-spice.org/index.php/Navigationsleiste';
+		return 'http://help.bluespice.com/index.php/Navigationsleiste';
 	}
 }
