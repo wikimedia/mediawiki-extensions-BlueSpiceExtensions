@@ -124,7 +124,7 @@ class PageAssignmentsWikiExplorerHooks {
 			$aData[$oRow->pa_page_id][] =
 				'<li>'.
 					'<a class="bs-pa-wikiexplorer-users" href="#">'.
-						BsCore::getUserDisplayName( $oUser ).
+						BsUserHelper::getUserDisplayName( $oUser ).
 					'</a>'.
 				'</li>'
 			;

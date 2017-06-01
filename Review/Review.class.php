@@ -996,7 +996,9 @@ class Review extends BsExtensionMW {
 				$aStep = array(
 					'user_id' => $oStep->user,
 					'user_name' => $oUser->getName(),
-					'user_display_name' => BsCore::getUserDisplayName( $oUser ),
+					'user_display_name' => BsUserHelper::getUserDisplayName(
+						$oUser
+					),
 					'comment' => $oStep->comment,
 					'status' => $oStep->status,
 					'sort_id' => $oStep->sort_id,
@@ -1071,7 +1073,7 @@ class Review extends BsExtensionMW {
 			$text = wfMessage( 'bs-review-reviewed-till', $oRev->getStartdate(), $oRev->getEnddate() )->plain();
 
 			$user = User::newFromId( $oRev->owner );
-			$sName = BsCore::getUserDisplayName( $user );
+			$sName = BsUserHelper::getUserDisplayName( $user );
 			$text .= '<br />' . wfMessage( 'bs-review-reviewed-till-extra', $user->getName(), $sName )->text();
 
 			$oReviewView->setStatusText( $text );
@@ -1107,7 +1109,7 @@ class Review extends BsExtensionMW {
 		}
 
 		$oReviewView->setVotable( true );
-		$sUserName = BsCore::getUserDisplayName( $oUser );
+		$sUserName = BsUserHelper::getUserDisplayName( $oUser );
 		$oReviewView->setComment( "<em>{$sUserName}:</em> {$step->comment}" );
 
 		wfRunHooks( 'BsReview::checkStatus::afterMessage', array( $step, $oReviewView ) );
@@ -1326,8 +1328,8 @@ class Review extends BsExtensionMW {
 		$oReviewProcess = BsReviewProcess::newFromPid( $iArticleId );
 		$oOwner = User::newFromID( $oReviewProcess->getOwner() );
 
-		$sUserName = BsCore::getUserDisplayName( $oUser );
-		$sOwnerName = BsCore::getUserDisplayName( $oOwner );
+		$sUserName = BsUserHelper::getUserDisplayName( $oUser );
+		$sOwnerName = BsUserHelper::getUserDisplayName( $oOwner );
 		if ( !empty( $initial_comment ) ) {
 			$initial_comment = "<em>{$sOwnerName}: </em>{$initial_comment}";
 		}
