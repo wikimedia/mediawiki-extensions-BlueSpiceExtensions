@@ -217,8 +217,8 @@ class BsPDFServlet {
 
 			$sSrcFilename = wfBaseName( $sSrcUrl );
 			$oAnchor = BsDOMHelper::getParentDOMElement( $oImageElement, array( 'a' ) );
-			if( $oAnchor instanceof DOMElement && $oAnchor->getAttribute( 'data-bs-filename' ) !== '' ) {
-				$sSrcFilename = $oAnchor->getAttribute( 'data-bs-filename' );
+			if( $oAnchor instanceof DOMElement && $oAnchor->getAttribute( 'data-bs-title' ) !== '' ) {
+				$sSrcFilename = $oAnchor->getAttribute( 'data-bs-title' );
 			}
 
 			$bIsThumb = UploadBase::isThumbName($sSrcFilename);
