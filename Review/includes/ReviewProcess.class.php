@@ -447,7 +447,7 @@ class BsReviewProcess {
 			'revs_user_id' => $owner_id,
 			'revs_status' => -1,
 			'revs_sort_id' => ++$iLastVotedId,
-			'revs_comment' => "<u>".BsCore::getUserDisplayName().": </u>".$sComment,
+			'revs_comment' => "<u>".BsUserHelper::getUserDisplayName().": </u>".$sComment,
 		);
 		foreach ($this->_aInjections as $oInjection) {
 			$oInjection->createStepDefault($data);

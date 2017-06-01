@@ -289,7 +289,7 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 			? (string) $oTaskData->message
 			: ''
 		;
-		$sNick = BsCore::getUserDisplayName( $this->getUser() );
+		$sNick = BsUserHelper::getUserDisplayName( $this->getUser() );
 		$sTimestamp = wfTimestampNow();
 		$iMsgMaxLenght = BsConfig::get( 'MW::ShoutBox::MaxMessageLength' );
 		$sMessage = htmlspecialchars( $sMessage, ENT_QUOTES, 'UTF-8' );
