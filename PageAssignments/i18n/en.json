@@ -66,5 +66,6 @@
 	"apihelp-bs-pageassignable-store-description": "Returns the list of assignees",
 	"apihelp-bs-pageassignment-store-description": "Returns assignments of the specific page",
 	"apihelp-bs-mypageassignment-store-description": "Returns pages assigned to current user",
-	"apihelp-bs-pageassignment-tasks-description": "Get or edit the list of assignments for specific page"
+	"apihelp-bs-pageassignment-tasks-description": "Get or edit the list of assignments for specific page",
+	"bs-pageassignments-assignee-special-everyone-label": "Everyone"
 }

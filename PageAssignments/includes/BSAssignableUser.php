@@ -64,4 +64,11 @@ class BSAssignableUser extends BSAssignableBase {
 		);
 	}
 
+	protected static function getQueryConds( $oUser ) {
+		return array(
+			'pa_assignee_type' => 'user',
+			'pa_assignee_key' => $oUser->getName()
+		);
+	}
+
 }

@@ -66,4 +66,12 @@ class BSAssignableGroup extends BSAssignableBase {
 
 	}
 
+	protected static function getQueryConds($oUser) {
+		$aGroups = $oUser->getEffectiveGroups();
+		return array(
+			'pa_assignee_type' => 'group',
+			'pa_assignee_key' => $aGroups
+		);
+	}
+
 }

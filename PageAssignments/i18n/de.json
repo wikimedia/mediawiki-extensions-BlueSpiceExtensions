@@ -65,5 +65,6 @@
 	"right-pageassignments": "Die Zuweisungen einer Seite bearbeiten können",
 	"prefs-pageassign": "Zuweisung",
 	"bs-usagetracker-pageassignments": "Seiten mit Zuweisungen",
-	"apihelp-bs-mypageassignment-store-description": "Gibt Seiten zurück, die dem aktuellen Benutzer zugewiesen sind."
+	"apihelp-bs-mypageassignment-store-description": "Gibt Seiten zurück, die dem aktuellen Benutzer zugewiesen sind.",
+	"bs-pageassignments-assignee-special-everyone-label": "Jeder"
 }
