@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Macofe",
-			"Dgstranz"
+			"Dgstranz",
+			"Javiersanp"
 		]
 	},
 	"bs-statistics-desc": "Módulo de estadísticas para BlueSpice",
@@ -60,5 +61,6 @@
 	"bs-statistics-portlet-numberofarticlesdesc": "Estadística del número de artículos.",
 	"bs-statistics-portletconfig-periodday": "Ayer",
 	"apihelp-bs-statistics-tasks-description": "Proporciona tareas comunes para estadísticas",
-	"apihelp-bs-statistics-available-diagrams-store-description": "Proporciona un almacén de diagramas disponibles"
+	"apihelp-bs-statistics-available-diagrams-store-description": "Proporciona un almacén de diagramas disponibles",
+	"right-statistic-viewspecialpage": "Acceso a estadísticas ampliadas"
 }

@@ -59,5 +59,6 @@
 	"bs-statistics-portletconfig-periodday": "昨天",
 	"apihelp-bs-statistics-tasks-description": "为统计提供一般任务",
 	"apihelp-bs-statistics-available-diagrams-store-description": "提供带可用图表的存储",
-	"apihelp-bs-statistics-search-options-store-description": "提供带可用搜索选项的存储"
+	"apihelp-bs-statistics-search-options-store-description": "提供带可用搜索选项的存储",
+	"right-statistic-viewspecialpage": "访问扩充统计"
 }

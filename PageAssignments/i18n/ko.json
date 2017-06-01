@@ -28,5 +28,6 @@
 	"notification-bs-pageassignments-user-group-add-subject": "$4 그룹에 추가됨",
 	"notification-bs-pageassignments-user-group-remove-summary": "당신은 $4 {{PLURAL:$5|그룹}}에서 제거되었습니다",
 	"notification-bs-pageassignments-user-group-remove-subject": "$4 {{PLURAL:$5|그룹}}에서 제거됨",
-	"prefs-pageassign": "과제"
+	"prefs-pageassign": "과제",
+	"bs-pageassignments-assignee-special-everyone-label": "모두"
 }

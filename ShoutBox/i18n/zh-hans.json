@@ -34,5 +34,6 @@
 	"bs-shoutbox-notifications-title-message-text": "您被$1（$4）在页面“$5”的一次喊叫中{{GENDER:$1|提及}}。\n\n您可以通过此链接访问页面：$3",
 	"bs-shoutbox-notifications-summary": "[[User:$1|$1]]在$3的呼喊中{{GENDER:$1|提到}}了您。",
 	"apihelp-bs-shoutbox-tasks-description": "为ShoutBox提供常用任务",
-	"bs-usagetracker-shoutbox": "带留言版记录的条目"
+	"bs-usagetracker-shoutbox": "带留言版记录的条目",
+	"bs-shoutbox-error-noarticleid": "未提供条目ID。"
 }

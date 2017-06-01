@@ -10,7 +10,7 @@
 			"Urhixidur"
 		]
 	},
-	"bs-extendedsearch-desc": "Plugin basé sur Apache Solr (http://lucene.apache.org/solr/) étendant la fonctionnalité de recherche",
+	"bs-extendedsearch-desc": "Greffon de recherche étendue Apache Solr (http://lucene.apache.org/solr/)",
 	"specialextendedsearch": "Recherche avancée",
 	"prefs-extendedsearch": "Recherche avancée",
 	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Catégorie|Catégories}} : $2",

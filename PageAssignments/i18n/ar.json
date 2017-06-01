@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Moud hosny"
+			"Moud hosny",
+			"Mido"
 		]
 	},
 	"pageassignments": "التعيينات",
@@ -19,5 +20,6 @@
 	"notification-bs-pageassignments-page-move-subject": "تم نقل $2",
 	"notification-bs-pageassignments-page-edit-subject": "تم تحرير $2",
 	"notification-bs-pageassignments-page-delete-summary": "$3 تم {{الجنس:$2|حذف}} بواسطة $1",
-	"notification-bs-pageassignments-user-group-add-subject": "مضاف إلى المجموعة $4"
+	"notification-bs-pageassignments-user-group-add-subject": "مضاف إلى المجموعة $4",
+	"bs-pageassignments-assignee-special-everyone-label": "الجميع"
 }
