@@ -49,6 +49,6 @@ class ApiRSSStandardsPagesStore extends BSApiWikiPageStore {
 		$oRow->displayText = $sPrefixedText;
 		$oRow->feedUrl = $sFeedLink;
 
-		return parent::makeDataSet( $row );
+		return parent::makeDataSet( $oRow );
 	}
 }
