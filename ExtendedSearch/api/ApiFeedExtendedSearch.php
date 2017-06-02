@@ -12,12 +12,12 @@ class ApiFeedExtendedSearch extends ApiBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		
+
 		//HINT: includes/api/ApiFeedContributions.php
 		//HINT: includes/api/ApiFeedWatchlist.php
-		global $wgSitename, $wgLanguageCode, $wgEnableOpenSearchSuggest, 
+		global $wgSitename, $wgLanguageCode, $wgEnableOpenSearchSuggest,
 				$wgSearchSuggestCacheExpiry, $wgFeed, $wgFeedClasses;
-		
+
 		if( !$wgFeed ) {
 			$this->dieUsage( 'Syndication feeds are not available', 'feed-unavailable' );
 		}
@@ -25,30 +25,31 @@ class ApiFeedExtendedSearch extends ApiBase {
 		if( !isset( $wgFeedClasses[ $params['feedformat'] ] ) ) {
 			$this->dieUsage( 'Invalid subscription feed type', 'feed-invalid' );
 		}
-		
+
 		$msg = wfMessage( 'specialextendedsearch' )->inContentLanguage()->text();
 		$feedTitle = $wgSitename. ' - ' . $msg . ' [' .$wgLanguageCode. ']';
 		$feedUrl = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getFullURL();
 		$feed = new $wgFeedClasses[$params['feedformat']]( $feedTitle, htmlspecialchars( $msg ), $feedUrl );
-				
+
 		$feedItems = array();
 		try {
+
 			$oSearchService = SearchService::getInstance();
-			$oSearchRequest   = new BsSearchRequest( 'apifeed' );
-			$oSearchRequestMW = new SearchRequestMW( $oSearchRequest );
-			$oSearchOptions   = new SearchOptions( $oSearchRequestMW );
+			$oSearchRequest = new SearchRequest();
+			$oSearchRequest->init();
+			$oSearchOptions = new SearchOptions( $oSearchRequest, RequestContext::getMain() );
+			$oSearchOptions->readInSearchRequest();
 
 			// Prepare search input
 			$sSearchString = $params['q'];
 			$sSearchString = urldecode( $sSearchString );
-			$sSearchString = BsSearchService::preprocessSearchInput( $sSearchString );
-			$sSearchString = BsSearchService::sanitzeSearchString( $sSearchString );
+			$sSearchString = ExtendedSearchBase::preprocessSearchInput( $sSearchString );
+			$sSearchString = ExtendedSearchBase::sanitzeSearchString( $sSearchString );
+
+			$oSearchOptions->setOption('searchString', $oSearchOptions);
 
 			// Make solr query suitable for autocomplete
 			$aSolrQuery = $oSearchOptions->getSolrQuery();
-
-			//$sSearchString = 'titleWord:("'.$params['q'].'") OR titleWord:('.$params['q'].') OR titleReverse:(*'.$params['q'].'*) OR textWord:("'.$params['q'].'") OR textWord:('.$params['q'].') OR textReverse:(*'.$params['q'].'*)';
-			$sSearchString = 'titleWord:('.$sSearchString.') OR titleWord:('.$sSearchString.'*) OR titleReverse:(*'.$sSearchString.'*) OR textWord:('.$sSearchString.') OR textReverse:(*'.$sSearchString.'*)';
 
 			$aSearchOptions = $aSolrQuery['searchOptions'];
 			$aSearchOptions['facet']       = 'off';
@@ -69,21 +70,21 @@ class ApiFeedExtendedSearch extends ApiBase {
 				if ( !$oTitle->userCan( 'read' ) ) continue;
 
 				$oHighlightData = $aHits->highlighting->{$doc->uid};
-				if ( isset( $oHighlightData->textWord ) ) { 
-					$aHighlightsnippets = $oHighlightData->textWord; 
+				if ( isset( $oHighlightData->textWord ) ) {
+					$aHighlightsnippets = $oHighlightData->textWord;
 				} else if ( isset( $oHighlightData->textReverse ) ) {
 					$aHighlightsnippets = $oHighlightData->textReverse;
 				}
-				
+
 				$sTextFragment = '';
 				foreach ( $aHighlightsnippets as $sFrag ) {
 					$sFrag = strip_tags( $sFrag, '<em>' );
 					if ( empty( $sFrag ) ) continue;
 					$sTextFragment .= "{$sFrag}<br />";
 				}
-				
-				$feedItems[] = new FeedItem( 
-					$doc->title, 
+
+				$feedItems[] = new FeedItem(
+					$doc->title,
 					$sTextFragment,
 					$oTitle->getFullURL()
 				);
