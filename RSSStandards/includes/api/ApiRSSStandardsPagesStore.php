@@ -26,42 +26,29 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  */
 
-class ApiRSSStandardsPagesStore extends BSApiExtJSStoreBase {
+class ApiRSSStandardsPagesStore extends BSApiWikiPageStore {
 
-	protected function makeData( $sQuery = '' ) {
-
-		$aPageRSS = array();
-
-		$dbr = wfGetDB( DB_SLAVE );
-
-		$res = $dbr->select(
-			'page',
-			'*',
-			array(),
-			__METHOD__,
-			array( 'ORDER BY' => 'page_title' )
-		);
-
+	public function makeDataSet( $oRow ) {
 		$oSpecialRSS = SpecialPage::getTitleFor( 'RSSFeeder' );
 		$sUserName   = $this->getUser()->getName();
 		$sUserToken  = $this->getUser()->getToken();
+		$oTitle = Title::newFromID( $oRow->page_id );
+		$sPrefixedText = $oTitle->getPrefixedText();
+		$sFeedLink = $oSpecialRSS->getLinkUrl(
+			array(
+				'Page' => 'followPage',
+				'p'    => $oRow->page_title,
+				'ns'   => $oRow->page_namespace,
+				'u'    => $sUserName,
+				'h'    => $sUserToken
+			)
+		);
 
-		while ( $row = $res->fetchObject() ) {
-			$oTitle = Title::newFromRow($row);
-			$aPageRSS[] = (object) array(
-				'page' => $oTitle->getPrefixedText(),
-				'url'  => $oSpecialRSS->getLinkUrl(
-					array(
-						'Page' => 'followPage',
-						'p'    => $row->page_title,
-						'ns'   => $row->page_namespace,
-						'u'    => $sUserName,
-						'h'    => $sUserToken
-					)
-				)
-			);
-		}
+		$oRow->type = 'wikipage';
+		$oRow->prefixedText = $sPrefixedText;
+		$oRow->displayText = $sPrefixedText;
+		$oRow->feedUrl = $sFeedLink;
 
-		return $aPageRSS;
+		return parent::makeDataSet( $row );
 	}
 }
