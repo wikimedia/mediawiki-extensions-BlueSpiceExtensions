@@ -23,7 +23,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * For further information visit http://www.blue-spice.org
+ * For further information visit http://www.bluespice.com
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @author     Tobias Weichart <weichart@hallowelt.com>

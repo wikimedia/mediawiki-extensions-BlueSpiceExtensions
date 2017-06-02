@@ -106,7 +106,7 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		}
 		//(09.05.2012)PW: added helpdeskurls to mI18n-files
 		//$baseUrl = BsConfig::get('MW::ExtensionInfo::HelpdeskBaseUrl');
-		$baseUrl = 'http://help.blue-spice.org/index.php';
+		$baseUrl = 'http://help.bluespice.com/index.php';
 		$sExtensionName = $aExtensionInfo['name'];
 		return "$baseUrl/$sExtensionName";
 	}
