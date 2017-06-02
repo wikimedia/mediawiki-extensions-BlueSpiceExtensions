@@ -75,7 +75,7 @@ class RSSFeeder extends BsExtensionMW {
 			'config' => array(
 				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
 				'height' => 660,
-				'rssurl' => 'http://blog.blue-spice.org/feed/'
+				'rssurl' => 'http://blog.bluespice.com/feed/'
 			),
 			'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
 			'description' => wfMessage( 'bs-rssfeeder-rss-desc' )->plain()
@@ -98,7 +98,7 @@ class RSSFeeder extends BsExtensionMW {
 			'config' => array(
 				'title' => wfMessage( 'bs-rssfeeder-rss' )->plain(),
 				'height' => 610,
-				'rssurl' => 'http://blog.blue-spice.org/feed/'
+				'rssurl' => 'http://blog.bluespice.com/feed/'
 			)
 		);
 
