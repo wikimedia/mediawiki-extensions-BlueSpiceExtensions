@@ -36,5 +36,8 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/RSSStandards/resources"
 	},
+	"Hooks": {
+		"UnitTestsList": "RSSStandards::onUnitTestsList"
+	},
 	"manifest_version": 1
 }
