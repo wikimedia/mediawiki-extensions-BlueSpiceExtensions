@@ -63,5 +63,6 @@
 	"bs-insertfile-no-link": "Nessun collegamento",
 	"bs-insertfile-error-no-imagelink": "Immagine del collegamento non selezionata.",
 	"bs-insertfile-upload-waitmessage": "Caricamento in corso ...",
-	"apihelp-bs-insertfile-license-store-description": "Elenca le licenze per l'estensione InsertFile."
+	"apihelp-bs-insertfile-license-store-description": "Elenca le licenze per l'estensione InsertFile.",
+	"bs-insertfile-enable-align": "Attiva"
 }

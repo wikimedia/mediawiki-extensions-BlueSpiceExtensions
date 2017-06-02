@@ -10,5 +10,6 @@
 	"bs-insertfile-button-file-title": "'Nzerisce o cange 'nu file",
 	"bs-insertfile-uploadsdisabled": "Le carecaminde sò disabbilitate sus a sta uicchi.",
 	"bs-insertfile-filename": "Nome d'u file",
-	"bs-insertfile-uploadfilefieldlabel": "Nome d'u file de destinazione"
+	"bs-insertfile-uploadfilefieldlabel": "Nome d'u file de destinazione",
+	"bs-insertfile-enable-align": "Abbilite"
 }

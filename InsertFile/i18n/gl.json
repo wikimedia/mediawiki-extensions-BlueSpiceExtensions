@@ -67,5 +67,6 @@
 	"bs-insertfile-error-no-medialink": "Non se seleccionou ningunha ligazón de multimedia.",
 	"bs-insertfile-error-no-imagelink": "Non se seleccionou ningunha ligazón de imaxe.",
 	"bs-insertfile-upload-waitmessage": "Subida en curso...",
-	"apihelp-bs-insertfile-license-store-description": "Lista as licenzas da extensión InsertFile."
+	"apihelp-bs-insertfile-license-store-description": "Lista as licenzas da extensión InsertFile.",
+	"bs-insertfile-enable-align": "Activar"
 }
