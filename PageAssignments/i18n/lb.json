@@ -15,5 +15,6 @@
 	"notification-bs-pageassignments-page-delete-subject": "$2 gouf geläscht",
 	"notification-bs-pageassignments-user-group-add-summary": "Dir gouft bei de Grupp $4 derbäigesat",
 	"notification-bs-pageassignments-user-group-add-subject": "Bei de Grupp $4 derbäigesat",
-	"notification-bs-pageassignments-user-group-remove-summary": "Dir gouft erausgeholl aus {{PLURAL:$5|der Grupp|de Gruppen}} $4"
+	"notification-bs-pageassignments-user-group-remove-summary": "Dir gouft erausgeholl aus {{PLURAL:$5|der Grupp|de Gruppen}} $4",
+	"bs-pageassignments-assignee-special-everyone-label": "Jiddwereen"
 }
