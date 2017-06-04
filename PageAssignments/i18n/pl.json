@@ -15,5 +15,6 @@
 	"notification-bs-pageassignments-page-delete-body": "$1 {{GENDER:$2|usunął|usunęła}} stronę $2",
 	"notification-bs-pageassignments-user-group-add-subject": "Dodano do grupy $4",
 	"notification-bs-pageassignments-user-group-remove-summary": "Usunięto cię z {{PLURAL:$5|grupy|grup}} $4",
-	"notification-bs-pageassignments-user-group-remove-subject": "Usunięto z {{PLURAL:$5|grupy|grup}} $4"
+	"notification-bs-pageassignments-user-group-remove-subject": "Usunięto z {{PLURAL:$5|grupy|grup}} $4",
+	"bs-pageassignments-assignee-special-everyone-label": "Wszyscy"
 }
