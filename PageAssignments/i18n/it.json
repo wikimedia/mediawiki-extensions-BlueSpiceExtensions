@@ -42,5 +42,6 @@
 	"bs-pageassignments-yourassignments": "Le tue assegnazioni",
 	"right-pageassignable": "Appare nell'elenco degli utenti assegnabili",
 	"right-pageassignments": "Modifica le assegnazioni di una pagina",
-	"bs-usagetracker-pageassignments": "pagine con assegnazioni"
+	"bs-usagetracker-pageassignments": "pagine con assegnazioni",
+	"bs-pageassignments-assignee-special-everyone-label": "Tutti"
 }
