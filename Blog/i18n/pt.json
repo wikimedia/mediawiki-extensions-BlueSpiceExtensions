@@ -35,5 +35,6 @@
 	"bs-blog-tag-blogtime-desc": "Insere uma data e hora definidas por si para a publicação, para efeitos de apresentação e ordenação. O formato é AAAAMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "O formato tem de ser AAAAMMDDHHmm, isto é, para 12 de janeiro de 2013 a data e hora será 201301121543",
 	"bs-tag-blog": "o elemento blogue",
-	"action-blog-viewspecialpage": "ver a página especial \"{{int:bs-blog-blog}}\""
+	"action-blog-viewspecialpage": "ver a página especial \"{{int:bs-blog-blog}}\"",
+	"bs-blog-rss-desc-blog": "Feed com uma visão geral das entradas do blogue"
 }
