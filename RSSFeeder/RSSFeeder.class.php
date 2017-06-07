@@ -190,4 +190,9 @@ class RSSFeeder extends BsExtensionMW {
 		wfRunHooks( 'BSRSSFeederGetRegisteredFeeds', array( &self::$aFeeds ) );
 		return self::$aFeeds;
 	}
+
+	public static function onUnitTestsList( array &$paths ) {
+		$paths[] = __DIR__ . '/tests/phpunit/';
+		return true;
+	}
 }

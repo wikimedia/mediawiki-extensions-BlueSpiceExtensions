@@ -45,5 +45,8 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/RSSFeeder/resources"
 	},
+	"Hooks": {
+		"UnitTestsList": "RSSFeeder::onUnitTestsList"
+	},
 	"manifest_version": 1
 }
