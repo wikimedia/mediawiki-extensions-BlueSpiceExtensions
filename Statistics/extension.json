@@ -58,6 +58,9 @@
 		"BSApiStatisticsAvailableDiagramsStore": "includes/api/BSApiStatisticsAvailableDiagramsStore.php",
 		"BSApiStatisticsTasks": "includes/api/BSApiStatisticsTasks.php"
 	},
+	"Hooks": {
+		"UnitTestsList": "Statistics::onUnitTestsList"
+	},
 	"ResourceModules": {
 		"ext.bluespice.statistics": {
 			"scripts": [
