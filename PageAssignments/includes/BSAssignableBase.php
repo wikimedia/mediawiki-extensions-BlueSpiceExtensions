@@ -134,5 +134,13 @@ abstract class BSAssignableBase implements JsonSerializable {
 		}
 	}
 
-	abstract protected static function getQueryConds( $oUser );
+	/**
+	 * Gets the class related query condition to get the assignments from
+	 * database for a specific user
+	 * @param type $oUser
+	 * @throws MWException, when not overwritten
+	 */
+	protected static function getQueryConds( $oUser ) {
+		throw new MWException( "MIssing method: ".__CLASS__.":".__METHOD__ );
+	}
 }
