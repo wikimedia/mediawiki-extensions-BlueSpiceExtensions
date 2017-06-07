@@ -5,6 +5,8 @@
  * @group Database
  * @group API
  * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpicePageAssignments
  */
 class BSApiPageAssignmentTasksTest extends BSApiTasksTestBase {
 	protected function getModuleName () {

@@ -4,6 +4,8 @@
  * @group medium
  * @group API
  * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpicePageAssignments
  */
 class BSApiPageAssignmentStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 24;
