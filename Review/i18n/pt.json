@@ -112,12 +112,11 @@
 	"notification-bs-review-finish-and-autoflag-summary": "[[User:$1|$1]] {{GENDER:$1|terminou}} o processo de revisão e marcou automaticamente $3 como estável",
 	"notification-bs-review-finish-and-autoflag-subject": "$1 {{GENDER:$1|terminou}} a revisão de \"$2\"",
 	"notification-bs-review-finish-and-autoflag-body": "$1 {{GENDER:$1|terminou}} a sua revisão de \"$2\". A página foi automaticamente marcada como estável.",
-	"apihelp-bs-reviewoverview-store": "Lista um resumo dos processos de revisão",
 	"apihelp-bs-reviewoverview-store-param-userid": "Filtra a lista de processos de revisão pelo identificador do utilizador <var>userID</var>",
-	"apihelp-bs-review-tasks": "Permite a manipulação das revisões",
 	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtra a lista de utilizadores por permissões, para <var>articleId</var>",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Lista utilizadores que podem fazer parte de um processo de revisão. Permite ordenar, filtrar e paginar. Implementa parâmetros ExtJS Store.",
 	"apihelp-bs-reviewoverview-store-description": "Lista um resumo dos processos de revisão. Permite ordenar, filtrar e paginar. Implementa parâmetros ExtJS Store.",
 	"apihelp-bs-review-tasks-description": "Permite a manipulação das revisões",
-	"bs-usagetracker-review": "revisões"
+	"bs-usagetracker-review": "revisões",
+	"bs-review-pref-permissions": "Dar permissões adicionais a utilizadores com atribuições de páginas"
 }

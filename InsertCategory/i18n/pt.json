@@ -10,6 +10,7 @@
 	"bs-insertcategory-insertcat": "Inserir categoria",
 	"prefs-insertcategory": "Inserir categoria",
 	"bs-insertcategory-pref-withparents": "Inserir categoria com as suas parentes",
+	"bs-insertcategory-pref-uploadpanelintegration": "Definir categorias de página por padrão no diálogo de carregamento",
 	"bs-insertcategory-title": "Inserir categoria",
 	"bs-insertcategory-cat-label": "Atribuição:",
 	"bs-insertcategory-success": "Categoria adicionada",
