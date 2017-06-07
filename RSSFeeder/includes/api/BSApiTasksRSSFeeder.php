@@ -95,7 +95,7 @@ class BSApiTasksRSSFeeder extends BSApiTasksBase {
 			? (int) $oTaskData->count
 			: 10
 		;
-		if ( isset( $oTaskData->url ) && filter_var( $oTaskData->url, FILTER_SANITIZE_URL ) ) {
+		if ( isset( $oTaskData->url ) && filter_var( $oTaskData->url, FILTER_VALIDATE_URL ) ) {
 			$sUrl = $oTaskData->url;
 		} else {
 			$oReturn->message = wfMessage(
