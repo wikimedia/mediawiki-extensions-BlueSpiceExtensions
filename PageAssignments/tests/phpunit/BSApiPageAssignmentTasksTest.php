@@ -9,6 +9,9 @@
  * @group BlueSpicePageAssignments
  */
 class BSApiPageAssignmentTasksTest extends BSApiTasksTestBase {
+
+	protected $tablesUsed = [ 'bs_pageassignments' ];
+
 	protected function getModuleName () {
 		return 'bs-pageassignment-tasks';
 	}
@@ -29,13 +32,14 @@ class BSApiPageAssignmentTasksTest extends BSApiTasksTestBase {
 			)
 		);
 
-		$this->assertTrue( $oData->success );
+		$this->assertTrue( $oData->success, "API returned failure state" );
 
 		$this->assertSelect(
 			'bs_pageassignments',
 			array( 'pa_assignee_key', 'pa_assignee_type' ),
 			array( 'pa_page_id = 1' ),
-			array(  array( 'UTSysop', 'user' ), array( 'sysop', 'group' ) )
+			array(  array( 'UTSysop', 'user' ), array( 'sysop', 'group' ) ),
+			"Assignment was not added to database"
 		);
 
 		$oData = $this->executeTask(
@@ -47,13 +51,14 @@ class BSApiPageAssignmentTasksTest extends BSApiTasksTestBase {
 			)
 		);
 
-		$this->assertTrue( $oData->success );
+		$this->assertTrue( $oData->success, "API returned failure state" );
 
 		$this->assertSelect(
 			'bs_pageassignments',
 			array( 'pa_assignee_key', 'pa_assignee_type' ),
 			array( 'pa_page_id = 1' ),
-			array()
+			array(),
+			"Assignment was not removed from database"
 		);
 	}
 
@@ -69,7 +74,7 @@ class BSApiPageAssignmentTasksTest extends BSApiTasksTestBase {
 			)
 		);
 
-		$this->assertTrue( $oData->success );
+		$this->assertTrue( $oData->success, "API returned failure state" );
 
 		$oData = $this->executeTask(
 			'getForPage',
@@ -78,17 +83,17 @@ class BSApiPageAssignmentTasksTest extends BSApiTasksTestBase {
 			)
 		);
 
-		$this->assertTrue( $oData->success );
-		$this->assertArrayHasKey( 0, $oData->payload );
-		$this->assertArrayHasKey( 1, $oData->payload );
+		$this->assertTrue( $oData->success, "API returned failure state" );
+		$this->assertArrayHasKey( 0, $oData->payload, "No assignment was returned" );
+		$this->assertArrayHasKey( 1, $oData->payload, "Second assignment was not returned" );
 
 		$aAssignment = $oData->payload[0];
-		$this->assertArrayHasKey( 'type', $aAssignment );
-		$this->assertEquals( 'user', $aAssignment['type'] );
-		$this->assertArrayHasKey( 'id', $aAssignment );
-		$this->assertEquals( 'user/UTSysop', $aAssignment['id'] );
-		$this->assertArrayHasKey( 'text', $aAssignment );
-		$this->assertEquals( 'UTSysop', $aAssignment['text'] );
-		$this->assertArrayHasKey( 'anchor', $aAssignment );
+		$this->assertArrayHasKey( 'type', $aAssignment, "Assignment type is missing" );
+		$this->assertEquals( 'user', $aAssignment['type'], "Assignment type is not 'user'" );
+		$this->assertArrayHasKey( 'id', $aAssignment, "Assignment id is missing" );
+		$this->assertEquals( 'user/UTSysop', $aAssignment['id'], "Assignment id is not 'user/UTSysop'" );
+		$this->assertArrayHasKey( 'text', $aAssignment, "Assignment text is missing" );
+		$this->assertEquals( 'UTSysop', $aAssignment['text'], "Assignment text is not 'UTSysop'" );
+		$this->assertArrayHasKey( 'anchor', $aAssignment, "Assignment anchor is missing" );
 	}
 }
