@@ -7,10 +7,10 @@ class BSApiStatisticsTasks extends BSApiTasksBase {
 			'params' => [
 				'examples' => [
 					[
-						'diagram' => 'Number of pages',
-						'grain' => 'Year',
+						'diagram' => 'BsDiagramNumberOfPages',
+						'grain' => 'Y',
 						'from' => '01.01.2017',
-						'mode' => 'List',
+						'mode' => 'list',
 						'to' => '31.12.2017'
 					]
 				],
