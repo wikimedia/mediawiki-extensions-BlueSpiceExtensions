@@ -3,7 +3,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	requires: [
 		'Ext.data.Store', 'Ext.form.TextField', 'Ext.ux.form.SearchField',
 		'Ext.Button', 'Ext.toolbar.Toolbar', 'Ext.grid.Panel', 'Ext.form.Panel',
-		'Ext.ux.grid.FiltersFeature',
+		'Ext.ux.grid.FiltersFeature', 'Ext.toolbar.Paging',
 		//Unfortunately 'Ext.ux.grid.FiltersFeature' only 'uses' those classes, but not 'requires' them...
 		'Ext.ux.grid.menu.ListMenu', 'Ext.ux.grid.menu.RangeMenu',
 		'Ext.ux.grid.filter.BooleanFilter', 'Ext.ux.grid.filter.DateFilter',
@@ -72,8 +72,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 
 		this.stImageGrid = Ext.create('Ext.data.Store', {
 			height: 200,
-			buffered: true, // allow the grid to interact with the paging scroller by buffering
-			pageSize: 50000,
+			pageSize: 25,
 			proxy: {
 				type: 'ajax',
 				url: mw.util.wikiScript('api'),
@@ -139,10 +138,17 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			toolBarItems.push( this.btnUpload );
 		}
 
-		this.tbGridTools = Ext.create('Ext.toolbar.Toolbar', {
-			dock: 'top',
-			items: toolBarItems
-		});
+		this.tbGridTools = [
+			new Ext.toolbar.Toolbar( {
+				dock: 'top',
+				items: toolBarItems
+			} ),
+			new Ext.toolbar.Paging( {
+				dock: 'bottom',
+				store: this.stImageGrid,
+				displayInfo: true
+			} )
+		];
 
 		var filterFeature = this.makeGridFilterFeatureConfig();
 
@@ -152,11 +158,6 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			store: this.stImageGrid,
 			loadMask: true,
 			dockedItems: this.tbGridTools,
-			plugins: {
-				ptype: 'bufferedrenderer',
-				trailingBufferZone: 20,
-				leadingBufferZone: 20
-			},
 			features: [ new Ext.ux.grid.FiltersFeature(filterFeature) ],
 			selModel: {
 				pruneRemoved: false
