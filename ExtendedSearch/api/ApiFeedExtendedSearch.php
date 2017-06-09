@@ -15,8 +15,7 @@ class ApiFeedExtendedSearch extends ApiBase {
 
 		//HINT: includes/api/ApiFeedContributions.php
 		//HINT: includes/api/ApiFeedWatchlist.php
-		global $wgSitename, $wgLanguageCode, $wgEnableOpenSearchSuggest,
-				$wgSearchSuggestCacheExpiry, $wgFeed, $wgFeedClasses;
+		global $wgSitename, $wgLanguageCode, $wgFeed, $wgFeedClasses;
 
 		if( !$wgFeed ) {
 			$this->dieUsage( 'Syndication feeds are not available', 'feed-unavailable' );
@@ -43,8 +42,20 @@ class ApiFeedExtendedSearch extends ApiBase {
 			// Prepare search input
 			$sSearchString = $params['q'];
 			$sSearchString = urldecode( $sSearchString );
-			$sSearchString = ExtendedSearchBase::preprocessSearchInput( $sSearchString );
-			$sSearchString = ExtendedSearchBase::sanitzeSearchString( $sSearchString );
+			$sSearchString = ExtendedSearchBase::preprocessSearchInput(
+				$sSearchString
+			);
+			$sSearchString = ExtendedSearchBase::sanitzeSearchString(
+				$sSearchString
+			);
+			$sWildcardedSearchString = SearchService::wildcardSearchstring(
+				$sSearchString
+			);
+			$sSearchString =
+				"titleEdge:($sWildcardedSearchString OR $sSearchString )"
+				." OR title:($sWildcardedSearchString OR $sSearchString)"
+				." OR textWord:($sWildcardedSearchString OR $sSearchString)"
+			;
 
 			$oSearchOptions->setOption('searchString', $oSearchOptions);
 
@@ -59,7 +70,6 @@ class ApiFeedExtendedSearch extends ApiBase {
 
 			// params are query, offset, limit, params
 			$aHits = $oSearchService->search( $sSearchString, 0, 25, $aSearchOptions );
-
 			foreach( $aHits->response->docs as $doc ) {
 				if ( $doc->namespace != '999' ) {
 					$oTitle = Title::makeTitle( $doc->namespace, $doc->title );
@@ -91,7 +101,11 @@ class ApiFeedExtendedSearch extends ApiBase {
 			}
 		}
 		catch ( Exception $e ) {
-			$this->dieUsage( $e->getMessage(), 'feed-invalid' );
+			$feedItems[] = new FeedItem(
+				'feed-invalid',
+				$e->getMessage(),
+				$this->getTitle()->getFullURL()
+			);
 		}
 
 		ApiFormatFeedWrapper::setResult( $this->getResult(), $feed, $feedItems );
