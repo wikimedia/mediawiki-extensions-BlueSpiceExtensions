@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Vitorvicentevalente",
-			"Macofe"
+			"Macofe",
+			"Hamilton Abreu"
 		]
 	},
 	"bs-readers-desc": "Cria uma lista de pessoas que lêem a página",
@@ -18,5 +19,7 @@
 	"bs-readers-header-username": "Nome de utilizador(a)",
 	"bs-readers-header-readerspath": "Leitor",
 	"bs-readers-header-ts": "Data",
-	"bs-readers-header-page": "Página"
+	"bs-readers-header-page": "Página",
+	"apihelp-bs-readers-data-store-description": "Obter informação de um leitor de uma página específica.",
+	"apihelp-bs-readers-users-store-description": "Obter informação de todos os leitores de uma página específica."
 }
