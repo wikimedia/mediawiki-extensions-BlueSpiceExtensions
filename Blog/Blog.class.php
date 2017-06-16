@@ -702,52 +702,61 @@ class Blog extends BsExtensionMW {
 
 		$oRequest = $this->getRequest();
 		$sTitle = $oRequest->getVal( 'p', '' );
-		$iNSid = $oRequest->getInt( 'ns', 0 );
+		$iNS = $oRequest->getInt( 'ns', 0 );
 		$aNamespaces = $wgContLang->getNamespaces();
 
-		if( $iNSid != 0 ) {
-			$sPageName = $aNamespaces[$iNSid].':'.$sTitle;
+		if( $iNS != 0 ) {
+			$sPageName = $aNamespaces[$iNS] . ':' . $sTitle;
 		} else {
 			$sPageName = $sTitle;
 		}
-
-		/*$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			array( 'page', 'recentchanges' ),
-			'*',
-			array(
-				'page_title'     => $sTitle,
-				'page_namespace' => $iNSid,
-				'rc_timestamp > '. $dbr->timestamp( time() - intval( 7 * 86400 ) )
-			),
-			__METHOD__,
-			array( 'ORDER BY' => 'rc_timestamp DESC' ),
-			array(
-				'page'=> array( 'LEFT JOIN', 'rc_cur_id = page_id' )
-			)
-		);*/
 
 		$oChannel = RSSCreator::createChannel(
 			RSSCreator::xmlEncode( $wgSitename . ' - ' . $sPageName ),
 			'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], wfMessage( 'bs-blog-rss-desc-blog' )->plain()
 		);
 
-		$oTitle = Title::makeTitle( $iNSid , 'Blog' );
-		$aSubpages = $oTitle->getSubpages();
+		$aSubpages = $this->getBlogPages( $iNS );
 
 		foreach( $aSubpages as $oSubpage ) {
-//			$oPageCP = new BsPageContentProvider();
 			if( $oSubpage instanceof Title ) {}
 			$entry = RSSItemCreator::createItem(
 				$oSubpage->getText(),
 				$oSubpage->getFullURL(),
 				BsPageContentProvider::getInstance()->getContentFromTitle( $oSubpage )
-//				$oPageCP->getHTMLContentFor( $oSubpage )
 			);
 			$entry->setPubDate( wfTimestamp( TS_UNIX, $oSubpage->getTouched() ) );
 			$oChannel->addItem($entry);
 		}
 		return $oChannel->buildOutput();
+	}
+
+	protected function getBlogPages( $iNS ) {
+		$aSubpages = array();
+		if( $iNS == NS_BLOG ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				array( 'page' ),
+				array( 'page_title', 'page_namespace'),
+				array(
+					'page_namespace' => $iNS
+				),
+				__METHOD__
+			);
+			foreach( $res as $row ) {
+				$oTmpTitle = Title::newFromRow( $row );
+				$aSubpages[] = $oTmpTitle;
+			}
+		} else {
+			$oTitle = Title::newFromText( 'Blog', $iNS );
+			if( $oTitle && $oTitle instanceof Title ) {
+				$aSubpages = $oTitle->getSubpages();
+				BSDebug::logVar($aSubpages);
+			}
+
+		}
+
+		return $aSubpages;
 	}
 
 	// TODO: make RSSStandards methods more generic
@@ -761,7 +770,7 @@ class Blog extends BsExtensionMW {
 		$select->setName( 'selFeedNsBlog' );
 		$select->setLabel( wfMessage( 'bs-ns' )->plain() );
 
-		$aNamespacesTemp = BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA, NS_BLOG, NS_BLOG_TALK, NS_FILE ) );
+		$aNamespacesTemp = BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_SPECIAL, NS_MEDIA, NS_FILE ) );
 		$aNamespaces = array();
 		foreach( $aNamespacesTemp as $index => $name ) {
 			if ( $index % 2 == 0 ) {
