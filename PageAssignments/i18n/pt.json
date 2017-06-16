@@ -64,5 +64,10 @@
 	"right-pageassignable": "Aparecer na lista de utilizadores a quem podem ser atribuídas páginas",
 	"right-pageassignments": "Editar as atribuições de uma página",
 	"prefs-pageassign": "Atribuição",
-	"bs-usagetracker-pageassignments": "páginas atribuídas"
+	"bs-usagetracker-pageassignments": "páginas atribuídas",
+	"apihelp-bs-pageassignable-store-description": "Devolve a lista daqueles a quem foram atribuídas páginas",
+	"apihelp-bs-pageassignment-store-description": "Devolve as atribuições da página específica",
+	"apihelp-bs-mypageassignment-store-description": "Devolve as páginas atribuídas ao utilizador atual",
+	"apihelp-bs-pageassignment-tasks-description": "Obter ou editar a lista de atribuições para uma página específica",
+	"bs-pageassignments-assignee-special-everyone-label": "Todos"
 }
