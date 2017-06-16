@@ -67,8 +67,12 @@
 	"prefs-pageassign": "Assignment\n{{Identical|Assignment}}",
 	"bs-usagetracker-pageassignments": "Name of the descriptor used in [[Special:UsageTracker|Special:UsageTracker]] output",
 	"apihelp-bs-pageassignable-store-description": "{{doc-apihelp-description|bs-pageassignable-store}}",
+	"apihelp-bs-pageassignable-store-summary": "{{doc-apihelp-summary|bs-pageassignable-store}}",
 	"apihelp-bs-pageassignment-store-description": "{{doc-apihelp-description|bs-pageassignment-store}}",
+	"apihelp-bs-pageassignment-store-summary": "{{doc-apihelp-summary|bs-pageassignment-store}}",
 	"apihelp-bs-mypageassignment-store-description": "{{doc-apihelp-description|bs-mypageassignment-store}}",
+	"apihelp-bs-mypageassignment-store-summary": "{{doc-apihelp-summary|bs-mypageassignment-store}}",
 	"apihelp-bs-pageassignment-tasks-description": "{{doc-apihelp-description|bs-pageassignment-tasks}}",
+	"apihelp-bs-pageassignment-tasks-summary": "{{doc-apihelp-summary|bs-pageassignment-tasks}}",
 	"bs-pageassignments-assignee-special-everyone-label": "Label for combobox list entry that assignes all users to a certain page\n{{Identical|Everyone}}"
 }

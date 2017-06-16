@@ -68,5 +68,6 @@
 	"bs-insertmagic-label-desc": "Description",
 	"bs-insertmagic-label-examples": "Examples",
 	"bs-insertmagic-label-see-also": "See also",
-	"apihelp-bs-insertmagic-data-store-description": "Lists all items for the InsertMagic dialog"
+	"apihelp-bs-insertmagic-data-store-description": "Lists all items for the InsertMagic dialog",
+	"apihelp-bs-insertmagic-data-store-summary": "Lists all items for the InsertMagic dialog"
 }

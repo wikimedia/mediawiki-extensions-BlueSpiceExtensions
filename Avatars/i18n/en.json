@@ -22,5 +22,6 @@
 	"bs-avatars-set-userimage-saved": "The user picture was saved.",
 	"bs-avatars-file-upload-fieldset-title": "Picture upload",
 	"bs-avatars-auto-generate-fieldset-title": "Auto generate avatar",
-	"apihelp-bs-avatars-tasks-description": "Uploading, generating and setting user avatars"
+	"apihelp-bs-avatars-tasks-description": "Uploading, generating and setting user avatars",
+	"apihelp-bs-avatars-tasks-summary": "Uploading, generating and setting user avatars"
 }

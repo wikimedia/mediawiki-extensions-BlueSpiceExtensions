@@ -23,5 +23,7 @@
 	"bs-readers-header-ts": "Column headline for \"time and date\".\n{{Identical|Date}}",
 	"bs-readers-header-page": "Column headline for wikipage title\n{{Identical|Page}}",
 	"apihelp-bs-readers-data-store-description": "{{doc-apihelp-description|bs-readers-data-store}}",
-	"apihelp-bs-readers-users-store-description": "{{doc-apihelp-description|bs-readers-users-store}}"
+	"apihelp-bs-readers-data-store-summary": "{{doc-apihelp-summary|bs-readers-data-store}}",
+	"apihelp-bs-readers-users-store-description": "{{doc-apihelp-description|bs-readers-users-store}}",
+	"apihelp-bs-readers-users-store-summary": "{{doc-apihelp-summary|bs-readers-users-store}}"
 }

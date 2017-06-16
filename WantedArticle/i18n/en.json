@@ -35,5 +35,6 @@
 	"bs-wantedarticle-suggest-page": "Suggest page \"$1\".",
 	"bs-wantedarticle-info-nothing-entered": "Please provide a valid page title.",
 	"bs-wantedarticle-title-invalid-chars": "The following {{PLURAL:$1|character is|characters are}} not valid for use in a page title: $2",
-	"apihelp-bs-wantedarticle-description": "Provides the wanted article api for BlueSpice."
+	"apihelp-bs-wantedarticle-description": "Provides the wanted article api for BlueSpice.",
+	"apihelp-bs-wantedarticle-summary": "Provides the wanted article api for BlueSpice."
 }
