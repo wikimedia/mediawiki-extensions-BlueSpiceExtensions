@@ -9,6 +9,7 @@
 	"bs-rssfeeder-desc": "Uma extensão para obter RSS válido, para qualquer extensão que tenha uma função buildRSS",
 	"rssfeeder": "<i>Feeder</i> RSS",
 	"apihelp-bs-rssfeeder-tasks-description": "Fornece tarefas comuns para o RSSFeeder",
+	"apihelp-bs-rssfeeder-tasks-summary": "Fornece tarefas comuns para o RSSFeeder",
 	"bs-rssfeeder-pagetext": "Pode subscrever os seguintes <i>feeds</i> RSS:",
 	"bs-rssfeeder-recent-changes": "Mudanças recentes",
 	"bs-rssfeeder-pages": "Página",

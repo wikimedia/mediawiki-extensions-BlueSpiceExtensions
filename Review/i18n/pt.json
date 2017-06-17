@@ -115,8 +115,11 @@
 	"apihelp-bs-reviewoverview-store-param-userid": "Filtra a lista de processos de revisão pelo identificador do utilizador <var>userID</var>",
 	"apihelp-bs-reviewpossiblereviewers-store-param-articleid": "Filtra a lista de utilizadores por permissões, para <var>articleId</var>",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Lista utilizadores que podem fazer parte de um processo de revisão. Permite ordenar, filtrar e paginar. Implementa parâmetros ExtJS Store.",
+	"apihelp-bs-reviewpossiblereviewers-store-summary": "Lista os utilizadores que podem fazer parte de um processo de revisão. Permite ordenar, filtrar e paginar. Implementa os parâmetros ExtJS Store.",
 	"apihelp-bs-reviewoverview-store-description": "Lista um resumo dos processos de revisão. Permite ordenar, filtrar e paginar. Implementa parâmetros ExtJS Store.",
+	"apihelp-bs-reviewoverview-store-summary": "Lista um resumo dos processos de revisão. Permite ordenar, filtrar e paginar. Implementa parâmetros ExtJS Store.",
 	"apihelp-bs-review-tasks-description": "Permite a manipulação das revisões",
+	"apihelp-bs-review-tasks-summary": "Permite a manipulação de revisões",
 	"bs-usagetracker-review": "revisões",
 	"bs-review-pref-permissions": "Dar permissões adicionais a utilizadores com atribuições de páginas"
 }

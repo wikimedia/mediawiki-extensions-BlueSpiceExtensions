@@ -59,7 +59,10 @@
 	"bs-statistics-portlet-numberofarticlesdesc": "Estatística do número de artigos.",
 	"bs-statistics-portletconfig-periodday": "Ontem",
 	"apihelp-bs-statistics-tasks-description": "Fornece tarefas comuns para estatísticas",
+	"apihelp-bs-statistics-tasks-summary": "Fornece tarefas comuns para estatísticas",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Fornece armazenamento com diagramas disponíveis",
+	"apihelp-bs-statistics-available-diagrams-store-summary": "Fornece armazenamento com diagramas disponíveis",
 	"apihelp-bs-statistics-search-options-store-description": "Fornece armazenamento com opções de pesquisa disponíveis",
+	"apihelp-bs-statistics-search-options-store-summary": "Fornece armazenamento com opções de pesquisa disponíveis",
 	"right-statistic-viewspecialpage": "Acesso às estatísticas detalhadas"
 }

@@ -36,5 +36,6 @@
 	"bs-wantedarticle-suggest-page": "Página sugerida \"$1\".",
 	"bs-wantedarticle-info-nothing-entered": "Por favor, forneça um título válido para a página.",
 	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|O seguinte caráter não é válido|Os seguintes carateres não são válidos}} para uso no título de uma página: $2",
-	"apihelp-bs-wantedarticle-description": "Fornece a API dos artigos desejados para o BlueSpice."
+	"apihelp-bs-wantedarticle-description": "Fornece a API dos artigos desejados para o BlueSpice.",
+	"apihelp-bs-wantedarticle-summary": "Fornece a API dos artigos desejados para o BlueSpice."
 }

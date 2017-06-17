@@ -46,7 +46,9 @@
 	"bs-namespacemanager-ns-config-saved": "A configuração dos domínios foi gravada.",
 	"bs-namespacemanager-error-ns-config-not-saved": "Não foi possível gravar a configuração dos domínios em $1.",
 	"apihelp-bs-namespace-store-description": "Lista todos os domínios e configurações arbitrárias. Permite ordenação, filtragem e paginação. Implementa parâmetros ExtJS Store.",
+	"apihelp-bs-namespace-store-summary": "Lista todos os domínios e configurações arbitrárias. Permite ordenação, filtragem e paginação. Implementa parâmetros ExtJS Store.",
 	"apihelp-bs-namespace-tasks-description": "Permite alterar a configuração dos domínios.",
+	"apihelp-bs-namespace-tasks-summary": "Permite a modificação da configuração dos espaços nominais.",
 	"action-namespacemanager-viewspecialpage": "ver a página especial de administração de domínios",
 	"namespacemanager": "Administração de domínios"
 }

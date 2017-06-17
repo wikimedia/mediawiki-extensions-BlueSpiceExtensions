@@ -21,5 +21,7 @@
 	"bs-readers-header-ts": "Data",
 	"bs-readers-header-page": "Página",
 	"apihelp-bs-readers-data-store-description": "Obter informação de um leitor de uma página específica.",
-	"apihelp-bs-readers-users-store-description": "Obter informação de todos os leitores de uma página específica."
+	"apihelp-bs-readers-data-store-summary": "Obter informação de um leitor de uma página específica.",
+	"apihelp-bs-readers-users-store-description": "Obter informação de todos os leitores de uma página específica.",
+	"apihelp-bs-readers-users-store-summary": "Obter informação de todos os leitores de uma página específica."
 }

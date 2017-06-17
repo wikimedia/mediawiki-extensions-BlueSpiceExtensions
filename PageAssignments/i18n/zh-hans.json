@@ -64,8 +64,12 @@
 	"prefs-pageassign": "分配",
 	"bs-usagetracker-pageassignments": "带分配的页面",
 	"apihelp-bs-pageassignable-store-description": "返回分配者列表",
+	"apihelp-bs-pageassignable-store-summary": "返回分配者列表",
 	"apihelp-bs-pageassignment-store-description": "返回指定页面的分配",
+	"apihelp-bs-pageassignment-store-summary": "返回指定页面的分配",
 	"apihelp-bs-mypageassignment-store-description": "返回分配给当前用户的页面",
+	"apihelp-bs-mypageassignment-store-summary": "返回分配给当前用户的页面",
 	"apihelp-bs-pageassignment-tasks-description": "获取或编辑指定页面的分配列表",
+	"apihelp-bs-pageassignment-tasks-summary": "获取或编辑指定页面的分配列表",
 	"bs-pageassignments-assignee-special-everyone-label": "大家"
 }

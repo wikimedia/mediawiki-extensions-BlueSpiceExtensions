@@ -66,8 +66,12 @@
 	"prefs-pageassign": "Atribuição",
 	"bs-usagetracker-pageassignments": "páginas atribuídas",
 	"apihelp-bs-pageassignable-store-description": "Devolve a lista daqueles a quem foram atribuídas páginas",
+	"apihelp-bs-pageassignable-store-summary": "Devolve a lista daqueles a quem foram atribuídas páginas",
 	"apihelp-bs-pageassignment-store-description": "Devolve as atribuições da página específica",
+	"apihelp-bs-pageassignment-store-summary": "Devolve as atribuições da página específica",
 	"apihelp-bs-mypageassignment-store-description": "Devolve as páginas atribuídas ao utilizador atual",
+	"apihelp-bs-mypageassignment-store-summary": "Devolve as páginas atribuídas ao utilizador atual",
 	"apihelp-bs-pageassignment-tasks-description": "Obter ou editar a lista de atribuições para uma página específica",
+	"apihelp-bs-pageassignment-tasks-summary": "Obter ou editar a lista de atribuições para uma página específica",
 	"bs-pageassignments-assignee-special-everyone-label": "Todos"
 }

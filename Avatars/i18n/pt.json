@@ -23,5 +23,6 @@
 	"bs-avatars-set-userimage-saved": "A imagem de utilizador foi gravada.",
 	"bs-avatars-file-upload-fieldset-title": "Carregamento de imagem",
 	"bs-avatars-auto-generate-fieldset-title": "Gerar automaticamente uma imagem de perfil",
-	"apihelp-bs-avatars-tasks-description": "Carregar, gerar e definir imagens de perfil dos utilizadores"
+	"apihelp-bs-avatars-tasks-description": "Carregar, gerar e definir imagens de perfil dos utilizadores",
+	"apihelp-bs-avatars-tasks-summary": "Carregar, gerar e definir imagens de perfil dos utilizadores"
 }
