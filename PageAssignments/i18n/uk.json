@@ -64,7 +64,12 @@
 	"prefs-pageassign": "Призначення",
 	"bs-usagetracker-pageassignments": "сторінки з призначеннями",
 	"apihelp-bs-pageassignable-store-description": "Виводить список користувачів, що отримали призначення",
+	"apihelp-bs-pageassignable-store-summary": "Виводить список користувачів, що отримали призначення",
 	"apihelp-bs-pageassignment-store-description": "Виводить призначення для конкретної сторінки",
+	"apihelp-bs-pageassignment-store-summary": "Виводить призначення для конкретної сторінки",
 	"apihelp-bs-mypageassignment-store-description": "Виводить сторінки, призначені конкретному користувачеві",
-	"apihelp-bs-pageassignment-tasks-description": "Отримати або змінити список призначень для конкретної сторінки"
+	"apihelp-bs-mypageassignment-store-summary": "Виводить сторінки, призначені конкретному користувачеві",
+	"apihelp-bs-pageassignment-tasks-description": "Отримати або змінити список призначень для конкретної сторінки",
+	"apihelp-bs-pageassignment-tasks-summary": "Отримати або змінити список призначень для конкретної сторінки",
+	"bs-pageassignments-assignee-special-everyone-label": "Усі"
 }

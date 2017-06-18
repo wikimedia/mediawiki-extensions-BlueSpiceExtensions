@@ -69,5 +69,6 @@
 	"bs-insertmagic-label-desc": "Опис",
 	"bs-insertmagic-label-examples": "Приклади",
 	"bs-insertmagic-label-see-also": "Див. також",
-	"apihelp-bs-insertmagic-data-store-description": "Виводить усі елементи для діалогу InsertMagic"
+	"apihelp-bs-insertmagic-data-store-description": "Виводить усі елементи для діалогу InsertMagic",
+	"apihelp-bs-insertmagic-data-store-summary": "Перелічує всі елементи для діалогу InsertMagic"
 }

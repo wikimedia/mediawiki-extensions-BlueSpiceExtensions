@@ -37,5 +37,6 @@
 	"bs-wantedarticle-suggest-page": "Запропонувати сторінку «$1».",
 	"bs-wantedarticle-info-nothing-entered": "Будь ласка, вкажіть дійсний заголовок сторінки.",
 	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Наступний символ не придатний|Наступні символи не придатні}} для використання у заголовку сторінки: $2",
-	"apihelp-bs-wantedarticle-description": "Забезпечує API бажаної статті для BlueSpice."
+	"apihelp-bs-wantedarticle-description": "Забезпечує API бажаної статті для BlueSpice.",
+	"apihelp-bs-wantedarticle-summary": "Забезпечує API бажаної статті для BlueSpice."
 }

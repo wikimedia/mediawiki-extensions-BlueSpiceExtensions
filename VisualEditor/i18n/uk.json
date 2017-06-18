@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-visualeditor-desc": "Візуальний редактор для MediaWiki",
 	"prefs-visualeditor": "Візуальний редактор",
 	"apihelp-bs-visualeditor-tasks-description": "Надає завдання для розширення візуального редактора BlueSpice.",
+	"apihelp-bs-visualeditor-tasks-summary": "Надає завдання для розширення візуального редактора BlueSpice.",
 	"bs-visualeditor-editbutton-hint": "Візуальний редактор",
 	"bs-visualeditor-pref-disablens": "Відключити у просторах назв:",
 	"bs-visualeditor-pref-use": "Використовувати WYSIWYG-редактор за замовчуванням",

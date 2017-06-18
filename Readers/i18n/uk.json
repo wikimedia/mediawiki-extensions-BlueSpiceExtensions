@@ -22,5 +22,7 @@
 	"bs-readers-header-ts": "Дата",
 	"bs-readers-header-page": "Сторінка",
 	"apihelp-bs-readers-data-store-description": "Отримати інформацію про читача конкретної сторінки.",
-	"apihelp-bs-readers-users-store-description": "Отримати інформацію про всіх читачів конкретної сторінки."
+	"apihelp-bs-readers-data-store-summary": "Отримати інформацію про читача конкретної сторінки.",
+	"apihelp-bs-readers-users-store-description": "Отримати інформацію про всіх читачів конкретної сторінки.",
+	"apihelp-bs-readers-users-store-summary": "Отримати інформацію про всіх читачів конкретної сторінки."
 }

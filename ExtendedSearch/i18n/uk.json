@@ -109,6 +109,7 @@
 	"extendedsearchadmin": "Розширене адміністрування пошуку",
 	"bs-extendedsearch-create-page": "Створити сторінку «$1».",
 	"apihelp-feedextendedsearch-description": "Пошук у вікі за допомогою протоколу OpenSearch",
+	"apihelp-feedextendedsearch-summary": "Пошук у вікі за допомогою протоколу OpenSearch",
 	"apihelp-feedextendedsearch-param-q": "Рядок пошуку",
 	"apihelp-feedextendedsearch-param-feedformat": "Максимальна кількість результатів для виведення",
 	"apihelp-feedextendedsearch-param-user": "Не робити нічого, якщо значенням $wgEnableOpenSearchSuggest є «false»",

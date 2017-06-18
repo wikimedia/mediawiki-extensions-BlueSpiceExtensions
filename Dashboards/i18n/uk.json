@@ -21,7 +21,10 @@
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Вікісторінка",
 	"apihelp-bs-dashboard-task-param-dc": "Параметр керування кешем. Використовується в ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Перераховує усі доступні портлети",
+	"apihelp-bs-dashboards-store-summary": "Перелічує всі доступні портлети",
 	"apihelp-bs-dashboards-tasks-description": "Збереження конфігурації панелі",
+	"apihelp-bs-dashboards-tasks-summary": "Збереження конфігурації панелі",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Видає контент для деяких віджетів панелі",
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Видає контент для деяких віджетів панелі",
 	"action-dashboards-viewspecialpage-userdashboard": "перегляд спеціальної сторінки «{{int:userdashboard}}»"
 }

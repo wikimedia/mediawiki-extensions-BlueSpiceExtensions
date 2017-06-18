@@ -64,9 +64,13 @@
 	"bs-flexiskin-usebackground": "Використати фонове зображення",
 	"bs-flexiskin-labelcurrentbackground": "Поточне зображення",
 	"apihelp-bs-flexiskin-tasks-description": "Дозволяє управляти гнучкими темами оформлення",
+	"apihelp-bs-flexiskin-tasks-summary": "Дозволяє управляти гнучкими темами оформлення",
 	"apihelp-bs-flexiskin-store-description": "Виводить список доступних гнучких тем оформлення",
+	"apihelp-bs-flexiskin-store-summary": "Перелічує всі доступні гнучкі теми оформлення",
 	"apihelp-bs-flexiskin-upload-description": "Дозволяє вантажити файли до гнучкої теми оформлення",
+	"apihelp-bs-flexiskin-upload-summary": "Дозволяє завантажувати файли в гнучку тему оформлення",
 	"apihelp-bs-flexiskin-upload-store-description": "Виводить список завантажених файлів гнучкої теми оформлення",
+	"apihelp-bs-flexiskin-upload-store-summary": "Перелічує файли, завантажені до гнучкої теми оформлення",
 	"action-flexiskin-viewspecialpage": "перегляд спеціальної сторінки «Flexiskin»",
 	"flexiskin": "Налаштування теми",
 	"bs-flexiskin-button-upload-image-tooltip": "Завантажити нове зображення"

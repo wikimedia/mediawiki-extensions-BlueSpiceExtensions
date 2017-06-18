@@ -61,6 +61,10 @@
 	"bs-statistics-portlet-numberofarticlesdesc": "Статистика кількості статей.",
 	"bs-statistics-portletconfig-periodday": "Вчора",
 	"apihelp-bs-statistics-tasks-description": "Забезпечує загальні завдання для статистики",
+	"apihelp-bs-statistics-tasks-summary": "Забезпечує типові завдання для статистики",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Забезпечує сховище з доступними діаграмами",
-	"apihelp-bs-statistics-search-options-store-description": "Забезпечує сховище з доступними пошуковими опціями"
+	"apihelp-bs-statistics-available-diagrams-store-summary": "Забезпечує сховище з доступними діаграмами",
+	"apihelp-bs-statistics-search-options-store-description": "Забезпечує сховище з доступними пошуковими опціями",
+	"apihelp-bs-statistics-search-options-store-summary": "Забезпечує сховище з доступними пошуковими опціями",
+	"right-statistic-viewspecialpage": "Доступ до розширеної статистики"
 }
