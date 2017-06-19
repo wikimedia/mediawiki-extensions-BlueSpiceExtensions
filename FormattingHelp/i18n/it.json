@@ -21,5 +21,6 @@
 	"bs-formattinghelp-help-hr": "Linea orizzontale",
 	"bs-formattinghelp-help-template": "Template",
 	"bs-formattinghelp-help-templatename": "Nome template",
-	"apihelp-bs-formattinghelp-description": "Fornisce le attività per l'estensione FormattingHelp."
+	"apihelp-bs-formattinghelp-description": "Fornisce le attività per l'estensione FormattingHelp.",
+	"apihelp-bs-formattinghelp-summary": "Fornisce le attività per l'estensione FormattingHelp."
 }

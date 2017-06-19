@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Guycn2"
+			"Guycn2",
+			"המקיסט"
 		]
 	},
 	"bs-review-desc": "הוספת פונקציונליות של זרימת עבודה לעמודים",
+	"action-workflowview": "לגשת לממשק הסקירה",
+	"action-workflowedit": "ליצור או לערוך סקירות",
+	"action-workflowlist": "לצפות ברשימת הסוקרים",
 	"right-workflowview": "גישה לממשק הסקירה",
 	"right-workflowedit": "יצירה ועריכה של סקירות",
-	"right-workflowlist": "צפייה ברשימת הסוקרים"
+	"right-workflowlist": "צפייה ברשימת הסוקרים",
+	"apihelp-bs-review-tasks-summary": "מאפשר שינוי של ביקורות"
 }

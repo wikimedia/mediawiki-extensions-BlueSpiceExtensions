@@ -22,5 +22,6 @@
 	"bs-contextmenu-user-mail": "Enviar un correo",
 	"bs-contextmenu-user-talk": "Dejar unha mensaxe na páxina de discusión",
 	"bs-contextmenu-file-download": "Descargar o ficheiro",
-	"apihelp-bs-contextmenu-tasks-description": "Fornece os elementos do menú contextual no contexto"
+	"apihelp-bs-contextmenu-tasks-description": "Fornece os elementos do menú contextual no contexto",
+	"apihelp-bs-contextmenu-tasks-summary": "Fornece os elementos do menú contextual no contexto"
 }

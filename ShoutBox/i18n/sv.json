@@ -4,7 +4,8 @@
 			"Jopparn",
 			"Lokal Profil",
 			"Jenniesarina",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Josve05a"
 		]
 	},
 	"bs-shoutbox-desc": "Lägger till en tolkfunktion för att bädda in din egen shoutbox",
@@ -34,5 +35,6 @@
 	"echo-category-title-bs-shoutbox-mention-cat": "Avisering för omnämnande i ett rop",
 	"bs-shoutbox-notifications-title-message-subject": "Du har blivit omnämnd",
 	"bs-shoutbox-notifications-title-message-text": "Du har {{GENDER:$1|nämnts}} av $1 ($4) i ett rop på sidan \"$5.\"\n\nDu kan besöka sidan via denna länk:\n$3",
-	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|nämnde}} dig i ett rop på $3."
+	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|nämnde}} dig i ett rop på $3.",
+	"bs-shoutbox-error-noarticleid": "Ingen artikel-ID angivet."
 }

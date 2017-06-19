@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Guycn2",
-			"LaG roiL"
+			"LaG roiL",
+			"המקיסט"
 		]
 	},
 	"bs-extendedsearch-desc": "Apache Solr&rlm; (http://lucene.apache.org/solr/) המבוסס על תוסף חיפוש כדי להרחיב את הפונקציונליות של החיפוש",
@@ -12,5 +13,6 @@
 	"bs-extendedsearch-facetsetting-op-or": "או",
 	"action-extendedsearch-viewspecialpage": "לצפות בדף המיוחד \"{{int:specialextendedsearch}}\"",
 	"action-extendedsearchadmin-viewspecialpage": "לצפות בדף המיוחד \"{{int:extendedsearchadmin}}\"",
-	"extendedsearchadmin": "ניהול חיפוש מורחב"
+	"extendedsearchadmin": "ניהול חיפוש מורחב",
+	"apihelp-feedextendedsearch-summary": "חפש בוויקי באמצעות מנגנון החיפוש OpenSearch"
 }

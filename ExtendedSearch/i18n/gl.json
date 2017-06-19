@@ -110,6 +110,7 @@
 	"extendedsearchadmin": "Administración da busca extendida",
 	"bs-extendedsearch-create-page": "Crear a páxina \"$1\".",
 	"apihelp-feedextendedsearch-description": "Buscar no wiki usando o protocolo OpenSearch",
+	"apihelp-feedextendedsearch-summary": "Buscar no wiki usando o protocolo OpenSearch",
 	"apihelp-feedextendedsearch-param-q": "Cadea de procura",
 	"apihelp-feedextendedsearch-param-feedformat": "Número máximo de resultados a devolver.",
 	"apihelp-feedextendedsearch-param-user": "Non facer nada se $wgEnableOpenSearchSuggest é falso",

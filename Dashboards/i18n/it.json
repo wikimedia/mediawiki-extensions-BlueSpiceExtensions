@@ -18,5 +18,6 @@
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Pagina wiki",
 	"apihelp-bs-dashboard-task-param-dc": "Parametro di controllo della cache. Usato da ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Elenca tutti i moduli web disponibili.",
+	"apihelp-bs-dashboards-store-summary": "Elenca tutti i moduli web disponibili.",
 	"action-dashboards-viewspecialpage-userdashboard": "visualizzare la pagina speciale \"{{int:userdashboard}}\""
 }

@@ -36,6 +36,7 @@
 	"bs-shoutbox-notifications-title-message-text": "Sei {{GENDER:$1|stato citato|stata citata}} da $1 ($4) in un urlo nella pagina \"$5.\"\n\nPuoi visitare la pagina al seguente collegamento:\n$3",
 	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] ti ha {{GENDER:$1|citato|citata}} in un grido a $3.",
 	"apihelp-bs-shoutbox-tasks-description": "Fornisce attività comuni per la ShoutBox",
+	"apihelp-bs-shoutbox-tasks-summary": "Fornisce attività comuni per la ShoutBox",
 	"bs-usagetracker-shoutbox": "voci con shoutbox",
 	"bs-shoutbox-error-noarticleid": "Nessun ID voce fornito."
 }

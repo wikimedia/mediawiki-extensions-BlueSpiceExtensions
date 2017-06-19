@@ -41,6 +41,8 @@
 	"bs-review-header-enddate": "Fine",
 	"notification-bs-review-payload-comment": "Commento: \"$1\"",
 	"apihelp-bs-reviewpossiblereviewers-store-description": "Elenca utenti che possono far parte di un processo di revisione. Consente ordinamento, filtraggio e impaginazione. Implementa parametri ExtJS Store.",
+	"apihelp-bs-reviewpossiblereviewers-store-summary": "Elenca utenti che possono far parte di un processo di revisione. Consente ordinamento, filtraggio e impaginazione. Implementa parametri ExtJS Store.",
 	"apihelp-bs-reviewoverview-store-description": "Elenca una panoramica dei processi di revisione. Consente ordinamento, filtraggio e impaginazione. Implementa parametri ExtJS Store.",
+	"apihelp-bs-reviewoverview-store-summary": "Elenca una panoramica dei processi di revisione. Consente ordinamento, filtraggio e impaginazione. Implementa parametri ExtJS Store.",
 	"bs-usagetracker-review": "recensioni"
 }

@@ -65,7 +65,10 @@
 	"prefs-pageassign": "Asignacións",
 	"bs-usagetracker-pageassignments": "páxinas con asignacións",
 	"apihelp-bs-pageassignable-store-description": "Devolve a lista de asignados",
+	"apihelp-bs-pageassignable-store-summary": "Devolve a lista de asignados",
 	"apihelp-bs-mypageassignment-store-description": "Devolve as páxinas asignadas ó usuario actual",
+	"apihelp-bs-mypageassignment-store-summary": "Devolve as páxinas asignadas ó usuario actual",
 	"apihelp-bs-pageassignment-tasks-description": "Obter ou editar a lista de asignacións para a páxina especificada",
+	"apihelp-bs-pageassignment-tasks-summary": "Obter ou editar a lista de asignacións para a páxina especificada",
 	"bs-pageassignments-assignee-special-everyone-label": "Todos"
 }

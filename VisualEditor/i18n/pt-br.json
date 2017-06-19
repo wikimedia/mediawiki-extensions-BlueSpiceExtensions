@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Xð",
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Trigonometria87"
 		]
 	},
 	"prefs-visualeditor": "Editor visual",
+	"apihelp-bs-visualeditor-tasks-summary": "Fornece tarefas para a extensão BlueSpice Visual Editor",
 	"bs-visualeditor-bsactions-save": "Salvar"
 }
