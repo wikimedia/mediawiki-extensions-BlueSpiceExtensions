@@ -61,9 +61,13 @@
 	"bs-flexiskin-usebackground": "Usar una imaxe de fondu",
 	"bs-flexiskin-labelcurrentbackground": "Imaxe actual",
 	"apihelp-bs-flexiskin-tasks-description": "Permite remanar les flexiskins",
+	"apihelp-bs-flexiskin-tasks-summary": "Permite remanar les flexiskins",
 	"apihelp-bs-flexiskin-store-description": "Llista de flexiskins disponibles",
+	"apihelp-bs-flexiskin-store-summary": "Llista de flexiskins disponibles",
 	"apihelp-bs-flexiskin-upload-description": "Permite xubir ficheros a una flexiskin",
+	"apihelp-bs-flexiskin-upload-summary": "Permite xubir ficheros a una flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "Llista de ficheros xubíos a una flexiskin",
+	"apihelp-bs-flexiskin-upload-store-summary": "Llista de ficheros xubíos a una flexiskin",
 	"action-flexiskin-viewspecialpage": "ver la páxina especial «Flexiskin»",
 	"flexiskin": "Preferencies de l'aspeutu",
 	"bs-flexiskin-button-upload-image-tooltip": "Xubir una imaxe nueva"

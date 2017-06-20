@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"Facenapalm"
 		]
 	},
 	"bs-contextmenu-desc": "Предоставляет контекстное меню для различных ссылок",
@@ -21,5 +22,7 @@
 	"bs-contextmenu-media-view-page": "Посмотреть описание и историю",
 	"bs-contextmenu-user-mail": "Отправить сообщение",
 	"bs-contextmenu-user-talk": "Оставить сообщение в чате",
-	"bs-contextmenu-file-download": "Загрузить файл"
+	"bs-contextmenu-file-download": "Загрузить файл",
+	"apihelp-bs-contextmenu-tasks-description": "Предоставляет элементы контекстного меню в содержимом",
+	"apihelp-bs-contextmenu-tasks-summary": "Предоставляет элементы контекстного меню в содержимом"
 }

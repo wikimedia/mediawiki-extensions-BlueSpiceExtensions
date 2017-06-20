@@ -21,5 +21,6 @@
 	"bs-contextmenu-user-mail": "Unviar un corréu",
 	"bs-contextmenu-user-talk": "Dexar un mensaxe na páxina d'alderique",
 	"bs-contextmenu-file-download": "Descargar el ficheru",
-	"apihelp-bs-contextmenu-tasks-description": "Ufre los elementos del menú contestual nel contestu"
+	"apihelp-bs-contextmenu-tasks-description": "Ufre los elementos del menú contestual nel contestu",
+	"apihelp-bs-contextmenu-tasks-summary": "Ufre los elementos del menú contestual nel contestu"
 }

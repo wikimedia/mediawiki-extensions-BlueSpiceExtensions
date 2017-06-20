@@ -38,5 +38,6 @@
 	"bs-wantedarticle-suggest-page": "Предложить страницу «$1».",
 	"bs-wantedarticle-info-nothing-entered": "Пожалуйста, введите корректное название страницы.",
 	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|Следующий символ не подходит|Следующие символы не подходят}} для использования в заголовке страницы: $2",
-	"apihelp-bs-wantedarticle-description": "Предоставляет api требуемых страниц для BlueSpice."
+	"apihelp-bs-wantedarticle-description": "Предоставляет api требуемых страниц для BlueSpice.",
+	"apihelp-bs-wantedarticle-summary": "Предоставляет api требуемых страниц для BlueSpice."
 }

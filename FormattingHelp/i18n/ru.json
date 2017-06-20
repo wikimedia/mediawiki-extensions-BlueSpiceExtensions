@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Facenapalm"
 		]
 	},
 	"bs-formattinghelp-desc": "Отображение справки по форматированию текста",
@@ -25,5 +26,8 @@
 	"bs-formattinghelp-help-extlink": "Внешняя ссылка",
 	"bs-formattinghelp-help-hr": "Горизонтальная линия",
 	"bs-formattinghelp-help-template": "Шаблон",
-	"bs-formattinghelp-help-templatename": "Имя шаблона"
+	"bs-formattinghelp-help-templatename": "Имя шаблона",
+	"apihelp-bs-formattinghelp-description": "Предоставляет задачи для расширения FormattingHelp.",
+	"apihelp-bs-formattinghelp-summary": "Предоставляет задачи для расширения FormattingHelp.",
+	"apihelp-bs-formattinghelp-param-token": "Токен защиты CSRF. Здесь необязателен"
 }

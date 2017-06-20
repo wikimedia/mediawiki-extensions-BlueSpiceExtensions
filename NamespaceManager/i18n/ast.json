@@ -45,7 +45,9 @@
 	"bs-namespacemanager-ns-config-saved": "Guardóse la configuración del espaciu de nomes.",
 	"bs-namespacemanager-error-ns-config-not-saved": "La configuración del espaciu de nomes nun pudo guardase'n $1.",
 	"apihelp-bs-namespace-store-description": "Llista de tolos espacios de nomes y la configuración arbitraria. Permite ordenar, filtriar y paxinar. Proporciona los parámetros ExtJS Store.",
+	"apihelp-bs-namespace-store-summary": "Llista de tolos espacios de nomes y la configuración arbitraria. Permite ordenar, filtriar y paxinar. Proporciona los parámetros de ExtJS Store.",
 	"apihelp-bs-namespace-tasks-description": "Permite cambiar la configuración del espaciu de nomes.",
+	"apihelp-bs-namespace-tasks-summary": "Permite cambiar la configuración del espaciu de nomes.",
 	"action-namespacemanager-viewspecialpage": "ver la páxina especial del xestor d'espacios de nomes",
 	"namespacemanager": "Xestor d'espacios de nomes"
 }

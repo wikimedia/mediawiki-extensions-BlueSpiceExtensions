@@ -27,6 +27,7 @@
 	"bs-interwikilink-select-a-prefix": "Escueye prefixu",
 	"bs-interwikilinks-link-edited": "Editóse l'enllaz interwiki.",
 	"apihelp-bs-interwikilinks-tasks-description": "Ufre les xeres pa la estensión InterWikiLinks.",
+	"apihelp-bs-interwikilinks-tasks-summary": "Ufre les xeres pa la estensión InterWikiLinks.",
 	"action-interwikilinks-viewspecialpage": "ver la páxina especial «{{int:bs-interwikilinks-label}}»",
 	"interwikilinks": "Enllaces interwiki"
 }

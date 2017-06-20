@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Facenapalm"
 		]
 	},
 	"bs-statebar-desc": "Предоставляет строку состояния",
@@ -12,5 +13,7 @@
 	"bs-statebar-viewtoggler": "ДЕТАЛИ",
 	"bs-statebar-viewtoggler-tooltip": "Показать подробную информацию",
 	"bs-statebar-switch-description": "Скрывает строку состояния на этой странице.",
-	"bs-statebar-ajax-nobodyviews": "Информация отсутствует."
+	"bs-statebar-ajax-nobodyviews": "Информация отсутствует.",
+	"apihelp-bs-statebar-tasks-description": "Предоставляет операции для расширения StateBar",
+	"apihelp-bs-statebar-tasks-summary": "Предоставляет операции для расширения StateBar"
 }

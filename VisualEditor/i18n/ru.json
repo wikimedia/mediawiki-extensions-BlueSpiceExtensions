@@ -10,6 +10,7 @@
 	"bs-visualeditor-desc": "Визуальный редактор для MediaWiki",
 	"prefs-visualeditor": "Визуальный редактор",
 	"apihelp-bs-visualeditor-tasks-description": "Предоставляет задачи для расширения «Визуальный редактор BlueSpice».",
+	"apihelp-bs-visualeditor-tasks-summary": "Предоставляет задачи для расширения «Визуальный редактор BlueSpice».",
 	"bs-visualeditor-editbutton-hint": "Визуальный редактор",
 	"bs-visualeditor-pref-disablens": "Отключено в пространствах имён:",
 	"bs-visualeditor-pref-use": "Использовать визуальный редактор по умолчанию",
