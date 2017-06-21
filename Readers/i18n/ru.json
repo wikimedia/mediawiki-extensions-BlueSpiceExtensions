@@ -3,7 +3,8 @@
 		"authors": [
 			"Okras",
 			"Striking Blue",
-			"Kaganer"
+			"Kaganer",
+			"Facenapalm"
 		]
 	},
 	"bs-readers-desc": "Создаёт список людей, читающих страницу",
@@ -19,5 +20,9 @@
 	"bs-readers-header-username": "Имя участника",
 	"bs-readers-header-readerspath": "Читатель",
 	"bs-readers-header-ts": "Дата",
-	"bs-readers-header-page": "Страница"
+	"bs-readers-header-page": "Страница",
+	"apihelp-bs-readers-data-store-description": "Получить информацию о читателях указанной страницы.",
+	"apihelp-bs-readers-data-store-summary": "Получить информацию о читателях указанной страницы.",
+	"apihelp-bs-readers-users-store-description": "Получить информацию о всех читателях указанной страницы.",
+	"apihelp-bs-readers-users-store-summary": "Получить информацию о всех читателях указанной страницы."
 }

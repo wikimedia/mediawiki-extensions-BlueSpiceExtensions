@@ -4,7 +4,8 @@
 			"Shuba",
 			"HarpyWar",
 			"Meshkov.a",
-			"Kaganer"
+			"Kaganer",
+			"Facenapalm"
 		]
 	},
 	"bs-dashboards-desc": "Предоставляет панель управления для пользователей и администраторов",
@@ -16,5 +17,6 @@
 	"admindashboard": "Панель администратора",
 	"userdashboard": "Панель участника",
 	"bs-dashboard-userportlet-calendar-title": "Календарь",
-	"bs-dashboard-userportlet-calendar-description": "Календарь"
+	"bs-dashboard-userportlet-calendar-description": "Календарь",
+	"action-dashboards-viewspecialpage-userdashboard": "просмотр служебной страницы «{{int:userdashboard}}»"
 }
