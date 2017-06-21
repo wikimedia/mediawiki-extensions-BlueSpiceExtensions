@@ -18,7 +18,7 @@ $(document).on('change', '#wpTextbox1' ,function() {
 $(window).scroll(function(){
 	var toobar = $('.mce-stack-layout-item').first();
 	if( toobar.length == 0 ) return;
-	if(offsetTop == 0){
+	if( offsetTop === 0 && $('#editform').length > 0 ){
 		offsetTop = $('#editform').position().top; //toobar.position().top;
 	}
 

@@ -1,6 +1,12 @@
 // Use strict breaks IE8
 // "use strict";
 
+// Setting all tinyMCE instances to correctly using the minified version. By
+// putting this outside of the object, it can also used by any other extension
+// using tinyMCE.
+window.tinyMCE = window.tinyMCE || {};
+window.tinyMCE.suffix = '.min';
+
 VisualEditor = {
 
 		/**
@@ -106,8 +112,8 @@ VisualEditor = {
 				$(document).trigger('VisualEditor::instanceShow', [id]);
 			} else {
 				//This is basically copied from tinymce.js:27051
-				//We cannot call tinymce.destroy directly because tinymce.save 
-				//called from tinymce.remove relies on the selection object 
+				//We cannot call tinymce.destroy directly because tinymce.save
+				//called from tinymce.remove relies on the selection object
 				//which would be set to null in tinymce.destroy
 				window.tinyMCE.DOM.unbind(
 					window.tinyMCE.activeEditor.formElement,
@@ -149,7 +155,7 @@ VisualEditor = {
 		return {
 			/**
 			 * Add or override a config object with the given key.
-			 * 
+			 *
 			 * @param {String} key
 			 * @param {Object} config
 			 */
@@ -163,7 +169,7 @@ VisualEditor = {
 			/**
 			 * Returns the config for the given key or an empty object, if the
 			 * key doesn`t exist.
-			 * 
+			 *
 			 * @param {String} key
 			 * @return {Object}
 			 */
