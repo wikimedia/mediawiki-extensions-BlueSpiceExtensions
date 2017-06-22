@@ -52,7 +52,8 @@
 	"Hooks": {
 		"BeforePageDisplay": "Avatars::onBeforePageDisplay",
 		"BSUserManagerAfterAddUser": "Avatars::onBSUserManagerAfterAddUser",
-		"LocalUserCreated": "Avatars::onLocalUserCreated"
+		"LocalUserCreated": "Avatars::onLocalUserCreated",
+		"UnitTestsList": "Avatars::onUnitTestsList"
 	},
 	"manifest_version": 1
 }
