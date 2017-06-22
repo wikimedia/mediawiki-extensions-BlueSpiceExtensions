@@ -29,5 +29,7 @@
 	"notification-bs-pageassignments-user-group-remove-summary": "당신은 $4 {{PLURAL:$5|그룹}}에서 제거되었습니다",
 	"notification-bs-pageassignments-user-group-remove-subject": "$4 {{PLURAL:$5|그룹}}에서 제거됨",
 	"prefs-pageassign": "과제",
+	"apihelp-bs-pageassignable-store-summary": "할당된 사용자의 목록을 반환합니다",
+	"apihelp-bs-mypageassignment-store-summary": "현재 사용자에 할당된 문서를 반환합니다",
 	"bs-pageassignments-assignee-special-everyone-label": "모두"
 }

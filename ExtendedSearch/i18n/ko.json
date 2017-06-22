@@ -29,6 +29,7 @@
 	"extendedsearchadmin": "확장된 검색 관리",
 	"bs-extendedsearch-create-page": "문서 \"$1\" 만들기",
 	"apihelp-feedextendedsearch-description": "OpenSearch 프로토콜을 이용하여 위키 검색하기",
+	"apihelp-feedextendedsearch-summary": "OpenSearch 프로토콜을 이용하여 위키 검색하기",
 	"apihelp-feedextendedsearch-param-feedformat": "반환할 결과의 최대 수",
 	"apihelp-feedextendedsearch-param-user": "$wgEnableOpenSearchSuggest가 false인 경우 아무 것도 하지 않음",
 	"apihelp-feedextendedsearch-param-namespace": "검색할 이름공간",
