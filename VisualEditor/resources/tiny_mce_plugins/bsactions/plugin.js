@@ -9,7 +9,7 @@
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
- * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2017 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -18,7 +18,7 @@
 /*global mw:true */
 /*global BlueSpice:true */
 
-var BsActions = function() {
+var BsActions = function(editor, url) {
 	"use strict";
 
 	var
@@ -45,10 +45,20 @@ var BsActions = function() {
 	function handleVisibilityState(ctrl, selector) {
 		var editor = tinyMCE.activeEditor;
 		function bindStateListener() {
-			ctrl.visible(editor.dom.getParent(editor.selection.getStart(), selector));
-
+			// do not use the visible command, as it messes with bar layot
+			//ctrl.visible(state);
+			var state = editor.dom.getParent(editor.selection.getStart(), selector)
+			if ( state ) {
+				ctrl.getEl().style.display = 'inline-block';
+			} else {
+				ctrl.getEl().style.display = 'none';
+			}
 			editor.selection.selectorChanged(selector, function(state) {
-				ctrl.visible(state);
+				if ( state ) {
+					ctrl.getEl().style.display = 'inline-block';
+				} else {
+					ctrl.getEl().style.display = 'none';
+				}
 			});
 		}
 
@@ -65,7 +75,7 @@ var BsActions = function() {
 	}
 
 	function postRenderVisibilityTable() {
-		handleVisibilityState(this, 'TABLE');
+		handleVisibilityState(this, 'table');
 	}
 
 	function postRenderSave() {
@@ -354,6 +364,7 @@ var BsActions = function() {
 					title: 'Insert row before',
 					cmd: 'mceTableInsertRowBefore',
 					image: _currentImagePath + '/hwtableinsertrowbefore.gif',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -362,6 +373,7 @@ var BsActions = function() {
 					title: 'Insert row after',
 					cmd: 'mceTableInsertRowAfter',
 					image: _currentImagePath + '/hwtableinsertrowafter.gif',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -370,6 +382,7 @@ var BsActions = function() {
 					title: 'Delete row',
 					cmd: 'mceTableDeleteRow',
 					image: _currentImagePath + '/hwtabledeleterow.gif',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -378,6 +391,7 @@ var BsActions = function() {
 					title: 'Insert column before',
 					cmd: 'mceTableInsertColBefore',
 					image: _currentImagePath + '/hwtableinsertcolumnbefore.gif',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -386,6 +400,7 @@ var BsActions = function() {
 					title: 'Insert column after',
 					cmd: 'mceTableInsertColAfter',
 					image: _currentImagePath + '/hwtableinsertcolumnafter.gif',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -394,6 +409,7 @@ var BsActions = function() {
 					title: 'Delete column',
 					cmd: 'mceTableDeleteCol',
 					image: _currentImagePath + '/hwtabledeletecolumn.gif',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {

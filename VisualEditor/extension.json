@@ -33,7 +33,8 @@
 	"ResourceModules": {
 		"ext.bluespice.visualEditor.tinymce": {
 			"scripts": [
-				"tinymce/tinymce.jquery.js",
+				"tinymce/tinymce.min.js",
+				"tinymce/jquery.tinymce.min.js",
 				"tinymce.startup.js"
 			],
 			"targets": [ "desktop", "mobile" ],
@@ -58,6 +59,7 @@
 			],
 			"targets": [ "desktop", "mobile" ],
 			"dependencies": [
+				"ext.bluespice",
 				"ext.bluespice.visualEditor.tinymce"
 			]
 		},
