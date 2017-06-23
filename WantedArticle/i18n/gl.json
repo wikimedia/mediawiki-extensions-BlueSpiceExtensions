@@ -35,5 +35,6 @@
 	"bs-wantedarticle-suggest-page": "Suxerir a páxina «$1».",
 	"bs-wantedarticle-info-nothing-entered": "Achegue un título de páxina válido.",
 	"bs-wantedarticle-title-invalid-chars": "{{PLURAL:$1|O seguinte carácter non é válido|Os seguintes caracteres non son válidos}} para usarse nun título de páxina: $2",
-	"apihelp-bs-wantedarticle-description": "Proporciona a API de artigos solicitados para BlueSpice."
+	"apihelp-bs-wantedarticle-description": "Proporciona a API de artigos solicitados para BlueSpice.",
+	"apihelp-bs-wantedarticle-summary": "Proporciona a API de artigos solicitados para BlueSpice."
 }

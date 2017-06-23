@@ -19,5 +19,7 @@
 	"bs-readers-header-username": "Användarnamn",
 	"bs-readers-header-readerspath": "Läsare",
 	"bs-readers-header-ts": "Datum",
-	"bs-readers-header-page": "Sida"
+	"bs-readers-header-page": "Sida",
+	"apihelp-bs-readers-data-store-summary": "Hämtar läsarinfo för specifik sida.",
+	"apihelp-bs-readers-users-store-summary": "Hämtar all läsarinfo om specifik sida."
 }

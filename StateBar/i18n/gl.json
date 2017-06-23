@@ -14,5 +14,6 @@
 	"bs-statebar-viewtoggler-tooltip": "Mostrar información detallada",
 	"bs-statebar-switch-description": "Ocultar a barra de estado desta páxina.",
 	"bs-statebar-ajax-nobodyviews": "Non hai información dispoñible.",
-	"apihelp-bs-statebar-tasks-description": "Proporciona as operacións para a extensión StateBar"
+	"apihelp-bs-statebar-tasks-description": "Proporciona as operacións para a extensión StateBar",
+	"apihelp-bs-statebar-tasks-summary": "Proporciona operacións para a extensión StateBar"
 }

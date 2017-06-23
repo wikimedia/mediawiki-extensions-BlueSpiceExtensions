@@ -44,6 +44,7 @@
 	"apihelp-bs-pagetemplates-store-description": "Lista tódolos modelos de páxinas. Permite ordenar, filtrar e paxinar. Proporciona parámetros de almacenamento ExtJS.",
 	"apihelp-bs-pagetemplates-store-summary": "Lista tódolos modelos de páxina. Permite ordenar, filtrar e paxinar. Proporciona parámetros de almacenamento ExtJS.",
 	"apihelp-bs-pagetemplates-tasks-description": "Permite a manipulación dos modelos da páxina",
+	"apihelp-bs-pagetemplates-tasks-summary": "Permite a manipulación dos modelos de páxina",
 	"action-pagetemplatesadmin-viewspecialpage": "ver a páxina especial \"{{int:pagetemplatesadmin}}\"",
 	"pagetemplatesadmin": "Administración de modelos de páxinas",
 	"bs-usagetracker-pagetemplates": "modelos de páxina"

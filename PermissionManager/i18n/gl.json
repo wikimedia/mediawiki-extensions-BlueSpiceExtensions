@@ -47,6 +47,7 @@
 	"log-show-hide-bs-permission-manager": "$1 o rexistro do xestor de permisos",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|cambiou}} os permisos do grupo $4",
 	"apihelp-bs-permissionmanager-tasks-description": "Proporciona as tarefas para o PermissionManager",
+	"apihelp-bs-permissionmanager-tasks-summary": "Proporciona tarefas para o PermissionManager",
 	"action-permissionmanager-viewspecialpage": "ver a páxina especial \"{{int:bs-permissionmanager-label}}\"",
 	"permissionmanager": "Xestor de permisos"
 }
