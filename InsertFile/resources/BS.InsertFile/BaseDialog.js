@@ -29,7 +29,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		collapsed: true,
 		title: mw.message('bs-insertfile-details-title').plain(),
 		region: 'south',
-		height: 100,
+		height: 150,
 		bodyPadding: 5,
 		layout: 'anchor',
 		items: []
@@ -183,8 +183,31 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			fieldLabel: mw.message('bs-insertfile-linktext').plain()
 		});
 
-		this.configPanel.items.unshift(this.tfLinkText);
+		this.rgNsText = Ext.create('Ext.form.RadioGroup', {
+			fieldLabel: mw.message('bs-insertfile-nstext').plain(),
+			layout: {
+				type: 'hbox'
+			},
+			items: [{
+				boxLabel: mw.message('bs-insertfile-nstextfile').plain(),
+				id: 'ns-text-file',
+				name: 'ns-text',
+				inputValue: 'file',
+				checked: true,
+				width: 60
+			},{
+				boxLabel: mw.message('bs-insertfile-nstextmedia').plain(),
+				id: 'ns-text-media',
+				name: 'ns-text',
+				inputValue: 'media',
+				checked: false,
+				width: 60
+			}]
+		});
+
+		this.configPanel.items.unshift(this.rgNsText);
 		this.configPanel.items.unshift(this.tfFileName);
+		this.configPanel.items.unshift(this.tfLinkText);
 		this.tfFileName.on('change', this.onTfFileNameChange, this);
 
 		this.pnlConfig = Ext.create('Ext.form.Panel', this.configPanel );
@@ -227,7 +250,8 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	getData: function() {
 		var cfg = {
 			title: this.tfFileName.getValue(),
-			displayText: this.tfLinkText.getValue()
+			displayText: this.tfLinkText.getValue(),
+			nsText: this.rgNsText.getValue()['ns-text']
 		};
 		return cfg;
 	},
@@ -237,6 +261,11 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.sfFilter.reset();
 		this.tfFileName.reset();
 		this.tfLinkText.reset();
+		this.rgNsText.reset();
+
+		this.rgNsText.setValue({
+			'ns-text': obj.nsText
+		});
 
 		if( obj.title ) {
 			this.resetFilters();

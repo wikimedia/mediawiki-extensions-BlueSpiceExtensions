@@ -63,7 +63,10 @@
 				"bs-insertfile-no-link",
 				"bs-insertfile-error-no-imagelink",
 				"bs-insertfile-error-no-medialink",
-				"bs-insertfile-enable-align"
+				"bs-insertfile-enable-align",
+				"bs-insertfile-nstext",
+				"bs-insertfile-nstextfile",
+				"bs-insertfile-nstextmedia"
 			],
 			"dependencies": [
 				"ext.bluespice.extjs",
