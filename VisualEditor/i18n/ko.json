@@ -10,6 +10,7 @@
 	"bs-visualeditor-desc": "미디어위키를 위한 시각편집기",
 	"prefs-visualeditor": "시각편집기",
 	"apihelp-bs-visualeditor-tasks-description": "BlueSpice 시각편집기 확장 기능을 위한 작업을 제공합니다.",
+	"apihelp-bs-visualeditor-tasks-summary": "BlueSpice 시각편집기 확장 기능을 위한 작업을 제공합니다.",
 	"bs-visualeditor-editbutton-hint": "시각편집기",
 	"bs-visualeditor-pref-disablens": "다음 이름공간에서 비활성화:",
 	"bs-visualeditor-pref-use": "WYISIWYG 편집기를 기본으로 사용",
