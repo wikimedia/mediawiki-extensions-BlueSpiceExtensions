@@ -324,7 +324,13 @@ var BsWikiCode = function() {
 		//Let's store the original WikiText as well. This makes it easier for
 		//other extensions to read in the data.
 		//We can not use [[/]] because this might cause double parsing!
-		htmlImageObject.attr('data-bs-wikitext', link);
+		// In rare cases, the last section of the wikitext ends with an =. This
+		// breaks HTML parsing in some Browsers. So in these cases we have to
+		// add a blank. Typical cases are |link= when embedding an image
+		if ( link.match( /=$/ ) ) {
+			link = link + ' ';
+		}
+		htmlImageObject.attr( 'data-bs-wikitext', link );
 
 		//We set a dummy url which contains the original filename as
 		//querystring parameter
