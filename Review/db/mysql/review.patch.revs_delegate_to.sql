@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_review_steps ADD `revs_delegate_to` SMALLINT( 6 ) NOT NULL DEFAULT '0' AFTER `revs_comment`;

@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_review CHANGE `editable` `rev_editable` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0';

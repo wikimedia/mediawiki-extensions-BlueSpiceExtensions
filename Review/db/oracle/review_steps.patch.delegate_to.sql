@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_review_steps RENAME COLUMN delegate_to TO revs_delegate_to;
