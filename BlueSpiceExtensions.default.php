@@ -42,8 +42,6 @@ require_once( __DIR__."/UserPreferences/UserPreferences.setup.php" );
 require_once( __DIR__."/UserSidebar/UserSidebar.setup.php" );
 require_once( __DIR__."/WatchList/WatchList.setup.php" );
 require_once( __DIR__."/WhoIsOnline/WhoIsOnline.setup.php" );
-// This extension is deprecated as of BlueSpice 2.27.0 and will be removed soon
-#require_once( __DIR__."/WantedArticle/WantedArticle.setup.php" );
 require_once( __DIR__."/ShoutBox/ShoutBox.setup.php" );
 require_once( __DIR__."/VisualEditor/VisualEditor.setup.php" );
 require_once( __DIR__."/ExtendedEditBar/ExtendedEditBar.setup.php" );
