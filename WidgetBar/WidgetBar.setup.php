@@ -1,2 +1,0 @@
-<?php
-wfLoadExtension( 'BlueSpiceExtensions/WidgetBar' );
