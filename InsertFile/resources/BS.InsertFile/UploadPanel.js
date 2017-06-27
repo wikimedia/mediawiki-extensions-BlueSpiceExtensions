@@ -328,10 +328,26 @@ Ext.define( 'BS.InsertFile.UploadPanel', {
 		var warningsTag = uploadTag.getElementsByTagName('warnings').item(0);
 		if( warningsTag !== null && imageinfoTag === null ) {
 			var duplicate = warningsTag.getElementsByTagName('duplicate');
-			if( duplicate !== null && duplicate.length > 0 ) {
+			if( duplicate === null ) {
+				duplicate = [];
+			}
+
+			var secondaryWarnings = [];
+			if( warningsTag.getAttribute('exists-normalized') ) {
+				secondaryWarnings.push( warningsTag.getAttribute('exists-normalized') );
+			}
+			if( warningsTag.getAttribute('exists') ) {
+				secondaryWarnings.push( warningsTag.getAttribute('exists') );
+			}
+
+			if( duplicate.length > 0 || secondaryWarnings.length > 0 ) {
 				var dupUrls = [];
 				$.each(duplicate, function() {
 					dupUrls.push( "File:"+this.textContent );
+				});
+
+				$.each(secondaryWarnings, function( idx, filename ) {
+					dupUrls.push( "File:"+filename );
 				});
 				this.duplicateWarning({
 					titles: dupUrls
