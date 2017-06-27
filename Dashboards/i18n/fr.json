@@ -21,6 +21,7 @@
 	"apihelp-bs-dashboard-task-param-dc": "Paramètre de contrôle du cache. Utilisé par ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Liste de tous les portlets",
 	"apihelp-bs-dashboards-tasks-description": "Enregistre la configuration du tableau de bord",
+	"apihelp-bs-dashboards-tasks-summary": "Enregistre la configuration du tableau de bord",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Renvoie le contenu pour certains widgets du tableau de bord.",
 	"action-dashboards-viewspecialpage-userdashboard": "afficher la page spéciale \"{{int:userdashboard}}\""
 }

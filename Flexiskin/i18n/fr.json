@@ -67,9 +67,13 @@
 	"bs-flexiskin-usebackground": "Utiliser l’image de fond",
 	"bs-flexiskin-labelcurrentbackground": "Image actuelle",
 	"apihelp-bs-flexiskin-tasks-description": "Permet la manipulation des habillages flexibles",
+	"apihelp-bs-flexiskin-tasks-summary": "Autorise l'utilisation des flexiskins",
 	"apihelp-bs-flexiskin-store-description": "Liste les habillages flexibles disponibles",
+	"apihelp-bs-flexiskin-store-summary": "Liste les flexiskins disponibles",
 	"apihelp-bs-flexiskin-upload-description": "Permet de téléverser des fichiers vers un habillage flexible",
+	"apihelp-bs-flexiskin-upload-summary": "Autorise à téléverser des fichiers dans un flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "Liste les fichiers téléversés d’un habillage flexible",
+	"apihelp-bs-flexiskin-upload-store-summary": "Affiche les fichiers téléversés d'un flexiskin",
 	"action-flexiskin-viewspecialpage": "Voir la page spéciale « Flexiskin »",
 	"flexiskin": "Préférences d'habillage",
 	"bs-flexiskin-button-upload-image-tooltip": "Téléverser une nouvelle image"

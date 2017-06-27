@@ -22,5 +22,6 @@
 	"bs-readers-header-ts": "Date",
 	"bs-readers-header-page": "Page",
 	"apihelp-bs-readers-data-store-description": "Obtenir le informations concernant le lecteur de la page spécifique.",
+	"apihelp-bs-readers-data-store-summary": "Fournit les informations utilisateur d'une page donnée.",
 	"apihelp-bs-readers-users-store-description": "Obtenir les informations sur tous les lecteurs de la page spécifique."
 }

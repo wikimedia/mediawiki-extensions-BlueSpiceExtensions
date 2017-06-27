@@ -39,6 +39,7 @@
 	"bs-shoutbox-notifications-title-message-text": "Vous avez été mentionné{{GENDER:$1||e}} par $1 ($4) dans une discussion sur la page « $5 ».\n\nVous pouvez visiter la page en suivant le lien suivant : \n\n$3",
 	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] vous {{GENDER:$1|a mentionné}} dans un appel sur $3.",
 	"apihelp-bs-shoutbox-tasks-description": "Fournit des tâches communes pour ShoutBox",
+	"apihelp-bs-shoutbox-tasks-summary": "Fournit les tâches communes pour la ShoutBox",
 	"bs-usagetracker-shoutbox": "articles avec entrées de commentaires (shoutbox)",
 	"bs-shoutbox-error-noarticleid": "Aucun ID d’article fourni."
 }
