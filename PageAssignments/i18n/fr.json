@@ -68,6 +68,7 @@
 	"apihelp-bs-pageassignable-store-description": "Retourne la liste des ayants droit",
 	"apihelp-bs-pageassignable-store-summary": "Retourne la liste des ayants droit",
 	"apihelp-bs-pageassignment-store-description": "Retourne les affectations de la page spécifique",
+	"apihelp-bs-pageassignment-store-summary": "Renvoie les assignements d'une page donnée",
 	"apihelp-bs-mypageassignment-store-description": "Retourne les pages affectées à l'utilisateur courant",
 	"apihelp-bs-pageassignment-tasks-description": "Obtenir ou modifier la liste des assignations pour la page spécifique",
 	"bs-pageassignments-assignee-special-everyone-label": "Tout le monde"
