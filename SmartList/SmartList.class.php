@@ -47,7 +47,6 @@ class SmartList extends BsExtensionMW {
 		wfProfileIn('BS::' . __METHOD__);
 		$this->setHook( 'ParserFirstCallInit', 'onParserFirstCallInit' );
 		$this->setHook( 'PageContentSaveComplete' );
-		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSUserSidebarDefaultWidgets' );
 		$this->setHook( 'BSInsertMagicAjaxGetData', 'onBSInsertMagicAjaxGetData' );
@@ -411,44 +410,6 @@ class SmartList extends BsExtensionMW {
 	}
 
 	/**
-	 * Renders widget view of SmartList. Called by MW::WidgetBar::DefaultWidgets.
-	 * @param BsEvent $oEvent The Event object
-	 * @param array $aWidgets An array of widgets. Add your Widget to this array.
-	 * @return bool allow other hooked methods to be executed. always true
-	 */
-	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$aArgs = array();
-		$aArgs['count'] = (int)BsConfig::get( 'MW::SmartList::Count' );
-		$aArgs['namespaces'] = implode( ',', BsConfig::get( 'MW::SmartList::Namespaces' ) );
-		$aArgs['categories'] = implode( ',', BsConfig::get( 'MW::SmartList::Categories' ) );
-		$aArgs['categoryMode'] = 'OR';
-		$aArgs['showMinorChanges'] = BsConfig::get( 'MW::SmartList::ShowMinorChanges' );
-		$aArgs['period'] = BsConfig::get( 'MW::SmartList::Period' );
-		$aArgs['mode'] = 'recentchanges';
-		$aArgs['showOnlyNewArticles'] = BsConfig::get( 'MW::SmartList::ShowOnlyNewArticles' );
-		$aArgs['heading'] = wfMessage( 'bs-smartlist-recent-changes' )->plain();
-		$aArgs['trim'] = BsConfig::get( 'MW::SmartList::Trim' );
-		$aArgs['showtext'] = BsConfig::get( 'MW::SmartList::ShowText' );
-		$aArgs['trimtext'] = BsConfig::get( 'MW::SmartList::TrimText' );
-		$aArgs['order'] = BsConfig::get( 'MW::SmartList::Order' );
-		$aArgs['sort'] = BsConfig::get( 'MW::SmartList::Sort' );
-		$aArgs['showns'] = BsConfig::get( 'MW::SmartList::ShowNamespace' );
-
-		$sCustomList = $this->getCustomList( $aArgs );
-		$sHeading = wfMessage( 'bs-smartlist-recent-changes' )->plain();
-		$oWidgetView = new ViewWidget();
-		$oWidgetView->setId( 'smartlist' )
-				->setTitle( $sHeading )
-				->setBody( $sCustomList )
-				->setTooltip( $sHeading )
-				->setAdditionalBodyClasses( array( 'bs-nav-links' ) ); //For correct margin and fontsize
-
-		$aViews['SMARTLIST'] = $oWidgetView;
-
-		return true;
-	}
-
-	/**
 	 * Callback for UserSidebar. Adds the YourEdits Widget to the UserSidebar as default filling.
 	 * @param BsEvent $oEvent The event to handle
 	 * @param array $aWidgets An array of WidgetView objects
@@ -467,21 +428,7 @@ class SmartList extends BsExtensionMW {
 	 */
 	public function onBSWidgetListHelperInitKeyWords( &$aKeywords, $oTitle ) {
 		$aKeywords['YOUREDITS'] = array( $this, 'onWidgetListKeywordYourEdits' );
-		$aKeywords['INFOBOX']   = array( $this, 'onWidgetListKeyword' );
-		$aKeywords['SMARTLIST'] = array( $this, 'onWidgetListKeyword' );
-
 		return true;
-	}
-
-	/**
-	 * Creates a Widget for the INFOBOX Keyword.
-	 * @return ViewWidget
-	 */
-	public function onWidgetListKeyword() {
-		$aTmpViews = array();
-		$this->onBSWidgetBarGetDefaultWidgets( $aTmpViews, null, null );
-
-		return $aTmpViews['SMARTLIST'];
 	}
 
 	/**

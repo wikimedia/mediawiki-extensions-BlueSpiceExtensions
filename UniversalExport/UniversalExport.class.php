@@ -62,7 +62,6 @@ class UniversalExport extends BsExtensionMW {
 
 		//Hooks
 		$this->setHook( 'ParserFirstCallInit', 'onParserFirstCallInit' );
-		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSStateBarAddSortBodyVars', 'onStatebarAddSortBodyVars' );
 		$this->setHook( 'BSStateBarBeforeBodyViewAdd' );
@@ -155,19 +154,6 @@ class UniversalExport extends BsExtensionMW {
 				);
 		}
 
-		return true;
-	}
-
-	/**
-	 * Callback for WidgetBar. Adds the Bookshelf Widget to the WidgetBar as default filling.
-	 * @param array $aViews The Views array
-	 * @param User $oUser Current MediaWiki User object
-	 * @param Title $oTitle Current MediaWiki Title object
-	 * @return boolean Always true to keep the hook running
-	 */
-	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$oWidget = $this->getWidget();
-		if( $oWidget !== null ) $aViews[] = $oWidget;
 		return true;
 	}
 
