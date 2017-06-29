@@ -217,7 +217,9 @@ class Checklist extends BsExtensionMW {
 				if ( isset( $aOptionSet[1] ) ) {
 					$sOut[] = "style='color:".$aOptionSet[1].";' ";
 				}
-				if ( $bDefault || $args['value'] == $sOption ) {
+
+				$sDecodedOption = html_entity_decode( $sOption );
+				if ( $bDefault || $args['value'] == $sDecodedOption ) {
 					$bDefault = false;
 					$sOut[] = "selected='selected'";
 					if ( isset( $aOptionSet[1] ) ) {
