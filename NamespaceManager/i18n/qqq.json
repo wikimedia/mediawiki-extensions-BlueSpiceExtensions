@@ -50,5 +50,7 @@
 	"apihelp-bs-namespace-store-description": "Describes the API endpoint that lists namespaces.\n{{doc-apihelp-description|bs-namespace-store}}",
 	"apihelp-bs-namespace-tasks-description": "Describes the API endpoint that allows manipulation of the namespace configuration.\n{{doc-apihelp-description|bs-namespace-tasks}}",
 	"action-namespacemanager-viewspecialpage": "label for permission denied page, show user which page have been blocked\n{{doc-action|namespacemanager-viewspecialpage}}",
-	"namespacemanager": "name of special page"
+	"namespacemanager": "name of special page",
+	"bs-namespacemanager-nodeletetalk": "Error message shown when a user tries to delete a talk namespace",
+	"bs-namespacemanager-label-istalk": "Label for column in the grid that shows if namespace is a talk namespace"
 }

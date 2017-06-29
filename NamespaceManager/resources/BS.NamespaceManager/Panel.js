@@ -61,6 +61,34 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		this.colMainConf.columns = columns;
 		this.callParent( arguments );
 	},
+	makeRowActions: function() {
+		if( this.opPermitted( 'delete' ) ) {
+			this.colMainConf.actions.unshift({
+				glyph: true, //Needed to have the "BS.override.grid.column.Action" render an <span> instead of an <img>,
+				tooltip: mw.message( 'bs-extjs-delete' ).plain(),
+				handler: this.onActionRemoveClick,
+				getClass: function( value, meta, record ) {
+					if( record.get( 'isTalkNS' ) || record.get( 'isSystemNS' ) ) {
+						return "x-hide-display";
+					}
+					return "bs-extjs-actioncolumn-icon bs-icon-cross destructive";
+				},
+				scope: this
+			});
+		}
+
+		if( this.opPermitted( 'update' ) ) {
+			this.colMainConf.actions.unshift({
+				iconCls: 'bs-extjs-actioncolumn-icon bs-icon-wrench progressive',
+				glyph: true,
+				tooltip: mw.message( 'bs-extjs-edit' ).plain(),
+				handler: this.onActionEditClick,
+				scope: this
+			});
+		}
+
+		return this.colMainConf.actions;
+	},
 	renderIcon: function( value ) {
 		//TODO: make CSS class icon
 		var icon = '<img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/{0}"/>';
@@ -82,7 +110,9 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var isSystemNS = selectedRow[0].get( 'isSystemNS' );
-		if ( isSystemNS !== false ) {
+		var isTalkNS = selectedRow[0].get( 'isTalkNS' );
+
+		if ( isSystemNS !== false || isTalkNS !== false ) {
 			this.btnRemove.disable();
 		}
 	},
@@ -116,11 +146,22 @@ Ext.define( 'BS.NamespaceManager.Panel', {
 		this.active = 'remove';
 		var selectedRow = this.grdMain.getSelectionModel().getSelection();
 		var isSystemNS = selectedRow[0].get( 'isSystemNS' );
+		var isTalkNS = selectedRow[0].get( 'isTalkNS' );
 		if ( isSystemNS !== false ) {
 			bs.util.alert(
 				'NMfail',
 				{
 					textMsg: 'bs-namespacemanager-msgnoteditabledelete',
+					titleMsg: 'bs-extjs-title-warning'
+				}
+			);
+			return;
+		}
+		if ( isTalkNS !== false ) {
+			bs.util.alert(
+				'NMfail',
+				{
+					textMsg: 'bs-namespacemanager-nodeletetalk',
 					titleMsg: 'bs-extjs-title-warning'
 				}
 			);

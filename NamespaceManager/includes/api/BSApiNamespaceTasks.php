@@ -272,11 +272,14 @@ class BSApiNamespaceTasks extends BSApiTasksBase {
 		$aNamespacesToRemove = array( array( $iNS, 0 ) );
 		$sOriginalNamespace = $sNamespace = $aUserNamespaces[ $iNS ][ 'name' ];
 
-		if ( !strstr( $sNamespace, '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
-			if ( isset( $aUserNamespaces[ ($iNS + 1) ] ) && strstr( $aUserNamespaces[ ($iNS + 1) ][ 'name' ], '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
-				$aNamespacesToRemove[] = array( ($iNS + 1), 1 );
-				$sNamespace = $aUserNamespaces[ ($iNS + 1) ][ 'name' ];
-			}
+		if ( strstr( $sNamespace, '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
+			$oResult->message = wfMessage( 'bs-namespacemanager-nodeletetalk' )->plain();
+			return $oResult;
+		}
+
+		if ( isset( $aUserNamespaces[ ($iNS + 1) ] ) && strstr( $aUserNamespaces[ ($iNS + 1) ][ 'name' ], '_'.$wgContLang->getNsText( NS_TALK ) ) ) {
+			$aNamespacesToRemove[] = array( ($iNS + 1), 1 );
+			$sNamespace = $aUserNamespaces[ ($iNS + 1) ][ 'name' ];
 		}
 
 		$bErrors = false;
