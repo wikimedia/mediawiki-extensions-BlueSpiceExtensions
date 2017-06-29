@@ -69,7 +69,9 @@
 				"bs-namespacemanager-pagepresent",
 				"bs-namespacemanager-label-editable",
 				"bs-ns_main",
-				"bs-from-something"
+				"bs-from-something",
+				"bs-namespacemanager-label-istalk",
+				"bs-namespacemanager-nodeletetalk"
 			]
 		}
 	},

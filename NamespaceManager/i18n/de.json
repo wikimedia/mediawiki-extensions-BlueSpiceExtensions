@@ -52,5 +52,7 @@
 	"apihelp-bs-namespace-tasks-description": "Ermöglicht die Namensraumkonfiguration zu verändern.",
 	"apihelp-bs-namespace-tasks-summary": "Erlaubt die Veränderung der Namensraumkonfiguration.",
 	"action-namespacemanager-viewspecialpage": "die Spezialseite zur Namensraumverwaltung anzusehen",
-	"namespacemanager": "Namensraumverwaltung"
+	"namespacemanager": "Namensraumverwaltung",
+	"bs-namespacemanager-nodeletetalk": "Es ist nicht möglich, einen Diskussionsnamensraum zu löschen.",
+	"bs-namespacemanager-label-istalk": "Diskussion"
 }

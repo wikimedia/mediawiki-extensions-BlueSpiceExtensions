@@ -55,6 +55,16 @@ class SpecialNamespaceManager extends BsSpecialPage {
 				),
 			),
 			array(
+				'name' => 'isTalkNS',
+				'type' => 'boolean',
+				'label' => wfMessage( 'bs-namespacemanager-label-istalk' )->plain(),
+				'hidden' => true,
+				'sortable' => true,
+				'filter' => array(
+					'type' => 'bool'
+				),
+			),
+			array(
 				'name' => 'subpages',
 				'type' => 'boolean',
 				'label' => wfMessage( 'bs-namespacemanager-label-subpages' )->plain(),

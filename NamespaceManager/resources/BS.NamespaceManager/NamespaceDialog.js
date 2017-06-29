@@ -38,6 +38,9 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 			if( fieldDef.type !== 'boolean' || fieldDef.name === 'isSystemNS' ) {
 				continue;
 			}
+			if( fieldDef.name === 'isTalkNS' ) {
+				continue;
+			}
 			var cbControl =  Ext.create( 'Ext.form.field.Checkbox', {
 				boxLabel: fieldDef.label,
 				name: 'cb-'+fieldDef.name
@@ -58,12 +61,11 @@ Ext.define( 'BS.NamespaceManager.NamespaceDialog', {
 	},
 	setData: function( obj ) {
 		this.currentData = obj;
-
-		if(!this.currentData.isSystemNS) {
-			this.tfNamespaceName.enable();
+		if( this.currentData.isSystemNS || this.currentData.isTalkNS ) {
+			this.tfNamespaceName.disable();
 		}
 		else {
-			this.tfNamespaceName.disable();
+			this.tfNamespaceName.enable();
 		}
 
 		this.tfNamespaceName.setValue( this.currentData.name );
