@@ -52,7 +52,6 @@ class WhoIsOnline extends BsExtensionMW {
 		$this->setHook( 'ParserFirstCallInit' );
 		$this->setHook( 'BeforePageDisplay');
 		$this->setHook( 'LanguageGetMagic' );
-		$this->setHook( 'BSWidgetBarGetDefaultWidgets' );
 		$this->setHook( 'BSWidgetListHelperInitKeyWords' );
 		$this->setHook( 'BSInsertMagicAjaxGetData' );
 		$this->setHook( 'BsAdapterAjaxPingResult' );
@@ -310,17 +309,6 @@ class WhoIsOnline extends BsExtensionMW {
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oParser->insertStripItem( $sOut, $oParser->mStripState );
-	}
-
-	/**
-	 * Renders the WhoIsOnline widget
-	 * @param BsEvent $oEvent
-	 * @param array $aWidgets List of widgets. Add to this list.
-	 * @return array Appenden list of Widgets.
-	 */
-	public function onBSWidgetBarGetDefaultWidgets( &$aViews, $oUser, $oTitle ) {
-		$aViews['WHOISONLINE'] = $this->onWidgetListKeyword();
-		return true;
 	}
 
 	/**
