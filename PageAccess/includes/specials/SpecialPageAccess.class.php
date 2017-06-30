@@ -23,21 +23,10 @@ class SpecialPageAccess extends BsSpecialPage {
 		parent::execute( $par );
 		$oOutputPage = $this->getOutput();
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-				array( 'page_props' ),
-				array( 'pp_page', 'pp_value' ),
-				array( 'pp_propname' => 'bs-page-access' )
-		);
-
-		#TODO: Beautify output! Ext grid?
-		while( $row = $dbr->fetchObject( $res ) ) {
-			$iPageID = $row->pp_page;
-			$oTitle = Title::newFromID( $iPageID );
-			$oOutputPage->addHtml( Linker::link( $oTitle, null, array(), array(), array( 'known' ) ) );
-			$oOutputPage->addHtml( " (" . $row->pp_value . ")" );
-			$oOutputPage->addHtml( "<br/>" );
-		}
+		$oOutputPage->addModules( 'ext.PageAccess.manager' );
+		$oOutputPage->addHTML( Html::element( 'div', [
+			'id' => 'bs-pageaccess-manager'
+		]));
 	}
 
 	protected function getGroupName() {
