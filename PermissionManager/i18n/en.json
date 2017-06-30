@@ -49,5 +49,10 @@
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|has}} changed the permissions of the group $4",
 	"apihelp-bs-permissionmanager-tasks-description": "Provides tasks for the PermissionManager",
 	"action-permissionmanager-viewspecialpage":"view the special page \"{{int:bs-permissionmanager-label}}\"",
-	"permissionmanager":"Permission manager"
+	"permissionmanager":"Permission manager",
+	"bs-permissionmanager-affected-by-explicit": "Blocked by $1",
+	"bs-permissionmanager-affected-by-inherited": "Inherited from $1",
+	"bs-permissionmanager-affected-by-notset": "Not set",
+	"bs-permissionmanager-affected-by-explicitlyset": "Explicitly set",
+	"bs-permissionmanager-affected-by-setonwiki": "Set on wiki level"
 }

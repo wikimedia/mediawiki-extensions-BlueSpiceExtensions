@@ -206,6 +206,15 @@
 		modelFields.push({
 			name: 'userCan_' + namespace.id,
 			type: 'auto'
+		}, {
+			name: 'affectedBy_' + namespace.id,
+			type: 'auto'
+		}, {
+			name: 'affectedBy_Wiki',
+			type: 'auto'
+		}, {
+			name: 'isBlocked_' + namespace.id,
+			type: 'auto'
 		});
 	}
 
@@ -237,14 +246,21 @@
 				continue;
 			}
 			var row = rights[i];
-			row.userCan_Wiki = checkPermission(row.right);
+			var permissionRes = checkPermission( row.right );
+			row.userCan_Wiki = permissionRes;
+			var affectedBy = getAffectedBy( row.right, permissionRes );
+			row.affectedBy_Wiki = affectedBy.message;
 
 			for (var j = 0, nslen = namespaces.length; j < nslen; j++) {
 				if (!Ext.isObject(namespaces[j])) {
 					continue;
 				}
 				var namespaceId = namespaces[j].id;
-				row['userCan_' + namespaceId] = checkPermissionInNamespace(row.right, namespaceId);
+				var permissionRes = checkPermissionInNamespace( row.right, namespaceId );
+				row['userCan_' + namespaceId] = permissionRes;
+				var affectedBy = getAffectedBy( row.right, permissionRes, namespaceId );
+				row['affectedBy_' + namespaceId] = affectedBy.message;
+				row['isBlocked_' + namespaceId] = affectedBy.isBlocked;
 			}
 
 			data.push(row);
@@ -458,6 +474,92 @@
 		// anything else means this group doesn't have the permission
 		return NOT_ALLOWED;
 	}
+
+	/**
+	 * Checks if permission is granted or revoked by some other group.
+	 *
+	 * @param {string} right
+	 * @param {number} type
+	 * @param {number} namespace (optional)
+	 * @returns {string}
+	 */
+	function getAffectedBy( right, type, namespace ) {
+		if( type == ALLOWED_EXPLICIT ) {
+			return {
+				message: mw.message( 'bs-permissionmanager-affected-by-explicitlyset' ).plain(),
+				isBlocked: false
+			};
+		}
+		var groups = Object.keys( groupPermissions );
+		var explicitGroupsNS = [];
+		var groupsWiki = [];
+		for( var i = 0; i < groups.length; i++ ) {
+			var group = groups[i];
+			var res = checkPermissionInNamespace( right, namespace, group );
+			if( res === ALLOWED_EXPLICIT ) {
+				explicitGroupsNS.push( group );
+				continue;
+			}
+			res = checkPermission( right, group );
+			if( res === ALLOWED_EXPLICIT || res === ALLOWED_IMPLICIT ) {
+				groupsWiki.push( { group : group, type: res } );
+			}
+		}
+
+		if( explicitGroupsNS.length === 0 && groupsWiki.length === 0 ) {
+			return {
+				message: mw.message( 'bs-permissionmanager-affected-by-notset' ).plain(),
+				isBlocked: false
+			};
+		}
+
+		var sNSGroups = '';
+		var sWikiGroups = '';
+		if( explicitGroupsNS.length > 0 ) {
+			sNSGroups = explicitGroupsNS.join();
+		}
+		if( groupsWiki.length > 0 ) {
+			for( var i = 0; i < groupsWiki.length; i++ ) {
+				if( groupsWiki[i].group !== workingGroup && groupsWiki[i].type === ALLOWED_EXPLICIT ) {
+					if( groupsWiki[i].group !== '*' && groupsWiki[i].group !== 'user' ) {
+						continue;
+					}
+					if( sWikiGroups ){
+						sWikiGroups += ", ";
+					}
+					sWikiGroups += groupsWiki[i].group;
+				}
+			}
+		}
+
+		for( var i = 0; i < groupsWiki.length; i++ ) {
+			if( groupsWiki[i].group === workingGroup && groupsWiki[i].type === ALLOWED_EXPLICIT && type === ALLOWED_IMPLICIT ) {
+				return {
+					message: mw.message( 'bs-permissionmanager-affected-by-setonwiki' ).plain(),
+					isBlocked: false
+				};
+			}
+
+			if( groupsWiki[i].group === workingGroup && type === NOT_ALLOWED ) {
+				return {
+					message: mw.message( 'bs-permissionmanager-affected-by-explicit', sNSGroups ).plain(),
+					isBlocked: true
+				};
+			}
+		}
+		if( type === NOT_ALLOWED ) {
+			return {
+				message: mw.message( 'bs-permissionmanager-affected-by-notset' ).plain(),
+				isBlocked: false
+			};
+		} else {
+			return {
+				message: mw.message( 'bs-permissionmanager-affected-by-inherited', sWikiGroups ).plain(),
+				isBlocked: false
+			};
+		}
+	}
+
 
 	/**
 	 * Sends the complete groupPermissions and permissionLockdown with all its changes to the server.
