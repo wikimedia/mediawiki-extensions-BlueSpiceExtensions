@@ -15,6 +15,9 @@
 	"SpecialPages": {
 		"PageAccess": "SpecialPageAccess"
 	},
+	"APIModules": {
+		"bs-pageaccess-store": "BSApiPageAccessStore"
+	},
 	"LogTypes": [
 		"bs-pageaccess"
 	],
@@ -34,7 +37,27 @@
 	},
 	"AutoloadClasses": {
 		"PageAccess": "PageAccess.class.php",
-		"SpecialPageAccess": "includes/specials/SpecialPageAccess.class.php"
+		"SpecialPageAccess": "includes/specials/SpecialPageAccess.class.php",
+		"BSApiPageAccessStore": "includes/api/BSApiPageAccessStore.php"
+	},
+	"ResourceModules": {
+		"ext.PageAccess.manager": {
+			"scripts": [
+				"ext.bluespice.pageaccess.manager.js"
+			],
+			"styles": [],
+			"messages": [
+				"bs-pageaccess-column-title",
+				"bs-pageaccess-column-groups"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/PageAccess/resources"
 	},
 	"manifest_version": 1
 }
