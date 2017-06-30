@@ -5,5 +5,7 @@
 		]
 	},
 	"bs-preferences-desc": "Dèje 'a possibbilità a le amministrature, de configurà 'a uicchi da 'na pàgena singole SpecialPage",
-	"bs-preferences-label": "Me piace accussì"
+	"bs-bluespicepreferences-label": "Me piace accussì",
+	"action-bluespicepreferences-viewspecialpage": "'ndrucà 'a pagena speciale \"{{int:bluespicepreferences}}\"",
+	"bluespicepreferences": "Preferenze de Bluespice"
 }

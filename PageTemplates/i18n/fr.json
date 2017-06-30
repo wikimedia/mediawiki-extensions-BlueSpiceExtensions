@@ -44,6 +44,7 @@
 	"bs-pagetemplates-remove-message-failure": "{{PLURAL:$1|Le modèle suivant n’a pas pu être supprimé|Les modèles suivants n’ont pas pu être supprimés}} : $2 (Motif : $3)",
 	"apihelp-bs-pagetemplates-store-description": "Liste toutes les modèles de pages. Autorise le tri, le fltrage et la mise en forme. Implémente les paramètres  ExtJS Store.",
 	"apihelp-bs-pagetemplates-tasks-description": "Permet la manipulation des modèles de page",
+	"apihelp-bs-pagetemplates-tasks-summary": "Autorise la manipulation des modèles de page",
 	"action-pagetemplatesadmin-viewspecialpage": "voir la page spéciale \"{{int:pagetemplatesadmin}}\"",
 	"pagetemplatesadmin": "Gestion des modèles de page",
 	"bs-usagetracker-pagetemplates": "modèles de page"

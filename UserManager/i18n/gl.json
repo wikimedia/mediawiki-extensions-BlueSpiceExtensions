@@ -57,5 +57,7 @@
 	"bs-usermanager-nouserselected": "Por favor, selecciona un usuario",
 	"bs-usermanager-title-multipleuserselected": "Seleccionáronse múltiples usuarios",
 	"bs-usermanager-multipleuserselected": "Só podes cambiar o contrasinal dun usuario ó mesmo tempo",
-	"bs-usermanager-invalid-groups": "Os grupos non son válidos"
+	"bs-usermanager-invalid-groups": "Os grupos non son válidos",
+	"apihelp-bs-usermanager-group-store-description": "Proporciona unha API de tarefas de xestión de usuario para BlueSpice.",
+	"apihelp-bs-usermanager-group-store-summary": "Proporciona unha API de tarefas de xestión de usuario para BlueSpice."
 }
