@@ -17,20 +17,55 @@ $(document).on('change', '#wpTextbox1' ,function() {
 });
 $(window).scroll(function(){
 	var toobar = $('.mce-stack-layout-item').first();
+	var firstHeading = $( '#firstHeading' );
+
+	var previewMode = ( $( '#wikiPreview' ).css( 'display' ) === 'none' ) ? false : true;
+
 	if( toobar.length == 0 ) return;
-	if( offsetTop === 0 && $('#editform').length > 0 ){
-		offsetTop = $('#editform').position().top; //toobar.position().top;
+
+	if( offsetTop === 0 && $( '#editform' ).length > 0 && firstHeading.length > 0 && previewMode === false ) {
+		offsetTop = firstHeading.position().top;
+	}
+	else if( offsetTop === 0 && $( '#editform' ).length > 0 && firstHeading.length > 0 && previewMode === true ) {
+		offsetTop = $( '#wikiPreview' ).position().top + $( '#wikiPreview' ).height() - firstHeading.height();
+	}
+	else if( offsetTop === 0 && $( '#editform' ).length > 0 ) {
+		offsetTop = $( '#editform' ).position().top;
 	}
 
 	if( $(document).scrollTop() > offsetTop ) { //window.scrollY
-		if( toobar.hasClass('bs-ve-fixed') == false ) {
+		if( toobar.hasClass( 'bs-ve-fixed' ) == false ) {
 
-			toobar.addClass('bs-ve-fixed');
+			toobar.addClass( 'bs-ve-fixed' );
 			toobar.width( toobar.parent().width() );
+
+			if( firstHeading.length > 0 ){
+				toobar.css( 'top', firstHeading.height() );
+
+				firstHeading.addClass( 'bs-ve-heading-fixed' );
+				firstHeading.width( firstHeading.parent().width() );
+				firstHeading.css(
+					'background-color',
+					$( '#content' ).css( 'background-color' )
+				);
+			}
+
+			$( '#wpTextbox1_ifr' ).css(
+				'padding-top',
+				toobar.height() + firstHeading.height()
+			);
 		}
 	}
 	else {
-		toobar.removeClass('bs-ve-fixed');
+		toobar.removeClass( 'bs-ve-fixed' );
+
+		if( firstHeading.length > 0 ){
+			firstHeading.removeClass( 'bs-ve-heading-fixed' );
+			firstHeading.css( 'background-color', 'transparent' );
+			firstHeading.width( 'auto' );
+		}
+
+		$( '#wpTextbox1_ifr' ).css( 'padding-top', '0px');
 	}
 });
 
@@ -81,6 +116,9 @@ function bs_initVisualEditor() {
 
 $( document ).ready( function() {
 	var BsVisualEditorLoaderUsingDeps = mw.config.get( 'BsVisualEditorLoaderUsingDeps' );
+
+	$( '#firstHeading' ).css( 'display', 'block' );
+
 	mw.loader.using( BsVisualEditorLoaderUsingDeps, bs_initVisualEditor ).done( function() {
 		$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 			e.preventDefault();
