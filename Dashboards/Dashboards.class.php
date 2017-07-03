@@ -89,6 +89,8 @@ class Dashboards extends BsExtensionMW {
 			'bs_dashboards_configs',
 			__DIR__ .'/db/mysql/bs_dashboards_configs.sql'
 		);
+
+		$updater->addPostDatabaseUpdateMaintenance( BSDashBoardsClearConfigMaintenance::class );
 		return true;
 	}
 
