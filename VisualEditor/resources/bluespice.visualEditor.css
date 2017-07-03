@@ -21,9 +21,10 @@ body.mce-content-body {
 	min-width: 0px;
 	background: none !important;
 	padding: 0 !important;
+	margin-left: 0px;
+	margin-right: 0px;
 	/* reset height 100% of bluespice.skin.main.css, otherwise resize will not work */
 	height: auto;
-	font-size: 0.875em;
 }
 
 td.mceToolbar {
