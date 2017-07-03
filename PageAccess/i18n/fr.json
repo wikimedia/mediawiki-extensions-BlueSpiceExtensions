@@ -16,5 +16,7 @@
 	"log-description-bs-pageaccess": "Ceci est un journal des modifications des paramètres d'accès aux pages.",
 	"log-show-hide-bs-pageaccess": "journal des accès à la page $1",
 	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|a modifié}} les droits d’accès à $3 en « $4 »",
-	"action-pageaccess-viewspecialpage": "afficher la page spéciale \"{{int:pageaccess}}\""
+	"action-pageaccess-viewspecialpage": "afficher la page spéciale \"{{int:pageaccess}}\"",
+	"bs-pageaccess-column-title": "Titre de la page",
+	"bs-pageaccess-column-groups": "Groupes"
 }

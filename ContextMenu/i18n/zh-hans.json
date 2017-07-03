@@ -21,5 +21,6 @@
 	"bs-contextmenu-user-mail": "发送邮件",
 	"bs-contextmenu-user-talk": "在讨论页留下信息",
 	"bs-contextmenu-file-download": "下载文件",
-	"apihelp-bs-contextmenu-tasks-description": "在环境中提供环境菜单项"
+	"apihelp-bs-contextmenu-tasks-description": "在环境中提供环境菜单项",
+	"apihelp-bs-contextmenu-tasks-summary": "在环境中提供环境菜单项"
 }
