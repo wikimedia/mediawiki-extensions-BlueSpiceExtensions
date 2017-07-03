@@ -235,7 +235,6 @@ class NamespaceManager extends BsExtensionMW {
 
 			$aUserNamespaces = $aTmp;
 		}
-		Hooks::run( 'BSNamespaceManagerAfterGetUserNamespaces', array( &$aUserNamespaces, $bFullDetails ) );
 
 		return $aUserNamespaces;
 	}
