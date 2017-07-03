@@ -62,8 +62,8 @@ Ext.define('BS.Dashboards.DashboardPanel', {
 	onPortletConfigChange: function( portlet, cfg ) {
 		this.savePortalConfig();
 	},
-	onPortletDestroy: function() {
-		this.items.remove(portlet);
+	onPortletDestroy: function( portlet ) {
+		this.items.remove( portlet );
 		this.savePortalConfig();
 	},
 	onDrop: function() {

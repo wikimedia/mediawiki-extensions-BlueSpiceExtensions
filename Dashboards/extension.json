@@ -38,7 +38,8 @@
 		"SpecialUserDashboard": "includes/specials/SpecialUserDashboard.php",
 		"BSApiDashboardTasks": "includes/api/BSApiDashboardTasks.php",
 		"BSApiDashboardStore": "includes/api/BSApiDashboardStore.php",
-		"BSApiDashboardWidgetsTasks": "includes/api/BSApiDashboardWidgetsTasks.php"
+		"BSApiDashboardWidgetsTasks": "includes/api/BSApiDashboardWidgetsTasks.php",
+		"BSDashBoardsClearConfigMaintenance": "maintenance/clearConfigs.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.dashboards": {

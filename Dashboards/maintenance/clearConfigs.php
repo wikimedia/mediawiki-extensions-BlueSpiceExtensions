@@ -2,15 +2,15 @@
 
 require_once( dirname(dirname(dirname(dirname(__DIR__)))) . '/maintenance/Maintenance.php' );
 
-class clearConfigs extends Maintenance{
-	public function execute() {
+class BSDashBoardsClearConfigMaintenance extends LoggedUpdateMaintenance {
+	public function doDBUpdates() {
 		$aFinalPortletList = array();
 		$aPortlets = array();
 
 		Hooks::run( 'BSDashboardsUserDashboardPortalPortlets', array( &$aPortlets ) );
 		Hooks::run( 'BSDashboardsAdminDashboardPortalPortlets', array( &$aPortlets ) );
 		Hooks::run( 'BSDashboardsGetPortlets', array( &$aPortlets ) );
-
+		$this->output( 'Clearing dashboards... ');
 		for ( $i = 0; $i < count( $aPortlets ); $i++ ) {
 			$aFinalPortletList[] = $aPortlets[$i]["type"];
 		}
@@ -28,7 +28,7 @@ class clearConfigs extends Maintenance{
 				$aPortalConfig = unserialize( $row->dc_config ); //backward compatible handling
 				MediaWiki\restoreWarnings();
 			}catch(Exception $e){
-				$this->output( "Object in json only string" );
+				$this->output( "Object in json only string\n" );
 			}
 			if ( $aPortalConfig === FALSE ) { //this should be the normal case
 				$aPortalConfig = FormatJson::decode( $row->dc_config );
@@ -49,23 +49,30 @@ class clearConfigs extends Maintenance{
 			}
 			$aPortalConfig = FormatJson::encode( $aPortalConfig );
 			if ( $bHasChange ) {
+				$this->output( "Save changes to database\n" );
 				$oDbw = $this->getDB( DB_MASTER );
 				$oDbw->update(
-						'bs_dashboards_configs',
-						array(
-							'dc_config' => $aPortalConfig //save json string into db
-						),
-						array(
-							'dc_type' => $sType,
-							'dc_identifier' => $iUser
-						)
-					);
+					'bs_dashboards_configs',
+					array(
+						'dc_config' => $aPortalConfig //save json string into db
+					),
+					array(
+						'dc_type' => $sType,
+						'dc_identifier' => $iUser
+					)
+				);
 			}
 		}
+
+		return true;
+	}
+
+	protected function getUpdateKey() {
+		return 'bs_dashboards-clear-configs';
 	}
 }
 
-$maintClass = 'clearConfigs';
+$maintClass = 'BSDashBoardsClearConfigMaintenance';
 if (defined('RUN_MAINTENANCE_IF_MAIN')) {
 	require_once( RUN_MAINTENANCE_IF_MAIN );
 } else {
