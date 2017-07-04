@@ -127,7 +127,7 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 		'autoresize_max_height' => 15000,
 		//set the default style to contenttable when inserting a table
 		'table_default_attributes' => array(
-			'class' => 'contenttable'
+			'class' => 'contenttable sortable'
 		),
 		#'document_base_url' => $GLOBALS['wgServer'],
 		'style_formats' => array(
