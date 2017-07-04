@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Urhixidur"
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"bs-contextmenu-desc": "Fournit des menus contextuels pour divers liens",
@@ -22,5 +23,6 @@
 	"bs-contextmenu-user-mail": "Envoyer un courriel",
 	"bs-contextmenu-user-talk": "Laisser un message sur la page de discussion",
 	"bs-contextmenu-file-download": "Télécharger un fichier",
-	"apihelp-bs-contextmenu-tasks-description": "Fournit les éléments du menu contextuel dans le contexte"
+	"apihelp-bs-contextmenu-tasks-description": "Fournit les éléments du menu contextuel dans le contexte",
+	"apihelp-bs-contextmenu-tasks-summary": "Fournit les éléments de menu de contexte présents dans le contexte"
 }

@@ -51,5 +51,6 @@
 	"apihelp-bs-namespace-tasks-description": "Permet la modification de la configuration de l’espace de noms.",
 	"apihelp-bs-namespace-tasks-summary": "Autorise la modification de la configuration de l'espace de noms.",
 	"action-namespacemanager-viewspecialpage": "voir la page spéciale du gestionnaire d'espaces de noms",
-	"namespacemanager": "Gestionnaire de l'espace de noms"
+	"namespacemanager": "Gestionnaire de l'espace de noms",
+	"bs-namespacemanager-label-istalk": "Discussion"
 }

@@ -4,7 +4,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
 			"Shirayuki",
-			"Umherirrender"
+			"Umherirrender",
+			"Robby"
 		]
 	},
 	"bs-namespacemanager-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of namespace manager extension",
@@ -54,5 +55,5 @@
 	"action-namespacemanager-viewspecialpage": "label for permission denied page, show user which page have been blocked\n{{doc-action|namespacemanager-viewspecialpage}}",
 	"namespacemanager": "name of special page",
 	"bs-namespacemanager-nodeletetalk": "Error message shown when a user tries to delete a talk namespace",
-	"bs-namespacemanager-label-istalk": "Label for column in the grid that shows if namespace is a talk namespace"
+	"bs-namespacemanager-label-istalk": "Label for column in the grid that shows if namespace is a talk namespace\n{{Identical|Talk}}"
 }

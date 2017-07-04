@@ -49,5 +49,7 @@
 	"apihelp-bs-namespace-tasks-description": "允许修改名字空间配置。",
 	"apihelp-bs-namespace-tasks-summary": "允许修改名字空间配置。",
 	"action-namespacemanager-viewspecialpage": "查看名字空间管理器的特殊页面",
-	"namespacemanager": "名字空间管理器"
+	"namespacemanager": "名字空间管理器",
+	"bs-namespacemanager-nodeletetalk": "讨论名字空间不能删除",
+	"bs-namespacemanager-label-istalk": "讨论"
 }

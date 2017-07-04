@@ -3,7 +3,8 @@
 		"authors": [
 			"WikiPhoenix",
 			"Lokal Profil",
-			"Warrakkk"
+			"Warrakkk",
+			"Umeaboy"
 		]
 	},
 	"bs-namespacemanager-desc": "Administrationsgränssnittet för att redigera och radera namnrymder",
@@ -47,5 +48,6 @@
 	"bs-namespacemanager-ns-config-saved": "Konfigurationen av namnrymder har sparats.",
 	"bs-namespacemanager-error-ns-config-not-saved": "Konfigurationen av namnrymder kunde inte sparas till $1.",
 	"action-namespacemanager-viewspecialpage": "visar specialsidan för namnrymdshanteraren",
-	"namespacemanager": "Namnrymdshanterare"
+	"namespacemanager": "Namnrymdshanterare",
+	"bs-namespacemanager-label-istalk": "Diskussion"
 }

@@ -26,5 +26,6 @@
 	"bs-namespacemanager-willmove": "Gëtt a(n) \"{{int:bs-ns_main}}\" geréckelt",
 	"bs-namespacemanager-willmovesuffix": "Gi mam Suffix \"$1\" a(n) \"{{int:bs-ns_main}}\" geréckelt",
 	"bs-namespacemanager-deletewarning": "Sidd Dir sécher datt Dir dësen Nummraum läsche wëllt? D'Läsche vun engem Nummraum kann net réckgängeg gemaach ginn.",
-	"bs-namespacemanager-pagepresent": "Säiten an dësem Nummraum:"
+	"bs-namespacemanager-pagepresent": "Säiten an dësem Nummraum:",
+	"bs-namespacemanager-label-istalk": "Diskussioun"
 }
