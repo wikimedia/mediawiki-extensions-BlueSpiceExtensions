@@ -222,6 +222,17 @@ var BsActions = function() {
 		_editor.getDoc().documentElement.style.overflowY = "auto";
 	}
 
+	/**
+	 * When a table is inserted, add a header row.
+	 */
+	function _addTableHeaderRow( e, selection ) {
+		if ( e.content.match( /^<table id="__mce">/ ) ) {
+			var row = e.content.match( /<tr>(.*?)<\/tr>/ );
+			var headerRow = row[0].replace( /td/gmi, "th" );
+			e.content = e.content.replace( /<tbody>/, "<tbody>" + headerRow );
+		}
+	}
+
 	this.getEditor = function() {
 		return _editor;
 	};
@@ -465,6 +476,8 @@ var BsActions = function() {
 		}
 		//ed.on('NodeChange', _onNodeChange);
 		ed.on( 'FullscreenStateChanged', _addFullScreenScrollbar );
+
+		ed.on( 'BeforeSetContent', _addTableHeaderRow );
 	};
 };
 
