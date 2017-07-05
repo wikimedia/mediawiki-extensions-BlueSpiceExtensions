@@ -29,5 +29,7 @@
 	"logentry-bs-namespace-manager-remove": "$1님이 $4 이름공간을 {{GENDER:$2|제거했습니다}}",
 	"apihelp-bs-namespace-tasks-summary": "이름공간 구성의 수정을 허용합니다.",
 	"action-namespacemanager-viewspecialpage": "이름공간 관리자의 특수문서 보기",
-	"namespacemanager": "이름공간 관리자"
+	"namespacemanager": "이름공간 관리자",
+	"bs-namespacemanager-nodeletetalk": "토론 이름공간은 지울 수 없습니다",
+	"bs-namespacemanager-label-istalk": "토론"
 }

@@ -49,5 +49,7 @@
 	"apihelp-bs-namespace-tasks-description": "Permite cambiar la configuración del espaciu de nomes.",
 	"apihelp-bs-namespace-tasks-summary": "Permite cambiar la configuración del espaciu de nomes.",
 	"action-namespacemanager-viewspecialpage": "ver la páxina especial del xestor d'espacios de nomes",
-	"namespacemanager": "Xestor d'espacios de nomes"
+	"namespacemanager": "Xestor d'espacios de nomes",
+	"bs-namespacemanager-nodeletetalk": "L'espaciu de nomes Alderique nun pué desaniciase",
+	"bs-namespacemanager-label-istalk": "Alderique"
 }

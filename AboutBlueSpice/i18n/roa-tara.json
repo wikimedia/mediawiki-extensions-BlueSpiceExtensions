@@ -7,5 +7,7 @@
 	"bs-aboutbluespice-desc": "'Mbormaziune sus a BlueSpice",
 	"bs-aboutbluespice-about-bluespice": "Sus a BlueSpice",
 	"aboutbluespice": "Sus a BlueSpice",
-	"prefs-aboutbluespice": "Sus a BlueSpice"
+	"prefs-aboutbluespice": "Sus a BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Fà 'ndrucà 'u collegamende \"{{int:bs-aboutbluespice-about-bluespice}}\" sus a sus a 'u menù prengepàle",
+	"action-aboutbluespice-viewspecialpage": "fà 'ndrucà 'a pàgena speciale \"{{int:bs-aboutbluespice-about-bluespice}}\""
 }
