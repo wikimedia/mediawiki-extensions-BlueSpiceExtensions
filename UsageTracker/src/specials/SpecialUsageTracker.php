@@ -35,7 +35,6 @@ class SpecialUsageTracker extends BsSpecialPage {
 	public function execute( $sParameter ) {
 		parent::execute( $sParameter );
 
-		$oOut = $this->getOutput();
 		$oRequest = $this->getRequest();
 
 		// Handle update requests (in case the user has the neccesary rights)
@@ -57,48 +56,13 @@ class SpecialUsageTracker extends BsSpecialPage {
 			$this->showUpdateForm();
 		}
 
-		// Get stored data from db
-		$aData = BsExtensionManager::getExtension( 'UsageTracker' )->getUsageDataFromDB();
-
-		// Show data in table
-		$sTableHtml = HTML::rawElement( "tr", array(),
-			HTML::element( "th", array(), wfMessage( 'bs-usagetracker-col-identifier' )->text() ).
-			HTML::element( "th", array(), wfMessage( 'bs-usagetracker-col-desc' )->text() ).
-			HTML::element( "th", array(), wfMessage( 'bs-usagetracker-col-last-updated' )->text() ).
-			HTML::element( "th", array(), wfMessage( 'bs-usagetracker-col-count' )->text() )
-		);
-
-		foreach ( $aData as $oResult ) {
-			$sTableHtml .=  $this->makeRow( $oResult );
-		}
-
-		$oOut->addHTML(
-			HTML::rawElement( "table", array( "class" => "sortable wikitable" ), $sTableHtml )
-		);
-		return true;
+		$this->getOutput()->addModules( 'ext.UsageTracker.manager' );
+		$this->getOutput()->addHTML( Html::element( 'div', [
+			'id' => 'bs-usagetracker-manager'
+		]));
 	}
 
 	/**
-	 * Renders a single result table row in HTML
-	 * @param BS\UsageTracker\CollectorResult $oCollectorResult
-	 * @return string HTML for a single table row
-	 */
-	protected function makeRow( BS\UsageTracker\CollectorResult $oCollectorResult ) {
-		$sHtml = HTML::rawElement( "tr", array(),
-			HTML::element( "td", [ "width" => "10%" ], $oCollectorResult->identifier ).
-			HTML::element( "td", array(), $oCollectorResult->getDescription() ).
-			HTML::element( "td", [ "align" => "right", "width" => "10%" ], $oCollectorResult->getUpdateDate() ).
-			HTML::rawElement(
-				"td",
-				[ "align" => "right", "width" => "10%" ],
-				HTML::element( "strong", array(), $oCollectorResult->count )
-			)
-		);
-
-		return $sHtml;
-	}
-
-		/**
 	 * Output a form to start collect jobs
 	 */
 	protected function showUpdateForm() {
