@@ -1,7 +1,7 @@
 /**
  * ExtendedEditBar extension
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  * This file acually configures the individual buttons
  *
  * @author     Markus Glaser <glaser@hallowelt.com>

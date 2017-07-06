@@ -1,6 +1,6 @@
 -- Database definitions for InsertFile
 --
--- Part of BlueSpice for MediaWiki
+-- Part of BlueSpice MediaWiki
 --
 -- @author     Sebastian Ulbricht <sebastian.ulbricht@dragon-network.hk>
 

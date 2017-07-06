@@ -1,6 +1,6 @@
 <?php
 /**
-* This file is part of blue spice for MediaWiki.
+* This file is part of BlueSpice MediaWiki.
 *
 * Use MediaWiki:TopBarMenu to customize the TopMenuBar
 *
@@ -18,7 +18,7 @@
 * with this program; if not, write to the Free Software Foundation, Inc.,
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 *
-* This file is part of BlueSpice for MediaWiki
+* This file is part of BlueSpice MediaWiki
 * For further information visit http://www.bluespice.com
 *
 * @author     Patric Wirth <wirth@hallowelt.com>

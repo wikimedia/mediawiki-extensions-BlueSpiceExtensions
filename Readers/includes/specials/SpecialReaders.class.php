@@ -2,7 +2,7 @@
 /**
  * Renders the Readers special page.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @package    BlueSpice_Extensions

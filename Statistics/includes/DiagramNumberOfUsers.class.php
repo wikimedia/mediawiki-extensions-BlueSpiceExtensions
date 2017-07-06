@@ -2,7 +2,7 @@
 /**
  * Describes number of users diagram for Statistics for BlueSpice.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @package    BlueSpice_Extensions

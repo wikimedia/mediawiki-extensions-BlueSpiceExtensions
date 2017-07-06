@@ -3,7 +3,7 @@
 /**
  * Renders the About BlueSpice special page.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
 

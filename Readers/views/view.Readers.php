@@ -2,7 +2,7 @@
 /**
  * Renders the Readers frame.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    $Id: view.Readers.php 9950 2013-06-26 14:58:43Z smuggli $

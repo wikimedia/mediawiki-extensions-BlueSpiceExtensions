@@ -2,7 +2,7 @@
 
 
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: ContextMenu
  * Description: Provides context menus for various MediaWiki links
  * Authors: Tobias Weichart, Robert Vogel

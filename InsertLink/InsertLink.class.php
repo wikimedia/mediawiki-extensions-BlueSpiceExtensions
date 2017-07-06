@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: InsertLink
  * Description: Dialogbox to enter a link.
  * Authors: Markus Glaser, Sebastian Ulbricht

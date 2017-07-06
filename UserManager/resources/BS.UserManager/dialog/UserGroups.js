@@ -1,7 +1,7 @@
 /**
  * UserManager UserGroups Dialog
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    Bluespice_Extensions

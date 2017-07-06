@@ -18,7 +18,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
+ * This file is part of BlueSpice MediaWiki
  * For further information visit http://www.bluespice.com
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
@@ -76,7 +76,7 @@ class UniversalExport extends BsExtensionMW {
 			'creator' => 'Hallo Welt! GmbH',
 		);
 		$aMetadataOverrides = array(
-			'producer' => 'UniversalExport '.$bsgBlueSpiceExtInfo['version'].' (BlueSpice for MediaWiki)'
+			'producer' => 'UniversalExport '.$bsgBlueSpiceExtInfo['version'].' (BlueSpice MediaWiki)'
 		);
 
 		BsConfig::registerVar( 'MW::UniversalExport::CategoryWhitelist', $this->aCategoryWhitelist,  BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_ARRAY_STRING );

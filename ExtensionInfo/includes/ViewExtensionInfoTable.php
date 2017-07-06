@@ -2,7 +2,7 @@
 /**
  * Renders the ExtensionInfo.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
 

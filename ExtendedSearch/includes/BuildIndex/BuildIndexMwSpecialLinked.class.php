@@ -2,7 +2,7 @@
 /**
  * Controls special linked files index building mechanism for ExtendedSearch for MediaWiki
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Mathias Scheer <scheer@hallowelt.com>
  * @author     Markus Glaser <glaser@hallowelt.com>

@@ -2,7 +2,7 @@
 /**
  * Renders a single ExtendedSearch facet.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Mathias Scheer <scheer@hallowelt.com>
  * @author     Markus Glaser <glaser@hallowelt.com>

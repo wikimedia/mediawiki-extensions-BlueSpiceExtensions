@@ -2,7 +2,7 @@
 /**
  * Renders the profile image frame on the users page.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
 
