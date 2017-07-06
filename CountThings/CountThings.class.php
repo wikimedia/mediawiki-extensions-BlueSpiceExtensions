@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: CountThings
  * Description: Counts all kinds of things.
  * Authors: Markus Glaser, Mathias Scheer

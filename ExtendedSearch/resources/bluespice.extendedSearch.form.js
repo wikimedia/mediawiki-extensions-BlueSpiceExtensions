@@ -1,7 +1,7 @@
 /**
  * ExtendedSearch form
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @package    Bluespice_Extensions

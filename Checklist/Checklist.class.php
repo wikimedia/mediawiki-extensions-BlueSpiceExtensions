@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: Checklist
  * Description: Provides checklist functions.
  * Authors: Markus Glaser, Patric Wirth, Leonid Verhovskij

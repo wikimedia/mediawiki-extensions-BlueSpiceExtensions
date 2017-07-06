@@ -1,6 +1,6 @@
 <?php
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: HideTitle
  * Description: Tag to hide the title of an article.
  * Authors: Markus Glaser, Sebastian Ulbricht

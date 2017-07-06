@@ -2,7 +2,7 @@
 /**
  * Renders the "CountCharacters" tag from the CountThings extension.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    $Id$

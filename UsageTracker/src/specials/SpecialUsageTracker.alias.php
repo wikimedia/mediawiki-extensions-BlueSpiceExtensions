@@ -2,7 +2,7 @@
 /**
  * Internationalisation file for UsageTracker special page.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
 

@@ -1,6 +1,6 @@
 -- Database definition for table bs_namespacemanager_backup_revision in NamespaceManager
 --
--- Part of BlueSpice for MediaWiki
+-- Part of BlueSpice MediaWiki
 --
 -- @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
 

@@ -1,6 +1,6 @@
 #BoilerPlate
 This is a simple boilerplate that features the most basic structures of a
-**BlueSpice for MediaWiki** extension.
+**BlueSpice MediaWiki** extension.
 
 ##Files
 * BoilerPlate.setup.php - This is the **setup** file. It just registers static

@@ -2,7 +2,7 @@
 /**
  * The TagLibrary of the UniversalExport Extension.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
 

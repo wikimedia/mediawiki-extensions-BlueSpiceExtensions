@@ -2,7 +2,7 @@
 /**
  * Abstraction layer for search service for ExtendedSearch
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @author     Mathias Scheer <scheer@hallowelt.com>
