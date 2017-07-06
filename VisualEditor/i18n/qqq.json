@@ -36,11 +36,7 @@
 	"bs-visualeditor-bsactions-signature": "Text for signature \n{{Identical|Signature}}",
 	"bs-visualeditor-bsactions-save": "Text for save \n{{Identical|Save}}",
 	"bs-visualeditor-bsactions-headings": "Text for headings \n{{Identical|Heading}}",
-	"bs-visualeditor-bsactions-paragraph": "Text for paragraph \n{{Identical|Paragraph}}",
-	"bs-visualeditor-bsactions-heading2": "Text for heading 2 \n{{Identical|Heading}}",
-	"bs-visualeditor-bsactions-heading3": "Text for heading 3 \n{{Identical|Heading}}",
-	"bs-visualeditor-bsactions-heading4": "Text for heading 4 \n{{Identical|Heading}}",
-	"bs-visualeditor-bsactions-heading5": "Text for heading 5 \n{{Identical|Heading}}",
-	"bs-visualeditor-bsactions-heading6": "Text for heading 6 \n{{Identical|Heading}}",
-	"bs-visualeditor-switch-noeditor-desc": "Text for disables the visual editor on this page."
+	"bs-visualeditor-switch-noeditor-desc": "Text for disables the visual editor on this page.",
+	"bs-visualeditor-bsactions-tablefunctions": "Tooltip text for button to add table functionality",
+	"bs-visualeditor-bsactions-tablestyles": "Tooltip text for button to set table style"
 }

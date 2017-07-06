@@ -38,5 +38,7 @@
 	"bs-visualeditor-bsactions-heading4": "Überschrift 4",
 	"bs-visualeditor-bsactions-heading5": "Überschrift 5",
 	"bs-visualeditor-bsactions-heading6": "Überschrift 6",
-	"bs-visualeditor-switch-noeditor-desc": "Deaktiviert den Visuellen Editor auf dieser Seite."
+	"bs-visualeditor-switch-noeditor-desc": "Deaktiviert den Visuellen Editor auf dieser Seite.",
+	"bs-visualeditor-bsactions-tablefunctions": "Tabellenfunktionen",
+	"bs-visualeditor-bsactions-tablestyles": "Tabellenformate"
 }

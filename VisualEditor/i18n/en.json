@@ -32,11 +32,7 @@
 	"bs-visualeditor-bsactions-signature": "Signature",
 	"bs-visualeditor-bsactions-save": "Save",
 	"bs-visualeditor-bsactions-headings": "Headings",
-	"bs-visualeditor-bsactions-paragraph": "Paragraph",
-	"bs-visualeditor-bsactions-heading2": "Heading 2",
-	"bs-visualeditor-bsactions-heading3": "Heading 3",
-	"bs-visualeditor-bsactions-heading4": "Heading 4",
-	"bs-visualeditor-bsactions-heading5": "Heading 5",
-	"bs-visualeditor-bsactions-heading6": "Heading 6",
-	"bs-visualeditor-switch-noeditor-desc": "Disables the visual editor on this page."
+	"bs-visualeditor-switch-noeditor-desc": "Disables the visual editor on this page.",
+	"bs-visualeditor-bsactions-tablefunctions": "Table functions",
+	"bs-visualeditor-bsactions-tablestyles": "Table styles"
 }

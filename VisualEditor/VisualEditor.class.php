@@ -84,18 +84,18 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 		//'inline' => true,
 		'menu' => false,
 		'toolbar1' => array(
-			'bswiki', /* 'bsswitch', */ 'bssave', '|', 'undo', 'redo', '|',
-			'searchreplace', 'paste', '|', 'bssignature', 'unlink', '|',
-			'table', '|', 'bstableaddrowbefore',
-			'bstableaddrowafter', 'bstabledeleterow', 'bstableaddcolumnbefore',
-			'bstableaddcolumnafter', 'bstabledeletecolumn'
+			'bswiki', 'bssave', 'fullscreen', '|', 'undo', 'redo', '|',
+			'searchreplace', 'paste', '|', 'styleselect', 'bsheadings',  '|',
+			'bssignature', 'unlink',
 		),
 		'toolbar2' => array(
 			'bold', 'italic', 'underline', 'strikethrough', '|',
 			'bullist', 'numlist', '|', 'outdent', 'indent', '|',
 			'charmap', 'bslinebreak', '|',
-			'styleselect', 'bsheadings', 'forecolor', 'removeformat', '|',
-			'fullscreen'
+			'forecolor', 'removeformat', '|',
+			'table', '|', 'bstableaddrowbefore',
+			'bstableaddrowafter', 'bstabledeleterow', 'bstableaddcolumnbefore',
+			'bstableaddcolumnafter', 'bstabledeletecolumn', 'bstablefunctions', 'bstablestyles'
 		),
 		// autofocus on the editor instance with this id
 		'auto_focus' => 'wpTextbox1',
@@ -130,49 +130,61 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 			'class' => 'contenttable sortable'
 		),
 		#'document_base_url' => $GLOBALS['wgServer'],
+		'formats' => array(
+			'table-property-sortable' => array( 'selector' => 'table', 'classes' => 'sortable' ),
+			'table-style-wikitable' => array( 'selector' => 'table', 'classes' => 'wikitable' ),
+			'table-style-contenttable' => array( 'selector' => 'table', 'classes' => 'contenttable' ),
+			'table-style-contenttable-black' => array( 'selector' => 'table', 'classes' => 'contenttable-black' ),
+			'table-style-contenttable-blue' => array( 'selector' => 'table', 'classes' => 'contenttable-blue' ),
+			'table-style-contenttable-darkblue' => array( 'selector' => 'table', 'classes' => 'contenttable-darkblue' ),
+			'table-style-cuscosky' => array( 'selector' => 'table', 'classes' => 'cuscosky' ),
+			'table-style-casablanca' => array( 'selector' => 'table', 'classes' => 'casablanca' ),
+			'table-style-greyscale' => array( 'selector' => 'table', 'classes' => 'greyscale' ),
+			'table-style-greyscale-narrow' => array( 'selector' => 'table', 'classes' => 'greyscale-narrow' ),
+			'table-align-top' => array( 'selector' => 'td', 'classes' => 'bs-aligntop' ),
+			'table-align-middle' => array( 'selector' => 'td', 'classes' => 'bs-alignmiddle' ),
+			'table-align-bottom' => array( 'selector' => 'td', 'classes' => 'bs-alignbottom' ),
+			'pre' => array( 'block' => 'pre', 'classes' => 'bs_pre_from_space' )
+		),
+		'style_formats_autohide' => true,
 		'style_formats' => array(
-			array('title' => 'Headers', 'items' => array(
-				array('title' => 'Header 2', 'format' => 'h2'),
-				array('title' => 'Header 3', 'format' => 'h3'),
-				array('title' => 'Header 4', 'format' => 'h4'),
-				array('title' => 'Header 5', 'format' => 'h5'),
-				array('title' => 'Header 6', 'format' => 'h6')
+			array( 'title' => 'Inline', 'items'  => array(
+				array( 'title' => 'Code', 'format' => 'code', 'icon' => 'code' ),
+				array( 'title' => 'Superscript', 'format' => 'superscript', 'icon' => 'superscript' ),
+				array( 'title' => 'Subscript', 'format' => 'subscript', 'icon' => 'subscript' ),
 			)),
-			array('title' => 'Inline', 'items'  => array(
-				array('title' => 'Code', 'format' => 'code', 'icon' => 'code' ),
-				array('title' => 'Superscript', 'format' => 'superscript', 'icon' => 'superscript' ),
-				array('title' => 'Subscript', 'format' => 'subscript', 'icon' => 'subscript' ),
+			array( 'title' => 'Alignment', 'items'  => array(
+				array( 'title' => 'Left', 'format' => 'alignleft', 'icon' => 'alignleft' ),
+				array( 'title' => 'Center', 'format' => 'aligncenter', 'icon' => 'aligncenter' ),
+				array( 'title' => 'Right', 'format' => 'alignright', 'icon' => 'alignright' ),
+				array( 'title' => 'Top', 'format' => 'table-align-top' ),
+				array( 'title' => 'Middle', 'format' => 'table-align-middle' ),
+				array( 'title' => 'Bottom', 'format' => 'table-align-bottom' )
 			)),
-			array('title' => 'Alignment', 'items'  => array(
-				array('title' => 'Left', 'format' => 'alignleft', 'icon' => 'alignleft' ),
-				array('title' => 'Center', 'format' => 'aligncenter', 'icon' => 'aligncenter' ),
-				array('title' => 'Right', 'format' => 'alignright', 'icon' => 'alignright' ),
-				array('title' => 'Top', 'selector' => 'td', 'classes' => 'bs-aligntop' ),
-				array('title' => 'Middle', 'selector' => 'td', 'classes' => 'bs-alignmiddle' ),
-				array('title' => 'Bottom', 'selector' => 'td', 'classes' => 'bs-alignbottom' )
-			)),
-			array('title' => 'Table', 'items'  => array(
-				array('title' => 'bs-visualeditor-sortable', 'selector' => 'table', 'classes' => 'sortable'),
-				array('title' => 'bs-visualeditor-wikitable', 'selector' => 'table', 'classes' => 'wikitable'),
-				array('title' => 'bs-visualeditor-contenttable', 'selector' => 'table', 'classes' => 'contenttable'),
-				array('title' => 'bs-visualeditor-contenttable-black', 'selector' => 'table', 'classes' => 'contenttable-black'),
-				array('title' => 'bs-visualeditor-contenttable-blue', 'selector' => 'table', 'classes' => 'contenttable-blue'),
-				array('title' => 'bs-visualeditor-contenttable-darkblue', 'selector' => 'table', 'classes' => 'contenttable-darkblue'),
-				array('title' => 'bs-visualeditor-cuscosky', 'selector' => 'table', 'classes' => 'cuscosky'),
-				array('title' => 'bs-visualeditor-casablanca', 'selector' => 'table', 'classes' => 'casablanca'),
-				array('title' => 'bs-visualeditor-greyscale', 'selector' => 'table', 'classes' => 'greyscale'),
-				array('title' => 'bs-visualeditor-greyscale-narrow', 'selector' => 'table', 'classes' => 'greyscale-narrow'),
-			)),
-			array('title' => 'Cell', 'items'  => array(
-				array('title' => 'Left', 'selector' => 'td', 'format' => 'alignleft', 'icon' => 'alignleft' ),
-				array('title' => 'Center', 'selector' => 'td', 'format' => 'aligncenter', 'icon' => 'aligncenter' ),
-				array('title' => 'Right', 'selector' => 'td', 'format' => 'alignright', 'icon' => 'alignright' ),
-				array('title' => 'bs-visualeditor-aligntop', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'top') ),
-				array('title' => 'bs-visualeditor-alignmiddle', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'middle') ),
-				array('title' => 'bs-visualeditor-alignbottom', 'selector' => 'td', 'styles' => array( 'vertical-align' => 'bottom') )
-			)),
-			array('title' => 'Pre', 'block' => 'pre', 'classes' => 'bs_pre_from_space'),
-			array('title' => 'Paragraph', 'block' => 'p')
+			array( 'title' => 'Pre', 'format' => 'pre' ),
+			array( 'title' => 'Paragraph', 'block' => 'p' )
+		),
+		'bs_heading_formats' => array(
+			array( 'title' => 'Paragraph', 'format' => 'p' ),
+			array( 'title' => 'Header 2', 'format' => 'h2' ),
+			array( 'title' => 'Header 3', 'format' => 'h3' ),
+			array( 'title' => 'Header 4', 'format' => 'h4' ),
+			array( 'title' => 'Header 5', 'format' => 'h5' ),
+			array( 'title' => 'Header 6', 'format' => 'h6' )
+		),
+		'bs_table_function_formats' => array(
+			array( 'title' => 'bs-visualeditor-sortable', 'format' => 'table-property-sortable' ),
+		),
+		'bs_table_formats' => array(
+			array( 'title' => 'bs-visualeditor-wikitable', 'format' => 'table-style-wikitable' ),
+			array( 'title' => 'bs-visualeditor-contenttable', 'format' => 'table-style-contenttable' ),
+			array( 'title' => 'bs-visualeditor-contenttable-black', 'format' => 'table-style-contenttable-black' ),
+			array( 'title' => 'bs-visualeditor-contenttable-blue', 'format' => 'table-style-contenttable-blue' ),
+			array( 'title' => 'bs-visualeditor-contenttable-darkblue', 'format' => 'table-style-contenttable-darkblue' ),
+			array( 'title' => 'bs-visualeditor-cuscosky', 'format' => 'table-style-cuscosky' ),
+			array( 'title' => 'bs-visualeditor-casablanca', 'format' => 'table-style-casablanca' ),
+			array( 'title' => 'bs-visualeditor-greyscale', 'format' => 'table-style-greyscale' ),
+			array( 'title' => 'bs-visualeditor-greyscale-narrow', 'format' => 'table-style-greyscale-narrow' )
 		),
 		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn'
 		// do not use table_class_list, as this breaks any existing classes upon editing
