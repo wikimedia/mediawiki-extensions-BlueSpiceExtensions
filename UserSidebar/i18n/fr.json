@@ -13,6 +13,7 @@
 	"bs-usersidebar-tab-globalactions": "Actions globales",
 	"bs-usersidebar-globalactionswidget-title": "Actions globales",
 	"apihelp-sidebar-description": "Retourne le code HTML de la barre latérale de l'utilisateur",
+	"apihelp-sidebar-summary": "Renvoie le contenu HTML de la barre latérale utilisateur",
 	"apihelp-sidebar-param-sidebar": "S'il faut avoir la barre latérale Wiki",
 	"apihelp-sidebar-param-usersidebar": "S'il faut avoir la barre latérale Focus",
 	"apihelp-sidebar-param-format": "Format des données en sortie",

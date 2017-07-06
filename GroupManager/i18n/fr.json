@@ -34,6 +34,7 @@
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|a renommé}} le groupe $4 en $5",
 	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|a supprimé}} le groupe $4",
 	"apihelp-bs-groupmanager-description": "Fournit les tâches pour l'extension GroupManager.",
+	"apihelp-bs-groupmanager-summary": "Fournit les tâches de l’extension GroupManager.",
 	"action-groupmanager-viewspecialpage": "afficher la page spéciale \"{{int:bs-groupmanager-label}}\"",
 	"groupmanager": "Gestionnaire de groupe"
 }

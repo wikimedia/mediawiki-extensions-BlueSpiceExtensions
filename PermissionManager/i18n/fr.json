@@ -51,6 +51,7 @@
 	"log-show-hide-bs-permission-manager": "Journal du gestionnaire des permissions $1",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|a modifié}} les droits du groupe $4",
 	"apihelp-bs-permissionmanager-tasks-description": "Fournit les tâches du PermissionManager",
+	"apihelp-bs-permissionmanager-tasks-summary": "Fournit des tâches pour PermissionManager",
 	"action-permissionmanager-viewspecialpage": "afficher la page spéciale \"{{int:bs-permissionmanager-label}}\"",
 	"permissionmanager": "Gestionnaire d'autorisations"
 }

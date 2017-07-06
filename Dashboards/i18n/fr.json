@@ -20,8 +20,10 @@
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Page wiki",
 	"apihelp-bs-dashboard-task-param-dc": "Paramètre de contrôle du cache. Utilisé par ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Liste de tous les portlets",
+	"apihelp-bs-dashboards-store-summary": "Liste tous les portlets disponibles",
 	"apihelp-bs-dashboards-tasks-description": "Enregistre la configuration du tableau de bord",
 	"apihelp-bs-dashboards-tasks-summary": "Enregistre la configuration du tableau de bord",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Renvoie le contenu pour certains widgets du tableau de bord.",
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Renvoie le contenu de certains widgets de tableau de bord",
 	"action-dashboards-viewspecialpage-userdashboard": "afficher la page spéciale \"{{int:userdashboard}}\""
 }

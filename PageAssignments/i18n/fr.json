@@ -72,5 +72,6 @@
 	"apihelp-bs-mypageassignment-store-description": "Retourne les pages affectées à l'utilisateur courant",
 	"apihelp-bs-mypageassignment-store-summary": "Renvoie les pages assignées à l'utilisateur courant",
 	"apihelp-bs-pageassignment-tasks-description": "Obtenir ou modifier la liste des assignations pour la page spécifique",
+	"apihelp-bs-pageassignment-tasks-summary": "Obtenir ou modifier la liste des affectations pour une page spécifique",
 	"bs-pageassignments-assignee-special-everyone-label": "Tout le monde"
 }

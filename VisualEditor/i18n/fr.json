@@ -9,6 +9,7 @@
 	"bs-visualeditor-desc": "Éditeur visuel pour MédiaWiki",
 	"prefs-visualeditor": "ÉditeurVisuel",
 	"apihelp-bs-visualeditor-tasks-description": "Fournit des tâches pour l’extension Éditeur Visuel BlueSpice.",
+	"apihelp-bs-visualeditor-tasks-summary": "Fournit les tâches pour l’extension BlueSpice de l’Éditeur visuel.",
 	"bs-visualeditor-editbutton-hint": "ÉditeurVisuel",
 	"bs-visualeditor-pref-disablens": "Désactiver dans les espaces de noms :",
 	"bs-visualeditor-pref-use": "Utilisez l’éditeur tel-tel par défaut",

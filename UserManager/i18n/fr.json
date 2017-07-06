@@ -36,6 +36,7 @@
 	"bs-usermanager-groups-more": "... plus",
 	"bs-usermanager-no-self-desysop": "Vous ne pouvez pas supprimer votre propre droit de sysop.",
 	"apihelp-bs-usermanager-tasks-description": "Fournit les opérations pour l’extension Checklist",
+	"apihelp-bs-usermanager-tasks-summary": "Fournit les opérations pour l’extension Checklist",
 	"bs-usermanager-no-self-block": "Vous ne pouvez pas vous désactiver vous-même.",
 	"bs-usermanager-block-error": "{{GENDER:$1|L’utilisateur|L’utilisatrice}} $1 ne peut pas être {{GENDER:$1|désactivé|désactivée}}.",
 	"bs-usermanager-unblock-error": "{{GENDER:$1|L’utilisateur|L’utilisatrice}} $1 ne peut pas être {{GENDER:$1|activé|activée}}.",
@@ -60,5 +61,6 @@
 	"bs-usermanager-title-multipleuserselected": "Plusieurs utilisateurs sont sélectionnés",
 	"bs-usermanager-multipleuserselected": "Vous ne pouvez changer de mot de passe que pour un utilisateur à la fois",
 	"bs-usermanager-invalid-groups": "Les groupes ne sont pas valides",
-	"apihelp-bs-usermanager-group-store-description": "Fournit une API BlueSpice aux taches de gestion utilisateur."
+	"apihelp-bs-usermanager-group-store-description": "Fournit une API BlueSpice aux taches de gestion utilisateur.",
+	"apihelp-bs-usermanager-group-store-summary": "Fournit l’API des tâches de gestion utilisateur pour BlueSpice."
 }
