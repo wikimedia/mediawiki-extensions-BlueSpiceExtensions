@@ -87,7 +87,12 @@
 				"bs-permissionmanager-titletpled-new",
 				"bs-permissionmanager-titletpled-edit",
 				"bs-permissionmanager-titletpled-delete",
-				"bs-permissionmanager-unsaved-changes"
+				"bs-permissionmanager-unsaved-changes",
+				"bs-permissionmanager-affected-by-explicit",
+				"bs-permissionmanager-affected-by-inherited",
+				"bs-permissionmanager-affected-by-notset",
+				"bs-permissionmanager-affected-by-explicitlyset",
+				"bs-permissionmanager-affected-by-setonwiki"
 			]
 		}
 	},

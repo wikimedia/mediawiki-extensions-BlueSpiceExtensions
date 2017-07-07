@@ -50,5 +50,10 @@
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|hat}} die Rechte für Gruppe $4 geändert",
 	"apihelp-bs-permissionmanager-tasks-description": "Bietet Aufgaben zur Rechteverwaltung",
 	"action-permissionmanager-viewspecialpage": "die Spezialseite „{{int:bs-permissionmanager-label}}“ anzusehen",
-	"permissionmanager": "Rechteverwaltung"
+	"permissionmanager": "Rechteverwaltung",
+	"bs-permissionmanager-affected-by-explicit": "Blockiert von $1",
+	"bs-permissionmanager-affected-by-inherited": "Geerbt von $1",
+	"bs-permissionmanager-affected-by-notset": "Nicht gesetzt",
+	"bs-permissionmanager-affected-by-explicitlyset": "Explizit gesetzt",
+	"bs-permissionmanager-affected-by-setonwiki": "Auf Wiki-Ebene gesetzt"
 }
