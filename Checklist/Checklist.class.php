@@ -44,6 +44,7 @@ class Checklist extends BsExtensionMW {
 
 	public static $iCheckboxCounter = 0;
 	public static $bCheckboxFound = false;
+	public static $iChecklistMaxItemLength = 60;
 
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
@@ -103,10 +104,11 @@ class Checklist extends BsExtensionMW {
 		if ( is_object( $oTitle ) ) {
 			$oWikiPage = WikiPage::newFromID( $oTitle->getArticleID() );
 			if ( is_object( $oWikiPage ) ) {
-				$sContent = $oWikiPage->getContent()->getNativeData();
-				$aLines = explode( "\n", $sContent );
+				$sContent = $oWikiPage->getContent()->preloadTransform( $oWikiPage->getTitle(), new ParserOptions() )->getNativeData();
+				$aLines = explode( "\n", trim( $sContent ) );
 				foreach ( $aLines as $sLine ) {
-					if ( strpos( $sLine, '*' ) !== 0 ) continue;
+					if ( strpos( $sLine, '*' ) !== 0 ) return array();
+					if ( strlen( $sLine ) > self::$iChecklistMaxItemLength ) return array();
 					$sNewLine = trim( substr( $sLine, 1 ) );
 					$aOptions[] = $sNewLine;
 				}
