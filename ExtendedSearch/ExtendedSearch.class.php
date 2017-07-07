@@ -44,21 +44,6 @@ class ExtendedSearch extends BsExtensionMW {
 	private $sWikiID = '';
 
 	/**
-	 * Constructor of ExtendedSearch class
-	 */
-	public function __construct() {
-		wfProfileIn( 'BS::'.__METHOD__ );
-                WikiAdmin::registerModuleClass( 'ExtendedSearchAdmin', array(
-			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_suche_v1.png',
-			'level' => 'wikiadmin',
-			'message' => 'bs-extendedsearchadmin-label',
-			'iconCls' => 'bs-icon-magnifying-glass'
-		) );
-
-		wfProfileOut( 'BS::'.__METHOD__ );
-	}
-
-	/**
 	 * Initialization of ExtendedSearch extension
 	 */
 	protected function initExt() {
@@ -167,7 +152,6 @@ class ExtendedSearch extends BsExtensionMW {
 		$wgAjaxExportList[] = 'ExtendedSearch::getRequestJson';
 		$wgAjaxExportList[] = 'ExtendedSearchBase::getAutocompleteData';
 		$wgAjaxExportList[] = 'ExtendedSearchBase::getRecentSearchTerms';
-		$wgAjaxExportList[] = 'ExtendedSearchAdmin::getProgressBar';
 
 		$bsgExtendedSearchBoostQuerySettings = array(
 			'namespace' => array(
