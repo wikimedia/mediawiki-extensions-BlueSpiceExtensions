@@ -499,7 +499,7 @@ class ArticleInfo extends BsExtensionMW {
 			// TODO RBV (22.02.12 10:22): Less inline CSS, more use of classes
 			$oList = new ViewBaseElement();
 			$oList->setAutoWrap( '<ul style="margin:0">###CONTENT###</ul>' );
-			$oList->setTemplate( '<li style="{STYLE}">&rarr; {LINK}</li>' );
+			$oList->setTemplate( '<li style="{STYLE}">{LINK}</li>' );
 
 			foreach ( $aSubpages as $oTitle ) {
 				$sLink = Linker::link( $oTitle, $oTitle->getSubpageText() );
