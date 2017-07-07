@@ -32,5 +32,9 @@
 	"bs-permissionmanager-titletpled-edit": "Schabloun ëmbenennen",
 	"bs-permissionmanager-titletpled-delete": "Schabloun läschen",
 	"action-permissionmanager-viewspecialpage": "d'Spezialsäit \"{{int:bs-permissionmanager-label}}\" ze kucken",
-	"permissionmanager": "Gestionnaire vu Rechter"
+	"permissionmanager": "Gestionnaire vu Rechter",
+	"bs-permissionmanager-affected-by-explicit": "Gespaart vum $1",
+	"bs-permissionmanager-affected-by-notset": "Net agestallt",
+	"bs-permissionmanager-affected-by-explicitlyset": "Explizit agestallt",
+	"bs-permissionmanager-affected-by-setonwiki": "Um Niveau vun der Wiki agestallt"
 }

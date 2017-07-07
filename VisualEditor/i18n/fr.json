@@ -34,11 +34,5 @@
 	"bs-visualeditor-bsactions-signature": "Signature",
 	"bs-visualeditor-bsactions-save": "Enregistrer",
 	"bs-visualeditor-bsactions-headings": "Rubriques",
-	"bs-visualeditor-bsactions-paragraph": "Paragraphe",
-	"bs-visualeditor-bsactions-heading2": "Rubrique 2",
-	"bs-visualeditor-bsactions-heading3": "Rubrique 3",
-	"bs-visualeditor-bsactions-heading4": "Rubrique 4",
-	"bs-visualeditor-bsactions-heading5": "Rubrique 5",
-	"bs-visualeditor-bsactions-heading6": "Rubrique 6",
 	"bs-visualeditor-switch-noeditor-desc": "Désactive l'éditeur visuel pour cette page."
 }

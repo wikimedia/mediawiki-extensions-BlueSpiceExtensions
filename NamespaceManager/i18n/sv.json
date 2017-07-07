@@ -49,5 +49,6 @@
 	"bs-namespacemanager-error-ns-config-not-saved": "Konfigurationen av namnrymder kunde inte sparas till $1.",
 	"action-namespacemanager-viewspecialpage": "visar specialsidan för namnrymdshanteraren",
 	"namespacemanager": "Namnrymdshanterare",
+	"bs-namespacemanager-nodeletetalk": "Diskussionsnamnrymden kan inte raderas",
 	"bs-namespacemanager-label-istalk": "Diskussion"
 }
