@@ -45,12 +45,18 @@
 				"bs-visualeditor-bsactions-signature",
 				"bs-visualeditor-bsactions-save",
 				"bs-visualeditor-bsactions-headings",
-				"bs-visualeditor-bsactions-paragraph",
-				"bs-visualeditor-bsactions-heading2",
-				"bs-visualeditor-bsactions-heading3",
-				"bs-visualeditor-bsactions-heading4",
-				"bs-visualeditor-bsactions-heading5",
-				"bs-visualeditor-bsactions-heading6"
+				"bs-visualeditor-bsactions-tablefunctions",
+				"bs-visualeditor-bsactions-tablestyles",
+				"bs-visualeditor-sortable",
+				"bs-visualeditor-wikitable",
+				"bs-visualeditor-contenttable",
+				"bs-visualeditor-contenttable-black",
+				"bs-visualeditor-contenttable-blue",
+				"bs-visualeditor-contenttable-darkblue",
+				"bs-visualeditor-cuscosky",
+				"bs-visualeditor-casablanca",
+				"bs-visualeditor-greyscale",
+				"bs-visualeditor-greyscale-narrow"
 			]
 		},
 		"ext.bluespice.visualEditor": {
