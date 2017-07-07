@@ -19,8 +19,7 @@
 	},
 	"callback": "ExtendedSearch::onRegistration",
 	"SpecialPages": {
-		"SpecialExtendedSearch": "SpecialExtendedSearch",
-		"ExtendedSearchAdmin": "SpecialExtendedSearchAdmin"
+		"SpecialExtendedSearch": "SpecialExtendedSearch"
 	},
 	"APIModules": {
 		"feedextendedsearch": "ApiFeedExtendedSearch"
@@ -31,8 +30,7 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"ExtendedSearchAlias": "languages/SpecialExtendedSearch.alias.php",
-		"ExtendedSearchAdminAlias": "includes/specials/SpecialExtendedSearchAdmin.alias.php"
+		"ExtendedSearchAlias": "languages/SpecialExtendedSearch.alias.php"
 	},
 	"AutoloadClasses": {
 		"ApiFeedExtendedSearch": "api/ApiFeedExtendedSearch.php",
@@ -53,7 +51,6 @@
 		"BuildIndexMwSingleFile": "includes/BuildIndex/BuildIndexMwSingleFile.class.php",
 		"BuildIndexMwSpecialLinked": "includes/BuildIndex/BuildIndexMwSpecialLinked.class.php",
 		"BuildIndexMwLinked": "includes/BuildIndex/BuildIndexMwLinked.class.php",
-		"ExtendedSearchAdmin": "includes/ExtendedSearchAdmin.class.php",
 		"ExtendedSearchBase": "includes/ExtendedSearchBase.class.php",
 		"SearchIndex": "includes/SearchIndex/SearchIndex.class.php",
 		"SearchOptions": "includes/SearchIndex/SearchOptions.class.php",
@@ -71,7 +68,6 @@
 		"ViewMoreLikeThis": "views/view.MoreLikeThis.php",
 		"ViewExtendedSearchResultEntry": "views/view.ExtendedSearchResultEntry.php",
 		"SpecialExtendedSearch": "includes/specials/SpecialExtendedSearch.class.php",
-		"SpecialExtendedSearchAdmin": "includes/specials/SpecialExtendedSearchAdmin.class.php",
 		"TagCloudSearchStatsHandler": "includes/Handler/TagCloudSearchStatsHandler.class.php"
 	},
 	"ResourceModules": {
@@ -91,9 +87,6 @@
 			"dependencies": [
 				"jquery.ui.autocomplete"
 			]
-		},
-		"ext.bluespice.extendedsearch.admin": {
-			"scripts": "bluespice.extendedSearch.admin.js"
 		},
 		"ext.bluespice.extendedsearch.specialpage.style": {
 			"styles": "bluespice.extendedSearch.specialpage.css",
