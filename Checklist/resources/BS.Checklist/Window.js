@@ -166,7 +166,7 @@ Ext.define( 'BS.Checklist.Window', {
 		*/
 	},
 	onSelect: function( sender, records, index, eOpts) {
-		
+
 		this.bsListItems.setValue( records.get( 'listOptions' ) );
 		this.listSelected = records;
 		this.setDirty( false );
