@@ -31,5 +31,7 @@
 	"bs-insertfile-titleimage": "Wstaw obrazek",
 	"bs-insertfile-tipkeepratio": "Zachowaj proporcje",
 	"bs-insertfile-no-link": "Brak linku",
+	"bs-insertfile-nstext": "Typ łącza",
+	"bs-insertfile-nstextfile": "Plik",
 	"bs-insertfile-nstextmedia": "Multimedia"
 }

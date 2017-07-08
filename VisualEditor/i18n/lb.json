@@ -31,11 +31,6 @@
 	"bs-visualeditor-bsactions-signature": "Ënnerschrëft",
 	"bs-visualeditor-bsactions-save": "Späicheren",
 	"bs-visualeditor-bsactions-headings": "Iwwerschrëften",
-	"bs-visualeditor-bsactions-paragraph": "Abschnitt",
-	"bs-visualeditor-bsactions-heading2": "Iwwerschrëft 2",
-	"bs-visualeditor-bsactions-heading3": "Iwwerschrëft 3",
-	"bs-visualeditor-bsactions-heading4": "Iwwerschrëft 4",
-	"bs-visualeditor-bsactions-heading5": "Iwwerschrëft 5",
-	"bs-visualeditor-bsactions-heading6": "Iwwerschrëft 6",
-	"bs-visualeditor-switch-noeditor-desc": "Desaktivéiert VisualEditor op dëser Säit."
+	"bs-visualeditor-switch-noeditor-desc": "Desaktivéiert VisualEditor op dëser Säit.",
+	"bs-visualeditor-bsactions-tablefunctions": "Tabellefunktiounen"
 }

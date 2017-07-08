@@ -32,11 +32,7 @@
 	"bs-visualeditor-bsactions-signature": "签名",
 	"bs-visualeditor-bsactions-save": "保存",
 	"bs-visualeditor-bsactions-headings": "标题",
-	"bs-visualeditor-bsactions-paragraph": "段落",
-	"bs-visualeditor-bsactions-heading2": "标题2",
-	"bs-visualeditor-bsactions-heading3": "标题3",
-	"bs-visualeditor-bsactions-heading4": "标题4",
-	"bs-visualeditor-bsactions-heading5": "标题5",
-	"bs-visualeditor-bsactions-heading6": "标题6",
-	"bs-visualeditor-switch-noeditor-desc": "在此页面禁用可视化编辑器。"
+	"bs-visualeditor-switch-noeditor-desc": "在此页面禁用可视化编辑器。",
+	"bs-visualeditor-bsactions-tablefunctions": "表格功能",
+	"bs-visualeditor-bsactions-tablestyles": "表格样式"
 }

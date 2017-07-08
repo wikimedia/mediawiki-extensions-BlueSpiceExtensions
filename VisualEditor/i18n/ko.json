@@ -35,11 +35,6 @@
 	"bs-visualeditor-bsactions-signature": "서명",
 	"bs-visualeditor-bsactions-save": "저장",
 	"bs-visualeditor-bsactions-headings": "문단 제목",
-	"bs-visualeditor-bsactions-paragraph": "절",
-	"bs-visualeditor-bsactions-heading2": "2단계 문단 제목",
-	"bs-visualeditor-bsactions-heading3": "3단계 문단 제목",
-	"bs-visualeditor-bsactions-heading4": "4단계 문단 제목",
-	"bs-visualeditor-bsactions-heading5": "5단계 문단 제목",
-	"bs-visualeditor-bsactions-heading6": "6단계 문단 제목",
-	"bs-visualeditor-switch-noeditor-desc": "이 문서에서 시각편집기를 비활성화합니다."
+	"bs-visualeditor-switch-noeditor-desc": "이 문서에서 시각편집기를 비활성화합니다.",
+	"bs-visualeditor-bsactions-tablestyles": "표 스타일"
 }

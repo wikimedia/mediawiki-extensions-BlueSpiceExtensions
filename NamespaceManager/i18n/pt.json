@@ -50,5 +50,7 @@
 	"apihelp-bs-namespace-tasks-description": "Permite alterar a configuração dos domínios.",
 	"apihelp-bs-namespace-tasks-summary": "Permite a modificação da configuração dos espaços nominais.",
 	"action-namespacemanager-viewspecialpage": "ver a página especial de administração de domínios",
-	"namespacemanager": "Administração de domínios"
+	"namespacemanager": "Administração de domínios",
+	"bs-namespacemanager-nodeletetalk": "O espaço nominal de discussão não pode ser eliminado",
+	"bs-namespacemanager-label-istalk": "Discussão"
 }
