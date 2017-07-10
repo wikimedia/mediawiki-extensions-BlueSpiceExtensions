@@ -195,56 +195,14 @@ class BsPDFServlet {
 	 * @return boolean Well, always true.
 	 */
 	protected function findFiles( &$oHtml ) {
-		global $wgServer, $wgThumbnailScriptPath, $wgUploadPath, $wgScriptPath;
-
-		$aForPreg = array(
-			$wgServer,
-			$wgThumbnailScriptPath . "?f=",
-			$wgUploadPath,
-			$wgScriptPath
-		);
 
 		//Find all images
 		$oImageElements = $oHtml->getElementsByTagName( 'img' );
 		foreach( $oImageElements as $oImageElement ) {
-			$sSrcUrl      = urldecode( $oImageElement->getAttribute( 'src' ) );
+			$oFileResolver = new PDFFileResolver( $oImageElement, $this->aParams['webroot-filesystempath'] );
 
-			//Extracting the filename
-			foreach( $aForPreg as $sForPreg ) {
-				$sSrcUrl = preg_replace( "#" . preg_quote( $sForPreg ,"#" ) . "#", '', $sSrcUrl );
-				$sSrcUrl = preg_replace( '/(&.*)/','', $sSrcUrl );
-			};
-
-			$sSrcFilename = wfBaseName( $sSrcUrl );
-			$oAnchor = BsDOMHelper::getParentDOMElement( $oImageElement, array( 'a' ) );
-			if( $oAnchor instanceof DOMElement && $oAnchor->getAttribute( 'data-bs-title' ) !== '' ) {
-				$sSrcFilename = $oAnchor->getAttribute( 'data-bs-title' );
-			}
-
-			$bIsThumb = UploadBase::isThumbName($sSrcFilename);
-			$sTmpFilename = $sSrcFilename;
-			if( $bIsThumb ) {
-				//HINT: Thumbname-to-filename-conversion taken from includes/Upload/UploadBase.php
-				//Check for filenames like 50px- or 180px-, these are mostly thumbnails
-				$sTmpFilename = substr( $sTmpFilename , strpos( $sTmpFilename , '-' ) +1 );
-			}
-			$oFileTitle = Title::newFromText( $sTmpFilename, NS_FILE );
-			$oImage = RepoGroup::singleton()->findFile( $oFileTitle );
-
-			if( $oImage instanceof File && $oImage->exists() ) {
-				$oFileRepoLocalRef = $oImage->getRepo()->getLocalReference( $oImage->getPath() );
-				if ( !is_null( $oFileRepoLocalRef ) ) {
-					$sAbsoluteFileSystemPath = $oFileRepoLocalRef->getPath();
-				}
-				$sSrcFilename = $oImage->getName();
-			}
-			else {
-				$sAbsoluteFileSystemPath = $this->getFileSystemPath( $wgUploadPath . $sSrcUrl );
-			}
-			// TODO RBV (05.04.12 11:48): Check if urlencode has side effects
-			$oImageElement->setAttribute( 'data-orig-src', $oImageElement->getAttribute( 'src' ) );
-			$oImageElement->setAttribute( 'src', 'images/'.urlencode($sSrcFilename) );
-			$sFileName = $sSrcFilename;
+			$sFileName = $oFileResolver->getFileName();
+			$sAbsoluteFileSystemPath = $oFileResolver->getAbsoluteFilesystemPath();
 			wfRunHooks( 'BSUEModulePDFFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
 			wfRunHooks( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
 			$this->aFiles['images'][$sFileName] =  $sAbsoluteFileSystemPath;
@@ -267,27 +225,6 @@ class BsPDFServlet {
 
 		wfRunHooks( 'BSUEModulePDFAfterFindFiles', array( $this, $oHtml, &$this->aFiles, $this->aParams, $oDOMXPath ) );
 		return true;
-	}
-
-	//<editor-fold desc="Helper Methods" defaultstate="collapsed">
-	/**
-	 * This helper method resolves the local file system path of a found file
-	 * @param string $sUrl
-	 * @return string The local file system path
-	 */
-	public function getFileSystemPath( $sUrl ) {
-		if( $sUrl{0} !== '/' || strpos( $sUrl, $this->aParams['webroot-filesystempath'] ) === 0 ) {
-			return $sUrl; //not relative to webroot or absolute filesystempath
-		}
-
-		$sScriptUrlDir = dirname( $_SERVER['SCRIPT_NAME'] );
-		$sScriptFSDir  = str_replace( '\\', '/', dirname( $_SERVER['SCRIPT_FILENAME'] ) );
-		if( strpos( $sScriptFSDir, $sScriptUrlDir) == 0 ){ //detect virtual path (webserver setting)
-			$sUrl = '/'.substr( $sUrl, strlen( $sScriptUrlDir ) );
-		}
-
-		$sNewUrl = $this->aParams['webroot-filesystempath'].$sUrl; // TODO RBV (08.02.11 15:56): What about $wgUploadDirectory?
-		return $sNewUrl;
 	}
 
 	protected function doFilesUpload( $aPostData, $aErrors = array() ) {
