@@ -5,7 +5,8 @@
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Shirayuki",
 			"Leonid Verhovskij <verhovskij@hallowelt.com>",
-			"Beta16"
+			"Beta16",
+			"Liuxinyu970226"
 		]
 	},
 	"bs-pageaccess-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of page access extension",
@@ -20,5 +21,5 @@
 	"logentry-bs-pageaccess-change": "Log message about changes on the access settings for a page.\nParameters:\n* $4 - comma separated list of the allowed groups",
 	"action-pageaccess-viewspecialpage": "placeholder to describe that view of special page \"{{int:pageaccess}}\" is restricted for the current user.\n\n{{Doc-action|pageaccess-viewspecialpage}}",
 	"bs-pageaccess-column-title": "Extjs grid calumn label for Pagetitle\n{{Identical|Page title}}",
-	"bs-pageaccess-column-groups": "Extjs grid calumn label for Groups\n{{Identical|Groups}}"
+	"bs-pageaccess-column-groups": "Extjs grid calumn label for Groups\n{{Identical|Group}}"
 }

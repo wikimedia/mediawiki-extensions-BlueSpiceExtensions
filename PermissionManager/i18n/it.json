@@ -38,5 +38,9 @@
 	"bs-permissionmanager-titletpled-delete": "Cancella template",
 	"bs-permissionmanager-pref-max-backups": "Numero massimo di backup",
 	"action-permissionmanager-viewspecialpage": "visualizzare la pagina speciale \"{{int:bs-permissionmanager-label}}\"",
-	"permissionmanager": "Gestione autorizzazioni"
+	"permissionmanager": "Gestione autorizzazioni",
+	"bs-permissionmanager-affected-by-explicit": "Bloccato da $1",
+	"bs-permissionmanager-affected-by-inherited": "Ereditato da $1",
+	"bs-permissionmanager-affected-by-notset": "Non impostato",
+	"bs-permissionmanager-affected-by-explicitlyset": "Impostato esplicitamente"
 }

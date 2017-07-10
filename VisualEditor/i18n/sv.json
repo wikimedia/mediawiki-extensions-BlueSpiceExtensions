@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"bs-visualeditor-desc": "Visuell redigerare för MediaWiki",
@@ -31,11 +32,7 @@
 	"bs-visualeditor-bsactions-signature": "Signatur",
 	"bs-visualeditor-bsactions-save": "Spara",
 	"bs-visualeditor-bsactions-headings": "Rubriker",
-	"bs-visualeditor-bsactions-paragraph": "Stycke",
-	"bs-visualeditor-bsactions-heading2": "Rubrik 2",
-	"bs-visualeditor-bsactions-heading3": "Rubrik 3",
-	"bs-visualeditor-bsactions-heading4": "Rubrik 4",
-	"bs-visualeditor-bsactions-heading5": "Rubrik 5",
-	"bs-visualeditor-bsactions-heading6": "Rubrik 6",
-	"bs-visualeditor-switch-noeditor-desc": "Inaktiverar den visuella redigeraren på denna sida."
+	"bs-visualeditor-switch-noeditor-desc": "Inaktiverar den visuella redigeraren på denna sida.",
+	"bs-visualeditor-bsactions-tablefunctions": "Tabellfunktioner",
+	"bs-visualeditor-bsactions-tablestyles": "Tabellstilar"
 }
