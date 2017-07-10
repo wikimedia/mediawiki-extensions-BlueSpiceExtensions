@@ -267,6 +267,7 @@ var BsActions = function(editor, url) {
 	};
 
 	this.makeMenuItems = function( itemlist ) {
+		itemlist = itemlist || [];
 		var menuItems = [];
 		for ( var i = 0; i < itemlist.length; i++ ) {
 			var item_format = itemlist[i];
