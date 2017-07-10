@@ -1,5 +1,5 @@
 
 #bs-nav-sections #n-aboutbluespice .icon24::before {
-	content: "\e9bf";
-	font-family: "entypo" !important;
+	font-family: 'bluespice-logo' !important;
+	content: "\e900";
 }
