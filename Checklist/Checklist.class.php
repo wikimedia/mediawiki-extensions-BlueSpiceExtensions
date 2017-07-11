@@ -104,7 +104,11 @@ class Checklist extends BsExtensionMW {
 		if ( is_object( $oTitle ) ) {
 			$oWikiPage = WikiPage::newFromID( $oTitle->getArticleID() );
 			if ( is_object( $oWikiPage ) ) {
-				$sContent = $oWikiPage->getContent()->preloadTransform( $oWikiPage->getTitle(), new ParserOptions() )->getNativeData();
+				$sContent = $oWikiPage->getContent()->getNativeData();
+				// Noinclude handling
+				// See https://github.com/wikimedia/mediawiki-extensions-ExternalData/blob/master/ED_GetData.php
+				$sContent = StringUtils::delimiterReplace( '<noinclude>', '</noinclude>', '', $sContent );
+				$sContent = strtr( $sContent, array( '<includeonly>' => '', '</includeonly>' => '' ) );
 				$aLines = explode( "\n", trim( $sContent ) );
 				foreach ( $aLines as $sLine ) {
 					if ( strpos( $sLine, '*' ) !== 0 ) return array();
