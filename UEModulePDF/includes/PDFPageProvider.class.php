@@ -313,19 +313,6 @@ class BsPDFPageProvider {
 			}
 		}
 
-		//TODO: Should this be in PdfServlet::findFiles()? Or we should add the images as attachments
-		//Prevent large images from clipping
-		foreach( $oPageDOM->getElementsByTagName( 'img' ) as $oImgElement ) {
-			$iWidth = $oImgElement->getAttribute( 'width' );
-			if( $iWidth > 700 ) {
-				$oImgElement->setAttribute( 'width', 700 );
-				$oImgElement->removeAttribute( 'height' );
-
-				$sClasses = $oImgElement->getAttribute( 'class' );
-				$oImgElement->setAttribute( 'class', $sClasses.' maxwidth' );
-			}
-		}
-
 		//Prevent "first page empty" bug
 		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item(0);
 		$oAntiBugP = $oPageDOM->createElement( 'p' );
