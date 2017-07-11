@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Metalhead64",
-			"Umherirrender"
+			"Umherirrender",
+			"Jkonrad"
 		]
 	},
 	"bs-permissionmanager-desc": "Administrationsoberfläche zur Bearbeitung von Benutzerrechten",
@@ -44,7 +45,7 @@
 	"bs-permissionmanager-pref-max-backups": "Maximale Anzahl an Sicherungen",
 	"bs-permissionmanager-unsaved-changes": "Es existieren ungespeicherte Änderungen. Willst du die Seite wirklich verlassen? Die ungespeicherten Änderungen gehen in diesem Fall verloren",
 	"bs-permissionmanager-error-lockout": "Mindestens eine Benutzergruppe muss das Recht \"$1\" besitzen.\nDie Änderungen konnten nicht gespeichert werden.",
-	"log-name-bs-permission-manager": "Rechteverwaltung-Logbuch",
+	"log-name-bs-permission-manager": "Rechteverwaltungs-Logbuch",
 	"log-description-bs-permission-manager": "Logbuch von Änderungen an den Gruppenberechtigungen.",
 	"log-show-hide-bs-permission-manager": "$1 Rechteverwaltung-Logbuch",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|hat}} die Rechte für Gruppe $4 geändert",

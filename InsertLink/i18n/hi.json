@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jayprakash12345"
+		]
+	},
+	"bs-insertlink-desc": "लिंक एंटर करने के लिए डायलॉग बॉक्स",
+	"prefs-insertlink": "लिंक सम्मिलित करें",
+	"bs-insertlink": "लिंक सम्मिलित करें",
+	"bs-insertlink-pref-enable-java": "जावा एप्लेट सक्षम करें",
+	"bs-insertlink-button-title": "लिंक सम्मिलित/संपादित करें",
+	"bs-insertlink-dialog-title": "लिंक सम्मिलित करें",
+	"bs-insertlink-tab-wiki-page": "विकि पृष्ठ",
+	"bs-insertlink-tab-ext-link": "बाहरी कड़ियाँ",
+	"bs-insertlink-tab-email": "ईमेल-लिंक",
+	"bs-insertlink-label-page": "पृष्ठ",
+	"bs-insertlink-label-link": "लिंक",
+	"bs-insertlink-label-mail": "ईमेल पता",
+	"bs-insertlink-label-description": "विवरण",
+	"bs-insertlink-label-file": "फ़ाइल",
+	"bs-insertlink-label-searchfile": "खोजें...",
+	"bs-insertlink-select-a-page": "लक्ष्य चुनें ..."
+}
