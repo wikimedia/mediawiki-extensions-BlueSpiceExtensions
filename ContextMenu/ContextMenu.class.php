@@ -41,7 +41,6 @@ class ContextMenu extends BsExtensionMW {
 	 */
 	protected function initExt() {
 		$this->setHook('BeforePageDisplay');
-		$this->setHook('ThumbnailBeforeProduceHTML');
 
 		BsConfig::registerVar( 'MW::ContextMenu::Modus', 'ctrl', BsConfig::LEVEL_USER|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-contextmenu-pref-modus', 'radio' );
 	}
@@ -83,19 +82,6 @@ class ContextMenu extends BsExtensionMW {
 
 		$out->addJsConfigVars( 'bsUserCanSendMail', $bUserCanSendMail );
 
-		return true;
-	}
-
-	/**
-	 * Adds data attribute to standard image output
-	 * @param ThumbnailImage $thumbnail
-	 * @param array $attribs
-	 * @param array $linkAttribs
-	 * @return boolean
-	 */
-	public function onThumbnailBeforeProduceHTML( $thumbnail, &$attribs, &$linkAttribs ) {
-		$oFile = $thumbnail->getFile();
-		$linkAttribs['data-bs-title'] = $oFile->getTitle()->getPrefixedDBKey();
 		return true;
 	}
 
