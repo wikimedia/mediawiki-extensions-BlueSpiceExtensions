@@ -13,7 +13,7 @@ Software
 | [PHP Identicons](https://sourceforge.net/projects/identicons/) | Bong Cosca | 1.0.1 | [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.txt) |
 | [Solr-php-client](https://github.com/PTCInc/solr-php-client) | Donovan Jimenez, PTC Inc. | - | [BSD-modified](https://opensource.org/licenses/BSD-3-Clause) |
 | [SyntaxHighlighter](http://alexgorbatchev.com/SyntaxHighlighter/download/) | Alex Gorbatchev | 3.0.83 | [MIT](https://opensource.org/licenses/MIT) |
-| [TinyMCE](https://www.tinymce.com) | Moxiecode Systems AB | 4.1.3 | [LGPL-2.1](http://www.tinymce.com/license) |
+| [TinyMCE](https://www.tinymce.com) | Moxiecode Systems AB | 4.6.4 | [LGPL-2.1](http://www.tinymce.com/license) |
 | [xhtmlrenderer](https://github.com/flyingsaucerproject/flyingsaucer) | Patrick Wright | 9.0.9 | [LGPL-2.1](https://github.com/flyingsaucerproject/flyingsaucer/blob/master/LICENSE-LGPL-2.1.txt) |
 | [Solr](http://lucene.apache.org/solr/) | Apache Software Foundation | 4.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) |
 

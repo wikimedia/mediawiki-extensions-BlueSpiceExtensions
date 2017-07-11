@@ -174,7 +174,8 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 			array('title' => 'Pre', 'block' => 'pre', 'classes' => 'bs_pre_from_space'),
 			array('title' => 'Paragraph', 'block' => 'p')
 		),
-		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn'
+		'contextmenu' => 'bsContextMenuMarker image | inserttable bstableprops bsdeletetable bscell bsrow bscolumn',
+		'branding' => false
 		// do not use table_class_list, as this breaks any existing classes upon editing
 	);
 
