@@ -47,15 +47,19 @@ var BsActions = function(editor, url) {
 		function bindStateListener() {
 			// do not use the visible command, as it messes with bar layot
 			//ctrl.visible(state);
+			var displayStyle = 'inline-block';
+			if ( ctrl.type == 'menuitem' ) {
+				displayStyle = 'block';
+			}
 			var state = editor.dom.getParent(editor.selection.getStart(), selector)
 			if ( state ) {
-				ctrl.getEl().style.display = 'inline-block';
+				ctrl.getEl().style.display = displayStyle;
 			} else {
 				ctrl.getEl().style.display = 'none';
 			}
 			editor.selection.selectorChanged(selector, function(state) {
 				if ( state ) {
-					ctrl.getEl().style.display = 'inline-block';
+					ctrl.getEl().style.display = displayStyle;
 				} else {
 					ctrl.getEl().style.display = 'none';
 				}
@@ -295,35 +299,7 @@ var BsActions = function(editor, url) {
 		var tableFunctionMenuItems = this.makeMenuItems( ed.settings.bs_table_function_formats );
 		var tableStylesMenuItems = this.makeMenuItems( ed.settings.bs_table_formats );
 
-		menus = [{
-				menuId: 'bstableprops',
-				menuConfig: {
-					text: 'Table properties',
-					context: 'table',
-					onPostRender:  postRenderVisibilityTable,
-					cmd: 'mceTableProps'
-				}
-			}, {
-				menuId: 'bsdeletetable',
-				menuConfig: {
-					text: 'Delete table',
-					context: 'table',
-					onPostRender:  postRenderVisibilityTable,
-					cmd: 'mceTableDelete'
-				}
-			}, {
-				menuId: 'bscell',
-				menuItem: ed.menuItems['cell'],
-				menuOnPostRender: postRenderVisibilityTable
-			}, {
-				menuId: 'bsrow',
-				menuItem: ed.menuItems['row'],
-				menuOnPostRender: postRenderVisibilityTable
-			}, {
-				menuId: 'bscolumn',
-				menuItem: ed.menuItems['column'],
-				menuOnPostRender: postRenderVisibilityTable
-			}];
+		menus = [];
 
 		//HINT: TinyMCE I18N seems not wo work. Using MediaWiki I18N
 		buttons = [{
