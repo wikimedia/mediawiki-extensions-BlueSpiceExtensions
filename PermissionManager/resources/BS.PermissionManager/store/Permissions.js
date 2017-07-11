@@ -13,6 +13,12 @@ Ext.define('BS.PermissionManager.store.Permissions', {
 
 	constructor: function(cfg) {
 		cfg.data = cfg.data || Ext.create('BS.PermissionManager.data.Manager').buildPermissionData().permissions;
+		cfg.sorters = cfg.sorters || [
+			{
+				property: 'right',
+				direction: 'asc'
+			}
+		];
 		this.callParent(arguments);
 	}
 });
