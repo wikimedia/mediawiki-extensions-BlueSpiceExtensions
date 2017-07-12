@@ -248,6 +248,16 @@ $(document).on( 'BsVisualEditorActionsInit', function( event, plugin, buttons, c
 
 	var menuItems = [];
 
+	menuItems.push({
+		text: mw.message( 'bs-checklist-menu-insert-no-list-loaded' ).plain(),
+		disabled: true,
+		onPostRender: function( e ) {
+			if ( Object.keys( BsChecklist.optionsLists ).length > 0 ) {
+				this.hide( true );
+			}
+		}
+	});
+
 	menuItems.push( {text: '-'} );
 
 	menuItems.push({

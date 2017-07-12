@@ -15,6 +15,7 @@
 	"bs-checklist-button-checkbox-title": "Button text for checklist elements",
 	"bs-checklist-menu-insert-list-title": "Label for insert list\n{{Identical|Insert list}}",
 	"bs-checklist-menu-insert-checkbox": "Label for checkbox\n{{Identical|Checkbox}}",
+	"bs-checklist-menu-insert-no-list-loaded": "Label for disabled menu item placeholder when no list is loaded yet",
 	"bs-checklist-dlg-insert-list-title": "Title for insert checklist dialogue",
 	"bs-checklist-dlg-insert-list-value-list": "Label for value list\n{{Identical|Value list}}",
 	"bs-checklist-tag-checklist-desc": "Text for renders a checkbox or select field. Available configuration attributes:\n{{Related|Bs-tag-desc}}",

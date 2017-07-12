@@ -9,6 +9,7 @@
 	"bs-checklist-button-checkbox-title": "Checklist elements",
 	"bs-checklist-menu-insert-list-title": "Insert list",
 	"bs-checklist-menu-insert-checkbox": "Checkbox",
+	"bs-checklist-menu-insert-no-list-loaded": "No list loaded",
 	"bs-checklist-dlg-insert-list-title": "Insert a checklist",
 	"bs-checklist-dlg-insert-list-value-list": "Value list",
 	"bs-checklist-tag-checklist-desc": "Generates a checkbox or a select menu. The checklist can be modified by various parameters.",
