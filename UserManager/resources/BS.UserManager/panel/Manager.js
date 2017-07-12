@@ -68,6 +68,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			id: 'username',
 			header: mw.message('bs-usermanager-headerusername').plain(),
 			sortable: true,
+			filterable: true,
 			dataIndex: 'user_name',
 			tpl: '{page_link}',
 			flex: 1
@@ -76,6 +77,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			id: 'userrealname',
 			header: mw.message('bs-usermanager-headerrealname').plain(),
 			sortable: true,
+			filterable: true,
 			dataIndex: 'user_real_name',
 			tpl: '{user_real_name}',
 			flex: 1
@@ -84,6 +86,7 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			id: this.getId()+'-useremail',
 			header: mw.message('bs-usermanager-headeremail').plain(),
 			sortable: true,
+			filterable: true,
 			dataIndex: 'user_email',
 			renderer: this.renderEmail,
 			flex: 1
@@ -99,22 +102,11 @@ Ext.define( 'BS.UserManager.panel.Manager', {
 			encode: true,
 			local: false,
 			filters: [{
+				//Needs to be defined here as column is initially hidden (Bug in ExtJS?)
 				type: 'bool',
 				dataIndex: 'enabled',
 				value: true,
 				active: true
-			},{
-				type: 'string',
-				dataIndex: 'user_name',
-				menuItems: ['ct']
-			},{
-				type: 'string',
-				dataIndex: 'user_real_name',
-				menuItems: ['ct']
-			},{
-				type: 'string',
-				dataIndex: 'user_email',
-				menuItems: ['ct']
 			},{
 				type: 'list',
 				dataIndex: 'groups',
