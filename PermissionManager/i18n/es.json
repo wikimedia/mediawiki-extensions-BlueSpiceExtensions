@@ -52,5 +52,9 @@
 	"log-show-hide-bs-permission-manager": "$1 el registro del gestor de permisos",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|ha cambiado}} los permisos del grupo $4",
 	"action-permissionmanager-viewspecialpage": "ver la página especial \"{{int:bs-permissionmanager-label}}\"",
-	"permissionmanager": "Gestor de permisos"
+	"permissionmanager": "Gestor de permisos",
+	"bs-permissionmanager-affected-by-explicit": "Bloqueado por $1",
+	"bs-permissionmanager-affected-by-inherited": "Heredado de $1",
+	"bs-permissionmanager-affected-by-notset": "No establecido",
+	"bs-permissionmanager-affected-by-explicitlyset": "Explícitamente establecido"
 }
