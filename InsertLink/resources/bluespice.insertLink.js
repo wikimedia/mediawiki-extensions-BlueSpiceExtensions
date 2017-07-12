@@ -218,31 +218,22 @@ var BsInsertLinkVisualEditorConnector = {
 			data.title ? data.title : data.href
 		);
 
-		//Workaround for IE when replacing text with a anchor tag
-		if( tinymce.Env.ie > 0) {
-			var sel = editor.selection.getSel().toString();
-			if( sel ) {
-				var content = node.innerHTML;
-				content = content.replace(sel, newAnchor);
+		// The following code used to be a workaround for IE. Other browsers used
+		// these lines:
+		//   editor.insertContent(newAnchor);
+		//   editor.selection.collapse(false);
+		// However, the non-workaround way lead to removal of spaces after (Chrome)
+		// and before (FF) the link text. The IE code works in all browsers.
+		var sel = editor.selection.getSel().toString();
+		if( sel ) {
+			var content = node.innerHTML;
+			content = content.replace(sel, newAnchor);
 
-				var newNode = editor.dom.create( node.nodeName.toLowerCase(), {}, content );
+			var newNode = editor.dom.create( node.nodeName.toLowerCase(), {}, content );
 
-				editor.dom.replace(newNode, node);
+			editor.dom.replace(newNode, node);
 
-				return;
-			}
+			return;
 		}
-
-		editor.insertContent(newAnchor);
-		//editor.selection.select(newAnchor, false);
-		editor.selection.collapse(false);
-		//editor.dom.inserAfter(newAnchor, editor.selection.getSel());
-		//editor.selection.getEnd().remove();
-		//this.dom.insertAfter(newAnchor, editor.selection.getNode());
-
-
-		//Place cursor to new element
-		//editor.selection.select(newAnchor, false);
-		//editor.selection.collapse(false);
 	}
 };
