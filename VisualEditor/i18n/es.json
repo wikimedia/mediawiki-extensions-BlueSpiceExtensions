@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Amitie 10g"
+			"Amitie 10g",
+			"Macofe"
 		]
 	},
 	"bs-visualeditor-desc": "Editor visual para MediaWiki",
@@ -31,11 +32,6 @@
 	"bs-visualeditor-bsactions-signature": "Firma",
 	"bs-visualeditor-bsactions-save": "Guardar",
 	"bs-visualeditor-bsactions-headings": "Títulos",
-	"bs-visualeditor-bsactions-paragraph": "Párrafo",
-	"bs-visualeditor-bsactions-heading2": "Título 2",
-	"bs-visualeditor-bsactions-heading3": "Título 3",
-	"bs-visualeditor-bsactions-heading4": "Título 4",
-	"bs-visualeditor-bsactions-heading5": "Título 5",
-	"bs-visualeditor-bsactions-heading6": "Título 6",
-	"bs-visualeditor-switch-noeditor-desc": "Desactiva el editor visual en esta página."
+	"bs-visualeditor-switch-noeditor-desc": "Desactiva el editor visual en esta página.",
+	"bs-visualeditor-bsactions-tablestyles": "Estilos de tablas"
 }
