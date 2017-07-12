@@ -190,18 +190,18 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			},
 			items: [{
 				boxLabel: mw.message('bs-insertfile-nstextfile').plain(),
-				id: 'ns-text-file',
+				itemId: 'ns-text-file',
 				name: 'ns-text',
 				inputValue: 'file',
 				checked: true,
-				width: 60
+				width: 80
 			},{
 				boxLabel: mw.message('bs-insertfile-nstextmedia').plain(),
-				id: 'ns-text-media',
+				itemId: 'ns-text-media',
 				name: 'ns-text',
 				inputValue: 'media',
 				checked: false,
-				width: 60
+				width: 80
 			}]
 		});
 

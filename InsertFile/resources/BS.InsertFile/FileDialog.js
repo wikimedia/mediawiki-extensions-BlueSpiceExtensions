@@ -12,6 +12,7 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 	initComponent: function() {
 		//this is neccessary to avoid strange cross-referencing between the
 		//two instances of BS.InsertFile.BaseDialog subclasses
+		this.configPanel.height = 150;
 		this.configPanel.items = [];
 		this.callParent(arguments);
 	},
