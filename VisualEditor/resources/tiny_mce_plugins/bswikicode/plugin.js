@@ -2373,6 +2373,7 @@ var BsWikiCode = function() {
 
 		//Find button elements with no content and set content to ' ', to prevent removing
 		e.content = e.content.replace(/><\/button>/g, '>&nbsp;</button>');
+		e.content = e.content.replace(/^<p>(.*)<\/p>$/gmi, '$1' );
 
 		_loadImageRealUrls();
 	}
