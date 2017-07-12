@@ -27,31 +27,17 @@ Ext.define( 'BS.InterWikiLinks.Panel', {
 			header: mw.message('bs-interwikilinks-headerprefix').plain(),
 			sortable: true,
 			dataIndex: 'iw_prefix',
-			flex: 1
+			flex: 1,
+			filterable: true
 		} );
 		this.colIWLUrl = Ext.create( 'Ext.grid.column.Column', {
 			id: 'iw_url',
 			header: mw.message('bs-interwikilinks-headerurl').plain(),
 			sortable: true,
 			dataIndex: 'iw_url',
-			flex: 1
+			flex: 1,
+			filterable: true
 		} );
-
-		this.filters = Ext.create('Ext.ux.grid.FiltersFeature', {
-			encode: true,
-			local: false,
-			filters: [{
-				type: 'string',
-				dataIndex: 'iw_prefix',
-				menuItems: ['ct']
-			},{
-				type: 'string',
-				dataIndex: 'iw_url',
-				menuItems: ['ct']
-			}]
-		});
-
-		this.gpMainConf.features = [this.filters];
 
 		this.colMainConf.columns = [
 			this.colIWLPrefix,
