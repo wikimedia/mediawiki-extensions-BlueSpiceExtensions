@@ -28,6 +28,7 @@ Ext.define( 'BS.Flexiskin.Panel', {
 			id: 'flexiskin_name',
 			header: mw.message( 'bs-flexiskin-labelname' ).plain(),
 			sortable: true,
+			filterable: true,
 			dataIndex: 'flexiskin_name',
 			tpl: '{flexiskin_name}'
 		});
@@ -35,6 +36,7 @@ Ext.define( 'BS.Flexiskin.Panel', {
 			id: 'flexiskin_desc',
 			header: mw.message( 'bs-flexiskin-labeldesc' ).plain(),
 			sortable: true,
+			filterable: true,
 			dataIndex: 'flexiskin_desc',
 			tpl: '{flexiskin_desc}'
 		});
@@ -42,6 +44,10 @@ Ext.define( 'BS.Flexiskin.Panel', {
 			id: 'flexiskin_active',
 			header: mw.message( 'bs-flexiskin-headeractive' ).plain(),
 			sortable: true,
+			filterable: true,
+			filter: {
+				type:'bool'
+			},
 			dataIndex: 'flexiskin_active'
 		});
 		this.colMainConf.columns = [
