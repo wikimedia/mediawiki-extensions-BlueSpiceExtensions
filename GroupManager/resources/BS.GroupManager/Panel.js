@@ -27,7 +27,8 @@ Ext.define( 'BS.GroupManager.Panel', {
 			header: mw.message('bs-groupmanager-headergroup').plain(),
 			sortable: true,
 			dataIndex: 'group_name',
-			flex: 1
+			flex: 1,
+			filterable: true
 		} );
 		this.colAdditionalGroup = Ext.create( 'Ext.grid.column.Column', {
 			id: 'additional_group',
