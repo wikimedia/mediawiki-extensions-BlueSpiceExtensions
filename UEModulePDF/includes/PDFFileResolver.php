@@ -40,7 +40,7 @@ class PDFFileResolver {
 	/**
 	 * @var string
 	 */
-	protected $sAbsoluteFilesystemName = '';
+	protected $sAbsoluteFilesystemPath = '';
 
 	/**
 	 *
@@ -134,6 +134,7 @@ class PDFFileResolver {
 			if ( !is_null( $oFileRepoLocalRef ) ) {
 				$this->sAbsoluteFilesystemPath = $oFileRepoLocalRef->getPath();
 			}
+			$this->sSourceFileName = $this->oFileObject->getName();
 		} else {
 			$this->sAbsoluteFilesystemPath = $this->getFileSystemPath( $wgUploadPath . $this->sSourceFilePath );
 		}
@@ -141,7 +142,7 @@ class PDFFileResolver {
 
 	protected function setFileName() {
 		if( !empty( $this->sAbsoluteFilesystemPath ) ) {
-			$this->sSourceFileName = $this->oFileObject->getName();
+			$this->sFileName = $this->oFileObject->getName();
 		}
 	}
 
@@ -151,7 +152,7 @@ class PDFFileResolver {
 	}
 
 	public function getAbsoluteFilesystemPath() {
-		return $this->sAbsoluteFilesystemName;
+		return $this->sAbsoluteFilesystemPath;
 	}
 
 	public function getFileName() {
