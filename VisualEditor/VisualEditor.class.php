@@ -141,9 +141,9 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 			'table-style-casablanca' => array( 'selector' => 'table', 'classes' => 'casablanca' ),
 			'table-style-greyscale' => array( 'selector' => 'table', 'classes' => 'greyscale' ),
 			'table-style-greyscale-narrow' => array( 'selector' => 'table', 'classes' => 'greyscale-narrow' ),
-			'table-align-top' => array( 'selector' => 'td', 'classes' => 'bs-aligntop' ),
-			'table-align-middle' => array( 'selector' => 'td', 'classes' => 'bs-alignmiddle' ),
-			'table-align-bottom' => array( 'selector' => 'td', 'classes' => 'bs-alignbottom' ),
+			'table-align-top' => array( 'selector' => 'td', 'styles' => array( 'vertical-align' => 'top' ) ),
+			'table-align-middle' => array( 'selector' => 'td', 'styles' => array( 'vertical-align' => 'middle' ) ),
+			'table-align-bottom' => array( 'selector' => 'td', 'styles' => array( 'vertical-align' => 'bottom' ) ),
 			'pre' => array( 'block' => 'pre', 'classes' => 'bs_pre_from_space' )
 		),
 		'style_formats_autohide' => true,
