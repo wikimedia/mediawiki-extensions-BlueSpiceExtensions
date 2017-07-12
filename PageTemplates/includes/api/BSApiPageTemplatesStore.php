@@ -55,6 +55,18 @@ class BSApiPageTemplatesStore extends BSApiExtJSStoreBase {
 		return $aData;
 	}
 
+	public function filterString( $oFilter, $aDataSet ) {
+		if( $oFilter->field !== 'template' ) {
+			return parent::filterString( $oFilter, $aDataSet );
+		}
+
+		/**
+		 * 'template' contains the actual link and filters won't apply correctly
+		 * 'templatename' is better filterable
+		 */
+		return BsStringHelper::filter( $oFilter->comparison, $aDataSet->templatename, $oFilter->value );
+	}
+
 	protected function getRequiredPermissions() {
 		return array( 'wikiadmin' );
 	}
