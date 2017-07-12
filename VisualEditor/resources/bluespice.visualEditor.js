@@ -16,8 +16,8 @@ $(document).on('change', '#wpTextbox1' ,function() {
 	$(this).data("text-changed", true);
 });
 $(window).scroll(function(){
-	var toolbar = $('.mce-stack-layout-item').first();
-	var firstHeading = $( '#firstHeading' );
+	var $toolbar = $('.mce-stack-layout-item').first();
+	var $firstHeading = $( '#firstHeading' );
 
 	var previewMode = ( $( '#wikiPreview' ).css( 'display' ) === 'none' ) ? false : true;
 
@@ -25,57 +25,46 @@ $(window).scroll(function(){
 		bs_editOptionsBarAdd();
 	}
 
-	if(  toolbar.length == 0 ) return;
+	if(  $toolbar.length == 0 ) return;
 
-	if( offsetTop === 0 && $( '#editform' ).length > 0 && firstHeading.length > 0 && previewMode === false ) {
-		offsetTop = firstHeading.position().top;
+	if( offsetTop === 0 && $( '#editform' ).length > 0 && $firstHeading.length > 0 && previewMode === false ) {
+		offsetTop = $firstHeading.position().top;
 	}
-	else if( offsetTop === 0 && $( '#editform' ).length > 0 && firstHeading.length > 0 && previewMode === true ) {
-		offsetTop = $( '#wikiPreview' ).position().top + $( '#wikiPreview' ).height() - firstHeading.height();
+	else if( offsetTop === 0 && $( '#editform' ).length > 0 && $firstHeading.length > 0 && previewMode === true ) {
+		offsetTop = $( '#wikiPreview' ).position().top + $( '#wikiPreview' ).height() - $firstHeading.height();
 	}
 	else if( offsetTop === 0 && $( '#editform' ).length > 0 ) {
 		offsetTop = $( '#editform' ).position().top;
 	}
 
 	if( $(document).scrollTop() > offsetTop ) { //window.scrollY
-		if( toolbar.hasClass( 'bs-ve-fixed' ) == false ) {
+		if( $toolbar.hasClass( 'bs-ve-fixed' ) == false ) {
 
 			if( $( '#bs-ve-editoptions' ).length == 0 ) {
 				bs_editOptionsBarAdd();
 			}
 
-			toolbar.addClass( 'bs-ve-fixed' );
-			toolbar.width( toolbar.parent().width() );
+			$toolbar.addClass( 'bs-ve-fixed' );
+			$toolbar.width( $toolbar.parent().width() );
 
-			if( firstHeading.length > 0 ){
-				toolbar.css( 'top', firstHeading.height() );
+			bs_firstHeadingFixedAdd();
 
-				firstHeading.addClass( 'bs-ve-heading-fixed' );
-				firstHeading.width( firstHeading.parent().width() );
-				firstHeading.css(
-					'background-color',
-					$( '#content' ).css( 'background-color' )
-				);
+			var textboxPaddingTop=  $toolbar.height();
+			if( $firstHeading.length > 0 ){
+				$toolbar.css( 'top', $firstHeading.height() );
+				textboxPaddingTop = $toolbar.height() + $firstHeading.height();
 			}
-
-			$( '#wpTextbox1_ifr' ).css(
-				'padding-top',
-				toolbar.height() + firstHeading.height()
-			);
+			$( '#wpTextbox1_ifr' ).css( 'padding-top', textboxPaddingTop );
 		}
 	}
 	else {
-		toolbar.removeClass( 'bs-ve-fixed' );
+		$toolbar.removeClass( 'bs-ve-fixed' );
 
 		if( $( '#bs-ve-editoptions' ).length > 0 && !previewMode ) {
 			bs_editOptionsBarRemove();
 		}
 
-		if( firstHeading.length > 0 ){
-			firstHeading.removeClass( 'bs-ve-heading-fixed' );
-			firstHeading.css( 'background-color', 'transparent' );
-			firstHeading.width( 'auto' );
-		}
+		bs_firstHeadingFixedRemove();
 
 		$( '#wpTextbox1_ifr' ).css( 'padding-top', '0px');
 	}
@@ -92,6 +81,7 @@ $(document).on('VisualEditor::instanceHide', function(event, editorId) {
 	if (editorId === 'wpTextbox1') {
 		$('#toolbar').show();
 		$('#bs-extendededitbar').show();
+		bs_firstHeadingFixedRemove();
 	}
 });
 
@@ -129,8 +119,6 @@ function bs_initVisualEditor() {
 $( document ).ready( function() {
 	var BsVisualEditorLoaderUsingDeps = mw.config.get( 'BsVisualEditorLoaderUsingDeps' );
 
-	$( '#firstHeading' ).css( 'display', 'block' );
-
 	mw.loader.using( BsVisualEditorLoaderUsingDeps, bs_initVisualEditor ).done( function() {
 		$(document).on('click', '#bs-editbutton-visualeditor', function(e) {
 			e.preventDefault();
@@ -147,8 +135,8 @@ $( document ).ready( function() {
 
 // add some editOptions form editor footer to bs-ve toolbar
 function bs_editOptionsBarAdd() {
-	var toolbar = $( '.mce-stack-layout-item' ).first();
-	var $editOptionsContainer = $( '<div id="bs-ve-editoptions"></div>' ).prependTo( toolbar );
+	var $toolbar = $( '.mce-stack-layout-item' ).first();
+	var $editOptionsContainer = $( '<div id="bs-ve-editoptions"></div>' ).prependTo( $toolbar );
 
 	var $editSummaryContainer = $( '<div id="bs-ve-editsummary-group"></div>' ).appendTo( $editOptionsContainer );
 
@@ -159,6 +147,8 @@ function bs_editOptionsBarAdd() {
 	var $bsTfSummary = $( '#wpSummary' ).clone( true );
 	$bsTfSummary.attr( 'id', 'bs-ve-wpSummary' );
 	$bsTfSummary.attr( 'name', 'bs-wpSummary' );
+	$bsTfSummary.attr( 'size', '30' );
+	$bsTfSummary.attr( 'placehoder', $( '#wpSummaryLabel' ).text() );
 	$bsTfSummary.appendTo( $editSummaryContainer );
 
 	var $editBtnContainer = $( '<div id="bs-ve-editbtn-group"></div>' ).appendTo( $editOptionsContainer );
@@ -183,6 +173,31 @@ function bs_editOptionsBarAdd() {
 function bs_editOptionsBarRemove() {
 	$( '#bs-ve-editoptions' ).remove();
 };
+
+function bs_firstHeadingFixedAdd() {
+	var $firstHeading = $( '#firstHeading' );
+
+	if( $firstHeading.length > 0 ){
+		$firstHeading.addClass( 'bs-ve-heading-fixed' );
+		$firstHeading.width( $firstHeading.parent().width() );
+		$firstHeading.css( 'display', 'block' );
+		$firstHeading.css(
+			'background-color',
+			$( '#content' ).css( 'background-color' )
+		);
+	}
+}
+
+function bs_firstHeadingFixedRemove() {
+	var $firstHeading = $( '#firstHeading' );
+
+	if( $firstHeading.length > 0 ){
+		$firstHeading.removeClass( 'bs-ve-heading-fixed' );
+		$firstHeading.css( 'background-color', 'transparent' );
+		$firstHeading.css( 'display', 'initial' );
+		$firstHeading.width( 'auto' );
+	}
+}
 
 // event handler for editOptions in bs-ve toolbar
 $( document ).on( 'click', '#bs-ve-wpSummary', function(){
