@@ -1798,7 +1798,7 @@ var BsWikiCode = function() {
 
 		specialTagsList = mw.config.get('BsVisualEditorConfigDefault').specialtaglist;
 		// Tags without innerHTML need /> as end marker. Maybe this should be task of a preprocessor, in order to allow mw style tags without /.
-		regex = '<(' + specialTagsList + ')( [^>]*)*?((\\s\\/>)|(\\/>)|(>([\\S\\s]*?((<\\/\\1>)|(<\\/ \\1>)))))';
+		regex = '<(' + specialTagsList + ')( *[^>]*)*?((\\s\\/>)|(\\/>)|(>([\\S\\s]*?((<\\/\\1>)|(<\\/ \\1>)))))';
 
 		matcher = new RegExp(regex, 'gmi');
 		mtext = text;
@@ -1810,7 +1810,6 @@ var BsWikiCode = function() {
 		var moreAttribs = '';
 
 		while ((st = matcher.exec(mtext)) !== null) {
-
 			retValue = $(document).triggerHandler( 'BSVisualEditorRenderSpecialTag', [this, st[1], st] );
 			if ( retValue ) {
 				innerText = retValue.innerText;
