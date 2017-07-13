@@ -16,6 +16,6 @@ class SpecialFlexiskin extends BsSpecialPage {
 		parent::execute( $sParameter );
 
 		$this->getOutput()->addModules( "ext.bluespice.flexiskin" );
-		$this->getOutput()->addHTML( '<div id="bs-flexiskin-container"></div>' );
+		$this->getOutput()->addHTML( '<div id="bs-flexiskin-container" class="bs-manager-container"></div>' );
 	}
 }

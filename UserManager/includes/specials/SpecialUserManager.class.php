@@ -15,7 +15,7 @@ class SpecialUserManager extends BsSpecialPage {
 	public function execute( $sParameter ) {
 		parent::execute( $sParameter );
 		$this->getOutput()->addModules( 'ext.bluespice.userManager' );
-		$this->getOutput()->addHTML( '<div id="bs-usermanager-grid"></div>' );
+		$this->getOutput()->addHTML( '<div id="bs-usermanager-grid" class="bs-manager-container"></div>' );
 	}
 
 }

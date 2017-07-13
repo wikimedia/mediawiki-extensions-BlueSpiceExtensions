@@ -78,7 +78,7 @@ class SpecialPermissionManager extends BsSpecialPage {
 
 		$this->getOutput()->addJsConfigVars( $aJsVars );
 
-		$this->getOutput()->addHTML( '<div id="panelPermissionManager" style="height: 500px"></div>' );
+		$this->getOutput()->addHTML( '<div id="panelPermissionManager"  class="bs-manager-container" style="height: 500px"></div>' );
 	}
 
 	protected function getGroupName() {

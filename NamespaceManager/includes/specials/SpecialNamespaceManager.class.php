@@ -96,7 +96,7 @@ class SpecialNamespaceManager extends BsSpecialPage {
 		Hooks::run( 'NamespaceManager::getMetaFields', array( &$aMetaFields ) );
 		$this->getOutput()->addJsConfigVars( 'bsNamespaceManagerMetaFields', $aMetaFields );
 
-		$this->getOutput()->addHTML( '<div id="bs-namespacemanager-grid"></div>' );
+		$this->getOutput()->addHTML( '<div id="bs-namespacemanager-grid" class="bs-manager-container"></div>' );
 	}
 
 }

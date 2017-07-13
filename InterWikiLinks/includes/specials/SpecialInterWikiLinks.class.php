@@ -28,7 +28,7 @@ class SpecialInterWikiLinks extends BsSpecialPage {
 		$oOutputPage->addJsConfigVars( 'BSInterWikiPrefixes', InterWikiLinks::getInterWikiLinkPrefixes() );
 
 		$oOutputPage->addModules( 'ext.bluespice.interWikiLinks' );
-		$oOutputPage->addHTML( '<div id="InterWikiLinksGrid"></div>' );
+		$oOutputPage->addHTML( '<div id="InterWikiLinksGrid" class="bs-manager-container"></div>' );
 	}
 
 	protected function getGroupName() {
