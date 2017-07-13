@@ -56,7 +56,8 @@
 				"bs-visualeditor-cuscosky",
 				"bs-visualeditor-casablanca",
 				"bs-visualeditor-greyscale",
-				"bs-visualeditor-greyscale-narrow"
+				"bs-visualeditor-greyscale-narrow",
+				"bs-visualeditor-editoptions-summary"
 			]
 		},
 		"ext.bluespice.visualEditor": {
