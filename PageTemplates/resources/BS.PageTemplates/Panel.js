@@ -1,7 +1,7 @@
 /**
  * PageTemplates Panel
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @author     Stephan Muggli <muggli@hallowelt.com>
@@ -30,6 +30,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			id: 'pg-label',
 			header: mw.message('bs-pagetemplates-headerlabel').plain(),
 			sortable: true,
+			filterable: true,
 			dataIndex: 'label',
 			tpl: '{label}'
 		} );
@@ -38,6 +39,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			header: mw.message('bs-pagetemplates-label-desc').plain(),
 			xtype: 'templatecolumn',
 			sortable: true,
+			filterable: true,
 			dataIndex: 'desc'
 		} );
 		this.colTargetns = Ext.create( 'Ext.grid.column.Column', {
@@ -45,6 +47,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			header: mw.message('bs-pagetemplates-headertargetnamespace').plain(),
 			xtype: 'templatecolumn',
 			sortable: true,
+			filterable: true,
 			dataIndex: 'targetns'
 		} );
 		this.colTemplate = Ext.create( 'Ext.grid.column.Column', {
@@ -52,6 +55,7 @@ Ext.define( 'BS.PageTemplates.Panel', {
 			header: mw.message('bs-pagetemplates-label-article').plain(),
 			xtype: 'templatecolumn',
 			sortable: true,
+			filterable: true,
 			dataIndex: 'template'
 		} );
 

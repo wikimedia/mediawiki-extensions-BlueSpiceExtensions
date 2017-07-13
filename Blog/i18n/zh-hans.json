@@ -37,5 +37,6 @@
 	"bs-blog-tag-blogtime-desc": "插入自定义时间戳以在博文中显示和排序。格式是YYYYMMDDHHmm。",
 	"bs-blog-tag-blogtime-err": "格式应为YYYYMMDDHHmm，也就是对于2013年1月12日 15:43，时间戳应为：201301121543",
 	"bs-tag-blog": "博客标签",
-	"action-blog-viewspecialpage": "查看特殊页面“{{int:bs-blog-blog}}”"
+	"action-blog-viewspecialpage": "查看特殊页面“{{int:bs-blog-blog}}”",
+	"bs-blog-rss-desc-blog": "在博文上方添加带有概要的订阅源"
 }

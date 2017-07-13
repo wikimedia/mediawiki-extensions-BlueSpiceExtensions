@@ -10,6 +10,7 @@
 	"bs-rssfeeder-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of rss feeder extension",
 	"rssfeeder": "{{doc-special|RSS feeder}}",
 	"apihelp-bs-rssfeeder-tasks-description": "Describes an API endpoint that provides common tasks for the RSSFeeder\n{{doc-apihelp-description|bs-rssfeeder-tasks}}",
+	"apihelp-bs-rssfeeder-tasks-summary": "Describes an API endpoint that provides common tasks for the RSSFeeder\n{{doc-apihelp-summary|bs-rssfeeder-tasks}}",
 	"bs-rssfeeder-pagetext": "Headline on special page for RSS feeds section:",
 	"bs-rssfeeder-recent-changes": "Headline for recent changes\n{{Identical|Recent changes}}",
 	"bs-rssfeeder-pages": "Headline for page\n{{Identical|Page}}",

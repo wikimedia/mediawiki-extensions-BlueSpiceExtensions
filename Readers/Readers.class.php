@@ -16,8 +16,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
+ * This file is part of BlueSpice MediaWiki
+ * For further information visit http://www.bluespice.com
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @version    2.23.1
@@ -252,6 +252,18 @@ class Readers extends BsExtensionMW {
 			return false;
 		}
 
+		return true;
+	}
+
+	/**
+	 * UnitTestsList allows registration of additional test suites to execute
+	 * under PHPUnit. Extensions can append paths to files to the $paths array,
+	 * and since MediaWiki 1.24, can specify paths to directories, which will
+	 * be scanned recursively for any test case files with the suffix "Test.php".
+	 * @param array $paths
+	 */
+	public static function onUnitTestsList( array &$paths ) {
+		$paths[] = __DIR__ . '/tests/phpunit/';
 		return true;
 	}
 }

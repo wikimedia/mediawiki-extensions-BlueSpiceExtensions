@@ -4,5 +4,7 @@
 			"Aftabuzzaman"
 		]
 	},
-	"bs-insertfile-enable-align": "সক্রিয়"
+	"bs-insertfile-enable-align": "সক্রিয়",
+	"bs-insertfile-nstextfile": "ফাইল",
+	"bs-insertfile-nstextmedia": "মিডিয়া"
 }

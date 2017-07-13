@@ -9,6 +9,7 @@
 	"bs-rssfeeder-desc": "Розширення, що дозволяє виводити RSS тим розширенням, які мають функцію buildRss",
 	"rssfeeder": "Канал RSS",
 	"apihelp-bs-rssfeeder-tasks-description": "Забезпечує типові завдання для RSSFeeder",
+	"apihelp-bs-rssfeeder-tasks-summary": "Забезпечує типові завдання для RSSFeeder",
 	"bs-rssfeeder-pagetext": "Ви можете підписатися на такі RSS-канали:",
 	"bs-rssfeeder-recent-changes": "Нещодавні зміни",
 	"bs-rssfeeder-pages": "Сторінка",

@@ -48,6 +48,12 @@
 	"log-show-hide-bs-permission-manager": "$1权限管理器日志",
 	"logentry-bs-permission-manager-modify": "$1{{GENDER:$2|已更改}}组$4的权限",
 	"apihelp-bs-permissionmanager-tasks-description": "为权限管理器提供任务",
+	"apihelp-bs-permissionmanager-tasks-summary": "为权限管理器提供任务",
 	"action-permissionmanager-viewspecialpage": "查看特殊页面“{{int:bs-permissionmanager-label}}”",
-	"permissionmanager": "权限管理器"
+	"permissionmanager": "权限管理器",
+	"bs-permissionmanager-affected-by-explicit": "已由$1封禁",
+	"bs-permissionmanager-affected-by-inherited": "继承自$1",
+	"bs-permissionmanager-affected-by-notset": "尚未设置",
+	"bs-permissionmanager-affected-by-explicitlyset": "明确设置",
+	"bs-permissionmanager-affected-by-setonwiki": "在wiki级别上设置"
 }

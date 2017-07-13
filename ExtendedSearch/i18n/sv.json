@@ -30,6 +30,7 @@
 	"bs-extendedsearch-indexing-specialpages": "Indexerar specialsidor",
 	"bs-extendedsearch-invalid-query": "Frågan kunde inte behandlas.",
 	"bs-extendedsearch-nosearchterm": "Ange ett sökord.",
+	"bs-extendedsearch-noresult": "Inga poster hittades.",
 	"bs-extendedsearch-result": "Sökningen efter \"$1\" hittade $2 {{PLURAL:$2|resultat}}.",
 	"bs-extendedsearch-result-caption": "$1 - $2 av $3 {{PLURAL:$3|resultat}}",
 	"bs-extendedsearch-search-category": "Sök i kategorierna:",

@@ -15,5 +15,6 @@
 	"bs-namespacemanager-willdelete": "Bus ištrinta",
 	"bs-namespacemanager-willmove": "Bus perkelta į „{{int:bs-ns_main}}“",
 	"bs-namespacemanager-willmovesuffix": "Bus perkelta į „{{int:bs-ns_main}}“ su priešdėliu „$1“",
-	"log-name-bs-namespace-manager": "Vardų srities tvarkymo žurnalas"
+	"log-name-bs-namespace-manager": "Vardų srities tvarkymo žurnalas",
+	"bs-namespacemanager-label-istalk": "Aptarimas"
 }

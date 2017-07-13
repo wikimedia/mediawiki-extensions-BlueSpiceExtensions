@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Striking Blue"
+			"Striking Blue",
+			"Facenapalm"
 		]
 	},
 	"bs-permissionmanager-desc": "Интерфейс администрирования для изменения прав пользователя",
@@ -40,5 +41,6 @@
 	"bs-permissionmanager-pref-lockmode": "Активировать закрытый режим",
 	"bs-permissionmanager-pref-skipsysns": "Пропустить системные пространства имён, если включён закрытый режим",
 	"bs-permissionmanager-pref-enablerealitycheck": "Активировать проверку разрешений",
-	"bs-permissionmanager-unsaved-changes": "Имеются несохранённые изменения. Вы действительно хотите покинуть страницу? Эти несохранённые изменения будут потеряны."
+	"bs-permissionmanager-unsaved-changes": "Имеются несохранённые изменения. Вы действительно хотите покинуть страницу? Эти несохранённые изменения будут потеряны.",
+	"action-permissionmanager-viewspecialpage": "просмотр служебной страницы «{{int:bs-permissionmanager-label}}»"
 }

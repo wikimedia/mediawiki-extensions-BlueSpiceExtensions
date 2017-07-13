@@ -7,6 +7,7 @@
 	"bs-visualeditor-desc": "Editor visual pa MediaWiki",
 	"prefs-visualeditor": "Editor visual",
 	"apihelp-bs-visualeditor-tasks-description": "Ufre xeres pa la estensión BlueSpice Editor Visual.",
+	"apihelp-bs-visualeditor-tasks-summary": "Ufre xeres pa la estensión Editor Visual de BlueSpice.",
 	"bs-visualeditor-editbutton-hint": "Editor visual",
 	"bs-visualeditor-pref-disablens": "Desactivar nos espacios de nomes:",
 	"bs-visualeditor-pref-use": "Usar l'editor WYSIWYG de mou predetermináu",
@@ -31,11 +32,7 @@
 	"bs-visualeditor-bsactions-signature": "Robla",
 	"bs-visualeditor-bsactions-save": "Guardar",
 	"bs-visualeditor-bsactions-headings": "Testeres",
-	"bs-visualeditor-bsactions-paragraph": "Párrafu",
-	"bs-visualeditor-bsactions-heading2": "Testera 2",
-	"bs-visualeditor-bsactions-heading3": "Testera 3",
-	"bs-visualeditor-bsactions-heading4": "Testera 4",
-	"bs-visualeditor-bsactions-heading5": "Testera 5",
-	"bs-visualeditor-bsactions-heading6": "Testera 6",
-	"bs-visualeditor-switch-noeditor-desc": "Desactiva l'editor visual nesta páxina."
+	"bs-visualeditor-switch-noeditor-desc": "Desactiva l'editor visual nesta páxina.",
+	"bs-visualeditor-bsactions-tablefunctions": "Funciones de tabla",
+	"bs-visualeditor-bsactions-tablestyles": "Estilos de tabla"
 }

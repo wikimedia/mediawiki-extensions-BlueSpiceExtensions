@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Vito Genovese"
 		]
 	},
-	"bs-contextmenu-page-edit": "Sayfayı değiştir",
+	"bs-contextmenu-page-edit": "Sayfayı düzenle",
 	"bs-contextmenu-page-delete": "Sayfayı sil",
 	"bs-contextmenu-page-move": "Sayfayı taşı",
 	"bs-contextmenu-page-history": "Sayfa geçmişini görüntüle",

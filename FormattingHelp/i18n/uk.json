@@ -27,5 +27,7 @@
 	"bs-formattinghelp-help-hr": "Горизонтальна лінія",
 	"bs-formattinghelp-help-template": "Шаблон",
 	"bs-formattinghelp-help-templatename": "Назва шаблону",
-	"apihelp-bs-formattinghelp-description": "Забезпечує завдання для розширення FormattingHelp."
+	"apihelp-bs-formattinghelp-description": "Забезпечує завдання для розширення FormattingHelp.",
+	"apihelp-bs-formattinghelp-summary": "Забезпечує завдання для розширення FormattingHelp.",
+	"apihelp-bs-formattinghelp-param-token": "Токен захисту CSRF. Тут необов'язковий"
 }

@@ -62,9 +62,13 @@
 	"bs-flexiskin-usebackground": "Use background image",
 	"bs-flexiskin-labelcurrentbackground": "Current image",
 	"apihelp-bs-flexiskin-tasks-description": "Allows manipulation of flexiskins",
+	"apihelp-bs-flexiskin-tasks-summary": "Allows manipulation of flexiskins",
 	"apihelp-bs-flexiskin-store-description": "Lists available flexiskins",
+	"apihelp-bs-flexiskin-store-summary": "Lists available flexiskins",
 	"apihelp-bs-flexiskin-upload-description": "Allows to upload files to a flexiskin",
+	"apihelp-bs-flexiskin-upload-summary": "Allows to upload files to a flexiskin",
 	"apihelp-bs-flexiskin-upload-store-description": "Lists uploaded files of a flexiskin",
+	"apihelp-bs-flexiskin-upload-store-summary": "Lists uploaded files of a flexiskin",
 	"action-flexiskin-viewspecialpage": "view specialpage \"Flexiskin\"",
 	"flexiskin": "Skin preferences",
 	"bs-flexiskin-button-upload-image-tooltip": "Upload new image"

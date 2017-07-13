@@ -33,5 +33,6 @@
 	"bs-blog-tag-blogtime-desc": "Inxerta una marca de tiempu personalizada p'amosar y ordenar les entraes del blog. El formatu ye YYYYMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "El formatu tien de ser AAAAMMDDHHmm p. ex. pal 12 de xineru de 2013 a les 15:43 la marca de tiempu apaecerá como: 201301121543",
 	"bs-tag-blog": "la marca de blog",
-	"action-blog-viewspecialpage": "ver la páxina especial \"{{int:bs-blog-blog}}\""
+	"action-blog-viewspecialpage": "ver la páxina especial \"{{int:bs-blog-blog}}\"",
+	"bs-blog-rss-desc-blog": "Canal con una vista xeneral de les entraes de blogue"
 }

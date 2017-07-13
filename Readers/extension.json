@@ -1,6 +1,6 @@
 {
 	"name": "Readers",
-	"version": "2.27.1",
+	"version": "2.27.2",
 	"url": "https://help.bluespice.com/index.php/Readers",
 	"author": [
 		"Stephan Muggli",
@@ -20,7 +20,7 @@
 	},
 	"APIModules": {
 		"bs-readers-data-store": "BSApiReadersDataStore",
-		"bs-readers-users-store": "BSAPIReadersUsersStore"
+		"bs-readers-users-store": "BSApiReadersUsersStore"
 	},
 	"MessagesDirs": {
 		"Readers": [
@@ -35,7 +35,8 @@
 		"ViewReaders": "views/view.Readers.php",
 		"SpecialReaders": "includes/specials/SpecialReaders.class.php",
 		"BSApiReadersDataStore": "includes/api/BSApiReadersDataStore.php",
-		"BSAPIReadersUsersStore": "includes/api/BSAPIReadersUsersStore.php"
+		"BSApiReadersUsersStore": "includes/api/BSApiReadersUsersStore.php",
+		"BSReadersFixtures": "tests/phpunit/BSReadersFixtures.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.readers.styles": {
@@ -78,7 +79,8 @@
 		"remoteExtPath": "BlueSpiceExtensions/Readers/resources"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "Readers::getSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "Readers::getSchemaUpdates",
+		"UnitTestsList": "Readers::onUnitTestsList"
 	},
 	"manifest_version": 1
 }

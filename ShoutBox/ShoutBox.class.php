@@ -19,8 +19,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
+ * This file is part of BlueSpice MediaWiki
+ * For further information visit http://www.bluespice.com
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Tobias Weichart <weichart@hallowelt.com>
@@ -186,7 +186,6 @@ class ShoutBox extends BsExtensionMW {
 		$oOutputPage->addModules( 'ext.bluespice.shoutbox' );
 		$oOutputPage->addModules( 'ext.bluespice.shoutbox.mention' );
 
-		BsExtensionManager::setContext( 'MW::ShoutboxShow' );
 		return true;
 	}
 
@@ -197,7 +196,10 @@ class ShoutBox extends BsExtensionMW {
 	 * @return bool always true
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( !BsExtensionManager::isContextActive( 'MW::ShoutboxShow' ) ) {
+		//Check if the context of the statebar is set. If not, we do not have
+		//to do anything
+		$aModules = $sktemplate->getOutput()->getModules();
+		if( !in_array( 'ext.bluespice.shoutbox', $aModules ) ) {
 			return true;
 		}
 
@@ -438,6 +440,18 @@ class ShoutBox extends BsExtensionMW {
 				'uniqueColumns' => array( 'sb_page_id' )
 			)
 		);
+		return true;
+	}
+
+	/**
+	 * UnitTestsList allows registration of additional test suites to execute
+	 * under PHPUnit. Extensions can append paths to files to the $paths array,
+	 * and since MediaWiki 1.24, can specify paths to directories, which will
+	 * be scanned recursively for any test case files with the suffix "Test.php".
+	 * @param array $paths
+	 */
+	public static function onUnitTestsList ( array &$paths ) {
+		$paths[] = __DIR__ . '/tests/phpunit/';
 		return true;
 	}
 }

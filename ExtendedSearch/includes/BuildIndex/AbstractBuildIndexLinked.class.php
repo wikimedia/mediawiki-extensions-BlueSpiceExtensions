@@ -2,7 +2,7 @@
 /**
  * Abstract index builder for ExtendedSearch for MediaWiki
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @author     Mathias Scheer <scheer@hallowelt.com>

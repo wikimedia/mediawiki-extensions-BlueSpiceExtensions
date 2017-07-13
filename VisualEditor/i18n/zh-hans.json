@@ -7,6 +7,7 @@
 	"bs-visualeditor-desc": "MediaWiki的可视化编辑器",
 	"prefs-visualeditor": "可视化编辑器",
 	"apihelp-bs-visualeditor-tasks-description": "提供用于扩展BlueSpice可视化编辑器的任务。",
+	"apihelp-bs-visualeditor-tasks-summary": "提供用于扩展BlueSpice可视化编辑器的任务。",
 	"bs-visualeditor-editbutton-hint": "可视化编辑器",
 	"bs-visualeditor-pref-disablens": "禁用于以下名字空间：",
 	"bs-visualeditor-pref-use": "默认使用所见即所得编辑器",
@@ -31,11 +32,7 @@
 	"bs-visualeditor-bsactions-signature": "签名",
 	"bs-visualeditor-bsactions-save": "保存",
 	"bs-visualeditor-bsactions-headings": "标题",
-	"bs-visualeditor-bsactions-paragraph": "段落",
-	"bs-visualeditor-bsactions-heading2": "标题2",
-	"bs-visualeditor-bsactions-heading3": "标题3",
-	"bs-visualeditor-bsactions-heading4": "标题4",
-	"bs-visualeditor-bsactions-heading5": "标题5",
-	"bs-visualeditor-bsactions-heading6": "标题6",
-	"bs-visualeditor-switch-noeditor-desc": "在此页面禁用可视化编辑器。"
+	"bs-visualeditor-switch-noeditor-desc": "在此页面禁用可视化编辑器。",
+	"bs-visualeditor-bsactions-tablefunctions": "表格功能",
+	"bs-visualeditor-bsactions-tablestyles": "表格样式"
 }

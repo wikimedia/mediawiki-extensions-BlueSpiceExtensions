@@ -1,6 +1,6 @@
 <?php
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: AboutBlueSpice
  * Description: Show user additional options of the pro version.
  * Authors: Markus Glaser

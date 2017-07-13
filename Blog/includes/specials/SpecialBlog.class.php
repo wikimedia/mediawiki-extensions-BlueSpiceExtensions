@@ -2,7 +2,7 @@
 /**
  * Special page for Blog
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @version    $Id$
@@ -21,8 +21,6 @@ class SpecialBlog extends BsSpecialPage {
 
 	public function execute( $par ) {
 		parent::execute( $par );
-
-		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
 
 		$aArgs = array();
 		$aNamespaces = $this->getLanguage()->getNamespaces();

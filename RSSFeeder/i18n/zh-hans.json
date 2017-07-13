@@ -7,6 +7,7 @@
 	"bs-rssfeeder-desc": "为每个有buildRss-function功能的扩展输出有效RSS的扩展",
 	"rssfeeder": "RSS订阅器",
 	"apihelp-bs-rssfeeder-tasks-description": "为RSSFeeder提供一般任务",
+	"apihelp-bs-rssfeeder-tasks-summary": "为RSSFeeder提供一般任务",
 	"bs-rssfeeder-pagetext": "您可通过下面的RSS订阅源订阅：",
 	"bs-rssfeeder-recent-changes": "最近更改",
 	"bs-rssfeeder-pages": "页面",

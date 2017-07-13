@@ -1,6 +1,6 @@
 -- PostgreSQL database definition for table bs_namespacemanager_backup_page in NamespaceManager
 --
--- Part of BlueSpice for MediaWiki
+-- Part of BlueSpice MediaWiki
 --
 -- @author     Thomas Lorenz <lorenz@hallowelt.com>
 

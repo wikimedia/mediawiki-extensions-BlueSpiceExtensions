@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Mailman"
+			"Mailman",
+			"Facenapalm"
 		]
 	},
 	"prefs-avatars": "Аватары",
@@ -21,5 +22,7 @@
 	"bs-avatars-set-userimage-failed": "Недопустимый URL-адрес или имя изображения из вики.",
 	"bs-avatars-set-userimage-saved": "Пользовательское изображение сохранено.",
 	"bs-avatars-file-upload-fieldset-title": "Загрузить изображение",
-	"bs-avatars-auto-generate-fieldset-title": "Создать аватар автоматически"
+	"bs-avatars-auto-generate-fieldset-title": "Создать аватар автоматически",
+	"apihelp-bs-avatars-tasks-description": "Загружаемые, генерируемые и устанавливаемые пользовательские аватары",
+	"apihelp-bs-avatars-tasks-summary": "Загружаемые, генерируемые и устанавливаемые пользовательские аватары"
 }

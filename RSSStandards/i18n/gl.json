@@ -18,5 +18,6 @@
 	"bs-rssstandards-link-text-watch": "Cambios recentes {{PLURAL:$1|do último día|dos últimos $1 días}}.",
 	"bs-rssstandards-desc-ns": "Canle que resume os cambios recentes dun espazo de nomes.",
 	"bs-rssstandards-changes-from": "Cambios {{GENDER:$1|de}}: $1",
-	"apihelp-bs-rss-standards-pages-store-description": "Devolve a Lista das Páxinas dispoñibles para o RSSFeeder"
+	"apihelp-bs-rss-standards-pages-store-description": "Devolve a Lista das Páxinas dispoñibles para o RSSFeeder",
+	"apihelp-bs-rss-standards-pages-store-summary": "Devolver a lista das páxinas dispoñibles para o RSSFeeder"
 }

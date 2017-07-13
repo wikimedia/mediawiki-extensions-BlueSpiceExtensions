@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"bs-contextmenu-desc": "Provee menús contextuais para varias ligazóns",
@@ -20,5 +21,7 @@
 	"bs-contextmenu-media-view-page": "Ver a páxina de descrición e o historial do ficheiro",
 	"bs-contextmenu-user-mail": "Enviar un correo",
 	"bs-contextmenu-user-talk": "Dejar unha mensaxe na páxina de discusión",
-	"bs-contextmenu-file-download": "Descargar o ficheiro"
+	"bs-contextmenu-file-download": "Descargar o ficheiro",
+	"apihelp-bs-contextmenu-tasks-description": "Fornece os elementos do menú contextual no contexto",
+	"apihelp-bs-contextmenu-tasks-summary": "Fornece os elementos do menú contextual no contexto"
 }

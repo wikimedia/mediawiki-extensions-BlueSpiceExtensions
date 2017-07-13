@@ -140,7 +140,7 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 
 		this.hdnUrl = Ext.create( 'Ext.form.field.Hidden' );
 
-		this.configPanel.height = 270;
+		this.configPanel.height = 280;
 		var items = [
 			this.rgFormat,
 			{

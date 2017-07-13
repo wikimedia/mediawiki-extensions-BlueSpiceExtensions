@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Piramidion"
 		]
 	},
 	"bs-contextmenu-desc": "Надає контекстне меню для різних посилань",
@@ -20,5 +21,7 @@
 	"bs-contextmenu-media-view-page": "Переглянути файл опису сторінки та файл історії",
 	"bs-contextmenu-user-mail": "Надіслати лист",
 	"bs-contextmenu-user-talk": "Залишити повідомлення на сторінках обговорення",
-	"bs-contextmenu-file-download": "Завантажити файл"
+	"bs-contextmenu-file-download": "Завантажити файл",
+	"apihelp-bs-contextmenu-tasks-description": "Забезпечує елементи контекстного меню в контексті",
+	"apihelp-bs-contextmenu-tasks-summary": "Забезпечує елементи контекстного меню в контексті"
 }

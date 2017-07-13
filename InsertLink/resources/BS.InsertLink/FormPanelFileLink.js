@@ -1,7 +1,7 @@
 /**
  * InsertLink file link panel
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Patric Wirth <wirth@hallowelt.com>, Leonid Verhovskij <verhovskij@hallowelt.com>
  * @package    Bluespice_Extensions

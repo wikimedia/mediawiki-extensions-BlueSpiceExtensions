@@ -22,5 +22,6 @@
 	"bs-avatars-set-userimage-saved": "Text for user picture successfully saved.",
 	"bs-avatars-file-upload-fieldset-title": "Fieldset title for picture upload",
 	"bs-avatars-auto-generate-fieldset-title": "Fieldset title auto generate avatar",
-	"apihelp-bs-avatars-tasks-description": "{{doc-apihelp-description|bs-avatars-tasks}}"
+	"apihelp-bs-avatars-tasks-description": "{{doc-apihelp-description|bs-avatars-tasks}}",
+	"apihelp-bs-avatars-tasks-summary": "{{doc-apihelp-summary|bs-avatars-tasks}}"
 }

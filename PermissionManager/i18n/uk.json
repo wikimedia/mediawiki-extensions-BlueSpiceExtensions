@@ -49,6 +49,7 @@
 	"log-show-hide-bs-permission-manager": "$1 журнал менеджера дозволів",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|змінив|змінила}} дозволи групи $4",
 	"apihelp-bs-permissionmanager-tasks-description": "Надає завдання для PermissionManager",
+	"apihelp-bs-permissionmanager-tasks-summary": "Забезпечує завдання для Permissionmanager",
 	"action-permissionmanager-viewspecialpage": "перегляд спеціальної сторінки «{{int:bs-permissionmanager-label}}»",
 	"permissionmanager": "Менеджер дозволів"
 }

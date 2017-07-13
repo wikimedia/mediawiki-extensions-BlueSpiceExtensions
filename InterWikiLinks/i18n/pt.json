@@ -28,6 +28,7 @@
 	"bs-interwikilink-select-a-prefix": "Escolha o prefixo",
 	"bs-interwikilinks-link-edited": "A ligação interwikis foi editada",
 	"apihelp-bs-interwikilinks-tasks-description": "Fornece as tarefas para a extensão InterWikiLinks.",
+	"apihelp-bs-interwikilinks-tasks-summary": "Fornece as tarefas para a extensão InterWikiLinks.",
 	"action-interwikilinks-viewspecialpage": "ver página especial \"{{int:bs-interwikilinks-label}}\"",
 	"interwikilinks": "Ligações interwikis"
 }

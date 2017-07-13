@@ -17,5 +17,9 @@
 	"bs-usermanager-headerenabled": "Gaitua",
 	"bs-usermanager-endisable": "Gaitu/desgaitu",
 	"bs-usermanager-titledisableuser": "Lankidea desgaitu",
-	"bs-usermanager-titleenableuser": "Lankidea gaitu"
+	"bs-usermanager-titleenableuser": "Lankidea gaitu",
+	"bs-usermanager-editpassword": "Pasahitza aldatu",
+	"bs-usermanager-editpassword-successful": "Pasahitza ongi aldatu da",
+	"bs-usermanager-title-nouserselected": "Ez da erabiltzailerik hautatu",
+	"bs-usermanager-nouserselected": "Hautatu erabiltzaile bat, mesedez"
 }

@@ -60,6 +60,10 @@
 	"bs-statistics-portlet-numberofarticlesdesc": "Statistiques du nombre d'articles.",
 	"bs-statistics-portletconfig-periodday": "Hier",
 	"apihelp-bs-statistics-tasks-description": "Fournit les tâches courantes pour les statistiques",
+	"apihelp-bs-statistics-tasks-summary": "Fournit les tâches communes dédiées aux statistiques",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Fournit un magasin avec les diagrammes disponibles",
-	"apihelp-bs-statistics-search-options-store-description": "Fournit un magasin avec les options de recherche disponibles"
+	"apihelp-bs-statistics-available-diagrams-store-summary": "Fournit un magasin avec les diagrammmes disponibles",
+	"apihelp-bs-statistics-search-options-store-description": "Fournit un magasin avec les options de recherche disponibles",
+	"apihelp-bs-statistics-search-options-store-summary": "Fournit un stockage avec des options de recherche disponibles",
+	"right-statistic-viewspecialpage": "Accès aux statistiques étendues"
 }

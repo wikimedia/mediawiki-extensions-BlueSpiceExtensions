@@ -34,5 +34,6 @@
 	"bs-blog-tag-blogtime-desc": "Вставляє самовизначену мітку часу для відображення та сортування дописів блогу. Формат — РРРРММДДГГхх.",
 	"bs-blog-tag-blogtime-err": "Формат повинен бути YYYYMMDDHHmm? тобто для 12. Січ. 2013 15:43 мітка часу виглядає таким чином: 201301121543",
 	"bs-tag-blog": "тег блогу",
-	"action-blog-viewspecialpage": "перегляд спеціальної сторінки «{{int:bs-blog-blog}}»"
+	"action-blog-viewspecialpage": "перегляд спеціальної сторінки «{{int:bs-blog-blog}}»",
+	"bs-blog-rss-desc-blog": "Стрічка новин з оглядом записів у блозі"
 }

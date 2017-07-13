@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Rodrigo codignoli"
-		]
-	},
-	"bs-review-error-insufficient-permissions": "Você não tem permissão para executar essa ação (\"$1\" necessário)"
-}

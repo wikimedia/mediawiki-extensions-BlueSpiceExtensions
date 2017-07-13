@@ -43,5 +43,6 @@
 	"bs-statistics-portlet-numberofeditsdesc": "Statystyki liczby edycji.",
 	"bs-statistics-portlet-numberofpagesdesc": "Statystyki liczby stron.",
 	"bs-statistics-portlet-numberofarticlesdesc": "Statystyka liczby artykułów.",
-	"bs-statistics-portletconfig-periodday": "Wczoraj"
+	"bs-statistics-portletconfig-periodday": "Wczoraj",
+	"right-statistic-viewspecialpage": "Dostęp do rozszerzonej statystyki"
 }

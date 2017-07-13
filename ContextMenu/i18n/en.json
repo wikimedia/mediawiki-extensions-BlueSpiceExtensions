@@ -21,5 +21,6 @@
 	"bs-contextmenu-user-mail": "Send mail",
 	"bs-contextmenu-user-talk": "Leave message on talk page",
 	"bs-contextmenu-file-download": "Download file",
-	"apihelp-bs-contextmenu-tasks-description": "Provides the context menu items in context"
+	"apihelp-bs-contextmenu-tasks-description": "Provides the context menu items in context",
+	"apihelp-bs-contextmenu-tasks-summary": "Provides the context menu items in context"
 }

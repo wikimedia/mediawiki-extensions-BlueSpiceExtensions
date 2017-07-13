@@ -48,5 +48,9 @@
 	"log-show-hide-bs-permission-manager": "$1 logg för behörighetshantering",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|har}} ändrat behörigheterna för gruppen $4",
 	"action-permissionmanager-viewspecialpage": "visa specialsidan \"{{int:bs-permissionmanager-label}}\"",
-	"permissionmanager": "Rättighetshanterare"
+	"permissionmanager": "Rättighetshanterare",
+	"bs-permissionmanager-affected-by-explicit": "Blockerades av $1",
+	"bs-permissionmanager-affected-by-inherited": "Ärvdes från $1",
+	"bs-permissionmanager-affected-by-notset": "Inte angiven",
+	"bs-permissionmanager-affected-by-setonwiki": "Ange på wikinivå"
 }

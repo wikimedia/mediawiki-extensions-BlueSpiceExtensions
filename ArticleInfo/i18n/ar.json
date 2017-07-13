@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Test Create account",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Mido"
 		]
 	},
 	"prefs-articleinfo": "معلومات الصفحة",
 	"bs-articleinfo-pref-CheckRevisionInterval": "فترة التحديث بالثواني:",
 	"bs-articleinfo-last-edited": "الزمن منذ آخر تغيير",
 	"bs-articleinfo-last-edited-tooltip": "التعديل الأخير",
-	"bs-articleinfo-last-editor": "آخر {{GENDER:$1|تعديل}}",
+	"bs-articleinfo-last-editor": "آخر {{GENDER:$1|محرر|محررة}}",
 	"bs-articleinfo-categories": "التصنيفات",
 	"bs-articleinfo-subpages-too-much": "يوجد أكثر من 100 صفحة فرعية متاحة.",
 	"bs-articleinfo-statebarbodytemplates": "قوالب"

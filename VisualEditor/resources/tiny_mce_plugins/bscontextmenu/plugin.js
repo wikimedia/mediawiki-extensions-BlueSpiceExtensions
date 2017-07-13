@@ -120,7 +120,7 @@
 				longname: 'HwContextmenu Plugin',
 				author: 'Hallo Welt! GmbH',
 				authorurl: 'http://www.hallowelt.biz',
-				infourl: 'http://www.blue-spice.org',
+				infourl: 'http://www.bluespice.com',
 				version: tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		},

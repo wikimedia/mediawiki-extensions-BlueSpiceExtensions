@@ -21,5 +21,7 @@
 	"bs-contextmenu-media-view-page": "Ver página de descrição e histórico do ficheiro",
 	"bs-contextmenu-user-mail": "Enviar correio eletrónico",
 	"bs-contextmenu-user-talk": "Deixar mensagem na página de discussão",
-	"bs-contextmenu-file-download": "Descarregar ficheiro"
+	"bs-contextmenu-file-download": "Descarregar ficheiro",
+	"apihelp-bs-contextmenu-tasks-description": "Fornece os elementos do menu contextual no contexto",
+	"apihelp-bs-contextmenu-tasks-summary": "Fornece os elementos do menu contextual no contexto"
 }

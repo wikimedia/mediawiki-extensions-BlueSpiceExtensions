@@ -28,7 +28,7 @@
 	"bs-extendedsearch-indexing-linked-files": "فهرست‌بندی پرونده‌های مرتبط",
 	"bs-extendedsearch-indexing-wiki-articles": "فهرست‌بندی صفحات ویکی",
 	"bs-extendedsearch-indexing-specialpages": "فهرست‌بندی صفحات ویژه",
-	"bs-extendedsearch-invalid-query": "کوئری نمی‌تواند پردازش شود.",
+	"bs-extendedsearch-invalid-query": "پرسمان نمی‌تواند پردازش شود.",
 	"bs-extendedsearch-nosearchterm": "لطفاً یک عبارت جستجو وارد کنید.",
 	"bs-extendedsearch-result": "جستجوی «$1» $2 {{PLURAL:$2|نتیجه|نتیجه}} یافت.",
 	"bs-extendedsearch-result-caption": "$1 - $2 از $3 {{PLURAL:$3|نتیجه|نتیجه}}",

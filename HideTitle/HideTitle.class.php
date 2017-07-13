@@ -1,6 +1,6 @@
 <?php
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: HideTitle
  * Description: Tag to hide the title of an article.
  * Authors: Markus Glaser, Sebastian Ulbricht
@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * For further information visit http://www.blue-spice.org
+ * For further information visit http://www.bluespice.com
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @version    2.23.1

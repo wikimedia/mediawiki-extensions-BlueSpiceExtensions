@@ -18,8 +18,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
+ * This file is part of BlueSpice MediaWiki
+ * For further information visit http://www.bluespice.com
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1
@@ -113,8 +113,6 @@ class CSyntaxHighlight extends BsExtensionMW {
 		global $wgScriptPath;
 		// TODO RBV (13.07.11 15:44): Better recognition...
 		if ( strpos( $sText, '<pre class="brush:' ) === false ) return true;
-
-		BsExtensionManager::setContext( 'MW::CSyntaxHighlight' );
 
 		$sBrushScriptPath = $wgScriptPath.'/extensions/BlueSpiceExtensions/CSyntaxHighlight/resources';
 

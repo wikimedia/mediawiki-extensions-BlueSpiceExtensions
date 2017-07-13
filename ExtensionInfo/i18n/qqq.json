@@ -3,7 +3,8 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Shirayuki",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Mglaser"
 		]
 	},
 	"bs-extensioninfo-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of extension info extension",
@@ -14,7 +15,7 @@
 	"bs-extensioninfo-headerextname": "Label for extension name",
 	"bs-extensioninfo-headerversion": "Label for version.\n{{Identical|Version}}",
 	"bs-extensioninfo-headerdesc": "Label for description.\n{{Identical|Description}}",
-	"bs-extensioninfo-headerstatus": "Label for status.\n{{Identical|Status}}",
+	"bs-extensioninfo-headerstatus": "Lable for table column which shows the implementation status (beta, stable, etc.) of an extension.\n{{Identical|Status}}",
 	"bs-extensioninfo-headerpackage": "Label for package",
 	"bs-extensioninfo-groupingtemplateviewtext": "Text for element/elements. Parameters:\n* $1 - the number of elements (extensions)"
 }

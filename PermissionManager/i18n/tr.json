@@ -3,7 +3,8 @@
 		"authors": [
 			"Sayginer",
 			"Violetanka",
-			"Rapsar"
+			"Rapsar",
+			"Vito Genovese"
 		]
 	},
 	"bs-permissionmanager-desc": "Kullanıcı haklarının düzenlenmesi için yönetim arayüzü",
@@ -16,7 +17,7 @@
 	"bs-permissionmanager-labeltpled": "Şablon düzenleyici",
 	"bs-permissionmanager-labeltpled-desc": "Açıklama",
 	"bs-permissionmanager-labeltpled-add": "Yeni",
-	"bs-permissionmanager-labeltpled-edit": "Değiştir",
+	"bs-permissionmanager-labeltpled-edit": "Düzenle",
 	"bs-permissionmanager-labeltpled-delete": "Sil",
 	"bs-permissionmanager-labeltpled-cancel": "İptal",
 	"bs-permissionmanager-msgtpled-success": "Şablon kaydedildi.",

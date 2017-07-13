@@ -2,7 +2,7 @@
 /**
  * Renders the ExtendedSearch Spellchecker hint in result view.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Stephan Muggli <muggli@hallowelt.com>
  * @author     Mathias Scheer <scheer@hallowelt.com>

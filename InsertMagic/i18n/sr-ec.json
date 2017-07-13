@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Obsuser"
 		]
 	},
 	"bs-insertmagic-type-tags": "Ознаке",
+	"bs-insertmagic-type-quickaccess": "Брзи приступ",
 	"bs-insertmagic-label-desc": "Опис"
 }

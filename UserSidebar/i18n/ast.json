@@ -12,6 +12,7 @@
 	"bs-usersidebar-tab-globalactions": "Aiciones globales",
 	"bs-usersidebar-globalactionswidget-title": "Aiciones globales",
 	"apihelp-sidebar-description": "Devuelve'l conteníu HTML de la barra llateral d'usuariu",
+	"apihelp-sidebar-summary": "Devuelve'l conteníu HTML de la barra llateral d'usuariu",
 	"apihelp-sidebar-param-sidebar": "Si tien de recibise la barra llateral de la Wiki",
 	"apihelp-sidebar-param-usersidebar": "Si tien de recibise la barra llateral Focu",
 	"apihelp-sidebar-param-format": "Formatu de los datos de salida",

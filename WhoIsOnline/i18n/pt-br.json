@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"bs-whoisonline-widget-title": "Quem está online?",
+	"prefs-whoisonline": "Quem está online?",
+	"bs-whoisonline-pref-orderby": "Ordenar por:",
+	"bs-whoisonline-pref-orderby-name": "Nome"
+}

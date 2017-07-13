@@ -3,14 +3,15 @@
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Liuxinyu970226",
-			"Umherirrender"
+			"Umherirrender",
+			"Mglaser"
 		]
 	},
 	"bs-csyntaxhighlight-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of csyntaxhighlight extension",
 	"prefs-csyntaxhighlight": "Used in [[Special:Wiki_Admin&mode=Preferences]], headline for syntax highligther section in preferences.\n{{Identical|Syntax highlighter}}",
-	"bs-csyntaxhighlight-pref-theme": "Option in [[Special:Wiki_Admin&mode=Preferences]], label for theme:\n{{Identical|Theme}}",
+	"bs-csyntaxhighlight-pref-theme": "Label for option in [[Special:BlueSpice_Preferences]] to change the syntax highlighting theme:\n{{Identical|Theme}}",
 	"bs-csyntaxhighlight-pref-gutter": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show line numbers",
-	"bs-csyntaxhighlight-pref-autolinks": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for link URLs",
+	"bs-csyntaxhighlight-pref-autolinks": "Checkbox label for setting in [[Special:BlueSpice_Preferences]]. If checked, URLs in the highlighted text are converted to linked tags.",
 	"bs-csyntaxhighlight-pref-toolbar": "Option in [[Special:Wiki_Admin&mode=Preferences]], checkbox label for show toolbar",
 	"bs-csyntaxhighlight-tag-desc": "Used in InsertMagic extension, description of the tag that displays formatted code snippets."
 }

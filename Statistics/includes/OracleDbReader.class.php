@@ -2,7 +2,7 @@
 /**
  * Reads data from database for Statistics for BlueSpice.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Patric Wirth <wirth@hallowelt.com>

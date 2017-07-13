@@ -2,7 +2,7 @@
 /**
  * Renders the StateBar frame.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
 

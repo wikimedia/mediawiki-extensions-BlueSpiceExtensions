@@ -9,6 +9,7 @@
 	"prefs-csyntaxhighlight": "Realçador sintático",
 	"bs-csyntaxhighlight-pref-theme": "Tema:",
 	"bs-csyntaxhighlight-pref-gutter": "Mostrar números de linha",
-	"bs-csyntaxhighlight-pref-autolinks": "URL de <i>links</i>",
-	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de ferramentas"
+	"bs-csyntaxhighlight-pref-autolinks": "URL de links",
+	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de ferramentas",
+	"bs-csyntaxhighlight-tag-desc": "Insere o elemento CSyntaxHighlight, usado para apresentar fragmentos de código formatados"
 }

@@ -6,7 +6,9 @@
 			"Striking Blue",
 			"Kaganer",
 			"Iniquity",
-			"Mailman"
+			"Mailman",
+			"Av6",
+			"Facenapalm"
 		]
 	},
 	"bs-groupmanager-desc": "Административный интерфейс для добавления, правки и удаления групп участников и их прав",
@@ -26,7 +28,7 @@
 	"bs-groupmanager-removegroup": "Вы уверены, что хотите удалить {{PLURAL:$1|эту группу|эти группы}}?",
 	"bs-groupmanager-removegroup-message-success": "Была изъята {{PLURAL:$1|следующая группа|следующие группы}}: $2",
 	"bs-groupmanager-removegroup-message-failure": "Не удалось удалить {{PLURAL:$1|следующую группу|следующие группы}}: $2",
-	"bs-groupmanager-removegroup-message-unknown": "Произошла непредвиденная ошибка, попробуйте еще ​​раз.",
+	"bs-groupmanager-removegroup-message-unknown": "Произошла непредвиденная ошибка, попробуйте ещё ​​раз.",
 	"bs-groupmanager-lablename": "Название группы:",
 	"bs-groupmanager-msgnoteditable": "Эта системная группа, и ее нельзя переименовать.",
 	"bs-groupmanager-msgnotremovable": "Это системная группа, и ее нельзя удалить.",
@@ -35,5 +37,9 @@
 	"log-show-hide-bs-group-manager": "$1 журнал управления группами",
 	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|создал|создала}} группу $4",
 	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|переименовал|переименовала}} группу $4 в $5",
-	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|удалил|удалила}} группу $4"
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|удалил|удалила}} группу $4",
+	"apihelp-bs-groupmanager-description": "Предоставляет задачи для расширения GroupManager.",
+	"apihelp-bs-groupmanager-summary": "Предоставляет задачи для расширения GroupManager.",
+	"action-groupmanager-viewspecialpage": "просмотр служебной страницы «{{int:bs-groupmanager-label}}»",
+	"groupmanager": "Менеджер групп"
 }

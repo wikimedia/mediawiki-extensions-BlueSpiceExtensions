@@ -27,5 +27,7 @@
 	"bs-formattinghelp-help-hr": "Liña horizontal",
 	"bs-formattinghelp-help-template": "Modelo",
 	"bs-formattinghelp-help-templatename": "Nome do modelo",
-	"apihelp-bs-formattinghelp-description": "Proporciona as tarefas para a extensión FormattingHelp."
+	"apihelp-bs-formattinghelp-description": "Proporciona as tarefas para a extensión FormattingHelp.",
+	"apihelp-bs-formattinghelp-summary": "Proporciona as tarefas para a extensión FormattingHelp.",
+	"apihelp-bs-formattinghelp-param-token": "Chave de protección CSRF. Non é necesaria aquí."
 }

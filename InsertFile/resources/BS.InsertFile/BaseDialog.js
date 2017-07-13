@@ -3,7 +3,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	requires: [
 		'Ext.data.Store', 'Ext.form.TextField', 'Ext.ux.form.SearchField',
 		'Ext.Button', 'Ext.toolbar.Toolbar', 'Ext.grid.Panel', 'Ext.form.Panel',
-		'Ext.ux.grid.FiltersFeature',
+		'Ext.ux.grid.FiltersFeature', 'Ext.toolbar.Paging',
 		//Unfortunately 'Ext.ux.grid.FiltersFeature' only 'uses' those classes, but not 'requires' them...
 		'Ext.ux.grid.menu.ListMenu', 'Ext.ux.grid.menu.RangeMenu',
 		'Ext.ux.grid.filter.BooleanFilter', 'Ext.ux.grid.filter.DateFilter',
@@ -29,7 +29,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		collapsed: true,
 		title: mw.message('bs-insertfile-details-title').plain(),
 		region: 'south',
-		height: 100,
+		height: 150,
 		bodyPadding: 5,
 		layout: 'anchor',
 		items: []
@@ -72,8 +72,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 
 		this.stImageGrid = Ext.create('Ext.data.Store', {
 			height: 200,
-			buffered: true, // allow the grid to interact with the paging scroller by buffering
-			pageSize: 50000,
+			pageSize: 25,
 			proxy: {
 				type: 'ajax',
 				url: mw.util.wikiScript('api'),
@@ -139,10 +138,17 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			toolBarItems.push( this.btnUpload );
 		}
 
-		this.tbGridTools = Ext.create('Ext.toolbar.Toolbar', {
-			dock: 'top',
-			items: toolBarItems
-		});
+		this.tbGridTools = [
+			new Ext.toolbar.Toolbar( {
+				dock: 'top',
+				items: toolBarItems
+			} ),
+			new Ext.toolbar.Paging( {
+				dock: 'bottom',
+				store: this.stImageGrid,
+				displayInfo: true
+			} )
+		];
 
 		var filterFeature = this.makeGridFilterFeatureConfig();
 
@@ -152,11 +158,6 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			store: this.stImageGrid,
 			loadMask: true,
 			dockedItems: this.tbGridTools,
-			plugins: {
-				ptype: 'bufferedrenderer',
-				trailingBufferZone: 20,
-				leadingBufferZone: 20
-			},
 			features: [ new Ext.ux.grid.FiltersFeature(filterFeature) ],
 			selModel: {
 				pruneRemoved: false
@@ -182,8 +183,31 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			fieldLabel: mw.message('bs-insertfile-linktext').plain()
 		});
 
-		this.configPanel.items.unshift(this.tfLinkText);
+		this.rgNsText = Ext.create('Ext.form.RadioGroup', {
+			fieldLabel: mw.message('bs-insertfile-nstext').plain(),
+			layout: {
+				type: 'hbox'
+			},
+			items: [{
+				boxLabel: mw.message('bs-insertfile-nstextfile').plain(),
+				itemId: 'ns-text-file',
+				name: 'ns-text',
+				inputValue: 'file',
+				checked: true,
+				width: 80
+			},{
+				boxLabel: mw.message('bs-insertfile-nstextmedia').plain(),
+				itemId: 'ns-text-media',
+				name: 'ns-text',
+				inputValue: 'media',
+				checked: false,
+				width: 80
+			}]
+		});
+
+		this.configPanel.items.unshift(this.rgNsText);
 		this.configPanel.items.unshift(this.tfFileName);
+		this.configPanel.items.unshift(this.tfLinkText);
 		this.tfFileName.on('change', this.onTfFileNameChange, this);
 
 		this.pnlConfig = Ext.create('Ext.form.Panel', this.configPanel );
@@ -226,7 +250,8 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 	getData: function() {
 		var cfg = {
 			title: this.tfFileName.getValue(),
-			displayText: this.tfLinkText.getValue()
+			displayText: this.tfLinkText.getValue(),
+			nsText: this.rgNsText.getValue()['ns-text']
 		};
 		return cfg;
 	},
@@ -236,6 +261,11 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 		this.sfFilter.reset();
 		this.tfFileName.reset();
 		this.tfLinkText.reset();
+		this.rgNsText.reset();
+
+		this.rgNsText.setValue({
+			'ns-text': obj.nsText
+		});
 
 		if( obj.title ) {
 			this.resetFilters();

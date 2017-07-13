@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jayprakash12345"
+		]
+	},
+	"bs-whoisonline-nousers": "कोई भी लॉग इन नहीं है",
+	"bs-whoisonline-widget-title": "कौन ऑनलाइन है?",
+	"prefs-whoisonline": "कौन ऑनलाइन है?",
+	"bs-whoisonline-pref-limitcount": "दिखाए गए सदस्यों की अधिकतम संख्या:",
+	"bs-whoisonline-pref-orderby": "क्रमबद्ध करें:",
+	"bs-whoisonline-pref-orderby-name": "नाम",
+	"bs-whoisonline-pref-interval": "सेकंड में अंतराल अपडेट करें:"
+}

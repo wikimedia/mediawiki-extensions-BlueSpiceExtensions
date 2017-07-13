@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"VASANTH S.N."
+			"VASANTH S.N.",
+			"BHARATHESHA ALASANDEMAJALU"
 		]
 	},
 	"bs-insertfile-insert-image": "ಚಿತ್ರೊ ಸೇರಾಲೆ",
@@ -18,12 +19,5 @@
 	"bs-insertfile-alignright": "ಬಲ",
 	"bs-insertfile-typenone": "ಒವ್ವುಲಾ ಇಜ್ಜಿ",
 	"bs-insertfile-typethumb": "ಎಲ್ಯಚಿತ್ರೊ",
-	"bs-insertfile-uploadbuttontext": "ಕಣ್ಣಾಡಿಸಾಲೆ",
-	"bs-insertfile-uploaddescfilelabel": "ಸಾರಾಂಶೊ",
-	"bs-insertfile-uploadwatchthislabel": "ಈ ಪುಟೊನು ತೂಲೆ",
-	"bs-insertfile-uploadsubmitvalue": "ಫೈಲ್ ಅಪ್ಲೋಡ್",
-	"bs-insertfile-warning": "ಎಚ್ಚರಿಕೆ",
-	"bs-insertfile-error": "ದೋಷ",
-	"bs-insertfile-license": "ಪರವಾನಗಿ",
-	"bs-insertfile-categories": "ವರ್ಗೊಲು"
+	"bs-insertfile-nstextfile": "ಕಡತೊ"
 }

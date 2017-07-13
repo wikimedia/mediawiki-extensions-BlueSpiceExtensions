@@ -30,6 +30,7 @@
 	"bs-interwikilink-select-a-prefix": "Choose prefix",
 	"bs-interwikilinks-link-edited": "The interwiki link has been edited",
 	"apihelp-bs-interwikilinks-tasks-description": "Provides the tasks for the extension InterWikiLinks.",
+	"apihelp-bs-interwikilinks-tasks-summary": "Provides the tasks for the extension InterWikiLinks.",
 	"action-interwikilinks-viewspecialpage":"view the specialpage \"{{int:bs-interwikilinks-label}}\"",
 	"interwikilinks":"Interwiki links"
 }

@@ -4,5 +4,6 @@
 			"StanProg"
 		]
 	},
-	"bs-smartlist-no-entries": "Не бяха открити резултати."
+	"bs-smartlist-no-entries": "Не бяха открити резултати.",
+	"bs-smartlist-pref-namespaces": "Именни пространства:"
 }

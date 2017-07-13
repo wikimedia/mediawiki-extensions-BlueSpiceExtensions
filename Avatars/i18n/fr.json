@@ -3,14 +3,15 @@
 		"authors": [
 			"Constructeur",
 			"Gomoko",
-			"Wladek92"
+			"Wladek92",
+			"Urhixidur"
 		]
 	},
 	"prefs-avatars": "Avatars",
 	"bs-avatars-desc": "Fournit des images de l’utilisateur génériques et individuelles",
 	"bs-avatars-pref-generator": "Générateur :",
 	"bs-avatars-pref-defaultsize": "Taille par défaut en pixel :",
-	"bs-avatars-upload-complete": "L’image a été téléchargée.",
+	"bs-avatars-upload-complete": "L’image a été téléversée.",
 	"bs-avatars-generate-complete": "Un nouvel avatar a été généré.",
 	"bs-avatars-upload-title": "Modifier la photo du profil",
 	"bs-avatars-upload-label": "Photo",
@@ -23,5 +24,6 @@
 	"bs-avatars-set-userimage-saved": "L’image de l’utilisateur a été enregistrée.",
 	"bs-avatars-file-upload-fieldset-title": "Import de l’image",
 	"bs-avatars-auto-generate-fieldset-title": "Avatar auto-généré",
-	"apihelp-bs-avatars-tasks-description": "Chargement, génération et installation des avatars utilisateur"
+	"apihelp-bs-avatars-tasks-description": "Chargement, génération et installation des avatars utilisateur",
+	"apihelp-bs-avatars-tasks-summary": "Téléversement, génération et initialisation des configuration des avatars utilisateur"
 }

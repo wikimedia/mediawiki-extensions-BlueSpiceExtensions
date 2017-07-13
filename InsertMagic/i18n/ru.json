@@ -5,7 +5,8 @@
 			"Alexandr Efremov",
 			"Striking Blue",
 			"Kaganer",
-			"Redredsonia"
+			"Redredsonia",
+			"Facenapalm"
 		]
 	},
 	"bs-insertmagic-desc": "Добавляет диалоговое окно, позволяющее вставлять магические слова и теги",
@@ -68,5 +69,9 @@
 	"bs-insertmagic-type-quickaccess": "Быстрый доступ",
 	"bs-insertmagic-label-first": "1. Выберите метку или волшебное слово",
 	"bs-insertmagic-label-second": "2. Изменить код",
-	"bs-insertmagic-label-desc": "Описание"
+	"bs-insertmagic-label-desc": "Описание",
+	"bs-insertmagic-label-examples": "Примеры",
+	"bs-insertmagic-label-see-also": "См. также",
+	"apihelp-bs-insertmagic-data-store-description": "Перечисление всех элементов диалога InsertMagic",
+	"apihelp-bs-insertmagic-data-store-summary": "Перечисление всех элементов диалога InsertMagic"
 }

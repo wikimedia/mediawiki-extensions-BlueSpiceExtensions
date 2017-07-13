@@ -1,6 +1,6 @@
 {
 	"name": "ShoutBox",
-	"version": "2.27.1",
+	"version": "2.27.2",
 	"url": "https://help.bluespice.com/index.php/Shoutbox",
 	"author": [
 		"Karl Waldmannstetter",
@@ -73,7 +73,8 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "ShoutBox::getSchemaUpdates",
-		"BSUsageTrackerRegisterCollectors": "ShoutBox::onBSUsageTrackerRegisterCollectors"
+		"BSUsageTrackerRegisterCollectors": "ShoutBox::onBSUsageTrackerRegisterCollectors",
+		"UnitTestsList": "ShoutBox::onUnitTestsList"
 	},
 	"callback": "ShoutBox::onRegistration",
 	"manifest_version": 1

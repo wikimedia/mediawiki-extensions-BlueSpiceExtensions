@@ -3,7 +3,8 @@
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.biz>",
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Mglaser"
 		]
 	},
 	"bs-insertmagic-desc": "Ergänzt einen Dialog, der das Einfügen von magischen Wörtern und Tags erlaubt.",
@@ -59,7 +60,7 @@
 	"bs-insertmagic-nowiki": "Wiki Text von der Umwandlung ausschließen.",
 	"bs-insertmagic-noinclude": "Alles zwischen <code>&lt;noinclude&gt;</code> und <code>&lt;/noinclude&gt;</code> wird nur bei direkter Ansicht angezeigt, der Text wird nicht eingefügt oder ersetzt.",
 	"bs-insertmagic-includeonly": "Das Gegenteil von <code>&lt;noinclude&gt;</code>.",
-	"bs-insertmagic-dlg-title": "Magisches Wort oder Tag einfügen",
+	"bs-insertmagic-dlg-title": "Magisches Wort oder Tag einfügen / bearbeiten",
 	"bs-insertmagic-type-tags": "Tags",
 	"bs-insertmagic-type-variables": "Variablen",
 	"bs-insertmagic-type-switches": "Schalter",

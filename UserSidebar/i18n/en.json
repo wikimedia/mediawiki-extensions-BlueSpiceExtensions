@@ -12,6 +12,7 @@
 	"bs-usersidebar-tab-globalactions": "Global actions",
 	"bs-usersidebar-globalactionswidget-title": "Global actions",
 	"apihelp-sidebar-description": "Returns the HTML contents of the user sidebar",
+	"apihelp-sidebar-summary": "Returns the HTML contents of the user sidebar",
 	"apihelp-sidebar-param-sidebar": "Whether to get the Wiki sidebar",
 	"apihelp-sidebar-param-usersidebar": "Whether to get the Focus sidebar",
 	"apihelp-sidebar-param-format": "Format of output data",

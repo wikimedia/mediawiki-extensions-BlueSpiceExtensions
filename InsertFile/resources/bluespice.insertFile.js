@@ -7,7 +7,11 @@ $(document).on( 'click', '#bs-editbutton-insertfile', function( e ){
 		BS.InsertFile.FileDialog.on( 'cancel', bs.util.selection.reset );
 		BS.InsertFile.FileDialog.on( 'ok', function( dialog, data ) {
 			var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
-			data.nsText = formattedNamespaces[bs.ns.NS_MEDIA];
+			if( data.nsText == 'media' ) {
+				data.nsText = formattedNamespaces[bs.ns.NS_MEDIA];
+			} else {
+				data.nsText = formattedNamespaces[bs.ns.NS_FILE];
+			}
 			data.caption = data.displayText;
 			delete( data.src );
 			var wikiLink = new bs.wikiText.Link( data );
@@ -20,6 +24,7 @@ $(document).on( 'click', '#bs-editbutton-insertfile', function( e ){
 		if( selection !== '' ) {
 			var checkIsWikiLink = selection.match(/\[\[.*?\]\]/);
 			var wikiLink = new bs.wikiText.Link( selection );
+			var wikiLinkNs = wikiLink.getNsId();
 
 			if( checkIsWikiLink === null ){
 				data = {
@@ -28,11 +33,12 @@ $(document).on( 'click', '#bs-editbutton-insertfile', function( e ){
 					caption: selection //Same as getDisplayText()
 				};
 			}
-			else if( wikiLink.getNsId() === bs.ns.NS_MEDIA ) {
+			else if( wikiLinkNs === bs.ns.NS_MEDIA || wikiLinkNs === bs.ns.NS_FILE ) {
 				data = {
 					title: wikiLink.getTitle(),
 					displayText: wikiLink.getDisplayText(),
-					caption: wikiLink.getCaption() //Same as getDisplayText()
+					caption: wikiLink.getCaption(), //Same as getDisplayText()
+					nsText: wikiLinkNs === bs.ns.NS_MEDIA ? "media" : "file"
 				};
 			}
 			else {
@@ -61,7 +67,11 @@ $(document).on( 'click', '#bs-editbutton-insertimage', function( e ){
 		BS.InsertFile.ImageDialog.on( 'cancel', bs.util.selection.reset );
 		BS.InsertFile.ImageDialog.on( 'ok',function( dialog, data ) {
 			var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
-			data.nsText = formattedNamespaces[bs.ns.NS_IMAGE];
+			if( data.nsText == 'media' ) {
+				data.nsText = formattedNamespaces[bs.ns.NS_MEDIA];
+			} else {
+				data.nsText = formattedNamespaces[bs.ns.NS_IMAGE];
+			}
 			delete( data.imagename ); //Not recognized by wikiText.Link
 			delete( data.src );
 			if( data.align === 'no-align' )
@@ -75,7 +85,7 @@ $(document).on( 'click', '#bs-editbutton-insertimage', function( e ){
 		var selection = bs.util.selection.save();
 		if( selection !== '' ) {
 			var wikiLink = new bs.wikiText.Link( selection );
-			if( wikiLink.getNsId() !== bs.ns.NS_IMAGE ) {
+			if( wikiLink.getNsId() !== bs.ns.NS_IMAGE && wikiLink.getNsId() !== bs.ns.NS_MEDIA ) {
 				bs.util.alert(
 					'bs-insertfile-selection-alert',
 					{
@@ -85,6 +95,7 @@ $(document).on( 'click', '#bs-editbutton-insertimage', function( e ){
 				return;
 			}
 			data = wikiLink.getRawProperties();
+			data.nsText = wikiLink.getNsId()  === bs.ns.NS_MEDIA ? "media" : "file";
 		}
 		if( data.align == '' && data.none == false ) {
 			data.align = 'no-align';
@@ -178,6 +189,14 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 				else {
 					params.border = 'false';
 				}
+			} else if( image.nodeName.toLowerCase() === 'a' ) {
+				var data = bs.util.makeAttributeObject( image );
+				params = bs.util.unprefixDataAttributeObject(data);
+				params.imagename = params.title;
+				var href = image.getAttribute( 'href' );
+				var prefixedTitle = decodeURIComponent( href.replace( /^bs:\/\//i, '' ) );
+				var wikiLink = new bs.wikiText.Link( '[['+prefixedTitle+']]');
+				params.nsText = wikiLink.getNsId() === bs.ns.NS_MEDIA ? "media" : "file"
 			}
 
 			Ext.require('BS.InsertFile.ImageDialog', function(){
@@ -187,8 +206,11 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					editor.selection.moveToBookmark(bookmark);
 					var imgAttrs = this.plugins.bswikicode.makeDefaultImageAttributesObject();
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
-					//Manually prefix with NS_IMAGE. I wonder if this should
-					//be done within the dialog.
+
+					var nsText = formattedNamespaces[bs.ns.NS_IMAGE];
+					if( data.nsText == 'media' ) {
+						nsText = formattedNamespaces[bs.ns.NS_MEDIA];
+					}
 					data.imagename = formattedNamespaces[bs.ns.NS_IMAGE]+':'+data.imagename;
 					data.mwborder = data.border;
 					var classAddition = '';
@@ -236,16 +258,35 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 
 					var dataAttrs = bs.util.makeDataAttributeObject( data );
 					$.extend(imgAttrs, dataAttrs);
-					var newImgNode = null;
-					if( image.nodeName.toLowerCase() === 'img' ) {
-						newImgNode = this.dom.create( 'img', imgAttrs );
-						this.dom.replace(newImgNode, image);
-						//Place cursor to end
-						this.selection.select(newImgNode, false);
+					var newNode = null;
+					var newNodeHTML = null;
+					var sourceNodeName = image.nodeName.toLowerCase();
+					var oldNode = null;
+					if( sourceNodeName === 'img' || sourceNodeName === 'a' ) {
+						oldNode = image;
+					}
+
+					if( nsText === formattedNamespaces[bs.ns.NS_MEDIA] ) {
+						var prefixedTitle = nsText + ':' + data.title;
+						var anchorAttrs = {
+							'title': prefixedTitle,
+							'href': prefixedTitle,
+							'class': 'internal bs-internal-link',
+							'data-bs-type' : 'internal_link'
+						};
+						newNode = this.dom.create( 'a', anchorAttrs, prefixedTitle );
+						newNodeHTML = this.dom.createHTML( 'a', anchorAttrs, data.imagename );
 					} else {
-						newImgNode = this.dom.createHTML( 'img', imgAttrs );
-						//this.selection.setContent(newImgNode);
-						editor.insertContent(newImgNode);
+						newNode = this.dom.create( 'img', imgAttrs );
+						newNodeHTML = this.dom.createHTML( 'img', imgAttrs );
+					}
+
+					if( oldNode ) {
+						this.dom.replace( newNode, oldNode );
+						//Place cursor to end
+						this.selection.select( newNode, false );
+					} else {
+						editor.insertContent( newNodeHTML );
 					}
 
 					this.selection.collapse(false);
@@ -281,7 +322,8 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 				params = {
 					title: wikiLink.getTitle(),
 					displayText: anchor.getAttribute( 'title' ),
-					caption:     anchor.getAttribute( 'title' )
+					caption:     anchor.getAttribute( 'title' ),
+					nsText: wikiLink.getNsId() === bs.ns.NS_MEDIA ? "media" : "file"
 				};
 			}
 
@@ -292,6 +334,9 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 					editor.selection.moveToBookmark(bookmark);
 					var formattedNamespaces = mw.config.get('wgFormattedNamespaces');
 					var nsText = formattedNamespaces[bs.ns.NS_MEDIA];
+					if( data.nsText == 'file' ) {
+						nsText = formattedNamespaces[bs.ns.NS_FILE];
+					}
 					var prefixedTitle = nsText + ':' + data.title;
 					var newAnchor = null;
 					var displayText = data.displayText;

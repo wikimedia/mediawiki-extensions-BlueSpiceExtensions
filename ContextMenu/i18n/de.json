@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Tobias Weichart<weichart@hallowelt.biz>",
-			"Robert Vogel <vogel@hallowelt.biz>"
+			"Robert Vogel <vogel@hallowelt.biz>",
+			"Metalhead64"
 		]
 	},
 	"bs-contextmenu-desc": "Zeigt für bestimmte Links ein Kontextmenü an",
@@ -21,5 +22,6 @@
 	"bs-contextmenu-media-view-page": "Dateibeschreibungsseite und Versionen anzeigen",
 	"bs-contextmenu-user-mail": "E-Mail schreiben",
 	"bs-contextmenu-user-talk": "Eine Nachicht auf der Benutzerdiskussionsseite hinterlassen",
-	"bs-contextmenu-file-download": "Datei herunterladen"
+	"bs-contextmenu-file-download": "Datei herunterladen",
+	"apihelp-bs-contextmenu-tasks-description": "Stellt die Kontextmenüeinträge im Kontext zur Verfügung"
 }

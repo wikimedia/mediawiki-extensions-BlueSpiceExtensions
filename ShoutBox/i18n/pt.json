@@ -34,5 +34,7 @@
 	"bs-shoutbox-notifications-title-message-text": "Foi feita uma menção a si {{GENDER:$1|por}} $1 ($4) numa mensagem na página \"$5.\"\n\nPode visitar a página seguindo este <i>link</i>:\n$3",
 	"bs-shoutbox-notifications-summary": "[[User:$1|$1]] {{GENDER:$1|}}fez menção a si numa mensagem na $3.",
 	"apihelp-bs-shoutbox-tasks-description": "Fornece tarefas comuns para a ShoutBox",
-	"bs-usagetracker-shoutbox": "artigos com entradas na caixa de mensagens"
+	"apihelp-bs-shoutbox-tasks-summary": "Fornece tarefas comuns para a ShoutBox",
+	"bs-usagetracker-shoutbox": "Artigos com entradas na caixa de mensagens",
+	"bs-shoutbox-error-noarticleid": "Não foi fornecido nenhum identificador de artigo."
 }

@@ -12,6 +12,7 @@
 	"bs-usersidebar-tab-globalactions": "全域操作",
 	"bs-usersidebar-globalactionswidget-title": "全域操作",
 	"apihelp-sidebar-description": "返回用户边栏的HTML内容",
+	"apihelp-sidebar-summary": "返回用户边栏的HTML内容",
 	"apihelp-sidebar-param-sidebar": "是否获取Wiki边栏",
 	"apihelp-sidebar-param-usersidebar": "是否获取焦点边栏",
 	"apihelp-sidebar-param-format": "输出数据的格式",

@@ -19,8 +19,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
+ * This file is part of BlueSpice MediaWiki
+ * For further information visit http://www.bluespice.com
  *
  * @author     Marc Reymann <reymann@hallowelt.com>
  * @version    2.23.1
@@ -64,13 +64,23 @@ class Avatars extends BsExtensionMW {
 	 */
 	public static function onRegistration() {
 		global $wgForeignFileRepos;
-		$wgForeignFileRepos[] = array(
-			'class' => 'FSRepo',
-			'name' => 'Avatars',
-			'directory' => BS_DATA_DIR . '/Avatars/',
-			'hashLevels' => 0,
-			'url' => BS_DATA_PATH . '/Avatars',
-		);
+		if ( version_compare( $GLOBALS['wgVersion'], '1.28c', '>' ) ) {
+			$wgForeignFileRepos[] = array(
+				'class' => 'FileRepo',
+				'name' => 'Avatars',
+				'directory' => BS_DATA_DIR . '/Avatars/',
+				'hashLevels' => 0,
+				'url' => BS_DATA_PATH . '/Avatars',
+			);
+		} else {
+			$wgForeignFileRepos[] = array(
+				'class' => 'FSRepo',
+				'name' => 'Avatars',
+				'directory' => BS_DATA_DIR . '/Avatars/',
+				'hashLevels' => 0,
+				'url' => BS_DATA_PATH . '/Avatars',
+			);
+		}
 	}
 
 	/**
@@ -124,10 +134,15 @@ class Avatars extends BsExtensionMW {
 		if( !$oFile || !$oFile->exists() ) {
 			return true;
 		}
+		if( !isset( $aParams['width'] ) ) {
+			$aParams['width'] = $oFile->getWidth();
+		}
 		if( $aParams['width'] > $oFile->getWidth() ) {
 			$aParams['width'] = $oFile->getWidth();
 		}
-
+		if( !isset( $aParams['height'] ) ) {
+			$aParams['height'] = $oFile->getHeight();
+		}
 		if( $aParams['height'] > $oFile->getHeight() ) {
 			$aParams['height'] = $oFile->getHeight();
 		}

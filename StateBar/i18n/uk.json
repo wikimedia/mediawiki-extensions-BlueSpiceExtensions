@@ -15,5 +15,6 @@
 	"bs-statebar-viewtoggler-tooltip": "Показати детальну інформацію",
 	"bs-statebar-switch-description": "Приховує рядок стану цієї сторінки.",
 	"bs-statebar-ajax-nobodyviews": "Інформація відсутня.",
-	"apihelp-bs-statebar-tasks-description": "Забезпечує операції для розширення StateBar"
+	"apihelp-bs-statebar-tasks-description": "Забезпечує операції для розширення StateBar",
+	"apihelp-bs-statebar-tasks-summary": "Забезпечує операції для розширення StateBar"
 }

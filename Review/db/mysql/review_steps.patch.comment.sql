@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_review_steps CHANGE `comment` `revs_comment` VARBINARY( 255 ) NULL DEFAULT NULL;

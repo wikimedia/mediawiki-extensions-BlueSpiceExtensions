@@ -6,19 +6,20 @@
 			"Robby",
 			"Liuxinyu970226",
 			"Leonid Verhovskij <verhovskij@hallowelt.com>",
-			"Beta16"
+			"Beta16",
+			"Mglaser"
 		]
 	},
 	"bs-blog-desc": "Used in [{{canonicalurl:Special:WikiAdmin|mode=ExtensionInfo}} Special:WikiAdmin?mode=ExtensionInfo], description of blog extension",
 	"prefs-blog": "Used in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], headline for blog section in preferences.\n{{Identical|Blog}}",
 	"blog": "Special page name for blog.\n{{Identical|Blog}}",
 	"bs-blog-no-entries": "Text for there are no blog entries.",
-	"bs-blog-comments": "Anchor title for comments.\n{{Identical|Comment}}",
+	"bs-blog-comments": "Text shown for display text and title attribute of the link to the comments section of a blog entry.\n{{Identical|Comment}}",
 	"bs-blog-read-more": "Anchor title for read more\n{{Identical|Read more}}",
 	"bs-blog-trackback": "Anchor title for trackback",
 	"bs-blog-permalink": "Anchor title for permalink.\n{{Identical|Permalink}}",
 	"bs-blog-show-all": "Anchor title for show all entries",
-	"bs-blog-form-inline-text": "input field default text for title ...\n{{Identical|Title}}",
+	"bs-blog-form-inline-text": "Text to be displayed as a hint in the input field that this field is for the title of a blog entry. Goes away when the user clicks the input field to enter a title.\n{{Identical|Title}}",
 	"bs-blog-form-title-text": "Headline for create new blog entry",
 	"bs-blog-form-button-text": "Button label for create.\n{{Identical|Create}}",
 	"bs-blog-blog": "Text for blog.\n{{Identical|Blog}}",

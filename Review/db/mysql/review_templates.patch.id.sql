@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_review_templates CHANGE `id` `revt_id` INT( 10 ) UNSIGNED NOT NULL AUTO_INCREMENT;

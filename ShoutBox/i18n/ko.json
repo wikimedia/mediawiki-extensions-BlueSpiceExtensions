@@ -9,5 +9,7 @@
 	"bs-shoutbox-desc": "자신의 샤우트박스를 넣기 위한 파서 함수를 추가합니다",
 	"bs-shoutbox-confirm-title": "확인",
 	"bs-shoutbox-entermessage": "메시지를 입력하세요.",
-	"apihelp-bs-shoutbox-tasks-description": "ShoutBox의 공통 작업을 제공합니다"
+	"apihelp-bs-shoutbox-tasks-description": "ShoutBox의 공통 작업을 제공합니다",
+	"apihelp-bs-shoutbox-tasks-summary": "ShoutBox의 공통 작업을 제공합니다",
+	"bs-shoutbox-error-noarticleid": "문서 ID가 지정되지 않았습니다."
 }

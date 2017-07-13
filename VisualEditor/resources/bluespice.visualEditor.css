@@ -1,7 +1,7 @@
 /**
  * Stylesheet for Visual Editor
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
 
@@ -72,7 +72,61 @@ td.mceToolbar {
 	position: fixed !important;
 	top: 0px;
 	background-color: #EEE !important;
-	border: 1px solid #BBB !important;
+}
+
+.bs-ve-heading-fixed {
+	position: fixed !important;
+	top: 0px;
+	padding-top: 3px;
+	z-index: 1000;
+}
+
+#bs-ve-editsummary-group,
+#bs-ve-editbtn-group {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#bs-ve-wpSummaryLabel label {
+	display:none;
+}
+
+#bs-ve-wpSummary {
+	height: 18px;
+	margin: 5px;
+	margin-right: 0px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+#bs-ve-wpSave,
+#bs-ve-wpPreview,
+#bs-ve-wpDiff{
+	padding: 1px 5px;
+	margin-top: 5px;
+	margin-left: 5px;
+	text-align: center;
+	cursor: default;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 3px;
+	background-color: rgb(240, 240, 240);
+	font-size: 0.938em;
+}
+
+#bs-ve-wpSave:hover,
+#bs-ve-wpPreview:hover,
+#bs-ve-wpDiff:hover{
+	background-color: #e3e3e3;
+}
+
+#bs-ve-mw-editform-cancel {
+	padding: 5px;
+	font-size: 0.938em;
+	line-height: 2.5em;
 }
 
 #bs-editbutton-visualeditor {
@@ -83,4 +137,8 @@ td.mceToolbar {
 /* reset has layout: http://onhavinglayout.fwpf-webdesign.de/ */
 h1, h2, h3, h4, h5, h6 {
 	overflow: visible !important;
+}
+
+div.mce-menu-item-preview.mce-active {
+	border-left: 5px solid #ffae00;
 }

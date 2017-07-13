@@ -34,6 +34,7 @@
 	"bs-usermanager-groups-more": "… ще",
 	"bs-usermanager-no-self-desysop": "Ви не можете забрати права адміністратора самі в себе.",
 	"apihelp-bs-usermanager-tasks-description": "Забезпечує операції для розширення Checklist",
+	"apihelp-bs-usermanager-tasks-summary": "Забезпечує операції для розширення Checklist",
 	"bs-usermanager-no-self-block": "Ви не можете вимкнути себе.",
 	"bs-usermanager-block-error": "{{GENDER:$1|Користувача|Користувачку}} $1 не вдалося вимкнути.",
 	"bs-usermanager-unblock-error": "{{GENDER:$1|Користувача|Користувачку}} $1 не вдалося увімкнути.",
@@ -58,5 +59,6 @@
 	"bs-usermanager-title-multipleuserselected": "Обрано декілька користувачів",
 	"bs-usermanager-multipleuserselected": "Ви можете змінювати пароль лише для одного користувача водночас",
 	"bs-usermanager-invalid-groups": "Групи є недійсними",
-	"apihelp-bs-usermanager-group-store-description": "Забезпечує API завдань з управління користувачами для BlueSpice."
+	"apihelp-bs-usermanager-group-store-description": "Забезпечує API завдань з управління користувачами для BlueSpice.",
+	"apihelp-bs-usermanager-group-store-summary": "Забезпечує API завдань з управління користувачами для BlueSpice."
 }

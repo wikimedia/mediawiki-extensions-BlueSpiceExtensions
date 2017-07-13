@@ -1,6 +1,6 @@
 {
 	"name": "ArticleInfo",
-	"version": "2.27.1",
+	"version": "2.27.2",
 	"url": "https://help.bluespice.com/index.php/Articleinfo",
 	"author": [
 		"Markus Glaser",
@@ -18,6 +18,9 @@
 		"ArticleInfo": [
 			"i18n"
 		]
+	},
+	"ExtensionMessagesFiles": {
+		"ArticleInfoMagic": "languages/ArticleInfo.i18n.magic.php"
 	},
 	"AutoloadClasses": {
 		"ArticleInfo": "ArticleInfo.class.php",

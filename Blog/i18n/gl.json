@@ -33,5 +33,6 @@
 	"bs-blog-tag-blogtime-desc": "Inserta un selo de tempo autodefinido para mostrar e ordenar as entradas dos blogs. O formato é AAAAMMDDHHmm.",
 	"bs-blog-tag-blogtime-err": "O formato debe ser AAAAMMDDHHmm p. ex. para 12 de xaneiro de 2013 ás 15:43 o selo de tempo debe ser: 201301121543",
 	"bs-tag-blog": "a marca de blog",
-	"action-blog-viewspecialpage": "ver a páxina especial \"{{int:bs-blog-blog}}\""
+	"action-blog-viewspecialpage": "ver a páxina especial \"{{int:bs-blog-blog}}\"",
+	"bs-blog-rss-desc-blog": "Subministro de novas cunha vista global das entradas do blog"
 }

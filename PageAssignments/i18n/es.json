@@ -3,7 +3,9 @@
 		"authors": [
 			"Macofe",
 			"Igv",
-			"Dgstranz"
+			"Dgstranz",
+			"Javiersanp",
+			"Fitoschido"
 		]
 	},
 	"bs-pageassignments-desc": "Permite asignar usuarios o grupos a una página",
@@ -65,5 +67,6 @@
 	"right-pageassignments": "Editar las asignaciones de una página",
 	"bs-usagetracker-pageassignments": "paginas con asignaciones",
 	"apihelp-bs-pageassignable-store-description": "Devuelve la lista de asignados",
-	"apihelp-bs-mypageassignment-store-description": "Devuelve las páginas asignadas al usuario actual"
+	"apihelp-bs-mypageassignment-store-description": "Devuelve las páginas asignadas al usuario actual",
+	"bs-pageassignments-assignee-special-everyone-label": "Cualquiera"
 }

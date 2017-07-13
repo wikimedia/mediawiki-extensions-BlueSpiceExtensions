@@ -19,8 +19,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
+ * This file is part of BlueSpice MediaWiki
+ * For further information visit http://www.bluespice.com
  *
  * @author     Tobias Weichart <weichart@hallowelt.com>
  * @version    2.23.1
@@ -69,13 +69,23 @@ class Flexiskin extends BsExtensionMW {
 	 */
 	public static function onRegistration() {
 		global $wgForeignFileRepos;
-		$wgForeignFileRepos[] = array(
-			'class' => 'FSRepo',
-			'name' => 'Flexiskin',
-			'directory' => BS_DATA_DIR . '/Flexiskin/',
-			'hashLevels' => 0,
-			'url' => BS_DATA_PATH . '/Flexiskin',
-		);
+		if ( version_compare( $GLOBALS['wgVersion'], '1.28c', '>' ) ) {
+			$wgForeignFileRepos[] = array(
+				'class' => 'FileRepo',
+				'name' => 'Flexiskin',
+				'directory' => BS_DATA_DIR . '/Flexiskin/',
+				'hashLevels' => 0,
+				'url' => BS_DATA_PATH . '/Flexiskin',
+			);
+		} else {
+			$wgForeignFileRepos[] = array(
+				'class' => 'FSRepo',
+				'name' => 'Flexiskin',
+				'directory' => BS_DATA_DIR . '/Flexiskin/',
+				'hashLevels' => 0,
+				'url' => BS_DATA_PATH . '/Flexiskin',
+			);
+		}
 	}
 
 	public function runPreferencePlugin( $sAdapterName, BsConfig $oVariable ) {

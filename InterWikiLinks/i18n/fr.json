@@ -28,6 +28,7 @@
 	"bs-interwikilink-select-a-prefix": "Choisir un préfixe",
 	"bs-interwikilinks-link-edited": "Le lien interwiki a été modifié",
 	"apihelp-bs-interwikilinks-tasks-description": "Fournit les tâches pour l’extension InterWikiLinks.",
+	"apihelp-bs-interwikilinks-tasks-summary": "Fournit les tâches pour l’extension InterWikiLinks.",
 	"action-interwikilinks-viewspecialpage": "afficher la page spéciale \"{{int:bs-interwikilinks-label}}\"",
 	"interwikilinks": "Liens interwiki"
 }

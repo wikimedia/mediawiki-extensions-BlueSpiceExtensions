@@ -10,6 +10,7 @@
 	"bs-visualeditor-desc": "미디어위키를 위한 시각편집기",
 	"prefs-visualeditor": "시각편집기",
 	"apihelp-bs-visualeditor-tasks-description": "BlueSpice 시각편집기 확장 기능을 위한 작업을 제공합니다.",
+	"apihelp-bs-visualeditor-tasks-summary": "BlueSpice 시각편집기 확장 기능을 위한 작업을 제공합니다.",
 	"bs-visualeditor-editbutton-hint": "시각편집기",
 	"bs-visualeditor-pref-disablens": "다음 이름공간에서 비활성화:",
 	"bs-visualeditor-pref-use": "WYISIWYG 편집기를 기본으로 사용",
@@ -34,11 +35,6 @@
 	"bs-visualeditor-bsactions-signature": "서명",
 	"bs-visualeditor-bsactions-save": "저장",
 	"bs-visualeditor-bsactions-headings": "문단 제목",
-	"bs-visualeditor-bsactions-paragraph": "절",
-	"bs-visualeditor-bsactions-heading2": "2단계 문단 제목",
-	"bs-visualeditor-bsactions-heading3": "3단계 문단 제목",
-	"bs-visualeditor-bsactions-heading4": "4단계 문단 제목",
-	"bs-visualeditor-bsactions-heading5": "5단계 문단 제목",
-	"bs-visualeditor-bsactions-heading6": "6단계 문단 제목",
-	"bs-visualeditor-switch-noeditor-desc": "이 문서에서 시각편집기를 비활성화합니다."
+	"bs-visualeditor-switch-noeditor-desc": "이 문서에서 시각편집기를 비활성화합니다.",
+	"bs-visualeditor-bsactions-tablestyles": "표 스타일"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Cwlin0416",
-			"LNDDYL"
+			"LNDDYL",
+			"Corainn"
 		]
 	},
 	"prefs-readers": "讀者",
@@ -16,5 +17,6 @@
 	"bs-readers-header-username": "使用者名稱",
 	"bs-readers-header-readerspath": "讀者",
 	"bs-readers-header-ts": "日期",
-	"bs-readers-header-page": "頁面"
+	"bs-readers-header-page": "頁面",
+	"apihelp-bs-readers-data-store-summary": "取得特定頁面的讀者訊息。"
 }

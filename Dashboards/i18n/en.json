@@ -20,7 +20,10 @@
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Wiki page",
 	"apihelp-bs-dashboard-task-param-dc": "Cache control parameter. Used by ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Lists all available portlets",
+	"apihelp-bs-dashboards-store-summary": "Lists all available portlets",
 	"apihelp-bs-dashboards-tasks-description": "Saves dashboard configuration",
+	"apihelp-bs-dashboards-tasks-summary": "Saves dashboard configuration",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Returns content for some dashboard widgets",
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Returns content for some dashboard widgets",
 	"action-dashboards-viewspecialpage-userdashboard":"view the special page \"{{int:userdashboard}}\""
 }

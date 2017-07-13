@@ -1,6 +1,6 @@
 -- Database definition for statistics of ExtendedSearch
 --
--- Part of BlueSpice for MediaWiki
+-- Part of BlueSpice MediaWiki
 --
 -- @author     Mathias Scheer <scheer@hallowelt.com>
 -- @author     Stephan Muggli <muggli@hallowelt.com>

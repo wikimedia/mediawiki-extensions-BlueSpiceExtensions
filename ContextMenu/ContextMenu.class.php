@@ -2,7 +2,7 @@
 
 
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: ContextMenu
  * Description: Provides context menus for various MediaWiki links
  * Authors: Tobias Weichart, Robert Vogel
@@ -24,7 +24,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * For further information visit http://www.blue-spice.org
+ * For further information visit http://www.bluespice.com
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions

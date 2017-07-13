@@ -20,5 +20,7 @@
 	"bs-contextmenu-media-view-page": "Ver la páxina de descripción del ficheru ya'l historial del ficheru",
 	"bs-contextmenu-user-mail": "Unviar un corréu",
 	"bs-contextmenu-user-talk": "Dexar un mensaxe na páxina d'alderique",
-	"bs-contextmenu-file-download": "Descargar el ficheru"
+	"bs-contextmenu-file-download": "Descargar el ficheru",
+	"apihelp-bs-contextmenu-tasks-description": "Ufre los elementos del menú contestual nel contestu",
+	"apihelp-bs-contextmenu-tasks-summary": "Ufre los elementos del menú contestual nel contestu"
 }

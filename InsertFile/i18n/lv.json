@@ -4,5 +4,7 @@
 			"Papuass"
 		]
 	},
-	"bs-insertfile-enable-align": "Iespējot"
+	"bs-insertfile-enable-align": "Iespējot",
+	"bs-insertfile-nstext": "Saites veids",
+	"bs-insertfile-nstextfile": "Fails"
 }

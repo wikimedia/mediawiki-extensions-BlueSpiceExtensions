@@ -21,5 +21,6 @@
 	"bs-rssstandards-link-text-watch": "Изменения за {{PLURAL:$1|последний день|последние $1 дня|последние $1 дней}}.",
 	"bs-rssstandards-desc-ns": "Лента с обзором последних изменений в пространстве имён.",
 	"bs-rssstandards-changes-from": "Правки {{GENDER:$1|участника|учасьницы}}: $1",
-	"apihelp-bs-rss-standards-pages-store-description": "Возвращает список доступных страниц для RSSFeeder"
+	"apihelp-bs-rss-standards-pages-store-description": "Возвращает список доступных страниц для RSSFeeder",
+	"apihelp-bs-rss-standards-pages-store-summary": "Вернуть список доступных страниц для RSSFeeder"
 }

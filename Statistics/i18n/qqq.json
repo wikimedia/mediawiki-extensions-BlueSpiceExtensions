@@ -61,7 +61,10 @@
 	"bs-statistics-portlet-numberofarticlesdesc": "Used in [[Special:AdminDashboard]] and [[Special:UserDashboard]], description for number of articles.",
 	"bs-statistics-portletconfig-periodday": "Option in [[Special:AdminDashboard]] and [[Special:UserDashboard]], label for yesterday\n{{Identical|Yesterday}}",
 	"apihelp-bs-statistics-tasks-description": "Describes an API endpoint that provides common tasks for Statistics\n{{doc-apihelp-description|bs-statistics-tasks}}",
+	"apihelp-bs-statistics-tasks-summary": "Describes an API endpoint that provides common tasks for Statistics\n{{doc-apihelp-summary|bs-statistics-tasks}}",
 	"apihelp-bs-statistics-available-diagrams-store-description": "Describes an API endpoint that provides a store with available diagrams\n{{doc-apihelp-description|bs-statistics-available-diagrams-store}}",
+	"apihelp-bs-statistics-available-diagrams-store-summary": "Describes an API endpoint that provides a store with available diagrams\n{{doc-apihelp-summary|bs-statistics-available-diagrams-store}}",
 	"apihelp-bs-statistics-search-options-store-description": "Describes an API endpoint that provides a store with available search options\n{{doc-apihelp-description|bs-statistics-search-options-store}}",
+	"apihelp-bs-statistics-search-options-store-summary": "Describes an API endpoint that provides a store with available search options\n{{doc-apihelp-summary|bs-statistics-search-options-store}}",
 	"right-statistic-viewspecialpage": "{{doc-right|statistic-viewspecialpage}}"
 }

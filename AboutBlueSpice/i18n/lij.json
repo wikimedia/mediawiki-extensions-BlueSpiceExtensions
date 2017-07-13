@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Giromin Cangiaxo"
+		]
+	},
+	"bs-aboutbluespice-desc": "Informaçioin sciu BlueSpice.",
+	"bs-aboutbluespice-about-bluespice": "Rigoardo BlueSpice",
+	"aboutbluespice": "Riguardo BlueSpice",
+	"prefs-aboutbluespice": "Riguardo BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Mostra ingancio \"{{int:bs-aboutbluespice-about-bluespice}}\" in çimma a-o menù prinçipâ",
+	"action-aboutbluespice-viewspecialpage": "vixualizza a paggina speciale \"{{int:bs-aboutbluespice-about-bluespice}}\""
+}

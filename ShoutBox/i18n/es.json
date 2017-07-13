@@ -30,5 +30,6 @@
 	"echo-category-title-bs-shoutbox-mention-cat": "Notificación de mención en un grito",
 	"bs-shoutbox-notifications-title-message-subject": "Te han mencionado",
 	"bs-shoutbox-notifications-title-message-text": "$4 te ha {{GENDER:$1|mencionado}} en la página \"$5\".\n\nPuedes visitar la página siguiendo este enlace:\n$3.",
-	"bs-usagetracker-shoutbox": "artículos con entradas shoutbox"
+	"bs-usagetracker-shoutbox": "artículos con entradas shoutbox",
+	"bs-shoutbox-error-noarticleid": "No se ha proporcionado el identificador de artículo."
 }

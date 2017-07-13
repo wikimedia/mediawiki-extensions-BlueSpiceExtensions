@@ -9,7 +9,7 @@
 
  * @package    Bluespice_Extensions
  * @subpackage VisualEditor
- * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2017 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
@@ -18,7 +18,7 @@
 /*global mw:true */
 /*global BlueSpice:true */
 
-var BsActions = function() {
+var BsActions = function(editor, url) {
 	"use strict";
 
 	var
@@ -28,10 +28,24 @@ var BsActions = function() {
 	function handleVisibilityState(ctrl, selector) {
 		var editor = tinyMCE.activeEditor;
 		function bindStateListener() {
-			ctrl.visible(editor.dom.getParent(editor.selection.getStart(), selector));
-
+			// do not use the visible command, as it messes with bar layot
+			//ctrl.visible(state);
+			var displayStyle = 'inline-block';
+			if ( ctrl.type == 'menuitem' ) {
+				displayStyle = 'block';
+			}
+			var state = editor.dom.getParent(editor.selection.getStart(), selector)
+			if ( state ) {
+				ctrl.getEl().style.display = displayStyle;
+			} else {
+				ctrl.getEl().style.display = 'none';
+			}
 			editor.selection.selectorChanged(selector, function(state) {
-				ctrl.visible(state);
+				if ( state ) {
+					ctrl.getEl().style.display = displayStyle;
+				} else {
+					ctrl.getEl().style.display = 'none';
+				}
 			});
 		}
 
@@ -43,7 +57,26 @@ var BsActions = function() {
 	}
 
 	function postRenderVisibilityTable() {
-		handleVisibilityState(this, 'TABLE');
+		handleVisibilityState(this, 'table');
+	}
+
+	function postRenderMenuItem() {
+		var self = this;
+
+		self.parent().on('show', function () {
+			var formatName, command;
+
+			formatName = self.settings.format;
+			if (formatName) {
+				self.disabled(!editor.formatter.canApply(formatName));
+				self.active(editor.formatter.match(formatName));
+			}
+
+			command = self.settings.cmd;
+			if (command) {
+				self.active(editor.queryCommandState(command));
+			}
+		});
 	}
 
 	function postRenderSave() {
@@ -210,6 +243,24 @@ var BsActions = function() {
 		return _editor;
 	};
 
+	this.makeMenuItems = function( itemlist ) {
+		itemlist = itemlist || [];
+		var menuItems = [];
+		for ( var i = 0; i < itemlist.length; i++ ) {
+			var item_format = itemlist[i];
+			var item_title = item_format.title;
+			// if the title contains a -, we assume it's a MW i18n key
+			if ( item_title.indexOf( '-' ) !== -1 ) {
+				item_title = mw.message( item_title ).plain()
+			}
+			menuItems.push({
+				text: item_title,
+				format: item_format.format
+			});
+		};
+		return menuItems;
+	}
+
 	this.init = function(ed, url) {
 		var buttons, commands, menus;
 
@@ -217,67 +268,11 @@ var BsActions = function() {
 		_currentImagePath = mw.config.get('wgScriptPath')
 			+ '/extensions/BlueSpiceExtensions/VisualEditor/resources/tiny_mce_plugins/bsactions/images';
 
-		var headingsMenuItems = [];
+		var headingsMenuItems = this.makeMenuItems( ed.settings.bs_heading_formats );
+		var tableFunctionMenuItems = this.makeMenuItems( ed.settings.bs_table_function_formats );
+		var tableStylesMenuItems = this.makeMenuItems( ed.settings.bs_table_formats );
 
-		headingsMenuItems.push({
-			text: mw.message('bs-visualeditor-bsactions-paragraph').plain(),
-			onclick : function() { ed.execCommand('FormatBlock', false, 'p'); }
-		});
-
-		headingsMenuItems.push({
-			text: mw.message('bs-visualeditor-bsactions-heading2').plain(),
-			onclick : function() { ed.execCommand('FormatBlock', false, 'h2'); }
-		});
-
-		headingsMenuItems.push({
-			text: mw.message('bs-visualeditor-bsactions-heading3').plain(),
-			onclick : function() { ed.execCommand('FormatBlock', false, 'h3'); }
-		});
-
-		headingsMenuItems.push({
-			text: mw.message('bs-visualeditor-bsactions-heading4').plain(),
-			onclick : function() { ed.execCommand('FormatBlock', false, 'h4'); }
-		});
-
-		headingsMenuItems.push({
-			text: mw.message('bs-visualeditor-bsactions-heading5').plain(),
-			onclick : function() { ed.execCommand('FormatBlock', false, 'h5'); }
-		});
-
-		headingsMenuItems.push({
-			text: mw.message('bs-visualeditor-bsactions-heading6').plain(),
-			onclick : function() { ed.execCommand('FormatBlock', false, 'h6'); }
-		});
-
-		menus = [{
-				menuId: 'bstableprops',
-				menuConfig: {
-					text: 'Table properties',
-					context: 'table',
-					onPostRender:  postRenderVisibilityTable,
-					cmd: 'mceTableProps'
-				}
-			}, {
-				menuId: 'bsdeletetable',
-				menuConfig: {
-					text: 'Delete table',
-					context: 'table',
-					onPostRender:  postRenderVisibilityTable,
-					cmd: 'mceTableDelete'
-				}
-			}, {
-				menuId: 'bscell',
-				menuItem: ed.menuItems['cell'],
-				menuOnPostRender: postRenderVisibilityTable
-			}, {
-				menuId: 'bsrow',
-				menuItem: ed.menuItems['row'],
-				menuOnPostRender: postRenderVisibilityTable
-			}, {
-				menuId: 'bscolumn',
-				menuItem: ed.menuItems['column'],
-				menuOnPostRender: postRenderVisibilityTable
-			}];
+		menus = [];
 
 		//HINT: TinyMCE I18N seems not wo work. Using MediaWiki I18N
 		buttons = [{
@@ -337,7 +332,8 @@ var BsActions = function() {
 				buttonConfig: {
 					title: 'Insert row before',
 					cmd: 'mceTableInsertRowBefore',
-					image: _currentImagePath + '/hwtableinsertrowbefore.gif',
+					icon: 'tableinsertrowbefore',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -345,7 +341,8 @@ var BsActions = function() {
 				buttonConfig: {
 					title: 'Insert row after',
 					cmd: 'mceTableInsertRowAfter',
-					image: _currentImagePath + '/hwtableinsertrowafter.gif',
+					icon: 'tableinsertrowafter',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -353,7 +350,8 @@ var BsActions = function() {
 				buttonConfig: {
 					title: 'Delete row',
 					cmd: 'mceTableDeleteRow',
-					image: _currentImagePath + '/hwtabledeleterow.gif',
+					icon: 'tabledeleterow',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -361,7 +359,8 @@ var BsActions = function() {
 				buttonConfig: {
 					title: 'Insert column before',
 					cmd: 'mceTableInsertColBefore',
-					image: _currentImagePath + '/hwtableinsertcolumnbefore.gif',
+					icon: 'tableinsertcolbefore',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -369,7 +368,8 @@ var BsActions = function() {
 				buttonConfig: {
 					title: 'Insert column after',
 					cmd: 'mceTableInsertColAfter',
-					image: _currentImagePath + '/hwtableinsertcolumnafter.gif',
+					icon: 'tableinsertcolafter',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -377,7 +377,53 @@ var BsActions = function() {
 				buttonConfig: {
 					title: 'Delete column',
 					cmd: 'mceTableDeleteCol',
-					image: _currentImagePath + '/hwtabledeletecolumn.gif',
+					icon: 'tabledeleterow',
+					hidden: true,
+					onPostRender: postRenderVisibilityTable
+				}
+			}, {
+				buttonId: 'bstablefunctions', // name to add to toolbar button list
+				buttonConfig: {
+					title : mw.message( 'bs-visualeditor-bsactions-tablefunctions' ).plain(), // tooltip text seen on mouseover
+					image: _currentImagePath + '/hwtablefunctions.png',
+					menu : {
+						type: 'menu',
+						items: tableFunctionMenuItems,
+						itemDefaults: {
+							preview: true,
+							onPostRender: postRenderMenuItem,
+							onclick : function() {
+								ed.execCommand( 'mceToggleFormat', false, this.settings.format );
+							}
+						}
+					},
+					type: 'menubutton',
+					hidden: true,
+					onPostRender: postRenderVisibilityTable
+				}
+			}, {
+				buttonId: 'bstablestyles', // name to add to toolbar button list
+				buttonConfig: {
+					title : mw.message('bs-visualeditor-bsactions-tablestyles').plain(), // tooltip text seen on mouseover
+					image: _currentImagePath + '/hwtablestyles.png',
+					menu : {
+						type: 'menu',
+						items: tableStylesMenuItems,
+						itemDefaults: {
+							preview: true,
+							onPostRender: postRenderMenuItem,
+							onclick : function() {
+								// Table styles are mutually exclusive. So we remove all table styles first
+								for ( var i = 0; i < ed.settings.bs_table_formats.length; i++ ) {
+									var table_format = ed.settings.bs_table_formats[i];
+									ed.formatter.remove( table_format.format );
+								};
+								ed.execCommand( 'mceToggleFormat', false, this.settings.format );
+							}
+						},
+					},
+					type: 'menubutton',
+					hidden: true,
 					onPostRender: postRenderVisibilityTable
 				}
 			}, {
@@ -385,7 +431,22 @@ var BsActions = function() {
 				buttonConfig: {
 					title : mw.message('bs-visualeditor-bsactions-headings').plain(), // tooltip text seen on mouseover
 					text : mw.message('bs-visualeditor-bsactions-headings').plain(),
-					menu : headingsMenuItems,
+					menu : {
+						type: 'menu',
+						items: headingsMenuItems,
+						itemDefaults: {
+							preview: true,
+							textStyle: function () {
+								if ( this.settings.format ) {
+									return editor.formatter.getCssText( this.settings.format );
+								}
+							},
+							onPostRender: postRenderMenuItem,
+							onclick : function() {
+								ed.execCommand( 'FormatBlock', false, this.settings.format );
+							}
+						}
+					},
 					type: 'menubutton'
 				}
 			}];

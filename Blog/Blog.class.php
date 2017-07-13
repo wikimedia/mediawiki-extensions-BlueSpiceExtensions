@@ -18,8 +18,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
+ * This file is part of BlueSpice MediaWiki
+ * For further information visit http://www.bluespice.com
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @author     Sebastian Ulbricht
@@ -93,7 +93,18 @@ class Blog extends BsExtensionMW {
 	 * extension.json callback
 	 */
 	public static function onRegistration() {
-		BsExtensionManager::registerNamespace( 'Blog', 2 );
+		global $wgExtraNamespaces, $bsgSystemNamespaces;
+		if( !defined( 'NS_BLOG' ) ) {
+			define( 'NS_BLOG', 1502 );
+			$wgExtraNamespaces[NS_BLOG] = 'Blog';
+			$bsgSystemNamespaces[1502] = 'NS_BLOG';
+		}
+
+		if( !defined( 'NS_BLOG_TALK' ) ) {
+			define( 'NS_BLOG_TALK', 1503 );
+			$wgExtraNamespaces[NS_BLOG_TALK] = 'Blog_talk';
+			$bsgSystemNamespaces[1503] = 'NS_BLOG_TALK';
+		}
 	}
 
 	/**
@@ -103,20 +114,11 @@ class Blog extends BsExtensionMW {
 	 * @return boolean - always true
 	 */
 	public function onBSTopMenuBarCustomizerRegisterNavigationSites( &$aNavigationSites ) {
-		global $wgScriptPath;
-
-		// Reset all other active markers if Blog is active
-		if ( BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ) ) {
-			for ($i = 0; $i < sizeof($aNavigationSites); $i++ ) {
-				$aNavigationSites[$i]["active"] = false;
-			}
-		}
-
 		$aNavigationSites[] = array(
 			'id' => 'nt-blog',
 			'href' => SpecialPage::getTitleFor( 'Blog' )->getLinkURL(),
-			'active' => BsExtensionManager::isContextActive( 'MW::Blog::ShowBlog' ),
-			'text' => wfMessage('bs-blog-blog')->plain(),
+			'active' => false, //Flag is not properly evaluated anyways. 'TopMenuBarCustomizer' does heavy caching.
+			'text' => wfMessage( 'bs-blog-blog' )->plain(),
 		);
 		return true;
 	}
@@ -381,7 +383,6 @@ class Blog extends BsExtensionMW {
 
 		// initialize local variables
 		$oErrorListView = new ViewTagErrorList( $this );
-		BsExtensionManager::setContext( 'MW::Blog::ShowBlog' );
 
 		// get all config options
 		$iShowLimit             = BsConfig::get( 'MW::Blog::ShowLimit' );

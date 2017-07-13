@@ -2,7 +2,7 @@
 /**
  * Renders the ExtensionInfo.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Markus Glaser <glaser@hallowelt.com>
 
@@ -106,7 +106,10 @@ class ViewExtensionInfoTable extends ViewBaseElement {
 		}
 		//(09.05.2012)PW: added helpdeskurls to mI18n-files
 		//$baseUrl = BsConfig::get('MW::ExtensionInfo::HelpdeskBaseUrl');
-		$baseUrl = 'http://help.blue-spice.org/index.php';
+		$baseUrl = 'http://help.bluespice.com/index.php';
+		if( empty( $aExtensionInfo['name'] ) ) {
+			return $baseUrl;
+		}
 		$sExtensionName = $aExtensionInfo['name'];
 		return "$baseUrl/$sExtensionName";
 	}

@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_review_templates CHANGE `public` `revt_public` TINYINT( 1 ) NOT NULL;

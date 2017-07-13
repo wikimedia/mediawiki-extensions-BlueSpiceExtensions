@@ -20,7 +20,10 @@
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Página da wiki",
 	"apihelp-bs-dashboard-task-param-dc": "Parâmetro de controlo da <i>cache</i>. Usado por ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Lista todos os <i>portlets</i> disponíveis",
+	"apihelp-bs-dashboards-store-summary": "Lista todos os <i>portlets</i> disponíveis",
 	"apihelp-bs-dashboards-tasks-description": "Grava a configuração do painel",
+	"apihelp-bs-dashboards-tasks-summary": "Grava a configuração do painel",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Devolve conteúdo para alguns <i>widgets</i> de painel",
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Devolve conteúdo para alguns <i>widgets</i> de painel",
 	"action-dashboards-viewspecialpage-userdashboard": "ver a página especial \"{{int:userdashboard}}\""
 }

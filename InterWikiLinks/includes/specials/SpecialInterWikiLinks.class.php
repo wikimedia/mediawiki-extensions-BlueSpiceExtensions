@@ -3,7 +3,7 @@
 /**
  * Special page for InterWikiLinks for MediaWiki
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Leonid Verhovskij <verhovskij@hallowelt.com>
  * @version    $Id$

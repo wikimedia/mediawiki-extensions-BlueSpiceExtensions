@@ -18,8 +18,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * This file is part of BlueSpice for MediaWiki
- * For further information visit http://www.blue-spice.org
+ * This file is part of BlueSpice MediaWiki
+ * For further information visit http://www.bluespice.com
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @author     Patric Wirth <wirth@hallowelt.com>
@@ -232,7 +232,6 @@ class StateBar extends BsExtensionMW {
 		$oOutputPage->addModules( 'ext.bluespice.statebar' );
 		$oOutputPage->addModuleStyles( 'ext.bluespice.statebar.style' );
 
-		BsExtensionManager::setContext( 'MW::StateBarShow' );
 		return true;
 	}
 
@@ -243,7 +242,10 @@ class StateBar extends BsExtensionMW {
 	 * @return boolean Always true to keep hook running
 	 */
 	public function onSkinTemplateOutputPageBeforeExec( &$sktemplate, &$tpl ) {
-		if ( BsExtensionManager::isContextActive( 'MW::StateBarShow' ) === false ) {
+		//Check if the context of the statebar is set. If not, we do not have
+		//to do anything
+		$aModules = $sktemplate->getOutput()->getModules();
+		if( !in_array( 'ext.bluespice.statebar', $aModules ) ) {
 			return true;
 		}
 
@@ -256,8 +258,6 @@ class StateBar extends BsExtensionMW {
 		);
 
 		if ( count( $this->aTopViews ) == 0 ) {
-			// TODO RBV (01.07.11 18:26): Ain't this too late?
-			BsExtensionManager::removeContext( 'MW::StateBarShow' );
 			return true;
 		}
 

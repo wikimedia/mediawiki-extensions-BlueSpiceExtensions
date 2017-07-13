@@ -1,7 +1,7 @@
 /**
  * Flexiskin Panel
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Tobias Weichart <weichart@hallowelt.com>
  * @package    Bluespice_Extensions

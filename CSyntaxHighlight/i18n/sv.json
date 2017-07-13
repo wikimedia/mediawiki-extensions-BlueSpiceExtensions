@@ -10,5 +10,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Tema:",
 	"bs-csyntaxhighlight-pref-gutter": "Visa radnummer",
 	"bs-csyntaxhighlight-pref-autolinks": "Länka webbadresser",
-	"bs-csyntaxhighlight-pref-toolbar": "Visa verktygsfält"
+	"bs-csyntaxhighlight-pref-toolbar": "Visa verktygsfält",
+	"bs-csyntaxhighlight-tag-desc": "Infogar CSyntaxHighlight-taggen, används för att visa formaterad kod"
 }

@@ -1,6 +1,6 @@
 -- Oracle database definition for table bs_ns_bak_revision in NamespaceManager
 --
--- Part of BlueSpice for MediaWiki
+-- Part of BlueSpice MediaWiki
 --
 -- @author     Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
 

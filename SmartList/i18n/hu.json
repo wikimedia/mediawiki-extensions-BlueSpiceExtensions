@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Csega"
+			"Csega",
+			"Tacsipacsi"
 		]
 	},
 	"prefs-smartlist": "Okos lista",
@@ -19,5 +20,6 @@
 	"bs-smartlist-title": "Cím",
 	"bs-smartlist-mosteditedpages": "Legtöbbször szerkesztett lapok",
 	"bs-smartlist-lastedits": "Szerkesztéseim",
-	"bs-smartlist-noedits": "Nem található szerkesztés."
+	"bs-smartlist-noedits": "Nem található szerkesztés.",
+	"bs-smartlist-hitcounter-missing": "A <a href=\"https://www.mediawiki.org/wiki/Extension:HitCounters\" target=\"_blank\">HitCounters</a> kiterjesztést telepíteni kell."
 }

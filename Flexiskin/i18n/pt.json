@@ -63,9 +63,13 @@
 	"bs-flexiskin-usebackground": "Usar a imagem de fundo",
 	"bs-flexiskin-labelcurrentbackground": "Imagem atual",
 	"apihelp-bs-flexiskin-tasks-description": "Permite a manipulação de temas flexíveis (<i>flexiskins</i>)",
+	"apihelp-bs-flexiskin-tasks-summary": "Permite a manipulação de temas flexíveis (<i>flexiskins</i>)",
 	"apihelp-bs-flexiskin-store-description": "Lista os temas flexíveis disponíveis",
+	"apihelp-bs-flexiskin-store-summary": "Lista os temas flexíveis disponíveis",
 	"apihelp-bs-flexiskin-upload-description": "Permite fazer o carregamento de ficheiros para um tema flexível",
+	"apihelp-bs-flexiskin-upload-summary": "Permite carregar ficheiros para um tema flexível",
 	"apihelp-bs-flexiskin-upload-store-description": "Lista os ficheiros carregados de um tema flexível",
+	"apihelp-bs-flexiskin-upload-store-summary": "Lista os ficheiros carregados de um tema flexível",
 	"action-flexiskin-viewspecialpage": "ver a página especial \"Temas flexíveis\"",
 	"flexiskin": "Preferências do tema",
 	"bs-flexiskin-button-upload-image-tooltip": "Carregar uma imagem nova"

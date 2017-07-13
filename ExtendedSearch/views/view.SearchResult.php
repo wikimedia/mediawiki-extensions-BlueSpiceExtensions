@@ -2,7 +2,7 @@
 /**
  * Renders the ExtendedSearch results page.
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Mathias Scheer <scheer@hallowelt.com>
  * @author     Markus Glaser <glaser@hallowelt.com>

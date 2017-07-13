@@ -9,6 +9,7 @@
 	"bs-visualeditor-desc": "Éditeur visuel pour MédiaWiki",
 	"prefs-visualeditor": "ÉditeurVisuel",
 	"apihelp-bs-visualeditor-tasks-description": "Fournit des tâches pour l’extension Éditeur Visuel BlueSpice.",
+	"apihelp-bs-visualeditor-tasks-summary": "Fournit les tâches pour l’extension BlueSpice de l’Éditeur visuel.",
 	"bs-visualeditor-editbutton-hint": "ÉditeurVisuel",
 	"bs-visualeditor-pref-disablens": "Désactiver dans les espaces de noms :",
 	"bs-visualeditor-pref-use": "Utilisez l’éditeur tel-tel par défaut",
@@ -33,11 +34,7 @@
 	"bs-visualeditor-bsactions-signature": "Signature",
 	"bs-visualeditor-bsactions-save": "Enregistrer",
 	"bs-visualeditor-bsactions-headings": "Rubriques",
-	"bs-visualeditor-bsactions-paragraph": "Paragraphe",
-	"bs-visualeditor-bsactions-heading2": "Rubrique 2",
-	"bs-visualeditor-bsactions-heading3": "Rubrique 3",
-	"bs-visualeditor-bsactions-heading4": "Rubrique 4",
-	"bs-visualeditor-bsactions-heading5": "Rubrique 5",
-	"bs-visualeditor-bsactions-heading6": "Rubrique 6",
-	"bs-visualeditor-switch-noeditor-desc": "Désactive l'éditeur visuel pour cette page."
+	"bs-visualeditor-switch-noeditor-desc": "Désactive l'éditeur visuel pour cette page.",
+	"bs-visualeditor-bsactions-tablefunctions": "Fonctions de tableau",
+	"bs-visualeditor-bsactions-tablestyles": "Styles de tableau"
 }

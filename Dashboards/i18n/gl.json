@@ -19,7 +19,10 @@
 	"bs-dashboard-userportlet-wikipage-wiki-article": "Páxina wiki",
 	"apihelp-bs-dashboard-task-param-dc": "Parámetro de control da caché. Usado por ExtJS.",
 	"apihelp-bs-dashboards-store-description": "Lista de todos os portlets",
+	"apihelp-bs-dashboards-store-summary": "Lista de todos os portlets",
 	"apihelp-bs-dashboards-tasks-description": "Garda a configuración do taboleiro",
+	"apihelp-bs-dashboards-tasks-summary": "Garda a configuración do taboleiro",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Devolve o contido para algúns widgets do taboleiro",
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Devolve o contido para algúns widgets do taboleiro",
 	"action-dashboards-viewspecialpage-userdashboard": "ver a páxina especial \"{{int:userdashboard}}\""
 }

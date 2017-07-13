@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: UsageTracker
  * Description:
  * Authors: Markus Glaser

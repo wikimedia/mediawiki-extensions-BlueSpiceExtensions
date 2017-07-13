@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_review_templates DROP COLUMN `revt_mode`;

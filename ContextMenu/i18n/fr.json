@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"bs-contextmenu-desc": "Fournit des menus contextuels pour divers liens",
@@ -16,9 +18,11 @@
 	"bs-contextmenu-page-protect": "Protéger la page",
 	"bs-contextmenu-page-purge": "Purger le cache et afficher la page",
 	"bs-contextmenu-page-info": "Afficher les informations de la page",
-	"bs-contextmenu-media-reupload": "Télécharger la nouvelle version",
+	"bs-contextmenu-media-reupload": "Téléverser la nouvelle version",
 	"bs-contextmenu-media-view-page": "Afficher la page de description du fichier et son historique",
 	"bs-contextmenu-user-mail": "Envoyer un courriel",
 	"bs-contextmenu-user-talk": "Laisser un message sur la page de discussion",
-	"bs-contextmenu-file-download": "Télécharger un fichier"
+	"bs-contextmenu-file-download": "Télécharger un fichier",
+	"apihelp-bs-contextmenu-tasks-description": "Fournit les éléments du menu contextuel dans le contexte",
+	"apihelp-bs-contextmenu-tasks-summary": "Fournit les éléments de menu de contexte présents dans le contexte"
 }

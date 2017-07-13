@@ -9,5 +9,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Tema:",
 	"bs-csyntaxhighlight-pref-gutter": "Mostrar números de liña",
 	"bs-csyntaxhighlight-pref-autolinks": "Ligar as URL",
-	"bs-csyntaxhighlight-pref-toolbar": "Mostrar a caixa de ferramentas"
+	"bs-csyntaxhighlight-pref-toolbar": "Mostrar a caixa de ferramentas",
+	"bs-csyntaxhighlight-tag-desc": "Insire o elemento CSyntaxHighlight, usado para amosar fragmentos de código formatados"
 }

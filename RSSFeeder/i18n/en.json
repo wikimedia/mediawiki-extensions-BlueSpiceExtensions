@@ -7,6 +7,7 @@
 	"bs-rssfeeder-desc": "An extension to output valid RSS for every extension, which has a buildRss-function",
 	"rssfeeder": "RSS feeder",
 	"apihelp-bs-rssfeeder-tasks-description": "Provides common tasks for the RSSFeeder",
+	"apihelp-bs-rssfeeder-tasks-summary": "Provides common tasks for the RSSFeeder",
 	"bs-rssfeeder-pagetext": "You can subscribe to the following RSS feeds:",
 	"bs-rssfeeder-recent-changes": "Recent changes",
 	"bs-rssfeeder-pages": "Page",

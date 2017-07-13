@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BlueSpice for MediaWiki
+ * BlueSpice MediaWiki
  * Extension: CountThings
  * Description: Counts all kinds of things.
  * Authors: Markus Glaser, Mathias Scheer
@@ -23,7 +23,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * For further information visit http://www.blue-spice.org
+ * For further information visit http://www.bluespice.com
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @version    2.23.1

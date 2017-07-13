@@ -30,9 +30,13 @@
 	"bs-flexiskin-usebackground": "배경 그림 사용",
 	"bs-flexiskin-labelcurrentbackground": "현재 그림",
 	"apihelp-bs-flexiskin-tasks-description": "flexiskin을 조작할 수 있게 합니다",
+	"apihelp-bs-flexiskin-tasks-summary": "flexiskin을 조작할 수 있게 합니다",
 	"apihelp-bs-flexiskin-store-description": "사용 가능한 flexiskin을 나열합니다",
+	"apihelp-bs-flexiskin-store-summary": "사용 가능한 flexiskin을 나열합니다",
 	"apihelp-bs-flexiskin-upload-description": "파일을 flexiskin에 올릴 수 있게 합니다",
+	"apihelp-bs-flexiskin-upload-summary": "파일을 flexiskin으로 업로드할 수 있게 합니다",
 	"apihelp-bs-flexiskin-upload-store-description": "flexiskin의 올린 파일을 나열합니다",
+	"apihelp-bs-flexiskin-upload-store-summary": "flexiskin의 올린 파일을 나열합니다",
 	"action-flexiskin-viewspecialpage": "특수문서 \"Flexiskin\" 보기",
 	"flexiskin": "스킨 환경 설정",
 	"bs-flexiskin-button-upload-image-tooltip": "새 그림 올리기"

@@ -1,7 +1,7 @@
 /**
  * Statistics portlet number of users
  *
- * Part of BlueSpice for MediaWiki
+ * Part of BlueSpice MediaWiki
  *
  * @author     Patric Wirth <wirth@hallowelt.com>
  * @package    BlueSpice_Extensions
