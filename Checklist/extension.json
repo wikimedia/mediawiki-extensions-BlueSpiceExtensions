@@ -58,6 +58,7 @@
 				"bs-checklist-button-checkbox-title",
 				"bs-checklist-menu-insert-list-title",
 				"bs-checklist-menu-insert-checkbox",
+				"bs-checklist-menu-insert-no-list-loaded",
 				"bs-checklist-dlg-insert-list-title",
 				"bs-checklist-dlg-insert-list-value-list",
 				"bs-checklist-dlg-new-list",
