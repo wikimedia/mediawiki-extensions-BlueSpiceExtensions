@@ -16,7 +16,7 @@ class SpecialPageTemplatesAdmin extends BsSpecialPage {
 	public function execute( $sParameter ) {
 		parent::execute( $sParameter );
 		$this->getOutput()->addModules('ext.bluespice.pageTemplates');
-		$this->getOutput()->addHTML( '<div id="bs-pagetemplates-grid"></div>' );
+		$this->getOutput()->addHTML( '<div id="bs-pagetemplates-grid" class="bs-manager-container"></div>' );
 
 	}
 
