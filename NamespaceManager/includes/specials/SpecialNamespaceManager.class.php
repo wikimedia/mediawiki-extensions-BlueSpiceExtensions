@@ -38,7 +38,6 @@ class SpecialNamespaceManager extends BsSpecialPage {
 				'name' => 'pageCount',
 				'type' => 'int',
 				'sortable' => true,
-				'hidden' => true,
 				'filter' => array(
 					'type' => 'numeric'
 				),
