@@ -36,5 +36,6 @@
 	"bs-visualeditor-bsactions-headings": "Rubriques",
 	"bs-visualeditor-switch-noeditor-desc": "Désactive l'éditeur visuel pour cette page.",
 	"bs-visualeditor-bsactions-tablefunctions": "Fonctions de tableau",
-	"bs-visualeditor-bsactions-tablestyles": "Styles de tableau"
+	"bs-visualeditor-bsactions-tablestyles": "Styles de tableau",
+	"bs-visualeditor-editoptions-summary": "Résumé"
 }
