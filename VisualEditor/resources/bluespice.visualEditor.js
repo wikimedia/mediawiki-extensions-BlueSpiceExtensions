@@ -28,7 +28,7 @@ $(window).scroll(function(){
 	if(  $toolbar.length == 0 ) return;
 
 	if( offsetTop === 0 && $( '#editform' ).length > 0 && $firstHeading.length > 0 && previewMode === false ) {
-		offsetTop = $firstHeading.position().top;
+		offsetTop =  $('#content').position().top;
 	}
 	else if( offsetTop === 0 && $( '#editform' ).length > 0 && $firstHeading.length > 0 && previewMode === true ) {
 		offsetTop = $( '#wikiPreview' ).position().top + $( '#wikiPreview' ).height() - $firstHeading.height();
@@ -148,7 +148,7 @@ function bs_editOptionsBarAdd() {
 	$bsTfSummary.attr( 'id', 'bs-ve-wpSummary' );
 	$bsTfSummary.attr( 'name', 'bs-wpSummary' );
 	$bsTfSummary.attr( 'size', '30' );
-	$bsTfSummary.attr( 'placehoder', $( '#wpSummaryLabel' ).text() );
+	$bsTfSummary.attr( 'placeholder', mw.message('bs-visualeditor-editoptions-summary').plain() );
 	$bsTfSummary.appendTo( $editSummaryContainer );
 
 	var $editBtnContainer = $( '<div id="bs-ve-editbtn-group"></div>' ).appendTo( $editOptionsContainer );
@@ -181,10 +181,7 @@ function bs_firstHeadingFixedAdd() {
 		$firstHeading.addClass( 'bs-ve-heading-fixed' );
 		$firstHeading.width( $firstHeading.parent().width() );
 		$firstHeading.css( 'display', 'block' );
-		$firstHeading.css(
-			'background-color',
-			$( '#content' ).css( 'background-color' )
-		);
+		$firstHeading.css( 'background-color', $( '#content' ).css( 'background-color' ) );
 	}
 }
 

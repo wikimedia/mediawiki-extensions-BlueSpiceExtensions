@@ -34,5 +34,6 @@
 	"bs-visualeditor-bsactions-headings": "Überschriften",
 	"bs-visualeditor-switch-noeditor-desc": "Deaktiviert den Visuellen Editor auf dieser Seite.",
 	"bs-visualeditor-bsactions-tablefunctions": "Tabellenfunktionen",
-	"bs-visualeditor-bsactions-tablestyles": "Tabellenformate"
+	"bs-visualeditor-bsactions-tablestyles": "Tabellenformate",
+	"bs-visualeditor-editoptions-summary": "Zusammenfassung"
 }

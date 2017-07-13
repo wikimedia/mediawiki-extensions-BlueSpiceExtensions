@@ -34,5 +34,6 @@
 	"bs-visualeditor-bsactions-headings": "Headings",
 	"bs-visualeditor-switch-noeditor-desc": "Disables the visual editor on this page.",
 	"bs-visualeditor-bsactions-tablefunctions": "Table functions",
-	"bs-visualeditor-bsactions-tablestyles": "Table styles"
+	"bs-visualeditor-bsactions-tablestyles": "Table styles",
+	"bs-visualeditor-editoptions-summary": "Summary"
 }
