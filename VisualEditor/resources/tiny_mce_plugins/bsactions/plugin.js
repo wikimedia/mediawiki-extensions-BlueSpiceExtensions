@@ -25,23 +25,6 @@ var BsActions = function() {
 		_editor,
 		_currentImagePath;
 
-	function handleDisabledState(ctrl, selector) {
-		var editor = tinyMCE.activeEditor;
-		function bindStateListener() {
-			ctrl.disabled(!editor.dom.getParent(editor.selection.getStart(), selector));
-
-			editor.selection.selectorChanged(selector, function(state) {
-				ctrl.disabled(!state);
-			});
-		}
-
-		if (editor.initialized) {
-			bindStateListener();
-		} else {
-			editor.on('init', bindStateListener);
-		}
-	}
-
 	function handleVisibilityState(ctrl, selector) {
 		var editor = tinyMCE.activeEditor;
 		function bindStateListener() {
@@ -57,11 +40,6 @@ var BsActions = function() {
 		} else {
 			editor.on('init', bindStateListener);
 		}
-	}
-
-	function postRender() {
-		/*jshint validthis:true*/
-		handleDisabledState(this, 'table');
 	}
 
 	function postRenderVisibilityTable() {
@@ -82,11 +60,6 @@ var BsActions = function() {
 		if($(tinyMCE.activeEditor.getElement()).data("text-changed")){
 		    tinyMCE.activeEditor.isNotDirty = false;
 		}
-	}
-
-	function postRenderCell() {
-		/*jshint validthis:true*/
-		handleDisabledState(this, 'td,th');
 	}
 
 	function _doSaveArticle() {
