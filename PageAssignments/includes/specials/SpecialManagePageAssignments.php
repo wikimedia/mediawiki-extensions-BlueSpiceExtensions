@@ -13,7 +13,7 @@ class SpecialManagePageAssignments extends BsSpecialPage {
 		Hooks::run( 'BSPageAssignmentsManager', array( $this, &$aDeps ) );
 		$this->getOutput()->addJsConfigVars( 'bsPageAssignmentsManagerDeps', $aDeps );
 		$this->getOutput()->addHTML(
-			Html::element( 'div', array( 'id' => 'bs-pageassignments-manager' ) )
+			Html::element( 'div', array( 'id' => 'bs-pageassignments-manager', 'class' => 'bs-manager-container' ) )
 		);
 	}
 

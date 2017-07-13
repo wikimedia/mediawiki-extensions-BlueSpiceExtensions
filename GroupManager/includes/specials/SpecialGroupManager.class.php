@@ -24,7 +24,7 @@ class SpecialGroupManager extends BsSpecialPage {
 		$oOutputPage = $this->getOutput();
 
 		$this->getOutput()->addModules( 'ext.bluespice.groupManager' );
-		$oOutputPage->addHTML( '<div id="bs-groupmanager-grid"></div>' );
+		$oOutputPage->addHTML( '<div id="bs-groupmanager-grid" class="bs-manager-container"></div>' );
 	}
 
 	protected function getGroupName() {
