@@ -15,9 +15,6 @@
 			"extPath": "/BlueSpiceExtensions/PermissionManager"
 		}
 	},
-	"ExtensionFunctions": [
-		"PermissionManager::setupLockmodePermissions"
-	],
 	"SpecialPages": {
 		"PermissionManager": "SpecialPermissionManager"
 	},
