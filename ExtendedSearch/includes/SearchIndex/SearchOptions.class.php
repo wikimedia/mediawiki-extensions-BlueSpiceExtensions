@@ -499,6 +499,10 @@ class SearchOptions {
 	}
 
 	protected function assembleSearchOptions() {
+		Hooks::run(
+			'BSExtendedSearchSearchOptionsAssembleSearchOptions',
+			[ $this, &$this->aOptions, &$this->aFq, &$this->aFacetFields ]
+		);
 		$this->aSearchOptions['defType'] = 'edismax';
 		$this->aSearchOptions['fl'] = 'uid,type,title,path,namespace,cat,ts,redirects,overall_type';
 		$this->aSearchOptions['fq'] = $this->aFq;

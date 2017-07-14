@@ -70,6 +70,13 @@ $oSearchOptions
 $sFieldName
 $sTagName
 
+'BSExtendedSearchSearchOptionsAssembleSearchOptions': Allows to adjust the
+parameters send to the SOLR backend. E.g. for security trimming.
+$oSearchOptions The SearchOptions instance
+&$aOptions All kind of collected options from the current search request
+&$aFq The list of filter queries
+&$aFacetFields The list of facet fields
+
 ==SearchRequest.class==
 
 'BSExtendedSearchRequestProcessInputs':
