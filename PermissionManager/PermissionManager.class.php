@@ -40,10 +40,6 @@
 class PermissionManager extends BsExtensionMW {
 
 	/**
-	 * @var string name of the virtual group which should be used to hold the lockmode settings
-	 */
-	public static $sPmLockModeGroup = 'lockmode';
-	/**
 	 * @var array
 	 */
 	public static $aSysopDefaultPermissions = array(
@@ -112,8 +108,6 @@ class PermissionManager extends BsExtensionMW {
 	}
 
 	protected function initExt() {
-		BsConfig::registerVar( 'MW::PermissionManager::Lockmode', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-permissionmanager-pref-lockmode', 'toggle' );
-		BsConfig::registerVar( 'MW::PermissionManager::SkipSystemNS', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL, 'bs-permissionmanager-pref-skipsysns', 'toggle' );
 		BsConfig::registerVar( 'MW::PermissionManager::RealityCheck', false, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_BOOL | BsConfig::RENDER_AS_JAVASCRIPT, 'bs-permissionmanager-pref-enablerealitycheck', 'toggle' );
 		BsConfig::registerVar( 'MW::PermissionManager::MaxBackups', 5, BsConfig::LEVEL_PUBLIC | BsConfig::TYPE_INT, 'bs-permissionmanager-pref-max-backups' );
 
@@ -171,146 +165,6 @@ class PermissionManager extends BsExtensionMW {
 		}
 
 		$result = PermissionManager::writeGroupSettings( $wgGroupPermissions, $wgNamespacePermissionLockdown );
-		return true;
-	}
-
-	/*
-	I could not figure out any circumstances when this would be needed!
-	Hook: 'BSWikiAdminUserManagerBeforeUserListSend' was removed
-	Groups have been queried by DB - why should there be a group lockmode?
-	array( users => array(
-		1 => array(
-			groups => array(
-				1 => array( 'group' => 'lockmode' )
-			)
-		)
-	))
-	public function onBSWikiAdminUserManagerBeforeUserListSend( $oUserManager, &$data ) {
-		if ( !BsConfig::get( 'MW::PermissionManager::Lockmode' ) )
-			return true;
-
-		foreach ( $data[ 'users' ] as $keyname => $aUser ) {
-			foreach ( $aUser as $index => $value ) {
-				if ( is_array( $value ) ) {
-					foreach ( $value as $indexof => $val ) {
-						if ( is_array( $val ) ) {
-							foreach ( $val as $indexname => $groupName ) {
-								if ( $indexname == 'group' ) {
-									if ( $groupName == BsGroupHelper::getLockModeGroup() ) {
-										unset( $data[ 'users' ][ $keyname ][ $index ][ $indexof ] );
-										$data[ 'users' ][ $keyname ][ $index ] = array_values( $data[ 'users' ][ $keyname ][ $index ] );
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		return true;
-	}
-	*/
-
-	public static function setupLockmodePermissions() {
-		global $wgAdditionalGroups, $wgGroupPermissions, $wgNamespacePermissionLockdown;
-
-		// return directly if the settings got already checked in this session and the state of Lockmode didn't change.
-		$oRequest = RequestContext::getMain()->getRequest();
-		$bLockmodeActive = BsConfig::get( 'MW::PermissionManager::Lockmode' );
-		if ( $oRequest->getSessionData( 'bsLockmodeIsSetup' ) === $bLockmodeActive ) {
-			return true;
-		}
-		$oRequest->setSessionData( 'bsLockmodeIsSetup', $bLockmodeActive );
-
-		$bSave = false;
-
-		if ( !$bLockmodeActive ) {
-			if ( isset( $wgGroupPermissions[ self::$sPmLockModeGroup ] ) && !empty( $wgGroupPermissions[ self::$sPmLockModeGroup ] ) ) {
-				unset( $wgGroupPermissions[ self::$sPmLockModeGroup ] );
-				$bSave = true;
-			}
-			// reset sysop group permissions
-			$wgGroupPermissions['sysop'] = self::$aSysopDefaultPermissions;
-
-			if ( is_array( $wgNamespacePermissionLockdown ) ) {
-				foreach ( $wgNamespacePermissionLockdown as $iNsIndex => $aNsRights ) {
-					foreach ( $aNsRights as $sRight => $aGroups ) {
-						if ( !in_array( self::$sPmLockModeGroup, $aGroups ) && !in_array( 'sysop', $aGroups ) )
-							continue;
-						$key = array_search( self::$sPmLockModeGroup, $aGroups );
-						if ( $key !== false ) {
-							unset( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ][ $key ] );
-							if ( empty( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ] ) ) {
-								unset( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ] );
-							}
-							$bSave = true;
-						}
-						$key = array_search( 'sysop', $aGroups );
-						if ( $key !== false ) {
-							unset( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ][ $key ] );
-							if ( empty( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ] ) ) {
-								unset( $wgNamespacePermissionLockdown[ $iNsIndex ][ $sRight ] );
-							}
-							$bSave = true;
-						}
-					}
-					if ( empty( $wgNamespacePermissionLockdown[ $iNsIndex ] ) ) {
-						unset( $wgNamespacePermissionLockdown[ $iNsIndex ] );
-					}
-				}
-			}
-
-			if ( $bSave ) {
-				self::writeGroupSettings( $wgGroupPermissions, $wgNamespacePermissionLockdown );
-			}
-
-			return true;
-		}
-		$wgAdditionalGroups[ self::$sPmLockModeGroup ] = array();
-		foreach ( BsNamespaceHelper::getNamespacesForSelectOptions( array( NS_MEDIA, NS_SPECIAL ) ) as $nsKey => $nsName ) {
-			// skip mediawiki namespaces
-			if ( BsConfig::get( 'MW::PermissionManager::SkipSystemNS' ) && $nsKey <= 15 ) {
-				continue;
-			}
-
-			if ( !isset( $wgGroupPermissions[ self::$sPmLockModeGroup ] ) ) {
-				$wgGroupPermissions[ self::$sPmLockModeGroup ] = array();
-			}
-
-			$aAvailablePermissions = User::getAllRights();
-			foreach ( $aAvailablePermissions as $permissionName ) {
-				if ( !isset( $wgGroupPermissions[ self::$sPmLockModeGroup ][ $permissionName ] ) ) {
-					$wgGroupPermissions[ self::$sPmLockModeGroup ][ $permissionName ] = true;
-					$wgGroupPermissions[ 'sysop' ][ $permissionName ] = true;
-					$bSave = true;
-				}
-				if ( isset( $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] ) ) {
-					if ( !in_array( self::$sPmLockModeGroup, $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] ) ) {
-						$wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] = array_unique(
-							array_merge( $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ], array( self::$sPmLockModeGroup )
-							)
-						);
-						$bSave = true;
-					}
-					if ( !in_array( 'sysop', $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] ) ) {
-						$wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] = array_unique(
-							array_merge( $wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ], array( 'sysop' )
-							)
-						);
-						$bSave = true;
-					}
-				} else {
-					$wgNamespacePermissionLockdown[ $nsKey ][ $permissionName ] = array( self::$sPmLockModeGroup, 'sysop' );
-					$bSave = true;
-				}
-			}
-		}
-
-		if ( $bSave ) {
-			self::writeGroupSettings( $wgGroupPermissions, $wgNamespacePermissionLockdown );
-		}
-
 		return true;
 	}
 
@@ -606,10 +460,6 @@ class PermissionManager extends BsExtensionMW {
 				if ( is_array( $aGroupPermissions ) ) {
 					foreach ( $aGroupPermissions as $sGroupName => $aDataset ) {
 						$aDataset = (array)$aDataset;
-						// no user can be in the lock mode group so we don't care if it has the right or not
-						if ( $sGroupName == self::$sPmLockModeGroup ) {
-							continue;
-						}
 						if ( isset( $aDataset[ $sRight ] ) && $aDataset[ $sRight ] ) {
 							$bIsSet = true;
 							continue 2;
