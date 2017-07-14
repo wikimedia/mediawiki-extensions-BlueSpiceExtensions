@@ -8,6 +8,7 @@
 	"bs-checklist-button-checkbox-title": "Elementos de la llista de comprobación",
 	"bs-checklist-menu-insert-list-title": "Inxertar llista",
 	"bs-checklist-menu-insert-checkbox": "Caxella de comprobación",
+	"bs-checklist-menu-insert-no-list-loaded": "Nun se cargó nenguna llista",
 	"bs-checklist-dlg-insert-list-title": "Insertar una llista de comprobación",
 	"bs-checklist-dlg-insert-list-value-list": "Llista de valores",
 	"bs-checklist-tag-checklist-desc": "Xenera una caxella de comprobación o un menú de selección. La llista puede cambiase con dellos parámetros.",

@@ -34,5 +34,6 @@
 	"bs-visualeditor-bsactions-headings": "标题",
 	"bs-visualeditor-switch-noeditor-desc": "在此页面禁用可视化编辑器。",
 	"bs-visualeditor-bsactions-tablefunctions": "表格功能",
-	"bs-visualeditor-bsactions-tablestyles": "表格样式"
+	"bs-visualeditor-bsactions-tablestyles": "表格样式",
+	"bs-visualeditor-editoptions-summary": "摘要"
 }

@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Subi",
-			"Sator"
+			"Sator",
+			"Mikel Ibaiba"
 		]
 	},
 	"prefs-visualeditor": "Ikusizko editorea",
 	"bs-visualeditor-editbutton-hint": "Ikusizko Editorea",
 	"bs-visualeditor-bsactions-signature": "Sinadura",
-	"bs-visualeditor-bsactions-save": "Gorde"
+	"bs-visualeditor-bsactions-save": "Gorde",
+	"bs-visualeditor-bsactions-tablefunctions": "Taula funtzioak"
 }

@@ -17,6 +17,7 @@
 	"bs-insertfile-labellink": "링크",
 	"bs-insertfile-alignnone": "없음",
 	"bs-insertfile-typeborder": "테두리",
+	"apihelp-bs-insertfile-license-store-summary": "InsertFile 확장 기능의 라이선스를 나열합니다.",
 	"bs-insertfile-enable-align": "사용",
 	"bs-insertfile-nstext": "링크 유형",
 	"bs-insertfile-nstextfile": "파일",

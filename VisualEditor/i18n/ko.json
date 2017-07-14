@@ -36,5 +36,6 @@
 	"bs-visualeditor-bsactions-save": "저장",
 	"bs-visualeditor-bsactions-headings": "문단 제목",
 	"bs-visualeditor-switch-noeditor-desc": "이 문서에서 시각편집기를 비활성화합니다.",
-	"bs-visualeditor-bsactions-tablestyles": "표 스타일"
+	"bs-visualeditor-bsactions-tablestyles": "표 스타일",
+	"bs-visualeditor-editoptions-summary": "요약"
 }

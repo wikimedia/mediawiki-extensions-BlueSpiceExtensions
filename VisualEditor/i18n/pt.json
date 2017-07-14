@@ -35,5 +35,6 @@
 	"bs-visualeditor-bsactions-headings": "Cabeçalhos",
 	"bs-visualeditor-switch-noeditor-desc": "Desativa o Editor Visual nesta página.",
 	"bs-visualeditor-bsactions-tablefunctions": "Funções de tabelas",
-	"bs-visualeditor-bsactions-tablestyles": "Estilos de tabelas"
+	"bs-visualeditor-bsactions-tablestyles": "Estilos de tabelas",
+	"bs-visualeditor-editoptions-summary": "Resumo"
 }
