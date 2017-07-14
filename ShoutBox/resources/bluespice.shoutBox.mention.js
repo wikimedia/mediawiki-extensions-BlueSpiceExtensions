@@ -18,7 +18,7 @@ $( document ).ready( function () {
 		replace: function ( mention ) {
 			//put the username in the shoutbox, not the displayname for better usage later
 			var username = mention.match( /\((.*?)\)/ );
-			return '@' + username[1] + ' ';
+			return '@' + username[1].replace(' ', '_') + ' ';
 		},
 		getUsers: function () {
 			$.getJSON( bs.api.makeUrl( 'bs-user-store', { limit: 9999999 } ), function ( data ) {
