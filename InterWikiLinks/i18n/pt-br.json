@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"bs-interwikilinks-headerprefix": "Prefixo",
+	"bs-interwikilinks-headerurl": "URL",
+	"bs-interwikilinks-labelprefix": "Prefixo",
+	"bs-interwikilinks-labelurl": "URL",
+	"bs-interwikilinks-insertlink-labelprefix": "Prefixo"
+}

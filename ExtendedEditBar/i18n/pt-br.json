@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"bs-extendededitbar-entertip": "Quebra de linha",
+	"bs-extendededitbar-gallerysamplepicture": "Imagem",
+	"bs-extendededitbar-gallerysamplecaption": "Legenda",
+	"bs-extendededitbar-tablesampleheader": "Cabeçalho",
+	"bs-extendededitbar-tablesamplerow": "Linha",
+	"bs-extendededitbar-tablesamplecell": "Célula"
+}

@@ -4,7 +4,15 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-extendedsearch-facet-category": "Categoria",
+	"bs-extendedsearch-facet-namespace": "Espaço nominal",
 	"bs-extendedsearch-sort-title": "Título",
+	"bs-extendedsearch-sort-ts": "Tempo",
+	"bs-extendedsearch-sort-type": "Tipo",
 	"bs-extendedsearch-pref-scope-title": "Título",
-	"bs-extendedsearch-unknown": "Desconhecido"
+	"bs-extendedsearch-unknown": "Desconhecido",
+	"bs-extendedsearch-more": "Mais",
+	"bs-extendedsearch-fewer": "Menos",
+	"bs-extendedsearch-facetsetting-op-and": "E",
+	"bs-extendedsearch-facetsetting-op-or": "OU"
 }

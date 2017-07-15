@@ -4,5 +4,22 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"bs-statistics-label-name": "Nome"
+	"bs-statistics-from": "De",
+	"bs-statistics-to": "Para",
+	"bs-statistics-mode": "Modo",
+	"bs-statistics-month": "Mês",
+	"bs-statistics-day": "Dia",
+	"bs-statistics-list": "Lista",
+	"bs-statistics-filters": "Filtros",
+	"bs-statistics-diag-number-of-users": "Número de usuários",
+	"bs-statistics-label-name": "Nome",
+	"bs-statistics-diag-number-of-pages": "Número de páginas",
+	"bs-statistics-label-page": "Página",
+	"bs-statistics-diag-number-of-edits": "Número de edições",
+	"bs-statistics-label-count": "Contagem",
+	"bs-statistics-label-time": "Tempo",
+	"bs-statistics-filter-category": "Categoria",
+	"bs-statistics-portlet-numberofusers": "Número de usuários",
+	"bs-statistics-portlet-numberofedits": "Número de edições",
+	"bs-statistics-portlet-numberofpages": "Número de páginas"
 }

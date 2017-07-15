@@ -6,5 +6,6 @@
 	},
 	"bs-topmenubarcustomizer-desc": "Наладка спасылак верхняга мэню",
 	"prefs-topmenubarcustomizer": "Наладчык мэню",
-	"bs-topmenubarcustomizer-pref-numberoflevels": "Колькасьць укладзеных слаёў:"
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Колькасьць укладзеных слаёў:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Элемэнтаў на галоўным слоі:"
 }

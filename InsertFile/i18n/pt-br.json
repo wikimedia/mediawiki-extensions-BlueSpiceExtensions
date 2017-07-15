@@ -4,6 +4,20 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"bs-insertfile-labelsort": "Ordenar por:",
-	"bs-insertfile-upload-waitmessage": "Upload em progresso ..."
+	"bs-insertfile-insert-image": "Insira Imagem",
+	"bs-insertfile-insert-file": "Inserir arquivo",
+	"bs-insertfile-filename": "Nome do arquivo",
+	"bs-insertfile-lastmodified": "Mudanças recentes",
+	"bs-insertfile-labelupload": "Enviar",
+	"bs-insertfile-details-title": "Detalhes",
+	"bs-insertfile-labellink": "Link",
+	"bs-insertfile-alignnone": "nenhum",
+	"bs-insertfile-alignleft": "esquerda",
+	"bs-insertfile-aligncenter": "centro",
+	"bs-insertfile-alignright": "direita",
+	"bs-insertfile-typenone": "nenhum",
+	"bs-insertfile-titlefile": "Inserir arquivo",
+	"bs-insertfile-titleimage": "Insira Imagem",
+	"bs-insertfile-of": "do",
+	"bs-insertfile-nstextfile": "Arquivo"
 }

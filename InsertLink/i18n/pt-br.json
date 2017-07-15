@@ -4,5 +4,13 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"bs-insertlink-label-description": "Descrição"
+	"prefs-insertlink": "Inserir link",
+	"bs-insertlink": "Inserir link",
+	"bs-insertlink-dialog-title": "Inserir link",
+	"bs-insertlink-tab-wiki-page": "Página Wiki",
+	"bs-insertlink-tab-ext-link": "Ligação externa",
+	"bs-insertlink-label-page": "Página",
+	"bs-insertlink-label-link": "Link",
+	"bs-insertlink-label-description": "Descrição",
+	"bs-insertlink-label-file": "Arquivo"
 }

@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"TheEduGobi"
+			"TheEduGobi",
+			"Felipe L. Ewald"
 		]
 	},
-	"bs-namespacemanager-deletens-deletepages": "Esta página foi apagada após a exclusão do espaço nominal “$1”."
+	"bs-namespacemanager-label-id": "ID",
+	"bs-namespacemanager-label-namespaces": "Espaço nominal",
+	"bs-namespacemanager-label-subpages": "Subpáginas",
+	"bs-namespacemanager-label-pagecount": "Páginas",
+	"bs-namespacemanager-deletens-deletepages": "Esta página foi apagada após a exclusão do espaço nominal “$1”.",
+	"bs-namespacemanager-label-istalk": "Discussão"
 }

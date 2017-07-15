@@ -4,6 +4,11 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"prefs-pagesvisited": "Páginas visitadas",
+	"bs-pagesvisited-widget-title": "Páginas visitadas",
+	"bs-pagesvisited-pref-widgetlimit": "Limite de entradas:",
+	"bs-pagesvisited-pref-widgetns": "Espaços nominais:",
 	"bs-pagesvisited-pref-widgetsortodr": "Ordenar por:",
+	"bs-pagesvisited-pref-sort-time": "Tempo",
 	"bs-pagesvisited-pref-sort-pagename": "Título"
 }

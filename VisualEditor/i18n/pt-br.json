@@ -7,6 +7,8 @@
 		]
 	},
 	"prefs-visualeditor": "Editor visual",
+	"apihelp-bs-visualeditor-tasks-description": "Fornece tarefas para a extensão BlueSpice Visual Editor.",
 	"apihelp-bs-visualeditor-tasks-summary": "Fornece tarefas para a extensão BlueSpice Visual Editor",
+	"bs-visualeditor-aligntop": "Topo",
 	"bs-visualeditor-bsactions-save": "Salvar"
 }

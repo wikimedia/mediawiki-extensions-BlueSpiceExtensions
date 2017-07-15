@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rodrigo codignoli"
+			"Rodrigo codignoli",
+			"Felipe L. Ewald"
 		]
 	},
-	"prefs-usersidebar": "Barra lateral de usuário"
+	"prefs-usersidebar": "Barra lateral de usuário",
+	"bs-usersidebar-tab-globalactions": "Ações globais",
+	"bs-usersidebar-globalactionswidget-title": "Ações globais"
 }

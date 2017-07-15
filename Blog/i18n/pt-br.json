@@ -4,6 +4,9 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"prefs-blog": "Blog",
+	"blog": "Blog",
 	"bs-blog-form-inline-text": "Título ...",
+	"bs-blog-blog": "Blog",
 	"bs-blog-pref-sortby": "Ordenar por:"
 }

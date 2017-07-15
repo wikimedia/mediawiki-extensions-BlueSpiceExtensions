@@ -4,6 +4,9 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-watchlist-title-sidebar": "Páginas vigiadas",
+	"bs-watchlist-pref-widgetlimit": "Limite de entradas:",
 	"bs-watchlist-pref-widgetsortodr": "Ordenar por:",
+	"bs-watchlist-pref-sort-time": "Tempo",
 	"bs-watchlist-pref-sort-title": "Título"
 }

@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cristofer Alves"
+			"Cristofer Alves",
+			"Felipe L. Ewald"
 		]
 	},
+	"pageassignments": "Atribuições",
+	"bs-pageassignments-dlg-title": "Atribuições",
+	"bs-pageassignments-dlg-fldlabel": "Atribuições",
+	"bs-pageassignments-statebar-label": "Atribuições",
+	"bs-pageassignments-column-assignments": "Atribuições",
+	"bs-pageassignments-action-log": "Registro de tarefas",
+	"log-name-bs-pageassignments": "Registro de tarefas",
 	"prefs-pageassignments": "Assinaturas de paginas",
 	"bs-pageassignments-pref-permissions": "Adicionar permissões para usuários atribuídos",
 	"bs-pageassignments-yourassignments": "Suas assinaturas",

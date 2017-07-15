@@ -4,5 +4,8 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"bs-usermanager-headerusername": "Nome de usuário"
+	"bs-usermanager-label": "Administrador de usuários",
+	"bs-usermanager-headerusername": "Nome de usuário",
+	"bs-usermanager-headergroups": "Grupos",
+	"usermanager": "Administrador de usuários"
 }

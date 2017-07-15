@@ -4,5 +4,8 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"bs-usagetracker-col-desc": "Descrição"
+	"prefs-usagetracker": "Uso do Tracker",
+	"usagetracker": "Uso do Tracker",
+	"bs-usagetracker-col-desc": "Descrição",
+	"bs-usagetracker-col-count": "Contagem"
 }

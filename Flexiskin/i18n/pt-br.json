@@ -5,9 +5,21 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-flexiskin-label": "Tema",
 	"bs-flexiskin-defaultname": "Padrão",
+	"prefs-flexiskin": "Tema",
 	"bs-flexiskin-labelname": "Nome",
 	"bs-flexiskin-labeldesc": "Descrição",
+	"bs-flexiskin-headergeneral": "Geral",
+	"bs-flexiskin-labelskins": "Predefinição",
+	"bs-flexiskin-headeractive": "Ativo",
+	"bs-flexiskin-headerheader": "Cabeçalho",
+	"bs-flexiskin-labellogoupload": "Logo",
+	"bs-flexiskin-labelbackgroundupload": "Imagem atual",
+	"bs-flexiskin-left": "esquerda",
+	"bs-flexiskin-right": "direita",
+	"bs-flexiskin-center": "centro",
+	"bs-flexiskin-labelcurrentbackground": "Imagem atual",
 	"action-flexiskin-viewspecialpage": "ver pagina especial \"Flexiskin\"",
 	"flexiskin": "Preferências de tema"
 }

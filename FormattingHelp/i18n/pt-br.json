@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"bs-formattinghelp-help-example-text": "Texto",
+	"bs-formattinghelp-help-bold": "Negrito",
+	"bs-formattinghelp-help-linebreak": "Quebra de linha",
+	"bs-formattinghelp-help-caption": "Legenda",
+	"bs-formattinghelp-help-extlink": "Ligação externa",
+	"bs-formattinghelp-help-template": "Predefinição",
+	"bs-formattinghelp-help-templatename": "Nome da predefinição"
+}

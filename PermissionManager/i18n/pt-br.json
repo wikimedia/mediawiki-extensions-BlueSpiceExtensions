@@ -4,6 +4,13 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-permissionmanager-header-group": "Grupo",
 	"bs-permissionmanager-btn-save-label": "Salvar",
-	"bs-permissionmanager-labeltpled-desc": "Descrição"
+	"bs-permissionmanager-labeltemplates": "Predefinições",
+	"bs-permissionmanager-labeltpled-desc": "Descrição",
+	"bs-permissionmanager-labeltpled-active": "Ativo",
+	"bs-permissionmanager-labeltpled-add": "Novo",
+	"bs-permissionmanager-labeltpled-edit": "Editar",
+	"bs-permissionmanager-labeltpled-delete": "Apagar",
+	"bs-permissionmanager-labeltpled-cancel": "Cancelar"
 }

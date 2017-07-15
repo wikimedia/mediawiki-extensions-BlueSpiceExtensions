@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"bs-groupmanager-label": "Gerenciador de grupos",
+	"bs-groupmanager-headergroup": "Grupo",
+	"groupmanager": "Gerenciador de grupos"
+}

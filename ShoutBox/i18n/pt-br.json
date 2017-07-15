@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"prefs-shoutbox": "Shoutbox",
+	"bs-shoutbox-title": "Shoutbox",
+	"bs-shoutbox-shout": "Enviar",
+	"bs-shoutbox-loading": "Carregando...",
+	"bs-shoutbox-confirm-title": "Confirmar"
+}
