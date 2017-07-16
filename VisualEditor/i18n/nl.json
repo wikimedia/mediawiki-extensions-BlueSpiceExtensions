@@ -5,7 +5,8 @@
 			"SPQRobin",
 			"Esketti",
 			"Siebrand",
-			"Jeleniccz"
+			"Jeleniccz",
+			"Festina90"
 		]
 	},
 	"bs-visualeditor-desc": "Visuele tekstverwerker voor MediaWiki",
@@ -35,11 +36,6 @@
 	"bs-visualeditor-bsactions-signature": "Ondertekening",
 	"bs-visualeditor-bsactions-save": "Opslaan",
 	"bs-visualeditor-bsactions-headings": "Koppen",
-	"bs-visualeditor-bsactions-paragraph": "Paragraaf",
-	"bs-visualeditor-bsactions-heading2": "Kop 2",
-	"bs-visualeditor-bsactions-heading3": "Kop 3",
-	"bs-visualeditor-bsactions-heading4": "Kop 4",
-	"bs-visualeditor-bsactions-heading5": "Kop 5",
-	"bs-visualeditor-bsactions-heading6": "Kop 6",
-	"bs-visualeditor-switch-noeditor-desc": "Schakelt de visuele tekstverwerker uit op deze pagina."
+	"bs-visualeditor-switch-noeditor-desc": "Schakelt de visuele tekstverwerker uit op deze pagina.",
+	"bs-visualeditor-editoptions-summary": "Overzicht"
 }
