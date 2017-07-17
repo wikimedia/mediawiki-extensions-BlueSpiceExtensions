@@ -33,5 +33,6 @@
 	"bs-visualeditor-bsactions-save": "Guardar",
 	"bs-visualeditor-bsactions-headings": "Títulos",
 	"bs-visualeditor-switch-noeditor-desc": "Desactiva el editor visual en esta página.",
-	"bs-visualeditor-bsactions-tablestyles": "Estilos de tablas"
+	"bs-visualeditor-bsactions-tablestyles": "Estilos de tablas",
+	"bs-visualeditor-editoptions-summary": "Resumen"
 }
