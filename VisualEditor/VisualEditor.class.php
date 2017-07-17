@@ -349,8 +349,9 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 
 		$this->bStartEditor = false;
 		//Overwrite user setting
-		$this->getOutput()->addJsConfigVars('bsVisualEditorUse', false);
-		BsConfig::set('MW::VisualEditor::Use', false, true); //This seems to be too late
+		$this->getOutput()->addJsConfigVars(
+			'bsVisualEditor__NOEDITOR__', true
+		);
 	}
 
 	/**
