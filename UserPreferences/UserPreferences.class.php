@@ -45,6 +45,7 @@ class UserPreferences extends BsExtensionMW {
 		$this->setHook( 'GetPreferences', 'onGetPreferences', true );
 		$this->setHook( 'UserSaveOptions' );
 		$this->setHook( 'BeforePageDisplay' );
+		$this->setHook( 'UserGetDefaultOptions' );
 
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
@@ -209,4 +210,23 @@ class UserPreferences extends BsExtensionMW {
 		return true;
 	}
 
+	/**
+	 * Adds default user settings for users that have not saved their
+	 * preferences yet. Is only called once at session start!
+	 * @param array $defaultOptions
+	 * @return boolean
+	 */
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		$aRegisteredVariables = BsConfig::getRegisteredVars();
+		foreach( $aRegisteredVariables as $oVariable ) {
+			//Allow overrides from LocalSettings.php
+			if( isset( $defaultOptions[$oVariable->getKey()] ) ) {
+				continue;
+			}
+			if( $oVariable->getOptions() & BsConfig::LEVEL_USER ) {
+				$defaultOptions[$oVariable->getKey()] = $oVariable->getValue();
+			}
+		}
+		return true;
+	}
 }
