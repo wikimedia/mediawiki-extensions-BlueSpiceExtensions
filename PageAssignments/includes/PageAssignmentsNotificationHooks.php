@@ -172,7 +172,7 @@ class PageAssignmentsNotificationHooks {
 	 * @param int $newid
 	 * @return boolean
 	 */
-	public static function onTitleMoveComplete( &$title, &$newtitle, &$user, $oldid, $newid ) {
+	public static function onTitleMoveComplete( &$title, &$newtitle, $user, $oldid, $newid ) {
 		PageAssignmentsNotificationHooks::notify(
 			'bs-pageassignments-page-move',
 			$user,
