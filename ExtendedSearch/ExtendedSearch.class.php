@@ -414,11 +414,8 @@ class ExtendedSearch extends BsExtensionMW {
 			//in turn means that we need to update the index entry of the file
 			//with the new categories
 			if ( $oTitle->getNamespace() === NS_FILE ) {
-				$oFile = wfFindFile( $oTitle );
-				if( !$oFile ) {
-					$oFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
-					if ( !$oFile ) return true;
-				}
+				$oFile = $this->getFileByTitle( $oTitle );
+
 				//Unfortunately BuildIndexMwSingleFile::indexCrawledDocuments
 				//checks if the file is already on the index. If so it does not
 				//apply the update. To have our categories be written to the
@@ -458,7 +455,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 * @param int $iNewID ID of the newly created redirect.
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, &$oUser, $iOldID, $iNewID ) {
+	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, $oUser, $iOldID, $iNewID ) {
 		try {
 			// Moving article
 			BuildIndexMainControl::getInstance()->updateIndexWikiByTitleObject( $oNewtitle );
@@ -468,8 +465,8 @@ class ExtendedSearch extends BsExtensionMW {
 			}
 			// Moving file if namespace of title is the file namespace
 			if ( $oTitle->getNamespace() == NS_FILE ) {
-				$oOldFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
-				$oNewFile = RepoGroup::singleton()->findFile( $oNewtitle );
+				$oOldFile = $this->getFileByTitle( $oTitle );
+				$oNewFile = $this->getFileByTitle( $oNewtitle );
 
 				BuildIndexMainControl::getInstance()->deleteIndexFile( $oOldFile->getPath(), 'repo' );
 				BuildIndexMainControl::getInstance()->updateIndexFile( $oNewFile );
@@ -524,7 +521,7 @@ class ExtendedSearch extends BsExtensionMW {
 	 */
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
 		try {
-			$oFile = wfFindFile( $oTitle );
+			$oFile = $this->getFileByTitle( $oTitle );
 			BuildIndexMainControl::getInstance()->updateIndexFile( $oFile );
 		} catch ( BsException $e ) {
 			wfDebugLog( 'ExtendedSearch', 'onFileUndeleteComplete: '.$e->getMessage() );
@@ -609,4 +606,21 @@ class ExtendedSearch extends BsExtensionMW {
 		$aHandlers['searchstats'] = array( 'class' => 'TagCloudSearchStatsHandler' );
 		return true;
 	}
+
+	/**
+	 * Tries to create a File object from a Title object
+	 * @param Title $oTitle
+	 * @throws Exception
+	 * @return File|boolean
+	 */
+	protected function getFileByTitle( $oTitle ) {
+		$oFile = RepoGroup::singleton()->findFile( $oTitle );
+		if( !$oFile ) {
+			$oFile = LocalFile::newFromTitle(
+				$oTitle, RepoGroup::singleton()->getLocalRepo()
+			);
+		}
+		return $oFile;
+	}
+
 }
