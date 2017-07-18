@@ -183,6 +183,11 @@ Ext.define( 'BS.InsertFile.ImageDialog', {
 
 		this.callParent(arguments);
 	},
+	makeRgNsTextItems: function() {
+		var items = this.callParent( arguments );
+		items[0].boxLabel = mw.message('bs-insertfile-nstextfile-image').plain();
+		return items;
+	},
 	//We need to set the
 	onStImageGridLoad: function( store, records, successful, eOpts ) {
 		//Only if we have a image selected

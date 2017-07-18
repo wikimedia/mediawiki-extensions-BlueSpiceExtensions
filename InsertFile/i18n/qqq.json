@@ -46,6 +46,8 @@
 	"apihelp-bs-insertfile-license-store-summary": "Describes the API endpoint that lists the licenses for the extension InserFile\n{{doc-apihelp-summary|bs-insertfile-license-store}}",
 	"bs-insertfile-enable-align": "Label for check box that enables alignment settings\n{{Identical|Enable}}",
 	"bs-insertfile-nstext": "Label for radio button group that allows to choose between different insertion modes of file/media wikitext links\n{{Identical|Link type}}",
-	"bs-insertfile-nstextfile": "Label for radio button for \"File\" namespace prefix in wikitext link\n{{Identical|File}}",
-	"bs-insertfile-nstextmedia": "Label for radio button for \"Media\" namespace prefix in wikitext link\n{{Identical|Media}}"
+	"bs-insertfile-nstextfile": "Label for radio button for \"File\" namespace prefix in wikitext link. Default text.\n{{Identical|File}}",
+	"bs-insertfile-nstextmedia": "Label for radio button for \"Media\" namespace prefix in wikitext link\n{{Identical|Media}}",
+	"bs-insertfile-nstextfile-file": "Label for radio button for \"File\" namespace prefix in wikitext link. Used in InsertFile dialoge.\n{{Identical|File}}",
+	"bs-insertfile-nstextfile-image": "Label for radio button for \"File\" namespace prefix in wikitext link. Used in InsertImage dialoge.\n{{Identical|File}}"
 }

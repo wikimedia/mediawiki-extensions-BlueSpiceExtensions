@@ -188,21 +188,7 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 			layout: {
 				type: 'hbox'
 			},
-			items: [{
-				boxLabel: mw.message('bs-insertfile-nstextfile').plain(),
-				itemId: 'ns-text-file',
-				name: 'ns-text',
-				inputValue: 'file',
-				checked: true,
-				width: 80
-			},{
-				boxLabel: mw.message('bs-insertfile-nstextmedia').plain(),
-				itemId: 'ns-text-media',
-				name: 'ns-text',
-				inputValue: 'media',
-				checked: false,
-				width: 80
-			}]
+			items: this.makeRgNsTextItems()
 		});
 
 		this.configPanel.items.unshift(this.rgNsText);
@@ -220,6 +206,24 @@ Ext.define( 'BS.InsertFile.BaseDialog', {
 
 		$(document).trigger("BSInsertFileInsertBaseDialogAfterInit", [this, this.items]);
 		this.callParent(arguments);
+	},
+
+	makeRgNsTextItems: function() {
+			return [{
+				boxLabel: mw.message('bs-insertfile-nstextfile').plain(),
+				itemId: 'ns-text-file',
+				name: 'ns-text',
+				inputValue: 'file',
+				checked: true,
+				width: 160
+			},{
+				boxLabel: mw.message('bs-insertfile-nstextmedia').plain(),
+				itemId: 'ns-text-media',
+				name: 'ns-text',
+				inputValue: 'media',
+				checked: false,
+				width: 160
+			}]
 	},
 
 	onStImageGridLoad: function( store, records, successful, eOpts ) {
