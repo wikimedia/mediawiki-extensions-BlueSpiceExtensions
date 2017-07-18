@@ -130,7 +130,7 @@ class Emoticons extends BsExtensionMW {
 		}
 
 		$fCallable = function( $aMatches ) use( $aMapping ) {
-			return empty( $aMatches[0] ) ? '' : str_replace(
+			return strlen( $aMatches[0] ) === 0 ? '' : str_replace(
 				$aMapping['emoticons'],
 				$aMapping['replacements'],
 				$aMatches[0]
