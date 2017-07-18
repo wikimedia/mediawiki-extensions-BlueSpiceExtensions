@@ -10,5 +10,7 @@
 	"bs-insertfile-button-file-title": "'Nzerisce o cange 'nu file",
 	"bs-insertfile-filename": "Nome d'u file",
 	"bs-insertfile-enable-align": "Abbilite",
-	"bs-insertfile-nstextmedia": "Media"
+	"bs-insertfile-nstextfile-file": "Fà 'ndrucà 'u collegamende a 'u metadate",
+	"bs-insertfile-nstextfile-image": "Fà 'ndrucà l'immaggine",
+	"bs-insertfile-nstextmedia": "Fà 'ndrucà 'u collegamende pe scarecà"
 }

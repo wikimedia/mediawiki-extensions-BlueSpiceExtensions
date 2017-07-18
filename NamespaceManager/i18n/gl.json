@@ -50,5 +50,6 @@
 	"apihelp-bs-namespace-tasks-description": "Permite a modificación da configuración dos espazos de nomes.",
 	"apihelp-bs-namespace-tasks-summary": "Permite a modificación da configuración dos espazos de nomes.",
 	"action-namespacemanager-viewspecialpage": "ver a páxina especial do xestor de espazos de nomes",
-	"namespacemanager": "Xestor de espazos de nomes"
+	"namespacemanager": "Xestor de espazos de nomes",
+	"bs-namespacemanager-label-istalk": "Conversa"
 }

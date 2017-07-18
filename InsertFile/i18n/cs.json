@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meliganai"
+			"Meliganai",
+			"Dvorapa"
 		]
 	},
 	"bs-insertfile-nstext": "Typ odkazu",
 	"bs-insertfile-nstextfile": "Soubor",
-	"bs-insertfile-nstextmedia": "Média"
+	"bs-insertfile-nstextmedia": "Zobrazit odkaz ke stažení"
 }

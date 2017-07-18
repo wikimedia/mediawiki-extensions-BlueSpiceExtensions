@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Mikel Ibaiba"
 		]
 	},
 	"bs-permissionmanager-btn-group-label": "Taldea:",
@@ -23,5 +24,7 @@
 	"bs-permissionmanager-msgtpled-deletefail": "Ezin izan da txantiloia ezabatu.",
 	"bs-permissionmanager-titletpled-new": "Txantiloia sortu",
 	"bs-permissionmanager-titletpled-delete": "Txantiloia ezabatu",
-	"bs-permissionmanager-unsaved-changes": "Gorde gabeko aldaketak daude. Benetan orrialdetik irten nahi duzu? Gorde gabeko aldaketak galduko dira."
+	"bs-permissionmanager-unsaved-changes": "Gorde gabeko aldaketak daude. Benetan orrialdetik irten nahi duzu? Gorde gabeko aldaketak galduko dira.",
+	"bs-permissionmanager-affected-by-explicit": "$1 blokeatu da",
+	"bs-permissionmanager-affected-by-inherited": "$1tik oinordetzan jasota"
 }

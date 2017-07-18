@@ -6,5 +6,6 @@
 	},
 	"bs-insertfile-enable-align": "সক্রিয়",
 	"bs-insertfile-nstextfile": "ফাইল",
-	"bs-insertfile-nstextmedia": "মিডিয়া"
+	"bs-insertfile-nstextfile-image": "চিত্র দেখান",
+	"bs-insertfile-nstextmedia": "ডাউনলোডের সংযোগ দেখান"
 }

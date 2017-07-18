@@ -31,11 +31,8 @@
 	"bs-visualeditor-bsactions-signature": "Sinatura",
 	"bs-visualeditor-bsactions-save": "Gardar",
 	"bs-visualeditor-bsactions-headings": "Cabeceiras",
-	"bs-visualeditor-bsactions-paragraph": "Parágrafo",
-	"bs-visualeditor-bsactions-heading2": "Cabeceira 2",
-	"bs-visualeditor-bsactions-heading3": "Cabeceira 3",
-	"bs-visualeditor-bsactions-heading4": "Cabeceira 4",
-	"bs-visualeditor-bsactions-heading5": "Cabeceira 5",
-	"bs-visualeditor-bsactions-heading6": "Cabeceira 6",
-	"bs-visualeditor-switch-noeditor-desc": "Desactiva o Editor Visual nesta páxina."
+	"bs-visualeditor-switch-noeditor-desc": "Desactiva o Editor Visual nesta páxina.",
+	"bs-visualeditor-bsactions-tablefunctions": "Funcións de táboa",
+	"bs-visualeditor-bsactions-tablestyles": "Estilos de táboas",
+	"bs-visualeditor-editoptions-summary": "Resumo"
 }

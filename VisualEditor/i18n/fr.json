@@ -3,7 +3,8 @@
 		"authors": [
 			"SnowedEarth",
 			"Gomoko",
-			"Urhixidur"
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"bs-visualeditor-desc": "Éditeur visuel pour MédiaWiki",
@@ -36,6 +37,6 @@
 	"bs-visualeditor-bsactions-headings": "Rubriques",
 	"bs-visualeditor-switch-noeditor-desc": "Désactive l'éditeur visuel pour cette page.",
 	"bs-visualeditor-bsactions-tablefunctions": "Fonctions de tableau",
-	"bs-visualeditor-bsactions-tablestyles": "Styles de tableau",
+	"bs-visualeditor-bsactions-tablestyles": "Styles de tableaux",
 	"bs-visualeditor-editoptions-summary": "Résumé"
 }

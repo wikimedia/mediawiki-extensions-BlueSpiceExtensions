@@ -5,7 +5,7 @@
 			"Hamilton Abreu"
 		]
 	},
-	"bs-insertfile-desc": "Diálogo para carregar ficheiros e inserir um <i>link</i> para um ficheiro",
+	"bs-insertfile-desc": "Diálogo para carregar ficheiros e inserir um link para um ficheiro",
 	"bs-insertfile-insert-image": "Inserir imagem",
 	"bs-insertfile-insert-file": "Inserir ficheiro",
 	"bs-insertfile-button-image-title": "Inserir ou editar imagem",
@@ -34,15 +34,17 @@
 	"bs-insertfile-titleimage": "Inserir imagem",
 	"bs-insertfile-tipkeepratio": "Manter proporções",
 	"bs-insertfile-of": "de",
-	"bs-insertfile-select-a-link": "Selecionar ou escrever um <i>link</i>",
+	"bs-insertfile-select-a-link": "Selecionar ou escrever um link",
 	"bs-insertfile-linktext": "Mostrar texto",
-	"bs-insertfile-no-link": "Sem <i>link</i>",
-	"bs-insertfile-error-no-medialink": "Não foi selecionado nenhum <i>link</i> para um ficheiro multimédia.",
-	"bs-insertfile-error-no-imagelink": "Não foi selecionado nenhum <i>link</i> para uma imagem.",
+	"bs-insertfile-no-link": "Sem link",
+	"bs-insertfile-error-no-medialink": "Não foi selecionado nenhum link para um ficheiro multimédia.",
+	"bs-insertfile-error-no-imagelink": "Não foi selecionado nenhum link para uma imagem.",
 	"apihelp-bs-insertfile-license-store-description": "Lista as licenças para a extensão InsertFile.",
 	"apihelp-bs-insertfile-license-store-summary": "Lista as licenças para a extensão InsertFile.",
 	"bs-insertfile-enable-align": "Ativar",
 	"bs-insertfile-nstext": "Tipo de link",
 	"bs-insertfile-nstextfile": "Ficheiro",
-	"bs-insertfile-nstextmedia": "Multimédia"
+	"bs-insertfile-nstextfile-file": "Mostrar link para metadados",
+	"bs-insertfile-nstextfile-image": "Mostrar imagem",
+	"bs-insertfile-nstextmedia": "Mostrar link para download"
 }
