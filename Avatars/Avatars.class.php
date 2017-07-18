@@ -126,28 +126,12 @@ class Avatars extends BsExtensionMW {
 			$oUserMiniProfileView->setUserImageSrc(BsConfig::get('MW::DefaultUserImage'));
 			return true;
 		}
+
 		# Set or generate user's avatar
-		$oUserMiniProfileView->setUserImageSrc($this->generateAvatar($oUser, $aParams));
-
-		$oFile = self::getAvatarFile( $oUser->getId() );
-
-		if( !$oFile || !$oFile->exists() ) {
-			return true;
-		}
-		if( !isset( $aParams['width'] ) ) {
-			$aParams['width'] = $oFile->getWidth();
-		}
-		if( $aParams['width'] > $oFile->getWidth() ) {
-			$aParams['width'] = $oFile->getWidth();
-		}
-		if( !isset( $aParams['height'] ) ) {
-			$aParams['height'] = $oFile->getHeight();
-		}
-		if( $aParams['height'] > $oFile->getHeight() ) {
-			$aParams['height'] = $oFile->getHeight();
-		}
-
-		$oUserMiniProfileView->setOptions( $aParams );
+		$oUserMiniProfileView->setUserImageSrc( $this->generateAvatar(
+			$oUser,
+			$aParams
+		));
 
 		return true;
 	}
