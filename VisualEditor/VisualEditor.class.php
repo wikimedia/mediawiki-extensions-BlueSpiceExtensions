@@ -129,6 +129,8 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 		'table_default_attributes' => array(
 			'class' => 'contenttable sortable'
 		),
+		//disable table toolbar as it does not work properly with scrolling
+		'table_toolbar' => "",
 		#'document_base_url' => $GLOBALS['wgServer'],
 		'formats' => array(
 			'table-property-sortable' => array( 'selector' => 'table', 'classes' => 'sortable' ),
