@@ -214,3 +214,23 @@ $( document ).on( 'keyup', '#bs-ve-wpSummary.wpSummary-active', function(){
 $( document ).on( 'keyup', '#wpSummary.wpSummary-active' , function(){
 	$( '#bs-ve-wpSummary' ).val( $( '#wpSummary' ).val() );
 });
+
+$( document ).on( 'paste', '#bs-ve-wpSummary', function(){
+	$( '#wpSummary' ).removeClass( 'wpSummary-active' );
+	$( '#bs-ve-wpSummary' ).addClass( 'wpSummary-active' );
+});
+
+$( document ).on( 'paste', '#wpSummary', function(){
+	$( '#bs-ve-wpSummary' ).removeClass( 'wpSummary-active' );
+	$( '#wpSummary' ).addClass( 'wpSummary-active' );
+});
+
+$( document ).on( 'blur', '#bs-ve-wpSummary.wpSummary-active', function(){
+	$( '#wpSummary' ).val( $( '#bs-ve-wpSummary' ).val() );
+	$( '#bs-ve-wpSummary' ).removeClass( 'wpSummary-active' );
+});
+
+$( document ).on( 'blur', '#wpSummary.wpSummary-active' , function(){
+	$( '#bs-ve-wpSummary' ).val( $( '#wpSummary' ).val() );
+	$( '#wpSummary' ).removeClass( 'wpSummary-active' );
+});

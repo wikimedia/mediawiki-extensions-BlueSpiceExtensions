@@ -92,41 +92,53 @@ td.mceToolbar {
 }
 
 #bs-ve-wpSummary {
-	height: 18px;
+	line-height: 1.5em;
+	height: auto;
 	margin: 5px;
 	margin-right: 0px;
-	padding-left: 3px;
-	padding-right: 3px;
+	padding: 0px 3px 0px 3px;
 	background-color: white;
 	color: black;
+	border: 1px solid #7a7a7a;
+	font-size: 0.938em;
+}
+#bs-ve-wpSummary:hover {
 	border: 1px solid black;
-	border-radius: 3px;
 }
 
 #bs-ve-wpSave,
 #bs-ve-wpPreview,
 #bs-ve-wpDiff{
-	padding: 1px 5px;
+	line-height: 1.5em;
+	padding: 0px 8px;
 	margin-top: 5px;
 	margin-left: 5px;
 	text-align: center;
 	cursor: default;
-	border: 1px solid rgb(192, 192, 192);
-	border-radius: 3px;
-	background-color: rgb(240, 240, 240);
+	border: 1px solid #adadad;
+	background-color: #e1e1e1;
 	font-size: 0.938em;
 }
 
 #bs-ve-wpSave:hover,
 #bs-ve-wpPreview:hover,
 #bs-ve-wpDiff:hover{
-	background-color: #e3e3e3;
+	background-color: #e5f1fb;
+	border: 1px solid #0078d7;
+}
+
+bs-ve-wpSave:active,
+#bs-ve-wpPreview:active,
+#bs-ve-wpDiff:active{
+	background-color: #cce4f7;
+	border: 1px solid #005499;
 }
 
 #bs-ve-mw-editform-cancel {
 	padding: 5px;
 	font-size: 0.938em;
 	line-height: 2.5em;
+	margin-left: 8px;
 }
 
 #bs-editbutton-visualeditor {
