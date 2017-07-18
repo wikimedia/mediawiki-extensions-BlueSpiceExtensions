@@ -43,5 +43,7 @@
 	"bs-insertfile-enable-align": "Enable",
 	"bs-insertfile-nstext": "Link type",
 	"bs-insertfile-nstextfile": "File",
-	"bs-insertfile-nstextmedia": "Media"
+	"bs-insertfile-nstextfile-file": "Show link to metadata",
+	"bs-insertfile-nstextfile-image": "Show image",
+	"bs-insertfile-nstextmedia": "Show download link"
 }

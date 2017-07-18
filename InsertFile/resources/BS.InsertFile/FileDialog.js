@@ -21,5 +21,12 @@ Ext.define( 'BS.InsertFile.FileDialog', {
 	},
 	onPnlConfigExpand: function(panel, eOpts){
 		this.callParent(arguments);
+	},
+	makeRgNsTextItems: function() {
+		var items = this.callParent( arguments );
+		items[0].checked = false;
+		items[0].boxLabel = mw.message('bs-insertfile-nstextfile-file').plain();
+		items[1].checked = true;
+		return items;
 	}
 });
