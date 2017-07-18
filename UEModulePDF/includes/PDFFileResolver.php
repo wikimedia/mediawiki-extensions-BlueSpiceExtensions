@@ -127,7 +127,7 @@ class PDFFileResolver {
 	}
 
 	protected function setAbsoluteFilesystemPath() {
-		global $wgUploadPath;
+		global $wgUploadDirectory;
 
 		if( $this->oFileObject instanceof File && $this->oFileObject->exists() ) {
 			$oFileRepoLocalRef = $this->oFileObject->getRepo()->getLocalReference( $this->oFileObject->getPath() );
@@ -136,12 +136,13 @@ class PDFFileResolver {
 			}
 			$this->sSourceFileName = $this->oFileObject->getName();
 		} else {
-			$this->sAbsoluteFilesystemPath = $this->getFileSystemPath( $wgUploadPath . $this->sSourceFilePath );
+			$this->sAbsoluteFilesystemPath = $this->getFileSystemPath( $wgUploadDirectory . $this->sSourceFilePath );
 		}
 	}
 
 	protected function setFileName() {
-		if( !empty( $this->sAbsoluteFilesystemPath ) ) {
+		$this->sFileName = $this->sSourceFileName;
+		if( !empty( $this->sAbsoluteFilesystemPath ) && $this->oFileObject instanceof File ) {
 			$this->sFileName = $this->oFileObject->getName();
 		}
 	}
