@@ -224,7 +224,11 @@ class UserPreferences extends BsExtensionMW {
 				continue;
 			}
 			if( $oVariable->getOptions() & BsConfig::LEVEL_USER ) {
-				$defaultOptions[$oVariable->getKey()] = $oVariable->getValue();
+				$mValue = $oVariable->getValue();
+				if( !is_scalar(  $mValue ) ) {
+					continue;
+				}
+				$defaultOptions[$oVariable->getKey()] = $mValue;
 			}
 		}
 		return true;
