@@ -39,6 +39,7 @@
 class WhoIsOnline extends BsExtensionMW {
 
 	private $aWhoIsOnlineData = array();
+	protected static $bContextAlreadyTraced = false;
 
 
 
@@ -214,18 +215,18 @@ class WhoIsOnline extends BsExtensionMW {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onParserFirstCallInit( &$oParser ) {
-		$oTitle = $oParser->getTitle() instanceof Title
-			? $oParser->getTitle()
-			: RequestContext::getMain()->getTitle()
-		;
-		if( !$oTitle instanceof Title ) {
-			$oTitle = Title::newMainPage();
+		$oTitle = RequestContext::getMain()->getTitle();
+
+		//Only trace once, or the bs_whoisonline table gets filled with all
+		//transcluded articles f.e.
+		if( !static::$bContextAlreadyTraced && $oTitle instanceof Title ) {
+			$this->insertTrace(
+				$oTitle,
+				RequestContext::getMain()->getUser(),
+				RequestContext::getMain()->getRequest()
+			);
+			static::$bContextAlreadyTraced = true;
 		}
-		$this->insertTrace(
-			$oTitle,
-			RequestContext::getMain()->getUser(),
-			RequestContext::getMain()->getRequest()
-		);
 
 		$oParser->setFunctionHook( 'userscount', array( $this, 'onUsersCount' ) );
 		$oParser->setHook( 'bs:whoisonline:count', array( $this, 'onUsersCountTag' ) );
