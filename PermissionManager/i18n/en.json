@@ -37,8 +37,6 @@
 	"bs-permissionmanager-titletpled-new": "Create template",
 	"bs-permissionmanager-titletpled-edit": "Rename template",
 	"bs-permissionmanager-titletpled-delete": "Delete template",
-	"bs-permissionmanager-pref-lockmode": "Activate lockmode",
-	"bs-permissionmanager-pref-skipsysns": "Skip system namespaces if lockmode is active",
 	"bs-permissionmanager-pref-enablerealitycheck": "Activate permission check",
 	"bs-permissionmanager-pref-max-backups": "Backup limit",
 	"bs-permissionmanager-unsaved-changes": "There are unsaved changes. Do you really want to leave the page now? The unsaved changes will be lost.",
