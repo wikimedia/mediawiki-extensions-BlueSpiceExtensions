@@ -206,15 +206,11 @@ class Readers extends BsExtensionMW {
 		);
 
 		if ( $oDbr->numRows( $res ) > 0 ) {
-			$aParams = array();
-			$aParams['width'] = BsConfig::get( 'MW::Authors::ImageWidth' );
-			$aParams['height'] = BsConfig::get( 'MW::Authors::ImageHeight' );
-
 			$oViewReaders = new ViewReaders();
 			while ( $row = $oDbr->fetchObject( $res ) ) {
 				$oUser = User::newFromId( (int)$row->readers_user_id );
 
-				$oUserMiniProfile = $this->mCore->getUserMiniProfile( $oUser, $aParams );
+				$oUserMiniProfile = $this->mCore->getUserMiniProfile( $oUser );
 				$oViewReaders->addItem( $oUserMiniProfile );
 			}
 		}

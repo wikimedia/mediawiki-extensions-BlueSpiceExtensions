@@ -141,10 +141,6 @@ class Authors extends BsExtensionMW {
 		$aBlacklist = BsConfig::get( 'MW::Authors::Blacklist' );
 		$sMoreImage = BsConfig::get( 'MW::Authors::MoreImage' );
 
-		$aParams = array();
-		$aParams['width'] = BsConfig::get( 'MW::Authors::ImageWidth' );
-		$aParams['height'] = BsConfig::get( 'MW::Authors::ImageHeight' );
-
 		$sPrintable = $oSkin->getRequest()->getVal( 'printable', 'no' );
 		$iArticleId = $oTitle->getArticleID();
 
@@ -224,7 +220,9 @@ class Authors extends BsExtensionMW {
 				}
 				$aDetails['username'] = $oAuthorUser->getName();
 
-				$oUserMiniProfileView = BsCore::getInstance()->getUserMiniProfile( $oAuthorUser, $aParams );
+				$oUserMiniProfileView = BsCore::getInstance()->getUserMiniProfile(
+					$oAuthorUser
+				);
 				if ( $sPrintable == 'yes' ) {
 					$oUserMiniProfileView->setOption( 'print', true );
 				}
@@ -235,7 +233,9 @@ class Authors extends BsExtensionMW {
 			}
 
 			if ( $bAddMore === true ) {
-				$oMoreAuthorsView = BsCore::getInstance()->getUserMiniProfile( new User(), $aParams );
+				$oMoreAuthorsView = BsCore::getInstance()->getUserMiniProfile(
+					new User()
+				);
 				$oMoreAuthorsView->setOption( 'userdisplayname', wfMessage( 'bs-authors-show-all-authors' )->plain() );
 				$oMoreAuthorsView->setOption( 'userimagesrc', $this->getImagePath( true ) . '/' . $sMoreImage );
 				$oMoreAuthorsView->setOption( 'linktargethref', $oTitle->getLocalURL( array( 'action' => 'history' ) ) );
