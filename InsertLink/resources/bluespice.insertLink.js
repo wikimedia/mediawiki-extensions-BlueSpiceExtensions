@@ -234,6 +234,8 @@ var BsInsertLinkVisualEditorConnector = {
 			editor.dom.replace(newNode, node);
 
 			return;
+		} else {
+			editor.insertContent(newAnchor);
 		}
 	}
 };
