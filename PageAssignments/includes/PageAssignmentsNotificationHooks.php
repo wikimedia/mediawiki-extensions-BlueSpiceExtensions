@@ -100,6 +100,10 @@ class PageAssignmentsNotificationHooks {
 			'notification-bs-pageassignments-user-group-remove-body',
 			array( 'agent', 'title', 'titlelink', 'group', 'groupcount' )
 		);
+
+		array_unshift(
+		  $GLOBALS[ 'wgHooks' ]['userCan'], "PageAssignmentsUsersAdditionalPermissionsHooks::onUserCan"
+		);
 	}
 
 	/**
