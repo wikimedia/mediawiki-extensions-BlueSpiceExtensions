@@ -60,7 +60,7 @@
 				}
 			).done( function( response )  {
 				if( response.payload_count > 0 ) {
-					for(item in response.payload.items){
+					for( var item in response.payload.items ){
 						items.push(response.payload.items[item]);
 					}
 					showMenu( anchor, items, e );
