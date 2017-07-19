@@ -54,10 +54,39 @@ class PageAssignmentsUsersAdditionalPermissionsHooks {
 		return true;
 	}
 
+	/**
+	 * Add edit right permission for current logged in user if review process
+	 * add edit permission
+	 * @param User $user
+	 * @param type $rights
+	 * @return boolean
+	 */
+	public static function onUserGetRights( User $user, &$aRights ) {
+		global $wgTitle;
+
+		if ( $wgTitle == null ) {
+			return true;
+		}
+
+		//check pageassignment for current user
+		$aPermissions = BsConfig::get(
+			'MW::PageAssignments::Permissions'
+		);
+
+		$arrUsers = PageAssignments::resolveAssignmentsToUserIds( $wgTitle );
+		if ( in_array( $user->getId(), $arrUsers ) ) {
+			$aRights = array_merge( $aRights, $aPermissions );
+		}
+
+		return true;
+	}
+
+
 	public static function addAdditionalPermissions( $oTitle, $oUser ) {
 		$aPermissions = BsConfig::get(
-			'MW::AssignedUsersAdditionalPermissions::Permissions'
+			'MW::PageAssignments::Permissions'
 		);
+
 		if( empty($aPermissions) ) {
 			return true;
 		}
