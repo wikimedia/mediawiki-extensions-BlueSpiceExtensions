@@ -26,5 +26,8 @@
 	"bs-permissionmanager-titletpled-delete": "Txantiloia ezabatu",
 	"bs-permissionmanager-unsaved-changes": "Gorde gabeko aldaketak daude. Benetan orrialdetik irten nahi duzu? Gorde gabeko aldaketak galduko dira.",
 	"bs-permissionmanager-affected-by-explicit": "$1 blokeatu da",
-	"bs-permissionmanager-affected-by-inherited": "$1tik oinordetzan jasota"
+	"bs-permissionmanager-affected-by-inherited": "$1tik oinordetzan jasota",
+	"bs-permissionmanager-affected-by-notset": "Ez da aktibatu",
+	"bs-permissionmanager-affected-by-explicitlyset": "Bereziki aktibatuta",
+	"bs-permissionmanager-affected-by-setonwiki": "Wiki maila aktibatu"
 }

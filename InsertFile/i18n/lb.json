@@ -39,6 +39,7 @@
 	"bs-insertfile-enable-align": "Aschalten",
 	"bs-insertfile-nstext": "Typ vu Link",
 	"bs-insertfile-nstextfile": "Fichier",
+	"bs-insertfile-nstextfile-file": "Link op d'Metadate weisen",
 	"bs-insertfile-nstextfile-image": "Bild weisen",
 	"bs-insertfile-nstextmedia": "Download-Link weisen"
 }

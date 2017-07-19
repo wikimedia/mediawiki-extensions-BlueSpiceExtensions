@@ -11,5 +11,6 @@
 	"bs-insertfile-linktext": "Erakutsi testua",
 	"bs-insertfile-nstext": "Link mota",
 	"bs-insertfile-nstextfile": "Fitxategia",
-	"bs-insertfile-nstextmedia": "Multimedia fitxategiak"
+	"bs-insertfile-nstextfile-image": "Irudia erakutsi",
+	"bs-insertfile-nstextmedia": "Jaitsitako esteka erakutsi"
 }

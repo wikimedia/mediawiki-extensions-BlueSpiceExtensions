@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"ToJack"
+		]
+	},
+	"bs-extendedsearch-category-filter": "{{PLURAL:$1|Гурӯҳ}}: $2",
+	"bs-extendedsearch-facet-category": "Гурӯҳ"
+}

@@ -44,5 +44,7 @@
 	"bs-insertfile-enable-align": "启用",
 	"bs-insertfile-nstext": "链接类型",
 	"bs-insertfile-nstextfile": "文件",
-	"bs-insertfile-nstextmedia": "媒体"
+	"bs-insertfile-nstextfile-file": "显示至元数据的链接",
+	"bs-insertfile-nstextfile-image": "显示图像",
+	"bs-insertfile-nstextmedia": "显示下载链接"
 }

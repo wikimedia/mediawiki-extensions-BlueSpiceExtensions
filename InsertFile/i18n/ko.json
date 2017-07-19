@@ -21,5 +21,7 @@
 	"bs-insertfile-enable-align": "사용",
 	"bs-insertfile-nstext": "링크 유형",
 	"bs-insertfile-nstextfile": "파일",
-	"bs-insertfile-nstextmedia": "미디어"
+	"bs-insertfile-nstextfile-file": "메타데이터의 링크 표시",
+	"bs-insertfile-nstextfile-image": "그림 표시",
+	"bs-insertfile-nstextmedia": "다운로드 링크 표시"
 }
