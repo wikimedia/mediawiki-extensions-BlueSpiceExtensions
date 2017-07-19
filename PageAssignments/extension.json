@@ -2,7 +2,8 @@
 	"name": "PageAssignments",
 	"author": [
 		"Robert Vogel",
-		"Patric Wirth"
+		"Patric Wirth",
+		"Leonid Verhovskij"
 	],
 	"url": "https://help.bluespice.com/index.php/PageAssignments",
 	"type": "bluespice",
@@ -178,7 +179,7 @@
 		"PageContentSaveComplete": "PageAssignmentsNotificationHooks::onPageContentSaveComplete",
 		"BSUserManagerAfterSetGroups": "PageAssignmentsNotificationHooks::onBSUserManagerAfterSetGroups",
 		"UserAddGroup": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserAddGroup",
-		"userCan": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserCan",
+		"UserGetRights": "PageAssignmentsUsersAdditionalPermissionsHooks::onUserGetRights",
 		"RevisionAjaxReviewBeforeParams": "PageAssignmentsUsersAdditionalPermissionsHooks::onRevisionAjaxReviewBeforeParams",
 		"BSBookshelfBookManager": "PageAssignmentsBookmakerHooks::onBSBookshelfBookManager",
 		"BSBookshelfManagerGetBookDataRow": "PageAssignmentsBookmakerHooks::onBSBookshelfManagerGetBookDataRow",
