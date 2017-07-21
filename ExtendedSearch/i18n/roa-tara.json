@@ -24,11 +24,14 @@
 	"bs-extendedsearch-specialpage-form-return-to-simple": "Module de ricerche semblice",
 	"bs-extendedsearch-specialpage-form-expand-to-extended": "Module de ricerche estese",
 	"bs-extendedsearch-searchfulltext": "Stoche a tènghe ...",
+	"bs-extendedsearch-pref-scope-title": "Titole",
 	"bs-extendedsearch-ascending": "Inghiananne",
 	"bs-extendedsearch-descending": "Scennènne",
 	"bs-extendedsearch-unknown": "Scanusciute",
 	"bs-extendedsearch-section": "Sezione",
 	"bs-extendedsearch-morelikethis": "Pàggene ca s'assemegghiane",
 	"bs-extendedsearch-more": "De cchiù",
-	"bs-extendedsearch-fewer": "De mene"
+	"bs-extendedsearch-fewer": "De mene",
+	"bs-extendedsearch-facetsetting-op-and": "E",
+	"bs-extendedsearch-facetsetting-op-or": "O"
 }
