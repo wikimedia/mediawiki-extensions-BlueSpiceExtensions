@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Дзяніс Тутэйшы"
+			"Дзяніс Тутэйшы",
+			"Da voli"
 		]
 	},
-	"bs-insertfile-alignleft": "злева"
+	"bs-insertfile-alignleft": "злева",
+	"bs-insertfile-nstextfile-image": "Паказаць выяву"
 }

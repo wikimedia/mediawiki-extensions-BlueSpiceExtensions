@@ -18,5 +18,9 @@
 	"bs-readers-header-username": "Benutzername",
 	"bs-readers-header-readerspath": "Leser",
 	"bs-readers-header-ts": "Datum",
-	"bs-readers-header-page": "Seite"
+	"bs-readers-header-page": "Seite",
+	"apihelp-bs-readers-data-store-description": "Ruft Leserinformationen einer angegebenen Seite ab.",
+	"apihelp-bs-readers-data-store-summary": "Ruft Leserinformationen einer angegebenen Seite ab.",
+	"apihelp-bs-readers-users-store-description": "Ruft alle Leserinformationen einer angegebenen Seite ab.",
+	"apihelp-bs-readers-users-store-summary": "Ruft alle Leserinformationen einer angegebenen Seite ab."
 }
