@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Piramidion"
+			"Piramidion",
+			"SimondR"
 		]
 	},
 	"bs-insertfile-desc": "Діалог завантаження файлів і вставлення посилання на файл",
@@ -41,5 +42,8 @@
 	"bs-insertfile-error-no-imagelink": "Посилання на зображення не вибрано.",
 	"apihelp-bs-insertfile-license-store-description": "Перелічує ліцензії для розширення InsertFile.",
 	"apihelp-bs-insertfile-license-store-summary": "Перелічує ліцензії для розширення InsertFile.",
-	"bs-insertfile-enable-align": "Увімкнути"
+	"bs-insertfile-enable-align": "Увімкнути",
+	"bs-insertfile-nstext": "Тип посилання",
+	"bs-insertfile-nstextfile": "Файл",
+	"bs-insertfile-nstextfile-image": "Показати зображення"
 }

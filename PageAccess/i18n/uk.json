@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Piramidion"
+			"Piramidion",
+			"SimondR"
 		]
 	},
 	"bs-pageaccess-desc": "Контролює доступ на рівні сторінок",
@@ -15,5 +16,6 @@
 	"log-description-bs-pageaccess": "Це журнал змін у налаштуваннях доступу до сторінок.",
 	"log-show-hide-bs-pageaccess": "$1 журнал доступу до сторінок",
 	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|змінив|змінила}} права доступу $3 до «$4»",
-	"action-pageaccess-viewspecialpage": "перегляд спеціальної сторінки «{{int:pageaccess}}»"
+	"action-pageaccess-viewspecialpage": "перегляд спеціальної сторінки «{{int:pageaccess}}»",
+	"bs-pageaccess-column-groups": "Групи"
 }

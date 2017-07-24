@@ -3,7 +3,8 @@
 		"authors": [
 			"Ата",
 			"Andriykopanytsia",
-			"Piramidion"
+			"Piramidion",
+			"SimondR"
 		]
 	},
 	"bs-permissionmanager-desc": "Адміністративний інтерфейс для редагування прав користувача",
@@ -38,8 +39,6 @@
 	"bs-permissionmanager-titletpled-new": "Створити шаблон",
 	"bs-permissionmanager-titletpled-edit": "Перейменувати шаблон",
 	"bs-permissionmanager-titletpled-delete": "Видалити шаблон",
-	"bs-permissionmanager-pref-lockmode": "Активувати lockmode",
-	"bs-permissionmanager-pref-skipsysns": "Пропустити системні простори назв, якщо активний lockmode",
 	"bs-permissionmanager-pref-enablerealitycheck": "Активувати перевірку дозволів",
 	"bs-permissionmanager-pref-max-backups": "Ліміт резервного копіювання",
 	"bs-permissionmanager-unsaved-changes": "Є незбережені зміни. Ви дійсно хочете покинути сторінку зараз? Незбережені зміни будуть втрачені.",
@@ -51,5 +50,6 @@
 	"apihelp-bs-permissionmanager-tasks-description": "Надає завдання для PermissionManager",
 	"apihelp-bs-permissionmanager-tasks-summary": "Забезпечує завдання для Permissionmanager",
 	"action-permissionmanager-viewspecialpage": "перегляд спеціальної сторінки «{{int:bs-permissionmanager-label}}»",
-	"permissionmanager": "Менеджер дозволів"
+	"permissionmanager": "Менеджер дозволів",
+	"bs-permissionmanager-affected-by-notset": "Не задано"
 }

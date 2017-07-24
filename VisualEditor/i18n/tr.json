@@ -4,7 +4,8 @@
 			"Sayginer",
 			"Violetanka",
 			"Sadrettin",
-			"1917 Ekim Devrimi"
+			"1917 Ekim Devrimi",
+			"Trockya"
 		]
 	},
 	"bs-visualeditor-desc": "MediaWiki için görsel düzenleyici",
@@ -34,11 +35,7 @@
 	"bs-visualeditor-bsactions-signature": "İmza",
 	"bs-visualeditor-bsactions-save": "Kaydet",
 	"bs-visualeditor-bsactions-headings": "Başlıklar",
-	"bs-visualeditor-bsactions-paragraph": "Paragraf",
-	"bs-visualeditor-bsactions-heading2": "Başlık 2",
-	"bs-visualeditor-bsactions-heading3": "Başlık 3",
-	"bs-visualeditor-bsactions-heading4": "Başlık 4",
-	"bs-visualeditor-bsactions-heading5": "Başlık 5",
-	"bs-visualeditor-bsactions-heading6": "Başlık 6",
-	"bs-visualeditor-switch-noeditor-desc": "Bu sayfada görsel düzenleyiciyi devre dışı bırakır."
+	"bs-visualeditor-switch-noeditor-desc": "Bu sayfada görsel düzenleyiciyi devre dışı bırakır.",
+	"bs-visualeditor-bsactions-tablefunctions": "Tablo işlevleri",
+	"bs-visualeditor-bsactions-tablestyles": "Tablo türleri"
 }

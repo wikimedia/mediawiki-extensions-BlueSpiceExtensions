@@ -24,7 +24,7 @@
 	"bs-shoutbox-archive-failure-user": "As entradas só podem ser eliminados pelo seu autor.",
 	"bs-shoutbox-switch-description": "Oculta a caixa de mensagens nesta página",
 	"bs-shoutbox-charactersleft": "{{PLURAL:$1|Resta $1 carácter|Restam $1 caracteres}}",
-	"bs-shoutbox-confirm-text": "Tem a certeza que pretende eliminar esta entrada?",
+	"bs-shoutbox-confirm-text": "Tem a certeza de que pretende eliminar esta entrada?",
 	"bs-shoutbox-confirm-title": "Confirmar",
 	"bs-shoutbox-entermessage": "Introduza uma mensagem.",
 	"bs-shoutbox-too-early": "Por favor, aguarde alguns segundos antes de enviar a próxima entrada.",

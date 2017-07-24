@@ -3,7 +3,8 @@
 		"authors": [
 			"Ата",
 			"Andriykopanytsia",
-			"Piramidion"
+			"Piramidion",
+			"SimondR"
 		]
 	},
 	"bs-visualeditor-desc": "Візуальний редактор для MediaWiki",
@@ -34,11 +35,7 @@
 	"bs-visualeditor-bsactions-signature": "Підпис",
 	"bs-visualeditor-bsactions-save": "Зберегти",
 	"bs-visualeditor-bsactions-headings": "Заголовки",
-	"bs-visualeditor-bsactions-paragraph": "Абзац",
-	"bs-visualeditor-bsactions-heading2": "Заголовок 2",
-	"bs-visualeditor-bsactions-heading3": "Заголовок 3",
-	"bs-visualeditor-bsactions-heading4": "Заголовок 4",
-	"bs-visualeditor-bsactions-heading5": "Заголовок 5",
-	"bs-visualeditor-bsactions-heading6": "Заголовок 6",
-	"bs-visualeditor-switch-noeditor-desc": "Вимикає візуальний редактор на цій сторінці."
+	"bs-visualeditor-switch-noeditor-desc": "Вимикає візуальний редактор на цій сторінці.",
+	"bs-visualeditor-bsactions-tablefunctions": "Функції таблиці",
+	"bs-visualeditor-bsactions-tablestyles": "Стилі таблиці"
 }
