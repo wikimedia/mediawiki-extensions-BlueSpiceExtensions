@@ -124,6 +124,13 @@ abstract class AbstractBuildIndexFile extends AbstractBuildIndexAll {
 			'vnd.openxmlformats-officedocument.wordprocessingml.template' => 'doc',
 			'vnd.ms-word.document.macroEnabled.12' => 'doc',
 			'vnd.ms-word.template.macroEnabled.12' => 'doc',
+			'vnd.oasis.opendocument.chart' =>  'odc',
+			'vnd.oasis.opendocument.formula' =>  'odf',
+			'vnd.oasis.opendocument.graphics' =>  'odg',
+			'vnd.oasis.opendocument.image' =>  'odi',
+			'vnd.oasis.opendocument.presentation' =>  'odp',
+			'vnd.oasis.opendocument.spreadsheet' =>  'ods',
+			'vnd.oasis.opendocument.text' =>  'odt',
 			'acad' => 'm',
 			'x-mathcad' => 'mcd'
 		);
