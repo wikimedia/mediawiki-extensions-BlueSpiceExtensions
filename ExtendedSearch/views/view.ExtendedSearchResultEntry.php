@@ -47,18 +47,6 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 	 * @return string HTML output
 	 */
 	public function execute( $aParam = false ) {
-		global $wgScriptPath;
-		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
-
-		$aImageLinks = array(
-			'doc' => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
-			'ppt' => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
-			'xls' => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
-			'pdf' => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
-			'txt' => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
-			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
-		);
-
 		$sHighlightSnippets = $this->getOption( 'highlightsnippets' );
 		if ( !empty( $sHighlightSnippets ) ) {
 			$sHighlightSnippets = $this->processSnippets( $sHighlightSnippets );
@@ -70,16 +58,11 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 			$aResultInfo[] = $this->getOption( 'redirect' );
 		}
 
-		$sIconPath = $this->getOption( 'iconpath' );
-		$sIcon = ( empty( $sIconPath ) )
-			? $aImageLinks[$this->getOption( 'searchicon' )]
-			: $sIconPath;
-
 		$aTemplate = array();
 		$aTemplate[] = '<div class="search-wrapper">';
 		$aTemplate[] = '<div class="bs-extendedsearch-result-head">';
 		$aTemplate[] = '<table><tr>';
-		$aTemplate[] = '<td><span class="bs-extendedsearch-result-icon">' . $sIcon . '</span></td>';
+		$aTemplate[] = '<td><span class="bs-extendedsearch-result-icon">' . $this->getIcon() . '</span></td>';
 		$aTemplate[] = '<td><span class="bs-extendedsearch-result-title"><h3>' . $this->getOption( 'searchlink' ) . '</h3></span></td>';
 		$aTemplate[] = '</tr></table>';
 		$aTemplate[] = '</div>';
@@ -104,4 +87,30 @@ class ViewExtendedSearchResultEntry extends ViewBaseElement {
 		return implode( "\n", $aTemplate );
 	}
 
+	protected function getIcon() {
+		global $wgScriptPath;
+		$sIconPath = $this->getOption( 'iconpath' );
+		$sSearchIcon = $this->getOption( 'searchicon' );
+		if( !empty( $sIconPath ) ) {
+			return '<img src="' . $sIconPath . '" alt="'.$sSearchIcon.'" />';
+		}
+
+		$sImgPath = $wgScriptPath . '/extensions/BlueSpiceExtensions/ExtendedSearch/resources/images';
+		$aImageLinks = array(
+			'doc' => '<img src="' . $sImgPath . '/word.gif" alt="doc" /> ',
+			'odt' => '<img src="' . $sImgPath . '/odt.png" alt="odt" /> ',
+			'ppt' => '<img src="' . $sImgPath . '/ppt.gif" alt="ppt" /> ',
+			'odp' => '<img src="' . $sImgPath . '/odp.png" alt="odp" /> ',
+			'xls' => '<img src="' . $sImgPath . '/xls.gif" alt="xls" /> ',
+			'ods' => '<img src="' . $sImgPath . '/ods.png" alt="ods" /> ',
+			'pdf' => '<img src="' . $sImgPath . '/pdf.gif" alt="pdf" /> ',
+			'txt' => '<img src="' . $sImgPath . '/txt.gif" alt="txt" /> ',
+			'default' => '<img src="' . $sImgPath . '/page.gif" alt="page" /> '
+		);
+		if( !isset( $aImageLinks[$sSearchIcon] ) ) {
+			$sSearchIcon = 'default';
+		}
+
+		return $aImageLinks[$sSearchIcon];
+	}
 }

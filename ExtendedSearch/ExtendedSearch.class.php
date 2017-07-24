@@ -70,7 +70,7 @@ class ExtendedSearch extends BsExtensionMW {
 		BsConfig::registerVar( 'MW::ExtendedSearch::HighlightSnippets', '3', BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-highlightsnippets', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::LogUsers', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logusers', 'toggle' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::Logging', true, BsConfig::TYPE_BOOL|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-logging', 'toggle' );
-		BsConfig::registerVar( 'MW::ExtendedSearch::IndexFileTypes', 'doc, docx, pdf, ppt, pptx, xls, xlsx, txt', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indexfiletypes' );
+		BsConfig::registerVar( 'MW::ExtendedSearch::IndexFileTypes', 'doc, docx, pdf, ppt, pptx, xls, xlsx, txt, odp, ods, odt', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-indexfiletypes' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SolrServiceUrl', 'http://127.0.0.1:8080/solr', BsConfig::TYPE_STRING|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrserviceurl' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SolrPingTime', 2, BsConfig::TYPE_INT|BsConfig::LEVEL_PUBLIC, 'bs-extendedsearch-pref-solrpingtime', 'int' );
 		BsConfig::registerVar( 'MW::ExtendedSearch::SetFocus', true, BsConfig::LEVEL_USER|BsConfig::RENDER_AS_JAVASCRIPT|BsConfig::TYPE_BOOL, 'bs-extendedsearch-pref-setfocus', 'toggle' );
