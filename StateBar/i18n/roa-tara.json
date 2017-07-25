@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"bs-statebar-desc": "Dèje 'na barre de state",
+	"prefs-statebar": "Barre de state",
+	"bs-statebar-pref-sortbodyvars": "Ordine d'u cuérpe:",
+	"bs-statebar-pref-sorttopvars": "Ordine superiore:",
+	"bs-statebar-pref-show": "Fà 'ndrucà 'a barre de state",
+	"bs-statebar-viewtoggler": "DETTAGLIE"
+}
