@@ -44,5 +44,7 @@
 	"bs-insertfile-enable-align": "Aktivera",
 	"bs-insertfile-nstext": "Länktyp",
 	"bs-insertfile-nstextfile": "Fil",
-	"bs-insertfile-nstextmedia": "Media"
+	"bs-insertfile-nstextfile-file": "Visa länk till metadata",
+	"bs-insertfile-nstextfile-image": "Visa bild",
+	"bs-insertfile-nstextmedia": "Visa nedladdningslänk"
 }
