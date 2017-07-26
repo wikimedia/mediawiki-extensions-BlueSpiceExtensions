@@ -22,5 +22,16 @@
 	"AutoloadClasses": {
 		"HideTitle": "HideTitle.class.php"
 	},
+	"ResourceModules": {
+		"ext.bluespice.hidetitle.styles": {
+			"styles": "bluespice.hideTitle.css",
+			"position": "top",
+			"targets": [ "desktop", "mobile" ]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtensions/HideTitle/resources"
+	},
 	"manifest_version": 1
 }
