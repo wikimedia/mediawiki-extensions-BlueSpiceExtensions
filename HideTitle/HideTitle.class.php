@@ -25,7 +25,7 @@
  * @author     Markus Glaser <glaser@hallowelt.com>
  * @version    2.23.1
  * @package    BlueSpice_Extensions
- * @subpackage StateBar
+ * @subpackage HideTitle
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
@@ -35,7 +35,7 @@ class HideTitle extends BsExtensionMW {
 
 	protected $bHideTitle = false;
 
-        protected function initExt() {
+	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		// Hooks
 		$this->setHook( 'BeforePageDisplay' );
@@ -56,7 +56,7 @@ class HideTitle extends BsExtensionMW {
 		$sHideTitlePageProp = BsArticleHelper::getInstance( $oTitle )->getPageProp( 'bs_hidetitle' );
 		if( $sHideTitlePageProp === '' ) {
 			$oOutputPage->mPagetitle = '';
-			$oOutputPage->addInlineScript( "$('.firstHeading').remove()" );
+			$oOutputPage->addModuleStyles( 'ext.bluespice.hidetitle.styles' );
 		}
 
 		return true;
