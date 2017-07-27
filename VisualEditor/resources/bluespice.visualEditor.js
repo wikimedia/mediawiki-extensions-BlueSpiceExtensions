@@ -16,40 +16,32 @@ $(document).on('change', '#wpTextbox1' ,function() {
 	$(this).data("text-changed", true);
 });
 $(window).scroll(function(){
+	var editMode = bs_editMode();
+	var previewMode = bs_previewMode();
+
 	var $toolbar = $('.mce-stack-layout-item').first();
 	var $firstHeading = $( '#firstHeading' );
 
-	var previewMode = ( $( '#wikiPreview' ).css( 'display' ) === 'none' ) ? false : true;
+	if(  $toolbar.length == 0 ) return;
 
-	if( previewMode && $( '#bs-ve-editoptions' ).length == 0 ) {
+	if( previewMode ) {
 		bs_editOptionsBarAdd();
 	}
 
-	if(  $toolbar.length == 0 ) return;
-
-	if( offsetTop === 0 && $( '#editform' ).length > 0 && $firstHeading.length > 0 && previewMode === false ) {
-		offsetTop =  $('#content').position().top;
-	}
-	else if( offsetTop === 0 && $( '#editform' ).length > 0 && $firstHeading.length > 0 && previewMode === true ) {
-		offsetTop = $( '#wikiPreview' ).position().top + $( '#wikiPreview' ).height() - $firstHeading.height();
-	}
-	else if( offsetTop === 0 && $( '#editform' ).length > 0 ) {
-		offsetTop = $( '#editform' ).position().top;
+	if ( offsetTop === 0 ) {
+		offsetTop = bs_offsetTop();
 	}
 
-	if( $(document).scrollTop() > offsetTop ) { //window.scrollY
+	if( ( $(document).scrollTop() > offsetTop ) && ( editMode === true ) ) { //window.scrollY
 		if( $toolbar.hasClass( 'bs-ve-fixed' ) == false ) {
 
-			if( $( '#bs-ve-editoptions' ).length == 0 ) {
-				bs_editOptionsBarAdd();
-			}
+			bs_firstHeadingFixedAdd();
+			bs_editOptionsBarAdd();
 
 			$toolbar.addClass( 'bs-ve-fixed' );
 			$toolbar.width( $toolbar.parent().width() );
 
-			bs_firstHeadingFixedAdd();
-
-			var textboxPaddingTop=  $toolbar.height();
+			var textboxPaddingTop =  $toolbar.height();
 			if( $firstHeading.length > 0 ){
 				$toolbar.css( 'top', $firstHeading.height() );
 				textboxPaddingTop = $toolbar.height() + $firstHeading.height();
@@ -58,9 +50,10 @@ $(window).scroll(function(){
 		}
 	}
 	else {
+
 		$toolbar.removeClass( 'bs-ve-fixed' );
 
-		if( $( '#bs-ve-editoptions' ).length > 0 && !previewMode ) {
+		if( !previewMode ) {
 			bs_editOptionsBarRemove();
 		}
 
@@ -135,6 +128,8 @@ $( document ).ready( function() {
 
 // add some editOptions form editor footer to bs-ve toolbar
 function bs_editOptionsBarAdd() {
+	if( $( '#bs-ve-editoptions' ).length > 0 ) return;
+
 	var $toolbar = $( '.mce-stack-layout-item' ).first();
 	var $editOptionsContainer = $( '<div id="bs-ve-editoptions"></div>' ).prependTo( $toolbar );
 
@@ -171,8 +166,12 @@ function bs_editOptionsBarAdd() {
 };
 
 function bs_editOptionsBarRemove() {
+	if( $( '#bs-ve-editoptions' ).length == 0 ) return;
+
 	$( '#bs-ve-editoptions' ).remove();
 };
+
+var firstHeadingDisplayValueInitial = '';
 
 function bs_firstHeadingFixedAdd() {
 	var $firstHeading = $( '#firstHeading' );
@@ -180,6 +179,9 @@ function bs_firstHeadingFixedAdd() {
 	if( $firstHeading.length > 0 ){
 		$firstHeading.addClass( 'bs-ve-heading-fixed' );
 		$firstHeading.width( $firstHeading.parent().width() );
+		if( firstHeadingDisplayValueInitial == '' ) {
+			firstHeadingDisplayValueInitial = $firstHeading.css( 'display' );
+		}
 		$firstHeading.css( 'display', 'block' );
 		$firstHeading.css( 'background-color', $( '#content' ).css( 'background-color' ) );
 	}
@@ -187,12 +189,35 @@ function bs_firstHeadingFixedAdd() {
 
 function bs_firstHeadingFixedRemove() {
 	var $firstHeading = $( '#firstHeading' );
-
 	if( $firstHeading.length > 0 ){
 		$firstHeading.removeClass( 'bs-ve-heading-fixed' );
 		$firstHeading.css( 'background-color', 'transparent' );
-		$firstHeading.css( 'display', 'initial' );
+		if( firstHeadingDisplayValueInitial != '' ) {
+			$firstHeading.css( 'display',firstHeadingDisplayValueInitial );
+		}
 		$firstHeading.width( 'auto' );
+	}
+}
+
+function bs_editMode(){
+	return ( ( $( '#editform' ).length > 0 ) ) ? true : false;
+}
+
+function bs_previewMode(){
+	return ( $( '#wikiPreview' ).css( 'display' ) === 'none' ) ? false : true;
+}
+
+function bs_offsetTop(){
+	var previewMode = bs_previewMode();
+
+	if( $( '#editform' ).length > 0 && $( '#firstHeading' ).length > 0 && previewMode === false ) {
+		return $('#content').position().top;
+	}
+	else if( $( '#editform' ).length > 0 && $( '#firstHeading' ).length > 0 && previewMode === true ) {
+		return $( '#wikiPreview' ).position().top + $( '#wikiPreview' ).height() - $( '#firstHeading' ).height();
+	}
+	else if( $( '#editform' ).length > 0 ) {
+		return $( '#editform' ).position().top;
 	}
 }
 
