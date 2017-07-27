@@ -4,13 +4,12 @@
 	margin: 0 0 0 -2.5cm;
 	background: url('../images/bs-header.jpg') no-repeat 0 0;
 	background-size: 21cm;
-	height: 3cm;
+	height: 3.5cm;
 	width: 21cm;
-	border-bottom: 1px solid;
 }
 
 #bs-runningheaderfix h1 {
-	margin: 2.5cm 0 0 2.5cm;
+	margin: 2.3cm 0 0 2.5cm;
 	font-size: small;
 	color:#6c6d6f;
 	border: none;
@@ -33,7 +32,7 @@
 }
 
 .bs-runningheader table td{
-	vertical-align: bottom;	
+	vertical-align: bottom;
 }
 
 .bs-booktitle {
