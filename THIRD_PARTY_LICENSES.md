@@ -31,6 +31,7 @@ Images
 | [Pidgin emoticons](http://powabanga.github.io/pidgin-EAP/) | Hylke Bons | - | unlicensed |
 | [Simpleicon Interface](http://simpleicon.com/) | Freeicons | - | [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) |
 | [Universalicons](http://www.flaticon.com/packs/universalicons) | [Freepik](http://www.freepik.com) | - | [Flaticon Basic License](http://file000.flaticon.com/downloads/license/license.pdf) |
+| [LibreOffice Icons](https://wiki.documentfoundation.org/File:LibreOffice_Initial_Icons-pre_final.svg) | [Bedipp](https://wiki.documentfoundation.org/User:Bedipp) | pre final | [Creative Commons Attribution-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/) |
 
 Fonts
 -----
