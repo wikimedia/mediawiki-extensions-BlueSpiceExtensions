@@ -102,8 +102,15 @@ function bs_initVisualEditor() {
 		});
 	}
 
-	if ( mw.config.get('bsVisualEditorUse') !== false
-		&& mw.user.options.get('MW::VisualEditor::Use') === true ) {
+	pageHasNOEDITOR = function() {
+		return mw.config.get( 'bsVisualEditor__NOEDITOR__', false );
+	}
+
+	userHasVEenabledByDefault = function() {
+		return mw.user.options.get( 'MW::VisualEditor::Use' ) === true;
+	}
+
+	if ( !pageHasNOEDITOR() && userHasVEenabledByDefault() ) {
 			VisualEditor.startEditors();
 			$(document).trigger('VisualEditor::instanceShow', ['wpTextbox1']);
 	}
