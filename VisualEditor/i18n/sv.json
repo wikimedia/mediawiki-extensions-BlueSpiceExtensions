@@ -34,5 +34,6 @@
 	"bs-visualeditor-bsactions-headings": "Rubriker",
 	"bs-visualeditor-switch-noeditor-desc": "Inaktiverar den visuella redigeraren på denna sida.",
 	"bs-visualeditor-bsactions-tablefunctions": "Tabellfunktioner",
-	"bs-visualeditor-bsactions-tablestyles": "Tabellstilar"
+	"bs-visualeditor-bsactions-tablestyles": "Tabellstilar",
+	"bs-visualeditor-editoptions-summary": "Sammanfattning"
 }
