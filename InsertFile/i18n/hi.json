@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jayprakash12345"
+			"Jayprakash12345",
+			"Sfic"
 		]
 	},
 	"bs-insertfile-desc": "फ़ाइलें अपलोड करने और फ़ाइल लिंक डालने के लिए संवाद",
@@ -43,5 +44,5 @@
 	"bs-insertfile-enable-align": "सक्षम करें",
 	"bs-insertfile-nstext": "लिंक प्रकार",
 	"bs-insertfile-nstextfile": "फ़ाइल",
-	"bs-insertfile-nstextmedia": "मीडिया"
+	"bs-insertfile-nstextmedia": "डाउनलोड लिंक दिखायें"
 }
