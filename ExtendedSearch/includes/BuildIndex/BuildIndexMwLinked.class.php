@@ -92,7 +92,16 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 			$path = urldecode( $document->el_to );
 			$path = str_replace( "file:///", "", $path );
 			$fileInfo = new SplFileInfo( $path );
-			if ( !$fileInfo->isFile() ) continue;
+
+			//As we index all kinds of user provided urls here there might be
+			//cases that break SplFileInfo (e.g. 'onenote:' pseudo protocol)
+			try {
+				if ( !$fileInfo->isFile() ) continue;
+			}
+			catch( Exception $e ) {
+				wfDebugLog( 'ExtendedSearch', __METHOD__ . ': ' . $e->getMessage() );
+				continue;
+			}
 
 			$filename = explode( '/', $path );
 			$filename = array_pop( $filename );
