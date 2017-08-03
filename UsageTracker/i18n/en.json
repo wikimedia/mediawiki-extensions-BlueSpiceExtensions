@@ -17,5 +17,6 @@
 	"bs-usagetracker-base-collector-desc" : "Number of pages using $1",
 	"bs-usagetracker-tag-collector-desc" : "Number of pages using tag <$1>",
 	"bs-usagetracker-db-collector-desc": "Number of $1",
-	"bs-usagetracker-open-tasks" : "Site analysis is currently in progress. {{PLURAL:$1|One analysis is|$1 analyses are}} still open. <a href='$2'>(Refresh)</a>"
+	"bs-usagetracker-open-tasks" : "Site analysis is currently in progress. {{PLURAL:$1|One analysis is|$1 analyses are}} still open. <a href='$2'>(Refresh)</a>",
+	"apihelp-bs-usagetracker-store-summary": "Holds statistical data about extension use"
 }

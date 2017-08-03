@@ -105,6 +105,7 @@
 	"extendedsearchadmin": "Extended search administration",
 	"bs-extendedsearch-create-page": "Text for create page \"$1\". $1 is the entered page name\n{{Identical|Create page}}",
 	"apihelp-feedextendedsearch-description": "{{doc-apihelp-description|feedextendedsearch}}",
+	"apihelp-feedextendedsearch-summary": "{{doc-apihelp-summary|feedextendedsearch}}",
 	"apihelp-feedextendedsearch-param-q": "{{doc-apihelp-param|feedextendedsearch|q}}",
 	"apihelp-feedextendedsearch-param-feedformat": "{{doc-apihelp-param|feedextendedsearch|feedformat}}",
 	"apihelp-feedextendedsearch-param-user": "{{doc-apihelp-param|feedextendedsearch|user}}",

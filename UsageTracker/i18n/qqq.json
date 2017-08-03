@@ -18,5 +18,6 @@
 	"bs-usagetracker-base-collector-desc": "Used in [[Special:Usage_Tracker]], description of a base collector\n\n* $1 is a message key used for further specification.",
 	"bs-usagetracker-tag-collector-desc": "Used in [[Special:Usage_Tracker]], description of a tag collector\n\n* $1 is a message key used for further specification.",
 	"bs-usagetracker-db-collector-desc": "Used in [[Special:Usage_Tracker]], description of a database collector\n\n* $1 is a message key used for further specification.",
-	"bs-usagetracker-open-tasks": "Used in [[Special:Usage_Tracker]], text to show that site analysis is currently in progress.\n\n* $1 is the number of open jobs."
+	"bs-usagetracker-open-tasks": "Used in [[Special:Usage_Tracker]], text to show that site analysis is currently in progress.\n\n* $1 is the number of open jobs.",
+	"apihelp-bs-usagetracker-store-summary": "{{doc-apihelp-summary|bs-usagetracker-store}}"
 }

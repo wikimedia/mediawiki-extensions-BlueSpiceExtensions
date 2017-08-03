@@ -17,5 +17,6 @@
 	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|has changed}} the access permissions of $3 to \"$4\"",
 	"action-pageaccess-viewspecialpage":"view the special page \"{{int:pageaccess}}\"",
 	"bs-pageaccess-column-title": "Page title",
-	"bs-pageaccess-column-groups": "Groups"
+	"bs-pageaccess-column-groups": "Groups",
+	"apihelp-bs-pageaccess-store-summary": "Control access on page level"
 }
