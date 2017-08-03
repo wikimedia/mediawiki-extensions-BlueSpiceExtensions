@@ -43,6 +43,7 @@
 	"bs-insertfile-enable-align": "Activar",
 	"bs-insertfile-nstext": "Tipo de ligazón",
 	"bs-insertfile-nstextfile": "Ficheiro",
+	"bs-insertfile-nstextfile-file": "Amosar ligazón ós metadatos",
 	"bs-insertfile-nstextfile-image": "Mostrar imaxe",
 	"bs-insertfile-nstextmedia": "Mostrar ligazón de descarga"
 }
