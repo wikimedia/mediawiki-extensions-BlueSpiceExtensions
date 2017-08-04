@@ -7,6 +7,7 @@
 	"bs-visualeditor-desc": "Визуелен уредник за МедијаВики",
 	"prefs-visualeditor": "Визуелен уредник",
 	"apihelp-bs-visualeditor-tasks-description": "Дава задачи за додатокот BlueSpice Visual Editor.",
+	"apihelp-bs-visualeditor-tasks-summary": "Овозможува задачи за додатокот Визуелен уредник на BlueSpice.",
 	"bs-visualeditor-editbutton-hint": "Визуелен уредник",
 	"bs-visualeditor-pref-disablens": "Оневозможи во именските простори:",
 	"bs-visualeditor-pref-use": "Користи WYSIWYG-уредник по основно",
@@ -31,11 +32,8 @@
 	"bs-visualeditor-bsactions-signature": "Потпис",
 	"bs-visualeditor-bsactions-save": "Зачувај",
 	"bs-visualeditor-bsactions-headings": "Наслови",
-	"bs-visualeditor-bsactions-paragraph": "Пасус",
-	"bs-visualeditor-bsactions-heading2": "Наслов 2",
-	"bs-visualeditor-bsactions-heading3": "Наслов 3",
-	"bs-visualeditor-bsactions-heading4": "Наслов 4",
-	"bs-visualeditor-bsactions-heading5": "Наслов 5",
-	"bs-visualeditor-bsactions-heading6": "Наслов 6",
-	"bs-visualeditor-switch-noeditor-desc": "Го исклучува Визуелниот уредник на страницава"
+	"bs-visualeditor-switch-noeditor-desc": "Го исклучува Визуелниот уредник на страницава",
+	"bs-visualeditor-bsactions-tablefunctions": "Табеларни можности",
+	"bs-visualeditor-bsactions-tablestyles": "Табеларни стилови",
+	"bs-visualeditor-editoptions-summary": "Краток опис"
 }
