@@ -12,5 +12,6 @@
 	"bs-usersidebar-tab-focus": "Fokus",
 	"bs-usersidebar-tab-globalactions": "Globale Aktionen",
 	"bs-usersidebar-globalactionswidget-title": "Globale Aktionen",
-	"apihelp-sidebar-description": "Gibt die HTML-Inhalte der Benutzerseitenleiste zurück"
+	"apihelp-sidebar-description": "Gibt die HTML-Inhalte der Benutzerseitenleiste zurück",
+	"apihelp-sidebar-param-format": "Format der auszugebenden Daten"
 }
