@@ -56,7 +56,6 @@ class PageTemplates extends BsExtensionMW {
 
 		//Hooks
 		$this->setHook( 'LinkBegin' );
-		$this->setHook( 'EditPage::showEditForm:initial', 'onEditPageShowEditFormInitial' );
 		$this->setHook( 'MessagesPreLoad' );
 		$this->setHook( 'ParserFirstCallInit' );
 
@@ -209,20 +208,6 @@ class PageTemplates extends BsExtensionMW {
 
 		if ( !isset( $aQuery['preload'] ) ) {
 			$aQuery['action'] = 'view';
-		}
-
-		return true;
-	}
-
-	/**
-	 * Removes noinclude parts from templates
-	 * @param EditPage $oEdit MediaWiki EditPage object
-	 * @return bool allow other hooked methods to be executed. Always true.
-	 */
-	function onEditPageShowEditFormInitial( &$oEdit ) {
-		if ( RequestContext::getMain()->getRequest()->getVal( 'preload', '' ) ) {
-			// TODO MRG (27.09.11 10:28): Put replacement of noinclude into core
-			$oEdit->textbox1 = preg_replace( '/<noinclude>.*?<\/noinclude>/s', '',  $oEdit->textbox1 );
 		}
 
 		return true;
