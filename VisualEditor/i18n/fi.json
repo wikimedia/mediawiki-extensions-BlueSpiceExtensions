@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xð"
+			"Xð",
+			"Alluk."
 		]
 	},
-	"prefs-visualeditor": "Visuaalinen muokkain"
+	"prefs-visualeditor": "Visuaalinen muokkain",
+	"bs-visualeditor-editbutton-hint": "Visuaalinen muokkain"
 }
