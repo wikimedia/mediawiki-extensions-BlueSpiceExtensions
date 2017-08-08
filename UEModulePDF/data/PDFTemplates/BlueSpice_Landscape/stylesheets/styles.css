@@ -1,16 +1,15 @@
 /******* PAGE LAYOUT ELEMENTS *******/
 #bs-runningheaderfix {
 	position: running( topleft );
-	margin: 0 0 0 -0.5cm;
+	margin: 0 0 0 -2.5cm;
 	background: url('../images/bs-header.jpg') no-repeat 0 0;
-	background-size: 21cm;
-	height: 3cm;
+	background-size: 29.7cm;
+	height: 4cm;
 	width: 29.7cm;
-	border-bottom: 1px solid;
 }
 
 #bs-runningheaderfix h1 {
-	margin: 2.5cm 0 0 2.5cm;
+	margin: 3.3cm 0 0 2.5cm;
 	font-size: small;
 	color:#6c6d6f;
 	border: none;

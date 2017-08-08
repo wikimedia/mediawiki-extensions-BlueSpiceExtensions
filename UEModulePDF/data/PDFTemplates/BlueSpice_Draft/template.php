@@ -11,7 +11,7 @@ return array(
 		'name'      => 'BlueSpice Draft',
 		'author'    => 'Hallo Welt!',
 		'copyright' => 'Hallo Welt! GmbH',
-		'url'       => 'http://www.hallowelt.biz',
+		'url'       => 'http://www.hallowelt.com',
 		'description'      => 'This is the default BlueSpice Draft PDF Template'
 	),
 
