@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Rapsar"
 		]
 	},
-	"bs-articleinfo-last-edited-tooltip": "Son düzenleme",
+	"bs-articleinfo-last-edited-tooltip": "Son değişiklik",
 	"bs-articleinfo-categories": "Kategoriler",
 	"bs-articleinfo-all-categories-heading": "Kategoriler",
 	"bs-articleinfo-nocategories": "Hiçbir kategori bulunamadı.",
