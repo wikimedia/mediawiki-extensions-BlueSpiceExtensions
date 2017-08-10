@@ -18,7 +18,8 @@ class PageAssignmentsNotificationHooks {
 
 		BSNotifications::registerNotificationCategory( 'bs-pageassignments-action-cat' );
 		$aExtraParams = array(
-			'formatter-class' => 'PageAssignmentsNotificationFormatter'
+			'formatter-class' => 'PageAssignmentsNotificationFormatter',
+			'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' )
 		);
 
 		BSNotifications::registerNotification(
@@ -29,7 +30,8 @@ class PageAssignmentsNotificationHooks {
 			'notification-bs-pageassignments-assignment-change-add-subject',
 			array('agent', 'title', 'titlelink'),
 			'notification-bs-pageassignments-assignment-change-add-body',
-			array('agent', 'title', 'titlelink')
+			array('agent', 'title', 'titlelink'),
+			$aExtraParams
 		);
 
 		BSNotifications::registerNotification(
@@ -40,7 +42,8 @@ class PageAssignmentsNotificationHooks {
 			'notification-bs-pageassignments-assignment-change-remove-subject',
 			array('agent', 'title', 'titlelink'),
 			'notification-bs-pageassignments-assignment-change-remove-body',
-			array('agent', 'title', 'titlelink')
+			array('agent', 'title', 'titlelink'),
+			$aExtraParams
 		);
 
 		BSNotifications::registerNotification(
