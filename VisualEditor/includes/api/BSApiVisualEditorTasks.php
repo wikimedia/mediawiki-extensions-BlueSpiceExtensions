@@ -165,7 +165,8 @@ class ApiVisualEditorTasks extends BSApiTasksBase {
 		}
 
 		if ( $iSection ) {
-			$sText = $oArticle->replaceSection( $iSection, $sText );
+			$oSectionContent = ContentHandler::makeContent( $sText, $oArticle->getTitle() );
+			$sText = $oArticle->replaceSectionAtRev( $iSection, $oSectionContent )->getNativeData();
 		}
 
 		$oSaveResult = $oArticle->doEditContent(
