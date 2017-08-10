@@ -95,6 +95,7 @@
 	"extendedsearchadmin": "Extended search administration",
 	"bs-extendedsearch-create-page": "Create page \"$1\".",
 	"apihelp-feedextendedsearch-description": "Search the wiki using the OpenSearch protocol",
+	"apihelp-feedextendedsearch-summary": "Search the wiki using the OpenSearch protocol",
 	"apihelp-feedextendedsearch-param-q": "Search string",
 	"apihelp-feedextendedsearch-param-feedformat": "Maximum amount of results to return",
 	"apihelp-feedextendedsearch-param-user": "Do nothing if $wgEnableOpenSearchSuggest is false",
