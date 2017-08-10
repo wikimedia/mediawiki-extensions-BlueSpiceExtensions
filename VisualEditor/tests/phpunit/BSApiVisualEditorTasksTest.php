@@ -5,7 +5,7 @@
  * @group API
  * @group Database
  * @group BlueSpice
- * @group BlueSpiceReadConfirmation
+ * @group BlueSpiceExtensions
  */
 class BSApiVisualEditorTasksTest extends BSApiTasksTestBase {
 	protected function getModuleName() {
