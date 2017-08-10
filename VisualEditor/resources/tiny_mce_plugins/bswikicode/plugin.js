@@ -1730,6 +1730,42 @@ var BsWikiCode = function() {
 			i++;
 		}
 
+		//quirky. Needs to be there for the occasional second pass of cleanup
+		if (!_specialtags) {
+			_specialtags = new Array();
+		}
+
+		specialTagsList = mw.config.get('BsVisualEditorConfigDefault').specialtaglist;
+		// Tags without innerHTML need /> as end marker. Maybe this should be task of a preprocessor, in order to allow mw style tags without /.
+		regex = '<(' + specialTagsList + ')((\\s|\\r|\\n)+[^>]*)*?((\\s\\/>)|(\\/>)|(>([\\S\\s]*?((<\\/\\1>)|(<\\/ \\1>)))))';
+
+		matcher = new RegExp(regex, 'gmi');
+		mtext = text;
+		i = 0;
+		st = '';
+
+		innerText = '';
+		var retValue = false;
+		var moreAttribs = '';
+
+		while ((st = matcher.exec(mtext)) !== null) {
+			retValue = $(document).triggerHandler( 'BSVisualEditorRenderSpecialTag', [this, st[1], st] );
+			if ( retValue ) {
+				innerText = retValue.innerText;
+				moreAttribs = retValue.moreAttribs;
+			} else {
+				innerText = '&lt; ' + st[1] + ' &gt;';
+			}
+			text = text.replace(
+				st[0],
+				'<span class="mceNonEditable tag" id="bs_specialtag:@@@ST' + i + '@@@" data-bs-name="' + st[1] + '" data-bs-type="tag" data-bs-id="' + i + '" ' + moreAttribs + '>'
+				+ innerText
+				+ '</span>'
+			);
+			_specialtags[i] = st[0];
+			i++;
+		}
+
 		curlyBraceDepth = 0;
 		squareBraceDepth = 0;
 		templateDepth = 0;
@@ -1801,45 +1837,8 @@ var BsWikiCode = function() {
 					+ templateName + '" data-bs-type="template" data-bs-id="' + i + '">'
 					+ '{{ ' + templateName + ' }}'
 					+ '</span>'
-					);
-			}
-		}
-
-		//quirky. Needs to be there for the occasional second pass of cleanup
-		if (!_specialtags) {
-			_specialtags = new Array();
-		}
-
-		specialTagsList = mw.config.get('BsVisualEditorConfigDefault').specialtaglist;
-		// Tags without innerHTML need /> as end marker. Maybe this should be task of a preprocessor, in order to allow mw style tags without /.
-		regex = '<(' + specialTagsList + ')((\\s|\\r|\\n)+[^>]*)*?((\\s\\/>)|(\\/>)|(>([\\S\\s]*?((<\\/\\1>)|(<\\/ \\1>)))))';
-
-		matcher = new RegExp(regex, 'gmi');
-		mtext = text;
-		i = 0;
-		st = '';
-
-		var innerText = '';
-		var retValue = false;
-		var moreAttribs = '';
-
-		while ((st = matcher.exec(mtext)) !== null) {
-			retValue = $(document).triggerHandler( 'BSVisualEditorRenderSpecialTag', [this, st[1], st] );
-			if ( retValue ) {
-				innerText = retValue.innerText;
-				moreAttribs = retValue.moreAttribs;
-			} else {
-				innerText = '&lt; ' + st[1] + ' &gt;';
-			}
-			text = text.replace(
-				st[0],
-				'<span class="mceNonEditable tag" id="bs_specialtag:@@@ST' + i + '@@@" data-bs-name="' + st[1] + '" data-bs-type="tag" data-bs-id="' + i + '" ' + moreAttribs + '>'
-				//+ '&lt; ' + st[1] + ' &gt;'
-				+ innerText
-				+ '</span>'
 				);
-			_specialtags[i] = st[0];
-			i++;
+			}
 		}
 
 		if (!_comments) {
@@ -1899,6 +1898,13 @@ var BsWikiCode = function() {
 		// this must be in inverse order as preserveSpecialTags
 		// in order to allow for nested constructions
 
+		if (_templates) {
+			for (i = 0; i < _templates.length; i++) {
+				matcher = new RegExp('<span[^>]*?id=(\'|")bs_template:@@@TPL' + i + '@@@(\'|")[^>]*?>.*?<\\/\s*?span\s*?>', 'gmi');
+				text = text.replace(matcher, _templates[i]);
+			}
+		}
+
 		if (_specialtags) {
 			for (i = 0; i < _specialtags.length; i++) {
 				matcher = new RegExp('(<span[^>]*?id=(\'|")bs_specialtag:@@@ST' + i + '@@@(\'|")[^>]*?>)(.*?)<\\/\s*?span\s*?>', 'gmi');
@@ -1910,13 +1916,6 @@ var BsWikiCode = function() {
 				}
 
 				text = text.replace(matcher, innerText);
-			}
-		}
-
-		if (_templates) {
-			for (i = 0; i < _templates.length; i++) {
-				matcher = new RegExp('<span[^>]*?id=(\'|")bs_template:@@@TPL' + i + '@@@(\'|")[^>]*?>.*?<\\/\s*?span\s*?>', 'gmi');
-				text = text.replace(matcher, _templates[i]);
 			}
 		}
 
