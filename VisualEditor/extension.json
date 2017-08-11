@@ -81,5 +81,8 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/VisualEditor/resources"
 	},
+	"Hooks": {
+		"UnitTestsList" : "BlueSpiceVisualEditor::onUnitTestsList"
+	},
 	"manifest_version": 1
 }
