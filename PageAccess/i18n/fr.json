@@ -18,5 +18,6 @@
 	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|a modifié}} les droits d’accès à $3 en « $4 »",
 	"action-pageaccess-viewspecialpage": "afficher la page spéciale \"{{int:pageaccess}}\"",
 	"bs-pageaccess-column-title": "Titre de la page",
-	"bs-pageaccess-column-groups": "Groupes"
+	"bs-pageaccess-column-groups": "Groupes",
+	"apihelp-bs-pageaccess-store-summary": "Contrôler l'accès sur le niveau de page"
 }
