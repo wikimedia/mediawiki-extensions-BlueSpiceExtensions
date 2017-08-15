@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Belkacem77"
+		]
+	},
+	"bs-statistics-desc": "Azegrir n tidaddanin i BlueSpice",
+	"prefs-statistics": "Ugar n tidaddanin",
+	"extendedstatistics": "Ugar n tidaddanin",
+	"bs-statistics-diagram": "Tuttra",
+	"bs-statistics-from": "Seg",
+	"bs-statistics-to": "I",
+	"bs-statistics-grain": "Azilal",
+	"bs-statistics-mode": "Askar",
+	"bs-statistics-absolute": "amagdez",
+	"bs-statistics-year": "Aseggas",
+	"bs-statistics-month": "Ayyur",
+	"bs-statistics-week": "Amalas n uwitay",
+	"bs-statistics-day": "Ass",
+	"bs-statistics-list": "Tabdart",
+	"bs-statistics-diag-number-of-users": "Amḍan n iseqdacen",
+	"bs-statistics-label-name": "Isem",
+	"bs-statistics-label-registration": "Ajerred",
+	"bs-statistics-diag-number-of-pages": "Amḍan n isebtar",
+	"bs-statistics-diag-number-of-pages-mw": "Amḍan n ugbur n isebtar",
+	"bs-statistics-label-page": "Asebter",
+	"bs-statistics-label-creator": "Amernay",
+	"bs-statistics-diag-number-of-edits": "Amḍan n usmad"
+}
