@@ -1,22 +1,21 @@
 (function(mw, $, bs){
+	var menu = null;
+
 	var showMenu = function( anchor, items, e ) {
 		$(document).trigger( 'BSContextMenuBeforeCreate', [anchor, items]);
 
-		var menu = new Ext.menu.Menu({
+		/*
+		 * Unfortunately ExtJS does not use "close" when the context
+		 * menu disappears, but "hide". Therefore closeAction: 'destroy',
+		 * which is default does not work. But as we use DOM IDs we
+		 * really need to remove the them from the DOM, otherwise we
+		 * get ugly collisions when a second menu is opened.
+		 */
+		Ext.destroy(menu);
+
+		menu = new Ext.menu.Menu({
 			id: 'bs-cm-menu',
-			items: items,
-			listeners: {
-				/*
-				 * Unfortunately ExtJS does not use "close" when the context
-				 * menu disappears, but hide. Therefore closeAction: 'destroy',
-				 * wich is default does not work. But as we use DOM IDs we
-				 * really need to remove the tem from the DOM, otherwise we
-				 * get ugly collisions when a secon menu is opened.
-				 */
-				hide:function(menu, opt){
-					Ext.destroy(menu);
-				}
-			}
+			items: items
 		});
 		menu.showAt(e.pageX, e.pageY);
 
