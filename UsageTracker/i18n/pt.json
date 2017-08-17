@@ -19,5 +19,6 @@
 	"bs-usagetracker-base-collector-desc": "Número de páginas que utilizam $1",
 	"bs-usagetracker-tag-collector-desc": "Número de páginas que usam a marca <$1>",
 	"bs-usagetracker-db-collector-desc": "Número de $1",
-	"bs-usagetracker-open-tasks": "A análise do ''site'' está em progresso. Ainda {{PLURAL:$1|está em aberto uma análise|estão em aberto $1 análises}}. <a href='$2'>(Recarregar)</a>"
+	"bs-usagetracker-open-tasks": "A análise do ''site'' está em progresso. Ainda {{PLURAL:$1|está em aberto uma análise|estão em aberto $1 análises}}. <a href='$2'>(Recarregar)</a>",
+	"apihelp-bs-usagetracker-store-summary": "Contém dados estatísticos sobre o uso da extensão"
 }

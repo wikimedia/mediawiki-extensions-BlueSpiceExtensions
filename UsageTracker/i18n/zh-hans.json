@@ -17,5 +17,6 @@
 	"bs-usagetracker-base-collector-desc": "使用$1的页面数",
 	"bs-usagetracker-tag-collector-desc": "使用标签<$1>的页面数",
 	"bs-usagetracker-db-collector-desc": "$1的数量",
-	"bs-usagetracker-open-tasks": "网站分析目前正在进行。{{PLURAL:$1|$1个分析}}仍在开启。<a href='$2'>（刷新）</a>"
+	"bs-usagetracker-open-tasks": "网站分析目前正在进行。{{PLURAL:$1|$1个分析}}仍在开启。<a href='$2'>（刷新）</a>",
+	"apihelp-bs-usagetracker-store-summary": "保留有关扩展使用的统计数据"
 }
