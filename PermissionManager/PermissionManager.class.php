@@ -235,7 +235,7 @@ class PermissionManager extends BsExtensionMW {
 	public static function setTemplateData( $oTemplate ) {
 		global $wgRequest;
 
-		$dbw = wfGetDB( DB_WRITE );
+		$dbw = wfGetDB( DB_MASTER );
 		//return false if $oTemplate is empty
 		if ( $oTemplate == null ) {
 			$aResult = array(
