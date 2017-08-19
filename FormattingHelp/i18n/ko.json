@@ -3,12 +3,13 @@
 		"authors": [
 			"아라",
 			"Hwangjy9",
-			"Ykhwong"
+			"Ykhwong",
+			"Bluemersen"
 		]
 	},
 	"bs-formattinghelp-help-bold": "굵게",
 	"bs-formattinghelp-help-caption": "캡션",
-	"bs-formattinghelp-help-extlink": "바깥 고리",
+	"bs-formattinghelp-help-extlink": "외부 링크",
 	"bs-formattinghelp-help-hr": "수평선",
 	"bs-formattinghelp-help-template": "틀",
 	"bs-formattinghelp-help-templatename": "틀 이름",

@@ -16,5 +16,6 @@
 	"logentry-bs-pageaccess-change": "$1{{GENDER:$2|更改}}了$3的访问权限至“$4”",
 	"action-pageaccess-viewspecialpage": "查看特殊页面“{{int:pageaccess}}”",
 	"bs-pageaccess-column-title": "页面标题",
-	"bs-pageaccess-column-groups": "用户组"
+	"bs-pageaccess-column-groups": "用户组",
+	"apihelp-bs-pageaccess-store-summary": "页面级别上的控制访问"
 }
