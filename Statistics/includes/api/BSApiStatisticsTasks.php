@@ -188,6 +188,8 @@ class BSApiStatisticsTasks extends BSApiTasksBase {
 				for( $i = 0; $i < count( $aData ); $i++ ) {
 					if( $this->isInt( $aData[ $i ] ) ) {
 						$aTypes[ $aFields[ $i ][ 'name' ] ][] = 'int';
+					} else {
+						$aTypes[ $aFields[ $i ][ 'name' ] ][] = 'string';
 					}
 					$aItem[ $aFields[ $i ][ 'name' ] ] = $aData[ $i ];
 				}
