@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sachinkatiyar"
+		]
+	},
+	"notification-bs-pageassignments-assignment-change-add-body": "पृष्ठ $1 से {{लिंग: $2|असाइन किया गया}} $2 पर आपको।",
+	"notification-bs-pageassignments-assignment-change-remove-body": "पृष्ठ $2 के लिए आपका असाइनमेंट $1 द्वारा {{GENDER: $2|हटा दिया}} था।",
+	"notification-bs-pageassignments-page-edit-body": "$1 द्वारा पृष्ठ $2 को {{लिंग: $2|संपादित किया गया}}।",
+	"notification-bs-pageassignments-user-group-remove-body": "$4 से {{PLURAL:$5|समूह|समूहों}} $1 द्वारा {{लिंग: $2|हटाया गया}}। कृपया $3 पर अपना असाइनमेंट देखें।"
+}

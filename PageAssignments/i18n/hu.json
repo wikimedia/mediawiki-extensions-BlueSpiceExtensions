@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bencemac"
+		]
+	},
+	"notification-bs-pageassignments-page-move-body": "$1 {{GENDER:$2|átnevezte}} a(z) „$2” lapot.",
+	"notification-bs-pageassignments-page-edit-body": "$1 {{GENDER:$2|szerkesztette}} a(z) $2 lapot.",
+	"notification-bs-pageassignments-page-delete-body": "$1 {{GENDER:$2|törölte}} a(z) „$2” lapot."
+}

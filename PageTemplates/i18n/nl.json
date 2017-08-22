@@ -29,7 +29,7 @@
 	"bs-pagetemplates-general-section": "Algemeen",
 	"bs-pagetemplates-choose-template": "Deze pagina bestaat nog niet. U kunt een nieuwe pagina maken. Als u dit niet wilt doen, klikt u op de terug-knop van uw browser om terug te keren naar de laatst bezochte pagina. \n\nU kunt kiezen uit {{PLURAL:$1||een van }}{{PLURAL:$1|het volgende sjabloon|de volgende sjablonen}}:",
 	"bs-pagetemplates-pref-excludens": "Niet meer tonen sjablonen in deze naamruimten:",
-	"bs-pagetemplates-pref-forcenamespace": "Kracht target namespace",
+	"bs-pagetemplates-pref-forcenamespace": "Forceer doelnaamruimte",
 	"bs-pagetemplates-pref-hideifnotintargetns": "Verbergen sjabloon als de pagina niet te worden gemaakt in het doel van de naamruimte",
 	"bs-pagetemplates-headerlabel": "Label",
 	"bs-pagetemplates-headertargetnamespace": "Naamruimte",
