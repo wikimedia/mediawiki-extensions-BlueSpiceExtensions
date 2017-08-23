@@ -176,6 +176,7 @@ class BSApiStatisticsTasks extends BSApiTasksBase {
 			foreach( $aLabels as $sLabel ) {
 				$sField = strtolower( $sLabel );
 				$sField = str_replace( " ", "_", $sField );
+				$sField = str_replace( ".", "", $sField );
 				$aFields[] = array( 'name' => $sField );
 				$aColumns[] = array( 'header' => $sLabel, 'dataIndex' => $sField );
 			}
