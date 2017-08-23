@@ -158,11 +158,9 @@ class Emoticons extends BsExtensionMW {
 	 * @param int $iSection Number of edited section
 	 * @param int &$iFlags
 	 * @param Status $oStatus The Status object
-	 * @global MWMemcached $wgMemc The MediaWiki Memcached object
 	 * @return mixed Boolean true if syntax is okay or the saved article is not the MappingSourceArticle, String 'error-msg' if an error occurs.
 	 */
 	public function onPageContentSave( $owikiPage, $oUser, $oContent, $sSummary, $bIsMinor, $bIsWatch, $iSection, &$iFlags, $oStatus ) {
-		global $wgMemc;
 		$oMappingSourceTitle = Title::newFromText( 'bs-emoticons-mapping', NS_MEDIAWIKI );
 		if( !$oMappingSourceTitle->equals( $owikiPage->getTitle() ) ) return true;
 
