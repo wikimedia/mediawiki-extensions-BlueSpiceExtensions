@@ -501,7 +501,7 @@ class ArticleInfo extends BsExtensionMW {
 		$oSubpageListView->setKey( 'Subpages' );
 		$oSubpageListView->setHeading( wfMessage( 'bs-articleinfo-subpages' )->plain() );
 
-		$aSubpages = BsArticleHelper::getSubpagesSorted( $oTitle, -1 );
+		$aSubpages = BsArticleHelper::getSubpagesSortedForTitle( $oTitle );
 
 		if ( count( $aSubpages ) > 100 ) {
 			$oSubpageListView->setBodyText( wfMessage( 'bs-articleinfo-subpages-too-much' )->plain() );
