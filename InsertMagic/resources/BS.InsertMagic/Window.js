@@ -10,6 +10,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 	height: 400,
 	layout: 'border',
 	singleton: true,
+	preSelectedType: 'tag',
 
 	afterInitComponent: function() {
 		this.setTitle( mw.message('bs-insertmagic-dlg-title').plain() );
@@ -31,7 +32,7 @@ Ext.define( 'BS.InsertMagic.Window', {
 			readonly: true,
 			allowBlank: false,
 			forceSelection: true,
-			value:'tag', //default selection
+			value: this.preSelectedType, //default selection
 			store: typesArray
 		});
 		this.cmbType.on( 'select', this.onTypeSelected, this );
@@ -161,7 +162,16 @@ Ext.define( 'BS.InsertMagic.Window', {
 
 	onStoreLoad: function( store, records, options ) {
 		this.tagsStore.sort( 'name', 'ASC' );
-		this.tagsStore.filter( 'type', 'tag'); //just initial
+
+		var firstQuickAccessItemId = this.tagsStore.findExact(
+			'type',
+			'quickaccess'
+		);
+		if( firstQuickAccessItemId && firstQuickAccessItemId !== -1 ) {
+			this.preSelectedType = 'quickaccess';
+			this.cmbType.setValue( this.preSelectedType );
+		}
+		this.tagsStore.filter( 'type', this.preSelectedType ); //just initial
 	},
 
 	onTypeSelected: function( combo, record, index ){
