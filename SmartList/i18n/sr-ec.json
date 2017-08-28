@@ -4,6 +4,7 @@
 			"Obsuser"
 		]
 	},
+	"bs-smartlist-recent-changes": "Скорашње измене",
 	"bs-smartlist-mostvisitedpages": "Најпосећеније странице",
 	"bs-smartlist-hitcounter-missing": "Проширење <a target='blank' href='https://www.mediawiki.org/wiki/Extension:HitCounters'>HitCounters</a> мора да буде инсталирано."
 }
