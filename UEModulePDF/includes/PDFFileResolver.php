@@ -117,8 +117,8 @@ class PDFFileResolver {
 			$iWidth = $this->oFileObject->getWidth();
 			$this->oImgNode->setAttribute( 'width', $iWidth );
 		}
-		if( $iWidth > 700 ) {
-			$this->oImgNode->setAttribute( 'width', 700 );
+		if( $iWidth > 650 ) {
+			$this->oImgNode->setAttribute( 'width', 650 );
 			$this->oImgNode->removeAttribute( 'height' );
 
 			$sClasses = $this->oImgNode->getAttribute( 'class' );
