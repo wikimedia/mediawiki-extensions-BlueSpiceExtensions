@@ -276,6 +276,8 @@ class BsPDFPageProvider {
 		//Make tables paginatable
 		$oTableElements = $oPageDOM->getElementsByTagName( 'table' );
 		foreach( $oTableElements as $oTableElement ) {
+			self::correctTableWidth( $oTableElement );
+
 			$oTableRows = $oTableElement->childNodes; //We only want direct children, so we cannot use getElementsByTagName
 			$aRows = array();
 			foreach( $oTableRows as $oTableRow ){
@@ -319,5 +321,14 @@ class BsPDFPageProvider {
 		$oAntiBugP->nodeValue = 'I am here to prevent the first-page-empty bug!';
 		$oAntiBugP->setAttribute( 'style', 'visibility:hidden;height:0px;margin:0px;padding:0px' );
 		$oBodyContent->insertBefore( $oAntiBugP, $oBodyContent->firstChild );
+	}
+
+	protected static function correctTableWidth( $oTableElement ) {
+		$sStyleAttribute = $oTableElement->getAttribute( 'style' );
+		//make sure style tag ends with semicolon
+		if( substr( trim( $sStyleAttribute ), -1 ) !== ";" ) {
+			$sStyleAttribute .= ";";
+		}
+		$oTableElement->setAttribute( 'style', $sStyleAttribute . ' table-layout: fixed; max-width: 700px;' );
 	}
 }
