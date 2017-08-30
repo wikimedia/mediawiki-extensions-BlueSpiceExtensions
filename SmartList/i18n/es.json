@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"AVIADOR",
-			"Osnard"
+			"Osnard",
+			"Fitoschido"
 		]
 	},
 	"bs-smartlist-desc": "Muestra los últimos cinco cambios del wiki en una lista",
@@ -19,7 +20,7 @@
 	"bs-smartlist-pref-categories": "Categorías:",
 	"bs-smartlist-pref-period": "Período:",
 	"bs-smartlist-pref-showminorchanges": "Mostrar cambios menores",
-	"bs-smartlist-pref-showonlynewarticles": "Mostrar sólo páginas nuevas",
+	"bs-smartlist-pref-showonlynewarticles": "Mostrar solo páginas nuevas",
 	"bs-smartlist-pref-trim": "Longitud máxima del título (en caracteres):",
 	"bs-smartlist-pref-showtext": "Mostrar el contenido de la página",
 	"bs-smartlist-pref-trimtext": "Longitud máxima del contenido de la página (en caracteres)",
