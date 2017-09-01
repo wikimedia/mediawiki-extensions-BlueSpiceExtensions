@@ -524,7 +524,7 @@ class BuildIndexMainControl {
 	 * @return array Categorynames as values
 	 */
 	public function getCategoriesFromDbForCertainPageId( $iPageID ) {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 
 		// returns false on failure
 		$oDbResTableCategories = $oDbr->select(
@@ -550,7 +550,7 @@ class BuildIndexMainControl {
 	 * @return array editors as values
 	 */
 	public function getEditorsFromDbForCertainPageId( $iPageID ) {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 
 		// returns false on failure
 		$oDbResTableRevision = $oDbr->select(

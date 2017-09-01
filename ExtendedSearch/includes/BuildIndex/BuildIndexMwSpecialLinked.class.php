@@ -46,7 +46,7 @@ class BuildIndexMwSpecialLinked extends AbstractBuildIndexMwLinked {
 
 
 	public function __construct( $oMainControl ) {
-		$this->oDbr = wfGetDB( DB_SLAVE );
+		$this->oDbr = wfGetDB( DB_REPLICA );
 		include( dirname( dirname( dirname( dirname( __DIR__ ) ) ) ).DS.'config'.DS.'ExtendedSearchSpecialLinked.php' );
 		if ( isset( $credentials ) ) $this->aCredentials = $credentials;
 		parent::__construct( $oMainControl );

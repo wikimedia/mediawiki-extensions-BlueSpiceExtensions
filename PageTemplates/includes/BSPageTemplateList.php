@@ -40,7 +40,7 @@ class BSPageTemplateList {
 
 	protected function fetchDB() {
 		global $wgDBtype;
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$aConds = [];
 		if ( $this->aConfig[self::HIDE_IF_NOT_IN_TARGET_NS] ) {

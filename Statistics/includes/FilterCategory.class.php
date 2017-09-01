@@ -69,7 +69,7 @@ class BsFilterCategory extends BsMultiSelectFilter {
 		// TODO MRG (20.02.11 23:51): i18n geht noch nicht so recht
 		$aCategories[wfMessage( 'bs-ns_all' )->text()] = '(all)';
 		// TODO MRG (22.12.10 01:19): Greift auf MW zu
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$rRes = $oDbr->select('categorylinks', 'distinct cl_to', '', '', array('ORDER BY' => 'cl_to ASC') );
 		while ( $oRow = $rRes->fetchObject() ) {
 			$aCategories[$oRow->cl_to] = $oRow->cl_to;

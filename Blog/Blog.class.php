@@ -481,7 +481,7 @@ class Blog extends BsExtensionMW {
 		$aOptions = array();
 		$aJoins = array();
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		if ( $argsSCategory ) {
 			$aTables[] = 'categorylinks';
@@ -734,7 +734,7 @@ class Blog extends BsExtensionMW {
 	protected function getBlogPages( $iNS ) {
 		$aSubpages = array();
 		if( $iNS == NS_BLOG ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
 				array( 'page' ),
 				array( 'page_title', 'page_namespace'),

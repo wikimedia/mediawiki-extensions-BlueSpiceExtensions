@@ -216,7 +216,7 @@ class WatchList extends BsExtensionMW {
 		}
 		$aOptions['LIMIT'] = $iCount;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'watchlist',
 			array( 'wl_namespace', 'wl_title' ),

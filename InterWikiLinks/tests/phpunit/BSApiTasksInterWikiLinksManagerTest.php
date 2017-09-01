@@ -66,7 +66,7 @@ class BSApiTasksInterWikiLinksManagerTest extends BSApiTasksTestBase {
 	}
 
 	protected function isDeleted( $sValue ) {
-		$db = wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_REPLICA );
 		$res = $db->select( 'interwiki', array( 'iw_prefix' ), array( 'iw_prefix' => $sValue ), wfGetCaller() );
 		if( $res->numRows() === 0 ) {
 			return true;

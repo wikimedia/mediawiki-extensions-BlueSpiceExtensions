@@ -75,7 +75,7 @@ class PageAccess extends BsExtensionMW {
 			}
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$sAccessGroupsOld = $dbr->selectField(
 			'page_props', 'pp_value', array (
 			'pp_page' => $wikiPage->getTitle()->getArticleID(),
@@ -149,7 +149,7 @@ class PageAccess extends BsExtensionMW {
 			return self::$aAllowedPairs[$sPair];
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$bHasAccess = true;
 		$aAllTitles = $oPage->getTemplateLinksFrom();
 		$aAllTitles[] = $oPage;

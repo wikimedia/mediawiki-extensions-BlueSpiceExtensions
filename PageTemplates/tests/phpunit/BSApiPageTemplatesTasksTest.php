@@ -88,7 +88,7 @@ class BSApiPageTemplatesTasksTest extends BSApiTasksTestBase {
 	}
 
 	protected function isDeleted( $iID ) {
-		$db = wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_REPLICA );
 		$res = $db->select( 'bs_pagetemplate', array( 'pt_id' ), array( 'pt_id = ' . $iID ), wfGetCaller() );
 		if( $res->numRows() === 0 ) {
 			return true;

@@ -39,7 +39,7 @@ class BSApiReadersUsersStore extends BSApiExtJSStoreBase {
 			return array();
 		}
 
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$res = $oDbr->select(
 			'bs_readers',
 			'*',

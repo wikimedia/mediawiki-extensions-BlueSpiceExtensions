@@ -21,7 +21,7 @@ class CreateAvatarHTML extends Maintenance {
 			$this->output( "<html>\n" );
 
 			// We list user by user_id from one of the slave database
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$result = $dbr->select( 'user',
 					array( 'user_id' ),
 					array(),

@@ -120,7 +120,7 @@ class PageAssignmentsUsersAdditionalPermissionsHooks {
 				return self::$aAssignedUserForTitle[$oUser->getId()][$oTitle->getArticleID()];
 			}
 		}
-		$oRes = wfGetDB( DB_SLAVE )->selectRow(
+		$oRes = wfGetDB( DB_REPLICA )->selectRow(
 			'bs_pageassignments',
 			'*',
 			array(
@@ -139,7 +139,7 @@ class PageAssignmentsUsersAdditionalPermissionsHooks {
 			return false;
 		}
 
-		$oRes = wfGetDB( DB_SLAVE )->selectRow(
+		$oRes = wfGetDB( DB_REPLICA )->selectRow(
 			'bs_pageassignments',
 			'*',
 			array(

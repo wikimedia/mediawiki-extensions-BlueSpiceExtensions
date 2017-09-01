@@ -109,7 +109,7 @@ class UsageTracker extends BsExtensionMW {
 	 * @return BS\UsageTracker\CollectorResult[]
 	 */
 	public function getUsageDataFromDB( $aConfig = null ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'bs_usagetracker',
 			[

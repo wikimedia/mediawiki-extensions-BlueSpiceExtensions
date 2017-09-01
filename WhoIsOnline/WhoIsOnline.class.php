@@ -410,7 +410,7 @@ class WhoIsOnline extends BsExtensionMW {
 			//'LIMIT'    => (int) $iLimit,
 		);
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		switch ( $sOrderBy ) {
 			case 'name' :
 			default :

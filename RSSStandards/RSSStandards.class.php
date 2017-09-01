@@ -129,7 +129,7 @@ class RSSStandards extends BsExtensionMW {
 			$sPageName = $sTitle;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			array( 'page', 'recentchanges' ),
 			'*',
@@ -169,7 +169,7 @@ class RSSStandards extends BsExtensionMW {
 		global $wgSitename, $wgRequest;
 		$user = $wgRequest->getInt( 'u', 0 );
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$res = $dbr->select(
 			array( 'recentchanges' ),
@@ -224,7 +224,7 @@ class RSSStandards extends BsExtensionMW {
 	public function buildRssCat() {
 		global $wgRequest, $wgSitename;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$_showLimit = 10;
 
@@ -311,7 +311,7 @@ class RSSStandards extends BsExtensionMW {
 	public function buildRssNs( $aParams ) {
 		global $wgRequest, $wgSitename, $wgLang, $wgDBprefix;
 
-		$dbr =  wfGetDB( DB_SLAVE );
+		$dbr =  wfGetDB( DB_REPLICA );
 
 		$_showLimit = 10;
 
@@ -484,7 +484,7 @@ class RSSStandards extends BsExtensionMW {
 			$aConditions['rc_namespace'] = $nameSpace;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
+		$dbr = wfGetDB( DB_REPLICA, 'watchlist' );
 		list( $page, $watchlist, $recentchanges ) = $dbr->tableNamesN( 'page', 'watchlist', 'recentchanges' );
 
 		$watchlistCount = $dbr->selectField( 'watchlist', 'COUNT(*)',
@@ -785,7 +785,7 @@ class RSSStandards extends BsExtensionMW {
 		$select->setName( 'selFeedCat' );
 		$select->setLabel( wfMessage( 'bs-rssstandards-title-cat' )->plain() );
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'categorylinks',
 			'cl_to',

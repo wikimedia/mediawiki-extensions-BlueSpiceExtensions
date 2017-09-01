@@ -297,7 +297,7 @@ class PagesVisited extends BsExtensionMW {
 		$aFields = array( 'wo_page_id', 'wo_page_namespace', 'wo_page_title' );
 		$sTable = 'bs_whoisonline';
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		global $wgDBtype;
 		if ( $wgDBtype == 'oracle' ) {

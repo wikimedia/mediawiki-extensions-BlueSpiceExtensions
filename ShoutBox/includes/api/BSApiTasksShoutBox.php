@@ -180,7 +180,7 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 			return $oReturn;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			$aTables,
 			$aFields,

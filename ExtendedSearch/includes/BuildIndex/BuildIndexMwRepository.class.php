@@ -45,7 +45,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
-		$this->oDbr = wfGetDB( DB_SLAVE );
+		$this->oDbr = wfGetDB( DB_REPLICA );
 	}
 
 	/**

@@ -46,7 +46,7 @@ class BSAssignableGroup extends BSAssignableBase {
 	protected static $aUserIdCache = array();
 	public function getUserIds() {
 		if( !isset( self::$aUserIdCache[$this->sGroupName] ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
 				'user_groups',
 				'ug_user',

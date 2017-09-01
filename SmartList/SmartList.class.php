@@ -671,7 +671,7 @@ class SmartList extends BsExtensionMW {
 		}
 
 		if ( $aArgs['mode'] == 'recentchanges' ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$aConditions = array();
 
 			switch ( $aArgs['period'] ) {
@@ -786,7 +786,7 @@ class SmartList extends BsExtensionMW {
 				return $oErrorListView->execute();
 			}
 
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$aTables = array(
 				'pagelinks',
 				'page',
@@ -936,7 +936,7 @@ class SmartList extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
 
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$res = $oDbr->select(
 			'revision',
 			'rev_page',
@@ -984,7 +984,7 @@ class SmartList extends BsExtensionMW {
 		$oParser->disableCache();
 		$iCount = BsCore::sanitizeArrayEntry( $aArgs, 'count', 5, BsPARAMTYPE::INT );
 
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$res = $oDbr->select(
 			'user',
 			'user_id',
@@ -1053,7 +1053,7 @@ class SmartList extends BsExtensionMW {
 		$iPortletPeriod = BsCore::sanitizeArrayEntry( $aArgs, 'portletperiod', 0, BsPARAMTYPE::INT );
 		$bAlltime = true;
 
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		if ( in_array( $sPeriod, array( 'week', 'month' ) ) || in_array( $iPortletPeriod, array( 7, 30 ) ) ) {
 			$aTables = array( 'bs_whoisonline' );
 			$aColumns = array(
@@ -1196,7 +1196,7 @@ class SmartList extends BsExtensionMW {
 	 * @return String list of pages or empty
 	 */
 	public function getEditedPages( $iCount, $iTime ) {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$iCount = BsCore::sanitize( $iCount, 10, BsPARAMTYPE::INT );
 		$iTime = BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
 
@@ -1242,7 +1242,7 @@ class SmartList extends BsExtensionMW {
 	 * @return String list of pages or empty
 	 */
 	public function getActivePortlet( $iCount, $iTime ) {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$iCount = BsCore::sanitize( $iCount, 10, BsPARAMTYPE::INT );
 		$iTime = BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
 
@@ -1317,7 +1317,7 @@ class SmartList extends BsExtensionMW {
 			}
 			$aArgs['categories'] = implode( ',', $aCategories );
 
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			if ( $aArgs['categoryMode'] == 'OR' ) {
 				$aConditions[] = $sPageIdFileName.' IN ( SELECT cl_from FROM ' . $dbr->tableName( 'categorylinks' ) . ' WHERE cl_to IN (' . $aArgs['categories'] . ') )';
 			} else {

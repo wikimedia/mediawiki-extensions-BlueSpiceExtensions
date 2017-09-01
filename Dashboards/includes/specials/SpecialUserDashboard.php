@@ -14,7 +14,7 @@ class SpecialUserDashboard extends BsSpecialPage {
 		parent::execute( $sParameter );
 		$this->checkForReadOnly();
 
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$res = $oDbr->select(
 				'bs_dashboards_configs',
 				'*',

@@ -11,7 +11,7 @@ class BSApiPageAccessStore extends BSApiExtJSStoreBase {
 		global $wgAdditionalGroups;
 		$aData = array();
 
-		$oDBr = $this->getDB( DB_SLAVE );
+		$oDBr = $this->getDB( DB_REPLICA );
 		$oRes = $oDBr->select(
 				[ 'page_props' ],
 				[ 'pp_page', 'pp_value' ],

@@ -80,7 +80,7 @@ class InterWikiLinks extends BsExtensionMW {
 	}
 
 	public static function getInterWikiLinkPrefixes() {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$rRes = $oDbr->select(
 				'interwiki',
 				'iw_prefix',
@@ -96,7 +96,7 @@ class InterWikiLinks extends BsExtensionMW {
 	}
 
 	public static function purgeTitles($iw_prefix) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'iwlinks',
 			array('iwl_from', 'iwl_prefix'),

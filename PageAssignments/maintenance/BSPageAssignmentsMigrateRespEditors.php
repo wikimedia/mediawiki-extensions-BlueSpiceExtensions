@@ -28,7 +28,7 @@ class BSPageAssignmentsMigrateRespEditors extends LoggedUpdateMaintenance {
 		$aOptions = array(
 			'LIMIT' => 99999,
 		);
-		$oRes = $this->getDB( DB_SLAVE )->select(
+		$oRes = $this->getDB( DB_REPLICA )->select(
 			'bs_responsible_editors',
 			'*',
 			array(),

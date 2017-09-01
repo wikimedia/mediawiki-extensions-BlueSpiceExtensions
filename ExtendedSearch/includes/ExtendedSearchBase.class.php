@@ -251,7 +251,7 @@ class ExtendedSearchBase {
 	 * @param object $vOptionsFormWiki ViewSearchExtendedOptionsForm
 	 */
 	private function getExtendedFormCategoriesBox( $vOptionsFormWiki ) {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$catRes = $oDbr->select(
 			array( 'category' ),
 			array( 'cat_id', 'cat_title' ),
@@ -282,7 +282,7 @@ class ExtendedSearchBase {
 	 * @param object $vOptionsFormWiki ViewSearchExtendedOptionsForm
 	 */
 	private function getExtendedFormEditorsBox( $vOptionsFormWiki ) {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$vEditorsBox = $vOptionsFormWiki->getBox( 'EDITORS-FIELD', 'bs-extendedsearch-search-editors', 'ed[]' );
 		$edRes = $oDbr->select(
 			array( 'revision' ),
@@ -692,7 +692,7 @@ class ExtendedSearchBase {
 	 * @return string list of most searched terms
 	 */
 	public static function getRecentSearchTerms( $iCount, $iTime ) {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$iCount = BsCore::sanitize( $iCount, 0, BsPARAMTYPE::INT );
 		$iTime = BsCore::sanitize( $iTime, 0, BsPARAMTYPE::INT );
 

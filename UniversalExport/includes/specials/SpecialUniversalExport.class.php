@@ -111,7 +111,7 @@ class SpecialUniversalExport extends BsSpecialPage {
 			}*/
 
 			//Get relevant page props
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->selectField(
 				'page_props',
 				'pp_value',

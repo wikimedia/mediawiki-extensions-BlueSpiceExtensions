@@ -24,7 +24,7 @@ class BSAssignableEveryone extends BSAssignableBase {
 	}
 
 	public function getUserIds() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select( 'user', 'user_id' );
 		$aUserIds = [];
 		foreach( $res as $row ) {

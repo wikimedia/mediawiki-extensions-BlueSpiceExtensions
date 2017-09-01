@@ -45,7 +45,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 	 */
 	public function __construct( $oMainControl ) {
 		parent::__construct( $oMainControl );
-		$this->oDbr = wfGetDB( DB_SLAVE );
+		$this->oDbr = wfGetDB( DB_REPLICA );
 	}
 
 	/**

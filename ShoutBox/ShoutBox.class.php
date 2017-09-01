@@ -116,7 +116,7 @@ class ShoutBox extends BsExtensionMW {
 			 */
 		} elseif ( $wgDBtype == 'oracle' ) {
 			$wgExtNewTables[] = array( 'bs_shoutbox', $sDir . 'db/oracle/ShoutBox.oci.sql' );
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			if ( !$dbr->fieldExists( 'bs_shoutbox', 'sb_archived' ) && $dbr->tableExists( 'bs_shoutbox' ) ) {
 				#$wgExtNewFields[] = array( 'bs_shoutbox', 'sb_archived', $sDir . 'db/oracle/ShoutBox.patch.sb_archived.oci.sql' );
 			}
@@ -234,7 +234,7 @@ class ShoutBox extends BsExtensionMW {
 
 		if ( $iData === false ) {
 			wfDebugLog( 'BsMemcached', __CLASS__ . ': Fetching total count from DB' );
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
 				'bs_shoutbox',
 				'sb_id',

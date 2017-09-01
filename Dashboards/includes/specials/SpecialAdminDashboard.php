@@ -24,7 +24,7 @@ class SpecialAdminDashboard extends BsSpecialPage {
 	}
 
 	private function getAdminConfig() {
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$res = $oDbr->select(
 				'bs_dashboards_configs',
 				'*',

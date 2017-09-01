@@ -60,7 +60,7 @@ class BsFilterUsers extends BsMultiSelectFilter {
 	 */
 	public function loadAvailableValues() {
 		$aUserNames = array();
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$rRes = $oDbr->select('user', 'distinct user_name', '', '', array('ORDER BY' => 'user_name ASC') );
 		while ( $oRow = $rRes->fetchObject() ) {
 			$aUserNames[$oRow->user_name] = $oRow->user_name;

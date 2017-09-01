@@ -69,7 +69,7 @@ class SearchService extends SolrServiceAdapter {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		if ( self::$oInstance === null ) {
 			if ( PHP_SAPI === 'cli' ) {
-				$oDbr = wfGetDB( DB_SLAVE );
+				$oDbr = wfGetDB( DB_REPLICA );
 				if ( $oDbr->tableExists( 'bs_settings' ) ) {
 					BsConfig::loadSettings();
 				}

@@ -154,7 +154,7 @@ class Authors extends BsExtensionMW {
 			//HINT: Maybe we want to use MW interface Article::getContributors() to have better caching
 			//HINT2: Check if available in MW 1.17+
 			// SW: There is still no caching in WikiPage::getContributors()! 17.07.2014
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
 					array( 'revision' ), array( 'rev_user_text', 'MAX(rev_timestamp) AS ts' ), array( 'rev_page' => $iArticleId ), __METHOD__, array(
 				'GROUP BY' => 'rev_user_text',

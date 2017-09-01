@@ -26,7 +26,7 @@
  */
 class TagCloudSearchStatsHandler extends TagCloudBaseHandler {
   public static function collectData( $aOptions, $aData = array(), Title $oTitle = null ) {
-    $oDB = wfGetDB( DB_SLAVE );
+    $oDB = wfGetDB( DB_REPLICA );
     $aTables = array( 'bs_searchstats' );
     $aFields = array(
       'stats_term',

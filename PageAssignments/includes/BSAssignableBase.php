@@ -69,7 +69,7 @@ abstract class BSAssignableBase implements JsonSerializable {
 	 * @return array in form of [ <page_id> => [ <AssignableBase>, <AssignableBase>, ... ] ]
 	 */
 	protected static function doGetForUser( $oUser ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'bs_pageassignments',
 			'*',

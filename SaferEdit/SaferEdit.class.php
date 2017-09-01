@@ -189,7 +189,7 @@ class SaferEdit extends BsExtensionMW {
 			return $this->aIntermediateEditsForCurrentTitle = array();
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$rRes = $dbr->select(
 			'bs_saferedit',

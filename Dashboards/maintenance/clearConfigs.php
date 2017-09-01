@@ -15,7 +15,7 @@ class BSDashBoardsClearConfigMaintenance extends LoggedUpdateMaintenance {
 			$aFinalPortletList[] = $aPortlets[$i]["type"];
 		}
 
-		$oDbr = $this->getDB( DB_SLAVE );
+		$oDbr = $this->getDB( DB_REPLICA );
 		$res = $oDbr->select( 'bs_dashboards_configs', '*' );
 
 		foreach( $res as $row ) {

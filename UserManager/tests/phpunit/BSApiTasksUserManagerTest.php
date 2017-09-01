@@ -122,7 +122,7 @@ class BSApiTasksUserManagerTest extends BSApiTasksTestBase {
 	}
 
 	protected function userIsBlocked( $iId ) {
-		$db = wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_REPLICA );
 		$res = $db->select( 'ipblocks', array( 'ipb_user' ), array( 'ipb_user = ' . $iId ), wfGetCaller() );
 		if( $res->numRows() === 0 ) {
 			return false;
@@ -132,7 +132,7 @@ class BSApiTasksUserManagerTest extends BSApiTasksTestBase {
 	}
 
 	protected function existsInDb( $iId ) {
-		$db = wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_REPLICA );
 		$res = $db->select( 'user', array( 'user_id' ), array( 'user_id = ' . $iId ), wfGetCaller() );
 		if( $res->numRows() === 0 ) {
 			return false;

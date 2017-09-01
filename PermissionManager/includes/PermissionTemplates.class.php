@@ -14,7 +14,7 @@ class PermissionTemplates {
 	 */
 	public static function getAll() {
 		if(!count(self::$_aTemplates)) {
-			$oDb        = wfGetDB(DB_SLAVE);
+			$oDb        = wfGetDB(DB_REPLICA);
 			$sTableName = $oDb->tableName('bs_permission_templates');
 			$oRes = $oDb->query("SELECT tpl_id, tpl_name, tpl_data, tpl_description
 							 FROM {$sTableName}");
@@ -28,7 +28,7 @@ class PermissionTemplates {
 	}
 
 	public static function getPermissionsFromName($sTplName) {
-		$oDb = wfGetDB(DB_SLAVE);
+		$oDb = wfGetDB(DB_REPLICA);
 		$sTableName = $oDb->tableName('bs_permission_templates');
 		$oRes = $oDb->query("SELECT tpl_data
 							 FROM {$sTableName}

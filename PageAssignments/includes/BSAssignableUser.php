@@ -24,7 +24,7 @@ class BSAssignableUser extends BSAssignableBase {
 	 */
 	public static function getList($sQuery, $oContext) {
 		$aResult = array();
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select( 'user', '*' );
 		foreach( $res as $row ) {
 			$oUser = User::newFromRow( $row );

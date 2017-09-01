@@ -152,7 +152,7 @@ class CountThings extends BsExtensionMW {
 	 * @return string
 	 */
 	public function onMagicWordBsCountArticles( $input, $args, $parser ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select( 'page', 'page_id' );
 		$out = $dbr->numRows( $res );
 		$dbr->freeResult( $res );
@@ -168,7 +168,7 @@ class CountThings extends BsExtensionMW {
 	 * @return string
 	 */
 	public function onMagicWordBsCountUsers( $input, $args, $parser ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select( 'user', 'user_id' );
 		$out = $dbr->numRows( $res );
 		$dbr->freeResult( $res );

@@ -34,7 +34,7 @@ class BSApiReadersDataStore extends BSApiExtJSStoreBase {
 
 	protected function makeData( $sQuery = '' ) {
 
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 
 		$res = $oDbr->select(
 			array( 'page', 'bs_readers' ),

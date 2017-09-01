@@ -43,7 +43,7 @@ class BuildIndexMwSingleFile extends AbstractBuildIndexFile {
 	public function __construct( $oMainControl, $oFile ) {
 		parent::__construct( $oMainControl );
 		$this->oFile = $oFile;
-		$this->oDbr = wfGetDB( DB_SLAVE );
+		$this->oDbr = wfGetDB( DB_REPLICA );
 	}
 
 	/**

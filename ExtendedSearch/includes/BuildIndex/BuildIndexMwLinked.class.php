@@ -43,7 +43,7 @@ class BuildIndexMwLinked extends AbstractBuildIndexLinked {
 	 * @param BuildIndexMainControl $oMainControl Instance to decorate.
 	 */
 	public function __construct( $oMainControl ) {
-		$this->oDbr = wfGetDB( DB_SLAVE );
+		$this->oDbr = wfGetDB( DB_REPLICA );
 		parent::__construct( $oMainControl );
 	}
 

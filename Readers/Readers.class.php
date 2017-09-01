@@ -192,7 +192,7 @@ class Readers extends BsExtensionMW {
 	 */
 	private function getReadersViewForAfterContent( $oTitle ) {
 		$oViewReaders = null;
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$res = $oDbr->select(
 				array( 'bs_readers' ),
 				array( 'readers_user_id', 'MAX(readers_ts) as readers_ts' ),

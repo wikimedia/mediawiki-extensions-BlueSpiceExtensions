@@ -27,7 +27,7 @@ class Database extends Base {
 			throw new \MWException( "UsageTracker::DatabaseCollector: table or columns are not set." );
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			[ $this->table ],
 			$this->uniqueColumns,

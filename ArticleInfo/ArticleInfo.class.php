@@ -383,7 +383,7 @@ class ArticleInfo extends BsExtensionMW {
 			ksort( $aCurrentPagesCategories );
 		}
 
-		$oDbr = wfGetDB( DB_SLAVE );
+		$oDbr = wfGetDB( DB_REPLICA );
 		$res = $oDbr->select(
 				array( 'page_props' ),
 				array( 'pp_page' ),

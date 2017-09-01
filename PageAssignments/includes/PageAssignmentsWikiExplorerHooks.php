@@ -35,7 +35,7 @@ class PageAssignmentsWikiExplorerHooks {
 	}
 
 	public static function onWikiExplorerQueryPagesWithFilter($aFilters, &$aTables, &$aFields, &$aConditions, &$aJoinConditions) {
-		$dbr = wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_REPLICA);
 		$sTablePrefix = $dbr->tablePrefix();
 
 		$aTables[] = "{$sTablePrefix}bs_pageassignments AS assigned";
@@ -83,7 +83,7 @@ class PageAssignmentsWikiExplorerHooks {
 
 		$aPageIds = array_keys($aRows);
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$aTables = array(
 			'bs_pageassignments'
 		);
