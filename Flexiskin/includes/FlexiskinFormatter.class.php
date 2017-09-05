@@ -10,7 +10,7 @@ class FlexiskinFormatter {
 		else{
 			$aReturn[] = "body{background-color:#" . $aConfig->customBackgroundColor . " !important;}";
 		}
-		if ( isset( $aConfig->backgroundImage ) && $aConfig->backgroundImage != "" ) {
+		if ( !empty( $aConfig->backgroundImage ) && $aConfig->backgroundImage !== "none" ) {
 			$oStatus = BsFileSystemHelper::getFileContent( $aConfig->backgroundImage, 'flexiskin' . DS . $sNewId . DS . 'images' );
 			if( $oStatus->isGood() ){
 				$oFileInfo = new SplFileInfo( $aConfig->backgroundImage );

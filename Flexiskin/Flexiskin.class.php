@@ -31,6 +31,9 @@
  * @filesource
  */
 
+use BlueSpice\Flexiskin\PreviewResourceModuleRegistrant;
+use BlueSpice\Flexiskin\Data\AvailableConfigs;
+
 /**
  * Base class for Flexiskin extension
  * @package BlueSpice_Extensions
@@ -180,13 +183,21 @@ class Flexiskin extends BsExtensionMW {
 	 */
 	public static function onBeforePageDisplay( &$out ) {
 		$inPreviewMode = $out->getRequest()->getBool( 'preview' );
+		$flexiSkinId = $out->getRequest()->getVal( 'flexiskin' );
 
-		if( $inPreviewMode && $out->getRequest()->getVal( 'flexiskin' ) !== null ) {
-			$out->getRequest()->setSessionData( 'flexiskin', $out->getRequest()->getVal( 'flexiskin' ) );
-			$out->addModuleStyles( 'ext.bluespice.flexiskin.skin.preview' );
+		if( $inPreviewMode &&  $flexiSkinId !== null ) {
+			$out->addModuleStyles(
+				Flexiskin::generateDynamicModuleStyleName(
+					"preview.$flexiSkinId"
+				)
+			);
 		}
 		else {
-			$out->addModuleStyles( Flexiskin::generateDynamicModuleStyleName() );
+			$out->addModuleStyles(
+				Flexiskin::generateDynamicModuleStyleName(
+					BsConfig::get( 'MW::Flexiskin::Active' )
+				)
+			);
 		}
 
 		return true;
@@ -199,16 +210,31 @@ class Flexiskin extends BsExtensionMW {
 	 */
 	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
 		$resourceLoader->register(
-			Flexiskin::generateDynamicModuleStyleName(),
+			Flexiskin::generateDynamicModuleStyleName(
+				BsConfig::get( 'MW::Flexiskin::Active' )
+			),
 			array(
 				'class' => 'ResourceLoaderFlexiskinModule'
 			)
 		);
+
+		$registrant = new PreviewResourceModuleRegistrant(
+			$resourceLoader,
+			new AvailableConfigs()
+		);
+
+		$registrant->register();
+
 		return true;
 	}
 
-	public static function generateDynamicModuleStyleName(){
-		return 'ext.bluespice.flexiskin.skin.' . BsConfig::get( 'MW::Flexiskin::Active' );
+	/**
+	 *
+	 * @param string $flexiskinId
+	 * @return string
+	 */
+	public static function generateDynamicModuleStyleName( $flexiskinId ){
+		return 'ext.bluespice.flexiskin.skin.' . $flexiskinId;
 	}
 
 	/**
