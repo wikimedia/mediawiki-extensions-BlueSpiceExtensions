@@ -33,6 +33,9 @@
 // TODO SU (04.07.11 10:37): Userhash für alle Links
 // Last review MRG (01.07.11 14:37)
 // TODO: make RSSStandards methods more generic
+
+use MediaWiki\MediaWikiServices;
+
 class RSSStandards extends BsExtensionMW {
 
 	protected function initExt() {
@@ -412,7 +415,7 @@ class RSSStandards extends BsExtensionMW {
 			$_hash = $wgRequest->getVal( 'h', '' );
 			if ( !( $user && $_hash == md5( $_user.$user->getToken().$user->getId() ) ) || $user->isAnon() ) {
 				$oTitle = SpecialPage::getTitleFor( 'Userlogin' );
-				$sLink = Linker::link(
+				$sLink = MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 					$oTitle,
 					wfMessage( 'loginreqlink' )->plain(),
 					array(),
