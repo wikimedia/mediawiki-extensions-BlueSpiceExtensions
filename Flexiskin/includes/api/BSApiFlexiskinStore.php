@@ -26,38 +26,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  */
 
+use BlueSpice\Flexiskin\Data\AvailableConfigs;
+
 class BSApiFlexiskinStore extends BSApiExtJSStoreBase {
 	protected function makeData( $sQuery = '' ) {
-
-		$sActiveSkin = BsConfig::get( 'MW::Flexiskin::Active' );
-		$oStatus = BsFileSystemHelper::ensureDataDirectory( "flexiskin" . DS );
-		if ( !$oStatus->isGood() ){
-			return array();
-		}
-		$aData = array ();
-		if ( $handle = opendir( $oStatus->getValue() ) ) {
-			while ( false !== ( $entry = readdir( $handle ) ) ) {
-				if ( $entry != "." && $entry != ".." ) {
-					$oStatus = BsFileSystemHelper::getFileContent( "conf.json", "flexiskin" . DS . $entry );
-					if ( !$oStatus->isGood() ) {
-						continue;
-					}
-					$aFile = FormatJson::decode( $oStatus->getValue() );
-					//PW(27.11.2013) TODO: this should not be needed!
-					if ( !isset( $aFile[0] ) || !is_object( $aFile[0] ) ) {
-						continue;
-					}
-					$aData[] = ( object )array(
-						'flexiskin_id' => $entry,
-						'flexiskin_name' => $aFile[0]->name,
-						'flexiskin_desc' => $aFile[0]->desc,
-						'flexiskin_active' => $sActiveSkin == $entry ? true : false,
-						'flexiskin_config' => Flexiskin::getFlexiskinConfig( $entry )
-					);
-				}
-			}
-			closedir( $handle );
-		}
-		return $aData;
+		$availableConfigs = new AvailableConfigs();
+		return $availableConfigs->read();
 	}
 }

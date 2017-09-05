@@ -1,0 +1,8 @@
+{
+	"autoload" : {
+		"psr-4": {
+			"BlueSpice\\Flexiskin\\Tests\\" : "tests/phpunit",
+			"BlueSpice\\Flexiskin\\" : "src"
+		}
+	}
+}
