@@ -96,7 +96,7 @@ class BuildIndexMwRepository extends AbstractBuildIndexFile {
 			$docType = $this->mimeDecoding( $document->img_minor_mime, $document->img_name );
 			if ( !$this->checkDocType( $docType, $document->img_name ) ) continue;
 
-			$oTitle = Title::newFromText( $document->img_name, NS_FILE );
+			$oTitle = Title::makeTitle( NS_FILE, $document->img_name );
 			$oFile = wfLocalFile( $oTitle );
 			if( is_null( $oFile ) ) {
 				continue;
