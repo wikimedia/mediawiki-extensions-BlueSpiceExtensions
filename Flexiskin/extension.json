@@ -37,7 +37,9 @@
 		"BSApiFlexiskinStore": "includes/api/BSApiFlexiskinStore.php",
 		"BSApiFlexiskinUpload": "includes/api/BSApiFlexiskinUpload.php",
 		"BSApiFlexiskinUploadStore": "includes/api/BSApiFlexiskinUploadStore.php",
-		"SpecialFlexiskin": "includes/specials/SpecialFlexiskin.class.php"
+		"SpecialFlexiskin": "includes/specials/SpecialFlexiskin.class.php",
+		"BlueSpice\\Flexiskin\\Data\\AvailableConfigs": "src/Data/AvailableConfigs.php",
+		"BlueSpice\\Flexiskin\\PreviewResourceModuleRegistrant": "src/PreviewResourceModuleRegistrant.php"
 	},
 	"ExtensionMessagesFiles": {
 		"FlexiskinAlias": "includes/specials/SpecialFlexiskin.alias.php"
@@ -107,6 +109,5 @@
 	"config": {
 		"EditPageFrameOptions": "SAMEORIGIN"
 	},
-	"load_composer_autoloader": true,
 	"manifest_version": 1
 }
