@@ -83,7 +83,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$aContents = array(
 			'content' => array( $aPage['dom']->documentElement )
 		);
-		wfRunHooks( 'BSUEModulePDFBeforeAddingContent', array( &$aTemplate, &$aContents, $oCaller, &$aPage ) );
+		Hooks::run( 'BSUEModulePDFBeforeAddingContent', array( &$aTemplate, &$aContents, $oCaller, &$aPage ) );
 
 		$oContentTags = $oDOM->getElementsByTagName( 'content' );
 		$i = $oContentTags->length - 1;
@@ -105,7 +105,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$oCaller->aParams['backend-url']      = BsConfig::get( 'MW::UEModulePDF::PdfServiceURL' ); //Duplicate to replace 'soap-service-url' in future
 		$oCaller->aParams['resources']        = $aTemplate['resources'];
 
-		wfRunHooks( 'BSUEModulePDFBeforeCreatePDF', array( $this, $oDOM, $oCaller ) );
+		Hooks::run( 'BSUEModulePDFBeforeCreatePDF', array( $this, $oDOM, $oCaller ) );
 
 		//Prepare response
 		$aResponse = array(

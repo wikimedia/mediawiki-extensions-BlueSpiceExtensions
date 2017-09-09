@@ -277,7 +277,7 @@ class ArticleInfo extends BsExtensionMW {
 		$oLastEditView->setTextLinkTitle( wfMessage( 'bs-articleinfo-last-edited-tooltip' )->plain() );
 		$oLastEditView->setDataAttribute( 'timestamp', wfTimestamp( TS_UNIX, $sTimestamp ) );
 
-		wfRunHooks( 'BSArticleInfoBeforeAddLastEditView', array( $this, &$oLastEditView ) );
+		Hooks::run( 'BSArticleInfoBeforeAddLastEditView', array( $this, &$oLastEditView ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oLastEditView;
@@ -308,7 +308,7 @@ class ArticleInfo extends BsExtensionMW {
 		$oLastEditorView->setTextLinkTitle( $sLastEditorName );
 		$oLastEditorView->setTextLink( $sLastEditorUserPageUrl );
 
-		wfRunHooks( 'BSArticleInfoBeforeAddTopElement', array( $this, &$oLastEditorView ) );
+		Hooks::run( 'BSArticleInfoBeforeAddTopElement', array( $this, &$oLastEditorView ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oLastEditorView;
@@ -327,7 +327,7 @@ class ArticleInfo extends BsExtensionMW {
 		$oCategoriesLinks = new ViewStateBarTopElementCategoryShortList();
 		$bIsProcessed = false;
 
-		wfRunHooks( 'BSArticleInfoBeforeAddLastEditorView', array( $this, &$aCurrentPagesCategories , &$bIsProcessed ) );
+		Hooks::run( 'BSArticleInfoBeforeAddLastEditorView', array( $this, &$aCurrentPagesCategories , &$bIsProcessed ) );
 
 		if( $bIsProcessed === false ){
 			ksort( $aCurrentPagesCategories );
@@ -359,7 +359,7 @@ class ArticleInfo extends BsExtensionMW {
 			$oCategoriesLinks->setIconAlt( wfMessage( 'bs-articleinfo-categories' )->plain() );
 		}
 
-		wfRunHooks('BSArticleInfoBeforeAddCategoryView', array( $this, &$oCategoriesLinks ));
+		Hooks::run('BSArticleInfoBeforeAddCategoryView', array( $this, &$oCategoriesLinks ));
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oCategoriesLinks;
@@ -377,7 +377,7 @@ class ArticleInfo extends BsExtensionMW {
 		wfProfileIn( 'BS::'.__METHOD__ );
 		$bIsProcessed = false;
 
-		wfRunHooks( 'BSArticleInfoBeforeAddLastEditorView', array( $this, &$aCurrentPagesCategories , &$bIsProcessed ) );
+		Hooks::run( 'BSArticleInfoBeforeAddLastEditorView', array( $this, &$aCurrentPagesCategories , &$bIsProcessed ) );
 
 		if ( $bIsProcessed === false ){
 			ksort( $aCurrentPagesCategories );
@@ -430,7 +430,7 @@ class ArticleInfo extends BsExtensionMW {
 		$oCategoriesLinkBodyElement->setHeading( wfMessage( 'bs-articleinfo-all-categories-heading' )->plain() );
 		$oCategoriesLinkBodyElement->setBodyText( $sCategories );
 
-		wfRunHooks( 'BSArticleInfoBeforeAddCategoryBodyView', array( $this, &$oCategoriesLinkBodyElement ) );
+		Hooks::run( 'BSArticleInfoBeforeAddCategoryBodyView', array( $this, &$oCategoriesLinkBodyElement ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oCategoriesLinkBodyElement;
@@ -482,7 +482,7 @@ class ArticleInfo extends BsExtensionMW {
 		$oSubpageIcons->setTextLinkTitle( wfMessage( 'bs-articleinfo-subpages' )->plain() );
 		$oSubpageIcons->setTextLink( '#' );
 
-		wfRunHooks('BSArticleInfoBeforeSubpagesTopView', array( $this, &$oSubpageIcons ));
+		Hooks::run('BSArticleInfoBeforeSubpagesTopView', array( $this, &$oSubpageIcons ));
 
 		return $oSubpageIcons;
 	}
@@ -520,7 +520,7 @@ class ArticleInfo extends BsExtensionMW {
 			$oSubpageListView->setBodyText( $oList->execute() );
 		}
 
-		wfRunHooks( 'BSArticleInfoBeforeSubpagesBodyView', array( $this, &$oSubpageListView ) );
+		Hooks::run( 'BSArticleInfoBeforeSubpagesBodyView', array( $this, &$oSubpageListView ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
 		return $oSubpageListView;

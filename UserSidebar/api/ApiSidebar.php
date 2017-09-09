@@ -24,7 +24,7 @@ class ApiSidebar extends ApiBase {
         if ($params['usersidebar'] == true){
             global $wgUser;
             $aViews = array();            
-            wfRunHooks( 'BSBlueSpiceSkinFocusSidebar', array( &$aViews, $wgUser, $this->getSkin() ) );
+            Hooks::run( 'BSBlueSpiceSkinFocusSidebar', array( &$aViews, $wgUser, $this->getSkin() ) );
             foreach ( $aViews as $oView ) {
                 if ( $oView !== null && $oView instanceof ViewBaseElement ) {
                     if (isset($params['format']) && $params['format'] == 'json')

@@ -66,7 +66,7 @@ class SpecialPermissionManager extends BsSpecialPage {
 			'bsPermissionManagerPermissionTemplates' => PermissionManager::getTemplateRules()
 		);
 
-		wfRunHooks( 'BsPermissionManager::beforeLoadPermissions', array( &$aJsVars ) );
+		Hooks::run( 'BsPermissionManager::beforeLoadPermissions', array( &$aJsVars ) );
 
 		//Make sure a new group without any explicit permissions is converted into an object!
 		//Without any key => value it would be converted into an empty array.

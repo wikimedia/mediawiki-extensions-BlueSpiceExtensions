@@ -372,7 +372,7 @@ class ExtendedSearchBase {
 		);
 		$sSearchString = trim( $sSearchString );
 
-		wfRunHooks( 'BSExtendedSearchBaseAfterPreprocessSearchInput', array(
+		Hooks::run( 'BSExtendedSearchBaseAfterPreprocessSearchInput', array(
 			&$sSearchString
 		));
 
@@ -457,7 +457,7 @@ class ExtendedSearchBase {
 		$bTitleExists = self::titleExists( $sSearchString, $aOptions );
 		$sEcpSearchString = self::sanitzeSearchString( $sSearchString );
 
-		wfRunHooks( 'BSExtendedSearchAutocomplete', array( &$aResults, $sSearchString, &$iID, $bTitleExists, $sEcpSearchString ) );
+		Hooks::run( 'BSExtendedSearchAutocomplete', array( &$aResults, $sSearchString, &$iID, $bTitleExists, $sEcpSearchString ) );
 
 		$aLinkParams = array(
 			'search_scope' => 'text',

@@ -26,7 +26,7 @@ class BsPDFPageProvider {
 	 * @return array
 	 */
 	public static function getPage( $aParams ) {
-		wfRunHooks( 'BSUEModulePDFbeforeGetPage', array( &$aParams ) );
+		Hooks::run( 'BSUEModulePDFbeforeGetPage', array( &$aParams ) );
 
 		$oBookmarksDOM = new DOMDocument();
 		$oBookmarksDOM->loadXML('<bookmarks></bookmarks>');
@@ -83,7 +83,7 @@ class BsPDFPageProvider {
 			'meta'             => $aData['meta']
 		);
 
-		wfRunHooks( 'BSUEModulePDFgetPage', array( $oTitle, &$aPage, &$aParams, $oDOMXPath ) );
+		Hooks::run( 'BSUEModulePDFgetPage', array( $oTitle, &$aPage, &$aParams, $oDOMXPath ) );
 		return $aPage;
 	}
 
@@ -181,7 +181,7 @@ class BsPDFPageProvider {
 			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oArticle->getTouched() );
 		}
 
-		wfRunHooks( 'BSUEModulePDFcollectMetaData', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ) );
+		Hooks::run( 'BSUEModulePDFcollectMetaData', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ) );
 		$aMetaDataOverrides = json_decode( BsConfig::get( 'MW::UniversalExport::MetadataOverrides' ), true );
 		$aMeta = array_merge( $aMeta, $aMetaDataOverrides );
 
@@ -203,7 +203,7 @@ class BsPDFPageProvider {
 		global $wgServer;
 		$aClassesToRemove = array( 'editsection', 'bs-universalexport-exportexclude' );
 		$oDOMXPath = new DOMXPath($oPageDOM );
-		wfRunHooks( 'BSUEModulePDFcleanUpDOM', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aClassesToRemove ) );
+		Hooks::run( 'BSUEModulePDFcleanUpDOM', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aClassesToRemove ) );
 
 		//Remove script-Tags
 		foreach( $oPageDOM->getElementsByTagName( 'script' ) as $oScriptElement ) {

@@ -39,7 +39,7 @@ class BSApiStateBarTasks extends BSApiTasksBase {
 		}
 
 		$aBodyViews = array();
-		wfRunHooks( 'BSStateBarBeforeBodyViewAdd', array( $oStateBar, &$aBodyViews, $oUser, $oTitle ) );
+		Hooks::run( 'BSStateBarBeforeBodyViewAdd', array( $oStateBar, &$aBodyViews, $oUser, $oTitle ) );
 		if( empty( $aBodyViews ) ) {
 			$oResponse->success = true;
 			$oResponse->message = wfMessage( 'bs-statebar-ajax-nobodyviews' )->plain();

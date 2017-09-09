@@ -58,7 +58,7 @@ class BsPDFServlet {
 		global $bsgUEModulePDFCURLOptions;
 		$aOptions = array_merge_recursive($aOptions, $bsgUEModulePDFCURLOptions);
 
-		wfRunHooks( 'BSUEModulePDFCreatePDFBeforeSend', array( $this, &$aOptions, $oHtmlDOM ) );
+		Hooks::run( 'BSUEModulePDFCreatePDFBeforeSend', array( $this, &$aOptions, $oHtmlDOM ) );
 
 		$vHttpEngine = Http::$httpEngine;
 		Http::$httpEngine = 'curl';
@@ -203,8 +203,8 @@ class BsPDFServlet {
 
 			$sFileName = $oFileResolver->getFileName();
 			$sAbsoluteFileSystemPath = $oFileResolver->getAbsoluteFilesystemPath();
-			wfRunHooks( 'BSUEModulePDFFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
-			wfRunHooks( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
+			Hooks::run( 'BSUEModulePDFFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
+			Hooks::run( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ) );
 			$this->aFiles['images'][$sFileName] =  $sAbsoluteFileSystemPath;
 		}
 
@@ -223,7 +223,7 @@ class BsPDFServlet {
 		}
 		 */
 
-		wfRunHooks( 'BSUEModulePDFAfterFindFiles', array( $this, $oHtml, &$this->aFiles, $this->aParams, $oDOMXPath ) );
+		Hooks::run( 'BSUEModulePDFAfterFindFiles', array( $this, $oHtml, &$this->aFiles, $this->aParams, $oDOMXPath ) );
 		return true;
 	}
 
@@ -243,7 +243,7 @@ class BsPDFServlet {
 			);
 		}
 
-		wfRunHooks( 'BSUEModulePDFUploadFilesBeforeSend', array( $this, &$aPostData, $sType ) );
+		Hooks::run( 'BSUEModulePDFUploadFilesBeforeSend', array( $this, &$aPostData, $sType ) );
 
 		$aOptions['postData'] = $aPostData;
 

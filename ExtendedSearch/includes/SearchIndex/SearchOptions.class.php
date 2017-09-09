@@ -116,7 +116,7 @@ class SearchOptions {
 			throw new BsException( 'CustomerId must not be empty (settings extended search)' );
 		}
 
-		wfRunHooks( 'BSExtendedSearchGetCustomerId', array( &$sCustomerId ) );
+		Hooks::run( 'BSExtendedSearchGetCustomerId', array( &$sCustomerId ) );
 
 		$this->sCustomerId = $sCustomerId;
 		return $this->sCustomerId;

@@ -500,7 +500,7 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 		// TODO SW: use string flag as parameter to allow hookhandler to
 		// determin context. This will be usefull if hook gets called in
 		// another place
-		wfRunHooks(
+		Hooks::run(
 			'VisualEditorConfig',
 			array(
 				&$aConfigs['standard'],

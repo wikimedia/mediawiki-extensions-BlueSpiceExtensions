@@ -155,7 +155,7 @@ class BsPDFTemplateProvider {
 			$aStyleBlocks['MediaWiki:Common.css'] = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 		}
 
-		wfRunHooks( 'BSUEModulePDFBeforeAddingStyleBlocks', array( &$aTemplate, &$aStyleBlocks ) );
+		Hooks::run( 'BSUEModulePDFBeforeAddingStyleBlocks', array( &$aTemplate, &$aStyleBlocks ) );
 
 		foreach( $aStyleBlocks as $sBlockName => $sCss ) {
 			$sCss = "\n/* ".$sBlockName." */\n".$sCss."\n";

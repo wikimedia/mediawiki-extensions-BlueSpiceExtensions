@@ -90,7 +90,7 @@ class BsPreferences extends BsExtensionMW {
 
 			$bReturn = true;
 
-			wfRunHooks( 'BSWikiAdminPreferencesBeforeSetVariable', array( $this, &$var, &$value, &$bReturn ) );
+			Hooks::run( 'BSWikiAdminPreferencesBeforeSetVariable', array( $this, &$var, &$value, &$bReturn ) );
 
 			if ( $value !== null && $bReturn !== false ) {
 				BsConfig::set( $var->getKey(), $value, true );

@@ -124,7 +124,7 @@ class PageAccess extends BsExtensionMW {
 	public function checkAccessGroups( $oUser, $sAccessGroups) {
 		if ( !$sAccessGroups ) return true;
 		$aAccessGroups = array_map("trim", explode( ',', $sAccessGroups ) );
-		wfRunHooks( 'BSPageAccessAddAdditionalAccessGroups', array( &$aAccessGroups ) );
+		Hooks::run( 'BSPageAccessAddAdditionalAccessGroups', array( &$aAccessGroups ) );
 		$aUserGroups = array_merge( $oUser->getGroups(), $oUser->getImplicitGroups() );
 		return (bool) array_intersect( $aAccessGroups, $aUserGroups );
 	}

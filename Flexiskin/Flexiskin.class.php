@@ -158,7 +158,7 @@ class Flexiskin extends BsExtensionMW {
 			"width" => "1222",
 			"fullWidth" => "0"
 		);
-		$bReturn = wfRunHooks( "BSFlexiskinGenerateConfigFile", array( $oData, &$aConfig ) );
+		$bReturn = Hooks::run( "BSFlexiskinGenerateConfigFile", array( $oData, &$aConfig ) );
 		if ( !$bReturn ) {
 			return array();
 		}

@@ -240,7 +240,7 @@ class ExtendedEditBar extends BsExtensionMW {
 			)
 		);
 
-		wfRunHooks( 'BSExtendedEditBarBeforeEditToolbar', array( &$aRows, &$aButtonCfgs ));
+		Hooks::run( 'BSExtendedEditBarBeforeEditToolbar', array( &$aRows, &$aButtonCfgs ));
 
 		$aContent = array();
 		foreach( $aRows as $aRow ) {

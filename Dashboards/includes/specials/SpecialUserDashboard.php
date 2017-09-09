@@ -34,7 +34,7 @@ class SpecialUserDashboard extends BsSpecialPage {
 				array()
 			);
 
-			wfRunHooks( 'BSDashboardsUserDashboardPortalConfig', array( $this, &$aPortalConfig, $bIsDefault ) );
+			Hooks::run( 'BSDashboardsUserDashboardPortalConfig', array( $this, &$aPortalConfig, $bIsDefault ) );
 		}
 
 		$sSaveBackend = 'saveUserDashboardConfig';

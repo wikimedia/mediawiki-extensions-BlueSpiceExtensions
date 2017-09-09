@@ -136,7 +136,7 @@ class BuildIndexMainControl {
 		$oRevision = Revision::newFromTitle( $oTitle );
 		if ( is_null( $oTitle ) || is_null( $oRevision ) ) return;
 
-		wfRunHooks( 'BS::ExtendedSearch::UpdateIndexWiki', array( &$oTitle, &$oRevision ) );
+		Hooks::run( 'BS::ExtendedSearch::UpdateIndexWiki', array( &$oTitle, &$oRevision ) );
 		if ( is_null( $oTitle ) ) return;
 
 		$iPageID = $oTitle->getArticleID();
@@ -402,7 +402,7 @@ class BuildIndexMainControl {
 			$this->buildIndexLinked( wfMessage( 'bs-extendedsearch-indexing-linked-files' )->plain() );
 			$this->buildIndexExternalRepo( wfMessage( 'bs-extendedsearch-indexing-external-files-in-repo' )->plain() );
 
-			wfRunHooks( 'BSExtendedSearchBuildIndex', array( $this ) );
+			Hooks::run( 'BSExtendedSearchBuildIndex', array( $this ) );
 		} catch ( BsException $e ) {
 			$this->lockFile( 'deleteLock' );
 			$sRes .= "Instance ExtendedSearchBase returned following BsException in procedure buildIndex(): {$e->getMessage()}";

@@ -169,7 +169,7 @@ class UEModulePDF extends BsExtensionMW {
 			'TEXT'    => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
 		);
 
-		wfRunHooks( 'BSUEModulePDFBeforeCreateWidget', array( $this, $oSpecialPage, &$aLinks, $aCurrentQueryParams ) );
+		Hooks::run( 'BSUEModulePDFBeforeCreateWidget', array( $this, $oSpecialPage, &$aLinks, $aCurrentQueryParams ) );
 
 		$oPdfView = new ViewBaseElement();
 		$oPdfView->setAutoWrap( '<ul>###CONTENT###</ul>' );

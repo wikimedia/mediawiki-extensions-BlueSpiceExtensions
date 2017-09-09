@@ -303,7 +303,7 @@ class ExtendedSearch extends BsExtensionMW {
 			'bodytext' => $viewContentsSpecialPage->execute()
 		);
 
-		wfRunHooks( 'ExtendedSearchBeforeAjaxResponse', array( null, &$oDummy ) );
+		Hooks::run( 'ExtendedSearchBeforeAjaxResponse', array( null, &$oDummy ) );
 
 		return json_encode(
 			array(

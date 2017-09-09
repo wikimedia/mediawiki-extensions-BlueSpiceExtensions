@@ -214,7 +214,7 @@ class ShoutBox extends BsExtensionMW {
 	private function getShoutboxViewForAfterContent( $sktemplate ) {
 		$oShoutBoxView = new ViewShoutBox();
 
-		wfRunHooks( 'BSShoutBoxBeforeAddViewAfterArticleContent', array( &$oShoutBoxView ) );
+		Hooks::run( 'BSShoutBoxBeforeAddViewAfterArticleContent', array( &$oShoutBoxView ) );
 
 		if ( $sktemplate->getTitle()->userCan( 'writeshoutbox' ) ) {
 			$oShoutBoxView->setOption( 'showmessageform', true );

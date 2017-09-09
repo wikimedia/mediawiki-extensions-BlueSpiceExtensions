@@ -111,7 +111,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 				$this->count++;
 				if ( !$this->oMainControl->bCommandLineMode ) set_time_limit( $this->iTimeLimit ); // is needed ... else you can not create larger indexes
 
-				wfRunHooks( 'BS::ExtendedSearch::IndexCrawlDocuments', array( &$oDocument ) );
+				Hooks::run( 'BS::ExtendedSearch::IndexCrawlDocuments', array( &$oDocument ) );
 
 				if ( $oDocument === null ) continue;
 
@@ -141,7 +141,7 @@ class BuildIndexMwArticles extends AbstractBuildIndexAll {
 
 				$this->oMainControl->addDocument( $oSolrDocument, $this->mode, self::S_ERROR_MSG_KEY );
 
-				wfRunHooks( 'BSExtendedSearchBuildIndexAfterAddArticle', array( $oTitle, $oSolrDocument ) );
+				Hooks::run( 'BSExtendedSearchBuildIndexAfterAddArticle', array( $oTitle, $oSolrDocument ) );
 			}
 		}
 	}

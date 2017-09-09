@@ -193,7 +193,7 @@ class BsSearchResult {
 			)
 		);
 
-		wfRunHooks( 'BSExtendedSearchBeforeCreateFacets', array( &$aBaseFacets ) );
+		Hooks::run( 'BSExtendedSearchBeforeCreateFacets', array( &$aBaseFacets ) );
 
 		$aFacetSettings = $this->oSearchOptions->getOption( 'fset' );
 		foreach ( $aBaseFacets as $sFacet => $aConfig ) {
@@ -365,7 +365,7 @@ class BsSearchResult {
 			$oSkin = $this->oContext->getSkin();
 			$sSearchLink = '';
 			$sIconPath = '';
-			wfRunHooks( 'BSExtendedSearchFormatLink', array( &$sSearchLink, $oDocument, $oSkin, &$sIconPath ) );
+			Hooks::run( 'BSExtendedSearchFormatLink', array( &$sSearchLink, $oDocument, $oSkin, &$sIconPath ) );
 
 			$sIcon = 'default';
 			if ( empty( $sSearchLink ) ) {

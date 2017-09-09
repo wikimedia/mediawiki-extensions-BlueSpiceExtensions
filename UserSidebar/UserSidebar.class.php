@@ -363,7 +363,7 @@ class UserSidebar extends BsExtensionMW {
 			$aViews = $aData;
 		} else {
 			wfDebugLog( 'BsMemcached', __CLASS__.': Fetching Widget views from DB' );
-			wfRunHooks( 'BSUserSidebarDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
+			Hooks::run( 'BSUserSidebarDefaultWidgets', array( &$aViews, $oUser, $oTitle ) );
 			BsCacheHelper::set( $sKey , $aViews, 60*15 );// invalidate cache after 15 minutes
 		}
 

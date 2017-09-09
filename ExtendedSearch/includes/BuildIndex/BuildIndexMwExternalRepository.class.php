@@ -117,7 +117,7 @@ class BuildIndexMwExternalRepository extends AbstractBuildIndexFile {
 			$doc = $this->makeRepoDocument( $sDocType, utf8_encode( $sFileName ), $text, utf8_encode( $sRepoFileRealPath ), $timestampImage );
 			$this->writeLog( $sFileName );
 
-			wfRunHooks( 'BSExtendedSearchBeforeAddExternalFile', array( $this, $oRepoFile, &$doc ) );
+			Hooks::run( 'BSExtendedSearchBeforeAddExternalFile', array( $this, $oRepoFile, &$doc ) );
 
 			if ( $doc ) {
 				// mode and ERROR_MSG_KEY are only passed for the case when addsFile fails

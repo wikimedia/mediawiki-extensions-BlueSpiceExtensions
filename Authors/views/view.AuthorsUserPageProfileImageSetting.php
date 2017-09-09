@@ -45,7 +45,7 @@ class ViewAuthorsUserPageProfileImageSetting extends ViewBaseElement {
 	 */
 	public function  execute( $params = false ) {
 		$this->initFields();
-		wfRunHooks( 'BsAuthorPageProfileImageAfterInitFields', array( $this, $this->oUser ) );
+		Hooks::run( 'BsAuthorPageProfileImageAfterInitFields', array( $this, $this->oUser ) );
 
 		$aOut = array();
 		$aOut[] = '<div id="bs-authors-imageform" class="bs-userpagesettings-item">';

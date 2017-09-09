@@ -227,7 +227,7 @@ class UniversalExport extends BsExtensionMW {
 		if( isset( $aCurrentQueryParams['title'] ) ) unset( $aCurrentQueryParams['title'] );
 
 		$aModules = array();
-		wfRunHooks(
+		Hooks::run(
 			'BSUniversalExportGetWidget',
 			array( $this, &$aModules, $oSpecialPage, $oCurrentTitle, $aCurrentQueryParams )
 		);

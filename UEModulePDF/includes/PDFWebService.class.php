@@ -40,7 +40,7 @@ class BsPDFWebService {
 			//'cafile'               => '',
 		);
 
-		wfRunHooks( 'BSUEModulePDFCreatePDFBeforeSend', array( $this, &$aOptions, $oHtmlDOM ) );
+		Hooks::run( 'BSUEModulePDFCreatePDFBeforeSend', array( $this, &$aOptions, $oHtmlDOM ) );
 
 		$this->oPdfWebservice = new SoapClient(
 			$this->aParams['soap-service-url'].'/GeneratePdf?wsdl',
@@ -182,7 +182,7 @@ class BsPDFWebService {
 			// TODO RBV (05.04.12 11:48): Check if urlencode has side effects
 			$oImageElement->setAttribute( 'src', 'images/'.urlencode($sSrcFilename) );
 			$sFileName = $sSrcFilename;
-			wfRunHooks( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, $sAbsoluteFileSystemPath, $sFileName, 'IMAGE' ) );
+			Hooks::run( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oImageElement, $sAbsoluteFileSystemPath, $sFileName, 'IMAGE' ) );
 			$this->aFiles['IMAGE'][$sFileName] =  $sAbsoluteFileSystemPath;
 		}
 		
@@ -217,7 +217,7 @@ class BsPDFWebService {
 					$sHrefFilename           = basename( $sRelativeHref );
 					$sAbsoluteFileSystemPath = $this->getFileSystemPath( $sRelativeHref );
 					if( $this->aParams['attachments'] == '1' ) {
-						wfRunHooks( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oFileAnchorElement, $sAbsoluteFileSystemPath, $sHrefFilename, 'ATTACHMENT' ) );
+						Hooks::run( 'BSUEModulePDFWebserviceFindFiles', array( $this, $oFileAnchorElement, $sAbsoluteFileSystemPath, $sHrefFilename, 'ATTACHMENT' ) );
 						$this->aFiles['ATTACHMENT'][$sHrefFilename] = $sAbsoluteFileSystemPath;
 					}
 				}

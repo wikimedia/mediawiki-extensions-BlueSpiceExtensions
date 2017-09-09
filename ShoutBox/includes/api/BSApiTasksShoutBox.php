@@ -166,7 +166,7 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 			$aOptions['LIMIT'] = $iLimit + 1;
 		}
 
-		$b = wfRunHooks( 'BSShoutBoxGetShoutsBeforeQuery', array(
+		$b = Hooks::run( 'BSShoutBoxGetShoutsBeforeQuery', array(
 			&$oReturn->payload['html'],
 			$iArticleId,
 			&$iLimit,
@@ -190,7 +190,7 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 		);
 
 		$oShoutBoxMessageListView = new ViewShoutBoxMessageList();
-		wfRunHooks( 'BSShoutBoxBeforeAddViewAfterArticleContent', array( &$oShoutBoxMessageListView ) );
+		Hooks::run( 'BSShoutBoxBeforeAddViewAfterArticleContent', array( &$oShoutBoxMessageListView ) );
 
 		if ( $dbr->numRows( $res ) > $iLimit ) {
 			$oShoutBoxMessageListView->setMoreLimit(
@@ -324,7 +324,7 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 		if( $oReturn->success ) {
 			$oReturn->payload['sb_id'] = $oDB->insertId();
 		}
-		$b = wfRunHooks( 'BSShoutBoxAfterInsertShout', array(
+		$b = Hooks::run( 'BSShoutBoxAfterInsertShout', array(
 			$iArticleId,
 			$this->getUser()->getId(),
 			$sNick,

@@ -44,7 +44,7 @@ class SpecialAdminDashboard extends BsSpecialPage {
 				array()
 			);
 
-			wfRunHooks( 'BSDashboardsAdminDashboardPortalConfig', array( $this, &$aPortalConfig, $bIsDefault ) );
+			Hooks::run( 'BSDashboardsAdminDashboardPortalConfig', array( $this, &$aPortalConfig, $bIsDefault ) );
 		}
 
 		$sSaveBackend = 'saveAdminDashboardConfig';

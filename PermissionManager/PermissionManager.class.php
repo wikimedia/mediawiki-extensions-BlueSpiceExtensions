@@ -227,7 +227,7 @@ class PermissionManager extends BsExtensionMW {
 				);
 			}
 		}
-		wfRunHooks( 'BsPermissionManager::buildRightsMetadata', array( &$aMetadata ) );
+		Hooks::run( 'BsPermissionManager::buildRightsMetadata', array( &$aMetadata ) );
 
 		return $aMetadata;
 	}
@@ -306,7 +306,7 @@ class PermissionManager extends BsExtensionMW {
 		$aGroupPermissions = ( array ) $data->groupPermission;
 		$aLockdown = ( array ) $data->permissionLockdown;
 		$aResult = array();
-		$mStatus = wfRunHooks( 'BsPermissionManager::beforeSavePermissions', array( &$aLockdown, &$aGroupPermissions, &$aResult ) );
+		$mStatus = Hooks::run( 'BsPermissionManager::beforeSavePermissions', array( &$aLockdown, &$aGroupPermissions, &$aResult ) );
 
 
 		if ( !empty( $aResult ) ) {
@@ -417,7 +417,7 @@ class PermissionManager extends BsExtensionMW {
 			unset( $aJsVars[ 'bsPermissionManagerPermissionTemplates' ] );
 		}
 
-		wfRunHooks( 'BsPermissionManager::beforeLoadPermissions', array( &$aJsVars ) );
+		Hooks::run( 'BsPermissionManager::beforeLoadPermissions', array( &$aJsVars ) );
 
 		//Make sure a new group without any explicit permissions is converted into an object!
 		//Without any key => value it would be converted into an empty array.
@@ -508,8 +508,8 @@ class PermissionManager extends BsExtensionMW {
 		if ( BsCore::checkAccessAdmission( 'wikiadmin' ) === false )
 			return true;
 
-		wfRunHooks( 'BsNamespacemanageOnSavePermission', array( &$aNamespacePermissionLockdown, &$aGroupPermissions ) );
-		wfRunHooks( 'BsPermissionManager::writeGroupSettings', array( &$aNamespacePermissionLockdown, &$aGroupPermissions ) );
+		Hooks::run( 'BsNamespacemanageOnSavePermission', array( &$aNamespacePermissionLockdown, &$aGroupPermissions ) );
+		Hooks::run( 'BsPermissionManager::writeGroupSettings', array( &$aNamespacePermissionLockdown, &$aGroupPermissions ) );
 
 		self::backupExistingSettings();
 

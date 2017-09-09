@@ -67,7 +67,7 @@ class StateBar extends BsExtensionMW {
 	 * Registers StateBar sort variables
 	 */
 	public function registerSortVars() {
-		wfRunHooks( 'BSStateBarAddSortTopVars', array( &$this->aSortTopVars ) );
+		Hooks::run( 'BSStateBarAddSortTopVars', array( &$this->aSortTopVars ) );
 
 		$aDefaultSortTopVars = array(
 			'statebartopresponsibleeditorsentries' => '',
@@ -82,7 +82,7 @@ class StateBar extends BsExtensionMW {
 		$this->aSortTopVars = array_merge( $aDefaultSortTopVars, $this->aSortTopVars );
 		$this->aSortTopVars = array_filter( $this->aSortTopVars ); //removes entries without value
 
-		wfRunHooks( 'BSStateBarAddSortBodyVars', array( &$this->aSortBodyVars ) );
+		Hooks::run( 'BSStateBarAddSortBodyVars', array( &$this->aSortBodyVars ) );
 
 		$aDefaultSortBodyVars = array (
 			'statebarbodyresponsibleeditorsentries' => '',
@@ -252,7 +252,7 @@ class StateBar extends BsExtensionMW {
 		if ( !is_null( $this->oRedirectTargetTitle ) ) {
 			$oTitle = $this->oRedirectTargetTitle;
 		}
-		wfRunHooks( 'BSStateBarBeforeTopViewAdd', array(
+		Hooks::run( 'BSStateBarBeforeTopViewAdd', array(
 			$this, &$this->aTopViews, $sktemplate->getUser(),
 			$sktemplate->getTitle(), $sktemplate )
 		);

@@ -88,7 +88,7 @@ class SpecialUniversalExport extends BsSpecialPage {
 	 */
 	function execute( $sParameter ) {
 		parent::execute( $sParameter );
-		wfRunHooks( 'BSUniversalExportSpecialPageExecute', array( $this, $sParameter, &$this->aModules ) );
+		Hooks::run( 'BSUniversalExportSpecialPageExecute', array( $this, $sParameter, &$this->aModules ) );
 
 		if( !empty( $sParameter ) ) {
 			$this->processParameter( $sParameter );

@@ -858,7 +858,7 @@ class SmartList extends BsExtensionMW {
 			$dbr->freeResult( $res );
 
 		} else {
-			wfRunHooks(
+			Hooks::run(
 				'BSSmartListCustomMode', array( &$aObjectList, $aArgs, $this )
 			);
 		}
@@ -917,7 +917,7 @@ class SmartList extends BsExtensionMW {
 					'META' => $sMeta,
 					'TEXT' => $sText
 				);
-				wfRunHooks( 'BSSmartListBeforeEntryViewAddData', array( &$aData, $aArgs, $oSmartListListEntryView, $row ) );
+				Hooks::run( 'BSSmartListBeforeEntryViewAddData', array( &$aData, $aArgs, $oSmartListListEntryView, $row ) );
 				$oSmartListListEntryView->addData( $aData );
 				$oSmartListListView->addItem( $oSmartListListEntryView );
 				$iItems++;

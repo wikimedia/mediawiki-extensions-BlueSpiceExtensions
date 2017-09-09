@@ -29,7 +29,7 @@ class FlexiskinFormatter {
 			$aReturn[] = "body.mediawiki{background-image:url('" . $sPath . "') !important;}";
 		}
 		$aReturn[] = "body.mediawiki{background-repeat:" . $aConfig->repeatBackground . " !important;}";
-		wfRunHooks( "BSFlexiskinFormatterGeneral", array( &$aConfig, &$aReturn ) );
+		Hooks::run( "BSFlexiskinFormatterGeneral", array( &$aConfig, &$aReturn ) );
 		return implode( " \n", $aReturn );
 	}
 
@@ -45,7 +45,7 @@ class FlexiskinFormatter {
 			}
 		}
 
-		wfRunHooks( "BSFlexiskinFormatterHeader", array( &$aConfig, &$aReturn ) );
+		Hooks::run( "BSFlexiskinFormatterHeader", array( &$aConfig, &$aReturn ) );
 		return implode( " \n", $aReturn );
 	}
 
@@ -70,7 +70,7 @@ class FlexiskinFormatter {
 			$aReturn[] = "#bs-wrapper{width:100% !important;min-width:100% !important;}";
 		}
 
-		wfRunHooks( "BSFlexiskinFormatterPosition", array( &$aConfig, &$aReturn ) );
+		Hooks::run( "BSFlexiskinFormatterPosition", array( &$aConfig, &$aReturn ) );
 		return implode( " \n", $aReturn );
 	}
 

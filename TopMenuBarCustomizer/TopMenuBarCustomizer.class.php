@@ -115,7 +115,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			'children' => array(),
 		);
 
-		wfRunHooks('BSTopMenuBarCustomizerRegisterNavigationSites', array( &self::$aNavigationSites ));
+		Hooks::run('BSTopMenuBarCustomizerRegisterNavigationSites', array( &self::$aNavigationSites ));
 
 		BsCacheHelper::set( $sKey , self::$aNavigationSites, 60*1440 );//max cache time 24h
 		return self::$aNavigationSites;
@@ -185,7 +185,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 			return true;
 		}
 
-		$bResult = wfRunHooks('BSTopMenuBarCustomizerBeforeRenderNavigationSites', array( &$aNavigationSites ));
+		$bResult = Hooks::run('BSTopMenuBarCustomizerBeforeRenderNavigationSites', array( &$aNavigationSites ));
 		if ($bResult === false){
 			return true;
 		}

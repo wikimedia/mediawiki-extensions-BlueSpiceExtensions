@@ -201,7 +201,7 @@ class BSApiTasksGroupManager extends BSApiTasksBase {
 			$result
 		);
 
-		wfRunHooks( "BSGroupManagerGroupNameChanged", array( $sGroup, $sNewGroup, &$result ) );
+		Hooks::run( "BSGroupManagerGroupNameChanged", array( $sGroup, $sNewGroup, &$result ) );
 
 		if ( $result['success'] === false ) {
 			return (object) $result;
@@ -312,7 +312,7 @@ class BSApiTasksGroupManager extends BSApiTasksBase {
 			$result
 		);
 
-		wfRunHooks( "BSGroupManagerGroupDeleted", array( $sGroup, &$result ) );
+		Hooks::run( "BSGroupManagerGroupDeleted", array( $sGroup, &$result ) );
 		if( $result['success'] === false ) {
 			return (object) $result;
 		}
