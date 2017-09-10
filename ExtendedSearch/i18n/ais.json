@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bunukwiki"
+			"Bunukwiki",
+			"Benel"
 		]
 	},
+	"bs-extendedsearch-facet-type": "kese",
 	"bs-extendedsearch-files": "mikilim tu tangan"
 }
