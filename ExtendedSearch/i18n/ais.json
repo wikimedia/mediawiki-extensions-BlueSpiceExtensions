@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Bunukwiki",
-			"Benel"
+			"Benel",
+			"Tokoabibi"
 		]
 	},
 	"bs-extendedsearch-facet-type": "kese",
-	"bs-extendedsearch-files": "mikilim tu tangan"
+	"bs-extendedsearch-files": "mikilim tu tangan",
+	"bs-extendedsearch-sort-type": "nikalahizaan"
 }
