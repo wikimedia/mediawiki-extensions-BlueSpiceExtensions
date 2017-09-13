@@ -97,13 +97,13 @@ class PermissionManager extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::' . __METHOD__);
-		WikiAdmin::registerModule( 'PermissionManager', array(
-						'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_rechteverwaltung_v1.png',
-						'level' => 'wikiadmin',
-						'message' => 'bs-permissionmanager-label',
-						'iconCls' => 'bs-icon-key'
-				)
-		);
+		WikiAdmin::registerModule( 'PermissionManager', [
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_rechteverwaltung_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-permissionmanager-label',
+			'iconCls' => 'bs-icon-key',
+			'permissions' => [ 'permissionmanager-viewspecialpage' ],
+		]);
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 

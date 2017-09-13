@@ -40,9 +40,13 @@ class PageAssignmentsHooks {
 	/**
 	 *
 	 * @param array $aOut
+	 * @param \User The user in which context the menu is rendered
 	 * @return boolean
 	 */
-	public static function onBSWikiAdminMenuItems( &$aOut ){
+	public static function onBSWikiAdminMenuItems( &$aOut, $oUser ){
+		if( !$oUser->isAllowed( 'pageassignments' ) ) {
+			return true;
+		}
 		$sLabel = wfMessage( 'managepageassignments' )->plain();
 		$aOut[$sLabel] = Html::rawElement( 'li', array(),
 			Linker::link( SpecialPage::getTitleFor( 'ManagePageAssignments' ), $sLabel, array( 'class' => 'bs-admin-link bs-icon-profile' )  )

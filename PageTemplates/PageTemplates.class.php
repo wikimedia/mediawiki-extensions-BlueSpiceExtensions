@@ -44,7 +44,8 @@ class PageTemplates extends BsExtensionMW {
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_templates_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-pagetemplatesadmin-label',
-			'iconCls' => 'bs-icon-clipboard-checked'
+			'iconCls' => 'bs-icon-clipboard-checked',
+			'permissions' => [ 'pagetemplatesadmin-viewspecialpage' ],
 		) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
