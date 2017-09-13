@@ -37,5 +37,6 @@
 	"bs-visualeditor-bsactions-headings": "Заголовки",
 	"bs-visualeditor-switch-noeditor-desc": "Вимикає візуальний редактор на цій сторінці.",
 	"bs-visualeditor-bsactions-tablefunctions": "Функції таблиці",
-	"bs-visualeditor-bsactions-tablestyles": "Стилі таблиці"
+	"bs-visualeditor-bsactions-tablestyles": "Стилі таблиці",
+	"bs-visualeditor-editoptions-summary": "Опис редагування"
 }

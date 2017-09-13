@@ -51,5 +51,9 @@
 	"apihelp-bs-permissionmanager-tasks-summary": "Забезпечує завдання для Permissionmanager",
 	"action-permissionmanager-viewspecialpage": "перегляд спеціальної сторінки «{{int:bs-permissionmanager-label}}»",
 	"permissionmanager": "Менеджер дозволів",
-	"bs-permissionmanager-affected-by-notset": "Не задано"
+	"bs-permissionmanager-affected-by-explicit": "Заблоковано $1",
+	"bs-permissionmanager-affected-by-inherited": "Успадковано від $1",
+	"bs-permissionmanager-affected-by-notset": "Не задано",
+	"bs-permissionmanager-affected-by-explicitlyset": "Встановлено окремо",
+	"bs-permissionmanager-affected-by-setonwiki": "Встановлено на рівні вікі"
 }

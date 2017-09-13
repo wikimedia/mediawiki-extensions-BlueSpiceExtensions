@@ -17,5 +17,7 @@
 	"log-show-hide-bs-pageaccess": "$1 журнал доступу до сторінок",
 	"logentry-bs-pageaccess-change": "$1 {{GENDER:$2|змінив|змінила}} права доступу $3 до «$4»",
 	"action-pageaccess-viewspecialpage": "перегляд спеціальної сторінки «{{int:pageaccess}}»",
-	"bs-pageaccess-column-groups": "Групи"
+	"bs-pageaccess-column-title": "Назва сторінки",
+	"bs-pageaccess-column-groups": "Групи",
+	"apihelp-bs-pageaccess-store-summary": "Контролює доступ на рівні сторінок"
 }

@@ -45,5 +45,7 @@
 	"bs-insertfile-enable-align": "Увімкнути",
 	"bs-insertfile-nstext": "Тип посилання",
 	"bs-insertfile-nstextfile": "Файл",
-	"bs-insertfile-nstextfile-image": "Показати зображення"
+	"bs-insertfile-nstextfile-file": "Показати посилання на метадані",
+	"bs-insertfile-nstextfile-image": "Показати зображення",
+	"bs-insertfile-nstextmedia": "Показати посилання на завантаження"
 }

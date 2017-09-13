@@ -17,5 +17,6 @@
 	"bs-usagetracker-base-collector-desc": "Кількість сторінок, що використовують $1",
 	"bs-usagetracker-tag-collector-desc": "Кількість сторінок, що використовують тег <$1>",
 	"bs-usagetracker-db-collector-desc": "Кількість $1",
-	"bs-usagetracker-open-tasks": "Наразі відбувається аналіз сайту. {{PLURAL:$1|$1 аналіз|$1 аналізи|$1 аналізів}} все ще в процесі. <a href='$2'>(Оновити)</a>"
+	"bs-usagetracker-open-tasks": "Наразі відбувається аналіз сайту. {{PLURAL:$1|$1 аналіз|$1 аналізи|$1 аналізів}} все ще в процесі. <a href='$2'>(Оновити)</a>",
+	"apihelp-bs-usagetracker-store-summary": "Зберігає статистичні дані про використання розширення"
 }
