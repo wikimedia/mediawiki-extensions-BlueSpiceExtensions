@@ -179,15 +179,22 @@ class WikiAdmin extends BsExtensionMW {
 	 * @return boolean
 	 */
 	public function onBSUserSidebarGlobalActionsWidgets( &$aViews, User $oUser ) {
-		if( !$oUser->isAllowed('wikiadmin') ) {
+		if( $oUser->isAnon() ) {
 			return true;
 		}
-
-
 		$aRegisteredModules = WikiAdmin::getRegisteredModules();
 
 		$aOutSortable = array();
 		foreach ( $aRegisteredModules as $sModuleKey => $aModulParams ) {
+			if( empty( $aModulParams['permissions'] ) ) {
+				$aModulParams['permissions'] = [ 'wikiadmin' ];
+			}
+			foreach( $aModulParams['permissions'] as $sPermission ) {
+				if( $oUser->isAllowed( $sPermission ) ) {
+					continue;
+				}
+				continue 2;
+			}
 			$oSpecialPage = SpecialPage::getTitleFor( $sModuleKey );
 			$skeyLower = mb_strtolower( $sModuleKey );
 			$sMessageKey = 'bs-' . $skeyLower . '-label';
@@ -216,8 +223,10 @@ class WikiAdmin extends BsExtensionMW {
 		}
 
 		// Allow other extensions to add to the admin menu
-		Hooks::run( 'BSWikiAdminMenuItems', array ( &$aOutSortable ) );
-
+		Hooks::run( 'BSWikiAdminMenuItems', [ &$aOutSortable, $oUser ] );
+		if( empty( $aOutSortable ) ) {
+			return true;
+		}
 		ksort( $aOutSortable );
 
 		$sBody = implode( "\n", $aOutSortable );

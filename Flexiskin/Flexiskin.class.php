@@ -50,7 +50,8 @@ class Flexiskin extends BsExtensionMW {
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_flexiskin_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-flexiskin-label',
-			'iconCls' => 'bs-icon-painting-roll'
+			'iconCls' => 'bs-icon-painting-roll',
+			'permissions' => [ 'flexiskin-viewspecialpage' ],
 		) );
 		wfProfileOut( 'BS::' . __METHOD__ );
 	}

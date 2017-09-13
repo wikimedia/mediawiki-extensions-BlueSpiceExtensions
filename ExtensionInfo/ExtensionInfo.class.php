@@ -41,9 +41,13 @@ class ExtensionInfo extends BsExtensionMW {
 	/**
 	 * Adds a link to WikiAdmin menu
 	 * @param array $aOutSortable
+	 * @param \User The user in which context the menu is rendered
 	 * @return boolean Alway true to keep hook running
 	 */
-	public static function onBSWikiAdminMenuItems( &$aOutSortable ) {
+	public static function onBSWikiAdminMenuItems( &$aOutSortable, $oUser ) {
+		if( !$oUser->isAllowed( 'wikiadmin' ) ) {
+			return true;
+		}
 		$sLabel = wfMessage( 'bs-extensioninfo-label' )->plain();
 		$aOutSortable[$sLabel] = Html::rawElement( 'li', array(),
 			Linker::link( SpecialPage::getTitleFor( 'ExtensionInfo' ), $sLabel, array( 'class' => 'bs-admin-link bs-icon-puzzle' ) )

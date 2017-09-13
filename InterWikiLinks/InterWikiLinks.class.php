@@ -44,13 +44,13 @@ class InterWikiLinks extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		WikiAdmin::registerModule('InterWikiLinks', array(
+		WikiAdmin::registerModule( 'InterWikiLinks', [
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_interwikilinks_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-interwikilinks-label',
-			'iconCls' => 'bs-icon-chain'
-			)
-		);
+			'iconCls' => 'bs-icon-chain',
+			'permissions' => [ 'interwikilinks-viewspecialpage' ],
+		]);
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 

@@ -50,7 +50,8 @@ class UserManager extends BsExtensionMW {
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_usermanagement_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-usermanager-label',
-			'iconCls' => 'bs-icon-user-add'
+			'iconCls' => 'bs-icon-user-add',
+			'permissions' => [ 'usermanager-viewspecialpage' ],
 		) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
