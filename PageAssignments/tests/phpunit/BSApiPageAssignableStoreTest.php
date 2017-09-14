@@ -3,12 +3,22 @@
 /**
  * @group medium
  * @group API
+ * @group Database
  * @group BlueSpice
  * @group BlueSpiceExtensions
  * @group BlueSpicePageAssignments
  */
 class BSApiPageAssignableStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 9;
+
+	protected function skipAssertTotal() {
+		return true;
+	}
+
+	protected function setUp() {
+		parent::setUp();
+		new BSUserFixturesProvider();
+	}
 
 	protected function getStoreSchema () {
 		return [
@@ -28,7 +38,8 @@ class BSApiPageAssignableStoreTest extends BSApiExtJSStoreTestBase {
 	}
 
 	protected function createStoreFixtureData () {
-		return 9;
+		self::$userFixtures = new BSUserFixtures( $this );
+		return true;
 	}
 
 	protected function getModuleName () {
@@ -37,7 +48,8 @@ class BSApiPageAssignableStoreTest extends BSApiExtJSStoreTestBase {
 
 	public function provideSingleFilterData () {
 		return [
-			'Filter by type' => [ 'string', 'eq', 'type', 'group', 6 ]
+			'Filter by id' => [ 'string', 'ct', 'id', 'John', 1 ],
+			'Filter by text' => [ 'string', 'eq', 'text', 'Ringo S.', 1 ]
 		];
 	}
 
@@ -60,6 +72,13 @@ class BSApiPageAssignableStoreTest extends BSApiExtJSStoreTestBase {
 				],
 				1
 			]
+		];
+	}
+
+	public function provideKeyItemData() {
+		return[
+			'Test user John: text' => [ "text", "John L." ],
+			'Test user Paul: text' => [ "text", "Paul M." ]
 		];
 	}
 }
