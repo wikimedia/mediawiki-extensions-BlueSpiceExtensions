@@ -65,10 +65,14 @@ class AboutBlueSpice extends BsExtensionMW {
 	/**
 	 * Returns a list item with a link to the "About BlueSpice" special page
 	 * @param array $aOutSortable Indexed list of menu items. Add item in HTML form.
+	 * @param \User The user in which context the menu is rendered
 	 * @return string Link to the "About BlueSpice" special page
 	 */
-	public static function onBSWikiAdminMenuItems( &$aOutSortable ) {
+	public static function onBSWikiAdminMenuItems( &$aOutSortable, $oUser ) {
 		if ( !BsConfig::get( 'MW::AboutBlueSpice::ShowMenuLinks' )) {
+			return true;
+		}
+		if( !$oUser->isAllowed( 'aboutbluespice-viewspecialpage' ) ) {
 			return true;
 		}
 		$oSpecialPage = SpecialPage::getTitleFor( 'AboutBlueSpice' );

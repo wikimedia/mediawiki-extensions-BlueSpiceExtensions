@@ -40,19 +40,20 @@
 class BsPreferences extends BsExtensionMW {
 
 	public function __construct() {
-	   wfProfileIn( 'BS::' . __METHOD__ );
-			// Base settings
-			$this->mExtensionFile = __FILE__;
-			$this->mExtensionType = EXTTYPE::SPECIALPAGE;
+		wfProfileIn( 'BS::' . __METHOD__ );
+		// Base settings
+		$this->mExtensionFile = __FILE__;
+		$this->mExtensionType = EXTTYPE::SPECIALPAGE;
 
-			WikiAdmin::registerModule( 'BlueSpicePreferences', array(
-				'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
-				'level' => 'wikiadmin',
-				'message' => 'bs-bluespicepreferences-label',
-				'iconCls' => 'bs-icon-wrench'
-			) );
+		WikiAdmin::registerModule( 'BlueSpicePreferences', [
+			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_einstellungen_v1.png',
+			'level' => 'wikiadmin',
+			'message' => 'bs-bluespicepreferences-label',
+			'iconCls' => 'bs-icon-wrench',
+			'permissions' => [ 'bluespicepreferences-viewspecialpage' ],
+		]);
 
-			wfProfileOut( 'BS::' . __METHOD__ );
+		wfProfileOut( 'BS::' . __METHOD__ );
 	}
 
 	protected function initExt() {

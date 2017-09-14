@@ -43,13 +43,13 @@ class GroupManager extends BsExtensionMW {
 	 */
 	public function __construct() {
 		wfProfileIn( 'BS::'.__METHOD__ );
-		WikiAdmin::registerModule('GroupManager', array(
+		WikiAdmin::registerModule( 'GroupManager', [
 			'image' => '/extensions/BlueSpiceExtensions/WikiAdmin/resources/images/bs-btn_gruppe_v1.png',
 			'level' => 'wikiadmin',
 			'message' => 'bs-groupmanager-label',
-			'iconCls' => 'bs-icon-group'
-			)
-		);
+			'iconCls' => 'bs-icon-group',
+			'permissions' => [ 'groupmanager-viewspecialpage' ],
+		]);
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
