@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joedalton"
+		]
+	},
+	"bs-pagesvisited-desc": "Tilbyder en personlig liste over de sidst besøgte sider",
+	"prefs-pagesvisited": "Sider besøgt",
+	"bs-pagesvisited-widget-title": "Sider besøgt",
+	"bs-pagesvisited-error-nsnotvalid": "{{PLURAL:$1|navnerum}} <code>$2</code> {{PLURAL:$1|er}} ikke gyldig(e).",
+	"bs-pagesvisited-pref-widgetlimit": "Begrænsning af elementer:",
+	"bs-pagesvisited-pref-widgetns": "Navnerum:",
+	"bs-pagesvisited-pref-widgetsortodr": "Sorter efter:",
+	"bs-pagesvisited-pref-sort-time": "Tidspunkt",
+	"bs-pagesvisited-pref-sort-pagename": "Titel",
+	"bs-pagesvisited-tag-pagesvisited-desc": "Viser en liste over de sidst besøgte sider. Denne liste kan begrænses af parametre."
+}
