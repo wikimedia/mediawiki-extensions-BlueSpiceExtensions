@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Csega"
+			"Csega",
+			"Rodrigo"
 		]
 	},
 	"bs-insertcategory-desc": "Párbeszédpanel kategória link beírásához",
 	"bs-insertcategory-insertcat": "Kategória beillesztése",
 	"prefs-insertcategory": "Kategória beillesztése",
 	"bs-insertcategory-title": "Kategória beillesztése",
-	"bs-insertcategory-success": "Kategória hozzáadása sikeres",
+	"bs-insertcategory-success": "Kategória hozzáadva",
 	"bs-insertcategory-failure": "Hiba",
 	"bs-insertcategory-panel-title": "Kategóriák"
 }
