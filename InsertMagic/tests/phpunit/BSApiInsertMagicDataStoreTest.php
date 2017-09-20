@@ -11,6 +11,10 @@ class BSApiInsertMagicDataStoreTest extends BSApiExtJSStoreTestBase {
 
 	protected $iFixtureTotal = 86;
 
+	protected function skipAssertTotal() {
+		return true;
+	}
+
 	protected function getStoreSchema() {
 		return [
 			'id' => [
