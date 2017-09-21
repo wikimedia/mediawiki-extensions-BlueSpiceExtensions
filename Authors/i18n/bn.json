@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Aftab1995",
-			"Aftabuzzaman"
-		]
-	},
-	"bs-authors-title": "{{PLURAL:$1|{{GENDER:$2|লেখক}}|লেখকগণ}}"
-}
