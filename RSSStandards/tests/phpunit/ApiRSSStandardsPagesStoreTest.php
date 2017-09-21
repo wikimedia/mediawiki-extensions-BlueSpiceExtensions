@@ -3,6 +3,7 @@
 /**
  * @group medium
  * @group API
+ * @group Database
  * @group BlueSpice
  * @group BlueSpiceExtensions
  * @group BlueSpiceRSSStandards
@@ -10,6 +11,10 @@
 class BSApiRSSStandardsPagesStoreTest extends BSApiExtJSStoreTestBase {
 
 	protected $iFixtureTotal = 3;
+
+	protected function skipAssertTotal() {
+		return true;
+	}
 
 	protected function getStoreSchema() {
 		return [
