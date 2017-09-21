@@ -7,16 +7,20 @@
  * starting point
  */
 
-if ( file_exists( __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php' ) ) {
-	require_once __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
-} elseif ( file_exists( __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php' ) ) {
-	require_once __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
-} elseif ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-	require_once __DIR__ . '/vendor/autoload.php';
-}
+if ( function_exists( 'wfLoadExtension' ) ) {
+	if ( file_exists( __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php' ) ) {
+		require_once __DIR__ . '/vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
+	} elseif ( file_exists( __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php' ) ) {
+		require_once __DIR__ . '/../../vendor/hallowelt/blue-spice-foundation/BlueSpiceFoundation.php';
+	} elseif ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+		require_once __DIR__ . '/vendor/autoload.php';
+	}
 
-if ( file_exists( __DIR__ . '/BlueSpiceExtensions.local.php' ) ) {
-	require_once __DIR__ . '/BlueSpiceExtensions.local.php';
+	if ( file_exists( __DIR__ . '/BlueSpiceExtensions.local.php' ) ) {
+		require_once __DIR__ . '/BlueSpiceExtensions.local.php';
+	} else {
+		require_once __DIR__ . '/BlueSpiceExtensions.default.php';
+	}
 } else {
-	require_once __DIR__ . '/BlueSpiceExtensions.default.php';
+	die( 'This extension requires MediaWiki 1.25+' );
 }
