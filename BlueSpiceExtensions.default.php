@@ -43,7 +43,6 @@ require_once( __DIR__."/ShoutBox/ShoutBox.setup.php" );
 require_once( __DIR__."/VisualEditor/VisualEditor.setup.php" );
 require_once( __DIR__."/ExtendedEditBar/ExtendedEditBar.setup.php" );
 require_once( __DIR__."/RSSStandards/RSSStandards.setup.php" );
-require_once( __DIR__."/PageAssignments/PageAssignments.setup.php" );
 require_once( __DIR__."/SaferEdit/SaferEdit.setup.php" );
 require_once( __DIR__."/Avatars/Avatars.setup.php" );
 require_once( __DIR__."/Readers/Readers.setup.php" );
