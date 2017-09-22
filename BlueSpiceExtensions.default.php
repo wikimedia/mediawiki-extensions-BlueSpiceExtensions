@@ -7,7 +7,6 @@ require_once( __DIR__."/InterWikiLinks/InterWikiLinks.setup.php" );
 require_once( __DIR__."/NamespaceManager/NamespaceManager.setup.php" );
 require_once( __DIR__."/PermissionManager/PermissionManager.setup.php" );
 require_once( __DIR__."/Preferences/Preferences.setup.php" );
-require_once( __DIR__."/UserManager/UserManager.setup.php" );
 
 //Other Extensions
 require_once( __DIR__."/StateBar/StateBar.setup.php" );
