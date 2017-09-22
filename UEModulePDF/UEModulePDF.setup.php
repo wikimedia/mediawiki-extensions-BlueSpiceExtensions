@@ -22,6 +22,7 @@ $wgAutoloadClasses['BsPDFTemplateProvider'] = __DIR__ . '/includes/PDFTemplatePr
 $wgAutoloadClasses['BsPDFWebService'] = __DIR__ . '/includes/PDFWebService.class.php';
 $wgAutoloadClasses['BsPDFServlet'] = __DIR__ . '/includes/PDFServlet.class.php'; //TODO: This is deprecated. Remove.
 $wgAutoloadClasses['BsExportModulePDF'] = __DIR__ . '/includes/ExportModulePDF.class.php';
+$wgAutoloadClasses['PDFFileResolver'] = __DIR__ . '/includes/PDFFileResolver.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'UEModulePDF::getSchemaUpdates';
 

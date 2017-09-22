@@ -23,7 +23,7 @@ class BsPDFPageProvider {
 	/**
 	 * Fetches the requested pages markup, cleans it and returns a DOMDocument.
 	 * @param array $aParams Needs the 'article-id' or 'title' key to be set and valid.
-	 * @return array 
+	 * @return array
 	 */
 	public static function getPage( $aParams ) {
 		wfRunHooks( 'BSUEModulePDFbeforeGetPage', array( &$aParams ) );
@@ -36,14 +36,14 @@ class BsPDFPageProvider {
 			$oTitle = Title::newFromID($aParams['article-id']);
 		}
 		if( $oTitle == null ){
-			//HINT: This is probably the wrong place for urldecode(); Should be 
+			//HINT: This is probably the wrong place for urldecode(); Should be
 			//done by caller. I.e. BookExportModulePDF
 			$oTitle = Title::newFromText(urldecode($aParams['title']));
 		}
-		
+
 		$oPCP = new BsPageContentProvider();
-		$oPageDOM = $oPCP->getDOMDocumentContentFor( 
-			$oTitle, 
+		$oPageDOM = $oPCP->getDOMDocumentContentFor(
+			$oTitle,
 			$aParams + array( 'follow-redirects' => true )
 		); // TODO RBV (06.12.11 17:09): Follow Redirect... setting or default?
 
@@ -58,20 +58,20 @@ class BsPDFPageProvider {
 		$oBookmarksDOM->documentElement->appendChild(
 			$oBookmarksDOM->importNode( $oBookmarkNode, true )
 		);
-		
+
 		$oDOMXPath = new DOMXPath( $oPageDOM );
 		$oFirstHeading = $oDOMXPath->query( "//*[contains(@class, 'firstHeading')]" )->item(0);
 		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item(0);
-		
+
 		// TODO RBV (01.02.12 11:28): What if no TOC?
 		$oTOCULElement = $oDOMXPath->query( "//*[contains(@class, 'toc')]//ul" )->item(0);
-		
+
 		if( isset($aParams['display-title'] ) ) {
 			$oBookmarkNode->setAttribute( 'name', $aParams['display-title'] );
 			$oFirstHeading->nodeValue = $aParams['display-title'];
 			$aData['meta']['title']   = $aParams['display-title'];
 		}
-		
+
 		$aPage = array(
 			'resources' => $aData['resources'],
 			'dom' => $oPageDOM,
@@ -82,7 +82,7 @@ class BsPDFPageProvider {
 			'bookmark-element' => $oBookmarkNode,
 			'meta'             => $aData['meta']
 		);
-		
+
 		wfRunHooks( 'BSUEModulePDFgetPage', array( $oTitle, &$aPage, &$aParams, $oDOMXPath ) );
 		return $aPage;
 	}
@@ -101,7 +101,7 @@ class BsPDFPageProvider {
 			'STYLESHEET' => array(),
 			'IMAGE' => array()
 		);
-		
+
 		// TODO RBV (01.02.12 13:51): Handle oldid
 		$aCategories = array();
 		if( $oTitle->exists() ) {
@@ -139,23 +139,29 @@ class BsPDFPageProvider {
 			}
 		}
 		 */
-		
+
 		//Dublin Core:
 		$aMeta['DC.title'] = $oTitle->getPrefixedText();
 		$aMeta['DC.date']  = wfTimestamp( TS_ISO_8601 ); // TODO RBV (14.12.10 14:01): Check for conformity. Maybe there is a better way to acquire than wfTimestamp()?
 
 		//Custom
 		global $wgLang;
+		$oDOMXPath = new DOMXPath( $oPageDOM );
+		$domTitles = $oDOMXPath->query( "//*[contains(@class, 'firstHeading')]" );
+		$sTitle = "";
+		foreach( $domTitles as $domTitle ) {
+			$sTitle = $domTitle->nodeValue;
+		}
 		$sCurrentTS = $wgLang->userAdjust( wfTimestampNow() );
-		$aMeta['title']           = $oTitle->getPrefixedText();
+		$aMeta[ 'title' ] = empty( $sTitle ) ? $oTitle->getPrefixedText( ) : $sTitle;
+		$aMeta[ 'pagetitle' ] = $oTitle->getPrefixedText( );
 		$aMeta['exportdate']      = $wgLang->sprintfDate( 'd.m.Y', $sCurrentTS );
 		$aMeta['exporttime']      = $wgLang->sprintfDate( 'H:i', $sCurrentTS );
 		$aMeta['exporttimeexact'] = $wgLang->sprintfDate( 'H:i:s', $sCurrentTS );
-		
+
 		//Custom - Categories->Keywords
 		$aMeta['keywords'] = implode( ', ', $aCategories );
 
-		$oDOMXPath = new DOMXPath( $oPageDOM );
 		$oMetadataElements = $oDOMXPath->query( "//div[@class='bs-universalexport-meta']" );
 		foreach( $oMetadataElements as $oMetadataElement ) {
 			if( $oMetadataElement->hasAttributes() ) {
@@ -167,9 +173,9 @@ class BsPDFPageProvider {
 			}
 			$oMetadataElement->parentNode->removeChild( $oMetadataElement );
 		}
-		
+
 		//If it's a normal article
-		if( !in_array( $oTitle->getNamespace(), array( NS_SPECIAL, NS_IMAGE, NS_CATEGORY ) ) ) {
+		if( !in_array( $oTitle->getNamespace(), array( NS_SPECIAL, NS_FILE, NS_CATEGORY ) ) ) {
 			$oArticle = new Article($oTitle);
 			$aMeta['author'] = $oArticle->getUserText(); // TODO RBV (14.12.10 12:19): Realname/Username -> DisplayName
 			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oArticle->getTouched() );
@@ -178,7 +184,7 @@ class BsPDFPageProvider {
 		wfRunHooks( 'BSUEModulePDFcollectMetaData', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ) );
 		$aMetaDataOverrides = json_decode( BsConfig::get( 'MW::UniversalExport::MetadataOverrides' ), true );
 		$aMeta = array_merge( $aMeta, $aMetaDataOverrides );
-		
+
 		return array(
 			'meta'      => $aMeta,
 			'resources' => $aResources
@@ -186,12 +192,12 @@ class BsPDFPageProvider {
 	}
 
 	/**
-	 * Cleans the DOM: removes editsections, script tags, some elementy 
-	 * by classes, makes links absolute and pages paginatable and prevents 
+	 * Cleans the DOM: removes editsections, script tags, some elementy
+	 * by classes, makes links absolute and pages paginatable and prevents
 	 * large images from clipping in the PDF
 	 * @param Title $oTitle
 	 * @param DOMDocument $oPageDOM
-	 * @param array $aParams 
+	 * @param array $aParams
 	 */
 	private static function cleanUpDOM( $oTitle, $oPageDOM, $aParams ) {
 		global $wgServer;
@@ -225,8 +231,8 @@ class BsPDFPageProvider {
 				$wgServer.$sRelativePath
 			);
 		}
-		
-		
+
+
 		//<editor-fold defaultstate="collapsed" desc="Reference Tags">
 		// TODO RBV (31.01.12 17:17): This should be in an extra extension like CiteConnector!
 		//$oReferenceTags = $oDOMXPath->query( "//a[contains(@class, 'references')]" );
@@ -266,10 +272,12 @@ class BsPDFPageProvider {
 			return $listItemStartTag.$listItemContent.'</li>';
 		}*/
 		//</editor-fold>
-		
+
 		//Make tables paginatable
 		$oTableElements = $oPageDOM->getElementsByTagName( 'table' );
 		foreach( $oTableElements as $oTableElement ) {
+			self::correctTableWidth( $oTableElement );
+
 			$oTableRows = $oTableElement->childNodes; //We only want direct children, so we cannot use getElementsByTagName
 			$aRows = array();
 			foreach( $oTableRows as $oTableRow ){
@@ -306,25 +314,21 @@ class BsPDFPageProvider {
 				$oTableElement->appendChild($oTBody);
 			}
 		}
-		
-		//TODO: Should this be in PdfServlet::findFiles()? Or we should add the images as attachments
-		//Prevent large images from clipping
-		foreach( $oPageDOM->getElementsByTagName( 'img' ) as $oImgElement ) {
-			$iWidth = $oImgElement->getAttribute( 'width' );
-			if( $iWidth > 700 ) {
-				$oImgElement->setAttribute( 'width', 700 );
-				$oImgElement->removeAttribute( 'height' );
-				
-				$sClasses = $oImgElement->getAttribute( 'class' );
-				$oImgElement->setAttribute( 'class', $sClasses.' maxwidth' );
-			}
-		}
-		
+
 		//Prevent "first page empty" bug
 		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item(0);
 		$oAntiBugP = $oPageDOM->createElement( 'p' );
 		$oAntiBugP->nodeValue = 'I am here to prevent the first-page-empty bug!';
 		$oAntiBugP->setAttribute( 'style', 'visibility:hidden;height:0px;margin:0px;padding:0px' );
 		$oBodyContent->insertBefore( $oAntiBugP, $oBodyContent->firstChild );
+	}
+
+	protected static function correctTableWidth( $oTableElement ) {
+		$sStyleAttribute = $oTableElement->getAttribute( 'style' );
+		//make sure style tag ends with semicolon
+		if( substr( trim( $sStyleAttribute ), -1 ) !== ";" ) {
+			$sStyleAttribute .= ";";
+		}
+		$oTableElement->setAttribute( 'style', $sStyleAttribute . ' table-layout: fixed; max-width: 700px;' );
 	}
 }
