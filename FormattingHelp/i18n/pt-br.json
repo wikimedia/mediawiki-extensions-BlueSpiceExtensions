@@ -4,11 +4,25 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-formattinghelp-formatting": "Ajuda de formatação",
+	"bs-formattinghelp-help-syntax": "Sintaxe",
 	"bs-formattinghelp-help-example-text": "Texto",
 	"bs-formattinghelp-help-bold": "Negrito",
+	"bs-formattinghelp-help-italic": "Itálico",
+	"bs-formattinghelp-help-whitespace": "Espaço em branco",
+	"bs-formattinghelp-help-color": "Texto colorido",
+	"bs-formattinghelp-help-headline": "Headline",
 	"bs-formattinghelp-help-linebreak": "Quebra de linha",
+	"bs-formattinghelp-help-ul": "Lista não ordenada",
+	"bs-formattinghelp-help-listitem": "Listar itens",
+	"bs-formattinghelp-help-subitem": "Sub item",
+	"bs-formattinghelp-help-numberedlist": "Lista numerada",
+	"bs-formattinghelp-help-link": "Link interno",
 	"bs-formattinghelp-help-caption": "Legenda",
 	"bs-formattinghelp-help-extlink": "Ligação externa",
+	"bs-formattinghelp-help-hr": "Linha horizontal",
 	"bs-formattinghelp-help-template": "Predefinição",
-	"bs-formattinghelp-help-templatename": "Nome da predefinição"
+	"bs-formattinghelp-help-templatename": "Nome da predefinição",
+	"apihelp-bs-formattinghelp-description": "Fornece as tarefas para a extensão FormattingHelp.",
+	"apihelp-bs-formattinghelp-summary": "Fornece as tarefas para a extensão FormattingHelp."
 }

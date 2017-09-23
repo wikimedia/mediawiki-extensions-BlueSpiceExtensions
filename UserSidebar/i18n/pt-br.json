@@ -6,6 +6,9 @@
 		]
 	},
 	"prefs-usersidebar": "Barra lateral de usuário",
+	"bs-usersidebar-tab-focus": "Foco",
 	"bs-usersidebar-tab-globalactions": "Ações globais",
-	"bs-usersidebar-globalactionswidget-title": "Ações globais"
+	"bs-usersidebar-globalactionswidget-title": "Ações globais",
+	"apihelp-sidebar-description": "Retorna o conteúdo HTML da barra lateral do usuário",
+	"apihelp-sidebar-summary": "Retorna o conteúdo HTML da barra lateral do usuário"
 }

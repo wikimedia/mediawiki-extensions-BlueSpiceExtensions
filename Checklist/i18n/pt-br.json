@@ -4,6 +4,25 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-checklist-menu-insert-list-title": "Inserir lista",
 	"bs-checklist-menu-insert-checkbox": "Caixa de Seleção",
-	"bs-checklist-tag-checklist-example-check": "Caixa de Seleção"
+	"bs-checklist-menu-insert-no-list-loaded": "Nenhuma lista carregada",
+	"bs-checklist-dlg-insert-list-value-list": "Lista de valores",
+	"bs-checklist-tag-checklist-example-check": "Caixa de Seleção",
+	"bs-checklist-tag-checklist-example-list": "Selecionar o menu",
+	"bs-checklist-dlg-new-list": "Criar uma nova lista",
+	"bs-checklist-dlg-items-label": "Itens na lista",
+	"bs-checklist-dlg-panel-title": "Listas disponíveis",
+	"bs-checklist-dlg-new-title": "Adicionar nova lista",
+	"bs-checklist-alert": "Cuidado!",
+	"bs-checklist-confirm-dirty-title": "Mudanças não salvas!",
+	"log-name-bs-checklist": "Log da caixa de seleção",
+	"log-show-hide-bs-checklist": "Log da caixa de seleção $1",
+	"bs-checklist-update-list": "Lista atualizada",
+	"apihelp-bs-checklist-available-options-store-description": "Lista todas as opções disponíveis para as predefinições checklist. Permite classificar, filtrar e paginar. Implementa os parâmetros da ExtJS Store.",
+	"apihelp-bs-checklist-available-options-store-summary": "Lista todas as opções disponíveis para as predefinições checklist. Permite classificar, filtrar e paginar. Implementa os parâmetros da ExtJS Store.",
+	"apihelp-bs-checklist-template-store-description": "Lista todas as predefinições que são fontes válidas da checklist. Permite classificar, filtrar e paginar. Implementa os parâmetros da ExtJS Store.",
+	"apihelp-bs-checklist-template-store-summary": "Lista todas as predefinições que são fontes válidas da checklist. Permite classificar, filtrar e paginar. Implementa os parâmetros da ExtJS Store.",
+	"apihelp-bs-checklist-tasks-description": "Fornece operações para a extensão Checklist",
+	"apihelp-bs-checklist-tasks-summary": "Fornece operações para a extensão Checklist"
 }

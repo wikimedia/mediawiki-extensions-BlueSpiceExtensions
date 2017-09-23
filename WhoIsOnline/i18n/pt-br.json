@@ -7,5 +7,7 @@
 	"bs-whoisonline-widget-title": "Quem está online?",
 	"prefs-whoisonline": "Quem está online?",
 	"bs-whoisonline-pref-orderby": "Ordenar por:",
-	"bs-whoisonline-pref-orderby-name": "Nome"
+	"bs-whoisonline-pref-orderby-time": "Tempo de atividade",
+	"bs-whoisonline-pref-orderby-name": "Nome",
+	"bs-whoisonline-pref-interval": "Intervalo de atualização em segundos:"
 }

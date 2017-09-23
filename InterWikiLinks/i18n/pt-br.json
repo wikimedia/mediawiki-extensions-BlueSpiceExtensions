@@ -4,9 +4,14 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-interwikilinks-label": "Links interwiki",
 	"bs-interwikilinks-headerprefix": "Prefixo",
 	"bs-interwikilinks-headerurl": "URL",
 	"bs-interwikilinks-labelprefix": "Prefixo",
 	"bs-interwikilinks-labelurl": "URL",
-	"bs-interwikilinks-insertlink-labelprefix": "Prefixo"
+	"bs-interwikilinks-insertlink-labelprefix": "Prefixo",
+	"bs-interwikilink-select-a-prefix": "Escolha o prefixo",
+	"apihelp-bs-interwikilinks-tasks-description": "Fornece as tarefas para a extensão InterWikiLinks.",
+	"apihelp-bs-interwikilinks-tasks-summary": "Fornece as tarefas para a extensão InterWikiLinks.",
+	"interwikilinks": "Links interwiki"
 }

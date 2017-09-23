@@ -4,9 +4,21 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-extendededitbar-redirecttip": "Redirecionamento",
+	"bs-extendededitbar-redirectsample": "Inserir texto",
+	"bs-extendededitbar-striketip": "Riscar",
 	"bs-extendededitbar-entertip": "Quebra de linha",
+	"bs-extendededitbar-uppertip": "Sobrescrito",
+	"bs-extendededitbar-uppersample": "Texto em sobrescrito",
+	"bs-extendededitbar-lowertip": "Subscrito",
+	"bs-extendededitbar-lowersample": "Texto em subscrito",
+	"bs-extendededitbar-smalltip": "Pequeno",
+	"bs-extendededitbar-smallsample": "Texto pequeno",
+	"bs-extendededitbar-commentsample": "Comentário",
 	"bs-extendededitbar-gallerysamplepicture": "Imagem",
 	"bs-extendededitbar-gallerysamplecaption": "Legenda",
+	"bs-extendededitbar-quotesample": "Bloco de citação",
+	"bs-extendededitbar-tabletip": "Inserir uma tabela",
 	"bs-extendededitbar-tablesampleheader": "Cabeçalho",
 	"bs-extendededitbar-tablesamplerow": "Linha",
 	"bs-extendededitbar-tablesamplecell": "Célula"

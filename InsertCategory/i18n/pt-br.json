@@ -4,6 +4,10 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-insertcategory-insertcat": "Inserir categoria",
+	"prefs-insertcategory": "Inserir categoria",
+	"bs-insertcategory-title": "Inserir categoria",
+	"bs-insertcategory-cat-label": "Atribuído:",
 	"bs-insertcategory-failure": "Erro",
 	"bs-insertcategory-panel-title": "Categorias"
 }

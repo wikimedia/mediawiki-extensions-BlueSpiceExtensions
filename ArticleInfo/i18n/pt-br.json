@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luckas"
+			"Luckas",
+			"Felipe L. Ewald"
 		]
 	},
+	"prefs-articleinfo": "Informações da página",
+	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalo de atualização em segundos:",
 	"bs-articleinfo-last-edited-tooltip": "Última edição",
 	"bs-articleinfo-last-editor": "Últim{{GENDER:$1|o editor|a editora}}",
 	"bs-articleinfo-categories": "Categorias",
@@ -11,8 +14,13 @@
 	"bs-articleinfo-all-categories-heading": "Categorias",
 	"bs-articleinfo-nocategories": "Nenhuma categoria encontrada.",
 	"bs-articleinfo-hiddencats": "Categorias ocultas",
+	"bs-articleinfo-notemplates": "Predefinições não encontradas.",
 	"bs-articleinfo-templates": "Predefinições",
 	"bs-articleinfo-subpages": "Subpáginas",
+	"bs-articleinfo-check-revision": "Nova versão disponível",
+	"bs-articleinfo-check-revision-tooltip": "Atualizar página",
+	"bs-articleinfo-statebartoplastedited": "Adições recentes",
+	"bs-articleinfo-statebartoplasteditor": "Editor recente",
 	"bs-articleinfo-statebartopcategories": "Categorias",
 	"bs-articleinfo-statebartopsubpages": "Subpáginas",
 	"bs-articleinfo-statebarbodycategories": "Categorias",

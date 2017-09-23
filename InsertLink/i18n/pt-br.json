@@ -6,11 +6,18 @@
 	},
 	"prefs-insertlink": "Inserir link",
 	"bs-insertlink": "Inserir link",
+	"bs-insertlink-button-title": "Inserir/editar link",
 	"bs-insertlink-dialog-title": "Inserir link",
 	"bs-insertlink-tab-wiki-page": "Página Wiki",
 	"bs-insertlink-tab-ext-link": "Ligação externa",
+	"bs-insertlink-tab-email": "Email-link",
+	"bs-insertlink-tab-ext-file": "Link para o arquivo",
 	"bs-insertlink-label-page": "Página",
 	"bs-insertlink-label-link": "Link",
+	"bs-insertlink-label-mail": "Endereço de e-mail",
 	"bs-insertlink-label-description": "Descrição",
-	"bs-insertlink-label-file": "Arquivo"
+	"bs-insertlink-label-file": "Arquivo",
+	"bs-insertlink-label-searchfile": "Pesquisar …",
+	"bs-insertlink-select-a-page": "Escolha o alvo ...",
+	"bs-insertlink-select-a-namespace": "(Páginas)"
 }

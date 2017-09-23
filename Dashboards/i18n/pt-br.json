@@ -4,7 +4,20 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-specialadmindashboard-label": "Painel de controle",
+	"bs-dashboards-addportlet": "Adicionar portlet",
+	"bs-dashboards-portlets": "Portlets",
+	"prefs-dashboards": "Painéis",
+	"admindashboard": "Painel de controle do administrador",
+	"userdashboard": "Painel de controle do utilizador",
 	"bs-dashboard-userportlet-calendar-title": "Calendário",
 	"bs-dashboard-userportlet-calendar-description": "Calendário",
-	"bs-dashboard-userportlet-wikipage-wiki-article": "Página Wiki"
+	"bs-dashboard-userportlet-wikipage-title": "WikiPage",
+	"bs-dashboard-userportlet-wikipage-wiki-article": "Página Wiki",
+	"apihelp-bs-dashboards-store-description": "Lista todos os portlets disponíveis",
+	"apihelp-bs-dashboards-store-summary": "Lista todos os portlets disponíveis",
+	"apihelp-bs-dashboards-tasks-description": "Salva a configuração do painel",
+	"apihelp-bs-dashboards-tasks-summary": "Salva a configuração do painel",
+	"apihelp-bs-dashboards-widgets-tasks-description": "Retorna conteúdo para alguns widgets do painel",
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Retorna conteúdo para alguns widgets do painel"
 }

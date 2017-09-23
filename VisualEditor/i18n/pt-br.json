@@ -6,9 +6,30 @@
 			"Trigonometria87"
 		]
 	},
+	"bs-visualeditor-desc": "Editor visual para o MediaWiki",
 	"prefs-visualeditor": "Editor visual",
 	"apihelp-bs-visualeditor-tasks-description": "Fornece tarefas para a extensão BlueSpice Visual Editor.",
-	"apihelp-bs-visualeditor-tasks-summary": "Fornece tarefas para a extensão BlueSpice Visual Editor",
+	"apihelp-bs-visualeditor-tasks-summary": "Fornece tarefas para a extensão BlueSpice Visual Editor.",
+	"bs-visualeditor-editbutton-hint": "Editor visual",
+	"bs-visualeditor-no-summary": "Sem sumário",
+	"bs-visualeditor-sortable": "Ordenável",
+	"bs-visualeditor-wikitable": "Padrão",
+	"bs-visualeditor-contenttable": "Conteúdo",
+	"bs-visualeditor-contenttable-black": "Conteúdo (preto)",
+	"bs-visualeditor-contenttable-blue": "Conteúdo (azul)",
+	"bs-visualeditor-cuscosky": "Cusco Sky",
+	"bs-visualeditor-casablanca": "Casablanca",
+	"bs-visualeditor-greyscale": "Escala de cinza",
 	"bs-visualeditor-aligntop": "Topo",
-	"bs-visualeditor-bsactions-save": "Salvar"
+	"bs-visualeditor-alignmiddle": "Meio",
+	"bs-visualeditor-alignbottom": "Abaixo",
+	"bs-visualeditor-bsactions-wiki": "Texto wiki",
+	"bs-visualeditor-bsactions-switchgui": "Alternar barra de ferramentas",
+	"bs-visualeditor-bsactions-linebreak": "Quebra de linha",
+	"bs-visualeditor-bsactions-signature": "Assinatura",
+	"bs-visualeditor-bsactions-save": "Salvar",
+	"bs-visualeditor-bsactions-headings": "Headings",
+	"bs-visualeditor-bsactions-tablefunctions": "Tabela de funções",
+	"bs-visualeditor-bsactions-tablestyles": "Tabela de estilos",
+	"bs-visualeditor-editoptions-summary": "Sumário"
 }

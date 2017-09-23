@@ -6,5 +6,11 @@
 	},
 	"bs-groupmanager-label": "Gerenciador de grupos",
 	"bs-groupmanager-headergroup": "Grupo",
+	"bs-groupmanager-titlenewgroup": "Novo grupo",
+	"bs-groupmanager-titleeditgroup": "Editar grupo",
+	"bs-groupmanager-lablename": "Nome do grupo:",
+	"log-name-bs-group-manager": "Log do gerenciador de grupos",
+	"apihelp-bs-groupmanager-description": "Fornece as tarefas para a extensão GroupManager.",
+	"apihelp-bs-groupmanager-summary": "Fornece as tarefas para a extensão GroupManager.",
 	"groupmanager": "Gerenciador de grupos"
 }

@@ -4,6 +4,12 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"prefs-avatars": "Avatars",
+	"bs-avatars-pref-generator": "Gerador:",
+	"bs-avatars-upload-title": "Alterar imagem do perfil",
 	"bs-avatars-upload-label": "Imagem",
-	"bs-avatars-warning-title": "Aviso"
+	"bs-avatars-warning-title": "Aviso",
+	"bs-avatars-file-upload-fieldset-title": "Envio de imagem",
+	"apihelp-bs-avatars-tasks-description": "Fazendo upload, gerando e configurando avatares de usuários",
+	"apihelp-bs-avatars-tasks-summary": "Fazendo upload, gerando e configurando avatares de usuários"
 }

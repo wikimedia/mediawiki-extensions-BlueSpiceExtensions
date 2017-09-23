@@ -4,7 +4,12 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"rssfeeder": "RSS feeder",
+	"apihelp-bs-rssfeeder-tasks-description": "Fornece tarefas comuns para o RSSFeeder",
+	"apihelp-bs-rssfeeder-tasks-summary": "Fornece tarefas comuns para o RSSFeeder",
 	"bs-rssfeeder-recent-changes": "Mudanças recentes",
 	"bs-rssfeeder-pages": "Página",
-	"bs-rssfeeder-submit": "Exibir"
+	"bs-rssfeeder-submit": "Exibir",
+	"bs-rssfeeder-rss": "Feed RSS",
+	"bs-extjs-rssfeeder-rss-title": "URL RSS"
 }

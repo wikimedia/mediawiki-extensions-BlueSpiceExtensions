@@ -4,8 +4,14 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-usagetracker-desc": "Possui dados estatísticos sobre o uso da extensão",
 	"prefs-usagetracker": "Uso do Tracker",
 	"usagetracker": "Uso do Tracker",
+	"bs-usagetracker-startjobs": "Atualizar agora",
+	"bs-usagetracker-col-identifier": "Identificador",
 	"bs-usagetracker-col-desc": "Descrição",
-	"bs-usagetracker-col-count": "Contagem"
+	"bs-usagetracker-col-count": "Contagem",
+	"bs-usagetracker-col-last-updated": "Última atualização",
+	"bs-usagetracker-db-collector-desc": "Número de $1",
+	"apihelp-bs-usagetracker-store-summary": "Possui dados estatísticos sobre o uso da extensão"
 }

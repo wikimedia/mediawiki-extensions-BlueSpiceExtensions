@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"bs-csyntaxhighlight-pref-theme": "Tema:",
+	"bs-csyntaxhighlight-pref-gutter": "Mostrar número de linhas",
+	"bs-csyntaxhighlight-pref-autolinks": "URL do link",
+	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de ferramentas"
+}

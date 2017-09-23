@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Felipe L. Ewald"
+		]
+	},
+	"prefs-uemodulepdf": "Módulo PDF de exportação universal",
+	"uemodulepdf": "Módulo PDF de exportação universal",
+	"bs-uemodulepdf-pref-pdfserviceurl": "Backend URL:",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Página única em PDF",
+	"bs-uemodulepdf-overview-webservice-state": "Estado do backend",
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponível",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "não disponível"
+}

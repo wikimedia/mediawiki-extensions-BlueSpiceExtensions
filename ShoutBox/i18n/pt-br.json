@@ -7,6 +7,11 @@
 	"prefs-shoutbox": "Shoutbox",
 	"bs-shoutbox-title": "Shoutbox",
 	"bs-shoutbox-shout": "Enviar",
+	"bs-shoutbox-no-entries": "Não há nada aqui ainda.",
 	"bs-shoutbox-loading": "Carregando...",
-	"bs-shoutbox-confirm-title": "Confirmar"
+	"bs-shoutbox-pref-show": "Mostrar shoutbox",
+	"bs-shoutbox-archive-success": "Entrada excluída.",
+	"bs-shoutbox-confirm-title": "Confirmar",
+	"apihelp-bs-shoutbox-tasks-description": "Fornece tarefas comuns para o ShoutBox",
+	"apihelp-bs-shoutbox-tasks-summary": "Fornece tarefas comuns para o ShoutBox"
 }

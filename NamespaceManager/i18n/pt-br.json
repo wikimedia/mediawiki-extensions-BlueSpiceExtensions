@@ -5,10 +5,24 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-namespacemanager-label": "Gerenciador do espaço nominal",
 	"bs-namespacemanager-label-id": "ID",
 	"bs-namespacemanager-label-namespaces": "Espaço nominal",
+	"bs-namespacemanager-label-editable": "Renomeável",
+	"bs-namespacemanager-label-content": "Conteúdo do espaço nominal",
 	"bs-namespacemanager-label-subpages": "Subpáginas",
 	"bs-namespacemanager-label-pagecount": "Páginas",
+	"bs-namespacemanager-label-system": "Sistema",
+	"bs-namespacemanager-tipadd": "Adicionar espaço nominal",
+	"bs-namespacemanager-tipedit": "Editar espaço nominal",
+	"bs-namespacemanager-tipremove": "Remover espaço nominal",
+	"bs-namespacemanager-labelnsname": "Nome do espaço nominal",
+	"bs-namespacemanager-willdelete": "Será excluído",
 	"bs-namespacemanager-deletens-deletepages": "Esta página foi apagada após a exclusão do espaço nominal “$1”.",
+	"apihelp-bs-namespace-store-description": "Lista todas as espaços nominais e configuração arbitrária. Permite classificar, filtrar e paginação. Implementa os parâmetros ExtJS Store.",
+	"apihelp-bs-namespace-store-summary": "Lista todas as espaços nominais e configuração arbitrária. Permite classificar, filtrar e paginação. Implementa os parâmetros ExtJS Store.",
+	"apihelp-bs-namespace-tasks-description": "Permite a modificação da configuração do espaço nominal.",
+	"apihelp-bs-namespace-tasks-summary": "Permite a modificação da configuração do espaço nominal.",
+	"namespacemanager": "Gerenciador do espaço nominal",
 	"bs-namespacemanager-label-istalk": "Discussão"
 }

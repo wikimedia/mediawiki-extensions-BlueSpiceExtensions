@@ -4,6 +4,19 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-insertmagic": "Inserir palavra mágica \\",
+	"bs-insertmagic-currentyear": "Ano atual",
+	"bs-insertmagic-currentweek": "Semana (número).",
+	"bs-insertmagic-server": "URL do domínio.",
+	"bs-insertmagic-servername": "Nome do domínio.",
 	"bs-insertmagic-type-tags": "Etiquetas",
-	"bs-insertmagic-label-desc": "Descrição"
+	"bs-insertmagic-type-variables": "Variáveis",
+	"bs-insertmagic-type-switches": "Interruptores de comportamento",
+	"bs-insertmagic-type-quickaccess": "Acesso rápido",
+	"bs-insertmagic-label-second": "2. Modificar código",
+	"bs-insertmagic-label-desc": "Descrição",
+	"bs-insertmagic-label-examples": "Exemplos",
+	"bs-insertmagic-label-see-also": "Vert também",
+	"apihelp-bs-insertmagic-data-store-description": "Lista todos os itens para o diálogo InsertMagic",
+	"apihelp-bs-insertmagic-data-store-summary": "Lista todos os itens para o diálogo InsertMagic"
 }

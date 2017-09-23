@@ -6,7 +6,14 @@
 	},
 	"prefs-blog": "Blog",
 	"blog": "Blog",
+	"bs-blog-comments": "Comentários",
+	"bs-blog-read-more": "Leia mais",
+	"bs-blog-trackback": "Rastrear",
+	"bs-blog-permalink": "Link permanente",
+	"bs-blog-show-all": "Mostrar todas as entradas",
 	"bs-blog-form-inline-text": "Título ...",
+	"bs-blog-form-button-text": "Criar",
 	"bs-blog-blog": "Blog",
-	"bs-blog-pref-sortby": "Ordenar por:"
+	"bs-blog-pref-sortby": "Ordenar por:",
+	"bs-tag-blog": "a etiqueta do blog"
 }

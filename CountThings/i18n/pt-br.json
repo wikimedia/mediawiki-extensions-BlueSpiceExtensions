@@ -4,5 +4,10 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"bs-countthings-pages-label": "Páginas"
+	"bs-countthings-chars-label": "Caracteres",
+	"bs-countthings-words-label": "Palavras",
+	"bs-countthings-pages-label": "Páginas",
+	"bs-countthings-error-no-input": "Nenhuma página fornecida.",
+	"bs-countthings-error-not-exist": "A página \"$1\" não existe.",
+	"bs-countthings-tag-countcharacters-example-1": "Número de palavras"
 }
