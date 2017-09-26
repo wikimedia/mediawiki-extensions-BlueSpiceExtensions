@@ -13,7 +13,7 @@
 		}
 	],
 	"require": {
-		"hallowelt/blue-spice-foundation": "2.27.2"
+		"composer/installers": "~1.0"
 	},
 	"support": {
 		"issues": "https://sourceforge.net/projects/bluespice/support",
