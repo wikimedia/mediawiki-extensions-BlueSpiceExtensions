@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Indus Asia"
 		]
 	},
 	"bs-formattinghelp-formatting": "فارميٽنگ ۾ مدد",
 	"bs-formattinghelp-help-bold": "گھري",
-	"bs-formattinghelp-help-listitem": "فھرست جو جزو",
+	"bs-formattinghelp-help-listitem": "فھرست جا جزا",
 	"bs-formattinghelp-help-numberedlist": "انگن واري فھرست",
 	"bs-formattinghelp-help-link": "اندروني ڳنڍڻو"
 }
