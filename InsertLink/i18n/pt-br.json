@@ -4,8 +4,10 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-insertlink-desc": "Caixa de diálogo para digitar um link",
 	"prefs-insertlink": "Inserir link",
 	"bs-insertlink": "Inserir link",
+	"bs-insertlink-pref-enable-java": "Habilitar aplicativo Java",
 	"bs-insertlink-button-title": "Inserir/editar link",
 	"bs-insertlink-dialog-title": "Inserir link",
 	"bs-insertlink-tab-wiki-page": "Página Wiki",

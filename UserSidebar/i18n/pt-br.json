@@ -5,10 +5,17 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-usersidebar-desc": "Adiciona a guia de foco à barra lateral",
 	"prefs-usersidebar": "Barra lateral de usuário",
+	"bs-usersidebar-userpagesettings-link-title": "Edite o conteúdo do seu foco",
+	"bs-usersidebar-userpagesettings-link-text": "{{GENDER:|Editar}} foco",
 	"bs-usersidebar-tab-focus": "Foco",
 	"bs-usersidebar-tab-globalactions": "Ações globais",
 	"bs-usersidebar-globalactionswidget-title": "Ações globais",
 	"apihelp-sidebar-description": "Retorna o conteúdo HTML da barra lateral do usuário",
-	"apihelp-sidebar-summary": "Retorna o conteúdo HTML da barra lateral do usuário"
+	"apihelp-sidebar-summary": "Retorna o conteúdo HTML da barra lateral do usuário",
+	"apihelp-sidebar-param-sidebar": "Obter a barra lateral Wiki",
+	"apihelp-sidebar-param-usersidebar": "Obter barra lateral Focus",
+	"apihelp-sidebar-param-format": "Formato de saída dos dados",
+	"apihelp-sidebar-example": "Obter o HTML da barra lateral"
 }

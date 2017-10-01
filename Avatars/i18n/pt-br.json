@@ -6,10 +6,18 @@
 	},
 	"prefs-avatars": "Avatars",
 	"bs-avatars-pref-generator": "Gerador:",
+	"bs-avatars-pref-defaultsize": "Tamanho padrão em pixel:",
+	"bs-avatars-upload-complete": "A imagem foi enviada.",
+	"bs-avatars-generate-complete": "Um novo avatar foi gerado.",
 	"bs-avatars-upload-title": "Alterar imagem do perfil",
 	"bs-avatars-upload-label": "Imagem",
+	"bs-avatars-generate-new-label": "Gerar novo avatar",
 	"bs-avatars-warning-title": "Aviso",
+	"bs-avatars-userimage-title": "Imagem da wiki ou de URL",
+	"bs-avatars-set-userimage-failed": "URL ou imagem da wiki inválidos.",
+	"bs-avatars-set-userimage-saved": "A imagem foi salva.",
 	"bs-avatars-file-upload-fieldset-title": "Envio de imagem",
+	"bs-avatars-auto-generate-fieldset-title": "Gerar avatar automaticamente",
 	"apihelp-bs-avatars-tasks-description": "Fazendo upload, gerando e configurando avatares de usuários",
 	"apihelp-bs-avatars-tasks-summary": "Fazendo upload, gerando e configurando avatares de usuários"
 }

@@ -4,8 +4,10 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-whoisonline-nousers": "Ninguém está logado.",
 	"bs-whoisonline-widget-title": "Quem está online?",
 	"prefs-whoisonline": "Quem está online?",
+	"bs-whoisonline-pref-limitcount": "Número máximo de usuários a serem exibidos:",
 	"bs-whoisonline-pref-orderby": "Ordenar por:",
 	"bs-whoisonline-pref-orderby-time": "Tempo de atividade",
 	"bs-whoisonline-pref-orderby-name": "Nome",

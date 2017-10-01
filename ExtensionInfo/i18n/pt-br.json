@@ -12,5 +12,6 @@
 	"bs-extensioninfo-headerversion": "Versão",
 	"bs-extensioninfo-headerdesc": "Descrição",
 	"bs-extensioninfo-headerstatus": "Status",
-	"bs-extensioninfo-headerpackage": "Pacote"
+	"bs-extensioninfo-headerpackage": "Pacote",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elemento|elementos}}"
 }

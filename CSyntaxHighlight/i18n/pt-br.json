@@ -4,6 +4,8 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-csyntaxhighlight-desc": "Adiciona funcionalidades customizável para realce de sintaxe",
+	"prefs-csyntaxhighlight": "Realce de sintaxe",
 	"bs-csyntaxhighlight-pref-theme": "Tema:",
 	"bs-csyntaxhighlight-pref-gutter": "Mostrar número de linhas",
 	"bs-csyntaxhighlight-pref-autolinks": "URL do link",

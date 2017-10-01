@@ -6,6 +6,8 @@
 	},
 	"bs-insertfile-insert-image": "Insira Imagem",
 	"bs-insertfile-insert-file": "Inserir arquivo",
+	"bs-insertfile-button-image-title": "Inserir ou editar imagem",
+	"bs-insertfile-button-file-title": "Inserir ou editar arquivo",
 	"bs-insertfile-nomatch": "Sem correspondências",
 	"bs-insertfile-labelfilter": "Filtro:",
 	"bs-insertfile-filename": "Nome do arquivo",
@@ -30,12 +32,17 @@
 	"bs-insertfile-titleimage": "Insira Imagem",
 	"bs-insertfile-tipkeepratio": "Manter proporções",
 	"bs-insertfile-of": "do",
+	"bs-insertfile-select-a-link": "Selecione ou digite um link",
 	"bs-insertfile-linktext": "Mostrar texto",
 	"bs-insertfile-no-link": "Sem link",
+	"bs-insertfile-error-no-medialink": "Nenhum link de mídia selecionado.",
+	"bs-insertfile-error-no-imagelink": "Nenhum link de imagem selecionado.",
 	"apihelp-bs-insertfile-license-store-description": "Lista as licenças para a extensão InsertFile.",
 	"apihelp-bs-insertfile-license-store-summary": "Lista as licenças para a extensão InsertFile.",
 	"bs-insertfile-enable-align": "Ativar",
 	"bs-insertfile-nstext": "Tipo de link",
 	"bs-insertfile-nstextfile": "Arquivo",
-	"bs-insertfile-nstextfile-image": "Mostrar imagem"
+	"bs-insertfile-nstextfile-file": "Mostra links para metadados",
+	"bs-insertfile-nstextfile-image": "Mostrar imagem",
+	"bs-insertfile-nstextmedia": "Mostrar link de download"
 }

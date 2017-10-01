@@ -4,5 +4,9 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"prefs-topmenubarcustomizer": "Personalizar o menu"
+	"bs-topmenubarcustomizer-desc": "Personalizar os links do menu superior",
+	"prefs-topmenubarcustomizer": "Personalizar o menu",
+	"bs-topmenubarcustomizer-pref-numberoflevels": "Número de layers aninhados:",
+	"bs-topmenubarcustomizer-pref-numberofmainentries": "Entradas no layer principal:",
+	"bs-topmenubarcustomizer-pref-numberofsubentries": "Entradas no sub layer:"
 }

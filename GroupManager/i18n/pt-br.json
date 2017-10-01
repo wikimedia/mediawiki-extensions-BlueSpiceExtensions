@@ -4,12 +4,23 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-groupmanager-desc": "Interface administrativa para adicionar, editar e excluir grupos de usuários e seus direitos",
+	"bs-groupmanager-grpexists": "O grupo já existe.",
+	"bs-groupmanager-grpempty": "O nome do grupo não pode estar vazio.",
+	"bs-groupmanager-grpadded": "O grupo foi adicionado.",
+	"bs-groupmanager-grpedited": "O grupo foi editado.",
+	"bs-groupmanager-grpremoved": "O grupo foi removido.",
 	"bs-groupmanager-label": "Gerenciador de grupos",
 	"bs-groupmanager-headergroup": "Grupo",
+	"bs-groupmanager-tipremove": "Remover {{PLURAL:$1|grupo|grupos}}",
 	"bs-groupmanager-titlenewgroup": "Novo grupo",
 	"bs-groupmanager-titleeditgroup": "Editar grupo",
 	"bs-groupmanager-lablename": "Nome do grupo:",
 	"log-name-bs-group-manager": "Log do gerenciador de grupos",
+	"log-show-hide-bs-group-manager": "$1 log do gerenciador de grupos",
+	"logentry-bs-group-manager-create": "$1 {{GENDER:$2|criou}} o grupo $4",
+	"logentry-bs-group-manager-modify": "$1 {{GENDER:$2|renomeou}} o grupo  $4 para $5",
+	"logentry-bs-group-manager-remove": "$1 {{GENDER:$2|removeu}} o grupo $4",
 	"apihelp-bs-groupmanager-description": "Fornece as tarefas para a extensão GroupManager.",
 	"apihelp-bs-groupmanager-summary": "Fornece as tarefas para a extensão GroupManager.",
 	"groupmanager": "Gerenciador de grupos"

@@ -4,10 +4,13 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-insertcategory-desc": "Campo para digitar um link de categoria",
 	"bs-insertcategory-insertcat": "Inserir categoria",
 	"prefs-insertcategory": "Inserir categoria",
+	"bs-insertcategory-pref-withparents": "Inserir categoria com seus parentes",
 	"bs-insertcategory-title": "Inserir categoria",
 	"bs-insertcategory-cat-label": "Atribuído:",
+	"bs-insertcategory-success": "A categoria foi adicionada",
 	"bs-insertcategory-failure": "Erro",
 	"bs-insertcategory-panel-title": "Categorias"
 }
