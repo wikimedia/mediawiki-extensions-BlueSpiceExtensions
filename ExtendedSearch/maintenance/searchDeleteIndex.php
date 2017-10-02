@@ -15,7 +15,8 @@ class SearchDeleteIndex extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-
+		$this->requireExtension( 'BlueSpiceExtensions' );
+		$this->requireExtension( 'BlueSpiceFoundation' );
 		$this->addOption( 'param', 'Specific param to delete', false, true );
 	}
 

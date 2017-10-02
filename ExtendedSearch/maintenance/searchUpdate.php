@@ -17,6 +17,10 @@ $IP = realpath( dirname( dirname( dirname( __DIR__ ) ) ) );
 require_once( $IP.'/BlueSpiceFoundation/maintenance/BSMaintenance.php' );
 
 class SearchUpdate extends BSMaintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->requireExtension( 'BlueSpiceExtensions' );
+	}
 
 	public function execute() {
 		$oSearchService = SearchService::getInstance();

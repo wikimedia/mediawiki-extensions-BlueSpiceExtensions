@@ -17,6 +17,10 @@ $IP = realpath( dirname( dirname( dirname( __DIR__ ) ) ) );
 require_once( $IP.'/BlueSpiceFoundation/maintenance/BSMaintenance.php' );
 
 class UsageTrackerUpdate extends BSMaintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->requireExtension( 'BlueSpiceExtensions' );
+	}
 
 	public function execute() {
 		$aData = BsExtensionManager::getExtension( 'UsageTracker' )->getUsageData();

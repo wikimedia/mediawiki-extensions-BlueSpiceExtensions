@@ -3,6 +3,12 @@
 require_once( dirname(dirname(dirname(dirname(__DIR__)))) . '/maintenance/Maintenance.php' );
 
 class BSDashBoardsClearConfigMaintenance extends LoggedUpdateMaintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->requireExtension( 'BlueSpiceExtensions' );
+		$this->requireExtension( 'BlueSpiceFoundation' );
+	}
+
 	public function doDBUpdates() {
 		$aFinalPortletList = array();
 		$aPortlets = array();

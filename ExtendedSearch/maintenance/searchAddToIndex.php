@@ -10,6 +10,7 @@ class searchAddToIndex extends BSMaintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( 'input', 'plain text list of article names ( NS:Title )', true, true );
+		$this->requireExtension( 'BlueSpiceExtensions' );
 	}
 
 	/**
