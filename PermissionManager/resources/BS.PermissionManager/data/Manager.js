@@ -325,12 +325,17 @@
 		if ( ruleSet === null ) {
 			return NOT_ALLOWED;
 		}
+
+		var result = ALLOWED_EXPLICIT;
 		for ( var i = 0, setlen = ruleSet.length; i < setlen; i++ ) {
-			if ( checkPermission( ruleSet[i] ) === NOT_ALLOWED ) {
+			var singleResult = checkPermission( ruleSet[i] );
+			if ( singleResult === NOT_ALLOWED ) {
 				return NOT_ALLOWED;
+			} else if( singleResult === ALLOWED_IMPLICIT ) {
+				result = ALLOWED_IMPLICIT;
 			}
 		}
-		return ALLOWED_EXPLICIT;
+		return result;
 	}
 
 	/**
@@ -345,12 +350,17 @@
 		if (checkTemplate(ruleSet) === NOT_ALLOWED) {
 			return NOT_ALLOWED;
 		}
+
+		var result = ALLOWED_EXPLICIT;
 		for (var i = 0, setlen = ruleSet.length; i < setlen; i++) {
-			if (checkPermissionInNamespace(ruleSet[i], namespace) === NOT_ALLOWED) {
+			var singleResult = checkPermissionInNamespace( ruleSet[i], namespace );
+			if ( singleResult === NOT_ALLOWED ) {
 				return NOT_ALLOWED;
+			} else if( singleResult === ALLOWED_IMPLICIT ) {
+				result = ALLOWED_IMPLICIT;
 			}
 		}
-		return ALLOWED_EXPLICIT;
+		return result;
 	}
 
 	/**
