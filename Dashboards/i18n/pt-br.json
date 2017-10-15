@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-dashboards-desc": "Fornece painéis para usuários e administradores",
 	"bs-specialadmindashboard-label": "Painel de controle",
 	"bs-dashboards-addportlet": "Adicionar portlet",
 	"bs-dashboards-portlets": "Portlets",
@@ -22,5 +24,6 @@
 	"apihelp-bs-dashboards-tasks-description": "Salva a configuração do painel",
 	"apihelp-bs-dashboards-tasks-summary": "Salva a configuração do painel",
 	"apihelp-bs-dashboards-widgets-tasks-description": "Retorna conteúdo para alguns widgets do painel",
-	"apihelp-bs-dashboards-widgets-tasks-summary": "Retorna conteúdo para alguns widgets do painel"
+	"apihelp-bs-dashboards-widgets-tasks-summary": "Retorna conteúdo para alguns widgets do painel",
+	"action-dashboards-viewspecialpage-userdashboard": "ver a página especial \"{{int:userdashboard}}\""
 }

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-wikiadmin-desc": "Ponto central de administração para BlueSpice",
 	"bs-wikiadmin-notallowed": "Você não está autorizado a usar esta página.",
 	"wikiadmin": "Administração do BlueSpice",
 	"action-wikiadmin": "mostra as páginas de administração do BlueSpice",

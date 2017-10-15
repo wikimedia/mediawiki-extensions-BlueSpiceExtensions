@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-extensioninfo-desc": "Lista de informações sobre as extensões carregadas",
 	"bs-extensioninfo-label": "Extensões",
 	"bs-extensioninfo-software": "Software",
 	"bs-extensioninfo-version": "Versão",

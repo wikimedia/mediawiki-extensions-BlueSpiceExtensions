@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-formattinghelp-desc": "Mostrar ajuda para formatação de texto",
@@ -27,5 +28,6 @@
 	"bs-formattinghelp-help-template": "Predefinição",
 	"bs-formattinghelp-help-templatename": "Nome da predefinição",
 	"apihelp-bs-formattinghelp-description": "Fornece as tarefas para a extensão FormattingHelp.",
-	"apihelp-bs-formattinghelp-summary": "Fornece as tarefas para a extensão FormattingHelp."
+	"apihelp-bs-formattinghelp-summary": "Fornece as tarefas para a extensão FormattingHelp.",
+	"apihelp-bs-formattinghelp-param-token": "Chave de proteção CSRF. Não é necessária aqui"
 }

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-extendededitbar-desc": "Adiciona botões adicionais ao campo de edição da wiki",
 	"bs-extendededitbar-redirecttip": "Redirecionamento",
 	"bs-extendededitbar-redirectsample": "Inserir texto",
 	"bs-extendededitbar-striketip": "Riscar",

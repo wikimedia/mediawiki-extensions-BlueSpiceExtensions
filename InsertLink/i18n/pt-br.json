@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-insertlink-desc": "Caixa de diálogo para digitar um link",
@@ -21,5 +22,7 @@
 	"bs-insertlink-label-file": "Arquivo",
 	"bs-insertlink-label-searchfile": "Pesquisar …",
 	"bs-insertlink-select-a-page": "Escolha o alvo ...",
-	"bs-insertlink-select-a-namespace": "(Páginas)"
+	"bs-insertlink-select-a-namespace": "(Páginas)",
+	"bs-insertlink-empty-field-text": "Para inserir um link, deve definir um destinatário.",
+	"bs-insertlink-no-applet": "Não foi possível carregar a <i>applet</i>. Verifique a sua instalação do Java, por favor."
 }

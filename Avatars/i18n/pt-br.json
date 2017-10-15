@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"prefs-avatars": "Avatars",
+	"bs-avatars-desc": "Fornece imagens de utilizador genéricas e individuais",
 	"bs-avatars-pref-generator": "Gerador:",
 	"bs-avatars-pref-defaultsize": "Tamanho padrão em pixel:",
 	"bs-avatars-upload-complete": "A imagem foi enviada.",
@@ -13,7 +15,9 @@
 	"bs-avatars-upload-label": "Imagem",
 	"bs-avatars-generate-new-label": "Gerar novo avatar",
 	"bs-avatars-warning-title": "Aviso",
+	"bs-avatars-warning-text": "Definiu uma imagem de utilizador nas suas preferências. Ao utilizar imagens de perfil vai redefinir essa configuração. Deseja continuar?",
 	"bs-avatars-userimage-title": "Imagem da wiki ou de URL",
+	"bs-avatars-userimage-help": "ex. Imagem.jpg ou http://localhost/Imagem.gif",
 	"bs-avatars-set-userimage-failed": "URL ou imagem da wiki inválidos.",
 	"bs-avatars-set-userimage-saved": "A imagem foi salva.",
 	"bs-avatars-file-upload-fieldset-title": "Envio de imagem",

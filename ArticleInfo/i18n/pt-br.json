@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Luckas",
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-articleinfo-desc": "Fornece informação sobre uma página na barra de status",
 	"prefs-articleinfo": "Informações da página",
 	"bs-articleinfo-pref-CheckRevisionInterval": "Intervalo de atualização em segundos:",
 	"bs-articleinfo-last-edited": "Tempo desde a mudança recente",
@@ -19,6 +21,7 @@
 	"bs-articleinfo-templates": "Predefinições",
 	"bs-articleinfo-subpages": "Subpáginas",
 	"bs-articleinfo-subpages-available": "Há subpáginas para esta página",
+	"bs-articleinfo-subpages-too-much": "Existem mais de 100 subpáginas disponíveis.",
 	"bs-articleinfo-check-revision": "Nova versão disponível",
 	"bs-articleinfo-check-revision-tooltip": "Atualizar página",
 	"bs-articleinfo-statebartoplastedited": "Adições recentes",

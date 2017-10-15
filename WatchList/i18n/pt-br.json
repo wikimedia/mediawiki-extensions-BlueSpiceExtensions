@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-watchlist-desc": "Adiciona um widget de páginas vigiadas e etiqueta",
@@ -9,5 +10,6 @@
 	"bs-watchlist-pref-widgetlimit": "Limite de entradas:",
 	"bs-watchlist-pref-widgetsortodr": "Ordenar por:",
 	"bs-watchlist-pref-sort-time": "Tempo",
-	"bs-watchlist-pref-sort-title": "Título"
+	"bs-watchlist-pref-sort-title": "Título",
+	"bs-watchlist-tag-watchlist-desc": "Mostra os artigos que têm as alterações mais recentes e estão na sua lista de páginas vigiadas."
 }

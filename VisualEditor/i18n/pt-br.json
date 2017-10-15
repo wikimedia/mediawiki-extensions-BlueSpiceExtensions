@@ -3,7 +3,8 @@
 		"authors": [
 			"Xð",
 			"Felipe L. Ewald",
-			"Trigonometria87"
+			"Trigonometria87",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-visualeditor-desc": "Editor visual para o MediaWiki",
@@ -34,6 +35,7 @@
 	"bs-visualeditor-bsactions-signature": "Assinatura",
 	"bs-visualeditor-bsactions-save": "Salvar",
 	"bs-visualeditor-bsactions-headings": "Headings",
+	"bs-visualeditor-switch-noeditor-desc": "Desativa o Editor Visual nesta página.",
 	"bs-visualeditor-bsactions-tablefunctions": "Tabela de funções",
 	"bs-visualeditor-bsactions-tablestyles": "Tabela de estilos",
 	"bs-visualeditor-editoptions-summary": "Sumário"

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-readers-desc": "Cria uma lista das pessoas que lêem uma página",
 	"prefs-readers": "Leitores",
 	"bs-readers-title": "{{PLURAL:$1|{{GENDER:$2|Leitor}}|Leitores}}",
 	"readers-user": "Páginas {{GENDER:$1|lidas}} por: $1",

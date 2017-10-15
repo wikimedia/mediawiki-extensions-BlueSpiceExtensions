@@ -1,16 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-insertcategory-desc": "Campo para digitar um link de categoria",
 	"bs-insertcategory-insertcat": "Inserir categoria",
 	"prefs-insertcategory": "Inserir categoria",
 	"bs-insertcategory-pref-withparents": "Inserir categoria com seus parentes",
+	"bs-insertcategory-pref-uploadpanelintegration": "Definir categorias de página por padrão no diálogo de carregamento",
 	"bs-insertcategory-title": "Inserir categoria",
 	"bs-insertcategory-cat-label": "Atribuído:",
 	"bs-insertcategory-success": "A categoria foi adicionada",
 	"bs-insertcategory-failure": "Erro",
+	"bs-insertcategory-hint": "Nota: para adicionar uma categoria, deve pressionar \"enter\".",
 	"bs-insertcategory-panel-title": "Categorias"
 }

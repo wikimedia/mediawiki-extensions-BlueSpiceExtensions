@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-blog-desc": "Mostra uma lista de páginas em estilo blog",
@@ -28,5 +29,11 @@
 	"bs-blog-pref-imagerendermode": "Mostrar imagens como:",
 	"bs-blog-pref-imagefloatdirection": "Fluxo de texto: Posição da imagem",
 	"bs-blog-pref-maxentrycharacters": "Número de palavras por entrada:",
-	"bs-tag-blog": "a etiqueta do blog"
+	"bs-blog-tag-blog-desc": "Inclui um weblog de artigo, discussão e páginas de arquivos. Pode ser especificado por vários parâmetros. Estes podem ser combinados em qualquer ordem.",
+	"bs-blog-tag-blogmore-desc": "Define o comprimento de uma chamada de atenção (<i>teaser</i>) para uma entrada no blogue. Colocar no fim da própria chamada de atenção. Em resultado, aparece o <i>link</i> \"{{int:bs-blog-read-more}}\" de ligação a todo o artigo do blogue.",
+	"bs-blog-tag-blogtime-desc": "Insere uma data e hora definidas por si para a publicação, para efeitos de apresentação e ordenação. O formato é AAAAMMDDHHmm.",
+	"bs-blog-tag-blogtime-err": "O formato tem de ser AAAAMMDDHHmm, isto é, para 12 de janeiro de 2013 a data e hora será 201301121543",
+	"bs-tag-blog": "a etiqueta do blog",
+	"action-blog-viewspecialpage": "ver a página especial \"{{int:bs-blog-blog}}\"",
+	"bs-blog-rss-desc-blog": "Feed com uma visão geral das entradas do blogue"
 }

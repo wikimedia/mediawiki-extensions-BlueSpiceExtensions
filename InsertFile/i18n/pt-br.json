@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-insertfile-desc": "Caixa de diálogo para carregar arquivos e inserir um link de arquivo",
 	"bs-insertfile-insert-image": "Insira Imagem",
 	"bs-insertfile-insert-file": "Inserir arquivo",
 	"bs-insertfile-button-image-title": "Inserir ou editar imagem",

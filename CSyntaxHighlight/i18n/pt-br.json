@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-csyntaxhighlight-desc": "Adiciona funcionalidades customizável para realce de sintaxe",
@@ -9,5 +10,6 @@
 	"bs-csyntaxhighlight-pref-theme": "Tema:",
 	"bs-csyntaxhighlight-pref-gutter": "Mostrar número de linhas",
 	"bs-csyntaxhighlight-pref-autolinks": "URL do link",
-	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de ferramentas"
+	"bs-csyntaxhighlight-pref-toolbar": "Mostrar barra de ferramentas",
+	"bs-csyntaxhighlight-tag-desc": "Insere o elemento CSyntaxHighlight, usado para apresentar fragmentos de código formatados"
 }

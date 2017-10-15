@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"bs-permissionmanager-desc": "Interface administrativa para editar direitos dos usuários",
@@ -38,11 +39,15 @@
 	"bs-permissionmanager-titletpled-delete": "Excluir predefinição",
 	"bs-permissionmanager-pref-enablerealitycheck": "Ativar verificação de permissão",
 	"bs-permissionmanager-pref-max-backups": "Limite de backup",
+	"bs-permissionmanager-unsaved-changes": "Existem mudanças não guardadas. Você realmente quer deixar a página agora? As mudanças não salvas serão perdidas.",
+	"bs-permissionmanager-error-lockout": "Pelo menos um grupo deve ter o privilégio de \"$1\".\nNão foi possível gravar as alterações.",
 	"log-name-bs-permission-manager": "Log do gerenciador de permissão",
+	"log-description-bs-permission-manager": "Este é um registo de alterações às permissões dos grupos.",
 	"log-show-hide-bs-permission-manager": "$1 log do gerenciador de permissão",
 	"logentry-bs-permission-manager-modify": "$1 {{GENDER:$2|alterou}} as permissões do grupo $4",
 	"apihelp-bs-permissionmanager-tasks-description": "Fornece tarefas para o Gerenciador de Permissões",
 	"apihelp-bs-permissionmanager-tasks-summary": "Fornece tarefas para o Gerenciador de Permissões",
+	"action-permissionmanager-viewspecialpage": "ver a página especial \"{{int:bs-permissionmanager-label}}\"",
 	"permissionmanager": "Gerenciador de permissão",
 	"bs-permissionmanager-affected-by-explicit": "Bloqueado por $1",
 	"bs-permissionmanager-affected-by-inherited": "Hedado de $1",
