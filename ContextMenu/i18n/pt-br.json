@@ -4,6 +4,7 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"bs-contextmenu-desc": "Fornece menus de contexto para vários links",
 	"prefs-contextmenu": "Menu de contexto",
 	"bs-contextmenu-pref-modus": "Abra o menu de contexto por (não para celular):",
 	"bs-contextmenu-page-edit": "Editar página",
@@ -14,6 +15,7 @@
 	"bs-contextmenu-page-purge": "Purgar cache e ver página",
 	"bs-contextmenu-page-info": "Ver informações da página",
 	"bs-contextmenu-media-reupload": "Enviar nova versão",
+	"bs-contextmenu-media-view-page": "Visualizar a página de descrição do arquivo e o histórico de arquivos",
 	"bs-contextmenu-user-mail": "Enviar e-mail",
 	"bs-contextmenu-user-talk": "Deixa uma mensagem na página de discussão",
 	"bs-contextmenu-file-download": "Baixar arquivo",

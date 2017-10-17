@@ -13,5 +13,6 @@
 	"bs-rssfeeder-rss": "Feed RSS",
 	"bs-rssfeeder-rss-desc": "Crie seu próprio feed RSS",
 	"bs-extjs-rssfeeder-rss-title": "URL RSS",
-	"bs-rssfeeder-invalid-url": "Por favor, informe um URL válido."
+	"bs-rssfeeder-invalid-url": "Por favor, informe um URL válido.",
+	"action-rssfeeder-viewspecialpage": "veja a página especial \"{{int:rssfeeder}}\""
 }

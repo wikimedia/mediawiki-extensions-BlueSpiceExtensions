@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Mikel Ibaiba"
 		]
 	},
+	"bs-extensioninfo-desc": "Kargatutako luzapenei buruzko informazio zerrenda",
 	"bs-extensioninfo-label": "Luzapenak",
 	"bs-extensioninfo-software": "Softwarea",
 	"bs-extensioninfo-version": "Bertsioa",
@@ -11,5 +13,7 @@
 	"bs-extensioninfo-headerextname": "Luzapenaren izena",
 	"bs-extensioninfo-headerversion": "Bertsioa",
 	"bs-extensioninfo-headerdesc": "Deskribapena",
-	"bs-extensioninfo-headerstatus": "Egoera"
+	"bs-extensioninfo-headerstatus": "Egoera",
+	"bs-extensioninfo-headerpackage": "Multzoa",
+	"bs-extensioninfo-groupingtemplateviewtext": "{{PLURAL:$1|elementua|elementuak}}"
 }
