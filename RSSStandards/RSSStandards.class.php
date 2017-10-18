@@ -294,7 +294,7 @@ class RSSStandards extends BsExtensionMW {
 				$_description = preg_replace(
 					"#\[<a\ href\=\"(.*)action\=edit(.*)\"\ title\=\"(.*)\">(.*)<\/a>\]#",
 					"",
-					$this->mCore->parseWikiText( $page->getContent(), $this->getTitle() )
+					$this->mCore->parseWikiText( $page->getContent()->getNativeData(), $this->getTitle() )
 				);
 
 				$item = RSSItemCreator::createItem( $_title, $_link, $_description );
@@ -438,7 +438,7 @@ class RSSStandards extends BsExtensionMW {
 		$sub .= '<br />' . SpecialEditWatchlist::buildTools( $this->getSkin() );
 		$wgOut->setSubtitle( $sub );
 
-		if( ( $mode = SpecialEditWatchlist::getMode( $wgRequest, $par ) ) !== false ) {
+		if( ( $mode = SpecialEditWatchlist::getMode( $wgRequest, "" ) ) !== false ) {
 			$editor = new SpecialEditWatchlist();
 			$editor->execute( $user, $wgOut, $wgRequest, $mode );
 			return;
