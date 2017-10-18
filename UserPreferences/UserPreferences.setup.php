@@ -1,4 +1,0 @@
-<?php
-
-wfLoadExtension( 'BlueSpiceExtensions/UserPreferences' );
-
