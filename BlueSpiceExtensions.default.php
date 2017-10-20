@@ -5,7 +5,6 @@ require_once( __DIR__."/ExtensionInfo/ExtensionInfo.setup.php" );
 require_once( __DIR__."/GroupManager/GroupManager.setup.php" );
 require_once( __DIR__."/InterWikiLinks/InterWikiLinks.setup.php" );
 require_once( __DIR__."/NamespaceManager/NamespaceManager.setup.php" );
-require_once( __DIR__."/PermissionManager/PermissionManager.setup.php" );
 require_once( __DIR__."/Preferences/Preferences.setup.php" );
 
 //Other Extensions
