@@ -5,8 +5,8 @@ require_once( dirname(dirname(dirname(dirname(__DIR__)))) . '/maintenance/Mainte
 class BSDashBoardsClearConfigMaintenance extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->requireExtension( 'BlueSpiceExtensions' );
 		$this->requireExtension( 'BlueSpiceFoundation' );
+		$this->requireExtension( 'Dashboards' );
 	}
 
 	public function doDBUpdates() {

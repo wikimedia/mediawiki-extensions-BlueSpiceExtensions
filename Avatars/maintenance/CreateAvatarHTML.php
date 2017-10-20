@@ -12,8 +12,8 @@ class CreateAvatarHTML extends Maintenance {
 				$this->mDescription = "Create HTML with links to Avatars";
 				#$this->addArg( "username", "Username of new user" );
 				#$this->addArg( "password", "Password to set (not required if --force is used)", false);
-				$this->requireExtension( 'BlueSpiceExtensions' );
 				$this->requireExtension( 'BlueSpiceFoundation' );
+				$this->requireExtension( 'Avatars' );
 		}
 
 		public function execute() {
