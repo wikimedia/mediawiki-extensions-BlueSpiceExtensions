@@ -474,6 +474,8 @@ var BsWikiCode = function() {
 					continue;
 				}
 				if ( property == 'caption' ) {
+					value = value.replace( /@@LSQB@@/g, "[" );
+					value = value.replace( /@@RSQB@@/g, "]" );
 					imageCaption = value;
 					continue;
 				}
@@ -549,7 +551,6 @@ var BsWikiCode = function() {
 
 		links = _links;
 
-
 		if (links) {
 			for (var i = 0; i < links.length; i++) {
 				link = links[i].substr(2, links[i].length - 4);
@@ -564,11 +565,12 @@ var BsWikiCode = function() {
 					if ( (linkParts[1].trim() === "") ) {
 						linkLabel = linkTarget.replace(/(.*:)?([^,\(]*)(.*)/, "$2");
 					} else {
-						linkLabel = linkParts[1];
+						linkLabel = linkParts[ linkParts.length - 1 ];
 					}
 				}
 
-
+				link = link.replace( /\[/g, "@@LSQB@@" );
+				link = link.replace( /\]/g, "@@RSQB@@" );
 				linkHtml = anchorFormat.format(
 					encodeURI( 'bs://' + linkTarget ),//escape(linkTarget),	// href
 					linkLabel,												// <a>linkLabel</a>
@@ -593,6 +595,8 @@ var BsWikiCode = function() {
 				}
 
 				link = link.replace( "@@PIPE@@", "|" );
+				link = link.replace( /@@LSQB@@/g, "[" );
+				link = link.replace( /@@RSQB@@/g, "]" );
 				text = text.replace("[[" + link + "]]", linkHtml);
 			}
 		}
