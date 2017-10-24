@@ -11,7 +11,6 @@ require_once( __DIR__."/Preferences/Preferences.setup.php" );
 require_once( __DIR__."/StateBar/StateBar.setup.php" );
 require_once( __DIR__."/RSSFeeder/RSSFeeder.setup.php" );
 require_once( __DIR__."/AboutBlueSpice/AboutBlueSpice.setup.php" );
-require_once( __DIR__."/ArticleInfo/ArticleInfo.setup.php" );
 require_once( __DIR__."/Blog/Blog.setup.php" );
 require_once( __DIR__."/Checklist/Checklist.setup.php" );
 require_once( __DIR__."/ContextMenu/ContextMenu.setup.php" );
