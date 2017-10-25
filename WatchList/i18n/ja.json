@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Otokoume"
 		]
 	},
+	"bs-watchlist-desc": "ウォッチリストのウィジェットとタグを追加する",
 	"bs-watchlist-title-sidebar": "ウォッチリスト",
 	"bs-watchlist-pref-widgetlimit": "項目数の上限:",
 	"bs-watchlist-pref-widgetsortodr": "並び順:",
