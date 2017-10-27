@@ -21,8 +21,6 @@ require_once( __DIR__."/PageAccess/PageAccess.setup.php" );
 require_once( __DIR__."/TopMenuBarCustomizer/TopMenuBarCustomizer.setup.php" );
 require_once( __DIR__."/UsageTracker/UsageTracker.setup.php" );
 require_once( __DIR__."/UserSidebar/UserSidebar.setup.php" );
-require_once( __DIR__."/WatchList/WatchList.setup.php" );
-require_once( __DIR__."/WhoIsOnline/WhoIsOnline.setup.php" );
 require_once( __DIR__."/ShoutBox/ShoutBox.setup.php" );
 require_once( __DIR__."/VisualEditor/VisualEditor.setup.php" );
 require_once( __DIR__."/RSSStandards/RSSStandards.setup.php" );
