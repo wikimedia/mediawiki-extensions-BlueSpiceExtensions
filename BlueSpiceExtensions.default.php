@@ -2,7 +2,6 @@
 // WikiAdmin Extensions
 require_once( __DIR__."/WikiAdmin/WikiAdmin.setup.php" );
 require_once( __DIR__."/ExtensionInfo/ExtensionInfo.setup.php" );
-require_once( __DIR__."/InterWikiLinks/InterWikiLinks.setup.php" );
 
 //Other Extensions
 require_once( __DIR__."/StateBar/StateBar.setup.php" );
