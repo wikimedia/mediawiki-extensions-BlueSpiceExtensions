@@ -21,5 +21,6 @@
 	"logentry-bs-pageaccess-change": "$1 изменил{{GENDER:$2||а}} права доступа $3 на «$4»",
 	"action-pageaccess-viewspecialpage": "просмотр служебной страницы «{{int:pageaccess}}»",
 	"bs-pageaccess-column-title": "Заголовок статьи",
-	"bs-pageaccess-column-groups": "Группы"
+	"bs-pageaccess-column-groups": "Группы",
+	"apihelp-bs-pageaccess-store-summary": "Управление доступом на уровне страницы"
 }
