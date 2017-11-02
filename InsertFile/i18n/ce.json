@@ -5,11 +5,8 @@
 		]
 	},
 	"bs-insertfile-labelfilter": "Луьттург:",
-	"bs-insertfile-alignleft": "аьрру агӀор",
-	"bs-insertfile-alignright": "аьтту агӀор",
+	"bs-insertfile-alignleft": "аьрру",
+	"bs-insertfile-alignright": "аьтту",
 	"bs-insertfile-typenone": "хӀахӀа",
-	"bs-insertfile-uploadfileemptytext": "Харжа керла файл...",
-	"bs-insertfile-uploadsubmitvalue": "Файл чуяккхар",
-	"bs-insertfile-error": "ГӀалат",
 	"bs-insertfile-of": "чура"
 }
