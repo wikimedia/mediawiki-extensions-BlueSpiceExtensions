@@ -513,8 +513,6 @@ var BsWikiCode = function() {
 			imageExtensions = mw.config.get('bsImageExtensions'),
 			anchorFormat = '<a href="{0}" data-mce-href="{5}" title="{6}" data-bs-type="{2}" class="{3}" data-bs-wikitext="{4}">{1}</a>';
 
-		links = text.match(/\[\[([^\]]*?)\]\]/gi);
-
 		var pos = 0;
 		var squareBraceDepth = 0;
 		var checkedBraces = new Array();
@@ -604,7 +602,29 @@ var BsWikiCode = function() {
 		}
 
 		//Also find protocol independent links
-		links = text.match(/\[([^\]]*)(:)?\/\/([^\]]*?)\]/gi);
+		var _links = [];
+		var tempLink = '';
+		var squareBraceDepth = 0;
+		for( var pos = 0; pos < text.length; pos++ ) {
+			var char = text[pos];
+			if( char === "[" ) {
+				squareBraceDepth++;
+			}
+			if( char === "]" && squareBraceDepth > 0 ) {
+				squareBraceDepth--;
+			}
+			if( squareBraceDepth > 0 ) {
+				tempLink += char;
+			} else if ( char === "]" ) {
+				tempLink += char;
+			}
+			if ( squareBraceDepth == 0 && tempLink ) {
+				_links.push( tempLink );
+				tempLink = '';
+			}
+		}
+
+		links = _links;
 
 		if (links) {
 			for (i = 0; i < links.length; i++) {
