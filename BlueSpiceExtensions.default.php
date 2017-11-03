@@ -18,6 +18,7 @@ require_once( __DIR__."/InsertFile/InsertFile.setup.php" );
 require_once( __DIR__."/InsertLink/InsertLink.setup.php" );
 require_once( __DIR__."/InsertMagic/InsertMagic.setup.php" );
 require_once( __DIR__."/NamespaceCss/NamespaceCss.setup.php" );
+require_once( __DIR__."/NamespaceManager/NamespaceManager.setup.php" );
 require_once( __DIR__."/PageAccess/PageAccess.setup.php" );
 require_once( __DIR__."/TopMenuBarCustomizer/TopMenuBarCustomizer.setup.php" );
 require_once( __DIR__."/UsageTracker/UsageTracker.setup.php" );
