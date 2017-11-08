@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Stranger195"
-		]
-	},
-	"bs-blog-tag-blogtime-desc": "Binibigay ng tag na ito ang oportunidad na maglagay ng isang custom na timestamp para sa mga pagpapasok sa blog.",
-	"bs-blog-tag-blogtime-err": "Ang format ay dapat YYYYMMDDHHmm i.e. para sa 12. Enero. 2013 15:43 ang mga timestamp ang mukhang: 201301121543"
-}
