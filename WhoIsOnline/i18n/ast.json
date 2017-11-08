@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"bs-whoisonline-desc": "Amuesa una llista d'usuarios que tán coneutaos anguaño",
+	"bs-whoisonline-nousers": "Nun hai naide conectáu.",
+	"bs-whoisonline-widget-title": "¿Quién ta coneutáu?",
+	"prefs-whoisonline": "¿Quién ta coneutáu?",
+	"bs-whoisonline-pref-limitcount": "Númberu máximu d'usuarios amosaos:",
+	"bs-whoisonline-pref-orderby": "Ordenar por:",
+	"bs-whoisonline-pref-maxidletime": "Tiempu en segundos hasta qu'un usuariu márcase como desconectáu:",
+	"bs-whoisonline-pref-orderby-time": "Tiempu d'actividá",
+	"bs-whoisonline-pref-orderby-name": "Nome",
+	"bs-whoisonline-pref-interval": "Intervalu d'anovamientu en segundos:",
+	"bs-whoisonline-tag-whoisonlinecount-desc": "Amuesa'l númberu de tolos usuarios que se conectaron nos últimos 10 minutos.",
+	"bs-whoisonline-tag-whoisonlinepopup-desc": "Amuesa tolos usuarios que se conectaron nos últimos 10 minutos."
+}
