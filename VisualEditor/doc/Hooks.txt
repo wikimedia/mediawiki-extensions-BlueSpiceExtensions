@@ -1,7 +1,0 @@
-==VisualEditor.class.php==
-
-'VisualEditorConfig': Allwos you to modify the settings of VisualEditor
- &$aConfigStandard:
- &$aConfigOverwrite:
- &$aLoaderUsingDeps: Allows you to add module dependencys to the VisualEditos 
-startup script

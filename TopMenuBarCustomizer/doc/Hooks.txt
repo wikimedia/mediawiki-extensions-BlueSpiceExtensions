@@ -1,9 +1,0 @@
-==TopMenuBarCustomizer.class.php==
-
-If there is no MediaWiki:TopBarMenu title this array will be used to create the navigation sites
-'BSTopMenuBarCustomizerRegisterNavigationSites':
-	&$aNavigationSites - multidimensional array which will be processed recursively
-
-Last chance to edit params before they will be rendered
-'BSTopMenuBarCustomizerBeforeRenderNavigationSites':
-	&$aNavigationSites - multidimensional array which will be processed recursively
