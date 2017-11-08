@@ -778,8 +778,8 @@ var BsWikiCode = function() {
 
 		// images or links in tables may contain | in their attributes, esp. in bs-data-*. These
 		// need to be properly escaped in order not to interfere with table syntax
-		while (text.match(/(\<[^\>]*?)(\|)([^\>]*?\>)/g)) {
-			text = text.replace(/(\<[^\>]*?)(\|)([^\>]*?\>)/g, "$1@@pipe@@$3");
+		while (text.match(/(\<[^\>]*?)(\"[^\>\"]*?)(\|)([^\>\"]*\")([^\>]*?\>)/g)) {
+			text = text.replace(/(\<[^\>]*?)(\"[^\>\"]*?)(\|)([^\>\"]*\")([^\>]*?\>)/g, "$1$2@@pipe@@$4$5");
 		}
 
 		lines = text.split(/\n/);
@@ -2265,8 +2265,8 @@ var BsWikiCode = function() {
 		//special tags before pres prevents spaces in special tags like GeSHi to take effect
 		text = _preserveSpecialTags(text);
 
-		//cleanup linebreaks in tags except comments
-		text = text.replace(/(<[^!][^>]+?)(\n)([^<]+?>)/gi, "$1$3");
+		//cleanup linebreaks in tags except comments and tables
+		text = text.replace(/(<[^!][^>]+?)(\n)([^<|]+?>)/gi, "$1$3");
 
 		//preserve entities that were orignially html entities
 		text = text.replace(/(&[^\s;]+;)/gmi, '<span class="bs_htmlentity">$1</span>');
