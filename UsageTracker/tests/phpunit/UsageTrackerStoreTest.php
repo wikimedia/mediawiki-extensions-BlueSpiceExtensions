@@ -3,11 +3,18 @@
 /**
  * @group medium
  * @group Api
+ * @group Database
  * @group BlueSpice
  * @group BlueSpiceExtensions
+ * @group BlueSpiceUsageTracker
  */
 class UsageTrackerStoreTest extends BSApiExtJSStoreTestBase {
 	protected $iFixtureTotal = 3;
+	protected $tablesUsed = [ 'bs_usagetracker' ];
+
+	protected function skipAssertTotal() {
+		return true;
+	}
 
 	protected function getStoreSchema() {
 		return [
@@ -32,14 +39,16 @@ class UsageTrackerStoreTest extends BSApiExtJSStoreTestBase {
 		];
 	}
 
-	protected function createStoreFixtureData() {
+	protected function createStoreFixtureData() {}
+
+	public function addDBData() {
 		$aFixtureData = array(
 			array( 'ut_identifier' => 'dummy', 'ut_count' => 2, 'ut_type' => 'BS\UsageTracker\Collectors\Property', 'ut_timestamp' => wfTimestampNow () ),
 			array( 'ut_identifier' => 'dummy2', 'ut_count' => 4, 'ut_type' => 'BS\UsageTracker\Collectors\Property', 'ut_timestamp' => wfTimestampNow () ),
 			array( 'ut_identifier' => 'test', 'ut_count' => 8, 'ut_type' => 'BS\UsageTracker\Collectors\Property', 'ut_timestamp' => wfTimestampNow () )
 		);
-		$oDbw = wfGetDB( DB_MASTER );
-		$oDbw->insert(
+
+		$this->db->insert(
 			'bs_usagetracker',
 			$aFixtureData,
 			__METHOD__
