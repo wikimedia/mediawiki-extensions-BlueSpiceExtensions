@@ -13,6 +13,8 @@
 	"bs-usersidebar-globalactionswidget-title": "Accións globais",
 	"apihelp-sidebar-description": "Devolve o código HTML da barra lateral de usuario",
 	"apihelp-sidebar-summary": "Devolve o contido HTML da barra lateral de usuario",
+	"apihelp-sidebar-param-sidebar": "Se ter, ou non, a barra lateral Wiki",
+	"apihelp-sidebar-param-usersidebar": "Se ter, ou non, a barra lateral Foco",
 	"apihelp-sidebar-param-format": "Formato dos datos de saída",
 	"apihelp-sidebar-example": "Obter o código HTML da barra lateral"
 }
