@@ -1,6 +1,7 @@
 {
 	"name": "ExtensionInfo",
-	"version": "2.27.1-alpha",
+	"license-name": "GPL-3.0",
+	"version": "3.0.0-alpha",
 	"url": "https://help.bluespice.com/index.php/ExtensionInfo",
 	"author": [
 		"Markus Glaser",
@@ -8,7 +9,6 @@
 	],
 	"descriptionmsg": "bs-extensioninfo-desc",
 	"type": "bluespice",
-	"license-name": "GPL-2.0+",
 	"bsgExtensions": {
 		"ExtensionInfo": {
 			"className": "ExtensionInfo",

@@ -1,6 +1,7 @@
 {
 	"name": "WikiAdmin",
-	"version": "2.27.1-alpha",
+	"license-name": "GPL-3.0",
+	"version": "3.0.0-alpha",
 	"url": "https://help.bluespice.com/index.php/WikiAdmin",
 	"author": [
 		"Markus Glaser",
@@ -9,7 +10,6 @@
 	],
 	"descriptionmsg": "bs-wikiadmin-desc",
 	"type": "bluespice",
-	"license-name": "GPL-2.0+",
 	"bsgExtensions": {
 		"WikiAdmin": {
 			"className": "WikiAdmin",

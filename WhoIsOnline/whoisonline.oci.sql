@@ -7,7 +7,7 @@
 -- @package    BlueSpice_Extensions
 -- @subpackage WhoIsOnline
 -- @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
--- @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
+-- @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
 -- @filesource
 
 CREATE SEQUENCE /*$wgDBprefix*/whoisonline_wo_id_seq MINVALUE 0 START WITH 0;

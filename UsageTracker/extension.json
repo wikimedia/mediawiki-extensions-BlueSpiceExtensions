@@ -1,6 +1,7 @@
 {
 	"name": "UsageTracker",
-	"version": "2.27.1-alpha",
+        "license-name": "GPL-3.0",
+	"version": "3.0.0-alpha",
 	"url": "https://help.bluespice.com/index.php/UsageTracker",
 	"author": "Markus Glaser",
 	"descriptionmsg": "bs-usagetracker-desc",

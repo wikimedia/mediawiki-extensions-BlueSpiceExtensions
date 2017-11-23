@@ -1,6 +1,6 @@
 {
 	"name": "InsertFile",
-	"version": "2.27.1-alpha",
+	"version": "3.0.0-alpha",
 	"url": "https://help.bluespice.com/index.php/InsertFile",
 	"author": [
 		"Markus Glaser",
@@ -9,7 +9,7 @@
 	],
 	"descriptionmsg": "bs-insertfile-desc",
 	"type": "bluespice",
-	"license-name": "GPL-2.0+",
+	"license-name": "GPL-3.0",
 	"bsgExtensions": {
 		"InsertFile": {
 			"className": "InsertFile",
