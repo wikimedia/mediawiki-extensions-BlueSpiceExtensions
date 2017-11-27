@@ -1,1 +1,0 @@
-ALTER TABLE  /*$wgDBprefix*/bs_shoutbox ADD sb_title varbinary(255) NOT NULL default ''
