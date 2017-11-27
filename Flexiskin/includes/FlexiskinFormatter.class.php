@@ -14,7 +14,7 @@ class FlexiskinFormatter {
 			$oStatus = BsFileSystemHelper::getFileContent( $aConfig->backgroundImage, 'flexiskin' . DS . $sNewId . DS . 'images' );
 			if( $oStatus->isGood() ){
 				$oFileInfo = new SplFileInfo( $aConfig->backgroundImage );
-				$sMime = MimeMagic::singleton()->guessTypesForExtension( $oFileInfo->getExtension() );
+				$sMime = \MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer()->guessTypesForExtension( $oFileInfo->getExtension() );
 				$aReturn[] = "body.mediawiki{background-image:url('data:$sMime;base64," . base64_encode( $oStatus->getValue() ) . "') !important;}";
 			}
 			else{
@@ -78,7 +78,7 @@ class FlexiskinFormatter {
 		$oStatus = BsFileSystemHelper::getFileContent( $sFileName, 'flexiskin' . DS . $sNewId . DS . 'images' );
 		if( $oStatus->isGood() ){
 			$oFileInfo = new SplFileInfo( $sFileName );
-			$sMime = MimeMagic::singleton()->guessTypesForExtension( $oFileInfo->getExtension() );
+			$sMime =\MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer()->guessTypesForExtension( $oFileInfo->getExtension() );
 			return "#bs-logo > a{background-image:url('data:$sMime;base64," . base64_encode( $oStatus->getValue() ) . "') !important;}";
 		}
 		return '';
