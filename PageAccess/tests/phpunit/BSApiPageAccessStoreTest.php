@@ -5,6 +5,7 @@
  * @group api
  * @group Database
  * @group BlueSpice
+ * @group BlueSpicePageAccess
  * @group BlueSpiceExtensions
  */
 class BSApiPageAccessStoreTest extends BSApiExtJSStoreTestBase {
