@@ -6,7 +6,6 @@
 	},
 	"bs-insertfile-insert-image": "Ubaci sliku",
 	"bs-insertfile-insert-file": "Ubaci datoteku",
-	"bs-insertfile-labelsort": "Poređaj po:",
 	"bs-insertfile-labelfilter": "Filter:",
 	"bs-insertfile-filename": "Naziv datoteke",
 	"bs-insertfile-filesize": "Veličina datoteke",
@@ -14,12 +13,5 @@
 	"bs-insertfile-details-title": "Detalji",
 	"bs-insertfile-labelalt": "Alternativni tekst",
 	"bs-insertfile-typeframe": "okvir",
-	"bs-insertfile-uploaddescfilelabel": "Opis",
-	"bs-insertfile-uploadignorewarningslabel": "Zanemari sva upozorenja",
-	"bs-insertfile-uploadsubmitvalue": "Pošalji datoteku",
-	"bs-insertfile-warning": "Upozorenje",
-	"bs-insertfile-uploadcomplete": "Vaša datoteka je uspešno sačuvana.",
-	"bs-insertfile-titlefile": "Ubaci datoteku",
-	"bs-insertfile-license": "Licenca",
-	"bs-insertfile-categories": "Kategorije"
+	"bs-insertfile-titlefile": "Ubaci datoteku"
 }
