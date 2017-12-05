@@ -437,7 +437,8 @@ class ExtendedSearch extends BsExtensionMW {
 			}
 			// Moving file if namespace of title is the file namespace
 			if ( $oTitle->getNamespace() == NS_FILE ) {
-				$oOldFile = LocalFile::newFromTitle( $oTitle, RepoGroup::singleton()->getLocalRepo() );
+				$oRepo = RepoGroup::singleton()->getLocalRepo();
+				$oOldFile = $oRepo->newFile( $oTitle );
 				$oNewFile = RepoGroup::singleton()->findFile( $oNewtitle );
 
 				BuildIndexMainControl::getInstance()->deleteIndexFile( $oOldFile->getPath(), 'repo' );
