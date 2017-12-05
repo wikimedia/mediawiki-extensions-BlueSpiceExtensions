@@ -15,6 +15,11 @@ class PDFFileResolver {
 	/**
 	 * @var string
 	 */
+	protected $sSourceAttribute;
+
+	/**
+	 * @var string
+	 */
 	protected $sFileName = '';
 
 	/**
@@ -46,9 +51,10 @@ class PDFFileResolver {
 	 *
 	 * @param DOMElement $imgEl
 	 */
-	public function __construct ( $oImgEl, $sWebrootFileSystemPath ) {
+	public function __construct ( $oImgEl, $sWebrootFileSystemPath, $sSourceAttribute = 'src' ) {
 		$this->oImgNode= $oImgEl;
 		$this->sWebrootFileSystemPath = $sWebrootFileSystemPath;
+		$this->sSourceAttribute = $sSourceAttribute;
 
 		$this->init();
 	}
@@ -72,7 +78,7 @@ class PDFFileResolver {
 			$wgScriptPath
 		);
 
-		$sOrigUrl = $this->oImgNode->getAttribute( 'src' );
+		$sOrigUrl = $this->oImgNode->getAttribute( $this->sSourceAttribute );
 		if( strpos( $sOrigUrl, '?' ) ) {
 			$sOrigUrl = substr( $sOrigUrl, 0, strpos( $sOrigUrl, '?'  ) );
 		}
