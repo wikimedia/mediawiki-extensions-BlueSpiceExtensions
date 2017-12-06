@@ -616,9 +616,8 @@ class ExtendedSearch extends BsExtensionMW {
 	protected function getFileByTitle( $oTitle ) {
 		$oFile = RepoGroup::singleton()->findFile( $oTitle );
 		if( !$oFile ) {
-			$oFile = LocalFile::newFromTitle(
-				$oTitle, RepoGroup::singleton()->getLocalRepo()
-			);
+			$oRepo = RepoGroup::singleton()->getLocalRepo();
+			$oFile = $oRepo->newFile( $oTitle );
 		}
 		return $oFile;
 	}
