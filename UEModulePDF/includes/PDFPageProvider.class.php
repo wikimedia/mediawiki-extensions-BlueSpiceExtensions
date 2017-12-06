@@ -68,7 +68,9 @@ class BsPDFPageProvider {
 
 		if( isset($aParams['display-title'] ) ) {
 			$oBookmarkNode->setAttribute( 'name', $aParams['display-title'] );
-			$oFirstHeading->nodeValue = $aParams['display-title'];
+			$oTitleText = $oFirstHeading->ownerDocument->createTextNode( $aParams['display-title'] );
+			$oFirstHeading->nodeValue = '';
+			$oFirstHeading->replaceChild( $oTitleText, $oFirstHeading->firstChild );
 			$aData['meta']['title']   = $aParams['display-title'];
 		}
 
