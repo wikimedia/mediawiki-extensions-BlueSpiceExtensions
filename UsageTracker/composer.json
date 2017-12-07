@@ -1,8 +1,0 @@
-{
-	"autoload" : {
-		"files": [ "UsageTracker.class.php" ],
-		"psr-4": {
-			"BS\\UsageTracker\\" : "src"
-		}
-	}
-}

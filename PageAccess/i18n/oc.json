@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Cedric31"
-		]
-	},
-	"log-name-bs-pageaccess": "Jornal dels accèsses a las paginas",
-	"action-pageaccess-viewspecialpage": "afichar la pagina especiala \"{{int:pageaccess}}\""
-}

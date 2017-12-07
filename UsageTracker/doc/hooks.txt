@@ -1,9 +1,0 @@
-'BSUsageTrackerRegisterCollectors': Register your extension's usage collector here.
-$aCollectorsConfig: description of the collector. Must be an instance of
-BS/UsageTracker/Collectors/Base. Example:
-		$aCollectorsConfig['bs:blog'] = array(
-			'class' => 'Property', // Tag, Database
-			'config' => array(
-				'identifier' => 'tag:bs:blog'
-			)
-		);

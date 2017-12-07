@@ -1,4 +1,0 @@
-==PageAccess.class.php==
-
-'BSPageAccessAddAdditionalAccessGroups':
-&$aAccessGroups:
