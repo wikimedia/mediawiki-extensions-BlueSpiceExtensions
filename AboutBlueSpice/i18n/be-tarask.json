@@ -7,5 +7,6 @@
 	"bs-aboutbluespice-desc": "Інфармацыя пра BlueSpice",
 	"bs-aboutbluespice-about-bluespice": "Пра BlueSpice",
 	"aboutbluespice": "Пра BlueSpice",
-	"prefs-aboutbluespice": "Пра BlueSpice"
+	"prefs-aboutbluespice": "Пра BlueSpice",
+	"bs-aboutbluespice-show-menu-links": "Паказваць спасылку «{{int:bs-aboutbluespice-about-bluespice}}» у верхнім і галоўным мэню"
 }
