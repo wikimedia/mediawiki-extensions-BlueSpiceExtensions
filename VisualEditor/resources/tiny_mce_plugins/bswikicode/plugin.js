@@ -586,7 +586,7 @@ var BsWikiCode = function() {
 		}
 
 		//Also find protocol independent links
-		links = text.match(/\[([^\]]*)(:)?\/\/([^\]]*?)\]/gi);
+		links = text.match(/\[(([^\]]+:)?\/\/|mailto:)[^\]]*\]/gi);
 
 		if (links) {
 			for (i = 0; i < links.length; i++) {
