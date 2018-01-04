@@ -10,11 +10,11 @@ Software
 | [ExtJS-Patches](https://github.com/dnorman/ExtJS-Patches) | Daniel Norman | - | [MIT](https://opensource.org/licenses/MIT) |
 | [Instant Avatars](http://phoboslab.org/log/2008/12/instant-avatars) | Dominic Szablewski | - | unlicensed |
 | [jquery-textcomplete](https://github.com/yuku-t/jquery-textcomplete) | Yuku Takahashi | 0.3.3 | [MIT](https://opensource.org/licenses/MIT) |
-| [PHP Identicons](https://sourceforge.net/projects/identicons/) | Bong Cosca | 1.0.1 | [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.txt) |
+| [PHP Identicons](https://sourceforge.net/projects/identicons/) | Bong Cosca | 1.0.1 | [GPL-3.0-only](https://www.gnu.org/licenses/gpl-3.0.txt) |
 | [Solr-php-client](https://github.com/PTCInc/solr-php-client) | Donovan Jimenez, PTC Inc. | - | [BSD-modified](https://opensource.org/licenses/BSD-3-Clause) |
 | [SyntaxHighlighter](http://alexgorbatchev.com/SyntaxHighlighter/download/) | Alex Gorbatchev | 3.0.83 | [MIT](https://opensource.org/licenses/MIT) |
-| [TinyMCE](https://www.tinymce.com) | Moxiecode Systems AB | 4.6.4 | [LGPL-2.1](http://www.tinymce.com/license) |
-| [xhtmlrenderer](https://github.com/flyingsaucerproject/flyingsaucer) | Patrick Wright | 9.0.9 | [LGPL-2.1](https://github.com/flyingsaucerproject/flyingsaucer/blob/master/LICENSE-LGPL-2.1.txt) |
+| [TinyMCE](https://www.tinymce.com) | Moxiecode Systems AB | 4.6.4 | [LGPL-2.1-only](http://www.tinymce.com/license) |
+| [xhtmlrenderer](https://github.com/flyingsaucerproject/flyingsaucer) | Patrick Wright | 9.0.9 | [LGPL-2.1-only](https://github.com/flyingsaucerproject/flyingsaucer/blob/master/LICENSE-LGPL-2.1-only.txt) |
 | [Solr](http://lucene.apache.org/solr/) | Apache Software Foundation | 4.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) |
 
 Images
@@ -40,7 +40,7 @@ Fonts
 |:--------|:-------|:--------|:-------|
 | [DejaVu](https://dejavu-fonts.github.io/) | Bitstream | 2.33 | [DejaVu](https://dejavu-fonts.github.io/License.html) |
 | [FontAwesome](http://fontawesome.io) | Dave Gandy | 3.0 | [SIL 1.1](http://fontawesome.io/license) |
-| [IcoMoon](https://icomoon.io/#icons-icomoon) | Keyamoon | - | [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.txt) |
+| [IcoMoon](https://icomoon.io/#icons-icomoon) | Keyamoon | - | [GPL-3.0-only](https://www.gnu.org/licenses/gpl-3.0.txt) |
 
 License texts
 =============
