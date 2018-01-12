@@ -101,5 +101,6 @@
 	"apihelp-feedextendedsearch-param-namespace": "Namespaces to search",
 	"apihelp-feedextendedsearch-param-category": "Categories to search",
 	"apihelp-feedextendedsearch-param-files": "Whether to search in files",
-	"apihelp-feedextendedsearch-example": "Search for \"Test\" in Main and User namespaces."
+	"apihelp-feedextendedsearch-example": "Search for \"Test\" in Main and User namespaces.",
+	"bs-extendedsearch-specialpage-form-export": "Export search results"
 }

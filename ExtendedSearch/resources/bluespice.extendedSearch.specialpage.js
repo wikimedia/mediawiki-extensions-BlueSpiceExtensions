@@ -36,6 +36,22 @@ BsExtendedSearchSpecialPage = {
 			$(this).parent().find('*[name=search_scope]').val( 'text' );
 			$(this).parent().submit();
 		});
+
+		$( '#bs-extendedsearch-link-export' ).click( function( e ){
+			e.preventDefault();
+			var results = $( '.bs-extendedsearch-result-headline' );
+			var pages = [];
+			results.each( function( key, result ){
+				var pageTitle = $( result ).data( 'bs-title' );
+				pages.push(  pageTitle );
+			});
+			var searchTerm = $( '#bs-extendedsearch-searchterm' ).text();
+			var dialog = Ext.create( 'BS.dialog.PageExport', {
+				pages: pages,
+				defaultName: searchTerm
+			});
+			dialog.show();
+		});
 	}
 
 };

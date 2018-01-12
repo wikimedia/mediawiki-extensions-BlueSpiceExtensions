@@ -17,15 +17,15 @@ $specialPageAliases = array();
 
 /** English */
 $specialPageAliases['en'] = array(
-	'SpecialExtendedSearch' => array( 'ExtendedSearch' ),
+	'SpecialExtendedSearch' => array( 'ExtendedSearch' )
 );
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'SpecialExtendedSearch' => array( 'Erweiterte Suche' ),
+	'SpecialExtendedSearch' => array( 'Erweiterte Suche' )
 );
 
 /** German (Deutsch formal) */
 $specialPageAliases['de-formal'] = array(
-	'SpecialExtendedSearch' => array( 'Erweiterte Suche' ),
+	'SpecialExtendedSearch' => array( 'Erweiterte Suche' )
 );

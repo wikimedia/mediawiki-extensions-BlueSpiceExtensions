@@ -68,7 +68,8 @@
 		"ViewMoreLikeThis": "views/view.MoreLikeThis.php",
 		"ViewExtendedSearchResultEntry": "views/view.ExtendedSearchResultEntry.php",
 		"SpecialExtendedSearch": "includes/specials/SpecialExtendedSearch.class.php",
-		"TagCloudSearchStatsHandler": "includes/Handler/TagCloudSearchStatsHandler.class.php"
+		"TagCloudSearchStatsHandler": "includes/Handler/TagCloudSearchStatsHandler.class.php",
+		"ViewExportSearch": "views/view.ExportSearch.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.extendedsearch.focus": {

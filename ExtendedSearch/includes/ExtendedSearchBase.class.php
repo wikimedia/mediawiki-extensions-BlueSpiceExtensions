@@ -172,6 +172,11 @@ class ExtendedSearchBase {
 		$vNoOfResultsFound = new ViewNoOfResultsFound();
 		$vNoOfResultsFound->setOptions( $aMonitor );
 
+		if( $aMonitor['NoOfResultsFound'] > 0 ) {
+			$vExportSearch = new ViewExportSearch();
+			$oView->addItem( $vExportSearch );
+		}
+
 		$oView->addItem( $vNoOfResultsFound );
 		$oView->addItem( $oResultView );
 
@@ -766,5 +771,4 @@ class ExtendedSearchBase {
 
 		return $oResponse;
 	}
-
 }
