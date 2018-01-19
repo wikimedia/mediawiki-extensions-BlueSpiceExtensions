@@ -39,7 +39,7 @@ class BSApiFlexiskinUploadStore extends BSApiExtJSStoreBase {
 
 		$flexiskinFiles = new RecursiveIteratorIterator(
 			new RecursiveDirectoryIterator(
-				$wgUploadDirectory.'/bluespice/flexiskin/' . $sQuery . '/images/',
+				BsFileSystemHelper::getDataDirectory( 'flexiskin/' . $sQuery . '/images/' ),
 				( RecursiveIteratorIterator::SELF_FIRST | RecursiveDirectoryIterator::SKIP_DOTS )
 			)
 		);
