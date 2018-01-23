@@ -4,9 +4,5 @@
 	"version": "3.0.0-alpha",
 	"url": "https://www.mediawiki.org/wiki/BlueSpice",
 	"author": [ "Hallo Welt! GmbH" ],
-	"AutoloadClasses": {
-		"BlueSpiceExtensions":"BlueSpiceExtensions.class.php"
-	},
-	"callback": "BlueSpiceExtensions::onRegistration",
 	"manifest_version": 1
 }
