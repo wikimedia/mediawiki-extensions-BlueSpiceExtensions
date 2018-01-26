@@ -6,10 +6,13 @@ class ResourceLoaderFlexiskinPreviewModule extends ResourceLoaderFlexiskinModule
 	/**
 	 *
 	 * @param ResourceLoaderContext $context
-	 * @return type
+	 * @return string
 	 */
 	public function makeFlexiSkinID( $context ) {
-		return $context->getRequest()->getSessionData( 'flexiskin' );
+		//E.g. $modulename "ext.bluespice.flexiskin.skin.preview.467...543"
+		$modulename =  $this->getName();
+		$parts = explode( '.', $modulename );
+		return array_pop( $parts );
 	}
 
 	public function makeSourceFileName() {

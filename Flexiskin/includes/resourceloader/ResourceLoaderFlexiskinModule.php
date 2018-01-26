@@ -22,7 +22,7 @@ class ResourceLoaderFlexiskinModule extends ResourceLoaderFileModule {
 		foreach( $aConfJson as $aConfig ) {
 			$func = "FlexiskinFormatter::format_" . $aConfig->id;
 
-			$bReturn = wfRunHooks( "BSFlexiskinGenerateStyleFile", array( &$func, &$aConfig ) );
+			$bReturn = Hooks::run( "BSFlexiskinGenerateStyleFile", array( &$func, &$aConfig ) );
 
 			if( $bReturn === true && is_callable( $func ) ) {
 				 $aConfigs[] = call_user_func_array( $func, array( $aConfig, $sFlexiSkinId ) );

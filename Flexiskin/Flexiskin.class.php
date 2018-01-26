@@ -23,13 +23,15 @@
  * For further information visit http://www.bluespice.com
  *
  * @author     Tobias Weichart <weichart@hallowelt.com>
- * @version    2.23.1
  * @package    BlueSpice_Extensions
  * @subpackage Flexiskin
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v2 or later
  * @filesource
  */
+
+use BlueSpice\Flexiskin\PreviewResourceModuleRegistrant;
+use BlueSpice\Flexiskin\Data\AvailableConfigs;
 
 /**
  * Base class for Flexiskin extension
@@ -156,7 +158,7 @@ class Flexiskin extends BsExtensionMW {
 			"width" => "1222",
 			"fullWidth" => "0"
 		);
-		$bReturn = wfRunHooks( "BSFlexiskinGenerateConfigFile", array( $oData, &$aConfig ) );
+		$bReturn = Hooks::run( "BSFlexiskinGenerateConfigFile", array( $oData, &$aConfig ) );
 		if ( !$bReturn ) {
 			return array();
 		}
@@ -181,13 +183,21 @@ class Flexiskin extends BsExtensionMW {
 	 */
 	public static function onBeforePageDisplay( &$out ) {
 		$inPreviewMode = $out->getRequest()->getBool( 'preview' );
+		$flexiSkinId = $out->getRequest()->getVal( 'flexiskin' );
 
-		if( $inPreviewMode && $out->getRequest()->getVal( 'flexiskin' ) !== null ) {
-			$out->getRequest()->setSessionData( 'flexiskin', $out->getRequest()->getVal( 'flexiskin' ) );
-			$out->addModuleStyles( 'ext.bluespice.flexiskin.skin.preview' );
+		if( $inPreviewMode &&  $flexiSkinId !== null ) {
+			$out->addModuleStyles(
+				Flexiskin::generateDynamicModuleStyleName(
+					"preview.$flexiSkinId"
+				)
+			);
 		}
 		else {
-			$out->addModuleStyles( Flexiskin::generateDynamicModuleStyleName() );
+			$out->addModuleStyles(
+				Flexiskin::generateDynamicModuleStyleName(
+					BsConfig::get( 'MW::Flexiskin::Active' )
+				)
+			);
 		}
 
 		return true;
@@ -200,16 +210,31 @@ class Flexiskin extends BsExtensionMW {
 	 */
 	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
 		$resourceLoader->register(
-			Flexiskin::generateDynamicModuleStyleName(),
+			Flexiskin::generateDynamicModuleStyleName(
+				BsConfig::get( 'MW::Flexiskin::Active' )
+			),
 			array(
 				'class' => 'ResourceLoaderFlexiskinModule'
 			)
 		);
+
+		$registrant = new PreviewResourceModuleRegistrant(
+			$resourceLoader,
+			new AvailableConfigs()
+		);
+
+		$registrant->register();
+
 		return true;
 	}
 
-	public static function generateDynamicModuleStyleName(){
-		return 'ext.bluespice.flexiskin.skin.' . BsConfig::get( 'MW::Flexiskin::Active' );
+	/**
+	 *
+	 * @param string $flexiskinId
+	 * @return string
+	 */
+	public static function generateDynamicModuleStyleName( $flexiskinId ){
+		return 'ext.bluespice.flexiskin.skin.' . $flexiskinId;
 	}
 
 	/**

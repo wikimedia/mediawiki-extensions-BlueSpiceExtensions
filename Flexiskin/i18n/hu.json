@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Csega"
+			"Csega",
+			"Rodrigo"
 		]
 	},
 	"bs-flexiskin-label": "Felület",
@@ -20,7 +21,7 @@
 	"bs-flexiskin-labelbgcolor": "Háttérszín",
 	"bs-flexiskin-headerheader": "Fejléc",
 	"bs-flexiskin-labellogoupload": "Logó",
-	"bs-flexiskin-labelbackgroundupload": "Háttérkép",
+	"bs-flexiskin-labelbackgroundupload": "Jelenleg kép",
 	"bs-flexiskin-no-repeat": "nincs ismétlés",
 	"bs-flexiskin-repeat-x": "vízszintes ismétlés",
 	"bs-flexiskin-repeat-y": "függőleges ismétlés",
