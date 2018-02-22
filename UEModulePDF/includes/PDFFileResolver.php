@@ -141,6 +141,18 @@ class PDFFileResolver {
 				$this->sAbsoluteFilesystemPath = $oFileRepoLocalRef->getPath();
 			}
 			$this->sSourceFileName = $this->oFileObject->getName();
+
+			$width = $this->oFileObject->getWidth();
+			if( $this->oFileObject->isVectorized() && $width !== false ) {
+				$transform = $this->oFileObject->transform(
+					[
+						'width' => $width
+					],
+					File::RENDER_NOW
+				);
+				$this->sAbsoluteFilesystemPath = $transform->getLocalCopyPath();
+				$this->sSourceFileName = wfBaseName( $this->sAbsoluteFilesystemPath );
+			}
 		} else {
 			$this->sAbsoluteFilesystemPath = $this->getFileSystemPath( $wgUploadDirectory . $this->sSourceFilePath );
 		}
