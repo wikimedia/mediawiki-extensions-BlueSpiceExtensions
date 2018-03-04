@@ -223,7 +223,7 @@ class SearchRequest {
 		$this->sEditor = $this->aEditors = $this->oRequest->getArray( 'ed', array() );
 		$this->sCategories = $this->aCategories = $this->oRequest->getArray( 'ca', array() );
 		$this->aNamespaces = $this->oRequest->getArray( 'na', array() );
-		$this->aType =$this->aTypes = $this->oRequest->getArray( 'ty', array() );
+		$this->aType = $this->aTypes = $this->oRequest->getArray( 'ty', array() );
 		$this->bNoSelect = $this->oRequest->getBool( 'nosel', false );
 		$this->aFacetSettings = FormatJson::decode( $this->oRequest->getVal( 'fset', '{}' ), true );
 

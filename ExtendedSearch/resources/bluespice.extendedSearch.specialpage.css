@@ -391,3 +391,9 @@ span.bs-extendedsearch-result-title h3 em {
 	color: #FFFFFF;
 	border-color: #6481AC;
 }
+
+#bs-extendedsearch-export {
+	text-align: right;
+	padding-top:10px;
+	padding-right:10px;
+}
