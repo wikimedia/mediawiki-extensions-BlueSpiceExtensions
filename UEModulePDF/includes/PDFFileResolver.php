@@ -114,7 +114,21 @@ class PDFFileResolver {
 	}
 
 	protected function setFileObject() {
-		$this->oFileObject = RepoGroup::singleton()->findFile( $this->oFileTitle );
+		$sTimestamp = '';
+		$oAnchor = BsDOMHelper::getParentDOMElement( $this->oImgNode, array( 'a' ) );
+		if( $oAnchor instanceof DOMElement ) {
+			$sTimestamp = $oAnchor->getAttribute( 'data-bs-filetimestamp' );
+		}
+
+		$aOptions = array(
+			'time' => $sTimestamp,
+			'latest' => true
+		);
+
+		$this->oFileObject = RepoGroup::singleton()->findFile(
+			$this->oFileTitle,
+			$aOptions
+		);
 	}
 
 	protected function setWidthAttribute() {
