@@ -154,6 +154,10 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "BlueSpiceExtensions/PageAssignments/resources"
 	},
+	"config": {
+		"_prefix": "bsg",
+		"PageAssignmentsUseAdditionalPermissions": false
+	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "PageAssignmentsHooks::onLoadExtensionSchemaUpdates",
 		"PersonalUrls": "PageAssignmentsHooks::onPersonalUrls",

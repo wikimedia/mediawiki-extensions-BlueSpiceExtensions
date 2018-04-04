@@ -13,6 +13,9 @@ class PageAssignmentsUsersAdditionalPermissionsHooks {
 	 * @return boolean
 	 */
 	public static function onUserCan( &$title, &$user, $action, &$result ) {
+		if( !$GLOBALS['bsgPageAssignmentsUseAdditionalPermissions'] ) {
+			return true;
+		}
 		self::addAdditionalPermissions( $title, $user );
 		return true;
 	}
@@ -28,6 +31,9 @@ class PageAssignmentsUsersAdditionalPermissionsHooks {
 	 * @deprecated since version 1.22
 	 */
 	public static function onRevisionAjaxReviewBeforeParams( $oRevisionReview, &$oTitle, &$aArgs ) {
+		if( !$GLOBALS['bsgPageAssignmentsUseAdditionalPermissions'] ) {
+			return true;
+		}
 		//MW BeforeInitialize hook is not present in ajax calls, so apply
 		//possible permissions for responsible editors in this context
 		if( is_null($oTitle) ) {
@@ -62,6 +68,9 @@ class PageAssignmentsUsersAdditionalPermissionsHooks {
 	 * @return boolean
 	 */
 	public static function onUserGetRights( User $user, &$aRights ) {
+		if( !$GLOBALS['bsgPageAssignmentsUseAdditionalPermissions'] ) {
+			return true;
+		}
 		global $wgTitle;
 
 		if ( $wgTitle == null ) {
@@ -197,6 +206,9 @@ class PageAssignmentsUsersAdditionalPermissionsHooks {
 	 * @return boolean
 	 */
 	public static function onUserAddGroup( $user, &$group ) {
+		if( !$GLOBALS['bsgPageAssignmentsUseAdditionalPermissions'] ) {
+			return true;
+		}
 		if( self::$sTempGroup !== $group ) {
 			return true;
 		}
