@@ -150,7 +150,18 @@ class PDFFileResolver {
 					],
 					File::RENDER_NOW
 				);
-				$this->sAbsoluteFilesystemPath = $transform->getLocalCopyPath();
+				$storagePath = $transform->getStoragePath();
+				//Main file that this is thumb of
+				$file = $transform->getFile();
+
+				$backend = $file->getRepo()->getBackend();
+				$fsFile = $backend->getLocalReference( [ 'src' => $storagePath ] );
+				if( $fsFile ) {
+					$this->sAbsoluteFilesystemPath = $fsFile->getPath();
+				} else {
+					$this->sAbsoluteFilesystemPath = $transform->getLocalCopyPath();
+				}
+
 				$this->sSourceFileName = wfBaseName( $this->sAbsoluteFilesystemPath );
 			}
 		} else {
