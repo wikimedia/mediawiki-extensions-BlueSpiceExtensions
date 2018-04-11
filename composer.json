@@ -13,7 +13,7 @@
 		}
 	],
 	"require": {
-		"hallowelt/bluespice-foundation": "dev-master"
+		"composer/installers": "~1.0"
 	},
 	"support": {
 		"issues": "https://sourceforge.net/projects/bluespice/support",
