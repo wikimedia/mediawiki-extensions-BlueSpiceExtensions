@@ -48,6 +48,9 @@ class Checklist extends BsExtensionMW {
 
 	protected function initExt() {
 		wfProfileIn( 'BS::'.__METHOD__ );
+
+		$this->setHook( 'BSExtendedEditBarBeforeEditToolbar' );
+
 		$this->mCore->registerPermission( 'checklistmodify', array( 'user' ) );
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
@@ -148,26 +151,14 @@ class Checklist extends BsExtensionMW {
 	}
 
 	/**
-	 * Load editor resources (css, js) for checklist
-	 * @param EditPage $editPage
-	 * @param OutputPage $output
-	 * @return boolean true
-	 */
-	public static function onEditPage_showEditForm_initial( EditPage &$editPage, OutputPage &$output ){
-		$output->addModuleStyles( 'ext.bluespice.checklist.styles' );
-		$output->addModules( 'ext.bluespice.checklist' );
-
-		return true;
-	}
-
-
-	/**
 	 *
 	 * @param array $aRows
 	 * @param type $aButtonCfgs
 	 * @return boolean
 	 */
-	public static function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
+	public function onBSExtendedEditBarBeforeEditToolbar( &$aRows, &$aButtonCfgs ) {
+		$this->getOutput()->addModuleStyles( 'ext.bluespice.checklist.styles' );
+		$this->getOutput()->addModules( 'ext.bluespice.checklist' );
 
 		$aRows[0]['dialogs'][60] = 'bs-editbutton-checklist';
 

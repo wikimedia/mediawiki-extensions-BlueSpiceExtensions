@@ -41,11 +41,9 @@
 	"Hooks": {
 		"ParserFirstCallInit": "Checklist::onParserFirstCallInit",
 		"BeforePageDisplay": "Checklist::onBeforePageDisplay",
-		"BSExtendedEditBarBeforeEditToolbar": "Checklist::onBSExtendedEditBarBeforeEditToolbar",
 		"BSInsertMagicAjaxGetData": "Checklist::onBSInsertMagicAjaxGetData",
 		"VisualEditorConfig": "Checklist::onVisualEditorConfig",
 		"BSUsageTrackerRegisterCollectors": "Checklist::onBSUsageTrackerRegisterCollectors",
-		"EditPage::showEditForm:initial": "Checklist::onEditPage_showEditForm_initial",
 		"UnitTestsList": "Checklist::onUnitTestsList"
 	},
 	"ResourceModules": {
