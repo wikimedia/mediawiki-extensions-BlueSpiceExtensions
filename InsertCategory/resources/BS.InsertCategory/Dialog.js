@@ -5,6 +5,7 @@ Ext.define( 'BS.InsertCategory.Dialog', {
 	layout: 'border',
 	height: 450,
 	width:600,
+	typeAhead: true,
 	modal: true,
 	title: mw.message('bs-insertcategory-title').plain(),
 
