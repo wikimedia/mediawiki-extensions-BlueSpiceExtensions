@@ -137,7 +137,9 @@ class SearchOptions {
 	 * @return mixed The value.
 	 */
 	public function getOption( $sKey ) {
-		return $this->aOptions[$sKey];
+		if( isset( $this->aOptions[$sKey] ) ) {
+			return $this->aOptions[$sKey];
+		}
 	}
 
 	/**
