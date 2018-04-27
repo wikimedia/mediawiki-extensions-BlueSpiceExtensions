@@ -871,9 +871,28 @@
 				}, me);
 			} else { // HERE STARTS THE LOGIC FOR PERMISSION TEMPLATES
 				// If the "justCheck" parameter was not set or is false, we have
-				// to set all records in our ruleSet to ALLOWED_EXPLICIT in the
+				// to set all records in our ruleSet to new value in the
 				// column of this record.
 				if (justCheck === false) {
+					//Get value users want to set for template, same logic as for
+					//individual rights, if currently its not explicitly set, newValue
+					//is ALLOWED_EXPLICIT, otherwise its NOT_ALLOWED
+					if( Ext.isBoolean( newValue ) ) {
+						if( namespace !== false ) {
+							value = checkTemplateInNamespace( ruleSet, namespace );
+						} else {
+							value = checkTemplate( ruleSet );
+						}
+
+						if (value < ALLOWED_EXPLICIT) {
+							value = ALLOWED_EXPLICIT;
+						} else {
+							value = NOT_ALLOWED;
+						}
+					} else {
+						value = newValue;
+					}
+
 					for (rule in ruleSet) {
 						if (!ruleSet.hasOwnProperty(rule)) {
 							continue;
@@ -881,7 +900,7 @@
 						right = ruleSet[rule];
 						record = me.store.getById(right);
 						if (record) {
-							record.set(fieldName, ALLOWED_EXPLICIT);
+							record.set(fieldName, value);
 						}
 					}
 				}
