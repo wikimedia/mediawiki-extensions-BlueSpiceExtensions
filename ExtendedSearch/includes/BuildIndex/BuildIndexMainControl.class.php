@@ -158,8 +158,12 @@ class BuildIndexMainControl {
 			}
 		}
 
-		$aSections = $this->extractEditSections( $oTitle );
-		$sPageContent = $this->prepareTextForIndex( $oTitle );
+		if( !$aSections = $this->extractEditSections( $oTitle ) ) {
+			return;
+		}
+		if( !$sPageContent = $this->prepareTextForIndex( $oTitle ) ) {
+			return;
+		}
 
 		$aRedirects = $this->getRedirects( $oTitle );
 
@@ -695,10 +699,14 @@ class BuildIndexMainControl {
 	 * @return string Plain text content
 	 */
 	public function prepareTextForIndex( Title $oTitle ) {
-		$sText = WikiPage::newFromID( $oTitle->getArticleID() )
+		try {
+			$sText = WikiPage::newFromID( $oTitle->getArticleID() )
 				->getContent()
 				->getParserOutput( $oTitle )
 				->getText();
+		} catch ( Exception $e ) {
+			return false;
+		}
 
 		$sText = Sanitizer::stripAllTags( $sText );
 		$sText = str_replace( $this->aFragsToBeReplaced, ' ', $sText );
@@ -716,7 +724,13 @@ class BuildIndexMainControl {
 		$aSections = array();
 		if ( !( $oTitle instanceof Title ) ) return $aSections;
 
-		$sText = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
+		try {
+			$sText = BsPageContentProvider::getInstance()->getContentFromTitle(
+				$oTitle
+			);
+		} catch ( Exception $e ) {
+			return false;
+		}
 		$aMatches  = array();
 		$aLines = explode( "\n", $sText );
 		foreach ( $aLines as $sLine ) {
