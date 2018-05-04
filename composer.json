@@ -1,5 +1,5 @@
 {
-	"name": "hallowelt/blue-spice-extensions",
+	"name": "bluespice/legacy-extensions",
 	"description": "This package consists of a number of separate MediaWiki extensions that depend on hallowelt/bluespice-foundation",
 	"keywords": [
 		"mediawiki",
@@ -15,6 +15,9 @@
 			"homepage": "http://www.hallowelt.com"
 		}
 	],
+	"extra": {
+		"installer-name": "BlueSpiceExtensions"
+	},
 	"require": {
 		"composer/installers": "~1.0"
 	},
