@@ -204,8 +204,10 @@ class Authors extends BsExtensionMW {
 				$sUserName = $aUserNames[$i];
 
 				if ( User::isIP( $sUserName ) ) {
-					unset( $aUserNames[$i] );
 					$i++;
+					$anon = new User();
+					$oUserMiniProfileView = BsCore::getInstance()->getUserMiniProfile( $anon );
+					$oAuthorsView->addItem( $oUserMiniProfileView );
 					continue;
 				}
 
