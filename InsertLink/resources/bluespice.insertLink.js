@@ -182,10 +182,6 @@ var BsInsertLinkVisualEditorConnector = {
 		var newAnchor = null;
 
 		var code = data.code;
-		//If external link has nested [] (in querystring array specification), we must encode it
-		code = code.replace( /^\[[^\[].*?(\[.*?\]).*?[^\]]\]/gm, function( full, first ) {
-			return full.replace( first, encodeURI( first ) );
-		} );
 		//Trim left and right everything (including linebreaks) that is not a starting or ending link code
 		//This is necessary to avoid the bswikicode parser from breakin the markup
 		code = code.replace(/(^.*?\[|\].*?$|\r\n|\r|\n)/gm, ''); //first layer of '[...]' //external-, file- and mailto- links
