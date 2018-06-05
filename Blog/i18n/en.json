@@ -29,6 +29,7 @@
 	"bs-blog-pref-imagerendermode": "Display pictures as:",
 	"bs-blog-pref-imagefloatdirection": "Text flow: Image position",
 	"bs-blog-pref-maxentrycharacters": "Number of words per entry:",
+	"bs-blog-pref-preload": "Preload article name:",
 	"bs-blog-tag-blog-desc": "Includes a weblog of article, discussion and file pages. Can be specified by various parameters. These can be combined in any order.",
 	"bs-blog-tag-blogmore-desc": "Defines length of teaser for blog post. Set within the post at the end of the intended teaser. As a result, the link \"{{int:bs-blog-read-more}}\" appears, which links to the whole blog article.",
 	"bs-blog-tag-blogtime-desc": "Inserts a self defined time stamp for display and sorting in blog posts. The format is YYYYMMDDHHmm.",

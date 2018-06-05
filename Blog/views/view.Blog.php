@@ -83,7 +83,7 @@ class ViewBlog extends ViewBaseElement {
 		//$aOut[] = '  if(!check_pagename(pagename)) return false;';
 		$aOut[] = '  pagename = pagename.replace(" ", "_");';
 		if ( $wgUser->isLoggedIn() || BsConfig::get( 'MW::Blog::ShowTagFormWhenNotLoggedIn' ) != true ) {
-			$aOut[] = '  url = unescape("'.$wgScriptPath.'/index.php?title='.( $this->getOption( 'namespace' ) ? $this->getOption( 'namespace' ).':' : '' ).'"+pagename+"%26action"+"=edit"+"%26blogcat='.$this->getOption( 'blogcat' ).'");';
+			$aOut[] = '  url = unescape("'.$wgScriptPath.'/index.php?title='.( $this->getOption( 'namespace' ) ? $this->getOption( 'namespace' ).':' : '' ).'"+pagename+"%26action"+"=edit"+"%26blogcat='.$this->getOption( 'blogcat' ).'"+"%26preload='.$this->getOption( 'preload' ).'");';
 		} else {
 			$aOut[] = '  url = unescape("'.$wgScriptPath.'/index.php%3Ftitle=special:userlogin%26returnto='.$this->getOption( 'namespace' ).':"+pagename);';
 		}

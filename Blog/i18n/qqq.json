@@ -34,6 +34,7 @@
 	"bs-blog-pref-imagerendermode": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences].\n\nUsed as label for the select box having the following items (hard-coded):\n* thumb\n* full\n* none",
 	"bs-blog-pref-imagefloatdirection": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences].\n\nUsed as label for the select box having the following items (hard-coded):\n* left\n* right\n* none",
 	"bs-blog-pref-maxentrycharacters": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for number of words per entry:",
+	"bs-blog-pref-preload": "Option in [{{canonicalurl:Special:WikiAdmin|mode=Preferences}} Special:WikiAdmin?mode=Preferences], label for the article title, that should be used for preload on new blog entries:",
 	"bs-blog-tag-blog-desc": "Used in InsertMagic extension, tag description for display blog entries on every page.\n{{Related|Bs-tag-desc}}",
 	"bs-blog-tag-blogmore-desc": "Used in InsertMagic extension, tag description for setting teaser boundary on every page.\n{{Related|Bs-tag-desc}}",
 	"bs-blog-tag-blogtime-desc": "Used in InsertMagic extension, tag description for setting blog timestamp on every page.\n{{Related|Bs-tag-desc}}",

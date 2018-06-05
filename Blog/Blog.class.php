@@ -84,6 +84,13 @@ class Blog extends BsExtensionMW {
 
 		BsConfig::registerVar( 'MW::Blog::ShowTagFormWhenNotLoggedIn', false, BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_BOOL, 'toggle' );
 
+		BsConfig::registerVar(
+			'MW::Blog::Preload',
+			'',
+			BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING,
+			'bs-blog-pref-preload'
+		);
+
 		$this->mCore->registerPermission( 'blog-viewspecialpage', array('user'), array( 'type' => 'global' ) );
 
 		wfProfileOut( 'BS::'.__METHOD__ );
@@ -398,6 +405,7 @@ class Blog extends BsExtensionMW {
 		$sImageRenderMode       = BsConfig::get( 'MW::Blog::ImageRenderMode' );
 		$sImageFloatDirection   = BsConfig::get( 'MW::Blog::ThumbFloatDirection' );
 		$iMaxEntryCharacters    = BsConfig::get( 'MW::Blog::MaxEntryCharacters' );
+		$sPreload               = BsConfig::get( 'MW::Blog::Preload' );
 
 		// Trackbacks are not supported the way we intend it to be. From http://www.mediawiki.org/wiki/Manual:$wgUseTrackbacks
 		// When MediaWiki receives a trackback ping, a box will show up at the bottom of the article containing a link to the originating page
@@ -418,6 +426,12 @@ class Blog extends BsExtensionMW {
 		$argsBMoreInNewWindow        = BsCore::sanitizeArrayEntry( $args, 'moreinnewwindow', $bMoreInNewWindow, BsPARAMTYPE::BOOL );
 		$argsBShowPermalink          = BsCore::sanitizeArrayEntry( $args, 'showpermalink',   $bShowPermalink,   BsPARAMTYPE::BOOL );
 		$argsModeNamespace           = BsCore::sanitizeArrayEntry( $args, 'mode',   null,   BsPARAMTYPE::STRING );
+		$argsPreload = BsCore::sanitizeArrayEntry(
+			$args,
+			'preload',
+			$sPreload,
+			BsPARAMTYPE::STRING
+		);
 
 		// validate tag attributes
 		$validateIShowLimit = BsValidator::isValid( 'ArgCount', $argsIShowLimit, array('fullResponse' => true) );
@@ -543,9 +557,12 @@ class Blog extends BsExtensionMW {
 		$paramBShowAll = $this->getRequest()->getFuzzyBool( 'showall', false );
 		if ( $paramBShowAll == false ) $iLimit = $argsIShowLimit;
 
+		$oBlogView = new ViewBlog();
+		$oBlogView->setOption( 'preload', $argsPreload );
+
 		// abort if there are no entries
 		if ( $iNumberOfEntries < 1 ) {
-			$oBlogView = new ViewBlog();
+			$oBlogView->setOption( 'preload', $argsPreload );
 			$oBlogView->setOption( 'shownewentryfield', $argsBNewEntryField );
 			$oBlogView->setOption( 'newentryfieldposition', $argsSNewEntryFieldPosition );
 			$oBlogView->setOption( 'namespace', BsNamespaceHelper::getNamespaceName( $argsINamespace ) );
@@ -560,8 +577,6 @@ class Blog extends BsExtensionMW {
 			$sOut .= wfMessage( 'bs-blog-no-entries' )->plain();
 			return $sOut;
 		}
-
-		$oBlogView = new ViewBlog();
 
 		// prepare views per blog item
 		$iLoop = 0;
