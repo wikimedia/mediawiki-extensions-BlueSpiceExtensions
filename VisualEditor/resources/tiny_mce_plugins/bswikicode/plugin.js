@@ -501,9 +501,35 @@ var BsWikiCode = function() {
 		return text;
 	}
 
+	//todo: convert to regex magic
+	// this function replaces all occurencies of | in a string
+	function cleantemplatelink(link) {
+		var ll = link.split("}}");
+		for (var i = 0; i < ll.length; i++) {
+			var l2 = ll[i].split("{{");
+			if (l2.length === 2) {
+				l2[1] = l2[1].split("-").join("-a");
+				l2[1] = l2[1].split("\|").join("-b");
+			}
+			ll[i] = l2.join("{{");
+		}
+		return ll.join("}}");
+	}
+	// this function does it backwards
+	function uncleantemplatelink(link) {
+		var ll = link.split("}}");
+		for (var i = 0; i < ll.length; i++) {
+			var l2 = ll[i].split("{{");
+			if (l2.length === 2) {
+				l2[1] = l2[1].split("-b").join("\|");
+				l2[1] = l2[1].split("-a").join("-");
+			}
+			ll[i] = l2.join("{{");
+		}
+		return ll.join("}}");
+	}
 	//Make public available?
 	//this.image2wiki = _image2wiki;
-
 	function _links2html(text) {
 		// internal links
 		var links, link, linkNoWrap, linkParts, linkTarget, linkLabel, linkHtml,
@@ -554,7 +580,7 @@ var BsWikiCode = function() {
 		if (links) {
 			for (var i = 0; i < links.length; i++) {
 				link = links[i].substr(2, links[i].length - 4);
-				linkParts = link.split("|");
+				linkParts = cleantemplatelink(link).split("|");
 				linkTarget = linkParts[0];
 				linkLabel = linkParts[0];
 
@@ -665,7 +691,7 @@ var BsWikiCode = function() {
 				text = text.replace("[" + linkNoWrap + "]", linkHtml);
 			}
 		}
-		return text;
+		return uncleantemplatelink(text);
 	}
 
 	function _links2wiki(text) {
