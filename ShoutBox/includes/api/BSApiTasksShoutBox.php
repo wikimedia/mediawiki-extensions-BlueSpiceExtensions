@@ -346,7 +346,9 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 		);
 
 		ShoutBox::invalidateShoutBoxCache( $iArticleId );
-		$this->runUpdates();
+
+		$oTitle = Title::newFromID( $iArticleId );
+		$this->runUpdates( $oTitle );
 
 		return $oReturn;
 	}
@@ -407,7 +409,9 @@ class BSApiTasksShoutBox extends BSApiTasksBase {
 		$oReturn->message = wfMessage(
 			'bs-shoutbox-archive-success'
 		)->plain();
-		$this->runUpdates();
+
+		$oTitle = Title::newFromID( $iArticleId );
+		$this->runUpdates( $oTitle );
 		$oReturn->success = true;
 		return $oReturn;
 	}
