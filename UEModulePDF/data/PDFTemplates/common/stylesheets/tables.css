@@ -168,3 +168,18 @@ table.contenttable-darkblue th {
 	color:#FFF;
 	padding:4px;
 }
+
+table.bs-correct-table-width {
+	table-layout: fixed;
+	width: 650px !important;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+table.bs-rotated.bs-correct-table-width,
+.bs-rotated table.bs-correct-table-width {
+	table-layout: fixed;
+	width: 950px !important;
+	word-break: break-all;
+	word-wrap: break-word;
+}

@@ -326,11 +326,7 @@ class BsPDFPageProvider {
 	}
 
 	protected static function correctTableWidth( $oTableElement ) {
-		$sStyleAttribute = $oTableElement->getAttribute( 'style' );
-		//make sure style tag ends with semicolon
-		if( substr( trim( $sStyleAttribute ), -1 ) !== ";" ) {
-			$sStyleAttribute .= ";";
-		}
-		$oTableElement->setAttribute( 'style', $sStyleAttribute . ' table-layout: fixed; max-width: 700px;' );
+		$sClassAttribute = $oTableElement->getAttribute ( 'class' );
+		$oTableElement->setAttribute( 'class', $sClassAttribute . ' bs-correct-table-width ' );
 	}
 }
