@@ -192,7 +192,7 @@ class TopMenuBarCustomizer extends BsExtensionMW {
 
 		$aOut= array();
 		$aOut[] = Html::openElement( 'ul' );
-		foreach( self::getNavigationSites() as $aApp ) {
+		foreach( $aNavigationSites as $aApp ) {
 			$aApp = array_merge(self::$aNavigationSiteTemplate, $aApp);
 			$oMainItem = new ViewTopMenuItem();
 			$oMainItem
