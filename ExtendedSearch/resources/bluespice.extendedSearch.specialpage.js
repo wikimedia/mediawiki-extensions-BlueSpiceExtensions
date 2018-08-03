@@ -369,10 +369,6 @@ BsExtendedSearchAjaxManager.prototype = {
 			url = mw.config.get( "wgServer" ) + mw.config.get( "wgScriptPath" ) +
 					'?search_scope=text&search_submit=1&q=' + encodeURIComponent( inputField.val() );
 
-			if ( typeof bsExtendedSearchSearchFiles !== 'undefined' && bsExtendedSearchSearchFiles ) {
-				url += '&search_files=1';
-			}
-
 			thread = setTimeout( function() { ExtendedSearchAjaxManager.ajaxMeANewResultsPlz( url ) }, 300 );
 		} );
 	}

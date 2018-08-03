@@ -73,9 +73,6 @@ class TagCloudSearchStatsHandler extends TagCloudBaseHandler {
 
     $oSpecialPage = Title::makeTitle( NS_SPECIAL, 'ExtendedSearch' );
     $aSearchParams = array();
-    if( BsConfig::get( 'MW::ExtendedSearch::SearchFiles' ) ) {
-      $aSearchParams['search_files'] = '1';
-    }
 
     foreach ( $oRes as $oRow ) {
       $sNormalized = self::normalizeTerm( $oRow->stats_term );

@@ -126,8 +126,6 @@ class SearchUriBuilder {
 		$this->aUri[self::BASE] = SpecialPage::getTitleFor( 'SpecialExtendedSearch' )->getLocalUrl();
 		$this->aUri[self::INPUT] = 'q=' . $this->oSearchOptions->getOption( 'searchStringRaw' );
 		$this->aUri[self::SCOPE] = 'search_scope=' . $this->oSearchOptions->getOption( 'scope' );
-		$this->aUri[self::FILES] = 'search_files='
-				.( ( $this->oSearchOptions->getOption( 'files' ) === true ) ? '1' : '0' );
 		$this->aUri[self::SUBMIT] = 'search_submit=1';
 
 		$nss = $this->oSearchOptions->getOption( 'namespaces' );

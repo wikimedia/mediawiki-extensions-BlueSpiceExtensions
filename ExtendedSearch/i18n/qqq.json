@@ -107,5 +107,6 @@
 	"bs-extendedsearch-more": "Anchor text for more\n{{Identical|More}}",
 	"bs-extendedsearch-fewer": "Anchor text for less\n{{Identical|Less}}",
 	"bs-extendedsearch-facetsetting-op-and": "Label for setting of logical AND operator. Should be upper case\n{{Identical|And}}",
-	"bs-extendedsearch-facetsetting-op-or": "Label for setting of logical OR operator. Should be upper case\n{{Identical|Or}}"
+	"bs-extendedsearch-facetsetting-op-or": "Label for setting of logical OR operator. Should be upper case\n{{Identical|Or}}",
+	"bs-extendedsearch-namespace-files": "Text for files pseudo-namespace"
 }

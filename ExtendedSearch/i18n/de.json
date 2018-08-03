@@ -103,5 +103,7 @@
 	"bs-extendedsearch-more": "Mehr",
 	"bs-extendedsearch-fewer": "Weniger",
 	"bs-extendedsearch-facetsetting-op-and": "UND",
-	"bs-extendedsearch-facetsetting-op-or": "ODER"
+	"bs-extendedsearch-facetsetting-op-or": "ODER",
+	"bs-extendedsearch-namespace-files": "(Dateien)",
+	"bs-extendedsearch-namespace-files": "(Files)"
 }

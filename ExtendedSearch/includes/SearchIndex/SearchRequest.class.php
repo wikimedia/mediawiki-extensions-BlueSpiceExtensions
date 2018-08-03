@@ -69,7 +69,6 @@ class SearchRequest {
 		$this->sOrder = 'score';
 		$this->sAsc = 'desc';
 		$this->iOffset = 0;
-		$this->bSearchFiles = false;
 		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
@@ -226,10 +225,6 @@ class SearchRequest {
 		$this->aType =$this->aTypes = $this->oRequest->getArray( 'ty', array() );
 		$this->bNoSelect = $this->oRequest->getBool( 'nosel', false );
 		$this->aFacetSettings = FormatJson::decode( $this->oRequest->getVal( 'fset', '{}' ), true );
-
-		$this->bSearchFiles = ( $this->oRequest->getInt( 'search_files', 0 ) === 1 )
-			? true
-			: false;
 
 		if ( !$this->sScope ) {
 			$this->sScope = BsConfig::get( 'MW::ExtendedSearch::DefScopeUser' );

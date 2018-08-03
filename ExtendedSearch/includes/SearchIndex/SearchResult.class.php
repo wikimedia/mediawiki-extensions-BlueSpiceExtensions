@@ -249,20 +249,7 @@ class BsSearchResult {
 				}
 
 				if ( $sFacet === 'namespace' ) {
-					if ( $key == '999' ) {
-						$sTitle = wfMessage( 'bs-extendedsearch-facet-namespace-files' )->plain();
-					} elseif ( $key == '998' ) {
-						$sTitle = wfMessage( 'bs-extendedsearch-facet-namespace-extfiles' )->plain();
-					} elseif ( $key == '0' ) {
-						$sTitle = wfMessage( 'bs-ns_main' )->plain();
-					} else {
-						$sTitle = BsNamespaceHelper::getNamespaceName( $key, false );
-
-						if ( empty( $sTitle ) ) {
-							unset( $aFacets[$key] );
-							continue;
-						}
-					}
+					$uri = $this->oSearchUriBuilder->buildUri( SearchUriBuilder::ALL, SearchUriBuilder::NAMESPACES );
 				} elseif ( $sFacet === 'cat' ) {
 					$sTitle = ( $key == 'notcategorized' )
 						? wfMessage( 'bs-extendedsearch-facet-uncategorized' )->plain()
