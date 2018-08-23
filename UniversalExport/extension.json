@@ -11,6 +11,10 @@
 			"extPath": "/BlueSpiceExtensions/UniversalExport"
 		}
 	},
+	"BlueSpiceUniversalExportExportTargetRegistry": {
+		"download": "BlueSpice\\UniversalExport\\ExportTarget\\Download::factory",
+		"localfilerepo": "BlueSpice\\UniversalExport\\ExportTarget\\LocalFileRepo::factory"
+	},
 	"SpecialPages": {
 		"UniversalExport": "SpecialUniversalExport"
 	},
@@ -28,7 +32,13 @@
 		"ViewExportModuleOverview": "includes/views/ViewExportModuleOverview.php",
 		"BsUniversalExportModule": "includes/UniversalExportModule.interface.php",
 		"BsUniversalExportHelper": "includes/UniversalExportHelper.class.php",
-		"BsUniversalExportTagLibrary": "includes/UniversalExportTagLibrary.class.php"
+		"BsUniversalExportTagLibrary": "includes/UniversalExportTagLibrary.class.php",
+		"BlueSpice\\UniversalExport\\IExportFileDescriptor": "src/IExportFileDescriptor.php",
+		"BlueSpice\\UniversalExport\\IExportTarget": "src/IExportTarget.php",
+		"BlueSpice\\UniversalExport\\LegacyArrayDescriptor": "src/LegacyArrayDescriptor.php",
+		"BlueSpice\\UniversalExport\\ExportTarget\\Base": "src/ExportTarget/Base.php",
+		"BlueSpice\\UniversalExport\\ExportTarget\\Download": "src/ExportTarget/Download.php",
+		"BlueSpice\\UniversalExport\\ExportTarget\\LocalFileRepo": "src/ExportTarget/LocalFileRepo.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.universalExport.css": {
