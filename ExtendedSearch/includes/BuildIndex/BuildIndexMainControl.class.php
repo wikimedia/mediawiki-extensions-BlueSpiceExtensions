@@ -158,13 +158,8 @@ class BuildIndexMainControl {
 			}
 		}
 
-		if( !$aSections = $this->extractEditSections( $oTitle ) ) {
-			return;
-		}
-		if( !$sPageContent = $this->prepareTextForIndex( $oTitle ) ) {
-			return;
-		}
-
+		$aSections = $this->extractEditSections( $oTitle );
+		$sPageContent = $this->prepareTextForIndex( $oTitle );
 		$aRedirects = $this->getRedirects( $oTitle );
 
 		// http://www.mediawiki.org/wiki/Manual:WfTimestamp
@@ -705,7 +700,7 @@ class BuildIndexMainControl {
 				->getParserOutput( $oTitle )
 				->getText();
 		} catch ( Exception $e ) {
-			return false;
+			return '';
 		}
 
 		$sText = Sanitizer::stripAllTags( $sText );
@@ -729,7 +724,7 @@ class BuildIndexMainControl {
 				$oTitle
 			);
 		} catch ( Exception $e ) {
-			return false;
+			return $aSections;
 		}
 		$aMatches  = array();
 		$aLines = explode( "\n", $sText );
