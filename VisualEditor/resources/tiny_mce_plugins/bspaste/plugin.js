@@ -13,7 +13,12 @@ var BsPaste = function() {
 	};
 
 	this.setContentHTML = function() {
-		var cnt = $( this.content );
+		try {
+			var cnt = $( this.content );
+		}
+		catch ( var e ) {
+			var cnt = $( '<p>' + this.content + '</p>' );
+		}
 		if( cnt.length > 0 ) {
 			this.content = cnt;
 			return true;
