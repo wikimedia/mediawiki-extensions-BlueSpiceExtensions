@@ -11,8 +11,9 @@
  */
 
 (function( mw, $, bs, d, undefined){
+	var panel;
 	Ext.onReady( function(){
-		Ext.create( 'BS.UserManager.panel.Manager', {
+		panel = Ext.create( 'BS.UserManager.panel.Manager', {
 			renderTo: 'bs-usermanager-grid',
 			operationPermissions: {
 				'create': bsTaskAPIPermissions.usermanager.addUser,
@@ -29,6 +30,7 @@
 	$(d).on( 'click', '.bs-um-more-groups', function() {
 		$(this).parent('li').hide();
 		$(this).parents('ul').next('.bs-um-hidden-groups').show();
+		panel.updateLayout();
 		return false;
 	});
 })(mediaWiki, jQuery, blueSpice, document );
