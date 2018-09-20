@@ -31,11 +31,11 @@ class LocalFileRepo extends Base {
 		$this->status = Status::newGood();
 
 		$targetFilename = $descriptor->getFilename();
-		if( isset( $this->exportParams[ 'target-filename' ] ) ) {
+		if( !empty( $this->exportParams[ 'target-filename' ] ) ) {
 			$targetFilename = $this->exportParams[ 'target-filename' ];
 		}
 
-		$tmpFilepath = wfTempDir() . '/' .$this->descriptor->getFilename();
+		$tmpFilepath = wfTempDir() . '/' .$targetFilename;
 		file_put_contents( $tmpFilepath, $this->descriptor->getContents() );
 		$this->status =
 			\BsFileSystemHelper::uploadLocalFile( $tmpFilepath, true );
