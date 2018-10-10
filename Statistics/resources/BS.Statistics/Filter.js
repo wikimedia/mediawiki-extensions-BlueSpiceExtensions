@@ -39,7 +39,13 @@ Ext.define( 'BS.Statistics.Filter', {
 		});
 		this.storeUserFilter = new BS.store.ApiUser();
 		this.storeNamespaceFilter = new BS.store.LocalNamespaces({});
-		this.storeCategoryFilter = new BS.store.ApiCategory();
+		this.storeCategoryFilter = new BS.store.ApiCategory({
+			proxy: {
+				extraParams: {
+					limit: 99999
+				}
+			}
+		});
 		this.storeSearchscopeFilter = new BS.store.BSApi({
 			apiAction: 'bs-statistics-search-options-store',
 			fields: ['key', 'displaytitle']
