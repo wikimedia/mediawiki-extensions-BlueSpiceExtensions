@@ -16,7 +16,7 @@ var BsPaste = function() {
 		try {
 			var cnt = $( this.content );
 		}
-		catch ( var e ) {
+		catch ( e ) {
 			var cnt = $( '<p>' + this.content + '</p>' );
 		}
 		if( cnt.length > 0 ) {
