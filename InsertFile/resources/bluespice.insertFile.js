@@ -402,7 +402,6 @@ $(document).bind('BsVisualEditorActionsInit', function( event, plugin, buttons, 
 				cm.setDisabled('bsfile', true);
 			} else if ( t.elementIsMediaAnchor( element ) ) {
 				cm.setActive( 'bsfile', true);
-				cm.setActive( 'bsfile', false); //Why twice?
 				cm.setDisabled('bsfile', false);
 			} else {
 				cm.setDisabled('bsfile', true);

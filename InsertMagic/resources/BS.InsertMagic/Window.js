@@ -156,22 +156,48 @@ Ext.define( 'BS.InsertMagic.Window', {
 	},
 
 	setData: function( obj ) {
-		this.syntaxTextArea.setValue( obj.code );
+		if( obj.isInsert === false ) {
+			var type = obj.type;
+			if( type === 'template' ) {
+				type = 'variable';
+			}
+
+			this.currentData = {
+				type: type,
+				name: obj.name
+			};
+			this.cmbType.select( type );
+			// After correct data is set, reload the store,
+			// and let onLoad handler set everything up
+			this.tagsStore.reload();
+
+			this.syntaxTextArea.setValue( obj.code );
+		}
 		this.callParent( arguments );
 	},
 
 	onStoreLoad: function( store, records, options ) {
 		this.tagsStore.sort( 'name', 'ASC' );
+		store.clearFilter();
 
-		var firstQuickAccessItemId = this.tagsStore.findExact(
+		var preselected = this.cmbType.getValue();
+		var firstQuickAccessItemId = store.findExact(
 			'type',
 			'quickaccess'
 		);
-		if( firstQuickAccessItemId && firstQuickAccessItemId !== -1 ) {
-			this.preSelectedType = 'quickaccess';
-			this.cmbType.setValue( this.preSelectedType );
+		if( !preselected && firstQuickAccessItemId && firstQuickAccessItemId !== -1 ) {
+			preselected = 'quickaccess';
+			this.cmbType.setValue( preselected );
 		}
-		this.tagsStore.filter( 'type', this.preSelectedType ); //just initial
+
+		store.filter( 'type', preselected );
+
+		// If there is already something pre-selected,
+		// find the row and select it
+		if( this.currentData.name ) {
+			var rowIndex = store.find( 'name', this.currentData.name );
+			this.tagsGrid.getView().select( rowIndex );
+		}
 	},
 
 	onTypeSelected: function( combo, record, index ){

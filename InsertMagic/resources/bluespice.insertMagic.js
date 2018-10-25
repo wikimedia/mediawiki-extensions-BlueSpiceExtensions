@@ -92,11 +92,13 @@ var BsInsertMagicVisualEditorConnector = {
 		var me = BsInsertMagicVisualEditorConnector;
 		me.bookmark = me.caller.selection.getBookmark();
 		var node = me.caller.selection.getNode();
+		var $magicWord = $( node ).find( '.tag,.template,.switch' );
+
 		//me.selection = me.caller.selection.getBookmark();
 		me.data.isInsert = false;
-		me.data.id = node.getAttribute('data-bs-id');
-		me.data.type = node.getAttribute('data-bs-type');
-		me.data.name = node.getAttribute('data-bs-name');
+		me.data.id = $magicWord.data('bs-id');
+		me.data.type = $magicWord.data('bs-type');
+		me.data.name = $magicWord.data('bs-name');
 		var currentCode = '';
 
 		//TODO: Laufzeitproblem: onShow ist Store noch nicht unbedingt geladen
@@ -118,6 +120,7 @@ var BsInsertMagicVisualEditorConnector = {
 		}
 
 		me.data.code = currentCode;
+
 		return me.data;
 	},
 
