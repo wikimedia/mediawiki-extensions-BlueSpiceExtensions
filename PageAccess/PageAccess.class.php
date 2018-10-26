@@ -219,7 +219,7 @@ class PageAccess extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:pageaccess';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'pageaccess';
+		$oDescriptor->name = 'bs:pageaccess';
 		$oDescriptor->desc = wfMessage( 'bs-pageaccess-tag-groups-desc' )->plain();
 		$oDescriptor->code = '<bs:pageaccess groups="GROUP" />';
 		$oDescriptor->previewable = false;

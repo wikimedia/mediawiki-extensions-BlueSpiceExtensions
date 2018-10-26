@@ -245,7 +245,7 @@ class Blog extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:blog';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'blog';
+		$oDescriptor->name = 'bs:blog';
 		$oDescriptor->desc = wfMessage( 'bs-blog-tag-blog-desc' )->text();
 		$oDescriptor->code = '<bs:blog />';
 		$oDescriptor->previewable = false;
@@ -260,7 +260,7 @@ class Blog extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:blog:more';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'blogmore';
+		$oDescriptor->name = 'bs:blog:more';
 		$oDescriptor->desc = wfMessage( 'bs-blog-tag-blogmore-desc' )->text();
 		$oDescriptor->code = '<bs:blog:more />';
 		$oDescriptor->previewable = false;
@@ -270,7 +270,7 @@ class Blog extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:blog:time';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'blogtime';
+		$oDescriptor->name = 'bs:blog:time';
 		$oDescriptor->desc = wfMessage( 'bs-blog-tag-blogtime-desc' )->text();
 		$oDescriptor->code = '<bs:blog:time time="YYYYMMDDHHmm" />';
 		$oDescriptor->previewable = false;

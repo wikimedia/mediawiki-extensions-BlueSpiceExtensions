@@ -259,7 +259,7 @@ class UniversalExport extends BsExtensionMW {
 		$oResponse->result[] = array(
 			'id' => 'bs:uemeta',
 			'type' => 'tag',
-			'name' => 'uemeta',
+			'name' => 'bs:uemeta',
 			'desc' => wfMessage( 'bs-universalexport-tag-meta-desc' )->plain(),
 			'code' => '<bs:uemeta someMeta="Some Value" />',
 			'examples' => array(
@@ -273,7 +273,7 @@ class UniversalExport extends BsExtensionMW {
 		$oResponse->result[] = array(
 			'id' => 'bs:ueparams',
 			'type' => 'tag',
-			'name' => 'ueparams',
+			'name' => 'bs:ueparams',
 			'desc' => wfMessage( 'bs-universalexport-tag-params-desc' )->plain(),
 			'code' => '<bs:ueparams someParam="Some Value" />',
 			'examples' => array(
@@ -287,7 +287,7 @@ class UniversalExport extends BsExtensionMW {
 		$oResponse->result[] = array(
 			'id' => 'bs:uepagebreak',
 			'type' => 'tag',
-			'name' => 'uepagebreak',
+			'name' => 'bs:uepagebreak',
 			'desc' => wfMessage( 'bs-universalexport-tag-pagebreak-desc' )->plain(),
 			'code' => '<bs:uepagebreak />',
 			'helplink' => 'https://help.bluespice.com/index.php/UniversalExport'
@@ -296,7 +296,7 @@ class UniversalExport extends BsExtensionMW {
 		$oResponse->result[] = array(
 			'id' => 'bs:uenoexport',
 			'type' => 'tag',
-			'name' => 'uenoexport',
+			'name' => 'bs:uenoexport',
 			'desc' => wfMessage( 'bs-universalexport-tag-noexport-desc' )->plain(),
 			'code' => '<bs:uenoexport>Not included in export</bs:uenoexport>',
 			'examples' => array(

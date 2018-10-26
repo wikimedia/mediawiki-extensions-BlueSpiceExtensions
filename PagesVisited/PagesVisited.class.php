@@ -102,7 +102,7 @@ class PagesVisited extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:pagesvisited';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'pagesvisited';
+		$oDescriptor->name = 'bs:pagesvisited';
 		$oDescriptor->desc = wfMessage( 'bs-pagesvisited-tag-pagesvisited-desc' )->escaped();
 		$oDescriptor->code = '<bs:pagesvisited />';
 		$oDescriptor->previewable = false;

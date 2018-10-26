@@ -104,7 +104,7 @@ class CountThings extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:countarticles';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'countarticles';
+		$oDescriptor->name = 'bs:countarticles';
 		$oDescriptor->desc = wfMessage( 'bs-countthings-tag-countarticles-desc' )->escaped();
 		$oDescriptor->code = '<bs:countarticles />';
 		$oDescriptor->previewable = false;
@@ -114,7 +114,7 @@ class CountThings extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:countusers';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'countusers';
+		$oDescriptor->name = 'bs:countusers';
 		$oDescriptor->desc = wfMessage( 'bs-countthings-tag-countusers-desc' )->escaped();
 		$oDescriptor->code = '<bs:countusers />';
 		$oDescriptor->previewable = false;
@@ -124,7 +124,7 @@ class CountThings extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:countcharacters';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'countcharacters';
+		$oDescriptor->name = 'bs:countcharacters';
 		$oDescriptor->desc = wfMessage( 'bs-countthings-tag-countcharacters-desc' )->escaped();
 		$oDescriptor->code = '<bs:countcharacters>ARTICLENAME</bs:countcharacters>';
 		$oDescriptor->previewable = false;

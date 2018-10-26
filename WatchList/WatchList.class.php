@@ -74,7 +74,7 @@ class WatchList extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:watchlist';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'watchlist';
+		$oDescriptor->name = 'bs:watchlist';
 		$oDescriptor->desc = wfMessage( 'bs-watchlist-tag-watchlist-desc' )->plain();
 		$oDescriptor->code = '<bs:watchlist />';
 		$oDescriptor->previewable = false;
