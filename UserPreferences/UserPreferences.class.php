@@ -166,7 +166,7 @@ class UserPreferences extends BsExtensionMW {
 	 * @return true always true to keep hook alive
 	 */
 	public function onUserSaveOptions( $user, &$options ) {
-		if( !$this->getUser()->equals( $user ) ) {
+		if( !$this->getUser()->getId() == $user->getId() ) {
 			//Only do this for the current loggedin user, or else the current users
 			//settings will be saved into another user!
 			return true;
