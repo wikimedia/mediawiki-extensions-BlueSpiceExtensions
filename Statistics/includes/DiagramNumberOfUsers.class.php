@@ -44,7 +44,7 @@ class BsDiagramNumberOfUsers extends BsDiagram {
 									WHERE ug_group = 'bot'
 								)
 								AND user_id NOT IN (
-									SELECT ipb_user FROM ipblocks
+									SELECT ipb_user FROM #__ipblocks
 								)
 								AND user_name NOT IN (@BsFilterUsers)";
 		$this->sListLabel = array( wfMessage( 'bs-statistics-label-name' )->plain(), wfMessage( 'bs-statistics-label-registration' )->plain() );
