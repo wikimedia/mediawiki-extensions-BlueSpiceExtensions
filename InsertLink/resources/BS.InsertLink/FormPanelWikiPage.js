@@ -118,6 +118,12 @@ Ext.define( 'BS.InsertLink.FormPanelWikiPage', {
 			text = ':' + text;
 		}
 
+		// Escape File namespace (people want to link to the file-page,
+		// not add a file)
+		if( value.getNamespace() === bs.ns.NS_FILE ) { //[[:File:Title]]
+			text = ':' + text;
+		}
+
 		var code = '[[' + text + desc + ']]';
 		return {
 			title: title,
