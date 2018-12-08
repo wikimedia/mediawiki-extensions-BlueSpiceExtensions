@@ -181,7 +181,7 @@ class Checklist extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:checklist';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'checklist';
+		$oDescriptor->name = 'bs:checklist';
 		$oDescriptor->desc = wfMessage( 'bs-checklist-tag-checklist-desc' )->text();
 		$oDescriptor->code = '<bs:checklist />';
 		$oDescriptor->previewable = false;

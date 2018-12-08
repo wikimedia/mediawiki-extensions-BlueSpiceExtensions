@@ -138,7 +138,7 @@ class WhoIsOnline extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:whoisonlinecount';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'whoisonlinecount';
+		$oDescriptor->name = 'bs:whoisonlinecount';
 		$oDescriptor->desc = wfMessage( 'bs-whoisonline-tag-whoisonlinecount-desc' )->plain();
 		$oDescriptor->code = '<bs:whoisonlinecount />';
 		$oDescriptor->previewable = false;
@@ -148,7 +148,7 @@ class WhoIsOnline extends BsExtensionMW {
 		$oDescriptor = new stdClass();
 		$oDescriptor->id = 'bs:whoisonlinepopup';
 		$oDescriptor->type = 'tag';
-		$oDescriptor->name = 'whoisonlinepopup';
+		$oDescriptor->name = 'bs:whoisonlinepopup';
 		$oDescriptor->desc = wfMessage( 'bs-whoisonline-tag-whoisonlinepopup-desc' )->plain();
 		$oDescriptor->code = '<bs:whoisonlinepopup />';
 		$oDescriptor->previewable = false;
