@@ -1369,6 +1369,7 @@ var BsWikiCode = function() {
 		// get the text back
 		text = tinymce.util.Tools.trim(textObject.text);
 		// @todo it's done before in _preprocessWiki2Html, can we save this step?
+
 		text = _preservePres(text);
 
 		//normalize line endings to \n
@@ -1445,7 +1446,7 @@ var BsWikiCode = function() {
 		text = text.replace(/<p>((<\/span>\s*)+)<\/p>/gmi, '$1');
 
 		//Write back content of <pre> tags.
-		text = _recoverPres(text);
+		text = _recoverPres(text, 'encode');
 
 		//In some cases (i.e. Editor.insertContent('<img ... />') ) the content
 		//is not parsed. We do not want to append any stuff in this case.
@@ -1719,7 +1720,7 @@ var BsWikiCode = function() {
 		text = text.replace(/\/File:/g, "File:");
 		text = text.replace(/\/Datei:/g, "Datei:");
 		// Write back content of <pre> tags.
-		text = _recoverPres(text);
+		text = _recoverPres(text, 'decode');
 		// make sure pre starts in a separate line
 		text = text.replace(/([^^])?\n?<pre/gi, "$1\n<pre");
 
@@ -2021,6 +2022,7 @@ var BsWikiCode = function() {
 			}
 		}
 
+
 		if ( skipnowiki ) return text;
 
 		_nowikiTags = false;
@@ -2029,32 +2031,45 @@ var BsWikiCode = function() {
 		if (_nowikiTags) {
 				for (i = 0; i < _nowikiTags.length; i++) {
 						text = text.replace(_nowikiTags[i], "@@@NOWIKI" + i + "@@@");
-						_nowikiTags[i] = _nowikiTags[i].replace( "\n",  "<span class='single_linebreak' style='background-color:lightgray'>&para;<\/span> " );
 				}
 		}
-
 
 		return text;
 	}
 
 	/**
 	 *
-	 * @param {String} text
-	 * @returns {String}
+	 * @param String text
+	 * @param String|null action What action, if any, should be
+	 * done over the pre tag being returned - encode, decode, null
+	 * @returns String
 	 */
-	function _recoverPres(text) {
+	function _recoverPres( text, action ) {
 		var i, regex, replacer;
+
+		action = action || '';
+		var actionCb;
+		switch( action ) {
+			case 'encode':
+				actionCb = _encodePreTag;
+				break;
+			case 'decode':
+				actionCb = _decodePreTag;
+				break;
+		}
 
 		if (_preTags) {
 			for (var i = 0; i < _preTags.length; i++) {
 				regex = '@@@PRE' + i + '@@@';
 				replacer = new RegExp(regex, 'gmi');
 
+				var preTag = actionCb ? actionCb( _preTags[i] ) : _preTags[i];
+
 				// \n works in IE. In FF, this is not neccessary.
 				if ( navigator.appName == 'Microsoft Internet Explorer' ) {
-					text = text.replace(replacer, "\n" + _preTags[i]);
+					text = text.replace(replacer, "\n" + preTag);
 				} else {
-					text = text.replace(replacer, _preTags[i]);
+					text = text.replace(replacer, preTag);
 				}
 			}
 		}
@@ -2082,17 +2097,60 @@ var BsWikiCode = function() {
 						regex = '@@@NOWIKI' + i + '@@@';
 						replacer = new RegExp(regex, 'gmi');
 
+						var nowikiTag = actionCb ? actionCb( _nowikiTags[i], 'nowiki' ) : _nowikiTags[i];
 						// \n works in IE. In FF, this is not neccessary.
 						if ( navigator.appName == 'Microsoft Internet Explorer' ) {
-								text = text.replace(replacer, "\n" + _nowikiTags[i]);
+								text = text.replace(replacer, "\n" + nowikiTag);
 						} else {
-								text = text.replace(replacer, _nowikiTags[i]);
+								text = text.replace(replacer, nowikiTag);
 						}
 				}
 		}
 		_nowikiTags = false;
 
 		return text;
+	}
+
+	function _encodePreTag( tagText, tagName ) {
+		tagName = tagName || 'pre';
+		var regex = /<pre[\s\S]*?>([\S\s]*)<\/pre>/gmi;
+		if( tagName === 'nowiki' ) {
+			regex = /<nowiki>([\S\s]*)<\/nowiki>/gmi;
+		}
+
+		var matches = regex.exec( tagText );
+
+		if( !matches || matches.length < 2 ) {
+			return tagText;
+		}
+		var tagContent = matches.pop();
+
+		var el = document.createElement( 'div' );
+		el.innerText = el.textContent = tagContent;
+		var encodedTagContent = el.innerHTML;
+		return matches.pop().replace( tagContent, encodedTagContent );
+	}
+
+	function _decodePreTag( tag, tagName ) {
+		tagName = tagName || 'pre';
+		var regex = /<pre[\s\S]*?>([\S\s]*)<\/pre>/gmi;
+		if( tagName === 'nowiki' ) {
+			regex = /<nowiki>([\S\s]*)<\/nowiki>/gmi;
+		}
+
+		var matches = regex.exec( tag );
+
+		if( !matches || matches.length < 2 ) {
+			return tag;
+		}
+		var tagContent = matches.pop();
+
+		var encodedTagContent = tagContent.replace( /<br>/gm, "\n" );
+
+		var el = document.createElement( 'div' );
+		el.innerHTML = encodedTagContent;
+		var decodedTagContent = el.innerText;
+		return matches.pop().replace( tagContent, decodedTagContent );
 	}
 
 	/**
