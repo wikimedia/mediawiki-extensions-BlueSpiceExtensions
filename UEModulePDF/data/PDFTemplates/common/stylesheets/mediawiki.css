@@ -456,10 +456,13 @@ table {
 
 #toc, .toc, .mw-warning {
 	border: 0.1mm solid #aaa;
-	background-color: #f9f9f9;
 	padding: 5px;
 	font-size: 95%;
 	clear: both;
+}
+
+.mw-warning {
+	background-color: #f9f9f9;
 }
 
 #toc h2, .toc h2 {
