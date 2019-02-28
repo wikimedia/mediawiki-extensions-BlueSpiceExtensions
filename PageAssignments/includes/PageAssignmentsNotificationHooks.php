@@ -121,6 +121,10 @@ class PageAssignmentsNotificationHooks {
 		$aAssignedUserIds = PageAssignments::resolveAssignmentsToUserIdsWithSource( $oTitle );
 		$aAffectedUsers = array();
 		foreach( $aAssignedUserIds as $iUserId => $oAssignable ) {
+			$user = \User::newFromId( $iUserId );
+			if( !$user || $user->isAnon() ) {
+				continue;
+			}
 			$aAffectedUsers[] = $iUserId;
 		}
 
