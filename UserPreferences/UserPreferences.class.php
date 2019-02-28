@@ -152,6 +152,7 @@ class UserPreferences extends BsExtensionMW {
 			//settings will be saved into another user!
 			return true;
 		}
+		$this->getUser()->invalidateCache();
 		BsConfig::loadSettings();
 
 		$oCurrentTitle = $this->getTitle(); //May return null in CLI
@@ -186,21 +187,24 @@ class UserPreferences extends BsExtensionMW {
 			foreach ( $aExtensions as $sExtensionName => $aSettings ) {
 				// if continue, then $oAdapterSetView is not added to output
 				if ( !count( $aSettings ) ) continue;
-
 				foreach ( $aSettings as $oVariable ) {
 
 					//Avoid "undefined index" notices and weird NULL values in settings
+					// get value from database
 					$value = $oVariable->getValue();
 
-					if ( isset( $options[ $oVariable->generateFieldId() ] ) ) { //Set but no bool
+					// get value from request parameter
+					if ( isset( $options[ $oVariable->generateFieldId() ] ) ) {
 						$value = $options[ $oVariable->generateFieldId() ];
 					}
-					if ( isset( $options[ $oVariable->getKey() ] ) ) { //Set but no bool
+					// else get value from defaults
+					elseif ( isset( $options[ $oVariable->getKey() ] ) ) {
 						$value = $options[ $oVariable->getKey() ];
 					}
 
-
 					$options[$oVariable->getKey()] = ( BsStringHelper::isSerialized( $value ) ) ? $value : serialize( $value );
+
+					// unset request parameters
 					unset( $options[$oVariable->generateFieldId()] );
 				}
 			}
