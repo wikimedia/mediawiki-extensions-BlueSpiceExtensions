@@ -293,6 +293,7 @@ class SearchService extends SolrServiceAdapter {
 			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_RETURNTRANSFER, 1 );
 			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_URL, $url );
 			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_POST, 1 );
+			curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_PROXY, '' );
 
 			if ( stripos( $url, 'https' ) === 0 ) {
 				curl_setopt( $this->oGetFileTextCurlHandle, CURLOPT_SSL_VERIFYPEER, false ); // Allow self-signed certs
@@ -323,6 +324,7 @@ class SearchService extends SolrServiceAdapter {
 			curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, true );
 			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYPEER, false ); // Allow self-signed certs
 			curl_setopt( $this->curlHandle, CURLOPT_SSL_VERIFYHOST, false ); // Allow certs that do not match the hostname
+			curl_setopt( $this->curlHandle, CURLOPT_PROXY, '' );
 		}
 		wfProfileOut( 'BS::'.__METHOD__ );
 

@@ -135,6 +135,7 @@ abstract class SolrServiceAdapter extends Apache_Solr_Service {
 			curl_setopt( $ch, CURLOPT_POST, true );
 			curl_setopt( $ch, CURLOPT_POSTFIELDS, $sRawPost );
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $iTimeLimit ); // maximal exectuion time in seconds
+			curl_setopt( $ch, CURLOPT_PROXY, '' );
 
 			$data = curl_exec( $ch );
 			$this->curlConnectionCounter++;
