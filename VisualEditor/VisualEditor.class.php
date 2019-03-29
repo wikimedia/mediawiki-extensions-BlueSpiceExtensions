@@ -77,8 +77,7 @@ class BlueSpiceVisualEditor extends BsExtensionMW {
 			'bswikicode'  => '../tiny_mce_plugins/bswikicode/plugin.js',
 			'bsbehaviour' => '../tiny_mce_plugins/bsbehaviour/plugin.js',
 			'bsactions'   => '../tiny_mce_plugins/bsactions/plugin.js',
-			'bsautoresize'=> '../tiny_mce_plugins/bsautoresize/plugin.js',
-			'bspaste'=> '../tiny_mce_plugins/bspaste/plugin.js'
+			'bsautoresize'=> '../tiny_mce_plugins/bsautoresize/plugin.js'
 		),
 		'menubar' => false,
 		'statusbar' => false,
