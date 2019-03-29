@@ -1,6 +1,6 @@
 {
 	"name": "BlueSpiceExtensions",
-	"version": "2.27.1",
+	"version": "2.27.4",
 	"url": "https://www.mediawiki.org/wiki/BlueSpice",
 	"author": [ "Hallo Welt! GmbH" ],
 	"AutoloadClasses": {

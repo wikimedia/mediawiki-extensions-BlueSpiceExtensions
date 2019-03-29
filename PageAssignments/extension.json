@@ -7,7 +7,7 @@
 	],
 	"url": "https://help.bluespice.com/index.php/PageAssignments",
 	"type": "bluespice",
-	"version": "2.27.3",
+	"version": "2.27.4",
 	"descriptionmsg": "bs-pageassignments-desc",
 	"bsgExtensions": {
 		"PageAssignments": {
