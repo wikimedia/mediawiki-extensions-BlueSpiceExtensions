@@ -30,6 +30,7 @@
 	"logentry-bs-pageassignments-remove-user": "$1 {{GENDER:$2|removed}} the assignment of the page \"$3\" for {{GENDER:$4|the user}} \"$4\"",
 	"logentry-bs-pageassignments-add-group": "$1 {{GENDER:$2|assigned}} the group \"$4\" to the page \"$3\"",
 	"logentry-bs-pageassignments-remove-group": "$1 {{GENDER:$2|removed}} the assignment for the group \"$4\" from the page \"$3\"",
+	"logentry-bs-pageassignments-add-specialeveryone": "$1 assigned the page \"$3\" to group \"Everyone\"",
 	"echo-category-title-bs-pageassignments-action-cat": "Page assignments",
 	"bs-pageassignments-notification-reason": "Reasons for this notification:",
 	"bs-pageassignments-notification-reason-user": "You are assigned directly to the page",

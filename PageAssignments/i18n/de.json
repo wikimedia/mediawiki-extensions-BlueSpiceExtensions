@@ -32,6 +32,7 @@
 	"logentry-bs-pageassignments-remove-user": "$1 {{GENDER:$2|hat}} {{GENDER:$4|den Benutzer|die Benutzerin}} \"$4\" aus den Zuweisungen der Seite \"$3\" entfernt",
 	"logentry-bs-pageassignments-add-group": "$1 {{GENDER:$2|hat}} die Gruppe \"$4\" die Seite \"$3\" zugewiesen",
 	"logentry-bs-pageassignments-remove-group": "$1 {{GENDER:$2|hat}} die Gruppe \"$4\" aus den Zuweisungen der Seite \"$3\" entfernt",
+	"logentry-bs-pageassignments-add-specialeveryone": "$1 {{GENDER:$2|hat}} der Gruppe \"Jeder\" die Seite \"$3\" zugewiesen",
 	"echo-category-title-bs-pageassignments-action-cat": "Seitenzuweisungen",
 	"bs-pageassignments-notification-reason": "Gründe für diese Benachrichtigung:",
 	"bs-pageassignments-notification-reason-user": "Du bist der Seite direkt zugewiesen",

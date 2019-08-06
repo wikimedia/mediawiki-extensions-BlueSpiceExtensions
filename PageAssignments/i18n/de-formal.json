@@ -13,5 +13,6 @@
 	"notification-bs-pageassignments-user-group-add-summary": "Sie wurden der Gruppe $4 hinzugefügt",
 	"notification-bs-pageassignments-user-group-add-body": "$1 hat Sie der Gruppe $4 hinzugefügt. Bitte überprüfen Sie Ihre Zuweisungen auf $3",
 	"notification-bs-pageassignments-user-group-remove-summary": "Sie wurden aus der Gruppe $4 entfernt",
-	"notification-bs-pageassignments-user-group-remove-body": "$1 hat Sie aus der Gruppe $4 entfernt. Bitte überprüfen Sie Ihre Zuweisungen auf $3"
+	"notification-bs-pageassignments-user-group-remove-body": "$1 hat Sie aus der Gruppe $4 entfernt. Bitte überprüfen Sie Ihre Zuweisungen auf $3",
+	"logentry-bs-pageassignments-add-specialeveryone": "$1 {{GENDER:$2|hat}} der Gruppe \"Jeder\" die Seite \"$3\" zugewiesen"
 }
