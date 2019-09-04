@@ -341,7 +341,7 @@ class ArticleInfo extends BsExtensionMW {
 			$iLoopCount++;
 		}
 
-		if ( $this->getUser()->getBoolOption( 'showhiddencats' ) ) {
+		if ( $this->getUser()->getBoolOption( 'showhiddencats' ) && isset( $aCurrentPagesCategories['hidden'] )  ) {
 			foreach ( $aCurrentPagesCategories['hidden'] as $iKey => $sValue ) {
 				if( $iLoopCount < 3 ) $oCategoriesLinks->addCategory( $sValue );
 				$aAllCategoriesWithUrls[] = $sValue; //But all for the body element
